@@ -60,19 +60,19 @@ Because you'll be using some pieces of information repeatedly, create some varia
 
 ```azurecli-interactive
 # Resource group name - we're using myImageBuilderRG in this example
-imageResourceGroup='myWinImgBuilderRG'
+$imageResourceGroup='myWinImgBuilderRG'
 # Region location
-location='WestUS2'
+$location='WestUS2'
 # Run output name
-runOutputName='aibWindows'
+$runOutputName='aibWindows'
 # The name of the image to be created
-imageName='aibWinImage'
+$imageName='aibWinImage'
 ```
 
 Create a variable for your subscription ID:
 
 ```azurecli-interactive
-subscriptionID=$(az account show --query id --output tsv)
+$subscriptionID=$(az account show --query id --output tsv)
 ```
 
 ## Create the resource group
@@ -92,19 +92,19 @@ VM Image Builder uses the provided [user-identity](/azure/active-directory/manag
 Create a user-assigned identity so that VM Image Builder can access the storage account where the script is stored.
 
 ```azurecli-interactive
-identityName=aibBuiUserId$(date +'%s')
+$identityName=aibBuiUserId$(date +'%s')
 az identity create -g $imageResourceGroup -n $identityName
 
 # Get the identity ID
-imgBuilderCliId=$(az identity show -g $imageResourceGroup -n $identityName --query clientId -o tsv)
+$imgBuilderCliId=$(az identity show -g $imageResourceGroup -n $identityName --query clientId -o tsv)
 
 # Get the user identity URI that's needed for the template
-imgBuilderId=/subscriptions/$subscriptionID/resourcegroups/$imageResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$identityName
+$imgBuilderId=/subscriptions/$subscriptionID/resourcegroups/$imageResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$identityName
 
 # Download the preconfigured role definition example
 curl https://raw.githubusercontent.com/azure/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json -o aibRoleImageCreation.json
 
-imageRoleDefName="Azure Image Builder Image Def"$(date +'%s')
+$imageRoleDefName="Azure Image Builder Image Def$(date +'%s')"
 
 # Update the definition
 sed -i -e "s%<subscriptionID>%$subscriptionID%g" aibRoleImageCreation.json
