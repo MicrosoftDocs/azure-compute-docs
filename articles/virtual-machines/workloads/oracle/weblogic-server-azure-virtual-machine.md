@@ -17,6 +17,15 @@ This article shows you how to quickly deploy WebLogic Server (WLS) on an Azure V
 - Deploy a sample Java application with the WebLogic Server Administration Console.
 - Connect to the VM running WebLogic using SSH.
 
+This article uses the [Azure Marketplace Offer for WebLogic Server](https://aka.ms/wls-vm-admin) to accelerate your journey to Azure. The offer automatically provisions several Azure resources, including the following resources:
+
+- Azure Virtual Machine pre-installed with your choice of OS version, Java JDK version, and WebLogic Server Version.
+- TLS/SSL configuration, including the easy generation of a self-signed certificate.
+- Virtual network (VNET), including the ability to provision into an existing VNET.
+- Database connection to a pre-existing database.
+
+If you prefer a less automated step-by-step approach, see [Manually install WebLogic Server on Azure Virtual Machines (VMs)](/azure/developer/java/migration/migrate-weblogic-to-azure-vm-manually).
+
 If you're interested in providing feedback or working closely on your migration scenarios with the engineering team developing WebLogic on Azure solutions, fill out this short [survey on WebLogic migration](https://aka.ms/wls-on-azure-survey) and include your contact information. The team of program managers, architects, and engineers will promptly get in touch with you to initiate close collaboration.
 
 ## Prerequisites

@@ -15,7 +15,7 @@ ms.author: banders
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Flexible scale sets 
 
 > [!NOTE]
-> The Red Hat Linux Enterprise software reservation plan is temporarily unavailable.
+> The Red Hat Linux Enterprise software reservation plan and renewal are temporarily unavailable. Disregard any renewal emails until the plan is available.
 
 When you prepay for your SUSE and RedHat software usage in Azure, you can save money over your pay-as-you-go costs. The discounts only apply to SUSE and RedHat meters and not on the virtual machine usage. You can buy reservations for virtual machines separately for additional savings.
 

@@ -12,7 +12,7 @@ ms.date: 07/14/2022
 # Central Secret Service in Azure Service Fabric 
 Central Secret Service (CSS), also known as Central Secret Store, is a Service Fabric system service meant to safeguard secrets within a cluster. CSS eases the management of secrets for SF applications, eliminating the need to rely on encrypted parameters.
 
-Central Secret Service is a durable, replicated in-cluster secret cache; secrets stored in CSS are encrypted at rest to a customer-provided encryption certificate. CSS provides client APIs for secret management, accessible to entities authenticating as the cluster, or a cluster admin user. The Service Fabric runtime application model integrates with CSS, allowing the declaration of application parameters as CSS secret references. 
+Central Secret Service is a durable, replicated in-cluster secret cache; secrets stored in CSS are encrypted at rest to a customer-provided or cluster-managed encryption certificate. CSS provides client APIs for secret management, accessible to entities authenticating as the cluster, or a cluster admin user. The Service Fabric runtime application model integrates with CSS, allowing the declaration of application parameters as CSS secret references. 
 
 CSS is also instrumental in provisioning application secrets declared as [KeyVault secret URIs](service-fabric-keyvault-references.md), in combination with [Managed Identity for Azure-deployed Service Fabric Applications](concepts-managed-identity.md).
 
@@ -22,7 +22,7 @@ Central Secret Service is not meant to be a replacement for a dedicated, externa
   > When activating CSS on an SF cluster running a version earlier than [7.1. CU3](service-fabric-versions.md#service-fabric-version-name-and-number-reference), activation can fail and leave CSS in a permanently unhealthy state if the cluster is configured for Windows authentication or if `EncryptionCertificateThumbprint` is declared incorrectly or the corresponding certificate is not installed. In either case, it is advisable to upgrade the cluster to an SF runtime version newer than 7.1. CU3 before proceeding. 
   
 ## Enable Central Secrets Service
-To enable Central Secret Service, update the cluster configuration as described below. We recommend that you use an encryption certificate that is different from your cluster certificate. This certificate must be installed on all nodes.
+To enable Central Secret Service, update the cluster configuration as described below.
 ```json
 { 
     "fabricSettings": [
@@ -32,10 +32,6 @@ To enable Central Secret Service, update the cluster configuration as described 
                 {
                     "name":  "DeployedState",
                     "value":  "enabled"
-                },
-                {
-                    "name" : "EncryptionCertificateThumbprint",
-                    "value": "<thumbprint>"
                 },
                 {
                     "name":  "MinReplicaSetSize",
@@ -50,6 +46,10 @@ To enable Central Secret Service, update the cluster configuration as described 
     ]
 }
 ```
+
+  > [!NOTE]
+  > Prior to Service Fabric [version 10.1 CU4](service-fabric-versions.md#service-fabric-version-name-and-number-reference), it is necessary to provision to the compute a certificate which CSS will use for encrypting the store. It must be installed on all nodes and its SHA-1 thumbprint be declared using the fabric setting parameter "EncryptionCertificateThumbprint" under section "CentralSecretService". We recommend that you use an encryption certificate that is different from your cluster certificate. From 10.1 CU4 onward, if this setting is not passed, CSS will default to using a cluster-managed certificate for encryption. An existing CSS deployment can be moved to the cluster-managed certificate by removing the thumbprint declaration in an upgrade.
+
   > [!NOTE] 
   > The configuration setting "DeployedState", introduced in Service Fabric [version 8.0](service-fabric-versions.md#service-fabric-version-name-and-number-reference), is the preferred mechanism to enable or disable CSS; this function was served in previous versions by the configuration setting "IsEnabled", which is now considered obsolete.
 
@@ -144,6 +144,8 @@ secretValue = IO.ReadFile(Path.Join(Environment.GetEnvironmentVariable("SecretPa
 ```
    
 ## Rotating the Central Secret Service Encryption Certificate
+This guidance is in the case that you have CSS configured with your own encryption certificate, declared using `EncryptionCertificateThumbprint`. If you are using the cluster-managed credential option, the cluster manages the lifecycle of the credential and no action is needed. 
+
 It is important to note that certificates remain valid for decryption beyond their expiry. At this time, we recommend continuing to provision past encryption certificates after rotation, to reduce the chance of a lockout. Rotating the CSS encryption certificate requires the following steps:
 
 1. Provision the new certificate to each node of the cluster. At this time, do not remove/continue provisioning the previous encryption certificate.
