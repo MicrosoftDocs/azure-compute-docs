@@ -87,7 +87,7 @@ If you have an existing VM that you would like to convert to take advantage of A
 > 
 
 ### Portal
-From portal VM blade, you can update the VM to use Azure Hybrid Benefit by selecting "Configuration" option and toggle the "Azure hybrid benefit" option
+From portal VM blade, you can update the VM to use Azure Hybrid Benefit by selecting "Operating system" option and toggle the "Azure hybrid benefit" option
 
 ### PowerShell
 - Convert existing Windows Server VMs to Azure Hybrid Benefit for Windows Server
