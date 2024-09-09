@@ -101,4 +101,7 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 
 ---
 
+## Creating VM 
+To get started with NCCads H100 v5 VMs and for information regarding confidential GPU driver and attesetation configuration, see [confidential GPU Configuration](https://aka.ms/cgpu-onboarding-steps) 
+
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]
