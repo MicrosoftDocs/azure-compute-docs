@@ -1,6 +1,6 @@
 ---
-title: Associate a virtual machine to a Capacity Reservation group
-description: Learn how to associate a new or existing virtual machine to a Capacity Reservation group.
+title: Associate a virtual machine to a capacity reservation group
+description: Learn how to associate a new or existing virtual machine to a capacity reservation group.
 author: bdeforeest
 ms.author: bidefore
 ms.service: azure-virtual-machines
@@ -10,19 +10,19 @@ ms.reviewer: cynthn, jushiman
 ms.custom: template-how-to, devx-track-azurecli, devx-track-azurepowershell
 ---
 
-# Associate a VM to a Capacity Reservation group
+# Associate a VM to a capacity reservation group
 
 **Applies to:** :heavy_check_mark: Windows Virtual Machines :heavy_check_mark: Linux Virtual Machines 
 
-Capacity reservation groups can be used with new or existing virtual machines. To learn more about Capacity Reservations, see the [overview article](capacity-reservation-overview.md). 
+You can use capacity reservation groups with new or existing virtual machines (VMs). To learn more about capacity reservations, see the [Capacity reservation overview](capacity-reservation-overview.md).
 
-## Associate a new VM
+## Associate a new virtual machine
 
-To associate a new VM to the Capacity Reservation group, the group must be explicitly referenced as a property of the virtual machine. This reference protects the matching reservation in the group for applications and workloads intended to use it.
+To associate a new virtual machine to the capacity reservation group, the group must be explicitly referenced as a property of the VM. This reference protects the matching reservation in the group for applications and workloads intended to use it.
 
 ### [API](#tab/api1)
 
-To add the `capacityReservationGroup` property to a VM, construct the following PUT request to the *Microsoft.Compute* provider:
+To add the `capacityReservationGroup` property to a VM, construct the following `PUT` request to the `Microsoft.Compute` provider:
 
 ```rest
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{VirtualMachineName}?api-version=2021-04-01
@@ -59,24 +59,23 @@ In the request body, include the `capacityReservationGroup` property:
 
 <!-- no images necessary if steps are straightforward --> 
 
-1. Open [Azure portal](https://portal.azure.com)
-1. In the search bar, type **virtual machine**
-1. Under *Services*, select **Virtual machines**
-1. On the *Virtual machines* page, select **Create** and then select **Virtual machine**
-1. In the *Basics* tab, under *Project details*, select the correct **subscription** and then choose to create a new **resource group** or use an existing one
-1. Under *Instance details*, type in the virtual machine **Name** and choose your **Region**
-1. Choose an **Image** and the **VM size**
-1. Under *Administrator account*, provide a **username** and a **password**
-    1. The password must be at least 12 characters long and meet the defined complexity requirements
-1. Go to the *Advanced section*
-1. In the **Capacity Reservations** dropdown, select the Capacity Reservation group that you want the VM to be associated with
-1. Select the **Review + create** button 
-1. After validation runs, select the **Create** button 
-1. After the deployment is complete, select **Go to resource**
+1. Open the [Azure portal](https://portal.azure.com).
+1. In the search bar, enter **virtual machine**.
+1. Under **Services**, select **Virtual machines**.
+1. On the **Virtual machines** page, select **Create** and then select **Virtual machine**.
+1. On the **Basics** tab, under **Project details**, select the correct subscription. Then choose to create a new resource group or use an existing one.
+1. Under **Instance details**, enter the VM name and choose your region.
+1. Select an **Image** and the VM size.
+1. Under **Administrator account**, enter a username and a password. The password must be at least 12 characters long and meet the defined complexity requirements.
+1. Go to the **Advanced section**.
+1. In the **Capacity Reservations** dropdown list, select the capacity reservation group that you want to associate to the VM.
+1. Select **Review + create**.
+1. After validation runs, select **Create**.
+1. After the deployment is finished, select **Go to resource**.
 
 ### [CLI](#tab/cli1)
 
-Use `az vm create` to create a new VM and add the `capacity-reservation-group` property to associate it to an existing Capacity Reservation group. The following example creates a Standard_D2s_v3 VM in the East US location and associates the VM to a Capacity Reservation group.
+Use `az vm create` to create a new VM and add the `capacity-reservation-group` property to associate it to an existing capacity reservation group. The following example creates a Standard_D2s_v3 VM in the East US location and associates the VM to a capacity reservation group.
 
 ```azurecli-interactive
 az vm create 
@@ -90,7 +89,7 @@ az vm create
 
 ### [PowerShell](#tab/powershell1)
 
-Use `New-AzVM` to create a new VM and add the `CapacityReservationGroupId` property to associate it to an existing Capacity Reservation group. The following example creates a Standard_D2s_v3 VM in the East US location and associate the VM to a Capacity Reservation group.
+Use `New-AzVM` to create a new VM and add the `CapacityReservationGroupId` property to associate it to an existing capacity reservation group. The following example creates a Standard_D2s_v3 VM in the East US location and associates the VM to a capacity reservation group.
 
 ```powershell-interactive
 New-AzVm
@@ -105,43 +104,43 @@ New-AzVm
 -CapacityReservationGroupId "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}"
 ```
 
-To learn more, go to Azure PowerShell command [New-AzVM](/powershell/module/az.compute/new-azvm).
+To learn more, see the Azure PowerShell command [New-AzVM](/powershell/module/az.compute/new-azvm).
 
 ### [ARM template](#tab/arm1)
 
-An [ARM template](/azure/azure-resource-manager/templates/overview) is a JavaScript Object Notation (JSON) file that defines the infrastructure and configuration for your project. The template uses declarative syntax. In declarative syntax, you describe your intended deployment without writing the sequence of programming commands to create the deployment. 
+An [Azure Resource Manager template (ARM template)](/azure/azure-resource-manager/templates/overview) is a JavaScript Object Notation (JSON) file that defines the infrastructure and configuration for your project. The template uses declarative syntax. In declarative syntax, you describe your intended deployment without writing the sequence of programming commands to create the deployment.
 
-ARM templates let you deploy groups of related resources. In a single template, you can create Capacity Reservation group and capacity reservations. You can deploy templates through the Azure portal, Azure CLI, or Azure PowerShell, or from continuous integration/continuous delivery (CI/CD) pipelines. 
-
+ARM templates let you deploy groups of related resources. In a single template, you can create a capacity reservation group and capacity reservations. You can deploy templates through the Azure portal, the Azure CLI, or Azure PowerShell, or from continuous integration/continuous delivery (CI/CD) pipelines.
 
 --- 
 <!-- The three dashes above show that your section of tabbed content is complete. Don't remove them :) -->
 
+## Associate an existing virtual machine
 
-## Associate an existing VM 
+For the initial release of a capacity reservation, a virtual machine must be allocated to a capacity reservation:
 
-For the initial release of Capacity Reservation, a virtual machine must be allocated to a capacity reservation. 
+1. Follow guidance to create a capacity reservation group and capacity reservation, if necessary. Or increment the quantity of an existing capacity reservation so there's unused reserved capacity.
+1. Deallocate the virtual machine.
+1. Update the capacity reservation group property on the VM.
+1. Restart the VM.
 
-- If not already complete, follow guidance to create a capacity reservation group and capacity reservation. Or increment the quantity of an existing capacity reservation so there's unused reserved capacity. 
-- Deallocate the VM. 
-- Update the capacity reservation group property on the VM.
-- Restart the VM. 
+Follow the steps to associate the virtual machine to a capacity reservation group.
 
 ### [API](#tab/api2)
 
-1. Deallocate the VM. 
+1. Deallocate the virtual machine:
 
     ```rest
     PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourcegroupname}/providers/Microsoft.Compute/virtualMachines/{VirtualMachineName}/deallocate?api-version=2021-04-01
     ```
 
-1. Add the `capacityReservationGroup` property to the VM. Construct the following PUT request to *Microsoft.Compute* provider:
+1. Add the `capacityReservationGroup` property to the VM. Construct the following `PUT` request to `Microsoft.Compute` provider:
 
     ```rest
     PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{VirtualMachineName}?api-version=2021-04-01
     ```
 
-    In the request body, include the `capacityReservationGroup` property: 
+    In the request body, include the `capacityReservationGroup` property:
     
     ```json
     {
@@ -159,16 +158,16 @@ For the initial release of Capacity Reservation, a virtual machine must be alloc
 
 ### [Portal](#tab/portal2)
 
-1. Open [Azure portal](https://portal.azure.com)
-1. Go to your virtual machine
-1. Select **Overview**
-1. Select **Stop** at the top of the page to deallocate the VM 
-1. Go to **Configurations** on the left
-1. In the **Capacity Reservation group** dropdown, select the group that you want the VM to be associated with 
+1. Open the [Azure portal](https://portal.azure.com).
+1. Go to your VM.
+1. Select **Overview**.
+1. Select **Stop** at the top of the page to deallocate the VM.
+1. Go to **Configurations** on the left.
+1. In the **Capacity Reservation group** dropdown list, select the group that you want to associate to the VM.
 
 ### [CLI](#tab/cli2)
 
-1. Deallocate the VM
+1. Deallocate the virtual machine:
 
     ```azurecli-interactive
     az vm deallocate 
@@ -176,7 +175,7 @@ For the initial release of Capacity Reservation, a virtual machine must be alloc
     -n myVM
     ```
 
-1. Associate the VM to a Capacity Reservation group
+1. Associate the VM to a capacity reservation group:
 
     ```azurecli-interactive
     az vm update 
@@ -187,7 +186,7 @@ For the initial release of Capacity Reservation, a virtual machine must be alloc
 
 ### [PowerShell](#tab/powershell2)
 
-1. Deallocate the VM
+1. Deallocate the virtual machine:
 
     ```powershell-interactive
     Stop-AzVM
@@ -195,7 +194,7 @@ For the initial release of Capacity Reservation, a virtual machine must be alloc
     -Name "myVM"
     ```
 
-1. Associate the VM to a Capacity Reservation group
+1. Associate the VM to a capacity reservation group:
 
     ```powershell-interactive
     $VirtualMachine =
@@ -209,15 +208,14 @@ For the initial release of Capacity Reservation, a virtual machine must be alloc
     -CapacityReservationGroupId "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{CapacityReservationGroupName}"
     ```
 
-To learn more, go to Azure PowerShell commands [Stop-AzVM](/powershell/module/az.compute/stop-azvm), [Get-AzVM](/powershell/module/az.compute/get-azvm), and [Update-AzVM](/powershell/module/az.compute/update-azvm).
+To learn more, see the Azure PowerShell commands [Stop-AzVM](/powershell/module/az.compute/stop-azvm), [Get-AzVM](/powershell/module/az.compute/get-azvm), and [Update-AzVM](/powershell/module/az.compute/update-azvm).
 
 --- 
 <!-- The three dashes above show that your section of tabbed content is complete. Don't remove them :) -->
 
+## View VM association with the Instance View
 
-## View VM association with Instance View 
-
-Once the `capacityReservationGroup` property is set, an association now exists between the VM and the group. Azure automatically finds the matching Capacity Reservation in the group and consumes a reserved slot. The Capacity Reservation’s *Instance View* will reflect the new VM in the `virtualMachinesAllocated` property: 
+After the `capacityReservationGroup` property is set, an association now exists between the VM and the group. Azure automatically finds the matching capacity reservation in the group and consumes a reserved slot. The capacity reservation's Instance View reflects the new VM in the `virtualMachinesAllocated` property:
 
 ### [API](#tab/api3)
 
@@ -290,21 +288,19 @@ Get-AzCapacityReservation
 $CapRes.InstanceView.Utilizationinfo.VirtualMachinesAllocated
 ```
 
-To learn more, go to Azure PowerShell command [Get-AzCapacityReservation](/powershell/module/az.compute/get-azcapacityreservation).
-
+To learn more, see the Azure PowerShell command [Get-AzCapacityReservation](/powershell/module/az.compute/get-azcapacityreservation).
 
 ### [Portal](#tab/portal3)
 
-1. Open [Azure portal](https://portal.azure.com)
-1. Go to your Capacity Reservation group
-1. Select **Resources** under **Settings** on the left
-1. Look at the table to see all the VMs that are associated with the Capacity Reservation group  
+1. Open the [Azure portal](https://portal.azure.com).
+1. Go to your capacity reservation group.
+1. Under **Settings** on the left, select **Resources**.
+1. Look at the table to see all the VMs that are associated to the capacity reservation group.
 
 --- 
 <!-- The three dashes above show that your section of tabbed content is complete. Don't remove them :) -->
 
-
-## Next steps
+## Next step
 
 > [!div class="nextstepaction"]
-> [Remove a VMs association to a Capacity Reservation group](capacity-reservation-remove-vm.md)
+> [Remove a VM's association to a capacity reservation group](capacity-reservation-remove-vm.md)

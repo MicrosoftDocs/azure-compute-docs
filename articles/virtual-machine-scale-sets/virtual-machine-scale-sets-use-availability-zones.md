@@ -158,8 +158,6 @@ The process to create a scale set that uses an Availability Zone is the same as 
 
 If you create a public IP address or a load balancer, specify the `"sku": {"name":"Standard"}` property to create zone-redundant network resources. You also need to create a Network Security Group and rules to permit any traffic. For more information, see [Azure Load Balancer Standard Overview](/azure/load-balancer/load-balancer-overview) and [Standard Load Balancer and Availability Zones](/azure/load-balancer/load-balancer-standard-availability-zones).
 
-For a complete example of a zone-redundant scale set and network resources, see our [sample Resource Manager template](https://github.com/Azure/vm-scale-sets/blob/master/z_deprecated/preview/zones/multizone.json).
-
 ## Update scale set to add availability zones
 
 You can modify a scale to expand the set of zones over which to spread VM instances. Expanding allows you to take advantage of higher zonal availability SLA (99.99%) versus regional availability SLA (99.95%). Or expand your scale set to take advantage of new availability zones that were not available when the scale set was created.
