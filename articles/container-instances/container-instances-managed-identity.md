@@ -177,22 +177,41 @@ Output:
 ```
 
 For Windows containers, metadata server (169.254.169.254) isn't available. Run the following or equivalent commands to get an access token.
-
-```console
+### [Bash](#tab/bash)
+```bash
 curl -G -v %IDENTITY_ENDPOINT% --data-urlencode resource=https://vault.azure.net --data-urlencode principalId=<principal id> -H secret:%IDENTITY_HEADER%
 ```
-
+### [PowerShell](#tab/powershell)
+```powershell
+$principalId = 'PrincipalIDGoesHere'
+$uri = $ENV:identityEndpoint + '&resource=' + "https%3A%2F%2F" + "vault.azure.net" + '&principalId=' + $principalId
+$headers = @{    
+    secret = $ENV:identityHeader    
+    "Content-Type" = "application/x-www-form-urlencoded"
+}
+$response = Invoke-RestMethod -Uri $uri -Headers $headers -Method Get
+```
 To store the access token in a variable to use in subsequent commands to authenticate, run the following command:
-
+### [Bash](#tab/bash)
 ```bash
 TOKEN=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fvault.azure.net' -H Metadata:true | jq -r '.access_token')
-
+```
+### [PowerShell](#tab/powershell)
+```powershell
+$accessToken = $Response.access_token
 ```
 
 Now use the access token to authenticate to key vault and read a secret. Be sure to substitute the name of your key vault in the URL (*https:\//mykeyvault.vault.azure.net/...*):
-
+### [Bash](#tab/bash)
 ```bash
 curl https://mykeyvault.vault.azure.net/secrets/SampleSecret/?api-version=7.4 -H "Authorization: Bearer $TOKEN"
+```
+### [PowerShell](#tab/powershell)
+```powershell
+$Tokenheaders = @{ 
+    Authorization = "Bearer $accessToken"
+}
+$Secret = Invoke-RestMethod -Uri "https://mykeyvault.vault.azure.net/secrets/SampleSecret/?api-version=7.4" -Headers $TokenHeaders
 ```
 
 The response looks similar to the following, showing the secret. In your code, you would parse this output to obtain the secret. Then, use the secret in a subsequent operation to access another Azure resource.
