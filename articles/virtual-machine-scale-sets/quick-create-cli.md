@@ -47,7 +47,7 @@ export MY_SCALE_SET_NAME="myScaleSet$RANDOM_ID"
 az vmss create \
   --resource-group $MY_RESOURCE_GROUP_NAME \
   --name $MY_SCALE_SET_NAME \
-  --image UbuntuLTS \
+  --image Debian11 \
   --upgrade-policy-mode automatic \
   --admin-username azureuser \
   --generate-ssh-keys
