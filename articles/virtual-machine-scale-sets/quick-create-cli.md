@@ -46,7 +46,7 @@ Now create a Virtual Machine Scale Set with [az vmss create](/cli/azure/vmss). T
 export MY_SCALE_SET_NAME="myScaleSet$RANDOM_ID"
 az vmss create \
   --resource-group $MY_RESOURCE_GROUP_NAME \
-  --name $MY_SCALE_SET_NAME \
+  --name myScaleSet \
   --image Debian11 \
   --upgrade-policy-mode automatic \
   --admin-username azureuser \
@@ -67,7 +67,7 @@ az vmss extension set \
   --version 2.0 \
   --name CustomScript \
   --resource-group $MY_RESOURCE_GROUP_NAME \
-  --vmss-name $MY_SCALE_SET_NAME \
+  --vmss-name myScaleSet \
   --settings '{"fileUris":["https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/automate_nginx.sh"],"commandToExecute":"./automate_nginx.sh"}'
 ```
 
@@ -76,10 +76,9 @@ az vmss extension set \
 When the scale set was created, an Azure load balancer was automatically deployed. The load balancer distributes traffic to the VM instances in the scale set. To allow traffic to reach the sample web application, create a load balancer rule with [az network lb rule create](/cli/azure/network/lb/rule). The following example creates a rule named *myLoadBalancerRuleWeb*:
 
 ```azurecli-interactive
-export MY_LOAD_BALANCER_RULE_NAME="myLoadBalancerRuleWeb$RANDOM_ID"
 az network lb rule create \
   --resource-group $MY_RESOURCE_GROUP_NAME \
-  --name $MY_LOAD_BALANCER_RULE_NAME \
+  --name myLoadBalancerRuleWeb \
   --lb-name myScaleSetLB \
   --backend-pool-name myScaleSetLBBEPool \
   --backend-port 80 \
@@ -87,7 +86,6 @@ az network lb rule create \
   --frontend-port 80 \
   --protocol tcp
 ```
-
 
 ## Test your scale set
 To see your scale set in action, access the sample web application in a web browser. Obtain the public IP address of your load balancer with [az network public-ip show](/cli/azure/network/public-ip). The following example obtains the IP address for *myScaleSetLBPublicIP* created as part of the scale set:
@@ -107,11 +105,6 @@ Enter the public IP address of the load balancer in to a web browser. The load b
 
 ## Clean up resources
 When no longer needed, you can use [az group delete](/cli/azure/group) to remove the resource group, scale set, and all related resources as follows. The `--no-wait` parameter returns control to the prompt without waiting for the operation to complete. The `--yes` parameter confirms that you wish to delete the resources without an additional prompt to do so.
-
-```azurecli-interactive
-az group delete --name myResourceGroup --yes --no-wait
-```
-
 
 ## Next steps
 In this quickstart, you created a basic scale set and used the Custom Script Extension to install a basic NGINX web server on the VM instances. To learn more, continue to the tutorial for how to create and manage Azure Virtual Machine Scale Sets.
