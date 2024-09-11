@@ -72,19 +72,11 @@ az vmss extension set \
 ```
 
 
-## Allow traffic to application
-When the scale set was created, an Azure load balancer was automatically deployed. The load balancer distributes traffic to the VM instances in the scale set. To allow traffic to reach the sample web application, create a load balancer rule with [az network lb rule create](/cli/azure/network/lb/rule). The following example creates a rule named *myLoadBalancerRuleWeb*:
+## Allow traffic to port 80 
+To allow traffic to flow through the load balancer to the virtual machines the default network security group needs to be updated. 
 
 ```azurecli-interactive
-az network lb rule create \
-  --resource-group $MY_RESOURCE_GROUP_NAME \
-  --name myLoadBalancerRuleWeb \
-  --lb-name myScaleSetLB \
-  --backend-pool-name myScaleSetLBBEPool \
-  --backend-port 80 \
-  --frontend-ip-name loadBalancerFrontEnd \
-  --frontend-port 80 \
-  --protocol tcp
+az network nsg rule create --name AllowHTTP --resource-group myResourceGroup --nsg-name myScaleSetNSG --access Allow --priority 1010 --destination-port-ranges 80 
 ```
 
 ## Test your scale set
