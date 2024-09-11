@@ -88,7 +88,8 @@ sections:
           | project imagePublisher = tostring(properties.storageProfile.imageReference.publisher), imageOffer = tostring(properties.storageProfile.imageReference.offer), imageSku = tostring(properties.storageProfile.imageReference.sku), imageVersion = tostring(properties.storageProfile.imageReference.version), isDeprecated = properties.storageProfile.imageReference.isDeprecated, deprecationDate = properties.storageProfile.imageReference.deprecationDate
           ) on imagePublisher, imageOffer, imageSku, imageVersion
           | project vmName, resourceGroup, location, vmId, imagePublisher, imageOffer, imageSku, imageVersion, isDeprecated, deprecationDate
-          
+          ```
+           
           **Using Azure CLI:**
 
 
