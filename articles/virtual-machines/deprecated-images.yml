@@ -63,7 +63,7 @@ sections:
           ```
           
           
-          To find the scale set running on any retired image, specify the retired image as follows and run the query in Azure Resource Graph replacing the values below with your image details as follows:
+          - To find the scale set running on any retired image, specify the retired image as follows and run the query in Azure Resource Graph replacing the values below with your image details as follows:
           
           ```
           resources 
@@ -75,7 +75,19 @@ sections:
           |project name, subscriptionId, resourceGroup, ImagePublisher=properties.virtualMachineProfile.storageProfile.imageReference.publisher,ImageOffer=properties.virtualMachineProfile.storageProfile.imageReference.offer,imageSku=properties.virtualMachineProfile.storageProfile.imageReference.sku, imageVersion=properties.virtualMachineProfile.storageProfile.imageReference.version
           ```
           
+
+          - To get a list of both Azure VMs and scale sets, along with the images they are running and whether those images are deprecated or scheduled for deprecation, run the query in Azure Resource Graph as follows:
           
+          ```
+          resources
+          | where type in ("microsoft.compute/virtualmachines", "microsoft.compute/virtualmachinescalesets")
+          | project vmName = name, resourceGroup, location, vmId = id, imagePublisher = tostring(properties.storageProfile.imageReference.publisher), imageOffer = tostring(properties.storageProfile.imageReference.offer), imageSku = tostring(properties.storageProfile.imageReference.sku), imageVersion = tostring(properties.storageProfile.imageReference.version)
+          | join kind=leftouter (
+          resources
+          | where type == "microsoft.compute/images"
+          | project imagePublisher = tostring(properties.storageProfile.imageReference.publisher), imageOffer = tostring(properties.storageProfile.imageReference.offer), imageSku = tostring(properties.storageProfile.imageReference.sku), imageVersion = tostring(properties.storageProfile.imageReference.version), isDeprecated = properties.storageProfile.imageReference.isDeprecated, deprecationDate = properties.storageProfile.imageReference.deprecationDate
+          ) on imagePublisher, imageOffer, imageSku, imageVersion
+          | project vmName, resourceGroup, location, vmId, imagePublisher, imageOffer, imageSku, imageVersion, isDeprecated, deprecationDate
           
           **Using Azure CLI:**
 
