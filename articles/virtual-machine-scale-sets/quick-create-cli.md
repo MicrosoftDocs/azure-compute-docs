@@ -43,11 +43,11 @@ az group create --name $MY_RESOURCE_GROUP_NAME --location eastus
 Now create a Virtual Machine Scale Set with [az vmss create](/cli/azure/vmss). The following example creates a scale set named *myScaleSet* that is set to automatically update as changes are applied, and generates SSH keys if they do not exist in *~/.ssh/id_rsa*. These SSH keys are used if you need to log in to the VM instances. To use an existing set of SSH keys, instead use the `--ssh-key-value` parameter and specify the location of your keys.
 
 ```azurecli-interactive
-export MY_SCALE_SET_NAME="myScaleSet$RANDOM_ID"
 az vmss create \
   --resource-group $MY_RESOURCE_GROUP_NAME \
   --name myScaleSet \
   --image Debian11 \
+  --orchestration-mode uniform \
   --upgrade-policy-mode automatic \
   --admin-username azureuser \
   --generate-ssh-keys
