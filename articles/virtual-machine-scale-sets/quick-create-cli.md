@@ -4,10 +4,10 @@ description: Get started with your deployments by learning how to quickly create
 author: ju-shim
 ms.author: jushiman
 ms.topic: quickstart
-ms.service: azure-virtual-machine-scale-sets
+ms.service: azure-virtual-machine-scale-sets, 
 ms.date: 06/14/2024
 ms.reviewer: mimckitt
-ms.custom: mimckitt, devx-track-azurecli, mode-api
+ms.custom: mimckitt, devx-track-azurecli, mode-api, innovation-engine
 ---
 
 # Quickstart: Create a Virtual Machine Scale Set with the Azure CLI
@@ -35,16 +35,19 @@ https://techcommunity.microsoft.com/t5/azure-compute-blog/breaking-change-for-vm
 Before you can create a scale set, create a resource group with [az group create](/cli/azure/group). The following example creates a resource group named *myResourceGroup* in the *eastus* location:
 
 ```azurecli-interactive
-az group create --name myResourceGroup --location eastus
+export RANDOM_ID=$(openssl rand -hex 3)
+export MY_RESOURCE_GROUP_NAME="myResourceGroup$RANDOM_ID"
+az group create --name $MY_RESOURCE_GROUP_NAME --location eastus
 ```
 
 Now create a Virtual Machine Scale Set with [az vmss create](/cli/azure/vmss). The following example creates a scale set named *myScaleSet* that is set to automatically update as changes are applied, and generates SSH keys if they do not exist in *~/.ssh/id_rsa*. These SSH keys are used if you need to log in to the VM instances. To use an existing set of SSH keys, instead use the `--ssh-key-value` parameter and specify the location of your keys.
 
 ```azurecli-interactive
+export MY_SCALE_SET_NAME="myScaleSet$RANDOM_ID"
 az vmss create \
-  --resource-group myResourceGroup \
-  --name myScaleSet \
-  --image <SKU image> \
+  --resource-group $MY_RESOURCE_GROUP_NAME \
+  --name $MY_SCALE_SET_NAME \
+  --image UbuntuLTS \
   --upgrade-policy-mode automatic \
   --admin-username azureuser \
   --generate-ssh-keys
@@ -63,8 +66,8 @@ az vmss extension set \
   --publisher Microsoft.Azure.Extensions \
   --version 2.0 \
   --name CustomScript \
-  --resource-group myResourceGroup \
-  --vmss-name myScaleSet \
+  --resource-group $MY_RESOURCE_GROUP_NAME \
+  --vmss-name $MY_SCALE_SET_NAME \
   --settings '{"fileUris":["https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/automate_nginx.sh"],"commandToExecute":"./automate_nginx.sh"}'
 ```
 
@@ -73,9 +76,10 @@ az vmss extension set \
 When the scale set was created, an Azure load balancer was automatically deployed. The load balancer distributes traffic to the VM instances in the scale set. To allow traffic to reach the sample web application, create a load balancer rule with [az network lb rule create](/cli/azure/network/lb/rule). The following example creates a rule named *myLoadBalancerRuleWeb*:
 
 ```azurecli-interactive
+export MY_LOAD_BALANCER_RULE_NAME="myLoadBalancerRuleWeb$RANDOM_ID"
 az network lb rule create \
-  --resource-group myResourceGroup \
-  --name myLoadBalancerRuleWeb \
+  --resource-group $MY_RESOURCE_GROUP_NAME \
+  --name $MY_LOAD_BALANCER_RULE_NAME \
   --lb-name myScaleSetLB \
   --backend-pool-name myScaleSetLBBEPool \
   --backend-port 80 \
@@ -90,7 +94,7 @@ To see your scale set in action, access the sample web application in a web brow
 
 ```azurecli-interactive
 az network public-ip show \
-  --resource-group myResourceGroup \
+  --resource-group $MY_RESOURCE_GROUP_NAME \
   --name myScaleSetLBPublicIP \
   --query '[ipAddress]' \
   --output tsv
