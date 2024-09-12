@@ -445,7 +445,7 @@ az network public-ip show \
 
 Results:
 <!-- expected_similarity=0.3 -->
-``` 
+```output 
 17x.17x.21x.13x
 ```
 
