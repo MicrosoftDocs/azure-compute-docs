@@ -394,7 +394,7 @@ Results:
 ```
 
 ## Allow traffic to port 80 
-To allow traffic to flow through the load balancer to the virtual machines the default network security group needs to be updated. 
+To allow traffic to flow through the load balancer to the virtual machines, the default network security group needs to be updated. 
 
 ```azurecli-interactive
 az network nsg rule create \
