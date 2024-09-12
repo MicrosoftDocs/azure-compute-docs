@@ -76,7 +76,13 @@ az vmss extension set \
 To allow traffic to flow through the load balancer to the virtual machines the default network security group needs to be updated. 
 
 ```azurecli-interactive
-az network nsg rule create --name AllowHTTP --resource-group myResourceGroup --nsg-name myScaleSetNSG --access Allow --priority 1010 --destination-port-ranges 80 
+az network nsg rule create \
+  --name AllowHTTP \
+  --resource-group $MY_RESOURCE_GROUP_NAME \
+  --nsg-name myScaleSetNSG \
+  --access Allow \
+  --priority 1010 \
+  --destination-port-ranges 80 \
 ```
 
 ## Test your scale set
