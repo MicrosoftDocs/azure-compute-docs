@@ -74,7 +74,7 @@ az vmss create \
 It takes a few minutes to create and configure all the scale set resources and VMs.
 
 <!-- expected_similarity=0.3 -->
-<!--```json
+```json
 {
   "vmss": {
     "doNotRunExtensionsOnOverprovisionedVMs": false,
@@ -177,8 +177,7 @@ It takes a few minutes to create and configure all the scale set resources and V
     }
   }
 }
-```-->
-
+```
 
 ## Deploy sample application
 To test your scale set, install a basic web application. The Azure Custom Script Extension is used to download and run a script that installs an application on the VM instances. This extension is useful for post deployment configuration, software installation, or any other configuration / management task. For more information, see the [Custom Script Extension overview](../virtual-machines/extensions/custom-script-linux.md).
@@ -197,7 +196,7 @@ az vmss extension set \
 
 Results:
 <!-- expected_similarity=0.3 -->
-<!--```json 
+```json
 {
   "additionalCapabilities": null,
   "automaticRepairsPolicy": null,
@@ -396,7 +395,7 @@ Results:
   "zoneBalance": null,
   "zones": null
 }
-```-->
+```
 
 ## Allow traffic to port 80 
 To allow traffic to flow through the load balancer to the virtual machines the default network security group needs to be updated. 
