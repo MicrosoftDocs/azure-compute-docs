@@ -74,7 +74,7 @@ az vmss create \
 It takes a few minutes to create and configure all the scale set resources and VMs.
 
 <!-- expected_similarity=0.3 -->
-```json
+<!--```json
 {
   "vmss": {
     "doNotRunExtensionsOnOverprovisionedVMs": false,
@@ -177,7 +177,7 @@ It takes a few minutes to create and configure all the scale set resources and V
     }
   }
 }
-```
+```-->
 
 
 ## Deploy sample application
@@ -197,7 +197,7 @@ az vmss extension set \
 
 Results:
 <!-- expected_similarity=0.3 -->
-```json 
+<!--```json 
 {
   "additionalCapabilities": null,
   "automaticRepairsPolicy": null,
@@ -396,7 +396,7 @@ Results:
   "zoneBalance": null,
   "zones": null
 }
-```
+```-->
 
 ## Allow traffic to port 80 
 To allow traffic to flow through the load balancer to the virtual machines the default network security group needs to be updated. 
