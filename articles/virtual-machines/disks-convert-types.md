@@ -34,7 +34,7 @@ The preview allowing direct switching to Premium SSD v2 disks has some additiona
 
 - You can't switch an OS disk to a Premium SSD v2 disk.
 - Existing disks can only be directly switched to 512 sector size Premium SSD v2 disks.
-- You can only perform 40 conversions at the same time per subscription per region.
+- You can only perform 50 conversions at the same time per subscription per region.
 - If your existing disk is a shared disk, detach all VMs before changing to Premium SSD v2.
 - If your existing disk is using host caching, [set it to none](#disable-host-caching) before changing to Premium SSD v2.
 - If your existing disk is using bursting, [disable it](#disable-bursting) before changing to Premium SSD v2.
@@ -50,12 +50,9 @@ The preview allowing direct switching to Premium SSD v2 disks has some additiona
 This preview is currently only available in the following regions:
 
 - Central US
-- East US
 - East US 2
 - US West
-- West Europe
 - North Europe
-- West US 2
 - East Asia
 - Southeast Asia
 - Central India
