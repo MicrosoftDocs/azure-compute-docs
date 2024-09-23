@@ -21,6 +21,7 @@ If you're interested in learning more about maximizing the performance of your O
 - An understanding of the different concepts of Azure such as [availability zones](/azure/availability-zones/az-overview)
 - Oracle Database Enterprise Edition 12c or later
 - Awareness of the licensing implications when using the solutions in this article
+- Defined RPO and RTO Requirements
 
 ## High availability for Oracle databases
 
@@ -52,11 +53,18 @@ When you run Oracle Databases on multiple [availability zones](/azure/availabili
 
 When hosting your mission-critical applications in the cloud, it's important to design for high availability and disaster recovery.
 
-For Oracle Database Enterprise Edition, Oracle Data Guard is a useful feature for disaster recovery. You can set up a standby database instance in a [paired Azure region](/azure/availability-zones/cross-region-replication-azure) and set up Data Guard failover for disaster recovery. For zero data loss, we recommend that you deploy an Oracle Data Guard Far Sync instance in addition to Active Data Guard.
+For Oracle Database Enterprise Edition, Oracle Data Guard is a useful feature for disaster recovery. You can set up a standby database instance in a [paired Azure region](/azure/availability-zones/cross-region-replication-azure). In addition to that you can deploy Data Guard for automatic or manual failover and switchover for disaster recovery. The choice of the architecture archetype is dependent on your RPO and RTO requirements. 
+
+For long distance data replication, it is recommended to leverage Far Sync. Far Sync is an Oracle Data Guard Feature. 
+
+> [!NOTE]
+> If you enable Far Sync, an Active Data Guard license is needed. Contact with your Oracle representative to discuss the licensing implications.
+
+Oracle Far Sync addresses a long distance between primary database and secondary database by introducing an intermediate server known as a Far Sync Instance. This server receives redo data from the primary database and then forwards it to the standby database. Thereby the Far Sync instance is placed closer to the primary to reduce the time of communication. The Far Sync server then transfers the redo data asynchronously to the secondary database.
 
 If your application permits the latency, consider setting up the Data Guard Far Sync instance in a different availability zone than your Oracle primary database. Test the configuration thoroughly. Use a *Maximum Availability* mode to set up synchronous transport of your redo files to the Far Sync instance. These files are then transferred asynchronously to the standby database.
 
-Your application might not allow for the performance loss when setting up Far Sync instance in another availability zone in *Maximum Availability* mode (synchronous). If not, you might set up a Far Sync instance in the same availability zone as your primary database. For added availability, consider setting up multiple Far Sync instances close to your primary database and at least one instance close to your standby database, if the role transitions.
+If your application might not allow for the performance loss when setting up Far Sync instance in another availability zone in *Maximum Availability* mode (synchronous), you might want to consider to set up a Far Sync instance in the same availability zone as your primary database. For added availability and resiliency, consider setting up multiple Far Sync instances close to your primary database and at least one instance close to your standby database.
 
 When you use Oracle Standard Edition databases, there are ISV solutions that allow you to set up high availability and disaster recovery, such as DBVisit Standby.
 
@@ -64,30 +72,51 @@ When you use Oracle Standard Edition databases, there are ISV solutions that all
 
 ### Oracle Data Guard
 
-Oracle Data Guard ensures high availability, data protection, and disaster recovery for enterprise data. Data Guard maintains standby databases as transactionally consistent copies of the primary database. Depending on the distance between the primary and secondary databases and the application tolerance for latency, you can set up synchronous or asynchronous replication. If the primary database is unavailable because of a planned or an unplanned outage, Data Guard can switch any standby database to the primary role, minimizing downtime.
-
-When using Oracle Data Guard, you might also open your secondary database for read-only purposes. This configuration is called Active Data Guard. Oracle Database 12c introduced a feature called Data Guard Far Sync Instance. This instance allows you to set up a zero data loss configuration of your Oracle database without having to compromise on performance.
-
-> [!NOTE]
-> Active Data Guard requires additional licensing. This license is also required to use the Far Sync feature. Contact with your Oracle representative to discuss the licensing implications.
+Oracle Data Guard ensures high availability, data protection, and disaster recovery for enterprise data. Data Guard maintains standby databases as transactionally consistent copies of the primary database. Depending on the distance between the primary and secondary databases and the application tolerance for latency, you can set up synchronous or asynchronous replication. 
 
 #### Oracle Data Guard with Fast-Start Failover
 
-Oracle Data Guard with Fast-Start Failover (FSFO) can provide more resiliency by setting up the broker on a separate machine. The Data Guard broker and the secondary database both run the observer and observe the primary database for downtime. This approach allows for redundancy in your Data Guard observer setup as well.
+Data Guard can be deployed using Fast Start Failover (FSFO) also known as Data Guard Broker Configuration. This feature allows you to automatically fail- and switchover in terms of failure. 
+The default time customers use are 30 seconds, but can be adjusted upon your requirements. 
+Ultimately, if the primary database is unavailable because of a planned or an unplanned outage, Data Guard switches or fails over to your standby database.
 
-With Oracle Database version 12.2 and above, it's also possible to configure multiple observers with a single Oracle Data Guard broker configuration. This setup provides extra availability, in case one observer and the secondary database experience downtime. Data Guard Broker is lightweight and can be hosted on a relatively small virtual machine. For more information about Data Guard Broker and its advantages, see [Oracle Data Guard Broker Concepts](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/oracle-data-guard-broker-concepts.html).
+This feature can provide more resiliency by setting up the broker on a separate virtual machine. Thereby you can choose to deploy a lightweight VM.
+The deployed Data Guard broker and the secondary database both run the observer and observe the primary database for downtime. This approach allows for redundancy in your Data Guard observer setup as well.
 
-The following diagram is a recommended architecture for using Oracle Data Guard on Azure with availability zones. This architecture allows you to get a VM uptime SLA of 99.99%.
+With Oracle Database version 12.2 and above, it's also possible to configure multiple observers with a single Oracle Data Guard broker configuration. This setup provides extra availability, in case one observer and the secondary database experience downtime.
+For more information about Data Guard Broker and its advantages, see [Oracle Data Guard Broker Concepts](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/oracle-data-guard-broker-concepts.html).
 
-:::image type="content" source="./media/oracle-reference-architecture/oracledb_dg_fsfo_az.png" alt-text="Diagram that shows a recommended architecture for using Oracle Data Guard on Azure with availability zones." lightbox="./media/oracle-reference-architecture/oracledb_dg_fsfo_az.png":::
+There are two main predominant architecture archetypes customers use the most. 
 
-In the preceding diagram, the client system accesses a custom application with Oracle backend by using the web. The web frontend is configured in a load balancer. The web frontend makes a call to the appropriate application server to handle the work. The application server queries the primary Oracle database. The Oracle database has been configured using a hyperthreaded [memory optimized virtual machine](../../sizes-memory.md) with [constrained core vCPUs](../../../virtual-machines/constrained-vcpu.md) to save on licensing costs and maximize performance. Multiple premium or ultra disks (Managed Disks) are used for performance and high availability.
+The first diagram is most used across customers. It shows a Oracle Data Guard installation without Far Sync with a recovery time of lesser than 5 minutes. 
 
-The Oracle databases are placed in multiple availability zones for high availability. Each zone is made up of one or more data centers equipped with independent power, cooling, and networking. To ensure resiliency, a minimum of three separate zones are set up in all enabled regions. The physical separation of availability zones within a region protects the data from data center failures. Additionally, two FSFO observers are set up across two availability zones to initiate and fail over the database to the secondary when an outage occurs.
+:::image type="content" source="./media/oracle-reference-architecture/Architecture_DG-FSFO.png" 
 
-You might set up other observers or standby databases in a different availability zone, AZ 1, in this case, than the zone shown in the preceding architecture. Finally, Oracle Enterprise Manager (OEM) monitors Oracle databases for uptime and performance. OEM also allows you to generate various performance and usage reports.
+The Oracle databases are placed in multiple availability zones for high availability. Each zone is made up of one or more data centers equipped with independent power, cooling, and networking. To ensure resiliency, a minimum of three separate zones are set up in all enabled regions. The physical separation of availability zones within a region protects the data from data center failures. Additionally, two FSFO observers are set up across two availability zones to initiate the fail- or switchover to the secondary database in case of failure.
 
-In regions where availability zones aren't supported, you might use availability sets to deploy your Oracle Database in a highly available manner. Availability sets allow you to achieve a VM uptime of 99.95%. The following diagram is a reference architecture of this use:
+Additionally, we highly recommend to deploy the Oracle Enterprise Manager to keep having an overview of the database layer.
+Azure Monitor is recommended to be deployed with the following metrics:
+Monitoring the disks:
+- OS Disk IOPS Consumed Percentage  
+- Data Disk IOPS Consumed Percentage 
+- Data Disk Read Bytes/Sec  
+- Data Disk Write Bytes/Sec  
+- Disk Queue Depth
+- Disk Bandwidth in % per Lun
+
+In addition to the above we highly recommend to enable the VM insights also.
+
+The Virtual Machine is chosen based on your AWR assessment. Please review [Oracle Capacity Planning](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/scenarios/oracle-iaas/oracle-capacity-planning) for further read.
+We highly recommend to make use of [constrained core vCPUs](../../../virtual-machines/constrained-vcpu.md) to save on licensing costs and maximize performance. 
+
+The choice of disk type is dependent on the output of your AWR assessment. The majority of customers use Premium SSD v2. 
+
+> [!NOTE]
+> Premium SSD v2 are not supported for files referring to the operating system. For further information, please visit [Deploy Premium SSD v2](https://learn.microsoft.com/en-us/azure/virtual-machines/disks-deploy-premium-v2?tabs=azure-cli#limitations).
+
+As Backup destination Azure Premium Files is used. This solution is the most performant. You can also use Azure Blob Storage as Backup destination. Always make sure to test which option suits you better. Please also visit [Oracle Database Backup Strategies](https://learn.microsoft.com/en-us/azure/virtual-machines/workloads/oracle/oracle-database-backup-strategies).
+
+ In regions where availability zones aren't supported, you might use availability sets to deploy your Oracle Database in a highly available manner. Availability sets allow you to achieve a VM uptime of 99.95%. The following diagram is a reference architecture of this use:
 
 :::image type="content" source="./media/oracle-reference-architecture/oracledb_dg_fsfo_as.png" alt-text="Diagram that shows Oracle Database using availability sets with Data Guard Broker - FSFO." lightbox="./media/oracle-reference-architecture/oracledb_dg_fsfo_as.png":::
 
@@ -98,7 +127,7 @@ In regions where availability zones aren't supported, you might use availability
 
 #### Oracle Data Guard Far Sync
 
-Oracle Data Guard Far Sync provides zero data loss protection capability for Oracle Databases. This capability allows you to protect against data loss if your database machine fails. Oracle Data Guard Far Sync needs to be installed on a separate VM. Far Sync is a lightweight Oracle instance that only has a control file, password file, spfile, and standby logs. There are no data files or redo log files.
+Oracle Data Guard Far Sync provides zero data loss protection capability for Oracle Databases. This capability allows you to protect against data loss if your database machine fails. Oracle Data Guard Far Sync needs to be installed on a separate VM. 
 
 For zero data loss protection, there must be synchronous communication between your primary database and the Far Sync instance. The Far Sync instance receives redo from the primary in a synchronous manner and forwards it immediately to all the standby databases in an asynchronous manner. This setup also reduces the overhead on the primary database, because it only has to send the redo to the Far Sync instance rather than all the standby databases. If a Far Sync instance fails, Data Guard automatically uses asynchronous transport to the secondary database from the primary database to maintain near-zero data loss protection. For added resiliency, customers might deploy multiple Far Sync instances per each database instance, including primary and secondaries.
 
