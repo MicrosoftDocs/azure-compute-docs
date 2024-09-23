@@ -127,15 +127,9 @@ As Backup destination Azure Premium Files is used. This solution is the most per
 
 #### Oracle Data Guard Far Sync
 
-Oracle Data Guard Far Sync provides zero data loss protection capability for Oracle Databases. This capability allows you to protect against data loss if your database machine fails. Oracle Data Guard Far Sync needs to be installed on a separate VM. 
+As mentioned above Far Sync is a capability predominantly used in scenarios where you replicate between regions overcoming long distances. Refeering to this scenario, Oracle Data Guard Far Sync provides zero data loss protection capability for Oracle Databases. Oracle Data Guard Far Sync needs to be installed on a separate VM. 
 
 For zero data loss protection, there must be synchronous communication between your primary database and the Far Sync instance. The Far Sync instance receives redo from the primary in a synchronous manner and forwards it immediately to all the standby databases in an asynchronous manner. This setup also reduces the overhead on the primary database, because it only has to send the redo to the Far Sync instance rather than all the standby databases. If a Far Sync instance fails, Data Guard automatically uses asynchronous transport to the secondary database from the primary database to maintain near-zero data loss protection. For added resiliency, customers might deploy multiple Far Sync instances per each database instance, including primary and secondaries.
-
-The following diagram is a high availability architecture using Oracle Data Guard Far Sync:
-
-:::image type="content" source="./media/oracle-reference-architecture/oracledb_dg_fs_az.png" alt-text="Diagram that shows Oracle database using availability zones with Data Guard Far Sync & Broker - FSFO." lightbox="./media/oracle-reference-architecture/oracledb_dg_fs_az.png":::
-
-In the preceding architecture, there's a Far Sync instance deployed in a different availability zone as the database instance to ensure zero data loss and automatic failover in case of availability zone failure. In cases where the application is latency sensitive, consider deploying your database and Far Sync instance or instances in the same availability zone in a [proximity placement group](../../../virtual-machines/linux/proximity-placement-groups.md).
 
 The following diagram is an architecture that uses Oracle Data Guard FSFO and Far Sync to achieve high availability and disaster recovery: 
 
