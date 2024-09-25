@@ -53,8 +53,7 @@ VM sizes with up to 64-GB RAM from the following General Purpose VM series suppo
 
 VM sizes with up to 112-GB RAM from the following GPU VM series support hibernation.
 - [NVv4-series](../virtual-machines/nvv4-series.md) (in preview)
-- [NVadsA10v5-series](../virtual-machines/nva10v5-series.md) (in preview). If you are using any UVM-enabled compute applications then we recommned you to idle the application before initiating hibernate action. 
-- 
+- [NVadsA10v5-series](../virtual-machines/nva10v5-series.md) (in preview). If you are using any UVM-enabled compute applications then we recommend you to idle the application before initiating hibernate action. 
 
 > [!IMPORTANT]
 > Azure Virtual Machines - Hibernation for GPU VMs is currently in PREVIEW.
@@ -118,7 +117,7 @@ Refer to the [Linux hibernation troubleshooting guide](./linux/hibernate-resume-
 - What is the difference between stop(deallocating) and hibernating a VM?
     - When you stop(deallocate) a VM, the VM shuts down without persisting the memory contents. You can resize stop(deallocated) VMs and detach/attach disks to the VM.
 
-    - When you hibernate a VM, the memory contents are first persisted in the OS disk, then the VM hibernates. You can't resize VMs in a hibernated state, nor detach/attach disks and networking resources to the VM.
+    - When you hibernate a VM, the memory contents are first, persisted in the OS disk, then the VM hibernates. You can't resize VMs in a hibernated state, nor detach/attach disks and networking resources to the VM.
 
 
 - Can I initiate hibernation from within the VM?
