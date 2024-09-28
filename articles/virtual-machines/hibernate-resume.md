@@ -117,7 +117,7 @@ Refer to the [Linux hibernation troubleshooting guide](./linux/hibernate-resume-
 - What is the difference between stop(deallocating) and hibernating a VM?
     - When you stop(deallocate) a VM, the VM shuts down without persisting the memory contents. You can resize stop(deallocated) VMs and detach/attach disks to the VM.
 
-    - When you hibernate a VM, the memory contents are first, persisted in the OS disk, then the VM hibernates. You can't resize VMs in a hibernated state, nor detach/attach disks and networking resources to the VM.
+    - When you hibernate a VM, the memory contents are stored persistently on the OS disk. The VM then enters hibernation. You can't resize VMs in a hibernated state, nor detach/attach disks and networking resources to the VM.
 
 
 - Can I initiate hibernation from within the VM?
