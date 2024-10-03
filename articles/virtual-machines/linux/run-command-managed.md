@@ -83,7 +83,7 @@ az vm run-command show --name "myRunCommand" --vm-name "myVM" --resource-group "
 
 > [!Note]
 > Output and error fields in `instanceView` is limited to last 4KB.
-> If you'd like to access the full output and error, you have the option of forwarding the output and error data to storage append blobs using `-outputBlobUri` and `-errorBlobUri` parameters while executing Run Command using `Set-AzVMRunCommand` or `Set-AzVMssRunCommand`.
+> If you'd like to access the full output and error, you have the option of forwarding the output and error data to storage append blobs using `-outputBlobUri` and `-errorBlobUri` parameters while executing Run Command using `Set-AzVMRunCommand` or `Set-AzVMssVMRunCommand`.
 
 ### Delete RunCommand resource from the VM
 Remove the RunCommand resource previously deployed on the VM. If the script execution is still in progress, execution will be terminated. 
