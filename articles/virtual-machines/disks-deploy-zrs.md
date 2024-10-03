@@ -3,10 +3,10 @@ title: Deploy a ZRS managed disk
 description: Learn how to deploy a managed disk that uses zone-redundant storage (ZRS).
 author: roygara
 ms.author: rogarana
-ms.date: 05/05/2023
+ms.date: 02/10/2024
 ms.topic: how-to
 ms.service: azure-disk-storage
-ms.custom: references_regions, devx-track-azurepowershell, devx-track-azurecli 
+ms.custom: references_regions, devx-track-azurepowershell, devx-track-azurecli
 ms.devlang: azurecli
 ---
 
@@ -65,10 +65,11 @@ rgName=yourRGName
 vmName=yourVMName
 location=westus2
 vmSize=Standard_DS2_v2
-image=UbuntuLTS 
+image=Ubuntu2204
 osDiskSku=StandardSSD_ZRS
 dataDiskSku=Premium_ZRS
 
+az group create -n $rgName -l $location
 
 az vm create -g $rgName \
 -n $vmName \
@@ -86,11 +87,12 @@ location=westus2
 rgName=yourRGName
 vmNamePrefix=yourVMNamePrefix
 vmSize=Standard_DS2_v2
-image=UbuntuLTS
+image=Ubuntu2204
 osDiskSku=StandardSSD_LRS
 sharedDiskName=yourSharedDiskName
 sharedDataDiskSku=Premium_ZRS
 
+az group create -n $rgName -l $location
 
 az disk create -g $rgName \
 -n $sharedDiskName \
@@ -133,7 +135,7 @@ location=westus2
 rgName=yourRGName
 vmssName=yourVMSSName
 vmSize=Standard_DS3_V2
-image=UbuntuLTS 
+image=Ubuntu2204
 osDiskSku=StandardSSD_ZRS
 dataDiskSku=Premium_ZRS
 
@@ -165,7 +167,7 @@ $dataDiskSku = "Premium_ZRS"
 Connect-AzAccount
 
 Set-AzContext -Subscription $subscriptionId
-    
+
 $subnet = New-AzVirtualNetworkSubnetConfig -Name $($vmName+"_subnet") `
                                            -AddressPrefix "10.0.0.0/24"
 
@@ -179,11 +181,11 @@ $nic = New-AzNetworkInterface -Name $($vmName+"_nic") `
                               -ResourceGroupName $rgName `
                               -Location $location `
                               -SubnetId $vnet.Subnets[0].Id
-    
+
 
 $vm = New-AzVMConfig -VMName $vmName `
                      -VMSize $vmSize
-                     
+
 
 $credential = New-Object System.Management.Automation.PSCredential ($vmLocalAdminUser, $vmLocalAdminSecurePassword);
 
@@ -211,7 +213,7 @@ $vm = Add-AzVMDataDisk -VM $vm `
                        -DiskSizeInGB 128 `
                        -StorageAccountType $dataDiskSku `
                        -CreateOption Empty -Lun 0
-    
+
 New-AzVM -ResourceGroupName $rgName `
          -Location $location `
          -VM $vm -Verbose
@@ -227,7 +229,7 @@ $vmSize = "Standard_DS2_v2"
 $sharedDiskName = "yourSharedDiskName"
 $sharedDataDiskSku = "Premium_ZRS"
 $vmLocalAdminUser = "yourVMAdminUserName"
-$vmLocalAdminSecurePassword = ConvertTo-SecureString "yourPassword" -AsPlainText -Force  
+$vmLocalAdminSecurePassword = ConvertTo-SecureString "yourPassword" -AsPlainText -Force
 
 
 $datadiskconfig = New-AzDiskConfig -Location $location `
@@ -241,7 +243,7 @@ $sharedDisk=New-AzDisk -ResourceGroupName $rgName `
             -Disk $datadiskconfig
 
 $credential = New-Object System.Management.Automation.PSCredential ($vmLocalAdminUser, $vmLocalAdminSecurePassword);
-    
+
 $vm1 = New-AzVm `
         -ResourceGroupName $rgName `
         -Name $($vmNamePrefix+"01") `
@@ -252,13 +254,13 @@ $vm1 = New-AzVm `
         -SubnetName $($vmNamePrefix+"_subnet") `
         -SecurityGroupName $($vmNamePrefix+"01_sg") `
         -PublicIpAddressName $($vmNamePrefix+"01_ip") `
-        -Credential $credential 
+        -Credential $credential
 
 
 $vm1 = Add-AzVMDataDisk -VM $vm1 -Name $sharedDiskName -CreateOption Attach -ManagedDiskId $sharedDisk.Id -Lun 0
 
 update-AzVm -VM $vm1 -ResourceGroupName $rgName
-  
+
 $vm2 =  New-AzVm `
         -ResourceGroupName $rgName `
         -Name $($vmNamePrefix+"02") `
@@ -288,8 +290,8 @@ $vmScaleSetName = "yourScaleSetName"
 $vmSize = "Standard_DS3_v2"
 $osDiskSku = "StandardSSD_ZRS"
 $dataDiskSku = "Premium_ZRS"
-   
-    
+
+
 $subnet = New-AzVirtualNetworkSubnetConfig -Name $($vmScaleSetName+"_subnet") `
                                                  -AddressPrefix "10.0.0.0/24"
 
@@ -300,7 +302,7 @@ $vnet = New-AzVirtualNetwork -Name $($vmScaleSetName+"_vnet") `
                              -Subnet $subnet
 
 $ipConfig = New-AzVmssIpConfig -Name "myIPConfig" `
-                               -SubnetId $vnet.Subnets[0].Id 
+                               -SubnetId $vnet.Subnets[0].Id
 
 
 $vmss = New-AzVmssConfig -Location $location `
@@ -322,7 +324,7 @@ $vmss = Set-AzVmssStorageProfile $vmss -OsDiskCreateOption "FromImage" `
 
 $vmss = Set-AzVmssOsProfile $vmss -ComputerNamePrefix $vmScaleSetName `
                                   -AdminUsername $vmLocalAdminUser `
-                                  -AdminPassword $vmLocalAdminSecurePassword 
+                                  -AdminPassword $vmLocalAdminSecurePassword
 
 $vmss = Add-AzVmssDataDisk -VirtualMachineScaleSet $vmss `
                            -CreateOption Empty `
@@ -346,19 +348,19 @@ You must enable the feature for your subscription. Use the following steps to en
 1.	Execute the following command to register the feature for your subscription
 
     ```powershell
-     Register-AzProviderFeature -FeatureName "SsdZrsManagedDisks" -ProviderNamespace "Microsoft.Compute" 
+     Register-AzProviderFeature -FeatureName "SsdZrsManagedDisks" -ProviderNamespace "Microsoft.Compute"
     ```
 
 1.	Confirm that the registration state is **Registered** (it may take a few minutes) using the following command before trying out the feature.
 
     ```powershell
-     Get-AzProviderFeature -FeatureName "SsdZrsManagedDisks" -ProviderNamespace "Microsoft.Compute"  
+     Get-AzProviderFeature -FeatureName "SsdZrsManagedDisks" -ProviderNamespace "Microsoft.Compute"
     ```
-    
+
 #### Create a VM with ZRS disks
 
 ```
-$vmName = "yourVMName" 
+$vmName = "yourVMName"
 $adminUsername = "yourAdminUsername"
 $adminPassword = ConvertTo-SecureString "yourAdminPassword" -AsPlainText -Force
 $osDiskType = "StandardSSD_ZRS"
