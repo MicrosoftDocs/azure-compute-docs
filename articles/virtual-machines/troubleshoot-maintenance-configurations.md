@@ -175,7 +175,7 @@ Dynamic scope flattening fails because of throttling, and the service can't dete
 
 #### Resolution
 
-Make sure that the number of subscriptions per dynamic scope is less than 30. [Learn more about the service limits of dynamic scoping](../virtual-machines/maintenance-configurations.md#service-limits).
+Make sure that the number of subscriptions per dynamic scope not more than or eequal to 200. [Learn more about the service limits of dynamic scoping](../virtual-machines/maintenance-configurations.md#service-limits).
 
 ### Configuration assignment of a dedicated host isn't cleaned up after the host's removal
 
