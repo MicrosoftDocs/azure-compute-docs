@@ -115,7 +115,7 @@ Allowed characters for image version are numbers and periods. Numbers must be wi
 
 In this example, the version of our image is *1.0.0* and we're going to create two replicas in the *West Central US* region, one replica in the *South Central US* region and one replica in the *East US 2* region using zone-redundant storage. The replication regions must include the region the source VM is located.
 
-Replace the value of `--managed-image` in this example with the ID of your VM from the previous step.
+Replace the value of `--virtual-machine` in this example with the ID of your VM from the previous step.
 
 ```azurecli-interactive 
 az sig image-version create \
@@ -125,7 +125,7 @@ az sig image-version create \
    --gallery-image-version 1.0.0 \
    --target-regions "westcentralus" "southcentralus=1" "eastus=1=standard_zrs" \
    --replica-count 2 \
-   --managed-image "/subscriptions/<Subscription ID>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM"
+   --virtual-machine "/subscriptions/<Subscription ID>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM"
 ```
 
 > [!NOTE]
