@@ -21,34 +21,21 @@ For more information about enabling the NVMe interface on virtual machines creat
 
 ## Supported Linux OS images
 
-| Distribution                         | Image                                                            |
-|--------------------------------------|------------------------------------------------------------------|
-|     Almalinux 8.x (currently 8.7)    |   almalinux: almalinux:8-gen2: latest                            |
-|     Almalinux 9.x (currently 9.1)    |   almalinux: almalinux:9-gen2: latest                            |
-|     Debian 11                        |   Debian: debian-11:11-gen2: latest                              |
-|     Debian 12                        |   Debian: debian-12:12-gen2: latest
-|     RHEL 7.9                         |   RedHat: RHEL:79-gen2: latest                                   |
-|     RHEL 8.6                         |   RedHat: RHEL:86-gen2: latest                                   |
-|     RHEL 8.7                         |   RedHat: RHEL:87-gen2: latest                                   |
-|     RHEL 9.0                         |   RedHat: RHEL:90-gen2: latest                                   |
-|     RHEL 9.1                         |   RedHat: RHEL:91-gen2: latest                                   |
-|     Ubuntu 18.04                     |   Canonical:UbuntuServer:18_04-lts-gen2:latest                   |
-|     Ubuntu 20.04                     |   Canonical:0001-com-ubuntu-server-focal:20_04-lts-gen2:latest   |
-|     Ubuntu 22.04                     |   Canonical:0001-com-ubuntu-server-jammy:22_04-lts-gen2:latest   |
-|     Oracle 7.9                       |   Oracle: Oracle-Linux:79-gen2:latest                       |
-|     Oracle 8.5                       |   Oracle: Oracle-Linuz:ol85-lvm-gen2:latest                      |
-|     Oracle 8.6                       |   Oracle: Oracle-Linux:ol86-lvm-gen2:latest                      |
-|     Oracle 8.7                       |   Oracle: Oracle-Linux:ol87-lvm-gen2:latest                      |
-|     Oracle 8.8                       |   Oracle: Oracle-Linux:ol88-lvm-gen2:latest                      |
-|     Oracle 8.9                       |   Oracle: Oracle-Linux:ol89-lvm-gen2:latest                      |
-|     Oracle 9.0                       |   Oracle: Oracle-Linux:ol9-lvm-gen2:latest                       |
-|     Oracle 9.1                       |   Oracle: Oracle-Linux:ol91-lvm-gen2:latest                      |
-|     Oracle 9.2                       |   Oracle: Oracle-Linux:ol92-lvm-gen2:latest                      |
-|     Oracle 9.3                       |   Oracle: Oracle-Linux:ol93-lvm-gen2:latest                      |
-|     SLES-for-SAP 15.3                |   SUSE:sles-sap-15-sp3:gen2:latest                               |
-|     SLES-for-SAP 15.4                |   SUSE:sles-sap-15-sp4:gen2:latest                               |
-|     SLES 15.4                        |   SUSE:sles-15-sp4:gen2:latest                                   |
-|     SLES 15.5                        |   SUSE:sles-15-sp5:gen2:latest                                   |
+- Almalinux 8.x
+- Almalinux 9.x
+- Debian 11
+- Debian 12
+- Oracle Linux 7.9
+- Oracle Linux 8.5 and newer
+- Oracle Linux 9.0 and newer
+- RHEL 7.9
+- RHEL 8.6 and newer
+- RHEL 9.0 and newer
+- SLES 15 SP4 and newer
+- SLES-for-SAP 15 SP3 and newer
+- Ubuntu 18.04
+- Ubuntu 20.04
+- Ubuntu 22.04
 
 ## Supported Windows OS images
 - Windows Server 2019
