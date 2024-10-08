@@ -41,18 +41,18 @@ $ sudo apt install --no-install-recommends ca-certificates debsums dosfstools \
 $ cd ./debian-cloud-images
 ```
 
-Optional: Customize the build by adding scripts (for example, shell scripts) to `./config_space/scripts/AZURE`.
+Optional: Customize the build by adding scripts (for example, shell scripts) to `./config_space/[release]/scripts/AZURE`.
 
 ## Script example to customize the image
 
 ```
-$ mkdir -p ./config_space/scripts/AZURE
-$ cat > ./config_space/scripts/AZURE/10-custom <<EOF
+$ mkdir -p ./config_space/[release]/scripts/AZURE
+$ cat > ./config_space/scripts/[release]/AZURE/10-custom <<EOF
 #!/bin/bash
 
 \$ROOTCMD bash -c "echo test > /usr/local/share/testing"
 EOF
-$ sudo chmod 755 ./config_space/scripts/AZURE/10-custom
+$ sudo chmod 755 ./config_space/[release]/scripts/AZURE/10-custom
 ```
 
 Prefix any commands you want to have customizing the image with `$ROOTCMD`. It's aliased as `chroot $target`.
@@ -89,64 +89,13 @@ This process creates a VHD `image_[release]_azure_amd64.vhd` with a rounded size
 >[!NOTE]
 > Rather than cloning the salsa repository and building images locally, current stable images can be built and downloaded from [FAI](https://fai-project.org/FAIme/cloud/).
 
-After you create a stable Debian VHD image and before you upload, verify that the following packages are installed:
+After you create a Debian VHD image and before you upload, verify that the following packages listed as ```install```(first character `i` in line) action with ```installed```(second charactor `i` in line) status in the "image_[release]_azure_amd64.info" file:
 
-* apt-get install hyperv-daemons
-* apt-get install waagent # *(Optional but recommended for password resets and the use of extensions)*
-* apt-get install cloud-init
+* hyperv-daemons
+* waagent # *(Optional but recommended for password resets and the use of extensions)*
+* cloud-init
 
-Then perform a full upgrade:
-
-* apt-get full-upgrade
-
-Now the Azure resources must be created for this image. This example uses the `$rounded_size_adjusted` variable, so it should be from within the same shell process from the preceding step.
-
-```
-az group create -l $LOCATION -n $RG
-
-az disk create \
-    -n $DISK \
-    -g $RG \
-    -l $LOCATION \
-    --for-upload --upload-size-bytes "$rounded_size_adjusted" \
-    --sku standard_lrs --hyper-v-generation V1
-
-ACCESS=$(az disk grant-access \
-    -n $DISK -g $RG \
-    --access-level write \
-    --duration-in-seconds 86400 \
-    --query accessSas -o tsv)
-
-azcopy copy "$vhddisk" "$ACCESS" --blob-type PageBlob
-
-az disk revoke-access -n $DISK -g $RG
-az image create \
-    -g $RG \
-    -n $IMAGE \
-    --os-type linux \
-    --source $(az disk show \
-        -g $RG \
-        -n $DISK \
-        --query id -o tsv)
-az vm create \
-    -g $RG \
-    -n $VM \
-    --ssh-key-value $SSH_KEY_VALUE \
-    --public-ip-address-dns-name $VM \
-    --image $(az image show \
-        -g $RG \
-        -n $IMAGE \
-        --query id -o tsv)
-```
-
-If the bandwidth from your local machine to the Azure disk is causing a long time to process the upload with `azcopy`, you can use an Azure VM jumpbox to speed up the process. Here's how this process can be done:
-
-1. Create a tarball of the VHD on your local machine: `tar -czvf ./image_buster_azure_amd64.vhd.tar.gz ./image_[release]_azure_amd64.vhd`.
-1. Create an Azure Linux VM (distribution of your choice). Make sure that you create it with a large-enough disk to hold the extracted VHD.
-1. Download the `azcopy` utility to the Azure Linux VM. You can retrieve it from [Get started with AzCopy](/azure/storage/common/storage-use-azcopy-v10#download-azcopy).
-1. Copy the tarball to the VM: `scp ./image_buster_azure_amd64.vhd.tar.gz <vm>:~`.
-1. On the VM, extract the VHD: `tar -xf ./image_buster_azure_amd64.vhd.tar.gz`. This step takes a bit of time based on the size of the file.
-1. Finally, on the VM, copy the VHD to the Azure disk with `azcopy` (the preceding command).
+Now you should have your Debian VHD that ready to upload to be [uploaded to Azure](./disks-upload-vhd-to-managed-disk-cli.md#option-1-upload-a-vhd).
 
 ## Related content
 
