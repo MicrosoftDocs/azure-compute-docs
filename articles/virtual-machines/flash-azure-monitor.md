@@ -43,6 +43,18 @@ To navigate to the [metrics explorer](/azure/azure-monitor/essentials/metrics-ge
 
 For a description of the metric's display values, see [VM availability metric](monitor-vm-reference.md#vm-availability-metric-preview).
 
+Users can split the VM availability by the 'Context' property.
+   :::image type="content" source="media/flash/context-property-filter.png" alt-text="Screenshot of the newly added Context property of VM availability Metric on Azure portal." lightbox="media/flash/context-property-filter.png" :::
+
+> [!NOTE]
+> The context for Service Healing and Live Migration is currently unknown by default.
+
+The legend at the bottom indicates the color associated with the possible Context: Unknown, Platform Initiated, and User Initiated.
+   :::image type="content" source="media/flash/split-by-context-property.png" alt-text="Screenshot of the VM availability Metric split by Context on Azure portal." lightbox="media/flash/split-by-context-property.png" :::
+
+Users can also create an alert rule based on dimension values. Under the Condition tab, choose VM Availability Metric as the Signal name. In the Split by dimensions section, enter Context as the dimension name and select the corresponding dimension values.
+   :::image type="content" source="media/flash/metric-alert-rule.png" alt-text="Screenshot of alert rule creation for VM availability Metric split by dimensions on Azure portal." lightbox="media/flash/metric-alert-rule.png" :::
+
 ### Useful links
 
 - [How to filter events for Azure Event Grid - Azure Event Grid | Microsoft Learn](/azure/event-grid/how-to-filter-events)
