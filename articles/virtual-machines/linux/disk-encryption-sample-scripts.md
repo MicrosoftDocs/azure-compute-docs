@@ -68,7 +68,7 @@ The following table shows which parameters can be used in the PowerShell script:
 ### Encrypt or decrypt VMs without a Microsoft Entra app
 
 - [Enable disk encryption on an existing or running Linux VM](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/encrypt-running-linux-vm-without-aad)
-- [Disable encryption on a running Linux VM](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/encrypt-running-linux-vm)
+- [Disable encryption on a running Linux VM](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/decrypt-running-linux-vm-without-aad)
     - Disabling encryption is only allowed on Data volumes for Linux VMs.
 
 <a name='encrypt-or-decrypt-vms-with-an-azure-ad-app-previous-release'></a>
