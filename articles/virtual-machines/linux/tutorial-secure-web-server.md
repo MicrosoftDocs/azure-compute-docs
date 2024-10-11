@@ -66,11 +66,11 @@ az keyvault certificate create \
 To use the certificate during the VM create process, obtain the ID of your certificate with [az keyvault secret list-versions](/cli/azure/keyvault/secret). Convert the certificate with [az vm secret format](/cli/azure/vm/secret#az-vm-secret-format). The following example assigns the output of these commands to variables for ease of use in the next steps:
 
 ```azurecli-interactive
-secret=$(az keyvault secret list-versions \
+$secret=$(az keyvault secret list-versions \
           --vault-name $keyvault_name \
           --name mycert \
           --query "[?attributes.enabled].id" --output tsv)
-vm_secret=$(az vm secret format --secrets "$secret" -g myResourceGroupSecureWeb --keyvault $keyvault_name)
+$vm_secret=$(az vm secret format --secrets "$secret" -g myResourceGroupSecureWeb --keyvault $keyvault_name)
 ```
 
 ### Create a cloud-init config to secure NGINX
