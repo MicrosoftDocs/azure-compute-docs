@@ -40,7 +40,7 @@ Sign in to the [Azure portal](https://portal.azure.com).
     >
     > To avoid confusion, we suggest you skip the *Disks* tab entirely while completing this tutorial.
 
-1. Select the "Management" tab and verify that you have a Diagnostics Storage Account. If you have no storage accounts, select *Create New*, name your storage account *myStorageAccount*, and select "Ok"
+1. Select the "Monitoring" tab and verify that you have a Diagnostics Storage Account. If you have no storage accounts, select *Create New*, name your storage account *myStorageAccount*, and select "Ok"
 
     :::image type="content" source="../media/disk-encryption/portal-quickstart-vm-creation-storage.png" alt-text="ResourceGroup creation screen":::
 
