@@ -24,7 +24,7 @@ Premium Storage caching: Supported<br>
 Live Migration: Supported<br>
 Memory Preserving Updates: Supported<br>
 VM Generation Support: Generation 1 and 2<br>
-Accelerated Networking1: Required<br>
+Accelerated Networking: Required<br>
 Ephemeral OS Disks: Supported<br>
 Nested Virtualization: Supported<br>
 
