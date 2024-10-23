@@ -40,6 +40,9 @@ There are few ways to use Windows virtual machines with the Azure Hybrid Benefit
 3. You can toggle and convert existing VM between running with Azure Hybrid Benefit or pay on-demand cost for Windows Server
 4. You can also apply Azure Hybrid Benefit for Windows Server on virtual machine scale set as well
 
+## Do I need to use Azure Marketplace gallery images for virtual machines that match my Standard and Datacenter licenses?
+Azure Marketplace offers images that you can use with either Datacenter or Standard licenses—no need to match the image with your edition. 
+If you own Standard Edition, for example, you can use the Datacenter Edition images.
 
 ## Create a VM with Azure Hybrid Benefit for Windows Server
 All Windows Server OS based images are supported for Azure Hybrid Benefit for Windows Server. You can use Azure platform support images or upload your own custom Windows Server images. 
