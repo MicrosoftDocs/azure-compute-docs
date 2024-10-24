@@ -5,7 +5,7 @@ services: virtual-machines
 author: ju-shim
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.date: 07/05/2023
+ms.date: 10/22/2024
 ms.author: jushiman
 ---
 
@@ -29,6 +29,8 @@ Before you begin an in-place upgrade:
 
 - Disable antivirus and anti-spyware software and firewalls. These types of software can conflict with the upgrade process. Re-enable antivirus and anti-spyware software and firewalls after the upgrade is completed. 
 
+> [!NOTE]
+> When performing an in-place upgrade on Azure Windows VMs, the VM properties on the Azure portal aren't updated; the changes are only reflected within the OS. This means that the source image information in the VM properties, including the publisher, offer, and plan, remains unchanged. The image used to deploy the VM remains the same, and only the OS is upgraded.
 
 ## Upgrade VM to volume license (KMS server activation)
 
