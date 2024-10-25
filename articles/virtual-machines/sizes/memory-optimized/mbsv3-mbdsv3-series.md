@@ -11,7 +11,7 @@ ms.date:     10/24/2024
 
 # Mbsv3 and Mbdsv3 Series 
 
-The Storage optimized Mbv3 VM (Mbsv3 and Mbdsv3) series are based on the 4th generation Intel® Xeon® Scalable processors and deliver higher remote disk storage performance. These new VM sizes offer up to 650,000 IOPS and 10GBps of remote disk storage throughput Premium SSD v2 and Ultra Disk, up to 4TB of RAM and up to 650,000 IOPS and 10GBps throughput to remote disk storage with NVMe interface by using Ultra Disk and Premium SSD v2.
+The memory-and-storage optimized Mbv3 VM (Mbsv3 and Mbdsv3) series are based on the 4th generation Intel® Xeon® Scalable processors and deliver higher remote disk storage performance. These new VM sizes offer up to 650,000 IOPS and 10GBps of remote disk storage throughput Premium SSD v2 and Ultra Disk, up to 4TB of RAM and up to 650,000 IOPS and 10GBps throughput to remote disk storage with NVMe interface by using Ultra Disk and Premium SSD v2.
 
 The increased remote storage performance of these VMs is ideal for storage throughput-intensive workloads such as relational databases and data analytics applications.  
 
