@@ -1,13 +1,13 @@
 ---
- title: include
- description: include
- services: virtual-machines-windows
+title: include
+description: include
+services: virtual-machines-windows
 author: jushiman
- ms.service: virtual-machines
- ms.topic: include
- ms.date: 04/18/2023
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 04/18/2023
 ms.author: jushiman
- ms.custom: include
+ms.custom: include
 ---
 
 ## Supported operating systems and drivers
