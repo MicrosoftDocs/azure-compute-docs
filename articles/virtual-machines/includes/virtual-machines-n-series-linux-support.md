@@ -1,11 +1,11 @@
 ---
- title: include file
- description: include file
- services: virtual-machines-linux
-author: jushiman
- ms.service: virtual-machines
- ms.topic: include
- ms.date: 12/08/2023
+title: include file
+description: include file
+services: virtual-machines-linux
+author: ju-shim
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 12/08/2023
 ms.author: jushiman
 ms.custom: include file, linux-related-content
 ---
