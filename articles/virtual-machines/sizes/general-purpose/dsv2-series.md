@@ -26,7 +26,7 @@ Live Migration: Supported<br>
 Memory Preserving Updates: Supported<br>
 VM Generation Support: Generation 1<br>
 Accelerated Networking: Supported<br>
-Ephemeral OS Disks: Not Supported<br>
+Ephemeral OS Disks: Supported<br>
 Nested Virtualization: Not Supported<br>
 
 ## Sizes in series
