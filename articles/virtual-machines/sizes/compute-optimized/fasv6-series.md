@@ -10,9 +10,13 @@ ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ---
 
-# Fasv6 sizes series
+# Fasv6 sizes series (Preview)
 
 [!INCLUDE [fasv6-summary](./includes/fasv6-series-summary.md)]
+
+> [!NOTE]
+> - This VM series is currently in **Preview**. 
+> - See the [Preview Terms Of Use | Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
 
 ## Host specifications
 [!INCLUDE [fasv6-series-specs](./includes/fasv6-series-specs.md)]
