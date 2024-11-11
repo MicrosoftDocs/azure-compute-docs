@@ -39,18 +39,18 @@ The GRID drivers redistributed by Azure don't work on non-NV series VMs like NCv
 
 The Nvidia extension always installs the latest driver. 
 
-For Windows 11 up to and including 23H2, Windows 10 up to and including  22H2, Server 2019/2022:
+For Windows 11 up to and including 23H2, Windows 10 up to and including  22H2, Server 2022:
 
-- [GRID 17.3 (552.74)](https://go.microsoft.com/fwlink/?linkid=874181) (.exe)
+- [GRID 17.4 (553.24)](https://go.microsoft.com/fwlink/?linkid=874181) (.exe)
 
 The following links to previous versions are provided to support dependencies on older driver versions.
 
-For Windows Server 2016 1607, 1709:
-- [GRID 14.1 (512.78)](https://download.microsoft.com/download/7/3/6/7361d1b9-08c8-4571-87aa-18cf671e71a0/512.78_grid_win10_win11_server2016_server2019_server2022_64bit_azure_swl.exe) (.exe) is the last supported driver from NVIDIA. The newer 15.x and above don't support Windows Server 2016. 
+For Windows Server 2022 :
+- [GRID 17.3 (552.74)](https://download.microsoft.com/download/e/1/7/e170f423-219c-467f-80f6-260caaebb148/552.74_grid_win10_win11_server2022_dch_64bit_international_azure_swl.exe) (.exe) is the last supported driver from NVIDIA. The newer 15.x and above don't support Windows Server 2016. 
 
 For Windows Server 2012 R2: 
 - [GRID 13.1 (472.39)](https://download.microsoft.com/download/7/3/5/735a46dd-7d61-4852-8e34-28bce7f68727/472.39_grid_win8_win7_64bit_Azure-SWL.exe) (.exe)
 - [GRID 13 (471.68)](https://download.microsoft.com/download/9/b/4/9b4d4f8d-7962-4a67-839b-37cc95756759/471.68_grid_winserver2012R2_64bit_azure_swl.exe) (.exe)
 
 
-For links to all previous Nvidia GRID driver versions, visit [GitHub](https://github.com/Azure/azhpc-extensions/blob/master/NvidiaGPU/resources.json).
+For links to all previous Nvidia GRID driver versions, visit [GitHub](https://raw.githubusercontent.com/Azure/azhpc-extensions/refs/heads/master/NvidiaGPU/Nvidia-GPU-Windows-Resources.json).
