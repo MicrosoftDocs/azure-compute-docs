@@ -166,7 +166,7 @@ In the example below, we are creating an image from a **VM**. The version of our
 
 It is a best practice to stop\deallocate the VM before creating an image.
 
-Replace the value of `--managed-image` in this example with the ID of your VM.
+Replace the value of `--virtual-machine` in this example with the ID of your VM.
 
 ```azurecli-interactive 
 az sig image-version create \
@@ -176,7 +176,7 @@ az sig image-version create \
    --gallery-image-version 1.0.0 \
    --target-regions "westcentralus" "southcentralus=1" "eastus=1=standard_zrs" \
    --replica-count 2 \
-   --managed-image "/subscriptions/<Subscription ID>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM"
+   --virtual-machine "/subscriptions/<Subscription ID>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM"
 ```
 
 > [!NOTE]
