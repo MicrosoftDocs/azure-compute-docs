@@ -232,7 +232,7 @@ Remove-AzVMRunCommand -ResourceGroupName "myRG" -VMName "myVM" -RunCommandName "
 To deploy a new Run Command, execute a PUT on the VM directly and specify a unique name for the Run Command instance. 
 
 ```rest
-GET /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/virtualMachines/<vmName>/runcommands?api-version=2019-12-01
+PUT /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/virtualMachines/<vmName>/runcommands?api-version=2019-12-01
 ```
 
 ```json
