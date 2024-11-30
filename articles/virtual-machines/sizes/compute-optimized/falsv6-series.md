@@ -10,9 +10,13 @@ ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ---
 
-# Falsv6 sizes series
+# Falsv6 sizes series (Preview)
 
 [!INCLUDE [falsv6-summary](./includes/falsv6-series-summary.md)]
+
+> [!NOTE]
+> - This VM series is currently in **Preview**. 
+> - See the [Preview Terms Of Use | Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
 
 ## Host specifications
 [!INCLUDE [falsv6-series-specs](./includes/falsv6-series-specs.md)]
