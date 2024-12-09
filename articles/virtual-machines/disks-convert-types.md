@@ -33,7 +33,7 @@ For your dev/test workload, you might want a mix of Standard and Premium disks t
 
 # [Azure PowerShell](#tab/azure-powershell)
 
-[!INCLUDE [managed-disk-premium-ssd-v2-conversion-preview](./includes/managed-disk-premium-ssd-v2-conversion-preview.md)]
+[!INCLUDE [managed-disk-premium-ssd-v2-conversion](./includes/managed-disk-premium-ssd-v2-conversion-preview.md)]
 
 ```azurepowershell-interactive
 
