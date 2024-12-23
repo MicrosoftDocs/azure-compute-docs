@@ -4,7 +4,7 @@ description: Shows how to quickly stand up WebLogic Server on Azure Virtual Mach
 author: KarlErickson
 ms.author: haiche
 ms.topic: quickstart
-ms.date: 10/08/2024
+ms.date: 12/23/2024
 ms.service: oracle-on-azure
 ms.custom: devx-track-java, devx-track-javaee, devx-track-javaee-wls, devx-track-javaee-wls-vm, devx-track-extended-java
 ---
@@ -46,7 +46,7 @@ The following steps show you how to deploy WebLogic Server on a VM using the [si
 
 1. On the **Basics** pane, ensure the value shown in the **Subscription** field is the same one that you used to sign in to the Azure portal.
 
-1. The offer must be deployed in an empty resource group. In the **Resource group** field, select **Create new** and fill in a value for the resource group. Because resource groups must be unique within a subscription, pick a unique name. An easy way to have unique names is to use a combination of your initials, today's date, and some identifier. For example, *ejb0802wls*.
+1. In the **Resource group** field, select **Create new** and fill in a value for the resource group. Because resource groups must be unique within a subscription, pick a unique name. An easy way to have unique names is to use a combination of your initials, today's date, and some identifier. For example, *ejb0802wls*.
 
 1. Under **Instance details**, select the region for the deployment.
 
