@@ -27,7 +27,7 @@ ms.reviewer: mattmcinnes, tomvcassidy
 - [Memory Preserving Updates](../../maintenance-and-updates.md): Supported 
 - [VM Generation Support](../../generation-2.md): Generation 2 
 - [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported 
-- [Ephemeral OS Disks](../../ephemeral-os-disks.md): Supported
+- [Ephemeral OS Disks](../../ephemeral-os-disks.md): Not Supported
 - [Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Not supported
 
 ## Sizes in series
