@@ -144,6 +144,21 @@ Set-AzVMExtension -ExtensionName "Microsoft.Azure.Monitoring.DependencyAgent" `
     -Location WestUS
 ```
 
+### PowerShell Deployment for Azure Monitor Agent
+
+If you are using the Azure Monitor Agent, you must use the `enableAMA` setting. Otherwise, Dependency agent attempts to send data to the legacy Log Analytics agent. For example:
+```powershell
+
+Set-AzVMExtension -ExtensionName "Microsoft.Azure.Monitoring.DependencyAgent" `
+    -ResourceGroupName "myResourceGroup" `
+    -VMName "myVM" `
+    -Publisher "Microsoft.Azure.Monitoring.DependencyAgent" `
+    -ExtensionType "DependencyAgentWindows" `
+    -TypeHandlerVersion 9.10 `
+    -Location WestUS `
+    -Settings @{"enableAMA" = "true"}
+```
+
 ## Automatic extension upgrade
 A new feature to [automatically upgrade minor versions](../automatic-extension-upgrade.md) of Dependency extension is now available.
 
