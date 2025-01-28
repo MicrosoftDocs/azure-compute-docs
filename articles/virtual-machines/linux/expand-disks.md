@@ -5,7 +5,7 @@ author: pagienge
 ms.service: azure-disk-storage
 ms.collection: linux
 ms.topic: how-to
-ms.date: 09/10/2024
+ms.date: 10/28/2024
 ms.author: pagienge
 ms.custom: references_regions, devx-track-azurecli, linux-related-content
 ---
@@ -14,7 +14,7 @@ ms.custom: references_regions, devx-track-azurecli, linux-related-content
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Flexible scale sets
 
-This article describes how to expand managed disks for a Linux virtual machine (VM). You can [add data disks](add-disk.md) to provide for more storage space, and you can also expand an existing data disk. The default virtual hard disk size for the operating system (OS) is typically 30 GB on a Linux VM in Azure. This article covers expanding either OS disks or data disks. You can't expand the size of striped volumes.
+This article covers expanding OS disks and data disks for a Linux virtual machine (VM). You can [add data disks](add-disk.md) to provide for more storage space, and you can also expand an existing data disk. The default virtual hard disk size for the operating system (OS) is typically 30 GB on a Linux VM in Azure. This article covers expanding either OS disks or data disks. You can't expand the size of striped volumes.
 
 An OS disk has a maximum capacity of 4,095 GiB. However, many operating systems are partitioned with [master boot record (MBR)](https://wikipedia.org/wiki/Master_boot_record) by default. MBR limits the usable size to 2 TiB. If you need more than 2 TiB, consider attaching data disks for data storage. If you do need to store data on the OS disk and require extra space, convert it to GUID Partition Table (GPT).
 
@@ -96,8 +96,8 @@ In the following samples, replace example parameter names such as *myResourceGro
 
     ```azurecli
     az disk list \
-        --resource-group myResourceGroup \
-        --query '[*].{Name:name,Gb:diskSizeGb,Tier:accountType}' \
+        --resource-group myResourceGroup  \
+        --query '[*].{Name:name,size:diskSizeGB,Tier:sku.tier}' \
         --output table
     ```
 
@@ -111,7 +111,7 @@ In the following samples, replace example parameter names such as *myResourceGro
     ```
 
     > [!NOTE]
-    > When you expand a managed disk, the updated size is rounded up to the nearest managed disk size. For a table of the available managed disk sizes and tiers, see [Azure Managed Disks Overview - Pricing and Billing](../managed-disks-overview.md).
+    > When you expand a managed disk, the updated size is rounded up to the nearest managed disk size. For a table of the available managed disk sizes and tiers, see [Understand Azure Disk Storage billing](../disks-understand-billing.md).
 
 1. Start your VM with [az vm start](/cli/azure/vm#az-vm-start). The following example starts the VM named *myVM* in the resource group named *myResourceGroup*:
 
@@ -540,9 +540,7 @@ To increase the OS disk size in SUSE 12 SP4, SUSE SLES 12 for SAP, SUSE SLES 15,
    sudo -i
    ```
 
-1. When the VM restarts completely, perform the following steps:
-
-   1. Install the **cloud-utils-growpart** package to provide the **growpart** command, which is required to increase the size of the OS disk and the gdisk handler for GPT disk layouts. This package is preinstalled on most marketplace images
+1. Install the **cloud-utils-growpart** package to provide the **growpart** command, which is required to increase the size of the OS disk and the gdisk handler for GPT disk layouts. This package is preinstalled on most marketplace images
 
    ```bash
    dnf install cloud-utils-growpart gdisk

@@ -17,7 +17,7 @@ This article provides information on how to move Azure single instance Virtual M
 
 Ensure the following before you begin:
 
-- **Availability zone regions support**: Ensure that the regions you want to move to are supported by Availability Zones. [Learn more](/azure/reliability/availability-zones-service-support) about the supported regions.
+- **Availability zone regions support**: Ensure that the regions you want to move to are supported by Availability Zones. [Learn more](/azure/reliability/availability-zones-region-support) about the supported regions.
 
 - **VM SKU availability**: The availability of VM sizes, or SKUs, can differ based on the region and zone. Ensure to plan for the use of Availability Zones. [Learn more](../virtual-machines/windows/create-powershell-availability-zone.md#check-vm-sku-availability) about the available VM SKUs for each Azure region and zone. 
 

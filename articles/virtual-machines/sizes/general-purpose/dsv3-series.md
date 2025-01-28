@@ -51,17 +51,17 @@ vCPUs (Qty.) and Memory for each size
 
 ### [Local Storage](#tab/sizestoragelocal)
 
-Local (temp) storage info for each size
+Local (cached & temp) storage info for each size
 
-| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read (RR)<sup>1</sup> IOPS | Temp Disk Random Read (RR)<sup>1</sup> Speed (MBps) | Temp Disk Random Write (RW)<sup>1</sup> IOPS |
-| --- | --- | --- | --- | --- | --- | --- |
-| Standard_D2s_v3 | 1 | 16 | 4000 | 32 |
-| Standard_D4s_v3 | 1 | 32 | 8000 | 64 |
-| Standard_D8s_v3 | 1 | 64 | 16000 | 128 |
-| Standard_D16s_v3 | 1 | 128 | 32000 | 256 |
-| Standard_D32s_v3 | 1 | 256 | 64000 | 512 |
-| Standard_D48s_v3 | 1 | 384 | 96000 | 768 |
-| Standard_D64s_v3 | 1 | 512 | 128000 | 1024 |
+| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Disk Cache Size (GiB) | Cached Disk Random Read (RR)<sup>1</sup> IOPS | Cached Disk Random Read (RR)<sup>1</sup> Throughput (MB/s) |
+| --- | --- | --- | --- | --- | --- |
+| Standard_D2s_v3 | 1 | 16   | 50   | 4000 | 32 |
+| Standard_D4s_v3 | 1 | 32   | 100  | 8000 | 64 |
+| Standard_D8s_v3 | 1 | 64   | 200  | 16000 | 128 |
+| Standard_D16s_v3 | 1 | 128 | 400  | 32000 | 256 |
+| Standard_D32s_v3 | 1 | 256 | 800  | 64000 | 512 |
+| Standard_D48s_v3 | 1 | 384 | 1200 | 96000 | 768 |
+| Standard_D64s_v3 | 1 | 512 | 1600 |128000 | 1024 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
@@ -78,7 +78,7 @@ Local (temp) storage info for each size
 
 Remote (uncached) storage info for each size
 
-| Size Name | Max Remote Storage Disks (Qty.) | Uncached Disk IOPS | Uncached Disk Speed (MBps) | Uncached Disk Burst<sup>1</sup> IOPS | Uncached Disk Burst<sup>1</sup> Speed (MBps) |
+| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD Disk IOPS | Uncached Premium SSD Throughput (MB/s) | Uncached Premium SSD Burst<sup>1</sup> IOPS | Uncached Premium SSD Burst<sup>1</sup> Throughput (MB/s) |
 | --- | --- | --- | --- | --- | --- |
 | Standard_D2s_v3 | 4 | 3200 | 48 | 4000 | 200 |
 | Standard_D4s_v3 | 8 | 6400 | 96 | 8000 | 200 |
@@ -95,7 +95,7 @@ Remote (uncached) storage info for each size
 
 #### Table definitions
 - <sup>1</sup>These sizes support [bursting](../../disk-bursting.md) to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.
-- <sup>2</sup>Special Storage refers to either [Ultra Disk](../../../virtual-machines/disks-enable-ultra-ssd.md) or [Premium SSD v2](../../../virtual-machines/disks-deploy-premium-v2.md) storage.
+
 - Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
 - Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
 - Data disks can operate in cached or uncached modes. For cached data disk operation, the host cache mode is set to ReadOnly or ReadWrite. For uncached data disk operation, the host cache mode is set to None.
@@ -106,7 +106,7 @@ Remote (uncached) storage info for each size
 
 Network interface info for each size
 
-| Size Name | Max NICs (Qty.) | Max Bandwidth (Mbps) |
+| Size Name | Max NICs (Qty.) | Max Network Bandwidth (Mb/s) |
 | --- | --- | --- |
 | Standard_D2s_v3 | 2 | 1000 |
 | Standard_D4s_v3 | 2 | 2000 |
@@ -135,3 +135,5 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 ---
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]
+
+

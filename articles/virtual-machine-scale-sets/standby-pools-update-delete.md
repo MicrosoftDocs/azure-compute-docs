@@ -4,17 +4,34 @@ description: Learn how to delete or update a standby pool for Virtual Machine Sc
 author: mimckitt
 ms.author: mimckitt
 ms.service: azure-virtual-machine-scale-sets
+ms.custom:
+  - ignite-2024
 ms.topic: how-to
-ms.date: 06/14/2024
+ms.date: 11/5/2024
 ms.reviewer: ju-shim
 ---
 
 
-# Update or delete a standby pool (Preview)
+# Update or delete a standby pool
+This article covers updating, managing and deleting a standby pool resource.  
 
+## Prerequisites
 
-> [!IMPORTANT]
-> Standby pools for Virtual Machine Scale Sets are currently in preview. Previews are made available to you on the condition that you agree to the [supplemental terms of use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Some aspects of this feature may change prior to general availability (GA). 
+To allow standby pools to create and manage virtual machines in your subscription, assign the appropriate permissions to the standby pool resource provider. 
+
+1) In the Azure portal, navigate to your subscriptions.
+2) Select the subscription you want to adjust permissions.
+3) Select **Access Control (IAM)**.
+4) Select **Add** and **Add role assignment**.
+5) Under the **Role** tab, search for **Virtual Machine Contributor** and select it.
+6) Move to the **Members** Tab.
+7) Select **+ Select members**.
+8) Search for **Standby Pool Resource Provider** and select it.
+9) Move to the **Review + assign** tab.
+10) Apply the changes. 
+11) Repeat the above steps and assign the **Network Contributor** role and the **Managed Identity Operator** role to the Standby Pool Resource Provider. If you're using images stored in Compute Gallery assign the **Compute Gallery Sharing Admin** and **Compute Gallery Artifacts Publisher** roles as well.
+
+For more information on assigning roles, see [assign Azure roles using the Azure portal](/azure/role-based-access-control/quickstart-assign-role-user-portal).
 
 
 ## Update a standby pool
@@ -22,6 +39,11 @@ ms.reviewer: ju-shim
 You can update the state of the instances and the max ready capacity of your standby pool at any time. The standby pool name can only be set during standby pool creation. 
 
 ### [Portal](#tab/portal-2)
+
+> [!NOTE]
+> To create and manage standby pools in the Azure portal, register the following feature flag:
+> `Register-AzProviderFeature -FeatureName StandbyVMPoolPreview -ProviderNamespace Microsoft.StandbyPool`
+
 1) Navigate to Virtual Machine Scale set the standby pool is associated with. 
 2) Under **Availability + scale** select **Standby pool**. 
 3) Select **Manage pool**. 
@@ -35,20 +57,22 @@ Update an existing standby pool using [az standby-vm-pool update](/cli/azure/sta
 
 ```azurecli-interactive
 az standby-vm-pool update \
-   --resource-group myResourceGroup 
+   --resource-group myResourceGroup \
    --name myStandbyPool \
    --max-ready-capacity 20 \
-   --vm-state "Deallocated" \
+   --min-ready-capacity 5 \
+   --vm-state "Deallocated" 
 ```
 ### [PowerShell](#tab/powershell-2)
 Update an existing standby pool using [Update-AzStandbyVMPool](/powershell/module/az.standbypool/update-azstandbyvmpool).
 
 ```azurepowershell-interactive
 Update-AzStandbyVMPool `
-   -ResourceGroup myResourceGroup 
+   -ResourceGroup myResourceGroup `
    -Name myStandbyPool `
    -MaxReadyCapacity 20 `
-   -VMState "Deallocated" `
+   -MinReadyCapacity 5 `
+   -VMState "Deallocated" 
 ```
 
 ### [ARM template](#tab/template)
@@ -72,6 +96,10 @@ Update an existing standby pool deployment. Deploy the updated template using [a
            "type": "int",
            "defaultValue": 10
         },
+         "minReadyCapacity" : {
+           "type": "int",
+           "defaultValue": 5
+        },
         "virtualMachineState" : {
            "type": "string",
            "defaultValue": "Deallocated"
@@ -84,12 +112,13 @@ Update an existing standby pool deployment. Deploy the updated template using [a
     "resources": [ 
         {
             "type": "Microsoft.StandbyPool/standbyVirtualMachinePools",
-            "apiVersion": "2023-12-01-preview",
+            "apiVersion": "2024-03-01",
             "name": "[parameters('name')]",
             "location": "[parameters('location')]",
             "properties": {
                "elasticityProfile": {
-                   "maxReadyCapacity": "[parameters('maxReadyCapacity')]" 
+                   "maxReadyCapacity": "[parameters('maxReadyCapacity')]",
+                   "minReadyCapacity": "[parameters('minReadyCapacity')]" 
                },
                "virtualMachineState": "[parameters('virtualMachineState')]",
                "attachedVirtualMachineScaleSetId": "[parameters('attachedVirtualMachineScaleSetId')]"
@@ -108,6 +137,7 @@ Update an existing standby pool deployment. Deploy the updated template using [a
 param location string = resourceGroup().location
 param standbyPoolName string = 'myStandbyPool'
 param maxReadyCapacity int = 10
+param minReadyCapacity int = 5
 @allowed([
   'Running'
   'Deallocated'
@@ -115,12 +145,13 @@ param maxReadyCapacity int = 10
 param vmState string = 'Deallocated'
 param virtualMachineScaleSetId string = '/subscriptions/{subscriptionID}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet'
 
-resource standbyPool 'Microsoft.standbypool/standbyvirtualmachinepools@2023-12-01-preview' = {
+resource standbyPool 'Microsoft.standbypool/standbyvirtualmachinepools@2024-03-01' = {
   name: standbyPoolName
   location: location
   properties: {
      elasticityProfile: {
       maxReadyCapacity: maxReadyCapacity
+      minReadyCapacity: minReadyCapacity
     }
     virtualMachineState: vmState
     attachedVirtualMachineScaleSetId: virtualMachineScaleSetId
@@ -132,7 +163,7 @@ resource standbyPool 'Microsoft.standbypool/standbyvirtualmachinepools@2023-12-0
 Update an existing standby pool using [Create or Update](/rest/api/standbypool/standby-virtual-machine-pools/create-or-update).
 
 ```HTTP
-PUT https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/myResourceGroup/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/myStandbyPool?api-version=2023-12-01-preview
+PUT https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/myResourceGroup/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/myStandbyPool?api-version=2024-03-01
 {
 "type": "Microsoft.StandbyPool/standbyVirtualMachinePools",
 "name": "myStandbyPool",
@@ -140,6 +171,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/m
 "properties": {
 	 "elasticityProfile": {
 		 "maxReadyCapacity": 20
+       "minReadyCapacity": 5
 	 },
 	  "virtualMachineState":"Deallocated",
 	  "attachedVirtualMachineScaleSetId": "/subscriptions/{subscriptionID}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet"
@@ -153,6 +185,10 @@ PUT https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/m
 ## Delete a standby pool
 
 ### [Portal](#tab/portal-3)
+
+> [!NOTE]
+> To create and manage standby pools in the Azure portal, register the following feature flag:
+> `Register-AzProviderFeature -FeatureName StandbyVMPoolPreview -ProviderNamespace Microsoft.StandbyPool`
 
 1) Navigate to Virtual Machine Scale set the standby pool is associated with. 
 2) Under **Availability + scale** select **Standby pool**. 
@@ -184,7 +220,7 @@ Remove-AzStandbyVMPool `
 Delete an existing standby pool using [Delete](/rest/api/standbypool/standby-virtual-machine-pools/delete).
 
 ```HTTP
-DELETE https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/myResourceGroup/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/myStandbyPool?api-version=2023-12-01-preview
+DELETE https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/myResourceGroup/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/myStandbyPool?api-version=2024-03-01
 ```
 
 ---

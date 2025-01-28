@@ -4,9 +4,9 @@ description: This article describes how to run PowerShell scripts within an Azur
 services: automation
 ms.service: azure-virtual-machines
 ms.collection: windows
-author: nikhilpatel909
+author: GabstaMSFT
 ms.author: jushiman
-ms.date: 03/10/2023
+ms.date: 12/02/2024
 ms.topic: how-to
 ms.reviewer: jushiman
 ms.custom: devx-track-azurecli
@@ -24,7 +24,7 @@ This capability is useful in all scenarios where you want to run a script within
 
 ## Prerequisites
 
-### **Windows OS’ Supported**
+### **Windows Operating Systems Supported**
 | **Windows OS** |	**x64** |
 |:----|:----:|
 | Windows 10 |	Supported |
@@ -83,6 +83,9 @@ The entity was not found in this Azure location
 | **SetRDPPort** | Sets the default or user-specified port number for Remote Desktop connections. Enables firewall rules for inbound access to the port. |
 
 ## Azure CLI
+
+> [!NOTE]
+> Depending on which modality is used to execute, some escaping may be needed. For example, if you're executing the command in a PowerShell session, the path to the script file will need to have quotes.
 
 The following example uses the [az vm run-command](/cli/azure/vm/run-command#az-vm-run-command-invoke) command to run a shell script on an Azure Windows VM.
 
@@ -151,7 +154,7 @@ When troubleshooting action run command for Windows environments, refer to the *
 
 * The Run Command extension might also fail to execute if command to be executed contains "\n" in the path, as it will be treated as a new line. For example, `C:\Windows\notepad.exe` contains the `\n` in the file path. Consider replacing `\n` with `\N` in your path.
 
-* Ensure you don't have any custom setting in the registry key `HKLM\SOFTWARE\Microsoft\Command Processor\AutoRun` (detailed [here](https://learn.microsoft.com/windows-server/administration/windows-commands/cmd)). This could trigger during the RunCommand Extension install or enable phases and cause an error like *'XYZ is not recognized as an internal or external command, operable program or batch file'*.
+* Ensure you don't have any custom setting in the registry key `HKLM\SOFTWARE\Microsoft\Command Processor\AutoRun` (detailed [here](/windows-server/administration/windows-commands/cmd)). This could trigger during the RunCommand Extension install or enable phases and cause an error like *'XYZ is not recognized as an internal or external command, operable program or batch file'*.
 
 
 ### Action Run Command Removal

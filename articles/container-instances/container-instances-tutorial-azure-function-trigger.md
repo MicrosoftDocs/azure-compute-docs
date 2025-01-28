@@ -133,7 +133,7 @@ The function returns status code 200 and the text `This HTTP triggered function 
 < HTTP/1.1 200 OK
 < Content-Length: 135
 < Content-Type: text/plain; charset=utf-8
-< Request-Context: appId=cid-v1:d0bd0123-f713-4579-8990-bb368a229c38
+< Request-Context: appId=cid-v1:00001111-aaaa-2222-bbbb-3333cccc4444
 < Date: Wed, 10 Jun 2020 17:50:27 GMT
 <
 * Connection #0 to host myfunctionapp.azurewebsites.net left intact
@@ -160,7 +160,7 @@ The function returns status code 200 and triggers the creation of the container 
 < HTTP/1.1 200 OK
 < Content-Length: 92
 < Content-Type: text/plain; charset=utf-8
-< Request-Context: appId=cid-v1:d0bd0123-f713-4579-8990-bb368a229c38
+< Request-Context: appId=cid-v1:00001111-aaaa-2222-bbbb-3333cccc4444
 < Date: Wed, 10 Jun 2020 17:54:31 GMT
 <
 * Connection #0 to host myfunctionapp.azurewebsites.net left intact

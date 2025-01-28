@@ -7,7 +7,7 @@ ms.subservice: redhat
 ms.custom: linux-related-content
 ms.collection: linux
 ms.topic: overview
-ms.date: 02/10/2020
+ms.date: 10/28/2024
 ms.author: jushiman
 ---
 
@@ -17,7 +17,7 @@ ms.author: jushiman
 
 Red Hat workloads are supported through a variety of offerings on Azure. Red Hat Enterprise Linux (RHEL) images are at the core of RHEL workloads, as is the Red Hat Update Infrastructure (RHUI). Red Hat JBoss EAP is also supported on Azure, see [Red Hat JBoss EAP](#red-hat-jboss-eap).
 
-For more information about running HREL workloads on Azure, see the following video:
+For more information about running RHEL workloads on Azure, see the following video:
 
 > [!VIDEO https://www.youtube.com/embed/11arYjecfxU?si=m0X-28xd1-zYUoqG]
 

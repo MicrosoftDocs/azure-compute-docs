@@ -66,6 +66,13 @@ Previous supported driver versions for Windows builds up to 1909 are [20.Q4-1](h
    >  [Computer Configuration->Policies->Windows Settings->Administrative Templates->Windows Components->Remote Desktop Services->Remote Desktop Session Host->Remote Session    Environment], set the Policy [Use WDDM graphics display driver for Remote Desktop Connections] to Disabled.
    >  
 
+## NVadsV710_v5 Series (In Preview) ##
+During the preview program manually download and install the following Windows drivers. Azure GPU driver extension will support the NVadsV710_v5 Series at GA.
+| OS | Driver |
+| -------- |------------- |
+| Windows 10, Windows 11 64-bit 21H2, 22H2, 23H2<br/><br/>Windows 10 64-bit 21H2, 22H2, 20H2 <br/><br/> | [24.Q3](https://go.microsoft.com/fwlink/?linkid=2291063) (.exe) |
+| Windows Server 2022, Windows 11 EMS <br/><br/> | [24.Q3](https://go.microsoft.com/fwlink/?linkid=2292204) (.exe)
+| Windows Server 2019, Windows 10 EMS <br/><br/> | [24.Q3](https://go.microsoft.com/fwlink/?linkid=2292402) (.exe)
  
 ### Driver installation
 > [!NOTE]

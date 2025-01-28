@@ -7,11 +7,11 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-arm-template
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 11/14/2024
 ---
 
 # Add or remove certificates for a Service Fabric cluster in Azure
-It is recommended that you familiarize yourself with how Service Fabric uses X.509 certificates and be familiar with the [Cluster security scenarios](service-fabric-cluster-security.md). You must understand what a cluster certificate is and what is used for, before you proceed further.
+It's recommended that you familiarize yourself with how Service Fabric uses X.509 certificates and be familiar with the [Cluster security scenarios](service-fabric-cluster-security.md). You must understand what a cluster certificate is and what is used for, before you proceed further.
 
 Azure Service Fabrics SDK's default certificate load behavior is to deploy and use the defined certificate with expiry date furthest into the future; regardless of their primary or secondary configuration definition. Falling back to the classic behavior is a not recommended advanced action, and requires setting the "UseSecondaryIfNewer" setting parameter value to false within your `Fabric.Code` configuration.
 
@@ -19,34 +19,29 @@ Service fabric lets you specify two cluster certificates, a primary and a second
 
 > [!NOTE]
 > For a secure cluster, you will always need at least one valid (not revoked and not expired) cluster certificate (primary or secondary) deployed (if not, the cluster stops functioning). 90 days before all valid certificates reach expiration, the system generates a warning trace and a warning health event on the node. These are currently the only notifications Service Fabric sends regarding certificate expiration.
-> 
-> 
-
 
 [!INCLUDE [updated-for-az](~/reusable-content/ce-skilling/azure/includes/updated-for-az.md)]
 
 ## Add a secondary cluster certificate using the portal
-Secondary cluster certificate cannot be added through the Azure portal; use [Azure Resource Manager](#add-a-secondary-certificate-using-azure-resource-manager).
+Secondary cluster certificate can't be added through the Azure portal; use [Azure Resource Manager](#add-a-secondary-certificate-using-azure-resource-manager).
 
 ## Remove a cluster certificate using the portal
-For a secure cluster, you will always need at least one valid (not revoked and not expired) certificate. The certificate deployed with the furthest into the future expiring date will be in use, and removing it will make your cluster stop functioning; ensure to only remove the certificate that is expired, or an unused certificate that expires the soonest.
+For a secure cluster, you'll always need at least one valid (not revoked and not expired) certificate. The certificate deployed with the furthest into the future expiring date will be in use, and removing it makes your cluster stop functioning; ensure to only remove the certificate that is expired, or an unused certificate that expires the soonest.
 
 To remove an unused cluster security certificate, Navigate to the Security section and select the 'Delete' option from the context menu on the unused certificate.
 
-If your intent is to remove the certificate that is marked primary, then you will need to deploy a secondary certificate with an expiring date further into the future than the primary certificate, enabling the auto rollover behavior; delete the primary certificate after the auto rollover has completed.
+If your intent is to remove the certificate that is marked primary, then you need to deploy a secondary certificate with an expiring date further into the future than the primary certificate, enabling the auto rollover behavior; delete the primary certificate after the auto rollover has completed.
 
 ## Add a secondary certificate using Azure Resource Manager
 
-These steps assume that you are familiar with how Resource Manager works and have deployed at least one Service Fabric cluster using a Resource Manager template, and have the template that you used to set up the cluster handy. It is also assumed that you are comfortable using JSON.
+These steps assume you're familiar with how Resource Manager works and have deployed at least one Service Fabric cluster using a Resource Manager template, and have the template that you used to set up the cluster handy. It's also assumed that you're comfortable using JSON.
 
 > [!NOTE]
 > If you are looking for a sample template and parameters that you can use to follow along or as a starting point, then download it from this [git-repo](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample). 
-> 
-> 
 
 ### Edit your Resource Manager template
 
-For ease of following along, sample 5-VM-1-NodeTypes-Secure_Step2.JSON contains all the edits we will be making. the sample is available at [git-repo](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample).
+For ease of following along, sample 5-VM-1-NodeTypes-Secure_Step2.JSON contains all the edits we make. The sample is available at [git-repo](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample).
 
 **Make sure to follow all the steps**
 
@@ -70,7 +65,7 @@ For ease of following along, sample 5-VM-1-NodeTypes-Secure_Step2.JSON contains 
     
     ```
 
-3. Make changes to the **Microsoft.ServiceFabric/clusters** resource - Locate the "Microsoft.ServiceFabric/clusters" resource definition in your template. Under properties of that definition, you will find "Certificate" JSON tag, which should look something like the following JSON snippet:
+3. Make changes to the **Microsoft.ServiceFabric/clusters** resource - Locate the "Microsoft.ServiceFabric/clusters" resource definition in your template. Under properties of that definition, you'll find "Certificate" JSON tag, which should look something like the following JSON snippet:
    
     ```JSON
           "properties": {
@@ -165,7 +160,7 @@ For ease of following along, sample 5-VM-1-NodeTypes-Secure_Step2.JSON contains 
 > 
 
 ### Edit your template file to reflect the new parameters you added above
-If you are using the sample from the [git-repo](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample) to follow along, you can start to make changes in The sample 5-VM-1-NodeTypes-Secure.parameters_Step2.JSON 
+If you're using the sample from the [git-repo](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample) to follow along, you can start to make changes in The sample 5-VM-1-NodeTypes-Secure.parameters_Step2.JSON 
 
 Edit your Resource Manager Template parameter File, add the two new parameters for secCertificateThumbprint and secCertificateUrlValue. 
 
@@ -181,7 +176,7 @@ Edit your Resource Manager Template parameter File, add the two new parameters f
 
 ### Deploy the template to Azure
 
-- You are now ready to deploy your template to Azure. Open an Azure PowerShell version 1+ command prompt.
+- You're now ready to deploy your template to Azure. Open an Azure PowerShell version 1+ command prompt.
 - Sign in to your Azure Account and select the specific Azure subscription. This is an important step for folks who have access to more than one Azure subscription.
 
 ```powershell
@@ -197,7 +192,7 @@ Test-AzResourceGroupDeployment -ResourceGroupName <Resource Group that your clus
 
 ```
 
-Deploy the template to your resource group. Use the same Resource Group that your cluster is currently deployed to. Run the New-AzResourceGroupDeployment command. You do not need to specify the mode, since the default value is **incremental**.
+Deploy the template to your resource group. Use the same Resource Group that your cluster is currently deployed to. Run the New-AzResourceGroupDeployment command. You don't need to specify the mode, since the default value is **incremental**.
 
 > [!NOTE]
 > If you set Mode to Complete, you can inadvertently delete resources that are not in your template. So do not use it in this scenario.
@@ -208,7 +203,7 @@ Deploy the template to your resource group. Use the same Resource Group that you
 New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName <Resource Group that your cluster is currently deployed to> -TemplateFile <PathToTemplate>
 ```
 
-Here is a filled out example of the same PowerShell.
+Here's a filled out example of the same PowerShell.
 
 ```powershell
 $ResourceGroup2 = "chackosecure5"
@@ -219,9 +214,9 @@ New-AzResourceGroupDeployment -ResourceGroupName $ResourceGroup2 -TemplateParame
 
 ```
 
-Once the deployment is complete, connect to your cluster using the new Certificate and perform some queries. If you are able to do. Then you can delete the old certificate. 
+Once the deployment is complete, connect to your cluster using the new Certificate and perform some queries. If you're able to do. Then you can delete the old certificate. 
 
-If you are using a self-signed certificate, do not forget to import them into your local TrustedPeople cert store.
+If you're using a self-signed certificate, don't forget to import them into your local TrustedPeople cert store.
 
 ```powershell
 ######## Set up the certs on your local box
@@ -229,7 +224,7 @@ Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\TrustedPe
 Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\My -FilePath c:\Mycertificates\chackdanTestCertificate9.pfx -Password (ConvertTo-SecureString -String abcd123 -AsPlainText -Force)
 
 ```
-For quick reference here is the command to connect to a secure cluster 
+For quick reference here's the command to connect to a secure cluster 
 
 ```powershell
 $ClusterName= "chackosecure5.westus.cloudapp.azure.com:19000"
@@ -243,7 +238,7 @@ Connect-serviceFabricCluster -ConnectionEndpoint $ClusterName -KeepAliveInterval
     -StoreLocation CurrentUser `
     -StoreName My
 ```
-For quick reference here is the command to get cluster health
+For quick reference here's the command to get cluster health
 
 ```powershell
 Get-ServiceFabricClusterHealth 
@@ -267,9 +262,7 @@ You can specify any number of client certificates. Each addition/deletion result
 
 1. Navigate to the Security section, and select the '+ Authentication' button on top of the security section.
 2. On the 'Add Authentication' section, choose the 'Authentication Type' - 'Read-only client' or 'Admin client'
-3. Now choose the Authorization method. This indicates to Service Fabric whether it should look up this certificate by using the subject name or the thumbprint. In general, it is not a good security practice to use the authorization method of subject name. 
-
-![Add Client certificate][Add_Client_Cert]
+3. Now choose the Authorization method. This indicates to Service Fabric whether it should look up this certificate by using the subject name or the thumbprint. In general, it isn't a good security practice to use the authorization method of subject name. 
 
 ### Deletion of Client Certificates - Admin or Read-Only using the portal
 
@@ -288,7 +281,6 @@ Read these articles for more information on cluster management:
 * [Setup role-based access for clients](service-fabric-cluster-security-roles.md)
 
 <!--Image references-->
-[Add_Client_Cert]: ./media/service-fabric-cluster-security-update-certs-azure/SecurityConfigurations_13.PNG
 [Json_Pub_Setting1]: ./media/service-fabric-cluster-security-update-certs-azure/SecurityConfigurations_14.PNG
 [Json_Pub_Setting2]: ./media/service-fabric-cluster-security-update-certs-azure/SecurityConfigurations_15.PNG
 [Json_Pub_Setting3]: ./media/service-fabric-cluster-security-update-certs-azure/SecurityConfigurations_16.PNG

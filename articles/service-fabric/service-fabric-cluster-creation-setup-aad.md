@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 08/29/2022
+ms.date: 11/14/2024
 ---
 
 # Set up Microsoft Entra ID for client authentication
@@ -177,8 +177,6 @@ $resourceGroupName = 'mysftestcluster'
 ## Granting admin consent
 
 It may be necessary to 'Grant admin consent' for the 'API permissions' being configured. Navigate to [Azure App registrations](https://portal.azure.com/#view/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/~/RegisteredApps) blade and add name of cluster to the filter. For both registrations, open 'API permissions', and select 'Grant admin consent for' if available.
-
-![Screenshot that shows Grant admin consent selected on the Azure App registrations blade.](media/service-fabric-cluster-creation-setup-aad/portal-client-api-grant.png)
 
 ![Screenshot that shows the Grant admin consent confirmation with Yes highlighted.](media/service-fabric-cluster-creation-setup-aad/portal-client-api-grant-confirm.png)
 

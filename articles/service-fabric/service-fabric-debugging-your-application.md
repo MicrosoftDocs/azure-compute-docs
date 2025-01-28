@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 11/14/2024
 ---
 
 # Debug your Service Fabric application by using Visual Studio
@@ -78,8 +78,7 @@ If your Service Fabric applications are running on a Service Fabric cluster in A
    
     This action will kick off the process of enabling the remote debugging extension on your cluster nodes and required network configurations.
 2. Right-click the cluster node in **Cloud Explorer**, and choose **Attach Debugger**
-   
-    ![Attach debugger][attachdebugger]
+
 3. In the **Attach to process** dialog, choose the process you want to debug, and click **Attach**
    
     ![Choose process][chooseprocess]
@@ -99,8 +98,6 @@ If your Service Fabric applications are running on a Service Fabric cluster in A
      > 
      > 
 4. Once you finish debugging your application, you can disable the remote debugging extension by right-clicking the cluster in **Cloud Explorer** and choose **Disable Debugging**
-   
-    ![Disable remote debugging][disableremotedebugging]
 
 ## Streaming traces from a remote cluster node
 You're also able to stream traces directly from a remote cluster node to Visual Studio. This feature allows you to stream ETW trace events, produced on a Service Fabric cluster node.
@@ -145,10 +142,8 @@ You're also able to stream traces directly from a remote cluster node to Visual 
 [diagnosticeventsactions]: ./media/service-fabric-debugging-your-application/diagnosticeventsactions.png
 [breakpoint]: ./media/service-fabric-debugging-your-application/breakpoint.png
 [enableremotedebugging]: ./media/service-fabric-debugging-your-application/enableremotedebugging.png
-[attachdebugger]: ./media/service-fabric-debugging-your-application/attachdebugger.png
 [chooseprocess]: ./media/service-fabric-debugging-your-application/chooseprocess.png
 [conditionalbreakpoint]: ./media/service-fabric-debugging-your-application/conditionalbreakpoint.png
-[disableremotedebugging]: ./media/service-fabric-debugging-your-application/disableremotedebugging.png
 [enablestreamingtraces]: ./media/service-fabric-debugging-your-application/enablestreamingtraces.png
 [viewingstreamingtraces]: ./media/service-fabric-debugging-your-application/viewingstreamingtraces.png
 [viewremotestreamingtraces]: ./media/service-fabric-debugging-your-application/viewremotestreamingtraces.png

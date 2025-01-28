@@ -46,18 +46,18 @@ vCPUs (Qty.) and Memory for each size
 
 Local (temp) storage info for each size
 
-| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read (RR)<sup>1</sup> IOPS | Temp Disk Random Read (RR)<sup>1</sup> Speed (MBps) | Temp Disk Random Write (RW)<sup>1</sup> IOPS | Temp Disk Random Write (RW)<sup>1</sup> Speed (MBps) | Local-Special-Disk-Count | Local-Special-Disk-Size-GB | Local-Special-Disk-RR-IOPS | Local-Special-Disk-RR-MBps |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_E2d_v5 | 1 | 75 | 9000 | 125 |  |  |  |  |  |  |
-| Standard_E4d_v5 | 1 | 150 | 19000 | 250 |  |  |  |  |  |  |
-| Standard_E8d_v5 | 1 | 300 | 38000 | 500 |  |  |  |  |  |  |
-| Standard_E16d_v5 | 1 | 600 | 75000 | 1000 |  |  |  |  |  |  |
-| Standard_E20d_v5 | 1 | 750 | 94000 | 1250 |  |  |  |  |  |  |
-| Standard_E32d_v5 | 1 | 1200 | 150000 | 2000 |  |  |  |  |  |  |
-| Standard_E48d_v5 | 1 | 1800 | 225000 | 3000 |  |  |  |  |  |  |
-| Standard_E64d_v5 | 1 | 2400 | 300000 | 4000 |  |  |  |  |  |  |
-| Standard_E96d_v5 | 1 | 3600 | 450000 | 4000 |  |  |  |  |  |  |
-| Standard_E104id_v52 | 1 | 3800 | 450000 | 4000 |  |  |  |  |  |  |
+| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read (RR)<sup>1</sup> IOPS | Temp Disk Random Read (RR)<sup>1</sup> Throughput (MB/s) |
+| --- | --- | --- | --- | --- |
+| Standard_E2d_v5 | 1 | 75 | 9000 | 125 |
+| Standard_E4d_v5 | 1 | 150 | 19000 | 250 |
+| Standard_E8d_v5 | 1 | 300 | 38000 | 500 |
+| Standard_E16d_v5 | 1 | 600 | 75000 | 1000 |
+| Standard_E20d_v5 | 1 | 750 | 94000 | 1250 |
+| Standard_E32d_v5 | 1 | 1200 | 150000 | 2000 |
+| Standard_E48d_v5 | 1 | 1800 | 225000 | 3000 |
+| Standard_E64d_v5 | 1 | 2400 | 300000 | 4000 |
+| Standard_E96d_v5 | 1 | 3600 | 450000 | 4000 |
+| Standard_E104id_v52 | 1 | 3800 | 450000 | 4000 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
@@ -74,18 +74,18 @@ Local (temp) storage info for each size
 
 Remote (uncached) storage info for each size
 
-| Size Name | Max Remote Storage Disks (Qty.) | Uncached Disk IOPS | Uncached Disk Speed (MBps) | Uncached Disk Burst<sup>1</sup> IOPS | Uncached Disk Burst<sup>1</sup> Speed (MBps) | Uncached Special<sup>2</sup> Disk IOPS | Uncached Special<sup>2</sup> Disk Speed (MBps) | Uncached Burst<sup>1</sup> Special<sup>2</sup> Disk IOPS | Uncached Burst<sup>1</sup> Special<sup>2</sup> Disk Speed (MBps) |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_E2d_v5 | 4 | 3750 | 85 | 10000 | 1200 |  |  |  |  |
-| Standard_E4d_v5 | 8 | 6400 | 145 | 20000 | 1200 |  |  |  |  |
-| Standard_E8d_v5 | 16 | 12800 | 290 | 20000 | 1200 |  |  |  |  |
-| Standard_E16d_v5 | 32 | 25600 | 600 | 40000 | 1200 |  |  |  |  |
-| Standard_E20d_v5 | 32 | 32000 | 750 | 64000 | 1600 |  |  |  |  |
-| Standard_E32d_v5 | 32 | 51200 | 865 | 80000 | 2000 |  |  |  |  |
-| Standard_E48d_v5 | 32 | 76800 | 1315 | 80000 | 3000 |  |  |  |  |
-| Standard_E64d_v5 | 32 | 80000 | 1735 | 80000 | 3000 |  |  |  |  |
-| Standard_E96d_v5 | 32 | 80000 | 2600 | 80000 | 4000 |  |  |  |  |
-| Standard_E104id_v52 | 64 | 120000 | 4000 | 120000 | 4000 |  |  |  |  |
+| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD Disk IOPS | Uncached Premium SSD Throughput (MB/s) | Uncached Premium SSD Burst<sup>1</sup> IOPS | Uncached Premium SSD Burst<sup>1</sup> Throughput (MB/s) |
+| --- | --- | --- | --- | --- | --- |
+| Standard_E2d_v5 | 4 | 3750 | 85 | 10000 | 1200 |
+| Standard_E4d_v5 | 8 | 6400 | 145 | 20000 | 1200 |
+| Standard_E8d_v5 | 16 | 12800 | 290 | 20000 | 1200 |
+| Standard_E16d_v5 | 32 | 25600 | 600 | 40000 | 1200 |
+| Standard_E20d_v5 | 32 | 32000 | 750 | 64000 | 1600 |
+| Standard_E32d_v5 | 32 | 51200 | 865 | 80000 | 2000 |
+| Standard_E48d_v5 | 32 | 76800 | 1315 | 80000 | 3000 |
+| Standard_E64d_v5 | 32 | 80000 | 1735 | 80000 | 3000 |
+| Standard_E96d_v5 | 32 | 80000 | 2600 | 80000 | 4000 |
+| Standard_E104id_v52 | 64 | 120000 | 4000 | 120000 | 4000 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
@@ -94,7 +94,7 @@ Remote (uncached) storage info for each size
 
 #### Table definitions
 - <sup>1</sup>Some sizes support [bursting](../../disk-bursting.md) to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.
-- <sup>2</sup>Special Storage refers to either [Ultra Disk](../../../virtual-machines/disks-enable-ultra-ssd.md) or [Premium SSD v2](../../../virtual-machines/disks-deploy-premium-v2.md) storage.
+
 - Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
 - Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
 - Data disks can operate in cached or uncached modes. For cached data disk operation, the host cache mode is set to ReadOnly or ReadWrite. For uncached data disk operation, the host cache mode is set to None.
@@ -105,7 +105,7 @@ Remote (uncached) storage info for each size
 
 Network interface info for each size
 
-| Size Name | Max NICs (Qty.) | Max Bandwidth (Mbps) |
+| Size Name | Max NICs (Qty.) | Max Network Bandwidth (Mb/s) |
 | --- | --- | --- |
 | Standard_E2d_v5 | 2 | 12500 |
 | Standard_E4d_v5 | 2 | 12500 |
@@ -137,3 +137,4 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 ---
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]
+

@@ -2671,6 +2671,11 @@
             "redirect_document_id": false
         },
         {
+            "source_path_from_root": "/articles/virtual-machines/windows/expand-os-disk.md",
+            "redirect_url": "/azure/virtual-machines/windows/expand-disks",
+            "redirect_document_id": true
+        },
+        {
             "source_path_from_root": "/articles/virtual-machines/windows/create-managed-disk-ps.md",
             "redirect_url": "/azure/virtual-machines/windows/attach-disk-ps",
             "redirect_document_id": false
@@ -2683,6 +2688,11 @@
         {
             "source_path_from_root": "/articles/virtual-machines/windows/classic/attach-disk.md",
             "redirect_url": "/azure/virtual-machines/windows/attach-managed-disk-portal",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/disks-performance-tiers-portal.md",
+            "redirect_url": "/azure/virtual-machines/disks-performance-tiers",
             "redirect_document_id": true
         },
         {
@@ -6513,6 +6523,31 @@
         {
             "source_path_from_root": "/articles/virtual-machines/hb-series.md",
             "redirect_url": "/azure/virtual-machines/sizes/high-performance-compute/hb-series",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/sizes/memory-optimized/mbsv3-series.md",
+            "redirect_url": "/azure/virtual-machines/sizes/memory-optimized/mbsv3-mbdsv3-series",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/sizes/memory-optimized/mbdsv3-series.md",
+            "redirect_url": "/azure/virtual-machines/sizes/memory-optimized/mbsv3-mbdsv3-series",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/sizes/nm-ads-ma35d-series.md",
+            "redirect_url": "/azure/virtual-machines/sizes/fpga-accelerated/nm-ads-ma35d-series",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/basv2.md",
+            "redirect_url": "/azure/virtual-machines/sizes/general-purpose/basv2-series",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/b-series-cpu-credit-model/b-series-cpu-credit-model.md",
+            "redirect_url": "/azure/virtual-machines/sizes/b-series-cpu-credit-model",
             "redirect_document_id": true
         }
     ]

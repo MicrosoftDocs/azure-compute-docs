@@ -6,8 +6,8 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
-ms.date: 08/29/2024
-ms.custom: devx-track-azurecli
+ms.date: 09/09/2024
+ms.custom: devx-track-azurecli, innovation-engine
 ---
 
 # Deploy container instances into an Azure virtual network
@@ -27,10 +27,47 @@ Examples in this article are formatted for the Bash shell. If you prefer another
 
 ## Prerequisites
 
+### Define environment variables
+
+The automated deployment pathway uses the following environment variables and resource names throughout this guide. Users proceeding through the guide manually can use their own variables and names as preferred.
+
+```azurecli-interactive
+export RANDOM_ID="$(openssl rand -hex 3)"
+export MY_RESOURCE_GROUP_NAME="myACIResourceGroup$RANDOM_ID"
+export MY_VNET_NAME="aci-vnet"
+export MY_SUBNET_NAME="aci-subnet"
+export MY_SUBNET_ID="/subscriptions/$(az account show --query id --output tsv)/resourceGroups/$MY_RESOURCE_GROUP_NAME/providers/Microsoft.Network/virtualNetworks/$MY_VNET_NAME/subnets/$MY_SUBNET_NAME"
+export MY_APP_CONTAINER_NAME="appcontainer"
+export MY_COMM_CHECKER_NAME="commchecker"
+export MY_YAML_APP_CONTAINER_NAME="appcontaineryaml"
+```
+
+### Create a resource group
+
 You need a resource group to manage all the resources used in the following examples. To create a resource group, use [az group create][az-group-create]:
 
 ```azurecli-interactive
-az group create --name myResourceGroup --location eastus
+az group create --name $MY_RESOURCE_GROUP_NAME --location eastus
+```
+
+A successful operation should produce output similar to the following JSON:
+
+Results:
+
+<!-- expected_similarity=0.5 -->
+
+```json
+{
+  "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx/resourceGroups/myACIResourceGroup123abc",
+  "location": "abcdef",
+  "managedBy": null,
+  "name": "myACIResourceGroup123",
+  "properties": {
+    "provisioningState": "Succeeded"
+  },
+  "tags": null,
+  "type": "Microsoft.Resources/resourceGroups"
+}
 ```
 
 ## Deploy to new virtual network
@@ -55,13 +92,132 @@ The following [az container create][az-container-create] command specifies setti
 
 ```azurecli-interactive
 az container create \
-  --name appcontainer \
-  --resource-group myResourceGroup \
+  --name $MY_APP_CONTAINER_NAME \
+  --resource-group $MY_RESOURCE_GROUP_NAME \
   --image mcr.microsoft.com/azuredocs/aci-helloworld \
-  --vnet aci-vnet \
+  --vnet $MY_VNET_NAME \
   --vnet-address-prefix 10.0.0.0/16 \
-  --subnet aci-subnet \
+  --subnet $MY_SUBNET_NAME \
   --subnet-address-prefix 10.0.0.0/24
+```
+
+A successful operation should produce output similar to the following JSON:
+
+Results:
+
+<!-- expected_similarity=0.3 -->
+
+```json
+{
+  "confidentialComputeProperties": null,
+  "containers": [
+    {
+      "command": null,
+      "environmentVariables": [],
+      "image": "mcr.microsoft.com/azuredocs/aci-helloworld",
+      "instanceView": {
+        "currentState": {
+          "detailStatus": "",
+          "exitCode": null,
+          "finishTime": null,
+          "startTime": "0000-00-00T00:00:00.000000+00:00",
+          "state": "Running"
+        },
+        "events": [
+          {
+            "count": 1,
+            "firstTimestamp": "0000-00-00T00:00:00+00:00",
+            "lastTimestamp": "0000-00-00T00:00:00+00:00",
+            "message": "Successfully pulled image \"mcr.microsoft.com/azuredocs/aci-helloworld@sha256:0000000000000000000000000000000000000000000000000000000000000000\"",
+            "name": "Pulled",
+            "type": "Normal"
+          },
+          {
+            "count": 1,
+            "firstTimestamp": "0000-00-00T00:00:00+00:00",
+            "lastTimestamp": "0000-00-00T00:00:00+00:00",
+            "message": "pulling image \"mcr.microsoft.com/azuredocs/aci-helloworld@sha256:0000000000000000000000000000000000000000000000000000000000000000\"",
+            "name": "Pulling",
+            "type": "Normal"
+          },
+          {
+            "count": 1,
+            "firstTimestamp": "0000-00-00T00:00:00+00:00",
+            "lastTimestamp": "0000-00-00T00:00:00+00:00",
+            "message": "Started container",
+            "name": "Started",
+            "type": "Normal"
+          }
+        ],
+        "previousState": null,
+        "restartCount": 0
+      },
+      "livenessProbe": null,
+      "name": "appcontainer",
+      "ports": [
+        {
+          "port": 80,
+          "protocol": "TCP"
+        }
+      ],
+      "readinessProbe": null,
+      "resources": {
+        "limits": null,
+        "requests": {
+          "cpu": 1.0,
+          "gpu": null,
+          "memoryInGb": 1.5
+        }
+      },
+      "securityContext": null,
+      "volumeMounts": null
+    }
+  ],
+  "diagnostics": null,
+  "dnsConfig": null,
+  "encryptionProperties": null,
+  "extensions": null,
+  "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx/resourceGroups/myACIResourceGroup123/providers/Microsoft.ContainerInstance/containerGroups/appcontainer",
+  "identity": null,
+  "imageRegistryCredentials": null,
+  "initContainers": [],
+  "instanceView": {
+    "events": [],
+    "state": "Running"
+  },
+  "ipAddress": {
+    "autoGeneratedDomainNameLabelScope": null,
+    "dnsNameLabel": null,
+    "fqdn": null,
+    "ip": "10.0.0.4",
+    "ports": [
+      {
+        "port": 80,
+        "protocol": "TCP"
+      }
+    ],
+    "type": "Private"
+  },
+  "location": "eastus",
+  "name": "appcontainer",
+  "osType": "Linux",
+  "priority": null,
+  "provisioningState": "Succeeded",
+  "resourceGroup": "myACIResourceGroup123abc",
+  "restartPolicy": "Always",
+  "sku": "Standard",
+  "subnetIds": [
+    {
+      "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx/resourceGroups/myACIResourceGroup123/providers/Microsoft.Network/virtualNetworks/aci-vnet/subnets/aci-subnet",
+      "name": null,
+      "resourceGroup": "myACIResourceGroup123abc"
+    }
+  ],
+  "tags": {},
+  "type": "Microsoft.ContainerInstance/containerGroups",
+  "volumes": null,
+  "zones": null
+}
 ```
 
 When you deploy to a new virtual network by using this method, the deployment can take a few minutes while the network resources are created. After the initial deployment, further container group deployments to the same subnet complete more quickly.
@@ -75,55 +231,7 @@ To deploy a container group to an existing virtual network:
    * Virtual network name and subnet name
    * Virtual network resource ID and subnet resource ID, which allows using a virtual network from a different resource group
 
-### Example
-
-The following example deploys a second container group to the same subnet created previously, and verifies communication between the two container instances.
-
-First, get the IP address of the first container group you deployed, the *appcontainer*:
-
-```azurecli-interactive
-az container show --resource-group myResourceGroup \
-  --name appcontainer \
-  --query ipAddress.ip --output tsv
-```
-
-The output displays the IP address of the container group in the private subnet. For example:
-
-```output
-10.0.0.4
-```
-
-Now, set `CONTAINER_GROUP_IP` to the IP you retrieved with the `az container show` command, and execute the following `az container create` command. This second container, *commchecker*, runs an Alpine Linux-based image and executes `wget` against the first container group's private subnet IP address.
-
-```azurecli-interactive
-CONTAINER_GROUP_IP=<container-group-IP-address>
-
-az container create \
-  --resource-group myResourceGroup \
-  --name commchecker \
-  --image alpine:3.5 \
-  --command-line "wget $CONTAINER_GROUP_IP" \
-  --restart-policy never \
-  --vnet aci-vnet \
-  --subnet aci-subnet
-```
-
-After this second container deployment completes, pull its logs so you can see the output of the `wget` command it executed:
-
-```azurecli-interactive
-az container logs --resource-group myResourceGroup --name commchecker
-```
-
-If the second container communicated successfully with the first, output is similar to:
-
-```output
-Connecting to 10.0.0.4 (10.0.0.4:80)
-index.html           100% |*******************************|  1663   0:00:00 ETA
-```
-
-The log output should show that `wget` was able to connect and download the index file from the first container using its private IP address on the local subnet. Network traffic between the two container groups remained within the virtual network.
-
-### Example - YAML
+### Deploy using a YAML file
 
 You can also deploy a container group to an existing virtual network by using a YAML file, a [Resource Manager template](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.containerinstance/aci-vnet), or another programmatic method such as with the Python SDK.
 
@@ -136,11 +244,11 @@ For example, when using a YAML file, you can deploy to a virtual network with a 
   * `id`: The resource ID of the subnet
   * `name`: The name of the subnet
 
-This YAML creates a container group named *appcontaineryaml* in your virtual network.
+This YAML creates a container group in your virtual network. Enter your container group name in the name fields and your subnet ID in the subnet ID field. We use *appcontaineryaml* for the name. If you need to find your subnet ID and no longer have access to previous outputs, you can use the [az container show][az-container-show] command to view it. Look for the `id` field under `subnetIds`.
 
 ```YAML
 apiVersion: '2021-07-01'
-location: westus
+location: eastus
 name: appcontaineryaml
 properties:
   containers:
@@ -162,63 +270,116 @@ properties:
   osType: Linux
   restartPolicy: Always
   subnetIds:
-    - id: <subnet-id>
+    - id: <subnet_id>
       name: default
 tags: null
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
+The following Bash command is for the automated deployment pathway.
+
+```bash
+echo -e "apiVersion: '2021-07-01'\nlocation: eastus\nname: $MY_YAML_APP_CONTAINER_NAME\nproperties:\n  containers:\n  - name: $MY_YAML_APP_CONTAINER_NAME\n    properties:\n      image: mcr.microsoft.com/azuredocs/aci-helloworld\n      ports:\n      - port: 80\n        protocol: TCP\n      resources:\n        requests:\n          cpu: 1.0\n          memoryInGB: 1.5\n  ipAddress:\n    type: Private\n    ports:\n    - protocol: tcp\n      port: '80'\n  osType: Linux\n  restartPolicy: Always\n  subnetIds:\n    - id: $MY_SUBNET_ID\n      name: default\ntags: null\ntype: Microsoft.ContainerInstance/containerGroups" > container-instances-vnet.yaml
+```
+
 Deploy the container group with the [az container create][az-container-create] command, specifying the YAML file name for the `--file` parameter:
 
 ```azurecli-interactive
-az container create --resource-group myResourceGroup \
-  --file vnet-deploy-aci.yaml
+az container create --resource-group $MY_RESOURCE_GROUP_NAME \
+  --file container-instances-vnet.yaml
 ```
 
-Once the deployment completes, run the [az container show][az-container-show] command to display its status. Sample output:
+The following Bash command is for the automated deployment pathway.
+
+```bash
+rm container-instances-vnet.yaml
+```
+
+Once the deployment completes, run the [az container show][az-container-show] command to display its status:
+
+```azurecli-interactive
+az container list --resource-group $MY_RESOURCE_GROUP_NAME --output table
+```
+
+The output should resemble the sample below:
+
+Results:
+
+<!-- expected_similarity=0.4  -->
 
 ```output
-Name              ResourceGroup    Status    Image                                       IP:ports     Network    CPU/Memory       OsType    Location
-----------------  ---------------  --------  ------------------------------------------  -----------  ---------  ---------------  --------  ----------
-appcontaineryaml  myResourceGroup  Running   mcr.microsoft.com/azuredocs/aci-helloworld  10.0.0.5:80  Private    1.0 core/1.5 gb  Linux     westus
+Name              ResourceGroup             Status     Image                                       IP:ports        Network    CPU/Memory       OsType    Location
+----------------  ------------------------  ---------  ------------------------------------------  --------------  ---------  ---------------  --------  ----------
+appcontainer      myACIResourceGroup123abc  Succeeded  mcr.microsoft.com/azuredocs/aci-helloworld  10.0.0.4:80,80  Private    1.0 core/1.5 gb  Linux     abcdef
+appcontaineryaml  myACIResourceGroup123abc  Succeeded  mcr.microsoft.com/azuredocs/aci-helloworld  10.0.0.5:80,80  Private    1.0 core/1.5 gb  Linux     abcdef
 ```
+
+### Demonstrate communication between container instances
+
+The following example deploys a third container group to the same subnet created previously. Using an Alpine Linux image, it verifies communication between itself and the first container instance.
+
+> [!NOTE]
+> Due to rate limiting in effect for pulling public Docker images like the Alpine Linux one used here, you may receive an error in the form:
+>
+> (RegistryErrorResponse) An error response is received from the docker registry 'index.docker.io'. Please retry later.
+> Code: RegistryErrorResponse
+> Message: An error response is received from the docker registry 'index.docker.io'. Please retry later.
+
+The following Bash command is for the automated deployment pathway.
+
+```bash
+echo -e "Due to rate limiting in effect for pulling public Docker images like the Alpine Linux one used here, you may receive an error in the form:\n\n(RegistryErrorResponse) An error response is received from the docker registry 'index.docker.io'. Please retry later.\nCode: RegistryErrorResponse\nMessage: An error response is received from the docker registry 'index.docker.io'. Please retry later.\n\nIf this occurs, the automated deployment will exit. You can try again or go to the end of the guide to see instructions for cleaning up your resources."
+```
+
+First, get the IP address of the first container group you deployed, the *appcontainer*:
+
+```azurecli-interactive
+az container show --resource-group $MY_RESOURCE_GROUP_NAME \
+  --name $MY_APP_CONTAINER_NAME \
+  --query ipAddress.ip --output tsv
+```
+
+The output displays the IP address of the container group in the private subnet. For example:
+
+Results:
+
+<!-- expected_similarity=0.5 -->
+
+```output
+10.0.0.4
+```
+
+Now, set `CONTAINER_GROUP_IP` to the IP you retrieved with the `az container show` command, and execute the following `az container create` command. This second container, *commchecker*, runs an Alpine Linux-based image and executes `wget` against the first container group's private subnet IP address.
+
+```azurecli-interactive
+az container create \
+  --resource-group $MY_RESOURCE_GROUP_NAME \
+  --name $MY_COMM_CHECKER_NAME \
+  --image alpine:3.4 \
+  --command-line "wget 10.0.0.4" \
+  --restart-policy never \
+  --vnet $MY_VNET_NAME \
+  --subnet $MY_SUBNET_NAME
+```
+
+After this second container deployment completes, pull its logs so you can see the output of the `wget` command it executed:
+
+```azurecli-interactive
+az container logs --resource-group $MY_RESOURCE_GROUP_NAME --name $MY_COMM_CHECKER_NAME
+```
+
+If the second container communicated successfully with the first, output is similar to:
+
+```output
+Connecting to 10.0.0.4 (10.0.0.4:80)
+index.html           100% |*******************************|  1663   0:00:00 ETA
+```
+
+The log output should show that `wget` was able to connect and download the index file from the first container using its private IP address on the local subnet. Network traffic between the two container groups remained within the virtual network.
 
 ## Clean up resources
 
-### Delete container instances
-
-When you're done working with the container instances you created, delete them with the following commands:
-
-```azurecli-interactive
-az container delete --resource-group myResourceGroup --name appcontainer -y
-az container delete --resource-group myResourceGroup --name commchecker -y
-az container delete --resource-group myResourceGroup --name appcontaineryaml -y
-```
-
-### Delete network resources
-
-This feature currently requires several additional commands to delete the network resources you created earlier. If you used the example commands in previous sections of this article to create your virtual network and subnet, then you can use the following script to delete those network resources. The script assumes that your resource group contains a single virtual network with a single network profile.
-
-Before executing the script, set the `RES_GROUP` variable to the name of the resource group containing the virtual network and subnet that should be deleted. Update the name of the virtual network if you didn't use the `aci-vnet` name suggested earlier. The script is formatted for the Bash shell. If you prefer another shell such as PowerShell or Command Prompt, you need to adjust variable assignment and accessors accordingly.
-
-> [!WARNING]
-> This script deletes resources! It deletes the virtual network and all subnets it contains. Be sure that you no longer need *any* of the resources in the virtual network, including any subnets it contains, prior to running this script. Once deleted, **these resources are unrecoverable**.
-
-```azurecli-interactive
-# Replace <my-resource-group> with the name of your resource group
-# Assumes one virtual network in resource group
-RES_GROUP=<my-resource-group>
-
-# Get network profile ID
-# Assumes one profile in virtual network
-NETWORK_PROFILE_ID=$(az network profile list --resource-group $RES_GROUP --query [0].id --output tsv)
-
-# Delete the network profile
-az network profile delete --id $NETWORK_PROFILE_ID -y
-
-# Delete virtual network
-az network vnet delete --resource-group $RES_GROUP --name aci-vnet
-```
+If you don't plan to continue using these resources, you can delete them to avoid Azure charges. You can clean up all the resources you used in this guide by deleting the resource group with the [az group delete][az-group-delete] command. Once deleted, **these resources are unrecoverable**.
 
 ## Next steps
 
@@ -237,5 +398,5 @@ az network vnet delete --resource-group $RES_GROUP --name aci-vnet
 [az-container-create]: /cli/azure/container#az_container_create
 [az-container-show]: /cli/azure/container#az_container_show
 [az-network-vnet-create]: /cli/azure/network/vnet#az_network_vnet_create
-[az-network-profile-list]: /cli/azure/network/profile#az_network_profile_list
+[az-group-delete]: /cli/azure/group#az-group-delete
 [available-regions]: https://azure.microsoft.com/explore/global-infrastructure/products-by-region/?products=container-instances

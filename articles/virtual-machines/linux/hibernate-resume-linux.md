@@ -20,20 +20,24 @@ ms.custom: devx-track-azurecli, devx-track-azurepowershell, linux-related-conten
 To learn how hibernation works, check out the [hibernation overview](../hibernate-resume.md).
 
 ## Supported configurations
-Hibernation support is limited to certain VM sizes and OS versions. Make sure you have a supported configuration before using hibernation.
+Hibernation support is limited to certain Virtual Machine (VM) sizes and Operating System (OS) versions. Make sure you have a supported configuration before using hibernation.
 
 For a list of hibernation compatible VM sizes, check out the [supported VM sizes section in the hibernation overview](../hibernate-resume.md#supported-vm-sizes).
 
 ### Supported Linux distros
 The following Linux operating systems support hibernation:
 
-- Ubuntu 22.04 LTS
-- Ubuntu 20.04 LTS
-- Ubuntu 18.04 LTS
+- Ubuntu 22.04 LTS (Long-Term Support)
+
+- Ubuntu 20.04 LTS (Long-Term Support)
+
+- Ubuntu 18.04 LTS (Long-Term Support)
+
 - Debian 11
 - Debian 10 (with backports kernel)
-- RHEL 9.0 and higher (with minimum kernel version 5.14.0-70)
-- RHEL 8.3 and higher (with minimum kernel version 4.18.0.240)
+- Red Hat Enterprise Linux 9.0 and higher (with minimum kernel version 5.14.0-70)
+
+- Red Hat Enterprise Linux 8.5 and higher (with minimum kernel version 4.18.0-348)
 
 ### Prerequisites and configuration limitations
 -	Hibernation isn't supported with Trusted Launch for Linux VMs  
@@ -44,7 +48,7 @@ For general limitations, Azure feature limitations supported VM sizes, and featu
 
 To hibernate a VM, you must first enable the feature on the VM.
 
-To enable hibernation during VM creation, you can use the Azure portal, CLI, PowerShell, ARM templates and API. 
+To enable hibernation during VM creation, you can use the Azure portal, CLI, PowerShell, ARM templates, and API. 
 
 ### [Portal](#tab/enableWithPortal)
 
@@ -110,7 +114,7 @@ To learn more about REST, check out an [API example](/rest/api/compute/virtual-m
 
 ---
 
-Once you've created a VM with hibernation enabled, you need to configure the guest OS to successfully hibernate your VM. 
+After creating a VM with hibernation enabled, you'll need to configure the guest OS to successfully hibernate your VM. 
 
 ## Enabling hibernation on an existing Linux VM 
 
@@ -130,9 +134,9 @@ To enable hibernation on an existing VM using Azure CLI, first deallocate your V
        --set supportsHibernation=true 
     ```
 
-1. Update the VM to enable hibernation.
+1. To enable hibernation, update the VM setting.
 
-   ```azurecli
+      ```azurecli
       az vm update --resource-group myResourceGroup \
       --name myVM \
       --enable-hibernation true 
@@ -197,7 +201,7 @@ After ensuring that your VM configuration is supported, you can enable hibernati
 ### LinuxHibernateExtension
 
 > [!NOTE]
-> If you've already installed the hibernation-setup-tool you do not need to install the LinuxHibernateExtension. These are redundant methods to enable hibernation on a Linux VM.
+> If you've already installed the hibernation-setup-tool, you don't need to install the LinuxHibernateExtension. These steps are redundant ways to enable hibernation on a Linux VM.
 
 When you create a Hibernation-enabled VM via the Azure portal, the LinuxHibernationExtension is automatically installed on the VM. 
 
@@ -206,8 +210,8 @@ If the extension is missing, you can [manually install the LinuxHibernateExtensi
 >[!NOTE]
 > Azure extensions are currently disabled by default for Debian images. To re-enable extensions, [check the Linux hibernation troubleshooting guide](../linux/hibernate-resume-troubleshooting-linux.md#azure-extensions-disabled-on-debian-images).
 
->[!NOTE]
-> For RHEL LVM you will need to expand the root volume and ensure there is sufficient space available to create the swap file. To expand the volume, [check the disk expansion guide](expand-disks.md?tabs=rhellvm#increase-the-size-of-the-os-disk).
+> [!NOTE]
+> For RHEL LVM, you need to expand the root volume and ensure there's sufficient space available to create the swap file. To expand the volume, [check the disk expansion guide](expand-disks.md?tabs=rhellvm#increase-the-size-of-the-os-disk).
 
 #### [CLI](#tab/cliLHE)
     
@@ -229,7 +233,7 @@ Set-AzVMExtension -Publisher Microsoft.CPlat.Core -ExtensionType LinuxHibernateE
 ### Hibernation-setup-tool 
 
 > [!NOTE]
-> If you've already installed the LinuxHibernateExtension you do not need to install the hibernation-setup-tool. These are redundant methods to enable hibernation on a Linux VM.
+> If you've already installed the LinuxHibernateExtension, you don't need to install the hibernation-setup-tool. These steps are redundant ways to enable hibernation on a Linux VM.
 
 You can install the hibernation-setup-tool package on your Linux VM from Microsoft’s Linux software repository at [packages.microsoft.com](https://packages.microsoft.com).
 
@@ -270,8 +274,8 @@ sudo dnf install hibernation-setup-tool
 ```
 ---
 
->[!NOTE]
-> For RHEL LVM you will need to expand the root volume and ensure there is sufficient space available to create the swap file. To expand the volume, [check the disk expansion guide](expand-disks.md?tabs=rhellvm#increase-the-size-of-the-os-disk).
+> [!NOTE]
+> For RHEL LVM, you need to expand the root volume and ensure there's sufficient space available to create the swap file. To expand the volume, [check the disk expansion guide](expand-disks.md?tabs=rhellvm#increase-the-size-of-the-os-disk).
 
 Once the package installs successfully, your Linux guest OS is configured for hibernation. You can also create a new Azure Compute Gallery Image from this VM and use the image to create VMs. VMs created with this image have the hibernation package preinstalled, simplifying your VM creation experience. 
 
@@ -279,10 +283,10 @@ Once the package installs successfully, your Linux guest OS is configured for hi
 [!INCLUDE [hibernate-resume-platform-instructions](../includes/hibernate-resume-platform-instructions.md)]
 
 ## Troubleshooting
-Refer to the [Hibernate troubleshooting guide](../hibernate-resume-troubleshooting.md) and the [Linux VM hibernation troubleshooting guide](./hibernate-resume-troubleshooting-linux.md) for more information.
+For more information, see the [Hibernate troubleshooting guide](../hibernate-resume-troubleshooting.md) and the [Linux VM hibernation troubleshooting guide](./hibernate-resume-troubleshooting-linux.md).
 
 ## FAQs
-Refer to the [Hibernate FAQs](../hibernate-resume.md#faqs) for more information.
+For more information, see the [Hibernate FAQs](../hibernate-resume.md#faqs).
 
 ## Next steps
 - [Learn more about Azure billing](/azure/cost-management-billing/)

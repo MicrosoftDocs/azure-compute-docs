@@ -8,7 +8,7 @@ author: guywi-ms
 ms.author: guywild
 ms.reviewer: jushiman
 ms.collection: windows
-ms.date: 08/29/2023
+ms.date: 01/14/2025
 ---
 # Azure Monitor Dependency virtual machine extension for Windows
 
@@ -134,15 +134,15 @@ When you place the extension JSON at the root of the template, the resource name
 You can use the `Set-AzVMExtension` command to deploy the Dependency agent virtual machine extension to an existing virtual machine. Before you run the command, the public and private configurations need to be stored in a PowerShell hash table.
 
 ```powershell
-
 Set-AzVMExtension -ExtensionName "Microsoft.Azure.Monitoring.DependencyAgent" `
     -ResourceGroupName "myResourceGroup" `
     -VMName "myVM" `
     -Publisher "Microsoft.Azure.Monitoring.DependencyAgent" `
     -ExtensionType "DependencyAgentWindows" `
     -TypeHandlerVersion 9.10 `
-    -Location WestUS
+    -Settings @{"enableAMA" = "true"}
 ```
+
 
 ## Automatic extension upgrade
 A new feature to [automatically upgrade minor versions](../automatic-extension-upgrade.md) of Dependency extension is now available.

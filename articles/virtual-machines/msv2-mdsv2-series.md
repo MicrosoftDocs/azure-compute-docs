@@ -6,7 +6,7 @@ ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 12/20/2022
-ms.author: ayshak
+ms.author: jushiman
 ---
 
 # Msv2 and Mdsv2-series Medium Memory

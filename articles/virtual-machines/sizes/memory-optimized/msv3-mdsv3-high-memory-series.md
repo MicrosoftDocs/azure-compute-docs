@@ -14,8 +14,6 @@ ms.date:  10/15/2024
 
 # Msv3 and Mdsv3 High Memory series
 
-
-
 The Msv3 and Mdsv3 High Memory (HM) Virtual Machine (VM) series are the next generation of memory-optimized VM sizes delivering faster performance, lower total cost of ownership and improved resilience to failures compared to the previous generation, Mv2-series VMs. Mv3 HM offers VM sizes with memory ranging from 6TB to 16TB, up to 8,000 MBps throughout to remote storage, and up to 25% networking performance improvements over previous generations.
 
 ## Msv3 High Memory series
@@ -28,9 +26,11 @@ The Msv3 and Mdsv3 High Memory (HM) Virtual Machine (VM) series are the next gen
 |---|---|---|---|---|---|---|---|
 | **Standard_M416s_6_v3** | 416 | 5,696 | 64 | 130,000/4,000 | 130,000/4,000 | 8 | 40,000 |
 | **Standard_M416s_8_v3** | 416 | 7,600 | 64 | 130,000/4,000 | 130,000/4,000 | 8 | 40,000 |
-| **Standard_M624s_12_v3** | 624 | 11,400 | 64 | 130,000/4,000 | 130,000/4,000 | 8 | 40,000 |
-| **Standard_M832s_12_v3** | 832 | 11,400 | 64 | 130,000/4,000 | 130,000/4,000 | 8 | 40,000 |
-| **Standard_M832is_16_v3** | 832 | 15,200 | 64 | 130,000/8,000 | 260,000/8,000 | 8 | 40,000 |
+| **Standard_M624s_12_v3**<sup>1</sup> | 624 | 11,400 | 64 | 130,000/4,000 | 130,000/4,000 | 8 | 40,000 |
+| **Standard_M832s_12_v3**<sup>1</sup> | 832 | 11,400 | 64 | 130,000/4,000 | 130,000/4,000 | 8 | 40,000 |
+| **Standard_M832is_16_v3**<sup>1</sup> | 832 | 15,200 | 64 | 130,000/8,000 | 260,000/8,000 | 8 | 40,000 |
+
+<sup>1</sup> [Disable SMT](/sql/sql-server/compute-capacity-limits-by-edition-of-sql-server#limit-number-of-logical-cores-per-numa-node-to-64) to run SQL Server on a VM with more than 64 vCores per NUMA node.  
 
 ## Msv3 High Memory series (SCSI)
 
@@ -38,9 +38,11 @@ The Msv3 and Mdsv3 High Memory (HM) Virtual Machine (VM) series are the next gen
 |---|---|---|---|---|---|---|---|
 | **Standard_M416s_6_v3** | 416 | 5,696 | 64 | 130,000/4,000 | 130,000/4,000 | 8 | 40,000 |
 | **Standard_M416s_8_v3** | 416 | 7,600 | 64 | 130,000/4,000 | 130,000/4,000 | 8 | 40,000 |
-| **Standard_M624s_12_v3** | 624 | 11,400 | 64 | 130,000/4,000 | 130,000/4,000 | 8 | 40,000 |
-| **Standard_M832s_12_v3** | 832 | 11,400 | 64 | 130,000/4,000 | 130,000/4,000 | 8 | 40,000 |
-| **Standard_M832is_16_v3** | 832 | 15,200 | 64 | 130,000/8,000 | 130,000/8,000 | 8 | 40,000 |
+| **Standard_M624s_12_v3**<sup>1</sup> | 624 | 11,400 | 64 | 130,000/4,000 | 130,000/4,000 | 8 | 40,000 |
+| **Standard_M832s_12_v3**<sup>1</sup> | 832 | 11,400 | 64 | 130,000/4,000 | 130,000/4,000 | 8 | 40,000 |
+| **Standard_M832is_16_v3**<sup>1</sup> | 832 | 15,200 | 64 | 130,000/8,000 | 130,000/8,000 | 8 | 40,000 |
+
+<sup>1</sup> [Disable SMT](/sql/sql-server/compute-capacity-limits-by-edition-of-sql-server#limit-number-of-logical-cores-per-numa-node-to-64) to run SQL Server on a VM with more than 64 vCores per NUMA node.  
 
 ## Mdsv3 High Memory series
 
@@ -54,11 +56,12 @@ These virtual machines feature local SSD storage (up to 400 GiB).
 |---|---|---|---|---|---|---|---|---|---|
 | **Standard_M416ds_6_v3** | 416 | 5,696 | 400 | 64 | 250,000/1,600 | 130,000/4,000 | 130,000/4,000 | 8 | 40,000 |
 | **Standard_M416ds_8_v3** | 416 | 7,600 | 400 | 64 | 250,000/1,600 | 130,000/4,000 | 130,000/4,000 | 8 | 40,000 |
-| **Standard_M624ds_12_v3** | 624 | 11,400 | 400 | 64 | 250,000/1,600 | 130,000/4,000 | 130,000/4,000 | 8 | 40,000 |
-| **Standard_M832ds_12_v3** | 832 | 11,400 | 400 | 64 | 250,000/1,600 | 130,000/4,000 | 130,000/4,000 | 8 | 40,000 |
-| **Standard_M832ids_16_v3** | 832 | 15,200 | 400 | 64 | 250,000/1,600 | 130,000/8,000 | 260,000/8,000 | 8 | 40,000 |
+| **Standard_M624ds_12_v3**<sup>1</sup> | 624 | 11,400 | 400 | 64 | 250,000/1,600 | 130,000/4,000 | 130,000/4,000 | 8 | 40,000 |
+| **Standard_M832ds_12_v3**<sup>1</sup>  | 832 | 11,400 | 400 | 64 | 250,000/1,600 | 130,000/4,000 | 130,000/4,000 | 8 | 40,000 |
+| **Standard_M832ids_16_v3**<sup>1</sup> | 832 | 15,200 | 400 | 64 | 250,000/1,600 | 130,000/8,000 | 260,000/8,000 | 8 | 40,000 |
 
-<sup>*</sup> Read iops is optimized for sequential reads
+<sup>*</sup> Read iops is optimized for sequential reads   
+<sup>1</sup> [Disable SMT](/sql/sql-server/compute-capacity-limits-by-edition-of-sql-server#limit-number-of-logical-cores-per-numa-node-to-64) to run SQL Server on a VM with more than 64 vCores per NUMA node.  
 
 ## Mdsv3 High Memory series (SCSI)
 
@@ -66,11 +69,13 @@ These virtual machines feature local SSD storage (up to 400 GiB).
 |---|---|---|---|---|---|---|---|---|---|
 | **Standard_M416ds_6_v3** | 416 | 5,696 | 400 | 64 | 250,000/1,600 | 130,000/4,000 | 130,000/4,000 | 8 | 40,000 |
 | **Standard_M416ds_8_v3** | 416 | 7,600 | 400 | 64 | 250,000/1,600 | 130,000/4,000 | 130,000/4,000 | 8 | 40,000 |
-| **Standard_M624ds_12_v3** | 624 | 11,400 | 400 | 64 | 250,000/1,600 | 130,000/4,000 | 130,000/4,000 | 8 | 40,000 |
-| **Standard_M832ds_12_v3** | 832 | 11,400 | 400 | 64 | 250,000/1,600 | 130,000/4,000 | 130,000/4,000 | 8 | 40,000 |
-| **Standard_M832ids_16_v3** | 832 | 15,200 | 400 | 64 | 250,000/1,600 | 130,000/8,000 | 130,000/8,000 | 8 | 40,000 |
+| **Standard_M624ds_12_v3**<sup>1</sup> | 624 | 11,400 | 400 | 64 | 250,000/1,600 | 130,000/4,000 | 130,000/4,000 | 8 | 40,000 |
+| **Standard_M624ds_12_v3**<sup>1</sup> | 624 | 11,400 | 400 | 64 | 250,000/1,600 | 130,000/4,000 | 130,000/4,000 | 8 | 40,000 |
+| **Standard_M832ds_12_v3**<sup>1</sup> | 832 | 11,400 | 400 | 64 | 250,000/1,600 | 130,000/4,000 | 130,000/4,000 | 8 | 40,000 |
+| **Standard_M832ids_16_v3**<sup>1</sup> | 832 | 15,200 | 400 | 64 | 250,000/1,600 | 130,000/8,000 | 130,000/8,000 | 8 | 40,000 |
 
-<sup>*</sup> Read iops is optimized for sequential reads
+<sup>*</sup> Read iops is optimized for sequential reads   
+<sup>1</sup> [Disable SMT](/sql/sql-server/compute-capacity-limits-by-edition-of-sql-server#limit-number-of-logical-cores-per-numa-node-to-64) to run SQL Server on a VM with more than 64 vCores per NUMA node.  
 
 ## Size table definitions
 

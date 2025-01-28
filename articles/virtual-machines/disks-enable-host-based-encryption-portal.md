@@ -4,7 +4,7 @@ description: Use encryption at host to enable end-to-end encryption on your Azur
 author: roygara
 ms.service: azure-disk-storage
 ms.topic: how-to
-ms.date: 07/29/2024
+ms.date: 10/22/2024
 ms.author: rogarana
 ms.custom:
   - ignite-2023
@@ -34,6 +34,21 @@ You must enable the feature for your subscription before you can use encryption 
 
    ![Screenshot of icon to launch the Cloud Shell from the Azure portal.](./media/disks-enable-host-based-encryption-portal/portal-launch-icon.png)
 
+1. Execute the following command to set context to current subscription
+
+   ### [Azure PowerShell](#tab/azure-powershell)
+
+   ```powershell
+   Set-AzContext -SubscriptionId "<yourSubIDHere>"
+   ```
+
+   ### [Azure CLI](#tab/azure-cli)
+
+   ```azurecli
+   az account set --subscription "<yourSubIDHere>"
+   ```
+   ---
+   
 1. Execute the following command to register the feature for your subscription
 
    ### [Azure PowerShell](#tab/azure-powershell)
@@ -70,9 +85,6 @@ You must enable the feature for your subscription before you can use encryption 
 1. Search for **Virtual Machines** and select **+ Create** to create a VM.
 1. Select an appropriate region and a supported VM size.
 1. Fill in the other values on the **Basic** pane as you like, and then proceed to the **Disks** pane.
-
-   :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-at-host-basic-blade.png" alt-text="Screenshot of the virtual machine creation basics pane, region and VM size are highlighted." lightbox="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-at-host-basic-blade.png":::
-
 1. On the **Disks** pane, select **Encryption at host**.
 1. Make the remaining selections as you like.
 
@@ -100,9 +112,6 @@ Now that you have setup an Azure Key Vault and disk encryption set, you can depl
 1. Search for **Virtual Machines** and select **+ Add** to create a VM.
 1. Create a new virtual machine, select an appropriate region and a supported VM size.
 1. Fill in the other values on the **Basic** pane as you like, then proceed to the **Disks** pane.
-
-   :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-at-host-basic-blade.png" alt-text="Screenshot of the virtual machine creation basics pane, region and VM size are highlighted." lightbox="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-at-host-basic-blade.png":::
-
 1. On the **Disks** pane, select **Encryption at host**.
 1. Select **Key management** and select one of your customer-managed keys.
 1. Make the remaining selections as you like.

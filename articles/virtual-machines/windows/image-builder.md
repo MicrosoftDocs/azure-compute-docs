@@ -4,7 +4,7 @@ description: In this article, you learn how to create a Windows VM by using VM I
 author: kof-f
 ms.author: kofiforson
 ms.reviewer: jushiman
-ms.date: 11/10/2023
+ms.date: 10/28/2024
 ms.topic: how-to
 ms.service: azure-virtual-machines
 ms.subservice: image-builder
@@ -160,12 +160,12 @@ az resource create \
     -n helloImageTemplateWin01
 ```
 
-When you're done, a success message is returned to the console, and a VM Image Builder configuration template is created in the `$imageResourceGroup`. To view this resource in the resource group, go to the Azure portal, and then enable **Show hidden types**.
+When you're done, a success message is returned to the console, and a VM Image Builder configuration template is created in the `$imageResourceGroup`.
 
 In the background, VM Image Builder also creates a staging resource group in your subscription. This resource group is used to build the image in the following format: `IT_<DestinationResourceGroup>_<TemplateName>`.
 
-> [!Note]
-> Don't delete the staging resource group directly. First, delete the image template artifact, which causes the staging resource group to be deleted.
+> [!NOTE]
+> If deletion is required, don't delete the staging resource group directly. First, delete the image template artifact, which subsequently will delete the staging resource group. Otherwise, the image template may enter a failed state.
 
 If the service reports a failure when you submit the image configuration template, do the following:
 - See [Troubleshoot the Azure VM Image Builder service](../linux/image-builder-troubleshoot.md#troubleshoot-image-template-submission-errors).

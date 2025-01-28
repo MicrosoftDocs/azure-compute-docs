@@ -6,7 +6,7 @@ ms.service: azure-virtual-machines
 ms.subservice: imaging
 ms.collection: windows
 ms.topic: how-to
-ms.date: 03/31/2023
+ms.date: 10/28/2024
 ms.author: jushiman
 ms.custom: devx-track-azurepowershell
 ---
@@ -46,7 +46,7 @@ $plainPassword = (New-AzADSpCredential -ObjectId $sp.Id).SecretText
 
 Then output the password and application ID.
 
-```powershell
+```azurepowershell
 $plainPassword
 $sp.AppId
 ```
@@ -54,7 +54,7 @@ $sp.AppId
 
 To authenticate to Azure, you also need to obtain your Azure tenant and subscription IDs with [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription):
 
-```powershell
+```azurepowershell
 $subName = "mySubscriptionName"
 $sub = Get-AzSubscription -SubscriptionName $subName
 ```
@@ -165,18 +165,18 @@ If you don't already have Packer installed on your local machine, [follow the Pa
 
 Build the image by opening a cmd prompt and specifying your Packer template file as follows:
 
-```powershell
+```Batchfile
 packer build windows.json
 ```
 You can also build the image by specifying the *windows.pkr.hcl* file as follows:
 
-```
+```Batchfile
 packer build windows.pkr.hcl
 ```
 
 An example of the output from the preceding commands is as follows:
 
-```powershell
+```HCL
 azure-arm output will be in this color.
 
 ==> azure-arm: Running builder ...
@@ -254,7 +254,7 @@ It takes a few minutes for Packer to build the VM, run the provisioners, and cle
 ## Create a VM from the Packer image
 You can now create a VM from your Image with [New-AzVM](/powershell/module/az.compute/new-azvm). The supporting network resources are created if they do not already exist. When prompted, enter an administrative username and password to be created on the VM. The following example creates a VM named *myVM* from *myPackerImage*:
 
-```powershell
+```azurepowershell
 New-AzVm `
     -ResourceGroupName $rgName `
     -Name "myVM" `
@@ -275,7 +275,7 @@ It takes a few minutes to create the VM from your Packer image.
 ## Test VM and webserver
 Obtain the public IP address of your VM with [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress). The following example obtains the IP address for *myPublicIP* created earlier:
 
-```powershell
+```azurepowershell
 Get-AzPublicIPAddress `
     -ResourceGroupName $rgName `
     -Name "myPublicIPAddress" | select "IpAddress"

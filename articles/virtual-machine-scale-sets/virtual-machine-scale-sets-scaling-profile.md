@@ -51,8 +51,11 @@ Virtual machine scale sets in Flexible Orchestration Mode can optionally be crea
 
 Once you have created the virtual machine scale set, you can manually attach virtual machines.
 
-> [!NOTE]
-> You cannot create a virtual machine scale set without a scaling profile in the Azure portal.
+### [Azure portal](#tab/portal)
+1. Navigate to the **Create a Virtual Machine Scale Set (VMSS)** blade.
+2. Set your resource group, scale set name, region, availability zone, and orchestration mode.
+3. In the **Scaling** section, select **No scaling profile**.
+4. Complete the **Advanced** and **Tags** section before selecting the **Review + create** button.
 
 ### [Azure CLI](#tab/cli)
 

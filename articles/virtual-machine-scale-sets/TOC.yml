@@ -9,7 +9,7 @@
   - name: Scale Set FAQ
     href: virtual-machine-scale-sets-faq.yml
   - name: What's new
-    href: whats-new.md  
+    href: whats-new.md
   expanded: true
 - name: Quickstarts
   items:
@@ -25,19 +25,13 @@
   - name: Create with ARM template
     href: flexible-virtual-machine-scale-sets-rest-api.md
 - name: Tutorials
-  items: 
+  items:
   - name: Create and manage
     items:
     - name: Azure CLI
       href: tutorial-create-and-manage-cli.md
     - name: Azure PowerShell
       href: tutorial-create-and-manage-powershell.md
-  - name: Connect to Instances
-    items: 
-    - name: Azure CLI
-      href: tutorial-connect-to-instances-cli.md
-    - name: Azure PowerShell
-      href: tutorial-connect-to-instances-powershell.md
   - name: Modify a scale set
     items:
     - name: Azure CLI
@@ -84,20 +78,30 @@
       href: virtual-machine-scale-sets-mvss-guest-based-autoscale-linux.md
     - name: Troubleshoot autoscale
       href: virtual-machine-scale-sets-troubleshoot.md 
-  - name: Instance Mix (Preview)
-    href: virtual-machine-scale-sets-instance-mix.md
+  - name: Instance mix (Preview)
+    items:
+    - name: Overview
+      href: instance-mix-overview.md
+    - name: Create a scale set with instance mix
+      href: instance-mix-create.md
+    - name: Update instance mix settings
+      href: instance-mix-update.md
+    - name: FAQs and troubleshooting
+      href: instance-mix-faq-troubleshooting.md
   - name: Scaling Profile
     href: virtual-machine-scale-sets-scaling-profile.md
   - name: Scale-In Policy
-    href: virtual-machine-scale-sets-scale-in-policy.md 
-  - name: Standby pools (Preview)
-    items: 
+    href: virtual-machine-scale-sets-scale-in-policy.md
+  - name: Standby pools
+    items:
     - name: Overview
       href: standby-pools-overview.md
     - name: Create a standby pool
       href: standby-pools-create.md
     - name: Update or delete a standby pool
       href: standby-pools-update-delete.md
+    - name: Get pool and instance details
+      href: standby-pools-get-details.md
     - name: Frequently asked questions
       href: standby-pools-faq.md
   - name: Instance protection
@@ -107,7 +111,7 @@
   - name: Working with large uniform scale sets
     href: virtual-machine-scale-sets-placement-groups.md
 - name: Reliability
-  items: 
+  items:
   - name: Reliability in Virtual Machine Scale Sets
     href: /azure/reliability/reliability-virtual-machines?toc=/azure/virtual-machine-scale-sets/toc.json&bc=/azure/virtual-machine-scale-sets/breadcrumb/toc.json
   - name: Design considerations
@@ -121,16 +125,20 @@
     href: ../virtual-machines/capacity-reservation-overview.md
   - name: Automatic instance repairs
     href: virtual-machine-scale-sets-automatic-instance-repairs.md
+  - name: Resilient create and delete (Preview)
+    href: resilient-vm-create-delete.md
 - name: Cost optimization
-  items: 
+  items:
   - name: Azure Spot Virtual Machines
     href: use-spot.md
   - name: Spot Priority Mix
     href: spot-priority-mix.md
+  - name: Spot Placement Score (Preview)
+    href: spot-placement-score.md
   - name: Reserved instances
     href: /azure/cost-management-billing/reservations/save-compute-costs-reservations
   - name: Azure Hybrid Benefit
-    items: 
+    items:
     - name: Hybrid Benefit for Linux
       href: ../virtual-machines/linux/azure-hybrid-benefit-linux.md
       maintainContext: true
@@ -140,29 +148,54 @@
     - name: Hybrid benefit for Uniform Scale Sets
       href: azure-hybrid-benefit-linux.md
 - name: Management
-  items: 
+  items:
   - name: Modify a scale set
     href: virtual-machine-scale-sets-upgrade-scale-set.md
+  - name: Understand instance IDs
+    href: virtual-machine-scale-sets-instance-ids.md
+  - name: Connect to Virtual Machines
+    items:
+    - name: Linux
+      items:
+      - name: Connect to a Linux VM
+        href: ../virtual-machines/linux-vm-connect.md
+        maintainContext: true
+      - name: Create and manage SSH keys locally
+        href: ../virtual-machines/linux/create-ssh-keys-detailed.md
+        maintainContext: true
+      - name: Create and manage SSH keys in the portal
+        href: ../virtual-machines/ssh-keys-portal.md
+        maintainContext: true
+      - name: Create and manage SSH keys with the Azure CLI
+        href: ../virtual-machines/ssh-keys-azure-cli.md
+        maintainContext: true
+      - name: SSH on Linux or macOS
+        href: ../virtual-machines/linux/mac-create-ssh-keys.md
+        maintainContext: true
+      - name: SSH on Windows
+        href: ../virtual-machines/linux/ssh-from-windows.md
+        maintainContext: true
+      - name: Remote Desktop for Linux
+        href: ../virtual-machines/linux/use-remote-desktop.md
+        maintainContext: true
+    - name: Windows
+      items:
+      - name: Remote Desktop
+        href: ../virtual-machines/windows/connect-rdp.yml
+        maintainContext: true
+      - name: SSH
+        href: ../virtual-machines/windows/connect-ssh.md
+        maintainContext: true
+      - name: WinRM
+        href: ../virtual-machines/windows/connect-winrm.md
+        maintainContext: true
+  - name: Manage fault domains
+    href: virtual-machine-scale-sets-manage-fault-domains.md
   - name: Relocate to another region
     href: /azure/operational-excellence/relocation-virtual-machine-scale-sets
     maintainContext: true
-  - name: Upgrade Policies
-    items:
-    - name: Overview
-      href: virtual-machine-scale-sets-upgrade-policy.md
-    - name: Setting the upgrade policy
-      href: virtual-machine-scale-sets-set-upgrade-policy.md
-    - name: Changing the upgrade policy
-      href: virtual-machine-scale-sets-change-upgrade-policy.md
-    - name: Configure rolling upgrade policy
-      href: virtual-machine-scale-sets-configure-rolling-upgrades.md 
-    - name: Rolling upgrades with MaxSurge
-      href: virtual-machine-scale-sets-maxsurge.md
-    - name: Performing manual upgrades
-      href: virtual-machine-scale-sets-perform-manual-upgrades.md
-    - name: Reimage a virtual machine
-      href: virtual-machine-scale-sets-reimage-virtual-machine.md
-
+  - name: Proximity placement groups
+    href: proximity-placement-groups.md
   - name: Common management tasks
     items:
     - name: Use the Azure CLI
@@ -177,12 +210,38 @@
       href: virtual-machine-scale-sets-deploy-app.md
     - name: Custom image templates
       href: virtual-machine-scale-sets-mvss-custom-image.md
-  - name: Manage fault domains in scale sets
-    href: virtual-machine-scale-sets-manage-fault-domains.md
-  - name: Understand instance IDs
-    href: virtual-machine-scale-sets-instance-ids.md
+  - name: Upgrade Policies
+    items:
+    - name: Overview
+      href: virtual-machine-scale-sets-upgrade-policy.md
+    - name: Setting the upgrade policy mode
+      href: virtual-machine-scale-sets-set-upgrade-policy.md
+    - name: Changing the upgrade policy mode
+      href: virtual-machine-scale-sets-change-upgrade-policy.md
+    - name: Configure rolling upgrade policy
+      href: virtual-machine-scale-sets-configure-rolling-upgrades.md
+    - name: Custom metrics for rolling upgrades (preview)
+      href: virtual-machine-scale-sets-rolling-upgrade-custom-metrics.md
+    - name: Rolling upgrades with MaxSurge
+      href: virtual-machine-scale-sets-maxsurge.md
+    - name: Performing manual upgrades
+      href: virtual-machine-scale-sets-perform-manual-upgrades.md
+    - name: Reimage a virtual machine
+      href: virtual-machine-scale-sets-reimage-virtual-machine.md
+  - name: Extensions
+    items:
+    - name: Extensions Overview
+      href: ../virtual-machines/extensions/overview.md
+      maintainContext: true
+    - name: Automatic extension upgrade
+      href: ../virtual-machines/automatic-extension-upgrade.md
+      maintainContext: true
+    - name: Extension sequencing on scale sets
+      href: virtual-machine-scale-sets-extension-sequencing.md
+    - name: Application Health extension
+      href: virtual-machine-scale-sets-health-extension.md
   - name: Azure Compute Gallery
-    items: 
+    items:
     - name: Overview
       href: ../virtual-machines/azure-compute-gallery.md
       maintainContext: true
@@ -202,26 +261,12 @@
     - name: Action Run Commands for Windows
       href: ../virtual-machines/windows/run-command.md
       maintainContext: true
-    - name: Managed Run Commands for Linux 
+    - name: Managed Run Commands for Linux
       href: ../virtual-machines/linux/run-command-managed.md
       maintainContext: true
     - name: Managed Run Commands for Windows
       href: ../virtual-machines/windows/run-command-managed.md
       maintainContext: true
-  - name: Proximity placement groups
-    href: proximity-placement-groups.md
-  - name: Extensions
-    items:
-    - name: Extensions Overview
-      href: ../virtual-machines/extensions/overview.md
-      maintainContext: true
-    - name: Automatic extension upgrade 
-      href: ../virtual-machines/automatic-extension-upgrade.md
-      maintainContext: true
-    - name: Extension sequencing on scale sets
-      href: virtual-machine-scale-sets-extension-sequencing.md
-    - name: Application Health extension
-      href: virtual-machine-scale-sets-health-extension.md
 - name: Monitoring
   items:
   - name: Monitor virtual machines
@@ -245,7 +290,7 @@
       href: ../virtual-machines/windows/instance-metadata-service.md
       maintainContext: true
 - name: Updates and maintenance
-  items: 
+  items:
   - name: Maintenance notifications
     items:
     - name: Overview
@@ -284,9 +329,9 @@
   - name: Scheduled events
     items:
     - name: Linux
+      displayName: Scheduled events
       href: ../virtual-machines/linux/scheduled-events.md
       maintainContext: true
-      displayName: Scheduled events
     - name: Windows
       items:
       - name: Scheduled events
@@ -329,7 +374,7 @@
     - name: Azure Disk Encryption
       href: disk-encryption-overview.md
 - name: Networking
-  items: 
+  items:
   - name: Networking Overview
     href: /azure/virtual-network/network-overview
     maintainContext: true
@@ -357,7 +402,7 @@
     href: ../virtual-machines/automatic-vm-guest-patching.md
     maintainContext: true
   - name: Automatic OS image upgrades
-    items: 
+    items:
     - name: Overview
       href: virtual-machine-scale-sets-automatic-upgrade.md
     - name: Maintenance control

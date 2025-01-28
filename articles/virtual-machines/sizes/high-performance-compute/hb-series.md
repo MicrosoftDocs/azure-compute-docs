@@ -26,7 +26,7 @@ ms.reviewer: mattmcinnes
 
 vCPUs (Qty.) and Memory for each size
 
-| Size Name | vCPUs (Qty.) | Memory (GB) | Base CPU Frequency (GHz) | Single-core Frequency Peak (GHz) | All-core Frequency Peak (GHz) | Memory Bandwidth (GBps) |
+| Size Name | vCPUs (Qty.) | Memory (GB) | Base CPU Frequency (GHz) | Single-core Frequency Peak (GHz) | All-core Frequency Peak (GHz) | Memory Bandwidth (GB/s) |
 | --- | --- | --- | --- | --- | --- | --- |
 | Standard_HB60rs | 60 | 263 | 2.0 | 2.55 | 2.55 | 228 |
 | Standard_HB60-45rs | 45 | 263 | 2.0 | 2.55 | 2.55 | 228 |
@@ -40,12 +40,12 @@ vCPUs (Qty.) and Memory for each size
 
 Local (temp) storage info for each size
 
-| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read (RR)<sup>1</sup> IOPS | Temp Disk Random Read (RR)<sup>1</sup> Speed (MBps) | Temp Disk Random Write (RW)<sup>1</sup> IOPS | Temp Disk Random Write (RW)<sup>1</sup> Speed (MBps) | Local-Special-Disk-Count | Local-Special-Disk-Size-GB | Local-Special-Disk-RR-IOPS | Local-Special-Disk-RR-MBps |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_HB60rs | 1 | 700 |  |  |  |  |  |  |  |  |
-| Standard_HB60-45rs | 1 | 700 |  |  |  |  |  |  |  |  |
-| Standard_HB60-30rs | 1 | 700 |  |  |  |  |  |  |  |  |
-| Standard_HB60-15rs | 1 | 700 |  |  |  |  |  |  |  |  |
+| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) |
+| --- | --- | --- |
+| Standard_HB60rs | 1 | 700 |
+| Standard_HB60-45rs | 1 | 700 |
+| Standard_HB60-30rs | 1 | 700 |
+| Standard_HB60-15rs | 1 | 700 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
@@ -62,12 +62,12 @@ Local (temp) storage info for each size
 
 Remote (uncached) storage info for each size
 
-| Size Name | Max Remote Storage Disks (Qty.) | Uncached Disk IOPS | Uncached Disk Speed (MBps) | Uncached Disk Burst<sup>1</sup> IOPS | Uncached Disk Burst<sup>1</sup> Speed (MBps) | Uncached Special<sup>2</sup> Disk IOPS | Uncached Special<sup>2</sup> Disk Speed (MBps) | Uncached Burst<sup>1</sup> Special<sup>2</sup> Disk IOPS | Uncached Burst<sup>1</sup> Special<sup>2</sup> Disk Speed (MBps) |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_HB60rs | 4 |  |  |  |  |  |  |  |  |
-| Standard_HB60-45rs | 4 |  |  |  |  |  |  |  |  |
-| Standard_HB60-30rs | 4 |  |  |  |  |  |  |  |  |
-| Standard_HB60-15rs | 4 |  |  |  |  |  |  |  |  |
+| Size Name | Max Remote Storage Disks (Qty.) |
+| --- | --- |
+| Standard_HB60rs | 4 |
+| Standard_HB60-45rs | 4 |
+| Standard_HB60-30rs | 4 |
+| Standard_HB60-15rs | 4 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
@@ -76,7 +76,7 @@ Remote (uncached) storage info for each size
 
 #### Table definitions
 - <sup>1</sup>Some sizes support [bursting](../../disk-bursting.md) to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.
-- <sup>2</sup>Special Storage refers to either [Ultra Disk](../../../virtual-machines/disks-enable-ultra-ssd.md) or [Premium SSD v2](../../../virtual-machines/disks-deploy-premium-v2.md) storage.
+
 - Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
 - Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
 - Data disks can operate in cached or uncached modes. For cached data disk operation, the host cache mode is set to ReadOnly or ReadWrite. For uncached data disk operation, the host cache mode is set to None.
@@ -87,12 +87,12 @@ Remote (uncached) storage info for each size
 
 Network interface info for each size
 
-| Size Name | Max NICs (Qty.) | Max Bandwidth (Mbps) | RDMA Performance (GBps) |
-| --- | --- | --- | --- |
-| Standard_HB60rs | 8 |  | 100 |
-| Standard_HB60-45rs | 8 |  | 100 |
-| Standard_HB60-30rs | 8 |  | 100 |
-| Standard_HB60-15rs | 8 |  | 100 |
+| Size Name | Max NICs (Qty.) | RDMA Performance (GB/s) |
+| --- | --- | --- |
+| Standard_HB60rs | 8 | 100 |
+| Standard_HB60-45rs | 8 | 100 |
+| Standard_HB60-30rs | 8 | 100 |
+| Standard_HB60-15rs | 8 | 100 |
 
 #### Networking resources
 - [Virtual networks and virtual machines in Azure](/azure/virtual-network/network-overview)
@@ -113,3 +113,4 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 ---
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]
+

@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 05/17/2024
+ms.date: 11/14/2024
 ---
 
 # Tutorial: Monitor and diagnose a Service Fabric application by using Application Insights
@@ -185,15 +185,11 @@ In the Azure portal, go to your Application Insights resource.
 
 Select **Overview** to go back to the overview pane of your resource. Select **Search** to see the traces coming in. It takes a few minutes for traces to appear in Application Insights. If you don't see any traces, wait a minute, and then select the **Refresh** button.
 
-:::image type="content" source="media/service-fabric-tutorial-monitoring-aspnet/ai-search.png" alt-text="Screenshot that shows the Application Insights see traces view.":::
-
 Scroll down in the search window to view all the incoming telemetry that comes with Application Insights. For each action that you took in the Voting application, there should be an outgoing PUT request from *VotingWeb* (PUT Votes/Put [name]), an incoming PUT request from *VotingData* (PUT VoteData/Put [name]), followed by a pair of GET requests for refreshing the data that's displayed. There will also be a dependency trace for HTTP on `localhost` because these requests are HTTP requests. Here's an example of what you see for how one vote is added:
 
 :::image type="content" source="media/service-fabric-tutorial-monitoring-aspnet/sample-request.png" alt-text="Screenshot that shows a sample request trace in Application Insights.":::
 
 You can select a trace to see more details about it. Application Insights includes useful information about the request, including values for **Response time** and **Request URL**. Because you added the Service Fabric-specific NuGet, you also get data about your application in the context of a Service Fabric cluster in the **Custom Data** section. The data includes the service context, so you can see the **PartitionID** and **ReplicaId** values of the source of the request and better isolate issues when you diagnose errors in your application.
-
-:::image type="content" source="media/service-fabric-tutorial-monitoring-aspnet/trace-details.png" alt-text="Screenshot that shows Application Insights trace details.":::
 
 To go to Application Map, select **Application map** on the resource menu on the **Overview** pane, or select the **App map** icon. The map shows your two services connected.
 

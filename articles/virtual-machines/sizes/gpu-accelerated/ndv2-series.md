@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
-ms.date: 08/01/2024
+ms.date: 09/17/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ---
@@ -97,7 +97,7 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 
 | Size Name | Accelerators (Qty.) | Accelerator-Memory (GB) |
 | --- | --- | --- |
-| Standard_ND40rs_v2 | 8 | 256 |
+| Standard_ND40rs_v2 |  | 256 |
 
 ---
 

@@ -134,7 +134,6 @@ Write-Host "Secret URL:" $Sourcedisk.EncryptionSettingsCollection.EncryptionSett
 Write-Host "Key URL:" $Sourcedisk.EncryptionSettingsCollection.EncryptionSettings.KeyEncryptionKey.KeyUrl
 Write-Host "============================================================================================================================================================="
 ```
-![Encryption settings in a dual pass](./media/disk-encryption/verify-encryption-linux/verify-dual-ps-001.png)
 
 ### Unattached disks
 

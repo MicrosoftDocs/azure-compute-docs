@@ -4,7 +4,7 @@ description: Learn about Ultra Disks for Azure VMs
 author: roygara
 ms.service: azure-disk-storage
 ms.topic: how-to
-ms.date: 05/03/2024
+ms.date: 10/21/2024
 ms.author: rogarana
 ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell, devx-track-arm-template
 ---
@@ -145,18 +145,18 @@ This section covers deploying a virtual machine equipped with an Ultra Disk as a
 1. On the Disks blade, select **Yes** for **Enable Ultra Disk compatibility**.
 1. Select **Create and attach a new disk** to attach an Ultra disk now.
 
-    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/new-ultra-vm-disk-enable.png" alt-text="Screenshot of vm creation flow, disk blade, Ultra Disk compatibility is enabled and create and attach a new disk is highlighted." :::
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/new-ultra-vm-disk-enable.png" alt-text="Screenshot of vm creation flow, disk blade, Ultra Disk compatibility is enabled and create and attach a new disk is highlighted."  lightbox="media/virtual-machines-disks-getting-started-ultra-ssd/new-ultra-vm-disk-enable.png":::
 
 1. On the **Create a new disk** blade, enter a name, then select **Change size**.
 
-    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/new-ultra-create-disk.png" alt-text="Screenshot of create a new disk blade, change size highlighted.":::
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/new-ultra-create-disk.png" alt-text="Screenshot of create a new disk blade, change size highlighted." lightbox="media/virtual-machines-disks-getting-started-ultra-ssd/new-ultra-create-disk.png":::
 
 
 1. Change the **Disk SKU** to **Ultra Disk**.
 1. Change the values of **Custom disk size (GiB)**, **Disk IOPS**, and **Disk throughput** to ones of your choice.
 1. Select **OK** in both blades.
 
-    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/new-select-ultra-disk-size.png" alt-text="Screenshot of the select a disk size blade, Ultra Disk selected for storage type, other values highlighted.":::
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/new-select-ultra-disk-size.png" alt-text="Screenshot of the select a disk size blade, Ultra Disk selected for storage type, other values highlighted." lightbox="media/virtual-machines-disks-getting-started-ultra-ssd/new-select-ultra-disk-size.png":::
 
 1. Continue with the VM deployment, the same as you would deploy any other VM.
 
@@ -236,16 +236,16 @@ Update-AzVM -VM $vm -ResourceGroupName $rgName
 1. Select a region that supports Ultra Disks and select an availability zone, fill in the rest of the values as you desire.
 1. Select **Change size**.
 
-    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/create-managed-disk-basics-workflow.png" alt-text="Screenshot of create disk blade, region, availability zone, and change size highlighted.":::
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/create-managed-disk-basics-workflow.png" alt-text="Screenshot of create disk blade, region, availability zone, and change size highlighted." lightbox="media/virtual-machines-disks-getting-started-ultra-ssd/create-managed-disk-basics-workflow.png":::
 
 1. For **Disk SKU** select **Ultra Disk**, then fill in the values for the desired performance and select **OK**.
 
-    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/select-disk-size-ultra.png" alt-text="Screenshot of creating Ultra Disk.":::
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/select-disk-size-ultra.png" alt-text="Screenshot of creating Ultra Disk." lightbox="media/virtual-machines-disks-getting-started-ultra-ssd/select-disk-size-ultra.png":::
 
 1. On the **Basics** blade, select the **Advanced** tab.
 1. Select **512** for **Logical sector size**, then select **Review + Create**.
 
-    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/select-different-sector-size-ultra.png" alt-text="Screenshot of selector for changing the Ultra Disk logical sector size to 512.":::
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/select-different-sector-size-ultra.png" alt-text="Screenshot of selector for changing the Ultra Disk logical sector size to 512." lightbox="media/virtual-machines-disks-getting-started-ultra-ssd/select-different-sector-size-ultra.png":::
 
 # [Azure CLI](#tab/azure-cli)
 
@@ -322,11 +322,11 @@ Alternatively, if your existing VM is in a region/availability zone that is capa
 1. Once your VM has been deallocated, select **Disks**.
 1. Select **Additional settings**.
 
-    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/new-ultra-disk-additional-settings.png" alt-text="Screenshot of the disk blade, additional settings highlighted.":::
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/new-ultra-disk-additional-settings.png" alt-text="Screenshot of the disk blade, additional settings highlighted." lightbox="media/virtual-machines-disks-getting-started-ultra-ssd/new-ultra-disk-additional-settings.png":::
 
 1. Select **Yes** for **Enable Ultra Disk compatibility**.
 
-    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/enable-ultra-disks-existing-vm.png" alt-text="Screenshot of enable Ultra Disk compatibility.":::
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/enable-ultra-disks-existing-vm.png" alt-text="Screenshot of enable Ultra Disk compatibility." lightbox="media/virtual-machines-disks-getting-started-ultra-ssd/enable-ultra-disks-existing-vm.png":::
 
 1. Select **Save**.
 1. Select **Create and attach a new disk** and fill in a name for your new disk.
@@ -334,7 +334,7 @@ Alternatively, if your existing VM is in a region/availability zone that is capa
 1. Change the values of **Size (GiB)**, **Max IOPS**, and **Max throughput** to ones of your choice.
 1. After you're returned to your disk's blade, select **Save**.
 
-    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/new-create-ultra-disk-existing-vm.png" alt-text="Screenshot of disk blade, adding a new Ultra Disk.":::
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/new-create-ultra-disk-existing-vm.png" alt-text="Screenshot of disk blade, adding a new Ultra Disk." lightbox="media/virtual-machines-disks-getting-started-ultra-ssd/new-create-ultra-disk-existing-vm.png":::
 
 1. Start your VM again.
 
@@ -453,12 +453,12 @@ Ultra Disks offer a unique capability that allows you to adjust their performanc
 1. Navigate to your VM and select **Disks**.
 1. Select the Ultra Disk you'd like to modify the performance of.
 
-    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/select-ultra-disk-to-modify.png" alt-text="Screenshot of disks blade on your vm, Ultra Disk is highlighted.":::
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/select-ultra-disk-to-modify.png" alt-text="Screenshot of disks blade on your vm, Ultra Disk is highlighted." lightbox="media/virtual-machines-disks-getting-started-ultra-ssd/select-ultra-disk-to-modify.png":::
 
 1. Select **Size + performance** and then make your modifications.
 1. Select **Save**.
 
-    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/modify-ultra-disk-performance.png" alt-text="Screenshot of configuration blade on your Ultra Disk, disk size, iops, and throughput are highlighted, save is highlighted.":::
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/modify-ultra-disk-performance.png" alt-text="Screenshot of configuration blade on your Ultra Disk, disk size, iops, and throughput are highlighted, save is highlighted." lightbox="media/virtual-machines-disks-getting-started-ultra-ssd/modify-ultra-disk-performance.png":::
 
 # [Azure CLI](#tab/azure-cli)
 

@@ -1,8 +1,8 @@
 ---
 title: FAQ for Trusted Launch
 description: Get answers to the most frequently asked questions about Azure Trusted Launch virtual machines and virtual machine scale sets.
-author: howie425
-ms.author: howieasmerom
+author: prasadmsft
+ms.author: reprasa
 ms.reviewer: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: trusted-launch
@@ -545,3 +545,19 @@ Package certificates, composed of .p7b (Full Certificate Authority) and .cer (In
 [!INCLUDE [json](../virtual-machines/includes/trusted-launch-tpm-certs/root-certificate-authority.md)]
 
 [!INCLUDE [cert](../virtual-machines/includes/trusted-launch-tpm-certs/intermediate-ca.md)]
+
+### What Microsoft owned trusted certificates are built into Azure VMs ? 
+For Windows VMs, Windows CA certificate is built in UEFI firmware. For Linux VMs, Microsoft UEFI CA certificate is built in UEFI firmware.
+For Azure Linux VMs only, an additional ‘Azure Services Linux Kmod PCA’ certificate is also added in in UEFI firmware for all Linux distributions. Linux Kmod PCA is used to sign Microsoft owned kernel modules.
+
+Linux Kmod PCA certificate is added to make customer experience smoother when using Microsoft solutions like Azure Site Recovery (ASR) which installs a kernel module. The ASR kernel module will load without any customer action to supply a key as ASR kernel module is signed using the trusted ‘Azure Services Linux Kmod PCA’ certificate.
+
+#### Download instructions
+Package certificates, composed of .p7b and .cer  reveal the signing and certificate authority. Copy the relevant content and use certificate tooling to inspect and assess details of certificates.
+
+
+[!INCLUDE[json](../virtual-machines/includes/trusted-launch-tpm-certs/microsoft-windows-ca.md)]
+
+[!INCLUDE[json](../virtual-machines/includes/trusted-launch-tpm-certs/microsoft-uefi-ca.md)]
+
+[!INCLUDE[p7b](../virtual-machines/includes/trusted-launch-tpm-certs/linux-kmod-pca-certificate.md)]

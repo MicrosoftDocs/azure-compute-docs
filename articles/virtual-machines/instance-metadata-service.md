@@ -21,7 +21,7 @@ This information includes the SKU, storage, network configurations, and upcoming
 IMDS is available for running instances of virtual machines (VMs) and scale set instances. All endpoints support VMs created and managed by using [Azure Resource Manager](/rest/api/resources/). Only the Attested category and Network portion of the Instance category support VMs created by using the classic deployment model. The Attested endpoint does so only to a limited extent.
 
 IMDS is a REST API that's available at a well-known, non-routable IP address (`169.254.169.254`). You can only access it from within the VM. Communication between the VM and IMDS never leaves the host.
-Have your HTTP clients bypass web proxies within the VM when querying IMDS, and treat `169.254.169.254` the same as [`168.63.129.16`](/azure/virtual-network/what-is-ip-address-168-63-129-16).
+Have your HTTP clients bypass web proxies within the VM when querying IMDS.
 
 ## Usage
 
@@ -404,7 +404,7 @@ Schema breakdown:
 | `vmId` | [Unique identifier](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) for the VM. The blog referenced only suits for VMs that have SMBIOS < 2.6. For VMs that have SMBIOS >= 2.6, the UUID from DMI is displayed in little-endian format, thus, there's no requirement to switch bytes. | 2017-04-02
 | `vmScaleSetName` | [Virtual Machine Scale Set Name](../virtual-machine-scale-sets/overview.md) of your scale set | 2017-12-01
 | `vmSize` | [VM size](sizes.md) | 2017-04-02
-| `zone` | [Availability Zone](/azure/availability-zones/az-overview) of your virtual machine | 2017-12-01
+| `zone` | [Availability Zone](/azure/reliability/availability-zones-overview) of your virtual machine | 2017-12-01
 
 † This version isn't fully available yet and may not be supported in all regions.
 
@@ -547,7 +547,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
 
 For certain scenarios, placement of different data replicas is of prime importance. For example, [HDFS replica placement](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html#Replica_Placement:_The_First_Baby_Steps)
 or container placement via an [orchestrator](https://kubernetes.io/docs/concepts/architecture/nodes/) might require you to know the `platformFaultDomain` and `platformUpdateDomain` the VM is running on.
-You can also use [Availability Zones](/azure/availability-zones/az-overview) for the instances to make these decisions.
+You can also use [Availability Zones](/azure/reliability/availability-zones-overview) for the instances to make these decisions.
 You can query this data directly via IMDS.
 
 **Request**

@@ -7,12 +7,12 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-azurepowershell
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 11/21/2024
 ---
 
 # Configure network settings for Service Fabric managed clusters
 
-Service Fabric managed clusters are created with a default networking configuration. This configuration consists of an [Azure Load Balancer](/azure/load-balancer/load-balancer-overview) with a public ip, a VNet with one subnet allocated, and an NSG configured for essential cluster functionality. There are also optional NSG rules applied such as allowing all outbound traffic by default that is intended to make customer configuration easier. This document walks through how to modify the following networking configuration options and more:
+Service Fabric managed clusters are created with a default networking configuration. This configuration consists of an [Azure Load Balancer](/azure/load-balancer/load-balancer-overview) with a public ip, a virtual network with one subnet allocated, and an NSG configured for essential cluster functionality. There are also optional NSG rules applied such as allowing all outbound traffic by default that is intended to make customer configuration easier. This document walks through how to modify the following networking configuration options and more:
 
 - [Manage NSG Rules](#nsgrules)
 - [Manage RDP access](#rdp)
@@ -103,7 +103,7 @@ Use the [networkSecurityRules](/azure/templates/microsoft.servicefabric/managedc
 ## ClientConnection and HttpGatewayConnection default and optional rules
 ### NSG rule: SFMC_AllowServiceFabricGatewayToSFRP
 
-A default NSG rule is added to allow the Service Fabric resource provider to access the cluster's clientConnectionPort and httpGatewayConnectionPort. This rule allows access to the ports through the service tag 'ServiceFabric'.
+A default NSG rule is added to allow the Service Fabric resource provider to access the cluster's clientConnectionPort and httpGatewayConnectionPort. This rule allows access to the ports through the service tag `ServiceFabric`.
 
 >[!NOTE]
 >This rule is always added and can't be overridden.
@@ -168,7 +168,7 @@ Service Fabric managed clusters don't enable inbound access to the RDP ports fro
 "allowRDPAccess": true
 ```
 
-When the allowRDPAccess property is set to true, the following NSG rule will be added to your cluster deployment.
+When the allowRDPAccess property is set to true, the following NSG rule is added to your cluster deployment.
 
 ```json
 {
@@ -422,7 +422,7 @@ The following steps describe enable public IP on your node.
 
 <a id="ipv6"></a>
 ## Enable IPv6
-Managed clusters don't enable IPv6 by default. This feature will enable full dual stack IPv4/IPv6 capability from the Load Balancer frontend to the backend resources. Any changes you make to the managed cluster load balancer config or NSG rules will affect both the IPv4 and IPv6 routing.
+Managed clusters don't enable IPv6 by default. This feature enables full dual stack IPv4/IPv6 capability from the Load Balancer frontend to the backend resources. Any changes you make to the managed cluster load balancer config or NSG rules affect both the IPv4 and IPv6 routing.
 
 > [!NOTE]
 > This setting is not available in portal and can't be changed once the cluster is created.
@@ -444,17 +444,17 @@ Managed clusters don't enable IPv6 by default. This feature will enable full dua
    ```
 
 2. Deploy your IPv6 enabled managed cluster. Customize the [sample template](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/SF-Managed-Standard-SKU-2-NT-IPv6) as needed or build your own.
-   In the following example, we'll create a resource group called `MyResourceGroup` in `westus` and deploy a cluster with this feature enabled.
+   In the following example, we create a resource group called `MyResourceGroup` in `westus` and deploy a cluster with this feature enabled.
    ```powershell
     New-AzResourceGroup -Name MyResourceGroup -Location westus
     New-AzResourceGroupDeployment -Name deployment -ResourceGroupName MyResourceGroup -TemplateFile AzureDeploy.json
    ```
-   After deployment, your clusters virtual network and resources will be dual-stack. As a result, the clusters frontend load balancer will have a unique dns address created for example, `mycluster-ipv6.southcentralus.cloudapp.azure.com` that is associated to a public IPv6 address on the Azure Load Balancer and private IPv6 addresses on the VMs. 
+   After deployment, your clusters virtual network and resources will be dual-stack. As a result, the clusters frontend load balancer has a unique dns address created for example, `mycluster-ipv6.southcentralus.cloudapp.azure.com` that is associated to a public IPv6 address on the Azure Load Balancer and private IPv6 addresses on the VMs. 
 
 
 <a id="byovnet"></a>
 ## Bring your own virtual network
-This feature allows customers to use an existing virtual network by specifying a dedicated subnet the managed cluster will deploy its resources into. This can be useful if you already have a configured VNet and subnet with related security policies and traffic routing that you want to use. After you deploy to an existing virtual network, it's easy to use or incorporate other networking features, like Azure ExpressRoute, Azure VPN Gateway, a network security group, and virtual network peering. Additionally, you can [bring your own Azure Load balancer](#byolb) if needed also.
+This feature allows customers to use an existing virtual network by specifying a dedicated subnet the managed cluster deploys its resources into. This can be useful if you already have a configured virtual network and subnet with related security policies and traffic routing that you want to use. After you deploy to an existing virtual network, it's easy to use or incorporate other networking features, like Azure ExpressRoute, Azure VPN Gateway, a network security group, and virtual network peering. Additionally, you can [bring your own Azure Load balancer](#byolb) if needed also.
 
 > [!NOTE]
 > When using BYOVNET, managed cluster resources will be deployed in one subnet.
@@ -494,7 +494,7 @@ This feature allows customers to use an existing virtual network by specifying a
 
    In the following steps, we start with an existing virtual network named ExistingRG-vnet, in the ExistingRG resource group. The subnet is named default.
 
-   Obtain the required info from the existing VNet.
+   Obtain the required info from the existing virtual network.
 
    ```powershell
    Login-AzAccount
@@ -534,7 +534,7 @@ This feature allows customers to use an existing virtual network by specifying a
    > [!NOTE]
    > VNetRoleAssignmentID has to be a [GUID](/azure/azure-resource-manager/templates/template-functions-string#examples-16). If you deploy a template again including this role assignment, make sure the GUID is the same as the one originally used. We suggest you run this isolated or remove this resource from the cluster template post-deployment as it just needs to be created once.
 
-   Here's a full sample [Azure Resource Manager (ARM) template that creates a VNet subnet and does role assignment](https://raw.githubusercontent.com/Azure-Samples/service-fabric-cluster-templates/master/SF-Managed-Standard-SKU-2-NT-BYOVNET/createVNet-assign-role.json) you can use for this step.
+   Here's a full sample [Azure Resource Manager (ARM) template that creates a virtual network subnet and does role assignment](https://raw.githubusercontent.com/Azure-Samples/service-fabric-cluster-templates/master/SF-Managed-Standard-SKU-2-NT-BYOVNET/createVNet-assign-role.json) you can use for this step.
 
 3. Configure the `subnetId` property for the cluster deployment after the role is set up as shown below:
 
@@ -553,7 +553,7 @@ This feature allows customers to use an existing virtual network by specifying a
             }
     ]
    ```
-   See the [bring your own VNet cluster sample template](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/SF-Managed-Standard-SKU-2-NT-BYOVNET) or customize your own.
+   See the [bring your own virtual network cluster sample template](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/SF-Managed-Standard-SKU-2-NT-BYOVNET) or customize your own.
 
 4. Deploy the configured managed cluster Azure Resource Manager (ARM) template.
 
@@ -563,7 +563,31 @@ This feature allows customers to use an existing virtual network by specifying a
     New-AzResourceGroupDeployment -Name deployment -ResourceGroupName MyResourceGroup -TemplateFile AzureDeploy.json
    ```
 
-   When you bring your own VNet subnet the public endpoint is still created and managed by the resource provider, but in the configured subnet. The feature doesn't allow you to specify the public ip/re-use static ip on the Azure Load Balancer. You can [bring your own Azure Load Balancer](#byolb) in concert with this feature or by itself if you require those or other load balancer scenarios that aren't natively supported.
+   When you bring your own virtual network subnet the public endpoint is still created and managed by the resource provider, but in the configured subnet. The feature doesn't allow you to specify the public ip/re-use static ip on the Azure Load Balancer. You can [bring your own Azure Load Balancer](#byolb) in concert with this feature or by itself if you require those or other load balancer scenarios that aren't natively supported.
+
+   Wehn the cluster is created, a network security group is created in the managed resource group for the default cluster level subnet. When a node type is created, it's placed in this subnet and automatically inherits the network security group's rules, unless you use node type level subnets.
+
+   Bring your own virtual network also supports node type level subnets, which allow you to place node types in separate subnets, providing flexibility for various network configurations and setups.
+
+   ```json
+   "resources": [
+     {
+       "apiVersion": "[variables('sfApiVersion')]",
+       "type": "Microsoft.ServiceFabric/managedclusters/nodetypes",
+       ...
+       },
+       "properties": {
+         "subnetId": "subnetId",
+         ...
+       }
+   ]
+   ```
+
+   To use node type level subnets, specify `"useCustomVnet": true` in your managed cluster definition. When `"useCustomVnet"` is set to `true`, a default cluster subnet isn't created. When using node type level subnets, `subnetId` becomes a required property in the node type definition.
+
+   > [!IMPORTANT]
+   > When using node type level subnets, you must assign a network security group to the node type subnet before node type creation. The network security group must include the required inbound rule [SFMC_AllowServiceFabricGatewayToSFRP](#nsg-rule-sfmc_allowservicefabricgatewaytosfrp) or node type creation fails.
+
 
 <a id="byolb"></a>
 ## Bring your own Azure Load Balancer
@@ -583,7 +607,7 @@ Managed clusters create an Azure public Standard Load Balancer and fully qualifi
 > You can not switch from the default load balancer to a custom one after deployment of a node type, but you can modify custom load balancer configuration post-deployment if enabled.
 
 **Feature Requirements**
- * Basic and Standard SKU Azure Load Balancer types are supported
+ * The Standard SKU Azure Load Balancer type is supported
  * You must have backend and NAT pools configured on the Azure Load Balancer
  * You must enable outbound connectivity either using a provided public load balancer or the default public load balancer
 

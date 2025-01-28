@@ -4,7 +4,7 @@ description: This topic describes how to run scripts within an Azure Linux virtu
 services: automation
 ms.service: azure-virtual-machines
 ms.collection: linux
-author: nikhilpatel909
+author: GabstaMSFT
 ms.author: jushiman
 ms.date: 10/31/2022
 ms.topic: how-to
@@ -232,7 +232,7 @@ Remove-AzVMRunCommand -ResourceGroupName "myRG" -VMName "myVM" -RunCommandName "
 To deploy a new Run Command, execute a PUT on the VM directly and specify a unique name for the Run Command instance. 
 
 ```rest
-GET /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/virtualMachines/<vmName>/runcommands?api-version=2019-12-01
+PUT /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/virtualMachines/<vmName>/runcommands?api-version=2019-12-01
 ```
 
 ```json

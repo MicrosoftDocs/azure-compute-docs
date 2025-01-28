@@ -2,8 +2,8 @@
 title: Use a Public IP address prefix in a Service Fabric managed cluster
 description: This article describes how to enable Public IP address prefix in a Service Fabric managed cluster.
 ms.topic: how-to
-ms.author: ankurjain
-author: ankurjain
+ms.author: tomcassidy
+author: tomvcassidy 
 ms.service: azure-service-fabric
 ms.custom:
 services: service-fabric

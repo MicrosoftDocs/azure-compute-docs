@@ -4,7 +4,7 @@ description: In this tutorial, you learn how to use Azure PowerShell to create a
 author: ju-shim
 ms.service: azure-virtual-machines
 ms.topic: tutorial
-ms.date: 03/29/2022
+ms.date: 10/28/2024
 ms.author: jushiman
 ms.collection: windows
 ms.custom: mvc, devx-track-azurepowershell
@@ -156,11 +156,8 @@ New-AzVm `
     -SecurityGroupName "myNetworkSecurityGroup" `
     -PublicIpAddressName "myPublicIpAddress2" `
     -ImageName "MicrosoftWindowsServer:WindowsServer:2016-Datacenter-with-Containers:latest" `
-    -Credential $cred `
-    -AsJob
+    -Credential $cred
 ```
-
-The `-AsJob` parameter creates the VM as a background task, so the PowerShell prompts return to you. You can view details of background jobs with the [Get-Job](/powershell/module/microsoft.powershell.core/get-job) cmdlet.
 
 ## Understand VM sizes
 

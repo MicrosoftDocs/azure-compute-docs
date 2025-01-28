@@ -1,7 +1,7 @@
 ---
 title: Monitoring data reference for Azure Virtual Machines
 description: This article contains important reference material you need when you monitor Azure Virtual Machines.
-ms.date: 03/27/2024
+ms.date: 01/24/2025
 ms.custom: horz-monitor
 ms.topic: reference
 ms.service: azure-virtual-machines
@@ -30,6 +30,8 @@ For an example that shows how to collect the *Percentage CPU* metric from a VM, 
 
 ### VM availability metric (preview)
 The VM availability metric is currently in public preview. This metric value indicates whether a machine is currently running and available. You can use the metric to trend availability over time and to alert if the machine is stopped. VM availability displays the following values.
+
+The VM availability metric is computed based on an aggregate of different signals from the host.
 
 To learn how to use the VM availability metric to monitor Azure Virtual Machine availability, see [Use Azure Monitor to monitor Azure Virtual Machine availability](flash-azure-monitor.md).
 

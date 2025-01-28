@@ -5,7 +5,7 @@ author: roygara
 ms.service: azure-disk-storage
 ms.collection: windows
 ms.topic: how-to
-ms.date: 06/08/2022
+ms.date: 12/09/2024
 ms.author: rogarana
 ms.custom: devx-track-azurepowershell
 

@@ -60,26 +60,15 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:8-LVM:lat
 > [!NOTE]
 > In general, the comparison of versions to determine the latest follows the rules of the [Version.CompareTo Method](/dotnet/api/system.version.compareto#system_version_compareto_system_version_). This image version comparison is done by comparing the values as a [Version](/dotnet/api/system.version.-ctor) object, not as a string.
 
-## RHEL 6 image types
-
-> [!NOTE]
-> As of December 30 2020, RHEL 6.10 entered end of life. For continued support, enable ELS as part of the Extended Life-cycle Support phase. See [RHEL Extended Lifecycle Support](./redhat-extended-lifecycle-support.md).
-
-For RHEL 6.x images, the image types are shown in the following table.
-
-|Publisher | Offer | SKU value | Version | Details
-|----------|-------|-----------|---------|--------
-|RedHat | RHEL | Minor version, for example, 6.9 | Concatenated values of the RHEL minor version and the date published, for example, 6.9.2018010506 | All standard RHEL 6.x images follow this convention.
-|RedHat | rhel-byos | rhel-raw69 | Concatenated values of the RHEL minor version and the date published, for example, 6.9.20181023 | This image is a RHEL 6.9 BYOS image.
-|RedHat | RHEL | RHEL-SAP-APPS | Concatenated values of the RHEL minor version and the date published, for example, 6.8.2017053118 | This image is a RHEL 6.8 for SAP Applications image. It's entitled to access SAP Applications repositories and base RHEL repositories.
-|RedHat | RHEL | RHEL-SAP-HANA | Concatenated values of the RHEL minor version and the date published, for example, 6.7.2017053121 | This image is a RHEL 6.7 for SAP HANA image. It's entitled to access SAP HANA repositories and base RHEL repositories.
-
 ## RHEL 7 image types
 
-For RHEL 7.x images, there are a few different image types. The following table shows the different sets of images we offer. To see a full list, use the Azure CLI command `az vm image list --publisher redhat --all`.
+> [!NOTE]
+> As of June 30 2024, RHEL 7.9 entered end of life. For continued support, enable ELS as part of the Extended Life-cycle Support phase. See [RHEL Extended Lifecycle Support](./redhat-extended-lifecycle-support.md).
 
 > [!NOTE]
 > Unless otherwise indicated, all images are LVM partitioned and connect to regular RHEL repositories. That is, the repositories aren't Extended Update Support (EUS) and aren't Update Services for SAP (E4S). Going forward, we're moving to publishing only LVM-partitioned images but are open to feedback on this decision. For more information on Extended Update Support and Update Services for SAP, see [Red Hat Enterprise Linux Life Cycle](https://access.redhat.com/support/policy/updates/errata).
+
+For RHEL 7.x images, there are a few different image types. The following table shows the different sets of images we offer. To see a full list, use the Azure CLI command `az vm image list --publisher redhat --all`.
 
 |Publisher | Offer | SKU value | Version | Details
 |----------|-------|------------|---------|--------
@@ -203,6 +192,15 @@ We update only the current minor release in a given image family. With the relea
 ## Image retention policy
 
 Current policy is to keep all previously published images. We reserve the right to remove images that are known to cause problems of any kind. For example, images with incorrect configurations due to subsequent platform or component updates might be removed. Images that might be removed follow the current Azure Marketplace policy to provide notifications up to 30 days before image removal.
+
+## Network configuration
+
+We are currently overriding the default cloud-init network configuration by setting "apply_network_config: false" to support RHEL 8 and RHEL 9 images and customers.
+
+> [!NOTE]
+> From RHEL 10 onwards, images will use the default cloud-init configuration that leverages Azure's IMDS endpoint for network configuration.
+>
+> We request that customers plan their VM configuration accordingly from RHEL 10 onwards.
 
 ## Next steps
 

@@ -12,7 +12,7 @@ ms.custom: include file
 ---
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
 |---|---|---|
-| Processor      | 2 - 96 vCPUs     | Intel Xeon 7452 (Rome) [x86-64] <br>Intel Xeon 7763v (Genoa) [x86-64] |
+| Processor      | 2 - 96 vCPUs     | AMD EPYC 7452 (Rome) [x86-64] <br>AMD EPYC 7763v (Genoa) [x86-64] |
 | Memory         | 16 - 672 GiB        |    |
 | Local Storage  | 1 Disk         | 32 - 1344 GiB 4000 - 192000 IOPS <br>32 - 1020 MBps |
 | Remote Storage | 4 - 32 Disks        | 3200 - 80000 IOPS <br>48 - 1200 MBps |

@@ -4,7 +4,7 @@ description: This topic describes how to run scripts within an Azure Windows vir
 services: automation
 ms.service: azure-virtual-machines
 ms.collection: windows
-author: nikhilpatel909
+author: GabstaMSFT
 ms.author: jushiman
 ms.date: 03/10/2023
 ms.topic: how-to

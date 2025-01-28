@@ -26,13 +26,13 @@ ms.reviewer: mattmcinnes
 
 vCPUs (Qty.) and Memory for each size
 
-| Size Name | vCPUs (Qty.) | Memory (GB) | Memory Bandwidth (GBps) | Base CPU Frequency (GHz) | Single-core Frequency Peak (GHz) | All-core Frequency Peak (GHz) |
-| --- | --- | --- | --- | --- | --- | --- |
-| Standard_HX176rs | 176 | 1408 | 780 | 2.4 | 3.7 |  |
-| Standard_HX176-144rs | 144 | 1408 | 780 | 2.4 | 3.7 |  |
-| Standard_HX176-96rs | 96 | 1408 | 780 | 2.4 | 3.7 |  |
-| Standard_HX176-48rs | 48 | 1408 | 780 | 2.4 | 3.7 |  |
-| Standard_HX176-24rs | 24 | 1408 | 780 | 2.4 | 3.7 |  |
+| Size Name | vCPUs (Qty.) | Memory (GB) | Memory Bandwidth (GB/s) | Base CPU Frequency (GHz) | Single-core Frequency Peak (GHz) |
+| --- | --- | --- | --- | --- | --- |
+| Standard_HX176rs | 176 | 1408 | 780 | 2.4 | 3.7 |
+| Standard_HX176-144rs | 144 | 1408 | 780 | 2.4 | 3.7 |
+| Standard_HX176-96rs | 96 | 1408 | 780 | 2.4 | 3.7 |
+| Standard_HX176-48rs | 48 | 1408 | 780 | 2.4 | 3.7 |
+| Standard_HX176-24rs | 24 | 1408 | 780 | 2.4 | 3.7 |
 
 #### VM Basics resources
 - [Check vCPU quotas](../../../virtual-machines/quotas.md)
@@ -41,13 +41,13 @@ vCPUs (Qty.) and Memory for each size
 
 Local (temp) storage info for each size
 
-| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read (RR)<sup>1</sup> IOPS | Temp Disk Random Read (RR)<sup>1</sup> Speed (MBps) | Temp Disk Random Write (RW)<sup>1</sup> IOPS | Temp Disk Random Write (RW)<sup>1</sup> Speed (MBps) | Local-Special-Disk-Count | Local-Special-Disk-Size-GB | Local-Special-Disk-RR-IOPS | Local-Special-Disk-RR-MBps |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_HX176rs | 1 | 480 |  |  |  |  | 2 | 1800 |  |  |
-| Standard_HX176-144rs | 1 | 480 |  |  |  |  | 2 | 1800 |  |  |
-| Standard_HX176-96rs | 1 | 480 |  |  |  |  | 2 | 1800 |  |  |
-| Standard_HX176-48rs | 1 | 480 |  |  |  |  | 2 | 1800 |  |  |
-| Standard_HX176-24rs | 1 | 480 |  |  |  |  | 2 | 1800 |  |  |
+| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Local Solid State Disks (Qty.) | Local Solid State Disk Size (GB) |
+| --- | --- | --- | --- | --- |
+| Standard_HX176rs | 1 | 480 | 2 | 1800 |
+| Standard_HX176-144rs | 1 | 480 | 2 | 1800 |
+| Standard_HX176-96rs | 1 | 480 | 2 | 1800 |
+| Standard_HX176-48rs | 1 | 480 | 2 | 1800 |
+| Standard_HX176-24rs | 1 | 480 | 2 | 1800 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
@@ -64,13 +64,13 @@ Local (temp) storage info for each size
 
 Remote (uncached) storage info for each size
 
-| Size Name | Max Remote Storage Disks (Qty.) | Uncached Disk IOPS | Uncached Disk Speed (MBps) | Uncached Disk Burst<sup>1</sup> IOPS | Uncached Disk Burst<sup>1</sup> Speed (MBps) | Uncached Special<sup>2</sup> Disk IOPS | Uncached Special<sup>2</sup> Disk Speed (MBps) | Uncached Burst<sup>1</sup> Special<sup>2</sup> Disk IOPS | Uncached Burst<sup>1</sup> Special<sup>2</sup> Disk Speed (MBps) |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_HX176rs | 32 |  |  |  |  |  |  |  |  |
-| Standard_HX176-144rs | 32 |  |  |  |  |  |  |  |  |
-| Standard_HX176-96rs | 32 |  |  |  |  |  |  |  |  |
-| Standard_HX176-48rs | 32 |  |  |  |  |  |  |  |  |
-| Standard_HX176-24rs | 32 |  |  |  |  |  |  |  |  |
+| Size Name | Max Remote Storage Disks (Qty.) |
+| --- | --- |
+| Standard_HX176rs | 32 |
+| Standard_HX176-144rs | 32 |
+| Standard_HX176-96rs | 32 |
+| Standard_HX176-48rs | 32 |
+| Standard_HX176-24rs | 32 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
@@ -79,7 +79,7 @@ Remote (uncached) storage info for each size
 
 #### Table definitions
 - <sup>1</sup>Some sizes support [bursting](../../disk-bursting.md) to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.
-- <sup>2</sup>Special Storage refers to either [Ultra Disk](../../../virtual-machines/disks-enable-ultra-ssd.md) or [Premium SSD v2](../../../virtual-machines/disks-deploy-premium-v2.md) storage.
+
 - Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
 - Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
 - Data disks can operate in cached or uncached modes. For cached data disk operation, the host cache mode is set to ReadOnly or ReadWrite. For uncached data disk operation, the host cache mode is set to None.
@@ -90,13 +90,13 @@ Remote (uncached) storage info for each size
 
 Network interface info for each size
 
-| Size Name | Max NICs (Qty.) | Max Bandwidth (Mbps) | RDMA Performance (GBps) |
-| --- | --- | --- | --- |
-| Standard_HX176rs | 8 |  | 400 |
-| Standard_HX176-144rs | 8 |  | 400 |
-| Standard_HX176-96rs | 8 |  | 400 |
-| Standard_HX176-48rs | 8 |  | 400 |
-| Standard_HX176-24rs | 8 |  | 400 |
+| Size Name | Max NICs (Qty.) | RDMA Performance (GB/s) |
+| --- | --- | --- |
+| Standard_HX176rs | 8 |  400 |
+| Standard_HX176-144rs | 8 |  400 |
+| Standard_HX176-96rs | 8 | 400 |
+| Standard_HX176-48rs | 8 | 400 |
+| Standard_HX176-24rs | 8 | 400 |
 
 #### Networking resources
 - [Virtual networks and virtual machines in Azure](/azure/virtual-network/network-overview)
@@ -117,3 +117,4 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 ---
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]
+

@@ -16,7 +16,7 @@ This article answers common questions about Azure single instance virtual machin
 
 ### Can I move virtual machine(s) in all Azure regions?
 
-Currently, you can move virtual machine(s) across all public regions that are supported by Availability Zones. Learn more about the [availability zone service and regional support](/azure/reliability/availability-zones-service-support#azure-regions-with-availability-zone-support).
+Currently, you can move virtual machine(s) across all public regions that are supported by Availability Zones. Learn more about the [availability zone service and regional support](/azure/reliability/availability-zones-region-support).
 
 > [!NOTE]
 > Azure China (China North 3) and Azure Govt (US Gov Virginia) are also supported.

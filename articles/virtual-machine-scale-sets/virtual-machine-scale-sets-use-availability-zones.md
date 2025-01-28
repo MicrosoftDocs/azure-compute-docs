@@ -13,9 +13,9 @@ ms.custom: mimckitt, devx-track-azurecli, devx-track-azurepowershell, devx-track
 
 # Create a Virtual Machine Scale Set that uses Availability Zones
 
-Azure availability zones are fault-isolated locations within an Azure region that provide redundant power, cooling, and networking. They allow you to run applications with high availability and fault tolerance to data center failures. Azure regions that support Availability Zones have a minimum of three separate zones. Each availability zone consists of one or more data centers equipped with independent infrastructure power, network, and cooling. Availability zones are connected by a high-performance network with a round-trip latency of less than 2 milliseconds. For more information, see [Overview of Availability Zones](/azure/availability-zones/az-overview).
+Azure availability zones are fault-isolated locations within an Azure region that provide redundant power, cooling, and networking. They allow you to run applications with high availability and fault tolerance to data center failures. Azure regions that support Availability Zones have a minimum of three separate zones. Each availability zone consists of one or more data centers equipped with independent infrastructure power, network, and cooling. Availability zones are connected by a high-performance network with a round-trip latency of less than 2 milliseconds. For more information, see [Overview of Availability Zones](/azure/reliability/availability-zones-overview).
 
-To protect your Virtual Machine Scale Sets from datacenter-level failures, you can create a scale set across Availability Zones. To use Availability Zones, your scale set must be created in a [supported Azure region](/azure/availability-zones/az-region).
+To protect your Virtual Machine Scale Sets from datacenter-level failures, you can create a scale set across Availability Zones. To use Availability Zones, your scale set must be created in a [supported Azure region](/azure/reliability/availability-zones-region-support).
 
 ## Design considerations for availability zones
 
@@ -45,10 +45,10 @@ In the rare case of a full zonal outage, any or all instances within the scale s
 A fault domain is a fault isolation group within an availability zone or datacenter of hardware nodes that share the same power, networking, cooling, and platform maintenance schedule. VM instances that are on different fault domains are not likely to be impacted by the same planned or unplanned outage. You can specify how instances are spread across fault domains within a region or zone.
 
 - Max spreading (platformFaultDomainCount = 1)
-- Static fixed spreading (platformFaultDomainCount = 5)
-- Spreading aligned with storage disk fault domains (platformFaultDomainCount = 2 or 3, for regional deployments only)
+- Fixed spreading (platformFaultDomainCount = 5)
+- Fixed spreading aligned with storage disk fault domains (platformFaultDomainCount = 2 or 3, for regional deployments only)
 
-With max spreading, the scale set spreads your VMs across as many fault domains as possible within each zone. This spreading could be across greater or fewer than five fault domains per zone. With static fixed spreading, the scale set spreads your VMs across exactly five fault domains per zone. If the scale set can't find five distinct fault domains per zone to satisfy the allocation request, the request fails.
+With max spreading, the scale set spreads your VMs across as many fault domains as possible within each zone. This spreading could be across greater or fewer than five fault domains per zone. With static fixed spreading, the scale set spreads your VMs across the specified number of fault domains. If the scale set can't allocate to at least the specified fault domain count to satisfy the allocation request, the request fails.
 
 **We recommend deploying with max spreading for most workloads**, as this approach provides the best spreading in most cases. If you need replicas to be spread across distinct hardware isolation units, we recommend spreading across Availability Zones and utilize max spreading within each zone.
 
@@ -196,7 +196,7 @@ Update the scale set to change the zones parameter.
 ### [Azure portal](#tab/portal-2)
 
 1. Navigate to the scale set you want to update
-1. On the Properties tab of the scale set landing page, find the **Availability zone** property and press **Edit**
+1. On the Availability tab of the scale set landing page, find the **Availability zone** property and press **Edit**
 1. On the **Edit Location** dialog box, select the desired zone(s)
 1. Select **Apply**
 

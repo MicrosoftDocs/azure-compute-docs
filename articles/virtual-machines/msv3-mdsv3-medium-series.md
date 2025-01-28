@@ -36,8 +36,10 @@ The Msv3 and Mdsv3 Medium Memory(MM) Virtual Machine (VM) series, powered by 4<s
 |Standard_M48s_1_v3|48|974|64|65,000/ 1,560|65,000/ 1,560|8|16,000|
 |Standard_M96s_1_v3|96|974|64|65,000/ 1,560|65,000/ 1,560|8|16,000|
 |Standard_M96s_2_v3|96|1,946|64|130,000/ 3,120|130,000/ 3,120|8|30,000|
-|Standard_M176s_3_v3|176|2794|64|130,000/ 4,000|130,000/ 4,000|8|40,000|
-|Standard_M176s_4_v3|176|3892|64|130,000/ 4,000|130,000/ 4,000|8|40,000|
+|Standard_M176s_3_v3<sup>1</sup>|176|2794|64|130,000/ 4,000|130,000/ 4,000|8|40,000|
+|Standard_M176s_4_v3<sup>1</sup>|176|3892|64|130,000/ 4,000|130,000/ 4,000|8|40,000|
+
+<sup>1</sup> [Disable SMT](/sql/sql-server/compute-capacity-limits-by-edition-of-sql-server#disable-smt-in-an-azure-virtual-machine) to run SQL Server on a VM with more than 64 vCores per NUMA node. 
 
 ## Mdsv3 Medium Memory series
 
@@ -60,10 +62,11 @@ These virtual machines feature local SSD storage (up to 400 GiB).
 |Standard_M48ds_1_v3|48|974|400|64|40,000/400|65,000/ 1,560|65,000/ 1,560|8|16,000|
 |Standard_M96ds_1_v3|96|974|400|64|40,000/400|65,000/ 1,560|65,000/ 1,560|8|16,000|
 |Standard_M96ds_2_v3|96|1,946|400|64|160,000/1600|130,000/ 3,120|130,000/ 3,120|8|30,000|
-|Standard_M176ds_3_v3|176|2794|400|64|160,000/1600|130,000/ 4,000|130,000/ 4,000|8|40,000|
-|Standard_M176ds_4_v3|176|3892|400|64|160,000/1600|130,000/ 4,000|130,000/ 4,000|8|40,000|
+|Standard_M176ds_3_v3<sup>1</sup>|176|2794|400|64|160,000/1600|130,000/ 4,000|130,000/ 4,000|8|40,000|
+|Standard_M176ds_4_v3<sup>1</sup>|176|3892|400|64|160,000/1600|130,000/ 4,000|130,000/ 4,000|8|40,000|
 
-<sup>*</sup> Read iops is optimized for sequential reads<br>
+<sup>*</sup> Read iops is optimized for sequential reads<br> 
+<sup>1</sup> [Disable SMT](/sql/sql-server/compute-capacity-limits-by-edition-of-sql-server#disable-smt-in-an-azure-virtual-machine) to run SQL Server on a VM with more than 64 vCores per NUMA node.  
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](./includes/virtual-machines-common-sizes-table-defs.md)]
 

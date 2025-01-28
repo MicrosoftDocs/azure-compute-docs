@@ -35,8 +35,10 @@ items:
         href: oracle-migration.md
       - name: Performance best practices for Oracle on Azure VMs
         href: oracle-performance-best-practice.md
-      - name: Partner storage offerings Oracle on Azure VMs
+      - name: Partner storage offerings Oracle on Azure VMs
         href: oracle-third-party-storage.md
+      - name: Migrate Oracle workload to Oracle Database@Azure
+        href: oracle-migration-oracle-database-at-azure.md
   - name: Backup and disaster recovery
     items:  
       - name: Oracle Database in Azure Linux VM backup strategies

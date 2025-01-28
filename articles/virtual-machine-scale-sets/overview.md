@@ -45,7 +45,7 @@ Azure Virtual Machine Scale Sets provide the management capabilities for applica
 
 - **Provides high availability and application resiliency**
     - Scale sets are used to run multiple instances of your application. If one of these VM instances has a problem, customers continue to access your application through one of the other VM instances with minimal interruption.
-    - For more availability, you can use [Availability Zones](/azure/availability-zones/az-overview) to automatically distribute VM instances in a scale set within a single datacenter or across multiple datacenters. Deploying VMs across Availability Zones can protect you against data center failure. Note that a scale set can't protect you against data center failures.
+    - For more availability, you can use [Availability Zones](/azure/reliability/availability-zones-overview) to automatically distribute VM instances in a scale set within a single datacenter or across multiple datacenters. Deploying VMs across Availability Zones can protect you against data center failure. Note that a scale set can't protect you against data center failures.
 
 - **Allows your application to automatically scale as resource demand changes**
     - Customer demand for your application may change throughout the day or week. To match customer demand, scale sets can automatically increase the number of VM instances as application demand increases, then reduce the number of VM instances as demand decreases.
@@ -55,6 +55,9 @@ Azure Virtual Machine Scale Sets provide the management capabilities for applica
     - Scale sets support up to 1,000 VM instances for standard marketplace images and custom images through the Azure Compute Gallery (formerly known as Shared Image Gallery). If you create a scale set using a managed image, the limit is 600 VM instances.
     - For the best performance with production workloads, use [Azure Managed Disks](../virtual-machines/managed-disks-overview.md).
 
+- **Cost-effective service**
+    - There is no additional cost for using scale sets. You are charged based on the compute, network, and storage resources that the scale set uses.
+    - For virtual machine pricing information, see [Azure pricing](https://azure.microsoft.com/pricing/).
 
 ## Next steps
 > [!div class="nextstepaction"]

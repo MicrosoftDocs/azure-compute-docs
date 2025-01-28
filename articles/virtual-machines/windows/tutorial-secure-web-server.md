@@ -152,9 +152,7 @@ Obtain the public IP address of your VM with [Get-AzPublicIPAddress](/powershell
 Get-AzPublicIPAddress -ResourceGroupName $resourceGroup -Name "myPublicIPAddress" | select "IpAddress"
 ```
 
-Now you can open a web browser and enter `https://<myPublicIP>` in the address bar. To accept the security warning if you used a self-signed certificate, select **Details** and then **Go on to the webpage**:
-
-:::image type="content" source="./media/tutorial-secure-web-server/browser-warning.png" alt-text="Screenshot of web browser security warning.":::
+Now you can open a web browser and enter `https://<myPublicIP>` in the address bar. To accept the security warning if you used a self-signed certificate, select **Details** and then **Go on to the webpage**.
 
 Your secured IIS website is then displayed as in the following example:
 

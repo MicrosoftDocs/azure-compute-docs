@@ -16,7 +16,7 @@ ms.date: 08/21/2024
 
 Azure Disk Encryption helps protect and safeguard your data to meet your organizational security and compliance commitments. It uses the [BitLocker](/windows/security/operating-system-security/data-protection/bitlocker/) feature of Windows to provide volume encryption for the OS and data disks of Azure virtual machines (VMs), and is integrated with [Azure Key Vault](/azure/key-vault/) to help you control and manage the disk encryption keys and secrets.
 
-Azure Disk Encryption is zone resilient, the same way as Virtual Machines. For details, see [Azure Services that support Availability Zones](/azure/availability-zones/az-region).
+Azure Disk Encryption is zone resilient, the same way as Virtual Machines. For details, see [Azure Services that support Availability Zones](/azure/reliability/availability-zones-region-support).
 
 If you use [Microsoft Defender for Cloud](/azure/security-center/), you're alerted if you have VMs that aren't encrypted. The alerts show as High Severity and the recommendation is to encrypt these VMs.
 

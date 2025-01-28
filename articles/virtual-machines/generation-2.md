@@ -1,12 +1,12 @@
 ---
 title: Azure support for Generation 2 VMs
 description: Overview of Azure support for Generation 2 VMs
-author: ju-shim
+author: AjKundnani
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: how-to
 ms.date: 03/04/2024
-ms.author: jushiman
+ms.author: ajkundna
 ---
 
 # Support for Generation 2 VMs on Azure
@@ -99,13 +99,13 @@ Azure now offers Generation 2 support for the following selected VM series:
 
 Generation 2 VMs support the following Marketplace images:
 
-* Windows Server 2022, 2019, 2016, 2012 R2, 2012
+* Windows Server 2025, 2022, 2019, 2016, 2012 R2, 2012
 * Windows 11 Pro, Windows 11 Enterprise
 * Windows 10 Pro, Windows 10 Enterprise
 * SUSE Linux Enterprise Server 15 SP3, SP2
 * SUSE Linux Enterprise Server 12 SP4
 * Ubuntu Server 22.04 LTS, 20.04 LTS, 18.04 LTS, 16.04 LTS 
-* RHEL 9.3, 9.2, 9.1, 9.0, 8.9, 8.8, 8.7, 8.6, 8.5, 8.4, 8.3, 8.2, 8.1, 8.0, 7.9, 7.8, 7.7, 7.6, 7.5, 7.4, 7.0
+* RHEL 9,5, 9.4, 9.3, 9.2, 9.1, 9.0, 8.10, 8.9, 8.8, 8.7, 8.6, 8.5, 8.4, 8.3, 8.2, 8.1, 8.0, 7.9, 7.8, 7.7, 7.6, 7.5, 7.4, 7.0
 * Cent OS 8.4, 8.3, 8.2, 8.1, 8.0, 7.7, 7.6, 7.5, 7.4
 * Oracle Linux 9.3, 9.2, 9.1, 9.0, 8.9, 8.8, 8.7, 8.6, 8.5, 8.4, 8.3, 8.2, 8.1, 7.9, 7.9, 7.8, 7.7
 

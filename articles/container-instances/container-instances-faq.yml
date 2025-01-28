@@ -181,11 +181,11 @@ sections:
       - question: |
           Are there any features that aren't supported on confidential containers on Azure Container Instances?
         answer: | 
-          GPU based ACI container deployments, Windows containers, availability zones, and dedicated instances aren't supported with confidential containers. 
+          GPU based ACI container deployments and Windows containers aren't supported with confidential containers.
       - question: |
           What regions are confidential containers on Azure Container Instances available?
         answer: |
-          Confidential containers on Azure Container Instances are only available in select regions during Public Preview. Current region availability is published [here](container-instances-region-availability.md).
+          Current region availability for confidential containers is published [here](container-instances-region-availability.md).
       - question: |
           Is there an additional cost for confidential container on Azure Container Instances?
         answer: |

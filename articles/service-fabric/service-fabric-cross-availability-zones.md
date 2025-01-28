@@ -6,14 +6,14 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 11/21/2024
 ---
 
 # Deploy an Azure Service Fabric cluster across Availability Zones
 
 Availability Zones in Azure are a high-availability offering that protects your applications and data from datacenter failures. An Availability Zone is a unique physical location equipped with independent power, cooling, and networking within an Azure region.
 
-To support clusters that span across Availability Zones, Azure Service Fabric provides the two configuration methods as described in the article below. Availability Zones are available only in select regions. For more information, see the [Availability Zones overview](/azure/availability-zones/az-overview).
+To support clusters that span across Availability Zones, Azure Service Fabric provides the two configuration methods as described in the article below. Availability Zones are available only in select regions. For more information, see the [Availability Zones overview](/azure/reliability/availability-zones-overview).
 
 Sample templates are available at [Service Fabric cross-Availability Zone templates](https://github.com/Azure-Samples/service-fabric-cluster-templates).
 
@@ -62,7 +62,7 @@ The Service Fabric load balancer brings up replicas in the working zones to matc
 
 ### Public IP and load balancer resource
 
-To enable the `zones` property on a virtual machine scale set resource, the load balancer and the IP resource referenced by that virtual machine scale set must both use a Standard SKU. Creating a load balancer or IP resource without the SKU property creates a Basic SKU, which does not support Availability Zones. A Standard SKU load balancer blocks all traffic from the outside by default. To allow outside traffic, deploy an NSG to the subnet.
+To enable the `zones` property on a virtual machine scale set resource, the load balancer and the IP resource referenced by that virtual machine scale set must both use a Standard SKU. Creating an IP resource without the SKU property creates a Basic SKU, which does not support Availability Zones. A Standard SKU load balancer blocks all traffic from the outside by default. To allow outside traffic, deploy an NSG to the subnet.
 
 ```json
 {
@@ -110,7 +110,7 @@ To enable the `zones` property on a virtual machine scale set resource, the load
 ```
 
 >[!NOTE]
-> It isn't possible to do an in-place change of SKU on the public IP and load balancer resources. If you're migrating from existing resources that have a Basic SKU, see the migration section of this article.
+> It isn't possible to do an in-place change of SKU on public IP resources. If you're migrating from existing resources that have a Basic SKU, see the [migration section](#migrate-to-availability-zones-from-a-cluster-by-using-a-basic-sku-ip) of this article.
 
 ### NAT rules for virtual machine scale sets
 
@@ -161,7 +161,7 @@ The inbound network address translation (NAT) rules for the load balancer should
 
 ### Outbound rules for a Standard SKU load balancer
 
-The Standard SKU load balancer and public IP introduce new abilities and different behaviors to outbound connectivity when compared to using Basic SKUs. If you want outbound connectivity when you're working with Standard SKUs, you must explicitly define it with either a Standard SKU public IP addresses or a Standard SKU load balancer. For more information, see [Outbound connections](/azure/load-balancer/load-balancer-outbound-connections) and [What is Azure Load Balancer?](/azure/load-balancer/load-balancer-overview).
+The Standard SKU public IP introduces new abilities and different behaviors to outbound connectivity when compared to using Basic SKUs. If you want outbound connectivity when you're working with Standard SKUs, you must explicitly define it with either a Standard SKU public IP addresses or a Standard SKU load balancer. For more information, see [Outbound connections](/azure/load-balancer/load-balancer-outbound-connections) and [What is Azure Load Balancer?](/azure/load-balancer/load-balancer-overview).
 
 >[!NOTE]
 > The standard template references an NSG that allows all outbound traffic by default. Inbound traffic is limited to the ports that are required for Service Fabric management operations. The NSG rules can be modified to meet your requirements.
@@ -273,11 +273,10 @@ The Service Fabric node type must be enabled to support multiple Availability Zo
 For all migration scenarios, you need to add a new node type that supports multiple Availability Zones. An existing node type can't be migrated to support multiple zones.
 The [Scale up a Service Fabric cluster primary node type](./service-fabric-scale-up-primary-node-type.md) article includes detailed steps to add a new node type and the other resources required for the new node type, such as IP and load balancer resources. That article also describes how to retire the existing node type after a new node type with multiple Availability Zones is added to the cluster.
 
-* Migration from a node type that uses basic load balancer and IP resources: This process is already described in [a sub-section below](#migrate-to-availability-zones-from-a-cluster-by-using-a-basic-sku-load-balancer-and-a-basic-sku-ip) for the solution with one node type per Availability Zone.
+* Migration from a node type that uses basic IP resources: This process is already described in [a sub-section below](#migrate-to-availability-zones-from-a-cluster-by-using-a-basic-sku-ip) for the solution with one node type per Availability Zone.
 
   For the new node type, the only difference is that there's only one virtual machine scale set and one node type for all Availability Zones instead of one each per Availability Zone.
-* Migration from a node type that uses the Standard SKU load balancer and IP resources with an NSG: Follow the same procedure described previously. However, there's no need to add new load balancer, IP, and NSG resources. The same resources can be reused in the new node type.
-
+* Migration from a node type that uses the Standard SKU IP resources with an NSG: Follow the same procedure described previously. However, there's no need to add new IP and NSG resources. The same resources can be reused in the new node type.
 
 ## 2. Deploy zones by pinning one virtual machine scale set to each zone
 
@@ -405,11 +404,11 @@ To set one or more node types as primary in a cluster resource, set the `isPrima
 }
 ```
 
-## Migrate to Availability Zones from a cluster by using a Basic SKU load balancer and a Basic SKU IP
+## Migrate to Availability Zones from a cluster by using a Basic SKU IP
 
-To migrate a cluster that's using a load balancer and IP with a basic SKU, you must first create an entirely new load balancer and IP resource using the standard SKU. It isn't possible to update these resources.
+To migrate a cluster that's using an IP with a Basic SKU, you must first create an entirely new IP resource using the Standard SKU. It isn't possible to update these resources.
 
-Reference the new load balancer and IP in the new cross-Availability Zone node types that you want to use. In the previous example, three new virtual machine scale set resources were added in zones 1, 2, and 3. These virtual machine scale sets reference the newly created load balancer and IP and are marked as primary node types in the Service Fabric cluster resource.
+Reference the new IP in the new cross-Availability Zone node types that you want to use. In the previous example, three new virtual machine scale set resources were added in zones 1, 2, and 3. These virtual machine scale sets reference the newly created IP and are marked as primary node types in the Service Fabric cluster resource.
 
 1. To begin, add the new resources to your existing Azure Resource Manager template. These resources include:
 

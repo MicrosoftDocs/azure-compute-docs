@@ -70,7 +70,7 @@ From this example accumulation of Minutes Not Available, here's the calculation 
     - Dlsv5 and newer series
     - Dldsv5 and newer series
     - DCsv2 series
-    - DCasv5 series
+    - DCasv5 and DCadsv5 series
     - DCesv5 and DCedsv5 series
     - ECasv5 and ECadsv5 series
     - ECesv5 and ECedsv5 series

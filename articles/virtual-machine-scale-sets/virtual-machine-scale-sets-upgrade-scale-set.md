@@ -5,9 +5,9 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
-ms.date: 6/14/2024
+ms.date: 11/7/2024
 ms.reviewer: ju-shim
-ms.custom: upgradepolicy, devx-track-azurecli, devx-track-azurepowershell
+ms.custom: upgradepolicy, devx-track-azurecli, devx-track-azurepowershell, ignite-2024
 ---
 # Modify a Virtual Machine Scale Set
 
@@ -23,7 +23,7 @@ A scale set has a "scale set model" that captures the *desired* state of the sca
 
 - REST API with [compute/virtualmachinescalesets/get](/rest/api/compute/virtualmachinescalesets/get) as follows:
 
-    ```rest
+    ```http
     GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet?api-version={apiVersion}
     ```
 
@@ -67,7 +67,7 @@ A scale set also has a "scale set instance view" that captures the current *runt
 
 - REST API with [compute/virtualmachinescalesets/getinstanceview](/rest/api/compute/virtualmachinescalesets/getinstanceview) as follows:
 
-    ```rest
+    ```http
     GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/instanceView?api-version={apiVersion}
     ```
 
@@ -121,7 +121,7 @@ Similar to how a scale set has a model view, each VM instance in the scale set h
 
 - REST API with [compute/virtualmachinescalesetvms/get](/rest/api/compute/virtualmachinescalesetvms/get) as follows:
 
-    ```rest
+    ```http
     GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/virtualmachines/instanceId?api-version={apiVersion}
     ```
 
@@ -161,7 +161,7 @@ Similar to how a scale set has an instance view, each VM instance in the scale s
 
 - REST API with [compute/virtualmachinescalesetvms/getinstanceview](/rest/api/compute/virtualmachinescalesetvms/getinstanceview) as follows:
 
-    ```rest
+    ```http
     GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/virtualmachines/instanceId/instanceView?api-version={apiVersion}
     ```
 
@@ -238,7 +238,7 @@ To update a global scale set property, you must update the property in the scale
 
 - REST API with [compute/virtualmachinescalesets/createorupdate](/rest/api/compute/virtualmachinescalesets/createorupdate) as follows:
 
-    ```rest
+    ```http
     PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet?api-version={apiVersion}
     ```
 

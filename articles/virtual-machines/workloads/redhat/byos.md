@@ -2,12 +2,13 @@
 title: Red Hat Enterprise Linux bring-your-own-subscription Azure images | Microsoft Docs
 description: Learn about bring-your-own-subscription images for Red Hat Enterprise Linux on Azure.
 author: ju-shim
+ms.reviewer: divargas
 ms.service: azure-virtual-machines
 ms.subservice: redhat
 ms.custom: devx-track-azurecli, linux-related-content, devx-track-azurepowershell
 ms.collection: linux
 ms.topic: concept-article
-ms.date: 06/10/2020
+ms.date: 10/23/2024
 ms.author: jushiman
 ---
 
@@ -65,32 +66,39 @@ The following instructions walk you through the initial deployment process for a
 
 1. Check that you're in your desired subscription.
 
-    ```azurecli
+    ```azurecli-interactive
     az account show -o=json
     ```
 
 1. Create a resource group for your Red Hat Gold Image VM.
 
-    ```azurecli
+    ```azurecli-interactive
     az group create --name <name> --location <location>
     ```
 
 1. Accept the image terms.
 
-    Option 1
-    ```azurecli
+    **Option 1:**
+
+    ```azurecli-interactive
     az vm image terms accept --publisher redhat --offer rhel-byos --plan <SKU value here> -o=jsonc
     ```
-    Example
-    ```azurecli
+
+    **Example:**
+
+    ```azurecli-interactive
     az vm image terms accept --publisher redhat --offer rhel-byos --plan rhel-lvm87 -o=jsonc
     ```
-    Option2
-    ```azurecli
+
+    **Option 2:**
+
+    ```azurecli-interactive
     az vm image terms accept --urn <SKU value here>
     ```
-    Example
-    ```azurecli
+
+    **Example:**
+
+    ```azurecli-interactive
     az vm image terms accept --urn RedHat:rhel-byos:rhel-lvm87:8.7.2023021503
     ```
 
@@ -99,92 +107,32 @@ The following instructions walk you through the initial deployment process for a
 
 1. (Optional) Validate your VM deployment with the following command:
 
-    ```azurecli
+    ```azurecli-interactive
     az vm create -n <VM name> -g <resource group name> --image <image urn> --validate
     ```
     Example:
-    ```azurecli
+    ```azurecli-interactive
     az vm create -n rhel-byos-vm -g rhel-byos-group --image redhat:rhel-byos:rhel-lvm8:latest --validate
     ```
 
 1. Provision your VM by running the same command as shown in the previous example without the `--validate` argument.
 
-    ```azurecli
+    ```azurecli-interactive
     az vm create -n <VM name> -g <resource group name> --image <image urn>
     ```
     Example:
-    ```azurecli
+    ```azurecli-interactive
     az vm create -n rhel-byos-vm -g rhel-byos-group --image redhat:rhel-byos:rhel-lvm8:latest
     ```
 
-1. SSH into your VM, and verify that you have an unentitled image. To do this step, run `sudo yum repolist`. For RHEL 8, use `sudo dnf repolist`. The output asks you to use Subscription-Manager to register the VM with Red Hat.
+1. SSH into your VM, and verify that you have an unentitled image. To do this step, run `sudo yum repolist`. For RHEL 8 or 9, use `sudo dnf repolist`. The output asks you to use Subscription-Manager to register the VM with Red Hat.
 
 >[!NOTE]
->On RHEL 8, `dnf` and `yum` are interchangeable. For more information, see the [RHEL 8 admin guide](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/packaging_and_distributing_software/index).
+>On RHEL 8 and 9, `dnf` and `yum` are interchangeable. For more information, see the [RHEL 8 admin guide](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/packaging_and_distributing_software/index) and [RHEL 9 admin guide](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/packaging_and_distributing_software/index).
 
 ## Use the Red Hat Gold Images from PowerShell
 
 The following script is an example. Replace the resource group, location, VM name, login information, and other variables with the configuration of your choice. Publisher and plan information must be lowercase.
-
->[!NOTE]
->All versions of the AzureRM PowerShell module are outdated. The Az PowerShell module is now the recommended PowerShell module for interacting with Azure
->For more information, see [Migrate Azure PowerShell from AzureRM to Az](/powershell/azure/migrate-from-azurerm-to-az).
-
-#### [AzureRM  ](#tab/AzureRM)
-
-```powershell-interactive
-    # Variables for common values
-    $resourceGroup = "testbyos"
-    $location = "canadaeast"
-    $vmName = "test01"
-
-    # Define user name and blank password
-    $securePassword = ConvertTo-SecureString 'TestPassword1!' -AsPlainText -Force
-    $cred = New-Object System.Management.Automation.PSCredential("azureuser",$securePassword)
-    Get-AzureRmMarketplaceTerms -Publisher redhat -Product rhel-byos -Name rhel-lvm87 | Set-AzureRmMarketplaceTerms -Accept
-
-    # Create a resource group
-    New-AzureRmResourceGroup -Name $resourceGroup -Location $location
-
-    # Create a subnet configuration
-    $subnetConfig = New-AzureRmVirtualNetworkSubnetConfig -Name mySubnet -AddressPrefix 192.168.1.0/24
-
-    # Create a virtual network
-    $vnet = New-AzureRmVirtualNetwork -ResourceGroupName $resourceGroup -Location
-    $location `-Name MYvNET -AddressPrefix 192.168.0.0/16 -Subnet $subnetConfig
-
-    # Create a public IP address and specify a DNS name
-    $pip = New-AzureRmPublicIpAddress -ResourceGroupName $resourceGroup -Location
-    $location `-Name "mypublicdns$(Get-Random)" -AllocationMethod Static -IdleTimeoutInMinutes 4
-
-    # Create an inbound network security group rule for port 22
-    $nsgRuleSSH = New-AzureRmNetworkSecurityRuleConfig -Name
-    myNetworkSecurityGroupRuleSSH -Protocol Tcp `
-    -Direction Inbound -Priority 1000 -SourceAddressPrefix * -SourcePortRange * -
-    DestinationAddressPrefix * `-DestinationPortRange 22 -Access Allow
-
-    # Create a network security group
-    $nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $resourceGroup -Location
-    $location `-Name myNetworkSecurityGroup -SecurityRules $nsgRuleSSH
-
-    # Create a virtual network card and associate with public IP address and NSG
-    $nic = New-AzureRmNetworkInterface -Name myNic -ResourceGroupName $resourceGroup -
-    Location $location `-SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -NetworkSecurityGroupId $nsg.Id
-
-    # Create a virtual machine configuration
-    $vmConfig = New-AzureRmVMConfig -VMName $vmName -VMSize Standard_D3_v2 |
-    Set-AzureRmVMOperatingSystem -Linux -ComputerName $vmName -Credential $cred |
-    Set-AzureRmVMSourceImage -PublisherName redhat -Offer rhel-byos -Skus rhel-lvm87 -Version latest | Add-AzureRmVMNetworkInterface -Id $nic.Id
-    Set-AzureRmVMPlan -VM $vmConfig -Publisher redhat -Product rhel-byos -Name "rhel-lvm87"
-
-    # Configure SSH Keys
-    $sshPublicKey = Get-Content "$env:USERPROFILE\.ssh\id_rsa.pub"
-    Add-AzureRmVMSshPublicKey -VM $vmconfig -KeyData $sshPublicKey -Path "/home/azureuser/.ssh/authorized_keys"
-
-    # Create a virtual machine
-    New-AzureRmVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
-```
-#### [Azure PowerShell (Az)  ](#tab/AzurePowerShell)
 
 ```powershell-interactive
     $resourceGroup = "testbyos"
@@ -245,7 +193,7 @@ For steps to apply Azure Disk Encryption, see [Azure Disk Encryption scenarios o
 
 - If you attempt to provision a VM on a subscription that isn't enabled for this offer, you get the following message:
 
-    ```
+    ```output
     "Offer with PublisherId: redhat, OfferId: rhel-byos, PlanId: rhel-lvm87 is private and can not be purchased by subscriptionId: GUID"
     ```
 
@@ -253,8 +201,8 @@ For steps to apply Azure Disk Encryption, see [Azure Disk Encryption scenarios o
 
 - If you modify a snapshot from a RHEL BYOS image and attempt to publish that custom image to the [Azure Compute Gallery](../../shared-image-galleries.md) (formerly known as Shared Image Gallery), you must provide plan information that matches the original source of the snapshot. For example, the command might look like this:
 
-    ```azurecli
-    az vm create –image \
+    ```azurecli-interactive
+    az vm create -image \
     "/subscriptions/GUID/resourceGroups/GroupName/providers/Microsoft.Compute/galleries/GalleryName/images/ImageName/versions/1.0.0" \
     -g AnotherGroupName --location EastUS2 -n VMName \
     --plan-publisher redhat --plan-product rhel-byos --plan-name rhel-lvm87

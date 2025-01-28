@@ -49,6 +49,9 @@ sections:
           
       - question: How can I identify the Virtual machines and Virtual Machine scale sets in my subscription that are running on images that are scheduled for deprecation?
         answer: |
+
+         **Using Azure Resource graph:**
+        
           You can search for the Virtual machine or Virtual Machine scale sets that are pinned to an image by running the following queries in [Azure Resource graph](/azure/governance/resource-graph/overview): 
           
           
@@ -63,7 +66,7 @@ sections:
           ```
           
           
-          To find the scale set running on any retired image, specify the retired image as follows and run the query in Azure Resource Graph replacing the values below with your image details as follows:
+          - To find the scale set running on any retired image, specify the retired image as follows and run the query in Azure Resource Graph replacing the values below with your image details as follows:
           
           ```
           resources 
@@ -80,14 +83,14 @@ sections:
           **Using Azure CLI:**
 
 
-          List VM with deprecated image at Plan/SKU level.
+          - List VM with deprecated image at Plan/SKU level.
           
           ```azurecli
           az vm show --resource-group $rgName --name $vmName --query "storageProfile.imageReference.exactVersion
           az vm list --query "[?storageProfile.imageReference.sku=='2016-Datacenter'].{VM:id, imageOffer:storageProfile.imageReference.offer, imagePublisher:StorageProfile.imageReference.publisher, imageSku: storageProfile.imageReference.sku, imageVersion:storageProfile.imageReference.version}"
           ```
           
-          List VM with deprecated image at version level.
+          - List VM with deprecated image at version level.
           
           ```azurecli
           az vm list --query "[?storageProfile.imageReference.version=='14393.4402.2105052108'].{VM:id, imageOffer:storageProfile.imageReference.offer, imagePublisher:StorageProfile.imageReference.publisher, imageSku: storageProfile.imageReference.sku, imageVersion:storageProfile.imageReference.version}"
@@ -96,25 +99,27 @@ sections:
           
           **Using PowerShell:**
           
-          List VM with deprecated images at version level. 
+          - List VM with deprecated images at version level. 
           
           ```powershell
           (Get-AzVM -ResourceGroupName $rgname -Name $vmname).StorageProfile.ImageReference.ExactVersion   
           ```
           
-          To find scale set using a deprecated version.
+          - To find scale set using a deprecated version.
           
           ```powershell
           $vmsslist = Get-AzVmss
           $vmsslist | where {$_.virtualMachineProfile.storageProfile.imageReference.Version -eq '14393.4402.2105052108'} | Select-Object -Property ResourceGroupName, Name, @{label='imageOffer'; expression={$_.virtualMachineProfile.storageProfile.imageReference.Offer}}, @{label='imagePublisher'; expression={$_.virtualMachineProfile.storageProfile.imageReference.Publisher}}, @{label='imageSKU'; expression={$_.virtualMachineProfile.storageProfile.imageReference.Sku}}, @{label='imageVersion'; expression={$_.virtualMachineProfile.storageProfile.imageReference.Version}}
           ```
           
-          List scale sets with deprecated images at plan/SKU level.
+          - List scale sets with deprecated images at plan/SKU level.
           
           ```powershell
           $vmsslist = Get-AzVmss
           $vmsslist | where {$_.virtualMachineProfile.storageProfile.imageReference.Sku -eq '2016-Datacenter'} | Select-Object -Property ResourceGroupName, Name, @{label='imageOffer'; expression={$_.virtualMachineProfile.storageProfile.imageReference.Offer}}, @{label='imagePublisher'; expression={$_.virtualMachineProfile.storageProfile.imageReference.Publisher}}, @{label='imageSKU'; expression={$_.virtualMachineProfile.storageProfile.imageReference.Sku}}, @{label='imageVersion'; expression={$_.virtualMachineProfile.storageProfile.imageReference.Version}}
           ```
+
+          - Run [Get-AzVMImageDeprecationStatus.ps1](https://github.com/Azure/azure-support-scripts/tree/master/VMImages#readme) to list if any VMs or VM scale sets in a subscription were created from VM images that are scheduled for deprecation.
           
           When an image is deprecated, there's no impact on existing VMs and no action is required. When an image is deprecated, only VMSS scale out operations and new VM and VMSS create operations are impacted.
           
@@ -219,7 +224,11 @@ sections:
           
 
           If the image is deprecated,  you'll get a **VM Image is Deprecated** response. If the image is scheduled for deprecation, the response would show the date of the scheduled deprecation.
-           
+
+          > [!NOTE]
+          > You can run [Get-AzVMImageDeprecationStatus.ps1](https://github.com/Azure/azure-support-scripts/blob/master/VMImages/README.md) in Cloud Shell or locally in Azure PowerShell to show if any VMs in a subscription were created from VM images that are scheduled for deprecation. This script supports both VM and VM scale set instances.
+          >
+
           
           The response indicates that this is deprecated:
           

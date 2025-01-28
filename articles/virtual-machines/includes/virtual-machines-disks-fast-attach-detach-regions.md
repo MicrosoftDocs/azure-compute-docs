@@ -5,7 +5,7 @@
  author: roygara
  ms.service: azure-virtual-machines
  ms.topic: include
- ms.date: 06/02/2022
+ ms.date: 12/09/2024
  ms.author: rogarana
  ms.custom: include file, references_regions
 ---
@@ -19,6 +19,6 @@ Lower latency is currently available in every public region except for:
 - South Central US
 - West US 2
 - Germany North
-- Jio India West
+- India West
 - North Europe
 - West Europe

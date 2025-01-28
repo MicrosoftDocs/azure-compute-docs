@@ -41,13 +41,13 @@ vCPUs (Qty.) and Memory for each size
 
 Local (temp) storage info for each size
 
-| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read (RR)<sup>1</sup> IOPS | Temp Disk Random Read (RR)<sup>1</sup> Speed (MBps) | Temp Disk Random Write (RW)<sup>1</sup> IOPS | Temp Disk Random Write (RW)<sup>1</sup> Speed (MBps) |
-| --- | --- | --- | --- | --- | --- | --- |
-| Standard_FX4mds | 1 | 168 | 40000 | 343 |  |  |
-| Standard_FX12mds | 1 | 504 | 100000 | 1029 |  |  |
-| Standard_FX24mds | 1 | 1008 | 200000 | 2057 |  |  |
-| Standard_FX36mds | 1 | 1512 | 300000 | 3086 |  |  |
-| Standard_FX48mds | 1 | 2016 | 400000 | 3871 |  |  |
+| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read (RR)<sup>1</sup> IOPS | Temp Disk Random Read (RR)<sup>1</sup> Throughput (MB/s) |
+| --- | --- | --- | --- | --- |
+| Standard_FX4mds | 1 | 168 | 40000 | 343 |
+| Standard_FX12mds | 1 | 504 | 100000 | 1029 |
+| Standard_FX24mds | 1 | 1008 | 200000 | 2057 |
+| Standard_FX36mds | 1 | 1512 | 300000 | 3086 |
+| Standard_FX48mds | 1 | 2016 | 400000 | 3871 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
@@ -64,13 +64,13 @@ Local (temp) storage info for each size
 
 Remote (uncached) storage info for each size
 
-| Size Name | Max Remote Storage Disks (Qty.) | Uncached Disk IOPS | Uncached Disk Speed (MBps) | Uncached Disk Burst<sup>1</sup> IOPS | Uncached Disk Burst<sup>1</sup> Speed (MBps) | Uncached Special<sup>2</sup> Disk IOPS | Uncached Special<sup>2</sup> Disk Speed (MBps) | Uncached Burst<sup>1</sup> Special<sup>2</sup> Disk IOPS | Uncached Burst<sup>1</sup> Special<sup>2</sup> Disk Speed (MBps) |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_FX4mds | 8 | 6700 | 104 |  |  |  |  |  |  |
-| Standard_FX12mds | 24 | 20000 | 314 |  |  |  |  |  |  |
-| Standard_FX24mds | 32 | 40000 | 629 |  |  |  |  |  |  |
-| Standard_FX36mds | 32 | 60000 | 944 |  |  |  |  |  |  |
-| Standard_FX48mds | 32 | 80000 | 1258 |  |  |  |  |  |  |
+| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD Disk IOPS | Uncached Premium SSD Throughput (MB/s) |
+| --- | --- | --- | --- |
+| Standard_FX4mds | 8 | 6700 | 104 |
+| Standard_FX12mds | 24 | 20000 | 314 |
+| Standard_FX24mds | 32 | 40000 | 629 |
+| Standard_FX36mds | 32 | 60000 | 944 |
+| Standard_FX48mds | 32 | 80000 | 1258 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
@@ -79,7 +79,7 @@ Remote (uncached) storage info for each size
 
 #### Table definitions
 - <sup>1</sup>Some sizes support [bursting](../../disk-bursting.md) to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.
-- <sup>2</sup>Special Storage refers to either [Ultra Disk](../../../virtual-machines/disks-enable-ultra-ssd.md) or [Premium SSD v2](../../../virtual-machines/disks-deploy-premium-v2.md) storage.
+
 - Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
 - Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
 - Data disks can operate in cached or uncached modes. For cached data disk operation, the host cache mode is set to ReadOnly or ReadWrite. For uncached data disk operation, the host cache mode is set to None.
@@ -90,7 +90,7 @@ Remote (uncached) storage info for each size
 
 Network interface info for each size
 
-| Size Name | Max NICs (Qty.) | Max Bandwidth (Mbps) |
+| Size Name | Max NICs (Qty.) | Max Network Bandwidth (Mb/s) |
 | --- | --- | --- |
 | Standard_FX4mds | 2 | 4000 |
 | Standard_FX12mds | 4 | 8000 |
@@ -117,3 +117,4 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 ---
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]
+

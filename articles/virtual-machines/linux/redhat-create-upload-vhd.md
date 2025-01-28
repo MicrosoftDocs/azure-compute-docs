@@ -1,7 +1,7 @@
 ---
 title: Create and upload a Red Hat Enterprise Linux VHD for use in Azure
 description: Learn to create and upload an Azure virtual hard disk (VHD) that contains a Red Hat Linux operating system.
-author: srijang
+author: vamckMS
 ms.service: azure-virtual-machines
 ms.subservice: redhat
 ms.collection: linux
@@ -77,7 +77,7 @@ This section assumes that you've already obtained an ISO file from the Red Hat w
     To apply it:<br>
     
     ```bash
-    sudo cat <<EOF>> /etc/udev/rules.d/68-azure-sriov-nm-unmanaged.rules
+    sudo tee <<EOF /etc/udev/rules.d/68-azure-sriov-nm-unmanaged.rules > /dev/null
     # Accelerated Networking on Azure exposes a new SRIOV interface to the VM.
     # This interface is transparently bonded to the synthetic interface,
     # so NetworkManager should just ignore any SRIOV interfaces.
@@ -194,7 +194,7 @@ This section assumes that you've already obtained an ISO file from the Red Hat w
 
         ```bash
         sudo echo "Add console log file"
-        sudo cat <<EOF tee  /etc/cloud/cloud.cfg.d/05_logging.cfg 
+        sudo tee <<EOF /etc/cloud/cloud.cfg.d/05_logging.cfg > /dev/null
 
         # This tells cloud-init to redirect its stdout and stderr to
         # 'tee -a /var/log/cloud-init-output.log' so the user can see output
@@ -241,13 +241,13 @@ This section assumes that you've already obtained an ISO file from the Red Hat w
 1. Configure `cloud-init` telemetry to assist with troubleshooting for provisioning issues:
 
    ```bash
-           sudo tee >> /etc/cloud/cloud.cfg.d/10-azure-kvp.cfg << EOF
-           # This config enables cloud-init to report provisioning telemetry to aid with troubleshooting
-           Reporting:
-             logging:
-                type: log
-             telemetry:
-                type: hyperv
+   sudo tee >> /etc/cloud/cloud.cfg.d/10-azure-kvp.cfg << EOF
+   # This config enables cloud-init to report provisioning telemetry to aid with troubleshooting
+   Reporting:
+     logging:
+       type: log
+     telemetry:
+       type: hyperv
    EOF
    ```
 
@@ -299,7 +299,7 @@ This section assumes that you've already obtained an ISO file from the Red Hat w
     To apply it:<br>
     
     ```bash
-    sudo cat <<EOF>> /etc/udev/rules.d/68-azure-sriov-nm-unmanaged.rules
+    sudo tee <<EOF /etc/udev/rules.d/68-azure-sriov-nm-unmanaged.rules > /dev/null
     # Accelerated Networking on Azure exposes a new SRIOV interface to the VM.
     # This interface is transparently bonded to the synthetic interface,
     # so NetworkManager should just ignore any SRIOV interfaces.
@@ -369,7 +369,7 @@ This section assumes that you've already obtained an ISO file from the Red Hat w
     1. Configure `waagent` for `cloud-init`:
 
         ```bash
-        sudo sed -i 's/Provisioning.Agent=auto/Provisioning.Agent=cloud-init/g' /etc/waagent.conf
+        sudo sed -i 's/Provisioning.Agent=auto/Provisioning.Agent=cloud-init/g' /etc/waagent.conf 
         sudo sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
         sudo sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
         ```
@@ -413,7 +413,7 @@ This section assumes that you've already obtained an ISO file from the Red Hat w
 
         ```bash
         sudo echo "Add console log file"
-        sudo cat <<EOF tee  /etc/cloud/cloud.cfg.d/05_logging.cfg 
+        sudo tee <<EOF /etc/cloud/cloud.cfg.d/05_logging.cfg > /dev/null 
 
         # This tells cloud-init to redirect its stdout and stderr to
         # 'tee -a /var/log/cloud-init-output.log' so the user can see output
@@ -459,13 +459,13 @@ This section assumes that you've already obtained an ISO file from the Red Hat w
 1. Configure `cloud-init` telemetry to assist with troubleshooting for provisioning issues:
 
    ```bash
-           sudo tee >> /etc/cloud/cloud.cfg.d/10-azure-kvp.cfg << EOF
-           # This config enables cloud-init to report provisioning telemetry to aid with troubleshooting
-           Reporting:
-             logging:
-                type: log
-             telemetry:
-                type: hyperv
+   sudo tee >> /etc/cloud/cloud.cfg.d/10-azure-kvp.cfg << EOF
+   # This config enables cloud-init to report provisioning telemetry to aid with troubleshooting
+   Reporting:
+     logging:
+       type: log
+     telemetry:
+       type: hyperv
    EOF
    ```
 
@@ -547,7 +547,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
     To apply it:<br>
     
     ```bash
-    sudo cat <<EOF>> /etc/udev/rules.d/68-azure-sriov-nm-unmanaged.rules
+    sudo tee <<EOF /etc/udev/rules.d/68-azure-sriov-nm-unmanaged.rules > /dev/null
     # Accelerated Networking on Azure exposes a new SRIOV interface to the VM.
     # This interface is transparently bonded to the synthetic interface,
     # so NetworkManager should just ignore any SRIOV interfaces.
@@ -710,7 +710,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
     To apply it:<br>
     
     ```bash
-    sudo cat <<EOF>> /etc/udev/rules.d/68-azure-sriov-nm-unmanaged.rules
+    sudo tee <<EOF /etc/udev/rules.d/68-azure-sriov-nm-unmanaged.rules >/dev/null
     # Accelerated Networking on Azure exposes a new SRIOV interface to the VM.
     # This interface is transparently bonded to the synthetic interface,
     # so NetworkManager should just ignore any SRIOV interfaces.
@@ -824,7 +824,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
 
         ```bash
         sudo echo "Add console log file"
-        sudo cat <<EOF tee  /etc/cloud/cloud.cfg.d/05_logging.cfg 
+        sudo tee <<EOF /etc/cloud/cloud.cfg.d/05_logging.cfg >/dev/null 
 
         # This tells cloud-init to redirect its stdout and stderr to
         # 'tee -a /var/log/cloud-init-output.log' so the user can see output
@@ -869,13 +869,13 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
 1. Configure `cloud-init` telemetry to assist with troubleshooting for provisioning issues:
 
    ```bash
-           sudo tee /etc/cloud/cloud.cfg.d/10-azure-kvp.cfg << EOF
-           # This config enables cloud-init to report provisioning telemetry to aid with troubleshooting
-           Reporting:
-             logging:
-                type: log
-             telemetry:
-                type: hyperv
+   sudo tee >> /etc/cloud/cloud.cfg.d/10-azure-kvp.cfg << EOF
+   # This config enables cloud-init to report provisioning telemetry to aid with troubleshooting
+   Reporting:
+     logging:
+       type: log
+     telemetry:
+       type: hyperv
    EOF
    ```
 
@@ -973,7 +973,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
     To apply it:<br>
     
     ```bash
-    sudo cat <<EOF>> /etc/udev/rules.d/68-azure-sriov-nm-unmanaged.rules
+    sudo tee <<EOF /etc/udev/rules.d/68-azure-sriov-nm-unmanaged.rules > /dev/null
     # Accelerated Networking on Azure exposes a new SRIOV interface to the VM.
     # This interface is transparently bonded to the synthetic interface,
     # so NetworkManager should just ignore any SRIOV interfaces.
@@ -1116,7 +1116,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
     To apply it:<br>
     
     ```bash
-    sudo cat <<EOF>> /etc/udev/rules.d/68-azure-sriov-nm-unmanaged.rules
+    sudo tee <<EOF /etc/udev/rules.d/68-azure-sriov-nm-unmanaged.rules >/dev/null
     # Accelerated Networking on Azure exposes a new SRIOV interface to the VM.
     # This interface is transparently bonded to the synthetic interface,
     # so NetworkManager should just ignore any SRIOV interfaces.
@@ -1230,7 +1230,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
 
         ```bash
         sudo echo "Add console log file"
-        sudo cat <<EOF tee  /etc/cloud/cloud.cfg.d/05_logging.cfg 
+        sudo tee <<EOF /etc/cloud/cloud.cfg.d/05_logging.cfg > /dev/null 
 
         # This tells cloud-init to redirect its stdout and stderr to
         # 'tee -a /var/log/cloud-init-output.log' so the user can see output
@@ -1275,13 +1275,13 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
 1. Configure `cloud-init` telemetry to assist with troubleshooting for provisioning issues:
 
    ```bash
-           sudo tee /etc/cloud/cloud.cfg.d/10-azure-kvp.cfg << EOF
-           # This config enables cloud-init to report provisioning telemetry to aid with troubleshooting
-           Reporting:
-             logging:
-                type: log
-             telemetry:
-                type: hyperv
+   sudo tee >> /etc/cloud/cloud.cfg.d/10-azure-kvp.cfg << EOF
+   # This config enables cloud-init to report provisioning telemetry to aid with troubleshooting
+   Reporting:
+     logging:
+       type: log
+     telemetry:
+       type: hyperv
    EOF
    ```
 
@@ -1479,7 +1479,7 @@ This section shows you how to prepare RHEL 7  from an ISO by using a kickstart f
     grub2-mkconfig -o /boot/grub2/grub.cfg
 
     # Configure network
-    cat << EOF > /etc/sysconfig/network-scripts/ifcfg-eth0
+    tee << EOF /etc/sysconfig/network-scripts/ifcfg-eth0 > /dev/null
     DEVICE=eth0
     ONBOOT=yes
     BOOTPROTO=dhcp
@@ -1491,7 +1491,7 @@ This section shows you how to prepare RHEL 7  from an ISO by using a kickstart f
     NM_CONTROLLED=yes
     EOF
     
-    sudo cat <<EOF>> /etc/udev/rules.d/68-azure-sriov-nm-unmanaged.rules
+    sudo tee <<EOF /etc/udev/rules.d/68-azure-sriov-nm-unmanaged.rules >/dev/null
     # Accelerated Networking on Azure exposes a new SRIOV interface to the VM.
     # This interface is transparently bonded to the synthetic interface,
     # so NetworkManager should just ignore any SRIOV interfaces.
@@ -1705,7 +1705,7 @@ This section shows you how to prepare RHEL (8 OR 9)  from an ISO by using a kick
     grub2-mkconfig -o /boot/grub2/grub.cfg
 
     # Configure network
-    cat << EOF > /etc/sysconfig/network-scripts/ifcfg-eth0
+    tee << EOF /etc/sysconfig/network-scripts/ifcfg-eth0 > /dev/null
     DEVICE=eth0
     ONBOOT=yes
     BOOTPROTO=dhcp
@@ -1717,7 +1717,7 @@ This section shows you how to prepare RHEL (8 OR 9)  from an ISO by using a kick
     NM_CONTROLLED=yes
     EOF
     
-    sudo cat <<EOF>> /etc/udev/rules.d/68-azure-sriov-nm-unmanaged.rules
+    sudo tee <<EOF /etc/udev/rules.d/68-azure-sriov-nm-unmanaged.rules >/dev/null
     # Accelerated Networking on Azure exposes a new SRIOV interface to the VM.
     # This interface is transparently bonded to the synthetic interface,
     # so NetworkManager should just ignore any SRIOV interfaces.

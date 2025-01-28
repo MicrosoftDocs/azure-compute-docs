@@ -17,6 +17,9 @@ When you deploy an Azure Virtual Machine Scale Set through the portal, certain n
 
 You can configure all of the features covered in this article using Azure Resource Manager templates. Azure CLI and PowerShell examples are also included for selected features.
 
+>[!NOTE]
+> Moving a Virtual Machine Scale Set from one VNET to another VNET is not possible. You have to recreate the scale set in the destination VNET.
+
 ## Accelerated Networking
 Azure Accelerated Networking improves network performance by enabling single root I/O virtualization (SR-IOV) to a virtual machine. To learn more about using Accelerated networking, see Accelerated networking for [Windows](/azure/virtual-network/create-vm-accelerated-networking-powershell) or [Linux](/azure/virtual-network/create-vm-accelerated-networking-cli) virtual machines. To use accelerated networking with scale sets, set enableAcceleratedNetworking to **true** in your scale set's networkInterfaceConfigurations settings. For example:
 
@@ -133,7 +136,6 @@ When adding a Flexible scale set to an Application Gateway, the process is the s
 
 >[!NOTE]
 > Note that the application gateway must be in the same virtual network as the scale set but must be in a different subnet from the scale set.
-
 
 ## Configurable DNS Settings
 By default, scale sets take on the specific DNS settings of the VNET and subnet they were created in. You can however, configure the DNS settings for a scale set directly.

@@ -21,12 +21,30 @@ ms.author: mattmcinnes
 
 ## Series in family
 
-### M-series
-[!INCLUDE [m-series-summary](./includes/m-series-summary.md)]
+### Mbsv3 and Mbdsv3-series
+#### [Mbsv3-series](#tab/mbsv3)
+[!INCLUDE [mbsv3-series](./includes/mbsv3-series-summary.md)]
 
-[View the full M-series page](../../m-series.md).
+[View the full Mbsv3-series page](./mbsv3-series.md)
 
-[!INCLUDE [m-series-specs](./includes/m-series-specs.md)]
+[!INCLUDE [mbsv3-series-specs](./includes/mbsv3-series-specs.md)]
+
+#### [Mbdsv3-series](#tab/mbdsv3)
+[!INCLUDE [mbdsv3-series](./includes/mbdsv3-series-summary.md)]
+
+[View the full Mbdsv3-series page](./mbdsv3-series.md)
+
+[!INCLUDE [mbdsv3-series-specs](./includes/mbdsv3-series-specs.md)]
+
+---
+
+
+### Msv3 and Mdsv3-series
+[!INCLUDE [msv3-mdsv3-series-summary](./includes/msv3-mdsv3-series-summary.md)]
+
+[View the full Msv3 and Mdsv3-series page](../../msv3-mdsv3-medium-series.md).
+
+[!INCLUDE [msv3-mdsv3-series-specs](./includes/msv3-mdsv3-series-specs.md)]
 
 
 ### Mv2-series
@@ -45,12 +63,12 @@ ms.author: mattmcinnes
 [!INCLUDE [msv2-mdsv2-series-specs](./includes/msv2-mdsv2-series-specs.md)]
 
 
-### Msv3 and Mdsv3-series
-[!INCLUDE [msv3-mdsv3-series-summary](./includes/msv3-mdsv3-series-summary.md)]
+### M-series
+[!INCLUDE [m-series-summary](./includes/m-series-summary.md)]
 
-[View the full Msv3 and Mdsv3-series page](../../msv3-mdsv3-medium-series.md).
+[View the full M-series page](../../m-series.md).
 
-[!INCLUDE [msv3-mdsv3-series-specs](./includes/msv3-mdsv3-series-specs.md)]
+[!INCLUDE [m-series-specs](./includes/m-series-specs.md)]
 
 
 ### Previous-generation M family series

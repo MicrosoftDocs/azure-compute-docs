@@ -13,9 +13,9 @@ ms.author: jushiman
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Flexible scale sets 
 
-This article steps through using the Azure CLI to create a Linux VM in an Azure availability zone. An [availability zone](/azure/availability-zones/az-overview) is a physically separate zone in an Azure region. Use availability zones to protect your apps and data from an unlikely failure or loss of an entire datacenter.
+This article steps through using the Azure CLI to create a Linux VM in an Azure availability zone. An [availability zone](/azure/reliability/availability-zones-overview) is a physically separate zone in an Azure region. Use availability zones to protect your apps and data from an unlikely failure or loss of an entire datacenter.
 
-To use an availability zone, create your virtual machine in a [supported Azure region](/azure/availability-zones/az-region).
+To use an availability zone, create your virtual machine in a [supported Azure region](/azure/reliability/availability-zones-region-support).
 
 Make sure that you have installed the latest [Azure CLI](/cli/azure/install-az-cli2) and logged in to an Azure account with [az login](/cli/azure/reference-index).
 

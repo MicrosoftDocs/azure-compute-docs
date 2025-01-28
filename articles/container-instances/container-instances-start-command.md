@@ -42,7 +42,7 @@ The command line syntax varies depending on the Azure API or tool used to create
 
 * [az container create][az-container-create] command: Pass a string with the `--command-line` parameter. Example: `--command-line "python myscript.py arg1 arg2"`).
 
-* [New-AzureRmContainerGroup][new-azurermcontainergroup] Azure PowerShell cmdlet: Pass a string with the `-Command` parameter. Example: `-Command "echo hello"`.
+* [New-AzContainerGroup][new-azcontainergroup] Azure PowerShell cmdlet: Pass a string with the `-Command` parameter. Example: `-Command "echo hello"`.
 
 * Azure portal: In the **Command override** property of the container configuration, provide a comma-separated list of strings, without quotes. Example: `python, myscript.py, arg1, arg2`).
 
@@ -117,4 +117,4 @@ Task-based scenarios, such as batch processing a large dataset with several cont
 [az-container-create]: /cli/azure/container#az_container_create
 [az-container-logs]: /cli/azure/container#az_container_logs
 [az-container-show]: /cli/azure/container#az_container_show
-[new-azurermcontainergroup]: /powershell/module/azurerm.containerinstance/new-azurermcontainergroup
+[new-azcontainergroup]: /powershell/module/az.containerinstance/new-azcontainergroup

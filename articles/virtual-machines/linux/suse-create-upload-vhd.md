@@ -8,7 +8,7 @@ ms.collection: linux
 ms.custom: linux-related-content
 ms.topic: how-to
 ms.date: 04/28/2024
-ms.author: srijangupta
+ms.author: vamckMS
 ms.reviewer: mattmcinnes
 ---
 # Prepare a SLES or openSUSE Leap virtual machine for Azure

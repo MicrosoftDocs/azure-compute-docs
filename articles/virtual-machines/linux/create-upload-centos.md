@@ -1,13 +1,13 @@
 ---
 title: Create and upload a CentOS-based Linux VHD
 description: Learn to create and upload an Azure virtual hard disk (VHD) that contains a CentOS-based Linux operating system.
-author: srijang
+author: vamckMS
 ms.service: azure-virtual-machines
 ms.custom: linux-related-content
 ms.collection: linux
 ms.topic: how-to
 ms.date: 12/14/2022
-ms.author: srijangupta
+ms.author: vakavuru
 ms.reviewer: mattmcinnes
 ---
 

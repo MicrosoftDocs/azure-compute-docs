@@ -66,8 +66,11 @@ This process continues until all instances in the scale set are upgraded.
 The scale set upgrade orchestrator checks for the overall scale set health before upgrading every batch. During a batch upgrade, other concurrent planned or unplanned maintenance activities could affect the health of your scale set VMs. In such cases, if more than 20% of the scale set's instances become unhealthy, the scale set upgrade stops at the end of the current batch.
 
 ## Supported extensions
+To check if your extensions are supported for automatic upgrade, view Automatic Upgrade status on Azure Portal - Extension blade.
 
-Automatic Extension Upgrade supports the following extensions (and more are added periodically):
+:::image type="content" source="media/auto-extension.png" alt-text="Screenshot that shows if extension is supported for automatic upgrade in the Azure portal.":::
+
+Following are popular extensions supported for automatic upgrades (and more are added periodically):
 
 - [Azure Automation Hybrid Worker extension](/azure/automation/extension-based-hybrid-runbook-worker-install): Linux and Windows
 - Dependency Agent: [Linux](./extensions/agent-dependency-linux.md) and [Windows](./extensions/agent-dependency-windows.md)

@@ -7,7 +7,7 @@ ms.subservice: disks
 ms.custom: linux-related-content
 ms.topic: how-to
 ms.author: jofrance
-ms.date: 08/06/2024
+ms.date: 11/18/2024
 ---
 
 # How to resize logical volume management devices that use Azure Disk Encryption
@@ -84,7 +84,7 @@ The traditional way to resize LVs is to extend an LV when the VG has space avail
     df -h /mountpoint
     ```
 
-    ![Screenshot showing code that checks the size of the file system. The command and the result are highlighted.](./media/disk-encryption/resize-lvm/001-resize-lvm-scenarioa-check-fs.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/001-resize-lvm-scenarioa-check-fs.png" alt-text="Screenshot showing code that checks the size of the file system with the command and the result highlighted.":::
 
 2. Verify that the VG has enough space to increase the LV:
 
@@ -92,7 +92,7 @@ The traditional way to resize LVs is to extend an LV when the VG has space avail
     sudo vgs
     ```
 
-    ![Screenshot showing the code that checks for space on the VG. The command and the result are highlighted.](./media/disk-encryption/resize-lvm/002-resize-lvm-scenarioa-check-vgs.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/002-resize-lvm-scenarioa-check-vgs.png" alt-text="Screenshot showing the code that checks for space on the VG with the command and the result highlighted.":::
 
     You can also use `vgdisplay`:
 
@@ -100,7 +100,7 @@ The traditional way to resize LVs is to extend an LV when the VG has space avail
     sudo vgdisplay vgname
     ```
 
-    ![Screenshot showing the V G display code that checks for space on the VG. The command and the result are highlighted.](./media/disk-encryption/resize-lvm/002-resize-lvm-scenarioa-check-vgdisplay.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/002-resize-lvm-scenarioa-check-vgdisplay.png" alt-text="Screenshot showing the V G display code that checks for space on the VG with the command and result highlighted.":::
 
 3. Identify which LV needs to be resized:
 
@@ -108,11 +108,11 @@ The traditional way to resize LVs is to extend an LV when the VG has space avail
     sudo lsblk
     ```
 
-    ![Screenshot showing the result of the l s b l k command. The command and the result are highlighted.](./media/disk-encryption/resize-lvm/002-resize-lvm-scenarioa-check-lsblk1.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/002-resize-lvm-scenarioa-check-lsblk1.png" alt-text="Screenshot showing the result of the l s b l k command with the command and result highlighted.":::
 
     For LVM-on-crypt, the difference is that this output shows that the encrypted layer is at the disk level.
 
-    ![Screenshot showing the result of the l s b l k command. The output is highlighted. It shows the encrypted layer.](./media/disk-encryption/resize-lvm/002-resize-lvm-scenarioa-check-lsblk2.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/002-resize-lvm-scenarioa-check-lsblk2.png" alt-text="Screenshot showing the result of the l s b l k command with the output highlighted and showing the encrypted layer.":::
 
 4. Check the LV size:
 
@@ -120,7 +120,7 @@ The traditional way to resize LVs is to extend an LV when the VG has space avail
     sudo lvdisplay lvname
     ```
 
-    ![Screenshot showing the code that checks the logical volume size. The command and the result are highlighted.](./media/disk-encryption/resize-lvm/002-resize-lvm-scenarioa-check-lvdisplay01.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/002-resize-lvm-scenarioa-check-lvdisplay01.png" alt-text="Screenshot showing the code that checks the logical volume size with the command and result highlighted.":::
 
 5. Increase the LV size by using `-r` to resize the file system online:
 
@@ -128,7 +128,7 @@ The traditional way to resize LVs is to extend an LV when the VG has space avail
     sudo lvextend -r -L +2G /dev/vgname/lvname
     ```
 
-    ![Screenshot showing the code that increases the size of the logical volume. The command and the results are highlighted.](./media/disk-encryption/resize-lvm/003-resize-lvm-scenarioa-resize-lv.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/003-resize-lvm-scenarioa-resize-lv.png" alt-text="Screenshot showing the code that increases the size of the logical volume with the command and results highlighted.":::
 
 6. Verify the new sizes for the LV and the file system:
 
@@ -136,7 +136,7 @@ The traditional way to resize LVs is to extend an LV when the VG has space avail
     df -h /mountpoint
     ```
 
-    ![Screenshot showing the code that verifies the size of the LV and the file system. The command and the result are highlighted.](./media/disk-encryption/resize-lvm/004-resize-lvm-scenarioa-check-fs.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/004-resize-lvm-scenarioa-check-fs.png" alt-text="Screenshot showing the code that verifies the size of the LV and the file system with the command and result highlighted.":::
 
     The size output indicates that the LV and file system were successfully resized.
 
@@ -146,7 +146,7 @@ You can check the LV information again to confirm the changes at the level of th
 sudo lvdisplay lvname
 ```
 
-![Screenshot showing the code that confirms the new sizes. The sizes are highlighted.](./media/disk-encryption/resize-lvm/004-resize-lvm-scenarioa-check-lvdisplay2.png)
+:::image type="content" source="./media/disk-encryption/resize-lvm/004-resize-lvm-scenarioa-check-lvdisplay2.png" alt-text="Screenshot showing the code that confirms the new sizes with the sizes highlighted.":::
 
 #### Extend a traditional LVM volume by adding a new PV
 
@@ -158,7 +158,7 @@ When you need to add a new disk to increase the VG size, extend your traditional
     df -h /mountpoint
     ```
 
-    ![Screenshot showing the code that checks the current size of a file system. The command and the result are highlighted.](./media/disk-encryption/resize-lvm/005-resize-lvm-scenariob-check-fs.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/005-resize-lvm-scenariob-check-fs.png" alt-text="Screenshot showing the code that checks the current size of a file system with the command and result highlighted.":::
 
 2. Verify the current PV configuration:
 
@@ -166,7 +166,7 @@ When you need to add a new disk to increase the VG size, extend your traditional
     sudo pvs
     ```
 
-    ![Screenshot showing the code that checks the current PV configuration. The command and the result are highlighted.](./media/disk-encryption/resize-lvm/006-resize-lvm-scenariob-check-pvs.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/006-resize-lvm-scenariob-check-pvs.png" alt-text="Screenshot showing the code that checks the current PV configuration with the command and result highlighted.":::
 
 3. Check the current VG information:
 
@@ -174,7 +174,7 @@ When you need to add a new disk to increase the VG size, extend your traditional
     sudo vgs
     ```
 
-    ![Screenshot showing the code that checks the current volume group information. The command and the result are highlighted.](./media/disk-encryption/resize-lvm/007-resize-lvm-scenariob-check-vgs.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/007-resize-lvm-scenariob-check-vgs.png" alt-text="Screenshot showing the code that checks the current volume group information with the command and the result highlighted.":::
 
 4. Check the current disk list. Identify data disks by checking the devices in */dev/disk/azure/scsi1/*.
 
@@ -182,7 +182,7 @@ When you need to add a new disk to increase the VG size, extend your traditional
     sudo ls -l /dev/disk/azure/scsi1/
     ```
 
-    ![Screenshot showing the code that checks the current disk list. The command and the results are highlighted.](./media/disk-encryption/resize-lvm/008-resize-lvm-scenariob-check-scs1.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/008-resize-lvm-scenariob-check-scs1.png" alt-text="Screenshot showing the code that checks the current disk list with the command and results highlighted.":::
 
 5. Check the output of `lsblk`:
 
@@ -190,7 +190,7 @@ When you need to add a new disk to increase the VG size, extend your traditional
     sudo lsbk
     ```
 
-    ![Screenshot showing the code that checks the output of l s b l k. The command and the results are highlighted.](./media/disk-encryption/resize-lvm/008-resize-lvm-scenariob-check-lsblk.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/008-resize-lvm-scenariob-check-lsblk.png" alt-text="Screenshot showing the code that checks the output of l s b l k with the command and results highlighted.":::
 
 6. Attach the new disk to the VM by following the instructions in [Attach a data disk to a Linux VM](attach-disk-portal.yml).
 
@@ -200,71 +200,71 @@ When you need to add a new disk to increase the VG size, extend your traditional
     sudo ls -l /dev/disk/azure/scsi1/
     ```
 
-    ![Screenshot showing the code that checks the disk list. The results are highlighted.](./media/disk-encryption/resize-lvm/009-resize-lvm-scenariob-check-scsi12.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/009-resize-lvm-scenariob-check-scsi12.png" alt-text="Screenshot showing the code that checks the disk list with the results highlighted.":::
 
     ```bash
     sudo lsblk
     ```
 
-    ![Screenshot showing the code that checks the disk list by using l s b l k. The command and the result are highlighted.](./media/disk-encryption/resize-lvm/009-resize-lvm-scenariob-check-lsblk1.png)
-
-8. Create a new PV on top of the new data disk:
+    :::image type="content" source="./media/disk-encryption/resize-lvm/009-resize-lvm-scenariob-check-lsblk1.png" alt-text="Screenshot showing the code that checks the disk list by using l s b l k with the command and result highlighted.":::
+   
+9. Create a new PV on top of the new data disk:
 
     ```bash
     sudo pvcreate /dev/newdisk
     ```
 
-    ![Screenshot showing the code that creates a new PV. The result is highlighted.](./media/disk-encryption/resize-lvm/010-resize-lvm-scenariob-pvcreate.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/010-resize-lvm-scenariob-pvcreate.png" alt-text="Screenshot showing the code that creates a new PV with the result highlighted.":::
 
     This method uses the whole disk as a PV without a partition. Alternatively, you can use `fdisk` to create a partition and then use that partition for `pvcreate`.
 
-9. Verify that the PV was added to the PV list:
+10. Verify that the PV was added to the PV list:
 
     ```bash
     sudo pvs
     ```
 
-    ![Screenshot showing the code that shows the physical volume list. The result is highlighted.](./media/disk-encryption/resize-lvm/011-resize-lvm-scenariob-check-pvs1.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/011-resize-lvm-scenariob-check-pvs1.png" alt-text="Screenshot showing the code that shows the physical volume list with the result highlighted.":::
 
-10. Extend the VG by adding the new PV to it:
+11. Extend the VG by adding the new PV to it:
 
     ```bash
     sudo vgextend vgname /dev/newdisk
     ```
 
-    ![Screenshot showing the code that extends the volume group. The result is highlighted.](./media/disk-encryption/resize-lvm/012-resize-lvm-scenariob-vgextend.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/012-resize-lvm-scenariob-vgextend.png" alt-text="Screenshot showing the code that extends the volume group with the result highlighted.":::
 
-11. Check the new VG size:
+12. Check the new VG size:
 
     ```bash
     sudo vgs
     ```
 
-    ![Screenshot showing the code that checks the volume group size. The results are highlighted.](./media/disk-encryption/resize-lvm/013-resize-lvm-scenariob-check-vgs1.png)
+   :::image type="content" source="./media/disk-encryption/resize-lvm/013-resize-lvm-scenariob-check-vgs1.png" alt-text="Screenshot showing the code that checks the volume group size with the results highlighted.":::
 
-12. Use `lsblk` to identify the LV that needs to be resized:
+13. Use `lsblk` to identify the LV that needs to be resized:
 
     ```bash
     sudo lsblk
     ```
 
-    ![Screenshot showing the code that identifies the local volume that needs to be resized. The results are highlighted.](./media/disk-encryption/resize-lvm/013-resize-lvm-scenariob-check-lsblk1.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/013-resize-lvm-scenariob-check-lsblk1.png" alt-text="Screenshot showing the code that identifies the local volume that needs to be resized with the results highlighted.":::
 
-13. Extend the LV size by using `-r` to increase the file system online:
+14. Extend the LV size by using `-r` to increase the file system online:
 
     ```bash
     sudo lvextend -r -L +2G /dev/vgname/lvname
     ```
 
-    ![Screenshot showing code that increases the size of the file system online. The results are highlighted.](./media/disk-encryption/resize-lvm/013-resize-lvm-scenariob-lvextend.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/013-resize-lvm-scenariob-lvextend.png" alt-text="Screenshot showing code that increases the size of the file system online with the results highlighted.":::
 
-14. Verify the new sizes of the LV and file system:
+15. Verify the new sizes of the LV and file system:
 
     ```bash
     df -h /mountpoint
     ```
 
-    ![Screenshot showing the code that checks the sizes of the local volume and the file system. The command and the result are highlighted.](./media/disk-encryption/resize-lvm/014-resize-lvm-scenariob-check-fs1.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/014-resize-lvm-scenariob-check-fs1.png" alt-text="Screenshot showing the code that checks the sizes of the local volume and the file system with the command and result highlighted.":::
 
     >[!IMPORTANT]
     >When Azure Data Encryption is used on traditional LVM configurations, the encrypted layer is created at the LV level, not at the disk level.
@@ -273,27 +273,27 @@ When you need to add a new disk to increase the VG size, extend your traditional
     >
     >These are some of the reasons why LVM-on-crypt is the recommended approach.
 
-15. Check the encryption information from the portal:
+16. Check the encryption information from the portal:
 
-    ![Screenshot showing encryption information in the portal. The disk name and the encryption are highlighted.](./media/disk-encryption/resize-lvm/014-resize-lvm-scenariob-check-portal1.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/014-resize-lvm-scenariob-check-portal1.png" alt-text="Screenshot showing encryption information in the portal with the disk name and encryption highlighted.":::
 
     To update the encryption settings on the disk, add a new LV and enable the extension on the VM.
 
-16. Add a new LV, create a file system on it, and add it to `/etc/fstab`.
+17. Add a new LV, create a file system on it, and add it to `/etc/fstab`.
 
-17. Set the encryption extension again. This time you'll stamp the encryption settings on the new data disk at the platform level. Here's a CLI example:
+18. Set the encryption extension again. This time you'll stamp the encryption settings on the new data disk at the platform level. Here's a CLI example:
 
     ```azurecliazurecli-interactive
     az vm encryption enable -g ${RGNAME} --name ${VMNAME} --disk-encryption-keyvault "<your-unique-keyvault-name>"
     ```
 
-18. Check the encryption information from the portal:
+19. Check the encryption information from the portal:
 
-    ![Screenshot showing encryption information in the portal. The disk name and the encryption information are highlighted.](./media/disk-encryption/resize-lvm/014-resize-lvm-scenariob-check-portal2.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/014-resize-lvm-scenariob-check-portal2.png" alt-text="Screenshot showing encryption information in the portal with the disk name and the encryption information highlighted.":::
 
 After the encryption settings are updated, you can delete the new LV. Also delete the entry from the `/etc/fstab` and `/etc/crypttab` that you created.
 
-![Screenshot showing the code that deletes the new logical volume. The deleted F S tab and crypt tab are highlighted.](./media/disk-encryption/resize-lvm/014-resize-lvm-scenariob-delete-fstab-crypttab.png)
+:::image type="content" source="./media/disk-encryption/resize-lvm/014-resize-lvm-scenariob-delete-fstab-crypttab.png" alt-text="Screenshot showing the code that deletes the new logical volume with the deleted F S tab and crypt tab highlighted.":::
 
 Follow these steps to finish cleaning up:
 
@@ -325,13 +325,13 @@ Im some scenarios, your limitations might require you to resize an existing disk
     sudo ls -l /dev/disk/azure/scsi1/
     ```
 
-    ![Screenshot showing the code that identifies encrypted disks. The results are highlighted.](./media/disk-encryption/resize-lvm/015-resize-lvm-scenarioc-check-scsi1.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/015-resize-lvm-scenarioc-check-scsi1.png" alt-text="Screenshot showing the code that identifies encrypted disks with the results highlighted.":::
 
     ```bash
     sudo lsblk -fs
     ```
 
-    ![Screenshot showing alternative code that identifies encrypted disks. The results are highlighted.](./media/disk-encryption/resize-lvm/015-resize-lvm-scenarioc-check-lsblk.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/015-resize-lvm-scenarioc-check-lsblk.png" alt-text="Screenshot showing alternative code that identifies encrypted disks with the results highlighted.":::
 
 2. Check the PV information:
 
@@ -339,7 +339,7 @@ Im some scenarios, your limitations might require you to resize an existing disk
     sudo pvs
     ```
 
-    ![Screenshot showing the code that checks information about the physical volume. The results are highlighted.](./media/disk-encryption/resize-lvm/016-resize-lvm-scenarioc-check-pvs.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/016-resize-lvm-scenarioc-check-pvs.png" alt-text="Screenshot showing the code that checks information about the physical volume with the results highlighted.":::
 
     The results in the image show that all of the space on all of the PVs is currently used.
 
@@ -350,7 +350,7 @@ Im some scenarios, your limitations might require you to resize an existing disk
     sudo vgdisplay -v vgname
     ```
 
-    ![Screenshot showing the code that checks information about the volume group. The results are highlighted.](./media/disk-encryption/resize-lvm/017-resize-lvm-scenarioc-check-vgs.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/017-resize-lvm-scenarioc-check-vgs.png" alt-text="Screenshot showing the code that checks information about the volume group with the results highlighted.":::
 
 4. Check the disk sizes. You can use `fdisk` or `lsblk` to list the drive sizes.
 
@@ -360,7 +360,7 @@ Im some scenarios, your limitations might require you to resize an existing disk
     sudo lsblk -o "NAME,SIZE"
     ```
 
-    ![Screenshot showing the code that checks disk sizes. The results are highlighted.](./media/disk-encryption/resize-lvm/018-resize-lvm-scenarioc-check-fdisk.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/018-resize-lvm-scenarioc-check-fdisk.png" alt-text="Screenshot showing the code that checks disk sizes with the results highlighted.":::
 
     Here we identified which PVs are associated with which LVs by using `lsblk -fs`. You can identify the associations by running `lvdisplay`.
 
@@ -369,7 +369,7 @@ Im some scenarios, your limitations might require you to resize an existing disk
     sudo lvdisplay --maps datavg/datalv1
     ```
 
-    ![Screenshot showing an alternative way to identify physical volume associations with local volumes. The results are highlighted.](./media/disk-encryption/resize-lvm/019-resize-lvm-scenarioc-check-lvdisplay.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/019-resize-lvm-scenarioc-check-lvdisplay.png" alt-text="Screenshot showing an alternative way to identify physical volume associations with local volumes with the results highlighted.":::
 
     In this case, all four data drives are part of the same VG and a single LV. Your configuration might differ.
 
@@ -379,7 +379,7 @@ Im some scenarios, your limitations might require you to resize an existing disk
     df -h /datalvm*
     ```
 
-    ![Screenshot showing the code that checks file system utilization. The command and the results are highlighted.](./media/disk-encryption/resize-lvm/020-resize-lvm-scenarioc-check-df.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/020-resize-lvm-scenarioc-check-df.png" alt-text="Screenshot showing the code that checks file system utilization with the command and results highlighted.":::
 
 6. Resize the data disks by following the instructions in [Expand an Azure managed disk](expand-disks.md#expand-an-azure-managed-disk). You can use the portal, the CLI, or PowerShell.
 
@@ -394,7 +394,7 @@ Im some scenarios, your limitations might require you to resize an existing disk
     sudo lsblk -o "NAME,SIZE"
     ```
 
-    ![Screenshot showing the code that checks disk size. The result is highlighted.](./media/disk-encryption/resize-lvm/021-resize-lvm-scenarioc-check-fdisk1.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/021-resize-lvm-scenarioc-check-fdisk1.png" alt-text="Screenshot showing the code that checks disk size with the result highlighted.":::
 
     In this case, `/dev/sdd` was resized from 5 G to 20 G.
 
@@ -404,7 +404,7 @@ Im some scenarios, your limitations might require you to resize an existing disk
     sudo pvdisplay /dev/resizeddisk
     ```
 
-    ![Screenshot showing the code that checks the size of the P V. The result is highlighted.](./media/disk-encryption/resize-lvm/022-resize-lvm-scenarioc-check-pvdisplay.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/022-resize-lvm-scenarioc-check-pvdisplay.png" alt-text="Screenshot showing the code that checks the size of the P V with the result highlighted.":::
 
     Even though the disk was resized, the PV still has the previous size.
 
@@ -414,7 +414,7 @@ Im some scenarios, your limitations might require you to resize an existing disk
     sudo pvresize /dev/resizeddisk
     ```
 
-    ![Screenshot showing the code that resizes the physical volume. The result is highlighted.](./media/disk-encryption/resize-lvm/023-resize-lvm-scenarioc-check-pvresize.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/023-resize-lvm-scenarioc-check-pvresize.png" alt-text="Screenshot showing the code that resizes the physical volume with the result highlighted.":::
 
 
 10. Check the PV size:
@@ -423,7 +423,7 @@ Im some scenarios, your limitations might require you to resize an existing disk
     sudo pvdisplay /dev/resizeddisk
     ```
 
-    ![Screenshot showing the code that checks the physical volume's size. The result is highlighted.](./media/disk-encryption/resize-lvm/024-resize-lvm-scenarioc-check-pvdisplay1.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/024-resize-lvm-scenarioc-check-pvdisplay1.png" alt-text="Screenshot showing the code that checks the physical volume's size with the result highlighted.":::
 
     Apply the same procedure for all of the disks that you want to resize.
 
@@ -433,7 +433,7 @@ Im some scenarios, your limitations might require you to resize an existing disk
     sudo vgdisplay vgname
     ```
 
-    ![Screenshot showing the code that checks information for the volume group. The result is highlighted.](./media/disk-encryption/resize-lvm/025-resize-lvm-scenarioc-check-vgdisplay1.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/025-resize-lvm-scenarioc-check-vgdisplay1.png" alt-text="Screenshot showing the code that checks information for the volume group with the result highlighted.":::
 
     The VG now has enough space to be allocated to the LVs.
 
@@ -444,7 +444,7 @@ Im some scenarios, your limitations might require you to resize an existing disk
     sudo lvresize -r -l +100%FREE /dev/datavg/datalv01
     ```
 
-    ![Screenshot showing the code that resizes the L V. The results are highlighted.](./media/disk-encryption/resize-lvm/031-resize-lvm-scenarioc-check-lvresize1.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/031-resize-lvm-scenarioc-check-lvresize1.png" alt-text="Screenshot showing the code that resizes the L V with the results highlighted.":::
 
 13. Check the size of the file system:
 
@@ -452,7 +452,7 @@ Im some scenarios, your limitations might require you to resize an existing disk
     df -h /datalvm2
     ```
 
-    ![Screenshot showing the code that checks the size of the file system. The result is highlighted.](./media/disk-encryption/resize-lvm/032-resize-lvm-scenarioc-check-df3.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/032-resize-lvm-scenarioc-check-df3.png" alt-text="Screenshot showing the code that checks the size of the file system with the result highlighted.":::
 
 #### Extend an LVM-on-crypt volume by adding a new PV
 
@@ -466,7 +466,7 @@ You can use this method to add space to an existing LV. Or you can create new VG
     sudo vgdisplay vgname
     ```
 
-    ![Screenshot showing the code that checks the volume group size. Results are highlighted.](./media/disk-encryption/resize-lvm/033-resize-lvm-scenarioe-check-vg01.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/033-resize-lvm-scenarioe-check-vg01.png" alt-text="Screenshot showing the code that checks the volume group size with results highlighted.":::
 
 2. Verify the size of the file system and LV that you want to expand:
 
@@ -480,7 +480,7 @@ You can use this method to add space to an existing LV. Or you can create new VG
     df -h mountpoint
     ```
 
-    ![Screenshot showing the code that checks the file system's size. The result is highlighted.](./media/disk-encryption/resize-lvm/034-resize-lvm-scenarioe-check-fs01.png)
+   :::image type="content" source="./media/disk-encryption/resize-lvm/034-resize-lvm-scenarioe-check-fs01.png" alt-text="Screenshot showing the code that checks the file system's size with the result highlighted.":::
 
 3. Add a new data disk to the VM and identify it.
 
@@ -490,7 +490,7 @@ You can use this method to add space to an existing LV. Or you can create new VG
     sudo fdisk -l | egrep ^"Disk /"
     ```
 
-    ![Screenshot showing the code that checks the size of the disks. The result is highlighted.](./media/disk-encryption/resize-lvm/035-resize-lvm-scenarioe-check-newdisk01.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/035-resize-lvm-scenarioe-check-newdisk01.png" alt-text="Screenshot showing the code that checks the size of the disks with the result highlighted.":::
 
     Here's another way to check the disks before you add the new disk:
 
@@ -498,7 +498,7 @@ You can use this method to add space to an existing LV. Or you can create new VG
     sudo lsblk
     ```
 
-    ![Screenshot showing an alternative code that checks the size of the disks. The results are highlighted.](./media/disk-encryption/resize-lvm/035-resize-lvm-scenarioe-check-newdisk02.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/035-resize-lvm-scenarioe-check-newdisk02.png" alt-text="Screenshot showing an alternative code that checks the size of the disks with the results highlighted.":::
 
     To add the new disk, you can use PowerShell, the Azure CLI, or the Azure portal. For more information, see [Attach a data disk to a Linux VM](attach-disk-portal.yml).
 
@@ -510,13 +510,13 @@ You can use this method to add space to an existing LV. Or you can create new VG
     sudo fdisk -l | egrep ^"Disk /"
     ```
 
-    ![Screenshot showing the code that lists the disks. The results are highlighted.](./media/disk-encryption/resize-lvm/036-resize-lvm-scenarioe-check-newdisk02.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/036-resize-lvm-scenarioe-check-newdisk02.png" alt-text="Screenshot showing the code that lists the disks with the results highlighted.":::
 
     ```bash
     sudo lsblk
     ```
 
-    ![Screenshot showing the newly added disk in the output.](./media/disk-encryption/resize-lvm/036-resize-lvm-scenarioe-check-newdisk03.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/036-resize-lvm-scenarioe-check-newdisk03.png" alt-text="Screenshot showing the newly added disk in the output.":::
 
 5. Create a file system on top of the recently added disk. Match the disk to the linked devices on `/dev/disk/azure/scsi1/`.
 
@@ -524,13 +524,13 @@ You can use this method to add space to an existing LV. Or you can create new VG
     sudo ls -la /dev/disk/azure/scsi1/
     ```
 
-    ![Screenshot showing the code that creates a file system. The results are highlighted.](./media/disk-encryption/resize-lvm/037-resize-lvm-scenarioe-check-newdisk03.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/037-resize-lvm-scenarioe-check-newdisk03.png" alt-text="Screenshot showing the code that creates a file system with the results highlighted.":::
 
     ```bash
     sudo mkfs.ext4 /dev/disk/azure/scsi1/${disk}
     ```
 
-    ![Screenshot showing additional code that creates a file system and matches the disk to the linked devices. The results are highlighted.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-mkfs01.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-mkfs01.png" alt-text="Screenshot showing additional code that creates a file system and matches the disk to the linked devices with the results highlighted.":::
 
 6. Create a temporary mount point for the new added disk:
 
@@ -557,13 +557,13 @@ You can use this method to add space to an existing LV. Or you can create new VG
     df -h
     ```
 
-    ![Screenshot showing the code that verifies that the file system is mounted. The result is highlighted.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-df.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-df.png" alt-text="Screenshot showing the code that verifies that the file system is mounted with the result highlighted.":::
 
     ```bash
     sudo lsblk
     ```
 
-    ![Screenshot showing additional code that verifies that the file system is mounted. The result is highlighted.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lsblk.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lsblk.png" alt-text="Screenshot showing additional code that verifies that the file system is mounted with the result highlighted.":::
 
 10. Restart the encryption that you previously started for data drives.
 
@@ -592,7 +592,7 @@ You can use this method to add space to an existing LV. Or you can create new VG
     sudo lsblk
     ```
 
-    ![Screenshot showing the code that checks the crypt layer. The result is highlighted.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lsblk2.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lsblk2.png" alt-text="Screenshot showing the code that checks the crypt layer with the result highlighted.":::
 
 11. Unmount the encrypted layer of the new disk:
 
@@ -606,7 +606,7 @@ You can use this method to add space to an existing LV. Or you can create new VG
     sudo pvs
     ```
 
-    ![Screenshot showing the code that checks information about the physical volume. The result is highlighted.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-currentpvs.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-currentpvs.png" alt-text="Screenshot showing the code that checks information about the physical volume with the result highlighted.":::
 
 13. Create a PV on top of the encrypted layer of the disk. Take the device name from the previous `lsblk` command. Add a `/dev/` mapper in front of the device name to create the PV:
 
@@ -614,7 +614,7 @@ You can use this method to add space to an existing LV. Or you can create new VG
     sudo pvcreate /dev/mapper/mapperdevicename
     ```
 
-    ![Screenshot showing the code that creates a physical volume on the encrypted layer. The results are highlighted.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-pvcreate.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-pvcreate.png" alt-text="Screenshot showing the code that creates a physical volume on the encrypted layer with the results highlighted.":::
 
     You see a warning about wiping the current `ext4 fs` signature. This warning is expected. Answer this question with `y`.
 
@@ -624,7 +624,7 @@ You can use this method to add space to an existing LV. Or you can create new VG
     sudo pvs
     ```
 
-    ![Screenshot showing the code that verifies that the physical volume was added to the LVM configuration. The result is highlighted.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-newpv.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-newpv.png" alt-text="Screenshot showing the code that verifies that the physical volume was added to the LVM configuration with the result highlighted.":::
 
 15. Add the new PV to the VG that you need to increase.
 
@@ -632,7 +632,7 @@ You can use this method to add space to an existing LV. Or you can create new VG
     sudo vgextend vgname /dev/mapper/nameofhenewpv
     ```
 
-    ![Screenshot showing the code that adds a physical volume to a volume group. The results are highlighted.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-vgextent.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-vgextent.png" alt-text="Screenshot showing the code that adds a physical volume to a volume group with the results highlighted.":::
 
 16. Verify the new size and free space of the VG:
 
@@ -640,7 +640,7 @@ You can use this method to add space to an existing LV. Or you can create new VG
     sudo vgdisplay vgname
     ```
 
-    ![Screenshot showing the code that verifies the size and free space of the volume group. The results are highlighted.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-vgdisplay.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-vgdisplay.png" alt-text="Screenshot showing the code that verifies the size and free space of the volume group with the results highlighted.":::
 
     Note the increase of the `Total PE` count and the `Free PE / Size`.
 
@@ -650,7 +650,7 @@ You can use this method to add space to an existing LV. Or you can create new VG
     sudo lvextend -r -l +100%FREE /dev/vgname/lvname
     ```
 
-    ![Screenshot showing the code that increases the size of the local volume and the file system. The results are highlighted.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lvextend.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lvextend.png" alt-text="Screenshot showing the code that increases the size of the local volume and the file system with the results highlighted.":::
 
 Follow the next steps to verify your changes.
 
@@ -660,23 +660,23 @@ Follow the next steps to verify your changes.
     sudo lvdisplay /dev/vgname/lvname
     ```
 
-    ![Screenshot showing the code that verifies the new size of the local volume. The results are highlighted.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lvdisplay.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lvdisplay.png" alt-text="Screenshot showing the code that verifies the new size of the local volume with the results highlighted.":::
 
-1. Verify the new size of the file system:
+2. Verify the new size of the file system:
 
     ```bash
     df -h /mountpoint
     ```
 
-    ![Screenshot showing the code that verifies the new size of the file system. The result is highlighted.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-df1.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-df1.png" alt-text="Screenshot showing the code that verifies the new size of the file system with the result highlighted.":::
 
-1. Verify that the LVM layer is on top of the encrypted layer:
+3. Verify that the LVM layer is on top of the encrypted layer:
 
     ```bash
     sudo lsblk
     ```
 
-    ![Screenshot showing the code that verifies that the LVM layer is on top of the encrypted layer. The result is highlighted.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lsblk3.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lsblk3.png" alt-text="Screenshot showing the code that verifies that the LVM layer is on top of the encrypted layer with the result highlighted.":::
 
     If you use `lsblk` without options, then you see the mount points multiple times. The command sorts by device and LVs.
 
@@ -686,7 +686,7 @@ Follow the next steps to verify your changes.
     sudo lsblk -fs
     ```
 
-    ![Screenshot showing alternative code that verifies that the LVM layer is on top of the encrypted layer. The result is highlighted.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lsblk4.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lsblk4.png" alt-text="Screenshot showing alternative code that verifies that the LVM layer is on top of the encrypted layer with the result highlighted.":::
 
 #### Extend an LVM on a crypt volume by resizing an existing PV
 
@@ -696,13 +696,13 @@ Follow the next steps to verify your changes.
     sudo lsblk
     ```
 
-    ![Screenshot showing the code that identifies the encrypted disks. The results are highlighted.](./media/disk-encryption/resize-lvm/039-resize-lvm-scenariof-lsblk01.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/039-resize-lvm-scenariof-lsblk01.png" alt-text="Screenshot showing the code that identifies the encrypted disks with the results highlighted.":::
 
     ```bash
     sudo lsblk -s
     ```
 
-    ![Screenshot showing alternative code that identifies the encrypted disks. The results are highlighted.](./media/disk-encryption/resize-lvm/040-resize-lvm-scenariof-lsblk012.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/040-resize-lvm-scenariof-lsblk012.png" alt-text="Screenshot showing alternative code that identifies the encrypted disks with the results highlighted.":::
 
 2. Check your PV information:
 
@@ -710,7 +710,7 @@ Follow the next steps to verify your changes.
     sudo pvs
     ```
 
-    ![Screenshot showing the code that checks information for physical volumes. The results are highlighted.](./media/disk-encryption/resize-lvm/041-resize-lvm-scenariof-pvs.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/041-resize-lvm-scenariof-pvs.png" alt-text="Screenshot showing the code that checks information for physical volumes with the results highlighted.":::
 
 3. Check your VG information:
 
@@ -718,7 +718,7 @@ Follow the next steps to verify your changes.
     sudo vgs
     ```
 
-    ![Screenshot showing the code that checks information for volume groups. The results are highlighted.](./media/disk-encryption/resize-lvm/042-resize-lvm-scenariof-vgs.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/042-resize-lvm-scenariof-vgs.png" alt-text="Screenshot showing the code that checks information for volume groups with the results highlighted.":::
 
 4. Check your LV information:
 
@@ -726,7 +726,7 @@ Follow the next steps to verify your changes.
     sudo lvs
     ```
 
-    ![Screenshot showing the code that checks information for the local volume. The result is highlighted.](./media/disk-encryption/resize-lvm/043-resize-lvm-scenariof-lvs.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/043-resize-lvm-scenariof-lvs.png" alt-text="Screenshot showing the code that checks information for the local volume with the result highlighted.":::
 
 5. Check the file system utilization:
 
@@ -734,7 +734,7 @@ Follow the next steps to verify your changes.
     df -h /mountpoint(s)
     ```
 
-    ![Screenshot showing the code that checks how much of the file system is being used. The results are highlighted.](./media/disk-encryption/resize-lvm/044-resize-lvm-scenariof-fs.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/044-resize-lvm-scenariof-fs.png" alt-text="Screenshot showing the code that checks how much of the file system is being used with the results highlighted.":::
 
 6. Check the sizes of your disks:
 
@@ -744,7 +744,7 @@ Follow the next steps to verify your changes.
     sudo lsblk
     ```
 
-    ![Screenshot showing the code that checks the size of disks. The results are highlighted.](./media/disk-encryption/resize-lvm/045-resize-lvm-scenariof-fdisk01.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/045-resize-lvm-scenariof-fdisk01.png" alt-text="Screenshot showing the code that checks the size of disks with the results highlighted.":::
 
 7. Resize the data disk. You can use the portal, CLI, or PowerShell. For more information, see the disk-resize section in [Expand virtual hard disks on a Linux VM](expand-disks.md#expand-an-azure-managed-disk).
 
@@ -759,7 +759,7 @@ Follow the next steps to verify your changes.
     sudo lsblk
     ```
 
-    ![Screenshot showing code that checks disk sizes. The results are highlighted.](./media/disk-encryption/resize-lvm/046-resize-lvm-scenariof-fdisk02.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/046-resize-lvm-scenariof-fdisk02.png" alt-text="Screenshot showing code that checks disk sizes with the results highlighted.":::
 
     In this case, both disks were resized from 2 GB to 4 GB. But the size of the file system, LV, and PV remain the same.
 
@@ -769,7 +769,7 @@ Follow the next steps to verify your changes.
     sudo pvdisplay /dev/mapper/devicemappername
     ```
 
-    ![Screenshot showing the code that checks the size of the current physical volume. The results are highlighted.](./media/disk-encryption/resize-lvm/047-resize-lvm-scenariof-pvs.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/047-resize-lvm-scenariof-pvs.png" alt-text="Screenshot showing the code that checks the size of the current physical volume with the results highlighted.":::
 
 10. Resize the PV:
 
@@ -777,7 +777,7 @@ Follow the next steps to verify your changes.
     sudo pvresize /dev/mapper/devicemappername
     ```
 
-    ![Screenshot showing the code that resizes the physical volume. The results are highlighted.](./media/disk-encryption/resize-lvm/048-resize-lvm-scenariof-resize-pv.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/048-resize-lvm-scenariof-resize-pv.png" alt-text="Screenshot showing the code that resizes the physical volume with the results highlighted.":::
 
 11. Check the new PV size:
 
@@ -785,7 +785,7 @@ Follow the next steps to verify your changes.
     sudo pvdisplay /dev/mapper/devicemappername
     ```
 
-    ![Screenshot showing the code that checks the size of the physical volume. The results are highlighted.](./media/disk-encryption/resize-lvm/049-resize-lvm-scenariof-pv.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/049-resize-lvm-scenariof-pv.png" alt-text="Screenshot showing the code that checks the size of the physical volume with the results highlighted.":::
 
 12. Resize the encrypted layer on the PV:
 
@@ -801,7 +801,7 @@ Follow the next steps to verify your changes.
     sudo vgdisplay vgname
     ```
 
-    ![Screenshot showing the code that checks information for the volume group. The results are highlighted.](./media/disk-encryption/resize-lvm/050-resize-lvm-scenariof-vg.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/050-resize-lvm-scenariof-vg.png" alt-text="Screenshot showing the code that checks information for the volume group with the results highlighted.":::
 
     The VG now has enough space to be allocated to the LVs.
 
@@ -811,7 +811,7 @@ Follow the next steps to verify your changes.
     sudo lvdisplay vgname/lvname
     ```
 
-    ![Screenshot showing the code that checks information for the local volume. The results are highlighted.](./media/disk-encryption/resize-lvm/051-resize-lvm-scenariof-lv.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/051-resize-lvm-scenariof-lv.png" alt-text="Screenshot showing the code that checks information for the local volume with the results highlighted.":::
 
 15. Check the file system utilization:
 
@@ -819,7 +819,7 @@ Follow the next steps to verify your changes.
     df -h /mountpoint
     ```
 
-    ![Screenshot showing the code that checks utilization of the file system. The results are highlighted.](./media/disk-encryption/resize-lvm/052-resize-lvm-scenariof-fs.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/052-resize-lvm-scenariof-fs.png" alt-text="Screenshot showing the code that checks utilization of the file system with the results highlighted.":::
 
 16. Resize the LV:
 
@@ -827,7 +827,7 @@ Follow the next steps to verify your changes.
     sudo lvresize -r -L +2G /dev/vgname/lvname
     ```
 
-    ![Screenshot showing the code that resizes the local volume. The results are highlighted.](./media/disk-encryption/resize-lvm/053-resize-lvm-scenariof-lvresize.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/053-resize-lvm-scenariof-lvresize.png" alt-text="Screenshot showing the code that resizes the local volume with the results highlighted.":::
 
     Here we use the `-r` option to also resize the file system.
 
@@ -837,7 +837,7 @@ Follow the next steps to verify your changes.
     sudo lvdisplay vgname/lvname
     ```
 
-    ![Screenshot showing the code that gets information about the local volume. The results are highlighted.](./media/disk-encryption/resize-lvm/054-resize-lvm-scenariof-lvsize.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/054-resize-lvm-scenariof-lvsize.png" alt-text="Screenshot showing the code that gets information about the local volume with the results highlighted.":::
 
 18. Check the file system utilization:
 
@@ -845,7 +845,7 @@ Follow the next steps to verify your changes.
     df -h /mountpoint
     ```
 
-    ![Screenshot showing the code that checks the file system utilization. The results are highlighted.](./media/disk-encryption/resize-lvm/055-resize-lvm-scenariof-fs.png)
+    :::image type="content" source="./media/disk-encryption/resize-lvm/055-resize-lvm-scenariof-fs.png" alt-text="Screenshot showing the code that checks the file system utilization with the results highlighted.":::
 
 Apply the same resizing procedure to any other LV that requires it.
 

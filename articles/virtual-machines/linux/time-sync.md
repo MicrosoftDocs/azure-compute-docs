@@ -6,7 +6,7 @@ ms.service: azure-virtual-machines
 ms.custom: linux-related-content
 ms.collection: linux
 ms.topic: how-to
-ms.date: 04/26/2023
+ms.date: 12/09/2024
 ms.author: jushiman
 ---
 
@@ -19,9 +19,7 @@ Time sync is important for security and event correlation. Sometimes it's used f
 Azure is backed by infrastructure running Windows Server 2016. Windows Server 2016 has improved algorithms used to correct time and condition the local clock to synchronize with UTC.  The Windows Server 2016 Accurate Time feature greatly improved how the VMICTimeSync service that governs VMs with the host for accurate time. Improvements include more accurate initial time on VM start or VM restore and interrupt latency correction. 
 
 > [!NOTE]
-> For a quick overview of Windows Time service, take a look at this [high-level overview video](/shows/).
->
-> For more information, see [Accurate time for Windows Server 2016](/windows-server/networking/windows-time-service/accurate-time). 
+> For more information, see [How the Windows Time Service Works](/windows-server/networking/windows-time-service/how-the-windows-time-service-works). You can also find information specific to Windows Server 2016 on the [Accurate time for Windows Server 2016 page](/windows-server/networking/windows-time-service/accurate-time). 
 
 ## Overview
 

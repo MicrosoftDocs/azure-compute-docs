@@ -4,11 +4,11 @@ description: Create a new Windows VM by attaching a specialized OS disk.
 author: ju-shim
 ms.service: azure-virtual-machines
 ms.topic: how-to
-ms.date: 03/30/2023
+ms.date: 12/12/2024
 ms.author: jushiman
 ms.custom: devx-track-azurepowershell
 ---
-# Create a VM from a specialized disk by using PowerShell
+# Create a VM from a specialized disk using PowerShell
 
 **Applies to:** :heavy_check_mark: Windows VMs 
 
@@ -136,7 +136,7 @@ To enable communication with the virtual machine in the virtual network, you'll 
     $pip = New-AzPublicIpAddress `
        -Name $ipName -ResourceGroupName $destinationResourceGroup `
        -Location $location `
-       -AllocationMethod Dynamic
+       -AllocationMethod Static
     ```       
     
 2. Create the NIC. In this example, the NIC name is set to *myNicName*.

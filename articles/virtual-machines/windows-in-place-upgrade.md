@@ -5,7 +5,7 @@ services: virtual-machines
 author: ju-shim
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.date: 07/05/2023
+ms.date: 10/22/2024
 ms.author: jushiman
 ---
 
@@ -29,6 +29,8 @@ Before you begin an in-place upgrade:
 
 - Disable antivirus and anti-spyware software and firewalls. These types of software can conflict with the upgrade process. Re-enable antivirus and anti-spyware software and firewalls after the upgrade is completed. 
 
+> [!NOTE]
+> When performing an in-place upgrade on Azure Windows VMs, the VM properties on the Azure portal aren't updated; the changes are only reflected within the OS. This means that the source image information in the VM properties, including the publisher, offer, and plan, remains unchanged. The image used to deploy the VM remains the same, and only the OS is upgraded.
 
 ## Upgrade VM to volume license (KMS server activation)
 
@@ -173,6 +175,13 @@ To initiate the in-place upgrade the VM must be in the `Running` state. Once the
    
    ```powershell
    .\setup.exe /auto upgrade /dynamicupdate disable 
+   ```
+
+   You can use /eula accept switch in the Windows Server upgrade command to automatically accept the Microsoft Software License Terms (End User License Agreement or EULA) during the upgrade process.
+   Using the /eula accept switch can help avoid issues where the upgrade process stalls because the EULA was not accepted manually. This switch ensures that the upgrade process can proceed smoothly without requiring user interaction to accept the license terms.
+ 
+   ```powershell
+   .\setup.exe /auto upgrade /dynamicupdate disable /eula accept
    ```
 
 1. Select the correct "Upgrade to" image based on the current version and configuration of the VM using the [Windows Server upgrade matrix](/windows-server/get-started/upgrade-overview).
