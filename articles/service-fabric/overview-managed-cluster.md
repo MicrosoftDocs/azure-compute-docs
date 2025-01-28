@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 03/12/2024
+ms.date: 11/21/2024
 ---
 
 # Service Fabric managed clusters
@@ -63,7 +63,7 @@ Service Fabric managed clusters are available in both Basic and Standard SKUs.
 
 | Feature | Basic | Standard |
 | ------- | ----- | -------- |
-| Network resource (SKU for [Load Balancer](/azure/load-balancer/skus), [Public IP](/azure/virtual-network/ip-services/public-ip-addresses)) | Basic | Standard |
+| Network resource (SKU for [Load Balancer](/azure/load-balancer/skus), [Public IP](/azure/virtual-network/ip-services/public-ip-addresses)) | Standard | Standard |
 | Min node (virtual machine instance) count | 3 | 5 |
 | Max node count per node type | 100 | 1000 |
 | Max node type count | 1 | 50 |

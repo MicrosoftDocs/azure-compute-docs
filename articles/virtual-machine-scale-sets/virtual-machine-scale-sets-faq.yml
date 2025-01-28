@@ -18,6 +18,10 @@ sections:
   - name: Top frequently asked questions for scale sets
     questions:
       - question: |
+          How much does it cost to use Virtual Machine Scale Sets?
+        answer: |
+          You pay for the underlying resources that are used by your scale set, such as virtual machines, storage, and networking resources. There's no extra charge for the scale set itself.  
+      - question: |
           How many VMs can I have in a scale set?
         answer: |
           A scale set can have 0 to 1,000 virtual machines (VMs) based on platform images, or 0 to 600 VMs based on custom images.
@@ -27,14 +31,14 @@ sections:
         answer: |
           Yes. A scale set can define the configuration of an attached data disk that applies to all VMs in the set. For more information, see [Azure scale sets and attached data disks](virtual-machine-scale-sets-attached-disks.md). Other options for storing data include:
 
-          * Azure Managed Disks (Premium v2, Premium, Standard, Ultra)
-          * Azure Files (SMB or NFS shared drives)
-          * Azure Netapp Files
+          * Azure Managed Disks - Premium v2, Premium, Standard, Ultra
+          * Azure Files - Server Message Block (SMB) or Network File System (NFS) shared drives
+          * Azure NetApp Files
           * Azure shared disks
           * Operating system drive
-          * Temp drive (local, not backed by Azure Storage)
-          * Azure data service (for example, Azure Table Storage or Azure Blob Storage)
-          * External data service (for example, a remote database)
+          * Temp drive - local, not backed by Azure Storage
+          * Azure data service - for example, Azure Table Storage or Azure Blob Storage
+          * External data service - for example, a remote database
 
       - question: |
           Which Azure regions support scale sets?
@@ -42,19 +46,19 @@ sections:
           All regions support scale sets.
 
       - question: |
-          Which SKUs are supported for Virtual Machine Scale Sets?
+          Which Stock Keeping Units (SKUs) are supported for Virtual Machine Scale Sets?
         answer: |
           All SKUs are supported for Virtual Machine Scale Sets.
 
       - question: |
           How do I create a scale set by using a custom image?
         answer: |
-          Create and capture a VM image, and then use that as the source for your scale set. For a tutorial on how to create and use a custom VM image, you can use the [Azure CLI](tutorial-use-custom-image-cli.md) or [Azure PowerShell](tutorial-use-custom-image-powershell.md).
+          Create and capture a virtual machine (VM) image, and then use that as the source for your scale set. For a tutorial on how to create and use a custom VM image, you can use the [Azure CLI](tutorial-use-custom-image-cli.md) or [Azure PowerShell](tutorial-use-custom-image-powershell.md).
 
       - question: |
           What is the difference between OS Image Upgrade and Reimage?
         answer: |
-          OS Image Upgrade is a gradual and non-disruptive process that updates the OS image for the entire Virtual Machine Scale Set over time, ensuring minimal impact on running workloads. 
+          OS Image Upgrade is a gradual and nondisruptive process that updates the OS image for the entire Virtual Machine Scale Set over time, ensuring minimal impact on running workloads. 
           
           Reimage is a more immediate and disruptive action that affects only the selected VM instance, stopping it temporarily and reinstalling the OS.
 
@@ -63,7 +67,7 @@ sections:
       - question: |
           If I reduce my scale set capacity from 20 to 15, which VMs are removed?
         answer: |
-          By default, virtual machines are removed from the scale set evenly across availability zones (if the scale set is deployed in zonal configuration) and fault domains, to maximize availability. VMs with the highest IDs are removed first.
+          By default, VMs are removed from the scale set evenly across availability zones (if the scale set is deployed in zonal configuration) and fault domains, to maximize availability. VMs with the highest IDs are removed first.
 
           You can change the order of virtual machine removal by specifying a [scale-in policy](virtual-machine-scale-sets-scale-in-policy.md) for the scale set.
 
@@ -80,7 +84,7 @@ sections:
       - question: |
           Do scale sets work with Azure availability sets?
         answer: |
-          A regional (non-zonal) scale set uses *placement groups*, which act as an implicit availability set with five fault domains and five update domains. Scale sets of more than 100 VMs span multiple placement groups. For more information about placement groups, see [Working with large Virtual Machine Scale Sets](virtual-machine-scale-sets-placement-groups.md). An availability set of VMs can exist in the same virtual network as a scale set of VMs. A common configuration is to put control node VMs (which often require unique configuration) in an availability set, and put data nodes in the scale set.
+          A regional (nonzonal) scale set uses *placement groups*, which act as an implicit availability set with five fault domains and five update domains. Scale sets of more than 100 VMs span multiple placement groups. For more information about placement groups, see [Working with large Virtual Machine Scale Sets](virtual-machine-scale-sets-placement-groups.md). An availability set of VMs can exist in the same virtual network as a scale set of VMs. A common configuration is to put control node VMs (which often require unique configuration) in an availability set, and put data nodes in the scale set.
 
       - question: |
           Do scale sets work with Azure availability zones?
@@ -155,9 +159,9 @@ sections:
 
 
       - question: |
-          If I have stopped (deallocated) a VM, is that VM started as part of an autoscale operation?
+          If I stopped (deallocated) a VM, is that VM started as part of an autoscale operation?
         answer: |
-          No. If autoscale rules require more VM instances as part of a scale set, a new VM instance is created. VM instances that are stopped (deallocated) aren't started as part of an autoscale event. However, those stopped (deallocated) VMs can be deleted as part of an autoscale event that scales in the number of instances, in the same way that any VM instance can be deleted based on the order of VM instance IDs.
+          No. If autoscale rules require more VM instances as part of a scale set, a new VM instance is created. Stopped (deallocated) VM instances aren't started as part of an autoscale event. However, the stopped (deallocated) VMs can be deleted as part of an autoscale event that scales in the number of instances, in the same way that any VM instance can be deleted based on the order of VM instance IDs.
 
 
 
@@ -194,13 +198,13 @@ sections:
       - question: |
           How do I use self-signed certificates provisioned for Azure Service Fabric clusters?
         answer: |
-          For the latest example, in an Azure shell, use the following Azure CLI statement, which will be printed to stdout:
+          For the latest example, in an Azure shell, use the following Azure CLI statement, which prints to stdout:
 
           ```azurecli
           az sf cluster create -h
           ```
 
-          Self-signed certificates can't be used for distributed trust provided by a certificate authority, and shouldn't be used for any Service Fabric cluster intended to host enterprise production solutions. For more security guidance, review [Azure Service Fabric security best practices](/azure/security/fundamentals/service-fabric-best-practices) and [Service Fabric cluster security scenarios](../service-fabric/service-fabric-cluster-security.md).
+          Self-signed certificates can't be used for distributed trust that are provided by a certificate authority, and shouldn't be used for any Service Fabric cluster that are intended to host enterprise production solutions. For more security guidance, review [Azure Service Fabric security best practices](/azure/security/fundamentals/service-fabric-best-practices) and [Service Fabric cluster security scenarios](../service-fabric/service-fabric-cluster-security.md).
 
       - question: |
           For SSH authentication with a Linux Virtual Machine Scale Set from a Resource Manager template, can I specify an SSH key pair to use?
@@ -269,7 +273,7 @@ sections:
       - question: |
           When I run `Update-AzVmss` after adding more than one certificate from the same key vault, why do I get an error message?
         answer: |
-          This error can happen if you try to re-add the same vault instead of using a new vault certificate for the existing source vault. The `Add-AzVmssSecret` command doesn't work correctly if you're adding more secrets.
+          This error can happen if you try to readd the same vault instead of using a new vault certificate for the existing source vault. The `Add-AzVmssSecret` command doesn't work correctly if you're adding more secrets.
 
           To add more secrets from the same key vault, update the following list: `$vmss.properties.osProfile.secrets[0].vaultCertificates`.
 
@@ -281,7 +285,7 @@ sections:
           > Currently, you can't remove certificates from VMs by using the Virtual Machine Scale Set API.
           >
 
-          New VMs will not have the old certificate. However, VMs that have the certificate, and that are already deployed, do have the old certificate.
+          New VMs won't have the old certificate. However, VMs that have the certificate, and that are already deployed, do have the old certificate.
 
       - question: |
           Can I push certificates to the Virtual Machine Scale Set without providing the password, when the certificate is in the secret store?
@@ -328,7 +332,7 @@ sections:
       - question: |
           What happens if I delete a certificate from the key vault?
         answer: |
-          If the secret is deleted from the key vault, and then you run `stop deallocate` for all your VMs and then start them again, you encounter a failure. The failure occurs because the CRP needs to retrieve the secrets from the key vault, but it can't. In this scenario, you can delete the certificates from the Virtual Machine Scale Set model.
+          If the secret is deleted from the key vault, and then you `stop deallocate` all your VMs and then start them again, you encounter a failure. The failure occurs because the CRP needs to retrieve the secrets from the key vault, but it can't. In this scenario, you can delete the certificates from the Virtual Machine Scale Set model.
 
           The CRP component doesn't make customer secrets persistent. If you run `stop deallocate` for all VMs in the Virtual Machine Scale Set, the cache is deleted. In this scenario, secrets are retrieved from the key vault.
 
@@ -344,7 +348,7 @@ sections:
       - question: |
           My team works with several certificates that are distributed to us as .cer public keys. What is the recommended approach for deploying these certificates to a Virtual Machine Scale Set?
         answer: |
-          To deploy .cer public keys to a Virtual Machine Scale Set, you can generate a .pfx file that contains only .cer files. To do this, use `X509ContentType = Pfx`. For example, load the .cer file as an `x509Certificate2` object in C# or PowerShell, and then call the method.
+          To deploy .cer public keys to a Virtual Machine Scale Set, you can generate a .pfx file that contains only .cer files using `X509ContentType = Pfx`. For example, load the .cer file as an `x509Certificate2` object in C# or PowerShell, and then call the method.
 
           For more information, see [X509Certificate.Export Method (X509ContentType, String)](/dotnet/api/system.security.cryptography.x509certificates.x509certificate.export?#system-security-cryptography-x509certificates-x509certificate-export(system-security-cryptography-x509certificates-x509contenttype-system-string)).
 
@@ -375,14 +379,14 @@ sections:
         answer: |
           Virtual Machine Scale Sets are a thin API layer on top of the CRP. Both components are part of the compute platform in the Azure service tree.
 
-          From a compliance perspective, Virtual Machine Scale Sets are a fundamental part of the Azure compute platform. They share the following with the CRP itself: a team, tools, processes, deployment methodology, security controls, just-in-time (JIT) compilation, monitoring, and alerting. Virtual Machine Scale Sets are Payment Card Industry (PCI)-compliant because the CRP is part of the current PCI Data Security Standard (DSS) attestation.
+          From a compliance perspective, Virtual Machine Scale Sets are a fundamental part of the Azure compute platform. They share the following information with the CRP itself: a team, tools, processes, deployment methodology, security controls, just-in-time (JIT) compilation, monitoring, and alerting. Virtual Machine Scale Sets are Payment Card Industry (PCI)-compliant because the CRP is part of the current PCI Data Security Standard (DSS) attestation.
 
           For more information, see the [Microsoft Trust Center](https://www.microsoft.com/TrustCenter/Compliance/PCI).
 
       - question: |
           Do managed identities for Azure resources work with Virtual Machine Scale Sets?
         answer: |
-          Yes. For more information, see the [managed identities overview](/azure/active-directory/managed-identities-azure-resources/overview). You can see some example MSI templates in Azure Quickstart Templates for [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vmss-msi) and [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vmss-msi).
+          Yes. For more information, see the [managed identities overview](/azure/active-directory/managed-identities-azure-resources/overview). You can see some example Managed Service Identity (MSI) templates in Azure Quickstart Templates for [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vmss-msi) and [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vmss-msi).
 
   - name: Deleting
     questions:
@@ -483,7 +487,7 @@ sections:
 
           - Change the Virtual Machine Scale Set model directly. This option is only available with API 2017-12-01 and later versions.
 
-              Update the admin credentials directly in the scale set model (for example, by using the Azure Resource Explorer, PowerShell or the Azure CLI). After the scale set is updated, all new VMs have the new credentials. Existing VMs only have the new credentials if they are reimaged.
+              Update the admin credentials directly in the scale set model (for example, by using the Azure Resource Explorer, PowerShell or the Azure CLI). After the scale set is updated, all new VMs have the new credentials. Existing VMs only have the new credentials if they're reimaged.
 
           - Reset the password by using the VM access extensions. Make sure to follow the password requirements, as described in [the FAQ](../virtual-machines/windows/faq.yml#what-are-the-password-requirements-when-creating-a-vm-).
               
@@ -522,7 +526,7 @@ sections:
   - name: Networking
     questions:
       - question: |
-          Is it possible to assign a network security group (NSG) to a scale set, so that it applies to all the VM NICs in the set?
+          Is it possible to assign a network security group (NSG) to a scale set, so that it applies to all the VM network interface controllers (NICs) in the set?
         answer: |
           Yes. You can apply an NSG directly to a scale set by referencing it in the `networkInterfaceConfigurations` section of the network profile. Here's an example:
 
@@ -565,7 +569,7 @@ sections:
       - question: |
           How do I do a virtual IP (VIP) swap for Virtual Machine Scale Sets in the same subscription and same region?
         answer: |
-          If you have two Virtual Machine Scale Sets with Azure Load Balancer, and they are in the same subscription and region, you can deallocate the public IP addresses from each one, and assign to the other. For more information, see [VIP swap: Blue-green deployment in Azure Resource Manager](https://msftstack.wordpress.com/2017/02/24/vip-swap-blue-green-deployment-in-azure-resource-manager/). You may experience a delay, though, because the resources are deallocated or allocated at the network level. A faster option is to use Azure Application Gateway with two back-end pools, and a routing rule. Alternatively, you can host your application with [Azure App Service](https://azure.microsoft.com/services/app-service/), which supports fast switching between staging and production slots.
+          If you have two Virtual Machine Scale Sets with Azure Load Balancer, and they're in the same subscription and region, you can deallocate the public IP addresses from each one, and assign to the other. For more information, see [VIP swap: Blue-green deployment in Azure Resource Manager](https://msftstack.wordpress.com/2017/02/24/vip-swap-blue-green-deployment-in-azure-resource-manager/). You may experience a delay, though, because the resources are deallocated or allocated at the network level. A faster option is to use Azure Application Gateway with two back-end pools, and a routing rule. Alternatively, you can host your application with [Azure App Service](https://azure.microsoft.com/services/app-service/), which supports fast switching between staging and production slots.
 
       - question: |
           How do I specify a range of private IP addresses to use for static private IP address allocation?
@@ -601,7 +605,7 @@ sections:
           ```
 
       - question: |
-          How can I configure the DNS servers used by a scale set?
+          How can I configure the domain name system (DNS) servers used by a scale set?
         answer: |
           To create a Virtual Machine Scale Set with a custom DNS configuration, add a `dnsSettings` JSON packet to the scale set `networkInterfaceConfigurations` section. Here's an example:
 
@@ -701,7 +705,7 @@ sections:
           Yes, you can move scale set resources to a new subscription or resource group.
 
       - question: |
-          How do I update my Virtual Machine Scale Set to a new image? How do I manage patching?
+          How do I update my Virtual Machine Scale Set to a new image? How do I manage patching the VMs in my scale set?
         answer: |
           To update your Virtual Machine Scale Set to a new image, and to manage patching, see [Upgrade a Virtual Machine Scale Set](./virtual-machine-scale-sets-upgrade-scale-set.md).
 
@@ -713,7 +717,7 @@ sections:
       - question: |
           Is it possible to integrate scale sets with Azure Monitor Logs?
         answer: |
-          Yes, you can by installing the Azure Monitor extension on the scale set VMs. Here is an example that uses the Azure CLI:
+          Yes, by installing the Azure Monitor extension on the scale set VMs. Here's an example that uses Azure CLI:
 
           ```azurecli
           az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.EnterpriseCloud.Monitoring --resource-group Team-03 --vmss-name nt01 --settings "{'workspaceId': '<your workspace ID here>'}" --protected-settings "{'workspaceKey': '<your workspace key here'}"
@@ -722,7 +726,7 @@ sections:
           You can find the required `workspaceId` and `workspaceKey` in the Log Analytics workspace of the Azure portal. On the **Overview** page, select the **Settings** tile. Select the **Connected Sources** tab at the top.
 
           > [!NOTE]
-          > If your scale set `upgradePolicy` is set to manual, you need to apply the extension to the all VMs in the set by calling upgrade on them. In the Azure CLI, this is `az vmss update-instances`.
+          > If your scale set `upgradePolicy` is set to manual, you need to apply the extension to the all VMs in the set by calling upgrade on them. For Azure CLI, use `az vmss update-instances`.
 
           [!INCLUDE [azure-monitor-log-analytics-rebrand](~/reusable-content/ce-skilling/azure/includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -764,12 +768,12 @@ sections:
 
           /subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Compute/virtualMachineScaleSets/<scaleset_name>/virtualMachines?$expand=instanceView&$select=instanceView
           
-          Note that fault domain is not returned when the scale set uses max spreading (platformFaultDomainCount = 1), because there is no guarantee as to how many fault domains would be used with this setting.
+          The fault domain isn't returned when the scale set uses max spreading (platformFaultDomainCount = 1), because there's no guarantee as to how many fault domains would be used with this setting.
 
       - question: |
           Can I pass different extension arguments to different VMs in a Virtual Machine Scale Set?
         answer: |
-          No, you can't. However, extensions can act based on the unique properties of the VM they are running on, such as on the machine name. Extensions also can query instance metadata on `http://169.254.169.254` to get more information about the VM.
+          No, you can't. However, extensions can act based on the unique properties of the VM they're running on, such as on the machine name. Extensions also can query instance metadata on `http://169.254.169.254` to get more information about the VM.
 
       - question: |
           Why are there gaps (for example, 0, 1, 3) between my Virtual Machine Scale Set VM machine names and VM IDs?

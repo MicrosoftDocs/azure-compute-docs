@@ -5,6 +5,7 @@ metadata:
   ms.service: azure-virtual-machines
   ms.topic: faq
   ms.custom: references_regions
+  ms.date: 12/13/2024
 title: FAQ for temp NVMe disks
 summary: |
   This article addresses some common questions about support for temporary NVM Express (temp NVMe) disks on virtual machines (VMs) created in Azure.
@@ -20,7 +21,7 @@ sections:
           To enable the temp NVMe interface on your VM, you must meet the following prerequisites:
           
           - Choose a VM family that supports NVMe (such as v6 VMs). 
-          - Select the operating system image that's tagged with NVMe support.
+          - Select an operating system that supports NVMe
           - Make sure that you're using a Generation 2 VM, because NVMe supports only Generation 2 images.          
       - question: |
           How are temp NVMe disks in my Dl/D/E_v6 VMs different from remote NVMe disks?
@@ -43,7 +44,7 @@ sections:
       - question: |
           How can I encrypt my temp NVMe disks?
         answer: |
-          Temp NVMe disks support the feature of data encryption at rest. A unique data encryption key (DEK) encrypts the data for each temp NVMe disk assigned to the VM. A key encryption key (KEK) helps protect the DEK. When you delete a VM, the data on its temp NVMe disk is cryptographically erased. 
+          Temp NVMe disks support the feature of data encryption at rest. A unique data encryption key (DEK) encrypts the data for each temp NVMe disk assigned to the VM. A key encryption key (KEK) helps protect the DEK. When you delete a VM, the data on its temp NVMe disk is cryptographically erased. All the v6 VMs that are introduced from 2024 and onward, have their local NVMe drives encrypted by default using hardware based encryption with a Platform Managed Key.  
       - question: |
           How can I resize a v5 or older VM with a temp disk to v6?
         answer: |

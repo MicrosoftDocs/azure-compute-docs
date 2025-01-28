@@ -7,7 +7,7 @@ ms.subservice: sizes
 ms.custom:
 ms.topic: conceptual
 ms.date: 04/12/2023
-ms.author: ayshak
+ms.author: jushiman
 ---
 
 # M-series

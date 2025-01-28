@@ -75,7 +75,7 @@ procedureSection:
       >
       > If you would like to store your image in zone-resilient storage, you
       > need to create it in a region that supports
-      > [availability zones](/azure/availability-zones/az-overview) and include
+      > [availability zones](/azure/reliability/availability-zones-overview) and include
       > the `--zone-resilient true` parameter.
       
       This command returns JSON that describes the VM image. Save this output for later reference.
@@ -96,7 +96,7 @@ procedureSection:
 
 
       > [!NOTE]
-      > If you would like to store your image in zone-redundant storage, you need to create it in a region that supports [availability zones](/azure/availability-zones/az-overview) and include the `-ZoneResilient` parameter in the image configuration (`New-AzImageConfig` command).
+      > If you would like to store your image in zone-redundant storage, you need to create it in a region that supports [availability zones](/azure/reliability/availability-zones-region-support) and include the `-ZoneResilient` parameter in the image configuration (`New-AzImageConfig` command).
 
       To create a VM image, follow these steps:
 

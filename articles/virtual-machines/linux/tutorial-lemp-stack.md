@@ -158,7 +158,7 @@ Results:
 Use [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) to create a standard zone-redundant public IPv4 address named `MY_PUBLIC_IP_NAME` in `$MY_RESOURCE_GROUP_NAME`.
 
 >[!NOTE]
->The below options for zones are only valid selections in regions with [Availability Zones](/azure/reliability/availability-zones-service-support).
+>The below options for zones are only valid selections in regions with [Availability Zones](/azure/reliability/availability-zones-region-support).
 ```bash
 az network public-ip create \
     --name $MY_PUBLIC_IP_NAME \

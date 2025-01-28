@@ -17,4 +17,4 @@ ms.custom: include file
 | Local Storage  | 2 - 14 Disks           | 256 - 1536 GiB <br> IOPS (RR) <br> MBps (RR)                               |
 | Remote Storage | 2 - 14 Disks    | 7600 - 5320 IOPS <br>180 - 1260 MBps   |
 | Network        | 2 - 8 NICs          | 3300 - 20000 Mbps                          |
-| Accelerators   | None              |                                   |
+| Accelerators   | 1/6 - 1              |                AMD Radeon™ Pro V710                   |

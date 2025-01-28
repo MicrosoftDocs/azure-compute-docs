@@ -6,7 +6,7 @@ ms.author: rogarana
 ms.service: azure-disk-storage
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
-ms.date: 10/08/2021
+ms.date: 12/06/2024
 ms.custom: template-tutorial, devx-track-azurepowershell
 #Customer intent: As an IT administrator, I want to learn about Azure Managed Disks so that I can create and manage storage for Windows VMs in Azure.
 ---
@@ -208,6 +208,13 @@ Shrinking an existing disk isn’t supported, and can potentially result in data
 ### Update the disk's size
 
 Follow the steps below to resize either the OS disk or a data disk.
+
+> [!IMPORTANT]
+> If your disk meets the requirements in [Expand without downtime](expand-os-disk.md#expand-without-downtime), you can skip steps 2 and 6.
+> 
+> Shrinking an existing disk isn’t supported and may result in data loss.
+> 
+> After expanding the disks, you need to expand the volume in the operating system to take advantage of the larger disk.
 
 1. Select the VM that contains the disk that you'll resize with the `Get-AzVM` cmdlet.
 

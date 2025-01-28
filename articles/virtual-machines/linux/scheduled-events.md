@@ -142,6 +142,7 @@ While the exact timings of events vary, the following diagram provides a rough g
 
 ![Diagram of a timeline showing the flow of a scheduled event.](media/scheduled-events/scheduled-events-timeline.png)
 
+All operations impacting VM availability will result in a scheduled event, however not all scheduled events will appear in other Azure surfaces such as Azure Activity Logs or Resource Health. Checking scheduled events regularily will ensure that you have the most up-to-date information about any upcoming impacts to your VMs. 
 
 ### Headers
 When you query Metadata Service, you must provide the header `Metadata:true` to ensure the request wasn't unintentionally redirected. The `Metadata:true` header is required for all scheduled events requests. Failure to include the header in the request results in a "Bad Request" response from Metadata Service.

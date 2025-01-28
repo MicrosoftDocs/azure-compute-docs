@@ -52,7 +52,7 @@ For more information on how to create and use SSH keys with Linux VMs, see [Use 
 On your local computer, open a Bash prompt:
 
 ```azurecli
-ssh -identity_file <path to the private key file> username@<ipaddress of the VM>
+ssh -i <path to the private key file> username@<ipaddress of the VM>
 ```
 
 For example, enter: `ssh -i /home/user/.ssh/mySSHKey azureuser@123.45.67.890`

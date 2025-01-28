@@ -1,21 +1,21 @@
 ---
-title:       Overview of Mbsv3 and Mbdsv3 Series
-description:  Overview of Mbsv3 and Mbdsv3 virtual machines
-author:      mingjiongz
-ms.author:   zhangjay
+title: Overview of Mbsv3 and Mbdsv3 Series
+description: Overview of Mbsv3 and Mbdsv3 virtual machines
+author: mingjiongz
+ms.author: zhangjay
+ms.reviewer: mattmcinnes
 ms.service: azure-virtual-machines
-# ms.prod:   sizes
-ms.topic:    conceptual
-ms.date:     10/24/2024
+ms.topic: conceptual
+ms.date: 11/11/2024
 ---
 
-# Mbsv3 and Mbdsv3 Series 
+# Mbsv3 and Mbdsv3 series 
 
-The Storage optimized Mbv3 VM (Mbsv3 and Mbdsv3) series are based on the 4th generation Intel® Xeon® Scalable processors and deliver higher remote disk storage performance. These new VM sizes offer up to 650,000 IOPS and 10GBps of remote disk storage throughput Premium SSD v2 and Ultra Disk, up to 4TB of RAM and up to 650,000 IOPS and 10GBps throughput to remote disk storage with NVMe interface by using Ultra Disk and Premium SSD v2.
+The Memory-and-storage optimized Mbv3 VM (Mbsv3 and Mbdsv3) series are based on the 4th generation Intel® Xeon® Scalable processors and deliver higher remote disk storage performance. These new VM sizes offer up to 650,000 IOPS and 10 GBps of remote disk storage throughput Premium SSD v2 and Ultra Disk, up to 4 TiB of RAM and up to 650,000 IOPS and 10 GBps throughput to remote disk storage with NVMe interface by using Ultra Disk and Premium SSD v2.
 
 The increased remote storage performance of these VMs is ideal for storage throughput-intensive workloads such as relational databases and data analytics applications.  
 
-The resource allocation and high-performance capabilities of the Mbv3 VM series make them particularly well-suited for SQL Server workloads with high memory needs, such as critical [online transaction processing (OLTP)](/azure/architecture/data-guide/relational-data/online-transaction-processing), [data analytics](/azure/architecture/data-guide/relational-data/online-analytical-processing), [in-memory databases](/sql/relational-databases/in-memory-oltp/overview-and-usage-scenarios), [data warehousing](/azure/architecture/example-scenario/data/data-warehouse), and the consolidation of SQL Server workloads for efficient management of multiple SQL Server instances. 
+The resource allocation and high-performance capabilities of the Mbv3 VM series make them particularly well suited for SQL Server workloads with high memory needs, such as critical [online transaction processing (OLTP)](/azure/architecture/data-guide/relational-data/online-transaction-processing), [data analytics](/azure/architecture/data-guide/relational-data/online-analytical-processing), [in-memory databases](/sql/relational-databases/in-memory-oltp/overview-and-usage-scenarios), [data warehousing](/azure/architecture/example-scenario/data/data-warehouse), and the consolidation of SQL Server workloads for efficient management of multiple SQL Server instances.
  
 ## Mbsv3 series (NVMe)
 
@@ -64,7 +64,7 @@ The resource allocation and high-performance capabilities of the Mbv3 VM series 
 | **Standard_M176bds_v3** | 176 | 1,536 | 400 | 64 | 160,000/1600 | 260,000/6,000 | 650,000/6,000 | 8 | 50,000 |
 | **Standard_M64bds_1_v3** | 64 | 1397 | 3000 | 64 | 40,000/400 | 130,000/6,000 | 160, 000/6,000 | 8 | 20,000 |
 | **Standard_M96bds_2_v3** | 96 | 1946 | 4500 | 64 | 40,000/400 | 130,000/8,000 | 260,000/8,000 | 8 | 20,000 |
-| **Standard_M128bds_3_v3** | 128 | 2794 | 6000 | 64 | 160,000/1600 | 260,000/8,000 | 400,000/10,000 | 8 | 40,000 |
+| **Standard_M128bds_3_v3**| 128 | 2794 | 6000 | 64 | 160,000/1600 | 260,000/8,000 | 400,000/10,000 | 8 | 40,000 |
 | **Standard_M176bds_4_v3** | 176 | 3892 | 8000 | 64 | 160,000/1600 | 260,000/8,000 | 650,000/10,000 | 8 | 40,000 |
 
 ## Size table definitions

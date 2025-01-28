@@ -193,6 +193,15 @@ We update only the current minor release in a given image family. With the relea
 
 Current policy is to keep all previously published images. We reserve the right to remove images that are known to cause problems of any kind. For example, images with incorrect configurations due to subsequent platform or component updates might be removed. Images that might be removed follow the current Azure Marketplace policy to provide notifications up to 30 days before image removal.
 
+## Network configuration
+
+We are currently overriding the default cloud-init network configuration by setting "apply_network_config: false" to support RHEL 8 and RHEL 9 images and customers.
+
+> [!NOTE]
+> From RHEL 10 onwards, images will use the default cloud-init configuration that leverages Azure's IMDS endpoint for network configuration.
+>
+> We request that customers plan their VM configuration accordingly from RHEL 10 onwards.
+
 ## Next steps
 
 - To view the full list of RHEL images in Azure, see [Red Hat Enterprise Linux (RHEL) images available in Azure](./redhat-imagelist.md).

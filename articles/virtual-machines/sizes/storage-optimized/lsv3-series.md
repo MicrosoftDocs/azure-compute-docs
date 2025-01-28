@@ -71,12 +71,12 @@ Remote (uncached) storage info for each size
 
 | Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD Disk IOPS | Uncached Premium SSD Throughput (MB/s) | Uncached Premium SSD Burst<sup>1</sup> IOPS | Uncached Premium SSD Burst<sup>1</sup> Throughput (MB/s) | Uncached Ultra Disk and Premium SSD v2 IOPS | Uncached Ultra Disk and Premium SSD v2 Throughput (MB/s) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_L8s_v3 | 16 | 12800 | 290 | 20000 | 1200 | 400000 | 2000 |
-| Standard_L16s_v3 | 32 | 25600 | 600 | 40000 | 1600 | 800000 | 4000 |
-| Standard_L32s_v3 | 32 | 51200 | 865 | 80000 | 2000 | 1.5M | 8000 |
-| Standard_L48s_v3 | 32 | 76800 | 1315 | 80000 | 3000 | 2.2M | 14000 |
-| Standard_L64s_v3 | 32 | 80000 | 1735 | 80000 | 3000 | 2.9M | 16000 |
-| Standard_L80s_v3 | 32 | 80000 | 2160 | 80000 | 3000 | 3.8M | 20000 |
+| Standard_L8s_v3 | 16 | 12800 | 290 | 20000 | 1200 | 12800 | 290 |
+| Standard_L16s_v3 | 32 | 25600 | 600 | 40000 | 1600 | 25600 | 600 |
+| Standard_L32s_v3 | 32 | 51200 | 865 | 80000 | 2000 | 51200 | 865 |
+| Standard_L48s_v3 | 32 | 76800 | 1315 | 80000 | 3000 | 76800 | 1315 |
+| Standard_L64s_v3 | 32 | 80000 | 1735 | 80000 | 3000 | 80000 | 1735 |
+| Standard_L80s_v3 | 32 | 80000 | 2160 | 80000 | 3000 | 80000 | 2160 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)

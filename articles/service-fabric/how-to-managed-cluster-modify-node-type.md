@@ -41,7 +41,6 @@ You can add a node type to a Service Fabric managed cluster through Portal, an A
 1) Sign in to [Azure portal](https://portal.azure.com/)
 
 2) Navigate to your cluster resource Overview page. 
-![Sample Overview page][overview]
 
 3) Select `Node types` under the `Settings` section 
 ![Node Types view][addremove]
@@ -164,7 +163,7 @@ In this walkthrough, you learn how to modify the node count for a node type usin
 
 ![Sample showing a node count increase][adjust-node-count]
 
-6) Select `Manage node type scaling` to configure the scaling settings and choose between custom autoscale and manual scale options. Autoscale is a built-in feature that helps applications perform their best when demand changes. You can choose to scale your resource manually to a specific instance count or via a custom autoscale policy that scales based on metric thresholds. You can also schedule instance counts to scale during designated time windows. [Learn more about Azure Autoscale](/azure/azure-monitor/platform/autoscale-get-started?WT.mc_id=Portal-Microsoft_Azure_Monitoring) or [view the how-to video](https://www.microsoft.com/videoplayer/embed/RE4u7ts).
+6) Select `Manage node type scaling` to configure the scaling settings and choose between custom autoscale and manual scale options. Autoscale is a built-in feature that helps applications perform their best when demand changes. You can choose to scale your resource manually to a specific instance count or via a custom autoscale policy that scales based on metric thresholds. You can also schedule instance counts to scale during designated time windows. [Learn more about Azure Autoscale](/azure/azure-monitor/platform/autoscale-get-started?WT.mc_id=Portal-Microsoft_Azure_Monitoring) or [view the how-to video](https://learn-video.azurefd.net/vod/player?id=125ecef8-c287-4a81-9001-69c01558398c).
 
    * **Custom autoscale**: Select the appropriate `scale mode` to define the custom Autoscale policy - `Scale to a specific instance count`or `Scale based on a metric`. The latter is based on metric trigger rules, for example, increase instance count by 1 when CPU Percentage is above 70%. Once you define the policy, select `Save` at the top.
 
@@ -481,7 +480,6 @@ Implement the following ARM template changes to set the computer name prefix:
 > [Deploy an app to a Service Fabric managed cluster](./tutorial-managed-cluster-deploy-app.md)
 
 
-[overview]: ./media/how-to-managed-cluster-modify-node-type/sfmc-overview.png
 [node-type-updating]: ./media/how-to-managed-cluster-modify-node-type/sfmc-adjust-node-type-updating.png
 [adjust-node-count]: ./media/how-to-managed-cluster-modify-node-type/sfmc-adjust-node-counts-new.png
 [manual-scale-setting]: ./media/how-to-managed-cluster-modify-node-type/sfmc-manual-scale-setting.png

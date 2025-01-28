@@ -485,6 +485,8 @@
       href: how-to-managed-cluster-deploy-with-subnet-per-nodetype.md
     - name: Scale to zero nodes
       href: how-to-managed-cluster-scale-to-zero.md
+    - name: Use IP tags
+      href: how-to-managed-cluster-ip-tags.md
   - name: Set up your development environment
     items:
     - name: Windows

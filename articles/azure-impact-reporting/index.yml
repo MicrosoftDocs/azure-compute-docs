@@ -1,0 +1,55 @@
+### YamlMime:Landing
+
+title: Azure Impact Reporting (Preview) # < 60 chars
+summary: Azure Impact Reporting enables you to leverage Azure Intelligence Systems to enhance your investigations. You can report suspected platform issues, and Azure will use the impact report in its health models and provide you with insights if found. # < 160 chars
+
+metadata:
+  title: Azure Impact Reporting # Required; page title displayed in search results. Include the brand. < 60 chars.
+  description: Having issues? In addition to creating a support ticket, you can report impact to your Azure workload directly to Microsoft with Azure Impact Reporting. # Required; article description that is displayed in search results. < 160 chars.
+  ms.topic: landing-page # Required
+  author: rolandnyamo #Required; your GitHub user alias, with correct capitalization.
+  ms.author: ronyamo #Required; microsoft alias of author; optional team alias.
+  ms.date: 11/09/2022 #Required; mm/dd/yyyy format.
+
+landingContent:
+  # Card 
+  - title: About Impact Reporting
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: What is Impact Reporting?
+            url: overview.md
+      - linkListType: whats-new
+        links:
+          - text: Impact Connector for Azure Monitor
+            url: azure-monitor-connector.md
+          - text: Impact Connector for Azure Monitor TSG
+            url: connectors-troubleshooting-guide.md
+          - text: View Reported Impact and Insights
+            url: view-impact-insights.md
+  # Card 
+  - title: Get started
+    linkLists:
+      - linkListType: quickstart
+        links:
+          - text: Report Impact on an Azure Virtual Machine
+            url: report-vm-impact.md
+          - text: View Reported Impacts
+            url: view-impact-insights.md
+          - text: View Allowed Impact Categories
+            url: view-impact-categories.md
+          - text: FAQ
+            url: faq.md
+  # Card
+  - title: How-To Guides
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Report Impact on an Azure Virtual Machine
+            url: report-vm-impact.md
+          - text: Report Impacts Using a Logic App
+            url: creating-logic-app.md
+      - linkListType: tutorial
+        links:
+          - text: View Allowed Impact Categories
+            url: view-impact-categories.md

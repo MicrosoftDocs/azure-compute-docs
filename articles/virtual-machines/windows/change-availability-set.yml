@@ -2,8 +2,8 @@
 
 ---
 metadata:
-  title: Change a VMs availability set using Azure PowerShell
-  description: Learn how to change the availability set for your virtual machine using Azure PowerShell.
+  title: Change a VM's availability set by using Azure PowerShell
+  description: Learn how to change the availability set for your virtual machine by using Azure PowerShell.
   author: ju-shim
   ms.author: jushiman
   ms.reviewer: mimckitt
@@ -17,31 +17,31 @@ metadata:
   #customer intent: As a <role>, I want <what> so that <why>.
 
 title: |
-  Change the availability set for a VM using Azure PowerShell
+  Change the availability set for a VM by using Azure PowerShell
 
 introduction: |
   **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs
 
-  The following steps describe how to change the availability set of a VM using Azure PowerShell. A VM can only be added to an availability set when it is created. To change the availability set, you need to delete and then recreate the virtual machine. 
+  The following steps describe how to change the availability set of a virtual machine (VM) by using Azure PowerShell. You can add a VM to an availability set only when you're creating the VM. To change the availability set, you need to delete and then re-create the VM. 
 
-  This article was last tested on 2/12/2019 using the [Azure Cloud Shell](https://shell.azure.com/powershell) and the [Az PowerShell module](/powershell/azure/install-azure-powershell) version 1.2.0.
+  This article was last tested on February 12, 2019 by using [Azure Cloud Shell](https://shell.azure.com/powershell) and the [Az PowerShell module](/powershell/azure/install-azure-powershell) version 1.2.0.
 
   > [!WARNING]
-  > This is just an example and in some cases it will need to be updated for your specific deployment.
+  > This is just an example. In some cases, you'll need to update it for your specific deployment.
   >
-  > Make sure the disks are set to `detach` as the [delete](../delete.md) option. If they are set to `delete`, update the VMs before deleting the VMs.
+  > Make sure the disks are set to `detach` as the [delete](../delete.md) option. If they're set to `delete`, update the VMs before you delete the VMs.
   > 
-  > If your VM is attached to a load balancer, you will need to update the script to handle that case.
+  > If your VM is attached to a load balancer, you need to update the script to handle that case.
   >  
-  > Some extensions may also need to be reinstalled after you finish this process. 
+  > Some extensions might also need to be reinstalled after you finish this process. 
   > 
-  > If your VM uses hybrid benefits, you will need to update the example to enable hybrid benefits on the new VM.
+  > If your VM uses hybrid benefits, you need to update the example to enable hybrid benefits on the new VM.
 
 procedureSection:
   - title: | 
         Change the availability set
     summary: |
-      The following script provides an example of gathering the required information, deleting the original VM and then recreating it in a new availability set.
+      The following script provides an example of gathering the required information, deleting the original VM, and then re-creating it in a new availability set:
     code: |
       ```powershell
         # Set variables
@@ -49,12 +49,12 @@ procedureSection:
             $vmName = "myVM"
             $newAvailSetName = "myAvailabilitySet"
 
-        # Get the details of the VM to be moved to the Availability Set
+        # Get the details of the VM to be moved to the availability set
             $originalVM = Get-AzVM `
               -ResourceGroupName $resourceGroup `
               -Name $vmName
 
-        # Create new availability set if it does not exist
+        # Create a new availability set if it doesn't exist
             $availSet = Get-AzAvailabilitySet `
               -ResourceGroupName $resourceGroup `
               -Name $newAvailSetName `
@@ -85,7 +85,7 @@ procedureSection:
               -Name $originalVM.StorageProfile.OsDisk.Name `
               -Windows
 
-        # Add Data Disks
+        # Add data disks
             foreach ($disk in $originalVM.StorageProfile.DataDisks) { 
             Add-AzVMDataDisk -VM $newVM `
               -Name $disk.Name `
@@ -96,7 +96,7 @@ procedureSection:
               -CreateOption Attach
             }
             
-        # Add NIC(s) and keep the same NIC as primary; keep the Private IP too, if it exists.
+        # Add NICs and keep the same NICs as primary; keep the private IP too, if it exists
             foreach ($nic in $originalVM.NetworkProfile.NetworkInterfaces) {	
             if ($nic.Primary -eq "True")
             {
@@ -112,7 +112,7 @@ procedureSection:
                         }
               }
 
-        # Recreate the VM
+        # Re-create the VM
             New-AzVM `
               -ResourceGroupName $resourceGroup `
               -Location $originalVM.Location `
@@ -121,5 +121,5 @@ procedureSection:
         ```
 
 relatedContent:
-  - text: Add additional storage to your VM by adding an additional data disk
+  - text: Add storage to your VM by adding another data disk
     url: attach-managed-disk-portal.yml

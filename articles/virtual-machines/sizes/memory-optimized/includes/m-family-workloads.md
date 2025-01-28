@@ -6,16 +6,18 @@ author: mattmcinnes
 ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.date: 04/19/2024
+ms.date: 10/24/2024
 ms.author: mattmcinnes
 ms.custom: include file
 ---
-**In-Memory Databases:** The M-family is particularly effective for running in-memory databases like SAP HANA that require large amounts of RAM for real-time data processing and analytics.
+**SQL Server workloads with high memory needs:** The M-family is particularly effective for running SQL Server machines with high memory requirements, such as for [online transaction processing (OLTP)](/azure/architecture/data-guide/relational-data/online-transaction-processing) or [data analytics](/azure/architecture/data-guide/relational-data/online-analytical-processing). 
 
-**Big Data Applications:** The M-family is ideal for handling big data applications that need to process and analyze huge datasets in memory, improving performance and reducing the time to insights.
+**In-memory databases:** The M-family is particularly effective for running in-memory databases that require large amounts of RAM like [SQL Server](/sql/relational-databases/in-memory-oltp/overview-and-usage-scenarios), or SAP HANA.
 
-**Data Warehousing:** M-family VMs provide the performance and memory needed for data warehousing applications, facilitating faster queries and better handling of large volumes of data.
+**Big data applications:** The M-family is ideal for handling [big data](/azure/architecture/databases/guide/big-data-architectures) applications that need to process and analyze huge datasets in memory, improving performance and reducing the time to insights.
 
-**Enterprise Applications:** The M-family supports large-scale enterprise applications, including ERP and CRM systems, which benefit from having more memory to manage larger datasets and more complex transactions efficiently.
+**Data warehousing:** M-family VMs provide the performance and memory needed for [data warehousing](/azure/architecture/example-scenario/data/data-warehouse) applications, facilitating faster queries and better handling of large volumes of data.
 
-**Heavy Workloads in Virtualized Environments:** The M-family is well-equipped to handle heavy virtualized environments, offering substantial memory for hosting multiple virtual machines and applications on a single physical server.
+**Enterprise applications:** The M-family supports large-scale enterprise applications, including ERP and CRM systems, which benefit from having more memory to manage larger datasets and more complex transactions efficiently.
+
+**Heavy workloads in virtualized environments:** The M-family is well-equipped to handle heavy virtualized environments, offering substantial memory for hosting multiple virtual machines and applications on a single physical server.

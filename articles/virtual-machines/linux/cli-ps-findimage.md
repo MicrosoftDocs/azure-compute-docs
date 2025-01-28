@@ -253,7 +253,7 @@ az vm create \
    --plan-publisher bitnami
 ```
 
-If you get a message about accepting the terms of the image, review section [Accept the terms](#accept-the-terms). Make sure the output of `az vm image accept-terms` returns the value `"accepted": true,` showing that you've accepted the terms of the image.
+If you get a message about accepting the terms of the image, review section [Accept the terms](#accept-the-terms). Make sure the output of `az vm image terms accept` returns the value `"accepted": true,` showing that you've accepted the terms of the image.
 
 
 ## Using an existing VHD with purchase plan information

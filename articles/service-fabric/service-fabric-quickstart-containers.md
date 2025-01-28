@@ -132,11 +132,7 @@ Right-click **MyFirstContainer** in the Solution Explorer and choose **Publish**
 
 Copy the content following **CN=** in the PowerShell window when you ran the `Import-PfxCertificate` command above, and add port `19000` to it. For example, `mysfcluster.SouthCentralUS.cloudapp.azure.com:19000`. Copy it into the **Connection Endpoint** field. Remember this value because you'll need it in a future step.
 
-Click **Advanced Connection Parameters** and verify the connection parameter information.  *FindValue* and *ServerCertThumbprint* values must match the thumbprint of the certificate installed when you ran `Import-PfxCertificate` in the previous step.
-
-![Publish Dialog](./media/service-fabric-quickstart-containers/publish-app.png)
-
-Click **Publish**.
+Click **Advanced Connection Parameters** and verify the connection parameter information.  *FindValue* and *ServerCertThumbprint* values must match the thumbprint of the certificate installed when you ran `Import-PfxCertificate` in the previous step. Then, select **Publish**.
 
 Each application in the cluster must have a unique name. If there's a name conflict, rename the Visual Studio project and deploy again.
 

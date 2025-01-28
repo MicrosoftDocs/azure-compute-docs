@@ -6,12 +6,12 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 11/21/2024
 ---
 # Deploy an Azure Service Fabric cluster with stateless-only node types
 Service Fabric node types come with inherent assumption that at some point of time, stateful services might be placed on the nodes. Stateless node types change this assumption for a node type, thus allowing the node type to use other features such as faster scale out operations, support for Automatic OS Upgrades on Bronze durability and scaling out to more than 100 nodes in a single virtual machine scale set.
 
-* Primary node types cannot be configured to be stateless
+* Primary node types can't be configured to be stateless
 * Stateless node types are only supported with Bronze Durability Levels
 * Stateless node types are only supported on Service Fabric Runtime version 7.1.409 or above.
 
@@ -136,15 +136,17 @@ To enable stateless node types, you should configure the underlying virtual mach
 ## Configuring Stateless node types with multiple Availability Zones
 To configure Stateless node type spanning across multiple availability zones follow the documentation [here](./service-fabric-cross-availability-zones.md#1-enable-multiple-availability-zones-in-single-virtual-machine-scale-set), along with the few changes as follows:
 
-* Set **singlePlacementGroup** :  **false**  if multiple placement groups is required to be enabled.
+* Set **singlePlacementGroup** :  **false** if multiple placement groups are required to be enabled.
 * Set  **upgradePolicy** : **Rolling**   and add Application Health Extension/Health Probes as mentioned above.
 * Set **platformFaultDomainCount** : **5** for virtual machine scale set.
 
 For reference, look at the [template](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/15-VM-2-NodeTypes-Windows-Stateless-CrossAZ-Secure) for configuring Stateless node types with multiple Availability Zones
 
 ## Networking requirements
+
 ### Public IP and Load Balancer Resource
-To enable scaling to more than 100 VMs on a virtual machine scale set resource, the load balancer and IP resource referenced by that virtual machine scale set must both be using a *Standard* SKU. Creating a load balancer or IP resource without the SKU property will create a Basic SKU, which does not support scaling to more than 100 VMs. A Standard SKU load balancer will block all traffic from the outside by default; to allow outside traffic, an NSG must be deployed to the subnet.
+
+To enable scaling to more than 100 VMs on a virtual machine scale set resource, the load balancer and IP resource referenced by that virtual machine scale set must both be using a *Standard* SKU. Creating an IP resource without the SKU property will create a Basic SKU, which doesn't support scaling to more than 100 VMs. A Standard SKU load balancer blocks all traffic from the outside by default; to allow outside traffic, an NSG must be deployed to the subnet.
 
 ```json
 {
@@ -238,7 +240,8 @@ The load balancer inbound NAT rules should match the NAT pools from the virtual 
 ```
 
 ### Standard SKU Load Balancer outbound rules
-Standard Load Balancer and Standard Public IP introduce new abilities and different behaviors to outbound connectivity when compared to using Basic SKUs. If you want outbound connectivity when working with Standard SKUs, you must explicitly define it either with Standard Public IP addresses or Standard public Load Balancer. For more information, see [Outbound connections](/azure/load-balancer/load-balancer-outbound-connections) and [Azure Standard Load Balancer](/azure/load-balancer/load-balancer-overview).
+
+Standard Public IP introduce new abilities and different behaviors to outbound connectivity when compared to using the Basic SKU. If you want outbound connectivity when working with Standard SKUs, you must explicitly define it either with Standard Public IP addresses or Standard public Load Balancer. For more information, see [Outbound connections](/azure/load-balancer/load-balancer-outbound-connections) and [Azure Standard Load Balancer](/azure/load-balancer/load-balancer-overview).
 
 >[!NOTE]
 > The standard template references an NSG which allows all outbound traffic by default. Inbound traffic is limited to the ports that are required for Service Fabric management operations. The NSG rules can be modified to meet your requirements.
@@ -249,9 +252,10 @@ Standard Load Balancer and Standard Public IP introduce new abilities and differ
 
 
 ## Migrate to using Stateless node types in a cluster
-For all migration scenarios, a new stateless-only node type needs to be added. Existing node type cannot be migrated to be stateless-only.
 
-To migrate a cluster, which was using a Load Balancer and IP with a basic SKU, you must first create an entirely new Load Balancer and IP resource using the standard SKU. It is not possible to update these resources in-place.
+For all migration scenarios, a new stateless-only node type needs to be added. Existing node type can't be migrated to be stateless-only.
+
+To migrate a cluster, which was using an IP with a basic SKU, you must first create an entirely new IP resource using the standard SKU. It is not possible to update these resources in-place.
 
 The new LB and IP should be referenced in the new Stateless node types that you would like to use. In the example above, a new virtual machine scale set resources is added to be used for Stateless node types. These virtual machine scale sets reference the newly created LB and IP and are marked as stateless node types in the Service Fabric Cluster Resource.
 

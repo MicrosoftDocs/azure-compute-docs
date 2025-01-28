@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
-ms.date: 06/06/2024
+ms.date: 09/17/2024
 ms.author: mattmcinnes
 ---
 
@@ -52,6 +52,15 @@ ms.author: mattmcinnes
 [View the full NVads-A10 v5-series page](../../nva10v5-series.md).
 
 [!INCLUDE [nvads-a10-v5-series-specs](./includes/nvadsa10v5-series-specs.md)]
+
+
+### NVads-v710 v5-series
+[!INCLUDE [nvadsv710-v5-series-summary](./includes/nvadsv710-v5-summary.md)]    
+
+[View the full NVadsv710 v5-series page](./nvadsv710-v5-series.md).
+
+[!INCLUDE [nvadsv710-v5-series-specs](./includes/nvadsv710-v5-series-specs.md)]
+
 
 
 ### Previous-generation NV family series

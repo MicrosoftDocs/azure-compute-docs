@@ -8,7 +8,7 @@ ms.custom: devx-track-azurecli, linux-related-content
 author: guywi-ms
 ms.author: guywild
 ms.collection: linux
-ms.date: 08/29/2023
+ms.date: 01/14/2025
 ---
 # Azure Monitor Dependency virtual machine extension for Linux
 
@@ -135,14 +135,15 @@ When you place the extension JSON at the root of the template, the resource name
 You can use the Azure CLI to deploy the Dependency agent VM extension to an existing virtual machine.  
 
 ```azurecli
-
 az vm extension set \
     --resource-group myResourceGroup \
     --vm-name myVM \
     --name DependencyAgentLinux \
     --publisher Microsoft.Azure.Monitoring.DependencyAgent \
-    --version 9.5
+    --version 9.10 \
+    --settings '{"enableAMA": "true"}'
 ```
+
 
 ## Automatic extension upgrade
 A new feature to [automatically upgrade minor versions](../automatic-extension-upgrade.md) of Dependency extension is now available.

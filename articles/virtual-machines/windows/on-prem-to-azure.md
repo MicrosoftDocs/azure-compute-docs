@@ -43,7 +43,7 @@ Based on your needs, you can choose from four types of storage options. To learn
 
 This section helps you to make the best decision on VM and disk types.
 
-If you are planning on migrating from unmanaged disks to managed disks, you should be aware that users with the [Virtual Machine Contributor](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) role will not be able to change the VM size (as they could pre-conversion). This is because VMs with managed disks require the user to have the Microsoft.Compute/disks/write permission on the OS disks.
+If you are planning on migrating from unmanaged disks to managed disks, you should be aware that users with the [Virtual Machine Contributor](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) role will not be able to change the VM size (as they could pre-conversion).
 
 ### Location
 

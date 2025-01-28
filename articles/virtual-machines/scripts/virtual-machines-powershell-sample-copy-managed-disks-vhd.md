@@ -32,8 +32,8 @@ This script uses the following commands to generate SAS URI of a managed disk an
 | Command | Notes |
 |---|---|
 | [Grant-AzDiskAccess](/powershell/module/az.compute/grant-azdiskaccess) | Generates SAS URI for a managed disk that is used to copy the underlying VHD to a storage account. |
-| [New-AzureStorageContext](/powershell/module/azure.storage/new-azurestoragecontext) | Creates a storage account context using the account name and key. This context can be used to perform read/write operations on the storage account. |
-| [Start-AzureStorageBlobCopy](/powershell/module/azure.storage/start-azurestorageblobcopy) | Copies the underlying VHD of a snapshot to a storage account |
+| [New-AzStorageContext](/powershell/module/az.storage/new-azstoragecontext) | Creates a storage account context using the account name and key. This context can be used to perform read/write operations on the storage account. |
+| [Start-AzStorageBlobCopy](/powershell/module/az.storage/start-azstorageblobcopy) | Copies the underlying VHD of a snapshot to a storage account |
 
 ## Next steps
 

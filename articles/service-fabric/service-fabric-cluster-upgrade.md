@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 11/18/2024
 ---
 
 # Upgrading and updating Azure Service Fabric clusters
@@ -115,6 +115,13 @@ For each of the node types, you can add custom capacity metrics that you want to
 ### Customizing settings for your cluster
 
 Many different configuration settings can be customized on a cluster, such as the reliability level of the cluster and node properties. For more information, read [Service Fabric cluster fabric settings](service-fabric-cluster-fabric-settings.md).
+
+> [!NOTE]
+> For clusters using runtime versions before 10.0CU6, 10.1CU5, and 9.1CU12, if you modified or plan to modify any NTLM settings for the FileStoreService, expect some downtime while your cluster's nodes restart. This restart is tied to cleanup that occurs during the upgrade cycle.
+>
+> This behavior is changed as of 10.0CU6, 10.1CU5, and 9.1CU12, and no node restarts should occur on clusters running these versions or later.
+>
+> For more information on Service Fabric versioning, see the [versions page](service-fabric-versions.md).
 
 ### Upgrading OS images for cluster nodes
 

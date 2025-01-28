@@ -4,7 +4,7 @@ description: Learn about incremental snapshots for managed disks, including how 
 author: roygara
 ms.service: azure-disk-storage
 ms.topic: how-to
-ms.date: 11/17/2023
+ms.date: 12/09/2024
 ms.author: rogarana
 ms.custom: devx-track-azurepowershell, devx-track-azurecli, references_regions
 ms.devlang: azurecli

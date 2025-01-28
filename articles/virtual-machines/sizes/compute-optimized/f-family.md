@@ -29,11 +29,11 @@ ms.author: mattmcinnes
 [!INCLUDE [fsv2-series-specs](./includes/fsv2-series-specs.md)]
 
 
-### Fasv6 and Falsv6-series
+### Fasv6, Falsv6, and Famsv6-series
 #### [Fasv6-series](#tab/fasv6)
 [!INCLUDE [fasv6-series-summary](./includes/fasv6-series-summary.md)]
 
-[View the full Fasv6 and Falsv6-series page](./fasv6-series.md).
+[View the full Fasv6-series page](./fasv6-series.md).
 
 [!INCLUDE [fasv6-series-specs](./includes/fasv6-series-specs.md)]
 
@@ -44,7 +44,15 @@ ms.author: mattmcinnes
 
 [!INCLUDE [falsv6-series-specs](./includes/falsv6-series-specs.md)]
 
+#### [Famsv6-series](#tab/famsv6)
+[!INCLUDE [famsv6-series-summary](./includes/famsv6-series-summary.md)]
+
+[View the full Famsv6-series page](./famsv6-series.md).
+
+[!INCLUDE [famsv6-series-specs](./includes/famsv6-series-specs.md)]
+
 ---
+
 ### Previous-generation F family series
 For older sizes, see [previous generation sizes](../previous-gen-sizes-list.md#compute-optimized-previous-gen-sizes).
 

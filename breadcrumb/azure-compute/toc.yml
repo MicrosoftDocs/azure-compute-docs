@@ -46,3 +46,6 @@ items:
   - name: Virtual Machine Scale Sets
     tocHref: /azure/virtual-machine-scale-sets/
     topicHref: /azure/virtual-machine-scale-sets/
+  - name: Azure Impact Reporting
+    tocHref: /azure/azure-impact-reporting/
+    topicHref: /azure/azure-impact-reporting/

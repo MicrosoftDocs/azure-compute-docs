@@ -49,15 +49,11 @@ For long-running, stable workloads, orchestrating containers in a cluster of ded
 
 Rather than scaling out the number of virtual machines in your cluster, then deploying more containers onto those machines, the orchestrator can schedule the additional containers in Azure Container Instances, and delete them when they're no longer needed.
 
-## Sample implementation: virtual nodes for Azure Kubernetes Service (AKS)
+## Sample implementation: virtual nodes on Azure Container Instances
 
-To rapidly scale application workloads in an [Azure Kubernetes Service (AKS)](/azure/aks/intro-kubernetes) cluster, you can use *virtual nodes* created dynamically in Azure Container Instances. Virtual nodes enable network communication between pods that run in ACI and the AKS cluster. 
+To rapidly scale application workloads in an [Azure Kubernetes Service (AKS)](/azure/aks/intro-kubernetes) cluster, you can use *virtual nodes* created dynamically in Azure Container Instances. Virtual nodes register as nodes having unlimited capacity with your AKS cluster control plane. When you deploy pods in a virtual node in your AKS cluster, they run as container groups in ACI.
 
-Virtual nodes currently support Linux container instances. Get started with virtual nodes using the [Azure CLI](/azure/aks/virtual-nodes-cli) or [Azure portal](/azure/aks/virtual-nodes-portal).
-
-Virtual nodes use the open source [Virtual Kubelet][aci-connector-k8s] to mimic the Kubernetes [kubelet][kubelet-doc] by registering as a node with unlimited capacity. The Virtual Kubelet dispatches the creation of [pods][pod-doc] as container groups in Azure Container Instances.
-
-See the [Virtual Kubelet](https://github.com/virtual-kubelet/virtual-kubelet) project for additional examples of extending the Kubernetes API into serverless container platforms.
+Virtual nodes currently support Linux container instances. See [Virtual nodes on Azure Container Instances](./container-instances-virtual-nodes.md) to learn more.
 
 ## Next steps
 

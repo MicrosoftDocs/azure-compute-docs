@@ -247,9 +247,7 @@ az vm open-port \
 ```
 
 ### Test secure web app
-Now you can open a web browser and enter *https:\/\/\<publicIpAddress>* in the address bar. Provide your own public IP address as shown in the output of the previous VM create process. Accept the security warning if you used a self-signed certificate:
-
-![Accept web browser security warning](./media/tutorial-automate-vm-deployment/browser-warning.png)
+Now you can open a web browser and enter *https:\/\/\<publicIpAddress>* in the address bar. Provide your own public IP address as shown in the output of the previous VM create process. Accept the security warning if you used a self-signed certificate.
 
 Your secured NGINX site and Node.js app is then displayed as in the following example:
 

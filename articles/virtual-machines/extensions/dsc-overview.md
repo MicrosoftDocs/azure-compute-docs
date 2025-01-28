@@ -19,30 +19,19 @@ ms.devlang: azurecli
 # Introduction to the Azure Desired State Configuration extension handler
 
 > [!NOTE]
-> Before you enable DSC Extension, we would like you to know that a newer version of DSC is now generally available, managed by a feature of Azure Policy named [Azure Machine Configuration](/azure/governance/machine-configuration/overview). The Azure Machine Configuration service combines features of DSC Extension, Azure Automation State Configuration, and the most commonly requested features from customer feedback. Azure Machine Configuration also includes hybrid machine support through [Arc-enabled servers](/azure/azure-arc/servers/overview).
+> Before you enable DSC Extension, we would like you to know that a newer version of DSC is now generally available, named [Azure Machine Configuration](/azure/governance/machine-configuration/overview). The Azure Machine Configuration service includes features from DSC Extension and commonly requested features from customer feedback. Azure Machine Configuration also includes hybrid machine support through [Arc-enabled servers](/azure/azure-arc/servers/overview).
 
 The Azure VM Extension for Azure virtual machines (VM) and the associated extensions are part of Microsoft Azure infrastructure services. Azure VM extensions are software components that extend VM functionality and simplify various VM management operations.
 
-The primary use for the Azure Desired State Configuration (DSC) extension for Windows PowerShell is to bootstrap a VM to the
-[Azure Automation State Configuration (DSC) service](/azure/automation/automation-dsc-overview). This service provides [benefits](/powershell/dsc/managing-nodes/metaConfig#pull-service) that include ongoing management of the VM configuration and integration with other operational tools, such as Azure Monitor. You can use the extension to register your VMs to the service and gain a flexible solution that works across Azure subscriptions.
-
-You can run the DSC extension independently of the Automation DSC service, but this method only pushes a configuration to the VM. No ongoing reporting is available, other than locally in the VM. Before you enable the DSC extension, [review the available DSC versions](#available-dsc-versions), and choose the version that supports your configuration requirements.
-
-This article describes how to use the DSC extension for Automation onboarding, or use it as a tool to assign configurations to VMs with the Azure SDK.
+The DSC extension only pushes a configuration to the VM. No ongoing reporting is available, other than locally in the VM.
 
 ## Available DSC versions
 
-Several versions of Desired State Configuration are available for implementation. Before you enable the DSC extension, choose the DSC version that best supports your configuration and business goals.
-
-| Version | Availability | Description |
-| --- | --- | --- |
-| **2.0** | General availability | [Desired State Configuration 2.0](/powershell/dsc/overview?view=dsc-2.0&preserve-view=true) is supported for use with the Azure Automanage [Machine Configuration](/azure/governance/machine-configuration/overview) feature. The machine configuration feature combines features of the DSC extension handler, Azure Automation State Configuration, and the most commonly requested features from customer feedback. Machine configuration also includes hybrid machine support through [Arc-enabled servers](/azure/azure-arc/servers/overview). |
-| **1.1** | General availability | If your implementation doesn't use the Azure Automanage machine configuration feature, you should choose Desired State Configuration 1.1. For more information, see [PSDesiredStateConfiguration v1.1](/powershell/dsc/overview?view=dsc-1.1&preserve-view=true). |
-| **3.0** | Public preview | [Desired State Configuration 3.0 is available in public beta](/powershell/dsc/overview?view=dsc-3.0&preserve-view=true). This version should be used only with Azure machine configuration, or for nonproduction environments to test migrating away from Desired State Configuration 1.1. |
+The DSC extension supports configurations from version 1.1 of the DSC platform. For more information, see [PSDesiredStateConfiguration v1.1](/powershell/dsc/overview?view=dsc-1.1&preserve-view=true).
 
 ## Prerequisites
 
-- **Local machine**: To interact with the Azure DSC extension, you must use either the Azure portal or the Azure PowerShell SDK on the local machine.
+- **Developer workstation**: To interact with the Azure DSC extension, you must use either the Azure portal or the Azure PowerShell/CLI SDK.
 
 - **Guest agent**: The Azure VM that's prepared by the DSC configuration must use an operating system that supports Windows Management Framework (WMF) 4.0 or later. For the full list of supported operating system versions, see the [Azure DSC extension version history](/azure/automation/automation-dsc-extension-history).
 
@@ -58,7 +47,7 @@ This article assumes familiarity with the following concepts:
 
 ## Architecture
 
-The Azure DSC extension uses the Azure VM Extension framework to deliver, enact, and report on DSC configurations running on Azure VMs. The DSC extension accepts a configuration document and a set of parameters. If no file is provided, a [default configuration script](#default-configuration-script) is embedded with the extension. The default configuration script is used only to set metadata in [Local Configuration Manager](/powershell/dsc/managing-nodes/metaConfig).
+The Azure DSC extension uses the Azure VM Extension framework to deliver, enact, and report on DSC configurations running on Azure VMs. The DSC extension accepts a configuration document and a set of parameters.
 
 When the extension is called the first time, it installs a version of WMF by using the following logic:
 
@@ -70,33 +59,11 @@ When the extension is called the first time, it installs a version of WMF by usi
 
 The WMF installation process requires a restart. After you restart, the extension downloads the .zip file that's specified in the `modulesUrl` property, if provided. If this location is in Azure Blob Storage, you can specify an SAS token in the `sasToken` property to access the file. After the .zip downloads and unpacks, the configuration function defined in `configurationFunction` runs to generate a [Managed Object Format (MOF)](/windows/win32/wmisdk/managed-object-format--mof-) file (.mof). The extension then runs the `Start-DscConfiguration -Force` command by using the generated .mof file. The extension captures output and writes it to the Azure status channel.
 
-### Default configuration script
-
-The Azure DSC extension includes a default configuration script that's intended to be used when you onboard a VM to the Azure Automation State Configuration service. The script parameters are aligned with the configurable properties of [Local Configuration Manager](/powershell/dsc/managing-nodes/metaConfig). For script parameters, see [Default configuration script](dsc-template.md#default-configuration-script) in [Desired State Configuration extension with Azure Resource Manager (ARM) templates](dsc-template.md). For the full script, see the [Azure Quickstart Template in GitHub](https://github.com/Azure/azure-quickstart-templates/blob/master/demos/azmgmt-demo/nestedtemplates/scripts/UpdateLCMforAAPull.zip).
-
-## Azure Automation State Configuration registration
-
-When you use the Azure DSC extension to register a node with the Azure Automation State Configuration service, you provide the following values:
-
-- `RegistrationUrl`: The https address of the Azure Automation account.
-- `RegistrationKey`: A shared secret that's used to register nodes with the service.
-- `NodeConfigurationName`: The name of the node configuration (MOF) to pull from the service to configure the server role. The value is the name of the node configuration and not the name of the Configuration. 
-
-You can gather these values from the Azure portal, or run the following commands in Windows PowerShell:
-
-```powershell
-(Get-AzAutomationRegistrationInfo -ResourceGroupName <resourcegroupname> -AutomationAccountName <accountname>).Endpoint
-(Get-AzAutomationRegistrationInfo -ResourceGroupName <resourcegroupname> -AutomationAccountName <accountname>).PrimaryKey
-```
-
 ### Node configuration name
 
 For the `NodeConfigurationName` parameter, be sure to provide the name of the node configuration and not the Configuration.
 
-The Configuration is defined in a script that's used [to compile the node configuration (MOF file)](/azure/automation/automation-dsc-compile). The name of the node configuration is always the name of the Configuration followed by a period `.` and either `localhost` or a specific computer name.
-
-> [!WARNING]
-> Make sure the node configuration exists in Azure Automation State Configuration. If this value doesn't exist, the extension deployment returns a failure.
+The Configuration is defined in a script that's used to compile the node configuration (MOF file). The name of the node configuration is always the name of the Configuration followed by a period `.` and either `localhost` or a specific computer name.
 
 ## ARM template deployment
 
@@ -104,7 +71,7 @@ The most common approach for deploying the DSC extension is to use Azure Resourc
 
 ## PowerShell cmdlet deployment
 
-PowerShell cmdlets for managing the DSC extension are ideal for interactive troubleshooting and information-gathering scenarios. You can use the cmdlets to package, publish, and monitor DSC extension deployments. Cmdlets for the DSC extension aren't currently updated to work with the [default configuration script](#default-configuration-script).
+PowerShell cmdlets for managing the DSC extension are ideal for interactive troubleshooting and information-gathering scenarios. You can use the cmdlets to package, publish, and monitor DSC extension deployments.
 
 Here are some of the PowerShell cmdlets that are available:
 
@@ -134,7 +101,7 @@ There are several considerations to keep in mind when working with Azure Resourc
 
 ### Configuration with PowerShell cmdlets
 
-The Azure DSC extension can use DSC configuration documents to directly configure Azure VMs during deployment. This step doesn't register the node to Automation. Keep in mind that the node isn't centrally managed.
+The Azure DSC extension can use DSC configuration documents to directly configure Azure VMs during deployment. This step doesn't register the node to Automation or Machine Configuration. Keep in mind that the node isn't centrally managed.
 
 The following code shows a simple example configuration. To work with this example, save this configuration locally as the **iisInstall.ps1** script file.
 
@@ -194,9 +161,6 @@ To set up the DSC extension in the Azure portal, follow these steps:
 
 1. Configure the following parameters for the DSC extension.
 
-   > [!Note]
-   > If you're working with a [default configuration script](#default-configuration-script), keep in mind that most of the following parameters must be defined directly in the Azure portal rather than through the script.
-
    - **Configuration Modules or Script**: (Required) Provide the Configuration modules or script file for your VM.
    
       Configuration modules and scripts require a .ps1 file that has a configuration script or a .zip file with a .ps1 configuration script at the root. If you use a .zip file, all dependent resources must be included in module folders in the .zip file. You can create the .zip file by using the **Publish-AzureVMDscConfiguration -OutputArchivePath** cmdlet that's included in the Azure PowerShell SDK. The .zip file is uploaded to your user Blob Storage and secured by an SAS token.
@@ -204,9 +168,6 @@ To set up the DSC extension in the Azure portal, follow these steps:
    - **Module-qualified Name of Configuration**: (Required) Specify this setting to include multiple configuration functions in a single .ps1 script file. For this setting, enter the name of the configuration .ps1 script file followed by a slash `\` and then the name of the configuration function. For example, if the .ps1 script file has the name **configuration.ps1** and the configuration name is **IisInstall**, enter the value `configuration.ps1\IisInstall` for the setting.
 
    - **Configuration Arguments**: If the configuration function takes arguments, enter the values by using the format `argumentName1=value1,argumentName2=value2`. Notice that this format differs from the format that's used to specify configuration arguments in PowerShell cmdlets or ARM templates.
-
-      > [!Note]
-      > The configuration arguments can be defined in a [default configuration script](#default-configuration-script).
 
    - **Configuration Data PSD1 File**: If your configuration requires a configuration data file in .psd1 format, use this setting to select the data file and upload it to your user Blob Storage. The configuration data file is secured with an SAS token in Blob Storage.
 

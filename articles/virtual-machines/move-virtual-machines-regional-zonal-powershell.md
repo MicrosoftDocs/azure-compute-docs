@@ -5,15 +5,15 @@ author: ankitaduttaMSFT
 ms.service: azure-virtual-machines
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.topic: tutorial
-ms.date: 06/10/2024
+ms.date: 01/15/2025
 ms.author: ankitadutta
 ---
 
-# Move a virtual machine in an availability zone using Azure PowerShell and CLI 
+# Move a virtual machine from Regional to Zonal availability zone using Azure PowerShell and CLI 
 
-This article details using Azure PowerShell and CLI cmdlets to move Azure single instance VMs from regional to zonal availability zones. An [availability zone](/azure/availability-zones/az-overview) is a physically separate zone in an Azure region. Use availability zones to protect your apps and data from an unlikely failure or loss of an entire data center.
+This article details using Azure PowerShell and CLI cmdlets to move Azure single instance VMs from regional to zonal availability zones. An [availability zone](/azure/reliability/availability-zones-overview) is a physically separate zone in an Azure region. Use availability zones to protect your apps and data from an unlikely failure or loss of an entire data center.
 
-To use an availability zone, create your virtual machine in a [supported Azure region](/azure/availability-zones/az-region).
+To use an availability zone, create your virtual machine in a [supported Azure region](/azure/reliability/availability-zones-region-support).
 
 
 ## Prerequisites
@@ -30,6 +30,10 @@ Verify the following requirements before you start the move process:
 ### Review PowerShell and CLI requirements
 
 Most move resources operations are the same whether using the Azure portal or PowerShell or CLI, with a couple of exceptions.
+
+> [!NOTE]
+> For more information on the commands and their syntaxes, refer to [this page](https://learn.microsoft.com/powershell/module/az.resourcemover/?view=azps-13.0.0#resource-mover).
+
 
 | Operation | Portal | PowerShell/CLI |
 | --- | --- | --- |
@@ -54,6 +58,12 @@ We use these values in our script examples:
 ## Sign in to Azure
 
 Sign in to your Azure subscription with the `Connect-AzAccount` command and follow the on-screen directions.
+
+**Set subscription ID**:
+
+```Set-AzContext -SubscriptionId " <subscription-id> "```
+
+**Connect to subscription ID**:
 
 ```powershell-interactive
 Connect-AzAccount –Subscription "<subscription-id>"
@@ -216,7 +226,7 @@ Grant the managed identity access to the Resource Mover subscription as follows.
 
 
     ```azurepowershell-interactive
-    New-AzRoleAssignment -ObjectId $identityPrincipalId -RoleDefinitionName Contributor -Scope "/subscriptions/<subscription-id>""
+    New-AzRoleAssignment -ObjectId $identityPrincipalId -RoleDefinitionName Contributor -Scope "/subscriptions/<subscription-id>"
     New-AzRoleAssignment -ObjectId $identityPrincipalId -RoleDefinitionName "User Access Administrator" -Scope "/subscriptions/<subscription-id>"
     ```
 
@@ -456,8 +466,10 @@ Check whether the regional VMs you added have any dependencies on other resource
     # [PowerShell](#tab/PowerShell)
 
     ```azurepowershell-interactive
-    $list = Get-AzResourceMoverMoveResource -ResourceGroupName "RegionToZone-DemoMCRG" -MoveCollectionName "RegionToZone-DemoMC" $list.Name
+    $list = Get-AzResourceMoverMoveResource -ResourceGroupName "RegionToZone-DemoMCRG" -MoveCollectionName "RegionToZone-DemoMC" 
     ```
+    
+    ```$list.Name```
 
     **Output:**
 
@@ -554,7 +566,7 @@ Selected virtual machine can't be moved to availability zone due to insufficient
 # [PowerShell](#tab/PowerShell)
 
 ```azurepowershell
-Invoke-AzResourceMoverInitiateMove -ResourceGroupName "RegionToZone-DemoMCRG" -MoveCollectionName "RegionToZone-DemoMC" -MoveResource $("demoVM-MoveResource") -MoveResourceInputType "MoveResourceId"
+Invoke-AzResourceMoverInitiateMove -ResourceGroupName "RegionToZone-DemoMCRG" -MoveCollectionName "RegionToZone-DemoMC" -MoveResource $("demoVM-MoveResource") <remove-MoveResourceInputType "MoveResourceId"> 
 ```
 
 **Output**
@@ -603,7 +615,7 @@ After the initial move, you must commit the move or discard it. **Commit** compl
   # [PowerShell](#tab/PowerShell)
 
   ```
-  Invoke-AzResourceMover-VMZonalMoveCommit -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS" -MoveResource $('psdemovm111', 'PSDemoRM-vnet','PSDemoVM-nsg', ‘PSDemoVM’) -MoveResourceInputType "MoveResourceId"
+  Invoke-AzResourceMoverCommit "RegionToZone-DemoMCRG" -MoveCollectionName "RegionToZone-DemoMC" -MoveResource $("demoVM-MoveResource")
   ```
 
   **Output**:

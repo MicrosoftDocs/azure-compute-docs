@@ -57,14 +57,14 @@ Remote (uncached) storage info for each size
 
 | Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD Disk IOPS | Uncached Premium SSD Throughput (MB/s) |
 | --- | --- | --- | --- |
-| Standard_DC2as_v5 | 4 | 3750 | 82 |
-| Standard_DC4as_v5 | 8 | 6400 | 144 |
-| Standard_DC8as_v5 | 16 | 12800 | 200 |
+| Standard_DC2as_v5 | 4 | 3750 | 48 |
+| Standard_DC4as_v5 | 8 | 6400 | 96 |
+| Standard_DC8as_v5 | 16 | 12800 | 192 |
 | Standard_DC16as_v5 | 32 | 25600 | 384 |
 | Standard_DC32as_v5 | 32 | 51200 | 768 |
 | Standard_DC48as_v5 | 32 | 76800 | 1152 |
 | Standard_DC64as_v5 | 32 | 80000 | 1200 |
-| Standard_DC96as_v5 | 32 | 80000 | 1600 |
+| Standard_DC96as_v5 | 32 | 80000 | 1200 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)

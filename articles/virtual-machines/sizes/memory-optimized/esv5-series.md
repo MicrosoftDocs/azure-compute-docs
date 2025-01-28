@@ -36,7 +36,7 @@ vCPUs (Qty.) and Memory for each size
 | Standard_E32s_v5 | 32 | 256 |
 | Standard_E48s_v5 | 48 | 384 |
 | Standard_E64s_v5 | 64 | 512 |
-| Standard_E96s_v53 | 96 | 672 |
+| Standard_E96s_v5 | 96 | 672 |
 | Standard_E104is_v5 | 104 | 672 |
 
 #### VM Basics resources
@@ -98,7 +98,7 @@ Network interface info for each size
 | Standard_E32s_v5 | 8 | 16000 |
 | Standard_E48s_v5 | 8 | 24000 |
 | Standard_E64s_v5 | 8 | 30000 |
-| Standard_E96s_v53 | 8 | 35000 |
+| Standard_E96s_v5 | 8 | 35000 |
 | Standard_E104is_v5 | 8 | 100000 |
 
 #### Networking resources

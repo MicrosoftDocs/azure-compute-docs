@@ -75,8 +75,8 @@ Output is similar to:
 {
   "clientId": "xxxx6ddc-xxxx-xxxx-xxx-ef78a99dxxxx",
   "clientSecret": "xxxx79dc-xxxx-xxxx-xxxx-aaaaaec5xxxx",
-  "subscriptionId": "xxxx251c-xxxx-xxxx-xxxx-bf99a306xxxx",
-  "tenantId": "xxxx88bf-xxxx-xxxx-xxxx-2d7cd011xxxx",
+  "subscriptionId": "aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e",
+  "tenantId": "aaaabbbb-0000-cccc-1111-dddd2222eeee",
   "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
   "resourceManagerEndpointUrl": "https://management.azure.com/",
   "activeDirectoryGraphResourceId": "https://graph.windows.net/",

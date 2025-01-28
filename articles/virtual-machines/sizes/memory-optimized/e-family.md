@@ -52,7 +52,7 @@ ms.author: mattmcinnes
 
 [!INCLUDE [eadsv6-series-specs](./includes/eadsv6-series-specs.md)]
 
---
+---
 ### Ev5 and Esv5-series
 #### [Ev5-series](#tab/ev5)
 [!INCLUDE [ev5-series-summary](./includes/ev5-series-summary.md)]

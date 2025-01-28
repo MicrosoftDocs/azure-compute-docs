@@ -37,11 +37,11 @@ When you share a disk, your billing could be impacted in two different ways, dep
 
 For shared premium SSD disks, in addition to cost of the disk's tier, there's an extra charge that increases with each VM the SSD is mounted to. See [managed disks pricing](https://azure.microsoft.com/pricing/details/managed-disks/) for details.
 
-Ultra disks don't have an extra charge for each VM that they're mounted to. They're billed on the total IOPS and MB/s that the disk is configured for. Normally, an ultra disk has two performance throttles that determine its total IOPS/MB/s. However, when configured as a shared ultra disk, two more performance throttles are exposed, for a total of four. These two additional throttles allow for increased performance at an extra expense and each meter has a default value, which raises the performance and cost of the disk.
+Both shared ultra disks and shared premium SSD v2 disks don't have an extra charge for each VM that they're mounted to. They're billed on the total IOPS and MB/s that the disk is configured for. Normally, ultra disks and premium SSD v2 has two performance throttles that determine its total IOPS/MB/s. However, when configured as a shared disk, two more performance throttles are exposed, for a total of four. These two additional throttles allow for increased performance at an extra expense and each meter has a default value, which raises the performance and cost of the disk.
 
-The four performance throttles a shared ultra disk has are diskIOPSReadWrite, diskMB/sReadWrite, diskIOPSReadOnly, and diskMB/sReadOnly. Each performance throttle can be configured to change the performance of your disk. The performance for shared ultra disk is calculated in the following ways: total provisioned IOPS (diskIOPSReadWrite + diskIOPSReadOnly) and for total provisioned throughput MB/s (diskMB/sReadWrite + diskMB/sReadOnly).
+The four performance throttles a shared ultra disk and shared premium SSD v2 disk have are diskIOPSReadWrite, diskMB/sReadWrite, diskIOPSReadOnly, and diskMB/sReadOnly. Each performance throttle can be configured to change the performance of your disk. The performance for shared ultra disk premium SSD v2 disk are calculated in the following ways: total provisioned IOPS (diskIOPSReadWrite + diskIOPSReadOnly) and for total provisioned throughput MB/s (diskMB/sReadWrite + diskMB/sReadOnly).
 
-Once you've determined your total provisioned IOPS and total provisioned throughput, you can use them in the [pricing calculator](https://azure.microsoft.com/pricing/calculator/?service=managed-disks) to determine the cost of an ultra shared disk.
+Once you've determined your total provisioned IOPS and total provisioned throughput, you can use them in the [pricing calculator](https://azure.microsoft.com/pricing/calculator/?service=managed-disks) to determine the cost of an ultra shared disk and a premium SSD v2 shared disk.
 
 ## Disk sizes
 
@@ -166,7 +166,7 @@ The following is an example of a 4-node Linux cluster with a single writer and t
 
 ##### Shared Ultra Disk and Premium SSD v2 pricing
 
-Both shared Ultra Disks and shared Premium SSD v2 managed disks are priced based on provisioned capacity, total provisioned IOPS (diskIOPSReadWrite + diskIOPSReadOnly) and total provisioned Throughput MB/s (diskMB/sReadWrite + diskMB/sReadOnly). There's no extra charge for each additional VM mount. For example, a shared Ultra Disk with the following configuration (diskSizeGB: 1024, DiskIOPSReadWrite: 10000, DiskMB/sReadWrite: 600, DiskIOPSReadOnly: 100, DiskMB/sReadOnly: 1) is charged with 1024 GiB, 10100 IOPS, and 601 MB/s regardless of whether it is mounted to two VMs or five VMs.
+Both shared Ultra Disks and shared Premium SSD v2 managed disks are priced based on provisioned capacity, total provisioned IOPS (diskIOPSReadWrite + diskIOPSReadOnly) and total provisioned Throughput MB/s (diskMB/sReadWrite + diskMB/sReadOnly). There's no extra charge for each additional VM mount. For example, a shared Ultra Disk with the following configuration (diskSizeGB: 1024, DiskIOPSReadWrite: 10000, DiskMB/sReadWrite: 600, DiskIOPSReadOnly: 100, DiskMB/sReadOnly: 1) is charged with 1024 GiB, 10100 IOPS, and 601 MB/s regardless of whether it's mounted to two VMs or five VMs.
 
 ## Next steps
 

@@ -5,7 +5,7 @@ author: roygara
 ms.service: azure-disk-storage
 ms.topic: sample
 ms.custom: devx-track-azurepowershell
-ms.date: 07/01/2024
+ms.date: 12/19/2024
 ms.author: rogarana
 ---
 
@@ -79,10 +79,10 @@ Set-AzContext -Subscription $subscriptionId
 #$HyperVGeneration = 'yourHyperVGen'
 
 #If you're creating an OS disk, add -HyperVGeneration and -OSType parameters
-$diskConfig = New-AzDiskConfig -SkuName $sku -Location $location -DiskSizeGB $diskSize -SourceUri $vhdUri -CreateOption Import
+$diskConfig = New-AzDiskConfig -SkuName $sku -Location $location -DiskSizeGB $diskSize -StorageAccountId $storageAccountId -SourceUri $vhdUri -CreateOption Import
 
 #Create Managed disk
-New-AzDisk -DiskName $diskName -Disk $diskConfig -ResourceGroupName $resourceGroupName -StorageAccountId $storageAccountId
+New-AzDisk -DiskName $diskName -Disk $diskConfig -ResourceGroupName $resourceGroupName
 ```
 
 ## Script explanation

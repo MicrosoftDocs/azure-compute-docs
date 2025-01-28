@@ -2,8 +2,8 @@
 title: Use Azure DDoS Protection in a Service Fabric managed cluster
 description: This article describes how to use Azure DDoS Protection in a Service Fabric managed cluster.
 ms.topic: how-to
-ms.author: ankurjain
-author: ankurjain
+ms.author: tomcassidy
+author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-azurepowershell
 services: service-fabric

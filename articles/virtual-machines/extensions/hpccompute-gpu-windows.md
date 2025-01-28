@@ -211,6 +211,34 @@ The following table lists common error codes for deployment and potential follow
 | -1 | Exception occurred. | Check log files to determine cause of exception. |
 | -5x | Operation interrupted due to pending reboot. | Reboot the VM. Installation continues after reboot. <br> Uninstall should be invoked manually. |
 
+### Known issues
+GRID Driver version `17.x` is incompatible on NVv3 (NVIDIA Tesla M60). GRID drivers up to version `16.5` are supported. `NvidiaGpuDriverWindows` installs the latest drivers which are incompatible on NVv3 SKU. Instead, use the following runtime settings to force the extension to install an older version of the driver. For more information on driver versions, see [NVIDIA GPU resources](https://raw.githubusercontent.com/Azure/azhpc-extensions/master/NvidiaGPU/resources.json).
+   
+```azurecli
+az vm extension set  --resource-group <rg-name> --vm-name <vm-name>  --name NvidiaGpuDriverWindows --publisher Microsoft.HpcCompute --settings "{'driverVersion':'538.46'}"
+```
+
+```ARM templates
+{
+  "name": "NvidiaGpuDriverWindows",
+  "type": "extensions",
+  "apiVersion": "2015-06-15",
+  "location": "<location>",
+  "dependsOn": [
+    "[concat('Microsoft.Compute/virtualMachines/', <myVM>)]"
+  ],
+  "properties": {
+    "publisher": "Microsoft.HpcCompute",
+    "type": "NvidiaGpuDriverWindows",
+    "typeHandlerVersion": "1.9",
+    "autoUpgradeMinorVersion": true,
+    "settings": {
+         "driverVersion": "538.46"
+    }
+  }
+}
+```
+
 ### Get support
 
 Here are some other options to help you resolve deployment issues:

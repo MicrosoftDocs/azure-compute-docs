@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 11/14/2024
 ---
 
 # Remote connect to a virtual machine scale set instance or a cluster node
@@ -19,8 +19,6 @@ To find an IP address and port that you can use to remotely connect to a specifi
     Typically, each node type defined in your cluster has its own virtual IP address and a dedicated load balancer. By default, the load balancer for a node type is named with the following format: *LB-{cluster-name}-{node-type}*; for example, *LB-mycluster-FrontEnd*. 
     
     On the page for your load balancer in Azure portal, select **Settings** > **Inbound NAT rules**: 
-
-    ![Screenshot of a load balancer page in the Azure portal. In the left-hand menu, under SETTINGS, Inbound NAT rules is selected.](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/lb-window.png)
 
     The following screenshot shows the inbound NAT rules for a node type named FrontEnd: 
 

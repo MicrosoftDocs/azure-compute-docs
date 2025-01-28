@@ -4,7 +4,7 @@ description: include file
 author: roygara
 ms.service: azure-disk-storage
 ms.topic: include
-ms.date: 08/15/2024
+ms.date: 12/23/2024
 ms.author: rogarana
 ms.custom: include file
 ---
@@ -14,9 +14,8 @@ The following list contains Ultra Disk's limitations:
 - Ultra Disks can't be used with Azure Compute Gallery.
 - Currently, Ultra Disks only support Single VM and Availability zone infrastructure options.
 - Ultra Disks don't support availability sets.
-- The size of an Ultra Disk can't be expanded without either deallocating the VM or detaching the Ultra Disk.
 - Existing disks currently can't change their type to an Ultra Disk. They must be [migrated](/azure/virtual-machines/disks-convert-types?tabs=azure-powershell#migrate-to-premium-ssd-v2-or-ultra-disk-using-snapshots).
-- Currently, Azure Government and Azure China don't support [customer-managed keys](/azure/virtual-machines/disk-encryption#customer-managed-keys) for Ultra disks.
+- Encrypting Ultra Disks with customer-managed keys using Azure Key Vaults stored in a different Microsoft Entra ID tenant isn't currently supported.
 - Azure Disk Encryption isn't supported for VMs with Ultra Disks. Instead, you should use encryption at rest with platform-managed or customer-managed keys.
 - Azure Site Recovery isn't supported for VMs with Ultra Disks.
 - Ultra Disks don't support disk caching.
@@ -32,10 +31,10 @@ The following table outlines the regions Ultra Disks are available in, and their
 
 | Redundancy options | Regions |
 |--------------------|---------|
-| **Single VMs** | Australia Central<br/>Brazil South<br/>Brazil Southeast<br/>Canada East<br/>Central India<br/>East Asia<br/>Germany West Central<br/>Korea Central<br/>Korea South<br/>UK West <br/>North Central US, South Central US, West US<br/>US Gov Arizona, US Gov Texas, US Gov Virginia |
-| **One availability zone** | UAE North |
-| **Two availability zones** |  France Central <br/> Qatar Central <br/> South Africa North |
-| **Three availability zones** | Australia East<br/>Canada Central<br/>China North 3 <br/>North Europe, West Europe<br/>Italy North<br/>Japan East<br/>Poland Central <br/>Southeast Asia<br/>Sweden Central<br/>Switzerland North<br/>UK South<br/>Central US, East US, East US 2, West US 2, West US 3 |
+| **Regional** | Australia Central<br/>Brazil Southeast<br/>Canada East<br/>Korea South<br/>UK West <br/>North Central US, West US<br/>US Gov Arizona, US Gov Texas |
+| **One availability zone** | Brazil South<br/>Central India<br/>East Asia<br/>Germany West Central<br/>Korea Central<br/>South Central US<br/>US Gov Virginia |
+| **Two availability zones** |  Qatar Central |
+| **Three availability zones** | Australia East<br/>Canada Central<br/>China North 3<br/>North Europe, West Europe<br/>France Central</br>Italy North<br/>Japan East<br/>Poland Central<br/>South Africa North</br>Southeast Asia<br/>Sweden Central<br/>Switzerland North<br/>UAE North</br>UK South<br/>Central US, East US, East US 2, West US 2, West US 3 |
 
 Not every VM size is available in every supported region with Ultra Disks. The following table lists VM series that are compatible with Ultra Disks.
 

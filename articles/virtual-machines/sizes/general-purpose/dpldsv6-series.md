@@ -58,7 +58,7 @@ vCPUs (Qty.) and Memory for each size
 
 Local (temp) storage info for each size
 
-| Size Name | Max Temp Storage (Qty.) | Temp Storage Size (GiB) | Temp ReadWrite Storage IOPS | Temp ReadWrite Storage Speed (MBps) | Temp ReadOnly Storage IOPS | Temp ReadOnly Storage Speed (MBps) |
+| Size Name | Max Temp Storage (Qty.) | Temp Storage Size (GiB) | Temp ReadWrite Disk IOPS | Temp ReadWrite Disk Speed (MBps) | Temp ReadOnly Disk IOPS | Temp ReadOnly Disk Speed (MBps) |
 | --- | --- | --- | --- | --- | --- | --- |
 | Standard_D2plds_v6 | 1 | 110 | 15000 | 90 | 37500 | 180 |
 | Standard_D4plds_v6 | 1 | 220 | 30000 | 180 | 75000 | 360 |
@@ -84,7 +84,7 @@ Local (temp) storage info for each size
 
 Remote (uncached) storage info for each size
 
-| Size Name | Max Remote Storage (Qty.) | Uncached Storage IOPS | Uncached Storage Speed (MBps) | Uncached Storage Burst<sup>1</sup> IOPS | Uncached Storage Burst<sup>1</sup> Speed (MBps) | Uncached Special<sup>2</sup> Storage IOPS | Uncached Special<sup>2</sup> Storage Speed (MBps) | Uncached Burst<sup>1</sup> Special<sup>2</sup> Storage IOPS | Uncached Burst<sup>1</sup> Special Storage Speed (MBps) |
+| Size Name | Max Remote Storage (Qty.) | Uncached Premium SSD Disk IOPS | Uncached Premium SSD Throughput (MB/s) | Uncached Premium SSD Burst<sup>1</sup> IOPS | Uncached Premium SSD Burst<sup>1</sup> Throughput (MB/s) | Uncached Ultra Disk and Premium SSD v2 IOPS | Uncached Ultra Disk and Premium SSD v2 Throughput (MB/s) | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 IOPS | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 Disk Throughput (MB/s) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_D2plds_v6 | 8 | 3750 | 106 | 10000 | 1250 | 4163 | 124 | 11100 | 1463 |
 | Standard_D4plds_v6 | 12 | 6400 | 212 | 20000 | 1250 | 8333 | 248 | 26040 | 1463 |
@@ -145,5 +145,6 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 ---
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]
+
 
 

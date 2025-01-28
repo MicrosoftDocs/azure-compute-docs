@@ -240,7 +240,7 @@ nvme-conversion-vm:/usr/lib/udev/rules.d #
 
 ##### 4.2.1 Manual download of udev file
 To download the new udev rules file, use this command:
-`curl https://raw.githubusercontent.com/Azure/SAP-on-Azure-Scripts-and-Utilities/main/NVMe-Preflight-Check/88-azure-data-disk.rules --output /usr/lib/udev/rules.d/88-azure-data-disk.rules`
+`curl https://raw.githubusercontent.com/Azure/SAP-on-Azure-Scripts-and-Utilities/refs/heads/main/NVMe-Preflight-Check/88-azure-nvme-data-disk.rules`
 and then run `udevadm control --reload-rules && udevadm trigger`
 to reload the udev rules.
 

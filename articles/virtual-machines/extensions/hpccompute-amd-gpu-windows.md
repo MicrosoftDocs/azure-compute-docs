@@ -69,8 +69,6 @@ You can deploy Azure AMD VM extensions in the Azure portal.
 
 1. On the left menu, select **Extensions**.
 
-    :::image type="content" source="./media/amd-ext-portal/extensions-menu.png" alt-text="Screenshot that shows selecting Extensions in the Azure portal menu.":::
-
 1. Select **Add**.
 
     :::image type="content" source="./media/amd-ext-portal/add-extension.png" alt-text="Screenshot that shows adding a V M extension for the selected V M.":::

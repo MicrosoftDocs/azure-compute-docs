@@ -73,7 +73,7 @@ A Recovery Services vault is a management entity that stores recovery points cre
 
 Azure Backup automatically handles storage for the vault. You do need to specify how that storage is replicated at the time of creation. You can't change replication after items are protected in the vault. For regional redundancy, choose the geo-redundant setting.
 
-If you intend to restore to a secondary [Azure paired region](/azure/availability-zones/cross-region-replication-azure), enable the [Cross Region Restore](/azure/backup/backup-create-rs-vault) feature. When you enable Cross Region Restore, the backup storage is moved from GRS to RA-GRS.
+If you intend to restore to a secondary [Azure paired region](/azure/reliability/cross-region-replication-azure), enable the [Cross Region Restore](/azure/backup/backup-create-rs-vault) feature. When you enable Cross Region Restore, the backup storage is moved from GRS to RA-GRS.
 
 ### Azure Blob Storage
 

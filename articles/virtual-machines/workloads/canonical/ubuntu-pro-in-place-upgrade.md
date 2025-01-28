@@ -7,7 +7,7 @@ ms.subservice: billing
 ms.custom: linux-related-content, devx-track-azurecli, linux-related-content
 ms.collection: linux
 ms.topic: how-to
-ms.date: 9/12/2023
+ms.date: 12/09/2024
 ms.author: anujmaurya
 ---
 
@@ -72,7 +72,7 @@ az vm update -g myResourceGroup -n myVmName --license-type UBUNTU_PRO
 Execute these commands inside the VM:
 
 ```bash
-sudo apt install ubuntu-advantage-tools
+sudo apt install ubuntu-pro-client
 sudo pro auto-attach
 
 
@@ -83,7 +83,7 @@ sudo pro auto-attach
 If the `pro --version` is lower than 28, execute this command:
 
 ```bash
-sudo apt install ubuntu-advantage-tools
+sudo apt install ubuntu-pro-client
 ```
 
 ## Validate the license
@@ -106,16 +106,28 @@ livepatch    yes         enabled   Canonical Livepatch service
 ## Create an Ubuntu Pro VM using the Azure CLI
 
 You can create a new VM using the Ubuntu Server images and apply Ubuntu Pro at the time of creation.
-The following command enables Ubuntu Pro on a virtual machine in Azure:
 
-```Azure CLI
-az vm create -g myResourceGroup -n myVmName --license-type UBUNTU_PRO --image ubuntu2204
-```
+Both of the following commands enable Ubuntu Pro on a virtual machine in Azure. Choose which to run based on whether you want to use SSH keys or an administrator user and password.
+
+  To create the VM and use **SSH keys**:
+
+  ```Azure CLI
+  az vm create -g myResourceGroup -n myVmName --generate-ssh-keys --license-type UBUNTU_PRO --image ubuntu2204
+  ```
+
+  To create the VM and use an **administrator user and password**:
+
+  ```Azure CLI
+  az vm create -g myResourceGroup -n myVmName --admin-username Username --license-type UBUNTU_PRO --image ubuntu2204
+  ```
+
+  > [!NOTE]
+  > For more information on ways to connect to Linux machines, see [Connect to a Linux VM](../../linux-vm-connect.md).
 
 Execute these commands inside the VM:
 
 ```bash
-sudo apt install ubuntu-advantage-tools
+sudo apt install ubuntu-pro-client
 sudo pro auto-attach
 ```
 

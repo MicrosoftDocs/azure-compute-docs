@@ -1,67 +1,51 @@
 ---
-title: Create a standby pool for Virtual Machine Scale Sets (Preview)
+title: Create a standby pool for Virtual Machine Scale Sets
 description: Learn how to create a standby pool to reduce scale-out latency with Virtual Machine Scale Sets.
 author: mimckitt
 ms.author: mimckitt
 ms.service: azure-virtual-machine-scale-sets
+ms.custom:
+  - ignite-2024
 ms.topic: how-to
-ms.date: 06/14/2024
+ms.date: 11/5/2024
 ms.reviewer: ju-shim
 ---
 
 
-# Create a standby pool (Preview)
+# Create a standby pool
 This article steps through creating a standby pool for Virtual Machine Scale Sets with Flexible Orchestration.
 
-> [!IMPORTANT]
-> Standby pools for Virtual Machine Scale Sets with Flexible Orchestration is currently in preview. Previews are made available to you on the condition that you agree to the [supplemental terms of use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Some aspects of this feature may change prior to general availability (GA). 
-
 ## Prerequisites
-Before utilizing standby pools, complete the feature registration and configure role based access controls. 
 
-### Feature Registration 
-Register the standby pool resource provider and the standby pool preview feature with your subscription using Azure Cloud Shell. Registration can take up to 30 minutes to successfully show as registered. You can rerun the below commands to determine when the feature is successfully registered. 
+To allow standby pools to create and manage virtual machines in your subscription, assign the appropriate permissions to the standby pool resource provider. 
 
-```azurepowershell-interactive
-Register-AzResourceProvider -ProviderNamespace Microsoft.StandbyPool
-
-Register-AzProviderFeature -FeatureName StandbyVMPoolPreview -ProviderNamespace Microsoft.StandbyPool
-```
-
-Alternatively, you can register directly in the Azure portal. 
-1) In the Azure portal, navigate to your subscriptions. 
-2) Select the subscription you want to enable standby pools. 
-3) Under settings, select **Resource providers**.
-4) Search for **Microsoft.StandbyPool** and register the provider. 
-5) Under settings, select **Preview features**.
-6) Search for **Standby Virtual Machine Pool Preview** and register the feature.
-
-
-### Role-based Access Control Permissions
-To allow standby pools to create virtual machines, you need to assign the appropriate RBAC permissions.
- 
-1) In the Azure portal, navigate to your subscriptions. 
-2) Select the subscription you want to adjust RBAC permissions. 
+1) In the Azure portal, navigate to your subscriptions.
+2) Select the subscription you want to adjust permissions.
 3) Select **Access Control (IAM)**.
-4) Select Add -> **Add Role Assignment**.
-5) Search for **Virtual Machine Contributor** and highlight it. Select **Next**. 
-6) Click on **+ Select Members**.
-7) Search for **Standby pool Resource Provider**.
-8) Select the standby pool Resource Provider and select **Review + Assign**.
-9) Repeat the above steps and for the **Network Contributor** role and the **Managed Identity Operator** role.  
-
-If you're using images stored in Compute Gallery when deploying your scale set, also repeat the above steps for the **Compute Gallery Sharing Admin** and **Compute Gallery Artifacts Publisher** role.
+4) Select **Add** and **Add role assignment**.
+5) Under the **Role** tab, search for **Virtual Machine Contributor** and select it.
+6) Move to the **Members** Tab.
+7) Select **+ Select members**.
+8) Search for **Standby Pool Resource Provider** and select it.
+9) Move to the **Review + assign** tab.
+10) Apply the changes. 
+11) Repeat the above steps and assign the **Network Contributor** role and the **Managed Identity Operator** role to the Standby Pool Resource Provider. If you're using images stored in Compute Gallery assign the **Compute Gallery Sharing Admin** and **Compute Gallery Artifacts Publisher** roles as well.
 
 For more information on assigning roles, see [assign Azure roles using the Azure portal](/azure/role-based-access-control/quickstart-assign-role-user-portal).
+
 
 ## Create a standby pool
 
 ### [Portal](#tab/portal)
 
-1) Navigate to your Virtual Machine Scale Set
+> [!NOTE]
+> To create and manage standby pools in the Azure portal, register the following feature flag:
+> `Register-AzProviderFeature -FeatureName StandbyVMPoolPreview -ProviderNamespace Microsoft.StandbyPool`
+
+1) Navigate to your Virtual Machine Scale Set.
 2) Under **Availability + scale** select **Standby pool**. 
 3) Select **Manage pool**.
-4) Provide a name for your pool, provisioning state and maximum ready capacity.
+4) Provide a name for your pool, provisioning state and maximum and minimum ready capacity.
 5) Select **Save**.
 
 :::image type="content" source="media/standby-pools/enable-standby-pool-after-vmss-creation.png" alt-text="A screenshot showing how to enable a standby pool on an existing Virtual Machine Scale Set in the Azure portal.":::
@@ -76,12 +60,12 @@ Create a standby pool and associate it with an existing scale set using [az stan
 
 ```azurecli-interactive
 az standby-vm-pool create \
-   --resource-group myResourceGroup 
-   --location eastus \
-   --name myStandbyPool \
-   --max-ready-capacity 20 \
-   --vm-state "Deallocated" \
-   --vmss-id "/subscriptions/{subscriptionID}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet"
+	--resource-group myResourceGroup \
+	--location eastus --name myStandbyPool \
+	--max-ready-capacity 20 \
+	--min-ready-capacity 5 \
+	--vm-state "Deallocated" \
+	--vmss-id "/subscriptions/{subscriptionID}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet"
 ```
 ### [PowerShell](#tab/powershell)
 Create a standby pool and associate it with an existing scale set using [New-AzStandbyVMPool](/powershell/module/az.standbypool/new-azstandbyvmpool).
@@ -92,6 +76,7 @@ New-AzStandbyVMPool `
    -Location eastus `
    -Name myStandbyPool `
    -MaxReadyCapacity 20 `
+   -MinReadyCapacity 5 `
    -VMState "Deallocated" `
    -VMSSId "/subscriptions/{subscriptionID}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet"
 ```
@@ -115,7 +100,11 @@ Create a standby pool and associate it with an existing scale set. Create a temp
         },
         "maxReadyCapacity" : {
            "type": "int",
-           "defaultValue": 10
+           "defaultValue": 20
+        },
+        "minReadyCapacity" : {
+           "type": "int",
+           "defaultValue": 5
         },
         "virtualMachineState" : {
            "type": "string",
@@ -129,12 +118,13 @@ Create a standby pool and associate it with an existing scale set. Create a temp
     "resources": [ 
         {
             "type": "Microsoft.StandbyPool/standbyVirtualMachinePools",
-            "apiVersion": "2023-12-01-preview",
+            "apiVersion": "2024-03-01",
             "name": "[parameters('name')]",
             "location": "[parameters('location')]",
             "properties": {
                "elasticityProfile": {
-                   "maxReadyCapacity": "[parameters('maxReadyCapacity')]" 
+                   "maxReadyCapacity": "[parameters('maxReadyCapacity')]",
+                   "minReadyCapacity": "[parameters('minReadyCapacity')]" 
                },
                "virtualMachineState": "[parameters('virtualMachineState')]",
                "attachedVirtualMachineScaleSetId": "[parameters('attachedVirtualMachineScaleSetId')]"
@@ -153,6 +143,7 @@ Create a standby pool and associate it with an existing scale set. Deploy the te
 param location string = resourceGroup().location
 param standbyPoolName string = 'myStandbyPool'
 param maxReadyCapacity int = 20
+param minReadyCapacity int = 5
 @allowed([
   'Running'
   'Deallocated'
@@ -160,12 +151,13 @@ param maxReadyCapacity int = 20
 param vmState string = 'Deallocated'
 param virtualMachineScaleSetId string = '/subscriptions/{subscriptionID}/resourceGroups/StandbyPools/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet}'
 
-resource standbyPool 'Microsoft.standbypool/standbyvirtualmachinepools@2023-12-01-preview' = {
+resource standbyPool 'Microsoft.standbypool/standbyvirtualmachinepools@2024-03-01' = {
   name: standbyPoolName
   location: location
   properties: {
      elasticityProfile: {
       maxReadyCapacity: maxReadyCapacity
+      minReadyCapacity: minReadyCapacity
     }
     virtualMachineState: vmState
     attachedVirtualMachineScaleSetId: virtualMachineScaleSetId
@@ -174,10 +166,10 @@ resource standbyPool 'Microsoft.standbypool/standbyvirtualmachinepools@2023-12-0
 ```
 
 ### [REST](#tab/rest)
-Create a standby pool and associate it with an existing scale set using [Create or Update](/rest/api/standbypool/standby-virtual-machine-pools/create-or-update)
+Create a standby pool and associate it with an existing scale set using [Create or Update](/rest/api/standbypool/standby-virtual-machine-pools/create-or-update).
 
 ```HTTP
-PUT https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/myResourceGroup/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/myStandbyPool?api-version=2023-12-01-preview
+PUT https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/myResourceGroup/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/myStandbyPool?api-version=2024-03-01
 {
 "type": "Microsoft.StandbyPool/standbyVirtualMachinePools",
 "name": "myStandbyPool",
@@ -185,6 +177,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/m
 "properties": {
 	 "elasticityProfile": {
 		 "maxReadyCapacity": 20
+       "minReadyCapacity": 5
 	 },
 	  "virtualMachineState":"Deallocated",
 	  "attachedVirtualMachineScaleSetId": "/subscriptions/{subscriptionID}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet"

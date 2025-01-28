@@ -6,7 +6,7 @@ ms.topic: quickstart
 ms.service: azure-service-fabric
 services: service-fabric
 ms.author: tomcassidy
-ms.date: 07/11/2022
+ms.date: 11/14/2024
 ---
 
 # Quickstart: Deploy a Service Fabric cluster using the Azure portal
@@ -77,7 +77,7 @@ To generate and retrieve your client certificate:
 
 1. Select **Create**.
 
-1. Your certificate will appear under **In progress, failed or cancelled**. You may need to refresh the list for it to appear under **Completed**. Once it's completed, select it and choose the version under **CURRENT VERSION**.
+1. Your certificate will appear under **In progress, failed or canceled**. You may need to refresh the list for it to appear under **Completed**. Once it's completed, select it and choose the version under **CURRENT VERSION**.
 
 1. Select **Download in PFX/PEM format** and select **Download**. The certificate's name will be formatted as `yourkeyvaultname-yourcertificatename-yyyymmdd.pfx`.
 
@@ -93,8 +93,6 @@ Before you create your Service Fabric cluster, you need to make sure Azure Virtu
 1. In the [Azure portal](https://portal.azure.com), navigate to your Azure Key Vault.
 
 1. Under **Settings** in the pane on the left, select **Access policies**.
-
-   ![Select the Access policies tab under Settings in the left pane.](./media/quickstart-classic-cluster-portal/key-vault-settings-access-policies.png)
 
 1. Toggle **Azure Virtual Machines for deployment** under **Enable access to:**.
 

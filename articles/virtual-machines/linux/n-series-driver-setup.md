@@ -41,7 +41,7 @@ lspci | grep -i NVIDIA
 ```
 Output is similar to the following example (showing an NVIDIA Tesla K80 card):
 
-![lspci command output](./media/n-series-driver-setup/lspci.png)
+:::image type="content" source="./media/n-series-driver-setup/lspci.png" alt-text="Screenshot of example output showing an NVIDIA Tesla K80 card.":::
 
 lspci lists the PCIe devices on the VM, including the InfiniBand NIC and GPUs, if any. If lspci doesn't return successfully, you may need to install LIS on CentOS/RHEL.
 
@@ -160,7 +160,7 @@ To query the GPU device state, SSH to the VM and run the [nvidia-smi](https://de
 
 If the driver is installed, Nvidia SMI lists the **GPU-Util** as 0% until you run a GPU workload on the VM. Your driver version and GPU details may be different from the ones shown.
 
-![NVIDIA device status](./media/n-series-driver-setup/smi.png)
+:::image type="content" source="./media/n-series-driver-setup/smi.png" alt-text="Screenshot of NVIDIA device status.":::
 
 ## RDMA network connectivity
 
@@ -334,7 +334,7 @@ To query the GPU device state, SSH to the VM and run the [nvidia-smi](https://de
 
 If the driver is installed, Nvidia SMI will list the **GPU-Util** as 0% until you run a GPU workload on the VM. Your driver version and GPU details may be different from the ones shown.
 
-![Screenshot that shows the output when the GPU device state is queried.](./media/n-series-driver-setup/smi-nv.png)
+:::image type="content" source="./media/n-series-driver-setup/smi-nv.png" alt-text="Screenshot showing the output when the GPU device state is queried.":::
 
 
 ### X11 server

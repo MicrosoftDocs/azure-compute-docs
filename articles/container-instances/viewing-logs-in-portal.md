@@ -1,7 +1,7 @@
 ---
 title: View container group logs in a log analytics workspace via Azure portal 
 description: How to view container group logs in a log analytics workspace via Azure portal 
-ms.author: tomvcassidy
+ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances

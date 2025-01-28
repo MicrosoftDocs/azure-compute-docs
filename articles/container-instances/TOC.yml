@@ -57,6 +57,10 @@
       href: container-instances-tutorial-deploy-spot-containers-cli.md
     - name: Deploy a Spot container group - Portal
       href: container-instances-tutorial-deploy-spot-containers-portal.md 
+  - name: Deploy virtual nodes on Azure Container Instances
+    items:
+    - name: Deploy virtual nodes on Azure Container Instances in your Azure Kubernetes Service cluster
+      href: container-instances-tutorial-virtual-nodes-helm.md
 - name: Samples
   items:
   - name: Code samples
@@ -71,6 +75,12 @@
     href: container-instances-container-groups.md
   - name: Relationship to orchestrators
     href: container-instances-orchestrator-relationship.md
+  - name: NGroups
+    items:
+    - name: About NGroups
+      href: container-instance-ngroups/container-instances-about-ngroups.md
+    - name: NGroups Rolling Update
+      href: container-instance-ngroups\container-instances-rolling-update.md
   - name: Security
     items:
      - name: Security baseline
@@ -85,6 +95,8 @@
     href: confidential-containers-attestation-concepts.md 
   - name: About Azure Container Instances Spot containers
     href: container-instances-spot-containers-overview.md
+  - name: Virtual nodes on Azure Container Instances
+    href: container-instances-virtual-nodes.md
 - name: How-to guides
   items:
   - name: Deploy
@@ -101,8 +113,6 @@
       href: container-instances-github-action.md
     - name: Encrypt deployment data
       href: container-instances-encrypt-data.md
-    - name: Deploy on dedicated hosts
-      href: container-instances-dedicated-hosts.md
     - name: Availability zones and disaster recovery 
       href: /azure/reliability/reliability-containers
       maintainContext: true
@@ -126,6 +136,8 @@
       href: container-instances-exec.md
     - name: Run a setup container (init)
       href: container-instances-init-container.md
+    - name: Use config maps (Preview)
+      href: container-instances-config-map.md
     - name: Use a managed identity
       href: container-instances-managed-identity.md
     - name: Use GPU resources (preview)
@@ -162,6 +174,20 @@
       href: container-instances-stop-start.md
     - name: Update running containers
       href: container-instances-update.md
+  - name: Manage a standby pool (preview)
+    items: 
+    - name: Overview
+      href: container-instances-standby-pool-overview.md
+    - name: Create a standby pool
+      href: container-instances-standby-pool-create.md
+    - name: Request a container from a standby pool
+      href: container-instances-standby-pool-request-container.md
+    - name: Update or delete a standby pool
+      href: container-instances-standby-pool-update-delete.md
+    - name: Get pool and container details
+      href: container-instances-standby-pool-get-details.md
+    - name: Frequently asked questions
+      href: container-instances-standby-pool-faq.md
   - name: Monitor and log
     items:
     - name: Monitor Container Instances
@@ -220,7 +246,7 @@
   - name: Pricing
     href: https://azure.microsoft.com/pricing/details/container-instances/
   - name: Roadmap
-    href: https://azure.microsoft.com/roadmap/
+    href: https://azure.microsoft.com/updates
   - name: Provide product feedback
     href: https://feedback.azure.com/d365community/forum/1e5d6956-0c25-ec11-b6e6-000d3a4f0858
   - name: Stack Overflow

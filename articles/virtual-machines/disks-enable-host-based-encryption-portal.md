@@ -34,6 +34,21 @@ You must enable the feature for your subscription before you can use encryption 
 
    ![Screenshot of icon to launch the Cloud Shell from the Azure portal.](./media/disks-enable-host-based-encryption-portal/portal-launch-icon.png)
 
+1. Execute the following command to set context to current subscription
+
+   ### [Azure PowerShell](#tab/azure-powershell)
+
+   ```powershell
+   Set-AzContext -SubscriptionId "<yourSubIDHere>"
+   ```
+
+   ### [Azure CLI](#tab/azure-cli)
+
+   ```azurecli
+   az account set --subscription "<yourSubIDHere>"
+   ```
+   ---
+   
 1. Execute the following command to register the feature for your subscription
 
    ### [Azure PowerShell](#tab/azure-powershell)

@@ -67,13 +67,14 @@ Features and limitations unique to this scope include:
 :::image type="content" source="./media/maintenance-configurations/add-schedule-maintenance-window.png" alt-text="Screenshot of options for adding or modifying a schedule.":::
 
 > [!NOTE]
-> The minimum maintenance window increased from 1 hour and 10 minutes to 1 hour and 30 minutes, while the minimum repeat value is set to 6 hours for new schedules. Your existing schedules aren't affected. However, we strongly recommend that you update existing schedules to include these changes.
+> + The character count for the resource group name and the maintenance configuration name should be less than 128.
 >
-> The character count for the resource group name and the maintenance configuration name should be less than 128.
+> + For newly created schedules, there is a 15-minute delay in evaluating the trigger time, while for existing schedules, there is a 3-minute delay. Therefore, it is advisable to avoid creating schedules between 23:57 to 00:00 for existing schedules and between 23:45 to 00:00 for new schedules. This is because, after the evaluation stage of the trigger time, the system rechecks the start date and time before executing the job. If configured within these time limits, the evaluation and execution times differ, potentially resulting in the schedule not triggering or causing the VM to become unresponsive or shut down.
+
 
 Maintenance Configurations provides two scheduled patching modes for VMs in the guest scope: Static Mode and [Dynamic Scope](/azure/update-manager/dynamic-scope-overview) Mode. By default, the system operates in Static Mode if you don't configure a Dynamic Scope Mode.
 
-To schedule or modify the maintenance configuration in either mode, a buffer of 15 minutes before the scheduled patch time is required. For instance, if you schedule the patch for 3:00 PM, all modifications (including adding VMs, removing VMs, or altering the dynamic scope) should finish before 2:45 PM.
+To schedule or modify the maintenance configuration in either mode, recommended buffer of 15 minutes before the scheduled patch time is required. For instance, if you schedule the patching job for 3:00 PM, all modifications (including adding VMs, removing VMs, or altering the dynamic scope) should finish before 2:45 PM.
 
 To learn more about this topic, see [Schedule recurring updates for machines by using the Azure portal and Azure Policy](/azure/update-center/scheduled-patching).
 
@@ -109,8 +110,8 @@ We recommend the following limits for indicators:
 | Total number of resource associations to a schedule | 3,000 | 3,000 |
 | Resource associations on each dynamic scope    | 1,000 | 1,000 |
 | Number of dynamic scopes per resource group or subscription per region     | 250  | 250  |
-| Number of dynamic scopes per schedule   | 200  | 30  |
-| Total number of subscriptions attached to all dynamic scopes per schedule   | 200  | 30  |
+| Number of dynamic scopes per schedule   | 200  | 100  |
+| Total number of subscriptions attached to all dynamic scopes per schedule   | 200  | 100  |
 
 We recommend the following limits for each dynamic scope in the guest scope only:
 

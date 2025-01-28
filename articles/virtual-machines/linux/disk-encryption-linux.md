@@ -40,6 +40,7 @@ Disabling encryption on Linux VMs is only supported for data volumes. Disabling 
 Azure Disk Encryption does not work for the following Linux scenarios, features, and technology:
 
 - Encrypting basic tier VM or VMs created through the classic VM creation method.
+- Encrypting v6 series VMs (Ddsv6, Dldsv6, Edsv6, Dadsv6, Daldsv6, Eadsv6, Dpdsv6, Dpldsv6, or Epdsv6). For more information, see the individual pages for each of these VM sizes listed on [Sizes for virtual machines in Azure](../sizes/overview.md)
 - Disabling encryption on an OS drive or data drive of a Linux VM when the OS drive is encrypted.
 - Encrypting the OS drive for Linux Virtual Machine Scale Sets.
 - Encrypting custom images on Linux VMs.
@@ -54,7 +55,7 @@ Azure Disk Encryption does not work for the following Linux scenarios, features,
 - Kernel Crash Dump (kdump).
 - Oracle ACFS (ASM Cluster File System).
 - NVMe disks such as those on [High performance computing VM sizes](../sizes-hpc.md) or [Storage optimized VM sizes](../sizes-storage.md).
-- A VM with "nested mount points"; that is, multiple mount points in a single path (such as "/1stmountpoint/data/2stmountpoint").
+- A VM with "nested mount points"; that is, multiple mount points in a single path (such as "/1stmountpoint/data/2ndmountpoint").
 - A VM with a data drive mounted on top of an OS folder.
 - A VM on which a root (OS disk) logical volume is extended using a data disk.
 - Resizing of the OS disk.

@@ -63,7 +63,7 @@ The VM application packages use multiple resource types:
 - **Move operations currently not supported**: Moving VMs with VM Apps to other resource groups aren't supported at this time.
 
 > [!NOTE]
-> For Azure Compute Gallery and VM Applications, Storage SAS can be deleted after replication.
+> For Azure Compute Gallery and VM Applications, Storage SAS can be deleted after replication. However, any subsequent update operation will require a valid SAS.
 
 ## Cost
 

@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 11/14/2024
 ---
 
 # Tutorial: Monitor Windows containers on Service Fabric using Azure Monitor logs
@@ -186,8 +186,6 @@ When prompted for the *Log Analytics workspace*, select the workspace that was c
 Navigate back to your *resource group*, where you should now see the newly added monitoring solution. If you select it, the landing page should show you the number of container images you have running.
 
 *Note that we ran five instances of the fabrikam container from [part two](service-fabric-host-app-in-a-container.md) of the tutorial*
-
-![Container solution landing page](./media/service-fabric-tutorial-monitoring-wincontainers/solution-landing.png)
 
 Selecting the **Container Monitor Solution** takes you to a more detailed dashboard, which allows you to scroll through multiple panels as well as run queries in Azure Monitor logs.
 

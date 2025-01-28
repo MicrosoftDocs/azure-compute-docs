@@ -38,9 +38,11 @@ For more information about enabling the NVMe interface on virtual machines creat
 - Ubuntu 22.04
 
 ## Supported Windows OS images
-- Windows Server 2019
+- Windows Server 2019*
 - Windows Server 2022
 - Windows 10
 - Windows 11
+
+*Shared Disks on NVME are not compatible with Windows Server 2019
 
 To download an image, go to [Azure Marketplace](https://ms.portal.azure.com/#view/Microsoft_Azure_Marketplace/MarketplaceOffersBlade/selectedMenuItemId/home).

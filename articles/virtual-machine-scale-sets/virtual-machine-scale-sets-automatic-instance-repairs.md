@@ -109,7 +109,7 @@ https://techcommunity.microsoft.com/t5/azure-compute-blog/breaking-change-for-vm
 
 For enabling automatic repairs policy while creating a new scale set, ensure that all the [requirements](#requirements-for-using-automatic-instance-repairs) for opting in to this feature are met. The application endpoint should be correctly configured for scale set instances to avoid triggering unintended repairs while the endpoint is getting configured. For newly created scale sets, any instance repairs are performed only after the grace period completes. To enable the automatic instance repair in a scale set, use *automaticRepairsPolicy* object in the Virtual Machine Scale Set model.
 
-You can also use this [quickstart template](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vmss-automatic-repairs-slb-health-probe) to deploy a Virtual Machine Scale Set. The scale set has a load balancer health probe and automatic instance repairs enabled with a grace period of 30 minutes.
+You can also use this [quickstart template](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vmss-automatic-repairs-slb-health-probe) to deploy a Virtual Machine Scale Set. In the quickstart, the scale set has a load balancer health probe and automatic instance repairs enabled with a configured grace period of 30 minutes.
 
 ### [Azure portal](#tab/portal-1)
 

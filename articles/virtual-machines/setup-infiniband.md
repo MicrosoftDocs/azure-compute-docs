@@ -4,7 +4,7 @@ description: Learn how to set up InfiniBand on Azure HPC VMs.
 ms.service: azure-virtual-machines
 ms.subservice: hpc
 ms.topic: how-to
-ms.date: 08/05/2024
+ms.date: 11/21/2024
 ms.reviewer: cynthn
 ms.author: padmalathas
 author: padmalathas
@@ -17,19 +17,19 @@ author: padmalathas
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
 > [!TIP]
-> Try the **[Virtual machines selector tool](https://aka.ms/vm-selector)** to find other sizes that best fit your workload.
+> Try the **[Virtual machines selector tool](https://aka.ms/vm-selector)** to find other sizes that best fit your workload.  
 
-This article shares some information on RDMA-capable instances to be used over an InfiniBand (IB) network.
+This article shares some information on RDMA-capable instances to be used over an InfiniBand (IB) network. The InfiniBand network architecture features a full fat-tree design(that is a network topology that provides high bandwidth and low latency), ensuring non-blocking, bisectional symmetry. This configuration provides equal bandwidth between any two virtual machines (VMs) within the same virtual machine scale set (VMSS).
 
 ## RDMA-capable instances
 
 Most of the HPC VM sizes feature a network interface for remote direct memory access (RDMA) connectivity. Selected [N-series](./nc-series.md) sizes designated with 'r' are also RDMA-capable. This interface is in addition to the standard Azure Ethernet network interface available in the other VM sizes.
 
-This secondary interface allows the RDMA-capable instances to communicate over an InfiniBand (IB) network, operating at HDR rates for HBv4, HBv3, HBv2, EDR rates for HB, HC, HX, NDv2, and FDR rates for H16r, H16mr, and other RDMA-capable N-series virtual machines. These RDMA capabilities can boost the scalability and performance of Message Passing Interface (MPI) based applications.
+This secondary interface allows the RDMA-capable instances to communicate over an InfiniBand network, operating at HDR rates for HBv4, HBv3, HBv2, EDR rates for HB, HC, HX, NDv2, and FDR rates for H16r, H16mr, and other RDMA-capable N-series virtual machines. These RDMA capabilities can boost the scalability and performance of Message Passing Interface (MPI) based applications.
 
 > [!NOTE]
 > **SR-IOV support**: In Azure HPC, currently there are two classes of VMs depending on whether they are SR-IOV enabled for InfiniBand. Currently, almost all the newer generation, RDMA-capable or InfiniBand enabled VMs on Azure are SR-IOV enabled except for H16r, H16mr, and NC24r.
-> RDMA is only enabled over the InfiniBand (IB) network and is supported for all RDMA-capable VMs.
+> RDMA is only enabled over the InfiniBand network and is supported for all RDMA-capable VMs.
 > IP over IB is only supported on the SR-IOV enabled VMs.
 > RDMA is not enabled over the Ethernet network.
 
@@ -48,10 +48,14 @@ Azure provides several options to create clusters of HPC VMs that can communicat
 
 - **Virtual machines**  - Deploy the RDMA-capable HPC VMs in the same scale set or availability set (when you use the Azure Resource Manager deployment model). If you use the classic deployment model, deploy the VMs in the same cloud service.
 
-- **Virtual machine scale sets** - In a virtual machine scale set, ensure that you limit the deployment to a single placement group for InfiniBand communication within the scale set. For example, in a Resource Manager template, set the `singlePlacementGroup` property to `true`. Note that the maximum scale set size that can be spun up with `singlePlacementGroup=true` is capped at 100 VMs by default. If your HPC job scale needs are higher than 100 VMs in a single tenant, you may request an increase, [open an online customer support request](/azure/azure-portal/supportability/how-to-create-azure-support-request) at no charge. The limit on the number of VMs in a single scale set can be increased to 300. Note that when deploying VMs using Availability Sets the maximum limit is at 200 VMs per Availability Set.
+- **Virtual machine scale sets** - In a virtual machine scale set, ensure that you limit the deployment to a single placement group for InfiniBand communication within the scale set. For example, in a Resource Manager template, set the `singlePlacementGroup` property to `true`. 
+
+Note that the maximum scale set size that can be spun up with `singlePlacementGroup=true` is capped at 100 VMs by default. If your HPC job scale needs are higher than 100 VMs in a single tenant, you may request an increase, [open an online customer support request](/azure/azure-portal/supportability/how-to-create-azure-support-request) at no charge. The limit on the number of VMs in a single scale set can be increased to 300. Note that when deploying VMs using Availability Sets the maximum limit is at 200 VMs per Availability Set. 
+
+Also, VMSS serves as the isolation boundary between workloads within the same cluster, ensuring that instances in different VMSSs remain isolated from each other to guarantee security.
 
   > [!NOTE]
-  > **MPI among virtual machines**: If RDMA (e.g. using MPI communication) is required between virtual machines (VMs), ensure that the VMs are in the same virtual machine scale set or availability set.
+  > **MPI among virtual machines**: If RDMA (e.g. using MPI communication) is required between virtual machines, ensure that the VMs are in the same virtual machine scale set or availability set.
 
 - **Azure CycleCloud** - Create an HPC cluster using [Azure CycleCloud](/azure/cyclecloud/) to run MPI jobs.
 

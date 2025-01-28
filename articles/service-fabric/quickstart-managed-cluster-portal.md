@@ -6,7 +6,7 @@ ms.topic: quickstart
 ms.service: azure-service-fabric
 services: service-fabric
 ms.author: tomcassidy
-ms.date: 03/02/2022
+ms.date: 11/14/2024
 ---
 
 # Quickstart: Deploy a Service Fabric managed cluster using the Azure portal
@@ -15,7 +15,7 @@ Test out Service Fabric managed clusters in this quickstart by creating a **thre
 
 Azure Service Fabric is a distributed systems platform that makes it easy to package, deploy, and manage scalable and reliable microservices and containers. A Service Fabric cluster is a network-connected set of virtual machines onto which your microservices are deployed and managed.
 
-Service Fabric managed clusters are an evolution of the Azure Service Fabric cluster resource model. Managed clusters streamline your deployment and cluster management experience. Service Fabric managed clusters are fully-encapsulated resources that save you the effort of manually deploying all the underlying resources that make up a Service Fabric cluster.
+Service Fabric managed clusters are an evolution of the Azure Service Fabric cluster resource model. Managed clusters streamline your deployment and cluster management experience. Service Fabric managed clusters are fully encapsulated resources that save you the effort of manually deploying all the underlying resources that make up a Service Fabric cluster.
 
 In this quickstart, you learn how to:
 
@@ -95,8 +95,6 @@ Before you create your Service Fabric managed cluster, you need to make sure Azu
 1. In the [Azure portal](https://portal.azure.com), navigate to your Azure Key Vault.
 
 1. Under **Settings** in the pane on the left, select **Access configuration**.
-
-   ![Screenshot of Access policies tab under Settings in the left pane, PNG.](./media/quickstart-managed-cluster-portal/key-vault-settings-access-policies.png)
 
 1. Toggle **Azure Virtual Machines for deployment** under **Enable access to:**.
 

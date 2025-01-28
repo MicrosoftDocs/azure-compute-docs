@@ -25,11 +25,11 @@ The Mdsv3 Very High Memory (VHM) series, powered by 4<sup>th</sup> generation In
 | **Size**<sup>1</sup> | **vCPU** | **Memory: GiB** | **Max Data Disks** | **Max temp storage throughput: IOPS/MBps** | **Max un-cached Premium** **SSD  throughput: IOPS/MBps** | **Max un-cached Ultra Disk and Premium SSD V2 disk throughput: IOPS/MBps** | **NIC's (max)** | **Max network bandwidth (Mbps)**  |
 |---|---|---|---|---|---|---|---|---|
 | **standard_m896ixds_32_v3**<sup>2</sup> | 896 | 30400 | 64 | 4096 | 110000/8000 | 200000/8000 | 8 | 185000 |
-| **standard_m1792ixds_32_v3** | 1792 | 30400 | 64 | 4096 | 110000/8000 | 200000/8000 | 8 | 185000 |
+| **standard_m1792ixds_32_v3**<sup>3</sup> | 1792 | 30400 | 64 | 4096 | 110000/8000 | 200000/8000 | 8 | 185000 |
 
-<sup>1</sup>VHM VM Sizes are virtual machine sizes that are Isolated to a specific hardware type and dedicated to a single customer. 
-
-<sup>2</sup>The Standard_m896ixds_32_v3 VM comes without Simultaneous Multithreading (SMT), meaning a vCPU is mapped to a full physical core.
+<sup>1</sup>VHM VM Sizes are virtual machine sizes that are Isolated to a specific hardware type and dedicated to a single customer.   
+<sup>2</sup>The Standard_m896ixds_32_v3 VM comes without Simultaneous Multithreading (SMT), meaning a vCPU is mapped to a full physical core.   
+<sup>3</sup>[Disable SMT](/sql/sql-server/compute-capacity-limits-by-edition-of-sql-server#limit-number-of-logical-cores-per-numa-node-to-64) to run SQL Server on a VM with more than 64 vCores per NUMA node.  
 
 It's also important to note that these VMs are compatible with only certain generation 2 Images. For a list of images that are compatible with the Mdsv3-series, please see below
 - Windows Server 2022 Datacenter Edition latest builds

@@ -17,7 +17,7 @@ sections:
       - question: |
           What are the prerequisites to enable the remote NVMe interface on my VM?
         answer: |
-          You can use `DiskControllerType` during VM configuration to select your preferred controller type as NVMe or Small Computer System Interface (SCSI). If you don't specify a `DiskControllerType` value, the platform automatically chooses the default controller based on the VM size configuration. If the VM size is configured for SCSI as the default and supports NVMe, the VM uses SCSI unless you update the `DiskControllerType` value to NVMe.
+          You can use `DiskControllerTypes` during VM configuration to select your preferred controller type as NVMe or Small Computer System Interface (SCSI). If you don't specify a `DiskControllerTypes` value, the platform automatically chooses the default controller based on the VM size configuration. If the VM size is configured for SCSI as the default and supports NVMe, the VM uses SCSI unless you update the `DiskControllerTypes` value to NVMe.
           
           To enable the NVMe interface on your VM, you must meet the following prerequisites:
 
@@ -94,7 +94,7 @@ sections:
       - question: |
           What happens if I want to use another VM family that doesn't support remote NVMe disks?
         answer: |
-          If you select an unsupported VM family, you'll get this error message: "The selected VM size can't boot with DiskControllerType. Check that the disk controller type provided is one of the supported disk controller types for the VM size."
+          If you select an unsupported VM family, you'll get this error message: "The selected VM size can't boot with DiskControllerTypes. Check that the disk controller type provided is one of the supported disk controller types for the VM size."
           
           Be sure to select a VM family that supports the NVMe interface. To determine which disk controller types are supported for the VM size, refer to the [list of resource SKUs in the REST API](https://docs.microsoft.com/rest/api/compute/resource-skus/list).
       - question: |
@@ -154,7 +154,7 @@ sections:
       - question: |
           Are shared disks in remote disks supported with NVMe-enabled VMs?
         answer: |
-          The shared disk feature is supported for Premium SSD, Premium SSD v2, and Ultra Disk Storage disks.
+          The shared disk feature is supported for Premium SSD, Premium SSD v2, and Ultra Disk Storage disks. Shared Disks using NVME is not supported with the OS Windows Server 2019.
       - question: |
           Can I use Azure PowerShell or the Azure CLI to create a VM with an OS disk from an existing blob with NVMe enabled?
         answer: |

@@ -85,15 +85,25 @@ landingContent:
           - text: Microsoft Q&A
             url: /answers/topics/azure-virtual-machines.html
 
+# Card
+  - title: Architecture
+    linkLists:
+      - linkListType: architecture
+        links:
+          - text: Azure Well-Architected Framework Virtual Machine considerations
+            url: /azure/well-architected/service-guides/virtual-machines
+          - text: Azure Well-Architected Framework Disk Storage considerations
+            url: /azure/well-architected/service-guides/azure-disk-storage
+          - text: Cloud adoption framework
+            url: /azure/cloud-adoption-framework/get-started/
+          - text: Azure architecture center
+            url: /azure/architecture/
+
   # Card
   - title: Resources
     linkLists:
       - linkListType: overview
         links:
-          - text: Cloud adoption framework
-            url: /azure/cloud-adoption-framework/get-started/
-          - text: Azure architecture center
-            url: /azure/architecture/
           - text: Azure Quickstart templates
             url: https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular
           - text: Pricing

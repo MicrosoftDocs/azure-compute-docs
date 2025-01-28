@@ -47,7 +47,7 @@ Examples of region pairs include:
 | North Europe |West Europe |
 | Southeast Asia |East Asia |
 
-You can see the full [list of regional pairs here](/azure/availability-zones/cross-region-replication-azure#azure-paired-regions).
+You can see the full [list of regional pairs here](/azure/reliability/cross-region-replication-azure#azure-paired-regions).
 
 ## Feature availability
 Some services or VM features are only available in certain regions, such as specific VM sizes or storage types. There are also some global Azure services that do not require you to select a particular region, such as [Microsoft Entra ID](/azure/active-directory/fundamentals/active-directory-whatis), [Traffic Manager](/azure/traffic-manager/traffic-manager-overview), or [Azure DNS](/azure/dns/dns-overview). To assist you in designing your application environment, you can check the [availability of Azure services across each region](https://azure.microsoft.com/regions/#services). You can also [programmatically query the supported VM sizes and restrictions in each region](/azure/azure-resource-manager/templates/error-sku-not-available).
