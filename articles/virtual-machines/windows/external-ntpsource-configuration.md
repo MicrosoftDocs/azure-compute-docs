@@ -57,8 +57,7 @@ From an elevated command prompt rerun *w32tm /query /source* and compare the out
 >[!TIP]
 >If you want to speed-up the process of changing the NTP source on your **PDC**, from an elevated command prompt run *gpupdate /force*, followed by *w32tm /resync /nowait*, then rerun *w32tm /query /source*; the output should be the NTP Server you used in the above GPO.
 
-For virtual PDC hosted in Azure, we recommend to disable VMICTimeSync provider to prevent any unexpected interactions between this time source and the external NTP source you have chosen. You may not have observed such unexpected interactions in a specific PDC test setup, but it certainly is a possibility when VMICTimesync is left enabled for the longer term, hence our recommendation.
-
+For virtual PDCs hosted in Azure, we recommend disabling the VMICTimeSync provider to prevent any unexpected interactions between this time source and the external NTP source you have chosen. While you may not have observed such interactions in a specific PDC test setup, it is a possibility when VMICTimeSync is left enabled for the long term.
 ## GPO for Members
 
 Usually, NTP in Active Directory Domain Services will follow the AD DS Time Hierarchy mentioned at the beginning of this article and no further configuration is required.
