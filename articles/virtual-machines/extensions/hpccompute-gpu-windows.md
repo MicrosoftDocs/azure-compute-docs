@@ -38,7 +38,6 @@ The NVIDIA GPU Driver Extension supports the following Windows versions:
 | Windows 11 | Core |
 | Windows 10 | Core |
 | Windows Server 2022 | Core |
-| Windows Server 2019 | Core |
 | Windows Server 2016 | Core |
 | Windows Server 2012 R2 | Core |
 
