@@ -6,7 +6,7 @@ ms.author:   wwilliams
 ms.service: azure-virtual-machines
 ms.subservice:   sizes
 ms.topic:    conceptual
-ms.date:     09/12/2023
+ms.date:     01/31/2025
 ---
 
 # B Series CPU Credit Model
@@ -44,6 +44,16 @@ Similarly, utilizing the example of a Standard_B32as_v2 VM size, if the workload
 To monitor B-series specific credit metrics, customers can utilize the Azure monitor data platform, see [Overview of metrics in Microsoft Azure](/azure/azure-monitor/data-platform). Azure monitor data platform can be accessed via the Azure portal and other orchestration paths, and via programmatic API calls to Azure monitor.
 Via Azure monitor data platform, customers can access B-series credit model-specific metrics such as 'CPU Credits Consumed', 'CPU Credits Remaining', and 'Percentage CPU' for their given B-series size in real time.  
 
+## FAQ
+
+### What happens when my credits run out?
+**A:** When the credits are exhausted, the VM returns to the baseline performance.
+### How can I monitor my credit balance and consumption?
+**A:** The Credit metric allows you to view how many credits your VM have been banked and the Consumed, Credit metric will show how many CPU credits your VM has consumed from the bank. You will be able to view these metrics from the metrics pane in the portal or programmatically through the Azure Monitor APIs.
+### Does the B-Series support Premium Storage data disks?
+**A:** Yes, all B-Series sizes support Premium Storage data disks.
+### Why is my remaining credit set to 0 after a redeploy or a stop/start?
+**A:** When a VM is redeployed and the VM moves to another node, the accumulated credit is lost. If the VM is stopped/started, but remains on the same node, the VM retains the accumulated credit. Whenever the VM starts fresh on a node, it gets an initial credit. For Standard_B8ms, it is 240.
 
 ## Other sizes and information
 
