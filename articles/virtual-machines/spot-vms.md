@@ -49,7 +49,6 @@ You can opt in to receive in-VM notifications through [Azure Scheduled Events](.
 ## Limitations
 
 The following VM sizes aren't supported for Azure Spot Virtual Machines:
- - B-series
  - Promo versions of any size (like Dv2, NV, NC, H promo sizes)
 
 Azure Spot Virtual Machines can be deployed to any region, except Microsoft Azure operated by 21Vianet.
