@@ -668,6 +668,9 @@ The following is a list of Fabric settings that you can customize, organized by 
 |VerboseHealthReportLimit | Int, default is 20 | Dynamic|Defines the number of times a replica has to go unplaced before a health warning is reported for it (if verbose health reporting is enabled). |
 |NodeLoadsOperationalTracingEnabled | Bool, default is true |Dynamic|Config that enables Node Load operational structural trace in the event store. |
 |NodeLoadsOperationalTracingInterval | TimeSpan, default is Common::TimeSpan::FromSeconds(20) | Dynamic|Specify timespan in seconds. The interval with which to trace node loads to event store for each service domain. |
+|QuorumBasedReplicaDistributionPerUpgradeDomains | Bool, default is false | Dynamic|Specifies whether replica distribution among upgrade domains (of services with packing policy) should be based on a partition write quorum or PLB should keep max replica difference between number of replicas per upgrade domains up to 1. |
+|QuorumBasedReplicaDistributionPerFaultDomains | Bool, default is false | Dynamic|Specifies whether replica distribution among fault domains (of services with packing policy) should be based on a partition write quorum or PLB should keep max replica difference between number of replicas per fault domains up to 1. |
+|QuorumBasedLogicAutoSwitch | Bool, default is true | Dynamic|Specifies whether replica distribution among fault and upgrade domains should automatically (when necessary) switch to a distribution based on a partition write quorum instead of keeping max replica difference between number of replicas per domains up to 1, which is default distribution. |
 
 ## ReconfigurationAgent
 
