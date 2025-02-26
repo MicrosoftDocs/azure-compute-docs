@@ -26,13 +26,8 @@ The scale-in policy feature provides users a way to configure the order in which
 ### Default scale-in policy
 
 #### Flexible orchestration 
-By default, Virtual Machine Scale Set applies this policy to determine which instance(s) will be scaled in. With the *Default* policy, VMs are selected for scale-in in the following order:
-
-1. Balance virtual machines across availability zones (if the scale set is deployed in zonal configuration)
-2. Balance virtual machines across fault domains (best effort)
-3. Delete virtual machine with the highest instance ID
-
-Users don't need to specify a scale-in policy if they just want the default ordering to be followed.
+> [!IMPORTANT]
+>At this time, the scale-in policy feature does not work with Flexible Orchestration mode.
 
 #### Uniform orchestration 
 By default, Virtual Machine Scale Set applies this policy to determine which instance(s) will be scaled in. With the *Default* policy, VMs are selected for scale-in in the following order:
@@ -101,7 +96,7 @@ New-AzVmss `
   -ResourceGroupName "myResourceGroup" `
   -Location "<VMSS location>" `
   -VMScaleSetName "myScaleSet" `
-  -OrchestrationMode "Flexible" `
+  -OrchestrationMode "Uniform" `
   -ScaleInPolicy “OldestVM”
 ```
 
@@ -118,7 +113,7 @@ az group create --name <myResourceGroup> --location <VMSSLocation>
 az vmss create \
   --resource-group <myResourceGroup> \
   --name <myVMScaleSet> \
-  --orchestration-mode flexible \
+  --orchestration-mode uniform \
   --image Ubuntu2204 \
   --admin-username <azureuser> \
   --generate-ssh-keys \
