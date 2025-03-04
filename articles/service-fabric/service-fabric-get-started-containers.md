@@ -31,9 +31,9 @@ Running an existing application in a Windows container on a Service Fabric clust
   * [Service Fabric SDK and tools](service-fabric-get-started.md).
   *  Docker for Windows. [Get Docker CE for Windows (stable)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description). After installing and starting Docker, right-click on the tray icon and select **Switch to Windows containers**. This step is required to run Docker images based on Windows.
 
-* A Windows cluster with three or more nodes running on Windows Server with Containers. 
+* A Windows cluster with three or more nodes running on Windows Server with Docker installed. For more info on how to install Docker on the cluster, refer to [Installing Mirantis Runtime](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Deployment/Mirantis-Installation.md). 
 
-  For this article, the version (build) of Windows Server with Containers running on your cluster nodes must match that on your development machine. This is because you build the docker image on your development machine and there are compatibility constraints between versions of the container OS and the host OS on which it is deployed. For more information, see [Windows Server container OS and host OS compatibility](#windows-server-container-os-and-host-os-compatibility). 
+  For this article, the version (build) of Windows Server running on your cluster nodes must match that on your development machine. This is because you build the docker image on your development machine and there are compatibility constraints between versions of the container OS and the host OS on which it is deployed. For more information, see [Windows Server container OS and host OS compatibility](#windows-server-container-os-and-host-os-compatibility). 
   
     To determine the version of Windows Server with Containers you need for your cluster, run the `ver` command from a Windows command prompt on your development machine. Refer to [Windows Server container OS and host OS compatibility](#windows-server-container-os-and-host-os-compatibility) before you [creating a cluster](service-fabric-cluster-creation-via-portal.md).
 
@@ -541,7 +541,6 @@ You can configure the Service Fabric cluster to remove unused container images f
                 "value": "mcr.microsoft.com/windows/servercore|mcr.microsoft.com/windows/nanoserver|mcr.microsoft.com/dotnet/framework/aspnet|..."
           }
           ...
-          }
         ]
 	} 
 ]
@@ -564,6 +563,7 @@ The Service Fabric runtime allocates 20 minutes to download and extract containe
               "name": "ContainerImageDownloadTimeout",
               "value": "1200"
           }
+          ...
         ]
 	}
 ]
@@ -595,7 +595,8 @@ With the 6.2 version of the Service Fabric runtime and greater, you can start th
           { 
             "name": "ContainerServiceArguments", 
             "value": "-H localhost:1234 -H unix:///var/run/docker.sock" 
-          } 
+          }
+          ...
         ] 
 	} 
 ]
