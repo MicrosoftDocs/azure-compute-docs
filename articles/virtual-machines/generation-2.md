@@ -268,7 +268,7 @@ You can also create Generation 2 VMs by using virtual machine scale sets. In the
     Yes.
 
 * **Can I migrate a VM from Generation 1 to Generation 2?**  
-    No, you can't change the generation of a VM after you create it. If you need to switch between VM generations, create a new VM of a different generation.
+    Azure Virtual Machines supports upgrading Generation 1 virtual machines (VM) to Generation 2 by upgrading to the [trusted launch security type](trusted-launch-existing-vm-gen-1.md). 
 
 * **Why is my VM size not enabled in the size selector when I try to create a Generation 2 VM?**
 
