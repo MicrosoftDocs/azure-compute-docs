@@ -45,6 +45,9 @@ Live migration is an operation that doesn't require a reboot and that preserves 
 > [!NOTE]
 > You won't receive a notification in the Azure portal for live migration operations that don't require a reboot. To see a list of live migrations that don't require a reboot, [query for scheduled events](./windows/scheduled-events.md#query-for-events).
 
+> [!NOTE]
+> Live migration is performed in a best effort basis. In some rare cases, Live migration may not succeed and the VM will be scheduled to be Service Healed if required prior notification. Live migration is not guaranteed.
+
 The Azure platform starts live migration in the following scenarios:
 - Planned maintenance
 - Hardware failure
