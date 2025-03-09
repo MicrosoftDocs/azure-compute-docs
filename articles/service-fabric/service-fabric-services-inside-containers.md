@@ -16,7 +16,7 @@ Service Fabric supports containerizing Service Fabric microservices (Reliable Se
 This document provides guidance to get your service running inside a Windows container.
 
 > [!NOTE]
-> Currently this feature only works for Windows. To run containers, the cluster must be running on Windows Server 2016 with Containers.
+> Currently this feature only works for Windows. To run containers, the cluster must be running on Windows Server with Docker installed. Refer to [Installing Mirantis Runtime](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Deployment/Mirantis-Installation.md)
 
 ## Steps to containerize your Service Fabric Application
 
@@ -107,13 +107,36 @@ This document provides guidance to get your service running inside a Windows con
    </ContainerHostPolicies>
    </Policies>
    ```
+   
+10. (Optional) Configure certificate for manual communication between services. <br>
+By default, the primary cluster certificate is needed for manual communication between different containerized services. This certificate is not installed inside the containers like it is on the node itself.
+One way to fix this is to include the .pfx file inside the container along with a powershell script to install the certificate inside the container.
+Another way would be to configure the cluster such that the certificate is not required.
+Learn more about [Service Fabric cluster security scenarios](service-fabric-cluster-security.md).
 
-> [!NOTE]
-> A Service Fabric cluster is single tenant by design and hosted applications are considered **trusted**. If you are considering hosting **untrusted container applications**, consider deploying them as [guest containers](service-fabric-containers-overview.md#service-fabric-support-for-containers) and please see [Hosting untrusted applications in a Service Fabric cluster](service-fabric-best-practices-security.md#hosting-untrusted-applications-in-a-service-fabric-cluster).
->
-
-10. To test this application, you need to deploy it to a cluster that is running version 5.7 or higher. For runtime versions 6.1 or lower, you need to edit and update the cluster settings to enable this preview feature. Follow the steps in this [article](service-fabric-cluster-fabric-settings.md) to add the setting shown next.
+11. (Optional) Configure Ktl logger to use user mode <br>
+Stateful services can experience an error when running in containers because of the differences in the file system.
+This error will be visible inside the Service Fabric Explorer as follows
     ```
+     System.Runtime.InteropServices.COMException (-2147024463)
+     A device which does not exist was specified. (0x800701B1)
+     ...
+    ```
+    The error can be fixed by updating the cluster manifest to set the **UseUserModeKtlLogger** to **true** under the **TransactionalReplicator** section. Follow the steps in this [article](service-fabric-cluster-fabric-settings.md).
+    ```json
+      {
+        "name": "TransactionalReplicator",
+        "parameters": [
+          {
+            "name": "UseUserModeKtlLogger",
+            "value": "true"
+          }
+        ]
+      }
+    ```
+
+12. To test this application, you need to deploy it to a cluster that is running version 5.7 or higher. For runtime versions 6.1 or lower, you need to edit and update the cluster settings to enable this preview feature. Follow the steps in this [article](service-fabric-cluster-fabric-settings.md) to add the setting shown next.
+    ```json
       {
         "name": "Hosting",
         "parameters": [
@@ -125,7 +148,10 @@ This document provides guidance to get your service running inside a Windows con
       }
     ```
 
-11. Next [deploy](service-fabric-deploy-remove-applications.md) the edited application package to this cluster.
+13. Next [deploy](service-fabric-deploy-remove-applications.md) the edited application package to this cluster.
+
+> [!NOTE]
+> A Service Fabric cluster is single tenant by design and hosted applications are considered **trusted**. If you are considering hosting **untrusted container applications**, consider deploying them as [guest containers](service-fabric-containers-overview.md#service-fabric-support-for-containers) and please see [Hosting untrusted applications in a Service Fabric cluster](service-fabric-best-practices-security.md#hosting-untrusted-applications-in-a-service-fabric-cluster).
 
 You should now have a containerized Service Fabric application running your cluster.
 
