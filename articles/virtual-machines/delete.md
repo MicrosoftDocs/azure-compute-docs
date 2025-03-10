@@ -387,6 +387,16 @@ A: For shared disks, you can't set the ‘deleteOption’ property to ‘Delete�
 A: This feature is supported on all managed disk types used as OS disks and Data disks, NICs, and Public IPs
 
 
+### Q: What happens to the data on the disks when a VM is deleted?
+
+A: When a VM is deleted, the data on the disks is not automatically deleted. The OS disk and any attached data disks remain in your resource group and continue to incur charges. You need to manually delete these disks if you no longer need them.
+
+
+### Q: What happens to VM backups when I delete the VM?
+
+A: Azure Backup retains VM backups according to the backup policy. You must manually stop and delete backups if no longer needed.
+
+
 ### Q: Can I use this feature on disks and NICs that aren't associated with a VM?
 
 A: No, this feature is only available on disks and NICs associated with a VM.
