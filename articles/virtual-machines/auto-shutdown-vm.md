@@ -89,6 +89,10 @@ Both scripts also prompt to choose whether to auto restart the machines or leave
 
 ---
 
+> [!NOTE]
+> Remember to configure the time zone correctly to match your requirements, as (UTC) Coordinated Universal Time is the default setting in the Time zone dropdown.
+
+
 ## Clean up resources
 
 If you no longer need the virtual machine, delete it with the following steps:
