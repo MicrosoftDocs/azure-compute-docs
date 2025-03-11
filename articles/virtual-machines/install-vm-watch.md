@@ -301,13 +301,13 @@ To confirm that VM watch was enabled on this scale set, go back to the overview 
 
 You can also use the Azure CLI or Azure PowerShell.
 
-#### [CLI](#tab/cli-3)
+#### [CLI](#tab/cli-4)
 
 ```bash
 az vmss extension show --resource-group '<your resource group name>' --vmss-name 'your vm scale set name>' --name '<your extension name>'
 ```
 
-#### [PowerShell](#tab/powershell-3)
+#### [PowerShell](#tab/powershell-4)
 
 ```powershell
 (Get-AzVmss -ResourceGroupName '<your resource group name>' -VMScaleSetName 'your vm scale set name>').ExtensionProfile.Extensions
