@@ -31,7 +31,7 @@ The code in this article details the steps to install the Application Health VM 
   
 Register for adopting VM watch by running the following commands via the Azure CLI:
   
-```
+```bash
 az feature register --name VMWatchPreview --namespace Microsoft.Compute --subscription <your subscription id>
 az provider register --namespace Microsoft.Compute --subscription <your subscription id>
 ```
@@ -42,7 +42,7 @@ az provider register --namespace Microsoft.Compute --subscription <your subscrip
 
 Validate that you successfully registered for the VM watch feature by running the following command:
 
-```
+```bash
 az feature show --namespace Microsoft.Compute --name VMWatchPreview --subscription <your subscription id>
 ```
 
@@ -62,38 +62,61 @@ For information on how to create a VM and/or virtual machine scale set, see the 
 
 #### [CLI](#tab/cli-1)
 
-```
+```bash
 az vm extension set --resource-group <your resource group> --vm-name <your vm name> --name <application health extension type> --publisher Microsoft.ManagedServices --version 2.0 --settings '{"vmWatchSettings": {"enabled": true}}' --enable-auto-upgrade true 
 ```
 
 #### [PowerShell](#tab/powershell-1)
 
-```
+```powershell
 Set-AzVMExtension -ResourceGroupName "<your resource group>" -Location "<your vm region>" -VMName "<your vm name>" -Name "<your extension name>" -Publisher "Microsoft.ManagedServices" -ExtensionType "<application health extension type>" -TypeHandlerVersion "2.0" -Settings @{"vmWatchSettings" = @{"enabled" = $True}} -EnableAutomaticUpgrade $True 
 ```
 
 #### [ARM template](#tab/ARM-template-1)
 
+```json
+{
+  "type": "Microsoft.Compute/virtualMachines/extensions",
+  "apiVersion": "2021-04-01",
+  "name": "[concat('<your vm name>', '/', '<your extension name')]",
+  "location": "<your vm region>",
+  "dependsOn": [
+    "[resourceId('Microsoft.Compute/virtualMachines',parameters('<your vm name>'))]"
+  ],
+  "properties": {
+    "publisher": "Microsoft.ManagedServices",
+    "type": "ApplicationHealthWindows",
+    "typeHandlerVersion": "2.0",
+    "autoUpgradeMinorVersion": true,
+    "settings": {
+      "vmWatchSettings": {
+        "enabled": true
+      }
+    }
+  }
+}
 ```
-        "type": "Microsoft.Compute/virtualMachines/extensions", 
-        "apiVersion": "2019-07-01", 
-        "name": "[concat('<your vm name>', '/', '<your extension name')]", 
-        "location": "<your vm region>", 
-        "dependsOn": [ 
-            "[resourceId('Microsoft.Compute/virtualMachines', parameters('<your vm name>'))]" 
-        ], 
 
-        "properties": { 
-            "enableAutomaticUpgrade": true, 
-            "publisher": "Microsoft.ManagedServices", 
-            "typeHandlerVersion": "2.0", 
-            "type": "<application health extension type>", 
-            "settings": { 
-                "vmWatchSettings": { 
-                    "enabled": true
-                 } 
-             } 
-         }  
+#### [Bicep](#tab/Bicep-1)
+
+```bicep
+resource extension 'Microsoft.Compute/virtualMachines/extensions@2022-11-01' = {
+  name: '<your vm name>/<your extension name>'
+  location: location
+  properties: {
+    publisher: 'Microsoft.ManagedServices'
+    type: 'ApplicationHealthWindows'
+    typeHandlerVersion: '2.0'
+    settings: {
+      vmWatchSettings: {
+        enabled: true
+      }
+    }
+  }
+  dependsOn: [
+    '<your vm>'
+  ]
+}
 ```
 
 ---
@@ -111,12 +134,26 @@ The following screenshot shows a Linux installation.
 
 To confirm that VM watch was enabled on this VM, go back to the overview page and select the JSON view for the VM. Ensure that the configuration exists in the JSON.
 
+```json
+"settings": {  
+    "vmWatchSettings": {  
+        "enabled": true  
+    }
+}
 ```
-  "settings": {  
-      "vmWatchSettings": {  
-          "enabled": true  
-      }
-  }
+
+You can also use the Azure CLI or Azure PowerShell.
+
+#### [CLI](#tab/cli-2)
+
+```bash
+az vm extension show --resource-group '<your resource group name>' --vm-name 'your vm name>' --name '<your extension name>'
+```
+
+#### [PowerShell](#tab/powershell-2)
+
+```powershell
+Get-AzVmExtension -ResourceGroupName '<your resource group name>' -VMName 'your vm name>' -Name '<your extension name>'
 ```
 
 ---
@@ -126,15 +163,15 @@ To confirm that VM watch was enabled on this VM, go back to the overview page an
 > [!IMPORTANT]
 > The code segment is identical for both Windows and Linux, except for the value of the parameter `<application health extension type>` passed in to the extension type. Replace `<application health extension type>` with `"ApplicationHealthLinux"` for Linux installations and `"ApplicationHealthWindows"` for Windows installations.
 
-#### [CLI](#tab/cli-2)
+#### [CLI](#tab/cli-3)
 
-```
+```bash
 az vmss extension set --resource-group '<your resource group name>' --vmss-name '<your vm scale set name>' --name <application health extension type> --publisher Microsoft.ManagedServices --version 2.0 --settings '{"vmWatchSettings": {"enabled": true}}' --enable-auto-upgrade true
 ```
 
-#### [PowerShell](#tab/powershell-2)
+#### [PowerShell](#tab/powershell-3)
 
-```
+```powershell
 ### Define the scale set variables 
 $vmScaleSetName = "<your vm scale set name>" 
 $vmScaleSetResourceGroup = "<your resource group name>" 
@@ -170,37 +207,70 @@ Update-AzVmssInstance -ResourceGroupName $vmScaleSetResourceGroup `
   -InstanceId '*' 
 ```
 
-#### [ARM template](#tab/ARM-template-2)
+#### [ARM template](#tab/ARM-template-3)
 
+```json
+{
+  "type": "Microsoft.Compute/virtualMachineScaleSets",
+  "apiVersion": "2024-07-01",
+  "name": "<your vm scale set name>",
+  "location": "<your vm region>",
+  "properties": {
+    "virtualMachineProfile": {
+      "extensionProfile": {
+        "extensions": [
+          {
+            "name": "[concat(variables('<your vm scale set name>'), '/', '<your extension name>')]",
+            "properties": {
+              "publisher": "Microsoft.ManagedServices",
+              "type": "<application health extension type>",
+              "typeHandlerVersion": "2.0",
+              "autoUpgradeMinorVersion": true,
+              "enableAutomaticUpgrade": true,
+              "settings": {
+                "vmWatchSettings": {
+                  "enabled": true
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}    
 ```
-   "type": "Microsoft.Compute/virtualMachineScaleSets",
-   "apiVersion": "2024-07-01",
-   "name": "<your vm scale set name>",
-   "location": "<your vm region>",  
-   "properties": {  
-        "virtualMachineProfile": {
-            "extensionProfile": {
-               "extensions": [
-                    {
-                        "name": "[concat(variables('<your vm scale set name>'), '/', '<your extension name>')]",  
-                        "properties": {  
-                            "publisher": "Microsoft.ManagedServices",  
-                            "type": "<application health extension type>",  
-                            "typeHandlerVersion": "2.0",  
-                            "autoUpgradeMinorVersion": true,
-                            "enableAutomaticUpgrade": true,
-                            "settings": {  
-                                "vmWatchSettings": {  
-                                    "enabled": true  
-                                }  
-                            }  
-                        } 
-                    }  
-                ]  
-            }  
-        }  
-    }     
 
+#### [Bicep](#tab/Bicep-3)
+
+```bicep
+resource extension 'Microsoft.Compute/virtualMachineScaleSets@2024-07-01' = {
+  name: '<your vm scale set name>'
+  location: '<your vm region>'
+  properties: {
+    virtualMachineProfile: {
+      extensionProfile: {
+        extensions: [
+          {
+            name: '${_your_vm_scale_set_name_}/<your extension name>'
+            properties: {
+              publisher: 'Microsoft.ManagedServices'
+              type: '<application health extension type>'
+              typeHandlerVersion: '2.0'
+              autoUpgradeMinorVersion: true
+              enableAutomaticUpgrade: true
+              settings: {
+                vmWatchSettings: {
+                  enabled: true
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
 ```
 
 ---
@@ -221,12 +291,26 @@ The following screenshot shows a Linux installation.
 
 To confirm that VM watch was enabled on this scale set, go back to the overview page and select the JSON view for the scale set. Ensure that the configuration exists in the JSON.
 
+```json
+"settings": {  
+    "vmWatchSettings": {  
+        "enabled": true  
+    }
+}
 ```
-  "settings": {  
-      "vmWatchSettings": {  
-          "enabled": true  
-      }
-  }
+
+You can also use the Azure CLI or Azure PowerShell.
+
+#### [CLI](#tab/cli-3)
+
+```bash
+az vmss extension show --resource-group '<your resource group name>' --vmss-name 'your vm scale set name>' --name '<your extension name>'
+```
+
+#### [PowerShell](#tab/powershell-3)
+
+```powershell
+(Get-AzVmss -ResourceGroupName '<your resource group name>' -VMScaleSetName 'your vm scale set name>').ExtensionProfile.Extensions
 ```
 
 ## Related content
