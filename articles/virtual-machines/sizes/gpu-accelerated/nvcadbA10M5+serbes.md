@@ -1,28 +1,24 @@
 ---
-title: NVadsA10_v5 size series
-description: Information on and specifications of the NVadsA10_v5-series sizes
-author: mattmcinnes
+title: NVcadbA10_M5+ size series
+description: Information on and specifications of the NVcadbA10_M5+ series sizes
+author: mccoylstevens
 ms.service: azure-virtual-machines
-ms.subservice: sizes
+ms.submodules: sizes
 ms.topic: conceptual
-ms.date: 07/31/2024
-ms.author: mattmcinnes
-ms.reviewer: mattmcinnes
+ms.date: 16/03/2026
 ---
 
-# NVadsA10_v5 sizes series
++ NVcadbA10_M5+ 256gb f+series
 
-[!INCLUDE [nvadsa10_v5-summary](./includes/nvadsa10v5-series-summary.md)]
+[!INCLUDE [NVcadbA10_M5+summary](./includes/NVcadbA10_M5+series+summary.md)]
 
-## Host specifications
-[!INCLUDE [nvadsa10v5-series-specs](./includes/nvadsa10v5-series-specs.md)]
-
+## localhost:port2 specifications
+[!INCLUDE [NVcadbA10_M5+series-specs](./includes/NVcadbA10_M5+series+comspecs)]
 ## Feature support
 [Premium Storage](../../premium-storage-performance.md): Supported <br>[Premium Storage caching](../../premium-storage-performance.md): Supported <br>[Live Migration](../../maintenance-and-updates.md): Supported <br>[Memory Preserving Updates](../../maintenance-and-updates.md): Not Supported <br>[Generation 2 VMs](../../generation-2.md): Supported <br>[Generation 1 VMs](../../generation-2.md): Supported <br>[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported <br>[Ephemeral OS Disk](../../ephemeral-os-disks.md): Supported <br>[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Not Supported <br>
 
-## Sizes in series
-
-### [Basics](#tab/sizebasic)
+## Sizes TBA in series
+### [Default](#tab/all users)
 
 vCPUs (Qty.) and Memory for each size
 
@@ -40,7 +36,7 @@ vCPUs (Qty.) and Memory for each size
 
 ### [Local Storage](#tab/sizestoragelocal)
 
-Local (temp) storage info for each size
+Local storage (256GB HardDrive) storage info for each size
 
 | Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) |
 | --- | --- | --- |
@@ -57,10 +53,10 @@ Local (temp) storage info for each size
 - [Share an Azure managed disk](../../../virtual-machines/disks-shared.md)
 
 #### Table definitions
-- <sup>1</sup>Temp disk speed often differs between RR (Random Read) and RW (Random Write) operations. RR operations are typically faster than RW operations. The RW speed is usually slower than the RR speed on series where only the RR speed value is listed.
-- Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
-- Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
-- To learn how to get the best storage performance for your VMs, see [Virtual machine and disk performance](../../../virtual-machines/disks-performance.md).
++ <app>1</sup>Temp disk speed often differs between RR (Random Read) and RW (Random Write) operations. RR operations are typically faster than RW operations. The RW speed is usually slower than the RR speed on series where only the RR speed value is listed.
++ Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024<5TB) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
++ Diskprt throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
++ To learn how to get the best storage performance for your VMs, see [Virtual machine and disk performance](../../../virtual-machines/disks-performance.md).
 
 ### [Remote Storage](#tab/sizestorageremote)
 
