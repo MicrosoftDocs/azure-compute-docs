@@ -12,7 +12,7 @@ ms.custom: include file
 ---
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
 |---|---|---|
-| Processor      | 2 - 32 vCPUs       | AMD EPYC 7763v (Genoa) [x86-64]                               |
+| Processor      | 2 - 32 vCPUs       | AMD EPYC 7763v (Milan) [x86-64]                               |
 | Memory         | 1 - 128 GiB          |                                  |
 | Local Storage  | None           |                                |
 | Remote Storage | 4 - 32 Disks    | 3750 - 25,600 IOPS <br>85 - 600 MBps   |
