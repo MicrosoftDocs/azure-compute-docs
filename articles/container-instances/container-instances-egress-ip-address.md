@@ -117,6 +117,9 @@ Run the [az network vnet subnet update][az-network-vnet-subnet-update] command t
 
 By default, Azure Firewall denies (blocks) inbound and outbound traffic.
 
+> [!IMPORTANT]
+> Ensure that port 19390 is open in your firewall to allow connectivity to Azure Container Instances (ACI) from the Azure portal. This port is required when deploying container groups in virtual networks. Blocking this port can result in deployment failures, such as container groups remaining in a "Waiting" state, or prevent portal-based management and troubleshooting, including accessing logs and the container shell.
+
 ### Configure NAT rule on firewall to ACI subnet
 
 Create a [NAT rule](/azure/firewall/rule-processing) on the firewall to translate and filter inbound internet traffic to the application container you started previously in the network. For details, see [Filter inbound Internet traffic with Azure Firewall DNAT](/azure/firewall/tutorial-firewall-dnat)
