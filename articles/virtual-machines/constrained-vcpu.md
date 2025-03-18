@@ -5,9 +5,9 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
-ms.date: 03/11/2025
+ms.date: 03/18/2025
 ms.author: mattmcinnes
-ms.reviewer: mimckitt
+ms.reviewer: mimckitt, archatc
 ---
 
 # Constrained vCPU sizes for database workloads
@@ -171,6 +171,43 @@ At this time, the VM pricing, remains the same as the original size. For more in
 | Standard_E96-48ds_v6	| 96 | E96ds_v6 |
 | Standard_E128-32ds_v6	| 128 | E128ds_v6 |
 | Standard_E128-64ds_v6	| 128 | E128ds_v6 |
+
+#### [FX-family sizes](#tab/family-fx)
+
+| Size name               | Active vCPUs | Base size |
+|-------------------------|------|------------|
+| Standard_FX4-2mds_v2          | 2    | FX4mds_v2        |
+| Standard_FX8-4mds_v2          | 4    | FX8mds_v2       |
+| Standard_FX8-2mds_v2         | 2   | FX8mds_v2        |
+| Standard_FX12-6mds_v2         | 6    | FX12mds_v2        |
+| Standard_FX16-8mds_v2          | 8    | FX16mds_v2        |
+| Standard_FX16-4mds_v2         | 4    | FX16mds_v2        |
+| Standard_FX24-12mds_v2         | 12   | FX24mds_v2        |
+| Standard_FX24-6mds_v2        | 6    | FX24mds_v2        |
+| Standard_FX32-16mds_v2     | 16    | FX32mds_v2        |
+| Standard_FX32-8mds_v2          | 8    | FX32mds_v2       |
+| Standard_FX48-24mds_v2         | 24   | FX48mds_v2        |
+| Standard_FX48-12mds_v2         | 12    | FX48mds_v2        |
+| Standard_FX64-32mds_v2       | 32    | FX64mds_v2        |
+| Standard_FX64-16mds_v2       | 16   | FX64mds_v2        |
+| Standard_FX96-48mds_v2        | 48    | FX96mds_v2        |
+| Standard_FX96-24mds_v2        | 24    | FX96mds_v2        |
+| Standard_FX4-2ms_v2          | 2    | FX4ms_v2        |
+| Standard_FX8-4ms_v2          | 4    | FX8ms_v2       |
+| Standard_FX8-2ms_v2         | 2   | FX8ms_v2        |
+| Standard_FX12-6ms_v2         | 6    | FX12ms_v2        |
+| Standard_FX16-8ms_v2          | 8    | FX16ms_v2        |
+| Standard_FX16-4ms_v2         | 4    | FX16ms_v2        |
+| Standard_FX24-12ms_v2         | 12   | FX24ms_v2        |
+| Standard_FX24-6ms_v2        | 6    | FX24ms_v2        |
+| Standard_FX32-16ms_v2     | 16    | FX32ms_v2        |
+| Standard_FX32-8ms_v2          | 8    | FX32ms_v2       |
+| Standard_FX48-24ms_v2         | 24   | FX48ms_v2        |
+| Standard_FX48-12ms_v2         | 12    | FX48ms_v2        |
+| Standard_FX64-32ms_v2       | 32    | FX64ms_v2        |
+| Standard_FX64-16ms_v2       | 16   | FX64ms_v2        |
+| Standard_FX96-48ms_v2        | 48    | FX96ms_v2        |
+| Standard_FX96-24ms_v2        | 24    | FX96ms_v2        |
 
 
 #### [G-family sizes](#tab/family-G)
