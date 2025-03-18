@@ -166,6 +166,10 @@ Statuses         :
 `InstanceView.ExecutionState`: Status of user's Run Command script. Refer this state to know whether your script was successful or not.
 `ProvisioningState`: Status of general extension provisioning end to end ( whether extension platform was able to trigger Run Command script or not). 
 
+By design, it is not possible to execute same script with the same Managed Run Command name more than once. 
+If you need to run the same script again, you must either delete the previous Run Command with same name or modify the script or change the Run Command name before re-running it.
+You can either use scheduled task or Action Run Command for repetitive script execution.
+
 
 ### Create or update Run Command on a VM using ScriptLocalPath (local script file)
 Create or update Run Command on a VM using a local script file that is on the client machine where cmdlet is executed.
