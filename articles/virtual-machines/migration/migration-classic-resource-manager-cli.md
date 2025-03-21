@@ -16,9 +16,9 @@ ms.custom: devx-track-azurecli compute-evergreen, devx-track-arm-template
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs
 
 > [!IMPORTANT]
-> Today, about 90% of IaaS VMs are using [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/). As of February 28, 2020, classic VMs have been deprecated and will be fully retired on September 6, 2023. [Learn more]( https://aka.ms/classicvmretirement) about this deprecation and [how it affects you](classic-vm-deprecation.md#how-does-this-affect-me).
+> Today, about 90% of IaaS VMs are using [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/). As of February 28, 2020, classic VMs are deprecated and will be fully retired on September 6, 2023. [Learn more]( https://aka.ms/classicvmretirement) about this deprecation and [how it affects you](../classic-vm-deprecation.md#how-does-this-affect-me).
 
-These steps show you how to use CLI commands to migrate infrastructure as a service (IaaS) resources from the classic deployment model to the Azure Resource Manager deployment model. The article requires the [Azure classic CLI](/cli/azure/install-classic-cli). Since Azure CLI only applies to Azure Resource Manager resources, it cannot be used for this migration.
+These steps show you how to use CLI commands to migrate infrastructure as a service (IaaS) resources from the classic deployment model to the Azure Resource Manager deployment model. The article requires the [Azure classic CLI](/cli/azure/install-classic-cli). Since Azure CLI only applies to Azure Resource Manager resources, it can't be used for this migration.
 
 > [!NOTE]
 > All the operations described here are idempotent. If you have a problem other than an unsupported feature or a configuration error, we recommend that you retry the prepare, abort, or commit operation. The platform will then try the action again.
@@ -26,21 +26,21 @@ These steps show you how to use CLI commands to migrate infrastructure as a serv
 >
 
 <br>
-Here is a flowchart to identify the order in which steps need to be executed during a migration process
+Here's a flowchart to identify the order in which steps need to be executed during a migration process
 
-![Screenshot that shows the migration steps](./media/migration-classic-resource-manager/migration-flow.png)
+![Screenshot that shows the migration steps](../media/migration-classic-resource-manager/migration-flow.png)
 
 ## Step 1: Prepare for migration
 
 Here are a few best practices that we recommend as you evaluate migrating IaaS resources from classic to Resource Manager:
 
-* Read through the [list of unsupported configurations or features](migration-classic-resource-manager-overview.md). If you have virtual machines that use unsupported configurations or features, we recommend that you wait for the feature/configuration support to be announced. Alternatively, you can remove that feature or move out of that configuration to enable migration if it suits your needs.
+* Read through the [list of unsupported configurations or features](./migration-classic-resource-manager-overview.md). If you have virtual machines that use unsupported configurations or features, we recommend that you wait for the feature/configuration support to be announced. Alternatively, you can remove that feature or move out of that configuration to enable migration if it suits your needs.
 * If you have automated scripts that deploy your infrastructure and applications today, try to create a similar test setup by using those scripts for migration. Alternatively, you can set up sample environments by using the Azure portal.
 
 > [!IMPORTANT]
-> Application Gateways are not currently supported for migration from classic to Resource Manager. To migrate a classic virtual network with an Application gateway, remove the gateway before running a Prepare operation to move the network. After you complete the migration, reconnect the gateway in Azure Resource Manager.
+> Application Gateways aren't currently supported for migration from classic to Resource Manager. To migrate a classic virtual network with an Application gateway, remove the gateway before running a Prepare operation to move the network. After you complete the migration, reconnect the gateway in Azure Resource Manager.
 >
->ExpressRoute gateways connecting to ExpressRoute circuits in another subscription cannot be migrated automatically. In such cases, remove the ExpressRoute gateway, migrate the virtual network and recreate the gateway. Please see [Migrate ExpressRoute circuits and associated virtual networks from the classic to the Resource Manager deployment model](/azure/expressroute/expressroute-migration-classic-resource-manager) for more information.
+>ExpressRoute gateways connecting to ExpressRoute circuits in another subscription can't be migrated automatically. In such cases, remove the ExpressRoute gateway, migrate the virtual network and recreate the gateway. See [Migrate ExpressRoute circuits and associated virtual networks from the classic to the Resource Manager deployment model](/azure/expressroute/expressroute-migration-classic-resource-manager) for more information.
 >
 >
 
@@ -60,9 +60,9 @@ azure account set "<azure-subscription-name>"
 ```
 
 > [!NOTE]
-> Registration is a one time step but it needs to be done once before attempting migration. Without registering you'll see the following error message
+> Registration is a one time step but it needs to be done once before attempting migration. Without registering, you'll see the following error message
 >
-> *BadRequest : Subscription is not registered for migration.*
+> *BadRequest : Subscription isn't registered for migration.*
 >
 >
 
@@ -72,7 +72,7 @@ Register with the migration resource provider by using the following command. No
 azure provider register Microsoft.ClassicInfrastructureMigrate
 ```
 
-Please wait five minutes for the registration to finish. You can check the status of the approval by using the following command. Make sure that RegistrationState is `Registered` before you proceed.
+Wait five minutes for the registration to finish. You can check the status of the approval by using the following command. Make sure that RegistrationState is `Registered` before you proceed.
 
 ```azurecli-interactive
 azure provider show Microsoft.ClassicInfrastructureMigrate
@@ -105,7 +105,7 @@ azure config mode asm
 
 ## Step 4: Option 1 - Migrate virtual machines in a cloud service
 
-Get the list of cloud services by using the following command, and then pick the cloud service that you want to migrate. Note that if the VMs in the cloud service are in a virtual network or if they have web/worker roles, you will get an error message.
+Get the list of cloud services by using the following command, and then pick the cloud service that you want to migrate. Note that if the VMs in the cloud service are in a virtual network or if they have web/worker roles, you'll get an error message.
 
 ```azurecli-interactive
 azure service list
@@ -143,7 +143,7 @@ After the prepare operation is successful, you can look through the verbose outp
 azure vm show <vmName> -vv
 ```
 
-Check the configuration for the prepared resources by using either CLI or the Azure portal. If you are not ready for migration and you want to go back to the old state, use the following command.
+Check the configuration for the prepared resources by using either CLI or the Azure portal. If you aren't ready for migration and you want to go back to the old state, use the following command.
 
 ```azurecli-interactive
 azure service deployment abort-migration <serviceName> <deploymentName>
@@ -157,7 +157,7 @@ azure service deployment commit-migration <serviceName> <deploymentName>
 
 ## Step 4: Option 2 -  Migrate virtual machines in a virtual network
 
-Pick the virtual network that you want to migrate. Note that if the virtual network contains web/worker roles or VMs with unsupported configurations, you will get a validation error message.
+Pick the virtual network that you want to migrate. Note that if the virtual network contains web/worker roles or VMs with unsupported configurations, you'll get a validation error message.
 
 Get all the virtual networks in the subscription by using the following command.
 
@@ -165,9 +165,9 @@ Get all the virtual networks in the subscription by using the following command.
 azure network vnet list
 ```
 
-The output will look something like this:
+The output looks something like this:
 
-![Screenshot of the command line with the entire virtual network name highlighted.](./media/virtual-machines-linux-cli-migration-classic-resource-manager/vnet.png)
+![Screenshot of the command line with the entire virtual network name highlighted.](../media/virtual-machines-linux-cli-migration-classic-resource-manager/vnet.png)
 
 In the above example, the **virtualNetworkName** is the entire name **"Group classicubuntu16 classicubuntu16"**.
 
@@ -183,7 +183,7 @@ Prepare the virtual network of your choice for migration by using the following 
 azure network vnet prepare-migration <virtualNetworkName>
 ```
 
-Check the configuration for the prepared virtual machines by using either CLI or the Azure portal. If you are not ready for migration and you want to go back to the old state, use the following command.
+Check the configuration for the prepared virtual machines by using either CLI or the Azure portal. If you aren't ready for migration and you want to go back to the old state, use the following command.
 
 ```azurecli-interactive
 azure network vnet abort-migration <virtualNetworkName>
@@ -205,7 +205,7 @@ Prepare the storage account for migration by using the following command
 azure storage account prepare-migration <storageAccountName>
 ```
 
-Check the configuration for the prepared storage account by using either CLI or the Azure portal. If you are not ready for migration and you want to go back to the old state, use the following command.
+Check the configuration for the prepared storage account by using either CLI or the Azure portal. If you aren't ready for migration and you want to go back to the old state, use the following command.
 
 ```azurecli-interactive
 azure storage account abort-migration <storageAccountName>

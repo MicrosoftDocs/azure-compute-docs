@@ -15,11 +15,11 @@ ms.custom: template-how-to, devx-track-azurepowershell
 
 **Applies to:** :heavy_check_mark: Linux Virtual Machine :heavy_check_mark: Windows Virtual Machine :heavy_check_mark: Virtual Machine Flex Scale Sets
 
-[Managed images](capture-image-resource.yml) is legacy method to generalize and capture Virtual Machine image. For the most current technology, customers are encouraged to use [Azure compute gallery](azure-compute-gallery.md). All new features, like ARM64, Trusted launch, and Confidential Virtual Machine are only supported through Azure compute gallery. If you have an existing managed image, you can use it as a source and create an Azure compute gallery image.
+[Managed images](../capture-image-resource.yml) is legacy method to generalize and capture Virtual Machine image. For the most current technology, customers are encouraged to use [Azure compute gallery](../azure-compute-gallery.md). All new features, like Arm64, Trusted launch, and Confidential Virtual Machine are only supported through Azure compute gallery. If you have an existing managed image, you can use it as a source and create an Azure compute gallery image.
 
 ## Before you begin
 
-- [Create an Azure Compute Gallery](create-gallery.md).
+- [Screenshot that shows the creation of an Azure Compute Gallery.](../create-gallery.md).
 - Assign `Reader` permission on source managed image.
 - Assign `Contributor` permission on target Azure compute gallery image definition.
 
@@ -32,7 +32,7 @@ This section steps through using the Azure portal to migrate Managed image to ex
 1. Sign-in to [Azure portal](https://portal.azure.com).
 2. Navigate to `Managed image` to be migrated and select **Clone to a VM image**.
 
-:::image type="content" source="./media/shared-image-galleries/01-click-clone-image.png" alt-text="Screenshot of the Managed image to be migrated":::
+:::image type="content" source="../media/shared-image-galleries/01-click-clone-image.png" alt-text="Screenshot of the Managed image to be migrated.":::
 
 3. Provide following details on the `Create VM image version` page and select **Next : Replication >**:
     - Version number

@@ -16,27 +16,27 @@ ms.custom: devx-track-azurepowershell compute-evergreen, devx-track-arm-template
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs
 
 > [!IMPORTANT]
-> Today, about 90% of IaaS VMs are using [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/). As of February 28, 2020, classic VMs have been deprecated and will be fully retired on September 6, 2023. [Learn more]( https://aka.ms/classicvmretirement) about this deprecation and [how it affects you](classic-vm-deprecation.md#how-does-this-affect-me).
+> Today, about 90% of IaaS VMs are using [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/). As of February 28, 2020, classic VMs have been deprecated and will be fully retired on September 6, 2023. [Learn more]( https://aka.ms/classicvmretirement) about this deprecation and [how it affects you](../classic-vm-deprecation.md#how-does-this-affect-me).
 
 These steps show you how to use Azure PowerShell commands to migrate infrastructure as a service (IaaS) resources from the classic deployment model to the Azure Resource Manager deployment model.
 
 If you want, you can also migrate resources by using the [Azure CLI](migration-classic-resource-manager-cli.md).
 
-* For background on supported migration scenarios, see [Platform-supported migration of IaaS resources from classic to Azure Resource Manager](migration-classic-resource-manager-overview.md).
-* For detailed guidance and a migration walkthrough, see [Technical deep dive on platform-supported migration from classic to Azure Resource Manager](migration-classic-resource-manager-deep-dive.md).
-* [Review the most common migration errors](migration-classic-resource-manager-errors.md).
+* For background on supported migration scenarios, see [Platform-supported migration of IaaS resources from classic to Azure Resource Manager](./migration-classic-resource-manager-overview.md).
+* For detailed guidance and a migration walkthrough, see [Technical deep dive on platform-supported migration from classic to Azure Resource Manager](./migration-classic-resource-manager-deep-dive.md).
+* [Screenshot that shows a review of the most common migration errors.](./migration-classic-resource-manager-errors.md).
 
 <br>
 Here's a flowchart to identify the order in which steps need to be executed during a migration process.
 
-![Screenshot that shows the migration steps](media/migration-classic-resource-manager/migration-flow.png)
+![Screenshot that shows the migration steps.](../media/migration-classic-resource-manager/migration-flow.png)
 
  
 
 ## Step 1: Plan for migration
 Here are a few best practices that we recommend as you evaluate whether to migrate IaaS resources from classic to Resource Manager:
 
-* Read through the [supported and unsupported features and configurations](migration-classic-resource-manager-overview.md). If you have virtual machines that use unsupported configurations or features, wait for the configuration or feature support to be announced. Alternatively, if it suits your needs, remove that feature or move out of that configuration to enable migration.
+* Read through the [supported and unsupported features and configurations](./migration-classic-resource-manager-overview.md). If you have virtual machines that use unsupported configurations or features, wait for the configuration or feature support to be announced. Alternatively, if it suits your needs, remove that feature or move out of that configuration to enable migration.
 * If you have automated scripts that deploy your infrastructure and applications today, try to create a similar test setup by using those scripts for migration. Alternatively, you can set up sample environments by using the Azure portal.
 
 > [!IMPORTANT]
@@ -219,7 +219,7 @@ If the prepared configuration looks good, you can move forward and commit the re
 
 To migrate virtual machines in a virtual network, you migrate the virtual network. The virtual machines automatically migrate with the virtual network. Pick the virtual network that you want to migrate.
 > [!NOTE]
-> [Migrate a single virtual machine](./windows/create-vm-specialized-portal.md) created using the classic deployment model by creating a new Resource Manager virtual machine with Managed Disks by using the VHD (OS and data) files of the virtual machine.
+> [Migrate a single virtual machine](../windows/create-vm-specialized-portal.md) created using the classic deployment model by creating a new Resource Manager virtual machine with Managed Disks by using the VHD (OS and data) files of the virtual machine.
 <br>
 
 > [!NOTE]

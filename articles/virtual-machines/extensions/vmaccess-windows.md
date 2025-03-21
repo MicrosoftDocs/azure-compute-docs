@@ -23,22 +23,18 @@ This article describes how to run the VMAccess Extension from the Azure PowerShe
 
 ### Supported Windows versions
 
-| Windows OS | x64 |
-|:----|:-----|
-| Windows 10 | Supported |
-| Windows 11 | Supported |
-| Windows Server 2008 SP2 | Supported |
-| Windows Server 2008 R2 | Supported |
-| Windows Server 2012 | Supported |
-| Windows Server 2012 R2 | Supported |
-| Windows Server 2016 | Supported |
-| Windows Server 2016 Core | Supported |
-| Windows Server 2019 | Supported |
-| Windows Server 2019 Core | Supported |
-| Windows Server 2022 | Supported |
-| Windows Server 2022 Core | Supported |
-| Windows Server 2025 | Supported |
-| Windows Server 2025 Core | Supported |
+| OS Version | x64 | ARM64 |
+|:-----|:-----:|:-----:|
+| Windows 10 | Supported | Supported |
+| Windows 11 | Supported | Supported |
+| Windows Server 2016 | Supported | Supported |
+| Windows Server 2016 Core | Supported | Supported |
+| Windows Server 2019 | Supported | Supported |
+| Windows Server 2019 Core | Supported | Supported |
+| Windows Server 2022 | Supported | Supported |
+| Windows Server 2022 Core | Supported | Supported |
+| Windows Server 2025 | Supported | Supported |
+| Windows Server 2025 Core | Supported | Supported |
 
 ### Tips
 

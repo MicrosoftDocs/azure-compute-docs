@@ -4,7 +4,7 @@ description: Learn more about VM application packages in an Azure Compute Galler
 ms.service: azure-virtual-machines
 ms.subservice: gallery
 ms.topic: conceptual
-ms.date: 02/26/2024
+ms.date: 03/14/2025
 author: ju-shim
 ms.author: gabsta
 ms.reviewer: jushiman
@@ -47,7 +47,9 @@ The VM application packages use multiple resource types:
 
 - **No more than 3 replicas per region**: When you're creating a VM Application version, the maximum number of replicas per region is three.
 
-- **Storage with public access or SAS URI with read privilege:** The storage account needs to has public level access or use an SAS URI with read privilege, as other restriction levels fail deployments.
+- **Storage with public access and SAS URI with read privilege:** The storage account needs to have public level access and use a SAS URI with read privilege, as other restriction levels fail deployments. SAS Tokens can be bypassed by publishing the artifact on the storage account by allowing anonymous access.
+
+- **System Assigned Managed identity:** The compute galleries system managed assigned identity cannot be used to access a blob in the storage account.
 
 - **Retrying failed installations**: Currently, the only way to retry a failed installation is to remove the application from the profile, then add it back.
 
@@ -452,7 +454,7 @@ start /wait %windir%\\system32\\msiexec.exe /i myapp /quiet /forcerestart /log m
 Example remove command:
 
 ```terminal
-start /wait %windir%\\system32\\msiexec.exe /x $appname /quiet /forcerestart /log ${appname}_uninstall.log
+start /wait %windir%\\system32\\msiexec.exe /x myapp /quiet /forcerestart /log myapp_uninstall.log
 ```
 
 Typically, the `start` command would be called within a batch script. If used with the `/wait` parameter, the calling script will be paused until the called process terminates. Once complete, the batch script would check for the `errorlevel` variable set by the `start` command and exit as follows:

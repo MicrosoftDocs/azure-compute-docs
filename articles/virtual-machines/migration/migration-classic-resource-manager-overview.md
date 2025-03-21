@@ -15,7 +15,7 @@ ms.custom: compute-evergreen, devx-track-arm-template
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs
 
 > [!IMPORTANT]
-> Today, about 90% of IaaS VMs are using [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/). As of February 28, 2020, classic VMs have been deprecated and will be fully retired on September 6, 2023. [Learn more]( https://aka.ms/classicvmretirement) about this deprecation and [how it affects you](classic-vm-deprecation.md#how-does-this-affect-me).
+> Today, about 90% of IaaS VMs are using [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/). As of February 28, 2020, classic VMs have been deprecated and will be fully retired on September 6, 2023. [Learn more]( https://aka.ms/classicvmretirement) about this deprecation and [how it affects you](../classic-vm-deprecation.md#how-does-this-affect-me).
 
 
 
@@ -92,7 +92,7 @@ The following screenshots show how to upgrade a Classic storage account to an Az
 2. Navigate to your classic storage account.
 3. In the **Settings** section, click **Migrate to ARM**.
 4. Click on **Validate** to determine migration feasibility.
-   :::image type="content" source="./media/migration-classic-resource-manager/validate-storage-account.png" alt-text="Screenshot showing the page for migrating your classic storage account to Azure Resource Manager.":::
+   :::image type="content" source="../media/migration-classic-resource-manager/validate-storage-account.png" alt-text="Screenshot showing the page for migrating your classic storage account to Azure Resource Manager.":::
 1. If validation passes, click on **Prepare** to create a migrated storage account.
 1. Type **yes** to confirm migration and click **Commit** to finish the migration.
 

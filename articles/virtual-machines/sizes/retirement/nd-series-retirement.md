@@ -24,6 +24,6 @@ This VM size retirement only impacts the VM sizes in the [ND-series](../../nd-se
 You'll need to resize or deallocate your ND virtual machines. We recommend moving your GPU workloads to another GPU Virtual Machine size. Learn more about migrating your workloads to another [GPU Accelerated Virtual Machine size](../../sizes-gpu.md).
 
 ## Next steps
-[Learn more](../../n-series-migration.md) about migrating your workloads to other GPU Azure Virtual Machine sizes. 
+[Learn more](../../migration/sizes/n-series-migration.md) about migrating your workloads to other GPU Azure Virtual Machine sizes. 
 
 If you have questions, contact us through customer support.

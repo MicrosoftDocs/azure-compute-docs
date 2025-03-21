@@ -20,20 +20,18 @@ This article describes how to install and detect the Azure Windows VM Agent.
 
 The Azure Windows VM Agent supports the x64 architecture for these Windows operating systems:
 
-- Windows 10
-- Windows 11
-- Windows Server 2008 SP2
-- Windows Server 2008 R2
-- Windows Server 2012
-- Windows Server 2012 R2
-- Windows Server 2016
-- Windows Server 2016 Core
-- Windows Server 2019
-- Windows Server 2019 Core
-- Windows Server 2022
-- Windows Server 2022 Core
-- Windows Server 2025
-- Windows Server 2025 Core
+| OS Version | x64 | ARM64 |
+|:-----|:-----:|:-----:|
+| Windows 10 | Supported | Supported |
+| Windows 11 | Supported | Supported |
+| Windows Server 2016 | Supported | Supported |
+| Windows Server 2016 Core | Supported | Supported |
+| Windows Server 2019 | Supported | Supported |
+| Windows Server 2019 Core | Supported | Supported |
+| Windows Server 2022 | Supported | Supported |
+| Windows Server 2022 Core | Supported | Supported |
+| Windows Server 2025 | Supported | Supported |
+| Windows Server 2025 Core | Supported | Supported |
 
 > [!IMPORTANT]
 > - The Azure Windows VM Agent needs at least Windows Server 2008 SP2 (64-bit) to run, with the .NET Framework 4.0. See [Minimum version support for virtual machine agents in Azure](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support).

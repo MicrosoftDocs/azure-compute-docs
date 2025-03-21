@@ -31,9 +31,7 @@ NVIDIA Tesla (CUDA) drivers for all NC* and ND*-series VMs (optional for NV*-ser
 >NVs_v3 VMs only support **vGPU 16 or lower** driver version.
 >
 >>
->Windows server 2019 support will go away from vGPU 17.x onwards.
->
->NvidiaGpuDriverWindows currently installs v17.4 driver.
+>Windows server 2019 support is only available till vGPU 16.x.
 >
 Microsoft redistributes NVIDIA GRID driver installers for NV, NVv3 and NVads A10 v5-series VMs used as virtual workstations or for virtual applications. Install only these GRID drivers on Azure NV-series VMs, only on the operating systems listed in the following table. These drivers include licensing for GRID Virtual GPU Software in Azure. You don't need to set up a NVIDIA vGPU software license server.
 

@@ -6584,6 +6584,111 @@
             "source_path_from_root": "/articles/virtual-machines/acu.md",
             "redirect_url": "/azure/virtual-machines/sizes/resize-vm",
             "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/sizes/migration-guides/av1-series-retirement.md",
+            "redirect_url": "/azure/virtual-machines/sizes/retirement/av1-series-retirement",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/sizes/migration-guides/dedicated-host-retirement.md",
+            "redirect_url": "/azure/virtual-machines/sizes/retirement/dedicated-host-retirement",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/sizes/migration-guides/hb-series-retirement.md",
+            "redirect_url": "/azure/virtual-machines/sizes/retirement/hb-series-retirement",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/sizes/migration-guides/nc-series-retirement.md",
+            "redirect_url": "/azure/virtual-machines/sizes/retirement/nc-series-retirement",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/sizes/migration-guides/ncv2-series-retirement.md",
+            "redirect_url": "/azure/virtual-machines/sizes/retirement/ncv2-series-retirement",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/sizes/migration-guides/nd-series-retirement.md",
+            "redirect_url": "/azure/virtual-machines/sizes/retirement/nd-series-retirement",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/sizes/migration-guides/nv-series-retirement.md",
+            "redirect_url": "/azure/virtual-machines/sizes/retirement/nv-series-retirement",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/sizes/retirement-overview.md",
+            "redirect_url": "/azure/virtual-machines/sizes/retirement/retirement-overview",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/sizes/retired-sizes-list.md",
+            "redirect_url": "/azure/virtual-machines/sizes/retirement/retired-sizes-list",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/migration-classic-resource-manager-cli.md",
+            "redirect_url": "/azure/virtual-machines/migration/migration-classic-resource-manager-cli",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/migration-classic-resource-manager-community-tools.md",
+            "redirect_url": "/azure/virtual-machines/migration/migration-classic-resource-manager-community-tools",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/migration-classic-resource-manager-deep-dive.md",
+            "redirect_url": "/azure/virtual-machines/migration/migration-classic-resource-manager-deep-dive",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/migration-classic-resource-manager-errors.md",
+            "redirect_url": "/azure/virtual-machines/migration/migration-classic-resource-manager-errors",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/migration-classic-resource-manager-faq.md",
+            "redirect_url": "/azure/virtual-machines/migration/migration-classic-resource-manager-faq",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/migration-classic-resource-manager-overview.md",
+            "redirect_url": "/azure/virtual-machines/migration/migration-classic-resource-manager-overview",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/migration-classic-resource-manager-plan.md",
+            "redirect_url": "/azure/virtual-machines/migration/migration-classic-resource-manager-plan",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/migration-classic-resource-manager-ps.md",
+            "redirect_url": "/azure/virtual-machines/migration/migration-classic-resource-manager-ps",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/migration-managed-image-to-compute-gallery.md",
+            "redirect_url": "/azure/virtual-machines/migration/migration-managed-image-to-compute-gallery",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/sizes/migration-guides/dedicated-host-migration-guide.md",
+            "redirect_url": "/azure/virtual-machines/migration/dedicated-host-migration-guide",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/n-series-migration.md",
+            "redirect_url": "/azure/virtual-machines/migration/sizes/n-series-migration",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/nv-series-migration-guide.md",
+            "redirect_url": "/azure/virtual-machines/migration/sizes/nv-series-migration-guide",
+            "redirect_document_id": true
         }
     ]
 }

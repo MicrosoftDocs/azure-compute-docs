@@ -40,6 +40,6 @@ If you have questions, ask community experts in [Microsoft Q&A](/answers/topics/
 
 ## Next steps
 
-[Learn more](../../n-series-migration.md) about migrating your workloads to other GPU Azure Virtual Machine sizes. 
+[Learn more](../../migration/sizes/n-series-migration.md) about migrating your workloads to other GPU Azure Virtual Machine sizes. 
 
 If you have questions, contact us through customer support.

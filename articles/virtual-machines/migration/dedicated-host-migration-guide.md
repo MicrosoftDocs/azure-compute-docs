@@ -6,7 +6,7 @@ ms.author: mattmcinnes
 ms.reviewer: vamckMS
 ms.service: azure-dedicated-host
 ms.topic: how-to
-ms.date: 07/12/2023
+ms.date: 03/14/2025
 ---
 
 # Azure Dedicated Host SKU Retirement Migration Guide
@@ -19,11 +19,11 @@ The main differences between the retiring Dedicated Host SKUs and the newly reco
 - Increased available vCPUs
 - Greater regional capacity compared to the retiring Dedicated Host SKUs
 
-Review the [FAQs](dedicated-host-retirement.md#faqs) before you get started on migration. The next section will go over which Dedicated Host SKUs to migrate to help aid in migration planning and execution.
+Review the [FAQs](../sizes/retirement/dedicated-host-retirement.md#faqs) before you get started on migration. The next section will go over which Dedicated Host SKUs to migrate to help aid in migration planning and execution.
 
 ## Host SKUs being retired
 
-Some Azure Dedicated Host SKUs will be retired soon. Refer to the [Azure Dedicated Host SKU Retirement](dedicated-host-retirement.md#faqs) documentation to learn more.
+Some Azure Dedicated Host SKUs will be retired soon. Refer to the [Azure Dedicated Host SKU Retirement](../sizes/retirement/dedicated-host-retirement.md#faqs) documentation to learn more.
 
 ### Dsv3-Type1 and Dsv3-Type2
 
@@ -51,7 +51,7 @@ To migrate your workloads and avoid Dedicated Host SKU retirement, follow the di
 
 ### Automatic migration (Resize)
 
-[!INCLUDE [dedicated-hosts-resize](../../includes/dedicated-hosts-resize.md)]
+[!INCLUDE [dedicated-hosts-resize](../includes/dedicated-hosts-resize.md)]
 
 ### Manual migration
 
@@ -98,7 +98,7 @@ Be sure that you have enough vCPU quota for the VM family of the Dedicated Host 
 
 #### Create a new Dedicated Host
 
-Within the same Host Group as the existing Dedicated Host, [create a Dedicated Host](../../dedicated-hosts-how-to.md#create-a-dedicated-host) of the target Dedicated Host SKU.
+Within the same Host Group as the existing Dedicated Host, [create a Dedicated Host](../dedicated-hosts-how-to.md#create-a-dedicated-host) of the target Dedicated Host SKU.
 
 #### Stop the VM(s) or virtual machine scale set
 
@@ -124,7 +124,7 @@ On Azure portal, go through the following steps:
 >[!NOTE] 
 > **Skip this step for automatically placed VMs and virtual machine scale set.** 
 
-Once the target Dedicated Host has been created and the VM has been stopped, [reassign the VM to the target Dedicated Host](../../dedicated-hosts-how-to.md#reassign-an-existing-vm).
+Once the target Dedicated Host has been created and the VM has been stopped, [reassign the VM to the target Dedicated Host](../dedicated-hosts-how-to.md#reassign-an-existing-vm).
 
 #### Start the VM(s) or virtual machine scale set
 
@@ -149,7 +149,7 @@ On Azure portal, go through the following steps:
 
 #### Delete the old Dedicated Host
 
-Once all VMs have been migrated from your old Dedicated Host to the target Dedicated Host, [delete the old Dedicated Host](../../dedicated-hosts-how-to.md#deleting-a-host).
+Once all VMs have been migrated from your old Dedicated Host to the target Dedicated Host, [delete the old Dedicated Host](../dedicated-hosts-how-to.md#deleting-a-host).
 
 ## Help and support
 

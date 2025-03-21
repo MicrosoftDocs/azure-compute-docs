@@ -13,7 +13,7 @@ metadata:
 title: Frequently asked questions about classic to Azure Resource Manager migration
 summary: |
   > [!IMPORTANT]
-  > Today, about 90% of IaaS VMs are using [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/). As of February 28, 2020, classic VMs have been deprecated and will be fully retired on September 6, 2023. [Learn more](https://aka.ms/classicvmretirement) about this deprecation and [how it affects you](./classic-vm-deprecation.md#how-does-this-affect-me).
+  > Today, about 90% of IaaS VMs are using [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/). As of February 28, 2020, classic VMs have been deprecated and will be fully retired on September 6, 2023. [Learn more](https://aka.ms/classicvmretirement) about this deprecation and [how it affects you](../classic-vm-deprecation.md#how-does-this-affect-me).
   
 
 sections:
@@ -37,7 +37,7 @@ sections:
       - question: |
           What is the definition of a new customer on IaaS VMs (classic)?
         answer: |
-          Customers who did not have IaaS VMs (classic) in their subscriptions in the month of February 2020 (a month before deprecation started) are considered as new customers. 
+          Customers who didn't have IaaS VMs (classic) in their subscriptions in the month of February 2020 (a month before deprecation started) are considered as new customers. 
 
       - question: |
           What is the definition of an existing customer on IaaS Virtual Machines (classic)?
@@ -47,20 +47,20 @@ sections:
       - question: |
           Why am I getting an error stating "NewClassicVMCreationNotAllowedForSubscription"?
         answer: |
-          As part of the retirement process, IaaS VMs (classic) are no longer available for new customers. We identified you as new customers and hence your operation was not authorized. We strongly recommend using Azure Resource Manager. If you cannot use Azure VMs using Azure Resource Manager, contact support to add your subscription to the allowlist.
+          As part of the retirement process, IaaS VMs (classic) are no longer available for new customers. We identified you as new customers and hence your operation wasn't authorized. We strongly recommend using Azure Resource Manager. If you can't use Azure VMs using Azure Resource Manager, contact support to add your subscription to the allowlist.
 
       - question: |
           Does this migration plan affect any of my existing services or applications that run on Azure virtual machines? 
         answer: |
-          Not until September 1st, 2023 for IaaS VMs (classic). The IaaS VMs (classic) are fully supported services in general availability. You can continue to use these resources to expand your footprint on Microsoft Azure. On September 1st, 2023, these VMs will be fully retired and any active or allocated VMs will be stopped & deallocated.
+          Not until September 1, 2023 for IaaS VMs (classic). The IaaS VMs (classic) are fully supported services in general availability. You can continue to use these resources to expand your footprint on Microsoft Azure. On September 1, 2023, these VMs will be fully retired and any active or allocated VMs will be stopped & deallocated.
           
           There will be no impact to other classic resources like Cloud Services (Classic), Storage Accounts (Classic), etc.
           
       - question: |
-          What happens to my VMs if I don’t plan on migrating in the near future? 
+          What happens to my VMs if I don’t plan on migrating soon? 
         answer: |
-          On September 1st, 2023, the IaaS VMs (Classic) will be fully retired and any active or allocated VMs will be stopped & deallocated. To prevent business impact, we highly recommend to start planning your migration today and complete it before September 1st, 2023. 
-          We are not deprecating the existing classic APIs, Cloud Services and resource model. We want to make migration easy, considering the advanced features that are available in the Resource Manager deployment model. We recommend that you start planning to migrate these resources to Azure Resource Manager. 
+          On September 1, 2023, the IaaS VMs (Classic) will be fully retired and any active or allocated VMs will be stopped & deallocated. To prevent business impact, we highly recommend to start planning your migration today and complete it before September 1, 2023. 
+          We are not deprecating the existing classic APIs, Cloud Services, and resource model. We want to make migration easy, considering the advanced features that are available in the Resource Manager deployment model. We recommend that you start planning to migrate these resources to Azure Resource Manager. 
           
       - question: |
           What does this migration plan mean for my existing tooling? 
@@ -75,12 +75,12 @@ sections:
       - question: |
           Can I roll back after my migrating resources are committed in Resource Manager? 
         answer: |
-          You can abort your migration as long as the resources are in the prepared state. Rollback is not supported after the resources have been successfully migrated through the commit operation.
+          You can abort your migration as long as the resources are in the prepared state. Rollback isn't supported after the resources have been successfully migrated through the commit operation.
 
       - question: |
           Can I roll back my migration if the commit operation fails? 
         answer: |
-          You cannot abort migration if the commit operation fails. All migration operations, including the commit operation, are idempotent. So we recommend that you retry the operation after a short time. If you still face an error, create a support ticket.
+          You can't abort migration if the commit operation fails. All migration operations, including the commit operation, are idempotent. So we recommend that you retry the operation after a short time. If you still face an error, create a support ticket.
 
       - question: |
           Do I have to buy another express route circuit if I have to use IaaS under Resource Manager? 
@@ -114,17 +114,17 @@ sections:
       - question: |
           How can I restore backups of classic VMs once Classic VMs and Classic Storage Accounts are retired?
         answer: |
-          Once classic VMs have been retired, restoring backups of classic VMs require using the `restore disks` restoration type. Classic VM disks may be restored to ARM storage accounts. After restoring the disks, you can [convert them to managed disks](scripts/virtual-machines-powershell-sample-create-managed-disk-from-vhd.md) and [create a new ARM VM with them attached](scripts/create-vm-from-managed-os-disks.md). Alternatively, you can [attach them as data disks to an existing VM](windows/attach-disk-ps.md#attach-an-existing-data-disk-to-a-vm).  
+          Once classic VMs have been retired, restoring backups of classic VMs require using the `restore disks` restoration type. Classic VM disks may be restored to ARM storage accounts. After restoring the disks, you can [convert them to managed disks](../scripts/virtual-machines-powershell-sample-create-managed-disk-from-vhd.md) and [create a new ARM VM with them attached](../scripts/create-vm-from-managed-os-disks.md). Alternatively, you can [attach them as data disks to an existing VM](../windows/attach-disk-ps.md#attach-an-existing-data-disk-to-a-vm).  
 
       - question: |
           Can I validate my subscription or resources to see if they're capable of migration? 
         answer: |
-          Yes. In the platform-supported migration option, the first step in preparing for migration is to validate that the resources are capable of migration. In case the validate operation fails, you receive messages for all the reasons the migration cannot be completed.
+          Yes. In the platform-supported migration option, the first step in preparing for migration is to validate that the resources are capable of migration. In case the validate operation fails, you receive messages for all the reasons the migration can't be completed.
 
       - question: |
           What happens if I run into a quota error while preparing the IaaS resources for migration? 
         answer: |
-          We recommend that you abort your migration and then log a support request to increase the quotas in the region where you are migrating the VMs. After the quota request is approved, you can start executing the migration steps again.
+          We recommend that you abort your migration and then log a support request to increase the quotas in the region where you're migrating the VMs. After the quota request is approved, you can start executing the migration steps again.
 
       - question: |
           How do I report an issue? 
@@ -139,12 +139,12 @@ sections:
       - question: |
           Can I migrate ExpressRoute circuits used across subscriptions with authorization links? 
         answer: |
-          ExpressRoute circuits which use cross-subscription authorization links cannot be migrated automatically without downtime. We have guidance on how these can be migrated using manual steps. See [Migrate ExpressRoute circuits and associated virtual networks from the classic to the Resource Manager deployment model](/azure/expressroute/expressroute-migration-classic-resource-manager) for steps and more information.
+          ExpressRoute circuits which use cross-subscription authorization links can't be migrated automatically without downtime. We have guidance on how these can be migrated using manual steps. See [Migrate ExpressRoute circuits and associated virtual networks from the classic to the Resource Manager deployment model](/azure/expressroute/expressroute-migration-classic-resource-manager) for steps and more information.
           
       - question: |
-          I got the message "VM is reporting the overall agent status as Not Ready. Hence, the VM cannot be migrated. Ensure that the VM Agent is reporting overall agent status as Ready" or "VM contains Extension whose Status is not being reported from the VM. Hence, this VM cannot be migrated."
+          I got the message "VM is reporting the overall agent status as Not Ready. Hence, the VM can't be migrated. Ensure that the VM Agent is reporting overall agent status as Ready" or "VM contains Extension whose Status isn't being reported from the VM. Hence, this VM can't be migrated."
         answer: |
-          This message is received when the VM does not have outbound connectivity to the internet. The VM agent uses outbound connectivity to reach the Azure storage account for updating the agent status every five minutes.
+          This message is received when the VM doesn't have outbound connectivity to the internet. The VM agent uses outbound connectivity to reach the Azure storage account for updating the agent status every five minutes.
       
       - question: |
           How do I migrate my classic storage accounts to Resource Manager?
@@ -162,7 +162,7 @@ sections:
       - question: |
           What happens to existing classic storage accounts after 31 August 2024?
         answer: |
-          Once the deadline arrives you will no longer be able to access your classic storage accounts.
+          Once the deadline arrives you'll no longer be able to access your classic storage accounts.
 
       - question: |
           How do I identify my classic storage accounts in my subscription?
@@ -172,12 +172,12 @@ sections:
       - question : |
           Can Microsoft migrate this data for me?
         answer: |
-          No, Microsoft cannot migrate user's data on their behalf. Users will have to use the self-serve options listed above.
+          No, Microsoft can't migrate user's data on their behalf. Users will have to use the self-serve options listed above.
       
       - question: |
           What is the downtime when migrating my storage account from Classic to Resource Manager?
         answer: |
-          There is no downtime to migrate classic storage account to Resource Manager. However, there is downtime for other scenarios linked to classic VM Migration.
+          There's no downtime to migrate classic storage account to Resource Manager. However, there's downtime for other scenarios linked to classic VM Migration.
           
 
 additionalContent: |

@@ -48,10 +48,35 @@ Instance mix introduces the ability to set allocation strategies for your scale 
 This allocation strategy is focused on workloads where cost and cost-optimization are most important. When evaluating what VM split to use, Azure looks at the lowest priced VMs of the VM sizes specified. Azure also considers capacity as part of this allocation strategy. The scale set deploys as many of the lowest priced VMs as it can, depending on available capacity, before moving on to the next lowest priced VM size specified. `lowestPrice` is the default allocation strategy.
 
 #### capacityOptimized
-This allocation strategy is focused on workloads where attaining capacity is the primary concern. When evaluating what VM size split to deploy in the scale set, Azure looks only at the underlying capacity available. It doesn't take price into account when determining what VMs to deploy. Using `capacityOptimized` can result in the scale set deploying the most expensive, but most readily available VMs. 
+The `capacityOptimized` allocation strategy is designed for workloads where securing VM capacity is the highest priority. This approach ensures that VMs are allocated based on availability rather than cost considerations.
+
+##### How `capacityOptimized` allocation works
+- Azure prioritizes available capacity, without factoring in price, when determining which VM sizes to deploy.
+- VMs are deployed by dynamically selecting VM sizes based on underlying capacity availability, ensuring that instances can be allocated even in highly utilized regions.
+- This strategy is useful for workloads that must secure compute resources without delays due to capacity shortages.
+
+##### Considerations
+- Cost isn't considered. The selected VM sizes may include the most expensive options if they're the most readily available.
+- No user-defined ranking is required. Unlike the `Prioritized` allocation strategy, the selection process is fully automated based on Azure’s capacity insights.
+- VM allocation is region-dependent. Availability may vary across Azure regions, and the selection process adapts accordingly.
+- Best suited for critical workloads. This strategy is ideal when securing VMs is more important than optimizing for cost.
+
+Using the `capacityOptimized` allocation strategy, users can ensure that their workloads receive the necessary compute resources, even in situations where capacity constraints might otherwise prevent VM allocation.
 
 #### Prioritized
-This allocation strategy allows you to specify a priority ranking to the VM sizes specified. Note: ranking is optional, but if provided, it must be within the range of the `vmSizes` list size. Ranks can be duplicated across sizes, meaning the sizes have the same priority. Ranks don't need to be in sequential order.
+The `Prioritized` allocation strategy enables control over how VM sizes are allocated by defining a priority ranking. `Prioritized` allows for a more predictable allocation order based on preferred VM sizes.
+
+##### How `Prioritized` allocation works
+- Each VM size in the `vmSizes` list can be assigned a priority rank to influence the order in which instances are allocated.
+- Lower rank numbers indicate higher priority. For example, a VM with a rank of 0 is prioritized over a VM with a rank of 2.
+- If multiple VM sizes have the same rank, they share the same allocation priority, Azure distributes VMs across those sizes based on availability.
+
+##### Considerations
+- Ranking is optional. If no ranks are provided, all VM sizes are treated with equal priority.
+- Ranks must be within the range of the vmSizes list size. For example, if there are five VM sizes, ranks must be within the range of 0 to 4 (or fewer if not all are assigned ranks).
+- Ranks don't need to be sequential. It's valid to have ranks such as 0, 2, 5 without needing to define 1, 3, or 4.
+- Duplicate ranks are allowed. Multiple VM sizes can share the same rank, allowing for a tiered allocation approach where several sizes are treated equally.
+- Resource availability still applies. Even if a VM size has the highest priority, allocation is subject to regional capacity constraints.
 
 ## Cost
 Following the scale set cost model, usage of instance mix is free. You continue to only pay for the underlying resources, like the VM, disk, and networking.
