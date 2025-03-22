@@ -92,7 +92,7 @@ Remote (uncached) storage info for each size
 | Standard_E96ds_v6 | 64 | 153600 | 5088 | 153600 | 5088 | 200000 | 5953 | 200000 | 5953 |
 | Standard_E128ds_v6 | 64 | 204800 | 6782 | 204800 | 6782 | 266667 | 7935 | 266667 | 7935 |
 | Standard_E128ds_v6 | 64 | 204800 | 6782 | 204800 | 6782 | 266667 | 7935 | 266667 | 7935 |
-| Standard_E192ids_v6 | 64 | 3600000 | 17280 | 1440000 | 8640 | 400000 | 12000 | 400000 | 12000 |
+| Standard_E192ids_v6 | 64 | 260000 | 17280 | 1440000 | 8640 | 400000 | 12000 | 400000 | 12000 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
