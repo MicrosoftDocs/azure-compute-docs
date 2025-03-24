@@ -436,6 +436,8 @@ az vmss show \
     -n myScaleSet \
     --query virtualMachineProfile.networkProfile.networkInterfaceConfigurations[].networkSecurityGroup
 
+Sample Output :
+
 [
   {
     "id": "/subscriptions/.../resourceGroups/myResourceGroup/providers/Microsoft.Network/networkSecurityGroups/nsgName",
@@ -443,6 +445,22 @@ az vmss show \
   }
 ]
 ```
+
+```azurepowershell
+
+Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet " | Select-Object -ExpandProperty VirtualMachineProfile | Select-Object -ExpandProperty NetworkProfile | Select-Object -ExpandProperty NetworkInterfaceConfigurations | Select-Object -ExpandProperty NetworkSecurityGroup
+
+Sample Output :
+
+Id
+--
+/subscriptions/.../resourceGroups/myResourceGroup/providers/Microsoft.Network/networkSecurityGroups/nsgName
+
+```
+
+
+
+
 
 To verify your Application Security Group is associated with your scale set, use the `az vmss show` command. The below example uses `--query` to filter the results and only show the relevant section of the output.
 
