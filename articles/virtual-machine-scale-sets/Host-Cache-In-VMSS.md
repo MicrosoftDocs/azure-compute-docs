@@ -1,4 +1,16 @@
-
+---
+title: Host Caching In Virtual Machine Scale Sets
+description: This document outlines the key differences in host caching behaviors between Uniform VMSS and Flexible VMSS.
+services: virtual-machine-scale-sets
+author: neharathi
+manager: varshabatra
+ms.service: azure-virtual-machine-scale-sets
+ms.subservice: Host-Cache-In-VMSS
+ms.topic: conceptual
+ms.date: 31/03/2025
+ms.author: neharathi
+ms.custom: host_caching
+---
 
 # Host Caching In Virtual Machine Scale Sets
 
