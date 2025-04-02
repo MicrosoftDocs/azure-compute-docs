@@ -189,9 +189,7 @@ In the worst case scenario, a majority of the replicas can be lost with the fail
 Because both approaches have strengths and weaknesses, we've introduced an adaptive approach that combines these two strategies.
 
 > [!NOTE]
-> This is the default behavior starting with Service Fabric version 6.2.
->
-> The adaptive approach uses the “maximum difference” logic by default and switches to the “quorum safe” logic only when necessary. Cluster Resource Manager automatically figures out which strategy is necessary by looking at how the cluster and services are configured. Switching to "quorum safe" logic can be disabled through [configuration](/azure/service-fabric/service-fabric-cluster-fabric-settings#placementandloadbalancing).
+> The adaptive approach uses the “maximum difference” logic by default and switches to the “quorum safe” logic only when necessary. Cluster Resource Manager automatically figures out which strategy is necessary by looking at how the cluster and services are configured. Switching to "quorum safe" logic can be disabled through [configuration](/azure/service-fabric/service-fabric-cluster-fabric-settings#placementandloadbalancing) by setting the QuorumBasedLogicAutoSwitch to false.
 >
 > Cluster Resource Manager should use the “quorum based” logic for a service both of these conditions are true:
 >
