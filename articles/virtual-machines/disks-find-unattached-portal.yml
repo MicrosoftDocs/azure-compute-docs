@@ -51,6 +51,12 @@ procedureSection:
 
         You are presented with a list of all your unmanaged disks. Any disk that has "**-**" in the **Attached to** column is an unattached disk.
 
+        NOTE
+        The following view will only list the unmanaged disks which are part of the CLASSIC Storage accounts in Azure.
+        This will not show unmanaged disks which belong to non-classic storage accounts.
+        Hence there may be other unmanaged disks present.
+
+
         :::image type="content" source="media/disks-find-unattached-portal/unmanaged-disk-unattached-attached-to.png" alt-text="Screenshot of the unmanaged disks blade. Disks in this blade that have - in the attached to column are unattached.":::
       - |
         Select the unattached disk you'd like to delete, this brings up the individual disk's blade.
