@@ -47,7 +47,7 @@ The following table provides a description of each instance state and indicates 
 | Stopping | This state is transitional between running and stopped. | Billed |
 | Stopped | The virtual machine is allocated on a host but not running. Also called *PoweredOff* state or *Stopped (Allocated)*. This state can be result of invoking the `PowerOff` API operation or invoking shutdown from within the guest OS. The *Stopped* state might also be observed briefly during VM creation or while starting a VM from *Stopped (Deallocated)* state.  | Billed |
 | Deallocating | This state is transitional between *Running* and *Deallocated*. | Not billed* |
-| Deallocated | The virtual machine has released the lease on the underlying hardware. If the machine is powered off it is shown as *Stopped (Deallocated)*. If it has entered [hibernation](./hibernate-resume.md) it is shown as *Hibernated (Deallocated)* | Not billed* |
+| Deallocated | The virtual machine has released the lease on the underlying hardware. Releasing the underlying hardware will reset the TPM and will lead to [VBS creating new TPM protected keys](https://learn.microsoft.com/en-us/windows/security/identity-protection/credential-guard/considerations-known-issues#tpm-clearing-considerations).  If the machine is powered off it is shown as *Stopped (Deallocated)*. If it has entered [hibernation](./hibernate-resume.md) it is shown as *Hibernated (Deallocated)* | Not billed* |
 
 \* Some Azure resources, such as [Disks](https://azure.microsoft.com/pricing/details/managed-disks) and [Networking](https://azure.microsoft.com/pricing/details/bandwidth/) continue to incur charges.
 
