@@ -213,7 +213,7 @@ Here's how to find SKUs that are based on the image publisher:
 
 ```azurecli-interactive
 # Find all Gen2 SKUs published by Microsoft Windows Desktop
-az vm image list --publisher MicrosoftWindowsDesktop --sku g2 --output table --all
+az vm image list --publisher MicrosoftWindowsDesktop --output table --all
 
 # Find all Gen2 SKUs published by Canonical
 az vm image list --publisher Canonical --sku gen2 --output table --all
