@@ -103,19 +103,6 @@ The VM Image Builder service is available in the following regions:
 - Italy North
 - Israel Central
 
-To access the Azure VM Image Builder public preview in the Fairfax regions (USGov Arizona and USGov Virginia), you must register the *Microsoft.VirtualMachineImages/FairfaxPublicPreview* feature. To do so, run the following command in either PowerShell or Azure CLI:
-
-### [Azure PowerShell](#tab/azure-powershell)
-
-```azurepowershell-interactive
-Register-AzProviderPreviewFeature -ProviderNamespace Microsoft.VirtualMachineImages -Name FairfaxPublicPreview
-```
-
-### [Azure CLI](#tab/azure-cli)
-
-```azurecli-interactive
-az feature register --namespace Microsoft.VirtualMachineImages --name FairfaxPublicPreview
-```
 ---
 
 To access the Azure VM Image Builder public preview in the China North 3 region, you must register the *Microsoft.VirtualMachineImages/MooncakePublicPreview* feature. To do so, run the following command in either PowerShell or Azure CLI:
