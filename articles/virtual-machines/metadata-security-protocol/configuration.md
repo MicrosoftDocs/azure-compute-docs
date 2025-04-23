@@ -1,19 +1,46 @@
 ---
-title: Configuration
+title: MSP Feature Configuration
 description: Configure MSP
 author: minnielahoti
 ms.service: azure-virtual-machines
 ms.topic: how-to
-ms.date: 04/08/2025
+ms.date: 04/22/2025
 ms.author: minnielahoti
 ms.reviewer: azmetadatadev
 ---
 
-# Configuration
+# MSP Feature Configuration
 
 Metadata Security Protocol (MSP) offers customization to maximally restrict metadata server access in your workload. This page introduces the fundamental concepts that can be quickly enabled on any supported Virtual Machine (VM) or Virtual Machine Scale Sets.
 
 Users that are more familiar how their workload uses metadata services can harden access further by following the [Advanced Configuration guide](./advanced-configuration.md).
+
+## Register the feature flags
+
+To use MSP in preview, register the following flag using the `az feature register` command.
+
+```azurecli-interactive
+az feature register --namespace Microsoft.Compute --name ProxyAgentPreview
+```
+
+Verify the registration status by using the `az feature show` command. It takes a few minutes for the status to show *Registered*:
+
+```azurecli-interactive
+az feature show --namespace Microsoft.Compute --name ProxyAgentPreview
+```
+
+When the status reflects *Registered*, refresh the registration of the *Microsoft.Compute* resource provider by using the `az provider register` command:
+
+```azurecli-interactive
+az provider register --namespace Microsoft.Compute
+```
+Once you are registered in the feature flag you can configure MSP via: 
+
+- [ARM Templates](./other-examples/arm-templates.md)
+- REST API 
+- PowerShell
+- [Azure portal](./other-examples/portal.md)
+
 
 ## Concepts
 
@@ -34,7 +61,7 @@ All configuration is managed via new properties in the `securityProfile` section
 
 `ProxyAgentSettings` is the new property in the VM model for Azure VM and Virtual Machine Scale Sets to configure MSP feature.
 
-| `ProxyAgentSettings` property | Type | Default | Details  |
+| Parameter Name | Type | Default | Details  |
 |--|--|--|--|
 | `enabled`| `Bool` | `false` | Specifies whether MSP feature should be enabled on the virtual machine or virtual machine scale set. Default is `false`. This property controls: <ul><li>Applying other settings</li><li>Platform latched key generation</li><li>Automatic GPA Installation (when `true`) / Uninstallation (when `false`) on Windows VM/Virtual Machine Scale Sets</li></ul> |
 | `imds` | HostEndpointSettings | N/A | IMDS specific configuration. See [Per-Metadata Service Configuration](#per-metadata-service-configuration). |
@@ -46,6 +73,7 @@ All configuration is managed via new properties in the `securityProfile` section
 Protections for each metadata service can be individually configured. The schema is the same for each service.
 
 > Inline and linked configurations are mutually exclusive on a per-service basis.
+
 
 #### Inline Configuration
 
@@ -126,6 +154,15 @@ The `inVMAccessControlProfiles` resource type defines a per-service configuratio
 }
 ```
 
+
+## Get Audit Logs
+
+In `Audit` and `Enforce` modes, audit logs are generated on the local disk.
+
+| OS Family | Audit Log Location |
+|--|--|
+| Linux | `/var/lib/azure-proxy-agent/ProxyAgent.Connection.log` |
+| Windows | `C:\WindowsAzure\ProxyAgent\Logs\ProxyAgent.Connection.log` |
 
 ## Recommended Progression
 

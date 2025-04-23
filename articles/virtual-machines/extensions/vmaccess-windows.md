@@ -118,7 +118,7 @@ Set-AzVMExtension -ResourceGroupName $resourceGroup `
 
 ## Template deployment
 
-Azure VM Extensions can be deployed with Azure Resource Manager (ARM) templates. The JSON schema detailed in the previous section can be used in an ARM template to run the VMAccess Extension during the template's deployment. You can find a sample template that includes the VMAccess extension on [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-password-reset).
+Azure VM Extensions can be deployed with Azure Resource Manager (ARM) templates. The JSON schema detailed in the previous section can be used in an ARM template to run the VMAccess Extension during the template's deployment. You can find a sample template that includes the VMAccess extension on [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute).
 
 The JSON configuration for a virtual machine extension must be nested inside the virtual machine resource fragment of the template, specifically `"resources": []` object for the virtual machine template and for a virtual machine scale set under `"virtualMachineProfile":"extensionProfile":{"extensions" :[]` object.
 
