@@ -26,13 +26,20 @@ Auto AZ Balance is designed to help improve zonal resiliency by monitoring your 
 
 Key Terms:
 - A scale set is considered "zonally balanced" if each zone has the same number of VMs +/- 1 VM as all other zones for the scale set. A scale set that does not meet this condition will be considered "zonally imbalanced". More details on zone balance available [here](./virtual-machine-scale-sets-use-availability-zones.md#zone-balancing).
-- An "under-provisioned zone" is an availability zone with at least two fewer VM instances than other zones in the scale set
+- An "under-provisioned zone" is an availability zone with the fewest VM scale set instances.
   - In a scale set with 1 VM in zone 1, 3 VMs in zone 2, and 3 VMs in zone 3 -- zone 1 is the under-provisioned zone. 
-- An "over-provisioned zone" is an availability zone with two or more VM instances than other zones in the scale set
+- An "over-provisioned zone" is an availability zone with the most VM scale set instances.
   - In a scale set with 1 VM in zone 1, 3 VMs in zone 2, and 3 VMs in zone 3 -- zones 2 and 3 are the over-provisioned zones.
 
-## How it works
+## How does automatic zone balance work? 
 
+Auto AZ Balance is currently designed for stateless workloads running on existing zonal Virtual Machine Scale Sets (VMSS). The rebalancing process works by moving VMs across availability zones using a create before delete approach, ensuring minimal disruption to your applications.
+
+When a zonal imbalance is detected, Auto AZ Balance creates a new VM in the most under-provisioned zone (the zone with the fewest VM instances) and, once the new VM is healthy, deletes a VM from the most over-provisioned zone (the zone with the most VM instances). Only one VM is rebalanced at a time, and new VMs are always created with the latest SKU specified in your VMSS model.
+
+After creating a new VM, Auto AZ Balance waits up to 90 minutes for it to report a healthy application signal. If the new VM becomes healthy, the original VM in the over-provisioned zone is deleted. If the new VM does not become healthy within 90 minutes, Auto AZ Balance checks the health of the original VM: if the original VM is healthy, the new (unhealthy) VM is deleted; if the original VM is unhealthy, it is deleted and the new VM is kept. This workflow helps maintain zone balance while prioritizing workload health and availability.
+
+![Auto Zone Balance Workflow](./media/virtual-machine-scale-sets-auto-zone-balance/AutoZoneBalanceWorkflow.png)
 
 ## Requirements
 
@@ -40,7 +47,7 @@ Key Terms:
 
 The scale set must have application health monitoring enabled to use automatic zone balance. Health monitoring can be done using either [Application Health Extension](./virtual-machine-scale-sets-health-extension.md) or [Load Balancer Health Probes](/azure/load-balancer/load-balancer-custom-probe-overview), where only one can be enabled at a time. 
 
-The application health status is used to ensure that new VMs created during the rebalance process are successful and "healthy", before the source VMs are removed. 
+The application health status is used to ensure that new VMs created during the rebalance process are successful and "healthy", before the original VMs are removed. 
 
 **Configure the scale set with at least two availability zones**
 
