@@ -84,6 +84,8 @@
       href: instance-mix-overview.md
     - name: Create a scale set with instance mix
       href: instance-mix-create.md
+    - name: View instance mix settings
+      href: instance-mix-view.md
     - name: Update instance mix settings
       href: instance-mix-update.md
     - name: FAQs and troubleshooting

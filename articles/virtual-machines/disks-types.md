@@ -34,7 +34,7 @@ The following table provides a comparison of the five disk types to help you dec
 | **Max IOPS** | 400,000 | 80,000 | 20,000 | 6,000 | 2,000, 3,000* |
 | **Usable as OS Disk?** | No | No | Yes | Yes | Yes |
 
-\* Only applies to disks with performance plus (preview) enabled.
+\* Only applies to disks with performance plus enabled.
 
 For more help deciding which disk type suits your needs, this decision tree should help with typical scenarios:
 
@@ -207,7 +207,7 @@ When using managed disks, the following billing considerations apply:
 
 **Snapshots**: Snapshots are billed based on the size used. For example, you create a snapshot of a managed disk with provisioned capacity of 64 GiB and actual used data size of 10 GiB. In this case, the snapshot is billed only for the used data size of 10 GiB.
 
-For more information on snapshots, see the section on snapshots in the [managed disk overview](managed-disks-overview.md#managed-disk-snapshots).
+For more information on snapshots, see [Create a snapshot of a virtual hard disk](snapshot-copy-managed-disk.md).
 
 **Outbound data transfers**: [Outbound data transfers](https://azure.microsoft.com/pricing/details/bandwidth/) (data going out of Azure data centers) incur billing for bandwidth usage.
 
@@ -217,12 +217,12 @@ For detailed information on pricing for managed disks (including transaction cos
 
 ### Ultra disks VM reservation fee
 
-Azure VMs have the capability to indicate if they're compatible with ultra disks. An ultra disk-compatible VM allocates dedicated bandwidth capacity between the compute VM instance and the block storage scale unit to optimize the performance and reduce latency. When you add this capability on the VM, it results in a reservation charge. The reservation charge is only imposed if you enabled ultra disk capability on the VM without an attached ultra disk. When an ultra disk is attached to the ultra disk compatible VM, the reservation charge wouldn't be applied. This charge is per vCPU provisioned on the VM.
+Azure VMs have the capability to indicate if they're compatible with Ultra Disks. An Ultra Disk-compatible VM allocates dedicated bandwidth capacity between the compute VM instance and the block storage scale unit to optimize the performance and reduce latency. When you add this capability on the VM, it results in a reservation charge. The reservation charge is only imposed if you enabled Ultra Disk capability on the VM without an attached ultra disk. When an Ultra Disk is attached to the Ultra Disk compatible VM, the reservation charge wouldn't be applied. This charge is per vCPU provisioned on the VM.
 
 > [!Note]
 > For [constrained core VM sizes](constrained-vcpu.md), the reservation fee is based on the actual number of vCPUs and not the constrained cores. For Standard_E32-8s_v3, the reservation fee will be based on 32 cores.
 
-Refer to the [Azure Disks pricing page](https://azure.microsoft.com/pricing/details/managed-disks/) for ultra disk pricing details.
+For Ultra Disk pricing details, see the [Azure Disks pricing page](https://azure.microsoft.com/pricing/details/managed-disks/).
 
 ### Azure disk reservation
 
@@ -230,4 +230,6 @@ Disk reservation provides you with a discount on the advance purchase of one yea
 
 ## Next steps
 
-To learn more about how managed disks are billed, see [Understand Azure Disk Storage billing](disks-understand-billing.md).
+- Learn more about how managed disks are billed, see [Understand Azure Disk Storage billing](disks-understand-billing.md).
+- Learn the [Best practices for achieving high availability with Azure virtual machines and managed disks](disks-high-availability.md).
+- Learn about the [Performance options](disks-performance-options.md) for managed disks.

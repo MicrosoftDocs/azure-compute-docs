@@ -157,6 +157,14 @@ Alternatively, try out the [ARG REST API](/rest/api/azure-resourcegraph/) to get
 
 **A:** Before you can change the max price, you need to deallocate the VM. Then you can change the max price in the portal, from the **Configuration** section for the VM. 
 
+**Q:** Can I convert existing VMs to Spot VMs?
+
+**A:** No, setting the Spot flag is only supported at creation time.
+
+**Q:** Can I convert Spot VMs to Standard VMs?
+
+**A:** No, Spot VMs cannot be directly converted to Standard VMs.
+
 ## Next steps
 Use the [CLI](./linux/spot-cli.md), [portal](spot-portal.md), [ARM template](./linux/spot-template.md), or [PowerShell](./windows/spot-powershell.md) to deploy Azure Spot Virtual Machines.
 

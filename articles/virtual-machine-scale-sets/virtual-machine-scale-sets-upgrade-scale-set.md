@@ -324,10 +324,6 @@ Some properties may only be changed to certain values if the VMs in the scale se
 
 - **SKU Name**- If the new VM SKU is not supported on the hardware the scale set is currently on, you need to deallocate the VMs in the scale set before you modify the SKU name. For more information, see [how to resize an Azure VM](../virtual-machines/resize-vm.md). 
 
-## VM-specific updates
-Certain modifications may be applied to specific VMs instead of the global scale set properties. Currently, the only VM-specific update that is supported is to attach/detach data disks to/from VMs in the scale set. This feature is in preview.
-
-
 ## Scenarios
 
 ### Application updates

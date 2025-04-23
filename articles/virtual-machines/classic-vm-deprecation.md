@@ -15,7 +15,7 @@ ms.author: tagore
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs
 
-In 2014, we launched infrastructure as a service (IaaS) on [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/). We've been enhancing capabilities ever since. Because Azure Resource Manager now has full IaaS capabilities and other advancements, we deprecated the management of IaaS virtual machines (VMs) through [Azure Service Manager (ASM)](./migration-classic-resource-manager-faq.yml) on February 28, 2020. This functionality will be fully retired on September 6, 2023. 
+In 2014, we launched infrastructure as a service (IaaS) on [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/). We've been enhancing capabilities ever since. Because Azure Resource Manager now has full IaaS capabilities and other advancements, we deprecated the management of IaaS virtual machines (VMs) through [Azure Service Manager (ASM)](./migration/migration-classic-resource-manager-faq.yml) on February 28, 2020. This functionality will be fully retired on September 6, 2023. 
 
 Today, about 90 percent of the IaaS VMs are using Azure Resource Manager. If you use IaaS resources through ASM, start planning your migration now. Complete it by September 6, 2023, to take advantage of [Azure Resource Manager](/azure/azure-resource-manager/management/).
 
@@ -53,12 +53,12 @@ Start planning your migration to Azure Resource Manager, today.
    - You can also query Azure Resource Graph by using the [portal](https://portal.azure.com/#blade/HubsExtension/ArgQueryBlade/query/resources%0A%7C%20where%20type%20%3D%3D%20%22microsoft.classiccompute%2Fvirtualmachines%22) or [PowerShell](/azure/governance/resource-graph/concepts/work-with-data) to view the list of all flagged VMs (classic) and related information for the selected subscriptions. 
    - On February 8 and September 2, 2020, we sent out emails with subject "Start planning your IaaS VM migration to Azure Resource Manager" to subscription owners. The email provides a list of all subscriptions and VMs (classic) VMs in it. Please use them to build this list. 
 
-1. [Learn more](./migration-classic-resource-manager-overview.md) about migrating your [Linux](./migration-classic-resource-manager-plan.md) and [Windows](./migration-classic-resource-manager-plan.md) VMs (classic) to Azure Resource Manager. For more information, see [Frequently asked questions about classic to Azure Resource Manager migration](./migration-classic-resource-manager-faq.yml).
+1. [Learn more](./migration/migration-classic-resource-manager-overview.md) about migrating your [Linux](./migration/migration-classic-resource-manager-plan.md) and [Windows](./migration/migration-classic-resource-manager-plan.md) VMs (classic) to Azure Resource Manager. For more information, see [Frequently asked questions about classic to Azure Resource Manager migration](./migration/migration-classic-resource-manager-faq.yml).
 
-1. We recommend starting the planning by using the [platform support migration tool](./migration-classic-resource-manager-overview.md) to migrate your existing VMs with three easy steps: validate, prepare, and commit. The tool is designed to migrate your VMs within minimal to no downtime. 
+1. We recommend starting the planning by using the [platform support migration tool](./migration/migration-classic-resource-manager-overview.md) to migrate your existing VMs with three easy steps: validate, prepare, and commit. The tool is designed to migrate your VMs within minimal to no downtime. 
 
    - The first step, validate, has no impact on your existing deployment and provides a list of all unsupported scenarios for migration. 
-   - Go through the [list of workarounds](./migration-classic-resource-manager-overview.md#unsupported-features-and-configurations) to fix your deployment and make it ready for migration. 
+   - Go through the [list of workarounds](./migration/migration-classic-resource-manager-overview.md#unsupported-features-and-configurations) to fix your deployment and make it ready for migration. 
    - Ideally after all validation errors are fixed, you should not encounter any issues during the prepare and commit steps. After the commit is successful, your deployment is live migrated to Azure Resource Manager and can then be managed through new APIs exposed by Azure Resource Manager. 
 
    If the migration tool is not suitable for your migration, you can explore [other compute offerings](/azure/architecture/guide/technology-choices/compute-decision-tree) for the migration. Because there are many Azure compute offerings, and they're different from one another, we can't provide a platform-supported migration path to them.  

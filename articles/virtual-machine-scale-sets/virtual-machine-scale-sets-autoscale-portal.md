@@ -1,12 +1,12 @@
 ---
 title: Autoscale Virtual Machine Scale Sets in the Azure portal
 description: How to create autoscale rules for Virtual Machine Scale Sets in the Azure portal
-author: ju-shim
-ms.author: jushiman
+author: brittanyrowe
+ms.author: brittanyrowe
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: autoscale
-ms.date: 06/14/2024
+ms.date: 04/01/2025
 ms.reviewer: mimckitt
 ms.custom: avverma
 

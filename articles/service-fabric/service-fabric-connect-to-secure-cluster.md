@@ -137,8 +137,8 @@ Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint clustername.westus.cloudapp.azure.com:19000 `  
           -KeepAliveIntervalInSec 10 `  
-          -X509Credential -ServerCertThumbprint A8136758F4AB8962AF2BF3F27921BE1DF67F4326 `  
-          -FindType FindByThumbprint -FindValue 71DE04467C9ED0544D021098BCD44C71E183414E `  
+          -X509Credential -ServerCertThumbprint AA11BB22CC33DD44EE55FF66AA77BB88CC99DD00 `  
+          -FindType FindByThumbprint -FindValue BB22CC33DD44EE55FF66AA77BB88CC99DD00EE11 `  
           -StoreLocation CurrentUser -StoreName My 
 ```
 
@@ -177,8 +177,8 @@ The nodes in the cluster must have valid certificates whose common name or DNS n
 using System.Fabric;
 using System.Security.Cryptography.X509Certificates;
 
-string clientCertThumb = "71DE04467C9ED0544D021098BCD44C71E183414E";
-string serverCertThumb = "A8136758F4AB8962AF2BF3F27921BE1DF67F4326";
+string clientCertThumb = "BB22CC33DD44EE55FF66AA77BB88CC99DD00EE11";
+string serverCertThumb = "AA11BB22CC33DD44EE55FF66AA77BB88CC99DD00";
 string CommonName = "www.clustername.westus.azure.com";
 string connection = "clustername.westus.cloudapp.azure.com:19000";
 
@@ -218,7 +218,7 @@ The following example uses Microsoft Entra ID for client identity and server cer
 A dialog window automatically pops up for interactive sign-in upon connecting to the cluster.
 
 ```csharp
-string serverCertThumb = "A8136758F4AB8962AF2BF3F27921BE1DF67F4326";
+string serverCertThumb = "AA11BB22CC33DD44EE55FF66AA77BB88CC99DD00";
 string connection = "clustername.westus.cloudapp.azure.com:19000";
 
 var claimsCredentials = new ClaimsCredentials();
@@ -246,7 +246,7 @@ The following example relies on Microsoft.Identity.Client, Version: 4.37.0.
 For more information on Microsoft Entra token acquisition, see [Microsoft.Identity.Client](/dotnet/api/microsoft.identity.client?view=azure-dotnet&preserve-view=true).
 
 ```csharp
-string tenantId = "C15CFCEA-02C1-40DC-8466-FBD0EE0B05D2";
+string tenantId = "aaaabbbb-0000-cccc-1111-dddd2222eeee";
 string clientApplicationId = "118473C2-7619-46E3-A8E4-6DA8D5F56E12";
 string webApplicationId = "53E6948C-0897-4DA6-B26A-EE2A38A690B4";
 string[] scopes = new string[] { "user.read" };
@@ -263,7 +263,7 @@ var result = await pca.AcquireTokenInteractive(scopes)
 
 string token = result.AccessToken;
 
-string serverCertThumb = "A8136758F4AB8962AF2BF3F27921BE1DF67F4326";
+string serverCertThumb = "AA11BB22CC33DD44EE55FF66AA77BB88CC99DD00";
 string connection = "clustername.westus.cloudapp.azure.com:19000";
 
 var claimsCredentials = new ClaimsCredentials();
@@ -290,7 +290,7 @@ catch (Exception e)
 The following example uses non-interactive token acquisition, but the same approach can be used to build a custom interactive token acquisition experience. The Microsoft Entra metadata needed for token acquisition is read from cluster configuration.
 
 ```csharp
-string serverCertThumb = "A8136758F4AB8962AF2BF3F27921BE1DF67F4326";
+string serverCertThumb = "AA11BB22CC33DD44EE55FF66AA77BB88CC99DD00";
 string connection = "clustername.westus.cloudapp.azure.com:19000";
 
 var claimsCredentials = new ClaimsCredentials();

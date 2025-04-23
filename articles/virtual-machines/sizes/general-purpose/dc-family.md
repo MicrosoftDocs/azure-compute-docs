@@ -37,11 +37,11 @@ ms.author: mattmcinnes
 [!INCLUDE [dcadsv5-series-specs](./includes/dcadsv5-series-specs.md)]
 
 ---
-### DCesv5 and DCedsv5-series
-#### [DCesv5-series](#tab/dcesv5)
+### DCesv6 and DCedsv5-series
+#### [DCesv6-series](#tab/dcesv6)
 [!INCLUDE [dcesv5-series-summary](./includes/dcesv5-series-summary.md)]
 
-[View the full DCesv5-series page](./dcesv5-series.md).
+[View the full DCesv6-series page](./dcesv6-series.md).
 
 [!INCLUDE [dcesv5-series-specs](./includes/dcesv5-series-specs.md)]
 

@@ -57,7 +57,7 @@ Select **Authentication**. Under **Implicit grant and hybrid flows**, select the
 
 ### Expose an API
 
-Select **Expose an API** and then the **Set** link to enter a value for **Application ID URI**. Enter either the URI of a verified domain or a URI that uses an API scheme format of `api://{{tenant Id}}/{{cluster name}}`. For example: `api://0e3d2646-78b3-4711-b8be-74a381d9890c/mysftestcluster`.
+Select **Expose an API** and then the **Set** link to enter a value for **Application ID URI**. Enter either the URI of a verified domain or a URI that uses an API scheme format of `api://{{tenant Id}}/{{cluster name}}`. For example: `api://00001111-aaaa-2222-bbbb-3333cccc4444/mysftestcluster`.
 
 For more information, see [AppId URI in single-tenant applications will require use of default scheme or verified domains](/azure/active-directory/develop/reference-breaking-changes#appid-uri-in-single-tenant-applications-will-require-use-of-default-scheme-or-verified-domains).
 

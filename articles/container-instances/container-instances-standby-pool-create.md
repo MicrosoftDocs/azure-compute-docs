@@ -79,7 +79,7 @@ Create a container group profile and save the template file. Deploy the template
   "contentVersion": "1.0.0.0",
   "resources": [
     {
-      "type": "Microsoft.ContainerInstance/containerGroups",
+      "type": "Microsoft.ContainerInstance/containerGroupProfiles",
       "apiVersion": "2024-05-01-preview",
       "name": "[parameters('profileName')]",
       "location": "[parameters('location')]",
@@ -206,12 +206,12 @@ Create a standby pool and associate it with a container group profile using [az 
 
 ```azurecli-interactive
 az standby-container-group-pool create \
-   --resource-group myResourceGroup 
+   --resource-group myResourceGroup \
    --location WestCentralUS \
    --name myStandbyPool \
    --max-ready-capacity 20 \
    --refill-policy always \
-   --container-profile-id "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ContainerInstance/containerGroupProfiles/myContainerGroupProfile"
+   --container-profile-id "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ContainerInstance/containerGroupProfiles/mycontainergroupprofile"
 ```
 ### [PowerShell](#tab/powershell)
 Create a standby pool and associate it with a container group profile using [New-AzStandbyContainerGroupPool](/powershell/module/az.standbypool/new-AzStandbyContainerGroupPool).

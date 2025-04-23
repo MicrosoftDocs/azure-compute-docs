@@ -15,6 +15,6 @@ ms.custom: include file
 | Processor      | 96 vCPUs     | Intel Xeon (Sapphire Rapids) [x86-64] |
 | Memory         | 1850  GiB        |    |
 | Local Storage  | 1 Temp Disk <br> 8 NVMe Disks        | 1000 GiB Temp Disk <br> 28000 GiB NVMe Disks |
-| Remote Storage | 32 Disks        | 80000 IOPS <br>1200 MBps |
+| Remote Storage | 16 Disks        | 80000 IOPS <br>1200 MBps |
 | Network        | 8 NICs        |  |
 | Accelerators   | 8 GPUs            | AMD Instinct MI300X GPU (192GB)    |

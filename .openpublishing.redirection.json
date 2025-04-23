@@ -1,6 +1,16 @@
 {
   "redirections": [
     {
+      "source_path": "articles/virtual-machines/linux/tutorial-config-management.md",
+      "redirect_url": "/azure/update-manager/migration-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/windows/tutorial-config-management.md",
+      "redirect_url": "/azure/update-manager/migration-overview",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "articles/virtual-machine-scale-sets/tutorial-connect-to-instances-powershell.md",
       "redirect_url": "/previous-versions/azure/virtual-machine-scale-sets/tutorial-connect-to-instances-powershell",
       "redirect_document_id": false
@@ -13,6 +23,10 @@
     {
       "source_path": "articles/container-instances/container-instances-dedicated-hosts.md",
       "redirect_url": "container-instances-overview"
+    },
+    {
+      "source_path": "articles/virtual-machines/sizes/general-purpose/dcesv5-series.md",
+      "redirect_url": "dcesv6-series"
     },
     {
       "source_path": "articles/virtual-machine-scale-sets/virtual-machine-scale-sets-instance-mix.md",

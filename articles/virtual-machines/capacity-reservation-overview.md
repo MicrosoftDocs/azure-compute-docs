@@ -62,7 +62,7 @@ From this example accumulation of Minutes Not Available, here's the calculation 
     - Bpsv2
     - Bsv2 (Intel) and Basv2 (AMD)
     - D and Ds series, v2 and newer; AMD and Intel
-    - Dadsv5
+    - Dadsv5 and Dadsv6
     - Dav4 series
     - Dasv4 and newer
     - Ddv4 and v5 series
@@ -80,7 +80,7 @@ From this example accumulation of Minutes Not Available, here's the calculation 
     - Eps and Epds series, v5 and newer
     - E series, all versions; AMD and Intel
     - Eav4 and Easv4 series
-    - Easv5 and Eadsv5 series
+    - Easv5 and Eadsv5 series and newer
     - Ebdsv5 and Ebsv5 series
     - Ed and Eds series, v4 and newer
     - F series, all versions

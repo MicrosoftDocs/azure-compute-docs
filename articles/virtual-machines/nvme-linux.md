@@ -166,7 +166,7 @@ To convert run the script, detailed documentation is also available on the GitHu
 You can decide if, for example, the VM should automatically be started after the reconfiguration.
 
 ```bash
-.\azure-nvme-VM-update.ps1 -subscription_id XXXXXXXX-a961-4fb7-88c0-757472230e6c -resource_group_name nvme-conversion -vm_name nvme-conversion-vm -disk_controller_change_to NVMe -vm_size_change_to Standard_E64bds_v5
+.\azure-nvme-VM-update.ps1 -subscription_id aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -resource_group_name nvme-conversion -vm_name nvme-conversion-vm -disk_controller_change_to NVMe -vm_size_change_to Standard_E64bds_v5
 INFO - OS Disk found
 INFO - Access token generated
 INFO - Getting VM info

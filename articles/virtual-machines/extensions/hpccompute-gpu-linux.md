@@ -224,7 +224,7 @@ Extension execution output is logged to the following file. Refer to this file t
 | 14 | Operation unsuccessful | Check the execution output log. |
 
 ### Known issues
-1. `NvidiaGpuDriverLinux` currently fails to install the latest drivers `17.x` GRID drivers because of certificate issues. While Azure is working to resolve this issue, use GRID driver `16.5` by passing a runtime setting to the extension.
+1. `NvidiaGpuDriverLinux` currently installs the latest drivers `17.5` GRID drivers which is having issues with CUDA on A10 series. NVIDIA is working on solving this issue, meanwhile, use GRID driver `16.5` by passing a runtime setting to the extension.
    
 ```azurecli
 az vm extension set  --resource-group <rg-name> --vm-name <vm-name>  --name NvidiaGpuDriverLinux --publisher Microsoft.HpcCompute --settings "{'driverVersion':'535.161'}"
@@ -275,7 +275,8 @@ az vm extension set  --resource-group <rg-name> --vm-name <vm-name>  --name Nvid
     }
   }
 }
-``` 
+```
+3. Grid 17.5 linux driver has a bug where it impacts CUDA related workload. Error signature typically involves CUDA devices unavailable. While Azure is working to resolve this issue, use GRID driver 16.5 to continue running your workload. 
 ### Support
 
 If you need more help at any point in this article, contact the Azure experts on the [MSDN Azure and Stack Overflow forums](https://azure.microsoft.com/support/community/). Alternatively, you can file an Azure support incident. Go to [Azure support](https://azure.microsoft.com/support/options/) and select **Get support**. For information about using Azure support, read the [Azure support FAQ](https://azure.microsoft.com/support/faq/).

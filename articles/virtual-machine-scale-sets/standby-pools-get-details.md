@@ -405,7 +405,7 @@ Statuses[1]       :
 ### [REST](#tab/rest)
 
 ```HTTP
-PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM/instanceView?api-version=2024-07-01
+GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM/instanceView?api-version=2024-07-01
 
 {
   "bootDiagnostics": {},

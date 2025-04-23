@@ -46,7 +46,7 @@ The **Publish Service Fabric Application** dialog box automatically validates th
    <ClusterConnectionParameters
    ConnectionEndpoint="mycluster.westus.cloudapp.azure.com:19000"
    X509Credential="true"
-   ServerCertThumbprint="0123456789012345678901234567890123456789"
+   ServerCertThumbprint="AA11BB22CC33DD44EE55FF66AA77BB88CC99DD00"
    FindType="FindByThumbprint"
    FindValue="9876543210987654321098765432109876543210"
    StoreLocation="CurrentUser"

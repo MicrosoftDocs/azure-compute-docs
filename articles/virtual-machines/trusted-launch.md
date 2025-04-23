@@ -15,13 +15,13 @@ ms.custom: template-concept; references_regions
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
-Azure offers Trusted Launch as a seamless way to improve the security of [Generation 2](generation-2.md) virtual machines (VMs). Trusted Launch protects against advanced and persistent attack techniques. Trusted Launch is composed of several coordinated infrastructure technologies that can be enabled independently. Each technology provides another layer of defense against sophisticated threats.
+Azure offers Trusted Launch as a seamless way to improve the security of [Generation 2](generation-2.md) virtual machines (VM). Trusted Launch protects against advanced and persistent attack techniques. Trusted Launch is composed of several coordinated infrastructure technologies that can be enabled independently. Each technology provides another layer of defense against sophisticated threats.
 
 > [!IMPORTANT]
 >
-> - Trusted Launch is selected as the default state for newly created Azure VMs. If your new VM requires features that aren't supported by Trusted Launch, see the [Trusted Launch FAQs](trusted-launch-faq.md).
-> - Existing [virtual machines (VMs)](overview.md) can have Trusted Launch enabled after being created. For more information, see [Enable Trusted Launch on existing VMs](trusted-launch-existing-vm.md).
-> - Existing [virtual machine scale sets (VMSS)](../virtual-machine-scale-sets/overview.md) can have Trusted Launch enabled after being created. For more information, see [Enable Trusted Launch on existing scale sets](trusted-launch-existing-vmss.md).
+> - Trusted Launch is selected as the default state for newly created Azure VM. If your new VM requires features that aren't supported with Trusted launch, see the [Trusted Launch FAQs](trusted-launch-faq.md).
+> - [Existing VM](overview.md) can have Trusted Launch enabled after being created. For more information, see [Enable Trusted Launch on existing VMs](trusted-launch-existing-vm.md).
+> - Existing [virtual machine scale set](../virtual-machine-scale-sets/overview.md) can have Trusted Launch enabled after being created. For more information, see [Enable Trusted Launch on existing scale set](trusted-launch-existing-vmss.md).
 
 ## Benefits
 
@@ -80,16 +80,15 @@ Trusted Launch doesn't increase existing VM pricing costs.
 
 Currently, the following VM features aren't supported with Trusted Launch:
 
-- [Azure Site Recovery](/azure/site-recovery/concepts-trusted-vm) (*Generally available for Windows*).
+- [Azure Site Recovery](/azure/site-recovery/concepts-trusted-vm) (*Generally available for Windows, Public preview for Linux*).
 - [Managed Image](capture-image-resource.yml) (customers are encouraged to use [Azure Compute Gallery](trusted-launch-portal.md#trusted-launch-vm-supported-images)).
-- Nested virtualization (v5 VM size families supported).
 - [Linux VM Hibernation](./linux/hibernate-resume-linux.md)
 
 ## Secure Boot
 
 At the root of Trusted Launch is Secure Boot for your VM. Secure Boot, which is implemented in platform firmware, protects against the installation of malware-based rootkits and boot kits. Secure Boot works to ensure that only signed operating systems and drivers can boot. It establishes a "root of trust" for the software stack on your VM.
 
-With Secure Boot enabled, all OS boot components (boot loader, kernel, kernel drivers) require trusted publishers signing. Both Windows and select Linux distributions support Secure Boot. If Secure Boot fails to authenticate that the image is signed by a trusted publisher, the VM fails to boot. For more information, see [Secure Boot](/windows-hardware/design/device-experiences/oem-secure-boot).
+With Secure Boot enabled, all OS boot components (boot loader, kernel, kernel drivers) require trusted publishers signing. Both Windows and select Linux distributions support Secure Boot. If Secure Boot fails to authenticate that the image is signed with a trusted publisher, the VM fails to boot. For more information, see [Secure Boot](/windows-hardware/design/device-experiences/oem-secure-boot).
 
 ## vTPM
 
@@ -105,7 +104,7 @@ If the process fails, possibly because your VM is running an unauthorized compon
 
 [Virtualization-based security](/windows-hardware/design/device-experiences/oem-vbs) (VBS) uses the hypervisor to create a secure and isolated region of memory. Windows uses these regions to run various security solutions with increased protection against vulnerabilities and malicious exploits. Trusted Launch lets you enable hypervisor code integrity (HVCI) and Windows Defender Credential Guard.
 
-HVCI is a powerful system mitigation that protects Windows kernel-mode processes against injection and execution of malicious or unverified code. It checks kernel mode drivers and binaries before they run, preventing unsigned files from loading into memory. Checks ensure that executable code can't be modified after it's allowed to load. For more information about VBS and HVCI, see [Virtualization-based security and hypervisor-enforced code integrity](https://techcommunity.microsoft.com/t5/windows-insider-program/virtualization-based-security-vbs-and-hypervisor-enforced-code/m-p/240571).
+HVCI is a powerful system mitigation that protects Windows kernel-mode processes against injection and execution of malicious or unverified code. It checks kernel mode drivers and binaries before they run, preventing unsigned files from loading into memory. Checks ensure that executable code can't be modified after it's allowed by HVCI to load. For more information about VBS and HVCI, see [Virtualization-based security and hypervisor-enforced code integrity](https://techcommunity.microsoft.com/t5/windows-insider-program/virtualization-based-security-vbs-and-hypervisor-enforced-code/m-p/240571).
 
 With Trusted Launch and VBS, you can enable Windows Defender Credential Guard. Credential Guard isolates and protects secrets so that only privileged system software can access them. It helps prevent unauthorized access to secrets and credential theft attacks, like Pass-the-Hash attacks. For more information, see [Credential Guard](/windows/security/identity-protection/credential-guard/credential-guard).
 
@@ -113,8 +112,8 @@ With Trusted Launch and VBS, you can enable Windows Defender Credential Guard. C
 
 Trusted Launch is integrated with Defender for Cloud to ensure that your VMs are properly configured. Defender for Cloud continually assesses compatible VMs and issues relevant recommendations:
 
-- **Recommendation to enable Secure Boot**: The Secure Boot recommendation only applies for VMs that support Trusted Launch. Defender for Cloud identifies VMs that can enable Secure Boot but have it disabled. It issues a low-severity recommendation to enable it.
-- **Recommendation to enable vTPM**: If your VM has vTPM enabled, Defender for Cloud can use it to perform guest attestation and identify advanced threat patterns. If Defender for Cloud identifies VMs that support Trusted Launch and have vTPM disabled, it issues a low-severity recommendation to enable it.
+- **Recommendation to enable Secure Boot**: The Secure Boot recommendation only applies for VMs that support Trusted Launch. Defender for Cloud identifies VMs that have Secure boot disabled. It issues a low-severity recommendation to enable it.
+- **Recommendation to enable vTPM**: If vTPM is enabled for VM, Defender for Cloud can use it to perform guest attestation and identify advanced threat patterns. If Defender for Cloud identifies VMs that support Trusted Launch with vTPM disabled, it issues a low-severity recommendation to enable it.
 - **Recommendation to install guest attestation extension**: If your VM has Secure Boot and vTPM enabled but it doesn't have the Guest Attestation extension installed, Defender for Cloud issues low-severity recommendations to install the Guest Attestation extension on it. This extension allows Defender for Cloud to proactively attest and monitor the boot integrity of your VMs. Boot integrity is attested via remote attestation.
 - **Attestation health assessment or boot integrity monitoring**: If your VM has Secure Boot and vTPM enabled and the Attestation extension installed, Defender for Cloud can remotely validate that your VM booted in a healthy way. This practice is known as boot integrity monitoring. Defender for Cloud issues an assessment that indicates the status of remote attestation.
 
@@ -122,16 +121,16 @@ Trusted Launch is integrated with Defender for Cloud to ensure that your VMs are
 
 - **Alert for VM attestation failure**: Defender for Cloud periodically performs attestation on your VMs. The attestation also happens after your VM boots. If the attestation fails, it triggers a medium-severity alert.
     VM attestation can fail for the following reasons:
-  - The attested information, which includes a boot log, deviates from a trusted baseline. Any deviation can indicate that untrusted modules have been loaded, and the OS could be compromised.
+  - The attested information, which includes a boot log, deviates from a trusted baseline. Any deviation can indicate that untrusted modules are loaded, and the OS could be compromised.
   - The attestation quote couldn't be verified to originate from the vTPM of the attested VM. An unverified origin can indicate that malware is present and could be intercepting traffic to the vTPM.
 
     > [!NOTE]
     > Alerts are available for VMs with vTPM enabled and the Attestation extension installed. Secure Boot must be enabled for attestation to pass. Attestation fails if Secure Boot is disabled. If you must disable Secure Boot, you can suppress this alert to avoid false positives.
 
-- **Alert for untrusted Linux kernel module**: For Trusted Launch with Secure Boot enabled, it's possible for a VM to boot even if a kernel driver fails validation and is prohibited from loading. If this scenario happens, Defender for Cloud issues low-severity alerts. While there's no immediate threat, because the untrusted driver hasn't been loaded, these events should be investigated. Ask yourself:
+- **Alert for untrusted Linux kernel module**: For Trusted Launch with Secure Boot enabled, it's possible for a VM to boot even if a kernel driver fails validation and is prohibited from loading. If kernel driver validation failure happens, Defender for Cloud issues low-severity alerts. While there's no immediate threat, because the untrusted driver didn't load, these events should be investigated. Ask yourself:
 
-  - Which kernel driver failed? Am I familiar with this driver and do I expect it to load?
-  - Is this the exact version of the driver I'm expecting? Are the driver binaries intact? If this is a third-party driver, did the vendor pass the OS compliance tests to get it signed?
+  - Which kernel driver failed? Am I familiar with the failed kernel driver and do I expect it to load?
+  - Is the exact version of the driver same as expected? Are the driver binaries intact? If failed driver is a partner driver, did the partner pass the OS compliance tests to get it signed?
 
 ## Related content
 

@@ -4,7 +4,7 @@ description: Use encryption at host to enable end-to-end encryption on your Azur
 author: roygara
 ms.service: azure-disk-storage
 ms.topic: how-to
-ms.date: 11/02/2023
+ms.date: 02/25/2025
 ms.author: rogarana
 ms.custom:
   - devx-track-azurecli
@@ -238,7 +238,7 @@ When calling the [Resource Skus API](/rest/api/compute/resourceskus/list), check
         "size": "DS1_v2",
         "family": "standardDSv2Family",
         "locations": [
-        "CentralUSEUAP"
+        "CentralUS"
         ],
         "capabilities": [
         {
@@ -252,7 +252,7 @@ When calling the [Resource Skus API](/rest/api/compute/resourceskus/list), check
 For the Azure PowerShell module, use the [Get-AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku) cmdlet.
 
 ```azurepowershell-interactive
-$vmSizes=Get-AzComputeResourceSku | where{$_.ResourceType -eq 'virtualMachines' -and $_.Locations.Contains('CentralUSEUAP')}
+$vmSizes=Get-AzComputeResourceSku | where{$_.ResourceType -eq 'virtualMachines' -and $_.Locations.Contains('CentralUS')}
 
 foreach($vmSize in $vmSizes)
 {

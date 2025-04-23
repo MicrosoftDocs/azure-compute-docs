@@ -38,10 +38,6 @@ For more information on assigning roles, see [assign Azure roles using the Azure
 
 ### [Portal](#tab/portal)
 
-> [!NOTE]
-> To create and manage standby pools in the Azure portal, register the following feature flag:
-> `Register-AzProviderFeature -FeatureName StandbyVMPoolPreview -ProviderNamespace Microsoft.StandbyPool`
-
 1) Navigate to your Virtual Machine Scale Set.
 2) Under **Availability + scale** select **Standby pool**. 
 3) Select **Manage pool**.

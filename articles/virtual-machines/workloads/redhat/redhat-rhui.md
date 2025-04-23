@@ -84,6 +84,7 @@ RedHat:RHEL:9_0:9.0.2023061412
 
 > [!NOTE]
 > For RHEL8, the following are EUS releases: 8.1, 8.2, 8.4, 8.6 and 8.8. RHEL 8.3, 8.5 and 8.7 aren't EUS releases.
+> RHEL 8.10 is the final release and falls under standard maintenance, not EUS.
 
 ## RHEL EUS and version-locking RHEL VMs
 

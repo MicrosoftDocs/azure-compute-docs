@@ -62,7 +62,6 @@ Complete the update of OS volume with required configuration before upgrading Az
 
 > [!IMPORTANT]
 >
-> - PowerShell based orchestration script is **published as guidance** which orchestrates all upgrade steps including MBR2GPT validation for Windows & Linux and conversion for Windows OS. Guidance script along with required documentation can be accessed at [Azure Gen1 to Gen2-Trusted launch VM Upgrade GitHub repo](https://github.com/Azure/Gen1-Trustedlaunch)
 > - Upgrade a test Gen1 VM to Trusted launch and determine if any changes are required to meet the prerequisites before you upgrade Gen1 VMs associated with production workloads to Trusted launch.
 
 ### [Windows](#tab/windows)
@@ -133,9 +132,6 @@ Validate Guest OS volume readiness for Trusted launch upgrade with following com
 ### [PowerShell](#tab/powershell)
 
 Make sure that you install the latest [Azure PowerShell](/powershell/azure/install-azps-windows) and are signed in to an Azure account with [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount).
-
-> [!IMPORTANT]
-> PowerShell based orchestration script is **published as guidance** which orchestrates all upgrade steps including MBR2GPT conversion. Guidance script along with required documentation can be accessed at [Azure Gen1 to Gen2-Trusted launch VM Upgrade GitHub repo](https://github.com/Azure/Gen1-Trustedlaunch)
 
 Follow the steps to upgrade existing Gen1 VM to Gen2 and enable Trusted launch by using Azure PowerShell.
 

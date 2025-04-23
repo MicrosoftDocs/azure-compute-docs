@@ -179,7 +179,7 @@ az resource-mover move-collection create --identity type=SystemAssigned --locati
   "etag": "\"1c00c55a-0000-0200-0000-650c15c40000\"",
   "id": "/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/clidemo-RG/providers/Microsoft.Migrate/moveCollections/cliDemo-zonalMC",
   "identity": {
-    "principalId": "45bc279c-3353-4f6a-bb4f-8efb48faba59",
+    "principalId": "aaaaaaaa-bbbb-cccc-1111-222222222222",
     "tenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
     "type": "SystemAssigned"
   },
@@ -233,8 +233,8 @@ Grant the managed identity access to the Resource Mover subscription as follows.
     # [CLI](#tab/CLI)
 
     ```azurecli-interactive
-    az role assignment create --assignee-object-id 45bc279c-3353-4f6a-bb4f-8efb48faba59 --assignee-principal-type ServicePrincipal --role Contributor --scope /subscriptions/<Subscription-id>
-    az role assignment create --assignee-object-id 45bc279c-3353-4f6a-bb4f-8efb48faba59 --assignee-principal-type ServicePrincipal --role "User Access Administrator" --scope /subscriptions/<Subscription-id>
+    az role assignment create --assignee-object-id aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb --assignee-principal-type ServicePrincipal --role Contributor --scope /subscriptions/<Subscription-id>
+    az role assignment create --assignee-object-id aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb --assignee-principal-type ServicePrincipal --role "User Access Administrator" --scope /subscriptions/<Subscription-id>
 
     ```
 
@@ -433,9 +433,9 @@ Check whether the regional VMs you added have any dependencies on other resource
     EndTime        : 
     EndTime        : 9/8/2023 6:52:14 AM
 
-    Id             : /subscriptions/<Subscription-id>/resourceGroups/RegionToZone-DemoMCRG/providers/Microsoft.Migrate/moveCollections/RegionToZone-DemoMC/operations/bc68354b-ec1f-44cb-92ab-fb3b4ad90229
+    Id             : /subscriptions/<Subscription-id>/resourceGroups/RegionToZone-DemoMCRG/providers/Microsoft.Migrate/moveCollections/RegionToZone-DemoMC/operations/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e
     Message        :
-    Name           : bc68354b-ec1f-44cb-92ab-fb3b4ad90229
+    Name           : aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e
     Property       : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Any
     StartTime      : 9/8/2023 6:51:50 AM
     Status         : Succeeded

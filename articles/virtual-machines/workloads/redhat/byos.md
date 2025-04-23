@@ -217,7 +217,7 @@ For steps to apply Azure Disk Encryption, see [Azure Disk Encryption scenarios o
 ## Next steps
 
 - More details about Red Hat Cloud Access are available at the [Red Hat public cloud documentation](https://access.redhat.com/public-cloud)
-- For step-by-step guides and program details for Cloud Access, see the [Red Hat Cloud Access documentation](https://access.redhat.com/documentation/en-us/subscription_central/1-latest/html/red_hat_cloud_access_reference_guide/index).
+- For step-by-step guides and program details for Cloud Access, see the [Red Hat Cloud Access documentation](https://docs.redhat.com/en/documentation/subscription_central/1-latest/html/getting_started_with_rhel_system_registration/red-hat-cloud-access-program-overview_#red-hat-cloud-access-program-overview_).
 - To learn more about the Red Hat Update Infrastructure, see [Azure Red Hat Update Infrastructure](./redhat-rhui.md).
 - To learn more about all the Red Hat images in Azure, see the [documentation page](./redhat-images.md).
 - For information on Red Hat support policies for all versions of RHEL, see the [Red Hat Enterprise Linux life cycle](https://access.redhat.com/support/policy/updates/errata) page.

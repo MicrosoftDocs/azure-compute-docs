@@ -14,9 +14,11 @@ On September 30, 2025, Microsoft Azure will retire the Standard_NC6s_v3, Standar
 
 Microsoft is recommending, the Azure [NC A100 v4-series](./nc-a100-v4-series.md) VMs, which offer greater GPU memory bandwidth per GPU, improved [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli) capabilities, larger and faster local solid state drives. Overall the NC A100 v4-series delivers [better cost performance](https://techcommunity.microsoft.com/t5/azure-high-performance-computing/a-quick-start-to-benchmarking-in-azure-nvidia-deep-learning/ba-p/3563884) across midrange AI training and inference workloads. 
 
+Other VMs that may be migrated to from Standard_NC6s_v3, Standard_NC12s_v3, and Standard_NC24s_v3 include NVadsA10_v5, NCads_H100_v5, NCasT4_v3, and NVadsV710_v5.
+
 ## How does the retirement of the NC6s_v3, NC12s_v3, NC24s_v3 virtual machine sizes in NCv3-series affect me? 
 
-**After** **September 30th, any remaining** **tandard_NC6s_v3, Standard_NC12s_v3 and Standard_NC24s_v3 virtual machines (VMs) subscriptions will be set to a deallocated state. They'll stop working and no longer incur billing charges. The NCv3 will no longer be under SLA or have support included.** 
+**After** **September 30th, any remaining** **Standard_NC6s_v3, Standard_NC12s_v3 and Standard_NC24s_v3 virtual machines (VMs) subscriptions will be set to a deallocated state. They'll stop working and no longer incur billing charges. The NCv3 will no longer be under SLA or have support included.** 
 
 > [!Note]
 > This retirement only impacts the virtual machine sizes in the original NCv3-series powered by NVIDIA V100 GPUs. [See Standard_NC24rs_v3 retirement guide](https://aka.ms/nc24rsv3migrationguide). This retirement announcement doesn't apply to NCasT4 v3, and NC A100 v4 and NCads H100 v5 series virtual machines.
@@ -38,7 +40,7 @@ The [NCads H100 v5-Series](./ncads-h100-v5.md) is another SKU in the same produc
 ## Steps to change VM size 
 
 1. Choose a series and size. Refer to the above tables for Microsoft’s recommendation. You can also file a support request if more assistance is needed.
-2. [Request quota for the new target VM](/azure/azure-portal/supportability/per-vm-quota-requests)).
+2. [Request quota for the new target VM](/azure/azure-portal/supportability/per-vm-quota-requests).
 3. You can [resize the virtual machine](resize-vm.md). 
 
    

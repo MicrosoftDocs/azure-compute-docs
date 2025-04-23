@@ -9,7 +9,7 @@ author:      phgantik # GitHub alias
 ms.author:   phgantik # Microsoft alias
 ms.service: virtual-machines-windows
 ms.topic: conceptual
-ms.date:     09/11/2024
+ms.date:     03/18/2025
 ---
 
 # Mdsv3 Very High Memory Series
@@ -24,12 +24,12 @@ The Mdsv3 Very High Memory (VHM) series, powered by 4<sup>th</sup> generation In
 
 | **Size**<sup>1</sup> | **vCPU** | **Memory: GiB** | **Max Data Disks** | **Max temp storage throughput: IOPS/MBps** | **Max un-cached Premium** **SSD  throughput: IOPS/MBps** | **Max un-cached Ultra Disk and Premium SSD V2 disk throughput: IOPS/MBps** | **NIC's (max)** | **Max network bandwidth (Mbps)**  |
 |---|---|---|---|---|---|---|---|---|
-| **standard_m896ixds_32_v3**<sup>2</sup> | 896 | 30400 | 64 | 4096 | 110000/8000 | 200000/8000 | 8 | 185000 |
-| **standard_m1792ixds_32_v3**<sup>3</sup> | 1792 | 30400 | 64 | 4096 | 110000/8000 | 200000/8000 | 8 | 185000 |
+| Standard_M896ixds_32_v3<sup>2</sup> | 896 | 30400 | 64 | 4096 | 110000/8000 | 200000/8000 | 8 | 185000 |
+| Standard_M1792ixds_32_v3<sup>3</sup> | 1792 | 30400 | 64 | 4096 | 110000/8000 | 200000/8000 | 8 | 185000 |
 
-<sup>1</sup>VHM VM Sizes are virtual machine sizes that are Isolated to a specific hardware type and dedicated to a single customer.   
-<sup>2</sup>The Standard_m896ixds_32_v3 VM comes without Simultaneous Multithreading (SMT), meaning a vCPU is mapped to a full physical core.   
-<sup>3</sup>[Disable SMT](/sql/sql-server/compute-capacity-limits-by-edition-of-sql-server#limit-number-of-logical-cores-per-numa-node-to-64) to run SQL Server on a VM with more than 64 vCores per NUMA node.  
+<sup>1</sup> VHM VM Sizes are virtual machine sizes that are Isolated to a specific hardware type and dedicated to a single customer.<br>   
+<sup>2</sup> The Standard_M896ixds_32_v3 VM is the Microsoft recommended VM type with 32TB to host S/4HANA workload. This VM type has Simultaneous Multithreading (SMT) disabled. With that complies with the SAP recommendations stated in SAP note #2711650 for the specific underlying hardware used in Azure to host this Virtual Machine (VM) type. With typical S/4HANA workload, tests this VM realized the best performance.<br>   
+<sup>3</sup> The Standard_M1792ixds_32_v3 VM has Simultaneous Multithreading (SMT) enabled and is ideal for analytical workloads as documented in SAP note #2711650 for the specific underlying hardware used in Azure to host this VM type. Typical S/4HANA workloads may show performance regressions compared to the Standard_M896ixds_32_v3 VM type. It is acknowledged that S/4HANA customer workloads are varying and can be different in nature. As a result, there might be cases where S/4HANA customer workloads could eventually benefit. And the Standard_M1792ixds_32_v3 VM type could provide performance improvements compared to the Standard_M896ixds_32_v3 VM type for a customer specific S/4HANA workload. Evaluating and hosting S/4HANA workload on Standard_M1792ixds_32_v3 is in the customer’s own responsibilities.  
 
 It's also important to note that these VMs are compatible with only certain generation 2 Images. For a list of images that are compatible with the Mdsv3-series, please see below
 - Windows Server 2022 Datacenter Edition latest builds
@@ -38,7 +38,7 @@ It's also important to note that these VMs are compatible with only certain gene
 - Ubuntu 23.10 or later
 
 > [!IMPORTANT]
-> Please contact your Azure Account Manager to inquire about accessing these VHM VM sizes.
+> Contact your Azure Account Manager to inquire about accessing these VHM VM sizes.
 
 ## Size table definitions
 
@@ -52,7 +52,7 @@ To learn how to get the best storage performance for your VMs, see [Virtual mach
 
 **Expected network bandwidth** is the maximum aggregated bandwidth allocated per VM type across all NICs, for all destinations. For more information, see [Virtual machine network bandwidth](/azure/virtual-network/virtual-machine-network-throughput).
 
-Upper limits aren't guaranteed. Limits offer guidance for selecting the right VM type for the intended application. Actual network performance will depend on several factors including network congestion, application loads, and network settings. For information on optimizing network throughput, see [Optimize network throughput for Azure virtual machines](/azure/virtual-network/virtual-network-optimize-network-bandwidth). To achieve the expected network performance on Linux or Windows, you may need to select a specific version or optimize your VM. For more information, see [Bandwidth/Throughput testing (NTTTCP)](/azure/virtual-network/virtual-network-bandwidth-testing).
+Upper limits aren't guaranteed. Limits offer guidance for selecting the right VM type for the intended application. Actual network performance depends on several factors including network congestion, application loads, and network settings. For information on optimizing network throughput, see [Optimize network throughput for Azure virtual machines](/azure/virtual-network/virtual-network-optimize-network-bandwidth). To achieve the expected network performance on Linux or Windows, you may need to select a specific version or optimize your VM. For more information, see [Bandwidth/Throughput testing (NTTTCP)](/azure/virtual-network/virtual-network-bandwidth-testing).
 
 ## Other sizes and information
 

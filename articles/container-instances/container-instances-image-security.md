@@ -19,7 +19,6 @@ This article introduces security considerations for using Azure Container Instan
 
 For comprehensive recommendations that help you improve the security posture of your deployment, see the [Azure security baseline for Container Instances](security-baseline.md).
 
-
 ## Security recommendations for Azure Container Instances
 
 ### Use a private registry

@@ -4,7 +4,7 @@
  author: albecker1
  ms.service: azure-disk-storage
  ms.topic: include
- ms.date: 11/09/2021
+ ms.date: 01/14/2025
  ms.author: albecker1
  ms.custom: include file
 ---
@@ -17,10 +17,6 @@ If you expect your workloads to frequently run beyond the provisioned perf targe
 Before you enable on-demand bursting, understand the following:
 
 [!INCLUDE [managed-disk-bursting-regions-limitations](managed-disk-bursting-regions-limitations.md)]
-
-#### Regional availability
-
-[!INCLUDE [managed-disk-bursting-availability](managed-disk-bursting-availability.md)]
 
 #### Billing
 

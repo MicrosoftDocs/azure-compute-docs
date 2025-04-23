@@ -310,6 +310,13 @@ You can also retrieve the execution state of the VMAccess Extension, along with 
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
+### Error messages
+
+| Error  | Description |
+| ---- | ---- |
+| Provisioning of VM extension enablevmaccess has timed out. Extension provisioning has taken too long to complete. The extension did not report a message. More information on troubleshooting is available at https://aka.ms/vmextensionlinuxtroubleshoot. | The error message indicates that the provisioning of the VM extension ‘enablevmaccess’ has timed out due to taking too long to complete. Additionally, the extension did not provide any status message during the process. To resolve this issue, consider checking the VM’s performance and network conditions, and retry the provisioning operation. For more information, see [Troubleshoot VM extensions](https://learn.microsoft.com/azure/virtual-machines/extensions/features-linux?tabs=azure-cli#troubleshoot-vm-extensions). |
+| VM has reported a failure when processing extension 'enablevmaccess' (publisher 'Microsoft.OSTCExtensions' and type 'VMAccessForLinux'). Error message: 'Enable failed: No password or ssh_key is specified.'. More information on troubleshooting is available at https://aka.ms/vmextensionlinuxtroubleshoot . | The error message indicates that the VM failed to process the ‘enablevmaccess’ extension because no password or SSH key was specified. This failure is associated with the ‘Microsoft.OSTCExtensions’ publisher and the ‘VMAccessForLinux’ type. To resolve this issue, ensure that either a password or an SSH key is provided during the extension configuration. |
+
 For more help, you can contact the Azure experts at [Azure Community Support](https://azure.microsoft.com/support/forums/). Alternatively, you can file an Azure support incident. Go to [Azure support](https://azure.microsoft.com/support/options/) and select **Get support**. For more information about Azure Support, read the [Azure support plans FAQ](https://azure.microsoft.com/support/faq/).
 
 ## Next steps

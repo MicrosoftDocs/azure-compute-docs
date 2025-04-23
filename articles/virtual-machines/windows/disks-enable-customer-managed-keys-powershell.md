@@ -21,7 +21,7 @@ For now, customer-managed keys have the following restrictions:
 
 [!INCLUDE [virtual-machines-managed-disks-customer-managed-keys-restrictions](../includes/virtual-machines-managed-disks-customer-managed-keys-restrictions.md)]
 
-## Set up an Azure Key Vault and DiskEncryptionSet optionally with automatic key rotation
+## Set up an Azure Key Vault and DiskEncryptionSet with automatic key rotation
 
 To use customer-managed keys with SSE, you must set up an Azure Key Vault and a DiskEncryptionSet resource.
 

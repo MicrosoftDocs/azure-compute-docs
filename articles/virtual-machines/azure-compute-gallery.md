@@ -49,7 +49,7 @@ There are limits, per subscription, for deploying resources using Azure Compute 
 - 1,000 image definitions, per subscription, per region
 - 10,000 image versions, per subscription, per region
 - 100 replicas per image version however 50 replicas should be sufficient for most use cases
-- Any disk attached to the image must be less than or equal to 2 TB in size
+- The image size should be less than 2TB, but shallow replication can be utilized to support larger image sizes, up to 32TB
 - Resource move isn't supported for Azure compute gallery resources
 
 For more information, see [Check resource usage against limits](/azure/networking/check-usage-against-limits) for examples on how to check your current usage.
@@ -243,7 +243,7 @@ For example, let's say you have an image of a 127 GB OS disk, that only occupies
    } 
    ```
 
-- Set `BlockDeletionBeforeEndOfLife` to block deletion of the image before it's *end of life* date, ensuring protection against accidental deletion. Set this feature through [Rest API `blockdeletionbeforeendoflife`](https://learn.microsoft.com/rest/api/compute/gallery-image-versions/create-or-update?view=rest-compute&tabs=HTTP#galleryimageversionsafetyprofile).
+- Set `BlockDeletionBeforeEndOfLife` to block deletion of the image before it's *end of life* date, ensuring protection against accidental deletion. Set this feature through [Rest API `blockdeletionbeforeendoflife`](/rest/api/compute/gallery-image-versions/create-or-update?view=rest-compute&preserve-view=true&tabs=HTTP#galleryimageversionsafetyprofile).
 
 
 ## SDK support

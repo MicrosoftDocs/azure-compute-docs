@@ -6,7 +6,7 @@ ms.author: rogarana
 ms.date: 10/21/2024
 ms.topic: how-to
 ms.service: azure-disk-storage
-ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
+ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell, innovation-engine
 ---
 
 # Deploy a Premium SSD v2

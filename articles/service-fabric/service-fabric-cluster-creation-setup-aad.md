@@ -69,7 +69,7 @@ Run `SetupApplications.ps1` and provide the tenant ID, cluster name, web applica
 
 - **webApplicationUri:** *WebApplicationUri* is either the URI of a 'verified domain' or URI using API scheme format of API://{{tenant Id}}/{{cluster name}}. See [AppId Uri in single tenant applications requires use of default scheme or verified domains](/azure/active-directory/develop/reference-breaking-changes#appid-uri-in-single-tenant-applications-will-require-use-of-default-scheme-or-verified-domains) for additional information.
 
-  Example API scheme: API://0e3d2646-78b3-4711-b8be-74a381d9890c/mysftestcluster
+  Example API scheme: API://aaaabbbb-0000-cccc-1111-dddd2222eeee/mysftestcluster
 
 #### SetupApplications.ps1 example
 
@@ -80,7 +80,7 @@ Run `SetupApplications.ps1` and provide the tenant ID, cluster name, web applica
 # cd service-fabric-aad-helpers
 # code .
 
-$tenantId = '0e3d2646-78b3-4711-b8be-74a381d9890c'
+$tenantId = 'aaaabbbb-0000-cccc-1111-dddd2222eeee'
 $clusterName = 'mysftestcluster'
 $spaApplicationReplyUrl = 'https://mysftestcluster.eastus.cloudapp.azure.com:19080/Explorer/index.html' # <--- client browser redirect url
 #$webApplicationUri = 'https://mysftestcluster.contoso.com' # <--- must be verified domain due to AAD changes
@@ -101,16 +101,16 @@ The script outputs $configObj variable for subsequent commands and prints the JS
 ```text
 Name                           Value
 ----                           -----
-WebAppId                       f263fd84-ec9e-44c0-a419-673b1b9fd345
-TenantId                       0e3d2646-78b3-4711-b8be-74a381d9890c
+WebAppId                       00001111-aaaa-2222-bbbb-3333cccc4444
+TenantId                       aaaabbbb-0000-cccc-1111-dddd2222eeee
 ServicePrincipalId             3d10f55b-1876-4a62-87db-189bfc54a9f2
-NativeClientAppId              b22cc0e2-7c4e-480c-89f5-25f768ecb439
+NativeClientAppId              11112222-bbbb-3333-cccc-4444dddd5555
 
 -----ARM template-----
 "azureActiveDirectory": {
-  "tenantId":"0e3d2646-78b3-4711-b8be-74a381d9890c",
-  "clusterApplication":"f263fd84-ec9e-44c0-a419-673b1b9fd345",
-  "clientApplication":"b22cc0e2-7c4e-480c-89f5-25f768ecb439"
+  "tenantId":"aaaabbbb-0000-cccc-1111-dddd2222eeee",
+  "clusterApplication":"00001111-aaaa-2222-bbbb-3333cccc4444",
+  "clientApplication":"11112222-bbbb-3333-cccc-4444dddd5555"
 },
 ```
 
@@ -231,7 +231,7 @@ at <ScriptBlock>, /home/<user>/clouddrive/service-fabric-aad-helpers/SetupUser.p
 at <ScriptBlock>, /home/<user>/clouddrive/aad-test.ps1: line 43
 at <ScriptBlock>, <No file>: line 1
 WARNING: invoke-graphApiCall response status: 400
-invoke-graphApi count:0 statuscode:400 -uri https://graph.microsoft.com/v1.0/0e3d2646-78b3-4711-b8be-74a381d9890c/servicePrincipals/3d10f55b-1876-4a62-87db-189bfc54a9f2/appRoleAssignedTo -headers System.Collections.Hashtable -body System.Collections.Hashtable -method post
+invoke-graphApi count:0 statuscode:400 -uri https://graph.microsoft.com/v1.0/aaaabbbb-0000-cccc-1111-dddd2222eeee/servicePrincipals/3d10f55b-1876-4a62-87db-189bfc54a9f2/appRoleAssignedTo -headers System.Collections.Hashtable -body System.Collections.Hashtable -method post
 confirm-graphApiRetry returning:True
 ```
 

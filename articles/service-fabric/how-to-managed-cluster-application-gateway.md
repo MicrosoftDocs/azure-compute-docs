@@ -41,8 +41,8 @@ The following section describes the steps that should be taken to use Azure Appl
    > Make sure you are in the correct subscription, the principal ID will change if the subscription is in a different tenant.
 
    ```powershell
-   ServicePrincipalNames : {74cb6831-0dbb-4be1-8206-fd4df301cdc2}
-   ApplicationId         : 74cb6831-0dbb-4be1-8206-fd4df301cdc2
+   ServicePrincipalNames : {00001111-aaaa-2222-bbbb-3333cccc4444}
+   ApplicationId         : 00001111-aaaa-2222-bbbb-3333cccc4444
    ObjectType            : ServicePrincipal
    DisplayName           : Azure Service Fabric Resource Provider
    Id                    : 00000000-0000-0000-0000-000000000000

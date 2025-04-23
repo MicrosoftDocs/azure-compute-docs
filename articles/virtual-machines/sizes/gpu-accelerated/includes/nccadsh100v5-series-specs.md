@@ -16,5 +16,5 @@ ms.custom: include file
 | Memory         |  320 GiB        |    |
 | Local Storage  |  1 Disk         | 800 GiB  |
 | Remote Storage |  8 Disks        | 100000 IOPS <br>3000 MBps |
-| Network        |  2 NICs        | 40000 Mbps |
+| Network        |  8 NICs        | 40000 Mbps |
 | Accelerators   |  1 GPU            | Nvidia H100 GPU (94GB)    |

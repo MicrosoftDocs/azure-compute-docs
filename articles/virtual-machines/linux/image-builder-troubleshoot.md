@@ -29,7 +29,7 @@ When you're creating a build, do the following:
   - Deploy [Azure Virtual Network resources](/azure/virtual-network/virtual-networks-overview) (and subnets therein).
   - Deploy [Azure Private Endpoint](/azure/private-link/private-endpoint-overview) resources.
   - Deploy [Azure Files](/azure/storage/files/storage-files-introduction).
-- Verify that Azure Policy doesn't install unintended features on the build VM, such as Azure Extensions.
+- Ensure that Azure Policy does not install unintended features on the build VM or other staging resources, such as Azure Extensions or tag modifications.
 - Ensure that VM Image Builder has the correct permissions to read/write images and to connect to the storage account. For more information, review the permissions documentation for the [Azure CLI](./image-builder-permissions-cli.md) or [Azure PowerShell](./image-builder-permissions-powershell.md).
 - VM Image Builder fails the build if the scripts or inline commands fail with errors (nonzero exit codes). Ensure that you've tested the custom scripts and verified that they run without error (exit code 0) or require user input. For more information, see [Create an Azure Virtual Desktop image by using VM Image Builder and PowerShell](../windows/image-builder-virtual-desktop.md#tips-for-building-windows-images).
 - Ensure your subscription has sufficient [quota](../../container-instances/container-instances-resource-and-quota-limits.md) of Azure Container Instances.
@@ -122,9 +122,13 @@ There are cases where [Managed Service Identities (MSI)](/azure/virtual-machines
 
 #### Solution
 
-
 Use Azure CLI to reset identity on the image template. Ensure you [update](/cli/azure/update-azure-cli) Azure CLI to the 2.45.0 version or later.
 
+Confirm the managed identity from the target image builder template
+
+```azurecli-interactive
+az image builder identity show -g <template resource group> -n <template name> 
+```
 
 Remove the managed identity from the target image builder template
 
@@ -132,11 +136,44 @@ Remove the managed identity from the target image builder template
 az image builder identity remove -g <template resource group> -n <template name> --user-assigned <identity resource id>
 ```
 
-Re-assign identity to the target image builder template
+Assign a new identity to the target image builder template 
 
 ```azurecli-interactive
 az image builder identity assign -g <template rg> -n <template name> --user-assigned <identity resource id>
 ```
+
+For more information about configuring permissions, see [Configure VM Image Builder permissions by using the Azure CLI](image-builder-permissions-cli.md) or [Configure VM Image Builder permissions by using PowerShell](image-builder-permissions-powershell.md).
+
+### Not Authorized to Access resource
+
+#### Error
+
+```output
+Not authorized to access the resource: <resource-not-able-to-access>. Please check the user assigned identity has the correct permissions. For more details, go to https://aka.ms/azvmimagebuilderts.
+```
+
+#### Cause
+
+ The created [Managed Service Identities (MSI)](./image-builder-permissions-cli.md#create-a-user-assigned-managed-identity) assigned to the image template does not have all permissions to access the resource shared on the error message.
+ 
+#### Solution
+
+Confirm the managed identity from the target image builder template
+
+```azurecli-interactive
+az image builder identity show -g <template resource group> -n <template name> 
+```
+
+Review the role assignments for the identity:
+
+```azurecli-interactive
+az role assignment list --assignee <identity_client_id_or_principal_id>
+``` 
+
+Assign the require role or if required create you role with the required permissions.
+
+For more information about configuring permissions, see [Configure VM Image Builder permissions by using the Azure CLI](image-builder-permissions-cli.md) or [Configure VM Image Builder permissions by using PowerShell](image-builder-permissions-powershell.md).
+
 
 ### The resource operation finished with a terminal provisioning state of "Failed"
 
@@ -153,6 +190,7 @@ Microsoft.VirtualMachineImages/imageTemplates 'helloImageTemplateforSIG01' faile
         "code": "InternalOperationError",
         "message": "Internal error occurred."
 ```
+
 
 #### Cause
 
@@ -180,6 +218,7 @@ ImagesClient#Get: Failure responding to request: StatusCode=403 -- Original Erro
 Status=403 Code="AuthorizationFailed" Message="The client '......' with object id '......' doesn't have authorization to perform action 'Microsoft.Compute/images/read' over scope
 ```
 
+
 #### Cause
 
 Missing permissions.
@@ -193,6 +232,8 @@ Depending on your scenario, VM Image Builder might need permissions to:
 - The storage account, container, or blob that the `File` customizer is accessing.
 
 For more information about configuring permissions, see [Configure VM Image Builder permissions by using the Azure CLI](image-builder-permissions-cli.md) or [Configure VM Image Builder permissions by using PowerShell](image-builder-permissions-powershell.md).
+
+
 
 ### The build step failed for the image version
 
@@ -221,9 +262,11 @@ Downloading external file (<myFile>) to local file (xxxxx.0.customizer.fp) [atte
 
 #### Cause
 
-The file name or location is incorrect, or the location isn't reachable.
+The file name or location is incorrect, or the location isn't reachable. 
 
 #### Solution
+
+> **Note:** Certain file repositories may use unsupported cipher suites, causing download errors with Azure Image Builder. Store files and scripts in an Azure storage account to ensure secure cipher suites and accessibility by Azure Image Builder. For more information on how to store your files in Azure storage accounts, refer to the following documentation: [Storage account overview](https://learn.microsoft.com/azure/storage/common/storage-account-overview).
 
 Ensure that the file is reachable. Verify that the name and location are correct.
 

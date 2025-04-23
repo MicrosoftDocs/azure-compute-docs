@@ -12,9 +12,9 @@ ms.custom: include file
 ---
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
 |---|---|---|
-| Processor      | 2 - 96 vCPUs       | Intel Xeon (Sapphire Rapids) [x86-64]                               |
-| Memory         | 8 - 384 GiB          |                                  |
+| Processor      | 2 - 128 vCPUs       | Intel Xeon Platinum 8573C (Emerald Rapids) [x86-64]                               |
+| Memory         | 8 - 512 GiB          |                                  |
 | Local Storage  | None           |                                |
-| Remote Storage | 4 - 32 Disks    | 3750 - 80000 IOPS <br>80 - 2600 MBps   |
-| Network        | 2 - 8 NICs          | 3000 - 30000 Mbps                          |
+| Remote Storage | 8 - 64 Disks    | 3750 - 204800 IOPS <br>80 - 4000 MBps   |
+| Network        | 2 - 8 NICs          | 125000 - 54000 Mbps                          |
 | Accelerators   | None              |                                   |

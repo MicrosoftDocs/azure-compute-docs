@@ -217,6 +217,7 @@ Each event is scheduled a minimum amount of time in the future based on the even
 | Freeze| 15 minutes |
 | Reboot | 15 minutes |
 | Redeploy | 10 minutes |
+| Preempt | 30 seconds |
 | Terminate | [User Configurable](../../virtual-machine-scale-sets/virtual-machine-scale-sets-terminate-notification.md#enable-terminate-notifications): 5 to 15 minutes |
 
 This means that you can detect a future schedule of event at least by the minimum notice time before the event occurs. Once an event is scheduled, it will move into the `Started` state after it's been approved or the `NotBefore` time passes. However, in rare cases, the operation will be canceled by Azure before it starts. In that case the event will be removed from the Events array, and the impact won't occur as previously scheduled. 

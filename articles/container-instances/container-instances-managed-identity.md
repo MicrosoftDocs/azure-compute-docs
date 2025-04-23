@@ -389,7 +389,7 @@ A sample powershell script
 identityEndpoint = $env:IDENTITY_ENDPOINT
 $identityHeader = $env:IDENTITY_HEADER
 $resource = "https://vault.azure.net"
-$principalId = "b2ee9347-623c-4794-85af-2d5261356f67"
+$principalId = "aaaaaaaa-bbbb-cccc-1111-222222222222"
  
 Invoke-RestMethod -Uri "$identityEndpoint" `
     -Method Get `

@@ -392,7 +392,7 @@ If an error occurs, the corresponding HTTP response body contains a JSON object 
 
 Sample error:
 ```json
-{"error":{"correlationId":"7f30f4d3-0f3a-41e0-a417-527f21b3848f","code":"SecretHeaderNotFound","message":"Secret is not found in the request headers."}}
+{"error":{"correlationId":"aaaa0000-bb11-2222-33cc-444444dddddd","code":"SecretHeaderNotFound","message":"Secret is not found in the request headers."}}
 ```
 
 Following is a list of typical Service Fabric errors specific to managed identities:

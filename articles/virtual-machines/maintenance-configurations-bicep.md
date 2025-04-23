@@ -261,7 +261,7 @@ resource symbolicname 'Microsoft.Maintenance/configurationAssignments@2023-04-01
   "location": null,
   "name": "samplebicep",
   "properties": {
-    "correlationId": "b125fc6f-f771-46d7-9b88-b31e0da959f5",
+    "correlationId": "aaaa0000-bb11-2222-33cc-444444dddddd",
     "debugSetting": null,
     "dependencies": [
       {

@@ -117,7 +117,7 @@ az network vnet subnet update \
   --name $subnetName \
   --resource-group $vnetRgName \
   --vnet-name $vnetName \
-  --disable-private-link-service-network-policies true 
+  --private-link-service-network-policies Disabled 
 ```
 
 For more information, see [Azure VM Image Builder networking options](image-builder-networking.md).

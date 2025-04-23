@@ -75,13 +75,13 @@ To help secure a service when you're using service remoting with C# services, fo
            var x509Credentials = new X509Credentials
            {
                FindType = X509FindType.FindByThumbprint,
-               FindValue = "4FEF3950642138446CC364A396E1E881DB76B48C",
+               FindValue = "BB22CC33DD44EE55FF66AA77BB88CC99DD00EE11",
                StoreLocation = StoreLocation.LocalMachine,
                StoreName = "My",
                ProtectionLevel = ProtectionLevel.EncryptAndSign
            };
            x509Credentials.RemoteCommonNames.Add("ServiceFabric-Test-Cert");
-           x509Credentials.RemoteCertThumbprints.Add("9FEF3950642138446CC364A396E1E881DB76B483");
+           x509Credentials.RemoteCertThumbprints.Add("AA11BB22CC33DD44EE55FF66AA77BB88CC99DD00");
            return x509Credentials;
        }
        ```
@@ -94,8 +94,8 @@ To help secure a service when you're using service remoting with C# services, fo
            <Parameter Name="MaxMessageSize" Value="10000000" />
            <Parameter Name="SecurityCredentialsType" Value="X509" />
            <Parameter Name="CertificateFindType" Value="FindByThumbprint" />
-           <Parameter Name="CertificateFindValue" Value="4FEF3950642138446CC364A396E1E881DB76B48C" />
-	       <Parameter Name="CertificateRemoteThumbprints" Value="9FEF3950642138446CC364A396E1E881DB76B483" />
+           <Parameter Name="CertificateFindValue" Value="BB22CC33DD44EE55FF66AA77BB88CC99DD00EE11" />
+	       <Parameter Name="CertificateRemoteThumbprints" Value="AA11BB22CC33DD44EE55FF66AA77BB88CC99DD00" />
            <Parameter Name="CertificateStoreLocation" Value="LocalMachine" />
            <Parameter Name="CertificateStoreName" Value="My" />
            <Parameter Name="CertificateProtectionLevel" Value="EncryptAndSign" />
@@ -145,13 +145,13 @@ To help secure a service when you're using service remoting with C# services, fo
     var x509Credentials = new X509Credentials
     {
         FindType = X509FindType.FindByThumbprint,
-        FindValue = "9FEF3950642138446CC364A396E1E881DB76B483",
+        FindValue = "AA11BB22CC33DD44EE55FF66AA77BB88CC99DD00",
         StoreLocation = StoreLocation.LocalMachine,
         StoreName = "My",
         ProtectionLevel = ProtectionLevel.EncryptAndSign
     };
     x509Credentials.RemoteCommonNames.Add("ServiceFabric-Test-Cert");
-    x509Credentials.RemoteCertThumbprints.Add("4FEF3950642138446CC364A396E1E881DB76B48C");
+    x509Credentials.RemoteCertThumbprints.Add("BB22CC33DD44EE55FF66AA77BB88CC99DD00EE11");
 
     FabricTransportRemotingSettings transportSettings = new FabricTransportRemotingSettings
     {

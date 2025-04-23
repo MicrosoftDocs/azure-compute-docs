@@ -41,7 +41,7 @@ There are also several companies offering extended support for CentOS 7, which m
 
 - SUSE: [Liberty Linux: Proven enterprise support for RHEL & CentOS | SUSE](https://www.suse.com/products/suse-liberty-linux/)
 - OpenLogic: [Enterprise Linux Support](https://www.openlogic.com/solutions/enterprise-linux-support/centos)
-- TuxCare: [Extended Lifecycle Support](https://docs.tuxcare.com/extended-lifecycle-support/)
+- TuxCare: [Extended Lifecycle Support](https://docs.tuxcare.com/els-for-os/#centos-7-els)
 
 - CIQ: [CIQ Bridge - Extending the life of CentOS 7](https://ciq.com/products/ciq-bridge/)
 

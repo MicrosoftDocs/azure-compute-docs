@@ -4,7 +4,7 @@ description: How to enable end-to-end encryption for your Azure VMs using encryp
 author: roygara
 ms.service: azure-disk-storage
 ms.topic: how-to
-ms.date: 07/29/2024
+ms.date: 02/25/2025
 ms.author: rogarana
 ms.custom:
   - devx-track-azurepowershell
@@ -327,7 +327,7 @@ Calling the [Resource Skus API](/rest/api/compute/resourceskus/list) and checkin
         "size": "DS1_v2",
         "family": "standardDSv2Family",
         "locations": [
-        "CentralUSEUAP"
+        "CentralUS"
         ],
         "capabilities": [
         {
@@ -341,20 +341,9 @@ Calling the [Resource Skus API](/rest/api/compute/resourceskus/list) and checkin
 Or, calling the [Get-AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku) PowerShell cmdlet.
 
 ```powershell
-$vmSizes=Get-AzComputeResourceSku | where{$_.ResourceType -eq 'virtualMachines' -and $_.Locations.Contains('CentralUSEUAP')} 
-
-foreach($vmSize in $vmSizes)
-{
-    foreach($capability in $vmSize.capabilities)
-    {
-        if($capability.Name -eq 'EncryptionAtHostSupported' -and $capability.Value -eq 'true')
-        {
-            $vmSize
-
-        }
-
-    }
-}
+Get-AzComputeResourceSku -Location "centralus" |
+    Where-Object { $_.ResourceType -eq 'virtualMachines' -and $_.capabilities.where({ $_.Name -eq 'EncryptionAtHostSupported' }, 'First').Value -eq 'True' } |
+    Select-Object -ExpandProperty Name
 ```
 
 ## Next steps

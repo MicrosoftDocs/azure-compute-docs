@@ -8,7 +8,10 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: conceptual
 ms.date: 10/07/2017
 ms.author: rogarana
-ms.custom: H1Hack27Feb2017
+ms.custom:
+  - H1Hack27Feb2017
+  - migration
+  - aws-to-azure
 ---
 
 # Migrate from Amazon Web Services (AWS) and other platforms to managed disks in Azure

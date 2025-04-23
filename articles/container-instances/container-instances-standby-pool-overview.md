@@ -224,38 +224,39 @@ Standby pools for Azure Container Instances support integration with Managed Ide
 
 ```json
 {
-   "location": "{location}",
-   "properties": {
-       "standByPoolProfile":{
-               "id": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyPoolName}"
-           },
-           "containerGroupProfile": {
-               "id": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.ContainerInstance/containerGroupProfiles/{mycontainergroupprofile}",
-               "revision": {revisionNumber}
-           },
-          },
-          "identity": {
-            "type": "UserAssigned",
-            "userAssignedIdentities": {
-              "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identity}": {}
-            },
-           "containers": [
-               {
-                   "name": "{mycontainergroupprofile}",
-                   "properties": {
-                       "configMap": {
-                           "keyValuePairs": {
-                               "{newKey}": "{newValue}"
-                           }
-                       }
-                   }
-               }
-           ]
-   }
-}
+    "location": "",
+    "properties": {
+      "standByPoolProfile": {
+        "id": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyPoolName}"
+      },
+      "containerGroupProfile": {
+        "id": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.ContainerInstance/containerGroupProfiles/{mycontainergroupprofile}",
+        "revision": "{revisionNumber}"
+      },
+      "containers": [
+        {
+          "name": "{mycontainergroupprofile}",
+          "properties": {
+            "configMap": {
+              "keyValuePairs": {
+                "{newKey}": "{newValue}"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "identity": {
+      "type": "UserAssigned",
+      "userAssignedIdentities": {
+        "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identity}": {}
+      }
+    }
+  }
+ 
 ```
 ## Availability zones
-Standby pools for Azure Container Instances supports creating and requesting containers across availability zones. Creating a zonal standby pool is currently only available using the standby pool [REST APIs](/rest/api/standbypool/standby-virtual-machine-pools/create-or-update) using version 2024-08-01-preview and only available in the Central India region.  
+Standby pools for Azure Container Instances supports creating and requesting containers across availability zones. Creating a zonal standby pool is currently only available using the standby pool [REST APIs](/rest/api/standbypool/standby-virtual-machine-pools/create-or-update) using version 2024-08-01-preview.  
 
 ### Create a zonal standby pool
 

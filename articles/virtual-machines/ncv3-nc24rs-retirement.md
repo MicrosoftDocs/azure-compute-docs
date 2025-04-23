@@ -15,6 +15,8 @@ On March 31, 2025, Microsoft Azure will retire the Standard_NC24rs_v3 virtual ma
 
 Microsoft recommends the Azure [NC A100 v4-series](./nc-a100-v4-series.md) VMs, which offer greater GPU memory bandwidth per GPU, improved [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli) capabilities, larger and faster local solid state drives. Overall the NC A100 v4-series delivers [better cost performance](https://techcommunity.microsoft.com/t5/azure-high-performance-computing/a-quick-start-to-benchmarking-in-azure-nvidia-deep-learning/ba-p/3563884) across midrange AI training and inference workloads. 
 
+Depending on the workload being run and regional affinity, Standard_NC24rs_v3 may also be replaced by NVadsA10_v5, NCads_H100_v5, or NCasT4_v3. 
+
 ## How does the retirement of the Standard_NC24rs_v3 affect me?
 
 After March 31, 2025, any remaining Standard_NC24rs_v3 VM subscriptions will be set to a deallocated state. They'll stop working and no longer incur billing charges. The Standard_NC24rs_v3 VM size will no longer be under SLA or have support included.

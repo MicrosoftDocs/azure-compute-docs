@@ -98,7 +98,7 @@ First connect to the cluster with the TLS/SSL certificate created in the first p
 
 ```powershell
 $endpoint = "<mycluster>.southcentralus.cloudapp.azure.com:19000"
-$thumbprint = "63EB5BA4BC2A3BADC42CA6F93D6F45E5AD98A1E4"
+$thumbprint = "AA11BB22CC33DD44EE55FF66AA77BB88CC99DD00"
 
 Connect-ServiceFabricCluster -ConnectionEndpoint $endpoint `
                              -KeepAliveIntervalInSec 10 `

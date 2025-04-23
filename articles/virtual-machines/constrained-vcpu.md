@@ -5,9 +5,9 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
-ms.date: 08/31/2023
+ms.date: 03/18/2025
 ms.author: mattmcinnes
-ms.reviewer: mimckitt
+ms.reviewer: mimckitt, archatc
 ---
 
 # Constrained vCPU sizes for database workloads
@@ -145,6 +145,69 @@ At this time, the VM pricing, remains the same as the original size. For more in
 | Standard_E64-16as_v5    | 16   | E64as_v5   |
 | Standard_E96-48as_v5    | 48   | E96as_v5   |
 | Standard_E96-24as_v5    | 24   | E96as_v5   |
+| Standard_E4-2s_v6	      | 4    | E4s_v6     |
+| Standard_E8-2s_v6		    | 8   | E8s_v6     |
+| Standard_E8-4s_v6	    | 8    | E8s_v6     |
+| Standard_E16-4s_v6	  | 16    | E16s_v6     |
+| Standard_E16-8s_v6	  | 16    | E16s_v6     |
+| Standard_E32-8s_v6	  | 32    | E32s_v6     |
+| Standard_E32-16s_v6	 | 32    | E32s_v6     |
+| Standard_E64-16s_v6	 | 64    | E64s_v6     |
+| Standard_E64-32s_v6	 | 64    | E64s_v6     |
+| Standard_E96-24s_v6	 | 96    | E96s_v6     |
+| Standard_E96-48s_v6	 | 96    | E96s_v6     |
+| Standard_E128-32s_v6	 | 128    | E128s_v6     |
+| Standard_E128-64s_v6	 | 128   | E128s_v6     |
+| Standard_E4-2ds_v6	4 | 4  | E4ds_v6  |
+| Standard_E8-2ds_v6	| 8 | E8ds_v6 |
+| Standard_E8-4ds_v6	| 8 | E8ds_v6 |
+| Standard_E16-4ds_v6	| 16 | E16ds_v6 |
+| Standard_E16-8ds_v6	| 16 | E16ds_v6 |
+| Standard_E32-8ds_v6	| 32 | E32ds_v6 |
+| Standard_E32-16ds_v6 | 32 | E32ds_v6 |
+| Standard_E64-16ds_v6	| 64 | E64ds_v6 |
+| Standard_E64-32ds_v6	| 64 | E64ds_v6 |
+| Standard_E96-24ds_v6	| 96 | E96ds_v6 |
+| Standard_E96-48ds_v6	| 96 | E96ds_v6 |
+| Standard_E128-32ds_v6	| 128 | E128ds_v6 |
+| Standard_E128-64ds_v6	| 128 | E128ds_v6 |
+
+#### [FX-family sizes](#tab/family-fx)
+
+| Size name               | Active vCPUs | Base size |
+|-------------------------|------|------------|
+| Standard_FX4-2mds_v2          | 2    | FX4mds_v2        |
+| Standard_FX8-4mds_v2          | 4    | FX8mds_v2       |
+| Standard_FX8-2mds_v2         | 2   | FX8mds_v2        |
+| Standard_FX12-6mds_v2         | 6    | FX12mds_v2        |
+| Standard_FX16-8mds_v2          | 8    | FX16mds_v2        |
+| Standard_FX16-4mds_v2         | 4    | FX16mds_v2        |
+| Standard_FX24-12mds_v2         | 12   | FX24mds_v2        |
+| Standard_FX24-6mds_v2        | 6    | FX24mds_v2        |
+| Standard_FX32-16mds_v2     | 16    | FX32mds_v2        |
+| Standard_FX32-8mds_v2          | 8    | FX32mds_v2       |
+| Standard_FX48-24mds_v2         | 24   | FX48mds_v2        |
+| Standard_FX48-12mds_v2         | 12    | FX48mds_v2        |
+| Standard_FX64-32mds_v2       | 32    | FX64mds_v2        |
+| Standard_FX64-16mds_v2       | 16   | FX64mds_v2        |
+| Standard_FX96-48mds_v2        | 48    | FX96mds_v2        |
+| Standard_FX96-24mds_v2        | 24    | FX96mds_v2        |
+| Standard_FX4-2ms_v2          | 2    | FX4ms_v2        |
+| Standard_FX8-4ms_v2          | 4    | FX8ms_v2       |
+| Standard_FX8-2ms_v2         | 2   | FX8ms_v2        |
+| Standard_FX12-6ms_v2         | 6    | FX12ms_v2        |
+| Standard_FX16-8ms_v2          | 8    | FX16ms_v2        |
+| Standard_FX16-4ms_v2         | 4    | FX16ms_v2        |
+| Standard_FX24-12ms_v2         | 12   | FX24ms_v2        |
+| Standard_FX24-6ms_v2        | 6    | FX24ms_v2        |
+| Standard_FX32-16ms_v2     | 16    | FX32ms_v2        |
+| Standard_FX32-8ms_v2          | 8    | FX32ms_v2       |
+| Standard_FX48-24ms_v2         | 24   | FX48ms_v2        |
+| Standard_FX48-12ms_v2         | 12    | FX48ms_v2        |
+| Standard_FX64-32ms_v2       | 32    | FX64ms_v2        |
+| Standard_FX64-16ms_v2       | 16   | FX64ms_v2        |
+| Standard_FX96-48ms_v2        | 48    | FX96ms_v2        |
+| Standard_FX96-24ms_v2        | 24    | FX96ms_v2        |
 
 
 #### [G-family sizes](#tab/family-G)
