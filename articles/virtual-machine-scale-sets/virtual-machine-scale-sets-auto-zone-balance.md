@@ -41,6 +41,16 @@ After creating a new VM, Auto AZ Balance waits up to 90 minutes for it to report
 
 ![Auto Zone Balance Workflow](./media/virtual-machine-scale-sets-auto-zone-balance/AutoZoneBalanceWorkflow.png)
 
+### Safety Features
+
+Auto AZ Balance is designed to be as least intrusive as possible, prioritizing the stability and availability of your workloads. A rebalance operation (creating a VM in a new zone and deleting a VM from an over-provisioned zone) will only begin if the following safety conditions are met:
+
+- The VMSS is not currently marked for deletion.
+- The scale set does not have any ongoing or recently completed operations within the past 60 minutes (such as VMs being added or deleted, or upgrades in progress).
+
+
+Auto AZ Balance will perform a maximum of one rebalance operation every 12 hours. This limit is in place to minimize churn and ensure that changes to your scale set are gradual and controlled. VMs under the instance protection policy, or in deallocated / to-be-delete state will also not be moved by Auto AZ Balance. 
+
 ## Requirements
 
 **Enable application health monitoring for the scale set**
