@@ -27,12 +27,16 @@ If your VM uses Premium Storage, make sure that you choose an **s** version of t
 ### [Portal](#tab/portal)
 1. Open the [Azure portal](https://portal.azure.com). <br/><br/>
 1. Type *virtual machines* in the search. Under **Services**, select **Virtual machines**.
+
     ![Screenshot of the Azure portal search bar.](./media/portal-vms-search.png)<br/><br/>
 1. In the **Virtual machines** page, select the virtual machine you want to resize.
+   
     ![Screenshot of an example VM selected.](./media/portal-select-vm.png)<br/><br/>
-1. In the left menu, select **size**. Pick a new compatible size from the list of available sizes 
+1. In the left menu, select **size**. Pick a new compatible size from the list of available sizes.
+   
     ![Screenshot of the size selection in the Azure portal.](./media/portal-size-select.png)<br/><br/>
 1. After picking a size, select **Resize**.
+   
     ![Screenshot of the resize button in the Azure portal.](./media/portal-resize-button.png)<br/><br/>
 
 > [!Note] 
@@ -280,7 +284,18 @@ For more information on choosing the right SKU, you can use the following resour
 - VM (with local temp disk) -> VM (with local temp disk); and
 - VM (with no local temp disk) -> VM (with no local temp disk).
 
-   For a work-around, see [How do I migrate from a VM size with local temp disk to a VM size with no local temp disk? ](../azure-vms-no-temp-disk.yml#how-do-i-migrate-from-a-vm-size-with-local-temp-disk-to-a-vm-size-with-no-local-temp-disk---). The work-around can be used to resize a VM with no local temp disk to VM with a local temp disk. You create a snapshot of the VM with no local temp disk > create a disk from the snapshot > create VM from the disk with appropriate [VM size](../sizes.md) that supports VMs with a local temp disk.
+> [!Note]
+>  From the Azure Portal, the desired SKU is not visible since it is not a valid SKU to upgrade to/downgrade from. You can use the PowerShell or CLI commands above to try and resize your VM and will receive an error similar to:
+>  ```
+> Unable to resize the VM 'VMName' since changing from resource disk to non-resource disk VM size
+> and vice-versa is not allowed. Please refer to https://aka.ms/AAah4sj for more details.
+> ErrorCode: OperationNotAllowed
+> ErrorMessage: Unable to resize the VM 'VMName' since changing from resource disk to non-resource disk VM size
+> and vice-versa is not allowed. Please refer to https://aka.ms/AAah4sj for more details.
+>  ```
+ 
+
+   For a work-around, see [How do I migrate from a VM size with local temp disk to a VM size with no local temp disk?](../azure-vms-no-temp-disk.yml#how-do-i-migrate-from-a-vm-size-with-local-temp-disk-to-a-vm-size-with-no-local-temp-disk---). The work-around can also be used to resize a VM with no local temp disk to a VM with a local temp disk. In this scenario, create a snapshot of the VM with no local temp disk, then create a disk from the snapshot, and finally create a VM from the disk with a [VM size](../sizes.md) that supports a local temp disk.
 
 2. You can't resize a VM size that has a SCSI-based VM to a VM size that has a remote NVMe-enabled VM.
 
