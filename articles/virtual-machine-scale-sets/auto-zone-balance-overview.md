@@ -13,16 +13,16 @@ ms.custom: devx-track-azurecli, devx-track-azurepowershell
 
 # Automatic zone balance for Azure Virtual Machine Scale Sets (Preview)
 
-Automatic zone balance helps you maintain zone-resilient scale sets that are evenly distributed across availability zones. This feature proactively monitors and redistributes VMs to maximize resiliency and fault tolerance, reducing the risk of zonal imbalance due to capacity constraints or scaling operations.
+Automatic Zone Balance helps you maintain zone-resilient scale sets that are evenly distributed across availability zones. This feature proactively monitors and redistributes VMs to maximize resiliency and fault tolerance, reducing the risk of zonal imbalance due to capacity constraints or scaling operations.
 
 > [!NOTE]
-> Automatic zone balance does not monitor VM health for zonal outages and should not be used as a zone-down recovery mechanism.
+> Automatic Zone Balance does not monitor VM health for zonal outages and should not be used as a zone-down recovery mechanism.
 
 ## Background
 
 When you deploy a Virtual Machine Scale Set (VMSS) across multiple availability zones, the scale set attempts to maximize resiliency by spreading your VMs as evenly as possible. However, factors like capacity constraints or scaling operations can cause your scale set to become "zonally imbalanced" over time, with some zones having more VM instances than others. This imbalance can go unnoticed, but it increases the risk that a single zone failure could impact a disproportionate number of your VMs, reducing your application's availability. 
 
-Auto AZ Balance is designed to help improve zonal resiliency by monitoring your VMSS and automatically redistributing VMs as needed to maintain an even spread across zones. 
+Automatic Zone Balance is designed to help improve zonal resiliency by monitoring your VMSS and automatically redistributing VMs as needed to maintain an even spread across zones. 
 
 Key Terms:
 - A scale set is considered "zonally balanced" if each zone has the same number of VMs +/- 1 VM as all other zones for the scale set. A scale set that does not meet this condition will be considered "zonally imbalanced". More details on zone balance available [here](./virtual-machine-scale-sets-use-availability-zones.md#zone-balancing).
@@ -33,23 +33,23 @@ Key Terms:
 
 ## How does automatic zone balance work? 
 
-Auto AZ Balance is currently designed for stateless workloads running on existing zonal Virtual Machine Scale Sets (VMSS). The rebalancing process works by moving VMs across availability zones using a create before delete approach, ensuring minimal disruption to your applications.
+Automatic Zone Balance is currently designed for stateless workloads running on existing zonal Virtual Machine Scale Sets (VMSS). The rebalancing process works by moving VMs across availability zones using a create before delete approach, ensuring minimal disruption to your applications.
 
-When a zonal imbalance is detected, Auto AZ Balance creates a new VM in the most under-provisioned zone (the zone with the fewest VM instances) and, once the new VM is healthy, deletes a VM from the most over-provisioned zone (the zone with the most VM instances). Only one VM is rebalanced at a time, and new VMs are always created with the latest SKU specified in your VMSS model.
+When a zonal imbalance is detected, Automatic Zone Balance creates a new VM in the most under-provisioned zone (the zone with the fewest VM instances) and, once the new VM is healthy, deletes a VM from the most over-provisioned zone (the zone with the most VM instances). Only one VM is rebalanced at a time, and new VMs are always created with the latest SKU specified in your VMSS model.
 
-After creating a new VM, Auto AZ Balance waits up to 90 minutes for it to report a healthy application signal. If the new VM becomes healthy, the original VM in the over-provisioned zone is deleted. If the new VM does not become healthy within 90 minutes, Auto AZ Balance checks the health of the original VM: if the original VM is healthy, the new (unhealthy) VM is deleted; if the original VM is unhealthy, it is deleted and the new VM is kept. This workflow helps maintain zone balance while prioritizing workload health and availability.
+After creating a new VM, Automatic Zone Balance waits up to 90 minutes for it to report a healthy application signal. If the new VM becomes healthy, the original VM in the over-provisioned zone is deleted. If the new VM does not become healthy within 90 minutes, Automatic Zone Balance checks the health of the original VM: if the original VM is healthy, the new (unhealthy) VM is deleted; if the original VM is unhealthy, it is deleted and the new VM is kept. This workflow helps maintain zone balance while prioritizing workload health and availability.
 
-![Auto Zone Balance Workflow](./media/virtual-machine-scale-sets-auto-zone-balance/AutoZoneBalanceWorkflow.png)
+![Automatic Zone Balance Workflow](./media/virtual-machine-scale-sets-auto-zone-balance/AutoZoneBalanceWorkflow.png)
 
 ### Safety Features
 
-Auto AZ Balance is designed to be as least intrusive as possible, prioritizing the stability and availability of your workloads. A rebalance operation (creating a VM in a new zone and deleting a VM from an over-provisioned zone) will only begin if the following safety conditions are met:
+Automatic Zone Balance is designed to be as least intrusive as possible, prioritizing the stability and availability of your workloads. A rebalance operation (creating a VM in a new zone and deleting a VM from an over-provisioned zone) will only begin if the following safety conditions are met:
 
 - The VMSS is not currently marked for deletion.
-- The scale set does not have any ongoing or recently completed PUT, PATCH, POST operations within the past 60 minutes -- such as VMs being added or deleted, or upgrades in progress.
+- The scale set does not have any ongoing or recently completed `PUT`, `PATCH`, `POST` operations within the past 60 minutes -- such as VMs being added or deleted, or upgrades in progress.
 
 
-Auto AZ Balance will perform a maximum of one rebalance operation every 12 hours. This limit is in place to minimize churn and ensure that changes to your scale set are gradual and controlled. VMs under the instance protection policy, or in deallocated / to-be-delete state will also not be moved by Auto AZ Balance. 
+Automatic Zone Balance will perform a maximum of one rebalance operation every 12 hours. This limit is in place to minimize churn and ensure that changes to your scale set are gradual and controlled. VMs under the instance protection policy, or in deallocated / to-be-delete state will also not be moved by Automatic Zone Balance. 
 
 ## Requirements
 
@@ -91,13 +91,7 @@ The subscription must be registered with the Azure Feature Exposure Control (AFE
   - To protect specific VMs from rebalancing, apply instance protection policy.
 - Not available for stateful workloads (disks cannot be moved across availability zones while preserving resource/disk ID).
 
-## Current state (Phase 1 Preview)
 
-Phase 1 of automatic zone balance is in development, targeting Preview in October 2024.
-
-## Available regions
-
-Automatic zone balance is available in all public Azure regions.
 
 ## API template example
 
