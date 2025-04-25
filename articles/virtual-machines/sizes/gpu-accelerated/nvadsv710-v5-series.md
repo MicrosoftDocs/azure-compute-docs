@@ -10,14 +10,9 @@ ms.author: wwilliams
 ms.reviewer: mattmcinnes
 ---
 
-# NVads V710 v5-series (Preview)
+# NVads V710 v5-series
 
 [!INCLUDE [nvadsv710-v5-summary](./includes/nvadsv710-v5-summary.md)]
-
-> [!NOTE]
-> - This VM series is currently in **Preview**. 
-> - See the [Preview Terms Of Use | Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability. 
-> - [Sign up for the public preview.](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-2EKbNvC7xEohJW7nFBrIFUNzVVNzlMQ002TzdYRzZUR0EwOTFGQjZJUy4u)
 
 ## Host specifications
 [!INCLUDE [nvadsv710-v5-series-specs](./includes/nvadsv710-v5-series-specs.md)]

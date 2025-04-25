@@ -2,7 +2,7 @@
 title: Attach or detach a virtual machine to or from a Virtual Machine Scale Set
 description: How to attach or detach a virtual machine to or from a Virtual Machine Scale Set
 author: manasisoman 
-ms.author: manasisoman-work 
+ms.author: manasisoman
 ms.topic: overview
 ms.service: azure-virtual-machine-scale-sets
 ms.custom: devx-track-azurecli

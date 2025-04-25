@@ -37,7 +37,7 @@ The exact failure depends on if/how your image is misconfigured or if a platform
 |--|--|--|--|
 | No | `< 24.3`| `Linux.OSProvisioningInternalError`<br>Linux.cloud-init successfully reported ready for provisioning but the platform failed to record success | VM may fail to provision even though cloud-init reports ready.|
 | No | `>= 24.3`| Linux.Cloud-Init failed due to azure-proxy-agent not found | Cloud-init reports failure to platform after detecting GPA not installed. |
-| Yes | `< 24.3`| `Linux.OSProvisioningInternalError` | Cloud-init may report ready before GPA is configured as it is GPA-unaware. May fail up to 100% of the time depending on scenario. | 
+| Yes | `< 24.3`| `Linux.OSProvisioningInternalError` | Cloud-init may report ready before GPA is configured as it's GPA-unaware. May fail up to 100% of the time depending on scenario. | 
 | Yes | `>= 24.3`| Cloud-init reports GPA is unhealthy | Any of: eBPF setup failure, Cgroups v2 not enabled, generic startup failure, failure to acquire key |
 
 ## MSP enabled, but not applied in existing VM or Virtual Machine Scale Sets
@@ -62,7 +62,7 @@ ProxyAgent logs from inside the VMs as they have more details, the logs folder i
 status.json
 azure-proxy-agent service captures its overall status into `/var/log/azure-proxy-agent/status.json`
 
-#### 2. Check `proxyAgentStatus` in  the json file and ensure it's "SUCCESS." If it's not "SUCCESS", check these other statuses:
+#### 2. Check `proxyAgentStatus` in  the json file and ensure it's "SUCCESS." If it's not "SUCCESS," check these other statuses:
 
 |Status| Expected value|
 |--|--|
@@ -184,3 +184,19 @@ If your VM's long-lived key is lost, it no longer communicates with Instance Met
 
 > [!Note]
 > If sending multiple requests or otherwise using automation you must ensure that the values you send are strictly monotonically increasing or else no change may be applied. 
+
+## General Error Codes
+
+|Error Code | Error Message | Action |
+|--|--|--|
+| `ProxyAgentNotSupportedInRegion` |Creation of VMs or Virtual Machine Scale Sets with ProxyAgent feature isn't supported in this region. |Please choose a supported region |
+| `SubscriptionNotEnabledForProxyAgentFeature` | The subscription is not registered for the private preview of ProxyAgent feature. | Register the feature flag: https://learn.microsoft.com/azure/virtual-machines/metadata-security-protocol/overview#register-the-feature-flags |
+| `BadRequest` | The property `securityProfile.proxyAgentSettings.wireServer.inVMAccessControlProfileReferenceId` can't be used together with property `securityProfile.proxyAgentSettings.wireServer.mode'` OR the property `securityProfile.proxyAgentSettings.imds.inVMAccessControlProfileReferenceId` can't be used together with property `securityProfile.proxyAgentSettings.imds.mode`. | Fix parameter |
+| `BadRequest` | The value `securityProfile.proxyAgentSettings.keyIncarnationId` can only be incremented. | Fix parameter | 
+| `BadRequest` | The value of parameter `securityProfile.proxyAgentSettings.wireServer.mode` is invalid OR The value of parameter `securityProfile.proxyAgentSettings.imds.mode` is invalid | Provide a valid value: `Audit`, `Enable`, `Disabled` |
+| `InvalidParameter` | The resource id '{0}' isn't a valid gallery `inVMAccessControlProfile` reference. A gallery `inVMAccessControlProfile` reference should be a valid resource identifier, of the format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/inVMAccessControlProfiles/{profileName}/versions/{version}' | Fix the parameter value |
+| `BadRequest` /`GalleryInVMAccessControlProfileNotMatchOSDisk` | Current Gallery `InVMAccessControlProfile` Version {0} supports OS {1}, while current OSDisk's OS is {2}. | Fix the parameter value | 
+| `BadRequest`/`GalleryInVMAccessControlProfileNotMatchHostEndpointType` | Current Gallery `InVMAccessControlProfile` Version {0} is for host endpoint {1}, while current referred by {2}. | Fix parameter value |
+| `InVMAccessControlProfileNotFound` | The gallery `InVMAccessControlProfile` '{0}' isn't available. Verify that the `InVMAccessControlProfileReferenceId` passed in is correct. | Check that the profile exists and is replicated in the regions where VM / Virtual Machine Scale Set exists. | 
+| `InVMAccessControlProfileNotFound` | Failed to prepare the `InVMAccessControlProfile` '{0}' metadata for one or more resources due to an error: '{1}'. | Create a new profile and start over | 
+

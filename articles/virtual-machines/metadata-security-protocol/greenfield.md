@@ -15,7 +15,7 @@ This page explains how to enable the Metadata Security Protocol (MSP) feature wh
 ## Prerequisites
 
 -  Ensure your image of choice is [compatible](./overview.md#compatibility).
-- Familiarize yourself with the [basic configuration](./configuration.md#configuration) options.
+- Familiarize yourself with the [basic configuration](./configuration.md#msp-feature-configuration) options.
 
 ## Deploy VM with MSP
 
