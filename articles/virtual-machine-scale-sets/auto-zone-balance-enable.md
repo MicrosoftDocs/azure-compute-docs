@@ -14,8 +14,7 @@ Before enabling Automatic Zone Balance, ensure the following requirements are me
 
 ## Register the AFEC Feature
 
-:::tabs
-@tab Azure CLI
+### [Azure CLI](#tab/CLI-1)
 
 Register the AFEC feature using Azure CLI:
 
@@ -29,7 +28,7 @@ Check the registration status:
 az feature show --namespace "Microsoft.Compute" --name "AutomaticZoneRebalancing"
 ```
 
-@tab PowerShell
+### [PowerShell](#tab/PowerShell-1)
 
 Register the AFEC feature using Azure PowerShell:
 
@@ -42,7 +41,6 @@ Check the registration status:
 ```powershell
 Get-AzProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName AutomaticZoneRebalancing
 ```
-:::
 
 ## Enable Automatic Zone Balance via REST API
 
