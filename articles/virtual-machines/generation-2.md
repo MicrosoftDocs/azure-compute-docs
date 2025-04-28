@@ -29,7 +29,7 @@ Azure now offers Generation 2 support for the following selected VM series:
 |[B-series](sizes-b-series-burstable.md) |  :heavy_check_mark:  | :heavy_check_mark: |
 |[DCsv2-series](dcv2-series.md) |  :x:  | :heavy_check_mark: |
 |[Dv2-series](dv2-dsv2-series.md) |  :heavy_check_mark: |  :x:  |
-|[DSv2-series](dv2-dsv2-series.md) |  :heavy_check_mark: | :heavy_check_mark: |
+|[DSv2-series](dsv2-series.md) |  :heavy_check_mark: | :x: |
 |[Dv3-series](dv3-dsv3-series.md) | :heavy_check_mark: |  :x: |
 |[Dsv3-series](dv3-dsv3-series.md) | :heavy_check_mark: | :heavy_check_mark: |
 |[Dv4-series](dv4-dsv4-series.md) | :heavy_check_mark: |  :heavy_check_mark: |
