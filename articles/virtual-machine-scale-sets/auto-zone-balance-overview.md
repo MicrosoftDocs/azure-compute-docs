@@ -8,7 +8,6 @@ ms.service: azure-virtual-machine-scale-sets
 ms.subservice: resiliency
 ms.date: 04/18/2025
 ms.reviewer: hilarywang
-ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ---
 
 # Automatic zone balance for Azure Virtual Machine Scale Sets (Preview)

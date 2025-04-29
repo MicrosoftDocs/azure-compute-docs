@@ -1,6 +1,16 @@
-# Quickstart: Enable Automatic Zone Balance on Virtual Machine Scale Sets
+---
+title: Enable Automatic Zone Balance on Virtual Machine Scale Sets
+description: Guide to enable the Automatic Zone Balance feature for your VMSS.
+author: hilaryw29
+ms.author: hilarywang
+ms.topic: conceptual
+ms.service: azure-virtual-machine-scale-sets
+ms.subservice: resiliency
+ms.date: 04/24/2025
+---
+# Enable Automatic Zone Balance on Virtual Machine Scale Sets
 
-This guide provides step-by-step instructions to enable Automatic Zone Balance on your Azure Virtual Machine Scale Sets (VMSS).
+This guide provides instructions to enable Automatic Zone Balance on your Azure Virtual Machine Scale Sets (VMSS).
 
 ## Prerequisites
 
