@@ -32,7 +32,7 @@ Key Terms:
 
 ## How does automatic zone balance work? 
 
-Automatic Zone Balance is currently designed for stateless workloads running on existing zonal Virtual Machine Scale Sets (VMSS). The rebalancing process works by moving VMs across availability zones using a create before delete approach, ensuring minimal disruption to your applications.
+Automatic Zone Balance is designed for Virtual Machine Scale Sets (VMSS) deployed across two or more availability zones. The rebalancing process works by moving VMs across availability zones using a create before delete approach, ensuring minimal disruption to your applications.
 
 When a zonal imbalance is detected, Automatic Zone Balance creates a new VM in the most under-provisioned zone (the zone with the fewest VM instances) and, once the new VM is healthy, deletes a VM from the most over-provisioned zone (the zone with the most VM instances). Only one VM is rebalanced at a time, and new VMs are always created with the latest SKU specified in your VMSS model.
 
@@ -42,81 +42,20 @@ After creating a new VM, Automatic Zone Balance waits up to 90 minutes for it to
 
 ### Safety Features
 
-Automatic Zone Balance is designed to be as least intrusive as possible, prioritizing the stability and availability of your workloads. A rebalance operation (creating a VM in a new zone and deleting a VM from an over-provisioned zone) will only begin if the following safety conditions are met:
+Automatic Zone Balance is designed to be minimally intrusive, prioritizing the stability and availability of your workloads. A rebalance operation (creating a VM in a new zone and deleting a VM from an over-provisioned zone) will only begin if the following safety conditions are met:
 
 - The VMSS is not currently marked for deletion.
 - The scale set does not have any ongoing or recently completed `PUT`, `PATCH`, `POST` operations within the past 60 minutes -- such as VMs being added or deleted, or upgrades in progress.
 
-
-Automatic Zone Balance will perform a maximum of one rebalance operation every 12 hours. This limit is in place to minimize churn and ensure that changes to your scale set are gradual and controlled. VMs under the instance protection policy, or in deallocated / to-be-delete state will also not be moved by Automatic Zone Balance. 
-
-## Requirements
-
-**Enable application health monitoring for the scale set**
-
-The scale set must have application health monitoring enabled to use automatic zone balance. Health monitoring can be done using either [Application Health Extension](./virtual-machine-scale-sets-health-extension.md) or [Load Balancer Health Probes](/azure/load-balancer/load-balancer-custom-probe-overview), where only one can be enabled at a time. 
-
-The application health status is used to ensure that new VMs created during the rebalance process are successful and "healthy", before the original VMs are removed. 
-
-**Configure the scale set with at least two availability zones**
-
-The Virtual Machine Scale Set must be zonal with at least two availability zones configured (for example, `zones = [1, 2]`). This ensures that VMs can be distributed across multiple zones for resiliency.
-
-**Specify a SKU for the scale set**
-
-The Virtual Machine Scale Set must have a SKU configured. The SKU determines the VM size and capabilities, and is required for creating and rebalancing VMs.
-
-**Use supported Compute API version**
-
-Automatic zone balance is supported for Compute API version 2024-07-01 or higher. 
-
-**Register the subscription with AFEC**
-
-The subscription must be registered with the Azure Feature Exposure Control (AFEC) flag `Microsoft.Compute.AutomaticZoneRebalancing`. This registration is required to enable the automatic zone balance feature for your subscription.
-
-## Benefits
-
-- Maintains even VM distribution across availability zones for high resiliency.
-- Automatically detects and rebalances imbalanced scale sets when possible.
-- Simplifies deployment and maintenance of highly available workloads.
-- Supported on Virtual Machine Scale Sets with Uniform and Flexible orchestration modes.
+Automatic Zone Balance will perform a maximum of one rebalance operation every 12 hours. Only 1 VM will be moved in each rebalance operation. This limit is in place to minimize churn and ensure that changes to your scale set are gradual and controlled. VMs under the instance protection policy, or in deallocated / to-be-delete state will also not be moved by Automatic Zone Balance. 
 
 ## Limitations
 
-- Recommended for stateless workloads only. Rebalancing uses delete and recreate operations; instance IDs, networking, and disks are not preserved.
-- Best-effort operation: rebalancing may be delayed if an availability zone has limited capacity.
-- Subject to subscription quota limits. Rebalancing requires enough quota to temporarily exceed current VM count.
-- [Virtual Machine Scale Sets Flexible] New VMs use the latest SKU in the Virtual Machine Scale Set model. Attached VMs with unique SKUs will not retain their SKU after rebalancing.
-  - To protect specific VMs from rebalancing, apply instance protection policy.
-- Not available for stateful workloads (disks cannot be moved across availability zones while preserving resource/disk ID).
+- **Recommended for stateless workloads**: Automatic Zone Balance uses delete and recreate operations to move VMs across availability zones; Instance IDs, networking, and disks are not preserved today as part of rebalancing.
+- **Best-effort operation**: Automatic Zone Balance may be delayed if an availability zone has limited capacity.
+- **Subject to subscription quota limits**: Auto AZ Balance requires enough quota to temporarily exceed current VM count when creating a new VM. 
+- **SKU preservation**: New VMs created by Automatic Zone Balance always use the latest SKU in your VMSS model; any VMs with a different SKU will not retain their SKU during rebalancing.
+  - If you would like to prevent specific VMs from being rebalanced, you can [apply an instance protection policy](./virtual-machine-scale-sets-instance-protection.md).
 
-
-
-## API template example
-
-```json
-"resiliencyPolicy": {
-  "AutomaticZoneRebalancingPolicy": {
-    "Enabled": <bool>,
-    "RebalanceStrategy": "Recreate",
-    "RebalanceBehavior": "CreateBeforeDelete"
-  }
-}
-```
-
-### Parameters
-
-- **Enabled**: Boolean flag to enable automatic zone balance for the Virtual Machine Scale Set.
-- **RebalanceStrategy**: `Recreate` replaces VMs by creating new ones with the same SKU (stateless workloads only).
-- **RebalanceBehavior**: `CreateBeforeDelete` creates new instances and waits for readiness before deleting the source VM (may temporarily increase capacity and costs).
-
-## Onboarding (AFEC registration)
-
-Automatic zone balance requires AFEC registration, which is currently auto-approved. Use the ARM Geneva extension to apply the AFEC to your subscription.
-
-- Ensure you have JIT access before submitting the AFEC request: [AFEC JIT Access](https://eng.ms/docs/products/arm/rp_onboarding/afec/afec_jit)
-- Namespace: `microsoft.compute`
-- Flag Name: `AutomaticZoneRebalancing`
-- For detailed steps, see [Enroll & Self-Service Automatic Zone Rebalancing | RSM Documentation](#).
-
-For questions or issues, contact AzRebalanceTeam@service.microsoft.com.
+## Next Steps
+Learn how to [enable automatic zone balance on your scale set](./auto-zone-balance-enable.md).

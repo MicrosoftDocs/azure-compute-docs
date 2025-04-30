@@ -10,19 +10,33 @@ ms.date: 04/24/2025
 ---
 # Enable Automatic Zone Balance on Virtual Machine Scale Sets
 
-This guide provides instructions to enable Automatic Zone Balance on your Azure Virtual Machine Scale Sets (VMSS).
+This guide provides instructions to enable Automatic Zone Balance on your Virtual Machine Scale Sets (VMSS).
 
 ## Prerequisites
 
-Before enabling Automatic Zone Balance, ensure the following requirements are met:
+Before enabling automatic zone balance on your scale set, please ensure the following prerequisites are met:
 
-- **AFEC Registration:** Your subscription must be registered with the Azure Feature Exposure Control (AFEC) flag `Microsoft.Compute.AutomaticZoneRebalancing`.
-- **API Version:** Use Azure Compute API version `2024-07-01` or higher.
-- **Zonal VMSS:** Your scale set must be deployed across at least two availability zones (e.g., `zones = [1, 2]`).
-- **SKU:** The VMSS must have a SKU specified.
-- **Application Health Monitoring:** Application health signals must be enabled using either the Application Health Extension or a Load Balancer Health Probe.
+**Enable application health monitoring for the scale set**
 
-## Register the AFEC Feature
+The scale set must have application health monitoring enabled to use automatic zone balance. Health monitoring can be done using either [Application Health Extension](./virtual-machine-scale-sets-health-extension.md) or [Load Balancer Health Probes](/azure/load-balancer/load-balancer-custom-probe-overview), where only one can be enabled at a time. 
+
+The application health status is used to ensure that new VMs created during the rebalance process are successful and "healthy", before the original VMs are removed. 
+
+**Configure the scale set with at least two availability zones**
+
+The Virtual Machine Scale Set must be zonal with at least two availability zones configured (for example, `zones = [1, 2]`). This ensures that VMs can be distributed across multiple zones for resiliency.
+
+**Specify a SKU for the scale set**
+
+The Virtual Machine Scale Set must have a SKU configured. The SKU determines the VM size and capabilities, and is required for creating and rebalancing VMs.
+
+**Use a supported Compute API version**
+
+Automatic zone balance is supported for Compute API version 2024-07-01 or higher. 
+
+**Register the subscription with AFEC**
+
+The subscription must be registered with the Azure Feature Exposure Control (AFEC) flag `Microsoft.Compute.AutomaticZoneRebalancing`. This registration is required to enable the automatic zone balance feature for your subscription.
 
 ### [Azure CLI](#tab/CLI-1)
 
@@ -52,33 +66,19 @@ Check the registration status:
 Get-AzProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName AutomaticZoneRebalancing
 ```
 
-## Enable Automatic Zone Balance via REST API
+## Enable Automatic Zone Balance on your scale set
 
-Add or update the `resiliencyPolicy` property in your VMSS resource template:
+Follow the steps below to enable Automatic Zone Balance on a new or existing virtual machine scale set.
 
+### [REST API](#tab/rest-api)
+
+Add the `resiliencyPolicy` property to your scale set model. Use API version 2024-07-01 or higher.
+
+```
+PUT or PATCH on '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}?api-version=2024-07-01'
+```
 ```json
-"resiliencyPolicy": {
-  "AutomaticZoneRebalancingPolicy": {
-    "Enabled": true,
-    "RebalanceStrategy": "Recreate",
-    "RebalanceBehavior": "CreateBeforeDelete"
-  }
-}
-```
-
-### Example: Update VMSS with Automatic Zone Balance (REST API)
-
-Send a PATCH request to your VMSS resource:
-
-```
-PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}?api-version=2024-07-01
-```
-
-**Request body:**
-
-```json
-{
-  "properties": {
+"properties": {
     "resiliencyPolicy": {
       "AutomaticZoneRebalancingPolicy": {
         "Enabled": true,
@@ -87,10 +87,16 @@ PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups
       }
     }
   }
-}
 ```
 
+### [Azure CLI](#tab/CLI-1)
+
+Provide Azure CLI instructions, once available
+
+### [Azure PowerShell](#tab/PowerShell-1)
+
+Provide PowerShell instructions, once available
+
 ## Next Steps
-- Monitor your VMSS for zone balance and health signals.
-- For more details, see [Automatic zone balance for Azure Virtual Machine Scale Sets](./virtual-machine-scale-sets-auto-zone-balance.md).
+Learn more about [automatic zone balance for Virtual Machine Scale Sets](./virtual-machine-scale-sets-auto-zone-balance.md).
 
