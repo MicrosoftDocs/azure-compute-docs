@@ -22,7 +22,7 @@ When you deploy a Virtual Machine Scale Set (VMSS) across multiple availability 
 Automatic zone balance is designed to help improve zonal resiliency by monitoring your VMSS and automatically redistributing VMs as needed to maintain an even spread across zones. 
 
 Key Terms:
-- A scale set is considered "zonally balanced" if each zone has the same number of VMs +/- 1 VM as all other zones for the scale set. A scale set that doesn’t meet this condition is considered "zonally imbalanced". More details on zone balance available [here](./virtual-machine-scale-sets-use-availability-zones.md#zone-balancing).
+- A scale set is considered "zonally balanced" if each zone has the same number of VMs +/- 1 VM as all other zones for the scale set. A scale set that doesn't meet this condition is considered "zonally imbalanced". More details on zone balance available [here](./virtual-machine-scale-sets-use-availability-zones.md#zone-balancing).
 - An "under-provisioned zone" is an availability zone with the fewest VM scale set instances.
   - In a scale set with one VM in zone 1, three VMs in zone 2, and three VMs in zone 3 -- zone 1 is the under-provisioned zone. 
 - An "over-provisioned zone" is an availability zone with the most VM scale set instances.
@@ -42,8 +42,8 @@ After creating a new VM, automatic zone balance waits up to 90 minutes for it to
 
 Automatic zone balance is designed to be minimally intrusive, prioritizing the stability and availability of your workloads. A rebalance operation (creating a VM in a new zone and deleting a VM from an over-provisioned zone) only begins if the following safety conditions are met:
 
-- The VMSS is not marked for deletion.
-- The scale set doesn’t have any ongoing or recently completed `PUT`, `PATCH`, `POST` operations within the past 60 minutes -- such as VMs being added or deleted, or upgrades in progress.
+- The VMSS isn't currently marked for deletion.
+- The scale set doesn't have any ongoing or recently completed `PUT`, `PATCH`, `POST` operations within the past 60 minutes -- such as VMs being added or deleted, or upgrades in progress.
 
 Automatic zone balance performs a maximum of one rebalance operation every 12 hours. Only one VM is moved in each rebalance operation. This limit is in place to minimize churn and ensure that changes to your scale set are gradual and controlled. Automatic zone balance will not move VMs under the instance protection policy, or in deallocated / to-be-delete state. 
 
@@ -52,7 +52,7 @@ Automatic zone balance performs a maximum of one rebalance operation every 12 ho
 - **Recommended for stateless workloads**: Automatic zone balance uses delete and recreate operations to move VMs across availability zones; Instance IDs, networking, and disks aren't preserved today as part of rebalancing.
 - **Best-effort operation**: Automatic zone balance may be delayed if an availability zone has limited capacity.
 - **Subject to subscription quota limits**: Auto AZ Balance requires enough quota to temporarily exceed current VM count when creating a new VM. 
-- **SKU preservation**: New VMs created by automatic zone balance always use the latest SKU in your VMSS model; any VMs with a different SKU won'ts retain their SKU during rebalancing.
+- **SKU preservation**: New VMs created by automatic zone balance always use the latest SKU in your VMSS model; any VMs with a different SKU won't retain their SKU during rebalancing.
   - If you would like to prevent specific VMs from being rebalanced, you can [apply an instance protection policy](./virtual-machine-scale-sets-instance-protection.md).
 
 ## Next Steps
