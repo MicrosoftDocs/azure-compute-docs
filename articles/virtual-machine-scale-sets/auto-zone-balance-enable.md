@@ -5,7 +5,7 @@ author: hilaryw29
 ms.author: hilarywang
 ms.topic: conceptual
 ms.service: azure-virtual-machine-scale-sets
-ms.subservice: resiliency
+ms.subservice: availability
 ms.date: 04/24/2025
 ---
 # Enable Automatic Zone Balance on Virtual Machine Scale Sets
