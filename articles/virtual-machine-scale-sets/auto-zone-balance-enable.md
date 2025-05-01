@@ -1,6 +1,6 @@
 ---
 title: Enable Automatic Zone Balance on Virtual Machine Scale Sets
-description: Guide to enable the Automatic Zone Balance feature for your VMSS.
+description: Guide to enable the Automatic Zone Balance feature for your virtual machine scale set.
 author: hilaryw29
 ms.author: hilarywang
 ms.topic: conceptual
@@ -10,17 +10,17 @@ ms.date: 04/24/2025
 ---
 # Enable Automatic Zone Balance on Virtual Machine Scale Sets
 
-This guide provides instructions to enable Automatic Zone Balance on your Virtual Machine Scale Sets (VMSS).
+This guide provides instructions to enable Automatic Zone Balance on your Virtual Machine Scale Sets.
 
 ## Prerequisites
 
-Before enabling automatic zone balance on your scale set, please ensure the following prerequisites are met:
+Before enabling automatic zone balance on your scale set, ensure the following prerequisites are met:
 
 **Enable application health monitoring for the scale set**
 
 The scale set must have application health monitoring enabled to use automatic zone balance. Health monitoring can be done using either [Application Health Extension](./virtual-machine-scale-sets-health-extension.md) or [Load Balancer Health Probes](/azure/load-balancer/load-balancer-custom-probe-overview), where only one can be enabled at a time. 
 
-The application health status is used to ensure that new VMs created during the rebalance process are successful and "healthy", before the original VMs are removed. 
+The application health status is used to ensure that new virtual machines (VM) created during the rebalance process are successful and "healthy," before the original VMs are removed. 
 
 **Configure the scale set with at least two availability zones**
 
