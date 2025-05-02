@@ -20,7 +20,7 @@ Before enabling automatic zone balance on your scale set, ensure the following p
 
 The scale set must have application health monitoring enabled to use automatic zone balance. Health monitoring can be done using either [Application Health Extension](./virtual-machine-scale-sets-health-extension.md) or [Load Balancer Health Probes](/azure/load-balancer/load-balancer-custom-probe-overview), where only one can be enabled at a time. 
 
-The application health status is used to ensure that new virtual machines (VM) created during the rebalance process are successful and "healthy," before the original VMs are removed. 
+The application health status is used to ensure that new virtual machines (VM) created during the rebalance process are successful and "healthy", before the original VMs are removed. 
 
 **Configure the scale set with at least two availability zones**
 
@@ -70,7 +70,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName Automati
 
 Follow the steps below to enable Automatic Zone Balance on a new or existing virtual machine scale set.
 
-### [REST API](#tab/rest-api)
+### [REST API](#tab/rest-api-2)
 
 Add the `resiliencyPolicy` property to your scale set model. Use API version 2024-07-01 or higher.
 
@@ -89,11 +89,11 @@ PUT or PATCH on '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupNa
   }
 ```
 
-### [Azure CLI](#tab/CLI-1)
+### [Azure CLI](#tab/CLI-2)
 
 Provide Azure CLI instructions, once available
 
-### [Azure PowerShell](#tab/PowerShell-1)
+### [Azure PowerShell](#tab/PowerShell-2)
 
 Provide PowerShell instructions, once available
 
