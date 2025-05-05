@@ -49,7 +49,7 @@ The subscription must be registered with the Azure Feature Exposure Control (AFE
 1. From the left menu, under **Settings** select **Preview features**.
 1. Filter for **AutomaticVMSSZoneRebalancing** and select it
 1. Select **Register**
-:::image type="content" source=".\media\virtual-machine-scale-sets-auto-zone-balance\AutoZoneBalance-RegisterAFEC.png" alt-text="Screenshot of Azure portal with Register button for Automatic Zone Balancing preview flag.":::
+:::image type="content" source=".\media\virtual-machine-scale-sets-auto-zone-balance/auto-zone-balance-register-afec.png" alt-text="Screenshot of Azure portal with Register button for Automatic Zone Balancing preview flag.":::
 
 1. Select **OK**
 

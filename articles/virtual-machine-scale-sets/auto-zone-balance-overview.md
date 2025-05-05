@@ -40,7 +40,7 @@ When a zonal imbalance is detected, automatic zone balance creates a new VM in t
 
 Automatic zone balance waits up to 90 minutes for a newly created VM to report a healthy application signal. If the new VM becomes healthy, the source VM in the over-provisioned zone is deleted. If the new VM doesn't become healthy within 90 minutes, automatic zone balance checks the health of the source VM: if the source VM is healthy, the new (unhealthy) VM is deleted. However, if the source VM is unhealthy, it is then deleted and the new VM is kept. This workflow helps maintain zone balance while prioritizing workload health and availability.
 
-![Automatic zone balance Workflow](./media/virtual-machine-scale-sets-auto-zone-balance/AutoZoneBalanceWorkflow.png)
+:::image type="content" source="./media/virtual-machine-scale-sets-auto-zone-balance/auto-zone-balance-workflow.png" alt-text="Diagram of the workflow for automatic zone balance.":::
 
 ### Safety Features
 
