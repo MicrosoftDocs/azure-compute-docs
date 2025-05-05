@@ -1,5 +1,5 @@
 ---
-title: Automatic zone balance for Azure Virtual Machine Scale Sets (Preview)
+title: Automatic zone balance for Virtual Machine Scale Sets (Preview)
 description: Learn about the Automatic Zone Balance feature for virtual machine scale sets.
 author: hilaryw29
 ms.author: hilarywang
@@ -9,7 +9,7 @@ ms.subservice: availability
 ms.date: 04/18/2025
 ---
 
-# Automatic zone balance for Azure Virtual Machine Scale Sets (Preview)
+# Automatic zone balance for Virtual Machine Scale Sets (Preview)
 
 Automatic zone balance helps you maintain zone-resilient scale sets that are evenly distributed across availability zones. This feature monitors your scale set and moves VMs to maximize resiliency, reducing the risk of zonal imbalances due to capacity constraints or scaling operations.
 
