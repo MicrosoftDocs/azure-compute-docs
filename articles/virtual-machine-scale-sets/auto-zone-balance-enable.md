@@ -27,7 +27,7 @@ The application health status is used to ensure that new virtual machines (VM) c
 
 **Configure the scale set with at least two availability zones**
 
-The Virtual Machine Scale Set must be zonal with at least two [availability zones](./virtual-machine-scale-sets-use-availability-zones.md) configured (for example, `zones = [1, 2]`). This ensures that VMs can be distributed across multiple zones for resiliency.
+The Virtual Machine Scale Set must be zonal with at least two [availability zones](./virtual-machine-scale-sets-use-availability-zones.md) configured (for example, `zones = [1, 2]`). This ensures that the VMs can be distributed across multiple zones for resiliency.
 
 **Specify a SKU for the scale set**
 
@@ -104,6 +104,28 @@ PUT or PATCH on '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupNa
     }
 }
 ```
+### [Portal](#tab/portal-2)
+
+**To enable automatic zone balance during scale set creation**
+
+1. Create a new Virtual Machine Scale Set.
+1. In the **Basics** tab, ensure that at least 2 zones are selected in the **Availability zone** dropdown.
+1. In the **Health** tab, enable and configure **[application health monitoring](./virtual-machine-scale-sets-health-extension.md)**.
+1. Navigate to the **Advanced** tab, select the checkbox for **Automatic zone balancing**.
+:::image type="content" source="media/virtual-machine-scale-sets-auto-zone-balance/enable-rebalance-create-vmss.png" alt-text="A screenshot showing how to enable automatic zone balance during the Virtual Machine Scale Set create experience in the portal.":::
+
+1. Complete additional set up for your scale set. When ready, select **Review and Create**.
+1. Select **Create**.
+
+**To enable automatic zone balance on an existing scale set**
+
+1. Navigate to your Virtual Machine Scale Set.
+1. Under **Availability + scale** select **Availability**.
+1. In **Availability zone** dropdown, ensure at least 2 zones are selected.
+1. Select the checkbox for **Automatic zone balancing**.
+1. Select **Apply**.
+
+:::image type="content" source="media/virtual-machine-scale-sets-auto-zone-balance/enable-rebalance-existing-vmss.png" alt-text="A screenshot showing how to enable automatic zone balance on an existing Virtual Machine Scale Set in the portal.":::
 
 ### [Azure CLI](#tab/CLI-2)
 
@@ -126,7 +148,7 @@ Rebalancing also depends on available capacity—if there isn’t enough capacit
 
 Automatic zone balance is constantly checking your scale set for zonal imbalance. When an imbalance is detected and there’s an opportunity to rebalance—all safety conditions are met, available capacity in under-provisioned zone;  a rebalance operation starts right away. 
 
-If a rebalance already occurred in the past 12 hours, another rebalance won’t happen until that window has passed. These limits help ensure that changes to your scale set are gradual and controlled.
+If a rebalance operation already occurred in the past 12 hours, another rebalance won’t happen until that window has passed. These limits help ensure that changes to your scale set are gradual and controlled.
 
 ### How do I know if automatic zone balance is enabled on my scale set?
 You can check your scale set’s configuration for the `resiliencyPolicy` property. If `AutomaticZoneRebalancingPolicy.Enabled` is set to `true`, automatic zone balance is enabled.
