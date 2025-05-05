@@ -65,6 +65,7 @@ Check the registration status:
 ```powershell
 Get-AzProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName AutomaticZoneRebalancing
 ```
+---
 
 ## Enable Automatic Zone Balance on your scale set
 
@@ -97,6 +98,8 @@ Provide Azure CLI instructions, once available
 
 Provide PowerShell instructions, once available
 
+---
+
 ## Next Steps
-Learn more about [automatic zone balance for Virtual Machine Scale Sets](./virtual-machine-scale-sets-auto-zone-balance.md).
+Learn more about [automatic zone balance for Virtual Machine Scale Sets](./auto-zone-balance-overview.md).
 
