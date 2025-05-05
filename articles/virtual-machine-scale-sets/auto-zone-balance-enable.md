@@ -12,6 +12,9 @@ ms.date: 04/24/2025
 
 This guide provides instructions to enable Automatic Zone Balance on your Virtual Machine Scale Sets.
 
+> [!IMPORTANT]
+> Automatic Zone Balance for Virtual Machine Scale Sets is currently in preview. Previews are made available to you on the condition that you agree to the [supplemental terms of use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Some aspects of this feature may change prior to general availability (GA).
+
 ## Prerequisites
 
 Before enabling automatic zone balance on your scale set, ensure the following prerequisites are met:
@@ -24,7 +27,7 @@ The application health status is used to ensure that new virtual machines (VM) c
 
 **Configure the scale set with at least two availability zones**
 
-The Virtual Machine Scale Set must be zonal with at least two availability zones configured (for example, `zones = [1, 2]`). This ensures that VMs can be distributed across multiple zones for resiliency.
+The Virtual Machine Scale Set must be zonal with at least two [availability zones](./virtual-machine-scale-sets-use-availability-zones.md) configured (for example, `zones = [1, 2]`). This ensures that VMs can be distributed across multiple zones for resiliency.
 
 **Specify a SKU for the scale set**
 
