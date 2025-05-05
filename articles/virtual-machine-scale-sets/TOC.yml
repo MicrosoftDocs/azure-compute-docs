@@ -78,7 +78,7 @@
       href: virtual-machine-scale-sets-mvss-guest-based-autoscale-linux.md
     - name: Troubleshoot autoscale
       href: virtual-machine-scale-sets-troubleshoot.md 
-  - name: Instance mix
+  - name: Instance mix (Preview)
     items:
     - name: Overview
       href: instance-mix-overview.md
