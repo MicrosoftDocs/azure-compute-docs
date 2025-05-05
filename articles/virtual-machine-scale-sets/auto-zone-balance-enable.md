@@ -8,7 +8,7 @@ ms.service: azure-virtual-machine-scale-sets
 ms.subservice: availability
 ms.date: 04/24/2025
 ---
-# Enable Automatic Zone Balance on Virtual Machine Scale Sets
+# Enable Automatic Zone Balance on Virtual Machine Scale Sets (Preview)
 
 This guide provides instructions to enable Automatic Zone Balance on your Virtual Machine Scale Sets.
 
@@ -49,7 +49,6 @@ The subscription must be registered with the Azure Feature Exposure Control (AFE
 1. From the left menu, under **Settings** select **Preview features**.
 1. Filter for **AutomaticVMSSZoneRebalancing** and select it
 1. Select **Register**
-
 :::image type="content" source=".\media\virtual-machine-scale-sets-auto-zone-balance\AutoZoneBalance-RegisterAFEC.png" alt-text="Screenshot of Azure portal with Register button for Automatic Zone Balancing preview flag.":::
 
 1. Select **OK**
@@ -89,7 +88,7 @@ Follow the steps below to enable Automatic Zone Balance on a new or existing vir
 
 ### [REST API](#tab/rest-api-2)
 
-Add the `resiliencyPolicy` property to your scale set model. Use API version 2024-07-01 or higher.
+Add the `resiliencyPolicy` property with the following parameters to your scale set model. Use API version 2024-07-01 or higher.
 
 ```
 PUT or PATCH on '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}?api-version=2024-07-01'
@@ -108,13 +107,35 @@ PUT or PATCH on '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupNa
 
 ### [Azure CLI](#tab/CLI-2)
 
-Provide Azure CLI instructions, once available
+Provide Azure CLI instructions, once available.
 
 ### [Azure PowerShell](#tab/PowerShell-2)
 
-Provide PowerShell instructions, once available
+Provide PowerShell instructions, once available.
 
 ---
+
+## Frequently Asked Questions
+
+### Why is my scale set not balanced?
+Automatic zone balance only runs if your scale set is zonally imbalanced and all [safety conditions](./auto-zone-balance-overview.md#safety-features) are met. For example, there must be no ongoing or recently completed operations on the scale set, and no rebalancing operation from the past 12 hours.
+
+Rebalancing also depends on available capacity—if there isn’t enough capacity in the under-provisioned zone, automatic zone balance can’t create a new VM and the rebalance operation won’t occur. 
+
+### How often does automatic zone balance run?
+
+Automatic zone balance is constantly checking your scale set for zonal imbalance. When an imbalance is detected and there’s an opportunity to rebalance—all safety conditions are met, available capacity in under-provisioned zone;  a rebalance operation starts right away. 
+
+If a rebalance already occurred in the past 12 hours, another rebalance won’t happen until that window has passed. These limits help ensure that changes to your scale set are gradual and controlled.
+
+### How do I know if automatic zone balance is enabled on my scale set?
+You can check your scale set’s configuration for the `resiliencyPolicy` property. If `AutomaticZoneRebalancingPolicy.Enabled` is set to `true`, automatic zone balance is enabled.
+
+### What happens if my subscription doesn’t have enough quota for a new VM during rebalancing?
+If there isn’t enough quota to create a new VM, the rebalance operation won’t proceed. You need to increase your quota to allow rebalancing to occur.
+
+### Can I control which VMs are excluded from rebalancing?
+Yes. You can apply an [instance protection policy](./virtual-machine-scale-sets-instance-protection.md) to specific VMs to prevent them from being selected for rebalancing.
 
 ## Next Steps
 Learn more about [automatic zone balance for Virtual Machine Scale Sets](./auto-zone-balance-overview.md).
