@@ -38,6 +38,19 @@ Automatic zone balance is supported for Compute API version 2024-07-01 or higher
 
 The subscription must be registered with the Azure Feature Exposure Control (AFEC) flag `Microsoft.Compute.AutomaticZoneRebalancing`. This registration is required to enable the automatic zone balance feature for your subscription.
 
+### [Portal](#tab/portal-1)
+
+1. Sign in to the [Azure portal](https://portal.azure.com/).
+1. In the search box, enter _subscriptions_ and select **Subscriptions**.
+1. Select the link for your subscription's name.
+1. From the left menu, under **Settings** select **Preview features**.
+1. Filter for **AutomaticVMSSZoneRebalancing** and select it
+1. Select **Register**
+
+:::image type="content" source=".\media\virtual-machine-scale-sets-auto-zone-balance\AutoZoneBalance-RegisterAFEC.png" alt-text="Screenshot of Azure portal with Register button for Automatic Zone Balancing preview flag.":::
+
+1. Select **OK**
+
 ### [Azure CLI](#tab/CLI-1)
 
 Register the AFEC feature using Azure CLI:
@@ -65,6 +78,7 @@ Check the registration status:
 ```powershell
 Get-AzProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName AutomaticZoneRebalancing
 ```
+---
 
 ## Enable Automatic Zone Balance on your scale set
 
@@ -86,7 +100,7 @@ PUT or PATCH on '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupNa
         "RebalanceBehavior": "CreateBeforeDelete"
       }
     }
-  }
+}
 ```
 
 ### [Azure CLI](#tab/CLI-2)
@@ -97,6 +111,8 @@ Provide Azure CLI instructions, once available
 
 Provide PowerShell instructions, once available
 
+---
+
 ## Next Steps
-Learn more about [automatic zone balance for Virtual Machine Scale Sets](./virtual-machine-scale-sets-auto-zone-balance.md).
+Learn more about [automatic zone balance for Virtual Machine Scale Sets](./auto-zone-balance-overview.md).
 
