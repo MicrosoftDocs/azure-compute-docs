@@ -14,7 +14,7 @@ ms.date:     03/18/2025
 
 # Mdsv3 Very High Memory Series
 
-The Mdsv3 Very High Memory (VHM) series, powered by 4<sup>th</sup> generation Intel® Xeon® Platinum 8490H (Sapphire Rapids) processor with an all core base frequency of 1.9 GHz and 3.5 GHz single core turbo frequency, are the next generation of memory-optimized VM sizes delivering faster performance, lower total cost of ownership and improved resilience to failures compared to the previous generation. The Mv3 VHM sizes offer 32TB of memory, up to 8 GBps of throughput for remote storage, and provide up to 185 Gbps of networking performance with the current VHM generation.
+The Mdsv3 Very High Memory (VHM) series, powered by 4<sup>th</sup> generation Intel® Xeon® Platinum 8490H (Sapphire Rapids) processor with an all core base frequency of 1.9 GHz and 3.5 GHz single core turbo frequency, are the next generation of memory-optimized VM sizes delivering faster performance, lower total cost of ownership and improved resilience to failures compared to the previous generation. The Mv3 VHM sizes offer up to 32TB of memory, up to 8 GBps of throughput for remote storage, and provide up to 185 Gbps of networking performance with the current VHM generation.
 
 ## Feature support
 
@@ -25,6 +25,7 @@ The Mdsv3 Very High Memory (VHM) series, powered by 4<sup>th</sup> generation In
 | **Size**<sup>1</sup> | **vCPU** | **Memory: GiB** | **Max Data Disks** | **Max temp storage throughput: IOPS/MBps** | **Max un-cached Premium** **SSD  throughput: IOPS/MBps** | **Max un-cached Ultra Disk and Premium SSD V2 disk throughput: IOPS/MBps** | **NIC's (max)** | **Max network bandwidth (Mbps)**  |
 |---|---|---|---|---|---|---|---|---|
 | Standard_M896ixds_32_v3<sup>2</sup> | 896 | 30400 | 64 | 4096 | 110000/8000 | 200000/8000 | 8 | 185000 |
+| Standard_M896ixds_24_v3<sup> | 896| 23088| 64 | 4096 | 110000/8000 | 200000/8000 | 8 | 185000 |
 | Standard_M1792ixds_32_v3<sup>3</sup> | 1792 | 30400 | 64 | 4096 | 110000/8000 | 200000/8000 | 8 | 185000 |
 
 <sup>1</sup> VHM VM Sizes are virtual machine sizes that are Isolated to a specific hardware type and dedicated to a single customer.<br>   

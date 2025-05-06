@@ -119,7 +119,11 @@ resource azureImageBuilder 'Microsoft.VirtualMachineImages/imageTemplates@2022-0
 
 ## Location
 
-The location is the region where the custom image is created. The following regions are supported:
+The VM Image Builder service is available in the following regions:  
+
+>[!NOTE]
+> You can still distribute images outside these regions.
+>
 
 - East US
 - East US 2
@@ -151,13 +155,15 @@ The location is the region where the custom image is created. The following regi
 - Korea Central
 - South Africa North
 - Qatar Central
-- USGov Arizona (Public Preview)
-- USGov Virginia (Public Preview)
-- China North 3 (Public Preview)
+- USGov Arizona (public preview)
+- USGov Virginia (public preview)
+- China North 3 (public preview)
 - Sweden Central
 - Poland Central
 - Italy North
 - Israel Central
+- New Zealand North
+- Taiwan Northwest
 
 > [!IMPORTANT]
 > Register the feature `Microsoft.VirtualMachineImages/FairfaxPublicPreview` to access the Azure Image Builder public preview in Azure Government regions (USGov Arizona and USGov Virginia).
@@ -213,11 +219,11 @@ location: '<region>'
 
 ### Data residency
 
-The Azure VM Image Builder service doesn't store or process customer data outside regions that have strict single region data residency requirements when a customer requests a build in that region. If a service outage for regions that have data residency requirements, you need to create Bicep files/templates in a different region and geography.
+The Azure VM Image Builder service keeps customer data within regions that have strict data residency rules. If a service outage for regions that have data residency requirements, you need to create Bicep files/templates in a different region and geography.
 
 ### Zone redundancy
 
-Distribution supports zone redundancy, VHDs are distributed to a Zone Redundant Storage (ZRS) account by default and the Azure Compute Gallery (formerly known as Shared Image Gallery) version will support a [ZRS storage type](../disks-redundancy.md#zone-redundant-storage-for-managed-disks) if specified.
+Distribution supports zone redundancy, Virtual Hard Disks (VHDs) are distributed to a Zone Redundant Storage (ZRS) account by default and the Azure Compute Gallery (formerly known as Shared Image Gallery) version will support a [ZRS storage type](../disks-redundancy.md#zone-redundant-storage-for-managed-disks) if specified.
 
 ## Tags
 
@@ -333,7 +339,7 @@ When using `customize`:
 - If one customizer fails, then the whole customization component will fail and report back an error.
 - Test the scripts thoroughly before using them in a template. Debugging the scripts by themselves is easier.
 - Don't put sensitive data in the scripts. Inline commands can be viewed in the image template definition. If you have sensitive information (including passwords, SAS token, authentication tokens, etc.), it should be moved into scripts in Azure Storage, where access requires authentication.
-- The script locations need to be publicly accessible, unless you're using [MSI](./image-builder-user-assigned-identity.md).
+- The script locations need to be publicly accessible, unless you're using a [User Assigned Identity](./image-builder-user-assigned-identity.md).
 
 The `customize` section is an array. The supported customizer types are: File, PowerShell, Shell, WindowsRestart, and WindowsUpdate.
 
@@ -568,7 +574,7 @@ Customize properties:
 
 ### PowerShell customizer
 
-The `PowerShell` customizer supports running PowerShell scripts and inline command on Windows, the scripts must be publicly accessible for the IB to access them.
+The `PowerShell` customizer supports running PowerShell scripts and inline command on Windows, the scripts must be publicly accessible for the service to access them.
 
 # [JSON](#tab/json)
 
