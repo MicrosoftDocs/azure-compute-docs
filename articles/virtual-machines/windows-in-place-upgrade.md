@@ -164,6 +164,7 @@ Attach the upgrade media for the target Windows Server version to the VM which w
 
 1. Select **Save** to attach the upgrade disk to the VM.
 
+
 ## Perform in-place upgrade to Windows Server 2016, 2019, or 2022, or 2025
 
 To initiate the in-place upgrade the VM must be in the `Running` state. Once the VM is in a running state use the following steps to perform the upgrade.
