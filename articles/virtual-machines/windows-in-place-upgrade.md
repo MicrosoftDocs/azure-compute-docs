@@ -35,7 +35,7 @@ Before you begin an in-place upgrade:
 > When performing an in-place upgrade on Azure Windows VMs, the VM properties on the Azure portal aren't updated; the changes are only reflected within the OS. This means that the source image information in the VM properties, including the publisher, offer, and plan, remains unchanged. The image used to deploy the VM remains the same, and only the OS is upgraded.
 
 > [!NOTE]
-> When performing an in-place upgrade on Azure Windows VMs, upgrades of Windows Server 2022 Azure Edition (AE) to Windows Server 2025 Azure Edition (AE)is not supported.
+> When performing an in-place upgrade on Azure Windows VMs, upgrades of Windows Server 2022 Azure Edition (AE) to Windows Server 2025 Azure Edition (AE) is not supported.
 
 ## Upgrade VM to volume license (KMS server activation)
 
