@@ -24,6 +24,8 @@ Before you begin an in-place upgrade:
    - Upgrade options for Windows Server 2019 from Windows Server 2012 R2 or Windows Server 2016
 
    - Upgrade options for Windows Server 2022 from Windows Server 2016 or Windows Server 2019
+   - 
+   - Upgrade options for Windows Server 2025 from Windows Server 2022 or Windows Server 2016 or Windows Server 2019
 
 - Verify the operating system disk has enough [free space to perform the in-place upgrade](/windows-server/get-started/hardware-requirements#storage-controller-and-disk-space-requirements). If more space is needed [follow these steps](./windows/expand-os-disk.md) to expand the operating system disk attached to the VM.  
 
@@ -31,6 +33,9 @@ Before you begin an in-place upgrade:
 
 > [!NOTE]
 > When performing an in-place upgrade on Azure Windows VMs, the VM properties on the Azure portal aren't updated; the changes are only reflected within the OS. This means that the source image information in the VM properties, including the publisher, offer, and plan, remains unchanged. The image used to deploy the VM remains the same, and only the OS is upgraded.
+
+> [!NOTE]
+> When performing an in-place upgrade on Azure Windows VMs, upgrades of Windows Server 2022 Azure Edition (AE) to Windows Server 2025 Azure Edition (AE)is not supported.
 
 ## Upgrade VM to volume license (KMS server activation)
 
@@ -161,7 +166,7 @@ Attach the upgrade media for the target Windows Server version to the VM which w
 
  
 
-## Perform in-place upgrade to Windows Server 2016, 2019, or 2022
+## Perform in-place upgrade to Windows Server 2016, 2019, or 2022, or 2025
 
 To initiate the in-place upgrade the VM must be in the `Running` state. Once the VM is in a running state use the following steps to perform the upgrade.
 
