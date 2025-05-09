@@ -46,7 +46,7 @@ You can expose your containers to the internet by specifying one or more ports t
 Execute a command similar to the following to start a container instance. Set a `--dns-name-label` value that's unique within the Azure region where you create the instance. If you receive a "DNS name label not available" error message, try a different DNS name label.
 
 ```azurecli-interactive
-az container create --resource-group myResourceGroup --name mycontainer --image mcr.microsoft.com/azuredocs/aci-helloworld --dns-name-label aci-demo --ports 80
+az container create --resource-group myResourceGroup --name mycontainer --image mcr.microsoft.com/azuredocs/aci-helloworld --dns-name-label aci-demo --ports 80 --os-type linux --memory 1.5 --cpu 1
 ```
 
 Within a few seconds, you should get a response from the Azure CLI indicating the deployment completed. Check its status with the [az container show][az-container-show] command:
