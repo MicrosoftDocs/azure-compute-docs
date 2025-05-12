@@ -52,9 +52,11 @@
       href: tutorial-use-custom-image-powershell.md
   - name: Deploy apps to a scale set
     items:
-    - name: Azure CLI
+    - name: Using VM Apps
+      href: ../virtual-machines/vm-applications-how-to.md
+    - name: Using custom script extension - Linux
       href: tutorial-install-apps-cli.md
-    - name: Azure PowerShell
+    - name: Using custom script extension - Windows
       href: tutorial-install-apps-powershell.md
   - name: Autoscale a scale set
     items:

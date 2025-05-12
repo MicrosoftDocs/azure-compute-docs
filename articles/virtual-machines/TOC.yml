@@ -70,10 +70,12 @@
       href: ./linux/tutorial-manage-vm.md
     - name: Create / manage disks
       href: ./linux/tutorial-manage-disks.md
-    - name: Automate configuration
-      href: ./linux/tutorial-automate-vm-deployment.md
     - name: Create VM images
       href: ./linux/tutorial-custom-images.md
+    - name: Create & deploy VM Application
+      href: ./vm-applications-how-to.md?tabs=cli%2Ccli1%2Ccli2%2Ccli3
+    - name: Automate configuration
+      href: ./linux/tutorial-automate-vm-deployment.md
     - name: Manage networking
       href: ./linux/tutorial-virtual-network.md
     - name: Load Balance VMs
@@ -86,10 +88,12 @@
       href: ./windows/tutorial-manage-vm.md
     - name: Create / manage disks
       href: ./windows/tutorial-manage-data-disk.md
-    - name: Automate configuration
-      href: ./windows/tutorial-automate-vm-deployment.md
     - name: Create VM images
       href: ./windows/tutorial-custom-images.md
+    - name: Create & deploy VM Application
+      href: ./vm-applications-how-to.md?tabs=powershell%2Cpowershell1%2Cpowershell2%2Cpowershell3
+    - name: Automate configuration
+      href: ./windows/tutorial-automate-vm-deployment.md
     - name: Manage networking
       href: ./windows/tutorial-virtual-network.md
     - name: Load Balance VMs
@@ -774,7 +778,7 @@
       items:
       - name: Overview
         href: vm-applications.md
-      - name: Deploy VM Applications
+      - name: Create & Deploy VM Applications
         href: vm-applications-how-to.md
   - name: Images
     items:

@@ -19,6 +19,24 @@ ms.devlang: azurecli
 
 To run applications on virtual machine (VM) instances in a scale set, you first need to install the application components and required files. This article introduces ways to build a custom VM image for instances in a scale set, or automatically run install scripts on existing VM instances. You also learn how to manage application or OS updates across a scale set.
 
+## Install an app using VM Apps
+[Azure VM Apps](../virtual-machines/vm-applications.md) provide a streamlined way to package, manage, and deploy applications across Azure Virtual Machines (VMs), Virtual Machine Scale Sets (VMSS). VM Apps is the best suited method for deploying tools, agents, AI Apps, security components, and line-of-business applications across Azure. 
+### Key Benefits: 
+- Package and manage applications (ZIP, MSI, EXE) in the Azure Compute Gallery.
+- Share applications publicly or within an organization.
+- Achieve consistent deployments and version control across Azure VMs and VMSS.
+- Re-use publicly published apps from the Azure Compute Gallery.
+- Deploy multiple applications on a single VM.
+- Ensure reliable installation with built-in failure handling.
+- Update individual applications without the need for custom VM images or scripts.
+- Automate deployments using ARM templates, Azure CLI, and Terraform.
+- Automatic regional replication of published applications improving create latency & resiliency.
+- Integrated Azure RBAC ensuring Application publishing from authorized users.
+
+### Create and deploy VM Apps
+- [Overview of VM Apps](../virtual-machines/vm-applications.md)
+- [Create and deploy VM Apps on Linux VM](../virtual-machines/vm-applications-how-to.md?tabs=cli%2Ccli1%2Ccli2%2Ccli3)
+- [Create and deploy VM Apps on Windows VM](../virtual-machines/vm-applications-how-to.md?tabs=powershell%2Cpowershell1%2Cpowershell2%2Cpowershell3)
 
 ## Build a custom VM image
 When you use one of the Azure platform images to create the instances in your scale set, no additional software is installed or configured. You can automate the install of these components, however that adds to the time it takes to provision VM instances to your scale sets. If you apply many configuration changes to the VM instances, there is management overhead with those configuration scripts and tasks.
