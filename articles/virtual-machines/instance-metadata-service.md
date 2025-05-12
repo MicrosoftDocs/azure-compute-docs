@@ -151,8 +151,9 @@ For example, `/metadata/instance` returns the json object:
                     }]
                 },
                 "ipv6": {
-                    "ipAddress": [
-                     ]
+                    "ipAddress": [{
+                        "privateIpAddress": "b4bc:8fce:f33b:4990:cced:d94e:ab4f:6ea0"
+                    }]
                 },
                 "macAddress": "0011AAFFBB22"
             },
@@ -189,8 +190,9 @@ would filter to the first element from the `Network.interface` property and retu
         }]
     },
     "ipv6": {
-        "ipAddress": [
-         ]
+        "ipAddress": [{
+            "privateIpAddress": "b4bc:8fce:f33b:4990:cced:d94e:ab4f:6ea0"
+        }]
     },
     "macAddress": "0011AAFFBB22"
 }
@@ -483,11 +485,11 @@ If there's [no local temp disk for the VM](azure-vms-no-temp-disk.yml), this val
 
 | Data | Description | Version introduced |
 |------|-------------|--------------------|
-| `ipv4.privateIpAddress` | Local IPv4 address of the VM | 2017-04-02
-| `ipv4.publicIpAddress` | Public IPv4 address of the VM | 2017-04-02
-| `subnet.address` | Subnet address of the VM | 2017-04-02
-| `subnet.prefix` | Subnet prefix, example 24 | 2017-04-02
-| `ipv6.ipAddress` | Local IPv6 address of the VM | 2017-04-02
+| `ipv4.ipAddress.privateIpAddress` | Local IPv4 address of the VM | 2017-04-02
+| `ipv4.ipAddress.publicIpAddress` | Public IPv4 address of the VM | 2017-04-02
+| `ipv4.subnet.address` | Subnet address of the VM | 2017-04-02
+| `ipv4.subnet.prefix` | Subnet prefix, example 24 | 2017-04-02
+| `ipv6.ipAddress.privateIpAddress` | Local IPv6 address of the VM | 2017-04-02
 | `macAddress` | VM mac address | 2017-04-02
 
 > [!NOTE]
@@ -1051,7 +1053,9 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/ne
         ]
       },
       "ipv6": {
-        "ipAddress": []
+        "ipAddress": [{
+          "privateIpAddress": "b4bc:8fce:f33b:4990:cced:d94e:ab4f:6ea0"
+        }]
       },
       "macAddress": "000D3AF806EC"
     }
