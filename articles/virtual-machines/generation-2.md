@@ -48,16 +48,16 @@ Azure now offers Generation 2 support for the following selected VM series:
 |[Dsv5-series](dv5-dsv5-series.md) | :heavy_check_mark: | :heavy_check_mark: |
 |[Ddv5-series](ddv5-ddsv5-series.md) | :heavy_check_mark: | :heavy_check_mark: |
 |[Ddsv5-series](ddv5-ddsv5-series.md) | :heavy_check_mark: | :heavy_check_mark: |
-|[Dsv6-series](dv6-dsv6-series.md) | :x: | :heavy_check_mark: |
-|[Ddsv6-series](ddv6-ddsv6-series.md) | :x: | :heavy_check_mark: |
-|[Dlsv6-series](dlsv6-dlsv6-series.md) | :x: | :heavy_check_mark: |
-|[Dldsv6-series](dlsv6-dlsv6-series.md) | :x: | :heavy_check_mark: |
-|[Dalsv6-series](dalsv6-dalsv6-series.md) | :x: | :heavy_check_mark: |
-|[Daldsv6-series](dalsv6-dalsv6-series.md) | :x: | :heavy_check_mark: |
-|[Dpsv6-series](dpsv6-dpdsv6-series.md) | :x: | :heavy_check_mark: |
-|[Dpdsv6-series](dpsv6-dpdsv6-series.md) | :x: | :heavy_check_mark: |
-|[Dplsv6-series](dplsv6-dplsv6-series.md) | :x: | :heavy_check_mark: |
-|[Dpldsv6-series](dplsv6-dplsv6-series.md) | :x: | :heavy_check_mark: |
+|[Dsv6-series](dsv6-series.md) | :x: | :heavy_check_mark: |
+|[Ddsv6-series](ddsv6-series.md) | :x: | :heavy_check_mark: |
+|[Dlsv6-series](dlsv6-series.md) | :x: | :heavy_check_mark: |
+|[Dldsv6-series](dldsv6-series.md) | :x: | :heavy_check_mark: |
+|[Dalsv6-series](dalsv6-series.md) | :x: | :heavy_check_mark: |
+|[Daldsv6-series](daldsv6-series.md) | :x: | :heavy_check_mark: |
+|[Dpsv6-series](dpsv6-series.md) | :x: | :heavy_check_mark: |
+|[Dpdsv6-series](dpdsv6-series.md) | :x: | :heavy_check_mark: |
+|[Dplsv6-series](dplsv6-series.md) | :x: | :heavy_check_mark: |
+|[Dpldsv6-series](dpldsv6-series.md) | :x: | :heavy_check_mark: |
 |[Ev3-series](ev3-esv3-series.md) | :heavy_check_mark: | :x: |
 |[Esv3-series](ev3-esv3-series.md) | :heavy_check_mark: | :heavy_check_mark: |
 |[Ev4-series](ev4-esv4-series.md) |  :heavy_check_mark:|  :heavy_check_mark: |
@@ -77,12 +77,12 @@ Azure now offers Generation 2 support for the following selected VM series:
 |[Ev5-series](ev5-esv5-series.md) |  :heavy_check_mark:  | :heavy_check_mark: |
 |[Esv5-series](ev5-esv5-series.md) |  :heavy_check_mark:  | :heavy_check_mark: |
 |[Esv5-series](ev5-esv5-series.md) |  :heavy_check_mark:  | :heavy_check_mark: |
-|[Esv6-series](ev6-esv6-series.md) |  :x: | :heavy_check_mark: |
-|[Edsv6-series](edv6-edsv6-series.md) |  :x: | :heavy_check_mark: |
-|[Epsv6-series](epsv6-epdsv6-series.md) |  :x: | :heavy_check_mark: |
-|[Epdsv6-series](epsv6-epdsv6-series.md) |  :x: | :heavy_check_mark: |
-|[Easv6-series](easv6-easv6-series.md) |  :x: | :heavy_check_mark: |
-|[Eadsv6-series](easv6-easv6-series.md) |  :x: | :heavy_check_mark: |
+|[Esv6-series](esv6-series.md) |  :x: | :heavy_check_mark: |
+|[Edsv6-series](edsv6-series.md) |  :x: | :heavy_check_mark: |
+|[Epsv6-series](epsv6-series.md) |  :x: | :heavy_check_mark: |
+|[Epdsv6-series](epdsv6-series.md) |  :x: | :heavy_check_mark: |
+|[Easv6-series](easv6-series.md) |  :x: | :heavy_check_mark: |
+|[Eadsv6-series](eadsv6-series.md) |  :x: | :heavy_check_mark: |
 |[Fsv2-series](fsv2-series.md) |  :heavy_check_mark:  | :heavy_check_mark: |
 |[FX-series](fx-series.md) |  :x:  | :heavy_check_mark: |
 |[GS-series](sizes-previous-gen.md#gs-series) | :x:| :heavy_check_mark: |
