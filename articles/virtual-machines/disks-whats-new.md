@@ -16,6 +16,8 @@ Azure Disk Storage regularly receives updates for new features and enhancements.
 ## Update summary
 
 - [What's new in 2025](#whats-new-in-2025)
+  - [Quarter 2 (April, May, June)](#quarter-2-april-may-june)
+    - [Generally available: Troubleshoot Disk Performance with Copilot in Azure](#generally-available-troubleshoot-disk-performance-with-copilot-in-azure)
   - [Quarter 1 (January, February, March)](#quarter-1-january-february-march-2)
     - [Public Preview: Troubleshoot Disk Performance with Copilot in Azure](#public-preview-troubleshoot-disk-performance-with-copilot-in-azure)
 - [What's new in 2024](#whats-new-in-2024)
@@ -53,6 +55,12 @@ Azure Disk Storage regularly receives updates for new features and enhancements.
         - [GA: Entra ID support for managed disks](#ga-entra-id-support-for-managed-disks)
 
 ## What's new in 2025
+
+### Quarter 2 (April, May, June)
+
+#### Generally available: Troubleshoot Disk Performance with Copilot in Azure
+
+The Disk Performance Troubleshooting Capability for Copilot in Azure is now [Generally Available](https://azure.microsoft.com/updates?id=474649) as a part of the Copilot in Azure General Availability. Now, you can use Copilot in Azure to analyze your [disk metrics](disks-metrics.md) and resolve any performance degredation issues when your application requires higher performance than what you have configured for your VMs and disks. To learn more, see [Troubleshoot Disk Performance using Microsoft Copilot in Azure](/azure/copilot/troubleshoot-disk-performance).
 
 ### Quarter 1 (January, February, March)
 
