@@ -125,13 +125,25 @@ Use the following procedure to lock a RHEL 8.x VM to a particular minor release.
    sudo dnf --disablerepo='*' remove 'rhui-azure-rhel8'
    ```
 
+1. Create a `config` file by using this command or a text editor:
+
+   ```bash
+   cat <<EOF > rhel8-eus.config
+   [rhui-microsoft-azure-rhel8]
+   name=Microsoft Azure RPMs for RHEL8 Extended Update Support
+   baseurl=https://rhui-1.microsoft.com/pulp/repos/microsoft-azure-rhel8-eus https://rhui-2.microsoft.com/pulp/repos/microsoft-azure-rhel8-eus https://rhui-3.microsoft.com/pulp/repos/microsoft-azure-rhel8-eus
+   enabled=1
+   gpgcheck=1
+   sslverify=1
+   gpgkey=https://packages.microsoft.com/keys/microsoft.asc
+   EOF
+   ```
+
 1. Add EUS repositories.
 
    ```bash
-   wget https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel8-eus.config
-   sudo dnf --config=rhui-microsoft-azure-rhel8-eus.config install rhui-azure-rhel8-eus
+   sudo dnf --config rhel8-eus.config install rhui-azure-rhel8-eus
    ```
-
 
 1. Lock the `releasever` level, it has to be one of 8.1, 8.2, 8.4, 8.6 or 8.8.
 
@@ -164,12 +176,25 @@ Use the following procedure to lock a RHEL 9.x VM to a particular minor release.
    sudo dnf --disablerepo='*' remove 'rhui-azure-rhel9'
    ```
 
-1. Add EUS repositories.
+1. Create a `config` file by using this command or a text editor:
 
    ```bash
-   sudo dnf --config='https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel9-eus.config' install rhui-azure-rhel9-eus
+   cat <<EOF > rhel9-eus.config
+   [rhui-microsoft-azure-rhel9]
+   name=Microsoft Azure RPMs for Red Hat Enterprise Linux 9 (rhel9-eus)
+   baseurl=https://rhui4-1.microsoft.com/pulp/repos/unprotected/microsoft-azure-rhel9-eus
+   enabled=1
+   gpgcheck=1
+   sslverify=1
+   gpgkey=https://packages.microsoft.com/keys/microsoft.asc
+   EOF
    ```
 
+1. Add non-EUS repository.
+
+   ```bash
+   sudo dnf --config rhel9-eus.config install rhui-azure-rhel9-eus
+   ```
 
 1. Lock the `releasever` level, currently it has to be one of 9.0, 9.2, or 9.4.
 
@@ -206,10 +231,24 @@ To remove the version lock, use the following commands. Run the commands as `roo
    sudo yum --disablerepo='*' remove 'rhui-azure-rhel7-eus'
    ```
 
+1. Create a `config` file by using this command or a text editor:
+
+   ```bash
+   cat <<EOF > rhel7.config
+   [rhui-microsoft-azure-rhel7]
+   name=Microsoft Azure RPMs for Red Hat Enterprise Linux 7
+   baseurl=https://rhui-1.microsoft.com/pulp/repos/microsoft-azure-rhel7 https://rhui-2.microsoft.com/pulp/repos/microsoft-azure-rhel7 https://rhui-3.microsoft.com/pulp/repos/microsoft-azure-rhel7
+   enabled=1
+   gpgcheck=1
+   sslverify=1
+   gpgkey=https://packages.microsoft.com/keys/microsoft.asc
+   EOF
+   ```
+
 1. Add non-EUS repository.
 
    ```bash
-   sudo yum --config=https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel7.config install rhui-azure-rhel7
+   sudo yum --config rhel7.config install rhui-azure-rhel7
    ```
 
 1. Update your RHEL VM.
@@ -234,11 +273,24 @@ To remove the version lock, use the following commands. Run the commands as `roo
    sudo dnf --disablerepo='*' remove 'rhui-azure-rhel8-eus'
    ```
 
+1. Create a `config` file by using this command or a text editor:
+
+   ```bash
+   cat <<EOF > rhel8.config
+   [rhui-microsoft-azure-rhel8]
+   name=Microsoft Azure RPMs for Red Hat Enterprise Linux 8
+   baseurl=https://rhui-1.microsoft.com/pulp/repos/microsoft-azure-rhel8 https://rhui-2.microsoft.com/pulp/repos/microsoft-azure-rhel8 https://rhui-3.microsoft.com/pulp/repos/microsoft-azure-rhel8
+   enabled=1
+   gpgcheck=1
+   sslverify=1
+   gpgkey=https://packages.microsoft.com/keys/microsoft.asc
+   EOF
+   ```
+
 1. Add non-EUS repository.
 
    ```bash
-   wget https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel8.config
-   sudo dnf --config=rhui-microsoft-azure-rhel8.config install rhui-azure-rhel8
+   sudo dnf --config rhel8.config install rhui-azure-rhel8
    ```
 
 1. Update your RHEL VM.
@@ -264,10 +316,24 @@ To remove the version lock, use the following commands. Run the commands as `roo
    sudo dnf --disablerepo='*' remove 'rhui-azure-rhel9-eus'
    ```
 
+1. Create a `config` file by using this command or a text editor:
+
+   ```bash
+   cat <<EOF > rhel9.config
+   [rhui-microsoft-azure-rhel9]
+   name=Microsoft Azure RPMs for Red Hat Enterprise Linux 9
+   baseurl=https://rhui4-1.microsoft.com/pulp/repos/unprotected/microsoft-azure-rhel9
+   enabled=1
+   gpgcheck=1
+   sslverify=1
+   gpgkey=https://packages.microsoft.com/keys/microsoft.asc
+   EOF
+   ```
+
 1. Add non-EUS repository.
 
    ```bash
-   sudo dnf --config='https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel9.config' install rhui-azure-rhel9
+   sudo dnf --config rhel9.config install rhui-azure-rhel9
    ```
 
 1. Update your RHEL VM.
@@ -325,44 +391,89 @@ The new Azure RHUI servers are deployed with [Azure Traffic Manager](https://azu
 
 This procedure is provided for reference only. RHEL PAYG images already have the correct configuration to connect to Azure RHUI. To manually update the configuration to use the Azure RHUI servers, complete the following steps:
 
-- For RHEL 6:
+#### [For RHEL 7](#tab/rhel7)
 
-  ```bash
-  sudo yum --config='https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel6.config' install 'rhui-azure-rhel6'
-  ```
+1. Create a `config` file by using this command or a text editor:
 
-- For RHEL 7:
+   ```bash
+   cat <<EOF > rhel7.config
+   [rhui-microsoft-azure-rhel7]
+   name=Microsoft Azure RPMs for Red Hat Enterprise Linux 7
+   baseurl=https://rhui-1.microsoft.com/pulp/repos/microsoft-azure-rhel7 https://rhui-2.microsoft.com/pulp/repos/microsoft-azure-rhel7 https://rhui-3.microsoft.com/pulp/repos/microsoft-azure-rhel7
+   enabled=1
+   gpgcheck=1
+   sslverify=1
+   gpgkey=https://packages.microsoft.com/keys/microsoft.asc
+   EOF
+   ```
 
-  ```bash
-  sudo yum --config='https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel7.config' install 'rhui-azure-rhel7'
-  ```
+1. Run the following command.
 
-- For RHEL 8:
+   ```bash
+   sudo dnf --config rhel7.config install rhui-azure-rhel7
+   ```
 
-  1. Create a `config` file by using this command or a text editor:
+1. Update your VM.
 
-     ```bash
-     cat <<EOF > rhel8.config
-     [rhui-microsoft-azure-rhel8]
-     name=Microsoft Azure RPMs for Red Hat Enterprise Linux 8
-     baseurl=https://rhui-1.microsoft.com/pulp/repos/microsoft-azure-rhel8 https://rhui-2.microsoft.com/pulp/repos/microsoft-azure-rhel8 https://rhui-3.microsoft.com/pulp/repos/microsoft-azure-rhel8
-     enabled=1
-     gpgcheck=1
-     gpgkey=https://rhelimage.blob.core.windows.net/repositories/RPM-GPG-KEY-microsoft-azure-release sslverify=1
-     EOF
-     ```
+   ```bash
+   sudo dnf update
+   ```
 
-  1. Run the following command.
+#### [For RHEL 8](#tab/rhel8)
 
-     ```bash
-     sudo dnf --config rhel8.config install 'rhui-azure-rhel8'
-     ```
+1. Create a `config` file by using this command or a text editor:
 
-  1. Update your VM.
+   ```bash
+   cat <<EOF > rhel8.config
+   [rhui-microsoft-azure-rhel8]
+   name=Microsoft Azure RPMs for Red Hat Enterprise Linux 8
+   baseurl=https://rhui-1.microsoft.com/pulp/repos/microsoft-azure-rhel8 https://rhui-2.microsoft.com/pulp/repos/microsoft-azure-rhel8 https://rhui-3.microsoft.com/pulp/repos/microsoft-azure-rhel8
+   enabled=1
+   gpgcheck=1
+   sslverify=1
+   gpgkey=https://packages.microsoft.com/keys/microsoft.asc
+   EOF
+   ```
 
-     ```bash
-     sudo dnf update
-     ```
+1. Run the following command.
+
+   ```bash
+   sudo dnf --config rhel8.config install rhui-azure-rhel8
+   ```
+
+1. Update your VM.
+
+   ```bash
+   sudo dnf update
+   ```
+
+#### [For RHEL 9](#tab/rhel9)
+
+1. Create a `config` file by using this command or a text editor:
+
+   ```bash
+   cat <<EOF > rhel9.config
+   [rhui-microsoft-azure-rhel9]
+   name=Microsoft Azure RPMs for Red Hat Enterprise Linux 9
+   baseurl=https://rhui4-1.microsoft.com/pulp/repos/unprotected/microsoft-azure-rhel9
+   enabled=1
+   gpgcheck=1
+   sslverify=1
+   gpgkey=https://packages.microsoft.com/keys/microsoft.asc
+   EOF
+   ```
+
+1. Run the following command.
+
+   ```bash
+   sudo dnf --config rhel9.config install rhui-azure-rhel9
+   ```
+
+1. Update your VM.
+
+   ```bash
+   sudo dnf update
+   ```
 
 ## Next steps
 
