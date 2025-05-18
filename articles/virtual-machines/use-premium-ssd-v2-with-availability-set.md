@@ -39,9 +39,9 @@ Premium SSD v2 support for VMs in an Availability Set is currently limited to th
 
 ## Limitations
 
--  A subscription must be registered for the required feature to use Premium SSD v2 with VMs in Availability Sets in non-zonal regions. Follow the instructions [here](https://learn.microsoft.com/azure/virtual-machines/use-premium-ssd-v2-with-availability-set?tabs=CLI#register-premium-ssd-v2-with-vms-in-availability-sets-in-supported-non-zonal-regions) to complete the registration.
-- Only one background data copy can run per disk at a time. When attaching a disk to a VM in an Availability Set (AvSet), the system might start a background copy to align with the Fault Domain (FD). If you try to detach and reattach the disk while this move is in progress, the operation fails with an error. To prevent operation failure, wait until the move finishes, or set the [OptimizedForFrequentAttach](/dotnet/api/microsoft.azure.management.compute.models.diskupdate.optimizedforfrequentattach) property on the disk. This setting skips FD-alignment background copies for future attachments. For more information on OptimizedForFrequentAttach, follow the instructions [here](https://learn.microsoft.com/azure/virtual-machines/use-premium-ssd-v2-with-availability-set?tabs=CLI#optimize-background-data-copy-of-the-disk).
-- You can’t attach a disk created from a snapshot to VMs in an Availability Set while it’s still copying data in the background. Wait until the copy process finishes before attaching the disk. To check the status of background data copy from a snapshot, follow the instructions [here](https://learn.microsoft.com/azure/virtual-machines/scripts/create-managed-disk-from-snapshot#performance-impact---background-copy-process).
+-  A subscription must be registered for the required feature to use Premium SSD v2 with VMs in Availability Sets in non-zonal regions. Follow the instructions [here](/azure/virtual-machines/use-premium-ssd-v2-with-availability-set?tabs=CLI#register-premium-ssd-v2-with-vms-in-availability-sets-in-supported-non-zonal-regions) to complete the registration.
+- Only one background data copy can run per disk at a time. When attaching a disk to a VM in an Availability Set (AvSet), the system might start a background copy to align with the Fault Domain (FD). If you try to detach and reattach the disk while this move is in progress, the operation fails with an error. To prevent operation failure, wait until the move finishes, or set the [OptimizedForFrequentAttach](/dotnet/api/microsoft.azure.management.compute.models.diskupdate.optimizedforfrequentattach) property on the disk. This setting skips FD-alignment background copies for future attachments. For more information on OptimizedForFrequentAttach, follow the instructions [here](//azure/virtual-machines/use-premium-ssd-v2-with-availability-set?tabs=CLI#optimize-background-data-copy-of-the-disk).
+- You can’t attach a disk created from a snapshot to VMs in an Availability Set while it’s still copying data in the background. Wait until the copy process finishes before attaching the disk. To check the status of background data copy from a snapshot, follow the instructions [here](/azure/virtual-machines/scripts/create-managed-disk-from-snapshot#performance-impact---background-copy-process).
 - Disk size increase and changing customer-managed key (CMK) are not supported while a background data copy for Fault Domain alignment is in progress.
 
 ### [Azure CLI](#tab/CLI)
@@ -166,7 +166,7 @@ You deployed an Availability Set VM with a premium SSD v2.
 ## Register Premium SSD v2 with VMs in availability sets in supported non-zonal regions
 
 The feature is region-specific and only available in regions that do not support Availability Zones.
-If you're targeting a [supported region without zone support](https://learn.microsoft.com/azure/virtual-machines/use-premium-ssd-v2-with-availability-set?tabs=CLI#regional-availability), ensure your subscription is registered for the required feature.
+If you're targeting a [supported region without zone support](/azure/virtual-machines/use-premium-ssd-v2-with-availability-set?tabs=CLI#regional-availability), ensure your subscription is registered for the required feature.
 
 To proceed, register the feature manually:
 - You can register it with:
