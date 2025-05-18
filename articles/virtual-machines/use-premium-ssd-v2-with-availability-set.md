@@ -20,7 +20,7 @@ Availability sets have fault isolation for many possible failures, to minimize s
 
 In, a production scenario with three VMs deployed in an AvSets using Premium SSD v2 with Fault Domain 3, VMs and disks are distributed across multiple fault domains. When a storage fault domain fails, only the VMs in that domain are affected. The other VMs continue running, which helps maintain application availability. 
 
-When a Premium SSD v2 disk starts in one fault domain and is attached to a VM in another, the system triggers a background copy. This process moves the disk to match the VM’s fault domain, helping ensure consistent alignment between compute and storage for better reliability and availability. 
+When a Premium SSD v2 disk is located in one fault domain and is attached to a VM in another, the system triggers a background copy. This process moves the disk to match the VM’s fault domain, helping ensure consistent alignment between compute and storage for better reliability and availability. 
 
 :::image type="content" source="media/availability-set-disk-move.png" alt-text="Diagram Showing Availability Set with Managed Disk FD alignment Disk Move." lightbox="media/availability-set-disk-move.png":::
 
@@ -106,16 +106,22 @@ Get*-AzComputeResourceSku | Where-Object {$_.ResourceType -eq 'availabilitySets'
  
 * Create a VM:
 ```powershell
-New-AzVm 
-ResourceGroupName $resourceGroupName 
-Name $vmName 
-Location $region  
+New-AzVm `
+ResourceGroupName $resourceGroupName `
+Name $vmName `
+Location $region `  
 Image $vmImage `
-Size $vmSize 
-AvailabilitySetName $AvSetName` 
+Size $vmSize `
+AvailabilitySetName $AvSetName ` 
 Credential $credential
 ```
+* Attach a new premium SSD v2 disk to existing VMs in an availability set: 
+```powershell
 
+$vm = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmName 
+$vm = Add-AzVMDataDisk -VM $vm -Name $diskName -CreateOption Empty -StorageAccountType PremiumV2_LRS  -Lun $lun 
+Update-AzVM -VM $vm -ResourceGroupName $resourceGroupName 
+```
 * Attach existing Premium SSD v2 disk to existing VMs in an Availability Set:
  
 ```powershell
