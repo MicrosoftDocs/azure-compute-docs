@@ -15,6 +15,7 @@ VM watch can send signal data to a preconfigured [Event Hub](/azure/event-hubs/e
 This article provides instructions on configuring Event Hubs to access signals collected by VM watch
 
 ### Prerequisites
+
 This article assumes that you're familiar with:
 - [Azure Event Hubs](/azure/event-hubs/event-hubs-about)
 - [VM watch checks, metrics, and logs](/azure/virtual-machines/azure-vm-watch)
@@ -23,6 +24,7 @@ This article assumes that you're familiar with:
 ### Enable Event Hubs Output
 
 #### 1: Prepare Event Hubs for VM watch
+
 - [Deploy an Event Hub](/azure/event-hubs/event-hubs-create)
 - [Authorize access to the Azure Event Hub](/azure/event-hubs/authorize-access-event-hubs)
 > [!IMPORTANT]
@@ -50,6 +52,7 @@ For all authentication methods, the following parameter set applies:
 ##### Authentication specific parameters for Event Hubs output
 
 #### [Managed Identity](#tab/managedidentity-1)
+
 |**Parameter**|**Is required**|**Description**|
 | -------- | -------- | -------- |
 |`EVENT_HUB_OUTPUT_USE_MANAGED_IDENTITY`|No|Set this value to "true." Default is "false"|
@@ -57,7 +60,7 @@ For all authentication methods, the following parameter set applies:
 
 For example, the following VM watch JSON configuration sets the environment variables `EVENT_HUB_OUTPUT_NAMESPACE`, `EVENT_HUB_OUTPUT_NAME`, and `EVENT_HUB_OUTPUT_USE_MANAGED_IDENTITY`. This allows Event Hubs to use managed identity as the authentication method without needing to specify a managed identity client ID.
 
-```
+```json
 {
   "vmWatchSettings": {
     "enabled": true,
@@ -70,14 +73,18 @@ For example, the following VM watch JSON configuration sets the environment vari
 }
 ```
 
+> [!NOTE]
+> When using managed identity, ensure it has the necessary permissions to send messages to the Event Hub.
+
 #### [SAS Token](#tab/sastoken-1)
+
 |**Parameter**|**Is required**|**Description**|
 | -------- | -------- | -------- |
 |`EVENT_HUB_OUTPUT_SAS_TOKEN_BASE64`|No|If using SAS token to authenticate, specify this value|
 
 For example, the following VM watch JSON configuration enables Event Hubs as an output by using a SAS token for authentication.
 
-```
+```json
 {
   "vmWatchSettings": {
     "enabled": true,
@@ -91,13 +98,14 @@ For example, the following VM watch JSON configuration enables Event Hubs as an 
 ```
 
 #### [Connection String](#tab/connectionstring-1)
+
 |**Parameter**|**Is required**|**Description**|
 | -------- | -------- | -------- |
 |`EVENT_HUB_OUTPUT_CONNECTION_STRING_BASE64`|No|If using connection string token to authenticate, encode it with base64. The connection string should follow the following format: `Endpoint=sb://<NamespaceName>.<DomainName>/;SharedAccessKeyName=<KeyName>;SharedAccessKey=<KeyValue>`. This should **not** include the entity path `;EntityPath=<EventHubName>` in the connection string.|
 
 For example, the following VM watch JSON configuration enables Event Hubs as an output by using a connection string for authentication
 
-```
+```json
 {
   "vmWatchSettings": {
     "enabled": true,
@@ -153,10 +161,13 @@ Each Event Hub event has the following schema:
 If there are no events in Event Hubs after several minutes, check the VM watch logs in the following directories on the virtual machine or virtual machine scale set to diagnose the issue:
 
 #### [Linux](#tab/linux-1)
+
 ```
 /var/log/azure/Microsoft.ManagedServices.ApplicationHealthLinux/vmwatch.log
 ```
+
 #### [Windows](#tab/windows-1)
+
 ```
 C:/WindowsAzure/Logs/Plugins/Microsoft.ManagedServices.ApplicationHealthWindows/vmwatch.log
 ```
