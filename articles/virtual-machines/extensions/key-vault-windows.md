@@ -386,7 +386,7 @@ The extension relies on the default behavior of the [PFXImportCertStore API](/wi
 
 Yes, the Azure Key Vault VM extension supports certificate auto-rebinding. The Key Vault VM extension does support S-channel binding on certificate renewal when the `linkOnRenewal` property is set to true.
 
-For IIS, you can configure auto-rebind by enabling automatic rebinding of certificate renewals in IIS. The Azure Key Vault VM extension generates Certificate Lifecycle Notifications when a certificate with a matching SAN is installed. IIS uses this event to auto-rebind the certificate. For more information, see [Certifcate Rebind in IIS](https://statics.teams.cdn.office.net/evergreen-assets/safelinks/1/atp-safelinks.html)
+For IIS, you can configure auto-rebind by enabling automatic rebinding of certificate renewals in IIS. The Azure Key Vault VM extension generates Certificate Lifecycle Notifications when a certificate with a matching SAN is installed. IIS uses this event to auto-rebind the certificate. For more information, see [Certifcate Rebind in IIS](/iis/get-started/whats-new-in-iis-85/certificate-rebind-in-iis85)
 
 ### View extension status
 
