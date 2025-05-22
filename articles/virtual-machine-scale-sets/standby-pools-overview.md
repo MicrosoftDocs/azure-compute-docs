@@ -24,7 +24,6 @@ Register the standby pool resource provider with your subscription using Azure C
 
 ```azurepowershell-interactive
 Register-AzResourceProvider -ProviderNamespace Microsoft.StandbyPool
-Register-AzProviderFeature -FeatureName StandbyVMPoolPreview -ProviderNameSpace Microsoft.StandbyPool
 ```
 
 ## Scaling
