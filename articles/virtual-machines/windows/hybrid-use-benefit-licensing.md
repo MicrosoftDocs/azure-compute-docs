@@ -98,7 +98,7 @@ To convert an existing VM to use Azure Hybrid Benefit for Windows Server, update
 
 ### Azure portal
 
-On the VM service menu, select **Configuration**, and then set **Azure Hybrid Benefit** to **Enable**.
+On the VM service menu, select **Operating system**, and then set **Azure Hybrid Benefit** to **Enable**.
 
 ### Azure PowerShell
 
