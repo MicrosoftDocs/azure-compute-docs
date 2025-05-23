@@ -1,5 +1,5 @@
 ---
-title: Enable Automatic Zone Balance on Virtual Machine Scale Sets
+title: Enable Automatic Zone Balance on Virtual Machine Scale Sets (Preview)
 description: Guide to enable the Automatic Zone Balance feature for your virtual machine scale set.
 author: hilaryw29
 ms.author: hilarywang
