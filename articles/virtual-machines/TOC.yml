@@ -480,8 +480,8 @@
           href: ./sizes/gpu-accelerated/ncv3-series.md
         - name: Ncv3 Nc24rs retirement
           href: ncv3-nc24rs-retirement.md
-        - name: Ncv3 NC6s NC12s NC24s retirement
-          href: ncv3-nc6s-nc12s-nc24s-retirement.md
+        - name: Ncv3 series retirement
+          href: ncv3-series-retirement.md
         - name: NCasT4_v3 series
           href: ./sizes/gpu-accelerated/ncast4v3-series.md
         - name: NC_A100_v4 series
