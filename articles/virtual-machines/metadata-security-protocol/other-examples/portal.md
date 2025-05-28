@@ -11,7 +11,7 @@ ms.reviewer: azmetadatadev
 
 # MSP via portal
 
-Azure portal has preview support for configuring some aspects of Metadata Security Protocol (MSP) using [this link](https://ms.portal.azure.com/?feature.canmodifystamps=true&Microsoft_Azure_Compute=flight34).
+Azure portal has preview support for configuring some aspects of Metadata Security Protocol (MSP).
 
 > [!NOTE]
 > Currently, the portal view would only be available for subscriptions registered with "Microsoft.Compute/ProxyAgentPreview" Azure Feature Exposure Control (AFEC) flag.
