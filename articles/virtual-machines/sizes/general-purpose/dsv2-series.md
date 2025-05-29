@@ -20,7 +20,7 @@ ms.reviewer: mattmcinnes
 
 ## Feature support
 
-Premium Storage: Not Supported<br>
+Premium Storage: Supported<br>
 Premium Storage caching: Not Supported<br>
 Live Migration: Supported<br>
 Memory Preserving Updates: Supported<br>
