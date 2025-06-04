@@ -11,7 +11,7 @@ ms.reviewer: azmetadatadev
 
 # Configure MSP via the portal
 
-The Azure portal has preview support for configuring some aspects of Metadata Security Protocol (MSP) for a virtual machine (VM) by using [this link](https://ms.portal.azure.com/?feature.canmodifystamps=true&Microsoft_Azure_Compute=flight34).
+Azure portal has preview support for configuring some aspects of Metadata Security Protocol (MSP).
 
 > [!NOTE]
 > Currently, the portal is available only for subscriptions registered with the `Microsoft.Compute/ProxyAgentPreview` Azure Feature Exposure Control (AFEC) flag.
