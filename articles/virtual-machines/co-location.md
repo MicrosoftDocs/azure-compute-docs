@@ -37,6 +37,8 @@ In the case of availability sets and virtual machine scale sets, you should set 
 
 A proximity placement group is a colocation constraint rather than a pinning mechanism. It's pinned to a specific data center with the deployment of the first resource to use it. Once all resources using the proximity placement group have been stopped (deallocated) or deleted, it's no longer pinned. Therefore, whenever you use a proximity placement group with multiple VM series, it's important to specify all the required types upfront in a template if possible or follow a deployment sequence, which will improve your chances for a successful deployment. If your deployment fails, restart the deployment with the VM size, which has failed as the first size to be deployed.
 
+A Proximity Placement Group is not restricted to resources within the same Resource Group. Virtual Machines can be associated with a PPG even if they are located in different Resource Groups.
+
 ## Use intent to specify VM sizes
 
 You can use the optional `intent` parameter to provide the intended [VM Sizes](../virtual-machines/sizes.md) to be part of the proximity placement group. This parameter can be specified at the time of creating a proximity placement group or it can be added/modified while updating a proximity placement group after deallocating all of the VMs. 
