@@ -10,7 +10,7 @@ ms.custom:
   - include file
   - ignite-2023
 ---
-- Supported for 4k sector size Ultra Disks and Premium SSD v2.
+- When using Ultra Disks and Premium SSD v2 only 4k sector sizes are supported.
 - Only supported on 512e sector size Ultra Disks and Premium SSD v2 if they were created after 5/13/2023.
     - For disks created before this date, [snapshot your disk](/azure/virtual-machines/disks-incremental-snapshots) and create a new disk using the snapshot.
 - Can't be enabled on virtual machines (VMs) or virtual machine scale sets that currently or ever had Azure Disk Encryption enabled. 
