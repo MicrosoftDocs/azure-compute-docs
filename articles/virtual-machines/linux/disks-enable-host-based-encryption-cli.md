@@ -226,46 +226,15 @@ az vmss update -n $vmssName \
 
 ## Finding supported VM sizes
 
-Legacy VM Sizes aren't supported. You can find the list of supported VM sizes by either using resource SKU APIs or the Azure PowerShell module. You can't find the supported sizes using the CLI.
+You can list all VM sizes that support EncryptionAtHost in a given region.
 
-When calling the [Resource Skus API](/rest/api/compute/resourceskus/list), check that the `EncryptionAtHostSupported` capability is set to **True**.
+```azurecli-interactive
+location=centralus
 
-```json
-    {
-        "resourceType": "virtualMachines",
-        "name": "Standard_DS1_v2",
-        "tier": "Standard",
-        "size": "DS1_v2",
-        "family": "standardDSv2Family",
-        "locations": [
-        "CentralUS"
-        ],
-        "capabilities": [
-        {
-            "name": "EncryptionAtHostSupported",
-            "value": "True"
-        }
-        ]
-    }
-```
-
-For the Azure PowerShell module, use the [Get-AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku) cmdlet.
-
-```azurepowershell-interactive
-$vmSizes=Get-AzComputeResourceSku | where{$_.ResourceType -eq 'virtualMachines' -and $_.Locations.Contains('CentralUS')}
-
-foreach($vmSize in $vmSizes)
-{
-    foreach($capability in $vmSize.capabilities)
-    {
-        if($capability.Name -eq 'EncryptionAtHostSupported' -and $capability.Value -eq 'true')
-        {
-            $vmSize
-
-        }
-
-    }
-}
+az vm list-skus --location $location --all \
+--resource-type virtualMachines \
+--query "[?capabilities[?name=='EncryptionAtHostSupported' && value=='True']].{VMName:name, EncryptionAtHost:capabilities[?name=='EncryptionAtHostSupported'].value | [0]}" \
+--output table
 ```
 
 ## Next steps
