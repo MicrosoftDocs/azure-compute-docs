@@ -31,8 +31,8 @@ vCPUs (Qty.) and Memory for each size
 | Standard_E2ns_v6 | 2 | 16 |
 | Standard_E4ns_v6 | 4 | 32 |
 | Standard_E8ns_v6 | 8 | 64 |
-| Standard_E16ns_v5 | 16 | 128 |
-| Standard_E32ns_v5 | 32 | 256 |
+| Standard_E16ns_v6 | 16 | 128 |
+| Standard_E32ns_v6 | 32 | 256 |
 | Standard_E48ns_v6 | 48 | 384 |
 | Standard_E64ns_v6 | 64 | 512 |
 | Standard_E96ns_v6 | 96 | 768 |
