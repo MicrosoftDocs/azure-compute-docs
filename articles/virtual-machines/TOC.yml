@@ -2,6 +2,9 @@
   href: index.yml
 - name: Overview
   href: overview.md
+- name: Compare compute products
+  displayName: compute, vmss, fleet, compare, orchestration, scale, scaling, scale sets
+  href: compare-compute-products.md
 - name: Quickstarts
   items:
   - name: Create a Linux VM
@@ -67,10 +70,12 @@
       href: ./linux/tutorial-manage-vm.md
     - name: Create / manage disks
       href: ./linux/tutorial-manage-disks.md
-    - name: Automate configuration
-      href: ./linux/tutorial-automate-vm-deployment.md
     - name: Create VM images
       href: ./linux/tutorial-custom-images.md
+    - name: Create & deploy VM application
+      href: ./vm-applications-how-to.md?tabs=cli%2Ccli1%2Ccli2%2Ccli3%2Ccli4
+    - name: Automate configuration
+      href: ./linux/tutorial-automate-vm-deployment.md
     - name: Manage networking
       href: ./linux/tutorial-virtual-network.md
     - name: Load Balance VMs
@@ -83,10 +88,12 @@
       href: ./windows/tutorial-manage-vm.md
     - name: Create / manage disks
       href: ./windows/tutorial-manage-data-disk.md
-    - name: Automate configuration
-      href: ./windows/tutorial-automate-vm-deployment.md
     - name: Create VM images
       href: ./windows/tutorial-custom-images.md
+    - name: Create & deploy VM application
+      href: ./vm-applications-how-to.md?tabs=powershell%2Cpowershell1%2Cpowershell2%2Cpowershell3%2Cpowershell4
+    - name: Automate configuration
+      href: ./windows/tutorial-automate-vm-deployment.md
     - name: Manage networking
       href: ./windows/tutorial-virtual-network.md
     - name: Load Balance VMs
@@ -262,6 +269,14 @@
           href: ./sizes/general-purpose/dlsv5-series.md
         - name: Dldsv5 series
           href: ./sizes/general-purpose/dldsv5-series.md
+        - name: Dnsv6 series
+          href: ./sizes/memory-optimized/dnsv6-series.md
+        - name: Dndsv6 series
+          href: ./sizes/memory-optimized/dndsv6-series.md
+        - name: Dnlsv6 series
+          href: ./sizes/memory-optimized/dnlsv6-series.md
+        - name: Dnldsv6 series
+          href: ./sizes/memory-optimized/dnldsv6-series.md
         - name: Dv4 series
           href: ./sizes/general-purpose/dv4-series.md
         - name: Dsv4 series
@@ -285,8 +300,6 @@
           href: ./sizes/general-purpose/dcadsv5-series.md
         - name: DCesv6 series
           href: ./sizes/general-purpose/dcesv6-series.md
-        - name: DCedsv5 series
-          href: ./sizes/general-purpose/dcedsv5-series.md
         - name: DCas_cc_v5 series
           href: ./sizes/general-purpose/dcasccv5-series.md
         - name: DCads_cc_v5 series
@@ -360,6 +373,10 @@
           href: ./sizes/memory-optimized/easv5-series.md
         - name: Eadsv5 series
           href: ./sizes/memory-optimized/eadsv5-series.md
+        - name: Ensv6 series
+          href: ./sizes/memory-optimized/ensv6-series.md
+        - name: Endsv6 series
+          href: ./sizes/memory-optimized/endsv6-series.md
         - name: Epsv5 series
           href: ./sizes/memory-optimized/epsv5-series.md
         - name: Epdsv5 series
@@ -399,22 +416,40 @@
         - name: Overview
           displayName: M-series, sizes, size, vm size
           href: ./sizes/memory-optimized/m-family.md
-        - name: Mbsv3 and Mbdsv3 series
-          href: ./sizes/memory-optimized/mbsv3-mbdsv3-series.md
-        - name: Msv3 and Mdsv3 Medium Memory series
-          href: msv3-mdsv3-medium-series.md
-        - name: Msv3 and Mdsv3 High Memory series
-          href: ./sizes/memory-optimized/msv3-mdsv3-high-memory-series.md
-        - name: Mdsv3 Very High Memory Series
-          href: ./sizes/memory-optimized/mdsv3-very-high-memory-series.md
-        - name: Msv2 and Mdsv2 Medium Memory series
-          href: msv2-mdsv2-series.md
-        - name: Msv2 and Mdsv2 migration guide
-          href: msv2-mdsv2-isolated-retirement.md
-        - name: Mv2 series
-          href: mv2-series.md
-        - name: M series
-          href: m-series.md
+        - name: Medium Memory
+          items:
+          - name: Mdsv3 Medium Memory series
+            href: ./sizes/memory-optimized/mdsv3-mm-series.md
+          - name: Msv3 Medium Memory series
+            href: ./sizes/memory-optimized/msv3-mm-series.md
+          - name: Msv2 Medium Memory series
+            href: ./sizes/memory-optimized/msv2-mm-series.md
+          - name: Mdsv2 Medium Memory series
+            href: ./sizes/memory-optimized/mdsv2-mm-series.md
+          - name: M series
+            href: ./sizes/memory-optimized/m-series.md
+        - name: High Memory
+          items:
+          - name: Msv3 High Memory series
+            href: ./sizes/memory-optimized/msv3-hm-series.md
+          - name: Mdsv3 High Memory series
+            href: ./sizes/memory-optimized/mdsv3-hm-series.md
+          - name: Mv2 series
+            href: ./sizes/memory-optimized/mv2-series.md
+        - name: Very High Memory
+          items:
+          - name: Mdsv3 Very High Memory Series
+            href: ./sizes/memory-optimized/mdsv3-vhm-series.md
+        - name: Mb family
+          items:
+          - name: Mbsv3 series
+            href: ./sizes/memory-optimized/mbsv3-series.md
+          - name: Mbdsv3 series
+            href: ./sizes/memory-optimized/mbdsv3-series.md
+        - name: Retirement Migration guides
+          items:
+          - name: Msv2 and Mdsv2 migration guide
+            href: ./sizes/retirement/msv2-mdsv2-retirement.md
     - name: Storage optimized
       items:
       - name: Overview
@@ -425,6 +460,12 @@
         - name: Overview
           displayName: L-series, sizes, size, vm size
           href: ./sizes/storage-optimized/l-family.md
+        - name: Laosv4 series
+          href: ./sizes/storage-optimized/laosv4-series.md
+        - name: Lasv4 series
+          href: ./sizes/storage-optimized/lasv4-series.md
+        - name: Lsv4 series
+          href: ./sizes/storage-optimized/lsv4-series.md    
         - name: Lsv3 series
           href: ./sizes/storage-optimized/lsv3-series.md
         - name: Lasv3 series
@@ -447,24 +488,20 @@
         - name: Overview
           displayName: NC-series, sizes, size, vm size
           href: ./sizes/gpu-accelerated/nc-family.md
-        - name: NC series
-          href: ./sizes/gpu-accelerated/nc-series.md
         - name: NC series retirement
           href: nc-series-retirement.md
         - name: NCads_H100_v5 series
           href: ./sizes/gpu-accelerated/ncadsh100v5-series.md
         - name: NCCads_H100_v5 series
           href: ./sizes/gpu-accelerated/nccadsh100v5-series.md
-        - name: NCv2 series
-          href: ./sizes/gpu-accelerated/ncv2-series.md
         - name: NCv2 series retirement
           href: ncv2-series-retirement.md
         - name: NCv3 series
           href: ./sizes/gpu-accelerated/ncv3-series.md
         - name: Ncv3 Nc24rs retirement
           href: ncv3-nc24rs-retirement.md
-        - name: Ncv3 NC6s NC12s NC24s retirement
-          href: ncv3-nc6s-nc12s-nc24s-retirement.md
+        - name: Ncv3 series retirement
+          href: ncv3-retirement.md
         - name: NCasT4_v3 series
           href: ./sizes/gpu-accelerated/ncast4v3-series.md
         - name: NC_A100_v4 series
@@ -516,7 +553,7 @@
           href: ./sizes/gpu-accelerated/nvv4-series.md
         - name: NVadsA10_v5 series
           href: ./sizes/gpu-accelerated/nvadsa10v5-series.md
-        - name: Nvads V710 v-5 series
+        - name: Nvads V710 v5-series
           href: ./sizes/gpu-accelerated/nvadsv710-v5-series.md
       - name: Setup NVIDIA GPU drivers
         items:
@@ -678,6 +715,10 @@
           items:
           - name: Lsv2 series
             href: ./sizes/storage-optimized/lsv2-series.md
+        - name: DC-family
+          items:
+          - name: DCsv2 series
+            href: ./sizes/retirement/dcsv2-series-retirement.md
       - name: Retired sizes
         href: ./sizes/retired-sizes-list.md
     - name: Generation 2 VMs
@@ -773,7 +814,7 @@
       items:
       - name: Overview
         href: vm-applications.md
-      - name: Deploy VM Applications
+      - name: Create & Deploy VM Applications
         href: vm-applications-how-to.md
   - name: Images
     items:
@@ -1292,6 +1333,9 @@
       - name: Windows
         displayName: AMD GPU Drivers, AMD, GPU, drivers
         href: ./extensions/hpccompute-amd-gpu-windows.md
+      - name: Linux
+        displayName: AMD GPU Drivers, AMD, GPU, drivers
+        href: ./extensions/hpccompute-amd-gpu-linux.md
     - name: Azure Monitor
       items:
       - name: Azure Monitor agent
@@ -1336,6 +1380,8 @@
       items:
       - name: Chef
         href: ./extensions/chef.md
+      - name: Qualys
+        href: ./extensions/qualys.md
       - name: Salt Minion
         href: ./extensions/salt-minion.md
       - name: Stackify Retrace
@@ -1358,35 +1404,6 @@
       href: ./extensions/issues-using-vm-extensions-python-3.md
   - name: Nested virtualization
     href: /virtualization/hyper-v-on-windows/user-guide/nested-virtualization
-  - name: Migrate to Azure Resource Manager
-    items:
-    - name: Retirement starting September 6, 2023
-      displayName: classic, migration, classic to ARM, CSES, Cloud Services
-      href: classic-vm-deprecation.md
-    - name: Migration Overview
-      displayName: classic, migration, classic to ARM, CSES, Cloud Services
-      href: ./migration/migration-classic-resource-manager-overview.md
-    - name: Deep dive on migration
-      displayName: classic, migration, classic to ARM, CSES, Cloud Services
-      href: ./migration/migration-classic-resource-manager-deep-dive.md
-    - name: Plan for migration
-      displayName: classic, migration, classic to ARM, CSES, Cloud Services
-      href: ./migration/migration-classic-resource-manager-plan.md
-    - name: Migrate using the CLI
-      displayName: classic, migration, classic to ARM, CSES, Cloud Services
-      href: ./migration/migration-classic-resource-manager-cli.md
-    - name: Migrate using PowerShell
-      displayName: classic, migration, classic to ARM, CSES, Cloud Services
-      href: ./migration/migration-classic-resource-manager-ps.md
-    - name: Common migration errors
-      displayName: classic, migration, classic to ARM, CSES, Cloud Services
-      href: ./migration/migration-classic-resource-manager-errors.md
-    - name: Community tools for migration
-      displayName: classic, migration, classic to ARM, CSES, Cloud Services
-      href: ./migration/migration-classic-resource-manager-community-tools.md
-    - name: FAQ
-      displayName: classic, migration, classic to ARM, CSES, Cloud Services
-      href: ./migration/migration-classic-resource-manager-faq.yml
   - name: Estimated VM cost card in Portal (Preview)
     href: estimated-vm-create-cost-card.md
 - name: Availability and scale
@@ -1462,6 +1479,9 @@
     - name: Change an availability set
       displayName: availability and scale, availability, scale, autoscale, availability sets, AV sets
       href: ./windows/change-availability-set.yml
+    - name: Availability set support for Premium SSD v2
+      displayName: availability and scale, availability, scale, autoscale, availability sets, AV sets
+      href: use-premium-ssd-v2-with-availability-set.md
 - name: Disks
   items:
   - name: Overview
@@ -2178,7 +2198,6 @@
           href: ./windows/scheduled-events.md
         - name: Monitor scheduled events
           href: ./windows/scheduled-event-service.md
-    - name: Track and update VMs
 - name: Monitoring
   items:
   - name: Monitor Virtual Machines
@@ -2234,20 +2253,20 @@
       href: Metadata-Security-Protocol/brownfield.md
     - name: Other Examples
       items:
-        - name: MSP via Portal
-          href: Metadata-Security-Protocol/other-examples/portal.md
-        - name: Disable MSP
-          href: Metadata-Security-Protocol/other-examples/disable.md
-        - name: Reset Latched Key
-          href: Metadata-Security-Protocol/other-examples/key-reset.md
-        - name: Create Rules From Audit Logs
-          href: Metadata-Security-Protocol/other-examples/audit-logs-to-rules.md
+      - name: MSP via Portal
+        href: Metadata-Security-Protocol/other-examples/portal.md
+      - name: Disable MSP
+        href: Metadata-Security-Protocol/other-examples/disable.md
+      - name: Reset Latched Key
+        href: Metadata-Security-Protocol/other-examples/key-reset.md
+      - name: Create Rules From Audit Logs
+        href: Metadata-Security-Protocol/other-examples/audit-logs-to-rules.md
     - name: Advanced Configuration
       href: Metadata-Security-Protocol/advanced-configuration.md
     - name: Troubleshooting Guide
       href: Metadata-Security-Protocol/troubleshoot-guide.md
     - name: MSP FAQs
-      href: Metadata-Security-Protocol/faq.md 
+      href: Metadata-Security-Protocol/faq.md
   - name: Get usage metrics with REST
     href: ./linux/metrics-vm-usage-rest.md
   - name: Boot diagnostics

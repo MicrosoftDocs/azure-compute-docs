@@ -4,7 +4,7 @@ description: Information on and specifications of the Esv5-series sizes
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 08/01/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
@@ -67,7 +67,7 @@ Remote (uncached) storage info for each size
 | Standard_E32s_v5 | 32 | 51200 | 865 | 80000 | 2000 |
 | Standard_E48s_v5 | 32 | 76800 | 1315 | 80000 | 3000 |
 | Standard_E64s_v5 | 32 | 80000 | 1735 | 80000 | 3000 |
-| Standard_E96s_v53 | 32 | 80000 | 2600 | 80000 | 4000 |
+| Standard_E96s_v5 | 32 | 80000 | 2600 | 80000 | 4000 |
 | Standard_E104is_v5 | 64 | 120000 | 4000 | 120000 | 4000 |
 
 #### Storage resources

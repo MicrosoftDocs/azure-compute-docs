@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.date: 03/04/2024
 ms.author: rogarana
 ms.custom: references_regions
+#Customer intent: After reading this article, users should understand how performance tiers work, and whether or not they're ideal for their needs.
 ---
 
 # Performance tiers for managed disks

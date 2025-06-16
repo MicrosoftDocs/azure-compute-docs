@@ -1,7 +1,7 @@
 ---
 title: Service Fabric managed cluster automatic node repair 
 description: Learn how Azure Service Fabric managed cluster performs automatic node repair if they go down.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 07/18/2022
 ms.author: ankujain
 ---

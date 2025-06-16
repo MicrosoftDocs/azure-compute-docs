@@ -81,7 +81,7 @@ If you don't have the agents installed, you can't use some Azure services, such 
 
 ### Manual installation
 
-You can manually install the Azure Windows VM Agent by using a Windows Installer package. Manual installation might be necessary when you create a custom VM image that's deployed to Azure. 
+You can manually [install](/troubleshoot/azure/virtual-machines/windows/windows-azure-guest-agent#solution-2-manually-uninstall-and-reinstall-the-azure-vm-agent) the Azure Windows VM Agent by using a Windows Installer package. Manual installation might be necessary when you create a custom VM image that's deployed to Azure. 
 
 To manually install the Azure Windows VM Agent, [download the installer](https://github.com/Azure/WindowsVMAgent) and select the latest release. You can also search for a specific version in the [GitHub page for Azure Windows VM Agent releases](https://github.com/Azure/WindowsVMAgent/releases). The Azure Windows VM Agent is supported on Windows Server 2008 (64 bit) and later.
 

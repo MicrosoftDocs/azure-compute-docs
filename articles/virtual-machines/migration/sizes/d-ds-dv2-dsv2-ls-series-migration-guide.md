@@ -4,7 +4,7 @@ description: Migration guide for D, Ds, Dv2, Dsv2, and Ls-series VM sizes
 author: iamwilliew
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 03/17/2025
 ms.author: wwilliams
 ms.reviewer: mattmcinnes

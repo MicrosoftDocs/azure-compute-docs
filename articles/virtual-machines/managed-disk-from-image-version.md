@@ -31,7 +31,7 @@ az sig image-version list \
    -o table
 ```
 
-Set the `source` variable to the ID of the image version, then use [az disk create](/cli/azure/disk#az-disk-create) to create the managed disk. 
+Set the source variable to the full resource ID of the image version from your Shared Image Gallery, then use [az disk create](/cli/azure/disk#az-disk-create) with the --gallery-image-reference parameter to create the managed disk.
 
 In this example, we export the OS disk of the image version to create a managed disk named *myManagedOSDisk*, in the *EastUS* region, in a resource group named *myResourceGroup*. 
 

@@ -4,7 +4,7 @@ description: Learn about new features and enhancements in Azure Disk Storage.
 author: roygara
 ms.author: rogarana
 ms.date: 11/11/2024
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: azure-disk-storage
 ms.custom: references_regions
 ---
@@ -16,6 +16,9 @@ Azure Disk Storage regularly receives updates for new features and enhancements.
 ## Update summary
 
 - [What's new in 2025](#whats-new-in-2025)
+  - [Quarter 2 (April, May, June)](#quarter-2-april-may-june)
+    - [Generally available: Troubleshoot Disk Performance with Copilot in Azure](#generally-available-troubleshoot-disk-performance-with-copilot-in-azure)
+    - [Generally Available: Availability Set support for Premium SSD v2 Disk Storage](#generally-available-availability-set-support-for-premium-ssd-v2-disk-storage)
   - [Quarter 1 (January, February, March)](#quarter-1-january-february-march-2)
     - [Public Preview: Troubleshoot Disk Performance with Copilot in Azure](#public-preview-troubleshoot-disk-performance-with-copilot-in-azure)
 - [What's new in 2024](#whats-new-in-2024)
@@ -54,11 +57,21 @@ Azure Disk Storage regularly receives updates for new features and enhancements.
 
 ## What's new in 2025
 
+### Quarter 2 (April, May, June)
+
+#### Generally available: Troubleshoot Disk Performance with Copilot in Azure
+
+The Disk Performance Troubleshooting Capability for Copilot in Azure is now [Generally Available](https://azure.microsoft.com/updates?id=474649) as a part of the Copilot in Azure General Availability. Now, you can use Copilot in Azure to analyze your [disk metrics](disks-metrics.md) and resolve any performance degredation issues when your application requires higher performance than what you have configured for your VMs and disks. To learn more, see [Troubleshoot Disk Performance using Microsoft Copilot in Azure](/azure/copilot/troubleshoot-disk-performance).
+
+### Generally Available: Availability Set support for Premium SSD v2 Disk Storage
+
+Availability Set support for Premium SSD v2 disk storage is now [generally available](https://azure.microsoft.com/updates?id=494088). Availability Set enhances application availability by distributing virtual machines and their associated Premium SSD v2 disks across multiple fault domains, reducing the risk of a single point of failure. Premium SSD v2 provides low latency, consistent performance, flexible scalability, and cost efficiency making it an ideal choice for enterprise workloads such as SAP, SQL Server, and Oracle. The combination of Availability Set and Premium SSD v2 enables customers to achieve higher availability, performance, and cost optimization for their critical applications. To learn more, see [Availability Sets with Premium SSD v2 documentation](https://aka.ms/AvSetWithPv2). 
+
 ### Quarter 1 (January, February, March)
 
 #### Public Preview: Troubleshoot Disk Performance with Copilot in Azure
 
-The Disk Performance Troubleshooting Capability for Copilot in Azure is now available in [Public Preview](https://azure.microsoft.com/updates?id=474649). Now, you can use Copilot in Azure to analyze your [disk metrics](https://learn.microsoft.com/azure/virtual-machines/disks-metrics) and resolve any performance degredation issues when your application requires higher performance than what you have configured for your VMs and disks. To learn more, see [Troubleshoot Disk Performance using Microsoft Copilot in Azure](https://learn.microsoft.com/azure/copilot/troubleshoot-disk-performance).
+The Disk Performance Troubleshooting Capability for Copilot in Azure is now available in [Public Preview](https://azure.microsoft.com/updates?id=474649). Now, you can use Copilot in Azure to analyze your [disk metrics](disks-metrics.md) and resolve any performance degredation issues when your application requires higher performance than what you have configured for your VMs and disks. To learn more, see [Troubleshoot Disk Performance using Microsoft Copilot in Azure](/azure/copilot/troubleshoot-disk-performance).
 
 ## What's new in 2024
 

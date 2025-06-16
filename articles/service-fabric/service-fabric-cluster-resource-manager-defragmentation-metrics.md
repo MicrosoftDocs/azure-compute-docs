@@ -1,7 +1,7 @@
 ---
 title: Defragmentation of Metrics in Azure Service Fabric 
 description: Learn about using defragmentation, or packing, as a strategy for metrics in Service Fabric. This technique is useful for very large services.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric

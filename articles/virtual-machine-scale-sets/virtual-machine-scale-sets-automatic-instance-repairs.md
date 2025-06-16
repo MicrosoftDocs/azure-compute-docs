@@ -3,7 +3,7 @@ title: Automatic instance repairs with Azure Virtual Machine Scale Sets
 description: Learn how to configure automatic repairs policy for VM instances in a scale set
 author: hilaryw29
 ms.author: hilarywang
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: instance-protection
 ms.date: 04/01/2025
@@ -61,10 +61,11 @@ The automatic instance repairs process goes as follows:
 
 There are three available repair actions for automatic instance repairs – Replace, Reimage, and Restart. The default repair action is Replace, but you can configure automatic repairs to use Reimage or Restart by modifying the `repairAction` setting under `automaticRepairsPolicy` object.
 
+ > [!NOTE]
+  > Automatic repairs with "Replace" action will always create new VMs based on the current VMSS model. If you have attached VMs with configurations that differ from the VMSS model, those differences will not be preserved. The new VM will match the current VMSS model, not the configuration of the deleted VM.
+
 - **Replace** deletes the unhealthy instance and creates a new instance to replace it. The latest Virtual Machine Scale Set model is used to create the new instance. This repair action is the default.
-
 - **Reimage** applies the reimage operation to the unhealthy instance.
-
 - **Restart** applies the restart operation to the unhealthy instance.
 
 The following table compares the differences between all three repair actions:

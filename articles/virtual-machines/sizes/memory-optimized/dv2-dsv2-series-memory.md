@@ -5,7 +5,7 @@ author: andysports8
 ms.author: shuji
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 12/21/2022
 ---
 

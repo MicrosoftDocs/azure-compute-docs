@@ -3,7 +3,7 @@ title: Learn about Virtual Machine Scale Set templates
 description: Learn how to create a basic scale set template for Azure Virtual Machine Scale Sets through several simple steps.
 author: mimckitt
 ms.author: mimckitt
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
 ms.date: 06/14/2024
 ms.reviewer: jushiman

@@ -4,7 +4,7 @@ description: Learn about scalability and performance targets for virtual machine
 author: roygara
 ms.author: rogarana
 ms.date: 12/09/2024
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: azure-disk-storage
 ---
 

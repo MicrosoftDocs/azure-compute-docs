@@ -4,7 +4,7 @@ description: List of size series in the DC family.
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 04/16/2024
 ms.author: mattmcinnes
 ---

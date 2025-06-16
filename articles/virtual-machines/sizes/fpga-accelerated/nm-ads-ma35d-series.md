@@ -4,7 +4,7 @@ description: Overview of NMads MA35d virtual machine
 author:      iamwilliew
 ms.author:   wwilliams
 ms.service: azure-virtual-machines
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date:     10/02/2024
 ms.subservice: sizes
 ---

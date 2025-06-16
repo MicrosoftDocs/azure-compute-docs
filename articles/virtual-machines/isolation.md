@@ -3,7 +3,7 @@ title: Isolation for VMs in Azure
 description: Learn about VM isolation works in Azure.
 author: mimckitt
 ms.service: azure-virtual-machines
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 04/20/2023
 ms.author: mimckitt
 ms.reviewer: ayshak, mattmcinnes

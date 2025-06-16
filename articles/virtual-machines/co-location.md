@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: proximity-placement-groups
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 09/12/2022
 ---
 

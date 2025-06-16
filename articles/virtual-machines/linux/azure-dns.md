@@ -5,7 +5,7 @@ author: RicksterCDN
 ms.service: azure-virtual-machines
 ms.subservice: networking
 ms.custom: linux-related-content
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 04/11/2023
 ms.author: rclaus
 ms.collection: linux

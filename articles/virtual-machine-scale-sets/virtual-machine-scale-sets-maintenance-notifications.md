@@ -3,7 +3,7 @@ title: Maintenance notifications for Virtual Machine Scale Sets in Azure
 description: View maintenance notifications and start self-service maintenance for Virtual Machine Scale Sets in Azure.
 author: mimckitt
 ms.author: mimckitt
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: maintenance-control
 ms.date: 06/14/2024

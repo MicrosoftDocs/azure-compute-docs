@@ -4,7 +4,7 @@ description: List of size series in the FX family.
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 04/18/2024
 ms.author: mattmcinnes
 ---

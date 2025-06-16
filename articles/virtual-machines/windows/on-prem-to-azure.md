@@ -5,7 +5,7 @@ author: roygara
 
 ms.service: azure-disk-storage
 ms.tgt_pltfrm: vm-windows
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 10/07/2017
 ms.author: rogarana
 ms.custom:

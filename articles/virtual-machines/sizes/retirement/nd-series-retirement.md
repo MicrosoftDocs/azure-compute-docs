@@ -4,7 +4,7 @@ description: ND-series retirement by September 6, 2023
 author: sherrywangms
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 02/27/2023
 ms.author: sherrywang
 ---

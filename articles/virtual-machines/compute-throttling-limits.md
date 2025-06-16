@@ -3,7 +3,7 @@ title: Compute throttling limits
 description: Compute throttling limits
 author: viveksingla
 ms.service: azure-virtual-machines
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 05/27/2024
 ms.author: viveksingla
 ms.reviewer: 

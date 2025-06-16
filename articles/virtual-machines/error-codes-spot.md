@@ -20,6 +20,7 @@ Here are some possible error codes you could receive when using Azure Spot Virtu
 | Key | Message | Description |
 |-----|---------|-------------|
 | SkuNotAvailable | The requested tier for resource '\<resource\>' is currently not available in location '\<location\>' for subscription '\<subscriptionID\>'. Try another tier or deploy to a different location. | There is not enough Azure Spot Virtual Machine capacity in this location to create your VM or scale set instance. |
+| Standard_XX-XX_XX. This size does not support Azure Spot.|  There is insufficient Azure Spot Virtual Machine capacity in this location to create your VM or scale set instance.|  For Spot instances, if there is no available capacity, the portal page will fail immediately. This fail-fast feature ensures that users are promptly informed of the allocation failure, preventing them from waiting for an error after attempting deployment. | 
 | EvictionPolicyCanBeSetOnlyOnAzureSpotVirtualMachines  |  Eviction policy can be set only on Azure Spot Virtual Machines. | This VM is not an Azure Spot Virtual Machine, so you can't set the eviction policy. |
 | AzureSpotVMNotSupportedInAvailabilitySet  |  Azure Spot Virtual Machine is not supported in Availability Set. | You need to choose to either use an Azure Spot Virtual Machine or use a VM in an availability set, you can't choose both. |
 | AzureSpotFeatureNotEnabledForSubscription  |  Subscription not enabled with Azure Spot Virtual Machine feature. | Use a subscription that supports Azure Spot Virtual Machines. |

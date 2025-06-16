@@ -3,7 +3,7 @@ title: Deploy a Premium SSD v2 managed disk
 description: Learn how to deploy a Premium SSD v2 and about its regional availability.
 author: roygara
 ms.author: rogarana
-ms.date: 10/21/2024
+ms.date: 05/19/2025
 ms.topic: how-to
 ms.service: azure-disk-storage
 ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell, innovation-engine
@@ -70,6 +70,7 @@ To programmatically determine the regions and zones you can deploy to, use eithe
 Now that you know the region and zone to deploy to, follow the deployment steps in this article to create a Premium SSD v2 disk and attach it to a VM.
 
 ## Use Premium SSD v2 in Regions with Availability Zones
+Currently, Premium SSD v2 disks are only available in [select regions with Availability Zones (AZs)](#regional-availability).
 
 # [Azure CLI](#tab/azure-cli)
 
@@ -199,7 +200,7 @@ You've now deployed a VM with a premium SSD v2.
 ---
 
 ## Use a Premium SSD v2 in non-AZ Regions
-
+Currently, Premium SSD v2 disks are only available in [select regions without Availability Zones (AZs)](#regional-availability). Regions without AZ support may experience slightly higher average latency for Premium SSD v2 disks compared to regions with AZ support.
 # [Azure CLI](#tab/azure-cli)
 
 Create a Premium SSD v2 disk in a region without availability zone support by using the [az disk create](/cli/azure/disk#az-disk-create) command. Then create a VM in the same region that supports Premium Storage and attach the disk to it by using the [az vm create](/cli/azure/vm#az-vm-create) command. 

@@ -5,7 +5,7 @@ author: tomvcassidy
 ms.author: tomcassidy
 ms.custom: subject-cost-optimization
 ms.service: azure-virtual-machines
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 02/21/2024
 ---
 

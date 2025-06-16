@@ -4,7 +4,7 @@ description: Learn the steps you can take to get the best availability with your
 author: roygara
 ms.author: rogarana
 ms.date: 07/29/2024
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: azure-disk-storage
 ---
 

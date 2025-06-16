@@ -1,6 +1,6 @@
 ---
-title: Enable MSP on existing Virtual Machine or Virtual Machine Scale Sets
-description: MSP on preexisting VMs
+title: Enable MSP on an Existing Virtual Machine or Virtual Machine Scale Set
+description: Learn about the methods for enabling Metadata Security Protocol (MSP) on existing VMs or virtual machine scale sets.
 author: minnielahoti
 ms.service: azure-virtual-machines
 ms.topic: how-to
@@ -9,26 +9,26 @@ ms.author: minnielahoti
 ms.reviewer: azmetadatadev
 ---
 
-# Enable MSP on existing VM or Virtual Machine Scale Sets
-This page explains the different ways 
-Metadata Security Protocol (MSP) can be enabled on existing Virtual Machines (VM) or Virtual Machine Scale Sets. MSP can be enabled via Portal, ARM template, or the REST API in preexisting VMs. By default, for Windows VMs if ProxyAgentSettings.Enabled is true the `Microsoft.CPlat.ProxyAgent.ProxyAgentWindows` extension will be installed. For Linux VMs, setting ProxyAgentSettings.Enabled to true will not implicitly install Proxy Agent Extension. There must be an explicit PUT Rest API call on the `Microsoft.CPlat.ProxyAgent.ProxyAgentLinux` extension to enable Proxy Agent through the Proxy Agent Extension. The purpose of the Proxy Agent Extension is to enable, auto-update, and report status of Proxy Agent. 
+# Enable MSP on an existing VM or virtual machine scale set
+
+This article explains the ways that you can enable Metadata Security Protocol (MSP) on an existing virtual machine (VM) or virtual machine scale set. You can enable MSP on a VM by using the Azure portal, an Azure Resource Manager template (ARM template), or the REST API.
 
 ## Prerequisites
 
--  Ensure your image of choice is [compatible](./overview.md#compatibility).
-- Familiarize yourself with the [basic configuration](./configuration.md#configuration) options.
+- Ensure that your image of choice is [compatible](./overview.md#compatibility).
+- Familiarize yourself with the [basic configuration](./configuration.md#msp-feature-configuration) options.
 
 ## Enable MSP on a VM
 
-### With Azure portal
+### Use the Azure portal
 
-See [examples](./other-examples/portal.md).
+See [Configure MSP via the portal](./other-examples/portal.md).
 
-### With ARM template
+### Use an ARM template
 
-### With REST API
+### Use the REST API
 
-Enable with both services protected in `Audit` mode:
+Enable MSP with both WireServer and Azure Instance Metadata Service protected in `Audit` mode:
 
 ```http
 PATCH https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Compute/virtualMachines/{virtualMachine-Name}?api-version=2024-03-01
@@ -50,10 +50,15 @@ PATCH https://management.azure.com/subscriptions/{subscription-id}/resourceGroup
 }
 ```
 
-#### Validating the linked rules were applied to your VM
+For Windows VMs, if `ProxyAgentSettings.Enabled` is `true`, the `Microsoft.CPlat.ProxyAgent.ProxyAgentWindows` extension is installed by default.
 
-Check the VM Instance View to confirm the status of the `Microsoft.CPlat.ProxyAgent.ProxyAgentWindows` extension for Windows and `Microsoft.CPlat.ProxyAgent.ProxyAgentLinux` extension for Linux.
-The `ComponentStatus/ProxyAgentStatus/succeeded` status would have an `imdsRuleId` & `wireServerRuleId` which should map to the reference ID of the `InVMAccessControlProfile`.
+For Linux VMs, setting `ProxyAgentSettings.Enabled` to `true` doesn't implicitly install the Proxy Agent extension. To enable the Proxy Agent through the Proxy Agent extension, there must be an explicit `PUT` REST API call on the `Microsoft.CPlat.ProxyAgent.ProxyAgentLinux` extension. The purpose of the Proxy Agent extension is to enable, automatically update, and report the status of the Proxy Agent.
+
+### Validate linked rules
+
+To validate that the linked rules were applied to your VM, check the VM instance view to confirm the status of the `Microsoft.CPlat.ProxyAgent.ProxyAgentWindows` extension for Windows and the `Microsoft.CPlat.ProxyAgent.ProxyAgentLinux` extension for Linux.
+
+The `ComponentStatus/ProxyAgentStatus/succeeded` status should have an `imdsRuleId` value and a `wireServerRuleId` value. These values should map to the reference ID of `InVMAccessControlProfile`.
 
 ```json
 "extensions": [
@@ -93,6 +98,6 @@ The `ComponentStatus/ProxyAgentStatus/succeeded` status would have an `imdsRuleI
     }
 ```
 
-## Enable MSP on a Virtual Machine Scale Sets
+## Enable MSP on a virtual machine scale set
 
-Steps above also apply to the Virtual Machine Scale Sets model.
+The preceding steps for enabling MSP on a VM also apply to a virtual machine scale set.

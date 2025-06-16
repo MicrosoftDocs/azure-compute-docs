@@ -5,7 +5,7 @@ author: mimckitt
 ms.author: mimckitt
 ms.reviewer: cynthnn
 ms.service: azure-virtual-machines
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom: engagement-fy23
 ms.date: 02/21/2023
 ---

@@ -3,7 +3,7 @@ title: Understand instance IDs for Azure Virtual Machine Scale Set VMs
 description: Understand instance IDs for Azure Virtual Machine Scale Set virtual machines and the various ways that they surface.
 author: mimckitt
 ms.author: mimckitt
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: management
 ms.date: 06/14/2024

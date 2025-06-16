@@ -5,7 +5,7 @@ services: virtual-machines
 author: mimckitt
 ms.service: azure-virtual-machines
 ms.subservice: billing
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 10/31/2023
 ms.author: mimckitt
 ms.reviewer: cynthn, mattmcinnes

@@ -1,5 +1,5 @@
 ---
-title: Config maps for Azure Container Instances (Preview)
+title: Config maps for Azure Container Instances
 description: Learn how to use config maps with Azure Container Instances.
 author: mimckitt
 ms.author: mimckitt
@@ -7,10 +7,10 @@ ms.service: azure-container-instances
 ms.custom:
   - ignite-2024
 ms.topic: how-to
-ms.date: 11/6/2024
+ms.date: 05/19/2025
 ms.reviewer: tomvcassidy
 ---
-# Config maps for Azure Container Instances (Preview)
+# Config maps for Azure Container Instances
 
 A config map is a property that can be used to apply container configurations similar to environment variables and secret volumes. However, unlike when using environment variables or secret volumes where restarting the pod to apply the settings is required, apply settings using a config map does not require any restarts for the changes to take effect. 
 

@@ -1,7 +1,7 @@
 ---
 title: Best practices and considerations
 description: Best practices and considerations for customers to account for in their Container Instances workloads.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-container-instances

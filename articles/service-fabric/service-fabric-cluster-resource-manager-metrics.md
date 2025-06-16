@@ -1,7 +1,7 @@
 ---
 title: Manage Azure Service Fabric app load using metrics 
 description: Learn about how to configure and use metrics in Service Fabric to manage service resource consumption.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric

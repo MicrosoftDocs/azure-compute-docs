@@ -6,7 +6,7 @@ ms.author: jushiman
 ms.reviewer: jushiman
 ms.service: azure-virtual-machines
 ms.subservice: trusted-launch
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 04/10/2024
 ms.custom: template-concept
 ---

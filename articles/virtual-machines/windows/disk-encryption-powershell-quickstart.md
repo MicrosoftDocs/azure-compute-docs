@@ -7,7 +7,7 @@ ms.service: azure-virtual-machines
 ms.subservice: security
 ms.collection: windows
 ms.topic: quickstart
-ms.date: 02/20/2024
+ms.date: 05/14/2025
 ms.custom: devx-track-azurepowershell, mode-api
 ---
 
@@ -95,7 +95,7 @@ Remove-AzResourceGroup -Name "myResourceGroup"
 
 ## Next steps
 
-In this quickstart, you created a virtual machine, created a Key Vault that was enable for encryption keys, and encrypted the VM.  Advance to the next article to learn more about Azure Disk Encryption prerequisites for IaaS VMs.
+In this quickstart, you created a virtual machine, created a Key Vault that was enabled for encryption keys, and encrypted the VM.  Advance to the next article to learn more about Azure Disk Encryption prerequisites for IaaS VMs.
 
 > [!div class="nextstepaction"]
 > [Azure Disk Encryption overview](disk-encryption-overview.md)

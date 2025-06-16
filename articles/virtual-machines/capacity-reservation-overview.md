@@ -4,7 +4,7 @@ description: Learn how to reserve compute capacity in an Azure region or an avai
 author: bdeforeest
 ms.author: bidefore
 ms.service: azure-virtual-machines
-ms.topic: how-to
+ms.topic: overview
 ms.date: 02/24/2023
 ms.reviewer: cynthn, jushiman, mattmcinnes
 ms.custom: template-how-to
@@ -158,7 +158,7 @@ The group specifies the Azure location:
 
 - The group sets the region in which all reservations are created. Examples are East US, North Europe, or Southeast Asia. 
 - The group sets the eligible zones. Examples are AZ1, AZ2, and AZ3 in any combination. 
-- If no zones are specified, Azure selects the placement for the group somewhere in the region. Each reservation specifies the region and may not set a zone. 
+- If no zones are specified, then Azure will select the best zone available upon initial capacity reservation creation. All VMs using the capacity reservation group must be deployed without specifying a zone; each associated VM wil be deployed to the zone Azure selected for the group.
 
 Each reservation in a group is for one VM size. If eligible zones were selected for the group, the reservation must be for one of the supported zones. 
 

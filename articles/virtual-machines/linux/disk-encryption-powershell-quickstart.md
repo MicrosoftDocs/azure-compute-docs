@@ -7,7 +7,7 @@ ms.service: azure-virtual-machines
 ms.subservice: security
 ms.collection: linux
 ms.topic: quickstart
-ms.date: 02/20/2024
+ms.date: 05/14/2025
 ms.custom: devx-track-azurepowershell, mode-api, linux-related-content
 ---
 
@@ -29,7 +29,7 @@ New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
 
 ## Create a virtual machine
 
-Create an Azure virtual machine with [New-AzVM](/powershell/module/az.compute/new-azvm), passing to it the VM configuration object you created in the previous step.
+Create an Azure virtual machine with [New-AzVM](/powershell/module/az.compute/new-azvm), passing it to the VM configuration object you created in the previous step.
 
 ```powershell-interactive
 $cred = Get-Credential
@@ -62,7 +62,7 @@ $KeyVault = Get-AzKeyVault -VaultName "<your-unique-keyvault-name>" -ResourceGro
 Set-AzVMDiskEncryptionExtension -ResourceGroupName MyResourceGroup -VMName "MyVM" -DiskEncryptionKeyVaultUrl $KeyVault.VaultUri -DiskEncryptionKeyVaultId $KeyVault.ResourceId -SkipVmBackup -VolumeType All
 ```
 
-After a few minutes the process will return the following:
+After a few minutes the process returns:
 
 ```output
 RequestId IsSuccessStatusCode StatusCode ReasonPhrase
@@ -76,7 +76,7 @@ You can verify the encryption process by running [Get-AzVmDiskEncryptionStatus](
 Get-AzVmDiskEncryptionStatus -VMName MyVM -ResourceGroupName MyResourceGroup
 ```
 
-When encryption is enabled, you will see the following in the returned output:
+When encryption is enabled, you see this information in the returned output:
 
 ```output
 OsVolumeEncrypted          : EncryptionInProgress
@@ -95,7 +95,7 @@ Remove-AzResourceGroup -Name "myResourceGroup"
 
 ## Next steps
 
-In this quickstart, you created a virtual machine, created a Key Vault that was enable for encryption keys, and encrypted the VM.  Advance to the next article to learn more about Azure Disk Encryption for Linux VMs.
+In this quickstart you created a virtual machine, created a Key Vault enabled for encryption keys, and encrypted the VM. Advance to the next article to learn more about Azure Disk Encryption for Linux VMs.
 
 > [!div class="nextstepaction"]
 > [Azure Disk Encryption overview](disk-encryption-overview.md)

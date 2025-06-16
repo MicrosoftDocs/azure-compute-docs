@@ -6,6 +6,7 @@ ms.service: azure-disk-storage
 ms.topic: overview
 ms.date: 04/01/2025
 ms.author: rogarana
+#Customer intent: This article provides prospective customers a succinct overview of the features for the service, while providing links to deeper content which contain more information on specific topics.
 ---
 # Introduction to Azure managed disks
 

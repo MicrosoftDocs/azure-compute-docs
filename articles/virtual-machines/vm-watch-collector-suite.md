@@ -4,7 +4,7 @@ description: Learn more information about VM watch Collectors Suite.
 author:      ofemifowode 
 ms.author:   ofemifowode 
 ms.service: azure-virtual-machines
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date:     02/05/2025
 ms.subservice: monitoring
 ---

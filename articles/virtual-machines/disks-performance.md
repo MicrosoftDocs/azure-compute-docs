@@ -4,7 +4,7 @@ description: Learn more about how virtual machines and their attached disks work
 author: roygara
 ms.author: rogarana
 ms.date: 03/17/2025
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: azure-disk-storage
 ---
 # Virtual machine and disk performance

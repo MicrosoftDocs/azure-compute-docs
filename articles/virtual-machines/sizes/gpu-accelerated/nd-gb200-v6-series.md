@@ -4,7 +4,7 @@ description: Information on and specifications of the ND GB200-v6-series sizes
 author: iamwilliew
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 03/20/2025
 ms.author: wwilliams
 ms.reviewer: mattmcinnes

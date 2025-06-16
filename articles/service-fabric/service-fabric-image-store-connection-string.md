@@ -1,7 +1,7 @@
 ---
 title: Azure Service Fabric image store connection string 
 description: Learn about the image store connection string, including its uses and applications to a Service Fabric cluster.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric

@@ -4,7 +4,7 @@ description: Information on and specifications of the DCesv6-series sizes
 author: simranparkhe
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 04/15/2025
 ms.author: simranparkhe
 ms.reviewer: simranparkhe

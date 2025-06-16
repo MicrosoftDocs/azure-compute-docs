@@ -3,9 +3,9 @@ title: Use multiple Virtual Machine sizes with instance mix
 description: Use multiple Virtual Machine sizes in a scale set using instance mix. Optimize deployments using allocation strategies. 
 author: brittanyrowe 
 ms.author: brittanyrowe
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
-ms.date: 3/3/2025
+ms.date: 06/10/2025
 ms.reviewer: jushiman
 ---
 
@@ -98,7 +98,7 @@ Following the scale set cost model, usage of instance mix is free. You continue 
 When using instance mix, keep the following limitations in mind:
 - **Orchestration Mode**: Instance mix is only available for scale sets using Flexible Orchestration Mode.
 - **Quota Requirements**: Ensure you have sufficient quota for the VM sizes you're requesting with instance mix.
-- **Virtual Machine Type**: Only VMs that are in the [general purpose](../virtual-machines/sizes/overview.md#general-purpose) category can be mixed at this time.
+- **Virtual Machine Type**: Only VMs that are in the [A](../virtual-machines/sizes/general-purpose/a-family.md), [B](../virtual-machines/sizes/general-purpose/b-family.md), [D](../virtual-machines/sizes/general-purpose/d-family.md), [E](../virtual-machines/sizes/memory-optimized/e-family.md), and [F](../virtual-machines/sizes/compute-optimized/f-family.md) families can be specified in the `skuProfile`.
 - **VM Size Limit**: You can specify up to **five VM sizes** in an instance mix deployment.
 - **Virtual Network Requirement**: For REST API deployments, an existing virtual network must be present in the resource group where the scale set is being deployed.
 - **Architecture Consistency**: Mixing VM architectures (for example, Arm64 and x64) in the same instance mix deployment isn't supported.

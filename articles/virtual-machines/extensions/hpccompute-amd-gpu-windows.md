@@ -144,6 +144,11 @@ az vm extension set `
 ## Troubleshoot and support
 
 ### Troubleshoot
+After extension is installed successfully, to run 'amd-smi' install WMIC using 
+
+```powershell
+DISM /Online /Add-Capability /CapabilityName:WMIC
+```
 
 You can retrieve data about the state of extension deployments from the Azure portal and by using Azure PowerShell and the Azure CLI. To see the deployment state of extensions for a given VM, run the following command:
 

@@ -4,7 +4,7 @@ description: Learn about the design considerations for your Azure Virtual Machin
 keywords: linux virtual machine,Virtual Machine Scale Sets
 author: mimckitt
 ms.author: mimckitt
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
 ms.date: 06/14/2024
 ms.reviewer: jushiman

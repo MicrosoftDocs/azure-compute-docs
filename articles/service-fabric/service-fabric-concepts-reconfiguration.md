@@ -1,7 +1,7 @@
 ---
 title: Reconfiguration in Azure Service Fabric 
 description: Learn about configurations for stateful service replicas and the process of reconfiguration Service Fabric uses to maintain consistency and availability during the change.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric

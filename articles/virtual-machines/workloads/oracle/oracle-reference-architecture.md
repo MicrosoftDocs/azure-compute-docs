@@ -4,7 +4,7 @@ description: Learn about architectures for Oracle database on Azure Virtual Mach
 author: jessiehaessler
 ms.service: oracle-on-azure
 ms.collection: linux
-ms.topic: article
+ms.topic: concept-article
 ms.date: 10/18/2024
 ms.author: jhaessler
 ---

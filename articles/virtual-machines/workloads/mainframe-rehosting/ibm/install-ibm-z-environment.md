@@ -7,7 +7,7 @@ ms.subservice: mainframe-rehosting
 author: swread
 ms.author: sread
 manager: mamccrea 
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 04/02/2019
 ---
 

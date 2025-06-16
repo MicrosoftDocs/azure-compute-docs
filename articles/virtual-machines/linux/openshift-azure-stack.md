@@ -7,7 +7,7 @@ ms.author: robess
 ms.service: azure-stack
 ms.custom: linux-related-content
 ms.collection: linux
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 02/13/2023
 ---
 

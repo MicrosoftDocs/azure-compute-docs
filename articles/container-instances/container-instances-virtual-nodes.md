@@ -1,7 +1,7 @@
 ---
 title: Virtual nodes on Azure Container Instances
 description: Learn more about virtual nodes.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: jussong
 author: jussong
 ms.service: azure-container-instances

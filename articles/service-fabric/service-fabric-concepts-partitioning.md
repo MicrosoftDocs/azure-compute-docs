@@ -1,7 +1,7 @@
 ---
 title: Partitioning Service Fabric services 
 description: Learn how to partition Service Fabric stateless and stateful services
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric

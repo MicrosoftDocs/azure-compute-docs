@@ -18,6 +18,8 @@ The Linux agent provides the following functionality for Linux and FreeBSD Azure
 
 > [!IMPORTANT]
 > FIPS 140-3 Enforced is not supported on RHEL/Ubuntu with extensions using 'protectedSettings'.
+>
+> Support for FIPS 140-3 will be added during the CY25 Q4 timeframe.
 
 ### Image provisioning
 

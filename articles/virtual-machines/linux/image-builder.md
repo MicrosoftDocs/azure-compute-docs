@@ -155,6 +155,7 @@ sed -i -e "s/<region1>/$location/g" helloImageTemplateforSIG.json
 sed -i -e "s/<region2>/$additionalregion/g" helloImageTemplateforSIG.json
 sed -i -e "s/<runOutputName>/$runOutputName/g" helloImageTemplateforSIG.json
 sed -i -e "s%<imgBuilderId>%$imgBuilderId%g" helloImageTemplateforSIG.json
+sed -i -e "s/sudo mkdir/sleep 300;sudo mkdir/g" helloImageTemplateforSIG.json
 ```
 
 ## Create the image version

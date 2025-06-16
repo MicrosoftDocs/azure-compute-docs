@@ -1,6 +1,6 @@
 ---
-title: NVads-V710 v-5-series summary include file
-description: Include file for NVads-V710 v-5-series summary
+title: NVads-V710 v5-series summary include file
+description: Include file for NVads-V710 v5-series summary
 author: iamwilliew
 ms.topic: include
 ms.service: azure-virtual-machines

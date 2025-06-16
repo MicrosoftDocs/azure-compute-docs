@@ -270,6 +270,10 @@ sections:
           StatusCode: 404
           ReasonPhrase: Not Found
           
+      - question: What happens to my SQL Server instance if a SQL Server Azure Marketplace image is deprecated? 
+        answer: |
+          Nothing happens to your SQL Server instance if a SQL Server image is deprecated. You can continue using your Azure VM and your SQL Server instance without interruption. However, you will no longer be able to deploy that image in the future. 
+          
          
       - question: How do I check for active image versions under a particular SKU?
         answer: |

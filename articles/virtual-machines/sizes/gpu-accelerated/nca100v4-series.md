@@ -4,7 +4,7 @@ description: Information on and specifications of the NC_A100_v4-series sizes
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 07/31/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
@@ -13,6 +13,9 @@ ms.reviewer: mattmcinnes
 # NC_A100_v4 sizes series
 
 [!INCLUDE [nc_a100_v4-summary](./includes/nca100v4-series-summary.md)]
+
+> [!NOTE]
+> We are currently only deploying net new capacity for the latest generation of the NC product line, the NCads_H100_v5-series. 
 
 ## Host specifications
 [!INCLUDE [nca100v4-series-specs](./includes/nca100v4-series-specs.md)]

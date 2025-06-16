@@ -4,7 +4,7 @@ description: Information on and specifications of the NCCads_H100_v5-series size
 author: kphande
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 08/06/2024
 ms.author: khande
 ms.reviewer: mattmcinnes

@@ -5,7 +5,7 @@ author: ankitaduttaMSFT
 ms.service: azure-virtual-machines
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.topic: tutorial
-ms.date: 01/15/2025
+ms.date: 04/29/2025
 ms.author: ankitadutta
 ---
 
@@ -32,7 +32,7 @@ Verify the following requirements before you start the move process:
 Most move resources operations are the same whether using the Azure portal or PowerShell or CLI, with a couple of exceptions.
 
 > [!NOTE]
-> For more information on the commands and their syntaxes, refer to [this page](https://learn.microsoft.com/powershell/module/az.resourcemover/?view=azps-13.0.0#resource-mover).
+> For more information on the commands and their syntaxes, refer to [this page](/powershell/module/az.resourcemover/?view=azps-13.0.0&preserve-view=true#resource-mover).
 
 
 | Operation | Portal | PowerShell/CLI |
@@ -180,7 +180,7 @@ az resource-mover move-collection create --identity type=SystemAssigned --locati
   "id": "/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/clidemo-RG/providers/Microsoft.Migrate/moveCollections/cliDemo-zonalMC",
   "identity": {
     "principalId": "aaaaaaaa-bbbb-cccc-1111-222222222222",
-    "tenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+    "tenantId": "aaaabbbb-0000-cccc-1111-dddd2222eeee",
     "type": "SystemAssigned"
   },
   "location": "eastus2",

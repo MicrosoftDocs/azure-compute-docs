@@ -1,7 +1,7 @@
 ---
 title:  Azure Container Instances Spot containers
 description: Learn more about Spot container groups
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: atsenthi
 author: athinanthny
 ms.service: azure-container-instances

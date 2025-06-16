@@ -5,8 +5,8 @@ author: AjKundnani
 ms.author: ajkundna
 ms.service: azure-virtual-machines
 ms.subservice: trusted-launch
-ms.topic: conceptual
-ms.date: 11/06/2023
+ms.topic: concept-article
+ms.date: 04/21/2025
 ms.reviewer: jushiman
 ms.custom: template-concept; references_regions
 ---
@@ -19,7 +19,7 @@ Azure offers Trusted Launch as a seamless way to improve the security of [Genera
 
 > [!IMPORTANT]
 >
-> - Trusted Launch is selected as the default state for newly created Azure VM. If your new VM requires features that aren't supported with Trusted launch, see the [Trusted Launch FAQs](trusted-launch-faq.md).
+> - Trusted Launch is the default state for newly created Azure Gen2 VM and scale sets. See the [Trusted Launch FAQs](trusted-launch-faq.md) if your new VM requires features that [aren't supported with Trusted launch](trusted-launch.md#unsupported-features).
 > - [Existing VM](overview.md) can have Trusted Launch enabled after being created. For more information, see [Enable Trusted Launch on existing VMs](trusted-launch-existing-vm.md).
 > - Existing [virtual machine scale set](../virtual-machine-scale-sets/overview.md) can have Trusted Launch enabled after being created. For more information, see [Enable Trusted Launch on existing scale set](trusted-launch-existing-vmss.md).
 
@@ -131,6 +131,88 @@ Trusted Launch is integrated with Defender for Cloud to ensure that your VMs are
 
   - Which kernel driver failed? Am I familiar with the failed kernel driver and do I expect it to load?
   - Is the exact version of the driver same as expected? Are the driver binaries intact? If failed driver is a partner driver, did the partner pass the OS compliance tests to get it signed?
+
+## (Preview) Trusted Launch as default
+
+> [!IMPORTANT]
+>
+> Trusted Launch default is currently in preview. This Preview is intended for testing, evaluation, and feedback purposes only. Production workloads aren't recommended. When registering to preview, you agree to the [supplemental terms of use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Some aspects of this feature might change with general availability (GA).
+
+Trusted Launch as default (TLaD) is available in preview for new Gen2 Virtual machines (VM) and Virtual machine scale sets (scale sets).
+
+TLaD is a fast and zero-touch means of improving the security posture of new Gen2 based Azure VM and Virtual Machine Scale Sets deployments. With Trusted Launch as default, any new Gen2 VMs or scale sets created through any client tools (like ARM template, Bicep) defaults to Trusted Launch VMs with secure boot and vTPM enabled.
+
+The public preview release allows you to validate these changes in your respective environment for all new Azure Gen2 VM, scale set, and prepare for this upcoming change.
+
+> [!NOTE]
+>
+> All new Gen2 VM, scale set, deployments using any client tool (ARM template, Bicep, Terraform, etc.) defaults to Trusted launch post on-boarding to preview. This change does NOT override inputs provided as part of the deployment code.
+
+### Enable TLaD preview
+
+Register preview feature `TrustedLaunchByDefaultPreview` under `Microsoft.Compute` namespace on virtual machine  subscription. For more information, see [Set up preview features in Azure subscription](/azure/azure-resource-manager/management/preview-features)
+
+To create a new Gen2 VM or scale set with Trusted launch default, execute your existing deployment script as is through Azure SDK, Terraform, or another method that isn't Azure portal, CLI, or PowerShell. The new VM or scale set created in the registered subscription results in a Trusted Launch VM or Virtual Machine Scale Set.
+
+### VM & scale sets deployments with TLaD preview
+
+#### Existing behavior
+
+To create Trusted launch VM & scale set, you need to add following securityProfile element in deployment:
+
+```json
+"securityProfile": {
+    "securityType": "TrustedLaunch",
+    "uefiSettings": {
+        "secureBootEnabled": true,
+        "vTpmEnabled": true,
+    }
+}
+```
+
+Absence of securityProfile element in deployment code deploys VM & scale set without enabling Trusted launch.
+
+**Examples**
+
+- [vm-windows-admincenter](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-windows-admincenter/azuredeploy.json) – The Azure Resource Manager (ARM) template deploys Gen2 VM without enabling Trusted launch.
+- [vm-simple-windows](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-simple-windows/azuredeploy.json) – The ARM template deploys Trusted launch VM (without default as `securityProfile` is explicitly added to ARM template)
+
+#### New behavior
+
+By using API version 2021-11-01 or higher AND [on-boarding to preview](trusted-launch.md#enable-tlad-preview), absence of `securityProfile` element from deployment will enable Trusted launch by default to new VM & scale set deployed if following conditions are met:
+
+- Source Marketplace [OS image supports Trusted launch](trusted-launch.md#operating-systems-supported).
+- Source ACG OS image supports and is validated for Trusted launch.
+- Source disk supports Trusted launch.
+- [VM size supports Trusted launch](trusted-launch.md#virtual-machines-sizes).
+
+The deployment won't default to Trusted launch if one ore more of the listed condition(s) aren't met and complete successfully to create new Gen2 VM & scale set without Trusted launch.
+
+You can choose to explicitly bypass default for VM & scale set deployment by setting `Standard` as value of parameter `securityType`. For more information, see [Can I disable Trusted Launch for a new VM deployment](trusted-launch-faq.md#can-i-disable-trusted-launch-for-a-new-vm-deployment).
+
+#### Known limitations
+
+***Unable to bypass Trusted launch default and create Gen2 (Non-Trusted launch) VM using Azure portal after registering to preview.***
+
+After registering subscription to preview, setting security type to `Standard` in Azure portal will deploy the VM or scale set `Trusted launch`. This limitation will be addressed prior to the Trusted launch default general availability.
+
+To mitigate this limitation, you can [un-register the preview feature](/azure/azure-resource-manager/management/preview-features#unregister-preview-feature) by removing feature flag `TrustedLaunchByDefaultPreview` under `Microsoft.Compute` namespace on given subscription.
+
+:::image type="content" source="./media/trusted-launch/00-trusted-launch-default-portal-limitation.png" alt-text="Screenshot of the security type drop-down in Portal." lightbox="./media/trusted-launch/00-trusted-launch-default-portal-limitation.png":::
+
+***Unable to re-size VM or VMSS to un-supported Trusted launch VM size family (like M-Series) post default to Trusted launch.***
+
+Re-sizing Trusted launch VM to [VM size family not supported with Trusted launch](trusted-launch.md#virtual-machines-sizes) will not be supported.
+
+As mitigation, please register feature flag `UseStandardSecurityType` under `Microsoft.Compute` namespace AND roll-back VM from Trusted launch to Gen2-only (Non-Trusted launch) by setting `securityType = Standard` using available client tools (except Azure portal).
+
+### TLaD preview feedback
+
+Reach out to us with any feedback, queries, or concerns regarding this upcoming change at [Trusted launch default preview feedback survey](https://aka.ms/TrustedLaunchDefault/Feedback).
+
+### Disable TLaD preview
+
+To disable the TLaD preview, unregister the preview feature `TrustedLaunchByDefaultPreview` under `Microsoft.Compute` namespace on virtual machine  subscription. For more information, see [Unregister preview feature](/azure/azure-resource-manager/management/preview-features#unregister-preview-feature)
 
 ## Related content
 

@@ -5,7 +5,7 @@ ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.custom: linux-related-content
 ms.collection: linux
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 06/25/2024
 ms.reviewer: davberg
 ---

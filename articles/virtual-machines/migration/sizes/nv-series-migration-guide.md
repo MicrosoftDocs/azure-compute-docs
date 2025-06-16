@@ -4,7 +4,7 @@ description: NV series migration guide
 author: vikancha-MSFT
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 02/27/2023
 ms.author: vikancha
 ---

@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 05/05/2025
 ---
 
 # How to parameterize configuration files in Service Fabric
@@ -51,12 +51,15 @@ In this example, you override a configuration value using parameters in your app
 
 > [!NOTE]
 > In the case where you add a ConfigOverride, Service Fabric always chooses the application parameters or the default value specified in the application manifest.
->
->
 
 ## Access parameterized configurations in code
 
-You can access the configuration in your settings.xml file programmatically. Take for example, the following configuration XML file:
+> [!NOTE]
+> Too many or large overrides can affect API performance.
+>
+> Instead of using [FabricClient.QueryClient.GetApplicationListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationlistasync?view=azure-dotnet#system-fabric-fabricclient-queryclient-getapplicationlistasync), fetch parameters using the method described in this section. For clusters with many applications, try using default values to improve performance. The impact of application parameters on performance depends on factors like VM size, the number of parameters, the number of applications, and the length of the values.
+
+You can access the configuration in your settings.xml file programmatically. Take, for example, the following configuration XML file:
 
    ```xml
 <Settings
@@ -82,7 +85,7 @@ foreach (var parameter in data.Parameters)
 }
   ```
 
-Here `Parameter.Name` will be MyParameter and `Parameter.Value` will be Value1
+Here, `Parameter.Name` is MyParameter and `Parameter.Value` is Value1.
 
 ## Next steps
 For information about other app management capabilities that are available in Visual Studio, see [Manage your Service Fabric applications in Visual Studio](service-fabric-manage-application-in-visual-studio.md).

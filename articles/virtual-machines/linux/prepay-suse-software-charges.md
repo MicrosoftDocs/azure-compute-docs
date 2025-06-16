@@ -6,7 +6,7 @@ manager: yashesvi
 ms.service: azure-virtual-machines
 ms.subservice: billing
 ms.custom: linux-related-content
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 10/04/2024
 ms.author: banders
 ---

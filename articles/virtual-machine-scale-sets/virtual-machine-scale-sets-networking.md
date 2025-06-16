@@ -223,7 +223,7 @@ Example template using a Basic Load Balancer: [vmss-public-ip-linux](https://git
 
 Alternatively, a [Public IP Prefix](/azure/virtual-network/ip-services/public-ip-address-prefix) (a contiguous block of Standard SKU Public IPs) can be used to generate instance-level IPs in a Virtual Machine Scale Set. The zonal properties of the prefix will be passed to the instance IPs, though they will not be shown in the output.
 
-Example template using a Public IP Prefix: [vmms-with-public-ip-prefix](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vmss-with-public-ip-prefix)
+Example template using a Public IP Prefix: [vmss-with-public-ip-prefix](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vmss-with-public-ip-prefix)
 
 ### Querying the public IP addresses of the virtual machines in a scale set
 To list the public IP addresses assigned to scale set virtual machines using the CLI, use the **az vmss list-instance-public-ips** command.

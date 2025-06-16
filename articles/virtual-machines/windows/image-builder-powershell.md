@@ -182,6 +182,7 @@ Grant Azure image builder permissions to create images in the specified resource
      Publisher = 'myCo'
      Offer = 'Windows'
      Sku = 'Win2019'
+     HyperVGeneration = 'v1'
    }
    New-AzGalleryImageDefinition @GalleryParams
    ```

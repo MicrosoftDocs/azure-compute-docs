@@ -5,7 +5,7 @@ author: vikramdesai01
 manager: vikramdesai01
 ms.service: azure-virtual-machines
 ms.subservice: billing
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 01/09/2023
 ms.author: vikdesai
 ms.reviewer: jushiman

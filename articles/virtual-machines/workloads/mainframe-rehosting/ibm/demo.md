@@ -6,7 +6,7 @@ ms.service: azure-virtual-machines
 ms.subservice: mainframe-rehosting
 author: swread
 ms.author: sread
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 02/22/2019
 ---
 # Set up an Application Developers Controlled Distribution (ADCD) in IBM zD&T v1

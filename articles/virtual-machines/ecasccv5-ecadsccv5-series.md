@@ -6,7 +6,7 @@ ms.author: ananyagarg
 ms.reviewer: mimckitt
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual 
+ms.topic: concept-article 
 ms.date: 03/29/2022
 
 ---

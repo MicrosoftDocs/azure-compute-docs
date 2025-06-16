@@ -4,7 +4,7 @@ description: A list containing all previous generation and capacity limited VM s
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 02/02/2024
 ms.author: mattmcinnes
 ms.reviewer: iamwilliew

@@ -1,7 +1,7 @@
 ---
 title: Set up Microsoft Entra ID for client authentication in the Azure portal
 description: Learn how to set up Microsoft Entra ID to authenticate clients for Service Fabric clusters by using the Azure portal.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 8/8/2022
 ---
 

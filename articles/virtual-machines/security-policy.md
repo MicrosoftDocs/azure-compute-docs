@@ -6,7 +6,7 @@ ms.service: azure-virtual-machines
 ms.subservice: security
 ms.date: 02/26/2024
 ms.author: jushiman
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Secure and use policies on virtual machines in Azure

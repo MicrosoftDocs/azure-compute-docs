@@ -5,7 +5,7 @@ author: prasadmsft
 ms.author: reprasa
 ms.service: azure-virtual-machines
 ms.subservice: trusted-launch
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 02/24/2025
 ms.custom: template-concept, devx-track-azurecli
 ---

@@ -1,5 +1,5 @@
 ---
-title: Get standby pool and instance details (Preview)
+title: Get standby pool for Azure Container Instances details 
 description: Learn how to get details about your standby pool for Azure Container Instances.
 author: mimckitt
 ms.author: mimckitt
@@ -7,11 +7,16 @@ ms.service: azure-container-instances
 ms.custom:
   - ignite-2024
 ms.topic: how-to
-ms.date: 11/1/2024
+ms.date: 5/10/2025
 ms.reviewer: tomvcassidy
 ---
 
-# Get standby pool and instance details (Preview)
+# Get standby pools for Azure Container instances details
+
+> [!IMPORTANT]
+> For standby pools to successfully create and manage resources, it requires access to the associated resources in your subscription. Ensure the correct permissions are assigned to the standby pool resource provider in order for your standby pool to function properly. For detailed instructions, see **[configure role permissions for standby pools](container-instances-standby-pool-configure-permissions.md)**.
+
+
 This article discusses how to retrieve information about your standby pool and the container groups within it. 
 
 ## Standby pool details
@@ -86,7 +91,7 @@ Type                         : Microsoft.StandbyPool/standbyContainerGroupPools/
 ### [REST](#tab/rest)
 
 ```HTTP
-GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.StandbyPool/standbyContainerGroupPools/myStandbyPool/runtimeViews/latest?api-version=2024-03-01
+GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.StandbyPool/standbyContainerGroupPools/myStandbyPool/runtimeViews/latest?api-version=2025-03-01
 
 {
   "id": "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.StandbyPool/standbyContainerGroupPools/myStandbyPool/runtimeViews/latest",

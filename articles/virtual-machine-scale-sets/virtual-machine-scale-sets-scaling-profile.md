@@ -3,7 +3,7 @@ title: Scaling profile for Virtual Machine Scale Sets
 description: The virtual machine scaling profile for Virtual Machine Scale Sets define the VM configuration you want to use when adding instances to the scale set via autoscaling 
 author: fitzgeraldsteele 
 ms.author: fisteele
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
 ms.date: 06/14/2024
 ms.reviewer: jushiman

@@ -3,7 +3,7 @@ title: Convert a disk from LRS to ZRS
 description: Learn how to convert a managed disk from locally redundant storage to zone-redundant storage.
 author: roygara
 ms.service: azure-disk-storage
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 10/19/2023
 ms.author: rogarana
 ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell

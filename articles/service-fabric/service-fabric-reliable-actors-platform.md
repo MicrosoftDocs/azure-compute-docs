@@ -1,7 +1,7 @@
 ---
 title: Reliable Actors on Service Fabric 
 description: Describes how Reliable Actors are layered on Reliable Services and use the features of the Service Fabric platform.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric

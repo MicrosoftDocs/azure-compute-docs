@@ -5,7 +5,7 @@ author: aarthiv
 ms.author: aarthiv
 ms.service: azure-virtual-machines
 ms.subservice: recovery
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 11/2/2023
 ms.custom: conceptual
 ---

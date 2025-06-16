@@ -4,7 +4,7 @@ description: Learn about what's new for Service Fabric.
 author: tomvcassidy
 ms.service: azure-service-fabric
 ms.topic: whats-new
-ms.date: 10/28/2024
+ms.date: 06/13/2025
 ms.author: tomcassidy
 ---
 
@@ -21,6 +21,12 @@ This article provides information about:
 * Retired functionality
 
 ## Announcements
+
+### June 2025
+* Service Fabric 11.0 released. For more information, see the [release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_110.md).
+* Service Fabric 10.1CU7 released. For more information, see the [release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_101CU7.md).
+* Service Fabric 10.0CU8 released. For more information, see the [release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_100CU8.md).
+* Service Fabric 9.1CU14 released. For more information, see the [release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_91CU14.md).
 
 ### October 2024
 * Service Fabric 10.1CU6 released. For more information, see the [release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_101CU6.md).

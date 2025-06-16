@@ -3,7 +3,7 @@ title: Create an Azure scale set that uses Availability Zones
 description: Learn how to create Azure Virtual Machine Scale Sets that use Availability Zones for increased redundancy against outages
 author: mimckitt
 ms.author: mimckitt
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: availability
 ms.date: 03/21/2025

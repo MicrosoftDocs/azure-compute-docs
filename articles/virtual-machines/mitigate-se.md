@@ -6,7 +6,7 @@ author: ju-shim
 keywords: spectre,meltdown,specter
 ms.service: azure-virtual-machines
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 02/26/2024
 ms.author: jushiman
 ---

@@ -4,7 +4,7 @@ description: Compare Coremark compute benchmark scores for Azure VMs running Win
 author:: DavidBerg-MSFT
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 06/25/2024
 ms.author: davberg
 ms.reviewer: ladolan

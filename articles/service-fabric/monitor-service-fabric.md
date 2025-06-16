@@ -3,7 +3,7 @@ title: Monitor Azure Service Fabric
 description: Start here to learn how to monitor Service Fabric.
 ms.date: 03/26/2024
 ms.custom: horz-monitor
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric

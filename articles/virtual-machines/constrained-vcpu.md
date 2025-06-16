@@ -4,7 +4,7 @@ description: Lists the Vm sizes that are capable of having a constrained vCPU co
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 03/18/2025
 ms.author: mattmcinnes
 ms.reviewer: mimckitt, archatc
@@ -165,7 +165,7 @@ At this time, the VM pricing, remains the same as the original size. For more in
 | Standard_E16-8ds_v6	| 16 | E16ds_v6 |
 | Standard_E32-8ds_v6	| 32 | E32ds_v6 |
 | Standard_E32-16ds_v6 | 32 | E32ds_v6 |
-| Standard_E64-16ds_v6	| 64 | E64ds_v6 |
+| Standard_E64-16ds_v6	| 16 | E64ds_v6 |
 | Standard_E64-32ds_v6	| 64 | E64ds_v6 |
 | Standard_E96-24ds_v6	| 96 | E96ds_v6 |
 | Standard_E96-48ds_v6	| 96 | E96ds_v6 |

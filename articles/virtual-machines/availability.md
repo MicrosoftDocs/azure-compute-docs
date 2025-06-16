@@ -4,7 +4,7 @@ description: Learn about the availability options for running virtual machines i
 author: mimckitt
 ms.author: mimckitt
 ms.service: azure-virtual-machines
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 10/18/2022
 ms.reviewer: cynthn
 ---

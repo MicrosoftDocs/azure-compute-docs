@@ -7,7 +7,7 @@ ms.reviewer: normesta
 ms.date: 05/09/2024
 ms.service: azure-virtual-machines
 ms.subservice: hpc
-ms.topic: conceptual 
+ms.topic: concept-article 
 ---
 # High-performance computing (HPC) workload best practices guide
 

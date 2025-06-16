@@ -3,7 +3,7 @@ title: Virtual Machine Scale Sets and placement groups
 description: What you need to know about large Azure Virtual Machine Scale Sets in order to use them in your application.
 author: mimckitt
 ms.author: mimckitt
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: management
 ms.date: 06/14/2024

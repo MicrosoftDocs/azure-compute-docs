@@ -4,7 +4,7 @@ description: An overview of Azure Cobalt processor-based Virtual Machines.
 author: archatC
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.workload: infrastructure-services
 ms.date: 11/07/2024
 ms.author: archat

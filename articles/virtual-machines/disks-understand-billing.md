@@ -4,7 +4,7 @@ description: Learn about the billing factors that affect Azure managed disks, in
 author: roygara
 ms.author: rogarana
 ms.date: 08/12/2024
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: azure-disk-storage
 ---
 

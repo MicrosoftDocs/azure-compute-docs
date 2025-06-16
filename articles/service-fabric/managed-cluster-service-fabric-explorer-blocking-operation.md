@@ -1,7 +1,7 @@
 ---
 title: Service Fabric Explorer blocking operations
 description: Learn about the blocking operations in place to mitigate cluster desynchronization issues.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric

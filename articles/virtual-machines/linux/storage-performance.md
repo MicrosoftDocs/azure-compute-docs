@@ -5,7 +5,7 @@ author: sasha-melamed
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.collection: linux
-ms.topic: conceptual
+ms.topic: concept-article
 ms.tgt_pltfrm: vm-linux
 ms.custom: linux-related-content
 ms.date: 06/01/2022

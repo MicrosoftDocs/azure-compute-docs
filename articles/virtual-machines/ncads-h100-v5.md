@@ -6,7 +6,7 @@ ms.author: sherrywang
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.custom: ignite-2023, linux-related-content
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 11/15/2023
 ---
 

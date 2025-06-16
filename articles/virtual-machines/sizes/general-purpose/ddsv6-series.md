@@ -1,10 +1,10 @@
 ---
-title: Ddsv6 size series (Preview)
+title: Ddsv6 size series
 description: Information on and specifications of the Ddsv6-series sizes
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 07/29/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
@@ -133,5 +133,3 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 ---
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]
-
-

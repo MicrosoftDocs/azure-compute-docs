@@ -3,27 +3,14 @@ title: Update a Virtual Machine Scale Set with instance mix
 description: How to update a virtual machine scale set instance mix settings. 
 author: brittanyrowe 
 ms.author: brittanyrowe
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
-ms.date: 1/10/2025
+ms.date: 06/10/2025
 ms.reviewer: jushiman
 ---
 
 # Update instance mix settings on an existing scale set
 This article explains how to update the instance mix settings on a scale set, including changing VM sizes and allocation strategies.
-
-## Prerequisites
-Before using instance mix, complete feature registration for the `FlexVMScaleSetSkuProfileEnabled` feature flag using the [az feature register](/cli/azure/feature#az-feature-register) command:
-
-```azurecli-interactive
-az feature register --namespace "Microsoft.Compute" --name "FlexVMScaleSetSkuProfileEnabled"
-```
-
-It takes a few moments for the feature to register. Verify the registration status by using the [az feature show](/cli/azure/feature#az-feature-register) command:
-
-```azurecli-interactive
-az feature show --namespace "Microsoft.Compute" --name "FlexVMScaleSetSkuProfileEnabled"
-```
 
 ## Update the instance mix settings on an existing scale set
 The instance mix settings can be updated on your scale set via CLI, PowerShell, and REST API. You can change either the virtual machine (VM) sizes or the allocation strategy, or both, in a single call.

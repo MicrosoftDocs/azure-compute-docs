@@ -1,7 +1,7 @@
 ---
 title: Introducing the Service Fabric Cluster Resource Manager 
 description: Learn about the Service Fabric Cluster Resource Manager, a way to manage orchestration of your application's services.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric

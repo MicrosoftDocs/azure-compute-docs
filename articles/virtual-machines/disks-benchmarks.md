@@ -6,6 +6,7 @@ ms.author: rogarana
 ms.date: 01/07/2025
 ms.topic: how-to
 ms.service: azure-disk-storage
+#Customer intent: Learn how to benchmark applications on Azure disk storage to ensure their performance is meeting your requirements.
 ---
 # Benchmark a disk
 

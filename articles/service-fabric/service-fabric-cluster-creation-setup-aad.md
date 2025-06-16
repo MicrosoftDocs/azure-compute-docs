@@ -103,7 +103,7 @@ Name                           Value
 ----                           -----
 WebAppId                       00001111-aaaa-2222-bbbb-3333cccc4444
 TenantId                       aaaabbbb-0000-cccc-1111-dddd2222eeee
-ServicePrincipalId             3d10f55b-1876-4a62-87db-189bfc54a9f2
+ServicePrincipalId             aaaaaaaa-bbbb-cccc-1111-222222222222
 NativeClientAppId              11112222-bbbb-3333-cccc-4444dddd5555
 
 -----ARM template-----
@@ -231,7 +231,7 @@ at <ScriptBlock>, /home/<user>/clouddrive/service-fabric-aad-helpers/SetupUser.p
 at <ScriptBlock>, /home/<user>/clouddrive/aad-test.ps1: line 43
 at <ScriptBlock>, <No file>: line 1
 WARNING: invoke-graphApiCall response status: 400
-invoke-graphApi count:0 statuscode:400 -uri https://graph.microsoft.com/v1.0/aaaabbbb-0000-cccc-1111-dddd2222eeee/servicePrincipals/3d10f55b-1876-4a62-87db-189bfc54a9f2/appRoleAssignedTo -headers System.Collections.Hashtable -body System.Collections.Hashtable -method post
+invoke-graphApi count:0 statuscode:400 -uri https://graph.microsoft.com/v1.0/aaaabbbb-0000-cccc-1111-dddd2222eeee/servicePrincipals/aaaaaaaa-bbbb-cccc-1111-222222222222/appRoleAssignedTo -headers System.Collections.Hashtable -body System.Collections.Hashtable -method post
 confirm-graphApiRetry returning:True
 ```
 

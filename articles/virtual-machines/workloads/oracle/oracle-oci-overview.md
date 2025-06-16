@@ -4,7 +4,7 @@ description: Learn about solutions that integrate Oracle apps running on Microso
 author: jjaygbay1
 ms.service: oracle-on-azure
 ms.collection: linux
-ms.topic: concept-article
+ms.topic: overview
 ms.date: 10/04/2024
 ms.author: jacobjaygbay
  

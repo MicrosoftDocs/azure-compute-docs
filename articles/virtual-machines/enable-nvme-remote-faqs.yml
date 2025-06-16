@@ -1,7 +1,7 @@
 ### YamlMime:FAQ
 metadata:
   title: NVMe - Remote NVMe Disks FAQ
-  ms.date: 01/31/2025
+  ms.date: 05/23/2025
   description: Get answers to common questions about working with remote NVMe disks on virtual machines.
   ms.service: azure-virtual-machines
   ms.topic: faq
@@ -30,10 +30,6 @@ sections:
           - Opt in to NVMe by selecting the NVMe disk controller type in the Azure portal or in the Azure Resource Manager, Azure CLI, or Azure PowerShell template. For step-by-step instructions, refer to the [general NVMe FAQ](/azure/virtual-machines/enable-nvme-faqs).
           - Make sure that you're using a Generation 2 VM, because NVMe supports only Generation 2 images.
           - Choose one of the Azure regions where NVMe is enabled.      
-      - question: |
-          Can I encrypt my remote NVMe disks?
-        answer: |
-          There's no native way within Azure to encrypt these disks. You can encrypt them within the OS, but you'll need to re-encrypt them after mounting on startup. 
       - question: |
           How can I resize a SCSI-based VM to a remote NVMe-enabled VM of a different size?
         answer: |
@@ -151,11 +147,11 @@ sections:
       - question: |
           Can I convert a SCSI-based VM to NVMe-enabled while retaining the same VM vCPU size with an NVMe-tagged OS image?
         answer: |
-          This scenario is supported only on Linux operating systems and is not supported on Windows operating systems. 
+          This scenario is supported only on Linux operating systems and isn't supported on Windows operating systems. 
       - question: |
           Are shared disks in remote disks supported with NVMe-enabled VMs?
         answer: |
-          The shared disk feature is supported for Premium SSD, Premium SSD v2, and Ultra Disk Storage disks. Shared Disks using NVME is not supported with the OS Windows Server 2019.
+          The shared disk feature is supported for Premium SSD, Premium SSD v2, and Ultra Disk Storage disks. Shared Disks using NVME isn't supported with the OS Windows Server 2019.
       - question: |
           Can I use Azure PowerShell or the Azure CLI to create a VM with an OS disk from an existing blob with NVMe enabled?
         answer: |

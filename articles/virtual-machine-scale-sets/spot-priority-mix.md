@@ -5,7 +5,7 @@ author: ju-shim
 ms.author: jushiman
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: azure-spot-vm
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 06/14/2024
 ms.reviewer: cynthn
 ms.custom: engagement-fy23

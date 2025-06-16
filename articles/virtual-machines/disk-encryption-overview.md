@@ -2,12 +2,13 @@
 title: Overview of managed disk encryption options
 description: Overview of managed disk encryption options
 author: msmbaldwin
-ms.date: 07/17/2024
-ms.topic: conceptual
+ms.date: 05/14/2025
+ms.topic: concept-article
 ms.author: mbaldwin
 ms.service: azure-virtual-machines
 ms.subservice: security
 ms.custom: references_regions
+#Customer intent: The goal of this article is to give a high level overview of the different types of encryption available to managed disks.
 ---
 
 # Overview of managed disk encryption options

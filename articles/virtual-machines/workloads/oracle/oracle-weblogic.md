@@ -4,7 +4,7 @@ description: Learn how to run Oracle WebLogic Server on Microsoft Azure Virtual 
 author: rezar
 ms.service: oracle-on-azure
 ms.collection: linux
-ms.topic: how-to
+ms.topic: concept-article
 ms.date: 10/08/2024
 ms.author: rezar
 ms.custom: devx-track-java, devx-track-javaee, devx-track-javaee-wls, devx-track-javaee-wls-vm

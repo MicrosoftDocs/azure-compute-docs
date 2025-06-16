@@ -4,7 +4,7 @@ description: This article provides details on known and fixed issues and how to 
 author: ApnaLakshay
 ms.service: azure-virtual-machines
 ms.subservice: maintenance
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 10/13/2023
 ms.author: lnagpal
 ---

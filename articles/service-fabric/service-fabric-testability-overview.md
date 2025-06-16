@@ -1,7 +1,7 @@
 ---
 title: Fault Analysis Service overview 
 description: This article describes the Fault Analysis Service in Service Fabric for inducing faults and running test scenarios against your services.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric

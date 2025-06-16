@@ -107,7 +107,7 @@ $containerGroup = New-AzContainerGroup -ResourceGroupName "myResourceGroup" `
     -Image "mcr.microsoft.com/azuredocs/aci-wordcount:latest" `
     -RestartPolicy "OnFailure" `
     -Container @(
-        New-AzContainerGroupContainer -Name "mycontainer2" `
+        New-AzContainerInstanceContainer -Name "mycontainer2" `
             -EnvironmentVariable $envVars
     )
 ```

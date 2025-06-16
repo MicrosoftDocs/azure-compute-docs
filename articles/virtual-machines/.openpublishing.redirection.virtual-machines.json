@@ -16,6 +16,11 @@
             "redirect_document_id": false
         },
         {
+            "source_path_from_root": "/articles/virtual-machines/workloads/redhat/redhat-imagelist.md",
+            "redirect_url": "/azure/virtual-machines/workloads/redhat/redhat-images",
+            "redirect_document_id": false
+        },
+        {
             "source_path_from_root": "/articles/virtual-machines/linux/tutorial-availability-sets.md",
             "redirect_url": "/previous-versions/azure/virtual-machines/linux/tutorial-availability-sets",
             "redirect_document_id": false
@@ -6526,16 +6531,6 @@
             "redirect_document_id": true
         },
         {
-            "source_path_from_root": "/articles/virtual-machines/sizes/memory-optimized/mbsv3-series.md",
-            "redirect_url": "/azure/virtual-machines/sizes/memory-optimized/mbsv3-mbdsv3-series",
-            "redirect_document_id": false
-        },
-        {
-            "source_path_from_root": "/articles/virtual-machines/sizes/memory-optimized/mbdsv3-series.md",
-            "redirect_url": "/azure/virtual-machines/sizes/memory-optimized/mbsv3-mbdsv3-series",
-            "redirect_document_id": false
-        },
-        {
             "source_path_from_root": "/articles/virtual-machines/sizes/nm-ads-ma35d-series.md",
             "redirect_url": "/azure/virtual-machines/sizes/fpga-accelerated/nm-ads-ma35d-series",
             "redirect_document_id": true
@@ -6689,6 +6684,46 @@
             "source_path_from_root": "/articles/virtual-machines/nv-series-migration-guide.md",
             "redirect_url": "/azure/virtual-machines/migration/sizes/nv-series-migration-guide",
             "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/m-series.md",
+            "redirect_url": "/azure/virtual-machines/sizes/memory-optimized/m-series",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/msv2-mdsv2-isolated-retirement.md",
+            "redirect_url": "/azure/virtual-machines/sizes/retirement/msv2-mdsv2-retirement",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/msv2-mdsv2-series.md",
+            "redirect_url": "/azure/virtual-machines/sizes/memory-optimized/msv2-mm-series",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/msv3-mdsv3-medium-series.md",
+            "redirect_url": "/azure/virtual-machines/sizes/memory-optimized/msv3-mm-series",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/mv2-series.md",
+            "redirect_url": "/azure/virtual-machines/sizes/memory-optimized/mv2-series",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/sizes/memory-optimized/msv3-mdsv3-high-memory-series.md",
+            "redirect_url": "/azure/virtual-machines/sizes/memory-optimized/msv3-hm-series",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/sizes/memory-optimized/mbsv3-mbdsv3-series.md",
+            "redirect_url": "/azure/virtual-machines/sizes/memory-optimized/mbsv3-series",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/sizes/memory-optimized/mdsv3-very-high-memory-series.md",
+            "redirect_url": "/azure/virtual-machines/sizes/memory-optimized/mdsv3-vhm-series",
+            "redirect_document_id": false
         }
     ]
 }

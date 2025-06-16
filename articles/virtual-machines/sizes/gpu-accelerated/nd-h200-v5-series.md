@@ -8,7 +8,7 @@ description: Information on and specifications of the ND-H200-v5 series sizes
 author:      iamwilliew
 ms.author:   wwilliams
 ms.service: azure-virtual-machines
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date:     09/12/2024
 ms.subservice: sizes
 ---

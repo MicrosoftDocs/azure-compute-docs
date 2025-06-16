@@ -4,7 +4,7 @@ description: Information on and specifications of the HBv3-series sizes
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 01/28/2025
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes

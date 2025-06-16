@@ -5,7 +5,7 @@ services: virtual-machines
 ms.service: azure-virtual-machines
 ms.subservice: hpc
 ms.topic: concept-article
-ms.date: 01/28/2025
+ms.date: 05/08/2025
 ms.reviewer: cynthn
 ms.author: padmalathas
 author: padmalathas
@@ -107,7 +107,7 @@ When paired in a striped array, the NVMe SSD provides up to 12 GB/s reads and 7 
 |----------------------------------|----------------------------------|
 | Cores                            | 176, 144, 96, 48, or 24 (SMT disabled)           | 
 | CPU                              | AMD EPYC 9V33X                   | 
-| CPU Frequency (non-AVX)          | 2.4-GHz base, 3.7-GHz peak boost    | 
+| CPU Frequency (non-AVX)          | 2.53 GHz base, 3.7 GHz peak boost    | 
 | Memory                           | 768 GB (RAM per core depends on VM size)         | 
 | Local Disk                       | 2 * 1.8-TB NVMe (block), 480 GB SSD (page file) | 
 | InfiniBand                       | 400 Gb/s Mellanox ConnectX-7 NDR InfiniBand | 

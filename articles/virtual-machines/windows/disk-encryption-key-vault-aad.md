@@ -6,7 +6,7 @@ ms.service: azure-virtual-machines
 ms.subservice: security
 ms.topic: how-to
 ms.author: mbaldwin
-ms.date: 02/20/2024
+ms.date: 05/14/2025
 ms.custom: devx-track-azurecli, devx-track-azurepowershell, has-azure-ad-ps-ref
 ---
 # Creating and configuring a key vault for Azure Disk Encryption with Microsoft Entra ID (previous release)

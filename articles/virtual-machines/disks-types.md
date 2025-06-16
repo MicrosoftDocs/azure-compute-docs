@@ -4,9 +4,10 @@ description: Learn about the available Azure disk types for virtual machines, in
 author: roygara
 ms.author: rogarana
 ms.date: 01/21/2025
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: azure-disk-storage
 ms.custom: references_regions
+#Customer intent: The goal of this article is to be a single location that can be used to evaluate which disk to deploy. Providing just enough information about each of them to make an informed decision on which ones fit your needs.
 ---
 
 # Azure managed disk types

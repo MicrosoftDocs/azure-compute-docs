@@ -6,7 +6,7 @@ ms.author: runcai
 ms.reviewer: mimckitt
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual 
+ms.topic: concept-article 
 ms.date: 11/15/2021
 
 ---

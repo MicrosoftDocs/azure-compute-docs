@@ -7,7 +7,7 @@ ms.service: azure-virtual-machines
 ms.subservice: security
 ms.collection: windows
 ms.topic: quickstart
-ms.date: 02/20/2024
+ms.date: 05/14/2025
 ms.custom: devx-track-azurecli, mode-api
 ---
 

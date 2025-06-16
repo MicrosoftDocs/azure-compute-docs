@@ -136,6 +136,8 @@ To cancel a rolling update, use the following API. Once canceled, the RU cannot 
 
 You do not need to provide a request body when calling this API.
 
+It's also important to know that canceling an RU won't automatically roll it back to the previous state, but it will remain in the state that it was at the moment it was canceled.  For example, in case during an RU one wants to update a CG profile reference from *cgprofile1* to *cgprofile2*, and at some point the operation is canceled, some CGs might have the new profile *cgprofile2* and others remain with *cgprofile1*.
+
 ### Boundary of a Batch in a Rolling Update
 
 The CGs of a specific batch in an RU do not cross a fault model boundary. A fault model represents a zone/fault-domain (FD) combination. For example, zone 1 / FD 0 is a fault model boundary, zone 1 / FD 1 is another fault model boundary, and zone 2 / FD 0 is yet another fault model boundary.

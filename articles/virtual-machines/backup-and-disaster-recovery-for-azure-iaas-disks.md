@@ -3,7 +3,7 @@
   description: This article explains how to plan for backup and disaster recovery of IaaS virtual machines and managed disks in Azure.
   author: roygara
   ms.service: azure-disk-storage
-  ms.topic: conceptual
+  ms.topic: concept-article
   ms.date: 08/07/2023
   ms.author: rogarana
 ---
