@@ -38,7 +38,9 @@ The Azure Windows VM Agent supports the x64 architecture for these Windows opera
 >
 > - Ensure that your VM has access to IP address 168.63.129.16. For more information, see [What is IP address 168.63.129.16?](/azure/virtual-network/what-is-ip-address-168-63-129-16).
 >
-> - Ensure that DHCP is enabled inside the guest VM. This is required to get the host or fabric address from DHCP for the Azure Windows VM Agent and extensions to work. If you need a static private IP address, you should configure it through the Azure portal or PowerShell, and make sure the DHCP option inside the VM is enabled. [Learn more](/azure/virtual-network/ip-services/virtual-networks-static-private-ip-arm-ps) about setting up a static IP address by using PowerShell.
+> - If you only have one private IP on your VM's NIC then we highly recommend having DHCP enabled in the guest VM.  If you need a static private IP address, you should configure it through the Azure portal or PowerShell, and make sure the DHCP option inside the VM is enabled. [Learn more](/azure/virtual-network/ip-services/virtual-networks-static-private-ip-arm-ps) about setting up a static IP address by using PowerShell. This will ensure that the IP configuration will always match what is configured on the VM in Azure.
+>
+> - If you have multiple private IPs assigned to your VM's NIC then ensure that you carefully follow the steps to [assign the IP configurations correctly](https://learn.microsoft.com/en-us/azure/virtual-network/ip-services/virtual-network-multiple-ip-addresses-portal#os-config). After this, if the Guest Agent isn't able to communicate with 168.63.129.16 then please check that the primary IP in Windows [matches the primary IP in your VM's NIC in Azure](https://learn.microsoft.com/en-us/troubleshoot/azure/virtual-machines/windows/no-internet-access-multi-ip).
 >
 > - Running the Azure Windows VM Agent in a nested virtualization VM might lead to unpredictable behavior, so it's not supported in that dev/test scenario.
 
