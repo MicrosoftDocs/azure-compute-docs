@@ -61,7 +61,7 @@ Behind the scenes, the Azure portal:
 
 Ensure that users who access Boot diagnostics on the VM blade have permission to list keys for the custom storage account so that the portal can retrieve the data successfully.
 
-To follow the principle of least privilege, assign an appropriate built-in role, such as [Storage Account Key Operator Service Role](/azure/role-based-access-control/built-in-roles/storage#storage-account-key-operator-service-role) instead of broader roles. Alternatively, you can create a [custom role](articles/role-based-access-control/custom-roles-portal) that includes only the **Microsoft.Storage/storageAccounts/listKeys/action** permission.
+To follow the principle of least privilege, assign an appropriate built-in role, such as [Storage Account Key Operator Service Role](/azure/role-based-access-control/built-in-roles/storage#storage-account-key-operator-service-role) instead of broader roles. Alternatively, you can create a [custom role](/azure/role-based-access-control/custom-roles-portal) that includes only the **Microsoft.Storage/storageAccounts/listKeys/action** permission.
 
 > [!NOTE]
 > Users with broad roles such as **Owner** or **Contributor** typically already have this permission and may not encounter this issue. This requirement is most relevant for users with more restricted or custom roles.
