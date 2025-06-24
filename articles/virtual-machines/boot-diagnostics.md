@@ -35,6 +35,37 @@ To configure the storage firewall for Azure Serial Console, see [Use Serial Cons
 > [!NOTE]
 > The custom storage account associated with boot diagnostics requires the storage account and the associated virtual machines reside in the same region and subscription.
 
+## Prerequisites for using a custom storage account
+
+When you choose a **custom storage account** for boot diagnostics (instead of the recommended managed storage option), ensure that any user accessing **Boot diagnostics** through the Azure portal has the necessary permissions to retrieve and view the diagnostic data stored as blobs in the specified custom account.
+
+In the Azure portal UI you might see a generic error message like:
+
+![image](https://github.com/user-attachments/assets/c383951a-c7ba-40be-84e9-4ae17475a7dd)
+
+This message alone does not provide the full cause. To identify the actual issue, inspect the REST API calls made by the portal using the **Network** tab in your browser's Developer Tools. This will help you understand the exact problem. For example:
+
+```json
+{
+  "error": {
+    "code": "AuthorizationFailed",
+    "message": "The client '<object id>' does not have authorization to perform action 'Microsoft.Storage/storageAccounts/listKeys/action' over scope '/subscriptions/<subID>/resourceGroups/<rg>/providers/Microsoft.Storage/storageAccounts/<account>' or the scope is invalid. If access was recently granted, please refresh your credentials."
+  }
+}
+```
+
+Behind the scenes, the Azure portal:
+
+1. Calls **Microsoft.Storage/storageAccounts/listKeys/action** to obtain a key for the storage account.
+2. Uses this key to read the screenshot and serial log stored in the associated blob container.
+
+Ensure that users who access Boot diagnostics on the VM blade have permission to list keys for the custom storage account so that the portal can retrieve the data successfully.
+
+To follow the principle of least privilege, assign an appropriate built-in role, such as [Storage Account Key Operator Service Role](https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles/storage#storage-account-key-operator-service-role) instead of broader roles. Alternatively, you can create a [custom role](https://learn.microsoft.com/en-us/azure/role-based-access-control/custom-roles-portal) that includes only the **Microsoft.Storage/storageAccounts/listKeys/action** permission.
+
+> [!NOTE]
+> Users with broad roles such as **Owner** or **Contributor** typically already have this permission and may not encounter this issue. This requirement is most relevant for users with more restricted or custom roles.
+
 ## Boot diagnostics view
 
 Go to the virtual machine blade in the Azure portal, the boot diagnostics option is under the *Help* section in the Azure portal. Selecting boot diagnostics display a screenshot and serial log information. The serial log contains kernel messaging and the screenshot is a snapshot of your VMs current state. Based on if the VM is running Windows or Linux determines what the expected screenshot would look like. For Windows, users see a desktop background and for Linux, users see a login prompt.
