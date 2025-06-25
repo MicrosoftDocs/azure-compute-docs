@@ -28,7 +28,7 @@ To use managed data disks on a node type, configure the underlying virtual machi
 * Add a managed disk in data disks section of the template for the virtual machine scale set. 
 * Update the Service Fabric extension for the virtual machine scale set with following settings: 
     * For Windows: **useManagedDataDisk: true** and **dataPath: 'K:\\\\SvcFab'**. Note that drive K is just a representation. You can use any drive letter lexicographically greater than all the drive letters present in the virtual machine scale set SKU.
-    * For Linux: **useManagedDataDisk:true** and **dataPath: '/mnt/sfroot'**.
+    * For Linux: Not supported. Custom script extension is needed to initalize the disk.
 
 Here's an Azure Resource Manager template for a Service Fabric extension:
 
