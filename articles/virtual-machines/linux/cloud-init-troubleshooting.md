@@ -88,27 +88,28 @@ While the VM is running, you will need the logs from the VM to understand why pr
 
 - [Serial Console](/troubleshoot/azure/virtual-machines/serial-console-grub-single-user-mode)
 
-- [Run AZ VM Repair](/troubleshoot/azure/virtual-machines/repair-linux-vm-using-azure-virtual-machine-repair-commands) to attach and mount the OS disk using [chroot](/troubleshoot/azure/virtual-machines/chroot-environment-linux), which will allow you to collect these logs:
+- [Run AZ VM Repair](/troubleshoot/azure/virtual-machines/repair-linux-vm-using-azure-virtual-machine-repair-commands) to attach and mount the OS disk ([*lvm*](/troubleshoot/azure/virtual-machines/linux/troubleshoot-recovery-disks-portal-linux#mount-the-attached-data-disk), [*no lvm*](/troubleshoot/azure/virtual-machines/linux/troubleshoot-recovery-disks-portal-linux#mount-the-attached-data-disk)), which will allow you to collect and examine these logs:
 
 ```bash
-sudo cat /rescue/var/log/cloud-init*
-sudo cat /rescue/var/log/waagent*
-sudo cat /rescue/var/log/syslog*
-sudo cat /rescue/var/log/rsyslog*
-sudo cat /rescue/var/log/messages*
-sudo cat /rescue/var/log/kern*
-sudo cat /rescue/var/log/dmesg*
-sudo cat /rescue/var/log/boot*
+/rescue/var/log/waagent*
+/rescue/var/log/syslog*
+/rescue/var/log/rsyslog*
+/rescue/var/log/messages*
+/rescue/var/log/kern*
+/rescue/var/log/dmesg*
+/rescue/var/log/boot*
+/rescue/ /var/log/cloud-init.log
+/rescue//var/log/cloud-init-output.log
 ```
 
 > [!NOTE]
 > Alternatively, you can create a rescue VM manually by using the Azure portal. For more information, see [Troubleshoot a Linux VM by attaching the OS disk to a recovery VM using the Azure portal](/troubleshoot/azure/virtual-machines/troubleshoot-recovery-disks-portal-linux).
 
-To start initial troubleshooting, start with the cloud-init logs, and understand where the failure occurred, then use the other logs to deep dive, and provide additional insights.
+To start initial troubleshooting, begin with the serial logs and cloud-init logs to understand where the failure occurred. Then use the other logs for a  deeper dive to help provide additional insights.
 
 * /var/log/cloud-init.log
 * /var/log/cloud-init-output.log
-* Serial/boot logs
+* [Serial/boot logs](/azure/virtual-machines/boot-diagnostics#boot-diagnostics-view)
 
 In all logs, start searching for "Failed", "WARNING", "WARN", "err", "error", "ERROR". Setting configuration to ignore case-sensitive searches is recommended.
 
