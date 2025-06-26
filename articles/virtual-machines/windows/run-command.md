@@ -79,6 +79,8 @@ The entity was not found in this Azure location
 | **RDPSettings** | Checks registry settings and domain policy settings. Suggests policy actions if the machine is part of a domain or modifies the settings to default values. |
 | **ResetRDPCert** | Removes the TLS/SSL certificate tied to the RDP listener and restores the RDP listener security to default. Use this script if you see any issues with the certificate. |
 | **SetRDPPort** | Sets the default or user-specified port number for Remote Desktop connections. Enables firewall rules for inbound access to the port. |
+| **IMDSCertCheck** | Checks from within the virtual machine for known configuration issues that may be causing IMDS to not function properly. |
+| **WindowsActivationValidation** | Checks from within the virtual machine for known Windows Activation issues or concerns that may cause acation to fail. |
 
 ## Azure CLI
 
