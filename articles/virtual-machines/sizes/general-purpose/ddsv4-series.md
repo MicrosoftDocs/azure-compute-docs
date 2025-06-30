@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 07/29/2024
+ms.date: 06/30/2025
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ---
@@ -45,7 +45,7 @@ vCPUs (Qty.) and Memory for each size
 | Standard_D64ds_v4 | 64 | 256 |
 
 #### VM Basics resources
-- [What are vCPUs](../../../virtual-machines/managed-disks-overview.md)
+- [What are vCPUs](https://azure.microsoft.com/en-us/products/virtual-machines#FAQ)
 - [Check vCPU quotas](../../../virtual-machines/quotas.md)
 
 ### [Local Storage](#tab/sizestoragelocal)
