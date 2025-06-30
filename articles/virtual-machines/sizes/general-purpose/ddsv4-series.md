@@ -45,7 +45,7 @@ vCPUs (Qty.) and Memory for each size
 | Standard_D64ds_v4 | 64 | 256 |
 
 #### VM Basics resources
-- [What are vCPUs](https://azure.microsoft.com/en-us/products/virtual-machines#FAQ)
+- [What are vCPUs](https://azure.microsoft.com/products/virtual-machines#FAQ)
 - [Check vCPU quotas](../../../virtual-machines/quotas.md)
 
 ### [Local Storage](#tab/sizestoragelocal)
