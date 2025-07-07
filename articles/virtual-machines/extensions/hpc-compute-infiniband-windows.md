@@ -11,6 +11,7 @@ ms.date: 07/25/2024
 ms.custom: devx-track-azurepowershell
 ms.author: jushiman
 author: ju-shim
+# Customer intent: As a cloud administrator managing H- and N-series Windows VMs, I want to install InfiniBand drivers using an Azure extension, so that I can optimize VM performance for high throughput and low latency computing tasks.
 ---
 
 # InfiniBand Driver Extension for Windows

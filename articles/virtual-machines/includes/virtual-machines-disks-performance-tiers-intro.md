@@ -8,6 +8,7 @@
  ms.date: 03/04/2024
  ms.author: rogarana
  ms.custom: include file
+# Customer intent: As a cloud administrator, I want to change the performance tier of my Azure managed disks, so that I can optimize IOPS and throughput based on workload needs without incurring downtime.
 ---
 
 > [!NOTE]

@@ -9,6 +9,7 @@ ms.subservice: sizes
 ms.date: 04/18/2024
 ms.author: mattmcinnes
 ms.custom: include file
+# Customer intent: "As a cloud architect, I want to review the specifications of the Edv4 and Edsv4-series VM sizes, so that I can select the appropriate virtual machine configuration for my application's performance requirements."
 ---
 | Part | Quantity <br><sup>Count <sup>Units | Specs <br><sup>SKU ID, Performance <sup>Units</sup>, etc.  |
 |---|---|---|

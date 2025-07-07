@@ -8,6 +8,7 @@ ms.date: 01/31/2024
 ms.author: jushiman
 ms.reviewer: mattmcinnes
 ms.custom: compute-cost-fy24, devx-track-azurecli, devx-track-azurepowershell, devx-track-terraform
+# Customer intent: "As a cloud administrator, I want to resize a virtual machine to a suitable SKU so that I can efficiently allocate resources based on workload demands while minimizing downtime."
 ---
 
 # Change the size of a virtual machine 
@@ -273,15 +274,18 @@ For more information on choosing the right SKU, you can use the following resour
 
 ## Limitations
 
-You can't resize a VM size that has a local temp disk to a VM size with no local temp disk and vice versa.
+1. You can't resize a VM size that has a local temp disk to a VM size with no local temp disk and vice versa.
 
-The only combinations allowed for resizing are:
+   The only combinations allowed for resizing are:
 
 - VM (with local temp disk) -> VM (with local temp disk); and
 - VM (with no local temp disk) -> VM (with no local temp disk).
 
-For a work-around, see [How do I migrate from a VM size with local temp disk to a VM size with no local temp disk? ](../azure-vms-no-temp-disk.yml#how-do-i-migrate-from-a-vm-size-with-local-temp-disk-to-a-vm-size-with-no-local-temp-disk---). The work-around can be used to resize a VM with no local temp disk to VM with a local temp disk. You create a snapshot of the VM with no local temp disk > create a disk from the snapshot > create VM from the disk with appropriate [VM size](../sizes.md) that supports VMs with a local temp disk.
+   For a work-around, see [How do I migrate from a VM size with local temp disk to a VM size with no local temp disk? ](../azure-vms-no-temp-disk.yml#how-do-i-migrate-from-a-vm-size-with-local-temp-disk-to-a-vm-size-with-no-local-temp-disk---). The work-around can be used to resize a VM with no local temp disk to VM with a local temp disk. You create a snapshot of the VM with no local temp disk > create a disk from the snapshot > create VM from the disk with appropriate [VM size](../sizes.md) that supports VMs with a local temp disk.
 
+2. You can't resize a VM size that has a SCSI-based VM to a VM size that has a remote NVMe-enabled VM.
+
+   For a work around see [How can I resize a SCSI-based VM to a remote NVMe-enabled VM of a different size?](../enable-nvme-remote-faqs.yml#how-can-i-resize-a-scsi-based-vm-to-a-remote-nvme-enabled-vm-of-a-different-size-)
 
 ## Next steps
 

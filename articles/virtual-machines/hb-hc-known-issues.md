@@ -9,6 +9,7 @@ ms.date: 07/25/2024
 ms.reviewer: cynthn
 ms.author: padmalathas
 author: padmalathas
+# Customer intent: "As a cloud administrator managing HPC and GPU VMs, I want to troubleshoot known issues and implement solutions, so that I can ensure optimal performance and reliability of my virtual machine workloads."
 ---
 
 # Known issues with HB-series and N-series VMs

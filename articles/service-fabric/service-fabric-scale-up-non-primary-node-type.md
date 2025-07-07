@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: devx-track-azurepowershell
 services: service-fabric
 ms.date: 08/26/2022
+# Customer intent: "As an IT administrator, I want to vertically scale a non-primary node type in my Service Fabric cluster, so that I can upgrade the VM size and operating system without incurring downtime or data loss during the process."
 ---
 
 # Scale up a Service Fabric cluster non-primary node type
@@ -96,7 +97,7 @@ Alternately, you can use an existing Azure Key Vault certificate to deploy the t
 # Key Vault variables
 $certUrlValue = "https://sftestupgradegroup.vault.azure.net/secrets/sftestupgradegroup20200309235308/dac0e7b7f9d4414984ccaa72bfb2ea39"
 $sourceVaultValue = "/subscriptions/########-####-####-####-############/resourceGroups/sftestupgradegroup/providers/Microsoft.KeyVault/vaults/sftestupgradegroup"
-$thumb = "BB796AA33BD9767E7DA27FE5182CF8FDEE714A70"
+$thumb = "AA11BB22CC33DD44EE55FF66AA77BB88CC99DD00"
 ```
 
 Next, designate a resource group name for the cluster and set the `templateFilePath` and `parameterFilePath` locations:
@@ -130,7 +131,7 @@ Connect to the cluster and ensure that all five of its nodes are healthy (substi
 ```powershell
 # Connect to the cluster
 $clusterName = "sftestupgrade.southcentralus.cloudapp.azure.com:19000"
-$thumb = "BB796AA33BD9767E7DA27FE5182CF8FDEE714A70"
+$thumb = "AA11BB22CC33DD44EE55FF66AA77BB88CC99DD00"
 Connect-ServiceFabricCluster `
     -ConnectionEndpoint $clusterName `
     -KeepAliveIntervalInSec 10 `
@@ -269,7 +270,7 @@ To deploy the updated configuration, you'll need several references to the clust
 * **The thumbprint of your cluster certificate.** (You probably already have this if you [connected to the initial cluster](#connect-to-the-new-cluster-and-check-health-status) to check its health status.) From the same certificate blade (**Certificates** > *Your desired certificate*) in Azure portal, copy **X.509 SHA-1 Thumbprint (in hex)**:
 
     ```powershell
-    $thumb = "BB796AA33BD9767E7DA27FE5182CF8FDEE714A70"
+    $thumb = "AA11BB22CC33DD44EE55FF66AA77BB88CC99DD00"
     ```
 
 * **The Resource ID of your Key Vault.** From your Key Vault in Azure portal, select **Properties** > **Resource ID**:

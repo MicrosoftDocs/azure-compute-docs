@@ -10,6 +10,7 @@ ms.date: 04/05/2023
 ms.author: jushiman
 ms.custom: mvc, devx-track-azurepowershell
 #Customer intent: As an IT administrator or developer, I want to learn how to secure a web server with TLS certificates so that I can protect my customer data on web applications that I build and run.
+# Customer intent: As an IT administrator, I want to secure a Windows web server with TLS certificates using Azure Key Vault, so that I can ensure secure communications and protect sensitive data in the applications I deploy.
 ---
 
 # Tutorial: Secure a web server on a Windows virtual machine in Azure with TLS certificates stored in Key Vault

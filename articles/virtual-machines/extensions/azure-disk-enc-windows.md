@@ -9,6 +9,7 @@ ms.author: ejarvi
 ms.collection: windows
 ms.date: 03/19/2020
 
+# Customer intent: As an IT admin managing Windows virtual machines, I want to implement Azure Disk Encryption, so that I can ensure the security of my data through full disk encryption and effective key management.
 ---
 # Azure Disk Encryption for Windows (Microsoft.Azure.Security.AzureDiskEncryption)
 

@@ -10,6 +10,7 @@ ms.collection: linux
 ms.date: 04/04/2023
 ms.custom: devx-track-azurepowershell, devx-track-azurecli, linux-related-content
 ms.devlang: azurecli
+# Customer intent: "As an IT administrator managing Linux VMs, I want to configure the Linux diagnostic extension to collect metrics and logs, so that I can monitor system health and performance effectively."
 ---
 # Use the Linux diagnostic extension 4.0 to monitor metrics and logs
 
@@ -17,6 +18,31 @@ ms.devlang: azurecli
 > This article references CentOS, a Linux distribution that is End Of Life (EOL) status. Please consider your use and plan accordingly. For more information, see the [CentOS End Of Life guidance](~/articles/virtual-machines/workloads/centos/centos-end-of-life.md).
 
 This article describes the latest versions of the Linux diagnostic extension (LAD).
+
+> [!IMPORTANT]
+> ### Migrate from Azure Diagnostic extension
+> 
+> Azure Diagnostics extension will be deprecated on March 31, 2026. After this date, Microsoft will no longer provide support for the Azure Diagnostics extension. 
+> 
+> To ensure continued support and access to new features, you should migrate from Azure Diagnostics extensions for Linux (LAD) and Windows (WAD) to [Azure Monitor Agent](/azure/azure-monitor/agents/azure-monitor-agent-overview), which can collect the same data and send it to multiple destinations including Log Analytics workspaces, Azure Event Hubs, and Azure Storage. Remove LAD or WAD after you configure Azure Monitor Agent to avoid duplicate data. 
+>
+> As an alternative to storage, you should send data to a table with the [Auxiliary plan](/azure/azure-monitor/logs/data-platform-logs#table-plans) in your Log Analytics workspace for cost-effective logging.
+>
+> To check which extensions are installed on a single VM, select **Extensions + applications** under **Settings** on your VM. To review the extensions installed on all virtual machines in subscriptions where you have access, use the following query in [Azure Resource Graph](/azure/governance/resource-graph/first-query-portal):
+>
+> ``` kql
+> resources
+> | where type contains "extension"
+> | extend parsedProperties = parse_json(properties)
+> | extend publisher = tostring(parsedProperties.publisher)
+> | project-away parsedProperties
+> | where publisher == "Microsoft.Azure.Diagnostics"
+> | distinct id
+> ```
+>
+> This produces results similar to the following:
+> 
+> :::image type="content" source="/azure/azure-monitor/agents/media/diagnostics-extension-overview/query-results.png" lightbox="/azure/azure-monitor/agents/media/diagnostics-extension-overview/query-results.png#lightbox" alt-text="Screenshot showing the results of a sample Azure Resource Graph Query.":::
 
 > [!IMPORTANT]
 > For information about version 3.x, see [Use the Linux diagnostic extension 3.0 to monitor metrics and logs](./diagnostics-linux-v3.md).
@@ -42,7 +68,7 @@ This extension works with both Azure deployment models: Azure Resource Manager a
 
 ### Supported Linux distributions
 
-See [Supported agent operating systems](/https://learn.microsoft.com/en-us/azure/azure-monitor/agents/diagnostics-extension-overview#linux).
+See [Supported agent operating systems](/azure/azure-monitor/agents/diagnostics-extension-overview#linux).
 
 ### Python requirement
 

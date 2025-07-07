@@ -7,6 +7,7 @@ ms.date: 04/02/2019
 ms.topic: concept-article
 ms.service: azure-virtual-machines
 ms.subservice: mainframe-rehosting
+# Customer intent: "As a mainframe administrator, I want to understand how to migrate mainframe storage to cloud storage solutions, so that I can modernize our applications while maintaining performance and scalability requirements."
 ---
 # Move mainframe storage to Azure
 

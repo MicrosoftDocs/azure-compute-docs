@@ -9,6 +9,7 @@ ms.date: 07/29/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
+# Customer intent: As a cloud architect, I want to evaluate Dldsv6-series virtual machines, so that I can determine their suitability for cost-effective deployment of non-memory intensive applications.
 ---
 Dldsv6-series virtual machines run on the 5th Generation Intel® Xeon® Platinum 8573C (Emerald Rapids) processor reaching an all- core turbo clock speed of up to 3.0 GHz. These virtual machines offer up to 128 vCPU and 256 GiB of RAM as well as fast, local SSD storage up to 4x1760 GiB. These VM sizes can reduce cost when running non-memory intensive applications.
 

@@ -2,10 +2,12 @@
 title: "Quickstart: Deploy a JBoss EAP cluster on Azure Virtual Machines (VMs)"
 description: Shows you how to quickly stand up a JBoss EAP cluster on Azure Virtual Machines.
 author: KarlErickson
-ms.author: jiangma
+ms.author: karler
+ms.reviewer: jiangma
 ms.topic: quickstart
 ms.date: 06/19/2024
 ms.custom: devx-track-java, devx-track-extended-java, devx-track-javaee, devx-track-javaee-jbosseap, devx-track-javaee-jbosseap-vm, devx-track-azurecli, linux-related-content
+# Customer intent: "As a developer, I want to deploy a JBoss EAP cluster on Azure Virtual Machines, so that I can efficiently manage my applications using a scalable cloud infrastructure."
 ---
 
 # Quickstart: Deploy a JBoss EAP cluster on Azure Virtual Machines (VMs)
@@ -46,6 +48,9 @@ Replace the placeholders with the following values, which are used throughout th
 - `<db-resource-group-name>`: The name of the resource group to use for the PostgreSQL flexible server - for example, `ejb040323postgresrg`.
 - `<database-server-name>`: The name of your PostgreSQL server, which should be unique across Azure - for example, `ejb040323postgresqlserver`.
 - `<postgresql-admin-password>`: The password of your PostgreSQL server. That password must be at least eight characters and at most 128 characters. The characters should be from three of the following categories: English uppercase letters, English lowercase letters, numbers (0-9), and nonalphanumeric characters (!, $, #, %, and so on).
+
+> [!NOTE]
+> Microsoft recommends using the most secure authentication flow available. The authentication flow described in this procedure, such as for databases, caches, messaging, or AI services, requires a very high degree of trust in the application and carries risks not present in other flows. Use this flow only when more secure options, like managed identities for passwordless or keyless connections, are not viable. For local machine operations, prefer user identities for passwordless or keyless connections.
 
 Next, use the following steps to create an Azure Database for PostgreSQL flexible server:
 

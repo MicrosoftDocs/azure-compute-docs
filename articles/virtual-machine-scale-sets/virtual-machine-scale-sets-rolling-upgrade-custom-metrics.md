@@ -1,5 +1,5 @@
 ---
-title: Custom metrics for rolling upgrades on Virtual Machine Scale Sets (Preview)
+title: Custom metrics for rolling upgrades on Virtual Machine Scale Sets
 description: Learn about how to configure custom metrics for rolling upgrades on Virtual Machine Scale Sets.
 author: mimckitt
 ms.author: mimckitt
@@ -8,11 +8,9 @@ ms.service: azure-virtual-machine-scale-sets
 ms.date: 11/7/2024
 ms.reviewer: ju-shim
 ms.custom: upgradepolicy, N-Phase, ignite-2024
+# Customer intent: "As a system administrator, I want to configure custom metrics for rolling upgrades on Virtual Machine Scale Sets so that I can control the order and conditions under which my virtual machines are upgraded, ensuring minimal downtime and optimal application performance."
 ---
-# Configure custom metrics for rolling upgrades on Virtual Machine Scale Sets (Preview)
-
-> [!NOTE]
->**Custom metrics for rolling upgrades on Virtual Machine Scale Sets is currently in preview.** Previews are made available to you on the condition that you agree to the [supplemental terms of use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Some aspects of these features may change prior to general availability (GA).
+# Configure custom metrics for rolling upgrades on Virtual Machine Scale Sets
 
 Custom metrics for rolling upgrades enables you to utilize the [application health extension](virtual-machine-scale-sets-health-extension.md) to emit custom metrics to your Virtual Machine Scale Set. These custom metrics can be used to tell the scale set the order in which virtual machines should be updated when a rolling upgrade is triggered. The custom metrics can also inform your scale set when an upgrade should be skipped on a specific instance. This allows you to have more control over the ordering and the update process itself. 
 

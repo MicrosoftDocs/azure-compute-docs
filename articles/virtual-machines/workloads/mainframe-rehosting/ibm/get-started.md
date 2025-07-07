@@ -7,8 +7,9 @@ ms.subservice: mainframe-rehosting
 author: swread
 ms.author: sread
 manager: mamccrea 
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 02/22/2019
+# Customer intent: As an IT manager, I want to rehost our existing IBM z/OS applications on Azure so that I can leverage cloud elasticity and cost savings while maintaining functionality and minimizing disruption to our users.
 ---
 # IBM workloads on Azure
 

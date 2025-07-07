@@ -1,12 +1,13 @@
 ---
 title: Reliable services app manifest examples
 description: Learn how to configure application and service manifest settings for a reliable services Service Fabric application.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: "As a cloud application developer, I want to configure application and service manifests for a Service Fabric application, so that I can manage resource governance, security, and service endpoints effectively."
 ---
 
 # Reliable services application and service manifest examples

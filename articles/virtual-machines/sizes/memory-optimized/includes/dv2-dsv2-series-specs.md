@@ -9,6 +9,7 @@ ms.subservice: sizes
 ms.date: 04/11/2024
 ms.author: mattmcinnes
 ms.custom: include file
+# Customer intent: "As an IT admin, I want to access the specifications for Memory optimized Dv2 and Dsv2-series VMs, so that I can select the appropriate virtual machine sizes for performance-optimized workloads."
 ---
 | Part | Quantity <br><sup>Count <sup>Units | Specs <br><sup>SKU ID, Performance <sup>Units</sup>, etc.  |
 |---|---|---|

@@ -9,6 +9,7 @@ ms.topic: how-to
 ms.date: 06/27/2024
 ms.author: mattmcinnes
 ms.reviewer: jamesser
+# Customer intent: As a cloud administrator, I want to connect to a Linux virtual machine via SSH, so that I can manage and configure the server securely over the network.
 ---
 # Connect to a Linux VM
 

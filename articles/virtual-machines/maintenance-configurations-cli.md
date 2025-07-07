@@ -9,6 +9,7 @@ ms.custom: devx-track-azurecli
 ms.date: 07/01/2024
 ms.author: jushiman
 #pmcontact: shants
+# Customer intent: "As an IT administrator managing Azure virtual machines, I want to create and assign maintenance configurations using the command-line interface, so that I can control platform update schedules effectively and minimize service disruptions."
 ---
 
 # Control updates with Maintenance Configurations and the Azure CLI
@@ -233,7 +234,7 @@ If there are updates, the command returns only one, even if multiple updates are
     "impactType": "Freeze",
     "maintenanceScope": "Host",
     "notBefore": "2020-03-03T07:23:04.905538+00:00",
-    "resourceId": "/subscriptions/9120c5ff-e78e-4bd0-b29f-75c19cadd078/resourcegroups/DemoRG/providers/Microsoft.Compute/hostGroups/demoHostGroup/hosts/myHost",
+    "resourceId": "/subscriptions/a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1/resourcegroups/DemoRG/providers/Microsoft.Compute/hostGroups/demoHostGroup/hosts/myHost",
     "status": "Pending"
   }
 ]
@@ -322,10 +323,10 @@ To see results for the last update, use `default` as the update name. Or replace
 
 ```text
 Status         : Completed
-ResourceId     : /subscriptions/12ae7457-4a34-465c-94c1-17c058c2bd25/resourcegroups/TestShantS/providers/Microsoft.Comp
+ResourceId     : /subscriptions/b1b1b1b1-cccc-dddd-eeee-f2f2f2f2f2f2/resourcegroups/TestShantS/providers/Microsoft.Comp
 ute/virtualMachines/DXT-test-04-iso
 LastUpdateTime : 1/1/2020 12:00:00 AM
-Id             : /subscriptions/12ae7457-4a34-465c-94c1-17c058c2bd25/resourcegroups/TestShantS/providers/Microsoft.Comp
+Id             : /subscriptions/b1b1b1b1-cccc-dddd-eeee-f2f2f2f2f2f2/resourcegroups/TestShantS/providers/Microsoft.Comp
 ute/virtualMachines/DXT-test-04-iso/providers/Microsoft.Maintenance/applyUpdates/default
 Name           : default
 Type           : Microsoft.Maintenance/applyUpdates

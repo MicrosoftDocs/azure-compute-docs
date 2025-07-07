@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a DevOps engineer, I want to perform file level operations on the image store using the command line, so that I can manage application packages efficiently within the Azure Service Fabric environment.
 ---
 
 # sfctl store

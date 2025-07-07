@@ -6,6 +6,7 @@ ms.author: halkazwini
 ms.service: azure-virtual-machines
 ms.topic: how-to
 ms.date: 09/20/2024
+# Customer intent: "As a network administrator, I want to test security rules for inbound and outbound connections on my virtual machine, so that I can ensure proper traffic flow and resolve connectivity issues effectively."
 ---
 
 # Network security group test

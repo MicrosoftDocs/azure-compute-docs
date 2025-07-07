@@ -10,6 +10,7 @@ ms.author: tarcher
 content_well_notification: 
   - AI-contribution
 ai-usage: ai-assisted
+# Customer intent: As a cloud developer, I want to deploy a Docker container with a public IP address using Terraform, so that I can easily run serverless applications without needing a full orchestration platform.
 ---
 
 # Quickstart: Create an Azure Container Instance with a public IP address using Terraform

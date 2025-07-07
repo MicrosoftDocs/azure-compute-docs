@@ -10,6 +10,7 @@ ms.author: saraic
 ms.reviewer: cynthn, mattmcinnes
 ms.custom: template-how-to
 ms.devlang: azurecli
+# Customer intent: As a cloud service provider, I want to share VM images through a community gallery, so that I can make my resources available to a broader audience of Azure users without compromising my private gallery.
 ---
 
 # Share images using a community gallery

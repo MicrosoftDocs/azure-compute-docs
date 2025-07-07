@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a developer, I want to implement event aggregation and diagnostics logging in my Azure Service Fabric application using EventFlow, so that I can monitor, filter, and analyze the service's performance and health effectively.
 ---
 
 # Event aggregation and collection using EventFlow

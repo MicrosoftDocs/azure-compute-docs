@@ -11,6 +11,7 @@ ms.date: 2/29/2024
 ms.author: carols
 ms.reviewer: jushim
 #Customer intent: As an IT administrator, I want to learn how to install the LEMP stack so that I can quickly prepare a Linux VM to run web applications.
+# Customer intent: "As a developer, I want to install a LEMP stack and WordPress on an Azure Linux VM, so that I can quickly set up a web application environment for testing or proof of concept."
 ---
 
 # Tutorial: Install a LEMP stack on an Azure Linux VM
@@ -42,7 +43,7 @@ First we need to define a few variables that help with the configuration of the 
 export NETWORK_PREFIX="$(($RANDOM % 254 + 1))"
 export RANDOM_ID="$(openssl rand -hex 3)"
 export MY_RESOURCE_GROUP_NAME="myLEMPResourceGroup$RANDOM_ID"
-export REGION="westeurope"
+export REGION="eastus"
 export MY_VM_NAME="myVM$RANDOM_ID"
 export MY_VM_USERNAME="azureadmin"
 export MY_VM_SIZE='Standard_DS2_v2'

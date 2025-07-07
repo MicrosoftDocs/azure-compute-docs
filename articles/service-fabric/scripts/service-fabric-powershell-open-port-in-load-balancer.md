@@ -9,6 +9,7 @@ ms.topic: sample
 ms.date: 05/18/2018
 ms.author: atsenthi
 ms.custom: mvc, devx-track-azurepowershell
+# Customer intent: As a cloud administrator, I want to open application ports in an Azure load balancer using PowerShell so that my Service Fabric application can communicate with external clients effectively.
 ---
 
 # Open an application port in the Azure load balancer

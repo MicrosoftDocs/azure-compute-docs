@@ -7,6 +7,7 @@ ms.subservice: sizes
 ms.topic: how-to
 ms.date: 03/04/2024
 ms.author: ajkundna
+# Customer intent: "As a cloud architect, I want to understand the benefits and limitations of Generation 2 VMs in Azure, so that I can make informed decisions when designing scalable and secure virtual machine solutions for my organization."
 ---
 
 # Support for Generation 2 VMs on Azure
@@ -23,77 +24,16 @@ Generation 2 VMs use the new UEFI-based boot architecture rather than the BIOS-b
 
 Azure now offers Generation 2 support for the following selected VM series:
 
-| VM Series | Generation 1 | Generation 2 | 
-|-----------|--------------|--------------|
-|[Av2-series](av2-series.md) |  :heavy_check_mark:  |  :x:  |
-|[B-series](sizes-b-series-burstable.md) |  :heavy_check_mark:  | :heavy_check_mark: |
-|[DCsv2-series](dcv2-series.md) |  :x:  | :heavy_check_mark: |
-|[Dv2-series](dv2-dsv2-series.md) |  :heavy_check_mark: |  :x:  |
-|[DSv2-series](dv2-dsv2-series.md) |  :heavy_check_mark: | :heavy_check_mark: |
-|[Dv3-series](dv3-dsv3-series.md) | :heavy_check_mark: |  :x: |
-|[Dsv3-series](dv3-dsv3-series.md) | :heavy_check_mark: | :heavy_check_mark: |
-|[Dv4-series](dv4-dsv4-series.md) | :heavy_check_mark: |  :heavy_check_mark: |
-|[Dsv4-series](dv4-dsv4-series.md) | :heavy_check_mark: | :heavy_check_mark: |
-|[Dav4-series](dav4-dasv4-series.md) | :heavy_check_mark: |  :heavy_check_mark: |
-|[Dasv4-series](dav4-dasv4-series.md) | :heavy_check_mark: | :heavy_check_mark: |
-|[Ddv4-series](ddv4-ddsv4-series.md) | :heavy_check_mark: | :heavy_check_mark: |
-|[Ddsv4-series](ddv4-ddsv4-series.md) | :heavy_check_mark: | :heavy_check_mark: |
-|[Dasv5-series](dasv5-dadsv5-series.md) | :heavy_check_mark: | :heavy_check_mark: |
-|[Dadsv5-series](dasv5-dadsv5-series.md) | :heavy_check_mark: | :heavy_check_mark: |
-|[DCasv5-series](dcasv5-dcadsv5-series.md) |  :x: | :heavy_check_mark: |
-|[DCadsv5-series](dcasv5-dcadsv5-series.md) |  :x: | :heavy_check_mark: |
-|[Dpsv5-series](dpsv5-dpdsv5-series.md) |  :x: | :heavy_check_mark: |
-|[Dpdsv5-series](dpsv5-dpdsv5-series.md) |  :x: | :heavy_check_mark: |
-|[Dv5-series](dv5-dsv5-series.md) | :heavy_check_mark: | :heavy_check_mark: |
-|[Dsv5-series](dv5-dsv5-series.md) | :heavy_check_mark: | :heavy_check_mark: |
-|[Ddv5-series](ddv5-ddsv5-series.md) | :heavy_check_mark: | :heavy_check_mark: |
-|[Ddsv5-series](ddv5-ddsv5-series.md) | :heavy_check_mark: | :heavy_check_mark: |
-|[Ev3-series](ev3-esv3-series.md) | :heavy_check_mark: | :x: |
-|[Esv3-series](ev3-esv3-series.md) | :heavy_check_mark: | :heavy_check_mark: |
-|[Ev4-series](ev4-esv4-series.md) |  :heavy_check_mark:|  :heavy_check_mark: |
-|[Esv4-series](ev4-esv4-series.md) |  :heavy_check_mark:| :heavy_check_mark: |
-|[Eav4-series](eav4-easv4-series.md) | :heavy_check_mark: | :heavy_check_mark: |
-|[Easv4-series](eav4-easv4-series.md) | :heavy_check_mark: | :heavy_check_mark: |
-|[Edv4-series](edv4-edsv4-series.md) |  :heavy_check_mark: | :heavy_check_mark: |
-|[Edsv4-series](edv4-edsv4-series.md) |  :heavy_check_mark: | :heavy_check_mark: |
-|[Easv5-series](easv5-eadsv5-series.md) | :heavy_check_mark: | :heavy_check_mark: |
-|[Eadsv5-series](easv5-eadsv5-series.md) | :heavy_check_mark: | :heavy_check_mark: |
-|[ECasv5-series](ecasv5-ecadsv5-series.md) |  :x: | :heavy_check_mark: |
-|[ECadsv5-series](ecasv5-ecadsv5-series.md) |  :x: | :heavy_check_mark: |
-|[Epsv5-series](epsv5-epdsv5-series.md) |  :x: | :heavy_check_mark: |
-|[Epdsv5-series](epsv5-epdsv5-series.md) |  :x: | :heavy_check_mark: |
-|[Edv5-series](edv5-edsv5-series.md) |  :heavy_check_mark:  | :heavy_check_mark: |
-|[Edsv5-series](edv5-edsv5-series.md) |  :heavy_check_mark: | :heavy_check_mark: |
-|[Ev5-series](ev5-esv5-series.md) |  :heavy_check_mark:  | :heavy_check_mark: |
-|[Esv5-series](ev5-esv5-series.md) |  :heavy_check_mark:  | :heavy_check_mark: |
-|[Fsv2-series](fsv2-series.md) |  :heavy_check_mark:  | :heavy_check_mark: |
-|[FX-series](fx-series.md) |  :x:  | :heavy_check_mark: |
-|[GS-series](sizes-previous-gen.md#gs-series) | :x:| :heavy_check_mark: |
-|[HB-series](hb-series.md) |  :heavy_check_mark:  | :heavy_check_mark: |
-|[HBv2-series](hbv2-series.md) |  :heavy_check_mark:  | :heavy_check_mark: |
-|[HBv3-series](hbv3-series.md) |  :heavy_check_mark:  | :heavy_check_mark: |
-|[HC-series](hc-series.md) |  :heavy_check_mark:  | :heavy_check_mark: |
-|[Lsv2-series](lsv2-series.md) |  :heavy_check_mark:  | :heavy_check_mark: |
-|[M-series](m-series.md) |  :heavy_check_mark:  | :heavy_check_mark: |
-|[Mv2-series](mv2-series.md)<sup>1</sup> |  :x: | :heavy_check_mark: |
-|[Msv2 and Mdsv2 Medium Memory Series](msv2-mdsv2-series.md)<sup>1</sup> | :x:  | :heavy_check_mark: |
-|[NC-series](nc-series.md)  |  :heavy_check_mark:  |  :x: |
-|[NCv2-series](ncv2-series.md)  |  :heavy_check_mark:  | :heavy_check_mark: |
-|[NCv3-series](ncv3-series.md) |  :heavy_check_mark: | :heavy_check_mark: |
-|[NCasT4_v3-series](nct4-v3-series.md) | :heavy_check_mark: | :heavy_check_mark: |
-|[NC A100 v4-series](nc-a100-v4-series.md) |  :x: | :heavy_check_mark: |
-|[ND-series](nd-series.md) |  :heavy_check_mark:  | :heavy_check_mark: |
-|[ND A100 v4-series](nda100-v4-series.md) |  :x: | :heavy_check_mark: |
-|[NDv2-series](ndv2-series.md) |  :x: | :heavy_check_mark: |
-|[NV-series](nv-series.md) | :heavy_check_mark: |   :x: |
-|[NVv3-series](nvv3-series.md) | :heavy_check_mark: | :heavy_check_mark: |
-|[NVv4-series](nvv4-series.md) | :heavy_check_mark: | :heavy_check_mark: |
-|[NVadsA10 v5-series](nva10v5-series.md) | :heavy_check_mark: | :heavy_check_mark: |
-|[NDm A100 v4-series](ndm-a100-v4-series.md) |  :x: | :heavy_check_mark: |
-|[NP-series](np-series.md) | :heavy_check_mark: |  :x: |
+| Type | Generation 2 supported size families  | Not supported size families
+|:--- |:--- |:--- |
+| [General purpose](./sizes/overview.md#general-purpose) | [B-family](./sizes/general-purpose/b-family.md), [D-family](./sizes/general-purpose/d-family.md) | [A-family](./sizes/general-purpose/a-family.md)
+| [Compute optimized](./sizes/overview.md#compute-optimized) | [F-family](./sizes/compute-optimized/f-family.md), [Fx-family](./sizes/compute-optimized/fx-family.md)  | 
+| [Memory optimized](./sizes/overview.md#memory-optimized) | [E-family](./sizes/memory-optimized/e-family.md), [Eb-family](./sizes/memory-optimized/eb-family.md), [M-family](./sizes/memory-optimized/m-family.md)    |
+| [Storage optimized](./sizes/overview.md#storage-optimized) | [L-family](./sizes/storage-optimized/l-family.md)  |
+| [GPU](./sizes/overview.md#gpu-accelerated) | [NC-family](./sizes/gpu-accelerated/nc-family.md), [ND-family](./sizes/gpu-accelerated/nv-family.md), [NV-family](./sizes/gpu-accelerated/nv-family.md) | [NC-series](nc-series.md), [NV-series](nv-series.md)
+| [High Performance Compute](./sizes/overview.md#high-performance-compute) |[HBv2-series](./hbv2-series-overview.md), [HBv3-series](./hbv3-series-overview.md), [HBv4-series](./hbv4-series-overview.md), [HC-series](./hc-series-overview.md), [HX-series](./hx-series-overview.md)  | 
 
-<sup>1</sup> Mv2-series, DC-series, NDv2-series, Msv2 and Mdsv2-series Medium Memory do not support Generation 1 VM images and only support a subset of Generation 2 images. Please see [Mv2-series documentation](mv2-series.md), [DSv2-series](dv2-dsv2-series.md), [ND A100 v4-series](nda100-v4-series.md), [NDv2-series](ndv2-series.md), and [Msv2 and Mdsv2 Medium Memory Series](msv2-mdsv2-series.md) for details.
-
+<sup>1</sup> Mv2-series, DC-series, NDv2-series, Msv2 and Mdsv2-series Medium Memory do not support Generation 1 VM images and only support a subset of Generation 2 images. Please see [Mv2-series documentation](mv2-series.md), [ND A100 v4-series](nda100-v4-series.md), [NDv2-series](ndv2-series.md), and [Msv2 and Mdsv2 Medium Memory Series](msv2-mdsv2-series.md) for details.
 
 ## Generation 2 VM images in Azure Marketplace
 
@@ -268,7 +208,7 @@ You can also create Generation 2 VMs by using virtual machine scale sets. In the
     Yes.
 
 * **Can I migrate a VM from Generation 1 to Generation 2?**  
-    No, you can't change the generation of a VM after you create it. If you need to switch between VM generations, create a new VM of a different generation.
+    Azure Virtual Machines supports upgrading Generation 1 virtual machines (VM) to Generation 2 by upgrading to the [trusted launch security type](trusted-launch-existing-vm-gen-1.md). 
 
 * **Why is my VM size not enabled in the size selector when I try to create a Generation 2 VM?**
 

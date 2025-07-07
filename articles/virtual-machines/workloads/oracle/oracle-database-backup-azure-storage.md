@@ -9,6 +9,7 @@ ms.topic: how-to
 ms.date: 10/03/2024
 ms.author: cholse
 ms.reviewer: jjaygbay1
+# Customer intent: As a database administrator, I want to back up and recover my Oracle Database on an Azure Linux VM using Azure Files, so that I can ensure data durability and efficient recovery processes for my applications.
 ---
 
 # Back up and recover Oracle Database on an Azure Linux VM by using Azure Files

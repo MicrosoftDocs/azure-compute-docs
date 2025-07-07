@@ -7,6 +7,7 @@ ms.service: azure #Required; use either service or product per approved list.
 ms.topic: overview #Required; leave this attribute/value as-is.
 ms.date: 06/25/2024 #Required; mm/dd/yyyy format.
 ms.custom: template-overview #Required; leave this attribute/value as-is.
+# Customer intent: As an Azure user troubleshooting connector creation, I want guidance on solving common errors, so that I can successfully create and manage Impact Reporting Connectors without delays or issues.
 ---
 
 # Impact Reporting Connectors Troubleshooting Guide (Preview)

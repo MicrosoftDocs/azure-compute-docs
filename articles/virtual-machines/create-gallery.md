@@ -10,6 +10,7 @@ ms.author: saraic
 ms.reviewer: cynthn, mattmcinnes
 ms.custom: template-how-to, devx-track-azurecli
 ms.devlang: azurecli
+# Customer intent: As an IT administrator, I want to create an Azure Compute Gallery for sharing VM images and application packages, so that I can efficiently distribute resources across my organization and manage them effectively within different regions.
 ---
 
 # Create a gallery for storing and sharing resources

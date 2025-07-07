@@ -5,6 +5,7 @@ ms.service: azure-container-instances
 ms.topic: include
 ms.date: 08/29/2024
 ms.author: tomcassidy
+# Customer intent: As a system administrator, I want to understand the implications of IP address changes in container groups, so that I can effectively manage and configure my containerized applications without disruption.
 ---
 
 > [!NOTE]

@@ -9,6 +9,7 @@ ms.topic: how-to
 ms.service: azure-virtual-machines
 ms.subservice: image-builder
 ms.custom: devx-track-azurecli, linux-related-content
+# Customer intent: As a cloud engineer, I want to configure permissions for Azure VM Image Builder using the Azure CLI, so that I can automate image creation and distribution while ensuring the necessary access controls are in place.
 ---
 
 # Configure Azure VM Image Builder permissions by using the Azure CLI

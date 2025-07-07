@@ -4,10 +4,11 @@ description: Information on and specifications of the NCCads_H100_v5-series size
 author: kphande
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 08/06/2024
 ms.author: khande
 ms.reviewer: mattmcinnes
+# Customer intent: As a cloud architect, I want to understand the specifications and features of the NCCads_H100_v5 size series, so that I can select the appropriate virtual machine configuration for my application needs.
 ---
 
 # NCCads_H100_v5 sizes series
@@ -80,7 +81,7 @@ Network interface info for each size
 
 | Size Name | Max NICs (Qty.) | Max Bandwidth (Mbps) |
 | --- | --- | --- |
-| Standard_NCC40ads_H100_v5 | 2 | 40000 |
+| Standard_NCC40ads_H100_v5 | 8 | 40000 |
 
 #### Networking resources
 - [Virtual networks and virtual machines in Azure](/azure/virtual-network/network-overview)

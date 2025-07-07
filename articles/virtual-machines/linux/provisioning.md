@@ -10,6 +10,7 @@ ms.topic: overview
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
+# Customer intent: As a cloud architect, I want to provision Linux VM images efficiently, so that I can ensure proper configuration and support for Azure services during deployment.
 ---
 
 

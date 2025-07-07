@@ -8,6 +8,7 @@ ms.service: azure-container-instances
 ms.custom: devx-track-azurecli
 services: container-instances
 ms.date: 08/29/2024
+# Customer intent: As a cloud developer, I want to deploy a multi-container group using a YAML file, so that I can utilize a sidecar configuration for maintaining application services effectively.
 ---
 
 # Tutorial: Deploy a multi-container group using a YAML file

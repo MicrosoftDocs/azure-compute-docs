@@ -5,13 +5,17 @@ author: ju-shim
 ms.service: azure-virtual-machines
 ms.collection: linux
 ms.topic: tutorial
-ms.date: 03/23/2023
+ms.date: 04/06/2025
 ms.author: jushiman
-ms.custom: mvc, devx-track-azurecli, linux-related-content
+ms.custom: mvc, devx-track-azurecli, linux-related-content, innovation-engine
 #Customer intent: As an IT administrator, I want to learn about common maintenance tasks so that I can create and manage Linux VMs in Azure
+# Customer intent: "As an IT administrator, I want to learn how to create and manage Linux VMs using the command line, so that I can efficiently deploy and perform maintenance tasks in Azure."
 ---
 
 # Tutorial: Create and Manage Linux VMs with the Azure CLI
+
+> [!div class="nextstepaction"]
+> [Deploy and Explore](https://go.microsoft.com/fwlink/?linkid=2321734)
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Flexible scale sets
 
@@ -30,45 +34,61 @@ If you choose to install and use the CLI locally, this tutorial requires that yo
 
 ## Create resource group
 
-Create a resource group with the [az group create](/cli/azure/group) command.
+Below, we declare environment variables. A random suffix is appended to resource names that need to be unique for each deployment.
+
+```bash
+export RANDOM_SUFFIX=$(openssl rand -hex 3)
+export REGION="eastus2"
+export MY_RESOURCE_GROUP_NAME="myResourceGroupVM$RANDOM_SUFFIX"
+az group create --name $MY_RESOURCE_GROUP_NAME --location $REGION
+```
+
+Results:
+
+<!-- expected_similarity=0.3 -->
+
+```JSON
+{
+  "id": "/subscriptions/xxxxx-xxxxx-xxxxx-xxxxx/resourceGroups/myResourceGroupVMxxx",
+  "location": "eastus2",
+  "name": "myResourceGroupVMxxx",
+  "properties": {
+    "provisioningState": "Succeeded"
+  }
+}
+```
 
 An Azure resource group is a logical container into which Azure resources are deployed and managed. A resource group must be created before a virtual machine. In this example, a resource group named *myResourceGroupVM* is created in the *eastus2* region.
-
-
-```azurecli-interactive
-az group create --name myResourceGroupVM --location eastus2
-```
 
 The resource group is specified when creating or modifying a VM, which can be seen throughout this tutorial.
 
 ## Create virtual machine
 
-Create a virtual machine with the [az vm create](/cli/azure/vm) command.
+When you create a virtual machine, several options are available such as operating system image, disk sizing, and administrative credentials. The following example creates a VM named *myVM* that runs SUSE Linux Enterprise Server (SLES). A user account named *azureuser* is created on the VM, and SSH keys are generated if they do not exist in the default key location (*~/.ssh*).
 
-When you create a virtual machine, several options are available such as operating system image, disk sizing, and administrative credentials. The following example creates a VM named *myVM* that runs SUSE Linux Enterprise Server (SLES). A user account named *azureuser* is created on the VM, and SSH keys are generated if they do not exist in the default key location (*~/.ssh*):
-
-```azurecli-interactive
+```bash
+export MY_VM_NAME="myVM$RANDOM_SUFFIX"
 az vm create \
-    --resource-group myResourceGroupVM \
-    --name myVM \
-    --image SuseSles15SP3 \
+    --resource-group $MY_RESOURCE_GROUP_NAME \
+    --name $MY_VM_NAME \
+    --image SuseSles15SP5 \
     --public-ip-sku Standard \
     --admin-username azureuser \
     --generate-ssh-keys
 ```
 
-It may take a few minutes to create the VM. Once the VM has been created, the Azure CLI outputs information about the VM. Take note of the `publicIpAddress`, this address can be used to access the virtual machine.
+It may take a few minutes to create the VM. Once the VM has been created, the Azure CLI outputs information about the VM. Take note of the `publicIpAddress`; this address can be used to access the virtual machine.
 
-```output
+```JSON
 {
   "fqdns": "",
-  "id": "/subscriptions/d5b9d4b7-6fc1-0000-0000-000000000000/resourceGroups/myResourceGroupVM/providers/Microsoft.Compute/virtualMachines/myVM",
+  "id": "/subscriptions/xxxxx-xxxxx-xxxxx-xxxxx/resourceGroups/myResourceGroupVMxxx/providers/Microsoft.Compute/virtualMachines/myVMxxx",
   "location": "eastus2",
   "macAddress": "00-0D-3A-23-9A-49",
   "powerState": "VM running",
   "privateIpAddress": "10.0.0.4",
   "publicIpAddress": "52.174.34.95",
-  "resourceGroup": "myResourceGroupVM"
+  "resourceGroup": "myResourceGroupVMxxx"
 }
 ```
 
@@ -76,23 +96,19 @@ It may take a few minutes to create the VM. Once the VM has been created, the Az
 
 You can now connect to the VM with SSH in the Azure Cloud Shell or from your local computer. Replace the example IP address with the `publicIpAddress` noted in the previous step.
 
-```bash
-ssh azureuser@52.174.34.95
-```
+To connect to the VM, first retrieve the public IP address using the Azure CLI. Execute the following command to store the IP address in a variable: 
+```export IP_ADDRESS=$(az vm show --show-details --resource-group $MY_RESOURCE_GROUP_NAME --name $MY_VM_NAME --query publicIps --output tsv)```
 
-Once logged in to the VM, you can install and configure applications. When you are finished, you close the SSH session as normal:
-
-```bash
-exit
-```
+Once you have the IP address, use SSH to connect to the VM. The following command connects to the VM using the `azureuser` account and the retrieved IP address: 
+```ssh -o StrictHostKeyChecking=no azureuser@$IP_ADDRESS```
 
 ## Understand VM images
 
-The Azure Marketplace includes many images that can be used to create VMs. In the previous steps, a virtual machine was created using an Ubuntu image. In this step, the Azure CLI is used to search the marketplace for an Ubuntu image, which is then used to deploy a second virtual machine.
+The Azure Marketplace includes many images that can be used to create VMs. In the previous steps, a virtual machine was created using a SUSE image. In this step, the Azure CLI is used to search the marketplace for an Ubuntu image, which is then used to deploy a second virtual machine.
 
 To see a list of the most commonly used images, use the [az vm image list](/cli/azure/vm/image) command.
 
-```azurecli-interactive
+```bash
 az vm image list --output table
 ```
 
@@ -118,7 +134,7 @@ x64             WindowsServer                 MicrosoftWindowsServer  2008-R2-SP
 
 A full list can be seen by adding the `--all` parameter. The image list can also be filtered by `--publisher` or `–-offer`. In this example, the list is filtered for all images, published by OpenLogic, with an offer that matches *0001-com-ubuntu-server-jammy*.
 
-```azurecli-interactive
+```bash
 az vm image list --offer 0001-com-ubuntu-server-jammy --publisher Canonical --all --output table
 ```
 
@@ -137,15 +153,14 @@ x64             0001-com-ubuntu-server-jammy       Canonical    22_04-lts       
 x64             0001-com-ubuntu-server-jammy       Canonical    22_04-lts        Canonical:0001-com-ubuntu-server-jammy:22_04-lts:22.04.202207060          22.04.202207060
 ```
 
-
-
 > [!NOTE]
 > Canonical has changed the **Offer** names they use for the most recent versions. Before Ubuntu 20.04, the **Offer** name is UbuntuServer. For Ubuntu 20.04 the **Offer** name is `0001-com-ubuntu-server-focal` and for Ubuntu 22.04 it's `0001-com-ubuntu-server-jammy`.
 
 To deploy a VM using a specific image, take note of the value in the *Urn* column, which consists of the publisher, offer, SKU, and optionally a version number to [identify](cli-ps-findimage.md#terminology) the image. When specifying the image, the image version number can be replaced with `latest`, which selects the latest version of the distribution. In this example, the `--image` parameter is used to specify the latest version of a Ubuntu 22.04.
 
-```azurecli-interactive
-az vm create --resource-group myResourceGroupVM --name myVM2 --image Canonical:0001-com-ubnutu-server-jammy:22_04-lts:latest --generate-ssh-keys
+```bash
+export MY_VM2_NAME="myVM2$RANDOM_SUFFIX"
+az vm create --resource-group $MY_RESOURCE_GROUP_NAME --name $MY_VM2_NAME --image Canonical:0001-com-ubuntu-server-jammy:22_04-lts:latest --generate-ssh-keys
 ```
 
 ## Understand VM sizes
@@ -165,14 +180,12 @@ The following table categorizes sizes into use cases.
 | [GPU](../sizes-gpu.md)          | Specialized VMs targeted for heavy graphic rendering and video editing.       |
 | [High performance](../sizes-hpc.md) | Our most powerful CPU VMs with optional high-throughput network interfaces (RDMA). |
 
-
-
 ### Find available VM sizes
 
 To see a list of VM sizes available in a particular region, use the [az vm list-sizes](/cli/azure/vm) command.
 
-```azurecli-interactive
-az vm list-sizes --location eastus2 --output table
+```bash
+az vm list-sizes --location $REGION --output table
 ```
 
 Example partial output:
@@ -201,51 +214,42 @@ Example partial output:
 
 In the previous VM creation example, a size was not provided, which results in a default size. A VM size can be selected at creation time using [az vm create](/cli/azure/vm) and the `--size` parameter.
 
-```azurecli-interactive
+```bash
+export MY_VM3_NAME="myVM3$RANDOM_SUFFIX"
 az vm create \
-    --resource-group myResourceGroupVM \
-    --name myVM3 \
-    --image SuseSles15SP3 \
+    --resource-group $MY_RESOURCE_GROUP_NAME \
+    --name $MY_VM3_NAME \
+    --image SuseSles15SP5 \
     --size Standard_D2ds_v4  \
     --generate-ssh-keys
 ```
 
 ### Resize a VM
 
-After a VM has been deployed, it can be resized to increase or decrease resource allocation. You can view the current of size of a VM with [az vm show](/cli/azure/vm):
+After a VM has been deployed, it can be resized to increase or decrease resource allocation. You can view the current size of a VM with [az vm show](/cli/azure/vm):
 
-```azurecli-interactive
-az vm show --resource-group myResourceGroupVM --name myVM --query hardwareProfile.vmSize
+```bash
+az vm show --resource-group $MY_RESOURCE_GROUP_NAME --name $MY_VM_NAME --query hardwareProfile.vmSize
 ```
 
 Before resizing a VM, check if the desired size is available on the current Azure cluster. The [az vm list-vm-resize-options](/cli/azure/vm) command returns the list of sizes.
 
-```azurecli-interactive
-az vm list-vm-resize-options --resource-group myResourceGroupVM --name myVM --query [].name
+```bash
+az vm list-vm-resize-options --resource-group $MY_RESOURCE_GROUP_NAME --name $MY_VM_NAME --query [].name
 ```
 
-If the desired size is available, the VM can be resized from a powered-on state, however it is rebooted during the operation. Use the [az vm resize]( /cli/azure/vm) command to perform the resize.
+If the desired size is available, the VM can be resized from a powered-on state, although it will be rebooted during the operation. Use the [az vm resize]( /cli/azure/vm) command to perform the resize.
 
-```azurecli-interactive
-az vm resize --resource-group myResourceGroupVM --name myVM --size Standard_D4s_v3
+```bash
+az vm resize --resource-group $MY_RESOURCE_GROUP_NAME --name $MY_VM_NAME --size Standard_D4s_v3
 ```
 
-If the desired size is not on the current cluster, the VM needs to be deallocated before the resize operation can occur. Use the [az vm deallocate]( /cli/azure/vm) command to stop and deallocate the VM. Note, when the VM is powered back on, any data on the temp disk may be removed. The public IP address also changes unless a static IP address is being used.
-
-```azurecli-interactive
-az vm deallocate --resource-group myResourceGroupVM --name myVM
-```
-
-Once deallocated, the resize can occur.
-
-```azurecli-interactive
-az vm resize --resource-group myResourceGroupVM --name myVM --size Standard_GS1
-```
+If the desired size is not available on the current cluster, the VM needs to be deallocated before the resize operation can occur. Use the [az vm deallocate]( /cli/azure/vm) command to stop and deallocate the VM. Note that when the VM is powered back on, any data on the temporary disk may be removed. The public IP address also changes unless a static IP address is being used. Once deallocated, the resize can occur.
 
 After the resize, the VM can be started.
 
-```azurecli-interactive
-az vm start --resource-group myResourceGroupVM --name myVM
+```bash
+az vm start --resource-group $MY_RESOURCE_GROUP_NAME --name $MY_VM_NAME
 ```
 
 ## VM power states
@@ -254,24 +258,24 @@ An Azure VM can have one of many power states. This state represents the current
 
 ### Power states
 
-| Power State | Description
-|----|----|
-| Starting | Indicates the virtual machine is being started. |
-| Running | Indicates that the virtual machine is running. |
-| Stopping | Indicates that the virtual machine is being stopped. |
-| Stopped | Indicates that the virtual machine is stopped. Virtual machines in the stopped state still incur compute charges.  |
-| Deallocating | Indicates that the virtual machine is being deallocated. |
+| Power State | Description |
+|-------------|-------------|
+| Starting    | Indicates the virtual machine is being started. |
+| Running     | Indicates that the virtual machine is running. |
+| Stopping    | Indicates that the virtual machine is being stopped. |
+| Stopped     | Indicates that the virtual machine is stopped. Virtual machines in the stopped state still incur compute charges. |
+| Deallocating| Indicates that the virtual machine is being deallocated. |
 | Deallocated | Indicates that the virtual machine is removed from the hypervisor but still available in the control plane. Virtual machines in the Deallocated state do not incur compute charges. |
-| - | Indicates that the power state of the virtual machine is unknown. |
+| -           | Indicates that the power state of the virtual machine is unknown. |
 
 ### Find the power state
 
 To retrieve the state of a particular VM, use the [az vm get-instance-view](/cli/azure/vm) command. Be sure to specify a valid name for a virtual machine and resource group.
 
-```azurecli-interactive
+```bash
 az vm get-instance-view \
-    --name myVM \
-    --resource-group myResourceGroupVM \
+    --name $MY_VM_NAME \
+    --resource-group $MY_RESOURCE_GROUP_NAME \
     --query instanceView.statuses[1] --output table
 ```
 
@@ -293,20 +297,20 @@ During the life-cycle of a virtual machine, you may want to run management tasks
 
 This command returns the private and public IP addresses of a virtual machine.
 
-```azurecli-interactive
-az vm list-ip-addresses --resource-group myResourceGroupVM --name myVM --output table
+```bash
+az vm list-ip-addresses --resource-group $MY_RESOURCE_GROUP_NAME --name $MY_VM_NAME --output table
 ```
 
 ### Stop virtual machine
 
-```azurecli-interactive
-az vm stop --resource-group myResourceGroupVM --name myVM
+```bash
+az vm stop --resource-group $MY_RESOURCE_GROUP_NAME --name $MY_VM_NAME
 ```
 
 ### Start virtual machine
 
-```azurecli-interactive
-az vm start --resource-group myResourceGroupVM --name myVM
+```bash
+az vm start --resource-group $MY_RESOURCE_GROUP_NAME --name $MY_VM_NAME
 ```
 
 ### Deleting VM resources
@@ -314,10 +318,6 @@ az vm start --resource-group myResourceGroupVM --name myVM
 Depending on how you delete a VM, it may only delete the VM resource, not the networking and disk resources. You can change the default behavior to delete other resources when you delete the VM. For more information, see [Delete a VM and attached resources](../delete.md).
 
 Deleting a resource group also deletes all resources in the resource group, like the VM, virtual network, and disk. The `--no-wait` parameter returns control to the prompt without waiting for the operation to complete. The `--yes` parameter confirms that you wish to delete the resources without an additional prompt to do so.
-
-```azurecli-interactive
-az group delete --name myResourceGroupVM --no-wait --yes
-```
 
 ## Next steps
 

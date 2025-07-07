@@ -6,9 +6,10 @@ ms.author: runcai
 ms.reviewer: mimckitt
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual 
+ms.topic: concept-article 
 ms.date: 11/15/2021
 
+# Customer intent: "As a cloud architect, I want to evaluate the ECasv5 and ECadsv5-series confidential virtual machines, so that I can determine which optimal VM configuration suits our memory-intensive enterprise applications while ensuring data protection through advanced security features."
 ---
 
 # ECasv5 and ECadsv5-series

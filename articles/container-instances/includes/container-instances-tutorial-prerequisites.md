@@ -5,6 +5,7 @@ ms.service: azure-container-instances
 ms.topic: include
 ms.date: 08/29/2024
 ms.author: tomcassidy
+# Customer intent: "As a developer, I want to install Azure CLI and Docker locally, so that I can complete the tutorial and effectively work with container instances."
 ---
 
 You must satisfy the following requirements to complete this tutorial:

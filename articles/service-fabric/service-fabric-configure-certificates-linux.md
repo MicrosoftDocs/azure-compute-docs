@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: linux-related-content
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a DevOps engineer deploying applications on Linux clusters, I want to configure X.509 certificates for my applications, so that they can securely communicate with the Service Fabric runtime and adhere to security protocols."
 ---
 
 # Certificates and security on Linux clusters
@@ -53,8 +54,8 @@ The following XML shows a **TransportSettings** section based on this style:
     <Parameter Name="MaxMessageSize" Value="10000000" />
     <Parameter Name="SecurityCredentialsType" Value="X509" />
     <Parameter Name="CertificateFindType" Value="FindByThumbprint" />
-    <Parameter Name="CertificateFindValue" Value="4FEF3950642138446CC364A396E1E881DB76B48C" />
-    <Parameter Name="CertificateRemoteThumbprints" Value="9FEF3950642138446CC364A396E1E881DB76B483" />
+    <Parameter Name="CertificateFindValue" Value="AA11BB22CC33DD44EE55FF66AA77BB88CC99DD00" />
+    <Parameter Name="CertificateRemoteThumbprints" Value="BB22CC33DD44EE55FF66AA77BB88CC99DD00EE11" />
     <Parameter Name="CertificateStoreLocation" Value="LocalMachine" />
     <Parameter Name="CertificateProtectionLevel" Value="EncryptAndSign" />
     <Parameter Name="CertificateRemoteCommonNames" Value="ServiceFabric-Test-Cert" />
@@ -69,7 +70,7 @@ With an **X509_2** reference, you specify a path parameter, so you can locate th
 
 ```xml
      <Parameter Name="SecurityCredentialsType" Value="X509_2" />
-     <Parameter Name="CertificatePath" Value="/path/to/cert/BD1C71E248B8C6834C151174DECDBDC02DE1D954.crt" />
+     <Parameter Name="CertificatePath" Value="/path/to/cert/CC33DD44EE55FF66AA77BB88CC99DD00EE11FF22.crt" />
 ```
 
 The following XML shows a **TransportSettings** section based on this style.
@@ -80,9 +81,9 @@ The following XML shows a **TransportSettings** section based on this style.
 <Section Name="HelloWorldStatelessTransportSettings">
     <Parameter Name="MaxMessageSize" Value="10000000" />
     <Parameter Name="SecurityCredentialsType" Value="X509_2" />
-    <Parameter Name="CertificatePath" Value="/path/to/cert/BD1C71E248B8C6834C151174DECDBDC02DE1D954.crt" />
+    <Parameter Name="CertificatePath" Value="/path/to/cert/CC33DD44EE55FF66AA77BB88CC99DD00EE11FF22.crt" />
     <Parameter Name="CertificateProtectionLevel" Value="EncryptandSign" />
-    <Parameter Name="CertificateRemoteThumbprints" Value="BD1C71E248B8C6834C151174DECDBDC02DE1D954" />
+    <Parameter Name="CertificateRemoteThumbprints" Value="CC33DD44EE55FF66AA77BB88CC99DD00EE11FF22" />
 </Section>
 ```
 

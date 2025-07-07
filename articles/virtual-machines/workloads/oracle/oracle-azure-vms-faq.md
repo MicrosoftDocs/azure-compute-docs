@@ -7,6 +7,7 @@ ms.service: oracle-on-azure
 ms.collection: oracle
 ms.topic: faq
 ms.date: 10/02/2024
+# Customer intent: As a database administrator, I want to understand the best VM types and design options for migrating Oracle to Azure so that I can ensure high availability and disaster recovery while managing costs effectively.
 ---
 
 # FAQs - Oracle on Azure VMs

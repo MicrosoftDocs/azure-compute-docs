@@ -4,9 +4,10 @@ description: List of sizes in the E family.
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 07/22/2024
 ms.author: mattmcinnes
+# Customer intent: As a cloud architect, I want to review the specifications and workloads of the E family VM sizes, so that I can select the most suitable virtual machines for memory-intensive applications in my organization.
 ---
 
 # 'E' family memory optimized VM size series

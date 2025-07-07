@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a developer using Visual Studio Code, I want to install and utilize the Service Fabric extension, so that I can efficiently create, build, debug, and deploy Service Fabric applications across different environments.
 ---
 
 # Service Fabric for Visual Studio Code

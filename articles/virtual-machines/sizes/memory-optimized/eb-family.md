@@ -4,9 +4,10 @@ description: List of sizes in the Eb family.
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 06/06/2024
 ms.author: mattmcinnes
+# Customer intent: "As a cloud architect, I want to review the specifications and use cases of the Eb family VM sizes, so that I can select the right memory-optimized virtual machines for my workloads."
 ---
 
 # 'Eb' family memory optimized VM size series

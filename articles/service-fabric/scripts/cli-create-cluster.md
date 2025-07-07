@@ -9,6 +9,7 @@ ms.topic: sample
 ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc, devx-track-azurecli, linux-related-content
+# Customer intent: "As a cloud administrator, I want to deploy a secure Service Fabric Linux cluster using the Azure CLI, so that I can ensure proper certificate management and secure communication for my applications."
 ---
 
 # Create a secure Service Fabric Linux cluster via the Azure CLI

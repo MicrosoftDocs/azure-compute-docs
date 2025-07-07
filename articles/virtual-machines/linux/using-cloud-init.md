@@ -7,8 +7,9 @@ ms.subservice: extensions
 ms.custom: linux-related-content
 ms.collection: linux
 ms.topic: how-to
-ms.date: 06/03/2024
-ms.author: vamckMS
+ms.date: 03/20/2025
+ms.author: vakavuru
+# Customer intent: "As a cloud engineer, I want to utilize cloud-init to automate the configuration of Linux VMs during provisioning, so that I can streamline deployments and eliminate the need for manual setup processes."
 ---
 # cloud-init support for virtual machines in Azure
 
@@ -35,7 +36,7 @@ There are two stages to making cloud-init available to the supported Linux distr
 ### Canonical
 | Publisher / Version| Offer | SKU | Version | image cloud-init ready | cloud-init package support on Azure|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|Canonical 24.04 |UbuntuServer |22.04-LTS |latest |yes | yes |
+|Canonical 24.04 |UbuntuServer |24.04-LTS |latest |yes | yes |
 |Canonical 22.04 |UbuntuServer |22.04-LTS |latest |yes | yes |
 |Canonical 20.04 |UbuntuServer |20.04-LTS |latest |yes | yes |
 

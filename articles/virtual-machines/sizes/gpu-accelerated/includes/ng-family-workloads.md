@@ -9,6 +9,7 @@ ms.subservice: sizes
 ms.date: 04/19/2024
 ms.author: mattmcinnes
 ms.custom: include file
+# Customer intent: "As a cloud solutions architect, I want to understand the capabilities of NG-family virtual machines, so that I can determine their suitability for cloud gaming and remote desktop applications."
 ---
 **Cloud Gaming:** NG-family VMs harness powerful AMD Radeon™ PRO GPUs to deliver high-quality, interactive gaming experiences in the cloud.
 

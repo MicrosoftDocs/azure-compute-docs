@@ -8,6 +8,7 @@ ms.service: azure-container-instances
 ms.custom: devx-track-azurecli
 services: container-instances
 ms.date: 08/29/2024
+# Customer intent: As a cloud developer, I want to deploy GPU-enabled container instances using YAML or Resource Manager templates, so that I can efficiently run compute-intensive applications like deep learning and CUDA workloads in Azure.
 ---
 
 # Deploy container instances that use GPU resources

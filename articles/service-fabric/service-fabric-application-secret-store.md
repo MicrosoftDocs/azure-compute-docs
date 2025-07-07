@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a cloud application developer, I want to utilize the Central Secret Service to securely manage and access secrets, so that my applications can operate without hardcoding sensitive information and maintain compliance with security best practices."
 ---
 
 # Central Secret Service in Azure Service Fabric 

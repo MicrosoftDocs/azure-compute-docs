@@ -3,10 +3,11 @@ title: Monitor Azure Container Instances
 description: Start here to learn how to monitor Azure Container Instances.
 ms.date: 08/29/2024
 ms.custom: horz-monitor
-ms.topic: conceptual
+ms.topic: concept-article
 author: tomvcassidy
 ms.author: tomcassidy
 ms.service: azure-container-instances
+# Customer intent: As a cloud operations engineer, I want to monitor Azure Container Instances performance metrics so that I can ensure optimal resource usage and quickly identify any potential issues within my containerized applications.
 ---
 
 # Monitor Azure Container Instances

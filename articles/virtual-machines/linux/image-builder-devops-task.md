@@ -10,6 +10,7 @@ ms.service: azure-virtual-machines
 ms.subservice: image-builder
 ms.custom: devx-track-azurepowershell, devx-track-azurecli, linux-related-content
 ms.devlang: azurecli
+# Customer intent: "As a DevOps engineer, I want to use the Azure VM Image Builder task to automate the injection of build artifacts into VM images, so that I can efficiently configure and deploy applications across my virtual machine instances."
 ---
 
 # Azure VM Image Builder service DevOps task (preview)

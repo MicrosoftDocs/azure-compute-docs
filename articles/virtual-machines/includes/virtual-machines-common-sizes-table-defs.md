@@ -8,6 +8,7 @@ author: jushiman
  ms.date: 03/09/2018
 ms.author: jushiman
  ms.custom: include file
+# Customer intent: "As a cloud architect, I want to understand the performance characteristics and limitations of various VM types, so that I can select the most suitable configuration for my applications' storage and network needs."
 ---
 
 <!-- Not used for Ls-series -->

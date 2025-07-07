@@ -8,6 +8,7 @@ ms.service: azure-container-instances
 ms.custom: devx-track-azurecli
 services: container-instances
 ms.date: 08/29/2024
+# Customer intent: As a container administrator, I want to override the default entrypoint in a container instance, so that I can customize command execution for specific tasks or batch jobs.
 ---
 
 # Set the command line in a container instance to override the default command line operation

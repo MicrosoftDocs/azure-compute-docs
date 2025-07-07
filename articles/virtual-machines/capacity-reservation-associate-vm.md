@@ -8,6 +8,7 @@ ms.topic: how-to
 ms.date: 11/22/2022
 ms.reviewer: cynthn, jushiman
 ms.custom: template-how-to, devx-track-azurecli, devx-track-azurepowershell
+# Customer intent: "As a cloud administrator, I want to associate a virtual machine with a capacity reservation group, so that I can ensure reserved resources are allocated for my applications and workloads."
 ---
 
 # Associate a VM to a capacity reservation group

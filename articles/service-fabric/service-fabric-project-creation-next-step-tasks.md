@@ -2,8 +2,9 @@
 title: Service Fabric project creation next steps
 description: Learn about the application project you just created in Visual Studio.  Learn how to build services using tutorials and learn more about developing services for Service Fabric.
 
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 12/21/2020
+# Customer intent: "As a new developer, I want to learn how to create and manage Azure Service Fabric applications, so that I can effectively build, deploy, and maintain scalable services in a cloud environment."
 ---
 
 # Your Service Fabric application and next steps

@@ -1,6 +1,81 @@
 {
   "redirections": [
     {
+      "source_path": "articles/virtual-machines/sizes/gpu-accelerated/nc-series.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/sizes/gpu-accelerated/nc-series",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/sizes/retirement/nc-series-retirement.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/sizes/retirement/nc-series-retirement",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/sizes/retirement/ncv2-series-retirement.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/sizes/retirement/ncv2-series-retirement",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/sizes/gpu-accelerated/ncv2-series.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/sizes/gpu-accelerated/ncv2-series",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/classic-vm-deprecation.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/classic-vm-deprecation",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/migration/migration-classic-resource-manager-cli.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/migration/migration-classic-resource-manager-cli",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/migration/migration-classic-resource-manager-community-tools.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/migration/migration-classic-resource-manager-community-tools",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/migration/migration-classic-resource-manager-deep-dive.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/migration/migration-classic-resource-manager-deep-dive",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/migration/migration-classic-resource-manager-errors.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/migration/migration-classic-resource-manager-errors",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/migration/migration-classic-resource-manager-faq.yml",
+      "redirect_url": "/previous-versions/azure/virtual-machines/migration/migration-classic-resource-manager-faq",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/migration/migration-classic-resource-manager-overview.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/migration/migration-classic-resource-manager-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/migration/migration-classic-resource-manager-plan.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/migration/migration-classic-resource-manager-plan",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/migration/migration-classic-resource-manager-ps.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/migration/migration-classic-resource-manager-ps",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/linux/tutorial-config-management.md",
+      "redirect_url": "/azure/update-manager/migration-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/windows/tutorial-config-management.md",
+      "redirect_url": "/azure/update-manager/migration-overview",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "articles/virtual-machine-scale-sets/tutorial-connect-to-instances-powershell.md",
       "redirect_url": "/previous-versions/azure/virtual-machine-scale-sets/tutorial-connect-to-instances-powershell",
       "redirect_document_id": false
@@ -15,8 +90,16 @@
       "redirect_url": "container-instances-overview"
     },
     {
+      "source_path": "articles/virtual-machines/sizes/general-purpose/dcesv5-series.md",
+      "redirect_url": "dcesv6-series"
+    },
+    {
       "source_path": "articles/virtual-machine-scale-sets/virtual-machine-scale-sets-instance-mix.md",
       "redirect_url": "instance-mix-overview"
+    },
+    {
+      "source_path": "articles/virtual-machines/ncv3-nc6s-nc12s-nc24s-retirement.md",
+      "redirect_url": "ncv3-retirement"
     }
   ]
 }

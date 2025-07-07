@@ -9,6 +9,7 @@ ms.topic: how-to
 ms.service: azure-virtual-machines
 ms.subservice: image-builder
 ms.custom: devx-track-azurepowershell, linux-related-content
+# Customer intent: As an Azure administrator, I want to configure permissions for VM Image Builder using PowerShell, so that I can ensure the service has the necessary access to create, manage, and distribute virtual machine images effectively.
 ---
 
 # Configure Azure VM Image Builder permissions by using PowerShell

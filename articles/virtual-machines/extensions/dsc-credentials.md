@@ -10,13 +10,20 @@ ms.reviewer: jushiman
 ms.collection: windows
 ms.date: 03/06/2023
 ms.custom:
+# Customer intent: As an Azure system administrator, I want to securely pass credentials to virtual machines using PowerShell Desired State Configuration, so that I can efficiently configure user accounts and services without compromising security.
 ---
 # Pass credentials to the Azure DSCExtension handler
 
 This article covers the Desired State Configuration (DSC) extension for Azure. For an overview of the DSC extension handler, see [Introduction to the Azure Desired State Configuration extension handler](dsc-overview.md).
 
 > [!NOTE]
-> Before you enable the DSC extension, we would like you to know that a newer version of DSC is now generally available, managed by a feature of Azure Automange named [machine configuration](/azure/governance/machine-configuration/overview). The machine configuration feature combines features of the Desired State Configuration (DSC) extension handler, Azure Automation State Configuration, and the most commonly requested features from customer feedback. Machine configuration also includes hybrid machine support through [Arc-enabled servers](/azure/azure-arc/servers/overview).
+> DSC extension will be retired on March 31, 2028. Please transition to
+> [Azure Machine Configuration](/azure/governance/machine-configuration/overview) by that date.
+> For more information, see the [blog post](https://azure.microsoft.com/updates/?id=485828)
+> announcement. The Azure Machine Configuration service combines certain features of DSC Extension, Azure
+> Automation State Configuration, and commonly requested features from customer feedback.
+> Azure Machine Configuration also includes hybrid machine support through
+> [Arc-enabled servers](/azure/azure-arc/servers/overview).
 
 ## Pass in credentials
 

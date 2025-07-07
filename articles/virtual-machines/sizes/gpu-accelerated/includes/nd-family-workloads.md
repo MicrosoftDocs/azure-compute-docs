@@ -9,6 +9,7 @@ ms.subservice: sizes
 ms.date: 11/06/2024
 ms.author: mattmcinnes
 ms.custom: include file
+# Customer intent: As a data scientist, I want to utilize ND-family virtual machines for deep learning model training and deployment, so that I can achieve faster results with large datasets using powerful GPU resources.
 ---
 **AI and Deep Learning:** ND-family VMs are ideal for training and deploying complex deep learning models. Equipped with powerful NVIDIA GPUs, they provide the computational power necessary for handling extensive neural network training with large datasets, significantly reducing training times.
 

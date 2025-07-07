@@ -7,6 +7,7 @@ ms.topic: overview
 ms.date: 03/31/2023
 ms.author: rogarana
 ms.custom: references_regions, devx-track-azurecli, linux-related-content
+# Customer intent: "As a cloud administrator, I want to implement Private Links for managed disks using CLI, so that I can securely control import/export access within my virtual network and enhance data security."
 ---
 
 # Azure CLI - Restrict import/export access for managed disks with Private Links

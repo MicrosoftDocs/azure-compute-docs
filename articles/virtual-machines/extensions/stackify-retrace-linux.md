@@ -10,6 +10,7 @@ ms.collection: linux
 ms.date: 04/12/2018
 ms.custom: devx-track-azurecli, linux-related-content
 ms.devlang: azurecli
+# Customer intent: As a developer managing applications on Linux virtual machines, I want to deploy the Stackify Retrace agent extension, so that I can monitor application performance and troubleshoot issues effectively across different environments.
 ---
 # Stackify Retrace Linux Agent Extension
 

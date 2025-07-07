@@ -1,12 +1,13 @@
 ---
 title: Service Fabric Reliable Actors Overview 
 description: Introduction to the Service Fabric Reliable Actors programming model, based on the Virtual Actor pattern.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a software developer, I want to understand the Service Fabric Reliable Actors programming model, so that I can effectively implement scalable and reliable application services using the Virtual Actor pattern.
 ---
 
 # Introduction to Service Fabric Reliable Actors

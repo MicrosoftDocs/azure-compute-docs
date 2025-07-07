@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: "As a DevOps engineer, I want to manage repair tasks using the command line interface, so that I can efficiently query, approve, and delete repair tasks within the Azure Service Fabric environment."
 ---
 
 # sfctl rpm

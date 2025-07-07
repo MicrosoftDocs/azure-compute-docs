@@ -9,6 +9,7 @@ ms.date: 07/31/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
+# Customer intent: "As an IT infrastructure planner, I want to review the specifications of DCdsv3-series VM sizes, so that I can select the appropriate virtual machine configuration for our project's performance needs."
 ---
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
 |---|---|---|

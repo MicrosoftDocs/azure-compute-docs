@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 11/14/2024
+# Customer intent: "As a cloud architect, I want to set up a secure Service Fabric cluster in Azure using the portal, so that I can manage and deploy applications with proper authentication and encryption for production workloads."
 ---
 
 # Create a Service Fabric cluster in Azure using the Azure portal

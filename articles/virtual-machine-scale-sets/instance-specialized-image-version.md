@@ -9,6 +9,7 @@ ms.topic: how-to
 ms.date: 06/14/2024
 ms.reviewer: cynthn
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
+# Customer intent: As a developer, I want to create a virtual machine scale set using a specialized image from an Azure Compute Gallery, so that I can efficiently manage and deploy scalable applications with predefined configurations.
 ---
 
 # Create a scale set using a specialized image version with the Azure CLI

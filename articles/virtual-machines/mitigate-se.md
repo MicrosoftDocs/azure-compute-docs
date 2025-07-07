@@ -6,9 +6,10 @@ author: ju-shim
 keywords: spectre,meltdown,specter
 ms.service: azure-virtual-machines
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 02/26/2024
 ms.author: jushiman
+# Customer intent: "As a security administrator, I want to implement strategies to mitigate silicon-based micro-architectural vulnerabilities, so that I can protect my virtual machines from speculative execution side-channel attacks."
 ---
 
 # Guidance for mitigating silicon based micro-architectural and speculative execution side-channel vulnerabilities

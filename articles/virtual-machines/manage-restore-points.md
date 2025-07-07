@@ -8,6 +8,7 @@ ms.subservice: recovery
 ms.topic: how-to
 ms.date: 07/05/2022
 ms.custom: template-how-to
+# Customer intent: "As a cloud administrator, I want to manage virtual machine restore points across regions, so that I can ensure effective backup and recovery of my VMs."
 ---
 
 # Manage VM restore points

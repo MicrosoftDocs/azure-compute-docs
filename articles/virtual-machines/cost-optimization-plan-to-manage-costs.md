@@ -5,8 +5,9 @@ author: tomvcassidy
 ms.author: tomcassidy
 ms.custom: subject-cost-optimization
 ms.service: azure-virtual-machines
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 02/21/2024
+# Customer intent: "As a cloud administrator, I want to estimate and review costs for virtual machines, so that I can effectively manage and optimize our cloud spending."
 ---
 
 # Plan to manage costs for virtual machines

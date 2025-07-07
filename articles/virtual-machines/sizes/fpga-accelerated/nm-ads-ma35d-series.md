@@ -4,9 +4,10 @@ description: Overview of NMads MA35d virtual machine
 author:      iamwilliew
 ms.author:   wwilliams
 ms.service: azure-virtual-machines
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date:     10/02/2024
 ms.subservice: sizes
+# Customer intent: As a cloud architect, I want to evaluate the NMads MA35D series virtual machines for video transcoding workloads, so that I can leverage their specialized hardware and performance advantages for efficient and cost-effective video processing in our projects.
 ---
 
 # NMads MA35D series

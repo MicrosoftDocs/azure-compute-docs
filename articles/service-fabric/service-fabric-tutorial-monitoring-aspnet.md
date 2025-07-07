@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 11/14/2024
+# Customer intent: As an application developer, I want to configure monitoring and diagnostics for my ASP.NET Core application using a performance management platform, so that I can collect telemetry and better diagnose issues in a Service Fabric environment.
 ---
 
 # Tutorial: Monitor and diagnose a Service Fabric application by using Application Insights

@@ -8,6 +8,7 @@ ms.service: azure-container-instances
 ms.custom: devx-track-azurecli
 services: container-instances
 ms.date: 08/29/2024
+# Customer intent: As a developer, I want to execute commands in a running container instance, so that I can troubleshoot and debug applications effectively during development.
 ---
 
 # Execute a command in a running Azure container instance

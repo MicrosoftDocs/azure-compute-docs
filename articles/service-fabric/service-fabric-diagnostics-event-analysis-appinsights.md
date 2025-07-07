@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a cloud application developer, I want to integrate Application Insights with my Service Fabric applications, so that I can visualize, analyze events, and troubleshoot performance issues effectively."
 ---
 
 # Event analysis and visualization with Application Insights

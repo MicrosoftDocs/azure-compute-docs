@@ -10,6 +10,7 @@ ms.service: azure-virtual-machines
 ms.subservice: image-builder
 ms.collection: windows
 ms.custom: devx-track-azurepowershell
+# Customer intent: "As a cloud administrator, I want to create a customized Windows VM image using an existing virtual network, so that I can streamline deployment and ensure proper network connectivity without requiring public access."
 ---
 # Use Azure VM Image Builder to access an existing Azure virtual network
 

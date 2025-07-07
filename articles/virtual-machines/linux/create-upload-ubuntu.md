@@ -9,6 +9,7 @@ ms.topic: how-to
 ms.date: 07/28/2021
 ms.author: vakavuru
 ms.reviewer: mattmcinnes
+# Customer intent: "As a cloud administrator, I want to create and upload a custom Ubuntu Linux VHD to Azure so that I can deploy specialized virtual machines tailored to my organization's specific needs."
 ---
 
 # Prepare an Ubuntu virtual machine for Azure

@@ -9,6 +9,7 @@ ms.topic: reference
 ms.service: azure-virtual-machines
 ms.subservice: image-builder
 ms.custom: references_regions, devx-track-bicep, devx-track-arm-template, linux-related-content, devx-track-azurecli
+# Customer intent: As an IT professional tasked with creating and managing virtual machine images, I want to develop a Bicep file or ARM template for Azure Image Builder, so that I can automate the image creation process with customized configurations efficiently.
 ---
 
 # Create an Azure Image Builder Bicep or ARM template JSON template
@@ -119,7 +120,11 @@ resource azureImageBuilder 'Microsoft.VirtualMachineImages/imageTemplates@2022-0
 
 ## Location
 
-The location is the region where the custom image is created. The following regions are supported:
+The VM Image Builder service is available in the following regions:  
+
+>[!NOTE]
+> You can still distribute images outside these regions.
+>
 
 - East US
 - East US 2
@@ -151,13 +156,15 @@ The location is the region where the custom image is created. The following regi
 - Korea Central
 - South Africa North
 - Qatar Central
-- USGov Arizona (Public Preview)
-- USGov Virginia (Public Preview)
-- China North 3 (Public Preview)
+- USGov Arizona (public preview)
+- USGov Virginia (public preview)
+- China North 3 (public preview)
 - Sweden Central
 - Poland Central
 - Italy North
 - Israel Central
+- New Zealand North
+- Taiwan Northwest
 
 > [!IMPORTANT]
 > Register the feature `Microsoft.VirtualMachineImages/FairfaxPublicPreview` to access the Azure Image Builder public preview in Azure Government regions (USGov Arizona and USGov Virginia).
@@ -213,11 +220,11 @@ location: '<region>'
 
 ### Data residency
 
-The Azure VM Image Builder service doesn't store or process customer data outside regions that have strict single region data residency requirements when a customer requests a build in that region. If a service outage for regions that have data residency requirements, you need to create Bicep files/templates in a different region and geography.
+The Azure VM Image Builder service keeps customer data within regions that have strict data residency rules. If a service outage for regions that have data residency requirements, you need to create Bicep files/templates in a different region and geography.
 
 ### Zone redundancy
 
-Distribution supports zone redundancy, VHDs are distributed to a Zone Redundant Storage (ZRS) account by default and the Azure Compute Gallery (formerly known as Shared Image Gallery) version will support a [ZRS storage type](../disks-redundancy.md#zone-redundant-storage-for-managed-disks) if specified.
+Distribution supports zone redundancy, Virtual Hard Disks (VHDs) are distributed to a Zone Redundant Storage (ZRS) account by default and the Azure Compute Gallery (formerly known as Shared Image Gallery) version will support a [ZRS storage type](../disks-redundancy.md#zone-redundant-storage-for-managed-disks) if specified.
 
 ## Tags
 
@@ -333,7 +340,7 @@ When using `customize`:
 - If one customizer fails, then the whole customization component will fail and report back an error.
 - Test the scripts thoroughly before using them in a template. Debugging the scripts by themselves is easier.
 - Don't put sensitive data in the scripts. Inline commands can be viewed in the image template definition. If you have sensitive information (including passwords, SAS token, authentication tokens, etc.), it should be moved into scripts in Azure Storage, where access requires authentication.
-- The script locations need to be publicly accessible, unless you're using [MSI](./image-builder-user-assigned-identity.md).
+- The script locations need to be publicly accessible, unless you're using a [User Assigned Identity](./image-builder-user-assigned-identity.md).
 
 The `customize` section is an array. The supported customizer types are: File, PowerShell, Shell, WindowsRestart, and WindowsUpdate.
 
@@ -568,7 +575,7 @@ Customize properties:
 
 ### PowerShell customizer
 
-The `PowerShell` customizer supports running PowerShell scripts and inline command on Windows, the scripts must be publicly accessible for the IB to access them.
+The `PowerShell` customizer supports running PowerShell scripts and inline command on Windows, the scripts must be publicly accessible for the service to access them.
 
 # [JSON](#tab/json)
 
@@ -1086,7 +1093,7 @@ The **versioning** property is for the `sharedImage` distribute type only. It's 
 - **latest** - New strictly increasing schema per design
 - **source** - Schema based upon the version number of the source image.
 
-The default version numbering schema is `latest`. The latest schema has an additional property, “major” which specifies the major version under which to generate the latest version.
+The default version numbering schema is `latest`. The latest schema has an additional property, "major" which specifies the major version under which to generate the latest version.
 
 > [!NOTE]
 > The existing version generation logic for `sharedImage` distribution is deprecated. Two new options are provided: monotonically increasing versions that are always the latest version in a gallery, and versions generated based on the version number of the source image. The enum specifying the version generation schema allows for expansion in the future with additional version generation schemas.
@@ -1469,7 +1476,7 @@ properties: {
   If the `stagingResourceGroup` property is specified with a resource group that does exist, then the Image Builder service checks to make sure the resource group isn't associated with another image template, is empty (no resources inside), in the same region as the image template, and has either "Contributor" or "Owner" RBAC applied to the identity assigned to the Azure Image Builder image template resource. If any of the aforementioned requirements aren't met, an error is thrown. The staging resource group has the following tags added to it: `usedBy`, `imageTemplateName`, `imageTemplateResourceGroupName`. Pre-existing tags aren't deleted.
 
 > [!IMPORTANT]
-> You will need to assign the contributor role to the resource group for the service principal corresponding to Azure Image Builder's first party app when trying to specify a pre-existing resource group and VNet to the Azure Image Builder service with a Windows source image. For the CLI command and portal instructions on how to assign the contributor role to the resource group see the following documentation [Troubleshoot VM Azure Image Builder: Authorization error creating disk](./image-builder-troubleshoot.md#authorization-error-creating-disk)
+> You will need to assign the contributor role to the resource group for the service principal corresponding to Azure Image Builder's first party app when trying to specify a pre-existing resource group and VNet to the Azure Image Builder service with a Windows source image. For the CLI command and portal instructions on how to assign the contributor role to the resource group see the following documentation [Troubleshoot VM Azure Image Builder: Authorization error creating disk](./image-builder-troubleshoot.md#authorization-error-occurs-with-creating-a-disk)
 
 - **The stagingResourceGroup property is specified with a resource group that doesn't exist**
 
@@ -1776,9 +1783,9 @@ You can use the `managedResourceTags` property to apply tags to the resources th
 
 ```json
 "properties": {
-		"managedResourceTags": {
-			"tag1": "value1",
-      			"tag2": "value2"
+    "managedResourceTags": {
+      "tag1": "value1",
+            "tag2": "value2"
               }
 }
 ```

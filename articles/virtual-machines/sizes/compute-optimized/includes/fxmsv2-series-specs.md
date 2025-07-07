@@ -9,6 +9,7 @@ ms.date: 08/29/2024
 ms.author: archat
 ms.reviewer: mattmcinnes
 ms.custom: include file
+# Customer intent: "As a cloud architect, I want to review the specifications of FXmsv2 series VMs, so that I can select the appropriate size and performance for my workloads based on processing, memory, storage, and network requirements."
 ---
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
 |---|---|---|

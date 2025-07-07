@@ -11,6 +11,7 @@ ms.custom: linux-related-content
 ms.date: 04/06/2023
 ms.author: vikancha
 ms.reviewer: padmalathas, mattmcinnes
+# Customer intent: "As a cloud administrator, I want to install and configure NVIDIA GPU drivers on Linux-based N-series VMs, so that I can fully utilize their GPU capabilities for high-performance computing applications."
 ---
 
 # Install NVIDIA GPU drivers on N-series VMs running Linux
@@ -59,8 +60,11 @@ Ubuntu packages NVIDIA proprietary drivers. Those drivers come directly from NVI
    ```bash
    sudo ubuntu-drivers install
    ```
-   Reboot the VM after the GPU driver is installed.
-3. Download and install the CUDA toolkit from NVIDIA:
+3. Reboot the VM after the GPU driver is installed:
+   ```bash
+   sudo reboot
+   ```
+4. Download and install the CUDA toolkit from NVIDIA:
     > [!NOTE]
    >  The example shows the CUDA package path for Ubuntu 24.04 LTS. Replace the path specific to the version you plan to use.
    >
@@ -75,12 +79,12 @@ Ubuntu packages NVIDIA proprietary drivers. Those drivers come directly from NVI
 
    The installation can take several minutes.
 
-4. Reboot the VM after installation completes:
+5. Reboot the VM after installation completes:
    ```bash
    sudo reboot
    ```
 
-5. Verify that the GPU is correctly recognized (after reboot):
+6. Verify that the GPU is correctly recognized (after reboot):
    ```bash
    nvidia-smi
    ```

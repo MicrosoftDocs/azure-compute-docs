@@ -4,10 +4,11 @@ description: Information on and specifications of the Dpdsv5-series sizes
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 07/29/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
+# Customer intent: As a cloud infrastructure planner, I want to analyze the specifications and capabilities of the Dpdsv5 series virtual machine sizes, so that I can select the appropriate configurations for my workloads and optimize resource allocation.
 ---
 
 # Dpdsv5 sizes series

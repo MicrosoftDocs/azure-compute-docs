@@ -9,6 +9,7 @@ ms.date: 07/25/2024
 ms.reviewer: cynthn
 ms.author: padmalathas
 author: padmalathas
+# Customer intent: As a cloud architect, I want to evaluate the performance characteristics of HX-series VMs for high-performance computing workloads, so that I can determine their suitability for my organization's computational tasks and ensure optimal scalability.
 ---
 
 # HX-series virtual machine performance

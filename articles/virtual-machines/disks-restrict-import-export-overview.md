@@ -6,6 +6,7 @@ ms.service: azure-disk-storage
 ms.topic: how-to
 ms.date: 09/25/2024
 ms.author: rogarana
+# Customer intent: As an IT security administrator, I want to restrict the import and export of Azure managed disks, so that I can safeguard sensitive data and ensure compliance with organizational policies.
 ---
 
 # Restrict managed disks from being imported or exported

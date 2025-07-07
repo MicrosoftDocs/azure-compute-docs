@@ -8,6 +8,7 @@
  ms.date: 10/14/2022
  ms.author: rogarana
  ms.custom: include file
+# Customer intent: As a cloud architect, I want to understand the `maxShares` limits for different disk types, so that I can configure shared disks for my failover cluster effectively without exceeding the allowable limits.
 ---
 
 For now, only ultra disks, premium SSD v2, premium SSD, and standard SSDs can enable shared disks. Different disk sizes may have a different `maxShares` limit, which you can't exceed when setting the `maxShares` value.

@@ -1,12 +1,13 @@
 ---
 title: Azure Service Fabric container image management
 description: How to use container image management in a service fabric cluster.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: sumeshkadam
 author: sumeshkms
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 06/22/2023
+# Customer intent: As a cloud administrator managing container deployments, I want to configure container image cleanup settings, so that I can efficiently manage storage and resources in my service fabric cluster.
 ---
 
 # Container Image Management 

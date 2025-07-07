@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a DevOps engineer, I want to troubleshoot application upgrades in a service fabric environment, so that I can effectively resolve upgrade failures and enhance application reliability."
 ---
 
 # Troubleshoot application upgrades

@@ -8,6 +8,7 @@ ms.custom: devx-track-azurecli
 services: container-instances
 ms.topic: how-to
 ms.date: 08/29/2024
+# Customer intent: "As a cloud architect, I want to configure a static public IP address for a container group using an application gateway, so that I can ensure stable external access to my containerized web applications."
 ---
 
 # Expose a static IP address for a container group

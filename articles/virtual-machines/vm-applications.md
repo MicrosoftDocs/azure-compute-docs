@@ -1,69 +1,245 @@
 ---
 title: Overview of VM Applications in the Azure Compute Gallery
-description: Learn more about VM application packages in an Azure Compute Gallery.
+description: Learn about Azure VM Applications in an Azure Compute Gallery used to create and deploy applications on Azure Virtual Machines & Scale Sets.
 ms.service: azure-virtual-machines
 ms.subservice: gallery
-ms.topic: conceptual
-ms.date: 02/26/2024
+ms.topic: concept-article
+ms.date: 03/14/2025
 author: ju-shim
 ms.author: gabsta
 ms.reviewer: jushiman
 ms.custom: linux-related-content
+# Customer intent: As a cloud engineer, I want to leverage VM Applications in the Azure Compute Gallery, so that I can efficiently deploy and manage applications across virtual machines without the overhead of rebuilding VM images for every change.
 ---
 
-# VM Applications overview
+# VM Applications Overview
 
-VM Applications are a resource type in Azure Compute Gallery (formerly known as Shared Image Gallery) that simplifies management, sharing, and global distribution of applications for your virtual machines.
-
-While you can create an image of a VM with apps preinstalled, you would need to update your image each time you have application changes. Separating your application installation from your VM images means there’s no need to publish a new image for every line of code change.
-
-Application packages provide benefits over other deployment and packaging methods:
-
-- VM Applications have support for [Azure Policies](/azure/governance/policy/overview)
-
-- Grouping and versioning of your packages
-
-- VM applications can be globally replicated to be closer to your infrastructure, so you don’t need to use AzCopy or other storage copy mechanisms to copy the bits across Azure regions.
-
-- Sharing with other users through Azure Role Based Access Control (RBAC)
-
-- Support for virtual machines, and both flexible and uniform scale sets
-
-- If you have Network Security Group (NSG) rules applied on your VM or scale set, downloading the packages from an internet repository might not be possible. And with storage accounts, downloading packages onto locked-down VMs would require setting up private links.
-
-- Support for Block Blobs: This feature allows the handling of large files efficiently by breaking them into smaller, manageable blocks. Ideal for uploading large amounts of data, streaming, and background uploading.
-
-## What are VM app packages?
-
-The VM application packages use multiple resource types:
+VM Applications are a resource type in Azure Compute Gallery that provides a modern, flexible approach to managing and deploying applications across your virtual machines and scale sets. By decoupling application installation from your base VM images, you can streamline updates, reduce image maintenance overhead, and accelerate deployment cycles. This approach eliminates the need to rebuild and republish VM images for every application change, enabling faster iteration and greater operational agility. VM Applications are best suited for deploying AI, high scale, low latency, micro-services, secure and compliant workloads on Azure VMs.
 
 | Resource | Description|
 |----------|------------|
-| **Azure compute gallery** | A gallery is a repository for managing and sharing application packages. Users can share the gallery resource and all the child resources are shared automatically. The gallery name must be unique per subscription. For example, you may have one gallery to store all your OS images and another gallery to store all your VM applications.|
-| **VM application** | The definition of your VM application. It's a *logical* resource that stores the common metadata for all the versions under it. For example, you may have an application definition for Apache Tomcat and have multiple versions within it. |
-| **VM Application version** | The deployable resource. You can globally replicate your VM application versions to target regions closer to your VM infrastructure. The VM Application Version must be replicated to a region before it may be deployed on a VM in that region. |
+| **Azure Compute Gallery** | A gallery is a repository for managing and sharing application packages. Users can share the gallery resource and all the child resources are shared automatically. The gallery name must be unique per subscription. For example, you may have one gallery to store all your OS images and another gallery to store all your VM applications.|
+| **VM Application** | The definition of your VM application. It's a *logical* resource that stores the common metadata for all the versions under it. For example, you may have an application definition for Apache Tomcat and have multiple versions within it. |
+| **VM Application version** | The deployable resource which holds your application package and version specific configurations. You can globally replicate your VM application versions to target regions closer to your VM infrastructure. The VM Application version must be replicated to a region before it may be deployed on a VM in that region. |
+| **Storage Account**| Application packages are first uploaded to your storage account. Azure Compute Gallery then downloads the application package from this storage account using SAS URLs and stores it within the VM Application version. Azure Compute Gallery also replicates this package across regions & regional replicas per the VM Application version definition. The application package in the storage account can be deleted after VM application version is created in Azure Compute Gallery. |   
 
-## Limitations
+:::image type="content" source="media/vmapps/vm-application-overview.png" alt-text="Diagram showing steps to create VM application and deploying it to Azure":::
 
-- **No more than 3 replicas per region**: When you're creating a VM Application version, the maximum number of replicas per region is three.
+## Key Benefits: 
+- **Centralized and Flexible Application Management**: 
+  - Package Once, Deploy Anywhere: Package applications in ZIP, MSI (Microsoft Package Installed), or EXE formats and manage them centrally in Azure Compute Gallery.
+  - Version Control: Deploy either the latest or a specific version by maintaining multiple versions of each application. 
+- **Seamless Sharing and Access Control**
+  - Tenant-Wide Sharing: Share applications within teams or across your entire organization (tenant).
+  - Integrated RBAC: Control publishing and deployment access using Azure Role-Based Access Control (RBAC).
+- **Reliable and Customizable Deployments**
+  - Individual Application Control: Install, update, or delete applications independently—no need to rebuild VM images.
+  - Customizable Operations: Customize install, update, and delete operations for applications, including reboot handling.
+  - Built-In Failure Handling: Ensure resilient deployments by connecting VM application failure to VM failure.
+- **Scalable and Low-Latency Distribution**
+  - Global and Intra-Region Replication: Automatically replicate applications across and within regions to reduce latency and improve resiliency—no need for AzCopy or manual transfers.
+  - Optimized for High-Scale Scenarios: Achieve low create latency even during large-scale deployments.
+- **Secure and Compliant by Design**
+  - Policy-Driven Enforcement: Use Azure Policy to enforce application presence and configuration across your fleet.
+  - Secure Deployments: Avoid internet-based downloads and complex private link setups which aren't ideal for locked-down or secure environments.
+- **Broad Platform Support**
+  - VMs and Scale Sets: Deploy to individual VMs, flexible scale sets, or uniform scale sets with full support.
+  - Block Blob Support: Efficiently handle large application packages (upto 2 GB) using Azure Block Blobs for chunked uploads and background streaming.
 
-- **Storage with public access or SAS URI with read privilege:** The storage account needs to has public level access or use an SAS URI with read privilege, as other restriction levels fail deployments.
 
-- **Retrying failed installations**: Currently, the only way to retry a failed installation is to remove the application from the profile, then add it back.
+## VM Applications & VM Applications version resource
 
-- **Only 25 applications per VM**: No more than 25 applications may be deployed to a VM at any point.
+The VM application resource defines the following about your VM application:
+- Azure Compute Gallery where the VM application is stored
+- Name of the application
+- Supported OS type like Linux or Windows
+- A description of the VM application
 
-- **2GB application size**: The maximum file size of an application version is 2 GB.
+VM application versions are the deployable resource. Versions are defined with the following properties:
+- Version number
+- Link to the application package file in a storage account
+- Install string to properly install the application
+- Remove string to properly remove the application
+- Update string to properly update the VM application to a newer version
+- Package file name to use when the package is downloaded to the VM.
+- Configuration file name to be used to configure the application on the VM
+- A link to the configuration file for the VM application, which you can include license files
+- End-of-life date. End-of-life dates are informational; you're still able to deploy VM Application versions past the end-of-life date.
+- Exclude from latest. You can keep a version from being used as the latest version of the application.
+- Target regions for replication
+- Replica count per region
 
-- **No guarantees on reboots in your script**: If your script requires a reboot, the recommendation is to place that application last during deployment. While the code attempts to handle reboots, it may fail.
+#### [Template](#tab/template)
+```json
 
-- **Requires a VM Agent**: The VM agent must exist on the VM and be able to receive goal states.
+{
+  "$schema": "https://schema.management.azure.com/schemas/2020-06-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "galleryName": {
+      "type": "string"
+    },
+    "applicationName": {
+      "type": "string"
+    },
+    "versionName": {
+      "type": "string",
+      "metadata": {
+        "description": "Must follow the format: major.minor.patch (e.g., 1.0.0)"
+      }
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "West US"
+    },
+    "supportedOSType": {
+      "type": "string",
+      "allowedValues": ["Windows", "Linux"]
+    },
+    "endOfLifeDate": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string",
+      "defaultValue": "Description of the application"
+    },
+    "eula": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "privacyStatementUri": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "releaseNoteUri": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "mediaLink": {
+      "type": "string"
+    },
+    "configLink": {
+      "type": "string"
+    },
+    "appConfigFileName": {
+      "type": "string"
+    },
+    "appPackageFileName": {
+      "type": "string"
+    },
+    "replicaRegion1": {
+      "type": "string",
+      "defaultValue": "East US"
+    },
+    "replicaRegion2": {
+      "type": "string",
+      "defaultValue": "South Central US"
+    },
+    "installScript": {
+      "type": "string",
+      "metadata": {
+        "description": "Optional. Script to run to install the application. E.g. echo 'Installing application...'"
+      }
+    },
+    "updateScript": {
+      "type": "string",
+      "metadata": {
+        "description": "Optional. Script to run to update the application. E.g. echo 'Updating application...'"
+      }
+    },
+    "removeScript": {
+      "type": "string",
+      "metadata": {
+        "description": "Optional. Script to run to delete the application. E.g. echo 'Deleting application...'"
+      }
+    },
+    "storageAccountType": {
+      "type": "string",
+      "allowedValues": ["PremiumV2_LRS", "Premium_LRS", "Standard_LRS", "Standard_ZRS"],
+      "defaultValue": "Standard_LRS"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Compute/galleries",
+      "apiVersion": "2024-03-03",
+      "name": "[parameters('galleryName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "identifier": {}
+      }
+    },
+    {
+      "type": "Microsoft.Compute/galleries/applications",
+      "apiVersion": "2024-03-03",
+      "name": "[format('{0}/{1}', parameters('galleryName'), parameters('applicationName'))]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/galleries', parameters('galleryName'))]"
+      ],
+      "properties": {
+        "supportedOSType": "[parameters('supportedOSType')]",
+        "endOfLifeDate": "[parameters('endOfLifeDate')]",
+        "description": "[parameters('description')]",
+        "eula": "[if(equals(parameters('eula'), ''), json('null'), parameters('eula'))]",
+        "privacyStatementUri": "[if(equals(parameters('privacyStatementUri'), ''), json('null'), parameters('privacyStatementUri'))]",
+        "releaseNoteUri": "[if(equals(parameters('releaseNoteUri'), ''), json('null'), parameters('releaseNoteUri'))]"
+      }
+    },
+    {
+      "type": "Microsoft.Compute/galleries/applications/versions",
+      "apiVersion": "2024-03-03",
+      "name": "[format('{0}/{1}/{2}', parameters('galleryName'), parameters('applicationName'), parameters('versionName'))]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/galleries/applications', parameters('galleryName'), parameters('applicationName'))]"
+      ],
+      "properties": {
+        "publishingProfile": {
+          "source": {
+            "mediaLink": "[parameters('mediaLink')]",
+            "defaultConfigurationLink": "[parameters('configLink')]"
+          },
+          "manageActions": {
+            "install": "[parameters('installScript')]",
+            "remove": "[parameters('removeScript')]",
+            "update": "[parameters('updateScript')]"
+          },
+          "settings": {
+            "scriptBehaviorAfterReboot": "Rerun",
+            "configFileName": "[parameters('appConfigFileName')]",
+            "packageFileName": "[parameters('appPackageFileName')]"
+          },
+          "targetRegions": [
+            {
+              "name": "[parameters('location')]",
+              "regionalReplicaCount": 3,
+              "storageAccountType": "[parameters('storageAccountType')]"
+            },
+            {
+              "name": "[parameters('replicaRegion1')]",
+              "regionalReplicaCount": 1,
+              "storageAccountType": "[parameters('storageAccountType')]"
+            },
+            {
+              "name": "[parameters('replicaRegion2')]"
+            },
+          ],
+          "excludeFromLatest": false,
+          "replicaCount": 2,
+          "storageAccountType": "[parameters('storageAccountType')]"
+        },
+        "safetyProfile": {
+          "allowDeletionOfReplicatedLocations": true
+        },
+        "endOfLifeDate": "[parameters('endOfLifeDate')]"
+      }
+    }
+  ]
+}
 
-- **Multiple versions of same application on the same VM**: You can't have multiple versions of the same application on a VM.
-- **Move operations currently not supported**: Moving VMs with VM Apps to other resource groups aren't supported at this time.
-
-> [!NOTE]
-> For Azure Compute Gallery and VM Applications, Storage SAS can be deleted after replication. However, any subsequent update operation will require a valid SAS.
+```
+---
 
 ## Cost
 
@@ -74,44 +250,41 @@ There's no extra charge for using VM Application Packages, but you're charged fo
 
 For more information on network egress, see [Bandwidth pricing](https://azure.microsoft.com/pricing/details/bandwidth/).
 
-## VM applications
+## Technical Details
 
-The VM application resource defines the following about your VM application:
+### Considerations and Current Limits
 
-- Azure Compute Gallery where the VM application is stored
-- Name of the application
-- Supported OS type like Linux or Windows
-- A description of the VM application
+- **Up to 10 replicas per region**: When you're creating a VM Application version, the maximum number of replicas per region is 10 for both page blob and block blob.
 
-## VM application versions
+- **Storage with public access and SAS URI with read privilege:** The storage account needs to have public level access and use a SAS URI with read privilege, as other restriction levels fail deployments. SAS Tokens can be bypassed by publishing the artifact on the storage account by allowing anonymous access.
 
-VM application versions are the deployable resource. Versions are defined with the following properties:
+- **Manual retry for failed installations**: Currently, the only way to retry a failed installation is to remove the application from the profile, then add it back. 
 
-- Version number
-- Link to the application package file in a storage account
-- Install string for installing the application
-- Remove string to show how to properly remove the app
-- Package file name to use when it's downloaded to the VM
-- Configuration file name to be used to configure the app on the VM
-- A link to the configuration file for the VM application, which you can include license files
-- Update string for how to update the VM application to a newer version
-- End-of-life date. End-of-life dates are informational; you're still able to deploy VM application versions past the end-of-life date.
-- Exclude from latest. You can keep a version from being used as the latest version of the application.
-- Target regions for replication
-- Replica count per region
+- **Up to 25 applications per VM**: A maximum of 25 applications can be deployed to a single virtual machine.
 
-## Download directory
+- **2 GB application size**: The maximum file size of an application version `mediaLink` is 2 GB. The maximum file size for `defaultConfigurationLink` is 1 GB. 
+
+- **Requires a VM Agent**: The VM agent must exist on the VM and be able to receive goal states.
+
+- **Single version of the application per VM**: Only one version of a given application can be deployed to a VM.
+  
+- **Move operations currently not supported**: Moving VMs with associated VM Applications across resource groups is currently not supported.
+
+> [!NOTE]
+> For Azure Compute Gallery and VM Applications, Storage SAS can be deleted after replication. However, any subsequent update operation requires a valid SAS.
+
+### Download directory within the VM
 
 The download location of the application package and the configuration files are:
 
-- Linux: `/var/lib/waagent/Microsoft.CPlat.Core.VMApplicationManagerLinux/<appname>/<app version> `
-- Windows: `C:\Packages\Plugins\Microsoft.CPlat.Core.VMApplicationManagerWindows\1.0.9\Downloads\<appname>\<app version> `
+- Linux: `/var/lib/waagent/Microsoft.CPlat.Core.VMApplicationManagerLinux/<application name>/<application version> `
+- Windows: `C:\Packages\Plugins\Microsoft.CPlat.Core.VMApplicationManagerWindows\1.0.9\Downloads\<application name>\<application version> `
 
 The install/update/remove commands should be written assuming the application package and the configuration file are in the current directory.
 
-## File naming
+### File naming
 
-When the application file gets downloaded to the VM, it's renamed as "MyVmApp" (no extension). This is because the VM isn't aware of your package's original name or extension. It utilizes the only name it has, which is the application name itself - "MyVmApp".
+When the application file gets downloaded to the VM, the file is renamed as "MyVmApp" and has no file extension (E.g. .exe, .msi). The VM is unaware of the file's original name and extension . 
 
 Here are a few alternatives to navigate this issue:
 
@@ -119,15 +292,14 @@ You can modify your script to include a command for renaming the file before exe
 ```azurepowershell
 move .\\MyVmApp .\\MyApp.exe & MyApp.exe /S
 ```
-You can also use the `packageFileName` (and the corresponding `configFileName`) property to instruct us what to rename your file. For example, setting it to "MyApp.exe" will make your install script only need to be:
+You can also use the `packageFileName` (and the corresponding `configFileName`) property to instruct us what to rename your file. For example, setting it to "MyApp.exe" makes your install script as follows.
 ```powershell
 MyAppe.exe /S
 ```
 > [!TIP]
-> If your blob was originally named "myApp.exe" instead of "myapp", then the above script would have worked without setting the `packageFileName` property.
+> If your blob is originally named as "myApp.exe" instead of "myapp", then the script works without setting the `packageFileName` property.
 
-
-## Command interpreter
+### Command interpreter
 
 The default command interpreters are:
 
@@ -136,14 +308,18 @@ The default command interpreters are:
 
 It's possible to use a different interpreter like Chocolatey or PowerShell, as long as it's installed on the machine, by calling the executable and passing the command to it. For example, to have your command run in PowerShell on Windows instead of cmd, you can pass `powershell.exe -Command '<powershell commmand>'`
 
-## How updates are handled
+### How updates are handled
 
 When you update an application version on a VM or Virtual Machine Scale Sets, the update command you provided during deployment is used. If the updated version doesn't have an update command, then the current version is removed and the new version is installed.
 
-Update commands should be written with the expectation that it could be updating from any older version of the VM application.
+Update commands should be written with the expectation that it could be updating from any older version of the VM Application.
 
-## Tips for creating VM Applications on Linux
+### Treat failure as deployment failure
 
+The VM Application extension always returns a *success* regardless of whether any VM app failed while being installed/updated/removed. The VM Application extension only reports the extension status as failure when there's a problem with the extension or the underlying infrastructure. This behavior is triggered by the "treat failure as deployment failure" flag, which is set to `$false` by default and can be changed to `$true`. The failure flag can be configured in [PowerShell](/powershell/module/az.compute/add-azvmgalleryapplication#parameters) or [CLI](/cli/azure/vm/application#az-vm-application-set).
+
+## Creating VM Applications on Linux
+To create a VM Application, you need application package and scripts to properly install, update, and delete the application.  
 Third party applications for Linux can be packaged in a few ways. Let's explore how to handle creating the install commands for some of the most common.
 
 ### .tar and .gz files
@@ -168,12 +344,13 @@ You can download individual packages for platform specific package managers, but
 
 Figuring out the dependencies can be a bit tricky. There are third party tools that can show you the entire dependency tree.
 
-# [Ubuntu](#tab/ubuntu)
+#### [Ubuntu](#tab/ubuntu)
 
 In Ubuntu, you can run `sudo apt show <package_name> | grep Depends` to show all the packages that are installed when executing the `sudo apt-get install <packge_name>` command. Then you can use that output to download all `.deb` files to create an archive that can be used as the application package.
 
-1. Example, to create a VM application package to install PowerShell for Ubuntu, first run the following commands to enable the repository where PowerShell can be downloaded from and also to identify the package dependencies on a new Ubuntu VM.
-
+To create a VM Application package for installing PowerShell on Ubuntu, perform the following steps: 
+1. Run the following commands to enable the repository for downloading PowerShell and to identify package dependencies on a new Ubuntu VM
+   
 ```bash
 # Download the Microsoft repository GPG keys
 wget -q "https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb"
@@ -264,11 +441,11 @@ Example install command:
 dpkg -i <package_name> || apt --fix-broken install -y
 ```
 
-# [Red Hat](#tab/rhel)
+#### [Red Hat](#tab/rhel)
 
 In Red Hat, you can run `sudo yum deplist <package_name>` to show all the packages that are installed when executing the `sudo yum install <package_name>` command. Then you can use that output to download all `.rpm` files to create an archive that can be used as the application package.
 
-1. Example, to create a VM application package to install PowerShell for Red Hat, first run the following commands to enable the repository where PowerShell can be downloaded from and also to identify the package dependencies on a new RHEL VM.
+1. Example, to create a VM Application package to install PowerShell for Red Hat, first run the following commands to enable the repository where PowerShell can be downloaded from and also to identify the package dependencies on a new Red Hat Enterprise Linux (RHEL) VM.
 
 - RHEL 7:
 
@@ -303,7 +480,6 @@ sudo dnf deplist powershell
 
 3. Download each of these files using `sudo yum install --downloadonly <package_name>`, to download a package when isn't yet installed in the system, or `sudo yum reinstall --downloadonly <package_name>`, to download a package that's already installed in the system, and create a tar compressed archive with all files.
 
-
 ```bash
 mkdir /tmp/powershell
 cd /tmp/powershell
@@ -336,11 +512,11 @@ Example install command:
 yum install <package.rpm> -y
 ```
 
-# [SUSE](#tab/sles)
+#### [SUSE](#tab/sles)
 
 In SUSE, you can run `sudo zypper info --requires <package_name>` to show all the packages that are installed when executing the `sudo zypper install <package_name>` command. Then you can use that output to download all `.rpm` files to create an archive that can be used as the application package.
 
-1. Example, to create a VM application package to install `azure-cli` for SUSE, first run the following commands to enable the repository where Azure CLI can be downloaded from and also to identify the package dependencies on a new SUSE VM.
+1. Example, to create a VM Application package to install `azure-cli` for SUSE, first run the following commands to enable the repository where Azure CLI can be downloaded from and also to identify the package dependencies on a new SUSE VM.
 
 ```bash
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
@@ -417,7 +593,7 @@ sudo zypper remove azure-cli
 
 ---
 
-## Tips for creating VM Applications on Windows
+## Creating VM Applications on Windows
 
 Most third party applications in Windows are available as .exe or .msi installers. Some are also available as extract and run zip files. Let us look at the best practices for each of them.
 
@@ -427,7 +603,7 @@ Installer executables typically launch a user interface (UI) and require someone
 
 Cmd.exe also expects executable files to have the extension `.exe`, so you need to rename the file to have the `.exe` extension.
 
-If I want to create a VM application package for `myApp.exe`, which ships as an executable, my VM Application is called 'myApp', so I write the command assuming the application package is in the current directory:
+If I want to create a VM Application package for `myApp.exe`, which ships as an executable, my VM Application is called 'myApp', so I write the command assuming the application package is in the current directory:
 
 ```terminal
 "move .\\myApp .\\myApp.exe & myApp.exe /S -config myApp_config"
@@ -452,10 +628,10 @@ start /wait %windir%\\system32\\msiexec.exe /i myapp /quiet /forcerestart /log m
 Example remove command:
 
 ```terminal
-start /wait %windir%\\system32\\msiexec.exe /x $appname /quiet /forcerestart /log ${appname}_uninstall.log
+start /wait %windir%\\system32\\msiexec.exe /x myapp /quiet /forcerestart /log myapp_uninstall.log
 ```
 
-Typically, the `start` command would be called within a batch script. If used with the `/wait` parameter, the calling script will be paused until the called process terminates. Once complete, the batch script would check for the `errorlevel` variable set by the `start` command and exit as follows:
+Typically, the `start` command would be called within a batch script. If used with the `/wait` parameter, the calling script is paused until the called process terminates. Once complete, the batch script would check for the `errorlevel` variable set by the `start` command and exit as follows:
  
 ```batch
 start /wait %windir%\\system32\\msiexec.exe /i myapp /quiet /forcerestart /log myapp_install.log
@@ -479,13 +655,9 @@ Example remove command:
 rmdir /S /Q C:\\myapp
 ```
 
-## Treat failure as deployment failure
-
-The VM application extension always returns a *success* regardless of whether any VM app failed while being installed/updated/removed. The VM Application extension only reports the extension status as failure when there's a problem with the extension or the underlying infrastructure. This behavior is triggered by the "treat failure as deployment failure" flag, which is set to `$false` by default and can be changed to `$true`. The failure flag can be configured in [PowerShell](/powershell/module/az.compute/add-azvmgalleryapplication#parameters) or [CLI](/cli/azure/vm/application#az-vm-application-set).
-
 ## Troubleshooting VM Applications
 
-To know whether a particular VM application was successfully added to the VM instance, check the message of the VM Application extension.
+To know whether a particular VM Application was successfully added to the VM instance, check the message of the VM Application extension.
 
 To learn more about getting the status of VM extensions, see [Virtual machine extensions and features for Linux](extensions/features-linux.md#view-extension-status) and [Virtual machine extensions and features for Windows](extensions/features-windows.md#view-extension-status).
 
@@ -507,7 +679,7 @@ $result | ForEach-Object {
 $resultSummary | convertto-json -depth 5
 ```
 
-## Error messages
+### Error messages
 
 | Message | Description |
 |--|--|
@@ -523,10 +695,10 @@ $resultSummary | convertto-json -depth 5
 | The blob referenced by source uri {uri} doesn't exist. | The blob provided for the mediaLink or defaultConfigurationLink properties doesn't exist. |
 | The gallery application version url {url} can't be accessed due to the following error: remote name not found. Ensure that the blob exists and that it's either publicly accessible or is a SAS url with read privileges. | The most likely case is that a SAS uri with read privileges wasn't provided. |
 | The gallery application version url {url} can't be accessed due to the following error: {error description}. Ensure that the blob exists and that it's either publicly accessible or is a SAS url with read privileges. | There was an issue with the storage blob provided. The error description provides more information. |
-| Operation {operationName} isn't allowed on {application} since it's marked for deletion. You can only retry the Delete operation (or wait for an ongoing one to complete). | Attempt to update an application that's currently being deleted. |
+| Operation {operationName} isn't allowed on {application} since it's marked for deletion. You can only retry the delete operation (or wait for an ongoing one to complete). | Attempt to update an application that's currently being deleted. |
 | The value {value} of parameter 'galleryApplicationVersion.properties.publishingProfile.replicaCount' is out of range. The value must be between one and three, inclusive. | Only between one and three replicas are allowed for VM Application versions. |
-| Changing property 'galleryApplicationVersion.properties.publishingProfile.manageActions.install' isn't allowed. (or update, delete) | It isn't possible to change any of the manage actions on an existing VmApplication. A new VmApplication version must be created. |
-| Changing property ' galleryApplicationVersion.properties.publishingProfile.settings.packageFileName ' isn't allowed. (or configFileName) | It isn't possible to change any of the settings, such as the package file name or config file name. A new VmApplication version must be created. |
+| Changing property 'galleryApplicationVersion.properties.publishingProfile.manageActions.install' isn't allowed. (Or update, delete) | It isn't possible to change any of the manage actions on an existing VmApplication. A new VmApplication version must be created. |
+| Changing property ' galleryApplicationVersion.properties.publishingProfile.settings.packageFileName ' isn't allowed. (Or configFileName) | It isn't possible to change any of the settings, such as the package file name or config file name. A new VmApplication version must be created. |
 | The blob referenced by source uri {uri} is too large: size = {size}. The maximum blob size allowed is '1 GB'. | The maximum size for a blob referred to by mediaLink or defaultConfigurationLink is currently 1 GB. |
 | The blob referenced by source uri {uri} is empty. | An empty blob was referenced. |
 | {type} blob type isn't supported for {operation} operation. Only page blobs and block blobs are supported. | VmApplications only supports page blobs and block blobs. |
@@ -536,7 +708,7 @@ $resultSummary | convertto-json -depth 5
 | Duplicate regions aren't allowed in target publishing regions. | The publishing regions may not have duplicates. |
 | Gallery application version resources currently don't support encryption. | The encryption property for target regions isn't supported for VM Applications |
 | Entity name doesn't match the name in the request URL. | The gallery application version specified in the request url doesn't match the one specified in the request body. |
-| The gallery application version name is invalid. The application version name should follow Major(int32). Minor(int32). Patch(int32) format, where `int` is between 0 and 2,147,483,647 (inclusive). for example, 1.0.0, 2018.12.1 etc. | The gallery application version must follow the format specified. |
+| The gallery application version name is invalid. The application version name should follow Major(int32). Minor(int32). Patch(int32) format, where `int` is between 0 and 2,147,483,647 (inclusive). For example, 1.0.0, 2018.12.1 etc. | The gallery application version must follow the format specified. |
 
 ## Next steps
 

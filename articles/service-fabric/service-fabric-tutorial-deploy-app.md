@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 05/17/2024
+# Customer intent: "As a developer, I want to deploy a Service Fabric application to a new cluster in Azure using Visual Studio, so that I can efficiently manage and scale microservices in a cloud environment."
 ---
 
 # Tutorial: Deploy a Service Fabric application to a cluster in Azure

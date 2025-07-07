@@ -3,13 +3,14 @@ title: Understand instance IDs for Azure Virtual Machine Scale Set VMs
 description: Understand instance IDs for Azure Virtual Machine Scale Set virtual machines and the various ways that they surface.
 author: mimckitt
 ms.author: mimckitt
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: management
 ms.date: 06/14/2024
 ms.reviewer: jushiman
 ms.custom: mimckitt
 
+# Customer intent: As a cloud administrator, I want to understand the naming conventions and instance IDs for Virtual Machine Scale Set VMs, so that I can manage and operate specific VMs efficiently within the scale set.
 ---
 # Understand names and instance IDs for Azure Virtual Machine Scale Set VMs
 
@@ -18,7 +19,7 @@ Each VM in a scale set gets a name and instance ID that uniquely identifies it. 
 
 ## Scale set VM names
 
-Virtual Machine Scale Sets will generate a unique name for each VM in the scale set. This name is used as part of the unique resource identifier for Azure ARM resources. The maximum length of the instance resource name is 64 characters. The naming convention differs by orchestration mode:
+Virtual Machine Scale Sets will generate a unique name for each VM in the scale set. This name is used as part of the unique resource identifier for Azure ARM resources. The maximum length of the instance resource name is 64 characters (Uniform Orchestration) or 44 characters (Flexible Orchestration). The naming conventions differ by orchestration mode:
 
 * Flexible orchestration mode instance name: `{scale-set-name}_{8-char-guid}`
 * Uniform orchestration mode instance name: `{scale-set-name}_{instance-id}`

@@ -4,9 +4,10 @@ description: List of sizes in the NC family.
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 06/06/2024
 ms.author: mattmcinnes
+# Customer intent: "As a cloud infrastructure architect, I want to review the specifications and use cases of the NC family GPU-accelerated VM sizes, so that I can select the appropriate instance type for my GPU-intensive workloads."
 ---
 
 # 'NC' sub-family GPU accelerated VM size series
@@ -20,13 +21,6 @@ ms.author: mattmcinnes
 [!INCLUDE [nc-family-workloads](./includes/nc-family-workloads.md)]
 
 ## Series in family
-
-### NC-series V1
-[!INCLUDE [nc-series-summary](./includes/nc-series-summary.md)]
-
-[View the full NC-series page](./nc-series.md).
-
-[!INCLUDE [nc-series-specs](./includes/nc-series-specs.md)]
 
 
 ### NCads_H100_v5-series
@@ -43,14 +37,6 @@ ms.author: mattmcinnes
 [View the full NCCads_H100_v5-series page](./nccadsh100v5-series.md).
 
 [!INCLUDE [nccads_h100_v5-series-specs](./includes/nccadsh100v5-series-specs.md)]
-
-
-### NCv2-series
-[!INCLUDE [ncv2-series-summary](./includes/ncv2-series-summary.md)]
-
-[View the full NCv2-series page](./ncv2-series.md).
-
-[!INCLUDE [ncv2-series-specs](./includes/ncv2-series-specs.md)]
 
 
 ### NCv3-series

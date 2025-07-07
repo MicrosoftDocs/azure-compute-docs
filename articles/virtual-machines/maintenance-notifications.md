@@ -3,9 +3,10 @@ title: Maintenance notifications
 description: Overview of maintenance notifications for virtual machines running in Azure.
 ms.service: azure-virtual-machines
 ms.subservice: maintenance
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 8/12/2020
 #pmcontact: shants
+# Customer intent: "As a virtual machine manager, I want to receive and manage planned maintenance notifications, so that I can schedule updates with minimal impact on service availability and ensure my virtual machines remain reliable and secure."
 ---
 
 # Handling planned maintenance notifications
@@ -22,7 +23,7 @@ Azure periodically performs updates to improve the reliability, performance, and
 Planned maintenance that requires a reboot is scheduled in waves. Each wave has different scope (regions).
 
 - A wave starts with a notification to customers. Virtual Machine related Maintenance notifications are available under [Service Health](https://aka.ms/azureservicehealth) in the Azure portal. For a small subset of Virtual Machine Planned Maintenance specific scenarios, Azure may also communicate the schedule by sending an additional email to the members of Subscription Owners group. [Azure Service Health](https://azure.microsoft.com/get-started/azure-portal/service-health/#overview) enables users to configure their own custom alerts for the Planned Maintenance category. With Azure Service Health alerts, you can add more recipients and messaging options like email, SMS, and webhooks using [Activity Log Alerts](/azure/service-health/alerts-activity-log-service-notifications-portal).
-- Except a subset of event types, the Service Health Planned Maintenance Notification now also has an additional tab "Impacted Resources" which lists the VM names in scope of the event. Read more about [Impacted Resources Preview Feature](https://learn.microsoft.com/azure/service-health/impacted-resources-planned-maintenance). 
+- Except a subset of event types, the Service Health Planned Maintenance Notification now also has an additional tab "Impacted Resources" which lists the VM names in scope of the event. Read more about [Impacted Resources Preview Feature](/azure/service-health/impacted-resources-planned-maintenance). 
 - Once a notification goes out, a *self-service window* is made available. During this window, you can query which of your virtual machines are affected and start maintenance based on your own scheduling needs. The self-service window is typically about 35 days.
 - After the self-service window, a *scheduled maintenance window* begins. At some point during this window, Azure schedules and applies the required maintenance to your virtual machine. 
 
@@ -79,7 +80,7 @@ For more information about high availability, see [Availability for virtual mach
 
 **A:** A planned maintenance wave starts by setting a schedule to one or more Azure regions. Virtual Machine related Maintenance notifications are available under [Service Health](https://aka.ms/azureservicehealth) in the Azure portal. For a small subset of Virtual Machine Planned Maintenance specific scenarios, Azure may also communicate the schedule by sending an additional email to the members of Subscription Owners group. 
 
-Except a subset of event types, the Service Health Planned Maintenance Notification now also has an additional tab "Impacted Resources" which lists the VM names in scope of the event. Read more about [Impacted Resources Preview Feature](https://learn.microsoft.com/azure/service-health/impacted-resources-planned-maintenance). 
+Except a subset of event types, the Service Health Planned Maintenance Notification now also has an additional tab "Impacted Resources" which lists the VM names in scope of the event. Read more about [Impacted Resources Preview Feature](/azure/service-health/impacted-resources-planned-maintenance). 
 
 [Azure Service Health](https://azure.microsoft.com/get-started/azure-portal/service-health/#overview) enables users to configure their own custom alerts for the Planned Maintenance category. With Azure Service Health alerts you can add more recipients and messaging options like email, SMS, and webhooks using [Activity Log Alerts](/azure/service-health/alerts-activity-log-service-notifications-portal).
 

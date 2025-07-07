@@ -5,13 +5,14 @@ services: virtual-machines
 author: ju-shim
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.date: 10/22/2024
+ms.date: 03/12/2025
 ms.author: jushiman
+# Customer intent: As a system administrator, I want to perform an in-place upgrade of Windows Server VMs in Azure, so that I can update the operating system while preserving settings, roles, and data without needing to recreate the VM.
 ---
 
 # In-place upgrade for VMs running Windows Server in Azure
 
-An in-place upgrade allows you to go from an older operating system to a newer one while keeping your settings, server roles, and data intact. This article teaches you how to move your Azure VMs to a later version of Windows Server using an in-place upgrade. Currently, upgrading to Windows Server 2012, Windows Server 2016, Windows Server 2019 and Windows Server 2022 are supported.
+An in-place upgrade allows you to go from an older operating system to a newer one while keeping your settings, server roles, and data intact. This article teaches you how to move your Azure VMs to a later version of Windows Server using an in-place upgrade. Currently, upgrading to Windows Server 2012, Windows Server 2016, Windows Server 2019, and Windows Server 2022 are supported.
 
 Before you begin an in-place upgrade:
 
@@ -46,6 +47,8 @@ The in-place upgrade process requires the use of Managed Disks on the VM to be u
 
 We recommend that you create a snapshot of your operating system disk and any data disks before starting the in-place upgrade process. This enables you to revert to the previous state of the VM if anything fails during the in-place upgrade process. To create a snapshot on each disk, follow these steps to [create a snapshot of a disk](./snapshot-copy-managed-disk.md). 
 
+> [!NOTE]
+> During the upgrade process, the upgrade media disk is only created in the `en-US` language. Currently, no other languages or editions are supported. To avoid errors caused by previously using a different language ISO to install the OS, you can set the system language to `en-US` or change the system locale to `English (United States)` in Control Panel.
  
 ## Create upgrade media disk
 
@@ -55,7 +58,7 @@ To start an in-place upgrade the upgrade media must be attached to the VM as a M
 |---|---|
 | resourceGroup | Name of the resource group where the upgrade media Managed Disk will be created. The named resource group is created if it doesn't exist. |
 | location | Azure region where the upgrade media Managed Disk is created. This must be the same region as the VM to be upgraded. |
-| zone | Azure zone in the selected region where the upgrade media Managed Disk will be created. This must be the same zone as the VM to be upgraded. For regional VMs (non-zonal) the zone parameter should be "". |
+| zone | Azure zone in the selected region where the upgrade media Managed Disk will be created. This must be the same zone as the VM to be upgraded. For regional VMs (nonzonal) the zone parameter should be "". |
 | diskName | Name of the Managed Disk that will contain the upgrade media |
 | sku | Windows Server upgrade media version. This must be either:  `server2016Upgrade` or `server2019Upgrade` or `server2022Upgrade` or `server2012Upgrade` |
 
@@ -178,7 +181,7 @@ To initiate the in-place upgrade the VM must be in the `Running` state. Once the
    ```
 
    You can use /eula accept switch in the Windows Server upgrade command to automatically accept the Microsoft Software License Terms (End User License Agreement or EULA) during the upgrade process.
-   Using the /eula accept switch can help avoid issues where the upgrade process stalls because the EULA was not accepted manually. This switch ensures that the upgrade process can proceed smoothly without requiring user interaction to accept the license terms.
+   Using the /eula accept switch can help avoid issues where the upgrade process stalls because the EULA wasn't accepted manually. This switch ensures that the upgrade process can proceed smoothly without requiring user interaction to accept the license terms.
  
    ```powershell
    .\setup.exe /auto upgrade /dynamicupdate disable /eula accept
@@ -186,7 +189,7 @@ To initiate the in-place upgrade the VM must be in the `Running` state. Once the
 
 1. Select the correct "Upgrade to" image based on the current version and configuration of the VM using the [Windows Server upgrade matrix](/windows-server/get-started/upgrade-overview).
 
-During the upgrade process the VM will automatically disconnect from the RDP session. After the VM is disconnected from the RDP session the progress of the upgrade can be monitored through the [screenshot functionality available in the Azure portal](/troubleshoot/azure/virtual-machines/boot-diagnostics#enable-boot-diagnostics-on-existing-virtual-machine).
+During the upgrade process, the VM will automatically disconnect from the RDP session. After the VM is disconnected from the RDP session the progress of the upgrade can be monitored through the [screenshot functionality available in the Azure portal](/troubleshoot/azure/virtual-machines/boot-diagnostics#enable-boot-diagnostics-on-existing-virtual-machine).
 
 ## Perform in-place upgrade to Windows Server 2012 only
 
@@ -212,7 +215,7 @@ To initiate the in-place upgrade the VM must be in the `Running` state. Once the
 1. On the **License terms** page, select **I accept the license terms** and then select **Next**.
 1. For **What type of installation do you want?" select **Upgrade: Install Windows and keep files, settings, and applications**.
 1. Setup will product a **Compatibility report**, you can ignore any warnings and select **Next**.
-1. When complete, the machine will reboot and you will automatically be disconnected from the RDP session. After the VM is disconnected from the RDP session the progress of the upgrade can be monitored through the [screenshot functionality available in the Azure portal](/troubleshoot/azure/virtual-machines/boot-diagnostics#enable-boot-diagnostics-on-existing-virtual-machine).
+1. When complete, the machine reboots, automatically disconnecting you from the RDP session. After the VM is disconnected from the RDP session the progress of the upgrade can be monitored through the [screenshot functionality available in the Azure portal](/troubleshoot/azure/virtual-machines/boot-diagnostics#enable-boot-diagnostics-on-existing-virtual-machine).
 
 
 ## Post upgrade steps 
@@ -223,7 +226,7 @@ Once the upgrade process has completed successfully the following steps should b
 
 - Delete the upgrade media Managed Disk.
 
-- Enable any antivirus, anti-spyware or firewall software that may have been disabled at the start of the upgrade process.
+- Enable any antivirus, anti-spyware, or firewall software that may have been disabled at the start of the upgrade process.
 
 > [!IMPORTANT]
 > The image plan information will not change after the upgrade process.

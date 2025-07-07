@@ -9,6 +9,7 @@ ms.date: 07/22/2024
 ms.author: tomcassidy
 ms.reviewer: tomcassidy
 ms.custom: include file, build-2024
+# Customer intent: "As a cloud architect, I want to review the specifications of Dpdsv6-series virtual machine sizes, so that I can determine the best configuration for my application workloads and optimize performance."
 ---
 | Part | Quantity <br>Count Units | Specs <br>SKU ID, Performance Units, etc.  |
 |---|---|---|

@@ -5,11 +5,12 @@ author: sandeepraichura
 ms.author: saraic
 ms.service: azure-virtual-machines
 ms.subservice: gallery
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom: devx-track-azurepowershell
 ms.date: 08/15/2023
 ms.reviewer: cynthn
 #Customer intent: As an IT administrator, I want to learn about how to create shared VM images to minimize the number of post-deployment configuration tasks.
+# Customer intent: As an IT administrator, I want to understand how to share VM images using a compute gallery, so that I can streamline image management and deployment across my organization.
 ---
 # Store and share images in an Azure Compute Gallery
 

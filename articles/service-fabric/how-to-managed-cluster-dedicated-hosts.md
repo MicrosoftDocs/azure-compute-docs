@@ -3,6 +3,7 @@ title:  Add Azure Dedicated Host to a Service Fabric managed cluster (SFMC)
 description: Learn how to add Azure Dedicated Host to a Service Fabric managed cluster (SFMC)
 ms.topic: how-to
 ms.date: 7/14/2022
+# Customer intent: As a cloud architect, I want to configure Azure Dedicated Hosts in a Service Fabric managed cluster, so that I can ensure hardware isolation and manage maintenance events for sensitive workloads.
 ---
 
 # Introduction to Dedicated Hosts on Service Fabric managed clusters

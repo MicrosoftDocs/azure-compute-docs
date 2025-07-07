@@ -9,6 +9,7 @@ ms.topic: how-to
 ms.service: azure-virtual-machines
 ms.subservice: mainframe-rehosting
 ms.custom: devx-track-dotnet
+# Customer intent: As a developer setting up a mainframe application, I want to configure the Micro Focus CICS BankDemo on Azure Virtual Machines, so that I can test and learn to manage IBM z/OS workloads effectively.
 ---
 
 # Set up Micro Focus CICS BankDemo for Micro Focus Enterprise Developer 4.0 on Azure

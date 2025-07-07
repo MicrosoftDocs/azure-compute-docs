@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 02/06/2024
+# Customer intent: "As an Azure administrator, I want to access and utilize built-in policy definitions for Azure Service Fabric, so that I can effectively manage governance and compliance for my cloud resources."
 ---
 
 # Azure Policy built-in definitions for Azure Service Fabric
@@ -21,7 +22,7 @@ the link in the **Version** column to view the source on the
 
 ## Azure Service Fabric
 
-[!INCLUDE [azure-policy-reference-rp-servicefabric](~/azure-docs-pr/includes/policy/reference/byrp/microsoft.servicefabric.md)]
+[!INCLUDE [azure-policy-reference-rp-servicefabric](~/azure-policy-autogen-docs/includes/policy/reference/byrp/microsoft.servicefabric.md)]
 
 ## Next steps
 

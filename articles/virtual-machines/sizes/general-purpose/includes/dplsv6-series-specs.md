@@ -9,6 +9,7 @@ ms.date: 07/22/2024
 ms.author: tomcassidy
 ms.reviewer: tomcassidy
 ms.custom: include file, build-2024
+# Customer intent: "As a cloud architect, I want to review the specifications of Dplsv6-series VMs, so that I can determine their suitability for my application's performance and storage requirements."
 ---
 | Part | Quantity <br>Count Units | Specs <br>SKU ID, Performance Units, etc.  |
 |---|---|---|

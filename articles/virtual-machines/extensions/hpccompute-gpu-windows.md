@@ -11,6 +11,7 @@ ms.custom: devx-track-arm-template
 ms.date: 07/25/2024
 ms.author: jushiman
 author: ju-shim
+# Customer intent: As an IT administrator managing Windows N-series virtual machines, I want to install the NVIDIA GPU Driver Extension so that I can utilize GPU capabilities for enhanced performance in computational tasks.
 ---
 
 # NVIDIA GPU Driver Extension for Windows

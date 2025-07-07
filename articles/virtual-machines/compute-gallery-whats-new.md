@@ -8,6 +8,7 @@ ms.topic: whats-new
 ms.date: 01/25/2023
 ms.author: mattmcinnes
 ms.reviewer: cynthn
+# Customer intent: "As a cloud administrator, I want to review the latest updates to Azure Compute Gallery features, so that I can leverage the new capabilities and best practices to optimize image management and deployment in my organization's infrastructure."
 ---
 
 # What's new for Azure Compute Gallery

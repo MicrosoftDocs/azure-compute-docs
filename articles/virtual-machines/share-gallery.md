@@ -10,6 +10,7 @@ ms.author: saraic
 ms.reviewer: cynthn
 ms.custom: template-how-to , devx-track-azurecli
 ms.devlang: azurecli
+# Customer intent: As an IT administrator, I want to share resources in an Azure Compute Gallery using role-based access control, so that I can manage user access effectively across different subscriptions and tenants.
 ---
 
 # Share gallery resources across subscriptions and tenants with RBAC

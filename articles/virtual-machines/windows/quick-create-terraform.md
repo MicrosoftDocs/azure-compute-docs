@@ -11,6 +11,7 @@ ms.custom: devx-track-terraform
 content_well_notification: 
   - AI-contribution
 ai-usage: ai-assisted
+# Customer intent: As a cloud engineer, I want to use Terraform to set up a Windows virtual machine along with its supporting resources, so that I can automate the deployment process and efficiently manage the infrastructure.
 ---
 
 # Quickstart: Use Terraform to create a Windows VM

@@ -9,6 +9,7 @@ ms.author: gabsta
 author: GabstaMSFT
 ms.collection: linux
 ms.date: 06/15/2022
+# Customer intent: As a system administrator managing Linux virtual machines, I want to deploy the Log Analytics agent using a virtual machine extension, so that I can effectively monitor and manage my cloud resources for better operational insights.
 ---
 # Log Analytics virtual machine extension for Linux
 

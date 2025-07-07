@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a developer implementing Azure Service Fabric actors, I want to configure backup and restore methods for my actor services, so that I can ensure data integrity and quick recovery of stateful applications.
 ---
 
 

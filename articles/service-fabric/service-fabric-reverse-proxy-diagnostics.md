@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: "As a cloud application administrator, I want to monitor and diagnose reverse proxy request processing, so that I can troubleshoot issues like timeouts and service not found errors effectively."
 ---
 
 # Monitor and diagnose request processing at the reverse proxy
@@ -27,7 +28,7 @@ Here are some examples on how to interpret the common failure logs that one can 
 
     The payload includes:
 
-   * **traceId**: This GUID can be used to correlate all the events corresponding to a single request. In the below two events, the traceId = **2f87b722-e254-4ac2-a802-fd315c1a0271**, implying they belong to the same request.
+   * **traceId**: This GUID can be used to correlate all the events corresponding to a single request. In the below two events, the traceId = **0000aaaa-11bb-cccc-dd22-eeeeee333333**, implying they belong to the same request.
    * **requestUrl**: The URL (Reverse proxy URL) to which the request was sent.
    * **verb**: HTTP verb.
    * **remoteAddress**: Address of client sending the request.
@@ -39,7 +40,7 @@ Here are some examples on how to interpret the common failure logs that one can 
      "Timestamp": "2017-07-20T15:57:59.9871163-07:00",
      "ProviderName": "Microsoft-ServiceFabric",
      "Id": 51477,
-     "Message": "2f87b722-e254-4ac2-a802-fd315c1a0271 Request url = https://localhost:19081/LocationApp/LocationFEService?zipcode=98052, verb = GET, remote (client) address = ::1, resolved service url = Https://localhost:8491/LocationApp/?zipcode=98052, request processing start time =     15:58:00.074114 (745,608.196 MSec) ",
+     "Message": "0000aaaa-11bb-cccc-dd22-eeeeee333333 Request url = https://localhost:19081/LocationApp/LocationFEService?zipcode=98052, verb = GET, remote (client) address = ::1, resolved service url = Https://localhost:8491/LocationApp/?zipcode=98052, request processing start time =     15:58:00.074114 (745,608.196 MSec) ",
      "ProcessId": 57696,
      "Level": "Informational",
      "Keywords": "0x1000000000000021",
@@ -47,7 +48,7 @@ Here are some examples on how to interpret the common failure logs that one can 
      "ActivityID": null,
      "RelatedActivityID": null,
      "Payload": {
-      "traceId": "2f87b722-e254-4ac2-a802-fd315c1a0271",
+      "traceId": "0000aaaa-11bb-cccc-dd22-eeeeee333333",
       "requestUrl": "https://localhost:19081/LocationApp/LocationFEService?zipcode=98052",
       "verb": "GET",
       "remoteAddress": "::1",
@@ -59,10 +60,10 @@ Here are some examples on how to interpret the common failure logs that one can 
      {
      "Timestamp": "2017-07-20T16:00:01.3173605-07:00",
      ...
-     "Message": "2f87b722-e254-4ac2-a802-fd315c1a0271 Error while forwarding request to service: response status code = 504, description = Reverse proxy Timeout, phase = FinishSendRequest, internal error = ERROR_WINHTTP_TIMEOUT ",
+     "Message": "0000aaaa-11bb-cccc-dd22-eeeeee333333 Error while forwarding request to service: response status code = 504, description = Reverse proxy Timeout, phase = FinishSendRequest, internal error = ERROR_WINHTTP_TIMEOUT ",
      ...
      "Payload": {
-      "traceId": "2f87b722-e254-4ac2-a802-fd315c1a0271",
+      "traceId": "0000aaaa-11bb-cccc-dd22-eeeeee333333",
       "statusCode": 504,
       "description": "Reverse Proxy Timeout",
       "sendRequestPhase": "FinishSendRequest",
@@ -81,12 +82,12 @@ Here are some examples on how to interpret the common failure logs that one can 
      ```
      {
      ...
-     "Message": "c1cca3b7-f85d-4fef-a162-88af23604343 Error while processing request, cannot forward to service: request url = https://localhost:19081/LocationApp/LocationFEService?ListenerName=FrontEndListener&zipcode=98052, verb = GET, remote (client) address = ::1, request processing start time = 16:43:02.686271 (3,448,220.353 MSec), error = FABRIC_E_ENDPOINT_NOT_FOUND, message = , phase = TryGetEndoint, SecureOnlyMode = false, gateway protocol = https, listenerName = FrontEndListener, replica endpoint = {\"Endpoints\":{\"\":\"Https:\/\/localhost:8491\/LocationApp\/\"}} ",
+     "Message": "1111bbbb-22cc-dddd-ee33-ffffff444444 Error while processing request, cannot forward to service: request url = https://localhost:19081/LocationApp/LocationFEService?ListenerName=FrontEndListener&zipcode=98052, verb = GET, remote (client) address = ::1, request processing start time = 16:43:02.686271 (3,448,220.353 MSec), error = FABRIC_E_ENDPOINT_NOT_FOUND, message = , phase = TryGetEndoint, SecureOnlyMode = false, gateway protocol = https, listenerName = FrontEndListener, replica endpoint = {\"Endpoints\":{\"\":\"Https:\/\/localhost:8491\/LocationApp\/\"}} ",
      "ProcessId": 57696,
      "Level": "Warning",
      "EventName": "ReverseProxy",
      "Payload": {
-      "traceId": "c1cca3b7-f85d-4fef-a162-88af23604343",
+      "traceId": "1111bbbb-22cc-dddd-ee33-ffffff444444",
       "requestUrl": "https://localhost:19081/LocationApp/LocationFEService?ListenerName=NewListener&zipcode=98052",
       ...
       "processRequestPhase": "TryGetEndoint",
@@ -108,18 +109,18 @@ Here are some examples on how to interpret the common failure logs that one can 
     ```
     {
       ...
-      "Message": "7ac6212c-c8c4-4c98-9cf7-c187a94f141e Request to service returned: status code = 404, status description = , Reresolving ",
+      "Message": "2222cccc-33dd-eeee-ff44-aaaaaa555555 Request to service returned: status code = 404, status description = , Reresolving ",
       "Payload": {
-        "traceId": "7ac6212c-c8c4-4c98-9cf7-c187a94f141e",
+        "traceId": "2222cccc-33dd-eeee-ff44-aaaaaa555555",
         "statusCode": 404,
         "statusDescription": ""
       }
     }
     {
       ...
-      "Message": "7ac6212c-c8c4-4c98-9cf7-c187a94f141e Re-resolved service url = Https://localhost:8491/LocationApp/?zipcode=98052 ",
+      "Message": "2222cccc-33dd-eeee-ff44-aaaaaa555555 Re-resolved service url = Https://localhost:8491/LocationApp/?zipcode=98052 ",
       "Payload": {
-        "traceId": "7ac6212c-c8c4-4c98-9cf7-c187a94f141e",
+        "traceId": "2222cccc-33dd-eeee-ff44-aaaaaa555555",
         "requestUrl": "Https://localhost:8491/LocationApp/?zipcode=98052"
       }
     }
@@ -133,11 +134,11 @@ Here are some examples on how to interpret the common failure logs that one can 
     ```
     {
       ...
-      "Message": "7ac6212c-c8c4-4c98-9cf7-c187a94f141e Error while processing request: number of successful resolve attempts = 12, error = FABRIC_E_TIMEOUT, message = , phase = ResolveServicePartition,  ",
+      "Message": "2222cccc-33dd-eeee-ff44-aaaaaa555555 Error while processing request: number of successful resolve attempts = 12, error = FABRIC_E_TIMEOUT, message = , phase = ResolveServicePartition,  ",
       "EventName": "ReverseProxy",
       ...
       "Payload": {
-        "traceId": "7ac6212c-c8c4-4c98-9cf7-c187a94f141e",
+        "traceId": "2222cccc-33dd-eeee-ff44-aaaaaa555555",
         "resolveCount": 12,
         "errorval": -2147017729,
         "errorMessage": "",
@@ -158,13 +159,13 @@ Here are some examples on how to interpret the common failure logs that one can 
     ```
     {
       ...
-      "Message": "6e2571a3-14a8-4fc7-93bb-c202c23b50b8 Unable to send response to client: phase = SendResponseHeaders, error = -805306367, internal error = ERROR_SUCCESS ",
+      "Message": "3333dddd-44ee-ffff-aa55-bbbbbb666666 Unable to send response to client: phase = SendResponseHeaders, error = -805306367, internal error = ERROR_SUCCESS ",
       "ProcessId": 57696,
       "Level": "Warning",
       ...
       "EventName": "ReverseProxy",
       "Payload": {
-        "traceId": "6e2571a3-14a8-4fc7-93bb-c202c23b50b8",
+        "traceId": "3333dddd-44ee-ffff-aa55-bbbbbb666666",
         "sendResponsePhase": "SendResponseHeaders",
         "errorval": -805306367,
         "winHttpError": "ERROR_SUCCESS"

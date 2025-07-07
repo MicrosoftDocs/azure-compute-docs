@@ -9,6 +9,7 @@ ms.date: 07/22/2024
 ms.author: tomcassidy
 ms.reviewer: tomcassidy
 ms.custom: include file, build-2024
+# Customer intent: As a cloud architect, I want to access the detailed specifications of the Epdsv6-series VM sizes, so that I can determine the appropriate configurations for my application's performance and scalability needs.
 ---
 | Part | Quantity <br>Count Units | Specs <br>SKU ID, Performance Units, etc.  |
 |---|---|---|

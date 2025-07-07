@@ -6,24 +6,25 @@ ms.author: jushiman
 ms.topic: overview
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice:
-ms.date: 08/16/2024
+ms.date: 03/21/2025
 ms.reviewer: mimckitt
 
+# Customer intent: As a cloud architect, I want to implement Virtual Machine Scale Sets, so that I can efficiently manage application instances and automatically scale resources based on demand to ensure high availability and performance for my applications.
 ---
 # What are Virtual Machine Scale Sets?
 
-Azure Virtual Machine Scale Sets let you create and manage a group of load balanced VMs. The number of VM instances can automatically increase or decrease in response to demand or a defined schedule. Scale sets provide the following key benefits:
+Azure Virtual Machine Scale Sets let you create and manage a group of load balanced virtual machines (VM) instances. The number of VM instances can automatically increase or decrease in response to demand or a defined schedule. Scale sets provide the following key benefits:
 - Easy to create and manage multiple VMs
 - Provides high availability and application resiliency by distributing VMs across availability zones or fault domains
 - Allows your application to automatically scale as resource demand changes
 - Works at large-scale
 
-With Flexible orchestration, Azure provides a unified experience across the Azure VM ecosystem. Flexible orchestration offers high availability guarantees (up to 1000 VMs) by spreading VMs across fault domains in a region or within an Availability Zone. This enables you to scale out your application while maintaining fault domain isolation that is essential to run quorum-based or stateful workloads, including:
+With Flexible orchestration, Azure provides a unified experience across the Azure VM ecosystem. Flexible orchestration offers high availability guarantees (up to 1,000 VMs) by spreading VMs across fault domains in a region or within an Availability Zone. This enables you to scale out your application while maintaining fault domain isolation that is essential to run workloads, including:
 - Quorum-based workloads
 - Open-source databases
 - Stateful applications
 - Services that require high availability and large scale
-- Services that want to mix virtual machine types or leverage Spot and on-demand VMs together
+- Services that want to mix virtual machine types or use Spot and on-demand VMs together
 - Existing Availability Set applications
 
 Learn more about the differences between Uniform scale sets and Flexible scale sets in [Orchestration Modes](../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md).
@@ -45,18 +46,18 @@ Azure Virtual Machine Scale Sets provide the management capabilities for applica
 
 - **Provides high availability and application resiliency**
     - Scale sets are used to run multiple instances of your application. If one of these VM instances has a problem, customers continue to access your application through one of the other VM instances with minimal interruption.
-    - For more availability, you can use [Availability Zones](/azure/reliability/availability-zones-overview) to automatically distribute VM instances in a scale set within a single datacenter or across multiple datacenters. Deploying VMs across Availability Zones can protect you against data center failure. Note that a scale set can't protect you against data center failures.
+    - For more availability, you can use [Availability Zones](/azure/reliability/availability-zones-overview) to automatically distribute VM instances in a scale set within a single datacenter or across multiple datacenters. A scale set alone can't protect you against data center failures. Deploying VMs across Availability Zones within a scale set can protect you against data center failure. 
 
 - **Allows your application to automatically scale as resource demand changes**
     - Customer demand for your application may change throughout the day or week. To match customer demand, scale sets can automatically increase the number of VM instances as application demand increases, then reduce the number of VM instances as demand decreases.
-    - Autoscale also minimizes the number of unnecessary VM instances that run your application when demand is low, while customers continue to receive an acceptable level of performance as demand grows and additional VM instances are automatically added. This ability helps reduce costs and efficiently create Azure resources as required.
+    - Autoscale helps reduce the number of unnecessary VMs when demand is low. As demand increases, the scale set automatically adds more VMs to maintain an acceptable level of performance for your application. This ability helps reduce costs and efficiently create Azure resources as required.
 
 - **Works at large-scale**
     - Scale sets support up to 1,000 VM instances for standard marketplace images and custom images through the Azure Compute Gallery (formerly known as Shared Image Gallery). If you create a scale set using a managed image, the limit is 600 VM instances.
     - For the best performance with production workloads, use [Azure Managed Disks](../virtual-machines/managed-disks-overview.md).
 
 - **Cost-effective service**
-    - There is no additional cost for using scale sets. You are charged based on the compute, network, and storage resources that the scale set uses.
+    - There's no extra cost for using scale sets. You're charged based on the compute, network, and storage resources that the scale set uses.
     - For virtual machine pricing information, see [Azure pricing](https://azure.microsoft.com/pricing/).
 
 ## Next steps

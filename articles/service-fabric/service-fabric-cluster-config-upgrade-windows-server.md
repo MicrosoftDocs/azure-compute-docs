@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a cloud administrator, I want to upgrade the configuration of a standalone Service Fabric cluster, so that I can ensure optimal performance and maintain the integrity of the system as requirements evolve."
 ---
 
 # Upgrade the configuration of a standalone cluster 

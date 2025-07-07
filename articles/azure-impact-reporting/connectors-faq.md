@@ -7,6 +7,7 @@ ms.topic: faq #Required; leave this attribute/value as-is.
 ms.service: azure #Required; use either service or product per approved list. 
 ms.date: 06/25/2024 #Required; mm/dd/yyyy format
 ms.custom: template-overview #Required; leave this attribute/value as-is.
+# Customer intent: As an Azure administrator, I want to troubleshoot and configure Azure Impact Reporting Connectors, so that I can ensure successful integration with Azure Monitor and manage permissions effectively.
 ---
 
 # Azure Impact Reporting Connectors for Azure Monitor FAQ (Preview)

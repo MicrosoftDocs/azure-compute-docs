@@ -5,10 +5,11 @@ services: virtual-machines
 author: swread
 ms.author: sread
 manager: mamccrea 
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 06/29/2020
 ms.service: azure-virtual-machines
 ms.subservice: mainframe-rehosting
+# Customer intent: As a cloud developer, I want to set up Micro Focus Enterprise Server and Enterprise Developer on Azure so that I can create a cost-effective development and test environment for mainframe rehosting.
 ---
 
 # Install Micro Focus Enterprise Server 5.0 and Enterprise Developer 5.0 on Azure

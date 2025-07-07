@@ -9,6 +9,7 @@ ms.date: 03/29/2023
 ms.author: jushiman
 ms.subservice: cloud-init
 ms.custom: devx-track-azurecli, linux-related-content
+# Customer intent: As a cloud administrator, I want to use cloud-init to automate package updates and installations during the provisioning of a Linux VM, so that I can ensure the VM is secure and up-to-date from the moment it starts.
 ---
 # Use cloud-init to update and install packages in a Linux VM in Azure
 

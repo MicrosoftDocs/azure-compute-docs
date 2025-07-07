@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a cloud application administrator, I want to troubleshoot monitoring and diagnostic issues in Azure Service Fabric, so that I can ensure the performance and reliability of my applications."
 ---
 
 # Diagnose common scenarios with Service Fabric

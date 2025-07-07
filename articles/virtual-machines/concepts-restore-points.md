@@ -2,9 +2,10 @@
 title: Support matrix for VM restore points
 description: Support matrix for VM restore points
 ms.service: azure-virtual-machines
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 07/05/2022
 ms.custom: template-concept
+# Customer intent: "As a cloud administrator, I want to understand the support matrix for VM restore points, so that I can determine the compatibility and limitations for my virtual machine backup and recovery strategy."
 ---
 
 # Support matrix for VM restore points

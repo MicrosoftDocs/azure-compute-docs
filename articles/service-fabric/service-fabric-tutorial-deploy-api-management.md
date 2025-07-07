@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a cloud architect, I want to integrate API management with a Service Fabric backend, so that I can efficiently route traffic and manage APIs for my cloud applications."
 ---
 
 # Integrate API Management with Service Fabric in Azure

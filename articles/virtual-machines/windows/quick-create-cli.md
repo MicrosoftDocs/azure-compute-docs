@@ -8,6 +8,7 @@ ms.topic: quickstart
 ms.date: 02/23/2023
 ms.author: jushiman
 ms.custom: mvc, devx-track-azurecli, mode-api
+# Customer intent: As a cloud developer, I want to create and deploy a Windows virtual machine using command line tools, so that I can manage resources efficiently and automate setup processes for applications and web servers.
 ---
 
 # Quickstart: Create a Windows virtual machine with the Azure CLI

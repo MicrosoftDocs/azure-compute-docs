@@ -8,6 +8,7 @@ ms.subservice: recovery
 ms.topic: how-to
 ms.date: 11/2/2023
 ms.custom: template-how-to
+# Customer intent: As a cloud administrator, I want to utilize VM snapshot extensions for application-consistent restore points, so that I can ensure the integrity of my applications during backup operations.
 ---
 
 # VMSnapshot extension

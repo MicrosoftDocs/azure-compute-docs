@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a cloud architect, I want to implement disaster recovery strategies using Azure Service Fabric, so that I can ensure high availability and data protection against unpredictable hardware, software, and operational failures.
 ---
 # Disaster recovery in Azure Service Fabric
 A critical part of delivering high availability is ensuring that services can survive all different types of failures. This is especially important for failures that are unplanned and outside your control. 

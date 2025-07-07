@@ -5,6 +5,7 @@ ms.custom: linux-related-content
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: jushiman
+# Customer intent: As a web developer, I want to install and configure WordPress on a Linux server, so that I can quickly set up a website or blog for demonstration purposes.
 ---
 ## Install WordPress
 

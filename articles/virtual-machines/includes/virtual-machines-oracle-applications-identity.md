@@ -4,6 +4,7 @@ ms.service: azure-virtual-machines
 ms.topic: include
 ms.date: 07/10/2019
 ms.author: danlep
+# Customer intent: "As an IT administrator managing user access across platforms, I want to set up single sign-on for JD Edwards and PeopleSoft using Microsoft Entra ID and Oracle IDCS, so that I can streamline user authentication and improve security while reducing help-desk costs."
 ---
 ### Identity tier 
 

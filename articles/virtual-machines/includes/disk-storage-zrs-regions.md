@@ -7,6 +7,7 @@
  ms.date: 05/05/2023
  ms.author: rogarana
  ms.custom: include file
+# Customer intent: As a cloud infrastructure planner, I want to identify the regions where ZRS disks are available, so that I can optimize data storage solutions for my applications based on geographic redundancy and compliance requirements.
 ---
 
 ZRS disks are currently available in the following regions:
@@ -27,9 +28,12 @@ ZRS disks are currently available in the following regions:
 - Italy North
 - Japan East
 - Korea Central
+- Mexico Central
+- New Zealand North
 - Norway East
 - Poland Central
 - Qatar Central
+- Spain Central
 - Sweden Central
 - Switzerland North
 - UAE North

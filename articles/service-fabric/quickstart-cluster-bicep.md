@@ -7,6 +7,7 @@ ms.date: 06/22/2022
 ms.topic: quickstart
 ms.service: azure-service-fabric
 ms.custom: devx-track-azurepowershell, subject-armqs, mode-arm, devx-track-bicep
+# Customer intent: As a cloud developer, I want to deploy a Service Fabric test cluster using Bicep so that I can effectively manage and scale my microservices and containers in a secure environment.
 ---
 
 # Quickstart: Create a Service Fabric cluster using Bicep

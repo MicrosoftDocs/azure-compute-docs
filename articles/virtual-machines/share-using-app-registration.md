@@ -9,6 +9,7 @@ ms.reviewer: cynthn
 ms.custom: devx-track-azurecli devx-track-azurepowershell
 author: sandeepraichura
 ms.author: saraic
+# Customer intent: "As an IT administrator, I want to share Azure Compute Gallery images across different tenants using an app registration, so that I can enable seamless access to VM images for resource provisioning without relying on the portal."
 ---
 # Share gallery VM images across Azure tenants using an app registration
 

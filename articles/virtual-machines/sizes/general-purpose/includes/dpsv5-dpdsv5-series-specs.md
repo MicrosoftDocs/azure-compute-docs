@@ -9,6 +9,7 @@ ms.subservice: sizes
 ms.date: 04/11/2024
 ms.author: mattmcinnes
 ms.custom: include file
+# Customer intent: As a cloud architect, I want to access the specifications for Dpsv5 and Dpdsv5-series VM sizes, so that I can select the appropriate virtual machines that meet our project performance and capacity requirements.
 ---
 
 | Part | Quantity <br><sup>Count <sup>Units | Specs <br><sup>SKU ID, Performance <sup>Units</sup>, etc.  |

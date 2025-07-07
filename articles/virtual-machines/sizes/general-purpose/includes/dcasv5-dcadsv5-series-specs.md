@@ -9,6 +9,7 @@ ms.subservice: sizes
 ms.date: 04/11/2024
 ms.author: mattmcinnes
 ms.custom: include file
+# Customer intent: "As a cloud architect, I want to review the specifications of DCasv5 and DCadsv5-series VMs, so that I can determine their suitability for my organization's workload requirements."
 ---
 
 | Part | Quantity <br><sup>Count <sup>Units | Specs <br><sup>SKU ID, Performance <sup>Units</sup>, etc.  |

@@ -9,6 +9,7 @@ ms.tgt_pltfrm: vm-linux
 ms.date: 01/19/2024
 ms.author: rogarana
 ms.custom: mvc, devx-track-azurecli, linux-related-content
+# Customer intent: As a cloud engineer, I want to restore a virtual machine from disk snapshots using CLI, so that I can efficiently create managed disks and understand the performance implications during the restoration process.
 ---
 
 # Create a managed disk from a snapshot with CLI (Linux)

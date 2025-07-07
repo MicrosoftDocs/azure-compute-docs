@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a cloud administrator, I want to upgrade the configuration of my Azure Service Fabric cluster using Resource Manager templates, so that I can customize fabric settings for optimal performance and management.
 ---
 
 # Upgrade the configuration of a cluster in Azure 

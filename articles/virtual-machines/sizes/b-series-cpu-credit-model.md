@@ -7,6 +7,7 @@ ms.service: azure-virtual-machines
 ms.subservice:   sizes
 ms.topic:    conceptual
 ms.date:     01/31/2025
+
 ---
 
 # B Series CPU Credit Model

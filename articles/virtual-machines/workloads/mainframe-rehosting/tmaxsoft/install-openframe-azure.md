@@ -9,6 +9,7 @@ ms.topic: how-to
 ms.service: azure-virtual-machines
 ms.subservice: mainframe-rehosting
 ms.custom: linux-related-content
+# Customer intent: "As a systems administrator, I want to install TmaxSoft OpenFrame on Azure Virtual Machines, so that I can set up an environment for development, testing, and production workloads that emulates mainframe operations."
 ---
 
 # Install TmaxSoft OpenFrame on Azure

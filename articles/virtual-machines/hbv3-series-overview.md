@@ -10,6 +10,7 @@ ms.date: 07/25/2024
 ms.reviewer: cynthn
 ms.author: padmalathas
 author: padmalathas
+# Customer intent: As an HPC architect, I want to understand the HBv3-series VM architecture and specifications, so that I can determine the best VM size for my high-performance computing workloads and optimize resource allocation.
 ---
 
 # HBv3-series virtual machine overview

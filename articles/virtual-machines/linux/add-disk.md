@@ -8,6 +8,7 @@ ms.collection: linux
 ms.topic: how-to
 ms.date: 12/09/2024
 ms.author: rogarana
+# Customer intent: As a system administrator managing Linux VMs, I want to attach and configure a persistent data disk using the command line, so that I can ensure data retention and improve performance for my applications.
 ---
 
 # Add a disk to a Linux VM

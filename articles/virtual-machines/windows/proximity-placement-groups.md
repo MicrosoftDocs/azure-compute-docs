@@ -9,6 +9,7 @@ ms.date: 3/12/2023
 author: mattmcinnes
 ms.author: mattmcinnes
 ms.custom: devx-track-azurepowershell
+# Customer intent: "As a cloud administrator, I want to create and manage proximity placement groups using PowerShell, so that I can deploy VMs with minimal latency for high-performance workloads."
 ---
 
 # Deploy VMs to proximity placement groups using Azure PowerShell

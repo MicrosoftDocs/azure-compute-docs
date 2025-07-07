@@ -10,6 +10,7 @@ editor: edprice
 ms.author: johnray
 ms.date: 05/09/2020
 ms.topic: concept-article
+# Customer intent: "As a system architect, I want to migrate mainframe workloads to a cloud platform, so that I can enhance scalability, reduce costs, and modernize legacy systems while maintaining operational continuity."
 ---
 
 # Mainframe workloads supported on Azure

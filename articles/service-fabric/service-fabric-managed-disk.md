@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a cloud architect, I want to configure Azure Service Fabric node types with managed data disks, so that I can ensure persistent and scalable data storage for my applications.
 ---
 
 # Deploy an Azure Service Fabric cluster node type with managed data disks

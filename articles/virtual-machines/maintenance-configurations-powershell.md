@@ -9,6 +9,7 @@ ms.date: 11/19/2020
 ms.author: jushiman
 ms.custom: devx-track-azurepowershell
 #pmcontact: shants
+# Customer intent: As an IT administrator managing Azure virtual machines, I want to configure maintenance schedules using PowerShell, so that I can automate the application of platform updates and ensure my resources are consistently maintained without manual intervention.
 ---
 
 # Control updates with Maintenance Configurations and Azure PowerShell
@@ -259,7 +260,7 @@ If there are no updates to show, this command returns nothing. Otherwise, it ret
    "impactDurationInSec": 9,
    "notBefore": "2020-02-21T16:47:44.8728029Z",
    "properties": {
-      "resourceId": "/subscriptions/39c6cced-4d6c-4dd5-af86-57499cd3f846/resourcegroups/Ignite2019/providers/Microsoft.Compute/virtualMachines/MCDemo3"
+      "resourceId": "/subscriptions/a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1/resourcegroups/Ignite2019/providers/Microsoft.Compute/virtualMachines/MCDemo3"
 } 
 ```
 
@@ -353,10 +354,10 @@ This cmdlet works only for the host and OS image scopes. It doesn't work for the
 
 ```text
 Status         : Completed
-ResourceId     : /subscriptions/12ae7457-4a34-465c-94c1-17c058c2bd25/resourcegroups/TestShantS/providers/Microsoft.Comp
+ResourceId     : /subscriptions/b1b1b1b1-cccc-dddd-eeee-f2f2f2f2f2f2/resourcegroups/TestShantS/providers/Microsoft.Comp
 ute/virtualMachines/DXT-test-04-iso
 LastUpdateTime : 1/1/2020 12:00:00 AM
-Id             : /subscriptions/12ae7457-4a34-465c-94c1-17c058c2bd25/resourcegroups/TestShantS/providers/Microsoft.Comp
+Id             : /subscriptions/b1b1b1b1-cccc-dddd-eeee-f2f2f2f2f2f2/resourcegroups/TestShantS/providers/Microsoft.Comp
 ute/virtualMachines/DXT-test-04-iso/providers/Microsoft.Maintenance/applyUpdates/default
 Name           : default
 Type           : Microsoft.Maintenance/applyUpdates

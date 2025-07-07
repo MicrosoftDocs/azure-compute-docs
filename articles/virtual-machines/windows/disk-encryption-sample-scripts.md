@@ -7,8 +7,9 @@ ms.subservice: security
 ms.collection: windows
 ms.topic: how-to
 ms.author: mbaldwin
-ms.date: 02/20/2024
+ms.date: 05/14/2025
 ms.custom: devx-track-azurepowershell
+# Customer intent: As an Azure administrator, I want to implement disk encryption on Windows VMs using PowerShell scripts, so that I can enhance data security and comply with regulatory requirements.
 ---
 
 

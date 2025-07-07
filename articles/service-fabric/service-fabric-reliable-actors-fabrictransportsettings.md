@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a developer configuring cloud-based actor services, I want to adjust FabricTransport settings in my application, so that I can optimize communication parameters and enhance the security of my actor services and clients.
 ---
 
 # Configure FabricTransport settings for Reliable Actors
@@ -56,7 +57,7 @@ By default, actor code looks for SectionName as "&lt;ActorName&gt;TransportSetti
        <Parameter Name="OperationTimeoutInSeconds" Value="300" />
        <Parameter Name="SecurityCredentialsType" Value="X509" />
        <Parameter Name="CertificateFindType" Value="FindByThumbprint" />
-       <Parameter Name="CertificateFindValue" Value="4FEF3950642138446CC364A396E1E881DB76B48C" />
+       <Parameter Name="CertificateFindValue" Value="AA11BB22CC33DD44EE55FF66AA77BB88CC99DD00" />
 	   <Parameter Name="CertificateRemoteThumbprints" Value="b3449b018d0f6839a2c5d62b5b6c6ac822b6f662" />
        <Parameter Name="CertificateStoreLocation" Value="LocalMachine" />
        <Parameter Name="CertificateStoreName" Value="My" />
@@ -77,7 +78,7 @@ If the client is not running as part of a service, you can create a "&lt;Client 
       <Parameter Name="OperationTimeoutInSeconds" Value="300" />
       <Parameter Name="CertificateFindType" Value="FindByThumbprint" />
       <Parameter Name="CertificateFindValue" Value="b3449b018d0f6839a2c5d62b5b6c6ac822b6f662" />
-      <Parameter Name="CertificateRemoteThumbprints" Value="4FEF3950642138446CC364A396E1E881DB76B48C" />
+      <Parameter Name="CertificateRemoteThumbprints" Value="AA11BB22CC33DD44EE55FF66AA77BB88CC99DD00" />
       <Parameter Name="OperationTimeoutInSeconds" Value="300" />
       <Parameter Name="CertificateStoreLocation" Value="LocalMachine" />
       <Parameter Name="CertificateStoreName" Value="My" />
@@ -97,7 +98,7 @@ If the client is not running as part of a service, you can create a "&lt;Client 
   <Parameter Name="CertificateFindType" Value="FindByThumbprint" />
   <Parameter Name="CertificateFindValue" Value="b3449b018d0f6839a2c5d62b5b6c6ac822b6f662" />
   <Parameter Name="CertificateFindValuebySecondary" Value="h9449b018d0f6839a2c5d62b5b6c6ac822b6f690" />
-  <Parameter Name="CertificateRemoteThumbprints" Value="4FEF3950642138446CC364A396E1E881DB76B48C,a9449b018d0f6839a2c5d62b5b6c6ac822b6f667" />
+  <Parameter Name="CertificateRemoteThumbprints" Value="AA11BB22CC33DD44EE55FF66AA77BB88CC99DD00,a9449b018d0f6839a2c5d62b5b6c6ac822b6f667" />
   <Parameter Name="CertificateStoreLocation" Value="LocalMachine" />
   <Parameter Name="CertificateStoreName" Value="My" />
   <Parameter Name="CertificateProtectionLevel" Value="EncryptAndSign" />
@@ -109,7 +110,7 @@ If the client is not running as part of a service, you can create a "&lt;Client 
   <Section Name="TransportSettings">
   <Parameter Name="SecurityCredentialsType" Value="X509" />
   <Parameter Name="CertificateFindType" Value="FindByThumbprint" />
-  <Parameter Name="CertificateFindValue" Value="4FEF3950642138446CC364A396E1E881DB76B48C" />
+  <Parameter Name="CertificateFindValue" Value="AA11BB22CC33DD44EE55FF66AA77BB88CC99DD00" />
   <Parameter Name="CertificateFindValuebySecondary" Value="a9449b018d0f6839a2c5d62b5b6c6ac822b6f667" />
   <Parameter Name="CertificateRemoteThumbprints" Value="b3449b018d0f6839a2c5d62b5b6c6ac822b6f662,h9449b018d0f6839a2c5d62b5b6c6ac822b6f690" />
   <Parameter Name="CertificateStoreLocation" Value="LocalMachine" />

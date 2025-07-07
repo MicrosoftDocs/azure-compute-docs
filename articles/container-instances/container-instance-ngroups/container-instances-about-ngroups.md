@@ -8,6 +8,7 @@ ms.custom: devx-track-azurecli
 services: container-instances
 ms.topic: how-to
 ms.date: 11/05/2024
+# Customer intent: As a cloud architect, I want to manage multiple container group instances using a single API call through NGroups, so that I can streamline operations, enhance scalability, and improve the availability of my cloud applications.
 ---
 
 # About NGroups (Preview)

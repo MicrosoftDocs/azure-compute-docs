@@ -9,6 +9,7 @@ ms.subservice: disks
 ms.date: 06/14/2024
 ms.reviewer: mimckitt
 ms.custom: mimckitt, linux-related-content
+# Customer intent: As an Azure administrator, I want to implement Azure Disk Encryption in a specific sequence with other extensions for my Linux IaaS VMs, so that I can ensure data security while preparing the disks appropriately before use.
 ---
 
 # Use Azure Disk Encryption with Virtual Machine Scale Set extension sequencing

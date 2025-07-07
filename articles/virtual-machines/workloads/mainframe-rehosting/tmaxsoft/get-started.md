@@ -7,6 +7,7 @@ ms.date: 04/02/2019
 ms.topic: concept-article
 ms.service: azure-virtual-machines
 ms.subservice: mainframe-rehosting
+# Customer intent: "As a cloud architect, I want to rehost my IBM z/OS mainframe workloads using TmaxSoft OpenFrame on Azure VMs, so that I can ensure a smooth migration without the need for reformatting and leverage cloud scalability."
 ---
 
 # Get started with TmaxSoft OpenFrame on Azure

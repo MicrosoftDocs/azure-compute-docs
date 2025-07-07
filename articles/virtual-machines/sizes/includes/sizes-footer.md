@@ -6,9 +6,10 @@
  ms.topic: include
  ms.service: virtual-machines
  ms.subservice: sizes
- ms.date: 05/13/2024
+ ms.date: 02/03/2025
  ms.author: mattmcinnes
 ms.custom: include file, build-2024
+# Customer intent: "As an IT administrator, I want to access comprehensive information about virtual machine sizes and performance options, so that I can make informed decisions about resizing and optimizing resources for my workloads."
 ---
 
 ## Other size information
@@ -21,8 +22,8 @@ Information on Disk Types: [Disk Types](../../disks-types.md)
 
 ## Next steps
 
-Learn more about how [Azure compute units (ACU)](../../acu.md) can help you compare compute performance across Azure SKUs.
+Take advantage of the latest performance and features available for your workloads by [changing the size of a virtual machine](../../../virtual-machines/sizes/resize-vm.md).
 
-Check out [Azure Dedicated Hosts](../../../virtual-machines/dedicated-hosts.md) for physical servers able to host one or more virtual machines assigned to one Azure subscription.
+Utilize Microsoft's in-house designed ARM processors with [Azure Cobalt VMs](../../../virtual-machines/sizes/cobalt-overview.md).
 
 Learn how to [Monitor Azure virtual machines](../../../virtual-machines/monitor-vm.md).

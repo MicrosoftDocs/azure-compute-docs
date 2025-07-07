@@ -9,6 +9,7 @@ editor: edprice
 ms.author: johnray
 ms.date: 04/02/2019
 ms.topic: concept-article
+# Customer intent: "As a cloud architect, I want to rehost mainframe workloads on Azure virtual machines, so that I can modernize infrastructure and optimize costs while maintaining application functionality and availability."
 ---
 
 # Mainframe rehosting on Azure virtual machines

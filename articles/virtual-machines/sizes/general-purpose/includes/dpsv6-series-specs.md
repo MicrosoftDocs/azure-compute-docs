@@ -9,6 +9,7 @@ ms.date: 07/22/2024
 ms.author: tomcassidy
 ms.reviewer: tomcassidy
 ms.custom: include file, build-2024
+# Customer intent: As a cloud architect, I want to review the specifications of Dpsv6-series VM sizes, so that I can select the appropriate virtual machine configuration for my applications.
 ---
 | Part | Quantity <br>Count Units | Specs <br>SKU ID, Performance Units, etc.  |
 |---|---|---|

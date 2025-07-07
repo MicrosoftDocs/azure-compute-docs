@@ -9,6 +9,7 @@ ms.date: 01/04/2024
 ms.author: jushiman
 ms.reviewer: jushiman
 ms.custom: mvc, mode-ui, linux-related-content
+# Customer intent: "As a cloud user, I want to create a Linux virtual machine through a web portal, so that I can quickly deploy and test applications in a cloud environment."
 ---
 
 # Quickstart: Create a Linux virtual machine in the Azure portal

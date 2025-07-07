@@ -9,6 +9,7 @@ ms.subservice: mainframe-rehosting
 ms.custom:
 ms.topic: how-to
 ms.date: 04/19/2023
+# Customer intent: "As an IT architect, I want to deploy IBM DB2 pureScale on Azure, so that I can migrate from our existing IBM DB2 environment running on z/OS and leverage cloud scalability for our online transaction processing workloads."
 ---
 
 # Deploy IBM DB2 pureScale on Azure

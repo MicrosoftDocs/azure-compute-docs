@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a system administrator managing a Service Fabric cluster, I want to upgrade to the latest supported version of Service Fabric, so that I can ensure the reliability and security of my deployment while benefiting from new features and improvements.
 ---
 
 # Upgrade the Service Fabric version that runs on your cluster 
@@ -43,7 +44,7 @@ When you see the cluster health warning, upgrade the cluster:
     ```powershell
     ###### connect to the secure cluster using certs
     $ClusterName= "mysecurecluster.something.com:19000"
-    $CertThumbprint= "70EF5E22ADB649799DA3C8B6A6BF7FG2D630F8F3"
+    $CertThumbprint= "AA11BB22CC33DD44EE55FF66AA77BB88CC99DD00"
     Connect-serviceFabricCluster -ConnectionEndpoint $ClusterName -KeepAliveIntervalInSec 10 `
         -X509Credential `
         -ServerCertThumbprint $CertThumbprint  `

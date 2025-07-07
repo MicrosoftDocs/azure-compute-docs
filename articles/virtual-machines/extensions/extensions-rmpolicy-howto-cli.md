@@ -9,6 +9,7 @@ ms.author: gabsta
 author: GabstaMSFT
 ms.collection: linux
 ms.date: 04/11/2023
+# Customer intent: As a cloud administrator, I want to create and assign policies that restrict the installation of specific VM extensions on Linux VMs, so that I can enforce compliance and maintain security within my environment.
 ---
 
 # Use Azure Policy to restrict extensions installation on Linux VMs

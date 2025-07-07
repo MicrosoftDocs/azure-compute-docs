@@ -9,6 +9,7 @@ ms.collection: linux
 ms.date: 06/14/2024
 ms.reviewer: mimckitt
 ms.custom: mimckitt, subject-armqs, mode-arm, devx-track-arm-template, linux-related-content
+# Customer intent: As a cloud architect, I want to deploy a Linux Virtual Machine Scale Set using an ARM template, so that I can automate resource management and ensure my application scales efficiently based on demand.
 ---
 
 # Quickstart: Create a Linux Virtual Machine Scale Set with an ARM template

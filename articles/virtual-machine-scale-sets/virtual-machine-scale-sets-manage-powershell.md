@@ -9,6 +9,7 @@ ms.date: 06/14/2024
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurepowershell
 
+# Customer intent: As a cloud administrator, I want to manage Virtual Machine Scale Sets using PowerShell cmdlets, so that I can automate tasks like scaling, starting, stopping, and removing VMs efficiently throughout the lifecycle of the scale set.
 ---
 # Manage a Virtual Machine Scale Set with Azure PowerShell
 

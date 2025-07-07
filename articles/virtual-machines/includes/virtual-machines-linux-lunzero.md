@@ -5,6 +5,7 @@ ms.custom: linux-related-content
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: jushiman
+# Customer intent: "As a Linux VM administrator, I want to ensure that a disk exists at LUN 0 when adding data disks, so that I can avoid errors and ensure all disks are accessible within the VM."
 ---
 When adding data disks to a Linux VM, you may encounter errors if a disk does not exist at LUN 0. If you are adding a disk manually using the `az vm disk attach -new` command and you specify a LUN (`--lun`) rather than allowing the Azure platform to determine the appropriate LUN, take care that a disk already exists / will exist at LUN 0. 
 

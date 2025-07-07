@@ -9,6 +9,7 @@ ms.date: 06/14/2024
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurepowershell
 
+# Customer intent: "As a cloud administrator, I want to create and manage a Virtual Machine Scale Set using PowerShell, so that I can efficiently deploy, scale, and control a set of virtual machines to meet my organization’s capacity and performance requirements."
 ---
 # Tutorial: Create and manage a Virtual Machine Scale Set with Azure PowerShell
 A Virtual Machine Scale Set allows you to deploy and manage a set of virtual machines. Throughout the lifecycle of a Virtual Machine Scale Set, you may need to run one or more management tasks. In this tutorial you learn how to:

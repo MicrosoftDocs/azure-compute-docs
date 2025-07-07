@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.topic: sample
 ms.date: 04/13/2018
 ms.author: atsenthi
+# Customer intent: As a cloud administrator, I want to use a script to list all applications on a Service Fabric cluster, so that I can manage and monitor the provisioned applications effectively.
 ---
 
 # List applications running in a Service Fabric cluster

@@ -9,9 +9,10 @@ ms.date: 07/31/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
+# Customer intent: "As a cloud architect, I want to understand the specifications and capabilities of NC-series virtual machines, so that I can plan for the migration of workloads to suitable alternatives before their retirement."
 ---
 > [!IMPORTANT]
-> NC and NC_Promo series Azure virtual machines (VMs) will be retired on September 6, 2023. For more information, see the [NC and NC_Promo retirement information](../../../nc-series-retirement.md). For how to migrate your workloads to other VM sizes, see the [GPU compute migration guide](../../../n-series-migration.md).
+> NC and NC_Promo series Azure virtual machines (VMs) will be retired on September 6, 2023. For more information, see the [NC and NC_Promo retirement information](../../../nc-series-retirement.md). For how to migrate your workloads to other VM sizes, see the [GPU compute migration guide](../../../migration/sizes/n-series-migration.md).
 >
 > This retirement announcement doesn't apply to NCv3, NCasT4v3 and NC A100 v4 series VMs.  
 

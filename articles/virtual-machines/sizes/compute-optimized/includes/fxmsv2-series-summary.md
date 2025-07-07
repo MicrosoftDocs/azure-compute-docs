@@ -9,6 +9,7 @@ ms.date: 08/29/2024
 ms.author: archat
 ms.reviewer: mattmcinnes
 ms.custom: include file
+# Customer intent: "As a cloud architect, I want to evaluate the FXmsv2-series virtual machines, so that I can determine their suitability for memory-intensive enterprise applications and optimize performance for workloads like Electronic Design Automation and SQL."
 ---
 The FXmsv2-series Virtual Machine (VM) runs on the 5th Generation Intel® Xeon® Platinum 8573C (Emerald Rapids) processor in a [hyper threaded](https://www.intel.com/content/www/architecture-and-technology/hyper-threading/hyper-threading-technology.html) configuration. FXv2-series VMs features an all-core-turbo frequency up to 4.0 GHz. These virtual machines offer up to 96 vCPU and up to 1832 GiB of RAM.  The FXmsv2-series benefits workloads that are ideal for memory-intensive enterprise applications requiring a high memory to CPU ratio, high performance, high CPU clock speed, higher remote storage IOPs and throughput. Typical use-cases for FX-series are the Electronic Design Automation (EDA) and SQL workloads
 

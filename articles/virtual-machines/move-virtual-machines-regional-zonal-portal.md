@@ -6,6 +6,7 @@ ms.service: azure-virtual-machines
 ms.topic: tutorial
 ms.date: 07/08/2024
 ms.author: ankitadutta
+# Customer intent: "As a cloud administrator, I want to move Azure single instance virtual machines from a regional configuration to zonal availability zones, so that I can improve the reliability and performance of my applications within the same region."
 ---
 
 # Move Azure single instance VMs from regional to zonal target availability zones 

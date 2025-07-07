@@ -7,6 +7,7 @@ ms.service: azure #Required; use either service or product per approved list.
 ms.topic: overview #Required; leave this attribute/value as-is.
 ms.date: 11/18/2022 #Required; mm/dd/yyyy format.
 ms.custom: template-overview #Required; leave this attribute/value as-is.
+# Customer intent: As a cloud administrator, I want to utilize impact reporting tools to document performance issues in my Azure workloads, so that I can quickly identify and address platform-related problems to maintain service reliability.
 ---
 
 # What is Impact Reporting? (Preview)

@@ -10,6 +10,7 @@ ms.collection: linux
 ms.date: 12/13/2018
 ms.custom: devx-track-azurepowershell, devx-track-azurecli, linux-related-content
 ms.devlang: azurecli
+# Customer intent: "As a system administrator managing Linux virtual machines in Azure, I want to configure the Linux diagnostic extension 3.0, so that I can effectively monitor performance metrics and log events for proactive management and troubleshooting."
 ---
 # Use Linux diagnostic extension 3.0 to monitor metrics and logs
 

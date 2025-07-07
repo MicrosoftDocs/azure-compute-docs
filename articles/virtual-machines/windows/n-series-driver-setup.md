@@ -7,9 +7,10 @@ ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.collection: windows
 ms.topic: how-to
-ms.date: 09/24/2018
+ms.date: 06/19/2025
 ms.author: vikancha
 ms.custom: H1Hack27Feb2017
+# Customer intent: As a cloud administrator, I want to install and verify NVIDIA GPU drivers on N-series VMs running Windows, so that I can ensure optimal performance for GPU-accelerated applications in my Azure environment.
 ---
 # Install NVIDIA GPU drivers on N-series VMs running Windows 
 
@@ -33,11 +34,14 @@ After GRID driver installation on a VM, a restart is required. After CUDA driver
 
 ## Verify driver installation
 
-Please note that the Nvidia Control panel is only accessible with the GRID driver installation. If you have installed CUDA drivers then the Nvidia control panel will not be visible.
+Please note that the NVIDIA Control panel is only accessible with the GRID driver installation. If you have installed CUDA drivers then the NVIDIA control panel will not be visible.
 
 You can verify driver installation in Device Manager. The following example shows successful configuration of the Tesla K80 card on an Azure NC VM.
 
 ![GPU driver properties](./media/n-series-driver-setup/GPU_driver_properties.png)
+
+> [!NOTE]
+> If you're running Windows 10 build 1903 or higher, dxdiag shows no information in the 'Display' tab. Use the 'Save All Information' option at the bottom and the output file shows the information related to NVIDIA GPU.
 
 To query the GPU device state, run the [nvidia-smi](https://developer.nvidia.com/nvidia-system-management-interface) command-line utility installed with the driver.
 

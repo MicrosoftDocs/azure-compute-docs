@@ -8,6 +8,7 @@ ms.service: azure-virtual-machines
 ms.subservice: mainframe-rehosting
 ms.topic: how-to
 ms.date: 11/09/2018
+# Customer intent: As a database administrator, I want to understand the architecture for deploying IBM DB2 pureScale on Azure, so that I can effectively migrate my existing database environment and ensure high availability and scalability for my applications.
 ---
 
 # IBM DB2 pureScale on Azure

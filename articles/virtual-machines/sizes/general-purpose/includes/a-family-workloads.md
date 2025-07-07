@@ -9,6 +9,7 @@ ms.subservice: sizes
 ms.date: 04/19/2024
 ms.author: mattmcinnes
 ms.custom: include file
+# Customer intent: "As a project manager with budget constraints, I want to utilize A-series virtual machines for my basic applications, so that I can manage costs while ensuring adequate performance for light web servers and small databases."
 ---
 **Cost Efficiency:** A-series VMs are some of the most budget-friendly options available on Azure, making them a good choice for projects with limited financial resources or those that do not require high-performance compute capabilities.
 

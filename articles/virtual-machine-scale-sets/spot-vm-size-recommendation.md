@@ -8,6 +8,7 @@ ms.subservice: azure-spot-vm
 ms.topic: how-to
 ms.date: 11/22/2022
 ms.reviewer: cynthn
+# Customer intent: "As a cloud architect, I want to utilize the Spot VM size recommendations tool during Virtual Machine Scale Set deployment, so that I can select the most cost-effective VM sizes that meet my workload's flexibility and fault tolerance requirements."
 ---
 
 # Spot Virtual Machine size recommendation 

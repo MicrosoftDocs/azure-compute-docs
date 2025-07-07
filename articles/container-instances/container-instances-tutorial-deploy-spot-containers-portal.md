@@ -8,6 +8,7 @@ ms.service: azure-container-instances
 services: container-instances
 ms.date: 08/29/2024
 
+# Customer intent: "As a cloud engineer, I want to deploy a Spot container to Azure Container Instances using the Azure portal, so that I can optimize resource costs while running my containerized applications."
 ---
 
 # Tutorial: Deploy a Spot container with Azure Container Instances using the Azure portal (Preview)

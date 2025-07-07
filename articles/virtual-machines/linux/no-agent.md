@@ -10,6 +10,7 @@ ms.custom: devx-track-azurecli, linux-related-content
 ms.date: 04/11/2023
 ms.author: danis
 ms.reviewer: mattmcinnes
+# Customer intent: As a cloud architect, I want to create generalized Linux VM images without using a provisioning agent, so that I can customize the image configuration and ensure compatibility with specific Linux distributions during deployment.
 ---
 
 

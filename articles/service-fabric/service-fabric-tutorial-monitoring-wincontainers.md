@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 11/14/2024
+# Customer intent: "As a cloud administrator, I want to configure monitoring and diagnostics for Windows containers in Service Fabric using Log Analytics, so that I can effectively track performance and troubleshoot issues in my containerized applications."
 ---
 
 # Tutorial: Monitor Windows containers on Service Fabric using Azure Monitor logs

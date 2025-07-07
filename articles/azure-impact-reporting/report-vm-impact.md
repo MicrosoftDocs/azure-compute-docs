@@ -7,6 +7,7 @@ ms.topic: how-to #Required; leave this attribute/value as-is.
 ms.service: azure #Required; use either service or product per approved list. 
 ms.date: 11/01/2022 #Required; mm/dd/yyyy format.
 ms.custom: template-overview #Required; leave this attribute/value as-is.
+# Customer intent: As a cloud administrator, I want to report impacts to Azure workloads using the REST API, so that I can ensure timely notifications and resolutions for resource issues affecting system performance.
 ---
 
 # Report Impact (Preview)

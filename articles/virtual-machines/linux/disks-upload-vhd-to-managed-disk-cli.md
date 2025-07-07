@@ -8,6 +8,7 @@ ms.date: 08/15/2024
 ms.topic: how-to
 ms.service: azure-disk-storage
 ms.custom: devx-track-azurecli, linux-related-content
+# Customer intent: As a cloud administrator, I want to upload a VHD to an Azure managed disk and copy disks across regions using the CLI, so that I can ensure efficient data management and backup for my virtual machines.
 ---
 
 # Upload a VHD to Azure or copy a managed disk to another region - Azure CLI

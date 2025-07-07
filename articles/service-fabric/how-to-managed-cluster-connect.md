@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a cloud administrator, I want to connect to a Service Fabric managed cluster using the Azure portal or PowerShell, so that I can manage and configure the cluster effectively.
 ---
 # Connect to a Service Fabric managed cluster
 

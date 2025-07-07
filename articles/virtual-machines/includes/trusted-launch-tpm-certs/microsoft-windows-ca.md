@@ -8,6 +8,7 @@ ms.subservice: sizes
 ms.date: 10/21/2024
 ms.author: reprasa
 ms.custom: include file
+# Customer intent: "As an IT administrator, I want to download the Windows CA certificate file, so that I can configure secure communications within my organization's network."
 ---
 
 <details>

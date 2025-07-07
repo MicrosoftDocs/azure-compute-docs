@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: "As a cloud architect, I want to configure secure communication for the reverse proxy in an application, so that I can ensure end-to-end security for service interactions within Azure Service Fabric."
 ---
 
 # Connect to a secure service with the reverse proxy

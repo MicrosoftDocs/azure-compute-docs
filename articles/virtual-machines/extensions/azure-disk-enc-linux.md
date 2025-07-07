@@ -9,6 +9,7 @@ author: ejarvi
 ms.author: ejarvi
 ms.date: 03/19/2020
 ms.collection: linux
+# Customer intent: "As a systems administrator managing Linux virtual machines, I want to deploy Azure Disk Encryption, so that I can ensure full disk encryption and secure key management for my sensitive data."
 ---
 # Azure Disk Encryption for Linux (Microsoft.Azure.Security.AzureDiskEncryptionForLinux)
 

@@ -297,7 +297,7 @@ sections:
       - question: |
           Can I fail over my on-premises machines protected by Azure Site Recovery to a VM with managed disks?
         answer: |
-          Yes, you can choose to failover to a VM with Managed Disks.
+          Yes, you can choose to fail over to a VM with Managed Disks.
 
       - question: |
           Is there any impact of migration on Azure VMs protected by Azure Site Recovery via Azure to Azure replication?
@@ -347,13 +347,15 @@ sections:
           No. But if you export a VHD to an encrypted storage account from an encrypted managed disk or snapshot, then it's encrypted.
 
       - question: |
-          Can I switch from Azure Disk Encryption to server-side encryption with customer-managed keys?
+          Can I switch from Azure Disk Encryption to server-side encryption with either customer-managed keys or encryption at host?
         answer: |
-          It isn't possible to switch in-place, but it's possible to create copies of the disks and attach them to a new VM encrypted with server-side encryption. However, for Linux VMs if you encrypted the OS disk of a Linux VM with ADE, you can't disable ADE on Linux when the OS disk is encrypted. To migrate Windows VMs with ADE enabled or Linux VMs with only the data disks ADE encrypted,
+          It isn't possible to switch in-place, but it's possible in most scenarios to create copies of the disks and attach them to a new VM encrypted with server-side encryption. To migrate Windows VMs with ADE enabled or Linux VMs with only the data disks ADE encrypted,
           - [Disable encryption and remove the encryption extension on Windows](windows/disk-encryption-windows.md#disable-encryption-and-remove-the-encryption-extension) or [on Linux](linux/disk-encryption-linux.md#disable-encryption-and-remove-the-encryption-extension).
           - Then make a new managed disk using the current disk as a source. 
           - Attach the new disk to a new VM that has never enabled ADE.
-          - Encrypt that new disk with customer-managed keys.
+          - Encrypt that new disk with either [customer-managed keys](/azure/virtual-machines/disk-encryption#customer-managed-keys) or [encryption at host](/azure/virtual-machines/disk-encryption#encryption-at-host---end-to-end-encryption-for-your-vm-data).
+          
+          However, disabling ADE on the OS disk on Linux is not supported. For such VMs you must create a new VM with a new OS disk with CMK or EAH enabled. You can copy the data disks using the method described previously.
 
       - question: |
           Can I switch from server-side encryption with customer-managed keys to Azure Disk Encryption?

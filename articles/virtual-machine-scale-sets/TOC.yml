@@ -52,9 +52,11 @@
       href: tutorial-use-custom-image-powershell.md
   - name: Deploy apps to a scale set
     items:
-    - name: Azure CLI
+    - name: Using VM Apps
+      href: ../virtual-machines/vm-applications-how-to.md
+    - name: Using custom script extension - Linux
       href: tutorial-install-apps-cli.md
-    - name: Azure PowerShell
+    - name: Using custom script extension - Windows
       href: tutorial-install-apps-powershell.md
   - name: Autoscale a scale set
     items:
@@ -78,12 +80,14 @@
       href: virtual-machine-scale-sets-mvss-guest-based-autoscale-linux.md
     - name: Troubleshoot autoscale
       href: virtual-machine-scale-sets-troubleshoot.md 
-  - name: Instance mix (Preview)
+  - name: Instance mix
     items:
     - name: Overview
       href: instance-mix-overview.md
     - name: Create a scale set with instance mix
       href: instance-mix-create.md
+    - name: View instance mix settings
+      href: instance-mix-view.md
     - name: Update instance mix settings
       href: instance-mix-update.md
     - name: FAQs and troubleshooting
@@ -96,12 +100,22 @@
     items:
     - name: Overview
       href: standby-pools-overview.md
+    - name: Configure service permissions
+      href: standby-pools-configure-permissions.md
     - name: Create a standby pool
       href: standby-pools-create.md
     - name: Update or delete a standby pool
       href: standby-pools-update-delete.md
+    - name: Use spot instances (Preview)
+      href: standby-pools-spot-instances.md
     - name: Get pool and instance details
       href: standby-pools-get-details.md
+    - name: Utilize predictive pooling (Preview)
+      href: standby-pools-prediction-results.md
+    - name: Understand standby pool health
+      href: standby-pools-health-state.md
+    - name: Configure monitoring and alerts
+      href: standby-pools-monitor-pool-events.md
     - name: Frequently asked questions
       href: standby-pools-faq.md
   - name: Instance protection
@@ -159,7 +173,7 @@
       href: virtual-machine-scale-sets-change-upgrade-policy.md
     - name: Configure rolling upgrade policy
       href: virtual-machine-scale-sets-configure-rolling-upgrades.md
-    - name: Custom metrics for rolling upgrades (preview)
+    - name: Custom metrics for rolling upgrades
       href: virtual-machine-scale-sets-rolling-upgrade-custom-metrics.md
     - name: Rolling upgrades with MaxSurge
       href: virtual-machine-scale-sets-maxsurge.md
@@ -175,6 +189,8 @@
     href: virtual-machine-scale-sets-manage-fault-domains.md
   - name: Relocate to another region
     href: /azure/operational-excellence/relocation-virtual-machine-scale-sets
+  - name: Migrate to Flexible Orchestration
+    href: flexible-virtual-machine-scale-sets-migration-resources.md
     maintainContext: true
   - name: Proximity placement groups
     href: proximity-placement-groups.md
@@ -451,7 +467,7 @@
   - name: Build your skills with Microsoft Learn training
     href: /training/browse/?products=azure-virtual-machines
   - name: Azure Roadmap
-    href: https://azure.microsoft.com/roadmap/?category=compute
+    href: https://azure.microsoft.com/updates/?category=compute
   - name: Pricing calculator
     href: https://azure.microsoft.com/pricing/calculator/
   - name: Common CLI commands

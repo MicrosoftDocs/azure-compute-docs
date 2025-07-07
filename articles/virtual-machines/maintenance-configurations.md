@@ -7,6 +7,7 @@ ms.subservice: maintenance
 ms.topic: overview
 ms.date: 10/06/2021
 ms.author: jushiman
+# Customer intent: As an IT administrator managing virtual machines, I want to configure maintenance schedules for VMs, so that I can control updates without disrupting sensitive workloads and ensure high availability during maintenance tasks.
 ---
 
 # Managing VM updates with Maintenance Configurations
@@ -95,9 +96,6 @@ You can create and manage maintenance configurations by using any of the followi
 - [Azure PowerShell](maintenance-configurations-powershell.md)
 - [Azure portal](maintenance-configurations-portal.md)
 
-> [!IMPORTANT]
-> The API shows a pre/post `tasks` property, but that property isn't supported at this time.
-
 For an Azure Functions sample, see [Scheduling maintenance updates with maintenance configurations and Azure Functions](https://github.com/Azure/azure-docs-powershell-samples/tree/master/maintenance-auto-scheduler).
 
 ## Service limits
@@ -120,6 +118,10 @@ We recommend the following limits for each dynamic scope in the guest scope only
 | Resource associations     | 1,000  |
 | Number of tag filters | 50 |
 | Number of resource group filters    | 50 |
+
+> [!NOTE]
+> Maintenance configurations will initiate updates on all resources associated with it simultaneously. Customers have the flexibility to decide on the isolation and maintenance windows for their workloads. They can create single or multiple maintenance configurations based on the isolation that is optimal for their workloads.
+> For example, if a customer wants to isolate updates for their development environment resources from the production environment resources, they can create separate maintenance configurations for each environment. This way, workloads in maintenance configuration with development resources are updated first, while the remaining workloads are updated in another configuration that does not overlap. This approach allows customers to control workload isolation and manage updates independently. 
 
 ## Next steps
 

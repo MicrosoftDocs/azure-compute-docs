@@ -9,6 +9,7 @@ ms.date: 09/12/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
+# Customer intent: "As a data scientist working on AI and HPC projects, I want to utilize ND H200 v5 series VMs with NVIDIA H200 GPUs, so that I can efficiently process larger datasets and complex models for generative AI and scientific computing."
 ---
 
 The ND v5 H200 series virtual machine (VM) is designed to deliver exceptional performance for AI and high-performance computing (HPC) workloads. These VMs leverage the power of the NVIDIA H200 Tensor Core GPU, which offer a 76% increase in High Bandwidth Memory over the H100 GPUs to deliver higher performance on state-of-the-art Generative AI models. With 141 GB of high-speed memory, and 4.8 TB/s of memory bandwidth, the H200 GPU can handle larger datasets and more complex models, making it ideal for generative AI and scientific computing.  

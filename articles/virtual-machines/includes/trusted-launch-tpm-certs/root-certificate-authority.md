@@ -8,6 +8,7 @@ ms.subservice: sizes
 ms.date: 09/28/2023
 ms.author: jushiman
 ms.custom: include file
+# Customer intent: "As a cloud administrator, I want to access the Full Certificate Authority file for the TPM root certificate, so that I can ensure secure communications and data integrity within my virtual machines."
 ---
 
 <details>

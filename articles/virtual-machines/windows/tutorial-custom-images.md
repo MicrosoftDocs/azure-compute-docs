@@ -9,6 +9,7 @@ ms.date: 02/24/2023
 ms.author: jushiman
 ms.custom: mvc, devx-track-azurepowershell
 #Customer intent: As an IT administrator, I want to learn about how to create custom VM images to minimize the number of post-deployment configuration tasks.
+# Customer intent: As an IT administrator, I want to create and manage custom virtual machine images using PowerShell, so that I can automate deployments and ensure consistency across my organization’s environments.
 ---
 
 # Tutorial: Create Windows VM images with Azure PowerShell

@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a cloud architect, I want to deploy a Service Fabric cluster using certificate common names, so that I can simplify certificate management and enable easier certificate rollover for my application environment.
 ---
 
 # Deploy a Service Fabric cluster that uses certificate common name instead of thumbprint

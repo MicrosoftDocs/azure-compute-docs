@@ -9,6 +9,7 @@ ms.subservice: sizes
 ms.date: 04/19/2024
 ms.author: mattmcinnes
 ms.custom: include file
+# Customer intent: "As a cloud architect, I want to assess the FX sub-family VM sizes for different workloads, so that I can determine their suitability for EDA, batch processing, and data analytics tasks in my organization."
 ---
 **Electronic Design Automation (EDA)**: FX-series VMs are well-suited for EDA workloads, which require high CPU clock speeds and high memory-to-CPU ratios. These workloads benefit from the high single-core performance and large memory capacity of FX-series VMs.
 

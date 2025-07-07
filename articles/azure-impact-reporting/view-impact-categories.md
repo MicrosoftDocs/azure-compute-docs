@@ -7,6 +7,7 @@ ms.topic: overview #Required; leave this attribute/value as-is.
 ms.service: azure #Required; use either service or product per approved list. 
 ms.date: 10/30/2022 #Required; mm/dd/yyyy format.
 ms.custom: template-overview #Required; leave this attribute/value as-is.
+# Customer intent: As a cloud user, I want to access a list of impact categories for Azure services, so that I can accurately report issues related to resource operations and performance.
 ---
 
 # Impact Categories (Preview)

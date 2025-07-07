@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a cloud administrator, I want to enable managed identity support in my existing Service Fabric cluster, so that I can authenticate applications and obtain access tokens securely without managing credentials manually.
 ---
 
 # Configure managed identity support in an existing Service Fabric cluster

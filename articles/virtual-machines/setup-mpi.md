@@ -8,6 +8,7 @@ ms.date: 07/25/2024
 ms.reviewer: cynthn
 ms.author: jushiman
 author: ju-shim
+# Customer intent: "As a cloud HPC researcher, I want to configure Message Passing Interface (MPI) on Azure VMs, so that I can efficiently run parallel computing workloads and optimize performance across distributed systems."
 ---
 
 # Set up Message Passing Interface for HPC

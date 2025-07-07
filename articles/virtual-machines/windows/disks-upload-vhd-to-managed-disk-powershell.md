@@ -8,6 +8,7 @@ ms.topic: how-to
 ms.service: azure-disk-storage
 ms.tgt_pltfrm: linux
 ms.custom: references_regions, devx-track-azurepowershell
+# Customer intent: As an IT administrator, I want to upload a VHD to an Azure managed disk using PowerShell, so that I can restore backups or migrate disks across regions efficiently and securely.
 ---
 
 # Upload a VHD to Azure or copy a managed disk to another region - Azure PowerShell
@@ -125,9 +126,9 @@ Replace `<yourdiskname>`, `<yourresourcegroupname>`, and `<yourregion>` then run
 > If you're creating an OS disk, add `-HyperVGeneration '<yourGeneration>'` to `New-AzDiskConfig`.
 > 
 > If you're using Microsoft Entra ID to secure your uploads, add `-dataAccessAuthMode 'AzureActiveDirectory'` to `New-AzDiskConfig`.  
-> When uploading to an Ultra Disk or Premium SSD v2 you need to select the correct sector size of the target disk. If you're using a VHDX file with a 4k logical sector size, the target disk must be set to 4k. If you're using a VHD file with a 512 logical sector size, the target disk must be set to 512.
+> When uploading to an Ultra Disk or Premium SSD v2 you need to select the correct sector size of the target disk. If you're using a VHD file with a 512 logical sector size, the target disk must be set to 512. If you're using a VHDX file with a 4k logical sector size, the target disk must be set to 4k, and target disk size must match VHDX file size. Note that uploading a VHDX file will result in a size expansion to the next 256 MiB alignment.
 >
-> VHDX files with logical sector size of 512k aren't supported.
+> VHDX files with logical sector size of 512 aren't supported.
 
 ```powershell
 $vhdSizeBytes = (Get-Item "<fullFilePathHere>").length
@@ -162,9 +163,9 @@ Now that you have a SAS for your empty managed disk, you can use it to set your 
 Use AzCopy v10 to upload your local VHD or VHDX file to a managed disk by specifying the SAS URI you generated.
 
 > [!NOTE]
-> If you need to upload VHDx files larger than 2TB (which exceeds the VHD format limit) and cannot convert them to VHD due to their size, please be aware that VHDx files are only supported for upload to PremiumSSDv2 and UltraSSD disk SKUs. For files smaller than 2TB, it is recommended to convert them to the VHD format before uploading.
+> If you need to upload VHDx files larger than 2TB (which exceeds the VHD format limit) and can't convert them to VHD due to their size, please be aware that VHDx files are only supported for upload to PremiumSSDv2 and UltraSSD disk SKUs. For files smaller than 2TB, it's recommended to convert them to the VHD format before uploading.
 
-This upload has the same throughput as the equivalent [standard HDD](../disks-types.md#standard-hdds). For example, if you have a size that equates to S4, you will have a throughput of up to 60 MiB/s. But, if you have a size that equates to S70, you will have a throughput of up to 500 MiB/s.
+This upload has the same throughput as the equivalent [standard HDD](../disks-types.md#standard-hdds). For example, if you have a size that equates to S4, you'll have a throughput of up to 60 MiB/s. But, if you have a size that equates to S70, you'll have a throughput of up to 500 MiB/s.
 
 ```
 AzCopy.exe copy "c:\somewhere\mydisk.vhd" $diskSas.AccessSAS --blob-type PageBlob
@@ -190,7 +191,7 @@ The following script will do this for you, the process is similar to the steps d
 Replace the `<sourceResourceGroupHere>`, `<sourceDiskNameHere>`, `<targetDiskNameHere>`, `<targetResourceGroupHere>`, `<yourOSTypeHere>` and `<yourTargetLocationHere>` (an example of a location value would be uswest2) with your values, then run the following script in order to copy a managed disk.
 
 > [!TIP]
-> If you are creating an OS disk, add `-HyperVGeneration '<yourGeneration>'` to `New-AzDiskConfig`.
+> If you're creating an OS disk, add `-HyperVGeneration '<yourGeneration>'` to `New-AzDiskConfig`.
 
 ```powershell
 
@@ -227,4 +228,4 @@ Now that you've successfully uploaded a VHD to a managed disk, you can attach yo
 
 To learn how to attach a data disk to a VM, see our article on the subject: [Attach a data disk to a Windows VM with PowerShell](attach-disk-ps.md). To use the disk as the OS disk, see [Create a Windows VM from a specialized disk](create-vm-specialized.md#create-the-new-vm).
 
-If you've additional questions, see the section on [uploading a managed disk](../faq-for-disks.yml#uploading-to-a-managed-disk) in the FAQ.
+If you have additional questions, see the section on [uploading a managed disk](../faq-for-disks.yml#uploading-to-a-managed-disk) in the FAQ.

@@ -1,5 +1,5 @@
 ---
- title: include
+title: include
  description: include
  services: virtual-machines-windows
 author: jushiman
@@ -8,6 +8,7 @@ author: jushiman
  ms.date: 04/18/2023
 ms.author: jushiman
  ms.custom: include
+# Customer intent: "As a cloud administrator using Azure virtual machines, I want to install and manage the appropriate NVIDIA drivers for different VM series, so that I can ensure optimal performance and compatibility for graphics and compute workloads."
 ---
 
 ## Supported operating systems and drivers
@@ -25,13 +26,16 @@ NVIDIA Tesla (CUDA) drivers for all NC* and ND*-series VMs (optional for NV*-ser
 
 
 ### NVIDIA GRID/vGPU drivers
+> [!NOTE]
+> [vGPU18](https://download.microsoft.com/download/5ccc0984-e1b5-494d-8211-43b19ece6b9b/572.83_grid_win10_win11_server2022_dch_64bit_international_azure_swl.exe) is available for the NCasT4_v3-series. We will provide an update once vGPU18 becomes available for the NVadsA10_v5-series.
+
 > [!Note]
 >For Azure NVads A10 v5 VMs we recommend customers to always be on the latest driver version. The latest NVIDIA major driver branch(n) is only backward compatbile with the previous major branch(n-1). For eg, vGPU 17.x is backward compatible with vGPU 16.x only. Any VMs still runnig n-2 or lower may see driver failures when the latest drive branch is rolled out to Azure hosts.
 >>
 >NVs_v3 VMs only support **vGPU 16 or lower** driver version.
 >
 >>
->Windows server 2016 support will go away from vGPU 17.x onwards.
+>Windows server 2019 support is only available till vGPU 16.x.
 >
 Microsoft redistributes NVIDIA GRID driver installers for NV, NVv3 and NVads A10 v5-series VMs used as virtual workstations or for virtual applications. Install only these GRID drivers on Azure NV-series VMs, only on the operating systems listed in the following table. These drivers include licensing for GRID Virtual GPU Software in Azure. You don't need to set up a NVIDIA vGPU software license server.
 
@@ -39,9 +43,9 @@ The GRID drivers redistributed by Azure don't work on non-NV series VMs like NCv
 
 The Nvidia extension always installs the latest driver. 
 
-For Windows 11 up to and including 23H2, Windows 10 up to and including  22H2, Server 2019/2022:
+For Windows 11 up to and including 24H2, Windows 10 up to and including  22H2, Server 2022:
 
-- [GRID 17.3 (552.74)](https://go.microsoft.com/fwlink/?linkid=874181) (.exe)
+- [GRID 17.5 (553.62)](https://download.microsoft.com/download/1/1/d/11dd7071-c632-4a83-b950-d5eb3fdcf587/553.62_grid_win10_win11_server2019_server2022_dch_64bit_international_azure_swl.exe) (.exe)
 
 The following links to previous versions are provided to support dependencies on older driver versions.
 

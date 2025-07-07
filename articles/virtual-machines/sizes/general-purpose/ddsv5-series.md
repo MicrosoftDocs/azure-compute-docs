@@ -4,10 +4,11 @@ description: Information on and specifications of the Ddsv5-series sizes
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 07/29/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
+# Customer intent: As a cloud architect, I want to evaluate the specifications and capabilities of the Ddsv5 series sizes, so that I can select the appropriate virtual machine type for my workloads and optimize performance.
 ---
 
 # Ddsv5 sizes series

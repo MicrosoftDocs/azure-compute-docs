@@ -5,10 +5,11 @@ author: msmbaldwin
 ms.service: azure-virtual-machines
 ms.subservice: security
 ms.collection: linux
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: mbaldwin
-ms.date: 08/25/2024
+ms.date: 03/03/2025
 ms.custom: linux-related-content
+# Customer intent: "As a system administrator managing Linux virtual machines, I want to enable disk encryption on my VMs, so that I can ensure data security and comply with organizational security standards."
 ---
 
 # Azure Disk Encryption for Linux VMs
@@ -40,7 +41,7 @@ Linux VMs are available in a [range of sizes](../sizes.md). Azure Disk Encryptio
 
 See [Azure VM sizes with no local temporary disk](../azure-vms-no-temp-disk.yml).
 
-Azure Disk Encryption is also not available on [Basic, A-series VMs](https://azure.microsoft.com/pricing/details/virtual-machines/series/), or on virtual machines that do not meet these minimum memory requirements:
+Azure Disk Encryption is not available on [Basic, A-series VMs,v6 series VMs](https://azure.microsoft.com/pricing/details/virtual-machines/series/), or on virtual machines that do not meet these minimum memory requirements:
 
 ### Memory requirements
 

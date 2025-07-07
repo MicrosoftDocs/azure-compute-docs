@@ -11,6 +11,7 @@ ms.date: 06/14/2024
 ms.reviewer: mimckitt
 ms.custom: avverma, devx-track-azurecli, devx-track-azurepowershell
 
+# Customer intent: As a cloud administrator, I want to configure custom scale-in policies for Virtual Machine Scale Sets, so that I can control which instances are deleted during scaling operations based on workload demands and instance configurations.
 ---
 
 # Use custom scale-in policies with Azure Virtual Machine Scale Sets

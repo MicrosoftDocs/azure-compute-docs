@@ -14,12 +14,19 @@ ms.date: 03/28/2023
 ms.author: magoedte
 ms.custom: devx-track-azurecli, devx-track-arm-template
 ms.devlang: azurecli
+# Customer intent: "As an IT administrator managing Azure virtual machines, I want to implement Desired State Configuration using Azure extensions, so that I can automate and maintain consistent VM configurations efficiently."
 ---
 
 # Introduction to the Azure Desired State Configuration extension handler
 
 > [!NOTE]
-> Before you enable DSC Extension, we would like you to know that a newer version of DSC is now generally available, named [Azure Machine Configuration](/azure/governance/machine-configuration/overview). The Azure Machine Configuration service includes features from DSC Extension and commonly requested features from customer feedback. Azure Machine Configuration also includes hybrid machine support through [Arc-enabled servers](/azure/azure-arc/servers/overview).
+> DSC extension will be retired on March 31, 2028. Please transition to
+> [Azure Machine Configuration](/azure/governance/machine-configuration/overview) by that date.
+> For more information, see the [blog post](https://azure.microsoft.com/updates/?id=485828)
+> announcement. The Azure Machine Configuration service combines certain features of DSC Extension, Azure
+> Automation State Configuration, and commonly requested features from customer feedback.
+> Azure Machine Configuration also includes hybrid machine support through
+> [Arc-enabled servers](/azure/azure-arc/servers/overview).
 
 The Azure VM Extension for Azure virtual machines (VM) and the associated extensions are part of Microsoft Azure infrastructure services. Azure VM extensions are software components that extend VM functionality and simplify various VM management operations.
 

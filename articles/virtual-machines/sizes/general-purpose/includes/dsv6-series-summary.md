@@ -9,6 +9,7 @@ ms.date: 07/29/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
+# Customer intent: "As a cloud architect, I want to compare the Dsv6-series virtual machines with previous generations, so that I can determine the best option for upgrading our general-purpose workloads while optimizing performance and cost."
 ---
 Dsv6-series virtual machines run on the 5th Generation Intel® Xeon® Platinum 8573C (Emerald Rapids) processor reaching an all-core turbo clock speed of 3.0 GHz . These virtual machines offer up to 128 vCPU and 512 GiB of RAM. Dsv6-series virtual machines provide a better performance for most general-purpose workloads compared to the prior generation (for example, increased scalability, upgraded CPU, elevated memory bandwidth, faster remote storage access)
 

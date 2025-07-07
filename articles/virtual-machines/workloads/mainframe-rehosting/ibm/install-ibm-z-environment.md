@@ -7,8 +7,9 @@ ms.subservice: mainframe-rehosting
 author: swread
 ms.author: sread
 manager: mamccrea 
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 04/02/2019
+# Customer intent: "As a systems administrator, I want to deploy the IBM Z Development and Test Environment on Azure, so that I can efficiently manage and test mainframe workloads in a cost-effective dev/test environment before pushing changes to production."
 ---
 
 # Install IBM zD&T dev/test environment on Azure

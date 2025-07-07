@@ -10,6 +10,7 @@ author: GabstaMSFT
 ms.reviewer: jushiman
 ms.collection: windows
 ms.date: 04/21/2023
+# Customer intent: As a system administrator, I want to troubleshoot Windows VM extension failures so that I can ensure all deployed extensions are functioning properly and maintain the stability of my Azure environment.
 ---
 # Troubleshooting Azure Windows VM extension failures
 [!INCLUDE [virtual-machines-common-extensions-troubleshoot](../includes/virtual-machines-common-extensions-troubleshoot.md)]

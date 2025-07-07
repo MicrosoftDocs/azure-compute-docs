@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: "As a cloud administrator, I want to utilize the command-line interface for Service Fabric, so that I can efficiently manage infrastructure commands and queries for my service instances."
 ---
 
 # sfctl is

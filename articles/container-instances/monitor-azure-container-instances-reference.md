@@ -7,6 +7,7 @@ ms.topic: reference
 author: tomvcassidy
 ms.author: tomcassidy
 ms.service: azure-container-instances
+# Customer intent: "As a cloud operations engineer, I want to access monitoring data for Container Instances, so that I can effectively track performance and troubleshoot issues within my containerized applications."
 ---
 
 # Container Instances monitoring data reference

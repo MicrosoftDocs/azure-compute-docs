@@ -1,28 +1,25 @@
 ---
-title: Edsv6 size series (Preview)
+title: Edsv6 size series 
 description: Information on and specifications of the Edsv6-series sizes
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 08/01/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
+# Customer intent: "As a cloud infrastructure manager, I want to understand the specifications and features of the Edsv6 size series virtual machines, so that I can select the appropriate VM size for my application workloads and resource requirements."
 ---
 
-# Edsv6 sizes series (Preview)
+# Edsv6 sizes series
 
 [!INCLUDE [edsv6-summary](./includes/edsv6-series-summary.md)]
-
-> [!NOTE]
-> - This VM series is currently in **Preview**. 
-> - See the [Preview Terms Of Use | Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability. 
 
 ## Host specifications
 [!INCLUDE [edsv6-series-specs](./includes/edsv6-series-specs.md)]
 
 ## Feature support
-[Premium Storage](../../premium-storage-performance.md): Supported <br>[Premium Storage caching](../../premium-storage-performance.md): Supported <br>[Live Migration](../../maintenance-and-updates.md): Supported <br>[Memory Preserving Updates](../../maintenance-and-updates.md): Supported <br>[Generation 2 VMs](../../generation-2.md): Supported <br>[Generation 1 VMs](../../generation-2.md): Not Supported <br>[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported <br>[Ephemeral OS Disk](../../ephemeral-os-disks.md): Not Supported <br>[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Supported <br>
+[Premium Storage](../../premium-storage-performance.md): Supported <br>[Premium Storage caching](../../premium-storage-performance.md): Supported <br>[Live Migration](../../maintenance-and-updates.md): Not Supported <br>[Memory Preserving Updates](../../maintenance-and-updates.md): Supported <br>[Generation 2 VMs](../../generation-2.md): Supported <br>[Generation 1 VMs](../../generation-2.md): Not Supported <br>[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported <br>[Ephemeral OS Disk](../../ephemeral-os-disks.md): Supported <br>[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Supported <br> [Azure Disk Encryption for Linux VMs](../../../virtual-machines/linux/disk-encryption-linux.md#restrictions): Not Supported <br>[Azure Disk Encryption for Windows VMs](../../../virtual-machines/windows/disk-encryption-windows.md#restrictions): Not Supported <br>
 
 ## Sizes in series
 
@@ -42,7 +39,11 @@ vCPUs (Qty.) and Memory for each size
 | Standard_E64ds_v6 | 64 | 512 |
 | Standard_E96ds_v6 | 96 | 768 |
 | Standard_E128ds_v6 | 128 | 1024 |
+| Standard_E192ids_v6 | 192 | 1832 |
 
+> [!NOTE]
+> - The E128 and E192i sizes will be available later in GA
+> 
 #### VM Basics resources
 - [Check vCPU quotas](../../../virtual-machines/quotas.md)
 
@@ -62,6 +63,7 @@ Local (temp) storage info for each size
 | Standard_E64ds_v6 | 4 | 880 | 1200000 | 5760 | 480000 | 2880 |
 | Standard_E96ds_v6 | 6 | 880 | 1800000 | 8640 | 720000 | 4320 |
 | Standard_E128ds_v6 | 4 | 1760 | 2400000 | 11520 | 960000 | 5760 |
+| Standard_E192ids_v6 | 6 | 1760 | 3600000 | 17280 | 1440000 | 8640 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
@@ -90,6 +92,8 @@ Remote (uncached) storage info for each size
 | Standard_E64ds_v6 | 64 | 102400 | 3392 | 102400 | 3392 | 133333 | 3969 | 133333 | 3969 |
 | Standard_E96ds_v6 | 64 | 153600 | 5088 | 153600 | 5088 | 200000 | 5953 | 200000 | 5953 |
 | Standard_E128ds_v6 | 64 | 204800 | 6782 | 204800 | 6782 | 266667 | 7935 | 266667 | 7935 |
+| Standard_E128ds_v6 | 64 | 204800 | 6782 | 204800 | 6782 | 266667 | 7935 | 266667 | 7935 |
+| Standard_E192ids_v6 | 64 | 3600000 | 17280 | 1440000 | 8640 | 400000 | 12000 | 400000 | 12000 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
@@ -121,6 +125,7 @@ Network interface info for each size
 | Standard_E64ds_v6 | 8 | 30000 |
 | Standard_E96ds_v6 | 8 | 41000 |
 | Standard_E128ds_v6 | 8 | 54000 |
+| Standard_E192ids_v6 | 8	| 200000 |
 
 #### Networking resources
 - [Virtual networks and virtual machines in Azure](/azure/virtual-network/network-overview)
@@ -141,4 +146,3 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 ---
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]
-

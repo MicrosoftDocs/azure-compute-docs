@@ -6,10 +6,11 @@ ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.custom:
   - build-2024
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 08/27/2024
 ms.author: archat
 ms.reviewer: mattmcinnes, tomvcassidy
+# Customer intent: "As a cloud architect, I want to understand the specifications and feature support of the Dpldsv6 series sizes, so that I can select the most appropriate virtual machine configuration for my applications and workloads."
 ---
 
 # Dpldsv6 sizes series
@@ -29,6 +30,8 @@ ms.reviewer: mattmcinnes, tomvcassidy
 - [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported 
 - [Ephemeral OS Disks](../../ephemeral-os-disks.md): Not Supported
 - [Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Not supported
+- [Azure Disk Encryption for Linux VMs](../../../virtual-machines/linux/disk-encryption-linux.md?tabs=azcliazure%2Cenableadecli%2Cefacli%2Cadedatacli#restrictions): Not Supported
+- [Azure Disk Encryption for Windows VMs](../../../virtual-machines/windows/disk-encryption-windows.md#restrictions): Not Supported
 
 ## Sizes in series
 

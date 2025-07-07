@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: "As a cloud administrator, I want to manage Service Fabric partitions using the command line so that I can efficiently execute operations like data loss and health reporting for improved service reliability."
 ---
 
 # sfctl partition

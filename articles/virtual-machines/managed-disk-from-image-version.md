@@ -10,6 +10,7 @@ ms.author: mattmcinnes
 ms.reviewer: olayemio
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
 ms.devlang: azurecli
+# Customer intent: "As a cloud administrator, I want to export an image version from an Azure Compute Gallery to a managed disk, so that I can efficiently manage and deploy VM images in my environment."
 ---
 
 # Export an image version to a managed disk
@@ -31,7 +32,7 @@ az sig image-version list \
    -o table
 ```
 
-Set the `source` variable to the ID of the image version, then use [az disk create](/cli/azure/disk#az-disk-create) to create the managed disk. 
+Set the source variable to the full resource ID of the image version from your Shared Image Gallery, then use [az disk create](/cli/azure/disk#az-disk-create) with the --gallery-image-reference parameter to create the managed disk.
 
 In this example, we export the OS disk of the image version to create a managed disk named *myManagedOSDisk*, in the *EastUS* region, in a resource group named *myResourceGroup*. 
 

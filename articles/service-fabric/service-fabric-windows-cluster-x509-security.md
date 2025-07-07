@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a system administrator, I want to secure my standalone Windows cluster using X.509 certificates, so that I can ensure authorized access and secure communication between nodes and clients.
 ---
 
 # Secure a standalone cluster on Windows by using X.509 certificates

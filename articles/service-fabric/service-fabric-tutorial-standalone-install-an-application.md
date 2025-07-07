@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a developer, I want to deploy an application to a standalone cluster, so that I can utilize my chosen environment and infrastructure for running my application effectively.
 ---
 
 # Tutorial: Deploy an application on your Service Fabric standalone cluster

@@ -8,6 +8,7 @@ ms.custom: linux-related-content
 ms.topic: how-to
 ms.author: jofrance
 ms.date: 11/18/2024
+# Customer intent: "As a Linux system administrator, I want to resize Azure Disk Encryption-encrypted disks using logical volume management, so that I can efficiently manage storage capacity while maintaining data security."
 ---
 
 # How to resize logical volume management devices that use Azure Disk Encryption

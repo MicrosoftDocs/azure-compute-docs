@@ -8,6 +8,7 @@ services: container-instances
 ms.topic: quickstart
 ms.date: 08/29/2024
 ms.custom: mode-api
+# Customer intent: As a developer, I want to deploy a containerized web application using the Docker CLI, so that I can quickly transition from local development to running in a serverless environment in the cloud.
 ---
 
 # Quickstart: Deploy a container instance in Azure using the Docker CLI

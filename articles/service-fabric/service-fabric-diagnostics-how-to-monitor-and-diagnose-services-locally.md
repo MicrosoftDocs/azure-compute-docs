@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a service developer, I want to implement effective monitoring and diagnostics for my applications using Event Tracing for Windows, so that I can seamlessly troubleshoot and optimize performance in both local and production environments.
 ---
 
 # Monitor and diagnose services in a local machine development setup

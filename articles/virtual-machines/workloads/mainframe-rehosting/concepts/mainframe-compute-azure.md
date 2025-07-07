@@ -8,6 +8,7 @@ ms.topic: concept-article
 ms.service: azure-virtual-machines
 ms.subservice: mainframe-rehosting
 
+# Customer intent: "As an enterprise IT manager, I want to migrate our mainframe applications to Azure Virtual Machines, so that I can leverage cost savings, scalability, and modernization opportunities while maintaining application performance and reliability."
 ---
 # Move mainframe compute to Azure
 

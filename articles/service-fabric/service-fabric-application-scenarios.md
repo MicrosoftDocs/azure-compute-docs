@@ -1,12 +1,13 @@
 ---
 title: Application scenarios and design
 description: Overview of categories of cloud applications in Service Fabric. Discusses application design that uses stateful and stateless services.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a cloud application developer, I want to design and implement both stateful and stateless microservices using a reliable platform, so that I can optimize resource management, achieve high availability, and ensure low latency for my applications."
 ---
 
 # Service Fabric application scenarios

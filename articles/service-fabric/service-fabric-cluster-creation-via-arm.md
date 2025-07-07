@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: devx-track-azurecli, devx-track-azurepowershell, devx-track-arm-template
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a cloud architect, I want to create a secure Azure Service Fabric cluster using templates, so that I can efficiently deploy and manage microservices in a scalable environment.
 ---
 
 # Create a Service Fabric cluster using Azure Resource Manager 

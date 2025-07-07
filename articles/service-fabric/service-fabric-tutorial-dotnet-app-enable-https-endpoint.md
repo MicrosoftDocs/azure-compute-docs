@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: devx-track-azurepowershell, devx-track-dotnet
 services: service-fabric
 ms.date: 05/17/2024
+# Customer intent: "As a developer deploying a Service Fabric application, I want to configure an HTTPS endpoint using Kestrel, so that my ASP.NET Core service can securely handle web traffic."
 ---
 
 # Tutorial: Add an HTTPS endpoint for a Service Fabric application by using Kestrel

@@ -8,6 +8,7 @@ ms.date: 03/17/2021
 author: ebolton-cyber
 ms.author: edewebolton
 ms.custom: devx-track-azurepowershell
+# Customer intent: As a cloud developer, I want to utilize Azure PowerShell to find and configure Azure Marketplace VM images, so that I can effectively create virtual machines with the required settings and comply with licensing terms.
 ---
 # Find and use Azure Marketplace VM images with Azure PowerShell
 

@@ -8,6 +8,7 @@ ms.author: gabsta
 author: GabstaMSFT
 ms.collection: windows
 ms.date: 04/14/2023
+# Customer intent: "As an IT administrator managing virtual machines, I want to deploy the Log Analytics agent using a VM extension, so that I can ensure effective monitoring and data ingestion into my Log Analytics workspace before the agent's deprecation in 2024."
 ---
 
 # Log Analytics agent virtual machine extension for Windows

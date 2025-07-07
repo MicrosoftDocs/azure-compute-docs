@@ -6,6 +6,7 @@ ms.author: rogarana
 ms.date: 01/07/2025
 ms.topic: how-to
 ms.service: azure-disk-storage
+# Customer intent: As a cloud architect, I want to benchmark my application using Azure Disk Storage, so that I can assess its performance under various workloads and ensure it meets my performance requirements.
 ---
 # Benchmark a disk
 

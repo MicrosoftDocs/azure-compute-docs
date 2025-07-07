@@ -8,6 +8,7 @@ ms.subservice: recovery
 ms.topic: tutorial
 ms.date: 06/30/2022
 ms.custom: template-tutorial
+# Customer intent: As a system administrator, I want to create virtual machine restore points through the Azure portal, so that I can protect data and minimize downtime for my organization.
 ---
 
 

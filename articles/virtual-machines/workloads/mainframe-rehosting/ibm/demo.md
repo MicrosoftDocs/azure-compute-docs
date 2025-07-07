@@ -6,8 +6,9 @@ ms.service: azure-virtual-machines
 ms.subservice: mainframe-rehosting
 author: swread
 ms.author: sread
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 02/22/2019
+# Customer intent: "As an application developer, I want to set up an Application Developers Controlled Distribution (ADCD) in an IBM Z Development and Test Environment on Azure, so that I can create and test mainframe applications in a cloud-based environment."
 ---
 # Set up an Application Developers Controlled Distribution (ADCD) in IBM zD&T v1
 

@@ -13,11 +13,18 @@ ms.topic: concept-article
 ms.tgt_pltfrm: vm-windows
 ms.date: 03/13/2022
 ms.author: magoedte
+# Customer intent: As a cloud administrator, I want to deploy the Desired State Configuration extension using Resource Manager templates so that I can manage the configuration of virtual machines effectively before transitioning to Azure Machine Configuration.
 ---
 # Desired State Configuration extension with Azure Resource Manager templates
 
 > [!NOTE]
-> Before you enable the DSC extension, we would like you to know that a newer version of DSC is now generally available, managed by a feature named [machine configuration](/azure/governance/machine-configuration/overview). The machine configuration feature includes features of the Desired State Configuration (DSC) extension handler and the most commonly requested features from customer feedback. Machine configuration also includes hybrid machine support through [Arc-enabled servers](/azure/azure-arc/servers/overview).
+> DSC extension will be retired on March 31, 2028. Please transition to
+> [Azure Machine Configuration](/azure/governance/machine-configuration/overview) by that date.
+> For more information, see the [blog post](https://azure.microsoft.com/updates/?id=485828)
+> announcement. The Azure Machine Configuration service combines certain features of DSC Extension, Azure
+> Automation State Configuration, and commonly requested features from customer feedback.
+> Azure Machine Configuration also includes hybrid machine support through
+> [Arc-enabled servers](/azure/azure-arc/servers/overview).
 
 This article describes the Azure Resource Manager template for the [Desired State Configuration
 (DSC) extension handler](dsc-overview.md).
@@ -72,7 +79,7 @@ resource configuration_dscext 'Microsoft.Compute/virtualMachines/extensions@2024
       }
     }
     protectedSettings: {
-      configurationArguements: {
+      configurationArguments: {
         arg2: arg2
       }
     }

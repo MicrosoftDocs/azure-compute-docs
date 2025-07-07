@@ -4,11 +4,12 @@ description: Explains the naming conventions used for Azure VM sizes
 ms.service: azure-virtual-machines
 subservice: sizes
 author: mimckitt
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 05/01/2023
 ms.author: mimckitt
 ms.reviewer: mattmcinnes
 ms.custom: sttsinar
+# Customer intent: "As an IT administrator, I want to understand the naming conventions for Azure VM sizes, so that I can select the appropriate VM configuration based on features and specifications for my infrastructure needs."
 ---
 
 # Azure virtual machine sizes naming conventions

@@ -5,6 +5,7 @@ ms.service: azure-container-instances
 ms.topic: include
 ms.date: 08/29/2024
 ms.author: tomcassidy
+# Customer intent: "As a cloud architect, I want to understand the maximum resource limits for GPU SKUs in container instances, so that I can optimize resource allocation for my applications."
 ---
 ### Maximum resources per SKU
 

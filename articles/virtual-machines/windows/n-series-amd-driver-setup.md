@@ -9,12 +9,15 @@ ms.collection: windows
 ms.topic: how-to
 ms.date: 04/13/2023
 ms.author: vikancha
+# Customer intent: As a cloud engineer, I want to install AMD GPU drivers on N-series VMs running Windows, so that I can ensure optimal performance and compatibility for GPU-based workloads in the Azure environment.
 ---
 
 # Install AMD GPU drivers on N-series VMs running Windows
 
 **Applies to:** Windows VMs :heavy_check_mark: Flexible scale sets 
-
+> [!NOTE]
+> The [AMD GPU Driver Extension](../extensions/hpccompute-amd-gpu-windows.md) installs AMD GPU drivers on a NVv4-series, NGads V620 Series and NVadsV710_v5 Series. Install or manage the extension using the Azure portal or tools such as Azure PowerShell or Azure Resource Manager templates. See the [AMD GPU Driver Extension documentation](../extensions/hpccompute-amd-gpu-windows.md) for supported operating systems and deployment steps.
+> 
 ## NGads V620 Series ##
 The AMD Software: Cloud Edition drivers must be installed to take advantage of the GPU capabilities of Azure NGads V620 Series VMs.
 
@@ -54,7 +57,7 @@ For basic specs, storage capacities, and disk details, see [GPU Windows VM sizes
 
 | OS | Driver |
 | -------- |------------- |
-| Windows 11 64-bit 21H2, 22H2, 23H2<br/><br/>Windows 10 64-bit 21H2, 22H2, 20H2 <br/><br/> | [23.Q3](https://download.microsoft.com/download/0/8/1/081db0c3-d2c0-44ae-be45-90a63610b16e/AMD-Azure-NVv4-Driver-23Q3-win10-win11.exe) (.exe) |
+| Windows 11 64-bit 21H2, 22H2, 23H2, 24H2<br/><br/>Windows 10 64-bit 21H2, 22H2, 20H2 <br/><br/> | [23.Q3](https://download.microsoft.com/download/0/8/1/081db0c3-d2c0-44ae-be45-90a63610b16e/AMD-Azure-NVv4-Driver-23Q3-win10-win11.exe) (.exe) |
 | Windows Server 2022, Windows 11 EMS <br/><br/> | [23.Q3](https://download.microsoft.com/download/2/d/3/2d328d15-4188-4fdb-8912-fb300a212dfc/AMD-Azure-NVv4-Driver-23Q3-winsvr2022.exe) (.exe)
 | Windows Server 2019, Windows 10 EMS <br/><br/> | [23.Q3](https://download.microsoft.com/download/e/8/8/e88bb244-b8e8-47cc-9f86-9ba2632b3cb6/AMD-Azure-NVv4-Driver-23Q3-winsvr2019.exe) (.exe)
 
@@ -66,13 +69,6 @@ Previous supported driver versions for Windows builds up to 1909 are [20.Q4-1](h
    >  [Computer Configuration->Policies->Windows Settings->Administrative Templates->Windows Components->Remote Desktop Services->Remote Desktop Session Host->Remote Session    Environment], set the Policy [Use WDDM graphics display driver for Remote Desktop Connections] to Disabled.
    >  
 
-## NVadsV710_v5 Series (In Preview) ##
-During the preview program manually download and install the following Windows drivers. Azure GPU driver extension will support the NVadsV710_v5 Series at GA.
-| OS | Driver |
-| -------- |------------- |
-| Windows 10, Windows 11 64-bit 21H2, 22H2, 23H2<br/><br/>Windows 10 64-bit 21H2, 22H2, 20H2 <br/><br/> | [24.Q3](https://go.microsoft.com/fwlink/?linkid=2291063) (.exe) |
-| Windows Server 2022, Windows 11 EMS <br/><br/> | [24.Q3](https://go.microsoft.com/fwlink/?linkid=2292204) (.exe)
-| Windows Server 2019, Windows 10 EMS <br/><br/> | [24.Q3](https://go.microsoft.com/fwlink/?linkid=2292402) (.exe)
  
 ### Driver installation
 > [!NOTE]
@@ -107,3 +103,12 @@ During the preview program manually download and install the following Windows d
 3. If you're running Windows 10 build 1903 or higher, dxdiag shows no information in the 'Display' tab. Use the 'Save All Information' option at the bottom and the output file shows the information related to AMD MI25 GPU.
 
 ![GPU driver properties](./media/n-series-amd-driver-setup/dxdiag-details.png)
+
+## NVadsV710_v5 Series (In Preview) ##
+During the preview program manually download and install the following Windows drivers. Azure GPU driver extension will support the NVadsV710_v5 Series at GA.
+
+| OS | Driver |
+| -------- |------------- |
+| Windows 10, Windows 11 64-bit 21H2, 22H2, 23H2<br/><br/>Windows 10 64-bit 21H2, 22H2, 20H2 <br/><br/> | [24.Q2](https://go.microsoft.com/fwlink/?linkid=2291063) (.exe) |
+| Windows Server 2022, Windows 11 EMS <br/><br/> | [24.Q2](https://go.microsoft.com/fwlink/?linkid=2292204) (.exe)
+| Windows Server 2019, Windows 10 EMS <br/><br/> | [24.Q2](https://go.microsoft.com/fwlink/?linkid=2292402) (.exe)

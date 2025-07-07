@@ -9,6 +9,7 @@ ms.date: 07-29-2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
+# Customer intent: "As a system architect planning infrastructure, I want to review the specifications of Ddsv5-series VMs, so that I can determine the most suitable size to meet my application performance and capacity requirements."
 ---
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
 |---|---|---|

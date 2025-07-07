@@ -8,6 +8,7 @@
  ms.date: 12/09/2024
  ms.author: rogarana
  ms.custom: include file, references_regions
+# Customer intent: "As a cloud developer, I want to understand the latency availability across different public regions, so that I can optimize my virtual machine deployment for better performance."
 ---
 
 Lower latency is currently available in every public region except for:

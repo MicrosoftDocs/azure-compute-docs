@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: devx-track-extended-java
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a Java developer, I want to secure service remoting communications in my Azure Service Fabric application, so that I can ensure the integrity and confidentiality of data exchanged between services.
 ---
 
 # Secure service remoting communications in a Java service
@@ -59,9 +60,9 @@ To help secure a service when you're using service remoting with Java services, 
         <Section Name="HelloWorldStatelessTransportSettings">
             <Parameter Name="MaxMessageSize" Value="10000000" />
             <Parameter Name="SecurityCredentialsType" Value="X509_2" />
-            <Parameter Name="CertificatePath" Value="/path/to/cert/BD1C71E248B8C6834C151174DECDBDC02DE1D954.crt" />
+            <Parameter Name="CertificatePath" Value="/path/to/cert/AA11BB22CC33DD44EE55FF66AA77BB88CC99DD00.crt" />
             <Parameter Name="CertificateProtectionLevel" Value="EncryptandSign" />
-            <Parameter Name="CertificateRemoteThumbprints" Value="BD1C71E248B8C6834C151174DECDBDC02DE1D954" />
+            <Parameter Name="CertificateRemoteThumbprints" Value="AA11BB22CC33DD44EE55FF66AA77BB88CC99DD00" />
         </Section>
 
        ```

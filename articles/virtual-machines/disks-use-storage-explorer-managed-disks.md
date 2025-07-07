@@ -6,6 +6,7 @@ ms.author: rogarana
 ms.date: 09/07/2021
 ms.topic: how-to
 ms.service: azure-disk-storage
+# Customer intent: "As a cloud administrator, I want to manage Azure managed disks using a dedicated tool, so that I can efficiently upload, download, copy, and create snapshots of disks across regions."
 ---
 
 # Use Azure Storage Explorer to manage Azure managed disks

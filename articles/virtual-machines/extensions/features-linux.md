@@ -9,6 +9,7 @@ author: GabstaMSFT
 ms.collection: linux
 ms.date: 05/24/2022
 ms.custom: GGAL-freshness822, devx-track-azurepowershell, devx-track-azurecli, linux-related-content
+# Customer intent: "As a system administrator managing Linux virtual machines, I want to utilize VM extensions for configuration and automation tasks, so that I can enhance operational efficiency and streamline deployment processes in Azure."
 ---
 
 # Virtual machine extensions and features for Linux

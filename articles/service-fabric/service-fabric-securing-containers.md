@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a cloud developer working with Service Fabric, I want to import certificate files into a container service, so that I can securely manage authentication and communication for my applications.
 ---
 
 # Import a certificate file into a container running on Service Fabric

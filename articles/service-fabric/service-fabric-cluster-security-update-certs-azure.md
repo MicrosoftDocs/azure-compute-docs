@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: devx-track-arm-template
 services: service-fabric
 ms.date: 11/14/2024
+# Customer intent: As a cloud administrator, I want to manage certificates in an Azure Service Fabric cluster so that I can ensure secure communication and compliance with my organization's security policies.
 ---
 
 # Add or remove certificates for a Service Fabric cluster in Azure
@@ -228,7 +229,7 @@ For quick reference here's the command to connect to a secure cluster
 
 ```powershell
 $ClusterName= "chackosecure5.westus.cloudapp.azure.com:19000"
-$CertThumbprint= "70EF5E22ADB649799DA3C8B6A6BF7SD1D630F8F3" 
+$CertThumbprint= "AA11BB22CC33DD44EE55FF66AA77BB88CC99DD00" 
 
 Connect-serviceFabricCluster -ConnectionEndpoint $ClusterName -KeepAliveIntervalInSec 10 `
     -X509Credential `

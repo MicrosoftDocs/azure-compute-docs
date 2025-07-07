@@ -7,6 +7,7 @@ ms.topic: how-to #Required; leave this attribute/value as-is.
 ms.service: azure #Required; use either service or product per approved list. 
 ms.date: 06/19/2024 #Required; mm/dd/yyyy format.
 ms.custom: template-overview #Required; leave this attribute/value as-is.
+# Customer intent: "As a cloud administrator, I want to view impact reports and insights through REST API or the Azure portal, so that I can monitor and address resource performance issues effectively."
 ---
 
 # View Impact Reports and Insights (Preview)

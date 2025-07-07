@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.date: 02/24/2023
 ms.author: jushiman
 ms.custom: H1Hack27Feb2017
+# Customer intent: As a cloud administrator, I want to create a Windows virtual machine using a Resource Manager template and PowerShell, so that I can efficiently deploy and manage the virtual infrastructure required for my applications.
 ---
 
 # Create a Windows virtual machine from a Resource Manager template

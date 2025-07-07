@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: devx-track-azurecli, devx-track-azurepowershell, devx-track-arm-template
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a cloud administrator, I want to enable disk encryption for Windows Service Fabric cluster nodes using Azure Key Vault, so that I can enhance data security and comply with regulatory requirements."
 ---
 
 # Enable disk encryption for Azure Service Fabric cluster nodes in Windows 

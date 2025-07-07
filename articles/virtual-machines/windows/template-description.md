@@ -7,6 +7,7 @@ ms.custom: devx-track-arm-template
 ms.topic: how-to
 ms.date: 04/11/2023
 ms.author: jushiman
+# Customer intent: "As a cloud architect, I want to define and deploy virtual machines using an infrastructure-as-code approach with resource templates, so that I can automate resource provisioning and ensure consistency in cloud environments."
 ---
 
 # Virtual machines in an Azure Resource Manager template

@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a system administrator, I want to manage chaos testing in a Service Fabric cluster using command line operations, so that I can assess the resilience and behavior of applications under failure conditions.
 ---
 
 # sfctl chaos

@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
 ms.date: 08/29/2024
+# Customer intent: As a cloud administrator, I want to configure logging for my Azure Container Instances so that I can collect and analyze resource logs and event data in a centralized logging workspace for better monitoring and troubleshooting.
 ---
 
 # Container group and instance logging with Azure Monitor logs

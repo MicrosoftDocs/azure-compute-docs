@@ -9,6 +9,7 @@ ms.subservice: sizes
 ms.date: 10/24/2024
 ms.author: mattmcinnes
 ms.custom: include file
+# Customer intent: "As a cloud architect, I want to evaluate M-family virtual machines, so that I can determine their suitability for high-memory workloads like SQL Server, big data applications, and enterprise systems in our infrastructure."
 ---
 **SQL Server workloads with high memory needs:** The M-family is particularly effective for running SQL Server machines with high memory requirements, such as for [online transaction processing (OLTP)](/azure/architecture/data-guide/relational-data/online-transaction-processing) or [data analytics](/azure/architecture/data-guide/relational-data/online-analytical-processing). 
 

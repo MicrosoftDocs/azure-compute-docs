@@ -8,6 +8,7 @@ ms.subservice: recovery
 ms.topic: tutorial
 ms.date: 10/31/2023
 ms.custom: template-tutorial
+# Customer intent: As an IT administrator, I want to copy virtual machine restore points to another region, so that I can ensure data availability and disaster recovery across multiple geographical locations.
 ---
 
 # Cross-region copy of VM restore points

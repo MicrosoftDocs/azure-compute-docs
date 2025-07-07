@@ -9,6 +9,7 @@ ms.date: 07/31/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
+# Customer intent: As a cloud architect, I want to understand the implications of the NV-series VM retirement and the migration options available, so that I can effectively transition workloads to suitable alternatives and ensure continued performance for graphic-intensive applications.
 ---
 > [!IMPORTANT]
 > NV and NV_Promo series Azure virtual machines (VMs) will be retired on September 6, 2023. For more information, see the [NV and NV_Promo retirement information](../../../nv-series-retirement.md). For how to migrate your workloads to other VM sizes, see the [NV and NV_Promo series migration guide](../../../nv-series-migration-guide.md).

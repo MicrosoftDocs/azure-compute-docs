@@ -9,6 +9,7 @@ author: bobbytreed
 ms.author: robreed
 ms.date: 05/02/2018
 ms.topic: how-to
+# Customer intent: "As a system administrator managing Azure Linux VMs, I want to run scripts for configuration and troubleshooting, so that I can automate tasks and resolve issues efficiently, even when network access is limited."
 ---
 # Run scripts in your Linux VM
 

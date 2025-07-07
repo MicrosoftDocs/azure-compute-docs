@@ -8,6 +8,7 @@ ms.author: jushiman
 ms.date: 03/10/2023
 ms.topic: how-to
 ms.reviewer: jushiman
+# Customer intent: As a system administrator, I want to utilize Run Command to execute scripts on Azure VMs, so that I can efficiently manage, diagnose, and automate tasks within my virtual machine environment.
 ---
 
 # Run scripts in your VM by using Run Command

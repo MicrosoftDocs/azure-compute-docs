@@ -9,6 +9,7 @@ ms.date: 01/22/2025
 ms.author: jushiman
 ms.reviewer: jushiman
 ms.custom: mvc, mode-ui
+# Customer intent: As a cloud user, I want to create a Windows virtual machine through the portal, so that I can deploy and test applications in a controlled environment.
 ---
 
 # Quickstart: Create a Windows virtual machine in the Azure portal

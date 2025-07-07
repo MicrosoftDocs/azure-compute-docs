@@ -8,6 +8,7 @@ ms.service: azure-virtual-machine-scale-sets
 ms.custom: subject-policy-reference
 ms.date: 06/14/2024
 ms.reviewer: mimckitt
+# Customer intent: "As a cloud administrator, I want to access built-in policy definitions for Azure Virtual Machine Scale Sets, so that I can efficiently manage compliance and governance of my resources."
 ---
 # Azure Policy built-in definitions for Azure Virtual Machine Scale Sets
 
@@ -20,11 +21,11 @@ the link in the **Version** column to view the source on the [Azure Policy GitHu
 
 ## Microsoft.Compute
 
-[!INCLUDE [azure-policy-reference-rp-compute](~/azure-docs-pr/includes/policy/reference/byrp/microsoft.compute.md)]
+[!INCLUDE [azure-policy-reference-rp-compute](~/azure-policy-autogen-docs/includes/policy/reference/byrp/microsoft.compute.md)]
 
 ## Microsoft.ClassicCompute
 
-[!INCLUDE [azure-policy-reference-rp-classiccompute](~/azure-docs-pr/includes/policy/reference/byrp/microsoft.classiccompute.md)]
+[!INCLUDE [azure-policy-reference-rp-classiccompute](~/azure-policy-autogen-docs/includes/policy/reference/byrp/microsoft.classiccompute.md)]
 
 ## Next steps
 

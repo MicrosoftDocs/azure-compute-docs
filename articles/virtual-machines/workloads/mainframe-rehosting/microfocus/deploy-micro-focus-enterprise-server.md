@@ -5,10 +5,11 @@ services: virtual-machines
 author: swread
 ms.author: sread
 manager: mamccrea 
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 06/29/2020
 ms.service: azure-virtual-machines
 ms.subservice: mainframe-rehosting
+# Customer intent: As a software engineer, I want to deploy a Micro Focus Enterprise Server Docker image to Azure Kubernetes Service, so that I can effectively manage and scale my mainframe workloads in the cloud.
 ---
 
 # Deploy Micro Focus Enterprise Server 5.0 to AKS

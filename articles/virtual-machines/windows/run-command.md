@@ -11,6 +11,7 @@ ms.topic: how-to
 ms.reviewer: jushiman
 ms.custom: devx-track-azurecli
 ms.devlang: azurecli
+# Customer intent: As a system administrator, I want to execute PowerShell scripts on my Windows virtual machines remotely, so that I can manage and troubleshoot issues without needing direct access.
 ---
 # Run scripts in your Windows VM by using action Run Commands
 
@@ -25,20 +26,18 @@ This capability is useful in all scenarios where you want to run a script within
 ## Prerequisites
 
 ### **Windows Operating Systems Supported**
-| **Windows OS** |	**x64** |
-|:----|:----:|
-| Windows 10 |	Supported |
-| Windows 11 |	Supported |
-| Windows Server 2008 SP2 |	Supported |
-| Windows Server 2008 R2 |	Supported |
-| Windows Server 2012 |	Supported |
-| Windows Server 2012 R2 |	Supported |
-| Windows Server 2016 |	Supported |
-| Windows Server 2016 Core |	Supported |
-| Windows Server 2019 |	Supported |
-| Windows Server 2019 Core |	Supported |
-| Windows Server 2022 |	Supported |
-| Windows Server 2022 Core |	Supported |
+| OS Version | x64 | ARM64 |
+|:-----|:-----:|:-----:|
+| Windows 10 | Supported | Supported |
+| Windows 11 | Supported | Supported |
+| Windows Server 2016 | Supported | Supported |
+| Windows Server 2016 Core | Supported | Supported |
+| Windows Server 2019 | Supported | Supported |
+| Windows Server 2019 Core | Supported | Supported |
+| Windows Server 2022 | Supported | Supported |
+| Windows Server 2022 Core | Supported | Supported |
+| Windows Server 2025 | Supported | Supported |
+| Windows Server 2025 Core | Supported | Supported |
 
 ## Restrictions
 
@@ -52,7 +51,7 @@ The following restrictions apply when you're using Run Command:
 * You can't cancel a running script.
 * The maximum time a script can run is 90 minutes. After that, it will time out.
 * Outbound connectivity from the VM is required to return the results of the script.
-* It isn't recommended to run a script that will cause a stop or update of the VM Agent. This can let the extension in a Transitioning state, leading to a timeout.
+* It isn't recommended to run a script that will cause a stop or update of the VM Agent. This can let the extension in a Transitioning state, leading to a time-out.
 
 > [!NOTE]
 > To function correctly, Run Command requires connectivity (port 443) to Azure public IP addresses. If the extension doesn't have access to these endpoints, the scripts might run successfully but not return the results. If you're blocking traffic on the virtual machine, you can use [service tags](/azure/virtual-network/network-security-groups-overview#service-tags) to allow traffic to Azure public IP addresses by using the `AzureCloud` tag.

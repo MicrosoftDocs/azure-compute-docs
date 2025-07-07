@@ -8,6 +8,7 @@ ms.topic: how-to
 ms.date: 04/12/2022
 ms.author: jushiman
 ms.custom: portal
+# Customer intent: "As a cloud administrator, I want to capture an image of a virtual machine using the portal, so that I can create multiple VMs from a single source and ensure data consistency during the process."
 ---
 # Create an image of a VM in the portal
 

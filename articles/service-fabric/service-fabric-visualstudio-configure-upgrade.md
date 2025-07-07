@@ -1,12 +1,13 @@
 ---
 title: Configure the upgrade of a Service Fabric application 
 description: Learn how to configure the settings for upgrading a Service Fabric application by using Microsoft Visual Studio.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As an application developer, I want to configure the upgrade settings for a Service Fabric application in Visual Studio, so that I can ensure data preservation and minimize service interruptions during deployment.
 ---
 
 # Configure the upgrade of a Service Fabric application in Visual Studio

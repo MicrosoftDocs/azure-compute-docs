@@ -8,6 +8,7 @@ ms.service: azure-container-instances
 services: container-instances
 ms.date: 08/29/2024
 ms.custom: mvc, linux-related-content
+# Customer intent: As a cloud developer, I want to deploy and manage containerized applications using serverless containers, so that I can simplify resource management and achieve faster startup times without the overhead of virtual machines.
 ---
 
 # What is Azure Container Instances?

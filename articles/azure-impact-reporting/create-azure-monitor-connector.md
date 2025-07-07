@@ -7,6 +7,7 @@ ms.service: azure #Required; use either service or product per approved list.
 ms.topic: overview #Required; leave this attribute/value as-is.
 ms.date: 06/19/2024 #Required; mm/dd/yyyy format.
 ms.custom: template-overview #Required; leave this attribute/value as-is.
+# Customer intent: As an IT administrator, I want to create an Impact Reporting connector for Azure Monitor Alerts, so that I can efficiently manage and report on alerts across my Azure subscriptions.
 ---
 
 # Create an Impact Connector for Azure Monitor Alerts (Preview)
@@ -31,7 +32,7 @@ Here's what deployment scripts do:
 * This connector reports an impact whenever an alert from those subscriptions is triggered.
 
 ##### 1. **Get the script**
-Go to the [Impact Reporting samples](https://github.com/Azure/impact-reporting-samples/tree/main/Onboarding/Connector/Scripts) GitHub repo and choose your script and choose either the bash or PowerShell script.
+Go to the [Impact Reporting samples](https://github.com/Azure/impact-reporting-samples/tree/main/Onboarding/Connector/Azure%20Monitor%20Connector/Scripts) GitHub repo and choose your script and choose either the bash or PowerShell script.
 ##### 2. **Execute in your environment**
 You need to execute this script in your Azure environment.
 

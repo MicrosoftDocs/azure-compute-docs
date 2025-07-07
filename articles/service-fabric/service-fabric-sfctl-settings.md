@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: "As a developer using the Azure Service Fabric CLI, I want to configure local sfctl settings, so that I can customize the command line interface to better suit my application's telemetry and management needs."
 ---
 
 # sfctl settings

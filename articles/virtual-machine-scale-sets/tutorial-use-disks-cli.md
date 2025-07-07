@@ -10,6 +10,7 @@ ms.date: 10/28/2024
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
 
+# Customer intent: As a cloud engineer, I want to create and manage disks for Virtual Machine Scale Sets using the command line interface, so that I can effectively handle the storage requirements of my applications and optimize disk performance for varying workloads.
 ---
 # Tutorial: Create and use disks with Virtual Machine Scale Set with the Azure CLI
 Virtual Machine Scale Sets use disks to store the Virtual Machine (VM) instance's operating system, applications, and data. As you create and manage a scale set, it's important to choose a disk size and configuration appropriate to the expected workload. This tutorial covers how to create and manage VM disks. In this tutorial, you learn about:

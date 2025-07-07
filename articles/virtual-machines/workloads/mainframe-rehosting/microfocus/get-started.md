@@ -8,6 +8,7 @@ ms.date: 03/30/2020
 ms.topic: concept-article
 ms.service: azure-virtual-machines
 ms.subservice: mainframe-rehosting
+# Customer intent: "As an IT manager overseeing legacy systems, I want to rehost mainframe applications on Azure using Micro Focus tools, so that I can enhance our development and testing environments while modernizing our operations."
 ---
 
 # Micro Focus dev/test environments on Azure

@@ -4,10 +4,11 @@ description: Information on and specifications of the Easv6-series sizes
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 08/01/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
+# Customer intent: As a cloud architect, I want to review the specifications of the Easv6 size series, so that I can select the appropriate virtual machine configurations for my applications' performance and storage needs.
 ---
 
 # Easv6 sizes series

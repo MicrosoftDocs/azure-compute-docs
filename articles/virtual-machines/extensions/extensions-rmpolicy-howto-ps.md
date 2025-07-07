@@ -10,6 +10,7 @@ ms.reviewer: jushiman
 ms.collection: windows
 ms.date: 04/11/2023
 ms.custom: devx-track-azurepowershell
+# Customer intent: As an IT administrator, I want to create and assign an Azure Policy to restrict the installation of certain VM extensions, so that I can maintain control and ensure compliance within my Windows virtual environments.
 ---
 
 # Use Azure Policy to restrict extensions installation on Windows VMs

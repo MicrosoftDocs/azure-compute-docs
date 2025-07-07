@@ -7,6 +7,7 @@
  ms.date: 10/11/2022
  ms.author: jushiman
  ms.custom: include file
+# Customer intent: As a cloud architect, I want to configure a Virtual Machine Scale Set with a mix of on-demand and Spot VMs, so that I can optimize infrastructure costs while ensuring capacity availability for my workloads.
 ---
 
 On October 12, 2022  [Spot Priority Mix](../spot-priority-mix.md) was introduced for scale sets using Flexible orchestration.

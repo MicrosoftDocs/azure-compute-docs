@@ -9,6 +9,7 @@ ms.collection: linux
 ms.topic: how-to
 ms.date: 04/16/2020
 ms.author: jushiman
+# Customer intent: "As a system administrator managing RHEL VMs on Azure, I want to perform in-place upgrades from RHEL 7 to RHEL 8, and RHEL 8 to RHEL 9, so that I can keep the operating systems up to date while retaining applications and configurations."
 ---
 
 # Red Hat Enterprise Linux in-place upgrades
@@ -27,20 +28,18 @@ ms.author: jushiman
 ## What is RHEL in-place upgrade?
 During an in-place upgrade, the earlier RHEL OS major version will be replaced with the new RHEL OS major version without removing the earlier version first. The installed applications and utilities, along with the configurations and preferences, are incorporated into the new version.
 
+## Upgrade RHEL VMs
+In general, Red Hat only supports upgrading from version to the next; you cannot skip versions. See the Red Hat's documentation on in-place upgrades:
 
-## Upgrade from RHEL 7 VMs to RHEL 8 VMs
-Instructions for an in-place upgrade from Red Hat Enterprise Linux 7 VMs to Red Hat Enterprise Linux 8 VMs on Azure is provided at the [Red Hat upgrading from RHEL 7 to RHEL 8 documentation here.](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html-single/upgrading_from_rhel_7_to_rhel_8/index)
+[Upgrading from RHEL 7 to RHEL 8.](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html-single/upgrading_from_rhel_7_to_rhel_8/index)
 
-## Upgrade from RHEL 8 VMs to RHEL 9 VMs
-Instructions for an in-place upgrade from Red Hat Enterprise Linux 8 VMs to Red Hat Enterprise Linux 9 VMs on Azure is provided at the [Red Hat upgrading from RHEL 8 to RHEL 9 documentation here.](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/upgrading_from_rhel_8_to_rhel_9/index)
+[Upgrading from RHEL 8 to RHEL 9.](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/upgrading_from_rhel_8_to_rhel_9/index)
 
-## Upgrade SAP environments from RHEL 7 VMs to RHEL 8 VMs
-Instructions for an in-place upgrade from Red Hat Enterprise Linux 7 SAP VMs to Red Hat Enterprise Linux 8 SAP VMs on Azure is provided at the [Red Hat upgrading from RHEL 7 SAP to RHEL 8 SAP documentation here.](https://access.redhat.com/solutions/5154031)
+[Upgrading from RHEL 9 to RHEL 10.](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/10/html/upgrading_from_rhel_9_to_rhel_10/index)
 
-## Upgrade SAP environments from RHEL 8 VMs to RHEL 9 VMs
-Instructions for an in-place upgrade from Red Hat Enterprise Linux 8 SAP VMs to Red Hat Enterprise Linux 9 SAP VMs on Azure is provided at the [Red Hat upgrading from RHEL 8 SAP to RHEL 9 SAP documentation here.](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux_for_sap_solutions/9/html/upgrading_sap_environments_from_rhel_8_to_rhel_9/index)
+[Upgrading from RHEL 7 SAP to RHEL 8 SAP.](https://access.redhat.com/solutions/5154031)
 
-
+[Upgrading from RHEL 8 SAP to RHEL 9 SAP.](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux_for_sap_solutions/9/html/upgrading_sap_environments_from_rhel_8_to_rhel_9/index)
 
 
 ## Next steps

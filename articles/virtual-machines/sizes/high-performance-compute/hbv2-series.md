@@ -4,10 +4,11 @@ description: Information on and specifications of the HBv2-series sizes
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 01/28/2025
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
+# Customer intent: "As a cloud architect, I want to understand the specifications and feature support of the HBv2 virtual machine sizes, so that I can select the appropriate VM type for my high-performance computing projects."
 ---
 
 # HBv2 sizes series
@@ -26,13 +27,13 @@ ms.reviewer: mattmcinnes
 
 vCPUs (Qty.) and Memory for each size
 
-| Size Name | vCPUs (Qty.) | Memory (GB) | Memory Bandwidth (GB/s) | Base CPU Frequency (GHz) | Single-core Frequency Peak (GHz) | All-core Frequency Peak (GHz) |
-| --- | --- | --- | --- | --- | --- | --- |
-| Standard_HB120rs_v2 | 120 | 456 | 350 | 2.45 | 3.3 | 3.1 |
-| Standard_HB120-96rs_v2 | 96 | 456 | 350 | 2.45 | 3.3 | 3.1 |
-| Standard_HB120-64rs_v2 | 64 | 456 | 350 | 2.45 | 3.3 | 3.1 |
-| Standard_HB120-32rs_v2 | 32 | 456 | 350 | 2.45 | 3.3 | 3.1 |
-| Standard_HB120-16rs_v2 | 16 | 456 | 350 | 2.45 | 3.3 | 3.1 |
+| Size Name | vCPUs (Qty.) | Memory (GB) | L3 Cache (MB) | Memory Bandwidth (GB/s) | Base CPU Frequency (GHz) | Single-core Frequency Peak (GHz) | All-core Frequency Peak (GHz) |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Standard_HB120rs_v2 | 120 | 456 | 512 | 350 | 2.45 | 3.3 | 3.1 |
+| Standard_HB120-96rs_v2 | 96 | 456 | 512 | 350 | 2.45 | 3.3 | 3.1 |
+| Standard_HB120-64rs_v2 | 64 | 456 | 512 | 350 | 2.45 | 3.3 | 3.1 |
+| Standard_HB120-32rs_v2 | 32 | 456 | 512 | 350 | 2.45 | 3.3 | 3.1 |
+| Standard_HB120-16rs_v2 | 16 | 456 | 512 | 350 | 2.45 | 3.3 | 3.1 |
 
 #### VM Basics resources
 - [Check vCPU quotas](../../../virtual-machines/quotas.md)
@@ -41,7 +42,7 @@ vCPUs (Qty.) and Memory for each size
 
 Local (temp) storage info for each size
 
-| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Local Solid State Disks (Qty.) | Local Solid State Disk Size (GB) |
+| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Local Solid State Disks (Qty.) | Local Solid State Disk Size (GiB) |
 | --- | --- | --- | --- | --- |
 | Standard_HB120rs_v2 | 1 | 480 | 1 | 960 |
 | Standard_HB120-96rs_v2 | 1 | 480 | 1 | 960 |

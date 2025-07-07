@@ -10,6 +10,7 @@ ms.subservice: extensions
 ms.collection: windows
 ms.date: 03/09/2023
 ms.custom: devx-track-azurepowershell
+# Customer intent: As an IT admin, I want to enable Azure Diagnostics on a Windows VM using PowerShell, so that I can collect and analyze diagnostic data for better performance monitoring and troubleshooting.
 ---
 # Use PowerShell to enable Azure Diagnostics in a virtual machine running Windows
 

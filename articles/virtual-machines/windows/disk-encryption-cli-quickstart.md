@@ -7,8 +7,9 @@ ms.service: azure-virtual-machines
 ms.subservice: security
 ms.collection: windows
 ms.topic: quickstart
-ms.date: 02/20/2024
+ms.date: 05/14/2025
 ms.custom: devx-track-azurecli, mode-api
+# Customer intent: "As a cloud administrator, I want to create and encrypt a Windows virtual machine using command-line tools, so that I can enhance the security of my Azure resources efficiently."
 ---
 
 # Quickstart: Create and encrypt a Windows VM with the Azure CLI

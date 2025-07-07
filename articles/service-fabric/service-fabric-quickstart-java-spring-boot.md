@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: devx-track-extended-java
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: "As a developer, I want to deploy a Spring Boot application on a distributed systems platform, so that I can manage microservices and ensure high availability and scalability in a cloud environment."
 ---
 # Quickstart: Deploy a Java Spring Boot app on Azure Service Fabric
 

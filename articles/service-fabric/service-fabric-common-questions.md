@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 08/16/2024
+# Customer intent: As a cloud architect, I want to understand Service Fabric's capabilities and best practices for setup and management, so that I can design resilient and efficient applications that leverage distributed microservices architecture.
 ---
 
 

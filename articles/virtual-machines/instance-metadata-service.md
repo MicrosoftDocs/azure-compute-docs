@@ -9,6 +9,7 @@ ms.custom: linux-related-content
 ms.date: 04/11/2023
 ms.author: frdavid
 ms.reviewer: azmetadatadev
+# Customer intent: "As a cloud administrator, I want to access the Azure Instance Metadata Service from my virtual machine, so that I can retrieve configuration and runtime information about the VM for management and automation purposes."
 ---
 
 # Azure Instance Metadata Service
@@ -151,8 +152,9 @@ For example, `/metadata/instance` returns the json object:
                     }]
                 },
                 "ipv6": {
-                    "ipAddress": [
-                     ]
+                    "ipAddress": [{
+                        "privateIpAddress": "b4bc:8fce:f33b:4990:cced:d94e:ab4f:6ea0"
+                    }]
                 },
                 "macAddress": "0011AAFFBB22"
             },
@@ -189,8 +191,9 @@ would filter to the first element from the `Network.interface` property and retu
         }]
     },
     "ipv6": {
-        "ipAddress": [
-         ]
+        "ipAddress": [{
+            "privateIpAddress": "b4bc:8fce:f33b:4990:cced:d94e:ab4f:6ea0"
+        }]
     },
     "macAddress": "0011AAFFBB22"
 }
@@ -483,11 +486,11 @@ If there's [no local temp disk for the VM](azure-vms-no-temp-disk.yml), this val
 
 | Data | Description | Version introduced |
 |------|-------------|--------------------|
-| `ipv4.privateIpAddress` | Local IPv4 address of the VM | 2017-04-02
-| `ipv4.publicIpAddress` | Public IPv4 address of the VM | 2017-04-02
-| `subnet.address` | Subnet address of the VM | 2017-04-02
-| `subnet.prefix` | Subnet prefix, example 24 | 2017-04-02
-| `ipv6.ipAddress` | Local IPv6 address of the VM | 2017-04-02
+| `ipv4.ipAddress.privateIpAddress` | Local IPv4 address of the VM | 2017-04-02
+| `ipv4.ipAddress.publicIpAddress` | Public IPv4 address of the VM | 2017-04-02
+| `ipv4.subnet.address` | Subnet address of the VM | 2017-04-02
+| `ipv4.subnet.prefix` | Subnet prefix, example 24 | 2017-04-02
+| `ipv6.ipAddress.privateIpAddress` | Local IPv6 address of the VM | 2017-04-02
 | `macAddress` | VM mac address | 2017-04-02
 
 > [!NOTE]
@@ -1051,7 +1054,9 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/ne
         ]
       },
       "ipv6": {
-        "ipAddress": []
+        "ipAddress": [{
+          "privateIpAddress": "b4bc:8fce:f33b:4990:cced:d94e:ab4f:6ea0"
+        }]
       },
       "macAddress": "000D3AF806EC"
     }
@@ -1137,7 +1142,7 @@ Example document:
       "publisher":"planPublisher"
    },
    "sku":"Windows-Server-2012-R2-Datacenter",
-   "subscriptionId":"8d10da13-8125-4ba9-a717-bf7490507b3d",
+   "subscriptionId":"aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e",
    "timeStamp":{
       "createdOn":"11/30/20 21:19:19 -0000",
       "expiresOn":"11/30/20 21:19:24 -0000"
@@ -1517,7 +1522,7 @@ If there's a data element not found or a malformed request, the Instance Metadat
 
 ## Support
 
-If you'ren't able to get a metadata response after multiple attempts, you can create a support issue in the Azure portal.
+If you aren't able to get a metadata response after multiple attempts, you can create a support issue in the Azure portal.
 
 ## Product feedback
 

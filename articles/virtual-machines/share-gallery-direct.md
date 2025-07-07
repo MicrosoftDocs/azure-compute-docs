@@ -10,6 +10,7 @@ ms.author: saraic
 ms.reviewer: cynthn
 ms.custom: template-how-to , devx-track-azurecli
 ms.devlang: azurecli
+# Customer intent: As a cloud administrator, I want to share an Azure Compute Gallery with specific subscriptions and tenants, so that I can provide controlled read-only access to images for users within my organization and facilitate image deployment efficiently.
 ---
 
 # Share a gallery with all users in a subscription or tenants (preview)
@@ -20,11 +21,12 @@ This article covers how to share an Azure Compute Gallery with specific subscrip
 > [!IMPORTANT]
 > Azure Compute Gallery – direct shared gallery is currently in PREVIEW and subject to the [Preview Terms for Azure Compute Gallery](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
-> To publish images to a direct shared gallery during the preview, you need to register at [https://aka.ms/directsharedgallery-preview](https://aka.ms/directsharedgallery-preview). Please submit the form and share your business case. No additional access required to consume images, Creating VMs from a direct shared gallery is open to all Azure users in the target subscription or tenant the gallery is shared with. In most scenarios RBAC/Cross-tenant sharing using service principal is sufficient, and encourage customers to leverage RBAC sharing. Request access to Direct shared gallery feature only if you wish to share images widely with all users in the subscription/tenant and if your business case requires access to direct shared gallery.
+> To publish images to a direct shared gallery during the preview, you need to register at [https://aka.ms/directsharedgallery-preview](https://aka.ms/directsharedgallery-preview). No additional access required to consume images, Creating VMs from a direct shared gallery is open to all Azure users in the target subscription or tenant the gallery is shared with. During the preview, you need to create a new gallery, with the property `sharingProfile.permissions` set to `Groups`. When using the CLI to create a gallery, use the `--permissions groups` parameter. You can't use an existing gallery, the property can't currently be updated.
 >
-> During the preview, you need to create a new gallery, with the property `sharingProfile.permissions` set to `Groups`. When using the CLI to create a gallery, use the `--permissions groups` parameter. You can't use an existing gallery, the property can't currently be updated.
-
-> [!NOTE]
+>  [!NOTE]
+> Access to Direct Shared Gallery feature is gated because in most scenarios RBAC/App Sharing is sufficient for same subscription and cross tenant scenarios, Request access to the feature only if you wish to share images widely with all users in the subscription/tenant and if your business case requires access to direct shared gallery.
+>
+>  [!NOTE]
 > Please note that Images can be used with read permissions on them to deploy virtual machines and disks.
 > 
 > When utilizing the direct shared gallery, images are distributed widely to all users in a subscription/tenant, while the community gallery distributes images publicly. It is recommended to exercise caution when sharing images that contain intellectual property to prevent widespread distribution.

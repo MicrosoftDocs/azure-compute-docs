@@ -9,6 +9,7 @@ ms.date: 08/01/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
+# Customer intent: "As a data scientist, I want to utilize ND H100 v5 series VMs for my deep learning and AI projects, so that I can leverage high-performance GPU capabilities for efficient training and scaling of my models."
 ---
 The ND H100 v5 series virtual machine (VM) is a new flagship addition to the Azure GPU family. This series is designed for high-end Deep Learning training and tightly coupled scale-up and scale-out Generative AI and HPC workloads.
 

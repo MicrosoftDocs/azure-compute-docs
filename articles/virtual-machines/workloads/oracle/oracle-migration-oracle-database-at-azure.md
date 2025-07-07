@@ -6,6 +6,7 @@ ms.author: v-suzuber
 ms.service: oracle-on-azure
 ms.topic: concept-article
 ms.date: 10/03/2024
+# Customer intent: As an IT administrator, I want to migrate Oracle workloads to Oracle Database on Azure, so that I can leverage cloud infrastructure for improved reliability, resilience, and scalability while ensuring minimal disruption to business operations.
 ---
 
 # Migrate Oracle workloads to Oracle Database@Azure

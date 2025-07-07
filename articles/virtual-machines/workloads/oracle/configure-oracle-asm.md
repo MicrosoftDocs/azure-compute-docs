@@ -8,6 +8,7 @@ ms.collection: linux
 ms.topic: how-to
 ms.date: 10/01/2024
 ms.author: jacobjaygbay
+# Customer intent: As a database administrator, I want to set up Oracle Automatic Storage Management on Azure Linux virtual machines, so that I can efficiently manage storage for my Oracle databases in a cloud environment.
 ---
 
 # Set up Oracle ASM on an Azure Linux virtual machine

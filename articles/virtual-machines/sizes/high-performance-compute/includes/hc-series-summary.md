@@ -5,10 +5,11 @@ author: mattmcinnes
 ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.date: 08/01/2024
-ms.author: mattmcinnes
+ms.date: 01/31/2025
+ms.author: padmalathas
 ms.reviewer: mattmcinnes
 ms.custom: include file
+# Customer intent: "As a computational scientist, I want to utilize HC-series virtual machines, so that I can run complex simulations and analyses efficiently with optimized performance and scalability."
 ---
 HC-series VMs are optimized for applications driven by dense computation, such as implicit finite element analysis, molecular dynamics, and computational chemistry. HC VMs feature 44 Intel Xeon Platinum 8168 processor cores, 8 GB of RAM per CPU core, and no hyperthreading. The Intel Xeon Platinum platform supports Intel’s rich ecosystem of software tools such as the Intel Math Kernel Library and advanced vector processing capabilities such as AVX-512.
 

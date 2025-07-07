@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.reviewer: jushiman
 ms.date: 11/7/2023
 ms.custom: devx-track-azurepowershell
+# Customer intent: "As an IT administrator, I want to enable Automatic Extension Upgrade for virtual machines and scale sets, so that I can ensure all extensions are automatically updated to the latest versions without manual intervention for improved security and functionality."
 ---
 
 # Automatic Extension Upgrade for virtual machines and scale sets in Azure
@@ -72,16 +73,61 @@ To check if your extensions are supported for automatic upgrade, view Automatic 
 
 Following are popular extensions supported for automatic upgrades (and more are added periodically):
 
-- [Azure Automation Hybrid Worker extension](/azure/automation/extension-based-hybrid-runbook-worker-install): Linux and Windows
-- Dependency Agent: [Linux](./extensions/agent-dependency-linux.md) and [Windows](./extensions/agent-dependency-windows.md)
-- [Application Health extension](../virtual-machine-scale-sets/virtual-machine-scale-sets-health-extension.md): Linux and Windows
-- [Guest Attestation extension](../virtual-machines/boot-integrity-monitoring-overview.md): Linux and Windows
-- [Guest Configuration extension](./extensions/guest-configuration.md): Linux and Windows
-- Azure Key Vault: [Linux](./extensions/key-vault-linux.md) and [Windows](./extensions/key-vault-windows.md)
-- [Azure Monitor agent](/azure/azure-monitor/agents/azure-monitor-agent-overview)
-- [Log Analytics agent for Linux](/azure/azure-monitor/agents/log-analytics-agent)
-- [Azure Diagnostics extension for Linux](/azure/azure-monitor/agents/diagnostics-extension-overview)
-- Azure Service Fabric: [Linux](../service-fabric/service-fabric-tutorial-create-vnet-and-linux-cluster.md#service-fabric-extension)
+| Publisher                                         | Type                          |
+|---------------------------------------------------|-------------------------------|
+| Microsoft.Azure.Automation.HybridWorker           | [HybridWorkerForLinux](/azure/automation/extension-based-hybrid-runbook-worker-install)       |
+| Microsoft.Azure.Automation.HybridWorker           | [HybridWorkerForWindows](/azure/automation/extension-based-hybrid-runbook-worker-install)        |
+| Microsoft.Azure.AzureDefenderForSQL               | AdvancedThreatProtection.Windows |
+| Microsoft.Azure.AzureDefenderForSQL               | VulnerabilityAssessment.Windows |
+| Microsoft.Azure.AzureDefenderForServers           | MDE.Linux                     |
+| Microsoft.Azure.AzureDefenderForServers           | MDE.Windows                   |
+| Microsoft.Azure.ChangeTrackingAndInventory        | ChangeTracking-Linux          |
+| Microsoft.Azure.ChangeTrackingAndInventory        | ChangeTracking-Windows        |
+| Microsoft.Azure.Diagnostics                       | [LinuxDiagnostic](/azure/azure-monitor/agents/diagnostics-extension-overview)               |
+| Microsoft.Azure.Extensions.Edp                    | LinuxHibernateTestExtension   |
+| Microsoft.Azure.Extensions.Edp                    | WindowsHibernateTestExtension |
+| Microsoft.Azure.FleetDiagnostics                  | FleetDiagnosticsForWindows    |
+| Microsoft.Azure.Geneva                            | GenevaMonitoring              |
+| Microsoft.Azure.KeyVault                          | [KeyVaultForLinux](./extensions/key-vault-linux.md)              |
+| Microsoft.Azure.KeyVault                          | [KeyVaultForWindows](./extensions/key-vault-windows.md)            |
+| Microsoft.Azure.Labservices                       | Agent.Linux                   |
+| Microsoft.Azure.Labservices                       | Agent.Windows                 |
+| Microsoft.Azure.Monitor                           | [AzureMonitorLinuxAgent](/azure/azure-monitor/agents/azure-monitor-agent-overview)        |
+| Microsoft.Azure.Monitor                           | [AzureMonitorWindowsAgent](/azure/azure-monitor/agents/azure-monitor-agent-overview)      |
+| Microsoft.Azure.Monitoring.DependencyAgent.EDP    | [DependencyAgentLinux](./extensions/agent-dependency-linux.md)          |
+| Microsoft.Azure.Monitoring.DependencyAgent.EDP    | [DependencyAgentWindows](./extensions/agent-dependency-windows.md)        |
+| Microsoft.Azure.Monitoring.DependencyAgent        | [DependencyAgentLinux](./extensions/agent-dependency-linux.md)          |
+| Microsoft.Azure.Monitoring.DependencyAgent        | [DependencyAgentWindows](./extensions/agent-dependency-windows.md)        |
+| Microsoft.Azure.NetworkWatcher                    | NetworkWatcherAgentLinux      |
+| Microsoft.Azure.NetworkWatcher                    | NetworkWatcherAgentWindows    |
+| Microsoft.Azure.Networking.DNS                    | DNSClientCache                |
+| Microsoft.Azure.SCOMMI                            | GatewayServer                 |
+| Microsoft.Azure.SCOMMI                            | WindowsAgent                  |
+| Microsoft.Azure.Security.AntimalwareSignature     | AntimalwareConfiguration      |
+| Microsoft.Azure.Security.Dsms                     | DSMSForWindows                |
+| Microsoft.Azure.Security.LinuxAttestation         | [GuestAttestation](../virtual-machines/boot-integrity-monitoring-overview.md)              |
+| Microsoft.Azure.Security.Monitoring               | AzureSecurityLinuxAgent       |
+| Microsoft.Azure.Security.Monitoring               | AzureSecurityWindowsAgent     |
+| Microsoft.Azure.Security.WindowsAttestation       | [GuestAttestation](../virtual-machines/boot-integrity-monitoring-overview.md)              |
+| Microsoft.Azure.Security.WindowsCodeIntegrity     | CodeIntegrityAgent            |
+| Microsoft.Azure.ServiceFabric                     | [ServiceFabricLinuxNode](../service-fabric/service-fabric-tutorial-create-vnet-and-linux-cluster.md#service-fabric-extension)        |
+| Microsoft.Azure.Watson                            | WatsonLinuxAgent              |
+| Microsoft.Azure.Workloads                         | MonitoringExtensionLinux      |
+| Microsoft.Azure.Workloads                         | MonitoringExtensionWindows    |
+| Microsoft.CPlat.Core                              | LinuxHibernateExtension       |
+| Microsoft.CPlat.Core                              | WindowsHibernateExtension     |
+| Microsoft.CPlat.ProxyAgent                        | ProxyAgentLinux               |
+| Microsoft.CPlat.ProxyAgent                        | ProxyAgentWindows             |
+| Microsoft.EnterpriseCloud.Monitoring              | [MicrosoftMonitoringAgent](./extensions/oms-windows.md)      |
+| Microsoft.EnterpriseCloud.Monitoring              | [OmsAgentForLinux](./extensions/oms-linux.md)              |
+| Microsoft.GuestConfiguration                      | [ConfigurationForLinux](./extensions/guest-configuration.md)         |
+| Microsoft.GuestConfiguration                      | [ConfigurationForWindows](./extensions/guest-configuration.md)       |
+| Microsoft.ManagedServices                         | [ApplicationHealthLinux](../virtual-machine-scale-sets/virtual-machine-scale-sets-health-extension.md)        |
+| Microsoft.ManagedServices                         | [ApplicationHealthWindows](../virtual-machine-scale-sets/virtual-machine-scale-sets-health-extension.md)      |
+| Microsoft.OSTCExtensions                          | DSCForLinux                   |
+| Microsoft.Sentinel.AzureMonitorAgentExtensions    | MicrosoftDnsAgent             |
+| Microsoft.SqlServer.Management                    | SqlIaaSAgent                  |
+| Microsoft.SqlServer.Management                    | SqlIaaSAgentLinux             |
 
 ---
 

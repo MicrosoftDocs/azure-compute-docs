@@ -3,9 +3,10 @@
   description: This article explains how to plan for backup and disaster recovery of IaaS virtual machines and managed disks in Azure.
   author: roygara
   ms.service: azure-disk-storage
-  ms.topic: conceptual
+  ms.topic: concept-article
   ms.date: 08/07/2023
   ms.author: rogarana
+# Customer intent: "As a cloud architect, I want to develop a robust backup and disaster recovery strategy for my Azure VMs and their managed disks, so that my organization can ensure data availability and minimize downtime during outages or data loss incidents."
 ---
 
 # Backup and disaster recovery for Azure managed disks
@@ -108,7 +109,9 @@ See the following articles to learn how to [Create VM restore points](virtual-ma
 
 ### Azure Backup
 
-[Azure Backup](/azure/backup/backup-overview) provides simple, secure, and cost-effective solutions to backup your data and recover it from Azure. [Azure Disk Backup](/azure/backup/disk-backup-overview) is a native, cloud-based backup solution that protects your data in managed disks. It's a simple, secure, and cost-effective solution that enables you to configure protection for managed disks in a few steps. It ensures your data is protected in the event of a disaster.
+[Azure Backup](/azure/backup/backup-overview) provides simple, secure, and cost-effective solutions to backup your data and recover it from Azure. Currently, Azure Backup supports disk sizes up to 32 tebibytes (TiB). [Learn more about Azure Backup support](/azure/backup/backup-support-matrix-iaas).
+
+[Azure Disk Backup](/azure/backup/disk-backup-overview) is a native, cloud-based backup solution that protects your data in managed disks. It's a simple, secure, and cost-effective solution that enables you to configure protection for managed disks in a few steps. It ensures your data is protected in the event of a disaster.
 
 [Azure Disk Backup](/azure/backup/disk-backup-overview) offers a turnkey solution that provides snapshot lifecycle management for managed disks by automating periodic creation of snapshots and retaining it for however long you specify, using backup policy. You can manage disk snapshots, with no infrastructure costs, without the need for custom scripting, or any management overhead.
 

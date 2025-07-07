@@ -8,6 +8,7 @@ author: johnjrayborn
 ms.author: johnray
 ms.date: 04/02/2019
 ms.topic: concept-article
+# Customer intent: As an IT decision-maker, I want to access resources on mainframe migration to Azure, so that I can effectively plan and execute the transition of our legacy systems to a modern, scalable cloud environment.
 ---
 # Azure white papers about mainframe topics
 

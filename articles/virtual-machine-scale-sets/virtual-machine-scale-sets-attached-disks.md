@@ -10,6 +10,7 @@ ms.date: 06/14/2024
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 
+# Customer intent: As a cloud administrator, I want to manage attached data disks in Azure Virtual Machine Scale Sets, so that I can optimize storage solutions for my applications and ensure efficient data handling in scalable environments.
 ---
 # Azure Virtual Machine Scale Sets and attached data disks
 

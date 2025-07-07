@@ -9,6 +9,7 @@ ms.subservice: sizes
 ms.date: 04/18/2024
 ms.author: mattmcinnes
 ms.custom: include file
+# Customer intent: "As a cloud architect, I want to review the specifications for Falsv6, Fasv6, and Famsv6-series virtual machines, so that I can determine the appropriate VM sizes for our workloads."
 ---
 | Part | Quantity <br><sup>Count <sup>Units | Specs <br><sup>SKU ID, Performance <sup>Units</sup>, etc.  |
 |---|---|---|

@@ -4,9 +4,10 @@ description: List of size series in the F family.
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 04/18/2024
 ms.author: mattmcinnes
+# Customer intent: "As a cloud architect, I want to understand the specifications and use cases for the F family of compute optimized VM sizes, so that I can select the most appropriate VM series for my workload requirements."
 ---
 
 # 'F' family compute optimized VM size series

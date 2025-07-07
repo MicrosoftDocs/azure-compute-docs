@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: devx-track-dotnet, linux-related-content
 services: service-fabric
 ms.date: 08/23/2024
+# Customer intent: As a developer, I want to create and deploy a Service Fabric application using C# on a Linux environment, so that I can leverage microservices architecture for building scalable and reliable applications.
 ---
 
 # Create your first Azure Service Fabric application

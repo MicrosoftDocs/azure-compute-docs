@@ -5,19 +5,14 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: overview
 ms.service: azure-virtual-machine-scale-sets
-ms.date: 11/7/2024
+ms.date: 03/21/2025
 ms.reviewer: ju-shim
 ms.custom: upgradepolicy. maxsurge, ignite-2024
+# Customer intent: As a cloud administrator, I want to implement rolling upgrades with MaxSurge for Virtual Machine Scale Sets, so that I can maintain high service availability and minimize downtime during instance upgrades.
 ---
 # Rolling upgrades with MaxSurge on Virtual Machine Scale Sets
 
 Rolling upgrades with MaxSurge can help improve service uptime during upgrade events. With MaxSurge enabled, new instances are created in batches using the latest scale model. When the new instances are fully created and healthy, the scale set then deletes instances in batches matching the old scale set model. The process continues until all instances are brought up-to-date. 
-
-> [!NOTE]
-> To configure MaxSurge upgrades, register the following feature flag: <br>
-> `Register-AzProviderFeature -FeatureName MaxSurgeRollingUpgrade -ProviderNamespace Microsoft.Compute` <br><br>
-> To update the image reference version during an upgrade, register the following feature flag: <br>
-> `Register-AzProviderFeature -FeatureName ImageReferenceUpgradeForVmoVMs -ProviderNamespace Microsoft.Compute`
 
 ## Concepts
 

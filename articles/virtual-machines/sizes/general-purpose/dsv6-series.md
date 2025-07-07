@@ -4,19 +4,16 @@ description: Information on and specifications of the Dsv6-series sizes
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 07/29/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
+# Customer intent: As a cloud architect, I want to compare the specifications of the Dsv6 series virtual machine sizes, so that I can select the appropriate size for our workloads based on their vCPU, memory, storage, and network requirements.
 ---
 
-# Dsv6 sizes series (Preview)
+# Dsv6 sizes series 
 
 [!INCLUDE [dsv6-summary](./includes/dsv6-series-summary.md)]
-
-> [!NOTE]
-> - This VM series is currently in **Preview**. 
-> - See the [Preview Terms Of Use | Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability. 
 
 ## Host specifications
 [!INCLUDE [dsv6-series-specs](./includes/dsv6-series-specs.md)]

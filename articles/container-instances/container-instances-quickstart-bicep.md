@@ -8,6 +8,7 @@ ms.date: 08/29/2024
 ms.topic: quickstart
 ms.service: azure-container-instances
 ms.custom: subject-armqs, mode-arm, devx-track-bicep
+# Customer intent: As a cloud developer, I want to deploy a containerized web application using a Bicep file, so that I can quickly launch isolated container instances without the complexity of full orchestration.
 ---
 
 # Quickstart: Deploy a container instance in Azure using Bicep

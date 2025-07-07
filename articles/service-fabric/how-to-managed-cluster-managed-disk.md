@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: devx-track-arm-template
 services: service-fabric
 ms.date: 05/21/2024
+# Customer intent: As a cloud engineer, I want to select and configure the appropriate managed disk types for my Service Fabric managed cluster nodes using an ARM template, so that I can optimize storage performance and reliability for my applications.
 ---
 
 # Select managed disk types for Service Fabric managed cluster nodes

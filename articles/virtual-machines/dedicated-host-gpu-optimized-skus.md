@@ -5,8 +5,9 @@ author: vamckMS
 ms.author: vakavuru
 ms.reviewer: mattmcinnes
 ms.service: azure-dedicated-host
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 01/23/2023
+# Customer intent: As a system architect, I want to understand the specifications and VM packing configurations for GPU optimized Dedicated Host SKUs, so that I can effectively allocate resources for my applications based on their performance requirements.
 ---
 
 # GPU Optimized Azure Dedicated Host SKUs

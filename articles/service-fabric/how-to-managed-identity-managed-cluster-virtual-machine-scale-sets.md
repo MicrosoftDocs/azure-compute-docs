@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: devx-track-azurepowershell
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a cloud architect, I want to add a managed identity to a Service Fabric managed cluster node type, so that I can enable secure access to Azure services without managing credentials.
 ---
 
 # Add a managed identity to a Service Fabric managed cluster node type
@@ -71,8 +72,8 @@ Get-AzADServicePrincipal -DisplayName "Azure Service Fabric Resource Provider"
 > Make sure you are in the correct subscription, the principal ID will change if the subscription is in a different tenant.
 
 ```powershell
-ServicePrincipalNames : {74cb6831-0dbb-4be1-8206-fd4df301cdc2}
-ApplicationId         : 74cb6831-0dbb-4be1-8206-fd4df301cdc2
+ServicePrincipalNames : {00001111-aaaa-2222-bbbb-3333cccc4444}
+ApplicationId         : 00001111-aaaa-2222-bbbb-3333cccc4444
 ObjectType            : ServicePrincipal
 DisplayName           : Azure Service Fabric Resource Provider
 Id                    : 00000000-0000-0000-0000-000000000000
