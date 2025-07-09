@@ -96,6 +96,7 @@ resource azureImageBuilder 'Microsoft.VirtualMachineImages/imageTemplates@2022-0
 }
 
 ```
+Follow all [Best Practices](../image-builder-best-practices.md) while creating image templates.
 
 ---
 ## API version
