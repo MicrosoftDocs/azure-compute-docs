@@ -69,6 +69,15 @@ A principal that has access to your build VM identity can access all resources t
 
 You must provide only the minimum required privileges to this identity.
 
+## Credentials
+
+Do not put any credentials in the image template or in files used for Shell, PowerShell, and File Customizers & Validators. For example:
+- While specifying inline commands for customizers and validators, do not specify any password or other login credentials. Instead, such credentials should be stored in an Azure Key Vault and then accessed from the build VM using the Build VM identity.
+- While providing files in customizers and validators, do not specify any credentials in the files. Instead, such credentials should be stored in an Azure Key Vault and then accessed from the build VM using the Build VM identity.
+- While specifying script or source URIs for customizers and validators in an image template, do not specify SAS URIs or URIs with credentials (like Personal Access Tokens). Instead, store such files in Azure Storage Account and use Template identity to access them.
+
+Though Azure VM Image Builder does not prohibit specifying such credentials, such use is highly discouraged. In case such a credential is indeed specified, ensure that it does not provide access to any privileged resources and is rotated as soon as possible.
+
 ## Follow Azure Compute Gallery best practices
 
 If you're distributing to Azure Compute Gallery, be sure to also follow [best practices for Azure Compute Gallery resources](azure-compute-gallery.md#best-practices).
