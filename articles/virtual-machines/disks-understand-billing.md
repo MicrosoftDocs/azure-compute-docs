@@ -19,6 +19,11 @@ For detailed Azure Disk Storage pricing information, see [Azure Disks pricing pa
 
 There are two kinds of snapshots offered for Azure managed disks: Full snapshots and incremental snapshots. Full snapshots can be stored on standard hard disk drives (HDDs) or premium solid-state drives (SSDs) while incremental snapshots are only stored on standard HDDs. With snapshots, you're billed based on the used size of data. So if you take a full snapshot of a disk with 500-GiB size but only 50 GiB of that size is being used, then your snapshot is billed only for the used size of 50 GiB. Incremental snapshots are more cost efficient than full snapshots, as each snapshot you take only consists of the differences since the last snapshot.
 
+Standard ZRS and Standard LRS snapshots are priced identically, regardless of the underlying redundancy configuration.
+This pricing consistency applies to both incremental and full snapshot types.
+
+
+
 ## Ultra Disks
 
 The price of an Azure Ultra Disk is determined by the combination of how large the disk is (its disk size) and what performance you select (IOPS and throughput) for your disk. If you share an Ultra Disk between multiple VMs that can affect its price as well. The following sections focus on these factors as they relate to the price of your Ultra Disk. For more information on how these factors work, see the [Ultra disks](disks-types.md#ultra-disks) section of the [Azure managed disk types](disks-types.md) article.
