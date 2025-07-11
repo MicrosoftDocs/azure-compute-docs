@@ -38,7 +38,7 @@ vCPUs (Qty.) and Memory for each size
 | Standard_E48d_v5 | 48 | 384 |
 | Standard_E64d_v5 | 64 | 512 |
 | Standard_E96d_v5 | 96 | 672 |
-| Standard_E104id_v52 | 104 | 672 |
+| Standard_E104id_v5 | 104 | 672 |
 
 #### VM Basics resources
 - [Check vCPU quotas](../../../virtual-machines/quotas.md)
@@ -58,7 +58,7 @@ Local (temp) storage info for each size
 | Standard_E48d_v5 | 1 | 1800 | 225000 | 3000 |
 | Standard_E64d_v5 | 1 | 2400 | 300000 | 4000 |
 | Standard_E96d_v5 | 1 | 3600 | 450000 | 4000 |
-| Standard_E104id_v52 | 1 | 3800 | 450000 | 4000 |
+| Standard_E104id_v5 | 1 | 3800 | 450000 | 4000 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
@@ -86,7 +86,7 @@ Remote (uncached) storage info for each size
 | Standard_E48d_v5 | 32 | 76800 | 1315 | 80000 | 3000 |
 | Standard_E64d_v5 | 32 | 80000 | 1735 | 80000 | 3000 |
 | Standard_E96d_v5 | 32 | 80000 | 2600 | 80000 | 4000 |
-| Standard_E104id_v52 | 64 | 120000 | 4000 | 120000 | 4000 |
+| Standard_E104id_v5 | 64 | 120000 | 4000 | 120000 | 4000 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
@@ -117,7 +117,7 @@ Network interface info for each size
 | Standard_E48d_v5 | 8 | 24000 |
 | Standard_E64d_v5 | 8 | 30000 |
 | Standard_E96d_v5 | 8 | 35000 |
-| Standard_E104id_v52 | 8 | 100000 |
+| Standard_E104id_v5 | 8 | 100000 |
 
 #### Networking resources
 - [Virtual networks and virtual machines in Azure](/azure/virtual-network/network-overview)
