@@ -1,5 +1,5 @@
 ---
-title: Dsv6 size series (Preview)
+title: Dsv6 size series 
 description: Information on and specifications of the Dsv6-series sizes
 author: mattmcinnes
 ms.service: azure-virtual-machines
