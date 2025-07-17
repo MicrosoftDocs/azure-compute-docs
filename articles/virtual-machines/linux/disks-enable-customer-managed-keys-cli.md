@@ -56,6 +56,7 @@ rgName=yourResourceGroupName
 diskName=yourDiskName
 diskEncryptionSetName=yourDiskEncryptionSetName
 
+diskEncryptionSetId=$(az disk-encryption-set show -n $diskEncryptionSetName -g $rgName --query [id] -o tsv)
 az disk update -n $diskName -g $rgName --encryption-type EncryptionAtRestWithCustomerKey --disk-encryption-set $diskEncryptionSetId
 ```
 
