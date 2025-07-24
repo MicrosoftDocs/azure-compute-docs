@@ -18,4 +18,4 @@ ms.custom: include file
 | Local Storage  | 1 Disk         | 2948 GiB |
 | Remote Storage | 32 Disks        | 80000 IOPS <br>800 MBps |
 | Network        | 8 NICs        | 24000 Mbps |
-| Accelerators   | 8            |     |
+| Accelerators   | 8            | Nvidia Tesla V100 GPU (32GB) |
