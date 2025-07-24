@@ -59,7 +59,7 @@ Remote (uncached) storage info for each size
 
 | Size Name | Max Remote Storage Disks (Qty.) | Uncached Disk IOPS | Uncached Disk Speed (MBps) |
 | --- | --- | --- | --- |
-| Standard_ND128isr_NDR_GB200_v6 | 316 | 80000 | 1200 |
+| Standard_ND128isr_NDR_GB200_v6 | 16 | 80000 | 1200 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
