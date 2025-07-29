@@ -656,8 +656,6 @@ To learn more, see the Azure PowerShell commands [Stop-AzVmss](/powershell/modul
 
 To add an existing zonal capacity reservation group to an existing uniform scale set, simply update the scale set to use a matching capacity reservation group.
 
-This process ensures that the placement for the capacity reservations and scale set in the region are compatible.
-
 #### Important notes on upgrade policies
 
 - **Automatic upgrade**: In this mode, the scale set VM instances are automatically associated to the capacity reservation group without any further action from you and they start consuming the reserved capacity.
