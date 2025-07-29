@@ -654,10 +654,7 @@ To learn more, see the Azure PowerShell commands [Stop-AzVmss](/powershell/modul
 
 ### Zonal Virtual Machine Scale Set
 
-To add an existing zonal capacity reservation group to an existing uniform scale set:
-
-- Update the scale set to use a matching capacity reservation group.
-- Start the scale set.
+To add an existing zonal capacity reservation group to an existing uniform scale set, simply update the scale set to use a matching capacity reservation group.
 
 This process ensures that the placement for the capacity reservations and scale set in the region are compatible.
 
