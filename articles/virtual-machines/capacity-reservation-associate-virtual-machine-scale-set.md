@@ -664,7 +664,8 @@ To add an existing zonal capacity reservation group to an existing uniform scale
 
 #### [API](#tab/api2)
 
-Add the `capacityReservationGroup` property to the scale set model. Construct the following `PUT` request to `Microsoft.Compute` provider:
+
+1. Add the `capacityReservationGroup` property to the scale set model. Construct the following `PUT` request to `Microsoft.Compute` provider:
 
     ```rest
     PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourcegroupname}/providers/Microsoft.Compute/virtualMachineScaleSets/{VMScaleSetName}?api-version=2021-04-01
@@ -687,8 +688,7 @@ Add the `capacityReservationGroup` property to the scale set model. Construct th
 
 #### [CLI](#tab/cli2)
 
-
-Associate the scale set to the capacity reservation group:
+1. Associate the scale set to the capacity reservation group:
 
     ```azurecli-interactive
     az vmss update 
@@ -699,8 +699,7 @@ Associate the scale set to the capacity reservation group:
 
 #### [PowerShell](#tab/powershell2) 
 
-
-Associate the scale set to the capacity reservation group:
+1. Associate the scale set to the capacity reservation group:
 
     ```powershell-interactive
     $vmss =
@@ -715,7 +714,7 @@ Associate the scale set to the capacity reservation group:
     -CapacityReservationGroupId "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}"
     ```
 
-To learn more, see the Azure PowerShell commands [Get-AzVmss](/powershell/module/az.compute/get-azvmss), and [Update-AzVmss](/powershell/module/az.compute/update-azvmss).
+To learn more, see the Azure PowerShell commands [Stop-AzVmss](/powershell/module/az.compute/stop-azvmss), [Get-AzVmss](/powershell/module/az.compute/get-azvmss), and [Update-AzVmss](/powershell/module/az.compute/update-azvmss).
 
 #### [Portal](#tab/portal2)
 	
@@ -726,96 +725,6 @@ To learn more, see the Azure PowerShell commands [Get-AzVmss](/powershell/module
 1. Select **Overview**.
 1. Go to **Configurations** on the left.
 1. In the **Capacity Reservation group** dropdown list, select the group that you want to associate to the scale set.
-
---- 
-<!-- The three dashes above show that your section of tabbed content is complete. Don't remove them :) -->
-
-## View virtual machine scale set association with the Instance View
-
-After the uniform virtual machine scale set is associated to the capacity reservation group, all the subsequent VM allocations will happen against the capacity reservation. Azure automatically finds the matching capacity reservation in the group and consumes a reserved slot.
-
-### [API](#tab/api3) 
-
-The capacity reservation group Instance View reflects the new scale set VMs under the `virtualMachinesAssociated` and `virtualMachinesAllocated` properties:  
-
-```rest
-GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/CapacityReservationGroups/{CapacityReservationGroupName}?$expand=instanceview&api-version=2021-04-01 
-```
-
-```json
-{ 
-    "name": "<CapacityReservationGroupName>", 
-    "id": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{CapacityReservationGroupName}", 
-    "type": "Microsoft.Compute/capacityReservationGroups", 
-    "location": "eastus" 
-}, 
-    "properties": { 
-        "capacityReservations": [ 
-            { 
-                "id": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{CapacityReservationGroupName}/capacityReservations/{CapacityReservationName}" 
-            } 
-        ], 
-        "virtualMachinesAssociated": [ 
-            { 
-                "id": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{VMScaleSetName}/virtualMachines/{VirtualMachineId}" 
-            } 
-        ], 
-        "instanceView": { 
-            "capacityReservations": [ 
-                { 
-                    "name": "<CapacityReservationName>", 
-                    "utilizationInfo": { 
-                        "virtualMachinesAllocated": [ 
-                            { 
-                                "id": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{VMScaleSetName}/virtualMachines/{VirtualMachineId}" 
-                            } 
-                        ] 
-                    },
-                    "statuses": [ 
-                        { 
-                            "code": "ProvisioningState/succeeded", 
-                            "level": "Info", 
-                            "displayStatus": "Provisioning succeeded", 
-                            "time": "2021-05-25T15:12:10.4165243+00:00" 
-                        } 
-                    ] 
-                } 
-            ] 
-        } 
-    } 
-} 
-```  
-
-### [CLI](#tab/cli3)
-
-```azurecli-interactive
-az capacity reservation group show 
--g myResourceGroup
--n myCapacityReservationGroup 
-``` 
-
-### [PowerShell](#tab/powershell3) 
-
-View the association of your virtual machine scale set and capacity reservation group by using Instance View in PowerShell.
-
-```powershell-interactive
-$CapRes=
-Get-AzCapacityReservationGroup
--ResourceGroupName <"ResourceGroupName">
--Name <"CapacityReservationGroupName">
--InstanceView
-
-$CapRes.InstanceView.Utilizationinfo.VirtualMachinesAllocated
-``` 
-
-To learn more, see the Azure PowerShell command [Get-AzCapacityReservationGroup](/powershell/module/az.compute/get-azcapacityreservationGroup).
-
-### [Portal](#tab/portal3)
-
-1. Open [Azure portal](https://portal.azure.com).
-1. Go to your capacity reservation group.
-1. Under **Setting**, select **Resources**.
-1. In the table, you can see all the scale set VMs that are associated to the capacity reservation group.
 
 --- 
 <!-- The three dashes above show that your section of tabbed content is complete. Don't remove them :) -->
