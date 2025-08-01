@@ -255,6 +255,8 @@ For more information on network egress, see [Bandwidth pricing](https://azure.mi
 ### Considerations and Current Limits
 
 - **Up to 10 replicas per region**: When you're creating a VM Application version, the maximum number of replicas per region is 10 for both page blob and block blob.
+  
+- **Up to 300 versions per region**: When creating a VM Application version, you can have up to 300 application versions per region.
 
 - **Storage with public access and SAS URI with read privilege:** The storage account needs to have public level access and use a SAS URI with read privilege, as other restriction levels fail deployments. SAS Tokens can be bypassed by publishing the artifact on the storage account by allowing anonymous access.
 
