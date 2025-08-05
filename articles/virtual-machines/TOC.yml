@@ -156,8 +156,6 @@
     href: /gaming/azure/
   - name: Elasticsearch
     href: ./linux/tutorial-elasticsearch.md
-  - name: Mainframe rehosting
-    href: ./workloads/mainframe-rehosting/overview.md
   - name: Azure Confidential Compute
     href: /azure/confidential-computing/overview
   - name: SQL on Virtual Machines
