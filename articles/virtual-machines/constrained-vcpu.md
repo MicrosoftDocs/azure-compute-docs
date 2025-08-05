@@ -155,32 +155,32 @@ At this time, the VM pricing, remains the same as the original size. For more in
 | Standard_E64-16as_v5    | 16   | E64as_v5   |
 | Standard_E96-48as_v5    | 48   | E96as_v5   |
 | Standard_E96-24as_v5    | 24   | E96as_v5   |
-| Standard_E4-2s_v6	      | 4    | E4s_v6     |
-| Standard_E8-2s_v6		    | 8   | E8s_v6     |
-| Standard_E8-4s_v6	    | 8    | E8s_v6     |
-| Standard_E16-4s_v6	  | 16    | E16s_v6     |
-| Standard_E16-8s_v6	  | 16    | E16s_v6     |
-| Standard_E32-8s_v6	  | 32    | E32s_v6     |
-| Standard_E32-16s_v6	 | 32    | E32s_v6     |
-| Standard_E64-16s_v6	 | 64    | E64s_v6     |
-| Standard_E64-32s_v6	 | 64    | E64s_v6     |
-| Standard_E96-24s_v6	 | 96    | E96s_v6     |
-| Standard_E96-48s_v6	 | 96    | E96s_v6     |
-| Standard_E128-32s_v6	 | 128    | E128s_v6     |
-| Standard_E128-64s_v6	 | 128   | E128s_v6     |
-| Standard_E4-2ds_v6	4 | 4  | E4ds_v6  |
-| Standard_E8-2ds_v6	| 8 | E8ds_v6 |
-| Standard_E8-4ds_v6	| 8 | E8ds_v6 |
-| Standard_E16-4ds_v6	| 16 | E16ds_v6 |
-| Standard_E16-8ds_v6	| 16 | E16ds_v6 |
-| Standard_E32-8ds_v6	| 32 | E32ds_v6 |
-| Standard_E32-16ds_v6 | 32 | E32ds_v6 |
+| Standard_E4-2s_v6	      | 2    | E4s_v6     |
+| Standard_E8-2s_v6		    | 2   | E8s_v6     |
+| Standard_E8-4s_v6	    | 4    | E8s_v6     |
+| Standard_E16-4s_v6	  | 4    | E16s_v6     |
+| Standard_E16-8s_v6	  | 8    | E16s_v6     |
+| Standard_E32-8s_v6	  | 8    | E32s_v6     |
+| Standard_E32-16s_v6	 | 16    | E32s_v6     |
+| Standard_E64-16s_v6	 | 16    | E64s_v6     |
+| Standard_E64-32s_v6	 | 32    | E64s_v6     |
+| Standard_E96-24s_v6	 | 24    | E96s_v6     |
+| Standard_E96-48s_v6	 | 48    | E96s_v6     |
+| Standard_E128-32s_v6	 | 32    | E128s_v6     |
+| Standard_E128-64s_v6	 | 64   | E128s_v6     |
+| Standard_E4-2ds_v6	| 2  | E4ds_v6  |
+| Standard_E8-2ds_v6	| 2 | E8ds_v6 |
+| Standard_E8-4ds_v6	| 4 | E8ds_v6 |
+| Standard_E16-4ds_v6	| 4 | E16ds_v6 |
+| Standard_E16-8ds_v6	| 8 | E16ds_v6 |
+| Standard_E32-8ds_v6	| 8 | E32ds_v6 |
+| Standard_E32-16ds_v6 | 16 | E32ds_v6 |
 | Standard_E64-16ds_v6	| 16 | E64ds_v6 |
-| Standard_E64-32ds_v6	| 64 | E64ds_v6 |
-| Standard_E96-24ds_v6	| 96 | E96ds_v6 |
-| Standard_E96-48ds_v6	| 96 | E96ds_v6 |
-| Standard_E128-32ds_v6	| 128 | E128ds_v6 |
-| Standard_E128-64ds_v6	| 128 | E128ds_v6 |
+| Standard_E64-32ds_v6	| 32 | E64ds_v6 |
+| Standard_E96-24ds_v6	| 24 | E96ds_v6 |
+| Standard_E96-48ds_v6	| 48 | E96ds_v6 |
+| Standard_E128-32ds_v6	| 32 | E128ds_v6 |
+| Standard_E128-64ds_v6	| 64 | E128ds_v6 |
 
 #### [FX-family sizes](#tab/family-fx)
 
