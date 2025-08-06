@@ -25,6 +25,7 @@ Once enabled, the IOPS and throughput limits for an eligible disk increase to th
 - Can only be enabled on new disks
     - To work around this, create a snapshot of your disk, then create a new disk from the snapshot
 - Not supported for disks recovered with Azure Site Recovery
+- Not supported on disk creation on VM creation pipeline
 
 ## Prerequisites
 
