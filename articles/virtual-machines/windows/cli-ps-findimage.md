@@ -226,6 +226,7 @@ Some paid images also require that you provide purchase plan information using t
 $vmConfig = New-AzVMConfig -VMName "myVM" -VMSize Standard_D1
 
 # Set the Marketplace image
+$publisherName = "microsoft-ads"
 $offerName = "windows-data-science-vm"
 $skuName = "windows2016"
 $version = "19.01.14"
