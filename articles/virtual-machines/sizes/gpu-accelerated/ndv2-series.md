@@ -98,7 +98,7 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 
 | Size Name | Accelerators (Qty.) | Accelerator-Memory (GB) |
 | --- | --- | --- |
-| Standard_ND40rs_v2 |  | 256 |
+| Standard_ND40rs_v2 | 8 | 256 |
 
 ---
 
