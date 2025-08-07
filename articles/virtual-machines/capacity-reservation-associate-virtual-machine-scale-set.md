@@ -659,7 +659,7 @@ To add an existing zonal capacity reservation group to an existing uniform scale
 #### Important notes on upgrade policies
 
 - **Automatic upgrade**: In this mode, the scale set VM instances are automatically associated to the capacity reservation group without any further action from you. If already running, the scale set VM instances start consuming the reserved capacity. If the existing scale set VMs are in deallocated state, they start consuming the reserved capacity when reallocated.
-- **Rolling upgrade**: In this mode, scale set VM instances are associated to the capacity reservation group without any further action from you. However, they're updated in batches with an optional pause time between them. When the scale set VMs are reallocated, they start consuming the reserved capacity.
+- **Rolling upgrade**: In this mode, scale set VM instances are associated to the capacity reservation group without any further action from you. However, they're updated in batches with an optional pause time between them. If already running, the scale set VM instances start consuming the reserved capacity. If the existing scale set VMs are in deallocated state, they start consuming the reserved capacity when reallocated.
 - **Manual upgrade**: In this mode, nothing happens to the scale set VM instances when the virtual machine scale set is attached to a capacity reservation group. You need to update to each scale set VM by [upgrading it with the latest scale set model](../virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-policy.md).
 
 #### [API](#tab/api2)
@@ -671,7 +671,7 @@ Add the `capacityReservationGroup` property to the scale set model. Construct th
     PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourcegroupname}/providers/Microsoft.Compute/virtualMachineScaleSets/{VMScaleSetName}?api-version=2021-04-01
 ```
 
-    In the request body, include the `capacityReservationGroup` property:
+In the request body, include the `capacityReservationGroup` property:
 
 ```json
     "location": "eastus",
