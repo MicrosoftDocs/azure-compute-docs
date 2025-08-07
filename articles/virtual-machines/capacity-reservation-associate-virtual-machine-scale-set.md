@@ -665,15 +665,15 @@ To add an existing zonal capacity reservation group to an existing uniform scale
 #### [API](#tab/api2)
 
 
-1. Add the `capacityReservationGroup` property to the scale set model. Construct the following `PUT` request to `Microsoft.Compute` provider:
+Add the `capacityReservationGroup` property to the scale set model. Construct the following `PUT` request to `Microsoft.Compute` provider:
 
-    ```rest
+```rest
     PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourcegroupname}/providers/Microsoft.Compute/virtualMachineScaleSets/{VMScaleSetName}?api-version=2021-04-01
-    ```
+```
 
     In the request body, include the `capacityReservationGroup` property:
 
-    ```json
+```json
     "location": "eastus",
     "properties": {
         "virtualMachineProfile": {
@@ -684,24 +684,24 @@ To add an existing zonal capacity reservation group to an existing uniform scale
                 }
         }
     }
-    ```
+```
 
 #### [CLI](#tab/cli2)
 
-1. Associate the scale set to the capacity reservation group:
+Associate the scale set to the capacity reservation group:
 
-    ```azurecli-interactive
+```azurecli-interactive
     az vmss update 
     --resource-group myResourceGroup 
     --name myVMSS 
     --capacity-reservation-group /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}
-    ```
+```
 
 #### [PowerShell](#tab/powershell2) 
 
-1. Associate the scale set to the capacity reservation group:
+Associate the scale set to the capacity reservation group:
 
-    ```powershell-interactive
+```powershell-interactive
     $vmss =
     Get-AzVmss
     -ResourceGroupName "myResourceGroup"
@@ -712,7 +712,7 @@ To add an existing zonal capacity reservation group to an existing uniform scale
     -VMScaleSetName "myVmss"
     -VirtualMachineScaleSet $vmss
     -CapacityReservationGroupId "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}"
-    ```
+```
 
 To learn more, see the Azure PowerShell commands [Stop-AzVmss](/powershell/module/az.compute/stop-azvmss), [Get-AzVmss](/powershell/module/az.compute/get-azvmss), and [Update-AzVmss](/powershell/module/az.compute/update-azvmss).
 
