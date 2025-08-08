@@ -114,12 +114,13 @@ Allowed characters for image version are numbers and periods. Numbers must be wi
 
 In this example, the image version is *1.0.0* and it's replicated to both *East US* and *South Central US* datacenters. When choosing target regions for replication, you need to include the *source* region as a target for replication.
 
-To create an image version from the VM, use `$vm.Id.ToString()` for the `-Source`.
+To create an image version from the VM, use source VM's resource id for -sourceImageVMId.
 
 ```azurepowershell-interactive
    $region1 = @{Name='South Central US';ReplicaCount=1}
    $region2 = @{Name='East US';ReplicaCount=2}
    $targetRegions = @($region1,$region2)
+   $sourceImageVMId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myGalleryRG/providers/Microsoft.Compute/virtualMachines/sourceVM"
 
 New-AzGalleryImageVersion `
    -GalleryImageDefinitionName $galleryImage.Name`
@@ -128,7 +129,7 @@ New-AzGalleryImageVersion `
    -ResourceGroupName $resourceGroup.ResourceGroupName `
    -Location $resourceGroup.Location `
    -TargetRegion $targetRegions  `
-   -Source $sourceVM.Id.ToString() `
+   -SourceImageVMId $sourceImageVMId `
    -PublishingProfileEndOfLifeDate '2030-12-01'
 ```
 
