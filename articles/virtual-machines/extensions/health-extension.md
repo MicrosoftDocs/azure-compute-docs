@@ -7,6 +7,7 @@ ms.subservice: extensions
 ms.author: hilarywang
 author: hilaryw29
 ms.date: 12/15/2023
+ms.custom: sfi-image-nochange
 # Customer intent: "As an IT administrator managing applications on Azure virtual machines, I want to implement the Application Health extension for monitoring, so that I can ensure application health and reliability during automatic patching and scaling activities."
 ---
 

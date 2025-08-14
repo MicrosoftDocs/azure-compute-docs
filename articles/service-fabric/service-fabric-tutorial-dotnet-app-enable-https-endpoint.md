@@ -5,9 +5,12 @@ ms.topic: tutorial
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
-ms.custom: devx-track-azurepowershell, devx-track-dotnet
 services: service-fabric
 ms.date: 05/17/2024
+ms.custom:
+  - devx-track-azurepowershell
+  - devx-track-dotnet
+  - sfi-image-nochange
 # Customer intent: "As a developer deploying a Service Fabric application, I want to configure an HTTPS endpoint using Kestrel, so that my ASP.NET Core service can securely handle web traffic."
 ---
 

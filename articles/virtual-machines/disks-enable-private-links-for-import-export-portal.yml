@@ -9,6 +9,7 @@ metadata:
   ms.service: azure-disk-storage
   ms.topic: how-to
   ms.custom:
+    - sfi-image-nochange
     - ge-structured-content-pilot
 
 title: |

@@ -7,6 +7,7 @@ ms.service: azure-container-instances
 services: container-instances
 ms.topic: how-to
 ms.date: 08/27/2024
+ms.custom: sfi-image-nochange
 # Customer intent: "As a cloud administrator, I want to enable and view container group logs in a log analytics workspace, so that I can monitor and troubleshoot the performance of my container instances effectively."
 ---
 # View container group logs in a log analytics workspace via Azure portal 

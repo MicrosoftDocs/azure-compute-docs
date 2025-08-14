@@ -7,7 +7,12 @@ ms.subservice: disks
 ms.topic: how-to
 ms.author: jushiman
 ms.date: 04/11/2023
-ms.custom: devx-track-azurecli, devx-track-azurepowershell, linux-related-content
+ms.custom:
+  - devx-track-azurecli
+  - devx-track-azurepowershell
+  - linux-related-content
+  - sfi-image-nochange
+  - sfi-ropc-nochange
 # Customer intent: As a system administrator managing Linux virtual machines, I want to verify the encryption status of my VM's disks using various methods, so that I can ensure compliance with security policies and data protection standards.
 ---
 

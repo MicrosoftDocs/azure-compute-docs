@@ -6,7 +6,12 @@ ms.author: rogarana
 ms.date: 05/19/2025
 ms.topic: how-to
 ms.service: azure-disk-storage
-ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell, innovation-engine
+ms.custom:
+  - references_regions
+  - devx-track-azurecli
+  - devx-track-azurepowershell
+  - innovation-engine
+  - sfi-ropc-nochange
 # Customer intent: As a cloud administrator, I want to deploy a Premium SSD v2 managed disk, so that I can enhance the performance of IO-intense workloads in my virtual machines with low latency and high throughput capabilities.
 ---
 

@@ -4,10 +4,12 @@ description: This guide describes how Caddy can be used as a reverse proxy to en
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-container-instances
-ms.custom: devx-track-azurecli
 services: container-instances
 ms.topic: how-to
 ms.date: 03/04/2025
+ms.custom:
+  - devx-track-azurecli
+  - sfi-image-nochange
 # Customer intent: As a developer deploying applications in containers, I want to configure Caddy as a sidecar container for automatic HTTPS, so that I can easily secure my application with managed SSL certificates.
 ---
 

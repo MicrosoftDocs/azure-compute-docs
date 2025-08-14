@@ -6,6 +6,7 @@ ms.service: azure-disk-storage
 ms.topic: concept-article
 ms.date: 10/12/2022
 ms.author: rogarana
+ms.custom: sfi-image-nochange
 # Customer intent: "As a cloud operations manager, I want to utilize disk performance metrics for my virtual machines, so that I can monitor and optimize storage performance and diagnose potential bottlenecks effectively."
 ---
 # Disk performance metrics

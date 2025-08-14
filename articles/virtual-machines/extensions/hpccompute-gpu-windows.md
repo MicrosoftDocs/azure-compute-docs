@@ -7,10 +7,12 @@ ms.subservice: hpc
 ms.collection: windows
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows
-ms.custom: devx-track-arm-template
 ms.date: 07/25/2024
 ms.author: jushiman
 author: ju-shim
+ms.custom:
+  - devx-track-arm-template
+  - sfi-image-nochange
 # Customer intent: As an IT administrator managing Windows N-series virtual machines, I want to install the NVIDIA GPU Driver Extension so that I can utilize GPU capabilities for enhanced performance in computational tasks.
 ---
 

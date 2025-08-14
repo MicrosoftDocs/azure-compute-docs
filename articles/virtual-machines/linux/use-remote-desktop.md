@@ -5,10 +5,12 @@ services: virtual-machines
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.collection: linux
-ms.custom: linux-related-content
 ms.topic: how-to
 ms.date: 03/28/2023
 ms.author: mattmcinnes
+ms.custom:
+  - linux-related-content
+  - sfi-image-nochange
 # Customer intent: As a cloud administrator, I want to configure a remote desktop environment on my Linux VM, so that I can efficiently manage and troubleshoot the system using graphical tools instead of SSH.
 ---
 

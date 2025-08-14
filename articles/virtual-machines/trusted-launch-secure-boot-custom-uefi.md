@@ -7,7 +7,10 @@ ms.service: azure-virtual-machines
 ms.subservice: trusted-launch
 ms.topic: concept-article
 ms.date: 02/24/2025
-ms.custom: template-concept, devx-track-azurecli
+ms.custom:
+  - template-concept
+  - devx-track-azurecli
+  - sfi-image-nochange
 # Customer intent: "As a cloud administrator, I want to customize secure boot UEFI keys for my Azure virtual machines, so that I can ensure the integrity and security of the boot process according to my organization's requirements."
 ---
 

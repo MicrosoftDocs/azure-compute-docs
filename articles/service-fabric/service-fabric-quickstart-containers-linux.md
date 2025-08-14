@@ -5,9 +5,11 @@ ms.topic: quickstart
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
-ms.custom: linux-related-content
 services: service-fabric
 ms.date: 07/11/2022
+ms.custom:
+  - linux-related-content
+  - sfi-image-nochange
 # Customer intent: As a developer, I want to deploy a Linux container application to a distributed systems platform, so that I can manage, scale, and ensure the reliability of my microservices effectively in Azure.
 ---
 

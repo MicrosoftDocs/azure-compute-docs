@@ -8,7 +8,10 @@ ms.collection: linux
 ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 05/14/2025
-ms.custom: devx-track-azurepowershell, linux-related-content
+ms.custom:
+  - devx-track-azurepowershell
+  - linux-related-content
+  - sfi-image-nochange
 # Customer intent: As a system administrator, I want to use sample scripts to encrypt Linux VMs using disk encryption, so that I can enhance security for sensitive data stored on my virtual machines.
 ---
 

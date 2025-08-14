@@ -8,7 +8,9 @@ ms.subservice: security
 ms.collection: windows
 ms.topic: quickstart
 ms.date: 05/14/2025
-ms.custom: mode-ui
+ms.custom:
+  - mode-ui
+  - sfi-image-nochange
 # Customer intent: As a cloud administrator, I want to create and encrypt a Windows virtual machine using a browser-based portal, so that I can secure sensitive data in compliance with security best practices.
 ---
 
