@@ -41,9 +41,6 @@ vCPUs (Qty.) and Memory for each size
 | Standard_E128ds_v6 | 128 | 1024 |
 | Standard_E192ids_v6 | 192 | 1832 |
 
-> [!NOTE]
-> - The E128 and E192i sizes will be available later in GA
-> 
 #### VM Basics resources
 - [Check vCPU quotas](../../../virtual-machines/quotas.md)
 
