@@ -8,6 +8,7 @@ author: ju-shim
  ms.date: 10/13/2021
 ms.author: jushiman
  ms.custom: include file
+# Customer intent: As a cloud architect, I want to understand how to create and manage image definitions and versions in an image gallery, so that I can streamline the deployment and maintenance of virtual machines in my environment.
 ---
 
 | Resource | Description|

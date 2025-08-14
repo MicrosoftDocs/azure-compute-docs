@@ -8,6 +8,7 @@ ms.author: cynthn
 ms.service: azure-virtual-machines
 ms.subservice: security
 ms.custom: subject-policy-reference
+# Customer intent: "As an IT administrator managing Azure Virtual Machines, I want to access built-in policy definitions, so that I can efficiently enforce compliance and governance across my virtual machine resources."
 ---
 # Azure Policy built-in definitions for Azure Virtual Machines
 
@@ -23,15 +24,15 @@ the link in the **Version** column to view the source on the
 
 ## Microsoft.Compute
 
-[!INCLUDE [azure-policy-reference-rp-compute](~/azure-docs-pr/includes/policy/reference/byrp/microsoft.compute.md)]
+[!INCLUDE [azure-policy-reference-rp-compute](~/azure-policy-autogen-docs/includes/policy/reference/byrp/microsoft.compute.md)]
 
 ## Microsoft.VirtualMachineImages
 
-[!INCLUDE [azure-policy-reference-rp-vmimages](~/azure-docs-pr/includes/policy/reference/byrp/microsoft.virtualmachineimages.md)]
+[!INCLUDE [azure-policy-reference-rp-vmimages](~/azure-policy-autogen-docs/includes/policy/reference/byrp/microsoft.virtualmachineimages.md)]
 
 ## Microsoft.ClassicCompute
 
-[!INCLUDE [azure-policy-reference-rp-classiccompute](~/azure-docs-pr/includes/policy/reference/byrp/microsoft.classiccompute.md)]
+[!INCLUDE [azure-policy-reference-rp-classiccompute](~/azure-policy-autogen-docs/includes/policy/reference/byrp/microsoft.classiccompute.md)]
 
 ## Next steps
 

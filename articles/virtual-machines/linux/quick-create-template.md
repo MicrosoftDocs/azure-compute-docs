@@ -8,6 +8,7 @@ ms.topic: quickstart
 ms.date: 04/13/2023
 ms.author: jushiman
 ms.custom: subject-armqs, mode-arm, devx-track-arm-template, linux-related-content
+# Customer intent: "As a system administrator, I want to deploy an Ubuntu Linux virtual machine using a resource manager template, so that I can streamline the setup process and ensure consistent configuration across environments."
 ---
 
 # Quickstart: Create an Ubuntu Linux virtual machine by using an ARM template

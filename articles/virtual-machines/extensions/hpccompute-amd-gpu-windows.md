@@ -11,6 +11,7 @@ ms.collection: windows
 ms.tgt_pltfrm: vm-windows
 ms.date: 07/25/2024
 ms.author: vikancha
+# Customer intent: "As a cloud administrator managing N-series Windows VMs, I want to install AMD GPU drivers using a VM extension, so that I can enable GPU acceleration for my applications running on Azure."
 ---
 # AMD GPU Driver Extension for Windows
 
@@ -144,6 +145,11 @@ az vm extension set `
 ## Troubleshoot and support
 
 ### Troubleshoot
+After extension is installed successfully, to run 'amd-smi' install WMIC using 
+
+```powershell
+DISM /Online /Add-Capability /CapabilityName:WMIC
+```
 
 You can retrieve data about the state of extension deployments from the Azure portal and by using Azure PowerShell and the Azure CLI. To see the deployment state of extensions for a given VM, run the following command:
 

@@ -10,6 +10,7 @@ ms.service: azure-virtual-machines
 ms.subservice: image-builder
 ms.collection: windows
 ms.custom: devx-track-azurepowershell
+# Customer intent: "As a cloud engineer, I want to create a customized Windows VM using PowerShell with VM Image Builder, so that I can automate the deployment of standardized VM images across my Azure environment."
 ---
 # Create a Windows VM with VM Image Builder by using PowerShell
 
@@ -182,6 +183,7 @@ Grant Azure image builder permissions to create images in the specified resource
      Publisher = 'myCo'
      Offer = 'Windows'
      Sku = 'Win2019'
+     HyperVGeneration = 'v1'
    }
    New-AzGalleryImageDefinition @GalleryParams
    ```

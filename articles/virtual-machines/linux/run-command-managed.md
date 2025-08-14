@@ -10,6 +10,7 @@ ms.date: 10/31/2022
 ms.topic: how-to
 ms.reviewer: jushiman
 ms.custom: devx-track-azurepowershell, devx-track-azurecli, linux-related-content
+# Customer intent: As a system administrator managing Linux virtual machines, I want to run scripts using managed commands, so that I can efficiently automate tasks and troubleshoot issues within my VMs.
 ---
 # Run scripts in your Linux VM by using managed Run Commands
 
@@ -47,6 +48,14 @@ The *updated* managed Run Command uses the same VM agent channel to execute scri
 | Rocky Linux |	9.x+ |	Not Supported |
 | SLES |	12.x+, 15.x+ |	Not Supported |
 | Ubuntu |	18.04+, 20.04+, 22.04+ |	Not Supported |
+
+## Available Commands
+| **CommandID** | **Description** |
+|:-----|:-----|
+| ifconfig | Gets the configuration of all network interfaces. For usage, refer to [Run scripts](/azure/virtual-machines/linux/run-command-managed#create-or-update-run-command-on-a-vm-using-sourcecommandid) |
+
+> [!Note] 
+> The above command IDs are applicable to Managed Run Commands for Linux VMs. You can list all commandIds using command  "```Get-AzVMRunCommandDocument -Location {RegionName}```".
 
 ## Limiting access to Run Command
 

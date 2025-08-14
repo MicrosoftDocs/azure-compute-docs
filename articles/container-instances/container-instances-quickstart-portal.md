@@ -8,6 +8,7 @@ ms.service: azure-container-instances
 services: container-instances
 ms.date: 08/29/2024
 ms.custom: mvc, mode-ui
+# Customer intent: "As a developer, I want to quickly deploy a containerized web application using the cloud portal, so that I can easily run and manage my application without the complexity of a full container orchestration platform."
 ---
 
 # Quickstart: Deploy a container instance in Azure using the Azure portal

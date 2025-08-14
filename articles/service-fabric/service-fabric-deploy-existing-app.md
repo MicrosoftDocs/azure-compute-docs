@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: linux-related-content
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a developer deploying existing applications, I want to package and deploy executables to a Service Fabric cluster, so that I can manage and run my applications in a scalable and efficient manner.
 ---
 
 # Package and deploy an existing executable to Service Fabric

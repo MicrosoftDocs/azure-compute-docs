@@ -8,6 +8,7 @@ ms.service: azure-virtual-machine-scale-sets
 ms.subservice: shared-image-gallery
 ms.date: 06/14/2024
 ms.reviewer: mimckitt
+# Customer intent: As a cloud engineer, I want to modify an Azure scale set template to deploy from a custom image, so that I can utilize specific configurations and optimizations required for my application workloads.
 ---
 
 # Add a custom image to an Azure scale set template

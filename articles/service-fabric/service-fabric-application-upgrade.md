@@ -1,12 +1,13 @@
 ---
 title: Service Fabric application upgrade 
 description: This article provides an introduction to upgrading a Service Fabric application, including choosing upgrade modes and performing health checks.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As an application administrator, I want to perform controlled upgrades of my Service Fabric applications, so that I can ensure high availability and maintain system health throughout the upgrade process."
 ---
 
 # Service Fabric application upgrade

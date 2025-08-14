@@ -9,6 +9,7 @@ ms.date: 07/25/2024
 ms.reviewer: cynthn
 ms.author: jushiman
 author: ju-shim
+# Customer intent: "As an HPC administrator, I want to enable InfiniBand on my VMs, so that I can enhance the performance and scalability of my distributed-node workloads."
 ---
 
 # Enable InfiniBand

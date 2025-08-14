@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 11/14/2024
+# Customer intent: As a system administrator, I want to remotely connect to a specific scale set instance in a Service Fabric cluster, so that I can manage and troubleshoot the cluster nodes effectively.
 ---
 
 # Remote connect to a virtual machine scale set instance or a cluster node

@@ -9,6 +9,7 @@ ms.subservice: sizes
 ms.date: 04/11/2024
 ms.author: mattmcinnes
 ms.custom: include file
+# Customer intent: As a cloud architect, I want to explore the features and capabilities of DCesv5 and DCedsv5-series virtual machines, so that I can assess their suitability for running confidential workloads securely in the public cloud without requiring code changes.
 ---
 The DCesv5-series and DCedsv5-series are [Azure confidential VMs](../../../../confidential-computing/confidential-vm-overview.md) that can be used to protect the confidentiality and integrity of your code and data while it's being processed in the public cloud. Organizations can use these VMs to seamlessly bring confidential workloads to the cloud without any code changes to the application. 
 

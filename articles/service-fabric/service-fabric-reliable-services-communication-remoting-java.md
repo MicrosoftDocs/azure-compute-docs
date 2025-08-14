@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: devx-track-extended-java
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: "As a Java developer implementing services, I want to set up service remoting in Azure Service Fabric, so that I can efficiently manage remote procedure calls and ensure robust communication between services."
 ---
 
 # Service remoting in Java with Reliable Services

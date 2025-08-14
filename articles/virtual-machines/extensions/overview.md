@@ -8,6 +8,7 @@ ms.author: gabsta
 author: GabstaMSFT
 ms.reviewer: jushiman
 ms.date: 03/30/2023
+# Customer intent: As a cloud administrator, I want to install and manage virtual machine extensions, so that I can automate configuration and enhance the functionality of my Azure virtual machines.
 ---
 
 # Azure virtual machine extensions and features

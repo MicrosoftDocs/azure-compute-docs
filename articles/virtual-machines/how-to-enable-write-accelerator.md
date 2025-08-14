@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.date: 01/14/2025
 ms.author: rogarana
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
+# Customer intent: "As a cloud administrator, I want to enable Write Accelerator on Premium SSD disks for M-Series VMs, so that I can enhance write I/O performance for log files in high-performance database applications."
 ---
 
 # Enable Write Accelerator

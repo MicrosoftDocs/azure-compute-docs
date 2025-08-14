@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: devx-track-python, linux-related-content
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a developer, I want to create and deploy a Linux container application using Service Fabric and Docker, so that I can leverage scalable microservices architecture for my web application."
 ---
 
 # Create your first Service Fabric container application on Linux

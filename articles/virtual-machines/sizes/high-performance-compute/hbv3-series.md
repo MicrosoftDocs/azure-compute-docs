@@ -4,10 +4,11 @@ description: Information on and specifications of the HBv3-series sizes
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 01/28/2025
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
+# Customer intent: "As an IT administrator, I want to understand the specifications and features of the HBv3 virtual machine sizes, so that I can select the appropriate size for my workloads and ensure optimal performance."
 ---
 
 # HBv3 sizes series

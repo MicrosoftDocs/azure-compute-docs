@@ -9,6 +9,7 @@ ms.date: 06/14/2024
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
 
+# Customer intent: As a cloud administrator, I want to use the command line to efficiently manage Virtual Machine Scale Sets, so that I can automate lifecycle tasks and optimize resource allocation in my cloud environment.
 ---
 # Manage a Virtual Machine Scale Set with the Azure CLI
 

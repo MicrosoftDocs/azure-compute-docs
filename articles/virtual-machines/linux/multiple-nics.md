@@ -5,12 +5,17 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: networking
 ms.topic: how-to
-ms.custom: devx-track-azurecli, linux-related-content
+ms.custom: devx-track-azurecli, linux-related-content, innovation-engine
 ms.date: 04/06/2023
 ms.author: mattmcinnes
 ms.reviewer: cynthn
+# Customer intent: "As a cloud engineer, I want to create a Linux VM with multiple network interface cards, so that I can efficiently manage traffic between different subnets and enhance network performance."
 ---
+
 # How to create a Linux virtual machine in Azure with multiple network interface cards
+
+> [!div class="nextstepaction"]
+> [Deploy and Explore](https://go.microsoft.com/fwlink/?linkid=2321933)
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Flexible scale sets
 
@@ -21,73 +26,97 @@ Install the latest [Azure CLI](/cli/azure/install-az-cli2) and log in to an Azur
 
 In the following examples, replace example parameter names with your own values. Example parameter names included *myResourceGroup*, *mystorageaccount*, and *myVM*.
 
-First, create a resource group with [az group create](/cli/azure/group). The following example creates a resource group named *myResourceGroup* in the *eastus* location:
+First, create a resource group with [az group create](/cli/azure/group). The following example creates a resource group named *myResourceGroup* in the *eastus* location. In these examples, we declare environment variables as they are used and add a random suffix to unique resource names.
 
 ```azurecli
-az group create --name myResourceGroup --location eastus
+export RANDOM_SUFFIX=$(openssl rand -hex 3)
+export MY_RESOURCE_GROUP_NAME="myResourceGroup$RANDOM_SUFFIX"
+export REGION="WestUS2"
+az group create --name $MY_RESOURCE_GROUP_NAME --location $REGION
+```
+<!-- expected_similarity=0.3 -->
+```JSON
+{
+  "id": "/subscriptions/xxxxx/resourceGroups/myResourceGroupxxx",
+  "location": "WestUS2",
+  "managedBy": null,
+  "name": "myResourceGroupxxx",
+  "properties": {
+      "provisioningState": "Succeeded"
+  },
+  "tags": null,
+  "type": "Microsoft.Resources/resourceGroups"
+}
 ```
 
 Create the virtual network with [az network vnet create](/cli/azure/network/vnet). The following example creates a virtual network named *myVnet* and subnet named *mySubnetFrontEnd*:
 
 ```azurecli
+export VNET_NAME="myVnet"
+export FRONTEND_SUBNET="mySubnetFrontEnd"
 az network vnet create \
-    --resource-group myResourceGroup \
-    --name myVnet \
+    --resource-group $MY_RESOURCE_GROUP_NAME \
+    --name $VNET_NAME \
     --address-prefix 10.0.0.0/16 \
-    --subnet-name mySubnetFrontEnd \
+    --subnet-name $FRONTEND_SUBNET \
     --subnet-prefix 10.0.1.0/24
 ```
 
 Create a subnet for the back-end traffic with [az network vnet subnet create](/cli/azure/network/vnet/subnet). The following example creates a subnet named *mySubnetBackEnd*:
 
 ```azurecli
+export BACKEND_SUBNET="mySubnetBackEnd"
 az network vnet subnet create \
-    --resource-group myResourceGroup \
-    --vnet-name myVnet \
-    --name mySubnetBackEnd \
+    --resource-group $MY_RESOURCE_GROUP_NAME \
+    --vnet-name $VNET_NAME \
+    --name $BACKEND_SUBNET \
     --address-prefix 10.0.2.0/24
 ```
 
 Create a network security group with [az network nsg create](/cli/azure/network/nsg). The following example creates a network security group named *myNetworkSecurityGroup*:
 
 ```azurecli
+export NSG_NAME="myNetworkSecurityGroup"
 az network nsg create \
-    --resource-group myResourceGroup \
-    --name myNetworkSecurityGroup
+    --resource-group $MY_RESOURCE_GROUP_NAME \
+    --name $NSG_NAME
 ```
 
 ## Create and configure multiple NICs
-Create two NICs with [az network nic create](/cli/azure/network/nic). The following example creates two NICs, named *myNic1* and *myNic2*, connected the network security group, with one NIC connecting to each subnet:
+Create two NICs with [az network nic create](/cli/azure/network/nic). The following example creates two NICs, named *myNic1* and *myNic2*, connected to the network security group, with one NIC connecting to each subnet:
 
 ```azurecli
+export NIC1="myNic1"
+export NIC2="myNic2"
 az network nic create \
-    --resource-group myResourceGroup \
-    --name myNic1 \
-    --vnet-name myVnet \
-    --subnet mySubnetFrontEnd \
-    --network-security-group myNetworkSecurityGroup
+    --resource-group $MY_RESOURCE_GROUP_NAME \
+    --name $NIC1 \
+    --vnet-name $VNET_NAME \
+    --subnet $FRONTEND_SUBNET \
+    --network-security-group $NSG_NAME
 az network nic create \
-    --resource-group myResourceGroup \
-    --name myNic2 \
-    --vnet-name myVnet \
-    --subnet mySubnetBackEnd \
-    --network-security-group myNetworkSecurityGroup
+    --resource-group $MY_RESOURCE_GROUP_NAME \
+    --name $NIC2 \
+    --vnet-name $VNET_NAME \
+    --subnet $BACKEND_SUBNET \
+    --network-security-group $NSG_NAME
 ```
 
 ## Create a VM and attach the NICs
-When you create the VM, specify the NICs you created with `--nics`. You also need to take care when you select the VM size. There are limits for the total number of NICs that you can add to a VM. Read more about [Linux VM sizes](../sizes.md).
+When you create the VM, specify the NICs you created with --nics. You also need to take care when you select the VM size. There are limits for the total number of NICs that you can add to a VM. Read more about [Linux VM sizes](../sizes.md).
 
 Create a VM with [az vm create](/cli/azure/vm). The following example creates a VM named *myVM*:
 
 ```azurecli
+export VM_NAME="myVM"
 az vm create \
-    --resource-group myResourceGroup \
-    --name myVM \
+    --resource-group $MY_RESOURCE_GROUP_NAME \
+    --name $VM_NAME \
     --image Ubuntu2204 \
     --size Standard_DS3_v2 \
     --admin-username azureuser \
     --generate-ssh-keys \
-    --nics myNic1 myNic2
+    --nics $NIC1 $NIC2
 ```
 
 Add routing tables to the guest OS by completing the steps in [Configure the guest OS for multiple NICs](#configure-guest-os-for-multiple-nics).
@@ -98,34 +127,34 @@ The previous steps created a VM with multiple NICs. You can also add NICs to an 
 Create another NIC with [az network nic create](/cli/azure/network/nic). The following example creates a NIC named *myNic3* connected to the back-end subnet and network security group created in the previous steps:
 
 ```azurecli
+export NIC3="myNic3"
 az network nic create \
-    --resource-group myResourceGroup \
-    --name myNic3 \
-    --vnet-name myVnet \
-    --subnet mySubnetBackEnd \
-    --network-security-group myNetworkSecurityGroup
+    --resource-group $MY_RESOURCE_GROUP_NAME \
+    --name $NIC3 \
+    --vnet-name $VNET_NAME \
+    --subnet $BACKEND_SUBNET \
+    --network-security-group $NSG_NAME
 ```
 
 To add a NIC to an existing VM, first deallocate the VM with [az vm deallocate](/cli/azure/vm). The following example deallocates the VM named *myVM*:
 
-
 ```azurecli
-az vm deallocate --resource-group myResourceGroup --name myVM
+az vm deallocate --resource-group $MY_RESOURCE_GROUP_NAME --name $VM_NAME
 ```
 
 Add the NIC with [az vm nic add](/cli/azure/vm/nic). The following example adds *myNic3* to *myVM*:
 
 ```azurecli
 az vm nic add \
-    --resource-group myResourceGroup \
-    --vm-name myVM \
-    --nics myNic3
+    --resource-group $MY_RESOURCE_GROUP_NAME \
+    --vm-name $VM_NAME \
+    --nics $NIC3
 ```
 
 Start the VM with [az vm start](/cli/azure/vm):
 
 ```azurecli
-az vm start --resource-group myResourceGroup --name myVM
+az vm start --resource-group $MY_RESOURCE_GROUP_NAME --name $VM_NAME
 ```
 
 Add routing tables to the guest OS by completing the steps in [Configure the guest OS for multiple NICs](#configure-guest-os-for-multiple-nics).
@@ -134,24 +163,23 @@ Add routing tables to the guest OS by completing the steps in [Configure the gue
 To remove a NIC from an existing VM, first deallocate the VM with [az vm deallocate](/cli/azure/vm). The following example deallocates the VM named *myVM*:
 
 ```azurecli
-az vm deallocate --resource-group myResourceGroup --name myVM
+az vm deallocate --resource-group $MY_RESOURCE_GROUP_NAME --name $VM_NAME
 ```
 
 Remove the NIC with [az vm nic remove](/cli/azure/vm/nic). The following example removes *myNic3* from *myVM*:
 
 ```azurecli
 az vm nic remove \
-    --resource-group myResourceGroup \
-    --vm-name myVM \
-    --nics myNic3
+    --resource-group $MY_RESOURCE_GROUP_NAME \
+    --vm-name $VM_NAME \
+    --nics $NIC3
 ```
 
 Start the VM with [az vm start](/cli/azure/vm):
 
 ```azurecli
-az vm start --resource-group myResourceGroup --name myVM
+az vm start --resource-group $MY_RESOURCE_GROUP_NAME --name $VM_NAME
 ```
-
 
 ## Create multiple NICs using Resource Manager templates
 Azure Resource Manager templates use declarative JSON files to define your environment. You can read an [overview of Azure Resource Manager](/azure/azure-resource-manager/management/overview). Resource Manager templates provide a way to create multiple instances of a resource during deployment, such as creating multiple NICs. You use *copy* to specify the number of instances to create:
@@ -165,7 +193,7 @@ Azure Resource Manager templates use declarative JSON files to define your envir
 
 Read more about [creating multiple instances using *copy*](/azure/azure-resource-manager/templates/copy-resources).
 
-You can also use a `copyIndex()` to then append a number to a resource name, which allows you to create `myNic1`, `myNic2`, etc. The following shows an example of appending the index value:
+You can also use a copyIndex() to then append a number to a resource name, which allows you to create myNic1, myNic2, etc. The following shows an example of appending the index value:
 
 ```json
 "name": "[concat('myNic', copyIndex())]",
@@ -183,8 +211,8 @@ To allow SSH traffic, create a network security group rule with [az network nsg 
 
 ```azurecli
 az network nsg rule create \
-    --resource-group myResourceGroup \
-    --nsg-name myNetworkSecurityGroup \
+    --resource-group $MY_RESOURCE_GROUP_NAME \
+    --nsg-name $NSG_NAME \
     --name allow_ssh \
     --priority 101 \
     --destination-port-ranges 22
@@ -193,34 +221,39 @@ az network nsg rule create \
 Create a public IP address with [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) and assign it to the first NIC with [az network nic ip-config update](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-update):
 
 ```azurecli
-az network public-ip create --resource-group myResourceGroup --name myPublicIP
+export PUBLIC_IP_NAME="myPublicIP"
+az network public-ip create --resource-group $MY_RESOURCE_GROUP_NAME --name $PUBLIC_IP_NAME
 
 az network nic ip-config update \
-    --resource-group myResourceGroup \
-    --nic-name myNic1 \
+    --resource-group $MY_RESOURCE_GROUP_NAME \
+    --nic-name $NIC1 \
     --name ipconfig1 \
-    --public-ip myPublicIP
+    --public-ip $PUBLIC_IP_NAME
 ```
 
-To view the public IP address of the VM, use [az vm show](/cli/azure/vm#az-vm-show) as follows::
+To view the public IP address of the VM, use [az vm show](/cli/azure/vm#az-vm-show) as follows:
 
 ```azurecli
-az vm show --resource-group myResourceGroup --name myVM -d --query publicIps -o tsv
+az vm show --resource-group $MY_RESOURCE_GROUP_NAME --name $VM_NAME -d --query publicIps -o tsv
+```
+<!-- expected_similarity=0.3 -->
+```TEXT
+x.x.x.x
 ```
 
 Now SSH to the public IP address of your VM. The default username provided in a previous step was *azureuser*. Provide your own username and public IP address:
 
 ```bash
-ssh azureuser@137.117.58.232
+export IP_ADDRESS=$(az vm show --resource-group $MY_RESOURCE_GROUP_NAME --name $VM_NAME -d --query publicIps -o tsv)
+ssh -o StrictHostKeyChecking=no azureuser@$IP_ADDRESS
 ```
-
 To send to or from a secondary network interface, you have to manually add persistent routes to the operating system for each secondary network interface. In this article, *eth1* is the secondary interface. Instructions for adding persistent routes to the operating system vary by distro. See documentation for your distro for instructions.
 
-When adding the route to the operating system, the gateway address is the first address of the subnet the network interface is in. For example, if the subnet has been assigned the range *10.0.2.0/24*, the gateway you specify for the route is *10.0.2.1* or if the subnet has been assigned the range *10.0.2.128/25*, the gateway you specify for the route is *10.0.2.129*. You can define a specific network for the route's destination, or specify a destination of *0.0.0.0*, if you want all traffic for the interface to go through the specified gateway. The gateway for each subnet is managed by the virtual network.
+When adding the route to the operating system, the gateway address is the first address of the subnet the network interface is in. For example, if the subnet has been assigned the range 10.0.2.0/24, the gateway you specify for the route is 10.0.2.1 or if the subnet has been assigned the range 10.0.2.128/25, the gateway you specify for the route is 10.0.2.129. You can define a specific network for the route's destination, or specify a destination of 0.0.0.0, if you want all traffic for the interface to go through the specified gateway. The gateway for each subnet is managed by the virtual network.
 
 Once you've added the route for a secondary interface, verify that the route is in your route table with `route -n`. The following example output is for the route table that has the two network interfaces added to the VM in this article:
 
-```bash
+```output
 Kernel IP routing table
 Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 0.0.0.0         10.0.1.1        0.0.0.0         UG    0      0        0 eth0
@@ -231,11 +264,7 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 169.254.169.254 10.0.1.1        255.255.255.255 UGH   0      0        0 eth0
 ```
 
-Confirm that the route you added persists across reboots by checking your route table again after a reboot. To test connectivity, you can enter the following command, for example, where *eth1* is the name of a secondary network interface:
-
-```bash
-ping bing.com -c 4 -I eth1
-```
+Confirm that the route you added persists across reboots by checking your route table again after a reboot. To test connectivity, you can enter the following command, for example, where *eth1* is the name of a secondary network interface: `ping bing.com -c 4 -I eth1`
 
 ## Next steps
 Review [Linux VM sizes](../sizes.md) when trying to creating a VM with multiple NICs. Pay attention to the maximum number of NICs each VM size supports.

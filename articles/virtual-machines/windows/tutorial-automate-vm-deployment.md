@@ -9,6 +9,7 @@ ms.date: 04/07/2023
 ms.author: jushiman
 ms.custom: mvc, devx-track-azurepowershell
 #Customer intent: As an IT administrator or developer, I want to learn about how to install applications on Windows VMs so that I can automate the process and reduce the risk of human error of manual configuration tasks.
+# Customer intent: As an IT administrator, I want to automate application installation on Windows VMs using scripts, so that I can streamline deployment processes and minimize manual configuration errors.
 ---
 
 # Tutorial - Deploy applications to a Windows virtual machine in Azure with the Custom Script Extension

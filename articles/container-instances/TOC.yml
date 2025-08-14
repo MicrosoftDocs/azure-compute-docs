@@ -6,6 +6,8 @@
     href: container-instances-overview.md
   - name: Resources and Quota Limits
     href: container-instances-resource-and-quota-limits.md
+  - name: Support Policy for ACI
+    href: azure-container-instances-support-policy.md
 - name: Quickstarts
   expanded: true
   items:
@@ -75,6 +77,8 @@
     href: container-instances-container-groups.md
   - name: Relationship to orchestrators
     href: container-instances-orchestrator-relationship.md
+  - name: Big Containers
+    href: big-containers.md
   - name: NGroups
     items:
     - name: About NGroups
@@ -136,7 +140,7 @@
       href: container-instances-exec.md
     - name: Run a setup container (init)
       href: container-instances-init-container.md
-    - name: Use config maps (Preview)
+    - name: Use config maps
       href: container-instances-config-map.md
     - name: Use a managed identity
       href: container-instances-managed-identity.md
@@ -174,10 +178,12 @@
       href: container-instances-stop-start.md
     - name: Update running containers
       href: container-instances-update.md
-  - name: Manage a standby pool (preview)
+  - name: Manage a standby pool
     items: 
     - name: Overview
       href: container-instances-standby-pool-overview.md
+    - name: Configure permissions
+      href: container-instances-standby-pool-configure-permissions.md
     - name: Create a standby pool
       href: container-instances-standby-pool-create.md
     - name: Request a container from a standby pool
@@ -186,6 +192,12 @@
       href: container-instances-standby-pool-update-delete.md
     - name: Get pool and container details
       href: container-instances-standby-pool-get-details.md
+    - name: Understand standby pool health
+      href: container-instances-standby-pool-health-state.md
+    - name: Utilize predictive pooling (preview)
+      href: container-instances-standby-pool-prediction-results.md
+    - name: Configure monitoring and alerts
+      href: container-instances-standby-pools-monitor-pool-events.md
     - name: Frequently asked questions
       href: container-instances-standby-pool-faq.md
   - name: Monitor and log

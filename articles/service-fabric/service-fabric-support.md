@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a cloud administrator managing Service Fabric clusters, I want to access various support options and troubleshooting resources, so that I can efficiently resolve issues and ensure optimal performance of my applications.
 ---
 
 # Azure Service Fabric support options
@@ -78,17 +79,6 @@ Report Azure Service Fabric issues at the [Service Fabric GitHub](https://github
 
 The `azure-service-fabric` tag on [StackOverflow][stackoverflow] is used for asking general questions about how the platform works and how you may use it to accomplish certain tasks.
 
-## Service Fabric community Q & A schedule 
-Join the community call on the following days to hear about new feature releases and key updates and get answers to the questions from the Service Fabric team.
-
-| Schedule	| 
-|---------	|
-| March 30, 2023 | 
-| May 25, 2023 |
-| July 27, 2023|
-| September 28, 2023| 
-| January 25, 2024	|
-| March 28, 2024 |
 
 ## Stay informed of updates and new releases
 

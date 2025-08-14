@@ -9,6 +9,7 @@ ms.date: 01/28/2025
 ms.author: padmalathas
 ms.reviewer: mattmcinnes
 ms.custom: include file
+# Customer intent: "As a cloud architect, I want to access detailed specifications of HC-series VM sizes, so that I can evaluate their suitability for high-performance computing workloads in my infrastructure planning."
 ---
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
 |---|---|---|

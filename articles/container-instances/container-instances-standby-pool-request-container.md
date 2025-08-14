@@ -1,5 +1,5 @@
 ---
-title: Request a container from a Standby pool for Azure Container Instances (Preview)
+title: Request a container from a Standby pool for Azure Container Instances
 description: Learn how to scale out from a standby pool with Azure Container Instances.
 author: mimckitt
 ms.author: mimckitt
@@ -7,21 +7,23 @@ ms.service: azure-container-instances
 ms.custom:
   - ignite-2024
 ms.topic: how-to
-ms.date: 11/6/2024
+ms.date: 5/19/2025
 ms.reviewer: tomvcassidy
+# Customer intent: As a DevOps engineer, I want to request a container group from a standby pool in Azure Container Instances, so that I can effectively manage container deployments and optimize resource usage during scaling.
 ---
 
 
-# Request a container from a standby pool for Azure Container Instances (Preview)
+# Request a container from a standby pool for Azure Container Instances
 
 > [!IMPORTANT]
-> Standby pools for Azure Container Instances is currently in preview. Previews are made available to you on the condition that you agree to the [supplemental terms of use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Some aspects of this feature may change prior to general availability (GA).
+> For standby pools to successfully create and manage resources, it requires access to the associated resources in your subscription. Ensure the correct permissions are assigned to the standby pool resource provider in order for your standby pool to function properly. For detailed instructions, see **[configure role permissions for standby pools](container-instances-standby-pool-configure-permissions.md)**.
+
 
 This article steps through requesting a container group from a standby pool for Azure Container Instances.   
 
 ## Prerequisites
 
-Before utilizing standby pools, complete the feature registration and configure role based access controls listed in the [Standby pools for Azure Container Instances](container-instances-standby-pool-overview.md#prerequisites) overview page. 
+Before utilizing standby pools, complete the feature registration and configure role based access controls. For more information see [Configure role permissions for standby pools in Azure Container Instances](container-instances-standby-pool-configure-permissions.md)
 
 
 ## Request a container from the standby pool

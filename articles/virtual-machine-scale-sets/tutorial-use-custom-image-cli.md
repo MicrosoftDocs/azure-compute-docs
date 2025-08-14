@@ -9,6 +9,7 @@ ms.date: 10/28/2024
 ms.reviewer: mimckitt
 ms.author: jushiman
 ms.custom: mvc, devx-track-azurecli, innovation-engine
+# Customer intent: As a cloud architect, I want to create and utilize a custom VM image for a scale set using the CLI, so that I can efficiently deploy pre-configured VM instances that meet my application's requirements.
 ---
 
 # Tutorial: Create and use a custom image for Virtual Machine Scale Sets with the Azure CLI

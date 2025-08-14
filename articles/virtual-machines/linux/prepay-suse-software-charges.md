@@ -6,9 +6,10 @@ manager: yashesvi
 ms.service: azure-virtual-machines
 ms.subservice: billing
 ms.custom: linux-related-content
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 10/04/2024
 ms.author: banders
+# Customer intent: As a financial analyst, I want to understand how to prepay for software plans, so that I can save costs on SUSE and RedHat software usage in Azure and optimize our cloud budget.
 ---
 # Prepay for Azure software plans
 

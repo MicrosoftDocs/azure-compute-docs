@@ -1,23 +1,24 @@
 ---
-title: Convert Azure Cloud Services apps to Service Fabric 
-description: This guide compares Cloud Services Web and Worker Roles and Service Fabric stateless services to help migrate from Cloud Services to Service Fabric.
+title: Convert Azure Cloud Services (extended support) apps to Service Fabric 
+description: This guide compares Cloud Services (extended support) Web and Worker Roles and Service Fabric stateless services to help migrate from Cloud Services (extended support) to Service Fabric.
 ms.topic: how-to
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a cloud application developer, I want to migrate my Cloud Services (extended support) Web and Worker Roles to Service Fabric stateless services, so that I can take advantage of improved scalability and simplified deployment within a Service Fabric cluster.
 ---
 
 # Guide to converting Web and Worker Roles to Service Fabric stateless services
-This article describes how to migrate your Cloud Services Web and Worker Roles to Service Fabric stateless services. This is the simplest migration path from Cloud Services to Service Fabric for applications whose overall architecture is going to stay roughly the same.
+This article describes how to migrate your Cloud Services (extended support) Web and Worker Roles to Service Fabric stateless services. This is the simplest migration path from Cloud Services (extended support) to Service Fabric for applications whose overall architecture is going to stay roughly the same.
 
-## Cloud Service project to Service Fabric application project
+## Cloud Services (extended support) project to Service Fabric application project
  A Cloud Service project and a Service Fabric Application project have a similar structure and both represent the deployment unit for your application - that is, they each define the complete package that is deployed to run your application. A Cloud Service project contains one or more Web or Worker Roles. Similarly, a Service Fabric Application project contains one or more services. 
 
 The difference is that the Cloud Service project couples the application deployment with a VM deployment and thus contains VM configuration settings in it, whereas the Service Fabric Application project only defines an application that will be deployed to a set of existing VMs in a Service Fabric cluster. The Service Fabric cluster itself is only deployed once, either through an Resource Manager template or through the Azure portal, and multiple Service Fabric applications can be deployed to it.
 
-![Service Fabric and Cloud Services project comparison][3]
+![Service Fabric and Cloud Services (extended support) project comparison][3]
 
 ## Worker Role to stateless service
 Conceptually, a Worker Role represents a stateless workload, meaning every instance of the workload is identical and requests can be routed to any instance at any time. Each instance is not expected to remember the previous request. State that the workload operates on is managed by an external state store, such as Azure Table Storage or Azure Cosmos DB. In Service Fabric, this type of workload is represented by a Stateless Service. The simplest approach to migrating a Worker Role to Service Fabric can be done by converting Worker Role code to a Stateless Service.
@@ -104,9 +105,9 @@ There are several key differences between the lifecycle and lifetime of Worker R
 Service Fabric provides an optional communication setup entry point for services that listen for client requests. Both the RunAsync and communication entry point are optional overrides in Service Fabric services - your service may choose to only listen to client requests, or only run a processing loop, or both - which is why the RunAsync method is allowed to exit without restarting the service instance, because it may continue to listen for client requests.
 
 ## Application API and environment
-The Cloud Services environment API provides information and functionality for the current VM instance as well as information about other VM role instances. Service Fabric provides information related to its runtime and some information about the node a service is currently running on. 
+The Cloud Services (extended support) environment API provides information and functionality for the current VM instance as well as information about other VM role instances. Service Fabric provides information related to its runtime and some information about the node a service is currently running on. 
 
-| **Environment Task** | **Cloud Services** | **Service Fabric** |
+| **Environment Task** | **Cloud Services (extended support)** | **Service Fabric** |
 | --- | --- | --- |
 | Configuration Settings and change notification |`RoleEnvironment` |`CodePackageActivationContext` |
 | Local Storage |`RoleEnvironment` |`CodePackageActivationContext` |
@@ -115,16 +116,16 @@ The Cloud Services environment API provides information and functionality for th
 | Simultaneous change event |`RoleEnvironment` |N/A |
 
 ## Configuration settings
-Configuration settings in Cloud Services are set for a VM role and apply to all instances of that VM role. These settings are key-value pairs set in ServiceConfiguration.*.cscfg files and can be accessed directly through RoleEnvironment. In Service Fabric, settings apply individually to each service and to each application, rather than to a VM, because a VM can host multiple services and applications. A service is composed of three packages:
+Configuration settings in Cloud Services (extended support) are set for a VM role and apply to all instances of that VM role. These settings are key-value pairs set in ServiceConfiguration.*.cscfg files and can be accessed directly through RoleEnvironment. In Service Fabric, settings apply individually to each service and to each application, rather than to a VM, because a VM can host multiple services and applications. A service is composed of three packages:
 
 * **Code:** contains the service executables, binaries, DLLs, and any other files a service needs to run.
 * **Config:** all configuration files and settings for a service.
 * **Data:** static data files associated with the service.
 
-Each of these packages can be independently versioned and upgraded. Similar to Cloud Services, a config package can be accessed programmatically through an API and events are available to notify the service of a config package change. A Settings.xml file can be used for key-value configuration and programmatic access similar to the app settings section of an App.config file. However, unlike Cloud Services, a Service Fabric config package can contain any configuration files in any format, whether it's XML, JSON, YAML, or a custom binary format. 
+Each of these packages can be independently versioned and upgraded. Similar to Cloud Services (extended support), a config package can be accessed programmatically through an API and events are available to notify the service of a config package change. A Settings.xml file can be used for key-value configuration and programmatic access similar to the app settings section of an App.config file. However, unlike Cloud Services (extended support), a Service Fabric config package can contain any configuration files in any format, whether it's XML, JSON, YAML, or a custom binary format. 
 
 ### Accessing configuration
-#### Cloud Services
+#### Cloud Services (extended support)
 Configuration settings from ServiceConfiguration.*.cscfg can be accessed through `RoleEnvironment`. These settings are globally available to all role instances in the same Cloud Service deployment.
 
 ```csharp
@@ -156,7 +157,7 @@ using (StreamReader reader = new StreamReader(Path.Combine(configPackage.Path, "
 ```
 
 ### Configuration update events
-#### Cloud Services
+#### Cloud Services (extended support)
 The `RoleEnvironment.Changed` event is used to notify all role instances when a change occurs in the environment, such as a configuration change. This is used to consume configuration updates without recycling role instances or restarting a worker process.
 
 ```csharp
@@ -194,16 +195,16 @@ private void CodePackageActivationContext_ConfigurationPackageModifiedEvent(obje
 ```
 
 ## Startup tasks
-Startup tasks are actions that are taken before an application starts. A startup task is typically used to run setup scripts using elevated privileges. Both Cloud Services and Service Fabric support start-up tasks. The main difference is that in Cloud Services, a startup task is tied to a VM because it is part of a role instance, whereas in Service Fabric a startup task is tied to a service, which is not tied to any particular VM.
+Startup tasks are actions that are taken before an application starts. A startup task is typically used to run setup scripts using elevated privileges. Both Cloud Services (extended support) and Service Fabric support start-up tasks. The main difference is that in Cloud Services (extended support), a startup task is tied to a VM because it is part of a role instance, whereas in Service Fabric a startup task is tied to a service, which is not tied to any particular VM.
 
-| Service Fabric | Cloud Services |
+| Service Fabric | Cloud Services (extended support) |
 | --- | --- |
 | Configuration location |ServiceDefinition.csdef |
 | Privileges |"limited" or "elevated" |
 | Sequencing |"simple", "background", "foreground" |
 
-### Cloud Services
-In Cloud Services a startup entry point is configured per role in ServiceDefinition.csdef. 
+### Cloud Services (extended support)
+In Cloud Services (extended support) a startup entry point is configured per role in ServiceDefinition.csdef. 
 
 ```xml
 
@@ -238,13 +239,13 @@ In Service Fabric a startup entry point is configured per service in ServiceMani
 ``` 
 
 ## A note about development environment
-Both Cloud Services and Service Fabric are integrated with Visual Studio with project templates and support for debugging, configuring, and deploying both locally and to Azure. Both Cloud Services and Service Fabric also provide a local development runtime environment. The difference is that while the Cloud Service development runtime emulates the Azure environment on which it runs, Service Fabric does not use an emulator - it uses the complete Service Fabric runtime. The Service Fabric environment you run on your local development machine is the same environment that runs in production.
+Both Cloud Services (extended support) and Service Fabric are integrated with Visual Studio with project templates and support for debugging, configuring, and deploying both locally and to Azure. Both Cloud Services (extended support) and Service Fabric also provide a local development runtime environment. The difference is that while the Cloud Service development runtime emulates the Azure environment on which it runs, Service Fabric does not use an emulator - it uses the complete Service Fabric runtime. The Service Fabric environment you run on your local development machine is the same environment that runs in production.
 
 ## Next steps
-Read more about Service Fabric Reliable Services and the fundamental differences between Cloud Services and Service Fabric application architecture to understand how to take advantage of the full set of Service Fabric features.
+Read more about Service Fabric Reliable Services and the fundamental differences between Cloud Services (extended support) and Service Fabric application architecture to understand how to take advantage of the full set of Service Fabric features.
 
 * [Getting started with Service Fabric Reliable Services](service-fabric-reliable-services-quick-start.md)
-* [Conceptual guide to the differences between Cloud Services and Service Fabric](service-fabric-cloud-services-migration-differences.md)
+* [Conceptual guide to the differences between Cloud Services (extended support) and Service Fabric](service-fabric-cloud-services-migration-differences.md)
 
 <!--Image references-->
 [3]: ./media/service-fabric-cloud-services-migration-worker-role-stateless-service/service-fabric-cloud-service-projects.png

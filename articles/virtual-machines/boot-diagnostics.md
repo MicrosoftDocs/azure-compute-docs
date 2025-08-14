@@ -6,9 +6,10 @@ ms.service: azure-virtual-machines
 ms.custom:
 author: mimckitt
 ms.author: mimckitt
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 02/25/2023
 ms.reviewer: mattmcinnes
+# Customer intent: "As a system administrator, I want to enable boot diagnostics on Azure VMs using managed storage accounts, so that I can efficiently diagnose boot failures and improve the reliability of my virtual machine deployments."
 ---
 
 # Azure boot diagnostics
@@ -33,7 +34,7 @@ An alternative boot diagnostic experience is to use a custom storage account. A 
 To configure the storage firewall for Azure Serial Console, see [Use Serial Console with custom boot diagnostics storage account firewall enabled](/troubleshoot/azure/virtual-machines/serial-console-windows#use-serial-console-with-custom-boot-diagnostics-storage-account-firewall-enabled).
 
 > [!NOTE]
-> The custom storage account associated with boot diagnostics requires the storage account and the associated virtual machines reside in the same region and subscription.
+> The custom storage account associated with boot diagnostics requires the storage account and the associated virtual machines reside in the same region and subscription. To view the boot diagnostics data, users must also have the correct level of view and read permissions.
 
 ## Boot diagnostics view
 

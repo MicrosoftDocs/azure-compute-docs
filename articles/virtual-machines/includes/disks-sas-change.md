@@ -7,6 +7,7 @@
  ms.date: 08/15/2024
  ms.author: rogarana
  ms.custom: include file
+# Customer intent: As a cloud storage administrator, I want to adjust the expiration settings of Shared Access Signatures for disks and snapshots, so that I can ensure compliance with the upcoming 60-day limit and maintain uninterrupted access for my users.
 ---
 > [!IMPORTANT]
 > On February 15th, 2025, the Shared Access Signature (SAS) access time for disks and snapshots will be limited to a maximum of 60 days. Trying to generate a SAS with an expiration longer than 60 days results in an error. Any existing disk or snapshot SAS created with an expiration longer than 60 days may stop working 60 days after the date of creation and will result in a 403 error during authorization.

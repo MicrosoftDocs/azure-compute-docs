@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.date: 04/24/2018
 ms.author: rogarana
 ms.custom: devx-track-azurepowershell
+# Customer intent: As a system admin, I want to swap the OS disk of an existing Azure VM using PowerShell, so that I can update or restore the VM's operating system without deleting or recreating it.
 ---
 # Change the OS disk used by an Azure VM using PowerShell
 

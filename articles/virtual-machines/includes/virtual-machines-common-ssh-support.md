@@ -8,6 +8,7 @@ author: jushiman
  ms.date: 04/17/2018
 ms.author: jushiman
  ms.custom: include file
+# Customer intent: As a system administrator, I want to understand the supported SSH key formats for virtual machines, so that I can configure secure connections effectively.
 ---
 
 ## Supported SSH key formats

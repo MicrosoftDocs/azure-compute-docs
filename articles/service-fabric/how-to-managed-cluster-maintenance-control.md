@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 05/07/2024
+# Customer intent: As a cloud administrator, I want to configure a maintenance control window for my Service Fabric managed cluster, so that I can ensure background operations occur during off-peak hours to minimize service interruptions.
 ---
 
 # Introduction to MaintenanceControl on Service Fabric managed clusters

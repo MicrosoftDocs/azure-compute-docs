@@ -10,6 +10,7 @@ ms.date: 06/14/2024
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurepowershell
 
+# Customer intent: "As a cloud administrator, I want to automate the installation and update of applications in Virtual Machine Scale Sets using scripts, so that I can efficiently manage and deploy applications across multiple VM instances."
 ---
 # Tutorial: Install applications in Virtual Machine Scale Sets with Azure PowerShell
 To run applications on virtual machine (VM) instances in a scale set, you first need to install the application components and required files. In a previous tutorial, you learned how to create and use a custom VM image to deploy your VM instances. This custom image included manual application installs and configurations. You can also automate the install of applications to a scale set after each VM instance is deployed, or update an application that already runs on a scale set. In this tutorial you learn how to:

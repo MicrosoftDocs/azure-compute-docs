@@ -9,6 +9,7 @@ ms.date: 07/28/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
+# Customer intent: "As a cloud architect, I want to review the specifications of Dsv3-series virtual machines, so that I can select the appropriate VM size to meet the performance requirements of my applications."
 ---
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
 |---|---|---|

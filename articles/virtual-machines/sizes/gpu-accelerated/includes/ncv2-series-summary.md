@@ -9,9 +9,10 @@ ms.date: 07/31/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
+# Customer intent: "As a data scientist using GPU-accelerated virtual machines, I want to migrate from NCv2-series VMs to more advanced options, so that I can continue to leverage high computational performance for my HPC workloads after the NCv2 retirement."
 ---
 > [!IMPORTANT]
-> NCv2 series Azure virtual machines (VMs) will be retired on September 6, 2023. For more information, see the [NCv2 retirement information](../../../ncv2-series-retirement.md). For how to migrate your workloads to other VM sizes, see the [GPU compute migration guide](../../../n-series-migration.md).
+> NCv2 series Azure virtual machines (VMs) will be retired on September 6, 2023. For more information, see the [NCv2 retirement information](../../../ncv2-series-retirement.md). For how to migrate your workloads to other VM sizes, see the [GPU compute migration guide](../../../migration/sizes/n-series-migration.md).
 >
 > This retirement announcement doesn't apply to NCv3, NCasT4v3 and NC A100 v4 series VMs.  
 

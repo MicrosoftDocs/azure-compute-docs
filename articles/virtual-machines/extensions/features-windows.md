@@ -10,6 +10,7 @@ ms.reviewer: jushiman
 ms.collection: windows
 ms.date: 04/03/2023
 ms.custom: devx-track-azurepowershell
+# Customer intent: As a cloud administrator, I want to explore and implement various Azure VM extensions for Windows, so that I can automate configurations, enhance security, and improve the management of virtual machines efficiently.
 ---
 
 # Virtual machine extensions and features for Windows

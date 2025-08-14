@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.date: 06/29/2021
 ms.author: rogarana
 ms.custom: devx-track-azurepowershell
+# Customer intent: As a cloud administrator, I want to identify and delete unattached managed and unmanaged disks using scripts, so that I can optimize storage costs and manage resources effectively in my Azure environment.
 ---
 
 # Find and delete unattached Azure managed and unmanaged disks by using Azure PowerShell

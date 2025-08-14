@@ -8,6 +8,7 @@ ms.topic: how-to
 ms.date: 11/22/2022
 ms.reviewer: cynthn, jushiman
 ms.custom: template-how-to, devx-track-azurecli, devx-track-azurepowershell
+# Customer intent: "As a cloud administrator, I want to associate a virtual machine with a capacity reservation group, so that I can ensure reserved resources are allocated for my applications and workloads."
 ---
 
 # Associate a VM to a capacity reservation group
@@ -489,7 +490,7 @@ To learn more, see the Azure PowerShell commands [Stop-AzVM](/powershell/module/
 --- 
 <!-- The three dashes above show that your section of tabbed content is complete. Don't remove them :) -->
 
-## View VM association with the Instance View
+## View VM allocation with the Instance View
 
 After the `capacityReservationGroup` property is set, an association now exists between the VM and the group. Azure automatically finds the matching capacity reservation in the group and consumes a reserved slot. The capacity reservation's Instance View reflects the new VM in the `virtualMachinesAllocated` property:
 

@@ -7,6 +7,7 @@ ms.subservice: extensions
 ms.author: gabsta
 author: GabstaMSFT
 ms.date: 07/18/2023
+# Customer intent: As a cloud administrator, I want to deploy the Tenable One-Click Nessus Agent to Azure virtual machines, so that I can easily manage vulnerabilities across my infrastructure using a streamlined installation process.
 ---
 # Tenable One-Click Nessus Agent
 

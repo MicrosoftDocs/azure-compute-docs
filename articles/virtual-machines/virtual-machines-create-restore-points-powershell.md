@@ -8,6 +8,7 @@ ms.subservice: recovery
 ms.topic: tutorial
 ms.date: 06/30/2022
 ms.custom: template-tutorial
+# Customer intent: As an IT administrator, I want to create virtual machine restore points using PowerShell, so that I can protect data and minimize downtime during recovery operations.
 ---
 
 

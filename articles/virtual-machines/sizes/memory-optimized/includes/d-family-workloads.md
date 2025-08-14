@@ -9,6 +9,7 @@ ms.subservice: sizes
 ms.date: 04/19/2024
 ms.author: mattmcinnes
 ms.custom: include file
+# Customer intent: "As a cloud architect, I want to understand the workloads supported by the 'D' memory family VM sizes, so that I can choose the appropriate virtual machines for large databases, in-memory analytics, and caching solutions in my infrastructure."
 ---
 **Large Databases:** Ideal for running large relational and NoSQL databases that need to maintain large in-memory datasets for quick query responses and transaction processing.
 

@@ -10,6 +10,7 @@ ms.topic: how-to
 ms.date: 04/28/2024
 ms.author: vakavuru
 ms.reviewer: mattmcinnes
+# Customer intent: "As a cloud engineer, I want to create and upload a customized SUSE Linux virtual hard disk to Azure, so that I can automate the deployment of tailored virtual machines that meet my project's requirements."
 ---
 # Prepare a SLES or openSUSE Leap virtual machine for Azure
 

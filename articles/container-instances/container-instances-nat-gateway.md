@@ -8,6 +8,7 @@ ms.custom: devx-track-azurecli
 services: container-instances
 ms.author: tomcassidy
 ms.date: 08/29/2024
+# Customer intent: As a cloud administrator, I want to configure a NAT gateway for my container groups, so that I can establish a static public IP address for outbound traffic to simplify monitoring and firewall rule management.
 ---
 
 # Configure a NAT gateway for static IP address for outbound traffic from a container group

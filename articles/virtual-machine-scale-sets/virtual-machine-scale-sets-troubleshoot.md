@@ -9,6 +9,7 @@ ms.subservice: autoscale
 ms.date: 06/14/2024
 ms.reviewer: mimckitt
 
+# Customer intent: As a cloud engineer, I want to troubleshoot autoscale issues in Virtual Machine Scale Sets, so that I can ensure my infrastructure scales efficiently with varying workloads and maintains optimal performance.
 ---
 
 # Troubleshooting autoscale with Virtual Machine Scale Sets

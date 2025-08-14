@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a developer, I want to conduct chaos and failover tests on my services in Service Fabric, so that I can validate their reliability and stability under simulated fault conditions.
 ---
 
 # Testability scenarios

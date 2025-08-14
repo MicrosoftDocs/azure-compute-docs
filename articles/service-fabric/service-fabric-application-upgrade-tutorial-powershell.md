@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As an application administrator, I want to upgrade my Service Fabric application using PowerShell, so that I can ensure smooth deployment and manage application health during the upgrade process."
 ---
 
 # Service Fabric application upgrade using PowerShell

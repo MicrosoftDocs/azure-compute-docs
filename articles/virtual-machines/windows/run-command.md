@@ -11,6 +11,7 @@ ms.topic: how-to
 ms.reviewer: jushiman
 ms.custom: devx-track-azurecli
 ms.devlang: azurecli
+# Customer intent: As a system administrator, I want to execute PowerShell scripts on my Windows virtual machines remotely, so that I can manage and troubleshoot issues without needing direct access.
 ---
 # Run scripts in your Windows VM by using action Run Commands
 
@@ -25,22 +26,18 @@ This capability is useful in all scenarios where you want to run a script within
 ## Prerequisites
 
 ### **Windows Operating Systems Supported**
-| **Windows OS** |	**x64** |
-|:----|:----:|
-| Windows 10 |	Supported |
-| Windows 11 |	Supported |
-| Windows Server 2008 SP2 |	Supported |
-| Windows Server 2008 R2 |	Supported |
-| Windows Server 2012 |	Supported |
-| Windows Server 2012 R2 |	Supported |
-| Windows Server 2016 |	Supported |
-| Windows Server 2016 Core |	Supported |
-| Windows Server 2019 |	Supported |
-| Windows Server 2019 Core |	Supported |
-| Windows Server 2022 |	Supported |
-| Windows Server 2022 Core |	Supported |
-| Windows Server 2025 | Supported |
-| Windows Server 2025 Core | Supported |
+| OS Version | x64 | ARM64 |
+|:-----|:-----:|:-----:|
+| Windows 10 | Supported | Supported |
+| Windows 11 | Supported | Supported |
+| Windows Server 2016 | Supported | Supported |
+| Windows Server 2016 Core | Supported | Supported |
+| Windows Server 2019 | Supported | Supported |
+| Windows Server 2019 Core | Supported | Supported |
+| Windows Server 2022 | Supported | Supported |
+| Windows Server 2022 Core | Supported | Supported |
+| Windows Server 2025 | Supported | Supported |
+| Windows Server 2025 Core | Supported | Supported |
 
 ## Restrictions
 
@@ -83,6 +80,8 @@ The entity was not found in this Azure location
 | **RDPSettings** | Checks registry settings and domain policy settings. Suggests policy actions if the machine is part of a domain or modifies the settings to default values. |
 | **ResetRDPCert** | Removes the TLS/SSL certificate tied to the RDP listener and restores the RDP listener security to default. Use this script if you see any issues with the certificate. |
 | **SetRDPPort** | Sets the default or user-specified port number for Remote Desktop connections. Enables firewall rules for inbound access to the port. |
+| **IMDSCertCheck** | Checks from within the virtual machine for known configuration issues that may be causing IMDS to not function properly. |
+| **WindowsActivationValidation** | Checks from within the virtual machine for known Windows Activation issues or concerns that may cause acation to fail. |
 
 ## Azure CLI
 
@@ -132,7 +131,7 @@ Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' 
 
 Listing the run commands or showing the details of a command requires the `Microsoft.Compute/locations/runCommands/read` permission on Subscription Level. The built-in [Reader](/azure/role-based-access-control/built-in-roles#reader) role and higher levels have this permission.
 
-Running a command requires the `Microsoft.Compute/virtualMachines/runCommands/action` permission. The [Virtual Machine Contributor](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) role and higher levels have this permission.
+Running a command requires the `Microsoft.Compute/virtualMachines/runCommand/action` permission. The [Virtual Machine Contributor](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) role and higher levels have this permission.
 
 You can use one of the [built-in roles](/azure/role-based-access-control/built-in-roles) or create a [custom role](/azure/role-based-access-control/custom-roles) to use Run Command.
 

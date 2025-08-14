@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: devx-track-extended-java
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a Java developer, I want to create a Java application with both stateless and stateful services on a cloud service platform, so that I can develop and deploy a reliable voting application efficiently.
 ---
 
 # Tutorial: Create an application with a Java API front-end service and a stateful back-end service on Azure Service Fabric

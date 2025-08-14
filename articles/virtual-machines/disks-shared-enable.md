@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.date: 04/11/2023
 ms.author: rogarana
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
+# Customer intent: As a cloud engineer, I want to configure shared disks for Azure managed disks, so that I can enable simultaneous access from multiple virtual machines to support clustered applications.
 ---
 
 # Enable shared disk

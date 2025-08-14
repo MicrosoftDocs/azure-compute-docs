@@ -5,10 +5,11 @@ author: msmbaldwin
 ms.service: azure-virtual-machines
 ms.subservice: security
 ms.collection: linux
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: mbaldwin
 ms.date: 03/03/2025
 ms.custom: linux-related-content
+# Customer intent: "As a system administrator managing Linux virtual machines, I want to enable disk encryption on my VMs, so that I can ensure data security and comply with organizational security standards."
 ---
 
 # Azure Disk Encryption for Linux VMs

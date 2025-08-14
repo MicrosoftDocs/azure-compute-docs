@@ -8,6 +8,7 @@ ms.service: azure-container-instances
 ms.custom:
 services: container-instances
 ms.date: 08/29/2024
+# Customer intent: As a cloud developer, I want to configure restart policies for containerized tasks, so that I can efficiently manage execution and resource usage when running tasks that complete, like builds or image rendering.
 ---
 
 # Run containerized tasks with restart policies

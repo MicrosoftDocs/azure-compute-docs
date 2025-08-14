@@ -9,6 +9,7 @@ ms.topic: how-to
 ms.date: 02/01/2023
 ms.author: mattmcinnes
 ms.reviewer: jamesser
+# Customer intent: "As a cloud administrator, I want to create a Linux virtual machine using an Azure Resource Manager template via the command line, so that I can ensure consistent and repeatable deployments of my infrastructure."
 ---
 # How to create a Linux virtual machine with Azure Resource Manager templates
 

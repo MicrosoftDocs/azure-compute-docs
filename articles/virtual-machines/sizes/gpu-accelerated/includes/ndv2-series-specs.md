@@ -9,6 +9,7 @@ ms.date: 02/10/2025
 ms.author: padmalathas
 ms.reviewer: mattmcinnes
 ms.custom: include file
+# Customer intent: As an infrastructure architect, I want to review the NDv2 series VM specifications, so that I can determine the appropriate virtual machine size for our high-performance computing needs.
 ---
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
 |---|---|---|

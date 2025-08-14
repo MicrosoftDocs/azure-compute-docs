@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: devx-track-arm-template
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a cloud developer, I want to create a test Service Fabric cluster using an ARM template, so that I can efficiently deploy and manage microservices in a development environment.
 ---
 
 # Quickstart: Create a Service Fabric cluster using ARM template

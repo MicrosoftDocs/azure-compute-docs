@@ -9,6 +9,7 @@ ms.subservice: sizes
 ms.date: 04/19/2024
 ms.author: mattmcinnes
 ms.custom: include file
+# Customer intent: "As a data scientist, I want to leverage NC-series virtual machines for training machine learning models, so that I can significantly accelerate complex computations and enhance productivity in my AI projects."
 ---
 **AI and Machine Learning:** NC-series VMs are ideal for training complex machine learning models and running AI applications. The NVIDIA GPUs provide significant acceleration for computations typically involved in deep learning and other intensive training tasks.
 

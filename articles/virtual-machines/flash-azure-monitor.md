@@ -6,7 +6,8 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.custom: subject-monitoring
 ms.date: 01/31/2024
-ms.topic: conceptual
+ms.topic: concept-article
+# Customer intent: "As a system administrator, I want to utilize the VM availability metric in Azure Monitor so that I can effectively track and manage the health and performance of my virtual machines."
 ---
 
 # Project Flash - Use Azure Monitor to monitor Azure Virtual Machine availability

@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 03/29/2024
+# Customer intent: As a cloud administrator, I want to migrate my Service Fabric clusters to TLS 1.3, so that I can enhance the security of my cluster’s HTTP endpoints and ensure compliance with modern security standards.
 ---
 
 # How to migrate to TLS (Transport Layer Security) 1.3 for Service Fabric

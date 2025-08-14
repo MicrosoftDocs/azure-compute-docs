@@ -3,9 +3,10 @@ title: We're retiring Azure unmanaged disks by September 30, 2025
 description: This article provides a high-level overview of the retirement of Azure unmanaged disks and how to migrate to Azure managed disks.
 author: roygara
 ms.service: azure-disk-storage
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 06/28/2023
 ms.author: rogarana
+# Customer intent: As an Azure user managing virtual machines, I want to migrate my unmanaged disks to managed disks before the retirement deadline, so that I can ensure continued operation and take advantage of the enhanced reliability and features of managed disks.
 ---
 
 # Migrate your Azure unmanaged disks by September 30, 2025
@@ -18,8 +19,7 @@ With managed disks, you don't have to worry about managing storage accounts for 
 
 ## How does this affect me?
 
-- As of January 30, 2024, new customers won't be able to create unmanaged disks.
-- On September 30, 2025, customers will no longer be able to start IaaS VMs by using unmanaged disks. Any VMs that are still running or allocated will be stopped and deallocated.
+- After September 30, 2025, customers won't be able to start IaaS VMs using unmanaged disks. Any VMs that are still running or allocated will be stopped and deallocated.
 
 ## What is being retired?
 

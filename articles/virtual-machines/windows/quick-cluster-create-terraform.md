@@ -11,6 +11,7 @@ ms.custom: devx-track-terraform
 content_well_notification: 
   - AI-contribution
 ai-usage: ai-assisted
+# Customer intent: "As a cloud engineer, I want to create a Windows VM cluster in Azure using infrastructure as code with Terraform, so that I can automate deployment and management of virtual machines efficiently."
 ---
 
 # Quickstart: Create a Windows VM cluster in Azure using Terraform

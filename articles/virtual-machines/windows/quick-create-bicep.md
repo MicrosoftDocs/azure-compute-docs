@@ -8,6 +8,7 @@ ms.collection: windows
 ms.topic: quickstart
 ms.date: 03/11/2022
 ms.custom: subject-armqs, mode-arm, devx-track-bicep
+# Customer intent: As a cloud engineer, I want to deploy a Windows virtual machine using a Bicep file, so that I can automate the setup and configuration of my virtual infrastructure in Azure.
 ---
 
 # Quickstart: Create a Windows virtual machine using a Bicep file

@@ -8,6 +8,7 @@ ms.custom: devx-track-azurecli
 services: container-instances
 ms.topic: how-to
 ms.date: 08/29/2024
+# Customer intent: "As a cloud developer, I want to set up a TLS endpoint using a sidecar container, so that I can secure connections to my web application without altering its code."
 ---
 # Enable a TLS endpoint in a sidecar container
 

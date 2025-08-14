@@ -9,6 +9,7 @@ author: GabstaMSFT
 ms.custom: GGAL-freshness822, linux-related-content
 ms.collection: linux
 ms.date: 03/28/2023
+# Customer intent: "As a system administrator managing Linux virtual machines, I want to install and configure the Azure Linux VM Agent, so that I can automate provisioning, networking, and diagnostics for efficient VM management."
 ---
 # Azure Linux VM Agent overview
 
@@ -18,6 +19,8 @@ The Linux agent provides the following functionality for Linux and FreeBSD Azure
 
 > [!IMPORTANT]
 > FIPS 140-3 Enforced is not supported on RHEL/Ubuntu with extensions using 'protectedSettings'.
+>
+> Support for FIPS 140-3 will be added during the CY25 Q4 timeframe.
 
 ### Image provisioning
 
@@ -70,18 +73,18 @@ Testing has confirmed that the following systems work with the Azure Linux VM Ag
 > [!NOTE]
 > This list might differ from the [endorsed Linux distributions on Azure](../linux/endorsed-distros.md).
 
-| Distribution | x64 | ARM64 |
-|:-----|:-----:|:-----:|
-| Alma Linux | 8.x+, 9.x+ | 8.x+, 9.x+ |
-| Debian | 10+ | 11.x+ |
-| Flatcar Linux | 3374.2.x+ | 3374.2.x+ |
-| Azure Linux | 2.x | 2.x |
-| openSUSE | 12.3+ | *Not supported* |
-| Oracle Linux | 6.4+, 7.x+, 8.x+ | *Not supported* |
-| Red Hat Enterprise Linux | 6.7+, 7.x+,  8.x+, 9.x+ | 8.6+, 9.0+ |
-| Rocky Linux | 9.x+ | 9.x+ |
-| SLES | 12.x+, 15.x+ | 15.x SP4+ |
-| Ubuntu (LTS releases)| 18.04+, 20.04+, 22.04+, 24.04+ | 20.04+, 22.04+, 24.04+ |
+| Publisher | Distribution | x64 | ARM64 |
+|:-----|:-----|:-----:|:-----:|
+| Alma Linux Community | Alma Linux | 8.x+, 9.x+ | 8.x+, 9.x+ |
+| Credativ | Debian | 10+ | 11.x+ |
+| Kinvolk | Flatcar Linux | 3374.2.x+ | 3374.2.x+ |
+| Microsoft | Azure Linux | 2.x | 2.x |
+| openSUSE Project | openSUSE | 12.3+ | *Not supported* |
+| Oracle | Oracle Linux | 6.4+, 7.x+, 8.x+ | *Not supported* |
+| Red Hat | Red Hat Enterprise Linux | 6.7+, 7.x+,  8.x+, 9.x+ | 8.6+, 9.0+ |
+| CIQ | Rocky Linux | 9.x+ | 9.x+ |
+| SUSE | SLES | 12.x+, 15.x+ | 15.x SP4+ |
+| Canonical | Ubuntu (LTS releases)| 18.04+, 20.04+, 22.04+, 24.04+ | 20.04+, 22.04+, 24.04+ |
 
 Other supported systems:
 

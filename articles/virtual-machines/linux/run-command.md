@@ -11,6 +11,7 @@ ms.topic: how-to
 ms.reviewer: jushiman
 ms.custom: devx-track-azurecli, linux-related-content
 ms.devlang: azurecli
+# Customer intent: "As a system administrator managing Azure Linux VMs, I want to run shell scripts using the Run Command feature, so that I can efficiently troubleshoot and manage my virtual machines without needing remote access."
 ---
 # Run scripts in your Linux VM by using action Run Commands
 

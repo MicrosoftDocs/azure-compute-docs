@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a cloud administrator, I want to scale an existing service cluster by adding or removing nodes and types, so that I can optimize resource allocation based on application demand and ensure efficient workload management.
 ---
 
 # Tutorial: Scale a Service Fabric cluster in Azure

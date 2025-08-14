@@ -9,6 +9,7 @@ ms.author: gabsta
 author: GabstaMSFT
 ms.collection: linux
 ms.date: 09/21/2018
+# Customer intent: As a DevOps engineer, I want to deploy the Chef VM Extension on Azure virtual machines, so that I can automate the configuration management for both Linux and Windows environments efficiently.
 ---
 
 # Chef VM Extension for Linux and Windows

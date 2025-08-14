@@ -9,6 +9,7 @@ ms.date: 08/01/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
+# Customer intent: As an IT administrator, I want to review the specifications of Esv4-series VM sizes, so that I can select the appropriate virtual machine configuration for my workload requirements.
 ---
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
 |---|---|---|

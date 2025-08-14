@@ -10,6 +10,7 @@ ms.date: 06/14/2024
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurepowershell
 
+# Customer intent: As an IT administrator, I want to encrypt disks for my Virtual Machine Scale Sets using PowerShell, so that I can ensure the security and compliance of the data stored on those virtual machines.
 ---
 
 # Encrypt OS and attached data disks in a Virtual Machine Scale Set with Azure PowerShell

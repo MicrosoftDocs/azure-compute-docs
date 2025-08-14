@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As an application developer, I want to deploy a Service Fabric application with a user-assigned managed identity, so that I can enhance security and manage access to Azure resources effectively during the deployment process.
 ---
 # Deploy Service Fabric application with a User-Assigned Managed Identity
 

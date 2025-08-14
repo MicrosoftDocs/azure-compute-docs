@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.date: 05/16/2024
 ms.author: jainan
 ms.reviewer: mattmcinnes
+# Customer intent: "As a system administrator, I want to troubleshoot hibernation issues on Windows virtual machines, so that I can ensure their state is properly saved and restored for efficient resource management and availability."
 ---
 
 # Troubleshooting hibernation on Windows VMs

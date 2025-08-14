@@ -1,5 +1,5 @@
 ---
-title: Create a standby pool for Azure Container Instances (Preview)
+title: Create a standby pool for Azure Container Instances
 description: Learn how to create a standby pool to reduce scale-out latency with Azure Container Instances.
 author: mimckitt
 ms.author: mimckitt
@@ -7,28 +7,28 @@ ms.service: azure-container-instances
 ms.custom:
   - ignite-2024
 ms.topic: how-to
-ms.date: 11/6/2024
+ms.date: 5/19/2025
 ms.reviewer: tomvcassidy
+# Customer intent: As a cloud administrator, I want to create a standby pool for Azure Container Instances, so that I can reduce scale-out latency and improve the responsiveness of my container deployment.
 ---
 
 
-# Create a standby pool for Azure Container Instances (Preview)
+# Create a standby pool for Azure Container Instances
 
 > [!IMPORTANT]
-> Standby pools for Azure Container Instances is currently in preview. Previews are made available to you on the condition that you agree to the [supplemental terms of use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Some aspects of this feature may change prior to general availability (GA). 
+> For standby pools to successfully create and manage resources, it requires access to the associated resources in your subscription. Ensure the correct permissions are assigned to the standby pool resource provider in order for your standby pool to function properly. For detailed instructions, see **[configure role permissions for standby pools](container-instances-standby-pool-configure-permissions.md)**.
 
 
 This article steps through creating a container group profile and using that profile to configure a standby pool for Azure Container Instances. 
 
 ## Prerequisites
 
-Before utilizing standby pools, complete the feature registration and configure role based access controls listed in the [Standby Pools for Azure Container Instances](container-instances-standby-pool-overview.md#prerequisites) overview page. 
+Before utilizing standby pools, complete the feature registration and configure role based access controls. For more information see [Configure role permissions for standby pools in Azure Container Instances](container-instances-standby-pool-configure-permissions.md)
 
 ## Create a container group profile
 The container group profile tells the standby pool how to configure the containers in the pool. If you make changes to the container group profile, you also need to update your standby pool to ensure the updates are applied to the instances in the pool.
 
-> [!NOTE]
-> To use [confidential containers](container-instances-confidential-overview.md) update the `sku` type to `Confidential` when creating your container group profile.
+To use [confidential containers](container-instances-confidential-overview.md) update the `sku` type to `Confidential` when creating your container group profile.
 
 ### [CLI](#tab/cli)
 Create a container group profile using [az container container-group-profile create](/cli/azure/container). You can optionally include config map details in the container group profile. For more information on config maps, see [use config maps](container-instances-config-map.md).
@@ -38,7 +38,7 @@ az container container-group-profile create \
     --resource-group myResourceGroup \
     --name mycontainergroupprofile \
     --location WestCentralUS \
-    --image nginx \
+    --image mcr.microsoft.com/azuredocs/aci-helloworld \
     --os-type Linux \ 
     --ip-address Public \ 
     --ports 8000 \ 
@@ -55,7 +55,7 @@ Create a container group profile using [New-AzContainerInstanceContainerGroupPro
 $port1 = New-AzContainerInstancePortObject -Port 8000 -Protocol TCP
 $port2 = New-AzContainerInstancePortObject -Port 8001 -Protocol TCP
 
-$container = New-AzContainerInstanceObject -Name mycontainer -Image nginx -RequestCpu 1 -RequestMemoryInGb 1.5 -Port @($port1, $port2)
+$container = New-AzContainerInstanceObject -Name mycontainer -Image mcr.microsoft.com/azuredocs/aci-helloworld -RequestCpu 1 -RequestMemoryInGb 1.5 -Port @($port1, $port2)
 
 New-AzContainerInstanceContainerGroupProfile `
     -ResourceGroupName myResourceGroup `
@@ -259,7 +259,7 @@ Create a standby pool and associate it with a container group profile. Create a 
     "resources": [ 
         {
             "type": "Microsoft.StandbyPool/standbyContainerGroupPools",
-            "apiVersion": "2024-03-01",
+            "apiVersion": "2025-03-01",
             "name": "[parameters('name')]",
             "location": "[parameters('location')]",
             "properties": {
@@ -280,7 +280,7 @@ Create a standby pool and associate it with a container group profile. Create a 
 Create a standby pool and associate it with a container group profile using [Create or Update](/rest/api/standbypool/standby-virtual-machine-pools/create-or-update).
 
 ```HTTP
-PUT https://management.azure.com/subscriptions/{SubscriptionID}/resourceGroups/myResourceGroup/providers/Microsoft.StandbyPool/standbyContainerGroupPools/myStandbyPool?api-version=2024-03-01 
+PUT https://management.azure.com/subscriptions/{SubscriptionID}/resourceGroups/myResourceGroup/providers/Microsoft.StandbyPool/standbyContainerGroupPools/myStandbyPool?api-version=2025-03-01 
  
 Request Body
 {

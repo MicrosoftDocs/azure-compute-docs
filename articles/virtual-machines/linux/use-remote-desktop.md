@@ -9,6 +9,7 @@ ms.custom: linux-related-content
 ms.topic: how-to
 ms.date: 03/28/2023
 ms.author: mattmcinnes
+# Customer intent: As a cloud administrator, I want to configure a remote desktop environment on my Linux VM, so that I can efficiently manage and troubleshoot the system using graphical tools instead of SSH.
 ---
 
 # Install and configure xrdp to use Remote Desktop with Ubuntu

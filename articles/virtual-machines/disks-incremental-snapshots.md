@@ -8,6 +8,7 @@ ms.date: 12/09/2024
 ms.author: rogarana
 ms.custom: devx-track-azurepowershell, devx-track-azurecli, references_regions
 ms.devlang: azurecli
+# Customer intent: As a cloud administrator, I want to create incremental snapshots for managed disks, so that I can efficiently back up and restore disk data while minimizing storage costs and improving performance.
 ---
 
 # Create an incremental snapshot for managed disks

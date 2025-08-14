@@ -9,6 +9,7 @@ ms.topic: how-to
 ms.date: 01/25/2024
 ms.author: routlaw
 ms.reviewer: mattmcinnes
+# Customer intent: As a cloud engineer, I want to retrieve CPU utilization metrics for a Linux Virtual Machine using the REST API, so that I can monitor performance and optimize resource allocation effectively.
 ---
 
 # Get Virtual Machine usage metrics using the REST API

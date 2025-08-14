@@ -9,6 +9,7 @@ ms.subservice: sizes
 ms.date: 04/18/2024
 ms.author: mattmcinnes
 ms.custom: include file
+# Customer intent: "As a cloud architect, I want to access the specifications of Msv2 and Mdsv2-series virtual machines, so that I can select the appropriate VM sizes for my project's performance and scalability requirements."
 ---
 | Part | Quantity <br><sup>Count <sup>Units | Specs <br><sup>SKU ID, Performance <sup>Units</sup>, etc.  |
 |---|---|---|

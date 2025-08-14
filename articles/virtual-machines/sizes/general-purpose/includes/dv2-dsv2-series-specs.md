@@ -9,6 +9,7 @@ ms.subservice: sizes
 ms.date: 04/11/2024
 ms.author: mattmcinnes
 ms.custom: include file
+# Customer intent: As a cloud architect, I want to review the specifications for Dv2 and DSv2-series VMs, so that I can select appropriate virtual machine sizes to meet my application's performance and scalability requirements.
 ---
 | Part | Quantity <br><sup>Count <sup>Units | Specs <br><sup>SKU ID, Performance <sup>Units</sup>, etc.  |
 |---|---|---|

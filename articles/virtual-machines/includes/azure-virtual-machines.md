@@ -5,6 +5,7 @@ ms.topic: include
 ms.date: 07/07/2022
 author: ju-shim
 ms.author: jushiman
+# Customer intent: "As an IT administrator managing virtual machines, I want to aggregate OS update statuses and availability states across my machines, so that I can efficiently monitor and ensure the health of my infrastructure."
 ---
 
 ### Count of OS update installation done

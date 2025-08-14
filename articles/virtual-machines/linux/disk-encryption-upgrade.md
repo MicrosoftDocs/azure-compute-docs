@@ -6,13 +6,14 @@ ms.service: azure-virtual-machines
 ms.subservice: disks
 ms.topic: how-to
 ms.author: mbaldwin
-ms.date: 05/27/2021
+ms.date: 04/29/2025
 ms.custom: linux-related-content
+# Customer intent: "As a system administrator, I want to upgrade Azure Disk Encryption on my virtual machines, so that I can enhance security by using the latest version without relying on Microsoft Entra ID."
 ---
 
 # Upgrading the Azure Disk Encryption version
 
-The first version of Azure Disk Encryption (ADE) relied on Microsoft Entra ID for authentication; the current version does not.  We strongly encourage the use of the newest version.
+The first version of Azure Disk Encryption (ADE) relied on Microsoft Entra ID for authentication; the current version doesn't.  We strongly encourage the use of the newest version.
 
 ## Determine ADE version
 
@@ -48,7 +49,7 @@ Go to the "Extensions" blade of your VM in the Azure portal.
 
 :::image type="content" source="../media/disk-encryption/ade-version-1.png" alt-text="finding ADE version portal screenshot 1":::
 
-Choose the "AzureDiskEncryption" extension for Windows or "AzureDiskEncryptionForLinux" extension for Linux, and locate the version number in the "Version"" field.
+Choose the "AzureDiskEncryption" extension for Windows or "AzureDiskEncryptionForLinux" extension for Linux, and locate the version number in the "Version" field.
 
 :::image type="content" source="../media/disk-encryption/ade-version-2.png" alt-text="finding ADE version portal screenshot 2":::
 
@@ -56,7 +57,7 @@ Choose the "AzureDiskEncryption" extension for Windows or "AzureDiskEncryptionFo
 
 ## How to migrate
 
-Migration from Azure Disk Encryption (with Microsoft Entra ID) to Azure Disk Encryption (without Microsoft Entra ID) is only available through Azure PowerShell. Ensure you have the latest version of Azure PowerShell and at least the [Azure PowerShell Az module version 5.9.0](/powershell/azure/new-azureps-module-az) installed .
+Migration from Azure Disk Encryption (with Microsoft Entra ID) to Azure Disk Encryption (without Microsoft Entra ID) is only available through Azure PowerShell. Ensure you have the latest version of Azure PowerShell and at least the [Azure PowerShell Az module version 5.9.0](/powershell/azure/new-azureps-module-az) installed.
 
 To upgrade from Azure Disk Encryption (with Microsoft Entra ID) to Azure Disk Encryption (without Microsoft Entra ID), use the [Set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) PowerShell cmdlet.
 
@@ -67,7 +68,7 @@ To upgrade from Azure Disk Encryption (with Microsoft Entra ID) to Azure Disk En
 Set-AzVMDiskEncryptionExtension -ResourceGroupName <resourceGroupName> -VMName <vmName> -Migrate
 ```
 
-When the cmdlet prompts you for confirmation, enter "Y".  The ADE version will be updated and the VM rebooted. The output will look similar to the following:
+When the cmdlet prompts you for confirmation, enter "Y". The ADE version is updated and the VM rebooted. The output looks similar to the following:
 
 ```output
 Update AzureDiskEncryption version?
@@ -79,7 +80,7 @@ Azure Disk Encryption Extension Public Settings
 "SequenceVersion":
 "MigrateFlag": Migrate
 "KeyVaultURL": https://myKeyVault.vault.azure.net/
-"Azure ADClientID": d29edf8c-3fcb-42e7-8410-9e39fdf0dd70
+"Azure ADClientID": 00001111-aaaa-2222-bbbb-3333cccc4444
 "KeyEncryptionKeyURL":
 "KekVaultResourceId":
 "EncryptionOperation": EnableEncryption
@@ -98,7 +99,7 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 ```
 
 > [!IMPORTANT]
-> The upgrade will take at least 10 - 15 minutes to complete. Do not cancel the cmdlet while the upgrade is in progress. Doing so puts the health of the VM at risk.
+> The upgrade takes at least 10 - 15 minutes to complete. Don't cancel the cmdlet while the upgrade is in progress. Doing so puts the health of the VM at risk.
 
 ## Next steps
 

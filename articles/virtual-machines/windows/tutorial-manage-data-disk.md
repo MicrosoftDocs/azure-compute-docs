@@ -9,6 +9,7 @@ ms.tgt_pltfrm: vm-windows
 ms.date: 12/06/2024
 ms.custom: template-tutorial, devx-track-azurepowershell
 #Customer intent: As an IT administrator, I want to learn about Azure Managed Disks so that I can create and manage storage for Windows VMs in Azure.
+# Customer intent: As an IT administrator, I want to manage Azure disks using PowerShell commands so that I can effectively create, attach, initialize, expand, and delete disks for virtual machines as part of my cloud infrastructure management.
 ---
 
 # Tutorial: Manage disks with Azure PowerShell

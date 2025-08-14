@@ -4,8 +4,9 @@ description: Learn how to use the Azure VM watch service offering.
 author: iamwilliew 
 ms.author: wwilliams
 ms.service: azure-virtual-machines
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 02/18/2025
+# Customer intent: "As a system administrator, I want to implement VM watch for my virtual machines, so that I can monitor their health efficiently and prevent potential issues with minimal resource impact."
 ---
 
 # VM watch: Enhancing VM health monitoring (preview)
@@ -21,6 +22,16 @@ VM watch is delivered via the [Application Health VM extension](/azure/virtual-m
 - **Compatibility**: VM watch operates seamlessly in both Linux and Windows environments. It's suitable for individual VMs and virtual machine scale sets alike.
 - **Resource governance**: VM watch provides efficient monitoring without affecting system performance. Resource caps on the CPU and memory utilization of the VM watch process help protect VMs.
 - **Out-of-the-box readiness**: VM watch comes equipped with a suite of default tests that you can configure for your scenarios.
+
+### VM watch Memory Constraints
+
+To maintain consistent performance across different virtual machine (VM) configurations, **VM watch** enforces memory usage limits according to the VM SKU's total available memory. The memory caps are adjusted dynamically based on the VM's memory tier.
+
+| **VM Memory Range** | **VM watch Memory Cap** |
+|:---:|:---:|
+| Less than 8 GB | 80MB |
+| 8 GB to 16 GB | 200MB |
+| Greater than 16 GB | 400MB |
 
 ### Network
 

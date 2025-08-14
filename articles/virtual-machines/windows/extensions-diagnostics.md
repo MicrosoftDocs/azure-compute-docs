@@ -11,6 +11,7 @@ ms.date: 04/06/2018
 ms.author: jushiman
 ms.custom: devx-track-azurecli
 ms.devlang: azurecli
+# Customer intent: As a system administrator, I want to deploy the Azure Diagnostics Extension on my Windows VMs, so that I can collect and analyze performance data and event logs for effective monitoring and troubleshooting.
 ---
 # Azure Diagnostics Extension for Windows VMs
 

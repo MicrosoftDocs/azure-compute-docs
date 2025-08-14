@@ -8,6 +8,7 @@ ms.custom: devx-track-azurecli
 services: container-instances
 ms.topic: how-to
 ms.date: 11/07/2024
+# Customer intent: As a cloud administrator, I want to perform rolling updates on container groups in NGroups, so that I can ensure minimal workload disruption and maintain service availability during updates.
 ---
 
 # NGroups Rolling Update
@@ -135,6 +136,8 @@ To cancel a rolling update, use the following API. Once canceled, the RU cannot 
 `POST /subscriptions/{subscriptionId}/resourceGroups/{{rgName}}/providers/Microsoft.ContainerInstance/NGroups/{{ngroupsName}}/cancelRollingUpdate`
 
 You do not need to provide a request body when calling this API.
+
+It's also important to know that canceling an RU won't automatically roll it back to the previous state, but it will remain in the state that it was at the moment it was canceled.  For example, in case during an RU one wants to update a CG profile reference from *cgprofile1* to *cgprofile2*, and at some point the operation is canceled, some CGs might have the new profile *cgprofile2* and others remain with *cgprofile1*.
 
 ### Boundary of a Batch in a Rolling Update
 

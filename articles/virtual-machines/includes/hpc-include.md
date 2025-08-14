@@ -9,6 +9,7 @@
  ms.date: 03/04/2023
  ms.author: amverma
  ms.custom: include file
+# Customer intent: "As an HPC administrator, I want to configure and deploy InfiniBand-enabled virtual machines, so that I can optimize performance for high-performance computing workloads."
 ---
 
 ## Get started

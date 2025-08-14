@@ -9,6 +9,7 @@ ms.date: 12/5/2022
 ms.author: saraic
 ms.reviewer: mattmcinnes
 ms.custom: devx-track-azurepowershell
+# Customer intent: As an IT administrator, I want to specify Azure Marketplace purchase plan details when creating images in a shared gallery, so that I can ensure compliance and streamline the deployment of virtual machines.
 ---
 
 # Supply Azure Marketplace purchase plan information when creating images

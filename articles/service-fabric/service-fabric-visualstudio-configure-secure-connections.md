@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a developer using Visual Studio, I want to configure secure connections to an Azure Service Fabric cluster, so that I can deploy applications securely and ensure proper access control during the publishing process."
 ---
 
 # Configure secure connections to a Service Fabric cluster from Visual Studio
@@ -46,7 +47,7 @@ The **Publish Service Fabric Application** dialog box automatically validates th
    <ClusterConnectionParameters
    ConnectionEndpoint="mycluster.westus.cloudapp.azure.com:19000"
    X509Credential="true"
-   ServerCertThumbprint="0123456789012345678901234567890123456789"
+   ServerCertThumbprint="AA11BB22CC33DD44EE55FF66AA77BB88CC99DD00"
    FindType="FindByThumbprint"
    FindValue="9876543210987654321098765432109876543210"
    StoreLocation="CurrentUser"

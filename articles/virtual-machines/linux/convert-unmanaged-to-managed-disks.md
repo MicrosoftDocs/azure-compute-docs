@@ -8,6 +8,7 @@ ms.topic: how-to
 ms.date: 12/15/2017
 ms.author: rogarana
 ms.custom: devx-track-azurecli, linux-related-content
+# Customer intent: As a system administrator, I want to migrate my Linux VMs from unmanaged disks to managed disks using Azure CLI, so that I can enhance performance, simplify disk management, and reduce costs associated with storage.
 ---
 
 # Migrate a Linux virtual machine from unmanaged disks to managed disks

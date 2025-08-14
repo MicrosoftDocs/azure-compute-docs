@@ -8,6 +8,7 @@ ms.service: azure-container-instances
 services: container-instances
 ms.date: 08/29/2024
 ms.custom: github-actions-azure, devx-track-azurecli
+# Customer intent: As a developer, I want to automate the process of building and deploying a container image to Azure Container Instances using GitHub Actions, so that I can streamline my workflow and improve continuous integration practices.
 ---
 
 # Configure a GitHub Action to create a container instance

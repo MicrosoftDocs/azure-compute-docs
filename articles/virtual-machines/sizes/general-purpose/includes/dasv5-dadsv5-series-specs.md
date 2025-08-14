@@ -9,6 +9,7 @@ ms.subservice: sizes
 ms.date: 04/11/2024
 ms.author: mattmcinnes
 ms.custom: include file
+# Customer intent: "As a cloud architect, I want to review the specifications of Dasv5 and Dadsv5-series virtual machines, so that I can choose the appropriate VM sizes for my workloads based on performance and resource requirements."
 ---
 
 

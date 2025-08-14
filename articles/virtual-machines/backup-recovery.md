@@ -7,6 +7,7 @@ ms.subservice: recovery
 ms.topic: overview
 ms.date: 01/12/2023
 ms.author: jushiman
+# Customer intent: "As a cloud administrator, I want to explore backup and restore options for Azure VMs, so that I can effectively protect data and ensure recoverability in case of failures or disasters."
 ---
 
 

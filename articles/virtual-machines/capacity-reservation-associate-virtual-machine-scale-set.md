@@ -8,6 +8,7 @@ ms.topic: how-to
 ms.date: 11/22/2022
 ms.reviewer: cynthn, jushiman
 ms.custom: template-how-to, devx-track-azurecli, devx-track-azurepowershell
+# Customer intent: "As a cloud architect, I want to associate a virtual machine scale set using Uniform Orchestration with a capacity reservation group, so that I can efficiently manage resources and ensure availability for my workloads in Azure."
 ---
 
 # Associate a virtual machine scale set to Uniform Orchestration to a capacity reservation group
@@ -519,6 +520,24 @@ To associate a Virtual Machine Scale Set with a Capacity Reservation Group, see 
 }
 
 ```
+### [Portal](#tab/portal1)
+	
+<!-- no images necessary if steps are straightforward --> 
+	
+1. Open the [Azure portal](https://portal.azure.com).
+1. In the search bar, enter **virtual machine scale sets**.
+1. On the **Virtual machines scale sets** page, select **Create** 
+1. On the **Basics** tab, under **Project details**, select the correct subscription. Then choose to create a new resource group or use an existing one.
+1. Under **Scale set details**, enter the Virtual Machine Scale Set name and choose your region.
+1. Under **Orchestration mode**, choose the orchestration needed.
+1. Select an **Image** and the VM size.
+1. Under **Administrator account**, enter a username and a password. The password must be at least 12 characters long and meet the defined complexity requirements.
+1.Go to the **Management section** and select the **Upgrade mode** needed
+1. Go to the **Advanced section**.
+1. In the **Capacity Reservations** dropdown list, select the capacity reservation group that you want to associate to the scale set.
+1. Select **Review + create**.
+1. After validation runs, select **Create**.
+1. After the deployment is finished, select **Go to resource**.
 
 --- 
 <!-- The three dashes above show that your section of tabbed content is complete. Don't remove them :) -->
@@ -614,6 +633,17 @@ This process ensures that the placement for the capacity reservations and scale 
     ```
 
 To learn more, see the Azure PowerShell commands [Stop-AzVmss](/powershell/module/az.compute/stop-azvmss), [Get-AzVmss](/powershell/module/az.compute/get-azvmss), and [Update-AzVmss](/powershell/module/az.compute/update-azvmss).
+
+### [Portal](#tab/portal2)
+	
+<!-- no images necessary if steps are straightforward --> 
+	
+1. Open the [Azure portal](https://portal.azure.com).
+1. Go to your Virtual Machine Scale Set.
+1. Select **Overview**.
+1. Select **Stop** at the top of the page to deallocate the scale set.
+1. Go to **Configurations** on the left.
+1. In the **Capacity Reservation group** dropdown list, select the group that you want to associate to the scale set.
 
 --- 
 <!-- The three dashes above show that your section of tabbed content is complete. Don't remove them :) -->

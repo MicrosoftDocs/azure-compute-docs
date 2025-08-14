@@ -8,6 +8,7 @@ ms.collection: linux
 ms.topic: how-to
 ms.date: 10/01/2024
 ms.author: jacobjaygbay
+# Customer intent: As a database administrator, I want to deploy Oracle Golden Gate on Azure Linux VMs, so that I can configure real-time data replication and support high availability for my database environments.
 ---
 
 # Implement Oracle Golden Gate on an Azure Linux virtual machine (VM)

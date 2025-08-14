@@ -1,12 +1,13 @@
 ---
 title: Service Fabric Explorer blocking operations
 description: Learn about the blocking operations in place to mitigate cluster desynchronization issues.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 09/15/2022
+# Customer intent: As a cloud administrator, I want to understand the blocking operations in Service Fabric Explorer, so that I can manage ARM-managed resources consistently and prevent synchronization issues within my cluster.
 ---
 
 # Service Fabric Explorer blocking operations

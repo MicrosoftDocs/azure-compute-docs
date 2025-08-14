@@ -9,6 +9,7 @@ ms.subservice: sizes
 ms.date: 04/19/2024
 ms.author: mattmcinnes
 ms.custom: include file
+# Customer intent: "As a researcher or engineer, I want to understand the potential workloads supported by HC-series virtual machines, so that I can determine the best applications for my computational needs in fields like genomic sequencing, engineering simulations, financial modeling, scientific research, and climate forecasting."
 ---
 **Genomic Sequencing:** HC-series VMs provide the computational power needed for genomic sequencing, enabling researchers to process and analyze large genetic datasets quickly.
 

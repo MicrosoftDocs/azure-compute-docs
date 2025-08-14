@@ -9,6 +9,7 @@ ms.collection: linux
 ms.date: 06/14/2024
 ms.reviewer: mimckitt
 ms.custom: mimckitt, subject-armqs, mode-arm, devx-track-arm-template
+# Customer intent: "As a cloud engineer, I want to quickly deploy a Windows Virtual Machine Scale Set using an automated template, so that I can efficiently manage VM instances with autoscaling capabilities for my application."
 ---
 
 # Quickstart: Create a Windows Virtual Machine Scale Set with an ARM template

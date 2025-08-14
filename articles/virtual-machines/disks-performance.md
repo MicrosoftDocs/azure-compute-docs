@@ -3,9 +3,10 @@ title: Virtual machine and disk performance
 description: Learn more about how virtual machines and their attached disks work in combination for performance.
 author: roygara
 ms.author: rogarana
-ms.date: 10/28/2024
-ms.topic: conceptual
+ms.date: 03/17/2025
+ms.topic: concept-article
 ms.service: azure-disk-storage
+# Customer intent: As a cloud architect, I want to understand the performance characteristics of virtual machines and their attached disks, so that I can optimize my deployment for IOPS and throughput to support my application's needs effectively.
 ---
 # Virtual machine and disk performance
 
@@ -14,11 +15,37 @@ ms.service: azure-disk-storage
 This article helps clarify disk performance and how it works when you combine Azure Virtual Machines and Azure disks. It also describes how you can diagnose bottlenecks for your disk IO and the changes you can make to optimize for performance.
 
 ## How does disk performance work?
-Azure virtual machines have input/output operations per second (IOPS) and throughput performance limits based on the virtual machine type and size. OS disks and data disks can be attached to virtual machines. The disks have their own IOPS and throughput limits.
+Azure virtual machines (VM) have input/output operations per second (IOPS) and throughput performance limits based on the VM type and size. OS disks and data disks can be attached to virtual machines. The disks have their own IOPS and throughput limits.
 
-Your application's performance gets capped when it requests more IOPS or throughput than what is allotted for the virtual machines or attached disks. When capped, the application experiences suboptimal performance. This can lead to negative consequences like increased latency. Let's run through a couple of examples to clarify this concept. To make these examples easy to follow, we'll only look at IOPS. But, the same logic applies to throughput.
+## Disk allocation and performance
+
+There are three paths that bandwidth and I/O operations per second (IOPS) can take to disks attached to a VM in Azure. The following diagram depicts real-time allocation of these paths.
+
+The following diagram depicts real-time allocation of bandwidth and I/O operations per second (IOPS) for disks, with three paths that I/O can take.
+
+:::image type="content" source="media/disks-performance/real-time-disk-allocation.png" alt-text="Diagram of a three-level provisioning system that shows bandwidth and IOPS allocation." lightbox="media/disks-performance/real-time-disk-allocation.png":::
+
+The first I/O path is the uncached managed disk path. I/O operations use this path when you're using a managed disk and you set the host caching to `none`. I/O operations that use this path run based on disk-level provisioning and then VM network-level provisioning for IOPS and throughput.
+
+The second I/O path is the cached managed disk path. Cached managed disk I/O uses an SSD that's close to the VM. This SSD has its own IOPS and throughput provisioned, and it appears as "SSD-level provisioning" in the diagram.
+
+When a cached managed disk initiates a read, the request first checks to see if the data is in the server SSD. If the data isn't present, a cached miss occurs. Then the I/O runs based on SSD-level provisioning, disk-level provisioning, and then VM network-level provisioning for IOPS and throughput.
+
+When the server SSD initiates reads on cached I/O that are present on the server SSD, a cache hit occurs. The I/O then runs based on the SSD-level provisioning. Writes that a cached managed disk initiates always follow the path of a cached miss. They go through SSD-level, disk-level, and VM network-level provisioning.
+
+The third path is for the *Local/Temp* disk. It's only available on VMs that support *[Local/Temp](managed-disks-overview.md#temporary-disk)* disks. An I/O operation that uses this path runs based on SSD-level provisioning for IOPS and throughput.
+
+The following diagram depicts an example of these limitations. The system prevents a Standard_D2s_v3 VM from achieving the 5,000 IOPS potential of a P30 disk, whether it's cached or not, because of limits at the SSD and network levels.
+
+:::image type="content" source="media/disks-performance/example-vm-allocation.png" alt-text="Diagram of the three-level provisioning system with a Standard_D2s_v3 example allocation." lightbox="media/disks-performance/example-vm-allocation.png":::
+
+Azure uses a prioritized network channel for disk traffic. Disk traffic takes precedence over low-priority network traffic. This prioritization helps disks maintain their expected performance if there's network contention.
+
+Similarly, Azure Storage handles resource contentions and other issues in the background with automatic load balancing. Azure Storage allocates required resources when you create a disk, and it applies proactive and reactive balancing of resources to handle the traffic level. This behavior further ensures that disks can sustain their expected IOPS and throughput targets. Use VM-level and disk-level [metrics](disks-metrics.md) to track the performance and set up alerts as needed.
 
 ## Disk IO capping
+
+Your application's performance gets capped when it requests more IOPS or throughput than what is allotted for the virtual machines or attached disks. When capped, the application experiences suboptimal performance. This can lead to negative consequences like increased latency. Let's run through a couple of examples to clarify this concept. To make these examples easy to follow, we'll only look at IOPS. But, the same logic applies to throughput.
 
 **Setup:**
 

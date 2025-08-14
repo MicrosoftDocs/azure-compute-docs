@@ -9,6 +9,7 @@ ms.collection: windows
 ms.date: 06/14/2024
 ms.reviewer: mimckitt
 ms.custom: subject-armqs, mode-arm, devx-track-bicep
+# Customer intent: "As a cloud engineer, I want to create a Windows Virtual Machine Scale Set using Bicep, so that I can deploy a scalable application with automated traffic distribution and management capabilities."
 ---
 
 # Quickstart: Create a Windows Virtual Machine Scale Set with Bicep

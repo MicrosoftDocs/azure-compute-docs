@@ -9,6 +9,7 @@ ms.author: gabsta
 author: GabstaMSFT
 ms.collection: linux
 ms.date: 02/03/2023
+# Customer intent: "As a Linux system administrator managing virtual machines in the cloud, I want to update the Azure Linux Agent on my VMs, so that I can ensure optimal performance and security compliance for my applications running in Azure."
 ---
 # How to update the Azure Linux Agent on a VM
 

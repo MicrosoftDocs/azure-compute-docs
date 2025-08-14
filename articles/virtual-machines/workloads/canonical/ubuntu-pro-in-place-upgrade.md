@@ -9,6 +9,7 @@ ms.collection: linux
 ms.topic: how-to
 ms.date: 12/09/2024
 ms.author: anujmaurya
+# Customer intent: "As a system administrator managing Ubuntu servers on Azure, I want to perform an in-place upgrade to Ubuntu Pro, so that I can access enhanced security features and support for my applications without experiencing downtime."
 ---
 
 # Ubuntu Server to Ubuntu Pro in-place upgrade on Azure
@@ -38,8 +39,7 @@ packages.
 
 - Access to security updates for 23,000+ packages including Apache Kafka, NGINX, MongoDB, Redis, and
   PostgreSQL integrated into system tools (for example Azure Update Manager, apt)
-- Security hardening and audit tools (CIS) to establish a security baseline across your systems (
-  helps meeting the Azure Linux Security Baseline policy)
+- Security hardening and audit tools (CIS) to establish a security baseline across your systems (helps meeting the Azure Linux Security Baseline policy)
 - Federal Information Processing Standard (FIPS) 140-2 certified modules
 - Common Criteria (CC) EAL2 provisioning packages
 - Kernel Live patch: kernel patches delivered immediately, without the need to reboot
@@ -177,6 +177,14 @@ However, this action only applies if they're using version 28 of the Pro client.
 
 - For Ubuntu 20.04+, this process works as expected.
 - For Ubuntu 16.04 and 18.04, this process doesn't work due to older versions of the Pro client installed.
+
+**Do images converted to UbuntuPro or UbuntuPro images include support from Canonical?**
+
+No, at present, neither UbuntuPro images nor virtual machines converted to UbuntuPro come with support from Canonical.
+
+- For issues that are reproducible in Azure and affect all customers, Microsoft Azure support will collaborate with Canonical to resolve the problem together.
+- For dedicated support, please use the following link to contact [Canonical](https://ubuntu.com/azure/pro).
+
 
 <!-- link references -->
 [01]: https://ubuntu.com/18-04/azure

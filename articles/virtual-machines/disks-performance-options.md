@@ -3,10 +3,11 @@ title: Overview - Options to improve Azure managed disk performance
 description: Learn the available options for improving Azure managed disk performance, organized by disk type.
 author: roygara
 ms.service: azure-disk-storage
-ms.topic: conceptual
-ms.date: 03/03/2025
+ms.topic: concept-article
+ms.date: 04/15/2025
 ms.author: rogarana
 ms.custom: accpeerreview2025-2
+# Customer intent: As a cloud architect, I want to understand the performance options for Azure managed disks, so that I can optimize disk usage and meet the varying demands of workloads effectively.
 ---
 
 # Overview of options to improve Azure managed disk performance
@@ -23,12 +24,12 @@ Ultra Disks and Premium solid-state drives (SSD) v2 are designed to be highly pe
 
 Premium SSD supports several performance options, each geared towards different use cases. The following table outlines the main differences and ideal uses.
 
-|  |Credit-based bursting  |On-demand bursting  |Changing performance tier  |Caching |Write accelerator |
-|---------|---------|---------|---------|---------|---------|
-| **Scenarios**|Ideal for short-term scaling (30 minutes or less).|Ideal for short-term uses like determining your workloads performance needs.|Ideal if your workload would otherwise continually be running in burst. |Ideal for workloads that can be configured to rely on data from the cache. |Ideal for scenarios where log files are required to persist to a disk in a performant manner for modern databases. |
-|**Cost**     |Free         |Cost is variable, see the [Billing](/azure/virtual-machines/disk-bursting#billing) section of the bursting article for details.        |The cost of each performance tier is fixed, see [Managed Disks pricing](https://azure.microsoft.com/pricing/details/managed-disks/) for details.         |Free. |Free. |
-|**Availability**     |Only available for Premium SSD managed disks 512 GiB and smaller, and Standard SSDs 1,024 GiB and smaller.         |Only available for Premium SSD managed disks larger than 512 GiB.         |Available to all Premium SSD sizes.         |Available to all Premium SSD managed disk, Standard SSD, and Standard HDD sizes. |Only available to M-series Azure Virtual Machines, but can be configured with all Premium SSD sizes attached to M-series virtual machines. |
-|**Enablement**     |Enabled by default on eligible disks.         |User must enable manually.         |User must manually change their tier.         |User must manually configure both their cache settings and their workloads and applications. |User must manually configure and enable. |
+|  |Credit-based bursting  |On-demand bursting  |Changing performance tier  |Caching |Write accelerator |Performance plus |
+|---------|---------|---------|---------|---------|---------|---------|
+| **Scenarios**|Ideal for short-term scaling (30 minutes or less).|Ideal for short-term uses like determining your workloads performance needs.|Ideal if your workload would otherwise continually be running in burst. |Ideal for workloads that can be configured to rely on data from the cache. |Ideal for scenarios where log files are required to persist to a disk in a performant manner for modern databases. |Ideal for workloads that require higher sustained performance. |
+|**Cost**     |Free         |Cost is variable, see the [Billing](/azure/virtual-machines/disk-bursting#billing) section of the bursting article for details.        |The cost of each performance tier is fixed, see [Managed Disks pricing](https://azure.microsoft.com/pricing/details/managed-disks/) for details.         |Free. |Free. |Free. |
+|**Availability**     |Only available for Premium SSD managed disks 512 GiB and smaller, and Standard SSDs 1,024 GiB and smaller.         |Only available for Premium SSD managed disks larger than 512 GiB.         |Available to all Premium SSD sizes.         |Available to all Premium SSD managed disk, Standard SSD, and Standard HDD sizes. |Only available to M-series Azure Virtual Machines, but can be configured with all Premium SSD sizes attached to M-series virtual machines. |Available for Standard HDD, Standard SSD, and Premium SSD managed disks 513 GiB and larger. |
+|**Enablement**     |Enabled by default on eligible disks.         |User must enable manually.         |User must manually change their tier.         |User must manually configure both their cache settings and their workloads and applications. |User must manually configure and enable. |Must enable performance plus when you create the disk, can't be enabled on existing disks. |
 
 ### Credit-based disk bursting
 
@@ -50,9 +51,9 @@ High-scale Azure Virtual Machines that can use premium storage have a multitier 
 
 Write accelerator is a disk capability for M-Series VMs on Premium SSD managed disks. Write accelerator improves the I/O latency of writes against Premium SSD disks. Write accelerator is optimized for volumes that contain the transaction log or redo logs of a DBMS, and shouldn't be used for data volumes. To learn more, see the [write accelerator](/azure/virtual-machines/how-to-enable-write-accelerator) article.
 
-### Performance plus (preview)
+### Performance plus
 
-Enabling performance plus (preview) increases the Input/Output Operations Per Second (IOPS) and throughput limits for Azure Premium SSDs that are 513 GiB and larger. Enabling performance plus (preview) improves the experience for workloads that require high IOPS and throughput, such as database and transactional workloads. There's no extra charge for enabling performance plus on a disk. To learn more about performance plus, see [Preview - Increase IOPS and throughput limits for Azure Premium SSDs and Standard SSD/HDDs](/azure/virtual-machines/disks-enable-performance?tabs=azure-cli).
+Enabling performance plus increases the Input/Output Operations Per Second (IOPS) and throughput limits for Azure Premium SSDs that are 513 GiB and larger. Enabling performance plus improves the experience for workloads that require high IOPS and throughput, such as database and transactional workloads. There's no extra charge for enabling performance plus on a disk. To learn more about performance plus, see [Increase IOPS and throughput limits for Azure Premium SSDs and Standard SSD/HDDs](/azure/virtual-machines/disks-enable-performance?tabs=azure-cli).
 
 ## Standard SSD
 
@@ -65,9 +66,9 @@ With credit-based bursting, a disk bursts only if it has burst credits accumulat
 
 High-scale Azure Virtual Machines that can use premium storage have a multitier caching technology called **BlobCache**. **BlobCache** is a caching solution built on RAM and SSDs that are locally attached to the server hosting the virtual machine (VM). This cache is available for Standard HDD, Standard SSD, and Premium SSD managed disks. With disk caching enabled, high-scale VMs can achieve levels of performance that exceed the underlying disk performance. To learn more, see [Disk caching](premium-storage-performance.md#disk-caching).
 
-### Performance plus (preview)
+### Performance plus
 
-Enabling performance plus (preview) increases the Input/Output Operations Per Second (IOPS) and throughput limits for Azure Standard SSDs that are 513 GiB and larger. Enabling performance plus (preview) improves the experience for workloads that require high IOPS and throughput, such as database and transactional workloads. There's no extra charge for enabling performance plus on a disk. To learn more about performance plus, see [Preview - Increase IOPS and throughput limits for Azure Premium SSDs and Standard SSD/HDDs](/azure/virtual-machines/disks-enable-performance?tabs=azure-cli).
+Enabling performance plus increases the Input/Output Operations Per Second (IOPS) and throughput limits for Azure Standard SSDs that are 513 GiB and larger. Enabling performance plus improves the experience for workloads that require high IOPS and throughput, such as database and transactional workloads. There's no extra charge for enabling performance plus on a disk. To learn more about performance plus, see [Increase IOPS and throughput limits for Azure Premium SSDs and Standard SSD/HDDs](/azure/virtual-machines/disks-enable-performance?tabs=azure-cli).
 
 ## Standard HDD
 
@@ -76,9 +77,9 @@ Enabling performance plus (preview) increases the Input/Output Operations Per Se
 
 High-scale Azure Virtual Machines that can use premium storage have a multitier caching technology called **BlobCache**. **BlobCache** is a caching solution built on RAM and SSDs that are locally attached to the server hosting the virtual machine (VM). This cache is available for Standard HDD, Standard SSD, and Premium SSD managed disks. With disk caching enabled, high-scale VMs can achieve levels of performance that exceed the underlying disk performance. To learn more, see [Disk caching](premium-storage-performance.md#disk-caching).
 
-### Performance plus (preview)
+### Performance plus
 
-Enabling performance plus (preview) increases the Input/Output Operations Per Second (IOPS) and throughput limits for Azure Standard hard disk drives (HDD) that are 513 GiB and larger. Enabling performance plus (preview) improves the experience for workloads that require high IOPS and throughput, such as database and transactional workloads. There's no extra charge for enabling performance plus on a disk. To learn more about performance plus, see [Preview - Increase IOPS and throughput limits for Azure Premium SSDs and Standard SSD/HDDs](/azure/virtual-machines/disks-enable-performance?tabs=azure-cli).
+Enabling performance plus increases the Input/Output Operations Per Second (IOPS) and throughput limits for Azure Standard hard disk drives (HDD) that are 513 GiB and larger. Enabling performance plus improves the experience for workloads that require high IOPS and throughput, such as database and transactional workloads. There's no extra charge for enabling performance plus on a disk. To learn more about performance plus, see [Increase IOPS and throughput limits for Azure Premium SSDs and Standard SSD/HDDs](/azure/virtual-machines/disks-enable-performance?tabs=azure-cli).
 
 ## Next steps
 

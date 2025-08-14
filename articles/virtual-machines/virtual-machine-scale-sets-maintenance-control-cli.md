@@ -9,6 +9,7 @@ ms.author: jushiman
 ms.custom: devx-track-azurecli
 ms.devlang: azurecli
 #pmcontact: PPHILLIPS
+# Customer intent: As an IT administrator managing Virtual Machine Scale Sets, I want to configure maintenance controls for automatic OS image upgrades using Azure CLI, so that I can schedule updates effectively and minimize manual intervention.
 ---
 
 # Maintenance control for OS image upgrades on Azure Virtual Machine Scale Sets using Azure CLI

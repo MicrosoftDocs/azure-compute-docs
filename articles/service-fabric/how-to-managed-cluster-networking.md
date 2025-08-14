@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: devx-track-azurepowershell
 services: service-fabric
 ms.date: 11/21/2024
+# Customer intent: "As a cloud administrator, I want to configure network settings for my Service Fabric managed cluster, so that I can manage NSG rules, enable RDP access, and optimize load balancer configurations according to my deployment requirements."
 ---
 
 # Configure network settings for Service Fabric managed clusters
@@ -475,8 +476,8 @@ This feature allows customers to use an existing virtual network by specifying a
    > Make sure you are in the correct subscription, the principal ID will change if the subscription is in a different tenant.
 
    ```powershell
-   ServicePrincipalNames : {74cb6831-0dbb-4be1-8206-fd4df301cdc2}
-   ApplicationId         : 74cb6831-0dbb-4be1-8206-fd4df301cdc2
+   ServicePrincipalNames : {00001111-aaaa-2222-bbbb-3333cccc4444}
+   ApplicationId         : 00001111-aaaa-2222-bbbb-3333cccc4444
    ObjectType            : ServicePrincipal
    DisplayName           : Azure Service Fabric Resource Provider
    Id                    : 00000000-0000-0000-0000-000000000000
@@ -565,7 +566,7 @@ This feature allows customers to use an existing virtual network by specifying a
 
    When you bring your own virtual network subnet the public endpoint is still created and managed by the resource provider, but in the configured subnet. The feature doesn't allow you to specify the public ip/re-use static ip on the Azure Load Balancer. You can [bring your own Azure Load Balancer](#byolb) in concert with this feature or by itself if you require those or other load balancer scenarios that aren't natively supported.
 
-   Wehn the cluster is created, a network security group is created in the managed resource group for the default cluster level subnet. When a node type is created, it's placed in this subnet and automatically inherits the network security group's rules, unless you use node type level subnets.
+   When the cluster is created, a network security group is created in the managed resource group for the default cluster level subnet. When a node type is created, it's placed in this subnet and automatically inherits the network security group's rules, unless you use node type level subnets.
 
    Bring your own virtual network also supports node type level subnets, which allow you to place node types in separate subnets, providing flexibility for various network configurations and setups.
 
@@ -639,8 +640,8 @@ To configure with your own load balancer:
    > Make sure you are in the correct subscription, the principal ID will change if the subscription is in a different tenant.
 
    ```powershell
-   ServicePrincipalNames : {74cb6831-0dbb-4be1-8206-fd4df301cdc2}
-   ApplicationId         : 74cb6831-0dbb-4be1-8206-fd4df301cdc2
+   ServicePrincipalNames : {00001111-aaaa-2222-bbbb-3333cccc4444}
+   ApplicationId         : 00001111-aaaa-2222-bbbb-3333cccc4444
    ObjectType            : ServicePrincipal
    DisplayName           : Azure Service Fabric Resource Provider
    Id                    : 00000000-0000-0000-0000-000000000000

@@ -9,6 +9,7 @@ ms.subservice: disks
 ms.date: 06/14/2024
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
+# Customer intent: As a cloud administrator, I want to encrypt disks in a Virtual Machine Scale Set using the command line, so that I can enhance data security and compliance for my organization's cloud infrastructure.
 ---
 # Encrypt OS and attached data disks in a Virtual Machine Scale Set with the Azure CLI
 

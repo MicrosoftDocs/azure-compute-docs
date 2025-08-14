@@ -8,8 +8,6 @@
     href: byos.md
   - name: RHEL extended lifecyle support
     href: redhat-extended-lifecycle-support.md
-  - name: RHEL image list
-    href: redhat-imagelist.md
   - name: RHEL image overview
     href: redhat-images.md  
   - name: RHUI in Azure

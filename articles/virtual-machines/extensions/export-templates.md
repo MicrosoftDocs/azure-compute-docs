@@ -9,6 +9,7 @@ author: GabstaMSFT
 ms.reviewer: jushiman
 ms.collection: windows
 ms.date: 03/29/2023
+# Customer intent: "As a cloud administrator, I want to export Azure resource groups containing VM extensions into a Resource Manager template, so that I can replicate and redeploy infrastructure while managing extension compatibility and sensitive configuration settings effectively."
 ---
 
 # Export resource groups that contain VM extensions

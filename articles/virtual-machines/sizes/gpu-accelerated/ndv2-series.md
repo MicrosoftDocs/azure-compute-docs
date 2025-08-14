@@ -4,10 +4,11 @@ description: Information on and specifications of the NDv2-series sizes
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 09/17/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
+# Customer intent: As a cloud architect, I want to understand the specifications and capabilities of the NDv2 virtual machine series, so that I can select the appropriate size for resource-intensive applications in my deployment.
 ---
 
 # NDv2 sizes series

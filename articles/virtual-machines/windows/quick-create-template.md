@@ -8,6 +8,7 @@ ms.topic: quickstart
 ms.date: 04/03/2023
 ms.author: jushiman
 ms.custom: subject-armqs, mode-arm
+# Customer intent: "As a cloud administrator, I want to deploy a Windows virtual machine using a Resource Manager template, so that I can streamline the VM setup process and ensure consistent resource configuration."
 ---
 
 # Quickstart: Create a Windows virtual machine using a template

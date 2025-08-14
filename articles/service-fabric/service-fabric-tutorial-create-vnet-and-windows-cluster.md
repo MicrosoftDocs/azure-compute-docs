@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: devx-track-azurepowershell
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a cloud administrator, I want to deploy a secure Windows Service Fabric cluster within an Azure virtual network using PowerShell, so that I can manage and scale applications efficiently in a production environment."
 ---
 
 # Tutorial: Deploy a Service Fabric cluster running Windows into an Azure virtual network
@@ -148,7 +149,7 @@ The [azuredeploy.parameters.json][parameters] parameters file declares many valu
 |adminPassword|Password#1234| Admin password for the cluster VMs. [Password requirements for VM](../virtual-machines/windows/faq.yml#what-are-the-password-requirements-when-creating-a-vm-).|
 |clusterName|mysfcluster123| Name of the cluster. Can contain letters and numbers only. Length can be between 3 and 23 characters.|
 |location|southcentralus| Location of the cluster. |
-|certificateThumbprint|| <p>Value should be empty if creating a self-signed certificate or providing a certificate file.</p><p>To use an existing certificate previously uploaded to a key vault, fill in the certificate SHA1 thumbprint value. For example, "6190390162C988701DB5676EB81083EA608DCCF3".</p> |
+|certificateThumbprint|| <p>Value should be empty if creating a self-signed certificate or providing a certificate file.</p><p>To use an existing certificate previously uploaded to a key vault, fill in the certificate SHA1 thumbprint value. For example, "AA11BB22CC33DD44EE55FF66AA77BB88CC99DD00".</p> |
 |certificateUrlValue|| <p>Value should be empty if creating a self-signed certificate or providing a certificate file. </p><p>To use an existing certificate previously uploaded to a key vault, fill in the certificate URL. For example, "https:\//mykeyvault.vault.azure.net:443/secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346".</p>|
 |sourceVaultValue||<p>Value should be empty if creating a self-signed certificate or providing a certificate file.</p><p>To use an existing certificate previously uploaded to a key vault, fill in the source vault value. For example, "/subscriptions/333cc2c84-12fa-5778-bd71-c71c07bf873f/resourceGroups/MyTestRG/providers/Microsoft.KeyVault/vaults/MYKEYVAULT".</p>|
 
@@ -688,15 +689,15 @@ If you previously set up Microsoft Entra client authentication, run the followin
 Connect-ServiceFabricCluster -ConnectionEndpoint mysfcluster123.southcentralus.cloudapp.azure.com:19000 `
         -KeepAliveIntervalInSec 10 `
         -AzureActiveDirectory `
-        -ServerCertThumbprint C4C1E541AD512B8065280292A8BA6079C3F26F10
+        -ServerCertThumbprint BB22CC33DD44EE55FF66AA77BB88CC99DD00EE11
 ```
 
 If you didn't set up Microsoft Entra client authentication, run the following command:
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint mysfcluster123.southcentralus.cloudapp.azure.com:19000 `
           -KeepAliveIntervalInSec 10 `
-          -X509Credential -ServerCertThumbprint C4C1E541AD512B8065280292A8BA6079C3F26F10 `
-          -FindType FindByThumbprint -FindValue C4C1E541AD512B8065280292A8BA6079C3F26F10 `
+          -X509Credential -ServerCertThumbprint BB22CC33DD44EE55FF66AA77BB88CC99DD00EE11 `
+          -FindType FindByThumbprint -FindValue BB22CC33DD44EE55FF66AA77BB88CC99DD00EE11 `
           -StoreLocation CurrentUser -StoreName My
 ```
 

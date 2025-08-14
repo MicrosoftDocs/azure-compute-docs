@@ -9,10 +9,11 @@ ms.date: 08/01/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
+# Customer intent: As an IT specialist, I want to access detailed specifications for the Esv6-series VMs, so that I can select the appropriate configuration for my workloads based on performance and capacity needs.
 ---
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
 |---|---|---|
-| Processor      | 2 - 128 vCPUs     | Intel Xeon Platinum 8573C (Emerald Rapids) [x86-64] |
+| Processor      | 2 - 192 vCPUs     | Intel Xeon Platinum 8573C (Emerald Rapids) [x86-64] |
 | Memory         | 16 - 1024 GiB        |    |
 | Local Storage  | None         |  |
 | Remote Storage | 8 - 64 Disks        | 3750 - 204800 IOPS <br>106 - 6782 MBps |

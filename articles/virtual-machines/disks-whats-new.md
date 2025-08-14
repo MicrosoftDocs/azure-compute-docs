@@ -4,9 +4,10 @@ description: Learn about new features and enhancements in Azure Disk Storage.
 author: roygara
 ms.author: rogarana
 ms.date: 11/11/2024
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: azure-disk-storage
 ms.custom: references_regions
+# Customer intent: "As a cloud administrator, I want to stay informed about new features and enhancements in Azure Disk Storage, so that I can leverage the latest capabilities to optimize performance, cost efficiency, and availability for my virtual machine workloads."
 ---
 
 # What's new for Azure Disk Storage
@@ -16,6 +17,10 @@ Azure Disk Storage regularly receives updates for new features and enhancements.
 ## Update summary
 
 - [What's new in 2025](#whats-new-in-2025)
+  - [Quarter 2 (April, May, June)](#quarter-2-april-may-june)
+    - [Generally available: Troubleshoot Disk Performance with Copilot in Azure](#generally-available-troubleshoot-disk-performance-with-copilot-in-azure)
+    - [Generally Available: Availability Set support for Premium SSD v2 Disk Storage](#generally-available-availability-set-support-for-premium-ssd-v2-disk-storage)
+    - [Expanded regional availability for Premium SSD v2](#expanded-regional-availability-for-premium-ssd-v2)
   - [Quarter 1 (January, February, March)](#quarter-1-january-february-march-2)
     - [Public Preview: Troubleshoot Disk Performance with Copilot in Azure](#public-preview-troubleshoot-disk-performance-with-copilot-in-azure)
 - [What's new in 2024](#whats-new-in-2024)
@@ -54,11 +59,29 @@ Azure Disk Storage regularly receives updates for new features and enhancements.
 
 ## What's new in 2025
 
+### Quarter 2 (April, May, June)
+
+#### Public preview: Azure Site Recovery for Virtual Machines with Premium SSD v2 and Ultra disks
+
+Azure Site Recovery support for Virtual Machines with [Premium SSD v2](https://azure.microsoft.com/updates?id=495231) and [Ultra](https://azure.microsoft.com/updates?id=495843) disks is in public preview. Azure Site Recovery provides seamless disaster recovery for Virtual Machines across Azure Regions and from on-premises to Azure, helping organizations maintain business continuity. It offers cost-effective replication, automated failover, and easy disaster recovery simulation, ensuring minimal production impact during disaster events. With built-in security, compliance support, and native integration with Azure services, Azure Site Recovery helps your organization stay resilient and minimize downtime. [Learn more](/azure/site-recovery/azure-to-azure-support-matrix).
+
+#### Generally available: Troubleshoot Disk Performance with Copilot in Azure
+
+The Disk Performance Troubleshooting Capability for Copilot in Azure is now [Generally Available](https://azure.microsoft.com/updates?id=474649) as a part of the Copilot in Azure General Availability. Now, you can use Copilot in Azure to analyze your [disk metrics](disks-metrics.md) and resolve any performance degredation issues when your application requires higher performance than what you have configured for your VMs and disks. To learn more, see [Troubleshoot Disk Performance using Microsoft Copilot in Azure](/azure/copilot/troubleshoot-disk-performance).
+
+#### Generally Available: Availability Set support for Premium SSD v2 Disk Storage
+
+Availability Set support for Premium SSD v2 disk storage is now [generally available](https://azure.microsoft.com/updates?id=494088). Availability Set enhances application availability by distributing virtual machines and their associated Premium SSD v2 disks across multiple fault domains, reducing the risk of a single point of failure. Premium SSD v2 provides low latency, consistent performance, flexible scalability, and cost efficiency making it an ideal choice for enterprise workloads such as SAP, SQL Server, and Oracle. The combination of Availability Set and Premium SSD v2 enables customers to achieve higher availability, performance, and cost optimization for their critical applications. To learn more, see [Availability Sets with Premium SSD v2 documentation](https://aka.ms/AvSetWithPv2). 
+
+#### Expanded regional availability for Premium SSD v2
+
+Premium SSD v2 disks were made available in Australia Central 2, Australia Southeast, Canada East, Indonesia Central, Japan West, Malaysia West, New Zealand North, North Central US, Norway West, UK West, US West, and West Central US.
+
 ### Quarter 1 (January, February, March)
 
 #### Public Preview: Troubleshoot Disk Performance with Copilot in Azure
 
-The Disk Performance Troubleshooting Capability for Copilot in Azure is now available in [Public Preview](https://azure.microsoft.com/updates?id=474649). Now, you can use Copilot in Azure to analyze your [disk metrics](https://learn.microsoft.com/azure/virtual-machines/disks-metrics) and resolve any performance degredation issues when your application requires higher performance than what you have configured for your VMs and disks. To learn more, see [Troubleshoot Disk Performance using Microsoft Copilot in Azure](https://learn.microsoft.com/azure/copilot/troubleshoot-disk-performance).
+The Disk Performance Troubleshooting Capability for Copilot in Azure is now available in [Public Preview](https://azure.microsoft.com/updates?id=474649). Now, you can use Copilot in Azure to analyze your [disk metrics](disks-metrics.md) and resolve any performance degredation issues when your application requires higher performance than what you have configured for your VMs and disks. To learn more, see [Troubleshoot Disk Performance using Microsoft Copilot in Azure](/azure/copilot/troubleshoot-disk-performance).
 
 ## What's new in 2024
 

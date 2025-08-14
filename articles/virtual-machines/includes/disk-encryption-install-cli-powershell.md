@@ -8,6 +8,7 @@
  ms.date: 10/06/2019
  ms.author: mbaldwin
  ms.custom: include file, devx-track-azurepowershell
+# Customer intent: "As a systems administrator, I want to enable and configure Azure Disk Encryption using either the Azure CLI or PowerShell, so that I can ensure the security and compliance of my virtual machine data."
 ---
 Azure Disk Encryption can be enabled and managed through the [Azure CLI](/cli/azure) and [Azure PowerShell](/powershell/azure/new-azureps-module-az). To do so you must install the tools locally and connect to your Azure subscription.
 

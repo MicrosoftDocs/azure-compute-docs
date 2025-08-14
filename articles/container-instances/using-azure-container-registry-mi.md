@@ -8,6 +8,7 @@ ms.service: azure-container-instances
 services: container-instances
 ms.date: 08/29/2024
 ms.custom: mvc, devx-track-azurecli, devx-track-arm-template
+# Customer intent: "As a cloud engineer, I want to deploy container images from Azure Container Registry using managed identities, so that I can securely access resources within a virtual network without managing credentials."
 ---
 
 # Deploy to Azure Container Instances from Azure Container Registry using a managed identity

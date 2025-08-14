@@ -8,6 +8,7 @@ ms.service: azure-container-instances
 services: container-instances
 ms.date: 08/29/2024
 ms.custom: mvc, devx-track-azurecli
+# Customer intent: "As a developer, I want to deploy a container application using the Azure CLI, so that I can run my application in Azure Container Instances and verify its functionality through the browser and logs."
 ---
 
 # Tutorial: Deploy a container application to Azure Container Instances

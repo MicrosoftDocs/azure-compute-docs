@@ -7,6 +7,7 @@ ms.service: azure-container-instances
 services: container-instances
 ms.topic: how-to
 ms.date: 08/27/2024
+# Customer intent: "As a cloud administrator, I want to enable and view container group logs in a log analytics workspace, so that I can monitor and troubleshoot the performance of my container instances effectively."
 ---
 # View container group logs in a log analytics workspace via Azure portal 
 
@@ -71,15 +72,15 @@ Now you’re ready to run your container group with Log Analytics.
 
 For more information about querying logs and configuring alerts in Azure Monitor logs, see: 
 
-* [Understanding log searches in Azure Monitor logs](https://learn.microsoft.com/azure/azure-monitor/logs/log-query-overview)
+* [Understanding log searches in Azure Monitor logs](/azure/azure-monitor/logs/log-query-overview)
 
-* [Unified alerts in Azure Monitor](https://learn.microsoft.com/azure/azure-monitor/alerts/alerts-overview)
+* [Unified alerts in Azure Monitor](/azure/azure-monitor/alerts/alerts-overview)
 
 ### Monitor container CPU and memory 
 
 For information about monitoring container instance CPU and memory resources, see: 
 
-* [Monitor Azure Container Instances](https://learn.microsoft.com/azure/container-instances/monitor-azure-container-instances)
+* [Monitor Azure Container Instances](/azure/container-instances/monitor-azure-container-instances)
 
  
 

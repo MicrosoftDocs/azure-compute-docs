@@ -7,11 +7,15 @@ ms.service: azure-virtual-machine-scale-sets
 ms.custom:
   - ignite-2024
 ms.topic: how-to
-ms.date: 11/5/2024
+ms.date: 5/6/2025
 ms.reviewer: ju-shim
+# Customer intent: As a cloud infrastructure administrator, I want to understand the configurations and limitations of standby pools for Virtual Machine Scale Sets, so that I can effectively manage resource allocation and ensure optimal capacity in my environment.
 ---
 
 # Standby pools FAQ 
+
+> [!IMPORTANT]
+> For standby pools to successfully create and manage resources, it requires access to the associated resources in your subscription. Ensure the correct permissions are assigned to the standby pool resource provider in order for your standby pool to function properly. For detailed instructions, see **[configure role permissions for standby pools](standby-pools-configure-permissions.md)**.
 
 Get answers to frequently asked questions about standby pools for Virtual Machine Scale Sets in Azure.
 
@@ -42,21 +46,7 @@ Ensure that the virtual machines in your standby pool are in the desired state p
 
 ### I tried to create a standby pool but I got an error regarding not having the correct permissions. 
 
-To allow standby pools to create and manage virtual machines in your subscription, assign the appropriate permissions to the standby pool resource provider. 
-
-1) In the Azure portal, navigate to your subscriptions.
-2) Select the subscription you want to adjust permissions.
-3) Select **Access Control (IAM)**.
-4) Select **Add** and **Add role assignment**.
-5) Under the **Role** tab, search for **Virtual Machine Contributor** and select it.
-6) Move to the **Members** Tab.
-7) Select **+ Select members**.
-8) Search for **Standby Pool Resource Provider** and select it.
-9) Move to the **Review + assign** tab.
-10) Apply the changes. 
-11) Repeat the above steps and assign the **Network Contributor** role and the **Managed Identity Operator** role to the Standby Pool Resource Provider. If you're using images stored in Compute Gallery assign the **Compute Gallery Sharing Admin** and **Compute Gallery Artifacts Publisher** roles as well.
-
-For more information on assigning roles, see [assign Azure roles using the Azure portal](/azure/role-based-access-control/quickstart-assign-role-user-portal).
+Review [configure standby pool permissions](standby-pools-configure-permissions.md) for detailed steps on configuring the right permissions for the standby pool resource provider. 
 
 ## Next steps
 

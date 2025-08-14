@@ -4,10 +4,11 @@ description: Information on and specifications of the Dadsv5-series sizes
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 07/29/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
+# Customer intent: "As a cloud architect, I want to understand the specifications and performance characteristics of the Dadsv5 size series, so that I can select the appropriate virtual machine configurations for my applications' requirements."
 ---
 
 # Dadsv5 sizes series

@@ -8,6 +8,7 @@ ms.service: azure-container-instances
 ms.custom: devx-track-azurecli
 services: container-instances
 ms.date: 08/29/2024
+# Customer intent: As a developer, I want to deploy Spot containers using the Azure CLI, so that I can efficiently run cost-effective, interruptible workloads without needing a full orchestration platform.
 ---
 
 # Tutorial: Deploy a Spot container with Azure Container Instances using the Azure CLI (Preview)

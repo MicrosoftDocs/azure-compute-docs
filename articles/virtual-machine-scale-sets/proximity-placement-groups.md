@@ -10,6 +10,7 @@ ms.date: 06/14/2024
 ms.reviewer: mimckitt
 ms.custom: cynthn, devx-track-azurepowershell
 
+# Customer intent: "As a cloud administrator, I want to create and manage proximity placement groups for Virtual Machine Scale Sets, so that I can ensure low latency and optimal performance for my applications deployed in Azure."
 ---
 
 # Create a proximity placement group using PowerShell

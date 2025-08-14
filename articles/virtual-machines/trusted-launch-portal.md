@@ -9,6 +9,7 @@ ms.subservice: trusted-launch
 ms.topic: how-to
 ms.date: 05/21/2024
 ms.custom: template-how-to, devx-track-azurecli, devx-track-azurepowershell
+# Customer intent: "As a cloud architect, I want to deploy virtual machines with Trusted Launch enabled, so that I can enhance security against advanced attacks and ensure the integrity of the VMs in my cloud environment."
 ---
 
 # Deploy a virtual machine with Trusted Launch enabled
@@ -51,10 +52,10 @@ Create a VM with Trusted Launch enabled. Choose one of the following options.
 1. Under **Image**, select an image from **Recommended Gen 2 images compatible with Trusted launch**. For a list, see [Trusted Launch](trusted-launch.md#virtual-machines-sizes).
    > [!TIP]
    > If you don't see the Gen2 version of the image that you want in the dropdown list, select **See all images**. Then change the **Security type** filter to **Trusted Launch**.
-1.	Select a VM size that supports Trusted Launch. For more information, see the list of [supported sizes](trusted-launch.md#virtual-machines-sizes).
-1.	Fill in the **Administrator account** information and then **Inbound port rules**.
-1.	At the bottom of the page, select **Review + Create**.
-1.	On the **Create a virtual machine** page, you can see the information about the VM you're about to deploy. After validation shows as passed, select **Create**.
+1.  Select a VM size that supports Trusted Launch. For more information, see the list of [supported sizes](trusted-launch.md#virtual-machines-sizes).
+1.  Fill in the **Administrator account** information and then **Inbound port rules**.
+1.  At the bottom of the page, select **Review + Create**.
+1.  On the **Create a virtual machine** page, you can see the information about the VM you're about to deploy. After validation shows as passed, select **Create**.
 
    :::image type="content" source="./media/trusted-launch/tvm-complete.png" alt-text="Sceenshot that shows the validation page with the Trusted Launch options.":::
 
@@ -179,7 +180,7 @@ No VM Guest State information can be included in the image source.
 
 You can use the resulting image version to create either Azure Gen2 VMs or Trusted Launch VMs.
 
-These images can be shared by using [Azure Compute Gallery - Direct Shared Gallery](../virtual-machines/azure-compute-gallery.md#shared-directly-to-a-tenant-or-subscription) and [Azure Compute Gallery - Community Gallery](../virtual-machines/azure-compute-gallery.md#community-gallery).
+These images can be shared by using [Azure Compute Gallery - Direct Shared Gallery](../virtual-machines/azure-compute-gallery.md#directly-sharing-with-a-tenant-or-subscription) and [Azure Compute Gallery - Community Gallery](../virtual-machines/azure-compute-gallery.md#community-gallery).
 
 > [!NOTE]
 > The OS disk VHD, Managed Image, or Gallery Image version should be created from a [Gen2 image that's compatible with Trusted Launch VMs](trusted-launch.md#virtual-machines-sizes).
@@ -391,19 +392,19 @@ You can use the resulting image version to create Azure Trusted Launch VMs only.
 
 If you want to use either a managed disk or a managed disk snapshot as a source of the image version (instead of a Trusted Launch VM), follow these steps.
 
-1.	Sign in to the [Azure portal](https://portal.azure.com).
-1.	Search for **VM Image Versions** and select **Create**.
-1.	Provide the subscription, resource group, region, and image version number.
-1.	Select the source as **Disks and/or Snapshots**.
-1.	Select the OS disk as a managed disk or a managed disk snapshot from the dropdown list.
-1.	Select a **Target Azure Compute Gallery** to create and share the image. If no gallery exists, create a new gallery.
-1.	Select the **Operating system state** as either **Generalized** or **Specialized**. If you want to create a generalized image, ensure that you generalize the disk or snapshot to remove machine-specific information.
-1.	For the **Target VM Image Definition** select **Create new**. In the window that opens, select an image definition name and ensure that **Security type** is set to **Trusted launch**. Provide the publisher, offer, and SKU information and select **OK**.
-1.	The **Replication** tab can be used to set the replica count and target regions for image replication, if required.
-1.	The **Encryption** tab can also be used to provide SSE encryption-related information, if required.
-1.	Select **Create** on the **Review + create** tab to create the image.
-1.	After the image version is successfully created, select **+ Create VM** to go to the **Create a virtual machine** page.
-1.	Follow steps 12 to 18 as mentioned earlier to create a Trusted Launch VM by using this image version.
+1.  Sign in to the [Azure portal](https://portal.azure.com).
+1.  Search for **VM Image Versions** and select **Create**.
+1.  Provide the subscription, resource group, region, and image version number.
+1.  Select the source as **Disks and/or Snapshots**.
+1.  Select the OS disk as a managed disk or a managed disk snapshot from the dropdown list.
+1.  Select a **Target Azure Compute Gallery** to create and share the image. If no gallery exists, create a new gallery.
+1.  Select the **Operating system state** as either **Generalized** or **Specialized**. If you want to create a generalized image, ensure that you generalize the disk or snapshot to remove machine-specific information.
+1.  For the **Target VM Image Definition** select **Create new**. In the window that opens, select an image definition name and ensure that **Security type** is set to **Trusted launch**. Provide the publisher, offer, and SKU information and select **OK**.
+1.  The **Replication** tab can be used to set the replica count and target regions for image replication, if required.
+1.  The **Encryption** tab can also be used to provide SSE encryption-related information, if required.
+1.  Select **Create** on the **Review + create** tab to create the image.
+1.  After the image version is successfully created, select **+ Create VM** to go to the **Create a virtual machine** page.
+1.  Follow steps 12 to 18 as mentioned earlier to create a Trusted Launch VM by using this image version.
 
 #### [CLI](#tab/cli2)
 

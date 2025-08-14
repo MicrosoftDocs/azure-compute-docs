@@ -8,6 +8,7 @@ ms.topic: how-to
 ms.date: 09/26/2017
 ms.author: jushiman
 ms.custom: devx-track-azurepowershell
+# Customer intent: As a cloud administrator, I want to create and manage a Windows VM with multiple network interfaces, so that I can effectively separate traffic for front-end and back-end connectivity within the same virtual network.
 ---
 # Create and manage a Windows virtual machine that has multiple NICs
 

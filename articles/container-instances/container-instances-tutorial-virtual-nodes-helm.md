@@ -8,6 +8,7 @@ ms.service: azure-container-instances
 services: container-instances
 ms.date: 11/10/2024
 ms.custom: mvc
+# Customer intent: As a Kubernetes operator, I want to deploy virtual nodes on Azure Container Instances in my AKS cluster using Helm, so that I can efficiently scale my containerized applications and manage workloads dynamically.
 ---
 
 # Tutorial: Deploy virtual nodes on Azure Container Instances in your Azure Kubernetes Service cluster
@@ -19,7 +20,7 @@ In this tutorial, you use Azure portal to deploy an Azure Kubernetes Service (AK
 This tutorial assumes you have the following tools installed:
 
 * Azure CLI
-* kubectl (version 1.29+)
+* kubectl (version 1.30+)
 * Helm
 * Git
 
@@ -79,7 +80,7 @@ On the **Basics** page, choose the same subscription you used for creating the v
 * Cluster preset configuration: `Dev/Test`
 * Kubernetes cluster name: `virtualnodescluster`
 * Region: `East US`
-* Kubernetes version: Any version starting with `1.29.` - for example, `1.29.10`
+* Kubernetes version: Any version starting with `1.30.` - for example, `1.30.9`
 * Automatic upgrade: `Enabled with patch`
 
 :::image type="content" source="media/container-instances-virtual-nodes-tutorials/virtual-nodes-aks-cluster-basics.png" alt-text="Screenshot showing how to configure the Basics page for AKS cluster creation in the Azure portal.":::

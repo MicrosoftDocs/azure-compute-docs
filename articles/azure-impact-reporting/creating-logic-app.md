@@ -7,6 +7,7 @@ ms.topic: how-to #Required; leave this attribute/value as-is.
 ms.date: 06/19/2024 #Required; mm/dd/yyyy format.
 ms.service: azure #Required; use either service or product per approved list. 
 ms.custom: template-overview #Required; leave this attribute/value as-is.
+# Customer intent: As a cloud solutions architect, I want to implement a Logic App for Azure Impact Reporting so that I can automate the collection and reporting of workload impacts efficiently and ensure proactive management of my resources.
 ---
 
 # Report Impacts Using a Logic App (Preview)

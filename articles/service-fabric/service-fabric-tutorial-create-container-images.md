@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: linux-related-content
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a developer working with Service Fabric on Linux, I want to create and upload container images to Azure Container Registry, so that I can deploy my multi-container applications effectively."
 ---
 
 # Tutorial: Create container images on a Linux Service Fabric cluster

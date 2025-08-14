@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 11/21/2024
+# Customer intent: As a cloud architect, I want to deploy stateless-only node types in a Service Fabric cluster, so that I can optimize scaling and management of resources using the latest capabilities in Azure.
 ---
 # Deploy an Azure Service Fabric cluster with stateless-only node types
 Service Fabric node types come with inherent assumption that at some point of time, stateful services might be placed on the nodes. Stateless node types change this assumption for a node type, thus allowing the node type to use other features such as faster scale out operations, support for Automatic OS Upgrades on Bronze durability and scaling out to more than 100 nodes in a single virtual machine scale set.

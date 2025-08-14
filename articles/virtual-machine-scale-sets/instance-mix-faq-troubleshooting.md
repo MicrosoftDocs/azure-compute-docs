@@ -3,10 +3,11 @@ title: Frequently Asked Questions and Troubleshooting
 description: Frequently asked questions and troubleshooting for instance mix on virtual machine scale sets. 
 author: brittanyrowe 
 ms.author: brittanyrowe
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
-ms.date: 03/03/2025
+ms.date: 06/10/2025
 ms.reviewer: jushiman
+# Customer intent: "As a cloud administrator, I want to understand the FAQs and troubleshooting steps for using instance mix on virtual machine scale sets, so that I can efficiently manage my VM deployments and resolve issues effectively."
 ---
 
 # Virtual machine scale sets with instance mix frequently asked questions and troubleshooting
@@ -40,4 +41,3 @@ Yes, you can apply your reservations and savings plan with instance mix. It's re
 | `SkuProfileScenarioNotSupported`             | `{propertyName} is not supported on Virtual Machine Scale Sets with Sku Profile.`                                       | Instance mix doesn’t support certain scenarios today, like Azure Dedicated Host (`properties.hostGroup`), Capacity Reservations (`properties.virtualMachineProfile.capacityReservation`), and StandbyPools (`properties.standbyPoolProfile`). Adjust the template to ensure you’re not using unsupported properties. |
 | `SkuNameMustBeMixIfSkuProfileIsSpecified`    | `Sku name is {skuNameValue}. Virtual Machine Scale Sets with Sku Profile must have the Sku name property set to "Mix".` | Ensure that the `sku.name property` is set to `"Mix"`.                                                                                                                                                                                                                                                               |
 | `SkuTierMustNotBeSetIfSkuProfileIsSpecified` | `Sku tier is {skuTierValue}. Virtual Machine Scale Sets with Sku Profile must not have the Sku tier property set.`     | `sku.tier` is an optional property for scale sets. With instance mix, `sku.tier` must be set to `null` or not specified.                                                                                                                                                                                             |
-| `InvalidParameter`                           | `The value of parameter skuProfile is invalid.`                                                                        | Your subscription isn't registered for the instance mix feature. Follow the enrollment instructions to register for the Preview.                                                                                                                                                                                     |

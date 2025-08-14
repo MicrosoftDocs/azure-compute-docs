@@ -9,6 +9,7 @@ ms.topic: quickstart
 ms.date: 03/10/2022
 ms.custom: subject-armqs, mode-arm, devx-track-bicep, linux-related-content
 tags: azure-resource-manager, bicep
+# Customer intent: As a cloud developer, I want to deploy an Ubuntu Linux virtual machine using a Bicep file, so that I can automate the provisioning of resources in Azure for efficient environment setup.
 ---
 
 # Quickstart: Create an Ubuntu Linux virtual machine using a Bicep file

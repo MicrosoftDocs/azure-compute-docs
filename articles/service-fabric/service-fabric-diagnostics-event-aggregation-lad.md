@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: linux-related-content
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a cloud operations engineer, I want to implement Linux Azure Diagnostics for my Service Fabric cluster, so that I can centralize log collection and enhance my ability to monitor and troubleshoot application performance effectively."
 ---
 
 # Event aggregation and collection using Linux Azure Diagnostics

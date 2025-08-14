@@ -4,8 +4,9 @@ description: Learn about the billing factors that affect Azure managed disks, in
 author: roygara
 ms.author: rogarana
 ms.date: 08/12/2024
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: azure-disk-storage
+# Customer intent: As a cloud administrator, I want to understand the billing factors for Azure managed disks, so that I can accurately forecast and manage the costs related to disk storage usage in my organization.
 ---
 
 # Understand Azure Disk Storage billing
@@ -17,6 +18,10 @@ For detailed Azure Disk Storage pricing information, see [Azure Disks pricing pa
 ## Snapshots
 
 There are two kinds of snapshots offered for Azure managed disks: Full snapshots and incremental snapshots. Full snapshots can be stored on standard hard disk drives (HDDs) or premium solid-state drives (SSDs) while incremental snapshots are only stored on standard HDDs. With snapshots, you're billed based on the used size of data. So if you take a full snapshot of a disk with 500-GiB size but only 50 GiB of that size is being used, then your snapshot is billed only for the used size of 50 GiB. Incremental snapshots are more cost efficient than full snapshots, as each snapshot you take only consists of the differences since the last snapshot.
+
+Managed disk snapshots have two redundancy options, locally redundant storage (LRS) and zone-redundant storage (ZRS). For snapshots, the pricing for each redundancy option is the same.
+
+
 
 ## Ultra Disks
 
@@ -177,8 +182,7 @@ The price of an Azure Standard HDD is determined by the performance tier of the 
 The initial billing of Standard HDDs is determined by the performance tier. The performance tier is set when you select the capacity you require (if you deploy a 1 TiB Standard HDD, it has the S30 tier), your disk is billed at that tier. If you increase the capacity of your disk into the next tier, it's billed at that tier. For example, if you increased your 1-TiB disk to a 3-TiB disk, it's billed at the S50 tier.
 
 ### Standard HDD Transactions
-For Standard HDDs, each I/O operation is considered as a single transaction, whatever the I/O size. These transactions have a billing impact.
-
+Standard HDD transactions incur a billable cost for every 10,000 disk operations.
 
 ### Standard HDD billing example 
 In this example, we provision a 512 GiB Standard HDD Disk with LRS redundancy. 

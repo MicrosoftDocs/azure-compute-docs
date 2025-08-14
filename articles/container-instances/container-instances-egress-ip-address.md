@@ -8,6 +8,7 @@ ms.custom: devx-track-azurecli
 services: container-instances
 ms.topic: how-to
 ms.date: 08/29/2024
+# Customer intent: "As a cloud developer, I want to configure Azure Container Instances to use a static outbound IP address for ingress and egress, so that I can streamline firewall management and simplify client access for my containerized applications."
 ---
 
 # Configure a single public IP address for outbound and inbound traffic to a container group
@@ -116,6 +117,9 @@ Run the [az network vnet subnet update][az-network-vnet-subnet-update] command t
 ## Configure rules on firewall
 
 By default, Azure Firewall denies (blocks) inbound and outbound traffic.
+
+> [!IMPORTANT]
+> Ensure that port 19390 is open in your firewall to allow connectivity to Azure Container Instances (ACI) from the Azure portal. This port is required when deploying container groups in virtual networks. Blocking this port can result in deployment failures, such as container groups remaining in a "Waiting" state, or prevent portal-based management and troubleshooting, including accessing logs and the container shell.
 
 ### Configure NAT rule on firewall to ACI subnet
 

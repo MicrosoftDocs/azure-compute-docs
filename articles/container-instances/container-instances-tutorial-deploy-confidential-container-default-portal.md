@@ -8,6 +8,7 @@ ms.service: azure-container-instances
 services: container-instances
 ms.date: 08/29/2024
 ms.custom: mvc
+# Customer intent: "As a developer, I want to deploy a confidential container with a development policy to Azure Container Instances, so that I can test and develop applications in a secure environment."
 ---
 
 # Tutorial: Deploy a confidential container to Azure Container Instances via Azure portal

@@ -7,13 +7,47 @@ ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.collection: windows
 ms.topic: how-to
-ms.date: 04/13/2023
+ms.date: 05/05/2025
 ms.author: vikancha
 ---
 
 # Install AMD GPU drivers on N-series VMs running Windows
 
 **Applies to:** Windows VMs :heavy_check_mark: Flexible scale sets 
+> [!NOTE]
+> The [AMD GPU Driver Extension](../extensions/hpccompute-amd-gpu-windows.md) installs AMD GPU drivers on a NVads V710 v5 Series, NGads V620 Series and NVv4-series. Install or manage the extension using the Azure portal or tools such as Azure PowerShell or Azure Resource Manager templates. See the [AMD GPU Driver Extension documentation](../extensions/hpccompute-amd-gpu-windows.md) for supported operating systems and deployment steps.
+> 
+## NVads V710 v5 Series ##
+To take advantage of the GPU capabilities of the new Azure NVads V710 v5 series VMs running Windows, AMD GPU drivers must be installed. The [AMD GPU Driver Extension](../extensions/hpccompute-amd-gpu-windows.md) installs AMD GPU drivers on a NVads V710 v5-series VM. Install or manage the extension using the Azure portal or tools such as Azure PowerShell or Azure Resource Manager templates. See the [AMD GPU Driver Extension documentation](../extensions/hpccompute-amd-gpu-windows.md) for supported operating systems and deployment steps.
+
+If you choose to install AMD GPU drivers manually, this article provides supported operating systems, drivers, and installation and verification steps.
+
+Only GPU drivers published by Microsoft are supported on NVads V710 v5 series VMs. Don't install GPU drivers from any other source.
+
+For basic specs, storage capacities, and disk details, see [GPU Windows VM sizes](../sizes-gpu.md?toc=/azure/virtual-machines/windows/toc.json).
+
+| OS | Driver |
+| -------- |------------- |
+| Windows 10, Windows 11 64-bit 21H2, 22H2, 23H2<br/><br/>Windows 10 64-bit 21H2, 22H2, 20H2 <br/><br/> | [24.Q2](https://go.microsoft.com/fwlink/?linkid=2291063) (.exe) |
+| Windows Server 2022, Windows 11 EMS <br/><br/> | [24.Q2](https://go.microsoft.com/fwlink/?linkid=2292204) (.exe)|
+| Windows Server 2019, Windows 10 EMS <br/><br/> | [24.Q2](https://go.microsoft.com/fwlink/?linkid=2292402) (.exe)|
+
+### VM Creation
+Create the VMs using CLI. (Azure AMD GPU driver extensions don't support NVads V710 v5 Series during preview)
+- Review the [CLI VM creation documentation](/azure/virtual-machines/windows/quick-create-cli).
+
+### Driver installation
+1.	Connect by Remote Desktop to each NVads V710 v5-series VM.<br>
+2. Download the EXE file to a local drive.<br>
+3. If you need to uninstall the previous driver version, run "setup.exe -factoryresetinstall" from a command line. <br>
+4.	For a first-time driver installation, double-click or run “setup.exe” from a command line.<br>
+5. Reboot the VM.
+
+### Verify driver installation
+You can verify driver installation in Device Manager. The following example shows successful configuration of the Radeon Pro V710 card on an NVads V710 v5 VM. The exact driver date and version will depend on the driver package released.
+
+![Diagram that shows successful configuration of the Radeon Pro V710 card on an Azure NVads V710 v5 VM.](./media/n-series-amd-driver-setup/v710-device-manager.jpg)
+
 
 ## NGads V620 Series ##
 The AMD Software: Cloud Edition drivers must be installed to take advantage of the GPU capabilities of Azure NGads V620 Series VMs.
@@ -54,9 +88,9 @@ For basic specs, storage capacities, and disk details, see [GPU Windows VM sizes
 
 | OS | Driver |
 | -------- |------------- |
-| Windows 11 64-bit 21H2, 22H2, 23H2<br/><br/>Windows 10 64-bit 21H2, 22H2, 20H2 <br/><br/> | [23.Q3](https://download.microsoft.com/download/0/8/1/081db0c3-d2c0-44ae-be45-90a63610b16e/AMD-Azure-NVv4-Driver-23Q3-win10-win11.exe) (.exe) |
-| Windows Server 2022, Windows 11 EMS <br/><br/> | [23.Q3](https://download.microsoft.com/download/2/d/3/2d328d15-4188-4fdb-8912-fb300a212dfc/AMD-Azure-NVv4-Driver-23Q3-winsvr2022.exe) (.exe)
-| Windows Server 2019, Windows 10 EMS <br/><br/> | [23.Q3](https://download.microsoft.com/download/e/8/8/e88bb244-b8e8-47cc-9f86-9ba2632b3cb6/AMD-Azure-NVv4-Driver-23Q3-winsvr2019.exe) (.exe)
+| Windows 11 64-bit 21H2, 22H2, 23H2, 24H2<br/><br/>Windows 10 64-bit 21H2, 22H2, 20H2 <br/><br/> | [23Q3 MR 4.1 Hotfix](https://download.microsoft.com/download/b6338eb5-781d-4a0a-9aaa-fef7ca4de242/WHQL-AMD-Software-Cloud-Edition-23.10.18.20-Win10-Win11-NVv4-MR-4.1-Hotfix.exe) (.exe) |
+| Windows Server 2022, Windows 11 EMS <br/><br/> | [23.Q3 MR 4.1 Hotfix](https://download.microsoft.com/download/b813a787-2b85-4efa-ad3f-b32fa7f1368b/WHQL-AMD-Software-Cloud-Edition-23.10.18.20-WinSvr2022-NVv4-MR-4.1-Hotfix.exe) (.exe)
+| Windows Server 2019, Windows 10 EMS <br/><br/> | [23.Q3 MR 4.1 Hotfix](https://download.microsoft.com/download/ef55fe52-0814-41b4-9667-a3d285161467/WHQL-AMD-Software-Cloud-Edition-23.10.18.20-WinSvr2019-NVv4-MR-4.1-Hotfix.exe) (.exe)
 
 Previous supported driver versions for Windows builds up to 1909 are [20.Q4-1](https://download.microsoft.com/download/0/e/6/0e611412-093f-40b8-8bf9-794a1623b2be/AMD-Azure-NVv4-Driver-20Q4-1.exe) (.exe) and [21.Q2-1](https://download.microsoft.com/download/4/e/a/4ea28d3f-28e2-4eaa-8ef2-4f7d32882a0b/AMD-Azure-NVv4-Driver-21Q2-1.exe) (.exe) 
  
@@ -66,18 +100,10 @@ Previous supported driver versions for Windows builds up to 1909 are [20.Q4-1](h
    >  [Computer Configuration->Policies->Windows Settings->Administrative Templates->Windows Components->Remote Desktop Services->Remote Desktop Session Host->Remote Session    Environment], set the Policy [Use WDDM graphics display driver for Remote Desktop Connections] to Disabled.
    >  
 
-## NVadsV710_v5 Series (In Preview) ##
-During the preview program manually download and install the following Windows drivers. Azure GPU driver extension will support the NVadsV710_v5 Series at GA.
-
-| OS | Driver |
-| -------- |------------- |
-| Windows 10, Windows 11 64-bit 21H2, 22H2, 23H2<br/><br/>Windows 10 64-bit 21H2, 22H2, 20H2 <br/><br/> | [24.Q3](https://go.microsoft.com/fwlink/?linkid=2291063) (.exe) |
-| Windows Server 2022, Windows 11 EMS <br/><br/> | [24.Q3](https://go.microsoft.com/fwlink/?linkid=2292204) (.exe)
-| Windows Server 2019, Windows 10 EMS <br/><br/> | [24.Q3](https://go.microsoft.com/fwlink/?linkid=2292402) (.exe)
  
 ### Driver installation
 > [!NOTE]
-   >  Follow these steps if you see "Error 184 - AMD Installer cannot cpontinue due to an unsupported Operating System" error on Windows 10 EMS / Windows 11 EMS.
+   >  Follow these steps if you see "Error 184 - AMD Installer cannot continue due to an unsupported Operating System" error on Windows 10 EMS / Windows 11 EMS.
    >  
    >  Go to C:\AMD\AMD Software Azure NVv4 Guest Driver 23Q3\Packages\Drivers\Display\WT6A_INF
    >  Right click and  install on the *.inf file.

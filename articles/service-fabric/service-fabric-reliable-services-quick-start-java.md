@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: devx-track-extended-java
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a Java developer, I want to create and deploy my first Reliable Services application on a cloud platform, so that I can leverage stateless and stateful services for my microservices architecture.
 ---
 
 # Get started with Reliable Services in Java

@@ -8,6 +8,7 @@ ms.custom: devx-track-arm-template
 services: container-instances
 ms.topic: sample
 ms.date: 08/29/2024
+# Customer intent: As a cloud engineer, I want to access sample Resource Manager templates for deploying container instances, so that I can efficiently create various configurations tailored to my project requirements.
 ---
 
 # Azure Resource Manager templates for Azure Container Instances

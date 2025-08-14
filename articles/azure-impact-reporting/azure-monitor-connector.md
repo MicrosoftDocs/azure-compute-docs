@@ -7,6 +7,7 @@ ms.service: azure #Required; use either service or product per approved list.
 ms.topic: overview #Required; leave this attribute/value as-is.
 ms.date: 06/19/2024 #Required; mm/dd/yyyy format.
 ms.custom: template-overview #Required; leave this attribute/value as-is.
+# Customer intent: "As a systems administrator, I want to utilize the Impact Connector for Azure Monitor alerts, so that I can efficiently report impact events and enhance change event correlation within my organization's AIOps workflows."
 ---
 
 # What is the Impact Connector for Azure Monitor Alerts? (Preview)

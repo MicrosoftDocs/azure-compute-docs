@@ -6,7 +6,8 @@ ms.service: azure-virtual-machines
 ms.subservice: security
 ms.date: 02/26/2024
 ms.author: jushiman
-ms.topic: conceptual
+ms.topic: concept-article
+# Customer intent: As a cloud administrator, I want to implement security policies for virtual machines, so that I can protect applications and data in the cloud while ensuring compliance with organizational security requirements.
 ---
 
 # Secure and use policies on virtual machines in Azure

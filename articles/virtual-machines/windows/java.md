@@ -8,6 +8,7 @@ ms.topic: how-to
 ms.date: 10/09/2021
 ms.custom: devx-track-java, devx-track-arm-template, devx-track-extended-java
 ms.author: jushiman
+# Customer intent: As a Java developer, I want to create and manage Azure Virtual Machines using code, so that I can automate deployment and resource management efficiently.
 ---
 # Create and manage Windows VMs in Azure using Java
 

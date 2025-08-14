@@ -1,12 +1,13 @@
 ---
 title: Throttling in the Service Fabric cluster resource manager 
 description: Learn to configure the throttles provided by the Service Fabric Cluster Resource Manager.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a system administrator managing a Service Fabric cluster, I want to configure resource throttles effectively, so that I can maintain cluster stability during load fluctuations while avoiding resource exhaustion and ensuring reliable operation.
 ---
 
 # Throttling the Service Fabric Cluster Resource Manager

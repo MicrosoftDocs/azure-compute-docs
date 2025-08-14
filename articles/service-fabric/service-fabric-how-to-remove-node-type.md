@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a cloud administrator, I want to remove a node type from my Service Fabric cluster, so that I can effectively scale my resources and manage workloads without risking data integrity."
 ---
 
 # How to remove a Service Fabric node type

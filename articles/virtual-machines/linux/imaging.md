@@ -10,6 +10,7 @@ ms.topic: overview
 ms.date: 09/01/2023
 ms.author: jushiman
 ms.reviewer: cynthn
+# Customer intent: As a cloud engineer, I want to create and manage Linux images for Azure virtual machines, so that I can efficiently deploy and scale my applications across multiple environments.
 ---
 
 # Bringing and creating Linux images in Azure

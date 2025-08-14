@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: linux-related-content
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a developer, I want to deploy a Linux container application to a distributed systems platform, so that I can manage, scale, and ensure the reliability of my microservices effectively in Azure.
 ---
 
 # Quickstart: Deploy Linux containers to Service Fabric

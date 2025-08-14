@@ -5,8 +5,9 @@ author: tomvcassidy
 ms.author: tomcassidy
 ms.custom: subject-cost-optimization
 ms.service: azure-virtual-machines
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 02/21/2024
+# Customer intent: "As a cloud administrator, I want to implement best practices for virtual machine cost optimization, so that I can effectively manage and reduce our cloud spending."
 ---
 
 # Best practices for virtual machine cost optimization

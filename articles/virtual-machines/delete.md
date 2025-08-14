@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.date: 05/09/2022
 ms.author: jushiman
 ms.custom: template-how-to, devx-track-azurecli, devx-track-azurepowershell
+# Customer intent: As a cloud administrator, I want to configure delete options for virtual machines and attached resources, so that I can control which components are removed when the VM is deleted and manage costs effectively.
 ---
 
 # Delete a VM and attached resources

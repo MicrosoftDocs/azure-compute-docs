@@ -4,10 +4,11 @@ description: Information on and specifications of the NCv3-series sizes
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 07/31/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
+# Customer intent: As a cloud architect, I want to understand the specifications and feature support of the NCv3 series sizes, so that I can select the appropriate virtual machine configuration for high-performance computing workloads.
 ---
 
 # NCv3 sizes series

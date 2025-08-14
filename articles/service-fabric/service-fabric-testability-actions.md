@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: "As a developer, I want to simulate various failure scenarios in Azure Service Fabric, so that I can ensure my microservices maintain data consistency and recover properly under different fault conditions."
 ---
 
 # Testability actions

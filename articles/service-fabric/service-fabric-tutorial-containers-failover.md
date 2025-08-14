@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a cloud application developer, I want to implement failover and scaling for my container services using a cluster management tool, so that I can ensure high availability and optimal resource usage for my applications.
 ---
 
 # Tutorial: Demonstrate fail over and scaling of container services with Service Fabric

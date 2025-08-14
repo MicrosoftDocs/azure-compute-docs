@@ -8,6 +8,7 @@ ms.collection: linux
 ms.topic: how-to
 ms.date: 10/01/2024
 ms.author: jacobjaygbay
+# Customer intent: As a database administrator, I want to implement Oracle Data Guard on Linux-based Azure VMs, so that I can ensure high availability and disaster recovery for my Oracle databases.
 ---
 
 # Implement Oracle Data Guard on a Linux-based Azure virtual machine

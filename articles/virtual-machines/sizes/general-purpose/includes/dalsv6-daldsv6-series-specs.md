@@ -9,6 +9,7 @@
  ms.date: 04/11/2024
  ms.author: mattmcinnes
  ms.custom: include file
+# Customer intent: As a cloud architect, I want to review the specifications of Dalsv6 and Daldsv6-series VM sizes, so that I can select the appropriate virtual machines for my application’s performance needs.
 ---
 
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |

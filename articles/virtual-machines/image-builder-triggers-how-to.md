@@ -9,6 +9,7 @@ ms.subservice: image-builder
 ms.topic: how-to
 ms.date: 11/10/2023
 ms.custom: template-how-to-pattern, devx-track-azurecli
+# Customer intent: As a cloud engineer, I want to set up automatic image creation using triggers in the image builder service, so that I can streamline my build pipeline and ensure images are updated without manual intervention.
 ---
 
 # How to enable Automatic Image Creation with Azure Image Builder triggers

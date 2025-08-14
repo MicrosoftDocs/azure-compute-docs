@@ -9,6 +9,7 @@ ms.subservice: sizes
 ms.date: 04/11/2024
 ms.author: mattmcinnes
 ms.custom: include file
+# Customer intent: "As a cloud architect, I want to review the specifications of the Dasv6 and Dadsv6-series virtual machines, so that I can select the appropriate instance type for my general-purpose workloads."
 ---
 
 The Dasv6-series and Dadsv6-series utilize AMD's 4th Generation EPYC<sup>TM</sup> 9004 processor in a multi-threaded configuration with up to 320 MB L3 cache, increasing customer options for running their general-purpose workloads. The Dasv6-series VMs work well for many general computing workloads, such as e-commerce systems, web front ends, desktop virtualization solutions, customer relationship management applications, entry-level and mid-range databases, application servers, and more. 

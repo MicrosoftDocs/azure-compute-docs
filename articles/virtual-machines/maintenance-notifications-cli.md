@@ -7,6 +7,7 @@ ms.custom: devx-track-azurecli
 ms.topic: how-to
 ms.date: 11/19/2019
 #pmcontact: shants
+# Customer intent: "As a system administrator managing virtual machines, I want to receive maintenance notifications via CLI so that I can proactively manage and initiate necessary maintenance to ensure optimal performance and uptime of my VMs."
 ---
 
 # Handling planned maintenance notifications using the Azure CLI

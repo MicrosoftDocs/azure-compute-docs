@@ -8,6 +8,7 @@ ms.topic: how-to
 ms.date: 04/24/2023
 ms.reviewer: cynthn, jushiman, mattmcinnes
 ms.custom: template-how-to, devx-track-azurepowershell
+# Customer intent: As a cloud administrator, I want to remove a virtual machine's association from a capacity reservation group, so that I can manage my resources and optimize capacity allocation without encountering errors.
 ---
 
 # Remove a VM association from a capacity reservation group

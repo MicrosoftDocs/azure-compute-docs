@@ -3,11 +3,12 @@ title: Orchestration modes for Virtual Machine Scale Sets in Azure
 description: Learn how to use Flexible and Uniform orchestration modes for Virtual Machine Scale Sets in Azure.
 author: fitzgeraldsteele
 ms.author: fisteele
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
 ms.date: 06/14/2024
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli, vmss-flex
+# Customer intent: "As a cloud architect, I want to understand the differences between Flexible and Uniform orchestration modes for Virtual Machine Scale Sets, so that I can choose the most suitable option for managing virtual machine instances based on workload requirements and scalability needs."
 ---
 
 # Orchestration modes for Virtual Machine Scale Sets in Azure
@@ -20,7 +21,7 @@ Scale set orchestration modes allow you to have greater control over how virtual
 > The orchestration mode is defined when you create the scale set and cannot be changed or updated later.
 
 ## Scale Sets with Flexible Orchestration (Recommended)
-Optimized for high availability and scalability with identical or mixed virtual machine types. Flexible Orchestration is the reccomended orchestration mode when deploying scale sets in Azure. 
+Optimized for high availability and scalability with identical or mixed virtual machine types. Flexible Orchestration is the recommended orchestration mode when deploying scale sets in Azure. 
 
 Flexible orchestration provides a unified experience across the Azure VM ecosystem while offering enhanced availability guarantees (up to 1,000 VMs). VMs are automatically distributed across Availability Zone or fault domains within a region ensuring resilience for both stateless and stateful applications. Flexible orchestration supports a broad range of workloads, including quorum-based applications, open-source databases, and high-availability services. Additionally, it allows for dynamic instance mixing, enabling the use of different VM types, as well as a combination of Spot and on-demand instances, for optimized performance and cost efficiency. Flexible orchestration supports all key scale set features such as metrics-based autoscaling, instance protection, standby pools, upgrade policies, and more.
 

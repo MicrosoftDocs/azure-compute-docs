@@ -5,8 +5,9 @@ author: ankitaduttaMSFT
 ms.service: azure-virtual-machines
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.topic: tutorial
-ms.date: 01/15/2025
+ms.date: 04/29/2025
 ms.author: ankitadutta
+# Customer intent: "As an IT administrator, I want to move single-instance Azure virtual machines from a regional configuration to a zonal availability zone using PowerShell and CLI, so that I can enhance application resilience and minimize the risk of downtime."
 ---
 
 # Move a virtual machine from Regional to Zonal availability zone using Azure PowerShell and CLI 
@@ -32,7 +33,7 @@ Verify the following requirements before you start the move process:
 Most move resources operations are the same whether using the Azure portal or PowerShell or CLI, with a couple of exceptions.
 
 > [!NOTE]
-> For more information on the commands and their syntaxes, refer to [this page](https://learn.microsoft.com/powershell/module/az.resourcemover/?view=azps-13.0.0#resource-mover).
+> For more information on the commands and their syntaxes, refer to [this page](/powershell/module/az.resourcemover/?view=azps-13.0.0&preserve-view=true#resource-mover).
 
 
 | Operation | Portal | PowerShell/CLI |
@@ -179,8 +180,8 @@ az resource-mover move-collection create --identity type=SystemAssigned --locati
   "etag": "\"1c00c55a-0000-0200-0000-650c15c40000\"",
   "id": "/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/clidemo-RG/providers/Microsoft.Migrate/moveCollections/cliDemo-zonalMC",
   "identity": {
-    "principalId": "45bc279c-3353-4f6a-bb4f-8efb48faba59",
-    "tenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+    "principalId": "aaaaaaaa-bbbb-cccc-1111-222222222222",
+    "tenantId": "aaaabbbb-0000-cccc-1111-dddd2222eeee",
     "type": "SystemAssigned"
   },
   "location": "eastus2",
@@ -233,8 +234,8 @@ Grant the managed identity access to the Resource Mover subscription as follows.
     # [CLI](#tab/CLI)
 
     ```azurecli-interactive
-    az role assignment create --assignee-object-id 45bc279c-3353-4f6a-bb4f-8efb48faba59 --assignee-principal-type ServicePrincipal --role Contributor --scope /subscriptions/<Subscription-id>
-    az role assignment create --assignee-object-id 45bc279c-3353-4f6a-bb4f-8efb48faba59 --assignee-principal-type ServicePrincipal --role "User Access Administrator" --scope /subscriptions/<Subscription-id>
+    az role assignment create --assignee-object-id aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb --assignee-principal-type ServicePrincipal --role Contributor --scope /subscriptions/<Subscription-id>
+    az role assignment create --assignee-object-id aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb --assignee-principal-type ServicePrincipal --role "User Access Administrator" --scope /subscriptions/<Subscription-id>
 
     ```
 
@@ -433,9 +434,9 @@ Check whether the regional VMs you added have any dependencies on other resource
     EndTime        : 
     EndTime        : 9/8/2023 6:52:14 AM
 
-    Id             : /subscriptions/<Subscription-id>/resourceGroups/RegionToZone-DemoMCRG/providers/Microsoft.Migrate/moveCollections/RegionToZone-DemoMC/operations/bc68354b-ec1f-44cb-92ab-fb3b4ad90229
+    Id             : /subscriptions/<Subscription-id>/resourceGroups/RegionToZone-DemoMCRG/providers/Microsoft.Migrate/moveCollections/RegionToZone-DemoMC/operations/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e
     Message        :
-    Name           : bc68354b-ec1f-44cb-92ab-fb3b4ad90229
+    Name           : aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e
     Property       : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Any
     StartTime      : 9/8/2023 6:51:50 AM
     Status         : Succeeded

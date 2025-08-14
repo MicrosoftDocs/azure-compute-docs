@@ -4,9 +4,10 @@ description: Learn about the available Azure disk types for virtual machines, in
 author: roygara
 ms.author: rogarana
 ms.date: 01/21/2025
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: azure-disk-storage
 ms.custom: references_regions
+# Customer intent: As an IT professional, I want to compare Azure managed disk types so that I can select the most suitable disk for each of my virtual machine workloads and optimize cost and performance.
 ---
 
 # Azure managed disk types
@@ -34,7 +35,7 @@ The following table provides a comparison of the five disk types to help you dec
 | **Max IOPS** | 400,000 | 80,000 | 20,000 | 6,000 | 2,000, 3,000* |
 | **Usable as OS Disk?** | No | No | Yes | Yes | Yes |
 
-\* Only applies to disks with performance plus (preview) enabled.
+\* Only applies to disks with performance plus enabled.
 
 For more help deciding which disk type suits your needs, this decision tree should help with typical scenarios:
 
@@ -191,7 +192,7 @@ Azure standard HDDs deliver reliable, low-cost disk support for VMs running late
 
 ### Standard HDD Transactions
 
-For Standard HDDs, each I/O operation is considered as a single transaction, whatever the I/O size. These transactions have a billing impact.
+Standard HDD transactions incur a billable cost for every 10,000 disk operations.
 
 ## Billing
 
@@ -207,7 +208,7 @@ When using managed disks, the following billing considerations apply:
 
 **Snapshots**: Snapshots are billed based on the size used. For example, you create a snapshot of a managed disk with provisioned capacity of 64 GiB and actual used data size of 10 GiB. In this case, the snapshot is billed only for the used data size of 10 GiB.
 
-For more information on snapshots, see the section on snapshots in the [managed disk overview](managed-disks-overview.md#managed-disk-snapshots).
+For more information on snapshots, see [Create a snapshot of a virtual hard disk](snapshot-copy-managed-disk.md).
 
 **Outbound data transfers**: [Outbound data transfers](https://azure.microsoft.com/pricing/details/bandwidth/) (data going out of Azure data centers) incur billing for bandwidth usage.
 

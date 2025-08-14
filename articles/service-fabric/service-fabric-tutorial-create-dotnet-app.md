@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: devx-track-dotnet
 services: service-fabric
 ms.date: 05/17/2024
+# Customer intent: As a .NET developer, I want to build and deploy a Service Fabric application using ASP.NET Core, so that I can create a voting application with a stateful back end to store voting data.
 ---
 
 # Tutorial: Build a .NET Service Fabric application

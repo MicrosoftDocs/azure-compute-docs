@@ -1,12 +1,13 @@
 ---
 title: Best practices and considerations
 description: Best practices and considerations for customers to account for in their Container Instances workloads.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
 ms.date: 08/29/2024
+# Customer intent: As a cloud administrator, I want to implement best practices for deploying workloads on container instances, so that I can ensure security, efficiency, and scalability in my containerized applications.
 ---
 
 # Best practices and considerations for Azure Container Instances

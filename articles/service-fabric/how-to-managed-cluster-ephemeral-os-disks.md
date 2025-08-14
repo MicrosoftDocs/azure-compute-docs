@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 08/23/2024
+# Customer intent: As a cloud architect, I want to configure a Service Fabric managed cluster with Ephemeral OS disks for node types, so that I can optimize costs and improve performance through lower latency and faster deployment without the need for managed OS disks.
 ---
 
 # Introduction to Service Fabric managed cluster with Ephemeral OS disks for node types

@@ -11,6 +11,7 @@ ms.subservice: extensions
 ms.collection: linux
 ms.topic: how-to
 ms.date: 03/15/2023
+# Customer intent: As a Linux system administrator, I want to understand how to manage VM extensions with Python 3 on Azure, so that I can ensure successful deployment and operation of virtual machines without issues related to legacy Python support.
 ---
 
 # Issues using VM extensions in Python 3-enabled Linux Azure Virtual Machines systems

@@ -9,6 +9,7 @@ ms.date: 02/28/2023
 ms.author: jushiman
 ms.reviewer: cynthn
 ms.custom: devx-track-azurepowershell
+# Customer intent: "As a cloud engineer, I want to deploy Azure Spot Virtual Machines using PowerShell, so that I can take advantage of unused capacity for cost savings on suitable workloads while managing evictions effectively."
 ---
 
 # Deploy Azure Spot Virtual Machines using Azure PowerShell

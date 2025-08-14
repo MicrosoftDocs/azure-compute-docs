@@ -7,6 +7,7 @@ ms.topic: faq #Required; leave this attribute/value as-is.
 ms.service: azure #Required; use either service or product per approved list. 
 ms.date: 11/01/2022 #Required; mm/dd/yyyy format.
 ms.custom: template-overview #Required; leave this attribute/value as-is.
+# Customer intent: As an Azure user, I want to understand how to effectively use Azure Impact Reporting, so that I can communicate potential issues and enhance my service experience.
 ---
 
 # Azure Impact Reporting FAQ (Preview)

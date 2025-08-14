@@ -9,6 +9,7 @@ ms.topic: how-to
 ms.date: 01/02/2024
 ms.author: mattmcinnes
 ms.reviewer: jamesser
+# Customer intent: As a cloud engineer, I want to create and deploy an SSH key pair for Linux virtual machines, so that I can enhance the security of the authentication process and reduce the risk of unauthorized access.
 ---
 
 # Quick steps: Create and use an SSH public-private key pair for Linux VMs in Azure

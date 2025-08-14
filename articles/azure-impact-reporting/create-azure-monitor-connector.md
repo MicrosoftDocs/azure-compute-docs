@@ -7,6 +7,7 @@ ms.service: azure #Required; use either service or product per approved list.
 ms.topic: overview #Required; leave this attribute/value as-is.
 ms.date: 06/19/2024 #Required; mm/dd/yyyy format.
 ms.custom: template-overview #Required; leave this attribute/value as-is.
+# Customer intent: As an IT administrator, I want to create an Impact Reporting connector for Azure Monitor Alerts, so that I can efficiently manage and report on alerts across my Azure subscriptions.
 ---
 
 # Create an Impact Connector for Azure Monitor Alerts (Preview)

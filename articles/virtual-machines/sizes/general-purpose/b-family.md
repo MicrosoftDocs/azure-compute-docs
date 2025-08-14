@@ -4,9 +4,10 @@ description: List of size series in the B family.
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 07/29/2024
 ms.author: mattmcinnes
+# Customer intent: "As a cloud infrastructure planner, I want to explore the B family VM size series, so that I can select the appropriate virtual machine sizes for my specific workloads and optimize resource allocation in my cloud environment."
 ---
 
 # 'B' family general purpose VM size series

@@ -11,6 +11,7 @@ ms.custom: linux-related-content
 ms.date: 04/06/2023
 ms.author: vikancha
 ms.reviewer: padmalathas, mattmcinnes
+# Customer intent: "As a cloud administrator, I want to install and configure NVIDIA GPU drivers on Linux-based N-series VMs, so that I can fully utilize their GPU capabilities for high-performance computing applications."
 ---
 
 # Install NVIDIA GPU drivers on N-series VMs running Linux
@@ -25,6 +26,9 @@ To take advantage of the GPU capabilities of Azure N-series VMs backed by NVIDIA
 If you choose to install NVIDIA GPU drivers manually, this article provides supported distributions, drivers, and installation and verification steps. Manual driver setup information is also available for [Windows VMs](../windows/n-series-driver-setup.md).
 
 For N-series VM specs, storage capacities, and disk details, see [GPU Linux VM sizes](../sizes-gpu.md?toc=/azure/virtual-machines/linux/toc.json).
+
+> [!WARNING]
+> Installing NVIDIA drivers using methods other than those outlined in this guide may result in failure of the intended driver installation. To ensure proper functionality and support, follow only the installation steps and use the driver versions specified in this documentation. 
 
 [!INCLUDE [virtual-machines-n-series-linux-support](../includes/virtual-machines-n-series-linux-support.md)]
 
@@ -59,8 +63,11 @@ Ubuntu packages NVIDIA proprietary drivers. Those drivers come directly from NVI
    ```bash
    sudo ubuntu-drivers install
    ```
-   Reboot the VM after the GPU driver is installed.
-3. Download and install the CUDA toolkit from NVIDIA:
+3. Reboot the VM after the GPU driver is installed:
+   ```bash
+   sudo reboot
+   ```
+4. Download and install the CUDA toolkit from NVIDIA:
     > [!NOTE]
    >  The example shows the CUDA package path for Ubuntu 24.04 LTS. Replace the path specific to the version you plan to use.
    >
@@ -75,12 +82,12 @@ Ubuntu packages NVIDIA proprietary drivers. Those drivers come directly from NVI
 
    The installation can take several minutes.
 
-4. Reboot the VM after installation completes:
+5. Reboot the VM after installation completes:
    ```bash
    sudo reboot
    ```
 
-5. Verify that the GPU is correctly recognized (after reboot):
+6. Verify that the GPU is correctly recognized (after reboot):
    ```bash
    nvidia-smi
    ```
@@ -378,10 +385,12 @@ Then, create an entry for your update script in `/etc/rc.d/rc3.d` so the script 
 
 ## Troubleshooting
 
-* You can set persistence mode using `nvidia-smi` so the output of the command is faster when you need to query cards. To set persistence mode, execute `nvidia-smi -pm 1`. Note that if the VM is restarted, the mode setting goes away. You can always script the mode setting to execute upon startup.
+* You can set persistence mode using `nvidia-smi` so the output of the command is faster when you need to query cards. To set persistence mode, execute `nvidia-smi -pm 1`. If the VM is restarted, the mode setting goes away. You can always script the mode setting to execute upon startup.
+
 * If you updated the NVIDIA CUDA drivers to the latest version and find RDMA connectivity is no longer working, [reinstall the RDMA drivers](#rdma-network-connectivity) to reestablish that connectivity.
-* During installation of LIS, if a certain CentOS/RHEL OS version (or kernel) is not supported for LIS, an error “Unsupported kernel version” is thrown. Please report this error along with the OS and kernel versions.
-* If jobs are interrupted by ECC errors on the GPU (either correctable or uncorrectable), first check to see if the GPU meets any of Nvidia's [RMA criteria for ECC errors](https://docs.nvidia.com/deploy/dynamic-page-retirement/index.html#faq-pre). If the GPU is eligible for RMA, please contact support about getting it serviced; otherwise, reboot your VM to reattach the GPU as described [here](https://docs.nvidia.com/deploy/dynamic-page-retirement/index.html#bl_reset_reboot). Less invasive methods such as `nvidia-smi -r` don't work with the virtualization solution deployed in Azure.
+* During installation of LIS, if a certain CentOS/RHEL OS version (or kernel) is not supported for LIS, an error “Unsupported kernel version” is thrown. Report this error along with the OS and kernel versions.
+
+* If jobs are interrupted by ECC errors on the GPU (either correctable or uncorrectable), first check to see if the GPU meets any of Nvidia's [RMA criteria for ECC errors](https://docs.nvidia.com/deploy/dynamic-page-retirement/index.html#faq-pre). If the GPU is eligible for RMA, contact support about getting it serviced; otherwise, reboot your VM to reattach the GPU as described [here](https://docs.nvidia.com/deploy/dynamic-page-retirement/index.html#bl_reset_reboot). Less invasive methods such as `nvidia-smi -r` don't work with the virtualization solution deployed in Azure.
 
 ## Next steps
 

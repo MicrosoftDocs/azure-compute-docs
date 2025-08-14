@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a service developer, I want to implement backup and restore functionality for Reliable Services and Reliable Actors, so that I can ensure data integrity and recover from data loss events effectively.
 ---
 
 # Backup and restore Reliable Services and Reliable Actors

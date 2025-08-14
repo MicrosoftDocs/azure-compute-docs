@@ -7,7 +7,7 @@ metadata:
   ms.topic: faq
   ms.subservice: imaging
   ms.custom: devx-track-azurepowershell, devx-track-azurecli
-  ms.date: 06/26/2024
+  ms.date: 4/11/2024
   ms.author: jushiman
   ms.reviewer: edewe
 title: Deprecated images FAQ
@@ -19,13 +19,13 @@ sections:
     questions:
       - question: I got an email that my image is scheduled for deprecation. What does this mean?
         answer: |
-          You might have received an email telling you that your Virtual machine is running on images that are scheduled for deprecation or already deprecated. There are several reasons an image can be deprecated by the publisher, which might be due to security issues or the image reaching end of life. 
+          You may receive an email telling you that your virtual machine (VM) is running on images that are scheduled for deprecation or already deprecated. The publisher can deprecate an image for several reasons, which might be due to security issues or the image reaching end of life. 
 
 
            :::image type="content" source="media/deprecated-images/mail.png" alt-text="Screenshot of the email you might receive if you have virtual machines or scale sets that use an image that is going to be deprecated.":::
            
           
-          An image can be deprecated on the version, plan or offer level:
+          An image can be deprecated on the version, plan, or offer level:
           - Deprecation of an image version - the removal of an individual VM image version
           - Deprecation of a plan or SKU - the removal of a plan or SKU and all images within the plan    
           - Deprecation of an offer - the removal of an entire VM offer, including all plans within the offer and all images within each plan.    
@@ -33,17 +33,16 @@ sections:
       - question: I received an email that my workloads are running on images that are scheduled for deprecation. What does this mean and does deprecation impact my existing workloads? 
         answer: |
           Before the scheduled deprecation date, you can continue to deploy new VM or scale set instances up until the deprecation date.
+            After the scheduled deprecation date, you can't deploy new instances using the affected images. If the plan is scheduled for deprecation, all image versions within the plan are no longer available. If the entire offer is scheduled for deprecation, all plans within the offer are no longer available following deprecation.
           
-          After the scheduled deprecation date, you won't be able to deploy new instances using the affected images. If the plan is scheduled for deprecation, all image versions within the plan will no longer be available. If the entire offer is scheduled for deprecation, all plans within the offer will no longer be available following deprecation.
-          
-          - Active VM instances won't be impacted.  
-          - New VM instances  can't be created from any of the impacted images.
-          - Existing virtual machine scale sets deployments  can't be scaled out if configured with any of the impacted images. When a plan or offer is being deprecated, all existing scale sets deployments pinned to any image within the plan or offer respectively  can't be scaled out.
+          - Active VM instances aren't impacted.  
+          - New VM instances can't be created from any of the impacted images.
+          - Existing Virtual Machine Scale Set deployments can't be scaled out if configured with any of the impacted images. When a plan or offer is being deprecated, all existing scale sets deployments pinned to any image within the plan or offer respectively can't be scaled out.
           
           
           **What do I need to do?**
 
-          If you want your scale set to scale out after the deprecation date,  you'll need to identify the scale set running on the deprecated image, and then migrate your workload to a supported image. If you want to remain on the image after deprecation, you can create your own custom image and migrate to it (Steps outlined below). If you already have auto updates configured for your VM or scale set,  you'll only be impacted when an Offer or plan version is deprecated (No impact on image version deprecation).
+          If you want your scale set to scale out after the deprecation date, you need to identify the scale set running on the deprecated image, and then migrate your workload to a supported image. If you want to remain on the image after deprecation, you can create your own custom image and migrate to it. If you already have auto updates configured for your VM or scale set, you're only impacted when an Offer or plan version is deprecated. Image version deprecation has no impact.
           
           
           
@@ -55,7 +54,7 @@ sections:
           You can search for the Virtual machine or Virtual Machine scale sets that are pinned to an image by running the following queries in [Azure Resource graph](/azure/governance/resource-graph/overview): 
           
           
-          - To find the VMs running on any retired image, specify the retired image as follows and run the query in Azure Resource Graph replacing the values below with your image details as follows:         
+          - To find the VMs running on any retired image, specify the retired image and run the query in Azure Resource Graph. Replace the values with your image details:         
           ```
           resources 
           |where type == "microsoft.compute/virtualmachines" 
@@ -66,7 +65,7 @@ sections:
           ```
           
           
-          - To find the scale set running on any retired image, specify the retired image as follows and run the query in Azure Resource Graph replacing the values below with your image details as follows:
+          - To find the scale set running on any retired image, specify the retired image and run the query in Azure Resource Graph. Replace the values with your image details:
           
           ```
           resources 
@@ -121,15 +120,15 @@ sections:
 
           - Run [Get-AzVMImageDeprecationStatus.ps1](https://github.com/Azure/azure-support-scripts/tree/master/VMImages#readme) to list if any VMs or VM scale sets in a subscription were created from VM images that are scheduled for deprecation.
           
-          When an image is deprecated, there's no impact on existing VMs and no action is required. When an image is deprecated, only VMSS scale out operations and new VM and VMSS create operations are impacted.
+          When an image is deprecated, there's no impact on existing VMs and no action is required. When an image is deprecated, only Virtual Machine Scale Set scale-out operations and new VM and Virtual Machine Scale Set create operations are impacted.
           
       - question: How do I migrate my workloads to another image?
         answer: |
           You might want to keep using an image that is scheduled for deprecation for specific reasons or you might want to migrate your workloads to another Offer/Plan/Version. 
-          
-          If you want to keep using an image that is scheduled for deprecation, generalize the VM, deallocate the VM, then create a custom image for your VM or scale set. Then change the VM or scale set deployment  to point to the custom image. For more information, see [Capture an image of a VM in the portal](capture-image-portal.md).
+            If you want to keep using an image that is scheduled for deprecation, generalize the VM, deallocate the VM, then create a custom image for your VM or scale set. Then change the VM or scale set deployment  to point to the custom image. For more information, see [Capture an image of a VM in the portal](capture-image-portal.md).
 
-          **Note**: If you are using a deprecated paid Marketplace image that has the Purchase Plan Information defined (the 'plan' object on the Image), when this image gets deprecated you cannot create new Virtual Machines workloads or perform Azure Site Recovery (ASR) or Backup operations with this image due to the missing Plan Information.
+          > [!NOTE]
+          > If you're using a deprecated paid Marketplace image that has the Purchase Plan Information defined (the 'plan' object on the Image), when this image gets deprecated you can't create new Virtual Machines workloads or perform Azure Site Recovery (ASR) or Backup operations with this image. This happens due to the missing Plan Information.
           
           **You want to migrate to another offer/plan/version:**
 
@@ -201,36 +200,38 @@ sections:
                - If set to rolling, existing instances will be automatically upgraded and reimaged by batch. 	
           - Update image reference using the steps in [Modify an Azure virtual machine scale set](../virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set.md).
           - Ensure that all existing instances are upgraded and on the latest model. You can also scale out and migrate workload to the new instances then delete the old instances, instead of upgrading the existing instances. 
-          - Once the existing instances are all upgraded to the new image, change the upgrade policy back to what it was if needed. 
-
-            If you are using VMSS, we recommend enabling Automatic OS image upgrades so that the latest image published by image publishers is automatically applied to your scale set or VMSS without manual user intervention. Learn how to enable [Automatic OS Image Upgrade](https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade?toc=/azure/virtual-machines/toc.json) 
+          - Once the existing instances are all upgraded to the new image, change the upgrade policy back to what it was if needed. If you are using Virtual Machine Scale Sets, we recommend enabling Automatic OS image upgrades so that the latest image published by image publishers is automatically applied to your scale set without manual user intervention. Learn how to enable [Automatic OS Image Upgrade](https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade?toc=/azure/virtual-machines/toc.json).
 
       - question: What happens when a paid Marketplace image with the Purchase Plan Information is deprecated?
-        answer:
-          If you are using a Paid Marketplace Image, when the image is deprecated attempting to restore the VM from backups can fail for images with Plan information once the image is removed or deprecated from the marketplace. We recommend creating new VMs and migrating your workload to that image if you are using a Paid Marketplace Image with Plan Information. 
-          If the VM Image is Free (does not require plan info), you will be able to continue using the single VM and should be able to restore from backups. Note that this only impacts single VMs and not VMSS workloads.
+        answer: |
+          If you're using a Paid Marketplace Image, when the image is deprecated attempting to restore the VM from backups can fail for images with Plan information once the image is removed or deprecated from the marketplace. We recommend creating new VMs and migrating your workload to that image if you're using a Paid Marketplace Image with Plan Information. 
+          If the VM Image is Free, in that it doesn't require plan info, you can continue using the single VM and should be able to restore from backups. This only impacts single VMs and not Virtual Machine Scale Set workloads.
       
       - question: What happens when a free Marketplace image is deprecated?
-        answer:
-          There is no impact to existing VM or VMSS workloads when a free Marketplace Image is deprecated. However, you cannot create new VMs or VMSS workloads from a deprecated free Marketplace Image.
+        answer: |
+          There's no impact to existing VM or Virtual Machine Scale Set workloads when a free Marketplace Image is deprecated. However, you can't create new VMs or Virtual Machine Scale Set workloads from a deprecated free Marketplace Image.
 
       - question: Are all image versions lower than the indicated version also deprecated? 
         answer: |
           Generally, yes. However, it's recommended to  confirm against the list of valid versions in a Plan using [Virtual Machine Images - List](/rest/api/compute/virtual-machine-images/list?tabs=HTTP).
+
+      - question: How do I receive emails about image deprecation?
+        answer: |
+          Ensure that you have either Owner, Account Admin, or User Access Administrator roles on your subscription.
            
       - question: How can I check if a specific image is deprecated or scheduled for deprecation?
         answer: |
           You can check if an image is deprecated or scheduled for deprecation using the [REST API](/rest/api/compute/virtual-machine-images/get?tabs=HTTP). 
           
 
-          If the image is deprecated,  you'll get a **VM Image is Deprecated** response. If the image is scheduled for deprecation, the response would show the date of the scheduled deprecation.
+          If the image is deprecated, you get a **VM Image is Deprecated** response. If the image is scheduled for deprecation, the response shows the date of the scheduled deprecation.
 
           > [!NOTE]
           > You can run [Get-AzVMImageDeprecationStatus.ps1](https://github.com/Azure/azure-support-scripts/blob/master/VMImages/README.md) in Cloud Shell or locally in Azure PowerShell to show if any VMs in a subscription were created from VM images that are scheduled for deprecation. This script supports both VM and VM scale set instances.
           >
 
           
-          The response indicates that this is deprecated:
+          The response indicates that this image is deprecated:
           
           ```json
           {
@@ -249,21 +250,58 @@ sections:
           ```azurecli
           az vm image show --location eastus --urn <MicrosoftWindowsServer:WindowsServer:2016-Datacenter:14393.4169.2101090332> --query [imageDeprecationStatus]
           ```
-          
-          PowerShell:
+            PowerShell:
           
           ```powershell
           Get-AzVMImage -Location "eastus" -PublisherName <MicrosoftWindowsServer> -Offer "WindowsServer" -Skus <2016-Datacenter> -Version <14393.4169.2101090332> | Select-Object -ExpandProperty "ImageDeprecationStatus"
           ```
+
+          To check all versions of a specific SKU with their deprecation details:
+
+          ```powershell
+          Get-AzVMImage -Location "westus" `
+            -PublisherName "center-for-internet-security-inc" `
+            -Offer "cis-rocky" `
+            -Skus "cis-rockylinux-9-l1-gen2-azure-observability" `
+            -Expand "properties/imageDeprecationStatus" |
+            Select-Object Version, @{
+              Name = "DeprecationDetails"
+              Expression = { $_.ImageDeprecationStatus | Out-String }
+            } | Format-Table -Wrap -AutoSize
+          ```
           
-          The response indicates that this image is deprecated: 
+          The response indicates that this image is deprecated:
           
           ```
           Get-AzVMImage: VM Image from publisher: MicrosoftWindowsServer with - Offer: WindowsServer, Sku: 2016-Datacenter, Version: 14393.4169.2101090332 is deprecated.
           ErrorCode: ImageVersionDeprecated
           ErrorMessage: VM Image from publisher: MicrosoftWindowsServer with - Offer: WindowsServer, Sku: 2016-Datacenter, Version: 14393.4169.2101090332 is deprecated.
-          ErrorTarget:
+          ErrorTarget:  
           StatusCode: 404
           ReasonPhrase: Not Found
           
-         
+      - question: What happens to my SQL Server instance if a SQL Server Azure Marketplace image is deprecated? 
+        answer: |
+          Nothing happens to your SQL Server instance if a SQL Server image is deprecated. You can continue using your Azure VM and your SQL Server instance without interruption. However, you will no longer be able to deploy that image in the future. 
+          
+      - question: How do I check for active image versions under a particular SKU?
+        answer: |
+          Active images are images not scheduled for deprecation or already deprecated. List active images versions under a SKU by using the following commands:
+
+          Azure CLI:
+          
+          ```azurecli
+          az vm image list --<location> eastus --publisher <MicrosoftWindowsServer> --offer <WindowsServer> --sku <2022-Datacenter> --all --query "[?imageDeprecationStatus.imageState=='Active']"
+          ```
+
+          PowerShell:
+
+          ```powershell
+          Get-AzVMImage -Location "westus" `
+            -PublisherName "center-for-internet-security-inc" `
+            -Offer "cis-rocky" `
+            -Skus "cis-rockylinux-9-l1-gen2-azure-observability" `
+            -Expand "properties/imageDeprecationStatus" |
+            Where-Object { $_.ImageDeprecationStatus.ImageState -eq "Active" } |
+            Select-Object Version
+          ```

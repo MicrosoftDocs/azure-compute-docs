@@ -1,12 +1,13 @@
 ---
 title: Read and update a Reliable Collections backup locally 
 description: Use Backup Explorer in Azure Service Fabric to read and update a local Reliable Collections backup.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: "As a data architect, I want to use Backup Explorer to read and update Reliable Collections backups, so that I can ensure data integrity and recover from corruption effectively."
 ---
 
 # Read and update a Reliable Collections backup by using Backup Explorer

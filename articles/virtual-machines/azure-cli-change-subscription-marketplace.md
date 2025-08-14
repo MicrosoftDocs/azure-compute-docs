@@ -9,6 +9,7 @@ ms.topic: sample
 ms.service: azure-virtual-machines
 ms.devlang: azurecli
 ms.custom: devx-track-azurecli
+# Customer intent: "As an IT admin, I want to move a Marketplace Azure virtual machine to another subscription, so that I can manage subscriptions more effectively and ensure resource alignment based on organizational needs."
 ---
 
 # Move a Marketplace Azure Virtual Machine to another subscription

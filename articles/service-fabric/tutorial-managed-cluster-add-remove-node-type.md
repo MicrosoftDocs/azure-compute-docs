@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a cloud administrator, I want to add and remove node types in a Service Fabric managed cluster, so that I can effectively scale resources according to application demands and maintain optimal performance.
 ---
 
 # Tutorial: Add and remove node types from a Service Fabric managed cluster

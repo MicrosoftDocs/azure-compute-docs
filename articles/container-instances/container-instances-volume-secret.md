@@ -8,6 +8,7 @@ ms.service: azure-container-instances
 ms.custom: devx-track-azurecli
 services: container-instances
 ms.date: 08/29/2024
+# Customer intent: "As a cloud developer, I want to securely mount a secret volume in Azure Container Instances, so that I can manage sensitive information without exposing it in my application code."
 ---
 
 # Mount a secret volume in Azure Container Instances

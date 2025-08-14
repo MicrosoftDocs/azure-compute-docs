@@ -9,6 +9,7 @@ ms.date: 01/25/2023
 ms.author: raynew
 ms.custom: mvc, linux-related-content
 #Customer intent: As an Azure admin, I want to prepare for disaster recovery by replicating my Linux VMs to another Azure region.
+# Customer intent: As an Azure administrator, I want to set up disaster recovery for my Linux VMs across regions, so that I can ensure business continuity in the event of a disaster.
 ---
 
 

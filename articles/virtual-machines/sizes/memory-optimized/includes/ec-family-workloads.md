@@ -9,6 +9,7 @@ ms.subservice: sizes
 ms.date: 04/19/2024
 ms.author: mattmcinnes
 ms.custom: include file
+# Customer intent: "As a cloud architect, I want to assess the capabilities of the EC sub-family VM sizes, so that I can select the appropriate resources for memory-intensive workloads, large databases, enterprise applications, big data analytics, in-memory computing, and data warehousing."
 ---
 **Memory-Intensive Workloads:** Any workload that demands a large memory footprint to efficiently handle tasks, such as simulations, large-scale computations in scientific research, or financial risk modeling.
 

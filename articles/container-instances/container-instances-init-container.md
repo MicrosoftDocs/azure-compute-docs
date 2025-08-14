@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
 ms.date: 08/29/2024
+# Customer intent: As a cloud developer, I want to configure init containers in my container group so that I can execute setup tasks before my application containers start, ensuring a prepared environment for my applications.
 ---
 
 # Run an init container for setup tasks in a container group

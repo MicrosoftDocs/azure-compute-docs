@@ -11,6 +11,7 @@ ms.custom: devx-track-arm-template
 ms.date: 07/25/2024
 ms.author: jushiman
 author: ju-shim
+# Customer intent: As an IT administrator managing Windows N-series virtual machines, I want to install the NVIDIA GPU Driver Extension so that I can utilize GPU capabilities for enhanced performance in computational tasks.
 ---
 
 # NVIDIA GPU Driver Extension for Windows
@@ -62,7 +63,7 @@ The following JSON snippet shows the schema for the extension:
   "properties": {
     "publisher": "Microsoft.HpcCompute",
     "type": "NvidiaGpuDriverWindows",
-    "typeHandlerVersion": "1.4",
+    "typeHandlerVersion": "1.10",
     "autoUpgradeMinorVersion": true,
     "settings": {
     }
@@ -79,7 +80,7 @@ The JSON schema includes values for the following parameters.
 | `apiVersion` | 2015-06-15 | date |
 | `publisher` | Microsoft.HpcCompute | string |
 | `type` | NvidiaGpuDriverWindows | string |
-| `typeHandlerVersion` | 1.4 | int |
+| `typeHandlerVersion` | 1.10 | int |
 
 ## Deploy the extension
 
@@ -136,7 +137,7 @@ The following example assumes the extension is nested inside the virtual machine
   "properties": {
     "publisher": "Microsoft.HpcCompute",
     "type": "NvidiaGpuDriverWindows",
-    "typeHandlerVersion": "1.4",
+    "typeHandlerVersion": "1.10",
     "autoUpgradeMinorVersion": true,
     "settings": {
     }
@@ -156,7 +157,7 @@ Set-AzVMExtension
     -Publisher "Microsoft.HpcCompute" `
     -ExtensionName "NvidiaGpuDriverWindows" `
     -ExtensionType "NvidiaGpuDriverWindows" `
-    -TypeHandlerVersion 1.4 `
+    -TypeHandlerVersion 1.10 `
     -SettingString '{ `
 	}'
 ```
@@ -171,7 +172,7 @@ az vm extension set \
   --vm-name <myVM> \
   --name NvidiaGpuDriverWindows \
   --publisher Microsoft.HpcCompute \
-  --version 1.4 \
+  --version 1.10 \
   --settings '{ \
   }'
 ```
@@ -230,7 +231,7 @@ az vm extension set  --resource-group <rg-name> --vm-name <vm-name>  --name Nvid
   "properties": {
     "publisher": "Microsoft.HpcCompute",
     "type": "NvidiaGpuDriverWindows",
-    "typeHandlerVersion": "1.9",
+    "typeHandlerVersion": "1.10",
     "autoUpgradeMinorVersion": true,
     "settings": {
          "driverVersion": "538.46"

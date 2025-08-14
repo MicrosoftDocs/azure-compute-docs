@@ -1,12 +1,13 @@
 ---
 title: Architecture of Azure Service Fabric 
 description: This article explains the architecture of Service Fabric, a distributed systems platform used to build scalable, reliable, and easily managed applications for the cloud.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a cloud application developer, I want to understand the architecture of distributed systems using Service Fabric, so that I can build scalable, reliable, and manageable applications for the cloud effectively."
 ---
 
 # Service Fabric architecture

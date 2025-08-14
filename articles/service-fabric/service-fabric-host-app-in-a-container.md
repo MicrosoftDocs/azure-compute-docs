@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: devx-track-azurepowershell, devx-track-dotnet
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a developer, I want to containerize and deploy a .NET application to Azure Service Fabric, so that I can leverage a scalable, cloud-based environment with persistent data storage in Azure SQL Database.
 ---
 
 # Tutorial: Deploy a .NET application in a Windows container to Azure Service Fabric

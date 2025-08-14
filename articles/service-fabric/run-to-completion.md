@@ -1,12 +1,13 @@
 ---
 title: RunToCompletion semantics and specifications
 description: Learn about Service Fabric RunToCompletion semantics and specifications, and see complete code examples and considerations.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a cloud application developer, I want to implement RunToCompletion semantics in Service Fabric for my containerized applications, so that I can manage task completion and exit scenarios efficiently."
 ---
 
 # RunToCompletion

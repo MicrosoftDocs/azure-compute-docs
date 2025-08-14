@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: devx-track-extended-java
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a developer managing Service Fabric applications, I want to set up an ELK stack in Azure to monitor and visualize logs, so that I can ensure the reliability and performance of my applications."
 ---
 
 # Tutorial: Monitor your Service Fabric applications using ELK

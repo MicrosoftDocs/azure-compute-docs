@@ -8,6 +8,7 @@
  ms.date: 08/02/2023
  ms.author: rogarana
  ms.custom: include file
+# Customer intent: As a cloud administrator, I want to set up customer-managed keys for my disk encryption, so that I can enhance the security of my data in compliance with organizational policies.
 ---
 Setting up customer-managed keys for your disks requires you to create resources in a particular order, if you're doing it for the first time. First, you'll need to create and set up an Azure Key Vault.
 

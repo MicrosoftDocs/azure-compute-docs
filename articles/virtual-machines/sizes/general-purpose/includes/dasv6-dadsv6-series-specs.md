@@ -9,6 +9,7 @@ ms.subservice: sizes
 ms.date: 04/11/2024
 ms.author: mattmcinnes
 ms.custom: include file
+# Customer intent: As a cloud architect, I want to review the specifications for Dasv6 and Dadsv6-series virtual machines, so that I can determine which VM sizes best meet the performance and resource requirements of my applications.
 ---
 
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |

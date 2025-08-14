@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: devx-track-azurecli, devx-track-azurepowershell, devx-track-arm-template, linux-related-content
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a cloud administrator, I want to enable disk encryption for Linux clusters in a Service Fabric environment, so that I can enhance the security of my virtual machine scale sets and protect sensitive data stored on them.
 ---
 
 # Enable disk encryption for Azure Service Fabric cluster nodes in Linux 

@@ -9,6 +9,7 @@ ms.topic: how-to
 ms.date: 12/14/2022
 ms.author: vakavuru
 ms.reviewer: mattmcinnes
+# Customer intent: As a Linux system administrator, I want to prepare a Linux image for deployment on Azure, so that I can ensure compatibility and optimal performance of my applications within the cloud environment.
 ---
 # Prepare Linux for imaging in Azure
 

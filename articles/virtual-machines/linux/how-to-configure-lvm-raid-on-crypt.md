@@ -10,6 +10,7 @@ ms.author: jofrance
 ms.reviewer: mattmcinnes
 ms.date: 04/06/2023
 ms.custom: devx-track-azurecli, devx-track-azurepowershell, linux-related-content
+# Customer intent: "As a Linux VM administrator, I want to configure LVM and RAID on encrypted disks, so that I can efficiently manage storage while ensuring data security."
 ---
 
 # Configure LVM and RAID on encrypted devices

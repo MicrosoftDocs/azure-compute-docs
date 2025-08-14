@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: devx-track-dotnet
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a developer, I want to debug .NET applications running in Windows containers within Azure Service Fabric, so that I can effectively troubleshoot issues and ensure my applications are functioning correctly.
 ---
 
 # How to: Debug Windows containers in Azure Service Fabric using Visual Studio 2019

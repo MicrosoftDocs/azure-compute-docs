@@ -8,6 +8,7 @@ ms.custom: devx-track-azurecli
 services: container-instances
 ms.topic: how-to
 ms.date: 03/04/2025
+# Customer intent: As a developer deploying applications in containers, I want to configure Caddy as a sidecar container for automatic HTTPS, so that I can easily secure my application with managed SSL certificates.
 ---
 
 # Enable automatic HTTPS with Caddy in a sidecar container

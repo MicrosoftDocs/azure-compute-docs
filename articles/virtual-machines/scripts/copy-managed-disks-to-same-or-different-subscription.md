@@ -8,6 +8,7 @@ ms.topic: sample
 ms.date: 02/22/2023
 ms.author: rogarana
 ms.custom: mvc, devx-track-azurecli
+# Customer intent: As a cloud administrator, I want to copy managed disks between subscriptions using Azure CLI, so that I can efficiently manage resources and maintain consistency across environments.
 ---
 
 # Copy managed disks to same or different subscription with CLI

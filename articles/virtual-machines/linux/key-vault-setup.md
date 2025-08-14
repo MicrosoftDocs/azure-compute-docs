@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.date: 10/20/2022
 ms.author: mimckitt 
 ms.custom: devx-track-azurecli, linux-related-content
+# Customer intent: As a cloud administrator, I want to set up Azure Key Vault for virtual machines using the CLI, so that I can securely manage access to secrets and certificates required for my deployments.
 ---
 # How to set up Key Vault for virtual machines with the Azure CLI
 

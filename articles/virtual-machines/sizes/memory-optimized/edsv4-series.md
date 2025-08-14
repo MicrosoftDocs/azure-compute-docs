@@ -4,10 +4,11 @@ description: Information on and specifications of the Edsv4-series sizes
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 08/01/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
+# Customer intent: As a cloud architect, I want to review the specifications and features of the Edsv4 series virtual machine sizes so that I can select the appropriate VM type for optimizing performance and resource utilization for my applications.
 ---
 
 # Edsv4 sizes series

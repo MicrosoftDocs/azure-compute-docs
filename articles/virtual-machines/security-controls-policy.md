@@ -7,6 +7,7 @@ author: cynthn
 ms.author: cynthn
 ms.service: azure-virtual-machines
 ms.custom: subject-policy-compliancecontrols
+# Customer intent: "As a cloud administrator, I want to utilize built-in compliance controls for Azure Virtual Machines, so that I can ensure my resources meet necessary regulatory standards for security and compliance."
 ---
 # Azure Policy Regulatory Compliance controls for Azure Virtual Machines 
 
@@ -21,7 +22,7 @@ compliant with the specific standard.
 
 [!INCLUDE [azure-policy-compliancecontrols-introwarning](~/azure-docs-pr/includes/policy/standards/intro-warning.md)]
 
-[!INCLUDE [azure-policy-compliancecontrols-vms](~/azure-docs-pr/includes/policy/standards/byrp/microsoft.compute.md)]
+[!INCLUDE [azure-policy-compliancecontrols-vms](~/azure-policy-autogen-docs/includes/policy/standards/byrp/microsoft.compute.md)]
 
 ## Next steps
 

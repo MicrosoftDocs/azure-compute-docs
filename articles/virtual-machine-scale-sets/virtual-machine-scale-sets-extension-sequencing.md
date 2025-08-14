@@ -10,6 +10,7 @@ ms.date: 06/14/2024
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurepowershell
 
+# Customer intent: As a cloud administrator, I want to sequence the provisioning of extensions in Virtual Machine Scale Sets, so that I can ensure dependencies are met and prevent deployment failures due to resource contention.
 ---
 # Sequence extension provisioning in Virtual Machine Scale Sets
 

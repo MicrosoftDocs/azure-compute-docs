@@ -10,6 +10,7 @@ ms.date: 03/10/2023
 ms.topic: how-to
 ms.reviewer: jushiman
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
+# Customer intent: As an IT administrator, I want to execute scripts on Azure Windows VMs using managed Run Commands, so that I can efficiently manage and troubleshoot machine and application issues.
 ---
 # Run scripts in your Windows VM by using managed Run Commands
 
@@ -30,23 +31,38 @@ The *updated* managed Run Command uses the same VM agent channel to execute scri
 
 ## Prerequisites
 
-### **Windows OS’ Supported**
-| **Windows OS** |	**x64** |
-|:----|:----:|
-| Windows 10 |	Supported |
-| Windows 11 |	Supported |
-| Windows Server 2008 SP2 |	Supported |
-| Windows Server 2008 R2 |	Supported |
-| Windows Server 2012 |	Supported |
-| Windows Server 2012 R2 |	Supported |
-| Windows Server 2016 |	Supported |
-| Windows Server 2016 Core |	Supported |
-| Windows Server 2019 |	Supported |
-| Windows Server 2019 Core |	Supported |
-| Windows Server 2022 |	Supported |
-| Windows Server 2022 Core |	Supported |
-| Windows Server 2025 | Supported |
-| Windows Server 2025 Core | Supported |
+### **Windows Operating Systems Supported**
+| OS Version | x64 | ARM64 |
+|:-----|:-----:|:-----:|
+| Windows 10 | Supported | Supported |
+| Windows 11 | Supported | Supported |
+| Windows Server 2016 | Supported | Supported |
+| Windows Server 2016 Core | Supported | Supported |
+| Windows Server 2019 | Supported | Supported |
+| Windows Server 2019 Core | Supported | Supported |
+| Windows Server 2022 | Supported | Supported |
+| Windows Server 2022 Core | Supported | Supported |
+| Windows Server 2025 | Supported | Supported |
+| Windows Server 2025 Core | Supported | Supported |
+
+## Available Commands
+| **CommandID** | **Description** |
+|:-----|:-----|
+|IPConfig | Shows detailed information for the IP address, subnet mask and default gateway for each adapter bound to TCP/IP. For usage, refer to [Run scripts](/azure/virtual-machines/windows/run-command-managed#create-or-update-run-command-on-a-vm-using-sourcecommandid) |
+| EnableWindowsUpdate | Enable Automatic Updates through Windows Update. |
+| DisableWindowsUpdate | Disable Automatic Updates through Windows Update. |
+| EnableAdminAccount | Checks if the local Administrator account is disabled, and if so enables it. |
+| EnableEMS | Enable Emergency Management Services (EMS) to allow for serial console connection in troubleshooting scenarios. |
+| EnableRemotePS | Enable remote PowerShell. |
+| IMDSCertCheck | Checks IMDS Health and then analyzes currently installed certificates that IMDS depends upon. If missing, shows additional details and mitigation steps. |
+| RDPSettings | Checks registry settings and domain policy settings. Suggests policy actions if machine is part of a domain or modifies the settings to default values. |
+| ResetRDPCert | Removes the SSL certificate tied to the RDP listener and restores the RDP listener security to default. Use this script if you see any issues with the certificate. |
+| WindowsActivationValidation | Checks the current Windows license status (activated or not) and alert is generated if the machine is not property activated. |
+| SetRDPPort | Sets the default or user specified port number for Remote Desktop connections. Enables firewall rule for inbound access to the port. |
+| DisableNLA | Disables Network Level Authentication (NLA). You must restart the VM after the script completes for the change to take effect. The script itself does not restart the VM. You can use this script to disable NLA if RDP connections are failing with error 'The remote computer that you are trying to connect to requires Network Level Authentication (NLA), but your Windows domain controller cannot be contacted to perform NLA.' or error 'An authentication error has occurred. The Local Security Authority cannot be contacted.' NLA is a security feature that should only be disabled temporarily to allow RDP connections to succeed until the domain controller connectivity issue have been resolved. |
+
+> [!Note]
+> The above command IDs are applicable to Managed Run Commands for Windows VMs. You can list all commandIds using command  "```Get-AzVMRunCommandDocument -Location {RegionName}```".
 
 ## Limiting access to Run Command
 
@@ -145,7 +161,7 @@ Set-AzVMRunCommand -ResourceGroupName MyRG0 -VMName MyVMEE -RunCommandName MyRun
 > SAS URL must provide read access to the blob. An expiration time of 24 hours is suggested for SAS URL. SAS URLs can be generated on Azure portal using blob's options , or SAS token using `New-AzStorageBlobSASToken`. If generating SAS token using `New-AzStorageBlobSASToken`, your SAS URL = "base blob URL" + "?" + "SAS token from `New-AzStorageBlobSASToken`"
 
 ### Get a Run Command Instance View for a VM after Creating or Updating Run Command
-Get a Run Command for VM with Instance View. Instance View contains execution state of run command (Succeeded, Failed, etc.), exit code, standard output and standard error generated by executing the script using Run Command. A nonzero ExitCode indicates an unsuccessful execution.
+Get a Run Command for VM with Instance View. Instance View contains execution state of run command (Succeeded, Failed, etc.), exit code, standard output, and standard error generated by executing the script using Run Command. A nonzero ExitCode indicates an unsuccessful execution.
 
 ```azurepowershell-interactive
 $x = Get-AzVMRunCommand -ResourceGroupName MyRG -VMName MyVM -RunCommandName MyRunCommand -Expand InstanceView
@@ -168,7 +184,7 @@ Statuses         :
 ```
 
 `InstanceView.ExecutionState`: Status of user's Run Command script. Refer this state to know whether your script was successful or not.
-`ProvisioningState`: Status of general extension provisioning end to end ( whether extension platform was able to trigger Run Command script or not). 
+`ProvisioningState`: Status of general extension provisioning end to end (whether extension platform was able to trigger Run Command script or not). 
 
 
 ### Create or update Run Command on a VM using ScriptLocalPath (local script file)
@@ -188,7 +204,7 @@ Set-AzVMRunCommand -ResourceGroupName MyRG0 -VMName MyVML -RunCommandName MyRunC
 ```
 
 ### Create or update Run Command on a VM using SourceCommandId
-Create or update Run Command on a VM using pre-existing commandId. Available commandIds can be retrieved using [Get-AzVMRunCommandDocument](/powershell/module/az.compute/get-azvmruncommanddocument).
+Create or update Run Command on a VM using preexisting commandId. Available commandIds can be retrieved using [Get-AzVMRunCommandDocument](/powershell/module/az.compute/get-azvmruncommanddocument).
 
 ```azurepowershell-interactive
 Set-AzVMRunCommand -ResourceGroupName MyRG0 -VMName MyVMEE -RunCommandName MyRunCommand -Location EastUS2EUAP -SourceCommandId DisableWindowsUpdate

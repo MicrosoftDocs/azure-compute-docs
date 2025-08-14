@@ -9,6 +9,7 @@ ms.date: 08/15/2023
 ms.author: saraic
 ms.reviewer: cynthn, mattmcinnes
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
+# Customer intent: As a cloud administrator, I want to create a virtual machine from a generalized image in an Azure gallery, so that I can efficiently deploy consistent and scalable environments for my applications.
 ---
 # Create a VM from a generalized image version
 

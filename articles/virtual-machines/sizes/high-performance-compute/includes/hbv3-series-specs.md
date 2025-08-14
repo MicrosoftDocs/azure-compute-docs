@@ -9,6 +9,7 @@ ms.date: 01/28/2025
 ms.author: padmalathas
 ms.reviewer: mattmcinnes
 ms.custom: include file
+# Customer intent: As a cloud architect, I want to review the specifications of HBv3-series VM sizes, so that I can select the appropriate virtual machine configuration for my workloads.
 ---
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
 |---|---|---|

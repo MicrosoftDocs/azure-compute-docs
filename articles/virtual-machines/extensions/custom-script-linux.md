@@ -9,6 +9,7 @@ ms.custom: GGAL-freshness822, devx-track-azurecli, linux-related-content
 author: GabstaMSFT
 ms.collection: linux
 ms.date: 03/31/2023
+# Customer intent: "As a cloud administrator, I want to configure Linux VMs using the Custom Script Extension, so that I can automate post-deployment setup and management tasks effectively."
 ---
 # Use the Azure Custom Script Extension Version 2 with Linux virtual machines
 
@@ -125,7 +126,7 @@ You can store sensitive data in a protected configuration, which is encrypted an
 | timestamp | `123456789` | 32-bit integer |
 | storageAccountName | `examplestorageacct` | string |
 | storageAccountKey | `TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg==` | string |
-| managedIdentity | `{ }` or `{ "clientId": "31b403aa-c364-4240-a7ff-d85fb6cd7232" }` or `{ "objectId": "12dd289c-0583-46e5-b9b4-115d5c19ef4b" }` | JSON object |
+| managedIdentity | `{ }` or `{ "clientId": "00001111-aaaa-2222-bbbb-3333cccc4444" }` or `{ "objectId": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb" }` | JSON object |
 
 ### Property value details
 
@@ -241,7 +242,7 @@ To use the user-assigned identity on the target VM or Virtual Machine Scale Set,
 {
   "fileUris": ["https://mystorage.blob.core.windows.net/privatecontainer/script1.sh"],
   "commandToExecute": "sh script1.sh",
-  "managedIdentity" : { "clientId": "31b403aa-c364-4240-a7ff-d85fb6cd7232" }
+  "managedIdentity" : { "clientId": "00001111-aaaa-2222-bbbb-3333cccc4444" }
 }
 ```
 
@@ -249,7 +250,7 @@ To use the user-assigned identity on the target VM or Virtual Machine Scale Set,
 {
   "fileUris": ["https://mystorage.blob.core.windows.net/privatecontainer/script1.sh"],
   "commandToExecute": "sh script1.sh",
-  "managedIdentity" : { "objectId": "12dd289c-0583-46e5-b9b4-115d5c19ef4b" }
+  "managedIdentity" : { "objectId": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb" }
 }
 ```
 

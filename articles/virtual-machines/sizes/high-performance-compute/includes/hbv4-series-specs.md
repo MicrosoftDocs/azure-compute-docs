@@ -9,6 +9,7 @@ ms.date: 01/28/2025
 ms.author: padmalathas
 ms.reviewer: mattmcinnes
 ms.custom: include file
+# Customer intent: As a cloud architect evaluating VM options, I want to access detailed specifications for the HBv4 series, so that I can determine the best configuration for my application’s performance and storage needs.
 ---
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
 |---|---|---|
