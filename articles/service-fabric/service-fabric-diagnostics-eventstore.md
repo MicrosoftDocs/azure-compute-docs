@@ -72,6 +72,8 @@ If your Azure cluster gets upgraded to version 6.5 or higher, EventStore is auto
     "eventStoreServiceEnabled": false
   ```
 
+Afterwards, restart Failover Manager to remove EventStore.
+
 ### Azure cluster version 6.4
 
 If you're using version 6.4, you can edit your Azure Resource Manager template to turn on EventStore service. This is done by performing a [cluster config upgrade](service-fabric-cluster-config-upgrade-azure.md) and adding the following code, you can use PlacementConstraints to put the replicas of the EventStore service on a specific NodeType, for example, a NodeType dedicated for the system services. The `upgradeDescription` section configures the config upgrade to trigger a restart on the nodes. You can remove the section in another update.
@@ -126,3 +128,4 @@ If you're using version 6.4, you can edit your Azure Resource Manager template t
 * Overview of monitoring and diagnostics in Service Fabric - [Monitor Service Fabric](monitor-service-fabric.md)
 * View the full list of API calls - [EventStore REST API Reference](/rest/api/servicefabric/sfclient-index-eventsstore)
 * Learn more about monitoring your cluster - [Monitoring the cluster and platform](service-fabric-diagnostics-event-generation-infra.md).
+
