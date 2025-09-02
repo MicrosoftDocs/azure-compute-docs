@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 09/17/2024
+ms.date: 09/02/2025
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 # Customer intent: As a cloud architect, I want to understand the specifications and features of the ND-H100-v5 size series, so that I can select the optimal VM type for high-performance compute workloads.
@@ -48,9 +48,9 @@ vCPUs (Qty.) and Memory for each size
 
 Local (temp) storage info for each size
 
-| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) |
-| --- | --- | --- |
-| Standard_ND96isr_H100_v5 | 1 | 28000 |
+| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Max NVMe Disks (Qty.) | NVMe Disk Size (TiB) |
+| --- | --- | --- | --- | --- |
+| Standard_ND96isr_H100_v5 | 1 | 28000 | 8 | 28 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
