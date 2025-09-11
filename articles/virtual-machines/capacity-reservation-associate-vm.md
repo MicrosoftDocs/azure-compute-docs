@@ -392,7 +392,12 @@ Alternatively, you can remove the *zone* information to create a regional VM and
 --- 
 <!-- The three dashes above show that your section of tabbed content is complete. Don't remove them :) -->
 
+
 ## Associate an existing virtual machine
+
+Existing zonal virtual machines can simply be updated with Capacity Reservation Group property without the need of deallocation and it will automatically consume the capacity reservation. Existing regional virtual machines can include similar process but must be reallocated.
+
+### Regional Virtual Machine
 
 For the initial release of a capacity reservation, a virtual machine must be allocated to a capacity reservation:
 
@@ -403,7 +408,7 @@ For the initial release of a capacity reservation, a virtual machine must be all
 
 Follow the steps to associate the virtual machine to a capacity reservation group.
 
-### [API](#tab/api2)
+#### [API](#tab/api2)
 
 1. Deallocate the virtual machine:
 
@@ -433,7 +438,7 @@ Follow the steps to associate the virtual machine to a capacity reservation grou
     ```
 
 
-### [Portal](#tab/portal2)
+#### [Portal](#tab/portal2)
 
 1. Open the [Azure portal](https://portal.azure.com).
 1. Go to your VM.
@@ -442,7 +447,7 @@ Follow the steps to associate the virtual machine to a capacity reservation grou
 1. Go to **Configurations** on the left.
 1. In the **Capacity Reservation group** dropdown list, select the group that you want to associate to the VM.
 
-### [CLI](#tab/cli2)
+#### [CLI](#tab/cli2)
 
 1. Deallocate the virtual machine:
 
@@ -461,7 +466,7 @@ Follow the steps to associate the virtual machine to a capacity reservation grou
     --capacity-reservation-group subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{CapacityReservationGroupName}
     ```
 
-### [PowerShell](#tab/powershell2)
+#### [PowerShell](#tab/powershell2)
 
 1. Deallocate the virtual machine:
 
@@ -484,6 +489,79 @@ Follow the steps to associate the virtual machine to a capacity reservation grou
     -VM $VirtualMachine
     -CapacityReservationGroupId "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{CapacityReservationGroupName}"
     ```
+
+To learn more, see the Azure PowerShell commands [Stop-AzVM](/powershell/module/az.compute/stop-azvm), [Get-AzVM](/powershell/module/az.compute/get-azvm), and [Update-AzVM](/powershell/module/az.compute/update-azvm).
+
+--- 
+<!-- The three dashes above show that your section of tabbed content is complete. Don't remove them :) -->
+
+### Zonal Virtual Machine
+
+For the initial release of a capacity reservation, a virtual machine must be allocated to a capacity reservation. To add an existing running zonal virtual machine to capacity reservation group, simply update the VM to use a matching capacity reservation group:
+
+1. Follow guidance to create a capacity reservation group and capacity reservation, if necessary. Or increment the quantity of an existing capacity reservation so there's unused reserved capacity.
+1. Update the capacity reservation group property on the VM.
+
+Follow the steps to associate the virtual machine to a capacity reservation group.
+
+#### [API](#tab/api2)
+
+Add the `capacityReservationGroup` property to the VM. Construct the following `PUT` request to `Microsoft.Compute` provider:
+
+```rest
+    PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{VirtualMachineName}?api-version=2021-04-01
+```
+
+In the request body, include the `capacityReservationGroup` property:
+    
+```json
+    {
+    "location": "eastus",
+    "properties": {
+        "capacityReservation": {
+            "capacityReservationGroup": {
+                "id": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}"
+            }
+        }
+    }
+    }
+```
+
+
+#### [Portal](#tab/portal2)
+
+1. Open the [Azure portal](https://portal.azure.com).
+1. Go to your VM.
+1. Select **Overview**.
+1. Go to **Configurations** on the left.
+1. In the **Capacity Reservation group** dropdown list, select the group that you want to associate to the VM.
+
+#### [CLI](#tab/cli2)
+
+Associate the VM to a capacity reservation group:
+
+```azurecli-interactive
+    az vm update 
+    -g myresourcegroup 
+    -n myVM 
+    --capacity-reservation-group subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{CapacityReservationGroupName}
+```
+
+#### [PowerShell](#tab/powershell2)
+
+Associate the VM to a capacity reservation group:
+
+```powershell-interactive
+    $VirtualMachine =
+    Get-AzVM
+    -ResourceGroupName "myResourceGroup"
+    -Name "myVM"
+    
+    Update-AzVM
+    -ResourceGroupName "myResourceGroup"
+    -VM $VirtualMachine
+    -CapacityReservationGroupId "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{CapacityReservationGroupName}"
+```
 
 To learn more, see the Azure PowerShell commands [Stop-AzVM](/powershell/module/az.compute/stop-azvm), [Get-AzVM](/powershell/module/az.compute/get-azvm), and [Update-AzVM](/powershell/module/az.compute/update-azvm).
 
