@@ -32,9 +32,6 @@ Before you begin an in-place upgrade:
 
 - Disable antivirus and anti-spyware software and firewalls. These types of software can conflict with the upgrade process. Re-enable antivirus and anti-spyware software and firewalls after the upgrade is completed. 
 
-> [!NOTE]
-> When performing an in-place upgrade on Azure Windows VMs, the VM properties on the Azure portal aren't updated; the changes are only reflected within the OS. This means that the source image information in the VM properties, including the publisher, offer, and plan, remains unchanged. The image used to deploy the VM remains the same, and only the OS is upgraded.
-
 ## Upgrade VM to volume license (KMS server activation)
 
 The upgrade media provided by Azure requires the VM to be configured for Windows Server volume licensing. This is the default behavior for any Windows Server VM that was installed from a generalized image in Azure. If the VM was imported into Azure, then it might need to be converted to volume licensing to use the upgrade media provided by Azure. To confirm the VM is configured for volume license activation follow these steps to [configure the appropriate KMS client setup key](/troubleshoot/azure/virtual-machines/troubleshoot-activation-problems#step-1-configure-the-appropriate-kms-client-setup-key). If the activation configuration was changed, then follow these steps to [verify connectivity to Azure KMS service](/troubleshoot/azure/virtual-machines/troubleshoot-activation-problems#step-2-verify-the-connectivity-between-the-vm-and-azure-kms-service). 
