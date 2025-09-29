@@ -19,7 +19,17 @@ ms.reviewer: mattmcinnes
 [!INCLUDE [mdsv3-mm-series-specs](./includes/mdsv3-mm-series-specs.md)]
 
 ## Feature support
-[Premium Storage](../../premium-storage-performance.md): Supported <br>[Premium Storage caching](../../premium-storage-performance.md): Supported <br>[Live Migration](../../maintenance-and-updates.md): Supported <br>[Memory Preserving Updates](../../maintenance-and-updates.md): Not Supported <br>[Generation 2 VMs](../../generation-2.md): Supported <br>[Generation 1 VMs](../../generation-2.md): Not Supported <br>[Accelerated Networking](/azure/virtual-network/create-virtual-machine-accelerated-networking): Supported <br>[Ephemeral OS Disk](../../ephemeral-os-disks.md): Supported <br>[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Not Supported <br>[Hibernation](../../hibernate-resume.md): Not Supported <br>
+- [Premium Storage](../../premium-storage-performance.md): Supported
+- [Premium Storage caching](../../premium-storage-performance.md): Supported
+- [Live Migration](../../maintenance-and-updates.md#live-migration): Supported
+- [Memory Preserving Updates](../../maintenance-and-updates.md): Not Supported
+- [Generation 2 VMs](../../generation-2.md): Supported
+- [Generation 1 VMs](../../generation-2.md): Not Supported
+- [Accelerated Networking](/azure/virtual-network/create-virtual-machine-accelerated-networking): Supported
+- [Ephemeral OS Disk](../../ephemeral-os-disks.md): Supported
+- [Temporary local NVMe disks](../../enable-nvme-temp-faqs.yml): Supported
+- [Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Not Supported
+- [Hibernation](../../hibernate-resume.md): Not Supported
 
 ## Sizes in series
 
