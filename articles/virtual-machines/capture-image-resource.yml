@@ -132,7 +132,7 @@ procedureSection:
         Create the image configuration.
 
         ```azurepowershell-interactive
-        $image = New-AzImageConfig -Location $location -SourceVirtualMachineId $vm.Id 
+        $imageConfig = New-AzImageConfig -Location $location -SourceVirtualMachineId $vm.Id 
         ```
       - |
         Create the image.
