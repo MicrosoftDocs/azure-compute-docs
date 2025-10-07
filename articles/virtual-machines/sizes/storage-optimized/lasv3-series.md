@@ -64,7 +64,7 @@ Local (temp) storage info for each size
 - To learn how to get the best storage performance for your VMs, see [Virtual machine and disk performance](../../../virtual-machines/disks-performance.md).
 - **Temp disk**: Lasv3-series VMs have a standard SCSI-based temp resource disk for use by the OS paging or swap file (`D:` on Windows, `/dev/sdb` on Linux). This disk provides 80 GiB of storage, 4000 IOPS, and 80 MBps transfer rate for every 8 vCPUs. For example, Standard_L80as_v3 provides 800 GiB at 40000 IOPS and 800 MBPS. This configuration ensures that the NVMe drives can be fully dedicated to application use. This disk is ephemeral, and all data is lost on stop or deallocation. 
 - **NVMe Disks**: NVMe disk throughput can go higher than the specified numbers. However, higher performance isn't guaranteed. Local NVMe disks are ephemeral. Data is lost on these disks if you stop or deallocate your VM. 
-- **NVMe Disk encryption** Lasv3 VMs created or allocated on or after 1/1/2023 have their local NVMe drives encrypted by default using hardware-based encryption with a Platform-managed key, except for the regions listed below. 
+- **NVMe Disk encryption** Lv3 VMs have their local temp NVMe drives encrypted by default using hardware-based encryption with a Platform-managed key.
 
 ### [Remote storage](#tab/sizestorageremote)
 
