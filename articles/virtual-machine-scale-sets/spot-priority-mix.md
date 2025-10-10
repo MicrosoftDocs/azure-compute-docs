@@ -16,223 +16,325 @@ ms.custom: engagement-fy23
 
 **Applies to:** :heavy_check_mark: Flexible scale sets
 
-Azure allows you to have the flexibility of running a mix of uninterruptible standard VMs and interruptible Spot VMs for Virtual Machine Scale Set deployments. You're able to deploy this Spot Priority Mix using Flexible orchestration to easily balance between high-capacity availability and lower infrastructure costs according to your workload requirements. This feature allows you to easily manage your scale set capability to achieve the following goals:
+Spot Priority Mix allows you to run a combination of standard Virtual Machines (VMs) and Spot VMs within a single Virtual Machine Scale Set. This feature helps you balance cost savings with availability by letting Azure automatically manage the mix of VM types based on your requirements.
 
-- Reduce compute infrastructure costs by applying the deep discounts of Spot VMs
-- Maintain capacity availability through uninterruptible standard VMs in the scale set deployment
-- Provide reassurance that all your VMs won't be taken away simultaneously due to evictions before the infrastructure has time to react and recover the evicted capacity
-- Simplify the scale-out and scale-in of compute workloads that require both Spot and standard VMs by letting Azure orchestrate the creation and deletion of VMs
+## Overview
+
+With Spot Priority Mix, you can:
+
+- **Save up to 90%** on compute costs by using Spot VMs for interruptible workloads
+- **Ensure availability** with standard VMs that aren't evicted
+- **Protect against mass evictions** by maintaining a guaranteed number of standard VMs
+- **Simplify management** with automatic orchestration of VM creation and deletion
+
+## How it works
+
+Spot Priority Mix uses two key parameters to control your VM distribution:
+
+1. `baseRegularPriorityCount`: The minimum number of standard (non-Spot) VMs that are always maintained
+2. `regularPriorityPercentageAboveBase`: The percentage of standard VMs vs. Spot VMs for any capacity beyond the base count
+
+**Example**: With a `baseRegularPriorityCount` of 10 and a `regularPriorityPercentageAboveBase` of 50:
+- At 10 total VMs: All 10 are standard VMs (at or below base count)
+- At 30 total VMs: 10 base standard VMs + 10 other standard VMs (50% of the 20 above base) + 10 Spot VMs (50% of the 20 above base)
+
+## Prerequisites
+
+Before you use Spot Priority Mix, ensure you have the following:
+
+- A Virtual Machine Scale Set with Flexible orchestration mode
+- Understanding of [Azure Spot VMs](../virtual-machines/spot-vms.md) and their eviction behavior
+- Appropriate quota for Spot VMs
 
 ## Limitations
-Spot Priority Mix is not supported with `singlePlacementMode` enabled on the scale set.
+
+- Spot Priority Mix requires Flexible orchestration mode
+- Not supported with `singlePlacementMode` enabled on the scale set
+- Changes to the mix configuration apply only to future scaling operations (existing VMs aren't rebalanced)
 
 ## Configure your mix
 
-You can configure a custom percentage distribution across Spot and standard VMs. The platform automatically orchestrates each scale-out and scale-in operation to achieve the desired distribution by selecting an appropriate number of VMs to create or delete. You can also optionally configure the number of base standard VMs you would like to maintain in the Virtual Machine Scale Set during any scale operation.
+The platform automatically orchestrates scale-out and scale-in operations to maintain your desired distribution of Spot and standard VMs. You configure the mix using two key settings `baseRegularPriorityCount` and `regularPriorityPercentageAboveBase`.
 
-The eviction policy of your Spot VMs follows what is set for the Spot VMs in your scale set. *Deallocate* is the default behavior, wherein evicted Spot VMs move to a stop-deallocated state. Alternatively, the Spot eviction policy can be set to *Delete*, wherein the VM and its underlying disks are deleted.
+### Understanding the parameters
 
-### Scale-In Policy
+| Parameter | Description | Details |
+|-----------|-------------|---------|
+| `baseRegularPriorityCount` | Sets the minimum number of standard VMs | When total capacity is at or below this number, all VMs are standard. Provides guaranteed capacity that isn't evicted. |
+| `regularPriorityPercentageAboveBase` | Defines the standard-to-Spot ratio for VMs beyond the base count | Value between 0-100 (for example, 50 means 50% standard, 50% Spot). Only applies when capacity exceeds the base count. |
 
-When using Spot Priority Mix, your scale-in policy for the scale set will operate to try to maintain the percentage split of the Spot and Standard VMs in your scale set. Spot Priority Mix will determine if Spot or Standard VMs need to be removed during scale-in actions to maintain your percentage split, rather than deleting the oldest or newest VM. 
+### Common configurations
+
+| Use Case | Base Count | Percentage Above Base | Description |
+|----------|------------|----------------------|-------------|
+| High availability | 20 | 80% | Most VMs are standard, minimal Spot usage |
+| Balanced | 10 | 50% | Equal mix above base capacity |
+| Cost-optimized | 5 | 20% | Maximum Spot usage with small standard baseline |
+| Dev/Test | 0 | 0% | All Spot VMs (no availability guarantee) |
+
+### Eviction policy
+
+When Spot VMs are evicted due to capacity constraints or pricing, the eviction policy determines what happens:
+
+| Policy | Behavior | Cost Impact |
+|--------|----------|-------------|
+| `Deallocate` (default) | Evicted VMs move to a stopped-deallocated state and can be restarted later | No compute charges, storage costs continue |
+| `Delete` | Evicted VMs and their underlying disks are permanently deleted | No charges continue |
+
+### Scale-in behavior
+
+When you scale in, Spot Priority Mix maintains your configured percentage split by intelligently choosing which VMs to remove (Spot or standard) rather than simply removing the oldest or newest VMs. 
 
 ### ARM Template
 
-You can set your Spot Priority Mix by using an ARM template to add the following properties to a scale set with Flexible orchestration using a Spot priority VM profile:
+Configure Spot Priority Mix in an ARM template by adding the `priorityMixPolicy` properties to a scale set with Flexible orchestration and Spot priority:
 
 ```json
 "priorityMixPolicy": {
-    "baseRegularPriorityCount": 0,
+    "baseRegularPriorityCount": 10,
     "regularPriorityPercentageAboveBase": 50
 },
 ```
 
-**Parameters:**
-
-- `baseRegularPriorityCount` – Specifies a base number of VMs that are standard, *Regular* priority; if the Scale Set capacity is at or below this number, all VMs are *Regular* priority.
-- `regularPriorityPercentageAboveBase` – Specifies the percentage split of *Regular* and *Spot* priority VMs that are used when the Scale Set capacity is above the *baseRegularPriorityCount*.
+This example configuration:
+- Maintains a minimum of 10 standard VMs
+- For any VMs beyond 10, maintains a 50/50 split between standard and Spot VMs
+- At 30 total VMs: 10 base + 10 standard + 10 Spot
 
 ### [Portal](#tab/portal)
 
-You can set your Spot Priority Mix in the Spot tab of the Virtual Machine Scale Sets creation process in the Azure portal. The following steps instruct you on how to access this feature during that process.
+Configure Spot Priority Mix when you create a Virtual Machine Scale Set in the Azure portal:
 
-1. Log in to the [Azure portal](https://portal.azure.com).
-1. In the search bar, search for and select **Virtual Machine Scale Sets**.
-1. Select **Create** on the **Virtual Machine Scale Sets** page.
-1. In the **Basics** tab, fill out the required fields, select **Flexible** as the **Orchestration** mode, and select the checkbox for **Run with Azure Spot discount**.
-1. In the **Spot** tab, select the check-box next to *Scale with VMs and Spot VMs* option under the **Scale with VMs and discounted Spot VMs** section.
-1. Fill out the **Base VM (uninterruptible) count** and **Instance distribution** fields to configure your percentage split between Spot and Standard VMs.
-1. Continue through the Virtual Machine Scale Set creation process.
+1. Sign in to the [Azure portal](https://portal.azure.com).
+1. Search for and select **Virtual Machine Scale Sets**.
+1. Select **Create**.
+1. On the **Basics** tab:
+   - Fill out the required fields.
+   - Set **Orchestration mode** to **Flexible**.
+   - Select **Run with Azure Spot discount**.
+1. On the **Spot** tab:
+   - Select **Scale with VMs and Spot VMs** under **Scale with VMs and discounted Spot VMs**.
+   - Set `baseRegularPriorityCount` by using **Base VM (uninterruptible) count**, the minimum number of standard VMs.
+   - Set `regularPriorityPercentageAboveBase` by using **Instance distribution**, the percentage of standard VMs above the base count.
+1. Complete the remaining configuration and create your scale set.
 
 ### [Azure CLI](#tab/cli)
 
-You can set your Spot Priority Mix using Azure CLI by setting the `priority` flag to `Spot` and including the `regular-priority-count` and `regular-priority-percentage` flags.
+Create a scale set with Spot Priority Mix using the Azure CLI:
 
 ```azurecli
 az vmss create -n myScaleSet \
-		-g myResourceGroup \
-		--orchestration-mode flexible \
-		--regular-priority-count 2 \
-		--regular-priority-percentage 50 \
-		--orchestration-mode flexible \
-		--instance-count 4 \
-		--image Ubuntu2204 \
-		--priority Spot \
-		--eviction-policy Deallocate \
-		--single-placement-group False \
+    -g myResourceGroup \
+    --orchestration-mode flexible \
+    --instance-count 4 \
+    --image Ubuntu2204 \
+    --priority Spot \
+    --regular-priority-count 2 \
+    --regular-priority-percentage 50 \
+    --eviction-policy Deallocate \
+    --single-placement-group False
 ```
+
+This example creates:
+- A scale set with four VMs total
+- Two base standard VMs (`--regular-priority-count 2`)
+- 50% standard VMs above base (`--regular-priority-percentage 50`)
+- Result: Two standard VMs and two Spot VMs
 
 ### [Azure PowerShell](#tab/powershell)
 
-You can set your Spot Priority Mix using Azure PowerShell by setting the `Priority` parameter to `Spot` and including the `BaseRegularPriorityCount` and `RegularPriorityPercentage` parameters.
+Create a scale set with Spot Priority Mix using Azure PowerShell:
 
 ```azurepowershell
 $vmssConfig = New-AzVmssConfig `
-            -Location "East US" `
-            -SkuCapacity 4 `
-            -SkuName Standard_D2_v5 `
-            -OrchestrationMode 'Flexible' `
-            -EvictionPolicy 'Delete' `
-            -PlatformFaultDomainCount 1 `
-            -Priority 'Spot' `
-            -BaseRegularPriorityCount 2 `
-            -RegularPriorityPercentage 50;
+    -Location "East US" `
+    -SkuCapacity 4 `
+    -SkuName Standard_D2_v5 `
+    -OrchestrationMode 'Flexible' `
+    -Priority 'Spot' `
+    -BaseRegularPriorityCount 2 `
+    -RegularPriorityPercentage 50 `
+    -EvictionPolicy 'Delete' `
+    -PlatformFaultDomainCount 1
 
 New-AzVmss `
-            -ResourceGroupName myResourceGroup `
-            -Name myScaleSet `
-            -VirtualMachineScaleSet $vmssConfig;
-
+    -ResourceGroupName myResourceGroup `
+    -Name myScaleSet `
+    -VirtualMachineScaleSet $vmssConfig
 ```
+
+This example creates:
+- A scale set with four VMs total
+- Two base standard VMs (`-BaseRegularPriorityCount`)
+- 50% standard VMs above base (`-RegularPriorityPercentage`)
+- Result: Two standard VMs and two Spot VMs
 
 ---
 
-## Updating your Spot Priority Mix
-Should your ideal percentage split of Spot and Standard VMs change, you can update your Spot Priority Mix after your scale set has been deployed. Updating your Spot Priority Mix will apply for all scale set actions *after* the change is made, existing VMs will remain as is.
+## Update your Spot Priority Mix
+
+You can modify the Spot Priority Mix configuration after your scale set is deployed. The updated configuration applies only to future scaling operations. Existing VMs remain unchanged until the scale set scales in or out.
 
 ### [Portal](#tab/portal)
-You can update your existing Spot Priority Mix in the Configuration tab of the Virtual Machine Scale Set resource page in the Azure portal. The following steps instruct you on how to access this feature during that process. Note: in Portal, you can only update the Spot Priority Mix for scale sets that already have Spot Priority Mix enabled.
 
-You can update your existing Spot Priority Mix in the Configuration tab of the Virtual Machine Scale Set resource page in the Azure portal. The following steps instruct you on how to access this feature during that process. Note: in Portal, you can only update the Spot Priority Mix for scale sets that already have Spot Priority Mix enabled.
+Update your existing Spot Priority Mix in the Azure portal:
 
-1. Navigate to the specific virtual machine scale set that you're adjusting the Spot Priority Mix on.
-1. In the left side bar, scroll down to and select **Configuration**.
-1. Your current Spot Priority Mix should be visible. Here you can change the **Base VM (uninterruptible) count** and **Instance distribution** of Spot and Standard VMs.
-1. Update your Spot Mix as needed.
-1. Press the **Save** button to apply your changes.
+> [!NOTE]
+> In the Azure portal, you can only update Spot Priority Mix for scale sets that already have this feature enabled.
+
+1. Navigate to your Virtual Machine Scale Set in the [Azure portal](https://portal.azure.com).
+1. In the left menu, select **Configuration**.
+1. Under the Spot Priority Mix section, update:
+   - `baseRegularPriorityCount` by using **Base VM (uninterruptible) count**
+   - `regularPriorityPercentageAboveBase` by using the **Instance distribution** percentage
+1. Select **Save** to apply your changes.
 
 ### [Azure CLI](#tab/cli)
 
-You can update your Spot Priority Mix using Azure CLI by updating the `regular-priority-count` and `regular-priority-percentage` parameters.
+Update your Spot Priority Mix using the Azure CLI:
 
 ```azurecli
-az vmss update --resource-group myResourceGroup \
-        --name myScaleSet \
-        --regular-priority-count 10 \
-        --regular-priority-percentage 80 \
+az vmss update \
+    --resource-group myResourceGroup \
+    --name myScaleSet \
+    --regular-priority-count 10 \
+    --regular-priority-percentage 80
 ```
+
+This example updates to:
+- 10 base standard VMs
+- 80% standard VMs above base (20% Spot VMs)
 
 ### [Azure PowerShell](#tab/powershell)
 
-You can update your Spot Priority Mix using Azure PowerShell by updating the `BaseRegularPriorityCount` and `RegularPriorityPercentage` parameters.
+Update your Spot Priority Mix using Azure PowerShell:
 
 ```azurepowershell
 $vmss = Get-AzVmss `
-        -ResourceGroupName "myResourceGroup" `
-        -VMScaleSetName "myScaleSet"
+    -ResourceGroupName "myResourceGroup" `
+    -VMScaleSetName "myScaleSet"
 
 Update-AzVmss `
-        -ResourceGroupName "myResourceGroup" `
-        -VirtualMachineScaleSet $vmss
-        -VMScaleSetName "myScaleSet" `
-        -BaseRegularPriorityCount 10 `
-        -RegularPriorityPercentage 80;
-
+    -ResourceGroupName "myResourceGroup" `
+    -VMScaleSetName "myScaleSet" `
+    -VirtualMachineScaleSet $vmss `
+    -BaseRegularPriorityCount 10 `
+    -RegularPriorityPercentage 80
 ```
+
+This example updates to:
+- 10 base standard VMs
+- 80% standard VMs above base (20% Spot VMs)
 
 ---
 
 ## Examples
 
-The following examples have scenario assumptions, a table of actions, and walk-through of results to help you understand how Spot Priority Mix configuration works.
+The following examples demonstrate how Spot Priority Mix works in different scenarios. Each example includes a configuration, a table that shows the VM distribution after various operations, and a detailed walk-through.
 
-Some important terminology to notice before referring to these examples:
+### Key terminology
 
-- **sku.capacity** is the total number of VMs in the Virtual Machine Scale Set
-- **Base (standard) VMs** are the number of standard non-Spot VMs, akin to a minimum VM number
+- **Total capacity**: The total number of VMs in the Virtual Machine Scale Set.
+- **Base standard VMs**: The guaranteed minimum number of standard VMs (set by `baseRegularPriorityCount`).
+- **Extra standard VMs**: Standard VMs beyond the base count, calculated by using `regularPriorityPercentageAboveBase`.
+- **Spot VMs**: Interruptible VMs that provide cost savings.
 
-### Scenario 1
+### Scenario 1: 50/50 split with 10 base VMs
 
-The following scenario assumptions apply to this example:
-- **sku.capacity** is variable, as  Autoscale will add or remove VMs from the scale set
-- **Base (standard) VMs:** 10
-- **Extra standard VMs:** 0
-- **Spot priority VMs:** 0
-- **regularPriorityPercentageAboveBase:** 50%
-- **Eviction policy:** Delete
+**Configuration:**
+- `baseRegularPriorityCount`: 10
+- `regularPriorityPercentageAboveBase`: 50%
+- Eviction policy: Delete
+- Starting capacity: 10 VMs
 
-| Action                            | sku.capacity | Base (standard) VMs | Extra standard VMs | Spot priority VMs |
-|-----------------------------------|-------------|---------------------|--------------------|-------------------|
-| Create                            | 10           | 10                  | 0                  | 0                 |
-| Scale out                         | 20           | 10                  | 5                  | 5                 |
-| Scale out                         | 30           | 10                  | 10                 | 10                |
-| Scale out                         | 40           | 10                  | 15                 | 15                |
-| Scale out                         | 41           | 10                  | 15                 | 16                |
-| Scale out                         | 42           | 10                  | 16                 | 16                |
-| Scale in - Evict-Delete (all Spot instances) | 26           | 10                  | 16                 | 0                 |
-| Scale out                         | 30           | 10                  | 16                 | 4                 |
-| Scale out                         | 42           | 10                  | 16                 | 16                |
-| Scale out                         | 44           | 10                  | 17                 | 17                |
+**VM distribution during scaling:**
 
-Example walk-through:
-1. You start out with a Virtual Machine Scale Set with 10 VMs.
-    - The `sku.capacity` is variable and doesn't set a starting number of VMs. The Base VMs are set at 10, thus your total starting VMs are just 10 Base (standard) VMs.
-1. You then scale-out 5 times, with 50% standard VMs and 50% Spot VMs.
-    - Note, because there's a 50/50 split, in the fourth scale-out, there's one more Spot VM than standard VM. Once it's scaled out again (5th scale-out), the 50/50 balance is restored with another standard VM.
-1. You then scale in your scale set with the eviction policy being *evict-delete*, which deletes all the Spot VMs.
-1. With the scale-out operations mentioned in this scenario, you restore the 50/50 balance in your scale set by only creating Spot VMs.
-1. By the last scale-out, your scale set is already balanced, so one of each type of VM is created.
+| Action                            | Total capacity | Base standard VMs | Extra standard VMs | Spot VMs |
+|-----------------------------------|----------------|-------------------|-------------------|----------|
+| Initial creation                  | 10             | 10                | 0                 | 0        |
+| Scale out to 20                   | 20             | 10                | 5                 | 5        |
+| Scale out to 30                   | 30             | 10                | 10                | 10       |
+| Scale out to 40                   | 40             | 10                | 15                | 15       |
+| Scale out to 41                   | 41             | 10                | 15                | 16       |
+| Scale out to 42                   | 42             | 10                | 16                | 16       |
+| All Spot VMs evicted              | 26             | 10                | 16                | 0        |
+| Scale out to 30                   | 30             | 10                | 16                | 4        |
+| Scale out to 42                   | 42             | 10                | 16                | 16       |
+| Scale out to 44                   | 44             | 10                | 17                | 17       |
 
-### Scenario 2
+**Walk-through:**
 
-The following scenario assumptions apply to this example:
-- **sku.capacity** is variable, defined by autoscaler; starting with 20
-- **Base (standard) VMs:** 10
-- **Extra standard VMs:** 2
-- **Spot priority VMs:** 8
-- **regularPriorityPercentageAboveBase:** 25%
-- **Eviction policy:** Deallocate
+1. **Initial state (10 VMs)**: All VMs are standard because the total is at the base count.
+2. **Scale to 20 VMs**: Added 10 VMs above base, which is 5 standard (50%) and 5 Spot (50%).
+3. **Scale to 30 VMs**: Added 20 VMs above base, which is 10 standard (50%) and 10 Spot (50%).
+4. **Scale to 41 VMs**: With odd numbers, Spot VMs get the extra VM (16 Spot versus 15 standard).
+5. **Scale to 42 VMs**: Balance restored with 16 of each type above the 10 base VMs.
+6. **Eviction event**: All 16 Spot VMs are deleted, which leaves 26 total VMs (10 base and 16 extra standard).
+7. **Scale to 30 VMs**: Only 4 Spot VMs added to rebalance toward the 50/50 target.
+8. **Scale to 42 VMs**: Added 8 more Spot VMs and maintained 16 standard to restore balance.
+9. **Scale to 44 VMs**: One of each type added to maintain the 50/50 split.
 
-| Action                      | sku.capacity | Base (standard) VMs | Extra standard VMs | Spot priority VMs                            |
-|-----------------------------|--------------|---------------------|--------------------|----------------------------------------------|
-| Create                      | 20           | 10                  | 2                  | 8                                            |
-| Scale out                   | 50           | 10                  | 10                 | 30                                           |
-| Scale out                   | 110          | 10                  | 25                 | 75                                           |
-| Scale In: Stop-Deallocate (10 instances) | 100          | 10                  | 25                 | 75 (65 running VMs, 10 Stop-Deallocated VMs) |
-| Scale out                   | 120          | 10                  | 27                 | 83 (73 running VMs, 10 Stop-Deallocated VMs) |
+### Scenario 2: Cost-optimized with 25% standard VMs
 
-Example walk-through:
-1. With the initial creation of the Virtual Machine Scale Set and Spot Priority Mix, you have 20 VMs.
-    - 10 of those VMs are the Base (standard) VMs, 2 extra standard VMs, and 8 Spot priority VMs for your 25% *regularPriorityPercentageAboveBase*.
-    - Another way to look at this ratio is you have 1 standard VM for every 4 Spot VMs in the scale set.
-2. You then scale out twice to create 90 more VMs; 23 standard VMs and 67 Spot VMs.
-3. When you scale in by 10 VMs, 10 Spot VMs are *stop-deallocated*, creating an imbalance in your scale set.
-4. Your next scale out operation creates another 2 standard VMs and 8 Spot VMs, bringing you closer to your 25% above base ratio.
+**Configuration:**
+- `baseRegularPriorityCount`: 10
+- `regularPriorityPercentageAboveBase`: 25%
+- Eviction policy: Deallocate (VMs stop but aren't deleted)
+- Starting capacity: 20 VMs
+
+**VM distribution during scaling:**
+
+| Action                          | Total capacity | Base standard VMs | Extra standard VMs | Spot VMs (running) | Spot VMs (deallocated) |
+|---------------------------------|----------------|-------------------|--------------------|-------------------|------------------------|
+| Initial creation                | 20             | 10                | 2                  | 8                 | 0                      |
+| Scale out to 50                 | 50             | 10                | 10                 | 30                | 0                      |
+| Scale out to 110                | 110            | 10                | 25                 | 75                | 0                      |
+| 10 Spot VMs evicted             | 110            | 10                | 25                 | 65                | 10                     |
+| Scale out to 120                | 120            | 10                | 27                 | 73                | 10                     |
+
+**Walk-through:**
+
+1. **Initial state (20 VMs)**: 10 base standard, 2 extra standard (25% of 10), and 8 Spot (75% of 10).
+   - Formula: For the 10 VMs above base, 25% standard (2.5 rounded to 2) and 75% Spot (8).
+2. **Scale to 50 VMs**: Added 30 VMs above base. Total of 40 above base equals 10 standard (25%) and 30 Spot (75%).
+3. **Scale to 110 VMs**: 100 VMs above base, which is 25 standard (25%) and 75 Spot (75%).
+4. **Eviction event**: 10 Spot VMs are deallocated (stopped but not deleted).
+   - Total capacity remains 110, but only 65 Spot VMs are running.
+   - The deallocated VMs count toward capacity but aren't running.
+5. **Scale to 120 VMs**: Added 10 more VMs, which is 2 standard and 8 Spot, to maintain the 25/75 ratio.
+   - The 10 deallocated VMs remain deallocated.
 
 ## Troubleshooting
 
 If Spot Priority Mix isn't available to you, be sure to configure the `priorityMixPolicy` to specify a *Spot* priority in the `virtualMachineProfile`. Without enabling the `priorityMixPolicy` setting, you won't be able to access this Spot feature.
 
-## FAQs
-### Q: I changed the Spot Priority Mix settings, why aren't my existing VMs changing?
+## Frequently asked questions
 
-Spot Priority Mix applies for scale actions on the scale set. Changing the percentage split of Spot and Standard VMs won't rebalance existing scale set. You'll see the actual percentage split change as you scale the scale set.
+### Why aren't my existing VMs changing after I updated the Spot Priority Mix?
 
-### Q: Is Spot Priority Mix enabled for Uniform orchestration mode?
-Spot Priority Mix is only available on Virtual Machine Scale Sets with Flexible orchestration mode.
+Spot Priority Mix configuration applies only to future scaling operations. When you change the percentage split, existing VMs remain unchanged. The new distribution takes effect as the scale set scales in or out. To apply the new configuration, you can manually scale your set or wait for autoscale events.
 
-### Q: Which regions is Spot Priority Mix enabled in?
-Spot VMs, and therefore Spot Priority Mix, are available in all global Azure regions.
+### What happens when Spot VMs are evicted?
+
+When Azure needs capacity back, Spot VMs are evicted based on your eviction policy.
+
+Your base standard VMs are never evicted, ensuring minimum capacity availability.
+
+### Can I use Spot Priority Mix with Uniform orchestration?
+
+No, Spot Priority Mix is only available with Flexible orchestration mode. Uniform orchestration doesn't support this feature.
+
+### Which Azure regions support Spot Priority Mix?
+
+Spot Priority Mix is available in all Azure regions that support Spot VMs. This availability includes all global Azure regions. For the most current region availability, see [Spot VMs documentation](../virtual-machines/spot-vms.md).
+
+### Does changing the mix trigger immediate VM creation or deletion?
+
+No. Updating your Spot Priority Mix configuration doesn't immediately create or delete VMs. The new settings apply during the next scale operation (scale in, scale out, or replacement of evicted VMs).
+
+### Can I have zero base standard VMs?
+
+Yes, you can set `baseRegularPriorityCount` to 0, which means all VMs follow the percentage distribution. However, this means you could potentially lose all VMs to eviction during high-demand periods. For production workloads, we recommend that you maintain at least some base standard VMs.
 
 ## Next steps
 

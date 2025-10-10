@@ -6,7 +6,7 @@ ms.author: jushiman
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: disks
-ms.date: 06/14/2024
+ms.date: 09/23/2025
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurepowershell
 
@@ -14,6 +14,8 @@ ms.custom: mimckitt, devx-track-azurepowershell
 ---
 
 # Encrypt OS and attached data disks in a Virtual Machine Scale Set with Azure PowerShell
+
+[!INCLUDE [Azure Disk Encryption retirement notice](~/reusable-content/ce-skilling/azure/includes/security/azure-disk-encryption-retirement.md)]
 
 The Azure PowerShell module is used to create and manage Azure resources from the PowerShell command line or in scripts.  This article shows you how to use Azure PowerShell to create and encrypt a Virtual Machine Scale Set. For more information on applying Azure Disk Encryption to a Virtual Machine Scale Set, see [Azure Disk Encryption for Virtual Machine Scale Sets](disk-encryption-overview.md).
 

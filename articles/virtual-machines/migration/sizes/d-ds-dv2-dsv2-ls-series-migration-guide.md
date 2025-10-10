@@ -5,7 +5,7 @@ author: iamwilliew
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 03/17/2025
+ms.date: 09/02/2025
 ms.author: wwilliams
 ms.reviewer: mattmcinnes
 ---
@@ -21,6 +21,7 @@ This document covers:
  - Common questions and guidance on handling RIs.
 
 By migrating to newer VM series, you gain access to improved price-performance ratios, broader regional availability, and the latest hardware capabilities.
+
 ## Recommended Replacement VM Series
 
 |Current VM Family | Target VM Family| Differences in Specification in Target VM*| 
@@ -32,6 +33,10 @@ By migrating to newer VM series, you gain access to improved price-performance r
 | Ls | Lsv3<br>Lasv3 | Local Storage: Supported - NVMe<br>Remote Storage Throughput: 12800 IOPS / 200 MBps <br>Disk Controller Type: SCSI |
 
 *Refers to the lowest VM size in the given target VM Family. For actual VM specifications, please refer to the VM product sizes page.
+
+> [!IMPORTANT]  
+> The following SKUs aren't available in the Sovereign clouds:
+> Dasv5, Dadsv5, Dasv6, Dalsv6, Dsv6, Dlsv6, Dadsv6, Daldsv6, DDsv6, Dldsv6, Lsv3, Lasv3
 
 For optimal performance and experience, we generally recommend using the newer v5 and v6 VM series. This ensures you have access to the latest features such as Premium Storage, Accelerated Networking, and Nested Virtualization. While the v6 VM series is preferred, there are certain scenarios where you might want to consider the v5 or even the v4 VM series. Here are some reasons why:
  - v6 VMs require [enabling NVMe](/azure/virtual-machines/nvme-overview) which means that you must have a [supported OS](/azure/virtual-machines/enable-nvme-interface).

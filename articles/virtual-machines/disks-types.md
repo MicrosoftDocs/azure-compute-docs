@@ -26,6 +26,8 @@ Azure managed disks currently offers five disk types, each intended to address a
 
 The following table provides a comparison of the five disk types to help you decide which to use.
 
+[!INCLUDE [disks-hdd-os-statement](includes/disks-hdd-os-statement.md)]
+
 |         | Ultra Disk | Premium SSD v2 | Premium SSD | Standard SSD | <nobr>Standard HDD</nobr> |
 | ------- | ---------- | ----------- | ------------ | ------------ | ------------ |
 | **Disk type** | SSD | SSD |SSD | SSD | HDD |
@@ -185,7 +187,7 @@ Standard SSDs offer disk bursting, which provides better tolerance for the unpre
 
 ## Standard HDDs
 
-Azure standard HDDs deliver reliable, low-cost disk support for VMs running latency-tolerant workloads. With standard storage, your data is stored on HDDs, and performance may vary more widely than that of SSD-based disks. Standard HDDs are designed to deliver write latencies of less than 10 ms and read latencies of less than 20 ms for most IO operations. However, actual performance may vary depending on IO size and workload pattern. When working with VMs, you can use standard HDD disks for dev/test scenarios and less critical workloads. Standard HDDs are available in all Azure regions and can be used with all Azure VMs. Standard HDDs support the [512E sector size](https://en.wikipedia.org/wiki/Advanced_Format#512_emulation_(512e)).
+Azure Standard HDDs are suitable for latency-tolerant workloads using large, sequential IO, such as light data processing workloads that read or write large files sequentially. Standard HDDs are not suitable for workloads requiring low latency, or frequent small-block access - such as OS disks or transactional databases. Use either Standard SSDs or Premium SSD managed disks for these workloads. Standard HDDs are designed to deliver write latencies of less than 10 ms and read latencies of less than 20 ms for most IO operations. Performance may vary more widely than that of SSD-based disks, and actual performance may vary depending on IO size and workload pattern. Standard HDDs are available in all Azure regions and can be used with all Azure VMs. Standard HDDs support the [512E sector size](https://en.wikipedia.org/wiki/Advanced_Format#512_emulation_(512e)).
 
 ### Standard HDD size
 [!INCLUDE [disk-storage-standard-hdd-sizes](~/reusable-content/ce-skilling/azure/includes/disk-storage-standard-hdd-sizes.md)]
@@ -212,7 +214,7 @@ For more information on snapshots, see [Create a snapshot of a virtual hard disk
 
 **Outbound data transfers**: [Outbound data transfers](https://azure.microsoft.com/pricing/details/bandwidth/) (data going out of Azure data centers) incur billing for bandwidth usage.
 
-**Transactions**: You're billed for the number of transactions performed on a standard managed disk. For standard SSDs, each I/O operation less than or equal to 256 kB of throughput is considered a single I/O operation. I/O operations larger than 256 kB of throughput are considered multiple I/Os of size 256 kB. For Standard HDDs, each IO operation is considered a single transaction, whatever the I/O size.
+**Transactions**: You're billed for the number of transactions performed on a standard managed disk. For standard SSDs, each I/O operation less than or equal to 256 kB of throughput is considered a single I/O operation. I/O operations larger than 256 kB of throughput are considered multiple I/Os of size 256 kB. Standard HDD transactions incur a billable cost for every 10,000 disk operations.
 
 For detailed information on pricing for managed disks (including transaction costs), see [Managed Disks Pricing](https://azure.microsoft.com/pricing/details/managed-disks).
 

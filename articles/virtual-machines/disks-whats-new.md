@@ -3,7 +3,7 @@ title: What's new in Azure Disk Storage
 description: Learn about new features and enhancements in Azure Disk Storage.   
 author: roygara
 ms.author: rogarana
-ms.date: 11/11/2024
+ms.date: 09/04/2025
 ms.topic: concept-article
 ms.service: azure-disk-storage
 ms.custom: references_regions
@@ -17,6 +17,8 @@ Azure Disk Storage regularly receives updates for new features and enhancements.
 ## Update summary
 
 - [What's new in 2025](#whats-new-in-2025)
+    -  [Quarter 3 (July, August, September)](#quarter-3-july-august-september)
+        - [Generally available: Ultra Disk price reduction in West US 2, Central US, and UK South](#generally-available-ultra-disk-price-reduction-in-west-us-2-central-us-and-uk-south)
   - [Quarter 2 (April, May, June)](#quarter-2-april-may-june)
     - [Generally available: Troubleshoot Disk Performance with Copilot in Azure](#generally-available-troubleshoot-disk-performance-with-copilot-in-azure)
     - [Generally Available: Availability Set support for Premium SSD v2 Disk Storage](#generally-available-availability-set-support-for-premium-ssd-v2-disk-storage)
@@ -35,29 +37,14 @@ Azure Disk Storage regularly receives updates for new features and enhancements.
       - [Generally available: Trusted launch support for Ultra Disks and Premium SSD v2](#generally-available-trusted-launch-support-for-ultra-disks-and-premium-ssd-v2)
       - [Expanded regional availability for Ultra Disks](#expanded-regional-availability-for-ultra-disks)
       - [Expanded regional availability for zone-redundant storage disks](#expanded-regional-availability-for-zone-redundant-storage-disks)
-- [What's new in 2023](#whats-new-in-2023)
-    - [Quarter 4 (October, November, December)](#quarter-4-october-november-december)
-        - [Encryption at host GA for Premium SSD v2 and Ultra Disks](#encryption-at-host-ga-for-premium-ssd-v2-and-ultra-disks)
-        - [New latency metrics (preview)](#new-latency-metrics-preview)
-        - [Expanded regional availability for Premium SSD v2](#expanded-regional-availability-for-premium-ssd-v2)
-        - [Expanded regional availability for ZRS disks](#expanded-regional-availability-for-zrs-disks)
-    - [Quarter 3 (July, August, September)](#quarter-3-july-august-september)
-        - [Expanded regional availability for ZRS disks (1)](#expanded-regional-availability-for-zrs-disks-1)
-        - [Expanded regional availability for Premium SSD v2](#expanded-regional-availability-for-premium-ssd-v2-1)
-        - [General Availability - Incremental Snapshots for Premium SSD v2 and Ultra Disks](#general-availability---incremental-snapshots-for-premium-ssd-v2-and-ultra-disks)
-    - [Quarter 2 (April, May, June)](#quarter-2-april-may-june)
-        - [Expanded regional availability for Premium SSD v2 (2)](#expanded-regional-availability-for-premium-ssd-v2-2)
-        - [Expanded regional availability for ZRS disks (2)](#expanded-regional-availability-for-zrs-disks-2)
-        - [Azure Backup support (preview) for Premium SSD v2](#azure-backup-support-preview-for-premium-ssd-v2)
-    - [Quarter 1 (January, February, March)](#quarter-1-january-february-march-1)
-        - [Expanded regional availability for Premium SSD v2 (3)](#expanded-regional-availability-for-premium-ssd-v2-3)
-        - [Preview - Performance plus](#preview---performance-plus)
-        - [Expanded regional availability for Ultra Disks](#expanded-regional-availability-for-ultra-disks-1)
-        - [More transactions at no extra cost - Standard SSDs](#more-transactions-at-no-extra-cost---standard-ssds)
-        - [GA: Create disks from snapshots encrypted with customer-managed keys across subscriptions](#ga-create-disks-from-snapshots-encrypted-with-customer-managed-keys-across-subscriptions)
-        - [GA: Entra ID support for managed disks](#ga-entra-id-support-for-managed-disks)
 
 ## What's new in 2025
+
+### Quarter 3 (July, August, September)
+
+#### Generally available: Ultra Disk price reduction in West US 2, Central US, and UK South
+
+To better support performance sensitive and mission critical workloads on Azure, Ultra Disk offers improved cost efficiency in West US 2, Central US, and UK South. These enhancements gives you access to the same high-performance storage at a lower cost. For details, see [West US 2](https://azure.microsoft.com/updates?id=499401), [Central US](https://azure.microsoft.com/updates?id=499406), and [UK South](https://azure.microsoft.com/updates?id=499411).
 
 ### Quarter 2 (April, May, June)
 

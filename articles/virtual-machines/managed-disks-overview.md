@@ -107,6 +107,8 @@ Performance for each disk role works differently. To learn more about how perfor
 
 Every virtual machine has one attached OS disk. This disk has a preinstalled operating system, which you selected when creating the VM. This disk contains the boot volume.
 
+[!INCLUDE [disks-hdd-os-statement](includes/disks-hdd-os-statement.md)]
+
 Generally, you should store only your OS information on the OS disk. The [data disk](#data-disk) is where you should store all applications and data. If cost is a concern, you can use the OS disk instead of creating a data disk.
 
 The OS disk has a maximum capacity of 4,095 gibibytes (GiB). However, many operating systems are partitioned with [master boot records (MBRs)](/windows/win32/fileio/basic-and-dynamic-disks#master-boot-record) by default. An MBR limits the usable size to 2 TiB. If you need more than 2 TiB, create and attach [data disks](#data-disk) and use them for data storage. If you need to store data on the OS disk and require extra space, [convert it to a GUID partition table (GPT)](/windows-server/storage/disk-management/change-an-mbr-disk-into-a-gpt-disk). To learn about the differences between an MBR and a GPT on Windows deployments, see [Windows and GPT FAQ](/windows-hardware/manufacture/desktop/windows-and-gpt-faq).

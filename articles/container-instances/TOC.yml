@@ -118,7 +118,7 @@
     - name: Encrypt deployment data
       href: container-instances-encrypt-data.md
     - name: Availability zones and disaster recovery 
-      href: /azure/reliability/reliability-containers
+      href: /azure/reliability/reliability-container-instances
       maintainContext: true
     - name: Configure DNS name reuse
       href: how-to-reuse-dns-names.md

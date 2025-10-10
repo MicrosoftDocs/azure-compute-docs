@@ -20,7 +20,7 @@ Ubuntu now publishes official Azure virtual hard disks (VHDs) for download at th
 
 * Ubuntu 20.04/Focal: [focal-server-cloudimg-amd64-azure.vhd.tar.gz](https://cloud-images.ubuntu.com/focal/current/focal-server-cloudimg-amd64-azure.vhd.tar.gz)
 * Ubuntu 22.04/Jammy: [jammy-server-cloudimg-amd64-azure.vhd.tar.gz](https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64-azure.vhd.tar.gz)
-* Ubuntu 24.04/Jammy: [noble-server-cloudimg-amd64-azure.vhd.tar.gz](https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64-azure.vhd.tar.gz)
+* Ubuntu 24.04/Noble: [noble-server-cloudimg-amd64-azure.vhd.tar.gz](https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64-azure.vhd.tar.gz)
 
 ## Prerequisites
 
@@ -211,3 +211,4 @@ This article assumes that you've already installed an Ubuntu Linux operating sys
 ## Related content
 
 You're now ready to use your Ubuntu Linux VHD to create new VMs in Azure. If this is the first time that you're uploading the .vhd file to Azure, see [Create a Linux VM from a custom disk](upload-vhd.md#option-1-upload-a-vhd).
+

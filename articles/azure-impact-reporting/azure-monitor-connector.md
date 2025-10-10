@@ -5,7 +5,7 @@ author: rolandnyamo #Required; your GitHub user alias, with correct capitalizati
 ms.author: ronyamo #Required; microsoft alias of author; optional team alias.
 ms.service: azure #Required; use either service or product per approved list. 
 ms.topic: overview #Required; leave this attribute/value as-is.
-ms.date: 06/19/2024 #Required; mm/dd/yyyy format.
+ms.date: 09/17/2025 #Required; mm/dd/yyyy format.
 ms.custom: template-overview #Required; leave this attribute/value as-is.
 # Customer intent: "As a systems administrator, I want to utilize the Impact Connector for Azure Monitor alerts, so that I can efficiently report impact events and enhance change event correlation within my organization's AIOps workflows."
 ---
@@ -18,7 +18,7 @@ The impact Connector for Azure Monitor alerts enables you to seamlessly report i
 
 ## How Connectors work
 
-![Architecture diagram of impact connectors for azure monitor.](images/azure-monitor-connector.png)
+[ ![Architecture diagram of impact connectors for azure monitor.](images/azure-monitor-connector.png) ](images/azure-monitor-connector.png#lightbox)
 
 When you create a connector, it gets associated with a subscription. When alerts whose target resources reside in the specified subscription get fired, an Impact report is created through Azure Impact Reporting and sent to Microsoft Intelligence Systems.
 

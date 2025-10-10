@@ -5,7 +5,7 @@ author: brittanyrowe
 ms.author: brittanyrowe
 ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
-ms.date: 08/19/2025
+ms.date: 09/12/2025
 ms.reviewer: jushiman
 # Customer intent: As a cloud administrator, I want to utilize multiple VM sizes in a scale set with instance mix, so that I can optimize cost, capacity, and flexibility for my diverse workload requirements.
 ---
@@ -89,7 +89,7 @@ Instance mix supports three allocation strategies. Choose the strategy that matc
 
 Before you deploy an instance mix scale set:
 
-- Verify Flexible Orchestration Mode is enabled for the scale set.
+- Verify the scale set is using Flexible Orchestration Mode.
 - Confirm VM quotas for each selected size in the target subscription and region.
 - Ensure all selected VM sizes have consistent architecture, storage interface, local disk configuration, and security profile.
 - Choose an allocation strategy that matches your goals (cost, availability, predictability).
@@ -108,8 +108,9 @@ Before you deploy an instance mix scale set:
 - Up to five VM sizes can be specified.
 - You can't mix VM architectures (for example, Arm64 and x64) in the same instance mix.
 - VMs with different storage interfaces (SCSI vs NVMe) can't be mixed.
+- You can't mix VM SKUs that use premium storage and non-premium storage in the same instance mix.
 - All VMs must share the same Security Profile and local disk configuration.
-- Instance mix doesn't support: Standby Pools, Azure Dedicated Host, or Proximity Placement Groups.
+- Instance mix doesn't support: Standby Pools, Azure Dedicated Host, Proximity Placement Groups, or on-demand capacity reservations.
 
 ## Next steps
 Learn how to [create a scale set using instance mix](instance-mix-create.md).

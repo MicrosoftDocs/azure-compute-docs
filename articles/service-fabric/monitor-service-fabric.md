@@ -1,7 +1,7 @@
 ---
 title: Monitor Azure Service Fabric
 description: Start here to learn how to monitor Service Fabric.
-ms.date: 03/26/2024
+ms.date: 09/29/2025
 ms.custom: horz-monitor
 ms.topic: concept-article
 ms.author: tomcassidy
@@ -13,6 +13,9 @@ ms.service: azure-service-fabric
 # Monitor Azure Service Fabric
 
 [!INCLUDE [horz-monitor-intro](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-intro.md)]
+
+> [!WARNING]
+> Application Insights for the Service Fabric SDK is no longer supported.
 
 ## Azure Service Fabric monitoring
 

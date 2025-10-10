@@ -143,5 +143,6 @@ To enable double encryption at rest for managed disks, see [Enable double encryp
 - Enable end-to-end encryption using encryption at host with either the [Azure PowerShell module](windows/disks-enable-host-based-encryption-powershell.md), the [Azure CLI](linux/disks-enable-host-based-encryption-cli.md), or the [Azure portal](disks-enable-host-based-encryption-portal.md).
 - To enable double encryption at rest for managed disks, see [Enable double encryption at rest for managed disks](disks-enable-double-encryption-at-rest-portal.md).
 - Enable customer-managed keys for managed disks with either the [Azure PowerShell module](windows/disks-enable-customer-managed-keys-powershell.md), the [Azure CLI](linux/disks-enable-customer-managed-keys-cli.md) or the [Azure portal](disks-enable-customer-managed-keys-portal.yml).
+- [Migrate from Azure Disk Encryption to server-side encryption](disk-encryption-migrate.md)
 - [Explore the Azure Resource Manager templates for creating encrypted disks with customer-managed keys](https://github.com/ramankumarlive/manageddiskscmkpreview)
 - [What is Azure Key Vault?](/azure/key-vault/general/overview)

@@ -10,7 +10,7 @@ ms.topic: concept-article
 ms.tgt_pltfrm: vm-linux
 ms.custom: devx-track-azurecli, devx-track-azurepowershell, linux-related-content
 ms.date: 12/17/2018
-ms.author: trinadhk
+ms.author: mattmcinnes
 # Customer intent: "As a system administrator, I want to use the VM Snapshot Linux extension to take application consistent backups of my virtual machines, so that I can ensure data integrity without downtime during backup processes."
 ---
 # VM Snapshot Linux extension for Azure Backup

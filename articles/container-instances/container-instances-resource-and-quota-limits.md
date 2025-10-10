@@ -66,9 +66,12 @@ By default, the following resources are available general purpose (standard core
 
 For a general list of available regions for Azure Container Instances, see [available regions](https://azure.status.microsoft/status/#services/). 
 
+> [!IMPORTANT]
+> If you're encountering deployment failures when creating container groups with more than 4 vCPUs and 16 GB of memory, it may be due to regional capacity limits. To resolve this, you can request a quota increase to enable additional capacity for your workloads. In the meantime, consider deploying to another region, where additional capacity may be more available.
+
 | Max CPU | Max Memory (GB) | Virtual network Max CPU | Virtual network Max Memory (GB) | Storage (GB) | 
 | :---: | :---: | :----: | :-----: | :-------: |
-| 32 | 256 | 32 | 256 | 50 | 
+| 31 | 240 | 31 | 240 | 50 | 
 
 The following resources are available in all Azure Regions supported by Azure Container Instances. For a general list of available regions for Azure Container Instances, see [available regions](https://azure.status.microsoft/status/#services/). 
 
@@ -78,7 +81,7 @@ The following maximum resources are available to a container group deployed usin
 
 | Max CPU | Max Memory (GB) | Virtual network Max CPU | Virtual network Max Memory (GB) | Storage (GB) | 
 | :---: | :---: | :----: | :-----: | :-------: |
-| 32 | 192 | 32 | 192 | 50 | 
+| 31 | 180 | 32 | 180 | 50 | 
 
 ## Spot Container Resources (Preview)
 

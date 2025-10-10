@@ -23,7 +23,7 @@ This quickstart shows how to deploy Linux containers to a Service Fabric cluster
 
 To complete this quickstart:
 
-1. Create a [free Azure account](https://azure.microsoft.com/free/) before you begin if you don't have a subscription.
+1. Create a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin if you don't have a subscription.
 
 2. Install the [Azure CLI](/cli/azure/install-azure-cli-apt)
 

@@ -5,7 +5,8 @@ metadata:
   description: Learn how to connect using Remote Desktop and sign on to a Windows VM using the Azure portal and the Resource Manager deployment model.
   author: ju-shim
   ms.author: jushiman
-  ms.date: 05/22/2025
+  ms.reviewer: mattmcinnes
+  ms.date: 09/11/2025
   ms.service: azure-virtual-machines
   ms.topic: how-to
   ms.custom:
@@ -51,7 +52,7 @@ procedureSection:
       - |
         At the beginning of the virtual machine page, select **Connect**.
       - |
-        On the **Connect** page, select **Native RDP**, and then select the appropriate **IP address** and **Port number**. In most cases, the default IP address and port should be used. Select **Download RDP File** and ignore any warning about the RDP file harming your device. If the VM has a just-in-time policy set, you first need to select the **Request access** button to request access before you can download the RDP file. For more information about the just-in-time policy, see [Manage virtual machine access using the just in time policy](/azure/security-center/security-center-just-in-time).
+        On the **Connect** page, select **Native RDP**. By default, Native RDP is the top connection method — you may have to select **"More ways to connect"** and **"Connect via RDP"** first. Next, select the appropriate **IP address** and **Port number**. In most cases, the default IP address (**Local IP Range**) and port (**3389**) should be used. Select **Download RDP File** and ignore any warning about the RDP file harming your device. If the VM has a **Just-In-Time (JIT)** policy set, you first need to select the **Request access** button to request access before you can connect via the downloaded RDP file. For more information about the just-in-time policy, see [Manage virtual machine access using the just in time policy](/azure/security-center/security-center-just-in-time).
       - |
         Open the downloaded RDP file and select **Connect** when prompted. You will get a warning that the `.rdp` file is from an unknown publisher. This is expected. In the **Remote Desktop Connection** window, select **Connect** to continue.
         

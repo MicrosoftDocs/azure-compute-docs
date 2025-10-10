@@ -15,6 +15,10 @@ Azure Dedicated Host SKUs are the combination of a VM family and a certain hardw
 
 This document goes through the hardware specifications and VM packings for all memory optimized Dedicated Host SKUs.
 
+>[!NOTE]
+>The host reserves a portion of the "Available vCPUs" and "Available RAM" listed in the tables below for its own operations. To determine the actual usable resources, refer to the host [pricing page](https://aka.ms/ADHPricing).
+>"Available vCPUs" doesn't account for VM overhead, which varies by VM size. This overhead consumes part of the vCPU allocation, meaning not all advertised vCPUs are available for use.
+
 ## Limitations
 
 The sizes and hardware types available for dedicated hosts vary by region. Refer to the host [pricing page](https://aka.ms/ADHPricing) to learn more.

@@ -80,7 +80,7 @@ Azure Container Instances enables [deployment of container instances into an Azu
 
 ## Availability zones support
 
-Azure Container Instances supports [zonal container group deployments](/azure/reliability/reliability-containers), meaning the instance is pinned to a specific, self-selected availability zone. The availability zone can be specified per container group.
+Azure Container Instances supports [zonal container group deployments](/azure/reliability/reliability-container-instances), meaning the instance is pinned to a specific, self-selected availability zone. The availability zone can be specified per container group.
 
 ## Managed identity
 

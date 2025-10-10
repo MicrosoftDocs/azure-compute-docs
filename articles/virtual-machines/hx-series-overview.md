@@ -5,7 +5,7 @@ services: virtual-machines
 ms.service: azure-virtual-machines
 ms.subservice: hpc
 ms.topic: concept-article
-ms.date: 06/30/2025
+ms.date: 09/04/2025
 ms.reviewer: cynthn
 ms.author: padmalathas
 author: padmalathas
@@ -50,7 +50,8 @@ Standard_HX176-48rs              | 4            | 12                     | Dual-
 Standard_HX176-24rs              | 4            | 6                      | Dual-socket EPYC 9V33X           |
 
 > [!NOTE]
-> The constrained cores VM sizes only reduce the number of physical cores exposed to the VM. All global shared assets (RAM, memory bandwidth, L3 cache, GMI and xGMI connectivity, InfiniBand, Azure Ethernet network, local SSD) stay constant. It allows a customer to pick a VM size best tailored to a given set of workload or software licensing needs.
+> * The constrained cores VM sizes only reduce the number of physical cores exposed to the VM. All global shared assets (RAM, memory bandwidth, L3 cache, GMI and xGMI connectivity, InfiniBand, Azure Ethernet network, local SSD) stay constant. It allows a customer to pick a VM size best tailored to a given set of workload or software licensing needs.
+> * We are currently experiencing a core mapping issue on the HX-series parent size Standard_HX176rs. 
 
 The virtual NUMA mapping of each HX VM size is mapped to the underlying physical NUMA topology. There is no potential misleading abstraction of the hardware topology. 
 

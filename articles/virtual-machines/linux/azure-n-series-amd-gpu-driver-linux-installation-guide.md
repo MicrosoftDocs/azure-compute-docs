@@ -104,13 +104,17 @@ sudo apt install amdgpu-dkms rocm
 
 
 
+
+
+
+
 ```bash
 sudo apt update
 sudo apt install "linux-headers-$(uname -r)" "linux-modules-extra-$(uname -r)"
 sudo apt install python3-setuptools python3-wheel
 sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groups
-wget https://repo.radeon.com/amdgpu-install/6.4.3/ubuntu/noble/amdgpu-install_6.4.60403-1_all.deb
-sudo apt install ./amdgpu-install_6.4.60403-1_all.deb
+wget https://repo.radeon.com/amdgpu-install/7.0.1/ubuntu/noble/amdgpu-install_7.0.1.70001-1_all.deb
+sudo apt install ./amdgpu-install_7.0.1.70001-1_all.deb
 sudo apt update
 sudo apt install amdgpu-dkms rocm
 ```

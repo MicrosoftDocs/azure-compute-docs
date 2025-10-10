@@ -83,7 +83,7 @@ The [application health extension](virtual-machine-scale-sets-health-extension.m
           "publisher": "Microsoft.ManagedServices",
           "type": "<ApplicationHealthLinux or ApplicationHealthWindows>",
           "autoUpgradeMinorVersion": true,
-          "typeHandlerVersion": "1.0",
+          "typeHandlerVersion": "2.0",
           "settings": {
             "protocol": "<protocol>",
             "port": <port>,

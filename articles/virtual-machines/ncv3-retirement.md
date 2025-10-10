@@ -13,7 +13,7 @@ ms.subservice: sizes
 
 > [!NOTE]
 > If you're currently using the NCv3-series Azure VMs in either of these regions, you can disregard the general NCv3-series retirement date of September 30, 2025, and continue to use the NCv3-series Azure VMs in that region until the respective extension date: <br/><br/>
-> The US Central region has an extension and a retirement date of **December 1, 2025**. <br/><br/>
+> The US Central region has an extension and a retirement date of **February 28, 2026**. <br/><br/>
 > The West Europe region has an extension and a retirement date of **February 28, 2026**. <br/><br/>
 > The East US 2 region has an extension and a retirement date of **February 28, 2026**. <br/><br/>
 > The Canada Central region has an extension and a retirement date of **March 31, 2026**. <br/><br/>

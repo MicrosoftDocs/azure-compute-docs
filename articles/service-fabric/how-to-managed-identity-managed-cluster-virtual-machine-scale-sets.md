@@ -31,7 +31,7 @@ For an example of a Service Fabric managed cluster deployment that makes use of 
 
 Before you begin:
 
-* If you don't have an Azure subscription, create a [free](https://azure.microsoft.com/free/) account before you begin.
+* If you don't have an Azure subscription, create a [free](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) account before you begin.
 * If you plan to use PowerShell, [install](/cli/azure/install-azure-cli) the Azure CLI to run CLI reference commands.
 
 ## 1. Create identity and role Assignment

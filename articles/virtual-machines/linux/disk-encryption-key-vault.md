@@ -7,12 +7,14 @@ ms.subservice: security
 ms.topic: concept-article
 author: msmbaldwin
 ms.author: mbaldwin
-ms.date: 05/14/2025
+ms.date: 09/23/2025
 ms.custom: devx-track-azurecli, devx-track-azurepowershell, linux-related-content
 # Customer intent: As a system administrator managing Linux VMs, I want to create and configure a key vault for Azure Disk Encryption, so that I can securely control and manage encryption keys and secrets for my virtual machines.
 ---
 
 # Creating and configuring a key vault for Azure Disk Encryption
+
+[!INCLUDE [Azure Disk Encryption retirement notice](~/reusable-content/ce-skilling/azure/includes/security/azure-disk-encryption-retirement.md)]
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Flexible scale sets 
 

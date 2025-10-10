@@ -6,12 +6,14 @@ ms.service: azure-virtual-machines
 ms.subservice: disks
 ms.topic: how-to
 ms.author: jushiman
-ms.date: 04/11/2023
+ms.date: 09/23/2025
 ms.custom: devx-track-azurecli, devx-track-azurepowershell, linux-related-content
 # Customer intent: As a system administrator managing Linux virtual machines, I want to verify the encryption status of my VM's disks using various methods, so that I can ensure compliance with security policies and data protection standards.
 ---
 
 # Verify encryption status for Linux
+
+[!INCLUDE [Azure Disk Encryption retirement notice](~/reusable-content/ce-skilling/azure/includes/security/azure-disk-encryption-retirement.md)]
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Flexible scale sets
 

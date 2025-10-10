@@ -6,13 +6,15 @@ ms.author: jushiman
 ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: disks
-ms.date: 06/14/2024
+ms.date: 09/23/2025
 ms.reviewer: mimckitt
 
 # Customer intent: "As a cloud administrator, I want to enable disk encryption for my virtual machine scale sets, so that I can ensure data protection and compliance with organizational security standards."
 ---
 
 # Azure Disk Encryption for Virtual Machine Scale Sets
+
+[!INCLUDE [Azure Disk Encryption retirement notice](~/reusable-content/ce-skilling/azure/includes/security/azure-disk-encryption-retirement.md)]
  
 Azure Disk Encryption provides volume encryption for the OS and data disks of your virtual machines, helping protect and safeguard your data to meet organizational security and compliance commitments. To learn more, see [Azure Disk Encryption: Linux VMs](../virtual-machines/linux/disk-encryption-overview.md) and [Azure Disk Encryption: Windows VMs](../virtual-machines/windows/disk-encryption-overview.md)  
 

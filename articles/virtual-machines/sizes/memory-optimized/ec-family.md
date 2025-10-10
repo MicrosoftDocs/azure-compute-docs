@@ -22,6 +22,17 @@ ms.author: mattmcinnes
 
 ## Series in family
 
+### ECasv6 and ECadsv6-series
+#### [ECasv6-series](#tab/ecasv6)
+[!INCLUDE [ecasv6-series-summary](./includes/ecasv6-series-summary.md)]
+[View the full ECasv6-series page](./ecasv6-series.md).
+[!INCLUDE [ecasv6-series-specs](./includes/ecasv6-series-specs.md)]
+
+#### [ECadsv6-series](#tab/ecadsv6)
+[!INCLUDE [ecadsv6-series-summary](./includes/ecadsv6-series-summary.md)]
+[View the full ECadsv6-series page](./ecadsv6-series.md).
+[!INCLUDE [ecadsv6-series-specs](./includes/ecadsv6-series-specs.md)]
+
 ### ECasv5 and ECadsv5-series
 [!INCLUDE [ecasv5-ecadsv5-series-summary](./includes/ecasv5-ecadsv5-series-summary.md)]
 

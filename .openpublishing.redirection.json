@@ -1,6 +1,21 @@
 {
   "redirections": [
     {
+      "source_path": "articles/service-fabric/service-fabric-diagnostics-event-analysis-appinsights.md",
+      "redirect_url": "/previous-versions/azure/service-fabric/service-fabric-diagnostics-event-analysis-appinsights",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/service-fabric/service-fabric-tutorial-monitoring-aspnet.md",
+      "redirect_url": "/previous-versions/azure/service-fabric/service-fabric-tutorial-monitoring-aspnet",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machine-scale-sets/whats-new.md",
+      "redirect_url": "/previous-versions/azure/virtual-machine-scale-sets/whats-new",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "articles/virtual-machines/workloads/mainframe-rehosting/mainframe-white-papers.md",
       "redirect_url": "/previous-versions/azure/virtual-machines/workloads/mainframe-rehosting/mainframe-white-papers",
       "redirect_document_id": false
@@ -8,6 +23,11 @@
     {
       "source_path": "articles/virtual-machines/workloads/mainframe-rehosting/overview.md",
       "redirect_url": "/previous-versions/azure/virtual-machines/workloads/mainframe-rehosting/overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/azure-impact-reporting/report-vm-impact.md",
+      "redirect_url": "/azure/azure-impact-reporting/report-impact",
       "redirect_document_id": false
     },
     {

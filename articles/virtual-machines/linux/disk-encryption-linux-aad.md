@@ -7,12 +7,14 @@ ms.subservice: security
 ms.collection: linux
 ms.topic: concept-article
 ms.author: mbaldwin
-ms.date: 05/14/2025
+ms.date: 09/23/2025
 ms.custom: devx-track-azurepowershell, devx-track-azurecli, linux-related-content
 # Customer intent: "As a Linux VM administrator, I want to enable Azure Disk Encryption without using Microsoft Entra application parameters, so that I can simplify the encryption process for my IaaS VMs while ensuring their data remains secure."
 ---
 
 # Enable Azure Disk Encryption with Microsoft Entra ID on Linux VMs (previous release)
+
+[!INCLUDE [Azure Disk Encryption retirement notice](~/reusable-content/ce-skilling/azure/includes/security/azure-disk-encryption-retirement.md)]
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Flexible scale sets 
 

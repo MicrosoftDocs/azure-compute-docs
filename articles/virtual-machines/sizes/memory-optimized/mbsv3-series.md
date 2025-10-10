@@ -19,7 +19,7 @@ ms.reviewer: mattmcinnes
 [!INCLUDE [mbsv3-series-specs](./includes/mbsv3-series-specs.md)]
 
 ## Feature support
-[Premium Storage](../../premium-storage-performance.md): Supported <br>[Premium Storage caching](../../premium-storage-performance.md): Supported <br>[Live Migration](../../maintenance-and-updates.md): Not Supported <br>[Memory Preserving Updates](../../maintenance-and-updates.md): Not Supported <br>[Generation 2 VMs](../../generation-2.md): Supported <br>[Generation 1 VMs](../../generation-2.md): Not Supported <br>[Accelerated Networking](/azure/virtual-network/create-virtual-machine-accelerated-networking): Supported <br>[Ephemeral OS Disk](../../ephemeral-os-disks.md): Not Supported <br>[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Not Supported <br>[Hibernation](../../hibernate-resume.md): Not Supported <br> [Write Accelerator](/azure/virtual-machines/how-to-enable-write-accelerator): Supported
+[Premium Storage](../../premium-storage-performance.md): Supported <br>[Premium Storage caching](../../premium-storage-performance.md): Supported <br>[Live Migration](../../maintenance-and-updates.md): Restricted Support <br>[Memory Preserving Updates](../../maintenance-and-updates.md): Not Supported <br>[Generation 2 VMs](../../generation-2.md): Supported <br>[Generation 1 VMs](../../generation-2.md): Not Supported <br>[Accelerated Networking](/azure/virtual-network/create-virtual-machine-accelerated-networking): Supported <br>[Ephemeral OS Disk](../../ephemeral-os-disks.md): Not Supported <br>[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Not Supported <br>[Hibernation](../../hibernate-resume.md): Not Supported <br> [Write Accelerator](/azure/virtual-machines/how-to-enable-write-accelerator): Supported
 
 ## Sizes in series (NVMe)
 
@@ -36,6 +36,7 @@ vCPUs (Qty.) and Memory for each size
 | Standard_M96bs_v3 | 96 | 768 |
 | Standard_M128bs_v3 | 128 | 1024 |
 | Standard_M176bs_v3 | 176 | 1536 |
+| Standard_M416bs_v3 | 416 | 3800 |
 
 #### VM Basics resources
 - [Check vCPU quotas](../../../virtual-machines/quotas.md)
@@ -64,6 +65,7 @@ Remote (uncached) storage info for each size
 | Standard_M96bs_v3 | 64 | 260,000 | 4,000 | 260,000 | 4,000 |
 | Standard_M128bs_v3 | 64 | 260,000 | 4,000 | 400,000 | 4,000 |
 | Standard_M176bs_v3 | 64 | 260,000 | 6,000 | 650,000 | 6,000 |
+| Standard_M416bs_v3 | 64 | 240,000 | 8,000 | 550,000 | 10,000 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
@@ -92,6 +94,7 @@ Network interface info for each size
 | Standard_M96bs_v3 | 8 | 25,000 |
 | Standard_M128bs_v3 | 8 | 40,000 |
 | Standard_M176bs_v3 | 8 | 50,000 |
+| Standard_M416bs_v3 | 8 | 50,000 |
 
 #### Networking resources
 - [Virtual networks and virtual machines in Azure](/azure/virtual-network/network-overview)

@@ -84,7 +84,6 @@ Users are charged based on the resources deployed in the standby pool. For examp
 
 When using standby pools with Virtual Machine Scale Sets, there are specific limitations and considerations to keep in mind:
 
-- **Azure Autoscale**: Standby pools can't be created or attached to a Virtual Machine Scale Set with Azure autoscale enabled. Ensure autoscale is disabled before configuring a standby pool.
 - **Fault Domains**: Standby pools aren't supported with Virtual Machine Scale Sets configured with a fault domain count greater than 1.
 - **Region and Subscription**: The standby pool must be in the same region and subscription as the Virtual Machine Scale Set it's attached to. Cross-region or cross-subscription configurations aren't supported.
 - **Single Standby Pool**: A Virtual Machine Scale Set can only have one standby pool attached at a time. Attaching multiple standby pools to the same scale set is not supported.

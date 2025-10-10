@@ -23,7 +23,7 @@ You can switch seamlessly between two subscription models on Azure by using Azur
 
 * **Bring your own subscription (BYOS)**: In the BYOS model, you bring your own Red Hat Enterprise Linux (RHEL) or SUSE Linux Enterprise Server (SLES) subscription directly to Azure. You pay only for the infrastructure costs of your VM on Azure. The software fee is covered by your RHEL or SLES subscription you bought from the vendor.
 
-* **Pay-as-you-go (PAYG)**: Use the PAYG subscription model in Azure to pay for RHEL and SLES subscriptions as you use them.
+* **Pay-as-you-go (PAYG)**: Use the pay-as-you-go subscription model in Azure to pay for RHEL and SLES subscriptions as you use them.
 
 This article defines the BYOS and PAYG subscription models, compares the benefits of each model, and shows you how to use the Azure Hybrid Benefit to switch between the two subscription models for your Linux VMs on Azure.
 
@@ -35,7 +35,7 @@ This process applies to:
 
 Azure Hybrid Benefit gives you the option to make seamless bidirectional conversions between the two subscription models on eligible VM instances.
 
-You might see combined savings estimated to up to 76% with Azure Hybrid Benefit for Linux and three-year Azure Reserved VM Instances. Savings estimates are based on one standard D2s v5 Azure VM with an RHEL or SLES subscription in the East US region running at a PAYG rate versus a reduced rate for a three-year reserved instance plan. The savings estimates are based on Azure pricing as of September 2024. Prices are subject to change. Actual savings might vary based on location, instance type, or usage.
+You might see combined savings estimated to up to 76% with Azure Hybrid Benefit for Linux and three-year Azure Reserved VM Instances. Savings estimates are based on one standard D2s v5 Azure VM, with an RHEL or SLES subscription, in the East US region, running at a pay-as-you-go rate versus a reduced rate for a three-year reserved instance plan. The savings estimates are based on Azure pricing as of September 2024. Prices are subject to change. Actual savings might vary based on location, instance type, or usage.
 
 > [!TIP]
 > Try the [Azure Pricing calculator](https://azure.microsoft.com/pricing/calculator/) to visualize the cost-saving benefits of this feature at a Virtual Machine level.
@@ -91,7 +91,7 @@ Only SLES images *published by SUSE* are eligible to use for the PAYG to BYOS co
 
 The following SUSE-published SLES PAYG offers are eligible for Azure Hybrid Benefit. Links to the offers in Azure Marketplace are included.
 
-Some of the offerings are EOL (see [Product Support Lifecycle Dates](https://www.suse.com/lifecycle)) and only valid with an additional Long Term Servicepack Support (LTSS) subscription which can purchased from SUSE.
+Some of the offerings are end-of-support or end-of-life (EOL) (see [Product Support Lifecycle Dates](https://www.suse.com/lifecycle)) and only valid with additional Long Term Servicepack Support (LTSS) subscription, purchased directly from SUSE.
 
 Within these offers, associated plans and images are described as a "Pay-As-You-Go" subscription of SLES.
 
@@ -101,12 +101,12 @@ Within these offers, associated plans and images are described as a "Pay-As-You-
 * [ SUSE Linux Enterprise Server 15 SP7 Arm64 + 24x7 Support](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/suse.sles-15-sp7-arm64?tab=PlansAndPrice)
 * [ SUSE Linux Enterprise Server 15 SP7 + Patching](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/suse.sles-15-sp7-basic?tab=Overview)
 
- _SLES 15 SP6 - EOL 31-Dec-2025 - LTSS 31-Dec-2028_
+ _SLES 15 SP6 - End-of-Support: 31-Dec-2025 - LTSS 31-Dec-2028_
 * [ SUSE Linux Enterprise Server 15 SP6 + 24x7 Support](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/suse.sles-15-sp6?tab=Overview)
 * [ SUSE Linux Enterprise Server 15 SP6 Arm64 + 24x7 Support](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/suse.sles-15-sp6-arm64?tab=PlansAndPrice)
 * [ SUSE Linux Enterprise Server 15 SP6 + Patching](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/suse.sles-15-sp6-basic?tab=Overview)
 
- _SLES 15 SP5 - EOL 31-Dec-2024 - LTSS 31-Dec-2027_
+ _SLES 15 SP5 - End-of-Support: 31-Dec-2024 - LTSS 31-Dec-2027_
 * [ SUSE Linux Enterprise Server 15 SP5 + 24x7 Support](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/suse.sles-15-sp5?tab=Overview)
 * [ SUSE Linux Enterprise Server 15 SP5 Arm64 + 24x7 Support](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/suse.sles-15-sp5-arm64?tab=Overview)
 * [ SUSE Linux Enterprise Server 15 SP5 + Patching](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/suse.sles-15-sp5-basic?tab=Overview)
@@ -126,17 +126,17 @@ Within these offers, associated plans and images are described as a "Pay-As-You-
 * [ SUSE Linux Enterprise Server for SAP applications 15 SP4 + 24x7 Support](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/suse.sles-sap-15-sp4?tab=Overview)
 * [ SUSE Linux Enterprise Server for SAP applications 15 SP4 Hardened + 24x7 Support](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/suse.sles-sap-15-sp4-hardened?tab=Overview)
 
- _SLES for SAP applications 15 SP3 - EOL 31-Dec-2025_
+ _SLES for SAP applications 15 SP3 - End-of-Support: 31-Dec-2025_
 * [ SUSE Linux Enterprise Server for SAP applications 15 SP3 + 24x7 Support](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/suse.sles-sap-15-sp3?tab=Overview)
 
- _SLES for SAP applications 12 SP5 - EOL 31-Oct-2024 - LTSS 31-Oct-2027_
+ _SLES for SAP applications 12 SP5 - End-of-Support: 31-Oct-2024 - LTSS 31-Oct-2027_
 * [ SUSE Linux Enterprise Server for SAP applications 12 SP5 + 24x7 Support](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/suse.sles-sap-12-sp5?tab=Overview)
 
 ---
 
 ### BYOS
 
-Azure Hybrid Benefit is also available for RHEL and SLES BYOS Azure Marketplace images and images brought from on-prem or other cloud providers.
+Azure Hybrid Benefit is also available for RHEL and SLES BYOS Azure Marketplace images and images brought from on-premises or other cloud providers.
 
 Currently, one RHEL BYOS offer is available. This offer is a private listing. To gain access to this private listing, you must join the Red Hat Cloud Access program.
 
@@ -265,8 +265,13 @@ SLES license types:
 
 ## Check the current licensing model of a VM that has Azure Hybrid Benefit enabled
 
-With Red Hat, the Azure Hybrid Benefit extension must be installed on the VM to switch the licensing model from BYOS to PAYG or vice versa. You can view whether the agent is installed by using the Azure CLI or the Azure Instance Metadata Service.
+With Red Hat, the Azure Hybrid Benefit extension must be installed on the VM to switch the licensing model from BYOS to PAYG or vice versa. You can install the Azure Hybrid Benefit (AHB) extension for RHEL VMs by using the following CLI command.
 
+   ```azurecli
+   az vm extension set -n AHBForRHEL --publisher Microsoft.Azure.AzureHybridBenefit --vm-name myVMName --resource-group myResourceGroup
+   ```
+
+    
 For SUSE you do not need the extension, the functionality is covered by the SUSE tooling itself.
 
 ### [Azure CLI](#tab/licenseazcli)
@@ -277,7 +282,7 @@ For SUSE you do not need the extension, the functionality is covered by the SUSE
    az vm get-instance-view -g MyResourceGroup -n myVm --query instanceView.extensions
    ```
 
-1. Red Hat and SUSE: Use the following command to review the license type that's applied to the VM:
+1. Red Hat and SUSE: Use the following command to review the license type applied to the VM:
 
    ```azurecli
    az vm get-instance-view -g MyResourceGroup -n myVM --query licenseType
@@ -357,15 +362,15 @@ If the license type of the VM isn't modified, this command returns an empty stri
 
 ---
 
-## Convert PAYG to BYOS
+## Convert between PAYG and BYOS subscription models
 
-If you deployed an Azure Marketplace image by using a PAYG licensing model and want to convert licensing to BYOS, complete the following steps.
+Use the Azure CLI to convert a PAYG Azure Marketplace image to a BYOS subscription model, or to convert a BYOS or migrated VM to a PAYG subscription model.
 
 ---
 
 ### Convert a PAYG image to BYOS by using the Azure CLI
 
-Use the Azure CLI to convert a PAYG Azure Marketplace image to a BYOS subscription model.
+If you deployed an Azure Marketplace image by using a PAYG licensing model and want to convert licensing to BYOS, complete the following steps.
 
 #### [Red Hat (RHEL)](#tab/rhelAzcliByosConv)
 
@@ -404,9 +409,10 @@ Use the Azure CLI to convert a PAYG Azure Marketplace image to a BYOS subscripti
    ```
 > [!NOTE]
 > This is not possible for the SUSE offerings "+ Patching", they can only be moved back to "SLES".
+
 ---
 
-## Convert BYOS to PAYG
+### Convert BYOS to PAYG
 
 Converting to a PAYG subscription model is supported for Azure Marketplace images labeled "BYOS" and for machines imported from on-premises or from a third-party cloud provider.
 
@@ -478,7 +484,9 @@ Converting to a PAYG subscription model is supported for Azure Marketplace image
     az vm update -g myResourceGroup -n myVmName --license-type NONE
     ```
 
-#### Multiple VMs
+---
+
+### Multiple VMs
 
 The following command converts the VMs that are specified in the argument to BYOS:
 
@@ -608,7 +616,7 @@ If you use the Azure Hybrid Benefit BYOS to PAYG capability for SLES and want mo
 
 * **Q: Can I use a license type of `RHEL_BYOS` with a SLES image or vice versa?**
 
-  * A: No, you can't. Trying to enter a license type that incorrectly matches the distribution running on your VM won't update any billing metadata. But if you accidentally enter the wrong license type, updating your VM again to the correct license type still enables Azure Hybrid Benefit.
+  * A: No, you can't. Trying to enter a license type that incorrectly matches the distribution running on your VM will not update any billing metadata. But if you accidentally enter the wrong license type, updating your VM again to the correct license type still enables Azure Hybrid Benefit.
 
 * **Q: I've registered with Red Hat Cloud Access but still can't enable Azure Hybrid Benefit on my RHEL VMs. What should I do?**
 

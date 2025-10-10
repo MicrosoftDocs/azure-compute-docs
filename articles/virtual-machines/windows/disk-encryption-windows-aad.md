@@ -7,18 +7,18 @@ ms.subservice: security
 ms.collection: windows
 ms.topic: how-to
 ms.author: mbaldwin
-ms.date: 05/14/2025
+ms.date: 09/23/2025
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
 # Customer intent: As a security administrator, I want to implement disk encryption on Windows IaaS VMs using Azure services, so that I can protect sensitive data and comply with security standards without using Microsoft Entra application parameters.
 ---
 
 # Azure Disk Encryption with Microsoft Entra ID for Windows VMs (previous release)
 
-**Applies to:** :heavy_check_mark: Windows VMs 
+[!INCLUDE [Azure Disk Encryption retirement notice](~/reusable-content/ce-skilling/azure/includes/security/azure-disk-encryption-retirement.md)]
+
+**Applies to:** :heavy_check_mark: Windows VMs
 
 **The new release of Azure Disk Encryption eliminates the requirement for providing a Microsoft Entra application parameter to enable VM disk encryption. With the new release, you are no longer required to provide Microsoft Entra credentials during the enable encryption step. All new VMs must be encrypted without the Microsoft Entra application parameters using the new release. To view instructions to enable VM disk encryption using the new release, see [Azure Disk Encryption for Windows VMS](disk-encryption-windows.md). VMs that were already encrypted with Microsoft Entra application parameters are still supported and should continue to be maintained with the Microsoft Entra syntax.**
-
-
 You can enable many disk-encryption scenarios, and the steps may vary according to the scenario. The following sections cover the scenarios in greater detail for Windows IaaS VMs. Before you can use disk encryption, the [Azure Disk Encryption prerequisites](disk-encryption-overview-aad.md) need to be completed. 
 
 

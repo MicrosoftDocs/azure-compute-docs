@@ -45,6 +45,6 @@ impactreportresources  | where name == "AzureMonitorConnector"  and type == "mic
 
 ## Next steps
 
-* [File an impact report](report-vm-impact.md).
+* [File an impact report](report-impact.md).
 <!-- Add Impact Connectors TSG -->
-<!-- - [File an impact report](report-vm-impact.md) -->
+<!-- - [File an impact report](report-impact.md) -->

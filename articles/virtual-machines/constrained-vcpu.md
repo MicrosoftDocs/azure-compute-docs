@@ -181,6 +181,62 @@ At this time, the VM pricing, remains the same as the original size. For more in
 | Standard_E96-48ds_v6	| 96 | E96ds_v6 |
 | Standard_E128-32ds_v6	| 128 | E128ds_v6 |
 | Standard_E128-64ds_v6	| 128 | E128ds_v6 |
+| Standard_E4-2ads_v7	| 2  | E4ads_v7  |
+| Standard_E8-2ads_v7	| 2 | E8ads_v7 |
+| Standard_E8-4ads_v7	| 4 | E8ads_v7 |
+| Standard_E16-4ads_v7	| 4 | E16ads_v7 |
+| Standard_E16-8ads_v7	| 8 | E16ads_v7 |
+| Standard_E32-8ads_v7	| 8 | E32ads_v7 |
+| Standard_E32-16ads_v7 | 16 | E32ads_v7 |
+| Standard_E64-16ads_v7	| 16 | E64ads_v7 |
+| Standard_E64-32ads_v7	| 32 | E64ads_v7 |
+| Standard_E96-24ads_v7	| 24 | E96ads_v7 |
+| Standard_E96-48ads_v7	| 48 | E96ads_v7 |
+| Standard_E128-32ads_v7	| 32 | E128ads_v7 |
+| Standard_E128-64ads_v7	| 64 | E128ads_v7 |
+| Standard_E4-2as_v7	| 2  | E4as_v7  |
+| Standard_E8-2as_v7	| 2 | E8as_v7 |
+| Standard_E8-4as_v7	| 4 | E8as_v7 |
+| Standard_E16-4as_v7	| 4 | E16as_v7 |
+| Standard_E16-8as_v7	| 8 | E16as_v7 |
+| Standard_E32-8as_v7	| 8 | E32as_v7 |
+| Standard_E32-16as_v7 | 16 | E32as_v7 |
+| Standard_E64-16as_v7	| 16 | E64as_v7 |
+| Standard_E64-32as_v7	| 32 | E64as_v7 |
+| Standard_E96-24as_v7	| 24 | E96as_v7 |
+| Standard_E96-48as_v7	| 48 | E96as_v7 |
+| Standard_E128-32as_v7	| 32 | E128as_v7 |
+| Standard_E128-64as_v7	| 64 | E128as_v7 |
+
+
+#### [F-family sizes](#tab/family-F)
+
+| Size name               | Active vCPUs | Base size |
+|-------------------------|------|------------|
+| Standard_F2-1amds_v7	| 1  | F2amds_v7  |
+| Standard_F4-1amds_v7	| 1  | F4amds_v7  |
+| Standard_F4-2amds_v7	| 2  | F4amds_v7  |
+| Standard_F8-2amds_v7	| 2 | F8amds_v7 |
+| Standard_F8-4amds_v7	| 4 | F8amds_v7 |
+| Standard_F16-4amds_v7	| 4 | F16amds_v7 |
+| Standard_F16-8amds_v7	| 8 | F16amds_v7 |
+| Standard_F32-8amds_v7	| 8 | F32amds_v7 |
+| Standard_F32-16amds_v7 | 16 | F32amds_v7 |
+| Standard_F64-16amds_v7	| 16 | F64amds_v7 |
+| Standard_F64-32amds_v7	| 32 | F64amds_v7 |
+| Standard_F2-1ams_v7	| 1  | F2ams_v7  |
+| Standard_F4-1ams_v7	| 1  | F4ams_v7  |
+| Standard_F4-2ams_v7	| 2  | F4ams_v7  |
+| Standard_F8-2ams_v7	| 2 | F8ams_v7 |
+| Standard_F8-4ams_v7	| 4 | F8ams_v7 |
+| Standard_F16-4ams_v7	| 4 | F16ams_v7 |
+| Standard_F16-8ams_v7	| 8 | F16ams_v7 |
+| Standard_F32-8ams_v7	| 8 | F32ams_v7 |
+| Standard_F32-16ams_v7 | 16 | F32ams_v7 |
+| Standard_F64-16ams_v7	| 16 | F64ams_v7 |
+| Standard_F64-32ams_v7	| 32 | F64ams_v7 |
+
+
 
 #### [FX-family sizes](#tab/family-fx)
 

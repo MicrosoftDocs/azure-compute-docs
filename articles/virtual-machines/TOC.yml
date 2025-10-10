@@ -219,6 +219,14 @@
         - name: Overview
           displayName: D-series, sizes, size, vm size
           href: ./sizes/general-purpose/d-family.md
+        - name: Dasv7 series
+          href: ./sizes/general-purpose/dasv7-series.md
+        - name: Dadsv7 series
+          href: ./sizes/general-purpose/dadsv7-series.md
+        - name: Dalsv7 series
+          href: ./sizes/general-purpose/dalsv7-series.md
+        - name: Daldsv7 series
+          href: ./sizes/general-purpose/daldsv7-series.md
         - name: Dsv6 series
           href: ./sizes/general-purpose/dsv6-series.md
         - name: Ddsv6 series
@@ -296,6 +304,10 @@
           href: ./sizes/general-purpose/dcasv5-series.md
         - name: DCadsv5 series
           href: ./sizes/general-purpose/dcadsv5-series.md
+        - name: DCasv6 series
+          href: ./sizes/general-purpose/dcasv6-series.md
+        - name: DCadsv6 series
+          href: ./sizes/general-purpose/dcadsv6-series.md
         - name: DCesv6 series
           href: ./sizes/general-purpose/dcesv6-series.md
         - name: DCas_cc_v5 series
@@ -318,6 +330,18 @@
         - name: Overview
           displayName: F-series, sizes, size, vm size
           href: ./sizes/compute-optimized/f-family.md
+        - name: Fasv7 series
+          href: ./sizes/compute-optimized/fasv7-series.md
+        - name: Fadsv7 series
+          href: ./sizes/compute-optimized/fadsv7-series.md
+        - name: Famsv7 series
+          href: ./sizes/compute-optimized/famsv7-series.md
+        - name: Famdsv7 series
+          href: ./sizes/compute-optimized/famdsv7-series.md
+        - name: Falsv7 series
+          href: ./sizes/compute-optimized/falsv7-series.md
+        - name: Faldsv7 series
+          href: ./sizes/compute-optimized/faldsv7-series.md
         - name: Fasv6-series
           href: ./sizes/compute-optimized/fasv6-series.md
         - name: Falsv6 series
@@ -347,6 +371,10 @@
         - name: Overview
           displayName: E-series, sizes, size, vm size
           href: ./sizes/memory-optimized/e-family.md
+        - name: Easv7 series
+          href: ./sizes/memory-optimized/easv7-series.md
+        - name: Eadsv7 series
+          href: ./sizes/memory-optimized/eadsv7-series.md
         - name: Esv6 series
           href: ./sizes/memory-optimized/esv6-series.md
         - name: Edsv6 series
@@ -405,6 +433,10 @@
           href: ./sizes/memory-optimized/ec-family.md
         - name: ECasv5 and ECadsv5 series
           href: ecasv5-ecadsv5-series.md
+        - name: ECasv6 series
+          href: ./sizes/memory-optimized/ecasv6-series.md
+        - name: ECadsv6 series
+          href: ./sizes/memory-optimized/ecadsv6-series.md
         - name: ECesv6 series
           href: ecesv5-ecedsv5-series.md
         - name: ECas_cc_v5 and ECads_cc_v5 series
@@ -543,8 +575,12 @@
           href: nv-series-migration-guide.md
         - name: NVv3 series
           href: ./sizes/gpu-accelerated/nvv3-series.md
+        - name: NVv3 series retirement
+          href: ./sizes/gpu-accelerated/nvv3-series-retirement.md
         - name: NVv4 series
           href: ./sizes/gpu-accelerated/nvv4-series.md
+        - name: NVv4 series retirement
+          href: ./sizes/gpu-accelerated/nvv4-retirement.md
         - name: NVadsA10_v5 series
           href: ./sizes/gpu-accelerated/nvadsa10v5-series.md
         - name: Nvads V710 v5-series
@@ -618,6 +654,11 @@
             href: ./sizes/high-performance-compute/hbv4-series.md
           - name: Performance
             href: hbv4-performance.md
+        - name: HBv5 series
+          items:
+          - name: HBv5 series
+            href: ./sizes/high-performance-compute/hbv5-series.md
+         
       - name: HC family
         items:
         - name: HC series
@@ -747,6 +788,8 @@
     - name: Create a gallery
       displayName: Shared Image Gallery, SIG, sig, gallery, image
       href: create-gallery.md
+    - name: Soft delete a gallery
+      href: soft-delete-gallery.md
     - name: Share a gallery
       items:
       - name: RBAC
@@ -1241,6 +1284,8 @@
         href: ./extensions/features-linux.md
       - name: Linux VM Agent
         href: ./extensions/agent-linux.md
+      - name: Enable FIPS 140-3 on Linux VM Agent
+        href: ./extensions/agent-linux-fips.md
     - name: Windows
       items:
       - name: Windows features
@@ -1500,6 +1545,8 @@
     items:
     - name: Disk encryption overview
       href: disk-encryption-overview.md
+    - name: Migrate from Azure Disk Encryption to encryption at host
+      href: disk-encryption-migrate.md
     - name: Server-side encryption
       items:
       - name: Server-side encryption overview
@@ -1738,6 +1785,8 @@
       href: ./windows/migrate-to-managed-disks.md
     - name: Unmanaged Disks retirement
       href: ./unmanaged-disks-deprecation.md
+    - name: Migrate your Standard HDD OS disks
+      href: disks-hdd-os-retirement.md
     - name: Unmanaged VM to Managed Disks
       items:
       - name: CLI
@@ -1782,6 +1831,14 @@
         href: ./windows/attach-managed-disk-portal.yml
       - name: Change temp disk drive letter
         href: ./windows/change-drive-letter.md
+  - name: Format and mount a disk
+    items:
+    - name: Linux
+      items:
+      - name: Managed disks
+        href: ./linux/disks-format-mount-data-disks-linux.md
+      - name: Temporary disks
+        href: ./linux/disks-format-mount-temp-disks-linux.md
   - name: Detach a disk
     items:
     - name: Linux
@@ -1819,6 +1876,8 @@
       href: ./linux/azure-to-guest-disk-mapping.md
     - name: Map managed disk to guest disk - Windows
       href: ./windows/azure-to-guest-disk-mapping.md
+    - name: Azure VM utilities - Linux
+      href: ./linux/azure-virtual-machine-utilities.md
     - name: File storage
       items:
       - name: Copy files to a VM

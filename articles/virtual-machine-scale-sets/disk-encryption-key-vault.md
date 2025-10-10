@@ -6,7 +6,7 @@ ms.author: jushiman
 ms.topic: tutorial
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: disks
-ms.date: 06/14/2024
+ms.date: 09/23/2025
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli, devx-track-azurepowershell
 ms.devlang: azurecli
@@ -14,6 +14,8 @@ ms.devlang: azurecli
 ---
 
 # Create and configure a key vault for Azure Disk Encryption
+
+[!INCLUDE [Azure Disk Encryption retirement notice](~/reusable-content/ce-skilling/azure/includes/security/azure-disk-encryption-retirement.md)]
 
 Azure Disk Encryption uses Azure Key Vault to control and manage disk encryption keys and secrets.  For more information about key vaults, see [Get started with Azure Key Vault](/azure/key-vault/general/overview) and [Secure your key vault](/azure/key-vault/general/secure-your-key-vault).
 

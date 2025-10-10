@@ -31,7 +31,7 @@ In this quickstart you learn how to:
 
 ## Prerequisites
 
-* An Azure subscription (you can create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)).
+* An Azure subscription (you can create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn)).
 * A development computer running:
   * Visual Studio 2019 or Windows 2019.
   * [Service Fabric SDK and tools](service-fabric-get-started.md).

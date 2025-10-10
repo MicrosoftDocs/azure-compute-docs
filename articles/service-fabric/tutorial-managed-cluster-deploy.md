@@ -32,7 +32,7 @@ This part of the series covers how to:
 
 Before you begin this tutorial:
 
-* Create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) if you don't already have an Azure subscription.
+* Create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) if you don't already have an Azure subscription.
 
 * Install the [Service Fabric SDK and PowerShell module](service-fabric-get-started.md).
 

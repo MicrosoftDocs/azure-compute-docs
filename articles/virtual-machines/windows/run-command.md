@@ -36,8 +36,10 @@ This capability is useful in all scenarios where you want to run a script within
 | Windows Server 2019 Core | Supported | Supported |
 | Windows Server 2022 | Supported | Supported |
 | Windows Server 2022 Core | Supported | Supported |
+| Windows Server 2022 Azure Edition | Supported | Supported |
 | Windows Server 2025 | Supported | Supported |
 | Windows Server 2025 Core | Supported | Supported |
+| Windows Server 2025 Azure Edition| Supported | Supported |
 
 ## Restrictions
 
@@ -67,21 +69,22 @@ The entity was not found in this Azure location
 ```
 <br>
 
-| **Name** | **Description** |
-|---|---|
-| **RunPowerShellScript** | Runs a PowerShell script |
-| **DisableNLA** | Disable Network Level Authentication |
-| **DisableWindowsUpdate** | Disable Windows Update Automatic Updates |
-| **EnableAdminAccount** | Checks if the local administrator account is disabled, and if so enables it. |
-| **EnableEMS** | EnableS EMS |
-| **EnableRemotePS** | Configures the machine to enable remote PowerShell. |
-| **EnableWindowsUpdate** | Enable Windows Update Automatic Updates |
-| **IPConfig** | Shows detailed information for the IP address, subnet mask, and default gateway for each adapter bound to TCP/IP. |
-| **RDPSettings** | Checks registry settings and domain policy settings. Suggests policy actions if the machine is part of a domain or modifies the settings to default values. |
-| **ResetRDPCert** | Removes the TLS/SSL certificate tied to the RDP listener and restores the RDP listener security to default. Use this script if you see any issues with the certificate. |
-| **SetRDPPort** | Sets the default or user-specified port number for Remote Desktop connections. Enables firewall rules for inbound access to the port. |
-| **IMDSCertCheck** | Checks from within the virtual machine for known configuration issues that may be causing IMDS to not function properly. |
-| **WindowsActivationValidation** | Checks from within the virtual machine for known Windows Activation issues or concerns that may cause action to fail. |
+## Available Commands
+| **CommandID** | **Description** | **More Info** |
+|:-----|:-----|:-----|
+| **RunPowerShellScript** | Runs a PowerShell script ||
+| **IPConfig** | Shows detailed information for the IP address, subnet mask and default gateway for each adapter bound to TCP/IP. For usage, refer to [Run scripts](/azure/virtual-machines/windows/run-command-managed#create-or-update-run-command-on-a-vm-using-sourcecommandid) | [readme](https://github.com/Azure/azure-support-scripts/blob/master/RunCommand/Windows/IPConfig/readme.md) |
+| **EnableWindowsUpdate** | Enable Automatic Updates through Windows Update. | [readme](https://github.com/Azure/azure-support-scripts/blob/master/RunCommand/Windows/EnableWindowsUpdate/readme.md) |
+| **DisableWindowsUpdate** | Disable Automatic Updates through Windows Update. | [readme](https://github.com/Azure/azure-support-scripts/blob/master/RunCommand/Windows/DisableWindowsUpdate/readme.md) |
+| **EnableAdminAccount** | Checks if the local Administrator account is disabled, and if so enables it. | [readme](https://github.com/Azure/azure-support-scripts/blob/master/RunCommand/Windows/EnableAdminAccount/readme.md) |
+| **EnableEMS** | Enable Emergency Management Services (EMS) to allow for serial console connection in troubleshooting scenarios. | [readme](https://github.com/Azure/azure-support-scripts/blob/master/RunCommand/Windows/EnableEMS/readme.md) |
+| **EnableRemotePS** | Enable remote PowerShell. | [readme](https://github.com/Azure/azure-support-scripts/blob/master/RunCommand/Windows/EnableRemotePS/readme.md) |
+| **IMDSCertCheck** | Checks IMDS Health and then analyzes currently installed certificates that IMDS depends upon. If missing, shows additional details and mitigation steps. | [readme](https://github.com/Azure/azure-support-scripts/blob/master/RunCommand/Windows/IMDSCertCheck/README.md) |
+| **RDPSettings** | Checks registry settings and domain policy settings. Suggests policy actions if machine is part of a domain or modifies the settings to default values. | [readme](https://github.com/Azure/azure-support-scripts/blob/master/RunCommand/Windows/RDPSettings/readme.md) |
+| **ResetRDPCert** | Removes the SSL certificate tied to the RDP listener and restores the RDP listener security to default. Use this script if you see any issues with the certificate. | [readme](https://github.com/Azure/azure-support-scripts/blob/master/RunCommand/Windows/ResetRDPCert/readme.md) |
+| **WindowsActivationValidation** | Checks the current Windows license status (activated or not) and alert is generated if the machine is not property activated. | [readme](https://github.com/Azure/azure-support-scripts/blob/master/RunCommand/Windows/WindowsActivationValidation/README.md) |
+| **SetRDPPort** | Sets the default or user specified port number for Remote Desktop connections. Enables firewall rule for inbound access to the port. | [readme](https://github.com/Azure/azure-support-scripts/blob/master/RunCommand/Windows/SetRDPPort/readme.md) |
+| **DisableNLA** | Disables Network Level Authentication (NLA). You must restart the VM after the script completes for the change to take effect. The script itself does not restart the VM. You can use this script to disable NLA if RDP connections are failing with error 'The remote computer that you are trying to connect to requires Network Level Authentication (NLA), but your Windows domain controller cannot be contacted to perform NLA.' or error 'An authentication error has occurred. The Local Security Authority cannot be contacted.' NLA is a security feature that should only be disabled temporarily to allow RDP connections to succeed until the domain controller connectivity issue have been resolved. | [readme](https://github.com/Azure/azure-support-scripts/blob/master/RunCommand/Windows/DisableNLA/readme.md) |
 
 ## Azure CLI
 

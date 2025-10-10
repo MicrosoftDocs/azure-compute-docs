@@ -5,7 +5,7 @@ metadata:
   author: roygara
   ms.service: azure-disk-storage
   ms.topic: faq
-  ms.date: 04/11/2024
+  ms.date: 04/11/2025
   ms.author: rogarana
   ms.custom: references_regions
 title: Frequently asked questions about Azure IaaS VM disks and managed and unmanaged premium disks
@@ -349,13 +349,7 @@ sections:
       - question: |
           Can I switch from Azure Disk Encryption to server-side encryption with either customer-managed keys or encryption at host?
         answer: |
-          It isn't possible to switch in-place, but it's possible in most scenarios to create copies of the disks and attach them to a new VM encrypted with server-side encryption. To migrate Windows VMs with ADE enabled or Linux VMs with only the data disks ADE encrypted,
-          - [Disable encryption and remove the encryption extension on Windows](windows/disk-encryption-windows.md#disable-encryption-and-remove-the-encryption-extension) or [on Linux](linux/disk-encryption-linux.md#disable-encryption-and-remove-the-encryption-extension).
-          - Then make a new managed disk using the current disk as a source. 
-          - Attach the new disk to a new VM that has never enabled ADE.
-          - Encrypt that new disk with either [customer-managed keys](/azure/virtual-machines/disk-encryption#customer-managed-keys) or [encryption at host](/azure/virtual-machines/disk-encryption#encryption-at-host---end-to-end-encryption-for-your-vm-data).
-          
-          However, disabling ADE on the OS disk on Linux is not supported. For such VMs you must create a new VM with a new OS disk with CMK or EAH enabled. You can copy the data disks using the method described previously.
+          Yes, it's possible to migrate from Azure Disk Encryption to encryption at host, though it requires creating new disks and VMs rather than in-place conversion. For detailed step-by-step instructions, see [Migrate from Azure Disk Encryption to encryption at host](disk-encryption-migrate.md).
 
       - question: |
           Can I switch from server-side encryption with customer-managed keys to Azure Disk Encryption?

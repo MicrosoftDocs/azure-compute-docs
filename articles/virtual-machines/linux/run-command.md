@@ -65,10 +65,10 @@ This table shows the list of commands available for Linux VMs. You can use the *
 The entity was not found in this Azure location
 ```
 
-|**Name**|**Description**|
-|---|---|
-|**RunShellScript**|Runs a Linux shell script.|
-|**ifconfig**| Gets the configuration of all network interfaces.|
+|**Name**|**Description**|**More Info**|
+|---|---|---|
+|**RunShellScript**|Runs a Linux shell script.||
+|**ifconfig**| Gets the configuration of all network interfaces.|[readme](https://github.com/Azure/azure-support-scripts/blob/master/RunCommand/Linux/ifconfig/readme.md)|
 
 ## Azure CLI
 

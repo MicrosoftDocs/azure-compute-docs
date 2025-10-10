@@ -6,7 +6,7 @@ ms.collection: linux
 ms.service: azure-virtual-machines
 ms.custom: linux-related-content
 ms.topic: how-to
-ms.date: 06/27/2024
+ms.date: 09/11/2025
 ms.author: mattmcinnes
 ms.reviewer: jamesser
 # Customer intent: As a cloud administrator, I want to connect to a Linux virtual machine via SSH, so that I can manage and configure the server securely over the network.
@@ -55,7 +55,7 @@ If you're having trouble connecting, you can also use portal:
 1. Go to the [Azure portal](https://portal.azure.com/) to connect to a VM. Search for and select **Virtual machines**.
 2. Select the virtual machine from the list.
 3. Select **Connect** from the left menu.
-4. Select the option that fits with your preferred way of connecting. The portal helps walk you through the prerequisites for connecting.
+4. Select the option that fits with your preferred way of connecting. The most common connection method is Native SSH. The portal helps walk you through all prerequisites for a given connection method, and will run a VM Access check with your configured settings.
 
 ## Connect to the VM
 

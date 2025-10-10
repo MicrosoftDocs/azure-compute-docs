@@ -6,7 +6,7 @@ ms.subservice: sizes
 ms.topic: concept-article
 ms.date: 12/19/2022
 author: andysports8
-ms.author: shuji
+ms.author: mattmcinnes
 # Customer intent: "As a cloud architect, I want to evaluate the Ev3 and Esv3-series virtual machines, so that I can choose the optimal VM sizes for deploying memory-intensive enterprise applications effectively."
 ---
 

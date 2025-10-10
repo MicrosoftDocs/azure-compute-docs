@@ -6,12 +6,14 @@ ms.author: jushiman
 ms.topic: tutorial
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: disks
-ms.date: 06/14/2024
+ms.date: 09/23/2025
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
 # Customer intent: As a cloud administrator, I want to encrypt disks in a Virtual Machine Scale Set using the command line, so that I can enhance data security and compliance for my organization's cloud infrastructure.
 ---
 # Encrypt OS and attached data disks in a Virtual Machine Scale Set with the Azure CLI
+
+[!INCLUDE [Azure Disk Encryption retirement notice](~/reusable-content/ce-skilling/azure/includes/security/azure-disk-encryption-retirement.md)]
 
 The Azure CLI is used to create and manage Azure resources from the command line or in scripts. This quickstart shows you how to use the Azure CLI to create and encrypt a Virtual Machine Scale Set. For more information on applying Azure Disk encryption to a Virtual Machine Scale Set, see [Azure Disk Encryption for Virtual Machine Scale Sets](disk-encryption-overview.md).
 

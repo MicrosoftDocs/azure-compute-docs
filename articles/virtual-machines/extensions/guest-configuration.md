@@ -42,7 +42,50 @@ To learn more about private networking, see the following articles:
 
 ## Install the extension
 
-You can install and deploy the Machine Configuration extension directly from the Azure CLI or PowerShell. Deployment templates are also available for Azure Resource Manager (ARM), Bicep, and Terraform. For deployment template details, see [Microsoft.GuestConfiguration guestConfigurationAssignments](/azure/templates/microsoft.guestconfiguration/guestconfigurationassignments?pivots=deployment-language-arm-template).
+You can install and deploy the Azure Machine Configuration extension directly from the Azure portal, Azure CLI or PowerShell. 
+
+### [Azure Portal](#tab/portal) 
+
+1. Open the [Azure portal](https://portal.azure.com).
+2. In the search box, enter **Virtual machines** and then select **Virtual machines** to display the list of available VMs.
+3. Select the virtual machines you want to use. 
+4. In the search box of virtual machine page, enter **Extensions+applications** and then select it.
+5. Click on Add in the extensions page.
+6. In the search box of extension page, enter **Azure Machine Configuration extension for Windows** or **Azure Machine Configuration extension for Linux** based on the OS type and select it.
+7. Click Next and then select **Review + create** to install the extension.
+8. Once validation passes, select **Create**.
+9. Once installation finishes, you can see **AzurePolicyforWindows** or **AzurePolicyforLinux** extension installed in the extension page.
+
+### [Azure CLI](#tab/CLI)
+
+To deploy the extension for Linux:
+
+```azurecli
+az vm extension set  --publisher Microsoft.GuestConfiguration --name ConfigurationForLinux --extension-instance-name AzurePolicyforLinux --resource-group <myResourceGroup> --vm-name <myVM> --enable-auto-upgrade true
+```
+
+To deploy the extension for Windows:
+
+```azurecli
+az vm extension set  --publisher Microsoft.GuestConfiguration --name ConfigurationforWindows --extension-instance-name AzurePolicyforWindows --resource-group <myResourceGroup> --vm-name <myVM> --enable-auto-upgrade true
+```
+
+### [PowerShell](#tab/powershell)
+
+To deploy the extension for Linux:
+
+```powershell
+Set-AzVMExtension -Publisher 'Microsoft.GuestConfiguration' -ExtensionType 'ConfigurationForLinux' -Name 'AzurePolicyforLinux' -TypeHandlerVersion 1.0 -ResourceGroupName '<myResourceGroup>' -Location '<myLocation>' -VMName '<myVM>' -EnableAutomaticUpgrade $true
+```
+
+To deploy the extension for Windows:
+
+```powershell
+Set-AzVMExtension -Publisher 'Microsoft.GuestConfiguration' -ExtensionType 'ConfigurationforWindows' -Name 'AzurePolicyforWindows' -TypeHandlerVersion 1.0 -ResourceGroupName '<myResourceGroup>' -Location '<myLocation>' -VMName '<myVM>' -EnableAutomaticUpgrade $true
+```
+### Deployment templates
+
+Deployment templates are also available for Azure Resource Manager (ARM), Bicep, and Terraform. For deployment template details, see [Microsoft.GuestConfiguration guestConfigurationAssignments](/azure/templates/microsoft.guestconfiguration/guestconfigurationassignments?pivots=deployment-language-arm-template).
 
 > [!NOTE]
 > In the following deployment examples, replace `<placeholder>` parameter values with specific values for your configuration.
@@ -61,34 +104,6 @@ Before you install and deploy the Machine Configuration extension, review the fo
    - [Deploy prerequisites to enable Guest Configuration policies on virtual machines](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/Prerequisites.json)
 
 - **Other properties**. You don't need to include any settings or protected-settings properties on the Machine Configuration extension. The agent retrieves this class of information from the Azure REST API [Guest Configuration assignment](/rest/api/guestconfiguration/guestconfigurationassignments) resources. For example, the [`ConfigurationUri`](/rest/api/guestconfiguration/guestconfigurationassignments/createorupdate#guestconfigurationnavigation), [`Mode`](/rest/api/guestconfiguration/guestconfigurationassignments/createorupdate#configurationmode), and [`ConfigurationSetting`](/rest/api/guestconfiguration/guestconfigurationassignments/createorupdate#configurationsetting) properties are each managed per-configuration rather than on the VM extension.
-
-### Azure CLI
-
-To deploy the extension for Linux:
-
-```azurecli
-az vm extension set  --publisher Microsoft.GuestConfiguration --name ConfigurationForLinux --extension-instance-name AzurePolicyforLinux --resource-group <myResourceGroup> --vm-name <myVM> --enable-auto-upgrade true
-```
-
-To deploy the extension for Windows:
-
-```azurecli
-az vm extension set  --publisher Microsoft.GuestConfiguration --name ConfigurationforWindows --extension-instance-name AzurePolicyforWindows --resource-group <myResourceGroup> --vm-name <myVM> --enable-auto-upgrade true
-```
-
-### PowerShell
-
-To deploy the extension for Linux:
-
-```powershell
-Set-AzVMExtension -Publisher 'Microsoft.GuestConfiguration' -ExtensionType 'ConfigurationForLinux' -Name 'AzurePolicyforLinux' -TypeHandlerVersion 1.0 -ResourceGroupName '<myResourceGroup>' -Location '<myLocation>' -VMName '<myVM>' -EnableAutomaticUpgrade $true
-```
-
-To deploy the extension for Windows:
-
-```powershell
-Set-AzVMExtension -Publisher 'Microsoft.GuestConfiguration' -ExtensionType 'ConfigurationforWindows' -Name 'AzurePolicyforWindows' -TypeHandlerVersion 1.0 -ResourceGroupName '<myResourceGroup>' -Location '<myLocation>' -VMName '<myVM>' -EnableAutomaticUpgrade $true
-```
 
 ### ARM template
 

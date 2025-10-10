@@ -372,6 +372,9 @@ Windows 10 Gen1 VM is successfully upgraded to Trusted launch followed by succes
 
 :::image type="content" source="./media/trusted-launch/01-error-windows-11-boot.jpg" alt-text="Screenshot that shows boot failure of Azure Windows VM.":::
 
+> [!NOTE]
+> The upgrade can fail if you use outdated Windows 11 installation media. To avoid this issue, ensure you use the most recent Windows 11 image. You can download the latest ISO from the [Microsoft Software Download page](https://www.microsoft.com/software-download/windows11). If you have a volume licensing agreement, use the [Microsoft 365 admin center](https://admin.microsoft.com/adminportal/home#/subscriptions/vlnew) to access updated Windows 11 images.
+
 ### [Windows] MBR to GPT conversion fails with error Cannot find room for the EFI system partition
 
 This error occurs for one of following reason:

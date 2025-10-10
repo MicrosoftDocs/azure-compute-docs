@@ -7,12 +7,14 @@ ms.service: azure-virtual-machines
 ms.subservice: security
 ms.collection: windows
 ms.topic: quickstart
-ms.date: 05/14/2025
+ms.date: 09/23/2025
 ms.custom: devx-track-azurecli, mode-api
 # Customer intent: "As a cloud administrator, I want to create and encrypt a Windows virtual machine using command-line tools, so that I can enhance the security of my Azure resources efficiently."
 ---
 
 # Quickstart: Create and encrypt a Windows VM with the Azure CLI
+
+[!INCLUDE [Azure Disk Encryption retirement notice](~/reusable-content/ce-skilling/azure/includes/security/azure-disk-encryption-retirement.md)]
 
 **Applies to:** :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets 
 
@@ -62,7 +64,7 @@ It takes a few minutes to create the VM and supporting resources. The following 
 
 ## Create a Key Vault configured for encryption keys
 
-Azure disk encryption stores its encryption key in an Azure Key Vault. Create a Key Vault with [az keyvault create](/cli/azure/keyvault#az-keyvault-create). To enable the Key Vault to store encryption keys, use the--enabled-for-disk-encryption parameter.
+Azure disk encryption stores its encryption key in an Azure Key Vault. Create a Key Vault with [az keyvault create](/cli/azure/keyvault#az-keyvault-create). To enable the Key Vault to store encryption keys, use the --enabled-for-disk-encryption parameter.
 > [!Important]
 > Each Key Vault must have a unique name. This example creates a Key Vault named *myKV*, but you must name yours something different.
 

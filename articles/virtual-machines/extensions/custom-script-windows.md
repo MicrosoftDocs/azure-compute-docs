@@ -165,7 +165,7 @@ You can set the following values in either public or protected settings. The ext
 The Custom Script Extension, version 1.10 and later, supports [managed identities](/azure/active-directory/managed-identities-azure-resources/overview) for downloading files from URLs provided in the `fileUris` setting. The property allows the Custom Script Extension to access Azure Storage private blobs or containers without the user having to pass secrets like SAS tokens or storage account keys.
 
 > [!NOTE]
-> The Custom Script Extension does not currently support the use of managed identities on Arc enabled servers
+> The Custom Script Extension does not currently support using Managed Identity authentication on Azure Arc–enabled servers.
 
 
 To use this feature, add a [system-assigned](/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity) or [user-assigned](/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-user-assigned-identity) identity to the VM or Virtual Machine Scale Set where the Custom Script Extension runs. Then [grant the managed identity access to the Azure Storage container or blob](/azure/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access).

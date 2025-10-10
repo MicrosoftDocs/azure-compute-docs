@@ -6,10 +6,12 @@ ms.service: azure-virtual-machines
 ms.subservice: security
 ms.topic: concept-article
 ms.author: mbaldwin
-ms.date: 05/14/2025
+ms.date: 09/23/2025
 # Customer intent: As an IT admin managing IaaS VMs, I want to understand the prerequisites for using the previous release of disk encryption, so that I can enable and maintain encryption effectively without running into compatibility issues.
 ---
 # Azure Disk Encryption with Azure AD (previous release)
+
+[!INCLUDE [Azure Disk Encryption retirement notice](~/reusable-content/ce-skilling/azure/includes/security/azure-disk-encryption-retirement.md)]
 
 **Applies to:** :heavy_check_mark: Windows VMs
 

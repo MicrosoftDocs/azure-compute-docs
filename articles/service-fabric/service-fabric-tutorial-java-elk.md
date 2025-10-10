@@ -33,7 +33,7 @@ In this tutorial series you learn how to:
 
 Before you begin this tutorial:
 
-* If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn)
 * Set up your application to emit logs to the location specified in [part two](service-fabric-tutorial-debug-log-local-cluster.md).
 * Complete [part three](service-fabric-tutorial-java-deploy-azure.md) and have a running Service Fabric cluster configured to send logs to Event Hubs.
 * The policy in Event Hubs that has the 'Listen' permission and the associated primary key from series three.

@@ -137,6 +137,6 @@ SETTINGS
 
 ## Support
 
-* For commercial support or assistance with Salt, you can visit the extension creator, [TurtleTraction](https://turtletraction.com/salt-open-support)
+* For commercial support or assistance with Salt, you can visit the extension creator, [TurtleTraction](https://turtletraction.com/)
 * The source code of this extension is available on [GitLab](https://gitlab.com/turtletraction-oss/azure-salt-vm-extensions/)
 * For Azure related issues, you can file an Azure support incident. Go to the [Azure support site](https://azure.microsoft.com/support/options/) and select Get support

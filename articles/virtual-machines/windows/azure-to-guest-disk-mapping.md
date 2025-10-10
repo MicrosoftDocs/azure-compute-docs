@@ -6,7 +6,7 @@ ms.service: azure-disk-storage
 ms.collection: windows
 ms.topic: how-to
 ms.date: 11/17/2020
-ms.author: tibasham
+ms.author: mattmcinnes
 # Customer intent: "As a system administrator managing Windows VMs in Azure, I want to map Azure Disks to their corresponding guest disks, so that I can ensure proper disk usage and configuration for efficient operations."
 ---
 # How to map Azure Disks to Windows VM guest disks

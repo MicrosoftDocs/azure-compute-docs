@@ -39,6 +39,7 @@ vCPUs (Qty.) and Memory for each size
 | Standard_D64ds_v6 | 64 | 256 |
 | Standard_D96ds_v6 | 96 | 384 |
 | Standard_D128ds_v6 | 128 | 512 |
+| Standard_D192ds_v6 | 192 | 768 |
 
 #### VM Basics resources
 - [Check vCPU quotas](../../../virtual-machines/quotas.md)
@@ -58,6 +59,7 @@ Local (temp) storage info for each size
 | Standard_D64ds_v6 | 4 | 880 | 1200000 | 5760 | 480000 | 2880 |
 | Standard_D96ds_v6 | 6 | 880 | 1800000 | 8640 | 720000 | 4320 |
 | Standard_D128ds_v6 | 4 | 1760 | 2400000 | 11520 | 960000 | 5760 |
+| Standard_D192ds_v6 | 6 | 1760 | 3600000 | 17280 | 1440000 | 8640 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
@@ -85,6 +87,7 @@ Remote (uncached) storage info for each size
 | Standard_D64ds_v6 | 64 | 102400 | 3392 | 102400 | 3392 | 133333 | 3969 | 133333 | 3969 |
 | Standard_D96ds_v6 | 64 | 153600 | 5088 | 153600 | 5088 | 200000 | 5953 | 200000 | 5953 |
 | Standard_D128ds_v6 | 64 | 204800 | 6782 | 204800 | 6782 | 266667 | 7935 | 266667 | 7935 |
+| Standard_D192ds_v6 | 64 | 260000 | 12000 | 260000 | 12000 | 400400 | 12000 | 400400 | 12000 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
@@ -114,6 +117,7 @@ Network interface info for each size
 | Standard_D64ds_v6 | 8 | 30000 |
 | Standard_D96ds_v6 | 8 | 41000 |
 | Standard_D128ds_v6 | 8 | 54000 |
+| Standard_D192ds_v6 | 8 | 82000 |
 
 #### Networking resources
 - [Virtual networks and virtual machines in Azure](/azure/virtual-network/network-overview)

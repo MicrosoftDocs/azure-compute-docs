@@ -9,7 +9,6 @@
   - name: What's new for Service Fabric?
     href: whats-new.md
 - name: Quickstarts
-  expanded: true
   items:
   - name: Managed cluster with Azure portal
     href: quickstart-managed-cluster-portal.md
@@ -35,6 +34,7 @@
       href: service-fabric-quickstart-java-spring-boot.md
     - name: Deploy a Reliable Services application
       href: service-fabric-quickstart-java-reliable-services.md
+  expanded: true
 - name: Tutorials
   items:
   - name: Create a Service Fabric managed cluster
@@ -57,8 +57,6 @@
       href: service-fabric-tutorial-dotnet-app-enable-https-endpoint.md
     - name: Configure CI/CD by using Azure Pipelines
       href: service-fabric-tutorial-deploy-app-with-cicd-vsts.md
-    - name: Monitor and diagnose the application
-      href: service-fabric-tutorial-monitoring-aspnet.md
   - name: Deploy a Java app
     items:
     - name: 1- Build a Java application
@@ -289,10 +287,10 @@
         href: service-fabric-manage-multiple-environment-app-configuration.md
       - name: Testing applications
         items:
-          - name: Unit testing stateful services
-            href: service-fabric-concepts-unit-testing.md
-          - name: Testing apps with fault analysis
-            href: service-fabric-testability-overview.md
+        - name: Unit testing stateful services
+          href: service-fabric-concepts-unit-testing.md
+        - name: Testing apps with fault analysis
+          href: service-fabric-testability-overview.md
       - name: The ImageStoreConnectionString setting
         href: service-fabric-image-store-connection-string.md
     - name: Service resources
@@ -658,8 +656,6 @@
       items:
       - name: Add logging to your application
         href: service-fabric-how-to-diagnostics-log.md
-      - name: Analyze with Application Insights
-        href: service-fabric-diagnostics-event-analysis-appinsights.md
       - name: Aggregate logs with EventFlow
         href: service-fabric-diagnostics-event-aggregation-eventflow.md
       - name: Monitor containers
@@ -831,7 +827,6 @@
       href: service-fabric-migrate-old-javaapp-to-use-maven.md
     - name: Use the Service Fabric Java client API
       href: service-fabric-java-rest-api-usage.md
-      
   - name: Manage application lifecycle
     items:
     - name: Package an application
@@ -902,10 +897,10 @@
       items:
       - name: How to deploy application with managed identity
         items:
-          - name: How to deploy application with a system-assigned managed identity
-            href: how-to-deploy-service-fabric-application-system-assigned-managed-identity.md
-          - name: How to deploy application with a user-assigned managed identity
-            href: how-to-deploy-service-fabric-application-user-assigned-managed-identity.md
+        - name: How to deploy application with a system-assigned managed identity
+          href: how-to-deploy-service-fabric-application-system-assigned-managed-identity.md
+        - name: How to deploy application with a user-assigned managed identity
+          href: how-to-deploy-service-fabric-application-user-assigned-managed-identity.md
     - name: Use Managed Identity with Service Fabric application code
       href: how-to-managed-identity-service-fabric-app-code.md
     - name: Grant access to other Azure resources

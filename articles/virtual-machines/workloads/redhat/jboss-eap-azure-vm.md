@@ -7,6 +7,7 @@ ms.reviewer: jiangma
 ms.topic: quickstart
 ms.date: 06/19/2024
 ms.custom: devx-track-java, devx-track-extended-java, devx-track-javaee, devx-track-javaee-jbosseap, devx-track-javaee-jbosseap-vm, devx-track-azurecli, linux-related-content
+ms.service: azure-virtual-machines
 # Customer intent: "As a developer, I want to deploy a JBoss EAP cluster on Azure Virtual Machines, so that I can efficiently manage my applications using a scalable cloud infrastructure."
 ---
 
