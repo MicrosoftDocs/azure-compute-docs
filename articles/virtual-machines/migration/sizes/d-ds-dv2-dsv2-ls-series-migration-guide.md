@@ -1,12 +1,12 @@
 ﻿---
-title:Migration Guide
+title: Migration Guide
 description: Migration guide for General Purpose VM sizes
-author: iamwilliew
+author: eehindero
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 09/02/2025
-ms.author: wwilliams
+ms.date: 10/14/2025
+ms.author: eehindero
 ms.reviewer: mattmcinnes
 ---
 
