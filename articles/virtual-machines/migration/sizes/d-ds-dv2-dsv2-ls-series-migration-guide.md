@@ -1,6 +1,6 @@
 ﻿---
-title: D, Ds, Dv2, Dsv2, and Ls-series Migration Guide
-description: Migration guide for D, Ds, Dv2, Dsv2, and Ls-series VM sizes
+title:Migration Guide
+description: Migration guide for General Purpose VM sizes
 author: iamwilliew
 ms.service: azure-virtual-machines
 ms.subservice: sizes
@@ -10,9 +10,9 @@ ms.author: wwilliams
 ms.reviewer: mattmcinnes
 ---
 
-# D, Ds, Dv2, Dsv2, and Ls-series Migration Guide
+# Migration Guide
 
-This migration guide is designed for users of Azure D, Ds, Dv2, Dsv2, and Ls-series virtual machines (VMs), which are scheduled for retirement in **2028**. To ensure minimal disruption and to continue optimizing cost and performance, this guide helps you transition to the latest series VMs.
+This migration guide is designed for users of Azure General Purpose virtual machines (VMs), which are scheduled for retirement. To ensure minimal disruption and to continue optimizing cost and performance, this guide helps you transition to the latest series VMs.
 
 This document covers:
 
@@ -31,12 +31,17 @@ By migrating to newer VM series, you gain access to improved price-performance r
 | D<br>Ds<br>Dv2<br>Dsv2 | Dasv6<br>Dalsv6<br>Dsv6<br>Dlsv6 | Local Storage: Not Supported<br>Remote Storage Throughput: 4000 IOPS / 90 MBps<br>Disk Controller Type: NVMe|
 | D<br>Ds<br>Dv2<br>Dsv2 | Dadsv6<br>Daldsv6<br>Ddsv6<br>Dldsv6 | Local Storage: Supported - NVMe<br>Local Storage Throughput: 37500 IOPS / 180 MBps<br>Remote Storage Throughput: 4000 IOPS / 90 MBps<br>Disk Controller Type: NVMe|
 | Ls | Lsv3<br>Lasv3 | Local Storage: Supported - NVMe<br>Remote Storage Throughput: 12800 IOPS / 200 MBps <br>Disk Controller Type: SCSI |
+| Av2<br>Amv2 | Bsv2<br>Bpsv2<br>Basv2 | Local Storage: Not Supported<br>Remote Storage Throughput: 3750 IOPS / 85 MBps<br>Disk Controller Type: SCSI|
+| B | Bsv2<br>Bpsv2<br>Basv2 | Local Storage: Not Supported<br>Remote Storage Throughput: 3750 IOPS / 85 MBps<br>Disk Controller Type: SCSI|
+| F<br>Fs<br>Fsv2 | Dlsv6<br>Fasv6| Local Storage: Not Supported<br>Remote Storage Throughput: 4167 IOPS / 124 MBps<br>Disk Controller Type: NVMe|
+| G<br>Gs | Lasv3| Local Storage: NVMe<br>Remote Storage Throughput: 12800 IOPS / 200 MBps<br>Disk Controller Type: SCSI|
+| Lsv2 | Lasv3| Local Storage: NVMe<br>Remote Storage Throughput: 12800 IOPS / 200 MBps<br>Disk Controller Type: SCSI|
 
 *Refers to the lowest VM size in the given target VM Family. For actual VM specifications, please refer to the VM product sizes page.
 
 > [!IMPORTANT]  
 > The following SKUs aren't available in the Sovereign clouds:
-> Dasv5, Dadsv5, Dasv6, Dalsv6, Dsv6, Dlsv6, Dadsv6, Daldsv6, DDsv6, Dldsv6, Lsv3, Lasv3
+> Bsv2, Bpsv2, Basv2
 
 For optimal performance and experience, we generally recommend using the newer v5 and v6 VM series. This ensures you have access to the latest features such as Premium Storage, Accelerated Networking, and Nested Virtualization. While the v6 VM series is preferred, there are certain scenarios where you might want to consider the v5 or even the v4 VM series. Here are some reasons why:
  - v6 VMs require [enabling NVMe](/azure/virtual-machines/nvme-overview) which means that you must have a [supported OS](/azure/virtual-machines/enable-nvme-interface).
@@ -76,26 +81,21 @@ Refer to the full [Azure VM resizing guide](/azure/virtual-machines/sizes/resize
 
 ## FAQ
 #### Q: Which Sizes Are Being Retired?
-The following sizes are being retired by 1 May 2028.
- - D/Ds series: 
-	 - Standard_D1 to Standard_D4
-	 - Standard_DS1 to Standard_DS4
-	 - Standard_D11 to Standard_D14
-	 - Standard_DS11 to Standard_DS14
- - Dv2/Dsv2 series:
-	 - Standard_D1v2 to Standard_D5_v2
-	 - Standard_DS1v2 to Standard_DS5_v2
-	 - Standard_D11_v2 to Standard_D15_v2
-	 - Standard_DS11_v2 to Standard_DS15_v2
-	 - Standard_D2_v2_Promo to Standard_D5_v2_Promo
-	 - Standard_DS2_v2_Promo to Standard_DS5_v2_Promo
- - LS series:
-	 - Standard_L4s to Standard_L32s
-
+|**Retired VM Series** | **Final Retirement Date**| 
+|--|--|
+| D/Ds | May 1 2028| 
+| Dv2/Dsv2 | May 1 2028|
+| Ls | May 1 2028|
+| Av2/Amv2 | Nov 15 2028|
+| B | Nov 15 2028|
+| F/Fs | Nov 15 2028|
+| Fsv2| Nov 15 2028|
+| G/Gs | Nov 15 2028|
+| Lsv2 | Nov 15 2028|
 
 #### Q: Why Should I Migrate?
 
-If you are on D, Dv2, Dsv2, and L-series VMs, these VMs are set to retire in 2028. Migration is mandatory to avoid unexpected shutdown. Additionally, migration yields the following benefits: 
+These VMs are set to retire, migration is mandatory to avoid unexpected shutdown. Additionally, migration yields the following benefits: 
 
  - **Performance**: Newer VM series offer better price-to-performance ratios.
  - **Regional Availability**: The v5 and v6 series has broader regional support across Azure data centers.
@@ -107,7 +107,7 @@ No. If you’re using PayGo or a savings plan, migrating to a newer VM type won'
 
 #### Q: I'm on Reserved Instances (RIs) with an Older VM. How Do I Handle Migration?
 
-If you have active Reserved Instances for D, Dv2, Dsv2, or L-series VMs, follow these steps:
+If you have active Reserved Instances for retired VMs, follow these steps:
 
 Step 1: Review Current Reservations
 
