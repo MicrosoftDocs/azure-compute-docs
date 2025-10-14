@@ -1,5 +1,5 @@
 ﻿---
-title: Migration Guide
+title: General Purpose VMs Migration Guide
 description: Migration guide for General Purpose VM sizes
 author: eehindero
 ms.service: azure-virtual-machines
