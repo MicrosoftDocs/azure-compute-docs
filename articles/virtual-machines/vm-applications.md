@@ -14,7 +14,9 @@ ms.custom: linux-related-content
 
 # VM Applications Overview
 
-VM Applications are a resource type in Azure Compute Gallery that provides a modern, flexible approach to managing and deploying applications across your virtual machines and scale sets. By decoupling application installation from your base VM images, you can streamline updates, reduce image maintenance overhead, and accelerate deployment cycles. This approach eliminates the need to rebuild and republish VM images for every application change, enabling faster iteration and greater operational agility. VM Applications are best suited for deploying AI, high scale, low latency, micro-services, secure and compliant workloads on Azure VMs.
+VM Applications are a resource type in Azure Compute Gallery that provides a modern, flexible approach to managing and deploying applications & scripts across your virtual machines and scale sets. By decoupling application installation from your base VM images, you can achieve independent deployability, streamline updates, reduce image maintenance overhead, and accelerate deployment cycles. This approach eliminates the need to rebuild and republish VM images for every application change, enabling faster iteration and greater operational agility. 
+
+VM Applications are best suited for deploying workloads that need high scale, low latency, failure resiliency, secure trusted deployments, consistency across the fleet, micro-service architecture, and/or post-deployment management.
 
 | Resource | Description|
 |----------|------------|
@@ -902,3 +904,4 @@ $resultSummary | convertto-json -depth 5
 
 - Learn how to [create and deploy VM application packages](vm-applications-how-to.md).
 - Learn how to [manage and delete Azure VM Applications](vm-applications-manage.md).
+- Check out [Azure dev blogs about Azure VM Applications](https://devblogs.microsoft.com/azure-vm-runtime/category/vm-applications/).

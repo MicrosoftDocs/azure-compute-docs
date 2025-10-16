@@ -287,6 +287,23 @@ $result | ForEach-Object {
 }
 $resultSummary | ConvertTo-Json -Depth 5
 ```
+
+#### [AzureResourceGraph](#tab/aureresourcegraph2)
+[Azure resource graph query](/azure/governance/resource-graph/first-query-portal) can be used to view all deployed VM applications and its properties across VMs and VM Scale Sets
+
+```kusto-interactive
+resources
+| where type == "microsoft.compute/virtualmachines" or type == "microsoft.compute/virtualmachinescalesets"
+| where properties has "applicationProfile"
+| extend resourceType = iff(type == "microsoft.compute/virtualmachines", "VM", "VMSS")
+| extend applications = iff(resourceType == "VM", parse_json(properties["applicationProfile"]["galleryApplications"]), parse_json(properties["virtualMachineProfile"]["applicationProfile"]["galleryApplications"]))
+| mv-expand applications
+| extend enableAutomaticUpgrade = applications["enableAutomaticUpgrade"]
+| extend packageReferenceId = applications["packageReferenceId"]
+| extend treatFailureAsDeploymentFailure = applications["treatFailureAsDeploymentFailure"]
+| parse packageReferenceId with "/subscriptions/" publisherSubcriptionId "/resourceGroups/" publisherResourceGroup "/providers/Microsoft.Compute/galleries/" galleryName "/applications/" appName "/versions/" version
+| project tenantId, subscriptionId, resourceGroup, resourceName = name, type, location, appName, version, enableAutomaticUpgrade, treatFailureAsDeploymentFailure, galleryName, publisherSubcriptionId, publisherResourceGroup, properties
+```
 ---
 
 ## Remove the VM Application from Azure VM or VMSS
@@ -443,6 +460,5 @@ Remove-AzGalleryApplication -ResourceGroupName $rgNmae -GalleryName $galleryName
 ---
 
 ## Next steps
-Learn more about [Azure VM Applications](vm-applications.md).
-
-Learn to [create Azure VM applications](vm-applications-how-to.md).
+- Learn more about [Azure VM Applications](vm-applications.md).
+- Learn to [create Azure VM applications](vm-applications-how-to.md).

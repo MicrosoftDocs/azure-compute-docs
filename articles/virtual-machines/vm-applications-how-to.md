@@ -14,7 +14,7 @@ ms.custom: devx-track-azurepowershell, devx-track-azurecli
 
 # Create and deploy VM Application
 
-VM Application is a resource type in Azure Compute Gallery that simplifies management, sharing, and global distribution of applications for your virtual machines. [Learn more about VM Application](./vm-applications.md)
+VM Application is a resource type in Azure Compute Gallery that simplifies deployment, management, sharing, and global distribution of applications and scripts for your virtual machines. VM Applications are best suited for deploying apps and workloads that need high scale, low latency, failure resiliency, secure trusted deployments, consistency across the fleet, micro-service architecture, and/or post-deployment management. [Learn more about VM Application](./vm-applications.md)
 
 To create and deploy applications on Azure VM, first package and upload your application to Azure Storage Account as a storage blob. Then create `Azure VM application` resource and `VM application version` resource referencing these storage blobs. Finally, deploy the application on any VM or Virtual Machine Scale Set by passing application reference in `applicationProfile`.
 
@@ -67,7 +67,7 @@ Here are sample install scripts based on the file extension of the application b
 
 # Rename blobs
 mv MyVMApp app.tar
-mv MyVMApp-config app-config.yaml
+# mv MyVMApp-config app-config.yaml
 
 # Unarchive application
 mkdir -p app
@@ -77,8 +77,11 @@ tar -xf app.tar -C app
 chmod -R +x app
 chmod -R +r app
 
-# Install the script (example: install.sh with config)
-bash ./app/install.sh --config app-config.yaml
+# Install the script (example: install.sh)
+bash ./app/install.sh 
+
+# OR Install the script with config (example: install.sh with config)
+# bash ./app/install.sh --config app-config.yaml
 
 # OR Install the .deb package (example: install.deb without config)
 # sudo dpkg -i ./app/install.deb
@@ -89,6 +92,10 @@ bash ./app/install.sh --config app-config.yaml
 
 Script as string:
 ```code
+Without config: 
+"#!/bin/bash\nmv MyVMApp app.tar\nmkdir -p app\ntar -xf app.tar -C app\nchmod -R +x app\nchmod -R +r app\nbash ./app/install.sh\n# sudo dpkg -i ./app/install.deb\n# sudo rpm -ivh ./app/install.rpm"
+
+With config:
 "#!/bin/bash\nmv MyVMApp app.tar\nmv MyVMApp-config app-config.yaml\nmkdir -p app\ntar -xf app.tar -C app\nchmod -R +x app\nchmod -R +r app\nbash ./app/install.sh --config app-config.yaml\n# sudo dpkg -i ./app/install.deb\n# sudo rpm -ivh ./app/install.rpm"
 ```
 
@@ -96,17 +103,20 @@ Script as string:
 ```cli-interactive
 :: Rename blobs
 rename MyVMApp app.zip
-rename MyVMApp-config app-config.json
+:: rename MyVMApp-config app-config.json
 
 :: Unzip using built-in tar (available on Windows 10+)
 mkdir app
 tar -xf app.zip -C app
 
-:: Install .exe application (example: setup.exe with config)
-app\setup.exe /config app-config.json
+:: Install .exe application
+app\setup.exe
+
+:: Install .exe application with config (example: setup.exe with config)
+:: app\setup.exe /config app-config.json
 
 :: install .msi application (example: setup.exe without config)
-:: msiexec /i app\setup.msi /qn /l*v install.log
+:: msiexec /i app\setup.msi
 
 :: Install JavaScript (example: setup.js with config)
 :: cscript //nologo app\setup.js app-config.json
@@ -120,7 +130,11 @@ app\setup.exe /config app-config.json
 
 Script as string: 
 ```code
-"rename MyVMApp app.zip\r\nrename MyVMApp-config app-config.json\r\nmkdir app\r\ntar -xf app.zip -C app\r\napp\\setup.exe /config app-config.json\r\n:: msiexec /i app\\setup.msi /qn /l*v install.log\r\n:: cscript //nologo app\\setup.js app-config.json\r\n:: python app\\install.py app-config.json\r\n:: ruby app\\install.rb app-config.json"
+Without config: 
+"rename MyVMApp app.zip\r\nmkdir app\r\ntar -xf app.zip -C app\r\napp\\setup.exe\r\n:: msiexec /i app\\setup.msi /qn /l*v install.log\r\n:: cscript //nologo app\\setup.js app-config.json\r\n:: python app\\install.py app-config.json\r\n:: ruby app\\install.rb app-config.json"
+
+With config: 
+"rename MyVMApp app.zip\r\nrename MyVMApp-config app-config.json\r\nmkdir app\r\ntar -xf app.zip -C app\r\napp\\setup.exe /config app-config.json\r\n:: msiexec /i app\\setup.msi\r\n:: cscript //nologo app\\setup.js app-config.json\r\n:: python app\\install.py app-config.json\r\n:: ruby app\\install.rb app-con*
 ```
 
 #### [.ZIP with PowerShell](#tab/ZIPPowershell)
@@ -128,7 +142,7 @@ Script as string:
 powershell.exe -command "
 # Rename blobs
 Rename-Item -Path '.\MyVMApp' -NewName 'app.zip'
-Rename-Item -Path '.\MyVMApp-config' -NewName 'app-config.json'
+# Rename-Item -Path '.\MyVMApp-config' -NewName 'app-config.json'
 
 # Unzip application package
 Expand-Archive -Path '.\app.zip' -DestinationPath '.\app'
@@ -136,33 +150,47 @@ Expand-Archive -Path '.\app.zip' -DestinationPath '.\app'
 # Set execution policy
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
 
-# Install the .exe application (example: setup.exe with config)
-Start-Process -FilePath '.\app\setup.exe' -ArgumentList '/config app-config.json' -Wait
+# Install the .exe application (example: setup.exe)
+Start-Process -FilePath '.\app\setup.exe' -Wait
+
+# Install the .exe application with config (example: setup.exe with config)
+# Start-Process -FilePath '.\app\setup.exe' -ArgumentList '/config app-config.json' -Wait
 
 # Install PowerShell script (example: setup.ps1 with config)
 # powershell.exe -ExecutionPolicy Bypass -File '.\app\setup.ps1' -ConfigFile 'app-config.json'
 
 # Install .msi application (example: setup.msi without config)
-# Start-Process -FilePath 'msiexec.exe' -ArgumentList '/i .\app\setup.msi /qn /l*v install.log' -Wait
+# Start-Process -FilePath 'msiexec.exe' -ArgumentList '/i .\app\setup.msi' -Wait
 "
 ```
 
 Script as string:
 ```code
-"powershell.exe -command \"Rename-Item -Path '.\\MyVMApp' -NewName 'app.zip'; Rename-Item -Path '.\\MyVMApp-config' -NewName 'app-config.json'; Expand-Archive -Path '.\\app.zip' -DestinationPath '.\\app'; Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force; Start-Process -FilePath '.\\app\\setup.exe' -ArgumentList '/config app-config.json' -Wait; # powershell.exe -ExecutionPolicy Bypass -File '.\\app\\setup.ps1' -ConfigFile 'app-config.json'; # Start-Process -FilePath 'msiexec.exe' -ArgumentList '/i .\\app\\setup.msi /qn /l*v install.log' -Wait\""
+Without config: 
+"powershell.exe -command \"Rename-Item -Path '.\\MyVMApp' -NewName 'app.zip'; Expand-Archive -Path '.\\app.zip' -DestinationPath '.\\app'; Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force; Start-Process -FilePath '.\\app\\setup.exe' -Wait; # powershell.exe -ExecutionPolicy Bypass -File '.\\app\\setup.ps1' -ConfigFile 'app-config.json'; # Start-Process -FilePath 'msiexec.exe' -ArgumentList '/i .\\app\\setup.msi' -Wait\""
+
+With config: 
+"powershell.exe -command \"Rename-Item -Path '.\\MyVMApp' -NewName 'app.zip'; Rename-Item -Path '.\\MyVMApp-config' -NewName 'app-config.json'; Expand-Archive -Path '.\\app.zip' -DestinationPath '.\\app'; Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force; Start-Process -FilePath '.\\app\\setup.exe' -ArgumentList '/config app-config.json' -Wait; # powershell.exe -ExecutionPolicy Bypass -File '.\\app\\setup.ps1' -ConfigFile 'app-config.json'; # Start-Process -FilePath 'msiexec.exe' -ArgumentList '/i .\\app\\setup.msi' -Wait\""
 ```
 
 #### [.EXE](#tab/EXE)
 ```cli-interactive
 :: Rename blobs
 rename MyVMApp app.exe
-rename MyVMApp-config app-config.json
+:: rename MyVMApp-config app-config.json
+
+:: Run the installer
+app.exe
 
 :: Run the installer with config
-app.exe /config app-config.json
+:: app.exe /config app-config.json
 ```
 Script as string:
 ```code
+Without config: 
+"rename MyVMApp app.exe\r\napp.exe"
+
+With config: 
 "rename MyVMApp app.exe\r\nrename MyVMApp-config app-config.json\r\napp.exe /config app-config.json"
 ```
 
@@ -170,50 +198,73 @@ Script as string:
 powershell.exe -command "
 # Rename blobs
 Rename-Item -Path '.\MyVMApp' -NewName 'app.exe'
-Rename-Item -Path '.\MyVMApp-config' -NewName 'app-config.json'
+# Rename-Item -Path '.\MyVMApp-config' -NewName 'app-config.json'
 
 # Set execution policy
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
 
-# Install the .exe application (example: setup.exe with config)
+# Install the .exe application (example: setup.exe)
+Start-Process -FilePath '.\app.exe' -Wait
+
+# Install the .exe application with config (example: setup.exe with config)
 Start-Process -FilePath '.\app.exe' -ArgumentList '/config app-config.json' -Wait
 "
 ```
 Script as string: 
 ```code
+Without config:
+"powershell.exe -command \"Rename-Item -Path '.\\MyVMApp' -NewName 'app.exe'; Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force; Start-Process -FilePath '.\\app.exe' -Wait\""
+
+With config: 
 "powershell.exe -command \"Rename-Item -Path '.\\MyVMApp' -NewName 'app.exe'; Rename-Item -Path '.\\MyVMApp-config' -NewName 'app-config.json'; Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force; Start-Process -FilePath '.\\app.exe' -ArgumentList '/config app-config.json' -Wait\""
+
 ```
 
 #### [.MSI](#tab/MSI)
 ```cli-interactive
 :: Rename blobs
 rename MyVMApp app.msi
-rename MyVMApp-config app-config.json
+:: rename MyVMApp-config app-config.json
 
-:: install .msi application (example: setup.exe without config)
-msiexec /i app.msi /qn /l*v install.log
+:: install .msi application (example: setup.exe)
+msiexec /i app.msi
+
+:: Install .msi application with config (example: setup.exe with config.json)
+:: msiexec /i app.msi CONFIGFILE=config.json
+
 ```
 Script as string: 
 ```code
-"rename MyVMApp app.msi\r\nrename MyVMApp-config app-config.json\r\nmsiexec /i app.msi /qn /l*v install.log"
+Without config:
+"rename MyVMApp app.msi\r\nmsiexec /i app.msi"
+
+With config: 
+"rename MyVMApp app.msi\r\nrename MyVMApp-config app-config.json\r\nmsiexec /i app.msi CONFIGFILE=app-config.json"
 ```
 
 ```powershell-interactive
 powershell.exe -command "
 # Rename blobs
 Rename-Item -Path '.\MyVMApp' -NewName 'app.zip'
-Rename-Item -Path '.\MyVMApp-config' -NewName 'app-config.json'
+# Rename-Item -Path '.\MyVMApp-config' -NewName 'app-config.json'
 
 # Set execution policy
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
 
-# Install .msi application (example: setup.msi without config)
-Start-Process -FilePath 'msiexec.exe' -ArgumentList '/i .\app\setup.msi /qn /l*v install.log' -Wait
+# Install .msi application (example: setup.msi)
+Start-Process -FilePath 'msiexec.exe' -ArgumentList '/i .\app\setup.msi' -Wait
+
+# Install .msi application with config (example: setup.msi with config.json)
+# Start-Process -FilePath 'msiexec.exe' -ArgumentList '/i .\app\setup.msi CONFIGFILE=.\app\config.json' -Wait
 "
 ```
 Script as string: 
 ```code
-"powershell.exe -command \"Rename-Item -Path '.\\MyVMApp' -NewName 'app.zip'; Rename-Item -Path '.\\MyVMApp-config' -NewName 'app-config.json'; Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force; Start-Process -FilePath 'msiexec.exe' -ArgumentList '/i .\\app\\setup.msi /qn /l*v install.log' -Wait\""
+Without config: 
+"powershell.exe -command \"Rename-Item -Path '.\\MyVMApp' -NewName 'app.zip'; Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force; Start-Process -FilePath 'msiexec.exe' -ArgumentList '/i .\\app\\setup.msi' -Wait\""
+
+With config: 
+"powershell.exe -command \"Rename-Item -Path '.\\MyVMApp' -NewName 'app.zip'; Rename-Item -Path '.\\MyVMApp-config' -NewName 'app-config.json'; Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force; Start-Process -FilePath 'msiexec.exe' -ArgumentList '/i .\\app\\setup.msi CONFIGFILE=.\\app\\app-config.json' -Wait\""
 ```
 
 #### [.DEB](#tab/DEB)
@@ -222,18 +273,17 @@ Script as string:
 
 # Rename blobs
 mv MyVMApp app.deb
-mv MyVMApp-config app-config.yaml
 
 # Set permissions
 chmod -R +x app.deb
 chmod -R +r app.deb
 
-# Install .deb package (example: install.deb without config)
-# sudo dpkg -i ./app.deb
+# Install .deb package (example: install.deb)
+sudo dpkg -i ./app.deb
 ```
 Script as string: 
 ```code
-"#!/bin/bash\nmv MyVMApp app.deb\nmv MyVMApp-config app-config.yaml\nchmod -R +x app.deb\nchmod -R +r app.deb\n# sudo dpkg -i ./app.deb"
+"#!/bin/bash\nmv MyVMApp app.deb\nchmod -R +x app.deb\nchmod -R +r app.deb\nsudo dpkg -i ./app.deb"
 ```
 
 #### [.RPM](#tab/RPM)
@@ -242,18 +292,17 @@ Script as string:
 
 # Rename blobs
 mv MyVMApp app.rpm
-mv MyVMApp-config app-config.yaml
 
 # Set permissions
 chmod -R +x app.rpm
 chmod -R +r app.rpm
 
-# Install .rpm package (example: install.rpm without config)
+# Install .rpm package (example: install.rpm)
 sudo rpm -ivh ./app.rpm
 ```
 Script as string: 
 ```code
-"#!/bin/bash\nmv MyVMApp app.rpm\nmv MyVMApp-config app-config.yaml\nchmod -R +x app.rpm\nchmod -R +r app.rpm\nsudo rpm -ivh ./app.rpm"
+"#!/bin/bash\nmv MyVMApp app.rpm\nchmod -R +x app.rpm\nchmod -R +r app.rpm\nsudo rpm -ivh ./app.rpm"
 ```
 
 #### [.SH](#tab/SH)
@@ -262,36 +311,50 @@ Script as string:
 
 # Rename blobs
 mv MyVMApp app.sh
-mv MyVMApp-config app-config.yaml
+# mv MyVMApp-config app-config.yaml
 
 # Set permissions
 chmod -R +x app.sh
 chmod -R +r app.sh
 
+# Install the script (example: install.sh)
+bash ./app.sh
+
 # Install the script (example: install.sh with config)
-bash ./app.sh --config app-config.yaml
+# bash ./app.sh --config app-config.yaml
 ```
 Script as string: 
 ```code
+Without config: 
+"#!/bin/bash\nmv MyVMApp app.sh\nchmod -R +x app.sh\nchmod -R +r app.sh\nbash ./app.sh"
+
+With config: 
 "#!/bin/bash\nmv MyVMApp app.sh\nmv MyVMApp-config app-config.yaml\nchmod -R +x app.sh\nchmod -R +r app.sh\nbash ./app.sh --config app-config.yaml"
 ```
 
-#### [.PS](#tab/PS)
+#### [.PS1](#tab/PS)
 ```powershell-interactive
 powershell.exe -command "
 # Rename blobs
 Rename-Item -Path '.\MyVMApp' -NewName 'app.ps1'
-Rename-Item -Path '.\MyVMApp-config' -NewName 'app-config.json'
+# Rename-Item -Path '.\MyVMApp-config' -NewName 'app-config.json'
 
 # Set execution policy
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
 
+# Install PowerShell script (example: setup.ps1)
+powershell.exe -ExecutionPolicy Bypass -File '.\app.ps1'
+
 # Install PowerShell script (example: setup.ps1 with config)
-powershell.exe -ExecutionPolicy Bypass -File '.\app.ps1' -ConfigFile 'app-config.json'
+# powershell.exe -ExecutionPolicy Bypass -File '.\app.ps1' -ConfigFile 'app-config.json'
 "
 ```
 Script as string: 
 ```code
+Without config: 
+"powershell.exe -command \"Rename-Item -Path '.\\MyVMApp' -NewName 'app.ps1'; Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force; powershell.exe -ExecutionPolicy Bypass -File '.\\app.ps1'\""
+
+With config: 
 "powershell.exe -command \"Rename-Item -Path '.\\MyVMApp' -NewName 'app.ps1'; Rename-Item -Path '.\\MyVMApp-config' -NewName 'app-config.json'; Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force; powershell.exe -ExecutionPolicy Bypass -File '.\\app.ps1' -ConfigFile 'app-config.json'\""
 ```
 
@@ -304,15 +367,28 @@ The delete script enables you to define the delete operations for the applicatio
 There may be few operations that delete script must perform. 
 
 - **Uninstall application:**
-	Properly uninstall the application from the VM. For example, execute `uninstall.exe` on Windows or `sudo apt remove app` on Linux. 
+	Properly uninstall the application from the VM. For example, 
+  - CMD on Windows: `"./uninstall.exe"`
+  - PowerShell on Windows: `"Start-Process -FilePath \".\\uninstall.exe\" -Wait"`
+  - CMD on Linux: `"sudo ./uninstall.sh"` OR `"sudo apt remove app"` 
 
 - **Remove residual files:**
-   	Delete residual applications files from the VM. For example, execute `Remove-Item -Path "$PWD\*" -Recurse -Force -ErrorAction SilentlyContinue` on Windows or `sudo rm -rf ./* ./.??*` on Linux.
+   	Delete residual applications files from the VM. For example, 
+    - CMD on Windows: `"del *.* & for /d %i in (*) do rmdir /s /q \"%i\""`
+    - PowerShell on Windows: `"Remove-Item -Path * -Recurse -Force"`
+    - CMD on Linux: `"rm -rf ./*"`
 
 
 ## Upload the application files to Azure storage account
 
+> [!IMPORTANT]
+> Before uploading files or generating SAS URLs, assign following Azure RBAC roles to the user, service principal, or managed identity that performs these operations on the target Storage account or container:
+> - Storage Blob Data Contributor or Storage Blob Data Owner: required to upload, modify, or delete blobs.
+> - For generating SAS with Azure AD (for example, using --auth-mode login in CLI/PowerShell), also assign Storage Blob Delegator at the storage account scope.
+>
+> [Learn More](/azure/storage/blobs/storage-auth-abac)
 #### 1. **[Upload your application and configuration files to a container](/azure/storage/blobs/storage-quickstart-blobs-portal) in an [Azure storage account](/azure/storage/common/storage-account-create)**.
+   
    Your application can be stored in a block or page blob. If you choose to use a page blob, you need to byte align the files before you upload them. Use the following sample to byte align your file.
 
 #### [CLI](#tab/cli1)
@@ -399,7 +475,7 @@ for FILE in $FILES; do
     --name "$BLOB_NAME" \
     --permissions r \
     --expiry $EXPIRY \
-    --auth-mode login \
+    --auth-mode login --as-user \
     -o tsv)
 
   SAS_URL="https://${STORAGE_ACCOUNT}.blob.core.windows.net/${CONTAINER_NAME}/${BLOB_NAME}?${SAS_TOKEN}"
@@ -447,7 +523,7 @@ foreach ($file in $files) {
         --name $relativePath `
         --permissions r `
         --expiry $expiry `
-        --auth-mode login `
+        --auth-mode login --as-user`
         -o tsv
 
     $sasUrl = "https://$storageAccount.blob.core.windows.net/$containerName/$relativePath`?$sasToken"
@@ -502,18 +578,18 @@ PUT
         "defaultConfigurationLink": "$configLink"
       },
       "manageActions": {
-        "install": "echo installed",
-        "remove": "echo removed",
-        "update": "echo update"
+        "install": "$installScriptAsString",
+        "remove": "$removeScriptAsString",
+        "update": "$updateScriptAsString"
       },
       "targetRegions": [
         {
           "name": "West US",
           "regionalReplicaCount": 1
         },
-	{
-	  "name": "East US"
-	}
+	      {
+	        "name": "East US"
+	      }
       ]
       "endofLifeDate": "datetime",
       "replicaCount": 1,
@@ -523,9 +599,9 @@ PUT
 	"allowDeletionOfReplicatedLocations": false
       }
       "settings": {
-	"scriptBehaviorAfterReboot": "None | Rerun",
-	"configFileName": "$appConfigFileName",
-	"packageFileName": "$appPackageFileName"
+	      "scriptBehaviorAfterReboot": "None | Rerun",
+	      "configFileName": "$appConfigFileName",
+	      "packageFileName": "$appPackageFileName"
       }
    }
 }
@@ -540,12 +616,18 @@ Create the VM application definition using ['az sig gallery-application create']
 
 
 ```azurecli-interactive
+application_name="myApp"
+gallery_name="myGallery"
+resource_group="myResourceGroup"
+location="East US"
+os_type="Linux
+
 az sig gallery-application create \
-    --application-name myApp \
-    --gallery-name myGallery \
-    --resource-group myResourceGroup \
-    --os-type Linux \
-    --location "East US"
+  --application-name "$application_name" \
+  --gallery-name "$gallery_name" \
+  --resource-group "$resource_group" \
+  --os-type "$os_type" \
+  --location "$location"
 ```
 
 Create a VM application version using ['az sig gallery-application version create'](/cli/azure/sig/gallery-application/version#az-sig-gallery-application-version-create). Allowed characters for version are numbers and periods. Numbers must be within the range of a 32-bit integer. Format: *MajorVersion*.*MinorVersion*.*Patch*.
@@ -553,39 +635,50 @@ Create a VM application version using ['az sig gallery-application version creat
 Replace the values of the parameters with your own.
 
 ```azurecli-interactive
+version_name="1.0.0"
+packageUrl = "https://<storage account name>.blob.core.windows.net/<container name>/<filename>?<blob sas token>"
+installCommand = "mv myApp app.trz && tar -xzf app.trz && ./install.sh"
+removeCommand = "rm -rf ./*"
+targetRegions='[
+  {"name": "South Central US", "regionalReplicaCount": 2},
+  {"name": "West Europe", "regionalReplicaCount": 1}
+]'
+
 az sig gallery-application version create \
-   --version-name 1.0.0 \
-   --application-name myApp \
-   --gallery-name myGallery \
-   --location "East US" \
-   --resource-group myResourceGroup \
-   --package-file-link "https://<storage account name>.blob.core.windows.net/<container name>/<filename>" \
-   --install-command "mv myApp .\myApp\myApp" \
-   --remove-command "rm .\myApp\myApp" \
-   --update-command  "mv myApp .\myApp\myApp" \
-   --default-configuration-file-link "https://<storage account name>.blob.core.windows.net/<container name>/<filename>"\
+   --version-name "$version_name" \
+   --application-name "$application_name" \
+   --gallery-name "$gallery_name" \
+   --location "$location" \
+   --resource-group "$resource_group" \
+   --package-file-link "$packageUrl" \
+   --install-command "$installCommand" \
+   --remove-command "$removeCommand" \
+   --target-regions "$targetRegions"
+
 ```
 
 
 #### [PowerShell](#tab/powershell3)
 
-Create the VM Application definition using [`New-AzGalleryApplication`](/powershell/module/az.compute/new-azgalleryapplication). In this example, we're creating a Linux app named *myApp* in the *myGallery* Azure Compute Gallery and in the *myGallery* resource group. Replace the values for variables as needed.
+Create the VM Application definition using ['New-AzGalleryApplication'](/powershell/module/az.compute/new-azgalleryapplication). In this example, we're creating a Linux app named *myApp* in the *myGallery* Azure Compute Gallery and in the *myGallery* resource group. Replace the values for variables as needed.
 
 ```azurepowershell-interactive
 $galleryName = "myGallery"
 $rgName = "myResourceGroup"
 $applicationName = "myApp"
 $description = "Backend Linux application for finance."
+$location = "East US"
+
 New-AzGalleryApplication `
   -ResourceGroupName $rgName `
   -GalleryName $galleryName `
-  -Location "East US" `
+  -Location $location `
   -Name $applicationName `
-  -SupportedOSType Linux `
+  -SupportedOSType Windows `
   -Description $description
 ```
 
-Create a version of your VM Application using [`New-AzGalleryApplicationVersion`](/powershell/module/az.compute/new-azgalleryapplicationversion). Allowed characters for version are numbers and periods. Numbers must be within the range of a 32-bit integer. Format: *MajorVersion*.*MinorVersion*.*Patch*.
+Create a version of your VM Application using ['New-AzGalleryApplicationVersion'](/powershell/module/az.compute/new-azgalleryapplicationversion). Allowed characters for version are numbers and periods. Numbers must be within the range of a 32-bit integer. Format: *MajorVersion*.*MinorVersion*.*Patch*.
 
 In this example, we're creating version number *1.0.0*. Replace the values of the variables as needed.
 
@@ -593,17 +686,26 @@ In this example, we're creating version number *1.0.0*. Replace the values of th
 $galleryName = "myGallery"
 $rgName = "myResourceGroup"
 $applicationName = "myApp"
+$location = "East US"
 $version = "1.0.0"
+$packageUrl = "https://<storage account name>.blob.core.windows.net/<container name>/<filename>?<blob sas token>"
+$installCommand = 'rename myApp app.exe && .\app.exe'
+$removeCommand = 'Remove-Item -Recurse -Force *'
+$targetRegions = @(
+    @{ Name = "South Central US"; ReplicaCount = 2 },
+    @{ Name = "West Europe"; ReplicaCount = 1 }
+)
+
 New-AzGalleryApplicationVersion `
    -ResourceGroupName $rgName `
    -GalleryName $galleryName `
    -GalleryApplicationName $applicationName `
    -Name $version `
-   -PackageFileLink "https://<storage account name>.blob.core.windows.net/<container name>/<filename>" `
-   -DefaultConfigFileLink "https://<storage account name>.blob.core.windows.net/<container name>/<filename>" `
-   -Location "East US" `
-   -Install "mv myApp .\myApp\myApp" `
-   -Remove "rm .\myApp\myApp" `
+   -PackageFileLink $packageUrl `
+   -Location $location `
+   -Install $installCommand `
+   -Remove $removeCommand `
+   -TargetRegion $targetRegions
 ```
 
 #### [Portal](#tab/portal3)
@@ -1322,7 +1424,7 @@ az vmss application set \
 
 #### [PowerShell](#tab/powershell4)
 
-To add the application to an existing VM, get the application version and use that to get the VM application version ID. Use the ID to add the application to the VM configuration.
+To add the application to an existing VM, get the application version and use that to get the VM application version ID. Create the application object using ID with ['New-AzVmGalleryApplication'](/powershell/module/az.compute/new-azvmgalleryapplication) and add the application to the VM configuration using ['Add-AzVmGalleryApplication'](/powershell/module/az.compute/add-azvmgalleryapplication).
 
 ```azurepowershell-interactive
 $galleryName = "myGallery"
@@ -1330,6 +1432,7 @@ $rgName = "myResourceGroup"
 $applicationName = "myApp"
 $version = "1.0.0"
 $vmName = "myVM"
+
 $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmName
 $appVersion = Get-AzGalleryApplicationVersion `
    -GalleryApplicationName $applicationName `
@@ -1341,8 +1444,15 @@ $app = New-AzVmGalleryApplication -PackageReferenceId $packageId
 Add-AzVmGalleryApplication -VM $vm -GalleryApplication $app -TreatFailureAsDeploymentFailure true
 Update-AzVM -ResourceGroupName $rgName -VM $vm
 ```
+
 To add the application to a Virtual Machine Scale Set:
 ```azurepowershell-interactive
+$galleryName = "myGallery"
+$rgName = "myResourceGroup"
+$applicationName = "myApp"
+$version = "1.0.0"
+$vmssName = "myVMSS"
+
 $vmss = Get-AzVmss -ResourceGroupName $rgname -Name $vmssName
 $appVersion = Get-AzGalleryApplicationVersion `
    -GalleryApplicationName $applicationName `
@@ -1381,5 +1491,5 @@ Select the VM application from the list and then select **Save** at the bottom o
 
 
 ## Next steps
-Learn more about [Azure VM Applications](vm-applications.md).
-Learn to [manage, update or delete](vm-applications-manage.md) Azure VM Applications.
+- Learn more about [Azure VM Applications](vm-applications.md).
+- Learn to [manage, update or delete](vm-applications-manage.md) Azure VM Applications.
