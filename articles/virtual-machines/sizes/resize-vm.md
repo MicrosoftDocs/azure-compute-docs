@@ -39,7 +39,7 @@ If your VM uses Premium Storage, make sure that you choose an **s** version of t
 > [!Note] 
 > If the virtual machine is currently running, changing its size will cause it to restart. 
 
-If your VM is still running and you don't see the size you want in the list, stopping the virtual machine may reveal more sizes.
+When you attempt to resize an Azure VM's size while it is running, the portal or CLI sometimes shows only a limited set of compatible VM sizes. This is because the VM is bound to a particular hardware cluster, and only certain sizes are supported in that cluster. By deallocating (stopping and releasing the compute host) the VM first, you allow Azure to reassign it to a cluster that supports more size options. After deallocation, you often see additional VM sizes available for resizing.
 
    > [!WARNING]
    > Deallocating the VM also releases any dynamic IP addresses assigned to the VM. The OS and data disks are not affected.
