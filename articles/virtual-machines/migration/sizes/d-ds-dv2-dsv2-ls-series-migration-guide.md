@@ -98,6 +98,20 @@ The following sizes are being retired by 1 May 2028.
 	 - Standard_L4s to Standard_L32s
 
 
+The following sizes are being retired by 15 November 2028.
+
+- F
+- Fs
+- Fsv2
+- Lsv2
+- G
+- Gs
+- Av2
+- Amv2
+- B-series 
+
+
+
 #### Q: Why Should I Migrate?
 
 If you are actively running any sizes listed in this article, these VMs are set to retire in 2028. Migration is mandatory to avoid unexpected shutdown. Additionally, migration yields the following benefits: 
