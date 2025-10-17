@@ -25,6 +25,10 @@ If your VM uses Premium Storage, make sure that you choose an **s** version of t
 
 ## Change the VM size
 
+> [!Note] 
+> If a resize operation **fails**, the VM model **may display the desired VM size**. However, the virtual machine will **continue running** on its **previous size until** a **new allocation attempt succeeds**. The Azure portal may temporarily show the resized SKU even though the VM is still operating with the earlier configuration.
+>
+
 ### [Portal](#tab/portal)
 1. Open the [Azure portal](https://portal.azure.com). <br/><br/>
 1. Type *virtual machines* in the search. Under **Services**, select **Virtual machines**.
