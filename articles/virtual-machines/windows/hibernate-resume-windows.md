@@ -28,6 +28,7 @@ For a list of hibernation compatible VM sizes, check out the [supported VM sizes
 ### Supported Windows versions
 The following Windows operating systems support hibernation:
 
+- Windows Server 2025
 - Windows Server 2022
 - Windows Server 2019
 - Windows 11 Pro
