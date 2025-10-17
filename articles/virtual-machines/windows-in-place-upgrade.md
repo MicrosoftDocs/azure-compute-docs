@@ -34,6 +34,8 @@ Before you begin an in-place upgrade:
 
 > [!NOTE]
 > When performing an in-place upgrade on Azure Windows VMs, the VM properties on the Azure portal aren't updated; the changes are only reflected within the OS. This means that the source image information in the VM properties, including the publisher, offer, and plan, remains unchanged. The image used to deploy the VM remains the same, and only the OS is upgraded.
+>
+> For workloads hosting critical infrastructure roles or applications such as SQL Server, Domain Controller (DC), Active Directory (AD), or similar, we do not recommend performing an in-place OS upgrade. Deploying a new VM with latest desired version and copying the data will always be the best option. This approach will not only address certain roadblocks but will also ensure a safer, more controlled, and supportable upgrade path across your critical environment.
 
 ## Upgrade VM to volume license (KMS server activation)
 
