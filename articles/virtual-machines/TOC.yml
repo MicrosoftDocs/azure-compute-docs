@@ -2509,4 +2509,10 @@
     - name: Windows
       href: ./windows/faq.yml
 - name: Support and troubleshooting
-  href: vm-support-help.md
+  items:
+  - name: Support options
+    href: vm-support-help.md
+  - name: Linux troubleshooting
+    href: /troubleshoot/azure/virtual-machines/linux/welcome-virtual-machines-linux?context=/azure/virtual-machines/context/context
+  - name: Windows troubleshooting
+    href: /troubleshoot/azure/virtual-machines/windows/welcome-virtual-machines-windows?context=/azure/virtual-machines/context/context
