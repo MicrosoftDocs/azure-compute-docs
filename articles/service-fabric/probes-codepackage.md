@@ -126,6 +126,11 @@ The HTTP probe has additional properties that you can set:
     </Policies>
   </ServiceManifestImport>
 ```
+
+> [!NOTE]
+> Service Fabric HTTPS probes do not support client certificate authentication during the TLS handshake. For details on the handshake process, see the [TLS Handshake Protocol][tls-handshake-link].
+>
+
 ### TCP probe
 
 For a TCP probe, Service Fabric will try to open a socket on the container by using the specified port. If it can establish a connection, the probe is considered successful. Here's an example of how to specify a probe that uses a TCP socket:
@@ -181,4 +186,5 @@ See the following article for related information:
 [health-introduction-link]: service-fabric-health-introduction.md
 [application-model-link]: service-fabric-application-model.md
 [hosting-model-link]: service-fabric-hosting-model.md
+[tls-handshake-link]: /windows/win32/secauthn/tls-handshake-protocol
 
