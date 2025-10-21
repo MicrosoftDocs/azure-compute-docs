@@ -317,7 +317,7 @@ az maintenance applyupdate create \
 
 ## Check the status of applying updates
 
-You can check on the progress of the updates by using `az maintenance applyupdate get`.
+You can check on the progress of the updates by using `az maintenance applyupdate show`.
 
 To see results for the last update, use `default` as the update name. Or replace `myUpdateName` with the name of the update that was returned when you ran `az maintenance applyupdate create`.
 
@@ -337,7 +337,7 @@ Type           : Microsoft.Maintenance/applyUpdates
 ### Isolated VM
 
 ```azurecli-interactive
-az maintenance applyupdate get \
+az maintenance applyupdate show \
    --subscription {subscriptionID} \ 
    --resource-group myMaintenanceRG \
    --resource-name myVM \
@@ -351,7 +351,7 @@ az maintenance applyupdate get \
 ### Dedicated host
 
 ```azurecli-interactive
-az maintenance applyupdate get \
+az maintenance applyupdate show \
    --subscription {subscriptionID} \ 
    --resource-group myMaintenanceRG \
    --resource-name myHost \
@@ -367,7 +367,7 @@ az maintenance applyupdate get \
 ### Virtual machine scale sets
 
 ```azurecli-interactive
-az maintenance applyupdate get \
+az maintenance applyupdate show \
    --subscription {subscriptionID} \ 
    --resource-group myMaintenanceRG \
    --resource-name myVMSS \
