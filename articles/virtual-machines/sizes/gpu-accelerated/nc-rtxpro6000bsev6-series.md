@@ -6,8 +6,8 @@ ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
 ms.date: 10/21/2025
-ms.author: mattmcinnes
-ms.reviewer: mattmcinnes
+ms.author: magatala-MSFT
+ms.reviewer: iamwilliew
 # Customer intent: As a cloud architect, I want to understand the specifications and feature support of the NC_RTXPRO6000BSE_v6 size series, so that I can select the appropriate virtual machine size for my high-performance computing workloads.
 ---
 
