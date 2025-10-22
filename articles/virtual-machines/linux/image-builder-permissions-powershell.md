@@ -18,6 +18,9 @@ ms.custom: devx-track-azurepowershell, linux-related-content
 
 When you register for Azure VM Image Builder, this grants the service permission to create, manage, and delete a staging resource group. The service also has rights to add resources to a resource group, required for the image build. During a successful registration, your subscription gets access to a VM Image Builder service principal name (SPN).
 
+> [!NOTE]
+> If you are using a custom staging resource group, the user-assigned managed identity also requires additional permissions of **Contributor** over this resource group, to be able to deploy the templated VM during the process.
+
 If you want VM Image Builder to distribute images, you need to create a user-assigned identity in Azure, with permissions to read and write images. For example, you might want to distribute images to managed images or to Azure Compute Gallery. If you're accessing Azure Storage, then the user-assigned identity you create needs permissions to read private or public containers.
 
 You must set up permissions and privileges prior to building an image. The following sections detail how to configure possible scenarios by using PowerShell.
