@@ -1,12 +1,12 @@
 ---
 title: NC_RTXPRO6000BSE_v6 size series
 description: Information on and specifications of the NC_RTXPRO6000BSE_v6-series sizes
-author: mattmcinnes
+author: iamwilliew
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
 ms.date: 10/21/2025
-ms.author: magatala-MSFT
+ms.author: v-nmagatala
 ms.reviewer: iamwilliew
 # Customer intent: As a cloud architect, I want to understand the specifications and feature support of the NC_RTXPRO6000BSE_v6 size series, so that I can select the appropriate virtual machine size for my high-performance computing workloads.
 ---
@@ -15,21 +15,20 @@ ms.reviewer: iamwilliew
 
 The RTXPRO6000BSE series virtual machine (VM) is a powerful addition to the Azure GPU family. You can use this series for real-world Azure Applied AI training, visualization, and batch inference workloads.These VMs are ideal for real-world Applied AI workloads, such as:
 
-	• GPU-accelerated analytics and databases
-	• Batch inferencing with heavy pre- and post-processing
-	• Advanced visualization and rendering for design and engineering
-	• Machine learning (ML) development and model training
-	• Video processing and transcoding
-	• AI/ML web services and virtual workstation environments
-
+	- GPU-accelerated analytics and databases
+	- Batch inferencing with heavy pre and post-processing
+	- Advanced visualization and rendering for design and engineering
+	- Machine learning (ML) development and model training
+	- Video processing and transcoding
+	- AI/ML web services and virtual workstation environments
 
 ## Host specifications
-|Part|Quantity|Specs|
+| Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
 |---|---|---|
-|Processor|16 - 320 vCPUs||
-|Memory|64 - 1280 GiB||
-|Network|6 - 8 NICs| 25,000 - 2,00,000 Mbps|
-|Accelerators|1 - 4|GPUs NVIDIA RTX Pro 6000 GPU (48GB GDDR6 ECC)|
+|Processor|16 - 320 vCPUs|4.2 GHz|
+|Memory|64 - 1280 GiB|DDR5|
+|Network|6 - 8 NICs|25,000 - 200,000 Mbps|
+|Accelerators|1 - 4|NVIDIA RTX Pro 6000 GPU|
 
 
 ## Feature support
@@ -37,7 +36,7 @@ The RTXPRO6000BSE series virtual machine (VM) is a powerful addition to the Azur
 
 ## Sizes in series
 
-### [General Purpose](#tab/sizestoragelocal)
+### [General Purpose](#tab/sizegeneralpurpose)
 
 |  Size Name | vCPUs (Qty.) | Memory (GB) |
 | --- | --- | --- |
@@ -48,7 +47,7 @@ The RTXPRO6000BSE series virtual machine (VM) is a powerful addition to the Azur
 | Standard_NC320ds_xl_RTXPRO6000BSE_v6|320|1280|
 
 
-### [Compute Optimized](#tab/sizebasic)
+### [Compute Optimized](#tab/sizecomputeoptimized)
 
 vCPUs (Qty.) and Memory for each size
 
@@ -64,7 +63,7 @@ vCPUs (Qty.) and Memory for each size
 - [Check vCPU quotas](../../../virtual-machines/quotas.md)
 
 
-### [Memory Optimized](#tab/sizestoragelocal)
+### [Memory Optimized](#tab/sizememoryoptimzed)
 
 |  Size Name | vCPUs (Qty.) | Memory (GB) |
 | --- | --- | --- |
