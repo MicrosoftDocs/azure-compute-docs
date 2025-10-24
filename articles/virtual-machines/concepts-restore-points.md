@@ -21,6 +21,7 @@ The following table summarizes the support matrix for VM restore points.
 --- | ---
 **VMs using Managed disks** | Yes
 **VMs using unmanaged disks** | No
+**VM sizes** | Crash consistent supported for VM SKUs that support premium storage. Application consistent supported for all VM SKUs
 **VMs using Ultra Disks** | Yes. Supported for application consistency. Not supported for crash consistency. Exclude these disks and create a VM restore point when using crash consistency.
 **VMs using Premium SSD v2 Disks** | Yes. Supported for application consistency. Not supported for crash consistency. Exclude these disks and create a VM restore point when using crash consistency.
 **VMs using Ephemeral OS Disks** | No. Exclude these disks and create a VM restore point.
