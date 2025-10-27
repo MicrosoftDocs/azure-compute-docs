@@ -18,5 +18,14 @@ As of version 6.13, the Linux kernel introduced support for large atomic writes 
 
 ## Limitations
 
-- Atomic write operations are only available when using managed disks with NVMe controllers.
-- Your application must ensure that the filesystem and your OS also guarantee large atomic write support to prevent torn writes. 
+- Atomic write operations are only available when using managed disks with NVMe controllers
+- Your application must ensure that the filesystem and your OS also guarantee large atomic write support 
+
+## Pre-requisites
+
+## Get started
+
+Access your VM and run `lsblk`, your disk should show up under one of the namespaces.
+
+
+
