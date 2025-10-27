@@ -18,14 +18,20 @@ As of version 6.13, the Linux kernel introduced support for large atomic writes 
 
 ## Limitations
 
-- Atomic write operations are only available when using managed disks with NVMe controllers
+- Only supported for Linux VMs
+-  Atomic write operations are only available when using managed disks with NVMe controllers
 - Your application must ensure that the filesystem and your OS also guarantee large atomic write support 
 
 ## Pre-requisites
 
 ## Get started
 
-Access your VM and run `lsblk`, your disk should show up under one of the namespaces.
+Access your VM and run `lsblk`, your disk should show up under one of the namespaces. In this example it's nvme0n2.
 
+Now that you have your disk, use sudo nvme id-ns to verify that nawun, nawupf, and nabspf all report as four LBAs. This means they support 16k atomic writes.
 
+Next, verify that the kernel detects atomic write parameters for the managed disk.
 
+Once you've confirmed all that, setup an XFS filesystem with 16KiB block size.
+
+Now that you've setup the filesystem. Write to your disk using the pwritev() API using Direct IO and the RWF_Atomic flag.
