@@ -81,7 +81,7 @@ Ultra Disks are designed to provide consistently low sub millisecond latencies a
 
 ### Ultra Disk IOPS
 
-Ultra Disks support IOPS limits of 1000 (300 only during deployment of Ultra Disks while using Unfirom Virtual Machine Scale Sets) IOPS/GiB, up to a maximum of 400,000 IOPS per disk. To achieve the target IOPS for the disk, ensure that the selected disk IOPS are less than the VM IOPS limit. Ultra Disks with greater IOPS can be used as shared disks to support multiple VMs. The minimum guaranteed IOPS per disk is 100.
+Ultra Disks support IOPS limits of 1000 (300 only during deployment of Ultra Disks while using Uniform Virtual Machine Scale Sets) IOPS/GiB, up to a maximum of 400,000 IOPS per disk. To achieve the target IOPS for the disk, ensure that the selected disk IOPS are less than the VM IOPS limit. Ultra Disks with greater IOPS can be used as shared disks to support multiple VMs. The minimum guaranteed IOPS per disk is 100.
 
 > [!NOTE]
 > Only during deployment of Ultra Disks while using Uniform Virtual Machine Scale Sets: The minimum guaranteed IOPS per disk are 1 IOPS/GiB, with an overall baseline minimum of 100 IOPS. If you exceed these limits at deployment, the deployment fails. You can [increase the performance](disks-enable-ultra-ssd.md#adjust-the-performance-of-an-ultra-disk) of these disks once deployment completes.
