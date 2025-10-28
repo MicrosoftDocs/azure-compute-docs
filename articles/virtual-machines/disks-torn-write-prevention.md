@@ -12,18 +12,19 @@ ms.custom: references_regions
 
 # Prevent torn writes while using managed disks
 
-A torn write (or a partial write) can occur when a power loss or system crash interrupts a disk write, leaving a data block only partially updated. This results in an inconsistent page containing a mix of old and new data, essentially a torn page. Torn pages compromise data integrity, so systems like database systems must detect and resolve them to avoid corrupt records or indexes. To prevent torn writes, Azure managed disks natively support atomic write operations for 8-KiB and 16-KiB blocks of data if the write that is issued aligns with the respective block offset. For example, a 16 KiB I/O issued to the disk at an offset that is a multiple of 16-KiB guarantees atomicity. To take advantage of this, 
+A torn write (or a partial write) can occur when a power loss or system crash interrupts a disk write, leaving a data block only partially updated. This results in an inconsistent page containing a mix of old and new data, essentially a torn page. Torn pages compromise data integrity, so systems like database systems must detect and resolve them to avoid corrupt records or indexes. Azure managed disks offer torn write prevent through atomic write operations for 8-KiB and 16-KiB blocks of data if the write that is issued aligns with the respective block offset. For example, a 16 KiB I/O issued to the disk at an offset that is a multiple of 16-KiB guarantees atomicity.
 
 ## When is this helpful?
 
-These atomic write operations are helpful when using databases, as they traditionally employ precautionary measures. PostgreSQL, for example, uses full page writes: when a page is modified for the first time after a checkpoint, the entire page (8KB or 16KB) is logged to the write-ahead log before writing it to the data files. Similarly, MySQL's InnoDB engine uses a doublewrite buffer, writing each page twice (first to a protected area, then to the main storage). This way, at least one copy is intact even if the other write is interrupted. These techniques are effective at preventing corruption, but they come with significant performance overhead. Extra writes to logs or duplicate writes to prevent torn writes to disk increases I/O load and can reduce throughput. Cloud benchmarks show that using natively supported page sized atomic disk writes in place of traditional torn-write protection can increase transaction throughput by up to 30% while cutting write latency by around 50%. An atomic write in this case means a multi-sector block (like a database page of 8KB or 16KB) is written to disk all-or-nothing. So that the disk either persists the entire block or nothing, and never has a partial update.
+These atomic write operations are helpful when using databases, as they traditionally employ precautionary measures. PostgreSQL, for example, uses full page writes: when a page is modified for the first time after a checkpoint, the entire page (8KB or 16KB) is logged to the write-ahead log before writing it to the data files. Similarly, MySQL's InnoDB engine uses a doublewrite buffer, writing each page twice (first to a protected area, then to the main storage). This way, at least one copy is intact even if the other write is interrupted. These techniques are effective at preventing corruption, but they come with significant performance overhead. Extra writes to logs or duplicate writes to prevent torn writes to disk increases I/O load and can reduce throughput. Using natively supported page sized atomic disk writes in place of traditional torn-write protection can increase transaction throughput while reducing latency An atomic write in this case means a multi-sector block (like a database page of 8KB or 16KB) is written to disk all-or-nothing. So that the disk either persists the entire block or nothing, and never has a partial update.
 
 ## Limitations
 
-- Only supported for Linux VMs using version 6.13 or newer of the Linux kernel
-    - As of 6.13, the Linux kernel introduced support for large atomic writes with direct IO for XFS and EXt4
+- Your filesystem and your operating system must guarantee large atomic write support
+    - Only supported for Linux VMs using version 6.13 or newer of the Linux kernel
+        - As of 6.13, the Linux kernel introduced support for large atomic writes with direct IO for XFS and EXt4
 -  Atomic write operations are only available when using managed disks with NVMe controllers
-- Your application must ensure that the filesystem and your OS also guarantee large atomic write support 
+- Your filesystem must guarantee large atomic write support 
 
 ## Prerequisites
 
