@@ -120,7 +120,7 @@ After the maintenance configuration is created, it has to be attached to the SFM
         }
 ```
 
-To check the status of the maintenance configuration, use the [Get Maintenance Window action](https://learn.microsoft.com/en-us/rest/api/servicefabric/managedclusters/managed-maintenance-window-status/get).
+To check the status of the maintenance configuration, use the [Get Maintenance Window action](https://learn.microsoft.com/rest/api/servicefabric/managedclusters/managed-maintenance-window-status/get).
 
 ```powershell
 $resourceGroupName = "testResourceGroup"
@@ -128,7 +128,7 @@ $clusterName = "testCluster"
 Invoke-AzResourceAction -ResourceGroupName $resourceGroupName -ResourceName $clusterName -ResourceType Microsoft.ServiceFabric/managedclusters -Action getMaintenanceWindowStatus
 ```
 
-If there are missing notifications and there is a time critical pending update that can be safely applied, a 5 hour maintenance window can be manually applied using the [Apply Maintenance Window Status action](https://learn.microsoft.com/en-us/rest/api/servicefabric/managedclusters/managed-apply-maintenance-window/post).
+If there are missing notifications and there is a time critical pending update that can be safely applied, a 5 hour maintenance window can be manually applied using the [Apply Maintenance Window Status action](https://learn.microsoft.com/rest/api/servicefabric/managedclusters/managed-apply-maintenance-window/post).
 
 ```powershell
 $resourceGroupName = "testResourceGroup"
