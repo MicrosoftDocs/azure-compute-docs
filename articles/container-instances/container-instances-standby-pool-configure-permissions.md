@@ -24,6 +24,7 @@ To allow standby pools to create and manage container instances in your subscrip
 To cover as many scenarios as possible, it is suggested to provide the following permissions to the standby pool resource provider:
 
 - **Azure Container Instances Contributor**
+- **Standby Container Group Pool Contributor**
 - **Network Contributor**
 - **Managed Identity Contributor**
 - **Managed Identity Operator**

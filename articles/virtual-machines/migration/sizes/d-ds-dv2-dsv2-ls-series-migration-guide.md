@@ -26,22 +26,19 @@ By migrating to newer VM series, you gain access to improved price-performance r
 
 |Current VM Family | Target VM Family| Differences in Specification in Target VM*| 
 |--|--|--|
-| D<br>Ds<br>Dv2<br>Dsv2 | Dasv5<br>Dsv5|  Local Storage: Not Supported<br>Remote Storage Throughput: 3750 IOPS / 82 MBps<br> Disk Controller Type: SCSI|
-| D<br>Ds<br>Dv2<br>Dsv2 | Dadsv5<br>Ddsv5| Local Storage: Supported - SCSI<br>Local Storage Throughput: 9000 IOPS / 125 MBps<br>Remote Storage Throughput: 3750 IOPS / 82 MBps<br>Disk Controller Type: SCSI|
-| D<br>Ds<br>Dv2<br>Dsv2 | Dasv6<br>Dalsv6<br>Dsv6<br>Dlsv6 | Local Storage: Not Supported<br>Remote Storage Throughput: 4000 IOPS / 90 MBps<br>Disk Controller Type: NVMe|
-| D<br>Ds<br>Dv2<br>Dsv2 | Dadsv6<br>Daldsv6<br>Ddsv6<br>Dldsv6 | Local Storage: Supported - NVMe<br>Local Storage Throughput: 37500 IOPS / 180 MBps<br>Remote Storage Throughput: 4000 IOPS / 90 MBps<br>Disk Controller Type: NVMe|
-| Ls | Lsv3<br>Lasv3 | Local Storage: Supported - NVMe<br>Remote Storage Throughput: 12800 IOPS / 200 MBps <br>Disk Controller Type: SCSI |
-| Av2<br>Amv2 | Bsv2<br>Bpsv2<br>Basv2 | Local Storage: Not Supported<br>Remote Storage Throughput: 3750 IOPS / 85 MBps<br>Disk Controller Type: SCSI|
-| B | Bsv2<br>Bpsv2<br>Basv2 | Local Storage: Not Supported<br>Remote Storage Throughput: 3750 IOPS / 85 MBps<br>Disk Controller Type: SCSI|
-| F<br>Fs<br>Fsv2 | Dlsv6<br>Fasv6| Local Storage: Not Supported<br>Remote Storage Throughput: 4167 IOPS / 124 MBps<br>Disk Controller Type: NVMe|
-| G<br>Gs | Lasv3| Local Storage: NVMe<br>Remote Storage Throughput: 12800 IOPS / 200 MBps<br>Disk Controller Type: SCSI|
-| Lsv2 | Lasv3| Local Storage: NVMe<br>Remote Storage Throughput: 12800 IOPS / 200 MBps<br>Disk Controller Type: SCSI|
+| D<br>Ds<br>Dv2<br>Dsv2 | Dsv5/Ddsv5/Dasv5/Dadsv5<br>Dasv6/Dadsv6/Dalsv6/Daldsv6<br>Dsv6/Ddsv6/Dlsv6/Dldsv6|  Local Storage: Supported - SCSI<br>Local Storage Throughput: 9000 IOPS / 125 MBps<br>Remote Storage Throughput: 3750 IOPS / 82 MBps<br> Disk Controller Type: SCSI|
+| Ls | Lasv3<br>Lasv4 | Local Storage: Supported - NVMe<br>Remote Storage Throughput: 12800 IOPS / 200 MBps <br>Disk Controller Type: SCSI |
+| Av2<br>Amv2 | Bsv2/Bpsv2/Basv2<br>Dsv5/Ddv5/Dasv5/Dpsv5<br>Esv5/Edv5/Easv5/Epsv5<br>Dsv6/Ddsv6/Dasv6/Dpsv6<br>Esv6/Edsv6/Easv6/Epsv6 | Local Storage: Not Supported<br>Remote Storage Throughput: 3750 IOPS / 85 MBps<br>Disk Controller Type: SCSI|
+| B | Bsv2/Bpsv2/Basv2<br>Dlsv5/Dldsv5/Dalsv5/Daldsv5<br>Dlsv6/Dldsv6/Dalsv6/Daldsv6 | Local Storage: Not Supported<br>Remote Storage Throughput: 3750 IOPS / 85 MBps<br>Disk Controller Type: SCSI|
+| F<br>Fs<br>Fsv2 | Dlsv6/Dldsv6<br>Falsv6<br>Dldsv5/Dlsv5/Dsv5/Ddsv5| Local Storage: Not Supported<br>Remote Storage Throughput: 4167 IOPS / 124 MBps<br>Disk Controller Type: NVMe|
+| G<br>Gs | Lsv3/Lasv3<br>Lsv4/Lasv4| Local Storage: NVMe<br>Remote Storage Throughput: 12800 IOPS / 200 MBps<br>Disk Controller Type: SCSI|
+| Lsv2 | Lasv3<br>Lasv4| Local Storage: NVMe<br>Remote Storage Throughput: 12800 IOPS / 200 MBps<br>Disk Controller Type: SCSI|
 
 *Refers to the lowest VM size in the given target VM Family. For actual VM specifications, please refer to the VM product sizes page.
 
 > [!IMPORTANT]  
 > The following SKUs aren't available in the Sovereign clouds:
-> Dasv5, Dadsv5, Dasv6, Dalsv6, Dsv6, Dlsv6, Dadsv6, Daldsv6, DDsv6, Dldsv6, Lsv3, Lasv3, Bsv2, Bpsv2, Basv2
+> Bsv2, Bpsv2, Basv2
 
 For optimal performance and experience, we generally recommend using the newer v5 and v6 VM series. This ensures you have access to the latest features such as Premium Storage, Accelerated Networking, and Nested Virtualization. While the v6 VM series is preferred, there are certain scenarios where you might want to consider the v5 or even the v4 VM series. Here are some reasons why:
  - v6 VMs require [enabling NVMe](/azure/virtual-machines/nvme-overview) which means that you must have a [supported OS](/azure/virtual-machines/enable-nvme-interface).
@@ -49,7 +46,7 @@ For optimal performance and experience, we generally recommend using the newer v
  - v6 VMs require MANA ([Microsoft Azure Network Adapter](/azure/virtual-network/accelerated-networking-mana-overview)) and a MANA supported operating system.
  - v6 VMs may not have available capacity in the regions and zones you need.
  
-Note that Lsv3 and Lasv3 series are the latest generation L-series VMs.
+Note that Lsv4 and Lasv4 series are the latest generation L-series VMs.
 
 Use the [Azure VM size documentation](/azure/virtual-machines/sizes) to help identify suitable VM sizes.
 
@@ -81,22 +78,7 @@ Refer to the full [Azure VM resizing guide](/azure/virtual-machines/sizes/resize
 
 ## FAQ
 #### Q: Which Sizes Are Being Retired?
-The following sizes are being retired by 1 May 2028.
- - D/Ds series: 
-	 - Standard_D1 to Standard_D4
-	 - Standard_DS1 to Standard_DS4
-	 - Standard_D11 to Standard_D14
-	 - Standard_DS11 to Standard_DS14
- - Dv2/Dsv2 series:
-	 - Standard_D1v2 to Standard_D5_v2
-	 - Standard_DS1v2 to Standard_DS5_v2
-	 - Standard_D11_v2 to Standard_D15_v2
-	 - Standard_DS11_v2 to Standard_DS15_v2
-	 - Standard_D2_v2_Promo to Standard_D5_v2_Promo
-	 - Standard_DS2_v2_Promo to Standard_DS5_v2_Promo
- - LS series:
-	 - Standard_L4s to Standard_L32s
-
+To review retired sizes, see [retired Azure VM sizes](https://learn.microsoft.com/azure/virtual-machines/sizes/retirement/retired-sizes-list).
 
 #### Q: Why Should I Migrate?
 

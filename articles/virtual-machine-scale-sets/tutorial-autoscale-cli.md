@@ -8,14 +8,11 @@ ms.service: azure-virtual-machine-scale-sets
 ms.subservice: autoscale
 ms.date: 04/06/2025
 ms.reviewer: mimckitt
-ms.custom: avverma, devx-track-azurecli, linux-related-content, innovation-engine
+ms.custom: avverma, devx-track-azurecli, linux-related-content
 # Customer intent: "As a cloud engineer, I want to implement autoscaling for a Virtual Machine Scale Set using command-line interfaces, so that I can efficiently manage resources in response to changing application demands while optimizing cost and performance."
 ---
 
 # Tutorial: Automatically scale a Virtual Machine Scale Set with the Azure CLI
-
-> [!div class="nextstepaction"]
-> [Deploy and Explore](https://go.microsoft.com/fwlink/?linkid=2321735)
 
 When you create a scale set, you define the number of VM instances that you wish to run. As your application demand changes, you can automatically increase or decrease the number of VM instances. The ability to autoscale lets you keep up with customer demand or respond to application performance changes throughout the lifecycle of your app. In this tutorial you learn how to:
 

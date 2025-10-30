@@ -99,7 +99,6 @@ From this example accumulation of Minutes Not Available, here's the calculation 
     - VMs resuming from hibernation 
 - A pinned subscription can't use the feature.
 - Deployments using On demand capacity reservations are compatible with vNet Encryption when deployed using a supported VM size. For more information on which VM sizes this feature supports, see [Virtual Network Encryption](/azure/virtual-network/virtual-network-encryption-overview).
-- Only the subscription that created the reservation can use it.
 - Reservations are only available to paid Azure customers. Sponsored accounts such as Free Trial and Azure for Students aren't eligible to use this feature.
 - Clouds supported for capacity reservation:
    - Azure Cloud

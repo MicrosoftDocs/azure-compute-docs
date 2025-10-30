@@ -24,7 +24,7 @@ This page outlines the naming conventions used for Azure VMs. VMs use these nami
 
 |Value | Explanation|
 |---|---|
-| Family | Indicates the VM Family Series| 
+| Family | Indicates the VM Family Series. For more information, see the [list of VM size families by type](./sizes/overview.md#list-of-vm-size-families-by-type).| 
 | *Subfamily | Used for specialized VM differentiations such as: <br> B = memory bandwidth optimized <br>C = confidential (for DC, EC, NCC series)<br>C = compute intensive (for HC, NC, NCC series) <br>D = AI training and inference optimized <br>G = cloud gaming and remote desktop optimized <br>V = visualization and graphics optimized <br>X = extra memory|
 | # of vCPUs| Denotes the number of vCPUs of the VM |
 | *Constrained vCPUs| Used for certain VM sizes only. Denotes the number of vCPUs for the [constrained vCPU capable size](./constrained-vcpu.md) |

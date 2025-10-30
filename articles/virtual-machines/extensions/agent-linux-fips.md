@@ -12,9 +12,12 @@ ms.date: 09/25/2025
 ---
 # FIPS 140-3 support for Azure Linux VM Extensions and Guest Agent
 
-[What is the Federal Information Processing Standards (FIPS)](https://www.nist.gov/standardsgov/compliance-faqs-federal-information-processing-standards-fips)
+> [!NOTE]
+> This feature is currently in **Public Preview**, production workloads are supported.
 
 Linux Virtual Machine (VM) Extensions currently comply with FIPS 140-2 but updates to the platform were required to add support for FIPS 140-3. These changes are currently being enabled across the Commercial Cloud and Azure Government Clouds. Linux VM Extensions that use protected settings are also being updated to be able to use a FIPS 140-3 compliant encryption algorithm. This document helps enable support for FIPS 140-3 on Linux VMs where compliance with FIPS 140-3 is enforced. This change isn't needed on Windows images due to the way FIPS compliance is implemented.
+
+- [What is the Federal Information Processing Standards (FIPS)](https://www.nist.gov/standardsgov/compliance-faqs-federal-information-processing-standards-fips)
 
 ## Confirmed Supported Extensions
 
@@ -56,7 +59,7 @@ To view the latest supported regions, use the Linux VM Guest [v2.14.0.1](https:/
 
 | Cloud | Region |
 |:-----|:-----|
-| Commercial | Central US EUAP, East US 2 EUAP, West Central US, East Asia, UK South, Australia East, South India |
+| Commercial | Central US EUAP, East US 2 EUAP, Australia East, Brazil South, Candada Central, East Asia, France South, Japan East, Korea South, Southeast US, South India, Sweden Central, UK South, UK West, West Central US, West India |
 | USGov | All Regions |
 | Air-Gap | US Sec |
 
@@ -91,6 +94,9 @@ az feature list | jq '.[] | select(.name=="Microsoft.Compute/OptInToFips1403Comp
 ### 3. Per-VM Opt-In
 
 There are different methods available for opting-in each VM. The changes can be made at deployment for a new VM, or an existing VM can be altered to add the FIPS 140-3 enablement on the Azure platform.
+
+> [!WARNING]
+> We do not recommend using the below Opt-In methods on RedHat 9.5 and 9.6 using version 2.7.0.6 of WALinuxAgent on production systems. This is due to an issue that will surface after rebooting, after the FIPS enablement and subsequent reboot. In these VMs the `waagent.service` will enter an internal loop and never come to a "Ready" state, and because of this error, no extensions are able to function. For testing you can try the below "RedHat 9 Workaround".
 
 #### Deploying a new VM
 
@@ -196,12 +202,10 @@ Minimum [Goal State Agent](https://github.com/Azure/WALinuxAgent/wiki/FAQ#what-d
 AutoUpdate.Enabled=y
 ```
 
-> [!WARNING]
-> For RedHat 9 versions using version 2.7.0.6 of WALinuxAgent, there's an issue that will surface after rebooting, after the FIPS enablement and subsequent reboot. In these VMs the `waagent.service` will enter an internal loop and never come to a "Ready" state, and because of this error, no extensions are able to function.
-
 ##### RedHat 9 Workaround
 
-Updating the Azure guest agent outside of the RedHat repositories, such as downloading the agent code from GitHub, is not advised. Doing an 'out-of-band' update in this way will cause inconsistent behavior with future package updates. Instead use the following code modification to remove a single function call and restore functionality
+> [!NOTE]
+> This workaround is intended for testing purposes only and does not support all VM deployment scenarios. After enabling FIPS on a running VM, execute the following commands to proceed.
 
 ```
 systemctl stop waagent

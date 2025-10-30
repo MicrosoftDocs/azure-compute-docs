@@ -4,13 +4,14 @@ description: include file
 author: roygara
 ms.service: azure-disk-storage
 ms.topic: include
-ms.date: 10/01/2025
+ms.date: 10/23/2025
 ms.author: rogarana
 ms.custom: include file
 # Customer intent: As a cloud architect, I want to understand the limitations and requirements of Ultra Disks so that I can evaluate their suitability for my virtual machine deployments and ensure compliance with application needs and infrastructure capabilities.
 ---
 
 The following list contains Ultra Disk's limitations:
+- Only during deployment with Virtual Machine Scale Sets with Uniform orchestration mode: At time of deployment, Ultra Disks used with Uniform Virtual Machine Scale Sets use different formulas for IOPS and throughput for their performance. Exceeding the limits of these formulas results in a deployment failure. Once the deployment succeeds you can [increase the performance](../disks-enable-ultra-ssd.md#adjust-the-performance-of-an-ultra-disk) of these disks. See [Ultra Disk IOPS](../disks-types.md#ultra-disk-iops) and [Ultra Disk throughput](../disks-types.md#ultra-disk-throughput) for details. 
 - Ultra Disks can't be used as an OS disk or with Azure Compute Gallery.
 - Currently, Ultra Disks only support Single VM and Availability zone infrastructure options as locally redundant storage (LRS). Ultra Disks don't support zone redundant storage (ZRS).
 - Ultra Disks don't support availability sets.
@@ -22,7 +23,7 @@ Ultra Disks support a 4k physical sector size by default but also supports a 512
 The following table outlines the regions Ultra Disks are available in, and their corresponding availability options.
 
 > [!NOTE]
-> If a region in the following list lacks availability zones that support Ultra disks, then a VM in that region must be deployed without infrastructure redundancy to attach an Ultra Disk.
+> If a region in the following list lacks availability zones that support Ultra Disks, then a VM in that region must be deployed without infrastructure redundancy to attach an Ultra Disk.
 
 | Redundancy options | Regions |
 |--------------------|---------|

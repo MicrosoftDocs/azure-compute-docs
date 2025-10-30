@@ -7,7 +7,7 @@ ms.service: azure-container-instances
 ms.custom:
   - ignite-2024
 ms.topic: concept-article
-ms.date: 5/19/2025
+ms.date: 10/22/2025
 ms.reviewer: tomvcassidy
 # Customer intent: As a cloud architect, I want to implement standby pools for Azure Container Instances, so that I can reduce scale-out latency and effectively manage container resources in response to fluctuating traffic demands.
 ---
@@ -205,9 +205,6 @@ Standby pools for Azure container instances support confidential containers. To 
 ```
 
 ## Availability zones
-
-> [!IMPORTANT]
-> Availability zones for Azure Container Instances is currently in preview. Previews are made available to you on the condition that you agree to the supplemental terms of use. Some aspects of this feature may change prior to general availability (GA).
 
 Standby pools for Azure Container Instances supports creating and requesting containers across availability zones. To create a standby pool with instances in specific zones, specify the `zones` parameter in the standby pool create request. 
 

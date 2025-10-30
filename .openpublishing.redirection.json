@@ -1,6 +1,11 @@
 {
   "redirections": [
     {
+      "source_path": "articles/container-instances/quickstart-docker-cli.md",
+      "redirect_url": "/previous-versions/azure/container-instances/quickstart-docker-cli",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "articles/service-fabric/service-fabric-diagnostics-event-analysis-appinsights.md",
       "redirect_url": "/previous-versions/azure/service-fabric/service-fabric-diagnostics-event-analysis-appinsights",
       "redirect_document_id": false
