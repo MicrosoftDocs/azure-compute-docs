@@ -1,26 +1,26 @@
 ---
-title: NC_RTXPRO6000BSE_v6 size series
+title: NC_RTXPRO6000BSE_v6 series
 description: Information on and specifications of the NC_RTXPRO6000BSE_v6-series sizes
-author: v-nmagatala
+author: magatala-MSFT
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
 ms.date: 11/03/2025
-ms.author: iamwilliew
+ms.author: wwilliams
 ms.reviewer: iamwilliew
 # Customer intent: As a cloud architect, I want to understand the specifications and feature support of the NC_RTXPRO6000BSE_v6 size series, so that I can select the appropriate virtual machine size for my high-performance computing workloads.
 ---
 
-# NC_RTXPRO6000BSE_v6 Series Overview
+# NC RTX Pro 6000 BSEv6 series overview
 
 The **RTXPRO6000BSE** series is a high-performance addition to the Azure GPU family, designed for demanding Applied AI workloads. These virtual machines (VMs) deliver exceptional compute and graphics capabilities, making them ideal for:
 
-	- GPU-accelerated analytics and databases
-	- Batch inferencing with heavy pre and post-processing
-	- Advanced visualization and rendering for design and engineering
-	- Machine learning (ML) development and model training
-	- Video processing and transcoding
-	- AI/ML web services and virtual workstation environments
+- GPU-accelerated analytics and databases
+- Batch inferencing with heavy pre and post-processing.
+- Advanced visualization and rendering for design and engineering.
+- Machine learning (ML) development and model training.
+- Video processing and transcoding.
+- AI/ML web services and virtual workstation environments.
 
 ## Host specifications
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
