@@ -49,4 +49,6 @@ For more information about enabling the NVMe interface on virtual machines creat
 
 *Shared Disks on NVME are not compatible with Windows Server 2019
 
+Only Azure Marketplace images are supported.
+
 To download an image, go to [Azure Marketplace](https://ms.portal.azure.com/#view/Microsoft_Azure_Marketplace/MarketplaceOffersBlade/selectedMenuItemId/home).
