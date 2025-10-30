@@ -35,7 +35,7 @@ sections:
           Before the scheduled deprecation date, you can continue to deploy new VM or scale set instances up until the deprecation date.
             After the scheduled deprecation date, you can't deploy new instances using the affected images. If the plan is scheduled for deprecation, all image versions within the plan are no longer available. If the entire offer is scheduled for deprecation, all plans within the offer are no longer available following deprecation.
           
-          - Active VM instances aren't impacted.  
+          - Existing VM instances aren't impacted.  
           - New VM instances can't be created from any of the impacted images.
           - Existing Virtual Machine Scale Set deployments can't be scaled out if configured with any of the impacted images. When a plan or offer is being deprecated, all existing scale sets deployments pinned to any image within the plan or offer respectively can't be scaled out.
           
