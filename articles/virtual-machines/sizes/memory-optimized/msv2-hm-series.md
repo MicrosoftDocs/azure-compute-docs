@@ -1,6 +1,6 @@
 ---
-title: Mv2 size series
-description: Information on and specifications of the Mv2-series sizes
+title: Msv2 High Memory series sizes
+description: Information on and specifications of the Msv2 High Memory series sizes
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
