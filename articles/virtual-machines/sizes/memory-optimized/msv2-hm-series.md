@@ -11,7 +11,7 @@ ms.reviewer: mattmcinnes
 # Customer intent: "As a cloud architect, I want to evaluate the specifications of the Mv2-series virtual machines, so that I can determine their suitability for hosting large in-memory databases and high-performance workloads."
 ---
 
-# Mv2 sizes series
+# Msv2 High Memory sizes series
 
 [!INCLUDE [mv2-summary](./includes/mv2-series-summary.md)]
 
