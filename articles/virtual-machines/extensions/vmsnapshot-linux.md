@@ -15,7 +15,7 @@ ms.author: mattmcinnes
 ---
 # VM Snapshot Linux extension for Azure Backup
 
-
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
 
 Azure Backup provides support for backing up workloads from on-premises to cloud and backing up cloud resources to Recovery Services vault. Azure Backup uses VM snapshot extension to take an application consistent backup of the Azure virtual machine without the need to shutdown the VM. VM Snapshot Linux extension is published and supported by Microsoft as part of Azure Backup service. Azure Backup will install the extension as part of first scheduled backup triggered post enabling backup. This document details the supported platforms, configurations, and deployment options for the VM Snapshot extension.
 

@@ -16,7 +16,9 @@ ms.custom: devx-track-azurepowershell
 
 Azure Diagnostics is the capability within Azure that enables the collection of diagnostic data on a deployed application. You can use the diagnostics extension to collect diagnostic data like application logs or performance counters from an Azure virtual machine (VM) that is running Windows. 
 
- > [!IMPORTANT]
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
+
+> [!IMPORTANT]
 > ### Migrate from Azure Diagnostic extension
 > 
 > Azure Diagnostics extension will be deprecated on March 31, 2026. After this date, Microsoft will no longer provide support for the Azure Diagnostics extension. 

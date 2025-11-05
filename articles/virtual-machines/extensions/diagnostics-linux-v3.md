@@ -18,6 +18,8 @@ ms.devlang: azurecli
 > [!CAUTION]
 > This article references CentOS, a Linux distribution that is end of support status. Please consider your use and plan accordingly. For more information, see the [CentOS End Of Life guidance](~/articles/virtual-machines/workloads/centos/centos-end-of-life.md).
 
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
+
 This document describes version 3.0 and newer of the Linux diagnostic extension (LAD).
 
 > [!IMPORTANT]

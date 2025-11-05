@@ -14,8 +14,6 @@ ms.custom:
 ---
 # Pass credentials to the Azure DSCExtension handler
 
-This article covers the Desired State Configuration (DSC) extension for Azure. For an overview of the DSC extension handler, see [Introduction to the Azure Desired State Configuration extension handler](dsc-overview.md).
-
 > [!NOTE]
 > DSC extension will be retired on March 31, 2028. Please transition to
 > [Azure Machine Configuration](/azure/governance/machine-configuration/overview) by that date.
@@ -24,6 +22,10 @@ This article covers the Desired State Configuration (DSC) extension for Azure. F
 > Automation State Configuration, and commonly requested features from customer feedback.
 > Azure Machine Configuration also includes hybrid machine support through
 > [Arc-enabled servers](/azure/azure-arc/servers/overview).
+
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
+
+This article covers the Desired State Configuration (DSC) extension for Azure. For an overview of the DSC extension handler, see [Introduction to the Azure Desired State Configuration extension handler](dsc-overview.md).
 
 ## Pass in credentials
 

@@ -14,6 +14,9 @@ ms.date: 08/18/2025
 
 # Azure Backup for SQL Server running in Azure VM
 
+
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
+
 Azure Backup, amongst other offerings, provides support for backing up workloads such as SQL Server running in Azure VMs. Since the SQL application is running within an Azure VM, the backup service needs permission to access the application and fetch the necessary details.
 To do that, Azure Backup installs the **AzureBackupWindowsWorkload** extension on the VM, in which the SQL Server is running, during the registration process triggered by the user.
 

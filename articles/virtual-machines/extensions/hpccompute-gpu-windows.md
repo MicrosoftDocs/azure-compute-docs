@@ -16,6 +16,8 @@ author: ju-shim
 
 # NVIDIA GPU Driver Extension for Windows
 
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
+
 The NVIDIA GPU Driver Extension for Windows installs NVIDIA GPU drivers on Windows N-series virtual machines (VMs). Depending on the VM family, the extension installs CUDA or GRID drivers. When you install NVIDIA drivers by using this extension, you accept and agree to the terms of the [NVIDIA End-User License Agreement](https://www.nvidia.com/en-us/data-center/products/nvidia-ai-enterprise/eula/). During the installation process, the VM might reboot to complete the driver setup.
 
 The instructions for manual installation of the drivers, and the list of current supported versions are available for review. For more information, see [Install NVIDIA GPU drivers on N-series VMs running Windows](/azure/virtual-machines/windows/n-series-driver-setup).

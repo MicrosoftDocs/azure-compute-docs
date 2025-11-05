@@ -11,6 +11,10 @@ ms.date: 12/15/2023
 ---
 
 # Using Application Health extension with Azure Virtual Machines
+
+
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
+
 Monitoring your application health is an important signal for managing your VMs. Azure Virtual Machines provides support for [Automatic VM Guest Patching](../automatic-vm-guest-patching.md), which rely on health monitoring of the individual instances to safely update your VMs. 
 
 This article describes how you can use the two types of Application Health extension, **Binary Health States** or **Rich Health States**, to monitor the health of your applications deployed on Azure virtual machines.

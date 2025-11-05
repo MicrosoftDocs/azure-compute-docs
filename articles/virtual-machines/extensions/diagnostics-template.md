@@ -14,6 +14,9 @@ ms.date: 08/18/2025
 ---
 
 # Use monitoring and diagnostics with a Windows VM and Azure Resource Manager templates
+
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
+
 The Azure Diagnostics Extension provides the monitoring and diagnostics capabilities on a Windows-based Azure virtual machine. You can enable these capabilities on the virtual machine by including the extension as part of the Azure Resource Manager template. See [Authoring Azure Resource Manager Templates with VM Extensions](../windows/template-description.md#extensions) for more information on including any extension as part of a virtual machine template. This article describes how you can add the Azure Diagnostics extension to a windows virtual machine template.
 
 > [!IMPORTANT]

@@ -12,6 +12,8 @@ ms.date: 08/20/2025
 
 # Azure Machine Configuration extension
 
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
+
 The Machine Configuration extension performs audit and configuration operations inside virtual machines (VMs).
 
 To check policies inside VMs, such as Azure compute security baseline definitions for [Linux](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffc9b3da7-8347-4380-8e70-0a0361d8dedd) and [Windows](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F72650e9f-97bc-4b2a-ab5f-9781a9fcecbc), the Machine Configuration extension must be installed.

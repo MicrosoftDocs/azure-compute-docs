@@ -15,6 +15,8 @@ ms.custom: devx-track-azurepowershell
 
 # Virtual machine extensions and features for Windows
 
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
+
 Azure virtual machine (VM) extensions are small applications that provide post-deployment configuration and automation tasks on Azure VMs. For example, if a virtual machine requires software installation, antivirus protection, or the ability to run a script inside of the VM, you can use a VM extension. 
 
 You can run Azure VM extensions by using the Azure CLI, PowerShell, Azure Resource Manager (ARM) templates, and the Azure portal. You can bundle extensions with a new VM deployment or run them against any existing system.

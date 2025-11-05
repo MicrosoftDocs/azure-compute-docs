@@ -28,6 +28,9 @@ ms.devlang: azurecli
 > Azure Machine Configuration also includes hybrid machine support through
 > [Arc-enabled servers](/azure/azure-arc/servers/overview).
 
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
+
+
 The Azure VM Extension for Azure virtual machines (VM) and the associated extensions are part of Microsoft Azure infrastructure services. Azure VM extensions are software components that extend VM functionality and simplify various VM management operations.
 
 The DSC extension only pushes a configuration to the VM. No ongoing reporting is available, other than locally in the VM.

@@ -21,6 +21,8 @@ ms.date: 08/20/2025
 > Azure Machine Configuration also includes hybrid machine support through
 > [Arc-enabled servers](/azure/azure-arc/servers/overview).
 
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
+
 ## Overview
 
 The PowerShell DSC Extension for Windows uploads and applies a PowerShell DSC Configuration on an Azure virtual machine. The DSC Extension calls into PowerShell DSC to enact the received DSC configuration on the virtual machine. This document details the supported platforms, configurations, and deployment options for the DSC virtual machine extension for Windows.

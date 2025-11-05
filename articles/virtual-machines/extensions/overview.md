@@ -13,6 +13,8 @@ ms.date: 08/18/2025
 
 # Azure virtual machine extensions and features
 
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
+
 Extensions are small applications that provide post-deployment configuration and automation on Azure virtual machines (VMs). The Azure platform hosts many extensions covering VM configuration, monitoring, security, and utility applications. Publishers take an application, wrap it into an extension, and simplify the installation. All you need to do is provide mandatory parameters.
 
 > [!NOTE]
