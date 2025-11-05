@@ -49,15 +49,15 @@ For a video that covers some high level differences for the different disk types
 
 Azure Ultra Disks are the highest-performing storage option for Azure virtual machines (VMs). You can change the performance parameters of an Ultra Disk without having to restart your VMs. Ultra Disks are suited for data-intensive workloads such as SAP HANA, top-tier databases, and transaction-heavy workloads.
 
-Ultra Disks must be used as data disks and can only be created as empty disks. For environments using Ultra Disks as data disks, use Premium solid-state drives (SSDs) as operating system (OS) disks.
+Ultra Disks must be used as data disks and can only be created as empty disks. When using Ultra Disks as data disks, use Premium solid-state drives (SSDs) as operating system (OS) disks.
 
 ### Ultra Disk size
 
-Ultra Disk sizes range from 4 GiB up to 64 GiB, they also work like Premium SSD, Standard SSD, and Standard HDD sizes. When you create or modify an Ultra Disk, the size you set is billed as the next largest provisioned disk size. So if you deploy a 200 GiB Ultra Disk or set a 200 GiB Ultra Disk, you'll have a 200 GiB Ultra Disk that's billed as if it was 256 GiB, since that's the next largest provisioned disk size.
+Ultra Disk sizes range from 4 GiB up to 64 GiB, in 1 GiB increments. Ultra Disk capacity works like Premium SSD v2 disks and you're billed on a per GiB ratio.
 
 Ultra Disks offer up to 100 TiB per region per subscription by default and Ultra Disks support higher capacity by request. To request an increase in capacity, request a quota increase or contact Azure Support.
 
-The following table provides a comparison of disk sizes and performance caps to help you decide which to use.
+The following table provides an example of performance caps an Ultra Disk has depending on the size you set for the disk.
 
 |Disk Size (GiB)  |IOPS Cap  |Throughput Cap (MB/s)  |
 |---------|---------|---------|
@@ -77,7 +77,7 @@ The following table provides a comparison of disk sizes and performance caps to 
 
 ### Ultra Disk performance
 
-Ultra Disks are designed to provide consistently low sub millisecond latencies and the highest limits for IOPS and throughput. Ultra Disks feature a flexible performance configuration model that allows you to independently configure IOPS and throughput, before and after you provision the disk. You can adjust the performance of an Ultra Disk at runtime without detaching the disk from the VM. Within a 24 hour period, you can change the performance of a disk four times. It can take up to an hour for a performance change to take effect.
+Ultra Disks are designed to provide consistently low sub millisecond latencies and the highest limits for IOPS and throughput. With Ultra Disks, you can individually set the capacity, throughput, and IOPS of a disk based on your workload needs, increasing flexibility and reducing costs. Each of these values determine the cost of your disk. Within a 24 hour period, you can change the performance of a disk four times. It can take up to an hour for a performance change to take effect.
 
 ### Ultra Disk IOPS
 

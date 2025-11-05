@@ -1,5 +1,5 @@
 ---
-title: VM Customization
+title: VM vCore Customization
 description: Feature that allows control over CPU resources of a virtual machine
 author: eehindero
 ms.service: azure-virtual-machines
@@ -9,9 +9,9 @@ ms.date: 10/21/2025
 ms.author: eehindero
 ms.reviewer: mimckitt
 ---
-# VM Customization Feature: Disable Simultaneous Multi-Threading (SMT/HT) and Configurable Constrained Cores (Preview)
+# VM vCore Customization Feature: Disable Simultaneous Multi-Threading (SMT/HT) and Configurable Constrained Cores (Preview)
 
-VM Customization is a new Azure VM feature that gives you greater control over the CPU resources of a virtual machine. It consists of two related capabilities:
+VM vCore Customization is a new Azure VM feature that gives you greater control over the CPU resources of a virtual machine. It consists of two related capabilities:
 
 Disable Simultaneous Multi-Threading (Threads Per Core = 1): Allows you to run a VM with only one thread per physical CPU core, effectively turning off Simultaneous Multithreading (SMT). Disabling gives your VM full use of each physical core, which can improve performance for certain workloads (like some HPC or latency-sensitive applications) that benefit from exclusive core access.
 
@@ -167,6 +167,24 @@ In this example, vCPUsPerCore: 1 disables SMT, and vCPUsAvailable: 2 then reques
 
 Make sure to use an API version **2021-07-01 or later** for the Microsoft.Compute/virtualMachines resource in your template, as that's when these properties were introduced.
 
+## Identify Supported vCores for Configuration
+
+To determine which vCPUs can be constrained in a specific region, you can use the Azure CLI or the Azure portal.
+
+**Using Azure CLI**
+
+Run the following command to retrieve the list of compute SKUs for your subscription and region:
+
+```Azure CLI
+az vm list-skus --location {location} --resource-type virtualMachines --query "[name=='VM_NAME_HERE'] 
+```
+- This command exports shows the supported vCPU configurations. The "vCPUsConstraintsAllowed" field outlines supported vCores.
+
+**Using Azure Portal**
+
+If you request a vCPU configuration that isn’t supported, the portal will display an error message and provide a list of supported vCPU options for that VM size.
+
+
 ## Considerations
 
 Most Azure VM families support these features, but there are some important rules and considerations to understand when using the feature:
@@ -179,7 +197,7 @@ Most Azure VM families support these features, but there are some important rule
 
 - You can disable hyperthreading and constrain vCPUs at the same time on the same VM. In this case, both above rules apply. 
 
-- CPU options can only be specified at VM creation time or during a resize (redeploy) operation. You can't dynamically adjust the core count or SMT setting on a running VM without redeploying.
+- CPU options can only be specified at VM creation time or during a resize operation. You cannot dynamically adjust the core count or SMT setting on an allocated VM, this update requires the VM to be deallocated.
 
 - If you move to a new VM size in the same family that also supports the feature, your settings are carried over by default. 
 
@@ -187,4 +205,4 @@ Most Azure VM families support these features, but there are some important rule
 
 - Anytime you resize a VM (either within the same series or to a different series), a VM reboot occurs. Plan for downtime during the resize operation.
 
-- In preview, only first-party Azure Marketplace images (Windows Server, Ubuntu, Red Hat, SUSE, etc.) and custom images are supported. 
+- In preview, only first-party Azure Marketplace images (Windows Server, Ubuntu, Red Hat, SUSE, etc.) and custom images are supported. The specialized Marketplace offerings such as SQL Server on Virtual Machines are not supported.
