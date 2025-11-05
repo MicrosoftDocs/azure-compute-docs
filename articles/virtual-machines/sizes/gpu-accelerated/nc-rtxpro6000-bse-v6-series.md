@@ -11,24 +11,21 @@ ms.reviewer: iamwilliew
 # Customer intent: As a cloud architect, I want to understand the specifications and feature support of the NC_RTXPRO6000BSE_v6 size series, so that I can select the appropriate virtual machine size for my high-performance computing workloads.
 ---
 
-# NC RTX Pro 6000 BSEv6 series overview
+# NC RTXPRO6000BSE v6 series overview
 
 The **RTXPRO6000BSE** series is a high-performance addition to the Azure GPU family, designed for demanding Applied AI workloads. These virtual machines (VMs) deliver exceptional compute and graphics capabilities, making them ideal for:
 
-- GPU-accelerated analytics and databases
-- Batch inferencing with heavy pre and post-processing.
-- Advanced visualization and rendering for design and engineering.
-- Machine learning (ML) development and model training.
-- Video processing and transcoding.
-- AI/ML web services and virtual workstation environments.
+- AI and ML Inference
+- Inference and Fine-Tuning of Small to Medium Language Models
+- Visualization and Virtual Desktop Infrastructure.
 
 ## Host specifications
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
 |---|---|---|
 |Processor|16 - 320 vCPUs|4.2 GHz|
-|Memory|64 - 1280 GiB|DDR5|
-|Network|6 - 8 NICs|25,000 - 200,000 Mbps|
-|Accelerators|1 - 4|NVIDIA RTX Pro 6000 GPU|
+|Memory|32 - 640 GiB|DDR5|
+|Network|2 - 4 NICs|25,000 - 200,000 Mbps|
+|Accelerators|0.25 - 2|NVIDIA RTX Pro 6000 GPU|
 
 
 ## Feature support
@@ -48,8 +45,6 @@ The **RTXPRO6000BSE** series is a high-performance addition to the Azure GPU fam
 
 ### [Compute Optimized](#tab/sizecomputeoptimized)
 
-vCPUs (Qty.) and Memory for each size
-
 | Size Name | vCPUs (Qty.) | Memory (GB) |
 | --- | --- | --- |
 |Standard_NC16lds_xl_RTXPRO6000BSE_v6|16|64|
@@ -62,14 +57,6 @@ vCPUs (Qty.) and Memory for each size
 #### VM Basics resources
 - [Check vCPU quotas](../../../virtual-machines/quotas.md)
 
-
-### [Memory optimized](#tab/sizememoryoptimzed)
-
-|  Size Name | vCPUs (Qty.) | Memory (GB) |
-| --- | --- | --- |
-| Standard_NC32mds_xl_RTXPRO6000BSE_v6|32|256|
-| Standard_NC64mds_xl_RTXPRO6000BSE_v6|64|512|
-| Standard_NC128mds_xl_RTXPRO6000BSE_v6|128|1024|
 
 ### [Network specifications](#tab/sizenetwork)
 
@@ -86,9 +73,6 @@ vCPUs (Qty.) and Memory for each size
 | Standard_NC128lds_xl_RTXPRO6000BSE_v6|8|75000|
 | Standard_NC256lds_xl_RTXPRO6000BSE_v6|8|100000|
 | Standard_NC320lds_xl_RTXPRO6000BSE_v6|8|200000|
-|Standard_NC32mds_xl_RTXPRO6000BSE_v6|6|25000|
-|Standard_NC64mds_xl_RTXPRO6000BSE_v6|6|50000|
-|Standard_NC128mds_xl_RTXPRO6000BSE_v6|8|75000|
 
 ---
 
