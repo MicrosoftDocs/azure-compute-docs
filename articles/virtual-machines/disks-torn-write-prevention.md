@@ -32,7 +32,7 @@ PostgreSQL uses full page writes, so the entire page is logged to the write ahea
 
 - Deploy a Linux VM with Linux kernel 6.13 or newer with a managed disk that's using an [NVMe controller](/azure/virtual-machines/enable-nvme-remote-faqs)
 - Install the **nvme-cli** package on your VM
-    - If your distribution uses the Advanced Package Tool (APT), you would use `sudo apt install nvme-cli`
+    - If your distribution uses the Advanced Package Tool (APT), use `sudo apt install nvme-cli`
 - Issued writes must align with their respective block offsets, or they could be torn
 
 ## Confirm your VM supports atomic writes
