@@ -52,6 +52,6 @@ cat /sys/class/block/nvme0n2/queue/atomic_write_max_bytes
 
 ## Setup and use the filesystem
 
-Once you confirmed both the VM and the kernel support atomic writes, create an XFS filesystem with 16-KiB block size. You can do this using the `mkfs.xfs` command, include the following parameters `-b size=16384 <your-nvme-here>` (an example value for your NVMe is /dev/nvme0n2).
+Once you confirm that both the VM and the kernel support atomic writes, create an XFS filesystem with 16-KiB block size. You can do this using the `mkfs.xfs` command, include the following parameters `-b size=16384 <your-nvme-here>` (an example value for your NVMe is /dev/nvme0n2).
 
 Now that you have setup the filesystem. Configure your application to write atomically with direct IO and the same block size formatted. One example way of doing this is with the `fio` command, include the following parameters: `direct=1 atomic=1 bs=16k`.
