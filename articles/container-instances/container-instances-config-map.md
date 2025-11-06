@@ -506,13 +506,18 @@ Request Body
 
 ---
 
-
-Once the update has been applied to an existing container and you will see the values mounted in the container without requiring a restart.
+### ConfigMaps in Linux containers
+Once the update has been applied to an existing container and you will see the values mounted in the linux container without requiring a restart.
 
 ```
 /mnt/configmap/<containername>/key1 with value as “value1”
 
 /mnt/configmap/<containername>/key2 with value as “value2”
+```
+### ConfigMaps in Linux Windows
+Once the update has been applied to an existing container and you can fetch the configmap keyvalue pairs in the windows container by making the following call, without requiring a restart. These values are not mounted anywhere for windows containers, as is the case for linux.
+```
+Invoke-Expression "$Env:ConfigMapURI"
 ```
 
 ## Next steps
