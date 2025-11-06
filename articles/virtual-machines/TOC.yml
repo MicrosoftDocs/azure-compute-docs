@@ -1670,7 +1670,7 @@
       href: disks-performance-options.md
     - name: Increase performance of premium SSD and standard SSD/HDDs
       href: disks-enable-performance.md
-    - name: Prevent torn writes
+    - name: Torn write prevention
       href: disks-torn-write-prevention.md
     - name: Virtual machine and disk performance
       displayName: Performance, cost, perf, disks, disk
