@@ -514,7 +514,7 @@ Once the update has been applied to an existing container and you will see the v
 
 /mnt/configmap/<containername>/key2 with value as “value2”
 ```
-### ConfigMaps in Linux Windows
+### ConfigMaps in Windows Containers
 Once the update has been applied to an existing container and you can fetch the configmap keyvalue pairs in the windows container by making the following call, without requiring a restart. These values are not mounted anywhere for windows containers, as is the case for linux.
 ```
 Invoke-Expression "$Env:ConfigMapURI"
