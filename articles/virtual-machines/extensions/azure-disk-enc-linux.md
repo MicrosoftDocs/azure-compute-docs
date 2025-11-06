@@ -13,11 +13,12 @@ ms.collection: linux
 ---
 # Azure Disk Encryption for Linux (Microsoft.Azure.Security.AzureDiskEncryptionForLinux)
 
-[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
-
 ## Overview
 
 Azure Disk Encryption leverages the dm-crypt subsystem in Linux to provide full disk encryption on [select Azure Linux distributions](../linux/disk-encryption-overview.md).  This solution is integrated with Azure Key Vault to manage disk encryption keys and secrets.
+
+
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
 
 ## Prerequisites
 

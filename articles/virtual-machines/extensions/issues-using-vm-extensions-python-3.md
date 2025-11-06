@@ -21,8 +21,6 @@ ms.date: 03/15/2023
 >
 > Before installing **Python 2.x** in production, consider the question of long-term support of Python 2.x, particularly their ability to receive security updates. As products, including some of the extension mentioned, update with **Python 3.8** support, you should discontinue use of Python 2.x.
 
-[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
-
 Some Linux distributions have transitioned to Python 3.8 and removed the legacy `/usr/bin/python` entrypoint for Python altogether. This transition impacts the out-of-the-box, automated deployment of certain virtual machine (VM) extensions with these two conditions:
 
 - Extensions that are still transitioning to Python 3.x support
@@ -35,6 +33,8 @@ Linux distribution users who have transitioned to **Python 3.x** must ensure the
 - Affected VM Extensions include **Azure Disk Encryption**, **Log Analytics**, **VM Access** (used for Password Reset), and **Guest Diagnostics** (used for additional performance counters).
 
 In-place upgrades, such as upgrading from **Ubuntu 18.04 LTS** to **Ubuntu 20.04 LTS**, should retain the `/usr/bin/python` symlink, and remain unaffected.
+
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
 
 ## Resolution
 

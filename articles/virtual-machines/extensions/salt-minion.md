@@ -12,13 +12,13 @@ ms.date: 08/18/2025
 ---
 # Install Salt Minion on Linux or Windows VMs using the VM Extension
 
-[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
-
 ## Prerequisites
 
 * A Microsoft Azure account with one (or more) Windows or Linux VMs
 * A Salt Master (either on-premises or in a cloud) that can accept connections from Salt minions hosted on Azure
 * The Salt Minion VM Extension requires that the target VM is connected to the internet in order to fetch Salt packages
+
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
 
 ## Supported platforms
 

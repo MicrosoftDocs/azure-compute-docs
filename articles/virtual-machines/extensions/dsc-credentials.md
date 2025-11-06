@@ -23,9 +23,9 @@ ms.custom:
 > Azure Machine Configuration also includes hybrid machine support through
 > [Arc-enabled servers](/azure/azure-arc/servers/overview).
 
-[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
-
 This article covers the Desired State Configuration (DSC) extension for Azure. For an overview of the DSC extension handler, see [Introduction to the Azure Desired State Configuration extension handler](dsc-overview.md).
+
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
 
 ## Pass in credentials
 

@@ -17,9 +17,6 @@ ms.devlang: azurecli
 > [!CAUTION]
 > This article references CentOS, a Linux distribution that is End Of Life (EOL) status. Please consider your use and plan accordingly. For more information, see the [CentOS End Of Life guidance](~/articles/virtual-machines/workloads/centos/centos-end-of-life.md).
 
-
-[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
-
 This article describes the latest versions of the Linux diagnostic extension (LAD).
 
 > [!IMPORTANT]
@@ -60,6 +57,8 @@ The Linux diagnostic extension helps you monitor the health of a Linux VM on Mic
 | Files       | [Log Path, Destination Table](#filelogs) | Azure Table Storage | EventHub, Azure Blob Storage (JSON Format) |
 
 This extension works with both Azure deployment models: Azure Resource Manager and classic.
+
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
 
 ## Prerequisites
 

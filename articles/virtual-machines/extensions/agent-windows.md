@@ -13,11 +13,11 @@ ms.date: 08/18/2025
 
 # Azure Windows VM Agent overview
 
-[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
-
 The Microsoft Azure Windows VM Agent is a secure, lightweight process that manages virtual machine (VM) interaction with the Azure fabric controller. The Azure Windows VM Agent has a primary role in enabling and executing Azure virtual machine extensions. VM extensions enable post-deployment configuration of VMs, such as installing and configuring software. VM extensions also enable recovery features such as resetting the administrative password of a VM. Without the Azure Windows VM Agent, you can't run VM extensions.
 
 This article describes how to install and detect the Azure Windows VM Agent.
+
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
 
 ## Prerequisites
 

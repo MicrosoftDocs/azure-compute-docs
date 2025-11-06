@@ -18,8 +18,6 @@ ms.devlang: azurecli
 > [!CAUTION]
 > This article references CentOS, a Linux distribution that is end of support status. Please consider your use and plan accordingly. For more information, see the [CentOS End Of Life guidance](~/articles/virtual-machines/workloads/centos/centos-end-of-life.md).
 
-[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
-
 This document describes version 3.0 and newer of the Linux diagnostic extension (LAD).
 
 > [!IMPORTANT]
@@ -62,6 +60,8 @@ The Linux diagnostic extension helps a user monitor the health of a Linux VM tha
 * Supports sending metrics and log events to arbitrary Azure Event Hubs endpoints and JSON-formatted blobs in the designated storage account.
 
 This extension works with both Azure deployment models.
+
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
 
 ## Install the extension on a VM
 

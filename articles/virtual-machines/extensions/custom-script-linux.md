@@ -13,8 +13,6 @@ ms.date: 08/18/2025
 ---
 # Use the Azure Custom Script Extension Version 2 with Linux virtual machines
 
-[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
-
 The Custom Script Extension Version 2 downloads and runs scripts on Azure virtual machines (VMs). Use this extension for post-deployment configuration, software installation, or any other configuration or management task. You can download scripts from Azure Storage or another accessible internet location, or you can provide them to the extension runtime.
 
 The Custom Script Extension integrates with Azure Resource Manager templates. You can also run it by using the Azure CLI, Azure PowerShell, or the Azure Virtual Machines REST API.
@@ -27,6 +25,8 @@ There are two versions of the Custom Script Extension:
 - Version 2: Microsoft.Azure.Extensions.CustomScript
 
 Use Version 2 for new and existing deployments. The new version is a drop-in replacement. The migration is as easy as changing the name and version. You don't need to change your extension configuration.
+
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
 
 ## Prerequisites
 

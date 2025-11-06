@@ -15,8 +15,6 @@ author: magatala-MSFT
 ---
 # AMD GPU Driver Extension for Linux
 
-[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
-
 This extension installs AMD GPU drivers on Linux N-series virtual machines (VMs). When you install AMD drivers by using this extension, you're accepting and agreeing to the terms of the [AMD End-User License Agreement](https://www.amd.com/en/legal/eula/amd-software-eula.html). During the installation process, the VM might reboot to complete the driver setup.
 
 Instructions on manual installation of the drivers and the current supported versions are available. An extension is also available to install AMD GPU drivers on [Linux N-series VMs](../linux/azure-n-series-amd-gpu-driver-linux-installation-guide.md).
@@ -26,6 +24,8 @@ Instructions on manual installation of the drivers and the current supported ver
 >
 > The GPU driver extensions do not automatically update the driver once the extension is installed. To upgrade to a newer driver version, you will need to either uninstall and reinstall the extension or manually install the driver.
 >
+
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
 
 ## Prerequisites
 

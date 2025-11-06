@@ -17,8 +17,6 @@ ms.date: 08/18/2025
 > This article references CentOS, a Linux distribution that is end of support (EOS) status. Consider your use and plan accordingly. For more information, see the [CentOS End Of Life guidance](~/articles/virtual-machines/workloads/centos/centos-end-of-life.md).
 
 
-[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
-
 To update your [Azure Linux Agent](https://github.com/Azure/WALinuxAgent) on a Linux VM in Azure, you must already have:
 
 - A running Linux VM in Azure.
@@ -28,6 +26,8 @@ You should always check for a package in the Linux distro repository first. It's
 
 > [!NOTE]
 > For more information, see [Endorsed Linux distributions on Azure](../linux/endorsed-distros.md)
+
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
 
 Verify the [Minimum version support for virtual machine agents in Azure](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) before proceeding.
 

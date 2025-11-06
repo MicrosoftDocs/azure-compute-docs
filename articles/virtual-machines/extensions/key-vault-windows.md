@@ -15,9 +15,10 @@ ms.custom: devx-track-azurepowershell, devx-track-azurecli
 
 # Azure Key Vault virtual machine extension for Windows
 
+The Azure Key Vault virtual machine (VM) extension provides automatic refresh of certificates stored in an Azure key vault. The extension monitors a list of observed certificates stored in key vaults. When it detects a change, the extension retrieves and installs the corresponding certificates. This article describes the supported platforms, configurations, and deployment options for the Key Vault VM extension for Windows.
+
 [!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
 
-The Azure Key Vault virtual machine (VM) extension provides automatic refresh of certificates stored in an Azure key vault. The extension monitors a list of observed certificates stored in key vaults. When it detects a change, the extension retrieves and installs the corresponding certificates. This article describes the supported platforms, configurations, and deployment options for the Key Vault VM extension for Windows.
 
 ## Operating systems
 
