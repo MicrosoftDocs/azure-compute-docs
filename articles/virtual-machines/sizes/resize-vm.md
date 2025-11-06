@@ -1,12 +1,10 @@
 ---
 title: Resize a virtual machine
 description: Change the VM size used for an Azure virtual machine.
-author: ju-shim
 ms.service: azure-virtual-machines
+ms.subservice: sizes
 ms.topic: how-to
 ms.date: 11/06/2025
-ms.author: mattmcinnes
-ms.reviewer: mattmcinnes
 ms.custom: compute-cost-fy24, devx-track-azurecli, devx-track-azurepowershell, devx-track-terraform
 # Customer intent: "As a cloud administrator, I want to resize a virtual machine to a suitable SKU so that I can efficiently allocate resources based on workload demands while minimizing downtime."
 ---
@@ -32,15 +30,14 @@ If your VM uses Premium Storage, make sure that you choose an **s** version of t
 
 When resizing a VM, it's important to choose the right SKU based on the signals from the VM to determine whether you need more CPU, memory, or storage capacity:
 
-- If the VM is running a CPU-intensive workload, such as a database server or a web server with high traffic, you may need to choose a SKU with more CPU cores.
-- If the VM is running a memory-intensive workload, such as a machine learning model or a big data application, you may need to choose a SKU with more memory.
-- If the VM is running out of storage capacity, you may need to choose a SKU with more storage.
+- If the VM is running a CPU-intensive workload, such as a database server or a web server with high traffic, you may need to choose a SKU with more CPU cores. For more information, see [Compute optimized](/azure/virtual-machines/sizes/overview?#compute-optimized) sizes.
+- If the VM is running a memory-intensive workload, such as a machine learning model or a big data application, you may need to choose a SKU with more memory. For more information, see [Memory optimized](/azure/virtual-machines/sizes/overview#memory-optimized) sizes.
+- If the VM is running out of storage capacity, you may need to choose a SKU with more storage. For more information, see [Storage optimized](/azure/virtual-machines/sizes/overview#storage-optimized) sizes.
 
 
 For more information on choosing the right SKU, you can use the following resources:
 - [Sizes for VMs in Azure](../sizes.md): This article lists all the VM sizes available in Azure.
 - [Azure VM Selector](https://azure.microsoft.com/pricing/vm-selector/): This tool helps you find the right VM SKU based on your workload type, OS and software, and deployment region.
-
 
 
 ## Limitations
