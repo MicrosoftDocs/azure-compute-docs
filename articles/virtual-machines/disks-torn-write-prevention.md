@@ -22,9 +22,9 @@ PostgreSQL uses full page writes, so the entire page is logged to the write ahea
 ## Limitations
 
 - Your filesystem and your operating system must guarantee large atomic write support
-    - Only supported for [Linux VMs](/azure/virtual-machines/enable-nvme-remote-faqs#what-are-the-prerequisites-to-enable-the-remote-nvme-interface-on-my-vm-) using version 6.13 or newer of the Linux kernel
+    - Only supported for Linux VMs using version 6.13 or newer of the Linux kernel
         - As of 6.13, the Linux kernel introduced support for large atomic writes with direct IO for XFS and Ext4
--  Atomic write operations are only available when using managed disks with NVMe controllers
+-  Atomic write operations are only available when using managed disks with [NVMe controllers](/azure/virtual-machines/enable-nvme-remote-faqs#what-are-the-prerequisites-to-enable-the-remote-nvme-interface-on-my-vm-)
 
 ## Prerequisites
 
