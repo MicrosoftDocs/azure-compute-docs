@@ -37,7 +37,7 @@ PostgreSQL uses full page writes, so the entire page is logged to the write ahea
 
 Access your VM and run `lsblk`, your disk should show up under the NVMe namespace (like nvme0n2).
 
-Check the namespace parameters of the NVMe from the `lsblk` output with `sudo nvme id-ns <your-nvme-here>` (an example would be /dev/nvme0n2) Verify that the values of `nawun`, `nawupf`, and `nabspf` report values that indicate 16-KiB atomic wrote support. For `nawun` you should see either `nawun: 31 (lbads:9)` or `nawun: 3 (lbads:12)`.
+Check the namespace parameters of the NVMe from the `lsblk` output with `sudo nvme id-ns <your-nvme-here>` (an example would be /dev/nvme0n2) Verify that the values of `nawun`, `nawupf`, and `nabspf` report values that indicate 16-KiB atomic wrote support. The output of these values should be either `31 (lbads:9)` or `3 (lbads:12)`.
 
 ## Verify kernel atomic write support
 
