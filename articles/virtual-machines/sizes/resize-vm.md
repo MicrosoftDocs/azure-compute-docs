@@ -4,7 +4,7 @@ description: Change the VM size used for an Azure virtual machine.
 author: ju-shim
 ms.service: azure-virtual-machines
 ms.topic: how-to
-ms.date: 01/31/2024
+ms.date: 11/06/2025
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: compute-cost-fy24, devx-track-azurecli, devx-track-azurepowershell, devx-track-terraform
