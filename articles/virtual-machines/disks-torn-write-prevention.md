@@ -11,9 +11,11 @@ ms.service: azure-disk-storage
 
 # Prevent torn writes with Azure managed disks
 
-Azure managed disks have native protection against torn writes to ensure data integrity, you can use this native protection to reduce performance overhead. A torn write (or a partial write) can occur when a power loss or system crash interrupts a disk write, leaving a data block only partially updated. This results in an inconsistent page containing a mix of old and new data, essentially a torn page. Torn writes compromise data integrity, and data integrity is critical for applications like databases. Databases must detect and resolve torn writes to avoid corrupt records or indexes 
+Azure managed disks have native protection against torn writes to ensure data integrity, you can use this native protection to reduce performance overhead. By using atomic writes for 8-KiB and 16-KiB blocks, you can achieve higher throughput and lower latency for mission critical applications.
 
-Applications can use managed disk's native torn write prevention through atomic write operations for 8-KiB and 16-KiB blocks of data if the write that is issued aligns with the respective block offset. For example, a 16 KiB I/O issued to the disk at an offset that is a multiple of 16-KiB guarantees atomicity. With atomic writes, managed disks persist the entire block or nothing, so there's never a partial update. Using atomic writes with managed disk's protection against torn writes allows applications to improve transaction throughput and reduce write latency without traditional software overhead for preventing torn writes.
+A torn write (or a partial write) can happen when a power loss or system crash interrupts a disk write, leaving a data block only partially updated. This results in an inconsistent page containing a mix of old and new data, essentially a torn page. Torn writes compromise data integrity, and data integrity is critical for applications like databases. Databases must detect and resolve torn writes to avoid corrupt records or indexes 
+
+Applications can use managed disk's native torn write prevention through atomic write operations for 8-KiB and 16-KiB blocks of data if the issued write aligns with the respective block offset. For example, a 16 KiB I/O issued to the disk at an offset that is a multiple of 16-KiB guarantees atomicity. With atomic writes, managed disks persist the entire block or nothing, so there's never a partial update. Using atomic writes with managed disk's protection against torn writes allows applications to improve transaction throughput and reduce write latency without traditional software overhead for preventing torn writes.
 
 ## Traditional torn write protection
 
