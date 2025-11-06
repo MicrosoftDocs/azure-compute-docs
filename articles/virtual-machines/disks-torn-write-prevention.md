@@ -11,7 +11,7 @@ ms.service: azure-disk-storage
 
 # Prevent torn writes with Azure managed disks
 
-Azure managed disks have native protection against torn writes to ensure data integrity, you can use this native protection to reduce performance overhead. By using atomic writes for 8-KiB and 16-KiB blocks, you can achieve higher throughput and lower latency for mission critical applications.
+Azure managed disks have native protection against torn writes to ensure data integrity, you can use this native protection to reduce performance overhead.
 
 A torn write (or a partial write) can happen when a power loss or system crash interrupts a disk write, leaving a data block only partially updated. This results in an inconsistent page containing a mix of old and new data, essentially a torn page. Torn writes compromise data integrity, and data integrity is critical for applications like databases. Databases must detect and resolve torn writes to avoid corrupt records or indexes 
 
