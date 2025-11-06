@@ -11,9 +11,9 @@ ms.service: azure-disk-storage
 
 # Prevent torn writes with Azure managed disks
 
-Azure managed disks have native protection against torn writes to ensure data integrity, you can use this native protection to reduce performance overhead.
+Azure managed disks have native protection against torn writes to ensure data integrity, which you can use to reduce your performance overhead.
 
-A torn write (or a partial write) can happen when a power loss or system crash interrupts a disk write, leaving a data block only partially updated. This results in an inconsistent page containing a mix of old and new data, essentially a torn page. Torn writes compromise data integrity, and data integrity is critical for applications like databases. Databases must detect and resolve torn writes to avoid corrupt records or indexes 
+A torn write (or a partial write) can occur when a power loss or system crash interrupts a disk write, leaving a data block only partially updated. A partially updated data block results in an inconsistent page containing a mix of old and new data, essentially a torn page. Torn writes compromise data integrity, and data integrity is critical for applications like databases. Databases must detect and resolve torn writes to avoid corrupt records or indexes 
 
 Applications can use managed disk's native torn write prevention through atomic write operations for 8-KiB and 16-KiB blocks of data if the issued write aligns with the respective block offset. For example, a 16 KiB I/O issued to the disk at an offset that is a multiple of 16-KiB guarantees atomicity. With atomic writes, managed disks persist the entire block or nothing, so there's never a partial update. Using atomic writes with managed disk's protection against torn writes allows applications to improve transaction throughput and reduce write latency without traditional software overhead for preventing torn writes.
 
@@ -33,7 +33,7 @@ PostgreSQL uses full page writes, so the entire page is logged to the write ahea
 - Deploy a Linux VM with Linux kernel 6.13 or newer with a managed disk that's using an [NVMe controller](/azure/virtual-machines/enable-nvme-remote-faqs)
 - Install the **nvme-cli** package on your VM
     - If your distribution uses the Advanced Package Tool (APT), you would use `sudo apt install nvme-cli`
-- Issued writes must align with their respective block offsets, otherwise they will be torn
+- Issued writes must align with their respective block offsets, or they could be torn
 
 ## Confirm your VM supports atomic writes
 
@@ -54,6 +54,6 @@ cat /sys/class/block/nvme0n2/queue/atomic_write_max_bytes
 
 ## Setup and use the filesystem
 
-Once you confirm that both the VM and the kernel support atomic writes, create an XFS filesystem with 16-KiB block size. You can do this using the `mkfs.xfs` command, include the following parameters `-b size=16384 <your-nvme-here>` (an example value for your NVMe is /dev/nvme0n2).
+Once you confirm that both the VM and the kernel support atomic writes, create an XFS filesystem with 16-KiB block size. You can create an XFS filesystem with the `mkfs.xfs` command. Include the following parameters `-b size=16384 <your-nvme-here>` (an example value for your NVMe is /dev/nvme0n2).
 
-Now that you have setup the filesystem. Configure your application to write atomically with direct IO and the same block size formatted. One example way of doing this is with the `fio` command, include the following parameters: `direct=1 atomic=1 bs=16k`.
+Now that you have setup the filesystem. Configure your application to write atomically with direct IO and the same block size formatted. One way of doing this is with the `fio` command. Include the following parameters: `direct=1 atomic=1 bs=16k`.
