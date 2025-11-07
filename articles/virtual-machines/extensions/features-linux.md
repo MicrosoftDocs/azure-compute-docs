@@ -32,7 +32,7 @@ In addition to process-specific extensions, a Custom Script extension is availab
 ## Prerequisites
 
 > [!NOTE]
-> Extensions are only supported on [Endorsed Linux distributions on Azure](../linux/endorsed-distros.md).
+> Extensions are supported only on [Endorsed Linux distributions on Azure](../linux/endorsed-distros.md).
 
 ### Azure Linux Agent
 
@@ -516,4 +516,4 @@ You can also remove an extension in the Azure portal:
 
 ## Related content
 
-For more information about VM extensions, see [Azure virtual machine extensions and features](overview.md).
+- For more information about VM extensions, see [Azure virtual machine extensions and features](overview.md).

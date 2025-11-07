@@ -1,6 +1,6 @@
 ---
 title: FIPS 140-3 Support for Azure Linux VM Extensions and Guest Agent
-description: Learn how to opt in to FIPS 140-3 support for Azure Linux VM extensions and guest agent.
+description: Learn how to opt in to FIPS 140-3 support for Azure Linux VM extensions and the guest agent.
 ms.topic: how-to
 ms.service: azure-virtual-machines
 ms.subservice: extensions
@@ -17,7 +17,7 @@ ms.date: 09/25/2025
 
 Linux virtual machine (VM) extensions currently comply with FIPS 140-2, but updates to the platform were required to add support for FIPS 140-3. These changes are currently being enabled across the commercial cloud and Azure Government clouds. Linux VM extensions that use protected settings are also being updated to be able to use a FIPS 140-3-compliant encryption algorithm. This article helps enable support for FIPS 140-3 on Linux VMs where compliance with FIPS 140-3 is enforced. This change isn't needed on Windows images because of the way that FIPS compliance is implemented.
 
-- [What is the Federal Information Processing Standards (FIPS)?](https://www.nist.gov/standardsgov/compliance-faqs-federal-information-processing-standards-fips)
+For more information, see [What are the Federal Information Processing Standards (FIPS)?](https://www.nist.gov/standardsgov/compliance-faqs-federal-information-processing-standards-fips).
 
 ## Confirmed supported extensions
 
@@ -66,7 +66,7 @@ To view the latest supported regions, use the Linux VM Guest [v2.14.0.1](https:/
 | USGov | All regions |
 | Air-Gap | All regions |
 
-### 2. Subscription enablement/Opt-in
+### 2. Subscription enablement/opt-in
 
 Because not all extensions are onboarded by using FIPS 140-3 encryption yet, we require the subscription to opt in to the feature `_Microsoft.Compute/OptInToFips1403Compliance_`.
 
@@ -187,10 +187,10 @@ Important changes must be made to the Linux OS environment to enable and support
 
 The following distributions support FIPS 140-3 and provide instructions for enabling:
 
-- Ubuntu 22.04 LTS and newer
+- Ubuntu 22.04 LTS and newer:
   - Use an [Ubuntu pro client or pro image](https://documentation.ubuntu.com/pro-client/en/docs/howtoguides/enable_fips/).
-- RHEL 9
-  - Steps to [enable FIPS on Red Hat](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/security_hardening/switching-rhel-to-fips-mode_security-hardening).
+- RHEL 9:
+  - Steps to [enable FIPS on RHEL](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/security_hardening/switching-rhel-to-fips-mode_security-hardening).
 
 Older versions of these operating systems operate at the FIPS 140-2 level and don't require any of these special considerations.
 
