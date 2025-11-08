@@ -17,14 +17,11 @@ This article shows you how to change an existing virtual machine's [VM size](../
 
 After you create a virtual machine (VM), you can scale the VM up or down by changing the VM size. In some cases, you must deallocate the VM first. Deallocation may be necessary if the new size isn't available on the same hardware cluster that is currently hosting the VM. It is important to understand that even when deallocation is not necessary, if the virtual machine is currently running, changing its size will cause it to restart. For this reason you should consider changing VM size as a disruptive procedure, especially for stateful workloads that are hosted on the VM.
 
-![A diagram showing a smaller Azure VM icon with a growing arrow pointing to a new larger Azure VM icon.](./media/size-resize-vm.png "Resizing a VM")
-
-If your VM uses Premium Storage, make sure that you choose an **s** version of the size to get Premium Storage support. For example, choose Standard_E4**s**_v3 instead of Standard_E4_v3.
-
 > [!WARNING]
 > If the virtual machine is currently running, changing its size will cause it to restart. 
 >
 > Deallocating the VM also releases any dynamic IP addresses assigned to the VM. The OS and data disks are not affected.
+ 
 
 ## Choose the right SKU
 
@@ -33,6 +30,7 @@ When resizing a VM, it's important to choose the right SKU based on the signals 
 - If the VM is running a CPU-intensive workload, such as a database server or a web server with high traffic, you may need to choose a SKU with more CPU cores. For more information, see [Compute optimized](/azure/virtual-machines/sizes/overview?#compute-optimized) sizes.
 - If the VM is running a memory-intensive workload, such as a machine learning model or a big data application, you may need to choose a SKU with more memory. For more information, see [Memory optimized](/azure/virtual-machines/sizes/overview#memory-optimized) sizes.
 - If the VM is running out of storage capacity, you may need to choose a SKU with more storage. For more information, see [Storage optimized](/azure/virtual-machines/sizes/overview#storage-optimized) sizes.
+- If your VM uses Premium Storage, make sure that you choose an **s** version of the size to get Premium Storage support. For example, choose Standard_E4**s**_v3 instead of Standard_E4_v3.
 
 
 For more information on choosing the right SKU, you can use the following resources:
@@ -59,6 +57,8 @@ For more information on choosing the right SKU, you can use the following resour
 
 
 ## Change the VM size
+
+Select an option for changing the VM size:
 
 ### [Portal](#tab/portal)
 
