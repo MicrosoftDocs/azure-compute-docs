@@ -18,6 +18,8 @@ ms.date: 08/18/2025
 * A Salt Master (either on-premises or in a cloud) that can accept connections from Salt minions hosted on Azure
 * The Salt Minion VM Extension requires that the target VM is connected to the internet in order to fetch Salt packages
 
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
+
 ## Supported platforms
 
 Azure VM running any of the following supported OS:

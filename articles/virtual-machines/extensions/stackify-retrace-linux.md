@@ -28,6 +28,9 @@ Retrace is the ONLY tool that delivers all of the following capabilities across 
 * Error tracking and monitoring
 * Server, application, and custom metrics
 
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
+
+
 **About Stackify Linux Agent Extension**
 
 This extension provides an install path for the Linux Agent for Retrace.
