@@ -3,7 +3,7 @@ title: Select a disk type for Azure IaaS VMs - managed disks
 description: Learn about the available Azure disk types for virtual machines, including Ultra Disks, Premium SSDs v2, Premium SSDs, standard SSDs, and Standard HDDs.
 author: roygara
 ms.author: rogarana
-ms.date: 10/27/2025
+ms.date: 11/06/2025
 ms.topic: concept-article
 ms.service: azure-disk-storage
 ms.custom: references_regions
@@ -53,7 +53,7 @@ Ultra Disks must be used as data disks and can only be created as empty disks. W
 
 ### Ultra Disk size
 
-Ultra Disk sizes range from 4 GiB up to 64 GiB, in 1 GiB increments. Ultra Disk capacity works like Premium SSD v2 disks and you're billed on a per GiB ratio.
+Ultra Disk sizes range from 4 GiB up to 64 TiB, in 1 GiB increments. Ultra Disk capacity works like Premium SSD v2 disks and you're billed on a per GiB ratio.
 
 Ultra Disks offer up to 100 TiB per region per subscription by default and Ultra Disks support higher capacity by request. To request an increase in capacity, request a quota increase or contact Azure Support.
 
@@ -70,7 +70,7 @@ The following table provides an example of performance caps an Ultra Disk has de
 |256     |256,000 (76,000)*         |10,000         |
 |512     |400,000 (153,000)*         |10,000         |
 |1,024    |400,000 (307,200)*        |10,000        |
-|2,048-65,536 (sizes in this range increasing in increments of 1 TiB)     |400,000         |10,000         |
+|2,048-65,536|400,000         |10,000         |
 
 \* Only applies during deployment of Virtual Machine Scale Sets with Uniform orchestration mode. Setting a higher value during deployment results in a failed deployment. After deployment completes you can [increase the performance](disks-enable-ultra-ssd.md#adjust-the-performance-of-an-ultra-disk) of your disks.
 
@@ -128,7 +128,7 @@ Unlike Premium SSDs, Premium SSD v2 doesn't have dedicated sizes. You can set a 
 
 ### Premium SSD v2 performance
 
-Premium SSD v2 disks are designed to provide sub millisecond latencies and provisioned IOPS and throughput 99.9% of the time. With Premium SSD v2 disks, you can individually set the capacity, throughput, and IOPS of a disk based on your workload needs, providing you with more flexibility and reduced costs. Each of these values determines the cost of your disk. You can adjust the performance of a Premium SSD v2 disk four times within a 24 hour period. Creating a disk counts as one of these times, so for the first 24 hours after creating a premium SSD v2 disk you can only adjust its performance up to three times.
+Premium SSD v2 disks are designed to provide provisioned IOPS and throughput 99.9% of the time. Premium SSD v2 disks are also designed to provide sub millisecond latencies. With Premium SSD v2 disks, you can individually set the capacity, throughput, and IOPS of a disk based on your workload needs, providing you with more flexibility and reduced costs. Each of these values determines the cost of your disk. You can adjust the performance of a Premium SSD v2 disk four times within a 24 hour period. Creating a disk counts as one of these times, so for the first 24 hours after creating a premium SSD v2 disk you can only adjust its performance up to three times.
 
 #### Premium SSD v2 capacities
 
