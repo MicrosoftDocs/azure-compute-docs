@@ -29,7 +29,7 @@ The scale-in policy feature provides users a way to configure the order in which
 #### Flexible orchestration 
 By default, Virtual Machine Scale Set applies this policy to determine which instance(s) will be scaled in. With the *Default* policy, VMs are selected for scale-in in the following order:
 
-1. Balance virtual machines across availability zones (if the scale set is deployed in zonal configuration)
+1. Balance virtual machines across availability zones (if the scale set is deployed in zone-redundant configuration)
 2. Balance virtual machines across fault domains (best effort)
 3. Delete virtual machine with the highest instance ID
 
@@ -38,7 +38,7 @@ Users don't need to specify a scale-in policy if they just want the default orde
 #### Uniform orchestration 
 By default, Virtual Machine Scale Set applies this policy to determine which instance(s) will be scaled in. With the *Default* policy, VMs are selected for scale-in in the following order:
 
-1. Balance virtual machines across availability zones (if the scale set is deployed in zonal configuration)
+1. Balance virtual machines across availability zones (if the scale set is deployed in zone-redundant configuration)
 2. Balance virtual machines across fault domains (best effort)
 3. Delete virtual machine with the highest instance ID
 
@@ -48,11 +48,11 @@ Balancing across availability zones or fault domains doesn't move instances acro
 
 ### NewestVM scale-in policy
 
-This policy will delete the newest, or most recently created virtual machine in the scale set, after balancing VMs across availability zones (for zonal deployments). Enabling this policy requires a configuration change on the Virtual Machine Scale Set model.
+This policy will delete the newest, or most recently created virtual machine in the scale set, after balancing VMs across availability zones (for zone-redundant deployments). Enabling this policy requires a configuration change on the Virtual Machine Scale Set model.
 
 ### OldestVM scale-in policy
 
-This policy will delete the oldest created virtual machine in the scale set, after balancing VMs across availability zones (for zonal deployments). Enabling this policy requires a configuration change on the Virtual Machine Scale Set model.
+This policy will delete the oldest created virtual machine in the scale set, after balancing VMs across availability zones (for zone-redundantdeployments). Enabling this policy requires a configuration change on the Virtual Machine Scale Set model.
 
 ## Enabling scale-in policy
 
@@ -140,7 +140,7 @@ These code blocks specify that the Virtual Machine Scale Set will delete the Old
 
 When a Virtual Machine Scale Set isn't zone balanced, the scale set will first delete VMs across the imbalanced zone(s). Within the imbalanced zones, the scale set uses the specified scale-in policy to determine which VM to scale in. In this case, within an imbalanced zone, the scale set will select the Oldest VM in that zone to be deleted.
 
-For non-zonal Virtual Machine Scale Set, the policy selects the oldest VM across the scale set for deletion.
+For nonzonal Virtual Machine Scale Set, the policy selects the oldest VM across the scale set for deletion.
 
 The same process applies when using the ‘NewestVM’ scale-in policy.
 
@@ -235,7 +235,7 @@ The below examples demonstrate how a Virtual Machine Scale Set selects VMs to be
 | Scale-in              | 5, 10                  | ***6***, 9, 11         | 7, 8                   | Choose Zone 2 even though Zone 1 has the oldest VM. Delete VM6 in Zone 1 as it's the oldest VM in that zone.                    |
 | Scale-in              | ***5***, 10            | 9, 11                  | 7, 8                   | Zones are balanced. Delete VM5 in Zone 1 as it's the oldest VM in the scale set.                                                |
 
-For non-zonal Virtual Machine Scale Sets, the policy selects the oldest VM across the scale set for deletion. Any “protected” VM is skipped for deletion.
+For nonzonal Virtual Machine Scale Sets, the policy selects the oldest VM across the scale set for deletion. Any “protected” VM is skipped for deletion.
 
 ### NewestVM scale-in policy
 
@@ -249,7 +249,7 @@ For non-zonal Virtual Machine Scale Sets, the policy selects the oldest VM acros
 | Scale-in              | 3, 4, ***5***          | 2, 6                   | 1, 7                   | Choose Zone 1 even though Zone 3 has the newest VM. Delete VM5 in Zone 1 as it's the newest VM in that Zone.                    |
 | Scale-in              | 3, 4                   | 2, 6                   | 1, ***7***             | Zones are balanced. Delete VM7 in Zone 3 as it's the newest VM in the scale set.                                                |
 
-For non-zonal Virtual Machine Scale Sets, the policy selects the newest VM across the scale set for deletion. Any “protected” VM is skipped for deletion. 
+For nonzonal Virtual Machine Scale Sets, the policy selects the newest VM across the scale set for deletion. Any “protected” VM is skipped for deletion. 
 
 ## Troubleshoot
 
@@ -257,7 +257,7 @@ For non-zonal Virtual Machine Scale Sets, the policy selects the newest VM acros
     If you get a ‘BadRequest’ error with an error message stating "Could not find member 'scaleInPolicy' on object of type 'properties'”, then check the API version used for Virtual Machine Scale Set. API version 2019-03-01 or higher is required for this feature.
 
 2. Wrong selection of VMs for scale-in
-    Refer to the examples in this document. If your Virtual Machine Scale Set is a Zonal deployment, scale-in policy is applied first to the imbalanced Zones and then across the scale set once it's zone balanced. If the order of scale-in isn't consistent with the examples documented here, raise a query with the Virtual Machine Scale Set team for troubleshooting.
+    Refer to the examples in this document. If your Virtual Machine Scale Set is a zone-redundant deployment, scale-in policy is applied first to the imbalanced Zones and then across the scale set once it's zone balanced. If the order of scale-in isn't consistent with the examples documented here, raise a query with the Virtual Machine Scale Set team for troubleshooting.
 
 ## Next steps
 
