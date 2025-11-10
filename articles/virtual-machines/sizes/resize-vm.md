@@ -4,7 +4,7 @@ description: Change the VM size used for an Azure virtual machine.
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: how-to
-ms.date: 11/06/2025
+ms.date: 11/10/2025
 ms.custom: compute-cost-fy24, devx-track-azurecli, devx-track-azurepowershell, devx-track-terraform
 # Customer intent: "As a cloud administrator, I want to resize a virtual machine to a suitable SKU so that I can efficiently allocate resources based on workload demands while minimizing downtime."
 ---
@@ -66,13 +66,10 @@ To change the VM size using the Azure portal:
 
 1. Open the [Azure portal](https://portal.azure.com). <br/><br/>
 1. Type *virtual machines* in the search. Under **Services**, select **Virtual machines**.
-    ![Screenshot of the Azure portal search bar.](./media/portal-vms-search.png)<br/><br/>
 1. In the **Virtual machines** page, select the virtual machine you want to resize.
-    ![Screenshot of an example VM selected.](./media/portal-select-vm.png)<br/><br/>
-1. In the left menu, select **size**. Pick a new compatible size from the list of available sizes 
-    ![Screenshot of the size selection in the Azure portal.](./media/portal-size-select.png)<br/><br/>
-1. After picking a size, select **Resize**.
-    ![Screenshot of the resize button in the Azure portal.](./media/portal-resize-button.png)<br/><br/>
+1. In the left menu, in the **Availability + scale** section, select **size**. 
+1. Pick a new compatible size from the list of available sizes and then select **Resize**.
+
 
 
 If your VM is still running and you don't see the size you want in the list, stopping the virtual machine may reveal more sizes.
@@ -101,7 +98,7 @@ To change the size of a VM using PowerShell:
 
     ```powershell
     $vm = Get-AzVM -ResourceGroupName $resourceGroup -VMName $vmName
-    $vm.HardwareProfile.VmSize = "<newAv2VMsize>"
+    $vm.HardwareProfile.VmSize = "<newVMsize>"
     Update-AzVM -VM $vm -ResourceGroupName $resourceGroup
     ```
 
