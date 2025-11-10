@@ -18,7 +18,7 @@ RSD also incorporates smart deletion logic, which automatically identifies and p
 
 The key benefits of replica soft delete are:
 
-* Operational safety & control: Prevents human error and safeguards against accidental data loss, with restore options and audit logs visibility.
+* Operational safety and control: Safeguards against accidental data loss due to human error, with restore options and audit logs visibility.
 * Data resiliency with minimal storage and compute overhead: Keeps your data protected while eliminating redundant replicas and preventing unnecessary data accumulation.
 
 ## Lifecycle of a soft-deleted replica
