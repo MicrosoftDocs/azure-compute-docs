@@ -20,20 +20,7 @@ You can specify how instances are spread across fault domains within a region or
 
 ## Supported fault domain configurations
 
-There are two primary types of fault domain configurations:
-
-- **Max spreading:** Azure spreads the scale set's VM instances across as many fault domains as possible, on a best-effort basis. It might use greater or fewer than five fault domains.
-
-  Set `platformFaultDomainCount` to a value of `1` for max spreading.
-
-  When you look at the scale set's VM instances, you only see one fault domain. This is expected behavior. The spreading is implicit.
-
-  > [!NOTE]
-  > We recommend using max spreading for most scale sets, because it provides the best spreading in most cases. If you need your instances to be spread across distinct hardware isolation units, we recommend you configure max spreading and use multiple availability zones. Azure spreads the instances across fault domains within each zone.
-
-- **Fixed spreading:** Azure spreads your VMs across the specified number of fault domains. If the scale set can't allocate VMs that meet specified fault domain count, the request fails.
-
-  There are specific numbers of fault domains you can select depending on your orchestration mode and deployment type.
+There are two types of fault domain spreading: max and fixed.
 
 The following table summarizes the supported `platformFaultDomainCount` values for different orchestration modes and deployment types:
 
@@ -44,15 +31,32 @@ The following table summarizes the supported `platformFaultDomainCount` values f
 | Flexible | Zonal or zone-redundant | 1 | 1 |
 | Flexible | Regional (nonzonal) | 1, 2, 3 | 1 |
 
+### Max spreading
+
+ Azure spreads the scale set's VM instances across as many fault domains as possible, on a best-effort basis. It might use greater or fewer than five fault domains.
+
+  Set `platformFaultDomainCount` to a value of `1` for max spreading.
+
+  When you look at the scale set's VM instances, you only see one fault domain. This is expected behavior. The spreading is implicit.
+
+  > [!NOTE]
+  > We recommend using max spreading for most scale sets, because it provides the best spreading in most cases. If you need your instances to be spread across distinct hardware isolation units, we recommend you configure max spreading and use multiple availability zones. Azure spreads the instances across fault domains within each zone.
+
+### Fixed spreading
+
+When your scale set uses fixed spreading, Azure spreads the VM ubstabces across the specified number of fault domains. If the scale set can't allocate VMs that meet specified fault domain count, the request fails.
+
+There are specific numbers of fault domains you can select depending on your orchestration mode and deployment type.
+
 ## Uniform orchestration mode
 
 Scale sets with Uniform orchestration support different fault domain configurations depending on the deployment type:
 
-- **Zonal or zone-redundant scale sets:** The default behavior is to use max spreading (`platformFaultDomainCount = 1`). You can optionally configure fixed spreading with five fault domains.
+- **Zonal or zone-redundant scale sets:** Use max spreading by default (`platformFaultDomainCount = 1`). You can optionally configure fixed spreading with five fault domains (`platformFaultDomainCount = 5`).
 
-- **Regional (nonzonal) scale sets:** Use fixed spreading with five fault domains by default. You can optionally configure max spreading (`platformFaultDomainCount = 1`).
+- **Regional (nonzonal) scale sets:** Use fixed spreading with five fault domains by default (`platformFaultDomainCount = 5`). You can optionally configure max spreading (`platformFaultDomainCount = 1`).
 
-  You can also consider aligning the number of scale set fault domains with the number of managed disk fault domains. This alignment can help prevent loss of quorum if an entire disk fault domain goes down. The fault domain count can be set to less than or equal to the number of managed disks fault domains available in each of the regions. Refer to the [availability sets documentation](../virtual-machines/availability-set-overview.md) to learn about the number of managed disk fault domains by region.
+  You can also consider aligning the number of scale set fault domains with the number of managed disk fault domains (for example, `platformFaultDomainCount = 2`). This alignment can help prevent loss of quorum if an entire disk fault domain goes down. The fault domain count can be set to less than or equal to the number of managed disks fault domains available in each of the regions. Refer to the [availability sets documentation](../virtual-machines/availability-set-overview.md) to learn about the number of managed disk fault domains by region.
 
 ## Flexible orchestration mode
 
@@ -60,7 +64,7 @@ Scale sets with Flexible orchestration support different fault domain configurat
 
 - **Zonal or zone-redundant scale sets**: Only support max spreading (`platformFaultDomainCount = 1`).
 
-- **Regional (nonzonal) scale sets**: Support max spreading (`platformFaultDomainCount = 1`) by default. You can optionally configure fault domain counts of `2` or `3`.
+- **Regional (nonzonal) scale sets**: Use max spreading (`platformFaultDomainCount = 1`) by default. You can optionally configure fault domain counts of `2` or `3`.
 
 ## Fault domains and tools
 
