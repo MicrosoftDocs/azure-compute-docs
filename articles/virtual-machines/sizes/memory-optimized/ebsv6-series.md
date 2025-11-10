@@ -1,6 +1,6 @@
 ---
 title: Ebsv6 size series
-description: Information on and specifications of the Esv6-series sizes
+description: Information on and specifications of the Ebsv6-series sizes
 author: bansal-misha
 ms.service: azure-virtual-machines
 ms.subservice: sizes

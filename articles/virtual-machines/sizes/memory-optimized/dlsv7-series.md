@@ -1,6 +1,6 @@
 ---
 title: Dlsv7 size series (Preview)
-description: Information on and specifications of the Dlsv6-series sizes
+description: Information on and specifications of the Dlsv7-series sizes
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
@@ -14,7 +14,7 @@ ms.reviewer: mattmcinnes
 
 [!INCLUDE [sizes-preview-tag](../includes/sizes-preview-tag.md)]
 
-[!INCLUDE [dlsv7-summary](https://github.com/chiefabel7/azure-compute-docs/blob/main/articles/virtual-machines/sizes/general-purpose/includes/dlsv7-series-summary.md)] 
+[!INCLUDE [dlsv7-summary](../includes/dlsv7-series-summary.md)] 
 
 ## Host specifications
 [!INCLUDE [dlsv7-series-specs](../includes/dlsv7-series-specs.md)]

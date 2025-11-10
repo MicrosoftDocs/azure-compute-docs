@@ -1,7 +1,7 @@
 ---
 title: Dsv7 size series
-description: Information on and specifications of the Dsv6-series sizes
-author: woldegebriel-abel
+description: Information on and specifications of the Dsv7-series sizes
+author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
