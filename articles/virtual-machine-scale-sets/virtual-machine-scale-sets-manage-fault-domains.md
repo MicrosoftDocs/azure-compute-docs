@@ -46,7 +46,7 @@ The following table summarizes the supported `platformFaultDomainCount` values f
 
 ## Uniform orchestration mode
 
-Scale sets with Uniform orchestration support different fault domain configuraitons depending on the deployment type:
+Scale sets with Uniform orchestration support different fault domain configurations depending on the deployment type:
 
 - **Zonal or zone-redundant scale sets:** The default behavior is to use max spreading (`platformFaultDomainCount = 1`). You can optionally configure fixed spreading with five fault domains.
 
@@ -138,11 +138,7 @@ It takes a few minutes to create and configure all the scale set resources and V
 
 ## Instance View API
 
-When using the [Virtual Machines - Instance View REST API](/rest/api/compute/virtualmachines/instanceview) with Flexible orchestration mode, fault domain and update domain information isn't exposed in the Instance View REST API response. This behavior is by design and differs from Uniform orchestration mode where these properties are returned.
-
-- **Zonal and zone-redundant scale sets:** the VM instances are distributed across multiple racks within the zone.
-
-- **Regional (nonzonal) scale sets:** the VM instances are distributed across the configured fault domains, but this information isn't exposed through the API.
+When you use the [Virtual Machines - Instance View REST API](/rest/api/compute/virtualmachines/instanceview) with Flexible orchestration mode scale sets, VM instances are distributed across the configured fault domains, but this information isn't exposed through the API. The API responses don't include fault domain or update domain information. This behavior is by design and differs from Uniform orchestration mode where these properties are returned.
 
 ## Next steps
 
