@@ -22,6 +22,8 @@ Instructions on manual installation of the OFED drivers are available in [Enable
 
 An extension is also available to install InfiniBand drivers for [Windows VMs](hpc-compute-infiniband-windows.md).
 
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
+
 ## Prerequisites
 
 ### Operating system

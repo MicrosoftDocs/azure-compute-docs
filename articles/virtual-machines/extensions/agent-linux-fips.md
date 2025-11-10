@@ -19,6 +19,9 @@ Linux Virtual Machine (VM) Extensions currently comply with FIPS 140-2 but updat
 
 - [What is the Federal Information Processing Standards (FIPS)](https://www.nist.gov/standardsgov/compliance-faqs-federal-information-processing-standards-fips)
 
+
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
+
 ## Confirmed Supported Extensions
 
 | Extension | Supported Clouds<br> _Commercial,<br> Government,<br> Air-Gap_ |

@@ -20,6 +20,8 @@ This extension installs InfiniBand ND drivers (for non-SR-IOV enabled) and OFED 
 
 An extension is also available to install InfiniBand drivers for [Linux VMs](hpc-compute-infiniband-linux.md).
 
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
+
 ## Prerequisites
 
 ### Operating system

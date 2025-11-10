@@ -127,6 +127,7 @@ Everything after API version 2020-06-01 supports managed boot diagnostics. For m
 - Managed storage accounts are supported in Resource Manager API version "2020-06-01" and later.
 - Portal only supports the use of boot diagnostics with a managed storage account for single instance VMs.
 - Users can't configure a retention period for Managed Boot Diagnostics. The logs are overwritten when the total size crosses 1 GB.
+- If the OS disk is swapped after enabling boot diagnostics, the VM will required a stop/ start before boot diagnostics will work again. To avoid this, disable boot diagnostics before swapping the OS disk and enable again after the OS disk swap has been completed.
 
 ## Next steps
 

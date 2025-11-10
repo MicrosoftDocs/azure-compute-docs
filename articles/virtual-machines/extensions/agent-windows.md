@@ -17,6 +17,8 @@ The Microsoft Azure Windows VM Agent is a secure, lightweight process that manag
 
 This article describes how to install and detect the Azure Windows VM Agent.
 
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
+
 ## Prerequisites
 
 The Azure Windows VM Agent supports the x64 and ARM64 architecture for these Windows operating systems:
