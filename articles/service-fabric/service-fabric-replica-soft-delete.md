@@ -41,7 +41,7 @@ The following diagram shows the flow for replica soft delete:
 
 Replica soft delete is available as an opt-in feature in Service Fabric 11.x releases, starting with SF 11.3. Beginning with SF runtime release 12.0, it's enabled by default for all customers.
 
-Starting with SF 11.3, this behavior can be enabled by setting the `IsDelayedReplicaCleanupEnabled` configuration under the ReconfigurationAgent section in the cluster manifest to be “true”. For example, the following shows a configuration update using an ARM template:  
+Starting with SF 11.3, this behavior can be enabled by [setting](service-fabric-cluster-config-upgrade-azure.md) the `IsDelayedReplicaCleanupEnabled` configuration under the ReconfigurationAgent section in the cluster manifest to be “true”. For example, the following shows a configuration update using an ARM template:  
 
 ```json
 { 
