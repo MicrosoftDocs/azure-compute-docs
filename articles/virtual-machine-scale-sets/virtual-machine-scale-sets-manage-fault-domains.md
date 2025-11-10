@@ -1,6 +1,6 @@
 ---
 title: Manage fault domains in Azure Virtual Machine Scale Sets
-description: Learn how to choose the right number of FDs while creating a Virtual Machine Scale Set.
+description: Learn how to choose the right number of fault domains while creating a Virtual Machine Scale Set.
 author: mimckitt
 ms.author: mimckitt
 ms.topic: concept-article
@@ -14,92 +14,136 @@ ms.custom: mimckitt, devx-track-azurecli
 ---
 # Choosing the right number of fault domains for Virtual Machine Scale Set
 
-The fault domain (FD) configuration for Virtual Machine Scale Sets varies depending on the orchestration mode:
+A fault domain is a fault isolation group within an availability zone or datacenter of hardware nodes that share the same power, networking, cooling, and platform maintenance schedule. Virtual machine (VM) instances that are on different fault domains are not likely to be impacted by the same planned or unplanned outage.
+
+You can specify how instances are spread across fault domains within a region or zone. The fault domain configuration options available to you vary depending on the orchestration mode your scale set uses, and whether [your scale set uses availability zones](./virtual-machine-scale-sets-use-availability-zones.md).
 
 ## Supported fault domain configurations
 
-The following table shows the supported `platformFaultDomainCount` values for different orchestration modes and deployment types:
+There are two primary types of fault domain configurations:
+
+- **Max spreading:** Azure spreads the scale set's VM instances across as many fault domains as possible, on a best-effort basis. It might use greater or fewer than five fault domains.
+
+  Set `platformFaultDomainCount` to a value of `1` for max spreading.
+
+  When you look at the scale set's VM instances, you only see one fault domain. This is expected behavior. The spreading is implicit.
+
+  > [!NOTE]
+  > We recommend using max spreading for most scale sets, because it provides the best spreading in most cases. If you need your instances to be spread across distinct hardware isolation units, we recommend you configure max spreading and use multiple availability zones. Azure spreads the instances across fault domains within each zone.
+
+- **Fixed spreading:** Azure spreads your VMs across the specified number of fault domains. If the scale set can't allocate VMs that meet specified fault domain count, the request fails.
+
+  There are specific numbers of fault domains you can select depending on your orchestration mode and deployment type.
+
+The following table summarizes the supported `platformFaultDomainCount` values for different orchestration modes and deployment types:
 
 | Orchestration Mode | Deployment Type | Supported Values | Default Value |
 |-------------------|----------------|------------------|---------------|
-| Uniform | Regional | 1, 2, 3, 4, 5 | 5 |
-| Uniform | Zonal | 1 | 1 |
-| Flexible | Regional | 1, 2, 3 | 1 |
-| Flexible | Zonal | 1 | 1 |
+| Uniform | Zonal or zone-redundant | 1, 5 | 1 |
+| Uniform | Regional (nonzonal) | 1, 2, 3, 4, 5 | 5 |
+| Flexible | Zonal or zone-redundant | 1 | 1 |
+| Flexible | Regional (nonzonal) | 1, 2, 3 | 1 |
 
-## Uniform Orchestration Mode
-Virtual Machine Scale Sets with Uniform orchestration are created with five fault domains by default in Azure regions with no zones. For regions that support zonal deployment of Virtual Machine Scale Sets and this option is selected, the default value of the fault domain count is `1` for each of the zones. A `platformFaultDomainCount` of `1` in this case implies that the virtual machine (VM) instances belonging to the scale set are spread across many racks on a best effort basis.
+## Uniform orchestration mode
 
-You can also consider aligning the number of scale set fault domains with the number of Managed Disks fault domains. This alignment can help prevent loss of quorum if an entire Managed Disks fault domain goes down. The FD count can be set to less than or equal to the number of Managed Disks fault domains available in each of the regions. Refer to the [documentation](../virtual-machines/availability-set-overview.md) to learn about the number of Managed Disks fault domains by region.
+Scale sets with Uniform orchestration support different fault domain configuraitons depending on the deployment type:
 
-## Flexible Orchestration Mode
-Virtual Machine Scale Sets with Flexible orchestration support different fault domain configurations depending on the deployment type:
+- **Zonal or zone-redundant scale sets:** The default behavior is to use max spreading (`platformFaultDomainCount = 1`). You can optionally configure fixed spreading with five fault domains.
 
-- **Regional deployments**: Support fault domain counts of `1`, `2`, or `3`.
-- **Zonal deployments**: Support only fault domain count of `1`.
+- **Regional (nonzonal) scale sets:** Use fixed spreading with five fault domains by default. You can optionally configure max spreading (`platformFaultDomainCount = 1`).
 
-For zonal deployments, a `platformFaultDomainCount` of `1` implies that the VM instances belonging to the scale set are spread across many racks within the zone on a best effort basis. Fault domain and update domain information isn't exposed in the Instance View REST API response for Flexible scale sets, unlike Uniform orchestration mode.
+  You can also consider aligning the number of scale set fault domains with the number of managed disk fault domains. This alignment can help prevent loss of quorum if an entire disk fault domain goes down. The fault domain count can be set to less than or equal to the number of managed disks fault domains available in each of the regions. Refer to the [availability sets documentation](../virtual-machines/availability-set-overview.md) to learn about the number of managed disk fault domains by region.
 
-### Instance View API Behavior
-When using the [Virtual Machines - Instance View REST API](/rest/api/compute/virtualmachines/instanceview) with Flexible orchestration mode:
-- The response doesn't include `faultDomain` and `updateDomain` properties
-- This is by design and differs from Uniform orchestration mode where these properties are returned
-- For regional deployments with multiple fault domains, the VM instances are distributed across the configured fault domains, but this information isn't exposed through the API
-- For zonal deployments, the VM instances are distributed across multiple racks within the zone
+## Flexible orchestration mode
+
+Scale sets with Flexible orchestration support different fault domain configurations depending on the deployment type:
+
+- **Zonal or zone-redundant scale sets**: Only support max spreading (`platformFaultDomainCount = 1`).
+
+- **Regional (nonzonal) scale sets**: Support max spreading (`platformFaultDomainCount = 1`) by default. You can optionally configure fault domain counts of `2` or `3`.
+
+## Fault domains and tools
+
+You can configure fault domains by using standard Azure deployment tools and APIs.
 
 ## REST API
-For Uniform orchestration mode, you can set the property `properties.platformFaultDomainCount` to `1`, `2`, or `3`. If not set, the property will default to `1`. For Flexible orchestration mode, you can set this property to `1`, `2`, or `3` for regional deployments, and only `1` is supported for zonal deployments. Refer to the REST API documentation for [Virtual Machine Scale Sets](/rest/api/compute/virtualmachinescalesets/createorupdate).
+
+Configure the scale set's fault domain spreading by setting the property `properties.platformFaultDomainCount`. Refer to the REST API documentation for [Virtual Machine Scale Sets](/rest/api/compute/virtualmachinescalesets/createorupdate).
 
 ## Azure CLI
 
 > [!IMPORTANT]
->Starting November 2023, VM scale sets created using PowerShell and Azure CLI will default to Flexible Orchestration Mode if no orchestration mode is specified. For more information about this change and what actions you should take, go to [Breaking Change for VMSS PowerShell/CLI Customers - Microsoft Community Hub](https://techcommunity.microsoft.com/t5/azure-compute-blog/breaking-change-for-vmss-powershell-cli-customers/ba-p/3818295)
+> VM scale sets created using PowerShell and Azure CLI default to Flexible orchestration mode if no orchestration mode is specified.
 
-For Uniform orchestration mode, you can set the parameter `--platform-fault-domain-count` to 1, 2, or 3 (default of 3 if not specified). For Flexible orchestration mode, you can set this parameter to 1, 2, or 3 for regional deployments, but only 1 is supported for zonal deployments. Refer to the Azure CLI documentation for [Virtual Machine Scale Sets](/cli/azure/vmss#az-vmss-create).
+Configure the scale set's fault domain spreading by setting the `--platform-fault-domain-count` parameter. Refer to the Azure CLI documentation for [Virtual Machine Scale Sets](/cli/azure/vmss#az-vmss-create).
 
-### Example for Uniform Orchestration Mode
+The following examples show how to use the Azure CLI to deploy scale sets with varying configurations:
 
-```azurecli-interactive
-az vmss create \
-  --resource-group myResourceGroup \
-  --name myScaleSet \
-  --orchestration-mode Uniform \
-  --image Ubuntu2204 \
-  --admin-username azureuser \
-  --platform-fault-domain-count 3\
-  --generate-ssh-keys
-```
+- **Zone-redundant Flexible scale set that uses three zones, with max spreading in each zone:**
 
-### Example for Flexible Orchestration Mode
+  ```azurecli-interactive
+  az vmss create \
+    --resource-group myResourceGroup \
+    --name myScaleSet \
+    --orchestration-mode Flexible \
+    --image Ubuntu2204 \
+    --admin-username azureuser \
+    --zones 1 2 3 \
+    --generate-ssh-keys
+  ```
 
-#### Regional deployment with multiple fault domains
-```azurecli-interactive
-az vmss create \
-  --resource-group myResourceGroup \
-  --name myScaleSet \
-  --orchestration-mode Flexible \
-  --image Ubuntu2204 \
-  --admin-username azureuser \
-  --platform-fault-domain-count 3 \
-  --generate-ssh-keys
-```
+- **Zonal (single-zone) Flexible scale set with max spreading:**
 
-#### Zonal deployment 
-```azurecli-interactive
-az vmss create \
-  --resource-group myResourceGroup \
-  --name myScaleSet \
-  --orchestration-mode Flexible \
-  --image Ubuntu2204 \
-  --admin-username azureuser \
-  --zones 1 \
-  --generate-ssh-keys
-```
+  ```azurecli-interactive
+  az vmss create \
+    --resource-group myResourceGroup \
+    --name myScaleSet \
+    --orchestration-mode Flexible \
+    --image Ubuntu2204 \
+    --admin-username azureuser \
+    --zones 1 \
+    --generate-ssh-keys
+  ```
 
 > [!NOTE]
-> For zonal Flexible virtual machine scale set deployments, the fault domain count is automatically set to 1 and can't be configured to a higher value.
+> For zone-redundant and zonal Flexible virtual machine scale set deployments, the fault domain count is automatically set to 1 (max spreading) and can't be configured to a different value.
+
+- **Nonzonal Flexible scale set with fixed spreading:**
+
+  ```azurecli-interactive
+  az vmss create \
+    --resource-group myResourceGroup \
+    --name myScaleSet \
+    --orchestration-mode Flexible \
+    --image Ubuntu2204 \
+    --admin-username azureuser \
+    --platform-fault-domain-count 3 \
+    --generate-ssh-keys
+  ```
+
+- **Nonzonal Uniform scale set with max spreading:** 
+
+  ```azurecli-interactive
+  az vmss create \
+    --resource-group myResourceGroup \
+    --name myScaleSet \
+    --orchestration-mode Uniform \
+    --image Ubuntu2204 \
+    --admin-username azureuser \
+    --platform-fault-domain-count 1 \
+    --generate-ssh-keys
+  ```
 
 It takes a few minutes to create and configure all the scale set resources and VMs.
 
+## Instance View API
+
+When using the [Virtual Machines - Instance View REST API](/rest/api/compute/virtualmachines/instanceview) with Flexible orchestration mode, fault domain and update domain information isn't exposed in the Instance View REST API response. This behavior is by design and differs from Uniform orchestration mode where these properties are returned.
+
+- **Zonal and zone-redundant scale sets:** the VM instances are distributed across multiple racks within the zone.
+
+- **Regional (nonzonal) scale sets:** the VM instances are distributed across the configured fault domains, but this information isn't exposed through the API.
+
 ## Next steps
+
 - Learn more about [availability and redundancy features](../virtual-machines/availability.md) for Azure environments.
