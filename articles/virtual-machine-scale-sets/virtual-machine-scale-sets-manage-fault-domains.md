@@ -33,18 +33,20 @@ The following table summarizes the supported `platformFaultDomainCount` values f
 
 ### Max spreading
 
- Azure spreads the scale set's VM instances across as many fault domains as possible, on a best-effort basis. It might use greater or fewer than five fault domains.
+Azure spreads the scale set's VM instances across as many fault domains as possible, on a best-effort basis. It might use greater or fewer than five fault domains.
 
-  Set `platformFaultDomainCount` to a value of `1` for max spreading.
+Set `platformFaultDomainCount` to a value of `1` for max spreading.
 
-  When you look at the scale set's VM instances, you only see one fault domain. This is expected behavior. The spreading is implicit.
+When you look at the scale set's VM instances, you only see one fault domain. This is expected behavior. The spreading is implicit.
 
-  > [!NOTE]
-  > We recommend using max spreading for most scale sets, because it provides the best spreading in most cases. If you need your instances to be spread across distinct hardware isolation units, we recommend you configure max spreading and use multiple availability zones. Azure spreads the instances across fault domains within each zone.
+> [!NOTE]
+> We recommend using max spreading (`platformFaultDomainCount = 1`) for most scale sets, because it provides the best spreading in most cases. If you need your instances to be spread across distinct hardware isolation units, we recommend you configure max spreading and use multiple availability zones. Azure spreads the instances across fault domains within each zone.
 
 ### Fixed spreading
 
-When your scale set uses fixed spreading, Azure spreads the VM ubstabces across the specified number of fault domains. If the scale set can't allocate VMs that meet specified fault domain count, the request fails.
+When your scale set uses fixed spreading, Azure spreads the VM instances across the specified number of fault domains. If the scale set can't allocate VMs that meet specified fault domain count, the request fails.
+
+Set the `platformFaultDomainCount` to a value greater than 1 for fixed spreading.
 
 There are specific numbers of fault domains you can select depending on your orchestration mode and deployment type.
 
@@ -70,11 +72,11 @@ Scale sets with Flexible orchestration support different fault domain configurat
 
 You can configure fault domains by using standard Azure deployment tools and APIs.
 
-## REST API
+### REST API
 
 Configure the scale set's fault domain spreading by setting the property `properties.platformFaultDomainCount`. Refer to the REST API documentation for [Virtual Machine Scale Sets](/rest/api/compute/virtualmachinescalesets/createorupdate).
 
-## Azure CLI
+### Azure CLI
 
 > [!IMPORTANT]
 > VM scale sets created using PowerShell and Azure CLI default to Flexible orchestration mode if no orchestration mode is specified.
@@ -140,7 +142,7 @@ The following examples show how to use the Azure CLI to deploy scale sets with v
 
 It takes a few minutes to create and configure all the scale set resources and VMs.
 
-## Instance View API
+### Instance View API
 
 When you use the [Virtual Machines - Instance View REST API](/rest/api/compute/virtualmachines/instanceview) with Flexible orchestration mode scale sets, VM instances are distributed across the configured fault domains, but this information isn't exposed through the API. The API responses don't include fault domain or update domain information. This behavior is by design and differs from Uniform orchestration mode where these properties are returned.
 
