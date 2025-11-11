@@ -396,7 +396,7 @@ A: When a VM is deleted, the data on the disks is not automatically deleted. The
 
 A: Azure Backup retains VM backups according to the backup policy, even after the VM is deleted. Retained backups continue to incur storage charges until they are deleted. To avoid unnecessary costs, review your backup retention and delete backups you no longer need.
 
-To manage or delete VM backups, go to the Azure portal, navigate to your Recovery Services vault, select "Backup items," then "Azure Virtual Machine," and choose the VM whose backups you want to manage. From there, you can stop backup and delete backup data as needed.
+To manage or delete VM backups, go to the Azure portal, navigate to your **Recovery Services** vault, select **Backup items**, then select **Azure Virtual Machine**, and choose the VM whose backups you want to manage. From there, you can stop backup and delete backup data as needed.
 ### Q: Can I use this feature on disks and NICs that aren't associated with a VM?
 
 A: No, this feature is only available on disks and NICs associated with a VM.
