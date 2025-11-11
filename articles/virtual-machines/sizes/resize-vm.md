@@ -54,7 +54,7 @@ For more information on choosing the right SKU, you can use the following resour
 
 2. You can't resize a VM size that has a SCSI-based VM to a VM size that has a remote NVMe-enabled VM.
 
-   For a work around see [How can I resize a SCSI-based VM to a remote NVMe-enabled VM of a different size?](../enable-nvme-remote-faqs.yml#how-can-i-resize-a-scsi-based-vm-to-a-remote-nvme-enabled-vm-of-a-different-size-)
+   For a workaround, see [How can I resize a SCSI-based VM to a remote NVMe-enabled VM of a different size?](../enable-nvme-remote-faqs.yml#how-can-i-resize-a-scsi-based-vm-to-a-remote-nvme-enabled-vm-of-a-different-size-)
 
 
 
@@ -295,5 +295,5 @@ This Terraform example modifies the size of an existing virtual machine when you
 - For more scalability, run multiple VM instances and scale out.
 - For more SKU selection information, see [Sizes for virtual machines in Azure](../sizes.md).
 - To determine VM sizes by workload type, OS and software, or deployment region, see [Azure VM Selector](https://azure.microsoft.com/pricing/vm-selector/).
-- For more information on Virtual Machine Scale Sets (VMSS) sizes, see [Automatically scale machines in a VMSS](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md).
+- For more information on Virtual Machine Scale Sets sizes, see [Automatically scale machines in a VMSS](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md).
 - For more cost management planning information, see the [Plan and manage your Azure costs](/training/modules/plan-manage-azure-costs/1-introduction) module.
