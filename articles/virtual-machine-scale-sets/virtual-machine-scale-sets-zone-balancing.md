@@ -40,7 +40,7 @@ Here are some examples of how Virtual Machine Scale Sets determines zone balanci
 
     :::image type="content" source="media/virtual-machine-scale-sets-zone-balancing/zone-balancing-balanced-odd.png" alt-text="Diagram that shows a balanced scale set, with two instances in zone 1 and three instances in zones 2 and 3." border="false":::
 
-- Example 3: A scale set with 1 VM in zone 1, 3 VMs in zone 2, and 3 VMs in zone 3 is considered **unbalanced**. Zone 1 has 2 fewer VMs than zones 2 and 3.
+- Example 3: A scale set with 1 VM in zone 1, 3 VMs in zone 2, and 3 VMs in zone 3 is considered *unbalanced*. Zone 1 has 2 fewer VMs than zones 2 and 3, which exceeds the allowed threshold of ±1 VM.
 
     :::image type="content" source="media/virtual-machine-scale-sets-zone-balancing/zone-balancing-unbalanced.png" alt-text="Diagram that shows an unbalanced scale set, with one instance in zone 1 and three instances in zones 2 and 3." border="false":::
 
@@ -48,7 +48,7 @@ Here are some examples of how Virtual Machine Scale Sets determines zone balanci
 
 The platform only rebalances instances during scale-out operations.
 
-When you scale in, instance removal can temporarily skew distribution. Similarly, if you manually select instances to remove, your scale set might become unbalanced.
+When you scale in, instance removal can temporarily skew distribution. Similarly, if you manually select instances to remove or detach, your scale set might become unbalanced.
 
 If you have a strict requirement for your instances to be evenly spread across zones, perform a small scale‑out operation after a scale‑in to encourage rebalancing, or temporarily set a higher minimum instance count when you make changes.
 
