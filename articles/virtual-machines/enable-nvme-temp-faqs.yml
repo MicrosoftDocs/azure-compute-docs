@@ -324,7 +324,7 @@ sections:
           exit 0
           ```
           For RHEL/CentOS based distributives, replace `update-initramfs -u` to `dracut --force` to regenerate initramfs file. 
-          If script stops execution with "Couldn't find mdadm.conf file", then you can create mdadm.conf file using commands:
+          If script stops execution with "Couldn't find mdadm.conf file", then you can create mdadm.conf file using the following command:
           ```
           sudo touch /etc/mdadm/mdadm.conf
           ```
