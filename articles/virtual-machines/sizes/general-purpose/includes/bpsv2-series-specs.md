@@ -1,5 +1,6 @@
 ---
 title: Bpsv2 series specs include
+description: Include file
 author: mattmcinnes
 ms.topic: include
 ms.service: azure-virtual-machines
@@ -10,6 +11,7 @@ ms.reviewer: mattmcinnes
 ms.custom: include file
 # Customer intent: "As a cloud architect, I want to review the specifications of Bpsv2-series VMs so that I can select the appropriate size for my application workloads efficiently."
 ---
+
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
 |---|---|---|
 | Processor      | 2 - 16 vCPUs       | Ampere Altra [Arm64]                              |
