@@ -1,6 +1,5 @@
 ---
 title: Bpsv2 series specs include
-description: Include file containing specifications of Bpsv2-series VM sizes.
 author: mattmcinnes
 ms.topic: include
 ms.service: azure-virtual-machines
