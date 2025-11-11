@@ -26,9 +26,9 @@ The following table summarizes the supported `platformFaultDomainCount` values f
 
 | Orchestration Mode | Deployment Type | Supported Values | Default Value |
 |-------------------|----------------|------------------|---------------|
-| Uniform | Zonal or zone-redundant | 1, 5 | 1 |
+| Uniform | Zonal or zone-spanning | 1, 5 | 1 |
 | Uniform | Regional (nonzonal) | 1, 2, 3, 4, 5 | 5 |
-| Flexible | Zonal or zone-redundant | 1 | 1 |
+| Flexible | Zonal or zone-spanning | 1 | 1 |
 | Flexible | Regional (nonzonal) | 1, 2, 3 | 1 |
 
 ### Max spreading
@@ -54,7 +54,7 @@ There are specific numbers of fault domains you can select depending on your orc
 
 Scale sets with Uniform orchestration support different fault domain configurations depending on the deployment type:
 
-- **Zonal or zone-redundant scale sets:** Use max spreading by default (`platformFaultDomainCount = 1`). You can optionally configure fixed spreading with five fault domains (`platformFaultDomainCount = 5`).
+- **Zonal or zone-spanning scale sets:** Use max spreading by default (`platformFaultDomainCount = 1`). You can optionally configure fixed spreading with five fault domains (`platformFaultDomainCount = 5`).
 
 - **Regional (nonzonal) scale sets:** Use fixed spreading with five fault domains by default (`platformFaultDomainCount = 5`). You can optionally configure max spreading (`platformFaultDomainCount = 1`).
 
@@ -64,7 +64,7 @@ Scale sets with Uniform orchestration support different fault domain configurati
 
 Scale sets with Flexible orchestration support different fault domain configurations depending on the deployment type:
 
-- **Zonal or zone-redundant scale sets**: Only support max spreading (`platformFaultDomainCount = 1`).
+- **Zonal or zone-spanning scale sets**: Only support max spreading (`platformFaultDomainCount = 1`).
 
 - **Regional (nonzonal) scale sets**: Use max spreading (`platformFaultDomainCount = 1`) by default. You can optionally configure fault domain counts of `2` or `3`.
 
@@ -85,7 +85,7 @@ Configure the scale set's fault domain spreading by setting the `--platform-faul
 
 The following examples show how to use the Azure CLI to deploy scale sets with varying configurations:
 
-- **Zone-redundant Flexible scale set that uses three zones, with max spreading in each zone:**
+- **Zone-spanning Flexible scale set that uses three zones, with max spreading in each zone:**
 
   ```azurecli-interactive
   az vmss create \
@@ -112,7 +112,7 @@ The following examples show how to use the Azure CLI to deploy scale sets with v
   ```
 
 > [!NOTE]
-> For zone-redundant and zonal Flexible virtual machine scale set deployments, the fault domain count is automatically set to 1 (max spreading) and can't be configured to a different value.
+> For zone-spanning and zonal Flexible virtual machine scale set deployments, the fault domain count is automatically set to 1 (max spreading) and can't be configured to a different value.
 
 - **Nonzonal Flexible scale set with fixed spreading:**
 
