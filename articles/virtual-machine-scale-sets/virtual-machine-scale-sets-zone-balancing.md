@@ -52,6 +52,9 @@ When you scale in, instance removal can temporarily skew distribution. Similarly
 
 If you have a strict requirement for your instances to be evenly spread across zones, perform a small scale‑out operation after a scale‑in to encourage rebalancing, or temporarily set a higher minimum instance count when you make changes.
 
+> [!NOTE]
+> If you use the Flexible orchestration mode and attach, detach, or remove individual VMs, you should check the zones your VMs are in. If the VMs are all in a single zone, your scale set isn't resilient to an outage in that zone.
+
 ## VM extensions
 
 It's possible that VMs in the scale set are successfully created, but extensions on those VMs fail to deploy. Any VMs with extension deployment failures are still counted when determining if a scale set is balanced. For example, a scale set with 3 VMs in zone 1, 3 VMs in zone 2, and 3 VMs in zone 3 is considered balanced even if all extensions failed in zone 1 and all extensions succeeded in zones 2 and 3.
