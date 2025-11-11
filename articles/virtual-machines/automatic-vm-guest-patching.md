@@ -84,20 +84,28 @@ As a new rollout is triggered every month, a VM receives at least one patch roll
 
 | Publisher               | OS Offer      |  Sku               |
 |-------------------------|---------------|--------------------|
-| MicrosoftWindowsServer  | WindowsServer | 2022-datacenter-azure-edition-core |
+| MicrosoftWindowsServer  | WindowsServer | 2025-datacenter-azure-edition |
+| MicrosoftWindowsServer  | WindowsServer | 2025-datacenter-azure-edition-core |
+| MicrosoftWindowsServer  | WindowsServer | 2025-datacenter-azure-edition-smalldisk |
+| MicrosoftWindowsServer  | WindowsServer | 2025-datacenter-azure-edition-core-smalldisk |
+| MicrosoftWindowsServer  | MicrosoftServerOperatingSystems-previews | windows-server-2025-azure-edition-hotpatch |
 | MicrosoftWindowsServer  | WindowsServer | 2022-datacenter-azure-edition-core-smalldisk |
+| MicrosoftWindowsServer  | WindowsServer | 2022-datacenter-azure-edition-core |
+| MicrosoftWindowsServer  | MicrosoftServerOperatingSystems-previews | windows-server-2022-azure-edition-core-preview |
+| MicrosoftWindowsServer  | WindowsServerHotpatch-previews | windows-server-2022-azure-edition-hotpatch |
 | MicrosoftWindowsServer  | WindowsServer | 2022-datacenter-azure-edition-hotpatch |
 | MicrosoftWindowsServer  | WindowsServer | 2022-datacenter-azure-edition-hotpatch-smalldisk |
-| MicrosoftWindowsServer  | WindowsServer | 2025-datacenter-azure-edition |
-| MicrosoftWindowsServer  | WindowsServer | 2025-datacenter-azure-edition-smalldisk |
-| MicrosoftWindowsServer  | WindowsServer | 2025-datacenter-azure-edition-core |
-| MicrosoftWindowsServer  | WindowsServer | 2025-datacenter-azure-edition-core-smalldisk |
-
 
 ### Supported Windows Images (non-Hotpatchable)
 
 | Publisher               | OS Offer      |  Sku               |
 |-------------------------|---------------|--------------------|
+| Center-for-Internet-Security-Inc | cis-windows-server-2019-v1-0-0-l2 | cis-ws2019-l2 |
+| Center-for-Internet-Security-Inc | cis-windows-server | cis-windows-server2019-l1-gen1 |
+| Center-for-Internet-Security-Inc | cis-windows-server | cis-windows-server2022-l1-gen1 |
+| Center-for-Internet-Security-Inc | cis-windows-server | cis-windows-server2022-l1-gen2 |
+| Center-for-Internet-Security-Inc | cis-windows-server | cis-windows-server2022-l2-gen2 |
+| Center-for-Internet-Security-Inc | cis-windows-server-2022-l2 | cis-windows-server-2022-l2-gen2 |
 | MicrosoftWindowsServer  | WindowsServer | 2008-R2-SP1 |
 | MicrosoftWindowsServer  | WindowsServer | 2012-R2-Datacenter |
 | MicrosoftWindowsServer  | WindowsServer | 2012-R2-Datacenter-gensecond |
@@ -115,12 +123,27 @@ As a new rollout is triggered every month, a VM receives at least one patch roll
 | MicrosoftWindowsServer  | WindowsServer | 2019-datacenter-smalldisk-g2  |
 | MicrosoftWindowsServer  | WindowsServer | 2019-datacenter-with-containers  |
 | MicrosoftWindowsServer  | WindowsServer | 2022-datacenter    |
-| MicrosoftWindowsServer  | WindowsServer | 2022-datacenter-smalldisk    |
-| MicrosoftWindowsServer  | WindowsServer | 2022-datacenter-smalldisk-g2 |
-| MicrosoftWindowsServer  | WindowsServer | 2022-datacenter-g2    |
+| MicrosoftWindowsServer  | WindowsServer | 2022-datacenter-azure-edition |
+| MicrosoftWindowsServer  | WindowsServer | 2022-datacenter-azure-edition-core |
+| MicrosoftWindowsServer  | WindowsServer | 2022-datacenter-azure-edition-core-smalldisk |
+| MicrosoftWindowsServer  | WindowsServer | 2022-datacenter-azure-edition-hotpatch |
+| MicrosoftWindowsServer  | WindowsServer | 2022-datacenter-azure-edition-hotpatch-smalldisk |
+| MicrosoftWindowsServer  | WindowsServer | 2022-datacenter-azure-edition-smalldisk |
 | MicrosoftWindowsServer  | WindowsServer | 2022-datacenter-core |
 | MicrosoftWindowsServer  | WindowsServer | 2022-datacenter-core-g2 |
-| MicrosoftWindowsServer  | WindowsServer | 2022-datacenter-azure-edition |
+| MicrosoftWindowsServer  | WindowsServer | 2022-datacenter-g2    |
+| MicrosoftWindowsServer  | WindowsServer | 2022-datacenter-smalldisk    |
+| MicrosoftWindowsServer  | WindowsServer | 2022-datacenter-smalldisk-g2 |
+| MicrosoftWindowsServer  | WindowsServerHotpatch-previews | windows-server-2022-azure-edition-hotpatch |
+| MicrosoftWindowsServer  | WindowsServer | 2025-datacenter-azure-edition |
+| MicrosoftWindowsServer  | WindowsServer | 2025-datacenter-azure-edition-core |
+| MicrosoftWindowsServer  | WindowsServer | 2025-datacenter-azure-edition-core-smalldisk |
+| MicrosoftWindowsServer  | WindowsServer | 2025-datacenter-azure-edition-smalldisk |
+| MicrosoftWindowsServer  | WindowsServer | 2025-datacenter |
+| MicrosoftWindowsServer  | WindowsServer | 2025-datacenter-core |
+| MicrosoftWindowsServer  | WindowsServer | 2025-datacenter-core-smalldisk |
+| MicrosoftWindowsServer  | WindowsServer | 2025-datacenter-smalldisk |
+| MicrosoftWindowsServer  | MicrosoftServerOperatingSystems-previews | windows-server-2025-azure-edition-hotpatch |
 
 
 
@@ -128,24 +151,117 @@ As a new rollout is triggered every month, a VM receives at least one patch roll
 
 | Publisher               | OS Offer      |  Sku               |
 |-------------------------|---------------|--------------------|
+| AlmaLinux  | almalinux-hpc | 8-hpc-gen2 |
+| AlmaLinux  | almalinux-hpc | 8_5-hpc |
+| AlmaLinux  | almalinux-hpc | 8_5-hpc-gen2 |
+| AlmaLinux  | almalinux-hpc | 8_6-hpc |
+| AlmaLinux  | almalinux-hpc | 8_6-hpc-gen2 |
+| AlmaLinux  | almalinux-hpc | 8_7-hpc-gen1 |
+| AlmaLinux  | almalinux-hpc | 8_7-hpc-gen2 |
+| AlmaLinux  | almalinux-hpc | 8_10-hpc-gen1 |
+| AlmaLinux  | almalinux-hpc | 8_10-hpc-gen2 |
 | Canonical  | UbuntuServer | 16.04-LTS |
 | Canonical  | UbuntuServer | 16.04.0-LTS |
 | Canonical  | UbuntuServer | 18.04-LTS |
-| Canonical  | UbuntuServer | 18.04-LTS-gen2 |
+| Canonical  | UbuntuServer | 18_04-LTS-arm64 |
+| Canonical  | UbuntuServer | 18_04-LTS-gen2 |
+| Canonical  | ubuntu-24_04-lts | cvm |
+| Canonical  | ubuntu-24_04-lts | server |
+| Canonical  | ubuntu-24_04-lts | server-arm64 |
+| Canonical  | ubuntu-24_04-lts | server-gen1 |
+| Canonical  | ubuntu-24_04-lts | ubuntu-pro |
+| Canonical  | ubuntu-24_04-lts | ubuntu-pro-cvm |
+| Canonical  | 0001-com-ubuntu-confidential-vm-focal | 20_04-lts-cvm |
+| Canonical  | 0001-com-ubuntu-confidential-vm-jammy | 22_04-lts-cvm |
 | Canonical  | 0001-com-ubuntu-pro-bionic | pro-18_04-lts |
-| Canonical  | 0001-com-ubuntu-server-focal | 20_04-lts |
-| Canonical  | 0001-com-ubuntu-server-focal | 20_04-lts-gen2 |
 | Canonical  | 0001-com-ubuntu-pro-focal | pro-20_04-lts |
 | Canonical  | 0001-com-ubuntu-pro-focal | pro-20_04-lts-gen2 |
+| Canonical  | 0001-com-ubuntu-pro-jammy | pro-22_04-lts-gen2 |
+| Canonical  | 0001-com-ubuntu-server-focal | 20_04-lts |
+| Canonical  | 0001-com-ubuntu-server-focal | 20_04-lts-arm64 |
+| Canonical  | 0001-com-ubuntu-server-focal | 20_04-lts-gen2 |
 | Canonical  | 0001-com-ubuntu-server-jammy | 22_04-lts |
+| Canonical  | 0001-com-ubuntu-server-jammy | 22_04-lts-arm64 |
 | Canonical  | 0001-com-ubuntu-server-jammy | 22_04-lts-gen2 |
-| microsoftcblmariner  | cbl-mariner | cbl-mariner-1 |
-| microsoftcblmariner  | cbl-mariner | 1-gen2 |
-| microsoftcblmariner  | cbl-mariner | cbl-mariner-2 |
-| microsoftcblmariner  | cbl-mariner | cbl-mariner-2-gen2 |
-| Redhat  | RHEL | 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, 7.8, 7_9, 7-RAW, 7-LVM |
-| Redhat  | RHEL | 8, 8.1, 81gen2, 8.2, 82gen2, 8_3, 83-gen2, 8_4, 84-gen2, 8_5, 85-gen2, 8_6, 86-gen2, 8_7, 8_8, 8-lvm, 8-lvm-gen2 |
-| Redhat  | RHEL | 9_0, 9_1, 9-lvm, 9-lvm-gen2 |
+| Center-for-Internet-Security-Inc | cis-rhel-7-v2-2-0-l1 | cis-redhat7-l1 |
+| Center-for-Internet-Security-Inc | cis-rhel | cis-redhat7-l2-gen1 |
+| Center-for-Internet-Security-Inc | cis-rhel | cis-redhat8-l1-gen1 |
+| Center-for-Internet-Security-Inc | cis-rhel | cis-redhat8-l1-gen2 |
+| Center-for-Internet-Security-Inc | cis-rhel | cis-redhat8-l2-gen1 |
+| Center-for-Internet-Security-Inc | cis-rhel | cis-redhat9-l1-gen2 |
+| Center-for-Internet-Security-Inc | cis-rhel | cis-redhat9-l2-gen2 |
+| Center-for-Internet-Security-Inc | cis-ubuntu-linux-2004-l1 | cis-ubuntu-linux-2004-l1 |
+| Center-for-Internet-Security-Inc | cis-ubuntu-linux-2204-l1 | cis-ubuntu-linux-2204-l1 |
+| Center-for-Internet-Security-Inc | cis-ubuntu | cis-ubuntulinux2004-l1-gen1 |
+| Center-for-Internet-Security-Inc | cis-ubuntu | cis-ubuntulinux2204-l1-gen2 |
+| Center-for-Internet-Security-Inc | cis-ubuntu | cis-ubuntulinux2404-l1-gen1 |
+| Center-for-Internet-Security-Inc | cis-ubuntu | cis-ubuntulinux2404-l1-gen2 |
+| MicrosoftCblMariner  | azure-linux-3 | azure-linux-3-gen2 |
+| MicrosoftCblMariner  | cbl-mariner | cbl-mariner-1 |
+| MicrosoftCblMariner  | cbl-mariner | 1-gen2 |
+| MicrosoftCblMariner  | cbl-mariner | cbl-mariner-2 |
+| MicrosoftCblMariner  | cbl-mariner | cbl-mariner-2-arm64 |
+| MicrosoftCblMariner  | cbl-mariner | cbl-mariner-2-gen2 |
+| MicrosoftCblMariner  | cbl-mariner | cbl-mariner-2-gen2-fips |
+| Microsoft-AKS  | aks | aks-engine-ubuntu-1804-202112 |
+| Microsoft-DSVM  | aml-workstation | ubuntu-20 |
+| Microsoft-DSVM  | aml-workstation | ubuntu-20-gen2 |
+| Microsoft-DSVM  | ubuntu-hpc | 1804 |
+| Microsoft-DSVM  | ubuntu-hpc | 1804-ncv4 |
+| Microsoft-DSVM  | ubuntu-hpc | 2004 |
+| Microsoft-DSVM  | ubuntu-hpc | 2004-preview-ndv5 |
+| Microsoft-DSVM  | ubuntu-hpc | 2204 |
+| Microsoft-DSVM  | ubuntu-hpc | 2204-preview-ndv5 |
+| Redhat  | RHEL | 7.2 |
+| Redhat  | RHEL | 7.3 |
+| Redhat  | RHEL | 7.4 |
+| Redhat  | RHEL | 7.5 |
+| Redhat  | RHEL | 7.6 |
+| Redhat  | RHEL | 7.7 |
+| Redhat  | RHEL | 7.8 |
+| Redhat  | RHEL | 7_9 |
+| Redhat  | RHEL | 7-lvm |
+| Redhat  | RHEL | 7-raw |
+| Redhat  | RHEL | 8 |
+| Redhat  | RHEL | 8.1 |
+| Redhat  | RHEL | 81gen2 |
+| Redhat  | RHEL | 8.2 |
+| Redhat  | RHEL | 82gen2 |
+| Redhat  | RHEL | 8_3 |
+| Redhat  | RHEL | 83-gen2 |
+| Redhat  | RHEL | 8_4 |
+| Redhat  | RHEL | 84-gen2 |
+| Redhat  | RHEL | 8_5 |
+| Redhat  | RHEL | 85-gen2 |
+| Redhat  | RHEL | 8_6 |
+| Redhat  | RHEL | 86-gen2 |
+| Redhat  | RHEL | 8_7 |
+| Redhat  | RHEL | 8_8 |
+| Redhat  | RHEL | 8_10 |
+| Redhat  | RHEL | 8-lvm |
+| Redhat  | RHEL | 8-lvm-gen2 |
+| Redhat  | RHEL-RAW | 8-raw |
+| Redhat  | RHEL-RAW | 8-raw-gen2 |
+| Redhat  | RHEL | 9_0 |
+| Redhat  | RHEL | 9_1 |
+| Redhat  | RHEL | 9_2 |
+| Redhat  | RHEL | 9_3 |
+| Redhat  | RHEL | 9_4 |
+| Redhat  | RHEL | 9-lvm |
+| Redhat  | RHEL | 9-lvm-gen2 |
+| Redhat  | RHEL-ARM64 | 8_6-arm64 |
+| Redhat  | RHEL-ARM64 | 9_0-arm64 |
+| Redhat  | RHEL-ARM64 | 9_1-arm64 |
+| Redhat  | RHEL-SAP-APPS | 86sapapps-gen2 |
+| Redhat  | RHEL-SAP-APPS | 88sapapps-gen2 |
+| Redhat  | RHEL-SAP-HA | 86sapha-gen2 |
+| Redhat  | RHEL-SAP-HA | 88sapha-gen2 |
+| SUSE  | sles-12-sp5 | gen1 |
+| SUSE  | sles-12-sp5 | gen2 |
+| SUSE  | sles-15-sp2 | gen1 |
+| SUSE  | sles-15-sp2 | gen2 |
+| SUSE  | sles-sap-15-sp4 | gen2 |
+| SUSE  | sles-sap-15-sp5 | gen2 |
 | Redhat  | RHEL-RAW | 8-raw, 8-raw-gen2 |
 | SUSE  | sles-12-sp5 | gen1, gen2 |
 | SUSE  | sles-15-sp2 | gen1, gen2 |
