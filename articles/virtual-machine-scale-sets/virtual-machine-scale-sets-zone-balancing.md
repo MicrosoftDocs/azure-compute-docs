@@ -12,7 +12,7 @@ ms.date: 11/11/2025
 
 In zone-spanning scale sets (which use multiple availability zones), *zone balancing* refers to whether the scale set's virtual machine (VM) instances are evenly distributed across the zones you select.
 
-A scale set is considered *balanced* if each zone has the same number of VMs ±1 VM. The deviation of 1 enables you to scale to any number of instances, and not just a multiple of the number of zones.
+A scale set is considered *balanced* if each zone has the same number of VMs ±1 VM. The deviation of 1 enables you to scale to any number of instances, and not just a multiple of the number of zones that the set uses.
 
 ## Zone balancing modes
 
@@ -20,11 +20,9 @@ When your scale set uses multiple zones, you can select one of the following zon
 
 - **Best-effort zone balancing:** The scale set aims to maintain balance across zones during scaling operations, but it's not guaranteed to remain balanced. Best-effort load balancing is the default mode.
 
-    If one zone becomes unavailable, the scale set allows temporary imbalance to ensure the scale set can scale out. However, this imbalance is only permitted when a single zone is unavailable.
+    If one zone becomes unavailable, the scale set allows temporary imbalance to ensure the scale set can scale out. However, this imbalance is only permitted when a single zone is unavailable. Once the zone is restored, the scale set adjusts by adding VMs to under-provisioned zones or removing VMs from over-provisioned zones to restore balance.
     
     If two or more zones go down, the scale set can't proceed with scaling operations, and any scaling operations are blocked.
-    
-    Once the zone is restored, the scale set adjusts by adding VMs to under-provisioned zones or removing VMs from over-provisioned zones to restore balance.
 
 - **Strict zone balancing:** Any scaling operation that would result in an unbalanced scale set is blocked, even if one or more zones are down.
 
