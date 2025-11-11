@@ -34,6 +34,8 @@ Linux distribution users who have transitioned to **Python 3.x** must ensure the
 
 In-place upgrades, such as upgrading from **Ubuntu 18.04 LTS** to **Ubuntu 20.04 LTS**, should retain the `/usr/bin/python` symlink, and remain unaffected.
 
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
+
 ## Resolution
 
 Consider these general recommendations before deploying extensions in the known-affected scenarios described previously in the Summary:

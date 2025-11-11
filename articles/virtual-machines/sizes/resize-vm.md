@@ -21,6 +21,9 @@ After you create a virtual machine (VM), you can scale the VM up or down by chan
 > If the virtual machine is currently running, changing its size will cause it to restart. 
 >
 > Deallocating the VM also releases any dynamic IP addresses assigned to the VM. The OS and data disks are not affected.
+> 
+> If a resize operation fails, the VM model will still display the requested size, but the VM will continue running on its previous size until the resize is successfully allocated. This behavior applies to both the Azure portal, and all GET operations, as the displayed size always reflects the latest applied configuration, not the actual running size.
+>
  
 
 ## Choose the right SKU

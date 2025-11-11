@@ -13,7 +13,10 @@ ms.date: 08/18/2025
 # Customer intent: As a system administrator, I want to troubleshoot Windows VM extension failures so that I can ensure all deployed extensions are functioning properly and maintain the stability of my Azure environment.
 ---
 # Troubleshooting Azure Windows VM extension failures
+
 [!INCLUDE [virtual-machines-common-extensions-troubleshoot](../includes/virtual-machines-common-extensions-troubleshoot.md)]
+
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
 
 ## Viewing extension status
 Azure Resource Manager templates can be executed from Azure PowerShell. Once the template is executed, the extension status can be viewed from Azure Resource Explorer or the command-line tools.

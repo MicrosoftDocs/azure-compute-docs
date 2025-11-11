@@ -19,6 +19,8 @@ If you want to prevent the use or installation of certain extensions on your Win
 
 This tutorial uses Azure PowerShell within the Cloud Shell, which is constantly updated to the latest version.
 
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
+
 ## Create a rules file
 
 In order to restrict what extensions can be installed, you need to have a [rule](/azure/governance/policy/concepts/definition-structure#policy-rule) to provide the logic to identify the extension.
