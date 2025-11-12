@@ -16,6 +16,12 @@ An in-place upgrade allows you to go from an older operating system to a newer o
 
 Before you begin an in-place upgrade:
 
+> [!CAUTION]
+> Following the process in this article causes a disconnection between the data plane and the [control plane](/azure/architecture/guide/multitenant/considerations/control-planes#responsibilities-of-a-control-plane) of the virtual machine (VM). Azure capabilities such as [Auto guest patching](/azure/virtual-machines/automatic-vm-guest-patching#how-does-automatic-vm-guest-patching-work), [Auto OS image upgrades](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade), [Hotpatching](/windows-server/get-started/hotpatch?toc=%2Fazure%2Fvirtual-machines%2Ftoc.json#supported-updates), and [Azure Update Manager](/azure/update-manager/overview) won't be available. This means that the source image information in the VM properties, including the publisher, offer, and plan, remains unchanged. The image used to deploy the VM remains the same, and only the OS is upgraded. To utilize these features, create a new VM using your preferred operating system instead of performing an in-place upgrade. 
+
+[!INCLUDE [Azure VM Windows Update / Windows OS Upgrade Diagnostic Tools](~/includes/azure/virtual-machines-runcmd-wu-tools.md)]
+
+
 - Review the upgrade requirements for the target operating system:
 
    - Upgrade options for Windows Server 2012 from Windows Server 2008 (64-bit) or Windows Server 2008 R2
@@ -28,12 +34,10 @@ Before you begin an in-place upgrade:
    
    - Upgrade options for Windows Server 2025 from Windows Server 2022, Windows Server 2019, Windows Server 2016, or Windows Server 2012 R2 
 
+- Run the [Azure Virtual Machine (VM) Windows OS Upgrade Assessment Tool](/Troubleshoot/azure/virtual-machines/windows/windows-vm-osupgradeassessment-tool) to validate the OS upgrade path and any known issues.
 - Verify the operating system disk has enough [free space to perform the in-place upgrade](/windows-server/get-started/hardware-requirements#storage-controller-and-disk-space-requirements). If more space is needed [follow these steps](./windows/expand-os-disk.md) to expand the operating system disk attached to the VM.  
 
 - Disable antivirus and anti-spyware software and firewalls. These types of software can conflict with the upgrade process. Re-enable antivirus and anti-spyware software and firewalls after the upgrade is completed. 
-
-> [!CAUTION]
-> Following the process in this article causes a disconnection between the data plane and the [control plane](/azure/architecture/guide/multitenant/considerations/control-planes#responsibilities-of-a-control-plane) of the virtual machine (VM). Azure capabilities such as [Auto guest patching](/azure/virtual-machines/automatic-vm-guest-patching#how-does-automatic-vm-guest-patching-work), [Auto OS image upgrades](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade), [Hotpatching](/windows-server/get-started/hotpatch?toc=%2Fazure%2Fvirtual-machines%2Ftoc.json#supported-updates), and [Azure Update Manager](/azure/update-manager/overview) won't be available. This means that the source image information in the VM properties, including the publisher, offer, and plan, remains unchanged. The image used to deploy the VM remains the same, and only the OS is upgraded. To utilize these features, create a new VM using your preferred operating system instead of performing an in-place upgrade. 
 
 ## Upgrade VM to volume license (KMS server activation)
 
