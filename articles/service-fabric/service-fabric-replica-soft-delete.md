@@ -29,7 +29,7 @@ If removing the replica causes the partition to go into quorum loss, Service F
 
 Using a new restore replica API (Restore-ServiceFabricReplica), these soft deleted replicas can be recovered to regain quorum without data loss.
 
-If the partition is healthy, the soft deleted replica data receives an automatic cleanup periodically.
+If the partition is healthy, the soft deleted replica will be cleaned up after its retention period expires.
 
 Soft deleted replicas don't block repairs, upgrades, or other administrative operations on the service or the cluster. Repairs with data removal intents clean up the replica data as well.
 
@@ -88,7 +88,7 @@ Usually, this behavior change won't impact existing workflows using the Remove R
 
 * [Get-ServiceFabricReplica](/powershell/module/servicefabric/get-servicefabricreplica)
 
-  * The output would indicate what replicas in the partition are `ToBeRemoved`.
+  * The ReplicaStatus property now includes a new value: “ToBeRemoved”. This value indicates soft-deleted replicas. For replicas with a ReplicaStatus of “ToBeRemoved”, the `ToBeRemovedReplicaExpirationTimeUtc` property is displayed. `ToBeRemovedReplicaExpirationTimeUtc` shows the best-effort estimate of when the replica will be permanently removed, assuming the partition is healthy.
 
 :::image type="content" source="media/service-fabric-replica-soft-delete/to-be-removed-status.png" alt-text="Screenshot of sample command line output showing To Be Removed status." lightbox="media/service-fabric-replica-soft-delete/to-be-removed-status.png":::
 
