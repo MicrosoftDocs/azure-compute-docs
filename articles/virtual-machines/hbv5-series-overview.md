@@ -16,7 +16,7 @@ author: padmalathas
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
-An [HBv5-series](./sizes/high-performance-compute/hbv5-series.md) server features 4 * 96-core AMD EPYC 9V33X CPUs for a total of 384 physical "Zen4" cores with Simultaneous Multithreading (SMT) disabled. These 384 cores are divided into 48 Core Chiplet Dies (CCDs) sections (12 per socket), and each CCD containing eight processor cores with uniform access to a 32 MB L3 cache. Azure HBv5 servers also run the following AMD BIOS settings: 
+An [HBv5-series](./sizes/high-performance-compute/hbv5-series.md) server features 4 * 96-core 4th Generation AMD EPYC™ CPUs for a total of 384 physical "Zen4" cores with Simultaneous Multithreading (SMT) disabled. These 384 cores are divided into 48 Core Chiplet Dies (CCDs) sections (12 per socket), and each CCD containing eight processor cores with uniform access to a 32 MB L3 cache. Azure HBv5 servers also run the following AMD BIOS settings: 
 
 ```bash
 Nodes per Socket (NPS) = 4
@@ -205,7 +205,7 @@ Combined, the 8 NVMe devices provide 15 TiB of total local storage per VM.
 | Cores                            | 368, 336, 288, 240, 192, 144, 96, 48 (SMT disabled) | 
 | CPU                              | AMD EPYC 9004-series (EPYC 9V64H)                   | 
 | CPU Frequency (non-AVX)          | 3.5 GHz base, 4 GHz peak boost(FMAX)                | 
-| Memory                           | 441 GB (RAM per core depends on VM size)            | 
+| Memory                           | 432 GB (RAM per core depends on VM size)            | 
 | Local Disk                       | 8 * 1.8 TB NVMe (block), 480 GB SSD (page file)     | 
 | InfiniBand                       | 4 * 200 Gb/s NVIDIA ConnectX-7 NDR InfiniBand       | 
 | Network                          | 180 Gb/s Azure Accelerated Networking               | 
