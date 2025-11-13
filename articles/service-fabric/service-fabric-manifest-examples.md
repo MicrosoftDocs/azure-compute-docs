@@ -10,6 +10,7 @@ ms.date: 07/11/2022
 # Customer intent: "As a software developer, I want to access examples of application and service manifests, so that I can effectively configure the settings for my Service Fabric applications."
 ---
 
+
 # Service Fabric application and service manifest examples
 This section contains examples of application and service manifests. These examples are not meant to show important scenarios, but to show the different settings that are available and how to use them. 
 
