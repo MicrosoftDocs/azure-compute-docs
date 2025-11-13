@@ -69,9 +69,7 @@ In addition to the Job ID and Acknowledgement Status, the Impact Type section di
 The Current Repair Task section shows which repair task is actively running for the job approval on the Service Fabric side.
 By selecting All Repair Tasks, you can view the status of every repair task associated with the current job.
 
-
- ![Infrastructure Job view](./media/TSG-for-customers-to-investigate-and-analyze-updates-using-SFX/Infrastructure-job-view.png)
-
+![Infrastructure Job view](./media/TSG-for-customers-to-investigate-and-analyze-updates-using-SFX/Infrastructure-job-view.png)
 
 ### Repair Jobs and health check view
 
@@ -79,16 +77,14 @@ To view individual and all repair tasks associated with a cluster, go to the Rep
 For pending tasks, you can see their current state. A repair task is not yet approved by Service Fabric if its state is Created, Claimed, or Preparing.
 Once a repair task transitions to the Approved state, it is considered approved by Service Fabric, and the approval is then forwarded to the Repair Executor for the corresponding job.
 
- ![Repair Task view ][./media/TSG-for-customers-to-investigate-and-analyze-updates-using-SFX/repair-task-view.png]
+![Repair Task view](./media/TSG-for-customers-to-investigate-and-analyze-updates-using-SFX/repair-task-view.png)
 
 If a repair task is stuck in the Preparing state, there are two possible reasons:
 It could be stuck in either a Health Check or a Safety Check. Unhealthy entity in the cluster , including customer applications as well as system applications can cause the health check to not be green.
 To determine if it's stuck in a Health Check, first verify whether Preparing or Restoring Health Check is enabled—based on the state where the task is stuck.
 In the Repair Task view, expanding the task will show the Health Check status, indicating whether it is enabled.
 
-
-
-![Health check view][./media/TSG-for-customers-to-investigate-and-analyze-updates-using-SFX/Health-check.png]
+![Health check view](./media/TSG-for-customers-to-investigate-and-analyze-updates-using-SFX/Health-check.png)
 
 If enabled, the Repair Task History will show that the Health Check started but did not complete, confirming that the task is stuck in the Health Check phase—as illustrated in the screenshot above.
 
@@ -108,7 +104,7 @@ Similarly, if the repair task transitions to the Completed state, it indicates t
 
 All completed or cancelled repair tasks for the cluster can be viewed by clicking on the Completed Repair Tasks section. This provides a comprehensive list of repair tasks that have either successfully finished or were terminated.
 
-![Repair task executing view](./media/TSG-for-customers-to-investigate-and-analyze-updates-using-SFX/completed-repair-task-view.png)
+![Completed repair tasks view](./media/TSG-for-customers-to-investigate-and-analyze-updates-using-SFX/completed-repair-task-view.png)
 
 ### Scenario and DRI Involvement
 
@@ -116,14 +112,6 @@ All completed or cancelled repair tasks for the cluster can be viewed by clickin
 
 | DRI | Scenario |
 |-------------------|-------------|
-| SF DRI | 
-1.	Infrastructure Service Warning or Missing
-If the Service Fabric Infrastructure Service is in a warning state or missing for the corresponding tenant, updates may fail to reach Service Fabric, resulting in pending approvals.
-2.	Repair Task Stuck in Health or Safety Check
-A repair task may remain stuck in the health check or safety check phase until the respective conditions are satisfied.
-3.	Repair Manager in Error State
-When the Repair Manager is in an error state, all repairs stored within it cannot progress because state changes are managed by the Repair Manager. Consequently, update statuses will not advance.
-4.	Throttling Job Status
-Verify the status of the throttling job. If another job is already in progress, incoming jobs may be throttled and delayed.|
-| AZPE DRI | 1.	If the Infrastructure Service is healthy for the corresponding tenant, but no repair task appears in Service Fabric Explorer (SFX) when one is expected, and there is no throttled job for that tenant, contact the AZPE DRI to investigate why the job has not been initiated.|
-| Blackbird DRI | 1.	If the repair task remains in the Executing state for an extended period while the Infrastructure Service is healthy, it indicates that the task has been approved by Service Fabric. In this case, the issue should be checked with the Blackbird DRI. |
+| SF DRI | 1. Infrastructure Service Warning or Missing - If the Service Fabric Infrastructure Service is in a warning state or missing for the corresponding tenant, updates may fail to reach Service Fabric, resulting in pending approvals. 2. Repair Task Stuck in Health or Safety Check - A repair task may remain stuck in the health check or safety check phase until the respective conditions are satisfied. 3. Repair Manager in Error State - When the Repair Manager is in an error state, all repairs stored within it cannot progress because state changes are managed by the Repair Manager. Consequently, update statuses will not advance. 4. Throttling Job Status - Verify the status of the throttling job. If another job is already in progress, incoming jobs may be throttled and delayed. |
+| AZPE DRI | 1. If the Infrastructure Service is healthy for the corresponding tenant, but no repair task appears in Service Fabric Explorer (SFX) when one is expected, and there is no throttled job for that tenant, contact the AZPE DRI to investigate why the job has not been initiated. |
+| Blackbird DRI | 1. If the repair task remains in the Executing state for an extended period while the Infrastructure Service is healthy, it indicates that the task has been approved by Service Fabric. In this case, the issue should be checked with the Blackbird DRI. |
