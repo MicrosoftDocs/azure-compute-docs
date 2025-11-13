@@ -46,22 +46,22 @@ In the **Created** state, the Repair Manager (RM) accepts and stores the repair 
 Once the task is **Claimed**, the Repair Executor (RE) has taken ownership but has not yet specified the repair's impact. The requestor still retains the ability to cancel the task at this stage. Repair executor has ownership in this state.
 
 
-**Preparing (RM)**
+**Preparing**
 
 In the **Preparing** state, the Repair Executor specifies the impact, and the Repair Manager prepares the environment, such as deactivating nodes. If the task is cancelled now, it skips execution and moves directly to restoring. Operators also have the option to force approval, bypassing certain safety checks. Repair Manager has ownership in this state.
 
 
-**Approved (RE)**
+**Approved**
 
 When the task reaches **Approved**, the Repair Manager has completed all preparations and approved execution. The Repair Executor should move the task to Executing before starting the repair. Cancellation at this point requires cooperation from the executor, which should support cancellation if possible. Repair Executor has ownership in this state.
 
 
-**Executing (RE)**
+**Executing**
 
 During **Executing**, the Repair Executor is actively performing the repair. The executor must finish all disruptive actions before reporting completion. Cancellation now requires executor cooperation and should only be acknowledged when it is safe to do so. Repair executor has ownership in this state.
 
 
-**Restoring (RM)**
+**Restoring**
 
 Once the repair is complete, the task enters **Restoring**, where the Repair Manager restores the environment, such as reactivating nodes. At this stage, the task cannot be cancelled. Repair Manager has ownership in this state.
 
