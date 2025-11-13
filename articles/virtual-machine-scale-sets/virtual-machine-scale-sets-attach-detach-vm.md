@@ -119,7 +119,9 @@ Update-AzVM -ResourceGroupName $resourceGroupName -VM $vm  -VirtualMachineScaleS
 - The scale set must use Flexible orchestration mode.
 - The scale set must have a `platformFaultDomainCount` of **1**.
 - The VM and scale set must be in the same resource group. 
-- The VM and target scale set must both be zonal, or they must both be regional. You can't attach a zonal VM to a regional scale set. 
+- Availability zone configuration:
+  - If the target scale set is zone-spanning or zonal, the VM must be zonal and deployed in a zone that's covered by the scale set.
+  - If the target scale set is nonzonal (regional), the VM must also be nonzonal. You can't attach a zonal VM to a nonzonal scale set.
 - The VM can't be in a self-defined availability set. 
 - The VM can't be in a `ProximityPlacementGroup`. 
 - The VM can't be in an Azure Dedicated Host. 
