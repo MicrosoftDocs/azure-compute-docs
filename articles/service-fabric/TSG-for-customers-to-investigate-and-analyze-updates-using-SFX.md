@@ -27,9 +27,10 @@ Target update domain
 Document incarnation number
 
 These elements are combined in the following format:
-Azure/<repair type>/<repair job>/<update domain>/<document incarnation number>
-Example:
-Azure/TenantUpdate/addfb79e-1e8c-42c8-a967-b0e2e0afd6b4/0/110
+
+Azure/repair type/repair job/update domain/document incarnation number
+
+Example:Azure/TenantUpdate/addfb79e-1e8c-42c8-a967-b0e2e0afd6b4/0/110
 
 The resulting entity is the repair task, which is used within the Service Fabric context. In contrast, the repair job is recognized outside Service Fabric components.
 
