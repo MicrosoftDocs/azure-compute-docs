@@ -120,9 +120,22 @@ All completed or cancelled repair tasks for the cluster can be viewed by clickin
 
 ![Completed repair tasks view](./media/TSG-for-customers-to-investigate-and-analyze-updates-using-SFX/completed-repair-task-view.png)
 
-### Scenario and DRI Involvement
+### Infrastructure service and repair Manager Service Health check
 
-## Reference Table
+To check the health of the Infrastructure Service or RepairManager Service, select the service from the list and open the Health Evaluation tab. This tab shows whether the service is healthy, in a warning state, or in an error state, along with details of any warnings or errors.
+
+![Infrastructure Service Health](./media/TSG-for-customers-to-investigate-and-analyze-updates-using-SFX/Infrastructure-service-health.png)
+
+![RepairManager Service Health](./media/TSG-for-customers-to-investigate-and-analyze-updates-using-SFX/RepairManager-Service-Health.png)
+
+
+### Job throttling status for Infrastructure Service
+
+To check if any job is being throttled for a specific Infrastructure Service, select the service and open the Health Evaluation tab. Look for health events related to job throttling. If a job is throttled, the tab will display the job ID along with the reason for throttling.
+
+![Infrastructure Service Job throttling status](./media/TSG-for-customers-to-investigate-and-analyze-updates-using-SFX/Job-Throttling-status-for-IS.png)
+
+## Scenario and DRI Involvement
 
 | DRI | Scenario |
 |-------------------|-------------|
