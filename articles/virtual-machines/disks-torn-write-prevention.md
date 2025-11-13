@@ -3,7 +3,7 @@ title: Prevent torn writes with managed disks on Linux VMs
 description: Learn how to configure atomic writes for Linux VMs using managed disks with NVMe controllers.
 author: roygara
 ms.author: rogarana
-ms.date: 11/06/2025
+ms.date: 11/13/2025
 ms.topic: concept-article
 ms.service: azure-disk-storage
 # Customer intent: As an IT professional, I want to understand how to prevent torn writes on Linux VMs using atomic write operations with managed disks, so that I can ensure data integrity and improve database performance.
@@ -11,7 +11,7 @@ ms.service: azure-disk-storage
 
 # Prevent torn writes with Azure managed disks
 
-Azure managed disks have native protection against torn writes to ensure data integrity, which you can use to reduce your performance overhead.
+Azure managed disks have native protection against torn writes for 8-KiB and 16-KiB blocks of data to ensure data integrity, which you can use to reduce your performance overhead.
 
 A torn write (or a partial write) can occur when a power loss or system crash interrupts a disk write, leaving a data block only partially updated. A partially updated data block results in an inconsistent page containing a mix of old and new data, essentially a torn page. Torn writes compromise data integrity, and data integrity is critical for applications like databases. Databases must detect and resolve torn writes to avoid corrupt records or indexes 
 
