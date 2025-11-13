@@ -22,9 +22,9 @@ Infrastructure Service – Infrastructure Service (IS) is responsible for mana
 ### Repair Task vs. Repair Job Conversion
 A repair job is the GUID provided by the Policy Engine to Service Fabric. Service Fabric then creates a repair task by combining details such as:
 
-Repair type
-Target update domain
-Document incarnation number
+- Repair type
+- Target update domain
+- Document incarnation number
 
 These elements are combined in the following format:
 
