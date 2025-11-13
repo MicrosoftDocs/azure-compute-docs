@@ -26,6 +26,8 @@ Virtual Machine Scale Sets supports three availability zone deployment models:
 - Zonal or zone aligned (single zone)
 - Regional or nonzonal
 
+<a name="zone-redundant-or-zone-spanning"></a>
+
 ### Zone spanning
 
 A zone spanning scale set spreads instances across all selected zones, `"zones": ["1","2","3"]`. This is similar to zone redundant deployments in other Azure services.
@@ -37,6 +39,8 @@ Spreading instances across availability zones meets the 99.99% SLA for instances
 ### Zonal or zone aligned (single zone)
 
 A zonal or zone aligned scale set places instances in a single availability zone `"zones": ['1']`. Each VM and its disks are zonal, so they are pinned to a specific zone. This configuration is primarily used when you need lower latency between instances.
+
+<a name="regional"></a>
 
 ### Regional or nonzonal
 
