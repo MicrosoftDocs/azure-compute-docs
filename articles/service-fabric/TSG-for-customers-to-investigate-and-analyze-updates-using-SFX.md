@@ -79,7 +79,7 @@ To view individual and all repair tasks associated with a cluster, go to the Rep
 For pending tasks, you can see their current state. A repair task is not yet approved by Service Fabric if its state is Created, Claimed, or Preparing.
 Once a repair task transitions to the Approved state, it is considered approved by Service Fabric, and the approval is then forwarded to the Repair Executor for the corresponding job.
 
- ![Repair Task view ](./media/TSG-for-customers-to-investigate-and-analyze-updates-using-SFX/repair-task-view.png)
+ ![Repair Task view ][./media/TSG-for-customers-to-investigate-and-analyze-updates-using-SFX/repair-task-view.png]
 
 If a repair task is stuck in the Preparing state, there are two possible reasons:
 It could be stuck in either a Health Check or a Safety Check. Unhealthy entity in the cluster , including customer applications as well as system applications can cause the health check to not be green.
@@ -88,7 +88,7 @@ In the Repair Task view, expanding the task will show the Health Check status, i
 
 
 
-![Health check view](./media/TSG-for-customers-to-investigate-and-analyze-updates-using-SFX/Health-check.png)
+![Health check view][./media/TSG-for-customers-to-investigate-and-analyze-updates-using-SFX/Health-check.png]
 
 If enabled, the Repair Task History will show that the Health Check started but did not complete, confirming that the task is stuck in the Health Check phase—as illustrated in the screenshot above.
 
