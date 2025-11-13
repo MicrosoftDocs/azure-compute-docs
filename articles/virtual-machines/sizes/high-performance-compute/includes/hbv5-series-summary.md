@@ -20,7 +20,7 @@ HBv5-series VMs are optimized for the most memory bandwidth-intensive HPC applic
 * Molecular dynamics simulations
 * Computer-aided engineering and other HPC workloads
 
-HBv5 VMs feature 6.7 TB/s of memory bandwidth across 432 GB (403 GiB) of high-bandwidth memory (HBM) and up to 368 4th Generation AMD EPYC™ processor cores with 4 GHz boost frequencies, 3.5 GHz base frequencies, and no simultaneous multithreading. 
+HBv5 VMs feature 6.7 TB/s of memory bandwidth across 432 GB of high-bandwidth memory (HBM) and up to 368 4th Generation AMD EPYC™ processor cores with 4 GHz boost frequencies, 3.5 GHz base frequencies, and no simultaneous multithreading. 
 
 Each HBv5-series VM also includes 14.3 TiB of local NVMe SSD storage with up to 50 GB/s (reads) and 30 GB/s (writes) of block device performance.
 

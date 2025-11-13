@@ -27,6 +27,8 @@ Instructions on manual installation of the drivers and the current supported ver
 > The GPU driver extensions do not automatically update the driver after the extension is installed. If you need to move to a newer driver version then either manually download and install the driver or remove and add the extension again.
 >
 
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
+
 ## Prerequisites
 
 ### Operating system

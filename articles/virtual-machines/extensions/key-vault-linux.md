@@ -16,6 +16,8 @@ ms.custom: devx-track-azurepowershell, devx-track-azurecli, linux-related-conten
 
 The Key Vault VM extension provides automatic refresh of certificates stored in an Azure key vault. Specifically, the extension monitors a list of observed certificates stored in key vaults.  The extension retrieves and installs the corresponding certificates after detecting a change. This document details the supported platforms, configurations, and deployment options for the Key Vault VM extension for Linux.
 
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
+
 ## Operating system
 
 The Key Vault VM extension supports:

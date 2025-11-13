@@ -21,6 +21,8 @@ This article describes how to run the VMAccess Extension from the Azure CLI and 
 > [!NOTE]
 > If you use the VMAccess extension to reset the password of your VM after you install the Microsoft Entra sign-in extension, rerun the Microsoft Entra sign-in extension to re-enable Microsoft Entra sign-in for your VM.
 
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
+
 ## Prerequisites
 
 ### Supported Linux distributions

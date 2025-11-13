@@ -26,6 +26,8 @@ There are two versions of the Custom Script Extension:
 
 Use Version 2 for new and existing deployments. The new version is a drop-in replacement. The migration is as easy as changing the name and version. You don't need to change your extension configuration.
 
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
+
 ## Prerequisites
 
 ### Supported Linux distributions

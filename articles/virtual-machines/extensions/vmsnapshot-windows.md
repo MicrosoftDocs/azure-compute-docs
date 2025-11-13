@@ -19,6 +19,8 @@ Azure Backup provides support for backing up workloads from on-premises to cloud
 
 The VMSnapshot extension appears in the Azure portal only for non-managed VMs.
 
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
+
 ## Prerequisites
 
 ### Operating system

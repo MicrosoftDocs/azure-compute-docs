@@ -13,6 +13,8 @@ ms.date: 08/18/2025
 
 Tenable now supports a One-Click deployment of Nessus Agents via Microsoft's Azure portal. This solution provides an easy way to install the latest version of Nessus Agent on Azure virtual machines (VM) (whether Linux or Windows) by either clicking on an icon within the Azure portal or by writing a few lines of PowerShell script. 
 
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
+
 ## Prerequisites
 
 * A Tenable Vulnerability Management (Tenable.io), or Nessus Manager, account.

@@ -58,6 +58,8 @@ The Linux diagnostic extension helps you monitor the health of a Linux VM on Mic
 
 This extension works with both Azure deployment models: Azure Resource Manager and classic.
 
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
+
 ## Prerequisites
 
 - **Azure Linux agent version 2.2.0 or later**. Most Azure VM Linux gallery images include version 2.2.7 or later. Run `/usr/sbin/waagent -version` to confirm the version installed on the VM. If the VM runs an older version of the guest agent, [update the Linux agent](./update-linux-agent.md).
