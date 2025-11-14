@@ -35,6 +35,7 @@ Before you begin an in-place upgrade:
    - Upgrade options for Windows Server 2025 from Windows Server 2022, Windows Server 2019, Windows Server 2016, or Windows Server 2012 R2 
 
 - Run the [Azure Virtual Machine (VM) Windows OS Upgrade Assessment Tool](/troubleshoot/azure/virtual-machines/windows/windows-vm-osupgradeassessment-tool) to validate the OS upgrade path and any known issues.
+
 - Verify the operating system disk has enough [free space to perform the in-place upgrade](/windows-server/get-started/hardware-requirements#storage-controller-and-disk-space-requirements). If more space is needed [follow these steps](./windows/expand-os-disk.md) to expand the operating system disk attached to the VM.  
 
 - Disable antivirus and anti-spyware software and firewalls. These types of software can conflict with the upgrade process. Re-enable antivirus and anti-spyware software and firewalls after the upgrade is completed. 
