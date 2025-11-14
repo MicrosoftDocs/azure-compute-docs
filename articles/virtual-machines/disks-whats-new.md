@@ -17,7 +17,7 @@ Azure Disk Storage regularly receives updates for new features and enhancements.
 ## Update summary
 
 - [What's new in 2025](#whats-new-in-2025)
-    -  [Quarter 3 (July, August, September)](#quarter-3-july-august-september)
+  -  [Quarter 3 (July, August, September)](#quarter-3-july-august-september)
         - [Generally available: Live Resize for Premium SSD v2 and Ultra Disks using NVMe controllers](#generally-available-live-resize-for-premium-ssd-v2-and-ultra-disks-using-nvme-controllers)
         - [Generally available: Ultra Disk price reduction in West US 2, Central US, and UK South](#generally-available-ultra-disk-price-reduction-in-west-us-2-central-us-and-uk-south)
   - [Quarter 2 (April, May, June)](#quarter-2-april-may-june)
@@ -40,6 +40,17 @@ Azure Disk Storage regularly receives updates for new features and enhancements.
       - [Expanded regional availability for zone-redundant storage disks](#expanded-regional-availability-for-zone-redundant-storage-disks)
 
 ## What's new in 2025
+
+### Quarter 4 (October, November, December)
+
+#### Public preview: Instant Access Snapshot for Premium SSD v2 and Ultra Disks
+
+With Instant Access Snapshots for Premium SSD v2 and Ultra Disks, you can  restore new disks immediately after creating snapshots of Premium SSD v2 and Ultra disks. Restore disks deliver high performance instantly, while data hydration continues rapidly in the background.  See [instant access for Azure managed disk](/azure/virtual-machines/disks-instant-access-snapshots?tabs=azure-cli%2Cazure-cli-snapshot-state#snapshots-of-ultra-disks-and-premium-ssd-v2) for details
+
+#### Generally available: Azure Site Recovery for Virtual Machines with Premium SSD v2 and Ultra disks
+
+Azure Site Recovery support for Virtual Machines with [Premium SSD v2](https://azure.microsoft.com/updates?id=495231) and [Ultra](https://azure.microsoft.com/updates?id=495843) disks is generally avaialble. Azure Site Recovery provides seamless disaster recovery for Virtual Machines across Azure Regions and from on-premises to Azure, helping organizations maintain business continuity. It offers cost-effective replication, automated failover, and easy disaster recovery simulation, ensuring minimal production impact during disaster events. [Learn more](/azure/site-recovery/azure-to-azure-support-matrix).
+
 
 ### Quarter 3 (July, August, September)
 
