@@ -21,6 +21,7 @@ Before you begin an in-place upgrade:
 
 [!INCLUDE [Azure VM Windows WU & OS Upgrade Diagnostic Tools](./includes/virtual-machines-runcmd-wu-tools.md)]
 
+##Prerequisites
 
 - Review the upgrade requirements for the target operating system:
 
