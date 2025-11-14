@@ -544,7 +544,7 @@
         - name: ND series
           href: ./sizes/gpu-accelerated/nd-series.md
         - name: ND series retirement
-          href: ./retirement/nd-series-retirement.md
+          href: ./sizes/retirement/nd-series-retirement.md
         - name: NDv2 series
           href: ./sizes/gpu-accelerated/ndv2-series.md
         - name: ND-GB200-v6 series
