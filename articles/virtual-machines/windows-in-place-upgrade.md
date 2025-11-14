@@ -21,7 +21,8 @@ Before you begin an in-place upgrade:
 
 [!INCLUDE [Azure VM Windows WU & OS Upgrade Diagnostic Tools](./includes/virtual-machines-runcmd-wu-tools.md)]
 
-
+##Prerequisites
+Before you begin an in-place upgrade:
 - Review the upgrade requirements for the target operating system:
 
    - Upgrade options for Windows Server 2012 from Windows Server 2008 (64-bit) or Windows Server 2008 R2
