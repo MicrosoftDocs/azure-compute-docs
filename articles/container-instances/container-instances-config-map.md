@@ -13,7 +13,7 @@ ms.reviewer: tomvcassidy
 ---
 # Config maps for Azure Container Instances
 
-A config map is a property that you can use to apply container configurations similar to environment variables and secret volumes. However, the process is unlike using environment variables or secret volumes where you must restart the pod to apply the settings. Using a config map to bpply settings doesn't require any restarts for the changes to take effect.
+A config map is a property that you can use to apply container configurations similar to environment variables and secret volumes. However, the process is unlike using environment variables or secret volumes where you must restart the pod to apply the settings. Using a config map to apply settings doesn't require any restarts for the changes to take effect.
 
 You can use Azure Container Instances to create container instances with or without config maps. You can also update them at any point after creation by using config maps. Updating config maps in an existing running container group is a task you can accomplish quickly without compromising uptime of the container.
 
@@ -205,7 +205,7 @@ Request Body
 
 ### Apply config map settings by using the container group profile
 
-Applying the config map settings stored in a container group profile requires you to update the container and specify the container group profile that should be associated with the update.
+Applying the config map settings stored in a container group profile requires you to update the container. You also must specify the container group profile that should be associated with the update.
 
 ### [CLI](#tab/cli)
 
@@ -241,7 +241,6 @@ New-AzContainerGroup `
 ### [ARM template](#tab/template)
 
 Apply the config map settings stored in the container group profile by using [az deployment group create](/cli/azure/deployment/group) or [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment).
-
 
 ```json
 {
@@ -512,14 +511,14 @@ Request Body
 
 ---
 
-### ConfigMaps in Linux containers
+### Config maps in Linux containers
 
 After the update is applied to an existing container, you see the values mounted in the Linux container without requiring a restart.
 
 ```
-/mnt/configmap/<containername>/key1 with value as “value1”
+/mnt/configmap/<containername>/key1 with value as "value1"
 
-/mnt/configmap/<containername>/key2 with value as “value2”
+/mnt/configmap/<containername>/key2 with value as "value2"
 ```
 
 ### Config maps in Windows containers

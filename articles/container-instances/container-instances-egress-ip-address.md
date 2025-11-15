@@ -1,6 +1,6 @@
 ---
-title: Configure static outbound IP
-description: Configure Azure firewall and user-defined routes for Azure Container Instances workloads that use the firewall's public IP address for ingress and egress
+title: Configure Static Outbound IP
+description: Configure Azure firewall and user-defined routes for Azure Container Instances workloads that use the firewall's public IP address for ingress and egress.
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-container-instances
@@ -8,21 +8,21 @@ ms.custom: devx-track-azurecli
 services: container-instances
 ms.topic: how-to
 ms.date: 08/29/2024
-# Customer intent: "As a cloud developer, I want to configure Azure Container Instances to use a static outbound IP address for ingress and egress, so that I can streamline firewall management and simplify client access for my containerized applications."
+# Customer intent: "As a cloud developer, I want to configure Azure Container Instances to use a static outbound IP address for ingress and egress so that I can streamline firewall management and simplify client access for my containerized applications."
 ---
 
 # Configure a single public IP address for outbound and inbound traffic to a container group
 
-Setting up a [container group](container-instances-container-groups.md) with an external-facing IP address allows external clients to use the IP address to access a container in the group. For example, a browser can access a web app running in a container. However, currently a container group uses a different IP address for outbound traffic. This egress IP address isn't exposed programmatically, which makes container group monitoring and configuration of client firewall rules more complex.
+Setting up a [container group](container-instances-container-groups.md) with an external-facing IP address allows external clients to use the IP address to access a container in the group. For example, a browser can access a web app running in a container. Currently, a container group uses a different IP address for outbound traffic. This egress IP address isn't exposed programmatically, which makes container group monitoring and configuration of client firewall rules more complex.
 
 This article provides steps to configure a container group in a [virtual network](container-instances-virtual-network-concepts.md) integrated with [Azure Firewall](/azure/firewall/overview). By setting up a user-defined route to the container group and firewall rules, you can route and identify traffic to and from the container group. Container group ingress and egress use the public IP address of the firewall. Multiple container groups deployed in the virtual network's subnet can use a single egress IP address.
 
 In this article, you use the Azure CLI to create the resources for this scenario:
 
-* Container groups deployed on a delegated subnet [in the virtual network](container-instances-vnet.md)
-* An Azure firewall deployed in the network with a static public IP address
-* A user-defined route on the container groups' subnet
-* A NAT rule for firewall ingress and an application rule for egress
+* Container groups deployed on a delegated subnet [in the virtual network](container-instances-vnet.md).
+* An Azure firewall deployed in the network with a static public IP address.
+* A user-defined route on the container groups' subnet.
+* A network address translation (NAT) rule for firewall ingress and an application rule for egress.
 
 You then validate ingress and egress from example container groups through the firewall.
 
@@ -45,72 +45,72 @@ This tutorial makes use of a randomized variable. If you used an existing resour
 
 :::code language="azurecli" source="~/azure_cli_scripts/container-instances/egress-ip-address.sh" id="creategroup":::
 
-## Deploy ACI in a virtual network
+## Deploy Azure Container Instances in a virtual network
 
 In a typical case, you might already have an Azure virtual network in which to deploy a container group. For demonstration purposes, the following commands create a virtual network and subnet when the container group is created. The subnet is delegated to Azure Container Instances.
 
 The container group runs a small web app from the `aci-helloworld` image. As shown in other articles in the documentation, this image packages a small web app written in Node.js that serves a static HTML page.
 
-Create the container group with the [az container create][az-container-create] command:
+Create the container group with the [az container create](az-container-create) command:
 
 :::code language="azurecli" source="~/azure_cli_scripts/container-instances/egress-ip-address.sh" id="container":::
 
 > [!TIP]
-> Adjust the value of `--subnet address-prefix` for the IP address space you need in your subnet. The smallest supported subnet is /29, which provides eight IP addresses. Some IP addresses are reserved for use by Azure.
+> Adjust the value of `--subnet address-prefix` for the IP address space that you need in your subnet. The smallest supported subnet is /29, which provides eight IP addresses. Some IP addresses are reserved for use by Azure.
 
-For use in a later step, get the private IP address of the container group by running the [az container show][az-container-show] command:
+For use in a later step, get the private IP address of the container group by running the [az container show](az-container-show) command:
 
 :::code language="azurecli" source="~/azure_cli_scripts/container-instances/egress-ip-address.sh" id="privateip":::
 
-## Deploy Azure Firewall in network
+## Deploy Azure Firewall in a network
 
-In the following sections, use the Azure CLI to deploy an Azure firewall in the virtual network. For background, see [Tutorial: Deploy and configure Azure Firewall using the Azure portal](/azure/firewall/deploy-cli).
+In the following sections, use the Azure CLI to deploy an Azure firewall in the virtual network. For background, see [Tutorial: Deploy and configure Azure Firewall by using the Azure portal](/azure/firewall/deploy-cli).
 
-First, use the [az network vnet subnet create][az-network-vnet-subnet-create] to add a subnet named AzureFirewallSubnet for the firewall. AzureFirewallSubnet is the *required* name of this subnet.
+First, use the [az network vnet subnet create](az-network-vnet-subnet-create) to add a subnet named `AzureFirewallSubnet` for the firewall. `AzureFirewallSubnet` is the *required* name of this subnet.
 
 :::code language="azurecli" source="~/azure_cli_scripts/container-instances/egress-ip-address.sh" id="subnet":::
 
 Use the following [Azure CLI commands](/azure/firewall/deploy-cli) to create a firewall in the subnet.
 
-If not already installed, add the firewall extension to the Azure CLI using the [az extension add][az-extension-add] command:
+If not already installed, add the firewall extension to the Azure CLI by using the [az extension add](az-extension-add) command:
 
 :::code language="azurecli" source="~/azure_cli_scripts/container-instances/egress-ip-address.sh" id="firewallext":::
 
-Create the firewall resources using the [az network firewall create][az-network-firewall-create] command:
+Create the firewall resources by using the [az network firewall create](az-network-firewall-create) command:
 
 :::code language="azurecli" source="~/azure_cli_scripts/container-instances/egress-ip-address.sh" id="firewall":::
 
-Update the firewall configuration using the [az network firewall update][az-network-firewall-update] command:
+Update the firewall configuration by using the [az network firewall update](az-network-firewall-update) command:
 
 :::code language="azurecli" source="~/azure_cli_scripts/container-instances/egress-ip-address.sh" id="firewallupdate":::
 
-Get the firewall's private IP address using the [az network firewall ip-config list][az-network-firewall-ip-config-list] command. This private IP address is used in a later command.
+Get the firewall's private IP address by using the [az network firewall ip-config list](az-network-firewall-ip-config-list) command. This private IP address is used in a later command.
 
 :::code language="azurecli" source="~/azure_cli_scripts/container-instances/egress-ip-address.sh" id="storeprivateip":::
 
-Get the firewall's public IP address using the [az network public-ip show][az-network-public-ip-show] command. This public IP address is used in a later command.
+Get the firewall's public IP address by using the [az network public-ip show](az-network-public-ip-show) command. This public IP address is used in a later command.
 
 :::code language="azurecli" source="~/azure_cli_scripts/container-instances/egress-ip-address.sh" id="storepublicip":::
 
-## Define user-defined route on ACI subnet
+## Define a user-defined route on the Container Instances subnet
 
-To divert traffic to the Azure firewall, define a use-defined route on the ACI subnet. For more information, see [Route network traffic](/azure/virtual-network/tutorial-create-route-table-cli). 
+To divert traffic to the Azure firewall, define a use-defined route on the Container Instances subnet. For more information, see [Route network traffic](/azure/virtual-network/tutorial-create-route-table-cli).
 
 ### Create route table
 
-First, run the following [az network route-table create][az-network-route-table-create] command to create the route table. Create the route table in the same region as the virtual network.
+First, run the following [az network route-table create](az-network-route-table-create) command to create the route table. Create the route table in the same region as the virtual network.
 
 :::code language="azurecli" source="~/azure_cli_scripts/container-instances/egress-ip-address.sh" id="routetable":::
 
 ### Create route
 
-Run [az network-route-table route create][az-network-route-table-route-create] to create a route in the route table. To route traffic to the firewall, set the next hop type to `VirtualAppliance`, and pass the firewall's private IP address as the next hop address.
+Run [az network-route-table route create](az-network-route-table-route-create) to create a route in the route table. To route traffic to the firewall, set the next hop type to `VirtualAppliance`. Pass the firewall's private IP address as the next hop address.
 
 :::code language="azurecli" source="~/azure_cli_scripts/container-instances/egress-ip-address.sh" id="createroute":::
 
-### Associate route table to ACI subnet
+### Associate a route table tothe  Container Instances subnet
 
-Run the [az network vnet subnet update][az-network-vnet-subnet-update] command to associate the route table with the subnet delegated to Azure Container Instances.
+Run the [az network vnet subnet update](az-network-vnet-subnet-update) command to associate the route table with the subnet delegated to Container Instances.
 
 :::code language="azurecli" source="~/azure_cli_scripts/container-instances/egress-ip-address.sh" id="associateroute":::
 
@@ -119,27 +119,27 @@ Run the [az network vnet subnet update][az-network-vnet-subnet-update] command t
 By default, Azure Firewall denies (blocks) inbound and outbound traffic.
 
 > [!IMPORTANT]
-> Ensure that port 19390 is open in your firewall to allow connectivity to Azure Container Instances (ACI) from the Azure portal. This port is required when deploying container groups in virtual networks. Blocking this port can result in deployment failures, such as container groups remaining in a "Waiting" state, or prevent portal-based management and troubleshooting, including accessing logs and the container shell.
+> Ensure that port 19390 is open in your firewall to allow connectivity to Container Instances from the Azure portal. This port is required when you deploy container groups in virtual networks. Blocking this port can result in deployment failures. For example, container groups might remain in a Waiting state. Blocking this port can prevent portal-based management and troubleshooting, including accessing logs and the container shell.
 
-### Configure NAT rule on firewall to ACI subnet
+### Configure a NAT rule on the firewall to a Container Instances subnet
 
-Create a [NAT rule](/azure/firewall/rule-processing) on the firewall to translate and filter inbound internet traffic to the application container you started previously in the network. For details, see [Filter inbound Internet traffic with Azure Firewall DNAT](/azure/firewall/tutorial-firewall-dnat)
+Create a [NAT rule](/azure/firewall/rule-processing) on the firewall to translate and filter inbound internet traffic to the application container you started previously in the network. For details, see [Filter inbound internet traffic with Azure Firewall DNAT](/azure/firewall/tutorial-firewall-dnat)
 
-Create a NAT rule and collection by using the [az network firewall nat-rule create][az-network-firewall-nat-rule-create] command:
+Create a NAT rule and collection by using the [az network firewall nat-rule create](az-network-firewall-nat-rule-create) command:
 
 :::code language="azurecli" source="~/azure_cli_scripts/container-instances/egress-ip-address.sh" id="natrule":::
 
 Add NAT rules as needed to filter traffic to other IP addresses in the subnet. For example, other container groups in the subnet could expose IP addresses for inbound traffic, or other internal IP addresses could be assigned to the container group after a restart.
 
-### Create outbound application rule on the firewall
+### Create an outbound application rule on the firewall
 
-Run the following [az network firewall application-rule create][az-network-firewall-application-rule-create] command to create an outbound rule on the firewall. This sample rule allows access from the subnet delegated to Azure Container Instances to the FQDN `checkip.dyndns.org`. HTTP access to the site is used in a later step to confirm the egress IP address from Azure Container Instances.
+Run the following [az network firewall application-rule create](az-network-firewall-application-rule-create) command to create an outbound rule on the firewall. This sample rule allows access from the subnet delegated to Container Instances to the fully qualified domain name `checkip.dyndns.org`. HTTP access to the site is used in a later step to confirm the egress IP address from Container Instances.
 
 :::code language="azurecli" source="~/azure_cli_scripts/container-instances/egress-ip-address.sh" id="outboundrule":::
 
 ## Test container group access through the firewall
 
-The following sections verify that the subnet delegated to Azure Container Instances is properly configured behind the Azure firewall. The previous steps routed both incoming traffic to the subnet and outgoing traffic from the subnet through the firewall.
+The following sections verify that the subnet delegated to Container Instances is properly configured behind the Azure firewall. The previous steps routed both incoming traffic to the subnet and outgoing traffic from the subnet through the firewall.
 
 ### Test ingress to a container group
 
@@ -153,7 +153,7 @@ Output is similar to:
 52.142.18.133
 ```
 
-If the NAT rule on the firewall is configured properly, you see the following when you enter the firewall's public IP address in your browser:
+If the NAT rule on the firewall is configured properly, you see the following screenshot when you enter the firewall's public IP address in your browser.
 
 :::image type="content" source="media/container-instances-egress-ip-address/aci-ingress-ip-address.png" alt-text="Browse to firewall's public IP address":::
 
@@ -163,7 +163,7 @@ Deploy the following sample container into the virtual network. When it runs, it
 
 :::code language="azurecli" source="~/azure_cli_scripts/container-instances/egress-ip-address.sh" id="egress":::
 
-View the container logs to confirm the IP address is the same as the public IP address of the firewall.
+View the container logs to confirm that the IP address is the same as the public IP address of the firewall.
 
 ```azurecli
 az container logs \
@@ -179,15 +179,15 @@ Output is similar to:
 
 ## Clean up resources
 
-When no longer needed, you can use [az group delete](/cli/azure/group) to remove the resource group and all related resources as follows. The `--no-wait` parameter returns control to the prompt without waiting for the operation to complete. The `--yes` parameter confirms that you wish to delete the resources without another prompt to do so.
+When no longer needed, you can use [az group delete](/cli/azure/group) to remove the resource group and all related resources. The `--no-wait` parameter returns control to the prompt without waiting for the operation to complete. The `--yes` parameter confirms that you want to delete the resources without another prompt to do so.
 
 ```azurecli-interactive
 az group delete --name $resourceGroup --yes --no-wait
 ```
 
-## Next steps
+## Related content
 
-In this article, you set up container groups in a virtual network behind an Azure firewall. You configured a user-defined route and NAT and application rules on the firewall. By using this configuration, you set up a single, static IP address for ingress and egress from Azure Container Instances.
+In this article, you set up container groups in a virtual network behind an Azure firewall. You configured a user-defined route and NAT and application rules on the firewall. By using this configuration, you set up a single static IP address for ingress and egress from Container Instances.
 
 For more information about managing traffic and protecting Azure resources, see the [Azure Firewall](/azure/firewall/) documentation.
 
