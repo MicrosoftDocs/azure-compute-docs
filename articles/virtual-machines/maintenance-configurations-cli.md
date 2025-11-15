@@ -202,7 +202,7 @@ az maintenance assignment list \
    --provider-name Microsoft.Compute \
    --resource-group myMaintenanceRG \
    --resource-name myVMSS \
-   --resource-type virtualMachines \
+   --resource-type "virtualMachineScaleSets" \
    --query "[].{resource:resourceGroup, configName:name}" \
    --output table
 ```
