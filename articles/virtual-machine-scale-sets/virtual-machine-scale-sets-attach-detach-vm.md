@@ -71,7 +71,7 @@ New-AzVm `
 ### Exceptions to attaching a new Virtual Machine to a Virtual Machine Scale Set
 
 - The VM must be in the same resource group as the scale set.
-- Regional virtual machines (no availability zones specified) can be attached to regional scale sets.
+- Nonzonal (regional) virtual machines, which don't have availability zones specified, can be attached to nonzonal scale sets.
 - Zonal virtual machines can be attached to scale sets that specify one or more zone. The virtual machine must be  in one of the zones spanned by the scale set. For example, you can't create a virtual machine in Zone 1, and place it in a scale set that spans Zones 2 and 3.
 - The scale set must be in Flexible orchestration mode, and the `singlePlacementGroup` property must be `false`.
 
@@ -121,7 +121,7 @@ Update-AzVM -ResourceGroupName $resourceGroupName -VM $vm  -VirtualMachineScaleS
 - The VM and scale set must be in the same resource group. 
 - Availability zone configuration:
   - If the target scale set is zone-spanning or zonal, the VM must be zonal and deployed in a zone that's covered by the scale set.
-  - If the target scale set is nonzonal (regional), the VM must also be nonzonal. You can't attach a zonal VM to a nonzonal scale set.
+  - If the target scale set is nonzonal, the VM must also be nonzonal. You can't attach a zonal VM to a nonzonal scale set.
 - The VM can't be in a self-defined availability set. 
 - The VM can't be in a `ProximityPlacementGroup`. 
 - The VM can't be in an Azure Dedicated Host. 

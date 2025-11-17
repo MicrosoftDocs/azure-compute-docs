@@ -41,7 +41,7 @@ There are no costs associated with this feature.
 
 - A subscription's available Spot VM quota needs to be checked or requested separately. 
 
-- Spot Placement Score supports both regionally and availability zone-scoped placement score. 
+- Spot Placement Score supports both availability zone-scoped and nonzonal (regional) placement score. 
 
 - Spot Placement Score API internally calls other GET APIs and is part of your GET call quota. 
 
@@ -134,7 +134,7 @@ Invoke-AzSpotPlacementScore
 The following examples have scenario assumptions and a table with the results score to help you understand how Spot Placement Score works.
 
 ### Scenario 1
-This table is an example of a request returning regionally scoped placement scores for multiple desired VM sizes and regions.
+This table is an example of a request returning nonzonal scoped placement scores for multiple desired VM sizes and regions.
 
 The following scenario assumptions apply to this example:
 - **Desired locations:** `westus`, `eastus`

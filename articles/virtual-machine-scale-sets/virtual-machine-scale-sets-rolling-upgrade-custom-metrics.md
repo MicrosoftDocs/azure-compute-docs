@@ -28,8 +28,8 @@ A phase is a grouping construct for virtual machines. Each phase is determined b
 
 When a rolling upgrade is initiated, the virtual machines are placed into their designated phases. The phased upgrades are performed in numerical sequence order. Virtual Machines in all batches within a phase will be completed before moving onto the next phase. If no phase ordering is received for a virtual machine, the scale set will place it into the last phase  
 
-**Regional scale set**
-:::image type="content" source="./media/upgrade-policy/n-phase-regional-scale-set.png" alt-text="Diagram that shows a high level diagram of what happens when using n-phase upgrades on a regional scale set.":::
+**Nonzonal (regional) scale set**
+:::image type="content" source="./media/upgrade-policy/n-phase-nonzonal-scale-set.png" alt-text="Diagram that shows a high level diagram of what happens when using n-phase upgrades on a nonzonal scale set.":::
 
 **Zone-spanning scale set**
 :::image type="content" source="./media/upgrade-policy/n-phase-zone-spanning-scale-set.png" alt-text="Diagram that shows a high level diagram of what happens when using n-phase upgrades on a zone-spanning scale set.":::

@@ -45,7 +45,7 @@ Flexible orchestration mode can be used with all VM sizes. Flexible orchestratio
 | Mix operating systems | Yes | Yes |
 | Mix Spot and On-demand instances | Yes | No | 
 | Mix General Purpose and Specialty SKU Types | Yes (`FDCount = 1`) | No | 
-| Maximum Fault Domain Count | Regional – 3 (depending on the regional fault domain max count) <br> Zone-spanning and zonal – 1  | Regional – 3 <br> Zone-spanning and zonal – 1  |
+| Maximum Fault Domain Count | Nonzonal (regional) – 3 (depending on the region's fault domain max count) <br> Zone-spanning and zonal – 1  | Nonzonal (regional) – 3 <br> Zone-spanning and zonal – 1  |
 | Spread instances across zones | Yes | Yes | 
 | Assign VM to a Specific Zone | Yes | Yes | 
 | Assign VM to a Specific Fault domain | Yes | No | 
@@ -165,7 +165,7 @@ The following table compares the Flexible orchestration mode, Uniform orchestrat
 | Availability Zones | Specify instances land across 1, 2 or 3 availability zones | Specify instances land across 1, 2 or 3 availability zones | Not supported |
 | Assign VM to a Specific Availability Zone | Yes | No | No |
 | Fault Domain – Max Spreading (Azure will maximally spread instances) | Yes | Yes | No |
-| Fault Domain – Fixed Spreading | 2-3 FDs (depending on regional maximum FD Count); 1 for zone-spanning and zonal deployments | 2, 3, 5 FDs; 1, 5 for zone-spanning and zonal deployments | 2-3 FDs (depending on regional maximum FD Count) |
+| Fault Domain – Fixed Spreading | 2-3 FDs (depending on region's maximum FD Count); 1 for zone-spanning and zonal deployments | 2, 3, 5 FDs; 1, 5 for zone-spanning and zonal deployments | 2-3 FDs (depending on region's maximum FD Count) |
 | Assign VM to a Specific Fault Domain | Yes | No | No |
 | Update Domains | Depreciated (platform maintenance performed FD by FD) | 5 update domains | Up to 20 update domains |
 | Perform Maintenance | Trigger maintenance on each instance using VM API | Yes | N/A |
