@@ -162,7 +162,8 @@ Their configuration and settings are passed from Azure Platform to the extension
 
 Extension handlers inside the VM are writing to a status file (example: _"/var/lib/waagent/Microsoft.Azure.Extensions.CustomScript-2.1.3/status/1.status"_ for Linux or _"C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.10.12\Status"_ for Windows) which is reported to the Azure Platform. That status is the one reported through PowerShell, CLI or in the VM's extension blade in the Azure portal.
 
-They also write detailed logs of their execution (example: _"/var/log/azure/custom-script/handler.log"_ for Linux or _"C:\WindowsAzure\Logs\Plugins\Microsoft.Compute.CustomScriptExtension\1.10.12\CustomScriptHandler.log"_ for Windows).
+They also write detailed logs of their execution (example: _"var/log/azure/Microsoft.Azure.Extensions.CustomScript/handler.log"_ for CSE Linux version 2.1.16+, _"/var/log/azure/custom-script/handler.log"_ for older CSE Linux versions, or
+_"C:\WindowsAzure\Logs\Plugins\Microsoft.Compute.CustomScriptExtension\1.10.12\CustomScriptHandler.log"_ for Windows).
 
 
 ### If the VM is recreated from an existing VM

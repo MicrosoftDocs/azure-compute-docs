@@ -7,7 +7,7 @@ ms.service: azure-container-instances
 ms.custom: devx-track-azurecli
 services: container-instances
 ms.topic: how-to
-ms.date: 08/29/2024
+ms.date: 11/17/2025
 # Customer intent: "As a cloud developer, I want to configure Azure Container Instances to use a static outbound IP address for ingress and egress, so that I can streamline firewall management and simplify client access for my containerized applications."
 ---
 

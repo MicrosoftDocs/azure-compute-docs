@@ -7,13 +7,13 @@ ms.service: azure-container-instances
 ms.custom:
   - ignite-2024
 ms.topic: how-to
-ms.date: 05/19/2025
+ms.date: 11/17/2025
 ms.reviewer: tomvcassidy
 # Customer intent: As a container orchestrator user, I want to implement config maps in Azure Container Instances so that I can modify container configurations dynamically without restarting the instances, ensuring high availability and minimizing downtime.
 ---
 # Config maps for Azure Container Instances
 
-A config map is a property that can be used to apply container configurations similar to environment variables and secret volumes. However, unlike when using environment variables or secret volumes where restarting the pod to apply the settings is required, apply settings using a config map does not require any restarts for the changes to take effect. 
+A config map is a property that can be used to apply container configurations similar to environment variables and secret volumes. However, unlike when using environment variables or secret volumes where restarting the pod to apply the settings is required, apply settings using a config map doesn't require any restarts for the changes to take effect. 
 
 Azure Container Instances can be created with or without config maps and can be updated at any point in time post creation using config maps. Updating config maps in an existing running container group can be accomplished quickly without compromising uptime of the container. 
 
