@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
-ms.date: 09/09/2024
+ms.date: 11/17/2025
 ms.custom: devx-track-azurecli, innovation-engine
 # Customer intent: As a cloud developer, I want to deploy container groups to Azure virtual networks using the CLI, so that I can ensure secure communication between my containers and other resources within the network.
 ---
