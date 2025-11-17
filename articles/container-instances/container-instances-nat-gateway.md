@@ -7,7 +7,7 @@ ms.service: azure-container-instances
 ms.custom: devx-track-azurecli
 services: container-instances
 ms.author: tomcassidy
-ms.date: 08/29/2024
+ms.date: 11/17/2025
 # Customer intent: As a cloud administrator, I want to configure a NAT gateway for my container groups, so that I can establish a static public IP address for outbound traffic to simplify monitoring and firewall rule management.
 ---
 
