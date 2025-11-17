@@ -738,14 +738,11 @@ To learn more, see the Azure PowerShell commands [Stop-AzVmss](/powershell/modul
 
 Zonally deployed virtual machines scale sets can be converted to using an On Demand Capacity Reservation by creating a zero size reservation. The basic process involves 3 steps:
 
-#### 1. Create a desired CRG with zero-sized reservation
-You can start by creating a CRG with zero-size reservation and set the reserved count to zero. For more information on how to create a reservation, see [Create a capacity reservation](/azure/virtual-machines/capacity-reservation-create?tabs=portal1%2Capi1%2Capi2#create-a-capacity-reservation-1).
+1. Create a desired CRG with zero-sized reservation- You can start by creating a CRG with zero-size reservation and set the reserved count to zero. For more information on how to create a reservation, see [Create a capacity reservation](/azure/virtual-machines/capacity-reservation-create?tabs=portal1%2Capi1%2Capi2#create-a-capacity-reservation-1).
 
-#### 2. Associate existing running zonal virtual machine scale set to ODCR
-You can have the existing running zonal workloads reference the zero-size reservation, which will result in overallocation of the reservation. See [Zonal Virtual Machine Scale Set](#zonal-virtual-machine-scale-set)
+2. Associate existing running zonal virtual machine scale set to ODCR- You can have the existing running zonal workloads reference the zero-size reservation, which will result in overallocation of the reservation. See [Zonal Virtual Machine Scale Set](#zonal-virtual-machine-scale-set)
    
-#### 3. Increase the reserved count to VM count
-Once the allocated workloads are successfully associated with the capacity reservation, increase the reservation quantity to match the VM instance count. For more information on how to update the reserved count, see [Capacity reservation modify](/azure/virtual-machines/capacity-reservation-modify?tabs=api1%2Capi2%2Capi3#update-the-number-of-instances-reserved)
+3. Increase the reserved count to VM count- Once the allocated workloads are successfully associated with the capacity reservation, increase the reservation quantity to match the VM instance count. For more information on how to update the reserved count, see [Capacity reservation modify](/azure/virtual-machines/capacity-reservation-modify?tabs=api1%2Capi2%2Capi3#update-the-number-of-instances-reserved)
 
 After the quantity increase, you should see the VM instances successfully consuming the capacity reservation. See [View VM allocation with the Instance View](/azure/virtual-machines/capacity-reservation-associate-vm?tabs=api1%2Capi2%2Capi3#view-vm-allocation-with-the-instance-view).
 
