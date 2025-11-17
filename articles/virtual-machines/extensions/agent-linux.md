@@ -15,12 +15,12 @@ ms.date: 08/18/2025
 
 The Azure Linux VM Agent (waagent) manages Linux and FreeBSD provisioning, along with virtual machine (VM) interaction with the Azure fabric controller. In addition to the Linux agent providing provisioning functionality, Azure provides the option of using cloud-init for some Linux operating systems.
 
-The Linux agent provides the following functionality for Linux and FreeBSD Azure Virtual Machines deployments. For more information, see the [Azure Linux VM Agent readme on GitHub](https://github.com/Azure/WALinuxAgent/blob/master/README.md).
-
 > [!IMPORTANT]
 > FIPS 140-3 Enforced isn't supported on RHEL/Ubuntu with extensions by using `protectedSettings`.
 >
 > Support for FIPS 140-3 will be added September 2025.
+
+The Linux agent provides the following functionality for Linux and FreeBSD Azure Virtual Machines deployments. For more information, see the [Azure Linux VM Agent readme on GitHub](https://github.com/Azure/WALinuxAgent/blob/master/README.md).
 
 [!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
 
