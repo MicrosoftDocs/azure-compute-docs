@@ -19,6 +19,7 @@ This article provides an overview of the virtual machine (VM) extension to deplo
 
 Instructions on manual installation of the drivers and the current supported versions are available. For more information, see [Azure N-series AMD GPU driver setup for Windows](../windows/n-series-amd-driver-setup.md).
 
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
 ## Prerequisites
 
 ### Internet connectivity

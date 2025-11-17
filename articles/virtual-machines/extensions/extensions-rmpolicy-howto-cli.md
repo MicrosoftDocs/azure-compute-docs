@@ -18,6 +18,9 @@ If you want to prevent the installation of certain extensions on your Linux VMs,
 
 This tutorial uses the CLI within the Azure Cloud Shell, which is constantly updated to the latest version. If you want to run the Azure CLI locally, you need to install version 2.0.26 or later. Run `az --version` to find the version. If you need to install or upgrade, see [Install Azure CLI](/cli/azure/install-azure-cli).
 
+
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
+
 ## Create a rules file
 
 In order to restrict what extensions are available, you need to create a [rule](/azure/governance/policy/concepts/definition-structure#policy-rule) to identify the extension.

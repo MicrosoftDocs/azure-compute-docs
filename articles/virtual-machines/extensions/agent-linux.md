@@ -22,6 +22,8 @@ The Linux agent provides the following functionality for Linux and FreeBSD Azure
 >
 > Support for FIPS 140-3 will be added September 2025.
 
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
+
 ### Image provisioning
 
 - Creates a user account.
