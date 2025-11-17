@@ -5,7 +5,7 @@ author: mimckitt
 ms.author: mimckitt
 ms.service: azure-container-instances
 ms.topic: how-to
-ms.date: 5/19/2025
+ms.date: 11/17/2025
 ms.reviewer: tomvcassidy
 # Customer intent: "As a cloud admin, I want to configure role-based access control for standby pools in Azure Container Instances, so that I can ensure proper permissions for managing resources and prevent operational issues."
 ---
