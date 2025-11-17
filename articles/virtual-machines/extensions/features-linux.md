@@ -20,6 +20,8 @@ You can run Azure VM extensions by using the Azure CLI, PowerShell, Azure Resour
 
 This article provides an overview of Azure VM extensions, prerequisites for using them, and guidance on how to detect, manage, and remove them. This article provides generalized information because many VM extensions are available. Each has a potentially unique configuration and its own documentation.
 
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
+
 ## Use cases and samples
 
 Each Azure VM extension has a specific use case. Examples include:

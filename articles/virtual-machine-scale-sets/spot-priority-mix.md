@@ -31,8 +31,8 @@ With Spot Priority Mix, you can:
 
 Spot Priority Mix uses two key parameters to control your VM distribution:
 
-1. `baseRegularPriorityCount`: The minimum number of standard (non-Spot) VMs that are always maintained
-2. `regularPriorityPercentageAboveBase`: The percentage of standard VMs vs. Spot VMs for any capacity beyond the base count
+- `baseRegularPriorityCount`: The minimum number of standard (non-Spot) VMs that are always maintained
+- `regularPriorityPercentageAboveBase`: The percentage of standard VMs vs. Spot VMs for any capacity beyond the base count
 
 **Example**: With a `baseRegularPriorityCount` of 10 and a `regularPriorityPercentageAboveBase` of 50:
 - At 10 total VMs: All 10 are standard VMs (at or below base count)

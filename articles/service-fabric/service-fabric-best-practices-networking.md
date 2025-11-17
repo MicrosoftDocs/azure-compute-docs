@@ -74,23 +74,23 @@ The rules described next are the recommended minimum for a typical configuration
 
 More information about the inbound security rules:
 
-* **Azure portal**. This port is used by the Service Fabric Resource Provider to query information about your cluster in order to display in the Azure Management Portal. If this port isn't accessible from the Service Fabric Resource Provider, you see a message such as 'Nodes Not Found' or 'UpgradeServiceNotReachable' in the Azure portal and your node and application list appears empty. This means that if you wish to have visibility of your cluster in the Azure Management Portal then your load balancer must expose a public IP address and your NSG must allow incoming 19080 traffic. This port is recommended for extended management operations from the Service Fabric Resource Provider to guarantee higher reliability.
+* **Azure portal**: This port is used by the Service Fabric Resource Provider to query information about your cluster in order to display in the Azure Management Portal. If this port isn't accessible from the Service Fabric Resource Provider, you see a message such as 'Nodes Not Found' or 'UpgradeServiceNotReachable' in the Azure portal and your node and application list appears empty. This means that if you wish to have visibility of your cluster in the Azure Management Portal then your load balancer must expose a public IP address and your NSG must allow incoming 19080 traffic. This port is recommended for extended management operations from the Service Fabric Resource Provider to guarantee higher reliability.
 
-* **Client API**. The client connection endpoint for APIs used by PowerShell.
+* **Client API**: The client connection endpoint for APIs used by PowerShell.
 
-* **SFX + Client API**. This port is used by Service Fabric Explorer to browse and manage your cluster. It's used by most common APIs like REST/PowerShell (Microsoft.ServiceFabric.PowerShell.Http)/CLI/.NET in the same way.
+* **SFX + Client API**: This port is used by Service Fabric Explorer to browse and manage your cluster. It's used by most common APIs like REST/PowerShell (Microsoft.ServiceFabric.PowerShell.Http)/CLI/.NET in the same way.
 
-* **Cluster**. Used for inter-node communication.
+* **Cluster**: Used for inter-node communication.
 
-* **Ephemeral**. Service Fabric uses a part of these ports as application ports, and the remaining are available for the OS. It also maps this range to the existing range present in the OS, so for all purposes, you can use the ranges given in the sample here. Make sure that the difference between the start and the end ports is at least 255. You might run into conflicts if this difference is too low, because this range is shared with the OS. To see the configured dynamic port range, run *netsh int ipv4 show dynamicport tcp*. These ports aren't needed for Linux clusters.
+* **Ephemeral**: Service Fabric uses a part of these ports as application ports, and the remaining are available for the OS. It also maps this range to the existing range present in the OS, so for all purposes, you can use the ranges given in the sample here. Make sure that the difference between the start and the end ports is at least 255. You might run into conflicts if this difference is too low, because this range is shared with the OS. To see the configured dynamic port range, run *netsh int ipv4 show dynamicport tcp*. These ports aren't needed for Linux clusters.
 
-* **Application**. The application port range should be large enough to cover the endpoint requirement of your applications. This range should be exclusive from the dynamic port range on the machine, that is, the ephemeralPorts range as set in the configuration. Service Fabric uses these ports whenever new ports are required and takes care of opening the firewall for these ports on the nodes.
+* **Application**: The application port range should be large enough to cover the endpoint requirement of your applications. This range should be exclusive from the dynamic port range on the machine, that is, the ephemeralPorts range as set in the configuration. Service Fabric uses these ports whenever new ports are required and takes care of opening the firewall for these ports on the nodes.
 
-* **RDP**. Optional, if RDP is required from the Internet or VirtualNetwork for jumpbox scenarios. 
+* **RDP**: Optional, if RDP is required from the Internet or VirtualNetwork for jumpbox scenarios. 
 
-* **SSH**. Optional, if SSH is required from the Internet or VirtualNetwork for jumpbox scenarios.
+* **SSH**: Optional, if SSH is required from the Internet or VirtualNetwork for jumpbox scenarios.
 
-* **Custom endpoint**. An example for your application to enable an internet accessible endpoint.
+* **Custom endpoint**: An example for your application to enable an internet accessible endpoint.
 
 > [!NOTE]
 > For most rules with Internet as source please consider to restrict to your known network, ideally defined by CIDR block.
@@ -105,9 +105,9 @@ More information about the inbound security rules:
 
 More information about the outbound security rules:
 
-* **Resource Provider**. Connection between UpgradeService and Service Fabric resource provider to receive management operations such as ARM deployments or mandatory operations like seed node selection or primary node type upgrade.
+* **Resource Provider**: Connection between UpgradeService and Service Fabric resource provider to receive management operations such as ARM deployments or mandatory operations like seed node selection or primary node type upgrade.
 
-* **Download Binaries**. The upgrade service is using the address download.microsoft.com to get the binaries, this relationship is needed for setup, re-image and runtime upgrades. In the scenario of an "internal only" load balancer, an [additional external load balancer](service-fabric-patterns-networking.md#internal-and-external-load-balancer) must be added with a rule allowing outbound traffic for port 443. Optionally, this port can be blocked after a successful setup, but in this case the upgrade package must be distributed to the nodes or the port has to be opened for the short period of time, afterwards a manual upgrade is needed.
+* **Download Binaries**: The upgrade service is using the address download.microsoft.com to get the binaries, this relationship is needed for setup, re-image and runtime upgrades. In the scenario of an "internal only" load balancer, an [additional external load balancer](service-fabric-patterns-networking.md#internal-and-external-load-balancer) must be added with a rule allowing outbound traffic for port 443. Optionally, this port can be blocked after a successful setup, but in this case the upgrade package must be distributed to the nodes or the port has to be opened for the short period of time, afterwards a manual upgrade is needed.
 
 Use Azure Firewall with [NSG flow log](/azure/network-watcher/network-watcher-nsg-flow-logging-overview) and [traffic analytics](/azure/network-watcher/traffic-analytics) to track connectivity issues. The ARM template [Service Fabric with NSG](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG) is a good example to start. 
 
@@ -117,6 +117,34 @@ Use Azure Firewall with [NSG flow log](/azure/network-watcher/network-watcher-ns
 ### Common scenarios needing additional rules
 
 All additional scenarios can be covered with [Azure Service Tags](/azure/virtual-network/service-tags-overview).
+
+#### Restricting outbound traffic
+
+For some customers, the default NSG rules described above don't suffice to meet their network security requirements. For example, a common requirement — which is not provided by default, is to block outbound traffic to the internet. To achieve this, customers can apply NSG rules based on the reference table below to restrict outbound traffic while maintaining essential cluster functionality. These rules can be applied to both Classic and Managed Clusters. For Managed Clusters, ensure they do not override any default rules (prefixed with 'SFMC-'). 
+
+>[!Note]
+> The table below is intended to be used only as a reference.
+
+| Priority | Name | Port | Protocol | Source | Destination | Action |
+|----------|------|------|----------|--------|-------------|--------|
+| 1000 | AllowSFRP | Any | Any | Any | ServiceFabric | Allow |
+| 1001 | AllowStorage | Any | Any | Any | Storage | Allow |
+| 1002 | AllowIMS | Any | Any | Any | 169.254.169.254/32 | Allow |
+| 1003 | AllowVIP | Any | Any | Any | 168.63.129.16/32 | Allow |
+| 1004 | AllowNTP | 123 | Any | Any | AzureCloud | Allow |
+| 1005 | AllowCRL | 80 | Any | Any | Internet | Allow |
+| 2000 | DenyInternet | Any | Any | Any | Internet | Deny |
+| 65000 | AllowVnetOutBound | Any | Any | VirtualNetwork | VirtualNetwork | Allow |
+| 65001 | AllowInternetOutBound | Any | Any | Any | Internet | Allow |
+| 65500 | DenyAllOutBound | Any | Any | Any | Any | Deny |
+
+* **AllowSFRP**: Allow cluster to communicate with Service Fabric Resource Provider.
+* **AllowStorage**: Allow cluster to communicate with Storage Accounts.
+* **AllowIMS**: Allow [Azure Instance Metadata Service](../virtual-machines/instance-metadata-service.md).
+* **AllowVIP**: Allow [Azure Resource Communication](/azure/virtual-network/what-is-ip-address-168-63-129-16).
+* **AllowNTP**: Allow Network Time Protocol.
+* **AllowCRL**: Allow Cluster Certificate Revocation List Check.
+* **DenyInternet**: Block Outbound Traffic To Internet.
 
 #### Azure DevOps
 

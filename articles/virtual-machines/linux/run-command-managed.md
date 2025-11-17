@@ -52,7 +52,7 @@ The *updated* managed Run Command uses the same VM agent channel to execute scri
 ## Available Commands
 | **CommandID** | **Description** |
 |:-----|:-----|
-|**RunShellScript**|Runs a Linux shell script.||
+|**RunShellScript**|Runs a Linux shell script.|
 | **ifconfig** | Gets the configuration of all network interfaces. For usage, refer to [Run scripts](/azure/virtual-machines/linux/run-command-managed#create-or-update-run-command-on-a-vm-using-sourcecommandid) |
 
 > [!Note] 

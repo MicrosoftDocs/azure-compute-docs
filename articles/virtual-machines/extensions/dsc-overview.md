@@ -32,6 +32,8 @@ The Azure VM Extension for Azure virtual machines (VM) and the associated extens
 
 The DSC extension only pushes a configuration to the VM. No ongoing reporting is available, other than locally in the VM.
 
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
+
 ## Available DSC versions
 
 The DSC extension supports configurations from version 1.1 of the DSC platform. For more information, see [PSDesiredStateConfiguration v1.1](/powershell/dsc/overview?view=dsc-1.1&preserve-view=true).

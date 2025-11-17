@@ -101,7 +101,7 @@ sections:
       - question: |
           Does Azure support live resizing on disks with NVMe VM sizes?
         answer: |
-          Live resizing of NVMe is supported on Azure Premium SSD v1 disks, Standard SSD disks, and Standard HDD disks. You can also add NVMe disks without restarting the VM.
+          Live resizing of NVMe is supported on Azure Premium SSD v1 disks, Premium SSD v2 disks, Standard SSD disks, and Standard HDD disks. You can also add NVMe disks without restarting the VM.
       - question: |
           How can I identify remote NVMe disks on a Linux VM?
         answer: |

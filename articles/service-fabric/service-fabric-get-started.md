@@ -33,8 +33,8 @@ The runtime can be installed independently. However, the SDK requires the runtim
 
 | Package |Version|
 | --- | --- |
-|[Install Service Fabric Runtime for Windows](https://download.microsoft.com/download/b/8/a/b8a2fb98-0ec1-41e5-be98-9d8b5abf7856/MicrosoftServiceFabric.11.2.274.1.exe) | 11.2.274.1 |
-|[Install Service Fabric SDK](https://download.microsoft.com/download/b/8/a/b8a2fb98-0ec1-41e5-be98-9d8b5abf7856/MicrosoftServiceFabricSDK.8.2.274.msi) | 8.2.274 |
+|[Install Service Fabric Runtime for Windows](https://download.microsoft.com/download/b/8/a/b8a2fb98-0ec1-41e5-be98-9d8b5abf7856/MicrosoftServiceFabric.11.3.365.1.exe) | 11.3.365.1 |
+|[Install Service Fabric SDK](https://download.microsoft.com/download/b/8/a/b8a2fb98-0ec1-41e5-be98-9d8b5abf7856/MicrosoftServiceFabricSDK.8.3.365.msi) | 8.3.365 |
 
 You can find direct links to the installers for previous releases on [Service Fabric Releases.](https://github.com/microsoft/service-fabric/tree/master/release_notes)
 

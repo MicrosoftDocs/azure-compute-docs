@@ -61,8 +61,9 @@ The following distros and versions currently include az-vm-utils in their offici
 | Distribution | Version |
 |--------|---------|
 | Fedora | 42 |
-| Flatcar | 4152.2.3 |
+| Kinvolk / Flatcar | 4152.2.3 |
 | Azure Linux | 2.0 |
+| Canonical / Ubuntu | 22.04, 24.04, 25.04 |
 
 ### Installation
 

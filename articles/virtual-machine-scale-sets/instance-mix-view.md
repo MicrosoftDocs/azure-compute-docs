@@ -35,6 +35,21 @@ To display all properties in the `skuProfile`, run:
 az vmss show --resource-group <resourceGroupName> --name <scaleSetName> --query "skuProfile"
 ```
 
+**Example output:**
+```json
+{
+  "allocationStrategy": "CapacityOptimized",
+  "vmSizes": [
+    {
+      "name": "Standard_D4s_v5"
+    },
+    {
+      "name": "Standard_D4as_v5"
+    }
+  ]
+}
+```
+
 #### View VM sizes
 To display only the VM sizes, run:
 ```azurecli-interactive

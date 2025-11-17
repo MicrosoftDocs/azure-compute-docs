@@ -1,49 +1,56 @@
 ---
-title: Azure Impact Reporting - View Impact Insights #Required; page title is displayed in search results. Include the brand.
-description: View reported impacts and insights from Microsoft Intelligence Systems. #Required; article description that is displayed in search results. 
-author: rolandnyamo #Required; your GitHub user alias, with correct capitalization.
-ms.author: ronyamo #Required; microsoft alias of author; optional team alias.
-ms.topic: how-to #Required; leave this attribute/value as-is.
-ms.service: azure #Required; use either service or product per approved list. 
-ms.date: 09/04/2025 #Required; mm/dd/yyyy format.
-ms.custom: template-overview #Required; leave this attribute/value as-is.
+title: 'Azure Impact Reporting: View Impact Insights'
+description: View reported impacts and insights from Microsoft intelligence systems. 
+author: rolandnyamo
+ms.author: ronyamo
+ms.topic: how-to
+ms.service: azure 
+ms.date: 09/04/2025
+ms.custom: template-overview
 ---
 
-# View Impact Reports and Insights (Preview)
-> [!IMPORTANT]
-> Azure Impact Reporting is currently in Preview. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
+# View impact reports and insights (preview)
 
-Previously submitted impact reports and insights can be viewed through the REST API, in ARG (Azure Resource Graph Explorer) and the Azure portal.
+> [!IMPORTANT]
+> Azure Impact Reporting is currently in preview. For legal terms that apply to Azure features that are in beta, in preview, or otherwise not yet released into general availability, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+You can view previously submitted impact reports and insights through the REST API, Azure Resource Graph Explorer, and the Azure portal.
 
 ## Permissions needed
-You need either the "**Impact Reporter**" role or `read` action on `Microsoft.Impact/WorkloadImpact/*` at the right scope (root, subscription, or resource group).
 
-The following channels can be used to view Impact Reports and/or insights: 
+You need either the Impact Reporter role or the `read` action on `Microsoft.Impact/WorkloadImpact/*` at the appropriate scope (root, subscription, or resource group).
+
+Use the following channels to view impact reports or insights:
+
 * Azure portal
-* Query ARG 
+* Azure Resource Graph query
 * REST API
 
-#### [Portal](#tab/portal/)
-1. Go to the Azure Impact Reporting Portal. Look for your subscription and select the date range. 
-    [ ![Screenshot of the Azure Impact Reporting portal dashboard.](images/impact-reporting-portal.png) ](images/impact-reporting-portal.png#lightbox)
-2. To view the insights generated from the impacts, navigate to the bottom of the page. The tabular view shows the count of the insights for each of the resource name. 
-    [ ![Screenshot of Impact insights on the Azure portal.](images/insights.png) ](images/insights.png#lightbox)
-3. Select the insight count to see recommended actions for each of the insights.
+### [Portal](#tab/portal/)
 
-#### [REST API](#tab/restapi/)
-##### View Impacts using REST API
-You can use the Impact Reporting REST API to view previously filed impact reports.
-Review the full [REST API reference](https://aka.ms/ImpactRP/APIDocs).
+1. In the Azure portal, go to **Impact Reporting**. Look for your subscription, and select the date range.
 
-##### View a single Impact Report
+    :::image type="content" source="images/impact-reporting-portal.png" alt-text="Screenshot that shows the Azure Impact Reporting dashboard.":::
+1. To view the insights generated from the impacts, go to the bottom of the page. The tabular view shows the count of the insights for each resource name.
 
-[REST API reference](https://aka.ms/ImpactRP/APIDocs)
+    :::image type="content" source="images/insights.png" alt-text="Screenshot that shows impact insights in the Azure portal.":::
+1. Select the insight count to see recommended actions for each of the insights.
+
+### [REST API](#tab/restapi/)
+
+#### View impacts by using the REST API
+
+You can use the Impact Reporting REST API to view previously filed impact reports. For more information, review the full [REST API reference](https://aka.ms/ImpactRP/APIDocs).
+
+#### View a single impact report
+
+For more information, see the [REST API reference](https://aka.ms/ImpactRP/APIDocs).
 
 ```rest
 az rest --method GET --url "https://management.azure.com/subscriptions/<Subscription_id>/providers/Microsoft.Impact/workloadImpacts/<impact_name>?api-version=2022-11-01-preview" 
 ```
 
-##### Response
+#### Response
 
 ```json
 {
@@ -70,12 +77,13 @@ az rest --method GET --url "https://management.azure.com/subscriptions/<Subscrip
 }
 ```
 
-#### [ARG](#tab/arg/)
-To run these queries, go to the Azure portal [ARG query blade](https://portal.azure.com/#view/HubsExtension/ArgQueryBlade)
+### [Azure Resource Graph](#tab/arg/)
 
-##### Get all Impact reports that have Insights
+To run these queries, in the Azure portal, go to the [Azure Resource Graph Explorer query pane](https://portal.azure.com/#view/HubsExtension/ArgQueryBlade).
 
-This query retrieves all Impact reports with Insights, displaying key details such as the resource ID and impact properties.
+#### Get all impact reports that have insights
+
+This query retrieves all impact reports with insights. They show key details such as the resource ID and impact properties.
 
 ```kql
 impactreportresources 
@@ -90,9 +98,9 @@ impactreportresources
 |project impactedResourceId, impactId, insightId, insightProperties, impactProperties=properties
 ```
 
-##### For a resource URI, Find all reported Impacts and Insights
+#### For a resource URI, find all reported impacts and insights
 
-Given a resource ID, this query retrieves Impact reports and Insights that include the specified resource ID.
+When you give this query a resource ID, it retrieves impact reports and insights that include the specified resource ID.
 
 ```kql
 impactreportresources 
@@ -111,7 +119,8 @@ impactreportresources
 
 ---
 
-## Next steps
-* [What is an Impact Reporting Connector for Azure Monitor Alerts?](azure-monitor-connector.md)
-* [Impact Reporting Connectors - Troubleshooting Guide](connectors-troubleshooting-guide.md)
-* [Get allowed Impact category list](view-impact-categories.md)
+## Related content
+
+* [What is an Impact Reporting connector for Azure Monitor alerts?](azure-monitor-connector.md)
+* [Impact Reporting connectors: Troubleshooting guide](connectors-troubleshooting-guide.md)
+* [Get the allowed impact category list](view-impact-categories.md)

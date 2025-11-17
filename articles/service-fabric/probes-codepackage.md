@@ -109,13 +109,12 @@ The HTTP probe has additional properties that you can set:
 > [!NOTE]
 > Port is not supported for non-containerized applications. For this scenario please use **EndpointRef="EndpointName"** attribute. Replace 'EndpointName' with the name from the Endpoint defined in ServiceManifest.xml.
 > 
-> If you use `EndpointRef` with an HTTP endpoint, the `scheme` attribute is optional as HTTP is the default. If you use `EndpointRef` with an HTTPS endpoint, you must explicitly set the `scheme` attribute to "https". Additionally, the `CertificateRef` attribute must be defined for HTTPS to secure the connection to the endpoint being probed.
+> If you use `EndpointRef` with an HTTP endpoint, the `scheme` attribute is optional as HTTP is the default. If you use `EndpointRef` with an HTTPS endpoint, you must explicitly set the `scheme` attribute to "https". 
 ```xml
   <ServiceManifestImport>
     <ServiceManifestRef ServiceManifestName="Stateless1Pkg" ServiceManifestVersion="1.0.0" />
     <ConfigOverrides />
     <Policies>
-      <EndpointBindingPolicy EndpointRef="ServiceEndpoint" CertificateRef="your.cert.name" />
       <CodePackagePolicy CodePackageRef="Code">
         <Probes>
           <Probe Type="Readiness" FailureThreshold="10" SuccessThreshold="2" InitialDelaySeconds="600" PeriodSeconds="60" TimeoutSeconds="20">
@@ -126,11 +125,12 @@ The HTTP probe has additional properties that you can set:
       </CodePackagePolicy>
     </Policies>
   </ServiceManifestImport>
-
-  <Certificates>
-    <EndpointCertificate X509FindType="FindBySubjectName" X509FindValue="your.cert.name" Name="your.cert.name" />
-  </Certificates>
 ```
+
+> [!NOTE]
+> Service Fabric HTTPS probes do not support client certificate authentication during the TLS handshake. For details on the handshake process, see the [TLS Handshake Protocol][tls-handshake-link].
+>
+
 ### TCP probe
 
 For a TCP probe, Service Fabric will try to open a socket on the container by using the specified port. If it can establish a connection, the probe is considered successful. Here's an example of how to specify a probe that uses a TCP socket:
@@ -186,4 +186,5 @@ See the following article for related information:
 [health-introduction-link]: service-fabric-health-introduction.md
 [application-model-link]: service-fabric-application-model.md
 [hosting-model-link]: service-fabric-hosting-model.md
+[tls-handshake-link]: /windows/win32/secauthn/tls-handshake-protocol
 

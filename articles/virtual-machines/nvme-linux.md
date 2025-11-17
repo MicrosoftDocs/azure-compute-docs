@@ -108,7 +108,7 @@ Please check back with your OS vendor to cover all required commands to update i
 You can download the script using a PowerShell command
 
 ```powershell
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/SAP-on-Azure-Scripts-and-Utilities/refs/heads/main/Azure-NVMe-Utils/Azure-NVMe-Conversion.ps1" -OutFile ".\NVMe-Conversion.ps1"
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/SAP-on-Azure-Scripts-and-Utilities/refs/heads/main/Azure-NVMe-Utils/Azure-NVMe-Conversion.ps1" -OutFile ".\Azure-NVMe-Conversion.ps1"
 ```
 
 #### 2.3 Run the migration
@@ -159,7 +159,7 @@ PS /home/philipp> ./NVMe-Conversion.ps1 -ResourceGroupName testrg -VMName testvm
 00:00 - INFO      - Module Az.Accounts is installed and the version is correct.
 00:00 - INFO      - Module Az.Resources is installed and the version is correct.
 00:00 - INFO      - Connected to Azure subscription name: AG-GE-CE-PHLEITEN
-00:00 - INFO      - Connected to Azure subscription ID: 232b6759-xxxx-yyyy-zzzz-757472230e6c
+00:00 - INFO      - Connected to Azure subscription ID: aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e
 00:00 - INFO      - VM testvm found in Resource Group testrg
 00:01 - INFO      - VM testvm is running
 00:01 - INFO      - VM testvm is running Linux
@@ -194,7 +194,7 @@ PS /home/philipp> ./NVMe-Conversion.ps1 -ResourceGroupName testrg -VMName testvm
 01:18 - INFO      - Checking if VM is stopped and deallocated
 01:19 - INFO      - Setting OS Disk capabilities for testvm_OsDisk_1_165411276cbe459097929b981eb9b3e2 to new Disk Controller Type to NVMe
 01:19 - INFO      - generated URL for OS disk update:
-01:19 - INFO      - https://management.azure.com/subscriptions/232b6759-xxxx-yyyy-zzzz-757472230e6c/resourceGroups/testrg/providers/Microsoft.Compute/disks/testvm_OsDisk_1_165411276cbe459097929b981eb9b3e2?api-version=2023-04-02
+01:19 - INFO      - https://management.azure.com/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/testrg/providers/Microsoft.Compute/disks/testvm_OsDisk_1_165411276cbe459097929b981eb9b3e2?api-version=2023-04-02
 01:19 - INFO      - OS Disk updated
 01:19 - INFO      - Setting new VM Size from Standard_E4s_v3 to Standard_E4bds_v5 and Controller to NVMe
 01:19 - INFO      - Updating VM testvm

@@ -79,6 +79,9 @@ The following resources are available in all Azure Regions supported by Azure Co
 
 The following maximum resources are available to a container group deployed using [Confidential Containers](container-instances-confidential-overview.md). These maximums are hard limits and can't be increased.
 
+> [!IMPORTANT]
+> If you're encountering deployment failures when creating container groups with more than 4 vCPUs and 16 GB of memory, it may be due to regional capacity limits. To resolve this, you can request a quota increase to enable additional capacity for your workloads. In the meantime, consider deploying to another region, where additional capacity may be more available.
+
 | Max CPU | Max Memory (GB) | Virtual network Max CPU | Virtual network Max Memory (GB) | Storage (GB) | 
 | :---: | :---: | :----: | :-----: | :-------: |
 | 31 | 180 | 32 | 180 | 50 | 

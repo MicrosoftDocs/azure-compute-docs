@@ -54,6 +54,7 @@ Gen1 to Trusted launch VM upgrade is **NOT** supported if Gen1 VM is configured 
 - Review [known issues](#known-issues) and [roll-back steps](#roll-back) before executing Trusted launch upgrade.
 - You won't be able to extend Windows OS disk system volume after `MBR to GPT conversion` as part of upgrade. Recommendation is to extend system volume for future before upgrading to Trusted launch.
 - *Windows OS disk volume* should be defragmented using command `Defrag C: /U /V`. Defragmentation of OS volume reduces the risk of MBR (Master boot record) to GPT (GUID partition table) conversion failure by freeing up end of partitions. Refer to [defrag](/windows-server/administration/windows-commands/defrag).
+- *For Linux VMs*, validate secure boot compatibility using `SBInfo` tool. Refer to [Linux Trusted launch secure boot validation](trusted-launch-faq.md#linux-trusted-launch-virtual-machines) for distribution-based `SBInfo` installation commands.
 
 ## Update Guest OS volume
 
@@ -359,10 +360,10 @@ Use the Backup or Restore point of Gen1 VM taken before upgrade and restore enti
 
 Post upgrade of Azure Gen1 VM to Trusted launch, the image reference still reflects source as Gen1 OS image. Image reference not updated is a known limitation.
 
-This limitation does not impacts the VM or hosted application functionality post Trusted launch upgrade. Following VM operations are impacted due to disconnect between image reference and running OS:
+This limitation doesn't impacts the VM or hosted application functionality post Trusted launch upgrade. Following VM operations are impacted due to disconnect between image reference and running OS:
 
 - **Guest patching**: For *Server* OS, [Automatic guest patching](automatic-vm-guest-patching.md) installs updates based on the image reference of VM.
-- **Reimage**: Reimaging VM using Gen1 image reference post Trusted launch upgrade will cause VM boot failure.
+- **Reimage**: Reimaging VM using Gen1 image reference post Trusted launch upgrade causes VM boot failure.
 
 ### Windows 11 boot fails after Trusted launch upgrade of Windows 10 VM
 
@@ -385,7 +386,7 @@ This error occurs for one of following reason:
 - `Optimize Drives` service isn't running or unable to communicate successfully. Service startup type should be set to `Manual`.
 - System volume disk is already configured with four MBR partitions (maximum supported by MBR disk layout). You need to delete one of the partitions to make room for EFI system partition.
     1. Run `ReAgentc /info` to identify partition actively used by Recovery. Example: `Windows RE location:       \\?\GLOBALROOT\device\harddisk0\partition4\Recovery\WindowsRE`
-    2. Run PowerShell cmdlet `Get-Partition -DiskNumber 0` to identify current partitions which are configured.
+    2. Run PowerShell cmdlet `Get-Partition -DiskNumber 0` to identify current partitions that are configured.
     3. Run PowerShell cmdlet `Remove-Partition -DiskNumber 0 -PartitionNumber X` to remove any extra Recovery partition not actively used by Recovery service as identified in Step 1.
 
 ### [Windows] MBR to GPT failed to update ReAgent.xml

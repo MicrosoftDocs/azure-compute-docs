@@ -8,14 +8,11 @@ ms.topic: tutorial
 ms.date: 04/06/2025
 ms.author: jushiman
 ms.reviewer: mattmcinnes
-ms.custom: mvc, devx-track-azurecli, linux-related-content, innovation-engine
+ms.custom: mvc, devx-track-azurecli, linux-related-content
 # Customer intent: "As a system administrator, I want to automate the customization of Linux VMs on their first boot using cloud-init, so that I can ensure consistent and efficient deployment of applications like NGINX and Node.js without manual intervention."
 ---
 
 # Tutorial - How to use cloud-init to customize a Linux virtual machine in Azure on first boot
-
-> [!div class="nextstepaction"]
-> [Deploy and Explore](https://go.microsoft.com/fwlink/?linkid=2321936)
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Flexible scale sets
 

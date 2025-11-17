@@ -5,7 +5,7 @@ metadata:
   description: Enable Private Link for your managed disks with Azure portal. This allows you to securely export and import disks within your virtual network.
   author: roygara
   ms.author: rogarana
-  ms.date: 04/30/2025
+  ms.date: 11/04/2025
   ms.service: azure-disk-storage
   ms.topic: how-to
   ms.custom:

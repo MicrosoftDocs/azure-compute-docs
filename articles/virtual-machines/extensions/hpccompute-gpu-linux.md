@@ -27,6 +27,8 @@ Instructions on manual installation of the drivers and the current supported ver
 > The GPU driver extensions do not automatically update the driver after the extension is installed. If you need to move to a newer driver version then either manually download and install the driver or remove and add the extension again.
 >
 
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
+
 ## Prerequisites
 
 ### Operating system
@@ -36,7 +38,7 @@ This extension supports the following OS distros, depending on driver support fo
 |Driver | Linux: Ubuntu| Linux: Red Hat Enterprise Linux |
 |:---|:---|:---|
 |CUDA | 20.04 LTS | 7.9 |
-|GRID | 22.04 LTS | 8.2 |
+|GRID | 22.04 LTS <br> 24.04 LTS| 8.2 |
 
 > [!NOTE]
 > The latest supported CUDA drivers for NC-series VMs are currently 470.82.01. Later driver versions aren't supported on the K80 cards in NC. While the extension is being updated with this end of support for NC, install CUDA drivers manually for K80 cards on the NC-series.

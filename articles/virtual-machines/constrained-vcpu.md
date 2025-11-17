@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 03/18/2025
+ms.date: 10/16/2025
 ms.author: mattmcinnes
 ms.reviewer: mimckitt, archatc
 # Customer intent: "As a database administrator, I want to select virtual machine sizes with constrained vCPU counts, so that I can optimize licensing costs while maintaining necessary performance for my database workloads."
@@ -297,6 +297,43 @@ At this time, the VM pricing, remains the same as the original size. For more in
 | Standard_DS13-2_v2      | 2    | DS13_v2    |
 | Standard_DS14-8_v2      | 8    | DS14_v2    |
 | Standard_DS14-4_v2      | 4    | DS14_v2    |
+
+
+#### [H-family sizes](#tab/family-H)
+
+| Size name               | Active vCPUs | Base size |
+|-------------------------|------|------------|
+| Standard_HB368rs_v5     | 368  | HB368rs_v5 | 
+| Standard_HB368_336rsv5  | 336  | HB368rs_v5 |
+| Standard_HB368_288rsv5  | 288  | HB368rs_v5 |
+| Standard_HB368-240rs_v5 | 240  | HB368rs_v5 |
+| Standard_HB368-192rs_v5 | 192  | HB368rs_v5 |
+| Standard_HB368-144rs_v5 | 144  | HB368rs_v5 |
+| Standard_HB368-96rs_v5  | 96   | HB368rs_v5 |
+| Standard_HB368-48rs_v5  | 48   | HB368rs_v5 |
+| Standard_HB176rs_v4     | 176  | HB176rs_v4 | 
+| Standard_HB176-144rs_v4 | 144  | HB176rs_v4 | 
+| Standard_HB176-96rs_v4  | 96   | HB176rs_v4 | 
+| Standard_HB176-48rs_v4  | 48   | HB176rs_v4 | 
+| Standard_HB176-24rs_v4  | 24   | HB176rs_v4 | 
+| Standard_HX176rs        | 176  | HX176rs    |
+| Standard_HX176-144rs    | 144  | HX176rs    |
+| Standard_HX176-96rs     | 96   | HX176rs    |
+| Standard_HX176-48rs     | 48   | HX176rs    |
+| Standard_HX176-24rs     | 24   | HX176rs    |
+| Standard_HB120rs_v3     | 120  | HB120rs_v3 |
+| Standard_HB120-96rs_v3  | 96   | HB120rs_v3 |
+| Standard_HB120-64rs_v3  | 64   | HB120rs_v3 |
+| Standard_HB120-32rs_v3  | 32   | HB120rs_v3 |
+| Standard_HB120-16rs_v3  | 16   | HB120rs_v3 |
+| Standard_HB120rs_v2     | 120  | HB120rs_v2 |
+| Standard_HB120-96rs_v2  | 96   | HB120rs_v2 |
+| Standard_HB120-64rs_v2  | 64   | HB120rs_v2 |
+| Standard_HB120-32rs_v2  | 32   | HB120rs_v2 |
+| Standard_HB120-16rs_v2  | 16   | HB120rs_v2 |
+| Standard_HC44rs         | 44   | HC44rs     | 
+| Standard_HC44-16rs      | 16   | HC44rs     | 
+| Standard_HC44-32rs      | 32   | HC44rs     |
 
 ---
 

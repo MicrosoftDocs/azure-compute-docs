@@ -77,6 +77,11 @@ sections:
           If you increase capacity to 18, then 3 new VMs are created. Each time, the VM instance ID is incremented from the previous highest value (for example, 20, 21, 22). VMs are balanced across fault domains.
 
       - question: |
+          What happens when a VM in a scale set becomes unhealthy?
+        answer: |
+          Azure automatically replaces unhealthy instances based on health probe signals or application health extensions.
+
+      - question: |
           When I'm using multiple extensions in a scale set, can I enforce an execution sequence?
         answer: |
           Yes, you can use scale set [extension sequencing](virtual-machine-scale-sets-extension-sequencing.md).
@@ -632,7 +637,10 @@ sections:
           Can I configure a scale set to work with multiple application gateways?
         answer: |
           Yes. You can add the resource IDs for multiple application gateway backend address pools to the `applicationGatewayBackendAddressPools` list in the `ipConfigurations` section of your scale set network profile.
-
+      - question: |
+          Can I attach multiple NICs or custom IP configurations to VMs in a scale set?
+        answer: |
+          Yes. Virtual Machine Scale Sets supports multiple NICs and custom IP configurations per instance when using the flexible orchestration mode. This enables complex network topologies and service isolation.
   - name: Scale
     questions:
       - question: |

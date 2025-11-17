@@ -206,6 +206,8 @@
         href: service-fabric-reliable-services-reliable-concurrent-queue.md
       - name: Reliable Collection serialization
         href: service-fabric-reliable-services-reliable-collections-serialization.md
+      - name: Replica soft delete
+        href: service-fabric-replica-soft-delete.md
     - name: Reliable Actors
       items:
       - name: Reliable Actors overview

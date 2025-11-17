@@ -18,6 +18,8 @@ Extensions are small applications that provide post-deployment configuration and
 > [!NOTE]
 > Extensions are only supported on [Endorsed Linux distributions on Azure](../linux/endorsed-distros.md).
 
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
+
 ## View available extensions
 
 You can view available extensions for a VM in the Azure portal.

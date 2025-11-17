@@ -32,7 +32,7 @@ New Relic is another Application Performance Management tool that integrates wel
 
 ## Elasticsearch 
 
-Elasticsearch offers a powerful and flexible platform for observing and monitoring your Service Fabric infrastructure. By leveraging Elasticsearch's robust search and analytics engine, you can ingest, store, and analyze diverse telemetry data, including logs, metrics, and traces, from your Service Fabric applications and the underlying cluster. This comprehensive approach allows for deep insights into the health, performance, and operational state of your services. Refer to these [instructions](https://learn.microsoft.com/azure/partner-solutions/elastic/create?pivots=elastic-search#logs--metrics-tab-optional) on how to establish your Elastic deployment and begin forwarding your Service Fabric and all other Azure resource logs for evaluation and insights.
+Elasticsearch offers a powerful and flexible platform for observing and monitoring your Service Fabric infrastructure. By leveraging Elasticsearch's robust search and analytics engine, you can ingest, store, and analyze diverse telemetry data, including logs, metrics, and traces, from your Service Fabric applications and the underlying cluster. This comprehensive approach allows for deep insights into the health, performance, and operational state of your services. Refer to these [instructions](/azure/partner-solutions/elastic/create?pivots=elastic-search#logs--metrics-tab-optional) on how to establish your Elastic deployment and begin forwarding your Service Fabric and all other Azure resource logs for evaluation and insights.
 
 ## Humio
 

@@ -19,6 +19,8 @@ The Custom Script Extension integrates with Azure Resource Manager templates. Yo
 
 This article describes how to use the Custom Script Extension by using the Azure PowerShell module and Azure Resource Manager templates. It also provides troubleshooting steps for Windows systems.
 
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
+
 ## Prerequisites
 
 > [!NOTE]  

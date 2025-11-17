@@ -54,3 +54,6 @@ To begin using Big Containers, follow these steps.
 2. Once your quota has been allocated, you can deploy your container groups through Azure portal, Azure CLI, PowerShell, ARM template, or any other medium that allows you to connect to your container groups in Azure. 
 
 To learn more about Azure Container Instances, see [Serverless containers in Azure - Azure Container Instances | Microsoft Learn](./container-instances-overview.md)
+
+[azure-support]: https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest 
+

@@ -20,6 +20,8 @@ This article describes how to run the VMAccess Extension from the Azure PowerShe
 > [!NOTE]
 > If you use the VMAccess extension to reset the password of your VM after you install the Microsoft Entra Login extension, rerun the Microsoft Entra Login extension to re-enable Microsoft Entra Login for your VM.
 
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
+
 ## Prerequisites
 
 ### Supported Windows versions

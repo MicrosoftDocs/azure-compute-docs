@@ -656,9 +656,12 @@
             href: hbv4-performance.md
         - name: HBv5 series
           items:
+          - name: Overview
+            href: hbv5-series-overview.md
           - name: HBv5 series
             href: ./sizes/high-performance-compute/hbv5-series.md
-         
+          - name: Performance
+            href: hbv5-performance.md
       - name: HC family
         items:
         - name: HC series
@@ -775,6 +778,8 @@
       href: quotas.md
     - name: Constrained vCPUs
       href: constrained-vcpu.md
+    - name: VM Customization
+      href: vm-customization.md
     - name: Azure VMs with no temp disk
       href: azure-vms-no-temp-disk.yml
     - name: Azure VM sizes naming conventions
@@ -1100,7 +1105,7 @@
       href: ./linux/spot-template.md
     - name: Spot Priority Mix
       href: /azure/virtual-machine-scale-sets/spot-priority-mix?toc=/azure/virtual-machines/toc.json
-    - name: Spot Placement Score (Preview)
+    - name: Spot Placement Score
       href: /azure/virtual-machine-scale-sets/spot-placement-score?toc=/azure/virtual-machines/toc.json
     - name: VM size recommendation
       href: /azure/virtual-machine-scale-sets/spot-vm-size-recommendation?toc=/azure/virtual-machines/toc.json
@@ -1150,6 +1155,8 @@
     - name: Modify a capacity reservation
       displayName: on-demand capacity reservation
       href: capacity-reservation-modify.md
+    - name: Share a capacity reservation group
+      href: capacity-reservation-group-share.md
     - name: Associate a VM
       displayName: on-demand capacity reservation
       href: capacity-reservation-associate-vm.md
@@ -1700,6 +1707,8 @@
     items:
     - name: Create incremental snapshots
       href: disks-incremental-snapshots.md
+    - name: Instant access snapshots
+      href: disks-instant-access-snapshots.md
     - name: Copy incremental snapshots across regions
       href: disks-copy-incremental-snapshot-across-regions.md
     - name: Azure Disk Backup
@@ -2428,25 +2437,17 @@
     - name: VM size series retirement migration guides
       items:
       - name: General-purpose sizes
-        items:
-        - name: D-series migration guide
-          href: ./migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide.md
-        - name: Ds-series migration guide
-          href: ./migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide.md
-        - name: Dsv2-series migration guide
-          href: ./migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide.md
+        href: ./migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide.md
       - name: Storage-optimized sizes
-        items:
-        - name: Ls-series migration guide
-          href: ./migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide.md
+        href: ./migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide.md
       - name: GPU-accelerated sizes
         items:
         - name: N-series migration guide
           href: ./migration/sizes/n-series-migration.md
         - name: NV-series migration guide
           href: ./migration/sizes/nv-series-migration-guide.md
-    - name: Dedicated Host migration guide
-      href: ./migration/dedicated-host-migration-guide.md
+      - name: Dedicated Host migration guide
+        href: ./migration/dedicated-host-migration-guide.md
 - name: Infrastructure automation
   items:
   - name: Overview
