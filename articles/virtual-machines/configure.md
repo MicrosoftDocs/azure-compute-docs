@@ -70,7 +70,7 @@ For SR-IOV enabled [RDMA capable VMs](sizes-hpc.md#rdma-capable-instances), Ubun
    "offer": "Ubuntu-HPC",
    ```
 
-- Scripts used in the creation of the Ubuntu-HPC VM images from a base Ubuntu Marketplace image are on the [azhpc-images repo](https://github.com/Azure/azhpc-images/tree/master/ubuntu).
+- Scripts used in the creation of the Ubuntu-HPC VM images from a base Ubuntu Marketplace image are on the [azhpc-images repo](https://github.com/Azure/azhpc-images/tree/master).
 
 #### AlmaLinux-HPC VM images
 
@@ -83,7 +83,7 @@ For SR-IOV enabled [RDMA capable VMs](sizes-hpc.md#rdma-capable-instances), Alma
    "offer": "AlmaLinux-HPC",
    ```
 
-- Scripts used in the creation of the AlmaLinux-HPC VM images from a base AlmaLinux Marketplace image are on the [azhpc-images repo](https://github.com/Azure/azhpc-images/tree/master/alma).
+- Scripts used in the creation of the AlmaLinux-HPC VM images from a base AlmaLinux Marketplace image are on the [azhpc-images repo](https://github.com/Azure/azhpc-images/tree/master).
 
 Additionally, more details on what's included in the [Ubuntu-HPC VM images](#ubuntu-hpc-vm-images) and [AlmaLinux-HPC VM images](#almalinux-hpc-vm-images), and how to deploy them are in [Azure HPC VM images](azure-hpc-vm-images.md).
 
