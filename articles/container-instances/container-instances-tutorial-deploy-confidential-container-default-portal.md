@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
-ms.date: 08/29/2024
+ms.date: 11/17/2025
 ms.custom: mvc
 # Customer intent: "As a developer, I want to deploy a confidential container with a development policy to Azure Container Instances, so that I can test and develop applications in a secure environment."
 ---
@@ -16,7 +16,7 @@ ms.custom: mvc
 In this tutorial, you use Azure portal to deploy a confidential container to Azure Container Instances with a development confidential computing enforcement policy. After deploying the container, you can browse to the running application. 
 
 > [!NOTE]
-> When deploying confidential containers on Azure Container Instances via Portal you will only be able to deploy with a development confidential computing enforcement policy. This policy is only recommended for development and test workloads. Logging,  and exec functionality are still available in the container group when using this policiy and software components are not validated. To full attest your container group while running production workloads, it is recommended that you deploy with a custom confidential computing enforcement policy via an Azure Resource Manager template. For more information, see the [tutorial](./container-instances-tutorial-deploy-confidential-containers-cce-arm.md).
+> When deploying confidential containers on Azure Container Instances via Portal, you'll only be able to deploy with a development confidential computing enforcement policy. This policy is only recommended for development and test workloads. Logging,  and exec functionality are still available in the container group when using this policy and software components aren't validated. To full attest your container group while running production workloads, it's recommended that you deploy with a custom confidential computing enforcement policy via an Azure Resource Manager template. For more information, see the [tutorial](./container-instances-tutorial-deploy-confidential-containers-cce-arm.md).
 
 :::image type="content" source="media/container-instances-confidential-containers-tutorials/confidential-containers-aci-hello-world.png" alt-text="Screenshot of a hello-world application deployed via Azure portal, PNG.":::
 
@@ -48,7 +48,7 @@ On the **Basics** page, choose a subscription and enter the following values for
 :::image type="content" source="media/container-instances-confidential-containers-tutorials/confidential-containers-aci-portal-sku.png" alt-text="Screenshot of the SKU selection of a container group, PNG.":::
 
 > [!NOTE]
-> When deploying confidential containers on Azure Container Instances via Portal you will only be able to deploy with a development confidential computing enforcement policy. This policy is only recommended for development and test workloads. Logging,  and exec functionality are still available in the container group when using this policiy and software components are not validated. To full attest your container group while running production workloads, it is recommended that you deploy with a custom confidential computing enforcement policy via an Azure Resource Manager template. For more information, see the [tutorial](./container-instances-tutorial-deploy-confidential-containers-cce-arm.md).
+> When deploying confidential containers on Azure Container Instances via Portal you'll only be able to deploy with a development confidential computing enforcement policy. This policy is only recommended for development and test workloads. Logging,  and exec functionality are still available in the container group when using this policy and software components aren't validated. To full attest your container group while running production workloads, it's recommended that you deploy with a custom confidential computing enforcement policy via an Azure Resource Manager template. For more information, see the [tutorial](./container-instances-tutorial-deploy-confidential-containers-cce-arm.md).
 
 Leave all other settings as their defaults, then select **Review + create**.
 

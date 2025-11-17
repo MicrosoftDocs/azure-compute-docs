@@ -6,7 +6,7 @@ ms.author: jussong
 author: jussong
 ms.service: azure-container-instances
 services: container-instances
-ms.date: 11/10/2024
+ms.date: 11/17/2025
 ms.custom: mvc
 # Customer intent: As a Kubernetes operator, I want to deploy virtual nodes on Azure Container Instances in my AKS cluster using Helm, so that I can efficiently scale my containerized applications and manage workloads dynamically.
 ---
