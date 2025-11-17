@@ -6,7 +6,7 @@ ms.author: tomcassidy
 ms.service: azure-container-instances
 services: container-instances
 ms.topic: troubleshooting
-ms.date: 08/29/2024
+ms.date: 11/17/2025
 ms.custom: support-help-page
 # Customer intent: As a developer using Azure Container Instances, I want to access various support and troubleshooting resources, so that I can resolve issues effectively and enhance my application development experience.
 ---
