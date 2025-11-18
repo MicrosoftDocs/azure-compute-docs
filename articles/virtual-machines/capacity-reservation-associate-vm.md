@@ -579,7 +579,7 @@ Zonally deployed virtual machines can be converted to using an On Demand Capacit
 
 2. Associate existing running zonal deployments to ODCR- You can have the existing running zonal workloads reference the zero-size reservation, which will result in overallocation of the reservation. See [Zonal Virtual Machine](#zonal-virtual-machine)
    
-3. Increase the reserved count to VM count- Once the allocated workloads are successfully associated with the capacity reservation, increase the reservation quantity to match the VM instance count. For more information on how to update the reserved count, see [Capacity reservation modify](/azure/virtual-machines/capacity-reservation-modify?tabs=api1%2Capi2%2Capi3#update-the-number-of-instances-reserved)
+3. Increase the reserved count to the VM count - Once the allocated workloads are successfully associated with the capacity reservation, increase the reservation quantity to match the VM instance count. For more information on how to update the reserved count, see [Capacity reservation modify](/azure/virtual-machines/capacity-reservation-modify?tabs=api1%2Capi2%2Capi3#update-the-number-of-instances-reserved)
 
 After the quantity increase, you should see the VM instances successfully consuming the capacity reservation. See [View VM allocation with the Instance View](#view-vm-allocation-with-the-instance-view)
 
