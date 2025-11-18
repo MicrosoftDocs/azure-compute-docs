@@ -5,7 +5,7 @@ author: bansal-misha
 ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.date: 17/10/2025
+ms.date: 10/17/2025
 ms.author: bansal-misha
 ms.reviewer: mattmcinnes
 ms.custom: include file
