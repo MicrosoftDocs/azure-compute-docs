@@ -722,7 +722,7 @@ To learn more, see the Azure PowerShell commands [Stop-AzVmss](/powershell/modul
 
 #### [Portal](#tab/portal2)
 	
-<!-- no images necessary if steps are straightforward --> 
+To associate the scale set to the capacity reservation group using the Azure portal:
 	
 1. Open the [Azure portal](https://portal.azure.com).
 1. Go to your Virtual Machine Scale Set.
