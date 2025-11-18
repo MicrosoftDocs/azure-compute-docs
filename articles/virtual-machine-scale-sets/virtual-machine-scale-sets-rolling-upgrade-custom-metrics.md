@@ -406,10 +406,11 @@ The custom metrics are in the `message` field of the `ComponentStatus/CustomMetr
 ##### [PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
-az vmss get-instance-view `
-  --resource-group <resource-group-name> `
-  --name <vmss-name> `
-  --instance-id <instance-id>
+Get-AzVmssVM `
+  -ResourceGroupName <resource-group-name> `
+  -VMScaleSetName <vmss-name> `
+  -InstanceId <instance-id> `
+  -InstanceView
 ```
 
 **Sample output (snippet):**
@@ -501,9 +502,10 @@ The custom metrics are in the `message` field of the `ComponentStatus/CustomMetr
 ##### [PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
-az vm get-instance-view `
-  --resource-group <resource-group-name> `
-  --name <vm-name>
+Get-AzVM `
+  -ResourceGroupName <resource-group-name> `
+  -Name <vm-name> `
+  -Status
 ```
 
 **Sample output (snippet):**
