@@ -573,15 +573,15 @@ To learn more, see the Azure PowerShell commands [Stop-AzVM](/powershell/module/
 
 ### Secure existing zonal virtual machine using zero size reservation
 
-Zonally deployed virtual machines can be converted to using an On Demand Capacity Reservation by creating a zero size reservation. The basic process involves 3 steps:
+Zonally deployed virtual machines can be converted to using an On Demand Capacity Reservation without reallocation. The basic process involves 3 steps:
 
-1. Create a desired CRG with zero-sized reservation- You can start by creating a Capacity Reservation Group with zero-size reservation and set the reserved count to zero. For more information on how to create a reservation, see [Create a capacity reservation](/azure/virtual-machines/capacity-reservation-create?tabs=portal1%2Capi1%2Capi2#create-a-capacity-reservation-1).
+1. Create a Capacity Reservation Group and then matching capacity reservations in each target zone with the reserved quantity set to zero. This requires no additional quota or capacity. For more information on how to create a reservation, see [Create a capacity reservation](/azure/virtual-machines/capacity-reservation-create?tabs=portal1%2Capi1%2Capi2#create-a-capacity-reservation-1).
 
-2. Associate existing running zonal deployments to the capacity reservation- You can have the existing running zonal workloads reference the zero-size reservation, which will result in overallocation of the reservation. See [Zonal Virtual Machine](#zonal-virtual-machine)
+2. Associate existing running zonal virtual machine to the capacity reservation. Set the Virtual Machine capacityReservationGroup property to the desired Capacity Reservation Group. When complete, each target capacity reservation will be overallocated. See [Zonal Virtual Machine](#zonal-virtual-machine).
    
-3. Increase the reserved count to the VM count - Once the allocated workloads are successfully associated with the capacity reservation, increase the reservation quantity to match the VM instance count. For more information on how to update the reserved count, see [Capacity reservation modify](/azure/virtual-machines/capacity-reservation-modify?tabs=api1%2Capi2%2Capi3#update-the-number-of-instances-reserved)
+3. Increase the reserved quantity of each capacity reservation (CR) to match the allocated Virtual Machine (VM) count. Since each CR is already overallocated, this step requires no additional quota or capacity. For more information on how to update the reserved count, see [Capacity reservation modify](/azure/virtual-machines/capacity-reservation-modify?tabs=api1%2Capi2%2Capi3#update-the-number-of-instances-reserved).
 
-After the quantity increase, you should see the VM instances successfully consuming the capacity reservation. See [View VM allocation with the Instance View](#view-vm-allocation-with-the-instance-view)
+After the quantity increase, you should see the CR in a fully allocated state with all the virtual machines allocated. See [View VM allocation with the Instance View](#view-vm-allocation-with-the-instance-view).
 
 ## View VM allocation with the Instance View
 
