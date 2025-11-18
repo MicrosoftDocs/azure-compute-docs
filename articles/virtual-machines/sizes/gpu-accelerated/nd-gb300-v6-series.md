@@ -79,9 +79,9 @@ Remote (uncached) storage info for each size
 
 Network interface info for each size
 
-| Size Name | Max Front-end NICs (Qty.) | Max Front-end Bandwidth (Mbps) | Max Scale-up NICS (Qty.) | Max Scale-Up Bandwidth (Gbps)<sup>1</sup> | Max Scale-out NICS (Qty.) | Max Scale-Out Bandwidth (TBps)<sup>2</sup> |
+| Size Name | Max Front-end NICs (Qty.) | Max Front-end Bandwidth (Mbps) | Max Scale-up NICS (Qty.) | Max Scale-Up Bandwidth (TBps)<sup>1</sup> | Max Scale-out NICS (Qty.) | Max Scale-Out Bandwidth (Gbps)<sup>2</sup> |
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_ND128isr_NDR_GB300_v6 | 1 | 160 | 4 | 1.8 | 4 | 800 |
+| Standard_ND128isr_NDR_GB300_v6 | 1 | 160 | 4 | 1.8 | 4 | 4x800 |
 
 #### Networking resources
 - [Virtual networks and virtual machines in Azure](/azure/virtual-network/network-overview)
