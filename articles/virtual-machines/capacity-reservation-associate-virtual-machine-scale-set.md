@@ -703,7 +703,7 @@ Associate the scale set to the capacity reservation group:
 
 #### [PowerShell](#tab/powershell2) 
 
-Associate the scale set to the capacity reservation group:
+To associate the scale set to the capacity reservation group using Azure PowerShell:
 
 ```powershell-interactive
     $vmss =
