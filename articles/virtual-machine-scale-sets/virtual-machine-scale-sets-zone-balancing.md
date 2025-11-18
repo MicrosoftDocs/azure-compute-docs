@@ -44,16 +44,26 @@ Here are some examples of how Virtual Machine Scale Sets determines zone balanci
 
     :::image type="content" source="media/virtual-machine-scale-sets-zone-balancing/zone-balancing-unbalanced.svg" alt-text="Diagram that shows an unbalanced scale set, with one instance in zone 1 and three instances in zones 2 and 3." border="false":::
 
-## Rebalancing
+## Rebalancing of instances
 
-The platform only rebalances instances during scale-out operations.
+Adding zones to a scale set doesn't affect the instances already in the scale set. The platform only attempts to balance the scale set when it adds new instances during scale-out operations, but it doesn't replace existing running instances.
 
-When you scale in, instance removal can temporarily skew distribution. Similarly, if you manually select instances to remove or detach, your scale set might become unbalanced.
+For example, suppose you move from a nonzonal scale set to a zone-spanning scale set that uses three zones. Immediately after adding zones to the scale set, the existing instances remain in a nonzonal state.
 
-If you have a strict requirement for your instances to be evenly spread across zones, perform a small scale‑out operation after a scale‑in to encourage rebalancing, or temporarily set a higher minimum instance count when you make changes.
+You can trigger *rebalancing* by running the following sequence of operations:
+	
+1. **Scale out.** Add more instances by [updating the scale set's capacity](virtual-machine-scale-sets-autoscale-overview.md). The new capacity should be set to the original capacity *plus* the number of new instances.
 
-> [!NOTE]
-> If you use the Flexible orchestration mode and attach, detach, or remove individual VMs, you should check the zones your VMs are in. If the VMs are all in a single zone, your scale set isn't resilient to an outage in that zone.
+    For example, if your scale set currently has 5 nonzonal instances and you would like to scale out so that you have 3 instances in each of 3 zones, you should set the capacity to 14 (5 + (3 * 3)).
+
+    The scale set attempts to create the new instances in the zones configured on the scale set.
+
+1. **Scale in.** When the new instances are ready, scale in your scale set to remove the old instances. This process leaves your scale set in a balanced state.
+
+    You can either manually delete specific instances, or scale in by reducing the scale set capacity. When scaling in via reducing scale set capacity, the platform always prefers removing the nonzonal instances, then follows the scale set's [scale-in policy](virtual-machine-scale-sets-scale-in-policy.md).
+
+    > [!NOTE]
+    > If you use the Flexible orchestration mode and attach, detach, or remove individual VMs, you should check the zones your VMs are in. If the VMs are all in a single zone, your scale set isn't resilient to an outage in that zone.
 
 ## VM extensions
 
