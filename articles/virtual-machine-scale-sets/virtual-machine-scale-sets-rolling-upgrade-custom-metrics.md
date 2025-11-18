@@ -372,17 +372,9 @@ After configuring the application health extension to return custom metrics, you
 > [!NOTE]
 > The method for querying custom metrics differs between Uniform and Flexible orchestration modes. Uniform mode uses `az vmss get-instance-view`, while Flexible mode requires querying individual VMs using `az vm get-instance-view`.
 
-#### Query custom metrics data
+#### For Uniform Orchestration Mode
 
-The custom metrics are exposed through the Application Health Extension's instance view.
-
-##### For Uniform Orchestration Mode
-
-**Get custom metrics for a specific instance:**
-
-Use the `az vmss get-instance-view` command and specify the instance ID of the instance you want to get information from.
-
-#### [CLI](#tab/azure-cli)
+##### [CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 az vmss get-instance-view \
@@ -411,7 +403,7 @@ az vmss get-instance-view \
 
 The custom metrics are in the `message` field of the `ComponentStatus/CustomMetrics/succeeded` substatus.
 
-#### [PowerShell](#tab/azure-powershell)
+##### [PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 az vmss get-instance-view `
@@ -474,13 +466,13 @@ The custom metrics are in the `message` field of the `ComponentStatus/CustomMetr
 
 ---
 
-##### For Flexible Orchestration Mode
+#### For Flexible Orchestration Mode
 
 In Flexible orchestration mode, instances are individual VMs. Use the `az vm get-instance-view` command and specify the VM name.
 
 **Get custom metrics for a specific VM:**
 
-#### [CLI](#tab/azure-cli-flex)
+##### [CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 az vm get-instance-view \
@@ -508,7 +500,7 @@ az vm get-instance-view \
 
 The custom metrics are in the `message` field of the `ComponentStatus/CustomMetrics/succeeded` substatus.
 
-#### [PowerShell](#tab/azure-powershell-flex)
+##### [PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 az vm get-instance-view `
@@ -536,7 +528,7 @@ az vm get-instance-view `
 
 The custom metrics are in the `message` field of the `ComponentStatus/CustomMetrics/succeeded` substatus.
 
-##### [REST](#tab/rest-api-flex)
+##### [REST](#tab/rest-api)
 
 ```http
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/instanceView?api-version=2023-09-01
@@ -566,6 +558,7 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 The custom metrics are in the `message` field of the `ComponentStatus/CustomMetrics/succeeded` substatus.
 
+---
 
 #### Troubleshooting custom metrics
 
