@@ -426,3 +426,8 @@ sections:
           If the VM moved to new hardware, these drives unmount, and new unmounted disks are presented to the operating system when it comes back up. If the VM didn't change hardware, the temp NVMe disks might still be present. The preceding script for mounting the drives checks for unmounted drives before it tries to mount. 
           
           It's a best practice to run the mounting script automatically every time the VM starts and delay any other startup scripts that need the drives until after the mounting script finishes running.
+
+      - question: |
+          Why are my temporary disk write speeds different than published specifications?
+        answer: |
+          Temporary disk performance is influenced by several factors, such as block size, workload read/write patterns, queue depth (QD). Published performance specifications represent best-case scenarios, based on 4k random block sizes with multiple workers (≥8) at QD≥64 per worker for peak IOPS, and large sequential block sizes (≥128k) for maximum throughput. Write performance may also be affected by data patterns, SSD state (overprovisioned capacity, percent of LBA written), and background activities such as garbage collection. Performance figures assume the device is in a fresh-out-of-box (FOB) state, which provides the highest speeds. Once the disk reaches steady state after SNIA-standard preconditioning specifications, write performance may be lower than FOB levels.
