@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 06/06/2024
+ms.date: 11/17/2025
 ms.author: mattmcinnes
 # Customer intent: "As a cloud architect, I want to review the specifications and use cases of the Eb family VM sizes, so that I can select the right memory-optimized virtual machines for my workloads."
 ---
@@ -21,6 +21,22 @@ ms.author: mattmcinnes
 [!INCLUDE [eb-family-workloads](./includes/e-family-workloads.md)]
 
 ## Series in family
+
+### Ebsv6 and Ebdsv6-series
+#### [Ebsv6-series](#tab/ebsv6)
+[!INCLUDE [ebsv6-series-summary](./includes/ebsv6-series-summary.md)]
+
+[View the full Ebsv6-series page](./ebsv6-series.md).
+
+[!INCLUDE [ebsv6-series-specs](./includes/ebsv6-series-specs.md)]
+
+#### [Ebdsv6-series](#tab/ebdsv6)
+[!INCLUDE [ebdsv6-series-summary](./includes/ebdsv6-series-summary.md)]
+
+[View the full Ebdsv6-series page](./ebdsv6-series.md).
+
+[!INCLUDE [ebdsv6-series-specs](./includes/ebdsv6-series-specs.md)]
+---
 
 ### Ebdsv5 and Ebsv5-series
 [!INCLUDE [ebdsv5-ebsv5-series-summary](./includes/ebdsv5-ebsv5-series-summary.md)]
