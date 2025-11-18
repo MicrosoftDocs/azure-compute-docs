@@ -462,8 +462,6 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 The custom metrics are in the `message` field of the `ComponentStatus/CustomMetrics/succeeded` substatus.
 
-```
-
 ---
 
 #### For Flexible Orchestration Mode
