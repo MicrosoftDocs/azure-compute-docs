@@ -424,6 +424,10 @@
         - name: Overview
           displayName: Eb-series, sizes, size, vm size
           href: ./sizes/memory-optimized/eb-family.md
+        - name: Ebsv6 series
+          href: ./sizes/memory-optimized/ebsv6-series.md
+        - name: Ebdsv6 series
+          href: ./sizes/memory-optimized/ebdsv6-series.md
         - name: Ebdsv5 and Ebsv5 series
           href: ebdsv5-ebsv5-series.md
       - name: EC family (confidential)
@@ -544,11 +548,13 @@
         - name: ND series
           href: ./sizes/gpu-accelerated/nd-series.md
         - name: ND series retirement
-          href: nd-series-retirement.md
+          href: ./sizes/retirement/nd-series-retirement.md
         - name: NDv2 series
           href: ./sizes/gpu-accelerated/ndv2-series.md
         - name: ND-GB200-v6 series
           href: ./sizes/gpu-accelerated/nd-gb200-v6-series.md
+        - name: ND-GB300-v6 series
+          href: ./sizes/gpu-accelerated/nd-gb300-v6-series.md
         - name: ND-H100-v5 series
           href: ./sizes/gpu-accelerated/ndh100v5-series.md
         - name: ND-H200-v5 series
@@ -570,7 +576,7 @@
         - name: NV series
           href: ./sizes/gpu-accelerated/nv-series.md
         - name: NV series retirement
-          href: nv-series-retirement.md
+          href: ./sizes/retirement/nv-series-retirement.md
         - name: NV series migration guide
           href: nv-series-migration-guide.md
         - name: NVv3 series
@@ -717,7 +723,7 @@
     - name: Previous generation and retired sizes
       items:
       - name: Overview
-        href: ./sizes/retirement-overview.md
+        href: ./sizes/retirement/retirement-overview.md
       - name: Previous-gen sizes list
         href: ./sizes/previous-gen-sizes-list.md
       - name: Previous-gen size pages
@@ -725,7 +731,7 @@
         - name: A-family
           items:
           - name: Av1-series retirement
-            href: av1-series-retirement.md
+            href: ./sizes/retirement/av1-series-retirement.md
         - name: B-family
           items:
           - name: B series V1
@@ -755,7 +761,7 @@
           - name: DCsv2 series
             href: ./sizes/retirement/dcsv2-series-retirement.md
       - name: Retired sizes
-        href: ./sizes/retired-sizes-list.md
+        href: ./sizes/retirement/retired-sizes-list.md
     - name: Generation 2 VMs
       displayName: Gen2, generation, gen1
       href: generation-2.md
@@ -1082,7 +1088,7 @@
       href: dedicated-host-gpu-optimized-skus.md
     - name: Dedicated Host SKU Retirement
       displayName: dedicated, dedicated host, retirement
-      href: dedicated-host-retirement.md
+      href: ./sizes/retirement/dedicated-host-retirement.md
     - name: Dedicated Host SKU Migration
       displayName: dedicated, dedicated host, retirement, migration
       href: ./sizes/migration-guides/dedicated-host-migration-guide.md
@@ -1670,6 +1676,8 @@
       href: disks-performance-options.md
     - name: Increase performance of premium SSD and standard SSD/HDDs
       href: disks-enable-performance.md
+    - name: Torn write prevention with managed disks
+      href: disks-torn-write-prevention.md
     - name: Virtual machine and disk performance
       displayName: Performance, cost, perf, disks, disk
       href: disks-performance.md

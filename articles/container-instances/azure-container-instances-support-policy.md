@@ -6,7 +6,7 @@ author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
 ms.topic: conceptual
-ms.date: 04/16/2025
+ms.date: 11/17/2025
 ---
 # Support policy for Azure Container Instances
 

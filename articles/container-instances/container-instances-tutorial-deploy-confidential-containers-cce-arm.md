@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
-ms.date: 08/29/2024
+ms.date: 11/17/2025
 ms.custom: mvc, devx-track-arm-template
 # Customer intent: "As a developer deploying container applications, I want to create an ARM template for confidential container instances, so that I can ensure data protection and compliance through hardware-based attestation and in-memory encryption."
 ---

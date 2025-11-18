@@ -7,7 +7,7 @@ ms.service: azure-container-instances
 ms.custom: devx-track-azurecli
 services: container-instances
 ms.topic: how-to
-ms.date: 08/29/2024
+ms.date: 11/17/2025
 # Customer intent: "As a cloud developer, I want to configure Azure Container Instances to use a static outbound IP address for ingress and egress so that I can streamline firewall management and simplify client access for my containerized applications."
 ---
 
@@ -66,7 +66,7 @@ For use in a later step, get the private IP address of the container group by ru
 
 In the following sections, use the Azure CLI to deploy an Azure firewall in the virtual network. For background, see [Tutorial: Deploy and configure Azure Firewall by using the Azure portal](/azure/firewall/deploy-cli).
 
-First, use the [az network vnet subnet create](az-network-vnet-subnet-create) to add a subnet named `AzureFirewallSubnet` for the firewall. `AzureFirewallSubnet` is the *required* name of this subnet.
+First, use the [az network vnet subnet create](az-network-vnet-subnet-create) to add a subnet named `AzureFirewallSubnet` for the firewall. The name `AzureFirewallSubnet` is *required* for this subnet.
 
 :::code language="azurecli" source="~/azure_cli_scripts/container-instances/egress-ip-address.sh" id="subnet":::
 
@@ -94,27 +94,27 @@ Get the firewall's public IP address by using the [az network public-ip show](az
 
 ## Define a user-defined route on the Container Instances subnet
 
-To divert traffic to the Azure firewall, define a use-defined route on the Container Instances subnet. For more information, see [Route network traffic](/azure/virtual-network/tutorial-create-route-table-cli).
+To divert traffic to the Azure firewall, define a user-defined route on the Container Instances subnet. For more information, see [Route network traffic](/azure/virtual-network/tutorial-create-route-table-cli).
 
-### Create route table
+### Create a route table
 
 First, run the following [az network route-table create](az-network-route-table-create) command to create the route table. Create the route table in the same region as the virtual network.
 
 :::code language="azurecli" source="~/azure_cli_scripts/container-instances/egress-ip-address.sh" id="routetable":::
 
-### Create route
+### Create a route
 
 Run [az network-route-table route create](az-network-route-table-route-create) to create a route in the route table. To route traffic to the firewall, set the next hop type to `VirtualAppliance`. Pass the firewall's private IP address as the next hop address.
 
 :::code language="azurecli" source="~/azure_cli_scripts/container-instances/egress-ip-address.sh" id="createroute":::
 
-### Associate a route table tothe  Container Instances subnet
+### Associate a route table to the Container Instances subnet
 
 Run the [az network vnet subnet update](az-network-vnet-subnet-update) command to associate the route table with the subnet delegated to Container Instances.
 
 :::code language="azurecli" source="~/azure_cli_scripts/container-instances/egress-ip-address.sh" id="associateroute":::
 
-## Configure rules on firewall
+## Configure rules on the firewall
 
 By default, Azure Firewall denies (blocks) inbound and outbound traffic.
 
@@ -123,7 +123,7 @@ By default, Azure Firewall denies (blocks) inbound and outbound traffic.
 
 ### Configure a NAT rule on the firewall to a Container Instances subnet
 
-Create a [NAT rule](/azure/firewall/rule-processing) on the firewall to translate and filter inbound internet traffic to the application container you started previously in the network. For details, see [Filter inbound internet traffic with Azure Firewall DNAT](/azure/firewall/tutorial-firewall-dnat)
+Create a [NAT rule](/azure/firewall/rule-processing) on the firewall to translate and filter inbound internet traffic to the application container that you started previously in the network. For details, see [Filter inbound internet traffic with Azure Firewall DNAT](/azure/firewall/tutorial-firewall-dnat).
 
 Create a NAT rule and collection by using the [az network firewall nat-rule create](az-network-firewall-nat-rule-create) command:
 
@@ -143,7 +143,7 @@ The following sections verify that the subnet delegated to Container Instances i
 
 ### Test ingress to a container group
 
-Test inbound access to the `appcontainer` running in the virtual network by browsing to the firewall's public IP address. Previously, you stored the public IP address in variable $FW_PUBLIC_IP:
+Test inbound access to `appcontainer` running in the virtual network by browsing to the firewall's public IP address. Previously, you stored the public IP address in the variable `$FW_PUBLIC_IP`:
 
 :::code language="azurecli" source="~/azure_cli_scripts/container-instances/egress-ip-address.sh" id="echo":::
 
@@ -155,7 +155,7 @@ Output is similar to:
 
 If the NAT rule on the firewall is configured properly, you see the following screenshot when you enter the firewall's public IP address in your browser.
 
-:::image type="content" source="media/container-instances-egress-ip-address/aci-ingress-ip-address.png" alt-text="Browse to firewall's public IP address":::
+:::image type="content" source="media/container-instances-egress-ip-address/aci-ingress-ip-address.png" alt-text="Screenshot that shows browsing to the firewall's public IP address":::
 
 ### Test egress from a container group
 
@@ -179,7 +179,7 @@ Output is similar to:
 
 ## Clean up resources
 
-When no longer needed, you can use [az group delete](/cli/azure/group) to remove the resource group and all related resources. The `--no-wait` parameter returns control to the prompt without waiting for the operation to complete. The `--yes` parameter confirms that you want to delete the resources without another prompt to do so.
+When the resources are no longer needed, you can use [az group delete](/cli/azure/group) to remove the resource group and all related resources. The `--no-wait` parameter returns control to the prompt without waiting for the operation to complete. The `--yes` parameter confirms that you want to delete the resources without another prompt to do so.
 
 ```azurecli-interactive
 az group delete --name $resourceGroup --yes --no-wait

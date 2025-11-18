@@ -7,7 +7,7 @@ author: tomvcassidy
 ms.service: azure-container-instances
 ms.custom: devx-track-azurecli
 services: container-instances
-ms.date: 08/29/2024
+ms.date: 11/17/2025
 # Customer intent: "As a cloud developer, I want to enable managed identities in Azure Container Instances so that I can authenticate to other Azure services without handling credentials in my code."
 ---
 
@@ -379,7 +379,7 @@ identity:
 
 ## Managed identity on Windows containers
 
-Managed identity on Windows container groups works differently than Linux container groups. For Windows containers, metadata server (169.254.169.254) isn't available for getting the Microsoft Entra ID token. Customers can follow a different pattern to get the access token in Windows containers. The pattern involves sending a token request to `IDENTITY_ENDPOINT` along with other information, such as the principal ID and the secret. The `IDENTITY_ENDPOINT` and `IDENTITY_HEADER` are injected as environmental variables in your container.
+Managed identity on Windows container groups works differently than Linux container groups. For Windows containers, metadata server (169.254.169.254) isn't available for getting the Microsoft Entra ID token. Customers can follow a different pattern to get the access token in Windows containers. The pattern involves sending a token request to `IDENTITY_ENDPOINT` along with other information, such as the principal ID and the secret. The `IDENTITY_ENDPOINT` and `IDENTITY_HEADER` variables are injected as environmental variables in your container.
 
 ```console
 curl -G -v %IDENTITY_ENDPOINT% --data-urlencode resource=https://vault.azure.net --data-urlencode principalId=<principal id> -H secret:%IDENTITY_HEADER%
