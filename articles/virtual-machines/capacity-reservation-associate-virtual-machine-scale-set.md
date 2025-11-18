@@ -692,7 +692,7 @@ In the request body, include the `capacityReservationGroup` property:
 
 #### [CLI](#tab/cli2)
 
-Associate the scale set to the capacity reservation group:
+To associate the scale set to the capacity reservation group using the Azure CLI:
 
 ```azurecli-interactive
     az vmss update 
