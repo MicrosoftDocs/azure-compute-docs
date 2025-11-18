@@ -14,11 +14,11 @@ ms.author: mattmcinnes
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
-[!INCLUDE [eb-family-summary](./includes/e-family-summary.md)]
+[!INCLUDE [eb-family-summary](./includes/eb-family-summary.md)]
 
 ## Workloads and use cases
 
-[!INCLUDE [eb-family-workloads](./includes/e-family-workloads.md)]
+[!INCLUDE [eb-family-workloads](./includes/eb-family-workloads.md)]
 
 ## Series in family
 
