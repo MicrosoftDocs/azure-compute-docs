@@ -14,7 +14,7 @@ ms.custom: include file
 |---|---|---|
 | Processor      | 2 - 192 vCPUs     | Intel Xeon Platinum 8573C (Emerald Rapids) [x86-64] |
 | Memory         | 16 - 1832 GiB        |    |
-| Local Storage  | 1 - 4 Disks       | 110 - 1760 GiB <br> 37500 - 2400000 IOPS <br>180 - 11520 MBps |
+| Local Storage  | 1 - 6 Disks       | 110 - 1760 GiB <br> 37500 - 3600000 IOPS <br>180 - 17280 MBps |
 | Remote Storage | 8 - 64 Disks        | 8800 - 800000 IOPS <br> 253 - 14000 MBps|
-| Network        | 2 - 8 NICs        | 12500 - 54000 Mbps |
+| Network        | 2 - 8 NICs        | 12500 - 200000 Mbps |
 | Accelerators   | None            |     |
