@@ -658,7 +658,7 @@ To add an existing zonal capacity reservation group to an existing uniform scale
 
 > [!IMPORTANT]
 > The feature to associate an existing zonal VMSS to a CRG without the need of deallocation, is currently in **Preview**. See the [Preview Terms of Use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
-> The feature is currently not available in Azure for Government and Azure in China.
+> The feature is currently not available in Microsoft Azure Government and Microsoft Azure operated by 21Vianet.
 
 #### Important notes on upgrade policies
 
