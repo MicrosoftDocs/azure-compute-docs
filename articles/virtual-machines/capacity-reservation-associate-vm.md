@@ -500,7 +500,7 @@ To learn more, see the Azure PowerShell commands [Stop-AzVM](/powershell/module/
 A virtual machine must be allocated to a capacity reservation.  To add a existing zonal virtual machine to capacity reservation group, update the VM to use a matching capacity reservation group. 
 
 > [!IMPORTANT]
-> The feature to associate an running zonal VM to a CRG without the need of deallocation, is currently in **Preview**. See the [Preview Terms of Use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
+> The feature to associate a running zonal VM to a Capacity Reservation Group without the need of deallocation, is currently in **Preview**. See the [Preview Terms of Use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
 
 1. Follow guidance to create a capacity reservation group and capacity reservation, if necessary. Or increment the quantity of an existing capacity reservation so there's unused reserved capacity.
 1. Update the capacity reservation group property on the VM.
