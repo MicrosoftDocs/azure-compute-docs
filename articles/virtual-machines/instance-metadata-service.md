@@ -285,7 +285,7 @@ When you don't specify a version, you get an error with a list of the newest sup
 
 ### Swagger
 
-A full Swagger definition for IMDS is available at: https://github.com/Azure/azure-rest-api-specs/blob/main/specification/imds/data-plane/readme.md
+A full Swagger definition for IMDS is available at: https://github.com/Azure/azure-rest-api-specs/blob/main/specification/imds/data-plane/InstanceMetadataService/readme.md
 
 ## Regional availability
 
