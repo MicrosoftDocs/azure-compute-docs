@@ -395,7 +395,7 @@ Alternatively, you can remove the *zone* information to create a regional VM and
 
 ## Associate an existing virtual machine
 
-Existing zonal virtual machines can simply be updated with Capacity Reservation Group property without the need of deallocation and it will automatically consume the capacity reservation. Existing regional virtual machines can include similar process but must be reallocated.
+Existing zonal virtual machines can simply be updated with Capacity Reservation Group property without the need of deallocation and it will automatically consume the capacity reservation. Existing regional virtual machines must be reallocated.
 
 ### Regional Virtual Machine
 
