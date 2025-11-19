@@ -189,10 +189,8 @@ Important changes must be made to the Linux OS environment to enable and support
 
 The following distributions support FIPS 140-3 and provide instructions for enabling:
 
-- Ubuntu 22.04 LTS and newer:
-  - Use an [Ubuntu pro client or pro image](https://documentation.ubuntu.com/pro-client/en/docs/howtoguides/enable_fips/).
-- RHEL 9:
-  - Steps to [enable FIPS on RHEL](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/security_hardening/switching-rhel-to-fips-mode_security-hardening).
+- Ubuntu 22.04 LTS and newer: Use an [Ubuntu pro client or pro image](https://documentation.ubuntu.com/pro-client/en/docs/howtoguides/enable_fips/).
+- RHEL 9: Use the steps to [enable FIPS on RHEL](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/security_hardening/switching-rhel-to-fips-mode_security-hardening).
 
 Older versions of these operating systems operate at the FIPS 140-2 level and don't require any of these special considerations.
 
@@ -200,7 +198,8 @@ Older versions of these operating systems operate at the FIPS 140-2 level and do
 
 Minimum [Goal State Agent](https://github.com/Azure/WALinuxAgent/wiki/FAQ#what-does-goal-state-agent-mean-in-waagent---version-output) version: [v2.14.0.1](https://github.com/Azure/WALinuxAgent/releases/tag/v2.14.0.1). To be sure that the goal state is updating, the `AutoUpdate.Enabled` flag should be `y` or commented out entirely so that the default behavior is used.
 
-/etc/waagent.conf:
+`/etc/waagent.conf`:
+
 ```
 AutoUpdate.Enabled=y
 ```
