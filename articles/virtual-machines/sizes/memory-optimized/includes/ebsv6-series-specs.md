@@ -16,5 +16,5 @@ ms.custom: include file
 | Memory         | 16 - 1832 GiB        |    |
 | Local Storage  | None         |  |
 | Remote Storage | 8 - 64 Disks        | 8800 - 800000 IOPS <br> 253 - 14000 MBps|
-| Network        | 2 - 8 NICs        | 12500 - 54000 Mbps |
+| Network        | 2 - 8 NICs        | 12500 - 200000 Mbps |
 | Accelerators   | None            |     |
