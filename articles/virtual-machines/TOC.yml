@@ -424,6 +424,10 @@
         - name: Overview
           displayName: Eb-series, sizes, size, vm size
           href: ./sizes/memory-optimized/eb-family.md
+        - name: Ebsv6 series
+          href: ./sizes/memory-optimized/ebsv6-series.md
+        - name: Ebdsv6 series
+          href: ./sizes/memory-optimized/ebdsv6-series.md
         - name: Ebdsv5 and Ebsv5 series
           href: ebdsv5-ebsv5-series.md
       - name: EC family (confidential)
@@ -549,6 +553,8 @@
           href: ./sizes/gpu-accelerated/ndv2-series.md
         - name: ND-GB200-v6 series
           href: ./sizes/gpu-accelerated/nd-gb200-v6-series.md
+        - name: ND-GB300-v6 series
+          href: ./sizes/gpu-accelerated/nd-gb300-v6-series.md
         - name: ND-H100-v5 series
           href: ./sizes/gpu-accelerated/ndh100v5-series.md
         - name: ND-H200-v5 series
