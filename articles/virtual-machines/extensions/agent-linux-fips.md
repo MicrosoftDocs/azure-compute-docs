@@ -128,7 +128,7 @@ To deploy a new VM with FIPS 140-3 enablement turned on immediately, use an Azur
 > [!NOTE]
 > For the Government cloud, use `https://management.usgovcloudapi.net` instead of `https://management.azure.com`.
 
-While updates to the SDK/CLI are still in progress, you can continue to use AZ CLI to add the property.
+While updates to the SDK/CLI are still in progress, you can continue to use `az cli` to add the property.
 
 ```
 az rest \
