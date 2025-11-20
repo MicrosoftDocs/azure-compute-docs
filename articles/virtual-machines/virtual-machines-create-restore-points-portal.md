@@ -7,7 +7,9 @@ ms.service: azure-virtual-machines
 ms.subservice: recovery
 ms.topic: tutorial
 ms.date: 06/30/2022
-ms.custom: template-tutorial
+ms.custom:
+  - template-tutorial
+  - sfi-image-nochange
 # Customer intent: As a system administrator, I want to create virtual machine restore points through the Azure portal, so that I can protect data and minimize downtime for my organization.
 ---
 

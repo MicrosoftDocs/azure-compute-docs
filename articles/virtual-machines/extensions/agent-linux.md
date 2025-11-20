@@ -6,10 +6,13 @@ ms.service: azure-virtual-machines
 ms.subservice: extensions
 ms.author: gabsta
 author: GabstaMSFT
-ms.custom: GGAL-freshness822, linux-related-content
 ms.collection: linux
 ms.date: 08/18/2025
-# Customer intent: "As a system administrator managing Linux virtual machines, I want to install and configure the Azure Linux VM Agent so that I can automate provisioning, networking, and diagnostics for efficient VM management."
+ms.custom:
+  - GGAL-freshness822
+  - linux-related-content
+  - sfi-ropc-nochange
+# Customer intent: "As a system administrator managing Linux virtual machines, I want to install and configure the Azure Linux VM Agent, so that I can automate provisioning, networking, and diagnostics for efficient VM management."
 ---
 # Azure Linux VM Agent overview
 

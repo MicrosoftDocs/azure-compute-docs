@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 11/14/2024
+ms.custom: sfi-image-nochange
 # Customer intent: As a cloud administrator, I want to monitor a Service Fabric cluster using performance counters and event logs, so that I can ensure optimal performance and quickly troubleshoot any issues.
 ---
 
