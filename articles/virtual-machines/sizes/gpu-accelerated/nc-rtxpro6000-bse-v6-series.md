@@ -11,21 +11,24 @@ ms.reviewer: iamwilliew
 # Customer intent: As a cloud architect, I want to understand the specifications and feature support of the NC_RTXPRO6000BSE_v6 size series, so that I can select the appropriate virtual machine size for my high-performance computing workloads.
 ---
 
-# NC RTXPRO6000BSE v6 series overview
+# NC RTXPRO6000BSE v6 series
 
-The **RTXPRO6000BSE** series is a high-performance addition to the Azure GPU family, designed for demanding Applied AI workloads. These virtual machines (VMs) deliver exceptional compute and graphics capabilities, making them ideal for:
-
-- AI and ML Inference
-- Inference and Fine-Tuning of Small to Medium Language Models
-- Visualization and Virtual Desktop Infrastructure.
+These NC RTX PRO 6000 BSE v6 VMs are powered by NVIDIA RTX PRO 6000 Blackwell Server Edition GPUs, each featuring 96 GB of ultra-fast GDDR7 memory and the latest Blackwell architecture to enable breakthrough performance in multimodal AI, physical AI, and high-fidelity graphics. The VM host is equipped with Intel Granite Rapids CPUs, providing all-core turbo frequency of up to 4.2 GHz to handle demanding pre- and post-processing steps efficiently. These VMs are ideal for converged AI and visual computing workloads, such as:
+- Real-time digital twin and NVIDIA Omniverse simulation.
+- LLM Inference and RAG (Retrieval-Augmented Generation) for models under 70B parameters.
+- High-fidelity 3D rendering, product design, and video streaming.
+- GPU-accelerated desktop virtualization (VDI) with NVIDIA RTX Virtual Workstation.
+- Scientific visualization and High-Performance Computing (HPC) using FP32.
+- Agentic AI application development and deployment.
 
 ## Host specifications
-| Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
+| Part | Quantity <br><sup>(Count Units) | Specs <br><sup>(SKU ID, Performance Units, etc.)  |
 |---|---|---|
-|Processor|16 - 320 vCPUs|4.2 GHz|
-|Memory|32 - 640 GiB|DDR5|
-|Network|2 - 4 NICs|25,000 - 200,000 Mbps|
-|Accelerators|0.25 - 2|NVIDIA RTX Pro 6000 GPU|
+|Processor|upto 320 vCPUs|Intel GNR AP (Granite Rapids-AP) [x86-64], up to 4.2 GHz|
+|Memory|	768 – 1536 GiB |High-speed DDR5|
+|Disk|8 - 16 Disks|250,000 – 500,000 IOPS (Target) / 8,000 – 15,000 MBps (Target)|
+|Network|2 - 4 NICs|200,000 Mbps|
+|Accelerators|1 - 2 GPUs|NVIDIA RTX PRO 6000 BSE (96 GB GDDR7 vRAM per GPU)|
 
 
 ## Feature support
@@ -37,6 +40,8 @@ The **RTXPRO6000BSE** series is a high-performance addition to the Azure GPU fam
 
 |  Size Name | vCPUs (Qty.) | Memory (GB) |
 | --- | --- | --- |
+| Standard_NC8ds_xl_RTXPRO6000BSE_v6|8|32|
+| Standard_NC16ds_xl_RTXPRO6000BSE_v6|16|64|
 | Standard_NC32ds_xl_RTXPRO6000BSE_v6|32|128|
 | Standard_NC64ds_xl_RTXPRO6000BSE_v6|64|256|
 | Standard_NC128ds_xl_RTXPRO6000BSE_v6|128|512|
@@ -47,12 +52,26 @@ The **RTXPRO6000BSE** series is a high-performance addition to the Azure GPU fam
 
 | Size Name | vCPUs (Qty.) | Memory (GB) |
 | --- | --- | --- |
+|Standard_NC8lds_xl_RTXPRO6000BSE_v6|8|32|
 |Standard_NC16lds_xl_RTXPRO6000BSE_v6|16|64|
-|Standard_NC32lds_xl_RTXPRO6000BSE_v6|32|64|
-|Standard_NC64lds_xl_RTXPRO6000BSE_v6|64|128|
-|Standard_NC128lds_xl_RTXPRO6000BSE_v6|128|256|
-|Standard_NC256lds_xl_RTXPRO6000BSE_v6|256|512|
-|Standard_NC320lds_xl_RTXPRO6000BSE_v6|320|640|
+|Standard_NC32lds_xl_RTXPRO6000BSE_v6|32|128|
+|Standard_NC64lds_xl_RTXPRO6000BSE_v6|64|256|
+|Standard_NC128lds_xl_RTXPRO6000BSE_v6|128|512|
+|Standard_NC256lds_xl_RTXPRO6000BSE_v6|256|1024|
+|Standard_NC320lds_xl_RTXPRO6000BSE_v6|320|1280|
+
+### [Memory Optimized Purpose](#tab/sizememoryoptimized)
+
+| Size Name | vCPUs (Qty.) | Memory (GB) |
+| --- | --- | --- |
+|Standard_NC8mds_xl_RTXPRO6000BSE_v6|8|32|
+|Standard_NC16mds_xl_RTXPRO6000BSE_v6|16|64|
+|Standard_NC32mds_xl_RTXPRO6000BSE_v6|32|128|
+|Standard_NC64mds_xl_RTXPRO6000BSE_v6|64|256|
+|Standard_NC128mds_xl_RTXPRO6000BSE_v6|128|512|
+|Standard_NC256mds_xl_RTXPRO6000BSE_v6|256|1024|
+|Standard_NC320mds_xl_RTXPRO6000BSE_v6|320|1280|
+
 
 #### VM Basics resources
 - [Check vCPU quotas](../../../virtual-machines/quotas.md)
@@ -62,17 +81,27 @@ The **RTXPRO6000BSE** series is a high-performance addition to the Azure GPU fam
 
 | Size Name | Max NICs (Qty.) | Max Bandwidth (Mbps) |
 | :--- | :--- | :--- |
+| Standard_NC8ds_xl_RTXPRO6000BSE_v6|4|25000|
+| Standard_NC16ds_xl_RTXPRO6000BSE_v6|4|25000|
 |Standard_NC32ds_xl_RTXPRO6000BSE_v6|6|25000|
 |Standard_NC64ds_xl_RTXPRO6000BSE_v6|6|50000|
 |Standard_NC128ds_xl_RTXPRO6000BSE_v6|8|75000|
 |Standard_NC256ds_xl_RTXPRO6000BSE_v6|8|100000|
 |Standard_NC320ds_xl_RTXPRO6000BSE_v6|8|200000|
+|standard_NC8lds_xl_RTXPRO6000BSE_v6|4|25000|
 | Standard_NC16lds_xl_RTXPRO6000BSE_v6|4|25000|
 | Standard_NC32lds_xl_RTXPRO6000BSE_v6|6|25000|
 | Standard_NC64lds_xl_RTXPRO6000BSE_v6|6|50000|
 | Standard_NC128lds_xl_RTXPRO6000BSE_v6|8|75000|
 | Standard_NC256lds_xl_RTXPRO6000BSE_v6|8|100000|
 | Standard_NC320lds_xl_RTXPRO6000BSE_v6|8|200000|
+| Standard_NC8mds_xl_RTXPRO6000BSE_v6|4|12500|
+| Standard_NC16mds_xl_RTXPRO6000BSE_v6|4|25000|
+| Standard_NC32mds_xl_RTXPRO6000BSE_v6|6|25000|
+| Standard_NC64mds_xl_RTXPRO6000BSE_v6|6|50000|
+| Standard_NC128mds_xl_RTXPRO6000BSE_v6|8|75000|
+| Standard_NC256mds_xl_RTXPRO6000BSE_v6|8|100000|
+| Standard_NC320mds_xl_RTXPRO6000BSE_v6|8|200000|
 
 ---
 
