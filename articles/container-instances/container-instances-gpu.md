@@ -35,6 +35,7 @@ In preview, the following limitations apply when you use GPU resources in contai
 Support will be added for more regions over time.
 
 **Supported OS types**: Linux only.
+
 **Other limitations**: You can't use GPU resources when you deploy a container group into a [virtual network](container-instances-vnet.md).
 
 ## About GPU resources
