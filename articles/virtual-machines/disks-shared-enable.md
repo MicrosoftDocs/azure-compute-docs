@@ -10,12 +10,12 @@ ms.custom: devx-track-azurecli, devx-track-azurepowershell
 # Customer intent: As a cloud engineer, I want to configure shared disks for Azure managed disks, so that I can enable simultaneous access from multiple virtual machines to support clustered applications.
 ---
 
-# Enable shared disk
+# Enable shared disks
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
-This article covers how to enable the shared disks feature for Azure managed disks. Azure shared disks is a new feature for Azure managed disks that enables you to attach a managed disk to multiple virtual machines (VMs) simultaneously. Attaching a managed disk to multiple VMs allows you to either deploy new or migrate existing clustered applications to Azure. 
-
+This article explains how to enable the shared disks feature for Azure managed disks. With Azure shared disks, you can attach a managed disk to multiple virtual machines (VMs) simultaneously, enabling the deployment or migration of clustered applications to Azure.
+ 
 If you are looking for conceptual information on managed disks that have shared disks enabled, see [Azure shared disks](disks-shared.md).
 
 ## Prerequisites
@@ -57,7 +57,7 @@ To deploy a managed disk with the shared disk feature enabled, use the new prope
 1. Select **+ Create** to create a new managed disk.
 1. Fill in the details and select an appropriate region, then select **Change size**.
 
-    :::image type="content" source="media/disks-shared-enable/create-shared-disk-basics-pane.png" alt-text="Screenshot of the create a managed disk pane, change size highlighted.." lightbox="media/disks-shared-enable/create-shared-disk-basics-pane.png":::
+    :::image type="content" source="media/disks-shared-enable/create-shared-disk-basics-pane.png" alt-text="Screenshot of the Azure portal showing the create a managed disk pane with the change size option highlighted." lightbox="media/disks-shared-enable/create-shared-disk-basics-pane.png":::
 
 1. Select the premium SSD size and SKU that you want and select **OK**.
 

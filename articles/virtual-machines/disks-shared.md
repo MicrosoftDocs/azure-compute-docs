@@ -10,11 +10,11 @@ ms.author: rogarana
 # Customer intent: As a cloud architect, I want to understand how to share Azure managed disks across multiple VMs, so that I can effectively deploy and manage clustered applications in the cloud.
 ---
 
-# Share an Azure managed disk
+# Share an Azure managed disk across VMs
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
-Azure shared disks is a feature for Azure managed disks that allow you to attach a managed disk to multiple virtual machines (VMs) simultaneously. Attaching a managed disk to multiple VMs allows you to either deploy new or migrate existing clustered applications to Azure.
+Azure shared disks is a feature for Azure managed disks that allows you to attach a managed disk to multiple virtual machines (VMs) simultaneously. This capability enables you to deploy new or migrate existing clustered applications to Azure without modifying your architecture. Shared disks ensure high availability for clustered applications, as other VMs in the cluster retain full access to the disk if one VM fails.
 
 Shared disks require a cluster manager, like Windows Server Failover Cluster (WSFC), or Pacemaker, that handles cluster node communication and write locking. Shared managed disks don't natively offer a fully managed file system that can be accessed using SMB/NFS.
 
@@ -58,9 +58,9 @@ Some popular applications running on WSFC include:
 
 - [Create an FCI with Azure shared disks (SQL Server on Azure VMs)](/azure/azure-sql/virtual-machines/windows/failover-cluster-instance-azure-shared-disks-manually-configure)
     - [Migrate your failover cluster instance to SQL Server on Azure VMs with shared disks](/azure/azure-sql/migration-guides/virtual-machines/sql-server-failover-cluster-instance-to-sql-on-azure-vm)
-- Scale-out File Server (SoFS) [template](https://aka.ms/azure-shared-disk-sofs-template)
-- SAP ASCS/SCS [template](https://aka.ms/azure-shared-disk-sapacs-template)
-- File Server for General Use (IW workload)
+- File servers. You can use the Scale-Out File Server features deployed on a Windows Server failover cluster, which uses shared disk in active-active mode. Cluster witness resources are stored on Azure shared idsks and all file hsares are simultaneously online on all nodes. For an example, see the Scale-out File Server (SoFS) [template](https://aka.ms/azure-shared-disk-sofs-template)
+- SAP application servers use clustered shared disks to store SAP Centra Services (ASCS for ABAP and SCS for Java) and SAP global host files. SAP ASCS/SCS [template](https://aka.ms/azure-shared-disk-sapacs-template)
+- File Server for General Use (IW workload) - shared disks enable high availability for file servers in general
 - Remote Desktop Server User Profile Disk (RDS UPD)
 
 ### Linux
