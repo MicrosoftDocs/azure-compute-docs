@@ -4,10 +4,12 @@ description: Introduction to NGroups and its features describing how customers c
 ms.author: shivg
 author: shivg
 ms.service: azure-container-instances
-ms.custom: devx-track-azurecli
 services: container-instances
 ms.topic: how-to
 ms.date: 11/17/2025
+ms.custom:
+  - devx-track-azurecli
+  - sfi-image-nochange
 # Customer intent: As a cloud architect, I want to manage multiple container group instances using a single API call through NGroups, so that I can streamline operations, enhance scalability, and improve the availability of my cloud applications.
 ---
 
