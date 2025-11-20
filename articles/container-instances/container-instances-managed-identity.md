@@ -404,12 +404,5 @@ The `az login` module and other client libraries that depend on the metadata ser
 
 ## Related content
 
-In this article, you learned about managed identities in Container Instances and how to:
-
-> [!div class="checklist"]
-> * Enable a user-assigned or system-assigned identity in a container group.
-> * Grant the identity access to an Azure key vault.
-> * Use the managed identity to access a key vault from a running container.
-
 * Learn more about [managed identities for Azure resources](/azure/active-directory/managed-identities-azure-resources/).
 * See an [Azure Go SDK example](https://medium.com/@samkreter/c98911206328) of using a managed identity to access a key vault from Container Instances.
