@@ -5,7 +5,7 @@ author: johndowns # TODO find an owner
 ms.author: jodowns
 ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
-ms.date: 11/11/2025
+ms.date: 11/20/2025
 ---
 
 # Zone balancing in Virtual Machine Scale Sets
