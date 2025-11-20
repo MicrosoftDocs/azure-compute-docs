@@ -183,10 +183,14 @@
    - name: Overview
      displayName: Sizes, sizing, resize, ACU, compute
      href: ./sizes/overview.md
-   - name: Cobalt VMs
-     href: ./sizes/cobalt-overview.md
+   - name: Azure VM sizes naming conventions
+     href: vm-naming-conventions.md
+   - name: Virtual machines selector tool
+     href: https://aka.ms/vm-selector
    - name: Change the size of a VM
      href: ./sizes/resize-vm.md
+   - name: Cobalt VMs
+     href: ./sizes/cobalt-overview.md
    - name: General purpose
      items:
      - name: Overview
@@ -773,8 +777,6 @@
        href: ./linux/compute-benchmark-scores.md
      - name: Windows
        href: ./windows/compute-benchmark-scores.md
-   - name: Virtual machines selector tool
-     href: https://aka.ms/vm-selector
    - name: States and billing
      href: states-billing.md
    - name: vCPU quotas
@@ -786,8 +788,6 @@
      href: vm-customization.md
    - name: Azure VMs with no temp disk
      href: azure-vms-no-temp-disk.yml
-   - name: Azure VM sizes naming conventions
-     href: vm-naming-conventions.md
 - name: Instances
   items:  
   - name: Azure Compute Gallery
