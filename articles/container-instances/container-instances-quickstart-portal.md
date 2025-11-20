@@ -7,7 +7,10 @@ author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
 ms.date: 11/17/2025
-ms.custom: mvc, mode-ui
+ms.custom:
+  - mvc
+  - mode-ui
+  - sfi-image-nochange
 # Customer intent: "As a developer, I want to quickly deploy a containerized web application using the cloud portal, so that I can easily run and manage my application without the complexity of a full container orchestration platform."
 ---
 

@@ -7,7 +7,9 @@ ms.collection: windows
 ms.topic: tutorial
 ms.date: 05/18/2020
 ms.author: raynew
-ms.custom: mvc
+ms.custom:
+  - mvc
+  - sfi-image-nochange
 #Customer intent: As an Azure admin, I want to prepare for disaster recovery by replicating my Windows VMs to another Azure region.
 # Customer intent: As an Azure administrator, I want to set up disaster recovery for my Windows VMs to a different Azure region so that I can ensure business continuity in case of a disaster.
 ---

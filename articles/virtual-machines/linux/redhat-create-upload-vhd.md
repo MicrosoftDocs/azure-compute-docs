@@ -6,11 +6,13 @@ ms.service: azure-virtual-machines
 ms.subservice: redhat
 ms.collection: linux
 ms.tgt_pltfrm: vm-linux
-ms.custom: linux-related-content
 ms.topic: how-to
 ms.date: 09/22/2024
 ms.author: maries
 ms.reviewer: mattmcinnes
+ms.custom:
+  - linux-related-content
+  - sfi-ropc-nochange
 # Customer intent: "As a system administrator, I want to prepare a Red Hat Enterprise Linux VHD for Azure, so that I can deploy a customizable virtual machine in the cloud environment."
 ---
 # Prepare a Red Hat-based virtual machine for Azure
