@@ -48,8 +48,9 @@ Here are some examples of how Virtual Machine Scale Sets determines zone balanci
     :::image type="content" source="media/virtual-machine-scale-sets-zone-balancing/zone-balancing-unbalanced.svg" alt-text="Diagram that shows an unbalanced scale set, with one instance in zone 1 and three instances in zones 2 and 3." border="false":::
 
 
-## Rebalancing and scale-out operations
+## Zone rebalancing behavior
 
+<!-- John: I'd like a verb here. Not sure which. You get to choose. -->
 
 When you add availability zones to an existing scale set, existing VMs remain unchanged and do not get moved or redistributed. In addition, adding a zone does not trigger a rebalancing operation. Rebalancing only happens during scale-out operations when new instances are added to the scale set. Rebalancing does not replace existing instances.
 
@@ -70,6 +71,8 @@ You can trigger *rebalancing* by running the following sequence of operations:
     > [!NOTE]
     > If you use the Flexible orchestration mode and attach, detach, or remove individual VMs, you should check the zones your VMs are in. If the VMs are all in a single zone, your scale set isn't resilient to an outage in that zone.
 
-## VM extensions
+## VM extension deployment problems
+
+<!-- John: Maybe need a different header, but let's be more precise. -->
 
 It's possible that VMs in the scale set are successfully created, but extensions on those VMs fail to deploy. Any VMs with extension deployment failures are still counted when determining if a scale set is balanced. For example, a scale set with 3 VMs in zone 1, 3 VMs in zone 2, and 3 VMs in zone 3 is considered balanced even if all extensions failed in zone 1 and all extensions succeeded in zones 2 and 3.
