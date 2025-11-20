@@ -1,6 +1,6 @@
 ---
-title: VM vCore Customization
-description: Feature that allows control over CPU resources of a virtual machine
+title: Disable Simultaneous Multi-Threading (SMT/HT) and Configurable Constrained Cores using VM vCore customization
+description: Ccontrol CPU resources of a virtual machine using VM cCore customization.
 author: eehindero
 ms.service: azure-virtual-machines
 ms.subservice: sizes
@@ -9,21 +9,23 @@ ms.date: 10/21/2025
 ms.author: eehindero
 ms.reviewer: mimckitt
 ---
-# VM vCore Customization Feature: Disable Simultaneous Multi-Threading (SMT/HT) and Configurable Constrained Cores (Preview)
+# Disable Simultaneous Multi-Threading (SMT/HT) and Configurable Constrained Cores using VM vCore customization (Preview)
 
-VM vCore Customization is a new Azure VM feature that gives you greater control over the CPU resources of a virtual machine. It consists of two related capabilities:
+VM vCore Customization gives you greater control over the CPU resources of a virtual machine. It consists of two related capabilities:
 
-Disable Simultaneous Multi-Threading (Threads Per Core = 1): Allows you to run a VM with only one thread per physical CPU core, effectively turning off Simultaneous Multithreading (SMT). Disabling gives your VM full use of each physical core, which can improve performance for certain workloads (like some HPC or latency-sensitive applications) that benefit from exclusive core access.
+- Disable Simultaneous Multi-Threading (Threads Per Core = 1): Allows you to run a VM with only one thread per physical CPU core, effectively turning off Simultaneous Multithreading (SMT). Disabling gives your VM full use of each physical core, which can improve performance for certain workloads (like some HPC or latency-sensitive applications) that benefit from exclusive core access.
 
-Configurable Constrained Cores (Customize vCPUs): Allows you to **choose a custom number of vCPUs** for a new VM, lower than the default count for that VM size. It lets you allocate only the CPU cores you need, for example, to reduce licensing costs for software that is licensed per core (such as databases or analytics servers) while still getting the full memory and I/O of a larger VM.
+- Configurable Constrained Cores (Customize vCPUs): Allows you to **choose a custom number of vCPUs** for a new VM, lower than the default count for that VM size. It lets you allocate only the CPU cores you need, for example, to reduce licensing costs for software that is licensed per core (such as databases or analytics servers) while still getting the full memory and I/O of a larger VM.
 
-Benefits: With these features, you can optimize VMs for both performance and cost:
+##Benefits 
 
-_Performance:_ Disabling hyperthreading can provide more consistent and sometimes higher single-thread performance by eliminating contention between threads on the same core.
+You can optimize VMs for both performance and cost:
 
-_Cost Optimization:_ Reducing the vCPU count of a VM can lower costs for software that charges per CPU. You could run a memory-intensive SQL Server on a VM with fewer vCPUs active, cutting SQL licensing fees, without paying for unused CPU capacity.
+- _Performance:_ Disabling hyperthreading can provide more consistent and sometimes higher single-thread performance by eliminating contention between threads on the same core.
 
-There's _no extra charge_ to use these CPU configuration options. The base VM price remains the same as if you deployed the full-size VM with default settings. However, customers get reduced licensing costs for software billed per vCPU.
+- _Cost Optimization:_ Reducing the vCPU count of a VM can lower costs for software that charges per CPU. You could run a memory-intensive SQL Server on a VM with fewer vCPUs active, cutting SQL licensing fees, without paying for unused CPU capacity.
+
+There's _no extra charge_ to use these CPU configuration options. The base VM price remains the same as if you deployed the full-size VM with default settings. However, licensing costs are reduced for software billed per vCPU.
 
 ## VM Customization Settings Configuration
 
