@@ -5,8 +5,8 @@ author: magatala-MSFT
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 11/03/2025
-ms.author: wwilliams
+ms.date: 11/20/2025
+ms.author: v-nmagatala
 ms.reviewer: iamwilliew
 # Customer intent: As a cloud architect, I want to understand the specifications and feature support of the NC_RTXPRO6000BSE_v6 size series, so that I can select the appropriate virtual machine size for my high-performance computing workloads.
 ---
@@ -40,33 +40,27 @@ Sign up to Participate in [NCv6 Public Preview](https://forms.office.com/Pages/R
 
 ### [General Purpose](#tab/sizegeneralpurpose)
 
-|  Size Name | vCPUs (Qty.) | Memory (GB) | Max NIC| Max Bandwidth| Temp Disk Storage(GiB)|
+|  Size Name | vCPUs (Qty.) | Memory (GB) | Max NICs (Qty.)| Max Bandwidth| Temp Disk Storage(GiB)|
 | --- | --- | --- |---|---|---|
-| Standard_NC8ds_xl_RTXPRO6000BSE_v6|8|32|4|12500|128|
-| Standard_NC16ds_xl_RTXPRO6000BSE_v6|16|64|4|25000|256|
 | Standard_NC32ds_xl_RTXPRO6000BSE_v6|32|128|6|25000|256|
 | Standard_NC64ds_xl_RTXPRO6000BSE_v6|64|256|6|50000|512|
 | Standard_NC128ds_xl_RTXPRO6000BSE_v6|128|512|8|75000|1024|
 | Standard_NC256ds_xl_RTXPRO6000BSE_v6|256|1024|8|100000|2048|
 | Standard_NC320ds_xl_RTXPRO6000BSE_v6|320|1280|8|200000|2048|
 
-### [Memory Optimized Purpose](#tab/sizememoryoptimized)
+### [Memory Optimized](#tab/sizememoryoptimized)
+Coming Soon!
 
-| Size Name | vCPUs (Qty.) | Memory (GB) |Max NIC| Max Bandwidth| Temp Disk Storage(GiB)|
+| Size Name | vCPUs (Qty.) | Memory (GB) |Max NICs (Qty.)| Max Bandwidth| Temp Disk Storage(GiB)|
 | --- | --- | --- | --- | --- | --- |
-|Standard_NC8mds_xl_RTXPRO6000BSE_v6|8|32|4|12500|128|
-|Standard_NC16mds_xl_RTXPRO6000BSE_v6|16|64|4|25000|256|
 |Standard_NC32mds_xl_RTXPRO6000BSE_v6|32|128|6|25000|256|
 |Standard_NC64mds_xl_RTXPRO6000BSE_v6|64|256|6|50000|512|
 |Standard_NC128mds_xl_RTXPRO6000BSE_v6|128|512|8|75000|1024|
-|Standard_NC256mds_xl_RTXPRO6000BSE_v6|256|1024|8|100000|2048|
-|Standard_NC320mds_xl_RTXPRO6000BSE_v6|320|1280|8|200000|2048|
 
 ### [Compute Optimized](#tab/sizecomputeoptimized)
 
 | Size Name | vCPUs (Qty.) | Memory (GB) |Max NICs (Qty.)| Max Bandwidth(Mbps)| Temp Disk Storage(GiB)|
 | --- | --- | --- | --- | --- | --- |
-|Standard_NC8lds_xl_RTXPRO6000BSE_v6|8|32|4|12500|128|
 |Standard_NC16lds_xl_RTXPRO6000BSE_v6|16|64|4|25000|256|
 |Standard_NC32lds_xl_RTXPRO6000BSE_v6|32|128|6|25000|256|
 |Standard_NC64lds_xl_RTXPRO6000BSE_v6|64|256|6|50000|512|
