@@ -21,6 +21,8 @@ These NC RTX PRO 6000 BSE v6 VMs are powered by NVIDIA RTX PRO 6000 Blackwell Se
 - Scientific visualization and High-Performance Computing (HPC) using FP32.
 - Agentic AI application development and deployment.
 
+Sign up to Participate in [NCv6 Public Preview](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR9s7orOb3OJJnwABCNj_8JdUMzlLSzJFTTdRRE8yU0UxWFFYQlpYV1hDVy4u) !
+
 ## Host specifications
 | Part | Quantity <br><sup>(Count Units) | Specs <br><sup>(SKU ID, Performance Units, etc.)  |
 |---|---|---|
@@ -38,72 +40,46 @@ These NC RTX PRO 6000 BSE v6 VMs are powered by NVIDIA RTX PRO 6000 Blackwell Se
 
 ### [General Purpose](#tab/sizegeneralpurpose)
 
-|  Size Name | vCPUs (Qty.) | Memory (GB) |
-| --- | --- | --- |
-| Standard_NC8ds_xl_RTXPRO6000BSE_v6|8|32|
-| Standard_NC16ds_xl_RTXPRO6000BSE_v6|16|64|
-| Standard_NC32ds_xl_RTXPRO6000BSE_v6|32|128|
-| Standard_NC64ds_xl_RTXPRO6000BSE_v6|64|256|
-| Standard_NC128ds_xl_RTXPRO6000BSE_v6|128|512|
-| Standard_NC256ds_xl_RTXPRO6000BSE_v6|256|1024|
-| Standard_NC320ds_xl_RTXPRO6000BSE_v6|320|1280|
-
-### [Compute Optimized](#tab/sizecomputeoptimized)
-
-| Size Name | vCPUs (Qty.) | Memory (GB) |
-| --- | --- | --- |
-|Standard_NC8lds_xl_RTXPRO6000BSE_v6|8|32|
-|Standard_NC16lds_xl_RTXPRO6000BSE_v6|16|64|
-|Standard_NC32lds_xl_RTXPRO6000BSE_v6|32|128|
-|Standard_NC64lds_xl_RTXPRO6000BSE_v6|64|256|
-|Standard_NC128lds_xl_RTXPRO6000BSE_v6|128|512|
-|Standard_NC256lds_xl_RTXPRO6000BSE_v6|256|1024|
-|Standard_NC320lds_xl_RTXPRO6000BSE_v6|320|1280|
+|  Size Name | vCPUs (Qty.) | Memory (GB) | Max NIC| Max Bandwidth| Temp Disk Storage(GiB)|
+| --- | --- | --- |---|---|---|
+| Standard_NC8ds_xl_RTXPRO6000BSE_v6|8|32|4|12500|128|
+| Standard_NC16ds_xl_RTXPRO6000BSE_v6|16|64|4|25000|256|
+| Standard_NC32ds_xl_RTXPRO6000BSE_v6|32|128|6|25000|256|
+| Standard_NC64ds_xl_RTXPRO6000BSE_v6|64|256|6|50000|512|
+| Standard_NC128ds_xl_RTXPRO6000BSE_v6|128|512|8|75000|1024|
+| Standard_NC256ds_xl_RTXPRO6000BSE_v6|256|1024|8|100000|2048|
+| Standard_NC320ds_xl_RTXPRO6000BSE_v6|320|1280|8|200000|2048|
 
 ### [Memory Optimized Purpose](#tab/sizememoryoptimized)
 
-| Size Name | vCPUs (Qty.) | Memory (GB) |
-| --- | --- | --- |
-|Standard_NC8mds_xl_RTXPRO6000BSE_v6|8|32|
-|Standard_NC16mds_xl_RTXPRO6000BSE_v6|16|64|
-|Standard_NC32mds_xl_RTXPRO6000BSE_v6|32|128|
-|Standard_NC64mds_xl_RTXPRO6000BSE_v6|64|256|
-|Standard_NC128mds_xl_RTXPRO6000BSE_v6|128|512|
-|Standard_NC256mds_xl_RTXPRO6000BSE_v6|256|1024|
-|Standard_NC320mds_xl_RTXPRO6000BSE_v6|320|1280|
+| Size Name | vCPUs (Qty.) | Memory (GB) |Max NIC| Max Bandwidth| Temp Disk Storage(GiB)|
+| --- | --- | --- | --- | --- | --- |
+|Standard_NC8mds_xl_RTXPRO6000BSE_v6|8|32|4|12500|128|
+|Standard_NC16mds_xl_RTXPRO6000BSE_v6|16|64|4|25000|256|
+|Standard_NC32mds_xl_RTXPRO6000BSE_v6|32|128|6|25000|256|
+|Standard_NC64mds_xl_RTXPRO6000BSE_v6|64|256|6|50000|512|
+|Standard_NC128mds_xl_RTXPRO6000BSE_v6|128|512|8|75000|1024|
+|Standard_NC256mds_xl_RTXPRO6000BSE_v6|256|1024|8|100000|2048|
+|Standard_NC320mds_xl_RTXPRO6000BSE_v6|320|1280|8|200000|2048|
+
+### [Compute Optimized](#tab/sizecomputeoptimized)
+
+| Size Name | vCPUs (Qty.) | Memory (GB) |Max NICs (Qty.)| Max Bandwidth(Mbps)| Temp Disk Storage(GiB)|
+| --- | --- | --- | --- | --- | --- |
+|Standard_NC8lds_xl_RTXPRO6000BSE_v6|8|32|4|12500|128|
+|Standard_NC16lds_xl_RTXPRO6000BSE_v6|16|64|4|25000|256|
+|Standard_NC32lds_xl_RTXPRO6000BSE_v6|32|128|6|25000|256|
+|Standard_NC64lds_xl_RTXPRO6000BSE_v6|64|256|6|50000|512|
+|Standard_NC128lds_xl_RTXPRO6000BSE_v6|128|512|8|75000|1024|
+|Standard_NC256lds_xl_RTXPRO6000BSE_v6|256|1024|8|100000|2048|
+|Standard_NC320lds_xl_RTXPRO6000BSE_v6|320|1280|8|200000|2048|
+
 
 
 #### VM Basics resources
 - [Check vCPU quotas](../../../virtual-machines/quotas.md)
 
 
-### [Network specifications](#tab/sizenetwork)
-
-| Size Name | Max NICs (Qty.) | Max Bandwidth (Mbps) |
-| :--- | :--- | :--- |
-| Standard_NC8ds_xl_RTXPRO6000BSE_v6|4|25000|
-| Standard_NC16ds_xl_RTXPRO6000BSE_v6|4|25000|
-|Standard_NC32ds_xl_RTXPRO6000BSE_v6|6|25000|
-|Standard_NC64ds_xl_RTXPRO6000BSE_v6|6|50000|
-|Standard_NC128ds_xl_RTXPRO6000BSE_v6|8|75000|
-|Standard_NC256ds_xl_RTXPRO6000BSE_v6|8|100000|
-|Standard_NC320ds_xl_RTXPRO6000BSE_v6|8|200000|
-|standard_NC8lds_xl_RTXPRO6000BSE_v6|4|25000|
-| Standard_NC16lds_xl_RTXPRO6000BSE_v6|4|25000|
-| Standard_NC32lds_xl_RTXPRO6000BSE_v6|6|25000|
-| Standard_NC64lds_xl_RTXPRO6000BSE_v6|6|50000|
-| Standard_NC128lds_xl_RTXPRO6000BSE_v6|8|75000|
-| Standard_NC256lds_xl_RTXPRO6000BSE_v6|8|100000|
-| Standard_NC320lds_xl_RTXPRO6000BSE_v6|8|200000|
-| Standard_NC8mds_xl_RTXPRO6000BSE_v6|4|12500|
-| Standard_NC16mds_xl_RTXPRO6000BSE_v6|4|25000|
-| Standard_NC32mds_xl_RTXPRO6000BSE_v6|6|25000|
-| Standard_NC64mds_xl_RTXPRO6000BSE_v6|6|50000|
-| Standard_NC128mds_xl_RTXPRO6000BSE_v6|8|75000|
-| Standard_NC256mds_xl_RTXPRO6000BSE_v6|8|100000|
-| Standard_NC320mds_xl_RTXPRO6000BSE_v6|8|200000|
-
----
 
 ## Storage Notes
 - Temp disk speed varies between Random Read (RR) and Random Write (RW). RR is typically faster.
