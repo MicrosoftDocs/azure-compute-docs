@@ -7,7 +7,11 @@ ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
 ms.date: 03/21/2025
 ms.reviewer: ju-shim
-ms.custom: upgradepolicy, maxsurge, ignite-2024
+ms.custom:
+  - upgradepolicy
+  - maxsurge
+  - ignite-2024
+  - sfi-image-nochange
 # Customer intent: As a cloud administrator, I want to configure rolling upgrades for Virtual Machine Scale Sets, so that I can apply updates safely without downtime and maintain high availability of my applications.
 ---
 # Configure rolling upgrades on Virtual Machine Scale Sets

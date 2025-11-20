@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+ms.custom: sfi-image-nochange
 # Customer intent: "As a cloud application developer, I want to create a Service Fabric application with both stateless and stateful services so that I can leverage reliable service architecture for high availability and efficient state management in my applications."
 ---
 

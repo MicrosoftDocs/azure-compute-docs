@@ -3,6 +3,9 @@ title: Set up Microsoft Entra ID for client authentication in the Azure portal
 description: Learn how to set up Microsoft Entra ID to authenticate clients for Service Fabric clusters by using the Azure portal.
 ms.topic: concept-article
 ms.date: 8/8/2022
+ms.custom:
+  - sfi-image-nochange
+  - sfi-ropc-nochange
 # Customer intent: As a cloud administrator, I want to configure Microsoft Entra ID for client authentication in Azure Service Fabric, so that I can secure access to management endpoints and ensure appropriate user role assignments.
 ---
 

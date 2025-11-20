@@ -9,7 +9,11 @@ ms.topic: how-to
 ms.author: jofrance
 ms.reviewer: mattmcinnes
 ms.date: 09/23/2025
-ms.custom: devx-track-azurecli, devx-track-azurepowershell, linux-related-content
+ms.custom:
+  - devx-track-azurecli
+  - devx-track-azurepowershell
+  - linux-related-content
+  - sfi-image-nochange
 # Customer intent: "As a Linux VM administrator, I want to configure LVM and RAID on encrypted disks, so that I can efficiently manage storage while ensuring data security."
 ---
 
