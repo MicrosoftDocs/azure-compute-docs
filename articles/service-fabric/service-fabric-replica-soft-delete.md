@@ -70,7 +70,7 @@ Usually, this behavior change won't impact existing workflows using the Remove R
 
 ### Newly introduced APIs
 
-* Restore-ServiceFabricReplica:
+* [Restore-ServiceFabricReplica](/powershell/module/servicefabric/restore-servicefabricreplica):
 
   * Syntactically similar to [Restart-ServiceFabricReplica](/powershell/module/servicefabric/restart-servicefabricreplica). Recovers a `ToBeRemoved` replica by reopening the Replica object. If the partition was in quorum loss, customers should restore all soft deleted replicas using this API. Service Fabric automatically determines which replicas to retain to restore quorum.
 
