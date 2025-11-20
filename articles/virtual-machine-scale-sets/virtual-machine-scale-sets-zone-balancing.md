@@ -1,6 +1,6 @@
 ---
 title: Zone Balancing in Scale Sets
-description: Learn about zone balancing in scale sets, including zone balancing modes and rebalancing behavior.
+description: Find out about zone balancing in scale sets, including zone balancing modes and rebalancing behavior.
 author: johndowns # TODO find an owner
 ms.author: jodowns
 ms.topic: concept-article
@@ -8,27 +8,30 @@ ms.service: azure-virtual-machine-scale-sets
 ms.date: 11/11/2025
 ---
 
-# Zone balancing in scale sets
+# Zone balancing in Virtual Machine Scale Sets
 
-In zone-spanning scale sets (which use multiple availability zones), *zone balancing* refers to whether the scale set's virtual machine (VM) instances are evenly distributed across the zones you select.
+A *Zone-spanning* scale set spreads virtual machine (VM) instances across multiple availability zones, and uses *zone balancing* to evenly distribute instances across the zones that you've selected. This article discusses how a zone-spanning scale set uses zone balancing, including the difference between balanced and unbalanced, balancing modes and rebalancing behavior.
 
-A scale set is considered *balanced* if each zone has the same number of VMs ±1 VM. The deviation of 1 enables you to scale to any number of instances, and not just a multiple of the number of zones that the set uses.
 
 ## Zone balancing modes
 
-When your scale set uses multiple zones, you can select one of the following zone balancing modes for your scale set:
+In order to set the zone balancing mode, your scale set must use multiple zones. A scale set that doesn't use zones or uses only one zone doesn't require balancing and therefore doesn't have a balancing mode.
 
-- **Best-effort zone balancing:** The scale set aims to maintain balance across zones during scaling operations, but it's not guaranteed to remain balanced. Best-effort load balancing is the default mode.
+For a scale set that uses multiple zones, you can choose between two zone balancing modes:
+
+- **Best-effort zone balancing (Default mode):** The scale set aims to maintain balance across zones during scaling operations, but it's not guaranteed to remain balanced.
 
     If one zone becomes unavailable, the scale set allows temporary imbalance to ensure the scale set can scale out. However, this imbalance is only permitted when a single zone is unavailable. Once the zone is restored, the scale set adjusts by adding VMs to under-provisioned zones or removing VMs from over-provisioned zones to restore balance.
-    
+
     If two or more zones go down, the scale set can't proceed with scaling operations, and any scaling operations are blocked.
 
 - **Strict zone balancing:** Any scaling operation that would result in an unbalanced scale set is blocked, even if one or more zones are down.
 
-The zone balancing mode can only be set if the scale set is configured to use more than one zone. If there are no zones or only one zone specified, then you can't set the zone balancing mode.
 
-## Examples
+
+## Balanced and unbalanced scale sets
+
+A scale set is considered *balanced* if each zone has the same number of VMs ±1 VM. The deviation of 1 enables you to scale to any number of instances, and not just a multiple of the number of zones that the set uses.
 
 Here are some examples of how Virtual Machine Scale Sets determines zone balancing for a zone-spanning scale set that's configured to use three zones:
 
@@ -44,9 +47,11 @@ Here are some examples of how Virtual Machine Scale Sets determines zone balanci
 
     :::image type="content" source="media/virtual-machine-scale-sets-zone-balancing/zone-balancing-unbalanced.svg" alt-text="Diagram that shows an unbalanced scale set, with one instance in zone 1 and three instances in zones 2 and 3." border="false":::
 
-## Rebalancing of instances
 
-Adding zones to a scale set doesn't affect the instances already in the scale set. The platform only attempts to balance the scale set when it adds new instances during scale-out operations, but it doesn't replace existing running instances.
+## Rebalancing and scale-out operations
+
+
+When you add availability zones to an existing scale set, existing VMs remain unchanged and do not get moved or redistributed. In addition, adding a zone does not trigger a rebalancing operation. Rebalancing only happens during scale-out operations when new instances are added to the scale set. Rebalancing does not replace existing instances.
 
 For example, suppose you move from a nonzonal scale set to a zone-spanning scale set that uses three zones. Immediately after adding zones to the scale set, the existing instances remain in a nonzonal state.
 
