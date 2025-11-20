@@ -41,7 +41,7 @@ This tutorial makes use of a randomized variable. If you used an existing resour
 
 :::code language="azurecli" source="~/azure_cli_scripts/container-instances/egress-ip-address.sh" id="variable":::
 
-**Azure resource group**: If you don't have an Azure resource group already, create a resource group with the [az group create][az-group-create] command. Modify the location value as appropriate.
+If you don't have an Azure resource group already, create a resource group with the [az group create][az-group-create] command. Modify the location value as appropriate.
 
 :::code language="azurecli" source="~/azure_cli_scripts/container-instances/egress-ip-address.sh" id="creategroup":::
 
@@ -58,7 +58,7 @@ Create the container group with the [az container create][az-container-create] c
 > [!TIP]
 > Adjust the value of `--subnet address-prefix` for the IP address space that you need in your subnet. The smallest supported subnet is /29, which provides eight IP addresses. Some IP addresses are reserved for use by Azure.
 
-For use in a later step, get the private IP address of the container group by running the [az container show][az-container-show] command:
+For use in a later step, get the private IP address of the container group by running the `az container show` command:
 
 :::code language="azurecli" source="~/azure_cli_scripts/container-instances/egress-ip-address.sh" id="privateip":::
 
