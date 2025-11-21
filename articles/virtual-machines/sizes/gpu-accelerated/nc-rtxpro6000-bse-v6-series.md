@@ -113,7 +113,7 @@ Network interface info for each size
 
 Accelerator (GPUs, FPGAs, etc.) info for each size
 
-| Size Name | Accelerators (Qty.) | Accelerator-Memory (GB) |
+| Size Name | Accelerators (Qty.) | Accelerator Memory (GB) |
 | --- | --- | --- |
 | Standard_NC32ds_xl_RTXPRO6000BSE_v6 | 1/4 | 24 |
 | Standard_NC64ds_xl_RTXPRO6000BSE_v6 | 1/2 | 48 |
@@ -218,7 +218,7 @@ Network interface info for each size
 
 Accelerator (GPUs, FPGAs, etc.) info for each size
 
-| Size Name | Accelerators (Qty.) | Accelerator-Memory (GB) |
+| Size Name | Accelerators (Qty.) | Accelerator Memory (GB) |
 | --- | --- | --- |
 | Standard_NC16lds_xl_RTXPRO6000BSE_v6 | 1/4 | 24 |
 | Standard_NC32lds_xl_RTXPRO6000BSE_v6 | 1/4 | 24 |
@@ -311,7 +311,7 @@ Network interface info for each size
 
 Accelerator (GPUs, FPGAs, etc.) info for each size
 
-| Size Name | Accelerators (Qty.) | Accelerator-Memory (GB) |
+| Size Name | Accelerators (Qty.) | Accelerator Memory (GB) |
 | --- | --- | --- |
 | Standard_NC32mds_xl_RTXPRO6000BSE_v6 | 1/4 | 24 |
 | Standard_NC64mds_xl_RTXPRO6000BSE_v6 | 1/2 | 48 |
