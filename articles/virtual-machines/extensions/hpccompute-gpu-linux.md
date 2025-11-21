@@ -8,10 +8,12 @@ ms.subservice: hpc
 ms.collection: linux
 ms.topic: concept-article
 ms.tgt_pltfrm: vm-linux
-ms.custom: linux-related-content
 ms.date: 06/30/2025
 ms.author: jushiman
 author: ju-shim
+ms.custom:
+  - linux-related-content
+  - sfi-image-nochange
 # Customer intent: "As a cloud administrator, I want to install NVIDIA GPU drivers on Linux N-series virtual machines, so that I can optimize GPU performance for compute-intensive applications."
 ---
 # NVIDIA GPU Driver Extension for Linux
@@ -26,6 +28,8 @@ Instructions on manual installation of the drivers and the current supported ver
 > [!Note]
 > The GPU driver extensions do not automatically update the driver after the extension is installed. If you need to move to a newer driver version then either manually download and install the driver or remove and add the extension again.
 >
+
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
 
 ## Prerequisites
 

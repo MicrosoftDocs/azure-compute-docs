@@ -8,7 +8,11 @@ ms.service: azure-virtual-machines
 ms.subservice: trusted-launch
 ms.topic: how-to
 ms.date: 05/21/2024
-ms.custom: template-how-to, devx-track-azurecli, devx-track-azurepowershell
+ms.custom:
+  - template-how-to
+  - devx-track-azurecli
+  - devx-track-azurepowershell
+  - sfi-image-nochange
 # Customer intent: "As a cloud architect, I want to deploy virtual machines with Trusted Launch enabled, so that I can enhance security against advanced attacks and ensure the integrity of the VMs in my cloud environment."
 ---
 

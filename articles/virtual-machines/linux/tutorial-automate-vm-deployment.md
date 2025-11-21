@@ -8,7 +8,12 @@ ms.topic: tutorial
 ms.date: 04/06/2025
 ms.author: jushiman
 ms.reviewer: mattmcinnes
-ms.custom: mvc, devx-track-azurecli, linux-related-content
+ms.custom:
+  - mvc
+  - devx-track-azurecli
+  - linux-related-content
+  - innovation-engine
+  - sfi-image-nochange
 # Customer intent: "As a system administrator, I want to automate the customization of Linux VMs on their first boot using cloud-init, so that I can ensure consistent and efficient deployment of applications like NGINX and Node.js without manual intervention."
 ---
 

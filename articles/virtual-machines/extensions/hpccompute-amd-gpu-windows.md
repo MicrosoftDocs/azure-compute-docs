@@ -11,6 +11,7 @@ ms.collection: windows
 ms.tgt_pltfrm: vm-windows
 ms.date: 07/25/2024
 ms.author: vikancha
+ms.custom: sfi-image-nochange
 # Customer intent: "As a cloud administrator managing N-series Windows VMs, I want to install AMD GPU drivers using a VM extension, so that I can enable GPU acceleration for my applications running on Azure."
 ---
 # AMD GPU Driver Extension for Windows
@@ -19,6 +20,7 @@ This article provides an overview of the virtual machine (VM) extension to deplo
 
 Instructions on manual installation of the drivers and the current supported versions are available. For more information, see [Azure N-series AMD GPU driver setup for Windows](../windows/n-series-amd-driver-setup.md).
 
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
 ## Prerequisites
 
 ### Internet connectivity

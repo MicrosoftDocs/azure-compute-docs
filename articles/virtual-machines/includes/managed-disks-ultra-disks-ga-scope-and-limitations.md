@@ -4,7 +4,7 @@ description: include file
 author: roygara
 ms.service: azure-disk-storage
 ms.topic: include
-ms.date: 10/23/2025
+ms.date: 11/05/2025
 ms.author: rogarana
 ms.custom: include file
 # Customer intent: As a cloud architect, I want to understand the limitations and requirements of Ultra Disks so that I can evaluate their suitability for my virtual machine deployments and ensure compliance with application needs and infrastructure capabilities.
@@ -28,7 +28,7 @@ The following table outlines the regions Ultra Disks are available in, and their
 | Redundancy options | Regions |
 |--------------------|---------|
 | **Regional** | Australia Central, Australia Central 2<br/>Brazil Southeast<br/>Canada East<br/>Korea South<br/>Norway West<br/>UK West<br/>North Central US, West US<br/>US Gov Arizona, US Gov Texas |
-| **One availability zone** | Brazil South<br/>Central India<br/>East Asia<br/>Germany West Central<br/>Korea Central<br/>South Central US<br/>Spain Central<br/>US Gov Virginia |
+| **One availability zone** | Brazil South<br/>Central India<br/>East Asia<br/>Germany West Central<br/>Japan West<br/>Korea Central<br/>South Central US<br/>Spain Central<br/>US Gov Virginia |
 | **Two availability zones** | Indonesia Central<br/>Malaysia West<br/>New Zealand North<br/>Qatar Central |
 | **Three availability zones** | Australia East<br/>Canada Central<br/>China North 3<br/>North Europe, West Europe<br/>France Central<br/>Italy North<br/>Japan East<br/>Poland Central<br/>South Africa North<br/>Southeast Asia<br/>Sweden Central<br/>Switzerland North<br/>UAE North<br/>UK South<br/>Central US, East US, East US 2, West US 2, West US 3 |
 
