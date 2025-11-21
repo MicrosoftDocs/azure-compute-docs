@@ -538,6 +538,8 @@
          href: ./sizes/gpu-accelerated/ncast4v3-series.md
        - name: NC_A100_v4 series
          href: ./sizes/gpu-accelerated/nca100v4-series.md
+       - name: NC_RTXPRO6000BSE_v6 series
+         href: ./sizes/gpu-accelerated/nc-rtxpro6000-bse-v6-series.md
      - name: ND family
        items:
        - name: Overview
