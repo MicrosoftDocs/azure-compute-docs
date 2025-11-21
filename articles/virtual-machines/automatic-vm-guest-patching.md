@@ -262,9 +262,6 @@ As a new rollout is triggered every month, a VM receives at least one patch roll
 | SUSE  | sles-15-sp2 | gen2 |
 | SUSE  | sles-sap-15-sp4 | gen2 |
 | SUSE  | sles-sap-15-sp5 | gen2 |
-| Redhat  | RHEL-RAW | 8-raw, 8-raw-gen2 |
-| SUSE  | sles-12-sp5 | gen1, gen2 |
-| SUSE  | sles-15-sp2 | gen1, gen2 |
 
 
 ## Patch orchestration modes
