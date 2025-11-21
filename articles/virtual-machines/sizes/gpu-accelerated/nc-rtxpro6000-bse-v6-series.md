@@ -49,7 +49,6 @@ Sign up to Participate in [NCv6 Public Preview](https://forms.office.com/Pages/R
 | Standard_NC320ds_xl_RTXPRO6000BSE_v6|320|1280|8|200000|2048|
 
 ### [Memory Optimized](#tab/sizememoryoptimized)
-Coming Soon!
 
 | Size Name | vCPUs (Qty.) | Memory (GB) |Max NICs (Qty.)| Max Bandwidth(Mbps)| Temp Disk Storage(GiB)|
 | --- | --- | --- | --- | --- | --- |
