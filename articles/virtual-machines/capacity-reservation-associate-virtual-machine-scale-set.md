@@ -654,7 +654,7 @@ To learn more, see the Azure PowerShell commands [Stop-AzVmss](/powershell/modul
 
 ### Zonal Virtual Machine Scale Set
 
-To add an existing zonal capacity reservation group to an existing uniform scale set, simply update the scale set to use a matching capacity reservation group.
+If you have capacity in an existing capacity reservation group and you want to add an existing zonal uniform scale set to it, simply update the scale set to the capacity reservation group to use a matching capacity reservation.
 
 > [!IMPORTANT]
 > The feature to associate an existing zonal scale set to a reservation group without the need to deallocate, is currently in **Preview**. See the [Preview Terms of Use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
@@ -736,7 +736,7 @@ To associate the scale set to the capacity reservation group using the Azure por
 
 ### Secure existing zonal virtual machine scale sets using zero size reservation
 
-Zonally deployed virtual machines scale sets can be converted to using an On Demand Capacity Reservation without reallocation. The basic process involves 3 steps:
+Zonally deployed virtual machines scale sets can be converted to using an On Demand Capacity Reservation without reallocation. If you do not have capacity in an existing capacity reservation group, you can start by creating a zero size matching reservation to secure your workloads. The basic process involves 3 steps:
 
 1. Create a Capacity Reservation Group and then matching capacity reservations in each target zone with the reserved quantity set to zero. This requires no additional quota or capacity. For more information on how to create a reservation, see [Create a capacity reservation](/azure/virtual-machines/capacity-reservation-create?tabs=portal1%2Capi1%2Capi2#create-a-capacity-reservation-1).
 
