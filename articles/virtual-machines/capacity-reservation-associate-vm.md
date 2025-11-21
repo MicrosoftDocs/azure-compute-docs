@@ -497,7 +497,7 @@ To learn more, see the Azure PowerShell commands [Stop-AzVM](/powershell/module/
 
 ### Zonal Virtual Machine
 
-A virtual machine must be allocated to a capacity reservation.  To add a existing zonal virtual machine to capacity reservation group, update the VM to use a matching capacity reservation group. 
+A zonal virtual machine can be allocated to a capacity reservation without the need of reallocation. If you have capacity in an existing capacity reservation group, you can add an existing zonal virtual machine to the capacity reservation group and update the VM to use a matching capacity reservation in the capacity reservation group. 
 
 > [!IMPORTANT]
 > The feature to associate an existing zonal VM to a Capacity Reservation Group without the need to deallocate, is currently in **Preview**. See the [Preview Terms of Use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
@@ -573,7 +573,7 @@ To learn more, see the Azure PowerShell commands [Stop-AzVM](/powershell/module/
 
 ### Secure existing zonal virtual machine using zero size reservation
 
-Zonally deployed virtual machines can be converted to using an On Demand Capacity Reservation without reallocation. The basic process involves 3 steps:
+Zonally deployed virtual machines can be converted to using an On Demand Capacity Reservation without reallocation. If you do not have capacity in an existing capacity reservation group, you can start by creating a zero size matching reservation to secure your workloads. The basic process involves 3 steps:
 
 1. Create a Capacity Reservation Group and then matching capacity reservations in each target zone with the reserved quantity set to zero. This requires no additional quota or capacity. For more information on how to create a reservation, see [Create a capacity reservation](/azure/virtual-machines/capacity-reservation-create?tabs=portal1%2Capi1%2Capi2#create-a-capacity-reservation-1).
 
