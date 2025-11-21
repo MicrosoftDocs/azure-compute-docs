@@ -36,11 +36,11 @@ Sign up to Participate in [NCv6 Public Preview](https://forms.office.com/Pages/R
 ## Feature support
 [Premium Storage](../../premium-storage-performance.md): Supported <br>[Premium Storage caching](../../premium-storage-performance.md): Supported <br>[Live Migration](../../maintenance-and-updates.md): Not Supported <br>[Memory Preserving Updates](../../maintenance-and-updates.md): Not Supported <br>[Generation 2 VMs](../../generation-2.md): Supported <br>[Generation 1 VMs](../../generation-2.md): Not Supported <br>[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported <br>[Ephemeral OS Disk](../../ephemeral-os-disks.md): Supported <br>[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Not Supported <br>
 
-## Avaialble sizes
+## Available sizes
 
 ### [General Purpose](#tab/sizegeneralpurpose)
 
-|  Size Name | vCPUs (Qty.) | Memory (GB) | Max NICs (Qty.)| Max Bandwidth| Temp Disk Storage(GiB)|
+|  Size Name | vCPUs (Qty.) | Memory (GB) | Max NICs (Qty.)| Max Bandwidth(Mbps)| Temp Disk Storage(GiB)|
 | --- | --- | --- |---|---|---|
 | Standard_NC32ds_xl_RTXPRO6000BSE_v6|32|128|6|25000|256|
 | Standard_NC64ds_xl_RTXPRO6000BSE_v6|64|256|6|50000|512|
@@ -51,7 +51,7 @@ Sign up to Participate in [NCv6 Public Preview](https://forms.office.com/Pages/R
 ### [Memory Optimized](#tab/sizememoryoptimized)
 Coming Soon!
 
-| Size Name | vCPUs (Qty.) | Memory (GB) |Max NICs (Qty.)| Max Bandwidth| Temp Disk Storage(GiB)|
+| Size Name | vCPUs (Qty.) | Memory (GB) |Max NICs (Qty.)| Max Bandwidth(Mbps)| Temp Disk Storage(GiB)|
 | --- | --- | --- | --- | --- | --- |
 |Standard_NC32mds_xl_RTXPRO6000BSE_v6|32|128|6|25000|256|
 |Standard_NC64mds_xl_RTXPRO6000BSE_v6|64|256|6|50000|512|
@@ -69,10 +69,8 @@ Coming Soon!
 |Standard_NC320lds_xl_RTXPRO6000BSE_v6|320|1280|8|200000|2048|
 
 
-
 #### VM Basics resources
 - [Check vCPU quotas](../../../virtual-machines/quotas.md)
-
 
 
 ## Storage Notes
