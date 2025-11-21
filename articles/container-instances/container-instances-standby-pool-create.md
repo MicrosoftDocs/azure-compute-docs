@@ -7,7 +7,7 @@ ms.service: azure-container-instances
 ms.custom:
   - ignite-2024
 ms.topic: how-to
-ms.date: 5/19/2025
+ms.date: 11/17/2025
 ms.reviewer: tomvcassidy
 # Customer intent: As a cloud administrator, I want to create a standby pool for Azure Container Instances, so that I can reduce scale-out latency and improve the responsiveness of my container deployment.
 ---

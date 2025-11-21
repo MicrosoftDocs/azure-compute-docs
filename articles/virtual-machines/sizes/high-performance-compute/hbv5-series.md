@@ -28,14 +28,14 @@ vCPUs (Qty.) and Memory for each size
 
 | Size Name | vCPUs (Qty.) | Memory (GB) | L3 Cache (GB) | Memory Bandwidth (TB/s) | Base CPU Frequency (GHz) |  Single-core Frequency Peak (GHz) | All-core Frequency Peak (GHz) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_HB368rs_v5 | 368 | 450 | 1.5 | 6.7 | 3.5 | 4 | 4 | 
-| Standard_HB368_336rsv5 | 336 | 450 | 1.5 | 6.7 | 3.5 | 4 | 4 |
-| Standard_HB368_288rsv5 | 288 | 450 | 1.5 | 6.7 | 3.5 | 4 | 4 |
-| Standard_HB368-240rs_v5 | 240 | 450 | 1.5 | 6.7 | 3.5 |  4 | 4 |
-| Standard_HB368-192rs_v5 | 192 | 450 | 1.5 | 6.7 | 3.5 |  4 | 4 |
-| Standard_HB368-144rs_v5 | 144 | 450 | 1.5 | 6.7 | 3.5 |  4 | 4 |
-| Standard_HB368-96rs_v5 | 96 | 450 | 1.5 | 6.7 | 3.5 | 4 | 4 |
-| Standard_HB368-48rs_v5 | 48 | 450 | 1.5 | 6.7 | 3.5 |  4 | 4 |
+| Standard_HB368rs_v5 | 368 | 432 | 1.5 | 6.7 | 3.5 | 4 | 4 | 
+| Standard_HB368-336rs_v5 | 336 | 432 | 1.5 | 6.7 | 3.5 | 4 | 4 |
+| Standard_HB368-288rs_v5 | 288 | 432 | 1.5 | 6.7 | 3.5 | 4 | 4 |
+| Standard_HB368-240rs_v5 | 240 | 432 | 1.5 | 6.7 | 3.5 |  4 | 4 |
+| Standard_HB368-192rs_v5 | 192 | 432 | 1.5 | 6.7 | 3.5 |  4 | 4 |
+| Standard_HB368-144rs_v5 | 144 | 432 | 1.5 | 6.7 | 3.5 |  4 | 4 |
+| Standard_HB368-96rs_v5 | 96 | 432| 1.5 | 6.7 | 3.5 | 4 | 4 |
+| Standard_HB368-48rs_v5 | 48 | 432 | 1.5 | 6.7 | 3.5 |  4 | 4 |
 
 
 #### VM Basics resources
@@ -48,8 +48,8 @@ Local (temp) storage info for each size
 | Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Local Solid State Disks (Qty.) | Local Solid State Disk Size (GiB) |
 | --- | --- | --- | --- | --- |
 | Standard_HB368rs_v5 | 1 | 480 | 8 | 14304 |
-| Standard_HB368_336rsv5 | 1 | 480 | 8 | 14304 |
-| Standard_HB368_288rsv5 | 1 | 480 | 8 | 14304 |
+| Standard_HB368-336rs_v5 | 1 | 480 | 8 | 14304 |
+| Standard_HB368-288rs_v5 | 1 | 480 | 8 | 14304 |
 | Standard_HB368-240rs_v5 | 1 | 480 | 8 | 14304 |
 | Standard_HB368-192rs_v5 | 1 | 480 | 8 | 14304 |
 | Standard_HB368-144rs_v5 | 1 | 480 | 8 | 14304 |

@@ -4,10 +4,12 @@ description: Introduction to NGroups and its features describing how customers c
 ms.author: shivg
 author: shivg
 ms.service: azure-container-instances
-ms.custom: devx-track-azurecli
 services: container-instances
 ms.topic: how-to
-ms.date: 11/05/2024
+ms.date: 11/17/2025
+ms.custom:
+  - devx-track-azurecli
+  - sfi-image-nochange
 # Customer intent: As a cloud architect, I want to manage multiple container group instances using a single API call through NGroups, so that I can streamline operations, enhance scalability, and improve the availability of my cloud applications.
 ---
 
@@ -47,14 +49,14 @@ NGroups references this Container Group Profile and then calls ACI APIs in order
 
 ### Container Group Profile (CG Profile)
 
-A large-scale cloud application may require you to manage multiple container groups. As of today, in order to run multiple CGs (Container Groups), customers need to provide relevant properties such as container images, restart policy, and other properties each time. This can result in throttling, duplicated effort, and management overhead.
+A large-scale cloud application may require you to manage multiple container groups. As of today, in order to run multiple CGs (Container Groups), customers need to provide relevant properties such as container images, restart policy, and other properties each time. This requirement can result in throttling, duplicated effort, and management overhead.
 
 To alleviate this concern, NGroups introduced Container Group Profiles. The container group profile (CGProfile) serves as a *template* for creating container groups with same set of properties.  
 
 Here are some of the common properties that can be specified in a container group profile:
 
 - osType (Example: Linux, Windows)
-- containers. Image name, memory, CPU etc.
+- containers. Image name, memory, CPU, etc.
 - restartPolicy
 - ipAddress protocol and internal port
 - shutdownGracePeriod
@@ -106,10 +108,10 @@ And here's a sample CG profile:
 
 ### NGroups
 
-NGroups resource provides a way to create and manage ‘n’ container groups with a rich set of operations. An NGroups resource references a container group profile resource and uses that to create N instances of similar looking CGs. Within NGroups resource, customers can also specify other properties including but not limited to number of CGs, update preferences (manual or rolling update), load balancers, subnets, and other relevant properties which they want to associate with CGs under an NGroups resource.
+NGroups resource provides a way to create and manage ‘n’ container groups with a rich set of operations. An NGroups resource references a container group profile resource and uses that to create N instances of similar looking CGs. Within NGroups resource, customers can also specify other properties including but not limited to number of CGs, update preferences (manual or rolling update), load balancers, subnets, and other relevant properties they want to associate with CGs under an NGroups resource.
 
 > [!NOTE]
-> A CG profile needs to be created **before** creating an NGroups resource. Since the CG profile is an ARM resource, it has its own ARM APIs. A CG profile needs to be created **before** creating an NGroups resource.
+> A CG profile needs to be created **before** creating an NGroups resource. Since the CG profile is an Azure Resource Manager (ARM) resource, it has its own Azure Resource Manager APIs. A CG profile needs to be created **before** creating an NGroups resource.
 
 #### Benefits of Referencing Container Group Profile
 
@@ -154,7 +156,7 @@ NGroups references a CG profile and adds other related properties and capabiliti
 - The subnet into which CGs are deployed when using a virtual network
 - The Load Balancer or Application Gateway to provide network ingress to the CGs
 
-NGroups in turn invokes the ACI ARM APIs to create and manage each CG. Since it uses the same ARM APIs, there's no difference between the CGs created by NGroups and the CGs created directly by the customer. They have the exact same API experience.
+NGroups in turn invokes the ACI Azure Resource Manager APIs to create and manage each CG. Since it uses the same Azure Resource Manager APIs, there's no difference between the CGs created by NGroups and the CGs created directly by the customer. They have the exact same API experience.
 
 ### Updating an NGroups Resource
 
@@ -172,7 +174,7 @@ To update existing CGs with new CGProfile, we issue a *manual update* command wi
 
 This mode gives us flexibility to update CGs selectively and provides full control over impact on production workloads.  
 
-In **Rolling** mode, when we update the reference to cgprofile2 and issue an UPDATE NGroups command, existing CGs are updated with cgprofile2. The update to existing CGs happens in small batches (and not all at once). This ensures that there is a minimal impact on your workload since only a small percentage of CGs may be unavailable during the update.  
+In **Rolling** mode, when we update the reference to cgprofile2 and issue an UPDATE NGroups command, existing CGs are updated with cgprofile2. The update to existing CGs happens in small batches (and not all at once). This ensures that there's a minimal impact on your workload since only a small percentage of CGs may be unavailable during the update.  
 
 We can configure the batch size and other related rolling update mode settings with the NGroups API.
 
@@ -199,9 +201,9 @@ If these prerequisites aren't met, requests fail, and the NGroups resource type 
 Create CG Profile: [ContainerGroupProfile-Sample.json](#container-group-profile-sample)
 Create Zonal NGroups with CGProfile: [NGroups-Zonal-Sample.json](#ngroups-with-zones-sample)
 
-Customers can see if a container group is associated to an NGroups resource by checking container group orchestratorId property under the JSON view. The orchestratorId represents the associated NGroups ARM resource ID.
+Customers can see if a container group is associated to an NGroups resource by checking container group orchestratorId property under the JSON view. The orchestratorId represents the associated NGroups Azure Resource Manager resource ID.
 
-:::image type="content" source="../media/container-instances-ngroups/cg-arm-json-structure.png" alt-text="A screenshot of an NGroups CG ARM JSON displaying OrchestratorId property.":::
+:::image type="content" source="../media/container-instances-ngroups/cg-arm-json-structure.png" alt-text="A screenshot of an NGroups CG Azure Resource Manager JSON displaying OrchestratorId property.":::
 
 ## How-To Guide
 
@@ -284,7 +286,7 @@ While creating or updating container groups, NGroups relies on the same ACI APIs
 
 - Once an NGroups resource is created with a set of zones (for example, { “1”, “2” }), the zones can't be removed. However, a new zone can be added to the list. For example, { “1”, “2”, “3” }
 
-- If a specified zone is down, then the overall NGroups operation to create the CGs fails. Retry the request once the zone is back up. Another option is to delete the failed CGs.
+- If a specified zone is down, then the overall NGroups operation to create the CGs fails. Retry the request once the zone is operational again. Another option is to delete the failed CGs.
 
 - During scale down, NGroups randomly deletes instances, which might not always maintain AZ spread. However, subsequent scale-out operations always try to rebalance the AZ spread.  
 
@@ -326,15 +328,15 @@ This can be useful when you have multiple NGroups in a single resource group and
 
 Yes, you can set the properties.elasticProfile.maintainDesiredCount bool property to true.  
 
-It creates a new CG for every CG that is being deleted/detached from the NGroups. It tries to maintain the desiredCount property of the NGroups to its set value.
+It creates a new CG for every CG that's being deleted/detached from the NGroups. It tries to maintain the desiredCount property of the NGroups at its set value.
 
-This is useful when you want to use the NGroups as a *pool* which automatically gets replenished when you take away CGs from the pool for your workload scenarios.  
+This is useful when you want to use the NGroups as a *pool*, which automatically gets replenished when you take away CGs from the pool for your workload scenarios.  
 
-It is a nullable bool property. If you omit it for subsequent NGroups PUT/update calls, it doesn't reset to false. To reset, you must explicitly set it to false. When it is null/false, and when a CG is deleted/detached from the NGroups, the desiredCount property for the NGroups reduces accordingly.
+It's a nullable bool property. If you omit it for subsequent NGroups PUT/update calls, it doesn't reset to false. To reset, you must explicitly set it to false. When it's null/false, and when a CG is deleted/detached from the NGroups, the desiredCount property for the NGroups reduces accordingly.
 
 #### How do I get the CG name, NGroups ID and other metadata propagated down into the container?
 
-Currently, we expose only the CG name and orchestrator ID (the ARM resource ID). In the future, other relevant properties could be considered. These two properties show up as container environment variables.
+Currently, we expose only the CG name and orchestrator ID (the Azure Resource Manager resource ID). In the future, other relevant properties could be considered. These two properties show up as container environment variables.
 
 To get these environment variables on the container, specify these tags *at the NGroups level*:
 
@@ -358,7 +360,7 @@ For workloads that offer higher availability (for example, NGroups spread across
 
 This update is done AZ by AZ with not much automated coordination across AZs. Coordination is manually tracked and best-effort.
 
-So, if by chance, a platform update happens simultaneously across 2 or more AZs, then CGs across these AZs can be down simultaneously thus causing unavailability for your NGroups.
+So, if by chance, a platform update happens simultaneously across two or more AZs, then CGs across these AZs can be down simultaneously thus causing unavailability for your NGroups.
 
 #### How to use Confidential Containers with NGroups
 
@@ -538,7 +540,7 @@ Refer to the ACI documentation of confidential containers here: [Tutorial: Prepa
 }
 ```
 
-## Learn Related Topics
+## Related articles
 
 - [Azure Container Instances](../container-instances-overview.md)
 - [NGroups Rolling Update](container-instances-rolling-update.md)

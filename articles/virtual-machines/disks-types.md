@@ -3,7 +3,7 @@ title: Select a disk type for Azure IaaS VMs - managed disks
 description: Learn about the available Azure disk types for virtual machines, including Ultra Disks, Premium SSDs v2, Premium SSDs, standard SSDs, and Standard HDDs.
 author: roygara
 ms.author: rogarana
-ms.date: 10/27/2025
+ms.date: 11/06/2025
 ms.topic: concept-article
 ms.service: azure-disk-storage
 ms.custom: references_regions
@@ -49,15 +49,15 @@ For a video that covers some high level differences for the different disk types
 
 Azure Ultra Disks are the highest-performing storage option for Azure virtual machines (VMs). You can change the performance parameters of an Ultra Disk without having to restart your VMs. Ultra Disks are suited for data-intensive workloads such as SAP HANA, top-tier databases, and transaction-heavy workloads.
 
-Ultra Disks must be used as data disks and can only be created as empty disks. For environments using Ultra Disks as data disks, use Premium solid-state drives (SSDs) as operating system (OS) disks.
+Ultra Disks must be used as data disks and can only be created as empty disks. When using Ultra Disks as data disks, use Premium solid-state drives (SSDs) as operating system (OS) disks.
 
 ### Ultra Disk size
 
-Ultra Disk sizes range from 4 GiB up to 64 GiB, they also work like Premium SSD, Standard SSD, and Standard HDD sizes. When you create or modify an Ultra Disk, the size you set is billed as the next largest provisioned disk size. So if you deploy a 200 GiB Ultra Disk or set a 200 GiB Ultra Disk, you'll have a 200 GiB Ultra Disk that's billed as if it was 256 GiB, since that's the next largest provisioned disk size.
+Ultra Disk sizes range from 4 GiB up to 64 TiB, in 1 GiB increments. Ultra Disk capacity works like Premium SSD v2 disks and you're billed on a per GiB ratio.
 
 Ultra Disks offer up to 100 TiB per region per subscription by default and Ultra Disks support higher capacity by request. To request an increase in capacity, request a quota increase or contact Azure Support.
 
-The following table provides a comparison of disk sizes and performance caps to help you decide which to use.
+The following table provides an example of performance caps an Ultra Disk has depending on the size you set for the disk.
 
 |Disk Size (GiB)  |IOPS Cap  |Throughput Cap (MB/s)  |
 |---------|---------|---------|
@@ -70,21 +70,21 @@ The following table provides a comparison of disk sizes and performance caps to 
 |256     |256,000 (76,000)*         |10,000         |
 |512     |400,000 (153,000)*         |10,000         |
 |1,024    |400,000 (307,200)*        |10,000        |
-|2,048-65,536 (sizes in this range increasing in increments of 1 TiB)     |400,000         |10,000         |
+|2,048-65,536|400,000         |10,000         |
 
 \* Only applies during deployment of Virtual Machine Scale Sets with Uniform orchestration mode. Setting a higher value during deployment results in a failed deployment. After deployment completes you can [increase the performance](disks-enable-ultra-ssd.md#adjust-the-performance-of-an-ultra-disk) of your disks.
 
 
 ### Ultra Disk performance
 
-Ultra Disks are designed to provide consistently low sub millisecond latencies and the highest limits for IOPS and throughput. Ultra Disks feature a flexible performance configuration model that allows you to independently configure IOPS and throughput, before and after you provision the disk. You can adjust the performance of an Ultra Disk at runtime without detaching the disk from the VM. Within a 24 hour period, you can change the performance of a disk four times. It can take up to an hour for a performance change to take effect.
+Ultra Disks are designed to provide consistently low sub millisecond latencies and the highest limits for IOPS and throughput. With Ultra Disks, you can individually set the capacity, throughput, and IOPS of a disk based on your workload needs, increasing flexibility and reducing costs. Each of these values determine the cost of your disk. Within a 24 hour period, you can change the performance of a disk four times. It can take up to an hour for a performance change to take effect.
 
 ### Ultra Disk IOPS
 
-Ultra Disks support IOPS limits of 1000 (300 only during deployment of Ultra Disks while using Uniform Virtual Machine Scale Sets) IOPS/GiB, up to a maximum of 400,000 IOPS per disk. To achieve the target IOPS for the disk, ensure that the selected disk IOPS are less than the VM IOPS limit. Ultra Disks with greater IOPS can be used as shared disks to support multiple VMs. The minimum guaranteed IOPS per disk is 100.
+Ultra Disks support IOPS limits of 1000 IOPS/GiB, up to a maximum of 400,000 IOPS per disk. To achieve the target IOPS for the disk, ensure that the selected disk IOPS are less than the VM IOPS limit. Ultra Disks with greater IOPS can be used as shared disks to support multiple VMs. The minimum baseline IOPS per disk is 100.
 
 > [!NOTE]
-> Only during deployment of Ultra Disks while using Uniform Virtual Machine Scale Sets: The minimum guaranteed IOPS per disk are 1 IOPS/GiB, with an overall baseline minimum of 100 IOPS. If you exceed these limits at deployment, the deployment fails. You can [increase the performance](disks-enable-ultra-ssd.md#adjust-the-performance-of-an-ultra-disk) of these disks once deployment completes.
+> Only during deployment of Ultra Disks while using Uniform Virtual Machine Scale Sets: The minimum IOPS per disk are 1 IOPS/GiB, with an overall baseline minimum of 100 IOPS. The maximum IOPS per disk are 300 IOPS/GiB, up to a maximum of 400,000 IOPS per disk. If you exceed these limits at deployment, the deployment fails. You can [increase the performance](disks-enable-ultra-ssd.md#adjust-the-performance-of-an-ultra-disk) of these disks once deployment completes.
 
 For more information about IOPS, see [Virtual machine and disk performance](disks-performance.md).
 
@@ -128,7 +128,7 @@ Unlike Premium SSDs, Premium SSD v2 doesn't have dedicated sizes. You can set a 
 
 ### Premium SSD v2 performance
 
-Premium SSD v2 disks are designed to provide sub millisecond latencies and provisioned IOPS and throughput 99.9% of the time. With Premium SSD v2 disks, you can individually set the capacity, throughput, and IOPS of a disk based on your workload needs, providing you with more flexibility and reduced costs. Each of these values determines the cost of your disk. You can adjust the performance of a Premium SSD v2 disk four times within a 24 hour period. Creating a disk counts as one of these times, so for the first 24 hours after creating a premium SSD v2 disk you can only adjust its performance up to three times.
+Premium SSD v2 disks are designed to provide provisioned IOPS and throughput 99.9% of the time. Premium SSD v2 disks are also designed to provide sub millisecond latencies. With Premium SSD v2 disks, you can individually set the capacity, throughput, and IOPS of a disk based on your workload needs, providing you with more flexibility and reduced costs. Each of these values determines the cost of your disk. You can adjust the performance of a Premium SSD v2 disk four times within a 24 hour period. Creating a disk counts as one of these times, so for the first 24 hours after creating a premium SSD v2 disk you can only adjust its performance up to three times.
 
 #### Premium SSD v2 capacities
 

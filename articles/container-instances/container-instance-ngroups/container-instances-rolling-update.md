@@ -7,7 +7,7 @@ ms.service: azure-container-instances
 ms.custom: devx-track-azurecli
 services: container-instances
 ms.topic: how-to
-ms.date: 11/07/2024
+ms.date: 11/17/2025
 # Customer intent: As a cloud administrator, I want to perform rolling updates on container groups in NGroups, so that I can ensure minimal workload disruption and maintain service availability during updates.
 ---
 
@@ -57,11 +57,11 @@ NGroups then automatically group instances into batches and updates one batch at
 
 - An **in-place** update invokes a CG PUT call to update each CG of the batch.
 
-- A **replace** update invokes a CG PUT call to create new CGs and delete existing CGs of the batch. There exists a 1:1 correspondence between the CGs being created and the CGs being deleted. However, the CG names will be different.
+- A **replace** update invokes a CG PUT call to create new CGs and delete existing CGs of the batch. There exists a 1:1 correspondence between the CGs being created and the CGs being deleted. However, the CG names are different.
 
-If a sufficient number of CGs in the batch provide healthy signals after the pauseTimeBetweenBatches period, NGroups automatically starts the next batch for the update. Otherwise, it stops the rollout. The *maxUnhealthyPercent* parameter specifies the total number of unhealthy CGs, while the *maxUnhealthyUpdatedPercent* parameter specifies the total number of unhealthy CGs after the update.
+If a sufficient number of container groups in the batch provide healthy signals after the pauseTimeBetweenBatches period, NGroups automatically starts the next batch for the update. Otherwise, it stops the rollout. The *maxUnhealthyPercent* parameter specifies the total number of unhealthy CGs, while the *maxUnhealthyUpdatedPercent* parameter specifies the total number of unhealthy CGs after the update.
 
-Here is an example to issue a rolling update request to NGroups:
+Here's an example to issue a rolling update request to NGroups:
 
 ``` json
 { 
@@ -108,7 +108,7 @@ Here is an example to issue a rolling update request to NGroups:
 } 
 ```
 
-If image version is set to the **latest** tag for container images within the CG profile, then NGroups automatically picks up the latest image version during the RU. To prevent unexpected behavior in your application, it is recommended to not use the *latest* tag for images. Instead, use specific versions.  
+If image version is set to the **latest** tag for container images within the CG profile, then NGroups automatically picks up the latest image version during the RU. To prevent unexpected behavior in your application, it's recommended to not use the *latest* tag for images. Instead, use specific versions.  
 
 
 > [!NOTE]
@@ -131,17 +131,17 @@ This returns a response containing relevant information about the RU.
 
 ### Canceling a Rolling Update
 
-To cancel a rolling update, use the following API. Once canceled, the RU cannot be resumed/restarted. A new RU needs to be triggered.
+To cancel a rolling update, use the following API. Once canceled, the RU can't be resumed/restarted. A new RU needs to be triggered.
 
 `POST /subscriptions/{subscriptionId}/resourceGroups/{{rgName}}/providers/Microsoft.ContainerInstance/NGroups/{{ngroupsName}}/cancelRollingUpdate`
 
-You do not need to provide a request body when calling this API.
+You don't need to provide a request body when calling this API.
 
-It's also important to know that canceling an RU won't automatically roll it back to the previous state, but it will remain in the state that it was at the moment it was canceled.  For example, in case during an RU one wants to update a CG profile reference from *cgprofile1* to *cgprofile2*, and at some point the operation is canceled, some CGs might have the new profile *cgprofile2* and others remain with *cgprofile1*.
+It's also important to know that canceling an RU won't automatically roll it back to the previous state, but it remains in the state that it was at the moment it was canceled. For example, in case during an RU one wants to update a CG profile reference from *cgprofile1* to *cgprofile2*, and at some point the operation is canceled, some CGs might have the new profile *cgprofile2* and others remain with *cgprofile1*.
 
 ### Boundary of a Batch in a Rolling Update
 
-The CGs of a specific batch in an RU do not cross a fault model boundary. A fault model represents a zone/fault-domain (FD) combination. For example, zone 1 / FD 0 is a fault model boundary, zone 1 / FD 1 is another fault model boundary, and zone 2 / FD 0 is yet another fault model boundary.
+The CGs of a specific batch in an RU don't cross a fault model boundary. A fault model represents a zone/fault-domain (FD) combination. For example, zone 1 / FD 0 is a fault model boundary, zone 1 / FD 1 is another fault model boundary, and zone 2 / FD 0 is yet another fault model boundary.
 
 If a customer has a multi-zonal NGroups set up with three zones, a batch is confined to CGs belonging to only one zone at most. A batch never consists of CGs spread across multiple zones.
 
@@ -151,7 +151,7 @@ NGroups maintains this fault model boundary in a batch, even when the number of 
 
 The only time a fault model boundary is crossed when the RU selects unhealthy CGs for the first batch. In this batch, the RU attempts to update all unhealthy CGs to improve the overall availability of NGroups. As a result, when updating unhealthy CGs, the RU may exceed the maxBatchPercent setting.
 
-## Learn Related Topics
+## Related articles
 
 - [Azure Container Instances](../container-instances-overview.md)
 - [About NGroups](container-instances-about-ngroups.md)

@@ -7,7 +7,7 @@ author: tomvcassidy
 ms.service: azure-container-instances
 ms.custom: devx-track-azurecli
 services: container-instances
-ms.date: 08/29/2024
+ms.date: 11/17/2025
 # Customer intent: As a cloud developer, I want to learn how to mount a gitRepo volume to my container instances, so that I can easily clone Git repositories during deployment without modifying my application code.
 ---
 

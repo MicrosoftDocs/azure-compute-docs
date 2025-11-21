@@ -8,7 +8,10 @@ ms.service: azure-virtual-machines
 ms.subservice: trusted-launch
 ms.topic: how-to
 ms.date: 08/13/2023
-ms.custom: template-how-to, devx-track-azurepowershell
+ms.custom:
+  - template-how-to
+  - devx-track-azurepowershell
+  - sfi-image-nochange
 # Customer intent: "As an IT administrator managing Azure virtual machines, I want to enable Trusted launch on existing Generation 2 VMs, so that I can enhance the security posture and protect against advanced threats like rootkits and boot kits."
 ---
 

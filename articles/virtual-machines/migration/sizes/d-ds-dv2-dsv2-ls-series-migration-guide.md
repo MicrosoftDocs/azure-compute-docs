@@ -78,7 +78,7 @@ Refer to the full [Azure VM resizing guide](/azure/virtual-machines/sizes/resize
 
 ## FAQ
 #### Q: Which Sizes Are Being Retired?
-To review retired sizes, see [retired Azure VM sizes](https://learn.microsoft.com/azure/virtual-machines/sizes/retirement/retired-sizes-list).
+To review retired sizes, see [retired Azure VM sizes](/azure/virtual-machines/sizes/retirement/retired-sizes-list).
 
 #### Q: Why Should I Migrate?
 
@@ -87,6 +87,10 @@ If you are actively running any sizes listed in this article, these VMs are set 
  - **Performance**: Newer VM series offer better price-to-performance ratios.
  - **Regional Availability**: The v5 and v6 series has broader regional support across Azure data centers.
  - **Future-proofing**: Migrate ahead of the retirement schedule to avoid disruption.
+
+#### Q: What Happens to my VMs After the Final Retirement Date?
+
+After the retirement date, any remaining VM subscriptions will be deallocated. They will stop running, no longer incur billing charges, and the retired VM size will not be covered by SLA or supported.
 
 #### Q: I am on pay-as-you-go (PayGo) or Savings Plan Pricing. Is There a Concern with Migration?
 
