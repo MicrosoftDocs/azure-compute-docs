@@ -1,88 +1,322 @@
 ---
-title: NC_RTXPRO6000BSE_v6 series
+title: NC_RTXPRO6000BSE_v6 size series
 description: Information on and specifications of the NC_RTXPRO6000BSE_v6-series sizes
-author: magatala-MSFT
+author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: concept-article
-ms.date: 11/20/2025
-ms.author: v-nmagatala
-ms.reviewer: iamwilliew
-# Customer intent: As a cloud architect, I want to understand the specifications and feature support of the NC_RTXPRO6000BSE_v6 size series, so that I can select the appropriate virtual machine size for my high-performance computing workloads.
+ms.topic: conceptual
+ms.date: 11/21/2025
+ms.author: mattmcinnes
+ms.reviewer: mattmcinnes
 ---
 
-# NC RTXPRO6000BSE v6 series
+# NC RTX PRO 6000 Blackwell Server Edition v6 sizes series
 
-These NC RTX PRO 6000 BSE v6 VMs are powered by NVIDIA RTX PRO 6000 Blackwell Server Edition GPUs, each featuring 96 GB of ultra-fast GDDR7 memory and the latest Blackwell architecture to enable breakthrough performance in multimodal AI, physical AI, and high-fidelity graphics. The VM host is equipped with Intel Granite Rapids CPUs, providing all-core turbo frequency of up to 4.2 GHz to handle demanding pre- and post-processing steps efficiently. These VMs are ideal for converged AI and visual computing workloads, such as:
-- Real-time digital twin and NVIDIA Omniverse simulation.
-- LLM Inference and RAG (Retrieval-Augmented Generation) for models under 70B parameters.
-- High-fidelity 3D rendering, product design, and video streaming.
-- GPU-accelerated desktop virtualization (VDI) with NVIDIA RTX Virtual Workstation.
-- Scientific visualization and High-Performance Computing (HPC) using FP32.
-- Agentic AI application development and deployment.
+[!INCLUDE [nc_rtxpro6000-bse_v6-summary](./includes/nc-rtxpro6000-bse-v6-series-summary.md)]
 
-Sign up to Participate in [NCv6 Public Preview](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR9s7orOb3OJJnwABCNj_8JdUMzlLSzJFTTdRRE8yU0UxWFFYQlpYV1hDVy4u) !
+[!INCLUDE [sizes-preview-tag](../includes/sizes-preview-tag.md)]
 
 ## Host specifications
-| Part | Quantity <br><sup>(Count Units) | Specs <br><sup>(SKU ID, Performance Units, etc.)  |
-|---|---|---|
-|Processor|upto 320 vCPUs|Intel GNR AP (Granite Rapids-AP) [x86-64], up to 4.2 GHz|
-|Memory|	768 – 1536 GiB |High-speed DDR5|
-|Disk|8 - 16 Disks|250,000 – 500,000 IOPS (Target) / 8,000 – 15,000 MBps (Target)|
-|Network|2 - 4 NICs|200,000 Mbps|
-|Accelerators|1 - 2 GPUs|NVIDIA RTX PRO 6000 BSE (96 GB GDDR7 vRAM per GPU)|
-
+[!INCLUDE [nc_rtxpro6000-bse_v6-series-specs](./includes/nc-rtxpro6000-bse-v6-series-specs.md)]
 
 ## Feature support
 [Premium Storage](../../premium-storage-performance.md): Supported <br>[Premium Storage caching](../../premium-storage-performance.md): Supported <br>[Live Migration](../../maintenance-and-updates.md): Not Supported <br>[Memory Preserving Updates](../../maintenance-and-updates.md): Not Supported <br>[Generation 2 VMs](../../generation-2.md): Supported <br>[Generation 1 VMs](../../generation-2.md): Not Supported <br>[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported <br>[Ephemeral OS Disk](../../ephemeral-os-disks.md): Supported <br>[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Not Supported <br>
+[Hibernation](../../hibernate-resume.md): Not Supported <br>[Azure Disk Encryption for Linux VMs](../../../virtual-machines/linux/disk-encryption-linux.md#restrictions): Not Supported <br>[Azure Disk Encryption for Windows VMs](../../../virtual-machines/windows/disk-encryption-windows.md#restrictions): Not Supported <br>
+## General Purpose Sizes
 
-## Available sizes
+### [Basics](#tab/sizebasicgp)
 
-### [General Purpose](#tab/sizegeneralpurpose)
+vCPUs (Qty.) and Memory for each size
 
-|  Size Name | vCPUs (Qty.) | Memory (GB) | Max NICs (Qty.)| Max Bandwidth(Mbps)| Temp Disk Storage(GiB)|
-| --- | --- | --- |---|---|---|
-| Standard_NC32ds_xl_RTXPRO6000BSE_v6|32|128|6|25000|256|
-| Standard_NC64ds_xl_RTXPRO6000BSE_v6|64|256|6|50000|512|
-| Standard_NC128ds_xl_RTXPRO6000BSE_v6|128|512|8|75000|1024|
-| Standard_NC256ds_xl_RTXPRO6000BSE_v6|256|1024|8|100000|2048|
-| Standard_NC320ds_xl_RTXPRO6000BSE_v6|320|1280|8|200000|2048|
-
-### [Memory Optimized](#tab/sizememoryoptimized)
-
-| Size Name | vCPUs (Qty.) | Memory (GB) |Max NICs (Qty.)| Max Bandwidth(Mbps)| Temp Disk Storage(GiB)|
-| --- | --- | --- | --- | --- | --- |
-|Standard_NC32mds_xl_RTXPRO6000BSE_v6|32|128|6|25000|256|
-|Standard_NC64mds_xl_RTXPRO6000BSE_v6|64|256|6|50000|512|
-|Standard_NC128mds_xl_RTXPRO6000BSE_v6|128|512|8|75000|1024|
-
-### [Compute Optimized](#tab/sizecomputeoptimized)
-
-| Size Name | vCPUs (Qty.) | Memory (GB) |Max NICs (Qty.)| Max Bandwidth(Mbps)| Temp Disk Storage(GiB)|
-| --- | --- | --- | --- | --- | --- |
-|Standard_NC16lds_xl_RTXPRO6000BSE_v6|16|64|4|25000|256|
-|Standard_NC32lds_xl_RTXPRO6000BSE_v6|32|128|6|25000|256|
-|Standard_NC64lds_xl_RTXPRO6000BSE_v6|64|256|6|50000|512|
-|Standard_NC128lds_xl_RTXPRO6000BSE_v6|128|512|8|75000|1024|
-|Standard_NC256lds_xl_RTXPRO6000BSE_v6|256|1024|8|100000|2048|
-|Standard_NC320lds_xl_RTXPRO6000BSE_v6|320|1280|8|200000|2048|
-
+| Size Name | vCPUs (Qty.) | Memory (GB) |
+| --- | --- | --- |
+| Standard_NC32ds_xl_RTXPRO6000BSE_v6 | 32 | 128 |
+| Standard_NC64ds_xl_RTXPRO6000BSE_v6 | 64 | 256 |
+| Standard_NC128ds_xl_RTXPRO6000BSE_v6 | 128 | 512 |
+| Standard_NC256ds_xl_RTXPRO6000BSE_v6 | 256 | 1024 |
+| Standard_NC320ds_xl_RTXPRO6000BSE_v6 | 320 | 1280 |
 
 #### VM Basics resources
 - [Check vCPU quotas](../../../virtual-machines/quotas.md)
 
+### [Local Storage](#tab/sizestoragelocalgp)
 
-## Storage Notes
-- Temp disk speed varies between Random Read (RR) and Random Write (RW). RR is typically faster.
-- Capacity is shown in GiB (1024³ bytes). When comparing to GB (1000³ bytes), GiB values may appear smaller. For example, 1023 GiB = 1098.4 GB. 
-- Disk throughput is measured in IOPS and MBps (MBps = 10⁶ bytes/sec).
-- For optimal storage performance, see [Virtual machine and disk performance](../../../virtual-machines/disks-performance.md).
+Local (temp) storage info for each size
 
-## Networking Notes
+| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read (RR)<sup>1</sup> IOPS | Temp Disk Random Read (RR)<sup>1</sup> Throughput (MB/s) | Temp Disk Random Write (RW)<sup>1</sup> IOPS | Temp Disk Random Write (RW)<sup>1</sup> Throughput (MB/s) |
+| --- | --- | --- | --- | --- | --- | --- |
+| Standard_NC32ds_xl_RTXPRO6000BSE_v6 |  | 256 |  |  |  |  |
+| Standard_NC64ds_xl_RTXPRO6000BSE_v6 |  | 512 |  |  |  |  |
+| Standard_NC128ds_xl_RTXPRO6000BSE_v6 |  | 1024 |  |  |  |  |
+| Standard_NC256ds_xl_RTXPRO6000BSE_v6 |  | 2048 |  |  |  |  |
+| Standard_NC320ds_xl_RTXPRO6000BSE_v6 |  | 2048 |  |  |  |  |
 
-- Expected bandwidth is the maximum aggregated bandwidth per VM type across all NICs. For more information, see [Virtual machine network bandwidth](/azure/virtual-network/virtual-machine-network-throughput).
-- Upper limits are guidelines, not guarantees. Actual performance depends on network congestion, application load, and settings. To optimizing network throughput, see [Optimize network throughput for Azure virtual machines](/azure/virtual-network/virtual-network-optimize-network-bandwidth). 
--  For bandwidth testing, see [Bandwidth/Throughput testing (NTTTCP)](/azure/virtual-network/virtual-network-bandwidth-testing).
+#### Storage resources
+- [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
+- [Azure managed disk types](../../../virtual-machines/disks-types.md)
+- [Share an Azure managed disk](../../../virtual-machines/disks-shared.md)
 
+#### Table definitions
+- <sup>1</sup>Temp disk speed often differs between RR (Random Read) and RW (Random Write) operations. RR operations are typically faster than RW operations. The RW speed is usually slower than the RR speed on series where only the RR speed value is listed.
+- Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
+- Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
+- To learn how to get the best storage performance for your VMs, see [Virtual machine and disk performance](../../../virtual-machines/disks-performance.md).
+
+### [Remote Storage](#tab/sizestorageremotegp)
+
+Remote (uncached) storage info for each size
+
+| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD Disk IOPS | Uncached Premium SSD Throughput (MB/s) | Uncached Premium SSD Burst<sup>1</sup> IOPS | Uncached Premium SSD Burst<sup>1</sup> Throughput (MB/s) | Uncached Ultra Disk and Premium SSD v2 IOPS | Uncached Ultra Disk and Premium SSD v2 Throughput (MB/s) | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 IOPS | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 Disk Throughput (MB/s) |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Standard_NC32ds_xl_RTXPRO6000BSE_v6 | 16 |  |  |  |  |  |  |  |  |
+| Standard_NC64ds_xl_RTXPRO6000BSE_v6 | 16 |  |  |  |  |  |  |  |  |
+| Standard_NC128ds_xl_RTXPRO6000BSE_v6 | 16 |  |  |  |  |  |  |  |  |
+| Standard_NC256ds_xl_RTXPRO6000BSE_v6 | 16 |  |  |  |  |  |  |  |  |
+| Standard_NC320ds_xl_RTXPRO6000BSE_v6 | 16 |  |  |  |  |  |  |  |  |
+
+#### Storage resources
+- [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
+- [Azure managed disk types](../../../virtual-machines/disks-types.md)
+- [Share an Azure managed disk](../../../virtual-machines/disks-shared.md)
+
+#### Table definitions
+- <sup>1</sup>Some sizes support [bursting](../../disk-bursting.md) to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.
+- <sup>2</sup>Special Storage refers to either [Ultra Disk](../../../virtual-machines/disks-enable-ultra-ssd.md) or [Premium SSD v2](../../../virtual-machines/disks-deploy-premium-v2.md) storage.
+- Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
+- Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
+- Data disks can operate in cached or uncached modes. For cached data disk operation, the host cache mode is set to ReadOnly or ReadWrite. For uncached data disk operation, the host cache mode is set to None.
+- To learn how to get the best storage performance for your VMs, see [Virtual machine and disk performance](../../../virtual-machines/disks-performance.md).
+
+
+### [Network](#tab/sizenetworkgp)
+
+Network interface info for each size
+
+| Size Name | Max NICs (Qty.) | Max Network Bandwidth (Mb/s) |
+| --- | --- | --- |
+| Standard_NC32ds_xl_RTXPRO6000BSE_v6 | 6 | 25000 |
+| Standard_NC64ds_xl_RTXPRO6000BSE_v6 | 6 | 50000 |
+| Standard_NC128ds_xl_RTXPRO6000BSE_v6 | 6 | 75000 |
+| Standard_NC256ds_xl_RTXPRO6000BSE_v6 | 8 | 100000 |
+| Standard_NC320ds_xl_RTXPRO6000BSE_v6 | 8 | 200000 |
+
+#### Networking resources
+- [Virtual networks and virtual machines in Azure](/azure/virtual-network/network-overview)
+- [Virtual machine network bandwidth](/azure/virtual-network/virtual-machine-network-throughput)
+
+#### Table definitions
+- Expected network bandwidth is the maximum aggregated bandwidth allocated per VM type across all NICs, for all destinations. For more information, see [Virtual machine network bandwidth](/azure/virtual-network/virtual-machine-network-throughput)
+- Upper limits aren't guaranteed. Limits offer guidance for selecting the right VM type for the intended application. Actual network performance will depend on several factors including network congestion, application loads, and network settings. For information on optimizing network throughput, see [Optimize network throughput for Azure virtual machines](/azure/virtual-network/virtual-network-optimize-network-bandwidth). 
+-  To achieve the expected network performance on Linux or Windows, you may need to select a specific version or optimize your VM. For more information, see [Bandwidth/Throughput testing (NTTTCP)](/azure/virtual-network/virtual-network-bandwidth-testing).
+
+### [Accelerators](#tab/sizeacceleratorsgp)
+
+Accelerator (GPUs, FPGAs, etc.) info for each size
+
+| Size Name | Accelerators (Qty.) | Accelerator Memory (GB) |
+| --- | --- | --- |
+| Standard_NC32ds_xl_RTXPRO6000BSE_v6 | 1/4 | 24 |
+| Standard_NC64ds_xl_RTXPRO6000BSE_v6 | 1/2 | 48 |
+| Standard_NC128ds_xl_RTXPRO6000BSE_v6 | 1 | 96 |
+| Standard_NC256ds_xl_RTXPRO6000BSE_v6 | 2 | 192 |
+| Standard_NC320ds_xl_RTXPRO6000BSE_v6 | 2 | 192 |
+
+---
+
+## Compute Optimized Sizes
+
+### [Basics](#tab/sizebasicco)
+
+vCPUs (Qty.) and Memory for each size
+
+| Size Name | vCPUs (Qty.) | Memory (GB) |
+| --- | --- | --- |
+| Standard_NC16lds_xl_RTXPRO6000BSE_v6 | 16 | 64 |
+| Standard_NC32lds_xl_RTXPRO6000BSE_v6 | 32 | 64 |
+| Standard_NC64lds_xl_RTXPRO6000BSE_v6 | 64 | 128 |
+| Standard_NC128lds_xl_RTXPRO6000BSE_v6 | 128 | 256 |
+| Standard_NC256lds_xl_RTXPRO6000BSE_v6 | 256 | 512 |
+| Standard_NC320lds_xl_RTXPRO6000BSE_v6 | 320 | 640 |
+
+#### VM Basics resources
+- [Check vCPU quotas](../../../virtual-machines/quotas.md)
+
+### [Local Storage](#tab/sizestoragelocalco)
+
+Local (temp) storage info for each size
+
+| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read (RR)<sup>1</sup> IOPS | Temp Disk Random Read (RR)<sup>1</sup> Throughput (MB/s) | Temp Disk Random Write (RW)<sup>1</sup> IOPS | Temp Disk Random Write (RW)<sup>1</sup> Throughput (MB/s) |
+| --- | --- | --- | --- | --- | --- | --- |
+| Standard_NC16lds_xl_RTXPRO6000BSE_v6 |  | 256 |  |  |  |  |
+| Standard_NC32lds_xl_RTXPRO6000BSE_v6 |  | 256 |  |  |  |  |
+| Standard_NC64lds_xl_RTXPRO6000BSE_v6 |  | 512 |  |  |  |  |
+| Standard_NC128lds_xl_RTXPRO6000BSE_v6 |  | 1024 |  |  |  |  |
+| Standard_NC256lds_xl_RTXPRO6000BSE_v6 |  | 2048 |  |  |  |  |
+| Standard_NC320lds_xl_RTXPRO6000BSE_v6 |  | 2048 |  |  |  |  |
+
+#### Storage resources
+- [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
+- [Azure managed disk types](../../../virtual-machines/disks-types.md)
+- [Share an Azure managed disk](../../../virtual-machines/disks-shared.md)
+
+#### Table definitions
+- <sup>1</sup>Temp disk speed often differs between RR (Random Read) and RW (Random Write) operations. RR operations are typically faster than RW operations. The RW speed is slower than the RR speed on series where only the RR speed value is listed.
+- Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
+- Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
+- To learn how to get the best storage performance for your VMs, see [Virtual machine and disk performance](../../../virtual-machines/disks-performance.md).
+
+### [Remote Storage](#tab/sizestorageremoteco)
+
+Remote (uncached) storage info for each size
+
+| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD Disk IOPS | Uncached Premium SSD Throughput (MB/s) | Uncached Premium SSD Burst<sup>1</sup> IOPS | Uncached Premium SSD Burst<sup>1</sup> Throughput (MB/s) | Uncached Ultra Disk and Premium SSD v2 IOPS | Uncached Ultra Disk and Premium SSD v2 Throughput (MB/s) | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 IOPS | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 Disk Throughput (MB/s) |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Standard_NC16lds_xl_RTXPRO6000BSE_v6 | 16 |  |  |  |  |  |  |  |  |
+| Standard_NC32lds_xl_RTXPRO6000BSE_v6 | 16 |  |  |  |  |  |  |  |  |
+| Standard_NC64lds_xl_RTXPRO6000BSE_v6 | 16 |  |  |  |  |  |  |  |  |
+| Standard_NC128lds_xl_RTXPRO6000BSE_v6 | 16 |  |  |  |  |  |  |  |  |
+| Standard_NC256lds_xl_RTXPRO6000BSE_v6 | 16 |  |  |  |  |  |  |  |  |
+| Standard_NC320lds_xl_RTXPRO6000BSE_v6 | 16 |  |  |  |  |  |  |  |  |
+
+#### Storage resources
+- [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
+- [Azure managed disk types](../../../virtual-machines/disks-types.md)
+- [Share an Azure managed disk](../../../virtual-machines/disks-shared.md)
+
+#### Table definitions
+- <sup>1</sup>Some sizes support [bursting](../../disk-bursting.md) to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.
+- <sup>2</sup>Special Storage refers to either [Ultra Disk](../../../virtual-machines/disks-enable-ultra-ssd.md) or [Premium SSD v2](../../../virtual-machines/disks-deploy-premium-v2.md) storage.
+- Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
+- Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
+- Data disks can operate in cached or uncached modes. For cached data disk operation, the host cache mode is set to ReadOnly or ReadWrite. For uncached data disk operation, the host cache mode is set to None.
+- To learn how to get the best storage performance for your VMs, see [Virtual machine and disk performance](../../../virtual-machines/disks-performance.md).
+
+
+### [Network](#tab/sizenetworkco)
+
+Network interface info for each size
+
+| Size Name | Max NICs (Qty.) | Max Network Bandwidth (Mb/s) |
+| --- | --- | --- |
+| Standard_NC16lds_xl_RTXPRO6000BSE_v6 | 4 | 25000 |
+| Standard_NC32lds_xl_RTXPRO6000BSE_v6 | 6 | 25000 |
+| Standard_NC64lds_xl_RTXPRO6000BSE_v6 | 6 | 50000 |
+| Standard_NC128lds_xl_RTXPRO6000BSE_v6 | 8 | 75000 |
+| Standard_NC256lds_xl_RTXPRO6000BSE_v6 | 8 | 100000 |
+| Standard_NC320lds_xl_RTXPRO6000BSE_v6 | 8 | 200000 |
+
+#### Networking resources
+- [Virtual networks and virtual machines in Azure](/azure/virtual-network/network-overview)
+- [Virtual machine network bandwidth](/azure/virtual-network/virtual-machine-network-throughput)
+
+#### Table definitions
+- Expected network bandwidth is the maximum aggregated bandwidth allocated per VM type across all NICs, for all destinations. For more information, see [Virtual machine network bandwidth](/azure/virtual-network/virtual-machine-network-throughput)
+- Upper limits aren't guaranteed. Limits offer guidance for selecting the right VM type for the intended application. Actual network performance will depend on several factors including network congestion, application loads, and network settings. For information on optimizing network throughput, see [Optimize network throughput for Azure virtual machines](/azure/virtual-network/virtual-network-optimize-network-bandwidth). 
+-  To achieve the expected network performance on Linux or Windows, you may need to select a specific version or optimize your VM. For more information, see [Bandwidth/Throughput testing (NTTTCP)](/azure/virtual-network/virtual-network-bandwidth-testing).
+
+### [Accelerators](#tab/sizeacceleratorsco)
+
+Accelerator (GPUs, FPGAs, etc.) info for each size
+
+| Size Name | Accelerators (Qty.) | Accelerator Memory (GB) |
+| --- | --- | --- |
+| Standard_NC16lds_xl_RTXPRO6000BSE_v6 | 1/4 | 24 |
+| Standard_NC32lds_xl_RTXPRO6000BSE_v6 | 1/4 | 24 |
+| Standard_NC64lds_xl_RTXPRO6000BSE_v6 | 1/2 | 48 |
+| Standard_NC128lds_xl_RTXPRO6000BSE_v6 | 1 | 96 |
+| Standard_NC256lds_xl_RTXPRO6000BSE_v6 | 2 | 192 |
+| Standard_NC320lds_xl_RTXPRO6000BSE_v6 | 2 | 192 |
+
+---
+
+## Memory Optimized Sizes
+
+### [Basics](#tab/sizebasicmo)
+
+vCPUs (Qty.) and Memory for each size
+
+| Size Name | vCPUs (Qty.) | Memory (GB) |
+| --- | --- | --- |
+| Standard_NC32mds_xl_RTXPRO6000BSE_v6 | 32 | 256 |
+| Standard_NC64mds_xl_RTXPRO6000BSE_v6 | 64 | 512 |
+| Standard_NC128mds_xl_RTXPRO6000BSE_v6 | 128 | 1024 |
+
+#### VM Basics resources
+- [Check vCPU quotas](../../../virtual-machines/quotas.md)
+
+### [Local Storage](#tab/sizestoragelocalmo)
+
+Local (temp) storage info for each size
+
+| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read (RR)<sup>1</sup> IOPS | Temp Disk Random Read (RR)<sup>1</sup> Throughput (MB/s) | Temp Disk Random Write (RW)<sup>1</sup> IOPS | Temp Disk Random Write (RW)<sup>1</sup> Throughput (MB/s) |
+| --- | --- | --- | --- | --- | --- | --- |
+| Standard_NC32mds_xl_RTXPRO6000BSE_v6 |  | 256 |  |  |  |  |
+| Standard_NC64mds_xl_RTXPRO6000BSE_v6 |  | 512 |  |  |  |  |
+| Standard_NC128mds_xl_RTXPRO6000BSE_v6 |  | 1024 |  |  |  |  |
+
+#### Storage resources
+- [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
+- [Azure managed disk types](../../../virtual-machines/disks-types.md)
+- [Share an Azure managed disk](../../../virtual-machines/disks-shared.md)
+
+#### Table definitions
+- <sup>1</sup>Temp disk speed often differs between RR (Random Read) and RW (Random Write) operations. RR operations are typically faster than RW operations. The RW speed is slower than the RR speed on series where only the RR speed value is listed.
+- Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
+- Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
+- To learn how to get the best storage performance for your VMs, see [Virtual machine and disk performance](../../../virtual-machines/disks-performance.md).
+
+### [Remote Storage](#tab/sizestorageremotemo)
+
+Remote (uncached) storage info for each size
+
+| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD Disk IOPS | Uncached Premium SSD Throughput (MB/s) | Uncached Premium SSD Burst<sup>1</sup> IOPS | Uncached Premium SSD Burst<sup>1</sup> Throughput (MB/s) | Uncached Ultra Disk and Premium SSD v2 IOPS | Uncached Ultra Disk and Premium SSD v2 Throughput (MB/s) | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 IOPS | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 Disk Throughput (MB/s) |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Standard_NC32mds_xl_RTXPRO6000BSE_v6 | 16 |  |  |  |  |  |  |  |  |
+| Standard_NC64mds_xl_RTXPRO6000BSE_v6 | 16 |  |  |  |  |  |  |  |  |
+| Standard_NC128mds_xl_RTXPRO6000BSE_v6 | 16 |  |  |  |  |  |  |  |  |
+
+#### Storage resources
+- [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
+- [Azure managed disk types](../../../virtual-machines/disks-types.md)
+- [Share an Azure managed disk](../../../virtual-machines/disks-shared.md)
+
+#### Table definitions
+- <sup>1</sup>Some sizes support [bursting](../../disk-bursting.md) to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.
+- <sup>2</sup>Special Storage refers to either [Ultra Disk](../../../virtual-machines/disks-enable-ultra-ssd.md) or [Premium SSD v2](../../../virtual-machines/disks-deploy-premium-v2.md) storage.
+- Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
+- Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
+- Data disks can operate in cached or uncached modes. For cached data disk operation, the host cache mode is set to ReadOnly or ReadWrite. For uncached data disk operation, the host cache mode is set to None.
+- To learn how to get the best storage performance for your VMs, see [Virtual machine and disk performance](../../../virtual-machines/disks-performance.md).
+
+
+### [Network](#tab/sizenetworkmo)
+
+Network interface info for each size
+
+| Size Name | Max NICs (Qty.) | Max Network Bandwidth (Mb/s) |
+| --- | --- | --- |
+| Standard_NC32mds_xl_RTXPRO6000BSE_v6 | 6 | 25000 |
+| Standard_NC64mds_xl_RTXPRO6000BSE_v6 | 6 | 50000 |
+| Standard_NC128mds_xl_RTXPRO6000BSE_v6 | 8 | 75000 |
+
+#### Networking resources
+- [Virtual networks and virtual machines in Azure](/azure/virtual-network/network-overview)
+- [Virtual machine network bandwidth](/azure/virtual-network/virtual-machine-network-throughput)
+
+#### Table definitions
+- Expected network bandwidth is the maximum aggregated bandwidth allocated per VM type across all NICs, for all destinations. For more information, see [Virtual machine network bandwidth](/azure/virtual-network/virtual-machine-network-throughput)
+- Upper limits aren't guaranteed. Limits offer guidance for selecting the right VM type for the intended application. Actual network performance will depend on several factors including network congestion, application loads, and network settings. For information on optimizing network throughput, see [Optimize network throughput for Azure virtual machines](/azure/virtual-network/virtual-network-optimize-network-bandwidth). 
+-  To achieve the expected network performance on Linux or Windows, you may need to select a specific version or optimize your VM. For more information, see [Bandwidth/Throughput testing (NTTTCP)](/azure/virtual-network/virtual-network-bandwidth-testing).
+### [Accelerators](#tab/sizeacceleratorsmo)
+
+Accelerator (GPUs, FPGAs, etc.) info for each size
+
+| Size Name | Accelerators (Qty.) | Accelerator Memory (GB) |
+| --- | --- | --- |
+| Standard_NC32mds_xl_RTXPRO6000BSE_v6 | 1/4 | 24 |
+| Standard_NC64mds_xl_RTXPRO6000BSE_v6 | 1/2 | 48 |
+| Standard_NC128mds_xl_RTXPRO6000BSE_v6 | 1 | 96 |
+
+---
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]
