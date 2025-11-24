@@ -1,6 +1,7 @@
 ---
 title: Deploy OpenShift to Azure Stack Hub
-description: Deploy OpenShift to Azure Stack Hub.
+ms.reviewer: robess
+description: Discover how to deploy OpenShift on Azure Stack Hub, configure CNS for GlusterFS, and leverage Red Hat-managed RHCOS images.
 author: ronmiab
 ms.author: robess
 ms.service: azure-stack
@@ -11,7 +12,7 @@ ms.date: 11/24/2025
 # Customer intent: As a system administrator, I want to deploy OpenShift on Azure Stack Hub, so that I can leverage container orchestration in a hybrid cloud environment with the specific storage configurations needed for my organization.
 ---
 
-# Deploy OpenShift Container Platform or OKD to Azure Stack Hub
+# OpenShift Container Platform or OKD deployment to Azure Stack Hub
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Flexible scale sets 
 
