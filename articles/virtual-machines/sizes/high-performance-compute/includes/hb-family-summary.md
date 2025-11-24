@@ -6,7 +6,7 @@ author: mattmcinnes
 ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.date: 04/19/2024
+ms.date: 11/24/2025
 ms.author: mattmcinnes
 ms.custom: include file
 # Customer intent: "As a cloud architect, I want to understand the capabilities of the HB subfamily of VM sizes, so that I can determine if they meet the demands of our high-performance computing workloads."
