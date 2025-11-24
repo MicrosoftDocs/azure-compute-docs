@@ -28,6 +28,7 @@ Follow the steps in the OpenShift documentation at [Installing a cluster on Azur
 
 > [!WARNING]
 > If you have an issue with OpenShift, contact Red Hat for support.
+
 ## Next steps
 
 [Installing a cluster on Azure Stack Hub using ARM templates](https://docs.openshift.com/container-platform/4.9/installing/installing_azure_stack_hub/installing-azure-stack-hub-user-infra.html).
