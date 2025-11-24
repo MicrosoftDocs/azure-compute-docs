@@ -505,6 +505,8 @@ Zonally deployed virtual machines or virtual machine scale sets from Consumer su
 
 After the quantity increase, you should see the CR in a fully allocated state with all the virtual machines or virtual machine scale sets allocated. See [View VM allocation with the Instance View](/azure/virtual-machines/capacity-reservation-associate-vm?tabs=api1%2Capi2%2Capi3#view-vm-allocation-with-the-instance-view).
 
+For more information, see [Zonal Virtual Machine](/azure/virtual-machines/capacity-reservation-associate-vm?tabs=api1%2Capi2%2Capi3#zonal-virtual-machine) or [Zonal Virtual Machine Scale Set](/azure/virtual-machines/capacity-reservation-associate-virtual-machine-scale-set?tabs=api1%2Capi2#zonal-virtual-machine-scale-set).
+
 ### Use of Reserved Instances with shared Capacity Reservation Groups 
 Sharing a Capacity Reservation Group doesn't alter the scope of any Reserved Instances or Savings Plans. If either the CRG or the VM is deployed from a scope not covered by prepaid discounts, the pay-as-you-go price is charged. 
 
