@@ -18,7 +18,7 @@ ms.date: 11/24/2025
 
 You can deploy [OpenShift](openshift-get-started.md) in Azure Stack Hub. Some key differences exist between Azure and Azure Stack Hub, so deployment and capabilities differ slightly.
 
-Currently, the Azure Cloud Provider doesn't work in Azure Stack Hub. You can't use disk attach for persistent storage in Azure Stack Hub. Instead, you can configure other storage options such as NFS, iSCSI, and GlusterFS. Or, you can enable CNS and use GlusterFS for persistent storage. If you enable CNS, the deployment adds three more nodes with storage for GlusterFS usage.
+Currently, the Azure Cloud Provider doesn't work in Azure Stack Hub. You can't use disk attach for persistent storage in Azure Stack Hub. Instead, you can configure other storage options such as Network File System (NFS), Internet Small Computer Systems Interface (iSCSI), and GlusterFS. Or, you can enable Container Native Storage (CNS) and use GlusterFS for persistent storage. If you enable CNS, the deployment adds three more nodes with storage for GlusterFS usage.
 
 ## Deploy OpenShift 4.x On Azure Stack Hub
 
