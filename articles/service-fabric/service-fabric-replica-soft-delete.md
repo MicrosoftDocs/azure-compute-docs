@@ -27,7 +27,7 @@ When stateful service replicas are removed either through the administrative Pow
 
 If removing the replica causes the partition to go into quorum loss, Service Fabric would wait for manual intervention to bring the partition out of quorum loss by recovering the soft deleted replicas.  
 
-Using a new restore replica API (Restore-ServiceFabricReplica), these soft deleted replicas can be recovered to regain quorum without data loss.
+Using a new restore replica API ([Restore-ServiceFabricReplica](/powershell/module/servicefabric/restore-servicefabricreplica)), these soft deleted replicas can be recovered to regain quorum without data loss.
 
 If the partition is healthy, the soft deleted replica will be cleaned up after its retention period expires.
 
@@ -59,7 +59,7 @@ Starting with SF 11.3, this behavior can be enabled by [setting](service-fabric-
 
 Upon removal of stateful service replicas—whether initiated through the administrative PowerShell API (Remove-ServiceFabricReplica), or the Fabric Client API—Service Fabric transitions the affected replicas to the `ToBeRemoved` state.
 
-`ToBeRemoved` replicas can be queried using the existing replica query API. To recover these replicas, a new Restore Replica API (Restore-ServiceFabricReplica) is introduced. This API can be used with the latest SF SDK version, either using PowerShell or FabricClient APIs directly. More details on the API behavior in the sections.  
+`ToBeRemoved` replicas can be queried using the existing replica query API. To recover these replicas, a new Restore Replica API ([Restore-ServiceFabricReplica](/powershell/module/servicefabric/restore-servicefabricreplica)) is introduced. This API can be used with the latest SF SDK version, either using PowerShell or FabricClient APIs directly. More details on the API behavior in the sections.  
 
 Even without the new SDK, replicas are still soft-deleted once the feature is enabled, providing safeguards against data loss.
 
