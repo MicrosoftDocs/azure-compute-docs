@@ -64,7 +64,7 @@ To view the latest supported regions, use the Linux VM Guest [v2.14.0.1](https:/
 
 | Cloud | Region |
 |:-----|:-----|
-| Commercial | Australia Central, Australia Central 2, Australia East, Australia Southeast, Brazil South, Brazil Southeast, Canada Central, Canada East, Central India, Denmark East, East Asia, France Central, France South, Germany North, Germany West Central, India South, Japan East, Japan West, Jio India Central, Jio India West, Korea Central, Korea South, Norway East, Norway West, Qatar Central, South Africa North, South Africa West, Southeast US, Sweden Central, Sweden South, Switzerland North, Switzerland West, Taiwan North, UAE Central, UAE North, UK West, West Central US, West India, West US 2, West US 3 |
+| Commercial | Australia Central, Australia East, Australia Southeast, Austria East, Brazil South, Brazil Southeast, Canada Central, Canada East, Central India, Denmark East, East Asia, France Central, France South, Germany North, Germany West Central, India South, Indonesia Central, Israel Central, Italy North, Japan East, Japan West, Jio India Central, Jio India West, Korea Central, Korea South, Malaysia South, Malaysia West, Mexico Central, New Zealand North, Norway East, Norway West, Poland Central, Qatar Central, South Africa North, South Africa West, South Central US, Southeast US, Spain Central, Sweden Central, Sweden South, Switzerland North, Switzerland West, Taiwan North, Taiwan Northwest, UAE Central, UAE North, UK West, West Central US, West India, West US |
 | USGov | All regions |
 | Air-Gap | All regions |
 
