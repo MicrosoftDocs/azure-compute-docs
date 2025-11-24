@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
-ms.date: 11/24/2024
+ms.date: 11/24/2025
 ms.author: mattmcinnes
 ---
 
