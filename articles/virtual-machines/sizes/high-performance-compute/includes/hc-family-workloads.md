@@ -6,7 +6,7 @@ author: mattmcinnes
 ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.date: 04/19/2024
+ms.date: 11/24/2025
 ms.author: mattmcinnes
 ms.custom: include file
 # Customer intent: "As a researcher or engineer, I want to understand the potential workloads supported by HC-series virtual machines, so that I can determine the best applications for my computational needs in fields like genomic sequencing, engineering simulations, financial modeling, scientific research, and climate forecasting."
