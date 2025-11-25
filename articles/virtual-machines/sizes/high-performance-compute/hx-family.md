@@ -13,7 +13,7 @@ ms.author: mattmcinnes
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
-The 'HX' family of VM size series are one of Azure's high-memory, high-performance computing (HPC) optimized VM instances. They're designed for memory-intensive workloads that require both large amounts of RAM and significant CPU performance, such as in-memory databases, big data analytics, and complex scientific simulations. HX-series VMs, equipped with expansive memory and powerful CPUs, delivers the resources to efficiently handle large datasets and perform rapid data processing. Thy're well-suited for financial services, scientific research, and enterprise resource planning, where managing and analyzing large volumes of data in real-time is crucial for operational success and innovation.
+The 'HX' family of VM size series are one of Azure's high-memory, high-performance computing (HPC) optimized VM instances. They're built for tasks that need a lot of memory and strong CPU power. Examples include in-memory databases, big data analysis, and advanced scientific simulations. HX-series VMs, equipped with expansive memory and powerful CPUs, delivers the resources to efficiently handle large datasets and perform rapid data processing. They work well for financial services, scientific research, and business planning. These areas need real-time handling of large amounts of data to stay efficient and drive new ideas.
 
 ## Workloads and use cases
 
@@ -25,7 +25,7 @@ The 'HX' family of VM size series are one of Azure's high-memory, high-performan
 
 **Financial Simulations:** Banks use HX-series VMs for fast trading and risk checks. These systems process huge amounts of data quickly to predict stock trends and figure out credit risks right away.
 
-**ERP Systems:** HX-series VMs have lots of memory and strong processing power. Big business systems use these features to handle large amounts of data and keep many users working at the same time.
+**ERP Systems:** HX-series VMs offer plenty of memory and strong processing power. Large business systems rely on these features to manage large amounts of data and keep many users working at once.
 
 ## Series in family
 
