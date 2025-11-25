@@ -2,7 +2,7 @@
 title: HX sub-family VM size series
 description: Overview of the 'HX' sub-family of virtual machine sizes
 author: mattmcinnes
-ms.service: virtual-machines
+ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 11/24/2025
@@ -13,7 +13,7 @@ ms.author: mattmcinnes
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
-The 'HX' family of VM size series are one of Azure's high-memory, high-performance computing (HPC) optimized VM instances. They're designed for memory-intensive workloads that require both large amounts of RAM and significant CPU performance, such as in-memory databases, big data analytics, and complex scientific simulations. Equipped with expansive memory and powerful CPUs, HX-series VMs provide the necessary resources to efficiently handle large datasets and perform rapid data processing. This makes them particularly well-suited for sectors like financial services, scientific research, and enterprise resource planning, where managing and analyzing large volumes of data in real-time is crucial for operational success and innovation.
+The 'HX' family of VM size series are one of Azure's high-memory, high-performance computing (HPC) optimized VM instances. They're designed for memory-intensive workloads that require both large amounts of RAM and significant CPU performance, such as in-memory databases, big data analytics, and complex scientific simulations. HX-series VMs, equipped with expansive memory and powerful CPUs, delivers the resources to efficiently handle large datasets and perform rapid data processing. Thy're well-suited for financial services, scientific research, and enterprise resource planning, where managing and analyzing large volumes of data in real-time is crucial for operational success and innovation.
 
 ## Workloads and use cases
 
@@ -23,9 +23,9 @@ The 'HX' family of VM size series are one of Azure's high-memory, high-performan
 
 **Genomic Research:** Genomics research often involves large-scale data analysis, where high memory capacity can significantly enhance performance by allowing more of the dataset to be held in memory, speeding up the analysis.
 
-**Financial Simulations:** Financial institutions use HX-series VMs for high-frequency trading platforms and risk management simulations that require rapid processing of large data volumes to predict stock trends or calculate credit risks in real time.
+**Financial Simulations:** Banks use HX-series VMs for fast trading and risk checks. These systems process huge amounts of data quickly to predict stock trends and figure out credit risks right away.
 
-**ERP Systems:** Large enterprise resource planning (ERP) systems benefit from the high memory and processing power of HX-series VMs to manage and process extensive enterprise data and support large numbers of concurrent users effectively.
+**ERP Systems:** HX-series VMs have lots of memory and strong processing power. Big business systems use these features to handle large amounts of data and keep many users working at the same time.
 
 ## Series in family
 
