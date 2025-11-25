@@ -4,7 +4,7 @@ description: Overview of the 'HX' sub-family of virtual machine sizes
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: article
 ms.date: 11/24/2025
 ms.author: mattmcinnes
 ---
@@ -32,7 +32,7 @@ The 'HX' family of VM size series are one of Azure's high-memory, high-performan
 ### HB-series
 [!INCLUDE [hx-series-summary](./includes/hx-series-summary.md)]
 
-[View the full HX-series page](../../hx-series.md).
+[View the full HX-series page](hx-series.md).
 
 [!INCLUDE [hx-series-specs](./includes/hx-series-specs.md)]
 
