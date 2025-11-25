@@ -4,7 +4,7 @@ description: Overview of the 'HC' sub-family of virtual machine sizes
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: article
 ms.date: 11/24/2025
 ms.author: mattmcinnes
 ---
@@ -33,7 +33,7 @@ HB-series VMs use high-performance Intel Xeon Scalable processors and fast memor
 ### HC-series
 [!INCLUDE [hc-series-summary](./includes/hc-series-summary.md)]
 
-[View the full HC-series page](../../hc-series.md).
+[View the full HC-series page](hc-series.md).
 
 [!INCLUDE [hc-series-specs](./includes/hc-series-specs.md)]
 
