@@ -2,7 +2,7 @@
 title: HC sub-family VM size series
 description: Overview of the 'HC' sub-family of virtual machine sizes
 author: mattmcinnes
-ms.service: virtual-machines
+ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 11/24/2025
@@ -13,7 +13,7 @@ ms.author: mattmcinnes
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
-The 'HC' family of VM size series are one of Azure's high-performance computing (HPC) optimized VM instances. They're designed for compute-intensive workloads that require substantial CPU power, such as genomic sequencing, engineering simulations, and financial modeling. Equipped with high-performance Intel Xeon Scalable processors and fast memory, HC-series VMs offer exceptional computational capabilities and memory bandwidth, making them ideal for applications that demand intense processing power to handle complex calculations and massive data sets efficiently. This makes them particularly well-suited for sectors like healthcare, finance, and engineering, where rapid data processing and simulation accuracy are critical for advanced research and development.
+The 'HC' family of VM size series are one of Azure's high-performance computing (HPC) optimized VM instances. They're designed for compute-intensive workloads that require substantial CPU power, such as genomic sequencing, engineering simulations, and financial modeling.HB-series VMs, equipped with high-performance Intel Xeon Scalable processors and fast memory, HC-series VMs offer exceptional computational capabilities and memory bandwidth, making them ideal for applications that demand intense processing power to handle complex calculations and massive data sets efficiently.They are well-suited for industries such as healthcare, finance, and engineering, where rapid data processing and simulation accuracy are critical for advanced research and development.
 
 ## Workloads and use cases
 
