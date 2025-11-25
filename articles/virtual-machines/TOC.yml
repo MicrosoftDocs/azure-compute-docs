@@ -639,7 +639,9 @@
        href: ./sizes/overview.md#high-performance-compute
      - name: HB family
        items:
-       - name: HB series
+       - name: Overview
+         displayName: HB-series, sizes, size, vm size
+         href: ./sizes/high-performance-compute/hb-family.md
        - name: HBv2 series
          items:
          - name: Overview
@@ -674,6 +676,9 @@
            href: hbv5-performance.md
      - name: HC family
        items:
+       - name: Overview
+         displayName: Hc-series, sizes, size, vm size
+         href: ./sizes/high-performance-compute/hc-family.md       
        - name: HC series
          items:
          - name: Overview
@@ -684,6 +689,9 @@
            href: hc-series-performance.md
      - name: HX family
        items:
+       - name: Overview
+         displayName: HX-series, sizes, size, vm size
+         href: ./sizes/high-performance-compute/hx-family.md       
        - name: HX series
          items:
          - name: Overview
