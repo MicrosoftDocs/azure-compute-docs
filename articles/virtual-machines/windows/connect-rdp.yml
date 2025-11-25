@@ -10,8 +10,9 @@ metadata:
   ms.service: azure-virtual-machines
   ms.topic: how-to
   ms.custom:
-    - ge-structured-content-pilot
+    - sfi-image-nochange
     - akash-accuracy-may-2025
+    - ge-structured-content-pilot
 
 title: |
   How to connect using Remote Desktop and sign on to an Azure virtual machine running Windows

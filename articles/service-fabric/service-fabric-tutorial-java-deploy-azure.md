@@ -5,9 +5,11 @@ ms.topic: tutorial
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
-ms.custom: devx-track-extended-java
 services: service-fabric
 ms.date: 07/14/2022
+ms.custom:
+  - devx-track-extended-java
+  - sfi-image-nochange
 # Customer intent: "As a Java developer, I want to deploy my Java application to a Service Fabric cluster in Azure, so that I can leverage cloud-based resources for scalability and manageability of my application."
 ---
 
