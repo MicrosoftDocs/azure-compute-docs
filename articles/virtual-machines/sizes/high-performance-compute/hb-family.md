@@ -13,7 +13,7 @@ ms.author: mattmcinnes
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
-The 'HB' sub-family of VM size series are one of Azure's high-performance computing (HPC) optimized H-family VM instances. They're designed for compute-intensive workloads, such as computational fluid dynamics, finite element analysis, and large-scale scientific simulations. HB-series VMs, equipped with high-performance AMD EPYC processors and fast memory, deliver exceptional CPU and memory bandwidth. They are ideal for applications that need extensive computational resources to handle large-scale calculations and data processing. They are well-suited for industries such as engineering, scientific research, and data analysis. In these fields, processing speed and accuracy are essential for maintaining productivity and driving innovation.
+The 'HB' sub-family of VM size series are one of Azure's high-performance computing (HPC) optimized H-family VM instances. They're designed for compute-intensive workloads, such as computational fluid dynamics, finite element analysis, and large-scale scientific simulations. HB-series VMs, equipped with high-performance AMD EPYC processors and fast memory, deliver exceptional CPU and memory bandwidth. They're ideal for applications that need extensive computational resources to handle large-scale calculations and data processing. They're well-suited for industries such as engineering, scientific research, and data analysis. In these fields, processing speed and accuracy are essential for maintaining productivity and driving innovation.
 
 ## Workloads and use cases
 
@@ -23,7 +23,7 @@ The 'HB' sub-family of VM size series are one of Azure's high-performance comput
 
 **Weather Forecasting:** HB family VMs can handle the massive datasets and complex simulations required for high-resolution weather modeling and forecasting.
 
-**Seismic Processing:** Used in the oil and gas industry, HB family VMs can process seismic data to help map and understand subsurface structures.
+**Seismic Processing:** HB family VMs are in the oil and gas industry, HB family VMs can process seismic data to help map and understand subsurface structures.
 
 **Scientific Research:** HB family VMs support a wide range of scientific research that requires large-scale mathematical modeling, including physics and computational chemistry simulations.
 
