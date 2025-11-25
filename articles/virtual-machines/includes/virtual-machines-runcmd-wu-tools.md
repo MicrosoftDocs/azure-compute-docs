@@ -4,7 +4,7 @@ ms.service: azure-virtual-machines
 ms.topic: include
 ms.date: 11/10/2025
 ms.author: scotro
-# Customer intent: "With my Azure VM in Azure, I need to know the tooling available to diagnose Windows Update errors. I alsow ant to have a tool to reset the servicing stack and asses the OS Upgrade matrix for this VM"
+# Customer intent: "With my Azure VM in Azure, I need to know the tooling available to diagnose Windows Update errors. I also want to have a tool to reset the servicing stack and assess the OS Upgrade matrix for this VM"
 ---
 >[!Important]
 >**Virtual Machine (VM)** running in Azure and experiencing Windows Update issues?
