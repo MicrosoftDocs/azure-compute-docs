@@ -583,6 +583,8 @@ Zonally deployed virtual machines can be converted to using an On Demand Capacit
 
 After the quantity increase, you should see the CR in a fully allocated state with all the virtual machines allocated. See [View VM allocation with the Instance View](#view-vm-allocation-with-the-instance-view).
 
+For information on using shared capacity reservation group, see [Secure existing zonal workloads using zero size reservation in Shared capacity Reservation Group](/azure/virtual-machines/capacity-reservation-group-share?tabs=api-1%2Capi-2%2Capi-3%2Capi-4%2Capi-5%2Capi-6%2Cportal-7#secure-existing-zonal-workloads-using-zero-size-reservation-in-shared-capacity-reservation-group).
+
 ## View VM allocation with the Instance View
 
 After the `capacityReservationGroup` property is set, an association now exists between the VM and the group. Azure automatically finds the matching capacity reservation in the group and consumes a reserved slot. The capacity reservation's Instance View reflects the new VM in the `virtualMachinesAllocated` property:
