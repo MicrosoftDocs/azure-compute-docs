@@ -1,8 +1,8 @@
 ---
 title: Zone Balancing in Scale Sets
-description: Find out about zone balancing in scale sets, including zone balancing modes and rebalancing behavior.
-author: johndowns # TODO find an owner
-ms.author: jodowns
+description: Find out about zone balancing in scale sets, including zone balance modes and rebalancing behavior.
+author: hilaryw29
+ms.author: hilarywang
 ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
 ms.date: 11/20/2025
@@ -15,6 +15,10 @@ A *zone-spanning* scale set spreads virtual machine (VM) instances across multip
 ## Balanced and unbalanced scale sets
 
 A scale set is considered *balanced* if each zone has the same number of VMs ±1 VM. The deviation of 1 enables you to scale to any number of instances, and not just a multiple of the number of zones that the set uses.
+
+VMs that meet any of these criteria are still counted when determining if a scale set is balanced:
+- The VM is successfully created, but extensions on the VM fail to deploy.
+- The VM is deallocated.
 
 Here are some examples of how Virtual Machine Scale Sets determines zone balancing for a zone-spanning scale set that's configured to use three zones:
 
@@ -30,24 +34,23 @@ Here are some examples of how Virtual Machine Scale Sets determines zone balanci
 
     :::image type="content" source="media/virtual-machine-scale-sets-zone-balancing/zone-balancing-unbalanced.svg" alt-text="Diagram that shows an unbalanced scale set, with one instance in zone 1 and three instances in zones 2 and 3." border="false":::
 
-> [!NOTE]
-> It's possible that VMs are successfully created, but extensions on those VMs fail to deploy. Any VMs with extension deployment failures are still counted when determining if a scale set is balanced.
->
-> For example, a scale set with 3 VMs in zone 1, 3 VMs in zone 2, and 3 VMs in zone 3 is considered balanced, even if all extensions failed in zone 1 and all extensions succeeded in zones 2 and 3.
+- Example 4: A scale set with 3 VMs in zone 1, 3 VMs in zone 2, and 3 VMs in zone 3 is considered balanced, even if all extensions failed in zone 1 and all extensions succeeded in zones 2 and the VMs in zone 3 are deallocated:
 
-## Zone balancing modes
+    <!-- TODO new diagram -->
 
-In order to set the zone balancing mode, your scale set must use multiple zones. A scale set that doesn't use zones or uses only one zone doesn't require balancing and therefore doesn't have a balancing mode.
+## Zone balance modes
 
-For a scale set that uses multiple zones, you can choose between two zone balancing modes:
+In order to set the zone balance mode, your scale set must use multiple zones. A scale set that doesn't use zones or uses only one zone doesn't require balancing and therefore doesn't have a balancing mode.
+
+For a scale set that uses multiple zones, you can choose between two zone balance modes:
 
 - **Best-effort zone balancing (Default mode):** The scale set aims to maintain balance across zones during scaling operations, but it's not guaranteed to remain balanced.
 
-    If one zone becomes unavailable, the scale set allows temporary imbalance to ensure the scale set can scale out. However, this imbalance is only permitted when a single zone is unavailable. Once the zone is restored, the scale set adjusts by adding VMs to under-provisioned zones or removing VMs from over-provisioned zones to restore balance.
+    If one zone goes down, the scale set allows temporary imbalance to ensure the scale set can scale out. However, this imbalance is only permitted when a single zone is unavailable. Once the zone is restored, during subsequent scaling operations, the scale set attempts to ensure balance by removing VMs from over-provisioned zones and adding VMs to under-provisioned zones
 
     If two or more zones go down, the scale set can't proceed with scaling operations, and any scaling operations are blocked.
 
-- **Strict zone balancing:** Any scaling operation that would result in an unbalanced scale set is blocked, even if one or more zones are down.
+- **Strict zone balancing:** The scale set must be balanced at all times. Any scaling operation that would result in an unbalanced scale set is blocked, even if one or more zones are down.
 
 ## Manually trigger zone rebalancing
 
