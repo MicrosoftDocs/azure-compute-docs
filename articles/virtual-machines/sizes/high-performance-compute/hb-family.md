@@ -4,7 +4,7 @@ description: Overview of the 'HB' sub-family of virtual machine sizes
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: article
 ms.date: 11/24/2025
 ms.author: mattmcinnes
 ---
@@ -58,7 +58,7 @@ The 'HB' sub-family of VM size series are one of Azure's high-performance comput
 ### HBv5-series
 [!INCLUDE [hbv5-series-summary](./includes/hbv5-series-summary.md)]
 
-[View the full hbv5-series page](../../hbv5-series.md).
+[View the full hbv5-series page](hbv5-series.md).
 
 [!INCLUDE [hbv5-series-specs](./includes/hbv5-series-specs.md)]
 
