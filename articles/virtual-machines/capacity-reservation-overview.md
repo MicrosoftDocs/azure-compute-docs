@@ -81,7 +81,7 @@ From this example accumulation of Minutes Not Available, here's the calculation 
   
   | Type | VM Series |
   | ----- | ----------- |
-  | GPU-accelerated compute | ND-series <br> Hb-series <br> Hc-series |
+  | GPU-accelerated compute | ND-series <br> NCads H100 v5-series <br> Hb-series <br> Hc-series |
   | Memory optimized | M series, v1 <br> Msv3 HM <br> Mdsv3 HM and Mdsv3 VHM |
   
 - The following deployment types are supported: 
