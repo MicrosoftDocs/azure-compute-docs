@@ -96,3 +96,22 @@ To create VMs with an NVMe interface, it's essential to choose one of the [suppo
 1. Verify that the feature is enabled by going to the **Review and Create** tab and confirming that the **Disk controller type** value is **NVMe**.
 
     :::image type="content" source="./media/enable-nvme/azure-portal-3.png" alt-text="Screenshot of the area for reviewing and verifying advanced features for a virtual machine, including the NVMe feature.":::
+#### FAQs
+
+- What are ASAP VMs?
+
+ASAP stands for Azure Storage Acceleration Platform, which is part of the Overlake project to provide a hardware-accelerated VM storage interface for high performance and low latency direct access.
+
+- What is NVMe?
+
+A unified storage interface presented to a VM as a virtual function.
+
+- How can we identify NVMe disks on a Windows VM?
+Open Azure PowerShell and use the following command:
+<img width="853" height="269" alt="image" src="https://github.com/user-attachments/assets/227d1688-21c2-48af-8f16-809eda2357cd" />
+
+- wmic diskdrive get model,scsilogicalunit
+Output of above command
+
+Important Note:
+ASAP-attached disks are presented in the guest with the model string Virtual_Disk NVME Premium. The SCSI logical unit has the value for the portal-visible LUN ID incremented by 1.
