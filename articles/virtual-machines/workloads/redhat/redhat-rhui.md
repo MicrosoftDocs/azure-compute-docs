@@ -194,7 +194,8 @@ To remove the version lock, use the following commands.
    gpgkey=/etc/pki/rpm-gpg/RPM-GPG-KEY-microsoft-azure-release
    EOF
    ```
-
+   >[!NOTE]
+   >You might encounter an error while executing next step that gpgkey must be in either http, ftp , file or https and not "". In that case please try editing the config file and           change `gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-microsoft-azure-release`.
 1. Add non-EUS repository.
 
    ```bash
