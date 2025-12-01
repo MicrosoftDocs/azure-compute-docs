@@ -1,7 +1,7 @@
 ---
 title: Attach an existing OS disk to a VM
 description: Create a new Windows VM by attaching a specialized OS disk.
-author: ju-shim
+author: cynthn
 ms.service: azure-virtual-machines
 ms.topic: how-to
 ms.date: 12/12/2024
