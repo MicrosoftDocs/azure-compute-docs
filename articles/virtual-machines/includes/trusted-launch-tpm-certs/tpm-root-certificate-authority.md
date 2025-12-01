@@ -1,7 +1,7 @@
 ---
 title: Full Certificate Authority json for TPM cert
 description: Include file for Full Certificate Authority json
-author: ju-shim
+author: cynthn
 ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes

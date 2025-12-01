@@ -1,7 +1,7 @@
 ---
 title: Common Azure CLI commands
 description: Learn some of the common Azure CLI commands to get you started managing your VMs in Azure Resource Manager mode
-author: ju-shim
+author: cynthn
 ms.service: azure-virtual-machines
 ms.custom: devx-track-azurecli, devx-track-arm-template, linux-related-content
 ms.topic: how-to

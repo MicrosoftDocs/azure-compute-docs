@@ -1,7 +1,7 @@
 ---
 title: Create a zoned VM using Azure PowerShell
 description: Create a virtual machine in an availability zone with Azure PowerShell
-author: ju-shim
+author: cynthn
 ms.service: azure-virtual-machines
 ms.topic: how-to
 ms.date: 03/27/2018

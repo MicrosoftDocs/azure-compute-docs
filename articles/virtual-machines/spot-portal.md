@@ -1,7 +1,7 @@
 ---
 title: Use the portal to deploy Azure Spot Virtual Machines
 description: How to use the Portal to deploy Spot Virtual Machines
-author: ju-shim
+author: cynthn
 ms.service: azure-virtual-machines
 ms.subservice: azure-spot-vm
 ms.topic: how-to
