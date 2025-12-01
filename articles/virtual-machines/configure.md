@@ -6,7 +6,9 @@ ms.subservice: hpc
 ms.custom: linux-related-content
 ms.topic: concept-article
 ms.date: 07/25/2024
-ms.reviewer: cynthn, mattmcinnes
+ms.reviewer: mattmcinnes
+ms.author: cynthn
+author: cynthn
 # Customer intent: "As an HPC administrator, I want to configure and optimize InfiniBand-enabled virtual machines, so that I can ensure high performance and efficient workload management for my high-performance computing tasks."
 ---
 

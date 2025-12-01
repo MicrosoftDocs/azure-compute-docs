@@ -1,7 +1,7 @@
 ---
 title: Modify an Azure Virtual Machine Scale Set using PowerShell
 description: Learn how to modify and update an Azure Virtual Machine Scale Set using PowerShell
-author: ju-shim
+author: cynthn
 ms.author: jushiman
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets

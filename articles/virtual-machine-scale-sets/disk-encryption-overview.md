@@ -1,7 +1,7 @@
 ---
 title: Enable Azure Disk Encryption for Virtual Machine Scale Sets
 description: This article provides instructions on enabling Microsoft Azure Disk Encryption for Virtual Machine Scale Sets
-author: ju-shim
+author: cynthn
 ms.author: jushiman
 ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
