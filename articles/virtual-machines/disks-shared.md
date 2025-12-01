@@ -36,11 +36,11 @@ Shared disks support several operating systems. See the [Windows](#windows) or [
 
 When you share a disk, your billing could be impacted in two different ways, depending on the type of disk.
 
-For shared premium SSD disks, in addition to cost of the disk's tier, there's an extra charge that increases with each VM the SSD is mounted to. See [managed disks pricing](https://azure.microsoft.com/pricing/details/managed-disks/) for details.
+For shared Premium SSD disks, in addition to cost of the disk's tier, there's an extra charge that increases with each VM the SSD is mounted to. See [managed disks pricing](https://azure.microsoft.com/pricing/details/managed-disks/) for details.
 
-Both shared ultra disks and shared premium SSD v2 disks don't have an extra charge for each VM that they're mounted to. They're billed on the total IOPS and MB/s that the disk is configured for. Normally, ultra disks and premium SSD v2 has two performance throttles that determine its total IOPS/MB/s. However, when configured as a shared disk, two more performance throttles are exposed, for a total of four. These two additional throttles allow for increased performance at an extra expense and each meter has a default value, which raises the performance and cost of the disk.
+Both shared Ultra Disks and shared premium SSD v2 disks don't have an extra charge for each VM that they're mounted to. They're billed on the total IOPS and MB/s that the disk is configured for. Normally, ultra disks and premium SSD v2 has two performance throttles that determine its total IOPS/MB/s. However, when configured as a shared disk, two more performance throttles are exposed, for a total of four. These two extra throttles allow for increased performance at an extra expense and each meter has a default value, which raises the performance and cost of the disk.
 
-The four performance throttles a shared ultra disk and shared premium SSD v2 disk have are diskIOPSReadWrite, diskMB/sReadWrite, diskIOPSReadOnly, and diskMB/sReadOnly. Each performance throttle can be configured to change the performance of your disk. The performance for shared ultra disk premium SSD v2 disk are calculated in the following ways: total provisioned IOPS (diskIOPSReadWrite + diskIOPSReadOnly) and for total provisioned throughput MB/s (diskMB/sReadWrite + diskMB/sReadOnly).
+The four performance throttles a shared Ultra disk and shared premium SSD v2 disk have are diskIOPSReadWrite, diskMB/sReadWrite, diskIOPSReadOnly, and diskMB/sReadOnly. Each performance throttle can be configured to change the performance of your disk. The performance of shared Ultra disks and premium SSD v2 disks are calculated in the following ways: total provisioned IOPS (diskIOPSReadWrite + diskIOPSReadOnly) and for total provisioned throughput MB/s (diskMB/sReadWrite + diskMB/sReadOnly).
 
 Once you've determined your total provisioned IOPS and total provisioned throughput, you can use them in the [pricing calculator](https://azure.microsoft.com/pricing/calculator/?service=managed-disks) to determine the cost of an ultra shared disk and a premium SSD v2 shared disk.
 
@@ -58,8 +58,8 @@ Some popular applications running on WSFC include:
 
 - [Create an FCI with Azure shared disks (SQL Server on Azure VMs)](/azure/azure-sql/virtual-machines/windows/failover-cluster-instance-azure-shared-disks-manually-configure)
     - [Migrate your failover cluster instance to SQL Server on Azure VMs with shared disks](/azure/azure-sql/migration-guides/virtual-machines/sql-server-failover-cluster-instance-to-sql-on-azure-vm)
-- File servers. You can use the Scale-Out File Server features deployed on a Windows Server failover cluster, which uses shared disk in active-active mode. Cluster witness resources are stored on Azure shared idsks and all file hsares are simultaneously online on all nodes. For an example, see the Scale-out File Server (SoFS) [template](https://aka.ms/azure-shared-disk-sofs-template)
-- SAP application servers use clustered shared disks to store SAP Centra Services (ASCS for ABAP and SCS for Java) and SAP global host files. SAP ASCS/SCS [template](https://aka.ms/azure-shared-disk-sapacs-template)
+- File servers. You can use the Scale-Out File Server features deployed on a Windows Server failover cluster, which uses shared disk in active-active mode. Cluster witness resources are stored on Azure shared disks and all file shares are simultaneously online on all nodes. For an example, see the Scale-out File Server (SoFS) [template](https://aka.ms/azure-shared-disk-sofs-template)
+- SAP application servers use clustered shared disks to store SAP Central Services (ASCS for ABAP and SCS for Java) and SAP global host files. SAP ASCS/SCS [template](https://aka.ms/azure-shared-disk-sapacs-template)
 - File Server for General Use (IW workload) - shared disks enable high availability for file servers in general
 - Remote Desktop Server User Profile Disk (RDS UPD)
 
@@ -173,4 +173,4 @@ Both shared Ultra Disks and shared Premium SSD v2 managed disks are priced based
 
 If you're interested in enabling and using shared disks for your managed disks, proceed to our article [Enable shared disk](disks-shared-enable.md)
 
-If you've additional questions, see the [shared disks](faq-for-disks.yml#azure-shared-disks) section of the FAQ.
+If you have additional questions, see the [shared disks](faq-for-disks.yml#azure-shared-disks) section of the FAQ.
