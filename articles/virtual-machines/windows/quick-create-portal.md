@@ -6,7 +6,7 @@ ms.service: azure-virtual-machines
 ms.collection: windows
 ms.topic: quickstart
 ms.date: 01/22/2025
-ms.author: jushiman
+ms.author: cynthn
 ms.reviewer: jushiman
 ms.custom:
   - mvc

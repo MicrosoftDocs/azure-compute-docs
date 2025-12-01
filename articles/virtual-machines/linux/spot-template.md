@@ -7,7 +7,7 @@ ms.subservice: azure-spot-vm
 ms.custom: linux-related-content
 ms.topic: how-to
 ms.date: 05/31/2023
-ms.author: jushiman
+ms.author: cynthn
 ms.reviewer: cynthn
 # Customer intent: "As a cloud architect, I want to deploy Azure Spot Virtual Machines using a template, so that I can optimize costs while efficiently managing workloads that can tolerate interruptions."
 ---

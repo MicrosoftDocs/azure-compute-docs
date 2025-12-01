@@ -7,7 +7,7 @@ ms.service: azure-virtual-machines
 ms.custom: devx-track-azurecli, linux-related-content
 ms.topic: how-to
 ms.date: 04/13/2023
-ms.author: jushiman
+ms.author: cynthn
 # Customer intent: "As a cloud administrator, I want to generate and manage SSH keys using a command-line interface, so that I can securely connect to and manage Linux virtual machines in Azure."
 ---
 

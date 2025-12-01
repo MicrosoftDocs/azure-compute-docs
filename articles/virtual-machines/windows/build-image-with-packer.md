@@ -7,7 +7,7 @@ ms.subservice: imaging
 ms.collection: windows
 ms.topic: how-to
 ms.date: 10/28/2024
-ms.author: jushiman
+ms.author: cynthn
 ms.custom: devx-track-azurepowershell
 # Customer intent: As a cloud engineer, I want to create custom VM images using Packer and PowerShell, so that I can automate and standardize my deployment processes in Azure.
 ---

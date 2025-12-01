@@ -5,7 +5,7 @@ author: cynthn
 ms.service: azure-virtual-machines
 ms.topic: how-to
 ms.date: 04/11/2023
-ms.author: jushiman
+ms.author: cynthn
 ms.custom:
   - devx-track-arm-template
   - sfi-image-nochange

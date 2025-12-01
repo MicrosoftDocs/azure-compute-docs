@@ -6,7 +6,7 @@ ms.service: azure-virtual-machines
 ms.collection: linux
 ms.topic: tutorial
 ms.date: 04/06/2025
-ms.author: jushiman
+ms.author: cynthn
 ms.reviewer: mattmcinnes
 ms.custom:
   - mvc
