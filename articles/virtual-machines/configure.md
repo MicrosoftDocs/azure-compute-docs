@@ -7,12 +7,10 @@ ms.custom: linux-related-content
 ms.topic: concept-article
 ms.date: 07/25/2024
 ms.reviewer: cynthn, mattmcinnes
-ms.author: jushiman
-author: ju-shim
 # Customer intent: "As an HPC administrator, I want to configure and optimize InfiniBand-enabled virtual machines, so that I can ensure high performance and efficient workload management for my high-performance computing tasks."
 ---
 
-# Configure and optimize VMs
+# Configure and optimize the InfiniBand enabled H-series and N-series VMs
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
