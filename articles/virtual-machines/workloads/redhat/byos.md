@@ -1,7 +1,7 @@
 ---
 title: Red Hat Enterprise Linux bring-your-own-subscription Azure images | Microsoft Docs
 description: Learn about bring-your-own-subscription images for Red Hat Enterprise Linux on Azure.
-author: ju-shim
+author: cynthn
 ms.reviewer: divargas
 ms.service: azure-virtual-machines
 ms.subservice: redhat
