@@ -176,7 +176,64 @@ To aid Guest Health Reporting in taking the correct action, you can provide more
 > [!IMPORTANT]
 > We advise you to include detailed row-remapping fields with the specified information in their claims to expedite node restoration.
 
+## Query workload impact insights
+
+After reporting a workload impact, Azure may generate a sequence of insights that describe how the event was detected, processed, acknowledged, and resolved. These insights can be queried programmatically through the Azure Resource Manager (ARM) API.
+
+### List insights for a workload impact
+
+
+To retrieve all insights for a specific workload impact, use the following REST API command:
+
+```bash
+GET "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Impact/workloadImpacts/{impactId}/insights?api-version=2025-01-01-preview"
+```
+
+#### Example Response
+
+```json
+{
+  "value": [
+    {
+      "id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.Impact/workloadImpacts/impactid22/insights/insightId12",
+      "name": "insightId12",
+      "type": "Microsoft.Impact/insights",
+      "properties": {
+        "eventTime": "2023-06-15T04:00:00.009223Z",
+        "content": {
+          "title": "Impact Has been correlated to an outage",
+          "description": "At 2018-11-08T00:00:00Z UTC, your services dependent on these resources <link href=”…”>VM1</link> may have experienced an issue. <br/><div>We have identified an outage that affected these resources(s). You can look at outage information on <link href=\"https:// portal.azure.com/#view/Microsoft_Azure_Health/AzureHealthBrowseBlade/~/serviceIssues/trackingId/NL2W-VCZ\">NL2W-VCZ</link> link.<div>"
+        },
+        "category": "repair",
+        "status": "resolved",
+        "insightUniqueId": "00000000-0000-0000-0000-000000000000",
+        "impact": {
+          "impactedResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resource-rg/providers/Microsoft.Sql/sqlserver/dbservername",
+          "startTime": "2023-06-15T01:00:00.009223Z",
+          "impactId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.Impact/workloadImpacts/impactid22"
+        }
+      }
+    }
+  ]
+}
+```
+
+| Name | Description | Content |
+|------|-------------|---------|
+| Article | details of the insight like title, description etc | Article details of the insight like title, description etc |
+| createdByType | The type of identity that created the resource. | createdByType |
+| ErrorAdditionalInfo | The resource management error additional info. | The type of identity that created the resource. |
+| ErrorDetail | The error detail. | ErrorAdditionalInfo |
+| ErrorResponse | Error response | The resource management error additional info. |
+| ImpactDetails | details of of the impact for which insight has been generated. | ErrorDetail |
+| Insight | Insight resource | The error detail. |
+| InsightListResult | The response of a Insight list operation. | ErrorResponse |
+| InsightProperties | Impact category properties. | Error response |
+| ProvisioningState | Provisioning state of the resource. | ImpactDetails |
+| systemData | Metadata pertaining to creation and last modification of the resource. | details of of the impact for which insight has been generated. |
+
 ## Related content
 
 * [What is Guest Health Reporting?](guest-health-overview.md)
 * [Impact categories for Guest Health Reporting](guest-health-impact-categories.md)
+
