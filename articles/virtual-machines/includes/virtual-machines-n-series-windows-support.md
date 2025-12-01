@@ -5,7 +5,7 @@ title: include
 author: jushiman
  ms.service: virtual-machines
  ms.topic: include
- ms.date: 11/25/2025
+ ms.date: 12/01/2025
 ms.author: jushiman
  ms.custom: include
 # Customer intent: "As a cloud administrator using Azure virtual machines, I want to install and manage the appropriate NVIDIA drivers for different VM series, so that I can ensure optimal performance and compatibility for graphics and compute workloads."
@@ -29,7 +29,7 @@ NVIDIA Tesla (CUDA) drivers for all NC* and ND*-series VMs (optional for NV*-ser
 > [!NOTE]
 > [vGPU18](https://download.microsoft.com/download/5ccc0984-e1b5-494d-8211-43b19ece6b9b/572.83_grid_win10_win11_server2022_dch_64bit_international_azure_swl.exe) is available for the NCasT4_v3-series.
 >
-> [vGPU18 (Windows)](https://download.microsoft.com/download/dcf4d002-3a53-469d-91af-04bddf57a9d7/573.76_grid_win10_win11_server2019_server2022_server2025_dch_64bit_international_azure_swl.exe) and [vGPU18 (Linux)](https://download.microsoft.com/download/0541e1a5-dff2-4b8c-a79c-96a7664b1d49/NVIDIA-Linux-x86_64-570.195.03-grid-azure.run) are now available for the NVadsA10_v5-series in **public regions only**. vGPU18 for the NVadsA10_v5-series is **not** supported in the Mooncake and Fairfax regions yet. We'll provide an update once vGPU18 becomes supported for the NVadsA10_v5-series in the Mooncake and Fairfax regions.
+> [vGPU18](https://download.microsoft.com/download/dcf4d002-3a53-469d-91af-04bddf57a9d7/573.76_grid_win10_win11_server2019_server2022_server2025_dch_64bit_international_azure_swl.exe) is now available for the NVadsA10_v5-series in **public regions only**. vGPU18 for the NVadsA10_v5-series is **not** supported in the Mooncake and Fairfax regions yet. We'll provide an update once vGPU18 becomes supported for the NVadsA10_v5-series in the Mooncake and Fairfax regions.
 
 > [!Note]
 >For Azure NVads A10 v5 VMs we recommend customers to always be on the latest driver version. The latest NVIDIA major driver branch(n) is only backward compatbile with the previous major branch(n-1). For eg, vGPU 17.x is backward compatible with vGPU 16.x only. Any VMs still runnig n-2 or lower may see driver failures when the latest drive branch is rolled out to Azure hosts.
@@ -47,7 +47,7 @@ The Nvidia extension always installs the latest driver.
 
 For Windows 11 up to and including 24H2, Windows 10 up to and including  22H2, Server 2022:
 
-- [GRID 17.5 (553.62)](https://download.microsoft.com/download/1/1/d/11dd7071-c632-4a83-b950-d5eb3fdcf587/553.62_grid_win10_win11_server2019_server2022_dch_64bit_international_azure_swl.exe) (.exe)
+- [GRID 18.5 (573.76)](https://download.microsoft.com/download/dcf4d002-3a53-469d-91af-04bddf57a9d7/573.76_grid_win10_win11_server2019_server2022_server2025_dch_64bit_international_azure_swl.exe) (.exe)
 
 The following links to previous versions are provided to support dependencies on older driver versions.
 

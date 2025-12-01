@@ -9,7 +9,7 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm-windows
 ms.date: 07/25/2024
 ms.author: jushiman
-author: ju-shim
+author: cynthn
 ms.custom:
   - devx-track-arm-template
   - sfi-image-nochange

@@ -1,7 +1,7 @@
 ---
 title: Tutorial - Create and manage Windows VMs with Azure PowerShell
 description: In this tutorial, you learn how to use Azure PowerShell to create and manage Windows VMs in Azure
-author: ju-shim
+author: cynthn
 ms.service: azure-virtual-machines
 ms.topic: tutorial
 ms.date: 10/28/2024

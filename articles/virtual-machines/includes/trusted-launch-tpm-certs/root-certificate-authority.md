@@ -1,7 +1,7 @@
 ---
 title: Full Certificate Authority for TPM cert
 description: Include file for Full Certificate Authority
-author: ju-shim
+author: cynthn
 ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
