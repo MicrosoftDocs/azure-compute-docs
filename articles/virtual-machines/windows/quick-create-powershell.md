@@ -1,7 +1,7 @@
 ---
 title: Quickstart - Create a Windows VM with Azure PowerShell
 description: Learn how to use the Azure PowerShell module to deploy a virtual machine (VM) in Azure that runs Windows Server 2016.
-author: ju-shim
+author: cynthn
 ms.service: azure-virtual-machines
 ms.collection: windows
 ms.topic: quickstart

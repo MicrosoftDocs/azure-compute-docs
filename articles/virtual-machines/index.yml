@@ -8,7 +8,7 @@ metadata:
   description: Documentation for creating and managing Linux virtual machines in Azure.
   ms.service: azure-virtual-machines
   ms.topic: landing-page
-  author: ju-shim
+  author: cynthn
   ms.author: jushiman
   ms.date: 12/13/2021
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | tutorial | video | whats-new
