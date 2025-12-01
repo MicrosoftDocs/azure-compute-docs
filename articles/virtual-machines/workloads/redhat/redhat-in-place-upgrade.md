@@ -37,7 +37,7 @@ In general, Red Hat only supports upgrading from version to the next; you cannot
 
 [Upgrading from RHEL 9 to RHEL 10.](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/10/html/upgrading_from_rhel_9_to_rhel_10/index)
 
-[Upgrading from RHEL 7 SAP to RHEL 8 SAP.](https://access.redhat.com/solutions/5154031)
+[Upgrading from RHEL 7 SAP to RHEL 8 SAP.](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux_for_sap_solutions/8/html-single/upgrading_sap_environments_from_rhel_7_to_rhel_8/index)
 
 [Upgrading from RHEL 8 SAP to RHEL 9 SAP.](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux_for_sap_solutions/9/html/upgrading_sap_environments_from_rhel_8_to_rhel_9/index)
 
