@@ -28,7 +28,6 @@ The *updated* managed Run Command uses the same VM agent channel to execute scri
 
 > [!IMPORTANT]
 > **Managed Run Command**  is currently available in Azure CLI, PowerShell, and API at this time.
-<img width="1070" height="21" alt="image" src="https://github.com/user-attachments/assets/e6258c93-161d-48aa-9e80-8d49bd957c31" />
 
 ## Prerequisites
 
