@@ -1,14 +1,13 @@
 ---
 title: In-place upgrade of Red Hat Enterprise Linux images on Azure
-description: Learn how to do an in-place upgrade from Red Hat Enterprise 7.x images to the latest 8.x version.
-author: ju-shim
+description: Learn how to do an in-place upgrade from Red Hat Enterprise images to the latest version.
 ms.service: azure-virtual-machines
 ms.subservice: redhat
 ms.custom: linux-related-content
 ms.collection: linux
 ms.topic: how-to
-ms.date: 04/16/2020
-ms.author: jushiman
+ms.date: 12/01/2025
+ms.update-cycle: 1095-days
 # Customer intent: "As a system administrator managing RHEL VMs on Azure, I want to perform in-place upgrades from RHEL 7 to RHEL 8, and RHEL 8 to RHEL 9, so that I can keep the operating systems up to date while retaining applications and configurations."
 ---
 
@@ -17,16 +16,15 @@ ms.author: jushiman
 **Applies to:** :heavy_check_mark: Linux VMs
 
 
+During an in-place upgrade, the earlier RHEL OS major version will be replaced with the new RHEL OS major version without removing the earlier version first. The installed applications and utilities, along with the configurations and preferences, are incorporated into the new version.
+
 > [!CAUTION]
 > Following the process in this article will cause a disconnection between the data plane and the **[control plane](/azure/architecture/guide/multitenant/considerations/control-planes)** of the virtual machine (VM). Azure capabilities such as **[Auto guest patching](/azure/virtual-machines/automatic-vm-guest-patching)**, **[Auto OS image upgrades](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade)**, **[Hotpatching](/windows-server/get-started/hotpatch?toc=%2Fazure%2Fvirtual-machines%2Ftoc.json)**, and **[Azure Update Manager](/azure/update-manager/overview)** won't be available. To utilize these features, it's recommended to create a new VM using your preferred operating system instead of performing an in-place upgrade.
->[!Note]
-> Offerings of SQL Server on Red Hat Enterprise Linux don't support in-place upgrades on Azure.
 
->[!Important]
-> Take a snapshot of the image before you start the upgrade as a precaution.
-
-## What is RHEL in-place upgrade?
-During an in-place upgrade, the earlier RHEL OS major version will be replaced with the new RHEL OS major version without removing the earlier version first. The installed applications and utilities, along with the configurations and preferences, are incorporated into the new version.
+## Prerequisites
+Before you begin:
+- Offerings of SQL Server on Red Hat Enterprise Linux don't support in-place upgrades on Azure.
+- Take a snapshot of the image before you start the upgrade as a precaution.
 
 ## Upgrade RHEL VMs
 In general, Red Hat only supports upgrading from version to the next; you cannot skip versions. See the Red Hat's documentation on in-place upgrades:
