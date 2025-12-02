@@ -556,7 +556,7 @@ Make sure that you're running the latest version of the Azure CLI.
 ---
 ## Trusted Launch built-in policies
 
-To help users adopt Trusted Launch, Azure policies are available to help resource owners adopt Trusted Launch. The main objective is to help convert Generation 1 and 2 VMs that are Trusted Launch capable. Azure also supports upgrading existing Generation 1 VMs to Generation 2 with Trusted launch. For steps and limitations, see [Upgrade existing Gen1 VMs to Gen2-Trusted launch](trusted-launch-existing-vm-gen-1.md).
+To help users adopt Trusted Launch, Azure policies are available to help resource owners adopt Trusted Launch. The main objective is to help convert Generation 1 and 2 VMs that are Trusted Launch capable. 
 
 The **Virtual machine should have Trusted launch enabled** single policy checks if the VM is currently enabled with Trusted Launch security configurations. The **Disks and OS supported for Trusted launch** policy checks if previously created VMs have the [capable Generation 2 OS and VM size](trusted-launch.md#virtual-machines-sizes) to deploy a Trusted Launch VM.
 
