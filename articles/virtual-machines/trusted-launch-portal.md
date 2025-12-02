@@ -39,8 +39,6 @@ ms.custom:
 
 ## Deploy a Trusted Launch VM
 
-Create a VM with Trusted Launch enabled. If you have existing Gen1 VMs, you can upgrade them to Gen2-Trusted launch. For more information, see [Upgrade existing Gen1 VMs to Gen2-Trusted launch](trusted-launch-existing-vm-gen-1.md).
-
 Choose one of the following options to create a new Trusted Launch VM.
 
 ### [Portal](#tab/portal)
@@ -583,4 +581,6 @@ If the VM is running, you receive a message that the VM will restart. Select **Y
 ## Related content
 
 Learn more about [Trusted Launch](trusted-launch.md) and [boot integrity monitoring](boot-integrity-monitoring-overview.md) VMs.
+
+If you have existing Gen1 VMs, you can upgrade them to Gen2-Trusted launch. For more information, see [Upgrade existing Gen1 VMs to Gen2-Trusted launch](trusted-launch-existing-vm-gen-1.md).
 
