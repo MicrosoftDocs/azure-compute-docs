@@ -8,7 +8,7 @@ ms.subservice: sizes
 ms.collection: linux
 ms.topic: how-to
 ms.custom: linux-related-content
-ms.date: 04/06/2023
+ms.date: 12/04/2025
 ms.author: vikancha
 ms.reviewer: padmalathas, mattmcinnes
 # Customer intent: "As a cloud administrator, I want to install and configure NVIDIA GPU drivers on Linux-based N-series VMs, so that I can fully utilize their GPU capabilities for high-performance computing applications."
