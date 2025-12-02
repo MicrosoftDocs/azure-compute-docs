@@ -1,7 +1,7 @@
 ---
 title: Encrypt disks for Azure scale sets with Azure CLI
 description: Learn how to use Azure CLI to encrypt VM instances and attached disks in a Windows Virtual Machine Scale Set
-author: ju-shim
+author: cynthn
 ms.author: jushiman
 ms.topic: tutorial
 ms.service: azure-virtual-machine-scale-sets

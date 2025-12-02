@@ -34,6 +34,9 @@ Yes, you can apply your reserved instance prices and savings plan with instance 
 ### Can I use an on-demand capacity reservation with instance mix?
 No, you can't use an on-demand capacity reservation with instance mix.
 
+### Can I use DiffDisk settings with instance mix?
+No, instance mix currently doesn't support `diffDiskSettings` on the OS disk.
+
 ## Troubleshooting
 | Error Code                                 | Error Message                                                                                                        | Troubleshooting options                                                                                                                                                                                                                                                                                              |
 | ------------------------------------------ | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

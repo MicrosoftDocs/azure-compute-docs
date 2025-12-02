@@ -6,7 +6,7 @@ ms.service: azure-virtual-machines
 ms.collection: windows
 ms.topic: how-to
 ms.date: 09/26/2017
-ms.author: jushiman
+ms.author: cynthn
 ms.custom: devx-track-azurepowershell
 # Customer intent: As a cloud administrator, I want to create and manage a Windows VM with multiple network interfaces, so that I can effectively separate traffic for front-end and back-end connectivity within the same virtual network.
 ---

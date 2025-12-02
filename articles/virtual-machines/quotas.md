@@ -6,7 +6,7 @@ ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: how-to
 ms.date: 02/15/2023
-ms.author: jushiman
+ms.author: cynthn
 # Customer intent: "As a cloud infrastructure administrator, I want to monitor my vCPU quotas for virtual machines, so that I can ensure successful deployments without exceeding resource limits."
 ---
 

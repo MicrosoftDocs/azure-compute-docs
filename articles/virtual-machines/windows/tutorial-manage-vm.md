@@ -5,7 +5,7 @@ author: cynthn
 ms.service: azure-virtual-machines
 ms.topic: tutorial
 ms.date: 10/28/2024
-ms.author: jushiman
+ms.author: cynthn
 ms.collection: windows
 ms.custom: mvc, devx-track-azurepowershell
 #Customer intent: As an IT administrator, I want to learn about common maintenance tasks so that I can create and manage Windows VMs in Azure

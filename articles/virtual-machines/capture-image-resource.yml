@@ -3,8 +3,8 @@
 metadata:
   title: Create a legacy managed image in Azure
   description: Create a legacy managed image of a generalized VM or VHD in Azure.
-  author: ju-shim
-  ms.author: jushiman
+  author: cynthn
+  ms.author: cynthn
   ms.date: 06/25/2024
   ms.service: azure-virtual-machines
   ms.subservice: imaging

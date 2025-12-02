@@ -6,7 +6,7 @@ ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.date: 10/04/2023
-ms.author: jushiman
+ms.author: cynthn
 ms.custom: include file
 # Customer intent: "As a system administrator, I want to download the full certificate authority JSON for the TPM certificate so that I can ensure secure communication for my virtual machine environments."
 ---
