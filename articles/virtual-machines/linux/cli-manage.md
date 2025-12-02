@@ -6,7 +6,7 @@ ms.service: azure-virtual-machines
 ms.custom: devx-track-azurecli, devx-track-arm-template, linux-related-content
 ms.topic: how-to
 ms.date: 04/11/2023
-ms.author: jushiman
+ms.author: cynthn
 # Customer intent: As a cloud administrator, I want to learn common Azure CLI commands for managing virtual machines, so that I can efficiently create, manage, and monitor my Azure resources across different operating systems.
 ---
 # Common Azure CLI commands for managing Azure resources

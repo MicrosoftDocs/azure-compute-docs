@@ -5,7 +5,7 @@ author: cynthn
 ms.service: azure-virtual-machines
 ms.topic: concept-article
 ms.date: 04/03/2024
-ms.author: jushiman
+ms.author: cynthn
 # Customer intent: As a cloud architect, I want to use the estimated cost card during the VM creation process, so that I can accurately budget for the resources and services required for my Azure virtual machines.
 ---
 

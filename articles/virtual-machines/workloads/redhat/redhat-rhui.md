@@ -9,7 +9,7 @@ ms.collection: linux
 ms.topic: concept-article
 ms.date: 10/28/2024
 ms.reviewer: cynthn
-ms.author: jushiman
+ms.author: cynthn
 # Customer intent: As a system administrator managing Red Hat Enterprise Linux VMs in Azure, I want to utilize the Red Hat Update Infrastructure, so that I can efficiently access and manage software updates for my PAYG instances without incurring double billing or configuration issues.
 ---
 # Red Hat Update Infrastructure for on-demand Red Hat Enterprise Linux VMs in Azure

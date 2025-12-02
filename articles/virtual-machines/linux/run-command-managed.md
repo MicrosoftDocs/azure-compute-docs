@@ -5,7 +5,7 @@ services: automation
 ms.service: azure-virtual-machines
 ms.collection: linux
 author: GabstaMSFT
-ms.author: jushiman
+ms.author: cynthn
 ms.date: 08/18/2025
 ms.topic: how-to
 ms.reviewer: jushiman

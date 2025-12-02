@@ -8,7 +8,7 @@ metadata:
   ms.subservice: imaging
   ms.custom: devx-track-azurepowershell, devx-track-azurecli
   ms.date: 4/11/2024
-  ms.author: jushiman
+  ms.author: cynthn
   ms.reviewer: edewe
 title: Deprecated images FAQ
 summary: This article answers commonly asked questions about what happens when images in the Azure Marketplace are deprecated.

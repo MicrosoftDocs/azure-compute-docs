@@ -5,7 +5,7 @@ author: cynthn
 ms.service: azure-virtual-machines
 ms.topic: how-to
 ms.date: 12/12/2024
-ms.author: jushiman
+ms.author: cynthn
 ms.custom: devx-track-azurepowershell
 # Customer intent: As a cloud administrator, I want to create a new virtual machine by attaching an existing OS disk, so that I can quickly recover from a non-functional VM while preserving the configuration of the original environment.
 ---

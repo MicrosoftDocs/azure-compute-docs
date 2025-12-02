@@ -7,7 +7,7 @@ ms.collection: windows
 ms.subservice: security
 ms.topic: tutorial
 ms.date: 04/05/2023
-ms.author: jushiman
+ms.author: cynthn
 ms.custom:
   - mvc
   - devx-track-azurepowershell

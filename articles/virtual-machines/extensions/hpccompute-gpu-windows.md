@@ -8,7 +8,7 @@ ms.collection: windows
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows
 ms.date: 07/25/2024
-ms.author: jushiman
+ms.author: cynthn
 author: cynthn
 ms.custom:
   - devx-track-arm-template
