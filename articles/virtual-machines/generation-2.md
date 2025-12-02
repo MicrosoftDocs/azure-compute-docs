@@ -14,7 +14,7 @@ ms.author: ajkundna
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
-Support for Generation 2 virtual machines (VMs) is now available on Azure. You can upgrade existing Generation 1 virtual machines to Generation 2 with Trusted launch. Review the considerations on this page and the [upgrade guidance](trusted-launch-existing-vm-gen-1.md) before choosing or upgrading a generation.
+Support for Generation 2 virtual machines (VMs) is now available on Azure. You can also upgrade existing Generation 1 virtual machines to Generation 2 with Trusted launch. Review the considerations on this page and the [upgrade guidance](trusted-launch-existing-vm-gen-1.md) before choosing or upgrading a generation.
 
 Generation 2 VMs support key features that aren't supported in Generation 1 VMs. These features include increased memory, Intel Software Guard Extensions (Intel SGX), and virtualized persistent memory (vPMEM). Generation 2 VMs running on-premises, have some features that aren't supported in Azure yet. For more information, see the [Features and capabilities](#features-and-capabilities) section.
 
