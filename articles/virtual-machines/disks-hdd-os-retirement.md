@@ -25,14 +25,9 @@ After September 8, 2028, any existing virtual machines using Standard HDD OS Dis
 
 This retirement is only for the ability to use Standard HDD disks as OS disks. None of the other managed disk types or ephemeral OS disks will be affected by this retirement.
 
-The following disk types are **not affected** by this retirement:
-- Standard HDD data disks (non-boot volumes) - these remain supported for use as data storage
-- [Ephemeral OS disks](ephemeral-os-disks.md) - these are not affected by this retirement
-- All other managed disk types (Standard SSD, Premium SSD, Premium SSD v2, Ultra Disks)
-
 ## What actions should I take?
 
-- **Immediately stop creating new virtual machines with Standard HDD OS disks.** Use Standard SSD or Premium SSD for new OS disks instead.
+Stop creating new virtual machines with Standard HDD OS disks. Use Standard SSD or Premium SSD for new OS disks instead.
 
 To start planning a migration to either Standard SSD or Premium SSD OS disks, first, make a list of all affected OS disks and VMs.
 

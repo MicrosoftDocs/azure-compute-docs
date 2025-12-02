@@ -119,8 +119,6 @@ On Azure Windows VMs, drive C is your OS disk and is persistent storage, unless 
 
 A data disk is a managed disk attached to a virtual machine to store application data or other data. Data disks are registered as SCSI drives and are labeled with a letter that you choose. The size and type of the virtual machine determines how many data disks you can attach to the VM and the disk types you can use with the VM.
 
-Standard HDD remains supported for data disks (non-boot volumes) beyond September 8, 2028.
-
 Generally, you should use data disks to store your applications and data, instead of storing them on an [OS disk](#os-disk). Using data disks to store applications and data offers the following benefits over using OS disks:
 
 - Improved backup and disaster recovery
@@ -149,4 +147,3 @@ On Azure Linux VMs, the temporary disk is typically */dev/disk/azure/resource*. 
 - Learn about how [Virtual machine and disk performance](disks-performance.md) works
 - Learn the [Best practices for achieving high availability with Azure virtual machines and managed disks](disks-high-availability.md)
 - Learn more about how managed disks are billed, see [Understand Azure Disk Storage billing](disks-understand-billing.md)
-- See [Convert managed disks storage between different disk types](disks-convert-types.md) for guidance related to the Standard HDD OS disk retirement
