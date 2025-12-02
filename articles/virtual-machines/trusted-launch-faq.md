@@ -47,6 +47,10 @@ VM Guest State (VMGS) is specific to Trusted Launch VMs. It's a blob managed by 
 
 This section discusses Trusted Launch supported features and deployments.
 
+### Are Arm64 VM sizes and images supported with Trusted Launch?
+
+Yes, Trusted Launch is supported for Arm64 VMs. Arm64 images with Trusted Launch are available in Azure Marketplace. The [Cobalt 100-based Arm64 VM series](sizes/cobalt-overview.md) (Dpsv6, Dplsv6, Epsv6) support Trusted Launch. You can deploy Trusted Launch on these Arm64 sizes using validated marketplace images such as Ubuntu 24.04, Debian 13, Rocky 9, Azure Linux 3, and Red Hat Enterprise Linux 10.
+
 ### Is Azure Compute Gallery supported by Trusted Launch?
 
 Trusted Launch now allows images to be created and shared through the [Azure Compute Gallery](trusted-launch-portal.md#trusted-launch-vm-supported-images) (formerly Shared Image Gallery). The image source can be:
@@ -83,7 +87,7 @@ Backups taken before you [upgrade an existing Generation 2 VM to Trusted Launch]
 
 ### How can I find VM sizes that support Trusted Launch?
 
-See the list of [Generation 2 VM sizes that support Trusted Launch](trusted-launch.md#virtual-machines-sizes).
+See the list of [Generation 2 VM sizes that support Trusted Launch](trusted-launch.md#virtual-machines-sizes), which includes both x64 and Arm64 sizes. [Cobalt 100-based Arm64 sizes](sizes/cobalt-overview.md) (Dpsv6, Dplsv6, Epsv6) support Trusted Launch.
 
 Use the following commands to check if a [Generation 2 VM size](../virtual-machines/generation-2.md#generation-2-vm-sizes) doesn't support Trusted Launch.
 
@@ -148,7 +152,7 @@ See the list of [OS versions supported with Trusted Launch](trusted-launch.md#op
 
 #### Marketplace OS images
 
-Use the following commands to check if an Azure Marketplace OS image supports Trusted Launch.
+Use the following commands to check if an Azure Marketplace OS image supports Trusted Launch. The `architecture` field can be either `x64` or `Arm64`.
 
 ##### [CLI](#tab/adhoccli)
 
@@ -156,7 +160,7 @@ Use the following commands to check if an Azure Marketplace OS image supports Tr
 az vm image show --urn "MicrosoftWindowsServer:WindowsServer:2022-datacenter-azure-edition:latest"
 ```
 
-The response is similar to the following form. If `hyperVGeneration` is `v2` and `SecurityType` contains `TrustedLaunch` in the output, the Generation 2 OS image supports Trusted Launch.
+The response is similar to the following form. If `hyperVGeneration` is `V2` and `SecurityType` contains `TrustedLaunch` in the output, the Generation 2 OS image supports Trusted Launch, regardless of whether the architecture is x64 or Arm64.
 
 ```json
 {
@@ -202,6 +206,21 @@ The response is similar to the following form. If `hyperVGeneration` is `v2` and
   },
   "plan": null,
   "tags": null
+}
+```
+
+For Arm64 images, the output has `"architecture": "Arm64"`:
+
+```json
+{
+  "architecture": "Arm64",
+  "features": [
+    {
+      "name": "SecurityType",
+      "value": "TrustedLaunchSupported"
+    }
+  ],
+  "hyperVGeneration": "V2"
 }
 ```
 
@@ -398,7 +417,7 @@ You need to explicitly bypass Trusted launch default if one of the following sce
 
 > [!NOTE]
 >
-> If deployment is dependent on managed images, for the most current technology, you're encouraged to use [Azure Compute Gallery](azure-compute-gallery.md). All new features, like ARM64, Trusted Launch, and Confidential VM are only supported through Azure Compute Gallery. If you have an existing managed image, you can [migrate it to Azure compute gallery](./migration/migration-managed-image-to-compute-gallery.md)
+> For managed images, use [Azure Compute Gallery](azure-compute-gallery.md) for the latest capabilities. Trusted Launch-enabled Arm64 images are also available in Azure Marketplace. If you have an existing managed image, you can [migrate it to Azure compute gallery](./migration/migration-managed-image-to-compute-gallery.md).
 
 ### Can I disable Trusted Launch for a new VM deployment?
 

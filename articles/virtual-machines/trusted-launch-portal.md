@@ -22,6 +22,8 @@ ms.custom:
 
 [Trusted Launch](trusted-launch.md) is a way to improve the security of [Generation 2](generation-2.md) virtual machines (VMs). Trusted Launch protects against advanced and persistent attack techniques by combining infrastructure technologies like virtual Trusted Platform Module (vTPM) and secure boot.
 
+Trusted Launch is supported for both x64 and Arm64 Generation 2 VMs, including [Cobalt 100-based Arm64 sizes](sizes/cobalt-overview.md) (Dpsv6, Dplsv6, Epsv6). For Arm64 deployments, select Trusted Launch-enabled Arm64 images from Azure Marketplace.
+
 ## Prerequisites
 
 - We recommend that you [onboard your subscription to Microsoft Defender for Cloud](https://azure.microsoft.com/services/security-center/?&ef_id=CjwKCAjwwsmLBhACEiwANq-tXHeKhV--teH6kIijnBTmP-PgktfvGr5zW9TAx00SR7xsGUc3sTj5sBoCkEoQAvD_BwE:G:s&OCID=AID2200277_SEM_CjwKCAjwwsmLBhACEiwANq-tXHeKhV--teH6kIijnBTmP-PgktfvGr5zW9TAx00SR7xsGUc3sTj5sBoCkEoQAvD_BwE:G:s&gclid=CjwKCAjwwsmLBhACEiwANq-tXHeKhV--teH6kIijnBTmP-PgktfvGr5zW9TAx00SR7xsGUc3sTj5sBoCkEoQAvD_BwE#overview) if it isn't already. Defender for Cloud has a free tier, which offers useful insights for various Azure and hybrid resources. With the absence of Defender for Cloud, Trusted Launch VM users can't monitor [boot integrity](boot-integrity-monitoring-overview.md) of VM.
@@ -55,8 +57,8 @@ Create a VM with Trusted Launch enabled. Choose one of the following options.
 
 1. Under **Image**, select an image from **Recommended Gen 2 images compatible with Trusted launch**. For a list, see [Trusted Launch](trusted-launch.md#virtual-machines-sizes).
    > [!TIP]
-   > If you don't see the Gen2 version of the image that you want in the dropdown list, select **See all images**. Then change the **Security type** filter to **Trusted Launch**.
-1.  Select a VM size that supports Trusted Launch. For more information, see the list of [supported sizes](trusted-launch.md#virtual-machines-sizes).
+   > If you don't see the Gen2 version of the image that you want in the dropdown list, select **See all images**. Then change the **Security type** filter to **Trusted Launch**. For Arm64 deployments, Arm64 Trusted Launch images are available in Azure Marketplace. Use the image picker filters to select Arm64 images when targeting [Cobalt 100-based Arm64 sizes](sizes/cobalt-overview.md).
+1.  Select a VM size that supports Trusted Launch. For more information, see the list of [supported sizes](trusted-launch.md#virtual-machines-sizes). [Cobalt 100-based Arm64 sizes](sizes/cobalt-overview.md) (Dpsv6, Dplsv6, Epsv6) support Trusted Launch.
 1.  Fill in the **Administrator account** information and then **Inbound port rules**.
 1.  At the bottom of the page, select **Review + Create**.
 1.  On the **Create a virtual machine** page, you can see the information about the VM you're about to deploy. After validation shows as passed, select **Create**.
@@ -91,6 +93,21 @@ Make sure that you're running the latest version of the Azure CLI.
        --enable-vtpm true 
     ```
 
+1. For Arm64 Trusted Launch VMs, select an Arm64 Gen 2 image URN and an Arm64 size (for example, a Dpsv6 size):
+
+    ```azurecli-interactive
+    az vm create \
+       --resource-group myResourceGroup \
+       --name myArm64VM \
+       --image Canonical:ubuntu-24_04-lts:server-arm64:latest \
+       --size Standard_D2ps_v6 \
+       --admin-username azureuser \
+       --generate-ssh-keys \
+       --security-type TrustedLaunch \
+       --enable-secure-boot true \
+       --enable-vtpm true 
+    ```
+
 1. For existing VMs, you can enable or disable secure boot and vTPM settings. Updating the VM with secure boot and vTPM settings triggers auto-reboot.
 
     ```azurecli-interactive
@@ -106,6 +123,9 @@ For more information about installing boot integrity monitoring through the Gues
 ### [PowerShell](#tab/powershell)
 
 To provision a VM with Trusted Launch, it first needs to be enabled with the `TrustedLaunch` parameter by using the `Set-AzVmSecurityProfile` cmdlet. Then you can use the `Set-AzVmUefi` cmdlet to set the vTPM and Secure Boot configuration. Use the following snippet as a quick start. Remember to replace the values in this example with your own.
+
+> [!NOTE]
+> For Arm64 Trusted Launch VMs, ensure the selected image and size are Arm64 (for example, Cobalt 100 series Dpsv6, Dplsv6, Epsv6) and that Hyper-V Generation is V2.
 
 ```azurepowershell-interactive
 $rgName = "myResourceGroup"
@@ -171,6 +191,9 @@ You can deploy Trusted Launch VMs by using a quickstart template.
 
 - **Recommended**: [Trusted Launch VM supported (`TrustedLaunchSupported`) images](#trusted-launch-vm-supported-images) are images where the source doesn't have VM Guest state information and can be used to create either [Generation 2 VMs](generation-2.md) or [Trusted Launch VMs](trusted-launch.md).
 - [Trusted Launch VM (`TrustedLaunch`) images](#trusted-launch-vm-images) are images where the source usually has [VM Guest State information](trusted-launch-faq.md#what-is-vm-guest-state-vmgs) and can be used to create only [Trusted Launch VMs](trusted-launch.md).
+
+> [!NOTE]
+> Arm64 Generation 2 images are supported with Trusted Launch and can be used to create Trusted Launch VMs on Arm64 sizes (Dpsv6, Dplsv6, Epsv6). When creating image definitions, ensure the architecture matches the target deployment.
 
 ### Trusted Launch VM supported images
 
@@ -579,5 +602,6 @@ If the VM is running, you receive a message that the VM will restart. Select **Y
 
 ## Related content
 
-Learn more about [Trusted Launch](trusted-launch.md) and [boot integrity monitoring](boot-integrity-monitoring-overview.md) VMs.
+- Learn more about [Trusted Launch](trusted-launch.md) and [boot integrity monitoring](boot-integrity-monitoring-overview.md) VMs.
+- Learn about [Cobalt 100-based Arm64 VM sizes](sizes/cobalt-overview.md) that support Trusted Launch.
 
