@@ -35,7 +35,7 @@ The following table provides a comparison of the five disk types to help you dec
 | **Max disk size** | 65,536 GiB | 65,536 GiB |32,767 GiB | 32,767 GiB | 32,767 GiB |
 | **Max throughput** | 10,000 MB/s | 1,200 MB/s | 900 MB/s | 750 MB/s | 500 MB/s |
 | **Max IOPS** | 400,000 | 80,000 | 20,000 | 6,000 | 2,000, 3,000* |
-| **Usable as OS Disk?** | No | No | Yes | Yes | Yes |
+| **Usable as OS Disk?** | No | No | Yes | Yes | [Yes (retiring Sept 8, 2028)](disks-hdd-os-retirement.md) |
 
 \* Only applies to disks with performance plus enabled.
 
