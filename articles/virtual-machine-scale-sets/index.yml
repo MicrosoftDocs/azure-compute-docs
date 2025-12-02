@@ -8,7 +8,7 @@ metadata:
   description: Learn how to create, configure, manage, and autoscale Virtual Machine Scale Sets.
   ms.service: azure-virtual-machine-scale-sets
   ms.topic: landing-page
-  author: ju-shim
+  author: cynthn
   ms.author: jushiman
   ms.reviewer: mimckitt
   ms.date: 04/18/2025
