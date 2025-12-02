@@ -18,7 +18,7 @@ ms.custom: template-concept; references_regions
 
 Azure offers Trusted Launch as a seamless way to improve the security of [Generation 2](generation-2.md) virtual machines (VM). Trusted Launch protects against advanced and persistent attack techniques. Trusted Launch is composed of several coordinated infrastructure technologies that can be enabled independently. Each technology provides another layer of defense against sophisticated threats.
 
-Trusted Launch is supported on both x64 and Arm64 Generation 2 VMs where supported images are available. Trusted Launch–supported Arm64 images are available in the Azure Marketplace for [Cobalt 100–based VM series](./sizes/cobalt-overview.md).
+Trusted Launch is supported on both x64 and Arm64 Generation 2 VMs where supported images are available. Trusted Launch-supported Arm64 images are available in the Azure Marketplace for [Cobalt 100-based VM series](./sizes/cobalt-overview.md).
 
 > [!IMPORTANT]
 >
@@ -72,7 +72,7 @@ Trusted Launch is supported on both x64 and Arm64 Generation 2 VMs where support
 &#42; Variations of this OS are supported.
 
 > [!NOTE]
-> Trusted Launch on Arm64 is supported when using applicable Arm64 Marketplace images for supported distributions and versions. For [Cobalt 100](./sizes/cobalt-overview.md) (Arm64) sizes, deploy Trusted Launch using Arm64 images available in Azure Marketplace.
+> Trusted Launch on Arm64 is supported when using applicable Arm64 Marketplace images for supported distributions and versions. For [Cobalt 100](./sizes/cobalt-overview.md) sizes, deploy Trusted Launch using Arm64 images available in Azure Marketplace.
 
 ## More information
 
