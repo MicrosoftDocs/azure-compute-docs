@@ -6,7 +6,7 @@ ms.service: azure-disk-storage
 ms.topic: how-to
 ms.date: 09/08/2025
 ms.author: rogarana
-
+ai-usage: ai-assisted
 ---
 
 # Migrate your Standard HDD OS disks by September 08, 2028

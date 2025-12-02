@@ -149,4 +149,4 @@ On Azure Linux VMs, the temporary disk is typically */dev/disk/azure/resource*. 
 - Learn about how [Virtual machine and disk performance](disks-performance.md) works
 - Learn the [Best practices for achieving high availability with Azure virtual machines and managed disks](disks-high-availability.md)
 - Learn more about how managed disks are billed, see [Understand Azure Disk Storage billing](disks-understand-billing.md)
-- Learn how to [Convert managed disks storage between different disk types](disks-convert-types.md) to assist with migration planning related to the Standard HDD OS disk retirement
+- See [Convert managed disks storage between different disk types](disks-convert-types.md) for guidance related to the Standard HDD OS disk retirement
