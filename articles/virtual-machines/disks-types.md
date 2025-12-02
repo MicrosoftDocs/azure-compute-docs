@@ -35,7 +35,7 @@ The following table provides a comparison of the five disk types to help you dec
 | **Max disk size** | 65,536 GiB | 65,536 GiB |32,767 GiB | 32,767 GiB | 32,767 GiB |
 | **Max throughput** | 10,000 MB/s | 1,200 MB/s | 900 MB/s | 750 MB/s | 500 MB/s |
 | **Max IOPS** | 400,000 | 80,000 | 20,000 | 6,000 | 2,000, 3,000* |
-| **Usable as OS Disk?** | No | No | Yes | Yes | Yes |
+| **Usable as OS Disk?** | No | No | Yes | Yes | [Yes (retiring Sept 8, 2028)](disks-hdd-os-retirement.md) |
 
 \* Only applies to disks with performance plus enabled.
 
@@ -193,6 +193,11 @@ For standard SSDs, each I/O operation less than or equal to 256 kB of throughput
 Standard SSDs offer disk bursting, which provides better tolerance for the unpredictable IO pattern changes. OS boot disks and applications prone to traffic spikes will both benefit from disk bursting. To learn more about how bursting for Azure disks works, see [Disk-level bursting](disk-bursting.md#disk-level-bursting).
 
 ## Standard HDDs
+
+> [!NOTE]
+> Service for OS disks running on Standard HDD will be retired on September 8, 2028. OS disks still on Standard HDD after this date will be automatically converted to Standard SSD of equivalent size. Standard HDD data disks (non-boot volumes) are not affected. [Ephemeral OS disks](ephemeral-os-disks.md) are not affected. For migration guidance, see [Migrate your Standard HDD OS disks by September 08, 2028](disks-hdd-os-retirement.md) and [Convert managed disks storage between different disk types](disks-convert-types.md).
+
+Converting from Standard HDD to Standard SSD will result in a cost increase. Review [Azure Disk Storage billing guidance](disks-understand-billing.md) to understand the cost implications and choose the most appropriate disk type for your workloads.
 
 Azure Standard HDDs are suitable for latency-tolerant workloads using large, sequential IO, such as light data processing workloads that read or write large files sequentially. Standard HDDs are not suitable for workloads requiring low latency, or frequent small-block access - such as OS disks or transactional databases. Use either Standard SSDs or Premium SSD managed disks for these workloads. Standard HDDs are designed to deliver write latencies of less than 10 ms and read latencies of less than 20 ms for most IO operations. Performance may vary more widely than that of SSD-based disks, and actual performance may vary depending on IO size and workload pattern. Standard HDDs are available in all Azure regions and can be used with all Azure VMs. Standard HDDs support the [512E sector size](https://en.wikipedia.org/wiki/Advanced_Format#512_emulation_(512e)).
 

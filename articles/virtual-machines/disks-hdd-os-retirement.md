@@ -25,7 +25,14 @@ After September 8, 2028, any existing virtual machines using Standard HDD OS Dis
 
 This retirement is only for the ability to use Standard HDD disks as OS disks. None of the other managed disk types or ephemeral OS disks will be affected by this retirement.
 
+The following disk types are **not affected** by this retirement:
+- Standard HDD data disks (non-boot volumes) - these remain supported for use as data storage
+- [Ephemeral OS disks](ephemeral-os-disks.md) - these are not affected by this retirement
+- All other managed disk types (Standard SSD, Premium SSD, Premium SSD v2, Ultra Disks)
+
 ## What actions should I take?
+
+- **Stop creating new virtual machines with Standard HDD OS disks.** Use Standard SSD or Premium SSD for new OS disks instead.
 
 To start planning a migration to either Standard SSD or Premium SSD OS disks, first, make a list of all affected OS disks and VMs.
 
@@ -33,7 +40,7 @@ If you have multiple subscriptions, use the [Disk Storage Center](https://portal
 
 The Disk Storage Center still works for individual subscriptions. But, if you prefer, you can use the Azure CLI or the Azure PowerShell module to get the same list for an individual subscription. For the Azure PowerShell module, use `Get-AzDisk | Where-Object { $_.Sku.Name -eq "Standard_LRS" -and $_.OsType }` and for the Azure CLI, use `az disk list --query "[?sku.name=='Standard_LRS' && osType!=null]" --output table`.
 
-Once you have a list of Standard HDD OS disks, [convert your Standard HDD OS disks](disks-convert-types.md#change-the-type-of-an-individual-managed-disk) to either Standard SSD or Premium SSD disks.
+Once you have a list of Standard HDD OS disks, [convert your Standard HDD OS disks](disks-convert-types.md#change-the-type-of-an-individual-managed-disk) to either Standard SSD or Premium SSD disks. Review [Azure Disk Storage billing guidance](disks-understand-billing.md) to choose the most cost-effective disk type for your workloads.
 
 For technical questions and issues, contact support.
 
