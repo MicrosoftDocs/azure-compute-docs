@@ -32,7 +32,7 @@ The following disk types are **not affected** by this retirement:
 
 ## What actions should I take?
 
-- **Stop creating new virtual machines with Standard HDD OS disks.** Use Standard SSD or Premium SSD for new OS disks instead.
+- **Immediately stop creating new virtual machines with Standard HDD OS disks.** Use Standard SSD or Premium SSD for new OS disks instead.
 
 To start planning a migration to either Standard SSD or Premium SSD OS disks, first, make a list of all affected OS disks and VMs.
 
