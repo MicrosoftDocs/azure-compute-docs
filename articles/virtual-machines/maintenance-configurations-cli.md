@@ -7,7 +7,7 @@ ms.subservice: maintenance
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 ms.date: 07/01/2024
-ms.author: jushiman
+ms.author: cynthn
 #pmcontact: shants
 # Customer intent: "As an IT administrator managing Azure virtual machines, I want to create and assign maintenance configurations using the command-line interface, so that I can control platform update schedules effectively and minimize service disruptions."
 ---

@@ -470,7 +470,7 @@
            href: ./sizes/memory-optimized/msv3-hm-series.md
          - name: Mdsv3 High Memory series
            href: ./sizes/memory-optimized/mdsv3-hm-series.md
-         - name: Mv2 series
+         - name: Msv2 High Memory series
            href: ./sizes/memory-optimized/mv2-series.md
        - name: Very High Memory
          items:

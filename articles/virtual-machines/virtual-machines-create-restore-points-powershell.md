@@ -2,7 +2,7 @@
 title: Creating Virtual Machine Restore Points using PowerShell
 description: Creating Virtual Machine Restore Points using PowerShell
 author: cynthn
-ms.author: jushiman
+ms.author: cynthn
 ms.service: azure-virtual-machines
 ms.subservice: recovery
 ms.topic: tutorial

@@ -5,7 +5,7 @@ author: cynthn
 ms.service: azure-virtual-machine-scale-sets
 ms.topic: how-to
 ms.date: 11/22/2022
-ms.author: jushiman
+ms.author: cynthn
 ms.custom: subject-armqs, mode-arm, devx-track-arm-template
 #pmcontact: PPHILLIPS
 # Customer intent: As a cloud administrator, I want to configure maintenance controls for automatic OS image upgrades using an ARM template, so that I can manage the timing of these updates for my Azure Virtual Machine Scale Sets effectively.

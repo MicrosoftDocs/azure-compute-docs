@@ -35,7 +35,7 @@ The following table provides a comparison of the five disk types to help you dec
 | **Max disk size** | 65,536 GiB | 65,536 GiB |32,767 GiB | 32,767 GiB | 32,767 GiB |
 | **Max throughput** | 10,000 MB/s | 1,200 MB/s | 900 MB/s | 750 MB/s | 500 MB/s |
 | **Max IOPS** | 400,000 | 80,000 | 20,000 | 6,000 | 2,000, 3,000* |
-| **Usable as OS Disk?** | No | No | Yes | Yes | Yes |
+| **Usable as OS Disk?** | No | No | Yes | Yes | [Yes (retiring Sept 8, 2028)](disks-hdd-os-retirement.md) |
 
 \* Only applies to disks with performance plus enabled.
 
@@ -55,7 +55,7 @@ Ultra Disks must be used as data disks and can only be created as empty disks. W
 
 Ultra Disk sizes range from 4 GiB up to 64 TiB, in 1 GiB increments. Ultra Disk capacity works like Premium SSD v2 disks and you're billed on a per GiB ratio.
 
-Ultra Disks offer up to 100 TiB per region per subscription by default and Ultra Disks support higher capacity by request. To request an increase in capacity, request a quota increase or contact Azure Support.
+By default, for each individual region, you can deploy a total of 100 TiB of capacity as Ultra Disks per subscription. If you need more than 100 TiB of Ultra Disk capacity per region per subscription, request a quota increase or contact Azure Support.
 
 The following table provides an example of performance caps an Ultra Disk has depending on the size you set for the disk.
 

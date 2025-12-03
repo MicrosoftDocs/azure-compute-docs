@@ -1,7 +1,7 @@
 ---
 title: Automatic OS image upgrades with Azure Virtual Machine Scale Sets
 description: Learn how to automatically upgrade the OS image on virtual machines  in a scale set
-author: ju-shim
+author: cynthn
 ms.author: jushiman
 ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets

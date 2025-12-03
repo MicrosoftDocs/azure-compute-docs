@@ -1,7 +1,7 @@
 ---
 title: Quickstart - Create a Windows Virtual Machine Scale Set with Bicep
 description: Learn how to quickly create a Windows virtual machine scale with Bicep to deploy a sample app and configures autoscale rules
-author: ju-shim
+author: cynthn
 ms.author: jushiman
 ms.topic: quickstart
 ms.service: azure-virtual-machine-scale-sets
