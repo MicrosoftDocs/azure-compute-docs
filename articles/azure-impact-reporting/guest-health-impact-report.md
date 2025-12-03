@@ -195,7 +195,7 @@ GET "https://management.azure.com/subscriptions/{subscriptionId}/providers/Micro
 {
   "value": [
     {
-      "id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.Impact/workloadImpacts/impactid22/insights/insightId12",
+      "id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Impact/workloadImpacts/impactid22/insights/insightId12",
       "name": "insightId12",
       "type": "Microsoft.Impact/insights",
       "properties": {
@@ -210,7 +210,7 @@ GET "https://management.azure.com/subscriptions/{subscriptionId}/providers/Micro
         "impact": {
           "impactedResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resource-rg/providers/Microsoft.Sql/sqlserver/dbservername",
           "startTime": "2025-06-15T04:00:00.009223Z",
-          "impactId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.Impact/workloadImpacts/impactid22"
+          "impactId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Impact/workloadImpacts/impactid22"
         }
       }
     }
@@ -218,19 +218,19 @@ GET "https://management.azure.com/subscriptions/{subscriptionId}/providers/Micro
 }
 ```
 
-| Name | Description | Content |
-|------|-------------|---------|
-| Article | details of the insight like title, description etc | Article details of the insight like title, description etc |
-| createdByType | The type of identity that created the resource. | createdByType |
-| ErrorAdditionalInfo | The resource management error additional info. | The type of identity that created the resource. |
-| ErrorDetail | The error detail. | ErrorAdditionalInfo |
-| ErrorResponse | Error response | The resource management error additional info. |
-| ImpactDetails | details of of the impact for which insight has been generated. | ErrorDetail |
-| Insight | Insight resource | The error detail. |
-| InsightListResult | The response of a Insight list operation. | ErrorResponse |
-| InsightProperties | Impact category properties. | Error response |
-| ProvisioningState | Provisioning state of the resource. | ImpactDetails |
-| systemData | Metadata pertaining to creation and last modification of the resource. | details of of the impact for which insight has been generated. |
+| Name               | Type                  | Description                                                                                             |
+|--------------------|-----------------------|---------------------------------------------------------------------------------------------------------|
+| `additionalDetails` | object                | Additional details of the insight.                                                                      |
+| `category`         | string                | Category of the insight.                                                                               |
+| `content`          | object             | Contains title and description for the insight.                                                        |
+| `eventId`          | string                | Identifier of the event correlated with this insight. Used to aggregate insights for the same event.   |
+| `eventTime`        | string (date-time)    | Time of the event correlated with the impact.                                                           |
+| `groupId`          | string                | Identifier that can be used to group similar insights.                                                  |
+| `impact`           | object       | Details of the impact for which the insight has been generated.                                         |
+| `insightUniqueId`  | string                | Unique identifier of the insight.                                                                       |
+| `provisioningState`| string   | Resource provisioning state.                                                                            |
+| `status`           | string                | Status of the insight (e.g., *Resolved*, *Repaired*, other).                                            |
+
 
 ## Related content
 
