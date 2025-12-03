@@ -25,8 +25,7 @@ Though the examples here are for RHEL, but the steps are general and can be used
 
 > [!NOTE]
 > Running MPI jobs on SR-IOV enabled VMs with certain MPI libraries (such as Platform MPI) may require setting up of partition keys (p-keys) across a tenant for isolation and security. Follow the steps in the [Discover partition keys](#discover-partition-keys) section for details on determining the p-key values and setting them correctly for an MPI job with that MPI library.
-
-> [!NOTE]
+>
 > The code snippets below are examples. We recommend using the latest stable versions of the packages, or referring to the [azhpc-images repo](https://github.com/Azure/azhpc-images/blob/master/partners/rhel/common/install_mpis.sh).
 
 ## Choosing MPI library
