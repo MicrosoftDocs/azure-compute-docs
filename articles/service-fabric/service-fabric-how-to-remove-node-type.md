@@ -46,7 +46,7 @@ When removing a node type that is Bronze, all the nodes in the node type go down
     - All the services modified above are no longer running on the Node belonging to the node type.
     - All the services are healthy.
 
-3. Mark the node type as non-primary (Skip for non-primary node types)
+3. Mark the node type as non-primary (Skip for non-primary node types).
 
     - Locate the Azure Resource Manager template used for deployment.
     - Find the section related to the node type in the Service Fabric section.
