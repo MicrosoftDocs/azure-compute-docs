@@ -77,7 +77,7 @@ Suppose you have a zone-spanning scale set that typically has 2 instance in each
 
 One zone recently experienced an outage, during which time additional instances were created in another zone, resulting in a spread of 0 (in zone 1), 2 (in zone 2), and 4 (in zone 3):
 
-:::image type="content" source="media/virtual-machine-scale-sets-zone-balancing/rebalancing-conversion-outage.png" alt-text="Diagram that shows a scale set with no instances in zone 1, 2 instances in zone 2, and 4 instances in zone 3." border="false":::    
+:::image type="content" source="media/virtual-machine-scale-sets-zone-balancing/rebalancing-recovery-outage.png" alt-text="Diagram that shows a scale set with no instances in zone 1, 2 instances in zone 2, and 4 instances in zone 3." border="false":::    
 
 ---
 
@@ -97,7 +97,7 @@ You can trigger *rebalancing* by running the following sequence of operations:
 
     To achieve balance, you should temporarily add another 2 instances, which means you set the capacity to 8 (6 + 2). The new instances are created in zone 1, and old instances remain where they are:
 
-    :::image type="content" source="media/virtual-machine-scale-sets-zone-balancing/rebalancing-conversion-outage.png" alt-text="Diagram that shows a scale set with 2 instances in zone 1, 2 instances in zone 2, and 4 instances in zone 3." border="false":::    
+    :::image type="content" source="media/virtual-machine-scale-sets-zone-balancing/rebalancing-recovery-outage.png" alt-text="Diagram that shows a scale set with 2 instances in zone 1, 2 instances in zone 2, and 4 instances in zone 3." border="false":::    
 
     ---
 
@@ -118,7 +118,7 @@ You can trigger *rebalancing* by running the following sequence of operations:
 
     You reduce the capacity to 6. Azure removes the extra instances in zones 2 and 3, leaving 2 instances in each zone:
 
-    :::image type="content" source="media/virtual-machine-scale-sets-zone-balancing/rebalancing-conversion-initial.png" alt-text="Diagram that shows a scale set with six instances spread evenly across zones." border="false":::    
+    :::image type="content" source="media/virtual-machine-scale-sets-zone-balancing/rebalancing-recovery-initial.png" alt-text="Diagram that shows a scale set with six instances spread evenly across zones." border="false":::    
 
     This matches the initial distribution of the scale set.
 
