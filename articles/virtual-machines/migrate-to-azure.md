@@ -6,7 +6,6 @@ ms.topic: article
 ms.date: 12/04/2025
 ms.author: mattmcinnes
 ms.service: azure-virtual-machines
-ms.subservice: migration
 ---
 
 # Migrating from Amazon EC2 to Azure Virtual Machines
@@ -166,10 +165,10 @@ Networking architecture is a critical component when migrating workloads from Am
 
 ### Migration Considerations
 1. **Plan VNet Architecture:** Align with existing AWS VPC design for subnet segmentation.
-2. **Security Rules:** Convert AWS Security Group rules to NSGs; review inbound/outbound traffic.
-3. **Hybrid Connectivity:** Replace Direct Connect with ExpressRoute for private connectivity.
-4. **Load Balancing:** Map ELB configurations to Azure Load Balancer or Application Gateway.
-5. **Access Control:** Use Azure Bastion for secure remote access instead of exposing public IPs.
+1. **Security Rules:** Convert AWS Security Group rules to NSGs; review inbound/outbound traffic.
+1. **Hybrid Connectivity:** Replace Direct Connect with ExpressRoute for private connectivity.
+1. **Load Balancing:** Map ELB configurations to Azure Load Balancer or Application Gateway.
+1. **Access Control:** Use Azure Bastion for secure remote access instead of exposing public IPs.
 
 ## Clustering, Availability, and Zones
 
@@ -202,11 +201,11 @@ High availability and resiliency strategies differ between AWS EC2 and Azure Vir
 1. **Map High Availability Strategy:**  
    - AWS Auto Scaling Groups → Azure VM Scale Sets.
    - AWS AZ deployment → Azure Availability Zones.
-2. **Design for Fault Domains:**  
+1. **Design for Fault Domains:**  
    - Use Availability Sets for rack-level resiliency.
-3. **Load Balancing:**  
+1. **Set up Load Balancing:**  
    - Replace ELB with Azure Load Balancer or Application Gateway.
-4. **Combine Zones and Scale Sets:**  
+1. **Combine Zones and Scale Sets:**  
    - Distribute VMSS instances across zones for maximum resiliency.
 
 
@@ -219,4 +218,4 @@ High availability and resiliency strategies differ between AWS EC2 and Azure Vir
 
 ### Related Resources
 - [Azure Virtual Machines Overview](./overview.md)
-- [Compare AWS and Azure Services](/architecture/aws-professional)
+- [Compare AWS and Azure Services](/azure/architecture/aws-professional)
