@@ -1,4 +1,3 @@
-
 ---
 title: Migrate from Amazon EC2 to Azure Virtual Machines
 description: A comprehensive guide for AWS EC2 professionals transitioning to Azure Virtual Machines. Includes architectural comparisons, best practices, and step-by-step migration strategies.
@@ -77,10 +76,10 @@ Storage architecture is a critical factor when migrating workloads from Amazon E
 ### AWS EC2 Storage Options
 - **Elastic Block Store (EBS)**  
   Persistent block storage for EC2 instances. Supports SSD and HDD volumes:
-  - General Purpose SSD (gp3/gp2)
-  - Provisioned IOPS SSD (io1/io2)
-  - Throughput Optimized HDD (st1)
-  - Cold HDD (sc1)
+  - General Purpose SSD (`gp3`/`gp2`)
+  - Provisioned IOPS SSD (`io1`/`io2`)
+  - Throughput Optimized HDD (`st1`)
+  - Cold HDD (`sc1`)
 - **Instance Store**  
   Ephemeral storage physically attached to the host. Data lost on instance stop/terminate.
 - **Amazon S3**  
@@ -95,10 +94,10 @@ Key Features:
 ### Azure VM Storage Options
 - **Managed Disks**  
   Persistent block storage managed by Azure:
-  - Standard HDD: Cost-effective for infrequent access.
-  - Standard SSD: Balanced performance for general workloads.
-  - Premium SSD: Low latency for mission-critical apps.
-  - Ultra Disk: High throughput for data-intensive workloads.
+    - **Standard HDD**: Cost-effective for infrequent access.
+    - **Standard SSD**: Balanced performance for general workloads.
+    - **Premium SSD**: Low latency for mission-critical apps.
+    - **Ultra Disk**: High throughput for data-intensive workloads.
 - **Ephemeral OS Disks**  
   Temporary storage for stateless workloads.
 - **Azure Blob Storage**  
@@ -121,9 +120,9 @@ Key Features:
 
 ### Storage Migration Considerations
 - **Map EBS volumes to Azure Managed Disk tiers**:
-  - gp3 → Standard SSD
-  - io1/io2 → Premium SSD
-  - st1/sc1 → Standard HDD
+  - `gp3` → Standard SSD
+  - `io1`/`io2` → Premium SSD
+  - `st1`/`sc1` → Standard HDD
 - Validate IOPS and throughput requirements; Azure Premium SSD and Ultra Disk support high-performance workloads.
 - Plan for encryption compliance: Use Azure Disk Encryption and Key Vault for sensitive data.
 - For object storage migration, map S3 buckets to Azure Blob Storage using **AzCopy** or **Azure Storage Migration tools**.
@@ -197,7 +196,7 @@ High availability and resiliency strategies differ between AWS EC2 and Azure Vir
 | Zone Redundancy        | AZ-based deployment            | Availability Zones + Zone-redundant storage |
 | Rack-level Protection  | Not explicit                   | Availability Sets                      |
 | Auto Scaling           | Auto Scaling Groups            | VM Scale Sets (VMSS)                  |
-| Load Balancing         | ELB (L4/L7)                   | Azure Load Balancer / App Gateway     |
+| Load Balancing         | ELB (`L4`/`L7`)                   | Azure Load Balancer / App Gateway     |
 
 
 ### Migration Considerations
@@ -221,4 +220,4 @@ High availability and resiliency strategies differ between AWS EC2 and Azure Vir
 
 ### Related Resources
 - [Azure Virtual Machines Overview](https://learn.microsoft.com/azure/virtual-machines/)
-- [Compare AWS and Azure Services](https://learn.microsoft.com/azure/architecture/aws-professional)
+- [Compare AWS and Azure Services](/architecture/aws-professional)
