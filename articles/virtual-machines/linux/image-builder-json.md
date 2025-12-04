@@ -825,7 +825,7 @@ The `errorHandling` property allows you to configure how errors are handled duri
 
 ```bicep
 errorHandling: {
-  onCustomizerError: 'abort',
+  onCustomizerError: 'abort'
   onValidationError: 'cleanup'
 }
 ```
@@ -1351,7 +1351,7 @@ Sets the source image as an existing managed image of a generalized VHD or VM.
 
 ```bicep
 source: {
-  type: 'ManagedImage',
+  type: 'ManagedImage'
   imageId: '/subscriptions/<subscriptionId>/resourceGroups/{destinationResourceGroupName}/providers/Microsoft.Compute/images/<imageName>'
 }
 ```
