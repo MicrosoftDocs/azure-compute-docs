@@ -2,7 +2,7 @@
 title: Get high availability and cost savings with Spot Priority Mix for Virtual Machine Scale Sets
 description: Learn how to run a mix of Spot VMs and uninterruptible standard VMs for Virtual Machine Scale Sets to achieve high availability and cost savings.
 author: cynthn
-ms.author: jushiman
+ms.author: cynthn
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: azure-spot-vm
 ms.topic: concept-article

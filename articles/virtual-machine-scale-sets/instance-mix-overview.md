@@ -6,7 +6,7 @@ ms.author: brittanyrowe
 ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
 ms.date: 09/12/2025
-ms.reviewer: jushiman
+ms.reviewer: cynthn
 # Customer intent: As a cloud administrator, I want to utilize multiple VM sizes in a scale set with instance mix, so that I can optimize cost, capacity, and flexibility for my diverse workload requirements.
 ---
 
