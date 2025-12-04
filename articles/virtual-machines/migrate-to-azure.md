@@ -13,11 +13,10 @@ ms.subservice: migration
 
 This guide is designed for professionals familiar with Amazon EC2 who are planning to migrate workloads to Azure Virtual Machines (VMs). It explains key differences and similarities between the two platforms, provides architectural considerations, and outlines best practices for performance, cost, and availability. The goal is to help you plan and execute a smooth migration to Azure’s Infrastructure as a Service (IaaS) environment.
 
-## Key topics
-- Key differences and similarities between EC2 and Azure VMs
+## Key concepts
+- Comparing EC2 and Azure VM instances
 - Architectural considerations for compute, storage, networking, and clustering
-- Best practices for performance, cost optimization, and security
-- Step-by-step migration strategies
+- Best practices for performance, cost optimization, and reliability.
 
 
 ## Compute
@@ -40,7 +39,7 @@ Azure uses **VM series** to categorize compute resources:
 - **F-series**: Compute-optimized, comparable to AWS `c` family.
 - **E-series**: Memory-optimized, similar to AWS `r` family.
 - **M-series**: Ultra-high memory for SAP HANA and large databases.
-- **Lsv2-series**: Storage-optimized with local NVMe disks, comparable to AWS `i` family.
+- **L-series**: Storage-optimized with local NVMe disks, comparable to AWS `i` family.
 - **NC/ND/NP-series**: GPU-enabled for AI/ML workloads, similar to AWS `p` or `g` families.
 
 Azure VM sizes are defined by **SKU** (e.g., `Standard_D4s_v5`), which specifies:
