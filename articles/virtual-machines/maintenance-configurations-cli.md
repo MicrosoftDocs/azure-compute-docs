@@ -265,7 +265,7 @@ az maintenance update list \
    --resource-name myHost \
    --resource-type hosts \
    --provider-name Microsoft.Compute \
-   --resource-parentname myHostGroup \
+   --resource-parent-name myHostGroup \
    --resource-parent-type hostGroups \
    --output table
 ```
