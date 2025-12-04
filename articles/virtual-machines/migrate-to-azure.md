@@ -2,10 +2,10 @@
 title: Migrate from Amazon EC2 to Azure Virtual Machines
 description: A comprehensive guide for AWS EC2 professionals transitioning to Azure Virtual Machines. Includes architectural comparisons, best practices, and step-by-step migration strategies.
 author: mattmcinnes
-ms.topic: conceptual
+ms.topic: article
 ms.date: 12/04/2025
 ms.author: mattmcinnes
-ms.service: virtual-machines
+ms.service: azure-virtual-machines
 ms.subservice: migration
 ---
 
@@ -219,5 +219,5 @@ High availability and resiliency strategies differ between AWS EC2 and Azure Vir
 
 
 ### Related Resources
-- [Azure Virtual Machines Overview](https://learn.microsoft.com/azure/virtual-machines/)
+- [Azure Virtual Machines Overview](./overview.md)
 - [Compare AWS and Azure Services](/architecture/aws-professional)
