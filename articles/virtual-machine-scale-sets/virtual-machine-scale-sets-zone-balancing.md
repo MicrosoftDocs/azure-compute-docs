@@ -59,47 +59,11 @@ For a scale set that uses multiple zones, you can choose between two zone balanc
 
 When you add availability zones to an existing scale set, existing VMs remain unchanged and do not get moved or redistributed. In addition, adding a zone does not trigger a rebalancing operation. Rebalancing only happens during scale-out operations when new instances are added to the scale set. Rebalancing does not replace existing instances.
 
-This section includes two example scenarios where you might trigger zone rebalancing:
-
-#### [Nonzonal to zone-spanning](#tab/example1)
-
-Suppose you have a nonzonal scale set with 5 instances:
-
-:::image type="content" source="media/virtual-machine-scale-sets-zone-balancing/rebalancing-conversion-initial.png" alt-text="Diagram that shows a scale set with five nonzonal instances." border="false":::    
-
-You upgrade it to be zone-spanning scale set across three zones. Immediately after updating the zone configuration of the scale set, the existing instances remain in a nonzonal state.
-
-#### [Recovery after zone outage](#tab/example2)
-
-Suppose you have a zone-spanning scale set that typically has 2 instance in each zone, for a total of 6 instances.
-
-:::image type="content" source="media/virtual-machine-scale-sets-zone-balancing/rebalancing-conversion-initial.png" alt-text="Diagram that shows a scale set with six instances spread evenly across zones." border="false":::    
-
-One zone recently experienced an outage, during which time additional instances were created in another zone, resulting in a spread of 0 (in zone 1), 2 (in zone 2), and 4 (in zone 3):
-
-:::image type="content" source="media/virtual-machine-scale-sets-zone-balancing/rebalancing-recovery-outage.png" alt-text="Diagram that shows a scale set with no instances in zone 1, 2 instances in zone 2, and 4 instances in zone 3." border="false":::    
-
----
-
 You can trigger *rebalancing* by running the following sequence of operations:
 
 1. **Scale out.** Add more instances by [updating the scale set's capacity](virtual-machine-scale-sets-autoscale-overview.md). The new capacity should be set to the original capacity *plus* the number of new instances.
 
     The scale set attempts to create the new instances in the zones configured on the scale set.
-
-    #### [Nonzonal to zone-spanning](#tab/example1)
-
-    Because your scale set currently has 5 nonzonal instances and you would like to scale out so that you have 5 instances spread across 3 zones, you should set the capacity to 10 (5 + 5). The new instances are created across the zones, and old instances remain where they are:
-
-    :::image type="content" source="media/virtual-machine-scale-sets-zone-balancing/rebalancing-conversion-scale-out.png" alt-text="Diagram that shows a scale set with two instances in zone 1, two instances in zone 2, one instance in zone 3, and five nonzonal instances." border="false":::    
-
-    #### [Recovery after zone outage](#tab/example2)
-
-    To achieve balance, you should temporarily add another 2 instances, which means you set the capacity to 8 (6 + 2). The new instances are created in zone 1, and old instances remain where they are:
-
-    :::image type="content" source="media/virtual-machine-scale-sets-zone-balancing/rebalancing-recovery-outage.png" alt-text="Diagram that shows a scale set with 2 instances in zone 1, 2 instances in zone 2, and 4 instances in zone 3." border="false":::    
-
-    ---
 
 1. **Scale in.** When the new instances are ready, scale in your scale set to remove the old instances. This process leaves your scale set in a balanced state.
 
@@ -108,18 +72,36 @@ You can trigger *rebalancing* by running the following sequence of operations:
     > [!NOTE]
     > If you use the Flexible orchestration mode and attach, detach, or remove individual VMs, you should check the zones your VMs are in. If the VMs are all in a single zone, your scale set isn't resilient to an outage in that zone.
 
-    #### [Nonzonal to zone-spanning](#tab/example1)
+Here are some examples of how you might manually rebalance scale sets in different situations:
 
-    You reduce the capacity to 5. Azure removes the nonzonal instances, leaving 5 instances spread across the zones:
+- Example 1: Suppose you have a nonzonal scale set with 5 instances:
+
+    :::image type="content" source="media/virtual-machine-scale-sets-zone-balancing/rebalancing-conversion-initial.png" alt-text="Diagram that shows a scale set with five nonzonal instances." border="false":::    
+
+    You upgrade it to be zone-spanning scale set across three zones. Immediately after updating the zone configuration of the scale set, the existing instances remain in a nonzonal state.
+
+    **Scale out:** Because your scale set currently has 5 nonzonal instances and you would like to scale out so that you have 5 instances spread across 3 zones, you should set the capacity to 10 (5 + 5). The new instances are created across the zones, and old instances remain where they are:
+
+    :::image type="content" source="media/virtual-machine-scale-sets-zone-balancing/rebalancing-conversion-scale-out.png" alt-text="Diagram that shows a scale set with two instances in zone 1, two instances in zone 2, one instance in zone 3, and five nonzonal instances." border="false":::  
+
+    **Scale in:** You reduce the capacity to 5. Azure removes the nonzonal instances, leaving 5 instances spread across the zones:
 
     :::image type="content" source="media/virtual-machine-scale-sets-zone-balancing/rebalancing-conversion-scale-in.png" alt-text="Diagram that shows a scale set with two instances in zone 1, two instances in zone 2, and one instance in zone 3." border="false":::    
 
-    #### [Recovery after zone outage](#tab/example2)
+- Example 2: Suppose you have a zone-spanning scale set that ordinarily has 2 instances in each zone, for a total of 6 instances:
 
-    You reduce the capacity to 6. Azure removes the extra instances in zones 2 and 3, leaving 2 instances in each zone:
+    :::image type="content" source="media/virtual-machine-scale-sets-zone-balancing/rebalancing-recovery-initial.png" alt-text="Diagram that shows a scale set with six instances spread evenly across zones." border="false":::    
+
+    One zone recently experienced an outage, during which time additional instances were created in another zone, resulting in a spread of 0 (in zone 1), 2 (in zone 2), and 4 (in zone 3):
+
+    :::image type="content" source="media/virtual-machine-scale-sets-zone-balancing/rebalancing-recovery-outage.png" alt-text="Diagram that shows a scale set with no instances in zone 1, 2 instances in zone 2, and 4 instances in zone 3." border="false":::    
+
+    **Scale out:** To achieve balance, you should temporarily add another 2 instances, which means you set the capacity to 8 (6 + 2). The new instances are created in zone 1, and old instances remain where they are:
+
+    :::image type="content" source="media/virtual-machine-scale-sets-zone-balancing/rebalancing-recovery-outage.png" alt-text="Diagram that shows a scale set with 2 instances in zone 1, 2 instances in zone 2, and 4 instances in zone 3." border="false":::    
+
+    **Scale in:** You reduce the capacity to 6. Azure removes the extra instances in zones 2 and 3, leaving 2 instances in each zone:
 
     :::image type="content" source="media/virtual-machine-scale-sets-zone-balancing/rebalancing-recovery-initial.png" alt-text="Diagram that shows a scale set with six instances spread evenly across zones." border="false":::    
 
     This matches the initial distribution of the scale set.
-
-    ---
