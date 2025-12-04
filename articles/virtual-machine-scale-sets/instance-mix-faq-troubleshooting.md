@@ -6,7 +6,7 @@ ms.author: brittanyrowe
 ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
 ms.date: 06/10/2025
-ms.reviewer: jushiman
+ms.reviewer: cynthn
 # Customer intent: "As a cloud administrator, I want to understand the FAQs and troubleshooting steps for using instance mix on virtual machine scale sets, so that I can efficiently manage my VM deployments and resolve issues effectively."
 ---
 

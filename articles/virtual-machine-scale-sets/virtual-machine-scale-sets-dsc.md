@@ -2,7 +2,7 @@
 title: Using Desired State Configuration With Virtual Machine Scale Sets
 description: Using Virtual Machine Scale Sets with the Azure Desired State Configuration Extension to configure virtual machines.
 author: cynthn
-ms.author: jushiman
+ms.author: cynthn
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: extensions

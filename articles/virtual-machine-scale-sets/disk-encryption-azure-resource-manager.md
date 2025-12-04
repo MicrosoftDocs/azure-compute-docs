@@ -2,7 +2,7 @@
 title: Create and encrypt a Virtual Machine Scale Set with Azure Resource Manager templates
 description: In this quickstart, you learn how to use Azure Resource Manager templates to create and encrypt a Virtual Machine Scale Set
 author: cynthn
-ms.author: jushiman
+ms.author: cynthn
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: disks

@@ -7,7 +7,7 @@ ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: maintenance-control
 ms.date: 06/14/2024
-ms.reviewer: jushiman
+ms.reviewer: cynthn
 ms.custom: mimckitt
 # Customer intent: "As an IT administrator managing Virtual Machine Scale Sets, I want to receive notifications and initiate self-service maintenance, so that I can control the maintenance timing and minimize downtime for my workloads during planned updates."
 ---

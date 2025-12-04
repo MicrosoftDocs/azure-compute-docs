@@ -6,7 +6,7 @@ ms.author: fisteele
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
 ms.date: 06/14/2024
-ms.reviewer: jushiman
+ms.reviewer: cynthn
 ms.custom: mimckitt, vmss-flex, devx-track-arm-template
 # Customer intent: As a cloud engineer, I want to deploy a Virtual Machine Scale Set using an ARM template, so that I can automate the creation and management of flexible, scalable virtual machines for my applications.
 ---
