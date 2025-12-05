@@ -209,10 +209,20 @@
         "articles/container-instances/**/*.md": "macolso",
         "articles/service-fabric/*.md": "sukanyas",
         "articles/virtual-machines/*.md": "cynthn",
-		"articles/virtual-machines/sizes/**/*.yml": "mattmcinnes",
-		"articles/virtual-machines/sizes/**/*.md": "mattmcinnes",		  
+		    "articles/virtual-machines/sizes/**/*.yml": "mattmcinnes",
+		    "articles/virtual-machines/sizes/**/*.md": "mattmcinnes",		  
         "articles/virtual-machines/linux/*.md": "cynthn",
         "articles/virtual-machines/windows/*.md": "cynthn"
+      },
+            },      
+      "ms.update-cycle": {
+        "articles/container-instances/**/*.md": "365-days",
+        "articles/service-fabric/*.md": "365-days",
+        "articles/virtual-machines/*.md": "365-days",
+		    "articles/virtual-machines/sizes/**/*.yml": "365-days",
+        "articles/virtual-machines/sizes/**/*.md": "1095-days",		  
+        "articles/virtual-machines/linux/*.md": "365-days",
+        "articles/virtual-machines/windows/*.md": "365-days"
       },
       "ms.service": {
         "articles/container-instances/**/*.md": "azure-container-instances",
