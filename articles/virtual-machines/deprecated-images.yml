@@ -217,7 +217,7 @@ sections:
 
       - question: How do I receive emails about image deprecation?
         answer: |
-          Ensure that you have either Owner, Account Admin, or User Access Administrator roles on your subscription.
+          Ensure that you are the Admin or that you have the owner role for your subscription.
            
       - question: How can I check if a specific image is deprecated or scheduled for deprecation?
         answer: |
