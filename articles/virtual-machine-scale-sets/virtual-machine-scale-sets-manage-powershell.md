@@ -2,7 +2,7 @@
 title: Manage Virtual Machine Scale Sets with Azure PowerShell
 description: Common Azure PowerShell cmdlets to manage Virtual Machine Scale Sets, such as how to start and stop an instance, or change the scale set capacity.
 author: cynthn
-ms.author: jushiman
+ms.author: cynthn
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
 ms.date: 06/14/2024

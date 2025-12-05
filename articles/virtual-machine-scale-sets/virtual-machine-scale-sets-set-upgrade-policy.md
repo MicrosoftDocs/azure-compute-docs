@@ -6,7 +6,7 @@ ms.author: mimckitt
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
 ms.date: 11/7/2024
-ms.reviewer: ju-shim
+ms.reviewer: cynthn
 ms.custom: upgradepolicy, ignite-2024
 # Customer intent: "As a cloud administrator, I want to set the upgrade policy mode for Virtual Machine Scale Sets during creation or post-deployment, so that I can control the upgrade process according to our operational needs."
 ---

@@ -6,7 +6,7 @@ ms.service: azure-virtual-machine-scale-sets
 ms.subservice: shared-image-gallery
 ms.topic: tutorial
 ms.date: 06/14/2024
-ms.author: jushiman
+ms.author: cynthn
 ms.reviewer: mimckitt
 ms.custom: devx-track-azurepowershell
 # Customer intent: "As a cloud administrator, I want to create and deploy a custom VM image for a Virtual Machine Scale Set using Azure PowerShell, so that I can streamline the provisioning process and ensure consistency across my VM instances."
