@@ -89,10 +89,7 @@ For more information, see [Trusted launch](trusted-launch.md).
 | [Azure disk encryption](../virtual-machines/disk-encryption-overview.md)             | :heavy_check_mark: | :heavy_check_mark:                |
 | [Server-side encryption](disk-encryption.md)            | :heavy_check_mark: | :heavy_check_mark: |
 
-
 ## Creating a Generation 2 VM
-
-Alternatively, you can upgrade an existing Generation 1 VM to Generation 2 with Trusted launch. For more information, see [Upgrade existing Gen1 VMs to Gen2-Trusted launch](trusted-launch-existing-vm-gen-1.md).
 
 ### Azure Resource Manager Template
 To create a simple Windows Generation 2 VM, see [Create a Windows virtual machine from a Resource Manager template](./windows/ps-template.md)
@@ -159,6 +156,9 @@ You can create a Generation 2 VM from a managed image or managed disk in the sam
 ### Virtual machine scale sets
 
 You can also create Generation 2 VMs by using virtual machine scale sets. In the Azure CLI, use Azure scale sets to create Generation 2 VMs.
+
+> [!NOTE]
+> Alternatively, you can upgrade an existing Generation 1 VM to Generation 2 with Trusted launch. For more information, see [Upgrade existing Gen1 VMs to Gen2-Trusted launch](trusted-launch-existing-vm-gen-1.md).
 
 ## Frequently asked questions
 
