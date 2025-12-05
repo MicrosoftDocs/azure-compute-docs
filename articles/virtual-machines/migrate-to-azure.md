@@ -8,15 +8,9 @@ ms.author: mattmcinnes
 ms.service: azure-virtual-machines
 ---
 
-# Migrating from Amazon EC2 to Azure Virtual Machines
+# Migrate from Amazon EC2 to Azure Virtual Machines
 
-This guide is designed for professionals familiar with Amazon EC2 who are planning to migrate workloads to Azure Virtual Machines (VMs). It explains key differences and similarities between the two platforms, provides architectural considerations, and outlines best practices for performance, cost, and availability. The goal is to help you plan and execute a smooth migration to Azure’s Infrastructure as a Service (IaaS) environment.
-
-## Key concepts
-- Comparing EC2 and Azure VM instances
-- Architectural considerations for compute, storage, networking, and clustering
-- Best practices for performance, cost optimization, and reliability.
-
+This guide is designed for Amazon Web Services (AWS) professionals that are familiar with Amazon EC2 and are planning to migrate a workload that uses EC2 to Azure Virtual Machines (VMs). It explains key differences and similarities between the two platforms, provides architectural considerations, and outlines best practices for performance, cost, and availability. The goal is to help you plan and perform a migration to Azure’s Infrastructure as a Service (IaaS) environment.
 
 ## Compute
 
@@ -69,7 +63,7 @@ Use the [Azure VM size documentation](./sizes/overview.md) and AWS [instance typ
 
 ## Storage
 
-Storage architecture is a critical factor when migrating workloads from Amazon EC2 to Azure Virtual Machines. Both platforms provide persistent and ephemeral storage options, but implementation and performance models differ.
+Storage architecture is a critical factor when migrating from Amazon EC2 to Azure Virtual Machines. Both platforms provide persistent and ephemeral storage options, but implementation and performance models differ.
 
 ### AWS EC2 Storage Options
 - **Elastic Block Store (EBS)**  
@@ -92,9 +86,9 @@ Key Features:
 ### Azure VM Storage Options
 - **Managed Disks**  
   Persistent block storage managed by Azure:
-    - **Standard HDD**: Cost-effective for infrequent access.
+    - **Standard HDD**: Cost-effective for infrequent access, non-production workloads, and long-term backups.
     - **Standard SSD**: Balanced performance for general workloads.
-    - **Premium SSD**: Low latency for mission-critical apps.
+    - **Premium SSD**: Low latency for production and performance sensitive apps.
     - **Ultra Disk**: High throughput for data-intensive workloads.
 - **Ephemeral OS Disks**  
   Temporary storage for stateless workloads.
@@ -128,7 +122,7 @@ Key Features:
 
 ## Networking
 
-Networking architecture is a critical component when migrating workloads from Amazon EC2 to Azure Virtual Machines. Both platforms provide secure, isolated networks, but terminology, configuration, and feature sets differ.
+Networking architecture is a critical component when migrating from Amazon EC2 to Azure Virtual Machines. Both platforms provide secure, isolated networks, but terminology, configuration, and feature sets differ.
 
 ### AWS EC2 Networking
 - **Virtual Private Cloud (VPC):** Logical isolation of resources within AWS.
@@ -172,7 +166,7 @@ Networking architecture is a critical component when migrating workloads from Am
 
 ## Clustering, Availability, and Zones
 
-High availability and resiliency strategies differ between AWS EC2 and Azure Virtual Machines. Understanding these concepts is essential for designing fault-tolerant architectures during migration.
+High availability and resiliency strategies differ between AWS EC2 and Azure Virtual Machines. Understanding these concepts is essential for maintaining a fault-tolerant architecture.
 
 ### AWS EC2 Availability Features
 - **Availability Zones (AZs):** Isolated locations within a region for redundancy.
