@@ -7,6 +7,7 @@ ms.reviewer: mattmcinnes
 ms.service: azure-dedicated-host
 ms.topic: concept-article
 ms.date: 01/23/2023
+ms.update-cycle: 1095-days
 # Customer intent: As a cloud architect, I want to understand the specifications and packing configurations of Memory Optimized Azure Dedicated Host SKUs so that I can efficiently provision VMs that meet my application performance requirements.
 ---
 

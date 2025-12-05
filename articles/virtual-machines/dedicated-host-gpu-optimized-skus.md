@@ -7,6 +7,7 @@ ms.reviewer: mattmcinnes
 ms.service: azure-dedicated-host
 ms.topic: concept-article
 ms.date: 01/23/2023
+ms.update-cycle: 1095-days
 # Customer intent: As a system architect, I want to understand the specifications and VM packing configurations for GPU optimized Dedicated Host SKUs, so that I can effectively allocate resources for my applications based on their performance requirements.
 ---
 
