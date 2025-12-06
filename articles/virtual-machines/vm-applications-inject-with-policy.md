@@ -13,37 +13,38 @@ ms.author: your-alias
 
 ## Overview
 
-[Azure VM Applications](/azure/virtual-machines/vm-applications) let you package, version, and deliver softwares, files, and scripts from [Azure Compute Gallery](/azure/virtual-machines/azure-compute-gallery) to Azure VMs and VM scale sets (VMSS). [Learn more about Azure VM Applications.](./vm-applications.md)
+[Azure VM Applications](/azure/virtual-machines/vm-applications) in Azure Compute Gallery let you package, version, and deliver softwares, files, scripts, security components, etc. from [Azure Compute Gallery](/azure/virtual-machines/azure-compute-gallery) to Azure VMs and VM scale sets (VMSS). [Learn more about Azure VM Applications.](./vm-applications.md)
 
 Using [Azure Policy](/azure/governance/policy/overview) with VM Applications enables customers and admin teams to: 
-- View all VMs & VM Scale Sets with and without the required VM Applications. 
+- Monitor presence of required VM Applications across VMs & VM Scale Sets. 
 - Inject required VM Applications across all VMs & VM scale sets.
 - Enforce consistent configuration and best practices across all VMs and VMSS for improved reliability and security.
 
 This guide shows how to:
-- Inject a required VM Application during VM/VMSS creation.
-- Remediate existing VMs/VMSS to have the right VM Application and settings.
-- Govern gallery application versions for replication resiliency.
+- Govern required VM application for compliance monitoring.
+- Enforce required VM Application for driving consistency and security.
 
 
 ## Prerequisites
+- An Azure Compute Gallery with the published VM Application and versions to enforce. See [create and manage VM Applications](/azure/virtual-machines/vm-applications#publish-a-vm-application-version).
+    - Ensure the version is [replicated to all regions](./vm-applications-how-to.md#create-the-vm-application) where the application presence is required. 
+    - Ensure the gallery is [shared to all subscriptions](/virtual-machines/share-gallery.md) requiring access to the VM Application. 
 
 - Permissions:
     - Policy Contributor to create/assign policies. See [policy definition structure and assignments](/azure/governance/policy/concepts/definition-structure).
-    - Contributor (or narrower, resource-scoped roles) on the target scope for modify/deployIfNotExists to update VMs/VMSS and gallery app versions.
 
-- An Azure Compute Gallery with the published VM Application and versions to enforce. See [create and manage VM Applications](/azure/virtual-machines/vm-applications#publish-a-vm-application-version).
-- Managed identity on the policy assignment (system-assigned) so remediation can modify resources. See [remediation identity requirements](/azure/governance/policy/how-to/remediate-resources#identity-requirements).
+## Setup compliance monitor to govern required VM applications
 
-## Setup compliance monitor for required VM applications
-
-Azure Policy with Audit effect can be used to identify VMs and VM Scale Sets without a specific VM Applications. Admin teams can leverage this to 
+Azure Policy with `audit` effect can be used to monitor presence of specific VM Applications across Azure VM and VM Scale Sets. Admin teams can leverage this to 
 - Setup compliance monitors for VM Applications (view compliant vs non-compliant VMs and VM Scale Sets) 
-- Measuring rollout progress of a mandatory platform or security agent packaged as a VM Application.
+- Measuring rollout progress of software packaged as a VM Application.
 
 #### 1. Create a custom policy definition
 
 [Create a new custom policy](/azure/governance/policy/tutorials/create-and-manage#implement-a-new-custom-policy) using the policy definition provided below. This policy checks for the presence of VM applications on VMs and VM Scale Sets and reports the number of compliance and non-compliant instances.
+
+#### [Policy](#tab/policy1)
+This policy will monitor compliance of all VMs, VMSS across linux and windows. Linux apps on windows VMs and windows apps on linux VMs will be considered as compliant resources. 
 
 ```json
 {
@@ -54,6 +55,7 @@ Azure Policy with Audit effect can be used to identify VMs and VM Scale Sets wit
                 {
                     "allOf": [
                         { "field": "type", "equals": "Microsoft.Compute/virtualMachines" },
+                        {"field": "Microsoft.Compute/virtualMachines/storageProfile.osDisk.osType", "equals": "[parameters('osType')]" },
                         {
                             "count": {
                                 "field": "Microsoft.Compute/virtualMachines/applicationProfile.galleryApplications[*]",
@@ -73,6 +75,7 @@ Azure Policy with Audit effect can be used to identify VMs and VM Scale Sets wit
                 {
                     "allOf": [
                         { "field": "type", "equals": "Microsoft.Compute/virtualMachineScaleSets" },
+                        {"field": "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.storageProfile.osDisk.osType", "equals": "[parameters('osType')]" },
                         {
                             "count": {
                                 "field": "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.applicationProfile.galleryApplications[*]",
@@ -96,294 +99,230 @@ Azure Policy with Audit effect can be used to identify VMs and VM Scale Sets wit
     "parameters": {
         "galleryName": {
             "type": "String",
-            "defaultValue": "testsigscus",
             "metadata": { "description": "Name of the Azure Compute Gallery containing the VM Application." }
         },
         "applicationName": {
             "type": "String",
-            "defaultValue": "testappWindows",
             "metadata": { "description": "Name of the VM Application to audit for presence." }
+        },
+        "osType": {
+            "type": "String",
+            "allowedValues": [ "Windows", "Linux" ],
+            "metadata": { "description": "OS type of the VM Application (Windows or Linux)." }
         }
     }
 }
 ```
 
 #### 2. Assign the policy and view compliance
-[Assign the newly created policy](/azure/governance/policy/tutorials/create-and-manage#assign-a-policy) to start generating compliance score. All VMs and VM Scale Sets within the assigned scope will be monitored for compliance. 
+[Assign the newly created policy](/azure/governance/policy/tutorials/create-and-manage#assign-a-policy) to start monitoring the VM application and generate compliance score. All VMs and VM Scale Sets within the assigned scope will be monitored for compliance. 
+
+It is recommended to create separate assignments per VM application for granual and accurate monitoring.
 
 Once the policy is assigned, all existing resources are evaluated and [displayed on compliance monitor](/azure/governance/policy/tutorials/create-and-manage#check-initial-compliance). Non-compliant resources are missing the VM Application defined in the policy. Resources without `applicationProfile` are also counted as non-compliant. Newly created or updated resources may take a few minutes to appear in evaluation cycles.
 
+:::image type="content" source="media/vmapp/vm-applications-compliance-monitor.png" alt-text="Azure Policy compliance view showing VMs and VM scale sets audited for required VM Application presence.":::
+
 #### Common adjustments
 
-- Audit multiple required applications: Create a separate policy (one per application) or update the policy by adding other applications under `allOf` parameter.
-- Switch to Deny for enforcement: change effect to deny (after validating), or create a second policy to prevent non-compliant creations.
-- Restrict to only VMs or only VMSS: remove the unused branch from anyOf.
+- <b>Audit multiple required applications</b>: Create a separate policy (one per application) or update the policy by adding other applications under `allOf` parameter.
+- <b>Block creation of VMs without the required applications</b>: Change effect to `deny` to prevent non-compliant creations.
+- <b>Limit policy scope to VMs or VMSS</b>: Remove the unused branch from `anyOf` within `policyRule`.
+- <b>Limit policy scope by OS type</b>: Check `osType` of `storageProfile` within `policyRule` to filter based on Window / Linux OS:
+    ```json
+    { "field": "Microsoft.Compute/virtualMachines/storageProfile.osDisk.osType", "equals": "[parameters('osType')]" }
+    ```
+
+- Limit policy scope by OS Image: Check `offer` and `sku` within `policyRule` to filter based on image:
+    ```json
+    { "field": "Microsoft.Compute/virtualMachines/storageProfile.imageReference.offer", "equals": "[parameters('imageOffer')]" },
+    { "field": "Microsoft.Compute/virtualMachines/storageProfile.imageReference.sku", "equals": "[parameters('imageSku')]" }
+    ```
+---
 
 ## Inject VM Applications on VM and VM Scale Sets
 
-Azure Policy currently cannot use the Modify effect for VM Application aliases (applicationProfile.galleryApplications*), so use Audit (to report) and Deny (to block non-compliant creates); automatic injection must be performed outside Policy (for example via template deployment or script).
+Azure Policy with `modify` effect injects VM applications while creating new VM and VM Scale Sets. Remediation tasks can be used to modify existing resources and inject the VM Application. 
 
+### Pre-requisite
+- Managed identity on the policy assignment (system-assigned) so remediation can modify resources. See [remediation identity requirements](/azure/governance/policy/how-to/remediate-resources#identity-requirements).
 
+#### 1. Create a custom policy definition
+
+[Create a new custom policy](/azure/governance/policy/tutorials/create-and-manage#implement-a-new-custom-policy) using the policy definition provided below. This policy checks for the presence of VM applications while creating VMs or VM Scale Sets and inserts the VM application if it does not exist. To modify multiple resource types (VM and VM Scale Sets), Azure policy requires different policies per resource type. 
+
+#### [VM](#tab/vm)
 
 ```json
 {
+    "displayName": "Inject VM Application into Single Instance VMs",
+    "policyType": "Custom",
     "mode": "Indexed",
+    "description": "Adds VM Application reference to applicationProfile for single instance VMs.",
     "parameters": {
-        "galleryName": {
-            "type": "String",
-            "metadata": {
-                "description": "Name of the Azure Compute Gallery containing the VM Application."
-            }
-        },
-        "applicationName": {
-            "type": "String",
-            "metadata": {
-                "description": "Name of the VM Application to require on new VMs."
-            }
+      "subscriptionId": {
+        "type": "String",
+        "metadata": {
+          "description": "Subscription ID where the Compute Gallery resides"
         }
+      },
+      "resourceGroup": {
+        "type": "String",
+        "metadata": {
+          "description": "Resource group of the Compute Gallery"
+        }
+      },
+      "galleryName": {
+        "type": "String",
+        "metadata": {
+          "description": "Name of the Compute Gallery"
+        }
+      },
+      "applicationName": {
+        "type": "String",
+        "metadata": {
+          "description": "VM Application name"
+        }
+      },
+      "applicationVersion": {
+        "type": "String",
+        "defaultValue": "latest",
+        "metadata": {
+          "description": "VM Application version (defaults to latest)"
+        }
+      }
     },
     "policyRule": {
-        "if": {
-            "allOf": [
-                { "field": "type", "equals": "Microsoft.Compute/virtualMachines" },
+      "if": {
+        "field": "type",
+        "equals": "Microsoft.Compute/virtualMachines"
+      },
+      "then": {
+        "effect": "modify",
+        "details": {
+          "roleDefinitionIds": [
+            "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+          ],
+          "operations": [
+            {
+              "operation": "addOrReplace",
+              "field": "Microsoft.Compute/virtualMachines/applicationProfile.galleryApplications",
+              "value": [
                 {
-                    "count": {
-                        "field": "Microsoft.Compute/virtualMachines/applicationProfile.galleryApplications[*]",
-                        "where": {
-                            "allOf": [
-                                {
-                                    "field": "Microsoft.Compute/virtualMachines/applicationProfile.galleryApplications[*].packageReferenceId",
-                                    "contains": "[concat('/galleries/', parameters('galleryName'), '/applications/', parameters('applicationName'), '/')]"
-                                }
-                            ]
-                        }
-                    },
-                    "equals": 0
+                  "packageReferenceId": "[concat('/subscriptions/', parameters('subscriptionId'), '/resourceGroups/', parameters('resourceGroup'), '/providers/Microsoft.Compute/galleries/', parameters('galleryName'), '/applications/', parameters('applicationName'), '/versions/', parameters('applicationVersion'))]",
+                  "order": 1,
+                  "enableAutomaticUpgrade": true
                 }
-            ]
-        },
-        "then": { "effect": "deny" }
+              ]
+            }
+          ]
+        }
+      }
     }
 }
 ```
 
-Notes:
-- Effect changed from audit to modify; conflictEffect=deny prevents conflicting manual values.
-- conditions ensure injection only when the target application reference is absent.
-- For remediation of existing resources, run a remediation task after assignment.
-- If you prefer DeployIfNotExists, create two separate definitions each with a deployment template that PUTs the resource including applicationProfile, but Modify is simpler and idempotent here.
+#### [VMSS](#tab/vmss)
 
 ```json
 {
-    "properties": {
-        "displayName": "Enforce VM Application on VMs (inject and configure)",
-        "policyType": "Custom",
-        "mode": "Indexed",
-        "description": "Injects a required VM Application at VM create time and enforces required properties.",
+    "displayName": "Inject VM Application into VM Scale Sets",
+    "policyType": "Custom",
+    "mode": "Indexed",
+    "description": "Adds VM Application reference to applicationProfile for VM Scale Sets.",
+    "parameters": {
+      "subscriptionId": {
+        "type": "String",
         "metadata": {
-            "category": "Compute"
-        },
-        "parameters": {
-            "packageReferenceId": {
-                "type": "String",
-                "metadata": {
-                    "description": "Resource ID of the gallery application or a specific version.",
-                    "displayName": "Package reference ID"
-                }
-            },
-            "order": {
-                "type": "Integer",
-                "defaultValue": 1,
-                "metadata": {
-                    "description": "Install order for the application.",
-                    "displayName": "Install order"
-                }
-            },
-            "treatFailureAsDeploymentFailure": {
-                "type": "Boolean",
-                "defaultValue": true,
-                "metadata": {
-                    "description": "If the application install fails, fail the VM deployment.",
-                    "displayName": "Treat failure as deployment failure"
-                }
-            }
-        },
-        "policyRule": {
-            "if": {
-                "allOf": [
-                    { "field": "type", "equals": "Microsoft.Compute/virtualMachines" }
-                ]
-            },
-            "then": {
-Notes:
-- Modify effect is not supported for VM Application aliases today; use Deny (to block non-compliant creates) plus a separate Audit policy (to report existing gaps).
-- Automatic injection/remediation must be handled outside Policy (script, template deployment, or future DeployIfNotExists approach).
-- A DeployIfNotExists pattern would require a full VM (or VMSS) template update which is not shown here.
-                    ],
-                    "operations": [
-                        {
-{
-    "properties": {
-        "displayName": "Require VM Application on VMs (deny create if missing)",
-        "policyType": "Custom",
-        "mode": "Indexed",
-        "description": "Denies creation of a VM that does not reference the required VM Application.",
+          "description": "Subscription ID where the Compute Gallery resides"
+        }
+      },
+      "resourceGroup": {
+        "type": "String",
         "metadata": {
-            "category": "Compute"
-        },
-        "parameters": {
-            "packageReferenceId": {
-                "type": "String",
-                "metadata": {
-                    "description": "Resource ID of the required gallery application (optionally include /versions/<version>).",
-                    "displayName": "Package reference ID"
-                }
-            }
-        },
-        "policyRule": {
-            "if": {
-                "allOf": [
-                    { "field": "type", "equals": "Microsoft.Compute/virtualMachines" },
-                    {
-                        "count": {
-                            "field": "Microsoft.Compute/virtualMachines/applicationProfile.galleryApplications[*]",
-                            "where": {
-                                "allOf": [
-                                    {
-                                        "field": "Microsoft.Compute/virtualMachines/applicationProfile.galleryApplications[*].packageReferenceId",
-                                        "equals": "[parameters('packageReferenceId')]"
-                                    }
-                                ]
-                            }
-                        },
-                        "equals": 0
-                    }
-                ]
-            },
-            "then": { "effect": "deny" }
+          "description": "Resource group of the Compute Gallery"
         }
-    }
-}
-                    "roleDefinitionIds": [
-                        "/providers/microsoft.authorization/roledefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
-                    ],
-                    "operations": [
-                        {
-                            "operation": "Add",
-                            "field": "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.applicationProfile.galleryApplications",
-                            "value": [
-                                {
-                                    "packageReferenceId": "[parameters('packageReferenceId')]",
-                                    "order": "[parameters('order')]",
-                                    "enableAutomaticUpgrade": true,
-                                    "treatFailureAsDeploymentFailure": "[parameters('treatFailureAsDeploymentFailure')]"
-                                }
-                            ],
-                            "condition": "[not(contains(field('Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.applicationProfile.galleryApplications[*].packageReferenceId'), parameters('packageReferenceId')))]"
-                        },
-                        {
-                            "operation": "AddOrReplace",
-                            "field": "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.applicationProfile.galleryApplications[*].enableAutomaticUpgrade",
-                            "value": true
-                        },
-                        {
-                            "operation": "AddOrReplace",
-                            "field": "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.applicationProfile.galleryApplications[*].treatFailureAsDeploymentFailure",
-                            "value": "[parameters('treatFailureAsDeploymentFailure')]"
-                        }
-                    ]
-                }
-            }
+      },
+      "galleryName": {
+        "type": "String",
+        "metadata": {
+          "description": "Name of the Compute Gallery"
         }
+      },
+      "applicationName": {
+        "type": "String",
+        "metadata": {
+          "description": "VM Application name"
+        }
+      },
+      "applicationVersion": {
+        "type": "String",
+        "defaultValue": "latest",
+        "metadata": {
+          "description": "VM Application version (defaults to latest)"
+        }
+      }
+    },
+    "policyRule": {
+      "if": {
+        "field": "type",
+        "equals": "Microsoft.Compute/virtualMachineScaleSets"
+      },
+      "then": {
+        "effect": "modify",
+        "details": {
+          "roleDefinitionIds": [
+            "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+          ],
+          "operations": [
+            {
+              "operation": "addOrReplace",
+              "field": "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.applicationProfile.galleryApplications",
+              "value": [
+                {
+                  "packageReferenceId": "[concat('/subscriptions/', parameters('subscriptionId'), '/resourceGroups/', parameters('resourceGroup'), '/providers/Microsoft.Compute/galleries/', parameters('galleryName'), '/applications/', parameters('applicationName'), '/versions/', parameters('applicationVersion'))]",
+                  "order": 1,
+                  "enableAutomaticUpgrade": true
+                }
+              ]
+            }
+          ]
+        }
+      }
     }
 }
 ```
 
-Assign at your target scope (subscription or resource group) with a system-assigned identity:
+---
 
-```bash
-# Create definitions
-az policy definition create \
-{
-    "properties": {
-        "displayName": "Require VM Application on VMSS (deny create if missing)",
-        "policyType": "Custom",
-        "mode": "Indexed",
-        "description": "Denies creation of a VM Scale Set that does not reference the required VM Application.",
-        "metadata": {
-            "category": "Compute"
-        },
-        "parameters": {
-            "packageReferenceId": {
-                "type": "String",
-                "metadata": {
-                    "description": "Resource ID of the required gallery application (optionally include /versions/<version>).",
-                    "displayName": "Package reference ID"
-                }
-            }
-        },
-        "policyRule": {
-            "if": {
-                "allOf": [
-                    { "field": "type", "equals": "Microsoft.Compute/virtualMachineScaleSets" },
-                    {
-                        "count": {
-                            "field": "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.applicationProfile.galleryApplications[*]",
-                            "where": {
-                                "allOf": [
-                                    {
-                                        "field": "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.applicationProfile.galleryApplications[*].packageReferenceId",
-                                        "equals": "[parameters('packageReferenceId')]"
-                                    }
-                                ]
-                            }
-                        },
-                        "equals": 0
-                    }
-                ]
-            },
-            "then": { "effect": "deny" }
-        }
-    }
-}
-        "policyType": "Custom",
-        "mode": "All",
-        "metadata": { "category": "Compute" },
-        "parameters": {
-            "effect": {
-                "type": "String",
-                "allowedValues": [ "Deny", "Audit" ],
-                "defaultValue": "Deny",
-                "metadata": { "description": "Enable or audit the rule.", "displayName": "Effect" }
-            }
-        },
-        "policyRule": {
-            "if": {
-                "allOf": [
-                    { "field": "type", "equals": "Microsoft.Compute/galleries/applications/versions" },
-                    {
-                        "anyOf": [
-                            {
-                                "count": {
-                                    "field": "Microsoft.Compute/galleries/applications/versions/publishingProfile.targetRegions[*]"
-                                },
-                                "less": 2
-                            },
-                            {
-                                "field": "Microsoft.Compute/galleries/applications/versions/publishingProfile.targetRegions[*].regionalReplicaCount",
-                                "less": 2
-                            }
-                        ]
-                    }
-                ]
-            },
-            "then": { "effect": "[parameters('effect')]" }
-        }
-    }
-}
-```
+#### 2. Assign the policy
+[Assign the newly created policy](/azure/governance/policy/tutorials/create-and-manage#assign-a-policy) to start generating compliance score. All VMs and VM Scale Sets within the assigned scope will be monitored for compliance. Once the policy is assigned, all existing resources are evaluated and [displayed on compliance monitor](/azure/governance/policy/tutorials/create-and-manage#check-initial-compliance).
 
-Assign it at the scope where you create gallery application versions. For the schema of targetRegions and replicas, see [Gallery Application Versions (REST)](/rest/api/compute/gallery-application-versions/create-or-update?tabs=HTTP#targetregion).
+Creating new VM and VMSS resource will trigger this policy and modify the applicationProfile of the resource to inject the application or configure it correctly. 
+
+#### 3. Create Remediation Task to modify existing resources
+Create a new [Remediation tasks](/azure/governance/policy/how-to/remediate-resources) to modify existing resources. 
+
+It is recommended to gradually remediate non-compliant resources for higher availability and failure resiliency. This can be done by creating multiple remediation tasks, each scoped to one region or few resources.  
+
+It is recommended to create separate policies for windows & linux.  
+
+:::image type="content" source="media/vmapp/vm-applications-create-remediation-task.png" alt-text="Portal experience showing how to create a new remediation task.":::
+
+#### Common adjustments
+- <b>Limit policy scope by OS type</b>: Check `osType` of `storageProfile` within `policyRule` to filter based on Window / Linux OS:
+    ```json
+    { "field": "Microsoft.Compute/virtualMachines/storageProfile.osDisk.osType", "equals": "[parameters('osType')]" }
+    ```
+    
+
+- <b>Limit policy scope by OS Image</b>: Check `offer` and `sku` within `policyRule` to filter based on image:
+    ```json
+    { "field": "Microsoft.Compute/virtualMachines/storageProfile.imageReference.offer", "equals": "[parameters('imageOffer')]" },
+    { "field": "Microsoft.Compute/virtualMachines/storageProfile.imageReference.sku", "equals": "[parameters('imageSku')]" }
+    ```
+---
+
 
 ## Any other scenarios possible with Azure Policy?
 
@@ -391,36 +330,3 @@ Assign it at the scope where you create gallery application versions. For the sc
 - Audit which VMs/VMSS are not using enableAutomaticUpgrade = true for their VM Applications.
 - Enforce treatFailureAsDeploymentFailure = true to fail deployments if app installation fails.
 - Combine the above into an [initiative](/azure/governance/policy/concepts/initiative-definition) so compliance is reported in one view and a single remediation can be run.
-
-## What is and isn’t possible
-
-- Create-time injection and enforcement on VM/VMSS: Possible. Use modify to add/normalize properties and conflictEffect = deny to block conflicting requests. See [effects](/azure/governance/policy/concepts/effects).
-- Existing VMs/VMSS: Possible. Use remediation with the modify policies. See [remediation](/azure/governance/policy/how-to/remediate-resources).
-- Enforcing “latest version”:
-    - Possible if you reference the application (no version) and enforce enableAutomaticUpgrade = true. The platform moves VMs to the latest available version. See [automatic updates](/azure/virtual-machines/vm-applications#automatic-updates).
-    - Not possible for policy to calculate “latest” and rewrite a hardcoded version string.
-- targetRegions and replicas requirement: Possible, but must be enforced on gallery application versions (Microsoft.Compute/galleries/applications/versions). Policy assigned to VMs cannot change gallery replication. See [publish a VM Application version](/azure/virtual-machines/vm-applications#publish-a-vm-application-version).
-- Operational limits: Policy cannot install apps if the VM agent is missing/offline, or when VMs are deallocated. Those cases remain noncompliant until the VM is healthy and remediation can run. See [VM agent](/azure/virtual-machines/extensions/overview).
-
-## Next steps
-
-- Convert the policies into a single initiative and assign at subscription or management group. See [create an initiative](/azure/governance/policy/tutorials/create-and-manage#create-and-assign-an-initiative-definition).
-- Test in a non-production subscription. Validate:
-    - New VMs/VMSS get the application injected with enableAutomaticUpgrade = true.
-    - Existing resources are remediated.
-    - Gallery app versions that don’t meet replication requirements are denied or audited.
-- Monitor compliance and remediation progress in the [Azure Policy compliance dashboard](/azure/governance/policy/concepts/assignments#view-policy-compliance).
-
-References:
-- Managing VM Applications with Azure Policies (sample patterns and code): https://devblogs.microsoft.com/azure-vm-runtime/managing-vm-applications-with-azure-policies/
-- Azure Policy overview: /azure/governance/policy/overview
-- Policy definition structure: /azure/governance/policy/concepts/definition-structure
-- Policy effects (Modify, DeployIfNotExists, Deny): /azure/governance/policy/concepts/effects
-- Policy remediation: /azure/governance/policy/how-to/remediate-resources
-- VM Applications: /azure/virtual-machines/vm-applications
-- Azure Compute Gallery: /azure/virtual-machines/azure-compute-gallery
-- Azure CLI for policy: /cli/azure/policy
-- VMSS concepts: /azure/virtual-machine-scale-sets/overview
-- Azure Resource Manager policy language: /azure/governance/policy/concepts/definition-structure#policy-rule
-- Aliases browser (portal): /azure/governance/policy/concepts/definition-structure#aliases
-- Gallery application versions REST (target regions): /rest/api/compute/gallery-application-versions/create-or-update?tabs=HTTP#targetregion

@@ -15,7 +15,7 @@ ms.custom: devx-track-azurepowershell, devx-track-azurecli
 
 This article talks about how to monitor, update, and delete the published VM Application and the deployed VM application resource on Azure Virtual Machine (VM) or Virtual Machine Scale Sets.
 
-## View the published VM Applications
+## View published VM Applications
 #### [Portal](#tab/portal1)
 To view the properties of a published VM Application in the Azure portal:
 
@@ -182,7 +182,7 @@ Get-AzGalleryApplicationVersion `
 ```
 ---
 
-## Monitor the deployed VM Applications
+## View deployed VM Applications
 
 #### [Portal](#tab/portal2)
 To show the VM application status, go to the **Extensions + applications** tab/settings and check the status of the VMAppExtension:
@@ -287,6 +287,9 @@ $result | ForEach-Object {
 }
 $resultSummary | ConvertTo-Json -Depth 5
 ```
+---
+
+## View deployed VM applications at scale
 
 #### [AzureResourceGraph](#tab/aureresourcegraph2)
 [Azure resource graph query](/azure/governance/resource-graph/first-query-portal) can be used to view all deployed VM applications and its properties across VMs and VM Scale Sets

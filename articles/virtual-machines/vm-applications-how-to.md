@@ -14,7 +14,7 @@ ms.custom: devx-track-azurepowershell, devx-track-azurecli
 
 # Create and deploy VM Application
 
-VM Application is a resource type in Azure Compute Gallery that simplifies deployment, management, sharing, and global distribution of applications and scripts for your virtual machines. VM Applications are best suited for deploying apps and workloads that need high scale, low latency, failure resiliency, secure trusted deployments, consistency across the fleet, micro-service architecture, and/or post-deployment management. [Learn more about VM Application](./vm-applications.md)
+VM Application is a resource type in Azure Compute Gallery that simplifies debployment, management, sharing, and global distribution of applications and scripts for your virtual machines. VM Applications are best suited for deploying apps and workloads that need high scale, low latency, failure resiliency, secure trusted deployments, consistency across the fleet, micro-service architecture, and/or post-deployment management. [Learn more about VM Application](./vm-applications.md)
 
 To create and deploy applications on Azure VM, first package and upload your application to Azure Storage Account as a storage blob. Then create `Azure VM application` resource and `VM application version` resource referencing these storage blobs. Finally, deploy the application on any VM or Virtual Machine Scale Set by passing application reference in `applicationProfile`.
 
