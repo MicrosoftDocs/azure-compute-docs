@@ -4,9 +4,10 @@ description: Learn how instant access works for managed disk snapshots of varyin
 author: roygara
 ms.service: azure-disk-storage
 ms.topic: how-to
+ms.update-cycle: 90-days
 ms.date: 10/30/2025
 ms.author: rogarana
-ms.custom: references_regions
+ms.custom: references_regions, portal
 # Customer intent: As a cloud administrator, I want to create incremental snapshots for managed disks, so that I can efficiently back up and restore disk data while minimizing storage costs and improving performance.
 ---
 

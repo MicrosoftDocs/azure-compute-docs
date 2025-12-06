@@ -4,9 +4,10 @@ description: Learn about Ultra Disks for Azure VMs
 author: roygara
 ms.service: azure-disk-storage
 ms.topic: how-to
+ms.update-cycle: 90-days
 ms.date: 10/21/2024
 ms.author: rogarana
-ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell, devx-track-arm-template
+ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell, devx-track-arm-template, portal
 # Customer intent: "As a cloud administrator, I want to deploy Ultra Disks for Azure VMs, so that I can achieve maximum performance for data-intensive workloads and optimize that performance without needing to restart my virtual machines."
 ---
 

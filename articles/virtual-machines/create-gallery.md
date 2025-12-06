@@ -5,10 +5,11 @@ author: sandeepraichura
 ms.service: azure-virtual-machines
 ms.subservice: gallery
 ms.topic: how-to
+ms.update-cycle: 90-days
 ms.date: 03/23/2023
 ms.author: saraic
 ms.reviewer: cynthn, mattmcinnes
-ms.custom: template-how-to, devx-track-azurecli
+ms.custom: template-how-to, devx-track-azurecli, portal
 ms.devlang: azurecli
 # Customer intent: As an IT administrator, I want to create a gallery for sharing VM images and application packages, so that I can efficiently distribute resources across my organization and manage them effectively within different regions.
 ---

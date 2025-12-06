@@ -3,8 +3,9 @@ title: Convert managed disks storage between different disk types
 description: How to convert Azure managed disks between the different disks types by using Azure PowerShell, Azure CLI, or the Azure portal.
 author: roygara
 ms.service: azure-disk-storage
-ms.custom: devx-track-azurecli, devx-track-azurepowershell, references_regions
+ms.custom: devx-track-azurecli, devx-track-azurepowershell, references_regions, portal
 ms.topic: how-to
+ms.update-cycle: 90-days
 ms.date: 04/17/2025
 ms.author: rogarana
 # Customer intent: As a cloud administrator, I want to convert Azure managed disks between different disk types, so that I can optimize storage performance and cost of my environments, according to my workloads' requirements.

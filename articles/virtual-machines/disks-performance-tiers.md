@@ -4,9 +4,10 @@ description: Learn how to change performance tiers for existing managed disks us
 author: roygara
 ms.service: azure-disk-storage
 ms.topic: how-to
+ms.update-cycle: 90-days
 ms.date: 01/15/2025
 ms.author: rogarana
-ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.custom: devx-track-azurecli, devx-track-azurepowershell, portal
 # Customer intent: "As a cloud administrator, I want to change the performance tier of managed disks without downtime, so that I can optimize resources for my virtual machines efficiently without interruption to their operations."
 ---
 

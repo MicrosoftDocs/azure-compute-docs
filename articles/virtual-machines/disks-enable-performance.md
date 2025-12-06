@@ -4,9 +4,10 @@ description: Increase the performance of Azure Premium SSDs and Standard SSD/HDD
 author: roygara
 ms.service: azure-disk-storage
 ms.topic: how-to
+ms.update-cycle: 90-days
 ms.date: 04/15/2025
 ms.author: rogarana
-ms.custom: devx-track-azurepowershell
+ms.custom: devx-track-azurepowershell, portal
 # Customer intent: As an IT administrator, I want to enable performance enhancements on Azure disks, so that I can increase IOPS and throughput for demanding workloads without incurring additional costs.
 ---
 

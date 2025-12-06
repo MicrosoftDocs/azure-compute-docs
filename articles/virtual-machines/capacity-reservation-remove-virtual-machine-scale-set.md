@@ -5,9 +5,10 @@ author: bdeforeest
 ms.author: bidefore
 ms.service: azure-virtual-machines
 ms.topic: how-to
+ms.update-cycle: 90-days
 ms.date: 11/22/2022
 ms.reviewer: cynthn, jushiman
-ms.custom: template-how-to, devx-track-azurepowershell
+ms.custom: template-how-to, devx-track-azurepowershell, portal
 # Customer intent: "As a cloud administrator, I want to remove a virtual machine scale set from a capacity reservation group, so that I can manage resource allocation and avoid conflicts in capacity usage."
 ---
 
