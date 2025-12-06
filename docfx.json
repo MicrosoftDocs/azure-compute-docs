@@ -213,8 +213,7 @@
 		"articles/virtual-machines/sizes/**/*.md": "mattmcinnes",		  
         "articles/virtual-machines/linux/*.md": "cynthn",
         "articles/virtual-machines/windows/*.md": "cynthn"
-      },
-            },      
+      },   
       "ms.update-cycle": {
         "articles/container-instances/**/*.md": "365-days",
         "articles/service-fabric/*.md": "365-days",
