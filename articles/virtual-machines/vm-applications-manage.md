@@ -182,7 +182,7 @@ Get-AzGalleryApplicationVersion `
 ```
 ---
 
-## View deployed VM Applications
+## View deployed VM Applications & their state
 
 #### [Portal](#tab/portal2)
 To show the VM application status, go to the **Extensions + applications** tab/settings and check the status of the VMAppExtension:
@@ -253,17 +253,6 @@ To verify application deployment status on Virtual Machine Scale Set, use ['az v
 ```azurecli-interactive
 az vmss get-instance-view --ids (az vmss list-instances -g myResourceGroup -n myVmss --query "[*].id" -o tsv) --query "[*].extensions[?name == 'VMAppExtension']"
 ```
-> [!NOTE]
-> The previous Virtual Machine Scale Sets deployment status command doesn't list the instance ID with the result. To show the instance ID with the status of the extension in each instance, some more scripting is required. Refer to the following CLI example that contains PowerShell syntax:
-
-```azurepowershell-interactive
-$ids = az vmss list-instances -g myResourceGroup -n myVmss --query "[*].{id: id, instanceId: instanceId}" | ConvertFrom-Json
-$ids | Foreach-Object {
-    $iid = $_.instanceId
-    Write-Output "instanceId: $iid" 
-    az vmss get-instance-view --ids $_.id --query "extensions[?name == 'VMAppExtension']" 
-}
-```
 
 #### [PowerShell](#tab/powershell2)
 
@@ -275,6 +264,7 @@ $vmName = "myVM"
 $result = Get-AzVM -ResourceGroupName $rgName -VMName $vmName -Status
 $result.Extensions | Where-Object {$_.Name -eq "VMAppExtension"} | ConvertTo-Json
 ```
+
 To verify on your Virtual Machine Scale Set:
 ```azurepowershell-interactive
 $rgName = "myResourceGroup"

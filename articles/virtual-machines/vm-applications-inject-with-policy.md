@@ -115,6 +115,7 @@ This policy monitors compliance of all VMs, VMSS across linux and windows. Linux
     }
 }
 ```
+---
 
 #### 2. Assign the policy and view compliance
 [Assign the newly created policy](/azure/governance/policy/tutorials/create-and-manage#assign-a-policy) to start monitoring the VM application and generate compliance score. All VMs and VM Scale Sets within the assigned scope are monitored for compliance. 
@@ -303,13 +304,13 @@ Azure Policy with `modify` effect injects VM applications while creating new VM 
 Creating new VM and VMSS resource triggers this policy and modifies the applicationProfile of the resource to inject the application or configure it correctly. 
 
 #### 3. Create Remediation Task and modify existing resources
-Create a new [Remediation tasks](/azure/governance/policy/how-to/remediate-resources) to modify existing resources. 
+Create a new [Remediation tasks](/azure/governance/policy/how-to/remediate-resources.md) to modify existing resources. 
 
 It's recommended to gradually remediate noncompliant resources for higher availability and failure resiliency. This gradual can be done by creating multiple remediation tasks, each scoped to one region or few resources.
 
 It's recommended to create separate policies for windows & linux.  
 
-:::image type="content" source="./media/vmapp/vm-applications-create-remediation-task.png" alt-text="Portal experience showing how to create a new remediation task.":::
+:::image type="content" source="./media/vmapp/vm-application-create-remediation-task.png" alt-text="Portal experience showing how to create a new remediation task.":::
 
 #### Common adjustments
 - <b>Limit policy scope by OS type</b>: Check `osType` of `storageProfile` within `policyRule` to filter based on Window / Linux OS:
@@ -324,11 +325,3 @@ It's recommended to create separate policies for windows & linux.
     { "field": "Microsoft.Compute/virtualMachines/storageProfile.imageReference.sku", "equals": "[parameters('imageSku')]" }
     ```
 ---
-
-
-## Any other scenarios possible with Azure Policy?
-
-- Deny creation of VMs/VMSS that don't reference only allowed VM Applications (allowlist). See [policy rule examples](/azure/governance/policy/samples/built-in-policies).
-- Audit which VMs/VMSS aren't using enableAutomaticUpgrade = true for their VM Applications.
-- Enforce treatFailureAsDeploymentFailure = true to fail deployments if app installation fails.
-- Combine multiple policies into an [initiative](/azure/governance/policy/concepts/initiative-definition.md) so compliance is reported in one view and a single remediation can be run.
