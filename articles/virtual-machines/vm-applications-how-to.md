@@ -1,7 +1,7 @@
 ---
 title: Create and deploy VM Application on Azure
 description: Learn how to create and deploy applications on Azure Virtual Machine (VM) using Azure Compute Gallery.
-author: gabstamsft
+author: tanmaygore
 ms.service: azure-virtual-machines
 ms.subservice: gallery
 ms.topic: how-to

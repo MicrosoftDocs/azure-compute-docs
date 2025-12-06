@@ -1,12 +1,14 @@
 ---
 title: Govern and enforce compliance for VM Applications with Azure Policy
 description: Use Azure Policy to govern and enforce Azure VM Application with right configurations across all VMs and VM scale sets.
+author: tanmaygore
+ms.service: azure-virtual-machines
+ms.subservice: gallery
 ms.topic: how-to
-ms.service: virtual-machines
-ms.subservice: vm-applications
-ms.date: 2025-08-20
-author: your-alias
-ms.author: your-alias
+ms.date: 12/05/2025
+ms.author: tagore
+ms.reviewer: jushiman
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
 ---
 
 # Govern and enforce compliance for Azure VM Applications using Azure Policy
