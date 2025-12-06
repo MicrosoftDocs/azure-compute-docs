@@ -6,7 +6,7 @@ ms.author: jussong
 author: jussong
 ms.service: azure-container-instances
 services: container-instances
-ms.date: 11/10/2024
+ms.date: 11/17/2025
 ms.custom: mvc
 # Customer intent: As a cloud architect, I want to utilize virtual nodes on Azure Container Instances to quickly scale my containerized workloads, so that I can efficiently manage resources and reduce costs with per-second billing while maintaining optimal performance and security through confidential containers.
 ---

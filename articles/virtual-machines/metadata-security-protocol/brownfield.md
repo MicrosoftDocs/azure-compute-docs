@@ -27,7 +27,9 @@ See [Configure MSP via the portal](./other-examples/portal.md).
 
 ### Use an ARM template
 
-### Use the REST API
+See [examples](./other-examples/arm-templates.md)
+
+### With REST API
 
 Enable MSP with both WireServer and Azure Instance Metadata Service protected in `Audit` mode:
 

@@ -10,7 +10,7 @@ metadata:
   ms.topic: landing-page # Required
   author: rolandnyamo #Required; your GitHub user alias, with correct capitalization.
   ms.author: ronyamo #Required; microsoft alias of author; optional team alias.
-  ms.date: 11/09/2022 #Required; mm/dd/yyyy format.
+  ms.date: 09/10/2025 #Required; mm/dd/yyyy format.
 
 landingContent:
   # Card 
@@ -33,8 +33,8 @@ landingContent:
     linkLists:
       - linkListType: quickstart
         links:
-          - text: Report Impact on an Azure Virtual Machine
-            url: report-vm-impact.md
+          - text: Report a Resource Impact
+            url: report-impact.md
           - text: View Reported Impacts
             url: view-impact-insights.md
           - text: View Allowed Impact Categories
@@ -46,8 +46,8 @@ landingContent:
     linkLists:
       - linkListType: how-to-guide
         links:
-          - text: Report Impact on an Azure Virtual Machine
-            url: report-vm-impact.md
+          - text: Report a Resource Impact
+            url: report-impact.md
           - text: Report Impacts Using a Logic App
             url: creating-logic-app.md
       - linkListType: tutorial

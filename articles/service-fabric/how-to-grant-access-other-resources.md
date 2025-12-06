@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 11/14/2024
+ms.custom: sfi-image-nochange
 # Customer intent: As a cloud administrator, I want to grant managed identities access to Azure resources, so that my applications can securely retrieve data and secrets without needing to manage credentials directly.
 ---
 

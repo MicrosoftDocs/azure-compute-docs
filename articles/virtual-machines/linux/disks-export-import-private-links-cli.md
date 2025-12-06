@@ -4,7 +4,7 @@ description: Enable Private Links for your managed disks with Azure CLI. Allowin
 author: roygara
 ms.service: azure-disk-storage
 ms.topic: overview
-ms.date: 03/31/2023
+ms.date: 11/04/2025
 ms.author: rogarana
 ms.custom: references_regions, devx-track-azurecli, linux-related-content
 # Customer intent: "As a cloud administrator, I want to implement Private Links for managed disks using CLI, so that I can securely control import/export access within my virtual network and enhance data security."

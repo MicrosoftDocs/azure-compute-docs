@@ -5,7 +5,7 @@ author: gabstamsft
 ms.service: azure-virtual-machines
 ms.subservice: gallery
 ms.topic: how-to
-ms.date: 09/08/2023
+ms.date: 08/18/2024
 ms.author: tagore
 ms.reviewer: jushiman
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
@@ -1298,7 +1298,7 @@ pipeline {
 ----
 
 ## Deploy the VM Apps
-One or more VM Applications can now be referenced in the `applicationProfile` of Azure VM or Azure VM Scale Sets. Azure then pulls the payload of the VM Application and installs it on each VM using the provided install script. The `order` property defines the sequential order in which the VM Applications are installed on the VM. 
+One or more VM Applications can now be referenced in the `applicationProfile` of Azure VM or Azure Virtual Machine Scale Sets. Azure then pulls the payload of the VM Application and installs it on each VM using the provided install script. The `order` property defines the sequential order in which the VM Applications are installed on the VM. 
 
 Refer [schema of applicationProfile of the VM / Virtual Machine Scale Set](vm-applications.md#deploy-azure-vm-applications) to learn more about each property. 
 								
@@ -1491,5 +1491,5 @@ Select the VM application from the list and then select **Save** at the bottom o
 
 
 ## Next steps
-- Learn more about [Azure VM Applications](vm-applications.md).
-- Learn to [manage, update or delete](vm-applications-manage.md) Azure VM Applications.
+Learn more about [Azure VM Applications](vm-applications.md).
+Learn to [manage, update or delete](vm-applications-manage.md) Azure VM Applications.

@@ -1,13 +1,13 @@
 ---
 title: Maintenance Configurations for Azure virtual machines using the Azure CLI
 description: Learn how to control when maintenance is applied to your Azure VMs by using Maintenance Configurations and the Azure CLI.
-author: ju-shim
+author: cynthn
 ms.service: azure-virtual-machines
 ms.subservice: maintenance
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 ms.date: 07/01/2024
-ms.author: jushiman
+ms.author: cynthn
 #pmcontact: shants
 # Customer intent: "As an IT administrator managing Azure virtual machines, I want to create and assign maintenance configurations using the command-line interface, so that I can control platform update schedules effectively and minimize service disruptions."
 ---
@@ -202,7 +202,7 @@ az maintenance assignment list \
    --provider-name Microsoft.Compute \
    --resource-group myMaintenanceRG \
    --resource-name myVMSS \
-   --resource-type virtualMachines \
+   --resource-type "virtualMachineScaleSets" \
    --query "[].{resource:resourceGroup, configName:name}" \
    --output table
 ```
@@ -265,7 +265,7 @@ az maintenance update list \
    --resource-name myHost \
    --resource-type hosts \
    --provider-name Microsoft.Compute \
-   --resource-parentname myHostGroup \
+   --resource-parent-name myHostGroup \
    --resource-parent-type hostGroups \
    --output table
 ```
@@ -317,7 +317,7 @@ az maintenance applyupdate create \
 
 ## Check the status of applying updates
 
-You can check on the progress of the updates by using `az maintenance applyupdate get`.
+You can check on the progress of the updates by using `az maintenance applyupdate show`.
 
 To see results for the last update, use `default` as the update name. Or replace `myUpdateName` with the name of the update that was returned when you ran `az maintenance applyupdate create`.
 
@@ -337,7 +337,7 @@ Type           : Microsoft.Maintenance/applyUpdates
 ### Isolated VM
 
 ```azurecli-interactive
-az maintenance applyupdate get \
+az maintenance applyupdate show \
    --subscription {subscriptionID} \ 
    --resource-group myMaintenanceRG \
    --resource-name myVM \
@@ -351,7 +351,7 @@ az maintenance applyupdate get \
 ### Dedicated host
 
 ```azurecli-interactive
-az maintenance applyupdate get \
+az maintenance applyupdate show \
    --subscription {subscriptionID} \ 
    --resource-group myMaintenanceRG \
    --resource-name myHost \
@@ -367,7 +367,7 @@ az maintenance applyupdate get \
 ### Virtual machine scale sets
 
 ```azurecli-interactive
-az maintenance applyupdate get \
+az maintenance applyupdate show \
    --subscription {subscriptionID} \ 
    --resource-group myMaintenanceRG \
    --resource-name myVMSS \

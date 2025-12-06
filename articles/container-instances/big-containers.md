@@ -6,11 +6,11 @@ author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
 ms.topic: concept-article
-ms.date: 03/27/2025
+ms.date: 11/17/2025
 # Customer intent: As a cloud developer, I want to deploy high-performance container workloads with increased vCPU and memory on Azure Container Instances, so that I can efficiently handle data-intensive applications and scale resources seamlessly according to business demands.
 ---
 # Big Containers on Azure Container Instances
-This article outlines the capabilities and benefits of Big Containers on Azure Container Instances. Customers can now deploy workloads with higher vCPU and memory for standard containers, confidential containers, containers with virtual networks, as well as containers utilizing virtual nodes to connect to AKS. This setup supports vCPU counts greater than 4 and memory capacities of 16 GB, with a maximum of 32 vCPU and 256 GB per standard container group and 32 vCPU and 192 GB per confidential container group. This feature removes limitations for compute and memory intensive workloads!   
+This article outlines the capabilities and benefits of Big Containers on Azure Container Instances. Customers can now deploy workloads with higher vCPU and memory for standard containers, confidential containers, containers with virtual networks, as well as containers utilizing virtual nodes to connect to AKS. This setup supports vCPU counts greater than 4 and memory capacities of 16 GB, with a maximum of 31 vCPU and 240 GB per standard container group and 31 vCPU and 180 GB per confidential container group. This feature removes limitations for compute and memory intensive workloads!   
 
 ## Benefits of Big Containers  
 
@@ -54,3 +54,6 @@ To begin using Big Containers, follow these steps.
 2. Once your quota has been allocated, you can deploy your container groups through Azure portal, Azure CLI, PowerShell, ARM template, or any other medium that allows you to connect to your container groups in Azure. 
 
 To learn more about Azure Container Instances, see [Serverless containers in Azure - Azure Container Instances | Microsoft Learn](./container-instances-overview.md)
+
+[azure-support]: https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest 
+

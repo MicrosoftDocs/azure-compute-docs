@@ -1,8 +1,8 @@
 ---
 title: Tutorial - Create and use disks for scale sets with Azure PowerShell
 description: Learn how to use Azure PowerShell to create and use Managed Disks with Virtual Machine Scale Sets. Including how to add, prepare, list, and detach disks.
-author: ju-shim
-ms.author: jushiman
+author: cynthn
+ms.author: cynthn
 ms.topic: tutorial
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: disks
@@ -22,7 +22,7 @@ Virtual Machine Scale Sets use disks to store the VM instance's operating system
 > * Disk performance
 > * Attach and prepare data disks
 
-If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 [!INCLUDE [cloud-shell-try-it.md](~/reusable-content/ce-skilling/azure/includes/cloud-shell-try-it.md)]
 
@@ -40,6 +40,8 @@ Additional data disks can be added if you need to install applications and store
 ## VM disk types
 
 The following table provides a comparison of the five disk types to help you decide which to use.
+
+[!INCLUDE [disks-hdd-os-statement](../virtual-machines/includes/disks-hdd-os-statement.md)]
 
 |         | Ultra disk | Premium SSD v2 | Premium SSD | Standard SSD | <nobr>Standard HDD</nobr> |
 | ------- | ---------- | ----------- | ------------ | ------------ | ------------ |

@@ -19,7 +19,16 @@ ms.reviewer: mattmcinnes
 [!INCLUDE [ensv6-series-specs](./includes/ensv6-series-specs.md)]
 
 ## Feature support
-[Premium Storage](../../premium-storage-performance.md): Supported <br>[Premium Storage caching](../../premium-storage-performance.md): Supported <br>[Live Migration](../../maintenance-and-updates.md): Not Supported <br>[Memory Preserving Updates](../../maintenance-and-updates.md): Supported <br>[Generation 2 VMs](../../generation-2.md): Supported <br>[Generation 1 VMs](../../generation-2.md): Not Supported <br>[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported <br>[Ephemeral OS Disk](../../ephemeral-os-disks.md): Not Supported <br>[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Supported <br>
+- [Premium Storage](../../premium-storage-performance.md): Supported
+- [Premium Storage caching](../../premium-storage-performance.md): Supported
+- [Live Migration](../../maintenance-and-updates.md#live-migration): Not Supported
+- [Memory Preserving Updates](../../maintenance-and-updates.md): Supported
+- [Generation 2 VMs](../../generation-2.md): Supported
+- [Generation 1 VMs](../../generation-2.md): Not Supported
+- [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported
+- [Ephemeral OS Disk](../../ephemeral-os-disks.md): Not Supported
+- [Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Supported
+
 
 ## Sizes in series
 
@@ -37,7 +46,7 @@ vCPUs (Qty.) and Memory for each size
 | Standard_E48ns_v6 | 48 | 384 |
 | Standard_E64ns_v6 | 64 | 512 |
 | Standard_E96ns_v6 | 96 | 768 |
-| Standard_E128ns_v6 | 118 | 1024 |
+| Standard_E128ns_v6 | 128 | 1024 |
 
 
 #### VM Basics resources
@@ -61,7 +70,7 @@ Remote (uncached) storage info for each size
 | Standard_E8ns_v6 | 24 | 12800 | 424 | 40000 | 1250 | 16667 | 496 | 52083 | 1463 |
 | Standard_E16ns_v6 | 48 | 25600 | 848 | 40000 | 1250 | 33333 | 992 | 52083 | 1463 |
 | Standard_E32ns_v6 | 64 | 51200 | 1696 | 80000 | 1696 | 66667 | 1984 | 104167 | 1984 |
-| Standard_E48ns_v6 | 64 | 76800 | 2544 | 80000 | 2544 | 1000000 | 2976 | 104167 | 2976 |
+| Standard_E48ns_v6 | 64 | 76800 | 2544 | 80000 | 2544 | 100000 | 2976 | 104167 | 2976 |
 | Standard_E64ns_v6 | 64 | 76800 | 2544 | 102400 | 3392 | 133333 | 3969 | 133333 | 3969 |
 | Standard_E96ns_v6 | 64 | 153600 | 5088 | 153600 | 5088 | 200000 | 5953 | 200000 | 5953 |
 | Standard_E128ns_v6 | 64 | 204800 | 6782 | 204800 | 6782 | 266667 | 7935 | 266667 | 7935 |

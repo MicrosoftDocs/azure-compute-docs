@@ -6,7 +6,7 @@ ms.author: mimckitt
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
 ms.date: 03/21/2025
-ms.reviewer: ju-shim
+ms.reviewer: cynthn
 ms.custom: upgradepolicy, ignite-2024
 # Customer intent: As a system administrator, I want to manually upgrade instances in a Virtual Machine Scale Set, so that I can ensure each instance is updated according to the specific configurations I require without automatic changes.
 ---

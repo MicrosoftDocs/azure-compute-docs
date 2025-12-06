@@ -20,14 +20,16 @@ ms.reviewer: mattmcinnes
 
 ## Feature support
 
-Premium Storage: Not Supported<br>
-Premium Storage caching: Not Supported<br>
-Live Migration: Supported<br>
-Memory Preserving Updates: Supported<br>
-VM Generation Support: Generation 1 and 2<br>
-Accelerated Networking: Supported<br>
-Ephemeral OS Disks: Supported<br>
-Nested Virtualization: Supported<br>
+- [Premium Storage](../../premium-storage-performance.md): Not Supported  
+- [Premium Storage caching](../../premium-storage-performance.md): Not Supported
+- [Live Migration](../../maintenance-and-updates.md#live-migration): Supported
+- [Memory Preserving Updates](../../maintenance-and-updates.md): Supported
+- [VM Generation Support](../../generation-2.md): Generation 1 and 2
+- [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported
+- [Ephemeral OS Disks](../../ephemeral-os-disks.md): Supported
+- [Local temporary storage](../../overview.md#local-temporary-storage): Supported
+- [Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Supported
+
 
 ## Sizes in series
 

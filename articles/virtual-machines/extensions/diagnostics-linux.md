@@ -7,7 +7,7 @@ ms.subservice: extensions
 ms.author: gabsta
 author: GabstaMSFT
 ms.collection: linux
-ms.date: 04/04/2023
+ms.date: 08/18/2025
 ms.custom: devx-track-azurepowershell, devx-track-azurecli, linux-related-content
 ms.devlang: azurecli
 # Customer intent: "As an IT administrator managing Linux VMs, I want to configure the Linux diagnostic extension to collect metrics and logs, so that I can monitor system health and performance effectively."
@@ -57,6 +57,8 @@ The Linux diagnostic extension helps you monitor the health of a Linux VM on Mic
 | Files       | [Log Path, Destination Table](#filelogs) | Azure Table Storage | EventHub, Azure Blob Storage (JSON Format) |
 
 This extension works with both Azure deployment models: Azure Resource Manager and classic.
+
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
 
 ## Prerequisites
 
@@ -653,7 +655,7 @@ The default metrics that LAD supports are aggregated across all file systems, di
 > [!NOTE]
 > The display names for each metric differ depending on the metrics namespace to which it belongs:
 >
-> - `Guest (classic)` populated from your storage account: the specified `displayName` in the `performanceCounters` section, or the default display name as seen in Azure Portal. For the VM, under **Monitoring** > **Diagnostic settings**, select **Metrics** tab.
+> - `Guest (classic)` populated from your storage account: the specified `displayName` in the `performanceCounters` section, or the default display name as seen in Azure portal. For the VM, under **Monitoring** > **Diagnostic settings**, select **Metrics** tab.
 > - `azure.vm.linux.guestmetrics` populated from `AzMonSink`, if configured: the "`azure.vm.linux.guestmetrics` Display Name" specified in the following tables.
 >
 > The metric values between `Guest (classic)` and `azure.vm.linux.guestmetrics` versions differ. While the classic metrics had certain aggregations applied in the agent, the new metrics are unaggregated counters, giving customers the flexibility to aggregate as desired at viewing/alerting time.

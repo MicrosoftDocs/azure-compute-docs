@@ -4,8 +4,8 @@
 metadata:
   title: Change a VM's availability set by using Azure PowerShell
   description: Learn how to change the availability set for your virtual machine by using Azure PowerShell.
-  author: ju-shim
-  ms.author: jushiman
+  author: cynthn
+  ms.author: cynthn
   ms.reviewer: mimckitt
   ms.date: 3/8/2021
   ms.service: azure-virtual-machines

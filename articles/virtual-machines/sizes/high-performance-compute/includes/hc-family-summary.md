@@ -6,7 +6,7 @@ author: mattmcinnes
 ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.date: 04/19/2024
+ms.date: 11/24/2025
 ms.author: mattmcinnes
 ms.custom: include file
 # Customer intent: As a cloud architect, I want to review the capabilities of the HC family of VM sizes, so that I can select the most suitable instances for my high-performance computing workloads.

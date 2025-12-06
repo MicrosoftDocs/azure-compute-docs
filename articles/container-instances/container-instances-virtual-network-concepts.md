@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
-ms.date: 08/29/2024
+ms.date: 11/17/2025
 # Customer intent: As a cloud architect, I want to deploy container groups into an Azure virtual network so that I can enable secure communication between my containerized applications and other resources while ensuring proper network configurations and compliance with limitations.
 ---
 
@@ -66,6 +66,13 @@ A virtual network defines the address space in which you create one or more subn
 Subnets segment the virtual network into separate address spaces usable by the Azure resources you place in them. You create one or several subnets within a virtual network.
 
 The subnet that you use for container groups can contain only container groups. Before you deploy a container group to a subnet, you must explicitly delegate the subnet before provisioning. Once delegated, the subnet can be used only for container groups. If you attempt to deploy resources other than container groups to a delegated subnet, the operation fails.
+
+### Outbound connectivity
+NAT gateway should be configured with public IP so the container groups outbound flows through that public IP. This also allows customers to use service tagged IPs and/or have appropriate NSG rules.
+
+Use the following [az network nat gateway create][az-network-nat-gateway-create] to create a NAT gateway that uses the public IP you created in the previous step.
+
+:::code language="azurecli" source="~/azure_cli_scripts/container-instances/nat-gateway.sh" id="natgateway":::
 
 ### Network profile
 

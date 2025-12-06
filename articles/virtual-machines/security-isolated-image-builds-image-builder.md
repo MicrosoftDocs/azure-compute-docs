@@ -4,7 +4,7 @@ description: Isolated Image Builds is achieved by transitioning core process of 
 ms.date: 02/13/2024
 ms.topic: sample
 author: kof-f
-ms.author: jushiman
+ms.author: cynthn
 ms.reviewer: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: image-builder

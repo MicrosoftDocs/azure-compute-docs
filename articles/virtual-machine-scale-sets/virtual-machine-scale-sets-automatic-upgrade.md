@@ -1,8 +1,8 @@
 ---
 title: Automatic OS image upgrades with Azure Virtual Machine Scale Sets
 description: Learn how to automatically upgrade the OS image on virtual machines  in a scale set
-author: ju-shim
-ms.author: jushiman
+author: cynthn
+ms.author: cynthn
 ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: automatic-os-upgrade
@@ -99,17 +99,25 @@ The following platform SKUs are currently supported (and more are added periodic
 
 | Publisher               | OS Offer      |  Sku               |
 |-------------------------|---------------|--------------------|
-| Canonical               | UbuntuServer  | 18.04-LTS          |
-| Canonical               | UbuntuServer  | 18_04-LTS-Gen2          |
 | Canonical               | 0001-com-ubuntu-server-focal  | 20_04-LTS          |
 | Canonical               | 0001-com-ubuntu-server-focal  | 20_04-LTS-Gen2     |
+| Canonical               | 0001-com-ubuntu-server-focal  | 20_04-LTS-arm64    |
+| Canonical               | ubuntu-24_04-lts  | server-arm64       |
 | Canonical               | 0001-com-ubuntu-server-jammy  | 22_04-LTS    |
+| Canonical               | 0001-com-ubuntu-server-jammy  | 22_04-LTS-arm64    |
 | Canonical               | 0001-com-ubuntu-server-jammy  | 22_04-LTS-Gen2    |
-| MicrosoftCblMariner     | Cbl-Mariner   | cbl-mariner-1      |
-| MicrosoftCblMariner     | Cbl-Mariner   | 1-Gen2             |
-| MicrosoftCblMariner     | Cbl-Mariner   | cbl-mariner-2
+| Canonical               | 0001-com-ubuntu-pro-microsoft  | pro-fips-20_04-Gen2    |
+| MicrosoftCblMariner     | Cbl-Mariner   | cbl-mariner-2      |
+| MicrosoftCblMariner     | Cbl-Mariner   | cbl-mariner-2-arm64      |
 | MicrosoftCblMariner     | Cbl-Mariner   | cbl-mariner-2-Gen2 |
-| MicrosoftSqlServer      | Sql2017-ws2019| enterprise |
+| MicrosoftCblMariner     | Cbl-Mariner   | cbl-mariner-2-fips |
+| MicrosoftCblMariner     | Cbl-Mariner   | cbl-mariner-2-Gen2-fips |
+| MicrosoftCblMariner     | Azure-Linux   | azure-linux-Gen2 |
+| MicrosoftCblMariner     | Azure-Linux   | azure-linux-3 |
+| MicrosoftCblMariner     | Azure-Linux   | azure-linux-arm64 |
+| MicrosoftSqlServer      | SQL2017-ws2019| enterprise |
+| MicrosoftSqlServer      | SQL2019-ws2022| enterprise |
+| MicrosoftSqlServer      | SQL2022-ws2022| enterprise-Gen2 |
 | MicrosoftWindowsServer  | WindowsServer | 2012-R2-Datacenter |
 | MicrosoftWindowsServer  | WindowsServer | 2016-Datacenter    |
 | MicrosoftWindowsServer  | WindowsServer | 2016-Datacenter-gensecond    |
@@ -119,6 +127,7 @@ The following platform SKUs are currently supported (and more are added periodic
 | MicrosoftWindowsServer  | WindowsServer | 2016-Datacenter-with-containers-gs |
 | MicrosoftWindowsServer  | WindowsServer | 2019-Datacenter |
 | MicrosoftWindowsServer  | WindowsServer | 2019-Datacenter-Core |
+| MicrosoftWindowsServer  | WindowsServer | 2019-Datacenter-Core-smalldisk |
 | MicrosoftWindowsServer  | WindowsServer | 2019-Datacenter-Core-with-Containers |
 | MicrosoftWindowsServer  | WindowsServer | 2019-Datacenter-gensecond |
 | MicrosoftWindowsServer  | WindowsServer | 2019-Datacenter-gs |
@@ -127,16 +136,14 @@ The following platform SKUs are currently supported (and more are added periodic
 | MicrosoftWindowsServer  | WindowsServer | 2019-Datacenter-with-Containers-gs |
 | MicrosoftWindowsServer  | WindowsServer | 2022-Datacenter |
 | MicrosoftWindowsServer  | WindowsServer | 2022-Datacenter-smalldisk |
-| MicrosoftWindowsServer  | WindowsServer | 2022-Datacenter-smalldisk-g2 |
+| MicrosoftWindowsServer  | WindowsServer | 2022-Datacenter-azure-edition |
+| MicrosoftWindowsServer  | WindowsServer | 2022-Datacenter-azure-edition-core |
+| MicrosoftWindowsServer  | WindowsServer | 2022-Datacenter-azure-edition-core-smalldisk |
 | MicrosoftWindowsServer  | WindowsServer | 2022-Datacenter-core |
 | MicrosoftWindowsServer  | WindowsServer | 2022-Datacenter-core-smalldisk |
 | MicrosoftWindowsServer  | WindowsServer | 2022-Datacenter-g2 |
+| MicrosoftWindowsServer  | WindowsServer | 2022-Datacenter-smalldisk-g2 |
 | MicrosoftWindowsServer  | WindowsServer | Datacenter-core-20h2-with-containers-smalldisk-gs |
-| MicrosoftWindowsServer  | WindowsServer | 2022-Datacenter-azure-edition |
-| MicrosoftWindowsServer  | WindowsServer | 2022-Datacenter-azure-edition-smalldisk |
-| Mirantis  | Windows_with_Mirantis_Container_Runtime_2019 | win_2019_mcr_23_0 |
-| Mirantis  | Windows_with_Mirantis_Container_Runtime_2019 | win_2019_mcr_23_0_gen2 |
-
 
 ## Requirements for configuring automatic OS image upgrade
 
