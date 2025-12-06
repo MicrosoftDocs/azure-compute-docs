@@ -123,7 +123,7 @@ It's recommended to create separate assignments per VM application for granual a
 
 Once the policy is assigned, all existing resources are evaluated and [displayed on compliance monitor](/azure/governance/policy/tutorials/create-and-manage#check-initial-compliance). Noncompliant resources are missing the VM Application defined in the policy. Resources without `applicationProfile` are also counted as noncompliant. Newly created or updated resources may take a few minutes to appear in evaluation cycles.
 
-:::image type="content" source="media/vmapp/vm-applications-compliance-monitor.png" alt-text="Azure Policy compliance view showing VMs and VM scale sets audited for required VM Application presence.":::
+:::image type="content" source="./media/vmapp/vm-applications-compliance-monitor.png" alt-text="Azure Policy compliance view showing VMs and VM scale sets audited for required VM Application presence.":::
 
 #### Common adjustments
 
@@ -309,7 +309,7 @@ It's recommended to gradually remediate noncompliant resources for higher availa
 
 It's recommended to create separate policies for windows & linux.  
 
-:::image type="content" source="media/vmapp/vm-applications-create-remediation-task.png" alt-text="Portal experience showing how to create a new remediation task.":::
+:::image type="content" source="./media/vmapp/vm-applications-create-remediation-task.png" alt-text="Portal experience showing how to create a new remediation task.":::
 
 #### Common adjustments
 - <b>Limit policy scope by OS type</b>: Check `osType` of `storageProfile` within `policyRule` to filter based on Window / Linux OS:
