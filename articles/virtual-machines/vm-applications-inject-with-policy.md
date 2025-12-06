@@ -1,6 +1,6 @@
 ---
 title: Govern and enforce compliance for VM Applications with Azure Policy
-description: Use Azure Policy to govern and enforce Azure VM Application with right configurations across all VMs and VM scale sets.
+description: Use Azure Policy to govern and enforce Azure Virtual Machine (VM) Application with right configurations across all VMs and VM scale sets.
 author: tanmaygore
 ms.service: azure-virtual-machines
 ms.subservice: gallery
@@ -15,7 +15,7 @@ ms.custom: devx-track-azurepowershell, devx-track-azurecli
 
 ## Overview
 
-[Azure VM Applications](/azure/virtual-machines/vm-applications) in Azure Compute Gallery let you package, version, and deliver softwares, files, scripts, security components, etc. from [Azure Compute Gallery](/azure/virtual-machines/azure-compute-gallery) to Azure VMs and VM scale sets (VMSS). [Learn more about Azure VM Applications.](./vm-applications.md)
+[Azure VM Applications](/azure/virtual-machines/vm-applications) in Azure Compute Gallery let you package, version, and deliver software, files, scripts, security components, etc. from [Azure Compute Gallery](/azure/virtual-machines/azure-compute-gallery) to Azure VMs and VM scale sets (VMSS). [Learn more about Azure VM Applications.](./vm-applications.md)
 
 Using [Azure Policy](/azure/governance/policy/overview) with VM Applications enables customers and admin teams to: 
 - Monitor presence of required VM Applications across VMs & VM Scale Sets. 
@@ -30,23 +30,23 @@ This guide shows how to:
 ## Prerequisites
 - An Azure Compute Gallery with the published VM Application and versions to enforce. See [create and manage VM Applications](/azure/virtual-machines/vm-applications#publish-a-vm-application-version).
     - Ensure the version is [replicated to all regions](./vm-applications-how-to.md#create-the-vm-application) where the application presence is required. 
-    - Ensure the gallery is [shared to all subscriptions](/virtual-machines/share-gallery.md) requiring access to the VM Application. 
+    - Ensure the gallery is [shared to all subscriptions](./share-gallery.md) requiring access to the VM Application. 
 
 - Permissions:
-    - Policy Contributor to create/assign policies. See [policy definition structure and assignments](/azure/governance/policy/concepts/definition-structure).
+    - Policy Contributor to create/assign policies. See [policy definition structure and assignments](/azure/governance/policy/concepts/definition-structure.md).
 
-## Setup compliance monitor to govern required VM applications
+## Set up compliance monitor to govern required VM applications
 
-Azure Policy with `audit` effect can be used to monitor presence of specific VM Applications across Azure VM and VM Scale Sets. Admin teams can leverage this to 
-- Setup compliance monitors for VM Applications (view compliant vs non-compliant VMs and VM Scale Sets) 
+Azure Policy with `audit` effect can be used to monitor presence of specific VM Applications across Azure VM and VM Scale Sets. Admin teams can use this to 
+- Setup compliance monitors for VM Applications (view compliant vs noncompliant VMs and VM Scale Sets) 
 - Measuring rollout progress of software packaged as a VM Application.
 
 #### 1. Create a custom policy definition
 
-[Create a new custom policy](/azure/governance/policy/tutorials/create-and-manage#implement-a-new-custom-policy) using the policy definition provided below. This policy checks for the presence of VM applications on VMs and VM Scale Sets and reports the number of compliance and non-compliant instances.
+[Create a new custom policy](/azure/governance/policy/tutorials/create-and-manage#implement-a-new-custom-policy) using the policy definition provided below. This policy checks for the presence of VM applications on VMs and VM Scale Sets and reports the number of compliance and noncompliant instances.
 
 #### [Policy](#tab/policy1)
-This policy will monitor compliance of all VMs, VMSS across linux and windows. Linux apps on windows VMs and windows apps on linux VMs will be considered as compliant resources. 
+This policy monitors compliance of all VMs, VMSS across linux and windows. Linux apps on windows VMs and windows apps on linux VMs are considered as compliant resources. 
 
 ```json
 {
@@ -117,18 +117,18 @@ This policy will monitor compliance of all VMs, VMSS across linux and windows. L
 ```
 
 #### 2. Assign the policy and view compliance
-[Assign the newly created policy](/azure/governance/policy/tutorials/create-and-manage#assign-a-policy) to start monitoring the VM application and generate compliance score. All VMs and VM Scale Sets within the assigned scope will be monitored for compliance. 
+[Assign the newly created policy](/azure/governance/policy/tutorials/create-and-manage#assign-a-policy) to start monitoring the VM application and generate compliance score. All VMs and VM Scale Sets within the assigned scope are monitored for compliance. 
 
-It is recommended to create separate assignments per VM application for granual and accurate monitoring.
+It's recommended to create separate assignments per VM application for granual and accurate monitoring.
 
-Once the policy is assigned, all existing resources are evaluated and [displayed on compliance monitor](/azure/governance/policy/tutorials/create-and-manage#check-initial-compliance). Non-compliant resources are missing the VM Application defined in the policy. Resources without `applicationProfile` are also counted as non-compliant. Newly created or updated resources may take a few minutes to appear in evaluation cycles.
+Once the policy is assigned, all existing resources are evaluated and [displayed on compliance monitor](/azure/governance/policy/tutorials/create-and-manage#check-initial-compliance). Noncompliant resources are missing the VM Application defined in the policy. Resources without `applicationProfile` are also counted as noncompliant. Newly created or updated resources may take a few minutes to appear in evaluation cycles.
 
 :::image type="content" source="media/vmapp/vm-applications-compliance-monitor.png" alt-text="Azure Policy compliance view showing VMs and VM scale sets audited for required VM Application presence.":::
 
 #### Common adjustments
 
 - <b>Audit multiple required applications</b>: Create a separate policy (one per application) or update the policy by adding other applications under `allOf` parameter.
-- <b>Block creation of VMs without the required applications</b>: Change effect to `deny` to prevent non-compliant creations.
+- <b>Block creation of VMs without the required applications</b>: Change effect to `deny` to prevent noncompliant creations.
 - <b>Limit policy scope to VMs or VMSS</b>: Remove the unused branch from `anyOf` within `policyRule`.
 - <b>Limit policy scope by OS type</b>: Check `osType` of `storageProfile` within `policyRule` to filter based on Window / Linux OS:
     ```json
@@ -151,7 +151,7 @@ Azure Policy with `modify` effect injects VM applications while creating new VM 
 
 #### 1. Create a custom policy definition
 
-[Create a new custom policy](/azure/governance/policy/tutorials/create-and-manage#implement-a-new-custom-policy) using the policy definition provided below. This policy checks for the presence of VM applications while creating VMs or VM Scale Sets and inserts the VM application if it does not exist. To modify multiple resource types (VM and VM Scale Sets), Azure policy requires different policies per resource type. 
+[Create a new custom policy](/azure/governance/policy/tutorials/create-and-manage#implement-a-new-custom-policy) using the policy definition. This policy checks for the presence of VM applications while creating VMs or VM Scale Sets and inserts the VM application if it doesn't exist. To modify multiple resource types (VM and VM Scale Sets), Azure policy requires different policies per resource type. 
 
 #### [VM](#tab/vm)
 
@@ -298,16 +298,16 @@ Azure Policy with `modify` effect injects VM applications while creating new VM 
 ---
 
 #### 2. Assign the policy
-[Assign the newly created policy](/azure/governance/policy/tutorials/create-and-manage#assign-a-policy) to start generating compliance score. All VMs and VM Scale Sets within the assigned scope will be monitored for compliance. Once the policy is assigned, all existing resources are evaluated and [displayed on compliance monitor](/azure/governance/policy/tutorials/create-and-manage#check-initial-compliance).
+[Assign the newly created policy](/azure/governance/policy/tutorials/create-and-manage#assign-a-policy) to start generating compliance score. All VMs and VM Scale Sets within the assigned scope are monitored for compliance. Once the policy is assigned, all existing resources are evaluated and [displayed on compliance monitor](/azure/governance/policy/tutorials/create-and-manage#check-initial-compliance).
 
-Creating new VM and VMSS resource will trigger this policy and modify the applicationProfile of the resource to inject the application or configure it correctly. 
+Creating new VM and VMSS resource triggers this policy and modifies the applicationProfile of the resource to inject the application or configure it correctly. 
 
-#### 3. Create Remediation Task to modify existing resources
+#### 3. Create Remediation Task and modify existing resources
 Create a new [Remediation tasks](/azure/governance/policy/how-to/remediate-resources) to modify existing resources. 
 
-It is recommended to gradually remediate non-compliant resources for higher availability and failure resiliency. This can be done by creating multiple remediation tasks, each scoped to one region or few resources.  
+It's recommended to gradually remediate noncompliant resources for higher availability and failure resiliency. This gradual can be done by creating multiple remediation tasks, each scoped to one region or few resources.
 
-It is recommended to create separate policies for windows & linux.  
+It's recommended to create separate policies for windows & linux.  
 
 :::image type="content" source="media/vmapp/vm-applications-create-remediation-task.png" alt-text="Portal experience showing how to create a new remediation task.":::
 
@@ -328,7 +328,7 @@ It is recommended to create separate policies for windows & linux.
 
 ## Any other scenarios possible with Azure Policy?
 
-- Deny creation of VMs/VMSS that do not reference only allowed VM Applications (allowlist). See [policy rule examples](/azure/governance/policy/samples/built-in-policies).
-- Audit which VMs/VMSS are not using enableAutomaticUpgrade = true for their VM Applications.
+- Deny creation of VMs/VMSS that don't reference only allowed VM Applications (allowlist). See [policy rule examples](/azure/governance/policy/samples/built-in-policies).
+- Audit which VMs/VMSS aren't using enableAutomaticUpgrade = true for their VM Applications.
 - Enforce treatFailureAsDeploymentFailure = true to fail deployments if app installation fails.
-- Combine the above into an [initiative](/azure/governance/policy/concepts/initiative-definition) so compliance is reported in one view and a single remediation can be run.
+- Combine multiple policies into an [initiative](/azure/governance/policy/concepts/initiative-definition) so compliance is reported in one view and a single remediation can be run.
