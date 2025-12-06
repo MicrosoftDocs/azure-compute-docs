@@ -15,7 +15,7 @@ ms.custom: devx-track-azurepowershell, devx-track-azurecli
 
 ## Overview
 
-[Azure VM Applications](/azure/virtual-machines/vm-applications) in Azure Compute Gallery let you package, version, and deliver software, files, scripts, security components, etc. from [Azure Compute Gallery](/azure/virtual-machines/azure-compute-gallery) to Azure VMs and VM scale sets (VMSS). [Learn more about Azure VM Applications.](./vm-applications.md)
+[Azure VM Applications](./vm-applications.md) in Azure Compute Gallery let you package, version, and deliver software, files, scripts, security components, etc. from [Azure Compute Gallery](/azure/virtual-machines/azure-compute-gallery) to Azure VMs and VM scale sets (VMSS). [Learn more about Azure VM Applications.](./vm-applications.md)
 
 Using [Azure Policy](/azure/governance/policy/overview) with VM Applications enables customers and admin teams to: 
 - Monitor presence of required VM Applications across VMs & VM Scale Sets. 
@@ -331,4 +331,4 @@ It's recommended to create separate policies for windows & linux.
 - Deny creation of VMs/VMSS that don't reference only allowed VM Applications (allowlist). See [policy rule examples](/azure/governance/policy/samples/built-in-policies).
 - Audit which VMs/VMSS aren't using enableAutomaticUpgrade = true for their VM Applications.
 - Enforce treatFailureAsDeploymentFailure = true to fail deployments if app installation fails.
-- Combine multiple policies into an [initiative](/azure/governance/policy/concepts/initiative-definition) so compliance is reported in one view and a single remediation can be run.
+- Combine multiple policies into an [initiative](/azure/governance/policy/concepts/initiative-definition.md) so compliance is reported in one view and a single remediation can be run.
