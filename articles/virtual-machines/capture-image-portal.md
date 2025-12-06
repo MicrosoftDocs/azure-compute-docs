@@ -1,12 +1,12 @@
 ---
 title: Capture an image of a VM using the portal
 description: Create an image of a VM using the Azure portal.
-author: ju-shim
+author: cynthn
 ms.service: azure-virtual-machines
 ms.subservice: imaging
 ms.topic: how-to
 ms.date: 04/12/2022
-ms.author: jushiman
+ms.author: cynthn
 ms.custom: portal
 # Customer intent: "As a cloud administrator, I want to capture an image of a virtual machine using the portal, so that I can create multiple VMs from a single source and ensure data consistency during the process."
 ---

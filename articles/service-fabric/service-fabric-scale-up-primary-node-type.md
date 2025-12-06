@@ -5,9 +5,11 @@ ms.topic: how-to
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
-ms.custom: devx-track-azurepowershell
 services: service-fabric
 ms.date: 09/20/2022
+ms.custom:
+  - devx-track-azurepowershell
+  - sfi-image-nochange
 # Customer intent: "As a cloud infrastructure engineer, I want to vertically scale a Service Fabric primary node type with minimal downtime, so that I can ensure improved performance and resource utilization without compromising cluster stability."
 ---
 

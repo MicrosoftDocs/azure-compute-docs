@@ -4,7 +4,7 @@ description: Overview of hibernating your VM.
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.topic: how-to
-ms.date: 05/14/2024
+ms.date: 10/24/2025
 ms.author: jainan
 ms.reviewer: mattmcinnes
 ms.custom:
@@ -55,7 +55,6 @@ VM sizes with up to 64-GB RAM from the following General Purpose VM series suppo
 VM sizes with up to 112-GB RAM from the following GPU VM series support hibernation.
 - [NVv4-series](../virtual-machines/nvv4-series.md)
 - [NVadsA10v5-series](../virtual-machines/nva10v5-series.md)
-- [NVadsV710v5-series](../virtual-machines/sizes/gpu-accelerated/nvadsv710-v5-series.md)
 
 If you are using any UVM-enabled compute applications, we recommend idling the application before initiating hibernation. 
 

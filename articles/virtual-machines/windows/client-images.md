@@ -7,6 +7,7 @@ ms.subservice: imaging
 ms.service: azure-virtual-machines
 ms.topic: concept-article
 ms.date: 5/22/2025
+ms.custom: sfi-image-nochange
 # Customer intent: "As a Visual Studio subscriber, I want to deploy Windows 10 or 11 client images in Azure for development and testing, so that I can utilize cloud resources for my software projects efficiently."
 ---
 # Use Windows client in Azure for dev/test scenarios

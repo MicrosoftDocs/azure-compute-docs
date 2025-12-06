@@ -7,12 +7,14 @@ ms.subservice: security
 ms.collection: windows
 ms.topic: how-to
 ms.author: mbaldwin
-ms.date: 08/19/2025
+ms.date: 09/23/2025
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
 # Customer intent: As a cloud administrator, I want to enable Azure Disk Encryption on Windows VMs, so that I can secure my virtual machine data using BitLocker and manage encryption keys effectively with Azure Key Vault.
 ---
 
 # Azure Disk Encryption scenarios on Windows VMs
+
+[!INCLUDE [Azure Disk Encryption retirement notice](~/reusable-content/ce-skilling/azure/includes/security/azure-disk-encryption-retirement.md)]
 
 **Applies to:** :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets 
 

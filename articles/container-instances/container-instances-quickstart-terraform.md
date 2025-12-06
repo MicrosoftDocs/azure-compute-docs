@@ -3,7 +3,7 @@ title: 'Quickstart: Create an Azure Container Instance with a public IP address 
 description: 'In this article, you create an Azure Container Instance with a public IP address using Terraform'
 ms.topic: quickstart
 ms.service: azure-container-instances
-ms.date: 08/29/2024
+ms.date: 11/17/2025
 ms.custom: devx-track-terraform, linux-related-content
 author: TomArcherMsft
 ms.author: tarcher
@@ -55,6 +55,11 @@ In this article, you learn how to:
 1. Create a file named `variables.tf` and insert the following code:
 
     [!code-terraform[master](~/terraform_samples/quickstart/101-aci-linuxcontainer-public-ip/variables.tf)]
+
+1. To make the [container group zonal](/azure/reliability/reliability-container-instances#availability-zone-support), set the value of the `zone` variable to the logical availability zone you want to deploy to.
+
+    > [!IMPORTANT]
+    > Zonal container groups are only available in regions that support availability zones. To see if your region supports availability zones, see [Azure Regions List](/azure/reliability/regions-list).
 
 ## Initialize Terraform
 

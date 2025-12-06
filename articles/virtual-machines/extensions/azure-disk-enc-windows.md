@@ -17,6 +17,8 @@ ms.date: 03/19/2020
 
 Azure Disk Encryption uses BitLocker to provide full disk encryption on Azure virtual machines running Windows.  This solution is integrated with Azure Key Vault to manage disk encryption keys and secrets in your key vault subscription.
 
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
+
 ## Prerequisites
 
 For a full list of prerequisites, see [Azure Disk Encryption for Windows VMs](../windows/disk-encryption-overview.md), specifically the following sections:

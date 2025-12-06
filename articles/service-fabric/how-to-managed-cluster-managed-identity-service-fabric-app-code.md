@@ -97,7 +97,7 @@ Access tokens will be cached by Service Fabric at various levels (node, cluster,
 
 Sample request:
 ```http
-GET 'https://localhost:2377/metadata/identity/oauth2/token?api-version=2019-07-01-preview&resource=https://vault.azure.net/' HTTP/1.1 Secret: 912e4af7-77ba-4fa5-a737-56c8e3ace132
+GET 'https://localhost:2377/metadata/identity/oauth2/token?api-version=2019-07-01-preview&resource=https://vault.azure.net/' HTTP/1.1 Secret: aaaabbbb-0000-cccc-1111-dddd2222eeee
 ```
 where:
 

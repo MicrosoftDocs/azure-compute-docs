@@ -1,7 +1,7 @@
 ---
 title: Monitor Azure Container Instances
 description: Start here to learn how to monitor Azure Container Instances.
-ms.date: 08/29/2024
+ms.date: 11/17/2025
 ms.custom: horz-monitor
 ms.topic: concept-article
 author: tomvcassidy

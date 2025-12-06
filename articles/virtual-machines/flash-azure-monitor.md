@@ -4,9 +4,11 @@ description: This article covers important concepts for monitoring Azure virtual
 ms.service: azure-virtual-machines
 ms.author: tomcassidy
 author: tomvcassidy
-ms.custom: subject-monitoring
 ms.date: 01/31/2024
 ms.topic: concept-article
+ms.custom:
+  - subject-monitoring
+  - sfi-image-nochange
 # Customer intent: "As a system administrator, I want to utilize the VM availability metric in Azure Monitor so that I can effectively track and manage the health and performance of my virtual machines."
 ---
 

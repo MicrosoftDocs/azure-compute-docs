@@ -4,7 +4,7 @@ description: This topic provides an overview of running scripts within an Azure 
 ms.service: azure-virtual-machines
 ms.custom: linux-related-content
 author: nikhilpatel909
-ms.author: jushiman
+ms.author: cynthn
 ms.date: 03/10/2023
 ms.topic: how-to
 ms.reviewer: jushiman

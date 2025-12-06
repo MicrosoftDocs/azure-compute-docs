@@ -3,12 +3,16 @@ title: Back up and recover Oracle Database on an Azure Linux VM by using Azure F
 description: Learn how to back up and recover an Oracle Database instance to an Azure file share by using Oracle RMAN.
 author: cro27
 ms.service: oracle-on-azure
-ms.custom: devx-track-azurecli, linux-related-content
 ms.collection: linux
 ms.topic: how-to
 ms.date: 10/03/2024
 ms.author: cholse
 ms.reviewer: jjaygbay1
+ms.custom:
+  - devx-track-azurecli
+  - linux-related-content
+  - sfi-image-nochange
+  - sfi-ropc-nochange
 # Customer intent: As a database administrator, I want to back up and recover my Oracle Database on an Azure Linux VM using Azure Files, so that I can ensure data durability and efficient recovery processes for my applications.
 ---
 

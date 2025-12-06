@@ -7,7 +7,7 @@ ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: availability
 ms.date: 03/21/2025
-ms.reviewer: jushiman, fisteele
+ms.reviewer: cynthn, fisteele
 ms.custom: mimckitt, devx-track-azurecli, devx-track-azurepowershell, devx-track-arm-template
 # Customer intent: As a cloud architect, I want to create Azure Virtual Machine Scale Sets across Availability Zones, so that I can ensure high availability and resilience against data center outages for my applications.
 ---

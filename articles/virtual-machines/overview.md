@@ -7,6 +7,7 @@ ms.collection: linux
 ms.topic: overview
 ms.date: 03/27/2025
 ms.author: mattmcinnes
+ms.update-cycle: 1095-days
 # Customer intent: "As a cloud architect, I want to evaluate the features and management options of Azure virtual machines, so that I can determine the best deployment strategy for my applications and optimize costs and performance."
 ---
 
@@ -121,7 +122,21 @@ For more information, see [Using cloud-init on Azure Linux virtual machines](lin
 * [Add a disk to a Linux virtual machine using the azure-cli](linux/add-disk.md)
 * [How to attach a data disk to a Linux virtual machine in the Azure portal](linux/attach-disk-portal.yml)
 
+### Local temporary storage
+
+Some Azure VM sizes include local temporary ephemeral storage, with some of the newer sizes using [Temporary local NVMe disks](enable-nvme-temp-faqs.yml). Local temporary storage uses additional disks provisioned directly as local storage to an Azure virtual machine host, rather than on remote Azure Storage. This type of storage is best suited for data that does not need to be retained permanently, such as caches, buffers, and temporary files. Since data stored on these disks isn't backed up, it's lost when the VM is deallocated or deleted. The ephemeral storage is recreated on startup. Local ephemeral disks are different from [Ephemeral OS disks](ephemeral-os-disks.md#local-temporary-storage).
+
+Local temporary disks present just like other remote storage such as Premium SSD v2 disks, but have added performance benefits and don't count against the IOPS and throughput limits of the VM. 
+
+The following lists key characteristics of local ephemeral storage: 
+- **Ultra-low latency**: Read/write operations occur on hardware physically co-located with the VM's compute resources, minimizing network hops and enabling sub-millisecond response times.
+- **Superior IOPS and throughput**: Performance scales with the underlying local storage, often delivering 8-10 times higher IOPS than Standard HDDs when using Premium SSD as the base, with limits tied to the VM size (up to the NVMe disk capacity, capped at 2,040 GiB).
+
+Azure VM sizes featuring a 'd' in their naming convention - such as the Da***d***sv6, Ea***d***sv6, and FXm***d***sv2 series - include dedicated local NVMe storage. These sizes enable placing temporary files, swap space, or high-I/O components like SQL Server's `tempdb` database files on the ephemeral disk for enhanced performance.
+
+
 ## Networking
+
 * [Virtual Network Overview](/azure/virtual-network/virtual-networks-overview)
 * [IP addresses in Azure](/azure/virtual-network/ip-services/public-ip-addresses)
 * [Opening ports to a Linux virtual machine in Azure](linux/nsg-quickstart.md)

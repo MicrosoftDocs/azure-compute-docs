@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 06/26/2025
+ms.date: 09/29/2025
 # Customer intent: As a cloud architect currently using Cloud Services, I want to know the steps involved in migrating from Cloud Services to Service Fabric, so that I can efficiently migrate my existing cloud architecture to Service Fabric.
 ---
 
@@ -77,7 +77,7 @@ Map your Cloud Services components to Service Fabric architectural patterns:
 
 ### Service Fabric Cluster structure for Managed Clusters
 
-For setting up a Service Fabric Managed Cluster, refer to the official ARM templates available in the [Azure Quickstart Templates repository](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.servicefabric/sf-managed-cluster).
+For setting up a Service Fabric Managed Cluster, refer to the official ARM templates available in the [Azure Quickstart Templates repository](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.servicefabric).
 
 A basic managed cluster ARM template looks like this (as shown in the [official documentation](quickstart-managed-cluster-template.md)):
 
@@ -579,6 +579,9 @@ You can also use [Azure Pipelines for automated deployments](how-to-managed-clus
 ## Post-migration considerations
 
 ### Monitoring and diagnostics
+
+> [!WARNING]
+> Application Insights for the Service Fabric SDK is no longer supported.
 
 [Visualize your cluster with Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)
 

@@ -93,6 +93,12 @@ sudo echo 3 > /proc/sys/vm/drop_caches [cleans page-cache and slab objects]
 
 ![Screenshot of command prompt after cleaning](./media/hpc/cache-cleaning-2.png)
 
+## Thermal alerts and reduced performance due to thermal degradation of NVIDIA GPUs in ND H100/H200 v5 VMs 
+
+Microsoft has identified an issue that may cause some GPUs that have been in service for extended periods to show thermal alerts or reduced performance. In some cases, this can be due to software reporting errors in older NVIDIA drivers, while in others it may indicate a true hardware issue, with thermal degradation over time resulting in throttling and reduced performance. 
+
+To ensure accurate monitoring, we recommend upgrading to NVIDIA driver version 570.124.06 or higher. If thermal alerts or throttling continue after the upgrade, this may point to a hardware problem. Microsoft is proactively replacing hardware that is currently exhibiting persistent thermal throttling, as well as units identified as being at elevated risk. We remain committed to maintaining optimal system performance and reliability for our customers. 
+
 ## Kernel warnings
 
 You may ignore the following kernel warning messages when booting an HB-series VM under Linux. This is due to a known limitation of the Azure hypervisor that will be addressed over time.

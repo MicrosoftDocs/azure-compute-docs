@@ -21,7 +21,8 @@ Azure offers Trusted Launch as a seamless way to improve the security of [Genera
 > [!IMPORTANT]
 >
 > - Trusted Launch is the default state for newly created Azure Gen2 VM and scale sets. See the [Trusted Launch FAQs](trusted-launch-faq.md) if your new VM requires features that [aren't supported with Trusted launch](trusted-launch.md#unsupported-features).
-> - [Existing VM](overview.md) can have Trusted Launch enabled after being created. For more information, see [Enable Trusted Launch on existing VMs](trusted-launch-existing-vm.md).
+> - You can upgrade existing Azure Gen1 VMs to Gen2-Trusted launch to enable Secure Boot and vTPM. See [Upgrade existing Gen1 VMs to Gen2-Trusted launch](trusted-launch-existing-vm-gen-1.md).
+> - [Existing VM](overview.md) can have Trusted Launch enabled after being created. For more information, see [Enable Trusted Launch on existing Gen2 VMs](trusted-launch-existing-vm.md).
 > - Existing [virtual machine scale set](../virtual-machine-scale-sets/overview.md) can have Trusted Launch enabled after being created. For more information, see [Enable Trusted Launch on existing scale set](trusted-launch-existing-vmss.md).
 
 ## Benefits
@@ -121,6 +122,10 @@ Trusted Launch is integrated with Defender for Cloud to ensure that your VMs are
    If your VMs are properly set up with Trusted Launch, Defender for Cloud can detect and alert you of VM health problems.
 
 - **Alert for VM attestation failure**: Defender for Cloud periodically performs attestation on your VMs. The attestation also happens after your VM boots. If the attestation fails, it triggers a medium-severity alert.
+
+    > [!NOTE]
+    > VM client boot attestation alerts surfaced in Microsoft Defender for Cloud are informational and are not currently presented in the Defender portal.
+   
     VM attestation can fail for the following reasons:
   - The attested information, which includes a boot log, deviates from a trusted baseline. Any deviation can indicate that untrusted modules are loaded, and the OS could be compromised.
   - The attestation quote couldn't be verified to originate from the vTPM of the attested VM. An unverified origin can indicate that malware is present and could be intercepting traffic to the vTPM.

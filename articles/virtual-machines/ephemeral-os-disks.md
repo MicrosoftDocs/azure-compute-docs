@@ -5,7 +5,7 @@ author: viveksingla08
 ms.service: azure-virtual-machines
 ms.custom:
 ms.topic: how-to
-ms.date: 07/23/2020
+ms.date: 10/08/2025
 ms.author: viveksingla
 ms.subservice: disks
 # Customer intent: As a cloud engineer, I want to implement ephemeral OS disks for Azure VMs, so that I can achieve lower latency and faster reimaging for stateless applications while optimizing storage costs and performance.
@@ -109,6 +109,7 @@ For the same example, if you create a standard Ephemeral OS disk VM you wouldn't
 >
 > If you use ephemeral disks with Trusted Launch VMs, any keys or secrets that the vTPM generates or seals after the VM is created might not be saved. As a result, these keys and secrets could be lost during actions such as reimaging or service healing events.
 >
+
 For more information on [how to deploy a trusted launch VM](trusted-launch-portal.md)
 
 ## Confidential VMs using Ephemeral OS disks
@@ -116,10 +117,12 @@ For more information on [how to deploy a trusted launch VM](trusted-launch-porta
 AMD-based Confidential VMs cater to high security and confidentiality requirements of customers. These VMs provide a strong, hardware-enforced boundary to help meet your security needs. There are limitations to use Confidential VMs. Check the [region](/azure/confidential-computing/confidential-vm-overview#regions), [size](/azure/confidential-computing/confidential-vm-overview#size-support), and [OS supported](/azure/confidential-computing/confidential-vm-overview#os-support) limitations for confidential VMs.
 Virtual machine guest state (VMGS) blob contains the security information of the confidential VM.
 Confidential VMs using Ephemeral OS disks by default **1 GiB** from the **OS cache** or **temp storage** based on the chosen placement option is reserved for VMGS. The lifecycle of the VMGS blob is tied to that of the OS Disk.
+
 > [!IMPORTANT]
 >
 > When choosing a confidential VM with full OS disk encryption before VM deployment that uses a customer-managed key (CMK). [Updating a CMK key version](/azure/storage/common/customer-managed-keys-overview#update-the-key-version) or [key rotation](/azure/key-vault/keys/how-to-configure-key-rotation) isn't supported with Ephemeral OS disk. Confidential VMs using Ephemeral OS disks need to be deleted before updating or rotating the keys and can be re-created later.
 >
+
 For more information on [confidential VM](/azure/confidential-computing/confidential-vm-overview)
 
 ## Customer Managed key
@@ -130,6 +133,7 @@ You can choose to use customer managed keys or platform managed keys when you en
 >
 > [Updating a CMK key version](/azure/storage/common/customer-managed-keys-overview#update-the-key-version) or [key rotation](/azure/key-vault/keys/how-to-configure-key-rotation) of customer managed key isn't supported with Ephemeral OS disk. VMs using Ephemeral OS disks need to be deleted before updating or rotating the keys and can be re-created later.
 >
+
 For more information on [Encryption at host](./disk-encryption.md)
 
 ## SSD storage account support for Ephemeral OS disks
@@ -138,6 +142,15 @@ SSD support is a new option that allows customers to choose the type of base dis
 
 - **Enhanced SLA**: VMs created with Premium SSD provide higher SLA than VMs created with Standard HDD. Customers can enhance [SLA](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services) for their Ephemeral VMs by choosing Premium SSD as base disk.
 - **Improved performance**: By choosing Premium SSD as the base disk, customers can enhance the disk read performance of their VMs. While most writes occur on the local temp disk, some reads are performed from managed disks. Premium SSD disks provide 8-10 times higher IOPS than Standard HDD. 
+
+## Local temporary storage
+
+Some Azure VM sizes include [local temporary storage](overview.md#local-temporary-storage), with some of the newer sizes using [Temporary local NVMe disks](enable-nvme-temp-faqs.yml). Local temporary disks are different from Ephemeral OS disks. 
+
+Local temporary storage, also known as local ephemeral storage, are additional disks provisioned directly as local storage to an Azure virtual machine host, rather than on remote Azure Storage. This type of storage is best suited for data that does not need to be retained permanently, such as caches, buffers, and temporary files. Local ephemeral storage is not backed up and is lost when the VM is deallocated or deleted. The ephemeral storage is recreated on startup.
+
+Azure VM sizes featuring a 'd' in their naming convention - such as the Da***d***sv6, Ea***d***sv6, and FXm***d***sv2 series - include dedicated local temporary disks.
+
 
 ## Next steps
 

@@ -68,7 +68,7 @@ az account set --subscription $targetSubscriptionId
 
 #Copy managed disk to different subscription using managed disk Id and disk encryption set ID
 #Add --location parameter to change the location
-az disk create -g $targetResourceGroupName -n $managedDiskName --source $managedDiskId --disk-encryption-set $diskEncrpytonSetId
+az disk create -g $targetResourceGroupName -n $managedDiskName --source $managedDiskId --disk-encryption-set $diskEncryptionSetId
 ```
 
 ## Clean up resources

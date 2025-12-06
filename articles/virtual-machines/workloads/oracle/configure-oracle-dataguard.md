@@ -3,11 +3,15 @@ title: Implement Oracle Data Guard on a Linux-based Azure virtual machine
 description: Quickly get Oracle Data Guard up and running in your Azure environment.
 author: jjaygbay1
 ms.service: oracle-on-azure
-ms.custom: devx-track-azurecli, linux-related-content
 ms.collection: linux
 ms.topic: how-to
 ms.date: 10/01/2024
 ms.author: jacobjaygbay
+ms.custom:
+  - devx-track-azurecli
+  - linux-related-content
+  - sfi-image-nochange
+  - sfi-ropc-nochange
 # Customer intent: As a database administrator, I want to implement Oracle Data Guard on Linux-based Azure VMs, so that I can ensure high availability and disaster recovery for my Oracle databases.
 ---
 

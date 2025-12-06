@@ -6,7 +6,7 @@ author: mattmcinnes
 ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.date: 04/19/2024
+ms.date: 11/24/2025
 ms.author: mattmcinnes
 ms.custom: include file
 # Customer intent: "As a cloud architect, I want to understand the features of the HX VM size series, so that I can determine if it meets the requirements for my memory-intensive and high-performance computing workloads."

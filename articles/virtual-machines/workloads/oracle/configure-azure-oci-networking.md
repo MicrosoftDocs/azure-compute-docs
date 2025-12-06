@@ -7,6 +7,7 @@ ms.collection: linux
 ms.topic: how-to
 ms.date: 06/03/2025
 ms.author: jacobjaygbay
+ms.custom: sfi-image-nochange
 
 # Customer intent: "As a cloud architect, I want to establish a direct interconnection between Azure and Oracle Cloud Infrastructure, so that I can enable low latency and high throughput for cross-cloud Oracle application solutions."
 ---

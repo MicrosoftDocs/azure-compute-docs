@@ -8,8 +8,6 @@
     href: virtual-machine-scale-sets-orchestration-modes.md
   - name: Scale Set FAQ
     href: virtual-machine-scale-sets-faq.yml
-  - name: What's new
-    href: whats-new.md
   expanded: true
 - name: Quickstarts
   items:
@@ -79,7 +77,7 @@
     - name: Autoscale using guest metrics
       href: virtual-machine-scale-sets-mvss-guest-based-autoscale-linux.md
     - name: Troubleshoot autoscale
-      href: virtual-machine-scale-sets-troubleshoot.md 
+      href: virtual-machine-scale-sets-troubleshoot.md
   - name: Instance mix
     items:
     - name: Overview
@@ -147,7 +145,7 @@
     href: use-spot.md
   - name: Spot Priority Mix
     href: spot-priority-mix.md
-  - name: Spot Placement Score (Preview)
+  - name: Spot Placement Score
     href: spot-placement-score.md
   - name: Reserved instances
     href: /azure/cost-management-billing/reservations/save-compute-costs-reservations

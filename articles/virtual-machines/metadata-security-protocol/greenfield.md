@@ -4,7 +4,7 @@ description: Learn about deploying a virtual machine or a virtual machine scale 
 author: minnielahoti
 ms.service: azure-virtual-machines
 ms.topic: how-to
-ms.date: 04/08/2025
+ms.date: 09/17/2025
 ms.author: minnielahoti
 ms.reviewer: azmetadatadev
 # Customer intent: "As a cloud administrator, I want to deploy Virtual Machines with the Metadata Security Protocol enabled, so that I can enhance security during the provisioning process."
@@ -13,6 +13,9 @@ ms.reviewer: azmetadatadev
 # Deploy a VM or virtual machine scale set with MSP
 
 This article explains how to enable the Metadata Security Protocol (MSP) feature while provisioning a new virtual machine (VM) or virtual machine scale set.
+
+> [!WARNING]
+> Please note that on Windows, the users can enable GuestProxyAgent (GPA) from an ARM template. However, in Linux it's a two-step process. The VM/VMSS is provisioned first and only then can the GPA be configured. 
 
 ## Prerequisites
 

@@ -7,7 +7,7 @@ ms.service: azure-container-instances
 ms.custom:
   - ignite-2024
 ms.topic: how-to
-ms.date: 5/19/2025
+ms.date: 11/17/2025
 ms.reviewer: tomvcassidy
 # Customer intent: As a cloud administrator, I want to create a standby pool for Azure Container Instances, so that I can reduce scale-out latency and improve the responsiveness of my container deployment.
 ---
@@ -206,24 +206,28 @@ Create a standby pool and associate it with a container group profile using [az 
 
 ```azurecli-interactive
 az standby-container-group-pool create \
-   --resource-group myResourceGroup \
-   --location WestCentralUS \
-   --name myStandbyPool \
-   --max-ready-capacity 20 \
-   --refill-policy always \
-   --container-profile-id "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ContainerInstance/containerGroupProfiles/mycontainergroupprofile"
+  --resource-group myResourceGroup \
+  --location westcentralus \
+  --name myStandbyPool \
+  --max-ready-capacity 20 \
+  --refill-policy always \
+  --container-group-profile-id "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ContainerInstance/containerGroupProfiles/mycontainergroupprofile" \
+  --container-group-profile-revision 1
+
 ```
 ### [PowerShell](#tab/powershell)
 Create a standby pool and associate it with a container group profile using [New-AzStandbyContainerGroupPool](/powershell/module/az.standbypool/new-AzStandbyContainerGroupPool).
 
 ```azurepowershell-interactive
 New-AzStandbyContainerGroupPool `
-   -ResourceGroup myResourceGroup `
-   -Location "WestCentralUS" `
+   -ResourceGroupName myResourceGroup `
+   -Location "westcentralus" `
    -Name myStandbyPool `
    -MaxReadyCapacity 20 `
-   -RefillPolicy always `
-   -ContainerProfileId "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ContainerInstance/containerGroupProfiles/mycontainergroupprofile"
+   -RefillPolicy "always" `
+   -ContainerGroupProfileId "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ContainerInstance/containerGroupProfiles/mycontainergroupprofile" `
+   -ContainerGroupProfileRevision 1
+
 ```
 
 ### [ARM template](#tab/template)
@@ -236,42 +240,51 @@ Create a standby pool and associate it with a container group profile. Create a 
     "contentVersion": "1.0.0.0",
     "parameters": {
         "location": {
-           "type": "string",
-           "defaultValue": "West Central US"    
+            "type": "string",
+            "defaultValue": "West Central US"
         },
         "name": {
-           "type": "string",
-           "defaultValue": "myStandbyPool"
+            "type": "string",
+            "defaultValue": "myStandbyPool"
         },
-        "maxReadyCapacity" : {
-           "type": "int",
-           "defaultValue": 10
+        "maxReadyCapacity": {
+            "type": "int",
+            "defaultValue": 10
         },
-        "refillPolicy" : {
-           "type": "string",
-           "defaultValue": "always"
+        "refillPolicy": {
+            "type": "string",
+            "defaultValue": "always"
         },
-        "containerGroupProfile" : {
-           "type": "string",
-           "defaultValue": "/subscriptions/{SubscriptionID}/resourceGroups/myResourceGroup/providers/Microsoft.ContainerInstance/containerGroupProfiles/mycontainergroupprofile"
+        "containerGroupProfileId": {
+            "type": "string",
+            "defaultValue": "/subscriptions/{SubscriptionID}/resourceGroups/myResourceGroup/providers/Microsoft.ContainerInstance/containerGroupProfiles/mycontainergroupprofile"
+        },
+        "containerGroupProfileRevision": {
+            "type": "int",
+            "defaultValue": 1
         }
     },
-    "resources": [ 
+    "resources": [
         {
             "type": "Microsoft.StandbyPool/standbyContainerGroupPools",
             "apiVersion": "2025-03-01",
             "name": "[parameters('name')]",
             "location": "[parameters('location')]",
             "properties": {
-               "elasticityProfile": {
-                   "maxReadyCapacity": "[parameters('maxReadyCapacity')]",
-                   "refillPolicy": "[parameters('refillPolicy')]"
-               },
-               "containerGroupProfile": "[parameters('containerGroupProfile')]"
+                "elasticityProfile": {
+                    "maxReadyCapacity": "[parameters('maxReadyCapacity')]",
+                    "refillPolicy": "[parameters('refillPolicy')]"
+                },
+                "containerGroupProperties": {
+                    "containerGroupProfile": {
+                        "id": "[parameters('containerGroupProfileId')]",
+                        "revision": "[parameters('containerGroupProfileRevision')]"
+                    }
+                }
             }
         }
     ]
-   }
+}
 
 ```
 

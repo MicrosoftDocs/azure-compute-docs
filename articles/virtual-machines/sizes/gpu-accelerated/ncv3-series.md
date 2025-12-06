@@ -13,6 +13,9 @@ ms.reviewer: mattmcinnes
 
 # NCv3 sizes series
 
+> [!NOTE]
+> The NCv3-series will be retired on September 30, 2025. Refer to the [NCv3-series retirement page](/azure/virtual-machines/ncv3-retirement) for more information and migration recommendations. 
+
 [!INCLUDE [ncv3-summary](./includes/ncv3-series-summary.md)]
 
 ## Host specifications

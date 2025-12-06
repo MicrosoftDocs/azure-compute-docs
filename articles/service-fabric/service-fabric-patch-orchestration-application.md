@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+ms.custom: sfi-image-nochange
 # Customer intent: "As an IT operations manager, I want to automate OS patching on non-Azure hosted Service Fabric clusters using a patch orchestration application, so that I can ensure timely updates without incurring downtime."
 ---
 

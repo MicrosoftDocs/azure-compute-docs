@@ -145,9 +145,11 @@
       "author": {
         "articles/container-instances/**/*.md": "macolso",
         "articles/service-fabric/*.md": "sukanyamsft",
-        "articles/virtual-machines/*.md": "ju-shim",
-        "articles/virtual-machines/linux/*.md": "ju-shim",
-        "articles/virtual-machines/windows/*.md": "ju-shim"
+        "articles/virtual-machines/*.md": "cynthn",
+        "articles/virtual-machines/linux/*.md": "cynthn",
+        "articles/virtual-machines/windows/*.md": "cynthn",
+		"articles/virtual-machines/sizes/**/*.yml": "mattmcinnes",
+		"articles/virtual-machines/sizes/**/*.md": "mattmcinnes"
       },
       "featureFlags": {
         "articles/**/*.md": [
@@ -190,29 +192,36 @@
         "articles/virtual-machine-scale-sets/**/*.yml": "akashdubey"
       },
       "ms.reviewer": {
-        "articles/azure-impact-reporting/**/*.md": "wwilliams, jushiman",
-        "articles/container-instances/**/*.md": "wwilliams, jushiman",
-        "articles/service-fabric/**/*.md": "wwilliams, jushiman",
-        "articles/virtual-machines/**/*.md": "wwilliams, jushiman",
-        "articles/virtual-machine-scale-sets/**/*.md": "wwilliams, jushiman",
-        "articles/azure-impact-reporting/**/*.yml": "wwilliams, jushiman",
-        "articles/container-instances/**/*.yml": "wwilliams, jushiman",
-        "articles/service-fabric/**/*.yml": "wwilliams, jushiman",
-        "articles/virtual-machines/**/*.yml": "wwilliams, jushiman",
-        "articles/virtual-machine-scale-sets/**/*.yml": "wwilliams, jushiman"
+        "articles/azure-impact-reporting/**/*.md": "wwilliams, cynthn",
+        "articles/container-instances/**/*.md": "wwilliams, cynthn",
+        "articles/service-fabric/**/*.md": "wwilliams, cynthn",
+        "articles/virtual-machines/**/*.md": "wwilliams, cynthn",
+        "articles/virtual-machine-scale-sets/**/*.md": "wwilliams, cynthn",
+        "articles/azure-impact-reporting/**/*.yml": "wwilliams, cynthn",
+        "articles/container-instances/**/*.yml": "wwilliams, cynthn",
+        "articles/service-fabric/**/*.yml": "wwilliams, cynthn",
+        "articles/virtual-machines/**/*.yml": "wwilliams, cynthn",
+		"articles/virtual-machines/sizes/**/*.yml": "mattmcinnes, cynthn",
+		"articles/virtual-machines/sizes/**/*.md": "mattmcinnes, cynthn",
+        "articles/virtual-machine-scale-sets/**/*.yml": "wwilliams, cynthn"
       },      
       "ms.author": {
         "articles/container-instances/**/*.md": "macolso",
         "articles/service-fabric/*.md": "sukanyas",
-        "articles/virtual-machines/*.md": "jushiman",
-        "articles/virtual-machines/linux/*.md": "jushiman",
-        "articles/virtual-machines/windows/*.md": "jushiman"
+        "articles/virtual-machines/*.md": "cynthn",
+		"articles/virtual-machines/sizes/**/*.yml": "mattmcinnes",
+		"articles/virtual-machines/sizes/**/*.md": "mattmcinnes",		  
+        "articles/virtual-machines/linux/*.md": "cynthn",
+        "articles/virtual-machines/windows/*.md": "cynthn"
       },
       "ms.service": {
         "articles/container-instances/**/*.md": "azure-container-instances",
         "articles/service-fabric/*.md": "azure-service-fabric",
         "articles/virtual-machines/*.md": "azure-virtual-machines",
         "articles/virtual-machine-scale-sets/*.md": "azure-virtual-machine-scale-sets"
+      },
+	  "ms.subservice": {
+        "articles/virtual-machines/sizes/*.md": "sizes"
       },
       "searchScope": {
         "articles/virtual-machines/**/*.md": [

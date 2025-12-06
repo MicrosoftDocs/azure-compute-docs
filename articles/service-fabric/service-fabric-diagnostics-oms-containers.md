@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+ms.custom: sfi-image-nochange
 # Customer intent: "As a DevOps engineer, I want to set up Azure Monitor logs for container monitoring, so that I can efficiently collect and analyze container events and performance metrics within my Service Fabric clusters."
 ---
 

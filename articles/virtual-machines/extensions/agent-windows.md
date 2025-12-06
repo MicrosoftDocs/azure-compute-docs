@@ -7,7 +7,7 @@ ms.subservice: extensions
 ms.author: gabsta
 author: GabstaMSFT
 ms.collection: windows
-ms.date: 02/27/2023 
+ms.date: 08/18/2025
 # Customer intent: "As a cloud administrator, I want to install and manage the Azure Windows VM Agent on my virtual machines, so that I can enable and utilize necessary extensions for configuration and recovery tasks effectively."
 ---
 
@@ -17,9 +17,11 @@ The Microsoft Azure Windows VM Agent is a secure, lightweight process that manag
 
 This article describes how to install and detect the Azure Windows VM Agent.
 
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
+
 ## Prerequisites
 
-The Azure Windows VM Agent supports the x64 architecture for these Windows operating systems:
+The Azure Windows VM Agent supports the x64 and ARM64 architecture for these Windows operating systems:
 
 | OS Version | x64 | ARM64 |
 |:-----|:-----:|:-----:|

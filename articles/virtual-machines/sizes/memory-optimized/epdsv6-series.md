@@ -25,10 +25,11 @@ ms.reviewer: mattmcinnes, tomcassidy
 ## Feature Support
 - [Premium Storage](../../premium-storage-performance.md): Supported 
 - [Premium Storage caching](../../premium-storage-performance.md): Supported 
-- [Memory Preserving Updates](../../maintenance-and-updates.md): Supported 
+- [Memory Preserving Updates](../../maintenance-and-updates.md#live-migration): Supported 
 - [VM Generation Support](../../generation-2.md): Generation 2 
 - [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported 
 - [Ephemeral OS Disks](../../ephemeral-os-disks.md): Supported
+- [Temporary local NVMe disks](../../enable-nvme-temp-faqs.yml): Supported
 - [Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Not Supported 
 - [Azure Disk Encryption for Linux VMs](../../../virtual-machines/linux/disk-encryption-linux.md?tabs=azcliazure%2Cenableadecli%2Cefacli%2Cadedatacli#restrictions): Not Supported
 - [Azure Disk Encryption for Windows VMs](../../../virtual-machines/windows/disk-encryption-windows.md#restrictions): Not Supported

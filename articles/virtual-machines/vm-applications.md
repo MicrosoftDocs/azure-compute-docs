@@ -4,8 +4,8 @@ description: Learn about Azure VM Applications in Azure Compute Gallery used to 
 ms.service: azure-virtual-machines
 ms.subservice: gallery
 ms.topic: concept-article
-ms.date: 03/14/2025
-author: ju-shim
+ms.date: 08/18/2025
+author: cynthn
 ms.author: tagore
 ms.reviewer: jushiman
 ms.custom: linux-related-content
@@ -29,7 +29,7 @@ VM Applications are best suited for deploying workloads that need high scale, lo
 
 ## Key Benefits: 
 - **Centralized and Flexible Application Management**: 
-  - Package Anything Once, Deploy Anywhere: Package applications (windows / linux), scripts, or files as VM Applications. Then deploy it across Azure VMs or VM scale sets, and manage them centrally in Azure Compute Gallery. Applications or files could be in .zip, .msi, .exe, .tar.gz, .deb, .rpm, .sh, or any other format.
+  - Package Anything Once, Deploy Anywhere: Package applications (windows / linux), scripts, or files as VM Applications. Then deploy it across Azure VMs or Virtual Machine Scale Sets, and manage them centrally in Azure Compute Gallery. Applications or files could be in .zip, .msi, .exe, .tar.gz, .deb, .rpm, .sh, or any other format.
   - Version Control: Deploy either the latest or a specific version by maintaining multiple versions of each application. 
 - **Seamless Sharing and Access Control**
   - Tenant-Wide Sharing: Share applications within teams or across your entire organization (tenant).
@@ -54,7 +54,7 @@ The VM application is stored in Azure Compute Gallery. The VM application resour
 | Property | Description | Limitations |
 |----------|-------------|-------------|
 | name | Name of the application | Max length of 117 characters. Allowed characters are uppercase or lowercase letters, digits, hyphen(-), period (.), underscore (_). Names not allowed to end with period(.).|
-| supportedOSType | Define the upported OS type | "Linux" or "Windows" |
+| supportedOSType | Define the supported OS type | "Linux" or "Windows" |
 | endOfLifeDate | A future end of life date for the application. The date is for reference only and isn't enforced. | |
 | description | Optional. A description of the VM application | |
 | eula | Optional. Reference to End User License Agreement (EULA) | |
@@ -260,7 +260,7 @@ VM application versions are the deployable resources within the VM Application r
 ## Deploy Azure VM Applications
 After the VM Application version is published to Azure Compute Gallery, you can deploy the version across Azure Virtual Machines (VM) and Azure Virtual Machine Scale Sets. 
 
-The `applicationProfile` in Azure VM and VM scale sets defines the following:
+The `applicationProfile` in Azure VM and Virtual Machine Scale Sets defines the following:
 
 | Property | Description | Limitations |
 |----------|-------------|-------------|
@@ -278,7 +278,7 @@ The order field may be used to specify dependencies between applications. The ru
 | Duplicate order values | Application is installed in any order compared to other applications with the same order. All applications of the same order are installed after the ones with lower orders and before the ones with higher orders. | If a previous application with a lower order failed to install, no applications with this order install. If any application with this order fails to install, no applications with a higher order install. |
 | Increasing orders | Application will be installed after the ones with lower orders and before the ones with higher orders. | If a previous application with a lower order failed to install, this application doesn't install. If this application fails to install, no application with a higher order installs. |
 
-#### [Deploy on VM scale sets](#tab/VMSS)
+#### [Deploy on virtual machine scale sets](#tab/VMSS)
 ```json
 
 {

@@ -1,11 +1,11 @@
 ---
 title: Maintenance control for OS image upgrades on Azure Virtual Machine Scale Sets using PowerShell
 description: Learn how to control when automatic OS image upgrades are rolled out to your Azure Virtual Machine Scale Sets using Maintenance control and PowerShell.
-author: ju-shim
+author: cynthn
 ms.service: azure-virtual-machine-scale-sets
 ms.topic: how-to
 ms.date: 11/22/2022
-ms.author: jushiman
+ms.author: cynthn
 ms.custom: devx-track-azurepowershell
 #pmcontact: PPHILLIPS
 # Customer intent: As a cloud administrator, I want to control the timing of automatic OS image upgrades for my Virtual Machine Scale Sets using PowerShell, so that I can ensure maintenance occurs during specified windows and minimize disruption to services.
