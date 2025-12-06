@@ -15,12 +15,12 @@ ms.custom: devx-track-azurepowershell, devx-track-azurecli
 
 ## Overview
 
-[Azure VM Applications](./vm-applications.md) in Azure Compute Gallery let you package, version, and deliver software, files, scripts, security components, etc. from [Azure Compute Gallery](/azure/virtual-machines/azure-compute-gallery) to Azure VMs and VM scale sets (VMSS). [Learn more about Azure VM Applications.](./vm-applications.md)
+[Azure VM Applications](./vm-applications.md) in Azure Compute Gallery let you package, version, and deliver software, files, scripts, security components, etc. from [Azure Compute Gallery](/azure/virtual-machines/azure-compute-gallery) to Azure Virtual Machines (VMs) and Virtual Machine Scale Sets (VMSS). [Learn more about Azure VM Applications.](./vm-applications.md)
 
 Using [Azure Policy](/azure/governance/policy/overview) with VM Applications enables customers and admin teams to: 
-- Monitor presence of required VM Applications across VMs & VM Scale Sets. 
-- Inject required VM Applications across all VMs & VM scale sets.
-- Enforce consistent configuration and best practices across all VMs and VMSS for improved reliability and security.
+- Monitor presence of required VM Applications across Virtual Machines & Virtual Machines Scale Sets. 
+- Inject required VM Applications across all Virtual Machines & Virtual Machine Scale Sets.
+- Enforce consistent configuration and best practices across all Virtual Machines and Virtual Machine Scale Sets for improved reliability and security.
 
 This guide shows how to:
 - Govern required VM application for compliance monitoring.
@@ -37,16 +37,16 @@ This guide shows how to:
 
 ## Set up compliance monitor to govern required VM applications
 
-Azure Policy with `audit` effect can be used to monitor presence of specific VM Applications across Azure VM and VM Scale Sets. Admin teams can use this to 
-- Setup compliance monitors for VM Applications (view compliant vs noncompliant VMs and VM Scale Sets) 
+Azure Policy with `audit` effect can be used to monitor presence of specific VM Applications across Azure Virtual Machine and Virtual Machine Scale Sets. Admin teams can use this policy to 
+- Setup compliance monitors for VM Applications (view compliant vs noncompliant Virtual Machines and Virtual Machine Scale Sets) 
 - Measuring rollout progress of software packaged as a VM Application.
 
 #### 1. Create a custom policy definition
 
-[Create a new custom policy](/azure/governance/policy/tutorials/create-and-manage#implement-a-new-custom-policy) using the policy definition provided below. This policy checks for the presence of VM applications on VMs and VM Scale Sets and reports the number of compliance and noncompliant instances.
+[Create a new custom policy](/azure/governance/policy/tutorials/create-and-manage#implement-a-new-custom-policy) using the policy definition to check for the presence of VM applications on Virtual Machines and Virtual Machines Scale Sets and reports the number of compliance and noncompliant instances.
 
 #### [Policy](#tab/policy1)
-This policy monitors compliance of all VMs, VMSS across linux and windows. Linux apps on windows VMs and windows apps on linux VMs are considered as compliant resources. 
+This policy monitors compliance of all Virtual Machines, Virtual Machines Scale Sets across linux and windows. Linux apps on windows VMs and windows apps on linux VMs are considered as compliant resources. 
 
 ```json
 {
@@ -118,9 +118,9 @@ This policy monitors compliance of all VMs, VMSS across linux and windows. Linux
 ---
 
 #### 2. Assign the policy and view compliance
-[Assign the newly created policy](/azure/governance/policy/tutorials/create-and-manage#assign-a-policy) to start monitoring the VM application and generate compliance score. All VMs and VM Scale Sets within the assigned scope are monitored for compliance. 
+[Assign the newly created policy](/azure/governance/policy/tutorials/create-and-manage#assign-a-policy) to start monitoring the VM application and generate compliance score. All Virtual Machines and Virtual Machine Scale Sets within the assigned scope are monitored for compliance. 
 
-It's recommended to create separate assignments per VM application for granual and accurate monitoring.
+Create separate assignments per VM application for granual and accurate monitoring.
 
 Once the policy is assigned, all existing resources are evaluated and [displayed on compliance monitor](/azure/governance/policy/tutorials/create-and-manage#check-initial-compliance). Noncompliant resources are missing the VM Application defined in the policy. Resources without `applicationProfile` are also counted as noncompliant. Newly created or updated resources may take a few minutes to appear in evaluation cycles.
 
@@ -129,8 +129,8 @@ Once the policy is assigned, all existing resources are evaluated and [displayed
 #### Common adjustments
 
 - <b>Audit multiple required applications</b>: Create a separate policy (one per application) or update the policy by adding other applications under `allOf` parameter.
-- <b>Block creation of VMs without the required applications</b>: Change effect to `deny` to prevent noncompliant creations.
-- <b>Limit policy scope to VMs or VMSS</b>: Remove the unused branch from `anyOf` within `policyRule`.
+- <b>Block creation of Virtual Machines without the required applications</b>: Change effect to `deny` to prevent noncompliant creations.
+- <b>Limit policy scope to Virtual Machines or Virtual Machine Scale Sets</b>: Remove the unused branch from `anyOf` within `policyRule`.
 - <b>Limit policy scope by OS type</b>: Check `osType` of `storageProfile` within `policyRule` to filter based on Window / Linux OS:
     ```json
     { "field": "Microsoft.Compute/virtualMachines/storageProfile.osDisk.osType", "equals": "[parameters('osType')]" }
@@ -143,16 +143,16 @@ Once the policy is assigned, all existing resources are evaluated and [displayed
     ```
 ---
 
-## Inject VM Applications on VM and VM Scale Sets
+## Inject VM Applications on Virtual Machine and Virtual Machine Scale Sets
 
-Azure Policy with `modify` effect injects VM applications while creating new VM and VM Scale Sets. Remediation tasks can be used to modify existing resources and inject the VM Application. 
+Azure Policy with `modify` effect injects VM applications while creating new Virtual Machine and Virtual Machine Scale Sets. Remediation tasks can be used to modify existing resources and inject the VM Application. 
 
 ### Pre-requisite
 - Managed identity on the policy assignment (system-assigned) so remediation can modify resources. See [remediation identity requirements](/azure/governance/policy/how-to/remediate-resources#identity-requirements).
 
 #### 1. Create a custom policy definition
 
-[Create a new custom policy](/azure/governance/policy/tutorials/create-and-manage#implement-a-new-custom-policy) using the policy definition. This policy checks for the presence of VM applications while creating VMs or VM Scale Sets and inserts the VM application if it doesn't exist. To modify multiple resource types (VM and VM Scale Sets), Azure policy requires different policies per resource type. 
+[Create a new custom policy](/azure/governance/policy/tutorials/create-and-manage#implement-a-new-custom-policy) using the policy definition. This policy checks for the presence of VM applications while creating Virtual Machines or Virtual Machine Scale Sets and inserts the VM application if it doesn't exist. To modify multiple resource types (Virtual Machine and Virtual Machine Scale Sets), Azure policy requires different policies per resource type. 
 
 #### [VM](#tab/vm)
 
@@ -229,10 +229,10 @@ Azure Policy with `modify` effect injects VM applications while creating new VM 
 
 ```json
 {
-    "displayName": "Inject VM Application into VM Scale Sets",
+    "displayName": "Inject VM Application into Virtual Machine Scale Sets",
     "policyType": "Custom",
     "mode": "Indexed",
-    "description": "Adds VM Application reference to applicationProfile for VM Scale Sets.",
+    "description": "Adds VM Application reference to applicationProfile for Virtual Machine Scale Sets.",
     "parameters": {
       "subscriptionId": {
         "type": "String",
@@ -299,9 +299,9 @@ Azure Policy with `modify` effect injects VM applications while creating new VM 
 ---
 
 #### 2. Assign the policy
-[Assign the newly created policy](/azure/governance/policy/tutorials/create-and-manage#assign-a-policy) to start generating compliance score. All VMs and VM Scale Sets within the assigned scope are monitored for compliance. Once the policy is assigned, all existing resources are evaluated and [displayed on compliance monitor](/azure/governance/policy/tutorials/create-and-manage#check-initial-compliance).
+[Assign the newly created policy](/azure/governance/policy/tutorials/create-and-manage#assign-a-policy) to start generating compliance score. All Virtual Machines and Virtual Machine Scale Sets within the assigned scope are monitored for compliance. Once the policy is assigned, all existing resources are evaluated and [displayed on compliance monitor](/azure/governance/policy/tutorials/create-and-manage#check-initial-compliance).
 
-Creating new VM and VMSS resource triggers this policy and modifies the applicationProfile of the resource to inject the application or configure it correctly. 
+Creating new Virtual Machines and Virtual Machine Scale Sets resource triggers this policy and modifies the applicationProfile of the resource to inject the application or configure it correctly. 
 
 #### 3. Create Remediation Task and modify existing resources
 Create a new [Remediation tasks](/azure/governance/policy/how-to/remediate-resources) to modify existing resources. 
@@ -310,7 +310,7 @@ It's recommended to gradually remediate noncompliant resources for higher availa
 
 It's recommended to create separate policies for windows & linux.  
 
-:::image type="content" source="./media/vmapps/vm-application-create-remediation-task.png" alt-text="Portal experience showing how to create a new remediation task.":::
+:::image type="content" source="./media/vmapps/vm-applications-create-remediation-task.png" alt-text="Portal experience showing how to create a new remediation task.":::
 
 #### Common adjustments
 - <b>Limit policy scope by OS type</b>: Check `osType` of `storageProfile` within `policyRule` to filter based on Window / Linux OS:
