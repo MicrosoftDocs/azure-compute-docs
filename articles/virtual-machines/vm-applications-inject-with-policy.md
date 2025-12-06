@@ -33,7 +33,7 @@ This guide shows how to:
     - Ensure the gallery is [shared to all subscriptions](./share-gallery.md) requiring access to the VM Application. 
 
 - Permissions:
-    - Policy Contributor to create/assign policies. See [policy definition structure and assignments](/azure/governance/policy/concepts/definition-structure.md).
+    - Policy Contributor to create/assign policies. See [policy definition structure and assignments](/azure/governance/policy/concepts/definition-structure).
 
 ## Set up compliance monitor to govern required VM applications
 
@@ -124,7 +124,7 @@ It's recommended to create separate assignments per VM application for granual a
 
 Once the policy is assigned, all existing resources are evaluated and [displayed on compliance monitor](/azure/governance/policy/tutorials/create-and-manage#check-initial-compliance). Noncompliant resources are missing the VM Application defined in the policy. Resources without `applicationProfile` are also counted as noncompliant. Newly created or updated resources may take a few minutes to appear in evaluation cycles.
 
-:::image type="content" source="./media/vmapp/vm-applications-compliance-monitor.png" alt-text="Azure Policy compliance view showing VMs and VM scale sets audited for required VM Application presence.":::
+:::image type="content" source="./media/vmapps/vm-applications-compliance-monitor.png" alt-text="Azure Policy compliance view showing VMs and VM scale sets audited for required VM Application presence.":::
 
 #### Common adjustments
 
@@ -304,13 +304,13 @@ Azure Policy with `modify` effect injects VM applications while creating new VM 
 Creating new VM and VMSS resource triggers this policy and modifies the applicationProfile of the resource to inject the application or configure it correctly. 
 
 #### 3. Create Remediation Task and modify existing resources
-Create a new [Remediation tasks](/azure/governance/policy/how-to/remediate-resources.md) to modify existing resources. 
+Create a new [Remediation tasks](/azure/governance/policy/how-to/remediate-resources) to modify existing resources. 
 
 It's recommended to gradually remediate noncompliant resources for higher availability and failure resiliency. This gradual can be done by creating multiple remediation tasks, each scoped to one region or few resources.
 
 It's recommended to create separate policies for windows & linux.  
 
-:::image type="content" source="./media/vmapp/vm-application-create-remediation-task.png" alt-text="Portal experience showing how to create a new remediation task.":::
+:::image type="content" source="./media/vmapps/vm-application-create-remediation-task.png" alt-text="Portal experience showing how to create a new remediation task.":::
 
 #### Common adjustments
 - <b>Limit policy scope by OS type</b>: Check `osType` of `storageProfile` within `policyRule` to filter based on Window / Linux OS:
