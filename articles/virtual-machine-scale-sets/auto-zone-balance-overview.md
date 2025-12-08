@@ -21,15 +21,15 @@ Automatic zone balance helps you maintain zone-resilient scale sets that are eve
 
 ## Background
 
-When you deploy a Virtual Machine Scale Set across multiple availability zones, the scale set attempts to maximize resiliency by spreading your VMs as evenly as possible. However, factors like capacity constraints or scaling operations can cause your scale set to become "zonally imbalanced" over time, with some zones having more VM instances than others. This imbalance can go unnoticed, but it increases the risk that a single zone failure could affect a disproportionate number of your VMs, reducing your application's availability. 
+When you deploy a Virtual Machine Scale Set across multiple availability zones, the scale set attempts to maximize resiliency by spreading your VMs as evenly as possible. However, factors like capacity constraints or scaling operations can cause your scale set to become zonally imbalanced over time, with some zones having more VM instances than others. This imbalance can go unnoticed, but it increases the risk that a single zone failure could affect a disproportionate number of your VMs, reducing your application's availability. 
 
 Automatic zone balance is designed to help improve zonal resiliency by monitoring your virtual machine scale sets and automatically redistributing VMs as needed to maintain an even spread across zones. 
 
-Key Terms:
-- A scale set is considered "zonally balanced" if each zone has the same number of VMs +/- 1 VM as all other zones for the scale set. A scale set that doesn't meet this condition is considered "zonally imbalanced." More details on zone balance available [here](./virtual-machine-scale-sets-use-availability-zones.md#zone-balancing).
-- An "under-provisioned zone" is an availability zone with the fewest scale set instances.
+**Key Terms:**
+- A scale set is considered **zonally balanced** if each zone has the same number of VMs +/- 1 VM as all other zones for the scale set. A scale set that doesn't meet this condition is considered "zonally imbalanced." More details on zone balance available [here](./virtual-machine-scale-sets-use-availability-zones.md#zone-balancing).
+- An **under-provisioned zone** is an availability zone with the fewest scale set instances.
   - In a scale set with one VM in zone 1, three VMs in zone 2, and three VMs in zone 3; zone 1 is the under-provisioned zone. 
-- An "over-provisioned zone" is an availability zone with the most scale set instances.
+- An **over-provisioned zone** is an availability zone with the most scale set instances.
   - In a scale set with one VM in zone 1, three VMs in zone 2, and three VMs in zone 3; zones 2 and 3 are the over-provisioned zones.
 
 ## How does automatic zone balance work? 
@@ -42,6 +42,23 @@ Automatic zone balance waits up to 90 minutes for a newly created VM to report a
 
 :::image type="content" source="./media/virtual-machine-scale-sets-auto-zone-balance/auto-zone-balance-workflow.png" alt-text="Diagram of the workflow for automatic zone balance.":::
 
+### When Does Rebalancing Occur?
+
+Automatic zone balance uses a two-factor approach to determine when rebalancing improves resiliency:
+
+1. **Total VM count**: The scale set must be zonally imbalanced based on the total number of VMs (active + deallocated) across zones
+2. **Active VM distribution**: The under-provisioned zone must have fewer active VMs, ensuring that rebalancing improves the distribution of running workloads
+
+Rebalancing only occurs when both the total count is imbalanced **and** moving VMs would improve active VM distribution.
+
+#### Behavior Examples
+
+| Zone 1 | Zone 2 | Zone 3 | Rebalancing Behavior |
+|--------|--------|--------|---------------------|
+| 5 active VMs | 5 active VMs | 5 deallocated VMs | **No rebalancing** - Total count is balanced (5/5/5) |
+| 7 total VMs (2 active, 5 deallocated) | 4 active VMs | 4 active VMs | **No rebalancing** - Moving active VMs from Zone 1 would decrease resiliency |
+| 2 active VMs | 4 active VMs | 7 total VMs (5 active, 2 deallocated) | **Rebalances** to 4 active VMs / 4 active VMs / 5 total VMs (3 active, 2 deallocated) |
+
 ### Safety Features
 
 Automatic zone balance is designed to be minimally intrusive, prioritizing the stability and availability of your workloads. A rebalance operation (creating a VM in a new zone and deleting a VM from an over-provisioned zone) only begins if the following safety conditions are met:
@@ -49,7 +66,7 @@ Automatic zone balance is designed to be minimally intrusive, prioritizing the s
 - The scale set is not marked for deletion.
 - The scale set doesn't have any ongoing or recently completed `PUT`, `PATCH`, `POST` operations within the past 60 minutes; such as VMs being added or deleted, or upgrades in progress.
 
-Automatic zone balance performs a maximum of one rebalance operation every 12 hours. Only one VM is moved in each rebalance operation. This limit is in place to minimize churn and ensure that changes to your scale set are gradual and controlled. Automatic zone balance will not move VMs under the instance protection policy, or in deallocated / to-be-delete state. 
+Automatic zone balance performs a maximum of one rebalance operation every 12 hours. Only one VM is moved in each rebalance operation. This limit is in place to minimize churn and ensure that changes to your scale set are gradual and controlled. Automatic zone balance will not move VMs under the instance protection policy, or in deallocated / to-be-deleted state. 
 
 ## Limitations
 
