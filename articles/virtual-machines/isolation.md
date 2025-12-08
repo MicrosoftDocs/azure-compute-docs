@@ -5,8 +5,8 @@ author: mimckitt
 ms.service: azure-virtual-machines
 ms.topic: concept-article
 ms.date: 04/20/2023
-ms.author: mimckitt
-ms.reviewer: ayshak, mattmcinnes
+ms.author: briannali
+ms.reviewer: mattmcinnes
 # Customer intent: "As a cloud architect, I want to understand how VM isolation works in Azure, so that I can effectively design secure and efficient cloud infrastructure for my organization."
 ---
 
@@ -14,4 +14,64 @@ ms.reviewer: ayshak, mattmcinnes
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
-[!INCLUDE [virtual-machines-common-isolation](~/reusable-content/ce-skilling/azure/includes/virtual-machines-common-isolation.md)]
+
+Azure Compute offers virtual machine sizes that are Isolated to a specific hardware type and dedicated to a single customer. Isolated sizes run on specific hardware generations. They're deprecated when the hardware generation is retired or a new generation becomes available.
+
+Isolated virtual machine sizes are best suited for workloads that require a high degree of isolation from other customers’ workloads. This requirement sometimes applies to compliance and regulatory standards. Utilizing an isolated size guarantees that your virtual machine is the only one running on that specific server instance. 
+
+
+Additionally, as the Isolated size virtual machines are large, customers may choose to subdivide the resources of these virtual machines by using [Azure support for nested virtual machines](https://azure.microsoft.com/blog/nested-virtualization-in-azure/).
+
+The current Isolated virtual machine offerings include:
+| Family | Size | 
+| --- | --- |
+| E | Standard_E192is_v6 <br>Standard_E192ids_v6 <br>Standard_E104i_v5 <br>Standard_E104id_v5 <br>Standard_E104is_v5 <br>Standard_E104ids_v5 <br>Standard_E112ias_v5 <br>Standard_E112iads_v5 <br>Standard_E80is_v4 <br>Standard_E80ids_v4 <br>Standard_E96ias_v4 |
+| Eb | Standard_E112ibs_v5 <br>Standard_E112ibds_v5 |
+| EC | Standard_EC96ias_v5 <br>Standard_EC96iads_v5 |
+| M | Standard_M832is_16_v3 <br>Standard_M832ids_16_v3 <br>Standard_M192is_v2<sup>1</sup> <br>Standard_M192ids_v2<sup>1</sup> <br>Standard_M192ims_v2<sup>1</sup> <br>Standard_M192idms_v2<sup>1</sup> |
+| NC | Standard_NC80adis_H100_v5 |
+| ND | Standard_ND96is_H100_v5 <br>Standard_ND96isr_H100_v5 <br>Standard_ND96isr_H200_v5 <br>Standard_ND96is_MI300X_v5 <br>Standard_ND96isr_MI300X_v5 |
+
+<sup>1</sup> These sizes are announced for retirement
+
+> [!NOTE]
+> Isolated VM Sizes have a limited lifespan due to hardware deprecation.
+
+## Retired Isolated VM Sizes
+
+Isolated VM sizes have a hardware limited lifespan. Azure issues reminders 12 months in advance of the official deprecation date of the sizes and provides an updated isolated offering for your consideration. The following sizes are retired or announced for retirement.
+
+| Size | Retirement Announcement | Isolation Retirement Date | Migration Guide |
+| --- | --- | --- | --- |
+| Standard_DS15_v2  | [05/15/2020](https://azure.microsoft.com/en-us/updates?id=the-d15-v2-ds15-v2-azure-virtual-machines-may-no-longer-be-isolated-starting-february-15-2020) | 05/15/2021 | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide) |
+| Standard_D15_v2   | [05/15/2020](https://azure.microsoft.com/en-us/updates?id=the-d15-v2-ds15-v2-azure-virtual-machines-may-no-longer-be-isolated-starting-february-15-2020) | 05/15/2021 | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide) |
+| Standard_G5       | [02/15/2021](https://azure.microsoft.com/en-us/updates?id=the-g5-and-gs5-azure-vms-will-no-longer-be-hardwareisolated-on-28-february-2022) | 02/28/2021 | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide) |
+| Standard_GS5      | [02/15/2021](https://azure.microsoft.com/en-us/updates?id=the-g5-and-gs5-azure-vms-will-no-longer-be-hardwareisolated-on-28-february-2022) | 02/28/2021 | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide) |
+| Standard_E64i_v3  | [02/15/2021](https://azure.microsoft.com/en-us/updates?id=the-e64iv3-e64isv3-azure-vms-will-not-be-hardwareisolated-on-28-february-2022) | 02/28/2021 | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide) |
+| Standard_E64is_v3 | [02/15/2021](https://azure.microsoft.com/en-us/updates?id=the-e64iv3-e64isv3-azure-vms-will-not-be-hardwareisolated-on-28-february-2022) | 02/28/2021 | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide) |
+| Standard_M192is_v2| - | 03/31/2027 | - |
+| Standard_M192ims_v2| - | 03/31/2027 | - |
+| Standard_M192ids_v2| - | 03/31/2027 | - |
+| Standard_M192idms_v2| -| 03/31/2027 | - |
+
+
+## FAQ
+### Q: Is the size going to be retired or only its "isolation" feature?
+**A**: If a VM sizes is published as isolated but doesn't have an "i" in its name, only the isolation feature is being retired (unless stated otherwise). VM sizes with an "i" in the name are deprecated entirely.
+
+### Q: Is there downtime if my VM moves to nonisolated hardware?
+**A**: For sizes where only isolation is retired (not the size), no action is needed and there's no downtime. If isolated is required, the announcement will include a recommended replacement size. Moving to that sizes requires resizing your VM.  
+
+### Q: Is there any cost difference when moving to a nonisolated VM?
+**A**: No, there's no cost difference.
+
+### Q: When are the other isolated sizes going to retire?
+**A**: We provide reminders 12 months in advance of the official deprecation of the isolated size.
+
+### Q: I'm an Azure Service Fabric Customer relying on the Silver or Gold Durability Tiers. Does this change impact me?
+**A**: No. The guarantees provided by Service Fabric's [Durability Tiers](/azure/service-fabric/service-fabric-cluster-capacity#durability-characteristics-of-the-cluster) will continue to function even after this change. If you require physical hardware isolation for other reasons, you may still need to take one of the actions described. 
+ 
+## Next steps
+
+Customers can also choose to further subdivide the resources of these Isolated virtual machines by using [Azure support for nested virtual machines](https://azure.microsoft.com/blog/nested-virtualization-in-azure/).
+
