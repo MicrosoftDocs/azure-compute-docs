@@ -19,7 +19,7 @@ An in-place upgrade allows you to go from an older operating system to a newer o
 
 [!INCLUDE [Azure VM Windows WU & OS Upgrade Diagnostic Tools](./includes/virtual-machines-runcmd-wu-tools.md)]
 
-##Prerequisites
+## Prerequisites
 Before you begin an in-place upgrade:
 
 - Review the upgrade requirements for the target operating system:
