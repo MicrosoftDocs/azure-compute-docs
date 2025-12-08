@@ -63,7 +63,7 @@ With Compute Gallery, you can deploy up to 1,000 VM instances in a scale set. Yo
 
 Although we understand that no two resources or regions are the same, here are general guidelines on how to use replicas in a region:
 
-- For every 50 VMs that you create concurrently, we recommend that you keep one replica. For example, if you're creating 500 VMs concurrently by using the same image in a region, we suggest you keep at least 10 replicas of your image.
+- For every 20 VMs that you create concurrently, we recommend that you keep one replica. For example, if you're creating 1,000 VMs concurrently by using the same image in a region, we suggest you keep at least 50 replicas of your image.
 - For each scale set that you create concurrently, we recommend that you keep one replica.
 
 We always recommend that you overprovision the number of replicas due to factors like resource size, content, and OS type.
