@@ -37,7 +37,7 @@ The Azure Windows VM Agent supports the x64 and ARM64 architecture for these Win
 | Windows Server 2025 Core | Supported | Supported |
 
 > [!IMPORTANT]
-> - The Azure Windows VM Agent needs at least Windows Server 2008 SP2 (64-bit) to run, with the .NET Framework 4.0. See [Minimum version support for virtual machine agents in Azure](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support).
+> - The Azure Windows VM Agent needs at least Windows Server 2016 (64-bit) to run, with the .NET Framework 4.0. See [Minimum version support for virtual machine agents in Azure](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support).
 >
 > - Ensure that your VM has access to IP address 168.63.129.16. For more information, see [What is IP address 168.63.129.16?](/azure/virtual-network/what-is-ip-address-168-63-129-16).
 >
