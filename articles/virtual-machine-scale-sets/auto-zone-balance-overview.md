@@ -68,6 +68,17 @@ Automatic zone balance is designed to be minimally intrusive, prioritizing the s
 
 Automatic zone balance performs a maximum of one rebalance operation every 12 hours. Only one VM is moved in each rebalance operation. This limit is in place to minimize churn and ensure that changes to your scale set are gradual and controlled. Automatic zone balance will not move VMs under the instance protection policy, or in deallocated / to-be-deleted state. 
 
+### Automatic Instance Repairs Integration
+
+Automatic zone balance works together with [automatic instance repairs](./virtual-machine-scale-sets-automatic-instance-repairs.md) to help you maintain highly available scale sets:
+
+- **Automatic Instance Repairs** monitors and repairs unhealthy VM instances within your scale set
+- **Automatic Zone Balance** ensures VMs are evenly distributed across availability zones
+
+When you enable automatic zone balance, automatic instance repairs is also enabled by default (if not already configured). This ensures your scale set benefits from both instance-level health monitoring and zone-level resiliency. If your scale set already has Automatic Instance Repairs enabled, your existing configuration is preserved.
+
+To learn more about automatic instance repairs, see [Automatic instance repairs for Azure Virtual Machine Scale Sets](./virtual-machine-scale-sets-automatic-instance-repairs.md). If you'd like to use automatic zone balance without automatic instance repairs, see [how to enable automatic zone balance](./auto-zone-balance-enable.md#disable-automatic-instance-repairs).
+
 ## Limitations
 
 - **Recommended for stateless workloads**: Automatic zone balance uses delete and recreate operations to move VMs across availability zones. Instance IDs, networking, and disks aren't preserved today as part of rebalancing.
