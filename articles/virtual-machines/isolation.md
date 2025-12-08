@@ -23,6 +23,7 @@ Isolated virtual machine sizes are best suited for workloads that require a high
 Additionally, as the Isolated size virtual machines are large, customers may choose to subdivide the resources of these virtual machines by using [Azure support for nested virtual machines](https://azure.microsoft.com/blog/nested-virtualization-in-azure/).
 
 The current Isolated virtual machine offerings include:
+
 | Family | Size | 
 | --- | --- |
 | E | Standard_E192is_v6 <br>Standard_E192ids_v6 <br>Standard_E104i_v5 <br>Standard_E104id_v5 <br>Standard_E104is_v5 <br>Standard_E104ids_v5 <br>Standard_E112ias_v5 <br>Standard_E112iads_v5 <br>Standard_E80is_v4 <br>Standard_E80ids_v4 <br>Standard_E96ias_v4 |
