@@ -152,10 +152,11 @@ sections:
           Are shared disks in remote disks supported with NVMe-enabled VMs?
         answer: |
           The shared disk feature is supported for Premium SSD, Premium SSD v2, and Ultra Disk Storage disks. Shared Disks using NVME isn't supported with the OS Windows Server 2019.
-      - question: |
-      Can a data disk be detached from a SCSI-based VM and then attached to an NVMe-based VM?
-       - answer: |
-       Yes. A data disk can be detached from a SCSI-based VM and attached to an NVMe-based VM. Once attached, the disk type will automatically convert to NVMe.
+- question: |
+    Can a data disk be detached from a SCSI-based VM and then attached to an NVMe-based VM?
+  answer: |
+    Yes. A data disk can be detached from a SCSI-based VM and attached to an NVMe-based VM. Once attached, the disk type will automatically convert to NVMe.
+
       - question: |
           Can I use Azure PowerShell or the Azure CLI to create a VM with an OS disk from an existing blob with NVMe enabled?
         answer: |
