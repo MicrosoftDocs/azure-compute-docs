@@ -197,22 +197,69 @@ GET "https://management.azure.com/subscriptions/{subscriptionId}/providers/Micro
     {
       "id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Impact/workloadImpacts/impactid22/insights/insightId12",
       "name": "insightId12",
-      "type": "Microsoft.Impact/insights",
       "properties": {
-        "eventTime": "2025-06-15T04:00:00.009223Z",
-        "content": {
-          "title": "Impact Has been correlated to an outage",
-          "description": "At 2025-06-15T04:00:00.009223ZUTC, your services dependent on these resources <link href=”…”>VM1</link> may have experienced an issue. <br/><div>We have identified an outage that affected these resources(s). You can look at outage information on <link href=\"https:// portal.azure.com/#view/Microsoft_Azure_Health/AzureHealthBrowseBlade/~/serviceIssues/trackingId/NL2W-VCZ\">NL2W-VCZ</link> link.<div>"
+        "additionalDetails": {
+          "statusCode": "AcknowledgedUnhealthy",
+          "terminalInsight": false
         },
-        "category": "repair",
-        "status": "resolved",
-        "insightUniqueId": "00000000-0000-0000-0000-000000000000",
+        "category": "MitigationAction",
+        "content": {
+          "description": "<h2><strong>Customer reports investigate state - HPC Acknowledge</strong></h2>\n<!--issueDescription-->\n<p>The Azure monitoring and diagnostics systems identified that your resource <strong></strong> may have been impacted by <strong></strong>; a <strong></strong> platform change.</p>\n<!--/issueDescription-->\n<!--rcaDescription-->\n<h3><strong>Root Cause</strong></h3>\n<blockquote>\n<p>The Host Node where the resource was running, or part of the resource dependency stack may have been impacted by this change, resulting in a brief impact.</p>\n</blockquote>\n<!--198afd2f-2cb2-47ab-88e1-c55bae5c522a-->\n<!--resolutionDetails-->\n<h3><strong>Resolution</strong></h3>\n<blockquote>\n<p>This state was transient.</p>\n</blockquote>\n<!--/resolutionDetails-->\n<!--additionalInfo-->\n<h3><strong>Additional Information</strong></h3>\n<blockquote>\n<p>Customers can control distribution of their resources at risk of effects from an infrastructure failure. For more details and example for VMs, see: <a href=\"https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability\">Availability Options for Azure Virtual Machines</a>.</p>\n</blockquote>\n<blockquote>\n<p>See also, <a href=\"https://docs.microsoft.com/azure/service-health/alerts-activity-log-service-notifications-portal\">Create activity log alerts on service notifications using the Azure portal</a>.</p>\n</blockquote>\n<!--/additionalInfo-->\n<!--/rcaDescription-->\n<!--recommendedActions-->\n<h3><strong>Recommended Documents</strong></h3>\n<blockquote>\n<ul>\n<li><a href=\"https://docs.microsoft.com/azure/virtual-machines/maintenance-and-updates\">Maintenance for virtual machines in Azure</a></li>\n<li><a href=\"https://azure.microsoft.com/blog/service-healing-auto-recovery-of-virtual-machines\">Service Healing - Auto-recovery of Virtual Machines</a></li>\n<li><a href=\"https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets\">Create and deploy virtual machines in an availability set using Azure PowerShell</a></li>\n<li><a href=\"https://docs.microsoft.com/azure/storage/storage-managed-disks-overview\">Introduction to Azure managed disks</a></li>\n<li><a href=\"https://docs.microsoft.com/azure/virtual-machines/windows/scheduled-events\">Azure Metadata Service: Scheduled Events for Windows VMs</a></li>\n</ul>\n</blockquote>\n<!--/recommendedActions-->\n<!--salutation-->\n<p>We apologize for any inconvenience this may have caused you.</p>\n<p>Microsoft Azure Team</p>\n<!--/salutation-->\n"
+        },
+        "eventTime": "2025-06-15T04:00:00.009223Z",
         "impact": {
-          "impactedResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resource-rg/providers/Microsoft.Sql/sqlserver/dbservername",
-          "startTime": "2025-06-15T04:00:00.009223Z",
-          "impactId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Impact/workloadImpacts/impactid22"
-        }
-      }
+          "endTime": "0001-01-01T00:00:00Z",
+          "impactId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Impact/workloadImpacts/impactid22",
+          "impactedResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/AA_RG/providers/Microsoft.Compute/virtualMachineScaleSets/AA_VMSS/00001111",
+          "startTime": "2025-06-15T17:36:21Z"
+        },
+        "insightUniqueId": "000111222-2233-4455-6677-66778897c74cb",
+        "provisioningState": "Succeeded",
+        "status": "Resolved"
+      },
+      "systemData": {
+        "createdAt": "2025-06-15T04:00:00.009223Z",
+        "createdBy": "000111222-2233-4455-6677-66778897c74",
+        "createdByType": "Application",
+        "lastModifiedAt": "2025-07-15T17:50:16.7183274Z",
+        "lastModifiedBy": "000111222-2233-4455-6677-66778897c74",
+        "lastModifiedByType": "Application"
+      },
+      "type": "microsoft.impact/workloadimpacts/insights"
+    },
+    {
+      "id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Impact/workloadImpacts/impactid22/insights/insightId13",
+      "name": "insightId13",
+      "properties": {
+        "additionalDetails": {
+          "statusCode": "NodeRemovedFromService",
+          "terminalInsight": true
+        },
+        "category": "MitigationAction",
+        "content": {
+          "description": "<h2><strong>Customer reports unhealthy state - HPC Unhealthy Pipeline Successful</strong></h2>\n<!--issueDescription-->\n<p>The Azure monitoring and diagnostics systems identified that your resource <strong></strong> may have been impacted by <strong></strong>; a <strong></strong> platform change.</p>\n<!--/issueDescription-->\n<!--rcaDescription-->\n<h3><strong>Root Cause</strong></h3>\n<blockquote>\n<p>The Host Node where the resource was running, or part of the resource dependency stack may have been impacted by this change, resulting in a brief impact.</p>\n</blockquote>\n<!--1a8138f1-83eb-4d55-b39f-77791264d7c7-->\n<!--resolutionDetails-->\n<h3><strong>Resolution</strong></h3>\n<blockquote>\n<p>This state was transient.</p>\n</blockquote>\n<!--/resolutionDetails-->\n<!--additionalInfo-->\n<h3><strong>Additional Information</strong></h3>\n<blockquote>\n<p>Customers can control distribution of their resources at risk of effects from an infrastructure failure. For more details and example for VMs, see: <a href=\"https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability\">Availability Options for Azure Virtual Machines</a>.</p>\n</blockquote>\n<blockquote>\n<p>See also, <a href=\"https://docs.microsoft.com/azure/service-health/alerts-activity-log-service-notifications-portal\">Create activity log alerts on service notifications using the Azure portal</a>.</p>\n</blockquote>\n<!--/additionalInfo-->\n<!--/rcaDescription-->\n<!--recommendedActions-->\n<h3><strong>Recommended Documents</strong></h3>\n<blockquote>\n<ul>\n<li><a href=\"https://docs.microsoft.com/azure/virtual-machines/maintenance-and-updates\">Maintenance for virtual machines in Azure</a></li>\n<li><a href=\"https://azure.microsoft.com/blog/service-healing-auto-recovery-of-virtual-machines\">Service Healing - Auto-recovery of Virtual Machines</a></li>\n<li><a href=\"https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets\">Create and deploy virtual machines in an availability set using Azure PowerShell</a></li>\n<li><a href=\"https://docs.microsoft.com/azure/storage/storage-managed-disks-overview\">Introduction to Azure managed disks</a></li>\n<li><a href=\"https://docs.microsoft.com/azure/virtual-machines/windows/scheduled-events\">Azure Metadata Service: Scheduled Events for Windows VMs</a></li>\n</ul>\n</blockquote>\n<!--/recommendedActions-->\n<!--salutation-->\n<p>We apologize for any inconvenience this may have caused you.</p>\n<p>Microsoft Azure Team</p>\n<!--/salutation-->\n",
+          "title": "Customer reports unhealthy state - HPC Unhealthy Pipeline Successful"
+        },
+        "eventTime": "2025-07-15T04:00:00.009223Z",
+        "impact": {
+          "endTime": "0001-01-01T00:00:00Z",
+          "impactId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Impact/workloadImpacts/impactid22",
+          "impactedResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/AA_RG/providers/Microsoft.Compute/virtualMachineScaleSets/AA_VMSS/00001111",
+          "startTime": "2025-07-15T17:36:21Z"
+        },
+        "insightUniqueId": "000111222-2233-4455-6677-66778897c74cb",
+        "provisioningState": "Succeeded",
+        "status": "Resolved"
+      },
+      "systemData": {
+        "createdAt": "2025-07-15T04:00:00.009223Z",
+        "createdBy": "000111222-2233-4455-6677-66778897c74",
+        "createdByType": "Application",
+        "lastModifiedAt": "2025-07-15T17:50:16.7183274Z",
+        "lastModifiedBy": "000111222-2233-4455-6677-66778897c74",
+        "lastModifiedByType": "Application"
+      },
+      "type": "microsoft.impact/workloadimpacts/insights"
     }
   ]
 }
@@ -230,7 +277,25 @@ GET "https://management.azure.com/subscriptions/{subscriptionId}/providers/Micro
 | `insightUniqueId`  | string                | Unique identifier of the insight.                                                                       |
 | `provisioningState`| string   | Resource provisioning state.                                                                            |
 | `status`           | string                | Status of the insight (e.g., *Resolved*, *Repaired*, other).                                            |
+### Additional Processing Fields
 
+Some insights include extra processing metadata under `additionalDetails`. These fields help you understand how the impact request progressed through the Guest Health Reporting pipeline.
+
+| Name | Type | Description |
+|------|------|-------------|
+ `additionalDetails.statusCode` | string | Detailed reason code explaining why this insight was generated (for example: `AcknowledgedUnhealthy`, `NodeRemovedFromService`, `TooManyRequests`). |
+| `additionalDetails.terminalInsight` | boolean | Indicates whether this is the final insight for the impact. If `true`, no further updates will follow. |
+
+These fields should be interpreted together:  
+- **`statusCode`** = tells you the specific condition or reason for the insight. 
+- **`terminalInsight`** = whether the pipeline has completed  
+
+Example:  
+`statusCode = "NodeRemovedFromService"` and `terminalInsight = true` tells you whether additional updates should be expected.
+
+Example:  
+ `statusCode = AcknowledgedUnhealthy`, `terminalInsight = false`  
+→ The node health update is still in progress.
 
 ## Related content
 
