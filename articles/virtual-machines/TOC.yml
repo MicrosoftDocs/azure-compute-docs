@@ -2188,7 +2188,18 @@
     displayName: Automatic OS image upgrade, image, upgrade, OS
     href: /azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade?toc=/azure/virtual-machines/toc.json
   - name: Windows Server in-place upgrade
-    href: windows-in-place-upgrade.md
+    items:
+    - name: Overview
+      href: windows-in-place-upgrade.md
+    - name: OS Upgrade assessment tool
+      href: /troubleshoot/azure/virtual-machines/windows/windows-vm-osupgradeassessment-tool?toc=/azure/virtual-machines/toc.json
+  - name: Windows Client in-place upgrade
+    items:
+    - name: Overview
+      href: /troubleshoot/azure/virtual-machines/windows/in-place-system-upgrade?toc=/azure/virtual-machines/toc.json
+    - name: OS Upgrade assessment tool
+      href: /troubleshoot/azure/virtual-machines/windows/windows-vm-osupgradeassessment-tool?toc=/azure/virtual-machines/toc.json
+
   - name: Automatic VM guest patching
     items:
     - name: Overview
