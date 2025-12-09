@@ -58,19 +58,19 @@ Isolated VM sizes have a hardware limited lifespan. Azure issues reminders 12 mo
 
 ## FAQ
 ### Q: What specific scenarios benefit most from isolated VM sizes? 
-**A**: Isolated VM sizes run on dedicated physical servers for maximum security and consistency. These sizes are best for regulated workloads, highly sensitive data, and performance-critical systems. 
+**A**: Isolated VM sizes run on dedicated physical servers for maximum security and consistency. These sizes are best for regulated workloads, highly sensitive data, and performance-critical systems.
+
+### Q: How are isolated VMs different from Azure Dedicated Hosts and Confidential VMs? 
+**A**: Isolated VMs run on a single physical server dedicated exclusively for one VM for strict compliance and isolation. Dedicated Hosts reserve an entire physical host for multiple VMs belonging to a single customer, giving full control on VM placement and maintenance scheduling. Confidential VMs use hardware-based encryption to protect data without requiring physical isolation. 
 
 ### Q: Is the size going to be retired or only its "isolation" feature?
-**A**: If a VM sizes is published as isolated but doesn't have an "i" in its name, only the isolation feature is being retired (unless stated otherwise). VM sizes with an "i" in the name are deprecated entirely.
+**A**: If a VM sizes is published as isolated but doesn't have an "i" in its name, only the isolation feature is being retired (unless stated otherwise). VM sizes with an "i" in the name are deprecated entirely. We provide reminders 12 months in advance of the official deprecation of the isolated size.
 
 ### Q: Is there downtime if my VM moves to nonisolated hardware?
 **A**: For sizes where only isolation is retired (not the size), no action is needed and there's no downtime. If isolated is required, the announcement will include a recommended replacement size. Moving to that sizes requires resizing your VM.  
 
-### Q: Is there any cost difference when moving to a nonisolated VM?
-**A**: No, there's no cost difference.
-
-### Q: When are the other isolated sizes going to retire?
-**A**: We provide reminders 12 months in advance of the official deprecation of the isolated size.
+### Q: Is there any cost difference when moving from an isolated VM to a non-isolated VM?
+**A**: Yes, isolated VM sizes carry a premium compared to non-isolated sizes. The premium is roughly 10% higher for isolated VMs
 
 ### Q: What should I do if the isolated VM size I need is not available in my region? 
 **A**: Choose an alternative SKU with similar specs first, and if none meet your needs or deploy the isolated VM size in a supported region. 
