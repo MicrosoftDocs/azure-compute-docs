@@ -8,6 +8,7 @@ ms.date: 07/23/2020
 ms.author: aarthiv
 ms.subservice: disks
 ms.custom: devx-track-azurecli
+# Customer intent: "As a cloud administrator, I want to deploy virtual machines with ephemeral OS disks using various methods, so that I can improve performance and reduce costs in my Azure environment."
 ---
 
 # How to deploy Ephemeral OS disks for Azure VMs

@@ -6,7 +6,8 @@ ms.author: brittanyrowe
 ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
 ms.date: 06/10/2025
-ms.reviewer: jushiman
+ms.reviewer: cynthn
+# Customer intent: "As a cloud administrator, I want to understand the FAQs and troubleshooting steps for using instance mix on virtual machine scale sets, so that I can efficiently manage my VM deployments and resolve issues effectively."
 ---
 
 # Virtual machine scale sets with instance mix frequently asked questions and troubleshooting
@@ -27,8 +28,14 @@ No, you must have quota for the VMs you specify in the `skuProfile`. If you don'
 ### I updated my scale set to use instance mix, why aren't my VMs aligning to my allocation strategy?
 After updating your scale set to use instance mix, all scale in or scale out actions use the inputs from instance mix to determine which VMs to scale in and out. 
 
-### Can I use reservations or savings plan with instance mix?
-Yes, you can apply your reservations and savings plan with instance mix. It's recommended that you use the `Prioritized` allocation strategy and set the reservation or savings plan VM sizes as the first rank.
+### Can I use reserved instance or savings plan with instance mix?
+Yes, you can apply your reserved instance prices and savings plan with instance mix. It's recommended that you use the `Prioritized` allocation strategy and set the reservation or savings plan VM sizes as the first rank.
+
+### Can I use an on-demand capacity reservation with instance mix?
+No, you can't use an on-demand capacity reservation with instance mix.
+
+### Can I use DiffDisk settings with instance mix?
+No, instance mix currently doesn't support `diffDiskSettings` on the OS disk.
 
 ## Troubleshooting
 | Error Code                                 | Error Message                                                                                                        | Troubleshooting options                                                                                                                                                                                                                                                                                              |

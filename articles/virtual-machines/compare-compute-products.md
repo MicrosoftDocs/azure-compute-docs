@@ -6,6 +6,7 @@ ms.service: azure-virtual-machines
 ms.topic: overview
 ms.date: 05/07/2025
 ms.author: mattmcinnes
+# Customer intent: "As a cloud architect, I want to compare different VM-based compute products, so that I can select the most suitable solution for varying workload requirements and optimize resource allocation for my applications."
 ---
 
 # Compare virtual machine-based compute products

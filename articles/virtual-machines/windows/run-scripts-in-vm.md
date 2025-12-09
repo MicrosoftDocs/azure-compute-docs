@@ -9,6 +9,7 @@ ms.author: robreed
 ms.reviewer: jushiman
 ms.date: 03/20/2023
 ms.topic: how-to
+# Customer intent: As a cloud administrator, I want to run scripts in my Windows virtual machines, so that I can automate tasks, configure systems, and troubleshoot issues effectively.
 ---
 # Run scripts in your Windows VM
 

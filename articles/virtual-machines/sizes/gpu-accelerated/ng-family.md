@@ -7,6 +7,7 @@ ms.subservice: sizes
 ms.topic: concept-article
 ms.date: 06/06/2024
 ms.author: mattmcinnes
+# Customer intent: "As a cloud architect, I want to review the NG family VM size series and their specifications, so that I can select the appropriate GPU-accelerated virtual machines for my workloads."
 ---
 
 # 'NG' sub-family GPU accelerated VM size series

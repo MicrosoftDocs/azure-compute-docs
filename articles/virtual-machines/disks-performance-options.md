@@ -7,6 +7,7 @@ ms.topic: concept-article
 ms.date: 04/15/2025
 ms.author: rogarana
 ms.custom: accpeerreview2025-2
+# Customer intent: As a cloud architect, I want to understand the performance options for Azure managed disks, so that I can optimize disk usage and meet the varying demands of workloads effectively.
 ---
 
 # Overview of options to improve Azure managed disk performance

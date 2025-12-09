@@ -7,6 +7,7 @@ ms.service: azure-virtual-machines
 ms.topic: concept-article
 ms.date:     10/02/2024
 ms.subservice: sizes
+# Customer intent: As a cloud architect, I want to evaluate the NMads MA35D series virtual machines for video transcoding workloads, so that I can leverage their specialized hardware and performance advantages for efficient and cost-effective video processing in our projects.
 ---
 
 # NMads MA35D series
@@ -28,7 +29,15 @@ Compared with existing general-purpose CPU or GPU based solutions, the NMads MA3
 
 ## Feature support 
 
-[Premium Storage](/azure/virtual-machines/premium-storage-performance): Supported <br>[Premium Storage caching](/azure/virtual-machines/premium-storage-performance): Supported <br>[Live Migration](/azure/virtual-machines/maintenance-and-updates): Not Supported <br>[Memory Preserving Updates](/azure/virtual-machines/maintenance-and-updates): Not Supported <br>[VM Generation 2 Support](/azure/virtual-machines/generation-2): Supported <br>[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported <br>[Ephemeral OS Disk](/azure/virtual-machines/ephemeral-os-disks): Supported <br>[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Not Supported 
+- [Premium Storage](/azure/virtual-machines/premium-storage-performance): Supported
+- [Premium Storage caching](/azure/virtual-machines/premium-storage-performance): Supported
+- [Live Migration](/azure/virtual-machines/maintenance-and-updates): Not Supported
+- [Memory Preserving Updates](/azure/virtual-machines/maintenance-and-updates): Not Supported
+- [VM Generation 2 Support](/azure/virtual-machines/generation-2): Supported
+- [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported
+- [Ephemeral OS Disk](/azure/virtual-machines/ephemeral-os-disks): Supported
+- [Temporary local NVMe disks](../../enable-nvme-temp-faqs.yml): Supported
+- [Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Not Supported
 
 ## Sizes in series 
 

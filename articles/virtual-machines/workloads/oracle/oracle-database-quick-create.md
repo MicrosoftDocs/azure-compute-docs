@@ -9,13 +9,14 @@ ms.date: 10/03/2024
 ms.author: jacobjaygbay
 ms.custom: mode-other, devx-track-azurecli, devx-track-java
 ms.devlang: azurecli
+# Customer intent: As a cloud administrator, I want to deploy an Oracle Database in an Azure VM using the CLI, so that I can quickly set up a scalable database environment without manual configuration.
 ---
 
 # Create an Oracle Database in an Azure VM
 
 **Applies to:** :heavy_check_mark: Linux VMs 
 
-This article describes how to use the Azure CLI to deploy an Azure virtual machine (VM) from the [Oracle marketplace gallery image](https://azuremarketplace.microsoft.com/marketplace/apps/Oracle.OracleDatabase12102EnterpriseEdition?tab=Overview) to create an Oracle Database 19c database. After you deploy the server, you connect the server via SSH to configure the Oracle database. 
+This article describes how to use the Azure CLI to deploy an Azure virtual machine (VM) from the [Oracle marketplace gallery image](https://azuremarketplace.microsoft.com/marketplace/apps) to create an Oracle Database 19c database. After you deploy the server, you connect the server via SSH to configure the Oracle database. 
 
 ## Prerequisites
 

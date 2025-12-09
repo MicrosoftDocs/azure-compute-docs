@@ -10,6 +10,7 @@ ms.topic: how-to
 ms.date: 06/19/2025
 ms.author: vikancha
 ms.custom: H1Hack27Feb2017
+# Customer intent: As a cloud administrator, I want to install and verify NVIDIA GPU drivers on N-series VMs running Windows, so that I can ensure optimal performance for GPU-accelerated applications in my Azure environment.
 ---
 # Install NVIDIA GPU drivers on N-series VMs running Windows 
 
@@ -20,6 +21,9 @@ To take advantage of the GPU capabilities of Azure N-series VMs backed by NVIDIA
 If you choose to install NVIDIA GPU drivers manually, this article provides supported operating systems, drivers, and installation and verification steps. Manual driver setup information is also available for [Linux VMs](../linux/n-series-driver-setup.md).
 
 For basic specs, storage capacities, and disk details, see [GPU Windows VM sizes](../sizes-gpu.md?toc=/azure/virtual-machines/windows/toc.json). 
+
+> [!WARNING]
+> Installing NVIDIA drivers using methods other than those outlined in this guide may result in failure of the intended driver installation. To ensure proper functionality and support, please follow only the installation steps and use the driver versions specified in this documentation. 
 
 [!INCLUDE [virtual-machines-n-series-windows-support](../includes/virtual-machines-n-series-windows-support.md)]
 

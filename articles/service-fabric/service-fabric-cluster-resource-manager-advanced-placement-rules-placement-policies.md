@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a cloud architect, I want to configure advanced placement policies for my services in a distributed cluster, so that I can optimize service placement based on geographic, performance, and regulatory constraints.
 ---
 
 # Placement policies for service fabric services

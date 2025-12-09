@@ -9,6 +9,7 @@ ms.collection: linux
 ms.topic: how-to
 ms.date: 12/09/2024
 ms.author: anujmaurya
+# Customer intent: "As a system administrator managing Ubuntu servers on Azure, I want to perform an in-place upgrade to Ubuntu Pro, so that I can access enhanced security features and support for my applications without experiencing downtime."
 ---
 
 # Ubuntu Server to Ubuntu Pro in-place upgrade on Azure

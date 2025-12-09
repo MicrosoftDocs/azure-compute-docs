@@ -4,10 +4,11 @@ description: A comprehensive guide to choosing a storage solution best suited to
 author: christinechen2
 ms.author: padmalathas
 ms.reviewer: normesta
-ms.date: 05/09/2024
+ms.date: 06/30/2025
 ms.service: azure-virtual-machines
 ms.subservice: hpc
 ms.topic: concept-article 
+# Customer intent: "As an HPC administrator, I want to determine the most suitable storage solution for my high-performance computing workloads, so that I can optimize performance and manage costs effectively."
 ---
 # High-performance computing (HPC) workload best practices guide
 

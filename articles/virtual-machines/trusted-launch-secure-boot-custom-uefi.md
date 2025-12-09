@@ -7,7 +7,11 @@ ms.service: azure-virtual-machines
 ms.subservice: trusted-launch
 ms.topic: concept-article
 ms.date: 02/24/2025
-ms.custom: template-concept, devx-track-azurecli
+ms.custom:
+  - template-concept
+  - devx-track-azurecli
+  - sfi-image-nochange
+# Customer intent: "As a cloud administrator, I want to customize secure boot UEFI keys for my Azure virtual machines, so that I can ensure the integrity and security of the boot process according to my organization's requirements."
 ---
 
 # Secure Boot UEFI keys
@@ -216,4 +220,4 @@ Verify that the displayed keys are the ones supplied with the image version.
 
 - How to convert Base64 certificates: [Base64 certificate encoding](https://www.base64encode.org/enc/certificate/)
 - How to convert X.509 certificate to Base64: [X.509 Certificate Public Key in Base64](https://stackoverflow.com/questions/24492981/x-509-certificate-public-key-in-base64)
-- How to sign things for secure boot: [Ubuntu](https://ubuntu.com/blog/how-to-sign-things-for-secure-boot), [Redhat](https://access.redhat.com/documentation/red_hat_enterprise_linux/8/html/managing_monitoring_and_updating_the_kernel/signing-a-kernel-and-modules-for-secure-boot_managing-monitoring-and-updating-the-kernel), [Debian](https://wiki.debian.org/SecureBoot), [Oracle](https://docs.oracle.com/en/operating-systems/oracle-linux/secure-boot/sboot-SigningKernelModulesforUseWithSecureBoot.html#sb-mod-sign-kernel-uek6-req)
+- How to sign things for secure boot: [Ubuntu](https://ubuntu.com/blog/how-to-sign-things-for-secure-boot), [Redhat](https://access.redhat.com/documentation/red_hat_enterprise_linux/8/html/managing_monitoring_and_updating_the_kernel/signing-a-kernel-and-modules-for-secure-boot_managing-monitoring-and-updating-the-kernel), [Debian](https://wiki.debian.org/SecureBoot), [Oracle](https://docs.oracle.com/en/operating-systems/oracle-linux/9/secure-boot/sboot-SigningKernelModulesforUseWithSecureBoot.html#sb-mod-sign)

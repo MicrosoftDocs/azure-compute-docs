@@ -6,7 +6,13 @@ ms.author: rogarana
 ms.date: 05/19/2025
 ms.topic: how-to
 ms.service: azure-disk-storage
-ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell, innovation-engine
+ms.custom:
+  - references_regions
+  - devx-track-azurecli
+  - devx-track-azurepowershell
+  - innovation-engine
+  - sfi-ropc-nochange
+# Customer intent: As a cloud administrator, I want to deploy a Premium SSD v2 managed disk, so that I can enhance the performance of IO-intense workloads in my virtual machines with low latency and high throughput capabilities.
 ---
 
 # Deploy a Premium SSD v2
@@ -175,6 +181,9 @@ Update-AzVM -VM $vm -ResourceGroupName $resourceGroupName
 1. Sign in to the [Azure portal](https://portal.azure.com/).
 1. Navigate to **Virtual machines** and follow the normal VM creation process.
 1. On the **Basics** page, select a [supported region](#regional-availability) and set **Availability options** to **Availability zone**.
+
+    For regions that support availability zones, Premium SSD v2 disks can only be attached to zonal VMs. When creating a new VM or Virtual Machine Scale Set, specify the availability zone you want before adding Premium SSD v2 disks to your configuration.
+
 1. Select one or more of the zones.
 1. Fill in the rest of the values on the page as you like.
 

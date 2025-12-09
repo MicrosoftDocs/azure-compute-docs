@@ -8,6 +8,7 @@ ms.topic: how-to
 ms.date: 5/22/2025
 ms.author: mimckitt
 ms.custom: rybaker, chmimckitt, devx-track-azurepowershell
+# Customer intent: "As a system administrator, I want to deploy Windows 11 on Azure using existing licenses, so that I can leverage my Software Assurance benefits without incurring additional licensing costs."
 ---
 # How to deploy Windows 11 on Azure
 **Applies to:** :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets

@@ -8,7 +8,8 @@ ms.custom:
   - ignite-2024
 ms.topic: how-to
 ms.date: 5/6/2025
-ms.reviewer: ju-shim
+ms.reviewer: cynthn
+# Customer intent: As a cloud administrator, I want to update or delete standby pools in Virtual Machine Scale Sets, so that I can manage resource allocation and optimize performance based on operational requirements.
 ---
 
 

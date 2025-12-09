@@ -10,6 +10,7 @@ ms.topic: concept-article
 ms.date: 08/27/2024
 ms.author: archat
 ms.reviewer: mattmcinnes, tomcassidy
+# Customer intent: "As a cloud architect, I want to review the specifications of the Dplsv6 size series for VMs, so that I can select the appropriate virtual machine configuration that meets my performance and resource requirements."
 ---
 
 # Dplsv6 sizes series

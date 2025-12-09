@@ -3,8 +3,10 @@ title: Support matrix for VM restore points
 description: Support matrix for VM restore points
 ms.service: azure-virtual-machines
 ms.topic: concept-article
+ms.update-cycle: 1095-days
 ms.date: 07/05/2022
 ms.custom: template-concept
+# Customer intent: "As a cloud administrator, I want to understand the support matrix for VM restore points, so that I can determine the compatibility and limitations for my virtual machine backup and recovery strategy."
 ---
 
 # Support matrix for VM restore points
@@ -20,6 +22,7 @@ The following table summarizes the support matrix for VM restore points.
 --- | ---
 **VMs using Managed disks** | Yes
 **VMs using unmanaged disks** | No
+**VM sizes** | For crash consistency, supported for VM SKUs that support Premium storage. For application consistency, supported for all VM SKUs.
 **VMs using Ultra Disks** | Yes. Supported for application consistency. Not supported for crash consistency. Exclude these disks and create a VM restore point when using crash consistency.
 **VMs using Premium SSD v2 Disks** | Yes. Supported for application consistency. Not supported for crash consistency. Exclude these disks and create a VM restore point when using crash consistency.
 **VMs using Ephemeral OS Disks** | No. Exclude these disks and create a VM restore point.

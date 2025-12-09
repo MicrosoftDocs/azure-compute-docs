@@ -8,6 +8,7 @@ ms.topic: concept-article
 ms.date: 08/01/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
+# Customer intent: "As a cloud architect, I want to review the specifications of the Esv5 virtual machine sizes, so that I can select the appropriate VM type to meet the performance and resource requirements of my applications."
 ---
 
 # Esv5 sizes series

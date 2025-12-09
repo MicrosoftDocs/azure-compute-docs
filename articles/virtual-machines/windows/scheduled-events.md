@@ -10,6 +10,7 @@ ms.custom: devx-track-python
 ms.date: 06/01/2020
 ms.author: ericrad
 ms.reviwer: mimckitt, wilsonadam
+# Customer intent: As a cloud administrator managing Windows virtual machines, I want to utilize the Azure Metadata Service for scheduled events, so that I can prepare my applications for maintenance tasks and ensure minimal disruption during VM maintenance operations.
 ---
 
 # Azure Metadata Service: Scheduled Events for Windows VMs

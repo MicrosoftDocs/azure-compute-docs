@@ -3,12 +3,17 @@ title: Back up and recover Oracle Database on an Azure Linux VM by using Azure B
 description: Learn how to back up and recover an Oracle Database instance by using the Azure Backup service.
 author: cro27
 ms.service: oracle-on-azure
-ms.custom: devx-track-azurecli, linux-related-content
 ms.collection: linux
 ms.topic: how-to
 ms.date: 10/02/2024
 ms.author: cholse
 ms.reviewer: jjaygbay1
+ms.custom:
+  - devx-track-azurecli
+  - linux-related-content
+  - sfi-image-nochange
+  - sfi-ropc-nochange
+# Customer intent: "As a database administrator, I want to back up and recover my Oracle Database on an Azure Linux VM, so that I can ensure data integrity and restore operations are efficient and application-consistent."
 ---
 
 # Back up and recover Oracle Database on an Azure Linux VM by using Azure Backup

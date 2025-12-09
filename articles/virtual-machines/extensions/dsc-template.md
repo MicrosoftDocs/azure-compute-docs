@@ -2,7 +2,7 @@
 title: Desired State Configuration extension with Azure Resource Manager templates
 description: Learn about the Resource Manager template definition for the Desired State Configuration (DSC) extension in Azure.
 services: virtual-machines
-author: mgoedtel
+author: mgreenegit
 ms.custom: devx-track-arm-template
 keywords: 'dsc'
 ms.assetid: b5402e5a-1768-4075-8c19-b7f7402687af
@@ -11,13 +11,14 @@ ms.subservice: extensions
 ms.collection: windows
 ms.topic: concept-article
 ms.tgt_pltfrm: vm-windows
-ms.date: 03/13/2022
-ms.author: magoedte
+ms.date: 08/20/2025
+ms.author: migreene
+# Customer intent: As a cloud administrator, I want to deploy the Desired State Configuration extension using Resource Manager templates so that I can manage the configuration of virtual machines effectively before transitioning to Azure Machine Configuration.
 ---
 # Desired State Configuration extension with Azure Resource Manager templates
 
 > [!NOTE]
-> DSC extension will be retired on March 31, 2028. Please transition to
+> DSC extension will be retired on March 31, 2028. Please move to
 > [Azure Machine Configuration](/azure/governance/machine-configuration/overview) by that date.
 > For more information, see the [blog post](https://azure.microsoft.com/updates/?id=485828)
 > announcement. The Azure Machine Configuration service combines certain features of DSC Extension, Azure
@@ -25,13 +26,16 @@ ms.author: magoedte
 > Azure Machine Configuration also includes hybrid machine support through
 > [Arc-enabled servers](/azure/azure-arc/servers/overview).
 
+
 This article describes the Azure Resource Manager template for the [Desired State Configuration
 (DSC) extension handler](dsc-overview.md).
 
 > [!NOTE]
 > You might encounter slightly different schema examples. The change in schema occurred in the October 2016 release. For details, see [Update from a previous format](#update-from-a-previous-format).
 
-## Bicep example for a VM
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
+
+## Bicep example for a virtual machine
 
 The DSC extension inherits default extension properties.
 For more information, see
@@ -104,7 +108,7 @@ All settings are saved in a settings text file on the VM.
 Properties listed under **settings** are public properties.
 Public properties aren't encrypted in the settings text file.
 Properties listed under **protectedSettings** are encrypted with a certificate
-and are not shown in plain text in the settings file on the VM.
+and aren't shown in plain text in the settings file on the VM.
 
 If the configuration needs credentials,
 you can include the credentials in **protectedSettings**:

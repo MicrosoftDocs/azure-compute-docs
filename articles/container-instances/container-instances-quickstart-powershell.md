@@ -6,8 +6,9 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
-ms.date: 08/29/2024
+ms.date: 11/17/2025
 ms.custom: devx-track-azurepowershell, mvc, mode-api
+# Customer intent: "As a developer, I want to quickly deploy a Docker container to Azure Container Instances using PowerShell, so that I can run my containerized web application without the overhead of full container orchestration."
 ---
 
 # Quickstart: Deploy a container instance in Azure using Azure PowerShell
@@ -16,9 +17,9 @@ Use Azure Container Instances to run serverless Docker containers in Azure with 
 
 In this quickstart, you use Azure PowerShell to deploy an isolated Windows container and make its application available with a fully qualified domain name (FQDN) and port. A few seconds after you execute a single deployment command, you can browse to the application running in the container:
 
-![App deployed to Azure Container Instances viewed in browser][./media/container-instances-quickstart/view-an-application-running-in-an-azure-container-instance.png]
+![Screenshot of app deployed to Azure Container Instances viewed in browser.](./media/container-instances-quickstart/view-an-application-running-in-an-azure-container-instance.png)
 
-If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/) before you begin.
+If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 [!INCLUDE [updated-for-az](~/reusable-content/ce-skilling/azure/includes/updated-for-az.md)]
 
@@ -49,7 +50,7 @@ $port = New-AzContainerInstancePortObject -Port 80 -Protocol TCP
 Now that you have a resource group and port, you can run a container exposed to the internet in Azure. To create a container instance with Azure PowerShell, you first need to create a `ContainerInstanceObject` by providing a name, image, and port for the container. In this quickstart, you use the public `mcr.microsoft.com/azuredocs/aci-helloworld` image.
 
 ```azurepowershell-interactive
-New-AzContainerInstanceObject -Name myContainer -Image mcr.microsoft.com/azuredocs/aci-helloworld -Port @($port)
+$containerInstance = New-AzContainerInstanceObject -Name myContainer -Image mcr.microsoft.com/azuredocs/aci-helloworld -Port @($port)
 ```
 
 Next, use the [New-AzContainerGroup][New-AzContainerGroup] cmdlet. You need to provide a name for the container group, your resource group's name, a location for the container group, the container instance you created, the operating system type, and a unique IP address DNS name label.
@@ -57,8 +58,17 @@ Next, use the [New-AzContainerGroup][New-AzContainerGroup] cmdlet. You need to p
 Execute a command similar to the following to start a container instance. Set a `-IPAddressDnsNameLabel` value that's unique within the Azure region where you create the instance. If you receive a "DNS name label not available" error message, try a different DNS name label.
 
 ```azurepowershell-interactive
-$containerGroup = New-AzContainerInstanceObject -ResourceGroupName myResourceGroup -Name myContainerGroup -Location EastUS -Container myContainer -OsType Windows -IPAddressDnsNameLabel aci-quickstart-win -IpAddressType Public -IPAddressPort @($port)
+$containerGroup = New-AzContainerGroup -ResourceGroupName myResourceGroup -Name myContainerGroup -Location EastUS -Container $containerInstance -OsType Windows -IPAddressDnsNameLabel aci-quickstart-win -IpAddressType Public -IPAddressPorts @($port)
 ```
+
+To make the [container group zonal](/azure/reliability/reliability-container-instances#availability-zone-support), use the `-Zone` argument and specify the logical zone number:
+
+```azurepowershell-interactive
+$containerGroup = New-AzContainerGroup -ResourceGroupName myResourceGroup -Name myContainerGroup -Location EastUS -Container myContainer -OsType Windows -IPAddressDnsNameLabel aci-quickstart-win -IpAddressType Public -IPAddressPorts @($port) -Zone 1
+```
+
+> [!IMPORTANT]
+> Zonal container groups are only available in regions that support availability zones. To see if your region supports availability zones, see [Azure Regions List](/azure/reliability/regions-list).
 
 Within a few seconds, you should receive a response from Azure. The container's `ProvisioningState` is initially **Creating**, but should move to **Succeeded** within a minute or two. Check the deployment state with the [Get-AzContainerGroup][Get-AzContainerGroup] cmdlet:
 
@@ -99,7 +109,7 @@ Events                   : {}
 
 If the container's `ProvisioningState` is **Succeeded**, go to its FQDN in your browser. If you see a web page similar to the following, congratulations! You successfully deployed an application running in a Docker container to Azure.
 
-![View an app deployed to Azure Container Instances in browser][./media/container-instances-quickstart/view-an-application-running-in-an-azure-container-instance.png]
+![Screenshot of view an app deployed to Azure Container Instances in browser.](./media/container-instances-quickstart/view-an-application-running-in-an-azure-container-instance.png)
 
 ## Clean up resources
 

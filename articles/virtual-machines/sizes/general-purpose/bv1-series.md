@@ -8,6 +8,7 @@ ms.topic: concept-article
 ms.date: 09/24/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
+# Customer intent: "As a cloud architect, I want to understand the specifications and capabilities of the Bv1 size series, so that I can select the appropriate virtual machine sizes for my workloads based on performance and resource needs."
 ---
 
 # Bv1 sizes series

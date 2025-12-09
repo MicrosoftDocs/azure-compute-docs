@@ -1,16 +1,17 @@
 ---
 title: Azure Diagnostics Extension for Windows
 description: Monitor Azure Windows VMs using the Azure Diagnostics Extension
-author: ju-shim
+author: cynthn
 manager: ashwink
 ms.service: azure-virtual-machines
 ms.subservice: extensions
 ms.collection: windows
 ms.topic: how-to
 ms.date: 04/06/2018
-ms.author: jushiman
+ms.author: cynthn
 ms.custom: devx-track-azurecli
 ms.devlang: azurecli
+# Customer intent: As a system administrator, I want to deploy the Azure Diagnostics Extension on my Windows VMs, so that I can collect and analyze performance data and event logs for effective monitoring and troubleshooting.
 ---
 # Azure Diagnostics Extension for Windows VMs
 
@@ -19,6 +20,8 @@ ms.devlang: azurecli
 ## Overview
 
 The Azure Diagnostics VM extension enables you to collect monitoring data, such as performance counters and event logs, from your Windows VM. You can granularly specify what data you want to collect and where you want the data to go, such as an Azure Storage account or an Azure Event Hub. You can also use this data to build charts in the Azure portal or create metric alerts.
+
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
 
 ## Prerequisites
 

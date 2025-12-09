@@ -4,6 +4,7 @@ ms.author: guywild
 ms.service: azure-monitor
 ms.topic: include
 ms.date: 02/27/2024
+# Customer intent: "As a system administrator, I want to confirm the compatibility of the Azure VM Dependency agent with various Windows operating systems, so that I can ensure proper monitoring and dependency tracking for my virtual machines."
 ---
 
 | Operating system | Azure VM Dependency agent |

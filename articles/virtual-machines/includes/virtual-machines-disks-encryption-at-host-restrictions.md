@@ -9,6 +9,7 @@
 ms.custom:
   - include file
   - ignite-2023
+# Customer intent: As a cloud architect, I want to understand the requirements for enabling encryption on Azure Disks, so that I can ensure compliance and security for my virtual machines and storage solutions.
 ---
 - Can't be enabled on virtual machines (VMs) or virtual machine scale sets that currently or ever had Azure Disk Encryption enabled. 
 - Azure Disk Encryption can't be enabled on disks that have encryption at host enabled.

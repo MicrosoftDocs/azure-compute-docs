@@ -8,6 +8,7 @@ ms.custom: devx-track-azurecli, linux-related-content
 ms.collection: linux
 ms.topic: how-to
 ms.date: 07/16/2024
+# Customer intent: As a system administrator, I want to download a Linux VHD from Azure, so that I can create backups or migrate virtual machines to another environment.
 ---
 
 # Download a Linux VHD from Azure

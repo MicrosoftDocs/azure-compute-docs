@@ -7,6 +7,7 @@ ms.custom: linux-related-content
 ms.topic: concept-article
 ms.date: 06/29/2021
 ms.author: rogarana
+# Customer intent: As a developer, I want to optimize application performance on premium storage, so that I can ensure my high-performance apps meet the demands of I/O-intensive workloads efficiently.
 ---
 
 # Azure premium storage: Design for high performance

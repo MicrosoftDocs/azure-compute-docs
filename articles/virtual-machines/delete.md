@@ -1,12 +1,13 @@
 ---
 title: Delete a VM and attached resources
 description: Learn how to delete a VM and the resources attached to the VM.
-author: ju-shim
+author: cynthn
 ms.service: azure-virtual-machines
 ms.topic: how-to
 ms.date: 05/09/2022
-ms.author: jushiman
+ms.author: cynthn
 ms.custom: template-how-to, devx-track-azurecli, devx-track-azurepowershell
+# Customer intent: As a cloud administrator, I want to configure delete options for virtual machines and attached resources, so that I can control which components are removed when the VM is deleted and manage costs effectively.
 ---
 
 # Delete a VM and attached resources
@@ -387,6 +388,16 @@ A: For shared disks, you can't set the ‘deleteOption’ property to ‘Delete�
 A: This feature is supported on all managed disk types used as OS disks and Data disks, NICs, and Public IPs
 
 
+### Q: What happens to the data on the disks when a VM is deleted?
+
+A: When a VM is deleted, the data on the disks is not automatically deleted. The OS disk and any attached data disks remain in your resource group and continue to incur charges. You need to manually delete these disks if you no longer need them.
+
+
+### Q: What happens to VM backups when I delete the VM?
+
+A: Azure Backup retains VM backups according to the backup policy, even after the VM is deleted. Retained backups continue to incur storage charges until they are deleted. To avoid unnecessary costs, review your backup retention and delete backups you no longer need.
+
+To manage or delete VM backups, go to the Azure portal, navigate to your **Recovery Services** vault, select **Backup items**, then select **Azure Virtual Machine**, and choose the VM whose backups you want to manage. From there, you can stop backup and delete backup data as needed.
 ### Q: Can I use this feature on disks and NICs that aren't associated with a VM?
 
 A: No, this feature is only available on disks and NICs associated with a VM.

@@ -7,6 +7,7 @@ ms.service: azure-virtual-machines
 ms.subservice: hpc
 ms.topic: how-to
 ms.date: 07/25/2024
+# Customer intent: As a cloud engineer, I want to set up an Azure virtual machine for HPC or AI with GPU support, so that I can efficiently run high-performance computing workloads and GPU-accelerated applications.
 ---
 
 # Set up Azure HPC or AI VMs

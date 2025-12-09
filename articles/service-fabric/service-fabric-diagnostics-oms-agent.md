@@ -5,9 +5,12 @@ ms.topic: how-to
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
-ms.custom: devx-track-azurecli
 services: service-fabric
 ms.date: 07/14/2022
+ms.custom:
+  - devx-track-azurecli
+  - sfi-image-nochange
+# Customer intent: As a DevOps engineer, I want to set up the Log Analytics agent for Azure Service Fabric clusters, so that I can monitor performance and diagnostics data efficiently across my containerized applications.
 ---
 
 # Performance Monitoring with Azure Monitor logs

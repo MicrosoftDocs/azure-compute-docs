@@ -8,6 +8,7 @@ ms.date: 02/28/2023
 ms.author: mattmcinnes
 ms.reviewer: cynthn
 
+# Customer intent: "As an IT administrator managing virtual machines, I want to understand the differences between maintenance and downtime events, so that I can implement strategies to minimize service interruptions and ensure high availability for critical applications."
 ---
 
 # Understand VM reboots - maintenance vs. downtime

@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a system administrator, I want to prepare and configure a Service Fabric standalone cluster, so that I can ensure it meets production requirements and is resilient against failures.
 ---
 
 # Plan and prepare your Service Fabric Standalone cluster deployment

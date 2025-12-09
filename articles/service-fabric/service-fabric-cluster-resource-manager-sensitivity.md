@@ -5,7 +5,8 @@ author: tracygooo
 
 ms.topic: concept-article
 ms.date: 09/07/2023
-ms.author: jinghuafeng
+ms.author: mattmcinnes
+# Customer intent: As a cloud service administrator, I want to configure service sensitivity and maximum load settings for replicas, so that I can optimize resource allocation and ensure the high availability of critical services in the cluster.
 ---
 
 # 1. Service sensitivity

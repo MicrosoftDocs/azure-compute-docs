@@ -7,6 +7,7 @@ ms.service: azure-virtual-machines
 ms.topic: concept-article
 ms.date:     01/10/2024
 ms.subservice: sizes
+# Customer intent: "As an IT administrator managing virtual machines, I want to migrate from Msv2 and Mdsv2 sizes to Mv3 sizes, so that I can avoid service disruptions and take advantage of improved performance and cost benefits before the retirement deadline."
 ---
 
 # Msv2 and Mdsv2 isolated sizes retirement

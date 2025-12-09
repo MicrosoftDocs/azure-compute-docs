@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a cloud developer, I want to understand the core concepts of microservices on a distributed platform, so that I can effectively design, deploy, and manage scalable applications using Service Fabric."
 ---
 
 # So you want to learn about Service Fabric?

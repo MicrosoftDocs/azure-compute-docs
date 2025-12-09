@@ -8,6 +8,7 @@ ms.topic: concept-article
 ms.date: 07/31/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
+# Customer intent: "As a cloud architect, I want to assess the specifications and capabilities of the DCedsv5 series virtual machine sizes, so that I can determine the appropriate size for my workloads based on CPU, memory, and storage requirements."
 ---
 
 # DCedsv5 sizes series

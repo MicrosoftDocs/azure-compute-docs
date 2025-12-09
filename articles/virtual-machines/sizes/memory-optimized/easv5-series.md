@@ -8,6 +8,7 @@ ms.topic: concept-article
 ms.date: 08/01/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
+# Customer intent: As a cloud architect, I want to understand the specifications and performance characteristics of the Easv5-size series, so that I can select the appropriate virtual machine size for my applications based on their resource requirements and expected performance.
 ---
 
 # Easv5 sizes series

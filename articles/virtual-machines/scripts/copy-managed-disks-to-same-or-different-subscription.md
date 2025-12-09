@@ -8,6 +8,7 @@ ms.topic: sample
 ms.date: 02/22/2023
 ms.author: rogarana
 ms.custom: mvc, devx-track-azurecli
+# Customer intent: As a cloud administrator, I want to copy managed disks between subscriptions using Azure CLI, so that I can efficiently manage resources and maintain consistency across environments.
 ---
 
 # Copy managed disks to same or different subscription with CLI
@@ -67,7 +68,7 @@ az account set --subscription $targetSubscriptionId
 
 #Copy managed disk to different subscription using managed disk Id and disk encryption set ID
 #Add --location parameter to change the location
-az disk create -g $targetResourceGroupName -n $managedDiskName --source $managedDiskId --disk-encryption-set $diskEncrpytonSetId
+az disk create -g $targetResourceGroupName -n $managedDiskName --source $managedDiskId --disk-encryption-set $diskEncryptionSetId
 ```
 
 ## Clean up resources

@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.author: rogarana
 ms.service: azure-disk-storage
 ms.custom: devx-track-azurepowershell
+# Customer intent: As an IT admin, I want to enable server-side encryption with customer-managed keys for managed disks using PowerShell, so that I can ensure data security and compliance with my organization's encryption policies.
 ---
 
 # Azure PowerShell - Enable customer-managed keys with server-side encryption - managed disks

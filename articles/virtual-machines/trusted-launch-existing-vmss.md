@@ -9,6 +9,7 @@ ms.subservice: trusted-launch
 ms.topic: how-to
 ms.date: 06/18/2025
 ms.custom: template-how-to, devx-track-azurepowershell, devx-track-arm-template
+# Customer intent: "As a cloud administrator, I want to enable Trusted launch on existing Uniform scale sets, so that I can enhance the security of virtual machines against advanced threats like boot kits and rootkits."
 ---
 
 # Enable Trusted launch on existing Uniform scale set
@@ -37,6 +38,9 @@ Azure Virtual machine Scale sets supports enabling Trusted launch on existing [U
     > - Virtual machine size can be changed along with Trusted launch upgrade. Ensure quota for new VM Size is in-place to avoid upgrade failures. Refer to [Check vCPU quotas](quotas.md).
     > - Change to Virtual machine size re-creates the Virtual machine instance with new size and requires downtime of individual Virtual machine instance. It can be done in a Rolling Upgrade fashion to avoid Scale set downtime.
 - Scale set should be configured with [Trusted launch supported OS Image](trusted-launch.md#operating-systems-supported). For [Azure compute gallery OS image](azure-compute-gallery.md), ensure image definition is marked as [TrustedLaunchSupported](trusted-launch-portal.md#deploy-a-trusted-launch-vm-from-an-azure-compute-gallery-image)
+    > [!IMPORTANT]
+    >
+    > Changing the OS image of a scale set recreates the OS disks for all VM instances using the new image. This change means any data or custom configurations stored on the current OS disks is lost post upgrade. Ensure back up of any important information before proceeding.
 
 ## Enable Trusted launch on existing Scale set Uniform
 
@@ -276,10 +280,10 @@ Make sure the latest [Azure PowerShell](/powershell/azure/install-azps-windows) 
     $vmss = Get-AzVmss -VMScaleSetName MyVmssName -ResourceGroupName MyResourceGroup
 
     # Enable Trusted Launch
-    Set-AzVmssSecurityProfile -virtualMachineScaleSet $vmss -SecurityType TrustedLaunch
+    $vmss = Set-AzVmssSecurityProfile -virtualMachineScaleSet $vmss -SecurityType TrustedLaunch
 
     # Enable Trusted Launch settings
-    Set-AzVmssUefi -VirtualMachineScaleSet $vmss -EnableVtpm $true -EnableSecureBoot $true
+    $vmss = Set-AzVmssUefi -VirtualMachineScaleSet $vmss -EnableVtpm $true -EnableSecureBoot $true
 
     Update-AzVmss -ResourceGroupName $vmss.ResourceGroupName `
         -VMScaleSetName $vmss.Name -VirtualMachineScaleSet $vmss `
@@ -319,9 +323,9 @@ Make sure the latest [Azure PowerShell](/powershell/azure/install-azps-windows) 
 
 ---
 
-## Roll-back
+## Roll back
 
-To roll-back changes from Trusted launch to previous known good configuration, you need to set `securityType` of Scale set to **Standard**.
+To roll back changes from Trusted launch to previous known good configuration, you need to set `securityType` of Scale set to **Standard**.
 
 ### [Portal](#tab/portal)
 
@@ -342,7 +346,7 @@ To roll-back changes from Trusted launch to previous known good configuration, y
 
 ### [Template](#tab/template)
 
-To roll-back changes from Trusted launch to previous known good configuration, set `securityProfile` to **Standard** as shown. Optionally, you can also revert other parameter changes - OS image, VM size, and repeat steps 5-8 described with [Enable Trusted launch on existing scale set](#enable-trusted-launch-on-existing-scale-set-uniform)
+To roll back changes from Trusted launch to previous known good configuration, set `securityProfile` to **Standard** as shown. Optionally, you can also revert other parameter changes - OS image, VM size, and repeat steps 5-8 described with [Enable Trusted launch on existing scale set](#enable-trusted-launch-on-existing-scale-set-uniform)
 
 ```json
 "securityProfile": {
@@ -355,9 +359,9 @@ To roll-back changes from Trusted launch to previous known good configuration, s
 
 > [!NOTE]
 >
-> Required Azure CLI version **2.62.0** or above for roll-back of uniform scale set from Trusted launch to Non-Trusted launch configuration.
+> Required Azure CLI version **2.62.0** or above for roll back of uniform scale set from Trusted launch to Non-Trusted launch configuration.
 
-To roll-back changes from Trusted launch to previous known good configuration, set `--security-type` to `Standard` as shown. Optionally, you can also revert other parameter changes - OS image, virtual machine size, and repeat steps 2-5 described with [Enable Trusted launch on existing scale set](#enable-trusted-launch-on-existing-scale-set-uniform)
+To roll back changes from Trusted launch to previous known good configuration, set `--security-type` to `Standard` as shown. Optionally, you can also revert other parameter changes - OS image, virtual machine size, and repeat steps 2-5 described with [Enable Trusted launch on existing scale set](#enable-trusted-launch-on-existing-scale-set-uniform)
 
 ```azurecli-interactive
 az vmss update --name MyScaleSet `
@@ -367,12 +371,12 @@ az vmss update --name MyScaleSet `
 
 ### [PowerShell](#tab/powershell)
 
-To roll-back changes from Trusted launch to previous known good configuration, set `-SecurityType` to `Standard` as shown. Optionally, you can also revert other parameter changes - OS image, virtual machine size, and repeat steps 2-5 described with [Enable Trusted launch on existing scale set](#enable-trusted-launch-on-existing-scale-set-uniform)
+To roll back changes from Trusted launch to previous known good configuration, set `-SecurityType` to `Standard` as shown. Optionally, you can also revert other parameter changes - OS image, virtual machine size, and repeat steps 2-5 described with [Enable Trusted launch on existing scale set](#enable-trusted-launch-on-existing-scale-set-uniform)
 
 ```azurepowershell-interactive
 $vmss = Get-AzVmss -VMScaleSetName MyVmssName -ResourceGroupName MyResourceGroup
 
-# Roll-back Trusted Launch
+# roll back Trusted Launch
 Set-AzVmssSecurityProfile -virtualMachineScaleSet $vmss -SecurityType Standard
 
 Update-AzVmss -ResourceGroupName $vmss.ResourceGroupName `

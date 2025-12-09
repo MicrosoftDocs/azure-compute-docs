@@ -8,6 +8,7 @@ ms.topic: how-to
 ms.service: azure-disk-storage
 ms.tgt_pltfrm: linux
 ms.custom: references_regions, devx-track-azurepowershell
+# Customer intent: As an IT administrator, I want to upload a VHD to an Azure managed disk using PowerShell, so that I can restore backups or migrate disks across regions efficiently and securely.
 ---
 
 # Upload a VHD to Azure or copy a managed disk to another region - Azure PowerShell

@@ -9,6 +9,7 @@ ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.topic: how-to
 ms.date: 06/14/2024
 ms.reviewer: cynthn
+# Customer intent: As a cloud architect, I want to create virtual machine scale sets from a generalized image in an Azure Compute Gallery, so that I can efficiently manage and deploy scalable applications in my cloud environment.
 ---
 
 # Create a scale set from a generalized image

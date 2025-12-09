@@ -9,6 +9,7 @@ ms.date: 05/08/2025
 ms.author: wwilliams
 ms.reviewer: mattmcinnes
 ms.custom: include file
+# Customer intent: "As a cloud architect, I want to access a detailed specification sheet for Endsv6-series VM sizes, so that I can select the appropriate virtual machine configuration for my application requirements."
 ---
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
 |---|---|---|

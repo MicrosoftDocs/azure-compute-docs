@@ -8,6 +8,7 @@ ms.topic: concept-article
 ms.date: 05/05/2025
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
+# Customer intent: As a cloud architect, I want to assess the specifications of M-series virtual machines, so that I can determine their suitability for deploying large-scale applications and databases that require high vCPU counts and substantial memory.
 ---
 
 # M sizes series

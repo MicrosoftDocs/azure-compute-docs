@@ -6,7 +6,8 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
-ms.date: 08/29/2024
+ms.date: 11/17/2025
+# Customer intent: As a cloud administrator, I want to implement best practices for deploying workloads on container instances, so that I can ensure security, efficiency, and scalability in my containerized applications.
 ---
 
 # Best practices and considerations for Azure Container Instances
@@ -14,6 +15,9 @@ ms.date: 08/29/2024
 Azure Container Instances (ACI) allow you to package, deploy, and manage cloud applications without having to manage the underlying infrastructure. Common scenarios that run on ACI include burst workloads, task automation, and build jobs. You can use ACI by defining the resources they need per container group, including vCPU and memory. ACI is a great solution for any scenario that can operate in isolated container. ACI provides fast start-up times, hyper-visor level security, custom container sizes, and more. The following information helps you determine if Azure Container Instances is best for your scenario.
 
 ## What to consider
+> [!IMPORTANT]
+> If you deploy your container group into a virtual network, you must use a NAT gateway for outbound connectivity. This is the only supported configuration for outbound connectivity from your container group in a virtual network. See [Configure a NAT gateway for static IP address for outbound traffic from a container group](./container-instances-nat-gateway.md) for more information on how to configure this.
+
 User’s credentials passed via command line interface (CLI) are stored as plain text in the backend. Storing credentials in plain text is a security risk; Microsoft advises customers to store user credentials in CLI environment variables to ensure they're encrypted/transformed when stored in the backend.
 
 There are default limits that may require quota increases. For more details: [Resource availability & quota limits for ACI - Azure Container Instances | Microsoft Learn](./container-instances-resource-and-quota-limits.md)

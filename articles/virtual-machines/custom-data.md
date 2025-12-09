@@ -8,6 +8,7 @@
  ms.date: 02/24/2023
  ms.author: mimckitt
  ms.reviewer: mattmcinnes
+# Customer intent: As a cloud administrator, I want to inject custom data into Azure virtual machines during provisioning, so that I can configure the VM with specific scripts and metadata for seamless setup and management.
 ---
 
 # Custom data and cloud-init on Azure Virtual Machines

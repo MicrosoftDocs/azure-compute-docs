@@ -6,6 +6,7 @@ ms.author: rogarana
 ms.date: 12/09/2024
 ms.topic: concept-article
 ms.service: azure-disk-storage
+# Customer intent: "As a cloud architect, I want to understand the scalability and performance targets for virtual machine disks, so that I can optimize my infrastructure design and ensure it meets the performance needs of my applications."
 ---
 
 # Scalability and performance targets for VM disks

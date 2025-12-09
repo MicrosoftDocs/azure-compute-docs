@@ -7,6 +7,7 @@ ms.topic: concept-article
 ms.date: 04/08/2025
 ms.author: minnielahoti
 ms.reviewer: azmetadatadev
+# Customer intent: "As a cloud security administrator, I want to define custom RBAC allowlists for metadata service endpoints, so that I can enhance the security of our virtual machines by restricting access to necessary applications and users only."
 ---
 
 # Advanced configuration for MSP

@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: "As a software developer, I want to implement stateful and stateless Reliable Services using the Service Fabric framework, so that I can take advantage of built-in reliability, availability, and scalability features for my applications."
 ---
 
 # Reliable Services overview

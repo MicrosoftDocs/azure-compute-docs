@@ -7,8 +7,9 @@ ms.service: azure-container-instances
 ms.custom:
   - ignite-2024
 ms.topic: how-to
-ms.date: 5/19/2025
+ms.date: 11/17/2025
 ms.reviewer: tomvcassidy
+# Customer intent: As a DevOps engineer, I want to request a container group from a standby pool in Azure Container Instances, so that I can effectively manage container deployments and optimize resource usage during scaling.
 ---
 
 

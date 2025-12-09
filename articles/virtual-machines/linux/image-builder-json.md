@@ -9,6 +9,7 @@ ms.topic: reference
 ms.service: azure-virtual-machines
 ms.subservice: image-builder
 ms.custom: references_regions, devx-track-bicep, devx-track-arm-template, linux-related-content, devx-track-azurecli
+# Customer intent: As an IT professional tasked with creating and managing virtual machine images, I want to develop a Bicep file or ARM template for Azure Image Builder, so that I can automate the image creation process with customized configurations efficiently.
 ---
 
 # Create an Azure Image Builder Bicep or ARM template JSON template
@@ -97,6 +98,9 @@ resource azureImageBuilder 'Microsoft.VirtualMachineImages/imageTemplates@2022-0
 ```
 
 ---
+
+Follow all [Best Practices](../image-builder-best-practices.md) while creating image templates.
+
 ## API version
 The API version will change over time as the API changes. See [What's new in Azure VM Image Builder](../image-builder-api-update-release-notes.md) for all major API changes and feature updates for the Azure VM Image Builder service.
 

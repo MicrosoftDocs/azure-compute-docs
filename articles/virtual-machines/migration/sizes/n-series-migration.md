@@ -7,6 +7,7 @@ author: mattmcinnes
 ms.author: mattmcinnes
 ms.topic: concept-article
 ms.date: 02/27/2023
+# Customer intent: "As a cloud architect, I want to migrate GPU compute workloads to newer VM series, so that I can leverage improved performance and optimize costs for AI and HPC applications."
 ---
  
 # Migration Guide for GPU Compute Workloads in Azure

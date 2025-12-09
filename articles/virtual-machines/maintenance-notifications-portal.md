@@ -5,6 +5,7 @@ ms.service: azure-virtual-machines
 ms.subservice: maintenance
 ms.topic: how-to
 ms.date: 11/14/2022
+# Customer intent: "As an IT administrator, I want to view and manage maintenance notifications for virtual machines in the portal, so that I can ensure timely updates and minimize downtime during planned maintenance events."
 ---
 
 # Handling planned maintenance notifications using the portal

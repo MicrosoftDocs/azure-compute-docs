@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a cloud administrator, I want to manage the upgrade mode of my Service Fabric cluster, so that I can ensure it remains secure and up-to-date while meeting my organization’s operational requirements."
 ---
 
 # Manage Service Fabric cluster upgrades

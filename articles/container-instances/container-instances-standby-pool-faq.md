@@ -7,8 +7,9 @@ ms.service: azure-container-instances
 ms.custom:
   - ignite-2024
 ms.topic: how-to
-ms.date: 5/10/2025
+ms.date: 11/17/2025
 ms.reviewer: tomvcassidy
+# Customer intent: As a cloud developer, I want to understand how to configure and manage standby pools in Azure Container Instances, so that I can optimize resource allocation and handle container requests effectively.
 ---
 
 # Frequently asked questions about standby pools for Azure Container Instances

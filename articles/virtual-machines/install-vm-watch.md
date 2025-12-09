@@ -7,6 +7,7 @@ ms.service: azure-virtual-machines
 ms.topic: get-started
 ms.date:     09/23/2024
 ms.subservice: monitoring
+# Customer intent: "As a cloud administrator, I want to install the Application Health VM extension to enable VM watch on my virtual machines, so that I can monitor their health and performance efficiently."
 ---
 
 # Install VM watch (preview)

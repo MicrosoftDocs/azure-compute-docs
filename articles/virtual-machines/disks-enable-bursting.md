@@ -7,6 +7,7 @@ ms.date: 01/14/2025
 ms.topic: how-to
 ms.service: azure-disk-storage
 ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
+# Customer intent: "As an IT administrator, I want to enable on-demand disk bursting for my managed SSDs, so that I can allow workloads to exceed their provisioned limits as needed for performance scalability."
 ---
 
 # Enable on-demand bursting

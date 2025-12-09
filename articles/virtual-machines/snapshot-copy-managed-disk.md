@@ -6,6 +6,7 @@ ms.author: rogarana
 ms.service: azure-disk-storage
 ms.topic: how-to
 ms.date: 02/13/2025
+# Customer intent: "As an IT administrator, I want to create a snapshot of a virtual hard disk, so that I can use it for backup or to troubleshoot virtual machine issues efficiently."
 ---
 
 # Create a snapshot of a virtual hard disk

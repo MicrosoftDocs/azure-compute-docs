@@ -8,6 +8,7 @@ ms.topic: concept-article
 ms.date: 07/30/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
+# Customer intent: "As a cloud architect, I want detailed specifications for the Fasv6 VM size series, so that I can select the appropriate virtual machine for my application's performance and capacity needs."
 ---
 
 # Fasv6 sizes series

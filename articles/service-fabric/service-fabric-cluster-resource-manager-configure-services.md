@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a cloud engineer, I want to configure metrics and placement settings for my Service Fabric services, so that I can optimize resource allocation and ensure proper service performance within the cluster.
 ---
 
 # Configuring cluster resource manager settings for Service Fabric services

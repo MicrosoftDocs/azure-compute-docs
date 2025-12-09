@@ -6,8 +6,9 @@ ms.author: mimckitt
 ms.topic: overview
 ms.service: azure-virtual-machine-scale-sets
 ms.date: 03/21/2025
-ms.reviewer: ju-shim
+ms.reviewer: cynthn
 ms.custom: upgradepolicy. maxsurge, ignite-2024
+# Customer intent: As a cloud administrator, I want to implement rolling upgrades with MaxSurge for Virtual Machine Scale Sets, so that I can maintain high service availability and minimize downtime during instance upgrades.
 ---
 # Rolling upgrades with MaxSurge on Virtual Machine Scale Sets
 

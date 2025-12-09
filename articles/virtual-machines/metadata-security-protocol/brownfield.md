@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.date: 04/08/2025
 ms.author: minnielahoti
 ms.reviewer: azmetadatadev
+# Customer intent: "As an IT administrator managing existing Virtual Machines, I want to enable the Metadata Security Protocol on my VMs or Scale Sets so that I can enhance security and compliance for my cloud infrastructure."
 ---
 
 # Enable MSP on an existing VM or virtual machine scale set
@@ -26,7 +27,9 @@ See [Configure MSP via the portal](./other-examples/portal.md).
 
 ### Use an ARM template
 
-### Use the REST API
+See [examples](./other-examples/arm-templates.md)
+
+### With REST API
 
 Enable MSP with both WireServer and Azure Instance Metadata Service protected in `Audit` mode:
 

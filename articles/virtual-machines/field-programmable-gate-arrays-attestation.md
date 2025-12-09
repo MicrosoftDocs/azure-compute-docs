@@ -5,6 +5,7 @@ ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
 ms.date: 11/07/2024
+# Customer intent: As an FPGA developer, I want to validate my design checkpoint files using the attestation service on Azure NP-series VMs, so that I can ensure the integrity and compatibility of my images for deployment on Xilinx FPGA hardware.
 ---
 # FPGA attestation for Azure NP-Series VMs (Preview)
 

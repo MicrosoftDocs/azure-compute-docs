@@ -7,6 +7,7 @@ ms.subservice: sizes
 ms.topic: concept-article
 ms.date: 04/16/2024
 ms.author: mattmcinnes
+# Customer intent: "As a cloud architect, I want to review the A family VM size series, so that I can select the appropriate virtual machine sizes for various workloads and use cases in my projects."
 ---
 
 # 'A' family general purpose VM size series

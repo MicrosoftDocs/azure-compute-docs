@@ -5,8 +5,9 @@ author: mimckitt
 ms.author: mimckitt
 ms.service: azure-container-instances
 ms.topic: how-to
-ms.date: 5/19/2025
+ms.date: 11/17/2025
 ms.reviewer: tomvcassidy
+# Customer intent: "As a cloud admin, I want to configure role-based access control for standby pools in Azure Container Instances, so that I can ensure proper permissions for managing resources and prevent operational issues."
 ---
 
 # Configure role permissions for standby pools in Azure Container Instances
@@ -22,24 +23,25 @@ To allow standby pools to create and manage container instances in your subscrip
 
 To cover as many scenarios as possible, it is suggested to provide the following permissions to the standby pool resource provider:
 
-- **Container Instance Contributor**
+- **Azure Container Instances Contributor**
+- **Standby Container Group Pool Contributor**
 - **Network Contributor**
 - **Managed Identity Contributor**
 - **Managed Identity Operator**
 - **Storage Blob Data Contributor** (if using Azure Storage for container data)
-- **Azure Container Registry Reader** (if using images stored in Azure Container Registry)
+- **Container Registry Repository Reader** (if using images stored in Azure Container Registry)
 
 1. In the Azure portal, navigate to your subscriptions.
 1. Select the subscription you want to adjust permissions for.
 1. Select Access Control (IAM).
 1. Select Add and Add role assignment.
-1. Under the Role tab, search for **Container Instance Contributor** and select it.
+1. Under the Role tab, search for **Azure Container Instances Contributor** and select it.
 1. Move to the Members tab.
 1. Select + Select members.
 1. Search for **Standby Pool Resource Provider** and select it.
 1. Move to the Review + assign tab.
 1. Apply the changes.
-1. Repeat the above steps and assign the **Network Contributor** and **Managed Identity Contributor** roles to the Standby Pool Resource Provider. If you're using Azure Container Registry or Azure Storage, assign the **Azure Container Registry Reader** and **Storage Blob Data Contributor** roles as well.
+1. Repeat the above steps and assign the **Network Contributor** and **Managed Identity Contributor** roles to the Standby Pool Resource Provider. If you're using Azure Container Registry or Azure Storage, assign the **Container Registry Repository Reader** and **Storage Blob Data Contributor** roles as well.
 
 For more information on assigning roles, see [assign Azure roles using the Azure portal](/azure/role-based-access-control/quickstart-assign-role-user-portal).
 

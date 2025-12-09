@@ -7,9 +7,12 @@ ms.subservice: security
 ms.collection: windows
 ms.topic: troubleshooting
 ms.author: mbaldwin
-ms.date: 05/14/2025
+ms.date: 09/23/2025
+# Customer intent: "As an IT professional, I want to troubleshoot Azure Disk Encryption issues for Windows VMs, so that I can ensure proper encryption and compliance for my organization's data security requirements."
 ---
 # Azure Disk Encryption troubleshooting guide
+
+[!INCLUDE [Azure Disk Encryption retirement notice](~/reusable-content/ce-skilling/azure/includes/security/azure-disk-encryption-retirement.md)]
 
 **Applies to:** :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets
 

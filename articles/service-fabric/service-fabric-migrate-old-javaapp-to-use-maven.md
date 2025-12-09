@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: devx-track-extended-java
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: "As a Java developer maintaining legacy applications, I want to migrate from the Service Fabric Java SDK to Maven for dependencies, so that I can modernize my build process and ensure compatibility with the latest Service Fabric features."
 ---
 
 # Update your previous Java Service Fabric application to fetch Java libraries from Maven

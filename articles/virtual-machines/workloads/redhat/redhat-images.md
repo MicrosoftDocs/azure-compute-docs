@@ -10,6 +10,7 @@ ms.topic: overview
 ms.date: 04/07/2023
 ms.author: mathapli
 ms.reviewer: cynthn
+# Customer intent: "As a system administrator, I want to access the available Red Hat Enterprise Linux images in the Azure Marketplace, so that I can choose the appropriate images and licensing options for deploying Linux virtual machines in my environment."
 ---
 
 # Overview of Red Hat Enterprise Linux images
@@ -19,6 +20,10 @@ ms.reviewer: cynthn
 This article describes available Red Hat Enterprise Linux (RHEL) images in Azure Marketplace and policies around their naming and retention.
 
 For information on Red Hat support policies for all versions of RHEL, see [Red Hat Enterprise Linux Life Cycle](https://access.redhat.com/support/policy/updates/errata). For pricing details, see [Linux Virtual Machines Pricing](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
+
+> [!IMPORTANT]
+> Between October 2nd, 2025 and October 8th, 2025, the meter IDs of RHEL on Azure will change. **There is no impact on pricing.** Read complete details about these changes in [this blog](https://techcommunity.microsoft.com/blog/linuxandopensourceblog/red-hat-enterprise-linux-billing-meter-id-updates-on-azure/4449348).   
+> For questions on pricing, see the [Red Hat Virtual Machines pricing page](https://azure.microsoft.com/pricing/details/virtual-machines/red-hat/). 
 
 > [!IMPORTANT]
 > RHEL images currently available in Azure Marketplace support either bring your own subscription (BYOS) or pay-as-you-go licensing models. You can dynamically switch between BYOS and pay-as-you-go licensing through [Azure Hybrid Benefit](../../linux/azure-hybrid-benefit-linux.md).

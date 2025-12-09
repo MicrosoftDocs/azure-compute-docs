@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a .NET developer, I want to implement Reliable Collections in my Azure Service Fabric applications, so that I can manage stateful data with transactional integrity, scalability, and high availability.
 ---
 
 # Working with Reliable Collections

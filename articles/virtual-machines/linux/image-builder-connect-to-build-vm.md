@@ -8,6 +8,7 @@ ms.date: 7/10/2024
 ms.topic: troubleshooting
 ms.service: azure-virtual-machines 
 ms.subservice: image-builder
+# Customer intent: As a cloud administrator, I want to connect to the Azure Image Builder Build VM for debugging, so that I can troubleshoot and resolve issues encountered during the image building process effectively.
 ---
 
 # How to Connect to the Azure Image Builder Build VM

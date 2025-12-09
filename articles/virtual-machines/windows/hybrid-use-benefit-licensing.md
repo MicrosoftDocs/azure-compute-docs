@@ -8,6 +8,7 @@ ms.topic: how-to
 ms.date: 12/02/2024
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
 ms.devlang: azurecli
+# Customer intent: As a cloud administrator, I want to leverage Azure Hybrid Benefit for Windows Server licenses to deploy and manage Windows VMs, so that I can optimize licensing costs while ensuring compliance and maximizing resource efficiency in our cloud environment.
 ---
 # Explore Azure Hybrid Benefit for Windows VMs
 

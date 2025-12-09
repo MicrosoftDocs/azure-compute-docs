@@ -9,6 +9,7 @@ ms.date: 07/18/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
+# Customer intent: As a cloud architect, I want to review the specifications of Dlsv5-series VM sizes, so that I can determine the best configuration for my application’s performance and resource requirements.
 ---
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
 |---|---|---|

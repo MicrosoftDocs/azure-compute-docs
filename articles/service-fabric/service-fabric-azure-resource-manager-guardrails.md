@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: devx-track-arm-template
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a cloud architect deploying a Service Fabric cluster via Azure Resource Manager, I want to understand common configuration pitfalls and their solutions, so that I can ensure a successful and stable deployment without encountering errors."
 ---
 
 # Service Fabric guardrails 

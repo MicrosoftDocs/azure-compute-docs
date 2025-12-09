@@ -7,17 +7,22 @@ ms.service: azure-virtual-machines
 ms.subservice: security
 ms.collection: windows
 ms.topic: quickstart
-ms.date: 05/14/2025
-ms.custom: mode-ui
+ms.date: 09/23/2025
+ms.custom:
+  - mode-ui
+  - sfi-image-nochange
+# Customer intent: As a cloud administrator, I want to create and encrypt a Windows virtual machine using a browser-based portal, so that I can secure sensitive data in compliance with security best practices.
 ---
 
 # Quickstart: Create and encrypt a Windows virtual machine with the Azure portal
+
+[!INCLUDE [Azure Disk Encryption retirement notice](~/reusable-content/ce-skilling/azure/includes/security/azure-disk-encryption-retirement.md)]
 
 **Applies to:** :heavy_check_mark: Windows VMs 
 
 Azure virtual machines (VMs) can be created through the Azure portal. The Azure portal is a browser-based user interface to create VMs and their associated resources. In this quickstart you use the Azure portal to deploy a Windows virtual machine, create a key vault for the storage of encryption keys, and encrypt the VM.
 
-If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 ## Sign in to Azure
 

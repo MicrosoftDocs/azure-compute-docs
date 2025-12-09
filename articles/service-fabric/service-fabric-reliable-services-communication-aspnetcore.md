@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: "As a cloud developer, I want to integrate ASP.NET Core applications within Azure Service Fabric, so that I can leverage reliable services for stateful functionalities and enhanced service communication."
 ---
 
 # ASP.NET Core in Azure Service Fabric Reliable Services

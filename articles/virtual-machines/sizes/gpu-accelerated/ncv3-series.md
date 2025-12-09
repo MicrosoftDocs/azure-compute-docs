@@ -8,9 +8,13 @@ ms.topic: concept-article
 ms.date: 07/31/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
+# Customer intent: As a cloud architect, I want to understand the specifications and feature support of the NCv3 series sizes, so that I can select the appropriate virtual machine configuration for high-performance computing workloads.
 ---
 
 # NCv3 sizes series
+
+> [!NOTE]
+> The NCv3-series will be retired on September 30, 2025. Refer to the [NCv3-series retirement page](/azure/virtual-machines/ncv3-retirement) for more information and migration recommendations. 
 
 [!INCLUDE [ncv3-summary](./includes/ncv3-series-summary.md)]
 

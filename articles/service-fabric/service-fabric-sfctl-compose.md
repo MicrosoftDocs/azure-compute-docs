@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a cloud operations engineer, I want to manage Docker Compose applications using the command line interface, so that I can streamline deployment, upgrade, and monitoring tasks within my Service Fabric cluster.
 ---
 
 # sfctl compose

@@ -2,14 +2,15 @@
 metadata:
   title: Deprecated Azure Marketplace images
   description: "Learn about how the deprecation of Marketplace images can affect your deployment."
-  author: ju-shim
+  author: cynthn
   ms.service: azure-virtual-machines
   ms.topic: faq
   ms.subservice: imaging
   ms.custom: devx-track-azurepowershell, devx-track-azurecli
-  ms.date: 11/20/2025
-  ms.author: jushiman
+  ms.date: 12/09/2025
+  ms.author: cynthn
   ms.reviewer: edewe
+  ai-usage: ai-assisted
 title: Deprecated images FAQ
 summary: This article answers commonly asked questions about what happens when images in the Azure Marketplace are deprecated.
 
@@ -19,17 +20,17 @@ sections:
     questions:
       - question: What does it mean when I receive an image deprecation notice?
         answer: |
-          You might receive an email notification that your virtual machine (VM) or virtual machine scale set is running on images scheduled for deprecation. Publishers deprecate images for various reasons, including security concerns or when images reach end of life.
+          You receive an email notification when your virtual machine (VM) or virtual machine scale set runs on an image scheduled for deprecation. Publishers deprecate images for various reasons, including security concerns or when images reach end of life.
 
            :::image type="content" source="media/deprecated-images/mail.png" alt-text="Screenshot of the email notification for virtual machines or scale sets using an image scheduled for deprecation.":::
            
           
           **Deprecation levels**
           
-          Deprecation can occur at three different levels:
-          - **Image version deprecation**: Removal of a specific VM image version.
-          - **Plan/SKU deprecation**: Removal of an entire plan or SKU and all image versions within it.
-          - **Offer deprecation**: Removal of the entire VM offer, including all plans and image versions.
+          Deprecation occurs at three levels:
+          - **Image version deprecation**: A specific VM image version.
+          - **Plan/SKU deprecation**: An entire plan or SKU and all image versions within it.
+          - **Offer deprecation**: The entire VM offer, including all plans and image versions.
 
       - question: What is the deprecation timeline and how does it affect my workloads?
         answer: |
@@ -39,19 +40,19 @@ sections:
 
           During the notice period:
           - You receive email notifications and Azure Advisor recommendations about the upcoming deprecation.
-          - Existing VMs and virtual machine scale set instances continue running normally.
-          - You can still deploy new instances via Azure CLI, PowerShell, or APIs.
-          - Deprecation warnings appear in Azure portal, Azure CLI, and APIs.
-          - You have until the enforcement date to migrate or update your deployments.
+          - Existing VMs and virtual machine scale set instances continue to run normally.
+          - You can deploy new instances by using Azure CLI, PowerShell, or APIs.
+          - Deprecation warnings appear in the Azure portal, Azure CLI, and APIs.
+          - You can migrate or update your deployments until the enforcement date.
 
           **After enforcement date (soft delete)**
 
           After the enforcement date:
           - You receive email notifications and Azure Advisor recommendations about the deprecation enforcement.
-          - New VM or virtual machine scale set deployments using deprecated images are blocked.
-          - Existing VM instances continue running without disruption.
-          - Existing virtual machine scale set deployments remain operational but can't scale out.
-          - You can't redeploy VMs that use deprecated images (for example, after deallocation or failure).
+          - New VM or virtual machine scale set deployments that use deprecated images are blocked.
+          - Existing VM instances continue to run without disruption.
+          - Existing virtual machine scale set deployments remain operational but cannot scale out.
+          - You cannot redeploy VMs that use deprecated images (for example, after deallocation or failure).
 
           **Impact summary**
 
@@ -69,8 +70,8 @@ sections:
           **Required actions**
 
           To avoid disruption:
-          - If you want your virtual machine scale set to scale out after deprecation, migrate to a supported image before the enforcement date.
-          - If you have automatic OS upgrades configured, you're only impacted by offer or plan deprecation, not individual version deprecation.
+          - Migrate to a supported image before the enforcement date if you want your virtual machine scale set to scale out after deprecation.
+          - If you configured automatic OS upgrades, only offer or plan deprecation affects you, not individual version deprecation.
 
       - question: How do I find VMs and virtual machine scale sets using deprecated images?
         answer: |
@@ -151,11 +152,11 @@ sections:
 
       - question: How do I migrate to a different image?
         answer: |
-          You have two main options when dealing with deprecated images.
+          Choose one of two options when you deal with deprecated images.
 
           **Option 1: Create a custom image**
           
-          If you need to continue using the deprecated image:
+          To continue using the deprecated image:
           1. Generalize your VM.
           2. Deallocate the VM.
           3. Create a custom image from the VM.
@@ -164,7 +165,7 @@ sections:
           For detailed steps, see [Capture an image of a VM in the portal](capture-image-portal.md).
 
           > [!IMPORTANT]
-          > For deprecated paid Marketplace images with purchase plan information: After deprecation, you can't create new VM workloads or perform Azure Site Recovery or backup restore operations due to missing plan information. We recommend migrating to a supported image.
+          > For deprecated paid Marketplace images with purchase plan information: After deprecation, you cannot create new VM workloads or perform Azure Site Recovery or backup restore operations because of missing plan information. Migrate to a supported image.
           
           **Option 2: Migrate to another image**
 
@@ -198,15 +199,15 @@ sections:
 
           **Step 2: Test compatibility**
           
-          Before migration, verify that your workloads are supported and run properly on the new image.
+          Before you migrate, verify that the new image supports your workloads and runs them properly.
 
           **Step 3: Update your deployments**
 
           **For virtual machine scale sets (minimal downtime)**
           
           1. Set the upgrade policy to **Manual** or **Rolling** to avoid downtime:
-             - **Manual**: Existing instances aren't reimaged until you manually upgrade them.
-             - **Rolling**: Instances are automatically upgraded in batches.
+             - **Manual**: Existing instances are not reimaged until you manually upgrade them.
+             - **Rolling**: Azure automatically upgrades instances in batches.
           
           2. Update the image reference by following [Modify an Azure virtual machine scale set](../virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set.md).
           
@@ -216,11 +217,11 @@ sections:
           
           4. Restore the upgrade policy to its original setting if needed.
           
-          5. Enable [automatic OS image upgrade](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) to automatically apply the latest images without manual intervention. We recommend this option.
+          5. Enable [automatic OS image upgrade](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) to automatically apply the latest images without manual intervention.
 
           **For virtual machines**
           
-          Virtual machines don't support in-place image reference replacement. You must create new VMs with the updated image and migrate your workloads.
+          Virtual machines do not support in-place image reference replacement. Create new VMs with the updated image and migrate your workloads.
 
       - question: What happens with paid Marketplace images that have purchase plan information?
         answer: |
@@ -230,27 +231,27 @@ sections:
           
           - VM restore from backups might fail after the image is removed from the marketplace.
           - New VM creation is blocked after deprecation.
-          - Azure Site Recovery operations fail due to missing plan information.
-          - Backup restore operations fail due to missing plan information.
+          - Azure Site Recovery operations fail because of missing plan information.
+          - Backup restore operations fail because of missing plan information.
           
           **Recommended action**
           
-          Create new VMs using a supported image and migrate your workloads before the deprecation enforcement date.
+          Create new VMs by using a supported image and migrate your workloads before the deprecation enforcement date.
 
           > [!NOTE]
-          > Free Marketplace images (without plan information) can continue to be used for single VMs and can be restored from backups. This limitation only affects paid images and doesn't impact virtual machine scale set workloads.
+          > You can continue to use free Marketplace images (without plan information) for single VMs and restore them from backups. This limitation only affects paid images and does not affect virtual machine scale set workloads.
       
       - question: What happens with free Marketplace images?
         answer: |
           For free Marketplace images (no purchase plan required):
 
-          - Existing VM and virtual machine scale set workloads continue running without interruption.
+          - Existing VM and virtual machine scale set workloads continue to run without interruption.
           - You can restore VMs from backups.
-          - You can't create new VMs or virtual machine scale set deployments after deprecation.
+          - You cannot create new VMs or virtual machine scale set deployments after deprecation.
 
       - question: Are all image versions lower than the deprecated version also deprecated?
         answer: |
-          Generally, yes. However, it's a best practice to confirm against the list of valid versions in a plan by using the [Virtual Machine Images - List](/rest/api/compute/virtual-machine-images/list?tabs=HTTP) API.
+          Generally, yes. However, confirm against the list of valid versions in a plan by using the [Virtual Machine Images - List](/rest/api/compute/virtual-machine-images/list?tabs=HTTP) API.
 
       - question: How do I receive email notifications about image deprecation?
         answer: |
@@ -312,11 +313,11 @@ sections:
         answer: |
           Your SQL Server remains unaffected when a SQL Server Azure Marketplace image is deprecated:
 
-          - Your Azure VM continues running without interruption.
-          - Your SQL Server instance continues functioning normally.
-          - You can't deploy new VMs using the deprecated SQL Server image.
+          - Your Azure VM continues to run without interruption.
+          - Your SQL Server instance continues to function normally.
+          - You cannot deploy new VMs by using the deprecated SQL Server image.
 
-          No action is required for existing deployments.
+          Existing deployments require no action.
           
       - question: How do I list active (non-deprecated) image versions for a specific SKU?
         answer: |

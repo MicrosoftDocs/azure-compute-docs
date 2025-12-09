@@ -6,6 +6,7 @@ ms.author:   ofemifowode
 ms.service:   azure-virtual-machines
 ms.topic:     get-started
 ms.date:     02/05/2025
+# Customer intent: "As a system administrator, I want to configure Event Hubs for VM watch, so that I can efficiently collect and analyze signal data from my virtual machines in real-time."
 ---
 
 # Configure Event Hubs for VM watch

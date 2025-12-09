@@ -6,15 +6,18 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 11/14/2024
+ms.date: 09/29/2025
+# Customer intent: "As a cloud architect, I want to set up a secure Service Fabric cluster in Azure using the portal, so that I can manage and deploy applications with proper authentication and encryption for production workloads."
 ---
 
 # Create a Service Fabric cluster in Azure using the Azure portal
+
 > [!div class="op_single_selector"]
 > * [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
 > * [Azure portal](service-fabric-cluster-creation-via-portal.md)
-> 
-> 
+
+> [!WARNING]
+> Application Insights for the Service Fabric SDK is no longer supported.
 
 This article is a step-by-step guide that walks you through the steps of setting up a Service Fabric cluster (Linux or Windows) in Azure using the Azure portal. This guide walks you through the following steps:
 

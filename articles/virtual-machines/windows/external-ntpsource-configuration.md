@@ -7,6 +7,7 @@ ms.collection: windows
 ms.topic: concept-article
 ms.date: 08/05/2022
 ms.author: ndelvillar
+# Customer intent: "As an IT administrator managing Active Directory Windows Virtual Machines in Azure, I want to configure time synchronization settings, so that I ensure accurate timekeeping across my domain and avoid potential issues with authentication and replication."
 ---
 
 # Configure the time mechanism for Active Directory Windows Virtual Machines in Azure

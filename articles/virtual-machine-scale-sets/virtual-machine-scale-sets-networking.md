@@ -1,14 +1,15 @@
 ---
 title: Networking for Azure Virtual Machine Scale Sets
 description: How to configuration some of the more advanced networking properties for Azure Virtual Machine Scale Sets.
-author: ju-shim
-ms.author: jushiman
+author: cynthn
+ms.author: cynthn
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: networking
 ms.date: 06/14/2024
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurepowershell, devx-track-azurecli
+# Customer intent: As a cloud architect, I want to configure advanced networking features for Azure Virtual Machine Scale Sets, so that I can optimize network performance and security for my applications.
 ---
 
 # Networking for Azure Virtual Machine Scale Sets

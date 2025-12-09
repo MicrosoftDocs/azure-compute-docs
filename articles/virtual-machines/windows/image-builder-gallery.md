@@ -10,6 +10,7 @@ ms.service: azure-virtual-machines
 ms.subservice: image-builder
 ms.collection: windows
 ms.custom: devx-track-azurepowershell
+# Customer intent: As a cloud engineer, I want to create and distribute a customized Windows VM image using image builder and Azure PowerShell, so that I can ensure consistent deployment of virtual machines across multiple regions.
 ---
 # Create a Windows image and distribute it to an Azure Compute Gallery 
 

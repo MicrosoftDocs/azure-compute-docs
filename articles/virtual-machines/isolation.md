@@ -7,6 +7,7 @@ ms.topic: concept-article
 ms.date: 04/20/2023
 ms.author: mimckitt
 ms.reviewer: ayshak, mattmcinnes
+# Customer intent: "As a cloud architect, I want to understand how VM isolation works in Azure, so that I can effectively design secure and efficient cloud infrastructure for my organization."
 ---
 
 # Virtual machine isolation in Azure

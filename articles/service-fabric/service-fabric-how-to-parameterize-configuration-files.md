@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 05/05/2025
+# Customer intent: As a developer, I want to parameterize configuration files in Service Fabric, so that I can efficiently manage application settings across multiple environments.
 ---
 
 # How to parameterize configuration files in Service Fabric

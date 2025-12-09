@@ -8,6 +8,7 @@ ms.topic: concept-article
 ms.date: 07/31/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
+# Customer intent: As a cloud infrastructure architect, I want to understand the specifications and features of the DCsv3 size series, so that I can choose the appropriate VM size for my workloads based on cores, memory, storage options, and network capabilities.
 ---
 
 # DCsv3 sizes series

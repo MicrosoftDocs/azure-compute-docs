@@ -8,6 +8,7 @@ ms.topic: concept-article
 ms.date: 09/24/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
+# Customer intent: As a cloud architect, I want to review the specifications and features of Bpsv2 series virtual machines, so that I can select the appropriate size for my application’s performance and resource requirements.
 ---
 
 # Bpsv2 sizes series

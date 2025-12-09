@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: "As a developer using Azure Service Fabric, I want to enumerate active and inactive actors across partitions, so that I can manage and optimize the stateful services in my application effectively."
 ---
 
 # Enumerate Service Fabric Reliable Actors

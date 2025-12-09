@@ -7,6 +7,7 @@ ms.subservice: sizes
 ms.topic: concept-article
 ms.date: 06/06/2024
 ms.author: mattmcinnes
+# Customer intent: "As a cloud infrastructure architect, I want to review the specifications and use cases of the NC family GPU-accelerated VM sizes, so that I can select the appropriate instance type for my GPU-intensive workloads."
 ---
 
 # 'NC' sub-family GPU accelerated VM size series

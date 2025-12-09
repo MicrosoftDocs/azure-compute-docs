@@ -4,36 +4,32 @@ description: include file
 author: roygara
 ms.service: azure-disk-storage
 ms.topic: include
-ms.date: 06/09/2025
+ms.date: 11/05/2025
 ms.author: rogarana
 ms.custom: include file
+# Customer intent: As a cloud architect, I want to understand the limitations and requirements of Ultra Disks so that I can evaluate their suitability for my virtual machine deployments and ensure compliance with application needs and infrastructure capabilities.
 ---
 
 The following list contains Ultra Disk's limitations:
-- Ultra Disks can't be used as an OS disk.
-- Ultra Disks can't be used with Azure Compute Gallery.
-- Currently, Ultra Disks only support Single VM and Availability zone infrastructure options.
+- Only during deployment with Virtual Machine Scale Sets with Uniform orchestration mode: At time of deployment, Ultra Disks used with Uniform Virtual Machine Scale Sets use different formulas for IOPS and throughput for their performance. Exceeding the limits of these formulas results in a deployment failure. Once the deployment succeeds you can [increase the performance](../disks-enable-ultra-ssd.md#adjust-the-performance-of-an-ultra-disk) of these disks. See [Ultra Disk IOPS](../disks-types.md#ultra-disk-iops) and [Ultra Disk throughput](../disks-types.md#ultra-disk-throughput) for details. 
+- Ultra Disks can't be used as an OS disk or with Azure Compute Gallery.
+- Currently, Ultra Disks only support Single VM and Availability zone infrastructure options as locally redundant storage (LRS). Ultra Disks don't support zone redundant storage (ZRS).
 - Ultra Disks don't support availability sets.
-- Existing disks currently can't change their type to an Ultra Disk. They must be [migrated](/azure/virtual-machines/disks-convert-types?tabs=azure-powershell#migrate-to-premium-ssd-v2-or-ultra-disk-using-snapshots).
-- (Preview) You can encrypt Ultra Disks with customer-managed keys using Azure Key Vaults stored in a different Microsoft Entra ID tenant.
-- Azure Disk Encryption isn't supported for VMs with Ultra Disks. Instead, you should use encryption at rest with platform-managed or customer-managed keys.
-- Azure Site Recovery isn't supported for VMs with Ultra Disks.
 - Ultra Disks don't support disk caching.
-- Snapshots are supported with [other limitations](/azure/virtual-machines/disks-incremental-snapshots?tabs=azure-powershell#incremental-snapshots-of-premium-ssd-v2-and-ultra-disks).
-- Azure Backup support for VMs with Ultra Disks is [generally available](/azure/backup/backup-support-matrix-iaas#vm-storage-support). Azure Backup has limitations when using Ultra Disks, see [VM storage support](/azure/backup/backup-support-matrix-iaas#vm-storage-support) for details.
+- (Preview) You can encrypt Ultra Disks with customer-managed keys using Azure Key Vaults stored in a different Microsoft Entra ID tenant.
 
 Ultra Disks support a 4k physical sector size by default but also supports a 512E sector size. Most applications are compatible with 4k sector sizes, but some require 512-byte sector sizes. Oracle Database, for example, requires release 12.2 or later in order to support 4k native disks. For older versions of Oracle DB, 512-byte sector size is required.
 
 The following table outlines the regions Ultra Disks are available in, and their corresponding availability options.
 
 > [!NOTE]
-> If a region in the following list lacks availability zones that support Ultra disks, then a VM in that region must be deployed without infrastructure redundancy to attach an Ultra Disk.
+> If a region in the following list lacks availability zones that support Ultra Disks, then a VM in that region must be deployed without infrastructure redundancy to attach an Ultra Disk.
 
 | Redundancy options | Regions |
 |--------------------|---------|
 | **Regional** | Australia Central, Australia Central 2<br/>Brazil Southeast<br/>Canada East<br/>Korea South<br/>Norway West<br/>UK West<br/>North Central US, West US<br/>US Gov Arizona, US Gov Texas |
-| **One availability zone** | Brazil South<br/>Central India<br/>East Asia<br/>Germany West Central<br/>Korea Central<br/>South Central US<br/>Spain Central<br/>US Gov Virginia |
-| **Two availability zones** | Indonesia Central<br/>New Zealand North<br/>Qatar Central |
+| **One availability zone** | Brazil South<br/>Central India<br/>East Asia<br/>Germany West Central<br/>Japan West<br/>Korea Central<br/>South Central US<br/>Spain Central<br/>US Gov Virginia |
+| **Two availability zones** | Indonesia Central<br/>Malaysia West<br/>New Zealand North<br/>Qatar Central |
 | **Three availability zones** | Australia East<br/>Canada Central<br/>China North 3<br/>North Europe, West Europe<br/>France Central<br/>Italy North<br/>Japan East<br/>Poland Central<br/>South Africa North<br/>Southeast Asia<br/>Sweden Central<br/>Switzerland North<br/>UAE North<br/>UK South<br/>Central US, East US, East US 2, West US 2, West US 3 |
 
 Not every VM size is available in every supported region with Ultra Disks. The following table lists VM series that are compatible with Ultra Disks.

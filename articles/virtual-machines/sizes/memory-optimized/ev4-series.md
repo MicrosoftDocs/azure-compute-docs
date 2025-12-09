@@ -8,6 +8,7 @@ ms.topic: concept-article
 ms.date: 08/01/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
+# Customer intent: "As a system architect, I want to compare the different sizes in the Ev4 series, so that I can select the appropriate virtual machine configuration based on CPU, memory, storage, and network requirements for my applications."
 ---
 
 # Ev4 sizes series

@@ -7,6 +7,7 @@ ms.subservice: sizes
 ms.topic: concept-article
 ms.date: 04/18/2024
 ms.author: mattmcinnes
+# Customer intent: As a cloud architect, I want to explore the L family of storage optimized VM sizes, so that I can select the most suitable virtual machines for my workload requirements.
 ---
 
 # 'L' family storage optimized VM size series

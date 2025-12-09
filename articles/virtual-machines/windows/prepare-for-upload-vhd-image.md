@@ -9,6 +9,7 @@ ms.topic: troubleshooting
 ms.date: 08/04/2022
 ms.author: genli
 ms.custom: engagement-fy23
+# Customer intent: "As a system administrator preparing to migrate a Windows virtual machine, I want to prepare and generalize a VHD for Azure upload, so that I can successfully deploy the VM in the Azure environment while ensuring it meets necessary configurations and requirements."
 ---
 
 # Prepare a Windows VHD or VHDX to upload to Azure

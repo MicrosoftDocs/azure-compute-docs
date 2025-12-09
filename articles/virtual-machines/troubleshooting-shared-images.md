@@ -8,6 +8,7 @@ ms.reviewer: cynthn, mattmcinnes
 ms.subservice: gallery
 ms.topic: troubleshooting
 ms.date: 02/28/2023
+# Customer intent: "As an IT administrator managing Azure Compute Gallery resources, I want to troubleshoot issues with shared images, so that I can resolve errors efficiently and ensure smooth operations for my virtual machines and scale sets."
 ---
 
 # Troubleshoot images in an Azure Compute Gallery

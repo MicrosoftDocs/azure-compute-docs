@@ -8,6 +8,7 @@ ms.topic: concept-article
 ms.date: 07/29/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
+# Customer intent: "As a cloud architect, I want to compare the specifications of the Dsv4-series virtual machine sizes, so that I can choose the most suitable instance type for my application's performance and capacity requirements."
 ---
 
 # Dsv4 sizes series

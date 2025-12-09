@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a cloud administrator, I want to use EventStore APIs to query cluster events, so that I can monitor and analyze the health and operational status of my Service Fabric environment effectively.
 ---
 
 # Query EventStore APIs for cluster events

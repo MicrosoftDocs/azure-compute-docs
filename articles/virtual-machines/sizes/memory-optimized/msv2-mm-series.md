@@ -8,6 +8,7 @@ ms.topic: concept-article
 ms.date: 04/09/2025
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
+# Customer intent: As a cloud architect, I want to evaluate the specifications of Msv2 and Mdsv2 Medium Memory VMs, so that I can determine the right virtual machine size for workloads requiring high CPU and memory resources.
 ---
 
 # Msv2 Medium Memory sizes series

@@ -7,10 +7,13 @@ ms.subservice: security
 ms.collection: linux
 ms.topic: troubleshooting
 ms.author: mbaldwin
-ms.date: 05/14/2025
+ms.date: 09/23/2025
 ms.custom: linux-related-content
+# Customer intent: "As a cloud administrator, I want to troubleshoot Azure Disk Encryption for Linux VMs, so that I can successfully encrypt disk drives while ensuring compliance with security protocols and minimizing downtime."
 ---
 # Azure Disk Encryption for Linux VMs troubleshooting guide
+
+[!INCLUDE [Azure Disk Encryption retirement notice](~/reusable-content/ce-skilling/azure/includes/security/azure-disk-encryption-retirement.md)]
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Flexible scale sets 
 

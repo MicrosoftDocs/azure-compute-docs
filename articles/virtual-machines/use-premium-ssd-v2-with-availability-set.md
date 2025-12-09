@@ -7,6 +7,8 @@ ms.date: 05/19/2025
 ms.topic: how-to
 ms.service: azure-disk-storage
 ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell, innovation-engine
+# Customer intent: As a cloud architect, I want to deploy Premium SSD v2 disks with VMs in an availability set so that I can ensure high availability and minimize the risk of downtime due to correlated failures.
+
 ---
 
 # Use premium SSD v2 with VMs in availability set

@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: devx-track-dotnet
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a developer, I want to deploy a .NET application on a distributed system using Service Fabric, so that I can leverage its capabilities for managing scalable microservices and ensure reliable data storage without needing a separate database.
 ---
 # Quickstart: Deploy a .NET reliable services application to Service Fabric
 

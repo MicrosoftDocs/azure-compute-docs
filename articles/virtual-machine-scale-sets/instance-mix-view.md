@@ -5,13 +5,19 @@ author: brittanyrowe
 ms.author: brittanyrowe
 ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
-ms.date: 06/10/2025
-ms.reviewer: jushiman
+ms.date: 08/19/2025
+ms.reviewer: cynthn
+# Customer intent: As a cloud administrator, I want to view the instance mix configurations of a virtual machine scale set, so that I can assess VM sizes and allocation strategies for effective resource management.
 ---
 
 # View instance mix configurations
 
 This article details how to view your instance mix configuration on a virtual machine scale set, including the virtual machine (VM) sizes and the allocation strategy.
+
+## Prerequisites
+- Reader, or higher, role on the scale set resource, or the `Microsoft.Compute/virtualMachineScaleSets/virtualMachines/read` permission.
+- A scale set using Flexible Orchestration Mode and instance mix.
+- For REST deployments, use API Version `2024-11-01` or later.
 
 ## View the instance mix configurations
 ### [Azure portal](#tab/portal-1)
@@ -27,6 +33,21 @@ Replace placeholders, such as `<scaleSetName>`, with your actual values.
 To display all properties in the `skuProfile`, run:
 ```azurecli-interactive
 az vmss show --resource-group <resourceGroupName> --name <scaleSetName> --query "skuProfile"
+```
+
+**Example output:**
+```json
+{
+  "allocationStrategy": "CapacityOptimized",
+  "vmSizes": [
+    {
+      "name": "Standard_D4s_v5"
+    },
+    {
+      "name": "Standard_D4as_v5"
+    }
+  ]
+}
 ```
 
 #### View VM sizes

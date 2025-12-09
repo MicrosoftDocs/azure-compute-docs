@@ -6,13 +6,11 @@ ms.service: azure-disk-storage
 ms.topic: how-to
 ms.date: 04/15/2025
 ms.author: rogarana
-ms.custom: devx-track-azurepowershell, innovation-engine
+ms.custom: devx-track-azurepowershell
+# Customer intent: As an IT administrator, I want to enable performance enhancements on Azure disks, so that I can increase IOPS and throughput for demanding workloads without incurring additional costs.
 ---
 
 # Increase IOPS and throughput limits for Azure Premium SSDs and Standard SSD/HDDs
-
-> [!div class=""nextstepaction""]
-> [Deploy and Explore](https://go.microsoft.com/fwlink/?linkid=2321736)
 
 The Input/Output Operations Per Second (IOPS) and throughput limits for Azure Premium solid-state drives (SSD), Standard SSDs, and Standard hard disk drives (HDD) that are 513 GiB and larger can be increased by enabling performance plus. Enabling performance plus improves the experience for workloads that require high IOPS and throughput, such as database and transactional workloads. There's no extra charge for enabling performance plus on a disk.
 
@@ -21,8 +19,9 @@ Once enabled, the IOPS and throughput limits for an eligible disk increase to th
 ## Limitations
 
 - Can only be enabled on Standard HDD, Standard SSD, and Premium SSD managed disks that are 513 GiB or larger
-- Can only be enabled on new disks
+- Can only be enabled during disk creation
     - To work around this, create a snapshot of your disk, then create a new disk from the snapshot
+    - Can't be enabled on disks created during virtual machine creation.
 - Not supported for disks recovered with Azure Site Recovery
 
 ## Prerequisites

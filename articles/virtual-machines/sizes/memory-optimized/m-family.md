@@ -7,6 +7,7 @@ ms.subservice: sizes
 ms.topic: concept-article
 ms.date: 05/05/2025
 ms.author: mattmcinnes
+# Customer intent: As a cloud architect, I want to compare the various M family VM sizes, so that I can select the most suitable configuration for my memory-intensive workloads.
 ---
 
 # 'M' family memory optimized VM size series
@@ -98,7 +99,7 @@ ms.author: mattmcinnes
 
 ---
 
-### Mv2-series
+### Msv2 High Memory series
 [!INCLUDE [mv2-series-summary](./includes/mv2-series-summary.md)]
 
 [View the full Mv2-series page](./mv2-series.md).

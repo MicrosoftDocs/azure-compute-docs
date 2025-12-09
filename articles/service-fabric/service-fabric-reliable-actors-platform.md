@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a software developer, I want to understand how Reliable Actors operate within the Service Fabric platform, so that I can effectively implement stateful services and manage their lifecycle and messaging.
 ---
 
 # How Reliable Actors use the Service Fabric platform

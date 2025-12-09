@@ -5,111 +5,113 @@ author: brittanyrowe
 ms.author: brittanyrowe
 ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
-ms.date: 06/10/2025
-ms.reviewer: jushiman
+ms.date: 09/12/2025
+ms.reviewer: cynthn
+# Customer intent: As a cloud administrator, I want to utilize multiple VM sizes in a scale set with instance mix, so that I can optimize cost, capacity, and flexibility for my diverse workload requirements.
 ---
 
 # Use multiple Virtual Machine sizes with instance mix
 
-Instance mix enables you to specify multiple different Virtual Machine (VM) sizes in your Virtual Machine Scale Set with Flexible Orchestration Mode, and an allocation strategy to further optimize your deployments. 
+Instance mix lets you specify multiple Virtual Machine (VM) sizes in a Virtual Machine Scale Set that uses Flexible Orchestration Mode. Use instance mix to increase provisioning success, optimize costs, or create predictable allocation ordering for workloads that can run on different VM sizes.
 
-Instance mix is best suited for workloads that are flexible in compute requirements and can be run on various different sized VMs. Using instance mix you can:
-- Deploy a heterogeneous mix of VM sizes in a single scale set. You can view max scale set instance counts in the [documentation](./virtual-machine-scale-sets-orchestration-modes.md#what-has-changed-with-flexible-orchestration-mode).
-- Optimize your deployments for cost, capacity, or rank through allocation strategies.
-- Continue to make use of scale set features, like [Autoscale](./virtual-machine-scale-sets-autoscale-overview.md), [Spot Priority Mix](./spot-priority-mix.md), or [Upgrade Policies](./virtual-machine-scale-sets-set-upgrade-policy.md).
-  
-## Use cases
-Instance mix is ideal for scenarios where flexibility and capacity attainment are key. Common use cases include:
+> [!IMPORTANT]
+> Instance mix is available only for scale sets that use Flexible Orchestration Mode.
 
-- Running cost-sensitive workloads that can use multiple Spot VM sizes to minimize expenses.
-- Gradually adopting newer VM generations, such as D32sv5 and D32sv6, while continuing to utilize existing older VMs in the same series.
-- Supporting workloads with a primary or preferred VM size, while having fallback or secondary VM sizes available for added flexibility.
-- Ensuring high availability and reliability by distributing a diverse mix of VMs across Availability Zones and Fault Domains, especially during periods of high demand.
+## Prerequisites
 
-## Changes to existing scale set properties
-### sku.name
-The `sku.name` property should be set to `"Mix"`. VM sizes are defined in the `skuProfile`.
+- A scale set that uses Flexible Orchestration Mode.
+- Sufficient quota for each VM size in the target subscription and region.
+- Consistent VM characteristics across selected sizes: architecture (x64/Arm64), storage interface, local disk configuration, and security profile.
 
-### sku.tier
-The `sku.tier` property is currently an optional scale set property and should be set to `null` for instance mix scenarios.
+## When to use instance mix
 
-### sku.capacity
-The `sku.capacity` property continues to represent the overall size of the scale set in terms of the total number of VMs.
+- You want to run a heterogeneous set of VM sizes in a single scale set to increase the likelihood of successful provisioning.
+- You want to reduce cost by allowing Azure to choose lower-cost sizes when suitable.
+- You need predictable allocation order to align with reservations, licensing, or savings plans using the Prioritized strategy.
 
-### scaleInPolicy
-The optional scale-in property isn't needed for scale set deployments using instance mix. During scaling in events, the scale set utilizes the allocation strategy to inform the decision on which VMs should be scaled in. For example, when you use `LowestPrice`, the scale set scales in by removing the more expensive VMs first.
+## How instance mix works
 
-## New scale set properties
-### skuProfile
-The `skuProfile` property represents the umbrella property for all properties related to instance mix, including VM sizes and allocation strategy.
+- Define up to five VM sizes in the `skuProfile.vmSizes` list.
+- Select an `allocationStrategy` to control how Azure chooses VM sizes at provisioning time.
+- During scale-out, Azure evaluates availability and, depending on strategy, price to and allocate instances that satisfy the chosen strategy, subject to quotas and regional capacity.
 
-### vmSizes
-The `vmSizes` property is where you specify the specific VM sizes that you're using as part of your scale set deployment with instance mix.
+## Allocation strategies
 
-### allocationStrategy
-Instance mix introduces the ability to set allocation strategies for your scale set. The `allocationStrategy` property is where you specify which allocation strategy you'd like to use for your instance mix scale set deployments. There are three options for allocation strategies, `lowestPrice`, `capacityOptimized`, and `Prioritized`. Allocation strategies apply to both Spot and Standard VMs.
+Instance mix supports three allocation strategies. Choose the strategy that matches your priorities (cost, capacity, or predictable ordering).
 
-#### lowestPrice (default)
-This allocation strategy is focused on workloads where cost and cost-optimization are most important. When evaluating what VM split to use, Azure looks at the lowest priced VMs of the VM sizes specified. Azure also considers capacity as part of this allocation strategy. The scale set deploys as many of the lowest priced VMs as it can, depending on available capacity, before moving on to the next lowest priced VM size specified. `lowestPrice` is the default allocation strategy.
+| Strategy | Best for | Behavior | Notes |
+|---|---|---|---|
+| `lowestPrice` (default) | Cost-sensitive, fault-tolerant workloads | Prefers the lowest-cost VM sizes from the `vmSizes` list while considering available capacity. Deploys as many of the lowest-priced VMs as capacity allows before moving to higher-priced sizes. | Best suited for Spot VMs. Higher-cost sizes may be selected to secure capacity. |
+| `capacityOptimized` | Critical workloads that must provision reliably | Prioritizes VM sizes with the highest likelihood of availability in the target region; cost isn't considered. | Availability varies by region. May select higher-cost sizes to secure capacity. |
+| `Prioritized` (Preview) | Predictable allocation order, reservation alignment | Respects user-defined `rank` values on VM sizes; lower rank means higher priority. Azure allocates instances according to rank while respecting capacity. | Ranks are optional, can be duplicated, and don't need to be sequential. Allocation remains subject to regional capacity constraints. |
 
-#### capacityOptimized
-The `capacityOptimized` allocation strategy is designed for workloads where securing VM capacity is the highest priority. This approach ensures that VMs are allocated based on availability rather than cost considerations.
+> [!NOTE]
+> Use `rank`  only with the `Prioritized` strategy. Omit ranks for `lowestPrice` and `capacityOptimized`.
 
-##### How `capacityOptimized` allocation works
-- Azure prioritizes available capacity, without factoring in price, when determining which VM sizes to deploy.
-- VM sizes are dynamically selected based on underlying capacity availability, ensuring that instances can be allocated even in highly utilized regions.
-- This strategy is useful for workloads that must secure compute resources without delays due to capacity shortages.
+## Scale set properties
 
-##### Considerations
-- Cost isn't considered. The selected VM sizes may include more expensive options if those are the most readily available.
-- No user-defined ranking is required. Unlike the `Prioritized` allocation strategy, the selection process is fully automated based on Azure’s capacity insights.
-- VM allocation is region-dependent. Availability may vary across Azure regions, and the selection process adapts accordingly.
-- Best suited for critical workloads. This strategy is ideal when securing VMs is more important than optimizing for cost.
+### Changes to existing properties
 
-Users can ensure that their workloads receive the necessary compute resources, even in situations where capacity constraints might otherwise prevent VM allocation.
+| Property | Change | Notes |
+|---|---|---|
+| `sku.name` | Must be set to `"Mix"` for instance mix deployments. | VM sizes are moved into the `skuProfile` configuration. |
+| `sku.tier` | Should be `null` for instance mix scenarios. | Optional property; set to `null` to avoid tier mismatch across sizes. |
+| `sku.capacity` | Represents the desired total number of VMs in the scale set. | Keeps representing the scale set capacity (desired instances). |
+| `scaleInPolicy` | Not required for instance mix. | Instance mix uses `allocationStrategy` to guide allocation; scale-in behavior follows the scale set's policy and allocation strategy. |
 
-#### Prioritized (Preview)
-The `Prioritized` allocation strategy enables control over how VM sizes are allocated by defining a priority ranking. `Prioritized` allows for a more predictable allocation order based on preferred VM sizes.
+### New properties
 
-##### How `Prioritized` allocation works
-- Each VM size in the `vmSizes` list can be assigned a priority rank to influence the order in which instances are allocated.
-- Lower rank numbers indicate higher priority. For example, a VM with a rank of 0 is prioritized over a VM with a rank of 2.
-- If multiple VM sizes have the same rank, they share the same allocation priority, Azure distributes VMs across those sizes based on availability.
+| Property | Type | Description | Example Value |
+|---|---|---|---|
+| `skuProfile` | Object | Container for instance mix configuration (vmSizes, allocationStrategy, etc.). | `{ "vmSizes": [...], "allocationStrategy": "Prioritized" }` |
+| `vmSizes` | Array of strings or objects | List (max 5) of VM sizes to include in the instance mix. Each item can be a string (size name) or an object with an optional `rank` for the `Prioritized` strategy. | `[{ "name": "Standard_D8s_v5", "rank": 0 }, { "name":"Standard_D8as_v5", "rank": 1]` |
+| `allocationStrategy` | String | Determines how Azure chooses VM sizes at provisioning time. One of: `lowestPrice`, `capacityOptimized`, `Prioritized`. | `"Prioritized"` |
 
-##### Considerations
-- Ranking is optional. If no ranks are provided, all VM sizes are treated with equal priority.
-- Ranks must be within the range of the vmSizes list size. For example, if there are five VM sizes, ranks must be within the range of 0 to 4 (or fewer if not all are assigned ranks).
-- Ranks don't need to be sequential. It's valid to have ranks such as 0, 2, 5 without needing to define 1, 3, or 4.
-- Duplicate ranks are allowed. Multiple VM sizes can share the same rank, allowing for a tiered allocation approach where several sizes are treated equally.
-- Resource availability still applies. Even if a VM size has the highest priority, allocation is subject to regional capacity constraints.
+## Example: Prioritized allocation (JSON fragment)
 
-## Cost
-Following the scale set cost model, usage of instance mix is free. You continue to only pay for the underlying resources, like the VM, disk, and networking.
+```json
+{
+  "skuProfile": {
+    "vmSizes": [
+      { "name": "Standard_D8s_v5", "rank": 0 },
+      { "name": "Standard_D8s_v4", "rank": 1 },
+      { "name": "Standard_D4s_v5", "rank": 2 }
+    ],
+    "allocationStrategy": "Prioritized"
+  }
+}
+```
+
+> [!NOTE]
+> Ranks: lower numbers indicate higher priority. Ranks can be non-sequential and duplicated. Omit ranks when using `lowestPrice` or `capacityOptimized`.
+
+## Deployment checklist
+
+Before you deploy an instance mix scale set:
+
+- Verify the scale set is using Flexible Orchestration Mode.
+- Confirm VM quotas for each selected size in the target subscription and region.
+- Ensure all selected VM sizes have consistent architecture, storage interface, local disk configuration, and security profile.
+- Choose an allocation strategy that matches your goals (cost, availability, predictability).
+- For REST API deployments, ensure a virtual network exists in the target resource group.
 
 ## Recommendations
-* Use VMs of similar size for your workload to ensure an even spread of traffic from the load balancer. For example, using the `Standard_D8s_v4` and the `Standard_D8s_v5` VM sizes in your deployment would ensure your workload always runs on an eight core VM.
-* Use VMs of [similar type](../virtual-machines/sizes/overview.md#list-of-vm-size-families-by-type) for consistent performance. 
-* To benefit from reservation pricing, use the `Prioritized` allocation strategy and set your reservation VM sizes as the first rank.
-* To benefit from savings plan pricing, use the `Prioritized` allocation strategy and set your savings plan VM sizes as the first rank.
-* To ensure a smooth autoscaling experience, use VMs of similar vCPU and memory configurations.
-  
-## Limitations
 
-When using instance mix, keep the following limitations in mind:
-- **Orchestration Mode**: Instance mix is only available for scale sets using Flexible Orchestration Mode.
-- **Quota Requirements**: Ensure you have sufficient quota for the VM sizes you're requesting with instance mix.
-- **Virtual Machine Type**: Only VMs that are in the [A](../virtual-machines/sizes/general-purpose/a-family.md), [B](../virtual-machines/sizes/general-purpose/b-family.md), [D](../virtual-machines/sizes/general-purpose/d-family.md), [E](../virtual-machines/sizes/memory-optimized/e-family.md), and [F](../virtual-machines/sizes/compute-optimized/f-family.md) families can be specified in the `skuProfile`.
-- **VM Size Limit**: You can specify up to **five VM sizes** in an instance mix deployment.
-- **Virtual Network Requirement**: For REST API deployments, an existing virtual network must be present in the resource group where the scale set is being deployed.
-- **Architecture Consistency**: Mixing VM architectures (for example, Arm64 and x64) in the same instance mix deployment isn't supported.
-- **Storage Interface Consistency**: VMs with different storage interfaces (for example, SCSI and NVMe) can't be mixed in the same instance mix.
-- **Security Profile Consistency**: All VMs specified in the `skuProfile` must share the same Security Profile.
-- **Local Disk Configuration**: All selected VM sizes must have the same local disk configuration.
-- **Unsupported Features**: Instance mix doesn't support the following features:
-    - Standby Pools
-    - Azure Dedicated Host
-    - Proximity Placement Groups
-- **Scaling Behavior with MaxSurge**: During scaling actions with MaxSurge, instance mix replaces the VM with the same size it had before the scaling action.
+- To ensure balanced load distribution, use VM sizes with similar vCPU and memory.
+- For consistent performance, use VM sizes of similar type (for example, both D-series).
+- For reservation or savings-plan benefits, use `Prioritized` and place reservation-backed sizes at higher priority.
+
+## Limitations and unsupported scenarios
+
+- Orchestration mode: instance mix is available only with Flexible Orchestration Mode.
+- VM families supported in `skuProfile`: A, B, D, E, and F families only.
+- Up to five VM sizes can be specified.
+- You can't mix VM architectures (for example, Arm64 and x64) in the same instance mix.
+- VMs with different storage interfaces (SCSI vs NVMe) can't be mixed.
+- You can't mix VM SKUs that use premium storage and non-premium storage in the same instance mix.
+- All VMs must share the same Security Profile and local disk configuration.
+- **DiffDisk settings**: Instance mix currently doesn't support `diffDiskSettings` on the OS disk.
+- Instance mix doesn't support: Standby Pools, Azure Dedicated Host, Proximity Placement Groups, or on-demand capacity reservations.
 
 ## Next steps
 Learn how to [create a scale set using instance mix](instance-mix-create.md).

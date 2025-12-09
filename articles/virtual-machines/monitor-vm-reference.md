@@ -5,6 +5,7 @@ ms.date: 01/24/2025
 ms.custom: horz-monitor
 ms.topic: reference
 ms.service: azure-virtual-machines
+# Customer intent: As a cloud administrator, I want access to monitoring metrics and logs for Azure Virtual Machines, so that I can effectively track performance, availability, and resource utilization to ensure optimal operation and quickly address any issues.
 ---
 
 # Azure Virtual Machines monitoring data reference

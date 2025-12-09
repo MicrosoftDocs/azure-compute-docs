@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As an application architect, I want to implement scalable services using Service Fabric, so that I can efficiently manage workload changes and resource allocation for optimal application performance."
 ---
 
 # Scaling in Service Fabric

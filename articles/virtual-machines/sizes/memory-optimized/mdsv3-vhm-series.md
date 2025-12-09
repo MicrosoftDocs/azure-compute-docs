@@ -8,6 +8,7 @@ ms.topic: concept-article
 ms.date: 04/08/2025
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
+# Customer intent: As a cloud architect, I want to understand the specifications and feature support of the NC-series virtual machine sizes, so that I can select the appropriate size for high-performance computing applications.
 ---
 
 # Mdsv3 Very High Memory sizes series
@@ -18,7 +19,18 @@ ms.reviewer: mattmcinnes
 [!INCLUDE [mdsv3-vhm-series-specs](./includes/mdsv3-vhm-series-specs.md)]
 
 ## Feature support
-[Premium Storage](../../premium-storage-performance.md): Supported <br>[Premium Storage caching](../../premium-storage-performance.md): Supported <br>[Live Migration](../../maintenance-and-updates.md): Not Supported <br>[Memory Preserving Updates](../../maintenance-and-updates.md): Not Supported <br>[Generation 2 VMs](../../generation-2.md): Supported <br>[Generation 1 VMs](../../generation-2.md): Not Supported <br>[Accelerated Networking](/azure/virtual-network/create-virtual-machine-accelerated-networking): Supported <br>[Ephemeral OS Disk](../../ephemeral-os-disks.md): Supported <br>[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Not Supported <br>[Hibernation](../../hibernate-resume.md): Not Supported <br> [Write Accelerator](/azure/virtual-machines/how-to-enable-write-accelerator): Supported
+- [Premium Storage](../../premium-storage-performance.md): Supported
+- [Premium Storage caching](../../premium-storage-performance.md): Supported
+- [Live Migration](../../maintenance-and-updates.md#live-migration): Not Supported
+- [Memory Preserving Updates](../../maintenance-and-updates.md): Not Supported
+- [Generation 2 VMs](../../generation-2.md): Supported
+- [Generation 1 VMs](../../generation-2.md): Not Supported
+- [Accelerated Networking](/azure/virtual-network/create-virtual-machine-accelerated-networking): Supported
+- [Ephemeral OS Disk](../../ephemeral-os-disks.md): Supported
+- [Temporary local NVMe disks](../../enable-nvme-temp-faqs.yml): Supported
+- [Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Not Supported
+- [Hibernation](../../hibernate-resume.md): Not Supported
+- [Write Accelerator](/azure/virtual-machines/how-to-enable-write-accelerator): Supported
 
 ## Sizes in series
 
@@ -29,6 +41,7 @@ vCPUs (Qty.) and Memory for each size
 | Size Name | vCPUs (Qty.) | Memory (GiB) |
 | --- | --- | --- |
 | Standard_M896ixds_32_v3 | 896 | 30,400 |
+| Standard_M896ixds_24_v3 | 896 | 23088 |
 | Standard_M1792ixds_32_v3 | 1,792 | 30,400 |
 
 #### VM Basics resources
@@ -50,6 +63,7 @@ Local (temp) storage info for each size
 | Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) |
 | --- | --- | --- |
 | Standard_M896ixds_32_v3 | 1 | 4,096 |
+|  Standard_M896ixds_24_v3 | 1 | 4,096 |
 | Standard_M1792ixds_32_v3 | 1 | 4,096 |
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
@@ -69,6 +83,7 @@ Remote (uncached) storage info for each size
 | Size Name | Max Remote Storage Disks (Qty.) | Max Uncached Premium SSD Disk IOPS | Max Uncached Premium SSD Throughput (MB/s) | Max Uncached Ultra Disk and Premium SSD v2 IOPS | Max Uncached Ultra Disk and Premium SSD v2 Throughput (MB/s) |
 | --- | --- | --- | --- | --- | --- |
 | Standard_M896ixds_32_v3 | 64 | 110,000 | 8,000 | 200,000 | 8,000 |
+|  Standard_M896ixds_24_v3 | 64 | 110,000 | 8,000 | 200,000 | 8,000 |
 | Standard_M1792ixds_32_v3 | 64 | 110,000 | 8,000 | 200,000 | 8,000 |
 
 #### Storage resources
@@ -92,6 +107,7 @@ Network interface info for each size
 | Size Name | Max NICs (Qty.) | Max Network Bandwidth (Mb/s) |
 | --- | --- | --- |
 | Standard_M896ixds_32_v3 | 8 | 185,000 |
+| Standard_M896ixds_24_v3 | 8 | 185,000 |
 | Standard_M1792ixds_32_v3 | 8 | 185,000 |
 
 #### Networking resources

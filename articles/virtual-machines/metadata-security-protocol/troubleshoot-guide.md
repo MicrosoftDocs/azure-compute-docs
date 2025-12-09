@@ -7,6 +7,7 @@ ms.topic: troubleshooting-general
 ms.date: 04/08/2025
 ms.author: minnielahoti
 ms.reviewer: azmetadatadev
+# Customer intent: "As a cloud administrator, I want to troubleshoot deployment issues for virtual machines using the Metadata Security Protocol, so that I can ensure their secure and efficient operation."
 ---
 
 # Troubleshoot MSP

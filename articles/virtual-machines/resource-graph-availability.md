@@ -7,7 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 02/08/2023
 ms.reviewer: Xema Pathak
+ms.custom: sfi-image-nochange
 
+# Customer intent: "As an IT operations manager, I want to query VM availability information using Resource Graph, so that I can monitor resource health, assess impacts on SLAs, and initiate timely mitigations against disruptions."
 ---
 
 # VM availability information in Azure Resource Graph

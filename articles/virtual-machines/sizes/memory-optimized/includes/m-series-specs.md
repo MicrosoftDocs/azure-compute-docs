@@ -9,6 +9,7 @@ ms.date: 04/08/2025
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
+# Customer intent: "As a cloud architect, I want to access detailed specifications for M-series virtual machines, so that I can select the appropriate resource sizes for high-performance workloads."
 ---
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
 |---|---|---|

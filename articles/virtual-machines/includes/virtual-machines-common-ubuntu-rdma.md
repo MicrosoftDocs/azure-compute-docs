@@ -1,9 +1,10 @@
 ---
-author: jushiman
+author: cynthnan
 ms.service: azure-virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
-ms.author: jushiman
+ms.author: cynthn
+# Customer intent: As a system administrator, I want to configure RDMA and install the Intel MPI Library on my virtual machines, so that I can optimize performance for high-performance computing applications.
 ---
 1. Install dapl, rdmacm, ibverbs, and mlx4
 

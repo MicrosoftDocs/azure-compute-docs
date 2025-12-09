@@ -8,6 +8,7 @@ ms.topic: concept-article
 ms.date: 07/29/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
+# Customer intent: "As a cloud architect, I want to understand the specifications and capabilities of the Ddsv4 virtual machine sizes, so that I can select the appropriate size for my application's performance and resource requirements."
 ---
 
 # Ddsv4 sizes series
@@ -19,14 +20,16 @@ ms.reviewer: mattmcinnes
 
 ## Feature support
 
-Premium Storage: Supported<br>
-Premium Storage caching: Supported<br>
-Live Migration: Supported<br>
-Memory Preserving Updates: Supported<br>
-VM Generation Support: Generation 1 and 2<br>
-Accelerated Networking: Supported<br>
-Ephemeral OS Disks: Supported<br>
-Nested Virtualization: Supported<br>
+- [Premium Storage](../../premium-storage-performance.md): Supported
+- [Premium Storage caching](../../premium-storage-performance.md): Supported
+- [Live Migration](../../maintenance-and-updates.md#live-migration): Supported
+- [Memory Preserving Updates](../../maintenance-and-updates.md): Supported
+- [VM Generation Support](../../generation-2.md): Generation 1 and 2
+- [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported
+- [Ephemeral OS Disks](../../ephemeral-os-disks.md): Supported
+- [Local temporary storage](../../overview.md#local-temporary-storage): Supported
+- [Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Supported
+
 
 ## Sizes in series
 

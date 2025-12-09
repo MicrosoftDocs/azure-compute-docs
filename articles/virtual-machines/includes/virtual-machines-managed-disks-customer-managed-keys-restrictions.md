@@ -7,6 +7,7 @@
  ms.date: 02/18/2025
  ms.author: rogarana
  ms.custom: include file
+# Customer intent: As a cloud administrator, I want to understand the limitations and requirements of using customer-managed keys for disk encryption, so that I can ensure compliance and optimize the management of storage solutions in my Azure environment.
 ---
 - If this feature is enabled for a disk with incremental snapshots, it can't be disabled on that disk or its snapshots.
     To work around this, copy all the data to an entirely different managed disk that isn't using customer-managed keys. You can do that with either the [Azure CLI](/azure/virtual-machines/linux/disks-upload-vhd-to-managed-disk-cli#copy-a-managed-disk) or the [Azure PowerShell module](/azure/virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell#copy-a-managed-disk).

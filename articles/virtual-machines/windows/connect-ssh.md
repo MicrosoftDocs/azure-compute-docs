@@ -1,12 +1,13 @@
 ---
 title: Connect using SSH to an Azure VM running Windows
 description: Learn how to connect using Secure Shell and sign on to a Windows VM.
-author: ju-shim
+author: cynthn
 ms.service: azure-virtual-machines
 ms.topic: how-to
 ms.date: 06/29/2022
 ms.author: migreene
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
+# Customer intent: As a cloud administrator, I want to connect to a Windows virtual machine using SSH, so that I can securely manage and configure the VM remotely.
 ---
 # How to connect using Secure Shell (SSH) and sign on to an Azure virtual machine running Windows
 

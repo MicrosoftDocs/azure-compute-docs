@@ -9,6 +9,7 @@ ms.date: 08/01/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
+# Customer intent: "As a data scientist, I want to deploy the ND MI300X v5 series virtual machines, so that I can leverage high-performance GPUs for scalable deep learning and AI workloads."
 ---
 The ND MI300X v5 series virtual machine (VM) is a new flagship addition to the Azure GPU family. It was designed for high-end Deep Learning training and tightly coupled scale-up and scale-out Generative AI and HPC workloads.
 

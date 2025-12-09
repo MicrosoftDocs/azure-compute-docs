@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a cloud developer, I want to configure actor reentrancy settings in Service Fabric, so that I can control message processing behavior and optimize the performance of my actor-based applications.
 ---
 
 # Reliable Actors reentrancy

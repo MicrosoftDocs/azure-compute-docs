@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a software developer, I want to choose the appropriate programming model for building services on a cloud platform, so that I can efficiently leverage features like state management, service orchestration, and deployment in various environments.
 ---
 # Service Fabric programming model overview
 

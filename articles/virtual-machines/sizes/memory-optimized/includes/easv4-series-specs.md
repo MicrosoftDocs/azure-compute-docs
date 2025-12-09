@@ -9,6 +9,7 @@ ms.date: 03/12/2025
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
+# Customer intent: "As a cloud architect, I want to review the specifications of Easv4 series virtual machines, so that I can select the appropriate VM size for my applications based on performance and resource requirements."
 ---
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
 |---|---|---|

@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: devx-track-extended-java, linux-related-content
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a Java developer on Linux, I want to create and deploy a Reliable Actors application using Service Fabric, so that I can quickly build a scalable and reliable service that leverages cloud-based architecture."
 ---
 
 # Create your first Java Service Fabric Reliable Actors application on Linux

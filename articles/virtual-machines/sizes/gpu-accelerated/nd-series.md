@@ -8,9 +8,13 @@ ms.topic: concept-article
 ms.date: 07/31/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
+# Customer intent: "As a cloud infrastructure architect, I want to review the specifications and capabilities of the ND series virtual machine sizes, so that I can select the appropriate size for my high-performance computing workloads."
 ---
 
 # ND sizes series
+
+> [!IMPORTANT]
+> The ND-series has retired as of September 6th, 2023, and is no longer available. Please refer to the [ND-series retirement page](/azure/virtual-machines/sizes/retirement/nd-series-retirement) for more information. 
 
 [!INCLUDE [nd-summary](./includes/nd-series-summary.md)]
 

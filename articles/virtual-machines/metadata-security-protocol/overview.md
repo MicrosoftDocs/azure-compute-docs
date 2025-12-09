@@ -4,9 +4,10 @@ description: Get an overview of the Metadata Security Protocol feature.
 author: minnielahoti
 ms.service: azure-virtual-machines
 ms.topic: concept-article
-ms.date: 04/22/2025
+ms.date: 09/04/2025
 ms.author: minnielahoti
 ms.reviewer: azmetadatadev
+# Customer intent: As a cloud administrator, I want to implement the Metadata Security Protocol so that I can enhance the security of instance metadata services against attacks and protect sensitive VM credentials from potential threats.
 ---
 
 # Metadata Security Protocol (MSP)
@@ -66,6 +67,9 @@ By default, the existing authorization levels are enforced:
 This restriction is currently accomplished with firewall rules in the guest. This is still a default-open mechanism. If that rule can be disabled or bypassed for any reason, the metadata service still accepts the request. The authorization mechanism enabled here is default-closed. Bypassing interception maliciously or by error doesn't grant access to the metadata service.
 
 You can set up an advanced authorization configuration (that is, authorize specific in-guest processes and users to access only specific endpoints) by defining a custom allowlist with role-based access control (RBAC) semantics.
+
+> [!WARNING]
+> Please note that on Windows, the users can enable GuestProxyAgent (GPA) from an ARM template. However, in Linux it's a two-step process. The VM/VMSS is provisioned first and only then can the GPA be configured. 
 
 ## Related content
 

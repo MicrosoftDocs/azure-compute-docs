@@ -9,6 +9,7 @@ ms.topic: how-to
 ms.service: azure-virtual-machines
 ms.subservice: image-builder
 ms.custom: devx-track-azurecli, linux-related-content
+# Customer intent: "As a cloud administrator, I want to create a new version of a VM image from an existing image using the VM Image Builder, so that I can ensure my Linux VMs are up-to-date and properly configured in the Azure Compute Gallery."
 ---
 # Create a new VM image from an existing image by using Azure VM Image Builder in Linux
 

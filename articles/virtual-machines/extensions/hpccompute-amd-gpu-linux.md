@@ -11,6 +11,7 @@ ms.custom: linux-related-content
 ms.date: 04/30/2025
 ms.author: padmalathas
 author: magatala-MSFT
+# Customer intent: As a cloud engineer managing Linux N-series VMs, I want to install AMD GPU drivers using an extension, so that I can optimize my virtual machines for high-performance GPU workloads.
 ---
 # AMD GPU Driver Extension for Linux
 
@@ -23,6 +24,8 @@ Instructions on manual installation of the drivers and the current supported ver
 >
 > The GPU driver extensions do not automatically update the driver once the extension is installed. To upgrade to a newer driver version, you will need to either uninstall and reinstall the extension or manually install the driver.
 >
+
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
 
 ## Prerequisites
 

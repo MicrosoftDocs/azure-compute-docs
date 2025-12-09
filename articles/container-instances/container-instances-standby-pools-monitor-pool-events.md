@@ -5,8 +5,9 @@ author: mimckitt
 ms.author: mimckitt
 ms.service: azure-container-instances
 ms.topic: how-to
-ms.date: 5/19/2025
+ms.date: 11/17/2025
 ms.reviewer: tomvcassidy
+# Customer intent: As a cloud administrator, I want to monitor and analyze standby pool events in Azure Container Instances using Log Analytics, so that I can proactively manage resources and ensure system reliability.
 ---
 
 # Use Azure Log Analytics to monitor standby pool events for Azure Container Instances

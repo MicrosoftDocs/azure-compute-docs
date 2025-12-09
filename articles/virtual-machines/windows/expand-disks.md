@@ -1,14 +1,14 @@
 ---
 title: Expand Virtual Hard Disks Attached to a Windows VM in Azure
 description: Expand the size of the virtual hard disks attached to a virtual machine by using Azure PowerShell in the Resource Manager deployment model.
-author: kirpasingh
-manager: roshar
+author: roygara
 ms.service: azure-disk-storage
 ms.collection: windows
 ms.topic: how-to
 ms.date: 09/10/2024
-ms.author: kirpas
+ms.author: rogarana
 ms.custom: devx-track-azurepowershell, references_regions
+# Customer intent: As a cloud administrator, I want to expand the virtual hard disks attached to a Windows VM using PowerShell, so that I can increase storage capacity for applications and data without significant downtime.
 ---
 # Expand virtual hard disks attached to a Windows virtual machine
 

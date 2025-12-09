@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a developer configuring cloud-based actor services, I want to adjust FabricTransport settings in my application, so that I can optimize communication parameters and enhance the security of my actor services and clients.
 ---
 
 # Configure FabricTransport settings for Reliable Actors

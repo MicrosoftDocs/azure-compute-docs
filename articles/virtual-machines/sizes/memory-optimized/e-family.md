@@ -7,6 +7,7 @@ ms.subservice: sizes
 ms.topic: concept-article
 ms.date: 07/22/2024
 ms.author: mattmcinnes
+# Customer intent: As a cloud architect, I want to review the specifications and workloads of the E family VM sizes, so that I can select the most suitable virtual machines for memory-intensive applications in my organization.
 ---
 
 # 'E' family memory optimized VM size series
@@ -21,6 +22,22 @@ ms.author: mattmcinnes
 
 ## Series in family
 
+### Easv7 series and Eadsv7 series
+#### [Easv7 series](#tab/easv7)
+[!INCLUDE [easv7-series-summary](./includes/easv7-series-summary.md)]
+
+[View the full Easv7-series page](./easv7-series.md).
+
+[!INCLUDE [easv7-series-specs](./includes/easv7-series-specs.md)]
+
+#### [Eadsv7 series](#tab/eadsv7)
+[!INCLUDE [eadsv7-series-summary](./includes/eadsv7-series-summary.md)]
+
+[View the full Eadsv7-series page](./eadsv7-series.md).
+
+[!INCLUDE [eadsv7-series-specs](./includes/eadsv7-series-specs.md)]
+
+---
 ### Epsv6 and Epdsv6-series 
 #### [Epsv6-series](#tab/epsv6)
 [!INCLUDE [epsv6-series-summary](./includes/epsv6-series-summary.md)]

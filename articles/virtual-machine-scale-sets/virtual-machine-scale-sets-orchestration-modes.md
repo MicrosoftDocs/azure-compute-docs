@@ -6,8 +6,9 @@ ms.author: fisteele
 ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
 ms.date: 06/14/2024
-ms.reviewer: jushiman
+ms.reviewer: cynthn
 ms.custom: mimckitt, devx-track-azurecli, vmss-flex
+# Customer intent: "As a cloud architect, I want to understand the differences between Flexible and Uniform orchestration modes for Virtual Machine Scale Sets, so that I can choose the most suitable option for managing virtual machine instances based on workload requirements and scalability needs."
 ---
 
 # Orchestration modes for Virtual Machine Scale Sets in Azure

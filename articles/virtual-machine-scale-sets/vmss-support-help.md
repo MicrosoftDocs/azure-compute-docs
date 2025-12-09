@@ -6,8 +6,9 @@ ms.author: mimckitt
 ms.service: azure-virtual-machine-scale-sets
 ms.topic: troubleshooting
 ms.date: 06/14/2024
-ms.reviewer: jushiman
+ms.reviewer: cynthn
 ms.custom: support-help-page
+# Customer intent: As a cloud developer, I want to access troubleshooting resources and support options for Azure Virtual Machine Scale Sets, so that I can resolve issues efficiently and enhance my deployment solutions.
 ---
 
 # Support and troubleshooting for Azure Virtual Machine Scale Sets
@@ -64,7 +65,7 @@ If you need help with the language and tools used to develop and manage Azure Vi
 
 Learn about important product updates, roadmap, and announcements in [Azure Updates](https://azure.microsoft.com/updates/?category=compute).
 
-News and information about Azure Virtual Machine Scale Sets is shared at the [Azure blog](https://azure.microsoft.com/blog/topics/virtual-machines/).
+News and information about Azure Virtual Machine Scale Sets is shared at the [Azure blog](https://azure.microsoft.com/blog/product/virtual-machines/).
 
 
 ## Next steps

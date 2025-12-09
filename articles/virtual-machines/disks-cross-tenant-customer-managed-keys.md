@@ -7,7 +7,7 @@ ms.topic: how-to
 ms.date: 06/12/2025
 ms.author: rogarana
 ms.custom: devx-track-azurecli, devx-track-azurepowershell, references_regions
-
+# Customer intent: As a cloud administrator, I want to encrypt managed disks across different tenants using customer-managed keys, so that I can ensure data security while complying with customer encryption requirements.
 ---
 
 # Encrypt managed disks with cross-tenant customer-managed keys
@@ -44,17 +44,13 @@ az feature register --name CrossTenantCMKForDirectDriveDisks  --namespace Micros
 
 The preview for Ultra Disks and Premium SSD v2 disks is currently only available in the following regions:
 
-- Australia East
--  Southeast Asia
-- Canada Central
+- Australia South East
+- Southeast Asia
 - North Europe
-- France Central
 - Germany West Central
-- Korea Central
-- Sweden Central
 - UK South
-- West US
 - Central US
+- UAE North
 
 [!INCLUDE [entra-msi-cross-tenant-cmk-overview](~/reusable-content/ce-skilling/azure/includes/entra-msi-cross-tenant-cmk-overview.md)]
 

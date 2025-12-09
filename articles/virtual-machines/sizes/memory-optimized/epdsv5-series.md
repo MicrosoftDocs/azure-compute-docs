@@ -8,6 +8,7 @@ ms.topic: concept-article
 ms.date: 08/02/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
+# Customer intent: "As an IT infrastructure planner, I want to review the specifications of the Epdsv5 virtual machine sizes, so that I can select the appropriate size to meet my application's performance and resource requirements."
 ---
 
 # Epdsv5 sizes series
@@ -18,7 +19,16 @@ ms.reviewer: mattmcinnes
 [!INCLUDE [epdsv5-series-specs](./includes/epdsv5-series-specs.md)]
 
 ## Feature support
-[Premium Storage](../../premium-storage-performance.md): Supported <br>[Premium Storage caching](../../premium-storage-performance.md): Supported <br>[Live Migration](../../maintenance-and-updates.md): Supported <br>[Memory Preserving Updates](../../maintenance-and-updates.md): Supported <br>[Generation 2 VMs](../../generation-2.md): Supported <br>[Generation 1 VMs](../../generation-2.md): Not Supported <br>[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported <br>[Ephemeral OS Disk](../../ephemeral-os-disks.md): Supported <br>[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Not Supported <br>
+- [Premium Storage](../../premium-storage-performance.md): Supported
+- [Premium Storage caching](../../premium-storage-performance.md): Supported
+- [Live Migration](../../maintenance-and-updates.md#live-migration): Supported
+- [Memory Preserving Updates](../../maintenance-and-updates.md): Supported
+- [Generation 2 VMs](../../generation-2.md): Supported
+- [Generation 1 VMs](../../generation-2.md): Not Supported
+- [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported
+- [Ephemeral OS Disk](../../ephemeral-os-disks.md): Supported
+- [Local temporary storage](../../overview.md#local-temporary-storage): Supported
+- [Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Not Supported
 
 ## Sizes in series
 

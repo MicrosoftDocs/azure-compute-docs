@@ -8,6 +8,7 @@ ms.subservice: sizes
 ms.custom: ignite-2023, linux-related-content
 ms.topic: concept-article
 ms.date: 11/15/2023
+# Customer intent: "As a cloud architect, I want to select the NCads H100 v5-series VMs so that I can efficiently run AI training and batch inference workloads leveraging their advanced GPU and processor capabilities."
 ---
 
 #  NCads H100 v5-series 

@@ -9,6 +9,7 @@ ms.subservice: sizes
 ms.date: 05/07/2025
 ms.author: wwilliams
 ms.custom: include file
+# Customer intent: "As a cloud architect, I want to assess the Dndsv6-series virtual machines, so that I can determine their suitability for high-performance networking and large-scale e-commerce applications in my infrastructure."
 ---
 Dndsv6-series virtual machines run on the 5th Generation Intel® Xeon® Platinum 8573C (Emerald Rapids) processor reaching an all- core turbo clock speed of 3.0 GHz. These virtual machines offer up to 128 vCPU and 512 GiB of RAM. Dndsv6-series virtual machines, an extension of our standard Ddsv6-series, provide better networking performance for most general-purpose workloads. It also provides increased scalability, upgraded CPU, elevated memory bandwidth, and faster remote storage access compared to the prior generation. 
 

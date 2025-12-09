@@ -1,6 +1,6 @@
 ---
-title: Azure HPC VM images
-description: HPC VM images to be used on InfiniBand enabled H-series and GPU enabled N-series VMs.
+title: Azure HPC/AI VM images
+description: HPC/AI VM images to be used on InfiniBand enabled H-series and GPU enabled N-series VMs.
 ms.service: azure-virtual-machines
 ms.subservice: hpc
 ms.custom: linux-related-content
@@ -9,13 +9,14 @@ ms.date: 07/25/2024
 ms.reviewer: padmalathas
 ms.author: litan2
 author: litan2
+# Customer intent: As a cloud administrator, I want to deploy optimized HPC/AI VM images so that I can efficiently manage high-performance computing workloads with reliable configurations and performance optimizations.
 ---
 
-# Azure HPC VM images
+# Azure HPC/AI VM images
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
-This article shares some information on HPC VM images to be used to launch InfiniBand enabled [H-series](sizes-hpc.md) and GPU enabled [N-series](sizes-gpu.md) VMs.
+This article shares some information on HPC/AI VM images to be used to launch InfiniBand enabled [H-series](sizes-hpc.md) and GPU enabled [N-series](sizes-gpu.md) VMs.
 
 The Azure HPC team is offering optimized and pre-configured Linux VM images for HPC and AI workloads. These VM images are:
 
@@ -25,7 +26,7 @@ The Azure HPC team is offering optimized and pre-configured Linux VM images for 
 
 ## Availability on Azure
 
-You may use the HPC images when creating a VM from either Azure Marketplace or Azure CLI. For other deployment methods, refer to the section of Deploying HPC VM Images.
+You may use the HPC/AI images when creating a VM from either Azure Marketplace or Azure CLI. For other deployment methods, refer to the section of Deploying HPC VM Images.
 
 ### Azure Marketplace
 

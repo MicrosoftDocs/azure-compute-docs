@@ -9,6 +9,7 @@ ms.topic: troubleshooting
 ms.service: azure-virtual-machines
 ms.subservice: image-builder
 ms.custom: devx-track-azurecli, linux-related-content
+# Customer intent: "As a system administrator tasked with maintaining VM images, I want to troubleshoot VM Image Builder issues and resolve common errors in the build process, so that I can ensure efficient and successful image creation and deployment."
 ---
 
 # Troubleshoot Azure VM Image Builder

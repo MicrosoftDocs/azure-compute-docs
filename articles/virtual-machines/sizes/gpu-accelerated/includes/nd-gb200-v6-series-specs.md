@@ -9,6 +9,7 @@ ms.date: 03/20/2025
 ms.author: wwilliams
 ms.reviewer: mattmcinnes
 ms.custom: include file
+# Customer intent: "As a cloud architect, I want to review the specifications of the ND GB200 v6 series VMs, so that I can ensure they meet the performance requirements for my high-demand workloads."
 ---
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
 |---|---|---|

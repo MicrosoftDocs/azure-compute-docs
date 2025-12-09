@@ -9,6 +9,7 @@ author: ebolton-cyber
 ms.author: mattmcinnes
 ms.collection: linux
 ms.custom: devx-track-azurecli, GGAL-freshness922, linux-related-content
+# Customer intent: As an IT professional, I want to use the CLI to find and deploy Azure Marketplace VM images, including their purchase plans, so that I can automate virtual machine provisioning in a programmatic and efficient manner.
 ---
 # Find Azure Marketplace image information using the Azure CLI
 

@@ -7,7 +7,7 @@ ms.custom: devx-track-azurecli, devx-track-azurepowershell, references_regions
 ms.topic: how-to
 ms.date: 04/17/2025
 ms.author: rogarana
-#Customer intent: The goal of this article is to fully document the various ways and restrictions for converting each disk type.
+# Customer intent: As a cloud administrator, I want to convert Azure managed disks between different disk types, so that I can optimize storage performance and cost of my environments, according to my workloads' requirements.
 ---
 
 # Convert the disk type of an Azure managed disk

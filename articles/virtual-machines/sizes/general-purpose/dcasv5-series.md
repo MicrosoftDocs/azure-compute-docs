@@ -8,6 +8,7 @@ ms.topic: concept-article
 ms.date: 07/30/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
+# Customer intent: "As a cloud architect, I want to review the specifications and feature support of the DCasv5 series virtual machines, so that I can select the appropriate VM size for my application workloads based on performance and storage requirements."
 ---
 
 # DCasv5 sizes series

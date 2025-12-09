@@ -9,6 +9,7 @@ ms.topic: concept-article
 ms.date: 10/03/2024
 ms.author: cholse
 ms.reviewer: jjaygbay1 
+# Customer intent: As a database administrator, I want to implement effective backup strategies for Oracle Database on Azure Linux VMs, so that I can ensure data protection, recovery from failures, and support development and compliance needs.
 ---
 
 # Backup strategies for Oracle Database on an Azure Linux VM

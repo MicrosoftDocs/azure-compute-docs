@@ -6,6 +6,8 @@ ms.author: halkazwini
 ms.service: azure-virtual-machines
 ms.topic: how-to
 ms.date: 09/20/2024
+ms.custom: sfi-image-nochange
+# Customer intent: "As a network administrator, I want to test security rules for inbound and outbound connections on my virtual machine, so that I can ensure proper traffic flow and resolve connectivity issues effectively."
 ---
 
 # Network security group test
@@ -16,7 +18,7 @@ In this article, you learn how to use **Network security group test** to check i
 
 ## Prerequisites
 
-- An Azure account with an active subscription. If you don't have one, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+- An Azure account with an active subscription. If you don't have one, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 - Sign in to the [Azure portal](https://portal.azure.com) with your Azure account.
 

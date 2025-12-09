@@ -6,8 +6,9 @@ author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
 ms.topic: concept-article
-ms.date: 08/29/2024
+ms.date: 11/17/2025
 ms.custom: mvc
+# Customer intent: As a cloud architect, I want to understand how Azure Container Instances integrate with orchestration platforms, so that I can effectively manage and scale containerized applications in a cloud environment.
 ---
 
 # Azure Container Instances and container orchestrators

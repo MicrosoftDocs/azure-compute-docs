@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.date: 05/16/2024
 ms.author: jainan
 ms.reviewer: mattmcinnes
+# Customer intent: "As an Azure administrator, I want to troubleshoot hibernation issues for virtual machines, so that I can ensure optimal performance and manageability of my VM infrastructure."
 ---
 
 # Troubleshooting hibernation in Azure

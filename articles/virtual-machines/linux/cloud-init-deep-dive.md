@@ -9,6 +9,7 @@ ms.author: mattmcinnes
 ms.reviewer: cynthn
 ms.subservice: cloud-init
 ms.custom: linux-related-content
+# Customer intent: As a cloud administrator, I want to understand the cloud-init configuration and boot stages for Linux VMs, so that I can effectively provision and troubleshoot Azure virtual machines.
 ---
 
 # Diving deeper into cloud-init

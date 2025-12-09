@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: "As a cloud application developer, I want to implement custom serialization for Reliable Collections, so that I can optimize performance and ensure data compatibility during application upgrades."
 ---
 
 # Reliable Collection object serialization in Azure Service Fabric

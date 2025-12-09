@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: linux-related-content
 services: service-fabric
 ms.date: 05/13/2024
+# Customer intent: As a cloud architect, I want to understand the differences between Azure and standalone Service Fabric clusters, so that I can choose the best deployment strategy for my microservices based on my project requirements and infrastructure capabilities.
 ---
 
 # Comparing Azure and standalone Service Fabric clusters on Windows Server and Linux

@@ -8,7 +8,8 @@ ms.author: gabsta
 author: GabstaMSFT
 ms.reviewer: jushiman
 ms.collection: windows
-ms.date: 04/04/2023
+ms.date: 08/18/2025
+# Customer intent: As a cloud administrator, I want to automate post-deployment configuration and management tasks on Windows VMs using scripts, so that I can ensure efficient and consistent setup without manual intervention.
 ---
 # Custom Script Extension for Windows
 
@@ -17,6 +18,8 @@ The Custom Script Extension downloads and runs scripts on Azure virtual machines
 The Custom Script Extension integrates with Azure Resource Manager templates. You can also run it by using the Azure CLI, Azure PowerShell, the Azure portal, or the Azure Virtual Machines REST API.
 
 This article describes how to use the Custom Script Extension by using the Azure PowerShell module and Azure Resource Manager templates. It also provides troubleshooting steps for Windows systems.
+
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
 
 ## Prerequisites
 
@@ -122,7 +125,7 @@ You can use this schema inside the VM resource or as a standalone resource. If t
 
 | Name | Value or example | Data type |
 | ---- | ---- | ---- |
-| apiVersion | `2015-06-15` | date |
+| apiVersion | `2018-06-01` | date |
 | publisher | `Microsoft.Compute` | string |
 | type | `CustomScriptExtension` | string |
 | typeHandlerVersion | `1.10` | int |
@@ -164,7 +167,7 @@ You can set the following values in either public or protected settings. The ext
 The Custom Script Extension, version 1.10 and later, supports [managed identities](/azure/active-directory/managed-identities-azure-resources/overview) for downloading files from URLs provided in the `fileUris` setting. The property allows the Custom Script Extension to access Azure Storage private blobs or containers without the user having to pass secrets like SAS tokens or storage account keys.
 
 > [!NOTE]
-> The Custom Script Extension does not currently support the use of managed identities on Arc enabled servers
+> The Custom Script Extension does not currently support using Managed Identity authentication on Azure Arc–enabled servers.
 
 
 To use this feature, add a [system-assigned](/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity) or [user-assigned](/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-user-assigned-identity) identity to the VM or Virtual Machine Scale Set where the Custom Script Extension runs. Then [grant the managed identity access to the Azure Storage container or blob](/azure/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access).

@@ -10,6 +10,7 @@ ms.date: 11/14/2024
 ms.author: vakavuru
 ms.reviewer: cynthn
 ms.custom: engagement-fy23, linux-related-content
+# Customer intent: As a system administrator, I want to understand the endorsed Linux distributions available on Azure, so that I can choose the most suitable image for deploying and managing my virtual machines effectively.
 ---
 
 # Endorsed Linux distributions on Azure

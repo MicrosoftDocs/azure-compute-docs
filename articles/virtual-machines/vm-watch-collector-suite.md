@@ -7,6 +7,7 @@ ms.service: azure-virtual-machines
 ms.topic: concept-article
 ms.date:     02/05/2025
 ms.subservice: monitoring
+# Customer intent: As a systems administrator, I want to implement VM watch collectors to monitor VM health metrics and logs, so that I can proactively identify issues, optimize performance, and ensure the reliability of the virtual machine environment.
 ---
 
 # VM watch Collectors Suite 

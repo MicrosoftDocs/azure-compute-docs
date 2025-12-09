@@ -8,6 +8,7 @@ ms.topic: concept-article
 ms.workload: infrastructure-services
 ms.date: 11/07/2024
 ms.author: archat
+# Customer intent: "As a cloud architect, I want to evaluate Cobalt 100-based Virtual Machines for various workloads, so that I can determine their performance and efficiency benefits for deploying cloud-native applications."
 ---
 
 # Azure Cobalt processor-based Virtual Machines

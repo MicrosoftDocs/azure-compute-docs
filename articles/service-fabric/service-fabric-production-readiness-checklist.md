@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: "As a cloud application architect, I want to ensure my Service Fabric application and cluster meet production readiness requirements, so that I can maintain reliable performance and security in a live environment."
 ---
 
 # Production readiness checklist

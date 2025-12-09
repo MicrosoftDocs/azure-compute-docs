@@ -5,10 +5,11 @@ author: mattmcinnes
 ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.date: 01/31/2025
+ms.date: 11/24/2025
 ms.author: padmalathas
 ms.reviewer: mattmcinnes
 ms.custom: include file
+# Customer intent: As a cloud architect, I want to assess the capabilities of HX-series virtual machines, so that I can determine their suitability for running memory-intensive workloads in applications like silicon design and advanced manufacturing processes.
 ---
 HX-series VMs are optimized for workloads that require significant memory capacity with twice the memory capacity as HBv4. For example, workloads such as silicon design can use HX-series VMs to enable EDA customers targeting the most advanced manufacturing processes to run their most memory-intensive workloads.
 

@@ -99,7 +99,7 @@ Remote (uncached) storage info for each size
 | Standard_M416ds_6_v3 | 64 | 130,000 | 4,000 | 130,000 | 4,000 |
 | Standard_M416ds_8_v3 | 64 | 130,000 | 4,000 | 130,000 | 4,000 |
 | Standard_M624ds_12_v3 | 64 | 130,000 | 4,000 | 130,000 | 4,000 |
-| Standard_M832ds_12_v3 | 64 | 130,000 | 4,000 | 130,000 | 4,000 |
+| Standard_M832ds_12_v3 | 64 | 130,000 | 4,000 | 260,000 | 8,000 |
 | Standard_M832ids_16_v3 | 64 | 130,000 | 4,000 | 260,000 | 8,000 |
 
 
@@ -111,7 +111,7 @@ Remote (uncached) storage info for each size
 | Standard_M416ds_8_v3 | 64 | 130,000 | 4,000 | 130,000 | 4,000 |
 | Standard_M624ds_12_v3 | 64 | 130,000 | 4,000 | 130,000 | 4,000 |
 | Standard_M832ds_12_v3 | 64 | 130,000 | 4,000 | 130,000 | 4,000 |
-| Standard_M832ids_16_v3 | 64 | 130,000 | 4,000 | 260,000 | 8,000 |
+| Standard_M832ids_16_v3 | 64 | 130,000 | 4,000 | 130,000 | 4,000 |
 
 
 #### Storage resources

@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a cloud application developer, I want to configure the KVSActorStateProvider settings in Azure Service Fabric, so that I can optimize the performance and security of my stateful actors.
 ---
 
 # Configuring Reliable Actors--KVSActorStateProvider

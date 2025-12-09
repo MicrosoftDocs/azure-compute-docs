@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 08/23/2024
+# Customer intent: As an application administrator, I want to perform on-demand backups of my Reliable Stateful services and Reliable Actors, so that I can protect against data loss or corruption during service updates or changes.
 ---
 
 # On-demand backup in Azure Service Fabric
@@ -52,13 +53,13 @@ The following case is the continuation of the scenario in [Enabling periodic bac
 
 ```powershell
 
-Backup-SFPartition -PartitionId '974bd92a-b395-4631-8a7f-53bd4ae9cf22' 
+Backup-SFPartition -PartitionId 'aaaabbbb-0000-cccc-1111-dddd2222eeee' 
 
 ```
 
 #### Rest Call using PowerShell
 
-Use the [BackupPartition](/rest/api/servicefabric/sfclient-api-backuppartition) API to set up triggering for the on-demand backup for partition ID `974bd92a-b395-4631-8a7f-53bd4ae9cf22`.
+Use the [BackupPartition](/rest/api/servicefabric/sfclient-api-backuppartition) API to set up triggering for the on-demand backup for partition ID `aaaabbbb-0000-cccc-1111-dddd2222eeee`.
 
 ```powershell
 $url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/Partitions/974bd92a-b395-4631-8a7f-53bd4ae9cf22/$/Backup?api-version=6.4"
@@ -77,13 +78,13 @@ You can request on-demand backup for a partition of a Reliable Stateful service 
 
 ```powershell
 
-  Backup-SFPartition -PartitionId '974bd92a-b395-4631-8a7f-53bd4ae9cf22' -ManagedIdentityAzureBlobStore -FriendlyName "AzureMI_storagesample" -BlobServiceUri 'https://<account-name>.blob.core.windows.net' -ContainerName 'backup-container' -ManagedIdentityType "VMSS" -ManagedIdentityClientId "<Client-Id of User-Assigned MI>"
+  Backup-SFPartition -PartitionId 'aaaabbbb-0000-cccc-1111-dddd2222eeee' -ManagedIdentityAzureBlobStore -FriendlyName "AzureMI_storagesample" -BlobServiceUri 'https://<account-name>.blob.core.windows.net' -ContainerName 'backup-container' -ManagedIdentityType "VMSS" -ManagedIdentityClientId "<Client-Id of User-Assigned MI>"
   # Use Optional parameter `ManagedIdentityClientId` with Client-Id of User-Assigned Managed Identity in case of multiple User-Assigned Managed Identities assigned to your resource, or both SAMI & UAMI assigned and we need to use UAMI as the default, else no need of this paramter.
 ```
 
 #### Rest Call using PowerShell
 
-Use the [BackupPartition](/rest/api/servicefabric/sfclient-api-backuppartition) API to set up triggering for the on-demand backup for partition ID `974bd92a-b395-4631-8a7f-53bd4ae9cf22`. Include the following Azure Storage information:
+Use the [BackupPartition](/rest/api/servicefabric/sfclient-api-backuppartition) API to set up triggering for the on-demand backup for partition ID `aaaabbbb-0000-cccc-1111-dddd2222eeee`. Include the following Azure Storage information:
 
 ```powershell
 $StorageInfo = @{
@@ -129,7 +130,7 @@ Different partitions can trigger on-demand backup requests at the same time.
 
 ```powershell
 
-Get-SFPartitionBackupProgress -PartitionId '974bd92a-b395-4631-8a7f-53bd4ae9cf22'
+Get-SFPartitionBackupProgress -PartitionId 'aaaabbbb-0000-cccc-1111-dddd2222eeee'
 
 ```
 #### Rest Call using PowerShell
@@ -160,7 +161,7 @@ On-demand backup requests can be in the following states:
     BackupState             : Success
     TimeStampUtc            : 2018-11-21T20:00:01Z
     BackupId                : 5d64b697-6acd-45a4-adbd-3d75e0078081
-    BackupLocation          : SampleApp\MyStatefulService\974bd92a-b395-4631-8a7f-53bd4ae9cf22\2018-11-21 20.00.01.zip
+    BackupLocation          : SampleApp\MyStatefulService\aaaabbbb-0000-cccc-1111-dddd2222eeee\2018-11-21 20.00.01.zip
     EpochOfLastBackupRecord : @{DataLossNumber=131873018908156893; ConfigurationNumber=8589934592}
     LsnOfLastBackupRecord   : 36
     FailureError            :

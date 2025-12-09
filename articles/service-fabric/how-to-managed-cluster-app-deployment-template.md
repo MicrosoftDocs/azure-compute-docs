@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: devx-track-arm-template
 services: service-fabric
 ms.date: 01/22/2025
+# Customer intent: As a cloud developer, I want to deploy and manage Service Fabric applications using Azure Resource Manager templates, so that I can streamline application lifecycle operations and improve management efficiency on my managed cluster.
 ---
 
 # Manage application lifecycle on a managed cluster using Azure Resource Manager

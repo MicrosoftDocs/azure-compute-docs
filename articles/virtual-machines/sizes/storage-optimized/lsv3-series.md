@@ -8,6 +8,7 @@ ms.topic: concept-article
 ms.date: 07/31/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
+# Customer intent: As a cloud architect, I want to compare the specifications and features of the Lsv3 size series for virtual machines, so that I can select the appropriate VM size to optimize performance for my applications and workloads.
 ---
 
 # Lsv3 sizes series

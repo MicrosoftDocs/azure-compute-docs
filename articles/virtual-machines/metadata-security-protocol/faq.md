@@ -7,6 +7,7 @@ ms.topic: faq
 ms.date: 04/08/2025
 ms.author: minnielahoti
 ms.reviewer: azmetadatadev
+# Customer intent: As a cloud administrator, I want to understand how to check and manage the Metadata Security Protocol (MSP) feature on my virtual machines, so that I can ensure the security and health of my VM deployments.
 ---
 
 # Frequently asked questions about MSP

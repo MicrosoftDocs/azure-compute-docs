@@ -10,6 +10,7 @@ ms.custom: devx-track-python, linux-related-content
 ms.date: 01/25/2023
 ms.author: ericrad
 ms.reviewer: mimckitt, wilsonadam
+# Customer intent: "As a cloud operations manager, I want to receive proactive notifications of scheduled maintenance events for my Linux virtual machines, so that I can prepare my applications and minimize downtime and disruption."
 ---
 
 # Azure Metadata Service: Scheduled Events for Linux VMs

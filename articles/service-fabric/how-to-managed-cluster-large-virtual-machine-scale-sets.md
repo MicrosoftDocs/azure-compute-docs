@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 08/09/2024
+# Customer intent: As a cloud architect, I want to configure a secondary node type for large virtual machine scale sets in a Service Fabric managed cluster, so that I can efficiently manage scaling and improve the performance of my applications.
 ---
 
 # Service Fabric managed cluster node type scaling

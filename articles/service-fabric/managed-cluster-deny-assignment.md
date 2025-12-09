@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/17/2024
+# Customer intent: "As a cloud administrator, I want to implement deny assignment policies for Service Fabric managed clusters, so that I can prevent accidental changes to cluster resources that could lead to desynchronization and potential downtime."
 ---
 
 # Deny assignment policy for Service Fabric managed clusters

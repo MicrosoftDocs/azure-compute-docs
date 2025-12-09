@@ -8,6 +8,7 @@ ms.topic: concept-article
 ms.date: 05/23/2025
 ms.author: archat
 ms.reviewer: mattmcinnes
+# Customer intent: As a cloud architect, I want to understand the specifications and features of the FXmsv2 size series, so that I can select the appropriate virtual machine sizes for my organization's diverse workloads.
 ---
 
 # FXmsv2 sizes series

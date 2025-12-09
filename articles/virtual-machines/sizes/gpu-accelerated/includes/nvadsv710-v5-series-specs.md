@@ -9,6 +9,7 @@ ms.date: 09/16/2024
 ms.author: wwilliams
 ms.reviewer: mattmcinnes
 ms.custom: include file
+# Customer intent: "As a cloud architect, I want to review the specifications of NVads-V710 v5-series virtual machines, so that I can select the appropriate configuration for my application workloads."
 ---
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
 |---|---|---|

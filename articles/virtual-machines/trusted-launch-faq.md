@@ -7,8 +7,9 @@ ms.reviewer: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: trusted-launch
 ms.topic: faq
-ms.date: 04/21/2025
+ms.date: 08/05/2025
 ms.custom: template-faq, devx-track-azurecli, devx-track-azurepowershell
+# Customer intent: As a cloud administrator, I want to implement Trusted Launch for my virtual machines, so that I can enhance security by protecting against boot kits, rootkits, and kernel-level malware effectively.
 ---
 
 # Trusted launch FAQs
@@ -351,6 +352,15 @@ Architecture      : x64
 
 ---
 
+### How can I validate Secure boot compatibility for Gen1 or Gen2 VM before upgrade to Trusted launch?
+
+To self-evaluate the presence of untrusted boot components or kernel modules in your existing Gen1/Gen2 Linux VMs before migrating to Trusted Launch, you can use the `SBInfo` tool from the Linux Security Package
+
+1. Connect to your Azure Linux Gen1/Gen2 VM.
+2. Install the SBInfo tool for the distribution your VM is running. It resides within the Linux Security Package.
+
+Refer to [Linux Trusted launch Secure boot validation](#linux-trusted-launch-virtual-machines) for distribution-based `SBInfo` tool installation commands.
+
 ### How do external communication drivers work with Trusted Launch VMs?
 
 Adding component object model (COM) ports require that you disable Secure Boot. COM ports are disabled by default in Trusted Launch VMs.
@@ -363,7 +373,7 @@ Trusted launch as default (TLaD) is currently in preview for all clients AND gen
 
 ### Does TLaD impacts existing VM & scale sets?
 
-Trusted launch as default won't change existing Azure VMs, scale sets already running in your environment
+Trusted launch as default doesn't change existing Azure VMs, scale sets already running in your environment
 
 ### Do I need to update my automation scripts or deployment templates?
 
@@ -500,13 +510,13 @@ With Trusted Launch, an execution environment commonly known as "the paravisor" 
 
 This section helps you verify Secure Boot failures.
 
-### Linux virtual machines
+### Linux Trusted launch virtual machines
 
-To verify which boot components are responsible for Secure Boot failures within an Azure Linux VM, you can use the SBInfo tool from the Linux Security Package.
+To verify which boot components are responsible for Secure Boot failures within an Azure Linux Trusted Launch VM, you can use the `SBInfo` tool from the Linux Security Package
 
 1. Turn off Secure Boot.
-1. Connect to your Azure Linux Trusted Launch VM.
-1. Install the SBInfo tool for the distribution your VM is running. It resides within the Linux Security Package.
+2. Connect to your Azure Linux Trusted Launch VM.
+3. Install the SBInfo tool for the distribution your VM is running. It resides within the Linux Security Package
 
 #### [Debian-based distributions](#tab/debianbased)
 
@@ -591,13 +601,17 @@ Package certificates, composed of .p7b (Full Certificate Authority) and .cer (In
 
 [!INCLUDE [json](../virtual-machines/includes/trusted-launch-tpm-certs/tpm-root-certificate-authority.md)]
 
-[!INCLUDE [p7b](../virtual-machines/includes/trusted-launch-tpm-certs/full-certificate-authority.md)]
+[!INCLUDE [cert](../virtual-machines/includes/trusted-launch-tpm-certs/root-certificate-authority.md)]
 
-[!INCLUDE [json](../virtual-machines/includes/trusted-launch-tpm-certs/root-certificate-authority.md)]
+[!INCLUDE [p7b](../virtual-machines/includes/trusted-launch-tpm-certs/full-certificate-authority.md)]
 
 [!INCLUDE [cert](../virtual-machines/includes/trusted-launch-tpm-certs/intermediate-ca.md)]
 
-### What Microsoft owned trusted certificates are built into Azure VMs?
+[!INCLUDE [p7b](../virtual-machines/includes/trusted-launch-tpm-certs/full-certificate-authority-03.md)]
+
+[!INCLUDE [cert](../virtual-machines/includes/trusted-launch-tpm-certs/intermediate-ca-03.md)]
+
+### What Microsoft owned trusted certificates are built into Azure VMs? 
 
 For Windows VMs, Windows CA certificate is built in UEFI firmware. For Linux VMs, Microsoft UEFI CA certificate is built in UEFI firmware.
 

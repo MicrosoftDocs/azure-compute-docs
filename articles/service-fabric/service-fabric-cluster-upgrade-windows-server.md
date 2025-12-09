@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a system administrator managing a Service Fabric cluster, I want to upgrade to the latest supported version of Service Fabric, so that I can ensure the reliability and security of my deployment while benefiting from new features and improvements.
 ---
 
 # Upgrade the Service Fabric version that runs on your cluster 

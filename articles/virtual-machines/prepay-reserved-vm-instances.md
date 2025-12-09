@@ -9,6 +9,7 @@ ms.topic: concept-article
 ms.date: 01/09/2023
 ms.author: vikdesai
 ms.reviewer: jushiman
+# Customer intent: As an IT administrator, I want to purchase Azure Reserved Virtual Machine Instances, so that I can optimize my compute costs and save money on consistent VM usage.
 ---
 # Save costs with Azure Reserved VM Instances
 

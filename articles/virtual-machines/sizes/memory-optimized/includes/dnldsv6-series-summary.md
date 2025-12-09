@@ -9,6 +9,7 @@ ms.subservice: sizes
 ms.date: 05/07/2025
 ms.author: wwilliams
 ms.custom: include file
+# Customer intent: As a cloud architect, I want to evaluate Dnldsv6-series virtual machines, so that I can leverage their enhanced networking performance and resource capabilities for high-demand applications and data-intensive workloads.
 ---
 Dnldsv6-series virtual machines run on the 5th Generation Intel® Xeon® Platinum 8573C (Emerald Rapids) processor reaching an all- core turbo clock speed of up to 3.0 GHz. These virtual machines offer up to 128 vCPU and 256 GiB of RAM and fast, local SSD storage up to 4x1760 GiB. These VM sizes can reduce cost when running non-memory intensive applications. Dnldsv6-series virtual machines, an extension of our standard Dldsv6-series, provide better networking performance for most general-purpose workloads. 
 

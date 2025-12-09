@@ -7,6 +7,8 @@ ms.reviewer: mattmcinnes
 ms.service: azure-dedicated-host
 ms.topic: concept-article
 ms.date: 01/23/2023
+ms.update-cycle: 1095-days
+# Customer intent: "As a cloud architect, I want to understand the hardware specifications and VM packing configurations for various Dedicated Host SKUs, so that I can efficiently plan and deploy virtual machines based on my organization’s workload requirements."
 ---
 
 # General Purpose Azure Dedicated Host SKUs

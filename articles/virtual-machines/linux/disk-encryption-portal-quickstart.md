@@ -6,17 +6,23 @@ ms.author: mbaldwin
 ms.service: azure-virtual-machines
 ms.subservice: security
 ms.topic: quickstart
-ms.date: 05/14/2025
-ms.custom: mode-ui, linux-related-content
+ms.date: 09/23/2025
+ms.custom:
+  - mode-ui
+  - linux-related-content
+  - sfi-image-nochange
+# Customer intent: As a cloud administrator, I want to create and encrypt a Linux virtual machine using the portal so that I can ensure my virtual machine's data is secure and compliant with security regulations.
 ---
 
 # Quickstart: Create and encrypt a virtual machine with the Azure portal
+
+[!INCLUDE [Azure Disk Encryption retirement notice](~/reusable-content/ce-skilling/azure/includes/security/azure-disk-encryption-retirement.md)]
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Flexible scale sets
 
 Azure virtual machines (VMs) can be created through the Azure portal. The Azure portal is a browser-based user interface to create VMs and their associated resources. In this quickstart you'll use the Azure portal to deploy a Linux virtual machine (VM) running Ubuntu 18.04 LTS, create a key vault for the storage of encryption keys, and encrypt the VM. However, any [ADE supported Linux image version](/azure/virtual-machines/linux/disk-encryption-overview#supported-operating-systems) could be used instead of an Ubuntu VM.
 
-If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 ## Sign in to Azure
 

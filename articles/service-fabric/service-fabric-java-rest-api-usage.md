@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: devx-track-extended-java
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a Java developer, I want to generate and use Service Fabric client APIs, so that I can deploy and manage microservices in a Service Fabric cluster efficiently.
 ---
 
 # Azure Service Fabric Java Client APIs

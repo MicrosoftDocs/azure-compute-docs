@@ -9,6 +9,7 @@ ms.service: azure-virtual-machines
 ms.subservice: image-builder
 ms.custom: references_regions
 ms.reviewer: mattmcinnes
+# Customer intent: As a cloud administrator, I want to streamline the creation and management of virtual machine images using a simplified image building process, so that I can ensure consistent deployments and security across my organization’s cloud infrastructure.
 ---
 
 # Azure VM Image Builder overview

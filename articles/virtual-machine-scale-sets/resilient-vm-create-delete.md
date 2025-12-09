@@ -6,7 +6,8 @@ ms.author: manasisoman
 ms.service: azure-virtual-machine-scale-sets
 ms.topic: how-to
 ms.date: 04/28/2025
-ms.reviewer: ju-shim
+ms.reviewer: cynthn
+# Customer intent: "As a cloud infrastructure administrator, I want to enable resilient create and delete for Virtual Machine Scale Sets, so that I can minimize manual intervention when handling errors during VM provisioning and deletion processes."
 ---
 
 

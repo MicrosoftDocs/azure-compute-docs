@@ -8,6 +8,7 @@ ms.topic: concept-article
 ms.date: 07/31/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
+# Customer intent: As a cloud architect, I want to evaluate the specifications and feature support of NP-series virtual machines, so that I can determine the appropriate size for my organization's computational and storage needs.
 ---
 
 # NP sizes series

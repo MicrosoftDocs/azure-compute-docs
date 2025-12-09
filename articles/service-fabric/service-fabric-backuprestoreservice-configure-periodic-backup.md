@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 04/17/2025
+# Customer intent: "As a cloud administrator, I want to configure periodic backups for my stateful services, so that I can ensure data integrity and recovery in case of data loss."
 ---
 
 # Understanding periodic backup configuration in Azure Service Fabric

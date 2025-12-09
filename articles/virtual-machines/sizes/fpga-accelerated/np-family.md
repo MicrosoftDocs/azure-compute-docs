@@ -7,6 +7,7 @@ ms.subservice: sizes
 ms.topic: concept-article
 ms.date: 06/06/2024
 ms.author: mattmcinnes
+# Customer intent: "As a cloud architect, I want to explore the NP family VM sizes, so that I can select the appropriate storage optimized VMs for my workloads."
 ---
 
 # 'NP' family storage optimized VM size series

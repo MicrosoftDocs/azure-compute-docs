@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.date: 04/08/2025
 ms.author: minnielahoti
 ms.reviewer: azmetadatadev
+# Customer intent: "As a virtual machine administrator, I want to reset the latched key for my VM, so that I can restore its access to necessary services after a key mismatch or loss."
 ---
 
 # Reset a latched key

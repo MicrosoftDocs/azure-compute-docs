@@ -5,6 +5,7 @@ ms.service: azure-virtual-machines
 ms.topic: concept-article
 ms.date: 04/01/2024
 #pmcontact:shants
+# Customer intent: As a cloud administrator, I want to understand the maintenance processes for virtual machines, so that I can effectively manage uptime and minimize disruptions during scheduled updates.
 ---
 # Maintenance for virtual machines in Azure
 
@@ -54,7 +55,7 @@ The Azure platform triggers live migration in the following scenarios:
 
 Some planned-maintenance scenarios use live migration, and you can use Scheduled Events to know in advance when live migration operations will start. 
 
-Live migration can also be used to move VMs when Azure Machine Learning algorithms predict an impending hardware failure or when you want to optimize VM allocations. For more information about predictive modeling that detects instances of degraded hardware, see [Improving Azure VM resiliency with predictive machine learning and live migration](https://azure.microsoft.com/blog/improving-azure-virtual-machine-resiliency-with-predictive-ml-and-live-migration/?WT.mc_id=thomasmaurer-blog-thmaure). Live-migration notifications appear in the Azure portal in the Monitor and Service Health logs as well as in Scheduled Events if you use these services.
+Live migration can also be used to move VMs when Azure Machine Learning algorithms predict an impending hardware failure or VM allocations optimization. For more information about predictive modeling that detects instances of degraded hardware, see [Improving Azure VM resiliency with predictive machine learning and live migration](https://azure.microsoft.com/blog/improving-azure-virtual-machine-resiliency-with-predictive-ml-and-live-migration/?WT.mc_id=thomasmaurer-blog-thmaure). Live-migration notifications appear in the Azure portal in the Monitor and Service Health logs as well as in Scheduled Events if you use these services.
 
 
 

@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a cloud service developer, I want to understand the lifecycle events of Reliable Services in Azure Service Fabric, so that I can effectively manage service startup, shutdown, and role changes for both stateful and stateless services.
 ---
 
 # Reliable Services lifecycle overview

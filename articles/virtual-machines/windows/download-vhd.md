@@ -6,6 +6,7 @@ ms.author: rogarana
 ms.service: azure-disk-storage
 ms.topic: how-to
 ms.date: 08/15/2024
+# Customer intent: "As a cloud administrator, I want to download a Windows VHD from Azure, so that I can create new virtual machines or back up the current VM configuration."
 ---
 
 # Download a Windows VHD from Azure

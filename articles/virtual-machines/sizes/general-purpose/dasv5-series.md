@@ -8,6 +8,7 @@ ms.topic: concept-article
 ms.date: 07/29/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
+# Customer intent: As a cloud architect, I want to review the specifications and features of the Dasv5 VM sizes, so that I can select the appropriate virtual machine instance for my workload requirements.
 ---
 
 # Dasv5 sizes series

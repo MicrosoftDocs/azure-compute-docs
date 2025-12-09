@@ -7,6 +7,7 @@ ms.service: oracle-on-azure
 ms.collection: oracle
 ms.topic: concept-article
 ms.date: 10/04/2024
+# Customer intent: "As a cloud architect, I want to determine the optimal VM sizing and storage options for Oracle workloads on Azure, so that I can ensure high performance, reliability, and cost-effectiveness for my organization's database operations."
 ---
 
 # Performance best practices for Oracle on Azure VMs

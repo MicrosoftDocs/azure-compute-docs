@@ -9,6 +9,7 @@ ms.collection: linux
 ms.topic: concept-article
 ms.date: 02/21/2025
 ms.author: carols
+# Customer intent: "As an IT administrator managing Ubuntu LTS virtual machines, I want to understand the end of standard support implications, so that I can ensure my systems remain secure and consider upgrading or enabling extended security maintenance options."
 ---
 
 # Canonical Ubuntu LTS end of standard support guidance 

@@ -5,10 +5,11 @@ author: mattmcinnes
 ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.date: 01/28/2025
+ms.date: 11/24/2025
 ms.author: padmalathas
 ms.reviewer: mattmcinnes
 ms.custom: include file
+# Customer intent: "As a cloud architect, I want to review the specifications of HBv2-series VMs so that I can determine which VM size best meets the performance and resource requirements for my applications."
 ---
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
 |---|---|---|

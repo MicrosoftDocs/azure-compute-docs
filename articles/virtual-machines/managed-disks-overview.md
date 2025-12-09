@@ -7,6 +7,7 @@ ms.topic: overview
 ms.date: 04/01/2025
 ms.author: rogarana
 #Customer intent: This article provides prospective customers a succinct overview of the features for the service, while providing links to deeper content which contain more information on specific topics.
+# Customer intent: As an IT administrator, I want to understand the features and benefits of Azure managed disks, so that I can effectively manage storage for my virtual machines and ensure high availability and durability for my infrastructure.
 ---
 # Introduction to Azure managed disks
 
@@ -106,6 +107,8 @@ Performance for each disk role works differently. To learn more about how perfor
 
 Every virtual machine has one attached OS disk. This disk has a preinstalled operating system, which you selected when creating the VM. This disk contains the boot volume.
 
+[!INCLUDE [disks-hdd-os-statement](includes/disks-hdd-os-statement.md)]
+
 Generally, you should store only your OS information on the OS disk. The [data disk](#data-disk) is where you should store all applications and data. If cost is a concern, you can use the OS disk instead of creating a data disk.
 
 The OS disk has a maximum capacity of 4,095 gibibytes (GiB). However, many operating systems are partitioned with [master boot records (MBRs)](/windows/win32/fileio/basic-and-dynamic-disks#master-boot-record) by default. An MBR limits the usable size to 2 TiB. If you need more than 2 TiB, create and attach [data disks](#data-disk) and use them for data storage. If you need to store data on the OS disk and require extra space, [convert it to a GUID partition table (GPT)](/windows-server/storage/disk-management/change-an-mbr-disk-into-a-gpt-disk). To learn about the differences between an MBR and a GPT on Windows deployments, see [Windows and GPT FAQ](/windows-hardware/manufacture/desktop/windows-and-gpt-faq).
@@ -132,7 +135,7 @@ Most VMs contain a temporary disk, which isn't a managed disk. The temporary dis
 
 Data on the temporary disk might be lost during a [maintenance event](./understand-vm-reboots.md), when you [redeploy a VM](/troubleshoot/azure/virtual-machines/redeploy-to-new-node-windows?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), or when you stop the VM. During a successful standard restart of the VM, data on the temporary disk persists. For more information about VMs without temporary disks, see [Azure VM sizes with no local temporary disk](azure-vms-no-temp-disk.yml).
 
-On Azure Linux VMs, the temporary disk is typically */dev/sdb*. On Windows VMs, the temporary disk is drive D by default. The temporary disk isn't encrypted unless:
+On Azure Linux VMs, the temporary disk is typically */dev/disk/azure/resource*. On Windows VMs, the temporary disk is drive D by default. The temporary disk isn't encrypted unless:
 
 - You're using an Azure VM that is version 5 and above (such as Dsv5 or Dsv6). Azure VMs version 5 and above automatically encrypt their temporary disks and (if in use) their ephemeral OS disks with encryption-at-rest.
 - For server-side encryption, you enable [encryption at host](disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data).

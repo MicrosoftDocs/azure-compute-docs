@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a cloud administrator, I want to customize settings for my Service Fabric cluster, so that I can optimize performance and manage upgrades according to my organization's requirements."
 ---
 
 # Customize Service Fabric cluster settings

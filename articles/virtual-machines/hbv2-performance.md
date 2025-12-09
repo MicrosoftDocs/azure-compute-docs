@@ -10,6 +10,7 @@ ms.date: 07/25/2024
 ms.reviewer: cynthn
 ms.author: padmalathas
 author: padmalathas
+# Customer intent: "As a performance engineer, I want to analyze the performance metrics of HBv2-series virtual machine sizes, so that I can optimize our HPC workloads and ensure they meet the required benchmarks for efficiency."
 ---
 
 # HBv2-series virtual machine sizes

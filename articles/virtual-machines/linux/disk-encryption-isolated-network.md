@@ -8,9 +8,12 @@ ms.custom: linux-related-content
 ms.collection: linux
 ms.topic: concept-article
 ms.author: mbaldwin
-ms.date: 05/14/2025
+ms.date: 09/23/2025
+# Customer intent: As a Linux system administrator managing isolated virtual machines, I want to troubleshoot Azure Disk Encryption installation issues, so that I can ensure proper package management and network configurations for successful encryption in a secure environment.
 ---
 # Azure Disk Encryption on an isolated network
+
+[!INCLUDE [Azure Disk Encryption retirement notice](~/reusable-content/ce-skilling/azure/includes/security/azure-disk-encryption-retirement.md)]
 
 > [!CAUTION]
 > This article references CentOS, a Linux distribution that is End Of Life (EOL) status. Consider your use and plan accordingly. For more information, see the [CentOS End Of Life guidance](~/articles/virtual-machines/workloads/centos/centos-end-of-life.md).

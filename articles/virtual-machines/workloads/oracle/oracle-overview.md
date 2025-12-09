@@ -10,6 +10,7 @@ ms.topic: overview
 ms.tgt_pltfrm: vm-linux
 ms.date: 10/04/2024
 ms.author: jacobjaygbay
+# Customer intent: "As a cloud architect, I want to deploy Oracle applications and databases on Azure infrastructure, so that I can leverage scalable, high-performance resources while ensuring compliance with licensing and support requirements."
 ---
 
 # Overview of Oracle Applications and solutions on Azure

@@ -10,6 +10,7 @@ ms.topic: concept-article
 ms.date: 06/12/2024
 ms.author: arukum
 
+# Customer intent: As a system administrator managing Red Hat Enterprise Linux 7 instances, I want to add the Extended Life Cycle Support add-on, so that I can continue receiving updates and support while preparing to upgrade to a later version.
 ---
 
 # Red Hat Enterprise Linux (RHEL) Extended Life Cycle Support

@@ -8,6 +8,7 @@ ms.author: atsenthi
 ms.service: azure-service-fabric
 ms.topic: sample
 ms.date: 03/19/2018
+# Customer intent: "As a cloud administrator, I want to modify the RDP port range of my deployed cluster using PowerShell, so that I can maintain network connectivity without disrupting the VMs in my environment."
 ---
 
 # Update the RDP port range values

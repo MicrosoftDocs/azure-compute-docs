@@ -1,13 +1,14 @@
 ---
 title: Standalone Service Fabric clusters overview 
-description: Service Fabric clusters run on Windows Server and Linux, which means you'll be able to deploy and host Service Fabric applications anywhere you can run Windows Server or Linux.
+description: Service Fabric clusters run on Windows Server and Linux, which means you are able to deploy and host Service Fabric applications anywhere you can run Windows Server or Linux.
 ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: linux-related-content
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 06/24/2025
+# Customer intent: As a cloud architect, I want to deploy and manage microservices on standalone Service Fabric clusters, so that I can efficiently scale resources and ensure secure communication for my applications across various operating environments.
 ---
 
 # Overview of Service Fabric Standalone clusters
@@ -16,14 +17,14 @@ A Service Fabric cluster is a network-connected set of virtual or physical machi
 
 A node type defines the size, number, and properties for a set of nodes in the cluster. Each node type can then be scaled up or down independently, have different sets of ports open, and can have different capacity metrics. Node types are used to define roles for a set of cluster nodes, such as "front end" or "back end". Your cluster can have more than one node type, but the primary node type must have at least five VMs for production clusters (or at least three VMs for test clusters). [Service Fabric system services](service-fabric-technical-overview.md#system-services) are placed on the nodes of the primary node type.
 
-The process for creating a Service Fabric cluster on-premises is similar to the process of creating a cluster on any cloud of your choice with a set of VMs. The initial steps to provision the VMs are governed by the cloud provider or on-premises environment that you are using. Once you have a set of VMs with network connectivity enabled between them, then the steps to set up the Service Fabric package, edit the cluster settings, and run the cluster creation and management scripts are identical. This ensures that your knowledge and experience of operating and managing Service Fabric clusters is transferable when you choose to target new hosting environments.
+The process for creating a Service Fabric cluster on-premises is similar to the process of creating a cluster on any cloud of your choice with a set of VMs. The initial steps to provision the VMs are governed by the cloud provider or on-premises environment that you're using. Once you have a set of VMs with network connectivity enabled between them, then the steps to set up the Service Fabric package, edit the cluster settings, and run the cluster creation and management scripts are identical. This ensures that your knowledge and experience of operating and managing Service Fabric clusters is transferable when you choose to target new hosting environments.
 
 ## Cluster security
 
-A Service Fabric cluster is a resource that you own.  It is your responsibility to secure your clusters to help prevent unauthorized users from connecting to them. A secure cluster is especially important when you are running production workloads on the cluster.
+A Service Fabric cluster is a resource that you own.  It is your responsibility to secure your clusters to help prevent unauthorized users from connecting to them. A secure cluster is especially important when you're running production workloads on the cluster.
 
 > [!NOTE]
-> Windows authentication is based on Kerberos. NTLM is not supported as an authentication type.
+> Windows authentication is based on Kerberos. NTLM isn't supported as an authentication type.
 >
 > Whenever possible, use X.509 certificate authentication for Service Fabric clusters.
 
@@ -56,17 +57,18 @@ For more information, read [Scaling standalone clusters](service-fabric-cluster-
 
 ## Upgrading
 
-A standalone cluster is a resource that you entirely own. You are responsible for patching the underlying OS and initiating fabric upgrades. You can set your cluster to receive automatic runtime upgrades, when Microsoft releases a new version, or choose to select a supported runtime version that you want. In addition to fabric upgrades, you can also patch the OS and update cluster configuration such as certificates or application ports. 
+A standalone cluster is a resource that you entirely own. You're responsible for patching the underlying OS and initiating fabric upgrades. You can set your cluster to receive automatic runtime upgrades, when Microsoft releases a new version, or choose to select a supported runtime version that you want. In addition to fabric upgrades, you can also patch the OS and update cluster configuration such as certificates or application ports. 
 
 For more information, read [Upgrading standalone clusters](service-fabric-cluster-upgrade-standalone.md).
 
 ## Supported operating systems
 
-You are able to create clusters on VMs or computers running these operating systems (Linux is not yet supported):
+You're able to create clusters on VMs or computers running these operating systems (Linux isn't yet supported):
 
 * Windows Server 2012 R2
-* Windows Server 2016 
+* Windows Server 2016
 * Windows Server 2019
+* Windows Server 2022
 
 ## Next steps
 

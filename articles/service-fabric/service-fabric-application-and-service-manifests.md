@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a cloud developer, I want to understand how to define and version Service Fabric applications and services using manifests, so that I can effectively manage deployment and configuration across different service instances."
 ---
 
 # Service Fabric application and service manifests

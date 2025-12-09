@@ -11,6 +11,7 @@ ms.custom: devx-track-azurecli, linux-related-content, innovation-engine
 ms.topic: how-to
 ms.date: 04/06/2025
 ms.author: routlaw
+# Customer intent: As a developer, I want to deploy the Elastic Stack on a development virtual machine in Azure so that I can test and visualize logging data effectively.
 ---
 
 # Install the Elastic Stack (ELK) on an Azure VM

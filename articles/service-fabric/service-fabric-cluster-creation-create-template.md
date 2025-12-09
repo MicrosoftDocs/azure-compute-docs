@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: no-azure-ad-ps-ref
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a cloud architect, I want to create a Resource Manager template for a Service Fabric cluster, so that I can efficiently deploy secure microservices with proper authentication and configuration management."
 ---
 
 # Create a Service Fabric cluster Resource Manager template

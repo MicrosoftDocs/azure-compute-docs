@@ -4,9 +4,12 @@ description: This article covers important concepts for monitoring Azure virtual
 ms.service: azure-virtual-machines
 ms.author: tomcassidy
 author: tomvcassidy
-ms.custom: subject-monitoring
 ms.date: 01/31/2024
 ms.topic: concept-article
+ms.custom:
+  - subject-monitoring
+  - sfi-image-nochange
+# Customer intent: As a cloud administrator, I want to utilize Azure Resource Graph to monitor virtual machine availability, so that I can efficiently track performance and respond to disruptions in real time across all Azure subscriptions.
 ---
 
 # Project Flash - Use Azure Resource Graph to monitor Azure Virtual Machine availability

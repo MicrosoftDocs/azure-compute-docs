@@ -9,6 +9,7 @@ ms.date: 09/16/2024
 ms.author: wwilliams
 ms.reviewer: mattmcinnes
 ms.custom: include file
+# Customer intent: "As a cloud architect, I want to explore NVads V710 v5-series virtual machines, so that I can implement cost-effective solutions for GPU-accelerated graphics applications, cloud-based virtual desktops, and AI/ML workloads."
 ---
 The NVads V710 v5-series virtual machines are powered by AMD Radeon™ Pro V710 GPUs and AMD EPYC™ 9V64 F (Genoa) CPUs with a base frequency of 3.95 GHz and all-cores peak frequency of 4.3 GHz. VMs take advantage of the AMD Simultaneous Multithreading technology to assign dedicated vCPU threads to each VM. Both Windows and Linux VMs are supported.
 

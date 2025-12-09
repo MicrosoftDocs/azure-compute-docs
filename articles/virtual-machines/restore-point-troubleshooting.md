@@ -5,6 +5,7 @@ ms.topic: troubleshooting
 ms.date: 04/12/2023
 ms.service: azure-virtual-machines
 ms.custom:
+# Customer intent: "As a cloud administrator, I want to troubleshoot restore point failures in Azure VMs, so that I can ensure reliable backup and data recovery processes."
 ---
 
 # Troubleshoot restore point failures: Issues with the agent or extension

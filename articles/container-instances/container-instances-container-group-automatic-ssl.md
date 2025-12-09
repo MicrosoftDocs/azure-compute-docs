@@ -4,10 +4,13 @@ description: This guide describes how Caddy can be used as a reverse proxy to en
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-container-instances
-ms.custom: devx-track-azurecli
 services: container-instances
 ms.topic: how-to
-ms.date: 03/04/2025
+ms.date: 11/17/2025
+ms.custom:
+  - devx-track-azurecli
+  - sfi-image-nochange
+# Customer intent: As a developer deploying applications in containers, I want to configure Caddy as a sidecar container for automatic HTTPS, so that I can easily secure my application with managed SSL certificates.
 ---
 
 # Enable automatic HTTPS with Caddy in a sidecar container
@@ -26,7 +29,7 @@ In this example, only the Caddy container gets exposed on ports 80/TCP and 443/T
 The example mounts the [Caddyfile](https://caddyserver.com/docs/caddyfile), which is required to configure the reverse proxy, from a file share hosted on an Azure Storage account. 
 
 > [!NOTE]
-> For production deployments, most users want to bake the Caddyfile into a custom docker image based on [caddy](https://hub.docker.com/_/caddy). This way, there is no need to mount files into the container. 
+> For production deployments, most users want to bake the Caddyfile into a custom docker image based on [caddy](https://hub.docker.com/_/caddy). This way, there's no need to mount files into the container. 
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](~/reusable-content/azure-cli/azure-cli-prepare-your-environment.md)]
 
@@ -294,7 +297,7 @@ Navigate to ``` https://my-app.westeurope.azurecontainer.io ``` and verify the c
 
 :::image type="content" source="media/container-instances-container-group-automatic-ssl/url-padlock.png" alt-text="Screenshot highlighting the padlock next to the URL that verifies the certificate.":::
 
-To see the certificate details, select on "Connection is secure" followed by "certificate is valid".
+To see the certificate details, select "Connection is secure" followed by "certificate is valid".
 
 :::image type="content" source="media/container-instances-container-group-automatic-ssl/lets-encrypt-certificate.png" alt-text="Screenshot of the certificate issued by Let's Encrypt":::
 

@@ -10,6 +10,7 @@ ms.service: azure-virtual-machines
 ms.subservice: image-builder
 ms.custom: devx-track-azurecli
 ms.collection: windows
+# Customer intent: As a cloud administrator, I want to create a customized Windows VM using an image builder, so that I can streamline the deployment process and ensure consistency across multiple environments.
 ---
 # Create a Windows VM by using Azure VM Image Builder
 

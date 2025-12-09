@@ -6,12 +6,13 @@ ms.subservice: hpc
 ms.custom: linux-related-content
 ms.topic: concept-article
 ms.date: 07/25/2024
-ms.reviewer: cynthn, mattmcinnes
-ms.author: jushiman
-author: ju-shim
+ms.reviewer: mattmcinnes
+ms.author: cynthn
+author: cynthn
+# Customer intent: "As an HPC administrator, I want to configure and optimize InfiniBand-enabled virtual machines, so that I can ensure high performance and efficient workload management for my high-performance computing tasks."
 ---
 
-# Configure and optimize VMs
+# Configure and optimize the InfiniBand enabled H-series and N-series VMs
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
@@ -69,7 +70,7 @@ For SR-IOV enabled [RDMA capable VMs](sizes-hpc.md#rdma-capable-instances), Ubun
    "offer": "Ubuntu-HPC",
    ```
 
-- Scripts used in the creation of the Ubuntu-HPC VM images from a base Ubuntu Marketplace image are on the [azhpc-images repo](https://github.com/Azure/azhpc-images/tree/master/ubuntu).
+- Scripts used in the creation of the Ubuntu-HPC VM images from a base Ubuntu Marketplace image are on the [azhpc-images repo](https://github.com/Azure/azhpc-images/tree/master).
 
 #### AlmaLinux-HPC VM images
 
@@ -82,7 +83,7 @@ For SR-IOV enabled [RDMA capable VMs](sizes-hpc.md#rdma-capable-instances), Alma
    "offer": "AlmaLinux-HPC",
    ```
 
-- Scripts used in the creation of the AlmaLinux-HPC VM images from a base AlmaLinux Marketplace image are on the [azhpc-images repo](https://github.com/Azure/azhpc-images/tree/master/alma).
+- Scripts used in the creation of the AlmaLinux-HPC VM images from a base AlmaLinux Marketplace image are on the [azhpc-images repo](https://github.com/Azure/azhpc-images/tree/master).
 
 Additionally, more details on what's included in the [Ubuntu-HPC VM images](#ubuntu-hpc-vm-images) and [AlmaLinux-HPC VM images](#almalinux-hpc-vm-images), and how to deploy them are in [Azure HPC VM images](azure-hpc-vm-images.md).
 

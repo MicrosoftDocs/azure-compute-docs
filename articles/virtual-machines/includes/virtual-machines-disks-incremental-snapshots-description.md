@@ -8,6 +8,7 @@
  ms.date: 01/20/2023
  ms.author: rogarana
  ms.custom: include file
+# Customer intent: "As a cloud administrator, I want to utilize incremental snapshots for managed disks, so that I can optimize storage costs while ensuring reliable point-in-time backups for my virtual machines."
 ---
 
 Incremental snapshots are point-in-time backups for managed disks that, when taken, consist only of the changes since the last snapshot. The first incremental snapshot is a full copy of the disk. The subsequent incremental snapshots occupy only delta changes to disks since the last snapshot. When you restore a disk from an incremental snapshot, the system reconstructs the full disk that represents the point in time backup of the disk when the incremental snapshot was taken. This capability for managed disk snapshots potentially allows them to be more cost-effective, since, unless you choose to, you don't have to store the entire disk with each individual snapshot. Just like full snapshots, incremental snapshots can be used to either create a full managed disk or a full snapshot. Both full snapshots and incremental snapshots can be used immediately after being taken. In other words, once you take either snapshot, you can immediately read the underlying data and use it to restore disks.

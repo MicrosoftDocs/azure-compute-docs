@@ -8,6 +8,7 @@ ms.date: 07/08/2024
 ms.author: rogarana
 ms.custom: devx-track-azurepowershell, devx-track-azurecli 
 ms.devlang: azurecli
+# Customer intent: "As a cloud administrator, I want to copy incremental snapshots of managed disks to different regions, so that I can optimize data recovery and reduce storage costs."
 ---
 
 # Copy an incremental snapshot to a new region

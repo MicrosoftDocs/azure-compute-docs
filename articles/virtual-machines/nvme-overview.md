@@ -7,6 +7,7 @@ ms.date: 07/31/2024
 ms.author: mehollin
 ms.topic: overview
 
+# Customer intent: As a cloud infrastructure engineer, I want to enable NVMe support on Azure virtual machines, so that I can enhance data transfer speeds and overall performance for I/O-intensive workloads in my applications.
 ---
 # NVMe Overview
 

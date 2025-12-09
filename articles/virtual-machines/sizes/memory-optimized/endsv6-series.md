@@ -8,6 +8,7 @@ ms.topic: concept-article
 ms.date: 05/08/2025
 ms.author: wwilliams
 ms.reviewer: mattmcinnes
+# Customer intent: "As a cloud architect, I want to evaluate the specifications of the Endsv6 series VM sizes, so that I can select the appropriate size for my workloads based on resource requirements like CPU, memory, and storage performance."
 ---
 
 # Endsv6 sizes series (Preview)
@@ -18,7 +19,16 @@ ms.reviewer: mattmcinnes
 [!INCLUDE [endsv6-series-specs](./includes/endsv6-series-specs.md)]
 
 ## Feature support
-[Premium Storage](../../premium-storage-performance.md): Supported <br>[Premium Storage caching](../../premium-storage-performance.md): Supported <br>[Live Migration](../../maintenance-and-updates.md): Not Supported <br>[Memory Preserving Updates](../../maintenance-and-updates.md): Supported <br>[Generation 2 VMs](../../generation-2.md): Supported <br>[Generation 1 VMs](../../generation-2.md): Not Supported <br>[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported <br>[Ephemeral OS Disk](../../ephemeral-os-disks.md): Not Supported <br>[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Supported <br>
+- [Premium Storage](../../premium-storage-performance.md): Supported
+- [Premium Storage caching](../../premium-storage-performance.md): Supported
+- [Live Migration](../../maintenance-and-updates.md#live-migration): Not Supported
+- [Memory Preserving Updates](../../maintenance-and-updates.md): Supported
+- [Generation 2 VMs](../../generation-2.md): Supported
+- [Generation 1 VMs](../../generation-2.md): Not Supported
+- [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported
+- [Ephemeral OS Disk](../../ephemeral-os-disks.md): Supported
+- [Temporary local NVMe disks](../../enable-nvme-temp-faqs.yml): Supported
+- [Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Supported
 
 ## Sizes in series
 

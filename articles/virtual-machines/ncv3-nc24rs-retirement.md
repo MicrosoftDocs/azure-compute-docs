@@ -7,9 +7,13 @@ ms.service: azure-virtual-machines
 ms.topic: concept-article
 ms.date: 03/19/2024
 ms.subservice: sizes
+# Customer intent: "As a cloud infrastructure manager, I want to migrate my Standard_NC24rs_v3 virtual machines to a newer VM series, so that I can ensure uninterrupted service and maintain optimized performance before the retirement deadline on September 30, 2025."
 ---
 
 # Migrate your Standard_NC24rs_v3 virtual machine size by September 30, 2025
+
+> [!NOTE]
+> All the NCv3-series VM sizes, including Standard_NC24rs_v3, will be retired on September 30, 2025. For retirement details and SKU migration guidance, please refer to the [NCv3-series retirement page](/azure/virtual-machines/ncv3-retirement) rather than this page. 
 
 On September 30, 2025, Microsoft Azure will retire the Standard_NC24rs_v3 virtual machine (VM) size in NCv3-series virtual machines (VMs). To avoid any disruption to your service, we recommend that you change the VM sizing from the Standard_NC24rs_v3 to the newer VM series in the same NC product line.
 
@@ -28,7 +32,7 @@ However, depending on the workload being run, regional affinity, and cost prefer
 After September 30, 2025, any remaining Standard_NC24rs_v3 VM subscriptions will be set to a deallocated state. They'll stop working and no longer incur billing charges. The Standard_NC24rs_v3 VM size will no longer be under SLA or have support included.
 
 > [!Note]
-> This retirement only impacts the virtual machine sizes in the Standard_NC24rs_v3 size in NCv3-series powered by NVIDIA V100 GPUs. See [retirement guide for Standard_NC6s_v3, Standard_NC12s_v3, and Standard_NC24s_v3](https://aka.ms/ncv3nonrdmasizemigration). This retirement announcement doesn't apply to NCasT4_v3, NC_A100_v4, and NCadsH100_v5 series virtual machines. 
+> This retirement announcement doesn't apply to NCasT4_v3, NC_A100_v4, and NCadsH100_v5 series virtual machines. 
 
 ## What action do I need to take before the retirement date?
 

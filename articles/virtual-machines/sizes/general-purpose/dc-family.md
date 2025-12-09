@@ -7,6 +7,7 @@ ms.subservice: sizes
 ms.topic: concept-article
 ms.date: 04/16/2024
 ms.author: mattmcinnes
+# Customer intent: As a cloud architect, I want to explore the DC family VM size series and their specifications, so that I can choose the most suitable virtual machine types for my projects based on workload requirements.
 ---
 
 # 'DC' family general purpose VM size series
@@ -21,6 +22,18 @@ ms.author: mattmcinnes
 
 ## Series in family
 
+### DCasv6 and DCadsv6-series
+#### [DCasv6-series](#tab/dcasv6)
+[!INCLUDE [dcasv6-series-summary](./includes/dcasv6-series-summary.md)]
+[View the full DCasv6-series page](./dcasv6-series.md).
+[!INCLUDE [dcasv6-series-specs](./includes/dcasv6-series-specs.md)]
+
+#### [DCadsv6-series](#tab/dcadsv6)
+[!INCLUDE [dcadsv6-series-summary](./includes/dcadsv6-series-summary.md)]
+[View the full DCadsv6-series page](./dcadsv6-series.md).
+[!INCLUDE [dcadsv6-series-specs](./includes/dcadsv6-series-specs.md)]
+
+---
 ### DCasv5 and DCadsv5-series
 #### [DCasv5-series](#tab/dcasv5)
 [!INCLUDE [dcasv5-series-summary](./includes/dcasv5-series-summary.md)]

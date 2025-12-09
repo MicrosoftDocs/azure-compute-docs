@@ -9,6 +9,7 @@ ms.date: 05/01/2023
 ms.author: mimckitt
 ms.reviewer: mattmcinnes
 ms.custom: sttsinar
+# Customer intent: "As an IT administrator, I want to understand the naming conventions for Azure VM sizes, so that I can select the appropriate VM configuration based on features and specifications for my infrastructure needs."
 ---
 
 # Azure virtual machine sizes naming conventions
@@ -19,30 +20,32 @@ This page outlines the naming conventions used for Azure VMs. VMs use these nami
 
 ## Naming convention explanation
 
-**[Family]** + **[Sub-family*]** + **[# of vCPUs]** + **[Constrained vCPUs*]** + **[Additive Features]** + **[Accelerator Type*]** + **[Version]**
+**[Family]** + **[Sub-family*]** + **[# of vCPUs]** + **[Constrained vCPUs*]** + **[Additive Features]** + **[Accelerator Type*]** + **[Memory Capacity*]** + **[Version]**
 
 |Value | Explanation|
 |---|---|
-| Family | Indicates the VM Family Series| 
-| *Subfamily | Used for specialized VM differentiations only|
+| Family | Indicates the VM Family Series. For more information, see the [list of VM size families by type](./sizes/overview.md#list-of-vm-size-families-by-type).| 
+| *Subfamily | Used for specialized VM differentiations such as: <br> B = memory bandwidth optimized <br>C = confidential (for DC, EC, NCC series)<br>C = compute intensive (for HC, NC, NCC series) <br>D = AI training and inference optimized <br>G = cloud gaming and remote desktop optimized <br>V = visualization and graphics optimized <br>X = extra memory|
 | # of vCPUs| Denotes the number of vCPUs of the VM |
 | *Constrained vCPUs| Used for certain VM sizes only. Denotes the number of vCPUs for the [constrained vCPU capable size](./constrained-vcpu.md) |
-| Additive Features | Lower case letters denote additive features, such as: <br> a = AMD-based processor <br> b = Block Storage performance <br> d = diskful (that is, a local temp disk is present); this feature is for newer Azure VMs, see [Ddv4 and Ddsv4-series](./ddv4-ddsv4-series.md) <br> i = isolated size <br> l = low memory; a lower amount of memory than the memory intensive size <br> m = memory intensive; the most amount of memory in a particular size <br>p = ARM Cpu <br> t = tiny memory; the smallest amount of memory in a particular size <br> s = Premium Storage capable, including possible use of [Ultra SSD](./disks-types.md#ultra-disks) (Note: some newer sizes without the attribute of s can still support Premium Storage, such as M128, M64, etc.)<br> C = Confidential <br>NP = node packing <br> 
-| *Accelerator Type | Denotes the type of hardware accelerator in the specialized/GPU SKUs. Only the new specialized/GPU SKUs launched from Q3 2020 have the hardware accelerator in the name. |
-| Version | Denotes the version of the VM Family Series |
+| Additive Features | Lower case letters denote additive features, such as: <br>a = AMD-based processor <br>b = remote storage bandwidth optimized <br>d = includes [local temporary disks](overview.md#local-temporary-storage) <br>e = encrypted; contains confidential TDX capabilities <br>f = flat ratio (1:1) of vCPU to memory size <br>i = isolated size <br>l = low memory; decreased vCPU to memory ratio <br>m = memory intensive; highest vCPU to memory ratio in a particular series <br>n = network optimized; increased vCPU to network bandwidth ratio <br>o = increased vCPU to local SSD storage capacity ratio<br>p = ARM-based processor <br>r = includes RDMA (InfiniBand) secondary network <br>s = compatible with any premium SSD type <br>t = tiny memory; smallest vCPU to memory ratio in a particular size |
+| *Accelerator Type | Denotes the type of hardware accelerator in the specialized/GPU SKUs. Only new specialized/GPU SKUs launched from Q3 2020 have the hardware accelerator in the name. |
+| *Memory Capacity | Denotes M-series memory capacity, rounded to the nearest TiB. |
+| Version | Denotes the version number of the VM Family Series |
 
 ## Example breakdown
 
-**[Family]** + **[Subfamily*]** + **[# of vCPUs]** + **[Additive Features]** + **[Accelerator Type*]** + **[Version]**
+**[Family]** + **[Sub-family*]** + **[# of vCPUs]** + **[Constrained vCPUs*]** + **[Additive Features]** + **[Accelerator Type*]** + **[Memory Capacity*]** + **[Version]**
 
-### Example 1: M416ms_v2
+### Example 1: M48ds_1_v3
 
 |Value | Explanation|
 |---|---|
 | Family | M | 
-| # of vCPUs | 416 |
-| Additive Features | m = memory intensive <br> s = Premium Storage capable |
-| Version | v2 |
+| # of vCPUs | 48 |
+| Additive Features | d = local temp disk <br> s = Premium Storage capable |
+| Memory Capacity | 974 GiB ≈ 1 TiB |
+| Version | v3 |
 
 ### Example 2: NV16as_v4
 
@@ -71,9 +74,18 @@ This page outlines the naming conventions used for Azure VMs. VMs use these nami
 |---|---|
 | Family | M | 
 | # of vCPUs | 8 |
-| # of constrained (actual) vCPUs | 2 |
+| Constrained vCPUs | 2 |
 | Additive Features | m = memory intensive <br> s = Premium Storage capable |
 | Version | v2 |
+
+### Example 5: E96bds_v5 (a SQL Server preferred option)
+
+|Value | Explanation|
+|---|---|
+| Family | Eb | 
+| # of vCPUs | 96 |
+| Additive Features | b = memory <br> d = includes [local temporary disks](overview.md#local-temporary-storage) <br> s = Premium Storage capable |
+| Version | v5 |
 
 ## Next steps
 

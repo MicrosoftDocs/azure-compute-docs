@@ -1,6 +1,126 @@
 {
   "redirections": [
     {
+      "source_path": "articles/container-instances/quickstart-docker-cli.md",
+      "redirect_url": "/previous-versions/azure/container-instances/quickstart-docker-cli",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/service-fabric/service-fabric-diagnostics-event-analysis-appinsights.md",
+      "redirect_url": "/previous-versions/azure/service-fabric/service-fabric-diagnostics-event-analysis-appinsights",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/service-fabric/service-fabric-tutorial-monitoring-aspnet.md",
+      "redirect_url": "/previous-versions/azure/service-fabric/service-fabric-tutorial-monitoring-aspnet",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machine-scale-sets/whats-new.md",
+      "redirect_url": "/previous-versions/azure/virtual-machine-scale-sets/whats-new",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/workloads/mainframe-rehosting/mainframe-white-papers.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/workloads/mainframe-rehosting/mainframe-white-papers",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/workloads/mainframe-rehosting/overview.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/workloads/mainframe-rehosting/overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/azure-impact-reporting/report-vm-impact.md",
+      "redirect_url": "/azure/azure-impact-reporting/report-impact",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/workloads/mainframe-rehosting/partner-workloads.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/workloads/mainframe-rehosting/partner-workloads",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/workloads/mainframe-rehosting/concepts/mainframe-compute-azure.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/workloads/mainframe-rehosting/concepts/mainframe-compute-azure",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/workloads/mainframe-rehosting/concepts/mainframe-storage-azure.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/workloads/mainframe-rehosting/concepts/mainframe-storage-azure",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/workloads/mainframe-rehosting/ibm/demo.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/workloads/mainframe-rehosting/ibm/demo",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/workloads/mainframe-rehosting/ibm/deploy-ibm-db2-purescale-azure.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/workloads/mainframe-rehosting/ibm/deploy-ibm-db2-purescale-azure",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/workloads/mainframe-rehosting/ibm/get-started.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/workloads/mainframe-rehosting/ibm/get-started",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/workloads/mainframe-rehosting/ibm/ibm-db2-purescale-azure.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/workloads/mainframe-rehosting/ibm/ibm-db2-purescale-azure",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/workloads/mainframe-rehosting/ibm/install-ibm-z-environment.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/workloads/mainframe-rehosting/ibm/install-ibm-z-environment",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/workloads/mainframe-rehosting/microfocus/demo.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/workloads/mainframe-rehosting/microfocus/demo",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/workloads/mainframe-rehosting/microfocus/deploy-micro-focus-enterprise-server.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/workloads/mainframe-rehosting/microfocus/deploy-micro-focus-enterprise-server",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/workloads/mainframe-rehosting/microfocus/get-started.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/workloads/mainframe-rehosting/microfocus/get-started",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/workloads/mainframe-rehosting/microfocus/run-enterprise-server-container.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/workloads/mainframe-rehosting/microfocus/run-enterprise-server-container",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/workloads/mainframe-rehosting/microfocus/set-up-micro-focus-azure.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/workloads/mainframe-rehosting/microfocus/set-up-micro-focus-azure",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/workloads/mainframe-rehosting/tmaxsoft/get-started.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/workloads/mainframe-rehosting/tmaxsoft/get-started",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/workloads/mainframe-rehosting/tmaxsoft/install-openframe-azure.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/workloads/mainframe-rehosting/tmaxsoft/install-openframe-azure",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/extensions/oms-linux.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/extensions/oms-linux",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/extensions/oms-windows.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/extensions/oms-windows",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "articles/virtual-machines/sizes/gpu-accelerated/nc-series.md",
       "redirect_url": "/previous-versions/azure/virtual-machines/sizes/gpu-accelerated/nc-series",
       "redirect_document_id": false

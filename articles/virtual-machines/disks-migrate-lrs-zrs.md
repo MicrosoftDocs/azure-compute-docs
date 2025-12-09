@@ -7,6 +7,7 @@ ms.topic: concept-article
 ms.date: 10/19/2023
 ms.author: rogarana
 ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
+# Customer intent: As an IT administrator managing cloud resources, I want to convert managed disks from locally redundant storage to zone-redundant storage, so that I can enhance data availability and resilience across multiple zones.
 ---
 
 # Convert a disk from LRS to ZRS

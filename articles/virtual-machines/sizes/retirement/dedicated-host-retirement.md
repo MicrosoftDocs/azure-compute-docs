@@ -7,6 +7,7 @@ ms.reviewer: mattmcinnes
 ms.service: azure-dedicated-host
 ms.topic: concept-article
 ms.date: 3/15/2021
+# Customer intent: "As an Azure Dedicated Host user, I want to migrate my workloads from retiring SKUs to newer ones, so that I can avoid disruptions and ensure the continuity of my critical applications."
 ---
 
 # Azure Dedicated Host SKU Retirement

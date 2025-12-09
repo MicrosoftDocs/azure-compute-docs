@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.date: 04/08/2025
 ms.author: minnielahoti
 ms.reviewer: azmetadatadev
+# Customer intent: "As an IT administrator, I want to disable the Managed Service Proxy (MSP) for my virtual machines, so that I can manage security settings more effectively and allow requests to flow normally."
 ---
 
 # Disable MSP

@@ -8,6 +8,7 @@ ms.topic: concept-article
 ms.date: 07/30/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
+# Customer intent: As a cloud architect, I want to compare the specifications of the Fsv2 series virtual machine sizes, so that I can select the appropriate VM size for my application's performance and resource requirements.
 ---
 
 # Fsv2 sizes series

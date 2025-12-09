@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 08/23/2024
+# Customer intent: As an application developer, I want to implement periodic backup and restore for stateful services in a standalone Service Fabric cluster so that I can ensure data reliability and recovery in case of failures or data corruption.
 ---
 
 # Periodic backup and restore in a standalone Service Fabric

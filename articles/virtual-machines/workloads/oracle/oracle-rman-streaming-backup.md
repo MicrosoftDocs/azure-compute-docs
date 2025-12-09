@@ -6,6 +6,7 @@ ms.author: jacobjaygbay
 ms.service: oracle-on-azure
 ms.topic: concept-article
 ms.date: 10/07/2024
+# Customer intent: As a database administrator, I want to implement streaming backups using Oracle Recovery Manager, so that I can efficiently protect and restore my Oracle databases on Azure virtual machines.
 ---
 
 # Stream database backups using Oracle Recovery Manager

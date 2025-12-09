@@ -10,6 +10,7 @@ ms.topic: concept-article
 ms.date: 08/27/2024
 ms.author: archat
 ms.reviewer: mattmcinnes, tomvcassidy
+# Customer intent: "As a cloud architect, I want to understand the specifications and feature support of the Dpldsv6 series sizes, so that I can select the most appropriate virtual machine configuration for my applications and workloads."
 ---
 
 # Dpldsv6 sizes series
@@ -28,6 +29,7 @@ ms.reviewer: mattmcinnes, tomvcassidy
 - [VM Generation Support](../../generation-2.md): Generation 2 
 - [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported 
 - [Ephemeral OS Disks](../../ephemeral-os-disks.md): Not Supported
+- [Temporary local NVMe disks](../../enable-nvme-temp-faqs.yml): Supported
 - [Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Not supported
 - [Azure Disk Encryption for Linux VMs](../../../virtual-machines/linux/disk-encryption-linux.md?tabs=azcliazure%2Cenableadecli%2Cefacli%2Cadedatacli#restrictions): Not Supported
 - [Azure Disk Encryption for Windows VMs](../../../virtual-machines/windows/disk-encryption-windows.md#restrictions): Not Supported
@@ -60,7 +62,7 @@ vCPUs (Qty.) and Memory for each size
 
 Local (temp) storage info for each size
 
-| Size Name | Max Temp Storage (Qty.) | Temp Storage Size (GiB) | Temp ReadWrite Disk IOPS | Temp ReadWrite Disk Speed (MBps) | Temp ReadOnly Disk IOPS | Temp ReadOnly Disk Speed (MBps) |
+| Size Name | Max Temp Storage (Qty.) | Temp Storage Size (GiB)<sup>1</sup> | Temp ReadWrite Disk IOPS<sup>2</sup> | Temp ReadWrite Disk Speed (MBps)<sup>2</sup> | Temp ReadOnly Disk IOPS<sup>2</sup> | Temp ReadOnly Disk Speed (MBps)<sup>2</sup> |
 | --- | --- | --- | --- | --- | --- | --- |
 | Standard_D2plds_v6 | 1 | 110 | 15000 | 90 | 37500 | 180 |
 | Standard_D4plds_v6 | 1 | 220 | 30000 | 180 | 75000 | 360 |
@@ -77,6 +79,8 @@ Local (temp) storage info for each size
 - [Share an Azure managed disk](../../../virtual-machines/disks-shared.md)
 
 #### Table definitions
+- <sup>1</sup> Total local temporary storage is calculated by multiplying the max number of storage disks with the temp disk size. For example, for the Standard_D96plds_v6, the total local temporary storage capacity is `6 x 880 GiB = 5280 GiB`.
+- <sup>2</sup> The IOPS and throughput values shown are the combined performance across all temp disks.
 - Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
 - Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
 - Data disks can operate in cached or uncached modes. For cached data disk operation, the host cache mode is set to ReadOnly (R-O) or ReadWrite (R-W). For uncached data disk operation, the host cache mode is set to None.

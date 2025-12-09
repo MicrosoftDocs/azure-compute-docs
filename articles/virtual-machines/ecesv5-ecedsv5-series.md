@@ -10,6 +10,7 @@ ms.custom:
   - ignite-2023
 ms.topic: concept-article
 ms.date: 4/15/2025
+# Customer intent: As a cloud architect, I want to evaluate ECesv6-series confidential virtual machines, so that I can understand their specifications and determine if they meet the security and performance needs of my sensitive workloads in the cloud.
 ---
 
 # ECesv6 series

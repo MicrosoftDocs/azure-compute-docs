@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a cloud architect, I want to effectively plan and scale Azure Service Fabric clusters, so that I can ensure high availability and performance for my applications while optimizing resource usage.
 ---
 
 # Capacity planning and scaling for Azure Service Fabric

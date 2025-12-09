@@ -9,7 +9,7 @@ ms.service: azure-disk-storage
 ms.custom:
   - references_regions
   - ignite-2023
-#Customer intent: The goal of this article is to provide a high level overview of each server-side encryption method available to users of managed disks.
+# Customer intent: "As a security administrator, I want to learn about the various server-side encryption options for Azure managed disks, so that I can implement the most appropriate security measures for protecting data in Azure virtual machines."
 ---
 
 # Server-side encryption of Azure Disk Storage
@@ -143,5 +143,6 @@ To enable double encryption at rest for managed disks, see [Enable double encryp
 - Enable end-to-end encryption using encryption at host with either the [Azure PowerShell module](windows/disks-enable-host-based-encryption-powershell.md), the [Azure CLI](linux/disks-enable-host-based-encryption-cli.md), or the [Azure portal](disks-enable-host-based-encryption-portal.md).
 - To enable double encryption at rest for managed disks, see [Enable double encryption at rest for managed disks](disks-enable-double-encryption-at-rest-portal.md).
 - Enable customer-managed keys for managed disks with either the [Azure PowerShell module](windows/disks-enable-customer-managed-keys-powershell.md), the [Azure CLI](linux/disks-enable-customer-managed-keys-cli.md) or the [Azure portal](disks-enable-customer-managed-keys-portal.yml).
+- [Migrate from Azure Disk Encryption to server-side encryption](disk-encryption-migrate.md)
 - [Explore the Azure Resource Manager templates for creating encrypted disks with customer-managed keys](https://github.com/ramankumarlive/manageddiskscmkpreview)
 - [What is Azure Key Vault?](/azure/key-vault/general/overview)

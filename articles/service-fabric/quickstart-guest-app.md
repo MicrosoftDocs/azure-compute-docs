@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: devx-track-js
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a developer, I want to quickly deploy my existing Node.js application to a cloud-based Service Fabric cluster, so that I can leverage its capabilities for scaling and managing my application efficiently.
 ---
 
 # Host a Node.js application on Azure Service Fabric

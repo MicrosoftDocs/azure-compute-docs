@@ -8,6 +8,7 @@ ms.topic: concept-article
 ms.date: 07/29/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
+# Customer intent: As a cloud architect, I want to understand the specifications and capabilities of Dav4 series virtual machines, so that I can select the appropriate size for my application workload requirements.
 ---
 
 # Dav4 sizes series

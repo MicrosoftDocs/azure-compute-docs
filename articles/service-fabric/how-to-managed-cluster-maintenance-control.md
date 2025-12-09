@@ -7,11 +7,12 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 05/07/2024
+# Customer intent: As a cloud administrator, I want to configure a maintenance control window for my Service Fabric managed cluster, so that I can ensure background operations occur during off-peak hours to minimize service interruptions.
 ---
 
 # Introduction to MaintenanceControl on Service Fabric managed clusters
-Service Fabric managed clusters have multiple background operations that are necessary to the keep all the cluster updated, thus ensuring security and reliability. Even though these operations are critical, but executing in the background can result in the service replica to move to a different node. This failover results in 
-undesired and unnecessary interruptions, if the maintenance operation executes during the peak business hours. With the support for MaintenanceControl in Service Fabric managed clusters, customers would be able to define a recurring (daily, weekly, monthly) and custom maintenance window for their SFMC cluster resource, 
+Service Fabric managed clusters have multiple background operations that are necessary to keep the entire cluster updated, thus ensuring security and reliability. Even though these operations are critical, executing them in the background can result in the service replica moving to a different node. This failover results in 
+undesired and unnecessary interruptions, if the maintenance operation executes during the peak business hours. With the support for MaintenanceControl in Service Fabric managed clusters, customers can define a recurring (daily, weekly, monthly) and custom maintenance window for their SFMC cluster resource, 
 as per their needs. All background maintenance operations will be allowed to execute only during this maintenance window. MaintenanceControl is applicable to these background operations:
 * Automatic OS Upgrade
 * Automatic extension upgrade
@@ -55,7 +56,7 @@ Download this sample, which contains all the required resources. [Standard SKU S
 
 3) Configure maintenance control on the cluster using the following maintenance configuration:
 
-This maintenance configuration defines a schedule for updates to happen everyday from 10PM PST for 5hours, starting 30-05-2023. [More details about maintenance configuration](/azure/templates/microsoft.maintenance/maintenanceconfigurations)
+This maintenance configuration defines a schedule for updates to happen every day from 10PM PST for 5 hours, starting 30-05-2023. [More details about maintenance configuration](/azure/templates/microsoft.maintenance/maintenanceconfigurations)
 
 ```JSON
     "resources": [
@@ -119,12 +120,26 @@ After the maintenance configuration is created, it has to be attached to the SFM
         }
 ```
 
+To check the status of the maintenance configuration, use the [Get Maintenance Window action](/rest/api/servicefabric/managedclusters/managed-maintenance-window-status/get).
+
+```powershell
+$resourceGroupName = "testResourceGroup"
+$clusterName = "testCluster"
+Invoke-AzResourceAction -ResourceGroupName $resourceGroupName -ResourceName $clusterName -ResourceType Microsoft.ServiceFabric/managedclusters -Action getMaintenanceWindowStatus
+```
+
+If there are missing notifications and there is a time critical pending update that can be safely applied, a 5 hour maintenance window can be manually applied using the [Apply Maintenance Window Status action](/rest/api/servicefabric/managedclusters/managed-apply-maintenance-window/post).
+
+```powershell
+$resourceGroupName = "testResourceGroup"
+$clusterName = "testCluster"
+Invoke-AzResourceAction -ResourceGroupName $resourceGroupName -ResourceName $clusterName -ResourceType Microsoft.ServiceFabric/managedclusters -Action applyMaintenanceWindow
+```
+
 >[!NOTE]
->* To disable the maintenance control on the cluster, delete the assignment for the cluster.
->* The maintenance resources and the SFMC cluster resource should be created in the same region.
+>* To disable the maintenance control on the cluster, unassign/delete the assignment for the cluster.
+>* The maintenance resources and the SFMC cluster resource should be created in the same **Azure Region** and **Subscription**.
 
 >[!NOTE]
 >Known issues:
->* There should be atmost one maintenance config resource assigned to a Service Fabric managed cluster. There is work underway to prevent assignment of more than one maintenance config. Until then, users are expected to not do multiple config assignments for the same cluster.
 >* Deleting just the maintenance config resource will not disable MaintenanceControl. To disable MaintenanceControl, you have to specifically delete the configAssignment for the cluster first, before deleting the maintenance config resource.
->* The work for Azure Portal experience for maintenance control with SFMC is currently underway, so customers shouldn't rely just on the portal. Issues with maintenance resources like SFMC cluster appearing as a Virtual Machine resource and not able to search/assign an SFMC cluster from the portal are known.

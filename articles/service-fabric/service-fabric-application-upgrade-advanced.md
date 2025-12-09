@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a DevOps engineer, I want to upgrade a Service Fabric application with minimal downtime and ensure all services are properly configured, so that I can maintain application performance and reliability during updates."
 ---
 
 # Service Fabric application upgrade: Advanced topics

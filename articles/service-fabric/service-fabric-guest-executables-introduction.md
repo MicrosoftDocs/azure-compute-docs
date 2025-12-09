@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a developer, I want to package an existing executable for deployment to a Service Fabric cluster, so that I can leverage the platform's capabilities for high availability, health monitoring, and lifecycle management."
 ---
 
 # Deploy an existing executable to Service Fabric

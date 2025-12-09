@@ -9,6 +9,7 @@ ms.date: 07/31/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
+# Customer intent: "As a cloud architect, I want to review the specifications of the NCads_H100_v5 series VMs, so that I can assess their suitability for high-performance computing workloads in my projects."
 ---
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
 |---|---|---|

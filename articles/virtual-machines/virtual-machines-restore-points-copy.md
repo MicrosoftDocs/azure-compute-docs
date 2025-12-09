@@ -8,6 +8,7 @@ ms.subservice: recovery
 ms.topic: concept-article
 ms.date: 11/2/2023
 ms.custom: conceptual
+# Customer intent: As an IT administrator, I want to copy virtual machine restore points across regions, so that I can enhance my disaster recovery strategies and ensure business continuity for my cloud infrastructure.
 ---
 
 # Overview of cross-region copy of VM restore points (in preview)

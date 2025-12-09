@@ -6,6 +6,8 @@ ms.author: hilarywang
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
 ms.date: 06/14/2024
+ms.custom: sfi-image-nochange
+# Customer intent: As an operations engineer, I want to set up alert rules for Automatic Instance Repairs ServiceState, so that I can monitor and receive notifications about changes in service status to ensure system reliability.
 ---
 
 # Use Azure Alert Rules to monitor changes in Automatic Instance Repairs ServiceState

@@ -9,6 +9,7 @@ ms.subservice: sizes
 ms.topic: concept-article 
 ms.date: 11/15/2021
 
+# Customer intent: "As a cloud architect, I want to evaluate the ECasv5 and ECadsv5-series confidential virtual machines, so that I can determine which optimal VM configuration suits our memory-intensive enterprise applications while ensuring data protection through advanced security features."
 ---
 
 # ECasv5 and ECadsv5-series
@@ -44,6 +45,7 @@ This series supports Standard SSD, Standard HDD, and Premium SSD disk types. Bil
 - [Memory Preserving Updates](maintenance-and-updates.md)
 - [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli)
 - [Ephemeral OS Disks](ephemeral-os-disks.md)
+- [Local temporary storage](overview.md#local-temporary-storage)
 - [Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)
 
 ### ECasv5-series products
@@ -71,16 +73,17 @@ This series supports Standard SSD, Standard HDD, and Premium SSD disk types. Bil
 
 ### ECadsv5-series feature support
 
-*Supported* features in DCasv5-series VMs:
+*Supported* features in ECadsv5-series VMs:
 
 - [Premium Storage](premium-storage-performance.md)
 - [Premium Storage caching](premium-storage-performance.md)
 - [VM Generation 2](generation-2.md)
 - [Ephemeral OS Disks](ephemeral-os-disks.md)
+- [Local temporary storage](overview.md#local-temporary-storage)
 
-*Unsupported* features in DCasv5-series VMs:
+*Unsupported* features in ECadsv5-series VMs:
 
-- [Live Migration](maintenance-and-updates.md)
+- [Live Migration](maintenance-and-updates.md#live-migration)
 - [Memory Preserving Updates](maintenance-and-updates.md)
 - [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli)
 

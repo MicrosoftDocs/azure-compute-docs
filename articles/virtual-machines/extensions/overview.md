@@ -7,12 +7,18 @@ ms.subservice: extensions
 ms.author: gabsta
 author: GabstaMSFT
 ms.reviewer: jushiman
-ms.date: 03/30/2023
+ms.date: 08/18/2025
+# Customer intent: As a cloud administrator, I want to install and manage virtual machine extensions, so that I can automate configuration and enhance the functionality of my Azure virtual machines.
 ---
 
 # Azure virtual machine extensions and features
 
 Extensions are small applications that provide post-deployment configuration and automation on Azure virtual machines (VMs). The Azure platform hosts many extensions covering VM configuration, monitoring, security, and utility applications. Publishers take an application, wrap it into an extension, and simplify the installation. All you need to do is provide mandatory parameters.
+
+> [!NOTE]
+> Extensions are only supported on [Endorsed Linux distributions on Azure](../linux/endorsed-distros.md).
+
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
 
 ## View available extensions
 

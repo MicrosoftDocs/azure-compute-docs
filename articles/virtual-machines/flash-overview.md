@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.custom: subject-monitoring
 ms.date: 01/31/2024
 ms.topic: concept-article
+# Customer intent: As an IT operations manager, I want to implement a robust VM availability monitoring system, so that I can receive timely alerts and actionable insights to effectively manage downtimes and ensure continuous service availability.
 ---
 
 # Project Flash - Advancing Azure Virtual Machine availability monitoring

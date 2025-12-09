@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a software developer, I want to understand the requirements for serializing custom data types in Reliable Actors, so that I can effectively implement actor interfaces and manage state within Service Fabric applications.
 ---
 
 # Notes on Service Fabric Reliable Actors type serialization

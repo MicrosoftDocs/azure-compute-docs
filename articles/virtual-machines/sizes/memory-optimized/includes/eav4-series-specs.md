@@ -9,6 +9,7 @@ ms.date: 03/12/2025
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
+# Customer intent: As a system architect, I want to review the specifications of Eav4-series virtual machines, so that I can assess their suitability for my organization's workload requirements.
 ---
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
 |---|---|---|

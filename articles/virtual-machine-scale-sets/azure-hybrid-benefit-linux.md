@@ -10,7 +10,12 @@ ms.collection: linux
 ms.topic: concept-article
 ms.date: 06/14/2024
 ms.author: mathapli
-ms.custom: kr2b-contr-experiment, devx-track-azurecli, linux-related-content
+ms.custom:
+  - kr2b-contr-experiment
+  - devx-track-azurecli
+  - linux-related-content
+  - sfi-image-nochange
+# Customer intent: "As a cloud administrator, I want to utilize Azure Hybrid Benefit for Linux Virtual Machine Scale Sets, so that I can reduce costs associated with running my RHEL and SLES instances while leveraging existing subscriptions."
 ---
 
 # Explore Azure Hybrid Benefit for Linux Virtual Machine Scale Sets

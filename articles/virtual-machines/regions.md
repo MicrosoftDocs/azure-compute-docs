@@ -8,6 +8,7 @@ ms.service: azure-virtual-machines
 ms.topic: concept-article
 ms.custom: engagement-fy23
 ms.date: 02/21/2023
+# Customer intent: As a cloud architect, I want to select the appropriate Azure region for deploying virtual machines, so that I can optimize performance, ensure compliance, and enhance redundancy for my applications.
 ---
 
 # Regions for virtual machines in Azure

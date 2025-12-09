@@ -8,6 +8,7 @@ ms.topic: how-to
 ms.custom: devx-track-azurecli, linux-related-content
 ms.date: 4/6/2023
 ms.author: mattmcinnes
+# Customer intent: As a cloud architect, I want to deploy virtual machines in a proximity placement group using the CLI, so that I can minimize latency for my workloads that require high performance.
 ---
 
 # Deploy VMs to proximity placement groups using Azure CLI

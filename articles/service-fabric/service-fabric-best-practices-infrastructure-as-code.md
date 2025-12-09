@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a cloud administrator, I want to utilize Infrastructure as Code to deploy and manage Azure Service Fabric clusters, so that I can ensure consistent and efficient resource configuration and maintenance."
 ---
 
 # Infrastructure as code

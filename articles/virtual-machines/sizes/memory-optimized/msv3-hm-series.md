@@ -8,6 +8,7 @@ ms.topic: concept-article
 ms.date: 03/24/2025
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
+# Customer intent: As a cloud architect, I want to understand the specifications and capabilities of the Msv3 High Memory VM series, so that I can select the appropriate virtual machines for memory-intensive applications and optimize our infrastructure's performance and cost.
 ---
 
 # Msv3 High Memory sizes series
@@ -73,8 +74,8 @@ Remote (uncached) storage info for each size
 | Standard_M416s_6_v3 | 64 | 130,000 | 4,000 | 130,000 | 4,000 |
 | Standard_M416s_8_v3 | 64 | 130,000 | 4,000 | 130,000 | 4,000 |
 | Standard_M624s_12_v3 | 64 | 130,000 | 4,000 | 130,000 | 4,000 |
-| Standard_M832s_12_v3 | 64 | 130,000 | 4,000 | 130,000 | 4,000 |
-| Standard_M832is_16_v3 | 64 | 130,000 | 8,000 | 260,000 | 8,000 |
+| Standard_M832s_12_v3 | 64 | 130,000 | 4,000 | 260,000 | 8,000 |
+| Standard_M832is_16_v3 | 64 | 130,000 | 4,000 | 260,000 | 8,000 |
 
 
 #### Msv3 High Memory series (SCSI)
@@ -85,7 +86,7 @@ Remote (uncached) storage info for each size
 | Standard_M416s_8_v3 | 64 | 130,000 | 4,000 | 130,000 | 4,000 |
 | Standard_M624s_12_v3 | 64 | 130,000 | 4,000 | 130,000 | 4,000 |
 | Standard_M832s_12_v3 | 64 | 130,000 | 4,000 | 130,000 | 4,000 |
-| Standard_M832is_16_v3 | 64 | 130,000 | 8,000 | 260,000 | 8,000 |
+| Standard_M832is_16_v3 | 64 | 130,000 | 4,000 | 130,000 | 4,000 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)

@@ -7,6 +7,8 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 11/14/2024
+ms.custom: sfi-image-nochange
+# Customer intent: "As a system administrator, I want to configure Microsoft Entra ID for client authentication in Service Fabric clusters so that I can secure access to management endpoints and control user roles effectively."
 ---
 
 # Set up Microsoft Entra ID for client authentication

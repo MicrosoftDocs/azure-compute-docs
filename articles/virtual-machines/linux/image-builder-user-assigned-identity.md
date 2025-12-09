@@ -9,6 +9,7 @@ ms.topic: how-to
 ms.service: azure-virtual-machines
 ms.subservice: image-builder
 ms.custom: devx-track-azurecli, linux-related-content
+# Customer intent: As a DevOps engineer, I want to create a customized virtual machine image using Azure VM Image Builder with a user-assigned managed identity, so that I can securely access files in Azure Storage without exposing them to unauthenticated access.
 ---
 
 # Create an image and use a user-assigned managed identity to access files in an Azure storage account 

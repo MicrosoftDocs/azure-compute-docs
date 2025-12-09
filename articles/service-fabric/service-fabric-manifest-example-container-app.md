@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: "As a cloud application developer, I want to configure application and service manifests for a multi-container deployment, so that I can effectively manage resource allocation, environment settings, and service communication in my Service Fabric applications."
 ---
 
 # Multi-container application and service manifest examples

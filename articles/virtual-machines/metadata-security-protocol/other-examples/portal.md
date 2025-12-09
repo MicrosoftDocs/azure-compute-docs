@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.date: 04/08/2025
 ms.author: minnielahoti
 ms.reviewer: azmetadatadev
+# Customer intent: As an IT administrator, I want to configure Metadata Security Protocol for virtual machines via the portal, so that I can enhance the security and compliance of my deployments.
 ---
 
 # Configure MSP via the portal

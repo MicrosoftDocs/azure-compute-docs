@@ -8,6 +8,7 @@ ms.date: 03/25/2024
 ms.reviewer: mattmcinnes
 ms.subservice: image-builder
 ms.custom: references_regions
+# Customer intent: "As a cloud administrator, I want to implement best practices for Azure VM Image Builder so that I can ensure efficient image management, enhance security, and optimize resource deployment."
 ---
 
 # Best practices for Azure VM Image Builder
@@ -32,9 +33,11 @@ Set up VM Image Builder [triggers](image-builder-triggers-how-to.md) to automati
 
 Enable [virtual machine (VM) boot optimization](vm-boot-optimization.md) in VM Image Builder to improve the creation time for your VMs.
 
-## Specify subnets
+## Bring your own subnets
 
-Specify your own build VM subnets and Azure Container Instances subnets for tighter control over deployment of network-related resources by VM Image Builder in your subscription. Specifying these subnets also leads to faster build times for images. To learn more, see the [template reference](./linux/image-builder-json.md#vnetconfig-optional).
+Specify your own build VM subnets ([subnetId](./linux/image-builder-json.md#subnetid)) and Azure Container Instances subnets ([containerInstanceSubnetId](./linux/image-builder-json.md#containerinstancesubnetid-optional)) for tighter control over deployment of network-related resources by VM Image Builder in your subscription. Specifying these subnets also leads to faster and more reliable image builds.
+
+You can read more about this network topology in the [Isolated Image Builds section](../virtual-machines/security-isolated-image-builds-image-builder.md).
 
 ## Follow the principle of least privilege
 
@@ -67,6 +70,15 @@ You must provide only the minimum required privileges to this identity.
 A principal that has access to your build VM identity can access all resources that the identity has permissions for. This set of resources includes any artifacts and virtual networks that you might be using from within the build VM via this identity.
 
 You must provide only the minimum required privileges to this identity.
+
+## Credentials
+
+Do not put any credentials in the image template or in files used for Shell, PowerShell, and File Customizers & Validators. For example:
+- While specifying inline commands for customizers and validators, do not specify any password or other login credentials. Instead, such credentials should be stored in an Azure Key Vault and then accessed from the build VM using the Build VM identity.
+- While providing files in customizers and validators, do not specify any credentials in the files. Instead, such credentials should be stored in an Azure Key Vault and then accessed from the build VM using the Build VM identity.
+- While specifying script or source URIs for customizers and validators in an image template, do not specify SAS URIs or URIs with credentials (like Personal Access Tokens). Instead, store such files in Azure Storage Account and use Template identity to access them.
+
+Though Azure VM Image Builder does not prohibit specifying such credentials, such use is highly discouraged. In case such a credential is indeed specified, ensure that it does not provide access to any privileged resources and is rotated as soon as possible.
 
 ## Follow Azure Compute Gallery best practices
 

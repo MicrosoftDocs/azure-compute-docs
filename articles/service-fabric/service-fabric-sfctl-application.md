@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a cloud developer, I want to manage Service Fabric applications using a command line interface, so that I can automate application deployment, health monitoring, and version upgrades efficiently.
 ---
 # sfctl application
 Create, delete, and manage applications and application types.

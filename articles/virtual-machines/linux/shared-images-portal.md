@@ -11,6 +11,7 @@ author: sandeepraichura
 ms.author: saraic
 ms.reviewer: cynthn
 #Customer intent: As an IT administrator, I want to learn about how to create shared VM images to minimize the number of post-deployment configuration tasks.
+# Customer intent: "As an IT administrator, I want to create and share custom Linux VM images using the portal, so that I can streamline deployments and minimize post-deployment configuration tasks across my organization."
 ---
 
 # Create an Azure Compute Gallery using the portal

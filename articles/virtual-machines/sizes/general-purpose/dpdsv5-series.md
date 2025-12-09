@@ -8,6 +8,7 @@ ms.topic: concept-article
 ms.date: 07/29/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
+# Customer intent: As a cloud infrastructure planner, I want to analyze the specifications and capabilities of the Dpdsv5 series virtual machine sizes, so that I can select the appropriate configurations for my workloads and optimize resource allocation.
 ---
 
 # Dpdsv5 sizes series
@@ -19,14 +20,16 @@ ms.reviewer: mattmcinnes
 
 ## Feature support
 
-Premium Storage: Supported<br>
-Premium Storage caching: Supported<br>
-Live Migration: Supported<br>
-Memory Preserving Updates: Supported<br>
-VM Generation Support: Generation 2<br>
-Accelerated Networking: Supported<br>
-Ephemeral OS Disks: Supported<br>
-Nested Virtualization: Not supported<br>
+- [Premium Storage](../../premium-storage-performance.md): Supported
+- [Premium Storage caching](../../premium-storage-performance.md): Supported
+- [Live Migration](../../maintenance-and-updates.md#live-migration): Supported
+- [Memory Preserving Updates](../../maintenance-and-updates.md): Supported
+- [VM Generation Support](../../generation-2.md): Generation 2
+- [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported
+- [Ephemeral OS Disks](../../ephemeral-os-disks.md): Supported
+- [Local temporary storage](../../overview.md#local-temporary-storage): Supported
+- [Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Not supported
+
 
 ## Sizes in series
 

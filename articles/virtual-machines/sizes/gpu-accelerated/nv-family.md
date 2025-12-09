@@ -7,6 +7,7 @@ ms.subservice: sizes
 ms.topic: concept-article
 ms.date: 09/17/2024
 ms.author: mattmcinnes
+# Customer intent: As a cloud architect, I want to assess the various NV series VM sizes, so that I can select the most suitable GPU-accelerated instance for my high-performance computing workloads.
 ---
 
 # 'NV' sub-family GPU accelerated VM size series

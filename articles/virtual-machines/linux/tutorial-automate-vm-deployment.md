@@ -1,20 +1,23 @@
 ---
 title: Tutorial - Customize a Linux VM with cloud-init in Azure
 description: In this tutorial, you learn how to use cloud-init and Key Vault to customize Linux VMs the first time they boot in Azure
-author: ju-shim
+author: cynthn
 ms.service: azure-virtual-machines
 ms.collection: linux
 ms.topic: tutorial
 ms.date: 04/06/2025
-ms.author: jushiman
+ms.author: cynthn
 ms.reviewer: mattmcinnes
-ms.custom: mvc, devx-track-azurecli, linux-related-content, innovation-engine
+ms.custom:
+  - mvc
+  - devx-track-azurecli
+  - linux-related-content
+  - innovation-engine
+  - sfi-image-nochange
+# Customer intent: "As a system administrator, I want to automate the customization of Linux VMs on their first boot using cloud-init, so that I can ensure consistent and efficient deployment of applications like NGINX and Node.js without manual intervention."
 ---
 
 # Tutorial - How to use cloud-init to customize a Linux virtual machine in Azure on first boot
-
-> [!div class="nextstepaction"]
-> [Deploy and Explore](https://go.microsoft.com/fwlink/?linkid=2321936)
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Flexible scale sets
 

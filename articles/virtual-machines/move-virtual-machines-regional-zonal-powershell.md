@@ -7,6 +7,7 @@ ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.topic: tutorial
 ms.date: 04/29/2025
 ms.author: ankitadutta
+# Customer intent: "As an IT administrator, I want to move single-instance Azure virtual machines from a regional configuration to a zonal availability zone using PowerShell and CLI, so that I can enhance application resilience and minimize the risk of downtime."
 ---
 
 # Move a virtual machine from Regional to Zonal availability zone using Azure PowerShell and CLI 

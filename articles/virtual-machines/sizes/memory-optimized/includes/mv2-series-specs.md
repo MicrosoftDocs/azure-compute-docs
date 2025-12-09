@@ -9,6 +9,7 @@ ms.date: 04/09/2025
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
+# Customer intent: "As a cloud architect, I want to review the specifications of Mv2-series virtual machines, so that I can determine their suitability for our application's performance and scalability requirements."
 ---
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
 |---|---|---|

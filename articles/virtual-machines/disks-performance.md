@@ -6,6 +6,7 @@ ms.author: rogarana
 ms.date: 03/17/2025
 ms.topic: concept-article
 ms.service: azure-disk-storage
+# Customer intent: As a cloud architect, I want to understand the performance characteristics of virtual machines and their attached disks, so that I can optimize my deployment for IOPS and throughput to support my application's needs effectively.
 ---
 # Virtual machine and disk performance
 

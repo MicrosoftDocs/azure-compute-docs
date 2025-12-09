@@ -8,6 +8,7 @@ ms.date: 02/13/2024
 ms.reviewer: mattmcinnes
 ms.subservice: image-builder
 ms.custom: references_regions
+# Customer intent: As a software developer utilizing VM Image Builder, I want to stay informed about the latest API changes and feature updates, so that I can effectively manage and optimize my image creation processes without encountering compatibility issues.
 ---
 
 # What's new in Azure VM Image Builder
@@ -46,7 +47,7 @@ If you send an API request to VM Image Builder API version 2024-02-01 or later w
 The error message mentions an "unknown field" and directs you to the official documentation: [Create an Azure VM Image Builder Bicep or Azure Resource Manager JSON template](./linux/image-builder-json.md).
 
 > [!NOTE]
-> When you're making API calls to the VM Image Builder service, always reference the [Swagger documentation](https://github.com/Azure/azure-rest-api-specs/tree/main/specification/imagebuilder/resource-manager/Microsoft.VirtualMachineImages/stable). This documentation serves as the definitive source of truth for VM Image Builder API specifications. Although the public documentation was updated to include the proper capitalization and field names ahead of the API release, the Swagger definition contains precise details about each VM Image Builder API. These details help ensure that you're making calls to the service correctly.
+> When you're making API calls to the VM Image Builder service, always reference the [Swagger documentation](https://github.com/Azure/azure-rest-api-specs/tree/main/specification/imagebuilder/resource-manager/Microsoft.VirtualMachineImages). This documentation serves as the definitive source of truth for VM Image Builder API specifications. Although the public documentation was updated to include the proper capitalization and field names ahead of the API release, the Swagger definition contains precise details about each VM Image Builder API. These details help ensure that you're making calls to the service correctly.
 
 The following documentation changes were made to match the field names in API version 2024-02-01.
 
