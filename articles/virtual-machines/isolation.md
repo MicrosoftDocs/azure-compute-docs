@@ -72,7 +72,7 @@ Isolated VM sizes have a hardware limited lifespan. Azure issues reminders 12 mo
 ### Q: When are the other isolated sizes going to retire?
 **A**: We provide reminders 12 months in advance of the official deprecation of the isolated size.
 
-###Q: What should I do if the isolated VM size I need is not available in my region? 
+### Q: What should I do if the isolated VM size I need is not available in my region? 
 **A**: Choose an alternative SKU with similar specs first, and if none meet your needs or deploy the isolated VM size in a supported region. 
  
 ## Next steps
