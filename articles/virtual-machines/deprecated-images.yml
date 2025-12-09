@@ -257,7 +257,7 @@ sections:
           To receive deprecation notifications, you must have one of the following roles on your subscription:
           - Owner
           - Account Admin
-          - User Access Administrator
+          - Service Administrator
            
       - question: How do I check if a specific image is deprecated or scheduled for deprecation?
         answer: |
