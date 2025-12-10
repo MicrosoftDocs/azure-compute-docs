@@ -6,7 +6,7 @@ ms.author: hilarywang
 ms.topic: conceptual
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: availability
-ms.date: 04/24/2025
+ms.date: 12/10/2025
 ---
 # Enable Automatic Zone Balance on Virtual Machine Scale Sets (Preview)
 
@@ -129,13 +129,46 @@ Provide Azure CLI instructions, once available.
 
 ### [Azure PowerShell](#tab/PowerShell-2)
 
-Provide PowerShell instructions, once available.
+The following example shows how to configure automatic zone balance and Application Health extension when creating a new Virtual Machine Scale Set through Azure PowerShell. You must also configure an OS, storage, and networking profile to complete the deployment. For more information, see [New-AzVmssConfig](https://learn.microsoft.com/powershell/module/az.compute/new-azvmssconfig?view=azps-15.1.0#description).
+
+```azurepowershell
+# Set variables
+$resourceGroupName = "myResourceGroup"
+$vmssName = "myVMScaleSet"
+$location = "EastUS"
+
+# Create VMSS config with automatic zone balance parameters
+$vmssConfig = New-AzVmssConfig `
+    -Location $location `
+    -SkuCapacity 3 `
+    -SkuName "Standard_D2s_v3" `
+    -Zone @("1", "2", "3") `
+    -EnableAutomaticZoneRebalance `
+    -AutomaticZoneRebalanceBehavior "CreateBeforeDelete" `
+    -AutomaticZoneRebalanceStrategy "Recreate"
+    
+# Add Application Health extension (required for automatic zone balance)
+$publicConfig = @{"protocol" = "http"; "port" = 80; "requestPath" = "/healthEndpoint"; "gracePeriod" = 600}
+$vmssConfig = Add-AzVmssExtension `
+    -VirtualMachineScaleSet $vmssConfig `
+    -Name "HealthExtension" `
+    -Publisher "Microsoft.ManagedServices" `
+    -Type "ApplicationHealthWindows" `
+    -TypeHandlerVersion "2.0" `
+    -AutoUpgradeMinorVersion $true `
+    -Setting $publicConfig
+
+# Configure OS, storage, and networking profiles (not shown) before deployment.
+
+# Create the VMSS
+New-AzVmss -ResourceGroupName $resourceGroupName -Name $vmssName -VirtualMachineScaleSet $vmssConfig
+```
 
 ---
 
 ## Disable Automatic Instance Repairs
 
-By default, enabling automatic zone balance also enables [automatic instance repairs](./virtual-machine-scale-sets-automatic-instance-repairs.md) to provide comprehensive high availability for your scale set. If you prefer to use automatic zone balance without automatic instance repairs, you can disable instance repairs separately.
+By default, enabling automatic zone balance also enables [automatic instance repairs](./virtual-machine-scale-sets-automatic-instance-repairs.md) to provide high availability for your scale set. If you prefer to use automatic zone balance without automatic instance repairs, you can disable instance repairs separately.
 
 > [!NOTE]
 > Disabling automatic instance repairs means your scale set will only benefit from zone-level resiliency, not instance-level health monitoring and repair.
@@ -148,8 +181,40 @@ By default, enabling automatic zone balance also enables [automatic instance rep
 
 ### [Azure PowerShell](#tab/powershell)
 
+The following example shows how to disable automatic instance repairs while enabling automatic zone balance when creating a new Virtual Machine Scale Set. You must also configure an OS, storage, and networking profile to complete the deployment. For more information, see [New-AzVmssConfig](https://learn.microsoft.com/powershell/module/az.compute/new-azvmssconfig?view=azps-15.1.0#description).
+
 ```azurepowershell
-# Add PowerShell example here
+# Set variables
+$resourceGroupName = "myResourceGroup"
+$vmssName = "myVMScaleSet"
+$location = "EastUS"
+
+# Create VMSS config with automatic zone balance parameters and disable automatic repairs
+$vmssConfig = New-AzVmssConfig `
+    -Location $location `
+    -SkuCapacity 3 `
+    -SkuName "Standard_D2s_v3" `
+    -Zone @("1", "2", "3") `
+    -EnableAutomaticZoneRebalance `
+    -AutomaticZoneRebalanceBehavior "CreateBeforeDelete" `
+    -AutomaticZoneRebalanceStrategy "Recreate" `
+    -EnableAutomaticRepair $false
+    
+# Add Application Health extension (required for automatic zone balance)
+$publicConfig = @{"protocol" = "http"; "port" = 80; "requestPath" = "/healthEndpoint"; "gracePeriod" = 600}
+$vmssConfig = Add-AzVmssExtension `
+    -VirtualMachineScaleSet $vmssConfig `
+    -Name "HealthExtension" `
+    -Publisher "Microsoft.ManagedServices" `
+    -Type "ApplicationHealthWindows" `
+    -TypeHandlerVersion "2.0" `
+    -AutoUpgradeMinorVersion $true `
+    -Setting $publicConfig
+
+# Configure OS, storage, and networking profiles (not shown) before deployment.
+
+# Create the VMSS
+New-AzVmss -ResourceGroupName $resourceGroupName -Name $vmssName -VirtualMachineScaleSet $vmssConfig
 ```
 
 ### [REST API](#tab/rest)

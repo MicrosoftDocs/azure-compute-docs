@@ -75,9 +75,9 @@ Automatic zone balance works together with [automatic instance repairs](./virtua
 - **Automatic Instance Repairs** monitors and repairs unhealthy VM instances within your scale set
 - **Automatic Zone Balance** ensures VMs are evenly distributed across availability zones
 
-When you enable automatic zone balance, automatic instance repairs is also enabled by default (if not already configured). This ensures your scale set benefits from both instance-level health monitoring and zone-level resiliency. If your scale set already has Automatic Instance Repairs enabled, your existing configuration is preserved.
+When you enable automatic zone balance, automatic instance repairs is also enabled by default. This ensures your scale set benefits from both instance-level health monitoring and zone-level resiliency. If your scale set already has automatic instance repairs enabled, your existing configuration is preserved.
 
-To learn more about automatic instance repairs, see [Automatic instance repairs for Azure Virtual Machine Scale Sets](./virtual-machine-scale-sets-automatic-instance-repairs.md). If you'd like to use automatic zone balance without automatic instance repairs, see [how to enable automatic zone balance](./auto-zone-balance-enable.md#disable-automatic-instance-repairs).
+To learn more about automatic instance repairs, see [Automatic instance repairs for Azure Virtual Machine Scale Sets](./virtual-machine-scale-sets-automatic-instance-repairs.md). If you'd like to use automatic zone balance without automatic instance repairs, see [Disable Automatic Instance Repairs](./auto-zone-balance-enable.md#disable-automatic-instance-repairs).
 
 ## Limitations
 
