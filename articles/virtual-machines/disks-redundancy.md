@@ -7,6 +7,7 @@ ms.date: 07/29/2024
 ms.topic: how-to
 ms.service: azure-disk-storage
 ms.custom: references_regions
+# Customer intent: "As a cloud architect, I want to compare zone-redundant storage and locally redundant storage for managed disks, so that I can choose the best redundancy option for my workload’s availability and performance requirements."
 ---
 
 # Redundancy options for managed disks

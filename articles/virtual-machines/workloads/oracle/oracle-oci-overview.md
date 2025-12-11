@@ -4,10 +4,11 @@ description: Learn about solutions that integrate Oracle apps running on Microso
 author: jjaygbay1
 ms.service: oracle-on-azure
 ms.collection: linux
-ms.topic: concept-article
+ms.topic: overview
 ms.date: 10/04/2024
 ms.author: jacobjaygbay
  
+# Customer intent: "As a cloud architect, I want to implement cross-cloud connectivity between Oracle applications on Azure and databases in OCI, so that I can leverage the strengths of both platforms while ensuring secure and efficient communication between the environments."
 ---
 # Oracle application solutions integrating Microsoft Azure and Oracle Cloud Infrastructure 
 

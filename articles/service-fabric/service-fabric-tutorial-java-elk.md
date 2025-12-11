@@ -5,9 +5,12 @@ ms.topic: tutorial
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
-ms.custom: devx-track-extended-java
 services: service-fabric
 ms.date: 07/14/2022
+ms.custom:
+  - devx-track-extended-java
+  - sfi-image-nochange
+# Customer intent: "As a developer managing Service Fabric applications, I want to set up an ELK stack in Azure to monitor and visualize logs, so that I can ensure the reliability and performance of my applications."
 ---
 
 # Tutorial: Monitor your Service Fabric applications using ELK
@@ -32,7 +35,7 @@ In this tutorial series you learn how to:
 
 Before you begin this tutorial:
 
-* If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn)
 * Set up your application to emit logs to the location specified in [part two](service-fabric-tutorial-debug-log-local-cluster.md).
 * Complete [part three](service-fabric-tutorial-java-deploy-azure.md) and have a running Service Fabric cluster configured to send logs to Event Hubs.
 * The policy in Event Hubs that has the 'Listen' permission and the associated primary key from series three.

@@ -1,14 +1,16 @@
 ---
 title: Boot integrity monitoring overview
 description: Learn how to use the Guest Attestation extension to secure boot your virtual machine and how to handle traffic blocking.
-author: ju-shim
-ms.author: jushiman
-ms.reviewer: jushiman
+author: cynthn
+ms.author: cynthn
 ms.service: azure-virtual-machines
 ms.subservice: trusted-launch
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 04/10/2024
-ms.custom: template-concept
+ms.custom:
+  - template-concept
+  - sfi-image-nochange
+# Customer intent: As a cloud security administrator, I want to implement boot integrity monitoring on my virtual machines using guest attestation, so that I can ensure the security and validity of the boot sequence to protect against rootkit attacks.
 ---
 
 # Boot integrity monitoring overview

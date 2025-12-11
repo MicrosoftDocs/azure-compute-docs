@@ -1,13 +1,14 @@
 ---
 title: Maintenance control for OS image upgrades on Azure Virtual Machine Scale Sets using an Azure Resource Manager template
 description: Learn how to control when automatic OS image upgrades are rolled out to your Azure Virtual Machine Scale Sets using Maintenance control and an Azure Resource Manager (ARM) template.
-author: ju-shim
+author: cynthn
 ms.service: azure-virtual-machine-scale-sets
 ms.topic: how-to
 ms.date: 11/22/2022
-ms.author: jushiman
+ms.author: cynthn
 ms.custom: subject-armqs, mode-arm, devx-track-arm-template
 #pmcontact: PPHILLIPS
+# Customer intent: As a cloud administrator, I want to configure maintenance controls for automatic OS image upgrades using an ARM template, so that I can manage the timing of these updates for my Azure Virtual Machine Scale Sets effectively.
 ---
 
 # Maintenance control for OS image upgrades on Azure Virtual Machine Scale Sets using an ARM template

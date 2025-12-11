@@ -5,8 +5,9 @@ author: manasisoman-work
 ms.author: manasisoman
 ms.service: azure-virtual-machine-scale-sets
 ms.topic: how-to
-ms.date: 11/15/2024
-ms.reviewer: ju-shim
+ms.date: 04/28/2025
+ms.reviewer: cynthn
+# Customer intent: "As a cloud infrastructure administrator, I want to enable resilient create and delete for Virtual Machine Scale Sets, so that I can minimize manual intervention when handling errors during VM provisioning and deletion processes."
 ---
 
 
@@ -41,9 +42,9 @@ az feature show --namespace "Microsoft.Compute" --name "ReliableVMDeletion"
 
 Resilient create runs on Virtual Machines Scale Sets during the initial create of the scale set or during a scale-out. 
 
-Resilient create initiates retries for OS Provisioning Timeout and VM Start Timeout errors. Timeouts are hit when a VM isn't provisioned after 20 minutes for Windows or 8 minutes for Linux.
+Resilient create initiates retries for OS Provisioning time-out and VM Start time-out errors. Time-outs are hit when a VM isn't provisioned after 20 minutes for Windows or 8 minutes for Linux.
 
-Resilient create attempts the create operation five times per VM or for a maximum of 30 total minutes for all retries. If unsuccessful, the VM remains in a failed state.
+Resilient create attempts the create operation for up to 30 total minutes. If unsuccessful, the VM remains in a failed state.
 
 :::image type="content" source="./media/resilient-vm-create-delete/resilient-create-workflow.png" alt-text="A screenshot showing how Resilient create performs retries on your virtual machines.":::
 

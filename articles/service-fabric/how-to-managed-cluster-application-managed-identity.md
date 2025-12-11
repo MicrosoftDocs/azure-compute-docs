@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: devx-track-arm-template
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a cloud developer, I want to configure and deploy applications using managed identities on a Service Fabric managed cluster, so that I can easily authenticate and access Azure resources without needing to manage credentials.
 ---
 
 # Deploy an application with Managed Identity to a Service Fabric managed cluster

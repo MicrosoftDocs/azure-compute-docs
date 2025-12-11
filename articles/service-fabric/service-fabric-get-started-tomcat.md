@@ -5,9 +5,12 @@ ms.topic: how-to
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
-ms.custom: linux-related-content
 services: service-fabric
 ms.date: 07/14/2022
+ms.custom:
+  - linux-related-content
+  - sfi-image-nochange
+# Customer intent: "As a developer, I want to create and deploy a containerized Apache Tomcat application on a Service Fabric cluster, so that I can efficiently manage and scale my web application in a cloud environment."
 ---
 
 # Create Service Fabric container running Apache Tomcat server on Linux

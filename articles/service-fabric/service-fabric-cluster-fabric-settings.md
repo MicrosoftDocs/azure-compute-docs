@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a cloud administrator, I want to customize settings for my Service Fabric cluster, so that I can optimize performance and manage upgrades according to my organization's requirements."
 ---
 
 # Customize Service Fabric cluster settings
@@ -490,6 +491,10 @@ The following is a list of Fabric settings that you can customize, organized by 
 |ImageStoreConnectionString |SecureString |Static|Connection string to the Root for ImageStore. |
 |ImageStoreMinimumTransferBPS | Int, default is 1024 |Dynamic|The minimum transfer rate between the cluster and ImageStore. This value is used to determine the timeout when accessing the external ImageStore. Change this value only if the latency between the cluster and ImageStore is high to allow more time for the cluster to download from the external ImageStore. |
 |MaxUnusedAppTypeVersionsToKeep | Int, default is 3 |Dynamic|This configuration defines the number of unused application type versions to be skipped for cleanup. This parameter is applicable only if parameter CleanupUnusedApplicationTypes is enabled. <br/>*General best practice is to use the default (`3`). Values less than one are not valid.*|
+|CleanupClusterPackageOnProvisionSuccess |bool |Dynamic|Automatically cleans up cluster packages after a successful provision. |
+|CleanupUnusedClusterConfigPackages |bool |Dynamic|Cleans up unused cluster configuration packages when enabled. |
+|CleanupUnusedClusterCodePackages |bool |Dynamic|Cleans up unused cluster code packages when enabled. |
+|MaxUnusedClusterCodePackagesToKeep |int |Dynamic|Specifies the maximum number of unused code packages to retain. |
 
 
 ## MetricActivityThresholds

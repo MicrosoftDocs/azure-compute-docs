@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor Dependency virtual machine extension for Windows
+title: Azure Monitor Dependency Agent virtual machine extension for Windows
 description: Deploy the Azure Monitor Dependency agent on Windows virtual machine by using a virtual machine extension.
 ms.topic: concept-article
 ms.service: azure-monitor
@@ -9,10 +9,13 @@ ms.author: guywild
 ms.reviewer: jushiman
 ms.collection: windows
 ms.date: 01/14/2025
+# Customer intent: As a system administrator, I want to deploy the Azure Monitor Dependency agent on Windows virtual machines, so that I can monitor application dependencies and ensure optimal performance of my applications within the Azure environment.
 ---
 # Azure Monitor Dependency virtual machine extension for Windows
 
 The Azure Monitor for VMs Map feature gets its data from the Microsoft Dependency agent. The Azure VM Dependency agent virtual machine extension for Windows installs the Dependency agent on Azure virtual machines. This document details the supported platforms, configurations, and deployment options for the Azure VM Dependency agent virtual machine extension for Windows.
+
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
 
 ## Operating system
 
@@ -143,6 +146,20 @@ Set-AzVMExtension -ExtensionName "Microsoft.Azure.Monitoring.DependencyAgent" `
     -Settings @{"enableAMA" = "true"}
 ```
 
+### PowerShell deployment for Azure Monitor Agent
+
+If you are using the Azure Monitor Agent, you must use the `enableAMA` setting. Otherwise, Dependency agent attempts to send data to the legacy Log Analytics agent. For example:
+```powershell
+
+Set-AzVMExtension -ExtensionName "Microsoft.Azure.Monitoring.DependencyAgent" `
+    -ResourceGroupName "myResourceGroup" `
+    -VMName "myVM" `
+    -Publisher "Microsoft.Azure.Monitoring.DependencyAgent" `
+    -ExtensionType "DependencyAgentWindows" `
+    -TypeHandlerVersion 9.10 `
+    -Location WestUS `
+    -Settings @{"enableAMA" = "true"}
+```
 
 ## Automatic extension upgrade
 A new feature to [automatically upgrade minor versions](../automatic-extension-upgrade.md) of Dependency extension is now available.

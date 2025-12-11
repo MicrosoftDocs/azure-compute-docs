@@ -8,6 +8,7 @@
  ms.date: 04/14/2023
  ms.author: rogarana
  ms.custom: include file
+# Customer intent: As a cloud architect, I want to understand the limitations of shared disks across different disk types, so that I can effectively design and implement scalable virtual machine solutions in the cloud environment.
 ---
 
 ### General limitations

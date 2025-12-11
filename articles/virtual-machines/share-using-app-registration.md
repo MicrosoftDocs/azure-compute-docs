@@ -1,6 +1,6 @@
 ---
-title: "Share gallery images across tenants using an app registration"
-description: Learn how to share Azure Compute Gallery images across Azure tenants using an app registration.
+title: Share Gallery Images Across Tenants by Using an App Registration
+description: Learn how to share Azure Compute Gallery images across Azure tenants by using an app registration.
 ms.service: azure-virtual-machines
 ms.subservice: gallery
 ms.topic: how-to
@@ -9,27 +9,30 @@ ms.reviewer: cynthn
 ms.custom: devx-track-azurecli devx-track-azurepowershell
 author: sandeepraichura
 ms.author: saraic
+# Customer intent: "As an IT administrator, I want to share Azure Compute Gallery images across tenants by using an app registration, so that I can enable seamless access to VM images for resource provisioning without relying on the portal."
 ---
-# Share gallery VM images across Azure tenants using an app registration
+# Share gallery VM images across Azure tenants by using an app registration
 
-With Azure Compute Galleries, you can share an image to another organization by using an app registration. For more information about other sharing options, see the [Share the gallery](./share-gallery.md).
+With Azure Compute Gallery, you can share a virtual machine (VM) image with another organization by using an app registration. For information about other sharing options, see [Share gallery resources across subscriptions and tenants by using RBAC](./share-gallery.md).
 
 [!INCLUDE [virtual-machines-share-images-across-tenants](~/reusable-content/ce-skilling/azure/includes/virtual-machines/includes/virtual-machines-share-images-across-tenants.md)]
 
 > [!IMPORTANT]
-> You cannot use the portal to deploy a VM from an image in another azure tenant. To create a VM from an image shared between tenants, you must use the Azure CLI or PowerShell.
+> You can't use the portal to deploy a VM from an image in another Azure tenant. To create a VM from an image shared between tenants, you must use the Azure CLI or Azure PowerShell.
 
 ## Create the VM
 
-You will need the following before creating a VM from an image shared to you using an app registration:
-- The tenant IDs from both the source subscription and the subscription where you want to create the VM. 
-- The client ID of the app registration and the secret.
-- The image ID of the image that you want to use.
+You need the following information before you create a VM from an image shared with you by using an app registration:
+
+- The tenant IDs from both the source subscription and the subscription where you want to create the VM
+- The client ID of the app registration and the secret
+- The image ID of the image that you want to use
+
 ### [CLI](#tab/cli)
 
-Sign in the service principal for tenant 1 using the appID, the app key, and the ID of tenant 1. You can use `az account show --query "tenantId"` to get the tenant IDs if needed.
+Sign in the service principal for Tenant 1 by using the app ID, the app key, and the ID of Tenant 1. You can use `az account show --query "tenantId"` to get the tenant ID, if necessary.
 
-In this example, we are showing how to create a VM from a generalized image. If you are using a specialized image, see [Create a VM using a specialized image version](vm-specialized-image-version.md).
+The following example shows how to create a VM from a generalized image. If you're using a specialized image, see [Create a VM using a specialized image version](vm-specialized-image-version.md).
 
 ```azurecli-interactive
 
@@ -42,15 +45,15 @@ az account clear
 az login --service-principal -u $appid -p $secret --tenant $tenant1
 az account get-access-token 
 ```
- 
-Sign in the service principal for tenant 2 using the appID, the app key, and the ID of tenant 2:
+
+Sign in the service principal for Tenant 2 by using the app ID, the app key, and the ID of Tenant 2:
 
 ```azurecli-interactive
 az login --service-principal -u $appid -p $secret --tenant $tenant2
 az account get-access-token
 ```
 
-Create the VM. Replace the information in the example with your own.
+Create the VM. Replace the information in the following example with your own.
 
 ```azurecli-interactive
 imageid="<ID of the image that you want to use>"
@@ -62,10 +65,9 @@ az vm create \
   --generate-ssh-keys
 ```
 
-
 ### [PowerShell](#tab/powershell)
 
-Sign in to both tenants using the application ID, secret and tenant ID.
+Sign in to both tenants by using the application ID, secret, and tenant ID:
 
 ```azurepowershell-interactive
 $applicationId = '<App ID>'
@@ -78,20 +80,19 @@ Connect-AzAccount -ServicePrincipal -Credential $cred  -Tenant "<Tenant 1 ID>"
 Connect-AzAccount -ServicePrincipal -Credential $cred -Tenant "<Tenant 2 ID>"
 ```
 
-Create the VM in the resource group that has permission on the app registration. Replace the information in this example with your own.
+Create the VM in the resource group that has permission on the app registration. Replace the information in the following example with your own.
 
-In this example, we are showing how to create a VM from a generalized image. If you are using a specialized image, see [Create a VM using a specialized image version](vm-specialized-image-version.md).
-
+The example shows how to create a VM from a generalized image. If you're using a specialized image, see [Create a VM using a specialized image version](vm-specialized-image-version.md).
 
 ```azurepowershell-interactive
 $resourceGroup = "myResourceGroup"
 $location = "South Central US"
 $vmName = "myVMfromImage"
 
-# Set a variable for the image version in Tenant 1 using the full image ID of the image version
+# Set a variable for the image version in Tenant 1 by using the full image ID of the image version
 $image = "/subscriptions/<Tenant 1 subscription>/resourceGroups/<Resource group>/providers/Microsoft.Compute/galleries/<Gallery>/images/<Image definition>/versions/<version>"
 
-# Create user object
+# Create a user object
 $cred = Get-Credential -Message "Enter a username and password for the virtual machine."
 
 # Create a resource group
@@ -111,7 +112,7 @@ $nsg = New-AzNetworkSecurityGroup -ResourceGroupName $resourceGroup -Location $l
 $nic = New-AzNetworkInterface -Name myNic -ResourceGroupName $resourceGroup -Location $location `
   -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -NetworkSecurityGroupId $nsg.Id
 
-# Create a virtual machine configuration using the $image variable to specify the image
+# Create a virtual machine configuration by using the $image variable to specify the image
 $vmConfig = New-AzVMConfig -VMName $vmName -VMSize Standard_D1_v2 | `
 Set-AzVMOperatingSystem -Windows -ComputerName $vmName -Credential $cred | `
 Set-AzVMSourceImage -Id $image | `
@@ -121,6 +122,8 @@ Add-AzVMNetworkInterface -Id $nic.Id
 New-AzVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 ```
 
-## Next steps
+---
 
-If you run into any issues, you can [troubleshoot galleries](troubleshooting-shared-images.md).
+## Related content
+
+- If you have any problems, you can [troubleshoot galleries](troubleshooting-shared-images.md).

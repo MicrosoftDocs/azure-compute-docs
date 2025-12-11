@@ -8,6 +8,7 @@ ms.topic: how-to
 ms.date: 02/22/2023
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
 ms.devlang: azurecli
+# Customer intent: As a cloud administrator, I want to create encrypted image versions using customer-managed keys, so that I can ensure enhanced security and compliance for my virtual machine images.
 ---
 
 # Create an encrypted image version with customer-managed keys
@@ -24,7 +25,7 @@ Server-side encryption through customer-managed keys uses Azure Key Vault. You c
 
 This article requires that you already have a disk encryption set in each region where you want to replicate your image:
 
-- To use only a customer-managed key, see the articles about enabling customer-managed keys with server-side encryption by using the [Azure portal](./disks-enable-customer-managed-keys-portal.yml) or [PowerShell](./windows/disks-enable-customer-managed-keys-powershell.md#set-up-an-azure-key-vault-and-diskencryptionset-optionally-with-automatic-key-rotation).
+- To use only a customer-managed key, see the articles about enabling customer-managed keys with server-side encryption by using the [Azure portal](./disks-enable-customer-managed-keys-portal.yml) or [PowerShell](./windows/disks-enable-customer-managed-keys-powershell.md#set-up-an-azure-key-vault-and-diskencryptionset-with-automatic-key-rotation).
 
 - To use both platform-managed and customer-managed keys (for double encryption), see the articles about enabling double encryption at rest by using the [Azure portal](./disks-enable-double-encryption-at-rest-portal.md) or [PowerShell](./windows/disks-enable-double-encryption-at-rest-powershell.md).
 
@@ -67,7 +68,7 @@ $encryption2 = @{OSDiskImage=$eastUS2osDiskImageEncryption;DataDiskImages=$eastU
 $region2 = @{Name='East US 2';ReplicaCount=1;StorageAccountType=Standard_LRS;Encryption=$encryption2}
 $targetRegion = @($region1, $region2)
 ```
-Create the image
+**Create the image**
 ```
 New-AzGalleryImageVersion `
    -ResourceGroupName $rgname `
@@ -80,7 +81,8 @@ New-AzGalleryImageVersion `
    -PublishingProfileEndOfLifeDate '2020-12-01' `
    -TargetRegion $targetRegion
 ```
-Create the VM
+**Create the VM**
+
 You can create a virtual machine (VM) from an Azure Compute Gallery and use customer-managed keys to encrypt the disks. The syntax is the same as creating a [generalized](vm-generalized-image-version.md) or [specialized](vm-specialized-image-version.md) VM from an image. Use the extended parameter set and add `Set-AzVMOSDisk -Name $($vmName +"_OSDisk") -DiskEncryptionSetId $diskEncryptionSet.Id -CreateOption FromImage` to the VM configuration.
 
 For data disks, add the `-DiskEncryptionSetId $setID` parameter when you use [Add-AzVMDataDisk](/powershell/module/az.compute/add-azvmdatadisk).
@@ -120,9 +122,10 @@ az sig image-version create \
    --data-snapshots "/subscriptions/<subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/snapshots/myDDSnapshot" \
    --gallery-name MyGallery \
    --gallery-image-definition MyImage 
-   
 ```
-Create the VM
+
+**Create the VM**
+
 You can create a VM from an Azure Compute Gallery and use customer-managed keys to encrypt the disks. The syntax is the same as creating a [generalized](vm-generalized-image-version.md) or [specialized](vm-specialized-image-version.md) VM with the addition of the `--os-disk-encryption-set` parameter. For data disks, add `--data-disk-encryption-sets` with a space-delimited list of the disk encryption sets for the data disks.
 
 
@@ -133,8 +136,11 @@ When you create your image version in the portal, you can use the **Encryption**
 2. In **Encryption type**, select **Encryption at-rest with a customer-managed key** or **Double encryption with platform-managed and customer-managed keys**. 
 3. For each disk in the image, select an encryption set from the **Disk encryption set** drop-down list. 
 
-Create the VM
+**Create the VM**
+
 You can create a VM from an image version and use customer-managed keys to encrypt the disks. When you create the VM in the portal, on the **Disks** tab, select **Encryption at-rest with customer-managed keys** or **Double encryption with platform-managed and customer-managed keys** for **Encryption type**. You can then select the encryption set from the drop-down list.
+
+---
 
 ## Next steps
 

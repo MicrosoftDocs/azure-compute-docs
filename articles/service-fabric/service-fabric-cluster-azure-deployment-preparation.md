@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a cloud architect, I want to plan and prepare a production Azure Service Fabric cluster deployment, so that I can ensure optimized reliability and performance for my applications in a scalable environment."
 ---
 
 # Plan and prepare for a cluster deployment

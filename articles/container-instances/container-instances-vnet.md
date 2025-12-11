@@ -6,15 +6,22 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
-ms.date: 09/09/2024
+ms.date: 11/17/2025
 ms.custom: devx-track-azurecli, innovation-engine
+# Customer intent: As a cloud developer, I want to deploy container groups to Azure virtual networks using the CLI, so that I can ensure secure communication between my containers and other resources within the network.
 ---
 
 # Deploy container instances into an Azure virtual network
 
+> [!div class=""nextstepaction""]
+> [Deploy and Explore](https://go.microsoft.com/fwlink/?linkid=2321932)
+
 [Azure Virtual Network](/azure/virtual-network/virtual-networks-overview) provides secure, private networking for your Azure and on-premises resources. By deploying container groups into an Azure virtual network, your containers can communicate securely with other resources in the virtual network.
 
 This article shows how to use the [az container create][az-container-create] command in the Azure CLI to deploy container groups to either a new virtual network or an existing virtual network.
+
+> [!IMPORTANT]
+> If you deploy your container group into a virtual network, you must use a NAT gateway for outbound connectivity. This is the only supported configuration for outbound connectivity from your container group in a virtual network. See [Configure a NAT gateway for static IP address for outbound traffic from a container group](./container-instances-nat-gateway.md) for more information on how to configure this.
 
 > [!IMPORTANT]
 > * Subnets must be delegated before using a virtual network
@@ -31,22 +38,14 @@ Examples in this article are formatted for the Bash shell. If you prefer another
 
 The automated deployment pathway uses the following environment variables and resource names throughout this guide. Users proceeding through the guide manually can use their own variables and names as preferred.
 
-```azurecli-interactive
-export RANDOM_ID="$(openssl rand -hex 3)"
-export MY_RESOURCE_GROUP_NAME="myACIResourceGroup$RANDOM_ID"
-export MY_VNET_NAME="aci-vnet"
-export MY_SUBNET_NAME="aci-subnet"
-export MY_SUBNET_ID="/subscriptions/$(az account show --query id --output tsv)/resourceGroups/$MY_RESOURCE_GROUP_NAME/providers/Microsoft.Network/virtualNetworks/$MY_VNET_NAME/subnets/$MY_SUBNET_NAME"
-export MY_APP_CONTAINER_NAME="appcontainer"
-export MY_COMM_CHECKER_NAME="commchecker"
-export MY_YAML_APP_CONTAINER_NAME="appcontaineryaml"
-```
-
 ### Create a resource group
 
 You need a resource group to manage all the resources used in the following examples. To create a resource group, use [az group create][az-group-create]:
 
 ```azurecli-interactive
+export RANDOM_ID="$(openssl rand -hex 3)"
+export MY_RESOURCE_GROUP_NAME="myACIResourceGroup$RANDOM_ID"
+
 az group create --name $MY_RESOURCE_GROUP_NAME --location eastus
 ```
 
@@ -91,6 +90,10 @@ Once you deploy your first container group with this method, you can deploy to t
 The following [az container create][az-container-create] command specifies settings for a new virtual network and subnet. Provide the name of a resource group that was created in a region where container group deployments in a virtual network are [available](container-instances-region-availability.md). This command deploys the public Microsoft aci-helloworld container that runs a small Node.js webserver serving a static web page. In the next section, you'll deploy a second container group to the same subnet, and test communication between the two container instances.
 
 ```azurecli-interactive
+export MY_APP_CONTAINER_NAME="appcontainer"
+export MY_VNET_NAME="aci-vnet"
+export MY_SUBNET_NAME="aci-subnet"
+
 az container create \
   --name $MY_APP_CONTAINER_NAME \
   --resource-group $MY_RESOURCE_GROUP_NAME \
@@ -278,6 +281,11 @@ type: Microsoft.ContainerInstance/containerGroups
 
 The following Bash command is for the automated deployment pathway.
 
+```azurecli-interactive
+export MY_YAML_APP_CONTAINER_NAME="appcontaineryaml"
+export MY_SUBNET_ID="/subscriptions/$(az account show --query id --output tsv)/resourceGroups/$MY_RESOURCE_GROUP_NAME/providers/Microsoft.Network/virtualNetworks/$MY_VNET_NAME/subnets/$MY_SUBNET_NAME"
+```
+
 ```bash
 echo -e "apiVersion: '2021-07-01'\nlocation: eastus\nname: $MY_YAML_APP_CONTAINER_NAME\nproperties:\n  containers:\n  - name: $MY_YAML_APP_CONTAINER_NAME\n    properties:\n      image: mcr.microsoft.com/azuredocs/aci-helloworld\n      ports:\n      - port: 80\n        protocol: TCP\n      resources:\n        requests:\n          cpu: 1.0\n          memoryInGB: 1.5\n  ipAddress:\n    type: Private\n    ports:\n    - protocol: tcp\n      port: '80'\n  osType: Linux\n  restartPolicy: Always\n  subnetIds:\n    - id: $MY_SUBNET_ID\n      name: default\ntags: null\ntype: Microsoft.ContainerInstance/containerGroups" > container-instances-vnet.yaml
 ```
@@ -352,6 +360,8 @@ Results:
 Now, set `CONTAINER_GROUP_IP` to the IP you retrieved with the `az container show` command, and execute the following `az container create` command. This second container, *commchecker*, runs an Alpine Linux-based image and executes `wget` against the first container group's private subnet IP address.
 
 ```azurecli-interactive
+export MY_COMM_CHECKER_NAME="commchecker"
+
 az container create \
   --resource-group $MY_RESOURCE_GROUP_NAME \
   --name $MY_COMM_CHECKER_NAME \

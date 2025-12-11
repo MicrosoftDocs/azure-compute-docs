@@ -1,13 +1,14 @@
 ---
 title: Use Azure Spot Virtual Machines
 description: Learn how to use Azure Spot Virtual Machines to save on costs.
-author: ju-shim
-ms.author: jushiman
+author: cynthn
+ms.author: cynthn
 ms.service: azure-virtual-machines
 ms.subservice: azure-spot-vm
 ms.topic: how-to
 ms.date: 08/05/2024
 ms.reviewer: ju-shim
+# Customer intent: "As a cost-conscious IT manager, I want to utilize Azure Spot Virtual Machines for my batch processing and development environments, so that I can leverage unused capacity and significantly reduce expenses while accepting possible interruptions."
 ---
 
 
@@ -156,6 +157,14 @@ Alternatively, try out the [ARG REST API](/rest/api/azure-resourcegraph/) to get
 **Q:** How can I change the max price for a spot VM?
 
 **A:** Before you can change the max price, you need to deallocate the VM. Then you can change the max price in the portal, from the **Configuration** section for the VM. 
+
+**Q:** Can I convert existing VMs to Spot VMs?
+
+**A:** No, setting the Spot flag is only supported at creation time.
+
+**Q:** Can I convert Spot VMs to Standard VMs?
+
+**A:** No, Spot VMs cannot be directly converted to Standard VMs.
 
 ## Next steps
 Use the [CLI](./linux/spot-cli.md), [portal](spot-portal.md), [ARM template](./linux/spot-template.md), or [PowerShell](./windows/spot-powershell.md) to deploy Azure Spot Virtual Machines.

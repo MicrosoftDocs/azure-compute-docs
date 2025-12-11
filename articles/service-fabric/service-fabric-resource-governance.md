@@ -1,12 +1,13 @@
 ---
 title: Resource governance for containers and services 
 description: Azure Service Fabric allows you to specify resource requests and limits for services running as processes or containers.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a developer managing multiple services in a containerized environment, I want to specify resource requests and limits for those services, so that I can prevent resource contention and optimize performance in my Service Fabric cluster.
 ---
 
 # Resource governance

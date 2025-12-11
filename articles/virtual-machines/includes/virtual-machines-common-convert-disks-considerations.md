@@ -1,9 +1,10 @@
 ---
-author: jushiman
+author: cynthnan
 ms.service: azure-virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
-ms.author: jushiman
+ms.author: cynthn
+# Customer intent: "As a cloud administrator, I want to migrate my virtual machines during scheduled maintenance, so that I can ensure minimal disruption and properly manage any changes, including IP address updates and agent requirements."
 ---
 
 * The migration will restart the VM, so schedule the migration of your VMs during a pre-existing maintenance window. 

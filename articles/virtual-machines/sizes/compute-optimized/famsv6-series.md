@@ -4,10 +4,11 @@ description: Information on and specifications of the Famsv6-series sizes
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 07/30/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
+# Customer intent: As a cloud architect, I want to review the specifications and features of the Famsv6 size series, so that I can select the appropriate virtual machine size for my application's performance and resource needs.
 ---
 
 # Famsv6 sizes series

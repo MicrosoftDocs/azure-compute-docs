@@ -1,12 +1,13 @@
 ---
 title: Reliable Actors notes on actor type serialization 
 description: Discusses basic requirements for defining serializable classes that can be used to define Service Fabric Reliable Actors states and interfaces
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a software developer, I want to understand the requirements for serializing custom data types in Reliable Actors, so that I can effectively implement actor interfaces and manage state within Service Fabric applications.
 ---
 
 # Notes on Service Fabric Reliable Actors type serialization

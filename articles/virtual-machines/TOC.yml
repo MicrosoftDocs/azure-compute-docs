@@ -2,6 +2,9 @@
   href: index.yml
 - name: Overview
   href: overview.md
+- name: Compare compute products
+  displayName: compute, vmss, fleet, compare, orchestration, scale, scaling, scale sets
+  href: compare-compute-products.md
 - name: Quickstarts
   items:
   - name: Create a Linux VM
@@ -67,10 +70,12 @@
       href: ./linux/tutorial-manage-vm.md
     - name: Create / manage disks
       href: ./linux/tutorial-manage-disks.md
-    - name: Automate configuration
-      href: ./linux/tutorial-automate-vm-deployment.md
     - name: Create VM images
       href: ./linux/tutorial-custom-images.md
+    - name: Create & deploy VM application
+      href: ./vm-applications-how-to.md?tabs=cli%2Ccli1%2Ccli2%2Ccli3%2Ccli4
+    - name: Automate configuration
+      href: ./linux/tutorial-automate-vm-deployment.md
     - name: Manage networking
       href: ./linux/tutorial-virtual-network.md
     - name: Load Balance VMs
@@ -83,10 +88,12 @@
       href: ./windows/tutorial-manage-vm.md
     - name: Create / manage disks
       href: ./windows/tutorial-manage-data-disk.md
-    - name: Automate configuration
-      href: ./windows/tutorial-automate-vm-deployment.md
     - name: Create VM images
       href: ./windows/tutorial-custom-images.md
+    - name: Create & deploy VM application
+      href: ./vm-applications-how-to.md?tabs=powershell%2Cpowershell1%2Cpowershell2%2Cpowershell3%2Cpowershell4
+    - name: Automate configuration
+      href: ./windows/tutorial-automate-vm-deployment.md
     - name: Manage networking
       href: ./windows/tutorial-virtual-network.md
     - name: Load Balance VMs
@@ -149,8 +156,6 @@
     href: /gaming/azure/
   - name: Elasticsearch
     href: ./linux/tutorial-elasticsearch.md
-  - name: Mainframe rehosting
-    href: ./workloads/mainframe-rehosting/overview.md
   - name: Azure Confidential Compute
     href: /azure/confidential-computing/overview
   - name: SQL on Virtual Machines
@@ -173,543 +178,628 @@
         href: ./workloads/hpc/setup-mpi.md
     - name: Scaling applications
       href: ./workloads/hpc/compiling-scaling-applications.md
-- name: Instances
+- name: Sizes
   items:
-  - name: Sizes
-    items:
-    - name: Overview
-      displayName: Sizes, sizing, resize, ACU, compute
-      href: ./sizes/overview.md
-    - name: Cobalt VMs
-      href: ./sizes/cobalt-overview.md
-    - name: Change the size of a VM
-      href: ./sizes/resize-vm.md
-    - name: General purpose
-      items:
-      - name: Overview
-        displayName: general purpose, sizes, size, vm size
-        href: ./sizes/overview.md#general-purpose
-      - name: A family
-        items:
-        - name: Overview
-          displayName: A-series, sizes, size, vm size
-          href: ./sizes/general-purpose/a-family.md
-        - name: Av2-series
-          href: ./sizes/general-purpose/av2-series.md
-      - name: B family (burstable)
-        items:
-        - name: Overview
-          displayName: B-series, sizes, size, vm size
-          href: ./sizes/general-purpose/b-family.md
-        - name: B-series CPU Credit Model
-          href: ./sizes/b-series-cpu-credit-model.md
-        - name: Bsv2 series
-          href: ./sizes/general-purpose/bsv2-series.md
-        - name: Basv2 series
-          href: ./sizes/general-purpose/basv2-series.md
-        - name: Bpsv2 series
-          href: ./sizes/general-purpose/bpsv2-series.md
-      - name: D family
-        items:
-        - name: Overview
-          displayName: D-series, sizes, size, vm size
-          href: ./sizes/general-purpose/d-family.md
-        - name: Dsv6 series
-          href: ./sizes/general-purpose/dsv6-series.md
-        - name: Ddsv6 series
-          href: ./sizes/general-purpose/ddsv6-series.md
-        - name: Dlsv6 series
-          href: ./sizes/general-purpose/dlsv6-series.md
-        - name: Dldsv6 series
-          href: ./sizes/general-purpose/dldsv6-series.md
-        - name: Dasv6 series
-          href: ./sizes/general-purpose/dasv6-series.md
-        - name: Dadsv6 series
-          href: ./sizes/general-purpose/dadsv6-series.md
-        - name: Dalsv6 series
-          href: ./sizes/general-purpose/dalsv6-series.md
-        - name: Daldsv6 series
-          href: ./sizes/general-purpose/daldsv6-series.md
-        - name: Dpsv6 series
-          href: ./sizes/general-purpose/dpsv6-series.md
-        - name: Dpdsv6 series
-          href: ./sizes/general-purpose/dpdsv6-series.md
-        - name: Dplsv6 series
-          href: ./sizes/general-purpose/dplsv6-series.md
-        - name: Dpldsv6 series
-          href: ./sizes/general-purpose/dpldsv6-series.md
-        - name: Dv5 series
-          href: ./sizes/general-purpose/dv5-series.md
-        - name: Dsv5 series
-          href: ./sizes/general-purpose/dsv5-series.md
-        - name: Ddv5 series
-          href: ./sizes/general-purpose/ddv5-series.md
-        - name: Ddsv5 series
-          href: ./sizes/general-purpose/ddsv5-series.md
-        - name: Dasv5 series
-          href: ./sizes/general-purpose/dasv5-series.md
-        - name: Dadsv5 series
-          href: ./sizes/general-purpose/dadsv5-series.md
-        - name: Dpsv5 series
-          href: ./sizes/general-purpose/dpsv5-series.md
-        - name: Dpdsv5 series
-          href: ./sizes/general-purpose/dpdsv5-series.md
-        - name: Dplsv5 series
-          href: ./sizes/general-purpose/dplsv5-series.md
-        - name: Dpldsv5 series
-          href: ./sizes/general-purpose/dpldsv5-series.md
-        - name: Dlsv5 series
-          href: ./sizes/general-purpose/dlsv5-series.md
-        - name: Dldsv5 series
-          href: ./sizes/general-purpose/dldsv5-series.md
-        - name: Dv4 series
-          href: ./sizes/general-purpose/dv4-series.md
-        - name: Dsv4 series
-          href: ./sizes/general-purpose/dsv4-series.md
-        - name: Dav4 series
-          href: ./sizes/general-purpose/dav4-series.md
-        - name: Dasv4 series
-          href: ./sizes/general-purpose/dasv4-series.md
-        - name: Ddv4 series
-          href: ./sizes/general-purpose/ddv4-series.md   
-        - name: Ddsv4 series
-          href: ./sizes/general-purpose/ddsv4-series.md       
-      - name: DC family (confidential)
-        items:
-        - name: Overview
-          displayName: DC-series, sizes, size, vm size
-          href: ./sizes/general-purpose/dc-family.md
-        - name: DCasv5 series
-          href: ./sizes/general-purpose/dcasv5-series.md
-        - name: DCadsv5 series
-          href: ./sizes/general-purpose/dcadsv5-series.md
-        - name: DCesv5 series
-          href: ./sizes/general-purpose/dcesv5-series.md  
-        - name: DCedsv5 series
-          href: ./sizes/general-purpose/dcedsv5-series.md 
-        - name: DCas_cc_v5 series
-          href: ./sizes/general-purpose/dcasccv5-series.md
-        - name: DCads_cc_v5 series
-          href: ./sizes/general-purpose/dcadsccv5-series.md
-        - name: DCsv3 series
-          href: ./sizes/general-purpose/dcsv3-series.md
-        - name: DCdsv3 series
-          href: ./sizes/general-purpose/dcdsv3-series.md
-        - name: DCsv2 series
-          href: ./sizes/general-purpose/dcsv2-series.md
-    - name: Compute optimized
-      items:
-      - name: Overview
-        displayName: compute optimized, sizes, size, vm size
-        href: ./sizes/overview.md#compute-optimized
-      - name: F family
-        items:
-        - name: Overview
-          displayName: F-series, sizes, size, vm size
-          href: ./sizes/compute-optimized/f-family.md
-        - name: Fasv6-series
-          href: ./sizes/compute-optimized/fasv6-series.md
-        - name: Falsv6 series
-          href: ./sizes/compute-optimized/falsv6-series.md
-        - name: Famsv6 series
-          href: ./sizes/compute-optimized/famsv6-series.md
-        - name: Fsv2 series
-          href: ./sizes/compute-optimized/fsv2-series.md
-      - name: FX family
-        items:
-        - name: Overview
-          displayName: FX-series, sizes, size, vm size
-          href: ./sizes/compute-optimized/fx-family.md
-        - name: FXmsv2 series
-          href: ./sizes/compute-optimized/fxmsv2-series.md
-        - name: FXmdsv2 series
-          href: ./sizes/compute-optimized/fxmdsv2-series.md
-        - name: FX series
-          href: fx-series.md
-    - name: Memory optimized
-      items:
-      - name: Overview
-        displayName: memory optimized, sizes, size, vm size, memory
-        href: ./sizes/overview.md#memory-optimized
-      - name: E family
-        items:
-        - name: Overview
-          displayName: E-series, sizes, size, vm size
-          href: ./sizes/memory-optimized/e-family.md
-        - name: Esv6 series
-          href: ./sizes/memory-optimized/esv6-series.md
-        - name: Edsv6 series
-          href: ./sizes/memory-optimized/edsv6-series.md
-        - name: Epsv6 series
-          href: ./sizes/memory-optimized/epsv6-series.md
-        - name: Epdsv6 series
-          href: ./sizes/memory-optimized/epdsv6-series.md
-        - name: Easv6 series
-          href: ./sizes/memory-optimized/easv6-series.md
-        - name: Eadsv6 series
-          href: ./sizes/memory-optimized/eadsv6-series.md
-        - name: Ev5 series
-          href: ./sizes/memory-optimized/ev5-series.md
-        - name: Esv5 series
-          href: ./sizes/memory-optimized/esv5-series.md
-        - name: Edv5 series
-          href: ./sizes/memory-optimized/edv5-series.md
-        - name: Edsv5 series
-          href: ./sizes/memory-optimized/edsv5-series.md
-        - name: Easv5 series
-          href: ./sizes/memory-optimized/easv5-series.md
-        - name: Eadsv5 series
-          href: ./sizes/memory-optimized/eadsv5-series.md
-        - name: Epsv5 series
-          href: ./sizes/memory-optimized/epsv5-series.md
-        - name: Epdsv5 series
-          href: ./sizes/memory-optimized/epdsv5-series.md
-        - name: Edv4 series
-          href: ./sizes/memory-optimized/edv4-series.md
-        - name: Edsv4 series
-          href: ./sizes/memory-optimized/edsv4-series.md
-        - name: Eav4 series
-          href: ./sizes/memory-optimized/eav4-series.md
-        - name: Easv4 series
-          href: ./sizes/memory-optimized/easv4-series.md
-        - name: Ev4 series
-          href: ./sizes/memory-optimized/ev4-series.md
-        - name: Esv4 series
-          href: ./sizes/memory-optimized/esv4-series.md
-      - name: Eb family
-        items:
-        - name: Overview
-          displayName: Eb-series, sizes, size, vm size
-          href: ./sizes/memory-optimized/eb-family.md
-        - name: Ebdsv5 and Ebsv5 series
-          href: ebdsv5-ebsv5-series.md
-      - name: EC family (confidential)
-        items:
-        - name: Overview
-          displayName: EC-series, sizes, size, vm size
-          href: ./sizes/memory-optimized/ec-family.md
-        - name: ECasv5 and ECadsv5 series
-          href: ecasv5-ecadsv5-series.md
-        - name: ECesv5 and ECedsv5 series
-          href: ecesv5-ecedsv5-series.md  
-        - name: ECas_cc_v5 and ECads_cc_v5 series
-          href: ecasccv5-ecadsccv5-series.md
-      - name: M family
-        items:
-        - name: Overview
-          displayName: M-series, sizes, size, vm size
-          href: ./sizes/memory-optimized/m-family.md
-        - name: Mbsv3 and Mbdsv3 series
-          href: ./sizes/memory-optimized/mbsv3-mbdsv3-series.md
-        - name: Msv3 and Mdsv3 Medium Memory series
-          href: msv3-mdsv3-medium-series.md
-        - name: Msv3 and Mdsv3 High Memory series
-          href: ./sizes/memory-optimized/msv3-mdsv3-high-memory-series.md
-        - name: Mdsv3 Very High Memory Series
-          href: ./sizes/memory-optimized/mdsv3-very-high-memory-series.md
-        - name: Msv2 and Mdsv2 Medium Memory series
-          href: msv2-mdsv2-series.md
-        - name: Msv2 and Mdsv2 migration guide
-          href: msv2-mdsv2-isolated-retirement.md
-        - name: Mv2 series
-          href: mv2-series.md
-        - name: M series
-          href: m-series.md
-    - name: Storage optimized
-      items:
-      - name: Overview
-        displayName: storage optimized, sizes, size, vm size
-        href: ./sizes/overview.md#storage-optimized
-      - name: L family
-        items:
-        - name: Overview
-          displayName: L-series, sizes, size, vm size
-          href: ./sizes/storage-optimized/l-family.md
-        - name: Lsv3 series
-          href: ./sizes/storage-optimized/lsv3-series.md
-        - name: Lasv3 series
-          href: ./sizes/storage-optimized/lasv3-series.md
-      - name: Optimize storage performance
-        items:
-        - name: Linux
-          displayName: performance, Linux, storage performance
-          href: ./linux/storage-performance.md
-        - name: Windows
-          displayName: performance, Windows, storage performance
-          href: ./windows/storage-performance.md
-    - name: GPU - accelerated compute
-      items:
-      - name: Overview
-        displayName: GPU, sizes, size, vm size
-        href: ./sizes/overview.md#gpu-accelerated
-      - name: NC family
-        items:
-        - name: Overview
-          displayName: NC-series, sizes, size, vm size
-          href: ./sizes/gpu-accelerated/nc-family.md
-        - name: NC series
-          href: ./sizes/gpu-accelerated/nc-series.md
-        - name: NC series retirement
-          href: nc-series-retirement.md
-        - name: NCads_H100_v5 series
-          href: ./sizes/gpu-accelerated/ncadsh100v5-series.md
-        - name: NCCads_H100_v5 series
-          href: ./sizes/gpu-accelerated/nccadsh100v5-series.md
-        - name: NCv2 series
-          href: ./sizes/gpu-accelerated/ncv2-series.md
-        - name: NCv2 series retirement
-          href: ncv2-series-retirement.md
-        - name: NCv3 series
-          href: ./sizes/gpu-accelerated/ncv3-series.md
-        - name: Ncv3 Nc24rs retirement
-          href: ncv3-nc24rs-retirement.md
-        - name: Ncv3 NC6s NC12s NC24s retirement
-          href: ncv3-nc6s-nc12s-nc24s-retirement.md
-        - name: NCasT4_v3 series
-          href: ./sizes/gpu-accelerated/ncast4v3-series.md
-        - name: NC_A100_v4 series
-          href: ./sizes/gpu-accelerated/nca100v4-series.md
-      - name: ND family
-        items:
-        - name: Overview
-          displayName: ND-series, sizes, size, vm size
-          href: ./sizes/gpu-accelerated/nd-family.md
-        - name: NDasrA100_v4 series
-          href: ./sizes/gpu-accelerated/ndasra100v4-series.md
-        - name: NDm_A100_v4 series
-          href: ./sizes/gpu-accelerated/ndma100v4-series.md
-        - name: ND series
-          href: ./sizes/gpu-accelerated/nd-series.md
-        - name: ND series retirement
-          href: nd-series-retirement.md
-        - name: NDv2 series
-          href: ./sizes/gpu-accelerated/ndv2-series.md
-        - name: ND-H100-v5 series
-          href: ./sizes/gpu-accelerated/ndh100v5-series.md
-        - name: ND-H200-v5 series
-          href: ./sizes/gpu-accelerated/nd-h200-v5-series.md
-        - name: ND-MI300X-v5 series
-          href: ./sizes/gpu-accelerated/ndmi300xv5-series.md
-      - name: NG family
-        items:
-        - name: Overview
-          displayName: NG-series, sizes, size, vm size
-          href: ./sizes/gpu-accelerated/ng-family.md
-        - name: NGads V620 series
-          href: ./sizes/gpu-accelerated/ngadsv620-series.md
-      - name: NV family
-        items:
-        - name: Overview
-          displayName: NV-series, sizes, size, vm size
-          href: ./sizes/gpu-accelerated/nv-family.md
-        - name: NV series
-          href: ./sizes/gpu-accelerated/nv-series.md
-        - name: NV series retirement
-          href: nv-series-retirement.md
-        - name: NV series migration guide
-          href: nv-series-migration-guide.md
-        - name: NVv3 series
-          href: ./sizes/gpu-accelerated/nvv3-series.md
-        - name: NVv4 series
-          href: ./sizes/gpu-accelerated/nvv4-series.md
-        - name: NVadsA10_v5 series
-          href: ./sizes/gpu-accelerated/nvadsa10v5-series.md
-        - name: Nvads V710 v-5 series
-          href: ./sizes/gpu-accelerated/nvadsv710-v5-series.md
-      - name: Setup NVIDIA GPU drivers
-        items:
-        - name: Linux
-          displayName: NVIDIA GPU drivers, GPU drivers, GPU
-          href: ./linux/n-series-driver-setup.md
-        - name: Windows
-          displayName: NVIDIA GPU drivers, GPU drivers, GPU
-          href: ./windows/n-series-driver-setup.md
-      - name: Setup AMD GPU drivers
-        items:
-        - name: Linux
-          displayName: AMD GPU drivers, AMD, GPU drivers, GPU
-          href: ./linux/azure-n-series-amd-gpu-driver-linux-installation-guide.md
-        - name: Windows
-          displayName: AMD GPU drivers, AMD, GPU drivers, GPU
-          href: ./windows/n-series-amd-driver-setup.md
-      - name: GPU compute migration guide
-        displayName: GPU compute migration guide
-        href: ./n-series-migration.md
-    - name: FPGA - accelerated compute
-      items:
-      - name: Overview
-        displayName: FPGA, sizes, size, vm size
-        href: ./sizes/overview.md#fpga-accelerated
-      - name: NM family
-        items:
-        - name: NMads MA35D series
-        href: ./sizes/fpga-accelerated/nm-ads-ma35d-series.md
-      - name: NP family
-        items:
-        - name: Overview
-          displayName: NP-series, sizes, size, vm size
-          href: ./sizes/fpga-accelerated/np-family.md
-        - name: NP series
-          href: ./sizes/fpga-accelerated/np-series.md
-      - name: FPGA Attestation Service
-        href: field-programmable-gate-arrays-attestation.md
-    - name: High performance compute
-      items:
-      - name: Overview
-        displayName: HPC, sizes, size, vm size
-        href: ./sizes/overview.md#high-performance-compute
-      - name: HB family
-        items:
-        - name: HB series
-          items:
- #         - name: Overview
- #           href: hb-series-overview.md
- #         - name: HB series
- #           href: ./sizes/high-performance-compute/hb-series.md
- #         - name: Performance
- #           href: hb-series-performance.md
-          - name: HB series retirement
-            href: ./sizes/migration-guides/hb-series-retirement.md
-        - name: HBv2 series
-          items:
-          - name: Overview
-            href: hbv2-series-overview.md
-          - name: HBv2 series
-            href: ./sizes/high-performance-compute/hbv2-series.md
-          - name: Performance
-            href: hbv2-performance.md
-        - name: HBv3 series
-          items:
-          - name: Overview
-            href: hbv3-series-overview.md
-          - name: HBv3 series
-            href: ./sizes/high-performance-compute/hbv3-series.md
-          - name: Performance
-            href: hbv3-performance.md
-        - name: HBv4 series
-          items:
-          - name: Overview
-            href: hbv4-series-overview.md
-          - name: HBv4 series
-            href: ./sizes/high-performance-compute/hbv4-series.md
-          - name: Performance
-            href: hbv4-performance.md
-      - name: HC family
-        items:
-        - name: HC series
-          items:
-          - name: Overview
-            href: hc-series-overview.md
-          - name: HC series
-            href: ./sizes/high-performance-compute/hc-series.md
-          - name: Performance
-            href: hc-series-performance.md
-      - name: HX family
-        items:
-        - name: HX series
-          items:
-          - name: Overview
-            href: hx-series-overview.md
-          - name: HX series
-            href: ./sizes/high-performance-compute/hx-series.md
-          - name: Performance
-            href: hx-performance.md
-      - name: Set up Azure HPC or AI VMs
-        displayName: How to setup HPC/AI VMs
-        href: set-up-hpc-vms.md
-      - name: Set up InfiniBand
-        displayName: How to set up Infiniband
-        href: setup-infiniband.md  
-      - name: Configure and optimize VMs
-        displayName: Configure and optimize Infiniband enabled VMs
-        href: configure.md
-      - name: Azure HPC VM images
-        displayName: Azure HPC VM images
-        href: azure-hpc-vm-images.md
-      - name: HPC for HB-series and N-series VMs
-        href: overview-hb-hc.md
-      - name: Known issues with HB-series and N-series VMs
-        href: hb-hc-known-issues.md
-      - name: Set up MPI for HPC
-        href: setup-mpi.md
-      - name: Scaling HPC applications
-        href: compiling-scaling-applications.md
-    - name: Enable NVMe
-      items:
-      - name: NVMe Overview
-        href: nvme-overview.md
-      - name: Temp NVMe Disks FAQ
-        href: enable-nvme-temp-faqs.yml
-      - name: Remote NVMe Disks FAQ
-        href: enable-nvme-remote-faqs.yml
-      - name: OS Images Supported
-        href: enable-nvme-interface.md
-      - name: SCSI to NVMe for Linux VMs
-        href: nvme-linux.md
-    - name: Previous generation and retired sizes
-      items:
-      - name: Overview
-        href: ./sizes/retirement-overview.md
-      - name: Previous-gen sizes list
-        href: ./sizes/previous-gen-sizes-list.md
-      - name: Previous-gen size pages
-        items:
-        - name: A-family
-          items:
-          - name: Av1-series retirement
-            href: av1-series-retirement.md
-        - name: B-family
-          items:
-          - name: B series V1
-            href: ./sizes/general-purpose/bv1-series.md
-        - name: D-family
-          items:
-          - name: Dv3 series
-            href: ./sizes/general-purpose/dv3-series.md
-          - name: Dsv3 series
-            href: ./sizes/general-purpose/dsv3-series.md
-          - name: Dv2 series
-            href: ./sizes/general-purpose/dv2-series.md
-          - name: Dsv2 series
-            href: ./sizes/general-purpose/dsv2-series.md
-          - name: Dv2 and DSv2 series (11-15)
-            href: dv2-dsv2-series-memory.md
-        - name: E-family
-          items:
-          - name: Ev3 and Esv3 series
-            href: ev3-esv3-series.md
-        - name: L-family
-          items:
-          - name: Lsv2 series
-            href: ./sizes/storage-optimized/lsv2-series.md
-      - name: Retired sizes
-        href: ./sizes/retired-sizes-list.md
-    - name: Generation 2 VMs
-      displayName: Gen2, generation, gen1
-      href: generation-2.md
-    - name: Isolated sizes
-      displayName: isolated VM, sole-tenant, sole
-      href: isolation.md
-    - name: Benchmark scores
-      displayName: benchmark, coremark
-      items:
-      - name: Linux
-        href: ./linux/compute-benchmark-scores.md
-      - name: Windows
-        href: ./windows/compute-benchmark-scores.md
-    - name: Virtual machines selector tool
-      href: https://aka.ms/vm-selector
-    - name: States and billing
-      href: states-billing.md
-    - name: vCPU quotas
-      displayName: vCPU, quota, limit
-      href: quotas.md
-    - name: Constrained vCPUs
-      href: constrained-vcpu.md
-    - name: Azure VMs with no temp disk
-      href: azure-vms-no-temp-disk.yml
-    - name: Azure VM sizes naming conventions
-      href: vm-naming-conventions.md
+   - name: Overview
+     displayName: Sizes, sizing, resize, ACU, compute
+     href: ./sizes/overview.md
+   - name: Azure VM sizes naming conventions
+     href: vm-naming-conventions.md
+   - name: Virtual machines selector tool
+     href: https://aka.ms/vm-selector
+   - name: Change the size of a VM
+     href: ./sizes/resize-vm.md
+   - name: Cobalt VMs
+     href: ./sizes/cobalt-overview.md
+   - name: General purpose
+     items:
+     - name: Overview
+       displayName: general purpose, sizes, size, vm size
+       href: ./sizes/overview.md#general-purpose
+     - name: A family
+       items:
+       - name: Overview
+         displayName: A-series, sizes, size, vm size
+         href: ./sizes/general-purpose/a-family.md
+       - name: Av2-series
+         href: ./sizes/general-purpose/av2-series.md
+     - name: B family (burstable)
+       items:
+       - name: Overview
+         displayName: B-series, sizes, size, vm size
+         href: ./sizes/general-purpose/b-family.md
+       - name: B-series CPU Credit Model
+         href: ./sizes/b-series-cpu-credit-model.md
+       - name: Bsv2 series
+         href: ./sizes/general-purpose/bsv2-series.md
+       - name: Basv2 series
+         href: ./sizes/general-purpose/basv2-series.md
+       - name: Bpsv2 series
+         href: ./sizes/general-purpose/bpsv2-series.md
+     - name: D family
+       items:
+       - name: Overview
+         displayName: D-series, sizes, size, vm size
+         href: ./sizes/general-purpose/d-family.md
+       - name: Dasv7 series
+         href: ./sizes/general-purpose/dasv7-series.md
+       - name: Dadsv7 series
+         href: ./sizes/general-purpose/dadsv7-series.md
+       - name: Dalsv7 series
+         href: ./sizes/general-purpose/dalsv7-series.md
+       - name: Daldsv7 series
+         href: ./sizes/general-purpose/daldsv7-series.md
+       - name: Dsv6 series
+         href: ./sizes/general-purpose/dsv6-series.md
+       - name: Ddsv6 series
+         href: ./sizes/general-purpose/ddsv6-series.md
+       - name: Dlsv6 series
+         href: ./sizes/general-purpose/dlsv6-series.md
+       - name: Dldsv6 series
+         href: ./sizes/general-purpose/dldsv6-series.md
+       - name: Dasv6 series
+         href: ./sizes/general-purpose/dasv6-series.md
+       - name: Dadsv6 series
+         href: ./sizes/general-purpose/dadsv6-series.md
+       - name: Dalsv6 series
+         href: ./sizes/general-purpose/dalsv6-series.md
+       - name: Daldsv6 series
+         href: ./sizes/general-purpose/daldsv6-series.md
+       - name: Dpsv6 series
+         href: ./sizes/general-purpose/dpsv6-series.md
+       - name: Dpdsv6 series
+         href: ./sizes/general-purpose/dpdsv6-series.md
+       - name: Dplsv6 series
+         href: ./sizes/general-purpose/dplsv6-series.md
+       - name: Dpldsv6 series
+         href: ./sizes/general-purpose/dpldsv6-series.md
+       - name: Dv5 series
+         href: ./sizes/general-purpose/dv5-series.md
+       - name: Dsv5 series
+         href: ./sizes/general-purpose/dsv5-series.md
+       - name: Ddv5 series
+         href: ./sizes/general-purpose/ddv5-series.md
+       - name: Ddsv5 series
+         href: ./sizes/general-purpose/ddsv5-series.md
+       - name: Dasv5 series
+         href: ./sizes/general-purpose/dasv5-series.md
+       - name: Dadsv5 series
+         href: ./sizes/general-purpose/dadsv5-series.md
+       - name: Dpsv5 series
+         href: ./sizes/general-purpose/dpsv5-series.md
+       - name: Dpdsv5 series
+         href: ./sizes/general-purpose/dpdsv5-series.md
+       - name: Dplsv5 series
+         href: ./sizes/general-purpose/dplsv5-series.md
+       - name: Dpldsv5 series
+         href: ./sizes/general-purpose/dpldsv5-series.md
+       - name: Dlsv5 series
+         href: ./sizes/general-purpose/dlsv5-series.md
+       - name: Dldsv5 series
+         href: ./sizes/general-purpose/dldsv5-series.md
+       - name: Dnsv6 series
+         href: ./sizes/memory-optimized/dnsv6-series.md
+       - name: Dndsv6 series
+         href: ./sizes/memory-optimized/dndsv6-series.md
+       - name: Dnlsv6 series
+         href: ./sizes/memory-optimized/dnlsv6-series.md
+       - name: Dnldsv6 series
+         href: ./sizes/memory-optimized/dnldsv6-series.md
+       - name: Dv4 series
+         href: ./sizes/general-purpose/dv4-series.md
+       - name: Dsv4 series
+         href: ./sizes/general-purpose/dsv4-series.md
+       - name: Dav4 series
+         href: ./sizes/general-purpose/dav4-series.md
+       - name: Dasv4 series
+         href: ./sizes/general-purpose/dasv4-series.md
+       - name: Ddv4 series
+         href: ./sizes/general-purpose/ddv4-series.md
+       - name: Ddsv4 series
+         href: ./sizes/general-purpose/ddsv4-series.md
+     - name: DC family (confidential)
+       items:
+       - name: Overview
+         displayName: DC-series, sizes, size, vm size
+         href: ./sizes/general-purpose/dc-family.md
+       - name: DCasv5 series
+         href: ./sizes/general-purpose/dcasv5-series.md
+       - name: DCadsv5 series
+         href: ./sizes/general-purpose/dcadsv5-series.md
+       - name: DCasv6 series
+         href: ./sizes/general-purpose/dcasv6-series.md
+       - name: DCadsv6 series
+         href: ./sizes/general-purpose/dcadsv6-series.md
+       - name: DCesv6 series
+         href: ./sizes/general-purpose/dcesv6-series.md
+       - name: DCas_cc_v5 series
+         href: ./sizes/general-purpose/dcasccv5-series.md
+       - name: DCads_cc_v5 series
+         href: ./sizes/general-purpose/dcadsccv5-series.md
+       - name: DCsv3 series
+         href: ./sizes/general-purpose/dcsv3-series.md
+       - name: DCdsv3 series
+         href: ./sizes/general-purpose/dcdsv3-series.md
+       - name: DCsv2 series
+         href: ./sizes/general-purpose/dcsv2-series.md
+   - name: Compute optimized
+     items:
+     - name: Overview
+       displayName: compute optimized, sizes, size, vm size
+       href: ./sizes/overview.md#compute-optimized
+     - name: F family
+       items:
+       - name: Overview
+         displayName: F-series, sizes, size, vm size
+         href: ./sizes/compute-optimized/f-family.md
+       - name: Fasv7 series
+         href: ./sizes/compute-optimized/fasv7-series.md
+       - name: Fadsv7 series
+         href: ./sizes/compute-optimized/fadsv7-series.md
+       - name: Famsv7 series
+         href: ./sizes/compute-optimized/famsv7-series.md
+       - name: Famdsv7 series
+         href: ./sizes/compute-optimized/famdsv7-series.md
+       - name: Falsv7 series
+         href: ./sizes/compute-optimized/falsv7-series.md
+       - name: Faldsv7 series
+         href: ./sizes/compute-optimized/faldsv7-series.md
+       - name: Fasv6-series
+         href: ./sizes/compute-optimized/fasv6-series.md
+       - name: Falsv6 series
+         href: ./sizes/compute-optimized/falsv6-series.md
+       - name: Famsv6 series
+         href: ./sizes/compute-optimized/famsv6-series.md
+       - name: Fsv2 series
+         href: ./sizes/compute-optimized/fsv2-series.md
+     - name: FX family
+       items:
+       - name: Overview
+         displayName: FX-series, sizes, size, vm size
+         href: ./sizes/compute-optimized/fx-family.md
+       - name: FXmsv2 series
+         href: ./sizes/compute-optimized/fxmsv2-series.md
+       - name: FXmdsv2 series
+         href: ./sizes/compute-optimized/fxmdsv2-series.md
+       - name: FX series
+         href: fx-series.md
+   - name: Memory optimized
+     items:
+     - name: Overview
+       displayName: memory optimized, sizes, size, vm size, memory
+       href: ./sizes/overview.md#memory-optimized
+     - name: E family
+       items:
+       - name: Overview
+         displayName: E-series, sizes, size, vm size
+         href: ./sizes/memory-optimized/e-family.md
+       - name: Easv7 series
+         href: ./sizes/memory-optimized/easv7-series.md
+       - name: Eadsv7 series
+         href: ./sizes/memory-optimized/eadsv7-series.md
+       - name: Esv6 series
+         href: ./sizes/memory-optimized/esv6-series.md
+       - name: Edsv6 series
+         href: ./sizes/memory-optimized/edsv6-series.md
+       - name: Epsv6 series
+         href: ./sizes/memory-optimized/epsv6-series.md
+       - name: Epdsv6 series
+         href: ./sizes/memory-optimized/epdsv6-series.md
+       - name: Easv6 series
+         href: ./sizes/memory-optimized/easv6-series.md
+       - name: Eadsv6 series
+         href: ./sizes/memory-optimized/eadsv6-series.md
+       - name: Ev5 series
+         href: ./sizes/memory-optimized/ev5-series.md
+       - name: Esv5 series
+         href: ./sizes/memory-optimized/esv5-series.md
+       - name: Edv5 series
+         href: ./sizes/memory-optimized/edv5-series.md
+       - name: Edsv5 series
+         href: ./sizes/memory-optimized/edsv5-series.md
+       - name: Easv5 series
+         href: ./sizes/memory-optimized/easv5-series.md
+       - name: Eadsv5 series
+         href: ./sizes/memory-optimized/eadsv5-series.md
+       - name: Ensv6 series
+         href: ./sizes/memory-optimized/ensv6-series.md
+       - name: Endsv6 series
+         href: ./sizes/memory-optimized/endsv6-series.md
+       - name: Epsv5 series
+         href: ./sizes/memory-optimized/epsv5-series.md
+       - name: Epdsv5 series
+         href: ./sizes/memory-optimized/epdsv5-series.md
+       - name: Edv4 series
+         href: ./sizes/memory-optimized/edv4-series.md
+       - name: Edsv4 series
+         href: ./sizes/memory-optimized/edsv4-series.md
+       - name: Eav4 series
+         href: ./sizes/memory-optimized/eav4-series.md
+       - name: Easv4 series
+         href: ./sizes/memory-optimized/easv4-series.md
+       - name: Ev4 series
+         href: ./sizes/memory-optimized/ev4-series.md
+       - name: Esv4 series
+         href: ./sizes/memory-optimized/esv4-series.md
+     - name: Eb family
+       items:
+       - name: Overview
+         displayName: Eb-series, sizes, size, vm size
+         href: ./sizes/memory-optimized/eb-family.md
+       - name: Ebsv6 series
+         href: ./sizes/memory-optimized/ebsv6-series.md
+       - name: Ebdsv6 series
+         href: ./sizes/memory-optimized/ebdsv6-series.md
+       - name: Ebdsv5 and Ebsv5 series
+         href: ebdsv5-ebsv5-series.md
+     - name: EC family (confidential)
+       items:
+       - name: Overview
+         displayName: EC-series, sizes, size, vm size
+         href: ./sizes/memory-optimized/ec-family.md
+       - name: ECasv5 and ECadsv5 series
+         href: ecasv5-ecadsv5-series.md
+       - name: ECasv6 series
+         href: ./sizes/memory-optimized/ecasv6-series.md
+       - name: ECadsv6 series
+         href: ./sizes/memory-optimized/ecadsv6-series.md
+       - name: ECesv6 series
+         href: ecesv5-ecedsv5-series.md
+       - name: ECas_cc_v5 and ECads_cc_v5 series
+         href: ecasccv5-ecadsccv5-series.md
+     - name: M family
+       items:
+       - name: Overview
+         displayName: M-series, sizes, size, vm size
+         href: ./sizes/memory-optimized/m-family.md
+       - name: Medium Memory
+         items:
+         - name: Mdsv3 Medium Memory series
+           href: ./sizes/memory-optimized/mdsv3-mm-series.md
+         - name: Msv3 Medium Memory series
+           href: ./sizes/memory-optimized/msv3-mm-series.md
+         - name: Msv2 Medium Memory series
+           href: ./sizes/memory-optimized/msv2-mm-series.md
+         - name: Mdsv2 Medium Memory series
+           href: ./sizes/memory-optimized/mdsv2-mm-series.md
+         - name: M series
+           href: ./sizes/memory-optimized/m-series.md
+       - name: High Memory
+         items:
+         - name: Msv3 High Memory series
+           href: ./sizes/memory-optimized/msv3-hm-series.md
+         - name: Mdsv3 High Memory series
+           href: ./sizes/memory-optimized/mdsv3-hm-series.md
+         - name: Msv2 High Memory series
+           href: ./sizes/memory-optimized/mv2-series.md
+       - name: Very High Memory
+         items:
+         - name: Mdsv3 Very High Memory Series
+           href: ./sizes/memory-optimized/mdsv3-vhm-series.md
+       - name: Mb family
+         items:
+         - name: Mbsv3 series
+           href: ./sizes/memory-optimized/mbsv3-series.md
+         - name: Mbdsv3 series
+           href: ./sizes/memory-optimized/mbdsv3-series.md
+       - name: Retirement Migration guides
+         items:
+         - name: Msv2 and Mdsv2 migration guide
+           href: ./sizes/retirement/msv2-mdsv2-retirement.md
+   - name: Storage optimized
+     items:
+     - name: Overview
+       displayName: storage optimized, sizes, size, vm size
+       href: ./sizes/overview.md#storage-optimized
+     - name: L family
+       items:
+       - name: Overview
+         displayName: L-series, sizes, size, vm size
+         href: ./sizes/storage-optimized/l-family.md
+       - name: Laosv4 series
+         href: ./sizes/storage-optimized/laosv4-series.md
+       - name: Lasv4 series
+         href: ./sizes/storage-optimized/lasv4-series.md
+       - name: Lsv4 series
+         href: ./sizes/storage-optimized/lsv4-series.md
+       - name: Lsv3 series
+         href: ./sizes/storage-optimized/lsv3-series.md
+       - name: Lasv3 series
+         href: ./sizes/storage-optimized/lasv3-series.md
+     - name: Optimize storage performance
+       items:
+       - name: Linux
+         displayName: performance, Linux, storage performance
+         href: ./linux/storage-performance.md
+       - name: Windows
+         displayName: performance, Windows, storage performance
+         href: ./windows/storage-performance.md
+   - name: GPU - accelerated compute
+     items:
+     - name: Overview
+       displayName: GPU, sizes, size, vm size
+       href: ./sizes/overview.md#gpu-accelerated
+     - name: NC family
+       items:
+       - name: Overview
+         displayName: NC-series, sizes, size, vm size
+         href: ./sizes/gpu-accelerated/nc-family.md
+       - name: NC series retirement
+         href: nc-series-retirement.md
+       - name: NCads_H100_v5 series
+         href: ./sizes/gpu-accelerated/ncadsh100v5-series.md
+       - name: NCCads_H100_v5 series
+         href: ./sizes/gpu-accelerated/nccadsh100v5-series.md
+       - name: Ncv3 Nc24rs retirement
+         href: ncv3-nc24rs-retirement.md
+       - name: Ncv3 series retirement
+         href: ncv3-retirement.md
+       - name: NCasT4_v3 series
+         href: ./sizes/gpu-accelerated/ncast4v3-series.md
+       - name: NC_A100_v4 series
+         href: ./sizes/gpu-accelerated/nca100v4-series.md
+       - name: NC_RTXPRO6000BSE_v6 series
+         href: ./sizes/gpu-accelerated/nc-rtxpro6000-bse-v6-series.md
+     - name: ND family
+       items:
+       - name: Overview
+         displayName: ND-series, sizes, size, vm size
+         href: ./sizes/gpu-accelerated/nd-family.md
+       - name: NDasrA100_v4 series
+         href: ./sizes/gpu-accelerated/ndasra100v4-series.md
+       - name: NDm_A100_v4 series
+         href: ./sizes/gpu-accelerated/ndma100v4-series.md
+       - name: ND series
+         href: ./sizes/gpu-accelerated/nd-series.md
+       - name: ND series retirement
+         href: ./sizes/retirement/nd-series-retirement.md
+       - name: NDv2 series
+         href: ./sizes/gpu-accelerated/ndv2-series.md
+       - name: ND-GB200-v6 series
+         href: ./sizes/gpu-accelerated/nd-gb200-v6-series.md
+       - name: ND-GB300-v6 series
+         href: ./sizes/gpu-accelerated/nd-gb300-v6-series.md
+       - name: ND-H100-v5 series
+         href: ./sizes/gpu-accelerated/ndh100v5-series.md
+       - name: ND-H200-v5 series
+         href: ./sizes/gpu-accelerated/nd-h200-v5-series.md
+       - name: ND-MI300X-v5 series
+         href: ./sizes/gpu-accelerated/ndmi300xv5-series.md
+     - name: NG family
+       items:
+       - name: Overview
+         displayName: NG-series, sizes, size, vm size
+         href: ./sizes/gpu-accelerated/ng-family.md
+       - name: NGads V620 series
+         href: ./sizes/gpu-accelerated/ngadsv620-series.md
+     - name: NV family
+       items:
+       - name: Overview
+         displayName: NV-series, sizes, size, vm size
+         href: ./sizes/gpu-accelerated/nv-family.md
+       - name: NV series
+         href: ./sizes/gpu-accelerated/nv-series.md
+       - name: NV series retirement
+         href: ./sizes/retirement/nv-series-retirement.md
+       - name: NV series migration guide
+         href: nv-series-migration-guide.md
+       - name: NVv3 series
+         href: ./sizes/gpu-accelerated/nvv3-series.md
+       - name: NVv3 series retirement
+         href: ./sizes/gpu-accelerated/nvv3-series-retirement.md
+       - name: NVv4 series
+         href: ./sizes/gpu-accelerated/nvv4-series.md
+       - name: NVv4 series retirement
+         href: ./sizes/gpu-accelerated/nvv4-retirement.md
+       - name: NVadsA10_v5 series
+         href: ./sizes/gpu-accelerated/nvadsa10v5-series.md
+       - name: Nvads V710 v5-series
+         href: ./sizes/gpu-accelerated/nvadsv710-v5-series.md
+     - name: Setup NVIDIA GPU drivers
+       items:
+       - name: Linux
+         displayName: NVIDIA GPU drivers, GPU drivers, GPU
+         href: ./linux/n-series-driver-setup.md
+       - name: Windows
+         displayName: NVIDIA GPU drivers, GPU drivers, GPU
+         href: ./windows/n-series-driver-setup.md
+     - name: Setup AMD GPU drivers
+       items:
+       - name: Linux
+         displayName: AMD GPU drivers, AMD, GPU drivers, GPU
+         href: ./linux/azure-n-series-amd-gpu-driver-linux-installation-guide.md
+       - name: Windows
+         displayName: AMD GPU drivers, AMD, GPU drivers, GPU
+         href: ./windows/n-series-amd-driver-setup.md
+     - name: GPU compute migration guide
+       displayName: GPU compute migration guide
+       href: ./migration/sizes/n-series-migration.md
+   - name: FPGA - accelerated compute
+     items:
+     - name: Overview
+       displayName: FPGA, sizes, size, vm size
+       href: ./sizes/overview.md#fpga-accelerated
+     - name: NM family
+       href: ./sizes/fpga-accelerated/nm-ads-ma35d-series.md
+       items:
+       - name: NMads MA35D series
+     - name: NP family
+       items:
+       - name: Overview
+         displayName: NP-series, sizes, size, vm size
+         href: ./sizes/fpga-accelerated/np-family.md
+       - name: NP series
+         href: ./sizes/fpga-accelerated/np-series.md
+     - name: FPGA Attestation Service
+       href: field-programmable-gate-arrays-attestation.md
+   - name: High performance compute
+     items:
+     - name: Overview
+       displayName: HPC, sizes, size, vm size
+       href: ./sizes/overview.md#high-performance-compute
+     - name: HB family
+       items:
+       - name: Overview
+         displayName: HB-series, sizes, size, vm size
+         href: ./sizes/high-performance-compute/hb-family.md
+       - name: HBv2 series
+         items:
+         - name: Overview
+           href: hbv2-series-overview.md
+         - name: HBv2 series
+           href: ./sizes/high-performance-compute/hbv2-series.md
+         - name: Performance
+           href: hbv2-performance.md
+       - name: HBv3 series
+         items:
+         - name: Overview
+           href: hbv3-series-overview.md
+         - name: HBv3 series
+           href: ./sizes/high-performance-compute/hbv3-series.md
+         - name: Performance
+           href: hbv3-performance.md
+       - name: HBv4 series
+         items:
+         - name: Overview
+           href: hbv4-series-overview.md
+         - name: HBv4 series
+           href: ./sizes/high-performance-compute/hbv4-series.md
+         - name: Performance
+           href: hbv4-performance.md
+       - name: HBv5 series
+         items:
+         - name: Overview
+           href: hbv5-series-overview.md
+         - name: HBv5 series
+           href: ./sizes/high-performance-compute/hbv5-series.md
+         - name: Performance
+           href: hbv5-performance.md
+     - name: HC family
+       items:
+       - name: Overview
+         displayName: Hc-series, sizes, size, vm size
+         href: ./sizes/high-performance-compute/hc-family.md       
+       - name: HC series
+         items:
+         - name: Overview
+           href: hc-series-overview.md
+         - name: HC series
+           href: ./sizes/high-performance-compute/hc-series.md
+         - name: Performance
+           href: hc-series-performance.md
+     - name: HX family
+       items:
+       - name: Overview
+         displayName: HX-series, sizes, size, vm size
+         href: ./sizes/high-performance-compute/hx-family.md       
+       - name: HX series
+         items:
+         - name: Overview
+           href: hx-series-overview.md
+         - name: HX series
+           href: ./sizes/high-performance-compute/hx-series.md
+         - name: Performance
+           href: hx-performance.md
+     - name: Set up Azure HPC or AI VMs
+       displayName: How to setup HPC/AI VMs
+       href: set-up-hpc-vms.md
+     - name: Set up InfiniBand
+       displayName: How to set up Infiniband
+       href: setup-infiniband.md
+     - name: Configure and optimize VMs
+       displayName: Configure and optimize Infiniband enabled VMs
+       href: configure.md
+     - name: Azure HPC VM images
+       displayName: Azure HPC VM images
+       href: azure-hpc-vm-images.md
+     - name: HPC for HB-series and N-series VMs
+       href: overview-hb-hc.md
+     - name: Known issues with HB-series and N-series VMs
+       href: hb-hc-known-issues.md
+     - name: Set up MPI for HPC
+       href: setup-mpi.md
+     - name: Scaling HPC applications
+       href: compiling-scaling-applications.md
+   - name: Enable NVMe
+     items:
+     - name: NVMe Overview
+       href: nvme-overview.md
+     - name: Temp NVMe Disks FAQ
+       href: enable-nvme-temp-faqs.yml
+     - name: Remote NVMe Disks FAQ
+       href: enable-nvme-remote-faqs.yml
+     - name: OS Images Supported
+       href: enable-nvme-interface.md
+     - name: SCSI to NVMe for Linux VMs
+       href: nvme-linux.md
+   - name: Previous generation and retired sizes
+     items:
+     - name: Overview
+       href: ./sizes/retirement/retirement-overview.md
+     - name: Previous-gen sizes list
+       href: ./sizes/previous-gen-sizes-list.md
+     - name: Previous-gen size pages
+       items:
+       - name: A-family
+         items:
+         - name: Av1-series retirement
+           href: ./sizes/retirement/av1-series-retirement.md
+       - name: B-family
+         items:
+         - name: B series V1
+           href: ./sizes/general-purpose/bv1-series.md
+       - name: D-family
+         items:
+         - name: Dv3 series
+           href: ./sizes/general-purpose/dv3-series.md
+         - name: Dsv3 series
+           href: ./sizes/general-purpose/dsv3-series.md
+         - name: Dv2 series
+           href: ./sizes/general-purpose/dv2-series.md
+         - name: Dsv2 series
+           href: ./sizes/general-purpose/dsv2-series.md
+         - name: Dv2 and DSv2 series (11-15)
+           href: dv2-dsv2-series-memory.md
+       - name: E-family
+         items:
+         - name: Ev3 and Esv3 series
+           href: ev3-esv3-series.md
+       - name: L-family
+         items:
+         - name: Lsv2 series
+           href: ./sizes/storage-optimized/lsv2-series.md
+       - name: DC-family
+         items:
+         - name: DCsv2 series
+           href: ./sizes/retirement/dcsv2-series-retirement.md
+     - name: Retired sizes
+       href: ./sizes/retirement/retired-sizes-list.md
+   - name: Generation 2 VMs
+     displayName: Gen2, generation, gen1
+     href: generation-2.md
+   - name: Isolated sizes
+     displayName: isolated VM, sole-tenant, sole
+     href: isolation.md
+   - name: Benchmark scores
+     displayName: benchmark, coremark
+     items:
+     - name: Linux
+       href: ./linux/compute-benchmark-scores.md
+     - name: Windows
+       href: ./windows/compute-benchmark-scores.md
+   - name: States and billing
+     href: states-billing.md
+   - name: vCPU quotas
+     displayName: vCPU, quota, limit
+     href: quotas.md
+   - name: Constrained vCPUs
+     href: constrained-vcpu.md
+   - name: VM Customization
+     href: vm-customization.md
+   - name: Azure VMs with no temp disk
+     href: azure-vms-no-temp-disk.yml
+- name: Instances
+  items:  
   - name: Azure Compute Gallery
     items:
     - name: Overview
@@ -719,6 +809,8 @@
     - name: Create a gallery
       displayName: Shared Image Gallery, SIG, sig, gallery, image
       href: create-gallery.md
+    - name: Soft delete a gallery
+      href: soft-delete-gallery.md
     - name: Share a gallery
       items:
       - name: RBAC
@@ -765,8 +857,8 @@
         displayName: SSE, CMK, encrypt
         href: image-version-encryption.md
       - name: Export an image to a managed disk
-        href: managed-disk-from-image-version.md
         displayName: export, image version, disk, SIG, gallery
+        href: managed-disk-from-image-version.md
       - name: Migrate Managed image to Compute gallery
         href: migration-managed-image-to-compute-gallery.md
       - name: Purchase plan information
@@ -777,8 +869,10 @@
       items:
       - name: Overview
         href: vm-applications.md
-      - name: Deploy VM Applications
+      - name: Create & Deploy VM Applications
         href: vm-applications-how-to.md
+      - name: Manage VM Applications
+        href: vm-applications-manage.md
   - name: Images
     items:
     - name: Find Azure Marketplace images
@@ -796,7 +890,7 @@
         displayName: MTHR, multi-tenant, multitenant, hosting, rights, windows 10, windows 11, find
         href: ./windows/windows-desktop-multitenant-hosting-deployment.md
     - name: Generalizing a VM
-      displayName: generalize sysprep deprovision 
+      displayName: generalize sysprep deprovision
       href: generalize.yml
     - name: Linux custom images
       items:
@@ -844,26 +938,26 @@
         - name: Cloud-init overview
           href: ./linux/using-cloud-init.md
         - name: Deep dive
+          displayName: cloud-init
           href: ./linux/cloud-init-deep-dive.md
-          displayName: cloud-init
         - name: Troubleshooting
+          displayName: cloud-init
           href: ./linux/cloud-init-troubleshooting.md
-          displayName: cloud-init
         - name: Configure VM hostname
+          displayName: cloud-init
           href: ./linux/cloudinit-update-vm-hostname.md
-          displayName: cloud-init
         - name: Update packages in a VM
+          displayName: cloud-init
           href: ./linux/cloudinit-update-vm.md
-          displayName: cloud-init
         - name: Add a user on a VM
+          displayName: cloud-init
           href: ./linux/cloudinit-add-user.md
-          displayName: cloud-init
         - name: Configure swapfile
+          displayName: cloud-init
           href: ./linux/cloudinit-configure-swapfile.md
-          displayName: cloud-init
         - name: Run existing bash script
-          href: ./linux/cloudinit-bash-script.md
           displayName: cloud-init
+          href: ./linux/cloudinit-bash-script.md
       - name: Create Linux images without a provisioning agent
         href: ./linux/no-agent.md
       - name: Disable Linux Agent provisioning
@@ -1004,7 +1098,7 @@
       href: dedicated-host-gpu-optimized-skus.md
     - name: Dedicated Host SKU Retirement
       displayName: dedicated, dedicated host, retirement
-      href: dedicated-host-retirement.md
+      href: ./sizes/retirement/dedicated-host-retirement.md
     - name: Dedicated Host SKU Migration
       displayName: dedicated, dedicated host, retirement, migration
       href: ./sizes/migration-guides/dedicated-host-migration-guide.md
@@ -1027,7 +1121,7 @@
       href: ./linux/spot-template.md
     - name: Spot Priority Mix
       href: /azure/virtual-machine-scale-sets/spot-priority-mix?toc=/azure/virtual-machines/toc.json
-    - name: Spot Placement Score (Preview)
+    - name: Spot Placement Score
       href: /azure/virtual-machine-scale-sets/spot-placement-score?toc=/azure/virtual-machines/toc.json
     - name: VM size recommendation
       href: /azure/virtual-machine-scale-sets/spot-vm-size-recommendation?toc=/azure/virtual-machines/toc.json
@@ -1040,7 +1134,7 @@
       maintainContext: true
   - name: Azure Boost
     displayName: Boost, Azure Boost, boost vm, boost virtual machine
-    href: /azure/azure-boost/overview
+    href: /azure/azure-boost/overview?toc=/azure/virtual-machines/toc.json&bc=/azure/virtual-machines/breadcrumb/toc.json
   - name: Azure Hybrid Benefit
     items:
     - name: Linux
@@ -1077,6 +1171,8 @@
     - name: Modify a capacity reservation
       displayName: on-demand capacity reservation
       href: capacity-reservation-modify.md
+    - name: Share a capacity reservation group
+      href: capacity-reservation-group-share.md
     - name: Associate a VM
       displayName: on-demand capacity reservation
       href: capacity-reservation-associate-vm.md
@@ -1125,24 +1221,29 @@
     - name: Create from an existing OS disk or VHD
       displayName: attach
       href: attach-os-disk.md
-  - name: Auto-shutdown a VM
-    href: auto-shutdown-vm.md
-  - name: Hibernating Virtual Machines
+  - name: Power states
+    displayName: Power, Shutdown, Hibernate, Stop, Sleep, Auto-shutdown, Reset
     items:
+    - name: Understand VM reboots
+      href: understand-vm-reboots.md
+    - name: Auto-shutdown a VM
+      href: auto-shutdown-vm.md
+    - name: Hibernate a VM
+      items:
       - name: Overview
         href: hibernate-resume.md
       - name: Hibernate Linux VMs
         href: ./linux/hibernate-resume-linux.md
       - name: Hibernate Windows VMs
-        href: ./windows/hibernate-resume-windows.md          
+        href: ./windows/hibernate-resume-windows.md
       - name: Troubleshoot VM hibernation
         items:
-          - name: General hibernation troubleshooting
-            href: hibernate-resume-troubleshooting.md
-          - name: Linux VM hibernation troubleshooting
-            href: ./linux/hibernate-resume-troubleshooting-linux.md
-          - name: Windows VM hibernation troubleshooting
-            href: ./windows/hibernate-resume-troubleshooting-windows.md   
+        - name: General hibernation troubleshooting
+          href: hibernate-resume-troubleshooting.md
+        - name: Linux VM hibernation troubleshooting
+          href: ./linux/hibernate-resume-troubleshooting-linux.md
+        - name: Windows VM hibernation troubleshooting
+          href: ./windows/hibernate-resume-troubleshooting-windows.md
   - name: Delete a VM and its resources
     href: delete.md
   - name: Connect to Virtual Machines
@@ -1206,6 +1307,8 @@
         href: ./extensions/features-linux.md
       - name: Linux VM Agent
         href: ./extensions/agent-linux.md
+      - name: Enable FIPS 140-3 on Linux VM Agent
+        href: ./extensions/agent-linux-fips.md
     - name: Windows
       items:
       - name: Windows features
@@ -1291,6 +1394,9 @@
       - name: Windows
         displayName: AMD GPU Drivers, AMD, GPU, drivers
         href: ./extensions/hpccompute-amd-gpu-windows.md
+      - name: Linux
+        displayName: AMD GPU Drivers, AMD, GPU, drivers
+        href: ./extensions/hpccompute-amd-gpu-linux.md
     - name: Azure Monitor
       items:
       - name: Azure Monitor agent
@@ -1308,13 +1414,6 @@
       - name: Legacy extensions
         items:
         - name: Log Analytics
-          items:
-          - name: Linux
-            displayName: Log Analytics, extension
-            href: ./extensions/oms-linux.md
-          - name: Windows
-            displayName: Log Analytics, extension
-            href: ./extensions/oms-windows.md
     - name: PowerShell DSC
       href: ./extensions/dsc-overview.md
       items:
@@ -1329,10 +1428,14 @@
         href: ./extensions/dsc-template.md
     - name: VMAccess for Linux
       href: ./extensions/vmaccess-linux.md
+    - name: VMAccess for Windows
+      href: ./extensions/vmaccess-windows.md
     - name: Third-party extensions
       items:
       - name: Chef
         href: ./extensions/chef.md
+      - name: Qualys
+        href: ./extensions/qualys.md
       - name: Salt Minion
         href: ./extensions/salt-minion.md
       - name: Stackify Retrace
@@ -1355,36 +1458,7 @@
       href: ./extensions/issues-using-vm-extensions-python-3.md
   - name: Nested virtualization
     href: /virtualization/hyper-v-on-windows/user-guide/nested-virtualization
-  - name: Migrate to Azure Resource Manager
-    items:
-    - name: Retirement starting September 6, 2023
-      displayName: classic, migration, classic to ARM, CSES, Cloud Services
-      href: classic-vm-deprecation.md
-    - name: Migration Overview
-      displayName: classic, migration, classic to ARM, CSES, Cloud Services
-      href: migration-classic-resource-manager-overview.md
-    - name: Deep dive on migration
-      displayName: classic, migration, classic to ARM, CSES, Cloud Services
-      href: migration-classic-resource-manager-deep-dive.md
-    - name: Plan for migration
-      displayName: classic, migration, classic to ARM, CSES, Cloud Services
-      href: migration-classic-resource-manager-plan.md
-    - name: Migrate using the CLI
-      displayName: classic, migration, classic to ARM, CSES, Cloud Services
-      href: migration-classic-resource-manager-cli.md
-    - name: Migrate using PowerShell
-      displayName: classic, migration, classic to ARM, CSES, Cloud Services
-      href: migration-classic-resource-manager-ps.md
-    - name: Common migration errors
-      displayName: classic, migration, classic to ARM, CSES, Cloud Services
-      href: migration-classic-resource-manager-errors.md
-    - name: Community tools for migration
-      displayName: classic, migration, classic to ARM, CSES, Cloud Services
-      href: migration-classic-resource-manager-community-tools.md
-    - name: FAQ
-      displayName: classic, migration, classic to ARM, CSES, Cloud Services
-      href: migration-classic-resource-manager-faq.yml
-  - name: Estimated VM cost card in Portal (Preview) 
+  - name: Estimated VM cost card in Portal (Preview)
     href: estimated-vm-create-cost-card.md
 - name: Availability and scale
   items:
@@ -1447,8 +1521,6 @@
     - name: Portal
       displayName: proximity placement groups, ppg
       href: ./windows/proximity-placement-groups-portal.md
-  - name: Understand VM reboots
-    href: understand-vm-reboots.md
   - name: Compute throttling limits
     href: compute-throttling-limits.md
   - name: Azure Regions
@@ -1461,6 +1533,9 @@
     - name: Change an availability set
       displayName: availability and scale, availability, scale, autoscale, availability sets, AV sets
       href: ./windows/change-availability-set.yml
+    - name: Availability set support for Premium SSD v2
+      displayName: availability and scale, availability, scale, autoscale, availability sets, AV sets
+      href: use-premium-ssd-v2-with-availability-set.md
 - name: Disks
   items:
   - name: Overview
@@ -1477,8 +1552,8 @@
   - name: Deploy an ultra disk
     href: disks-enable-ultra-ssd.md
   - name: Deploy a premium SSD v2
-    href: disks-deploy-premium-v2.md
     displayName: Performance, cost, perf, disks, disk
+    href: disks-deploy-premium-v2.md
   - name: Deploy a ZRS disk
     href: disks-deploy-zrs.md
   - name: Best practices for achieving high availability
@@ -1493,36 +1568,38 @@
     items:
     - name: Disk encryption overview
       href: disk-encryption-overview.md
+    - name: Migrate from Azure Disk Encryption to encryption at host
+      href: disk-encryption-migrate.md
     - name: Server-side encryption
       items:
       - name: Server-side encryption overview
-        href: disk-encryption.md
         displayName: Server side encryption, encryption, ADE
+        href: disk-encryption.md
       - name: Enable customer-managed keys
         items:
         - name: Portal
           href: disks-enable-customer-managed-keys-portal.yml
           displayname: Server side encryption, encryption, ADE
         - name: PowerShell
+          displayName: Server side encryption, encryption, ADE
           href: windows/disks-enable-customer-managed-keys-powershell.md
-          displayName: Server side encryption, encryption, ADE
         - name: CLI
-          href: linux/disks-enable-customer-managed-keys-cli.md
           displayName: Server side encryption, encryption, ADE
+          href: linux/disks-enable-customer-managed-keys-cli.md
       - name: Use customer-managed keys across Microsoft Entra tenants
-        href: disks-cross-tenant-customer-managed-keys.md
         displayName: Server side encryption, encryption, ADE
+        href: disks-cross-tenant-customer-managed-keys.md
       - name: Enable encryption at host
         items:
         - name: Portal
+          displayName: Encryption at host, encryption, ADE
           href: disks-enable-host-based-encryption-portal.md
-          displayName: Encryption at host, encryption, ADE
         - name: PowerShell
+          displayName: Encryption at host, encryption, ADE
           href: windows/disks-enable-host-based-encryption-powershell.md
-          displayName: Encryption at host, encryption, ADE
         - name: CLI
-          href: linux/disks-enable-host-based-encryption-cli.md
           displayName: Encryption at host, encryption, ADE
+          href: linux/disks-enable-host-based-encryption-cli.md
       - name: Enable double encryption at rest
         href: disks-enable-double-encryption-at-rest-portal.md
     - name: Azure Disk Encryption
@@ -1530,24 +1607,24 @@
       - name: Linux
         items:
         - name: Overview
-          href: ./linux/disk-encryption-overview.md
           displayName: Azure disk encryption, encryption, ADE
+          href: ./linux/disk-encryption-overview.md
         - name: Quickstarts
           items:
           - name: Azure CLI
+            displayName: Azure disk encryption, encryption, ADE
             href: ./linux/disk-encryption-cli-quickstart.md
-            displayName: Azure disk encryption, encryption, ADE
           - name: Azure PowerShell
+            displayName: Azure disk encryption, encryption, ADE
             href: ./linux/disk-encryption-powershell-quickstart.md
-            displayName: Azure disk encryption, encryption, ADE
           - name: Azure portal
-            href: ./linux/disk-encryption-portal-quickstart.md
             displayName: Azure disk encryption, encryption, ADE
+            href: ./linux/disk-encryption-portal-quickstart.md
         - name: Disk encryption scenarios for Linux
           href: ./linux/disk-encryption-linux.md
         - name: Key vault for Azure Disk Encryption
-          href: ./linux/disk-encryption-key-vault.md
           displayName: Azure disk encryption, encryption, ADE, Key vault
+          href: ./linux/disk-encryption-key-vault.md
         - name: Disk encryption sample scripts
           href: ./linux/disk-encryption-sample-scripts.md
         - name: Disk encryption on an isolated network
@@ -1567,8 +1644,8 @@
         - name: Disk encryption - previous version
           items:
           - name: Overview
-            href: ./linux/disk-encryption-overview-aad.md
             displayName: Azure disk encryption, encryption, ADE, Key vault, previous version
+            href: ./linux/disk-encryption-overview-aad.md
           - name: Key vault for Azure Disk Encryption
             href: ./linux/disk-encryption-key-vault-aad.md
           - name: Disk encryption scenarios for Linux
@@ -1605,35 +1682,39 @@
             href: ./windows/disk-encryption-windows-aad.md
   - name: Performance and cost optimization
     items:
+    - name: Performance options for managed disks
+      href: disks-performance-options.md
     - name: Increase performance of premium SSD and standard SSD/HDDs
       href: disks-enable-performance.md
+    - name: Torn write prevention with managed disks
+      href: disks-torn-write-prevention.md
     - name: Virtual machine and disk performance
+      displayName: Performance, cost, perf, disks, disk
       href: disks-performance.md
-      displayName: Performance, cost, perf, disks, disk
     - name: Disk Storage reservations
+      displayName: Performance, cost, perf, disks, disk
       href: /azure/cost-management-billing/reservations/understand-disk-reservations?toc=/azure/virtual-machines/toc.json
-      displayName: Performance, cost, perf, disks, disk
     - name: Reserve Disk Storage
+      displayName: Performance, cost, perf, disks, disk
       href: disks-reserved-capacity.md
-      displayName: Performance, cost, perf, disks, disk
     - name: Design for high performance
+      displayName: Performance, cost, perf, disks, disk
       href: premium-storage-performance.md
-      displayName: Performance, cost, perf, disks, disk
     - name: Disk related metrics
+      displayName: Performance, cost, perf, disks, disk
       href: disks-metrics.md
-      displayName: Performance, cost, perf, disks, disk
     - name: Disk bursting models
+      displayName: Performance, cost, perf, disks, disk
       href: disk-bursting.md
-      displayName: Performance, cost, perf, disks, disk
     - name: Enable on-demand bursting
+      displayName: Performance, cost, perf, disks, disk
       href: disks-enable-bursting.md
-      displayName: Performance, cost, perf, disks, disk
     - name: Disk performance tiers
-      href: disks-change-performance.md
       displayName: Performance, cost, perf, disks, disk
+      href: disks-change-performance.md
     - name: Change disk performance tier
-      href: disks-performance-tiers.md
       displayName: Performance, cost, perf, disks, disk, change disk performance tier
+      href: disks-performance-tiers.md
     - name: Enable write accelerator
       href: how-to-enable-write-accelerator.md
     - name: Benchmark a disk
@@ -1644,6 +1725,8 @@
     items:
     - name: Create incremental snapshots
       href: disks-incremental-snapshots.md
+    - name: Instant access snapshots
+      href: disks-instant-access-snapshots.md
     - name: Copy incremental snapshots across regions
       href: disks-copy-incremental-snapshot-across-regions.md
     - name: Azure Disk Backup
@@ -1729,6 +1812,8 @@
       href: ./windows/migrate-to-managed-disks.md
     - name: Unmanaged Disks retirement
       href: ./unmanaged-disks-deprecation.md
+    - name: Migrate your Standard HDD OS disks
+      href: disks-hdd-os-retirement.md
     - name: Unmanaged VM to Managed Disks
       items:
       - name: CLI
@@ -1739,20 +1824,20 @@
         href: ./windows/convert-unmanaged-to-managed-disks.md
   - name: Create resources
     items:
-      - name: Create a disk from a VHD - CLI
-        href: ./scripts/create-managed-disk-from-vhd.md
-      - name: Create a disk from a snapshot - CLI
-        href: ./scripts/create-managed-disk-from-snapshot.md
-      - name: Create a disk from a VHD - PowerShell
-        href: ./scripts/virtual-machines-powershell-sample-create-managed-disk-from-vhd.md
-      - name: Create a disk from a snapshot - PowerShell
-        href: ./scripts/virtual-machines-powershell-sample-create-managed-disk-from-snapshot.md
-      - name: Create a snapshot from a VHD - PowerShell
-        href: ./scripts/virtual-machines-powershell-sample-create-snapshot-from-vhd.md
-      - name: Create virtual machine from snapshot - CLI
-        href: ./scripts/create-vm-from-snapshot.md
-      - name: Create virtual machine from existing OS disk - CLI
-        href: ./scripts/create-vm-from-managed-os-disks.md
+    - name: Create a disk from a VHD - CLI
+      href: ./scripts/create-managed-disk-from-vhd.md
+    - name: Create a disk from a snapshot - CLI
+      href: ./scripts/create-managed-disk-from-snapshot.md
+    - name: Create a disk from a VHD - PowerShell
+      href: ./scripts/virtual-machines-powershell-sample-create-managed-disk-from-vhd.md
+    - name: Create a disk from a snapshot - PowerShell
+      href: ./scripts/virtual-machines-powershell-sample-create-managed-disk-from-snapshot.md
+    - name: Create a snapshot from a VHD - PowerShell
+      href: ./scripts/virtual-machines-powershell-sample-create-snapshot-from-vhd.md
+    - name: Create virtual machine from snapshot - CLI
+      href: ./scripts/create-vm-from-snapshot.md
+    - name: Create virtual machine from existing OS disk - CLI
+      href: ./scripts/create-vm-from-managed-os-disks.md
   - name: Add a data disk
     items:
     - name: Linux
@@ -1773,6 +1858,14 @@
         href: ./windows/attach-managed-disk-portal.yml
       - name: Change temp disk drive letter
         href: ./windows/change-drive-letter.md
+  - name: Format and mount a disk
+    items:
+    - name: Linux
+      items:
+      - name: Managed disks
+        href: ./linux/disks-format-mount-data-disks-linux.md
+      - name: Temporary disks
+        href: ./linux/disks-format-mount-temp-disks-linux.md
   - name: Detach a disk
     items:
     - name: Linux
@@ -1810,6 +1903,8 @@
       href: ./linux/azure-to-guest-disk-mapping.md
     - name: Map managed disk to guest disk - Windows
       href: ./windows/azure-to-guest-disk-mapping.md
+    - name: Azure VM utilities - Linux
+      href: ./linux/azure-virtual-machine-utilities.md
     - name: File storage
       items:
       - name: Copy files to a VM
@@ -1941,8 +2036,8 @@
   - name: Security baselines
     items:
     - name: Linux
-      href: /security/benchmark/azure/baselines/virtual-machines-linux-security-baseline?toc=/azure/virtual-machines/toc.json
       displayName: Security baselines
+      href: /security/benchmark/azure/baselines/virtual-machines-linux-security-baseline?toc=/azure/virtual-machines/toc.json
     - name: Windows
       displayName: Security baselines
       href: /security/benchmark/azure/baselines/virtual-machines-windows-security-baseline?toc=/azure/virtual-machines/toc.json
@@ -1957,17 +2052,17 @@
       items:
       - name: Enable Trusted launch on existing VM
         items:
-          - name: Generation 2 VM
-            href: trusted-launch-existing-vm.md
-          - name: Generation 1 VM
-            href: trusted-launch-existing-vm-gen-1.md
+        - name: Generation 2 VM
+          href: trusted-launch-existing-vm.md
+        - name: Generation 1 VM
+          href: trusted-launch-existing-vm-gen-1.md
       - name: Enable Trusted launch on existing Virtual Machine Scale Sets
         href: trusted-launch-existing-vmss.md
     - name: Boot integrity monitoring
       href: boot-integrity-monitoring-overview.md
     - name: Trusted Launch FAQs
       href: trusted-launch-faq.md
-    - name: Secure Boot UEFI Keys 
+    - name: Secure Boot UEFI Keys
       href: trusted-launch-secure-boot-custom-uefi.md
   - name: Just-in-time access
     href: /azure/security-center/security-center-just-in-time
@@ -2045,7 +2140,7 @@
         displayName: create a key vault
         href: ./windows/key-vault-setup.md
   - name: Mitigating speculative execution
-    href: mitigate-se.md
+    href: ./mitigate-se.md
   - name: Join a Linux VM to Microsoft Entra ID
     displayName: Azure AD
     items:
@@ -2082,8 +2177,8 @@
     displayName: aad, ssh, active directory
     href: /entra/identity/devices/howto-vm-sign-in-azure-ad-linux?toc=/azure/virtual-machines/toc.json
   - name: Windows VMs and Microsoft Entra ID
-    href: /entra/identity/devices/howto-vm-sign-in-azure-ad-windows?toc=/azure/virtual-machines/toc.json
     displayName: aad, active directory
+    href: /entra/identity/devices/howto-vm-sign-in-azure-ad-windows?toc=/azure/virtual-machines/toc.json
 - name: Updates and maintenance
   items:
   - name: Overview
@@ -2093,7 +2188,18 @@
     displayName: Automatic OS image upgrade, image, upgrade, OS
     href: /azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade?toc=/azure/virtual-machines/toc.json
   - name: Windows Server in-place upgrade
-    href: windows-in-place-upgrade.md
+    items:
+    - name: Overview
+      href: windows-in-place-upgrade.md
+    - name: OS Upgrade assessment tool
+      href: /troubleshoot/azure/virtual-machines/windows/windows-vm-osupgradeassessment-tool?toc=/azure/virtual-machines/toc.json
+  - name: Windows Client in-place upgrade
+    items:
+    - name: Overview
+      href: /troubleshoot/azure/virtual-machines/windows/in-place-system-upgrade?toc=/azure/virtual-machines/toc.json
+    - name: OS Upgrade assessment tool
+      href: /troubleshoot/azure/virtual-machines/windows/windows-vm-osupgradeassessment-tool?toc=/azure/virtual-machines/toc.json
+
   - name: Automatic VM guest patching
     items:
     - name: Overview
@@ -2167,22 +2273,14 @@
     - name: Scheduled events
       items:
       - name: Linux
-        href: ./linux/scheduled-events.md
         displayName: Scheduled events
+        href: ./linux/scheduled-events.md
       - name: Windows
         items:
         - name: Scheduled events
           href: ./windows/scheduled-events.md
         - name: Monitor scheduled events
           href: ./windows/scheduled-event-service.md
-    - name: Track and update VMs
-      items:
-      - name: Linux
-        displayName: update, track
-        href: ./linux/tutorial-config-management.md
-      - name: Windows
-        displayName: update, track
-        href: ./windows/tutorial-config-management.md
 - name: Monitoring
   items:
   - name: Monitor Virtual Machines
@@ -2194,11 +2292,17 @@
   - name: Availability with Resource Graph
     href: resource-graph-availability.md
   - name: VM watch
-    items: 
+    items:
     - name: Overview
       href: azure-vm-watch.md
     - name: Install VM watch
       href: install-vm-watch.md
+    - name: VM watch Collectors Suite
+      href: vm-watch-collector-suite.md
+    - name: Configure VM watch
+      href: configure-vm-watch.md
+    - name: Configure Event Hub
+      href: configure-eventhub-vm-watch.md
   - name: Monitor availability
     items:
     - name: Overview
@@ -2220,6 +2324,32 @@
   - name: Monitor metadata
     displayName: instance metadata service IMDS
     href: instance-metadata-service.md
+  - name: Metadata Security Protocol
+    items:
+    - name: Overview
+      href: Metadata-Security-Protocol/overview.md
+    - name: MSP Configuration
+      href: Metadata-Security-Protocol/configuration.md
+    - name: Deploy a Virtual Machine or Virtual Machine Scale Sets With MSP
+      href: Metadata-Security-Protocol/greenfield.md
+    - name: Enable MSP on Existing Virtual Machine or Virtual Machine Scale Sets
+      href: Metadata-Security-Protocol/brownfield.md
+    - name: Other Examples
+      items:
+      - name: MSP via Portal
+        href: Metadata-Security-Protocol/other-examples/portal.md
+      - name: Disable MSP
+        href: Metadata-Security-Protocol/other-examples/disable.md
+      - name: Reset Latched Key
+        href: Metadata-Security-Protocol/other-examples/key-reset.md
+      - name: Create Rules From Audit Logs
+        href: Metadata-Security-Protocol/other-examples/audit-logs-to-rules.md
+    - name: Advanced Configuration
+      href: Metadata-Security-Protocol/advanced-configuration.md
+    - name: Troubleshooting Guide
+      href: Metadata-Security-Protocol/troubleshoot-guide.md
+    - name: MSP FAQs
+      href: Metadata-Security-Protocol/faq.md
   - name: Get usage metrics with REST
     href: ./linux/metrics-vm-usage-rest.md
   - name: Boot diagnostics
@@ -2239,35 +2369,35 @@
   - name: Back up VMs
     items:
     - name: Overview
-      href: /azure/backup/backup-azure-vms-introduction?toc=/azure/virtual-machines/toc.json
       displayName: backup VMs, Azure Backup, recovery
+      href: /azure/backup/backup-azure-vms-introduction?toc=/azure/virtual-machines/toc.json
     - name: Quickstarts
       items:
       - name: CLI
+        displayName: backup VMs, Azure Backup, recovery
         href: /azure/backup/quick-backup-vm-cli?toc=/azure/virtual-machines/toc.json
-        displayName: backup VMs, Azure Backup, recovery
       - name: PowerShell
+        displayName: backup VMs, Azure Backup, recovery
         href: /azure/backup/quick-backup-vm-powershell?toc=/azure/virtual-machines/toc.json
-        displayName: backup VMs, Azure Backup, recovery
       - name: Portal
+        displayName: backup VMs, Azure Backup, recovery
         href: /azure/backup/quick-backup-vm-portal?toc=/azure/virtual-machines/toc.json
-        displayName: backup VMs, Azure Backup, recovery
       - name: Template
-        href: /azure/backup/quick-backup-vm-template?toc=/azure/virtual-machines/toc.json
         displayName: backup VMs, Azure Backup, recovery
+        href: /azure/backup/quick-backup-vm-template?toc=/azure/virtual-machines/toc.json
     - name: Back up multiple VMs
       href: /azure/backup/tutorial-backup-vm-at-scale?toc=/azure/virtual-machines/toc.json
     - name: Restore options
       href: /azure/backup/backup-azure-arm-restore-vms?toc=/azure/virtual-machines/toc.json
     - name: Support matrix
+      displayName: backup VMs, Azure Backup, recovery
       href: /azure/backup/backup-support-matrix-iaas?toc=/azure/virtual-machines/toc.json
-      displayName: backup VMs, Azure Backup, recovery
     - name: Pricing
+      displayName: backup VMs, Azure Backup, recovery
       href: /azure/backup/azure-backup-pricing?toc=/azure/virtual-machines/toc.json
-      displayName: backup VMs, Azure Backup, recovery
     - name: FAQ
-      href: /azure/backup/backup-azure-vm-backup-faq?toc=/azure/virtual-machines/toc.json
       displayName: backup VMs, Azure Backup, recovery
+      href: /azure/backup/backup-azure-vm-backup-faq?toc=/azure/virtual-machines/toc.json
   - name: Disaster recovery
     items:
     - name: Overview
@@ -2313,24 +2443,40 @@
       href: concepts-restore-points.md
     - name: Troubleshooting
       href: restore-point-troubleshooting.md
-  - name: Move and migrate VMs
+- name: Move and migrate VMs
+  items:
+  - name: Change subscription or resource group
+    displayName: move migrate
+    href: /azure/azure-resource-manager/management/move-resource-group-and-subscription
+  - name: Change subscription for Marketplace VMs
+    displayName: offer plan sku marketplace
+    href: azure-cli-change-subscription-marketplace.md
+  - name: Move VMs to another region
+    href: /azure/site-recovery/azure-to-azure-tutorial-migrate?toc=/azure/virtual-machines/toc.json
+  - name: Move to an availability zone
+    href: /azure/site-recovery/move-azure-vms-avset-azone?toc=/azure/virtual-machines/toc.json
+  - name: Move Maintenance Control configurations to another region
+    href: move-region-maintenance-configuration.md
+  - name: Move Maintenance Control configuration resources to another region
+    href: move-region-maintenance-configuration-resources.md
+  - name: Migrate AWS VMs to Azure
+    href: /azure/migrate/tutorial-migrate-aws-virtual-machines
+  - name: Retirement migration
     items:
-    - name: Change subscription or resource group
-      displayName: move migrate
-      href: /azure/azure-resource-manager/management/move-resource-group-and-subscription
-    - name: Change subscription for Marketplace VMs
-      displayName: offer plan sku marketplace
-      href: azure-cli-change-subscription-marketplace.md
-    - name: Move VMs to another region
-      href: /azure/site-recovery/azure-to-azure-tutorial-migrate?toc=/azure/virtual-machines/toc.json
-    - name: Move to an availability zone
-      href: /azure/site-recovery/move-azure-vms-avset-azone?toc=/azure/virtual-machines/toc.json
-    - name: Move Maintenance Control configurations to another region
-      href: move-region-maintenance-configuration.md
-    - name: Move Maintenance Control configuration resources to another region
-      href: move-region-maintenance-configuration-resources.md
-    - name: Migrate AWS VMs to Azure
-      href: /azure/migrate/tutorial-migrate-aws-virtual-machines
+    - name: VM size series retirement migration guides
+      items:
+      - name: General-purpose sizes
+        href: ./migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide.md
+      - name: Storage-optimized sizes
+        href: ./migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide.md
+      - name: GPU-accelerated sizes
+        items:
+        - name: N-series migration guide
+          href: ./migration/sizes/n-series-migration.md
+        - name: NV-series migration guide
+          href: ./migration/sizes/nv-series-migration-guide.md
+      - name: Dedicated Host migration guide
+        href: ./migration/dedicated-host-migration-guide.md
 - name: Infrastructure automation
   items:
   - name: Overview
@@ -2375,7 +2521,7 @@
   - name: Build your skills with Microsoft Learn training
     href: /training/browse/?products=azure-virtual-machines
   - name: Azure Roadmap
-    href: https://azure.microsoft.com/roadmap/?category=compute
+    href: https://azure.microsoft.com/updates/?category=compute
   - name: Pricing calculator
     href: https://azure.microsoft.com/pricing/calculator/
   - name: Common CLI commands

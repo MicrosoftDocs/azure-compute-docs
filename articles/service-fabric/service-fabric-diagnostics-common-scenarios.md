@@ -6,12 +6,16 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 09/29/2025
+# Customer intent: "As a cloud application administrator, I want to troubleshoot monitoring and diagnostic issues in Azure Service Fabric, so that I can ensure the performance and reliability of my applications."
 ---
 
 # Diagnose common scenarios with Service Fabric
 
 This article illustrates common scenarios users have encountered in the area of monitoring and diagnostics with Service Fabric. The scenarios presented cover all three layers of service fabric: Application, Cluster, and Infrastructure. Each solution uses Application Insights and Azure Monitor logs, Azure monitoring tools, to complete each scenario. The steps in each solution give users an introduction on how to use Application Insights and Azure Monitor logs in the context of Service Fabric.
+
+> [!WARNING]
+> Application Insights for the Service Fabric SDK is no longer supported.
 
 ## Prerequisites and Recommendations
 

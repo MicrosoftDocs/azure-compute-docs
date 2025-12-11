@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a cloud administrator, I want to manage and operate Service Fabric clusters using the command line interface, so that I can efficiently provision, monitor, and upgrade cluster configurations and code.
 ---
 
 # sfctl cluster

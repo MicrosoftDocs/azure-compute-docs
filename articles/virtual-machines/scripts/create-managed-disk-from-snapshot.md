@@ -9,6 +9,7 @@ ms.tgt_pltfrm: vm-linux
 ms.date: 01/19/2024
 ms.author: rogarana
 ms.custom: mvc, devx-track-azurecli, linux-related-content
+# Customer intent: As a cloud engineer, I want to restore a virtual machine from disk snapshots using CLI, so that I can efficiently create managed disks and understand the performance implications during the restoration process.
 ---
 
 # Create a managed disk from a snapshot with CLI (Linux)
@@ -71,7 +72,7 @@ diskEncryptionSetId=$(az disk-encryption-set show --name $diskEncryptionSetName 
 #Note that managed disk will be created in the same location as the snapshot
 #To change the location, add the --location parameter
 #If you're creating a Premium SSD v2 or an Ultra Disk, add "--zone $zone" to the end of the command
-az disk create -g $resourceGroupName -n $diskName --source $snapshotId --disk-encryption-set $diskEncryptionSetID --location eastus2euap
+az disk create -g $resourceGroupName -n $diskName --source $snapshotId --disk-encryption-set $diskEncryptionSetId --location eastus2euap
 ```
 
 ## Performance impact - background copy process

@@ -10,12 +10,39 @@ ms.subservice: extensions
 ms.collection: windows
 ms.date: 03/09/2023
 ms.custom: devx-track-azurepowershell
+# Customer intent: As an IT admin, I want to enable Azure Diagnostics on a Windows VM using PowerShell, so that I can collect and analyze diagnostic data for better performance monitoring and troubleshooting.
 ---
 # Use PowerShell to enable Azure Diagnostics in a virtual machine running Windows
 
 Azure Diagnostics is the capability within Azure that enables the collection of diagnostic data on a deployed application. You can use the diagnostics extension to collect diagnostic data like application logs or performance counters from an Azure virtual machine (VM) that is running Windows. 
 
- 
+> [!IMPORTANT]
+> **Migrate from Azure Diagnostic extension**
+> 
+> Azure Diagnostics extension will be deprecated on March 31, 2026. After this date, Microsoft will no longer provide support for the Azure Diagnostics extension. 
+> 
+> To ensure continued support and access to new features, you should migrate from Azure Diagnostics extensions for Linux (LAD) and Windows (WAD) to [Azure Monitor Agent](/azure/azure-monitor/agents/azure-monitor-agent-overview), which can collect the same data and send it to multiple destinations including Log Analytics workspaces, Azure Event Hubs, and Azure Storage. Remove LAD or WAD after you configure Azure Monitor Agent to avoid duplicate data. 
+>
+> As an alternative to storage, you should send data to a table with the [Auxiliary plan](/azure/azure-monitor/logs/data-platform-logs#table-plans) in your Log Analytics workspace for cost-effective logging.
+>
+> To check which extensions are installed on a single VM, select **Extensions + applications** under **Settings** on your VM. To review the extensions installed on all virtual machines in subscriptions where you have access, use the following query in [Azure Resource Graph](/azure/governance/resource-graph/first-query-portal):
+>
+> ``` kql
+> resources
+> | where type contains "extension"
+> | extend parsedProperties = parse_json(properties)
+> | extend publisher = tostring(parsedProperties.publisher)
+> | project-away parsedProperties
+> | where publisher == "Microsoft.Azure.Diagnostics"
+> | distinct id
+> ```
+>
+> This produces results similar to the following:
+> 
+> :::image type="content" source="/azure/azure-monitor/agents/media/diagnostics-extension-overview/query-results.png" lightbox="/azure/azure-monitor/agents/media/diagnostics-extension-overview/query-results.png#lightbox" alt-text="Screenshot showing the results of a sample Azure Resource Graph Query.":::
+
+
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
 
 ## Enable the diagnostics extension if you use the Resource Manager deployment model
 You can enable the diagnostics extension while you create a Windows VM through the Azure Resource Manager deployment model by adding the extension configuration to the Resource Manager template. See [Create a Windows virtual machine with monitoring and diagnostics by using the Azure Resource Manager template](diagnostics-template.md).

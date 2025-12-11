@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: devx-track-azurecli
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a cloud administrator, I want to access CLI samples for managing Service Fabric clusters and applications, so that I can efficiently automate deployment and management tasks."
 ---
 
 # Azure CLI (az) and Azure Service Fabric CLI (sfctl) Samples

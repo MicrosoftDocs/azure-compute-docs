@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a software developer, I want to assign security access policies to my service endpoints so that I can ensure proper access control and secure communication for my applications deployed on Service Fabric.
 ---
 
 # Assign a security access policy for HTTP and HTTPS endpoints

@@ -5,10 +5,11 @@ services: virtual-machines
 ms.service: azure-virtual-machines
 ms.subservice: hpc
 ms.topic: concept-article
-ms.date: 01/28/2025
+ms.date: 09/04/2025
 ms.reviewer: cynthn
 ms.author: padmalathas
 author: padmalathas
+# Customer intent: As a cloud architect, I want to understand the architecture and specifications of the HBv4-series virtual machines, so that I can select the optimal VM size for my high-performance computing workloads.
 ---
 
 # HBv4-series virtual machine overview 
@@ -49,7 +50,8 @@ Standard_HB176-48rs_v4            | 4            | 12                     | Dual
 Standard_HB176-24rs_v4            | 4            | 6                      | Dual-socket EPYC 9V33X           |
 
 > [!NOTE]
-> The constrained cores VM sizes only reduce the number of physical cores exposed to the VM. All global shared assets (RAM, memory bandwidth, L3 cache, GMI and xGMI connectivity, InfiniBand, Azure Ethernet network, local SSD) stay constant. This allows a customer to pick a VM size best tailored to a given set of workload or software licensing needs.
+> * The constrained cores VM sizes only reduce the number of physical cores exposed to the VM. All global shared assets (RAM, memory bandwidth, L3 cache, GMI and xGMI connectivity, InfiniBand, Azure Ethernet network, local SSD) stay constant. This allows a customer to pick a VM size best tailored to a given set of workload or software licensing needs.
+> * We are currently experiencing a core mapping issue on the HBv4-series parent size Standard_HB176rs_v4. 
 
 The virtual NUMA mapping of each HBv4 VM size is mapped to the underlying physical NUMA topology. There's no potential misleading abstraction of the hardware topology. 
 
@@ -107,7 +109,7 @@ When paired in a striped array, the NVMe SSD provides up to 12 GB/s reads and 7 
 |----------------------------------|----------------------------------|
 | Cores                            | 176, 144, 96, 48, or 24 (SMT disabled)           | 
 | CPU                              | AMD EPYC 9V33X                   | 
-| CPU Frequency (non-AVX)          | 2.4-GHz base, 3.7-GHz peak boost    | 
+| CPU Frequency (non-AVX)          | 2.55 GHz base, 3.7 GHz peak boost    | 
 | Memory                           | 768 GB (RAM per core depends on VM size)         | 
 | Local Disk                       | 2 * 1.8-TB NVMe (block), 480 GB SSD (page file) | 
 | InfiniBand                       | 400 Gb/s Mellanox ConnectX-7 NDR InfiniBand | 

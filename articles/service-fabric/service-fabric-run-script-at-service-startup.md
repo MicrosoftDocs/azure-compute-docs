@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a cloud developer, I want to configure and run a startup script in a Service Fabric service setup entry point, so that I can perform necessary environment configurations before my service starts executing.
 ---
 
 # Run a service startup script as a local user or system account

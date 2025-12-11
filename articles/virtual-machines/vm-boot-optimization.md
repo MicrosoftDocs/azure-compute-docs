@@ -7,6 +7,7 @@ ms.date: 06/07/2023
 ms.topic: how-to 
 ms.service: azure-virtual-machines
 ms.subservice: image-builder
+# Customer intent: As a cloud administrator, I want to optimize Azure Compute Gallery images using the VM Image Builder, so that I can improve virtual machine boot and provisioning times for more efficient deployments.
 --- 
 
   

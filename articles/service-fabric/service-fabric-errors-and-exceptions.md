@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a cluster administrator, I want to understand the common exceptions thrown by the FabricClient APIs, so that I can effectively troubleshoot and manage application and cluster operations.
 ---
 
 # Common exceptions and errors when working with the FabricClient APIs

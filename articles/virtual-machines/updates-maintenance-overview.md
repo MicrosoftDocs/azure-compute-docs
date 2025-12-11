@@ -7,6 +7,7 @@ ms.service: azure-virtual-machines
 ms.topic: overview
 ms.date: 03/20/2024
 ms.reviewer: cynthn
+# Customer intent: "As a cloud administrator, I want to manage guest updates and host maintenance for Azure virtual machines so that I can ensure reliability, security, and performance of our applications while minimizing downtime during updates."
 ---
 
 # Guest updates and host maintenance overview

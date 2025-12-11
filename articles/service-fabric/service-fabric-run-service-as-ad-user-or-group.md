@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a system administrator, I want to configure a Service Fabric service to run under an Active Directory user or group, so that I can enhance security and access necessary domain resources.
 ---
 
 # Run a service as an Active Directory user or group

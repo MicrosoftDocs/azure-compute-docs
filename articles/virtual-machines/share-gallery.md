@@ -1,6 +1,6 @@
 ---
-title: Share resources in an Azure Compute Gallery
-description: Learn how to share resources explicitly or to all Azure users using role-based access control.
+title: Share Resources in Azure Compute Gallery
+description: Learn how to share resources explicitly or to all Azure users by using role-based access control.
 author: sandeepraichura
 ms.service: azure-virtual-machines
 ms.subservice: gallery
@@ -10,61 +10,67 @@ ms.author: saraic
 ms.reviewer: cynthn
 ms.custom: template-how-to , devx-track-azurecli
 ms.devlang: azurecli
+# Customer intent: As an IT administrator, I want to share resources in Azure Compute Gallery by using role-based access control, so that I can manage user access effectively across subscriptions and tenants.
 ---
 
-# Share gallery resources across subscriptions and tenants with RBAC
+# Share gallery resources across subscriptions and tenants by using RBAC
 
-As the Azure Compute Gallery, definition, and version are all resources, they can be shared using the built-in native Azure Roles-based Access Control (RBAC) roles. Using Azure RBAC roles you can share these resources to other users, service principals, and groups. You can even share access to individuals outside of the tenant they were created within. Once a user has access, they can use the gallery resources to deploy a VM or a Virtual Machine Scale Set.  Here's the sharing matrix that helps understand what the user gets access to:
+Because a gallery, definition, and version are all resources in Azure Compute Gallery, you can share them by using the built-in Azure role-based access control (RBAC) roles. By using Azure RBAC roles, you can share these resources with other users, service principals, and groups. You can even share access with individuals outside the tenant where they were created.
 
-| Shared with User     | Azure Compute Gallery | Image Definition | Image version |
+After users have access, they can use the gallery resources to deploy a virtual machine (VM) or a virtual machine scale set. Here's a sharing matrix that can help you understand what the users get access to:
+
+| Shared with users | Gallery | Image definition | Image version |
 |----------------------|----------------------|--------------|----------------------|
-| Azure Compute Gallery | Yes                  | Yes          | Yes                  |
-| Image Definition     | No                   | Yes          | Yes                  |
+| Gallery | Yes                  | Yes          | Yes                  |
+| Image definition     | No                   | Yes          | Yes                  |
 
-We recommend sharing at the Gallery level for the best experience. We don't recommend sharing individual image versions. For more information about Azure RBAC, see [Assign Azure roles](/azure/role-based-access-control/role-assignments-portal).
+We recommend sharing at the gallery level for the best experience. We don't recommend sharing individual image versions. For more information about Azure RBAC, see [Assign Azure roles](/azure/role-based-access-control/role-assignments-portal).
 
-There are three main ways to share images in an Azure Compute Gallery, depending on who you want to share with:
+There are three main ways to share images in Compute Gallery, depending on which users you want to share with:
 
-| Sharing with: | People | Groups | Service Principal | All users in a specific subscription (or) tenant | Publicly with all users in   Azure |
+| Sharing with: | People | Groups | Service principal | All users in a specific subscription or tenant | Publicly with all users in Azure |
 |---|---|---|---|---|---|
-| RBAC Sharing | Yes | Yes | Yes | No | No |
-| RBAC + [Direct shared gallery](./share-gallery-direct.md)  | Yes | Yes | Yes | Yes | No |
-| RBAC + [Community gallery](./share-gallery-community.md) | Yes | Yes | Yes | No | Yes |
+| RBAC sharing | Yes | Yes | Yes | No | No |
+| RBAC + [direct shared gallery](./share-gallery-direct.md)  | Yes | Yes | Yes | Yes | No |
+| RBAC + [community gallery](./share-gallery-community.md) | Yes | Yes | Yes | No | Yes |
 
-You can also create an [App registration](./share-using-app-registration.md) to share images between tenants.
+You can also create an [app registration](./share-using-app-registration.md) to share images between tenants.
 
 > [!NOTE]
-> Please note that Images can be used with read permissions on them to deploy virtual machines and disks.
-> 
-> When utilizing the direct shared gallery, images are distributed widely to all users in a subscription/tenant, while the community gallery distributes images publicly. It is recommended to exercise caution when sharing images that contain intellectual property to prevent widespread distribution.
+> You can use images with read permissions on them to deploy virtual machines and disks.
+>
+> When you use a direct shared gallery, images are distributed widely to all users in a subscription or tenant. A community gallery distributes images publicly. When you share images that contain intellectual property, use caution to prevent widespread distribution.
 
-## Share using RBAC
+## Share by using RBAC
 
-When you share a gallery using RBAC, you need to provide the `imageID` to anyone creating a VM or scale set from the image. There is no way for the person deploying the VM or scale set to list the images that were shared to them using RBAC.
+When you share a gallery by using RBAC, you need to provide the `imageID` value to anyone who creates a VM or scale set from the image. The person who's deploying the VM or scale set can't list the images that were shared with them via RBAC.
 
-If you share gallery resources to someone outside of your Azure tenant, they will need your `tenantID` to log in and have Azure verify they have access to the resource before they can use it within their own tenant. You will need to provide them with your `tenantID`, there is no way for someone outside your organization to query for your `tenantID`.
+If you share gallery resources with someone outside your Azure tenant, they need your `tenantID` value to sign in and have Azure verify that they have access to the resource before they can use it within their own tenant. You need to provide the `tenantID` value. There is no way for someone outside your organization to query for this value.
 
-> [!IMPORTANT]
-> RBAC sharing can be used to share resources with users within the organization (or) users outside the organization (cross-tenant). Here are the instructions to consume an image shared with RBAC and create VM/VMSS:
-> 
-> [RBAC - Shared within your organization](vm-generalized-image-version.md#rbac---shared-within-your-organization)
-> 
-> [RBAC - Shared from another tenant](vm-generalized-image-version.md#rbac---shared-from-another-tenant)
-> 
+For instructions on consuming an image shared via RBAC and creating a VM or a scale set, see:
+
+- [RBAC - Shared within your organization](vm-generalized-image-version.md#rbac---shared-within-your-organization)
+- [RBAC - Shared from another tenant](vm-generalized-image-version.md#rbac---shared-from-another-tenant)
 
 ### [Portal](#tab/portal)
 
-1. On the page for your gallery, in the menu on the left, select **Access control (IAM)**. 
-1. Under **Add**, select **Add role assignment**. The **Add role assignment** page will open. 
-1. Under **Role**, select **Reader**.
-1. Ensure that the user is selected in the Members tab.For **Assign access to**, keep the default of **User, group, or service principal**.
-1. Click **Select** members and choose a user account from the page that opens on the right.
-1. If the user is outside of your organization, you'll see the message **This user will be sent an email that enables them to collaborate with Microsoft.** Select the user with the email address and then click **Save**.
+1. Sign in to the [Azure portal](https://portal.azure.com).
 
+1. On the page for your gallery, on the left menu, select **Access control (IAM)**.
+
+1. Under **Add**, select **Add role assignment**. The **Add role assignment** pane opens.
+
+1. Under **Role**, select **Reader**.
+
+1. On the **Members** tab, ensure that the user is selected. For **Assign access to**, keep the default of **User, group, or service principal**.
+
+1. Choose **Select members**. On the pane that opens, choose a user account.
+
+1. If the user is outside your organization, the following message appears: **This user will be sent an email that enables them to collaborate with Microsoft**. Select the user with the email address, and then select **Save**.
 
 ### [CLI](#tab/cli)
 
-To get the object ID of your gallery, use [az sig show](/cli/azure/sig#az-sig-show).
+To get the object ID of your gallery, use [az sig show](/cli/azure/sig#az-sig-show):
 
 ```azurecli-interactive
 az sig show \
@@ -73,7 +79,7 @@ az sig show \
    --query id
 ```
 
-Use the object ID as a scope, along with an email address and [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) to give a user access to the Azure Compute Gallery. Replace `<email address>` and `<gallery ID>` with your own information.
+Use the object ID as a scope, along with an email address and [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create), to give a user access to the gallery. Replace `<email address>` and `<gallery ID>` with your own information.
 
 ```azurecli-interactive
 az role assignment create \
@@ -82,11 +88,11 @@ az role assignment create \
    --scope <gallery ID>
 ```
 
-For more information about how to share resources using RBAC, see [Manage access using RBAC and Azure CLI](/azure/role-based-access-control/role-assignments-cli).
+For more information about how to share resources by using RBAC, see [Assign Azure roles by using the Azure CLI](/azure/role-based-access-control/role-assignments-cli).
 
 ### [PowerShell](#tab/powershell)
 
-Use an email address and the [Get-AzADUser](/powershell/module/az.resources/get-azaduser) cmdlet to get the object ID for the user, then use [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment) to give them access to the gallery. Replace the example email, alinne_montes@contoso.com in this example, with your own information.
+Use an email address and the [`Get-AzADUser`](/powershell/module/az.resources/get-azaduser) cmdlet to get the object ID for the user. Then use [`New-AzRoleAssignment`](/powershell/module/Az.Resources/New-AzRoleAssignment) to give the user access to the gallery. In the following example, replace the example email address (`alinne_montes@contoso.com`) with your own information.
 
 ```azurepowershell-interactive
 # Get the object ID for the user
@@ -103,8 +109,7 @@ New-AzRoleAssignment `
 
 ---
 
-
-## Next steps
+## Related content
 
 - Create an [image definition and an image version](image-version.md).
 - Create a VM from a [generalized](vm-generalized-image-version.md) or [specialized](vm-specialized-image-version.md) image in a gallery.

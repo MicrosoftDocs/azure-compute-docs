@@ -7,6 +7,7 @@
  ms.date: 01/29/2021
  ms.author: rogarana
  ms.custom: include file
+# Customer intent: As a cloud administrator, I want to benchmark disk performance using custom I/O workloads, so that I can optimize storage configurations for maximum read and write IOPS in my virtual machines.
 ---
 
 ## Warm up the Cache

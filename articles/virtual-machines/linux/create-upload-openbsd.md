@@ -9,6 +9,7 @@ ms.topic: how-to
 ms.date: 05/24/2017
 ms.author: guybo
 ms.reviewer: mattmcinnes
+# Customer intent: "As a system administrator, I want to create and upload an OpenBSD virtual hard disk to Azure, so that I can deploy a virtual machine configured with the OpenBSD operating system."
 ---
 
 # Create and upload an OpenBSD disk image to Azure

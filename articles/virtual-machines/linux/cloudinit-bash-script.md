@@ -9,6 +9,7 @@ ms.date: 03/29/2023
 ms.author: mattmcinnes
 ms.subservice: cloud-init
 ms.custom: devx-track-azurecli, linux-related-content
+# Customer intent: "As a cloud engineer, I want to use cloud-init to run a bash script on a Linux VM during provisioning, so that I can automate the configuration process without converting scripts to cloud-config."
 ---
 # Use cloud-init to run a bash script in a Linux VM in Azure
 

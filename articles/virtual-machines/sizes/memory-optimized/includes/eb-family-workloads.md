@@ -9,6 +9,7 @@ ms.subservice: sizes
 ms.date: 06/06/2024
 ms.author: mattmcinnes
 ms.custom: include file
+# Customer intent: "As a cloud architect, I want to evaluate Eb-family VM sizes, so that I can determine which configurations best support memory-intensive workloads and optimize resource allocation for applications like databases and big data analytics."
 ---
 **Memory-Intensive Workloads:** Eb-family VMs are for workloads that demand a large memory footprint to efficiently handle tasks, such as simulations, large-scale computations in scientific research, or financial risk modeling.
 

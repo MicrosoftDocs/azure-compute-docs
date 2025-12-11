@@ -1,12 +1,13 @@
 ---
 title: Azure Service Fabric hosting activation and deactivation life cycle 
 description: Learn about the life cycle of an application and a ServicePackage on a node. 
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a cloud application administrator, I want to understand the hosting activation and deactivation lifecycle in Azure Service Fabric, so that I can effectively manage application deployments and ensure reliable service availability.
 ---
 
 # Azure Service Fabric hosting life cycle

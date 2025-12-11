@@ -9,6 +9,7 @@ ms.date: 07/18/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
+# Customer intent: "As a cloud architect, I want to understand the specifications of Dldsv5-series virtual machines, so that I can select the appropriate VM size to optimize performance and cost for my applications."
 ---
 Dldsv5-series virtual machines run on the third Generation Intel® Xeon® Platinum 8370C (Ice Lake) processor reaching an all core turbo clock speed of up to 3.5 GHz. These virtual machines offer up to 96 vCPU and 192 GiB of RAM and fast, local SSD storage up to 3,600 GiB. These VM sizes can reduce cost when not running memory intensive applications.
 

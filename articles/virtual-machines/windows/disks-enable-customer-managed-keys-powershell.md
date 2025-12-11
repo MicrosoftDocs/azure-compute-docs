@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.author: rogarana
 ms.service: azure-disk-storage
 ms.custom: devx-track-azurepowershell
+# Customer intent: As an IT admin, I want to enable server-side encryption with customer-managed keys for managed disks using PowerShell, so that I can ensure data security and compliance with my organization's encryption policies.
 ---
 
 # Azure PowerShell - Enable customer-managed keys with server-side encryption - managed disks
@@ -21,7 +22,7 @@ For now, customer-managed keys have the following restrictions:
 
 [!INCLUDE [virtual-machines-managed-disks-customer-managed-keys-restrictions](../includes/virtual-machines-managed-disks-customer-managed-keys-restrictions.md)]
 
-## Set up an Azure Key Vault and DiskEncryptionSet optionally with automatic key rotation
+## Set up an Azure Key Vault and DiskEncryptionSet with automatic key rotation
 
 To use customer-managed keys with SSE, you must set up an Azure Key Vault and a DiskEncryptionSet resource.
 

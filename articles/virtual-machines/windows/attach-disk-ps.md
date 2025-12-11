@@ -9,6 +9,7 @@ ms.date: 12/09/2024
 ms.author: rogarana
 ms.custom: devx-track-azurepowershell
 
+# Customer intent: As a cloud administrator, I want to attach new and existing data disks to Windows VMs using PowerShell, so that I can efficiently manage storage solutions for my workloads and optimize performance within the Azure environment.
 ---
 # Attach a data disk to a Windows VM with PowerShell
 

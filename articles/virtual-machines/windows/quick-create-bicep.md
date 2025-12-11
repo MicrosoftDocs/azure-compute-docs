@@ -8,6 +8,7 @@ ms.collection: windows
 ms.topic: quickstart
 ms.date: 03/11/2022
 ms.custom: subject-armqs, mode-arm, devx-track-bicep
+# Customer intent: As a cloud engineer, I want to deploy a Windows virtual machine using a Bicep file, so that I can automate the setup and configuration of my virtual infrastructure in Azure.
 ---
 
 # Quickstart: Create a Windows virtual machine using a Bicep file
@@ -20,7 +21,7 @@ This quickstart shows you how to use a Bicep file to deploy a Windows virtual ma
 
 ## Prerequisites
 
-If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 ## Review the Bicep file
 

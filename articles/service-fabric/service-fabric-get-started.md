@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 03/02/2023
+# Customer intent: As a developer, I want to set up a Windows development environment for Azure Service Fabric, so that I can build and run applications efficiently.
 ---
 
 # Prepare your development environment on Windows
@@ -26,14 +27,14 @@ Ensure you're using a supported [Windows version](service-fabric-versions.md#sup
 
 ## Download and install the runtime and SDK
 > [!NOTE]
-> WebPI used previously for SDK/Tools installation was deprecated on July 1 2022 
+> WebPI used previously for SDK/Tools installation was deprecated on July 1 2022
 
 The runtime can be installed independently. However, the SDK requires the runtime, so for a development environment, you must install both the runtime and SDK. The following links are download for the latest versions of both the runtime and SDK:
 
 | Package |Version|
 | --- | --- |
-|[Install Service Fabric Runtime for Windows](https://download.microsoft.com/download/b/8/a/b8a2fb98-0ec1-41e5-be98-9d8b5abf7856/MicrosoftServiceFabric.10.1.2493.9590.exe) | 10.1.2493.9590 |
-|[Install Service Fabric SDK](https://download.microsoft.com/download/b/8/a/b8a2fb98-0ec1-41e5-be98-9d8b5abf7856/MicrosoftServiceFabricSDK.7.1.2493.msi) | 7.1.2493 |
+|[Install Service Fabric Runtime for Windows](https://download.microsoft.com/download/b/8/a/b8a2fb98-0ec1-41e5-be98-9d8b5abf7856/MicrosoftServiceFabric.11.3.365.1.exe) | 11.3.365.1 |
+|[Install Service Fabric SDK](https://download.microsoft.com/download/b/8/a/b8a2fb98-0ec1-41e5-be98-9d8b5abf7856/MicrosoftServiceFabricSDK.8.3.365.msi) | 8.3.365 |
 
 You can find direct links to the installers for previous releases on [Service Fabric Releases.](https://github.com/microsoft/service-fabric/tree/master/release_notes)
 

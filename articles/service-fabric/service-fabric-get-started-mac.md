@@ -11,6 +11,7 @@ ms.date: 07/14/2022
 
 # Maintainer notes: Keep these documents in sync:
 # service-fabric-local-linux-cluster-windows.md
+# Customer intent: As a macOS developer, I want to set up a local development environment for Azure Service Fabric using Docker, so that I can build and deploy applications effectively on my system.
 ---
 
 # Set up your development environment on macOS X

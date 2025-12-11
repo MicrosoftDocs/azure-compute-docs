@@ -1,15 +1,16 @@
 ---
 title: Overview of Linux provisioning
 description: Overview of how to bring your Linux VM images or create new images to use in Azure.
-author: danielsollondon
+author: vamckMS
 ms.service: azure-virtual-machines
 ms.subservice: imaging
 ms.custom: linux-related-content
 ms.collection: linux
 ms.topic: overview
-ms.date: 06/22/2020
-ms.author: danis
+ms.date: 09/02/2025
+ms.author: vakavuru
 ms.reviewer: cynthn
+# Customer intent: As a cloud architect, I want to provision Linux VM images efficiently, so that I can ensure proper configuration and support for Azure services during deployment.
 ---
 
 

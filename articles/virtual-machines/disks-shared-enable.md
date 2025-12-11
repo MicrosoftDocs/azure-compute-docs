@@ -4,18 +4,19 @@ description: Configure an Azure managed disk with shared disks so that you can s
 author: roygara
 ms.service: azure-disk-storage
 ms.topic: how-to
-ms.date: 04/11/2023
+ms.date: 12/03/2025
 ms.author: rogarana
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
+# Customer intent: As a cloud engineer, I want to configure shared disks for Azure managed disks, so that I can enable simultaneous access from multiple virtual machines to support clustered applications.
 ---
 
-# Enable shared disk
+# Enable shared disks
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
-This article covers how to enable the shared disks feature for Azure managed disks. Azure shared disks is a new feature for Azure managed disks that enables you to attach a managed disk to multiple virtual machines (VMs) simultaneously. Attaching a managed disk to multiple VMs allows you to either deploy new or migrate existing clustered applications to Azure. 
-
-If you are looking for conceptual information on managed disks that have shared disks enabled, see [Azure shared disks](disks-shared.md).
+This article explains how to enable the shared disks feature for Azure managed disks. With Azure shared disks, you can attach a managed disk to multiple virtual machines (VMs) simultaneously, enabling the deployment or migration of clustered applications to Azure.
+ 
+If you're looking for conceptual information on managed disks that have shared disks enabled, see [Azure shared disks](disks-shared.md).
 
 ## Prerequisites
 
@@ -56,7 +57,7 @@ To deploy a managed disk with the shared disk feature enabled, use the new prope
 1. Select **+ Create** to create a new managed disk.
 1. Fill in the details and select an appropriate region, then select **Change size**.
 
-    :::image type="content" source="media/disks-shared-enable/create-shared-disk-basics-pane.png" alt-text="Screenshot of the create a managed disk pane, change size highlighted.." lightbox="media/disks-shared-enable/create-shared-disk-basics-pane.png":::
+    :::image type="content" source="media/disks-shared-enable/create-shared-disk-basics-pane.png" alt-text="Screenshot of the Azure portal showing the create a managed disk pane with the change size option highlighted." lightbox="media/disks-shared-enable/create-shared-disk-basics-pane.png":::
 
 1. Select the premium SSD size and SKU that you want and select **OK**.
 
@@ -195,7 +196,7 @@ To deploy a managed disk with the shared disk feature enabled, change the `maxSh
 1. Fill in the details, then select **Change size**.
 1. Select ultra disk for the **Disk SKU**.
 
-    :::image type="content" source="media/disks-shared-enable/select-ultra-shared-disk.png" alt-text="Screenshot of the disk SKU, ultra disk highlighted.." lightbox="media/disks-shared-enable/select-ultra-shared-disk.png":::
+    :::image type="content" source="media/disks-shared-enable/select-ultra-shared-disk.png" alt-text="Screenshot of the disk SKU, ultra disk highlighted." lightbox="media/disks-shared-enable/select-ultra-shared-disk.png":::
 
 1. Select the disk size that you want and select **OK**.
 1. Proceed through the deployment until you get to the **Advanced** pane.
@@ -278,7 +279,7 @@ To share an existing disk, or update how many VMs it can mount to, set the `maxS
 > Host caching isn't supported for shared disks.
 > 
 > The value of `maxShares` can only be set or changed when a disk is unmounted from all VMs. See the [Disk sizes](#disk-sizes) for the allowed values for `maxShares`.
-> Before detaching a disk, record the LUN ID for when you re-attach it.
+> Before detaching a disk, record the LUN ID for when you reattach it.
 
 ### PowerShell
 
@@ -299,12 +300,12 @@ az disk update --name mySharedDisk --max-shares 5 --resource-group myResourceGro
 
 ## Using Azure shared disks with your VMs
 
-Once you've deployed a shared disk with `maxShares>1`, you can mount the disk to one or more of your VMs.
+After you deploy a shared disk with `maxShares>1`, you can mount the disk to one or more of your VMs.
 
 > [!NOTE]
 > Host caching isn't supported for shared disks.
 > 
-> If you are deploying an ultra disk, make sure it matches the necessary requirements. See [Using Azure ultra disks](disks-enable-ultra-ssd.md) for details.
+> If you're deploying an ultra disk, make sure it matches the necessary requirements. See [Using Azure ultra disks](disks-enable-ultra-ssd.md) for details.
 
 ```azurepowershell-interactive
 
@@ -365,9 +366,4 @@ You also need to provide a persistent-reservation-key when using PR_RESERVE, PR_
 
 ## Next steps
 
-If you prefer to use Azure Resource Manager templates to deploy your disk, the following sample templates are available:
-- [Premium SSD](https://aka.ms/SharedPremiumDiskARMtemplate)
-- [Regional ultra disks](https://aka.ms/SharedUltraDiskARMtemplateRegional)
-- [Zonal ultra disks](https://aka.ms/SharedUltraDiskARMtemplateZonal)
-
-If you've additional questions, see the [shared disks](faq-for-disks.yml#azure-shared-disks) section of the FAQ.
+If you have more questions, see the [shared disks](faq-for-disks.yml#azure-shared-disks) section of the FAQ.

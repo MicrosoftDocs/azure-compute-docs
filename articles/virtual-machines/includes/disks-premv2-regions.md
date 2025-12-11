@@ -7,46 +7,12 @@
  ms.date: 08/09/2024
  ms.author: rogarana
  ms.custom: include file, references_regions
+# Customer intent: "As a cloud architect, I want to find out which regions support Azure Disk Storage options, so that I can plan the deployment of my applications based on availability and redundancy requirements."
 ---
 Currently only available in the following regions:
 
-- Australia East (Three availability zones)
-- Australia South East (region without availability zone support, sign up through this [form](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_qDQoBfgNxGj84DlI3mGbtUOTRZN1FTWkdNVzRESEI2SzVENjE3SDJFOC4u))
-- Brazil South (Three availability zones)
-- Canada Central (Three availability zones)
-- Canada East (region without availability zone support, sign up through this [form](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_qDQoBfgNxGj84DlI3mGbtUOTRZN1FTWkdNVzRESEI2SzVENjE3SDJFOC4u))
-- Central India (Three availability zones)
-- Central US (Three availability zones)
-- China North 3 (Three availability zones)
-- East Asia (Three availability zones)
-- East US (Three availability zones)
-- East US 2 (Three availability zones)
-- France Central (Three availability zones)
-- Germany West Central (Three availability zones)
-- Israel Central (Three availability zones)
-- Italy North (Three availability zones)
-- Japan East (Three availability zones)
-- Korea Central (Three availability zones)
-- Mexico Central (Three availability zones)
-- New Zealand North (Two availability zones)
-- North Central US (region without availability zone support, sign up through this [form](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_qDQoBfgNxGj84DlI3mGbtUOTRZN1FTWkdNVzRESEI2SzVENjE3SDJFOC4u))
-- North Europe (Three availability zones)
-- Norway East (Three availability zones)
-- Poland Central (Three availability zones)
-- Spain Central (Three availability zones)
-- South Africa North (Three availability zones)
-- South Central US (Three availability zones)
-- Southeast Asia (Three availability zones)
-- Sweden Central (Three availability zones)
-- Switzerland North (Three availability zones)
-- UAE North (Three availability zones)
-- UK South (Three availability zones)
-- UK West (region without availability zone support, sign up through this [form](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_qDQoBfgNxGj84DlI3mGbtUOTRZN1FTWkdNVzRESEI2SzVENjE3SDJFOC4u))
-- US Gov Virginia (Three availability zones)
-- West Central US (region without availability zone support, sign up through this [form](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_qDQoBfgNxGj84DlI3mGbtUOTRZN1FTWkdNVzRESEI2SzVENjE3SDJFOC4u))
-- West Europe (Three availability zones)
-- West US (region without availability zone support, sign up through this [form](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_qDQoBfgNxGj84DlI3mGbtUOTRZN1FTWkdNVzRESEI2SzVENjE3SDJFOC4u))
-- West US 2 (Three availability zones)
-- West US 3 (Three availability zones)
+| *Regions without Availability Zone* | *One Availability Zone* | *Two Availability Zones* | *Three Availability Zones* |
+|:-------------------|:-------------------|:-------------------|:-------------------|
+| - Australia Central 2 <br> - Australia Southeast <br> - Canada East <br> - North Central US <br> - Norway West <br> - Taiwan North <br>- UK West <br> - West Central US <br> - West US<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> |- Japan West <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> |- Indonesia Central <br> - New Zealand North <br>- Malaysia West<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> | - Australia East <br> - Brazil South <br> - Canada Central <br> - Central India <br> - Central US <br> - China North 3 <br> - East Asia <br> - East US <br> - East US 2 <br> - France Central <br> - Germany West Central <br> - Israel Central <br> - Italy North <br> - Japan East <br> - Korea Central <br> - Mexico Central <br> - North Europe <br> - Norway East <br> - Poland Central <br> - Spain Central <br> - South African North <br> - South Central US <br> - Southeast Asia <br> - Sweden Central <br> - Switzerland North <br> - UAE North <br> - UK South <br> - US Gov Virginia <br> - West Europe <br> - West US 2 <br> - West US 3 |
 
 To learn when support for particular regions was added, see either [Azure Updates](https://azure.microsoft.com/updates/?query=disk%20storage) or [What's new for Azure Disk Storage](/azure/virtual-machines/disks-whats-new).

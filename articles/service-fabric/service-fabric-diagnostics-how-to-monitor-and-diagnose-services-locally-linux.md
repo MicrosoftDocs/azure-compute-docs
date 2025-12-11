@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: devx-track-extended-java, linux-related-content
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a service developer using Linux, I want to implement effective logging and diagnostics for my Service Fabric applications, so that I can monitor and troubleshoot issues during both development and production stages.
 ---
 
 # Monitor and diagnose services in a local Linux machine development setup

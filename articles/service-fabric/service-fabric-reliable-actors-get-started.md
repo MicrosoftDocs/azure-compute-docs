@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: "As a developer, I want to create and debug an actor-based service using Reliable Actors, so that I can build scalable applications on the Service Fabric platform."
 ---
 
 # Getting started with Reliable Actors

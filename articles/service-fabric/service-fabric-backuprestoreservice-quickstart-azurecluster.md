@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 08/23/2024
+# Customer intent: "As an application developer, I want to implement periodic backup and restore for my stateful services, so that I can ensure data integrity and recoverability in case of data loss or service interruptions."
 ---
 
 # Periodic backup and restore in an Azure Service Fabric cluster
@@ -148,12 +149,12 @@ For backup storage, use the Azure Storage account created above. Container `back
 
 Follow steps for managed-identity assignment on Azure resource:
 
-1. Enable system assigned or User assigned managed identity in the Virtual Machine Scale Sets [Configure managed identities on virtual machine scale set](https://learn.microsoft.com/entra/identity/managed-identities-azure-resources/how-to-configure-managed-identities-scale-sets?pivots=identity-mi-methods-azp)
+1. Enable system assigned or User assigned managed identity in the Virtual Machine Scale Sets [Configure managed identities on virtual machine scale set](/entra/identity/managed-identities-azure-resources/how-to-configure-managed-identities-scale-sets)
 
-2. Assign role to the Virtual Machine Scale Sets managed identity to storage account [Assign Azure roles using the Azure portal - Azure RBAC](https://learn.microsoft.com/azure/role-based-access-control/role-assignments-portal?tabs=current#step-2-open-the-add-role-assignment-pane)
-    1. Storage Blob Data Contributor Role at minimum 
+2. Assign role to the VMSS managed identity to storage account by following the instructions starting in step two of [Assign Azure roles using the Azure portal - Azure RBAC](/azure/role-based-access-control/role-assignments-portal)
+    * Storage Account Contributor, Storage Blob Data Contributor, and Storage Table Data Contributor Role at minimum
 
-[For more information on Managed Identity](https://learn.microsoft.com/entra/identity/managed-identities-azure-resources/overview)
+[For more information on Managed Identity](/entra/identity/managed-identities-azure-resources/overview)
 
 #### PowerShell using Microsoft.ServiceFabric.Powershell.Http Module
 

@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a cloud administrator, I want to add virtual machine scale set extensions to my Service Fabric managed cluster node types, so that I can automate configuration and improve management of the cluster nodes.
 ---
 
 # Virtual machine scale set extension support on Service Fabric managed cluster node type(s)

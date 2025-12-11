@@ -7,30 +7,36 @@ ms.topic: how-to
 ms.reviewer: jushiman
 ms.date: 11/7/2023
 ms.custom: devx-track-azurepowershell
+# Customer intent: "As an IT administrator, I want to enable Automatic Extension Upgrade for virtual machines and scale sets, so that I can ensure all extensions are automatically updated to the latest versions without manual intervention for improved security and functionality."
 ---
 
 # Automatic Extension Upgrade for virtual machines and scale sets in Azure
 
-Automatic Extension Upgrade is available for Azure Virtual Machines and Azure Virtual Machine Scale Sets. When Automatic Extension Upgrade is enabled on a virtual machine (VM) or scale set, the extension automatically upgrades whenever the extension publisher releases a new version for that extension.
+Automatic Extension Upgrade is available for Azure Virtual Machines and Azure Virtual Machine Scale Sets. When Automatic Extension Upgrade is enabled on a virtual machine (VM) or scale set, Azure automatically monitors for new extension versions, assess the quality & safety of the new version, approves the version for rollout and then automatically upgrades all VMs using the extension. Azure upgrades all the VMs gradually following Safe Deployment Practices (SDP) to prevent bad version from causing outage and ensure high availabilty for applications. This gradual rollout can take 1-2 months to complete based on time required for assessment, the severity of the upgrade and the scale of VMs needed to be upgraded. 
 
  Automatic Extension Upgrade has the following features:
 
-- Azure VMs and virtual machine scale sets are supported.
-- Upgrades are applied in an availability-first deployment model.
-- For a virtual machine scale set, no more than 20% of the scale set VM upgrades are in a single batch. The minimum batch size is one VM.
-- All VM sizes and both Windows and Linux extensions are compatible.
-- Automatic upgrades are optional at any time.
-- Virtual machine scale sets of any size are enabled.
+- Azure VMs, virtual machine scale sets and [Arc VMs](/azure/azure-arc/servers/manage-automatic-vm-extension-upgrade) are supported.
+- Upgrades are applied in an availability-first deployment model following (Safe Deployment Practices)[/azure/well-architected/operational-excellence/safe-deployments] (SDP).
+- For a virtual machine scale set, by default, no more than 20% of the scale set VMs are upgraded in a single batch. This batch size can be changed by defining [VMSS Rolling Upgrade Policy](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-configure-rolling-upgrades).
+- For Azure VMs & Arc VMs, no more than 20% of the VMs are upgraded in a single batch. This batch size cannot be changed.
+- All failed upgrades are automatically rolled back to try and bring the VM back to healthy state.
+- All upgrades are rebootless. Therefore VM does not need a reboot after the upgrade. 
+- All VM sizes are supported.
+- Both Windows and Linux extensions are compatible.
+- Automatic upgrades are enabled by default starting API version `2025-04-01`.
 - Each supported extension is enrolled individually. You can choose which extensions to upgrade automatically.
-- All public cloud regions are supported.
-
+- All public, sovereign and airgapped cloud regions are supported.
+  
 ## How does Automatic Extension Upgrade work?
 
-The extension upgrade process replaces the existing extension version on a VM whenever the extension publisher publishes a new version of the same extension. The health of the VM is monitored after the new extension is installed. If the VM isn't in a healthy state within five minutes of the upgrade completion, the extension version rolls back to the previous version.
+The extension upgrade process removes the existing extension on a VM and reinstalls the extension with the new version. 
+1. When the extension publisher publishes a new version of the same extension, Azure detects the new version and starts a quality assessment process. This process validates the version for security, quality and safe upgrades without failures. The version is approved for rollout once it passes the assessment.
+2. Azure starts with one region or zone (Rollout starts from canary region) and once it is completely upgraded, it moves to the next region or zone.
+3. Within a region/zone, Azure groups VMs into smaller batches (based on default or rolling upgrade policies) and upgrades one batch at a time. Azure moves to the next batch once the previous batch is successfully upgraded.
+4. Azure monitors for VM and App health (using App health extension) after the upgrade to detect failures. If the VM isn't healthy within five minutes of the upgrade, the upgrade is rollback and previous version of the extension is installed. The upgrade is automatically retried after some time without needing customer intervention. 
 
-A failed extension upgrade is automatically retried. A retry is attempted every few days automatically without user intervention.
-
-### Availability-first updates
+### Availability-first Upgrades
 
 The availability-first model for platform-orchestrated upgrades ensures that availability configurations in Azure are respected across multiple availability levels.
 
@@ -41,7 +47,7 @@ For a group of VMs undergoing an upgrade, the Azure platform orchestrates upgrad
 - An upgrade moves across Azure globally in a phased manner to prevent Azure-wide deployment failures.
 - A phase can have one or more regions, and an upgrade moves across phases only if eligible VMs in the previous phase upgrade successfully.
 - Geo-paired regions aren't upgraded concurrently and can't be in the same regional phase.
-- The success of an upgrade is measured by tracking the health of a VM post upgrade. VM health is tracked through platform health indicators for the VM. For virtual machine scale sets, the VM health is tracked through application health probes or the Application Health extension, if it's applied to the scale set.
+- The success of an upgrade is measured by tracking the health of a VM post upgrade. VM health is tracked through platform health indicators for the VM (VM health & App Health reported by App Health Extension)
 
 #### Within a region
 

@@ -4,10 +4,11 @@ description: Information on and specifications of the HX-series sizes
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
-ms.date: 01/28/2025
+ms.topic: concept-article
+ms.date: 11/24/2025
 ms.author: padmalathas
 ms.reviewer: mattmcinnes
+# Customer intent: As a cloud architect, I want to understand the specifications and features of the HX series VM sizes, so that I can effectively select the appropriate size for my workloads based on performance and storage requirements.
 ---
 
 # HX sizes series
@@ -28,11 +29,11 @@ vCPUs (Qty.) and Memory for each size
 
 | Size Name | vCPUs (Qty.) | Memory (GB) | L3 Cache (MB) | Memory Bandwidth (GB/s) | Base CPU Frequency (GHz) |  Single-core Frequency Peak (GHz) | All-core Frequency Peak (GHz) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_HX176rs | 176 | 1408 | 2304 | 780 | 2.4 | 3.7 | 3.7 |
-| Standard_HX176-144rs | 144 | 1408 | 2304 | 780 | 2.4 | 3.7 | 3.7 |
-| Standard_HX176-96rs | 96 | 1408 | 2304 | 780 | 2.4 | 3.7 | 3.7 |
-| Standard_HX176-48rs | 48 | 1408 | 2304 | 780 | 2.4 | 3.7 | 3.7 |
-| Standard_HX176-24rs | 24 | 1408 | 2304 | 780 | 2.4 | 3.7 | 3.7 |
+| Standard_HX176rs | 176 | 1408 | 2304 | 780 | 2.55 | 3.7 | 3.7 |
+| Standard_HX176-144rs | 144 | 1408 | 2304 | 780 | 2.55 | 3.7 | 3.7 |
+| Standard_HX176-96rs | 96 | 1408 | 2304 | 780 | 2.55 | 3.7 | 3.7 |
+| Standard_HX176-48rs | 48 | 1408 | 2304 | 780 | 2.55 | 3.7 | 3.7 |
+| Standard_HX176-24rs | 24 | 1408 | 2304 | 780 | 2.55 | 3.7 | 3.7 |
 
 #### VM Basics resources
 - [Check vCPU quotas](../../../virtual-machines/quotas.md)
@@ -92,11 +93,11 @@ Network interface info for each size
 
 | Size Name | Max NICs (Qty.) | Max Network Bandwidth (Mb/s) |
 | --- | --- | --- |
-| Standard_HX176rs | 8 |  40000 |
-| Standard_HX176-144rs | 8 |  40000 |
-| Standard_HX176-96rs | 8 | 40000 |
-| Standard_HX176-48rs | 8 | 40000 |
-| Standard_HX176-24rs | 8 | 40000 |
+| Standard_HX176rs | 8 |  80000 |
+| Standard_HX176-144rs | 8 |  80000 |
+| Standard_HX176-96rs | 8 | 80000 |
+| Standard_HX176-48rs | 8 | 80000 |
+| Standard_HX176-24rs | 8 | 80000 |
 
 #### Networking resources
 - [Virtual networks and virtual machines in Azure](/azure/virtual-network/network-overview)

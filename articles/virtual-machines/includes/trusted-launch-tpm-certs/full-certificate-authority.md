@@ -1,17 +1,18 @@
 ---
-title: Full Certificate Authority for TPM cert
+title: Full Certificate Authority for TPM cert ICA-01
 description: Include file for Full Certificate Authority
-author: ju-shim
+author: prasadmsft
 ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.date: 09/28/2023
-ms.author: jushiman
+ms.date: 08/05/2025
+ms.author: reprasa
 ms.custom: include file
+# Customer intent: "As a security administrator, I want to obtain the full certificate authority for Virtual Trusted Platform Module (TPM), so that I can ensure secure certificate management and compliance with organizational policies."
 ---
 
 <details>
-<summary>Select to view the .p7b content</summary>
+<summary>Select to view the .p7b content (Root + ICA-01)</summary>
 
 Global Virtual TPM CA - 01:
 
@@ -110,12 +111,6 @@ RhFYPN2PJzPmPmvSdJVJx8rTEhWRPOYfPDrHkUtkMKo6M1KNo9Q6MJoUklL/TWuQ
 HttsnHIgZBGUqvGuK0pcKrYWhCzaXqEy1JOolaFJCv4i72jL65HY/ciWNTv4L5Xz
 dmojU0k/9m3fjwOEQU6Bva15+rzZFFnWy4m1MQA=
 -----END CERTIFICATE-----
-
-Full Certificate Authority Details
-
-Thumbprint # cdb9bc34197a5355f652f1583fbd4e9a1d4801f0
-Serial Number # 51f431da2c92088a4e29e0d929de4aa7
-Valid Until # 01/Jun/2048
 
 ```
 

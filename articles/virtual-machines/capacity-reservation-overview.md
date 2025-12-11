@@ -4,10 +4,11 @@ description: Learn how to reserve compute capacity in an Azure region or an avai
 author: bdeforeest
 ms.author: bidefore
 ms.service: azure-virtual-machines
-ms.topic: how-to
+ms.topic: overview
 ms.date: 02/24/2023
 ms.reviewer: cynthn, jushiman, mattmcinnes
 ms.custom: template-how-to
+# Customer intent: "As an IT administrator, I want to create and manage on-demand capacity reservations in Azure, so that I can ensure the availability of compute resources for critical workloads without long-term commitments."
 ---
 
 # On-demand capacity reservation
@@ -57,55 +58,32 @@ From this example accumulation of Minutes Not Available, here's the calculation 
 - Creating capacity reservations is currently limited to certain VM series and sizes. The compute [Resource SKUs list](/rest/api/compute/resource-skus/list) advertises the set of supported VM sizes.
 - The following VM series support the creation of capacity reservations:
 
-    - Av2 
-    - B
-    - Bpsv2
-    - Bsv2 (Intel) and Basv2 (AMD)
-    - D and Ds series, v2 and newer; AMD and Intel
-    - Dadsv5
-    - Dav4 series
-    - Dasv4 and newer
-    - Ddv4 and v5 series
-    - Dds series, v4 and newer
-    - Dlsv5 and newer series
-    - Dldsv5 and newer series
-    - DCsv2 series
-    - DCasv5 and DCadsv5 series
-    - DCesv5 and DCedsv5 series
-    - ECasv5 and ECadsv5 series
-    - ECesv5 and ECedsv5 series
-    - Dplsv5 and newer series
-    - Dps and Dpds series, v5 and newer
-    - Dplds series, v5 and newer
-    - Eps and Epds series, v5 and newer
-    - E series, all versions; AMD and Intel
-    - Eav4 and Easv4 series
-    - Easv5 and Eadsv5 series
-    - Ebdsv5 and Ebsv5 series
-    - Ed and Eds series, v4 and newer
-    - F series, all versions
-    - Fx series
-    - Lsv3 (Intel) and Lasv3 (AMD)
+  Reserved capacity for these VM series supports high availability using multi-zone or fault domains. The fault domain count for a Virtual Machine Scale Set is limited to 3, enforced at deployment.  
 
-    At VM deployment, you can set a fault domain (FD) count of up to three by using Azure Virtual Machine Scale Sets. A deployment with more than three FDs fails to deploy against a capacity reservation.
-- At VM deployment for the following VM series for capacity reservation, you can set an FD count of one by using Virtual Machine Scale Sets. A deployment with more than one FD fails to deploy against a capacity reservation:
-    - NC-series, v3
-    - NCasT4_v3 series
-    - NCADSA10_v4 series
-    - NC_A100_v4 series
-    - NV-series, v3 and newer
-    - NVadsA10_v5 series
-    - NGads V620_v1 series
-    - M-series, v2
-    - M-series, v3
-- Support for the following VM series for capacity reservation is in public preview:
-    - Lsv2
+  | Type | VM Series |
+  | ----- | ----------- |
+  | General Purpose (Burstable) | B (Intel) <br> Bsv2 (Intel), Basv2 (AMD), Bpsv2 (ARM) |
+  | General Purpose (General use A, D) | Av2 (Intel) <br> D and Ds series, v2 and newer (Intel) <br> Dd and Dds, v4 and newer (Intel, local disk) <br> Dls and Dlds, v5 and newer (Intel, low memory) <br> Da and Das, v4 series and newer (AMD) <br> Dads, v5 and newer (AMD, local disk) <br> Dalsv6 and Daldsv6 (AMD) <br> Dps and Dpds series, v5 and newer (ARM) <br> Dpls and Dplds series, v5 and newer (ARM, low memory) |
+  | General Purpose (General use, high memory, E )| E and Es, all versions (Intel) <br> Ed and Eds series, v4 and newer (Intel, local disk) <br> Ebdsv5 and Ebsv5 series (Intel, block storage) <br> Ea and Eas, v4 and newer (AMD) <br> Eads, v5 series (AMD, local disk) <br> Eps and Epds series, v5 and newer (ARM) |
+  | General Purpose (General use, compute optimized, F) | Fsv2 series (Intel) <br> Fasv6 and Falsv6 series (AMD)  <br> Famsv6 (AMD) <br> FX series (Intel) <br> FXmsv2 (Intel) <br> FXmdsv2 (Intel) |
+  | Storage optimized| Lsv3 (Intel) <br> Lasv3 (AMD) |
+  | Confidential compute | DCsv2 series (Intel) <br> DCasv5 and DCadsv5 series (AMD) <br> DCesv5 and DCedsv5 series (Intel) <br> ECasv5 and ECadsv5 series (AMD) <br> ECesv5 and ECedsv5 series (Intel) |
+
+  Reserved capacity for these VM series supports only multi-zone high availability. Virtual Machine Scale Sets with a fault domain availability construct is not supported. 
+
+  | Type | VM Series |
+  | ----- | ----------- |
+  | GPU-accelerated compute | NC-series, v3 (Intel) <br> NCasT4_v3 series (AMD) <br> NCADSA10_v4 series (AMD) <br> NC_A100_v4 series (AMD) <br> NV-series, v3 and newer (Intel) <br> NVadsA10_v5 series (AMD) <br> NVads V710 v5 series (AMD) <br> NGads V620_v1 series (AMD) |
+  | Memory optimized | Msv2 Medium Memory series (Intel) <br> Mdsv2 Medium Memory series (Intel) <br> Mv2 (Intel) <br>Mdsv3 Medium Memory series (Intel) <br> Msv3 Medium Memory series (Intel) <br> Mbsv3 and Mbdsv3 series (Intel) |
+  | Storage optimized| Lsv2 (Intel)-Preview |
+
 - Support for other VM series isn't currently available:
-    - M series, v1
-    - M series, HM and VHM
-    - ND-series 
-    - Hb-series 
-    - Hc-series 
+  
+  | Type | VM Series |
+  | ----- | ----------- |
+  | GPU-accelerated compute | ND-series <br> NCads H100 v5-series <br> Hb-series <br> Hc-series |
+  | Memory optimized | M series, v1 <br> Msv3 HM <br> Mdsv3 HM and Mdsv3 VHM |
+  
 - The following deployment types are supported: 
     - Single VM
     - Virtual Machine Scale Sets with Uniform Orchestration
@@ -120,15 +98,13 @@ From this example accumulation of Minutes Not Available, here's the calculation 
     - Virtual Machine Scale Sets with single placement group set to `true` 
     - Azure Ultra Disk Storage (formerly UltraSSD)
     - VMs resuming from hibernation 
-    - VMs requiring virtual network encryption
 - A pinned subscription can't use the feature.
-- Only the subscription that created the reservation can use it.
+- Deployments using On demand capacity reservations are compatible with vNet Encryption when deployed using a supported VM size. For more information on which VM sizes this feature supports, see [Virtual Network Encryption](/azure/virtual-network/virtual-network-encryption-overview).
 - Reservations are only available to paid Azure customers. Sponsored accounts such as Free Trial and Azure for Students aren't eligible to use this feature.
 - Clouds supported for capacity reservation:
    - Azure Cloud
    - Azure for Government
-   - Azure in China (Preview)
-     - Support is not available for China North and China East
+   - Azure in China
 
 ## Pricing and billing 
 
@@ -158,7 +134,7 @@ The group specifies the Azure location:
 
 - The group sets the region in which all reservations are created. Examples are East US, North Europe, or Southeast Asia. 
 - The group sets the eligible zones. Examples are AZ1, AZ2, and AZ3 in any combination. 
-- If no zones are specified, Azure selects the placement for the group somewhere in the region. Each reservation specifies the region and may not set a zone. 
+- If no zones are specified, then Azure will select the best zone available upon initial capacity reservation creation. All VMs using the capacity reservation group must be deployed without specifying a zone; each associated VM wil be deployed to the zone Azure selected for the group.
 
 Each reservation in a group is for one VM size. If eligible zones were selected for the group, the reservation must be for one of the supported zones. 
 

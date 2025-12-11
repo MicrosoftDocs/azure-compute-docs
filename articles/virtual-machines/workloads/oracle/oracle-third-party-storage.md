@@ -7,6 +7,7 @@ ms.service: oracle-on-azure
 ms.collection: oracle
 ms.topic: concept-article
 ms.date: 10/07/2024
+# Customer intent: "As an IT decision-maker, I want to evaluate partner storage offerings for Oracle on Azure VMs so that I can ensure optimal performance and scalability for our demanding Oracle workloads."
 ---
 
 # Partner storage offerings for Oracle on Azure VMs

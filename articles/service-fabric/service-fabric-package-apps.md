@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: "As a developer packaging a Service Fabric application, I want to organize the application files and validate the package structure, so that I can ensure a smooth deployment to the cluster."
 ---
 
 # Package an application

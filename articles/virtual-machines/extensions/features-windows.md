@@ -8,8 +8,9 @@ ms.author: gabsta
 author: GabstaMSFT
 ms.reviewer: jushiman
 ms.collection: windows
-ms.date: 04/03/2023
+ms.date: 08/18/2025
 ms.custom: devx-track-azurepowershell
+# Customer intent: As a cloud administrator, I want to explore and implement various Azure VM extensions for Windows, so that I can automate configurations, enhance security, and improve the management of virtual machines efficiently.
 ---
 
 # Virtual machine extensions and features for Windows
@@ -20,11 +21,11 @@ You can run Azure VM extensions by using the Azure CLI, PowerShell, Azure Resour
 
 This article provides an overview of Azure VM extensions, including prerequisites and guidance on how to detect, manage, and remove extensions. This article provides generalized information because many VM extensions are available. Each extension has a potentially unique configuration and its own documentation.
 
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
+
 ## Use cases and samples
 
 Each Azure VM extension has a specific use case. Here are some examples:
-
-- Apply PowerShell desired state configurations (DSCs) to a VM by using the [DSC extension for Windows](dsc-overview.md).
 
 - Configure monitoring of a VM by using the [Azure Monitor agent](/azure/azure-monitor/vm/monitor-virtual-machine) and [VM insights](/azure/azure-monitor/vm/vminsights-overview).
 
@@ -449,7 +450,6 @@ The following table provides some common references for VM extensions.
 | Extension name | Description |
 | --- | --- |
 | [Custom Script Extension for Windows](custom-script-windows.md) | Run scripts against an Azure virtual machine. |
-| [DSC extension for Windows](dsc-overview.md) | Apply PowerShell desired state configurations to a virtual machine. |
 | [Azure Diagnostics extension](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) | Manage Azure Diagnostics. |
 | [VMAccess extension](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) | Manage users and credentials. |
 

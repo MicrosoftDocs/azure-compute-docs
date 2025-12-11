@@ -8,7 +8,8 @@ ms.author: gabsta
 ms.custom: GGAL-freshness822, devx-track-azurecli, linux-related-content
 author: GabstaMSFT
 ms.collection: linux
-ms.date: 03/31/2023
+ms.date: 08/18/2025
+# Customer intent: "As a cloud administrator, I want to configure Linux VMs using the Custom Script Extension, so that I can automate post-deployment setup and management tasks effectively."
 ---
 # Use the Azure Custom Script Extension Version 2 with Linux virtual machines
 
@@ -25,22 +26,24 @@ There are two versions of the Custom Script Extension:
 
 Use Version 2 for new and existing deployments. The new version is a drop-in replacement. The migration is as easy as changing the name and version. You don't need to change your extension configuration.
 
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
+
 ## Prerequisites
 
 ### Supported Linux distributions
 
-| Distribution | x64 | ARM64 |
-|:-----|:------|:------|
-| Alma Linux | 9.x+ | 9.x+ |
-| Debian | 10+ | 11.x+ |
-| Flatcar Linux | 3374.2.x+ | 3374.2.x+ |
-| Azure Linux | 2.x | 2.x |
-| openSUSE | 12.3+ | Not Supported |
-| Oracle Linux | 6.4+, 7.x+, 8.x+ | Not Supported |
-| Red Hat Enterprise Linux | 6.7+, 7.x+, 8.x+, 9.x+ | 8.6+, 9.x+ |
-| Rocky Linux | 9.x+ | 9.x+ |
-| SLES | 12.x+, 15.x+ | 15.x SP4+ |
-| Ubuntu | 18.04+, 20.04+, 22.04+ | 20.04+, 22.04+ |
+| Publisher | Distribution | x64 | ARM64 |
+|:-----|:-----|:-----:|:-----:|
+| Alma Linux Community | Alma Linux | 8.x+, 9.x+ | 8.x+, 9.x+ |
+| Credativ | Debian | 10+ | 11.x+ |
+| Kinvolk | Flatcar Linux | 3374.2.x+ | 3374.2.x+ |
+| Microsoft | Azure Linux | 2.x | 2.x |
+| openSUSE Project | openSUSE | 12.3+ | *Not supported* |
+| Oracle | Oracle Linux | 6.4+, 7.x+, 8.x+ | *Not supported* |
+| Red Hat | Red Hat Enterprise Linux | 6.7+, 7.x+,  8.x+, 9.x+, 10.x+ | 8.6+, 9.0+, 10.x+ |
+| CIQ | Rocky Linux | 9.x+ | 9.x+ |
+| SUSE | SLES | 12.x+, 15.x+ | 15.x SP4+ |
+| Canonical | Ubuntu (LTS releases)| 18.04+, 20.04+, 22.04+, 24.04+ | 20.04+, 22.04+, 24.04+ |
 
 ### Script location
 
@@ -125,7 +128,7 @@ You can store sensitive data in a protected configuration, which is encrypted an
 | timestamp | `123456789` | 32-bit integer |
 | storageAccountName | `examplestorageacct` | string |
 | storageAccountKey | `TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg==` | string |
-| managedIdentity | `{ }` or `{ "clientId": "31b403aa-c364-4240-a7ff-d85fb6cd7232" }` or `{ "objectId": "12dd289c-0583-46e5-b9b4-115d5c19ef4b" }` | JSON object |
+| managedIdentity | `{ }` or `{ "clientId": "00001111-aaaa-2222-bbbb-3333cccc4444" }` or `{ "objectId": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb" }` | JSON object |
 
 ### Property value details
 
@@ -241,7 +244,7 @@ To use the user-assigned identity on the target VM or Virtual Machine Scale Set,
 {
   "fileUris": ["https://mystorage.blob.core.windows.net/privatecontainer/script1.sh"],
   "commandToExecute": "sh script1.sh",
-  "managedIdentity" : { "clientId": "31b403aa-c364-4240-a7ff-d85fb6cd7232" }
+  "managedIdentity" : { "clientId": "00001111-aaaa-2222-bbbb-3333cccc4444" }
 }
 ```
 
@@ -249,7 +252,7 @@ To use the user-assigned identity on the target VM or Virtual Machine Scale Set,
 {
   "fileUris": ["https://mystorage.blob.core.windows.net/privatecontainer/script1.sh"],
   "commandToExecute": "sh script1.sh",
-  "managedIdentity" : { "objectId": "12dd289c-0583-46e5-b9b4-115d5c19ef4b" }
+  "managedIdentity" : { "objectId": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb" }
 }
 ```
 

@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a developer configuring stateful actors, I want to modify the ReliableDictionaryActorStateProvider settings in the settings.xml file, so that I can optimize performance and ensure efficient state management within my Azure Service Fabric cluster.
 ---
 
 # Configuring Reliable Actors--ReliableDictionaryActorStateProvider

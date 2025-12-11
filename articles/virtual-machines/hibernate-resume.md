@@ -4,10 +4,11 @@ description: Overview of hibernating your VM.
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.topic: how-to
-ms.date: 05/14/2024
+ms.date: 10/24/2025
 ms.author: jainan
 ms.reviewer: mattmcinnes
 ms.custom:
+# Customer intent: "As a cloud administrator, I want to hibernate my virtual machine, so that I can save on compute costs while maintaining the state of my applications for quick resumption."
 ---
 
 # Hibernation for Azure virtual machines
@@ -44,7 +45,7 @@ Supported operating systems, OS specific limitations, and configuration procedur
 VM sizes with up to 64-GB RAM from the following General Purpose VM series support hibernation.
 - [Dasv5-series](dasv5-dadsv5-series.md) 
 - [Dadsv5-series](dasv5-dadsv5-series.md) 
-- [Dsv5-series](../virtual-machines/dv5-dsv5-series.md)
+- [Dsv5-series](../virtual-machines/sizes/general-purpose/dsv5-series.md)
 - [Ddsv5-series](ddv5-ddsv5-series.md)
 - [Easv5-series](easv5-eadsv5-series.md)
 - [Eadsv5-series](easv5-eadsv5-series.md)
@@ -52,13 +53,10 @@ VM sizes with up to 64-GB RAM from the following General Purpose VM series suppo
 - [Edsv5-series](edv5-edsv5-series.md)
 
 VM sizes with up to 112-GB RAM from the following GPU VM series support hibernation.
-- [NVv4-series](../virtual-machines/nvv4-series.md) (in preview)
-- [NVadsA10v5-series](../virtual-machines/nva10v5-series.md) If you are using any UVM-enabled compute applications then we recommned you to idle the application before initiating hibernate action. 
-- 
+- [NVv4-series](../virtual-machines/nvv4-series.md)
+- [NVadsA10v5-series](../virtual-machines/nva10v5-series.md)
 
-> [!IMPORTANT]
-> Azure Virtual Machines - Hibernation for GPU VMs is currently in PREVIEW.
-> See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
+If you are using any UVM-enabled compute applications, we recommend idling the application before initiating hibernation. 
 
 ### General limitations
 - You can resize VMs that have hibernation enabled, but not when the VM is in a *Hibernated* state. The VM should either be in a *Running* or *Stopped* state.

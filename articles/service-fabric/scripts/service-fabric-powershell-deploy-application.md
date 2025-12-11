@@ -9,6 +9,7 @@ ms.topic: sample
 ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc, devx-track-azurepowershell
+# Customer intent: As a cloud developer, I want to deploy an application to a Service Fabric cluster using PowerShell scripts, so that I can efficiently manage and automate application instances within my cloud environment.
 ---
 
 # Deploy an application to a Service Fabric cluster

@@ -10,6 +10,7 @@ ms.service: azure-virtual-machines
 ms.subservice: image-builder
 ms.collection: windows
 ms.custom: devx-track-azurepowershell
+# Customer intent: "As a cloud engineer, I want to create a customized Windows VM using PowerShell with VM Image Builder, so that I can automate the deployment of standardized VM images across my Azure environment."
 ---
 # Create a Windows VM with VM Image Builder by using PowerShell
 
@@ -21,7 +22,7 @@ Builder PowerShell module.
 
 ## Prerequisites
 
-If you don't have an Azure subscription, [create a free account](https://azure.microsoft.com/free/) before you begin.
+If you don't have an Azure subscription, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 If you choose to use PowerShell locally, this article requires that you install the Azure PowerShell
 module and connect to your Azure account by using the [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet. For more information, see [Install Azure PowerShell](/powershell/azure/install-azure-powershell).
@@ -182,6 +183,7 @@ Grant Azure image builder permissions to create images in the specified resource
      Publisher = 'myCo'
      Offer = 'Windows'
      Sku = 'Win2019'
+     HyperVGeneration = 'v1'
    }
    New-AzGalleryImageDefinition @GalleryParams
    ```

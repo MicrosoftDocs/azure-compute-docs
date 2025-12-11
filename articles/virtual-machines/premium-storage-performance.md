@@ -4,9 +4,10 @@ description: Design high-performance apps by using Azure premium SSD managed dis
 author: roygara
 ms.service: azure-disk-storage
 ms.custom: linux-related-content
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 06/29/2021
 ms.author: rogarana
+# Customer intent: As a developer, I want to optimize application performance on premium storage, so that I can ensure my high-performance apps meet the demands of I/O-intensive workloads efficiently.
 ---
 
 # Azure premium storage: Design for high performance
@@ -294,7 +295,7 @@ Remember, the premium storage disks have higher performance capabilities compare
 
 ## Disk caching
 
-High-scale VMs that use premium storage have a multitier caching technology called **BlobCache**. **BlobCache** uses a combination of the host RAM and local SSD for caching. This cache is available for the premium storage persistent disks and the VM local disks. By default, this cache setting is set to **ReadWrite** for OS disks and **ReadOnly** for data disks hosted on premium storage. With disk caching enabled on the premium storage disks, the high-scale VMs can achieve extremely high levels of performance that exceed the underlying disk performance.
+High-scale VMs that use premium storage have a multitier caching technology called **BlobCache**. **BlobCache** uses a combination of the host RAM and local SSD for caching. This cache is available for Standard HDD, Standard SSD, and Premium SSD managed disks. By default, this cache setting is set to **ReadWrite** for OS disks and **ReadOnly** for data disks. With disk caching enabled, the high-scale VMs can achieve extremely high levels of performance that exceed the underlying disk performance.
 
 > [!WARNING]
 > Disk caching isn't supported for disks 4 TiB and larger. If multiple disks are attached to your VM, each disk that's smaller than 4 TiB supports caching.
@@ -303,14 +304,14 @@ High-scale VMs that use premium storage have a multitier caching technology call
 
 To learn more about how **BlobCache** works, see the Inside [Azure premium storage](https://azure.microsoft.com/blog/azure-premium-storage-now-generally-available-2/) blog post.
 
-It's important to enable caching on the right set of disks. Whether you should enable disk caching on a premium disk or not depends on the workload pattern that disk is handling. The following table shows the default cache settings for OS and data disks.
+It's important to enable caching on the right set of disks. Whether you should enable disk caching on a disk or not depends on the workload pattern that disk is handling. The following table shows the default cache settings for OS and data disks.
 
 | Disk type | Default cache setting |
 | --- | --- |
 | OS disk |ReadWrite |
 | Data disk |ReadOnly |
 
-We recommend the following disk cache settings for data disks.
+You should use the following disk cache settings for data disks:
 
 | Disk caching setting | Recommendation for when to use this setting |
 | --- | --- |
@@ -320,10 +321,10 @@ We recommend the following disk cache settings for data disks.
 
 ### ReadOnly
 
-By configuring **ReadOnly** caching on premium storage data disks, you can achieve low read latency and get very high read IOPS and throughput for your application for two reasons:
+By configuring **ReadOnly** caching on data disks, you can achieve low read latency and get very high read IOPS and throughput for your application for two reasons:
 
 1. Reads performed from cache, which is on the VM memory and local SSD, are faster than reads from the data disk, which is on Azure Blob Storage.
-1. Premium storage doesn't count the reads served from the cache toward the disk IOPS and throughput. For this reason, your application can achieve higher total IOPS and throughput.
+1. Storage doesn't count the reads served from the cache toward the disk IOPS and throughput. For this reason, your application can achieve higher total IOPS and throughput.
 
 ### ReadWrite
 
@@ -333,11 +334,11 @@ By default, the OS disks have **ReadWrite** caching enabled. We recently added s
 
 Currently, **None** is only supported on data disks. It isn't supported on OS disks. If you set **None** on an OS disk, it overrides this setting internally and sets it to **ReadOnly**.
 
-As an example, you can apply these guidelines to SQL Server running on premium storage by following these steps:
+As an example, you can apply these guidelines to SQL Server running on premium storage enabled VMs by following these steps:
 
-1. Configure the **ReadOnly** cache on premium storage disks hosting data files.
+1. Configure the **ReadOnly** cache on Standard HDD, Standard SSD, or Premium SSD managed disks hosting data files.
    1. The fast reads from cache lower the SQL Server query time because data pages are retrieved faster from the cache compared to directly from the data disks.
-   1. Serving reads from cache means there's more throughput available from premium data disks. SQL Server can use this extra throughput toward retrieving more data pages and other operations like backup/restore, batch loads, and index rebuilds.
+   1. Serving reads from cache means there's more throughput available from the data disks. SQL Server can use this extra throughput toward retrieving more data pages and other operations like backup/restore, batch loads, and index rebuilds.
 1. Configure the **None** cache on premium storage disks hosting the log files.
    1. Log files have primarily write-heavy operations, so they don't benefit from the **ReadOnly** cache.
 

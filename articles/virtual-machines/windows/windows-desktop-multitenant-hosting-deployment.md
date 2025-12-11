@@ -5,9 +5,10 @@ author: mimckitt
 ms.service: azure-virtual-machines
 ms.collection: windows
 ms.topic: how-to
-ms.date: 10/24/2022
+ms.date: 5/22/2025
 ms.author: mimckitt
 ms.custom: rybaker, chmimckitt, devx-track-azurepowershell
+# Customer intent: "As a system administrator, I want to deploy Windows 11 on Azure using existing licenses, so that I can leverage my Software Assurance benefits without incurring additional licensing costs."
 ---
 # How to deploy Windows 11 on Azure
 **Applies to:** :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets
@@ -17,7 +18,7 @@ For customers with Windows 11 Enterprise E3/E5 per user or Azure Virtual Desktop
 For more information, see [Multitenant Hosting for Windows 11](https://www.microsoft.com/en-us/CloudandHosting).
 
 > [!NOTE]
-> - To use Windows 7, 8.1 and 10 images for development or testing see [Windows client in Azure for dev/test scenarios](client-images.md)
+> - To use Windows 10 or 11 images for development or testing see [Windows client in Azure for dev/test scenarios](client-images.md)
 > - Student & Free Trial accounts are enabled to deploy Windows 11 images for development or testing purposes.
 > - For Windows Server licensing benefits, please refer to [Azure Hybrid use benefits for Windows Server images](hybrid-use-benefit-licensing.md).
 > - When selecting a VM size, ensure the size meets the [Windows 11 hardware minimum requirements](/windows-hardware/design/minimum/minimum-hardware-requirements-overview)

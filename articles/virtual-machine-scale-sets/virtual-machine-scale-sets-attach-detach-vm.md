@@ -1,13 +1,14 @@
 ---
 title: Attach or detach a virtual machine to or from a Virtual Machine Scale Set
 description: How to attach or detach a virtual machine to or from a Virtual Machine Scale Set
-author: fitzgeraldsteele 
-ms.author: fisteele 
+author: manasisoman 
+ms.author: manasisoman
 ms.topic: overview
 ms.service: azure-virtual-machine-scale-sets
 ms.custom: devx-track-azurecli
-ms.date: 06/14/2024
-ms.reviewer: jushiman
+ms.date: 04/23/2025
+ms.reviewer: cynthn
+# Customer intent: As an IT administrator, I want to attach or detach virtual machines to or from a Virtual Machine Scale Set so that I can manage resources effectively and optimize scaling based on workload demands.
 ---
 
 # Attach or detach a Virtual Machine to or from a Virtual Machine Scale Set
@@ -125,7 +126,7 @@ Update-AzVM -ResourceGroupName $resourceGroupName -VM $vm  -VirtualMachineScaleS
 - The VM must have a managed disk. 
 - The scale set must have `singlePlacementGroup` set to `False`. 
 - Scale sets created without a scaling profile default to `singlePlacementGroup` set to `null`. To attach VMs to a scale set without a scaling profile, `singlePlacementGroup` needs to be set to `False` at the time of the scale set's creation. 
-- The VM can't be a Remote Direct Memory Access (RDMA) capable HB-series or N-series VM.
+- The VM can't be a Remote Direct Memory Access (RDMA) capable HB-series or N-series VM (Preview feature).
 
 ## Detaching a Virtual Machine from a Virtual Machine Scale Set
 Should you need to detach a VM from a scale set, you can follow the below steps to remove the VM from the scale set.
@@ -163,7 +164,7 @@ Update-AzVM -ResourceGroupName $resourceGroupName -VM $vm -VirtualMachin
 - The scale set must use Flexible orchestration mode.
 - The scale set must have a `platformFaultDomainCount` of **1**.
 - Scale sets created without a scaling profile default to `singlePlacementGroup` set to `null`. To detach VMs from a scale set without a scaling profile, `singlePlacementGroup` needs to be set to `False`.  
-- The VM can't be an RDMA capable HB-series or N-series VM.
+- The VM can't be an RDMA capable HB-series or N-series VM (Preview feature).
 
 ## Moving Virtual Machines between scale sets
 
@@ -189,7 +190,7 @@ The limitations for VMs to be [attached](#limitations-for-attaching-an-existing-
 | PropertyChangeNotAllowed Changing property virtualMachineScaleSet.id isn't allowed.                                                                                                                                                            | The Virtual Machine Scale Set ID can't be changed to a different Virtual Machine Scale Set ID without detaching the VM from the scale set first.                                 | Detach the VM from the Virtual Machine Scale Set, and then attach to the new scale set.                                                                                                                                                                                                                                                                                         |
 | Virtual Machine Scale Set '{0}' does not support attaching an existing Virtual Machine to it because the Virtual Machine Scale Set has single placement group set to true or does not have single placement group explicitly set to false. Please see https://aka.ms/vmo/attachdetach for more information. | `VmssDoesNotSupportAttachingWithSpg`: The operation for attaching the VM failed because the scale set is part of a Single Placement Group. | VMs can only be attached to scale sets with `singlePlacementGroup` set to `false`.|
 | Virtual Machine Scale Set does not support attaching Virtual Machine {0} because it uses VM Size {1} which can be only be used with a single placement group enabled Virtual Machine Scale Set. Please see https://aka.ms/vmo/attachdetach for more information. | The VM being attached is of a size that requires the scale set to use a Single Placement Group. | VMs requiring Single Placement Group can't be attached to a scale set. |
-|Virtual Machine Scale Set does not support attaching RDMA capable VM Sizes such as {0}. Please see https://aka.ms/vmo/attachdetach for more information. | RDMA capable VMs can't be detached from the scale set. The detach failed because the VM is RDMA capable. | Only VMs that aren't RDMA enabled can be detached from the scale set. |
+|Virtual Machine Scale Set does not support attaching RDMA capable VM Sizes such as {0}. Please see https://aka.ms/vmo/attachdetach for more information. | RDMA capable VMs can't be detached from the scale set. The detach failed because the VM is RDMA capable. | Only VMs that aren't RDMA enabled can be detached from the scale set. This functionality is in Preview. |
 
 ### Detach a Virtual Machine from a scale set troubleshooting
 | Error Message                                                                                                                                                                                                                                                                                                  | Description                                                                                                                                                                                          | Troubleshooting options                                                                                                                                                                                    |
@@ -200,7 +201,7 @@ The limitations for VMs to be [attached](#limitations-for-attaching-an-existing-
 | OperationNotAllowed, Message: This operation is not allowed because referenced Virtual Machine Scale Set '{armId}' does not have orchestration mode set to 'Flexible'                                                                                                                                          | The scale set you attempted to attach to or detach from is a scale set with Uniform Orchestration Mode.                                                                                              | Only scale sets with Flexible Orchestration Mode can have VMs detached from them.                                                                                                                          |
 | PropertyChangeNotAllowed Changing property virtualMachineScaleSet.id is not allowed.                                                                                                                                                                                                                           | The Virtual Machine Scale Set ID can't be changed to a different Virtual Machine Scale Set ID without detaching the VM from the scale set first.                                                    | Detach the VM from the Virtual Machine Scale Set, and then attach to the new scale set. Ensure the `virtualMachineScaleSet.id` is set to the value of `null`. Incorrect values include: `""` and `"null"`. |
 | Virtual Machine Scale Set '{0}' does not support detaching Virtual Machine from it because the Virtual Machine Scale Set has single placement group set to true. Please see https://aka.ms/vmo/attachdetach for more information.| `VmssDoesNotSupportAttachingWithSpg`: The detach of the VM failed because the scale set is part of a Single Placement Group.| VMs can only be detached from scale sets with `singlePlacementGroup` set to `false`. |
-|Virtual Machine Scale Set does not support detaching RDMA capable VM Sizes such as {0}. Please see https://aka.ms/vmo/attachdetach for more information. | RDMA capable VMs can't be detached from the scale set. The detach failed because the VM is RDMA capable. | Only VMs that aren't RDMA enabled can be detached from the scale set. |
+|Virtual Machine Scale Set does not support detaching RDMA capable VM Sizes such as {0}. Please see https://aka.ms/vmo/attachdetach for more information. | RDMA capable VMs can't be detached from the scale set. The detach failed because the VM is RDMA capable. | Only VMs that aren't RDMA enabled can be detached from the scale set. This functionality is in Preview.|
 
 
 ## What's next

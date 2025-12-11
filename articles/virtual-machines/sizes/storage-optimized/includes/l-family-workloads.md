@@ -9,6 +9,7 @@ ms.subservice: sizes
 ms.date: 04/19/2024
 ms.author: mattmcinnes
 ms.custom: include file
+# Customer intent: "As a cloud architect, I want to evaluate L family virtual machine sizes, so that I can determine their suitability for big data applications, database servers, file servers, and video editing workloads in my organization."
 ---
 **Big Data Applications:** L-family VMs are perfect for big data applications that need to process, analyze, and manipulate large datasets stored directly on local disks, benefiting from the high I/O performance.
 

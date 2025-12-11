@@ -6,8 +6,9 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
-ms.date: 08/29/2024
+ms.date: 11/17/2025
 ms.custom: mvc, devx-track-azurecli
+# Customer intent: As a developer, I want to prepare an Azure Container Registry and push my container image, so that I can facilitate its deployment to Azure Container Instances in subsequent steps.
 ---
 
 # Tutorial: Create an Azure container registry and push a container image

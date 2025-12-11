@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.date: 11/19/2019
 ms.custom: devx-track-azurepowershell
 #pmcontact: shants
+# Customer intent: As an IT administrator managing Azure VMs, I want to access maintenance notifications and initiate maintenance using PowerShell, so that I can proactively manage VM availability and minimize downtime during planned maintenance events.
 ---
 
 

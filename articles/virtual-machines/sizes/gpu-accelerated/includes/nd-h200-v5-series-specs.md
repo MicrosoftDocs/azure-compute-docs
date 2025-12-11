@@ -9,6 +9,7 @@ ms.date: 09/12/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include filegit 
+# Customer intent: "As a cloud architect, I want to review the specifications of the ND-H200-v5 series VMs, so that I can assess their suitability for my high-performance computing needs."
 ---
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
 |---|---|---|

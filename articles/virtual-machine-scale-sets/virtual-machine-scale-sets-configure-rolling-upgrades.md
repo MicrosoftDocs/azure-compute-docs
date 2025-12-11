@@ -5,21 +5,20 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
-ms.date: 11/7/2024
-ms.reviewer: ju-shim
-ms.custom: upgradepolicy, maxsurge, ignite-2024
+ms.date: 03/21/2025
+ms.reviewer: cynthn
+ms.custom:
+  - upgradepolicy
+  - maxsurge
+  - ignite-2024
+  - sfi-image-nochange
+# Customer intent: As a cloud administrator, I want to configure rolling upgrades for Virtual Machine Scale Sets, so that I can apply updates safely without downtime and maintain high availability of my applications.
 ---
 # Configure rolling upgrades on Virtual Machine Scale Sets
 
 Using a rolling upgrade policy is the safest way to apply updates to instances in a Virtual Machine Scale Set. Performing updates in batches ensures that your scale set maintains a set number of instances available to take traffic, meaning you don't need to take down your entire workload to make a change. 
 
 Rolling upgrade policy is best suited for production workloads.
-
-> [!NOTE]
-> > To configure MaxSurge upgrades, register the following feature flag: <br>
-> `Register-AzProviderFeature -FeatureName MaxSurgeRollingUpgrade -ProviderNamespace Microsoft.Compute`<br><br>
-> To update the image reference version during an upgrade, register the following feature flag: <br>
-> `Register-AzProviderFeature -FeatureName ImageReferenceUpgradeForVmoVMs -ProviderNamespace Microsoft.Compute`
 
 ## Requirements
 

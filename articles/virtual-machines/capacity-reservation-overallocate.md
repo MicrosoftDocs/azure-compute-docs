@@ -8,6 +8,7 @@ ms.topic: how-to
 ms.date: 04/24/2023
 ms.reviewer: cynthn, jushiman, mattmcinnes
 ms.custom: template-how-to
+# Customer intent: "As a cloud administrator, I want to understand how overallocation of capacity reservations works, so that I can optimize the use of virtual machines while managing capacity and service-level agreements effectively."
 ---
 
   # Overallocate capacity reservation

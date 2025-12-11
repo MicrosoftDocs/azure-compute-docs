@@ -1,14 +1,15 @@
 ---
 title: Manage Virtual Machine Scale Sets with the Azure CLI
 description: Common Azure CLI commands to manage Virtual Machine Scale Sets, such as how to start and stop an instance, or change the scale set capacity.
-author: ju-shim
-ms.author: jushiman
+author: cynthn
+ms.author: cynthn
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
 ms.date: 06/14/2024
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
 
+# Customer intent: As a cloud administrator, I want to use the command line to efficiently manage Virtual Machine Scale Sets, so that I can automate lifecycle tasks and optimize resource allocation in my cloud environment.
 ---
 # Manage a Virtual Machine Scale Set with the Azure CLI
 

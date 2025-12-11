@@ -4,10 +4,11 @@ description: Information on and specifications of the Eav4-series sizes
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 08/01/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
+# Customer intent: As a cloud architect, I want to understand the specifications and performance features of the Eav4 virtual machine sizes, so that I can select the most suitable configuration for my applications and optimize resource utilization.
 ---
 
 # Eav4 sizes series

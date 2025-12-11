@@ -7,6 +7,7 @@ ms.topic: include
 ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
+# Customer intent: "As a cloud architect, I want to configure virtual machines with specific operating systems and security settings, so that I can deploy scalable and secure environments tailored to my project requirements."
 ---
 
 #### [Windows](#tab/windows/)

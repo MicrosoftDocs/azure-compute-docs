@@ -1,7 +1,7 @@
 ---
 title: Red Hat Enterprise Linux bring-your-own-subscription Azure images | Microsoft Docs
 description: Learn about bring-your-own-subscription images for Red Hat Enterprise Linux on Azure.
-author: ju-shim
+author: cynthn
 ms.reviewer: divargas
 ms.service: azure-virtual-machines
 ms.subservice: redhat
@@ -9,7 +9,8 @@ ms.custom: devx-track-azurecli, linux-related-content, devx-track-azurepowershel
 ms.collection: linux
 ms.topic: concept-article
 ms.date: 10/23/2024
-ms.author: jushiman
+ms.author: cynthn
+# Customer intent: As a cloud administrator, I want to provision Red Hat Enterprise Linux Gold Images using my existing subscription on Azure, so that I can manage costs while maintaining compliance and support for my cloud-based workloads.
 ---
 
 # Red Hat Enterprise Linux bring-your-own-subscription Gold Images in Azure
@@ -128,7 +129,7 @@ The following instructions walk you through the initial deployment process for a
 1. SSH into your VM, and verify that you have an unentitled image. To do this step, run `sudo yum repolist`. For RHEL 8 or 9, use `sudo dnf repolist`. The output asks you to use Subscription-Manager to register the VM with Red Hat.
 
 >[!NOTE]
->On RHEL 8 and 9, `dnf` and `yum` are interchangeable. For more information, see the [RHEL 8 admin guide](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/packaging_and_distributing_software/index) and [RHEL 9 admin guide](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/packaging_and_distributing_software/index).
+>On RHEL 8 and up, `dnf` and `yum` are interchangeable. For more information, see the [RHEL 8 admin guide](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/packaging_and_distributing_software/index).
 
 ## Use the Red Hat Gold Images from PowerShell
 
@@ -217,7 +218,7 @@ For steps to apply Azure Disk Encryption, see [Azure Disk Encryption scenarios o
 ## Next steps
 
 - More details about Red Hat Cloud Access are available at the [Red Hat public cloud documentation](https://access.redhat.com/public-cloud)
-- For step-by-step guides and program details for Cloud Access, see the [Red Hat Cloud Access documentation](https://access.redhat.com/documentation/en-us/subscription_central/1-latest/html/red_hat_cloud_access_reference_guide/index).
+- For step-by-step guides and program details for Cloud Access, see the [Red Hat Cloud Access documentation](https://docs.redhat.com/en/documentation/subscription_central/1-latest/html/getting_started_with_rhel_system_registration/red-hat-cloud-access-program-overview_#red-hat-cloud-access-program-overview_).
 - To learn more about the Red Hat Update Infrastructure, see [Azure Red Hat Update Infrastructure](./redhat-rhui.md).
 - To learn more about all the Red Hat images in Azure, see the [documentation page](./redhat-images.md).
 - For information on Red Hat support policies for all versions of RHEL, see the [Red Hat Enterprise Linux life cycle](https://access.redhat.com/support/policy/updates/errata) page.

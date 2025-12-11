@@ -8,8 +8,11 @@ ms.date: 11/10/2023
 ms.topic: how-to
 ms.service: azure-virtual-machines
 ms.subservice: image-builder
-ms.custom: devx-track-azurecli
 ms.collection: windows
+ms.custom:
+  - devx-track-azurecli
+  - sfi-ropc-nochange
+# Customer intent: As a cloud engineer, I want to create a new Windows VM image version from an existing image using an automation template, so that I can efficiently manage and deploy updated images in my Azure Compute Gallery.
 ---
 
 # Create a new Windows VM image from an existing image by using Azure VM Image Builder

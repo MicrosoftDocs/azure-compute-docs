@@ -1,12 +1,13 @@
 ---
 title: Azure Service Fabric Monitoring Partners 
 description: Learn how to monitor Azure Service Fabric applications, clusters, and infrastructure with partner monitoring solutions.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a cloud application developer, I want to select and integrate a third-party monitoring solution for my Service Fabric applications, so that I can effectively monitor performance, gather diagnostics, and enhance observability across my deployment.
 ---
 
 # Azure Service Fabric Monitoring Partners
@@ -29,9 +30,9 @@ The Service Fabric integration with AppDynamics is at the application level. By 
 
 New Relic is another Application Performance Management tool that integrates well with Service Fabric applications. You can install the New Relic NuGet packages and add specific environment variables in your manifest files to send your application telemetry to New Relic. Check out these [instructions](https://docs.newrelic.com/docs/agents/net-agent/azure-installation/install-net-agent-azure-service-fabric) to enable New Relic telemetry for your .NET Service Fabric applications.
 
-## ELK 
+## Elasticsearch 
 
-The ELK stack is a collection of open-source technologies: Elasticsearch, Logstash, and Kibana. By using these technologies in combination, you can collect, store, and analyze Service Fabric monitoring and diagnostics data. We have a tutorial for how to do this with Service Fabric native Java applications [here](service-fabric-tutorial-java-elk.md). 
+Elasticsearch offers a powerful and flexible platform for observing and monitoring your Service Fabric infrastructure. By leveraging Elasticsearch's robust search and analytics engine, you can ingest, store, and analyze diverse telemetry data, including logs, metrics, and traces, from your Service Fabric applications and the underlying cluster. This comprehensive approach allows for deep insights into the health, performance, and operational state of your services. Refer to these [instructions](/azure/partner-solutions/elastic/create?pivots=elastic-search#logs--metrics-tab-optional) on how to establish your Elastic deployment and begin forwarding your Service Fabric and all other Azure resource logs for evaluation and insights.
 
 ## Humio
 

@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a developer, I want to implement continuous integration and deployment for my container application, so that I can automate the build and release process, ensure consistent updates, and improve the efficiency of my development workflow.
 ---
 
 # Tutorial: Deploy a container application with CI/CD to a Service Fabric cluster

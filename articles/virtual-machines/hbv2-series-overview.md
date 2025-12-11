@@ -10,6 +10,7 @@ ms.date: 07/25/2024
 ms.reviewer: cynthn
 ms.author: padmalathas
 author: padmalathas
+# Customer intent: As an HPC application developer, I want to understand the specifications and performance characteristics of the HBv2-series virtual machines, so that I can optimize my workloads and ensure efficient resource allocation for high-performance computing tasks.
 ---
 
 

@@ -3,240 +3,221 @@ title: Update a Virtual Machine Scale Set with instance mix
 description: How to update a virtual machine scale set instance mix settings. 
 author: brittanyrowe 
 ms.author: brittanyrowe
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
-ms.date: 1/10/2025
-ms.reviewer: jushiman
+ms.date: 06/10/2025
+ms.reviewer: cynthn
+# Customer intent: As a cloud system administrator, I want to update the instance mix settings on a virtual machine scale set, so that I can optimize VM sizes and allocation strategies to better meet my application's performance and cost requirements.
 ---
 
 # Update instance mix settings on an existing scale set
-The article walks through how to update the instance mix settings on a scale set.
-
-> [!IMPORTANT]
-> Instance mix for Virtual Machine Scale Sets with Flexible Orchestration Mode is currently in preview. Previews are made available to you on the condition that you agree to the [supplemental terms of use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Some aspects of this feature may change before general availability (GA). 
-
-## Prerequisites
-Before using instance mix, complete feature registration for the `FlexVMScaleSetSkuProfileEnabled` feature flag using the [az feature register](/cli/azure/feature#az-feature-register) command:
-
-```azurecli-interactive
-az feature register --namespace "Microsoft.Compute" --name "FlexVMScaleSetSkuProfileEnabled"
-```
-
-It takes a few moments for the feature to register. Verify the registration status by using the [az feature show](/cli/azure/feature#az-feature-register) command:
-
-```azurecli-interactive
-az feature show --namespace "Microsoft.Compute" --name "FlexVMScaleSetSkuProfileEnabled"
-```
+This article explains how to update the instance mix settings on a scale set, including changing VM sizes and allocation strategies.
 
 ## Update the instance mix settings on an existing scale set
 The instance mix settings can be updated on your scale set via CLI, PowerShell, and REST API. You can change either the virtual machine (VM) sizes or the allocation strategy, or both, in a single call.
 
-When changing allocation strategies, the *new* allocation strategy won't become effective until the scale set scales in or out. That is to say, your existing VMs won't be altered based on the allocation strategy until there's a scaling action.
+> [!NOTE]
+> When you change the allocation strategy, the new strategy takes effect only after the scale set scales in or out. Existing VMs aren't affected until a scaling action occurs.
 
-When changing from `Prioritized` to another allocation strategy, you must first nullify the priority ranks associated with the VM sizes. This will be covered in more detail in the supporting code snippets. 
+When changing from `Prioritized (preview)` to another allocation strategy, you must first nullify the priority ranks associated with the VM sizes. 
 
 ### [Azure CLI](#tab/cli-1)
-Before using CLI commands with instance mix, be sure you're using the correct CLI version. Make sure you're using version `2.66.0` or greater.
+Ensure you're using Azure CLI version `2.66.0` or later.
 
-#### Change the Allocation Strategy
-You can use the following basic command to update the allocation strategy. In this case, we're updating the scale set to use the `CapacityOptimized` allocation strategy:
+#### Change the allocation strategy
+To update the allocation strategy, for example, to `CapacityOptimized`:
 
 ```azurecli-interactive
 az vmss update \
-    --resource-group {resourceGroupName} \
-    --name {scaleSetName} \
-    --set skuProfile.allocationStrategy=CapacityOptimized
+  --resource-group {resourceGroupName} \
+  --name {scaleSetName} \
+  --set skuProfile.allocationStrategy=CapacityOptimized
 ```
-#### Change the VM Sizes
-You can use the following command to update the VM sizes specified in the `skuProfile`. In this scenario, we're updating the VM sizes to be Standard D2asv4, Standard D2asv5, and Standard D2sv5:
+
+#### Change the VM sizes
+To update the VM sizes in the `skuProfile`, for example, to Standard_D2as_v4, Standard_D2as_v5, and Standard_D2s_v5:
+
+> [!NOTE]
+> When you update VM sizes, you must specify the complete list of sizes you want in the scale set. This operation replaces the entire list, not just adds or removes individual sizes.
 
 ```azurecli-interactive
 az vmss update \
-    --resource-group {resourceGroupName} \
-    --name {scaleSetName} \
-    --skuprofile-vmsizes Standard_D2as_v4 Standard_D2as_v5 Standard_D2s_v5
+  --resource-group {resourceGroupName} \
+  --name {scaleSetName} \
+  --skuprofile-vmsizes Standard_D2as_v4 Standard_D2as_v5 Standard_D2s_v5
 ```
 
 ### [Azure PowerShell](#tab/powershell-1)
 
-#### Change the Allocation Strategy
-You can use the following basic command to update the allocation strategy:
- 
+#### Change the allocation strategy
+To update the allocation strategy:
+
 ```azurepowershell-interactive
 # Set variable values
 $resourceGroupName = "resourceGroupName"
 $vmssName = "scaleSetName"
-$allocationStrategy = "CapacityOptimized";
+$allocationStrategy = "CapacityOptimized"
 
-# Get the scale set information
-$vmss = Get-AzVmss `
--ResourceGroupName $resourceGroupName `
--VMScaleSetName $vmssName;
+# Get the scale set
+$vmss = Get-AzVmss -ResourceGroupName $resourceGroupName -VMScaleSetName $vmssName
 
 # Update the allocation strategy
 $vmss.SkuProfile.AllocationStrategy = $allocationStrategy
 
-#Update the scale set
-Update-AzVmss `
--ResourceGroupName $resourceGroupName `
--VMScaleSetName $vmssName `
--VirtualMachineScaleSet $vmss
+# Apply the update
+Update-AzVmss -ResourceGroupName $resourceGroupName -VMScaleSetName $vmssName -VirtualMachineScaleSet $vmss
 ```
 
-#### Change the VM Sizes
-To change the VM sizes specified in your scale set, you can use the following PowerShell command. In this example, we'll be updating the scale set to use Standard D2asv4, Standard D2asv5, and Standard D2sv5.
+#### Change the VM sizes
+To update the VM sizes:
 
 ```azurepowershell-interactive
 # Set variable values
-$resourceGroupName = "resourceGroupName" `
-$vmssName = "scaleSetName";
+$resourceGroupName = "resourceGroupName"
+$vmssName = "scaleSetName"
 
-# Create a variable to hold the new VM Sizes values
-$vmSizeList = [System.Collections.Generic.List[Microsoft.Azure.Management.Compute.Models.SkuProfileVMSize]]::new() 
+# Create a list of new VM sizes
+$vmSizeList = [System.Collections.Generic.List[Microsoft.Azure.Management.Compute.Models.SkuProfileVMSize]]::new()
+$vmSizeList.Add("Standard_D2as_v4")
+$vmSizeList.Add("Standard_D2as_v5")
+$vmSizeList.Add("Standard_D2s_v5")
 
-# Add the VM sizes to the list
-$vmSizeList.Add("Standard_D2as_v5") `
-$vmSizeList.Add("Standard_D2s_v5") `
-$vmSizeList.Add("Standard_D2as_v4") ;
+# Get the scale set
+$vmss = Get-AzVmss -ResourceGroupName $resourceGroupName -VMScaleSetName $vmssName
 
-# Get the scale set information
-$vmss = Get-AzVmss `
--ResourceGroupName $resourceGroupName `
--VMScaleSetName $vmssName
-
-# Update the VM sizes in the scale set
+# Update the VM sizes
 $vmss.SkuProfile.vmSizes = $vmSizeList
 
-#Update the scale set
-Update-AzVmss `
--ResourceGroupName $resourceGroupName `
--VMScaleSetName $vmssName `
--VirtualMachineScaleSet $vmss
+# Apply the update
+Update-AzVmss -ResourceGroupName $resourceGroupName -VMScaleSetName $vmssName -VirtualMachineScaleSet $vmss
 ```
 
 ### [REST API](#tab/arm-1)
-To update the instance mix settings through REST API, use a `PATCH` call to the scale set resource. Be sure to use an API version on or after `2023-09-01`:
-```json
-PUT https://management.azure.com/subscriptions/{YourSubscriptionId}/resourceGroups/{YourResourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{youScaleSetName}?api-version=2023-09-01
+To update instance mix settings using the REST API, send a `PATCH` request to the scale set resource. Use API version `2023-09-01` or later:
+
+```http
+PATCH https://management.azure.com/subscriptions/{YourSubscriptionId}/resourceGroups/{YourResourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{yourScaleSetName}?api-version=2023-09-01
 ```
 
-The following subsections walk through what to use if you want to change the allocation strategy or VM sizes through REST APIs.
+#### Change the allocation strategy
+Specify both the VM sizes and the allocation strategy. For example, to set the allocation strategy to `capacityOptimized`:
 
-#### Change the Allocation Strategy
-You must specify both the VM sizes you'd like to use, and the allocation strategy. In this example, we're changing the allocation strategy to `capactiyOptimized`:
 ```json
 {
-	"properties": {
-		"skuProfile": {
-                "vmSizes": [
-                {
-                    "name": "Standard_D2as_v4"
-                },
-                {
-                    "name": "Standard_D2as_v5"
-                },
-                {
-                    "name": "Standard_D2s_v4"
-                },
-                {
-                    "name": "Standard_D2s_v3"
-                },
-                {
-                    "name": "Standard_D2s_v5"
-                }
-			],
-		    "allocationStrategy": "capacityOptimized"
-		}
-	}
-}
-```
-
-#### Change the VM Sizes
-To change the VM Sizes in your deployment, you only need to change the VM Sizes in the `skuProfile`. In this example, we're changing the VM sizes specified in the scale set to use D2sv5, D2asv5, D2sv4, D2asv4, and D2sv3:
-```json
-{
-	"properties": {
-		"skuProfile": {
-      		"vmSizes": [
-                {
-                    "name": "Standard_D2as_v4"
-                },
-                {
-                    "name": "Standard_D2as_v5"
-                },
-                {
-                    "name": "Standard_D2s_v4"
-                },
-                {
-                    "name": "Standard_D2s_v3"
-                },
-                {
-                    "name": "Standard_D2s_v5"
-                }
-			]
-		}
+  "properties": {
+    "skuProfile": {
+      "vmSizes": [
+        { "name": "Standard_D2as_v4" },
+        { "name": "Standard_D2as_v5" },
+        { "name": "Standard_D2s_v4" },
+        { "name": "Standard_D2s_v3" },
+        { "name": "Standard_D2s_v5" }
+      ],
+      "allocationStrategy": "capacityOptimized"
     }
+  }
 }
 ```
+
+#### Change the VM sizes
+To update only the VM sizes:
+
+```json
+{
+  "properties": {
+    "skuProfile": {
+      "vmSizes": [
+        { "name": "Standard_D2as_v4" },
+        { "name": "Standard_D2as_v5" },
+        { "name": "Standard_D2s_v4" },
+        { "name": "Standard_D2s_v3" },
+        { "name": "Standard_D2s_v5" }
+      ]
+    }
+  }
+}
+```
+
 ---
 
-## Update an existing scale set to use instance mix
-Existing scale sets that don't have instance mix can enable instance mix by specifying the `skuProfile` properties in the scale set. The `skuProfile`, `vmSizes`, and `allocationStrategy` can be specified through REST API and CLI. 
+## Enable instance mix on an existing scale set
+To enable instance mix on a scale set that doesn't already use it, specify the `skuProfile` properties. You must set:
+- `sku.name` to `"Mix"`
+- `sku.tier` to `null`
+- At least one value in `vmSizes` under `skuProfile`
+- An `allocationStrategy` (if not specified, Azure defaults to `lowestPrice`)
 
-The properties that must be updated are:
-* `sku.name` must be set to `"Mix"`.
-* `sku.tier` must be set to `null`.
-* You must define the `skuProfile` properties. At least one value must be provided in `vmSizes`. An `allocationStrategy` should be set, but if a value isn't provided, Azure defaults to `lowestPrice`.
-
-The following sections have sample code snippets to demonstrate enabling instance mix on existing scale sets. 
+The following examples show how to enable instance mix on an existing scale set.
 
 ### [Azure CLI](#tab/cli-2)
-In this snippet, we'll update an existing scale set using Flexible Orchestration Mode to use instance mix with the VM sizes D2asv4, D2sv5, and D2asv5 and allocation strategy of `capacityOptimized`.
+This example updates an existing scale set in Flexible Orchestration Mode to use instance mix with VM sizes Standard_D2as_v4, Standard_D2s_v5, and Standard_D2as_v5, and the `capacityOptimized` allocation strategy:
 
 ```azurecli-interactive
 az vmss update \
---name {scaleSetName} \
---resource-group {resourceGroupName} \
---set sku.name=Mix sku.tier=null \
---skuprofile-vmsizes Standard_D2as_v4 Standard_D2s_v5 Standard_D2as_v5 \
---sku-allocat-strat capacityOptimized
+  --name {scaleSetName} \
+  --resource-group {resourceGroupName} \
+  --set sku.name=Mix sku.tier=null \
+  --skuprofile-vmsizes Standard_D2as_v4 Standard_D2s_v5 Standard_D2as_v5 \
+  --set skuProfile.allocationStrategy=capacityOptimized
 ```
 
 ### [REST API](#tab/arm-2)
-To update the instance mix settings through REST API, use a `PATCH` call to the scale set resource. Be sure to use an API version on or after `2023-09-01`. 
-```json
-PUT https://management.azure.com/subscriptions/{YourSubscriptionId}/resourceGroups/{YourResourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{youScaleSetName}?api-version=2023-09-01
+To enable instance mix using the REST API, send a `PATCH` request to the scale set resource. Use API version `2023-09-01` or later:
+
+```http
+PATCH https://management.azure.com/subscriptions/{YourSubscriptionId}/resourceGroups/{YourResourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{yourScaleSetName}?api-version=2023-09-01
 ```
 
-In the body, be sure to set `sku.name` to `"Mix"` and include the `skuProfile` with your inputs for `vmSizes` and `allocationStrategy`:
+In the request body, set `sku.name` to `"Mix"` and include the `skuProfile` with your desired `vmSizes` and `allocationStrategy`:
+
 ```json
 {
-	"sku": {
-		"name": "Mix"
-	},
-	"properties": {
-		"skuProfile": {
-      		"vmSizes": [
-        	{
-          		"name": "Standard_D2as_v4"
-        	},
-        	{
-          		"name": "Standard_D2as_v5"
-        	},
-        	{
-				"name": "Standard_D2s_v4"
-        	},
-        	{
-        	    "name": "Standard_D2s_v5"
-        	}
-			],
-			"allocationStrategy": "lowestPrice"
-		},
+  "sku": {
+    "name": "Mix"
+  },
+  "properties": {
+    "skuProfile": {
+      "vmSizes": [
+        { "name": "Standard_D2as_v4" },
+        { "name": "Standard_D2as_v5" },
+        { "name": "Standard_D2s_v4" },
+        { "name": "Standard_D2s_v5" }
+      ],
+      "allocationStrategy": "lowestPrice"
     }
+  }
 }
-
 ```
+
 ---
 
+## Common update scenarios
+
+### Remove a specific VM size
+
+To remove a specific VM size from the instance mix configuration, specify the complete list of VM sizes you want to keep, excluding the size you want to remove.
+
+**Example**: Remove `Standard_D2as_v4` from a scale set that has `Standard_D2as_v4`, `Standard_D2s_v4`, `Standard_D2as_v5`, and `Standard_D2s_v5`:
+
+```azurecli-interactive
+az vmss update \
+  --resource-group {resourceGroupName} \
+  --name {scaleSetName} \
+  --skuprofile-vmsizes Standard_D2s_v4 Standard_D2as_v5 Standard_D2s_v5
+```
+
+### Add a specific VM size
+
+To add a new VM size to the instance mix configuration, specify the complete list of VM sizes including both existing and new sizes.
+
+**Example**: Add `Standard_D4s_v5` to a scale set that currently has `Standard_D2s_v4`, `Standard_D2as_v5`, and `Standard_D2s_v5`:
+
+```azurecli-interactive
+az vmss update \
+  --resource-group {resourceGroupName} \
+  --name {scaleSetName} \
+  --skuprofile-vmsizes Standard_D2s_v4 Standard_D2as_v5 Standard_D2s_v5 Standard_D4s_v5
+```
+
 ## Next steps
-Learn how to [troubleshoot](instance-mix-faq-troubleshooting.md) your instance mix enabled scale set.
+Learn how to [troubleshoot](instance-mix-faq-troubleshooting.md) your instance mix-enabled scale set.

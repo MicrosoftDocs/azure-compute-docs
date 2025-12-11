@@ -8,6 +8,7 @@
  ms.date: 12/11/2024
  ms.author: rogarana
  ms.custom: include file
+# Customer intent: "As a cloud administrator, I want to create and manage incremental snapshots of virtual disks, so that I can efficiently utilize storage and ensure data integrity while complying with the snapshot limitations and performance impacts."
 ---
 
 - Incremental snapshots currently can't be moved between subscriptions.

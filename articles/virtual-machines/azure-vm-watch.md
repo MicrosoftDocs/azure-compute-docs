@@ -4,8 +4,10 @@ description: Learn how to use the Azure VM watch service offering.
 author: iamwilliew 
 ms.author: wwilliams
 ms.service: azure-virtual-machines
-ms.topic: conceptual
+ms.topic: concept-article
+ms.update-cycle: 1095-days
 ms.date: 02/18/2025
+# Customer intent: "As a system administrator, I want to implement VM watch for my virtual machines, so that I can monitor their health efficiently and prevent potential issues with minimal resource impact."
 ---
 
 # VM watch: Enhancing VM health monitoring (preview)
@@ -22,16 +24,27 @@ VM watch is delivered via the [Application Health VM extension](/azure/virtual-m
 - **Resource governance**: VM watch provides efficient monitoring without affecting system performance. Resource caps on the CPU and memory utilization of the VM watch process help protect VMs.
 - **Out-of-the-box readiness**: VM watch comes equipped with a suite of default tests that you can configure for your scenarios.
 
+### VM watch Memory Constraints
+
+To maintain consistent performance across different virtual machine (VM) configurations, **VM watch** enforces memory usage limits according to the VM SKU's total available memory. The memory caps are adjusted dynamically based on the VM's memory tier.
+
+| **VM Memory Range** | **VM watch Memory Cap** |
+|:---:|:---:|
+| Less than 8 GB | 80MB |
+| 8 GB to 16 GB | 200MB |
+| Greater than 16 GB | 400MB |
+
 ### Network
 
 | **Signal name** | **Type** | **Description** |
 |:---:|:---:|:---:|
 | **Outbound connectivity** | Check | Verify the network outbound connectivity from the Azure VM. |
 | **DNS Resolution** | Check | Verify if one or more DNS names can be resolved. |
+| **TCPSynRetransmits (Linux Only)** | Metric | The number of times the system retransmits a TCP SYN and SYN/ACK packet before giving up on establishing a connection.|
 | **SegmentsRetransmitted** | Metric | The number of transmitted TCP segments that contain one or more previously transmitted octets. |
-| **NormalizedSegmentsRetransmitted** | Metric | **SegmentsRetransmitted** / (**SegmentsSent** + **SegmentsReceived**) |
+| **NormalizedSegmentsRetransmitted** | Metric | **SegmentsRetransmitted** / (**SegmentsSent** + **SegmentsRetransmitted**) |
 | **ConnectionResets** | Metric | The number of times that TCP connections made a direct transition to the `CLOSED` state from either the `ESTABLISHED` state or the `CLOSE_WAIT` state. |
-| **NormalizedConnectionResets** | Metric | **ConnectionResets** / **CurrentConnections** |
+| **NormalizedConnectionResets** | Metric | The percentage of connections that were reset during the last measurement interval. |
 | **FailedConnectionAttempts** | Metric |The number of times that TCP connections made a direct transition to the `CLOSED` state from either the `SYN_SENT` state or the `SYN_RCVD` state. |
 | **NormalizedFailedConnectionAttempts** | Metric | **FailedConnectionAttempts** / (**ActiveConnectionOpenings** + **PassiveConnectionOpenings**) |
 | **ActiveConnectionOpenings** | Metric | The number of times that TCP connections made a direct transition to the `SYN_SENT` state from the `CLOSED` state. |
@@ -39,6 +52,7 @@ VM watch is delivered via the [Application Health VM extension](/azure/virtual-m
 | **CurrentConnections** | Metric | The number of connections established. |
 | **SegmentsReceived** | Metric | The number of segments received, including segments received in error. |
 | **SegmentsSent** | Metric | The number of segments sent, including segments on current connections but excluding segments that contain only retransmitted octets. |
+
 
 ### Disk
 
@@ -56,9 +70,19 @@ VM watch is delivered via the [Application Health VM extension](/azure/virtual-m
 
 | **Signal name** | **Type** | **Description** |
 |:---:|:---:|:---:|
-| **ProcessCoreUsage** | Metric | An instantaneous measurement of the percentage of a single CPU core that the target process is using (100 = 100%, a whole core). |
-| **ProcessMachineUsage** | Metric | The percentage of the machine's total CPU that this process is using. |
+| **ProcessCPUCoreUsage** | Metric | An instantaneous measurement of the percentage of a single CPU core that the target process is using (100 = 100%, a whole core). |
+| **ProcessCPUMachineUsage** | Metric | The percentage of the machine's total CPU that this process is using. |
 | **MachineTotalCpuUsage** | Metric | The VM's total instantaneous CPU utilization. |
+
+### Memory
+
+| **Signal name** | **Type** | **Description** |
+|:---:|:---:|:---:|
+| **ProcessRSSPercent** | Metric | **Process RSS** / (**Machine Total Memory** * **100%**) |
+| **ProcessPageFaults** | Metric | The number of page faults since the process started. |
+| **MachineMemoryTotalInBytes** | Metric | The VM's total Memory in Bytes. |
+| **MachineMemoryUsedPercent** | Metric | **Machine Used Memory** / (**Machine Total Memory** * **100%**) |
+| **TotalPageFaults** | Metric | The total number of page faults for all running processes since they started. |
 
 ### Process
 
@@ -80,6 +104,12 @@ VM watch is delivered via the [Application Health VM extension](/azure/virtual-m
 |:---:|:---:|:---:|
 | **Clock Skew** | Check | Verify the clock skew between the remote Network Time Protocol (NTP) server and the Azure VM. For a Windows VM, fall back to check if the Windows Time service is synced with `w32tm` if the remote NTP server is inaccessible. |
 
+### OS
+
+| **Signal name** | **Type** | **Description** |
+|:---:|:---:|:---:|
+| **System Errors** | Metric | Collect the number of errors from the system-level event log (Windows only) where the SystemData <=2 (including LOG_ALWAYS, Critical, Error). The measurementTarget is defined as the Source_EventId of the EventLog using default Windows locale. Each collection is limited to more than 10 different measurement targets. |
+
 ### azblob
 
 | **Signal name** | **Type** | **Description** |
@@ -91,7 +121,11 @@ VM watch is delivered via the [Application Health VM extension](/azure/virtual-m
 | **Signal name** | **Type** | **Description** |
 |:---:|:---:|:---:|
 | **Hardware Health Monitor** | EventLog | Collect hardware health info from the Windows event log. Currently, only disk-related critical events are collected, including events with ID 7, 500, 504, 505, 512, and 549. |
+| **Hardware Health Nvidia Smi** | EventLog | Collect GPU stats including memory and GPU usage, temp and others by running nvidia-smi command (Linux Ubuntu only) |
 
 ## Related content
 
+- [VM watch Collectors Suite](/azure/virtual-machines/vm-watch-collector-suite)
 - [Install VM watch](install-vm-watch.md)
+- [Configure VM watch](/azure/virtual-machines/configure-vm-watch)
+- [Configure Event Hubs for VM watch](/azure/virtual-machines/configure-eventhub-vm-watch)

@@ -10,6 +10,7 @@ ms.author: mattmcinnes
 ms.custom: mvc, devx-track-azurecli, linux-related-content
 ms.reviewer: cynthn
 #Customer intent: As an IT administrator, I want to learn about how to create custom VM images to minimize the number of post-deployment configuration tasks.
+# Customer intent: "As an IT administrator, I want to create custom VM images using the command line so that I can streamline deployments by preloading necessary configurations and applications."
 ---
 
 # Tutorial: Create a custom image of an Azure VM with the Azure CLI

@@ -3,12 +3,13 @@ title: Create an Azure scale set that uses Availability Zones
 description: Learn how to create Azure Virtual Machine Scale Sets that use Availability Zones for increased redundancy against outages
 author: mimckitt
 ms.author: mimckitt
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: availability
-ms.date: 06/14/2024
-ms.reviewer: jushiman, fisteele
+ms.date: 03/21/2025
+ms.reviewer: cynthn, fisteele
 ms.custom: mimckitt, devx-track-azurecli, devx-track-azurepowershell, devx-track-arm-template
+# Customer intent: As a cloud architect, I want to create Azure Virtual Machine Scale Sets across Availability Zones, so that I can ensure high availability and resilience against data center outages for my applications.
 ---
 
 # Create a Virtual Machine Scale Set that uses Availability Zones
@@ -76,7 +77,7 @@ For scale sets deployed across multiple zones, you also have the option of choos
 
 It's possible that VMs in the scale set are successfully created, but extensions on those VMs fail to deploy. These VMs with extension failures are still counted when determining if a scale set is balanced. For instance, a scale set with 3 VMs in zone 1, 3 VMs in zone 2, and 3 VMs in zone 3 is considered balanced even if all extensions failed in zone 1 and all extensions succeeded in zones 2 and 3.
 
-With best-effort zone balance, the scale set attempts to scale in and out while maintaining balance. However, if for some reason zone balance isn't possible (for example, if one zone goes down, the scale set can't create a new VM in that zone), the scale set allows temporary imbalance to successfully scale in or out. On subsequent scale-out attempts, the scale set adds VMs to zones that need more VMs for the scale set to be balanced. Similarly, on subsequent scale in attempts, the scale set removes VMs from zones that need fewer VMs for the scale set to be balanced. With "strict zone balance", the scale set fails any attempts to scale in or out if doing so would cause unbalance.
+With best-effort zone balance, the scale set aims to maintain balance across zones during scaling operations. If one zone becomes unavailable, the scale set allows temporary imbalance to ensure scaling can continue. However, this imbalance is only permitted when a single zone is unavailable. If two or more zones go down, the scale set cannot proceed with scaling operations. Once the unavailable zone is restored, the scale set adjusts by adding VMs to under-provisioned zones or removing VMs from over-provisioned zones to restore balance. In contrast, with "strict zone balance," any scaling operation that would result in imbalance is blocked, regardless of the circumstances.
 
 To use best-effort zone balance, set *zoneBalance* to *false*. This setting is the default in API version *2017-12-01*. To use strict zone balance, set *zoneBalance* to *true*.
 

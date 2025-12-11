@@ -5,17 +5,14 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
-ms.date: 11/7/2024
-ms.reviewer: ju-shim
+ms.date: 03/21/2025
+ms.reviewer: cynthn
 ms.custom: upgradepolicy, ignite-2024
+# Customer intent: As a system administrator, I want to manually upgrade instances in a Virtual Machine Scale Set, so that I can ensure each instance is updated according to the specific configurations I require without automatic changes.
 ---
 # Performing manual upgrades on Virtual Machine Scale Sets
  
 If you have the upgrade policy set to manual, any changes made to the scale set model won't be applied automatically. You need to manually trigger upgrades on each individual virtual machine. The manual upgrade functionality updates the selected instances according to the virtual machine configuration set in the scale set profile.
-
-> [!NOTE]
-> To update the image reference version during an upgrade, register the following feature flag: <br>
-> `Register-AzProviderFeature -FeatureName ImageReferenceUpgradeForVmoVMs -ProviderNamespace Microsoft.Compute` 
 
 ### [Portal](#tab/portal)
 

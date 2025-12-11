@@ -1,5 +1,5 @@
 ---
-title: Update or delete a standby pool for Azure Container Instances (Preview)
+title: Update or delete a standby pool for Azure Container Instances
 description: Learn how to update or delete a standby pool for Azure Container Instances.
 author: mimckitt
 ms.author: mimckitt
@@ -7,22 +7,19 @@ ms.service: azure-container-instances
 ms.custom:
   - ignite-2024
 ms.topic: how-to
-ms.date: 11/6/2024
+ms.date: 11/17/2025
 ms.reviewer: tomvcassidy
+# Customer intent: As a cloud administrator, I want to update or delete a standby pool for container instances, so that I can manage resource capacity and configurations effectively in my cloud environment.
 ---
 
 
-# Update or delete a standby pool for Azure Container Instances (Preview)
+# Update or delete a standby pool for Azure Container Instances
 
 > [!IMPORTANT]
-> Standby pools for Azure Container Instances is currently in preview. Previews are made available to you on the condition that you agree to the [supplemental terms of use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Some aspects of this feature may change prior to general availability (GA). 
+> For standby pools to successfully create and manage resources, it requires access to the associated resources in your subscription. Ensure the correct permissions are assigned to the standby pool resource provider in order for your standby pool to function properly. For detailed instructions, see **[configure role permissions for standby pools](container-instances-standby-pool-configure-permissions.md)**.
+
 
 This article steps through updating or deleting a standby pool for Azure Container Instances. 
-
-## Prerequisites
-
-Before utilizing standby pools, complete the feature registration and configure role based access controls listed in the [Standby pools for Azure Container Instances](container-instances-standby-pool-overview.md#prerequisites) overview page. 
-
 
 ## Update a standby pool
 A standby pool can be updated at any point in time. The settings that are adjustable after creation include `maxReadyCapacity` and the associated `containerGroupProfile`. If you update the container group profile of the standby pool, the new profile must also be in the same subscription and location as the standby pool. Once the profile has been updated, the pool will drain all existing instances and replaced them with new ones. 
@@ -85,7 +82,7 @@ Update an existing a standby pool. Update your template and deploy it using [az 
     "resources": [ 
         {
             "type": "Microsoft.StandbyPool/standbyContainerGroupPools",
-            "apiVersion": "2024-03-01",
+            "apiVersion": "2025-03-01",
             "name": "[parameters('name')]",
             "location": "[parameters('location')]",
             "properties": {
@@ -106,7 +103,7 @@ Update an existing a standby pool. Update your template and deploy it using [az 
 Update an existing standby pool using [Create or Update](/rest/api/standbypool/standby-virtual-machine-pools/create-or-update).
 
 ```HTTP
-PUT https://management.azure.com/subscriptions/{SubscriptionID}/resourceGroups/myResourceGroup/providers/Microsoft.StandbyPool/standbyContainerGroupPools/myStandbyPool?api-version=2024-03-01 
+PUT https://management.azure.com/subscriptions/{SubscriptionID}/resourceGroups/myResourceGroup/providers/Microsoft.StandbyPool/standbyContainerGroupPools/myStandbyPool?api-version=2025-03-01 
  
 Request Body
 {
@@ -152,7 +149,7 @@ Remove-AzStandbyContainerGroupPool `
 Delete an existing standby pool using [Delete](/rest/api/standbypool/standby-virtual-machine-pools/delete).
 
 ```HTTP
-DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyContainerGroupPoolName}?api-version=2024-03-01
+DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyContainerGroupPoolName}?api-version=2025-03-01
 ```
 
 ---

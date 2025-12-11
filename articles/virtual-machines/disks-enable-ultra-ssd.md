@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.date: 10/21/2024
 ms.author: rogarana
 ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell, devx-track-arm-template
+# Customer intent: "As a cloud administrator, I want to deploy Ultra Disks for Azure VMs, so that I can achieve maximum performance for data-intensive workloads and optimize that performance without needing to restart my virtual machines."
 ---
 
 # Using Azure Ultra Disks
@@ -19,7 +20,7 @@ Azure Ultra Disks offer high throughput, high IOPS, and consistent low latency d
 
 ## GA scope and limitations
 
-[!INCLUDE [managed-disks-ultra-disks-GA-scope-and-limitations](./includes/managed-disks-ultra-disks-GA-scope-and-limitations.md)]
+[!INCLUDE [managed-disks-ultra-disks-ga-scope-and-limitations](includes/managed-disks-ultra-disks-ga-scope-and-limitations.md)]
 
 ## Determine VM size and region availability
 

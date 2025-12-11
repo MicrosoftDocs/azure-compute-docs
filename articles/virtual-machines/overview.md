@@ -1,13 +1,14 @@
 ---
 title: Overview of virtual machines in Azure
 description: Overview of virtual machines in Azure.
-author: ju-shim
+author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.collection: linux
 ms.topic: overview
-ms.date: 07/01/2024
-ms.author: jushiman
-ms.custom: mvc, engagement-fy23
+ms.date: 03/27/2025
+ms.author: mattmcinnes
+ms.update-cycle: 1095-days
+# Customer intent: "As a cloud architect, I want to evaluate the features and management options of Azure virtual machines, so that I can determine the best deployment strategy for my applications and optimize costs and performance."
 ---
 
 # Virtual machines in Azure
@@ -24,8 +25,6 @@ Azure virtual machines can be used in various ways. Some examples are:
 * **Applications in the cloud** – Because demand for your application can fluctuate, it might make economic sense to run it on a virtual machine in Azure. You pay for extra virtual machines when you need them and shut them down when you don’t.
 * **Extended datacenter** – virtual machines in an Azure virtual network can easily be connected to your organization’s network.
 
-The number of virtual machines that your application uses can scale up and out to whatever is required to meet your needs.
-
 ## What do I need to think about before creating a virtual machine?
 There's always a multitude of [design considerations](/azure/architecture/reference-architectures/n-tier/linux-vm) when you build out an application infrastructure in Azure. These aspects of a virtual machine are important to think about before you start:
 
@@ -36,6 +35,11 @@ There's always a multitude of [design considerations](/azure/architecture/refere
 * The operating system that the virtual machine runs
 * The configuration of the virtual machine after it starts
 * The related resources that the virtual machine needs
+
+> [!NOTE]
+>
+> Trusted Launch as default (TLaD) is available in preview for new [Generation 2](../virtual-machines/generation-2.md) Virtual machines (VMs). With TLaD, any new Generation 2 VMs created through any client tools defaults to [Trusted Launch](../virtual-machines/trusted-launch.md) with secure boot and vTPM enabled.
+> [Register for the TLaD preview](../virtual-machines/trusted-launch.md#preview-trusted-launch-as-default) to validate the default changes in your respective environment and prepare for the upcoming change.
 
 ## Parts of a VM and how they're billed
 
@@ -80,6 +84,9 @@ The [size](sizes.md) of the virtual machine that you use is determined by the wo
 
 Azure charges an [hourly price](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) based on the virtual machine’s size and operating system. For partial hours, Azure charges only for the minutes used. Storage is priced and charged separately.
 
+## Scaling to multiple VMs
+The number of virtual machines that your application uses can scale up and out to whatever is required to meet your needs. Azure offers several automatic scaling systems and instance types based on the size of your workload. For more information on scaling, [compare VM-based compute products.](./compare-compute-products.md)
+
 ## Virtual machine total core limits
 Your subscription has default [quota limits](/azure/azure-resource-manager/management/azure-subscription-service-limits) in place that could impact the deployment of many virtual machines for your project. The current limit on a per subscription basis is 20 virtual machine total cores per region. Limits can be raised by [filing a support ticket requesting an increase](/azure/azure-portal/supportability/regional-quota-requests)
 
@@ -115,7 +122,21 @@ For more information, see [Using cloud-init on Azure Linux virtual machines](lin
 * [Add a disk to a Linux virtual machine using the azure-cli](linux/add-disk.md)
 * [How to attach a data disk to a Linux virtual machine in the Azure portal](linux/attach-disk-portal.yml)
 
+### Local temporary storage
+
+Some Azure VM sizes include local temporary ephemeral storage, with some of the newer sizes using [Temporary local NVMe disks](enable-nvme-temp-faqs.yml). Local temporary storage uses additional disks provisioned directly as local storage to an Azure virtual machine host, rather than on remote Azure Storage. This type of storage is best suited for data that does not need to be retained permanently, such as caches, buffers, and temporary files. Since data stored on these disks isn't backed up, it's lost when the VM is deallocated or deleted. The ephemeral storage is recreated on startup. Local ephemeral disks are different from [Ephemeral OS disks](ephemeral-os-disks.md#local-temporary-storage).
+
+Local temporary disks present just like other remote storage such as Premium SSD v2 disks, but have added performance benefits and don't count against the IOPS and throughput limits of the VM. 
+
+The following lists key characteristics of local ephemeral storage: 
+- **Ultra-low latency**: Read/write operations occur on hardware physically co-located with the VM's compute resources, minimizing network hops and enabling sub-millisecond response times.
+- **Superior IOPS and throughput**: Performance scales with the underlying local storage, often delivering 8-10 times higher IOPS than Standard HDDs when using Premium SSD as the base, with limits tied to the VM size (up to the NVMe disk capacity, capped at 2,040 GiB).
+
+Azure VM sizes featuring a 'd' in their naming convention - such as the Da***d***sv6, Ea***d***sv6, and FXm***d***sv2 series - include dedicated local NVMe storage. These sizes enable placing temporary files, swap space, or high-I/O components like SQL Server's `tempdb` database files on the ephemeral disk for enhanced performance.
+
+
 ## Networking
+
 * [Virtual Network Overview](/azure/virtual-network/virtual-networks-overview)
 * [IP addresses in Azure](/azure/virtual-network/ip-services/public-ip-addresses)
 * [Opening ports to a Linux virtual machine in Azure](linux/nsg-quickstart.md)

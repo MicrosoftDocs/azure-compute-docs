@@ -5,9 +5,10 @@ ms.topic: how-to
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
-ms.custom: has-azure-ad-ps-ref
+ms.custom: no-azure-ad-ps-ref
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a cloud architect, I want to create a Resource Manager template for a Service Fabric cluster, so that I can efficiently deploy secure microservices with proper authentication and configuration management."
 ---
 
 # Create a Service Fabric cluster Resource Manager template
@@ -168,7 +169,7 @@ You add the Microsoft Entra configuration to a cluster Resource Manager template
 
 ## Populate the parameter file with the values
 
-Finally, use the output values from the key vault and Azure AD PowerShell commands to populate the parameters file.
+Finally, use the output values from the key vault and Microsoft Entra PowerShell commands to populate the parameters file.
 
 If you plan to use the Azure service fabric RM PowerShell modules, then you do not need to populate the cluster certificate information. If you want the system to generate the self signed certificate for cluster security you, just keep them as null. 
 

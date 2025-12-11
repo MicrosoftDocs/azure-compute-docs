@@ -4,12 +4,13 @@ description: Use encryption at host to enable end-to-end encryption on your Azur
 author: roygara
 ms.service: azure-disk-storage
 ms.topic: how-to
-ms.date: 11/02/2023
+ms.date: 06/25/2025
 ms.author: rogarana
 ms.custom:
   - devx-track-azurecli
   - linux-related-content
   - ignite-2023
+# Customer intent: As a cloud administrator, I want to enable end-to-end encryption for my managed disks using encryption at host, so that I can ensure the data is securely encrypted both at rest and in transit for compliance and data protection.
 ---
 
 # Use the Azure CLI to enable end-to-end encryption using encryption at host
@@ -226,7 +227,7 @@ az vmss update -n $vmssName \
 
 ## Finding supported VM sizes
 
-Legacy VM Sizes aren't supported. You can find the list of supported VM sizes by either using resource SKU APIs or the Azure PowerShell module. You can't find the supported sizes using the CLI.
+Legacy VM Sizes aren't supported. You can find the list of supported VM sizes by either using resource SKU APIs or the Azure CLI.
 
 When calling the [Resource Skus API](/rest/api/compute/resourceskus/list), check that the `EncryptionAtHostSupported` capability is set to **True**.
 
@@ -238,7 +239,7 @@ When calling the [Resource Skus API](/rest/api/compute/resourceskus/list), check
         "size": "DS1_v2",
         "family": "standardDSv2Family",
         "locations": [
-        "CentralUSEUAP"
+        "CentralUS"
         ],
         "capabilities": [
         {
@@ -249,24 +250,17 @@ When calling the [Resource Skus API](/rest/api/compute/resourceskus/list), check
     }
 ```
 
-For the Azure PowerShell module, use the [Get-AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku) cmdlet.
+For the Azure CLI, use the [az vm image list-skus](/cli/azure/vm/image?view=azure-cli-latest#az-vm-image-list-skus) command.
 
-```azurepowershell-interactive
-$vmSizes=Get-AzComputeResourceSku | where{$_.ResourceType -eq 'virtualMachines' -and $_.Locations.Contains('CentralUSEUAP')}
+```azurecli
+location=centralus
 
-foreach($vmSize in $vmSizes)
-{
-    foreach($capability in $vmSize.capabilities)
-    {
-        if($capability.Name -eq 'EncryptionAtHostSupported' -and $capability.Value -eq 'true')
-        {
-            $vmSize
-
-        }
-
-    }
-}
+az vm list-skus --location $location --all \
+--resource-type virtualMachines \
+--query "[?capabilities[?name=='EncryptionAtHostSupported' && value=='True']].{VMName:name, EncryptionAtHost:capabilities[?name=='EncryptionAtHostSupported'].value | [0]}" \
+--output table
 ```
+
 
 ## Next steps
 

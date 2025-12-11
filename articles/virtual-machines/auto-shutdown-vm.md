@@ -1,12 +1,13 @@
 ---
 title: Auto-shutdown a VM
 description: Learn how to set up auto-shutdown for VMs in Azure.
-author: ju-shim
-ms.author: jushiman
+author: cynthn
+ms.author: cynthn
 ms.service: azure-virtual-machines
 ms.topic: tutorial
 ms.custom: mvc, devx-track-azurecli
-ms.date: 09/27/2023
+ms.date: 03/11/2025
+# Customer intent: As a cloud administrator, I want to configure auto-shutdown for virtual machines, so that I can reduce operational costs by ensuring VMs are only running when needed.
 ---
 
 # Auto-shutdown a virtual machine
@@ -88,6 +89,9 @@ The above scripts use the `az vm auto-shutdown` and `az vm restart` commands to 
 Both scripts also prompt to choose whether to auto restart the machines or leave them off until they're manually restarted. The choice is used to set the -`-auto-shutdown-enabled` property of the VMs.
 
 ---
+
+> [!NOTE]
+> Remember to configure the time zone to match your requirements, as Coordinated Universal Time (UTC) is the default setting for the time zone.
 
 ## Clean up resources
 

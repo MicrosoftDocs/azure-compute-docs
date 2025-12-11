@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a cloud administrator, I want to manage the configuration and upgrade process of standalone Service Fabric clusters through a command line interface, so that I can ensure optimal performance and reliability of my deployed applications.
 ---
 
 # sfctl sa-cluster

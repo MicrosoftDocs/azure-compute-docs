@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a cloud application developer, I want to implement KeyVault references in my Service Fabric applications, so that I can securely manage application secrets and automatically handle secret rotation during rolling upgrades."
 ---
 
 # KeyVaultReference support for Azure-deployed Service Fabric Applications

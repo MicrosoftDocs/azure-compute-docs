@@ -6,6 +6,7 @@ ms.topic: how-to
 ms.custom: devx-track-arm-template
 ms.date: 06/01/2017
 ms.subservice: disks
+# Customer intent: As a cloud architect, I want to implement Azure Resource Manager templates to deploy managed disks for virtual machines, so that I can efficiently provision and manage VM storage without dealing with underlying storage accounts.
 ---
 
 # Using disks in Azure Resource Manager Templates

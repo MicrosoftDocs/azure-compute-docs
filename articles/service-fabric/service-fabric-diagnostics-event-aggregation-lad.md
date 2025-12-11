@@ -7,15 +7,18 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: linux-related-content
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 09/29/2025
+# Customer intent: "As a cloud operations engineer, I want to implement Linux Azure Diagnostics for my Service Fabric cluster, so that I can centralize log collection and enhance my ability to monitor and troubleshoot application performance effectively."
 ---
 
 # Event aggregation and collection using Linux Azure Diagnostics
+
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-diagnostics-event-aggregation-wad.md)
 > * [Linux](service-fabric-diagnostics-event-aggregation-lad.md)
->
->
+
+> [!WARNING]
+> Application Insights for the Service Fabric SDK is no longer supported.
 
 When you're running an Azure Service Fabric cluster, it's a good idea to collect the logs from all the nodes in a central location. Having the logs in a central location helps you analyze and troubleshoot issues in your cluster, or issues in the applications and services running in that cluster.
 

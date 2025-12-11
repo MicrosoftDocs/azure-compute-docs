@@ -4,10 +4,11 @@ description: Information on and specifications of the Easv4-series sizes
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 08/01/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
+# Customer intent: "As a cloud architect, I want to understand the specifications and support features of the Easv4 size series, so that I can effectively select the appropriate virtual machine size based on my application’s performance and resource needs."
 ---
 
 # Easv4 sizes series

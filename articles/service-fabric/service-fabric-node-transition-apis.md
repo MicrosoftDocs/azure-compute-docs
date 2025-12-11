@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a developer testing a Service Fabric application, I want to use the Node Transition API to manage node states effectively, so that I can avoid confusion between stopped and down nodes while injecting faults for testing.
 ---
 
 # Replacing the Start Node and Stop Node APIs with the Node Transition API

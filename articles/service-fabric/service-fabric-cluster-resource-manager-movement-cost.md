@@ -1,12 +1,13 @@
 ---
 title: 'Service Fabric Cluster Resource Manager: Movement cost'
 description: Learn about the movement cost for Service Fabric services, and how it can be specified to fit any architectural need, including dynamic configuration.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a cloud architect, I want to configure movement costs for services in a Service Fabric cluster, so that resource management and service migrations are optimized for performance and minimize disruption during dynamic operations.
 ---
 
 # Service movement cost

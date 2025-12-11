@@ -9,6 +9,7 @@ ms.topic: how-to
 ms.date: 06/27/2024
 ms.author: vakavuru
 ms.reviewer: mattmcinnes
+# Customer intent: "As a system administrator, I want to create and upload a Debian VHD image to Azure, so that I can deploy virtual machines efficiently in a cloud environment."
 ---
 
 # Prepare a Debian VHD for Azure

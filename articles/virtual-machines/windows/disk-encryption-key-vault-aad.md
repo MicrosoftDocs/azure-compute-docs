@@ -6,10 +6,13 @@ ms.service: azure-virtual-machines
 ms.subservice: security
 ms.topic: how-to
 ms.author: mbaldwin
-ms.date: 02/20/2024
+ms.date: 09/23/2025
 ms.custom: devx-track-azurecli, devx-track-azurepowershell, has-azure-ad-ps-ref
+# Customer intent: As a cloud security engineer, I want to create and configure a key vault for Azure Disk Encryption, so that I can securely manage disk encryption keys and integrate with Microsoft Entra ID for enhanced access control.
 ---
 # Creating and configuring a key vault for Azure Disk Encryption with Microsoft Entra ID (previous release)
+
+[!INCLUDE [Azure Disk Encryption retirement notice](~/reusable-content/ce-skilling/azure/includes/security/azure-disk-encryption-retirement.md)]
 
 **Applies to:** :heavy_check_mark: Windows VMs
 

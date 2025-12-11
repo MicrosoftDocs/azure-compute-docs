@@ -6,8 +6,9 @@ author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
 ms.topic: reference
-ms.date: 08/29/2024
+ms.date: 11/17/2025
 ms.custom: subject-policy-reference
+# Customer intent: As a cloud administrator, I want to access built-in policy definitions for Azure Container Instances, so that I can effectively manage compliance and governance of my container resources.
 ---
 # Azure Policy built-in definitions for Azure Container Instances
 
@@ -21,7 +22,7 @@ the link in the **Version** column to view the source on the
 
 ## Azure Container Instances
 
-[!INCLUDE [azure-policy-reference-service-storage](~/azure-docs-pr/includes/policy/reference/byrp/microsoft.containerinstance.md)]
+[!INCLUDE [azure-policy-reference-service-storage](~/azure-policy-autogen-docs/includes/policy/reference/byrp/microsoft.containerinstance.md)]
 
 ## Next steps
 

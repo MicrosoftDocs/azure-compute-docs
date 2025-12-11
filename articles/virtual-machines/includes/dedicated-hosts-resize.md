@@ -10,6 +10,7 @@ ms.date: 09/11/2023
 ms.author: mattmcinnes
 ms.reviewer: vamckMS
 ms.custom: include file
+# Customer intent: "As a cloud administrator, I want to utilize the host resize functionality to upgrade to newer generation hardware, so that I can enhance performance without the need for manual VM migration."
 ---
 
 Moving a host and all associated VMs to newer generation hardware can be done through the host resize feature. Resize simplifies the migration process and avoids having to manually create new hosts and move all VMs individually.

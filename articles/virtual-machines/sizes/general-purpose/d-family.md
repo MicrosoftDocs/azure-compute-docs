@@ -4,9 +4,10 @@ description: List of sizes in the D family.
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
-ms.date: 07/30/2024
+ms.topic: concept-article
+ms.date: 07/31/2025
 ms.author: mattmcinnes
+# Customer intent: "As a cloud architect, I want to review the specifications and use cases of the D-family VM sizes, so that I can select the most appropriate virtual machine for my workload requirements."
 ---
 
 # 'D' family general purpose VM size series
@@ -21,6 +22,38 @@ ms.author: mattmcinnes
 
 ## Series in family
 
+### Dasv7 series and Dadsv7 series
+#### [Dasv7 series](#tab/dasv7)
+[!INCLUDE [dasv7-series-summary](./includes/dasv7-series-summary.md)]
+
+[View the full Dasv7-series page](./dasv7-series.md).
+
+[!INCLUDE [dasv7-series-specs](./includes/dasv7-series-specs.md)]
+
+#### [Dadsv7 series](#tab/dadsv7)
+[!INCLUDE [dadsv7-series-summary](./includes/dadsv7-series-summary.md)]
+
+[View the full Dadsv7-series page](./dadsv7-series.md).
+
+[!INCLUDE [dadsv7-series-specs](./includes/dadsv7-series-specs.md)]
+
+---
+### Dalsv7 series and Daldsv7 series
+#### [Dalsv7 series](#tab/dalsv7)
+[!INCLUDE [dalsv7-series-summary](./includes/dalsv7-series-summary.md)]
+
+[View the full Dalsv7-series page](./dalsv7-series.md).
+
+[!INCLUDE [dalsv7-series-specs](./includes/dalsv7-series-specs.md)]
+
+#### [Daldsv7 series](#tab/daldsv7)
+[!INCLUDE [daldsv7-series-summary](./includes/daldsv7-series-summary.md)]
+
+[View the full Daldsv7-series page](./daldsv7-series.md).
+
+[!INCLUDE [daldsv7-series-specs](./includes/daldsv7-series-specs.md)]
+
+---
 ### Dpsv6 and Dplsv6-series
 #### [Dpsv6-series](#tab/dpsv6)
 [!INCLUDE [dpsv6-series-summary](./includes/dpsv6-series-summary.md)]

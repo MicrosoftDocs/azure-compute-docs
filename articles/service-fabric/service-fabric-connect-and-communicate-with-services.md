@@ -1,12 +1,13 @@
 ---
 title: Connect and communicate with services in Azure Service Fabric 
 description: Learn how to resolve, connect, and communicate with services in Service Fabric.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a developer, I want to configure and manage service communication within a Service Fabric cluster, so that I can ensure reliable connections and efficient data exchange among microservices."
 ---
 
 # Connect and communicate with services in Service Fabric

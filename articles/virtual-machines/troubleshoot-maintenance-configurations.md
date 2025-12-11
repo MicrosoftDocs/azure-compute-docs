@@ -4,9 +4,10 @@ description: This article provides details on known and fixed issues and how to 
 author: ApnaLakshay
 ms.service: azure-virtual-machines
 ms.subservice: maintenance
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 10/13/2023
 ms.author: lnagpal
+# Customer intent: "As a cloud administrator, I want to troubleshoot issues with Maintenance Configurations for virtual machines, so that I can ensure scheduled patches and updates are applied efficiently without errors."
 ---
 
 # Troubleshoot problems with Maintenance Configurations
@@ -171,7 +172,7 @@ After you delete the dedicated hosts, configuration assignments that are attache
 
 Before you delete a dedicated host, be sure to delete the maintenance configuration that's associated with it. If the dedicated host is deleted but still appears in the portal, contact the support team for assistance. Cleanup processes are currently in place for dedicated hosts, to help prevent any impact on customers.
 
-### You can't provide multiple tag values for dynamic scopes
+### Can't provide multiple tag values for dynamic scopes
 
 #### Problem
 
@@ -220,6 +221,18 @@ Maintenance assignment fails with `InternalServerError` when using either bicep 
 #### Resolution
 
 It is recommended to use the location/region in a normalized form for the bicep template and MRP API. The normalized form involves removing whitespace and converting the text to lowercase. For example, `EAST US 2` will result in an internal server error, whereas `eastus2` will be processed successfully.
+
+### Workload isolation in maintenance configuration
+
+#### Problem
+
+Unexpected outage due to assumption of maintenance configuration respecting workload isolation
+
+#### Resolution
+
+Maintenance configurations will initiate updates on all resources associated with it simultaneously. Customers have the flexibility to decide on the isolation and maintenance windows for their workloads. They can create single or multiple maintenance configurations based on the isolation that is optimal for their workloads.
+
+For example, if a customer wants to isolate updates for their development environment resources from the production environment resources, they can create separate maintenance configurations for each environment. This way, workloads in maintenance configuration with development resources are updated first, while the remaining workloads are updated in another configuration that does not overlap. This approach allows customers to control workload isolation and manage updates independently. 
 
 ### Maintenance Configurations doesn't support an API
 

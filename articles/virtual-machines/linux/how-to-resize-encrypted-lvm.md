@@ -4,13 +4,18 @@ description: This article provides instructions for resizing ADE encrypted disks
 author: jofrance
 ms.service: azure-virtual-machines
 ms.subservice: disks
-ms.custom: linux-related-content
 ms.topic: how-to
 ms.author: jofrance
-ms.date: 11/18/2024
+ms.date: 09/23/2025
+ms.custom:
+  - linux-related-content
+  - sfi-image-nochange
+# Customer intent: "As a Linux system administrator, I want to resize Azure Disk Encryption-encrypted disks using logical volume management, so that I can efficiently manage storage capacity while maintaining data security."
 ---
 
 # How to resize logical volume management devices that use Azure Disk Encryption
+
+[!INCLUDE [Azure Disk Encryption retirement notice](~/reusable-content/ce-skilling/azure/includes/security/azure-disk-encryption-retirement.md)]
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Flexible scale sets
 

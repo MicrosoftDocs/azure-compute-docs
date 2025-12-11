@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a cloud engineer, I want to programmatically scale an Azure Service Fabric cluster using a fluent SDK, so that I can efficiently manage resources based on custom triggers without manual intervention.
 ---
 
 # Scale a Service Fabric cluster programmatically 

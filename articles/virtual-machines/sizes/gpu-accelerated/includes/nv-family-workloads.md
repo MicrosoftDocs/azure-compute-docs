@@ -9,6 +9,7 @@ ms.subservice: sizes
 ms.date: 04/19/2024
 ms.author: mattmcinnes
 ms.custom: include file
+# Customer intent: "As an IT manager, I want to understand the capabilities of NV-family virtual machines, so that I can determine their suitability for GPU-intensive workloads like virtual desktops, 3D visualization, and video streaming in my organization's applications."
 ---
 **Virtual Desktop Infrastructure (VDI):** NV-family VMs are well-suited for virtual desktops that require GPU capabilities for tasks such as graphic design, video editing, and CAD applications. They provide the graphical performance necessary for smooth operation in remote desktop scenarios.
 

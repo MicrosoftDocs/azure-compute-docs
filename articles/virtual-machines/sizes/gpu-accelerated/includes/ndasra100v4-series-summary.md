@@ -9,6 +9,7 @@ ms.date: 07/31/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
+# Customer intent: "As a data scientist, I want to leverage the ND A100 v4 series virtual machines for training deep learning models, so that I can utilize high-performance GPUs and scalable resources to enhance my computational efficiency and achieve better model performance."
 ---
 The ND A100 v4 series virtual machine(VM) is a new flagship addition to the Azure GPU family. These sizes are designed for high-end Deep Learning training and tightly coupled scale-up and scale-out HPC workloads.
 

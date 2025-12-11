@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As an IT administrator, I want to set up the necessary Azure VM infrastructure for a Service Fabric cluster, so that I can efficiently host and manage applications in a scalable environment.
 ---
 
 # Tutorial: Create Azure VM infrastructure to host a Service Fabric cluster

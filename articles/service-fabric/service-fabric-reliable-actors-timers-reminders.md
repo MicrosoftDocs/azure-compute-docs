@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: "As a software developer implementing Reliable Actors, I want to understand how to use timers and reminders effectively, so that I can schedule periodic tasks and manage state persistence within my applications."
 ---
 
 # Actor timers and reminders

@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: "As a service developer, I want to implement Reliable Services communication using the provided APIs and listeners, so that I can facilitate robust and flexible communication between services within a cloud environment."
 ---
 
 # How to use the Reliable Services communication APIs

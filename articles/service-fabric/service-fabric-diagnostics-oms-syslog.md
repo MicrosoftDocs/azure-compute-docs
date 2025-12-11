@@ -5,9 +5,12 @@ ms.topic: how-to
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
-ms.custom: linux-related-content
 services: service-fabric
 ms.date: 07/14/2022
+ms.custom:
+  - linux-related-content
+  - sfi-image-nochange
+# Customer intent: "As a system administrator managing a Service Fabric Linux cluster, I want to configure platform events to be written to Syslog, so that I can monitor and analyze cluster activity effectively using my preferred logging tools."
 ---
 
 # Service Fabric Linux cluster events in Syslog

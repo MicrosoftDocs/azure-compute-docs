@@ -7,7 +7,8 @@ author: tomvcassidy
 ms.service: azure-container-instances
 ms.custom:
 services: container-instances
-ms.date: 08/29/2024
+ms.date: 11/17/2025
+# Customer intent: "As a cloud architect, I want to configure readiness probes for container instances, so that I can ensure containers are only accessible when fully initialized and capable of handling traffic."
 ---
 
 # Configure readiness probes

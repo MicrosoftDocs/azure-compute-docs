@@ -4,14 +4,17 @@ description: This article provides steps for creating and configuring a key vaul
 ms.service: azure-virtual-machines
 ms.collection: linux
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: concept-article
 author: msmbaldwin
 ms.author: mbaldwin
-ms.date: 02/20/2024
+ms.date: 09/23/2025
 ms.custom: devx-track-azurecli, devx-track-azurepowershell, linux-related-content
+# Customer intent: As a system administrator managing Linux VMs, I want to create and configure a key vault for Azure Disk Encryption, so that I can securely control and manage encryption keys and secrets for my virtual machines.
 ---
 
 # Creating and configuring a key vault for Azure Disk Encryption
+
+[!INCLUDE [Azure Disk Encryption retirement notice](~/reusable-content/ce-skilling/azure/includes/security/azure-disk-encryption-retirement.md)]
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Flexible scale sets 
 
@@ -19,7 +22,7 @@ Azure Disk Encryption uses Azure Key Vault to control and manage disk encryption
 
 
 > [!WARNING]
-> - If you have previously used Azure Disk Encryption with Microsoft Entra ID to encrypt a VM, you must continue use this option to encrypt your VM. See [Creating and configuring a key vault for Azure Disk Encryption with Microsoft Entra ID (previous release)](disk-encryption-key-vault-aad.md) for details.
+> - If you have previously used Azure Disk Encryption with Microsoft Entra ID to encrypt a VM, you must continue to use this option to encrypt your VM. See [Creating and configuring a key vault for Azure Disk Encryption with Microsoft Entra ID (previous release)](disk-encryption-key-vault-aad.md) for details.
 
 Creating and configuring a key vault for use with Azure Disk Encryption involves three steps:
 

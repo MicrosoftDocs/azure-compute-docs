@@ -8,6 +8,7 @@ ms.tgt_pltfrm: vm-windows
 ms.custom: devx-track-azurepowershell
 ms.date: 06/05/2017
 ms.author: rogarana
+# Customer intent: "As a cloud administrator, I want to create a snapshot from a VHD to generate multiple identical managed disks quickly, so that I can streamline the deployment of virtual machines and improve operational efficiency."
 ---
 
 # Create a snapshot from a VHD to create multiple identical managed disks in small amount of time with PowerShell (Windows)

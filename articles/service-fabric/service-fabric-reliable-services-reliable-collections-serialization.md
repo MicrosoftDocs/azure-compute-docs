@@ -1,12 +1,13 @@
 ---
 title: Reliable Collection object serialization
 description: Learn about Azure Service Fabric Reliable Collections object serialization, including the default strategy and how to define custom serialization.'
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: "As a cloud application developer, I want to implement custom serialization for Reliable Collections, so that I can optimize performance and ensure data compatibility during application upgrades."
 ---
 
 # Reliable Collection object serialization in Azure Service Fabric

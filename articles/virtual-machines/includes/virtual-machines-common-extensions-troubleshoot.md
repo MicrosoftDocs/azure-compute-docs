@@ -1,10 +1,11 @@
 ---
-author: jushiman
+author: cynthnan
 ms.service: azure-virtual-machines
 ms.custom: devx-track-arm-template
 ms.topic: include
 ms.date: 10/26/2018
-ms.author: jushiman
+ms.author: cynthn
+# Customer intent: "As an IT administrator, I want to troubleshoot common VM extension failures in Azure Resource Manager templates, so that I can ensure the proper deployment and functionality of IaaS infrastructure."
 ---
 
 

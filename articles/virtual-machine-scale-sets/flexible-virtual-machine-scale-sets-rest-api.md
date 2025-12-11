@@ -6,8 +6,9 @@ ms.author: fisteele
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
 ms.date: 06/14/2024
-ms.reviewer: jushiman
+ms.reviewer: cynthn
 ms.custom: mimckitt, vmss-flex, devx-track-arm-template
+# Customer intent: As a cloud engineer, I want to deploy a Virtual Machine Scale Set using an ARM template, so that I can automate the creation and management of flexible, scalable virtual machines for my applications.
 ---
 
 # Create virtual machines in a scale set using an ARM template
@@ -23,7 +24,7 @@ If your environment meets the prerequisites and you're familiar with using ARM t
 
 ## Prerequisites
 
-If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 ## ARM template 
 
