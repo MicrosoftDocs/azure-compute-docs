@@ -94,10 +94,6 @@ There’s no best answer for which layout to choose. Each has pros and cons. For
 
 The most common model is the FD/UD matrix, where the fault domains and upgrade domains form a table and nodes are placed starting along the diagonal. This is the model used by default in Service Fabric clusters in Azure. For clusters with many nodes, everything ends up looking like a dense matrix pattern.
 
-> [!NOTE]
-> Service Fabric clusters hosted in Azure don't support changing the default strategy. Only standalone clusters offer that customization.
->
-
 ## Fault and upgrade domain constraints and resulting behavior
 ### Maximum difference approach
 
