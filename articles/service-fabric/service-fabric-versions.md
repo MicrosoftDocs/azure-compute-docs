@@ -168,8 +168,8 @@ Support for Service Fabric on a specific OS ends when support for the OS version
 | OS version | Service Fabric support end date| OS Lifecycle link |
 | - | - | - |
 | Ubuntu 22.04 | June 2027 | <a href="https://wiki.ubuntu.com/Releases">Ubuntu lifecycle</a>|
-| Ubuntu 20.04 | April 2025 | <a href="https://wiki.ubuntu.com/Releases">Ubuntu lifecycle</a>|
-| Ubuntu 18.04 | April 2023 | <a href="https://wiki.ubuntu.com/Releases">Ubuntu lifecycle</a>|
+| Ubuntu 20.04 | April 2025 (No longer supported) | <a href="https://wiki.ubuntu.com/Releases">Ubuntu lifecycle</a>|
+| Ubuntu 18.04 | April 2023 (No longer supported) | <a href="https://wiki.ubuntu.com/Releases">Ubuntu lifecycle</a>|
 
 ---
 
