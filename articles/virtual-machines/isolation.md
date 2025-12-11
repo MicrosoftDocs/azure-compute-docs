@@ -72,7 +72,7 @@ Isolated VM sizes have a hardware limited lifespan. Azure issues reminders 12 mo
 **A**: Yes, isolated VM sizes carry a premium compared to non-isolated sizes. The premium is roughly 10% higher for isolated VMs
 
 ### Q: What should I do if the isolated VM size I need is not available in my region? 
-**A**: Choose an alternative SKU with similar specs first, and if none meet your needs or deploy the isolated VM size in a supported region. 
+**A**: Choose an alternative isolated SKU with similar specs or deploy to one of the supported regions. 
  
 ## Next steps
 
