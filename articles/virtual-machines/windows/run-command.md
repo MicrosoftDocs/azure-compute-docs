@@ -100,12 +100,8 @@ You can use one of the [built-in roles](/azure/role-based-access-control/built-i
 > [!NOTE]
 > * Parameter values can be string type only and the script is responsible for converting them to other types if needed.
 > * Depending on which modality is used to execute, some escaping may be needed. For example, if you're executing the command in a PowerShell session, the path to the script file will need to have quotes.
-
+> * The built-in commands are not editable.
 ### [Portal](#tab/portal)
-
-> [!NOTE]
-> The built-in commands are not editable.
-
 
 Go to a VM in the [Azure portal](https://portal.azure.com) and select **Run command** from the left menu, under **Operations**. You see a list of the available commands to run on the VM.
 
