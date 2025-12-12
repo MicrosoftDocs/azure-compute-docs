@@ -51,7 +51,7 @@ The *updated* managed Run Command uses the same VM agent channel to execute scri
 | **CommandID** | **Description** | **More Info** |
 |:-----|:-----|:-----|
 | **RunPowerShellScript** | Runs a PowerShell script ||
-| **DisableNLA** | Disables Network Level Authentication (NLA). You must restart the VM after the script completes for the change to take effect. The script itself does not restart the VM. You can use this script to disable NLA if RDP connections are failing with error 'The remote computer that you are trying to connect to requires Network Level Authentication (NLA), but your Windows domain controller cannot be contacted to perform NLA.' or error 'An authentication error has occurred. The Local Security Authority cannot be contacted.' NLA is a security feature that should only be disabled temporarily to allow RDP connections to succeed until the domain controller connectivity issue have been resolved. | [readme](https://github.com/Azure/azure-support-scripts/blob/master/RunCommand/Windows/DisableNLA) |
+| **DisableNLA** | Disables Network Level Authentication (NLA). You must restart the VM after the script completes for the change to take effect. The script itself does not restart the VM. | [readme](https://github.com/Azure/azure-support-scripts/blob/master/RunCommand/Windows/DisableNLA) |
 | **DisableWindowsUpdate** | Disable Automatic Updates through Windows Update. | [readme](https://github.com/Azure/azure-support-scripts/blob/master/RunCommand/Windows/DisableWindowsUpdate) |
 EnableWindowsUpdate) |
 | **EnableAdminAccount** | Checks if the local Administrator account is disabled, and if so enables it. | [readme](https://github.com/Azure/azure-support-scripts/blob/master/RunCommand/Windows/EnableAdminAccount) |
