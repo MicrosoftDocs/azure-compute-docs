@@ -123,26 +123,6 @@ The following example uses the [Invoke-AzVMRunCommand](/powershell/module/az.com
 Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' -CommandId 'RunPowerShellScript' -ScriptPath '<pathToScript>' -Parameter @{"arg1" = "var1";"arg2" = "var2"}
 ```
 
-#### Action Run Command Windows troubleshooting
-
-When troubleshooting action run command for Windows environments, refer to the *RunCommandExtension* log file typically located in the following directory: `C:\WindowsAzure\Logs\Plugins\Microsoft.CPlat.Core.RunCommandWindows\<version>\RunCommandExtension.log` for further details.
-
-#### Known issues
-
-* Your Action Run Command Extension might fail to execute in your Windows environment if the command contains reserved characters. For example:
-
-    If the `&` symbol is passed in the parameter of your command such as the below PowerShell script, it might fail.
-
-    ```powershell-interactive    
-    $paramm='abc&jj'
-    Invoke-AzVMRunCommand -ResourceGroupName AzureCloudService1 -Name test -CommandId 'RunPowerShellScript' -ScriptPath     C:\data\228332902\PostAppConfig.ps1 -Parameter @{"Prefix" = $paramm}
-    ```
-
-    Use the `^` character to escape the `&` in the argument, such as `$paramm='abc^&jj'`
-
-* The Run Command extension might also fail to execute if command to be executed contains "\n" in the path, as it will be treated as a new line. For example, `C:\Windows\notepad.exe` contains the `\n` in the file path. Consider replacing `\n` with `\N` in your path.
-
-* Ensure you don't have any custom setting in the registry key `HKLM\SOFTWARE\Microsoft\Command Processor\AutoRun` (detailed [here](/windows-server/administration/windows-commands/cmd)). This could trigger during the RunCommand Extension install or enable phases and cause an error like *'XYZ is not recognized as an internal or external command, operable program or batch file'*.
 
 
 ### [CLI](#tab/cli)
@@ -163,6 +143,28 @@ az vm run-command invoke  --command-id RunPowerShellScript --name win-vm -g my-r
 
 ---
 
+## Action Run Command Windows troubleshooting
+
+When troubleshooting action run command for Windows environments, refer to the *RunCommandExtension* log file typically located in the following directory: `C:\WindowsAzure\Logs\Plugins\Microsoft.CPlat.Core.RunCommandWindows\<version>\RunCommandExtension.log` for further details.
+
+### Known issues
+
+* Your Action Run Command Extension might fail to execute in your Windows environment if the command contains reserved characters. For example:
+
+    If the `&` symbol is passed in the parameter of your command such as the below PowerShell script, it might fail.
+
+    ```powershell-interactive    
+    $paramm='abc&jj'
+    Invoke-AzVMRunCommand -ResourceGroupName AzureCloudService1 -Name test -CommandId 'RunPowerShellScript' -ScriptPath     C:\data\228332902\PostAppConfig.ps1 -Parameter @{"Prefix" = $paramm}
+    ```
+
+    Use the `^` character to escape the `&` in the argument, such as `$paramm='abc^&jj'`
+
+* The Run Command extension might also fail to execute if command to be executed contains "\n" in the path, as it will be treated as a new line. For example, `C:\Windows\notepad.exe` contains the `\n` in the file path. Consider replacing `\n` with `\N` in your path.
+
+* Ensure you don't have any custom setting in the registry key `HKLM\SOFTWARE\Microsoft\Command Processor\AutoRun` (detailed [here](/windows-server/administration/windows-commands/cmd)). This could trigger during the RunCommand Extension install or enable phases and cause an error like *'XYZ is not recognized as an internal or external command, operable program or batch file'*.
+
+
 ## Action Run Command Removal
 
 If needing to remove your action run command Windows extension, refer to the below steps for Azure PowerShell and CLI:
@@ -182,6 +184,7 @@ If needing to remove your action run command Windows extension, refer to the bel
 az vm run-command invoke  --command-id RemoveRunCommandWindowsExtension --name vmname -g rgname
 ```
 ---
+
 
 > [!NOTE]
 > When you apply a Run Command again, the extension will get installed automatically. You can use the extension removal command to troubleshoot any issues related to the extension.
