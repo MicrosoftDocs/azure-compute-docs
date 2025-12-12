@@ -113,24 +113,6 @@ After you choose the command, select **Run** to run the script. After the script
 ![Run command script output](./media/run-command/run-command-script-output.png)
 
 
-### [CLI](#tab/cli)
-
-> [!NOTE]
-> Depending on which modality is used to execute, some escaping may be needed. For example, if you're executing the command in a PowerShell session, the path to the script file will need to have quotes.
-
-The following example uses the [az vm run-command](/cli/azure/vm/run-command#az-vm-run-command-invoke) command to run a shell script on an Azure Windows VM.
-
-```azurecli-interactive
-# script.ps1
-#   param(
-#       [string]$arg1,
-#       [string]$arg2
-#   )
-#   Write-Host This is a sample script with parameters $arg1 and $arg2
-
-az vm run-command invoke  --command-id RunPowerShellScript --name win-vm -g my-resource-group \
-    --scripts @script.ps1 --parameters "arg1=somefoo" "arg2=somebar"
-```
 
 ### [PowerShell](#tab/powershell)
 
@@ -163,6 +145,27 @@ When troubleshooting action run command for Windows environments, refer to the *
 * The Run Command extension might also fail to execute if command to be executed contains "\n" in the path, as it will be treated as a new line. For example, `C:\Windows\notepad.exe` contains the `\n` in the file path. Consider replacing `\n` with `\N` in your path.
 
 * Ensure you don't have any custom setting in the registry key `HKLM\SOFTWARE\Microsoft\Command Processor\AutoRun` (detailed [here](/windows-server/administration/windows-commands/cmd)). This could trigger during the RunCommand Extension install or enable phases and cause an error like *'XYZ is not recognized as an internal or external command, operable program or batch file'*.
+
+
+### [CLI](#tab/cli)
+
+> [!NOTE]
+> Depending on which modality is used to execute, some escaping may be needed. For example, if you're executing the command in a PowerShell session, the path to the script file will need to have quotes.
+
+The following example uses the [az vm run-command](/cli/azure/vm/run-command#az-vm-run-command-invoke) command to run a shell script on an Azure Windows VM.
+
+```azurecli-interactive
+# script.ps1
+#   param(
+#       [string]$arg1,
+#       [string]$arg2
+#   )
+#   Write-Host This is a sample script with parameters $arg1 and $arg2
+
+az vm run-command invoke  --command-id RunPowerShellScript --name win-vm -g my-resource-group \
+    --scripts @script.ps1 --parameters "arg1=somefoo" "arg2=somebar"
+```
+
 ---
 
 ## Action Run Command Removal
@@ -171,13 +174,13 @@ If needing to remove your action run command Windows extension, refer to the bel
 
  Replace *rgname* and *vmname* with your relevant resource group name and virtual machine name in the following removal examples.
 
-### [PowerShell](#tab/powershell)
+### [PowerShell](#tab/powershellremove)
 
 
 ```powershell-interactive
  Invoke-AzVMRunCommand -ResourceGroupName 'rgname' -VMName 'vmname' -CommandId 'RemoveRunCommandWindowsExtension'
 ```
-### [CLI](#tab/cli)
+### [CLI](#tab/powershellremove)
 
 
 ```azurecli-interactive
