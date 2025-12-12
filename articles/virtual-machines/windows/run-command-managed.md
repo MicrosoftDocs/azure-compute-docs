@@ -53,12 +53,10 @@ The *updated* managed Run Command uses the same VM agent channel to execute scri
 | **RunPowerShellScript** | Runs a PowerShell script ||
 | **DisableNLA** | Disables Network Level Authentication (NLA). You must restart the VM after the script completes for the change to take effect. The script itself does not restart the VM. | [readme](https://github.com/Azure/azure-support-scripts/blob/master/RunCommand/Windows/DisableNLA) |
 | **DisableWindowsUpdate** | Disable Automatic Updates through Windows Update. | [readme](https://github.com/Azure/azure-support-scripts/blob/master/RunCommand/Windows/DisableWindowsUpdate) |
-EnableWindowsUpdate) |
 | **EnableAdminAccount** | Checks if the local Administrator account is disabled, and if so enables it. | [readme](https://github.com/Azure/azure-support-scripts/blob/master/RunCommand/Windows/EnableAdminAccount) |
-| **EnableEMS** | Enable Emergency Management Services (EMS) to allow for serial console connection in troubleshooting scenarios. | [readme](https://github.com/Azure/
+| **EnableEMS** | Enable Emergency Management Services (EMS) to allow for serial console connection in troubleshooting scenarios. | [readme](https://github.com/Azure/azure-support-scripts/blob/master/RunCommand/Windows/EnableEMS)
 | **EnableRemotePS** | Enable remote PowerShell. | [readme](https://github.com/Azure/azure-support-scripts/blob/master/RunCommand/Windows/EnableRemotePS) |
-| **EnableWindowsUpdate** | Enable Automatic Updates through Windows Update. | [readme](https://github.com/Azure/azure-support-scripts/blob/master/RunCommand/Windows/|
-azure-support-scripts/blob/master/RunCommand/Windows/EnableEMS) |
+| **EnableWindowsUpdate** | Enable Automatic Updates through Windows Update. | [readme](https://github.com/Azure/azure-support-scripts/tree/master/RunCommand/Windows/EnableWindowsUpdate) |
 | **IMDSCertCheck** | Checks IMDS Health and then analyzes currently installed certificates that IMDS depends upon. If missing, shows additional details and mitigation steps. | [readme](https://aka.ms/AzVmIMDSValidation) |
 | **IPConfig** | Shows detailed information for the IP address, subnet mask and default gateway for each adapter bound to TCP/IP. For usage, refer to [Run scripts](/azure/virtual-machines/windows/run-command-managed#create-or-update-run-command-on-a-vm-using-sourcecommandid) | [readme](https://github.com/Azure/azure-support-scripts/blob/master/RunCommand/Windows/IPConfig) |
 | **RDPSettings** | Checks registry settings and domain policy settings. Suggests policy actions if machine is part of a domain or modifies the settings to default values. | [readme](https://github.com/Azure/azure-support-scripts/blob/master/RunCommand/Windows/RDPSettings) |
@@ -79,44 +77,12 @@ Running a command requires the `Microsoft.Compute/virtualMachines/runCommand/wri
 
 You can use one of the [built-in roles](/azure/role-based-access-control/built-in-roles) or create a [custom role](/azure/role-based-access-control/custom-roles) to use Run Command.
 
-## Azure CLI 
+## Using Run Commands
 
-The following examples use [az vm run-command](/cli/azure/vm/run-command) to run shell script on an Azure Windows VM.
-
-### Execute a script with the VM
-This command delivers the script to the VM, execute it, and return the captured output.
-
-```azurecli-interactive
-az vm run-command create --name "myRunCommand" --vm-name "myVM" --resource-group "myRG" --script "Write-Host Hello World!"
-```
-
-### List all deployed RunCommand resources on a VM 
-This command returns a full list of previously deployed Run Commands along with their properties.
-
-```azurecli-interactive
-az vm run-command list --vm-name "myVM" --resource-group "myRG"
-```
-
-### Get execution status and results 
-This command retrieves current execution progress, including latest output, start/end time, exit code, and terminal state of the execution.
-
-```azurecli-interactive
-az vm run-command show --name "myRunCommand" --vm-name "myVM" --resource-group "myRG" --expand instanceView
-```
-
-> [!Note]
-> Output and error fields in `instanceView` is limited to last 4KB.
-> If you'd like to access the full output and error, you have the option of forwarding the output and error data to storage append blobs using `-outputBlobUri` and `-errorBlobUri` parameters while executing Run Command using `Set-AzVMRunCommand` or `Set-AzVMssRunCommand`.
-
-### Delete RunCommand resource from the VM
-Remove the RunCommand resource previously deployed on the VM. If the script execution is still in progress, execution is terminated. 
-
-```azurecli-interactive
-az vm run-command delete --name "myRunCommand" --vm-name "myVM" --resource-group "myRG"
-```
+### [Portal](#tab/portal)
 
 
-## PowerShell 
+#### [PowerShell](#tab/PowerShell)  
 
 ### Execute a script with the VM
 This command delivers the script to the VM, execute it, and return the captured output.
@@ -268,7 +234,44 @@ Remove-AzVMRunCommand -ResourceGroupName "myRG" -VMName "myVM" -RunCommandName "
 ```
  
 
-## REST API 
+#### [CLI](#tab/CLI)  
+
+The following examples use [az vm run-command](/cli/azure/vm/run-command) to run shell script on an Azure Windows VM.
+
+### Execute a script with the VM
+This command delivers the script to the VM, execute it, and return the captured output.
+
+```azurecli-interactive
+az vm run-command create --name "myRunCommand" --vm-name "myVM" --resource-group "myRG" --script "Write-Host Hello World!"
+```
+
+### List all deployed RunCommand resources on a VM 
+This command returns a full list of previously deployed Run Commands along with their properties.
+
+```azurecli-interactive
+az vm run-command list --vm-name "myVM" --resource-group "myRG"
+```
+
+### Get execution status and results 
+This command retrieves current execution progress, including latest output, start/end time, exit code, and terminal state of the execution.
+
+```azurecli-interactive
+az vm run-command show --name "myRunCommand" --vm-name "myVM" --resource-group "myRG" --expand instanceView
+```
+
+> [!Note]
+> Output and error fields in `instanceView` is limited to last 4KB.
+> If you'd like to access the full output and error, you have the option of forwarding the output and error data to storage append blobs using `-outputBlobUri` and `-errorBlobUri` parameters while executing Run Command using `Set-AzVMRunCommand` or `Set-AzVMssRunCommand`.
+
+### Delete RunCommand resource from the VM
+Remove the RunCommand resource previously deployed on the VM. If the script execution is still in progress, execution is terminated. 
+
+```azurecli-interactive
+az vm run-command delete --name "myRunCommand" --vm-name "myVM" --resource-group "myRG"
+```
+
+
+#### [Rest API](#tab/RestAPI)  
 
 To deploy a new Run Command, execute a PUT on the VM directly and specify a unique name for the Run Command instance. 
 
@@ -362,6 +365,7 @@ To deploy scripts sequentially, use a deployment template, specifying a `depends
     }
 } 
 ```
+---
 
 ### Execute multiple Run Commands sequentially 
 

@@ -73,12 +73,10 @@ The entity was not found in this Azure location
 | **RunPowerShellScript** | Runs a PowerShell script ||
 | **DisableNLA** | Disables Network Level Authentication (NLA). You must restart the VM after the script completes for the change to take effect. The script itself does not restart the VM. | [readme](https://github.com/Azure/azure-support-scripts/blob/master/RunCommand/Windows/DisableNLA) |
 | **DisableWindowsUpdate** | Disable Automatic Updates through Windows Update. | [readme](https://github.com/Azure/azure-support-scripts/blob/master/RunCommand/Windows/DisableWindowsUpdate) |
-EnableWindowsUpdate) |
 | **EnableAdminAccount** | Checks if the local Administrator account is disabled, and if so enables it. | [readme](https://github.com/Azure/azure-support-scripts/blob/master/RunCommand/Windows/EnableAdminAccount) |
-| **EnableEMS** | Enable Emergency Management Services (EMS) to allow for serial console connection in troubleshooting scenarios. | [readme](https://github.com/Azure/
+| **EnableEMS** | Enable Emergency Management Services (EMS) to allow for serial console connection in troubleshooting scenarios. | [readme](https://github.com/Azure/azure-support-scripts/blob/master/RunCommand/Windows/EnableEMS)
 | **EnableRemotePS** | Enable remote PowerShell. | [readme](https://github.com/Azure/azure-support-scripts/blob/master/RunCommand/Windows/EnableRemotePS) |
-| **EnableWindowsUpdate** | Enable Automatic Updates through Windows Update. | [readme](https://github.com/Azure/azure-support-scripts/blob/master/RunCommand/Windows/|
-azure-support-scripts/blob/master/RunCommand/Windows/EnableEMS) |
+| **EnableWindowsUpdate** | Enable Automatic Updates through Windows Update. | [readme](https://github.com/Azure/azure-support-scripts/tree/master/RunCommand/Windows/EnableWindowsUpdate) |
 | **IMDSCertCheck** | Checks IMDS Health and then analyzes currently installed certificates that IMDS depends upon. If missing, shows additional details and mitigation steps. | [readme](https://aka.ms/AzVmIMDSValidation) |
 | **IPConfig** | Shows detailed information for the IP address, subnet mask and default gateway for each adapter bound to TCP/IP. For usage, refer to [Run scripts](/azure/virtual-machines/windows/run-command-managed#create-or-update-run-command-on-a-vm-using-sourcecommandid) | [readme](https://github.com/Azure/azure-support-scripts/blob/master/RunCommand/Windows/IPConfig) |
 | **RDPSettings** | Checks registry settings and domain policy settings. Suggests policy actions if machine is part of a domain or modifies the settings to default values. | [readme](https://github.com/Azure/azure-support-scripts/blob/master/RunCommand/Windows/RDPSettings) |
@@ -88,7 +86,34 @@ azure-support-scripts/blob/master/RunCommand/Windows/EnableEMS) |
 | **WindowsGhostedNicValidationScript** | This script scans the Windows registry for network adapters on PCI and VMBUS buses, compares them with currently active network adapters, and identifies ghosted NICs. Useful for troubleshooting network issues or cleaning up old NICs. | [readme](https://aka.ms/AzVmGhostedNicCleanup) |
 | **WindowsUpgradeAssessmentValidation** | This script is designed to assess the readiness of a Windows machine (client or server) for an in-place OS upgrade, with special considerations for Azure Virtual Machines. It evaluates OS version, supported upgrade paths, system disk space, and Azure security features like Trusted Launch, Secure Boot, and vTPM. | [readme](https://aka.ms/AzVmOSUpgradeAssessment) |
 
-## Azure CLI
+## Limiting access to Run Command
+
+Listing the run commands or showing the details of a command requires the `Microsoft.Compute/locations/runCommands/read` permission on Subscription Level. The built-in [Reader](/azure/role-based-access-control/built-in-roles#reader) role and higher levels have this permission.
+
+Running a command requires the `Microsoft.Compute/virtualMachines/runCommand/action` permission. The [Virtual Machine Contributor](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) role and higher levels have this permission.
+
+You can use one of the [built-in roles](/azure/role-based-access-control/built-in-roles) or create a [custom role](/azure/role-based-access-control/custom-roles) to use Run Command.
+
+
+## Using Run Commands
+
+### [Portal](#tab/portal)
+
+Go to a VM in the [Azure portal](https://portal.azure.com) and select **Run command** from the left menu, under **Operations**. You see a list of the available commands to run on the VM.
+
+![List of commands](./media/run-command/run-command-list.png)
+
+Choose a command to run. Some of the commands might have optional or required input parameters. For those commands, the parameters are presented as text fields for you to provide the input values. For each command, you can view the script that's being run by expanding **View script**. **RunPowerShellScript** is different from the other commands, because it allows you to provide your own custom script.
+
+> [!NOTE]
+> The built-in commands are not editable.
+
+After you choose the command, select **Run** to run the script. After the script finishes, it returns the output and any errors in the output window. The following screenshot shows an example output from running the **RDPSettings** command.
+
+![Run command script output](./media/run-command/run-command-script-output.png)
+
+
+### [CLI](#tab/CLI)
 
 > [!NOTE]
 > Depending on which modality is used to execute, some escaping may be needed. For example, if you're executing the command in a PowerShell session, the path to the script file will need to have quotes.
@@ -107,22 +132,7 @@ az vm run-command invoke  --command-id RunPowerShellScript --name win-vm -g my-r
     --scripts @script.ps1 --parameters "arg1=somefoo" "arg2=somebar"
 ```
 
-## Azure portal
-
-Go to a VM in the [Azure portal](https://portal.azure.com) and select **Run command** from the left menu, under **Operations**. You see a list of the available commands to run on the VM.
-
-![List of commands](./media/run-command/run-command-list.png)
-
-Choose a command to run. Some of the commands might have optional or required input parameters. For those commands, the parameters are presented as text fields for you to provide the input values. For each command, you can view the script that's being run by expanding **View script**. **RunPowerShellScript** is different from the other commands, because it allows you to provide your own custom script.
-
-> [!NOTE]
-> The built-in commands are not editable.
-
-After you choose the command, select **Run** to run the script. After the script finishes, it returns the output and any errors in the output window. The following screenshot shows an example output from running the **RDPSettings** command.
-
-![Run command script output](./media/run-command/run-command-script-output.png)
-
-## PowerShell
+### [PowerShell](#tab/PowerShell)
 
 The following example uses the [Invoke-AzVMRunCommand](/powershell/module/az.compute/invoke-azvmruncommand) cmdlet to run a PowerShell script on an Azure VM. The cmdlet expects the script referenced in the `-ScriptPath` parameter to be local to where the cmdlet is being run.
 
@@ -132,20 +142,12 @@ Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' 
 > [!NOTE]
 > Parameter values can be string type only and the script is responsible for converting them to other types if needed.
 
-## Limiting access to Run Command
 
-Listing the run commands or showing the details of a command requires the `Microsoft.Compute/locations/runCommands/read` permission on Subscription Level. The built-in [Reader](/azure/role-based-access-control/built-in-roles#reader) role and higher levels have this permission.
-
-Running a command requires the `Microsoft.Compute/virtualMachines/runCommand/action` permission. The [Virtual Machine Contributor](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) role and higher levels have this permission.
-
-You can use one of the [built-in roles](/azure/role-based-access-control/built-in-roles) or create a [custom role](/azure/role-based-access-control/custom-roles) to use Run Command.
-
-
-## Action Run Command Windows troubleshooting
+#### Action Run Command Windows troubleshooting
 
 When troubleshooting action run command for Windows environments, refer to the *RunCommandExtension* log file typically located in the following directory: `C:\WindowsAzure\Logs\Plugins\Microsoft.CPlat.Core.RunCommandWindows\<version>\RunCommandExtension.log` for further details.
 
-### Known issues
+#### Known issues
 
 * Your Action Run Command Extension might fail to execute in your Windows environment if the command contains reserved characters. For example:
 
@@ -161,24 +163,31 @@ When troubleshooting action run command for Windows environments, refer to the *
 * The Run Command extension might also fail to execute if command to be executed contains "\n" in the path, as it will be treated as a new line. For example, `C:\Windows\notepad.exe` contains the `\n` in the file path. Consider replacing `\n` with `\N` in your path.
 
 * Ensure you don't have any custom setting in the registry key `HKLM\SOFTWARE\Microsoft\Command Processor\AutoRun` (detailed [here](/windows-server/administration/windows-commands/cmd)). This could trigger during the RunCommand Extension install or enable phases and cause an error like *'XYZ is not recognized as an internal or external command, operable program or batch file'*.
+---
 
-
-### Action Run Command Removal
+## Action Run Command Removal
 
 If needing to remove your action run command Windows extension, refer to the below steps for Azure PowerShell and CLI:
 
  Replace *rgname* and *vmname* with your relevant resource group name and virtual machine name in the following removal examples.
 
+### [PowerShell](#tab/PowerShell)
+
 
 ```powershell-interactive
  Invoke-AzVMRunCommand -ResourceGroupName 'rgname' -VMName 'vmname' -CommandId 'RemoveRunCommandWindowsExtension'
 ```
+### [CLI](#tab/CLI)
+
 
 ```azurecli-interactive
 az vm run-command invoke  --command-id RemoveRunCommandWindowsExtension --name vmname -g rgname
 ```
+---
+
 > [!NOTE]
 > When you apply a Run Command again, the extension will get installed automatically. You can use the extension removal command to troubleshoot any issues related to the extension.
+
 
 ## Next steps
 
