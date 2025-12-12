@@ -120,6 +120,90 @@ This command retrieves current execution progress, including latest output, star
 Get-AzVMRunCommand -ResourceGroupName "myRG" -VMName "myVM" -RunCommandName "RunCommandName" -Expand InstanceView
 ```
 
+### [CLI](#tab/cli)  
+
+The following examples use [az vm run-command](/cli/azure/vm/run-command) to run shell script on an Azure Windows VM.
+
+#### Execute a script with the VM
+This command delivers the script to the VM, execute it, and return the captured output.
+
+```azurecli-interactive
+az vm run-command create --name "myRunCommand" --vm-name "myVM" --resource-group "myRG" --script "Write-Host Hello World!"
+```
+
+#### List all deployed RunCommand resources on a VM 
+This command returns a full list of previously deployed Run Commands along with their properties.
+
+```azurecli-interactive
+az vm run-command list --vm-name "myVM" --resource-group "myRG"
+```
+
+#### Get execution status and results 
+This command retrieves current execution progress, including latest output, start/end time, exit code, and terminal state of the execution.
+
+```azurecli-interactive
+az vm run-command show --name "myRunCommand" --vm-name "myVM" --resource-group "myRG" --expand instanceView
+```
+
+> [!Note]
+> Output and error fields in `instanceView` is limited to last 4KB.
+> If you'd like to access the full output and error, you have the option of forwarding the output and error data to storage append blobs using `-outputBlobUri` and `-errorBlobUri` parameters while executing Run Command using `Set-AzVMRunCommand` or `Set-AzVMssRunCommand`.
+
+#### Delete RunCommand resource from the VM
+Remove the RunCommand resource previously deployed on the VM. If the script execution is still in progress, execution is terminated. 
+
+```azurecli-interactive
+az vm run-command delete --name "myRunCommand" --vm-name "myVM" --resource-group "myRG"
+```
+
+
+### [Rest API](#tab/RestAPI)  
+
+To deploy a new Run Command, execute a PUT on the VM directly and specify a unique name for the Run Command instance. 
+
+```rest
+PUT /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/virtualMachines/<vmName>/runcommands/<runCommandName>?api-version=2023-03-01
+```
+
+```json
+{ 
+"location": "<location>", 
+"properties": { 
+    "source": { 
+        "script": "Write-Host Hello World!", 
+        "scriptUri": "<SAS URI of a storage blob with read access or public URI>",  
+        "commandId": "<Id>"  
+        }, 
+    "parameters": [ 
+        { 
+            "name": "param1",
+            "value": "value1" 
+            }, 
+        { 
+            "name": "param2", 
+            "value": "value2" 
+            } 
+        ], 
+    "protectedParameters": [ 
+        { 
+            "name": "secret1", 
+            "value": "value1" 
+            }, 
+        { 
+            "name": "secret2", 
+            "value": "value2" 
+            } 
+        ], 
+    "runAsUser": "userName",
+    "runAsPassword": "userPassword", 
+    "timeoutInSeconds": 3600,
+    "treatFailureAsDeploymentFailure": true,
+    "outputBlobUri": "< SAS URI of a storage append blob with read, add, create, write access>", 
+    "errorBlobUri": "< SAS URI of a storage append blob with read, add, create, write access >"  
+    }
+}
+```
+
 #### Create or update Run Command on a VM using SourceScriptUri (storage blob SAS URL)
 Create or update Run Command on a Windows VM using a SAS URL of a storage blob that contains a PowerShell script. `SourceScriptUri` can be a storage blob’s full SAS URL or public URL.
 
@@ -222,7 +306,6 @@ Set-AzVMRunCommand -ResourceGroupName MyRG0 -VMName MyVMEE -RunCommandName MyRun
 
 - Linux: Named Parameters and its values are set to environment config, which should be accessible within the .sh script. For Nameless arguments, pass an empty string to name input. Nameless arguments are passed to script and run like this - `myscript.sh publicParam1value publicParam2value secret1value secret2value`
 
-
 #### Delete RunCommand resource from the VM
 Remove the RunCommand resource previously deployed on the VM. If the script execution is still in progress, execution is terminated. 
 
@@ -230,90 +313,6 @@ Remove the RunCommand resource previously deployed on the VM. If the script exec
 Remove-AzVMRunCommand -ResourceGroupName "myRG" -VMName "myVM" -RunCommandName "RunCommandName"
 ```
  
-### [CLI](#tab/cli)  
-
-The following examples use [az vm run-command](/cli/azure/vm/run-command) to run shell script on an Azure Windows VM.
-
-#### Execute a script with the VM
-This command delivers the script to the VM, execute it, and return the captured output.
-
-```azurecli-interactive
-az vm run-command create --name "myRunCommand" --vm-name "myVM" --resource-group "myRG" --script "Write-Host Hello World!"
-```
-
-#### List all deployed RunCommand resources on a VM 
-This command returns a full list of previously deployed Run Commands along with their properties.
-
-```azurecli-interactive
-az vm run-command list --vm-name "myVM" --resource-group "myRG"
-```
-
-#### Get execution status and results 
-This command retrieves current execution progress, including latest output, start/end time, exit code, and terminal state of the execution.
-
-```azurecli-interactive
-az vm run-command show --name "myRunCommand" --vm-name "myVM" --resource-group "myRG" --expand instanceView
-```
-
-> [!Note]
-> Output and error fields in `instanceView` is limited to last 4KB.
-> If you'd like to access the full output and error, you have the option of forwarding the output and error data to storage append blobs using `-outputBlobUri` and `-errorBlobUri` parameters while executing Run Command using `Set-AzVMRunCommand` or `Set-AzVMssRunCommand`.
-
-#### Delete RunCommand resource from the VM
-Remove the RunCommand resource previously deployed on the VM. If the script execution is still in progress, execution is terminated. 
-
-```azurecli-interactive
-az vm run-command delete --name "myRunCommand" --vm-name "myVM" --resource-group "myRG"
-```
-
-
-### [Rest API](#tab/RestAPI)  
-
-To deploy a new Run Command, execute a PUT on the VM directly and specify a unique name for the Run Command instance. 
-
-```rest
-PUT /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/virtualMachines/<vmName>/runcommands/<runCommandName>?api-version=2023-03-01
-```
-
-```json
-{ 
-"location": "<location>", 
-"properties": { 
-    "source": { 
-        "script": "Write-Host Hello World!", 
-        "scriptUri": "<SAS URI of a storage blob with read access or public URI>",  
-        "commandId": "<Id>"  
-        }, 
-    "parameters": [ 
-        { 
-            "name": "param1",
-            "value": "value1" 
-            }, 
-        { 
-            "name": "param2", 
-            "value": "value2" 
-            } 
-        ], 
-    "protectedParameters": [ 
-        { 
-            "name": "secret1", 
-            "value": "value1" 
-            }, 
-        { 
-            "name": "secret2", 
-            "value": "value2" 
-            } 
-        ], 
-    "runAsUser": "userName",
-    "runAsPassword": "userPassword", 
-    "timeoutInSeconds": 3600,
-    "treatFailureAsDeploymentFailure": true,
-    "outputBlobUri": "< SAS URI of a storage append blob with read, add, create, write access>", 
-    "errorBlobUri": "< SAS URI of a storage append blob with read, add, create, write access >"  
-    }
-}
-```
-
 #### Notes
  
 - You can provide an inline script, a script URI, or a built-in script [command ID](run-command.md#available-commands) as the input source. Script URI is either storage blob SAS URI with read access or public URI.

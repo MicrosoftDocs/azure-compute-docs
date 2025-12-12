@@ -123,8 +123,6 @@ The following example uses the [Invoke-AzVMRunCommand](/powershell/module/az.com
 Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' -CommandId 'RunPowerShellScript' -ScriptPath '<pathToScript>' -Parameter @{"arg1" = "var1";"arg2" = "var2"}
 ```
 
-
-
 ### [CLI](#tab/cli)
 
 The following example uses the [az vm run-command](/cli/azure/vm/run-command#az-vm-run-command-invoke) command to run a shell script on an Azure Windows VM.
@@ -140,7 +138,6 @@ The following example uses the [az vm run-command](/cli/azure/vm/run-command#az-
 az vm run-command invoke  --command-id RunPowerShellScript --name win-vm -g my-resource-group \
     --scripts @script.ps1 --parameters "arg1=somefoo" "arg2=somebar"
 ```
-
 ---
 
 ## Action Run Command Windows troubleshooting
@@ -163,7 +160,6 @@ When troubleshooting action run command for Windows environments, refer to the *
 * The Run Command extension might also fail to execute if command to be executed contains "\n" in the path, as it will be treated as a new line. For example, `C:\Windows\notepad.exe` contains the `\n` in the file path. Consider replacing `\n` with `\N` in your path.
 
 * Ensure you don't have any custom setting in the registry key `HKLM\SOFTWARE\Microsoft\Command Processor\AutoRun` (detailed [here](/windows-server/administration/windows-commands/cmd)). This could trigger during the RunCommand Extension install or enable phases and cause an error like *'XYZ is not recognized as an internal or external command, operable program or batch file'*.
-
 
 ## Action Run Command Removal
 
