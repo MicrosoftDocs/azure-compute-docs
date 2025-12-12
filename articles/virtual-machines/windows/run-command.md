@@ -113,7 +113,7 @@ After you choose the command, select **Run** to run the script. After the script
 ![Run command script output](./media/run-command/run-command-script-output.png)
 
 
-### [CLI](#tab/CLI)
+### [CLI](#tab/cli)
 
 > [!NOTE]
 > Depending on which modality is used to execute, some escaping may be needed. For example, if you're executing the command in a PowerShell session, the path to the script file will need to have quotes.
@@ -132,7 +132,7 @@ az vm run-command invoke  --command-id RunPowerShellScript --name win-vm -g my-r
     --scripts @script.ps1 --parameters "arg1=somefoo" "arg2=somebar"
 ```
 
-### [PowerShell](#tab/PowerShell)
+### [PowerShell](#tab/powershell)
 
 The following example uses the [Invoke-AzVMRunCommand](/powershell/module/az.compute/invoke-azvmruncommand) cmdlet to run a PowerShell script on an Azure VM. The cmdlet expects the script referenced in the `-ScriptPath` parameter to be local to where the cmdlet is being run.
 
@@ -171,13 +171,13 @@ If needing to remove your action run command Windows extension, refer to the bel
 
  Replace *rgname* and *vmname* with your relevant resource group name and virtual machine name in the following removal examples.
 
-### [PowerShell](#tab/PowerShell)
+### [PowerShell](#tab/powershell)
 
 
 ```powershell-interactive
  Invoke-AzVMRunCommand -ResourceGroupName 'rgname' -VMName 'vmname' -CommandId 'RemoveRunCommandWindowsExtension'
 ```
-### [CLI](#tab/CLI)
+### [CLI](#tab/cli)
 
 
 ```azurecli-interactive
