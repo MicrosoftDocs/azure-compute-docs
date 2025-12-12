@@ -97,7 +97,15 @@ You can use one of the [built-in roles](/azure/role-based-access-control/built-i
 
 ## Using Run Commands
 
+> [!NOTE]
+> * Parameter values can be string type only and the script is responsible for converting them to other types if needed.
+> * Depending on which modality is used to execute, some escaping may be needed. For example, if you're executing the command in a PowerShell session, the path to the script file will need to have quotes.
+
 ### [Portal](#tab/portal)
+
+> [!NOTE]
+> The built-in commands are not editable.
+
 
 Go to a VM in the [Azure portal](https://portal.azure.com) and select **Run command** from the left menu, under **Operations**. You see a list of the available commands to run on the VM.
 
@@ -105,13 +113,10 @@ Go to a VM in the [Azure portal](https://portal.azure.com) and select **Run comm
 
 Choose a command to run. Some of the commands might have optional or required input parameters. For those commands, the parameters are presented as text fields for you to provide the input values. For each command, you can view the script that's being run by expanding **View script**. **RunPowerShellScript** is different from the other commands, because it allows you to provide your own custom script.
 
-> [!NOTE]
-> The built-in commands are not editable.
 
 After you choose the command, select **Run** to run the script. After the script finishes, it returns the output and any errors in the output window. The following screenshot shows an example output from running the **RDPSettings** command.
 
 ![Run command script output](./media/run-command/run-command-script-output.png)
-
 
 
 ### [PowerShell](#tab/powershell)
@@ -121,9 +126,6 @@ The following example uses the [Invoke-AzVMRunCommand](/powershell/module/az.com
 ```azurepowershell-interactive
 Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' -CommandId 'RunPowerShellScript' -ScriptPath '<pathToScript>' -Parameter @{"arg1" = "var1";"arg2" = "var2"}
 ```
-> [!NOTE]
-> Parameter values can be string type only and the script is responsible for converting them to other types if needed.
-
 
 #### Action Run Command Windows troubleshooting
 
@@ -148,9 +150,6 @@ When troubleshooting action run command for Windows environments, refer to the *
 
 
 ### [CLI](#tab/cli)
-
-> [!NOTE]
-> Depending on which modality is used to execute, some escaping may be needed. For example, if you're executing the command in a PowerShell session, the path to the script file will need to have quotes.
 
 The following example uses the [az vm run-command](/cli/azure/vm/run-command#az-vm-run-command-invoke) command to run a shell script on an Azure Windows VM.
 
@@ -180,7 +179,7 @@ If needing to remove your action run command Windows extension, refer to the bel
 ```powershell-interactive
  Invoke-AzVMRunCommand -ResourceGroupName 'rgname' -VMName 'vmname' -CommandId 'RemoveRunCommandWindowsExtension'
 ```
-### [CLI](#tab/powershellremove)
+### [CLI](#tab/cliremove)
 
 
 ```azurecli-interactive
