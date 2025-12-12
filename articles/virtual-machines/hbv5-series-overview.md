@@ -5,7 +5,7 @@ services: virtual-machines
 ms.service: azure-virtual-machines
 ms.subservice: hpc
 ms.topic: concept-article
-ms.date: 11/05/2025
+ms.date: 12/12/2025
 ms.reviewer: cynthn
 ms.author: padmalathas
 author: padmalathas
@@ -21,7 +21,7 @@ An [HBv5-series](./sizes/high-performance-compute/hbv5-series.md) server feature
 ```bash
 Nodes per Socket (NPS) = 4
 L3 as NUMA = Disabled
-Total NUMA domains within VM OS = 16 (2 per socket)
+Total NUMA domains within VM OS = 16 (4 per socket)
 NUMA domains within VM OS = 4
 C-states = Enabled
 Determinism Mode = Power
