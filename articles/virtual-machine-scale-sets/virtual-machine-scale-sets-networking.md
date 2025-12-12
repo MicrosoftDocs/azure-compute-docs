@@ -56,7 +56,7 @@ When adding Uniform Virtual Machine Scale Sets to an Application Gateway's backe
 - For existing scale sets, first add the Application Gateway's backend pool ID in your scale set model's network profile, then apply the model your existing instances by an upgrade. If the scale set's upgrade policy is `Automatic` or `Rolling`, instances will be updated for you. If it is `Manual`, you need to upgrade the instances manually.
 
 > [!NOTE]
-> Note that the application gateway must be in the same virtual network as the scale set, but it must be in a different subnet than the scale set.
+> The application gateway must be in the same virtual network as the scale set, but it must be in a different subnet than the scale set.
 
 #### [Portal](#tab/portal1)
 
