@@ -27,7 +27,7 @@ The application health status is used to ensure that new virtual machines (VM) c
 
 **Configure the scale set with at least two availability zones**
 
-The Virtual Machine Scale Set must be zonal with at least two [availability zones](./virtual-machine-scale-sets-use-availability-zones.md) configured (for example, `zones = [1, 2]`). This ensures that the VMs can be distributed across multiple zones for resiliency.
+The Virtual Machine Scale Set must be zone-spanning with at least two [availability zones](./virtual-machine-scale-sets-use-availability-zones.md) configured (for example, `zones = [1, 2]`). This ensures that the VMs can be distributed across multiple zones for resiliency.
 
 **Use a supported Compute API version**
 
@@ -316,13 +316,13 @@ When enabling automatic zone balance, set the `automaticRepairsPolicy` property 
 ## Frequently Asked Questions
 
 ### Why is my scale set not balanced?
-Automatic zone balance only runs if your scale set is zonally imbalanced and all [safety conditions](./auto-zone-balance-overview.md#safety-features) are met. For example, there must be no ongoing or recently completed operations on the scale set, and no rebalancing operation from the past 12 hours.
+Automatic zone balance only runs if the VMs in your scale set are imbalanced across availability zones and all [safety conditions](./auto-zone-balance-overview.md#safety-features) are met. For example, there must be no ongoing or recently completed operations on the scale set, and no rebalancing operation from the past 12 hours.
 
 Rebalancing also depends on available capacity—if there isn’t enough capacity in the under-provisioned zone, automatic zone balance can’t create a new VM and the rebalance operation won’t occur. 
 
 ### How often does automatic zone balance run?
 
-Automatic zone balance is constantly checking your scale set for zonal imbalance. When an imbalance is detected and there’s an opportunity to rebalance—all safety conditions are met, available capacity in under-provisioned zone;  a rebalance operation starts right away. 
+Automatic zone balance is constantly checking your scale set for zone imbalance. When an imbalance is detected and there’s an opportunity to rebalance—all safety conditions are met, available capacity in under-provisioned zone;  a rebalance operation starts right away. 
 
 If a rebalance operation already occurred in the past 12 hours, another rebalance won’t happen until that window has passed. These limits help ensure that changes to your scale set are gradual and controlled.
 
