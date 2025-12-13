@@ -125,7 +125,44 @@ PUT or PATCH on '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupNa
 
 ### [Azure CLI](#tab/CLI-2)
 
-Provide Azure CLI instructions, once available.
+The following example shows how to configure automatic zone balance and Application Health extension when creating a new Virtual Machine Scale Set through Azure CLI. For more information, see [az vmss create](https://learn.microsoft.com/cli/azure/vmss#az-vmss-create) and [az vmss update](https://learn.microsoft.com/cli/azure/vmss#az-vmss-update).
+
+```azurecli
+# Step 1: Create VMSS with zones configured
+az vmss create \
+    --resource-group myResourceGroup \
+    --name myVMScaleSet \
+    --location eastus \
+    --vm-sku Standard_D2s_v3 \
+    --instance-count 3 \
+    --zones 1 2 3 \
+    --image Ubuntu2204 \
+    --admin-username azureuser \
+    --generate-ssh-keys
+
+# Step 2: Add Application Health extension (required for automatic zone balance)
+az vmss extension set \
+    --resource-group myResourceGroup \
+    --vmss-name myVMScaleSet \
+    --name ApplicationHealthLinux \
+    --publisher Microsoft.ManagedServices \
+    --version 2.0 \
+    --settings '{"protocol": "http", "port": 80, "requestPath": "/healthEndpoint"}'
+
+# Step 3: Upgrade instances to install the extension
+az vmss update-instances \
+    --resource-group myResourceGroup \
+    --name myVMScaleSet \
+    --instance-ids "*"
+
+# Step 4: Enable automatic zone balance
+az vmss update \
+    --resource-group myResourceGroup \
+    --name myVMScaleSet \
+    --enable-automatic-zone-balancing true \
+    --automatic-zone-balancing-behavior CreateBeforeDelete \
+    --automatic-zone-balancing-strategy Recreate
+```
 
 ### [Azure PowerShell](#tab/PowerShell-2)
 
@@ -175,8 +212,44 @@ By default, enabling automatic zone balance also enables [automatic instance rep
 
 ### [Azure CLI](#tab/cli)
 
+The following example shows how to disable automatic instance repairs while enabling automatic zone balance when creating a new Virtual Machine Scale Set. For more information, see [az vmss create](https://learn.microsoft.com/cli/azure/vmss#az-vmss-create) and [az vmss update](https://learn.microsoft.com/cli/azure/vmss#az-vmss-update).
+
 ```azurecli
-# Add Azure CLI example here
+# Step 1: Create VMSS with zones configured
+az vmss create \
+    --resource-group myResourceGroup \
+    --name myVMScaleSet \
+    --location eastus \
+    --vm-sku Standard_D2s_v3 \
+    --instance-count 3 \
+    --zones 1 2 3 \
+    --image Ubuntu2204 \
+    --admin-username azureuser \
+    --generate-ssh-keys
+
+# Step 2: Add Application Health extension (required for automatic zone balance)
+az vmss extension set \
+    --resource-group myResourceGroup \
+    --vmss-name myVMScaleSet \
+    --name ApplicationHealthLinux \
+    --publisher Microsoft.ManagedServices \
+    --version 2.0 \
+    --settings '{"protocol": "http", "port": 80, "requestPath": "/healthEndpoint"}'
+
+# Step 3: Upgrade instances to install the extension
+az vmss update-instances \
+    --resource-group myResourceGroup \
+    --name myVMScaleSet \
+    --instance-ids "*"
+
+# Step 4: Enable automatic zone balance and disable automatic instance repairs
+az vmss update \
+    --resource-group myResourceGroup \
+    --name myVMScaleSet \
+    --enable-automatic-zone-balancing true \
+    --automatic-zone-balancing-behavior CreateBeforeDelete \
+    --automatic-zone-balancing-strategy Recreate \
+    --enable-auto-repairs false
 ```
 
 ### [Azure PowerShell](#tab/powershell)
