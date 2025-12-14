@@ -5,7 +5,7 @@ author: hilaryw29
 ms.author: hilarywang
 ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
-ms.date: 12/04/2025
+ms.date: 12/15/2025
 ---
 
 # Zone balancing in Virtual Machine Scale Sets
@@ -14,7 +14,7 @@ A *zone-spanning* scale set spreads virtual machine (VM) instances across multip
 
 ## Balanced and unbalanced scale sets
 
-A scale set is considered *balanced* if each zone has the same number of VMs ±1 VM. The deviation of 1 enables you to scale to any number of instances, and not just a multiple of the number of zones that the set uses.
+A scale set is considered *balanced* if each zone has the same number of VMs ±1 VM. The deviation of 1 enables you to scale to any number of instances, and not just a multiple of the number of zones that the scale set uses.
 
 VMs that meet any of these criteria are still counted when determining if a scale set is balanced:
 - The VM is successfully created, but extensions on the VM fail to deploy.
@@ -55,11 +55,11 @@ For a scale set that uses multiple zones, you can choose between two zone balanc
 
 - **Strict zone balancing:** The scale set must be balanced at all times. Any scaling operation that would result in an unbalanced scale set is blocked, even if one or more zones are down.
 
-## Manually trigger zone rebalancing
+## How to manually balance your scale set
 
-When you add availability zones to an existing scale set, existing VMs remain unchanged and do not get moved or redistributed. In addition, adding a zone does not trigger a rebalancing operation. Rebalancing only happens during scale-out operations when new instances are added to the scale set. Rebalancing does not replace existing instances.
+When you add availability zones to an existing scale set, existing VMs remain unchanged and do not get moved or redistributed. In addition, adding a zone does not trigger a rebalancing operation. Zone balancing only happens during scale-out operations when new instances are added to the scale set. Zone balance does not replace existing instances.
 
-You can trigger *rebalancing* by running the following sequence of operations:
+You can manually rebalance your scale sets by running the following sequence of operations:
 
 1. **Scale out.** Add more instances by [updating the scale set's capacity](virtual-machine-scale-sets-autoscale-overview.md). The new capacity should be set to the original capacity *plus* the number of new instances.
 
@@ -96,13 +96,13 @@ Suppose you have a zone-spanning scale set that ordinarily has 2 instances in ea
 
 :::image type="content" source="media/virtual-machine-scale-sets-zone-balancing/rebalancing-recovery-initial.png" alt-text="Diagram that shows a scale set with six instances spread evenly across zones." border="false":::    
 
-One zone recently experienced an outage, during which time additional instances were created in another zone, resulting in a spread of 0 (in zone 1), 2 (in zone 2), and 4 (in zone 3):
+One zone recently experienced an outage. During the outage, instances from zone 1 were recreated in zone 3, resulting in a spread of 0 (in zone 1), 2 (in zone 2), and 4 (in zone 3):
 
 :::image type="content" source="media/virtual-machine-scale-sets-zone-balancing/rebalancing-recovery-outage.png" alt-text="Diagram that shows a scale set with no instances in zone 1, 2 instances in zone 2, and 4 instances in zone 3." border="false":::    
 
 1. **Scale out:** To achieve balance, you should temporarily add another 2 instances, which means you set the capacity to 8 (6 + 2). The new instances are created in zone 1, and old instances remain where they are:
 
-    :::image type="content" source="media/virtual-machine-scale-sets-zone-balancing/rebalancing-recovery-outage.png" alt-text="Diagram that shows a scale set with 2 instances in zone 1, 2 instances in zone 2, and 4 instances in zone 3." border="false":::    
+    :::image type="content" source="media/virtual-machine-scale-sets-zone-balancing/rebalancing-recovery-scale-out.png" alt-text="Diagram that shows a scale set with 2 instances in zone 1, 2 instances in zone 2, and 4 instances in zone 3." border="false":::    
 
 1. **Scale in:** You reduce the capacity to 6. Azure removes the extra instances in zones 2 and 3, leaving 2 instances in each zone:
 
