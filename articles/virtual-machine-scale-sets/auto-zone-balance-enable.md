@@ -315,17 +315,6 @@ When enabling automatic zone balance, set the `automaticRepairsPolicy` property 
 
 ## Frequently Asked Questions
 
-### Why is my scale set not balanced?
-Automatic zone balance only runs if the VMs in your scale set are imbalanced across availability zones and all [safety conditions](./auto-zone-balance-overview.md#safety-features) are met. For example, there must be no ongoing or recently completed operations on the scale set, and no rebalancing operation from the past 12 hours.
-
-Rebalancing also depends on available capacity—if there isn’t enough capacity in the under-provisioned zone, automatic zone balance can’t create a new VM and the rebalance operation won’t occur. 
-
-### How often does automatic zone balance run?
-
-Automatic zone balance is constantly checking your scale set for zone imbalance. When an imbalance is detected and there’s an opportunity to rebalance—all safety conditions are met, available capacity in under-provisioned zone;  a rebalance operation starts right away. 
-
-If a rebalance operation already occurred in the past 12 hours, another rebalance won’t happen until that window has passed. These limits help ensure that changes to your scale set are gradual and controlled.
-
 ### How can I monitor automatic zone balance operations on my scale set?
 
 **View rebalancing operations in Azure Monitor activity logs:**
@@ -363,6 +352,17 @@ The `lastStatusChangeTime` field indicates when the status last changed, helping
 
 ### How do I know if automatic zone balance is enabled on my scale set?
 You can check your scale set’s configuration for the `resiliencyPolicy` property. If `AutomaticZoneRebalancingPolicy.Enabled` is set to `true`, automatic zone balance is enabled.
+
+### Why is my scale set not balanced?
+Automatic zone balance only runs if the VMs in your scale set are imbalanced across availability zones and all [safety conditions](./auto-zone-balance-overview.md#safety-features) are met. For example, there must be no ongoing or recently completed operations on the scale set, and no rebalancing operation from the past 12 hours.
+
+Rebalancing also depends on available capacity—if there isn’t enough capacity in the under-provisioned zone, automatic zone balance can’t create a new VM and the rebalance operation won’t occur. 
+
+### How often does automatic zone balance run?
+
+Automatic zone balance is constantly checking your scale set for zone imbalance. When an imbalance is detected and there’s an opportunity to rebalance—all safety conditions are met, available capacity in under-provisioned zone;  a rebalance operation starts right away. 
+
+If a rebalance operation already occurred in the past 12 hours, another rebalance won’t happen until that window has passed. These limits help ensure that changes to your scale set are gradual and controlled.
 
 ### What happens if my subscription doesn’t have enough quota for a new VM during rebalancing?
 If there isn’t enough quota to create a new VM, the rebalance operation won’t proceed. You need to increase your quota to allow rebalancing to occur.
