@@ -3,7 +3,7 @@ title: Automatic zone balance for Virtual Machine Scale Sets (Preview)
 description: Learn about the Automatic Zone Balance feature for virtual machine scale sets.
 author: hilaryw29
 ms.author: hilarywang
-ms.topic: conceptual
+ms.topic: article
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: availability
 ms.date: 04/18/2025
@@ -79,7 +79,7 @@ Automatic zone balance will not move VMs under the [instance protection policy](
 Automatic zone balance performs a maximum of one rebalance operation every 12 hours. Only one VM is moved in each rebalance operation. This limit is in place to minimize churn and ensure that changes to your scale set are gradual and controlled. 
 
 #### Autoscale and Capacity Updates
-To ensure safe coordination with [Azure Autoscale](https://learn.microsoft.com/azure/azure-monitor/autoscale/autoscale-overview), scale-in operations from autoscale are deferred while a rebalance is in progress and will execute after rebalancing completes. If a scale-out operation or customer-initiated capacity change occurs during rebalancing, the rebalance operation is cancelled and the scale set is updated to the new desired capacity.
+To ensure safe coordination with [Azure Autoscale](/azure/azure-monitor/autoscale/autoscale-overview), scale-in operations from autoscale are deferred while a rebalance is in progress and will execute after rebalancing completes. If a scale-out operation or customer-initiated capacity change occurs during rebalancing, the rebalance operation is cancelled and the scale set is updated to the new desired capacity.
 
 ### Automatic Instance Repairs Integration
 

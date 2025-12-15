@@ -3,7 +3,7 @@ title: Enable Automatic Zone Balance on Virtual Machine Scale Sets (Preview)
 description: Guide to enable the Automatic Zone Balance feature for your virtual machine scale set.
 author: hilaryw29
 ms.author: hilarywang
-ms.topic: conceptual
+ms.topic: article
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: availability
 ms.date: 12/10/2025
@@ -125,7 +125,7 @@ PUT or PATCH on '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupNa
 
 ### [Azure CLI](#tab/CLI-2)
 
-The following example shows how to configure automatic zone balance and Application Health extension when creating a new Virtual Machine Scale Set through Azure CLI. For more information, see [az vmss create](https://learn.microsoft.com/cli/azure/vmss#az-vmss-create) and [az vmss update](https://learn.microsoft.com/cli/azure/vmss#az-vmss-update).
+The following example shows how to configure automatic zone balance and Application Health extension when creating a new Virtual Machine Scale Set through Azure CLI. For more information, see [az vmss create](/cli/azure/vmss#az-vmss-create) and [az vmss update](/cli/azure/vmss#az-vmss-update).
 
 ```azurecli
 # Step 1: Create VMSS with zones configured
@@ -166,7 +166,7 @@ az vmss update \
 
 ### [Azure PowerShell](#tab/PowerShell-2)
 
-The following example shows how to configure automatic zone balance and Application Health extension when creating a new Virtual Machine Scale Set through Azure PowerShell. You must also configure an OS, storage, and networking profile to complete the deployment. For more information, see [New-AzVmssConfig](https://learn.microsoft.com/powershell/module/az.compute/new-azvmssconfig?view=azps-15.1.0#description).
+The following example shows how to configure automatic zone balance and Application Health extension when creating a new Virtual Machine Scale Set through Azure PowerShell. You must also configure an OS, storage, and networking profile to complete the deployment. For more information, see [New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig#description).
 
 ```azurepowershell
 # Set variables
@@ -212,7 +212,7 @@ By default, enabling automatic zone balance also enables [automatic instance rep
 
 ### [Azure CLI](#tab/cli)
 
-The following example shows how to disable automatic instance repairs while enabling automatic zone balance when creating a new Virtual Machine Scale Set. For more information, see [az vmss create](https://learn.microsoft.com/cli/azure/vmss#az-vmss-create) and [az vmss update](https://learn.microsoft.com/cli/azure/vmss#az-vmss-update).
+The following example shows how to disable automatic instance repairs while enabling automatic zone balance when creating a new Virtual Machine Scale Set. For more information, see [az vmss create](/cli/azure/vmss#az-vmss-create) and [az vmss update](/cli/azure/vmss#az-vmss-update).
 
 ```azurecli
 # Step 1: Create VMSS with zones configured
@@ -254,7 +254,7 @@ az vmss update \
 
 ### [Azure PowerShell](#tab/powershell)
 
-The following example shows how to disable automatic instance repairs while enabling automatic zone balance when creating a new Virtual Machine Scale Set. You must also configure an OS, storage, and networking profile to complete the deployment. For more information, see [New-AzVmssConfig](https://learn.microsoft.com/powershell/module/az.compute/new-azvmssconfig?view=azps-15.1.0#description).
+The following example shows how to disable automatic instance repairs while enabling automatic zone balance when creating a new Virtual Machine Scale Set. You must also configure an OS, storage, and networking profile to complete the deployment. For more information, see [New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig#description).
 
 ```azurepowershell
 # Set variables
@@ -329,7 +329,7 @@ For more information about Azure Monitor activity logs, see [Azure Monitor activ
 
 **View orchestration service state (VMSS Uniform only):**
 
-For Virtual Machine Scale Sets with Uniform orchestration mode, you can also use the [Get Instance View API](/rest/api/compute/virtual-machine-scale-sets/get-instance-view?view=rest-compute-2025-04-01&tabs=HTTP) to check the automatic zone balance orchestration service state:
+For Virtual Machine Scale Sets with Uniform orchestration mode, you can also use the [Get Instance View API](/rest/api/compute/virtual-machine-scale-sets/get-instance-view&tabs=HTTP) to check the automatic zone balance orchestration service state:
 
 ```http
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmssName}/instanceView?api-version=2025-04-01
