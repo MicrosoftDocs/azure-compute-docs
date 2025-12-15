@@ -14,20 +14,20 @@ ms.date: 04/18/2025
 Automatic zone balance helps you maintain zone-resilient scale sets that are evenly distributed across availability zones. This feature monitors your scale set and moves VMs to maximize resiliency, reducing the risk of zone imbalances due to capacity constraints or scaling operations.
 
 > [!IMPORTANT]
-> Automatic Zone Balance for Virtual Machine Scale Sets is currently in preview. Previews are made available to you on the condition that you agree to the [supplemental terms of use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Some aspects of this feature may change prior to general availability (GA).
+> Automatic Zone Balance for Virtual Machine Scale Sets is currently in preview. Previews are made available to you on the condition that you agree to the [supplemental terms of use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Some aspects of this feature can change before general availability (GA).
 
 > [!NOTE]
-> Automatic zone balance does not monitor Virtual Machine (VM) health for zone outages and should not be used as a zone-down recovery mechanism.
+> Automatic zone balance doesn't monitor Virtual Machine (VM) health for zone outages and shouldn't be used as a zone-down recovery mechanism.
 
 ## Background
 
 When you deploy a Virtual Machine Scale Set across multiple availability zones, the scale set attempts to maximize resiliency by spreading your VMs as evenly as possible. However, factors like capacity constraints or scaling operations can cause your scale set to become imbalanced across availability zones over time, with some zones having more VM instances than others. This imbalance can go unnoticed, but it increases the risk that a single zone failure could affect a disproportionate number of your VMs, reducing your application's availability. 
 
-This feature differs from the `zoneBalance` [property](./virtual-machine-scale-sets-use-availability-zones.md#zone-balancing). If strict zone balancing is enabled (`zoneBalance = true`), the scale set will enforce zone balance at all times and can block operations if balance cannot be achieved. Automatic zone balance operates under best-effort balancing (`zoneBalance = false`), allowing operations to proceed even if the scale set becomes temporarily imbalanced. Automatic zone balance will continuously monitor and rebalance VMs in the background to ensure maximum resiliency across zones.
+This feature differs from the `zoneBalance` [property](./virtual-machine-scale-sets-use-availability-zones.md#zone-balancing). If strict zone balancing is enabled (`zoneBalance = true`), the scale set always enforces zone balance and can block operations if balance can't be achieved. Automatic zone balance operates under best-effort balancing (`zoneBalance = false`), allowing operations to proceed even if the scale set becomes temporarily imbalanced. Automatic zone balance continuously monitors and rebalances VMs in the background to ensure maximum resiliency across zones.
 
 
 **Key Terms:**
-- A scale set is considered **balanced** if each zone has the same number of VMs +/- 1 VM as all other zones for the scale set. A scale set that doesn't meet this condition is considered imbalanced. More details on zone balance is available [here](./virtual-machine-scale-sets-use-availability-zones.md#zone-balancing).
+- A scale set is considered **balanced** if each zone has the same number of VMs +/- 1 VM as all other zones for the scale set. A scale set that doesn't meet this condition is considered imbalanced. More detail on zone balance is available [here](./virtual-machine-scale-sets-use-availability-zones.md#zone-balancing).
 - An **under-provisioned zone** is an availability zone with the fewest scale set instances.
   - In a scale set with one VM in zone 1, three VMs in zone 2, and three VMs in zone 3; zone 1 is the under-provisioned zone. 
 - An **over-provisioned zone** is an availability zone with the most scale set instances.
@@ -70,10 +70,10 @@ Rebalancing only occurs when both the total count is imbalanced **and** moving V
 #### Safety Checks Before Rebalancing
 Automatic zone balance is designed to be minimally intrusive, prioritizing the stability and availability of your workloads. A rebalance operation (creating a VM in a new zone and deleting a VM from an over-provisioned zone) only begins if the following safety conditions are met:
 
-- The scale set is not marked for deletion.
+- The scale set isn't marked for deletion.
 - The scale set doesn't have any ongoing or recently completed `PUT`, `PATCH`, `POST` operations within the past 60 minutes; such as VMs being added or deleted, or upgrades in progress.
 
-Automatic zone balance will not move VMs under the [instance protection policy](./virtual-machine-scale-sets-instance-protection.md), or in deallocated / to-be-deleted state. 
+Automatic zone balance won't move VMs under the [instance protection policy](./virtual-machine-scale-sets-instance-protection.md), or in deallocated / to-be-deleted state. 
 
 #### Rebalancing Frequency
 Automatic zone balance performs a maximum of one rebalance operation every 12 hours. Only one VM is moved in each rebalance operation. This limit is in place to minimize churn and ensure that changes to your scale set are gradual and controlled. 
@@ -97,7 +97,7 @@ To learn more about automatic instance repairs, see [Automatic instance repairs 
 - **Recommended for stateless workloads**: Automatic zone balance uses delete and recreate operations to move VMs across availability zones. Instance IDs, networking, and disks aren't preserved today as part of rebalancing.
 - **Best-effort operation**: Automatic zone balance could be delayed if an availability zone has limited capacity.
 - **Subject to subscription quota limits**: Automatic zone balance requires enough quota to temporarily exceed current VM count when creating a new VM. 
-- **SKU preservation**: New VMs created by Automatic Zone Balance always use the latest SKU in your scale set model; any VMs with a different SKU will not retain their SKU after rebalancing.
+- **SKU preservation**: New VMs created by Automatic Zone Balance always use the latest SKU in your scale set model; any VMs with a different SKU won't retain their SKU after rebalancing.
   - If you would like to prevent specific VMs from being rebalanced, you can [apply an instance protection policy](./virtual-machine-scale-sets-instance-protection.md).
 
 ## Next Steps

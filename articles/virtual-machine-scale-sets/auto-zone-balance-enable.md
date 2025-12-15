@@ -13,7 +13,7 @@ ms.date: 12/10/2025
 This guide provides instructions to enable Automatic Zone Balance on your Virtual Machine Scale Sets.
 
 > [!IMPORTANT]
-> Automatic Zone Balance for Virtual Machine Scale Sets is currently in preview. Previews are made available to you on the condition that you agree to the [supplemental terms of use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Some aspects of this feature may change prior to general availability (GA).
+> Automatic Zone Balance for Virtual Machine Scale Sets is currently in preview. Previews are made available to you on the condition that you agree to the [supplemental terms of use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Some aspects of this feature can change before general availability (GA).
 
 ## Prerequisites
 
@@ -23,7 +23,7 @@ Before enabling automatic zone balance on your scale set, ensure the following p
 
 The scale set must have application health monitoring enabled to use automatic zone balance. Health monitoring can be done using either [Application Health Extension](./virtual-machine-scale-sets-health-extension.md) or [Load Balancer Health Probes](/azure/load-balancer/load-balancer-custom-probe-overview), where only one can be enabled at a time. 
 
-The application health status is used to ensure that new virtual machines (VM) created during the rebalance process are successful and "healthy", before the original VMs are removed. 
+The application health status is used to ensure that new virtual machines (VM) created during the rebalance process are successful and "healthy," before the original VMs are removed. 
 
 **Configure the scale set with at least two availability zones**
 
@@ -80,7 +80,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName Automati
 
 ## Enable Automatic Zone Balance on your scale set
 
-Follow the steps below to enable Automatic Zone Balance on a new or existing virtual machine scale set.
+Follow the steps to enable Automatic Zone Balance on a new or existing virtual machine scale set.
 
 ### [REST API](#tab/rest-api-2)
 
@@ -107,10 +107,10 @@ PUT or PATCH on '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupNa
 1. Create a new Virtual Machine Scale Set.
 1. In the **Basics** tab, ensure that at least 2 zones are selected in the **Availability zone** dropdown.
 1. In the **Health** tab, enable and configure **[application health monitoring](./virtual-machine-scale-sets-health-extension.md)**.
-1. Navigate to the **Advanced** tab, select the checkbox for **Automatic zone balancing**.
+1. Navigate to the **Advanced** tab. Select the checkbox for **Automatic zone balancing**.
 :::image type="content" source="media/virtual-machine-scale-sets-auto-zone-balance/enable-rebalance-create-vmss.png" alt-text="A screenshot showing how to enable automatic zone balance during the Virtual Machine Scale Set create experience in the portal.":::
 
-1. Complete additional set up for your scale set. When ready, select **Review and Create**.
+1. Complete additional setup for your scale set. When ready, select **Review and Create**.
 1. Select **Create**.
 
 **To enable automatic zone balance on an existing scale set**
@@ -208,7 +208,7 @@ New-AzVmss -ResourceGroupName $resourceGroupName -Name $vmssName -VirtualMachine
 By default, enabling automatic zone balance also enables [automatic instance repairs](./virtual-machine-scale-sets-automatic-instance-repairs.md) to provide high availability for your scale set. If you prefer to use automatic zone balance without automatic instance repairs, you can disable instance repairs separately.
 
 > [!NOTE]
-> Disabling automatic instance repairs means your scale set will only benefit from zone-level resiliency, not instance-level health monitoring and repair.
+> Disabling automatic instance repairs means your scale set will only benefit from zone-level resiliency, not instance-level health monitoring, and repair.
 
 ### [Azure CLI](#tab/cli)
 
@@ -323,13 +323,13 @@ You can monitor automatic zone balance operations through Azure Monitor activity
 
 1. In the Azure portal, navigate to your Virtual Machine Scale Set.
 2. Select **Activity log** from the left menu.
-3. Filter for operations with the name `Microsoft.Compute/virtualMachineScaleSets/rebalanceVmsAcrossZones/action`.
+3. Filter for operations with the name `BalanceVMsAcrossZones` or `Microsoft.Compute/virtualMachineScaleSets/rebalanceVmsAcrossZones/action`.
 
 For more information about Azure Monitor activity logs, see [Azure Monitor activity log](/azure/azure-monitor/essentials/activity-log).
 
 **View orchestration service state (VMSS Uniform only):**
 
-For Virtual Machine Scale Sets with Uniform orchestration mode, you can also use the [Get Instance View API](/rest/api/compute/virtual-machine-scale-sets/get-instance-view&tabs=HTTP) to check the automatic zone balance orchestration service state:
+For Virtual Machine Scale Sets with Uniform orchestration mode, you can also use the [Get Instance View API](/rest/api/compute/virtual-machine-scale-sets/get-instance-view?tabs=HTTP) to check the automatic zone balance orchestration service state:
 
 ```http
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmssName}/instanceView?api-version=2025-04-01
@@ -356,7 +356,7 @@ You can check your scale set’s configuration for the `resiliencyPolicy` proper
 ### Why is my scale set not balanced?
 Automatic zone balance only runs if the VMs in your scale set are imbalanced across availability zones and all [safety conditions](./auto-zone-balance-overview.md#safety-features) are met. For example, there must be no ongoing or recently completed operations on the scale set, and no rebalancing operation from the past 12 hours.
 
-Rebalancing also depends on available capacity—if there isn’t enough capacity in the under-provisioned zone, automatic zone balance can’t create a new VM and the rebalance operation won’t occur. 
+Rebalancing also depends on available capacity—if there isn’t enough capacity in the under-provisioned zone, automatic zone balance can’t create a new VM and, the rebalance operation won’t occur. 
 
 ### How often does automatic zone balance run?
 
