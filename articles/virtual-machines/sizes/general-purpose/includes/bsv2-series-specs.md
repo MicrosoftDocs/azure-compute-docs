@@ -1,5 +1,5 @@
 ---
-title: Bsv2 series specs include
+title: "Bsv2-series specs include"
 description: Include file containing specifications of Bsv2-series VM sizes.
 author: mattmcinnes
 ms.topic: include
