@@ -326,6 +326,41 @@ Automatic zone balance is constantly checking your scale set for zone imbalance.
 
 If a rebalance operation already occurred in the past 12 hours, another rebalance won’t happen until that window has passed. These limits help ensure that changes to your scale set are gradual and controlled.
 
+### How can I monitor automatic zone balance operations on my scale set?
+
+**View rebalancing operations in Azure Monitor activity logs:**
+
+You can monitor automatic zone balance operations through Azure Monitor activity logs. Each rebalancing operation generates activity log entries that show when VMs are created and deleted during the rebalancing process.
+
+1. In the Azure portal, navigate to your Virtual Machine Scale Set.
+2. Select **Activity log** from the left menu.
+3. Filter for operations with the name `Microsoft.Compute/virtualMachineScaleSets/rebalanceVmsAcrossZones/action`.
+
+For more information about Azure Monitor activity logs, see [Azure Monitor activity log](/azure/azure-monitor/essentials/activity-log).
+
+**View orchestration service state (VMSS Uniform only):**
+
+For Virtual Machine Scale Sets with Uniform orchestration mode, you can also use the [Get Instance View API](/rest/api/compute/virtual-machine-scale-sets/get-instance-view?view=rest-compute-2025-04-01&tabs=HTTP) to check the automatic zone balance orchestration service state:
+
+```http
+GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmssName}/instanceView?api-version=2025-04-01
+```
+
+The response includes an `orchestrationServices` array with automatic zone balance status:
+
+```json
+"orchestrationServices": [
+  {
+    "serviceName": "AutomaticZoneRebalancing",
+    "serviceState": "Running",
+    "latestOperationStatus": "InProgress / Completed",
+    "lastStatusChangeTime": ""
+  }
+]
+```
+
+The `lastStatusChangeTime` field indicates when the status last changed, helping you track when rebalancing operations occurred.
+
 ### How do I know if automatic zone balance is enabled on my scale set?
 You can check your scale set’s configuration for the `resiliencyPolicy` property. If `AutomaticZoneRebalancingPolicy.Enabled` is set to `true`, automatic zone balance is enabled.
 
