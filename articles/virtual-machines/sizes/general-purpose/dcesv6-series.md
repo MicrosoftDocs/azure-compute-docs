@@ -1,5 +1,5 @@
 ---
-title: DCesv6 size series
+title: DCesv6-series
 description: Information on and specifications of the DCesv6-series sizes
 author: simranparkhe
 ms.service: azure-virtual-machines
@@ -11,7 +11,7 @@ ms.reviewer: simranparkhe
 # Customer intent: As a cloud architect, I want to review the specifications and features of the DCesv6-series virtual machine sizes, so that I can select the appropriate size for my applications based on performance and resource needs.
 ---
 
-# DCesv6 sizes series
+# DCesv6-series sizes
 
 [!INCLUDE [dcesv5-summary](./includes/dcesv5-series-summary.md)]
 
