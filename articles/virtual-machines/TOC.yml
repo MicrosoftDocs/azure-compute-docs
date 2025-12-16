@@ -516,7 +516,7 @@
           href: ./sizes/gpu-accelerated/nvv4-series.md
         - name: NVadsA10_v5 series
           href: ./sizes/gpu-accelerated/nvadsa10v5-series.md
-        - name: Nvads V710 v-5 series
+        - name: Nvads V710 v5-series
           href: ./sizes/gpu-accelerated/nvadsv710-v5-series.md
       - name: Setup NVIDIA GPU drivers
         items:

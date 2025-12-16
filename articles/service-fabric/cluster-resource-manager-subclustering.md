@@ -1,7 +1,7 @@
 ---
 title: Balancing of subclustered metrics
 description: The effect of placement constraints on balancing and how to handle it
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric

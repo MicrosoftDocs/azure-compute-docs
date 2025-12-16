@@ -14,7 +14,9 @@ ms.author: vikancha
 # Install AMD GPU drivers on N-series VMs running Windows
 
 **Applies to:** Windows VMs :heavy_check_mark: Flexible scale sets 
-
+> [!NOTE]
+> The [AMD GPU Driver Extension](../extensions/hpccompute-amd-gpu-windows.md) installs AMD GPU drivers on a NVv4-series, NGads V620 Series and NVadsV710_v5 Series. Install or manage the extension using the Azure portal or tools such as Azure PowerShell or Azure Resource Manager templates. See the [AMD GPU Driver Extension documentation](../extensions/hpccompute-amd-gpu-windows.md) for supported operating systems and deployment steps.
+> 
 ## NGads V620 Series ##
 The AMD Software: Cloud Edition drivers must be installed to take advantage of the GPU capabilities of Azure NGads V620 Series VMs.
 

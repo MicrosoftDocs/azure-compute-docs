@@ -3,7 +3,7 @@ title: Service sensitivity
 description: An introduction to service sensitivity and how to set service sensitivity description and maximum load for max sensitivity replica
 author: tracygooo
 
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 09/07/2023
 ms.author: jinghuafeng
 ---

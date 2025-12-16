@@ -13,9 +13,9 @@ ms.subservice: sizes
 
 On March 31, 2025, Microsoft Azure will retire the Standard_NC24rs_v3 virtual machine (VM) size in NCv3-series virtual machines (VMs). To avoid any disruption to your service, we recommend that you change the VM sizing from the Standard_NC24rs_v3 to the newer VM series in the same NC product line.
 
-Microsoft recommends the Azure [NC A100 v4-series](./nc-a100-v4-series.md) VMs, which offer greater GPU memory bandwidth per GPU, improved [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli) capabilities, larger and faster local solid state drives. Overall the NC A100 v4-series delivers [better cost performance](https://techcommunity.microsoft.com/t5/azure-high-performance-computing/a-quick-start-to-benchmarking-in-azure-nvidia-deep-learning/ba-p/3563884) across midrange AI training and inference workloads. 
+Microsoft recommends the Azure [NCads H100 v5-series ](/azure/virtual-machines/ncads-h100-v5?source=recommendations)VMs, which offer greater GPU memory bandwidth per GPU, improved [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli) capabilities, and larger and faster local solid state drives. These VMs are targeted for GPU accelerated midrange AI training, batch inferencing, and high-performance computing simulation workloads.
 
-Depending on the workload being run and regional affinity, Standard_NC24rs_v3 may also be replaced by NVadsA10_v5, NCads_H100_v5, or NCasT4_v3. 
+Depending on the workload being run and regional affinity, Standard_NC24rs_v3 may also be replaced by NVadsA10_v5 or NCasT4_v3.
 
 ## How does the retirement of the Standard_NC24rs_v3 affect me?
 
@@ -25,15 +25,13 @@ Note: This retirement only impacts the virtual machine sizes in the Standard_NC2
 
 ## What action do I need to take before the retirement date?
 
-You need to resize or deallocate your Standard_NC24rs_v3 VM size. We recommend that you change VM sizes for these workloads, from the original Standard_NC24rs_v3 VM size to the Standard_NC96ads_A100_v4 size (or an alternative).
+You need to resize or deallocate your Standard_NC24rs_v3 VM size. We recommend that you change VM sizes for these workloads, from the original Standard_NC24rs_v3 VM size to the Standard_NC80adis_H100_v5 size (or an alternative).
 
-The Standard_NC96ads_A100_v4 VM size in [NC A100 v4 series](./nc-a100-v4-series.md) is powered by NVIDIA A100 PCIe GPU and third generation AMD EPYC™ 7V13 (Milan) processors. The VMs feature up to 4 NVIDIA A100 PCIe GPUs with 80 GB memory each, up to 96 non-multithreaded AMD EPYC Milan processor cores and 880 GiB of system memory. Check [Azure Regions by Product page](https://azure.microsoft.com/explore/global-infrastructure/products-by-region/) for region availability. Visit the [Azure Virtual Machine pricing page](https://azure.microsoft.com/pricing/details/virtual-machines/) for pricing information.
+The Standard_NC80adis_H100_v5 size in [NCads H100 v5-series](/azure/virtual-machines/ncads-h100-v5?source=recommendations) is powered by NVIDIA H100 NVL GPU and 4th-generation AMD EPYC™ Genoa processors. The VMs feature up to 2 NVIDIA H100 NVL GPUs with 94GB memory each, up to 96 non-multithreaded AMD EPYC Genoa processor cores and 640 GiB of system memory. Check [Azure Regions by Product page](https://azure.microsoft.com/explore/global-infrastructure/products-by-region/) for region availability. Visit the [Azure Virtual Machine pricing page](https://azure.microsoft.com/pricing/details/virtual-machines/) for pricing information.
 
-The [NCads H100 v5-Series](./ncads-h100-v5.md) is another SKU in the same product line powered by NVIDIA H100 NVL GPU. These VMs are targeted for GPU accelerated midrange AI training, batch inferencing, and high performance computing simulation workloads.  
-
-|Current VM Size| Target VM Size | Difference in Specification |
+|Current VM Size|Target VM Size |Difference in Specification |
 |---|---|---|
-| Standard_NC24rs_v3 | Standard_NC96ads_A100_v4 | vCPU: 96 (+18) <br> GPU Count: 4 (Same)<br>Memory: GiB 880 (+432)<br>Temp storage (SSD) GiB: 3916 (+968)<br>Max data disks: 32 (+0)<br>Accelerated networking: Yes(+)<br>Premium storage: Yes |
+|Standard_NC24rs_v3 |Standard_NC80adis_H100_v5|vCPU: 80 (+56) <br>GPU Count: 2 (+0) <br>Memory: GiB 640 (+192)<br>Temp storage (SSD) GiB: 7152 (+4204)<br>Max data disks: 16 (+0)<br>Accelerated networking: Yes <br>Premium storage: Yes |
 
 ## Steps to change VM size 
 

@@ -1,7 +1,7 @@
 ---
 title: Azure Service Fabric container image management
 description: How to use container image management in a service fabric cluster.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: sumeshkadam
 author: sumeshkms
 ms.service: azure-service-fabric

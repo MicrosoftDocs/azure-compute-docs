@@ -1,7 +1,7 @@
 ---
 title: Azure Service Fabric - Configure container repository credentials
 description: Configure repository credentials to download images from container registry
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric

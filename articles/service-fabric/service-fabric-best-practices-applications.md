@@ -1,7 +1,7 @@
 ---
 title: Azure Service Fabric application design best practices 
 description: Best practices and design considerations for developing applications and services using Azure Service Fabric.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric

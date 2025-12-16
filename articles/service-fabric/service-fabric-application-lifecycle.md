@@ -5,7 +5,7 @@ service: service-fabric
 ms.service: azure-service-fabric
 author: tomvcassidy
 ms.author: tomcassidy
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 05/25/2022
 ---
 

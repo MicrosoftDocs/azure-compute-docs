@@ -7,7 +7,7 @@ ms.service: azure-virtual-machines
 ms.subservice: extensions
 ms.collection: linux
 ms.topic: concept-article
-ms.date: 02/20/2024
+ms.date: 04/29/2025
 ms.author: mbaldwin
 ms.custom: devx-track-azurepowershell, devx-track-azurecli, linux-related-content
 ---
@@ -141,7 +141,7 @@ The following JSON shows the schema for the Key Vault VM extension. The extensio
         "authenticationSettings": <Optional msi settings, e.g.:
         {
           "msiEndpoint":  <Required when msiClientId is provided. MSI endpoint e.g. for most Azure VMs: "http://169.254.169.254/metadata/identity">,
-          "msiClientId":  <Required when VM has any user assigned identities. MSI identity e.g.: "c7373ae5-91c2-4165-8ab6-7381d6e75619".>
+          "msiClientId":  <Required when VM has any user assigned identities. MSI identity e.g.: "00001111-aaaa-2222-bbbb-3333cccc4444".>
         }>
        }
       }
@@ -176,7 +176,7 @@ The following JSON shows the schema for the Key Vault VM extension. The extensio
         },
         "authenticationSettings": {
           "msiEndpoint":  <Required when msiClientId is provided. MSI endpoint e.g. for most Azure VMs: "http://169.254.169.254/metadata/identity">,
-          "msiClientId":  <Required when VM has any user assigned identities. MSI identity e.g.: "c7373ae5-91c2-4165-8ab6-7381d6e75619".>
+          "msiClientId":  <Required when VM has any user assigned identities. MSI identity e.g.: "00001111-aaaa-2222-bbbb-3333cccc4444".>
         }
        }
       }
@@ -220,7 +220,7 @@ The following JSON shows the schema for the Key Vault VM extension. The extensio
 | `observedCertificates/acls` (optional) | "{...}, {...}" | string array |
 | `authenticationSettings` (optional) | {...} | object |
 | `authenticationSettings/msiEndpoint` | http://169.254.169.254/metadata/identity | string |
-| `authenticationSettings/msiClientId` | c7373ae5-91c2-4165-8ab6-7381d6e75619 | string |
+| `authenticationSettings/msiClientId` | 00001111-aaaa-2222-bbbb-3333cccc4444 | string |
 | `loggingSettings` (optional) | {...} | object |
 | `loggingSettings/logger` | "fluentd" | string |
 | `loggingSettings/endpoint` | "tcp://localhost:24224" | string |
@@ -243,7 +243,7 @@ The following JSON shows the schema for the Key Vault VM extension. The extensio
 | `requireInitialSync` | true | boolean |
 | `observedCertificates`  | ["https://myvault.vault.azure.net/secrets/mycertificate", "https://myvault.vault.azure.net/secrets/mycertificate2"] | string array
 | `msiEndpoint` | http://169.254.169.254/metadata/identity | string |
-| `msiClientId` | c7373ae5-91c2-4165-8ab6-7381d6e75619 | string |
+| `msiClientId` | 00001111-aaaa-2222-bbbb-3333cccc4444 | string |
 
 ---
 
@@ -311,7 +311,7 @@ The JSON configuration for a virtual machine extension must be nested inside the
           },
           "authenticationSettings": {
               "msiEndpoint":  <Required when msiClientId is provided. MSI endpoint e.g. for most Azure VMs: "http://169.254.169.254/metadata/identity">,
-              "msiClientId":  <Required when VM has any user assigned identities. MSI identity e.g.: "c7373ae5-91c2-4165-8ab6-7381d6e75619">
+              "msiClientId":  <Required when VM has any user assigned identities. MSI identity e.g.: "00001111-aaaa-2222-bbbb-3333cccc4444">
           }
         } 
       }
@@ -344,7 +344,7 @@ The JSON configuration for a virtual machine extension must be nested inside the
         },
           "authenticationSettings": {
               "msiEndpoint":  <Required when msiClientId is provided. MSI endpoint e.g. for most Azure VMs: "http://169.254.169.254/metadata/identity">,
-              "msiClientId":  <Required when VM has any user assigned identities. MSI identity e.g.: "c7373ae5-91c2-4165-8ab6-7381d6e75619">
+              "msiClientId":  <Required when VM has any user assigned identities. MSI identity e.g.: "00001111-aaaa-2222-bbbb-3333cccc4444">
           }
         }
       }

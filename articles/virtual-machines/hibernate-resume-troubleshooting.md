@@ -31,6 +31,7 @@ If you're unable to create a VM with hibernation enabled, ensure that you're usi
 | OperationNotAllowed | Referencing a Capacity Reservation Group isn't supported for a VM with Hibernation capability. |  |
 | OperationNotAllowed | Hibernation can't be enabled on Virtual Machine since the OS Disk Size ({0} bytes) should at least be greater than the VM memory ({1} bytes). | Ensure the OS disk has enough space to be able to persist the RAM contents once the VM is hibernated |
 | OperationNotAllowed | Hibernation can't be enabled on Virtual Machines created in an Availability Set. | Hibernation is only supported for standalone VMs & Virtual Machine Scale Sets Flex VMs |
+| OperationNotAllowed | Trusted launch is not supported for Linux VM with Hibernation capability. | Hibernation can't be enabled currently on Trusted launch Linux virtual machines. |
 
 
 ## Unable to hibernate a VM

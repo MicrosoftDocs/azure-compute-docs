@@ -1,7 +1,7 @@
 ---
 title: Azure Service Fabric hosting model 
 description: Describes the relationship between replicas (or instances) of a deployed Service Fabric service and the service-host process.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric

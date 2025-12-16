@@ -11,7 +11,7 @@ ms.date: 07/14/2022
 
 # Connect to a secure cluster
 
-When a client connects to a Service Fabric cluster node, the client can be authenticated and secure communication established using certificate security or Microsoft Entra ID. This authentication ensures that only authorized users can access the cluster and deployed applications and perform management tasks.  Certificate or Microsoft Entra security must have been previously enabled on the cluster when the cluster was created.  For more information on cluster security scenarios, see [Cluster security](service-fabric-cluster-security.md). If you are connecting to a cluster secured with certificates, [set up the client certificate](service-fabric-connect-to-secure-cluster.md#connectsecureclustersetupclientcert) on the computer that connects to the cluster. 
+When a client connects to a Service Fabric cluster node, the client can be authenticated and secure communication established using certificate security or Microsoft Entra ID. This authentication ensures that only authorized users can access the cluster and deployed applications and perform management tasks.  Certificate or Microsoft Entra security must have been previously enabled on the cluster when the cluster was created.  For more information on cluster security scenarios, see [Cluster security](service-fabric-cluster-security.md). If you're connecting to a cluster secured with certificates, [set up the client certificate](service-fabric-connect-to-secure-cluster.md#connectsecureclustersetupclientcert) on the computer that connects to the cluster. 
 
 <a id="connectsecureclustercli"></a> 
 
@@ -24,13 +24,13 @@ certificate has Certificate Authorities (CAs), you need to additionally specify 
 You can connect to a cluster using the `sfctl cluster select` command.
 
 Client certificates can be specified in two different fashions, either as a cert and key pair, or as a single PFX
-file. For password protected PEM files, you will be prompted automatically to enter the password. If you obtained the client certificate as a PFX file, first convert the PFX file to a PEM file using the following command. 
+file. For password protected PEM files, you'll be prompted automatically to enter the password. If you obtained the client certificate as a PFX file, first convert the PFX file to a PEM file using the following command. 
 
 ```shell
 openssl pkcs12 -in your-cert-file.pfx -out your-cert-file.pem -nodes -passin pass:your-pfx-password
 ```
 
-If your .pfx file is not password protected, use -passin pass: for the last parameter.
+If your .pfx file isn't password protected, use -passin pass: for the last parameter.
 
 To specify the client certificate as a pem file, specify the file path in the `--pem` argument. For example:
 
@@ -51,7 +51,7 @@ Sometimes certificates used to secure test or dev clusters fail certificate vali
 verification, specify the `--no-verify` option. For example:
 
 > [!WARNING]
-> Do not use the `no-verify` option when connecting to production Service Fabric clusters.
+> Don't use the `no-verify` option when connecting to production Service Fabric clusters.
 
 ```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --no-verify
@@ -247,8 +247,8 @@ For more information on Microsoft Entra token acquisition, see [Microsoft.Identi
 
 ```csharp
 string tenantId = "aaaabbbb-0000-cccc-1111-dddd2222eeee";
-string clientApplicationId = "118473C2-7619-46E3-A8E4-6DA8D5F56E12";
-string webApplicationId = "53E6948C-0897-4DA6-B26A-EE2A38A690B4";
+string clientApplicationId = "33334444-dddd-5555-eeee-6666ffff7777";
+string webApplicationId = "00001111-aaaa-2222-bbbb-3333cccc4444";
 string[] scopes = new string[] { "user.read" };
 
 var pca = PublicClientApplicationBuilder.Create(clientApplicationId)
@@ -339,7 +339,7 @@ To reach [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) f
 
 The full URL is also available in the cluster essentials pane of the Azure portal.
 
-For connecting to a secure cluster on Windows or OS X using a browser, you can import the client certificate, and the browser will prompt you for the certificate to use for connecting to the cluster.  On Linux machines, the certificate will have to be imported using advanced browser settings (each browser has different mechanisms) and point it to the certificate location on disk. Read [Set up a client certificate](#connectsecureclustersetupclientcert) for more information.
+For connecting to a secure cluster on Windows or OS X using a browser, you can import the client certificate, and the browser will prompt you for the certificate to use for connecting to the cluster.  On Linux machines, the certificate has to be imported using advanced browser settings (each browser has different mechanisms) and point it to the certificate location on disk. Read [Set up a client certificate](#connectsecureclustersetupclientcert) for more information.
 
 <a name='connect-to-a-secure-cluster-using-azure-active-directory'></a>
 
@@ -349,7 +349,7 @@ To connect to a cluster that is secured with Microsoft Entra ID, point your brow
 
 `https://<your-cluster-endpoint>:19080/Explorer`
 
-You are automatically be prompted to sign in with Microsoft Entra ID.
+You're automatically be prompted to sign in with Microsoft Entra ID.
 
 ### Connect to a secure cluster using a client certificate
 
@@ -357,13 +357,13 @@ To connect to a cluster that is secured with certificates, point your browser to
 
 `https://<your-cluster-endpoint>:19080/Explorer`
 
-You are automatically be prompted to select a client certificate.
+You're automatically be prompted to select a client certificate.
 
 <a id="connectsecureclustersetupclientcert"></a>
 
 ## Set up a client certificate on the remote computer
 
-At least two certificates should be used for securing the cluster, one for the cluster and server certificate and another for client access.  We recommend that you also use additional secondary certificates and client access certificates.  To secure the communication between a client and a cluster node using certificate security, you first need to obtain and install the client certificate. The certificate can be installed into the Personal (My) store of the local computer or the current user.  You also need the thumbprint of the server certificate so that the client can authenticate the cluster.
+At least two certificates should be used for securing the cluster, one for the cluster and server certificate and another for client access.  We recommend that you also use secondary certificates and client access certificates.  To secure the communication between a client and a cluster node using certificate security, you first need to obtain and install the client certificate. The certificate can be installed into the Personal (My) store of the local computer or the current user.  You also need the thumbprint of the server certificate so that the client can authenticate the cluster.
 
 * On Windows: Double-click the PFX file and follow the prompts to install the certificate in your personal store, `Certificates - Current User\Personal\Certificates`. Alternatively, you can use the PowerShell command:
 
@@ -373,7 +373,7 @@ At least two certificates should be used for securing the cluster, one for the c
             -Password (ConvertTo-SecureString -String test -AsPlainText -Force)
     ```
 
-    If it is a self-signed certificate, you need to import it to your machine's "trusted people" store before you can use this certificate to connect to a secure cluster.
+    If it's a self-signed certificate, you need to import it to your machine's "trusted people" store before you can use this certificate to connect to a secure cluster.
 
     ```powershell
     Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\TrustedPeople `

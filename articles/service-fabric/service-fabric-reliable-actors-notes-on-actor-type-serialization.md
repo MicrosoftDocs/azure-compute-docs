@@ -1,7 +1,7 @@
 ---
 title: Reliable Actors notes on actor type serialization 
 description: Discusses basic requirements for defining serializable classes that can be used to define Service Fabric Reliable Actors states and interfaces
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric

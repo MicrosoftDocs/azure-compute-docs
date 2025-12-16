@@ -1,7 +1,7 @@
 ---
 title: Upgrade an Azure Service Fabric standalone cluster 
 description: Learn about upgrading the version or configuration of an Azure Service Fabric standalone cluster.  T
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric

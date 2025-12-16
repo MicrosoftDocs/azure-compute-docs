@@ -1,7 +1,7 @@
 ---
 title: InBuild throttling
 description: Configure, understand, and apply InBuild Throttling constraint.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric

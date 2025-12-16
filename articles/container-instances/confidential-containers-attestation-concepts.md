@@ -1,7 +1,7 @@
 ---
 title: Attestation in Confidential containers on Azure Containers Instances 
 description: Full attestation of container groups in confidential containers on Azure Container Instances  
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomcassidy
 ms.service: azure-container-instances

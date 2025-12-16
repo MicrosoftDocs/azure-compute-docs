@@ -57,6 +57,9 @@ From an elevated command prompt rerun *w32tm /query /source* and compare the out
 >[!TIP]
 >If you want to speed-up the process of changing the NTP source on your **PDC**, from an elevated command prompt run *gpupdate /force*, followed by *w32tm /resync /nowait*, then rerun *w32tm /query /source*; the output should be the NTP Server you used in the above GPO.
 
+>[!NOTE]
+>If after the changes are applied, you still don't get the output to the NTP Server you chose, you may need to set the value to **0** in the key **Enabled** under **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\W32Time\TimeProviders\VMICTimeProvider** on your PDC and DCs too.
+
 ## GPO for Members
 
 Usually, NTP in Active Directory Domain Services will follow the AD DS Time Hierarchy mentioned at the beginning of this article and no further configuration is required.

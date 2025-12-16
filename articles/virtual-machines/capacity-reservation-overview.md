@@ -4,7 +4,7 @@ description: Learn how to reserve compute capacity in an Azure region or an avai
 author: bdeforeest
 ms.author: bidefore
 ms.service: azure-virtual-machines
-ms.topic: how-to
+ms.topic: overview
 ms.date: 02/24/2023
 ms.reviewer: cynthn, jushiman, mattmcinnes
 ms.custom: template-how-to

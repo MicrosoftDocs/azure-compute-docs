@@ -1,7 +1,7 @@
 ---
 title: Cluster Resource Manager - Management Integration 
 description: An overview of the integration points between the Cluster Resource Manager and Service Fabric Management.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric

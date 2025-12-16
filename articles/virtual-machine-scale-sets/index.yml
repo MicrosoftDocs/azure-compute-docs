@@ -11,7 +11,7 @@ metadata:
   author: ju-shim
   ms.author: jushiman
   ms.reviewer: mimckitt
-  ms.date: 11/22/2022
+  ms.date: 04/18/2025
 
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | sample | tutorial | video | whats-new
 
@@ -36,7 +36,7 @@ landingContent:
         links:
           - text: Azure CLI
             url: flexible-virtual-machine-scale-sets-cli.md
-          - text: Azure Portal
+          - text: Azure portal
             url: flexible-virtual-machine-scale-sets-portal.md
           - text: Azure PowerShell
             url: flexible-virtual-machine-scale-sets-powershell.md
@@ -46,12 +46,12 @@ landingContent:
     linkLists:
       - linkListType: whats-new
         links:
-          - text: Scale-in policy
-            url: virtual-machine-scale-sets-scale-in-policy.md
-          - text: Terminate notification
-            url: virtual-machine-scale-sets-terminate-notification.md
-          - text: Instance protection
-            url: virtual-machine-scale-sets-instance-protection.md
+          - text: Automatic instance repairs
+            url: virtual-machine-scale-sets-automatic-instance-repairs.md
+          - text: Improve allocation with Instance Mix
+            url: instance-mix-overview.md
+          - text: Standby Pools
+            url: standby-pools-overview.md
 
   # Card
   - title: Step-by-step guides

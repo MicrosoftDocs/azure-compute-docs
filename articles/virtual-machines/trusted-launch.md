@@ -6,7 +6,7 @@ ms.author: ajkundna
 ms.service: azure-virtual-machines
 ms.subservice: trusted-launch
 ms.topic: conceptual
-ms.date: 11/06/2023
+ms.date: 04/21/2025
 ms.reviewer: jushiman
 ms.custom: template-concept; references_regions
 ---
@@ -131,6 +131,55 @@ Trusted Launch is integrated with Defender for Cloud to ensure that your VMs are
 
   - Which kernel driver failed? Am I familiar with the failed kernel driver and do I expect it to load?
   - Is the exact version of the driver same as expected? Are the driver binaries intact? If failed driver is a partner driver, did the partner pass the OS compliance tests to get it signed?
+
+## Trusted Launch as default in REST API (Preview)
+> [!IMPORTANT]
+> Trusted Launch as default in REST API is currently in preview. Previews are made available to you on the condition that you agree to the [supplemental terms of use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Some aspects of this feature may change prior to general availability (GA).
+
+Trusted Launch as default (TLaD) in REST API is available for Virtual Machines (VM) and Virtual Machine Scale Sets.
+
+TLaD in REST API is a fast and zero-touch means of improving the security posture of new Gen2 based Azure VM and Virtual Machine Scale Sets deployments. With Trusted Launch as default, any new Gen2 VMse or scale sets created through REST API will by default result in Trusted Launch VMs, which automatically enables secureboot and vTPM.
+
+### Onboard to TLaD preview
+1. Use PowerShell and run the following commands.
+    ```azurepowershell-interactive
+    % Connect-AzAccount
+    % Set-AzContext -SubscriptionId "\<your subscription id>"
+    ```
+
+2. Register your subscription. 
+    ```azurepowershell-interactive
+    % Register-azproviderFeature -ProviderNamespace "Microsoft.Compute" -FeatureName "TrustedLaunchByDefaultPreview"
+    ```
+
+3. Verify subscription registration.
+    ```azurepowershell-interactive
+    % Get-azproviderFeature -ProviderNamespace "Microsoft.Compute" -FeatureName "TrustedLaunchByDefaultPreview"
+    ```
+    If your registered subscription appears in the output, the subscription is registered.  
+
+4. To create a new Gen2 VM or scale set, execute your existing deployment script as is through Azure SDK, Terraform, or another method that is not Azure portal, CLI, or PowerShell. The new VM or scale set created using the registered subscription results in a Trusted Launch VM or Virtual Machine Scale Set.
+
+> [!NOTE]
+> To simplify the preview onboarding experience to Trusted Launch as default, we require your subscription to be registered. However, once Trusted Launch as default in REST API becomes generally available, subscription registration isn't required. You must update the API version for just the VM or Virtual Machine Scale Sets creation blocks in your deployment script.
+
+### Offboard from TLaD preview
+1. Use PowerShell and run the following commands.
+    ```azurepowershell-interactive
+    % Connect-AzAccount
+    % Set-AzContext -SubscriptionId "\<your subscription id>"
+    ```
+
+2. Unregister your subscription. 
+    ```azurepowershell-interactive
+    % Unregister-azproviderFeature -ProviderNamespace "Microsoft.Compute" -FeatureName "TrustedLaunchByDefaultPreview"
+    ```
+
+3. Verify subscription registration.
+    ```azurepowershell-interactive
+    % Get-azproviderFeature -ProviderNamespace "Microsoft.Compute" -FeatureName "TrustedLaunchByDefaultPreview"
+    ```
+    If your subscription doesn’t appear in the output, then your subscription is unregistered.  
 
 ## Related content
 

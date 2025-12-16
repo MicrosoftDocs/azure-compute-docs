@@ -5,7 +5,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 08/29/2024
 ms.custom: mvc
 ---

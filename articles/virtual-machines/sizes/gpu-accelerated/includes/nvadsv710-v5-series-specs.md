@@ -1,6 +1,6 @@
 ---
-title: NVads-V710 v-5 series specs include
-description: Include file containing specifications of NVads-V710 v-5-series VM sizes.
+title: NVads-V710 v5-series specs include
+description: Include file containing specifications of NVads-V710 v5-series VM sizes.
 author: iamwilliew
 ms.topic: include
 ms.service: azure-virtual-machines

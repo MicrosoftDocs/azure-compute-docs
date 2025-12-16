@@ -1,7 +1,7 @@
 ---
 title: Learn Azure Service Fabric terminology 
 description: Learn key Service Fabric terminology and concepts used in the rest of the documentation.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric

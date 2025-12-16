@@ -7,7 +7,7 @@ ms.service: azure-virtual-machines
 ms.subservice: extensions
 ms.collection: windows
 ms.topic: how-to
-ms.date: 02/20/2024
+ms.date: 04/29/2025
 ms.author: mbaldwin 
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
 ---
@@ -137,7 +137,7 @@ The following JSON shows the schema for the Key Vault VM extension. Before you c
          },
          "authenticationSettings": {
              "msiEndpoint":  <Required when the msiClientId property is used. Specifies the MSI endpoint. Example for most Azure VMs: "http://169.254.169.254/metadata/identity/oauth2/token">,
-             "msiClientId":  <Required when the VM has any user assigned identities. Specifies the MSI identity. Example:  "c7373ae5-91c2-4165-8ab6-7381d6e75619">
+             "msiClientId":  <Required when the VM has any user assigned identities. Specifies the MSI identity. Example:  "00001111-aaaa-2222-bbbb-3333cccc4444">
          }
       }
    }
@@ -171,7 +171,7 @@ The following JSON shows the schema for the Key Vault VM extension. Before you c
          },
          "authenticationSettings": {
             "msiEndpoint":  <Required when the msiClientId property is used. Specifies the MSI endpoint. Example for most Azure VMs: "http://169.254.169.254/metadata/identity/oauth2/token">,
-            "msiClientId":  <Required when the VM has any user assigned identities. Specifies the MSI identity. Example: "c7373ae5-91c2-4165-8ab6-7381d6e75619">
+            "msiClientId":  <Required when the VM has any user assigned identities. Specifies the MSI identity. Example: "00001111-aaaa-2222-bbbb-3333cccc4444">
          }
       }
    }
@@ -202,7 +202,7 @@ The JSON schema includes the following properties.
 | `observedCertificates/keyExportable` (optional) | false | boolean |
 | `observedCertificates/accounts` (optional) | ["Network Service", "Local Service"] | string array |
 | `msiEndpoint` | "http://169.254.169.254/metadata/identity/oauth2/token" | string |
-| `msiClientId` | c7373ae5-91c2-4165-8ab6-7381d6e75619 | string |
+| `msiClientId` | 00001111-aaaa-2222-bbbb-3333cccc4444 | string |
 
 ### [Version-1.0](#tab/version1)
 
@@ -219,7 +219,7 @@ The JSON schema includes the following properties.
 | `requireInitialSync` | false | boolean |
 | `observedCertificates`  | ["https://myvault.vault.azure.net/secrets/mycertificate", <br> "https://myvault.vault.azure.net/secrets/mycertificate2"] | string array
 | `msiEndpoint` | "http://169.254.169.254/metadata/identity/oauth2/token" | string |
-| `msiClientId` | c7373ae5-91c2-4165-8ab6-7381d6e75619 | string |
+| `msiClientId` | 00001111-aaaa-2222-bbbb-3333cccc4444 | string |
 
 ---
 
@@ -275,7 +275,7 @@ The following JSON snippets provide example settings for an ARM template deploym
          },
          "authenticationSettings": {
             "msiEndpoint":  <Required when the msiClientId property is used. Specifies the MSI endpoint. Example for most Azure VMs: "http://169.254.169.254/metadata/identity/oauth2/token">,
-            "msiClientId":  <Required when the VM has any user assigned identities. Specifies the MSI identity. Example: "c7373ae5-91c2-4165-8ab6-7381d6e75619">
+            "msiClientId":  <Required when the VM has any user assigned identities. Specifies the MSI identity. Example: "00001111-aaaa-2222-bbbb-3333cccc4444">
          }
       }
    }
@@ -308,7 +308,7 @@ The following JSON snippets provide example settings for an ARM template deploym
          },
          "authenticationSettings": {
             "msiEndpoint":  <Required when the msiClientId property is used. Specifies the MSI endpoint. Example for most Azure VMs: "http://169.254.169.254/metadata/identity/oauth2/token">,
-            "msiClientId":  <Required when the VM has any user assigned identities. Specifies the MSI identity. Example:  "c7373ae5-91c2-4165-8ab6-7381d6e75619">  
+            "msiClientId":  <Required when the VM has any user assigned identities. Specifies the MSI identity. Example:  "00001111-aaaa-2222-bbbb-3333cccc4444">  
          }
       }
    }
@@ -375,7 +375,7 @@ The following JSON snippets provide example settings for deploying the Key Vault
    ]},
    "authenticationSettings": {
       "msiEndpoint":  "http://169.254.169.254/metadata/identity/oauth2/token",
-      "msiClientId":  "c7373ae5-91c2-4165-8ab6-7381d6e75619"
+      "msiClientId":  "00001111-aaaa-2222-bbbb-3333cccc4444"
    }      
 }
 ```
@@ -502,7 +502,7 @@ The following JSON snippets provide example settings for deploying the Key Vault
         },
           "authenticationSettings": {
           "msiEndpoint":  "http://169.254.169.254/metadata/identity/oauth2/token",
-          "msiClientId":  "c7373ae5-91c2-4165-8ab6-7381d6e75619"
+          "msiClientId":  "00001111-aaaa-2222-bbbb-3333cccc4444"
         }      
      }
 ```

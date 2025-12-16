@@ -28,7 +28,7 @@ vCPUs (Qty.) and Memory for each size
 
 | Size Name | vCPUs (Qty.) | Memory (GB) |
 | --- | --- | --- |
-| Standard_ND96asr_A100_v4 | 96 | 900 |
+| Standard_ND96asr_v4 | 96 | 900 |
 
 #### VM Basics resources
 - [Check vCPU quotas](../../../virtual-machines/quotas.md)
@@ -39,7 +39,7 @@ Local (temp) storage info for each size
 
 | Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) |
 | --- | --- | --- |
-| Standard_ND96asr_A100_v4 | 1 | 6000 |
+| Standard_ND96asr_v4 | 1 | 6000 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
@@ -58,7 +58,7 @@ Remote (uncached) storage info for each size
 
 | Size Name | Max Remote Storage Disks (Qty.) | Uncached Disk IOPS | Uncached Disk Speed (MBps) |
 | --- | --- | --- | --- |
-| Standard_ND96asr_A100_v4 | 32 | 80000 | 800 |
+| Standard_ND96asr_v4 | 32 | 80000 | 800 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
@@ -80,7 +80,7 @@ Network interface info for each size
 
 | Size Name | Max NICs (Qty.) | Max Bandwidth (Mbps) |
 | --- | --- | --- |
-| Standard_ND96asr_A100_v4 | 8 | 24000 |
+| Standard_ND96asr_v4 | 8 | 24000 |
 
 #### Networking resources
 - [Virtual networks and virtual machines in Azure](/azure/virtual-network/network-overview)
@@ -97,7 +97,7 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 
 | Size Name | Accelerators (Qty.) | Accelerator-Memory (GB) |
 | --- | --- | --- |
-| Standard_ND96asr_A100_v4 | 8 | 320 |
+| Standard_ND96asr_v4 | 8 | 320 |
 
 ---
 

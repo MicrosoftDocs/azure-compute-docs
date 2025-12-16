@@ -1,7 +1,7 @@
 ---
 title: Azure Service Fabric Platform Level Monitoring 
 description: Learn about platform level events and logs used to monitor and diagnose Azure Service Fabric clusters.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric

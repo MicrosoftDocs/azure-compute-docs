@@ -1,7 +1,7 @@
 ---
 title: Azure ServiceFabric diagnostics and monitoring 
 description: This article describes the performance monitoring features in the Service Fabric Reliable ServiceRemoting runtime, like  performance counters emitted by it.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric

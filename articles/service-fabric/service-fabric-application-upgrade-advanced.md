@@ -1,7 +1,7 @@
 ---
 title: Advanced Application Upgrade Topics
 description: This article covers some advanced topics pertaining to upgrading a Service Fabric application.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric

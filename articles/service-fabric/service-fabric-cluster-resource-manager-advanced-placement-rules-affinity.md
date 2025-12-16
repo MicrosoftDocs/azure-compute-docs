@@ -1,7 +1,7 @@
 ---
 title: Service Fabric Cluster Resource Manager - Affinity 
 description: Overview of service affinity for Azure Service Fabric services and guidance on service affinity configuration.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric

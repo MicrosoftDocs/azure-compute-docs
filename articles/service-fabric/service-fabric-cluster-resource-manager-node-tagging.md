@@ -1,7 +1,7 @@
 ---
 title: Azure Service Fabric dynamic node tags
 description: Azure Service Fabric allows you to dynamically add and remove node tags.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
