@@ -7,6 +7,7 @@ ms.subservice: proximity-placement-groups
 ms.topic: how-to
 ms.date: 3/12/2023
 ms.author: mattmcinnes
+# Customer intent: "As a cloud architect, I want to create proximity placement groups for virtual machines in the Azure portal, so that I can ensure low latency and optimal performance for critical workloads."
 ---
 
 # Create a proximity placement group using the Azure portal

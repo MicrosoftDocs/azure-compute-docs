@@ -4,16 +4,14 @@ description: Information on and specifications of the FXmdsv2-series sizes
 author: archatC
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
-ms.date: 08/29/2024
+ms.topic: concept-article
+ms.date: 05/23/2025
 ms.author: archat
 ms.reviewer: mattmcinnes
+# Customer intent: "As a cloud architect, I want to compare the specifications and features of the FXmdsv2 VM sizes, so that I can select the appropriate size for my application workloads and optimize performance."
 ---
 
-# FXmdsv2 sizes series (Preview)
-
->[!NOTE]
->This VM series is currently in **Preview**. See the [Preview Terms Of Use | Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability. For more information and to sign up for the preview, please visit [our announcement](https://aka.ms/FXv2-series-PreviewBlog) and [follow the link to signup](https://aka.ms/FXv2-series-Preview-Signup). 
+# FXmdsv2 sizes series 
 
 [!INCLUDE [fxmdsv2-summary](./includes/fxmdsv2-series-summary.md)]
 
@@ -21,7 +19,18 @@ ms.reviewer: mattmcinnes
 [!INCLUDE [fxmdsv2-series-specs](./includes/fxmdsv2-series-specs.md)]
 
 ## Feature support
-[Premium Storage](../../premium-storage-performance.md): Supported <br>[Premium Storage caching](../../premium-storage-performance.md): Supported <br>[Live Migration](../../maintenance-and-updates.md): Not Supported <br>[Memory Preserving Updates](../../maintenance-and-updates.md): Supported <br>[Generation 2 VMs](../../generation-2.md): Supported <br>[Generation 1 VMs](../../generation-2.md): Not Supported <br>[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported <br>[Ephemeral OS Disk](../../ephemeral-os-disks.md): Not Supported <br>[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Supported <br> [NVMe storage](../../nvme-overview.md): Supported <br> [Constrained core](../../constrained-vcpu.md) : Supported
+- [Premium Storage](../../premium-storage-performance.md): Supported
+- [Premium Storage caching](../../premium-storage-performance.md): Supported
+- [Live Migration](../../maintenance-and-updates.md): Supported
+- [Memory Preserving Updates](../../maintenance-and-updates.md): Supported
+- [Generation 2 VMs](../../generation-2.md): Supported
+- [Generation 1 VMs](../../generation-2.md): Not Supported
+- [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported
+- [Ephemeral OS Disk](../../ephemeral-os-disks.md): Supported
+- [Temporary local NVMe disks](../../enable-nvme-temp-faqs.yml): Supported
+- [Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Supported
+- [NVMe storage](../../nvme-overview.md): Supported
+- [Constrained core](../../constrained-vcpu.md): Supported
 
 ## Sizes in series
 
@@ -138,6 +147,10 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 > No accelerators are present in this series.
 
 ---
+
+> [!NOTE]
+> FXmdsv2-series VMs provision the ephemeral storage in a RAW state, which must be manually formatted and configured before installing SQL Server, when using the ephemeral storage for the `tempdb` database as dictated by best practices. 
+> The ephemeral storage resets to RAW when the VM is deallocated or resized, which impacts some automation by preventing SQL Server from starting. For more information, see [How to format and initialize temp NVMe disks](/azure/virtual-machines/enable-nvme-temp-faqs#how-can-i-format-and-initialize-temp-nvme-disks-in-windows-when-i-create-a-vm) and the [SQL Server support guidance](/troubleshoot/sql/azure-sql/sql-deployment-fails-drive-not-ready).
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]
 

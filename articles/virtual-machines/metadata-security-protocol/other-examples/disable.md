@@ -1,19 +1,22 @@
 ---
 title: Disable MSP
-description: Disabling MSP
+description: Learn how to disable Metadata Security Protocol (MSP) by using the REST API and the Azure portal.
 author: minnielahoti
 ms.service: azure-virtual-machines
 ms.topic: how-to
 ms.date: 04/08/2025
 ms.author: minnielahoti
 ms.reviewer: azmetadatadev
+# Customer intent: "As an IT administrator, I want to disable the Managed Service Proxy (MSP) for my virtual machines, so that I can manage security settings more effectively and allow requests to flow normally."
 ---
 
 # Disable MSP
 
-To disable MSP, set the `securityProfile.proxyAgentSettings.enabled` to `false`.
+You can disable Metadata Security Protocol (MSP) by using the REST API and (partially) by using the Azure portal.
 
-## Via REST API
+## REST API
+
+Set `securityProfile.proxyAgentSettings.enabled` to `false`:
 
 ```http
 PATCH https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Compute/virtualMachines/{virtualMachine-Name}?api-version=2024-03-01
@@ -28,8 +31,10 @@ PATCH https://management.azure.com/subscriptions/{subscription-id}/resourceGroup
 }
 ```
 
-## Via Azure portal
+## Azure portal
 
-Portal doesn't allow disabling MSP completely at this time, but you can disable actual enforcement of security requirements to allow requests to flow normally:
+The portal doesn't allow disabling MSP completely at this time. But you can disable enforcement of security requirements to allow requests to flow normally.
 
-![Screenshot of the Azure portal screen.](../images/disable-msp-portal.png)
+Go to your virtual machine, and then go to **Settings** > **Configuration**. In the **Metadata Security Protocol** area, in the boxes for enforcement mode, select **Disabled**.
+
+![Screenshot that shows selections in the Azure portal for disabling enforcement mode.](../images/disable-msp-portal.png)

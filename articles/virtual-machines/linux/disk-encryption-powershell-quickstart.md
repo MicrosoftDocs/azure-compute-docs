@@ -7,17 +7,20 @@ ms.service: azure-virtual-machines
 ms.subservice: security
 ms.collection: linux
 ms.topic: quickstart
-ms.date: 02/20/2024
+ms.date: 09/23/2025
 ms.custom: devx-track-azurepowershell, mode-api, linux-related-content
+# Customer intent: "As a system administrator, I want to create and encrypt a Linux virtual machine using PowerShell, so that I can ensure the security of my data and comply with organizational policies."
 ---
 
 # Quickstart: Create and encrypt a Linux VM in Azure with Azure PowerShell
+
+[!INCLUDE [Azure Disk Encryption retirement notice](~/reusable-content/ce-skilling/azure/includes/security/azure-disk-encryption-retirement.md)]
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Flexible scale sets
 
 The Azure PowerShell module is used to create and manage Azure resources from the PowerShell command line or in scripts. This quickstart shows you how to use the Azure PowerShell module to create a Linux virtual machine (VM), create a Key Vault for the storage of encryption keys, and encrypt the VM. This quickstart uses the Ubuntu 16.04 LTS marketplace image from Canonical and a VM Standard_D2S_V3 size. However, any [ADE supported Linux image version](/azure/virtual-machines/linux/disk-encryption-overview#supported-operating-systems) could be used instead of an Ubuntu VM.
 
-If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 ## Create a resource group
 
@@ -29,7 +32,7 @@ New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
 
 ## Create a virtual machine
 
-Create an Azure virtual machine with [New-AzVM](/powershell/module/az.compute/new-azvm), passing to it the VM configuration object you created in the previous step.
+Create an Azure virtual machine with [New-AzVM](/powershell/module/az.compute/new-azvm), passing it to the VM configuration object you created in the previous step.
 
 ```powershell-interactive
 $cred = Get-Credential
@@ -62,7 +65,7 @@ $KeyVault = Get-AzKeyVault -VaultName "<your-unique-keyvault-name>" -ResourceGro
 Set-AzVMDiskEncryptionExtension -ResourceGroupName MyResourceGroup -VMName "MyVM" -DiskEncryptionKeyVaultUrl $KeyVault.VaultUri -DiskEncryptionKeyVaultId $KeyVault.ResourceId -SkipVmBackup -VolumeType All
 ```
 
-After a few minutes the process will return the following:
+After a few minutes the process returns:
 
 ```output
 RequestId IsSuccessStatusCode StatusCode ReasonPhrase
@@ -76,7 +79,7 @@ You can verify the encryption process by running [Get-AzVmDiskEncryptionStatus](
 Get-AzVmDiskEncryptionStatus -VMName MyVM -ResourceGroupName MyResourceGroup
 ```
 
-When encryption is enabled, you will see the following in the returned output:
+When encryption is enabled, you see this information in the returned output:
 
 ```output
 OsVolumeEncrypted          : EncryptionInProgress
@@ -95,7 +98,7 @@ Remove-AzResourceGroup -Name "myResourceGroup"
 
 ## Next steps
 
-In this quickstart, you created a virtual machine, created a Key Vault that was enable for encryption keys, and encrypted the VM.  Advance to the next article to learn more about Azure Disk Encryption for Linux VMs.
+In this quickstart you created a virtual machine, created a Key Vault enabled for encryption keys, and encrypted the VM. Advance to the next article to learn more about Azure Disk Encryption for Linux VMs.
 
 > [!div class="nextstepaction"]
 > [Azure Disk Encryption overview](disk-encryption-overview.md)

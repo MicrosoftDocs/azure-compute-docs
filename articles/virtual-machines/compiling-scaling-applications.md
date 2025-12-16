@@ -7,8 +7,9 @@ ms.custom:
 ms.topic: how-to
 ms.date: 08/06/2024
 ms.reviewer: cynthn, mattmcinnes
-ms.author: jushiman
-author: ju-shim
+ms.author: cynthn
+author: cynthn
+# Customer intent: "As a cloud architect, I want to optimize the deployment of HPC applications on Azure VMs, so that I can enhance scalability and performance for large-scale computational tasks."
 ---
 
 # Scaling HPC applications

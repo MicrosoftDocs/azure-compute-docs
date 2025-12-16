@@ -5,10 +5,11 @@ author: RicksterCDN
 ms.service: azure-virtual-machines
 ms.subservice: networking
 ms.custom: linux-related-content
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 04/11/2023
 ms.author: rclaus
 ms.collection: linux
+# Customer intent: As a cloud administrator, I want to configure DNS name resolution options for Linux virtual machines, so that I can ensure reliable communication between instances in different virtual networks and manage external domain resolutions effectively.
 ---
 # DNS Name Resolution options for Linux virtual machines in Azure
 

@@ -7,6 +7,7 @@ ms.service: oracle-on-azure
 ms.collection: oracle
 ms.topic: concept-article
 ms.date: 10/02/2024
+# Customer intent: As an IT architect, I want to deploy Oracle applications on Azure Virtual Machines, so that I can utilize cloud benefits like scalability, availability, and improved security while ensuring optimal performance and compliance with best practices specific to each application type.
 ---
 
 # Architectures for Oracle applications with database on Azure Virtual Machines
@@ -24,7 +25,7 @@ As Oracle applications move on Azure IaaS, there are common design consideration
 The provided network settings for Oracle Applications on Azure cover various aspects of network and security considerations. Here's a breakdown of the recommended network settings:
 
 - Single sign-on (SSO) with Microsoft Entra ID and SAML: Use [Microsoft Entra ID for single sign-on (SSO)](/azure/active-directory/manage-apps/what-is-single-sign-on) using the Security Assertions Markup Language (SAML) protocol. This SSO allows users to authenticate once and access multiple services seamlessly.
-- Microsoft Entra application proxy: Consider using [Microsoft Entra application proxy](/azure/active-directory/app-proxy/application-proxy), especially for remote users. This proxy allows you to securely access on-premises applications from outside your network.
+- Microsoft Entra application proxy: Consider using [Microsoft Entra application proxy](/entra/identity/app-proxy/), especially for remote users. This proxy allows you to securely access on-premises applications from outside your network.
 - Routing Internal Users through [ExpressRoute](/azure/expressroute/expressroute-introduction): For internal users, route traffic through Azure ExpressRoute for a dedicated, private connection to Azure services, ensuring low-latency and secure communication.
 - Azure Firewall: If necessary, you can configure [Azure Firewall](/azure/architecture/example-scenario/gateway/application-gateway-before-azure-firewall) in front of your application for added security. Azure Firewall helps protect your resources from unauthorized access and threats.
 - Application Gateway for External Users: When external users need to access your application, consider using [Azure Application Gateway](/azure/application-gateway/overview). It supplies Web Application Firewall (WAF) capabilities for protecting your web applications and Layer 7 load balancing to distribute traffic.

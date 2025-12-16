@@ -8,6 +8,7 @@ ms.subservice: sizes
 ms.date: 10/21/2024
 ms.author: reprasa
 ms.custom: include file
+# Customer intent: "As a cloud engineer, I want access to the Linux kmod PCA certificate details, so that I can ensure proper configuration and management of kernel modules in my Azure virtual machines."
 ---
 
 <details>

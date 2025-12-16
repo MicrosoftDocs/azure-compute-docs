@@ -9,6 +9,7 @@
  ms.date: 02/03/2025
  ms.author: mattmcinnes
 ms.custom: include file, build-2024
+# Customer intent: "As an IT administrator, I want to access comprehensive information about virtual machine sizes and performance options, so that I can make informed decisions about resizing and optimizing resources for my workloads."
 ---
 
 ## Other size information

@@ -4,9 +4,10 @@ description: NV series retirement starting September 6, 2023
 author: vikancha-MSFT
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 02/27/2023
 ms.author: vikancha
+# Customer intent: "As a cloud administrator managing virtual machines, I want to migrate my NV and NV_Promo series VMs before the retirement date, so that I can ensure continuous operation of my graphics workloads without service disruption."
 ---
 # Migrate your NV and NV_Promo series virtual machines by September 6, 2023
 We’re happy to announce that we're extending the retirement date by one year to September 6, 2023, for the Azure NV-Series and NV_Promo Series virtual machine to give you more time to plan  your migration. 

@@ -5,8 +5,10 @@ author: tomvcassidy
 ms.author: tomcassidy
 ms.custom: subject-cost-optimization
 ms.service: azure-virtual-machines
-ms.topic: conceptual
+ms.topic: how-to
+ms.update-cycle: 180-days
 ms.date: 02/21/2024
+# Customer intent: "As a cloud administrator, I want to estimate and review costs for virtual machines, so that I can effectively manage and optimize our cloud spending."
 ---
 
 # Plan to manage costs for virtual machines
@@ -95,7 +97,7 @@ After you delete virtual machines resources, the following resources might conti
 - Bandwidth
 - Load balancer
 
-If your OS disk isn't deleted with your VM, it likely incurs [P10 disk costs](https://azure.microsoft.com/pricing/details/managed-disks/) even in a stopped state. The OS disk size is smaller by default for some images and incurs lower costs accordingly.
+If your OS disk isn't deleted with your VM, it continues to occur costs, even in a stopped state. The OS disk size is smaller by default for some images and incurs lower costs accordingly.
 
 For virtual networks, one virtual network is billed per subscription and per region. Virtual networks can't span regions or subscriptions. Setting up private endpoints in vNet setups may also incur charges.
 

@@ -4,6 +4,7 @@ ms.service: azure-virtual-machines
 ms.topic: include
 ms.date: 07/10/2019
 ms.author: danlep
+# Customer intent: "As a network administrator, I want to configure a bastion host for secure access to virtual machines, so that I can manage instances safely while minimizing exposure to potential threats."
 ---
 ### Bastion tier
 

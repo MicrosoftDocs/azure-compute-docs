@@ -8,6 +8,7 @@ ms.tgt_pltfrm: vm-windows
 ms.custom: devx-track-azurepowershell
 ms.date: 01/19/2024
 ms.author: rogarana
+# Customer intent: "As a system administrator, I want to restore a managed disk from a snapshot using PowerShell, so that I can quickly recover virtual machines and maintain uptime while managing performance impacts."
 ---
 
 # Create a managed disk from a snapshot with PowerShell 

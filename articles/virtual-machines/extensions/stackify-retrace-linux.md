@@ -7,14 +7,15 @@ ms.subservice: extensions
 ms.author: gabsta
 author: GabstaMSFT
 ms.collection: linux
-ms.date: 04/12/2018
+ms.date: 08/18/2025
 ms.custom: devx-track-azurecli, linux-related-content
 ms.devlang: azurecli
+# Customer intent: As a developer managing applications on Linux virtual machines, I want to deploy the Stackify Retrace agent extension, so that I can monitor application performance and troubleshoot issues effectively across different environments.
 ---
 # Stackify Retrace Linux Agent Extension
 
 > [!CAUTION]
-> This article references CentOS, a Linux distribution that is End Of Life (EOL) status. Please consider your use and plan accordingly. For more information, see the [CentOS End Of Life guidance](~/articles/virtual-machines/workloads/centos/centos-end-of-life.md).
+> This article references CentOS, a Linux distribution that is end of support status. Please consider your use and plan accordingly. For more information, see the [CentOS End Of Life guidance](~/articles/virtual-machines/workloads/centos/centos-end-of-life.md).
 
 ## Overview
 
@@ -26,6 +27,9 @@ Retrace is the ONLY tool that delivers all of the following capabilities across 
 * Application and server logging
 * Error tracking and monitoring
 * Server, application, and custom metrics
+
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
+
 
 **About Stackify Linux Agent Extension**
 
@@ -46,7 +50,7 @@ The Retrace agent can be run against these Linux distributions
 
 > [!IMPORTANT]
 
-> Keep in consideration Red Hat Enterprise Linux 6.X is already EOL.
+> Keep in consideration Red Hat Enterprise Linux 6.X is already deprecated.
 > RHEL 6.10 has available [ELS support](https://www.redhat.com/en/resources/els-datasheet), which [will end on 06/2024]( https://access.redhat.com/product-life-cycles/?product=Red%20Hat%20Enterprise%20Linux,OpenShift%20Container%20Platform%204).
 ### Internet connectivity
 

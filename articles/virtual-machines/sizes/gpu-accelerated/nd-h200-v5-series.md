@@ -8,9 +8,10 @@ description: Information on and specifications of the ND-H200-v5 series sizes
 author:      iamwilliew
 ms.author:   wwilliams
 ms.service: azure-virtual-machines
-ms.topic: conceptual
-ms.date:     09/12/2024
+ms.topic: concept-article
+ms.date:     09/02/2025
 ms.subservice: sizes
+# Customer intent: "As a cloud architect, I want to understand the specifications and capacities of the ND-H200-v5 series sizes, so that I can select the appropriate virtual machine configuration for my application workloads."
 ---
 
 #  ND-H200-v5 size series
@@ -41,9 +42,9 @@ vCPUs (Qty.) and Memory for each size
 
 Local (temp) storage info for each size
 
-| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) |
-| --- | --- | --- |
-| Standard_ND96isr_H200_v5 | 1 | 28000 |
+| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Max NVMe Disks (Qty.) | NVMe Disk Size (TiB) |
+| --- | --- | --- | --- | --- |
+| Standard_ND96isr_H200_v5 | 1 | 28000 | 8 | 28 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)

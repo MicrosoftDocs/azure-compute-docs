@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a developer, I want to simulate faults in Azure Service Fabric applications so that I can identify bugs and improve the application's resilience against both graceful and ungraceful failures.
 ---
 
 # Simulate failures during service workloads

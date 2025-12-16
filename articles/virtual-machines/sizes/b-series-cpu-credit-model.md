@@ -7,6 +7,7 @@ ms.service: azure-virtual-machines
 ms.subservice:   sizes
 ms.topic:    conceptual
 ms.date:     09/12/2023
+# Customer intent: As a cloud architect, I want to understand the B Series CPU credit model so that I can optimize virtual machine performance and cost based on workload requirements.
 ---
 
 # B Series CPU Credit Model

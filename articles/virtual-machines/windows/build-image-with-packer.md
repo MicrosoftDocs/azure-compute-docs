@@ -1,14 +1,15 @@
 ---
 title: PowerShell - How to create VM Images with Packer
 description: Learn how to use Packer and PowerShell to create images of virtual machines in Azure
-author: ju-shim
+author: cynthn
 ms.service: azure-virtual-machines
 ms.subservice: imaging
 ms.collection: windows
 ms.topic: how-to
 ms.date: 10/28/2024
-ms.author: jushiman
+ms.author: cynthn
 ms.custom: devx-track-azurepowershell
+# Customer intent: As a cloud engineer, I want to create custom VM images using Packer and PowerShell, so that I can automate and standardize my deployment processes in Azure.
 ---
 
 # PowerShell: How to use Packer to create virtual machine images in Azure

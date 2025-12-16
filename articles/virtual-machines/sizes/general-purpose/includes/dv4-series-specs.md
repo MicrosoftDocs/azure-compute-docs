@@ -9,6 +9,7 @@ ms.date: 07-28-2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
+# Customer intent: "As a cloud architect, I want to review the specifications of Dv4-series VM sizes, so that I can select the most suitable virtual machines for our infrastructure needs based on performance and capacity."
 ---
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
 |---|---|---|

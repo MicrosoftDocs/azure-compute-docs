@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a cloud administrator, I want to scale out a node type in a Service Fabric managed cluster, so that I can adjust resource capacity to meet application demands effectively.
 ---
 
 # Tutorial: Scale out a Service Fabric managed cluster

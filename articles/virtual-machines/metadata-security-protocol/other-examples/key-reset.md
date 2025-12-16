@@ -1,22 +1,25 @@
 ---
-title: Reset latched key
-description: Learn more about key reset
+title: Reset a Latched Key
+description: Learn about key reset for virtual machines.
 author: minnielahoti
 ms.service: azure-virtual-machines
 ms.topic: how-to
 ms.date: 04/08/2025
 ms.author: minnielahoti
 ms.reviewer: azmetadatadev
+# Customer intent: "As a virtual machine administrator, I want to reset the latched key for my VM, so that I can restore its access to necessary services after a key mismatch or loss."
 ---
 
-# Reset latched key
-If the Virtual Machine (VM) loses its copy of the latched key, a disk is migrated to a new VM. If any other key mismatch occurs, the VM can't access Wireserver or Instance Metadata Service (IMDS). Resetting the key will bring the VM back to a healthy state if the key is lost or unmatched between Host and Guest.
+# Reset a latched key
 
-> The VM owner must request the key reset. Metadata services can't distinguish between an attacker or the GPA requesting a reset when the key is lost, so resets can't be issued from within the VM.
+If a virtual machine (VM) loses its copy of the latched key, a disk is migrated to a new VM. If any other key mismatch occurs, the VM can't access WireServer or Azure Instance Metadata Service. Resetting the key brings the VM back to a healthy state if the key is lost or unmatched between host and guest.
 
-## Reset a VMs Key
+> [!NOTE]
+> The VM owner must request the key reset. Metadata services can't distinguish between an attacker or the Guest Proxy Agent requesting a reset when the key is lost, so resets can't be issued from within the VM.
 
-The platform always ensures the `keyIncarnationId` in the VM model matches the actual key in storage. By incrementing this value, a key reset is triggered. See [Configuration](../configuration.md) for more details.
+## Reset a VM's key
+
+The platform always ensures that the `keyIncarnationId` value in the VM model matches the actual key in storage. Incrementing this value triggers a key reset. For more information, see [MSP feature configuration](../configuration.md).
 
 ```http
 PATCH https://management.azure.com/subscriptions/{subscription_id}/resourceGroups/{resource_group_name}/providers/Microsoft.Compute/virtualMachines/{virtualMachine_Name}?api-version=2024-03-01
@@ -31,8 +34,9 @@ PATCH https://management.azure.com/subscriptions/{subscription_id}/resourceGroup
 }
 ```
 
-### Confirm Reset Occurred
-Check the `AzureProxyAgentExtension` of the VM Instance view to confirm the new key is generated. You see your new `keyIncarnationId` once the change propagates end to end.
+### Confirm the reset
+
+Check the `AzureProxyAgentExtension` value of the VM instance view to confirm that the new key is generated. Your new `keyIncarnationId` value appears after the change propagates end to end.
 
 ```json
 "keyLatchStatus":{
@@ -49,14 +53,14 @@ Check the `AzureProxyAgentExtension` of the VM Instance view to confirm the new 
 ```
 
 > [!NOTE]
-> These requests are idempotent. However, if multiple requests are made with multiple `keyIncarnationId` there's no guarantee on the number and order of `keyIncarnationId` you observe. The final state reflects whichever request used the largest value.
+> These requests are idempotent. However, if multiple requests are made with multiple `keyIncarnationId` values, there's no guarantee on the number and order of `keyIncarnationId` values that you observe. The final state reflects whichever request used the largest value.
 
-## Reset a Virtual Machine Scale Sets' Key
+## Reset a virtual machine scale set's key
 
-Key data is unique for each instance in a Scale Set. The key must be reset on a per-instance basis.
+Key data is unique for each instance in a virtual machine scale set. The key must be reset on a per-instance basis.
 
-We only support reset key for particular Virtual Machine Scale Sets' VM Instance. We can't reset key for all the Virtual Machine Scale Sets' instances in a single API.
+You can reset a key only for a particular scale set's VM instance. You can't reset a key for all the scale set instances in a single API.
 
-See [Reset a VM's Key](#reset-a-vms-key), and substitute in your Virtual Machine Scale Sets' instance's resource ID instead. Example:
+See the [earlier instructions for resetting a VM's key](#reset-a-vms-key), and substitute in your scale set instance's resource ID. For example:
 
 `https://management.azure.com/subscriptions/{subscription_id}/resourceGroups/{resource_group_name}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSet_name}/virtualMachines/{instance_id}?api-version=2024-03-01`

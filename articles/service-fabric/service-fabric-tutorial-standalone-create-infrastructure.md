@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a cloud architect, I want to set up AWS infrastructure for a Service Fabric cluster so that I can deploy and manage applications in a scalable and flexible environment.
 ---
 
 # Tutorial: Create AWS infrastructure to host a Service Fabric cluster

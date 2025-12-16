@@ -6,8 +6,9 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
-ms.date: 08/29/2024
+ms.date: 11/17/2025
 ms.custom: mvc, devx-track-azurecli
+# Customer intent: As a cloud developer, I want to mount an Azure Files volume to my container group, so that I can persist data and share files across container instances easily.
 ---
 
 # Mount an Azure file share in Azure Container Instances

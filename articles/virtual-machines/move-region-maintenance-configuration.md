@@ -6,6 +6,7 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm
 ms.date: 03/04/2020
 #Customer intent: As an admin responsible for maintenance, I want move a Maintenance Control configuration associated with Azure resources to another Azure region.
+# Customer intent: As an admin managing virtual machines, I want to move a maintenance control configuration to another Azure region, so that I can leverage new regional features and ensure compliance with governance requirements.
 ---
 
 

@@ -5,9 +5,12 @@ ms.topic: how-to
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
-ms.custom: devx-track-azurepowershell
 services: service-fabric
 ms.date: 07/11/2022
+ms.custom:
+  - devx-track-azurepowershell
+  - sfi-image-nochange
+# Customer intent: As a cloud architect, I want to add a managed identity to a Service Fabric managed cluster node type, so that I can enable secure access to Azure services without managing credentials.
 ---
 
 # Add a managed identity to a Service Fabric managed cluster node type
@@ -30,7 +33,7 @@ For an example of a Service Fabric managed cluster deployment that makes use of 
 
 Before you begin:
 
-* If you don't have an Azure subscription, create a [free](https://azure.microsoft.com/free/) account before you begin.
+* If you don't have an Azure subscription, create a [free](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) account before you begin.
 * If you plan to use PowerShell, [install](/cli/azure/install-azure-cli) the Azure CLI to run CLI reference commands.
 
 ## 1. Create identity and role Assignment

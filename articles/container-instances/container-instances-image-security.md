@@ -1,12 +1,13 @@
 ---
 title: Security considerations for container instances
 description: Recommendations to secure images and secrets for Azure Container Instances, and general security considerations for any container platform
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
-ms.date: 08/29/2024
+ms.date: 11/17/2025
+# Customer intent: "As a DevOps engineer, I want to implement security best practices for managing container images and credentials, so that I can protect our containerized applications from vulnerabilities and unauthorized access throughout their lifecycle."
 ---
 
 # Security considerations for Azure Container Instances

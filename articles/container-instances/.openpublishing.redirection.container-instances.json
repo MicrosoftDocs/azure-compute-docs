@@ -2,7 +2,7 @@
     "redirections": [
       {
         "source_path_from_root": "/articles/container-instances/availability-zones.md",
-        "redirect_url": "/azure/reliability/reliability-containers",
+        "redirect_url": "/azure/reliability/reliability-container-instances",
         "redirect_document_id": false
       },
       {

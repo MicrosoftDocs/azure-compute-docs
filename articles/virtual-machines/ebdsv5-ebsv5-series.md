@@ -4,8 +4,9 @@ description: Specifications for the Ebdsv5-series and Ebsv5-series Azure virtual
 ms.service: azure-virtual-machines
 ms.date: 07/08/2024
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom: references_regions
+# Customer intent: As a cloud architect, I want to evaluate the performance specifications of the Ebdsv5 and Ebsv5 VM series, so that I can determine their suitability for my high throughput, memory-intensive workloads and potentially optimize costs by consolidating existing applications.
 ---
 
 # Ebdsv5 and Ebsv5 series 

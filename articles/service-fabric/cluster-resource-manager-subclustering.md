@@ -1,12 +1,13 @@
 ---
 title: Balancing of subclustered metrics
 description: The effect of placement constraints on balancing and how to handle it
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: "As a cloud administrator, I want to understand subclustering and its impact on load balancing, so that I can optimize resource allocation and prevent artificial imbalances in my cluster."
 ---
 # Balancing of subclustered metrics
 

@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a cloud administrator, I want to configure performance monitoring for my Azure Service Fabric clusters, so that I can collect and analyze performance counters to ensure optimal system performance and resource management."
 ---
 
 # Performance monitoring with the Windows Azure Diagnostics extension

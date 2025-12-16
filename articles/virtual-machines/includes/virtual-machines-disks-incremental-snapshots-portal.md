@@ -8,6 +8,7 @@
  ms.date: 12/06/2022
  ms.author: rogarana
  ms.custom: include file
+# Customer intent: As a cloud administrator, I want to create incremental snapshots of my virtual machine disks, so that I can efficiently manage backups and restore points for better data protection and recovery processes.
 ---
 1. Sign in to the [Azure portal](https://portal.azure.com) and navigate to the disk you'd like to snapshot.
 1. On your disk, select **Create a Snapshot**

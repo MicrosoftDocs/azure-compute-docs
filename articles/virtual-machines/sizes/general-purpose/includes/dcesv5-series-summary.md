@@ -9,6 +9,7 @@ ms.date: 04/15/2025
 ms.author: simranparkhe
 ms.reviewer: simranparkhe
 ms.custom: include file
+# Customer intent: As a cloud architect, I want to explore the capabilities of DCesv6-series virtual machines, so that I can assess their suitability for running confidential workloads and enhancing data security in our organization.
 ---
 The DCesv6-series are [Azure confidential VMs](/azure/confidential-computing/confidential-vm-overview) that protect the confidentiality and integrity of code and data while it's being processed. Organizations can use these VMs to seamlessly bring confidential workloads to the cloud without any code changes to the application. These machines are powered by Intel® 5th Generation Xeon® Scalable processors reaching an all-core turbo clock speed of 3.0 GHz and [Intel® AMX](https://www.intel.com/content/www/us/en/products/docs/accelerator-engines/advanced-matrix-extensions/overview.html) for AI acceleration. 
 

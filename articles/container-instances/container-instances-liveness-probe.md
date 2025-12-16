@@ -6,7 +6,8 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
-ms.date: 08/29/2024
+ms.date: 11/17/2025
+# Customer intent: "As a DevOps engineer, I want to configure liveness probes for container instances, so that I can ensure automatic restarts of unhealthy containers to maintain application availability."
 ---
 # Configure liveness probes
 

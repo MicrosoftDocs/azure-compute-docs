@@ -9,6 +9,7 @@ ms.subservice: sizes
 ms.date: 04/19/2024
 ms.author: mattmcinnes
 ms.custom: include file
+# Customer intent: "As a cloud architect, I want to evaluate NP sub-family VM sizes for my workloads, so that I can optimize performance for real-time data processing, AI tasks, genomics, video transcoding, signal processing, and database acceleration."
 ---
 **Real-Time Data Processing:** NP-family VMs excel in environments where data needs to be processed in real time with minimal latency, such as in financial trading, real-time analytics, and network data processing.
 

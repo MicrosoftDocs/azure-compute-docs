@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: linux-related-content
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a DevOps engineer deploying applications on Linux clusters, I want to configure X.509 certificates for my applications, so that they can securely communicate with the Service Fabric runtime and adhere to security protocols."
 ---
 
 # Certificates and security on Linux clusters

@@ -7,6 +7,7 @@ ms.custom: devx-track-azurecli, devx-track-azurepowershell, references_regions
 ms.topic: how-to
 ms.date: 04/17/2025
 ms.author: rogarana
+# Customer intent: As a cloud administrator, I want to convert Azure managed disks between different disk types, so that I can optimize storage performance and cost of my environments, according to my workloads' requirements.
 ---
 
 # Convert the disk type of an Azure managed disk
@@ -271,7 +272,7 @@ az disk-encryption-set update --name "nameOfYourDiskEncryptionSetHere" --resourc
 
 [!INCLUDE [managed-disk-premium-ssd-v2-conversion-preview](./includes/managed-disk-premium-ssd-v2-conversion-preview.md)]
 
-Migration with full snapshots stored on Premium SSD, Standard SSD and Standard HDD isn't supported.
+Premium SSD, Standard SSD, and Standard HDD disks support both incremental and full snapshots. However, migration using full snapshots is not supported for these disk types. To create Premium SSD v2 or Ultra disks from a snapshot, you must use incremental snapshots.
 
 Both Premium SSD v2 disks and Ultra Disks have their own set of restrictions. For example, neither can be used as an OS disk, and also aren't available in all regions. See the [Premium SSD v2 limitations](disks-deploy-premium-v2.md#limitations) and [Ultra Disk GA scope and limitations](disks-enable-ultra-ssd.md#ga-scope-and-limitations) sections of their articles for more information.
 

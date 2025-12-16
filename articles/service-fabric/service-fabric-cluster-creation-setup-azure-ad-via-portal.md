@@ -1,8 +1,12 @@
 ---
 title: Set up Microsoft Entra ID for client authentication in the Azure portal
 description: Learn how to set up Microsoft Entra ID to authenticate clients for Service Fabric clusters by using the Azure portal.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 8/8/2022
+ms.custom:
+  - sfi-image-nochange
+  - sfi-ropc-nochange
+# Customer intent: As a cloud administrator, I want to configure Microsoft Entra ID for client authentication in Azure Service Fabric, so that I can secure access to management endpoints and ensure appropriate user role assignments.
 ---
 
 # Set up Microsoft Entra ID for client authentication in the Azure portal
@@ -57,7 +61,7 @@ Select **Authentication**. Under **Implicit grant and hybrid flows**, select the
 
 ### Expose an API
 
-Select **Expose an API** and then the **Set** link to enter a value for **Application ID URI**. Enter either the URI of a verified domain or a URI that uses an API scheme format of `api://{{tenant Id}}/{{cluster name}}`. For example: `api://00001111-aaaa-2222-bbbb-3333cccc4444/mysftestcluster`.
+Select **Expose an API** and then the **Set** link to enter a value for **Application ID URI**. Enter either the URI of a verified domain or a URI that uses an API scheme format of `api://{{tenant Id}}/{{cluster name}}`. For example: `api://aaaabbbb-0000-cccc-1111-dddd2222eeee/mysftestcluster`.
 
 For more information, see [AppId URI in single-tenant applications will require use of default scheme or verified domains](/azure/active-directory/develop/reference-breaking-changes#appid-uri-in-single-tenant-applications-will-require-use-of-default-scheme-or-verified-domains).
 

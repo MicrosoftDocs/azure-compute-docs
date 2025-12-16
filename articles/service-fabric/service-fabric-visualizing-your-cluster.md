@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a cloud application administrator, I want to visualize my Service Fabric cluster using a management tool, so that I can monitor its health, manage applications, and execute necessary actions efficiently."
 ---
 
 # Visualize your cluster with Service Fabric Explorer

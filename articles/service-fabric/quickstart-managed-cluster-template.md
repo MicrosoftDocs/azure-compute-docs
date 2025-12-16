@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: devx-track-arm-template
 services: service-fabric
 ms.date: 04/23/2024
+# Customer intent: As a developer, I want to deploy a Service Fabric managed cluster using an Azure Resource Manager template so that I can streamline my deployment and management processes for testing in a cloud environment.
 ---
 
 # Quickstart: Deploy a Service Fabric managed cluster with an Azure Resource Manager template
@@ -20,7 +21,7 @@ The three-node Basic SKU cluster deployed in this tutorial is only intended to b
 
 Before you begin this quickstart:
 
-* If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn)
 
 ## Review the template
 

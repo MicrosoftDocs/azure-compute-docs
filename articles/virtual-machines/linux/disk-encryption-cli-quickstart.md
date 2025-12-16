@@ -7,17 +7,20 @@ ms.service: azure-virtual-machines
 ms.collection: linux
 ms.subservice: disks
 ms.topic: quickstart
-ms.date: 03/29/2023
+ms.date: 09/23/2025
 ms.custom: devx-track-azurecli, mode-api, linux-related-content
+# Customer intent: As a cloud administrator, I want to create and encrypt a Linux virtual machine using the command line, so that I can enhance security and manage resources efficiently in my Azure environment.
 ---
 
 # Quickstart: Create and encrypt a Linux VM with the Azure CLI
+
+[!INCLUDE [Azure Disk Encryption retirement notice](~/reusable-content/ce-skilling/azure/includes/security/azure-disk-encryption-retirement.md)]
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Flexible scale sets
 
 The Azure CLI is used to create and manage Azure resources from the command line or in scripts. This quickstart shows you how to use the Azure CLI to create and encrypt a Linux virtual machine (VM).
 
-If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 If you choose to install and use the Azure CLI locally, this quickstart requires that you are running the Azure CLI version 2.0.30 or later. Run `az --version` to find the version. If you need to install or upgrade, see [Install Azure CLI]( /cli/azure/install-azure-cli).
 
@@ -62,7 +65,7 @@ It takes a few minutes to create the VM and supporting resources. The following 
 
 ## Create a Key Vault configured for encryption keys
 
-Azure disk encryption stores its encryption key in an Azure Key Vault. Create a Key Vault with [az keyvault create](/cli/azure/keyvault#az-keyvault-create). To enable the Key Vault to store encryption keys, use the --enabled-for-disk-encryption parameter.
+Azure disk encryption stores its encryption key in an Azure Key Vault. Create a Key Vault with [az keyvault create](/cli/azure/keyvault#az-keyvault-create). To enable the Key Vault to store encryption keys, use the `--enabled-for-disk-encryption` parameter.
 
 > [!Important]
 > Every key vault must have a name that is unique across Azure. Replace \<your-unique-keyvault-name\> with the name you choose.
@@ -73,13 +76,13 @@ az keyvault create --name "<your-unique-keyvault-name>" --resource-group "myReso
 
 ## Encrypt the virtual machine
 
-Encrypt your VM with [az vm encryption](/cli/azure/vm/encryption), providing your unique Key Vault name to the --disk-encryption-keyvault parameter.
+Encrypt your VM with [az vm encryption](/cli/azure/vm/encryption), providing your unique Key Vault name to the `--disk-encryption-keyvault parameter.
 
 ```azurecli-interactive
 az vm encryption enable -g "MyResourceGroup" --name "myVM" --disk-encryption-keyvault "<your-unique-keyvault-name>"
 ```
 
-After a moment the process will return, "The encryption request was accepted. Use 'show' command to monitor the progress.". The "show" command is [az vm show](/cli/azure/vm/encryption#az-vm-encryption-show).
+After a moment the process returns, "The encryption request was accepted. Use 'show' command to monitor the progress.". The "show" command is [az vm show](/cli/azure/vm/encryption#az-vm-encryption-show).
 
 ```azurecli-interactive
 az vm encryption show --name "myVM" -g "MyResourceGroup"
@@ -101,7 +104,7 @@ az group delete --name "myResourceGroup"
 
 ## Next steps
 
-In this quickstart, you created a virtual machine, created a Key Vault that was enabled for encryption keys, and encrypted the VM.  Advance to the next article to learn more about more Azure Disk Encryption for Linux VMs.
+In this quickstart, you created a virtual machine, created a Key Vault that was enabled for encryption keys, and encrypted the VM. Advance to the next article to learn more about more Azure Disk Encryption for Linux VMs.
 
 > [!div class="nextstepaction"]
 > [Azure Disk Encryption overview](disk-encryption-overview.md)

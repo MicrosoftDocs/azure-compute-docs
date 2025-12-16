@@ -8,6 +8,7 @@ ms.topic: how-to
 ms.date: 04/24/2023
 ms.reviewer: cynthn, jushiman, mattmcinnes
 ms.custom: template-how-to, devx-track-azurepowershell
+# Customer intent: As a cloud administrator, I want to remove a virtual machine's association from a capacity reservation group, so that I can manage my resources and optimize capacity allocation without encountering errors.
 ---
 
 # Remove a VM association from a capacity reservation group
@@ -16,10 +17,11 @@ This article walks you through the steps of removing a virtual machine (VM) asso
 
 Because both the VM and the underlying capacity reservation logically occupy capacity, Azure imposes some constraints on this process to avoid ambiguous allocation states and unexpected errors.
 
-There are two ways to change an association:
+There are three ways to change an association:
 
 - Deallocate the virtual machine, change the capacity reservation group property, and, optionally, restart the VM.
 - Update the reserved quantity to zero and then change the capacity reservation group property.
+- Delete a VM.
 
 ## Deallocate the virtual machine
 
@@ -228,6 +230,10 @@ To learn more, see the Azure PowerShell commands [New-AzCapacityReservation](/po
 
 --- 
 <!-- The three dashes above show that your section of tabbed content is complete. Don't remove them :) -->
+
+## Delete a VM
+
+The virtual machine deletion process will remove a VM association from a capacity reservation. A VM delete must complete before Azure removes it from the capacity reservation. Some latency can occur between the delete request and the corresponding change in capacity reservation allocation state. See [Delete a VM](/azure/virtual-machines/delete?tabs=portal2%2Ccli3%2Cportal4%2Cportal5) for more information. Use [Capacity Reservation Instance View](/azure/virtual-machines/capacity-reservation-associate-vm?tabs=api1%2Capi2%2Capi3#view-vm-allocation-with-the-instance-view) to check the allocation status as needed.
 
 ## Next step
 

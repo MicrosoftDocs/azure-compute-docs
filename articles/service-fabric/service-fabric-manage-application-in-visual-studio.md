@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a developer, I want to manage and deploy my Azure Service Fabric applications using Visual Studio, so that I can streamline my development process and efficiently debug and upgrade my applications.
 ---
 
 # Use Visual Studio to simplify writing and managing your Service Fabric applications

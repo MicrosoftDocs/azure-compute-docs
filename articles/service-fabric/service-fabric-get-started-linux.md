@@ -11,6 +11,7 @@ ms.date: 07/14/2022
 
 # Maintainer notes: Keep these documents in sync:
 # service-fabric-local-linux-cluster-windows-wsl2.md
+# Customer intent: As a developer using Linux, I want to set up my development environment for Azure Service Fabric, so that I can deploy and run Service Fabric applications locally.
 ---
 
 # Prepare your development environment on Linux

@@ -9,6 +9,7 @@ ms.date: 08/18/2022
 ms.author: mattmcinnes
 ms.reviewer: jamesser
 ms.custom: GGAL-freshness822, linux-related-content
+# Customer intent: As a system administrator, I want to create and manage SSH key pairs for Linux VMs, so that I can securely authenticate without the need for passwords and streamline the deployment process.
 ---
 
 # Detailed steps: Create and manage SSH keys for authentication to a Linux VM in Azure

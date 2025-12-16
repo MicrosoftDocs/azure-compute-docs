@@ -6,7 +6,8 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.custom: subject-monitoring
 ms.date: 01/31/2024
-ms.topic: conceptual
+ms.topic: concept-article
+# Customer intent: As a system administrator, I want to monitor Azure Virtual Machine availability and access root cause analysis for downtime events, so that I can ensure reliability and quickly resolve issues impacting service performance.
 ---
 
 # Project Flash - Use Azure Resource Health to monitor Azure Virtual Machine availability

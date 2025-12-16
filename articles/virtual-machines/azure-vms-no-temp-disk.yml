@@ -37,18 +37,18 @@ sections:
       - question: |
           Can I resize a VM size that has a local temp disk to a VM size with no local temp disk?  
         answer: |
-          No. The only combinations allowed for resizing are: 
+          Resize between disk and diskless sizes is supported for Linux VMs. For Windows, the only combinations allowed for resizing are: 
           
           1. VM (with local temp disk) -> VM (with local temp disk); and 
           2. VM (with no local temp disk) -> VM (with no local temp disk). 
           
-          If interested in a work around, please see next question.
+          If interested in a work around for Windows, please see next question.
           
           > [!NOTE]
           > If an image depends on the resource disk, or a pagefile or swapfile exists on the local temp disk, the diskless images won't work—instead, use the ‘with disk’ alternative. 
           
       - question: |
-          How do I migrate from a VM size with local temp disk to a VM size with no local temp disk?  
+          How do I migrate my Windows VM from a size with local temp disk to a VM size with no local temp disk?  
         answer: |
           You can migrate by following these steps: 
           
@@ -62,7 +62,7 @@ sections:
           4. Use snapshot to create a new diskless VM (such as, Dv5, Dsv5, Dasv5, Ev5, Esv5, Easv5 series) by following the steps outlined in [Create a virtual machine from a snapshot with CLI](/previous-versions/azure/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-from-snapshot). 
           
       - question: |
-          Do these VM sizes support both Linux and Windows Operating Systems (OS)?
+          Are VM sizes with no local temp disk supported by both Linux and Windows Operating Systems (OS)?
         answer: |
           Yes.
 

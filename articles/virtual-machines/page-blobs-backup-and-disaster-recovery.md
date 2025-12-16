@@ -3,9 +3,10 @@
   description: This article explains how to plan for backup and disaster recovery of IaaS virtual machines and disks in Azure. This document covers both unmanaged disks.
   author: roygara
   ms.service: azure-disk-storage
-  ms.topic: conceptual
+  ms.topic: concept-article
   ms.date: 07/19/2017
   ms.author: rogarana
+# Customer intent: "As an IT administrator managing Azure IaaS virtual machines, I want to implement a backup and disaster recovery plan for unmanaged disks, so that I can ensure data durability and high availability in the event of localized or regional failures."
 ---
 
 # Backup and disaster recovery for Azure unmanaged disks

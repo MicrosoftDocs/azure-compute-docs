@@ -8,6 +8,7 @@ ms.topic: how-to
 ms.date: 05/16/2024
 ms.author: jainan
 ms.reviewer: mattmcinnes
+# Customer intent: As a system administrator managing Linux virtual machines, I want to troubleshoot hibernation issues, so that I can ensure proper VM state persistence and optimize resource usage.
 ---
 
 # Troubleshooting hibernation on Linux VMs

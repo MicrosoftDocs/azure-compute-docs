@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 03/12/2024
+# Customer intent: "As a cloud administrator, I want to deploy a Service Fabric managed cluster for testing, so that I can evaluate its capabilities and set up a scalable environment for my applications."
 ---
 
 # Tutorial: Deploy a Service Fabric managed cluster
@@ -31,7 +32,7 @@ This part of the series covers how to:
 
 Before you begin this tutorial:
 
-* Create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) if you don't already have an Azure subscription.
+* Create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) if you don't already have an Azure subscription.
 
 * Install the [Service Fabric SDK and PowerShell module](service-fabric-get-started.md).
 

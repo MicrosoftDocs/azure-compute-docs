@@ -5,9 +5,12 @@ ms.topic: quickstart
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
-ms.custom: devx-track-azurepowershell
 services: service-fabric
 ms.date: 07/11/2022
+ms.custom:
+  - devx-track-azurepowershell
+  - sfi-image-nochange
+# Customer intent: "As a developer, I want to deploy a Windows container application on a Service Fabric cluster, so that I can leverage microservices architecture to build scalable and reliable applications in Azure."
 ---
 
 # Quickstart: Deploy Windows containers to Service Fabric
@@ -30,7 +33,7 @@ In this quickstart you learn how to:
 
 ## Prerequisites
 
-* An Azure subscription (you can create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)).
+* An Azure subscription (you can create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn)).
 * A development computer running:
   * Visual Studio 2019 or Windows 2019.
   * [Service Fabric SDK and tools](service-fabric-get-started.md).

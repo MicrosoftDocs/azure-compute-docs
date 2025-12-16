@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a cloud architect, I want to migrate an existing Service Fabric cluster to a new region, so that I can ensure optimal performance and compliance with regional requirements while minimizing downtime and maintaining the integrity of my applications."
 ---
 
 # Move an Azure Service Fabric cluster to a new region

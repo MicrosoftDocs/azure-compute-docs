@@ -4,9 +4,10 @@ description: This article provides details on known and fixed issues and how to 
 author: ApnaLakshay
 ms.service: azure-virtual-machines
 ms.subservice: maintenance
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 10/13/2023
 ms.author: lnagpal
+# Customer intent: "As a cloud administrator, I want to troubleshoot issues with Maintenance Configurations for virtual machines, so that I can ensure scheduled patches and updates are applied efficiently without errors."
 ---
 
 # Troubleshoot problems with Maintenance Configurations

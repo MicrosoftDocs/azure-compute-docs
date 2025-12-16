@@ -4,10 +4,11 @@ description: An overview of Azure Cobalt processor-based Virtual Machines.
 author: archatC
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.workload: infrastructure-services
 ms.date: 11/07/2024
 ms.author: archat
+# Customer intent: "As a cloud architect, I want to evaluate Cobalt 100-based Virtual Machines for various workloads, so that I can determine their performance and efficiency benefits for deploying cloud-native applications."
 ---
 
 # Azure Cobalt processor-based Virtual Machines
@@ -38,7 +39,7 @@ The following section lists the Guest OS support for Cobalt 100 VMs.
 | Guest OS | Version |
 |---|---|
 | AlmaLinux | 8+ |
-| Azure Linux | 2 |
+| Azure Linux | 3 |
 | Debian | 11+ |
 | Flatcar | N/A |
 | Kali Linux | N/A |

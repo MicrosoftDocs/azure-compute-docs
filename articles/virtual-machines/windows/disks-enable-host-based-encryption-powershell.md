@@ -9,6 +9,7 @@ ms.author: rogarana
 ms.custom:
   - devx-track-azurepowershell
   - ignite-2023
+# Customer intent: As a cloud administrator, I want to enable end-to-end encryption for my Virtual Machines, so that I can ensure data security and compliance while managing sensitive information.
 ---
 
 # Use the Azure PowerShell module to enable end-to-end encryption using encryption at host

@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a cloud developer, I want to configure stateful Reliable Services settings in Azure Service Fabric, so that I can optimize service performance and ensure reliable state management in my applications.
 ---
 
 # Configure stateful reliable services

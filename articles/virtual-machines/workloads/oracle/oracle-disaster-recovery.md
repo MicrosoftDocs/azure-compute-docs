@@ -8,6 +8,7 @@ ms.topic: concept-article
 ms.date: 10/03/2024
 ms.author: jacobjaygbay
 
+# Customer intent: "As a database administrator, I want to set up a disaster recovery plan for my Oracle Database in Azure, so that I can ensure quick recovery and maintain business continuity in case of a failure."
 ---
 
 # Disaster recovery for an Oracle Database 12c database in an Azure environment

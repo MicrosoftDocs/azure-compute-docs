@@ -1,5 +1,5 @@
 ---
-title: Config maps for Azure Container Instances (Preview)
+title: Config Maps for Azure Container Instances
 description: Learn how to use config maps with Azure Container Instances.
 author: mimckitt
 ms.author: mimckitt
@@ -7,24 +7,25 @@ ms.service: azure-container-instances
 ms.custom:
   - ignite-2024
 ms.topic: how-to
-ms.date: 11/6/2024
+ms.date: 11/17/2025
 ms.reviewer: tomvcassidy
+# Customer intent: As a container orchestrator user, I want to implement config maps in Azure Container Instances so that I can modify container configurations dynamically without restarting the instances to ensure high availability and minimize downtime.
 ---
-# Config maps for Azure Container Instances (Preview)
+# Config maps for Azure Container Instances
 
-A config map is a property that can be used to apply container configurations similar to environment variables and secret volumes. However, unlike when using environment variables or secret volumes where restarting the pod to apply the settings is required, apply settings using a config map does not require any restarts for the changes to take effect. 
+A config map is a property that you can use to apply container configurations similar to environment variables and secret volumes. The process is unlike using environment variables or secret volumes where you must restart the pod to apply the settings. Using a config map to apply settings doesn't require any restarts for the changes to take effect.
 
-Azure Container Instances can be created with or without config maps and can be updated at any point in time post creation using config maps. Updating config maps in an existing running container group can be accomplished quickly without compromising uptime of the container. 
-
+You can use Azure Container Instances to create container instances with or without config maps. You can also update them at any point after creation by using config maps. Updating config maps in an existing running container group is a task that you can accomplish quickly without compromising uptime of the container.
 
 ## How it works
 
-A config map can be included in the container properties or in a container group profile. Creating a container group profile with the config map settings makes applying those settings simple and easy to automate. 
+You can include a config map in the container properties or in a container group profile. Creating a container group profile with the config map settings makes applying those settings simple and easy to automate.
 
-### Create a container group profile with config map settings 
+### Create a container group profile with config map settings
 
 ### [CLI](#tab/cli)
-Create a container group profile with config map settings using [az container container-group-profile create](/cli/azure/container).
+
+Create a container group profile with config map settings by using [az container container-group-profile create](/cli/azure/container).
 
 ```azurecli-interactive
 az container container-group-profile create \
@@ -40,8 +41,10 @@ az container container-group-profile create \
     --restart-policy never \
     --config-map key1=value1 key2=value2
 ```
+
 ### [PowerShell](#tab/powershell)
-Create a container group profile with config map settings using [New-AzContainerInstanceContainerGroupProfile](/powershell/module/az.containerinstance).
+
+Create a container group profile with config map settings by using [New-AzContainerInstanceContainerGroupProfile](/powershell/module/az.containerinstance).
 
 ```azurepowershell-interactive
 $port1 = New-AzContainerInstancePortObject -Port 8000 -Protocol TCP
@@ -60,8 +63,8 @@ New-AzContainerInstanceContainerGroupProfile `
 ```
 
 ### [ARM template](#tab/template)
-Create a container group profile with and config map settings deploy the template using [az deployment group create](/cli/azure/deployment/group) or [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment).
 
+Create a container group profile with config map settings by deploying the template by using [az deployment group create](/cli/azure/deployment/group) or [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment).
 
 ```json
 {
@@ -143,9 +146,9 @@ Create a container group profile with and config map settings deploy the templat
 
 ```
 
-
 ### [REST](#tab/rest)
-Create a container group profile with config map settings using [Create or Update](/rest/api/container-instances/container-groups/create-or-update).
+
+Create a container group profile with config map settings by using [Create or Update](/rest/api/container-instances/container-groups/create-or-update).
 
 ```HTTP
 PUT https://management.azure.com/subscriptions/{SubscriptionID}/resourceGroups/myResourceGroup/providers/Microsoft.ContainerInstance/containerGroupProfiles/myContainerGroupProfile?api-version=2024-05-01-preview
@@ -200,12 +203,13 @@ Request Body
 
 ---
 
-### Apply config map settings using a container group profile
+### Apply config map settings by using the container group profile
 
-Applying the config map settings stored in a container group profile requires updating the container and specifying the container group profile that should be associated with the update. 
+Applying the config map settings stored in a container group profile requires you to update the container. You also must specify the container group profile that should be associated with the update.
 
 ### [CLI](#tab/cli)
-Apply the config map settings stored in the container group profile using [az container create](/cli/azure/container).
+
+Apply the config map settings stored in the container group profile by using [az container create](/cli/azure/container).
 
 ```azurecli-interactive
 az container create 
@@ -218,7 +222,8 @@ az container create
 ```
 
 ### [PowerShell](#tab/powershell)
-Apply the config map settings stored in the container group profile using [New-AzContainerGroup](/powershell/module/az.containerinstance/new-azcontainergroup).
+
+Apply the config map settings stored in the container group profile by using [New-AzContainerGroup](/powershell/module/az.containerinstance/new-azcontainergroup).
 
 ```azurepowershell-interactive
 $container = New-AzContainerInstancenoDefaultObject -Name myContainer
@@ -234,8 +239,8 @@ New-AzContainerGroup `
 ```
 
 ### [ARM template](#tab/template)
-Apply the config map settings stored in the container group profile using [az deployment group create](/cli/azure/deployment/group) or [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment).
 
+Apply the config map settings stored in the container group profile by using [az deployment group create](/cli/azure/deployment/group) or [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment).
 
 ```json
 {
@@ -329,9 +334,9 @@ Apply the config map settings stored in the container group profile using [az de
 
 ```
 
-
 ### [REST](#tab/rest)
-Apply the config map settings stored in the container group profile using [Create or Update](/rest/api/container-instances/container-groups/create-or-update).
+
+Apply the config map settings stored in the container group profile by using [Create or Update](/rest/api/container-instances/container-groups/create-or-update).
 
 ```HTTP
 PUT
@@ -358,14 +363,13 @@ Request Body
 
 ---
 
+### Apply config map settings without the container group profile
 
-### Apply config map settings without container group profile
-
-Config map settings can also be applied directly to the instance by specifying the config map settings in the create commands. 
-
+You can also apply config map settings directly to the instance by specifying the config map settings in the create commands.
 
 ### [CLI](#tab/cli)
-Apply the config map settings using [az container create](/cli/azure/container).
+
+Apply the config map settings by using [az container create](/cli/azure/container).
 
 ```azurecli-interactive
 az container create \
@@ -376,8 +380,10 @@ az container create \
         
 
 ```
+
 ### [PowerShell](#tab/powershell)
-Apply the config map settings using [New-AzContainerGrouop](/powershell/module/az.containerinstance/new-azcontainergroup).
+
+Apply the config map settings by using [New-AzContainerGroup](/powershell/module/az.containerinstance/new-azcontainergroup).
 
 ```azurepowershell-interactive
 $container = New-AzContainerInstancenoDefaultObject -Name myContainer -ConfigMapKeyValuePair @{"key1"="value1"}
@@ -391,8 +397,8 @@ New-AzContainerGroup `
 ```
 
 ### [ARM template](#tab/template)
-Apply the config map settings using [az deployment group create](/cli/azure/deployment/group) or [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment).
 
+Apply the config map settings by using [az deployment group create](/cli/azure/deployment/group) or [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment).
 
 ```json
 {
@@ -475,9 +481,9 @@ Apply the config map settings using [az deployment group create](/cli/azure/depl
 
 ```
 
-
 ### [REST](#tab/rest)
-Apply the config map settings using [Create or Update](/rest/api/container-instances/container-groups/create-or-update).
+
+Apply the config map settings by using [Create or Update](/rest/api/container-instances/container-groups/create-or-update).
 
 ```HTTP
 PUT
@@ -505,14 +511,24 @@ Request Body
 
 ---
 
+### Config maps in Linux containers
 
-Once the update has been applied to an existing container and you will see the values mounted in the container without requiring a restart.
+After the update is applied to an existing container, you see the values mounted in the Linux container without requiring a restart.
 
 ```
-/mnt/configmap/<containername>/key1 with value as “value1”
+/mnt/configmap/<containername>/key1 with value as "value1"
 
-/mnt/configmap/<containername>/key2 with value as “value2”
+/mnt/configmap/<containername>/key2 with value as "value2"
 ```
 
-## Next steps
-Learn how to use config maps with [standby pools to increase scale and availability](container-instances-standby-pool-get-details.md)
+### Config maps in Windows containers
+
+After the update is applied to an existing container, you can fetch the config map key/value pairs in the Windows container by making the following call, without requiring a restart. These values aren't mounted anywhere for Windows containers, as is the case for Linux.
+
+```
+Invoke-Expression "$Env:ConfigMapURI"
+```
+
+## Related content
+
+- Learn how to use config maps with [standby pools to increase scale and availability](container-instances-standby-pool-get-details.md).

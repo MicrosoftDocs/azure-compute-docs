@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a cloud architect, I want to understand the differences between Cloud Services and Service Fabric, so that I can effectively plan and execute the migration of applications to a more scalable and efficient platform."
 ---
 
 # Learn about the differences between Cloud Services (extended support) and Service Fabric before migrating applications.

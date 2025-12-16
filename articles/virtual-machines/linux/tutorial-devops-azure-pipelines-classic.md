@@ -10,6 +10,7 @@ ms.tgt_pltfrm: azure-pipelines
 ms.date: 08/15/2022
 ms.author: moala
 ms.custom: devops, linux-related-content
+# Customer intent: As a DevOps engineer, I want to configure rolling deployments for Linux virtual machines using Azure Pipelines, so that I can ensure smooth application updates without downtime for users.
 ---
 
 # Configure the rolling deployment strategy for Azure Linux virtual machines

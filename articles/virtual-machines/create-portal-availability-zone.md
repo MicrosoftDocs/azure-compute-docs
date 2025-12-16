@@ -8,6 +8,7 @@ ms.date: 06/06/2024
 ms.author: mimckitt
 ms.reviewer: cynthn
 ms.custom: references_regions
+# Customer intent: As a cloud architect, I want to create highly resilient virtual machines in an availability zone using the Azure portal, so that I can ensure application and data protection against potential datacenter failures.
 ---
 
 # Create virtual machines in an availability zone using the Azure portal

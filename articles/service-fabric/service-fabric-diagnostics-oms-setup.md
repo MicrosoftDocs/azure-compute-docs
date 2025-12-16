@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: devx-track-arm-template, devx-track-azurepowershell
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a DevOps engineer, I want to set up Azure Monitor logs for my Service Fabric clusters, so that I can visualize and analyze events to enhance monitoring and improve system performance.
 ---
 
 # Set up Azure Monitor logs for a cluster

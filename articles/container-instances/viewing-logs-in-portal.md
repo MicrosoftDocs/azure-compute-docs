@@ -6,11 +6,13 @@ author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
 ms.topic: how-to
-ms.date: 08/27/2024
+ms.date: 11/17/2025
+ms.custom: sfi-image-nochange
+# Customer intent: "As a cloud administrator, I want to enable and view container group logs in a log analytics workspace, so that I can monitor and troubleshoot the performance of my container instances effectively."
 ---
 # View container group logs in a log analytics workspace via Azure portal 
 
-Log Analytics workspaces provide a centralized location for storing and querying log data not only from Azure resources, but also on-premises resources and resources in other clouds. Azure Container Instances includes built-in support for sending logs and event data to Azure Monitor logs. While creating a container instance within Azure portal, you are able to optionally set up Log Analytics. Once your container group is created with Log Analytics enabled, you can view logs within the page for your Azure Container Instance by navigating to “Logs” on the left panel. If you didn’t set up Log Analytics initially, you can also navigate to “Logs” to set it up after you create your container instance also. 
+Log Analytics workspaces provide a centralized location for storing and querying log data not only from Azure resources, but also on-premises resources and resources in other clouds. Azure Container Instances includes built-in support for sending logs and event data to Azure Monitor logs. While creating a container instance within Azure portal, you're able to optionally set up Log Analytics. Once your container group is created with Log Analytics enabled, you can view logs within the page for your Azure Container Instance by navigating to “Logs” on the left panel. If you didn’t set up Log Analytics initially, you can also navigate to “Logs” to set it up after you create your container instance also. 
 
 The following sections describe how to set up logging and how to view logs for Azure Container Instances. 
 
@@ -35,19 +37,19 @@ If you don't have a Log Analytics workspace, you can select “Create New” to 
 
 :::image type="content" source="./media/viewing-logs-in-portal/monitor-tab-create-new.png" alt-text="Screenshot of log analytics create new screen." lightbox="./media/viewing-logs-in-portal/monitor-tab-create-new.png":::
 
-Lastly, fill out the following tabs then go to the “Review + Create” tab and click “Create” to create your container instance. 
+Lastly, fill out the following tabs then go to the “Review + Create” tab and select “Create” to create your container instance. 
 
 ## View logs 
 
 This section outlines how to view logs for your container instance that you created. 
 
-1. Once your container instance is already created, click “Logs” on the left panel. 
+1. Once your container instance is already created, select “Logs” on the left panel. 
 
 :::image type="content" source="./media/viewing-logs-in-portal/logs-in-portal-running.png" alt-text="Screenshot of logs in left panel." lightbox="./media/viewing-logs-in-portal/logs-in-portal-running.png":::
 
 2. You’ll see the Queries Hub where you can find queries to run in Log Analytics. If these aren't needed, then you can close this screen. 
 
-After closing the previous screen, if you created the ACI with the log-generating image, you should see data for your container group here. 
+After closing the previous screen, if you created the container instance with the log-generating image, you should see data for your container group here. 
 
 :::image type="content" source="./media/viewing-logs-in-portal/logs-in-portal.png" alt-text="Screenshot of logs in portal." lightbox="./media/viewing-logs-in-portal/logs-in-portal.png":::
  
@@ -59,7 +61,7 @@ You can enter an already existing Log Analytics workspace:
 
 You can also view logs for your container instances by navigating to “Containers” on the left pane, then selecting “Logs” in the middle pane. 
 
-If your container instance is in running state, you’ll be able to see the logs: 
+If your container instance is in running state, you're able to see the logs: 
 
  :::image type="content" source="./media/viewing-logs-in-portal/logs-in-portal-running.png" alt-text="Screenshot of logs in running state." lightbox="./media/viewing-logs-in-portal/logs-in-portal-running.png":::
 
@@ -71,15 +73,15 @@ Now you’re ready to run your container group with Log Analytics.
 
 For more information about querying logs and configuring alerts in Azure Monitor logs, see: 
 
-* [Understanding log searches in Azure Monitor logs](https://learn.microsoft.com/azure/azure-monitor/logs/log-query-overview)
+* [Understanding log searches in Azure Monitor logs](/azure/azure-monitor/logs/log-query-overview)
 
-* [Unified alerts in Azure Monitor](https://learn.microsoft.com/azure/azure-monitor/alerts/alerts-overview)
+* [Unified alerts in Azure Monitor](/azure/azure-monitor/alerts/alerts-overview)
 
 ### Monitor container CPU and memory 
 
 For information about monitoring container instance CPU and memory resources, see: 
 
-* [Monitor Azure Container Instances](https://learn.microsoft.com/azure/container-instances/monitor-azure-container-instances)
+* [Monitor Azure Container Instances](/azure/container-instances/monitor-azure-container-instances)
 
  
 

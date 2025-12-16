@@ -1,6 +1,191 @@
 {
   "redirections": [
     {
+      "source_path": "articles/container-instances/quickstart-docker-cli.md",
+      "redirect_url": "/previous-versions/azure/container-instances/quickstart-docker-cli",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/service-fabric/service-fabric-diagnostics-event-analysis-appinsights.md",
+      "redirect_url": "/previous-versions/azure/service-fabric/service-fabric-diagnostics-event-analysis-appinsights",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/service-fabric/service-fabric-tutorial-monitoring-aspnet.md",
+      "redirect_url": "/previous-versions/azure/service-fabric/service-fabric-tutorial-monitoring-aspnet",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machine-scale-sets/whats-new.md",
+      "redirect_url": "/previous-versions/azure/virtual-machine-scale-sets/whats-new",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/workloads/mainframe-rehosting/mainframe-white-papers.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/workloads/mainframe-rehosting/mainframe-white-papers",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/workloads/mainframe-rehosting/overview.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/workloads/mainframe-rehosting/overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/azure-impact-reporting/report-vm-impact.md",
+      "redirect_url": "/azure/azure-impact-reporting/report-impact",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/workloads/mainframe-rehosting/partner-workloads.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/workloads/mainframe-rehosting/partner-workloads",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/workloads/mainframe-rehosting/concepts/mainframe-compute-azure.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/workloads/mainframe-rehosting/concepts/mainframe-compute-azure",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/workloads/mainframe-rehosting/concepts/mainframe-storage-azure.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/workloads/mainframe-rehosting/concepts/mainframe-storage-azure",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/workloads/mainframe-rehosting/ibm/demo.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/workloads/mainframe-rehosting/ibm/demo",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/workloads/mainframe-rehosting/ibm/deploy-ibm-db2-purescale-azure.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/workloads/mainframe-rehosting/ibm/deploy-ibm-db2-purescale-azure",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/workloads/mainframe-rehosting/ibm/get-started.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/workloads/mainframe-rehosting/ibm/get-started",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/workloads/mainframe-rehosting/ibm/ibm-db2-purescale-azure.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/workloads/mainframe-rehosting/ibm/ibm-db2-purescale-azure",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/workloads/mainframe-rehosting/ibm/install-ibm-z-environment.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/workloads/mainframe-rehosting/ibm/install-ibm-z-environment",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/workloads/mainframe-rehosting/microfocus/demo.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/workloads/mainframe-rehosting/microfocus/demo",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/workloads/mainframe-rehosting/microfocus/deploy-micro-focus-enterprise-server.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/workloads/mainframe-rehosting/microfocus/deploy-micro-focus-enterprise-server",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/workloads/mainframe-rehosting/microfocus/get-started.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/workloads/mainframe-rehosting/microfocus/get-started",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/workloads/mainframe-rehosting/microfocus/run-enterprise-server-container.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/workloads/mainframe-rehosting/microfocus/run-enterprise-server-container",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/workloads/mainframe-rehosting/microfocus/set-up-micro-focus-azure.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/workloads/mainframe-rehosting/microfocus/set-up-micro-focus-azure",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/workloads/mainframe-rehosting/tmaxsoft/get-started.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/workloads/mainframe-rehosting/tmaxsoft/get-started",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/workloads/mainframe-rehosting/tmaxsoft/install-openframe-azure.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/workloads/mainframe-rehosting/tmaxsoft/install-openframe-azure",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/extensions/oms-linux.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/extensions/oms-linux",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/extensions/oms-windows.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/extensions/oms-windows",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/sizes/gpu-accelerated/nc-series.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/sizes/gpu-accelerated/nc-series",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/sizes/retirement/nc-series-retirement.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/sizes/retirement/nc-series-retirement",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/sizes/retirement/ncv2-series-retirement.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/sizes/retirement/ncv2-series-retirement",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/sizes/gpu-accelerated/ncv2-series.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/sizes/gpu-accelerated/ncv2-series",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/classic-vm-deprecation.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/classic-vm-deprecation",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/migration/migration-classic-resource-manager-cli.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/migration/migration-classic-resource-manager-cli",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/migration/migration-classic-resource-manager-community-tools.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/migration/migration-classic-resource-manager-community-tools",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/migration/migration-classic-resource-manager-deep-dive.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/migration/migration-classic-resource-manager-deep-dive",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/migration/migration-classic-resource-manager-errors.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/migration/migration-classic-resource-manager-errors",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/migration/migration-classic-resource-manager-faq.yml",
+      "redirect_url": "/previous-versions/azure/virtual-machines/migration/migration-classic-resource-manager-faq",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/migration/migration-classic-resource-manager-overview.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/migration/migration-classic-resource-manager-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/migration/migration-classic-resource-manager-plan.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/migration/migration-classic-resource-manager-plan",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/migration/migration-classic-resource-manager-ps.md",
+      "redirect_url": "/previous-versions/azure/virtual-machines/migration/migration-classic-resource-manager-ps",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "articles/virtual-machines/linux/tutorial-config-management.md",
       "redirect_url": "/azure/update-manager/migration-overview",
       "redirect_document_id": false
@@ -31,6 +216,10 @@
     {
       "source_path": "articles/virtual-machine-scale-sets/virtual-machine-scale-sets-instance-mix.md",
       "redirect_url": "instance-mix-overview"
+    },
+    {
+      "source_path": "articles/virtual-machines/ncv3-nc6s-nc12s-nc24s-retirement.md",
+      "redirect_url": "ncv3-retirement"
     }
   ]
 }

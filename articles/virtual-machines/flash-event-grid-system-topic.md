@@ -6,7 +6,8 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.custom: subject-monitoring
 ms.date: 01/31/2024
-ms.topic: conceptual
+ms.topic: concept-article
+# Customer intent: As an IT administrator, I want to monitor Azure Virtual Machine availability using event notifications, so that I can quickly respond to any issues and ensure continuous operation of critical applications.
 ---
 
 # Project Flash - Use Azure Event Grid to monitor Azure Virtual Machine availability

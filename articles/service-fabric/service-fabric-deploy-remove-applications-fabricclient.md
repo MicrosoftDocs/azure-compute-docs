@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a cloud application developer, I want to deploy and manage applications using FabricClient APIs in Azure Service Fabric, so that I can efficiently handle application lifecycle tasks like uploading, registering, and removing application instances.
 ---
 
 # Deploy and remove applications using FabricClient

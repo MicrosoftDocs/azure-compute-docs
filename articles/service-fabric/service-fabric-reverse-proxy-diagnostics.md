@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: "As a cloud application administrator, I want to monitor and diagnose reverse proxy request processing, so that I can troubleshoot issues like timeouts and service not found errors effectively."
 ---
 
 # Monitor and diagnose request processing at the reverse proxy

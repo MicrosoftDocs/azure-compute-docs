@@ -10,6 +10,7 @@ ms.topic: sample
 ms.date: 01/19/2018
 ms.author: atsenthi
 ms.custom: mvc, devx-track-azurepowershell
+# Customer intent: As a cloud administrator, I want to create a secure Service Fabric cluster using PowerShell so that I can manage and deploy applications with high availability and scalability.
 ---
 
 # Create a Service Fabric cluster

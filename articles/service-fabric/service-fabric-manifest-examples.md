@@ -1,12 +1,13 @@
 ---
 title: Azure Service Fabric application manifest examples
 description: Learn how to configure application and service manifest settings for a Service Fabric application.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: "As a software developer, I want to access examples of application and service manifests, so that I can effectively configure the settings for my Service Fabric applications."
 ---
 
 # Service Fabric application and service manifest examples

@@ -7,6 +7,7 @@ ms.custom: devx-track-azurepowershell
 ms.topic: how-to
 ms.date: 10/28/2024
 ms.author: rogarana
+# Customer intent: "As an IT administrator, I want to migrate Windows virtual machines from unmanaged to managed disks, so that I can leverage improved performance, scalability, and simplified management of disk resources."
 ---
 
 # Migrate a Windows virtual machine from unmanaged disks to managed disks

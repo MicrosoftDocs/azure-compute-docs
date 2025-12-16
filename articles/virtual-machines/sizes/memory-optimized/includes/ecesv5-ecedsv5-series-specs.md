@@ -9,6 +9,7 @@ ms.subservice: sizes
 ms.date: 04/18/2024
 ms.author: mattmcinnes
 ms.custom: include file
+# Customer intent: "As an IT architect, I want to review the specifications of ECasv5 and ECadsv5-series VMs, so that I can select the appropriate VM sizes to meet my organization's performance and resource requirements."
 ---
 | Part | Quantity <br><sup>Count <sup>Units | Specs <br><sup>SKU ID, Performance <sup>Units</sup>, etc.  |
 |---|---|---|

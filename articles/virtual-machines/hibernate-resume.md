@@ -4,10 +4,11 @@ description: Overview of hibernating your VM.
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.topic: how-to
-ms.date: 05/14/2024
+ms.date: 10/24/2025
 ms.author: jainan
 ms.reviewer: mattmcinnes
 ms.custom:
+# Customer intent: "As a cloud administrator, I want to hibernate my virtual machine, so that I can save on compute costs while maintaining the state of my applications for quick resumption."
 ---
 
 # Hibernation for Azure virtual machines
@@ -44,7 +45,7 @@ Supported operating systems, OS specific limitations, and configuration procedur
 VM sizes with up to 64-GB RAM from the following General Purpose VM series support hibernation.
 - [Dasv5-series](dasv5-dadsv5-series.md) 
 - [Dadsv5-series](dasv5-dadsv5-series.md) 
-- [Dsv5-series](../virtual-machines/dv5-dsv5-series.md)
+- [Dsv5-series](../virtual-machines/sizes/general-purpose/dsv5-series.md)
 - [Ddsv5-series](ddv5-ddsv5-series.md)
 - [Easv5-series](easv5-eadsv5-series.md)
 - [Eadsv5-series](easv5-eadsv5-series.md)

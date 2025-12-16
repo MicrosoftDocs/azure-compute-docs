@@ -3,15 +3,15 @@ title: Upgrade Gen1 VMs to Trusted launch
 description: Learn how to upgrade existing Azure Gen1 virtual machines (VMs) to Trusted launch.
 author: AjKundnani
 ms.author: ajkundna
-ms.reviewer: cynthn
 ms.service: azure-virtual-machines
 ms.subservice: trusted-launch
 ms.topic: how-to
 ms.date: 11/29/2024
 ms.custom: template-how-to, devx-track-azurepowershell
+# Customer intent: As a cloud administrator, I want to upgrade existing Azure Generation 1 VMs to Trusted launch, so that I can enhance security against advanced threats and comply with organizational security policies.
 ---
 
-# (Preview) Upgrade existing Azure Gen1 VMs to Trusted launch
+# Upgrade existing Azure Gen1 VMs to Trusted launch
 
 **Applies to:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: Generation 1 VM
 
@@ -20,17 +20,17 @@ Azure Virtual Machines supports upgrading Generation 1 virtual machines (VM) to 
 [Trusted launch](trusted-launch.md) is a way to enable foundational compute security on [Azure Generation 2 VMs](generation-2.md) and protects against advanced and persistent attack techniques like boot kits and rootkits. It does so by combining infrastructure technologies like Secure Boot, virtual Trusted Platform Module (vTPM), and boot integrity monitoring on your VM.
 
 > [!IMPORTANT]
-> Support for *upgrade of existing Gen1 VMs to Trusted launch* is currently in preview. *Upgrade of Gen1 VMs to Gen2 without enabling Trusted launch* is **not supported**.
+>
+> Support for *Upgrade of Gen1 VMs to Gen2 without enabling Trusted launch* is **not supported**.
 
 ## Prerequisites
 
-- Subscription is on-boarded to preview feature `Gen1ToTLMigrationPreview` under `Microsoft.Compute` namespace. Refer to [Set up preview features in Azure subscription](/azure/azure-resource-manager/management/preview-features)
 - Azure VM is configured with:
   - [Trusted launch supported size family](trusted-launch.md#virtual-machines-sizes).
   - [Trusted launch supported operating system (OS) version](trusted-launch.md#operating-systems-supported) (*excluding Windows Server 2016, Debian, Azure Linux*). For custom OS images or disks, the base image should be *Trusted launch capable*.
 - Azure VM isn't using [features currently not supported with Trusted launch](trusted-launch.md#unsupported-features).
 - Azure Backup, if enabled, for VMs should be configured with the [Enhanced Backup policy](/azure/backup/backup-azure-vms-enhanced-policy). The Trusted launch security type can't be enabled for VMs configured with *Standard policy* backup protection.
-  - Existing Azure VM backup can be migrated from the *Standard* to the *Enhanced* policy. Follow the steps in [Migrate Azure VM backups from Standard to Enhanced policy (preview)](/azure/backup/backup-azure-vm-migrate-enhanced-policy).
+  - Existing Azure VM backup can be migrated from the *Standard* to the *Enhanced* policy. Follow the steps in [Migrate Azure VM backups from Standard to Enhanced policy](/azure/backup/backup-azure-vm-migrate-enhanced-policy).
 - Upgrade a test Gen1 VM to Trusted launch and determine if any changes are required to meet the prerequisites before you upgrade Gen1 VMs associated with production workloads to Trusted launch.
 - Disable any *Windows OS volume encryption* including BitLocker before upgrade if enabled. All Windows OS volume encryptions should be re-enabled post successful upgrade. This action isn't required for data disks or Linux OS volume.
 
@@ -38,18 +38,22 @@ Azure Virtual Machines supports upgrading Generation 1 virtual machines (VM) to 
 
 Gen1 to Trusted launch VM upgrade is **NOT** supported if Gen1 VM is configured with:
 
-- **Production workloads**: The preview feature should only be used for testing, evaluation, and feedback. Production workloads aren't recommended.
-- **Operating system**: Windows Server 2016, Azure Linux, Debian, and any other operating system not listed under [Trusted launch supported operating system (OS) version](trusted-launch.md#operating-systems-supported). For *Windows Server 2016 only*, workaround is to [update the Guest OS to Windows Server 2019 or 2022](windows-in-place-upgrade.md#perform-in-place-upgrade-to-windows-server-2016-2019-or-2022).
+- **Operating system**: Windows Server 2016, Azure Linux, Debian, and any other operating system not listed under [Trusted launch supported operating system (OS) version](trusted-launch.md#operating-systems-supported). For *Windows Server 2016 only*, workaround is to [update the Guest OS to Windows Server 2019 or 2022](windows-in-place-upgrade.md#perform-in-place-upgrade-to-windows-server-2016-2019-2022-or-2025).
 - **VM size**: Gen1 VM configured with VM size not listed under [Trusted launch supported size families](trusted-launch.md#virtual-machines-sizes). As workaround, update the VM size to Trusted launch supported VM size family.
 - **Azure Backup**: Gen1 VM configured with Azure Backup using *Standard policy*. As workaround, [migrate Gen1 VM backups from Standard to Enhanced policy](/azure/backup/backup-azure-vm-migrate-enhanced-policy).
 - **BitLocker or equivalent encryption**: Windows Gen1 VM *guest OS volume* is encrypted using BitLocker or equivalent encryption technology. As workaround, disable Windows OS volume encryption before upgrade and re-enable post successful completion of Trusted launch upgrade.
 
 ## Best practices
 
-- [Create restore points](create-restore-points.md) for Azure VMs associated with production workloads before you enable the Trusted launch security type. You can use the restore points to re-create the disks and VM with the previous well-known state.
-- Review [known issues](#known-issues) before executing Trusted launch upgrade.
+> [!IMPORTANT]
+>
+> VM once upgraded to Trusted launch can't be rolled back to Gen1 configuration. It has to be fully recovered using Backup taken before upgrade.
+
+- [Take full backup](/azure/backup/quick-backup-vm-portal) OR [Create restore points](create-restore-points.md) for Azure VMs associated with production workloads before you enable the Trusted launch security type. You can use the backup OR restore points to re-create the disks and VM with the previous Gen1 configuration well-known state.
+- Review [known issues](#known-issues) and [roll-back steps](#roll-back) before executing Trusted launch upgrade.
 - You won't be able to extend Windows OS disk system volume after `MBR to GPT conversion` as part of upgrade. Recommendation is to extend system volume for future before upgrading to Trusted launch.
 - *Windows OS disk volume* should be defragmented using command `Defrag C: /U /V`. Defragmentation of OS volume reduces the risk of MBR (Master boot record) to GPT (GUID partition table) conversion failure by freeing up end of partitions. Refer to [defrag](/windows-server/administration/windows-commands/defrag).
+- *For Linux VMs*, validate secure boot compatibility using `SBInfo` tool. Refer to [Linux Trusted launch secure boot validation](trusted-launch-faq.md#linux-trusted-launch-virtual-machines) for distribution-based `SBInfo` installation commands.
 
 ## Update Guest OS volume
 
@@ -69,12 +73,12 @@ Complete the update of OS volume with required configuration before upgrading Az
 Using in-built [MBR2GPT.exe](/windows/deployment/mbr-to-gpt) utility, you can enable `GPT` disk layout AND add `EFI system partition` required for Gen2 upgrade.
 
 > [!CAUTION]
-> You will not be able to extend Windows OS disk system volume after `MBR to GPT conversion`. Recommendation is to extend system volume for future before executing the upgrade.
+> You won't be able to extend Windows OS disk system volume after `MBR to GPT conversion`. Recommendation is to extend system volume for future before executing the upgrade.
 
 > [!NOTE]
-> Windows Server 2016 does not support `MBR2GPT.exe`. Workaround is to update the Guest OS to Windows Server 2019 or 2022 and then perform `MBR to GPT conversion`. Refer to [In-place upgrade for VMs running Windows Server in Azure](windows-in-place-upgrade.md#perform-in-place-upgrade-to-windows-server-2016-2019-or-2022).
+> Windows Server 2016 doesn't support `MBR2GPT.exe`. Workaround is to update the Guest OS to Windows Server 2019 or 2022 and followed by `MBR to GPT conversion`. Refer to [In-place upgrade for VMs running Windows Server in Azure](windows-in-place-upgrade.md#perform-in-place-upgrade-to-windows-server-2016-2019-2022-or-2025).
 
-1. RDP or remotely connect to Gen1 Windows VM for executing conversion.
+1. Remotely connect (using RDP or command-line) to Gen1 Windows VM for executing conversion.
 2. Run command `MBR2GPT /validate /allowFullOS` and ensure `Disk layout validation` completes successfully. **Do not proceed** if the `Disk layout validation` fails. Refer to [Known issues](#known-issues) for list of common causes and associated resolution for failure. For more information and troubleshooting, see [MBR2GPT troubleshooting](/windows/deployment/mbr-to-gpt#troubleshooting).
 3. Run command `MBR2GPT /convert /allowFullOS` to **execute** MBR to GPT conversion. Sample successful output:
 
@@ -125,9 +129,8 @@ Validate Guest OS volume readiness for Trusted launch upgrade with following com
 
 > [!NOTE]
 >
-> - After you enable Trusted launch, currently VMs can't be rolled back to the Standard security type (non-Trusted launch configuration).
 > - vTPM is enabled by default.
-> - We recommend that you enable Secure Boot, if you aren't using custom unsigned kernel or drivers. It's not enabled by default. Secure Boot preserves boot integrity and enables foundational security for VMs.
+> - Secure boot isn't enabled by default. We strongly recommend that you enable Secure Boot, if you aren't using custom unsigned kernel or drivers. Secure Boot preserves boot integrity and enables foundational security for VMs.
 
 ### [PowerShell](#tab/powershell)
 
@@ -344,15 +347,33 @@ Follow the steps to enable Trusted launch on an existing Azure Generation 2 VM b
 
 ---
 
+## Roll back
+
+Azure VM once upgraded to Trusted launch can't be rolled back to Gen1 configuration. You can [disable Trusted launch](trusted-launch-existing-vm.md#roll-back) to roll-back VM from Trusted launch to Gen2 (Non-Trusted launch) configuration.
+
+Use the Backup or Restore point of Gen1 VM taken before upgrade and restore entire VM along with disks to roll back fully to Gen1 VM.
+
 ## Known issues
+
+### VM image reference doesn't change post Trusted launch upgrade
+
+Post upgrade of Azure Gen1 VM to Trusted launch, the image reference still reflects source as Gen1 OS image. Image reference not updated is a known limitation.
+
+This limitation doesn't impacts the VM or hosted application functionality post Trusted launch upgrade. Following VM operations are impacted due to disconnect between image reference and running OS:
+
+- **Guest patching**: For *Server* OS, [Automatic guest patching](automatic-vm-guest-patching.md) installs updates based on the image reference of VM.
+- **Reimage**: Reimaging VM using Gen1 image reference post Trusted launch upgrade causes VM boot failure.
 
 ### Windows 11 boot fails after Trusted launch upgrade of Windows 10 VM
 
 Windows 10 Gen1 VM is successfully upgraded to Trusted launch followed by successful Windows 11 in-place upgrade. However, the Windows 11 boot fails after Azure VM is stopped and started with error shown.
 
-**Resolution**: This issue is fixed with [24H2 build version 26100.2314](/windows/release-health/windows11-release-information#windows-11-current-versions-by-servicing-option).
+**Resolution**: This issue is fixed with [24H2 build version 26100.2314](/windows/release-health/windows11-release-information#windows-11-current-versions-by-servicing-option) and [23H2 build version 22631.5624](/windows/release-health/windows11-release-information#windows-11-current-versions-by-servicing-option).
 
 :::image type="content" source="./media/trusted-launch/01-error-windows-11-boot.jpg" alt-text="Screenshot that shows boot failure of Azure Windows VM.":::
+
+> [!NOTE]
+> The upgrade can fail if you use outdated Windows 11 installation media. To avoid this issue, ensure you use the most recent Windows 11 image. You can download the latest ISO from the [Microsoft Software Download page](https://www.microsoft.com/software-download/windows11). If you have a volume licensing agreement, use the [Microsoft 365 admin center](https://admin.microsoft.com/adminportal/home#/subscriptions/vlnew) to access updated Windows 11 images.
 
 ### [Windows] MBR to GPT conversion fails with error Cannot find room for the EFI system partition
 
@@ -364,7 +385,7 @@ This error occurs for one of following reason:
 - `Optimize Drives` service isn't running or unable to communicate successfully. Service startup type should be set to `Manual`.
 - System volume disk is already configured with four MBR partitions (maximum supported by MBR disk layout). You need to delete one of the partitions to make room for EFI system partition.
     1. Run `ReAgentc /info` to identify partition actively used by Recovery. Example: `Windows RE location:       \\?\GLOBALROOT\device\harddisk0\partition4\Recovery\WindowsRE`
-    2. Run PowerShell cmdlet `Get-Partition -DiskNumber 0` to identify current partitions which are configured.
+    2. Run PowerShell cmdlet `Get-Partition -DiskNumber 0` to identify current partitions that are configured.
     3. Run PowerShell cmdlet `Remove-Partition -DiskNumber 0 -PartitionNumber X` to remove any extra Recovery partition not actively used by Recovery service as identified in Step 1.
 
 ### [Windows] MBR to GPT failed to update ReAgent.xml
@@ -392,10 +413,6 @@ After the upgrade check the disks on the server, if system reserved partition ha
 2. Reboot the VM
 3. Remove letter D: from the partition
 4. Reboot the VM to show the temporary storage disk with D: letter
-
-### VM image reference doesn't change post Trusted launch upgrade
-
-Post upgrade of Azure Gen1 VM to Trusted launch, the image reference still reflects source as Gen1 OS image. Image reference not updated is a known limitation and will be addressed with general availability release of Gen1 to Trusted launch VM upgrade support.
 
 ## Frequently asked questions
 

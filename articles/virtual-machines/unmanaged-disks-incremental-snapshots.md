@@ -6,6 +6,7 @@ ms.service: azure-disk-storage
 ms.topic: how-to
 ms.date: 09/15/2018
 ms.author: rogarana
+# Customer intent: "As a cloud administrator, I want to implement a custom backup strategy using incremental snapshots for unmanaged virtual machine disks, so that I can efficiently manage storage space and streamline recovery processes without relying on standard backup services."
 ---
 
 # Back up Azure unmanaged Virtual Machine disks with incremental snapshots

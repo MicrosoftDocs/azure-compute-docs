@@ -6,9 +6,10 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
-ms.date: 08/29/2024
+ms.date: 11/17/2025
 ms.custom: devx-track-azurepowershell, devx-track-azurecli 
 ms.devlang: azurecli
+# Customer intent: As a container developer, I want to set environment variables when creating container instances, so that I can dynamically configure the application's behavior according to my specific requirements.
 ---
 # Set environment variables in container instances
 
@@ -22,7 +23,8 @@ For example, if you run the Microsoft aci-wordcount container image, you can mod
 
 *MinLength*: The minimum number of characters in a word for it to be counted. A higher number ignores common words like "of" and "the."
 
-If you need to pass secrets as environment variables, Azure Container Instances supports [secure values](#secure-values) for both Windows and Linux containers.
+>[!IMPORTANT]
+>If you need to pass secrets as environment variables, Azure Container Instances supports [secure values](#secure-values) for both Windows and Linux containers.
 
 [!INCLUDE [updated-for-az](~/reusable-content/ce-skilling/azure/includes/updated-for-az.md)]
 
@@ -107,7 +109,7 @@ $containerGroup = New-AzContainerGroup -ResourceGroupName "myResourceGroup" `
     -Image "mcr.microsoft.com/azuredocs/aci-wordcount:latest" `
     -RestartPolicy "OnFailure" `
     -Container @(
-        New-AzContainerGroupContainer -Name "mycontainer2" `
+        New-AzContainerInstanceContainer -Name "mycontainer2" `
             -EnvironmentVariable $envVars
     )
 ```

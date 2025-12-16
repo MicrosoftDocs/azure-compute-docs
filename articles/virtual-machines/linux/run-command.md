@@ -5,12 +5,13 @@ services: automation
 ms.service: azure-virtual-machines
 ms.collection: linux
 author: GabstaMSFT
-ms.author: jushiman
-ms.date: 06/01/2023
+ms.author: cynthn
+ms.date: 08/18/2025
 ms.topic: how-to
 ms.reviewer: jushiman
 ms.custom: devx-track-azurecli, linux-related-content
 ms.devlang: azurecli
+# Customer intent: "As a system administrator managing Azure Linux VMs, I want to run shell scripts using the Run Command feature, so that I can efficiently troubleshoot and manage my virtual machines without needing remote access."
 ---
 # Run scripts in your Linux VM by using action Run Commands
 
@@ -27,18 +28,18 @@ This capability is useful in all scenarios where you want to run a script within
 ## Prerequisites
 
 ### Linux Distro’s Supported
-| **Linux Distro** | **x64** | **ARM64** |
-|:-----|:-----:|:-----:|
-| Alma Linux |	9.x+ |	9.x+ |
-| Debian |	10+ |	11.x+ |
-| Flatcar Linux |	3374.2.x+ |	3374.2.x+ |
-| Azure Linux | 2.x | 2.x |
-| openSUSE |	12.3+ |	Not Supported |
-| Oracle Linux |	6.4+, 7.x+, 8.x+ |	Not Supported |
-| Red Hat Enterprise Linux |	6.7+, 7.x+,  8.x+ |	8.6+, 9.0+ |
-| Rocky Linux |	9.x+ |	9.x+ |
-| SLES |	12.x+, 15.x+ |	15.x SP4+ |
-| Ubuntu |	18.04+, 20.04+, 22.04+ |	20.04+, 22.04+ |
+| Publisher | Distribution | x64 | ARM64 |
+|:-----|:-----|:-----:|:-----:|
+| Alma Linux Community | Alma Linux | 8.x+, 9.x+ | 8.x+, 9.x+ |
+| Credativ | Debian | 10+ | 11.x+ |
+| Kinvolk | Flatcar Linux | 3374.2.x+ | 3374.2.x+ |
+| Microsoft | Azure Linux | 2.x | 2.x |
+| openSUSE Project | openSUSE | 12.3+ | *Not supported* |
+| Oracle | Oracle Linux | 6.4+, 7.x+, 8.x+ | *Not supported* |
+| Red Hat | Red Hat Enterprise Linux | 6.7+, 7.x+,  8.x+, 9.x+, 10.x+ | 8.6+, 9.0+, 10.x+ |
+| CIQ | Rocky Linux | 9.x+ | 9.x+ |
+| SUSE | SLES | 12.x+, 15.x+ | 15.x SP4+ |
+| Canonical | Ubuntu (LTS releases)| 18.04+, 20.04+, 22.04+, 24.04+ | 20.04+, 22.04+, 24.04+ |
 
 ## Restrictions
 
@@ -64,10 +65,10 @@ This table shows the list of commands available for Linux VMs. You can use the *
 The entity was not found in this Azure location
 ```
 
-|**Name**|**Description**|
-|---|---|
-|**RunShellScript**|Runs a Linux shell script.|
-|**ifconfig**| Gets the configuration of all network interfaces.|
+|**Name**|**Description**|**More Info**|
+|---|---|---|
+|**RunShellScript**|Runs a Linux shell script.||
+|**ifconfig**| Gets the configuration of all network interfaces.|[readme](https://github.com/Azure/azure-support-scripts/blob/master/RunCommand/Linux/ifconfig/readme.md)|
 
 ## Azure CLI
 
@@ -113,7 +114,7 @@ You can use one of the [built-in roles](/azure/role-based-access-control/built-i
 
 ## Action Run Command Linux troubleshooting
 
-When troubleshooting action run command for Linux environments, refer to the *handler* log file typically located in the following directory: `/var/log/azure/run-command-handler/handler.log` for further details.
+When troubleshooting action run command for Linux environments, refer to the *handler* log file typically located in the following directory: `/var/log/azure/run-command/handler.log` for further details.
 
 ### Known issues
 The Linux action run command logs have a few notable differences compared to the action run command Windows logs:

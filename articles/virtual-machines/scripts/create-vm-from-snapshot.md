@@ -11,6 +11,7 @@ ms.tgt_pltfrm: vm-linux
 ms.date: 02/23/2022
 ms.author: rogarana
 ms.custom: mvc, devx-track-azurecli
+# Customer intent: As a cloud engineer, I want to create a virtual machine from a snapshot using CLI commands, so that I can efficiently deploy virtual machines with pre-configured settings and reduce setup time.
 ---
 
 # Create a virtual machine from a snapshot with CLI

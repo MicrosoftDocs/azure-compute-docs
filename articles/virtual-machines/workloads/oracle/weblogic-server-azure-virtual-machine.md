@@ -7,7 +7,14 @@ ms.reviewer: haiche
 ms.topic: quickstart
 ms.date: 12/24/2024
 ms.service: oracle-on-azure
-ms.custom: devx-track-java, devx-track-javaee, devx-track-javaee-wls, devx-track-javaee-wls-vm, devx-track-extended-java
+ms.custom:
+  - devx-track-java
+  - devx-track-javaee
+  - devx-track-javaee-wls
+  - devx-track-javaee-wls-vm
+  - devx-track-extended-java
+  - sfi-image-nochange
+# Customer intent: As a cloud administrator, I want to deploy WebLogic Server on Azure Virtual Machines quickly, so that I can expedite my application development and management processes in a cost-effective and efficient manner.
 ---
 
 # Quickstart: Deploy WebLogic Server on Azure Virtual Machines (VMs)

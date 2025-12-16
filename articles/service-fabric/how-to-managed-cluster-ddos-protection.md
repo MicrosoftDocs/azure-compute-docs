@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: devx-track-azurepowershell
 services: service-fabric
 ms.date: 09/05/2023
+# Customer intent: As a cloud administrator, I want to implement Azure DDoS Protection in a Service Fabric managed cluster, so that I can enhance the security and resilience of my applications against potential DDoS attacks.
 ---
 
 # Use Azure DDoS Protection in a Service Fabric managed cluster

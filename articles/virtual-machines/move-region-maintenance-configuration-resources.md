@@ -5,6 +5,7 @@ ms.service: azure-virtual-machines
 ms.topic: how-to
 ms.date: 03/04/2020
 #Customer intent: As an admin responsible for maintenance, I want move resources associated with a Maintenance Control configuration to another Azure region.
+# Customer intent: "As an IT admin managing virtual machine maintenance, I want to move resources associated with a Maintenance Control configuration to another Azure region so that I can leverage new regional features and comply with internal policies."
 ---
 
 

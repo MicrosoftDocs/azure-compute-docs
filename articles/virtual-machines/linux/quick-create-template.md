@@ -1,13 +1,14 @@
 ---
 title: 'Quickstart: Use a Resource Manager template to create an Ubuntu Linux VM'
 description: Learn how to use an Azure Resource Manager template to create and deploy an Ubuntu Linux virtual machine with this quickstart.
-author: ju-shim
+author: cynthn
 ms.service: azure-virtual-machines
 ms.collection: linux
 ms.topic: quickstart
 ms.date: 04/13/2023
-ms.author: jushiman
+ms.author: cynthn
 ms.custom: subject-armqs, mode-arm, devx-track-arm-template, linux-related-content
+# Customer intent: "As a system administrator, I want to deploy an Ubuntu Linux virtual machine using a resource manager template, so that I can streamline the setup process and ensure consistent configuration across environments."
 ---
 
 # Quickstart: Create an Ubuntu Linux virtual machine by using an ARM template
@@ -24,7 +25,7 @@ If your environment meets the prerequisites and you're familiar with ARM templat
 
 ## Prerequisites
 
-If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 ## Review the template
 

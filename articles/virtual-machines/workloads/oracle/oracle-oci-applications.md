@@ -8,6 +8,7 @@ ms.topic: concept-article
 ms.date: 10/03/2024
 ms.author: jacobjaygbay
  
+# Customer intent: As an IT architect, I want to design and deploy Oracle applications on Azure with a database on Oracle Cloud Infrastructure, so that I can ensure high availability, security, and effective integration between the two cloud environments.
 ---
 # Architectures for Oracle applications with Azure Virtual Machines with database on OCI
 

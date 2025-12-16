@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 08/23/2024
+# Customer intent: As a cloud architect, I want to carefully plan the capacity of my Service Fabric cluster, so that I can ensure optimal node types, durability, and reliability for my applications and maintain performance and availability in production environments.
 ---
 
 # Service Fabric cluster capacity planning considerations

@@ -3,8 +3,9 @@ services: container-instances
 author: tomvcassidy
 ms.service: azure-container-instances
 ms.topic: include
-ms.date: 08/29/2024
+ms.date: 11/17/2025
 ms.author: tomcassidy
+# Customer intent: "As a cloud developer, I want to install and configure Azure CLI and Docker on my local machine, so that I can complete the tutorial for deploying containerized applications using confidential computing policies."
 ---
 
 To complete this tutorial, you must satisfy the following requirements:

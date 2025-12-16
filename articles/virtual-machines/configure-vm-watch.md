@@ -6,6 +6,7 @@ ms.author:   ofemifowode
 ms.service: azure-virtual-machines
 ms.topic: get-started
 ms.date:     10/28/2024
+# Customer intent: "As a cloud administrator, I want to configure VM watch settings on my virtual machines, so that I can customize monitoring signals and optimize performance according to my specific environment requirements."
 ---
 
 # Configure VM watch

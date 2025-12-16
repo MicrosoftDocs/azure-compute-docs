@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: devx-track-azurecli, linux-related-content
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a cloud developer, I want to deploy a Linux Service Fabric cluster into an Azure virtual network using a command line interface, so that I can run my applications in a secure and scalable environment."
 ---
 
 # Deploy a Linux Service Fabric cluster into an Azure virtual network
@@ -18,7 +19,7 @@ In this article you learn how to deploy a Linux Service Fabric cluster into an [
 
 Before you begin:
 
-* If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn)
 * Install the [Service Fabric CLI](service-fabric-cli.md)
 * Install the [Azure CLI](/cli/azure/install-azure-cli)
 * To learn the key concepts of clusters, read [Overview of Azure clusters](service-fabric-azure-clusters-overview.md)

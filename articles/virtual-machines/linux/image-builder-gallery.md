@@ -9,6 +9,7 @@ ms.topic: how-to
 ms.service: azure-virtual-machines
 ms.subservice: image-builder
 ms.custom: devx-track-azurecli, linux-related-content
+# Customer intent: As a cloud engineer, I want to create and distribute a custom Linux image using Azure Image Builder and Azure Compute Gallery, so that I can efficiently manage and deploy standardized virtual machine images across multiple regions.
 ---
 
 # Create a Linux image and distribute it to an Azure Compute Gallery

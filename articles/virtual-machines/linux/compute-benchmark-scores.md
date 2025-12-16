@@ -5,9 +5,10 @@ ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.custom: linux-related-content
 ms.collection: linux
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 06/25/2024
 ms.reviewer: davberg
+# Customer intent: "As a system architect evaluating VM performance for Linux workloads, I want to compare CoreMark benchmark scores for various Azure VM sizes, so that I can select the most suitable configurations for my applications based on their compute requirements."
 ---
 
 # Compute benchmark scores for Linux VMs

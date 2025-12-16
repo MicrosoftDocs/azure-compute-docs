@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a cloud administrator, I want to configure an Azure Service Fabric managed cluster for Microsoft Entra client access, so that I can ensure secure authentication and management of cluster resources.
 ---
 
 # How to configure Azure Service Fabric managed cluster for Active Directory client access

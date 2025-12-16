@@ -8,6 +8,7 @@ ms.topic: how-to
 ms.date: 02/22/2023
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
 ms.devlang: azurecli
+# Customer intent: As a cloud administrator, I want to create encrypted image versions using customer-managed keys, so that I can ensure enhanced security and compliance for my virtual machine images.
 ---
 
 # Create an encrypted image version with customer-managed keys

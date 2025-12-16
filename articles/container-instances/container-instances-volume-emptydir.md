@@ -6,7 +6,8 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
-ms.date: 08/29/2024
+ms.date: 11/17/2025
+# Customer intent: As a cloud engineer, I want to mount an emptyDir volume in a container group, so that I can enable data sharing and ephemeral storage between containers for efficient processing and caching during workloads.
 ---
 
 # Mount an emptyDir volume in Azure Container Instances

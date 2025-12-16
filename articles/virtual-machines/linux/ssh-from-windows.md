@@ -10,6 +10,7 @@ ms.author: mattmcinnes
 ms.custom: devx-track-azurecli, linux-related-content
 ms.devlang: azurecli
 ms.reviewer: jamesser
+# Customer intent: As a Windows user, I want to generate and use SSH keys to connect to Linux virtual machines on Azure, so that I can ensure secure access and protect my VM from unauthorized access.
 ---
 # How to use SSH keys with Windows on Azure
 

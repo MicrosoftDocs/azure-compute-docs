@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a developer, I want to containerize my Service Fabric applications on Windows, so that I can deploy and manage them efficiently within a containerized environment.
 ---
 
 # Containerize your Service Fabric Reliable Services and Reliable Actors on Windows
@@ -24,22 +25,23 @@ This document provides guidance to get your service running inside a Windows con
 
 2. Add class [SFBinaryLoader.cs](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/code/SFBinaryLoaderForContainers/SFBinaryLoader.cs) to your project. The code in this class is a helper to correctly load the Service Fabric runtime binaries inside your application when running inside a container.
 
-3. For each code package you would like to containerize, initialize the loader at the program entry point. Add the static constructor shown in the following code snippet to your program entry point file.
+3. For each code package you would like to containerize, initialize the loader at the program entry point. Add a new Main function to your Program.cs and rename the old Main to RealMain, like in the example below. This is required to delay loading any Service Fabric dependencies until the SFBinaryLoader is initialized.
 
    ```csharp
    namespace MyApplication
    {
       internal static class Program
       {
-          static Program()
+          private static void Main()
           {
               SFBinaryLoader.Initialize();
+              RealMain();
           }
 
           /// <summary>
           /// This is the entry point of the service host process.
           /// </summary>
-          private static void Main()
+          private static void RealMain()
           {
    ```
 

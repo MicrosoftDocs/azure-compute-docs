@@ -6,10 +6,11 @@ ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.custom:
   - build-2024
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 08/27/2024
 ms.author: archat
 ms.reviewer: mattmcinnes, tomvcassidy
+# Customer intent: As a cloud architect, I want to review the specifications and supported features of the Epsv6 series for virtual machines, so that I can select the appropriate VM sizes that meet my application's performance and resource requirements.
 ---
 
 # Epsv6 sizes series

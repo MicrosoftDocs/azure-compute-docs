@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a cloud administrator, I want to manage replicas in a Service Fabric cluster using the CLI, so that I can monitor health, restart, and remove replicas effectively to maintain service reliability.
 ---
 
 # sfctl replica

@@ -8,8 +8,9 @@ ms.author: gabsta
 author: GabstaMSFT
 ms.reviewer: jushiman
 ms.collection: windows
-ms.date: 04/11/2023
+ms.date: 08/18/2025
 ms.custom: devx-track-azurepowershell
+# Customer intent: As an IT administrator, I want to create and assign an Azure Policy to restrict the installation of certain VM extensions, so that I can maintain control and ensure compliance within my Windows virtual environments.
 ---
 
 # Use Azure Policy to restrict extensions installation on Windows VMs
@@ -17,6 +18,8 @@ ms.custom: devx-track-azurepowershell
 If you want to prevent the use or installation of certain extensions on your Windows VMs, you can create an Azure Policy definition using PowerShell to restrict extensions for VMs within a resource group.
 
 This tutorial uses Azure PowerShell within the Cloud Shell, which is constantly updated to the latest version.
+
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
 
 ## Create a rules file
 

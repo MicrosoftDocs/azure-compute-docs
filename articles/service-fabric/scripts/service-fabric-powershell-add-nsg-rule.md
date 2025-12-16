@@ -9,6 +9,7 @@ ms.topic: sample
 ms.date: 11/28/2017
 ms.author: atsenthi
 ms.custom: mvc, devx-track-azurepowershell
+# Customer intent: As an IT administrator, I want to create a network security group rule in PowerShell, so that I can allow inbound traffic on specific ports for improved network security configuration.
 ---
 
 # Add an inbound network security group rule

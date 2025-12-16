@@ -7,14 +7,20 @@ ms.subservice: extensions
 ms.author: hilarywang
 author: hilaryw29
 ms.date: 12/15/2023
+ms.custom: sfi-image-nochange
+# Customer intent: "As an IT administrator managing applications on Azure virtual machines, I want to implement the Application Health extension for monitoring, so that I can ensure application health and reliability during automatic patching and scaling activities."
 ---
 
 # Using Application Health extension with Azure Virtual Machines
+
+
 Monitoring your application health is an important signal for managing your VMs. Azure Virtual Machines provides support for [Automatic VM Guest Patching](../automatic-vm-guest-patching.md), which rely on health monitoring of the individual instances to safely update your VMs. 
 
 This article describes how you can use the two types of Application Health extension, **Binary Health States** or **Rich Health States**, to monitor the health of your applications deployed on Azure virtual machines.
 
 Application health monitoring is also available on virtual machine scale sets and helps enable functionalities such as [Rolling Upgrades](../../virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-policy.md), [Automatic OS-Image Upgrades](../../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md), and [Automatic Instance Repairs](../../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-instance-repairs.md). To experience these capabilities with the added benefits of scale, availability, and flexibility on scale sets, you can [attach your VM to an existing scale set](../../virtual-machine-scale-sets/virtual-machine-scale-sets-attach-detach-vm.md) or [create a new scale set](../../virtual-machine-scale-sets/flexible-virtual-machine-scale-sets-portal.md).
+
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
 
 ## Prerequisites
 
@@ -175,7 +181,7 @@ The following JSON shows the schema for the Application Health extension. The ex
 | port | Optional when protocol is `http` or `https`, mandatory when protocol is `tcp` | int |
 | requestPath | Mandatory when protocol is `http` or `https`, not allowed when protocol is `tcp` | string |
 | intervalInSeconds | Optional, default is 5 seconds. This setting is the interval between each health probe. For example, if intervalInSeconds == 5, a probe is sent to the local application endpoint once every 5 seconds. Minimum value is 5 seconds, maximum is 60 seconds. | int |
-| numberOfProbes | Optional, default is 1. This setting is the number of consecutive probes required for the health status to change. For example, if numberOfProbles == 3, you will need 3 consecutive "Healthy" signals to change the health status from "Unhealthy" into "Healthy" state. The same requirement applies to change health status into "Unhealthy" state. Minimum value is 1 probe, maximum is 3 probes. | int |
+| numberOfProbes | Optional, default is 1. This setting is the number of consecutive probes required for the health status to change. For example, if numberOfProbles == 3, you will need 3 consecutive "Healthy" signals to change the health status from "Unhealthy" into "Healthy" state. The same requirement applies to change health status into "Unhealthy" state. Minimum value is 1 probe, maximum is 24 probes. | int |
 
 ## Extension schema for Rich Health States
 
@@ -224,8 +230,8 @@ The following JSON shows the schema for the Rich Health States extension. The ex
 | port | Optional when protocol is `http` or `https`, mandatory when protocol is `tcp` | int |
 | requestPath | Mandatory when protocol is `http` or `https`, not allowed when protocol is `tcp` | string |
 | intervalInSeconds | Optional, default is 5 seconds. This setting is the interval between each health probe. For example, if intervalInSeconds == 5, a probe is sent to the local application endpoint once every 5 seconds. Minimum value is 5 seconds, maximum is 60 seconds. | int |
-| numberOfProbes | Optional, default is 1. This setting is the number of consecutive probes required for the health status to change. For example, if numberOfProbles == 3, you will need 3 consecutive "Healthy" signals to change the health status from "Unhealthy"/"Unknown" into "Healthy" state. The same requirement applies to change health status into "Unhealthy" or "Unknown" state. Minimum value is 1 probe, maximum is 3 probes. | int |
-| gracePeriod | Optional, default = `intervalInSeconds` * `numberOfProbes`; maximum grace period is 7200 seconds | int |
+| numberOfProbes | Optional, default is 1. This setting is the number of consecutive probes required for the health status to change. For example, if numberOfProbles == 3, you will need 3 consecutive "Healthy" signals to change the health status from "Unhealthy"/"Unknown" into "Healthy" state. The same requirement applies to change health status into "Unhealthy" or "Unknown" state. Minimum value is 1 probe, maximum is 24 probes. | int |
+| gracePeriod | Optional, default = `intervalInSeconds` * `numberOfProbes`; maximum grace period is 14400 seconds | int |
 
 ## Deploy the Application Health extension
 There are multiple ways of deploying the Application Health extension to your VMs as detailed in the following examples.
@@ -406,6 +412,7 @@ The extension.json file content.
   "gracePeriod": <healthExtensionGracePeriod>
 }
 ```
+
 # [Azure portal](#tab/azure-portal)
 
 The following example adds the Application Health extension to an existing virtual machine on [Azure portal](https://portal.azure.com).

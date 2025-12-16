@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a developer using Azure Service Fabric, I want to understand the environment variables available for my service instances, so that I can effectively configure and troubleshoot my applications."
 ---
 
 # Service Fabric environment variables

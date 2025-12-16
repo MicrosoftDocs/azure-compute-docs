@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.date: 04/15/2025
 ms.author: minnielahoti
 ms.reviewer: azmetadatadev
+# Customer intent: As a cloud administrator, I want to deploy virtual machines using ARM templates with managed service provider (MSP) configurations, so that I can ensure consistent setup and management of virtual environments across both Windows and Linux platforms.
 ---
 
 # ARM templates

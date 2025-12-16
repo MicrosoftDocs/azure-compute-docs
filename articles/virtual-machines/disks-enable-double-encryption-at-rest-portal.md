@@ -8,6 +8,7 @@ ms.topic: how-to
 ms.author: rogarana
 ms.service: azure-disk-storage
 ms.custom:  devx-track-azurecli, linux-related-content, devx-track-azurepowershell
+# Customer intent: As a cloud administrator, I want to enable double encryption at rest for managed disks using the Azure portal, CLI, or PowerShell, so that I can enhance the security of my virtual machine data.
 ---
 
 # Enable double encryption at rest for managed disks

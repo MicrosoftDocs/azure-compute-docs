@@ -1,32 +1,32 @@
 ---
 title: Modify an Azure Virtual Machine Scale Set using Azure CLI
 description: Learn how to modify and update an Azure Virtual Machine Scale Set using Azure CLI
-author: ju-shim
-ms.author: jushiman
+author: cynthn
+ms.author: cynthn
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
-ms.date: 06/14/2024
+ms.date: 04/06/2025
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli, linux-related-content, innovation-engine
+# Customer intent: As a cloud administrator, I want to modify and update Azure Virtual Machine Scale Sets using CLI commands, so that I can manage resource configurations and maintain optimal performance for my deployed applications.
 ---
 
 # Tutorial: Modify a Virtual Machine Scale Set using Azure CLI
+
+> [!div class="nextstepaction"]
+> [Deploy and Explore](https://go.microsoft.com/fwlink/?linkid=2321931)
+
 Throughout the lifecycle of your applications, you may need to modify or update your Virtual Machine Scale Set. These updates may include how to update the configuration of the scale set, or change the application configuration. This article describes how to modify an existing scale set using the Azure CLI.
 
 Below, we declare environment variables that will be used throughout this document. A random suffix is appended to resource names that need to be unique for each deployment. The `REGION` is set to *WestUS2*.
-
-```bash
-export RANDOM_SUFFIX=adcc95
-export MY_RESOURCE_GROUP_NAME="myResourceGroup$RANDOM_SUFFIX"
-export SCALE_SET_NAME="myScaleSet$RANDOM_SUFFIX"
-export NEW_INSTANCE_NAME="myNewInstance$RANDOM_SUFFIX"
-export REGION="WestUS2"
-```
 
 ## Setup Resource Group
 Before proceeding, ensure the resource group exists. This step creates the resource group if it does not already exist.
 
 ```bash
+export RANDOM_SUFFIX=$(openssl rand -hex 3)
+export MY_RESOURCE_GROUP_NAME="myResourceGroup$RANDOM_SUFFIX"
+export REGION="WestUS2"
 az group create --name $MY_RESOURCE_GROUP_NAME --location $REGION
 ```
 
@@ -49,6 +49,7 @@ az group create --name $MY_RESOURCE_GROUP_NAME --location $REGION
 To ensure that subsequent update and query commands have a valid resource to work on, create a Virtual Machine Scale Set. In this step, we deploy a basic scale set using a valid image (*Ubuntu2204*) and set the instance count to 5 so that instance-specific updates can target an existing instance ID.
 
 ```azurecli-interactive
+export SCALE_SET_NAME="myScaleSet$RANDOM_SUFFIX"
 az vmss create \
   --resource-group $MY_RESOURCE_GROUP_NAME \
   --name $SCALE_SET_NAME \
@@ -319,6 +320,7 @@ Running [az vm show](/cli/azure/vm#az-vm-show) again, we now will see that the V
 There are times where you might want to add a new VM to your scale set but want different configuration options than those listed in the scale set model. VMs can be added to a scale set during creation by using the [az vm create](/cli/azure/vmss#az-vmss-create) command and specifying the scale set name you want the instance added to.
 
 ```azurecli-interactive
+export NEW_INSTANCE_NAME="myNewInstance$RANDOM_SUFFIX"
 az vm create --name $NEW_INSTANCE_NAME --resource-group $MY_RESOURCE_GROUP_NAME --vmss $SCALE_SET_NAME --image RHELRaw8LVMGen2
 ```
 

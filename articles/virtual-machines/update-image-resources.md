@@ -10,6 +10,7 @@ ms.topic: how-to
 ms.date: 03/23/2023
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 
+# Customer intent: "As a cloud administrator, I want to manage Azure Compute Gallery resources by listing, updating, and deleting images, so that I can maintain an organized and efficient image repository for virtual machines."
 ---
 
 # List, update, and delete gallery resources

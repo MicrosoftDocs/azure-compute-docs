@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: "As a cloud developer managing containerized applications, I want to use command line tools to invoke container APIs and access logs, so that I can efficiently monitor and troubleshoot my applications deployed on a Service Fabric cluster."
 ---
 
 # sfctl container

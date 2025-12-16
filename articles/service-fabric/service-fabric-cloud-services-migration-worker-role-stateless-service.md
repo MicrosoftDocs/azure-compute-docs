@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a cloud application developer, I want to migrate my Cloud Services (extended support) Web and Worker Roles to Service Fabric stateless services, so that I can take advantage of improved scalability and simplified deployment within a Service Fabric cluster.
 ---
 
 # Guide to converting Web and Worker Roles to Service Fabric stateless services

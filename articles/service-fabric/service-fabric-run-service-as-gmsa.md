@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a system administrator, I want to configure a group-managed service account for a Service Fabric service, so that I can enhance security and eliminate the need for password management within the application manifest.
 ---
 
 # Run a service as a group Managed Service Account

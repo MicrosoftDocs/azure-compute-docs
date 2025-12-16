@@ -9,6 +9,7 @@ ms.subservice: extensions
 ms.date: 04/01/2025
 ms.reviewer: hilaryw29
 ms.custom: mimckitt, devx-track-azurepowershell
+# Customer intent: "As a cloud operations engineer, I want to implement the Application Health extension in my Virtual Machine Scale Sets, so that I can effectively monitor application health and ensure smooth upgrades and automatic instance repairs."
 ---
 
 # Using Application Health extension with Virtual Machine Scale Sets
@@ -171,8 +172,8 @@ The following JSON shows the schema for the Rich Health States extension. The ex
 | port | Optional when protocol is `http` or `https`, mandatory when protocol is `tcp` | int |
 | requestPath | Mandatory when protocol is `http` or `https`, not allowed when protocol is `tcp` | string |
 | intervalInSeconds | Optional, default is 5 seconds. This is the interval between each health probe. For example, if intervalInSeconds == 5, a probe will be sent to the local application endpoint once every 5 seconds. Minimum value is 5 seconds, maximum is 60 seconds. | int |
-| numberOfProbes | Optional, default is 1. This is the number of consecutive probes required for the health status to change. For example, if numberOfProbles == 3, you will need 3 consecutive "Healthy" signals to change the health status from "Unhealthy"/"Unknown" into "Healthy" state. The same requirement applies to change health status into "Unhealthy" or "Unknown" state. Minimum value is 1 probe, maximum is 3 probes.  | int |
-| gracePeriod | Optional, default = `intervalInSeconds` * `numberOfProbes`; maximum grace period is 7200 seconds | int |
+| numberOfProbes | Optional, default is 1. This is the number of consecutive probes required for the health status to change. For example, if numberOfProbles == 3, you will need 3 consecutive "Healthy" signals to change the health status from "Unhealthy"/"Unknown" into "Healthy" state. The same requirement applies to change health status into "Unhealthy" or "Unknown" state. Minimum value is 1 probe, maximum is 24 probes.  | int |
+| gracePeriod | Optional, default = `intervalInSeconds` * `numberOfProbes`; maximum grace period is 14400 seconds | int |
 
 ## Binary Health States
 
@@ -244,7 +245,7 @@ The following JSON shows the schema for the Application Health extension. The ex
 | port | Optional when protocol is `http` or `https`, mandatory when protocol is `tcp` | int |
 | requestPath | Mandatory when protocol is `http` or `https`, not allowed when protocol is `tcp` | string |
 | intervalInSeconds | Optional, default is 5 seconds. This is the interval between each health probe. For example, if intervalInSeconds == 5, a probe will be sent to the local application endpoint once every 5 seconds. Minimum value is 5 seconds, maximum is 60 seconds. | int |
-| numberOfProbes | Optional, default is 1. This is the number of consecutive probes required for the health status to change. For example, if numberOfProbles == 3, you will need 3 consecutive "Healthy" signals to change the health status from "Unhealthy" into "Healthy" state. The same requirement applies to change health status into "Unhealthy" state. Minimum value is 1 probe, maximum is 3 probes. | int |
+| numberOfProbes | Optional, default is 1. This is the number of consecutive probes required for the health status to change. For example, if numberOfProbles == 3, you will need 3 consecutive "Healthy" signals to change the health status from "Unhealthy" into "Healthy" state. The same requirement applies to change health status into "Unhealthy" state. Minimum value is 1 probe, maximum is 24 probes. | int |
 
 ## Deploy the Application Health extension
 There are multiple ways of deploying the Application Health extension to your scale sets as detailed in the following examples.

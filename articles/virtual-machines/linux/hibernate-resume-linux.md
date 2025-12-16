@@ -8,6 +8,7 @@ ms.date: 05/20/2024
 ms.author: jainan
 ms.reviewer: mattmcinnes
 ms.custom: devx-track-azurecli, devx-track-azurepowershell, linux-related-content
+# Customer intent: "As a system administrator managing Linux virtual machines, I want to enable hibernation for my VMs, so that I can preserve their state and optimize resource usage during downtime."
 ---
 
 # Hibernating Linux virtual machines

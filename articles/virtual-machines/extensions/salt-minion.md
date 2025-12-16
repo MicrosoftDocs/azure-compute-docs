@@ -7,7 +7,8 @@ ms.subservice: extensions
 ms.custom: devx-track-arm-template, devx-track-azurecli, devx-track-terraform, linux-related-content
 ms.author: gabsta
 author: GabstaMSFT
-ms.date: 01/24/2024
+ms.date: 08/18/2025
+# Customer intent: As a cloud administrator, I want to install Salt Minion on my Azure VMs using VM extensions, so that I can effectively manage and automate configurations across my infrastructure.
 ---
 # Install Salt Minion on Linux or Windows VMs using the VM Extension
 
@@ -16,6 +17,8 @@ ms.date: 01/24/2024
 * A Microsoft Azure account with one (or more) Windows or Linux VMs
 * A Salt Master (either on-premises or in a cloud) that can accept connections from Salt minions hosted on Azure
 * The Salt Minion VM Extension requires that the target VM is connected to the internet in order to fetch Salt packages
+
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
 
 ## Supported platforms
 
@@ -136,6 +139,6 @@ SETTINGS
 
 ## Support
 
-* For commercial support or assistance with Salt, you can visit the extension creator, [TurtleTraction](https://turtletraction.com/salt-open-support)
+* For commercial support or assistance with Salt, you can visit the extension creator, [TurtleTraction](https://turtletraction.com/)
 * The source code of this extension is available on [GitLab](https://gitlab.com/turtletraction-oss/azure-salt-vm-extensions/)
 * For Azure related issues, you can file an Azure support incident. Go to the [Azure support site](https://azure.microsoft.com/support/options/) and select Get support

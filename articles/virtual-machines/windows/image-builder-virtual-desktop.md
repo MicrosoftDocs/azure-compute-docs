@@ -10,6 +10,7 @@ ms.service: azure-virtual-machines
 ms.collection: windows
 ms.subservice: image-builder
 ms.custom: devx-track-azurepowershell
+# Customer intent: As a cloud administrator, I want to automate the creation of Azure Virtual Desktop images using VM Image Builder and PowerShell, so that I can efficiently deploy standardized and optimized virtual desktops across my organization.
 ---
 
 # Create an Azure Virtual Desktop image by using VM Image Builder and PowerShell

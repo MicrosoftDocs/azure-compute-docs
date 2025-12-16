@@ -8,6 +8,7 @@ ms.topic: how-to
 ms.date: 02/28/2023
 ms.author: ningk
 ms.reviewer: azmetadata, mattmcinnes
+# Customer intent: As a cloud administrator, I want to insert scripts and metadata into Azure virtual machines during provisioning, so that I can automate configurations and ensure the virtual machines are properly set up upon deployment.
 ---
 
 # User Data for Azure Virtual Machine 

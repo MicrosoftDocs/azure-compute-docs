@@ -6,7 +6,8 @@ ms.topic: how-to
 ms.service: azure-container-instances
 services: container-instances
 ms.author: tomcassidy
-ms.date: 08/29/2024
+ms.date: 11/17/2025
+# Customer intent: As a DevOps engineer, I want to set a DNS name reuse policy for my container groups, so that I can securely manage DNS names and prevent subdomain takeover during application redeployment.
 ---
 
 # Deploy an Azure Container Instances (ACI) container group with DNS name reuse policy (preview)

@@ -9,6 +9,7 @@
  ms.author: jainan
  ms.reviewer: mattmcinnes
  ms.custom: include file
+# Customer intent: As a system administrator, I want to hibernate and manage virtual machines using various tools, so that I can optimize resource usage and maintain system performance effectively.
 ---
 
 ## Hibernate a VM

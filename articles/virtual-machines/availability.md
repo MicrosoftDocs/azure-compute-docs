@@ -4,9 +4,11 @@ description: Learn about the availability options for running virtual machines i
 author: mimckitt
 ms.author: mimckitt
 ms.service: azure-virtual-machines
-ms.topic: conceptual
-ms.date: 10/18/2022
+ms.topic: concept-article
+ms.date: 12/05/2025
 ms.reviewer: cynthn
+ms.update-cycle: 1095-days
+# Customer intent: "As an IT manager, I want to understand the availability options for virtual machines in the cloud, so that I can ensure the resilience and uptime of our applications and data during outages."
 ---
     
 # Availability options for Azure Virtual Machines

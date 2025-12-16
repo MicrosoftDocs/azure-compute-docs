@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a developer, I want to learn how to upgrade a Service Fabric application using Visual Studio, so that I can efficiently deploy code changes and ensure zero downtime during the upgrade process.
 ---
 
 # Service Fabric application upgrade tutorial using Visual Studio

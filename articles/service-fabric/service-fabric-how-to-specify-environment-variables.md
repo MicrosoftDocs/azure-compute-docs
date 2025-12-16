@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a cloud application developer, I want to specify and override environment variables for my services in Service Fabric, so that I can configure application settings effectively across different environments."
 ---
 
 # How to specify environment variables for services in Service Fabric

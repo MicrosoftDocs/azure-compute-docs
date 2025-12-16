@@ -8,6 +8,7 @@ ms.date: 03/17/2021
 author: ebolton-cyber
 ms.author: edewebolton
 ms.custom: devx-track-azurepowershell
+# Customer intent: As a cloud developer, I want to utilize Azure PowerShell to find and configure Azure Marketplace VM images, so that I can effectively create virtual machines with the required settings and comply with licensing terms.
 ---
 # Find and use Azure Marketplace VM images with Azure PowerShell
 
@@ -225,6 +226,7 @@ Some paid images also require that you provide purchase plan information using t
 $vmConfig = New-AzVMConfig -VMName "myVM" -VMSize Standard_D1
 
 # Set the Marketplace image
+$publisherName = "microsoft-ads"
 $offerName = "windows-data-science-vm"
 $skuName = "windows2016"
 $version = "19.01.14"

@@ -4,9 +4,10 @@ description: Time mechanism for Active Directory Windows Virtual Machines in Azu
 author: NDVALPHA
 ms.service: azure-virtual-machines
 ms.collection: windows
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 08/05/2022
 ms.author: ndelvillar
+# Customer intent: "As an IT administrator managing Active Directory Windows Virtual Machines in Azure, I want to configure time synchronization settings, so that I ensure accurate timekeeping across my domain and avoid potential issues with authentication and replication."
 ---
 
 # Configure the time mechanism for Active Directory Windows Virtual Machines in Azure
@@ -56,6 +57,9 @@ From an elevated command prompt rerun *w32tm /query /source* and compare the out
 
 >[!TIP]
 >If you want to speed-up the process of changing the NTP source on your **PDC**, from an elevated command prompt run *gpupdate /force*, followed by *w32tm /resync /nowait*, then rerun *w32tm /query /source*; the output should be the NTP Server you used in the above GPO.
+
+>[!NOTE]
+>If after the changes are applied, you still don't get the output to the NTP Server you chose, you may need to set the value to **0** in the key **Enabled** under **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\W32Time\TimeProviders\VMICTimeProvider** on your PDC and DCs too.
 
 ## GPO for Members
 

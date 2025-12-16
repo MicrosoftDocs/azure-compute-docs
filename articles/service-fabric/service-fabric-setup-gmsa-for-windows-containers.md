@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: "As a system administrator, I want to set up group Managed Service Accounts for Windows containers in Azure Service Fabric, so that I can ensure secure authentication and access control for my containerized applications."
 ---
 
 # Set up gMSA for Windows containers running on Service Fabric

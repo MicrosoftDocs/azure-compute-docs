@@ -9,6 +9,7 @@ ms.date: 03/29/2022
 ms.author: mattmcinnes
 ms.subservice: cloud-init
 ms.custom: devx-track-azurecli, linux-related-content
+# Customer intent: As a system administrator, I want to use cloud-init to add a user to a Linux VM during provisioning, so that I can enhance security by avoiding the use of the root account and manage access efficiently.
 ---
 # Use cloud-init to add a user to a Linux VM in Azure
 

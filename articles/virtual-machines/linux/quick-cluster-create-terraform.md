@@ -11,6 +11,7 @@ ms.custom: devx-track-terraform, linux-related-content
 content_well_notification: 
   - AI-contribution
 ai-usage: ai-assisted
+# Customer intent: "As a cloud administrator, I want to create a Linux VM cluster using Terraform, so that I can efficiently manage and automate the deployment of infrastructure in Azure."
 ---
 
 # Quickstart: Create a Linux VM cluster in Azure using Terraform

@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.date: 12/9/2022
 ms.author: mattmcinnes
 ms.custom: GGAL-freshness822, linux-related-content
+# Customer intent: "As a system administrator, I want to securely transfer files between my workstation and an Azure VM using SCP, so that I can manage configurations and logs efficiently while maintaining data security."
 ---
 
 # Use SCP to move files to and from a VM 

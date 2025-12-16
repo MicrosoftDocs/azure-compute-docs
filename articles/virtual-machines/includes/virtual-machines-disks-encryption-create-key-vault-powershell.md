@@ -8,6 +8,7 @@
  ms.date: 04/17/2025
  ms.author: rogarana
 ms.custom: include file, devx-track-azurepowershell
+# Customer intent: As a cloud security administrator, I want to configure Azure Key Vault and Disk Encryption Set so that I can securely manage encryption keys for our managed disks across multiple subscriptions in compliance with security policies.
 ---
 1. Make sure that you have installed latest [Azure PowerShell version](/powershell/azure/install-azure-powershell), and you are signed in to an Azure account in with Connect-AzAccount
 
