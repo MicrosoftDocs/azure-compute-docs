@@ -15,10 +15,10 @@ ms.reviewer: mattmcinnes
 
 [!INCLUDE [fsv2-summary](./includes/fsv2-series-summary.md)]
 
-## Host specifications
+## Host specifications for the Fsv2-series
 [!INCLUDE [fsv2-series-specs](./includes/fsv2-series-specs.md)]
 
-## Feature support
+## Feature support for the Fsv2-series
 
 |Feature name | Suport status | 
 | --- | --- |
@@ -74,7 +74,7 @@ Local (temp) storage info for each size in the Fsv2-series.
 - [Azure managed disk types](../../../virtual-machines/disks-types.md)
 - [Share an Azure managed disk](../../../virtual-machines/disks-shared.md)
 
-#### Local storage table definitions
+#### Fsv2-series local storage table definitions
 - <sup>1</sup>Temp disk speed often differs between RR (Random Read) and RW (Random Write) operations. RR operations are typically faster than RW operations. The RW speed is usually slower than the RR speed on series where only the RR speed value is listed.
 - Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
 - Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
@@ -100,7 +100,7 @@ Remote (uncached) storage info for each size in the Fsv2-series.
 - [Azure managed disk types](../../../virtual-machines/disks-types.md)
 - [Share an Azure managed disk](../../../virtual-machines/disks-shared.md)
 
-#### Table definitions
+#### Fsv2-series remote storage table definitions
 - <sup>1</sup>Some sizes support [bursting](../../disk-bursting.md) to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.
 
 - Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
@@ -128,7 +128,7 @@ Network interface info for each size in the Fsv2-series.
 - [Virtual networks and virtual machines in Azure](/azure/virtual-network/network-overview)
 - [Virtual machine network bandwidth](/azure/virtual-network/virtual-machine-network-throughput)
 
-#### Network table definitions
+#### Fsv2-series network table definitions
 - Expected network bandwidth is the maximum aggregated bandwidth allocated per VM type across all NICs, for all destinations. For more information, see [Virtual machine network bandwidth](/azure/virtual-network/virtual-machine-network-throughput)
 - Upper limits aren't guaranteed. Limits offer guidance for selecting the right VM type for the intended application. Actual network performance will depend on several factors including network congestion, application loads, and network settings. For information on optimizing network throughput, see [Optimize network throughput for Azure virtual machines](/azure/virtual-network/virtual-network-optimize-network-bandwidth). 
 -  To achieve the expected network performance on Linux or Windows, you may need to select a specific version or optimize your VM. For more information, see [Bandwidth/Throughput testing (NTTTCP)](/azure/virtual-network/virtual-network-bandwidth-testing).
