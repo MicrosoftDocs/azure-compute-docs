@@ -17,7 +17,7 @@ With the support of [Intel® Trust Domain Extensions (TDX)](https://www.intel.co
 
 These VMs have native support for [confidential disk encryption](/azure/virtual-machines/disk-encryption-overview) meaning organizations can encrypt their VM disks at boot with either a customer-managed key (CMK), or platform-managed key (PMK). This feature is fully integrated with [Azure Key Vault](/azure/key-vault/general/overview) or [Azure Managed HSM](/azure/key-vault/managed-hsm/overview) with validation for FIPS 140-2 Level 3. 
 
-The DCesv6-series offers a balance of memory to vCPU performance that is suitable most production workloads. With up to 128 vCPUs, 512 GB of RAM, and support for remote disk storage. These VMs work well for many general computing workloads, e-commerce systems, web front ends, desktop virtualization solutions, sensitive databases, other enterprise applications and more.
+The DCesv6-series offers a balance of memory to vCPU performance. With up to 128 vCPUs, 512 GB of RAM, and support for remote disk storage, this size series works well for many general computing workloads, e-commerce systems, web front ends, desktop virtualization solutions, sensitive databases, other enterprise applications.
 
 > [!IMPORTANT]
 > These virtual machines are in public preview and not recommended for production usage. Sign up at aka.ms/acc/v6preview for access.
