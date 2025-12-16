@@ -32,7 +32,7 @@ ms.reviewer: simranparkhe
 
 ### [Basics](#tab/sizebasic)
 
-vCPUs (Qty.) and Memory for each size
+This table shows the number of vCPUs and and amount of memory for each DCesv6-series size:
 
 | Size Name | vCPUs (Qty.) | Memory (GB) |
 | --- | --- | --- |
