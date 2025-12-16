@@ -20,7 +20,7 @@ ms.reviewer: mattmcinnes
 
 ## Feature support for the Fsv2-series
 
-|Feature name | Suport status | 
+|Feature name | Support status | 
 | --- | --- |
 |[Premium Storage](../../premium-storage-performance.md) |  Supported |
 |[Premium Storage caching](../../premium-storage-performance.md) |  Supported |
