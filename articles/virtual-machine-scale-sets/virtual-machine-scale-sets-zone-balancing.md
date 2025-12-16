@@ -84,7 +84,7 @@ You upgrade it to be zone-spanning scale set across three zones. Immediately aft
 
 1. **Scale out:** Because your scale set currently has 5 nonzonal instances and you would like to scale out so that you have 5 instances spread across 3 zones, you should set the capacity to 10 (5 + 5). The new instances are created across the zones, and old instances remain where they are:
 
-    :::image type="content" source="media/virtual-machine-scale-sets-zone-balancing/rebalancing-conversion-scale-out.png" alt-text="Diagram that shows a scale set with two instances in zone 1, two instances in zone 2, one instance in zone 3, and five nonzonal instances." border="false":::  
+    :::image type="content" source="media/virtual-machine-scale-sets-zone-balancing/rebalancing-conversion-scale-out.svg" alt-text="Diagram that shows a scale set with two instances in zone 1, two instances in zone 2, one instance in zone 3, and five nonzonal instances." border="false":::  
 
 1. **Scale in:** You reduce the capacity to 5. Azure removes the nonzonal instances, leaving 5 instances spread across the zones:
 
