@@ -32,7 +32,7 @@ ms.reviewer: simranparkhe
 
 ### [Basics](#tab/sizebasic)
 
-This table shows the number of vCPUs and and amount of memory for each DCesv6-series size:
+This table shows the number of vCPUs and and amount of memory for each DCesv6-series size.
 
 | Size Name | vCPUs (Qty.) | Memory (GB) |
 | --- | --- | --- |
@@ -51,7 +51,7 @@ This table shows the number of vCPUs and and amount of memory for each DCesv6-se
 
 ### [Local storage](#tab/sizestoragelocal)
 
-Local (temp) storage info for each size
+Local (temp) storage available for each size.
 
 > [!NOTE]
 > No local storage present in this series.
@@ -62,7 +62,7 @@ Local (temp) storage info for each size
 
 ### [Remote storage](#tab/sizestorageremote)
 
-Remote (uncached) storage info for each size
+Remote (uncached) storage available for each size.
 
 | Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD Disk IOPS | Uncached Premium SSD Throughput (MB/s) 
 | --- | --- | --- | --- |
