@@ -50,7 +50,7 @@ When sharing Premium SSD v2 disks, they have the following additional limitation
 - When using Availability sets or Virtual Machine Scale Sets with Azure shared disks, [storage fault domain alignment](/azure/virtual-machines/availability) with virtual machine fault domain isn't enforced for the shared data disk.
 - When using [proximity placement groups (PPG)](/azure/virtual-machines/windows/proximity-placement-groups), all virtual machines sharing a disk must be part of the same PPG.
 - Only basic disks can be used with some versions of Windows Server Failover Cluster, for details see [Failover clustering hardware requirements and storage options](/windows-server/failover-clustering/clustering-requirements).
-- Azure Site Recovery support isn't yet available.
+- Azure Site Recovery is supported in [certain scenarios](/azure/site-recovery/shared-disk-support-matrix).
 - Azure Backup is available through [Azure Disk Backup](/azure/backup/disk-backup-overview).
 - Only [server-side encryption](/azure/virtual-machines/disk-encryption) is supported, [Azure Disk Encryption](/azure/virtual-machines/disk-encryption-overview) isn't currently supported.
 - Can only be shared across availability zones if using [Zone-redundant storage for managed disks](/azure/virtual-machines/disks-redundancy#zone-redundant-storage-for-managed-disks).
@@ -62,7 +62,7 @@ When sharing Premium SSD v2 disks, they have the following additional limitation
 - When using Availability sets and Virtual Machine Scale Sets with Azure shared disks, [storage fault domain alignment](/azure/virtual-machines/availability) with virtual machine fault domain isn't enforced for the shared data disk.
 - When using [proximity placement groups (PPG)](/azure/virtual-machines/windows/proximity-placement-groups), all virtual machines sharing a disk must be part of the same PPG.
 - Only basic disks can be used with some versions of Windows Server Failover Cluster, for details see [Failover clustering hardware requirements and storage options](/windows-server/failover-clustering/clustering-requirements).
-- Azure Site Recovery support isn't yet available.
+- Azure Site Recovery is supported in [certain scenarios](/azure/site-recovery/shared-disk-support-matrix).
 - Azure Backup is available through [Azure Disk Backup](/azure/backup/disk-backup-overview).
 - Only [server-side encryption](/azure/virtual-machines/disk-encryption) is supported, [Azure Disk Encryption](/azure/virtual-machines/disk-encryption-overview) isn't currently supported.
 - Can only be shared across availability zones if using [Zone-redundant storage for managed disks](/azure/virtual-machines/disks-redundancy#zone-redundant-storage-for-managed-disks).
