@@ -226,13 +226,7 @@ PATCH /subscriptions/subscriptionid/resourceGroups/resourcegroupo/providers/Micr
 
 ### Add new zonal instances and remove original instances
 
-#### Manually scale out and in
-
-[Update the capacity](virtual-machine-scale-sets-autoscale-overview.md) of the scale set to add more instances. The new capacity should be set to the original capacity plus the number of new instances. For example, if your scale set had 5 regional instances and you would like to scale out so that you have 3 instances in each of 3 zones, you should set the capacity to 14.
-
-You can update the zones parameter and the scale set capacity in the same ARM template or REST API call.
-
-When you are satisfied that the new instances are ready, scale in your scale set to remove the original regional instances. You can either manually delete the specific regional instances, or scale in by reducing the scale set capacity. When scaling in via reducing scale set capacity, the platform will always prefer removing the regional instances, then follow the scale in policy.
+You can manually balance your scale set across zones by triggering a scale-out operation and then scaling in. For more details, see [How to manually balance your scale set](./virtual-machine-scale-sets-zone-balancing.md#how-to-manually-balance-your-scale-set).
 
 ### Known issues and limitations
 
