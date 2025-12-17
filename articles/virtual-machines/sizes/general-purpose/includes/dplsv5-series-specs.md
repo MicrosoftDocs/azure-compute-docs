@@ -9,6 +9,7 @@ ms.date: 07-29-2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
+# Customer intent: "As a cloud infrastructure architect, I want to review the specifications of Dplsv5-series VMs, so that I can select the appropriate virtual machine size for my deployment needs."
 ---
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
 |---|---|---|

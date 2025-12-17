@@ -7,6 +7,7 @@ ms.reviewer: vamckMS
 ms.service: azure-dedicated-host
 ms.topic: how-to
 ms.date: 03/14/2025
+# Customer intent: As an IT administrator managing Azure workloads, I want to migrate retiring Dedicated Host SKUs to newer options, so that I can ensure optimal performance and compliance with upcoming changes in the Azure environment.
 ---
 
 # Azure Dedicated Host SKU Retirement Migration Guide

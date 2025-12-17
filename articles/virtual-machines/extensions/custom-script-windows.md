@@ -8,7 +8,8 @@ ms.author: gabsta
 author: GabstaMSFT
 ms.reviewer: jushiman
 ms.collection: windows
-ms.date: 04/04/2023
+ms.date: 08/18/2025
+# Customer intent: As a cloud administrator, I want to automate post-deployment configuration and management tasks on Windows VMs using scripts, so that I can ensure efficient and consistent setup without manual intervention.
 ---
 # Custom Script Extension for Windows
 
@@ -17,6 +18,8 @@ The Custom Script Extension downloads and runs scripts on Azure virtual machines
 The Custom Script Extension integrates with Azure Resource Manager templates. You can also run it by using the Azure CLI, Azure PowerShell, the Azure portal, or the Azure Virtual Machines REST API.
 
 This article describes how to use the Custom Script Extension by using the Azure PowerShell module and Azure Resource Manager templates. It also provides troubleshooting steps for Windows systems.
+
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
 
 ## Prerequisites
 
@@ -66,7 +69,7 @@ If your script is on a local server, you might still need to open other firewall
 - When the script is running, you only see a *transitioning* extension status from the Azure portal or Azure CLI. If you want more frequent status updates for a running script, create your own solution.
 - The Custom Script Extension doesn't natively support proxy servers. However, you can use a file transfer tool, such as [Invoke-WebRequest](/powershell/module/microsoft.powershell.utility/invoke-webrequest), that supports proxy servers within your script.
 - Be aware of nondefault directory locations that your scripts or commands might rely on. Have logic to handle this situation.
-- Ensure you don't have any custom setting in the registry key `HKLM\SOFTWARE\Microsoft\Command Processor\AutoRun` (*detailed [here](https://learn.microsoft.com/windows-server/administration/windows-commands/cmd)*). This would trigger during the Custom Script Extension install or enable phases and cause an error like `'XYZ is not recognized as an internal or external command, operable program or batch file'`.
+- Ensure you don't have any custom setting in the registry key `HKLM\SOFTWARE\Microsoft\Command Processor\AutoRun` (*detailed [here](/windows-server/administration/windows-commands/cmd)*). This would trigger during the Custom Script Extension install or enable phases and cause an error like `'XYZ is not recognized as an internal or external command, operable program or batch file'`.
 - The Custom Script Extension runs under the `LocalSystem` account.
 - If you plan to use the `storageAccountName` and `storageAccountKey` properties, these properties must be collocated in `protectedSettings`.
 - You can have only one version of an extension applied to the VM. To run a second custom script, you can update the existing extension with a new configuration. Alternatively, you can remove the custom script extension and reapply it with the updated script
@@ -122,7 +125,7 @@ You can use this schema inside the VM resource or as a standalone resource. If t
 
 | Name | Value or example | Data type |
 | ---- | ---- | ---- |
-| apiVersion | `2015-06-15` | date |
+| apiVersion | `2018-06-01` | date |
 | publisher | `Microsoft.Compute` | string |
 | type | `CustomScriptExtension` | string |
 | typeHandlerVersion | `1.10` | int |
@@ -162,6 +165,10 @@ You can set the following values in either public or protected settings. The ext
 > This property *must* be specified in protected settings only.
 
 The Custom Script Extension, version 1.10 and later, supports [managed identities](/azure/active-directory/managed-identities-azure-resources/overview) for downloading files from URLs provided in the `fileUris` setting. The property allows the Custom Script Extension to access Azure Storage private blobs or containers without the user having to pass secrets like SAS tokens or storage account keys.
+
+> [!NOTE]
+> The Custom Script Extension does not currently support using Managed Identity authentication on Azure Arc–enabled servers.
+
 
 To use this feature, add a [system-assigned](/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity) or [user-assigned](/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-user-assigned-identity) identity to the VM or Virtual Machine Scale Set where the Custom Script Extension runs. Then [grant the managed identity access to the Azure Storage container or blob](/azure/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access).
 

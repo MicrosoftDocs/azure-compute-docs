@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: devx-track-dotnet
 services: service-fabric
 ms.date: 05/17/2024
+# Customer intent: As a .NET developer, I want to build and deploy a Service Fabric application using ASP.NET Core, so that I can create a voting application with a stateful back end to store voting data.
 ---
 
 # Tutorial: Build a .NET Service Fabric application
@@ -38,7 +39,7 @@ The tutorial series shows you how to:
 
 Before you begin this tutorial:
 
-* If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 * [Install Visual Studio 2019](https://www.visualstudio.com/) version 15.5 or later, including the Azure development workload and the ASP.NET and web development workload.
 * [Install the Service Fabric SDK](service-fabric-get-started.md).
 

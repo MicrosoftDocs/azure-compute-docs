@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a cloud administrator, I want to manage the upgrade settings of my Azure Service Fabric managed cluster, so that I can control the timing and process of updates to ensure system stability and performance.
 ---
 # Manage Service Fabric managed cluster upgrades
 

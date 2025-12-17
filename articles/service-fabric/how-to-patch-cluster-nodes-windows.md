@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a cloud infrastructure administrator, I want to enable automatic OS image upgrades for my Service Fabric cluster, so that I can efficiently maintain the latest Windows patches and enhance the security and stability of my applications.
 ---
 
 # Patch the Windows operating system in your Service Fabric cluster

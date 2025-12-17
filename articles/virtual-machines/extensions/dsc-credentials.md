@@ -4,16 +4,15 @@ description: Learn how to securely pass credentials to Azure virtual machines us
 ms.topic: how-to
 ms.service: azure-virtual-machines
 ms.subservice: extensions
-author: bobbytreed
-ms.author: robreed
+author: mgreenegit
+ms.author: migreene
 ms.reviewer: jushiman
 ms.collection: windows
-ms.date: 03/06/2023
+ms.date: 08/20/2025
 ms.custom:
+# Customer intent: As an Azure system administrator, I want to securely pass credentials to virtual machines using PowerShell Desired State Configuration, so that I can efficiently configure user accounts and services without compromising security.
 ---
 # Pass credentials to the Azure DSCExtension handler
-
-This article covers the Desired State Configuration (DSC) extension for Azure. For an overview of the DSC extension handler, see [Introduction to the Azure Desired State Configuration extension handler](dsc-overview.md).
 
 > [!NOTE]
 > DSC extension will be retired on March 31, 2028. Please transition to
@@ -23,6 +22,10 @@ This article covers the Desired State Configuration (DSC) extension for Azure. F
 > Automation State Configuration, and commonly requested features from customer feedback.
 > Azure Machine Configuration also includes hybrid machine support through
 > [Arc-enabled servers](/azure/azure-arc/servers/overview).
+
+This article covers the Desired State Configuration (DSC) extension for Azure. For an overview of the DSC extension handler, see [Introduction to the Azure Desired State Configuration extension handler](dsc-overview.md).
+
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
 
 ## Pass in credentials
 

@@ -5,13 +5,14 @@ author: roygara
 
 ms.service: azure-disk-storage
 ms.tgt_pltfrm: vm-windows
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 10/07/2017
 ms.author: rogarana
 ms.custom:
   - H1Hack27Feb2017
   - migration
   - aws-to-azure
+# Customer intent: "As a cloud administrator, I want to migrate existing VHDs from AWS and other platforms to Azure managed disks, so that I can simplify VM management and enhance reliability without managing individual storage accounts."
 ---
 
 # Migrate from Amazon Web Services (AWS) and other platforms to managed disks in Azure

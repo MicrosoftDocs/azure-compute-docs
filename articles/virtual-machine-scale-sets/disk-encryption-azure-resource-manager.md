@@ -1,17 +1,20 @@
 ---
 title: Create and encrypt a Virtual Machine Scale Set with Azure Resource Manager templates
 description: In this quickstart, you learn how to use Azure Resource Manager templates to create and encrypt a Virtual Machine Scale Set
-author: ju-shim
-ms.author: jushiman
+author: cynthn
+ms.author: cynthn
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: disks
-ms.date: 06/14/2024
+ms.date: 09/23/2025
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-arm-template
+# Customer intent: As a cloud engineer, I want to use Azure Resource Manager templates to create and encrypt Virtual Machine Scale Sets, so that I can ensure data security and compliance for my running virtual machines.
 ---
 
 # Encrypt Virtual Machine Scale Sets with Azure Resource Manager
+
+[!INCLUDE [Azure Disk Encryption retirement notice](~/reusable-content/ce-skilling/azure/includes/security/azure-disk-encryption-retirement.md)]
 
 You can encrypt or decrypt Linux Virtual Machine Scale Sets using Azure Resource Manager templates.
 

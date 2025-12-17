@@ -10,6 +10,7 @@ ms.service: azure-virtual-machines
 ms.subservice: image-builder
 ms.custom: subject-policy-compliancecontrols
 
+# Customer intent: "As a compliance officer, I want to understand the regulatory compliance controls available for Azure VM Image Builder, so that I can ensure our Azure resources meet necessary compliance standards."
 ---
 # Azure Policy Regulatory Compliance controls for Azure VM Image Builder
 
@@ -21,7 +22,7 @@ In this article, you can refer to a list of the compliance domains and security 
 
 [!INCLUDE [azure-policy-compliancecontrols-introwarning](~/azure-docs-pr/includes/policy/standards/intro-warning.md)]
 
-[!INCLUDE [azure-policy-compliancecontrols-vmimages](~/azure-docs-pr/includes/policy/standards/byrp/microsoft.virtualmachineimages.md)]
+[!INCLUDE [azure-policy-compliancecontrols-vmimages](~/azure-policy-autogen-docs/includes/policy/standards/byrp/microsoft.virtualmachineimages.md)]
 
 ## Next steps
 

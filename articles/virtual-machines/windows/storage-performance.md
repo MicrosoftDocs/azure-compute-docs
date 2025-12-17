@@ -6,7 +6,8 @@ ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: how-to
 ms.date: 06/01/2022
-ms.author: sasham
+ms.author: mattmcinnes
+# Customer intent: "As a cloud architect, I want to optimize the performance of Lsv3, Lasv3, and Lsv2-series Windows VMs, so that I can ensure my applications run efficiently and effectively while managing high I/O workloads."
 --- 
 # Optimize performance on Lsv3, Lasv3, and Lsv2-series Windows VMs
 

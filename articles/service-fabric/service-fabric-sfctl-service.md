@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a developer managing services in a Service Fabric environment, I want to use the command line interface to create, update, and delete services, so that I can efficiently handle deployment and maintenance tasks within my applications.
 ---
 
 # sfctl service

@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.date: 05/26/2022
 ms.author: aarthiv
 ms.subservice: disks
+# Customer intent: As a cloud architect, I want to understand the limitations and requirements of using ephemeral OS disks for Azure VMs, so that I can effectively plan and deploy virtual machines with optimal storage configurability and resource management.
 ---
 
 # Frequently asked questions about Ephemeral OS disks

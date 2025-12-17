@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a cloud application developer, I want to secure my Service Fabric applications by configuring them to run under local or system user accounts, so that I can manage permissions and enhance security for my services."
 ---
 
 # Run a service as a local user account or local system account

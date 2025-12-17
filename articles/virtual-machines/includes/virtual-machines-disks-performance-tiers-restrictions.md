@@ -8,6 +8,7 @@
  ms.date: 01/16/2025
  ms.author: rogarana
  ms.custom: include file
+# Customer intent: As a cloud administrator, I want to change the performance tier of managed disks for virtual machines, so that I can optimize storage performance based on workload requirements without disrupting running instances.
 ---
 
 - Changing the performance tier is currently only supported for Premium SSD managed disks.

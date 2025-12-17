@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: devx-track-azurepowershell, linux-related-content
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a system administrator managing an Azure Service Fabric cluster, I want to upgrade the Linux OS from Ubuntu 18.04 LTS to 20.04 LTS, so that I can ensure continued support and maintain optimal performance for my applications."
 ---
 
 # Upgrade Linux OS for Azure Service Fabric

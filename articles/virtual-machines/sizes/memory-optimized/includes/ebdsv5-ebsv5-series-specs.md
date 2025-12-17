@@ -9,6 +9,7 @@ ms.subservice: sizes
 ms.date: 04/18/2024
 ms.author: mattmcinnes
 ms.custom: include file
+# Customer intent: "As a cloud architect, I want to access specifications for Ebdsv5 and Ebsv5-series virtual machines, so that I can select the appropriate VM size to meet my project's performance and resource requirements."
 ---
 | Part | Quantity <br><sup>Count <sup>Units | Specs <br><sup>SKU ID, Performance <sup>Units</sup>, etc.  |
 |---|---|---|

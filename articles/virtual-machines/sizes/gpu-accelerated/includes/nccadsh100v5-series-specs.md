@@ -9,6 +9,7 @@ ms.date: 08/06/2024
 ms.author: khande
 ms.reviewer: mattmcinnes
 ms.custom: include file
+# Customer intent: "As a cloud architect, I want to review the specifications of the NCCads_H100_v5 series VM sizes, so that I can assess their performance capabilities for my workload requirements."
 ---
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
 |---|---|---|

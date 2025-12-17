@@ -8,6 +8,7 @@ ms.subservice: trusted-launch
 ms.date: 06/13/2024
 ms.author: ajkundna
 ms.custom: include file, devx-track-arm-template
+# Customer intent: "As an Azure architect, I want to deploy a Virtual Machine Scale Set with Trusted Launch security features, so that I can enhance the security of my applications by ensuring trusted boot and running state verification."
 ---
 
 <details>

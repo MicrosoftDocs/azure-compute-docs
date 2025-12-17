@@ -6,8 +6,9 @@ ms.service: azure-disk-storage
 ms.custom: linux-related-content
 ms.topic: how-to
 ms.date: 11/17/2020
-ms.author: tibasham
+ms.author: mattmcinnes
 ms.collection: linux
+# Customer intent: As a Linux administrator, I want to map Azure Disks to Linux VM guest disks by identifying their LUNs so that I can effectively manage storage resources and ensure data integrity within my virtual machines.
 ---
 # How to map Azure Disks to Linux VM guest disks
 

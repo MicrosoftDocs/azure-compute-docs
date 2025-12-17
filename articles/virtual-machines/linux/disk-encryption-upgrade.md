@@ -6,11 +6,14 @@ ms.service: azure-virtual-machines
 ms.subservice: disks
 ms.topic: how-to
 ms.author: mbaldwin
-ms.date: 04/29/2025
+ms.date: 09/23/2025
 ms.custom: linux-related-content
+# Customer intent: "As a system administrator, I want to upgrade Azure Disk Encryption on my virtual machines, so that I can enhance security by using the latest version without relying on Microsoft Entra ID."
 ---
 
 # Upgrading the Azure Disk Encryption version
+
+[!INCLUDE [Azure Disk Encryption retirement notice](~/reusable-content/ce-skilling/azure/includes/security/azure-disk-encryption-retirement.md)]
 
 The first version of Azure Disk Encryption (ADE) relied on Microsoft Entra ID for authentication; the current version doesn't.  We strongly encourage the use of the newest version.
 

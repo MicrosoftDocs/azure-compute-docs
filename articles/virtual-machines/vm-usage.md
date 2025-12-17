@@ -9,6 +9,7 @@ ms.service: azure-virtual-machines
 ms.topic: how-to
 ms.tgt_pltfrm: vm
 ms.date: 05/01/2023
+# Customer intent: "As a cloud administrator, I want to analyze Azure virtual machine usage details, so that I can optimize cost management and resource allocation across my organization."
 ---
 
 # Understanding Azure virtual machine usage

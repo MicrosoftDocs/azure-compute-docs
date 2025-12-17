@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a cloud architect, I want to configure movement costs for services in a Service Fabric cluster, so that resource management and service migrations are optimized for performance and minimize disruption during dynamic operations.
 ---
 
 # Service movement cost

@@ -1,14 +1,15 @@
 ---
 title: Azure CLI sample for moving a Marketplace Azure VM to another subscription
 description: Azure CLI sample for moving an Azure Marketplace Virtual Machine to a different subscription.
-author: ju-shim
-ms.author: jushiman
+author: cynthn
+ms.author: cynthn
 ms.reviewer: mattmcinnes
 ms.date: 04/20/2023
 ms.topic: sample
 ms.service: azure-virtual-machines
 ms.devlang: azurecli
 ms.custom: devx-track-azurecli
+# Customer intent: "As an IT admin, I want to move a Marketplace Azure virtual machine to another subscription, so that I can manage subscriptions more effectively and ensure resource alignment based on organizational needs."
 ---
 
 # Move a Marketplace Azure Virtual Machine to another subscription

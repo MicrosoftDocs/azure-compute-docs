@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: devx-track-azurepowershell
 services: service-fabric
 ms.date: 08/26/2022
+# Customer intent: "As an IT administrator, I want to vertically scale a non-primary node type in my Service Fabric cluster, so that I can upgrade the VM size and operating system without incurring downtime or data loss during the process."
 ---
 
 # Scale up a Service Fabric cluster non-primary node type

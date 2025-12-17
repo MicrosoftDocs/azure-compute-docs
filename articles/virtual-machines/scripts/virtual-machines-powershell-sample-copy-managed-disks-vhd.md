@@ -8,6 +8,7 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-windows
 ms.date: 03/01/2023
 ms.author: rogarana
+# Customer intent: "As an IT admin, I want to export a managed disk's VHD to a storage account in a different region using PowerShell, so that I can facilitate regional expansion and ensure data availability across locations."
 ---
 
 # Export/Copy the VHD of a managed disk to a storage account in different region with PowerShell (Windows)

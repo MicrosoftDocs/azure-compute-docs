@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a cloud service administrator, I want to implement health monitoring in Service Fabric, so that I can proactively detect and resolve issues within my applications and ensure high availability of services within the cluster."
 ---
 
 # Introduction to Service Fabric health monitoring

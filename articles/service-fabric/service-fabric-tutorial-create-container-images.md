@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: linux-related-content
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a developer working with Service Fabric on Linux, I want to create and upload container images to Azure Container Registry, so that I can deploy my multi-container applications effectively."
 ---
 
 # Tutorial: Create container images on a Linux Service Fabric cluster
@@ -32,7 +33,7 @@ In this tutorial series, you learn how to:
 
 * Linux development environment set up for Service Fabric. Follow the instructions [here](service-fabric-get-started-linux.md) to set up your Linux environment.
 * This tutorial requires that you are running the Azure CLI version 2.0.4 or later. Run `az --version` to find the version. If you need to install or upgrade, see [Install the Azure CLI]( /cli/azure/install-azure-cli).
-* Additionally, it requires that you have an Azure subscription available. For more information on a free trial version, go [here](https://azure.microsoft.com/free/).
+* Additionally, it requires that you have an Azure subscription available. For more information on a free trial version, go [here](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 
 ## Get application code
 

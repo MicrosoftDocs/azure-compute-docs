@@ -9,10 +9,13 @@ ms.author: guywild
 ms.reviewer: jushiman
 ms.collection: windows
 ms.date: 01/14/2025
+# Customer intent: As a system administrator, I want to deploy the Azure Monitor Dependency agent on Windows virtual machines, so that I can monitor application dependencies and ensure optimal performance of my applications within the Azure environment.
 ---
 # Azure Monitor Dependency virtual machine extension for Windows
 
 The Azure Monitor for VMs Map feature gets its data from the Microsoft Dependency agent. The Azure VM Dependency agent virtual machine extension for Windows installs the Dependency agent on Azure virtual machines. This document details the supported platforms, configurations, and deployment options for the Azure VM Dependency agent virtual machine extension for Windows.
+
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
 
 ## Operating system
 

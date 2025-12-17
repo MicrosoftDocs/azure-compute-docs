@@ -9,6 +9,7 @@ ms.date: 08/01/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
+# Customer intent: "As a data scientist, I want to utilize NDv2-series virtual machines for GPU-accelerated AI and machine learning workloads, so that I can achieve optimal performance for my computationally intensive tasks."
 ---
 The NDv2-series virtual machine is a new addition to the GPU family designed for the needs of the most demanding GPU-accelerated AI, machine learning, simulation, and HPC workloads.
 

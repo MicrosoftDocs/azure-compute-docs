@@ -1,17 +1,21 @@
 ---
 title: Tutorial - Create and manage Linux VMs with the Azure CLI
 description: In this tutorial, you learn how to use the Azure CLI to create and manage Linux VMs in Azure
-author: ju-shim
+author: cynthn
 ms.service: azure-virtual-machines
 ms.collection: linux
 ms.topic: tutorial
-ms.date: 03/23/2023
-ms.author: jushiman
+ms.date: 04/06/2025
+ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli, linux-related-content, innovation-engine
 #Customer intent: As an IT administrator, I want to learn about common maintenance tasks so that I can create and manage Linux VMs in Azure
+# Customer intent: "As an IT administrator, I want to learn how to create and manage Linux VMs using the command line, so that I can efficiently deploy and perform maintenance tasks in Azure."
 ---
 
 # Tutorial: Create and Manage Linux VMs with the Azure CLI
+
+> [!div class="nextstepaction"]
+> [Deploy and Explore](https://go.microsoft.com/fwlink/?linkid=2321734)
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Flexible scale sets
 
@@ -152,7 +156,7 @@ x64             0001-com-ubuntu-server-jammy       Canonical    22_04-lts       
 > [!NOTE]
 > Canonical has changed the **Offer** names they use for the most recent versions. Before Ubuntu 20.04, the **Offer** name is UbuntuServer. For Ubuntu 20.04 the **Offer** name is `0001-com-ubuntu-server-focal` and for Ubuntu 22.04 it's `0001-com-ubuntu-server-jammy`.
 
-To deploy a VM using a specific image, take note of the value in the *Urn* column, which consists of the publisher, offer, SKU, and optionally a version number to [identify](cli-ps-findimage.md#terminology) the image. When specifying the image, the image version number can be replaced with `latest`, which selects the latest version of the distribution. In this example, the `--image` parameter is used to specify the latest version of Ubuntu 22.04.
+To deploy a VM using a specific image, take note of the value in the *Urn* column, which consists of the publisher, offer, SKU, and optionally a version number to [identify](cli-ps-findimage.md#terminology) the image. When specifying the image, the image version number can be replaced with `latest`, which selects the latest version of the distribution. In this example, the `--image` parameter is used to specify the latest version of a Ubuntu 22.04.
 
 ```bash
 export MY_VM2_NAME="myVM2$RANDOM_SUFFIX"

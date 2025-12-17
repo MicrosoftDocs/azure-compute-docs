@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a cloud developer, I want to manage Service Fabric properties using the command line interface, so that I can efficiently store, retrieve, and manipulate application configurations from the terminal without navigating through graphical tools.
 ---
 
 # sfctl property

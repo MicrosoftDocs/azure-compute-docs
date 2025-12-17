@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.date: 01/15/2025
 ms.author: rogarana
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
+# Customer intent: "As a cloud administrator, I want to change the performance tier of managed disks without downtime, so that I can optimize resources for my virtual machines efficiently without interruption to their operations."
 ---
 
 # Change your performance tier without downtime

@@ -6,6 +6,7 @@ ms.author: jhaessler
 ms.service: oracle-on-azure
 ms.topic: concept-article
 ms.date: 10/03/2024
+# Customer intent: "As a database administrator, I want to migrate Oracle workloads to Azure VMs, so that I can leverage cloud scalability and maintain business continuity during the transition."
 ---
 
 # Migrate Oracle workloads to Azure VMs  

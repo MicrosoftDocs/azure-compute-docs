@@ -6,12 +6,16 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 09/29/2025
+# Customer intent: As a developer, I want to implement event aggregation and diagnostics logging in my Azure Service Fabric application using EventFlow, so that I can monitor, filter, and analyze the service's performance and health effectively.
 ---
 
 # Event aggregation and collection using EventFlow
 
-[Microsoft Diagnostics EventFlow](https://github.com/Azure/diagnostics-eventflow) can route events from a node to one or more monitoring destinations. Because it is included as a NuGet package in your service project, EventFlow code and configuration travel with the service, eliminating the per-node configuration issue mentioned earlier about Azure Diagnostics. EventFlow runs within your service process, and connects directly to the configured outputs. Because of the direct connection, EventFlow works for Azure, container, and on-premises service deployments. Be careful if you run EventFlow in high-density scenarios, such as in a container, because each EventFlow pipeline makes an external connection. So, if you host several processes, you get several outbound connections! This isn't as much a concern for Service Fabric applications, because all replicas of a `ServiceType` run in the same process, and this limits the number of outbound connections. EventFlow also offers event filtering, so that only the events that match the specified filter are sent.
+[Microsoft Diagnostics EventFlow](https://github.com/Azure/diagnostics-eventflow) can route events from a node to one or more monitoring destinations. Because it's included as a NuGet package in your service project, EventFlow code and configuration travel with the service, eliminating the per-node configuration issue mentioned earlier about Azure Diagnostics. EventFlow runs within your service process, and connects directly to the configured outputs. Because of the direct connection, EventFlow works for Azure, container, and on-premises service deployments. Be careful if you run EventFlow in high-density scenarios, such as in a container, because each EventFlow pipeline makes an external connection. So, if you host several processes, you get several outbound connections! This isn't as much a concern for Service Fabric applications, because all replicas of a `ServiceType` run in the same process, and this limits the number of outbound connections. EventFlow also offers event filtering, so that only the events that match the specified filter are sent.
+
+> [!WARNING]
+> Application Insights for the Service Fabric SDK is no longer supported.
 
 ## Set up EventFlow
 
@@ -19,10 +23,10 @@ EventFlow binaries are available as a set of NuGet packages. To add EventFlow to
 
 ![EventFlow NuGet packages in Visual Studio NuGet package manager UI](./media/service-fabric-diagnostics-event-aggregation-eventflow/eventflow-nuget.png)
 
-You will see a list of various packages show up, labeled with "Inputs" and "Outputs". EventFlow supports various different logging providers and analyzers. The service hosting EventFlow should include appropriate packages depending on the source and destination for the application logs. In addition to the core ServiceFabric package, you also need at least one Input and Output configured. For example, you can add the following packages to send EventSource events to Application Insights:
+You'll see a list of various packages show up, labeled with "Inputs" and "Outputs". EventFlow supports various different logging providers and analyzers. The service hosting EventFlow should include appropriate packages depending on the source and destination for the application logs. In addition to the core ServiceFabric package, you also need at least one Input and Output configured. For example, you can add the following packages to send EventSource events to Application Insights:
 
 * `Microsoft.Diagnostics.EventFlow.Inputs.EventSource` to capture data from the service's EventSource class, and from standard EventSources such as *Microsoft-ServiceFabric-Services* and *Microsoft-ServiceFabric-Actors*)
-* `Microsoft.Diagnostics.EventFlow.Outputs.ApplicationInsights` (we are going to send the logs to an Azure Application Insights resource)
+* `Microsoft.Diagnostics.EventFlow.Outputs.ApplicationInsights` (we're going to send the logs to an Azure Application Insights resource)
 * `Microsoft.Diagnostics.EventFlow.ServiceFabric`(enables initialization of the EventFlow pipeline from Service Fabric service configuration and reports any problems with sending diagnostic data as Service Fabric health reports)
 
 >[!NOTE]
@@ -34,9 +38,9 @@ After all the packages are installed, the next step is to configure and enable E
 The EventFlow pipeline responsible for sending the logs is created from a specification stored in a configuration file. The `Microsoft.Diagnostics.EventFlow.ServiceFabric` package installs a starting EventFlow configuration file under `PackageRoot\Config` solution folder, named `eventFlowConfig.json`. This configuration file needs to be modified to capture data from the default service `EventSource` class, and any other inputs you want to configure, and send data to the appropriate place.
 
 >[!NOTE]
->If your project file has VisualStudio 2017 format the `eventFlowConfig.json` file will not be automatically added. To fix this create the file in the `Config` folder and set the build action to `Copy if newer`. 
+>If your project file has VisualStudio 2017 format the `eventFlowConfig.json` file won't be automatically added. To fix this create the file in the `Config` folder and set the build action to `Copy if newer`. 
 
-Here is a sample *eventFlowConfig.json* based on the NuGet packages mentioned above:
+Here's a sample *eventFlowConfig.json* based on the NuGet packages mentioned above:
 ```json
 {
   "inputs": [
@@ -67,7 +71,7 @@ Here is a sample *eventFlowConfig.json* based on the NuGet packages mentioned ab
 }
 ```
 
-The name of service's ServiceEventSource is the value of the Name property of the `EventSourceAttribute` applied to the ServiceEventSource class. It is all specified in the `ServiceEventSource.cs` file, which is part of the service code. For example, in the following code snippet the name of the ServiceEventSource is *MyCompany-Application1-Stateless1*:
+The name of service's ServiceEventSource is the value of the Name property of the `EventSourceAttribute` applied to the ServiceEventSource class. It's all specified in the `ServiceEventSource.cs` file, which is part of the service code. For example, in the following code snippet, the name of the ServiceEventSource is *MyCompany-Application1-Stateless1*:
 
 ```csharp
 [EventSource(Name = "MyCompany-Application1-Stateless1")]

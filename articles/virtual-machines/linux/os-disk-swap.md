@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.date: 04/24/2018
 ms.author: rogarana
 ms.custom: devx-track-azurecli, linux-related-content
+# Customer intent: "As a cloud administrator, I want to swap the operating system disk of an Azure virtual machine using the CLI, so that I can easily update or recover the VM without needing to delete and recreate it."
 ---
 # Change the OS disk used by an Azure VM using the Azure CLI
 

@@ -4,10 +4,11 @@ description: A list containing all retired and soon to be retired VM size series
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
-ms.date: 03/14/2025
+ms.topic: concept-article
+ms.date: 06/13/2025
 ms.author: mattmcinnes
 ms.reviewer: iamwilliew
+# Customer intent: As a cloud administrator, I want to review the list of retired virtual machine size series and their migration guides, so that I can ensure my systems are updated and transition to supported VM sizes before any planned retirements.
 ---
 
 # Retired Azure VM size series
@@ -16,6 +17,8 @@ This article provides a list of all sizes that are retired or have been announce
 
 > [!WARNING]
 > Series with *Retirement Status* listed as *Retired* are **no longer available** and can't be provisioned.
+> 
+> Virtual Machines (VMs) announced for retirement will have restrictions when deploying through new subscriptions. We recommend using the latest generation VMs to ensure best price-performance and to benefit from extended capacity availability over time for new deployments.
 
 ## What are retired size series?
 Retired virtual machine size series are running on older hardware which is no longer supported. The hardware is with newer generations of hardware.
@@ -31,30 +34,47 @@ To learn more about size series retirement, previous-gen sizes, and the retireme
 
 ## General purpose retired sizes
 
-|Series name        | Retirement Status |Retirement Announcement Date | Planned Retirement Date | Migration Guide |
-|-------------------|-------------------|-----------------------------|-------------------------|-----------------|
-| Av1-series        | **Announced**     | 11/02/23                    | 8/31/24                 | [Av1-series Retirement](./av1-series-retirement.md)  |
+|Series name        | Retirement Status |Retirement Announcement                                            | Planned Retirement Date | Migration Guide |
+|-------------------|-------------------|-------------------------------------------------------------------|-------------------------|-----------------|
+| D-series          | **Announced**     | [03/31/25](https://azure.microsoft.com/updates?id=485569)         | 05/01/28                | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide)               |
+| Ds-series         | **Announced**     | [03/31/25](https://azure.microsoft.com/updates?id=485569)         | 05/01/28                | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide)               |
+| Dv2-series        | **Announced**     | [03/31/25](https://azure.microsoft.com/updates?id=485569)         | 05/01/28                | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide)                |
+| Dsv2-series       | **Announced**     | [03/31/25](https://azure.microsoft.com/updates?id=485569)         | 05/01/28                | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide)               |
+| Av2/Amv2-series   | **Announced**     | [10/15/25](https://azure.microsoft.com/updates?id=500682)         | 11/15/28                | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide)            |
+| B-series          | **Announced**     | [10/15/25](https://azure.microsoft.com/updates?id=500682)         | 11/15/28                | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide)         |
 
 ## Compute optimized retired sizes
 
-Currently there are no compute optimized series retired or announced for retirement.
+|Series name        | Retirement Status |Retirement Announcement                                            | Planned Retirement Date | Migration Guide |
+|-------------------|-------------------|-------------------------------------------------------------------|-------------------------|-----------------|
+| F-series          | **Announced**     | [10/15/25](https://azure.microsoft.com/updates?id=500682)         | 11/15/28                | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide)               |
+| Fs-series         | **Announced**     | [10/15/25](https://azure.microsoft.com/updates?id=500682)         | 11/15/28                | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide)               |
+| Fsv2-series       | **Announced**     | [10/15/25](https://azure.microsoft.com/updates?id=500682)         | 11/15/28                | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide)               |
 
 ## Memory optimized retired sizes
 
-Currently there are no memory optimized series retired or announced for retirement.
+|Series name        | Retirement Status |Retirement Announcement                                            | Planned Retirement Date | Migration Guide |
+|-------------------|-------------------|-------------------------------------------------------------------|-------------------------|-----------------|
+| G-series          | **Announced**     | [10/15/25](https://azure.microsoft.com/updates?id=500682)         | 11/15/28                | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide)             |
+| Gs-series         | **Announced**     | [10/15/25](https://azure.microsoft.com/updates?id=500682)         | 11/15/28                | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide)     |
+| Standard_M192idms_v2         | **Announced**     | [03/22/2024](https://azure.microsoft.com/updates?id=support-for-standardm192idmsv2-will-be-retired-on-31-march-2027)         | 03/31/27                | [Migration Guide](/azure/virtual-machines/sizes/retirement/msv2-mdsv2-retirement)     |
+| Standard_M192ids_v2         | **Announced**     | [03/22/2024](https://azure.microsoft.com/updates?id=community-support-for-standardm192idsv2-is-ending-on-31-march-2027)         | 03/31/27                | [Migration Guide](/azure/virtual-machines/sizes/retirement/msv2-mdsv2-retirement)     |
+| Standard_M192ims_v2         | **Announced**     | [03/22/2024](https://azure.microsoft.com/updates?id=community-support-for-standardm192imsv2-is-ending-on-31-march-2027)         | 03/31/27                | [Migration Guide](/azure/virtual-machines/sizes/retirement/msv2-mdsv2-retirement)     |
+| Standard_M192is_v2         | **Announced**     | [03/22/2024](https://azure.microsoft.com/updates?id=community-support-for-standardm192isv2-is-ending-on-31-march-2027)         | 03/31/27                | [Migration Guide](/azure/virtual-machines/sizes/retirement/msv2-mdsv2-retirement)     |
 
 ## Storage optimized retired sizes
 
-Currently there are no retired storage optimized series retired or announced for retirement.
+|Series name        | Retirement Status |Retirement Announcement                                            | Planned Retirement Date | Migration Guide |
+|-------------------|-------------------|-------------------------------------------------------------------|-------------------------|-----------------|
+| Ls-series         | **Announced**     | [03/31/25](https://azure.microsoft.com/updates?id=485569)         | 05/01/28                | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide)             |
+| Lsv2-series       | **Announced**     | [10/15/25](https://azure.microsoft.com/updates?id=500682)         | 11/15/28                | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide)            |
 
 ## GPU accelerated retired sizes
 
-| Series name       | Retirement Status |Retirement Announcement Date | Planned Retirement Date | Migration Guide
-|-------------------|-------------------|-----------------------------|-------------------------|-----------------|
-| NV-Series         | **Retired**       | -                           | 9/6/23                  | [NV-series Retirement](./nv-series-retirement.md)    |
-| NC-Series         | **Retired**       | -                           | 9/6/23                  | [NC-series Retirement](./nc-series-retirement.md)    |
-| NCv2-Series       | **Retired**       | -                           | 9/6/23                  | [NCv2-series Retirement](./ncv2-series-retirement.md)  |
-| ND-Series         | **Retired**       | -                           | 9/6/23                  | [ND-series Retirement](./nd-series-retirement.md)    |
+| Series name        | Retirement Status |Retirement Announcement      | Planned Retirement Date | Migration Guide |
+|--------------------|-------------------|-----------------------------|-------------------------|-----------------|
+| NCv3-NC24rs Series | **Retired**       | -                           | 30/9/25                 | [NCv3-NC24rs-series Retirement](../../ncv3-nc24rs-retirement.md) |
+| NCv3-Series        | **Retired**       | -                           | 30/9/25                 | [NCv3-series Retirement](../../ncv3-retirement.md)     |
 
 ## FPGA accelerated retired sizes
 
@@ -62,18 +82,12 @@ Currently there are no retired FPGA accelerated series retired or announced for 
 
 ## HPC retired sizes
 
-| Series name       | Retirement Status |Retirement Announcement Date | Planned Retirement Date | Migration Guide
-|-------------------|-------------------|-----------------------------|-------------------------|-----------------|
-| HB-Series         | **Announced**     | 12/07/23                    | 8/31/24                  | [NV-series Retirement](./nv-series-retirement.md)    |
+Currently there are no retired HPC series retired or announced for retirement.
+
 
 ## ADH retired sizes
 
-| Series name       | Retirement Status |Retirement Announcement Date | Planned Retirement Date | Migration Guide
-|-------------------|-------------------|-----------------------------|-------------------------|-----------------|
-| Dsv3-Type1        | **Retired**       | -                           | 6/30/23                  | [Dedicated Host SKU Retirement](./dedicated-host-retirement.md)    |
-| Dsv3-Type2        | **Retired**       | -                           | 6/30/23                  | [Dedicated Host SKU Retirement](./dedicated-host-retirement.md)    |
-| Esv3-Type1        | **Retired**       | -                           | 6/30/23                  | [Dedicated Host SKU Retirement](./dedicated-host-retirement.md)    |
-| Esv3-Type2        | **Retired**       | -                           | 6/30/23                  | [Dedicated Host SKU Retirement](./dedicated-host-retirement.md)    |
+Currently there are no retired ADH series retired or announced for retirement.
 
 
 ## Next steps

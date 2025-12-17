@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a cloud architect, I want to configure networking modes for container services in Azure Service Fabric so that I can optimize service deployment and avoid errors when multiple services listen on the same ports.
 ---
 
 # Service Fabric container networking modes

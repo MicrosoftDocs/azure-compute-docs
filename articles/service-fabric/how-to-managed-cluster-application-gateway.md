@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: devx-track-azurepowershell
 services: service-fabric
 ms.date: 09/05/2023
+# Customer intent: As a cloud infrastructure engineer, I want to configure Azure Application Gateway for a Service Fabric managed cluster, so that I can efficiently manage and route traffic to my web applications deployed in the cluster.
 ---
 
 # Use Azure Application Gateway in a Service Fabric managed cluster

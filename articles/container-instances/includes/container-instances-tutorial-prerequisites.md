@@ -3,8 +3,9 @@ services: container-instances
 author: tomvcassidy
 ms.service: azure-container-instances
 ms.topic: include
-ms.date: 08/29/2024
+ms.date: 11/17/2025
 ms.author: tomcassidy
+# Customer intent: "As a developer, I want to install Azure CLI and Docker locally, so that I can complete the tutorial and effectively work with container instances."
 ---
 
 You must satisfy the following requirements to complete this tutorial:
@@ -16,7 +17,7 @@ You must satisfy the following requirements to complete this tutorial:
 **Docker**: To complete this tutorial, you need Docker installed locally. Docker provides packages that configure the Docker environment on [macOS][docker-mac], [Windows][docker-windows], and [Linux][docker-linux].
 
 > [!IMPORTANT]
-> Because the Azure Cloud shell does not include the Docker daemon, you *must* install both the Azure CLI and Docker Engine on your *local computer* to complete this tutorial. You cannot use the Azure Cloud Shell for this tutorial.
+> Because the Azure Cloud shell doesn't include the Docker daemon, you *must* install both the Azure CLI and Docker Engine on your *local computer* to complete this tutorial. You can't use the Azure Cloud Shell for this tutorial.
 
 <!-- LINKS - External -->
 [docker-get-started]: https://docs.docker.com/engine/docker-overview/

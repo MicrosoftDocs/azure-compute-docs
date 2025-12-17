@@ -6,9 +6,10 @@ author: mattmcinnes
 ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.date: 06/13/2024
+ms.date: 11/24/2025
 ms.author: mattmcinnes
 ms.custom: include file
+# Customer intent: "As an IT manager, I want to assess the capabilities of HX-series VMs for hosting in-memory databases and big data analytics, so that I can determine their suitability for my organization's performance-intensive workloads."
 ---
 **In-Memory Databases:** HX-series VMs are excellent for hosting in-memory databases, which require extensive memory to maintain large datasets in RAM for ultra-fast processing and access.
 

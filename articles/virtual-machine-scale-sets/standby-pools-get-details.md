@@ -7,11 +7,16 @@ ms.service: azure-virtual-machine-scale-sets
 ms.custom:
   - ignite-2024
 ms.topic: how-to
-ms.date: 11/5/2024
-ms.reviewer: ju-shim
+ms.date: 5/6/2025
+ms.reviewer: cynthn
+# Customer intent: "As a cloud administrator, I want to retrieve details about my standby pool and its instances, so that I can monitor their status and ensure they are correctly provisioned within my virtual machine scale sets."
 ---
 
 # Get standby pool and instance details
+
+> [!IMPORTANT]
+> For standby pools to successfully create and manage resources, it requires access to the associated resources in your subscription. Ensure the correct permissions are assigned to the standby pool resource provider in order for your standby pool to function properly. For detailed instructions, see **[configure role permissions for standby pools](standby-pools-configure-permissions.md)**.
+
 A standby pool is a dynamic resource that stays in sync with your scale set as your workload scales up and down. This article discusses how to retrieve various information about your standby pool and the instances within it. 
 
 ## Standby pool details
@@ -50,6 +55,14 @@ az standby-vm-pool status --resource-group myResourceGroup --name myStandbyPool
           "state": "Deallocated"
         },
         {
+            "count": 0
+            "state": "Hibernating",
+        },
+        {
+            "count": 0
+            "state": "Hibernated",
+        },
+        {
           "count": 0,
           "state": "Deleting"
         }
@@ -79,6 +92,14 @@ az standby-vm-pool status --resource-group myResourceGroup --name myStandbyPool
           "state": "Deallocated"
         },
         {
+            "count": 0
+            "state": "Hibernating",
+        },
+        {
+            "count": 0
+            "state": "Hibernated",
+        },
+        {
           "count": 0,
           "state": "Deleting"
         }
@@ -106,6 +127,14 @@ az standby-vm-pool status --resource-group myResourceGroup --name myStandbyPool
         {
           "count": 3,
           "state": "Deallocated"
+        },
+        {
+            "count": 0
+            "state": "Hibernating",
+        },
+        {
+            "count": 0
+            "state": "Hibernated",
         },
         {
           "count": 5,
@@ -153,6 +182,14 @@ InstanceCountSummary: {{
             "count": 5
         },
         {
+            "state": "Hibernating",
+            "count": 0
+        },
+        {
+            "state": "Hibernated",
+            "count": 0
+        },
+        {
             "state": "Deleting",
             "count": 0
         }
@@ -179,6 +216,14 @@ InstanceCountSummary: {{
         },
         {
             "state": "Deallocated",
+            "count": 0
+        },
+        {
+            "state": "Hibernating",
+            "count": 0
+        },
+        {
+            "state": "Hibernated",
             "count": 0
         },
         {
@@ -211,6 +256,14 @@ InstanceCountSummary: {{
             "count": 5
         },
         {
+            "state": "Hibernating",
+            "count": 0
+        },
+        {
+            "state": "Hibernated",
+            "count": 0
+        },
+        {
             "state": "Deleting",
             "count": 0
         }
@@ -228,7 +281,7 @@ Type                         : Microsoft.StandbyPool/standbyVirtualMachinePools/
 ### [REST](#tab/rest)
 
 ```HTTP
-GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/{standbyVirtualMachinePoolName}/runtimeViews/{runtimeView}?api-version=2024-03-01
+GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/{standbyVirtualMachinePoolName}/runtimeViews/latest?api-version=2025-03-01
 
 {
   "properties": {
@@ -256,6 +309,14 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
             "state": "starting",
             "count": 0
           },
+        {
+            "state": "Hibernating",
+            "count": 0
+        },
+        {
+            "state": "Hibernated",
+            "count": 0
+        },
           {
             "state": "deleting",
             "count": 0
@@ -285,6 +346,14 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
             "state": "starting",
             "count": 0
           },
+        {
+            "state": "Hibernating",
+            "count": 0
+        },
+        {
+            "state": "Hibernated",
+            "count": 0
+        },
           {
             "state": "deleting",
             "count": 0
@@ -314,6 +383,14 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
             "state": "starting",
             "count": 0
           },
+        {
+            "state": "Hibernating",
+            "count": 0
+        },
+        {
+            "state": "Hibernated",
+            "count": 0
+        },
           {
             "state": "deleting",
             "count": 0
@@ -344,6 +421,9 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 ## Instance details
 
 When a virtual machine is in a standby pool, the `isVmInStandbyPool` parameter is set to true. When the virtual machine is moved from the pool instance the scale set, the parameter is automatically updated to false. This can be useful in determining when a virtual machine is ready to receive traffic or not.
+
+> [!NOTE]
+> The `isVmInStandbyPool` property is only displayed when a virtual machine has been created by the standby pool. Virtual machines created directly by the scale set or attached to the scale set won't have this property. 
 
 ### [CLI](#tab/cli)
 
@@ -405,7 +485,7 @@ Statuses[1]       :
 ### [REST](#tab/rest)
 
 ```HTTP
-GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM/instanceView?api-version=2024-07-01
+GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM/instanceView?api-version=2025-03-01
 
 {
   "bootDiagnostics": {},

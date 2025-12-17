@@ -4,10 +4,11 @@ description: Information on and specifications of the Dsv2-series sizes
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 07/29/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
+# Customer intent: As a cloud architect, I want to review the specifications of the Dsv2 series sizes, so that I can select the appropriate virtual machine types for my applications based on their resource requirements and feature support.
 ---
 
 # Dsv2 sizes series
@@ -20,7 +21,7 @@ ms.reviewer: mattmcinnes
 
 ## Feature support
 
-Premium Storage: Not Supported<br>
+Premium Storage: Supported<br>
 Premium Storage caching: Not Supported<br>
 Live Migration: Supported<br>
 Memory Preserving Updates: Supported<br>

@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 04/09/2024
+# Customer intent: "As a developer deploying Service Fabric applications, I want to use StartupServices.xml to manage service-level configurations separately from ApplicationManifest.xml, so that I can avoid deployment conflicts and streamline application configuration in Visual Studio."
 ---
 
 # Introducing StartupServices.xml in Service Fabric Application

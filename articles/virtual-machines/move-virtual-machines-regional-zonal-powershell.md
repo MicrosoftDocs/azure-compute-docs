@@ -7,6 +7,7 @@ ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.topic: tutorial
 ms.date: 04/29/2025
 ms.author: ankitadutta
+# Customer intent: "As an IT administrator, I want to move single-instance Azure virtual machines from a regional configuration to a zonal availability zone using PowerShell and CLI, so that I can enhance application resilience and minimize the risk of downtime."
 ---
 
 # Move a virtual machine from Regional to Zonal availability zone using Azure PowerShell and CLI 
@@ -32,7 +33,7 @@ Verify the following requirements before you start the move process:
 Most move resources operations are the same whether using the Azure portal or PowerShell or CLI, with a couple of exceptions.
 
 > [!NOTE]
-> For more information on the commands and their syntaxes, refer to [this page](https://learn.microsoft.com/powershell/module/az.resourcemover/?view=azps-13.0.0#resource-mover).
+> For more information on the commands and their syntaxes, refer to [this page](/powershell/module/az.resourcemover/?view=azps-13.0.0&preserve-view=true#resource-mover).
 
 
 | Operation | Portal | PowerShell/CLI |

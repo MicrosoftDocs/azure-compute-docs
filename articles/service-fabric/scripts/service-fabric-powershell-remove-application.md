@@ -9,6 +9,7 @@ ms.topic: sample
 ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc, devx-track-azurepowershell
+# Customer intent: "As a cloud administrator, I want to remove an application from a Service Fabric cluster using PowerShell, so that I can manage application instances and free up resources in the environment."
 ---
 
 # Remove an application from a Service Fabric cluster using PowerShell

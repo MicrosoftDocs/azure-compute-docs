@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.date: 03/04/2024
 ms.author: rogarana
 ms.custom: references_regions
+# Customer intent: As a cloud administrator, I want to understand how performance tiers for managed disks work, so that I can evaluate if they're a suitable option for my needs when optimizing disk performance and managing costs effectively during varying demand periods.
 ---
 
 # Performance tiers for managed disks

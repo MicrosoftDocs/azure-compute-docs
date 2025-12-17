@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a cloud infrastructure administrator, I want to monitor the health and state of my Service Fabric cluster's resources so that I can proactively manage resource allocations, respond to constraints, and ensure optimal service performance and availability during operations and upgrades."
 ---
 
 # Cluster resource manager integration with Service Fabric cluster management

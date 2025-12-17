@@ -11,6 +11,7 @@ ms.custom: linux-related-content
 ms.date: 01/27/2025
 ms.author: marccharest
 ms.reviewer: vikancha
+# Customer intent: As a system administrator, I want to install and configure AMD GPU drivers on Azure ND MI300X v5 Linux VMs, so that I can optimize performance for compute-intensive tasks using ROCm on a supported kernel version.
 ---
 
 # Install AMD GPU drivers on Azure ND MI300X v5 Linux VMs

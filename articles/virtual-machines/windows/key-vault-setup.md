@@ -9,6 +9,7 @@ ms.date: 01/24/2017
 ms.author: mimckitt
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
 ms.devlang: azurecli
+# Customer intent: As an IT administrator, I want to set up Key Vault using PowerShell for my virtual machines, so that I can securely manage secrets and certificates necessary for deployment and operations.
 ---
 # Set up Key Vault for virtual machines using Azure PowerShell
 

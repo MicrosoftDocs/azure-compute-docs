@@ -6,7 +6,11 @@ ms.service: azure-disk-storage
 ms.topic: how-to
 ms.date: 03/30/2018
 ms.author: rogarana
-ms.custom: devx-track-azurecli, linux-related-content
+ms.custom:
+  - devx-track-azurecli
+  - linux-related-content
+  - sfi-ropc-nochange
+# Customer intent: "As a cloud administrator, I want to find and delete unattached managed and unmanaged disks using scripts, so that I can reduce unnecessary storage costs and manage resources efficiently."
 ---
 
 # Find and delete unattached Azure managed and unmanaged disks using the Azure CLI

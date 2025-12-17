@@ -9,6 +9,7 @@ ms.topic: sample
 ms.date: 04/16/2018
 ms.author: atsenthi
 ms.custom: mvc
+# Customer intent: "As a developer, I want to deploy an application using the Service Fabric CLI, so that I can efficiently manage application instances within my Azure Service Fabric cluster."
 ---
 
 # Deploy an application to a Service Fabric cluster using the Service Fabric CLI

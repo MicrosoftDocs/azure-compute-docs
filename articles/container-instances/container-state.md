@@ -6,7 +6,8 @@ author: tomvcassidy
 ms.topic: how-to
 ms.service: azure-container-instances
 services: container-instances
-ms.date: 08/29/2024
+ms.date: 11/17/2025
+# Customer intent: "As a cloud administrator, I want to monitor the provisioning states of Azure Container Instances and their containers, so that I can effectively manage deployments and troubleshoot any issues that arise during operation."
 ---
 
 # Azure Container Instances states

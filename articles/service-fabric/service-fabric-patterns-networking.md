@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 11/21/2024
+# Customer intent: "As a cloud engineer, I want to configure a Service Fabric cluster with various Azure networking features, so that I can optimize network performance and ensure proper connectivity for my applications."
 ---
 
 # Service Fabric networking patterns

@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a cloud architect, I want to understand how to scale standalone Service Fabric clusters, so that I can efficiently manage application demands and resources in both on-premises and cloud environments."
 ---
 
 # Scaling Service Fabric standalone clusters

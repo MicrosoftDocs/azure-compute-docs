@@ -4,10 +4,11 @@ description: Information on and specifications of the Dsv3-series sizes
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 09/24/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
+# Customer intent: "As a cloud architect, I want to understand the specifications and features of the Dsv3 series virtual machine sizes, so that I can select the appropriate size for our application's performance and resource requirements."
 ---
 
 # Dsv3 sizes series

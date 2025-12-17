@@ -10,6 +10,7 @@ ms.date: 04/01/2025
 ms.reviewer: mimckitt
 ms.custom: avverma
 
+# Customer intent: As a cloud infrastructure administrator, I want to configure autoscale rules for Virtual Machine Scale Sets, so that I can automatically manage resource allocation based on application demand and optimize costs effectively.
 ---
 # Automatically scale a Virtual Machine Scale Set in the Azure portal
 

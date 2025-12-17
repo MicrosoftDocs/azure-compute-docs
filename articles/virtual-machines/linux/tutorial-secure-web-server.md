@@ -7,8 +7,14 @@ ms.collection: linux
 ms.topic: tutorial
 ms.date: 04/09/2023
 ms.author: mattmcinnes
-ms.custom: mvc, devx-track-azurecli, GGAL-freshness822, linux-related-content
+ms.custom:
+  - mvc
+  - devx-track-azurecli
+  - GGAL-freshness822
+  - linux-related-content
+  - sfi-image-nochange
 #Customer intent: As an IT administrator or developer, I want to learn how to secure a web server with TLS/SSL certificates so that I can protect my customer data on web applications that I build and run.
+# Customer intent: As an IT administrator, I want to secure a web server with TLS/SSL certificates using Azure Key Vault so that I can protect sensitive customer data transmitted over the web.
 ---
 
 # Tutorial: Use TLS/SSL certificates to secure a web server

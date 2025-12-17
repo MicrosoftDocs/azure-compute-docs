@@ -4,10 +4,11 @@ description: Isolated Image Builds is achieved by transitioning core process of 
 ms.date: 02/13/2024
 ms.topic: sample
 author: kof-f
-ms.author: jushiman
+ms.author: cynthn
 ms.reviewer: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: image-builder
+# Customer intent: As a cloud administrator, I want to implement Isolated Image Builds using Azure Container Instances, so that I can achieve enhanced compute and network isolation while customizing and validating VM images in my subscription.
 ---
 
 # Isolated Image Builds for Azure VM Image Builder
@@ -28,7 +29,7 @@ Isolated Image Builds enables defense-in-depth by limiting network access of you
 4. **Better viewing of live logs:** AIB writes customization logs to a storage account in the staging resource group in your subscription. Isolated Image Builds provides with another way to follow the same logs directly in the Azure portal, which can be done by navigating to AIB's container in the ACI resource.
 
 > [!NOTE]
-> To access the live logs during the image build or the customization and validation log files after the build is complete, please refer to the [troubleshooting guide](./linux/image-builder-troubleshoot.md#accessing-live-logs-during-image-build).
+> To access the live logs during the image build or the customization and validation log files after the build is complete, please refer to the [troubleshooting guide](./linux/image-builder-troubleshoot.md#access-live-logs-during-image-build).
 
 ## Network topologies
 Isolated Image Builds deploys the ACI and the build VM both in the staging resource group in your subscription. For AIB to customize/validate your image, container instances running in the ACI need to have a network path to the build VM. Based on your custom networking needs and policies, you can configure AIB to use different network topologies for this purpose:

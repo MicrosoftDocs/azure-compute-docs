@@ -4,10 +4,11 @@ description: Information on and specifications of the Dv2-series sizes
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 07/29/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
+# Customer intent: "As a cloud architect, I want to assess the specifications and capabilities of the Dv2-series virtual machines, so that I can select the most suitable size for my application's performance and resource requirements."
 ---
 
 # Dv2 sizes series

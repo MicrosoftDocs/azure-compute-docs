@@ -8,6 +8,7 @@ ms.collection: linux
 ms.topic: how-to
 ms.date: 08/15/2017
 ms.author: rogarana
+# Customer intent: "As a cloud architect, I want to migrate my Linux virtual machines to Azure Premium Storage using Site Recovery, so that I can enhance performance and minimize downtime during the migration process."
 ---
 # Use Site Recovery to migrate to Premium Storage
 

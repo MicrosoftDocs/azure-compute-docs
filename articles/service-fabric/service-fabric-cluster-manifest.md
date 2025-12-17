@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a cloud architect, I want to configure a standalone Azure Service Fabric cluster using ClusterConfig.json, so that I can define nodes, security settings, and diagnostics for my development or production environments."
 ---
 
 # Configuration settings for a standalone Windows cluster

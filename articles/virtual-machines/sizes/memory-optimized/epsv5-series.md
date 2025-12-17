@@ -4,10 +4,11 @@ description: Information on and specifications of the Epsv5-series sizes
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 08/01/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
+# Customer intent: "As a cloud architect, I want to review the specifications and capabilities of the Epsv5 virtual machine sizes, so that I can select the most appropriate size for my application's performance and resource needs."
 ---
 
 # Epsv5 sizes series

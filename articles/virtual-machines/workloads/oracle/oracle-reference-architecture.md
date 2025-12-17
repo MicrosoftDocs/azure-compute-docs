@@ -4,9 +4,10 @@ description: Learn about architectures for Oracle database on Azure Virtual Mach
 author: jessiehaessler
 ms.service: oracle-on-azure
 ms.collection: linux
-ms.topic: example-scenario
+ms.topic: concept-article
 ms.date: 10/18/2024
 ms.author: jhaessler
+# Customer intent: As a cloud architect, I want to design a high availability and disaster recovery solution for an Oracle database on Azure, so that I can ensure it meets my organization's performance and resiliency requirements.
 ---
 # Architectures for Oracle database on Azure Virtual Machines
 

@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a cloud administrator, I want to manage Service Fabric cluster nodes using a command line interface, so that I can efficiently perform operations like enabling, disabling, and retrieving node health status without relying on graphical tools.
 ---
 
 # sfctl node

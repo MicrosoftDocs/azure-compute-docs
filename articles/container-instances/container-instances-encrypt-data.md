@@ -7,7 +7,8 @@ author: tomvcassidy
 ms.service: azure-container-instances
 ms.custom: devx-track-azurecli
 services: container-instances
-ms.date: 08/29/2024
+ms.date: 11/17/2025
+# Customer intent: "As a cloud architect, I want to encrypt deployment data in Azure Container Instances with a customer-managed key, so that I can enhance data security and maintain compliance with my organization's regulations."
 ---
 
 # Encrypt deployment data

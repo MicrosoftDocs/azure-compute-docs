@@ -9,10 +9,40 @@ ms.author: gabsta
 author: GabstaMSFT
 ms.reviewer: jushiman
 ms.collection: windows
-ms.date: 04/21/2023
+ms.date: 08/18/2025
+# Customer intent: "As a cloud engineer, I want to configure the Azure Diagnostics extension in my Windows virtual machine template, so that I can enable monitoring and diagnostics for better performance tracking and issue resolution."
 ---
+
 # Use monitoring and diagnostics with a Windows VM and Azure Resource Manager templates
+
 The Azure Diagnostics Extension provides the monitoring and diagnostics capabilities on a Windows-based Azure virtual machine. You can enable these capabilities on the virtual machine by including the extension as part of the Azure Resource Manager template. See [Authoring Azure Resource Manager Templates with VM Extensions](../windows/template-description.md#extensions) for more information on including any extension as part of a virtual machine template. This article describes how you can add the Azure Diagnostics extension to a windows virtual machine template.
+
+> [!IMPORTANT]
+> ### Migrate from Azure Diagnostic extension
+> 
+> Azure Diagnostics extension will be deprecated on March 31, 2026. After this date, Microsoft will no longer provide support for the Azure Diagnostics extension. 
+> 
+> To ensure continued support and access to new features, you should migrate from Azure Diagnostics extensions for Linux (LAD) and Windows (WAD) to [Azure Monitor Agent](/azure/azure-monitor/agents/azure-monitor-agent-overview), which can collect the same data and send it to multiple destinations including Log Analytics workspaces, Azure Event Hubs, and Azure Storage. Remove LAD or WAD after you configure Azure Monitor Agent to avoid duplicate data. 
+>
+> As an alternative to storage, you should send data to a table with the [Auxiliary plan](/azure/azure-monitor/logs/data-platform-logs#table-plans) in your Log Analytics workspace for cost-effective logging.
+>
+> To check which extensions are installed on a single VM, select **Extensions + applications** under **Settings** on your VM. To review the extensions installed on all virtual machines in subscriptions where you have access, use the following query in [Azure Resource Graph](/azure/governance/resource-graph/first-query-portal):
+>
+> ``` kql
+> resources
+> | where type contains "extension"
+> | extend parsedProperties = parse_json(properties)
+> | extend publisher = tostring(parsedProperties.publisher)
+> | project-away parsedProperties
+> | where publisher == "Microsoft.Azure.Diagnostics"
+> | distinct id
+> ```
+>
+> This produces results similar to the following:
+> 
+> :::image type="content" source="/azure/azure-monitor/agents/media/diagnostics-extension-overview/query-results.png" lightbox="/azure/azure-monitor/agents/media/diagnostics-extension-overview/query-results.png#lightbox" alt-text="Screenshot showing the results of a sample Azure Resource Graph Query.":::
+
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
 
 ## Add the Azure Diagnostics extension to the VM resource definition
 To enable the diagnostics extension on a Windows Virtual Machine, you need to add the extension as a VM resource in the Resource Manager template.

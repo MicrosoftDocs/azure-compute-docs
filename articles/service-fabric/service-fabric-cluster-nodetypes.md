@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As an application architect, I want to understand how Azure Service Fabric node types interact with virtual machine scale sets, so that I can effectively design and manage my cloud infrastructure for optimal performance and scalability.
 ---
 
 # Azure Service Fabric node types and virtual machine scale sets

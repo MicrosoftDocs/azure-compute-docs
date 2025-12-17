@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a developer using Service Fabric, I want to deploy the Azure Files volume driver for container applications, so that I can manage persistent storage effectively within my Service Fabric cluster."
 ---
 
 # Azure Files volume driver for Service Fabric

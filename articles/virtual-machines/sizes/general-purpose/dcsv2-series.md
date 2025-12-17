@@ -4,10 +4,11 @@ description: Information on and specifications of the DCsv2-series sizes
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 07/31/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
+# Customer intent: "As an IT infrastructure planner, I want to understand the specifications and features of the DCsv2 series sizes, so that I can select the appropriate virtual machine size for my organization's workload requirements."
 ---
 
 # DCsv2 sizes series

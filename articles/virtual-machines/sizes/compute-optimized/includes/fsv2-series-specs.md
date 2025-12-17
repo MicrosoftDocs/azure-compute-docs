@@ -9,6 +9,7 @@ ms.date: 07/30/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
+# Customer intent: "As a cloud architect, I want to review the specifications of Fsv2-series VM sizes, so that I can select the appropriate configurations for my workloads based on performance and resource requirements."
 ---
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
 |---|---|---|

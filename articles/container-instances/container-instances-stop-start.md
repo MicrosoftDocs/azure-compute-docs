@@ -6,7 +6,8 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
-ms.date: 08/29/2024
+ms.date: 11/17/2025
+# Customer intent: "As a cloud engineer, I want to manually stop and start container groups in Azure Container Instances, so that I can control resource allocation and manage costs efficiently while maintaining container configurations."
 ---
 # Manually stop or start containers in Azure Container Instances
 

@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a cloud service developer, I want to utilize performance counters for Reliable Service Remoting, so that I can monitor and troubleshoot service performance effectively.
 ---
 
 # Diagnostics and performance monitoring for Reliable Service Remoting

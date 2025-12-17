@@ -4,9 +4,10 @@ description: ND-series retirement by September 6, 2023
 author: sherrywangms
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 02/27/2023
 ms.author: sherrywang
+# Customer intent: "As a cloud administrator, I want to migrate my ND-series virtual machines before the retirement deadline, so that I can ensure continued access to optimized GPU resources and prevent service disruptions."
 ---
 # Migrate your ND series virtual machines by September 6, 2023
 Based on feedback we’ve received from customers we’re happy to announce that we're extending the retirement date by one year to 6 September 2023, for the Azure ND-Series virtual machine to give you more time to plan  your migration. 

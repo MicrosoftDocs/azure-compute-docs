@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.date: 3/25/2022
 ms.author: mimckitt 
 ms.custom: devx-track-azurepowershell, devx-track-arm-template
+# Customer intent: As a system administrator, I want to set up WinRM access for an Azure VM using a self-signed certificate, so that I can securely manage the VM remotely.
 ---
 # Setting up WinRM access for Virtual Machines in Azure Resource Manager
 **Applies to:** :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets 

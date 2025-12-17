@@ -4,6 +4,7 @@ description: Learn about the application project you just created in Visual Stud
 
 ms.topic: concept-article
 ms.date: 12/21/2020
+# Customer intent: "As a new developer, I want to learn how to create and manage Azure Service Fabric applications, so that I can effectively build, deploy, and maintain scalable services in a cloud environment."
 ---
 
 # Your Service Fabric application and next steps

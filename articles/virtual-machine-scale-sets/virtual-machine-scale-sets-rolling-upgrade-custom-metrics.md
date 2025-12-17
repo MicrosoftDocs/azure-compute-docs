@@ -1,18 +1,16 @@
 ---
-title: Custom metrics for rolling upgrades on Virtual Machine Scale Sets (Preview)
+title: Custom metrics for rolling upgrades on Virtual Machine Scale Sets
 description: Learn about how to configure custom metrics for rolling upgrades on Virtual Machine Scale Sets.
 author: mimckitt
 ms.author: mimckitt
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
 ms.date: 11/7/2024
-ms.reviewer: ju-shim
+ms.reviewer: cynthn
 ms.custom: upgradepolicy, N-Phase, ignite-2024
+# Customer intent: "As a system administrator, I want to configure custom metrics for rolling upgrades on Virtual Machine Scale Sets so that I can control the order and conditions under which my virtual machines are upgraded, ensuring minimal downtime and optimal application performance."
 ---
-# Configure custom metrics for rolling upgrades on Virtual Machine Scale Sets (Preview)
-
-> [!NOTE]
->**Custom metrics for rolling upgrades on Virtual Machine Scale Sets is currently in preview.** Previews are made available to you on the condition that you agree to the [supplemental terms of use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Some aspects of these features may change prior to general availability (GA).
+# Configure custom metrics for rolling upgrades on Virtual Machine Scale Sets
 
 Custom metrics for rolling upgrades enables you to utilize the [application health extension](virtual-machine-scale-sets-health-extension.md) to emit custom metrics to your Virtual Machine Scale Set. These custom metrics can be used to tell the scale set the order in which virtual machines should be updated when a rolling upgrade is triggered. The custom metrics can also inform your scale set when an upgrade should be skipped on a specific instance. This allows you to have more control over the ordering and the update process itself. 
 
@@ -85,7 +83,7 @@ The [application health extension](virtual-machine-scale-sets-health-extension.m
           "publisher": "Microsoft.ManagedServices",
           "type": "<ApplicationHealthLinux or ApplicationHealthWindows>",
           "autoUpgradeMinorVersion": true,
-          "typeHandlerVersion": "1.0",
+          "typeHandlerVersion": "2.0",
           "settings": {
             "protocol": "<protocol>",
             "port": <port>,
@@ -367,6 +365,245 @@ if (Test-Path $scriptPath) {
 
 For more response configuration examples, see [application health samples](https://github.com/Azure-Samples/application-health-samples)
 
+### Verify and query custom metrics data
+
+After configuring the application health extension to return custom metrics, you can verify that the custom metrics are being reported correctly and query the data from your Virtual Machine Scale Set instances.
+
+> [!NOTE]
+> The method for querying custom metrics differs between Uniform and Flexible orchestration modes. Uniform mode uses `az vmss get-instance-view`, while Flexible mode requires querying individual VMs using `az vm get-instance-view`.
+
+#### For Uniform Orchestration Mode
+
+##### [CLI](#tab/azure-cli)
+
+```azurecli-interactive
+az vmss get-instance-view \
+  --resource-group <resource-group-name> \
+  --name <vmss-name> \
+  --instance-id <instance-id>
+```
+
+**Sample output (snippet):**
+
+```json
+{
+  "extensions": [
+    {
+      "name": "ApplicationHealthExtension",
+      "substatuses": [
+        {
+          "code": "ComponentStatus/CustomMetrics/succeeded",
+          "message": "{\"rollingUpgrade\": {\"PhaseOrderingNumber\": 2, \"SkipUpgrade\": false}}"
+        }
+      ]
+    }
+  ]
+}
+```
+
+The custom metrics are in the `message` field of the `ComponentStatus/CustomMetrics/succeeded` substatus.
+
+##### [PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
+Get-AzVmssVM `
+  -ResourceGroupName <resource-group-name> `
+  -VMScaleSetName <vmss-name> `
+  -InstanceId <instance-id> `
+  -InstanceView
+```
+
+**Sample output (snippet):**
+
+```json
+{
+  "extensions": [
+    {
+      "name": "ApplicationHealthExtension",
+      "substatuses": [
+        {
+          "code": "ComponentStatus/CustomMetrics/succeeded",
+          "message": "{\"rollingUpgrade\": {\"PhaseOrderingNumber\": 2, \"SkipUpgrade\": false}}"
+        }
+      ]
+    }
+  ]
+}
+```
+
+The custom metrics are in the `message` field of the `ComponentStatus/CustomMetrics/succeeded` substatus.
+
+##### [REST](#tab/rest-api)
+
+```http
+GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmssName}/virtualMachines/{instanceId}/instanceView?api-version=2023-09-01
+```
+
+**Sample response (snippet):**
+
+```json
+{
+  "extensions": [
+    {
+      "name": "ApplicationHealthExtension",
+      "type": "Microsoft.ManagedServices.ApplicationHealthLinux",
+      "typeHandlerVersion": "2.0",
+      "substatuses": [
+        {
+          "code": "ComponentStatus/CustomMetrics/succeeded",
+          "level": "Info",
+          "displayStatus": "Provisioning succeeded",
+          "message": "{\"rollingUpgrade\": {\"PhaseOrderingNumber\": 2, \"SkipUpgrade\": false}}"
+        }
+      ]
+    }
+  ]
+}
+```
+
+The custom metrics are in the `message` field of the `ComponentStatus/CustomMetrics/succeeded` substatus.
+
+---
+
+#### For Flexible Orchestration Mode
+
+In Flexible orchestration mode, instances are individual VMs. Use the `az vm get-instance-view` command and specify the VM name.
+
+**Get custom metrics for a specific VM:**
+
+##### [CLI](#tab/azure-cli)
+
+```azurecli-interactive
+az vm get-instance-view \
+  --resource-group <resource-group-name> \
+  --name <vm-name>
+```
+
+**Sample output (snippet):**
+
+```json
+{
+  "extensions": [
+    {
+      "name": "ApplicationHealthExtension",
+      "substatuses": [
+        {
+          "code": "ComponentStatus/CustomMetrics/succeeded",
+          "message": "{\"rollingUpgrade\": {\"PhaseOrderingNumber\": 1, \"SkipUpgrade\": false}}"
+        }
+      ]
+    }
+  ]
+}
+```
+
+The custom metrics are in the `message` field of the `ComponentStatus/CustomMetrics/succeeded` substatus.
+
+##### [PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
+Get-AzVM `
+  -ResourceGroupName <resource-group-name> `
+  -Name <vm-name> `
+  -Status
+```
+
+**Sample output (snippet):**
+
+```json
+{
+  "extensions": [
+    {
+      "name": "ApplicationHealthExtension",
+      "substatuses": [
+        {
+          "code": "ComponentStatus/CustomMetrics/succeeded",
+          "message": "{\"rollingUpgrade\": {\"PhaseOrderingNumber\": 1, \"SkipUpgrade\": false}}"
+        }
+      ]
+    }
+  ]
+}
+```
+
+The custom metrics are in the `message` field of the `ComponentStatus/CustomMetrics/succeeded` substatus.
+
+##### [REST](#tab/rest-api)
+
+```http
+GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/instanceView?api-version=2023-09-01
+```
+
+**Sample response (snippet):**
+
+```json
+{
+  "extensions": [
+    {
+      "name": "ApplicationHealthExtension",
+      "type": "Microsoft.ManagedServices.ApplicationHealthLinux",
+      "typeHandlerVersion": "2.0",
+      "substatuses": [
+        {
+          "code": "ComponentStatus/CustomMetrics/succeeded",
+          "level": "Info",
+          "displayStatus": "Provisioning succeeded",
+          "message": "{\"rollingUpgrade\": {\"PhaseOrderingNumber\": 1, \"SkipUpgrade\": false}}"
+        }
+      ]
+    }
+  ]
+}
+```
+
+The custom metrics are in the `message` field of the `ComponentStatus/CustomMetrics/succeeded` substatus.
+
+---
+
+#### Troubleshooting custom metrics
+
+If custom metrics are not being reported correctly, verify the following:
+
+1. **Check Application Health Extension status:**
+
+```bash
+az vmss get-instance-view \
+  --resource-group <resource-group-name> \
+  --name <vmss-name> \
+  --instance-id <instance-id> \
+  --query "extensions[?name=='ApplicationHealthExtension'].statuses"
+```
+
+2. **Verify the health endpoint is responding:**
+
+```bash
+# Get the public IP of an instance
+PUBLIC_IP=$(az vmss list-instance-public-ips \
+  --resource-group <resource-group-name> \
+  --name <vmss-name> \
+  --query "[0].ipAddress" \
+  --output tsv)
+
+# Test the health endpoint
+curl -v http://$PUBLIC_IP:<port>/<request-path>
+```
+
+3. **Check that the response format is correct:**
+
+The application health endpoint must return a JSON response in this exact format:
+
+```json
+{
+  "ApplicationHealthState": "Healthy",
+  "customMetrics": "{\"rollingUpgrade\": {\"PhaseOrderingNumber\": 0, \"SkipUpgrade\": false}}"
+}
+```
+
+> [!IMPORTANT]
+>
+> - The `customMetrics` value must be a **JSON string** (double-serialized), not a JSON object
+> - The `ApplicationHealthState` must be set to "Healthy" for the instance to be included in the rolling upgrade
+> - The custom metrics are only read at the start of a rolling upgrade; changes during an upgrade won't affect the current upgrade
 
 ## Next steps
 Learn how to [perform manual upgrades](virtual-machine-scale-sets-perform-manual-upgrades.md) on Virtual Machine Scale Sets. 

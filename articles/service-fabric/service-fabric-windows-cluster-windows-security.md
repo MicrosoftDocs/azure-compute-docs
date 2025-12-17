@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a system administrator, I want to configure node-to-node and client-to-node security for a standalone cluster on Windows, so that I can ensure unauthorized access is prevented and production workloads remain secure.
 ---
 
 # Secure a standalone cluster on Windows by using Windows security

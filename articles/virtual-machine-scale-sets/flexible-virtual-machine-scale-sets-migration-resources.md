@@ -3,12 +3,13 @@ title: Migrate deployments and resources to Virtual Machine Scale Sets in Flexib
 description: Learn how to migrate deployments and resources to Virtual Machine Scale Sets in Flexible orchestration.
 author: fitzgeraldsteele
 ms.author: fisteele
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: azure-virtual-machines
 ms.subservice: flexible-scale-sets
 ms.date: 06/14/2024
-ms.reviewer: jushiman
+ms.reviewer: cynthn
 ms.custom: mimckitt, devx-track-azurecli, vmss-flex
+# Customer intent: As a cloud administrator, I want to migrate existing virtual machine deployments to Flexible orchestration mode in Virtual Machine Scale Sets, so that I can enhance scalability and ensure better fault tolerance in my infrastructure.
 ---
 
 # Migrate deployments and resources to Virtual Machine Scale Sets in Flexible orchestration 

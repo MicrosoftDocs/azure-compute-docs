@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a developer implementing actor-based applications, I want to learn how to utilize actor events for client communication, so that I can effectively notify clients of changes and updates from the actor.
 ---
 
 # Actor events

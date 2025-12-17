@@ -6,8 +6,9 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
-ms.date: 08/29/2024
+ms.date: 11/17/2025
 ms.custom: devx-track-azurepowershell
+# Customer intent: "As a cloud developer, I want to create an HTTP-triggered serverless function that deploys container groups, so that I can automate resource provisioning in Azure Container Instances."
 ---
 
 # Tutorial: Use an HTTP-triggered Azure function to create a container group

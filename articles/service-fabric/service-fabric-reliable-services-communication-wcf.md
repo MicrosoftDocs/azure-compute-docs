@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a service developer, I want to implement a WCF communication stack in my Reliable Services, so that I can facilitate client-service communication efficiently within Service Fabric.
 ---
 
 # WCF-based communication stack for Reliable Services

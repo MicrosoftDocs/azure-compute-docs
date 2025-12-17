@@ -6,9 +6,10 @@ author: mattmcinnes
 ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.date: 04/19/2024
+ms.date: 11/24/2025
 ms.author: mattmcinnes
 ms.custom: include file
+# Customer intent: "As an engineer or researcher, I want to leverage HB sub-family VMs for intensive computational tasks, such as simulations and data processing, so that I can efficiently conduct analyses in fields like aerospace, weather forecasting, and genomics."
 ---
 **Computational Fluid Dynamics (CFD):** HB-family VMs are ideal for simulations in fields like aerospace, automotive design, and manufacturing, where fluid dynamics calculations are intensive.
 

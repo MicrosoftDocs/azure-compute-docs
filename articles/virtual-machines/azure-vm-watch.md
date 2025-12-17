@@ -4,8 +4,10 @@ description: Learn how to use the Azure VM watch service offering.
 author: iamwilliew 
 ms.author: wwilliams
 ms.service: azure-virtual-machines
-ms.topic: conceptual
+ms.topic: concept-article
+ms.update-cycle: 1095-days
 ms.date: 02/18/2025
+# Customer intent: "As a system administrator, I want to implement VM watch for my virtual machines, so that I can monitor their health efficiently and prevent potential issues with minimal resource impact."
 ---
 
 # VM watch: Enhancing VM health monitoring (preview)

@@ -6,8 +6,9 @@ ms.author: fisteele
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
 ms.date: 06/14/2024
-ms.reviewer: jushiman
+ms.reviewer: cynthn
 ms.custom: mimckitt, vmss-flex, devx-track-azurepowershell
+# Customer intent: "As a cloud administrator, I want to create Virtual Machine Scale Sets using PowerShell, so that I can efficiently deploy and manage multiple VMs with flexible orchestration."
 ---
 
 # Create virtual machines in a scale set using PowerShell

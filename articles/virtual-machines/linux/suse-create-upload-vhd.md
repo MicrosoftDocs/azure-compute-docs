@@ -1,15 +1,16 @@
 ---
 title: Create and upload a SUSE Linux VHD in Azure
 description: Learn how to create and upload an Azure virtual hard disk (VHD) that contains a SUSE Linux operating system.
-author: srijang
+author: vamckMS
 ms.service: azure-virtual-machines
 ms.subservice: imaging
 ms.collection: linux
 ms.custom: linux-related-content
 ms.topic: how-to
-ms.date: 04/28/2024
+ms.date: 09/02/2025
 ms.author: vakavuru
 ms.reviewer: mattmcinnes
+# Customer intent: "As a cloud engineer, I want to create and upload a customized SUSE Linux virtual hard disk to Azure, so that I can automate the deployment of tailored virtual machines that meet my project's requirements."
 ---
 # Prepare a SLES or openSUSE Leap virtual machine for Azure
 

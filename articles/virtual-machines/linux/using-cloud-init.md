@@ -9,6 +9,7 @@ ms.collection: linux
 ms.topic: how-to
 ms.date: 03/20/2025
 ms.author: vakavuru
+# Customer intent: "As a cloud engineer, I want to utilize cloud-init to automate the configuration of Linux VMs during provisioning, so that I can streamline deployments and eliminate the need for manual setup processes."
 ---
 # cloud-init support for virtual machines in Azure
 
@@ -62,8 +63,10 @@ There are two stages to making cloud-init available to the supported Linux distr
 
  Publisher / Version| Offer | SKU | Version | image cloud-init ready | cloud-init package support on Azure|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|SUSE 15 |SLES (SUSE Linux Enterprise Server) |sp1, sp2, sp3 |latest |yes | yes |
+|SUSE 15 |SLES (SUSE Linux Enterprise Server) |all SPs |latest |yes | yes |
 |SUSE 12 |SLES (SUSE Linux Enterprise Server) |sp5 |latest |yes | yes |
+
+* SUSE Linux Enterprise Server 12 is EOL since 31 Oct 2024, SP5 was the lastest SP
 
 ### Debian
 | Publisher / Version | Offer | SKU | Version | image cloud-init ready | cloud-init package support on Azure|

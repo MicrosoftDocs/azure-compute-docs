@@ -7,6 +7,7 @@
  ms.date: 01/14/2025
  ms.author: albecker1
  ms.custom: include file
+# Customer intent: As a cloud resource manager, I want to understand the cost and performance implications of on-demand and credit-based disk bursting, so that I can optimize our workloads' IOPS and throughput while managing expenses effectively.
 ---
 ### On-demand bursting
 

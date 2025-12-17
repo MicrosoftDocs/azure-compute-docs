@@ -8,6 +8,7 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-windows
 ms.date: 03/01/2023
 ms.author: rogarana
+# Customer intent: As a cloud administrator, I want to copy snapshots of managed disks between subscriptions, so that I can optimize storage costs and enhance data retention strategies.
 ---
 
 # Copy snapshot of a managed disk in same subscription or different subscription with PowerShell (Windows)

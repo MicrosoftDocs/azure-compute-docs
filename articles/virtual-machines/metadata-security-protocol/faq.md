@@ -1,35 +1,37 @@
 ---
-title: Frequently asked questions
-description: FAQ section
+title: Frequently Asked Questions About MSP
+description: Get answers to frequently asked questions about working with the Metadata Security Protocol (MSP) feature.
 author: minnielahoti
 ms.service: azure-virtual-machines
-ms.topic: how-to
+ms.topic: faq
 ms.date: 04/08/2025
 ms.author: minnielahoti
 ms.reviewer: azmetadatadev
+# Customer intent: As a cloud administrator, I want to understand how to check and manage the Metadata Security Protocol (MSP) feature on my virtual machines, so that I can ensure the security and health of my VM deployments.
 ---
 
-# Frequently asked questions
-This page answers the commonly asked questions by customers when working with the Metadata Security Protocol (MSP) feature. If you don't see a question that can help you, reach out to our support team. 
+# Frequently asked questions about MSP
+
+This article answers common questions from customers who work with the Metadata Security Protocol (MSP) feature. If you don't see a question that can help you, contact the support team.
 
 ## Usage
 
-### How to check if the feature is enabled?
+### How do I check if the feature is enabled?
 
- - Metadata Security Protocol (MSP) enablement can be checked programmatically using the [GET VM API](https://learn.microsoft.com/rest/api/compute/virtual-machines/get) to retrieve the Virtual Machine (VM) model. The `proxyAgentSettings` properties report MSP configuration.
+You can check MSP enablement programmatically by using the [GET VM API](/rest/api/compute/virtual-machines/get) to retrieve the virtual machine (VM) model. The `proxyAgentSettings` properties report MSP configuration.
 
- - Additionally, the GuestProxyAgent instance view in the VM runtime status, reports the state of MSP from its perspective in the VM. If MSP is disabled, the value shows as `"Disabled"`.
+Additionally, the `GuestProxyAgent` instance view in the VM runtime status reports the state of MSP from its perspective in the VM. If MSP is disabled, the value is `"Disabled"`.
 
-### How do we check component health?
+### How do I check component health?
 
-The GuestProxyAgent extension instance view reports the status of the GPA and its dependencies. Each component's `status` value shows `RUNNING` when it's healthy.
+The `GuestProxyAgent` instance view reports the status of the Guest Proxy Agent (GPA) and its dependencies. Each component's `status` value shows `RUNNING` when it's healthy.
 
 | Component | Field |
 |--|--|
-| Guest Proxy Agent | `keyLatchStatus.status` |
+| GPA | `keyLatchStatus.status` |
 | eBPF integration | `ebpfProgramStatus.status` |
 
-Full example:
+Here's a full example:
 
 ```json
 {
@@ -65,45 +67,50 @@ Full example:
 }
 ```
 
-### Can I provision a new Linux VM with MSP enabled without baking the GPA into my image?
+### Can I provision a new Linux VM with MSP enabled without including the GPA in my image?
 
-No. Linux provisioning doesn't have a step where the platform can install another software before the VM is handed over to the customer. Additionally, this model isn't something most Linux customers want, it's more in line with the Windows philosophy.
+No. Linux provisioning doesn't have a step where the platform can install other software before the customer receives the VM. Also, most Linux customers don't want this model. It's more in line with the Windows philosophy.
 
-For security reasons, MSP doesn't allow a VM to successfully provision if a secure connection isn't established. The GPA is responsible for establishing the secure connection, so it is required to already be present.
+For security reasons, MSP doesn't allow you to successfully provision a VM if you didn't establish a secure connection. The GPA is responsible for establishing the secure connection, so it needs to already be present.
 
-If you don't wish to use an image with the GPA baked in, you must create the VM first then enable MSP afterwards. During preview, we monitor usage patterns and evaluate potential ways to support the scenario, by allowing the GPA to be installed as a VM Extension rather than baked in.
+If you don't want to use an image with the GPA included, you must create the VM first and then enable MSP afterward. During the preview, we monitor usage patterns and evaluate potential ways to support the scenario, by allowing the GPA to be installed as a VM extension rather than directly included.
 
 ## Features
 
-### Is ARM64 Supported?
+### Is ARM64 supported?
 
-ARM64 support is available once the MSP feature is Generally Available.
+ARM64 support is not available while the MSP feature is in preview.
 
 ## Design
 
-### How is the latched key created? How does it bind to the VM? Can it be impersonated?
+### How is the latched key created, and how does it bind to the VM?
 
-Azure Host generates the latched key and stores it as platform data. The key is unique to each VM and only can be used on that VM's private connection to WireServer + Azure Instance Metadata Service (IMDS). 
+An Azure host generates the latched key and stores it as platform data. The key is unique to each VM. You can use it only on that VM's private connection to WireServer and Azure Instance Metadata Service.
 
-### How is the Allowlist (policy) provisioned? Is it done in a secure way?
+### How is the allowlist (policy) provisioned?
 
-The Allowlist is defined as part of the VM model. The [Advanced Configuration](configuration.md) guide explains how to create an Allowlist. The Guest Proxy Agent retrieves this policy periodically from WireServer like any other VM metadata. The Allowlist allows users to centrally manage policy the same way they would other VM settings, and prevents users from within the VM from tampering with it.
+The allowlist is defined as part of the VM model. The [MSP feature configuration](configuration.md) article explains how to create an allowlist.
 
-### Where is the Allowlist enforced? In Guest or in Wireserver?
+The Guest Proxy Agent retrieves this policy periodically from WireServer, like any other VM metadata. The allowlist allows users to centrally manage the policy in the same way that they would manage other VM settings. It also prevents users within the VM from tampering with it.
+
+### Where is the allowlist enforced (GPA or WireServer)?
 
 Both components play a role in enforcement. MSP uses a shared responsibility model:
 
-- Wireserver / IMDS are responsible for ensuring that only the trusted delegate (the GPA) and clients that the trusted delegate endorses can access the VMs metadata and secrets.
-  - Metadata services can't, and shouldn't, perform VM introspection, meaning they alone can't determine which software within a VM made a request.
-- The trusted delegate (the GPA) is responsible for determining the identity of clients and endorsing requests that approve from.
-  - The GPA can rely on the OS Kernel to authoritatively identify which process within the VM made a request.
+- WireServer and Instance Metadata Service are responsible for ensuring that only the trusted delegate (the GPA), and clients that the trusted delegate endorses, can access the VM's metadata and secrets.
+  
+  Metadata services can't, and shouldn't, perform VM introspection. They alone can't determine which software within a VM made a request.
 
-The most important element is that MSP is a default closed model whereas other security measures (like in guest firewall rules) are default open. If the GPA is down or otherwise bypassed, Wireserver rejects any requests as they aren't endorsed by the latched key. 
+- The trusted delegate (the GPA) is responsible for determining the identity of clients and endorsing requests.
+  
+  The GPA can rely on the OS kernel to authoritatively identify which process within the VM made a request.
+
+The most important element is that MSP is a *default-closed* model, whereas other security measures (like in guest firewall rules) are *default-open*. If the GPA is down or otherwise bypassed, WireServer rejects any requests because the latched key doesn't endorse them.
 
 ### Why is this feature opt-in and not required or automatically enabled?
 
-IMDS is used by nearly every IaaS VM or Virtual Machine Scale Sets in Azure. The diversity of workloads requires flexibility. While the design of MSP abstracts away most breaking changes, ultimately if a workload is dependent on a less secure configuration, enforcing stronger security breaks the workload.
+Nearly every infrastructure as a service (IaaS) VM or virtual machine scale set in Azure uses Instance Metadata Service. The diversity of workloads requires flexibility. Although the design of MSP abstracts away most breaking changes, if a workload is ultimately dependent on a less secure configuration, enforcing stronger security breaks the workload.
 
-### Why a new agent and not an Azure Guest Agent update?
+### Why does MSP require a new agent instead of using an Azure Guest Agent update?
 
-The Guest Proxy Agent (GPA) has different responsibilities than the Guest Agent. The GPA also has higher performance requirements.
+The GPA has different responsibilities than the Azure Guest Agent. The GPA also has higher performance requirements.

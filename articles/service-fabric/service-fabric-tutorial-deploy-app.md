@@ -7,6 +7,8 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 05/17/2024
+ms.custom: sfi-image-nochange
+# Customer intent: "As a developer, I want to deploy a Service Fabric application to a new cluster in Azure using Visual Studio, so that I can efficiently manage and scale microservices in a cloud environment."
 ---
 
 # Tutorial: Deploy a Service Fabric application to a cluster in Azure
@@ -31,7 +33,7 @@ The tutorial series shows you how to:
 
 Before you begin this tutorial:
 
-* If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 * [Install Visual Studio 2019](https://www.visualstudio.com/), including the Azure development workload and the ASP.NET and web development workload.
 * [Install the Service Fabric SDK](service-fabric-get-started.md).
 

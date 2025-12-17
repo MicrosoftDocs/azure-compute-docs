@@ -11,6 +11,7 @@ ms.subservice: extensions
 ms.collection: linux
 ms.topic: how-to
 ms.date: 03/15/2023
+# Customer intent: As a Linux system administrator, I want to understand how to manage VM extensions with Python 3 on Azure, so that I can ensure successful deployment and operation of virtual machines without issues related to legacy Python support.
 ---
 
 # Issues using VM extensions in Python 3-enabled Linux Azure Virtual Machines systems
@@ -32,6 +33,8 @@ Linux distribution users who have transitioned to **Python 3.x** must ensure the
 - Affected VM Extensions include **Azure Disk Encryption**, **Log Analytics**, **VM Access** (used for Password Reset), and **Guest Diagnostics** (used for additional performance counters).
 
 In-place upgrades, such as upgrading from **Ubuntu 18.04 LTS** to **Ubuntu 20.04 LTS**, should retain the `/usr/bin/python` symlink, and remain unaffected.
+
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
 
 ## Resolution
 

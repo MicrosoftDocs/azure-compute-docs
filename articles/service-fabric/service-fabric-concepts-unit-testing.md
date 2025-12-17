@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a software tester, I want to implement unit tests for stateful services in a cloud-based architecture, so that I can ensure code reliability and consistency across replicas while effectively handling role transitions and cancellation tokens."
 ---
 
 # Unit testing stateful services in Service Fabric

@@ -4,34 +4,41 @@ description: Migration guide for NC24rs_v3 sizes
 author: sherrywangms
 ms.author: sherrywang
 ms.service: azure-virtual-machines
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 03/19/2024
 ms.subservice: sizes
+# Customer intent: "As a cloud infrastructure manager, I want to migrate my Standard_NC24rs_v3 virtual machines to a newer VM series, so that I can ensure uninterrupted service and maintain optimized performance before the retirement deadline on September 30, 2025."
 ---
 
-# Migrate your Standard_NC24rs_v3 virtual machine size by March 31, 2025 
+# Migrate your Standard_NC24rs_v3 virtual machine size by September 30, 2025
 
-On March 31, 2025, Microsoft Azure will retire the Standard_NC24rs_v3 virtual machine (VM) size in NCv3-series virtual machines (VMs). To avoid any disruption to your service, we recommend that you change the VM sizing from the Standard_NC24rs_v3 to the newer VM series in the same NC product line.
+> [!NOTE]
+> All the NCv3-series VM sizes, including Standard_NC24rs_v3, will be retired on September 30, 2025. For retirement details and SKU migration guidance, please refer to the [NCv3-series retirement page](/azure/virtual-machines/ncv3-retirement) rather than this page. 
 
-Microsoft recommends the Azure [NCads H100 v5-series ](/azure/virtual-machines/ncads-h100-v5?source=recommendations)VMs, which offer greater GPU memory bandwidth per GPU, improved [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli) capabilities, and larger and faster local solid state drives. These VMs are targeted for GPU accelerated midrange AI training, batch inferencing, and high-performance computing simulation workloads.
+On September 30, 2025, Microsoft Azure will retire the Standard_NC24rs_v3 virtual machine (VM) size in NCv3-series virtual machines (VMs). To avoid any disruption to your service, we recommend that you change the VM sizing from the Standard_NC24rs_v3 to the newer VM series in the same NC product line.
 
-Depending on the workload being run and regional affinity, Standard_NC24rs_v3 may also be replaced by NVadsA10_v5 or NCasT4_v3.
+Microsoft recommends the Azure [NCadsH100_v5-series ](/azure/virtual-machines/ncads-h100-v5?source=recommendations)VMs, which offer greater GPU memory bandwidth per GPU, improved [accelerated networking](/azure/virtual-network/create-vm-accelerated-networking-cli) capabilities, and larger and faster local solid state drives. These VMs are targeted for GPU accelerated midrange AI training, batch inferencing, and high-performance computing simulation workloads.
+
+However, depending on the workload being run, regional affinity, and cost preferences, other VMs that may be migrated to from Standard_NC24rs_v3 include NVadsA10_v5, NCasT4_v3, and NVadsV710_v5:
+
+|Workload|Recommended SKU to Migrate to|
+| -------- | -------- |
+|High GPU compute workloads such as real-time inferencing and LLM inferencing.|NCadsH100_v5 which has the best inference per dollar value.|
+|Offline inferencing workloads where latency is not the primary concern, and there is an interest in purchasing smaller VM SKUs or reducing costs.|NCasT4_v3|
+|Graphics, visualization, or small AI workloads where optimal performance is not a priority. |NVadsA10_v5, NVadsV710_v5|
 
 ## How does the retirement of the Standard_NC24rs_v3 affect me?
 
-After March 31, 2025, any remaining Standard_NC24rs_v3 VM subscriptions will be set to a deallocated state. They'll stop working and no longer incur billing charges. The Standard_NC24rs_v3 VM size will no longer be under SLA or have support included.
+After September 30, 2025, any remaining Standard_NC24rs_v3 VM subscriptions will be set to a deallocated state. They'll stop working and no longer incur billing charges. The Standard_NC24rs_v3 VM size will no longer be under SLA or have support included.
 
-Note: This retirement only impacts the virtual machine sizes in the Standard_NC24rs_v3 size in NCv3-series powered by NVIDIA V100 GPUs. See [retirement guide for Standard_NC6s_v3, Standard_NC12s_v3, and Standard_NC24s_v3](https://aka.ms/ncv3nonrdmasizemigration). This retirement announcement doesn't apply to NCasT4 v3, and NC A100 v4 and NCads H100 v5 series virtual machines. 
+> [!Note]
+> This retirement announcement doesn't apply to NCasT4_v3, NC_A100_v4, and NCadsH100_v5 series virtual machines. 
 
 ## What action do I need to take before the retirement date?
 
-You need to resize or deallocate your Standard_NC24rs_v3 VM size. We recommend that you change VM sizes for these workloads, from the original Standard_NC24rs_v3 VM size to the Standard_NC80adis_H100_v5 size (or an alternative).
+You need to resize or deallocate your Standard_NC24rs_v3 VM size. We recommend that you change VM sizes for these workloads from the original Standard_NC24rs_v3 VM size to the NCadsH100_v5-series VMs (or an alternative).
 
-The Standard_NC80adis_H100_v5 size in [NCads H100 v5-series](/azure/virtual-machines/ncads-h100-v5?source=recommendations) is powered by NVIDIA H100 NVL GPU and 4th-generation AMD EPYC™ Genoa processors. The VMs feature up to 2 NVIDIA H100 NVL GPUs with 94GB memory each, up to 96 non-multithreaded AMD EPYC Genoa processor cores and 640 GiB of system memory. Check [Azure Regions by Product page](https://azure.microsoft.com/explore/global-infrastructure/products-by-region/) for region availability. Visit the [Azure Virtual Machine pricing page](https://azure.microsoft.com/pricing/details/virtual-machines/) for pricing information.
-
-|Current VM Size|Target VM Size |Difference in Specification |
-|---|---|---|
-|Standard_NC24rs_v3 |Standard_NC80adis_H100_v5|vCPU: 80 (+56) <br>GPU Count: 2 (+0) <br>Memory: GiB 640 (+192)<br>Temp storage (SSD) GiB: 7152 (+4204)<br>Max data disks: 16 (+0)<br>Accelerated networking: Yes <br>Premium storage: Yes |
+The [NCadsH100_v5-series](/azure/virtual-machines/ncads-h100-v5?source=recommendations) is powered by NVIDIA H100 NVL GPU and 4th-generation AMD EPYC™ Genoa processors. The VMs feature up to 2 NVIDIA H100 NVL GPUs with 94GB memory each, up to 96 non-multithreaded AMD EPYC Genoa processor cores and 640 GiB of system memory. Check [Azure Regions by Product page](https://azure.microsoft.com/explore/global-infrastructure/products-by-region/) for region availability. Visit the [Azure Virtual Machine pricing page](https://azure.microsoft.com/pricing/details/virtual-machines/) for pricing information.
 
 ## Steps to change VM size 
 

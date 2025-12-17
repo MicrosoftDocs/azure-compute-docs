@@ -8,6 +8,7 @@ ms.date: 05/16/2024
 ms.author: jainan
 ms.reviewer: mattmcinnes
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
+# Customer intent: "As an IT administrator, I want to enable hibernation on my Windows virtual machines, so that I can efficiently manage resources and reduce costs during downtime."
 ---
 
 # Hibernating Windows virtual machines
@@ -27,6 +28,7 @@ For a list of hibernation compatible VM sizes, check out the [supported VM sizes
 ### Supported Windows versions
 The following Windows operating systems support hibernation:
 
+- Windows Server 2025
 - Windows Server 2022
 - Windows Server 2019
 - Windows 11 Pro

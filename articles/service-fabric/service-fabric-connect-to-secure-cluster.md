@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a cloud administrator, I want to securely connect to an Azure Service Fabric cluster using client certificates or Microsoft Entra ID, so that I can manage applications and ensure secure communication between clients and the cluster."
 ---
 
 # Connect to a secure cluster

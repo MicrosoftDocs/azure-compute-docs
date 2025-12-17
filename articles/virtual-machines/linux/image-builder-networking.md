@@ -9,6 +9,7 @@ ms.topic: concept-article
 ms.service: azure-virtual-machines
 ms.subservice: image-builder
 ms.custom: linux-related-content
+# Customer intent: "As a cloud engineer, I want to utilize Azure VM Image Builder with my existing virtual network, so that I can efficiently manage image builds while ensuring secure and private connectivity to my resources."
 ---
 
 # Azure VM Image Builder networking options

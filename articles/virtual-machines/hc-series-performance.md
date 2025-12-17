@@ -7,7 +7,8 @@ ms.topic: concept-article
 ms.date: 07/25/2024
 ms.reviewer: cynthn
 ms.author: padmalathas
-author: ju-shim
+author: cynthn
+# Customer intent: "As a cloud architect, I want to analyze the performance results of HC-series VM sizes, so that I can select the optimal configuration for my high-performance computing workloads."
 ---
 
 # HC-series virtual machine sizes

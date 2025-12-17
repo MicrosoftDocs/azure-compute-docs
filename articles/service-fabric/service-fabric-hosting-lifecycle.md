@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a cloud application administrator, I want to understand the hosting activation and deactivation lifecycle in Azure Service Fabric, so that I can effectively manage application deployments and ensure reliable service availability.
 ---
 
 # Azure Service Fabric hosting life cycle

@@ -8,6 +8,7 @@ ms.topic: how-to
 ms.date: 06/08/2022
 ms.author: risverma
 ms.custom: kr2b-contr-experiment
+# Customer intent: As an IT administrator managing virtual machines, I want to migrate from Av1-series to Av2-series VMs before the retirement date, so that I can ensure my workloads continue to run efficiently without interruption.
 ---
 
 # Av1-series retirement

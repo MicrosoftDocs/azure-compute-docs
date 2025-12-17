@@ -3,11 +3,12 @@ title: Orchestration modes API comparison
 description: Learn about the API differences between the Uniform and Flexible orchestration modes.
 author: fitzgeraldsteele
 ms.author: fisteele
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
 ms.date: 06/14/2024
-ms.reviewer: jushiman
+ms.reviewer: cynthn
 ms.custom: mimckitt, vmss-flex
+# Customer intent: "As a cloud engineer managing virtual machines, I want to understand the API differences between Uniform and Flexible orchestration modes so that I can choose the best option for my workloads and streamline my management tasks."
 ---
 
 # Orchestration modes API comparison 

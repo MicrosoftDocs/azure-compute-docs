@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/17/2024
+# Customer intent: As a cloud administrator, I want to configure and modify Service Fabric managed cluster node types, so that I can optimize resource allocation and manage workload efficiently within my cloud environment.
 ---
 
 # Service Fabric managed cluster node types

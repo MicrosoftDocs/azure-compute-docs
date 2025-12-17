@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a cloud developer, I want to implement partitioning for my stateful services in a service mesh environment, so that I can optimize data storage and compute resources to enhance application scalability and performance.
 ---
 
 # Partition Service Fabric reliable services

@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a developer working with Reliable Actors, I want to manage actor state through access, saving, and removal methods, so that I can ensure data consistency and reliability in my cloud-based applications.
 ---
 
 # Access, save, and remove Reliable Actors state

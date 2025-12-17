@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.topic: sample
 ms.date: 12/06/2017
 ms.author: atsenthi
+# Customer intent: As a cloud administrator, I want to update an application on a cluster using a CLI script, so that I can efficiently deploy new versions and ensure my applications are up to date.
 ---
 
 # Update an application using the Service Fabric CLI

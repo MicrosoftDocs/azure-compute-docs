@@ -7,6 +7,7 @@ author: hirshah
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 03/25/2025
+# Customer intent: "As a cloud architect, I want to understand the migration process from Cloud Services (extended support) to Service Fabric managed clusters, so that I can ensure a seamless transition and leverage the improved capabilities before the retirement deadline."
 ---
 
 # Frequently asked questions (FAQ)

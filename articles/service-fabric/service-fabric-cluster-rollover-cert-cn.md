@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: devx-track-azurepowershell
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As an IT administrator managing a Service Fabric cluster, I want to roll over the cluster certificate before it expires, so that I can ensure secure operations and maintain cluster services without disruption."
 ---
 
 # Manually roll over a Service Fabric cluster certificate

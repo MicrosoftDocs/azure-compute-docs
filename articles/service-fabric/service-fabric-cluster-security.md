@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a cloud administrator, I want to implement security measures for an Azure Service Fabric cluster, so that I can ensure only authorized users and nodes have access, thereby protecting production workloads from unauthorized access and maintaining data integrity."
 ---
 
 # Service Fabric cluster security scenarios

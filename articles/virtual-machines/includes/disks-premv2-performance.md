@@ -8,6 +8,7 @@
  ms.author: rogarana
 ms.custom:
   - include file
+# Customer intent: "As a cloud architect, I want to understand the IOPS and throughput limits associated with different disk sizes, so that I can accurately plan storage performance for my applications."
 ---
 |Disk Size  |Maximum available IOPS  |Maximum available throughput (MB/s)  |
 |---------|---------|---------|

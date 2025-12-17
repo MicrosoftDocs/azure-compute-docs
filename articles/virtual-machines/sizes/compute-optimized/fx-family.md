@@ -4,9 +4,10 @@ description: List of size series in the FX family.
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 04/18/2024
 ms.author: mattmcinnes
+# Customer intent: "As a cloud architect, I want to explore the FX family VM size series, so that I can choose the appropriate virtual machine sizes for my application's performance and scalability requirements."
 ---
 
 # 'FX' family general purpose VM size series

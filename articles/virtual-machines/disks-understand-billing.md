@@ -3,9 +3,10 @@ title: Understand Azure Disk Storage billing
 description: Learn about the billing factors that affect Azure managed disks, including ultra disks, Premium SSDs v2, Premium SSDs, standard SSDs, and Standard HDDs.
 author: roygara
 ms.author: rogarana
-ms.date: 08/12/2024
-ms.topic: conceptual
+ms.date: 10/28/2025
+ms.topic: concept-article
 ms.service: azure-disk-storage
+# Customer intent: As a cloud administrator, I want to understand the billing factors for Azure managed disks, so that I can accurately forecast and manage the costs related to disk storage usage in my organization.
 ---
 
 # Understand Azure Disk Storage billing
@@ -18,38 +19,25 @@ For detailed Azure Disk Storage pricing information, see [Azure Disks pricing pa
 
 There are two kinds of snapshots offered for Azure managed disks: Full snapshots and incremental snapshots. Full snapshots can be stored on standard hard disk drives (HDDs) or premium solid-state drives (SSDs) while incremental snapshots are only stored on standard HDDs. With snapshots, you're billed based on the used size of data. So if you take a full snapshot of a disk with 500-GiB size but only 50 GiB of that size is being used, then your snapshot is billed only for the used size of 50 GiB. Incremental snapshots are more cost efficient than full snapshots, as each snapshot you take only consists of the differences since the last snapshot.
 
+Managed disk snapshots have two redundancy options, locally redundant storage (LRS) and zone-redundant storage (ZRS). For snapshots, the pricing for each redundancy option is the same.
+
+
+
 ## Ultra Disks
 
 The price of an Azure Ultra Disk is determined by the combination of how large the disk is (its disk size) and what performance you select (IOPS and throughput) for your disk. If you share an Ultra Disk between multiple VMs that can affect its price as well. The following sections focus on these factors as they relate to the price of your Ultra Disk. For more information on how these factors work, see the [Ultra disks](disks-types.md#ultra-disks) section of the [Azure managed disk types](disks-types.md) article.
 
 ### Ultra Disk size
 
-Ultra Disk sizes work like Premium SSD, Standard SSD, and Standard HDD sizes. When you create or modify an Ultra Disk, the size you set is billed as the next largest provisioned disk size. So if you were to deploy a 200 GiB Ultra Disk or set a 200 GiB Ultra Disk, you'll have a 200 GiB Ultra Disk that's billed as if it was 256 GiB, since that's the next largest provisioned disk size.
-
-The disk size of your Ultra Disk also determines what performance caps your disk has. You have granular control of how much IOPS and throughput your disk has, up to that size's performance cap. Pricing increases as you increase your disk's size, and when you set higher IOPS and throughput. Ultra Disks offer up to 32 TiB per region per subscription by default, but support higher size by request. To request an increase in size, request a quota increase or contact Azure Support. 
-
-The following table outlines the available disk sizes and performance caps. Pricing increases as you increase in size.
-
-|Disk Size (GiB)  |IOPS Cap  |Throughput Cap (MB/s)  |
-|---------|---------|---------|
-|4     |1,200         |300         |
-|8     |2,400         |600         |
-|16     |4,800         |1,200         |
-|32     |9,600         |2,400         |
-|64     |19,200         |4,900         |
-|128     |38,400         |9,800         |
-|256     |76,800         |10,000         |
-|512     |153,600         |10,000         |
-|1,024    |307,200        |10,000        |
-|2,048-65,536 (sizes in this range increasing in increments of 1 TiB)     |400,000         |10,000         |
+Ultra Disk capacities range from 4 GiB to 64 TiBs, in 1-GiB increments. You're billed on a per GiB ratio.
 
 ### Ultra Disk IOPS
 
-Pricing of an Azure Ultra Disk increases as you provision more IOPS to your disk. The minimum guaranteed IOPS per disk is 1 IOPS/GiB, with an overall baseline minimum of 100 IOPS. For example, if you provision a 4-GiB Ultra Disk, the minimum IOPS for that disk is 100, instead of four. As a maximum, Ultra Disks support 300 IOPS/GiB, up to a maximum of 400,000 IOPS per disk.
+Pricing of an Azure Ultra Disk increases as you provision more IOPS to your disk. Ultra Disks supports 1000 IOPS/GiB, up to a maximum of 400,000 IOPS per disk.
 
 ### Ultra Disk throughput
 
-Pricing of an Ultra Disk increases as you increase the disk's throughput limit. The throughput limit of a single Ultra Disk is 256 kB/s for each provisioned IOPS, up to a maximum of 10,000 MB/s per disk (where MB/s - 10^6 Bytes per second). The minimum guaranteed throughput per disk is 4 kB/s for each provisioned IOPS, with an overall baseline minimum of 1 MB/s.
+Pricing of an Ultra Disk increases as you increase the disk's throughput limit. Ultra Disk supports .25 MB/s for each provisioned IOPS, up to a maximum of 10,000 MB/s per disk (where MB/s = 10^6 Bytes per second). The minimum guaranteed throughput of an Ultra Disk is 1 MB/s. 
 
 ### Shared Ultra Disks
 
@@ -177,8 +165,7 @@ The price of an Azure Standard HDD is determined by the performance tier of the 
 The initial billing of Standard HDDs is determined by the performance tier. The performance tier is set when you select the capacity you require (if you deploy a 1 TiB Standard HDD, it has the S30 tier), your disk is billed at that tier. If you increase the capacity of your disk into the next tier, it's billed at that tier. For example, if you increased your 1-TiB disk to a 3-TiB disk, it's billed at the S50 tier.
 
 ### Standard HDD Transactions
-For Standard HDDs, each I/O operation is considered as a single transaction, whatever the I/O size. These transactions have a billing impact.
-
+Standard HDD transactions incur a billable cost for every 10,000 disk operations.
 
 ### Standard HDD billing example 
 In this example, we provision a 512 GiB Standard HDD Disk with LRS redundancy. 

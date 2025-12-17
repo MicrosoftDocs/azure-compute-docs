@@ -5,11 +5,12 @@ services: automation
 ms.service: azure-virtual-machines
 ms.collection: linux
 author: GabstaMSFT
-ms.author: jushiman
-ms.date: 10/31/2022
+ms.author: cynthn
+ms.date: 08/18/2025
 ms.topic: how-to
 ms.reviewer: jushiman
 ms.custom: devx-track-azurepowershell, devx-track-azurecli, linux-related-content
+# Customer intent: As a system administrator managing Linux virtual machines, I want to run scripts using managed commands, so that I can efficiently automate tasks and troubleshoot issues within my VMs.
 ---
 # Run scripts in your Linux VM by using managed Run Commands
 
@@ -35,23 +36,24 @@ The *updated* managed Run Command uses the same VM agent channel to execute scri
 > Older versions do not support Managed RunCommand
 
 ### Linux Distro’s Supported
-| **Linux Distro** | **x64** | **ARM64** |
-|:-----|:-----:|:-----:|
-| Alma Linux |	9.x+ |	Not Supported |
-| Debian |	10+ |	Not Supported |
-| Flatcar Linux |	3374.2.x+ |	Not Supported |
-| Azure Linux | 2.x | Not Supported |
-| openSUSE |	12.3+ |	Not Supported |
-| Oracle Linux |	6.4+, 7.x+, 8.x+ |	Not Supported |
-| Red Hat Enterprise Linux |	6.7+, 7.x+,  8.x+ |	Not Supported |
-| Rocky Linux |	9.x+ |	Not Supported |
-| SLES |	12.x+, 15.x+ |	Not Supported |
-| Ubuntu |	18.04+, 20.04+, 22.04+ |	Not Supported |
+| Publisher | Distribution | x64 | ARM64 |
+|:-----|:-----|:-----:|:-----:|
+| Alma Linux Community | Alma Linux | 8.x+, 9.x+ | 8.x+, 9.x+ |
+| Credativ | Debian | 10+ | 11.x+ |
+| Kinvolk | Flatcar Linux | 3374.2.x+ | 3374.2.x+ |
+| Microsoft | Azure Linux | 2.x | 2.x |
+| openSUSE Project | openSUSE | 12.3+ | *Not supported* |
+| Oracle | Oracle Linux | 6.4+, 7.x+, 8.x+ | *Not supported* |
+| Red Hat | Red Hat Enterprise Linux | 6.7+, 7.x+,  8.x+, 9.x+, 10.x+ | 8.6+, 9.0+, 10.x+ |
+| CIQ | Rocky Linux | 9.x+ | 9.x+ |
+| SUSE | SLES | 12.x+, 15.x+ | 15.x SP4+ |
+| Canonical | Ubuntu (LTS releases)| 18.04+, 20.04+, 22.04+, 24.04+ | 20.04+, 22.04+, 24.04+ |
 
 ## Available Commands
 | **CommandID** | **Description** |
 |:-----|:-----|
-| ifconfig | Gets the configuration of all network interfaces. For usage, refer to [Run scripts](https://learn.microsoft.com/azure/virtual-machines/linux/run-command-managed#create-or-update-run-command-on-a-vm-using-sourcecommandid) |
+|**RunShellScript**|Runs a Linux shell script.|
+| **ifconfig** | Gets the configuration of all network interfaces. For usage, refer to [Run scripts](/azure/virtual-machines/linux/run-command-managed#create-or-update-run-command-on-a-vm-using-sourcecommandid) |
 
 > [!Note] 
 > The above command IDs are applicable to Managed Run Commands for Linux VMs. You can list all commandIds using command  "```Get-AzVMRunCommandDocument -Location {RegionName}```".
@@ -174,7 +176,7 @@ Statuses         :
 ```
 `InstanceView.ExecutionState` -Status of user's Run Command script. Refer this state to know whether your script was successful or not.
 
-`ProvisioningState` - Status of general extension provisioning end to end ( whether extension platform was able to trigger Run Command script or not). 
+`ProvisioningState` - Status of general extension provisioning end to end (whether extension platform was able to trigger Run Command script or not). 
 
 ### Create or update Run Command on a VM using SourceScript (script text)
 Create or update Run Command on a VM passing the script content directly to -SourceScript parameter. Use `;` to separate multiple commands.
@@ -183,7 +185,7 @@ Create or update Run Command on a VM passing the script content directly to -Sou
 Set-AzVMRunCommand -ResourceGroupName MyRG0 -VMName MyVML -RunCommandName MyRunCommand2 -Location EastUS2EUAP -SourceScript "id; echo HelloWorld"
 ```
 ### Create or update Run Command on a VM using SourceCommandId
-Create or update Run Command on a VM using pre-existing `commandId`. Available commandIds can be retrieved using [Get-AzVMRunCommandDocument](/powershell/module/az.compute/get-azvmruncommanddocument).
+Create or update Run Command on a VM using preexisting `commandId`. Available commandIds can be retrieved using [Get-AzVMRunCommandDocument](/powershell/module/az.compute/get-azvmruncommanddocument).
 
 ```azurepowershell-interactive
 Set-AzVMRunCommand -ResourceGroupName MyRG0 -VMName MyVMEE -RunCommandName MyRunCommand -Location EastUS2EUAP -SourceCommandId ipconfig

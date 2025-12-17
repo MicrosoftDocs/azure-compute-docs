@@ -9,6 +9,7 @@ ms.date: 07/28/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
+# Customer intent: "As an IT administrator managing cloud resources, I want to access the detailed specifications of Dsv2-series VMs, so that I can select the appropriate VM size for my application's performance and scalability requirements."
 ---
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
 |---|---|---|

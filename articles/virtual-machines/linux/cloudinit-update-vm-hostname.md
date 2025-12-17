@@ -9,6 +9,7 @@ ms.date: 03/29/2023
 ms.author: mattmcinnes
 ms.subservice: cloud-init
 ms.custom: devx-track-azurecli, linux-related-content
+# Customer intent: "As a cloud administrator, I want to customize the hostname of a Linux VM during creation using cloud-init, so that I can ensure the VM is easily identifiable within my infrastructure from the moment it's provisioned."
 ---
 # Use cloud-init to set hostname for a Linux VM in Azure
 

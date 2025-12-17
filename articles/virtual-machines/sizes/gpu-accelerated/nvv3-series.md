@@ -4,13 +4,17 @@ description: Information on and specifications of the NVv3-series sizes
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 07/31/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
+# Customer intent: As a cloud architect, I want to evaluate the specifications of the NVv3 virtual machine sizes, so that I can select the appropriate size for resource-intensive applications based on computing, storage, and network requirements.
 ---
 
 # NVv3 sizes series
+
+> [!NOTE]
+> The NVv3-series will be retired on September 30, 2026. Refer to the [NVv3-series retirement page](/azure/virtual-machines/sizes/gpu-accelerated/nvv3-series-retirement) for more information and migration recommendations. 
 
 [!INCLUDE [nvv3-summary](./includes/nvv3-series-summary.md)]
 

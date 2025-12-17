@@ -7,6 +7,7 @@ ms.collection: windows
 ms.topic: how-to
 ms.date: 08/15/2017
 ms.author: ankitadutta
+# Customer intent: "As a system administrator, I want to migrate my Azure virtual machine disks to premium storage using a disaster recovery solution, so that I can enhance performance and minimize downtime during the migration process."
 ---
 # Migrate to Premium Storage by using Azure Site Recovery
 

@@ -7,11 +7,17 @@ ms.subservice: security
 ms.collection: linux
 ms.topic: how-to
 ms.author: mbaldwin
-ms.date: 02/20/2024
-ms.custom: devx-track-azurepowershell, linux-related-content
+ms.date: 09/23/2025
+ms.custom:
+  - devx-track-azurepowershell
+  - linux-related-content
+  - sfi-image-nochange
+# Customer intent: As a system administrator, I want to use sample scripts to encrypt Linux VMs using disk encryption, so that I can enhance security for sensitive data stored on my virtual machines.
 ---
 
 # Azure Disk Encryption sample scripts for Linux VMs
+
+[!INCLUDE [Azure Disk Encryption retirement notice](~/reusable-content/ce-skilling/azure/includes/security/azure-disk-encryption-retirement.md)]
 
 > [!CAUTION]
 > This article references CentOS, a Linux distribution that is End Of Life (EOL) status. Please consider your use and plan accordingly. For more information, see the [CentOS End Of Life guidance](~/articles/virtual-machines/workloads/centos/centos-end-of-life.md).

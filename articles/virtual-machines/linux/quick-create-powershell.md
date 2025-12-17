@@ -1,13 +1,14 @@
 ---
 title: Quickstart - Create a Linux VM with Azure PowerShell
 description: In this quickstart, you learn how to use Azure PowerShell to create a Linux virtual machine
-author: ju-shim
+author: cynthn
 ms.service: azure-virtual-machines
 ms.collection: linux
 ms.topic: quickstart
 ms.date: 06/01/2022
-ms.author: jushiman
+ms.author: cynthn
 ms.custom: mvc, devx-track-azurepowershell, linux-related-content
+# Customer intent: As a system administrator, I want to create and manage a Linux virtual machine using PowerShell, so that I can deploy applications and services efficiently on Azure.
 ---
 
 # Quickstart: Create a Linux virtual machine in Azure with PowerShell
@@ -16,7 +17,7 @@ ms.custom: mvc, devx-track-azurepowershell, linux-related-content
 
 The Azure PowerShell module is used to create and manage Azure resources from the PowerShell command line or in scripts. This quickstart shows you how to use the Azure PowerShell module to deploy a Linux virtual machine (VM) in Azure. This quickstart uses the latest Debian marketplace image. To see your VM in action, you'll also SSH to the VM and install the NGINX web server.
 
-If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 ## Launch Azure Cloud Shell
 

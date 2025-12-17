@@ -1,14 +1,15 @@
 ---
-title: Bsv2 series specs include
+title: "Bsv2-series specs include"
 description: Include file containing specifications of Bsv2-series VM sizes.
 author: mattmcinnes
 ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.date: 07/29/2024
+ms.date: 11/06/2025
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
+# Customer intent: "As a cloud architect, I want to access detailed specifications of Bsv2-series VM sizes, so that I can select the appropriate virtual machine configuration for my project's performance and resource requirements."
 ---
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
 |---|---|---|

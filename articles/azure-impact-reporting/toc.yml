@@ -1,29 +1,43 @@
-- name: Azure Impact Reporting (Preview)
+- name: Azure Impact Reporting Preview
   href: index.yml
 - name: Overview
+  href: overview.md
+- name: Quickstarts
   items:
-  - name: What is Azure Impact Reporting?
-    href: overview.md
-  - name: Impact Reporting Connector for Azure Monitor (Preview)
-    items:
-      - name: Overview
-        href: azure-monitor-connector.md
-      - name: Create an Impact Connector for Azure Monitor Alerts
-        href: create-azure-monitor-connector.md
-      - name: Impact Connector for Azure Monitor TSG
-        href: connectors-troubleshooting-guide.md
-      - name: Impact Reporting Connectors FAQ
-        href: connectors-faq.md
-- name: Tutorials (Preview)
-  items:
-  - name: Report Impact on an Azure Virtual Machine
-    href: report-vm-impact.md
-  - name: Report Impacts Using a Logic App
-    href: creating-logic-app.md
-  - name: View Reported Impacts
+  - name: Report a resource impact
+    href: report-impact.md
+  - name: View reported impacts
     href: view-impact-insights.md
-  - name: View Allowed Impact Categories
+- name: Tutorials
+  items:
+  - name: Report a resource impact
+    href: report-impact.md
+  - name: Report impacts by using a logic app
+    href: creating-logic-app.md
+  - name: View reported impacts
+    href: view-impact-insights.md
+  - name: View allowed impact categories
     href: view-impact-categories.md
-- name: FAQ
+- name: Impact connectors for Azure Monitor (preview)
+  items:
+    - name: Overview
+      href: azure-monitor-connector.md
+    - name: Create an impact connector for Azure Monitor alerts
+      href: create-azure-monitor-connector.md
+    - name: Troubleshoot impact connectors for Azure Monitor
+      href: connectors-troubleshooting-guide.md
+    - name: FAQ for impact connectors
+      href: connectors-faq.md
+- name: Guest Health Reporting (preview)
+  items:
+  - name: Overview
+    href: guest-health-overview.md
+  - name: Report node health
+    href: guest-health-impact-report.md
+  - name: Impact categories
+    href: guest-health-impact-categories.md
+  - name: FAQ for Guest Health Reporting
+    href: guest-health-faq.md
+- name: FAQ for Azure Impact Reporting
   href: faq.md
   

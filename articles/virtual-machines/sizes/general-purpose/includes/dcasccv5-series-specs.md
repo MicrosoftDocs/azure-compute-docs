@@ -9,6 +9,7 @@ ms.date: 07/30/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
+# Customer intent: "As a cloud architect, I want to access the specifications of the DCas_cc_v5 series VM sizes, so that I can determine the appropriate configuration for my workload requirements."
 ---
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
 |---|---|---|

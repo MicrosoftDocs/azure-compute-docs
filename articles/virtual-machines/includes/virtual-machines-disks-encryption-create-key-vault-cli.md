@@ -8,6 +8,7 @@
  ms.date: 03/31/2023
  ms.author: rogarana
  ms.custom: include file, devx-track-azurecli
+# Customer intent: As a cloud administrator, I want to configure Azure Key Vault and Disk Encryption Set with purge protection and auto key rotation, so that I can securely manage encryption keys for my managed disks and protect against accidental data loss.
 ---
 ### Azure Key Vault
 

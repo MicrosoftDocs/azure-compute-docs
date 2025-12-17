@@ -8,8 +8,8 @@ metadata:
   description: Learn how to create, configure, manage, and autoscale Virtual Machine Scale Sets.
   ms.service: azure-virtual-machine-scale-sets
   ms.topic: landing-page
-  author: ju-shim
-  ms.author: jushiman
+  author: cynthn
+  ms.author: cynthn
   ms.reviewer: mimckitt
   ms.date: 04/18/2025
 
@@ -52,6 +52,8 @@ landingContent:
             url: instance-mix-overview.md
           - text: Standby Pools
             url: standby-pools-overview.md
+          - text: Azure VM Applications
+            url: ../virtual-machines/vm-applications.md
 
   # Card
   - title: Step-by-step guides
@@ -70,10 +72,10 @@ landingContent:
             url: tutorial-use-custom-image-cli.md
           - text: Use a custom VM image with Azure PowerShell
             url: tutorial-use-custom-image-powershell.md
-          - text: Deploy apps to a scale set with the Azure CLI
+          - text: Deploy apps to a scale set using Azure VM Applications
+            url: ../virtual-machines/vm-applications-how-to.md
+          - text: Deploy apps to a scale set using custom script extension
             url: tutorial-install-apps-cli.md
-          - text: Deploy apps to a scale set with Azure PowerShell
-            url: tutorial-install-apps-powershell.md
           - text: Autoscale a scale set with the Azure CLI
             url: tutorial-autoscale-cli.md
           - text: Autoscale a scale set with Azure PowerShell

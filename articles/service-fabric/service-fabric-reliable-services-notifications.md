@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a cloud application developer, I want to implement notifications in Reliable Services, so that I can efficiently track changes to stateful objects and respond to those changes in real-time for accurate data representation and processing.
 ---
 
 # Reliable Services notifications

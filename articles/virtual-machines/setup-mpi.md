@@ -6,8 +6,9 @@ ms.subservice: hpc
 ms.topic: how-to
 ms.date: 07/25/2024
 ms.reviewer: cynthn
-ms.author: jushiman
-author: ju-shim
+ms.author: cynthn
+author: cynthn
+# Customer intent: "As a cloud HPC researcher, I want to configure Message Passing Interface (MPI) on Azure VMs, so that I can efficiently run parallel computing workloads and optimize performance across distributed systems."
 ---
 
 # Set up Message Passing Interface for HPC
@@ -20,13 +21,13 @@ The [Message Passing Interface (MPI)](https://en.wikipedia.org/wiki/Message_Pass
 
 For SR-IOV enabled [RDMA capable VMs](sizes-hpc.md#rdma-capable-instances), [Ubuntu-HPC VM images](configure.md#ubuntu-hpc-vm-images) and [AlmaLinux-HPC VM images](configure.md#almalinux-hpc-vm-images) are suitable. These VM images come optimized and preloaded with the OFED drivers for RDMA and various commonly used MPI libraries and scientific computing packages and are the easiest way to get started.
 
-Though the examples here are for RHEL, but the steps are general and can be used for any compatible Linux operating system such as Ubuntu (18.04, 20.04, 22.04) and SLES (12 SP4 and 15 SP4). More examples for setting up other MPI implementations on others distros is on the [azhpc-images repo](https://github.com/Azure/azhpc-images/blob/master/ubuntu/common/install_mpis.sh).
+Though the examples here are for RHEL, but the steps are general and can be used for any compatible Linux operating system such as Ubuntu (18.04, 20.04, 22.04) and SLES (12 SP4 and 15 SP4). More examples for setting up other MPI implementations on others distros is on the [azhpc-images repo](https://github.com/Azure/azhpc-images/blob/master/partners/rhel/common/install_mpis.sh).
 
 > [!NOTE]
 > Running MPI jobs on SR-IOV enabled VMs with certain MPI libraries (such as Platform MPI) may require setting up of partition keys (p-keys) across a tenant for isolation and security. Follow the steps in the [Discover partition keys](#discover-partition-keys) section for details on determining the p-key values and setting them correctly for an MPI job with that MPI library.
 
 > [!NOTE]
-> The code snippets below are examples. We recommend using the latest stable versions of the packages, or referring to the [azhpc-images repo](https://github.com/Azure/azhpc-images/blob/master/ubuntu/common/install_mpis.sh).
+> The code snippets below are examples. We recommend using the latest stable versions of the packages, or referring to the [azhpc-images repo](https://github.com/Azure/azhpc-images/blob/master/partners/rhel/common/install_mpis.sh).
 
 ## Choosing MPI library
 If an HPC application recommends a particular MPI library, try that version first. If you have flexibility regarding which MPI you can choose, and you want the best performance, try HPC-X. Overall, the HPC-X MPI performs the best by using the UCX framework for the InfiniBand interface, and takes advantage of all the Mellanox InfiniBand hardware and software capabilities. Additionally, HPC-X and OpenMPI are ABI compatible, so you can dynamically run an HPC application with HPC-X that was built with OpenMPI. Similarly, Intel MPI, MVAPICH, and MPICH are ABI compatible.

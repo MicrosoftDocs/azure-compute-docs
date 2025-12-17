@@ -10,6 +10,7 @@ ms.date: 06/14/2024
 ms.reviewer: cynthn
 ms.custom: devx-track-azurecli
 
+# Customer intent: As a cloud architect, I want to create scale sets using images shared across Azure tenants with an app registration, so that I can efficiently manage and deploy virtual machines in a multi-tenant environment.
 ---
 # Share images across tenants using an app registration
 

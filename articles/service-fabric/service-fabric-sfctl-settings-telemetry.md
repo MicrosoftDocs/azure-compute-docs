@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a cloud operator, I want to configure telemetry settings for the Service Fabric CLI, so that I can control the data collection for command execution and ensure compliance with my organization's monitoring policies.
 ---
 
 # sfctl settings telemetry

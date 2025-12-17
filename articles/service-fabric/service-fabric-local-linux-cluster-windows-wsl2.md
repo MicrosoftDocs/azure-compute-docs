@@ -11,6 +11,7 @@ ms.date: 07/14/2022
 
 # Maintainer notes: Keep these documents in sync:
 # service-fabric-local-linux-cluster-windows-wsl2.md
+# Customer intent: As a developer using Windows, I want to set up a Linux Service Fabric cluster inside WSL2, so that I can rapidly test and prototype applications designed for Linux environments.
 ---
 
 # Set up a Linux Service Fabric cluster via WSL2 on your Windows developer machine

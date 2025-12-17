@@ -8,8 +8,8 @@ metadata:
   description: Documentation for creating and managing Linux virtual machines in Azure.
   ms.service: azure-virtual-machines
   ms.topic: landing-page
-  author: ju-shim
-  ms.author: jushiman
+  author: cynthn
+  ms.author: cynthn
   ms.date: 12/13/2021
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | tutorial | video | whats-new
 
@@ -29,6 +29,8 @@ landingContent:
             url: flexible-virtual-machine-scale-sets.md
           - text: Community Gallery
             url: share-gallery-community.md
+          - text: Azure VM Applications
+            url: ./vm-applications.md
 
 
   # Card (optional)

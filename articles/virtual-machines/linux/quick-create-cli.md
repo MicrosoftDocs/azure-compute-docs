@@ -1,13 +1,14 @@
 ---
 title: 'Quickstart: Use the Azure CLI to create a Linux Virtual Machine'
 description: In this quickstart, you learn how to use the Azure CLI to create a Linux virtual machine
-author: ju-shim
+author: cynthn
 ms.service: azure-virtual-machines
 ms.collection: linux
 ms.topic: quickstart
 ms.date: 03/11/2024
-ms.author: jushiman
+ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli, mode-api, innovation-engine, linux-related-content
+# Customer intent: "As a cloud administrator, I want to use the command line to create a Linux virtual machine, so that I can efficiently manage resources and automate deployment in my Azure environment."
 ---
 
 # Quickstart: Create a Linux virtual machine with the Azure CLI on Azure
@@ -18,7 +19,7 @@ ms.custom: mvc, devx-track-azurecli, mode-api, innovation-engine, linux-related-
 
 This quickstart shows you how to use the Azure CLI to deploy a Linux virtual machine (VM) in Azure. The Azure CLI is used to create and manage Azure resources via either the command line or scripts.
 
-If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 ## Launch Azure Cloud Shell
 

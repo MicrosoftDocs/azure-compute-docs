@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a developer working with Reliable Actors, I want to configure the state persistence and replication settings for my actor instances, so that I can manage their reliability and performance according to my application's requirements.
 ---
 
 # Reliable Actors state management

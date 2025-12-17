@@ -1,5 +1,5 @@
 ---
-title: Event Aggregation with Windows Azure Diagnostics
+title: Event Aggregation with Microsoft Azure Diagnostics
 description: Learn about aggregating and collecting events using WAD for monitoring and diagnostics of Azure Service Fabric clusters.
 ms.topic: how-to
 ms.author: tomcassidy
@@ -7,22 +7,24 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-arm-template
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 09/29/2025
+# Customer intent: As a cloud administrator, I want to configure event aggregation and diagnostics for Azure Service Fabric clusters so that I can effectively monitor, analyze, and troubleshoot issues within the applications and services deployed in the cluster.
 ---
 
-# Event aggregation and collection using Windows Azure Diagnostics
+# Event aggregation and collection using Microsoft Azure Diagnostics
+
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-diagnostics-event-aggregation-wad.md)
 > * [Linux](service-fabric-diagnostics-event-aggregation-lad.md)
->
->
 
 When you're running an Azure Service Fabric cluster, it's a good idea to collect the logs from all the nodes in a central location. Having the logs in a central location helps you analyze and troubleshoot issues in your cluster, or issues in the applications and services running in that cluster.
 
-One way to upload and collect logs is to use the Windows Azure Diagnostics (WAD) extension, which uploads logs to Azure Storage, and also has the option to send logs to Azure Application Insights or Event Hubs. You can also use an external process to read the events from storage and place them in an analysis platform product, such as [Azure Monitor logs](./service-fabric-diagnostics-oms-setup.md) or another log-parsing solution.
-
+One way to upload and collect logs is to use the Microsoft Azure Diagnostics (WAD) extension, which uploads logs to Azure Storage, and also has the option to send logs to Azure Application Insights or Event Hubs. You can also use an external process to read the events from storage and place them in an analysis platform product, such as [Azure Monitor logs](./service-fabric-diagnostics-oms-setup.md) or another log-parsing solution.
 
 [!INCLUDE [updated-for-az](~/reusable-content/ce-skilling/azure/includes/updated-for-az.md)]
+
+> [!WARNING]
+> Application Insights for the Service Fabric SDK is no longer supported.
 
 ## Prerequisites
 The following tools are used in this article:
@@ -32,7 +34,7 @@ The following tools are used in this article:
 * [Azure Resource Manager template](../virtual-machines/extensions/diagnostics-template.md?toc=/azure/virtual-machines/windows/toc.json)
 
 ## Service Fabric platform events
-Service Fabric sets you up with a few [out-of-the-box logging channels](service-fabric-diagnostics-event-generation-infra.md), of which the following channels are pre-configured with the extension to send monitoring and diagnostics data to a storage table or elsewhere:
+Service Fabric sets you up with a few [out-of-the-box logging channels](service-fabric-diagnostics-event-generation-infra.md), of which the following channels are preconfigured with the extension to send monitoring and diagnostics data to a storage table or elsewhere:
   * [Operational events](service-fabric-diagnostics-event-generation-operational.md): higher-level operations that the Service Fabric platform performs. Examples include creation of applications and services, node state changes, and upgrade information. These are emitted as Event Tracing for Windows (ETW) logs
   * [Reliable Actors programming model events](service-fabric-reliable-actors-diagnostics.md)
   * [Reliable Services programming model events](service-fabric-reliable-services-diagnostics.md)
@@ -52,7 +54,7 @@ We highly recommend that you download the template **before you click Create** i
 Now that you're aggregating events in Azure Storage, [set up Azure Monitor logs](service-fabric-diagnostics-oms-setup.md) to gain insights and query them in the Azure Monitor logs portal
 
 >[!NOTE]
->There is currently no way to filter or groom the events that are sent to the tables. If you don't implement a process to remove events from the table, the table will continue to grow (the default cap is 50 GB). Instructions on how to change this are [further below in this article](service-fabric-diagnostics-event-aggregation-wad.md#update-storage-quota). Additionally, there is an example of a data grooming service running in the [Watchdog sample](https://github.com/Azure-Samples/service-fabric-watchdog-service), and it is recommended that you write one for yourself as well, unless there is a good reason for you to store logs beyond a 30 or 90 day timeframe.
+>There's currently no way to filter or groom the events that are sent to the tables. If you don't implement a process to remove events from the table, the table continues to grow (the default cap is 50 GB). Instructions on how to change this are [further below in this article](service-fabric-diagnostics-event-aggregation-wad.md#update-storage-quota). Additionally, there's an example of a data grooming service running in the [Watchdog sample](https://github.com/Azure-Samples/service-fabric-watchdog-service), and it's recommended that you write one for yourself as well, unless there's a good reason for you to store logs beyond a 30 or 90 day timeframe.
 
 
 
@@ -178,7 +180,7 @@ Then, update the `VirtualMachineProfile` section of the template.json file by ad
 After you modify the template.json file as described, republish the Resource Manager template. If the template was exported, running the deploy.ps1 file republishes the template. After you deploy, ensure that **ProvisioningState** is **Succeeded**.
 
 > [!TIP]
-> If you are going to deploy containers to your cluster, enable WAD to pick up docker stats by adding this to your **WadCfg > DiagnosticMonitorConfiguration** section.
+> If you're going to deploy containers to your cluster, enable WAD to pick up docker stats by adding this to your **WadCfg > DiagnosticMonitorConfiguration** section.
 
 ```json
 "DockerSources": {
@@ -218,14 +220,14 @@ Logs from additional channels are also available for collection. Here are some o
     "scheduledTransferKeywordFilter": "4611686018427387928"
   ```
 
-* Data & Messaging Channel - Detailed: Verbose channel that contains all the non-critical logs from data and messaging in the cluster and the detailed operational channel. For detailed troubleshooting of all reverse proxy events, refer to the [reverse proxy diagnostics guide](service-fabric-reverse-proxy-diagnostics.md).  To view these events in Visual Studio's Diagnostic Event viewer, add "Microsoft-ServiceFabric:4:0x4000000000000020" to the list of ETW providers.
+* Data & Messaging Channel - Detailed: Verbose channel that contains all the noncritical logs from data and messaging in the cluster and the detailed operational channel. For detailed troubleshooting of all reverse proxy events, refer to the [reverse proxy diagnostics guide](service-fabric-reverse-proxy-diagnostics.md).  To view these events in Visual Studio's Diagnostic Event viewer, add "Microsoft-ServiceFabric:4:0x4000000000000020" to the list of ETW providers.
 
   ```json
     "scheduledTransferKeywordFilter": "4611686018427387944"
   ```
 
 >[!NOTE]
->This channel has a very high volume of events, enabling event collection from this detailed channel results in a lot of traces being generated quickly, and can consume storage capacity. Only turn this on if absolutely necessary.
+>This channel has a high volume of events, enabling event collection from this detailed channel results in many traces being generated quickly, and can consume storage capacity. Only turn this on if necessary.
 
 
 To enable the **Base Operational Channel** our recommendation for comprehensive logging with the least amount of noise, The `EtwManifestProviderConfiguration` in the `WadCfg` of your template would look like the following:
@@ -301,15 +303,15 @@ To collect performance counters or event logs, modify the Resource Manager templ
 
 To collect performance metrics from your cluster, add the performance counters to your "WadCfg > DiagnosticMonitorConfiguration" in the Resource Manager template for your cluster. See [Performance monitoring with WAD](service-fabric-diagnostics-perf-wad.md) for steps on modifying your `WadCfg` to collect specific performance counters. Reference [Performance metrics](monitor-service-fabric-reference.md#performance-metrics) for a list of performance counters that we recommend collecting.
   
-If you are using an Application Insights sink, as described in the section below, and want these metrics to show up in Application Insights, then make sure to add the sink name in the "sinks" section as shown above. This will automatically send the performance counters that are individually configured to your Application Insights resource.
+If you're using an Application Insights sink, as described in the section below, and want these metrics to show up in Application Insights, then make sure to add the sink name in the "sinks" section as shown above. This will automatically send the performance counters that are individually configured to your Application Insights resource.
 
 
 ## Send logs to Application Insights
 
 ### Configuring Application Insights with WAD
 
->[!NOTE]
->This is only applicable to Windows clusters at the moment.
+> [!WARNING]
+> Application Insights for the Service Fabric SDK is no longer supported.
 
 There are two primary ways to send data from WAD to Azure Application Insights, which is achieved by adding an Application Insights sink to the WAD configuration, through the Azure portal or through an Azure Resource Manager template.
 
@@ -317,7 +319,7 @@ There are two primary ways to send data from WAD to Azure Application Insights, 
 
 ![Adding an AIKey](media/service-fabric-diagnostics-event-analysis-appinsights/azure-enable-diagnostics.png)
 
-When creating a cluster, if Diagnostics is turned "On", an optional field to enter an Application Insights Instrumentation key will show. If you paste your Application Insights Key here, the Application Insights sink is automatically configured for you in the Resource Manager template that is used to deploy your cluster.
+When creating a cluster, if Diagnostics is turned "On", an optional field to enter an Application Insights Instrumentation key shows. If you paste your Application Insights Key here, the Application Insights sink is automatically configured for you in the Resource Manager template that is used to deploy your cluster.
 
 #### Add the Application Insights Sink to the Resource Manager template
 

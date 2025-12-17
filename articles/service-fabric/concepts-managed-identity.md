@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a cloud application developer, I want to implement managed identities for my Service Fabric applications, so that I can securely authenticate to Azure services without hardcoding credentials in my code.
 ---
 
 # Using Managed identities for Azure with Service Fabric

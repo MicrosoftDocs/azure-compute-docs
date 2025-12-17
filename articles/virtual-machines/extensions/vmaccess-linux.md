@@ -1,14 +1,15 @@
 ---
 title: Reset access to an Azure Linux VM 
 description: Learn how to manage administrative users and reset access on Linux VMs by using the VMAccess extension and the Azure CLI.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: azure-virtual-machines
 ms.subservice: extensions
 ms.author: gabsta
 author: GabstaMSFT
 ms.collection: linux
-ms.date: 04/12/2023
+ms.date: 08/18/2025
 ms.custom: GGAL-freshness822, devx-track-azurecli, devx-track-azurepowershell, linux-related-content
+# Customer intent: "As a Linux VM administrator, I want to reset access to my virtual machine using the VMAccess extension, so that I can manage administrative users and regain control when I lose access."
 ---
 
 # VMAccess Extension for Linux
@@ -18,27 +19,29 @@ The VMAccess Extension is used to manage administrative users, configure SSH, an
 This article describes how to run the VMAccess Extension from the Azure CLI and through an Azure Resource Manager template. This article also provides troubleshooting steps for Linux systems.
 
 > [!NOTE]
-> If you use the VMAccess extension to reset the password of your VM after you install the Microsoft Entra Login extension, rerun the Microsoft Entra Login extension to re-enable Microsoft Entra Login for your VM.
+> If you use the VMAccess extension to reset the password of your VM after you install the Microsoft Entra sign-in extension, rerun the Microsoft Entra sign-in extension to re-enable Microsoft Entra sign-in for your VM.
+
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
 
 ## Prerequisites
 
 ### Supported Linux distributions
 
-| **Linux Distro** | **x64** | **ARM64** |
-|:-----|:-----:|:-----:|
-| Alma Linux |	9.x+ |	9.x+ |
-| Debian |	10+ |	11.x+ |
-| Flatcar Linux |	3374.2.x+ |	3374.2.x+ |
-| Azure Linux | 2.x | 2.x |
-| openSUSE |	12.3+ |	Not Supported |
-| Oracle Linux |	6.4+, 7.x+, 8.x+ |	Not Supported |
-| Red Hat Enterprise Linux |	6.7+, 7.x+,  8.x+ |	8.6+, 9.0+ |
-| Rocky Linux |	9.x+ |	9.x+ |
-| SLES |	12.x+, 15.x+ |	15.x SP4+ |
-| Ubuntu |	18.04+, 20.04+, 22.04+ |	20.04+, 22.04+ |
+| Publisher | Distribution | x64 | ARM64 |
+|:-----|:-----|:-----:|:-----:|
+| Alma Linux Community | Alma Linux | 8.x+, 9.x+ | 8.x+, 9.x+ |
+| Credativ | Debian | 10+ | 11.x+ |
+| Kinvolk | Flatcar Linux | 3374.2.x+ | 3374.2.x+ |
+| Microsoft | Azure Linux | 2.x | 2.x |
+| openSUSE Project | openSUSE | 12.3+ | *Not supported* |
+| Oracle | Oracle Linux | 6.4+, 7.x+, 8.x+ | *Not supported* |
+| Red Hat | Red Hat Enterprise Linux | 6.7+, 7.x+,  8.x+, 9.x+, 10.x+ | 8.6+, 9.0+, 10.x+ |
+| CIQ | Rocky Linux | 9.x+ | 9.x+ |
+| SUSE | SLES | 12.x+, 15.x+ | 15.x SP4+ |
+| Canonical | Ubuntu (LTS releases)| 18.04+, 20.04+, 22.04+, 24.04+ | 20.04+, 22.04+, 24.04+ |
 
 ### Tips
-* VMAccess was designed for regaining access to a VM given that access is lost. Based on this principle, it grants sudo permission to account specified in the username field. If you don't wish a user to gain sudo permissions, log in to the VM and use built-in tools (for example, usermod, chage, etc.) to manage unprivileged users.
+* VMAccess was designed for regaining access to a VM given that access is lost. Based on this principle, it grants sudo permission to account specified in the username field. If you don't wish a user to gain sudo permissions, sign-in to the VM and use built-in tools (for example, usermod, change, etc.) to manage unprivileged users.
 * You can only have one version of the extension applied to a VM. To run a second action, update the existing extension with a new configuration.
 * During a user update, VMAccess alters the `sshd_config` file and takes a backup of it beforehand. It changes `ChallengeResponseAuthentication` to `no` and `PasswordAuthentication` to `yes`. To restore the original backed-up SSH configuration, run VMAccess with `restore_backup_ssh` set to `True`.
 
@@ -114,7 +117,7 @@ The JSON configuration for a virtual machine extension must be nested inside the
 
 ### Using Azure CLI VM user commands
 
-The following CLI commands under [az vm user](/cli/azure/vm/user) use the VMAccess Extension. To use these commands, you need to [install the latest Azure CLI](/cli/azure/install-az-cli2) and sign in to an Azure account by using [az login](/cli/azure/reference-index).
+The following CLI commands under [az vm user](/cli/azure/vm/user) use the VMAccess Extension. To use these commands, you need to [install the latest Azure CLI](/cli/azure/install-az-cli2) and sign in to an Azure account by using [az sign-in](/cli/azure/reference-index).
 
 #### Update SSH key
 
@@ -180,7 +183,7 @@ az vm user delete \
   --username myNewUser
 ```
 
-### Using Azure CLI VM/VMSS extension commands
+### Using Azure CLI VM/Virtual Machine Scale Sets extension commands
 
 You can also use the [az vm extension set](/cli/azure/vm/extension#az-vm-extension-set) and [az vmss extension set](/cli/azure/vmss/extension#az-vmss-extension-set) commands to run the VMAccess Extension with the specified configuration.
 
@@ -314,7 +317,7 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 
 | Error  | Description |
 | ---- | ---- |
-| Provisioning of VM extension enablevmaccess has timed out. Extension provisioning has taken too long to complete. The extension did not report a message. More information on troubleshooting is available at https://aka.ms/vmextensionlinuxtroubleshoot. | The error message indicates that the provisioning of the VM extension ‘enablevmaccess’ has timed out due to taking too long to complete. Additionally, the extension did not provide any status message during the process. To resolve this issue, consider checking the VM’s performance and network conditions, and retry the provisioning operation. For more information, see [Troubleshoot VM extensions](https://learn.microsoft.com/azure/virtual-machines/extensions/features-linux?tabs=azure-cli#troubleshoot-vm-extensions). |
+| Provisioning of VM extension enablevmaccess has timed out. Extension provisioning has taken too long to complete. The extension didn't report a message. More information on troubleshooting is available at https://aka.ms/vmextensionlinuxtroubleshoot. | The error message indicates that the provisioning of the VM extension ‘enablevmaccess’ has timed out due to taking too long to complete. Additionally, the extension didn't provide any status message during the process. To resolve this issue, consider checking the VM’s performance and network conditions, and retry the provisioning operation. For more information, see [Troubleshoot VM extensions](/azure/virtual-machines/extensions/features-linux?tabs=azure-cli#troubleshoot-vm-extensions). |
 | VM has reported a failure when processing extension 'enablevmaccess' (publisher 'Microsoft.OSTCExtensions' and type 'VMAccessForLinux'). Error message: 'Enable failed: No password or ssh_key is specified.'. More information on troubleshooting is available at https://aka.ms/vmextensionlinuxtroubleshoot . | The error message indicates that the VM failed to process the ‘enablevmaccess’ extension because no password or SSH key was specified. This failure is associated with the ‘Microsoft.OSTCExtensions’ publisher and the ‘VMAccessForLinux’ type. To resolve this issue, ensure that either a password or an SSH key is provided during the extension configuration. |
 
 For more help, you can contact the Azure experts at [Azure Community Support](https://azure.microsoft.com/support/forums/). Alternatively, you can file an Azure support incident. Go to [Azure support](https://azure.microsoft.com/support/options/) and select **Get support**. For more information about Azure Support, read the [Azure support plans FAQ](https://azure.microsoft.com/support/faq/).

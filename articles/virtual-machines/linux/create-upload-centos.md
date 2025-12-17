@@ -9,6 +9,7 @@ ms.topic: how-to
 ms.date: 12/14/2022
 ms.author: vakavuru
 ms.reviewer: mattmcinnes
+# Customer intent: As a system administrator, I want to create and configure a CentOS-based virtual hard disk for Azure, so that I can deploy consistent virtual machines that meet organizational requirements.
 ---
 
 # Prepare a CentOS-based virtual machine for Azure
