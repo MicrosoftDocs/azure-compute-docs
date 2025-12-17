@@ -133,9 +133,9 @@
     maintainContext: true
   - name: Availability Zones
     href: virtual-machine-scale-sets-use-availability-zones.md
-  - name: Zone Balancing
+  - name: Zone Balance
     items:
-      - name: Best effort vs strict zone balance
+      - name: Zone balancing in virtual machine scale sets
         href: virtual-machine-scale-sets-zone-balancing.md
       - name: Automatic zone balance (Preview)
         href: auto-zone-balance-overview.md
