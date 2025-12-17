@@ -23,11 +23,11 @@ Automatic zone balance helps you maintain zone-resilient scale sets that are eve
 
 When you deploy a Virtual Machine Scale Set across multiple availability zones, the scale set attempts to maximize resiliency by spreading your VMs as evenly as possible. However, factors like capacity constraints or scaling operations can cause your scale set to become imbalanced across availability zones over time, with some zones having more VM instances than others. This imbalance can go unnoticed, but it increases the risk that a single zone failure could affect a disproportionate number of your VMs, reducing your application's availability. 
 
-This feature differs from the `zoneBalance` [property](./virtual-machine-scale-sets-use-availability-zones.md#zone-balancing). If strict zone balancing is enabled (`zoneBalance = true`), the scale set always enforces zone balance and can block operations if balance can't be achieved. Automatic zone balance operates under best-effort balancing (`zoneBalance = false`), allowing operations to proceed even if the scale set becomes temporarily imbalanced. Automatic zone balance continuously monitors and rebalances VMs in the background to ensure maximum resiliency across zones.
+This feature differs from the ["zoneBalance" property](virtual-machine-scale-sets-zone-balancing.md). If strict zone balancing is enabled (`zoneBalance = true`), the scale set always enforces zone balance and can block operations if balance can't be achieved. Automatic zone balance operates under best-effort balancing (`zoneBalance = false`), allowing operations to proceed even if the scale set becomes temporarily imbalanced. Automatic zone balance continuously monitors and rebalances VMs in the background to ensure maximum resiliency across zones.
 
 
 **Key Terms:**
-- A scale set is considered **balanced** if each zone has the same number of VMs +/- 1 VM as all other zones for the scale set. A scale set that doesn't meet this condition is considered imbalanced. More detail on zone balance is available [here](./virtual-machine-scale-sets-use-availability-zones.md#zone-balancing).
+- A scale set is considered **balanced** if each zone has the same number of VMs +/- 1 VM as all other zones for the scale set. A scale set that doesn't meet this condition is considered imbalanced. More detail on zone balance is available [here](virtual-machine-scale-sets-zone-balancing.md).
 - An **under-provisioned zone** is an availability zone with the fewest scale set instances.
   - In a scale set with one VM in zone 1, three VMs in zone 2, and three VMs in zone 3; zone 1 is the under-provisioned zone. 
 - An **over-provisioned zone** is an availability zone with the most scale set instances.
@@ -90,7 +90,7 @@ Automatic zone balance works together with [automatic instance repairs](./virtua
 
 When you enable automatic zone balance, automatic instance repairs is also enabled by default. This ensures your scale set benefits from both instance-level health monitoring and zone-level resiliency. If your scale set already has automatic instance repairs enabled, your existing configuration is preserved.
 
-To learn more about automatic instance repairs, see [Automatic instance repairs for Azure Virtual Machine Scale Sets](./virtual-machine-scale-sets-automatic-instance-repairs.md). If you'd like to use automatic zone balance without automatic instance repairs, see [Disable Automatic Instance Repairs](./auto-zone-balance-enable.md#disable-automatic-instance-repairs).
+To learn more about automatic instance repairs, see [Automatic instance repairs for Azure Virtual Machine Scale Sets](./virtual-machine-scale-sets-automatic-instance-repairs.md). If you'd like to use automatic zone balance without automatic instance repairs, see [Automatic Zone Balance without Instance Repairs](./auto-zone-balance-enable.md#enable-automatic-zone-balance-without-instance-repairs).
 
 ## Limitations
 
@@ -101,4 +101,5 @@ To learn more about automatic instance repairs, see [Automatic instance repairs 
   - If you would like to prevent specific VMs from being rebalanced, you can [apply an instance protection policy](./virtual-machine-scale-sets-instance-protection.md).
 
 ## Next Steps
-Learn how to [enable automatic zone balance on your scale set](./auto-zone-balance-enable.md).
+- Learn how to [enable automatic zone balance on your scale set](./auto-zone-balance-enable.md).
+- Learn more about [zone balancing for Virtual Machine Scale Sets](./virtual-machine-scale-sets-zone-balancing.md). 

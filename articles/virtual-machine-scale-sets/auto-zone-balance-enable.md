@@ -203,7 +203,7 @@ New-AzVmss -ResourceGroupName $resourceGroupName -Name $vmssName -VirtualMachine
 
 ---
 
-## Disable Automatic Instance Repairs
+## Enable Automatic Zone Balance Without Instance Repairs
 
 By default, enabling automatic zone balance also enables [automatic instance repairs](./virtual-machine-scale-sets-automatic-instance-repairs.md) to provide high availability for your scale set. If you prefer to use automatic zone balance without automatic instance repairs, you can disable instance repairs separately.
 
@@ -371,5 +371,6 @@ If there isn’t enough quota to create a new VM, the rebalance operation won’
 Yes. You can apply an [instance protection policy](./virtual-machine-scale-sets-instance-protection.md) to specific VMs to prevent them from being selected for rebalancing.
 
 ## Next Steps
-Learn more about [automatic zone balance for Virtual Machine Scale Sets](./auto-zone-balance-overview.md).
+- Learn more about [automatic zone balance for Virtual Machine Scale Sets](./auto-zone-balance-overview.md).
+- Learn more about [zone balancing for Virtual Machine Scale Sets](./virtual-machine-scale-sets-zone-balancing.md).
 
