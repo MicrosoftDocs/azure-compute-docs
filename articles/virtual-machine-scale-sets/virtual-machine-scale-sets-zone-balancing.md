@@ -111,3 +111,6 @@ One zone recently experienced an outage. During the outage, instances from zone 
     This matches the initial distribution of the scale set.
 
 ---
+
+## Next steps
+Learn about [automatic zone balance for Virtual Machine Scale Sets](./auto-zone-balance-overview.md).

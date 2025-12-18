@@ -111,8 +111,8 @@ PUT or PATCH on '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupNa
 1. Create a new Virtual Machine Scale Set.
 1. In the **Basics** tab, ensure that at least 2 zones are selected in the **Availability zone** dropdown.
 1. In the **Health** tab, enable and configure **[application health monitoring](./virtual-machine-scale-sets-health-extension.md)**.
-1. Navigate to the **Advanced** tab. Select the checkbox for **Automatic zone balancing**.
-:::image type="content" source="media/virtual-machine-scale-sets-auto-zone-balance/enable-rebalance-create-vmss.png" alt-text="A screenshot showing how to enable automatic zone balance during the Virtual Machine Scale Set create experience in the portal.":::
+1. Select the checkbox for **Automatic zone balancing**.
+:::image type="content" source="media/virtual-machine-scale-sets-auto-zone-balance/enable-rebalance-create-vmss.png" alt-text="Screenshot of the Health tab in Azure portal showing application health monitoring enabled and automatic zone balancing checkbox selected under Resiliency section.":::
 
 1. Complete additional setup for your scale set. When ready, select **Review and Create**.
 1. Select **Create**.
