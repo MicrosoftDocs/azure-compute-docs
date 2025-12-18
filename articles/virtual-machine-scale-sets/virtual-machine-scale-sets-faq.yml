@@ -82,6 +82,11 @@ sections:
           Azure automatically replaces unhealthy instances based on health probe signals or application health extensions.
 
       - question: |
+          Are managed identities supported with VM Scale Sets?
+        answer: |
+          Yes,VM scale sets support Azure managed identities. These let your scale set VMs securely access Azure resources like Key Vault without needing credentials in code.
+
+      - question: |
           When I'm using multiple extensions in a scale set, can I enforce an execution sequence?
         answer: |
           Yes, you can use scale set [extension sequencing](virtual-machine-scale-sets-extension-sequencing.md).
