@@ -120,7 +120,10 @@ PUT or PATCH on '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupNa
 **To enable automatic zone balance on an existing scale set**
 
 1. Navigate to your Virtual Machine Scale Set.
-1. Under **Operations** select **Health and repair**.
+1. Under **Availability + scale** dropdown, select **Availability**. 
+1. Ensure that at least 2 zones are selected in the **Availability zone** dropdown.
+1. Under **Operations** dropdown, select **Health and repair**. 
+1. Ensure that **[application health monitoring](./virtual-machine-scale-sets-health-extension.md)** is enabled.
 1. Under **Resiliency** section, select the checkbox for **Automatic zone balancing**.
 1. Select **Save**.
 
