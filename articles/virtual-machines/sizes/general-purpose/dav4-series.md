@@ -29,7 +29,7 @@ vCPUs (Qty.) and Memory for each size
 
 | Size Name | vCPUs (Qty.) | Memory (GB) |
 | --- | --- | --- |
-| Standard_D2a_v41 | 2 | 8 |
+| Standard_D2a_v4 | 2 | 8 |
 | Standard_D4a_v4 | 4 | 16 |
 | Standard_D8a_v4 | 8 | 32 |
 | Standard_D16a_v4 | 16 | 64 |
@@ -47,7 +47,7 @@ Local (temp) storage info for each size
 
 | Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read (RR)<sup>1</sup> IOPS | Temp Disk Random Read (RR)<sup>1</sup> Throughput (MB/s) | Temp Disk Random Write (RW)<sup>1</sup> Throughput (MB/s) |
 | --- | --- | --- | --- | --- | --- |
-| Standard_D2a_v41 | 1 | 50 | 3000 | 46 | 23 |
+| Standard_D2a_v4 | 1 | 50 | 3000 | 46 | 23 |
 | Standard_D4a_v4 | 1 | 100 | 6000 | 93 | 46 |
 | Standard_D8a_v4 | 1 | 200 | 12000 | 187 | 93 |
 | Standard_D16a_v4 | 1 | 400 | 24000 | 375 | 187 |
@@ -73,7 +73,7 @@ Remote (uncached) storage info for each size
 
 | Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD Disk IOPS | Uncached Premium SSD Throughput (MB/s) | Uncached Premium SSD Burst<sup>1</sup> IOPS | Uncached Premium SSD Burst<sup>1</sup> Throughput (MB/s) |
 | --- | --- | --- | --- | --- | --- |
-| Standard_D2a_v41 | 4 | 3200 | 48 | 4000 | 200 |
+| Standard_D2a_v4 | 4 | 3200 | 48 | 4000 | 200 |
 | Standard_D4a_v4 | 8 | 6400 | 96 | 8000 | 200 |
 | Standard_D8a_v4 | 16 | 12800 | 192 | 16000 | 400 |
 | Standard_D16a_v4 | 32 | 25600 | 384 | 32000 | 800 |
@@ -102,7 +102,7 @@ Network interface info for each size
 
 | Size Name | Max NICs (Qty.) | Max Network Bandwidth (Mb/s) |
 | --- | --- | --- |
-| Standard_D2a_v41 | 2 | 2000 |
+| Standard_D2a_v4 | 2 | 2000 |
 | Standard_D4a_v4 | 2 | 4000 |
 | Standard_D8a_v4 | 4 | 8000 |
 | Standard_D16a_v4 | 8 | 10000 |
