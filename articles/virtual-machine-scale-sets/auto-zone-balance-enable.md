@@ -120,10 +120,9 @@ PUT or PATCH on '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupNa
 **To enable automatic zone balance on an existing scale set**
 
 1. Navigate to your Virtual Machine Scale Set.
-1. Under **Availability + scale** select **Availability**.
-1. In **Availability zone** dropdown, ensure at least 2 zones are selected.
-1. Select the checkbox for **Automatic zone balancing**.
-1. Select **Apply**.
+1. Under **Operations** select **Health and repair**.
+1. Under **Resiliency** section, select the checkbox for **Automatic zone balancing**.
+1. Select **Save**.
 
 :::image type="content" source="media/virtual-machine-scale-sets-auto-zone-balance/enable-rebalance-existing-vmss.png" alt-text="A screenshot showing how to enable automatic zone balance on an existing Virtual Machine Scale Set in the portal.":::
 
