@@ -43,9 +43,13 @@ Azure Disk Storage regularly receives updates for new features and enhancements.
 
 ### Quarter 4 (October, November, December)
 
+#### Expanded regional availability for Premium SSD v2
+
+Premium SSD v2 disks were made available in Austria East and in a second Availability Zone in Japan West.
+
 #### Public preview: Instant Access Snapshot for Premium SSD v2 and Ultra Disks
 
-With Instant Access Snapshots for Premium SSD v2 and Ultra Disks, you can  restore new disks immediately after creating snapshots of Premium SSD v2 and Ultra disks. Restore disks deliver high performance instantly, while data hydration continues rapidly in the background.  See [instant access for Azure managed disk](/azure/virtual-machines/disks-instant-access-snapshots?tabs=azure-cli%2Cazure-cli-snapshot-state#snapshots-of-ultra-disks-and-premium-ssd-v2) for details
+With Instant Access Snapshots for Premium SSD v2 and Ultra Disks, you can restore new disks immediately after creating snapshots of Premium SSD v2 and Ultra disks. Restore disks deliver high performance instantly, while data hydration continues rapidly in the background.  See [instant access for Azure managed disk](/azure/virtual-machines/disks-instant-access-snapshots?tabs=azure-cli%2Cazure-cli-snapshot-state#snapshots-of-ultra-disks-and-premium-ssd-v2) for details
 
 #### Generally available: Azure Site Recovery for Virtual Machines with Premium SSD v2 and Ultra disks
 
