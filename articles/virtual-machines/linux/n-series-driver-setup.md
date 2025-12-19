@@ -47,9 +47,6 @@ To install CUDA drivers, make an SSH connection to each VM. To verify that the s
 ```bash
 lspci | grep -i NVIDIA
 ```
-Output is similar to the following example (showing an NVIDIA Tesla K80 card):
-
-:::image type="content" source="./media/n-series-driver-setup/lspci.png" alt-text="Screenshot of example output showing an NVIDIA Tesla K80 card.":::
 
 lspci lists the PCIe devices on the VM, including the InfiniBand NIC and GPUs, if any. If lspci doesn't return successfully, you may need to install LIS on CentOS/RHEL.
 
@@ -169,9 +166,7 @@ For example, CentOS 8 and RHEL 8 need the following steps.
 
 To query the GPU device state, SSH to the VM and run the [nvidia-smi](https://developer.nvidia.com/nvidia-system-management-interface) command-line utility installed with the driver.
 
-If the driver is installed, Nvidia SMI lists the **GPU-Util** as 0% until you run a GPU workload on the VM. Your driver version and GPU details may be different from the ones shown.
-
-:::image type="content" source="./media/n-series-driver-setup/smi.png" alt-text="Screenshot of NVIDIA device status.":::
+If the driver is installed, Nvidia SMI lists the **GPU-Util** as N/A until you run a GPU workload on the VM. 
 
 ## RDMA network connectivity
 
@@ -343,9 +338,7 @@ The GRID driver installation process does not offer any options to skip kernel m
 
 To query the GPU device state, SSH to the VM and run the [nvidia-smi](https://developer.nvidia.com/nvidia-system-management-interface) command-line utility installed with the driver.
 
-If the driver is installed, Nvidia SMI will list the **GPU-Util** as 0% until you run a GPU workload on the VM. Your driver version and GPU details may be different from the ones shown.
-
-:::image type="content" source="./media/n-series-driver-setup/smi-nv.png" alt-text="Screenshot showing the output when the GPU device state is queried.":::
+If the driver is installed, Nvidia SMI will list the **GPU-Util** as N/A until you run a GPU workload on the VM. 
 
 
 ### X11 server
