@@ -39,9 +39,7 @@ After GRID driver installation on a VM, a restart is required. After CUDA driver
 
 Please note that the NVIDIA Control panel is only accessible with the GRID driver installation. If you have installed CUDA drivers then the NVIDIA control panel will not be visible.
 
-You can verify driver installation in Device Manager. The following example shows successful configuration of the Tesla K80 card on an Azure NC VM.
-
-![GPU driver properties](./media/n-series-driver-setup/GPU_driver_properties.png)
+You can verify driver installation in Device Manager. 
 
 > [!NOTE]
 > If you're running Windows 10 build 1903 or higher, dxdiag shows no information in the 'Display' tab. Use the 'Save All Information' option at the bottom and the output file shows the information related to NVIDIA GPU.
@@ -50,9 +48,7 @@ To query the GPU device state, run the [nvidia-smi](https://developer.nvidia.com
 
 1. Open a command prompt and change to the **C:\Program Files\NVIDIA Corporation\NVSMI** directory.
 
-2. Run `nvidia-smi`. If the driver is installed, you will see output similar to the following. The **GPU-Util** shows **0%** unless you are currently running a GPU workload on the VM. Your driver version and GPU details may be different from the ones shown.
-
-![NVIDIA device status](./media/n-series-driver-setup/smi.png)  
+2. Run `nvidia-smi`. If the driver is installed, Nvidia SMI will list the **GPU-Util** as N/A until you run a GPU workload on the VM.
 
 ## RDMA network connectivity
 
@@ -70,3 +66,4 @@ The RDMA network supports Message Passing Interface (MPI) traffic for applicatio
 ## Next steps
 
 * Developers building GPU-accelerated applications for the NVIDIA Tesla GPUs can also download and install the latest [CUDA Toolkit](https://developer.nvidia.com/cuda-downloads). For more information, see the [CUDA Installation Guide](https://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/index.html#axzz4ZcwJvqYi).
+
