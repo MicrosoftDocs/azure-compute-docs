@@ -42,9 +42,9 @@ For more information about enabling the NVMe interface on virtual machines creat
 
 ## Supported Windows OS images
 - Windows Server 2025
-- Windows Server 2019*
 - Windows Server 2022
-- Windows Server 2025
+- Windows Server 2019*
+
 - Windows 10
 - Windows 11
 
