@@ -95,14 +95,10 @@ There’s no best answer for which layout to choose. Each has pros and cons. For
 
 The most common model is the FD/UD matrix, where the fault domains and upgrade domains form a table and nodes are placed starting along the diagonal. This is the model used by default in Service Fabric clusters in Azure. For clusters with many nodes, everything ends up looking like a dense matrix pattern.
 
-> [!NOTE]
-> Service Fabric clusters hosted in Azure don't support changing the default strategy. Only standalone clusters offer that customization.
->
-
 ## Fault and upgrade domain constraints and resulting behavior
-### Default approach
+### Maximum difference approach
 
-By default, Cluster Resource Manager keeps services balanced across fault and upgrade domains. This is modeled as a [constraint](service-fabric-cluster-resource-manager-management-integration.md). The constraint for fault and upgrade domains states: “For a given service partition, there should never be a difference greater than one in the number of service objects (stateless service instances or stateful service replicas) between any two domains on the same level of hierarchy.”
+Goal of the Cluster Resource Manager is to keep services balanced across fault and upgrade domains. This is modeled as a [constraint](service-fabric-cluster-resource-manager-management-integration.md). The constraint for fault and upgrade domains states: “For a given service partition, there should never be a difference greater than one in the number of service objects (stateless service instances or stateful service replicas) between any two domains on the same level of hierarchy.”
 
 Let's say that this constraint provides a “maximum difference” guarantee. The constraint for fault and upgrade domains prevents certain moves or arrangements that violate the rule.
 
@@ -169,7 +165,7 @@ On the other hand, this approach can be too strict and not allow the cluster to 
 | **UD3** | | |N8 |N4 | |
 | **UD4** | | | |N9 |N5 |
 
-### Alternative approach
+### Quorum safe approach
 
 Cluster Resource Manager supports another version of the constraint for fault and upgrade domains. It allows placement while still guaranteeing a minimum level of safety. The alternative constraint can be stated as follows: “For a given service partition, replica distribution across domains should ensure that the partition does not suffer a quorum loss.” Let’s say that this constraint provides a “quorum safe” guarantee.
 
@@ -190,9 +186,7 @@ In the worst case scenario, a majority of the replicas can be lost with the fail
 Because both approaches have strengths and weaknesses, we've introduced an adaptive approach that combines these two strategies.
 
 > [!NOTE]
-> This is the default behavior starting with Service Fabric version 6.2.
->
-> The adaptive approach uses the “maximum difference” logic by default and switches to the “quorum safe” logic only when necessary. Cluster Resource Manager automatically figures out which strategy is necessary by looking at how the cluster and services are configured.
+> The adaptive approach uses the “maximum difference” logic by default and switches to the “quorum safe” logic only when necessary. Cluster Resource Manager automatically figures out which strategy is necessary by looking at how the cluster and services are configured. Switching to "quorum safe" logic can be disabled through [configuration](/azure/service-fabric/service-fabric-cluster-fabric-settings#placementandloadbalancing) by setting the QuorumBasedLogicAutoSwitch to false.
 >
 > Cluster Resource Manager should use the “quorum based” logic for a service both of these conditions are true:
 >
@@ -234,6 +228,9 @@ In the previous layout, if the **TargetReplicaSetSize** value is five and N1 is 
 | **UD3** | | | |R1 | |1 |
 | **UD4** | | | | |R5 |1 |
 | **FDTotal** |1 |1 |1 |1 |1 |- |
+
+> [!NOTE]
+> When “quorum safe” logic is used, it is important to consider that the number of service objects (stateless service instances or stateful service replicas) between any two domains at the same hierarchical level may exceed one. This aspect should be considered when configuring the MinInstancePercentage setting, as an excessively high value could potentially prolong the overall upgrade duration or even result in an upgrade rollback.
 
 ## Configuring fault and upgrade domains
 
