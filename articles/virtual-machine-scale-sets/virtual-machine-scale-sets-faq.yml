@@ -84,7 +84,7 @@ sections:
       - question: |
           Are managed identities supported with VM Scale Sets?
         answer: |
-          Yes,VM scale sets support Azure managed identities. These let your scale set VMs securely access Azure resources like Key Vault without needing credentials in code.
+          Yes, VM scale sets support Azure managed identities. These let your scale set VMs securely access Azure resources like Key Vault without needing credentials in code.
 
       - question: |
           When I'm using multiple extensions in a scale set, can I enforce an execution sequence?
