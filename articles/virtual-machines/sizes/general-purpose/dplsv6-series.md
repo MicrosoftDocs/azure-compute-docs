@@ -1,14 +1,14 @@
 ---
 title: Dplsv6 size series
 description: Information on and specifications of the Dplsv6-series sizes
-author: archatC
+author: noahwood
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.custom:
   - build-2024
 ms.topic: concept-article
 ms.date: 01/05/2026
-ms.author: noahwood
+ms.author: noahwood28
 ms.reviewer: mattmcinnes, tomcassidy
 # Customer intent: "As a cloud architect, I want to review the specifications of the Dplsv6 size series for VMs, so that I can select the appropriate virtual machine configuration that meets my performance and resource requirements."
 ---
