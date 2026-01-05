@@ -1,14 +1,14 @@
 ---
 title: Dpldsv6 size series
 description: Information on and specifications of the Dpldsv6-series sizes
-author: archatC
+author: noahwood
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.custom:
   - build-2024
 ms.topic: concept-article
 ms.date: 01/05/2026
-ms.author: noahwood
+ms.author: noahwood28
 ms.reviewer: mattmcinnes, tomvcassidy
 # Customer intent: "As a cloud architect, I want to understand the specifications and feature support of the Dpldsv6 series sizes, so that I can select the most appropriate virtual machine configuration for my applications and workloads."
 ---
