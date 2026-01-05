@@ -6,7 +6,7 @@ ms.author: mimckitt
 ms.service: azure-container-instances
 ms.topic: concept-article
 ms.date: 11/17/2025
-ms.update-cycle: 730-days
+ms.update-cycle: 1095-days
 ms.reviewer: cynthn
 # Customer intent: "As a cloud administrator, I want to retrieve and interpret the health status of my standby pool for container instances, so that I can proactively monitor performance and address any issues that may arise."
 ---

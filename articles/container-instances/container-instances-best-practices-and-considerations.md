@@ -7,7 +7,7 @@ author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
 ms.date: 11/17/2025
-ms.update-cycle: 730-days
+ms.update-cycle: 1095-days
 # Customer intent: As a cloud administrator, I want to implement best practices for deploying workloads on container instances, so that I can ensure security, efficiency, and scalability in my containerized applications.
 ---
 

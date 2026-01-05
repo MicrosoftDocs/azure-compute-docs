@@ -7,7 +7,7 @@ author: tomcassidy
 ms.service: azure-container-instances
 services: container-instances
 ms.date: 11/17/2025
-ms.update-cycle: 730-days
+ms.update-cycle: 1095-days
 # Customer intent: As a cloud developer, I want to implement attestation in my confidential container groups on Azure Container Instances, so that I can ensure they run on trusted hardware and comply with security policies essential for safeguarding sensitive data.
 ---
 

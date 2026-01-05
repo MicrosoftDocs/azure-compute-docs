@@ -7,7 +7,7 @@ ms.service: azure-container-instances
 services: container-instances
 ms.topic: concept-article
 ms.date: 11/17/2025
-ms.update-cycle: 730-days
+ms.update-cycle: 1095-days
 # Customer intent: As a cloud developer, I want to deploy high-performance container workloads with increased vCPU and memory on Azure Container Instances, so that I can efficiently handle data-intensive applications and scale resources seamlessly according to business demands.
 ---
 # Big Containers on Azure Container Instances

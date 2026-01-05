@@ -7,7 +7,7 @@ author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
 ms.date: 11/17/2025
-ms.update-cycle: 730-days
+ms.update-cycle: 1095-days
 ms.custom: mvc, linux-related-content
 # Customer intent: As a cloud developer, I want to deploy and manage containerized applications using serverless containers, so that I can simplify resource management and achieve faster startup times without the overhead of virtual machines.
 ---
