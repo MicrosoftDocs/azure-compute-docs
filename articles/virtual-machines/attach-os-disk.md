@@ -4,7 +4,7 @@ description: Create a new Windows VM by attaching a specialized OS disk.
 author: cynthn
 ms.service: azure-virtual-machines
 ms.topic: how-to
-ms.update-cycle: 90-days
+ms.update-cycle: 180-days
 ms.date: 12/12/2024
 ms.author: cynthn
 ms.custom: devx-track-azurepowershell, portal

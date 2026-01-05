@@ -6,7 +6,7 @@ ms.author: cynthn
 ms.service: azure-virtual-machines
 ms.subservice: trusted-launch
 ms.topic: concept-article
-ms.update-cycle: 90-days
+ms.update-cycle: 180-days
 ms.date: 04/10/2024
 ms.custom:
   - template-concept

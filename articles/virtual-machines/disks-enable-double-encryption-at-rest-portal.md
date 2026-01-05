@@ -2,7 +2,7 @@
 title: Enable double encryption at rest for managed disks
 description: Enable double encryption at rest for your managed disk data using the Azure portal, Azure PowerShell module, or Azure CLI.
 author: roygara
-ms.update-cycle: 90-days
+ms.update-cycle: 180-days
 ms.date: 09/26/2024
 ms.topic: how-to
 ms.author: rogarana

@@ -5,7 +5,7 @@ author: bdeforeest
 ms.author: bidefore
 ms.service: azure-virtual-machines
 ms.topic: how-to
-ms.update-cycle: 90-days
+ms.update-cycle: 180-days
 ms.date: 11/22/2022
 ms.reviewer: cynthn, jushiman
 ms.custom: template-how-to, devx-track-azurepowershell, portal

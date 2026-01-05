@@ -6,7 +6,7 @@ ms.author: cynthn
 ms.service: azure-virtual-machines
 ms.topic: how-to
 ms.custom: mvc, devx-track-azurecli, portal
-ms.update-cycle: 90-days
+ms.update-cycle: 180-days
 ms.date: 03/11/2025
 # Customer intent: As a cloud administrator, I want to configure auto-shutdown for virtual machines, so that I can reduce operational costs by ensuring VMs are only running when needed.
 ---

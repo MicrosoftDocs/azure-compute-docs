@@ -3,7 +3,7 @@ title: Optimize costs for Azure Disk Storage with reservations
 description: Learn about purchasing Azure Disk Storage reservations to save costs on premium SSD managed disks.
 author: roygara
 ms.author: rogarana
-ms.update-cycle: 90-days
+ms.update-cycle: 180-days
 ms.date: 07/12/2024
 ms.topic: how-to
 ms.service: azure-disk-storage

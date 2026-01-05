@@ -3,7 +3,7 @@ title: Enable on-demand disk bursting
 description: Enable on-demand disk bursting on your managed disk.
 author: roygara
 ms.author: rogarana
-ms.update-cycle: 90-days
+ms.update-cycle: 180-days
 ms.date: 01/14/2025
 ms.topic: how-to
 ms.service: azure-disk-storage

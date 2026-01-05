@@ -4,7 +4,7 @@ description: Use the Azure portal Virtual Machine creation flow cost card to est
 author: cynthn
 ms.service: azure-virtual-machines
 ms.topic: concept-article
-ms.update-cycle: 90-days
+ms.update-cycle: 180-days
 ms.date: 04/03/2024
 ms.author: cynthn
 ms.custom: portal

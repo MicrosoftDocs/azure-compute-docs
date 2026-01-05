@@ -5,7 +5,7 @@ author:      ofemifowode
 ms.author:   ofemifowode 
 ms.service: azure-virtual-machines
 ms.topic: get-started
-ms.update-cycle: 90-days
+ms.update-cycle: 180-days
 ms.date:     10/28/2024
 ms.custom: portal
 # Customer intent: "As a cloud administrator, I want to configure VM watch settings on my virtual machines, so that I can customize monitoring signals and optimize performance according to my specific environment requirements."

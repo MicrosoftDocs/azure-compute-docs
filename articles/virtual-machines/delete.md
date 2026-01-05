@@ -4,7 +4,7 @@ description: Learn how to delete a VM and the resources attached to the VM.
 author: cynthn
 ms.service: azure-virtual-machines
 ms.topic: how-to
-ms.update-cycle: 90-days
+ms.update-cycle: 180-days
 ms.date: 05/09/2022
 ms.author: cynthn
 ms.custom: template-how-to, devx-track-azurecli, devx-track-azurepowershell, portal

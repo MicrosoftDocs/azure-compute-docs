@@ -5,7 +5,7 @@ author: cynthn
 ms.service: azure-virtual-machines
 ms.subservice: networking
 ms.topic: how-to
-ms.update-cycle: 90-days
+ms.update-cycle: 180-days
 ms.date: 02/25/2023
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017, portal

@@ -5,7 +5,7 @@ author:      ofemifowode
 ms.author:   ofemifowode 
 ms.service:   azure-virtual-machines
 ms.topic:     get-started
-ms.update-cycle: 90-days
+ms.update-cycle: 180-days
 ms.date:     02/05/2025
 ms.custom: portal
 # Customer intent: "As a system administrator, I want to configure Event Hubs for VM watch, so that I can efficiently collect and analyze signal data from my virtual machines in real-time."

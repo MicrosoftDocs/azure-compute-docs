@@ -4,7 +4,7 @@ description: Learn how instant access works for managed disk snapshots of varyin
 author: roygara
 ms.service: azure-disk-storage
 ms.topic: how-to
-ms.update-cycle: 90-days
+ms.update-cycle: 180-days
 ms.date: 10/30/2025
 ms.author: rogarana
 ms.custom: references_regions, portal

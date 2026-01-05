@@ -3,7 +3,7 @@ title: Deploy a Premium SSD v2 managed disk
 description: Learn how to deploy a Premium SSD v2 and about its regional availability.
 author: roygara
 ms.author: rogarana
-ms.update-cycle: 90-days
+ms.update-cycle: 180-days
 ms.date: 05/19/2025
 ms.topic: how-to
 ms.service: azure-disk-storage

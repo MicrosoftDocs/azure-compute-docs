@@ -7,7 +7,7 @@ ms.custom: subject-cost-optimization, portal
 ms.service: azure-virtual-machines
 ms.topic: how-to
 ms.date: 02/21/2024
-ms.update-cycle: 90-days
+ms.update-cycle: 180-days
 # Customer intent: "As a cloud administrator, I want to monitor and optimize the costs associated with virtual machines, so that I can manage my organization's cloud expenditures effectively and avoid unexpected charges."
 ---
 

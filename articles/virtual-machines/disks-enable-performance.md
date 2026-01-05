@@ -4,7 +4,7 @@ description: Increase the performance of Azure Premium SSDs and Standard SSD/HDD
 author: roygara
 ms.service: azure-disk-storage
 ms.topic: how-to
-ms.update-cycle: 90-days
+ms.update-cycle: 180-days
 ms.date: 04/15/2025
 ms.author: rogarana
 ms.custom: devx-track-azurepowershell, portal

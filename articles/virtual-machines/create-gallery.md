@@ -5,7 +5,7 @@ author: sandeepraichura
 ms.service: azure-virtual-machines
 ms.subservice: gallery
 ms.topic: how-to
-ms.update-cycle: 90-days
+ms.update-cycle: 180-days
 ms.date: 03/23/2023
 ms.author: saraic
 ms.reviewer: cynthn, mattmcinnes

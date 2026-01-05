@@ -4,7 +4,7 @@ description: Create VMs in an availability zone with the Azure portal
 author: mimckitt
 ms.service: azure-virtual-machines
 ms.topic: how-to
-ms.update-cycle: 90-days
+ms.update-cycle: 180-days
 ms.date: 06/06/2024
 ms.author: mimckitt
 ms.reviewer: cynthn

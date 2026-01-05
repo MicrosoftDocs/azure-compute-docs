@@ -5,7 +5,7 @@ author: cynthn
 ms.service: azure-virtual-machines
 ms.subservice: imaging
 ms.topic: how-to
-ms.update-cycle: 90-days
+ms.update-cycle: 180-days
 ms.date: 04/12/2022
 ms.author: cynthn
 ms.custom: portal

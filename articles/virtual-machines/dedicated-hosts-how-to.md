@@ -6,7 +6,7 @@ ms.author: mattmcinnes
 ms.service: azure-dedicated-host
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell, devx-track-azurecli, portal
-ms.update-cycle: 90-days
+ms.update-cycle: 180-days
 ms.date: 07/12/2023
 ms.reviewer: vamckMS
 # Customer intent: As a cloud architect, I want to deploy Azure dedicated hosts to manage and host virtual machines and scale sets, so that I can ensure optimal resource utilization and control over my virtualization environment.
