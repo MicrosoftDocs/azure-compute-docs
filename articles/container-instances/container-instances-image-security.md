@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
 ms.date: 11/17/2025
+ms.update-cycle: 730-days
 # Customer intent: "As a DevOps engineer, I want to implement security best practices for managing container images and credentials, so that I can protect our containerized applications from vulnerabilities and unauthorized access throughout their lifecycle."
 ---
 
