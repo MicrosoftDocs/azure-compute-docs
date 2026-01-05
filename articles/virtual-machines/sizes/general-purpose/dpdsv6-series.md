@@ -1,14 +1,14 @@
 ---
 title: Dpdsv6 size series
 description: Information on and specifications of the Dpdsv6-series sizes
-author: noahwood
+author: noahwood28
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.custom:
   - build-2024
 ms.topic: concept-article
 ms.date: 01/05/2026
-ms.author: noahwood28
+ms.author: noahwood
 ms.reviewer: mattmcinnes, tomcassidy
 # Customer intent: "As a cloud architect, I want to understand the specifications and features of the Dpdsv6 series of virtual machines, so that I can select the appropriate size for my workload requirements."
 ---
