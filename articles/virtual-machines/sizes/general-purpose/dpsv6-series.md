@@ -7,8 +7,8 @@ ms.subservice: sizes
 ms.custom:
   - build-2024
 ms.topic: concept-article
-ms.date: 08/27/2024
-ms.author: archat
+ms.date: 01/05/2026
+ms.author: noahwood
 ms.reviewer: mattmcinnes, tomvcassidy
 # Customer intent: As a cloud architect, I want to understand the specifications and capabilities of the Dpsv6 series virtual machine sizes, so that I can select the appropriate VM size for my application’s performance and resource requirements.
 ---
