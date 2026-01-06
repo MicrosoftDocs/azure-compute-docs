@@ -133,7 +133,7 @@
   items:
   - name: Code samples
     href: /samples/browse/
-  - name: Azure PowerShell
+  - name: PowerShell
     href: service-fabric-powershell-samples.md
   - name: Service Fabric CLI
     href: samples-cli.md
