@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell Script Sample - Change the RDP port range | Microsoft Docs
+title: PowerShell Script Sample - Change the RDP port range | Microsoft Docs
 description: Azure PowerShell Script Sample - Changes the RDP port range of a deployed cluster.
 services: service-fabric
 ms.custom: devx-track-azurepowershell
@@ -13,7 +13,7 @@ ms.date: 03/19/2018
 
 # Update the RDP port range values
 
-This sample script changes the RDP port range values on the cluster node VMs after the cluster has been deployed.  Azure PowerShell is used so that the underlying VMs do not cycle.  The script gets the `Microsoft.Network/loadBalancers` resource in the cluster's resource group and updates the `inboundNatPools.frontendPortRangeStart` and `inboundNatPools.frontendPortRangeEnd` values. Customize the parameters as needed.
+This sample Azure PowerShell script changes the RDP port range values on the cluster node VMs after the cluster has been deployed.  Azure PowerShell is used so that the underlying VMs do not cycle.  The script gets the `Microsoft.Network/loadBalancers` resource in the cluster's resource group and updates the `inboundNatPools.frontendPortRangeStart` and `inboundNatPools.frontendPortRangeEnd` values. Customize the parameters as needed.
 
 [!INCLUDE [updated-for-az](~/reusable-content/ce-skilling/azure/includes/updated-for-az.md)]
 
