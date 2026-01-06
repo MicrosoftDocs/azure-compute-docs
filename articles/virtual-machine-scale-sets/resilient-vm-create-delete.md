@@ -5,54 +5,33 @@ author: manasisoman-work
 ms.author: manasisoman
 ms.service: azure-virtual-machine-scale-sets
 ms.topic: how-to
-ms.date: 04/28/2025
+ms.date: 01/06/2026
 ms.reviewer: cynthn
 # Customer intent: "As a cloud infrastructure administrator, I want to enable resilient create and delete for Virtual Machine Scale Sets, so that I can minimize manual intervention when handling errors during VM provisioning and deletion processes."
 ---
 
 
-# Resilient create and delete for Virtual Machine Scale Sets (Preview)
+# Resilient create and delete for Virtual Machine Scale Sets
 
-> [!IMPORTANT]
-> Resilient virtual machine create and delete for Virtual Machine Scale Sets is currently in preview. Previews are made available to you on the condition that you agree to the [supplemental terms of use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Some aspects of this feature may change prior to general availability (GA).
-
-Resilient create and delete for Virtual Machine Scale Sets helps reduce Virtual Machine (VM) create and delete errors by automatically retrying failed operations. Failed VMs can accumulate and result in unusable capacity, requiring manual effort to detect and clean up. These errors are rare, but the Resilient create and delete mechanism is built for customers who are deploying or deleting large volumes of Virtual Machine Scale Sets or VMs. 
- 
-## Prerequisites
-
-Before utilizing Resilient create and delete, complete the feature registration and ensure your API policy is on at least version `2023-07-01`.
-
-### Feature Registration 
-
-Register for the *ResilientScaleSetVMCreation* and *ReliableVMDeletion* feature flags using the `az feature register` command: 
-
-```azurecli-interactive
-az feature register --namespace "Microsoft.Compute" --name "ResilientVMScaleSetVMCreation" 
-az feature register --namespace "Microsoft.Compute" --name "ReliableVMDeletion" 
-```
-
-It takes a few moments for the feature to register. Verify the registration status by using the `az feature show` command:
-
-```azurecli-interactive
-az feature show --namespace "Microsoft.Compute" --name "ResilientVMScaleSetVMCreation"
-az feature show --namespace "Microsoft.Compute" --name "ReliableVMDeletion"
-```
+Resilient create and delete for Virtual Machine Scale Sets helps reduce Virtual Machine (VM) create and delete errors by automatically retrying failed operations. Failed VMs can accumulate and result in unusable capacity, requiring manual effort to detect and clean up. 
 
 ## Resilient create
 
 Resilient create runs on Virtual Machines Scale Sets during the initial create of the scale set or during a scale-out. 
 
-Resilient create initiates retries for OS Provisioning time-out and VM Start time-out errors. Time-outs are hit when a VM isn't provisioned after 20 minutes for Windows or 8 minutes for Linux.
+Resilient create initiates retries for the following errors:
+- OS Provisioning Timeout
+- VM Start Timeout 
 
-Resilient create attempts the create operation for up to 30 total minutes. If unsuccessful, the VM remains in a failed state.
+Resilient create attempts the create operation for up to 30 total minutes. If retries are exhausted, then the VM enters a failed provisioning state.
 
 :::image type="content" source="./media/resilient-vm-create-delete/resilient-create-workflow.png" alt-text="A screenshot showing how Resilient create performs retries on your virtual machines.":::
 
 ## Resilient delete
 
-Resilient delete initiates forced delete retries for any errors that occur during the delete process. For example, *InternalExecutionError*, *TransientFailure*, or *InternalOperationError*.
+Resilient delete initiates retries for any error that occurs during the delete process. For example, *InternalExecutionError*, *TransientFailure*, or *InternalOperationError*.
 
-Resilient delete attempts the forced delete operation five times per VM with an exponential backoff. If unsuccessful, the VM remains in a failed state. For example, if you delete a scale set of five VMs and each VM enters a *failed* delete state, the scale set initiates one delete call on itself to delete those five VMs again. If four out of five virtual machines delete on the first retry, then the platform waits a period of 10 minutes before initiating the next delete call for the remaining VM.
+If retries remain unsuccessful, the VM enters a failed state. For example, if you delete a scale set of five VMs and each VM enters a *failed* delete state, the scale set initiates one delete call on itself to delete those five VMs again. If four out of five virtual machines delete on the first retry, then the platform waits a period of 10 minutes before initiating the next delete call for the remaining VM.
 
 To check the status of your VMs throughout the delete process, see [Get status for Resilient create or delete](#get-status).
 
