@@ -13,7 +13,7 @@ ms.reviewer: cynthn
 
 # Resilient create and delete for Virtual Machine Scale Sets
 
-Resilient create and delete for Virtual Machine Scale Sets helps reduce Virtual Machine (VM) create and delete errors by automatically retrying failed operations. Failed VMs can accumulate and result in unusable capacity, requiring manual effort to detect and clean up. 
+Resilient create and delete for Virtual Machine Scale Sets helps reduce Virtual Machine (VM) create and delete errors by automatically retrying those operations on your behalf. Failed VMs can accumulate and result in unusable capacity, requiring manual effort to detect and clean up. 
 
 ## Resilient create
 
@@ -31,9 +31,7 @@ Resilient create attempts the create operation for up to 30 total minutes. If re
 
 Resilient delete initiates retries for any error that occurs during the delete process. For example, *InternalExecutionError*, *TransientFailure*, or *InternalOperationError*.
 
-If retries remain unsuccessful, the VM enters a failed state. For example, if you delete a scale set of five VMs and each VM enters a *failed* delete state, the scale set initiates one delete call on itself to delete those five VMs again. If four out of five virtual machines delete on the first retry, then the platform waits a period of 10 minutes before initiating the next delete call for the remaining VM.
-
-To check the status of your VMs throughout the delete process, see [Get status for Resilient create or delete](#get-status).
+If retries remain unsuccessful, the VM enters a failed provisioning state. For example, if you delete a scale set of five VMs and each VM enters a *failed* delete state, the scale set initiates one delete call on itself to delete those five VMs again. If four out of five virtual machines delete on the first retry, then the platform waits a period of 10 minutes before initiating the next delete call for the remaining VM. To check the status of your VMs throughout the delete process, see [Get status for Resilient create or delete](#get-status).
 
 :::image type="content" source="./media/resilient-vm-create-delete/resilient-delete-workflow.png" alt-text="Screenshot showing how Resilient delete performs retries on your VMs.":::
 
@@ -120,7 +118,6 @@ In the request body, add in the resiliency policies:
 
 ```json
 "properties": {  
-  "overprovision": false,  
     "resiliencyPolicy": {
         "resilientVMCreationPolicy": {  
             "enabled": true  
@@ -133,12 +130,12 @@ In the request body, add in the resiliency policies:
 ```
 ---
 
-## Get status
+## Get status of retries
 
-Get the status of Resilient create and delete for your scale set. 
+Get the status of retries.
 
-- **Resilient create**: Your VM status is *Creating* while Resilient create is in progress. 
-- **Resilient Delete**: While the delete attempt is in progress, the state of the resource is listed as *Deleting*. If a delete retry fails on a particular VM, then the VM falls back to the *Failed* or *Running* state. However, those states only indicate that a retry of a deletion failed – and Resilient delete might still perform more retries. Therefore, while Resilient delete is going on, you may see the VM alternate states between *Deleting* and *Failed* or *Running*. 
+- **Resilient create**: Your VM status is *Creating* while retries for VM creation are in progress. 
+- **Resilient Delete**: While the delete attempt is in progress, the state of the VM is listed as *Deleting*. If a delete retry fails on a particular VM, then the VM falls back to the *Failed* or *Running* state. However, those states only indicate that a retry of a deletion failed – and Resilient delete might still perform more retries. Therefore, while Resilient delete is going on, you may see the VM alternate states between *Deleting* and *Failed* or *Running*. 
 
 ### REST API
 
