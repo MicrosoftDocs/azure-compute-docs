@@ -7,7 +7,7 @@ ms.service: azure-disk-storage
 ms.custom: devx-track-azurecli, linux-related-content
 ms.collection: linux
 ms.topic: how-to
-ms.date: 07/16/2024
+ms.date: 01/06/2026
 # Customer intent: As a system administrator, I want to download a Linux VHD from Azure, so that I can create backups or migrate virtual machines to another environment.
 ---
 
@@ -15,7 +15,9 @@ ms.date: 07/16/2024
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Flexible scale sets 
 
-In this article, you learn how to download a Linux virtual hard disk (VHD) file from Azure using the Azure portal. 
+This article covers how to download a Linux virtual hard disk (VHD) file from Azure. Downloading a VHD requires that the disk in question isn't attached to a running VM, which would involve downtime. Some configurations can safely avoid downtime by [snapshotting the disk](#alternative-snapshot-the-vm-disk) and downloading the VHD from the snapshot.
+
+If you're using [Microsoft Entra ID](/azure/active-directory/fundamentals/active-directory-whatis) to control resource access, you can use it to restrict uploading of Azure managed disks. See [Secure downloads and uploads of Azure managed disks](../disks-secure-upload-download.md) for details.
 
 ## Stop the VM
 
@@ -24,35 +26,31 @@ A VHD can’t be downloaded from Azure if it's attached to a running VM. If you 
 To stop the VM:
 
 1.	Sign in to the [Azure portal](https://portal.azure.com/).
-2.	On the left menu, select **Virtual Machines**.
-3.	Select the VM from the list.
-4.	On the page for the VM, select **Stop**.
+1.	On the left menu, select **Virtual Machines**.
+1.	Select the VM from the list.
+1.	On the page for the VM, select **Stop**.
 
     :::image type="content" source="./media/download-vhd/export-stop.PNG" alt-text="Shows the menu button to stop the VM.":::
 
+Once the VM is stopped, 
+
 ### Alternative: Snapshot the VM disk
+
+> [!NOTE]
+> If you don't stop the VM first, the snapshot won't be clean. The snapshot will be in the same state as if the VM had been power cycled or crashed at the point in time when the snapshot was made. Usually this is safe but, it could cause problems if the running applications running at the time aren't crash resistant.
+>  
+> Generally, you should only use snapshots of running VMs if the only disks associated with them is one OS disk. If a VM has one more more data disks then you should stop the VM before creating a snapshot of the OS or data didks.
 
 Take a snapshot of the disk to download.
 
 1. Select the VM in the [portal](https://portal.azure.com).
-2. Select **Disks** in the left menu and then select the disk you want to snapshot. The details of the disk will be displayed.  
-3. Select **Create Snapshot** from the menu at the top of the page. The **Create snapshot** page will open.
-4. In **Name**, type a name for the snapshot. 
-5. For **Snapshot type**, select **Full** or **Incremental**.
-6. When you are done, select **Review + create**.
+1. Select **Disks** in the left menu and then select the disk you want to snapshot. The details of the disk will be displayed.  
+1. Select **Create Snapshot** from the menu at the top of the page. The **Create snapshot** page will open.
+1. In **Name**, type a name for the snapshot. 
+1. For **Snapshot type**, select **Full** or **Incremental**.
+1. When you are done, select **Review + create**.
 
-Your snapshot will be created shortly, and can then be used to download or create another VM.
-
-> [!NOTE]
-> If you don't stop the VM first, the snapshot will not be clean. The snapshot will be in the same state as if the VM had been power cycled or crashed at the point in time when the snapshot was made. While usually safe, it could cause problems if the running applications running at the time were not crash resistant.
->  
-> This method is only recommended for VMs with a single OS disk. VMs with one or more data disks should be stopped before download or before creating a snapshot for the OS disk and each data disk.
-
-<a name='secure-downloads-and-uploads-with-azure-ad'></a>
-
-## Secure downloads and uploads with Microsoft Entra ID
-
-[!INCLUDE [disks-azure-ad-upload-download-portal](../includes/disks-azure-ad-upload-download-portal.md)]
+Once your snapshot is created, you can then use it to donwload a VHD or create another VM.
 
 ## Generate SAS URL
 

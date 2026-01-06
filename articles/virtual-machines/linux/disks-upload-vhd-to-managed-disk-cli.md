@@ -4,7 +4,7 @@ description: Learn how to upload a VHD to an Azure managed disk and copy a manag
 services: "virtual-machines,storage"
 author: roygara
 ms.author: rogarana
-ms.date: 08/15/2024
+ms.date: 01/06/2026
 ms.topic: how-to
 ms.service: azure-disk-storage
 ms.custom: devx-track-azurecli, linux-related-content
@@ -19,30 +19,7 @@ This article explains how to either upload a VHD from your local machine to an A
 
 If you're providing a backup solution for IaaS VMs in Azure, you should use direct upload to restore customer backups to managed disks. When uploading a VHD from a source external to Azure, speeds depend on your local bandwidth. When uploading or copying from an Azure VM, your bandwidth would be the same as standard HDDs.
 
-
-<a name='secure-uploads-with-azure-ad'></a>
-
-## Secure uploads with Microsoft Entra ID
-
-If you're using [Microsoft Entra ID](/azure/active-directory/fundamentals/active-directory-whatis) to control resource access, you can now use it to restrict uploading of Azure managed disks. This feature is available as a GA offering in all regions. When a user attempts to upload a disk, Azure validates the identity of the requesting user in Microsoft Entra ID, and confirms that user has the required permissions. At a higher level, a system administrator could set a policy at the Azure account or subscription level, to ensure that a Microsoft Entra identity has the necessary permissions for uploading before allowing a disk or a disk snapshot to be uploaded. If you have any questions on securing uploads with Microsoft Entra ID, reach out to this email: azuredisks@microsoft .com
-
-### Prerequisites
-- [Install the Azure CLI](/cli/azure/install-azure-cli).
-
-### Restrictions
-[!INCLUDE [disks-azure-ad-upload-download-restrictions](../includes/disks-azure-ad-upload-download-restrictions.md)]
-
-### Assign RBAC role
-
-To access managed disks secured with Microsoft Entra ID, the requesting user must have either the [Data Operator for Managed Disks](/azure/role-based-access-control/built-in-roles#data-operator-for-managed-disks) role, or a [custom role](/azure/role-based-access-control/custom-roles-powershell) with the following permissions: 
-
-- **Microsoft.Compute/disks/download/action**
-- **Microsoft.Compute/disks/upload/action**
-- **Microsoft.Compute/snapshots/download/action**
-- **Microsoft.Compute/snapshots/upload/action**
-
-For detailed steps on assigning a role, see [Assign Azure roles using Azure CLI](/azure/role-based-access-control/role-assignments-cli). To create or update a custom role, see [Create or update Azure custom roles using Azure CLI](/azure/role-based-access-control/custom-roles-cli).
-
+If you're using [Microsoft Entra ID](/azure/active-directory/fundamentals/active-directory-whatis) to control resource access, you can use it to restrict uploading of Azure managed disks. See [Secure downloads and uploads of Azure managed disks](../disks-secure-upload-download.md) for details.
 
 ## Get started
 

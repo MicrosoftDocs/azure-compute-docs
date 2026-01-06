@@ -5,7 +5,7 @@ author: roygara
 ms.author: rogarana
 ms.service: azure-disk-storage
 ms.topic: how-to
-ms.date: 08/15/2024
+ms.date: 01/06/2026
 # Customer intent: "As a cloud administrator, I want to download a Windows VHD from Azure, so that I can create new virtual machines or back up the current VM configuration."
 ---
 
@@ -13,7 +13,9 @@ ms.date: 08/15/2024
 
 **Applies to:** :heavy_check_mark: Windows VMs 
 
-In this article, you learn how to download a Windows virtual hard disk (VHD) file from Azure using the Azure portal.
+This article covers how to download a Windows virtual hard disk (VHD) file from Azure. Downloading a VHD requires that the disk in question isn't attached to a running VM, which would involve downtime. Some configurations can safely avoid downtime by [snapshotting the disk](#alternative-snapshot-the-vm-disk) and downloading the VHD from the snapshot.
+
+If you're using [Microsoft Entra ID](/azure/active-directory/fundamentals/active-directory-whatis) to control resource access, you can use it to restrict uploading of Azure managed disks. See [Secure downloads and uploads of Azure managed disks](../disks-secure-upload-download.md) for details.
 
 ## Optional: Generalize the VM
 
@@ -22,11 +24,11 @@ If you want to use the VHD as an [image](tutorial-custom-images.md) to create ot
 To use the VHD as an image to create other VMs, generalize the VM.
 
 1. If you haven't already done so, sign in to the [Azure portal](https://portal.azure.com/).
-2. [Connect to the VM](connect-logon.md). 
-3. On the VM, open the Command Prompt window as an administrator.
-4. Change the directory to *%windir%\system32\sysprep* and run sysprep.exe.
-5. In the System Preparation Tool dialog box, select **Enter System Out-of-Box Experience (OOBE)**, and make sure that **Generalize** is selected.
-6. In Shutdown Options, select **Shutdown**, and then select **OK**. 
+1. [Connect to the VM](connect-logon.md). 
+1. On the VM, open the Command Prompt window as an administrator.
+1. Change the directory to *%windir%\system32\sysprep* and run sysprep.exe.
+1. In the System Preparation Tool dialog box, select **Enter System Out-of-Box Experience (OOBE)**, and make sure that **Generalize** is selected.
+1. In Shutdown Options, select **Shutdown**, and then select **OK**. 
 
 If you don't want to generalize your current VM, you can still create a generalized image by first [making a snapshot of the OS disk](#alternative-snapshot-the-vm-disk), creating a new VM from the snapshot, and then generalizing the copy.
 
@@ -40,28 +42,21 @@ A VHD can’t be downloaded from Azure if it's attached to a running VM. If you 
 
 ### Alternative: Snapshot the VM disk
 
+> [!NOTE]
+> If you don't stop the VM first, the snapshot won't be clean. The snapshot will be in the same state as if the VM had been power cycled or crashed at the point in time when the snapshot was made. Usually this is safe but, it could cause problems if the running applications running at the time aren't crash resistant.
+>  
+> Generally, you should only use snapshots of running VMs if the only disks associated with them is one OS disk. If a VM has one more more data disks then you should stop the VM before creating a snapshot of the OS or data didks.
+
 Take a snapshot of the disk to download.
 
 1. Select the VM in the [portal](https://portal.azure.com).
-2. Select **Disks** in the left menu and then select the disk you want to snapshot. The details of the disk will be displayed.  
-3. Select **Create Snapshot** from the menu at the top of the page. The **Create snapshot** page opens.
-4. In **Name**, type a name for the snapshot. 
-5. For **Snapshot type**, select **Full** or **Incremental**.
-6. When you're done, select **Review + create**.
+1. Select **Disks** in the left menu and then select the disk you want to snapshot. The details of the disk will be displayed.  
+1. Select **Create Snapshot** from the menu at the top of the page. The **Create snapshot** page opens.
+1. In **Name**, type a name for the snapshot. 
+1. For **Snapshot type**, select **Full** or **Incremental**.
+1. When you're done, select **Review + create**.
 
 Your snapshot is created shortly, and can then be used to download or create another VM.
-
-> [!NOTE]
-> If you don't stop the VM first, the snapshot won't be clean. The snapshot will be in the same state as if the VM had been power cycled or crashed at the point in time when the snapshot was made.  While usually safe, it could cause problems if the running applications running at the time weren't crash resistant.
->  
-> This method is only recommended for VMs with a single OS disk. VMs with one or more data disks should be stopped before download or before creating a snapshot for the OS disk and each data disk.
-
-
-<a name='secure-downloads-and-uploads-with-azure-ad'></a>
-
-## Secure downloads and uploads with Microsoft Entra ID
-
-[!INCLUDE [disks-azure-ad-upload-download-portal](../includes/disks-azure-ad-upload-download-portal.md)]
 
 ## Generate download URL
 
