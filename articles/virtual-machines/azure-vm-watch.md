@@ -10,9 +10,9 @@ ms.date: 02/18/2025
 # Customer intent: "As a system administrator, I want to implement VM watch for my virtual machines, so that I can monitor their health efficiently and prevent potential issues with minimal resource impact."
 ---
 
-# VM watch: Enhancing VM health monitoring (preview)
+# VM watch: Enhancing VM health monitoring 
 
-VM watch is a standardized, lightweight, and adaptable service offering for virtual machines (VMs) and virtual machine scale sets. It runs health checks within a VM at configurable intervals and sends the results via a uniform data model to Azure. The AI operations (AIOps) engines for production monitoring in Azure consume these health results for regression detection and prevention.
+VMWatch, a standardized, lightweight, and open-sourced testing framework designed to enhance the monitoring and management of guest VMs on the Azure platform, including both 1P and 3P instances. VMWatch is engineered to collect vital health signals across multiple dimensions, which will be seamlessly integrated into Azure's quality systems. By leveraging these signals, VMWatch will enable Azure to swiftly detect and prevent regressions induced by platform updates or configuration changes, identify gaps in platform telemetry, and ultimately improve the guest experience for all Azure customers.
 
 VM watch is delivered via the [Application Health VM extension](/azure/virtual-machines/extensions/health-extension?tabs=rest-api) to provide ease of deployment and manageability for customers. In addition, VM watch is offered at no extra cost.
 
@@ -33,6 +33,10 @@ To maintain consistent performance across different virtual machine (VM) configu
 | Less than 8 GB | 80MB |
 | 8 GB to 16 GB | 200MB |
 | Greater than 16 GB | 400MB |
+
+### VMWatch Signal Categories
+
+VMWatch measures VM health by emitting Signals in different categories, including Network, Disk, CPU, Process, IMDS, Clock, AzBlob, Hardware.
 
 ### Network
 
