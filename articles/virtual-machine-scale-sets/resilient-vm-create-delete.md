@@ -134,10 +134,20 @@ In the request body, add in the resiliency policies:
 
 Get the status of Resilient create and delete for your scale set.
 
-- **Resilient create**: Your VM shows a state of `Creating` while the retries are in progress.
-- **Resilient Delete**: During deletion, VMs show a provisioning state of `Deleting`. If a delete attempt fails, the VM temporarily returns to `Failed` before the next retry. This means you may see VMs alternate between `Deleting` and `Failed` states while Resilient delete continues to retry. To check the status of your VM during Resilient delete, retrieve the `ResilientVMDeletionStatus` property, as instructed below.
+### Resilient create
+Your VM shows a state of `Creating` while the retries are in progress.
 
-### [REST](#tab/rest-2)
+### Resilient Delete
+During deletion, VMs show a provisioning state of `Deleting`. If a delete attempt fails, the VM temporarily returns to `Failed` before the next retry. This means you may see VMs alternate between `Deleting` and `Failed` states while Resilient delete continues to retry. To check the status of your VM during Resilient delete, retrieve the value of the `ResilientVMDeletionStatus` property.
+
+| ResilientVMDeletionStatus | State of delete |
+|---------------------------|-----------------|
+| Enabled | Resilient VM deletion policy is enabled on your scale set. |
+| Disabled | Resilient VM deletion policy is not enabled on your scale set. |
+| In Progress | Resilient delete is actively attempting to delete the VM. |
+| Failed | Resilient delete reached the maximum retry count without successfully deleting the VM. |
+
+#### [REST](#tab/rest-2)
 
 There are two endpoints are available:
 
@@ -155,10 +165,10 @@ GET https://management.azure.com/subscriptions/{{subscriptionId}}/resourceGroups
 
 The following return values of `ResilientVMDeletionStatus` indicate the progress of Resilient delete.
 
-### [PowerShell](#tab/powershell-2)
+#### [PowerShell](#tab/powershell-2)
 Get-AzVmssVM -ResiliencyView -ResourceGroupName <resourceGroupName> -VMScaleSetName <myScaleSetName>
 
-### [CLI](#tab/cli-2)
+#### [CLI](#tab/cli-2)
 ```azurecli-interactive
 az vmss list-instances 
 --resiliencyView \
@@ -175,12 +185,6 @@ az vmss get-resiliency-view
 ```
 
 ---
-| ResilientVMDeletionStatus | State of delete |
-|---------------------------|-----------------|
-| Enabled | The `resilientVMDeletion` policy is set on your scale set. |
-| Disabled | Your scale set either has the `resilientVMDeletion` policy enabled as false, has a resiliency policy but is missing a `resilientVMDeletion` policy, or doesn't have a resiliency policy. |
-| In Progress | The `resilientVMDeletion` policy is enabled and the VM is currently being deleted or is marked for deletion. |
-| Failed | The `resilientVMDeletion` policy is enabled and hit the max retry count. |
 
 ## FAQ
 
