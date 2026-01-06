@@ -137,7 +137,7 @@ Get the status of Resilient create and delete for your scale set.
 - **Resilient create**: Your VM shows a state of `Creating` while the retries are in progress.
 - **Resilient Delete**: During deletion, VMs show a provisioning state of `Deleting`. If a delete attempt fails, the VM temporarily returns to `Failed` before the next retry. This means you may see VMs alternate between `Deleting` and `Failed` states while Resilient delete continues to retry. To check the status of your VM during Resilient delete, retrieve the `ResilientVMDeletionStatus` property, as instructed below.
 
-### [REST](#tab/rest-1)
+### [REST](#tab/rest-2)
 
 There are two endpoints are available:
 
@@ -155,10 +155,10 @@ GET https://management.azure.com/subscriptions/{{subscriptionId}}/resourceGroups
 
 The following return values of `ResilientVMDeletionStatus` indicate the progress of Resilient delete.
 
-### [PowerShell](#tab/powershell-1)
+### [PowerShell](#tab/powershell-2)
 Get-AzVmssVM -ResiliencyView -ResourceGroupName <resourceGroupName> -VMScaleSetName <myScaleSetName>
 
-### [CLI](#tab/cli-1)
+### [CLI](#tab/cli-2)
 ```azurecli-interactive
 az vmss list-instances 
 --resiliencyView \
@@ -188,7 +188,7 @@ az vmss get-resiliency-view
 Use API version `2023-07-01`.
 
 ### What do I do if my virtual machine is in a 'Failed' state for a long time? 
-Resilient delete performs a maximum of five retries on your VM. Therefore, your virtual machine might show up in a 'Failed' state, even when Resilient delete is operating on that VM. For more information, see [Get status for Resilient create or delete](#get-status).
+Resilient delete performs a maximum of five retries on your VM. Therefore, your virtual machine might show up in a 'Failed' state, even when Resilient delete is operating on that VM. For more information, see [Get status for Resilient create or delete](#get-status-of-retries).
 
 ### Does Resilient create work when I attach a new virtual machine to my scale set? 
 No, Resilient create operates during a scale-out of a scale set or when you create a new scale set. 
