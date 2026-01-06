@@ -21,7 +21,7 @@ This article describes what sizes are, gives an overview of the available sizes 
 > [!TIP]
 > Try the **[Virtual machines selector tool](https://aka.ms/vm-selector)** to find other sizes that best fit your workload.
 
-:::image type="content" source="./media/azure-vms-thumb.jpg" alt-text="YouTube video for selecting the right size for your VM." link="https://youtu.be/zOSvnJFd3ZM":::
+:::image type="content" source="./media/azure-vms-thumb.jpg" alt-text="YouTube video for selecting the right size for your VM." link="https://www.youtube.com/watch?v=zKUBjtof6nU":::
 
 ## VM size and series naming
 
