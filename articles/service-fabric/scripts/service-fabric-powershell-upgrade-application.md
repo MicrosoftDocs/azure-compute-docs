@@ -1,6 +1,6 @@
 ---
 title: Upgrade a Service Fabric application in PowerShell
-description: PowerShell Script Sample - Upgrade and monitor an Service Fabric application using PowerShell.
+description: PowerShell Script Sample - Upgrade and monitor a Service Fabric application using PowerShell.
 services: service-fabric
 author: athinanthny
 manager: chackdan
