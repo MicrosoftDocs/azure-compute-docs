@@ -5,7 +5,7 @@ ms.service: azure-virtual-machines
 ms.subservice: gallery
 ms.topic: concept-article
 ms.date: 08/18/2025
-author: ju-shim
+author: cynthn
 ms.author: tagore
 ms.reviewer: jushiman
 ms.custom: linux-related-content

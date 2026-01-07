@@ -6,6 +6,7 @@ ms.topic: how-to
 ms.service: azure-virtual-machines
 title: SCSI to NVMe for Linux VMs
 description: How to convert SCSI to NVMe using Linux
+ms.custom: sfi-image-nochange
 # Customer intent: As a cloud solutions architect, I want to convert virtual machines running Linux from SCSI to NVMe storage, so that I can enhance their performance and scalability while ensuring compatibility with modern cloud infrastructure.
 ---
 
@@ -265,7 +266,7 @@ nvme-conversion-vm:/usr/lib/udev/rules.d #
 
 ##### 3.2.1 Manual download of udev file
 To download the new udev rules file, use this command:
-`curl https://raw.githubusercontent.com/Azure/SAP-on-Azure-Scripts-and-Utilities/refs/heads/main/NVMe-Preflight-Check/88-azure-nvme-data-disk.rules`
+`curl https://raw.githubusercontent.com/Azure/SAP-on-Azure-Scripts-and-Utilities/refs/heads/main/Azure-NVMe-Utils/88-azure-nvme-data-disk.rules`
 and then run `udevadm control --reload-rules && udevadm trigger`
 to reload the udev rules.
 

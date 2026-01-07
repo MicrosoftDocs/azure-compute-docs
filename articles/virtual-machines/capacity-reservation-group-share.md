@@ -493,6 +493,20 @@ When using a shared Capacity Reservation Group with zones, all subscriptions hav
 
 To check the Physical Zone and Logical Zone mapping for your subscription, see [Subscriptions - List Locations - REST API (Azure Resource Management)](/rest/api/resources/subscriptions/list-locations). For more information, see [Physical and Logical availability zones](/azure/reliability/availability-zones-overview?tabs=azure-cli#physical-and-logical-availability-zones).
 
+### Secure existing zonal workloads using zero size reservation in Shared capacity Reservation Group
+
+Zonally deployed virtual machines or virtual machine scale sets from Consumer subscription can be converted to using a shared Capacity Reservation without reallocation. If you do not have capacity in an existing shared capacity reservation group, you can start by creating a zero size matching reservation to secure your workloads. The basic process involves 3 steps:
+
+1. Create a shared Capacity Reservation Group and then matching capacity reservations in each target zone with the reserved quantity set to zero. This requires no additional quota or capacity for the Provider subscription. For more information on how to create a reservation, see [Create a capacity reservation](/azure/virtual-machines/capacity-reservation-create?tabs=portal1%2Capi1%2Capi2#create-a-capacity-reservation-1).
+
+2. Associate existing running zonal virtual machine or virtual machine scale set from the Consumer subscription to the shared capacity reservation group. Set the Virtual Machine or Virtual Machine Scale Set (VMSS) capacityReservationGroup property to the desired shared Capacity Reservation Group. When complete, each target capacity reservation will be overallocated. 
+   
+3. Increase the reserved quantity of each capacity reservation (CR) to match the allocated Virtual Machine (VM) count. The Provider subscription must have sufficient quota to accomodate the workloads from the Consumer subscription for this step. See [Using a shared Capacity Reservation Group](#using-a-shared-capacity-reservation-group). For more information on how to update the reserved count, see [Capacity reservation modify](/azure/virtual-machines/capacity-reservation-modify?tabs=api1%2Capi2%2Capi3#update-the-number-of-instances-reserved)
+
+After the quantity increase, you should see the CR in a fully allocated state with all the virtual machines or virtual machine scale sets allocated. See [View VM allocation with the Instance View](/azure/virtual-machines/capacity-reservation-associate-vm?tabs=api1%2Capi2%2Capi3#view-vm-allocation-with-the-instance-view).
+
+For more information, see [Zonal Virtual Machine](/azure/virtual-machines/capacity-reservation-associate-vm?tabs=api1%2Capi2%2Capi3#zonal-virtual-machine) or [Zonal Virtual Machine Scale Set](/azure/virtual-machines/capacity-reservation-associate-virtual-machine-scale-set?tabs=api1%2Capi2#zonal-virtual-machine-scale-set).
+
 ### Use of Reserved Instances with shared Capacity Reservation Groups 
 Sharing a Capacity Reservation Group doesn't alter the scope of any Reserved Instances or Savings Plans. If either the CRG or the VM is deployed from a scope not covered by prepaid discounts, the pay-as-you-go price is charged. 
 

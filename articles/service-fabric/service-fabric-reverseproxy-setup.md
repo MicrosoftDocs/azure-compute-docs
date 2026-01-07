@@ -5,9 +5,11 @@ ms.topic: how-to
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
-ms.custom: devx-track-arm-template
 services: service-fabric
 ms.date: 07/11/2022
+ms.custom:
+  - devx-track-arm-template
+  - sfi-image-nochange
 # Customer intent: As a cloud architect, I want to set up and configure a reverse proxy in an Azure Service Fabric cluster so that microservices can reliably discover and communicate with each other via HTTP endpoints.
 ---
 

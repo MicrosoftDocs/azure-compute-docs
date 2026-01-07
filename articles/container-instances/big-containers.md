@@ -6,7 +6,7 @@ author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
 ms.topic: concept-article
-ms.date: 03/27/2025
+ms.date: 11/17/2025
 # Customer intent: As a cloud developer, I want to deploy high-performance container workloads with increased vCPU and memory on Azure Container Instances, so that I can efficiently handle data-intensive applications and scale resources seamlessly according to business demands.
 ---
 # Big Containers on Azure Container Instances

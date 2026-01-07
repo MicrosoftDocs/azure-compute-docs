@@ -1,7 +1,7 @@
 ---
 title: Monitoring data reference for Container Instances
 description: This article contains important reference material you need when you monitor Container Instances.
-ms.date: 08/29/2024
+ms.date: 11/17/2025
 ms.custom: horz-monitor
 ms.topic: reference
 author: tomvcassidy

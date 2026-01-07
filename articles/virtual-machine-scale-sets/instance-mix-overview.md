@@ -6,7 +6,7 @@ ms.author: brittanyrowe
 ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
 ms.date: 09/12/2025
-ms.reviewer: jushiman
+ms.reviewer: cynthn
 # Customer intent: As a cloud administrator, I want to utilize multiple VM sizes in a scale set with instance mix, so that I can optimize cost, capacity, and flexibility for my diverse workload requirements.
 ---
 
@@ -110,6 +110,7 @@ Before you deploy an instance mix scale set:
 - VMs with different storage interfaces (SCSI vs NVMe) can't be mixed.
 - You can't mix VM SKUs that use premium storage and non-premium storage in the same instance mix.
 - All VMs must share the same Security Profile and local disk configuration.
+- **DiffDisk settings**: Instance mix currently doesn't support `diffDiskSettings` on the OS disk.
 - Instance mix doesn't support: Standby Pools, Azure Dedicated Host, Proximity Placement Groups, or on-demand capacity reservations.
 
 ## Next steps

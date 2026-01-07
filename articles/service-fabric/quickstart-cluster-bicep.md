@@ -1,12 +1,17 @@
 ---
 title: Create a Service Fabric cluster using Bicep
 description: In this quickstart, you will create an Azure Service Fabric test cluster using Bicep.
-author: ju-shim
+author: cynthn
 ms.author: jushiman
 ms.date: 06/22/2022
 ms.topic: quickstart
 ms.service: azure-service-fabric
-ms.custom: devx-track-azurepowershell, subject-armqs, mode-arm, devx-track-bicep
+ms.custom:
+  - devx-track-azurepowershell
+  - subject-armqs
+  - mode-arm
+  - devx-track-bicep
+  - sfi-image-nochange
 # Customer intent: As a cloud developer, I want to deploy a Service Fabric test cluster using Bicep so that I can effectively manage and scale my microservices and containers in a secure environment.
 ---
 

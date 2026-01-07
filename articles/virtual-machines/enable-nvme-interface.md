@@ -24,6 +24,7 @@ For more information about enabling the NVMe interface on virtual machines creat
 > [!NOTE]
 > For Linux virtual machines using NVMe-attached storage, Microsoft recommends setting the kernel parameter `nvme_core.io_timeout` to `240` seconds. This setting effectively disables OS-level NVMe IO timeouts, ensuring that Azure's host-level timeout mechanism takes precedence to handle disk failures or interruptions. 
 > Some older Linux images may have the default `io_timeout` set to 30 seconds, which can cause the OS to timeout IOs before Azure can intervene.
+- Azure Linux 3.0
 - Almalinux 8.x
 - Almalinux 9.x
 - Debian 11
@@ -39,12 +40,13 @@ For more information about enabling the NVMe interface on virtual machines creat
 - Ubuntu 18.04
 - Ubuntu 20.04
 - Ubuntu 22.04
+- Ubuntu 24.04
 
 ## Supported Windows OS images
 - Windows Server 2025
-- Windows Server 2019*
 - Windows Server 2022
-- Windows Server 2025
+- Windows Server 2019*
+
 - Windows 10
 - Windows 11
 

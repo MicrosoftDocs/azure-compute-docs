@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
-ms.date: 06/17/2022
+ms.date: 11/17/2025
 ms.custom: mvc, devx-track-azurecli, devx-track-arm-template
 # Customer intent: As a cloud developer, I want to deploy a multi-container group using a Resource Manager template, so that I can efficiently manage containerized applications with sidecar configurations for services like logging and monitoring.
 ---

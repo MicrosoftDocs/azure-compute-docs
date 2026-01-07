@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 06/30/2025
+ms.date: 11/24/2025
 ms.author: padmalathas
 ms.reviewer: mattmcinnes
 # Customer intent: As a cloud architect, I want to understand the specifications and features of the HX series VM sizes, so that I can effectively select the appropriate size for my workloads based on performance and storage requirements.

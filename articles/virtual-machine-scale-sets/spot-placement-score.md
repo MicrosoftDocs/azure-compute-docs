@@ -1,13 +1,13 @@
 ---
 title: Spot Placement Score
 description: Learn how to use Azure Spot Placement Score to evaluate deployment success.
-author: ju-shim 
-ms.author: jushiman 
+author: cynthn 
+ms.author: cynthn 
 ms.service: azure-virtual-machines
 ms.subservice: azure-spot-vm
 ms.topic: how-to
 ms.date: 11/13/2024
-ms.reviewer: ju-shim
+ms.reviewer: cynthn
 # Customer intent: As a cloud architect, I want to evaluate the Spot Placement Score for my virtual machine deployments so that I can optimize resource allocation and improve the likelihood of successful Spot VM deployments across regions and sizes.
 ---
 

@@ -6,7 +6,7 @@ ms.author: brittanyrowe
 ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
 ms.date: 06/10/2025
-ms.reviewer: jushiman
+ms.reviewer: cynthn
 # Customer intent: "As a cloud administrator, I want to understand the FAQs and troubleshooting steps for using instance mix on virtual machine scale sets, so that I can efficiently manage my VM deployments and resolve issues effectively."
 ---
 
@@ -33,6 +33,9 @@ Yes, you can apply your reserved instance prices and savings plan with instance 
 
 ### Can I use an on-demand capacity reservation with instance mix?
 No, you can't use an on-demand capacity reservation with instance mix.
+
+### Can I use DiffDisk settings with instance mix?
+No, instance mix currently doesn't support `diffDiskSettings` on the OS disk.
 
 ## Troubleshooting
 | Error Code                                 | Error Message                                                                                                        | Troubleshooting options                                                                                                                                                                                                                                                                                              |

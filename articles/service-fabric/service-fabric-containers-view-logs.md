@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+ms.custom: sfi-image-nochange
 # Customer intent: "As a DevOps engineer, I want to access and analyze container logs for both running and crashed services, so that I can effectively diagnose and troubleshoot issues in my containerized applications."
 ---
 

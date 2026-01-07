@@ -6,7 +6,7 @@ ms.service: azure-virtual-machines
 ms.custom:
 author: mimckitt
 ms.author: mimckitt
-ms.topic: concept-article
+ms.topic: how-to
 ms.date: 02/25/2023
 ms.reviewer: mattmcinnes
 # Customer intent: "As a system administrator, I want to enable boot diagnostics on Azure VMs using managed storage accounts, so that I can efficiently diagnose boot failures and improve the reliability of my virtual machine deployments."
@@ -20,10 +20,7 @@ Boot diagnostics is a debugging feature for Azure virtual machines (VM) that all
 
 ## Boot diagnostics storage account
 
-When you create a VM in Azure portal, boot diagnostics is enabled by default. The recommended boot diagnostics experience is to use a managed storage account, as it yields significant performance improvements in the time to create an Azure VM. An Azure managed storage account is used, removing the time it takes to create a user storage account to store the boot diagnostics data.
-
-> [!IMPORTANT]
-> The boot diagnostics data blobs (which comprise of logs and snapshot images) are stored in a managed storage account. Customers will be charged only on used GiBs by the blobs, not on the disk's provisioned size. The snapshot meters will be used for billing of the managed storage account. Because the managed accounts are created on either Standard LRS or Standard ZRS, customers will be charged at $0.05/GB per month for the size of their diagnostic data blobs only. For more information on this pricing, see [Managed disks pricing](https://azure.microsoft.com/pricing/details/managed-disks/). Customers see this charge tied to their VM resource URI.
+When you create a VM in Azure portal, boot diagnostics is enabled by default. The recommended boot diagnostics experience is to use a managed storage account, as it yields significant performance improvements in the time to create an Azure VM. Using a managed storage account eliminates the time needed to create a user storage account to store the boot diagnostics data. When using a managed storage account: The managed storage account is not directly accessible, and the boot diagnostics data blobs (which comprise of logs and snapshot images) stored in the managed storage account are not currently billed. 
 
 An alternative boot diagnostic experience is to use a custom storage account. A user can either create a new storage account or use an existing one. When the storage firewall is enabled on the custom storage account (**Enabled from all networks** option isn't selected), you must:
 

@@ -544,7 +544,11 @@ To associate a Virtual Machine Scale Set with a Capacity Reservation Group, see 
 
 ## Associate an existing virtual machine scale set to a capacity reservation group 
 
-To add an existing capacity reservation group to an existing uniform scale set:
+Existing zonal virtual machine scale set can simply be updated with Capacity Reservation Group property without the need of deallocation. Existing regional virtual machine scale set can include similar process but must be reallocated.
+
+### Regional Virtual Machine Scale Set
+
+To add an existing regional capacity reservation group to an existing uniform scale set:
 
 - Stop the scale set to deallocate the VM instances.
 - Update the scale set to use a matching capacity reservation group.
@@ -552,13 +556,13 @@ To add an existing capacity reservation group to an existing uniform scale set:
 
 This process ensures that the placement for the capacity reservations and scale set in the region are compatible.
 
-### Important notes on upgrade policies
+#### Important notes on upgrade policies
 
 - **Automatic upgrade**: In this mode, the scale set VM instances are automatically associated to the capacity reservation group without any further action from you. When the scale set VMs are reallocated, they start consuming the reserved capacity.
 - **Rolling upgrade**: In this mode, scale set VM instances are associated to the capacity reservation group without any further action from you. However, they're updated in batches with an optional pause time between them. When the scale set VMs are reallocated, they start consuming the reserved capacity.
 - **Manual upgrade**: In this mode, nothing happens to the scale set VM instances when the virtual machine scale set is attached to a capacity reservation group. You need to update to each scale set VM by [upgrading it with the latest scale set model](../virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-policy.md).
 
-### [API](#tab/api2)
+#### [API](#tab/api2)
 
 1. Deallocate the virtual machine scale set:
 
@@ -587,7 +591,7 @@ This process ensures that the placement for the capacity reservations and scale 
     }
     ```
 
-### [CLI](#tab/cli2)
+#### [CLI](#tab/cli2)
 
 1. Deallocate the virtual machine scale set:
 
@@ -607,7 +611,7 @@ This process ensures that the placement for the capacity reservations and scale 
     --capacity-reservation-group /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}
     ```
 
-### [PowerShell](#tab/powershell2) 
+#### [PowerShell](#tab/powershell2) 
 
 1. Deallocate the virtual machine scale set:
 
@@ -634,7 +638,7 @@ This process ensures that the placement for the capacity reservations and scale 
 
 To learn more, see the Azure PowerShell commands [Stop-AzVmss](/powershell/module/az.compute/stop-azvmss), [Get-AzVmss](/powershell/module/az.compute/get-azvmss), and [Update-AzVmss](/powershell/module/az.compute/update-azvmss).
 
-### [Portal](#tab/portal2)
+#### [Portal](#tab/portal2)
 	
 <!-- no images necessary if steps are straightforward --> 
 	
@@ -648,95 +652,101 @@ To learn more, see the Azure PowerShell commands [Stop-AzVmss](/powershell/modul
 --- 
 <!-- The three dashes above show that your section of tabbed content is complete. Don't remove them :) -->
 
-## View virtual machine scale set association with the Instance View
+### Zonal Virtual Machine Scale Set
 
-After the uniform virtual machine scale set is associated to the capacity reservation group, all the subsequent VM allocations will happen against the capacity reservation. Azure automatically finds the matching capacity reservation in the group and consumes a reserved slot.
+If you have capacity in an existing capacity reservation group and you want to add an existing zonal uniform scale set to it, simply update the scale set to the capacity reservation group to use a matching capacity reservation.
 
-### [API](#tab/api3) 
+> [!IMPORTANT]
+> The feature to associate an existing zonal scale set to a reservation group without the need to deallocate, is currently in **Preview**. See the [Preview Terms of Use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
+> The feature is currently not available in Microsoft Azure Government and Microsoft Azure operated by 21Vianet.
 
-The capacity reservation group Instance View reflects the new scale set VMs under the `virtualMachinesAssociated` and `virtualMachinesAllocated` properties:  
+#### Important notes on upgrade policies
+
+- **Automatic upgrade**: In this mode, the scale set VM instances are automatically associated to the capacity reservation group without any further action from you. If already running, the scale set VM instances start consuming the reserved capacity. If the existing scale set VMs are in deallocated state, they start consuming the reserved capacity when reallocated.
+- **Rolling upgrade**: In this mode, scale set VM instances are associated to the capacity reservation group without any further action from you. However, they're updated in batches with an optional pause time between them. If already running, the scale set VM instances start consuming the reserved capacity. If the existing scale set VMs are in deallocated state, they start consuming the reserved capacity when reallocated.
+- **Manual upgrade**: In this mode, nothing happens to the scale set VM instances when the virtual machine scale set is attached to a capacity reservation group. You need to update to each scale set VM by [upgrading it with the latest scale set model](../virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-policy.md).
+
+#### [API](#tab/api2)
+
+
+Add the `capacityReservationGroup` property to the scale set model. Construct the following `PUT` request to `Microsoft.Compute` provider:
 
 ```rest
-GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/CapacityReservationGroups/{CapacityReservationGroupName}?$expand=instanceview&api-version=2021-04-01 
+    PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourcegroupname}/providers/Microsoft.Compute/virtualMachineScaleSets/{VMScaleSetName}?api-version=2021-04-01
 ```
 
-```json
-{ 
-    "name": "<CapacityReservationGroupName>", 
-    "id": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{CapacityReservationGroupName}", 
-    "type": "Microsoft.Compute/capacityReservationGroups", 
-    "location": "eastus" 
-}, 
-    "properties": { 
-        "capacityReservations": [ 
-            { 
-                "id": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{CapacityReservationGroupName}/capacityReservations/{CapacityReservationName}" 
-            } 
-        ], 
-        "virtualMachinesAssociated": [ 
-            { 
-                "id": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{VMScaleSetName}/virtualMachines/{VirtualMachineId}" 
-            } 
-        ], 
-        "instanceView": { 
-            "capacityReservations": [ 
-                { 
-                    "name": "<CapacityReservationName>", 
-                    "utilizationInfo": { 
-                        "virtualMachinesAllocated": [ 
-                            { 
-                                "id": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{VMScaleSetName}/virtualMachines/{VirtualMachineId}" 
-                            } 
-                        ] 
-                    },
-                    "statuses": [ 
-                        { 
-                            "code": "ProvisioningState/succeeded", 
-                            "level": "Info", 
-                            "displayStatus": "Provisioning succeeded", 
-                            "time": "2021-05-25T15:12:10.4165243+00:00" 
-                        } 
-                    ] 
-                } 
-            ] 
-        } 
-    } 
-} 
-```  
+In the request body, include the `capacityReservationGroup` property:
 
-### [CLI](#tab/cli3)
+```json
+    "location": "eastus",
+    "properties": {
+        "virtualMachineProfile": {
+             "capacityReservation": {
+                      "capacityReservationGroup": {
+                            "id": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}"
+                      }
+                }
+        }
+    }
+```
+
+#### [CLI](#tab/cli2)
+
+To associate the scale set to the capacity reservation group using the Azure CLI:
 
 ```azurecli-interactive
-az capacity reservation group show 
--g myResourceGroup
--n myCapacityReservationGroup 
-``` 
+    az vmss update 
+    --resource-group myResourceGroup 
+    --name myVMSS 
+    --capacity-reservation-group /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}
+```
 
-### [PowerShell](#tab/powershell3) 
+#### [PowerShell](#tab/powershell2) 
 
-View the association of your virtual machine scale set and capacity reservation group by using Instance View in PowerShell.
+To associate the scale set to the capacity reservation group using Azure PowerShell:
 
 ```powershell-interactive
-$CapRes=
-Get-AzCapacityReservationGroup
--ResourceGroupName <"ResourceGroupName">
--Name <"CapacityReservationGroupName">
--InstanceView
+    $vmss =
+    Get-AzVmss
+    -ResourceGroupName "myResourceGroup"
+    -VMScaleSetName "myVmss"
+    
+    Update-AzVmss
+    -ResourceGroupName "myResourceGroup"
+    -VMScaleSetName "myVmss"
+    -VirtualMachineScaleSet $vmss
+    -CapacityReservationGroupId "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}"
+```
 
-$CapRes.InstanceView.Utilizationinfo.VirtualMachinesAllocated
-``` 
+To learn more, see the Azure PowerShell commands [Stop-AzVmss](/powershell/module/az.compute/stop-azvmss), [Get-AzVmss](/powershell/module/az.compute/get-azvmss), and [Update-AzVmss](/powershell/module/az.compute/update-azvmss).
 
-To learn more, see the Azure PowerShell command [Get-AzCapacityReservationGroup](/powershell/module/az.compute/get-azcapacityreservationGroup).
-
-### [Portal](#tab/portal3)
-
-1. Open [Azure portal](https://portal.azure.com).
-1. Go to your capacity reservation group.
-1. Under **Setting**, select **Resources**.
-1. In the table, you can see all the scale set VMs that are associated to the capacity reservation group.
+#### [Portal](#tab/portal2)
+	
+To associate the scale set to the capacity reservation group using the Azure portal:
+	
+1. Open the [Azure portal](https://portal.azure.com).
+1. Go to your Virtual Machine Scale Set.
+1. Select **Overview**.
+1. Go to **Configurations** on the left.
+1. In the **Capacity Reservation group** dropdown list, select the group that you want to associate to the scale set.
 
 --- 
 <!-- The three dashes above show that your section of tabbed content is complete. Don't remove them :) -->
+
+
+### Secure existing zonal virtual machine scale sets using zero size reservation
+
+Zonally deployed virtual machines scale sets can be converted to using an On Demand Capacity Reservation without reallocation. If you do not have capacity in an existing capacity reservation group, you can start by creating a zero size matching reservation to secure your workloads. The basic process involves 3 steps:
+
+1. Create a Capacity Reservation Group and then matching capacity reservations in each target zone with the reserved quantity set to zero. This requires no additional quota or capacity. For more information on how to create a reservation, see [Create a capacity reservation](/azure/virtual-machines/capacity-reservation-create?tabs=portal1%2Capi1%2Capi2#create-a-capacity-reservation-1).
+
+2. Associate existing running zonal virtual machine scale set to the capacity reservation. Set the Virtual Machine Scale Set (VMSS) capacityReservationGroup property to the desired Capacity Reservation Group, then execute a model update on the VMSS (VMSS uniform) or update each member VM with the capacityReservationGroup property (VMSS Flex). When complete, each target capacity reservation will be overallocated See [Zonal Virtual Machine Scale Set](#zonal-virtual-machine-scale-set)
+   
+3. Increase the reserved quantity of each capacity reservation (CR) to match the allocated Virtual Machine (VM) count. Since each CR is already overallocated, this step requires no additional quota or capacity. For more information on how to update the reserved count, see [Capacity reservation modify](/azure/virtual-machines/capacity-reservation-modify?tabs=api1%2Capi2%2Capi3#update-the-number-of-instances-reserved)
+
+After the quantity increase, you should see the CR in a fully allocated state with all the VMSS virtual machines allocated. See [View VM allocation with the Instance View](/azure/virtual-machines/capacity-reservation-associate-vm?tabs=api1%2Capi2%2Capi3#view-vm-allocation-with-the-instance-view).
+
+For information on using shared capacity reservation group, see [Secure existing zonal workloads using zero size reservation in Shared capacity Reservation Group](/azure/virtual-machines/capacity-reservation-group-share?tabs=api-1%2Capi-2%2Capi-3%2Capi-4%2Capi-5%2Capi-6%2Cportal-7#secure-existing-zonal-workloads-using-zero-size-reservation-in-shared-capacity-reservation-group).
 
 ## Region and availability zone considerations
 

@@ -1,8 +1,8 @@
 ---
 title: 'Tutorial: Create and manage a Virtual Machine Scale Set with Azure PowerShell'
 description: Learn how to use Azure PowerShell to create a Virtual Machine Scale Set, along with some common management tasks such as how to start and stop an instance, or change the scale set capacity.
-author: ju-shim
-ms.author: jushiman
+author: cynthn
+ms.author: cynthn
 ms.topic: tutorial
 ms.service: azure-virtual-machine-scale-sets
 ms.date: 06/14/2024

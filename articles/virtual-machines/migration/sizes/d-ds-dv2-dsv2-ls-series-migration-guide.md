@@ -80,6 +80,20 @@ Refer to the full [Azure VM resizing guide](/azure/virtual-machines/sizes/resize
 #### Q: Which Sizes Are Being Retired?
 To review retired sizes, see [retired Azure VM sizes](/azure/virtual-machines/sizes/retirement/retired-sizes-list).
 
+The following sizes are being retired by 15 November 2028.
+
+- F
+- Fs
+- Fsv2
+- Lsv2
+- G
+- Gs
+- Av2
+- Amv2
+- B-series 
+
+
+
 #### Q: Why Should I Migrate?
 
 If you are actively running any sizes listed in this article, these VMs are set to retire in 2028. Migration is mandatory to avoid unexpected shutdown. Additionally, migration yields the following benefits: 

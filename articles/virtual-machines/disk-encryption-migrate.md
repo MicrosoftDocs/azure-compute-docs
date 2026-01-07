@@ -90,21 +90,43 @@ Create new disks that don't carry over the ADE encryption metadata. This process
 
 # [CLI](#tab/CLI)
 
+> [!IMPORTANT]
+> You need to add an offset of 512 bytes when copying a managed disk from Azure. This is because Azure omits the footer when reporting the disk size. The copy will fail if you don't do this. The following script already does this for you.
+>
+> If you are creating an OS disk, add `--hyper-v-generation <yourGeneration>` to `az disk create`.
+
 ```azurecli
-# Get the source disk ID
-SOURCE_DISK_ID=$(az disk show --resource-group "MyResourceGroup" --name "MySourceDisk" --query "id" -o tsv)
+# Set variables
+sourceDiskName="MySourceDisk"
+sourceRG="MyResourceGroup"
+targetDiskName="MyTargetDisk"
+targetRG="MyResourceGroup"
+targetLocation="eastus"
+# For OS disks, specify either "Windows" or "Linux"
+# For data disks, omit the targetOS variable and --os-type parameter
+targetOS="Windows"
 
-# Create a new disk from the source disk
-az disk create --resource-group "MyResourceGroup" --name "MyTargetDisk" 
-  --source "$SOURCE_DISK_ID" --upload-type "Copy"
+# Get source disk size in bytes
+sourceDiskSizeBytes=$(az disk show -g $sourceRG -n $sourceDiskName --query '[diskSizeBytes]' -o tsv)
 
-# For OS disks, specify --os-type "Linux" or --os-type "Windows"
+# Create a new empty target disk with upload capability
+az disk create -g $targetRG -n $targetDiskName -l $targetLocation --os-type $targetOS --for-upload --upload-size-bytes $(($sourceDiskSizeBytes+512)) --sku standard_lrs
+
+# Generate SAS URIs for both disks
+targetSASURI=$(az disk grant-access -n $targetDiskName -g $targetRG --access-level Write --duration-in-seconds 86400 --query [accessSas] -o tsv)
+
+sourceSASURI=$(az disk grant-access -n $sourceDiskName -g $sourceRG --access-level Read --duration-in-seconds 86400 --query [accessSas] -o tsv)
+
+# Copy the disk data using AzCopy
+azcopy copy $sourceSASURI $targetSASURI --blob-type PageBlob
+
+# Revoke SAS access when complete
+az disk revoke-access -n $sourceDiskName -g $sourceRG
+
+az disk revoke-access -n $targetDiskName -g $targetRG
 ```
 
-> [!NOTE]
-> This method creates new disks without the Azure Disk Encryption metadata (UDE flag), which is essential for a clean migration.
->
-> **Important**: When copying a managed disk from Azure, add 512 bytes to the disk size to account for the footer that Azure omits when reporting disk size.
+This method creates new disks without the Azure Disk Encryption metadata (UDE flag), which is essential for a clean migration.
 
 # [Azure PowerShell](#tab/azurepowershell)
 
