@@ -13,21 +13,21 @@ ms.reviewer: cynthn
 
 # Resilient create and delete for Virtual Machine Scale Sets
 
-Resilient create and delete for Virtual Machine Scale Sets reduces Virtual Machine (VM) create and delete errors by automatically retrying those operations on your behalf. Failed VMs can accumulate and result in unusable capacity, requiring manual effort to detect and clean up. 
+Resilient create and delete for Virtual Machine Scale Sets reduces Virtual Machine (VM) create and delete errors by automatically retrying those operations on your behalf. This feature helps reduce manual intervention and increases the success rate of VM provisioning and deletion.
 
 ## Resilient create
 
-Resilient create runs on Virtual Machines Scale Sets during the initial create of the scale set or during a scale-out. 
+Resilient create automatically retries VM provisioning failures during scale set creation or scale-out operations.
 
-Resilient create initiates retries for the following errors:
+It specifically addresses:
 - OS Provisioning Timeout
 - VM Start Timeout 
 
-Resilient create attempts the create operation for up to 30 total minutes. If retries are exhausted, then the VM enters a failed provisioning state.
+When enabled, Resilient create will automatically retry provisioning until the operation succeeds or reaches the maximum retry duration. VMs that cannot be provisioned after all retry attempts remain in a failed state for investigation.
 
 ## Resilient delete
 
-Resilient delete initiates retries upon any error that occurs during the delete process. For example, *InternalExecutionError*, *TransientFailure*, or *InternalOperationError*. To check the status of your VMs throughout the delete process, see [Get status for Resilient create or delete](#get-status).
+Resilient delete automatically retries VM deletions that fail due to transient platform errors, such as _InternalExecutionError_, _TransientFailure_, or _InternalOperationError_. This ensures that VMs are properly removed even when temporary issues occur during the delete operation. To check the status of your VMs throughout the retries, see [Get status for Resilient create or delete](#get-status).
 
 ## Enable Resilient create and delete
 
@@ -136,6 +136,26 @@ During deletion, VMs show a provisioning state of `Deleting`. If a delete attemp
 | In Progress | Resilient delete is actively attempting to delete the VM. |
 | Failed | Resilient delete reached the maximum retry count without successfully deleting the VM. |
 
+#### [CLI](#tab/cli-2)
+```azurecli-interactive
+az vmss list-instances 
+--resiliencyView \
+--resource-group <myResourceGroup> \ 
+--subscription <mySubscriptionId> \ 
+--virtual-machine-scale-set-name <myScaleSet>
+```
+
+```azurecli-interactive
+az vmss get-resiliency-view
+--resource-group <myResourceGroup> \ 
+--name <myScaleSet> \
+--instance <instance name for scale sets of Flexible Orchestration Mode and instance ID for scale sets of Uniform Orchestration Mode>
+```
+
+#### [PowerShell](#tab/powershell-2)
+```azurepowershell-interactive
+Get-AzVmssVM -ResiliencyView -ResourceGroupName <resourceGroupName> -VMScaleSetName <myScaleSetName>
+```
 
 #### [REST](#tab/rest-2)
 
@@ -154,27 +174,6 @@ GET https://management.azure.com/subscriptions/{{subscriptionId}}/resourceGroups
 ```
 
 The following return values of `ResilientVMDeletionStatus` indicate the progress of Resilient delete.
-
-#### [PowerShell](#tab/powershell-2)
-```azurepowershell-interactive
-Get-AzVmssVM -ResiliencyView -ResourceGroupName <resourceGroupName> -VMScaleSetName <myScaleSetName>
-```
-
-#### [CLI](#tab/cli-2)
-```azurecli-interactive
-az vmss list-instances 
---resiliencyView \
---resource-group <myResourceGroup> \ 
---subscription <mySubscriptionId> \ 
---virtual-machine-scale-set-name <myScaleSet>
-```
-
-```azurecli-interactive
-az vmss get-resiliency-view
---resource-group <myResourceGroup> \ 
---name <myScaleSet> \
---instance <instance name for scale sets of Flexible Orchestration Mode and instance ID for scale sets of Uniform Orchestration Mode>
-```
 
 ---
 
