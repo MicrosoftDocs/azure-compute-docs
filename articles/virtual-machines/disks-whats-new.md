@@ -210,7 +210,7 @@ In quarter 1, support for creating disks from snapshots or other disks encrypted
 
 #### GA: Entra ID support for managed disks
 
-In quarter 1, support for using Entra ID to secure uploads and downloads of managed disks was added. For details, see [Secure downloads with Microsoft Entra ID](linux/download-vhd.md#secure-downloads-and-uploads-with-microsoft-entra-id) or [Secure uploads with Microsoft Entra ID](windows/disks-upload-vhd-to-managed-disk-powershell.md#secure-uploads-with-microsoft-entra-id).
+In quarter 1, support for using Entra ID to secure uploads and downloads of managed disks was added. For details, see [Secure downloads and uploads of Azure managed disks](disks-secure-upload-download.md).
 
 ## Next steps
 

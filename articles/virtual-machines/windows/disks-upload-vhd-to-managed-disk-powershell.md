@@ -43,7 +43,7 @@ For guidance on how to copy a managed disk from one region to another, see [Copy
 
 ### (Optional) Grant access to the disk
 
-If Microsoft Entra ID is used to enforce upload restrictions on a subscription or at the account level, [Add-AzVHD](/powershell/module/az.compute/add-azvhd) only succeeds if attempted by a user that has the [appropriate RBAC role or necessary permissions](#assign-rbac-role). You'll need to [assign RBAC permissions](/azure/role-based-access-control/role-assignments-powershell) to grant access to the disk and generate a writeable SAS.
+If Microsoft Entra ID is used to enforce upload restrictions on a subscription or at the account level, [Add-AzVHD](/powershell/module/az.compute/add-azvhd) only succeeds if attempted by a user that has the [appropriate RBAC role or necessary permissions](../disks-secure-upload-download.md#assign-rbac-role). You'll need to [assign RBAC permissions](/azure/role-based-access-control/role-assignments-powershell) to grant access to the disk and generate a writeable SAS.
 
 ```azurepowershell
 New-AzRoleAssignment -SignInName <emailOrUserprincipalname> `

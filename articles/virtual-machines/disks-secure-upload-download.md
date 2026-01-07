@@ -12,7 +12,9 @@ ms.custom: devx-track-azurecli, devx-track-azurepowershell
 
 # Secure downloads and uploads of Azure managed disks
 
-If you're using [Microsoft Entra ID](/azure/active-directory/fundamentals/active-directory-whatis) to control resource access, you can now use it to restrict uploads and downloads of Azure managed disks. This feature is available as a GA offering in all regions. When a user attempts to upload or download a disk, Azure validates the identity of the requesting user in Microsoft Entra ID, and confirms that user has the required permissions. At a higher level, a system administrator could set a policy at the Azure account or subscription level, to ensure that all disks and snapshots must use Microsoft Entra ID for uploads or downloads. If you have any questions on securing uploads or downloads with Microsoft Entra ID, reach out to: azuredisks@microsoft .com
+If you're using [Microsoft Entra ID](/azure/active-directory/fundamentals/active-directory-whatis) to control resource access, you can also use it to restrict uploads and downloads of Azure managed disks. When a user attempts to upload or download a disk, Azure validates the identity of the requesting user in Microsoft Entra ID, and confirms that user has the required permissions. If a user doesn't have the required permissions, they can't upload or download managed disks.
+
+At a higher level, a system administrator could set a policy at the Azure account or subscription level, to ensure that all disks and snapshots must use Microsoft Entra ID for uploads or downloads. If you have any questions on securing uploads or downloads with Microsoft Entra ID, reach out to: azuredisks@microsoft .com
 
 ## Restrictions
 [!INCLUDE [disks-azure-ad-upload-download-restrictions](includes/disks-azure-ad-upload-download-restrictions.md)]
@@ -22,7 +24,7 @@ If you're using [Microsoft Entra ID](/azure/active-directory/fundamentals/active
 
 ### Assign RBAC role
 
-To access managed disks secured with Microsoft Entra ID, the requesting user must have either the [Data Operator for Managed Disks](/azure/role-based-access-control/built-in-roles#data-operator-for-managed-disks) role, or a [custom role](/azure/role-based-access-control/custom-roles-portal) with the following permissions: 
+To access managed disks secured with Microsoft Entra ID, requesting users must have either the [Data Operator for Managed Disks](/azure/role-based-access-control/built-in-roles#data-operator-for-managed-disks) role, or a [custom role](/azure/role-based-access-control/custom-roles-portal) with the following permissions: 
 
 - **Microsoft.Compute/disks/download/action**
 - **Microsoft.Compute/disks/upload/action**
