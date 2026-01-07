@@ -1,13 +1,13 @@
 ---
 title: Automatic Guest Patching for Azure Virtual Machines and Scale Sets
 description: Learn how to automatically patch virtual machines in Azure.
-author: maulikshah23
+author: mathapli
 ms.service: azure-virtual-machines
 ms.subservice: maintenance
 ms.topic: how-to
 ms.date: 07/31/2024
-ms.author: maulikshah
-ms.reviewer: mimckitt
+ms.author: mathapli
+ms.reviewer: kanik
 ms.custom: devx-track-azurepowershell, devx-track-azurecli, linux-related-content
 # Customer intent: "As a cloud administrator, I want to enable automatic guest patching for my Azure virtual machines, so that I can ensure timely application of critical and security updates while minimizing downtime and maintaining compliance."
 ---
@@ -88,11 +88,8 @@ As a new rollout is triggered every month, a VM receives at least one patch roll
 | MicrosoftWindowsServer  | WindowsServer | 2025-datacenter-azure-edition-core |
 | MicrosoftWindowsServer  | WindowsServer | 2025-datacenter-azure-edition-smalldisk |
 | MicrosoftWindowsServer  | WindowsServer | 2025-datacenter-azure-edition-core-smalldisk |
-| MicrosoftWindowsServer  | MicrosoftServerOperatingSystems-previews | windows-server-2025-azure-edition-hotpatch |
 | MicrosoftWindowsServer  | WindowsServer | 2022-datacenter-azure-edition-core-smalldisk |
 | MicrosoftWindowsServer  | WindowsServer | 2022-datacenter-azure-edition-core |
-| MicrosoftWindowsServer  | MicrosoftServerOperatingSystems-previews | windows-server-2022-azure-edition-core-preview |
-| MicrosoftWindowsServer  | WindowsServerHotpatch-previews | windows-server-2022-azure-edition-hotpatch |
 | MicrosoftWindowsServer  | WindowsServer | 2022-datacenter-azure-edition-hotpatch |
 | MicrosoftWindowsServer  | WindowsServer | 2022-datacenter-azure-edition-hotpatch-smalldisk |
 
