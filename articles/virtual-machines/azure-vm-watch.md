@@ -12,7 +12,7 @@ ms.date: 02/18/2025
 
 # VM watch: Enhancing VM health monitoring 
 
-VMWatch, a standardized, lightweight, and open-sourced testing framework designed to enhance the monitoring and management of guest VMs on the Azure platform, including both 1P and 3P instances. VMWatch is engineered to collect vital health signals across multiple dimensions, which will be seamlessly integrated into Azure's quality systems. By leveraging these signals, VMWatch will enable Azure to swiftly detect and prevent regressions induced by platform updates or configuration changes, identify gaps in platform telemetry, and ultimately improve the guest experience for all Azure customers.
+VMWatch, a standardized, lightweight, and open-sourced testing framework designed to enhance the monitoring and management of guest VMs on the Azure platform, including both first-party (1P) and third-party (3P) instances. VMWatch is engineered to collect vital health signals across multiple dimensions, which will be seamlessly integrated into Azure's quality systems. By leveraging these signals, VMWatch will enable Azure to swiftly detect and prevent regressions induced by platform updates or configuration changes, identify gaps in platform telemetry, and ultimately improve the guest experience for all Azure customers.
 
 VM watch is delivered via the [Application Health VM extension](/azure/virtual-machines/extensions/health-extension?tabs=rest-api) to provide ease of deployment and manageability for customers. In addition, VM watch is offered at no extra cost.
 
