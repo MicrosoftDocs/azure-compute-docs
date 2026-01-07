@@ -128,16 +128,20 @@ Get the status of Resilient create and delete for your scale set.
 Your VM shows a state of `Creating` while the retries are in progress.
 
 ### Resilient Delete
-During deletion, VMs show a provisioning state of `Deleting`. If a delete attempt fails, the VM temporarily returns to `Failed` before the next retry. This means you may see VMs alternate between `Deleting` and `Failed` states while Resilient delete continues to retry. **To check the status of your VM during Resilient delete, retrieve the value of the `ResilientVMDeletionStatus` property.**
+During deletion, VMs show a provisioning state of `Deleting`. If a delete attempt fails, the VM temporarily returns to `Failed` before the next retry. This means you may see VMs alternate between `Deleting` and `Failed` states while Resilient delete continues to retry. **To check the status of your VM during Resilient delete, retrieve the value returned by the `ResilientVMDeletionStatus` property.**
 
+The following return values of `ResilientVMDeletionStatus` indicate the progress of Resilient delete.
 | ResilientVMDeletionStatus | State of delete |
 |---------------------------|-----------------|
-| Enabled | Resilient VM deletion policy is enabled on your scale set. |
-| Disabled | Resilient VM deletion policy is not enabled on your scale set. |
 | In Progress | Resilient delete is actively attempting to delete the VM. |
 | Failed | Resilient delete reached the maximum retry count without successfully deleting the VM. |
+| Enabled | Resilient VM deletion policy is enabled on your scale set. |
+| Disabled | Resilient VM deletion policy is not enabled on your scale set. |
 
 #### [CLI](#tab/cli-2)
+Use the Azure CLI to check the resiliency status of your VMs by retrieving the value returned by the `ResilientVMDeletionStatus` property. You can view the status for all VMs in a scale set or query a specific VM instance.
+
+**View resiliency status for all VMs in a scale set:**
 ```azurecli-interactive
 az vmss list-instances 
 --resiliencyView \
@@ -146,35 +150,37 @@ az vmss list-instances
 --virtual-machine-scale-set-name <myScaleSet>
 ```
 
+**View resiliency status for a specific VM:**
 ```azurecli-interactive
 az vmss get-resiliency-view
 --resource-group <myResourceGroup> \ 
 --name <myScaleSet> \
---instance <instance name for scale sets of Flexible Orchestration Mode and instance ID for scale sets of Uniform Orchestration Mode>
+--instance <instance-name-or-id>
 ```
+_Note: Use instance name for Flexible orchestration and instance ID for Uniform orchestration._
 
 #### [PowerShell](#tab/powershell-2)
+Use Azure Powershell to check the resiliency status of your VMs by retrieving the value returned by the `ResilientVMDeletionStatus` property. 
+
 ```azurepowershell-interactive
-Get-AzVmssVM -ResiliencyView -ResourceGroupName <resourceGroupName> -VMScaleSetName <myScaleSetName>
+Get-AzVmssVM -ResiliencyView -ResourceGroupName <resourceGroupName> -VMScaleSetName <myScaleSetName> -InstanceId <ID>
 ```
 
 #### [REST](#tab/rest-2)
 
-There are two endpoints available:
+Use the REST API to check the resiliency status of your VMs by retrieving the value returned by the `ResilientVMDeletionStatus` property. 
 
-The following endpoint supports Virtual Machine Scale Sets with Uniform orchestration and Flexible orchestration.
+**For both Uniform and Flexible orchestration, which queries for a specific VM:**
 
 ```http
 GET https://management.azure.com/subscriptions/{{subscriptionId}}/resourceGroups/{{ResourceGroupName}}/providers/Microsoft.Compute/virtualMachineScaleSets/{{ResourceName}}/VirtualMachines/{{VMName}}?$expand=resiliencyView&api-version=2024-07-01
 ```
 
-The following endpoint supports Virtual Machine Scale Sets with Uniform orchestration only.
+**For Uniform orchestration only, which queries for all VMs in a scale set:**
 
 ```http
 GET https://management.azure.com/subscriptions/{{subscriptionId}}/resourceGroups/{{ResourceGroupName}}/providers/Microsoft.Compute/virtualMachineScaleSets/{{VMSSName}}/virtualMachines?api-version=2024-07-01 
 ```
-
-The following return values of `ResilientVMDeletionStatus` indicate the progress of Resilient delete.
 
 ---
 
