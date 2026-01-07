@@ -110,7 +110,7 @@ When the download finishes, revoke access to your disk using `Revoke-AzDiskAcces
 Replace `yourPathhere` and `sas-URI` with your values, then use the following script to download your VHD:
 
 > [!NOTE]
-> If you're using Microsoft Entra ID to secure your managed disk uploads and downloads, add `--auth-mode login` to `az storage blob download`.
+> If you're using Microsoft Entra ID to [secure your managed disk](../disks-secure-upload-download.md) uploads and downloads, add `--auth-mode login` to `az storage blob download`.
 
 ```azurecli
 

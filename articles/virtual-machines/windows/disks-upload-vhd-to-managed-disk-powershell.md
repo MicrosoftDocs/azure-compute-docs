@@ -56,7 +56,7 @@ New-AzRoleAssignment -SignInName <emailOrUserprincipalname> `
 The following example uploads a VHD from your local machine to a new Azure managed disk using [Add-AzVHD](/powershell/module/az.compute/add-azvhd). Replace `<your-filepath-here>`, `<your-resource-group-name>`,`<desired-region>`, and `<desired-managed-disk-name>` with your parameters:
 
 > [!NOTE]
-> If you're using Microsoft Entra ID to enforce upload restrictions, add `DataAccessAuthMode 'AzureActiveDirectory'` to the end of your `Add-AzVhd` command.
+> If you're using Microsoft Entra ID to [secure disk uploads](../disks-secure-upload-download.md), add `DataAccessAuthMode 'AzureActiveDirectory'` to the end of your `Add-AzVhd` command.
 
 ```azurepowershell
 # Required parameters
@@ -104,7 +104,7 @@ Replace `<yourdiskname>`, `<yourresourcegroupname>`, and `<yourregion>` then run
 > [!IMPORTANT]
 > If you're creating an OS disk, add `-HyperVGeneration '<yourGeneration>'` to `New-AzDiskConfig`.
 > 
-> If you're using Microsoft Entra ID to secure your uploads, add `-dataAccessAuthMode 'AzureActiveDirectory'` to `New-AzDiskConfig`.  
+> If you're using Microsoft Entra ID to [secure disk uploads](../disks-secure-upload-download.md), add `-dataAccessAuthMode 'AzureActiveDirectory'` to `New-AzDiskConfig`.  
 > When uploading to an Ultra Disk or Premium SSD v2 you need to select the correct sector size of the target disk. If you're using a VHD file with a 512 logical sector size, the target disk must be set to 512. If you're using a VHDX file with a 4k logical sector size, the target disk must be set to 4k, and target disk size must match VHDX file size. Note that uploading a VHDX file will result in a size expansion to the next 256 MiB alignment.
 >
 > VHDX files with logical sector size of 512 aren't supported.
