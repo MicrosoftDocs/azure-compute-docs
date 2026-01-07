@@ -23,11 +23,11 @@ It specifically addresses:
 - `OSProvisioningTimedOut`
 - `VMStartTimedOut` 
 
-When enabled, Resilient create will automatically retry provisioning until the operation succeeds or reaches the maximum retry duration. VMs that cannot be provisioned after all retry attempts remain in a failed state for investigation.
+When enabled, Resilient create automatically retries provisioning until the operation succeeds or reaches the maximum retry duration. VMs that can't be provisioned after all retry attempts remain in a failed state for investigation.
 
 ## Resilient delete
 
-Resilient delete automatically retries VM deletions that fail during scale set deletion or scale-in operations. It addresses all transient platform errors, such as `InternalExecutionError`, `TransientFailure`, or `InternalOperationError`. This ensures that VMs are properly removed even when temporary issues occur during the delete operation. To check the status of your VMs throughout the retries, see [Get status for Resilient create or delete](#get-status).
+Resilient delete automatically retries VM deletions that fail during scale set deletion or scale-in operations. It addresses all transient platform errors, such as `InternalExecutionError`, `TransientFailure`, or `InternalOperationError`. This automated cleanup ensures that VMs are properly removed even when temporary issues occur during the delete operation. To check the status of your VMs throughout the retries, see [Get status for Resilient create or delete](#get-status).
 
 ## Enable Resilient create and delete
 
@@ -137,7 +137,7 @@ The following return values of `ResilientVMDeletionStatus` indicate the progress
 | In Progress | Resilient delete is actively attempting to delete the VM. |
 | Failed | Resilient delete reached the maximum retry count without successfully deleting the VM. |
 | Enabled | Resilient VM deletion policy is enabled on your scale set. |
-| Disabled | Resilient VM deletion policy is not enabled on your scale set. |
+| Disabled | Resilient VM deletion policy isn't enabled on your scale set. |
 
 #### [CLI](#tab/cli-2)
 Use the Azure CLI to check the resiliency status of your VMs by retrieving the value returned by the `ResilientVMDeletionStatus` property. You can view the status for all VMs in a scale set or query a specific VM instance.
@@ -161,7 +161,7 @@ az vmss get-resiliency-view
 _Note: Use instance name for Flexible orchestration mode and instance ID for Uniform orchestration mode._
 
 #### [PowerShell](#tab/powershell-2)
-Use Azure Powershell to check the resiliency status of your VMs by retrieving the value returned by the `ResilientVMDeletionStatus` property. 
+Use PowerShell to check the resiliency status of your VMs by retrieving the value returned by the `ResilientVMDeletionStatus` property. 
 
 ```azurepowershell-interactive
 Get-AzVmssVM -ResiliencyView -ResourceGroupName <resourceGroupName> -VMScaleSetName <myScaleSetName> -InstanceId <instance-name-or-id>
@@ -192,16 +192,16 @@ GET https://management.azure.com/subscriptions/{{subscriptionId}}/resourceGroups
 Use API version `2023-07-01`.
 
 ### Can I disable Resilient create or delete after enabling it?
-Yes, you can disable Resilient create or delete at any time by updating the resiliency policy on your scale set. However, any in-progress retries will complete before the policy change takes effect.
+Yes, you can disable Resilient create or delete at any time by updating the resiliency policy on your scale set. However, any in-progress retries are completed before the policy change takes effect.
 
 ### Can I configure the retry count or timeout values?
-No, the retry behavior is predefined and cannot be customized.
+No, the retry behavior is predefined and can't be customized.
 
 ### Why is my VM stuck in 'Creating' state for a long time?
 Resilient create can take up to 30 minutes to complete all retry attempts. If your VM remains in 'Creating' state, Resilient create is still attempting to provision it. After 30 minutes, if unsuccessful, the VM will move to a 'Failed' state.
 
 ### Why does my VM show a 'Failed' state even though Resilient delete is enabled?
-When a delete attempt fails, the VM temporarily returns to a 'Failed' state before the next retry begins. This is expected behavior. Resilient delete makes up to five retry attempts, so you may see the VM alternate between 'Deleting' and 'Failed' states during this process. To check if Resilient delete is still actively retrying, see [Get status for Resilient create or delete](#get-status-of-retries).
+When a delete attempt fails, the VM temporarily returns to a 'Failed' state before the next retry begins. This behavior is expected. Resilient delete makes up to five retry attempts, so you may see the VM alternate between 'Deleting' and 'Failed' states during this process. To check if Resilient delete is still actively retrying, see [Get status for Resilient create or delete](#get-status-of-retries).
 
 ### Does Resilient create work when I attach a new virtual machine to my scale set? 
 No, Resilient create operates during a scale-out of a scale set or when you create a new scale set. 
