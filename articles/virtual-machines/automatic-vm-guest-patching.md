@@ -88,11 +88,8 @@ As a new rollout is triggered every month, a VM receives at least one patch roll
 | MicrosoftWindowsServer  | WindowsServer | 2025-datacenter-azure-edition-core |
 | MicrosoftWindowsServer  | WindowsServer | 2025-datacenter-azure-edition-smalldisk |
 | MicrosoftWindowsServer  | WindowsServer | 2025-datacenter-azure-edition-core-smalldisk |
-| MicrosoftWindowsServer  | MicrosoftServerOperatingSystems-previews | windows-server-2025-azure-edition-hotpatch |
 | MicrosoftWindowsServer  | WindowsServer | 2022-datacenter-azure-edition-core-smalldisk |
 | MicrosoftWindowsServer  | WindowsServer | 2022-datacenter-azure-edition-core |
-| MicrosoftWindowsServer  | MicrosoftServerOperatingSystems-previews | windows-server-2022-azure-edition-core-preview |
-| MicrosoftWindowsServer  | WindowsServerHotpatch-previews | windows-server-2022-azure-edition-hotpatch |
 | MicrosoftWindowsServer  | WindowsServer | 2022-datacenter-azure-edition-hotpatch |
 | MicrosoftWindowsServer  | WindowsServer | 2022-datacenter-azure-edition-hotpatch-smalldisk |
 
