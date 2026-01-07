@@ -25,7 +25,7 @@ This article assumes that you're familiar with:
 > | **Name**  | **Description** |
 > |---|---|
 > | **Plugin Name** | Logical grouping of similar tests where you can collect checks, metrics, and logs to determine the health of a particular resource |
-> | **Description** | a Short Description about the Plugin |
+> | **Description** | a short description about the Plugin |
 > | **Group** | Indicates whether the collectors are part of the core or optional group. Core group collectors are enabled by default, while optional group collectors can be enabled or disabled based on your requirements |
 > | **Tags** | Used to categorize and filter checks, metrics, and logs |
 > | **Eligibility** | Determines whether a collector is eligible to be executed based on the environment attributes you specify |
