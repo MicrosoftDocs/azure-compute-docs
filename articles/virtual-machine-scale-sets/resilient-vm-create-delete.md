@@ -27,7 +27,7 @@ When enabled, Resilient create will automatically retry provisioning until the o
 
 ## Resilient delete
 
-Resilient delete automatically retries VM deletions that fail due to transient platform errors, such as `InternalExecutionError`, `TransientFailure`, or `InternalOperationError`. This ensures that VMs are properly removed even when temporary issues occur during the delete operation. To check the status of your VMs throughout the retries, see [Get status for Resilient create or delete](#get-status).
+Resilient delete automatically retries VM deletions that fail during scale set deletion or scale-in operations. It addresses all transient platform errors, such as `InternalExecutionError`, `TransientFailure`, or `InternalOperationError`. This ensures that VMs are properly removed even when temporary issues occur during the delete operation. To check the status of your VMs throughout the retries, see [Get status for Resilient create or delete](#get-status).
 
 ## Enable Resilient create and delete
 
@@ -131,6 +131,7 @@ Your VM shows a state of `Creating` while the retries are in progress.
 During deletion, VMs show a provisioning state of `Deleting`. If a delete attempt fails, the VM temporarily returns to `Failed` before the next retry. This means you may see VMs alternate between `Deleting` and `Failed` states while Resilient delete continues to retry. **To check the status of your VM during Resilient delete, retrieve the value returned by the `ResilientVMDeletionStatus` property.**
 
 The following return values of `ResilientVMDeletionStatus` indicate the progress of Resilient delete.
+
 | ResilientVMDeletionStatus | State of delete |
 |---------------------------|-----------------|
 | In Progress | Resilient delete is actively attempting to delete the VM. |
@@ -157,14 +158,15 @@ az vmss get-resiliency-view
 --name <myScaleSet> \
 --instance <instance-name-or-id>
 ```
-_Note: Use instance name for Flexible orchestration and instance ID for Uniform orchestration._
+_Note: Use instance name for Flexible orchestration mode and instance ID for Uniform orchestration mode._
 
 #### [PowerShell](#tab/powershell-2)
 Use Azure Powershell to check the resiliency status of your VMs by retrieving the value returned by the `ResilientVMDeletionStatus` property. 
 
 ```azurepowershell-interactive
-Get-AzVmssVM -ResiliencyView -ResourceGroupName <resourceGroupName> -VMScaleSetName <myScaleSetName> -InstanceId <ID>
+Get-AzVmssVM -ResiliencyView -ResourceGroupName <resourceGroupName> -VMScaleSetName <myScaleSetName> -InstanceId <instance-name-or-id>
 ```
+_Note: Use instance name for Flexible orchestration mode and instance ID for Uniform orchestration mode._
 
 #### [REST](#tab/rest-2)
 
