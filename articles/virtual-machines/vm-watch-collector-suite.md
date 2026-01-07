@@ -12,7 +12,7 @@ ms.subservice: monitoring
 
 # VMwatch Plugin Collections 
 
-VMWatch is implemented with an Infra-Plugin model for functional scalability. VMWatch Infra is reponsible for the scheduling of each Plugin's execution, and each Plugin is targeted to measure the VM health of a spefic area and emit the VM health Signals (Check, Metric, Eventlog). Below is a summary of all the available Plugins in VMWatch, the Signals they emit and their parameter configurations.
+VMWatch is implemented with an Infra-Plugin model for functional scalability. VMWatch Infra is reponsible for the scheduling of each Plugin's execution, and each Plugin is targeted to measure the VM health of a specific area and emit the VM health Signals (Check, Metric, Eventlog). Below is a summary of all the available Plugins in VMWatch, the Signals they emit and their parameter configurations.
 
 This article provides a summary of all available collectors in VM watch, along with the corresponding checks, metrics, logs, and parameter configurations. For detailed descriptions of each check, metric, and log, refer to the [VM watch overview](/azure/virtual-machines/azure-vm-watch) page.
 
