@@ -36,7 +36,7 @@ To maintain consistent performance across different virtual machine (VM) configu
 
 ### VMWatch Signal Categories
 
-VMWatch measures VM health by emitting Signals in different categories, including Network, Disk, CPU, Process, IMDS, Clock, AzBlob, Hardware.
+VMWatch measures VM health by emitting signals in different categories, including Network, Disk, CPU, Process, IMDS, Clock, AzBlob, Hardware.
 
 ### Network
 
