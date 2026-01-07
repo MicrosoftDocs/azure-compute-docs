@@ -99,7 +99,7 @@ az disk grant-access --duration-in-seconds 86400 --access-level Read --name your
 ## Download VHD
 
 > [!NOTE]
-> If you're using Microsoft Entra ID to secure managed disk downloads, the user downloading the VHD must have the appropriate [RBAC permissions](#assign-rbac-role).
+> If you're using Microsoft Entra ID to secure managed disk downloads, the user downloading the VHD needs the appropriate [RBAC permissions](../disks-secure-upload-download.md#assign-rbac-role).
 
 # [Portal](#tab/azure-portal)
 
