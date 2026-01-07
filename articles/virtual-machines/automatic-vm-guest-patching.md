@@ -1,13 +1,13 @@
 ---
 title: Automatic Guest Patching for Azure Virtual Machines and Scale Sets
 description: Learn how to automatically patch virtual machines in Azure.
-author: maulikshah23
+author: kamalmaini
 ms.service: azure-virtual-machines
 ms.subservice: maintenance
 ms.topic: how-to
 ms.date: 07/31/2024
-ms.author: maulikshah
-ms.reviewer: mimckitt
+ms.author: kamalmaini
+ms.reviewer: kanik
 ms.custom: devx-track-azurepowershell, devx-track-azurecli, linux-related-content
 # Customer intent: "As a cloud administrator, I want to enable automatic guest patching for my Azure virtual machines, so that I can ensure timely application of critical and security updates while minimizing downtime and maintaining compliance."
 ---
