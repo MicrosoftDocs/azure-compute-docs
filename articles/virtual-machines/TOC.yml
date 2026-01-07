@@ -1758,6 +1758,8 @@
     items:
     - name: Options for restricting access
       href: disks-restrict-import-export-overview.md
+    - name: Restrict uploading and downloading of your disks
+      href: disks-secure-upload-download.md
     - name: Configure private links for disks - CLI
       href: ./linux/disks-export-import-private-links-cli.md
     - name: Configure private links for disks - Portal
