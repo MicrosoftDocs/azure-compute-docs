@@ -20,14 +20,14 @@ Resilient create and delete for Virtual Machine Scale Sets reduces Virtual Machi
 Resilient create automatically retries VM provisioning failures during scale set creation or scale-out operations.
 
 It specifically addresses:
-- OS Provisioning Timeout
-- VM Start Timeout 
+- `OSProvisioningTimedOut`
+- `VMStartTimedOut` 
 
 When enabled, Resilient create will automatically retry provisioning until the operation succeeds or reaches the maximum retry duration. VMs that cannot be provisioned after all retry attempts remain in a failed state for investigation.
 
 ## Resilient delete
 
-Resilient delete automatically retries VM deletions that fail due to transient platform errors, such as _InternalExecutionError_, _TransientFailure_, or _InternalOperationError_. This ensures that VMs are properly removed even when temporary issues occur during the delete operation. To check the status of your VMs throughout the retries, see [Get status for Resilient create or delete](#get-status).
+Resilient delete automatically retries VM deletions that fail due to transient platform errors, such as `InternalExecutionError`, `TransientFailure`, or `InternalOperationError`. This ensures that VMs are properly removed even when temporary issues occur during the delete operation. To check the status of your VMs throughout the retries, see [Get status for Resilient create or delete](#get-status).
 
 ## Enable Resilient create and delete
 
@@ -129,6 +129,7 @@ Your VM shows a state of `Creating` while the retries are in progress.
 
 ### Resilient Delete
 During deletion, VMs show a provisioning state of `Deleting`. If a delete attempt fails, the VM temporarily returns to `Failed` before the next retry. This means you may see VMs alternate between `Deleting` and `Failed` states while Resilient delete continues to retry. **To check the status of your VM during Resilient delete, retrieve the value of the `ResilientVMDeletionStatus` property.**
+
 | ResilientVMDeletionStatus | State of delete |
 |---------------------------|-----------------|
 | Enabled | Resilient VM deletion policy is enabled on your scale set. |
