@@ -23,7 +23,7 @@ Confirm these prerequisites before you create an instance mix enabled scale set:
 - Choose a region that supports the VM sizes you want to include.
 
 > [!TIP]
-> Instance Mix can utilize multiple VM sizes and chipsets. When using Instance Mix across several subscriptions, [Azure Quota Groups](/azure/quotas/quota-groups-overview) make it easier for workloads to scale because quota is unified. Instance Mix respects your quota across all eligible SKUs, and Quota Groups simplify management by consolidating quota allocation across subscriptions.
+> Instance Mix can utilize multiple VM sizes and chipsets. When using Instance Mix across several subscriptions, [Azure Quota Groups](/azure/quotas/quota-groups) make it easier for workloads to scale because quota is unified. Instance Mix respects your quota across all eligible stock keeping units (SKUs), and Quota Groups simplify management by consolidating quota allocation across subscriptions.
 - (CLI users) Azure CLI 2.66.0 or later is recommended. For PowerShell, use the latest `Az.Compute` module.
 
 

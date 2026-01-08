@@ -24,7 +24,7 @@ Instance mix lets you specify multiple Virtual Machine (VM) sizes in a Virtual M
 - Consistent VM characteristics across selected sizes: architecture (x64/Arm64), storage interface, local disk configuration, and security profile.
 
 > [!TIP]
-> Instance Mix can utilize multiple VM sizes and chipsets. When using Instance Mix across several subscriptions, [Azure Quota Groups](/azure/quotas/quota-groups-overview) make it easier for workloads to scale because quota is unified. Instance Mix respects your quota across all eligible SKUs, and Quota Groups simplify management by consolidating quota allocation across subscriptions.
+> Instance Mix can utilize multiple VM sizes and chipsets. When using Instance Mix across several subscriptions, [Azure Quota Groups](/azure/quotas/quota-groups) make it easier for workloads to scale because quota is unified. Instance Mix respects your quota across all eligible stock keeping units (SKUs), and Quota Groups simplify management by consolidating quota allocation across subscriptions.
 
 ## When to use instance mix
 
@@ -97,7 +97,7 @@ Before you deploy an instance mix scale set:
 - Ensure all selected VM sizes have consistent architecture, storage interface, local disk configuration, and security profile.
 
 > [!TIP]
-> When deploying Instance Mix across multiple subscriptions, [Azure Quota Groups](/azure/quotas/quota-groups-overview) simplify quota management by unifying quota allocation. This makes it easier for workloads to scale since Instance Mix can utilize multiple VM sizes and chipsets while respecting your quota across all eligible SKUs.
+> When deploying Instance Mix across multiple subscriptions, [Azure Quota Groups](/azure/quotas/quota-groups) simplify quota management by unifying quota allocation. This makes it easier for workloads to scale since Instance Mix can utilize multiple VM sizes and chipsets while respecting your quota across all eligible SKUs.
 - Choose an allocation strategy that matches your goals (cost, availability, predictability).
 - For REST API deployments, ensure a virtual network exists in the target resource group.
 
