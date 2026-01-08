@@ -25,6 +25,9 @@ All public Azure regions support instance mix.
 ### Will instance mix request quota for me?
 No, you must have quota for the VMs you specify in the `skuProfile`. If you don't have quota for a given VM size, we'll try using another VM size specified that does have quota.
 
+> [!TIP]
+> Instance Mix can utilize multiple VM sizes and chipsets. When using Instance Mix across several subscriptions, [Azure Quota Groups](/azure/quotas/quota-groups-overview) make it easier for workloads to scale because quota is unified. Instance Mix respects your quota across all eligible SKUs, and Quota Groups simplify management by consolidating quota allocation across subscriptions.
+
 ### I updated my scale set to use instance mix, why aren't my VMs aligning to my allocation strategy?
 After updating your scale set to use instance mix, all scale in or scale out actions use the inputs from instance mix to determine which VMs to scale in and out. 
 
