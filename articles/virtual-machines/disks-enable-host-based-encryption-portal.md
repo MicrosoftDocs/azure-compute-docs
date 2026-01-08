@@ -4,7 +4,6 @@ description: Use encryption at host to enable end-to-end encryption on your Azur
 author: roygara
 ms.service: azure-disk-storage
 ms.topic: how-to
-ms.update-cycle: 180-days
 ms.date: 10/22/2024
 ms.author: rogarana
 ms.custom:
