@@ -4,7 +4,7 @@ description: Learn about VM isolation works in Azure.
 author: mimckitt
 ms.service: azure-virtual-machines
 ms.topic: concept-article
-ms.date: 12/09/2025
+ms.date: 01/06/2025
 ms.author: briannali
 ms.reviewer: mattmcinnes
 # Customer intent: "As a cloud architect, I want to understand how VM isolation works in Azure, so that I can effectively design secure and efficient cloud infrastructure for my organization."
@@ -43,16 +43,16 @@ Isolated VM sizes have a hardware limited lifespan. Azure issues reminders 12 mo
 
 | Size | Retirement Announcement | Isolation Retirement Date | Migration Guide |
 | --- | --- | --- | --- |
-| Standard_DS15_v2  | [05/15/2020](https://azure.microsoft.com/updates?id=the-d15-v2-ds15-v2-azure-virtual-machines-may-no-longer-be-isolated-starting-february-15-2020) | 05/15/2021 | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide) |
-| Standard_D15_v2   | [05/15/2020](https://azure.microsoft.com/updates?id=the-d15-v2-ds15-v2-azure-virtual-machines-may-no-longer-be-isolated-starting-february-15-2020) | 05/15/2021 | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide) |
-| Standard_G5       | [02/15/2021](https://azure.microsoft.com/updates?id=the-g5-and-gs5-azure-vms-will-no-longer-be-hardwareisolated-on-28-february-2022) | 02/28/2021 | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide) |
-| Standard_GS5      | [02/15/2021](https://azure.microsoft.com/updates?id=the-g5-and-gs5-azure-vms-will-no-longer-be-hardwareisolated-on-28-february-2022) | 02/28/2021 | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide) |
-| Standard_E64i_v3  | [02/15/2021](https://azure.microsoft.com/updates?id=the-e64iv3-e64isv3-azure-vms-will-not-be-hardwareisolated-on-28-february-2022) | 02/28/2021 | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide) |
-| Standard_E64is_v3 | [02/15/2021](https://azure.microsoft.com/updates?id=the-e64iv3-e64isv3-azure-vms-will-not-be-hardwareisolated-on-28-february-2022) | 02/28/2021 | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide) |
-| Standard_M192is_v2| [03/22/2027](https://azure.microsoft.com/updates?id=community-support-for-standardm192isv2-is-ending-on-31-march-2027) | 03/31/2027 | [Migration Guide](./sizes/retirement/msv2-mdsv2-retirement.md) |
-| Standard_M192ims_v2| [03/22/2027](https://azure.microsoft.com/updates?id=community-support-for-standardm192isv2-is-ending-on-31-march-2027) | 03/31/2027 | [Migration Guide](./sizes/retirement/msv2-mdsv2-retirement.md) |
-| Standard_M192ids_v2| [03/22/2027](https://azure.microsoft.com/updates?id=community-support-for-standardm192idsv2-is-ending-on-31-march-2027) | 03/31/2027 | [Migration Guide](./sizes/retirement/msv2-mdsv2-retirement.md) |
-| Standard_M192idms_v2| [03/22/2027](https://azure.microsoft.com/updates?id=support-for-standardm192idmsv2-will-be-retired-on-31-march-2027)| 03/31/2027 | [Migration Guide](./sizes/retirement/msv2-mdsv2-retirement.md) |
+| Standard_DS15_v2  | [11/22/2019](https://azure.microsoft.com/updates?id=the-d15-v2-ds15-v2-azure-virtual-machines-may-no-longer-be-isolated-starting-february-15-2020) | 05/15/2020 | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide) |
+| Standard_D15_v2   | [11/22/2019](https://azure.microsoft.com/updates?id=the-d15-v2-ds15-v2-azure-virtual-machines-may-no-longer-be-isolated-starting-february-15-2020) | 05/15/2020 | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide) |
+| Standard_G5       | [02/22/2021](https://azure.microsoft.com/updates?id=the-g5-and-gs5-azure-vms-will-no-longer-be-hardwareisolated-on-28-february-2022) | 02/28/2022 | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide) |
+| Standard_GS5      | [02/22/2021](https://azure.microsoft.com/updates?id=the-g5-and-gs5-azure-vms-will-no-longer-be-hardwareisolated-on-28-february-2022) | 02/28/2022 | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide) |
+| Standard_E64i_v3  | [02/22/2021](https://azure.microsoft.com/updates?id=the-e64iv3-e64isv3-azure-vms-will-not-be-hardwareisolated-on-28-february-2022) | 02/28/2022 | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide) |
+| Standard_E64is_v3 | [02/22/2021](https://azure.microsoft.com/updates?id=the-e64iv3-e64isv3-azure-vms-will-not-be-hardwareisolated-on-28-february-2022) | 02/28/2022 | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide) |
+| Standard_M192is_v2| [03/22/2024](https://azure.microsoft.com/updates?id=community-support-for-standardm192isv2-is-ending-on-31-march-2027) | 03/31/2027 | [Migration Guide](./sizes/retirement/msv2-mdsv2-retirement.md) |
+| Standard_M192ims_v2| [03/22/2024](https://azure.microsoft.com/updates?id=community-support-for-standardm192isv2-is-ending-on-31-march-2027) | 03/31/2027 | [Migration Guide](./sizes/retirement/msv2-mdsv2-retirement.md) |
+| Standard_M192ids_v2| [03/22/2024](https://azure.microsoft.com/updates?id=community-support-for-standardm192idsv2-is-ending-on-31-march-2027) | 03/31/2027 | [Migration Guide](./sizes/retirement/msv2-mdsv2-retirement.md) |
+| Standard_M192idms_v2| [03/22/2024](https://azure.microsoft.com/updates?id=support-for-standardm192idmsv2-will-be-retired-on-31-march-2027)| 03/31/2027 | [Migration Guide](./sizes/retirement/msv2-mdsv2-retirement.md) |
 
 
 ## FAQ
