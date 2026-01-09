@@ -159,8 +159,8 @@ sections:
           How can I identify and manage disks across controllers in Linux and Windows?
         answer: |     
           > [!NOTE]
-          > For both Linux and Windows, using UUIDs ensures disks are correctly identified and remounted after VM events, upgrades, or controller changes.
-          > If device names change after reboots or disk operations, rely on UUIDs or persistent naming for automation and scripting.
+          > Using UUIDs (Linux) or GUIDs (Windows) ensures disks are correctly identified and remounted after VM events, upgrades, or controller changes.
+          > If device names change after reboots or disk operations, rely on UUIDs/GUIDs or persistent naming for automation and scripting.
 
           ### [Linux](#tab/linux)
           - To view NVMe controllers and attached disks, run:
