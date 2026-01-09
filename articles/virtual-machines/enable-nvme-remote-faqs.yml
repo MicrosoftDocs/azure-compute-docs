@@ -184,7 +184,7 @@ sections:
           ### [Windows](#tab/windows)
           - Open Disk Management (`diskmgmt.msc`) to see all disks and their controller assignments.
           - Or use PowerShell for more details:
-            ```PowerShell
-            Get-PhysicalDisk | Select-Object DeviceID, FriendlyName, SerialNumber, BusType
-            ```
-            This lists all physical disks, including NVMe devices and their properties.      
+          ```PowerShell
+          Get-PhysicalDisk | Select-Object DeviceID, FriendlyName, SerialNumber, BusType
+          ```
+          This lists all physical disks, including NVMe devices and their properties.      
