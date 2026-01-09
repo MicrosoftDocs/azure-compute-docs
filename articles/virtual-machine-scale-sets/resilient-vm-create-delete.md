@@ -25,6 +25,8 @@ It specifically addresses:
 
 When enabled, Resilient create automatically retries provisioning until the operation succeeds or reaches the maximum retry duration. VMs that can't be provisioned after all retry attempts remain in a failed state for investigation.
 
+_Note: This feature deletes the failed VM and launches a new one, so the original VM name and ID changes after each retry._
+
 ## Resilient delete
 
 Resilient delete automatically retries VM deletions that fail during scale set deletion or scale-in operations. It addresses all transient platform errors, such as `InternalExecutionError`, `TransientFailure`, or `InternalOperationError`. This automated cleanup ensures that VMs are properly removed even when temporary issues occur during the delete operation. To check the status of your VMs throughout the retries, see [Get status for Resilient create or delete](#get-status).
