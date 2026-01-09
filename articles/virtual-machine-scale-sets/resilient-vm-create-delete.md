@@ -29,7 +29,7 @@ _Note: This feature deletes the failed VM and launches a new one, so the origina
 
 ## Resilient delete
 
-Resilient delete automatically retries VM deletions that fail during scale set deletion or scale-in operations. It addresses all transient platform errors, such as `InternalExecutionError`, `TransientFailure`, or `InternalOperationError`. This automated cleanup ensures that VMs are properly removed even when temporary issues occur during the delete operation. To check the status of your VMs throughout the retries, see [Get status for Resilient create or delete](#get-status).
+Resilient delete automatically retries VM deletions that fail during scale set deletion or scale-in operations. It addresses all transient platform errors, such as `InternalExecutionError`, `TransientFailure`, or `InternalOperationError`. This automated cleanup ensures that VMs are properly removed even when temporary issues occur during the delete operation. To check the status of your VMs throughout the retries, see [Get status for Resilient create or delete](#get-status-of-retries).
 
 ## Enable Resilient create and delete
 
