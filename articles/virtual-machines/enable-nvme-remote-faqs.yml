@@ -158,6 +158,10 @@ sections:
       - question: |
           How can I identify and manage disks across controllers in Linux and Windows?
         answer: |     
+          > [!NOTE]
+          > For both Linux and Windows, using UUIDs ensures disks are correctly identified and remounted after VM events, upgrades, or controller changes.
+          > If device names change after reboots or disk operations, rely on UUIDs or persistent naming for automation and scripting.
+
           ### [Linux](#tab/linux)
           - To view NVMe controllers and attached disks, run:
           ```bash
@@ -179,12 +183,8 @@ sections:
           
           ### [Windows](#tab/windows)
           - Open Disk Management (`diskmgmt.msc`) to see all disks and their controller assignments.
-          - Use PowerShell for more details:
+          - Or use PowerShell for more details:
             ```PowerShell
             Get-PhysicalDisk | Select-Object DeviceID, FriendlyName, SerialNumber, BusType
             ```
             This lists all physical disks, including NVMe devices and their properties.      
-
-          > [!NOTE]
-          > For both Linux and Windows, using UUIDs ensures disks are correctly identified and remounted after VM events, upgrades, or controller changes.
-          > If device names change after reboots or disk operations, rely on UUIDs or persistent naming for automation and scripting.
