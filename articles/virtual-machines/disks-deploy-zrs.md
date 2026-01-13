@@ -12,6 +12,7 @@ ms.custom:
   - devx-track-azurepowershell
   - devx-track-azurecli
   - sfi-ropc-nochange
+  - portal
 # Customer intent: "As a cloud administrator, I want to deploy zone-redundant storage (ZRS) managed disks for my virtual machines, so that I can ensure high availability and resilience for my applications across multiple availability zones."
 ---
 
