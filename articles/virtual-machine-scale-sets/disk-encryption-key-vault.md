@@ -7,8 +7,9 @@ ms.topic: tutorial
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: disks
 ms.date: 09/23/2025
+ms.update-cycle: 180-days
 ms.reviewer: mimckitt
-ms.custom: mimckitt, devx-track-azurecli, devx-track-azurepowershell
+ms.custom: mimckitt, devx-track-azurecli, devx-track-azurepowershell, portal
 ms.devlang: azurecli
 # Customer intent: "As an IT administrator, I want to create and configure a key vault for Azure Disk Encryption, so that I can securely manage disk encryption keys and enhance the security of my virtual machines."
 ---
