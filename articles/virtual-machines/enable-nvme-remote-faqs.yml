@@ -1,7 +1,7 @@
 ### YamlMime:FAQ
 metadata:
   title: NVMe - Remote NVMe Disks FAQ
-  ms.date: 12/22/2025
+  ms.date: 1/09/2026
   description: Get answers to common questions about working with remote NVMe disks on virtual machines.
   ms.service: azure-virtual-machines
   ms.topic: faq
@@ -142,3 +142,49 @@ sections:
           Can a data disk be detached from a SCSI-based VM and then attached to an NVMe-based VM?
         answer: |
           Yes. A data disk can be detached from a SCSI-based VM and attached to an NVMe-based VM. Once attached, the disk type will automatically convert to NVMe.
+
+      - question: |
+          Will all my VM’s disks be attached to one NVMe controller, or are they distributed across multiple controllers?
+        answer: |
+          Older Azure VM types (such as Ebsv6) attach all disks to a single NVMe controller. Select newer VM sizes (V7 and above, running on Intel and ARM hardware) automatically distribute disks across multiple controllers and separate cached disks (including the OS disk) and uncached data disks for improved performance and reliability.
+
+      - question: |
+          How are disks assigned to controllers, and what should I know about disk management?
+        answer: |
+          Boot and cached data disks are assigned to the cached controller and uncached data disks go to the uncached controller. Controller assignment is automatic based on disk caching policy selected in the VM settings.
+          
+          If you need to change the caching policy of a disk, it is recommended to stop the VM, change the caching policy, and then start the VM again for stable operation. This helps avoid inconsistent states or remapping issues. OS disk caching changes are non-functional and will be disabled in future updates.
+
+      - question: |
+          How can I identify and manage disks across controllers in Linux and Windows?
+        answer: |     
+          > [!NOTE]
+          > Using UUIDs (Linux) or GUIDs (Windows) ensures disks are correctly identified and remounted after VM events, upgrades, or controller changes.
+          > If device names change after reboots or disk operations, rely on UUIDs/GUIDs or persistent naming for automation and scripting.
+
+          ### [Linux](#tab/linux)
+          - To view NVMe controllers and attached disks, run:
+          ```bash
+          lsblk -o NAME,MODEL,SIZE,TYPE,MOUNTPOINT
+          ```
+          This lists all block devices, showing which disks (e.g., nvme0n1, nvme1n1) are attached to which controllers. Cached disks (including the OS disk) typically appear under `nvme0`, while uncached data disks show up under `nvme1`.      
+          
+          - For detailed NVMe info, run:
+          ```bash
+          nvme list
+          ```
+          This displays all NVMe devices, their controller IDs, namespaces, and serial numbers.
+          
+          - For persistent disk identification, use:
+          ```bash
+          blkid
+          ```
+          This shows the UUID for each disk, which can be used for reliable remounting after VM events.
+          
+          ### [Windows](#tab/windows)
+          - Open Disk Management (`diskmgmt.msc`) to see all disks and their controller assignments.
+          - Or use PowerShell for more details:
+          ```PowerShell
+          Get-PhysicalDisk | Select-Object DeviceID, FriendlyName, SerialNumber, BusType
+          ```
+          This lists all physical disks, including NVMe devices and their properties.      
