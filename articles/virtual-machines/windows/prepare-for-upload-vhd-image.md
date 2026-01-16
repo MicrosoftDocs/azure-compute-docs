@@ -313,6 +313,10 @@ Make sure the VM is healthy, secure, and RDP accessible:
 
    exit
    ```
+> [!NOTE]
+> In order to be able to use Special Administration Console (SAC) at serial console and being able to troubleshoot OS issues as stated [here](https://learn.microsoft.com/en-us/troubleshoot/azure/virtual-machines/windows/serial-console-cmd-ps-commands), for example, the `Special Administration Console Helper (sacsvr)` service has to be running.
+> - At windows Server Edition the service's startup configuration has to be changed to `Automatic`.
+> - At Windows Client Edition, first, it's required to install the SAC feature by running the command `Add-WindowsCapability -Online -Name "Windows.Desktop.EMS-SAC.Tools~~~~0.0.1.0"` and then set the service startup as automatic.
 
 1. The dump log can be helpful in troubleshooting Windows crash issues. Enable the dump log
    collection:
