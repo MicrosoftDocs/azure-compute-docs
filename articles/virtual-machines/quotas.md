@@ -5,7 +5,7 @@ author: cynthn
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: how-to
-ms.date: 02/15/2023
+ms.date: 01/16/2026
 ms.author: cynthn
 # Customer intent: "As a cloud infrastructure administrator, I want to monitor my vCPU quotas for virtual machines, so that I can ensure successful deployments without exceeding resource limits."
 ---
@@ -28,7 +28,7 @@ The vCPU quotas for virtual machines and scale sets are arranged in two tiers fo
 You can check your quota usage using [az vm list-usage](/cli/azure/vm).
 
 ```azurecli-interactive
-az vm list-usage --location "East US" -o table
+az vm list-usage --location "Central US" -o table
 ```
 
 The output should look something like this:
