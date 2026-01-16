@@ -112,9 +112,10 @@ Key Features:
 
 ### Storage Migration Considerations
 - **Map EBS volumes to Azure Managed Disk tiers**:
-  - `gp3` → Standard SSD
-  - `io1`/`io2` → Premium SSD
-  - `st1`/`sc1` → Standard HDD
+  - `gp2/gp3` → Standard SSD  
+  - `gp2` → Premium SSD
+  - `gp3` → Premium SSD v2  
+  - `io2` → Ultra Disk Storage  
 - Validate IOPS and throughput requirements; Azure Premium SSD and Ultra Disk support high-performance workloads.
 - Plan for encryption compliance: Use Azure Disk Encryption and Key Vault for sensitive data.
 - For object storage migration, map S3 buckets to Azure Blob Storage using **AzCopy** or **Azure Storage Migration tools**.
@@ -208,6 +209,48 @@ High availability and resiliency strategies differ between AWS EC2 and Azure Vir
 - Use **VMSS with autoscaling policies** for elasticity.
 - Enable **zone-redundant storage** for critical data.
 - Integrate **Azure Monitor** for health checks and alerting.
+
+## Scaling and Placement
+
+AWS and Azure use different constructs for scaling and placement. Understanding these differences ensures elasticity and fault isolation during migration.
+
+### AWS Approach
+- **Auto Scaling Groups (ASG):**  
+  Automatically adjust EC2 instance count based on demand using **Launch Templates**, which define instance configuration and lifecycle (including NICs and disks).
+- **Partition Placement Groups:**  
+  Spread EC2 instances across multiple partitions for resiliency and low-latency workloads.
+
+### Azure Approach
+- **Virtual Machine Scale Sets (VMSS):**  
+  Native orchestration for horizontal scaling, integrated with Azure Load Balancer or Application Gateway.
+- **VM Profiles:**  
+  Define VM configuration and support **deep deletion** for resource cleanup.
+- **Fault Domains and Availability Sets:**  
+  Provide rack-level isolation similar to AWS partitioning. For dedicated hardware, use **Azure Dedicated Hosts (ADH)**.
+
+---
+
+### Key Differences
+
+| Feature                  | AWS EC2                          | Azure VMs                                  |
+|-------------------------|---------------------------------|-------------------------------------------|
+| Scaling Construct       | Auto Scaling Groups (ASG)      | VM Scale Sets (VMSS) + AutoScaling       |
+| Instance Configuration  | Launch Template                | VM Profile + deep deletion               |
+| Placement Strategy      | Partition Placement Groups     | Fault Domains + Availability Sets + ADH  |
+
+---
+
+### Migration Considerations
+- **Map Scaling Strategy:**  
+  ASG → VMSS for automated elasticity.
+- **Convert Configuration Templates:**  
+  Launch Template → VM Profile for consistent deployments.
+- **Placement Alignment:**  
+  Partition Placement Groups → Fault Domains and Availability Sets; consider ADH for compliance.
+- **Best Practices:**  
+  - Apply autoscaling policies in VMSS to replicate elasticity.  
+  - Distribute VMSS instances across zones for resiliency.  
+  - Combine Availability Sets and Fault Domains for rack-level protection.
 
 
 ### Related Resources
