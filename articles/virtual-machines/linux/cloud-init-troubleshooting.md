@@ -65,7 +65,7 @@ Cloud-init can accept `customData` that is passed to it, when the VM is created.
 - Scripts inside customData fail or hang
 - Override something cloud‑init relies on (for example, disk setup or networking)
 - The data contains unsupported characters or encoding problems
-Try to provisioning the VM without passing in any configuration. If the VM fails to provision, follow the recommended troubleshooting steps. If the configuration isn't applied, refer [step 4](#step4).
+Try to provisioning the VM without passing in any configuration. If the VM fails to provision, follow the recommended troubleshooting steps. If the configuration isn't applied, refer to [step 4](#step4).
 
 ### <a id="step2"></a> Step 2: Review image requirements
 
