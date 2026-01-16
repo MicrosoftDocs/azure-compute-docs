@@ -4,7 +4,7 @@ description: Troubleshoot provisioning an Azure VM using cloud-init.
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.topic: troubleshooting
-ms.date: 03/29/2023
+ms.date: 12/15/2025
 ms.author: mattmcinnes
 ms.reviewer: cynthn
 ms.subservice: cloud-init
@@ -40,15 +40,15 @@ Cloud-init emits structured errors when reporting failure to Azure during provis
 | Reason | Description | Action |
 |:---|:---|:---|
 | failure to find DHCP interface | No network interface was found. | Delete and re-create VM. If issue persists, ensure networking drivers or Azure-specific kernel is installed and check boot diagnostics to verify eth0 is enumerated. |
-| failure to obtain DHCP lease | DHCP service fails to respond due to transient platform issue. | Delete and re-create VM. |
+| failure to obtain DHCP lease | DHCP service fails to respond due to transient platform issue. | Redeploy the VM (delete + recreate) due to a transient Azure DHCP platform issue.  |
 | failure to find primary DHCP interface | Primary DHCP interface wasn't found. | Check boot diagnostics to ensure primary network interface is named `eth0` and it isn't renamed. |
 | connection timeout querying IMDS | Connections to IMDS may timeout due to transient platform issue, NSG, or OS firewall configuration. | Delete and re-create VM. If issue persists, validate that NSG or OS firewall isn't preventing access to IMDS.  |
 | read timeout querying IMDS | Connections to IMDS may timeout due to transient platform issue or OS firewall configuration. | Delete and re-create VM. If issue persists, validate OS firewall isn't preventing access to IMDS. |
-| unexpected metadata parsing ovf-env.xml | Malformed VM metadata in `ovf-env.xml`. | Submit the issue to the cloud-init tracker using the provided link. |
-| error waiting for host shutdown | Failure during host shutdown handling. | Submit the issue to the cloud-init tracker using the provided link. |
-| Azure-proxy-agent not found | The `azure-proxy-agent` binary is missing. | Ensure Azure proxy agent is installed in the image. For more troubleshooting, check out [MSP troubleshooting guide](/azure/virtual-machines/metadata-security-protocol/troubleshoot-guide). |
-| Azure-proxy-agent status failure | Proxy agent reported a status error. | Review proxy agent logs and update if needed. For more troubleshooting, check out [MSP troubleshooting guide](/azure/virtual-machines/metadata-security-protocol/troubleshoot-guide). |
-| unhandled exception | An unexpected error occurred inside cloud-init. | Submit the issue to the cloud-init tracker using the provided link. |
+| unexpected metadata parsing ovf-env.xml | Malformed VM metadata in `ovf-env.xml`. | Submit the issue to the [cloud-init tracker.](https://github.com/canonical/cloud-init/issues/) |
+| error waiting for host shutdown | Failure during host shutdown handling. | Submit the issue to the [cloud-init tracker.](https://github.com/canonical/cloud-init/issues/) |
+| Azure-proxy-agent not found | The `azure-proxy-agent` binary is missing. | Ensure Azure proxy agent is installed in the image. For more troubleshooting, check out [MSP troubleshooting guide](https://learn.microsoft.com/azure/virtual-machines/metadata-security-protocol/troubleshoot-guide/). |
+| Azure-proxy-agent status failure | Proxy agent reported a status error. | Review proxy agent logs and update if needed. For more troubleshooting, check out [MSP troubleshooting guide](https://learn.microsoft.com/azure/virtual-machines/metadata-security-protocol/troubleshoot-guide/). |
+| unhandled exception | An unexpected error occurred inside cloud-init. | Submit the issue to the [cloud-init tracker.](https://github.com/canonical/cloud-init/issues/) |
 
 For help with enabling and checking boot diagnostics, see [Boot Diagnostics](/azure/virtual-machines/boot-diagnostics).
 
@@ -60,7 +60,12 @@ Depending on the failure, consider these steps.
 
 ### <a id="step1"></a> Step 1: Test the deployment without `customData`
 
-Cloud-init can accept `customData` that is passed to it, when the VM is created. First, you should ensure this configuration isn't causing any issues with deployments. Try to provisioning the VM without passing in any configuration. If the VM fails to provision, follow the recommended troubleshooting steps. If the configuration isn't applied, refer [step 4](#step4).
+Cloud-init can accept `customData` that is passed to it, when the VM is created. First, you should ensure this configuration isn't causing any issues with deployments. Some common issues can include:
+- [The YAML is malformed](https://cloudinit.readthedocs.io/en/latest/howto/debug_user_data.html)
+- Scripts inside customData fail or hang
+- Override something cloud‑init relies on (for example, disk setup or networking)
+- The data contains unsupported characters or encoding problems
+Try to provisioning the VM without passing in any configuration. If the VM fails to provision, follow the recommended troubleshooting steps. If the configuration isn't applied, refer [step 4](#step4).
 
 ### <a id="step2"></a> Step 2: Review image requirements
 
@@ -100,7 +105,7 @@ While the VM is running, you need the logs from the VM to understand why provisi
    /rescue/var/log/boot*
    /rescue/ /var/log/cloud-init.log
    /rescue//var/log/cloud-init-output.log
-```
+   ```
 
 > [!NOTE]
 > Alternatively, you can create a rescue VM manually by using the Azure portal. For more information, see [Troubleshoot a Linux VM by attaching the OS disk to a recovery VM using the Azure portal](/troubleshoot/azure/virtual-machines/troubleshoot-recovery-disks-portal-linux).
