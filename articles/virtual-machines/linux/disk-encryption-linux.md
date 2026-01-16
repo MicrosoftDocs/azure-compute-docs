@@ -431,7 +431,7 @@ You can disable encryption using Azure PowerShell, the Azure CLI, or with a Reso
 > [!WARNING]
 > Once decryption starts, it is advisable not to interfere with the process.
 >
-> To check the progress of decryption, use the [Get-AzVMDiskEncryptionStatus](https://learn.microsoft.com/powershell/module/az.compute/get-azvmdiskencryptionstatus) PowerShell cmdlet or the [az vm encryption show](https://learn.microsoft.com/en-us/cli/azure/vm/encryption?view=azure-cli-latest#az-vm-encryption-show) CLI command, once the decryption process is completed, you can proceed to remove the encryption extension
+> To check the progress of decryption, use the [Get-AzVMDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) PowerShell cmdlet or the [az vm encryption show](/cli/azure/vm/encryption?view=azure-cli-latest#az-vm-encryption-show) CLI command, once the decryption process is completed, you can proceed to remove the encryption extension
 
 ### Remove the encryption extension
 
