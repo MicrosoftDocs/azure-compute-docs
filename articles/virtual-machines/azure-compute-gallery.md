@@ -55,8 +55,7 @@ The following limits apply when you deploy resources by using Azure Compute Gall
 
 For more information and for examples of how to check your current usage, see [Check resource usage against limits](/azure/networking/check-usage-against-limits).
 
-Need more quota?
-If you reach the default limits for Azure Compute Gallery resources, you can request an increase. To do this, open a support incident through the Azure portal. For detailed steps, see [Quotas](/azure/azure-resource-manager/management/quotas.).
+If you reach the default limits for Azure Compute Gallery resources, you can request an increase. To do this, open a support incident through the Azure portal. 
 
 ## Scaling
 
