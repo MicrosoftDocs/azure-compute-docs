@@ -4,7 +4,7 @@ description: Sample Azure Resource Graph queries for Azure Virtual Machines show
 ms.date: 07/07/2022
 ms.topic: sample
 author: cynthn
-ms.author: jushiman
+ms.author: cynthn
 ms.service: azure-virtual-machines
 ms.custom: subject-resourcegraph-sample, devx-track-azurepowershell, devx-track-azurecli
 # Customer intent: "As a cloud architect, I want to access sample queries for Azure Virtual Machines using Resource Graph, so that I can efficiently retrieve and analyze resource data for better management and optimization of my cloud infrastructure."

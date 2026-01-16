@@ -6,7 +6,7 @@ ms.author: brittanyrowe
 ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
 ms.date: 08/19/2025
-ms.reviewer: jushiman
+ms.reviewer: cynthn
 # Customer intent: As a cloud administrator, I want to create a virtual machine scale set using instance mix, so that I can optimize resource allocation with different VM sizes based on my application requirements.
 ---
 
@@ -21,6 +21,9 @@ Confirm these prerequisites before you create an instance mix enabled scale set:
 - Consistent VM characteristics across selected sizes: same CPU architecture (x64 or Arm64), compatible disk interface (SCSI or NVMe), and compatible security profile.
 - Sufficient quota for each VM size in the target subscription and region.
 - Choose a region that supports the VM sizes you want to include.
+
+> [!TIP]
+> Instance Mix can utilize multiple VM sizes and chipsets. When using Instance Mix across several subscriptions, [Azure Quota Groups](/azure/quotas/quota-groups) make it easier for workloads to scale because quota is unified. Instance Mix respects your quota across all eligible stock keeping units (SKUs), and Quota Groups simplify management by consolidating quota allocation across subscriptions.
 - (CLI users) Azure CLI 2.66.0 or later is recommended. For PowerShell, use the latest `Az.Compute` module.
 
 

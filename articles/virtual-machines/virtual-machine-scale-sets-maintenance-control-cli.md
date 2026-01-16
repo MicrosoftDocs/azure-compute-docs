@@ -5,7 +5,7 @@ author: cynthn
 ms.service: azure-virtual-machine-scale-sets
 ms.topic: how-to
 ms.date: 11/22/2022
-ms.author: jushiman
+ms.author: cynthn
 ms.custom: devx-track-azurecli
 ms.devlang: azurecli
 #pmcontact: PPHILLIPS

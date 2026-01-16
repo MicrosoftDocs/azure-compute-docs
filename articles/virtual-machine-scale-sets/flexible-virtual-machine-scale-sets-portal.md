@@ -6,7 +6,7 @@ ms.author: fisteele
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
 ms.date: 04/24/2025
-ms.reviewer: jushiman
+ms.reviewer: cynthn
 ms.custom:
   - mimckitt
   - vmss-flex

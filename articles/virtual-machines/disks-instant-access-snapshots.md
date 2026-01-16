@@ -4,9 +4,9 @@ description: Learn how instant access works for managed disk snapshots of varyin
 author: roygara
 ms.service: azure-disk-storage
 ms.topic: how-to
-ms.date: 10/30/2025
+ms.date: 01/12/2026
 ms.author: rogarana
-ms.custom: references_regions
+ms.custom: references_regions, portal
 # Customer intent: As a cloud administrator, I want to create incremental snapshots for managed disks, so that I can efficiently back up and restore disk data while minimizing storage costs and improving performance.
 ---
 
@@ -51,12 +51,14 @@ After the time specified in `InstantAccessDurationMins` elapses, or five hours h
 - The encryption property of a disk created from an instant access snapshot can't be updated during disk hydration and you can't update the encryption settings for Ultra Disks and Premium SSD v2 that currently have instant access snapshots
 - Attaching Ultra Disks and Premium SSD v2 across fault domains (using either a VM in an availability set or a Virtual Machine Scale Set) triggers the background data copy and prevents you from creating an instant access snapshot during the copy. 
 - Ultra Disks and Premium SSD v2 that have active instant access snapshots can't be attached across fault domains
-- To use Instant Access with Ultra Disks, the snapshot must be created from a newly provisioned Ultra Disks.
-- You cannot create instant access snapshot from Azure portal.
+- To create instant access snapshots from Ultra disks, the snapshot must be created from a newly provisioned Ultra Disks.
+- When creating a new disk from an instant access snapshot, the source disk where instant access snapshot is created from must remain available and can't be deleted.
+
 
 ### Regional availability
 
-Instant access snapshots are currently supported in France Central, East Asia, Brazil South, Brazil Southeast, UK West, North Central US, Poland Central, Switzerland North, South Africa North, Japan East, Australia Central, Qatar Central, Norway East, Japan West, Korea South, Taiwan North, West Central US, Israel Central, Canada East, Canada Central.
+Instant access snapshots are currently supported in France Central, East Asia, Brazil South, Brazil Southeast, UK West, North Central US, Poland Central, Switzerland North, South Africa North, Japan East, Australia Central, Australia Central 2, Australia East, Qatar Central, Norway East, Norway West, Japan West, Korea South, Taiwan North, West Central US, Israel Central, Canada East, Canada Central, US Gov South Central, US Gov Southwest, Malaysia West, Indonesia Central, Mexico Central, Spain Central, Italy North, Sweden Central, Germany West Central.
+
 
 ### Billing of instant access snapshots of Ultra Disks and Premium SSD v2 disks
 

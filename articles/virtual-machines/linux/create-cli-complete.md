@@ -7,7 +7,7 @@ ms.custom: devx-track-azurecli, linux-related-content
 ms.collection: linux
 ms.topic: how-to
 ms.date: 3/29/2023
-ms.author: jushiman
+ms.author: cynthn
 ms.reviewer: mattmcinnes
 # Customer intent: "As a cloud engineer, I want to create a fully configured Linux virtual machine using command-line tools, so that I can efficiently manage and deploy scalable server environments in the cloud."
 ---

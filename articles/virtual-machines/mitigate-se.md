@@ -8,7 +8,7 @@ ms.service: azure-virtual-machines
 ms.subservice: security
 ms.topic: concept-article
 ms.date: 02/26/2024
-ms.author: jushiman
+ms.author: cynthn
 # Customer intent: "As a security administrator, I want to implement strategies to mitigate silicon-based micro-architectural vulnerabilities, so that I can protect my virtual machines from speculative execution side-channel attacks."
 ---
 

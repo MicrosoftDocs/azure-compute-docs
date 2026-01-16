@@ -6,7 +6,7 @@ ms.author: rogarana
 ms.date: 01/14/2025
 ms.topic: how-to
 ms.service: azure-disk-storage
-ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
+ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell, portal
 # Customer intent: "As an IT administrator, I want to enable on-demand disk bursting for my managed SSDs, so that I can allow workloads to exceed their provisioned limits as needed for performance scalability."
 ---
 
@@ -135,3 +135,4 @@ With the `2020-09-30` disk API, you can enable on-demand bursting on newly creat
 ## Next steps
 
 To learn how to gain insight into your bursting resources, see [Disk bursting metrics](disks-metrics.md).
+

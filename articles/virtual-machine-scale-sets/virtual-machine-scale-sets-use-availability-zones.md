@@ -7,7 +7,7 @@ ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: availability
 ms.date: 03/21/2025
-ms.reviewer: jushiman, fisteele
+ms.reviewer: cynthn, fisteele
 ms.custom: mimckitt, devx-track-azurecli, devx-track-azurepowershell, devx-track-arm-template
 # Customer intent: As a cloud architect, I want to create Azure Virtual Machine Scale Sets across Availability Zones, so that I can ensure high availability and resilience against data center outages for my applications.
 ---
@@ -70,19 +70,7 @@ When you deploy a scale set, you can deploy with a single [placement group](./vi
 
 ### Zone balancing
 
-For scale sets deployed across multiple zones, you also have the option of choosing "best effort zone balance" or "strict zone balance." A scale set is considered "balanced" if each zone has the same number of VMs +\\- 1 VM as all other zones for the scale set. For example:
-
-- A scale set with 2 VMs in zone 1, 3 VMs in zone 2, and 3 VMs in zone 3 is considered balanced. There is only one zone with a different VM count and it is only 1 less than the other zones.
-- A scale set with 1 VM in zone 1, 3 VMs in zone 2, and 3 VMs in zone 3 is considered unbalanced. Zone 1 has 2 fewer VMs than zones 2 and 3.
-
-It's possible that VMs in the scale set are successfully created, but extensions on those VMs fail to deploy. These VMs with extension failures are still counted when determining if a scale set is balanced. For instance, a scale set with 3 VMs in zone 1, 3 VMs in zone 2, and 3 VMs in zone 3 is considered balanced even if all extensions failed in zone 1 and all extensions succeeded in zones 2 and 3.
-
-With best-effort zone balance, the scale set aims to maintain balance across zones during scaling operations. If one zone becomes unavailable, the scale set allows temporary imbalance to ensure scaling can continue. However, this imbalance is only permitted when a single zone is unavailable. If two or more zones go down, the scale set cannot proceed with scaling operations. Once the unavailable zone is restored, the scale set adjusts by adding VMs to under-provisioned zones or removing VMs from over-provisioned zones to restore balance. In contrast, with "strict zone balance," any scaling operation that would result in imbalance is blocked, regardless of the circumstances.
-
-To use best-effort zone balance, set *zoneBalance* to *false*. This setting is the default in API version *2017-12-01*. To use strict zone balance, set *zoneBalance* to *true*.
-
->[!NOTE]
-> The `zoneBalance` property can only be set if the zones property of the scale set contains more than one zone. If there are no zones or only one zone specified, then zoneBalance property should not be set.
+For scale sets deployed across multiple zones, you also have the option of choosing "best effort zone balance" or "strict zone balance." For more information, see [Zone balancing in scale sets](./virtual-machine-scale-sets-zone-balancing.md).
 
 ## Create zone spanning or zonal scale sets
 
@@ -238,13 +226,7 @@ PATCH /subscriptions/subscriptionid/resourceGroups/resourcegroupo/providers/Micr
 
 ### Add new zonal instances and remove original instances
 
-#### Manually scale out and in
-
-[Update the capacity](virtual-machine-scale-sets-autoscale-overview.md) of the scale set to add more instances. The new capacity should be set to the original capacity plus the number of new instances. For example, if your scale set had 5 regional instances and you would like to scale out so that you have 3 instances in each of 3 zones, you should set the capacity to 14.
-
-You can update the zones parameter and the scale set capacity in the same ARM template or REST API call.
-
-When you are satisfied that the new instances are ready, scale in your scale set to remove the original regional instances. You can either manually delete the specific regional instances, or scale in by reducing the scale set capacity. When scaling in via reducing scale set capacity, the platform will always prefer removing the regional instances, then follow the scale in policy.
+You can manually balance your scale set across zones by triggering a scale-out operation and then scaling in. For more details, see [How to manually balance your scale set](./virtual-machine-scale-sets-zone-balancing.md#how-to-manually-balance-your-scale-set).
 
 ### Known issues and limitations
 

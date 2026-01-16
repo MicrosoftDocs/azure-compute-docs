@@ -77,7 +77,7 @@ sections:
       - question: |
           Are unmanaged disks still supported?
         answer: |
-          Yes, but they'll be [retired by September 30, 2025](unmanaged-disks-deprecation.md), and as of November 18, 2022, new customer subscriptions aren't eligible to create unmanaged disks. We recommend that you use managed disks for new workloads and migrate your current workloads to managed disks.
+          Yes, but they'll be retired on [March 31, 2026](unmanaged-disks-deprecation.md) (extended from September 30, 2025). As of November 18, 2022, new customer subscriptions aren't eligible to create unmanaged disks. Page blobs aren't affected by this change. Plan and complete migration of any VMs using unmanaged disks to managed disks before March 31, 2026. See [pricing](https://azure.microsoft.com/pricing/details/managed-disks/) and migration guidance for [Windows](windows/convert-unmanaged-to-managed-disks.md) and [Linux](linux/convert-unmanaged-to-managed-disks.md) VMs, or refer to the [migration overview](windows/migrate-to-managed-disks.md). You should use managed disks for new workloads and migrate your current workloads to managed disks.
 
       - question: |
           Can I colocate unmanaged and managed disks on the same VM?

@@ -2,8 +2,7 @@
 title: Deploy a Trusted Launch VM
 description: Deploy a VM that uses Trusted Launch.
 author: cynthn
-ms.author: jushiman
-ms.reviewer: jushiman
+ms.author: cynthn
 ms.service: azure-virtual-machines
 ms.subservice: trusted-launch
 ms.topic: how-to
@@ -27,6 +26,7 @@ Trusted Launch is supported for both x64 and Arm64 Generation 2 VMs, including [
 ## Prerequisites
 
 - We recommend that you [onboard your subscription to Microsoft Defender for Cloud](https://azure.microsoft.com/services/security-center/?&ef_id=CjwKCAjwwsmLBhACEiwANq-tXHeKhV--teH6kIijnBTmP-PgktfvGr5zW9TAx00SR7xsGUc3sTj5sBoCkEoQAvD_BwE:G:s&OCID=AID2200277_SEM_CjwKCAjwwsmLBhACEiwANq-tXHeKhV--teH6kIijnBTmP-PgktfvGr5zW9TAx00SR7xsGUc3sTj5sBoCkEoQAvD_BwE:G:s&gclid=CjwKCAjwwsmLBhACEiwANq-tXHeKhV--teH6kIijnBTmP-PgktfvGr5zW9TAx00SR7xsGUc3sTj5sBoCkEoQAvD_BwE#overview) if it isn't already. Defender for Cloud has a free tier, which offers useful insights for various Azure and hybrid resources. With the absence of Defender for Cloud, Trusted Launch VM users can't monitor [boot integrity](boot-integrity-monitoring-overview.md) of VM.
+- If you have existing Generation 1 VMs, you can upgrade them to Generation 2 with Trusted launch. See [Upgrade existing Gen1 VMs to Gen2-Trusted launch](trusted-launch-existing-vm-gen-1.md).
 - Assign Azure policy initiatives to your subscription. These policy initiatives need to be assigned only once per subscription. Policies will help deploy and audit for Trusted Launch VMs while automatically installing all required extensions on all supported VMs.
    - Configure the Trusted Launch VMs' [built-in policy initiative](trusted-launch-portal.md#trusted-launch-built-in-policies).
    - Configure prerequisites to enable Guest Attestation on Trusted Launch-enabled VMs.
@@ -40,7 +40,7 @@ Trusted Launch is supported for both x64 and Arm64 Generation 2 VMs, including [
 
 ## Deploy a Trusted Launch VM
 
-Create a VM with Trusted Launch enabled. Choose one of the following options.
+Choose one of the deployment methods to create a new Trusted launch VM
 
 ### [Portal](#tab/portal)
 
@@ -576,10 +576,12 @@ Make sure that you're running the latest version of the Azure CLI.
        -Location $location `
        -VM $vm
     ```
+
 ---
+
 ## Trusted Launch built-in policies
 
-To help users adopt Trusted Launch, Azure policies are available to help resource owners adopt Trusted Launch. The main objective is to help convert Generation 1 and 2 VMs that are Trusted Launch capable.
+To help users adopt Trusted Launch, Azure policies are available to help resource owners adopt Trusted Launch. The main objective is to help upgrade Generation 1 and 2 VMs that are Trusted launch capable.
 
 The **Virtual machine should have Trusted launch enabled** single policy checks if the VM is currently enabled with Trusted Launch security configurations. The **Disks and OS supported for Trusted launch** policy checks if previously created VMs have the [capable Generation 2 OS and VM size](trusted-launch.md#virtual-machines-sizes) to deploy a Trusted Launch VM.
 
@@ -588,6 +590,7 @@ These two policies come together to make the Trusted Launch policy initiative. T
 To learn more and start deploying, see [Trusted Launch built-in policies](/azure/governance/policy/samples/built-in-policies#trusted-launch).
 
 ---
+
 ## Verify or update your settings
 
 For VMs created with Trusted Launch enabled, you can view the Trusted Launch configuration by going to the **Overview** page for the VM in the Azure portal. The **Properties** tab shows the status of Trusted Launch features.
@@ -604,4 +607,4 @@ If the VM is running, you receive a message that the VM will restart. Select **Y
 
 - Learn more about [Trusted Launch](trusted-launch.md) and [boot integrity monitoring](boot-integrity-monitoring-overview.md) VMs.
 - Learn about [Cobalt 100-based Arm64 VM sizes](sizes/cobalt-overview.md) that support Trusted Launch.
-
+- If you have existing VMs or VM scale sets, you can upgrade them to Gen2-Trusted launch. For more information, see [Upgrade existing Gen1 VMs to Gen2-Trusted launch](trusted-launch-existing-vm-gen-1.md), [Upgrade existing Gen2 VMs to Gen2-Trusted launch](trusted-launch-existing-vm.md), [Upgrade existing Gen1 or Gen2 VM scale sets to Gen2-Trusted launch](trusted-launch-existing-vmss.md)

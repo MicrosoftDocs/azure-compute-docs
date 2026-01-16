@@ -6,7 +6,7 @@ ms.service: azure-virtual-machines
 ms.collection: linux
 ms.topic: quickstart
 ms.date: 03/11/2024
-ms.author: jushiman
+ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli, mode-api, innovation-engine, linux-related-content
 # Customer intent: "As a cloud administrator, I want to use the command line to create a Linux virtual machine, so that I can efficiently manage resources and automate deployment in my Azure environment."
 ---

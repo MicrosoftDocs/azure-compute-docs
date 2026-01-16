@@ -6,7 +6,7 @@ ms.service: azure-virtual-machines
 ms.topic: concept-article
 ms.custom: devx-track-terraform, devx-track-arm-template, devx-track-ansible, devx-track-jenkins, devx-track-bicep
 ms.date: 09/21/2023
-ms.author: jushiman
+ms.author: cynthn
 ms.reviewer: mattmcinnes
 # Customer intent: As a cloud engineer, I want to utilize infrastructure automation tools to create and manage Azure virtual machines, so that I can streamline processes and ensure consistency in deployment and configuration.
 ---

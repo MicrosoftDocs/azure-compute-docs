@@ -8,6 +8,7 @@ ms.topic: concept-article
 ms.date: 10/16/2025
 ms.author: mattmcinnes
 ms.reviewer: mimckitt, archatc
+ms.update-cycle: 1095-days
 # Customer intent: "As a database administrator, I want to select virtual machine sizes with constrained vCPU counts, so that I can optimize licensing costs while maintaining necessary performance for my database workloads."
 ---
 
