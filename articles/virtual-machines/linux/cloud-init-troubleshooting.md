@@ -46,7 +46,7 @@ Cloud-init emits structured errors when reporting failure to Azure during provis
 | read timeout querying IMDS | Connections to IMDS may timeout due to transient platform issue or OS firewall configuration. | Delete and re-create VM. If issue persists, validate OS firewall isn't preventing access to IMDS. |
 | unexpected metadata parsing ovf-env.xml | Malformed VM metadata in `ovf-env.xml`. | Submit the issue to the [cloud-init tracker.](https://github.com/canonical/cloud-init/issues/) |
 | error waiting for host shutdown | Failure during host shutdown handling. | Submit the issue to the [cloud-init tracker.](https://github.com/canonical/cloud-init/issues/) |
-| Azure-proxy-agent not found | The `azure-proxy-agent` binary is missing. | Ensure Azure proxy agent is installed in the image. For more troubleshooting, check out [MSP troubleshooting guide](https://learn.microsoft.com/azure/virtual-machines/metadata-security-protocol/troubleshoot-guide/). |
+| Azure-proxy-agent not found | The `azure-proxy-agent` binary is missing. | Ensure Azure proxy agent is installed in the image. For more troubleshooting, check out [MSP troubleshooting guide](/azure/virtual-machines/metadata-security-protocol/troubleshoot-guide). |
 | Azure-proxy-agent status failure | Proxy agent reported a status error. | Review proxy agent logs and update if needed. For more troubleshooting, check out [MSP troubleshooting guide](https://learn.microsoft.com/azure/virtual-machines/metadata-security-protocol/troubleshoot-guide/). |
 | unhandled exception | An unexpected error occurred inside cloud-init. | Submit the issue to the [cloud-init tracker.](https://github.com/canonical/cloud-init/issues/) |
 
