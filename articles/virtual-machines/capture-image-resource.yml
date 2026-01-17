@@ -23,6 +23,8 @@ introduction: |
     This article covers the older managed image technology. For the most current technology, customers are encouraged to use [Azure Compute Gallery](azure-compute-gallery.md). All new features, like ARM64, Trusted Launch, and Confidential VM are only supported through Azure Compute Gallery. If you have an existing managed image, you can use it as a source and create an Azure Compute Gallery image. For more information, see [Create an image definition and image version](image-version.md).
     
     > [!IMPORTANT]
+    > A legacy managed image cannot be created from a virtual machine deployed using Trusted Launch.
+    >
     > Once you mark a VM as `generalized` in Azure, you cannot restart the VM.
     >
     > One managed image supports up to 20 simultaneous deployments. Attempting
@@ -39,6 +41,7 @@ introduction: |
 prerequisites:
   dependencies:
     - You need a [generalized](generalize.yml) VM in order to create an image.
+    - The VM cannot be a Trusted Launch VM.
 
 procedureSection:
   - title: | 
