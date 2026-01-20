@@ -14,9 +14,6 @@ ms.custom: linux-related-content
 
 # Troubleshooting VM provisioning with cloud-init
 
-> [!CAUTION]
-> This article references CentOS, a Linux distribution that is End Of Support (EOS) status. Consider your use and plan accordingly. For more information, see the [CentOS End Of Life guidance](~/articles/virtual-machines/workloads/centos/centos-end-of-life.md).
-
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Flexible scale sets
 
 If you create generalized custom images and use cloud-init for provisioning, the VM might not build correctly. In that case, troubleshoot the image to find the issue.
@@ -32,6 +29,9 @@ Some examples, of issues with provisioning:
 - Swap file or partition failures.
 
 This article steps you through how to troubleshoot cloud-init. For more in-depth details, see [cloud-init deep dive](./cloud-init-deep-dive.md).
+
+> [!CAUTION]
+> This article references CentOS, a Linux distribution that is End Of Support (EOS) status. Consider your use and plan accordingly. For more information, see the [CentOS End Of Life guidance](~/articles/virtual-machines/workloads/centos/centos-end-of-life.md).
 
 ## Troubleshooting failures reported by cloud-init and logged as error
 
