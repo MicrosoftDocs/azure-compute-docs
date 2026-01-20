@@ -106,7 +106,7 @@ sed -i -e "s/Azure Image Builder Service Image Creation Role/$imageRoleDefName/g
 # Create role definitions
 az role definition create --role-definition ./aibRoleImageCreation.json
 
-# Grant a role definition to the user-assigned identity
+# Grant a role definition to the user-assigned identity.  Pleae note, the success of the following command does rely on RBAC propagation, which can take up to ~30 minutes in some cases.  Please wait ~5 minutes before executing and retry after a delay if an error occurs.  
 az role assignment create \
     --assignee $imgBuilderCliId \
     --role "$imageRoleDefName" \
