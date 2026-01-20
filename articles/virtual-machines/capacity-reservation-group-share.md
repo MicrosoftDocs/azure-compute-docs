@@ -595,6 +595,14 @@ View the subscription IDs the Capacity Reservation Group are shared with from th
 
 To learn more, see [Create a Capacity Reservation](/azure/virtual-machines/capacity-reservation-create).
 
+#### [Portal](#tab/portal-5)
+
+1. Open the [Azure portal](https://portal.azure.com).
+1. Go to your capacity reservation group.
+1. Select **Settings** of the capacity reservation group.
+1. Select **Sharing**
+1. View the subscriptions the capacity reservation group is shared with
+
 ### [API](#tab/api-5)
 
 ```rest
