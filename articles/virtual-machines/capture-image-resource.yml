@@ -5,7 +5,7 @@ metadata:
   description: Create a legacy managed image of a generalized VM or VHD in Azure.
   author: cynthn
   ms.author: cynthn
-  ms.date: 06/25/2024
+  ms.date: 01/16/2026
   ms.service: azure-virtual-machines
   ms.subservice: imaging
   ms.topic: how-to
@@ -20,15 +20,10 @@ title: |
   Create a legacy managed image of a generalized VM in Azure
 
 introduction: |
+    This article covers the older managed image technology. For the most current technology, customers are encouraged to use [Azure Compute Gallery](azure-compute-gallery.md). All new features, like ARM64, Trusted Launch, and Confidential VM are only supported through Azure Compute Gallery. If you have an existing managed image, you can use it as a source and create an Azure Compute Gallery image. For more information, see [Create an image definition and image version](image-version.md).
+    
     > [!IMPORTANT]
-    > This article covers the older managed image technology. For the most
-    > current technology, customers are encouraged to use
-    > [Azure Compute Gallery](azure-compute-gallery.md). All new features, like
-    > ARM64, Trusted Launch, and Confidential VM are only supported through
-    > Azure Compute Gallery. If you have an existing managed image, you can use
-    > it as a source and create an Azure Compute Gallery image. For more
-    > information, see
-    > [Create an image definition and image version](image-version.md).
+    > A legacy managed image cannot be created from a virtual machine deployed using Trusted Launch.
     >
     > Once you mark a VM as `generalized` in Azure, you cannot restart the VM.
     >
@@ -46,15 +41,21 @@ introduction: |
 prerequisites:
   dependencies:
     - You need a [generalized](generalize.yml) VM in order to create an image.
+    - The VM cannot be a Trusted Launch VM.
 
 procedureSection:
   - title: | 
       CLI: Create a legacy managed image of a VM
     summary: |
-      Create a managed image of the VM with
-      [az image create](/cli/azure/image#az-image-create). The following example
-      creates an image named *myImage* in the resource group named
+      Create a legacy managed image of the VM with
+      [az image create](/cli/azure/image#az-image-create). Creating a legacy managed image directly from the VM ensures that the image includes all of the disks associated with the VM, including the OS disk and any data disks.
+
+      The legacy managed image is created in the same resource group as your source VM. You can create VMs in any resource group within your subscription from this image. From a management perspective, you may wish to create a specific resource group for your VM resources and images.
+      
+      The following example
+      creates a legacy managed image named *myImage* in the resource group named
       *myResourceGroup* using the VM resource named *myVM*.
+      
 
     code: |
       ```azurecli
@@ -63,29 +64,18 @@ procedureSection:
         --name myImage --source myVM
       ```
    
-      > [!NOTE]
-      > The image is created in the same resource group as your source VM. You
-      > can create VMs in any resource group within your subscription from this
-      > image. From a management perspective, you may wish to create a specific
-      > resource group for your VM resources and images.
-      >
-      > If you are capturing an image of a generation 2 VM, also use the
-      > `--hyper-v-generation V2` parameter. for more information, see
-      > [Generation 2 VMs](generation-2.md).
-      >
-      > If you would like to store your image in zone-resilient storage, you
-      > need to create it in a region that supports
-      > [availability zones](/azure/reliability/availability-zones-overview) and include
-      > the `--zone-resilient true` parameter.
+      
+      If you are capturing an image of a generation 2 VM, also use the `--hyper-v-generation V2` parameter. for more information, see [Generation 2 VMs](generation-2.md).
+      
+      If you would like to store your image in zone-resilient storage, you need to create it in a region that supports [availability zones](/azure/reliability/availability-zones-overview) and include the `--zone-resilient true` parameter.
       
       This command returns JSON that describes the VM image. Save this output for later reference.
   - title: | 
         PowerShell: Create a legacy managed image of a VM
     summary: |
-      Creating an image directly from the VM ensures that the image includes all
+      This example shows how to create a legacy managed image from a VM. Creating a legacy managed image directly from the VM ensures that the image includes all
       of the disks associated with the VM, including the OS disk and any data
-      disks. This example shows how to create a managed image from a VM that
-      uses managed disks.
+      disks.
 
       Before you begin, make sure that you have the latest version of the Azure
       PowerShell module. To find the version, run `Get-Module -ListAvailable Az`
@@ -94,11 +84,9 @@ procedureSection:
       If you are running PowerShell locally, run `Connect-AzAccount` to create a
       connection with Azure.
 
+      If you would like to store your image in zone-redundant storage, you need to create it in a region that supports [availability zones](/azure/reliability/availability-zones-region-support) and include the `-ZoneResilient` parameter in the image configuration (`New-AzImageConfig` command).
 
-      > [!NOTE]
-      > If you would like to store your image in zone-redundant storage, you need to create it in a region that supports [availability zones](/azure/reliability/availability-zones-region-support) and include the `-ZoneResilient` parameter in the image configuration (`New-AzImageConfig` command).
-
-      To create a VM image, follow these steps:
+      To create a legacy managed image of a VM, follow these steps:
 
     steps:
       - |
@@ -107,7 +95,7 @@ procedureSection:
         ```azurepowershell-interactive
         $vmName = "myVM"
         $rgName = "myResourceGroup"
-        $location = "EastUS"
+        $location = "Central US"
         $imageName = "myImage"
         ```
       - |
@@ -143,7 +131,7 @@ procedureSection:
   - title: | 
       PowerShell: Create a legacy managed image from a managed disk 
     summary: |
-      If you want to create an image of only the OS disk, specify the managed
+      If you want to create a legacy managed image of only the OS disk, specify the managed
       disk ID as the OS disk: 
     steps:
       - |
@@ -152,7 +140,7 @@ procedureSection:
         ```azurepowershell-interactive
         $vmName = "myVM"
         $rgName = "myResourceGroup"
-        $location = "EastUS"
+        $location = "Central US"
         $imageName = "myImage"
         ```
       - |
@@ -195,7 +183,7 @@ procedureSection:
 
         ```azurepowershell-interactive
         $rgName = "myResourceGroup"
-        $location = "EastUS"
+        $location = "Central US"
         $snapshotName = "mySnapshot"
         $imageName = "myImage"
         ```
@@ -236,7 +224,7 @@ procedureSection:
         ```azurepowershell-interactive
         $vmName = "myVM"
         $rgName = "myResourceGroup"
-        $location = "EastUS"
+        $location = "Central US"
         $imageName = "myImage"
         $osVhdUri = "https://mystorageaccount.blob.core.windows.net/vhdcontainer/vhdfilename.vhd"
         ```
@@ -263,8 +251,7 @@ procedureSection:
   - title: | 
         CLI: Create a VM from a legacy managed image
     summary: |
-      Create a VM by using the image you created with
-      [az vm create](/cli/azure/vm). The following example creates a VM named
+      Create a VM from a legacy managed image by using [az vm create](/cli/azure/vm). The following example creates a VM named
       *myVMDeployed* from the image named *myImage*. 
     code: |
       ```azurecli
@@ -278,9 +265,9 @@ procedureSection:
   - title: | 
         CLI: Create a VM in another resource group from a legacy managed image
     summary: |
-      You can create VMs from an image in any resource group within your
-      subscription. To create a VM in a different resource group than the image,
-      specify the full resource ID to your image. Use
+      You can create VMs from a legacy managed image in any resource group within your
+      subscription. To create a VM in a different resource group than the legacy managed image,
+      specify the full resource ID. Use
       [az image list](/cli/azure/image#az-image-list) to view a list of images.
       The output is similar to the following example.
 
@@ -291,7 +278,7 @@ procedureSection:
         ```
 
         The following example uses [az vm create](/cli/azure/vm#az-vm-create) to
-        create a VM in a resource group other than the source image, by
+        create a VM in a resource group other than the source legacy managed image, by
         specifying the image resource ID.
     code: |
       ```azurecli
@@ -305,7 +292,7 @@ procedureSection:
   - title: | 
         Portal: Create a VM from a legacy managed image
     summary: |
-      Create a VM in Azure: Find image in portal, choose 'Create VM', fill in
+      Create a VM in Azure from a legacy managed image: Find image in portal, choose 'Create VM', fill in
       details, select size, adjust settings, and deploy. 
     steps:
       - |
@@ -334,9 +321,9 @@ procedureSection:
   - title: | 
         PowerShell: Create a VM from a legacy managed image
     summary: |
-      You can use PowerShell to create a VM from an image by using the
+      You can use PowerShell to create a VM from a legacy managed image by using the
       simplified parameter set for the
-      [New-AzVm](/powershell/module/az.compute/new-azvm) cmdlet. The image needs
+      [New-AzVm](/powershell/module/az.compute/new-azvm) cmdlet. The legacy managed image needs
       to be in the same resource group where you'll create the VM.
 
       The simplified parameter set for
