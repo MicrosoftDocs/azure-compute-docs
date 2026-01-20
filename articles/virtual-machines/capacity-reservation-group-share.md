@@ -88,6 +88,35 @@ Capacity Reservation Groups are shared by adding Consumer subscriptions in the s
 ### Add sharing profile to a new Capacity Reservation Group
 Share a Capacity Reservation Group during creation by adding subscriptions in the sharing profile.
 
+#### [Portal](#tab/portal-1)
+To create a Capacity Reservation Group with sharing profile from Portal, follow the steps below:
+
+1. Open the [Azure portal](https://portal.azure.com).
+1. In the search bar, enter **capacity reservation groups**.
+1. Select **Capacity reservation groups** from the options.
+1. Select **Create**.
+1. On the **Basics** tab, create a capacity reservation group:
+    1. Select a subscription.
+    1. Select or create a resource group.
+    1. Name your group.
+    1. Select a region.
+    1. Optionally, select **Availability zones** or allow Azure to choose for you.
+1. Select **Next**.
+1. On the **Reservations** tab, create at least one capacity reservation:
+    1. Give each reservation a reservation name, the quantity of VM instances, and select a unique VM size.
+    1. Billing information based on your selections appears in the **Cost/month** column.
+1. Select **Next**.
+1. On **Sharing** tab, share the capacity reservation group:
+   	1. Select **Add Subscriptions**.
+	1. Select subscriptions to add.
+    1. Select **Add**.
+1. Select **Next**.
+1. On the **Tags** tab, optionally create tags.
+1. Select **Next**.
+1. On the **Review + Create** tab, review your capacity reservation group information.
+1. Select **Create**.
+
+
 #### [API](#tab/api-1)
 To share a Capacity Reservation group on creation, construct the following PUT request: 
 
@@ -206,6 +235,19 @@ If your environment meets the prerequisites and you're familiar with using ARM t
 ### Add sharing profile to an existing Capacity Reservation Group 
 Add a sharing profile and share with subscriptions for an existing Capacity Reservation Group. 
 
+
+#### [Portal](#tab/portal-2)
+To add subscriptions to the sharing profile of an existing capacity reservation group from Portal, follow the steps below:
+
+1. Open the [Azure portal](https://portal.azure.com).
+1. Go to your capacity reservation group.
+1. Select **Settings** of the capacity reservation group.
+1. Select **Sharing**
+1. Select **Add subscriptions**
+1. Select the subscriptions to add
+1. Select **Add**
+1. Select **Save**
+
 #### [API](#tab/api-2)
 To add a sharing profile to an existing CRG, construct the following PUT request.  
 
@@ -286,7 +328,17 @@ Once unsharing happens, any VM or scale set previously associated to the CRG wou
 ### Unsharing a Capacity Reservation Group with a subscription
 To unshare a Capacity Reservation Group with a subscription from the sharing profile, remove the subscription from the sharing profile. 
 
-In the following examples, a Capacity Reservation Group was shared with Consumer Subscription ID 1, Consumer Subscription ID 2, and Consumer Subscription ID 3.  
+#### [Portal](#tab/portal-3)
+To remove subscriptions from  the sharing profile of an existing capacity reservation group from Portal, follow the steps below:
+
+1. Open the [Azure portal](https://portal.azure.com).
+1. Go to your capacity reservation group.
+1. Select **Settings** of the capacity reservation group.
+1. Select **Sharing**
+1. Select the subscriptions to remove
+1. Select **Stop sharing**
+1. Select **Save**
+
 
 #### [API](#tab/api-3)
 To remove a subscription from the sharing profile of an existing Capacity Reservation Group, construct the following PUT request.  
@@ -358,6 +410,17 @@ To learn more, see [Update-AzCapacityReservation](/powershell/module/az.compute/
 
 ### Unsharing a Capacity Reservation Group with all subscriptions
 To unshare a Capacity Reservation Group with all consumer subscriptions, remove all subscriptions from the sharing profile. 
+
+#### [Portal](#tab/portal-4)
+To remove subscriptions from  the sharing profile of an existing capacity reservation group from Portal, follow the steps below:
+
+1. Open the [Azure portal](https://portal.azure.com).
+1. Go to your capacity reservation group.
+1. Select **Settings** of the capacity reservation group.
+1. Select **Sharing**
+1. Select all subscriptions to remove
+1. Select **Stop sharing**
+1. Select **Save**
 
 #### [API](#tab/api-4)
 To remove all consumer subscriptions from the sharing profile of an existing Capacity Reservation group, construct the following PUT request.  
