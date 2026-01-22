@@ -5,8 +5,9 @@ author: bdeforeest
 ms.author: bidefore
 ms.service: azure-virtual-machines
 ms.topic: overview
-ms.date: 02/24/2023
-ms.reviewer: cynthn, jushiman, mattmcinnes
+ms.date: 12/22/2025
+ms.update-cycle: 1095-days
+ms.reviewer: cynthn, mattmcinnes
 ms.custom: template-how-to
 # Customer intent: "As an IT administrator, I want to create and manage on-demand capacity reservations in Azure, so that I can ensure the availability of compute resources for critical workloads without long-term commitments."
 ---
