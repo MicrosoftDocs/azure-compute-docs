@@ -4,7 +4,7 @@ description: Get a list of supported operating system images for remote NVMe.
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.date: 05/23/2025
-ms.topic: how-to
+ms.topic: concept-article
 ms.custom: template-how-to-pattern
 # Customer intent: As a cloud architect, I want to access a list of supported operating system images for remote NVMe, so that I can ensure compatibility and optimize performance for my virtual machines.
 ---
@@ -46,10 +46,9 @@ For more information about enabling the NVMe interface on virtual machines creat
 - Windows Server 2025
 - Windows Server 2022
 - Windows Server 2019*
-
 - Windows 10
 - Windows 11
 
 *Shared Disks on NVME are not compatible with Windows Server 2019
 
-To download an image, go to [Azure Marketplace](https://ms.portal.azure.com/#view/Microsoft_Azure_Marketplace/MarketplaceOffersBlade/selectedMenuItemId/home).
+To download an image, go to [Azure Marketplace](https://portal.azure.com/#view/Microsoft_Azure_Marketplace/MarketplaceOffersBlade/selectedMenuItemId/home).

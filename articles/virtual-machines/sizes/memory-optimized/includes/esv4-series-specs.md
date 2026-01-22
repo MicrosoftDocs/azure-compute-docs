@@ -13,7 +13,7 @@ ms.custom: include file
 ---
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
 |---|---|---|
-| Processor      | 2 - 80 vCPUs     | Intel Xeon 8473C (Sapphire Rapids) [x86-64] <br>Intel Xeon Platinum 8370C (Ice Lake) [x86-64] <br>Intel Xeon Platinum 8272CL (Cascade Lake) [x86-64] |
+| Processor      | 2 - 80 vCPUs     | Intel Xeon 8473C (Sapphire Rapids) [x86-64] <br>Intel Xeon Platinum 8370C (Ice Lake) [x86-64] <br>Intel Xeon Platinum 8272CL (Cascade Lake) [x86-64] <br>Intel Xeon Platinum 8573C (Emerald Rapids) [x86-64] |
 | Memory         | 16 - 504 GiB        |    |
 | Local Storage  | None         |  |
 | Remote Storage | 4 - 64 Disks        | 3200 - 80000 IOPS <br>48 - 1500 MBps |

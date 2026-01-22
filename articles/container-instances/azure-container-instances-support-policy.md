@@ -6,6 +6,7 @@ author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
 ms.topic: conceptual
+ms.update-cycle: 1095-days
 ms.date: 11/17/2025
 ---
 # Support policy for Azure Container Instances

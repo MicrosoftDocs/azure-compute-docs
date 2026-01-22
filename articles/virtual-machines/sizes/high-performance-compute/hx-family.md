@@ -29,7 +29,7 @@ The 'HX' family of VM size series are one of Azure's high-memory, high-performan
 
 ## Series in family
 
-### HB-series
+### HX-series
 [!INCLUDE [hx-series-summary](./includes/hx-series-summary.md)]
 
 [View the full HX-series page](hx-series.md).
