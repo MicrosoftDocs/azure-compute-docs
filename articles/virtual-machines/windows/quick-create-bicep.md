@@ -64,7 +64,7 @@ Several resources are defined in the Bicep file:
     az deployment group create --resource-group exampleRG --template-file main.bicep --parameters adminUserName=<admin-username>
     ```
 
-    # [Azure PowerShell](#tab/azurepowershell)
+    # [Azure PowerShell](#tab/PowerShell)
 
     ```azurepowershell
     $exampleRG = myResourceGroupName
