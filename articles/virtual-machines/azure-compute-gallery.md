@@ -55,6 +55,8 @@ The following limits apply when you deploy resources by using Azure Compute Gall
 
 For more information and for examples of how to check your current usage, see [Check resource usage against limits](/azure/networking/check-usage-against-limits).
 
+If you reach the default limits for Azure Compute Gallery resources, you can request an increase. To do this, open a support incident through the Azure portal. 
+
 ## Scaling
 
 Azure Compute Gallery allows you to specify the number of replicas that you want to keep. In multiple-VM deployment scenarios, you can spread the VM deployments to other replicas. This action reduces the chance that overloading of a single replica throttles the process of instance creation.
