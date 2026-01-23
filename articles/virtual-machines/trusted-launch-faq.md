@@ -87,7 +87,7 @@ Backups taken before you [upgrade an existing Generation 2 VM to Trusted Launch]
 
 ### How can I find VM sizes that support Trusted Launch?
 
-See the list of [Generation 2 VM sizes that support Trusted Launch](trusted-launch.md#virtual-machines-sizes), which includes both x64 and Arm64 sizes. [Cobalt 100-based Arm64 sizes](sizes/cobalt-overview.md) (Dpsv6, Dplsv6, Epsv6) support Trusted Launch.
+See the list of [Generation 2 VM sizes that support Trusted Launch](trusted-launch.md#virtual-machines-sizes), which includes both x64 and Arm64 sizes. 
 
 Use the following commands to check if a [Generation 2 VM size](../virtual-machines/generation-2.md#generation-2-vm-sizes) doesn't support Trusted Launch.
 
