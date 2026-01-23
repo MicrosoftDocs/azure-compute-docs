@@ -21,7 +21,7 @@ Azure Virtual Machines supports upgrading Generation 1 virtual machines (VM) to 
 
 > [!IMPORTANT]
 >
-> - Support for *Upgrade of Gen1 VMs to Gen2 without enabling Trusted launch* is **not supported**.
+> - *Upgrade of Gen1 VMs to Gen2 without enabling Trusted launch* is **not supported**.
 > - This upgrade path doesn't change the VM CPU architecture. To use Arm64 with Trusted launch, create a new VM from an Arm64 Trusted launch image in Azure Marketplace on supported [Cobalt 100 sizes](sizes/cobalt-overview.md) (Dpsv6, Dplsv6, Epsv6).
 
 ## Prerequisites
