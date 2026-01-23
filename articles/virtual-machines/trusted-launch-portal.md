@@ -174,9 +174,6 @@ You can deploy Trusted Launch VMs by using a quickstart template.
 - **Recommended**: [Trusted Launch VM supported (`TrustedLaunchSupported`) images](#trusted-launch-vm-supported-images) are images where the source doesn't have VM Guest state information and can be used to create either [Generation 2 VMs](generation-2.md) or [Trusted Launch VMs](trusted-launch.md).
 - [Trusted Launch VM (`TrustedLaunch`) images](#trusted-launch-vm-images) are images where the source usually has [VM Guest State information](trusted-launch-faq.md#what-is-vm-guest-state-vmgs) and can be used to create only [Trusted Launch VMs](trusted-launch.md).
 
-> [!NOTE]
-> Arm64 Generation 2 images are supported with Trusted Launch and can be used to create Trusted Launch VMs on Arm64 sizes (Dpsv6, Dplsv6, Epsv6). When creating image definitions, ensure the architecture matches the target deployment.
-
 ### Trusted Launch VM supported images
 
 For the following image sources, the security type on the image definition should be set to `TrustedLaunchsupported`:
