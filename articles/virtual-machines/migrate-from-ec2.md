@@ -56,7 +56,7 @@ Use the [Azure VM size documentation](./sizes/overview.md) and AWS [instance typ
 1. Match to an Azure VM series with equivalent CPU/memory ratio and CPU architecture (x86 or ARM).
 1. Validate storage and networking requirements (this is the step that prevents over/under-provisioning):
    - **Baseline in AWS**: capture typical and peak EBS (IOPS/throughput/latency) and network (bandwidth/PPS) usage.
-   - **Map to Azure limits**: confirm disk SKU + VM size caps and the VM’s network limits (and whether **[Accelerated Networking](/azure/virtual-network/accelerated-networking-overview.md)** is supported).
+   - **Map to Azure limits**: confirm disk SKU + VM size caps and the VM’s network limits (and whether **[Accelerated Networking](/azure/virtual-network/accelerated-networking-overview)** is supported).
    - **Test in Azure**: run quick storage/network benchmarks before you finalize the VM size.
 1. If any accelerators (GPU, FPGA) are used, ensure the Azure VM series supports them.
 1. Consider Azure-specific features like [Spot VMs](./spot-vms.md) for cost savings or [VM Scale Sets](../virtual-machine-scale-sets/overview.md) for elasticity.
