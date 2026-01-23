@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 01/23/2026
 # Customer intent: As a cloud developer, I want to utilize a distributed systems platform for building and managing scalable microservices, so that I can effectively deploy, monitor, and maintain applications across various environments.
 ---
 
