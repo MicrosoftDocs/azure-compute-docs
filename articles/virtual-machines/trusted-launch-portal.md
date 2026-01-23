@@ -93,21 +93,6 @@ Make sure that you're running the latest version of the Azure CLI.
        --enable-vtpm true 
     ```
 
-1. For Arm64 Trusted Launch VMs, select an Arm64 Gen 2 image URN and an Arm64 size (for example, a Dpsv6 size):
-
-    ```azurecli-interactive
-    az vm create \
-       --resource-group myResourceGroup \
-       --name myArm64VM \
-       --image Canonical:ubuntu-24_04-lts:server-arm64:latest \
-       --size Standard_D2ps_v6 \
-       --admin-username azureuser \
-       --generate-ssh-keys \
-       --security-type TrustedLaunch \
-       --enable-secure-boot true \
-       --enable-vtpm true 
-    ```
-
 1. For existing VMs, you can enable or disable secure boot and vTPM settings. Updating the VM with secure boot and vTPM settings triggers auto-reboot.
 
     ```azurecli-interactive
