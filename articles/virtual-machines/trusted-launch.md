@@ -70,9 +70,6 @@ Trusted Launch is supported for both x64 and Arm64 architectures.
 
 &#42; Variations of this OS are supported.
 
-> [!NOTE]
-> Trusted Launch support applies to validated Marketplace images for both x64 and Arm64 architectures where available. For Arm64 deployments, select Trusted Launch–enabled Arm64 images from Azure Marketplace. Supported Arm64 images include Ubuntu 24.04, Debian 13, Rocky 9, Azure Linux 3, Red Hat Enterprise Linux 10, and more.
-
 ## More information
 
 **Regions**:
