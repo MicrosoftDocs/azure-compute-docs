@@ -49,7 +49,7 @@ This section discusses Trusted Launch supported features and deployments.
 
 ### Are Arm64 VM sizes and images supported with Trusted Launch?
 
-Yes, Trusted Launch is supported for Arm64 VMs. Arm64 images with Trusted Launch are available in Azure Marketplace. The [Cobalt 100-based Arm64 VM series](sizes/cobalt-overview.md) (Dpsv6, Dplsv6, Epsv6) support Trusted Launch. You can deploy Trusted Launch on these Arm64 sizes using validated marketplace images such as Ubuntu 24.04, Debian 13, Rocky 9, Azure Linux 3, and Red Hat Enterprise Linux 10.
+Yes, Trusted Launch is supported for Arm64 VMs. Arm64 images with Trusted Launch are available in Azure Marketplace. The [Cobalt 100-based Arm64 VM series](sizes/cobalt-overview.md) support Trusted Launch. You can deploy Trusted Launch on these Arm64 sizes using validated marketplace images.
 
 ### Is Azure Compute Gallery supported by Trusted Launch?
 
