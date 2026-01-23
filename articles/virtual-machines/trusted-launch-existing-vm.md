@@ -45,7 +45,7 @@ Azure Virtual Machines supports enabling Azure Trusted launch on existing [Azure
 
 ## Enable Trusted launch on an existing VM
 
-The following steps apply to both x64 and Arm64-based Generation 2 VMs, including [Cobalt 100-based Arm64 sizes](sizes/cobalt-overview.md) (Dpsv6, Dplsv6, Epsv6) when using Trusted launch-capable images.
+The following steps apply to both x64 and Arm64-based Generation 2 VMs when using Trusted launch-capable images.
 
 > [!NOTE]
 >
