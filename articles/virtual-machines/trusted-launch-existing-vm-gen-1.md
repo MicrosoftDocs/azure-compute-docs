@@ -430,4 +430,4 @@ Trusted launch enables foundational compute security on [Azure Generation 2 VMs]
 - Refer to [Deploy Trusted launch virtual machines](trusted-launch-portal.md) for enabling Trusted launch on new virtual machine & scale set deployments.
 - Refer to [boot integrity monitoring](trusted-launch.md#microsoft-defender-for-cloud-integration) for enabling boot integrity monitoring and monitor the health of the VM by using Microsoft Defender for Cloud.
 - Learn more about [Trusted launch](trusted-launch.md) and review [frequently asked questions](trusted-launch-faq.md).
-- Deploy Arm64 Trusted launch images on [Cobalt 100-based VM sizes](sizes/cobalt-overview.md) (Dpsv6, Dplsv6, Epsv6) for new deployments.
+- Deploy Arm64 Trusted launch images on [Cobalt 100-based VM sizes](sizes/cobalt-overview.md) for new deployments.
