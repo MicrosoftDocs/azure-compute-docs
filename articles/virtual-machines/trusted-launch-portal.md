@@ -57,7 +57,7 @@ Choose one of the deployment methods to create a new Trusted launch VM
 
 1. Under **Image**, select an image from **Recommended Gen 2 images compatible with Trusted launch**. For a list, see [Trusted Launch](trusted-launch.md#virtual-machines-sizes).
    > [!TIP]
-   > If you don't see the Gen2 version of the image that you want in the dropdown list, select **See all images**. Then change the **Security type** filter to **Trusted Launch**. For Arm64 deployments, Arm64 Trusted Launch images are available in Azure Marketplace. Use the image picker filters to select Arm64 images when targeting [Cobalt 100-based Arm64 sizes](sizes/cobalt-overview.md).
+   > If you don't see the Gen2 version of the image that you want in the dropdown list, select **See all images**. Then change the **Security type** filter to **Trusted Launch**. 
 1.  Select a VM size that supports Trusted Launch. For more information, see the list of [supported sizes](trusted-launch.md#virtual-machines-sizes). [Cobalt 100-based Arm64 sizes](sizes/cobalt-overview.md) (Dpsv6, Dplsv6, Epsv6) support Trusted Launch.
 1.  Fill in the **Administrator account** information and then **Inbound port rules**.
 1.  At the bottom of the page, select **Review + Create**.
