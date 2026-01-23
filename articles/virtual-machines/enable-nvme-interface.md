@@ -41,6 +41,8 @@ For more information about enabling the NVMe interface on virtual machines creat
 - Ubuntu 20.04
 - Ubuntu 22.04
 - Ubuntu 24.04
+- Rocky 8.10
+- Rocky 9.6
 
 ## Supported Windows OS images
 - Windows Server 2025
