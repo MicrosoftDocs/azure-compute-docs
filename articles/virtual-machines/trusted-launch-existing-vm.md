@@ -17,7 +17,7 @@ ms.custom:
 
 # Enable Trusted launch on existing Azure Gen2 VMs
 
-**Applies to:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: Generation 2 VM (x64 and Arm64)
+**Applies to:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM
 
 Azure Virtual Machines supports enabling Azure Trusted launch on existing [Azure Generation 2](generation-2.md) virtual machines (VM) by upgrading to the [Trusted launch](trusted-launch.md) security type.
 
