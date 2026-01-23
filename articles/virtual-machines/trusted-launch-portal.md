@@ -109,9 +109,6 @@ For more information about installing boot integrity monitoring through the Gues
 
 To provision a VM with Trusted Launch, it first needs to be enabled with the `TrustedLaunch` parameter by using the `Set-AzVmSecurityProfile` cmdlet. Then you can use the `Set-AzVmUefi` cmdlet to set the vTPM and Secure Boot configuration. Use the following snippet as a quick start. Remember to replace the values in this example with your own.
 
-> [!NOTE]
-> For Arm64 Trusted Launch VMs, ensure the selected image and size are Arm64 (for example, Cobalt 100 series Dpsv6, Dplsv6, Epsv6) and that Hyper-V Generation is V2.
-
 ```azurepowershell-interactive
 $rgName = "myResourceGroup"
 $location = "West US"
