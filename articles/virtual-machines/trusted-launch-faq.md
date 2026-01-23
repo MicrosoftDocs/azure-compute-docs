@@ -152,7 +152,7 @@ See the list of [OS versions supported with Trusted Launch](trusted-launch.md#op
 
 #### Marketplace OS images
 
-Use the following commands to check if an Azure Marketplace OS image supports Trusted Launch. The `architecture` field can be either `x64` or `Arm64`.
+Use the following commands to check if an Azure Marketplace OS image supports Trusted Launch. 
 
 ##### [CLI](#tab/adhoccli)
 
