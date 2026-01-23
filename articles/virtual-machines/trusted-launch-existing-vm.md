@@ -339,7 +339,7 @@ Make sure that you install the latest [Azure CLI](/cli/azure/install-az-cli2) an
         --resource-group myResourceGroup --name myVm
     ```
 
-3. Enable Trusted launch by setting `--security-type` to `Standard`.
+3. Disable Trusted launch by setting `--security-type` to `Standard`.
 
     ```azurecli-interactive
     az vm update \
@@ -381,7 +381,7 @@ To roll-back changes from Trusted launch to previous known good configuration, s
     Stop-AzVM -ResourceGroupName myResourceGroup -Name myVm
     ```
 
-3. Enable Trusted launch by setting `-SecurityType` to `TrustedLaunch`.
+3. Disable Trusted launch by setting `-SecurityType` to `Standard`.
 
     ```azurepowershell-interactive
     Get-AzVM -ResourceGroupName myResourceGroup -VMName myVm `
