@@ -24,8 +24,8 @@ Trusted Launch is supported for both x64 and Arm64 architectures.
 >
 > - Trusted Launch is the default state for newly created Azure Gen2 VM and scale sets. See the [Trusted Launch FAQs](trusted-launch-faq.md) if your new VM requires features that [aren't supported with Trusted launch](trusted-launch.md#unsupported-features).
 > - You can upgrade existing Azure Gen1 VMs to Gen2-Trusted launch to enable Secure Boot and vTPM. See [Upgrade existing Gen1 VMs to Gen2-Trusted launch](trusted-launch-existing-vm-gen-1.md).
-> - [Existing VM](overview.md) can have Trusted Launch enabled after being created. For more information, see [Enable Trusted Launch on existing Gen2 VMs](trusted-launch-existing-vm.md).
-> - Existing [virtual machine scale set](../virtual-machine-scale-sets/overview.md) can have Trusted Launch enabled after being created. For more information, see [Enable Trusted Launch on existing scale set](trusted-launch-existing-vmss.md).
+> - [Existing VMs](overview.md) can have Trusted Launch enabled after being created. For more information, see [Enable Trusted Launch on existing Gen2 VMs](trusted-launch-existing-vm.md).
+> - Existing [virtual machine scale sets](../virtual-machine-scale-sets/overview.md) can have Trusted Launch enabled after being created. For more information, see [Enable Trusted Launch on existing scale set](trusted-launch-existing-vmss.md).
 
 ## Benefits
 
