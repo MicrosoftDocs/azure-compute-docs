@@ -225,4 +225,3 @@ To disable the TLaD preview, unregister the preview feature `TrustedLaunchByDefa
 ## Related content
 
 - Deploy a [Trusted Launch VM](trusted-launch-portal.md).
-- Learn about [Cobalt 100-based Arm64 VM sizes](sizes/cobalt-overview.md) that support Trusted Launch.
