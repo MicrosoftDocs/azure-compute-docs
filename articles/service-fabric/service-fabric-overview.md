@@ -46,7 +46,7 @@ For [Windows development](service-fabric-get-started.md), the Service Fabric .NE
 
 ## Compliance
 
-Azure Service Fabric Resource Provider is available in all Azure regions and is compliant with all Azure compliance certifications, including: SOC, ISO, PCI DSS, HIPAA, and GDPR. For a complete list, see
+Azure Service Fabric Resource Provider is available in all Azure regions and is compliant with all Azure compliance certifications. For a complete list, see
 [Microsoft compliance offerings](/compliance/regulatory/offering-home).
 
 ## Next steps
