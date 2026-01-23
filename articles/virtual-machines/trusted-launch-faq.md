@@ -160,7 +160,7 @@ Use the following commands to check if an Azure Marketplace OS image supports Tr
 az vm image show --urn "MicrosoftWindowsServer:WindowsServer:2022-datacenter-azure-edition:latest"
 ```
 
-The response is similar to the following form. If `hyperVGeneration` is `V2` and `SecurityType` contains `TrustedLaunch` in the output, the Generation 2 OS image supports Trusted Launch, regardless of whether the architecture is x64 or Arm64.
+The response is similar to the following form. If `hyperVGeneration` is `V2` and `SecurityType` contains `TrustedLaunch` in the output, the Generation 2 OS image supports Trusted Launch.
 
 ```json
 {
