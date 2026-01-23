@@ -209,21 +209,6 @@ The response is similar to the following form. If `hyperVGeneration` is `V2` and
 }
 ```
 
-For Arm64 images, the output has `"architecture": "Arm64"`:
-
-```json
-{
-  "architecture": "Arm64",
-  "features": [
-    {
-      "name": "SecurityType",
-      "value": "TrustedLaunchSupported"
-    }
-  ],
-  "hyperVGeneration": "V2"
-}
-```
-
 ##### [PowerShell](#tab/adhocPowerShell)
 
 ```azurepowershell
