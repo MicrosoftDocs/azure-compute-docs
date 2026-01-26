@@ -23,7 +23,7 @@ This article contains all major API changes and feature updates for the Azure VM
 
 #### Retirement: Azure unmanaged disks
 
-Azure is retiring Azure unmanaged disks. This change affects a subset of AIB customers who use AIB  to distribute images as VHDs and then use those VHDs to provision new VMs. After the unmanaged disks retirement, you will still be able to use AIB to create VHD artifacts, but those VHDs will not be able to provision new VMs. For complete details — including scope, timelines, and the recommended mitigation steps — see the official documentation: [Migrate your Azure unmanaged disks](./unmanaged-disks-deprecation.md)
+Azure is retiring Azure unmanaged disks. This change affects a subset of AIB customers who use AIB  to distribute images as VHDs and then use those VHDs to provision new VMs. After the unmanaged disks retirement, you will still be able to use AIB to create VHD artifacts, but those VHDs will not be able to provision new VMs. For complete details — including scope, timelines, and the recommended mitigation steps — see the official documentation: [Migrate your Azure unmanaged disks by March 31, 2026](./unmanaged-disks-deprecation.md)
 
 
 ### September 2024
