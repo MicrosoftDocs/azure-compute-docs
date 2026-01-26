@@ -5,7 +5,7 @@ author: archatC
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 01/21/2026
+ms.date: 01/26/2026
 ms.author: archat
 ms.reviewer: mattmcinnes
 # Customer intent: "As a cloud architect, I want to understand the specifications and features of the Dadsv7 series virtual machine sizes, so that I can select the appropriate resources for my applications based on performance and storage requirements."
@@ -29,8 +29,6 @@ ms.reviewer: mattmcinnes
 - [Ephemeral OS Disk](../../ephemeral-os-disks.md): Supported
 - [Temporary local NVMe disks](../../enable-nvme-temp-faqs.yml): Supported
 - [Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Supported
-- [Azure Disk Encryption for Linux VMs](../../../virtual-machines/linux/disk-encryption-linux.md?tabs=azcliazure%2Cenableadecli%2Cefacli%2Cadedatacli#restrictions): Not Supported
-- [Azure Disk Encryption for Windows VMs](../../../virtual-machines/windows/disk-encryption-windows.md#restrictions): Not Supported
 
 ## Sizes in series
 

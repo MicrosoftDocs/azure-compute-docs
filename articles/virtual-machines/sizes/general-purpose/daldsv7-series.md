@@ -29,8 +29,6 @@ ms.reviewer: mattmcinnes
 - [Ephemeral OS Disk](../../ephemeral-os-disks.md): Supported
 - [Temporary local NVMe disks](../../enable-nvme-temp-faqs.yml): Supported
 - [Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Supported
-- [Azure Disk Encryption for Linux VMs](../../../virtual-machines/linux/disk-encryption-linux.md?tabs=azcliazure%2Cenableadecli%2Cefacli%2Cadedatacli#restrictions): Not Supported
-- [Azure Disk Encryption for Windows VMs](../../../virtual-machines/windows/disk-encryption-windows.md#restrictions): Not Supported
 
 ## Sizes in series
 
