@@ -27,9 +27,9 @@ The following table summarizes the supported `platformFaultDomainCount` values f
 | Orchestration Mode | Deployment Type | Supported Values | Default Value |
 |-------------------|----------------|------------------|---------------|
 | Uniform | Zonal or zone-spanning | 1, 5 | 1 |
-| Uniform | Nonzonal (regional)) | 1, 2, 3, 4, 5 | 5 |
+| Uniform | Regional (nonzonal) | 1, 2, 3, 4, 5 | 5 |
 | Flexible | Zonal or zone-spanning | 1 | 1 |
-| Flexible | Nonzonal (regional) | 1, 2, 3 | 1 |
+| Flexible | Regional (nonzonal) | 1, 2, 3 | 1 |
 
 ### Max spreading
 
@@ -56,7 +56,7 @@ Scale sets with Uniform orchestration support different fault domain configurati
 
 - **Zonal or zone-spanning scale sets:** Use max spreading by default (`platformFaultDomainCount = 1`). You can optionally configure fixed spreading with five fault domains (`platformFaultDomainCount = 5`).
 
-- **Nonzonal scale sets:** Use fixed spreading with five fault domains by default (`platformFaultDomainCount = 5`). You can optionally configure max spreading (`platformFaultDomainCount = 1`).
+- **Regional (nonzonal) scale sets:** Use fixed spreading with five fault domains by default (`platformFaultDomainCount = 5`). You can optionally configure max spreading (`platformFaultDomainCount = 1`).
 
   You can also consider aligning the number of scale set fault domains with the number of managed disk fault domains (for example, `platformFaultDomainCount = 2`). This alignment can help prevent loss of quorum if an entire disk fault domain goes down. The fault domain count can be set to less than or equal to the number of managed disks fault domains available in each of the regions. Refer to the [availability sets documentation](../virtual-machines/availability-set-overview.md) to learn about the number of managed disk fault domains by region.
 
@@ -66,7 +66,7 @@ Scale sets with Flexible orchestration support different fault domain configurat
 
 - **Zonal or zone-spanning scale sets**: Only support max spreading (`platformFaultDomainCount = 1`).
 
-- **Nonzonal scale sets**: Use max spreading (`platformFaultDomainCount = 1`) by default. You can optionally configure fault domain counts of `2` or `3`.
+- **Regional (nonzonal) scale sets**: Use max spreading (`platformFaultDomainCount = 1`) by default. You can optionally configure fault domain counts of `2` or `3`.
 
 ## Fault domains and tools
 
@@ -114,7 +114,7 @@ The following examples show how to use the Azure CLI to deploy scale sets with v
 > [!NOTE]
 > For zone-spanning and zonal Flexible virtual machine scale set deployments, the fault domain count is automatically set to 1 (max spreading) and can't be configured to a different value.
 
-- **Nonzonal Flexible scale set with fixed spreading:**
+- **Regional (nonzonal) Flexible scale set with fixed spreading:**
 
   ```azurecli-interactive
   az vmss create \
@@ -127,7 +127,7 @@ The following examples show how to use the Azure CLI to deploy scale sets with v
     --generate-ssh-keys
   ```
 
-- **Nonzonal Uniform scale set with max spreading:** 
+- **Regional (nonzonal) Uniform scale set with max spreading:** 
 
   ```azurecli-interactive
   az vmss create \

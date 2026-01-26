@@ -45,7 +45,7 @@ Flexible orchestration mode can be used with all VM sizes. Flexible orchestratio
 | Mix operating systems | Yes | Yes |
 | Mix Spot and On-demand instances | Yes | No | 
 | Mix General Purpose and Specialty SKU Types | Yes (`FDCount = 1`) | No | 
-| Maximum Fault Domain Count | Nonzonal (regional) – 3 (depending on the region's fault domain max count) <br> Zone-spanning and zonal – 1  | Nonzonal (regional) – 3 <br> Zone-spanning and zonal – 1  |
+| Maximum Fault Domain Count | Regional (nonzonal) – 3 (depending on the region's fault domain max count) <br> Zone-spanning and zonal – 1  | Regional (nonzonal) – 3 <br> Zone-spanning and zonal – 1  |
 | Spread instances across zones | Yes | Yes | 
 | Assign VM to a Specific Zone | Yes | Yes | 
 | Assign VM to a Specific Fault domain | Yes | No | 
