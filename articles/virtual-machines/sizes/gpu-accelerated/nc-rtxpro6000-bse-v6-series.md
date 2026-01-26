@@ -4,7 +4,7 @@ description: Information on and specifications of the NC_RTXPRO6000BSE_v6-series
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 12/05/2025
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes

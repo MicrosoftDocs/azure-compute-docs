@@ -1,7 +1,7 @@
 ---
-title: VM availability information in Azure Resource Graph
-description: Use Azure Resource Graph to use the same KQL query language used in log queries to query your Azure resources at scale with complex filtering, grouping, and sorting by resource properties.
-ms.service: azure-monitor
+title: Virtual Machine (VM) availability information in Azure Resource Graph
+description: Query your Azure resources at scale with complex filtering, grouping, and sorting with Azure Resource Graph (ARG).
+ms.service: azure-virtual-machines
 ms.topic: concept-article
 author: bwren
 ms.author: bwren
@@ -13,14 +13,14 @@ ms.custom: sfi-image-nochange
 ---
 
 # VM availability information in Azure Resource Graph
-[Azure Resource Graph](/azure/governance/resource-graph/overview) is an Azure service that allows you to use the same KQL query language used in log queries to query your Azure resources at scale with complex filtering, grouping, and sorting by resource properties. You can use [VM health annotations](/azure/service-health/resource-health-vm-annotation) to Azure Resource Graph (ARG) for detailed failure attribution and downtime analysis including the following:
+[Azure Resource Graph](/azure/governance/resource-graph/overview) is an Azure service that allows you to use the same Kusto Query Language (KQL) query language used in log queries to query your Azure resources at scale with complex filtering, grouping, and sorting by resource properties. You can use [VM health annotations](/azure/service-health/resource-health-vm-annotation) to Azure Resource Graph (ARG) for detailed failure attribution and downtime analysis including:
 
 - Query the latest snapshot of VM availability together across all your Azure subscriptions. 
 - Assess the impact to business SLAs and trigger decisive mitigation actions, in response to disruptions and type of failure signature.
-- Set up custom dashboards to supervise the comprehensive health of applications by [joining](/azure/governance/resource-graph/concepts/work-with-data) VM availability information with additional [resource metadata](/azure/governance/resource-graph/samples/samples-by-table?tabs=azure-cli) in Resource Graph.
+- Set up custom dashboards to supervise the comprehensive health of applications by [joining](/azure/governance/resource-graph/concepts/work-with-data) VM availability information with [resource metadata](/azure/governance/resource-graph/samples/samples-by-table?tabs=azure-cli) in Resource Graph.
 - Track relevant changes in VM availability across a rolling 14 days window,  by using the [change tracking](/azure/governance/resource-graph/how-to/get-resource-changes) mechanism for conducting detailed investigations.
 
-To get started with Resource Graph, open **Resource Graph Explorer** in the Azure portal. Select the **Table** tab and have a look at the [microsoft.resourcehealth/availabilitystatuses](#microsoftresourcehealthavailabilitystatuses) and [microsoft.resourcehealth/resourceannotations](#microsoftresourcehealthresourceannotations) tables which are described below. Click on **healthresources** to create a simple query and then click **Run** to return the records.
+To get started with Resource Graph, open **Resource Graph Explorer** in the Azure portal. Select the **Table** tab and have a look at the [microsoft.resourcehealth/availabilitystatuses](#microsoftresourcehealthavailabilitystatuses) and [microsoft.resourcehealth/resourceannotations](#microsoftresourcehealthresourceannotations) tables. Select **healthresources** to create a simple query and then select **Run** to return the records.
 
 :::image type="content" source="media/monitor-vm/resource-graph-explorer-healthresources.png" alt-text="Screenshot of Azure Resource Graph with simple healthresources query." lightbox="media/monitor-vm/resource-graph-explorer-healthresources.png" :::
 
