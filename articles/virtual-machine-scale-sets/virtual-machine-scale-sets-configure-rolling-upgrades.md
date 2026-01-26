@@ -51,7 +51,7 @@ The **upgrade policy mode** and the **rolling upgrade policy** are nested, but s
 For scale set model updates, the upgrade policy mode will determine how the instances in the scale set are brought up to date. 
 
 > [!IMPORTANT]
-> If you are using **[automatic OS image upgrades](virtual-machine-scale-sets-automatic-upgrade.md)** or **[automatic extension upgrades](../virtual-machines/automatic-extension-upgrade.md)**, these feature don't use the upgrade policy mode. Instead these features use the rolling upgrade policy configuration settings to perform rolling upgrades.
+> If you are using **[automatic OS image upgrades](virtual-machine-scale-sets-automatic-upgrade.md)** or **[automatic extension upgrades](../virtual-machines/automatic-extension-upgrade.md)**, these features don't use the upgrade policy mode. Instead these features use the rolling upgrade policy configuration settings to perform rolling upgrades.
 
 ### Rolling upgrade policy configuration settings
 
