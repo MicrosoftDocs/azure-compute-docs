@@ -57,7 +57,7 @@ After the time specified in `InstantAccessDurationMins` elapses, or five hours h
 
 ### Regional availability
 
-Instant access snapshots are currently supported in France Central, East Asia, Brazil South, Brazil Southeast, UK West, North Central US, Poland Central, Switzerland North, South Africa North, Japan East, Australia Central, Australia Central 2, Australia East, Qatar Central, Norway East, Norway West, Japan West, Korea South, Taiwan North, West Central US, Israel Central, Canada East, Canada Central, US Gov South Central, US Gov Southwest, Malaysia West, Indonesia Central, Mexico Central, Spain Central, Italy North, Sweden Central, Germany West Central.
+Instant access snapshots are currently supported in France Central, East Asia, Brazil South, Brazil Southeast, UK West, North Central US, Poland Central, New Zealand North, Switzerland North, South Africa North, Japan East, Australia Central, Australia Central 2, Australia East, Qatar Central, UAE North, Norway East, Norway West, Japan West, Korea South, Korea Central, Taiwan North, Israel Central, Canada East, Canada Central, US Gov South Central, US Gov Southwest, Malaysia West, Indonesia Central, Mexico Central, Spain Central, Italy North, Sweden Central, Germany West Central, North Europe, Central US, West Central US, South Central US, West US 2, West US 3,  East US, East US 2.
 
 
 ### Billing of instant access snapshots of Ultra Disks and Premium SSD v2 disks
