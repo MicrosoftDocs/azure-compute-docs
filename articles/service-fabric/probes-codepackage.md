@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+ms.update-cycle: 1095-days
 # Customer intent: As a cloud application developer, I want to configure liveness and readiness probes in Service Fabric manifest files, so that I can ensure my application instances are properly monitored and can handle traffic efficiently.
 ---
 

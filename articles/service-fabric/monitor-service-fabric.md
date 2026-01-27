@@ -2,6 +2,7 @@
 title: Monitor Azure Service Fabric
 description: Start here to learn how to monitor Service Fabric.
 ms.date: 09/29/2025
+ms.update-cycle: 1095-days
 ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy

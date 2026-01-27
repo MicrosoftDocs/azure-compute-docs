@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 09/29/2025
+ms.update-cycle: 1095-days
 # Customer intent: As a cloud application developer, I want to implement monitoring and diagnostics for my services in Azure Service Fabric, so that I can ensure application reliability and proactively address performance issues.
 ---
 
