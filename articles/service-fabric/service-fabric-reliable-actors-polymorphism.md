@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: devx-track-dotnet
 services: service-fabric
 ms.date: 07/11/2022
+ms.update-cycle: 1095-days
 # Customer intent: As a software developer, I want to implement polymorphism in the Reliable Actors framework, so that I can create reusable actor hierarchies and efficiently define APIs for communication within my cloud applications.
 ---
 

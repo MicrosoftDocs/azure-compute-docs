@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+ms.update-cycle: 1095-days
 # Customer intent: "As a cloud architect managing large services in a Service Fabric cluster, I want to implement defragmentation as a load balancing strategy, so that I can expedite the scheduling and creation of large workloads while optimizing resource utilization."
 ---
 

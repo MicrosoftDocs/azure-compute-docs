@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+ms.update-cycle: 1095-days
 # Customer intent: "As an application administrator, I want to perform controlled upgrades of my Service Fabric applications, so that I can ensure high availability and maintain system health throughout the upgrade process."
 ---
 

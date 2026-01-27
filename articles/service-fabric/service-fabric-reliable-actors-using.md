@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+ms.update-cycle: 1095-days
 # Customer intent: As a software developer, I want to implement custom actor services in a cloud-based application, so that I can utilize advanced service-level features like remote procedure calls and data backup tailored to my specific requirements.
 ---
 
