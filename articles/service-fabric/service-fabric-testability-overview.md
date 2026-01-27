@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+ms.update-cycle: 1095-days
 # Customer intent: "As a service developer, I want to use the Fault Analysis Service to simulate real-world failures, so that I can validate the resilience and functionality of my distributed applications in a controlled environment before deploying to production."
 ---
 

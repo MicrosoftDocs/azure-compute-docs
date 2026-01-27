@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+ms.update-cycle: 1095-days
 # Customer intent: As an application architect, I want to understand how Azure Service Fabric node types interact with virtual machine scale sets, so that I can effectively design and manage my cloud infrastructure for optimal performance and scalability.
 ---
 
