@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+ms.update-cycle: 1095-days
 # Customer intent: As a developer, I want to understand how to deploy and manage microservices using containers on a distributed systems platform, so that I can build scalable and reliable applications efficiently.
 ---
 

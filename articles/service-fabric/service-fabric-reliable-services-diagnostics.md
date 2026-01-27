@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+ms.update-cycle: 1095-days
 # Customer intent: As a service developer, I want to utilize diagnostic events from Azure Service Fabric's Stateful Reliable Services so that I can effectively debug and optimize the service's performance and reliability.
 ---
 
