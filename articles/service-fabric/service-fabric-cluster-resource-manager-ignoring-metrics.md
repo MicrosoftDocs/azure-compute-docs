@@ -12,13 +12,13 @@ ms.author: majovanovic
 # Ignoring metrics
 Service Fabric provides a way for customers to set custom metrics for their services, which the Cluster Resource Manager uses for placement of said services and for keeping the cluster balanced. These metrics don't need to be physical cluster constraints, like CPU or memory, but can be any logical constraints that the customer wishes to impose upon the cluster.
 
-CRM introduces a way where the user can ignore a set of these metrics by enabling the feature through a dynamic config. When this feature is enabled, CRM will consider capacities for the stated metrics on all of the nodes infinite, so they won't pose any constraint in placing services. This may come useful when a large portion of the cluster nodes goes down, and capacities need to be expanded in order to prioritize placing all of the services from the downed nodes.
+CRM introduces a way where the user can ignore a set of these metrics by enabling the feature through a dynamic config. When this feature is enabled, CRM considers capacities for the stated metrics on all of the nodes infinite, so they don't pose any constraint in placing services. This feature might come in handy when a large portion of the cluster nodes goes down. In this scenario, capacities need to be expanded in order to prioritize placing all of the services from the downed nodes.
 
 ## Example scenario: Large-scale node failure requiring capacity expansion
 
 This scenario demonstrates what happens when a large portion of cluster nodes goes down, and how ignoring metrics effectively expands capacity to prioritize placing all services from the downed nodes.
 
-### Initial cluster state (6 nodes healthy)
+### Initial cluster state (six nodes healthy)
 
 **Node capacities:**
 
@@ -52,9 +52,9 @@ This scenario demonstrates what happens when a large portion of cluster nodes go
 
 All 18 replicas (6 from each service) are distributed evenly. Each node hosts 3 replicas.
 
-### Large-scale failure: 4 out of 6 nodes go down (without ignoring metrics)
+### Large-scale failure: four out of six nodes go down (without ignoring metrics)
 
-**Catastrophic scenario:** Node3, Node4, Node5, and Node6 fail simultaneously (67% of the cluster is down). CRM must redistribute 12 replicas from the failed nodes to the remaining 2 healthy nodes.
+**Catastrophic scenario:** Node3, Node4, Node5, and Node6 fail simultaneously (67% of the cluster is down). CRM must redistribute twelve replicas from the failed nodes to the remaining two healthy nodes.
 
 **Remaining nodes after failure:**
 
@@ -69,11 +69,11 @@ All 18 replicas (6 from each service) are distributed evenly. Each node hosts 3 
 
 **Attempting to place all services from downed nodes:**
 
-CRM needs to place 12 replicas (4 of each service) onto just 2 nodes:
+CRM needs to place twelve replicas (four of each service) onto just two nodes:
 
 | Node | ServiceA Replicas Needed | ServiceB Replicas Needed | ServiceC Replicas Needed | Required Custom Metric |
 |------|--------------------------|--------------------------|--------------------------|------------------------|
-| Node1 | 1 original + 2 from failed nodes | 1 original + 2 from failed nodes | 1 original + 2 from failed nodes | 9 replicas × 13 = 117 units |
+| Node1 | 1 original + 2 from failed nodes | 1 original + 2 from failed nodes | 1 original + 2 from failed nodes | Nine replicas × 13 = 117 units |
 | Node2 | 1 original + 2 from failed nodes | 1 original + 2 from failed nodes | 1 original + 2 from failed nodes | 9 replicas × 13 = 117 units |
 
 **Actual placement result (constrained by Custom Metric):**
@@ -92,7 +92,7 @@ CRM needs to place 12 replicas (4 of each service) onto just 2 nodes:
 | ServiceC | 4 replicas | 0 replicas | 4 replicas unplaced | ✗ Failed to place any |
 | **Total** | **12 replicas lost** | **2 placed** | **10 unplaced** | **83% placement failure** |
 
-**Problem:** The Custom Metric capacity of 50 units per node is the bottleneck. You could manually edit each node description to disable the metric, but this becomes impractical with many nodes or multiple custom metrics. The ignoring metrics feature solves this with a single cluster-wide configuration change.
+**Problem:** The Custom Metric capacity of 50 units per node is the bottleneck. You could manually edit each node description to disable the metric, but this approach becomes impractical with many nodes or multiple custom metrics. The ignoring metrics feature solves this problem with a single cluster-wide configuration change.
 
 ### After ignoring Custom Metric
 
