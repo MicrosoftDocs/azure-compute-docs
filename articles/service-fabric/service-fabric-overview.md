@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 01/23/2026
+ms.update-cycle: 1095-days
 # Customer intent: As a cloud developer, I want to utilize a distributed systems platform for building and managing scalable microservices, so that I can effectively deploy, monitor, and maintain applications across various environments.
 ---
 
