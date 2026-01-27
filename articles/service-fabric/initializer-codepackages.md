@@ -1,13 +1,12 @@
 ---
 title: Initializer CodePackages in Service Fabric
 description: Describes Initializer CodePackages in Service Fabric.
-ms.topic: concept-article
+ms.topic: how-to
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
-ms.update-cycle: 1095-days
 # Customer intent: As a cloud developer, I want to implement Initializer CodePackages in Service Fabric so that I can ensure proper initialization of container applications before executing other CodePackages.
 ---
 
