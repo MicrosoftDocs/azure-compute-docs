@@ -21,6 +21,19 @@ This overview covers the basic concepts around imaging and how to successfully b
 
 This article talks through the image decision points and requirements as well as explain key concepts so that you can follow this and be able to create your own custom images to your specification.
 
+
+VM scale set lets you deploy and manage a group of identical (or similar) VMs automatically.
+Azure handles:
+- Scaling up/down (adding/removing VMs)
+- Load balancing
+- Health monitoring
+- Zone/region distribution
+
+There are two main types of scale sets:
+- Uniform scale set: Use when you want simplicity and speed. All VMs are identical — same size, image, and configuration.
+- Flexible scale set:  Use when you want flexibility and high availability. VMs can be different sizes or configurations, and you can mix Spot + Regular VMs.
+
+
 ## Difference between managed disks and images
 
 
