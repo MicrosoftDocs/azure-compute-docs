@@ -5,7 +5,7 @@ metadata:
   description: Generalized or deprovision VM to remove machine specific information before creating an image.
   author: cynthn
   ms.author: cynthn
-  ms.date: 03/15/2023
+  ms.date: 01/27/2026
   ms.service: azure-virtual-machines
   ms.subservice: imaging
   ms.topic: how-to
@@ -16,8 +16,6 @@ metadata:
 title: |
   Remove machine specific information by deprovisioning or generalizing a VM before creating an image
 introduction: |
-  > [!CAUTION]
-  > This article references CentOS, a Linux distribution that is End Of Life (EOL) status. Please consider your use and planning accordingly.
 
   Generalizing or deprovisioning a VM is not necessary for creating an image in an [Azure Compute Gallery](shared-image-galleries.md#generalized-and-specialized-images) unless you specifically want to create an image that has no machine specific information, like user accounts. Generalizing is still required when creating a managed image outside of a gallery.
 
@@ -25,6 +23,8 @@ introduction: |
 
   > [!IMPORTANT]
   > Once you mark a VM as `generalized` in Azure, you cannot restart the VM.
+  >
+  > This article references CentOS, a Linux distribution that is End Of Life (EOL) status. Please consider your use and planning accordingly.
 
 procedureSection:
   - title: |
@@ -102,7 +102,7 @@ procedureSection:
       - | 
         Open a Command Prompt window as an administrator. 
       - | 
-        Delete the panther directory (C:\Windows\Panther). 
+        Delete the panther directory (C:\Windows\Panther) if it exists. 
       - |   
         Verify if CD/DVD-ROM is enabled. If it is disabled, the Windows VM will be stuck at out-of-box experience (OOBE).  
         ```
