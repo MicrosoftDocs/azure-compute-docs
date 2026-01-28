@@ -183,6 +183,11 @@ The following is a list of Fabric settings that you can customize, organized by 
 |PlacementConstraints|string, default is    ""|Static|    The PlacementConstraints for EventStore service |
 |TargetReplicaSetSize|int, default is    0|Static| The TargetReplicaSetSize for EventStore service |
 
+## ExpandedMetricsDuringZoneDownMode
+| **Parameter** | **Allowed Values** |**Upgrade Policy**| **Guidance or Short Description** |
+| --- | --- | --- | --- |
+|PropertyGroup|KeyBoolValueMap, default is None|Static|Determines which metrics have their node capacities treated as infinite when the ignoring metrics feature is enabled. Set the value to `true` for metrics that should be ignored.
+
 ## FabricClient
 
 | **Parameter** | **Allowed Values** | **Upgrade Policy** | **Guidance or Short Description** |
@@ -622,6 +627,7 @@ The following is a list of Fabric settings that you can customize, organized by 
 |DetailedVerboseHealthReportLimit | Int, default is 200 | Dynamic|Defines the number of times an unplaced replica has to be persistently unplaced before detailed health reports are emitted. |
 |EnforceUserServiceMetricCapacities|bool, default is FALSE | Static |Enables fabric services protection. All user services are under one job object/cgroup and limited to specified amount of resources. This needs to be static (requires restart of FabricHost) as creation/removal of user job object and setting limits in done during open of Fabric Host. |
 |EnableServiceSensitivity | bool, default is False | Dynamic|Feature switch to enable/disable the replica sensitivity feature. |
+|EnableZoneDownModeNodeCapacityExpansion | bool, default is False | Dynamic|Feature switch to enable/disable ignoring metrics. When enabled, metrics specified in the `ExpandedMetricsDuringZoneDownMode` section have their node capacities treated as infinite. When disabled, all metrics are enforced normally. |
 |FaultDomainConstraintPriority | Int, default is 0 |Dynamic| Determines the priority of fault domain constraint: 0: Hard; 1: Soft; negative: Ignore. |
 |GlobalMovementThrottleCountingInterval | Time in seconds, default is 600 |Static| Specify timespan in seconds. Indicate the length of the past interval for which to track per domain replica movements (used along with GlobalMovementThrottleThreshold). Can be set to 0 to ignore global throttling altogether. |
 |GlobalMovementThrottleThreshold | Uint, default is 1000 |Dynamic| Maximum number of movements allowed in the Balancing Phase in the past interval indicated by GlobalMovementThrottleCountingInterval. |

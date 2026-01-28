@@ -10,9 +10,9 @@ ms.author: majovanovic
 ---
 
 # Ignoring metrics
-Service Fabric provides a way for customers to set custom metrics for their services, which the Cluster Resource Manager uses for placement of said services and for keeping the cluster balanced. These metrics don't need to be physical cluster constraints, like CPU or memory, but can be any logical constraints that the customer wishes to impose upon the cluster.
+Service Fabric provides a way for customers to set custom metrics for their services, which the Cluster Resource Manager (CRM) uses for placement of said services and for keeping the cluster balanced. These metrics don't need to be physical cluster constraints, like CPU or memory, but can be any logical constraints that the customer wishes to impose upon the cluster.
 
-CRM introduces a way where the user can ignore a set of these metrics by enabling the feature through a dynamic config. When this feature is enabled, CRM considers capacities for the stated metrics on all of the nodes infinite, so they don't pose any constraint in placing services. This feature might come in handy when a large portion of the cluster nodes goes down. In this scenario, capacities need to be expanded in order to prioritize placing all of the services from the downed nodes.
+CRM introduces a way where the user can ignore a set of these metrics by enabling the feature through a dynamic config. When this feature is enabled, CRM considers capacities for the stated metrics on all of the nodes infinite, so they don't pose any constraint in placing services. This feature might come in handy when a large portion of the cluster nodes goes down. In this scenario, capacities need to be expanded in order to prioritize placing all of the services from the downed nodes. An example of such a scenario is when a whole availability zone (AZ) goes down.
 
 ## Example scenario: Large-scale node failure requiring capacity expansion
 
@@ -131,6 +131,8 @@ By ignoring the Custom Metric, you effectively expand the capacity from 50 units
 
 Configure which metrics can be ignored as part of your cluster configuration. You must specify these metrics in advance before you need to ignore them. This configuration is a global cluster setting that identifies individual metrics that can be ignored. The following examples show how to configure metrics. In this case, Metric1 is ignored (node capacities for that metric become infinite), while Metric2 continues to be enforced normally.
 
+***Note:*** Only metrics that need to be ignored need to be configured with the value set to `true`. Metrics not specified in the `ExpandedMetricsDuringZoneDownMode` section are treated normally.
+
 ClusterManifest.xml:
 
 ```xml
@@ -162,7 +164,7 @@ via ClusterConfig.json for Standalone deployments or Template.json for Azure hos
 
 ## 2. Enable/Disable ignoring metrics
 
-Ignoring metrics feature is turned on/off by setting config `EnableZoneDownModeNodeCapacityExpansion` in `PlacementAndLoadBalancing` section of cluster manifest either using XML or JSON:
+The scenario for detecting when metrics need to be ignored needs to be detected manually. Ignoring metrics feature is turned on/off by setting config `EnableZoneDownModeNodeCapacityExpansion` in `PlacementAndLoadBalancing` section of cluster manifest either using XML or JSON:
 
 In ClusterManifest.xml:
 ``` xml
@@ -186,6 +188,8 @@ Via ClusterConfig.json for Standalone deployments or Template.json for Azure hos
   }
 ]
 ```
+
+Once `EnableZoneDownModeNodeCapacityExpansion` is set to `true`, metrics specified in the `ExpandedMetricsDuringZoneDownMode` section are ignored. Setting `EnableZoneDownModeNodeCapacityExpansion` to `false` turns off this feature, and all metrics are enforced normally.
 
 ## 3. Next steps
 Learn more about [custom metrics](service-fabric-cluster-resource-manager-metrics.md).
