@@ -1,5 +1,5 @@
 ---
-title: Dldsv6 size series (Preview)
+title: Dldsv6 size series
 description: Information on and specifications of the Dldsv6-series sizes
 author: mattmcinnes
 ms.service: azure-virtual-machines
