@@ -191,5 +191,5 @@ Via ClusterConfig.json for Standalone deployments or Template.json for Azure hos
 
 Once `EnableZoneDownModeNodeCapacityExpansion` is set to `true`, metrics specified in the `ExpandedMetricsDuringZoneDownMode` section are ignored. Setting `EnableZoneDownModeNodeCapacityExpansion` to `false` turns off this feature, and all metrics are enforced normally.
 
-## 3. Next steps
+## Next steps
 Learn more about [custom metrics](service-fabric-cluster-resource-manager-metrics.md).
