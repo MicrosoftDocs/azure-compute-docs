@@ -6,6 +6,7 @@ ms.service: azure-virtual-machines
 ms.collection: windows
 ms.topic: quickstart
 ms.date: 01/22/2025
+ms.update-cycle: 180-days
 ms.author: cynthn
 ms.reviewer: jushiman
 ms.custom:

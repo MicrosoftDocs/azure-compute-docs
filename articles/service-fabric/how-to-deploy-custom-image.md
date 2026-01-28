@@ -1,7 +1,7 @@
 ---
 title: Custom Image
 description: Learn how to deploy a custom image on Azure Service Fabric clusters (SFMC).
-ms.topic: concept-article
+ms.topic: how-to
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric

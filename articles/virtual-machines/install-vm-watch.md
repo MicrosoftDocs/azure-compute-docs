@@ -77,7 +77,7 @@ Set-AzVMExtension -ResourceGroupName "<your resource group>" -Location "<your vm
 
 ```
         "type": "Microsoft.Compute/virtualMachines/extensions", 
-        "apiVersion": "2019-07-01", 
+        "apiVersion": "2025-04-01", 
         "name": "[concat('<your vm name>', '/', '<your extension name')]", 
         "location": "<your vm region>", 
         "dependsOn": [ 
