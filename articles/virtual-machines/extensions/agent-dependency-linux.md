@@ -2,8 +2,8 @@
 title: Azure Monitor Dependency virtual machine extension for Linux
 description: Deploy the Azure Monitor Dependency agent on Linux virtual machine by using a virtual machine extension.
 ms.topic: concept-article
-ms.service: azure-monitor
-ms.subservice: agents
+ms.service: azure-virtual-machines
+ms.subservice: extensions
 ms.custom: devx-track-azurecli, linux-related-content
 author: guywi-ms
 ms.author: guywild

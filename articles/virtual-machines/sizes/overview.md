@@ -19,10 +19,7 @@ Azure Virtual Machine (VM) sizes are designed to provide a wide range of options
 
 This article describes what sizes are, gives an overview of the available sizes and shows different options for Azure virtual machine instances you can use to run your apps and workloads.
 
-> [!TIP]
-> Try the **[Virtual machines selector tool](https://aka.ms/vm-selector)** to find other sizes that best fit your workload.
-
-:::image type="content" source="./media/azure-vms-thumb.jpg" alt-text="YouTube video for selecting the right size for your VM." link="https://www.youtube.com/watch?v=zKUBjtof6nU":::
+:::image type="content" source="./media/vm-series-video-play.png" alt-text="YouTube video for selecting the right size for your VM." link="https://www.youtube.com/watch?v=zKUBjtof6nU":::
 
 ## VM size and series naming
 
