@@ -76,8 +76,7 @@ Limitations by design:
 - Sharing is done per Capacity Reservation Group, which grants access to all member Capacity Reservations. Individual Capacity Reservations can't be shared. To isolate specific Capacity Reservations, create multiple Capacity Reservation Groups and share only those Capacity Reservations that contain shared capacity. 
 - By default, Capacity Reservation Group administrators in the subscription owning a Capacity Reservation Group can't modify VM instances deployed by other subscriptions. If such VM access is desired, more rights to VMs on the shared subscriptions must be granted separately. 
   
-Limitations for Preview:
-- Azure portal support isn't available; API and other Azure clients are available.  
+Limitations for Preview:  
 - Reprovisioning of Virtual Machine Scale Set VMs using a shared Capacity Reservation Group isn't supported during a zone outage.
 - There is a known issue of [Capacity Reservation Groups - List by Subscription ID](#capacity-reservation-groups---list-by-subscription-id) not giving the right response if there is no CRG created by the subscription making the `GET` call to list shared CRGs in the region. To get the correct response, ensure you have a local CRG created in the subscription making the API call in the same region where you would like to enumerate the shared CRGs. Alternatively, use the [Azure Resource Graph](#azure-resource-graph) query provided to get the list of CRGs shared with your subscription.
 
