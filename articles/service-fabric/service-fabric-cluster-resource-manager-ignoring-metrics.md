@@ -131,7 +131,7 @@ By ignoring the Custom Metric, you effectively expand the capacity from 50 units
 
 Configure which metrics can be ignored as part of your cluster configuration. You must specify these metrics in advance before you need to ignore them. This configuration is a global cluster setting that identifies individual metrics that can be ignored. The following examples show how to configure metrics. In this case, Metric1 is ignored (node capacities for that metric become infinite), while Metric2 continues to be enforced normally.
 
-***Note:*** Only metrics that need to be ignored need to be configured with the value set to `true`. Metrics not specified in the `ExpandedMetricsDuringZoneDownMode` section are treated normally.
+***Note:*** Set the value to `true` only for metrics that should be ignored. Metrics not listed in the `ExpandedMetricsDuringZoneDownMode` section continue to be enforced normally.
 
 ClusterManifest.xml:
 
@@ -164,7 +164,7 @@ via ClusterConfig.json for Standalone deployments or Template.json for Azure hos
 
 ## 2. Enable/Disable ignoring metrics
 
-The scenario for detecting when metrics need to be ignored needs to be detected manually. Ignoring metrics feature is turned on/off by setting config `EnableZoneDownModeNodeCapacityExpansion` in `PlacementAndLoadBalancing` section of cluster manifest either using XML or JSON:
+Users must manually detect the scenario when metrics need to be ignored. Ignoring metrics feature is turned on/off by setting config `EnableZoneDownModeNodeCapacityExpansion` in `PlacementAndLoadBalancing` section of cluster manifest either using XML or JSON:
 
 In ClusterManifest.xml:
 ``` xml
