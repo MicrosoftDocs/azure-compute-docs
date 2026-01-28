@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 07/29/2024
+ms.date: 01/28/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 # Customer intent: "As a cloud architect, I want to review the specifications of the Dldsv6 size series, so that I can select the most appropriate virtual machine type for my application workloads and ensure optimal performance."
