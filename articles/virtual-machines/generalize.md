@@ -46,7 +46,9 @@ Distribution specific instructions for preparing Linux images for Azure are avai
 
 The following instructions only cover setting the VM to generalized. We recommend you follow the distro specific instructions for production workloads.
 
-First you'll deprovision the VM by using the Azure VM agent to delete machine-specific files and data. Use the `waagent` command with the `-deprovision+user` parameter on your source Linux VM. For more information, see the [Azure Linux Agent user guide](./extensions/agent-linux.md). This process can't be reversed.
+### Deprovision a Linux VM
+
+First you deprovision the VM using the Azure Linux Agent (waagent) to delete machine-specific files and data. Use the `waagent` command with the `-deprovision+user` parameter on your source Linux VM. For more information, see the [Azure Linux Agent user guide](./extensions/agent-linux.md). This process can't be reversed.
 
 1. Connect to your Linux VM with an SSH client.
 
@@ -104,11 +106,12 @@ Sysprep removes all your personal account and security information, and then pre
 
 - Make sure the server roles running on the machine are supported by Sysprep. For more information, see [Sysprep support for server roles](/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles) and [Unsupported scenarios](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview#unsupported-scenarios). 
 - 
-- Disable encryption. Sysprep requires the drives to be fully decrypted. If you have enabled encryption on your VM, disable encryption before you run Sysprep.
+- Disable encryption. Sysprep requires the drives to be fully decrypted. If encryption is enabled on your VM, disable encryption before you run Sysprep.
 
-- If you plan to run Sysprep before uploading your virtual hard disk (VHD) to Azure for the first time, make sure you have [prepared your VM](./windows/prepare-for-upload-vhd-image.md).  
+- If you plan to run Sysprep on a local machine before uploading your virtual hard disk (VHD) to Azure for the first time, make sure you have [prepared your VM](./windows/prepare-for-upload-vhd-image.md) before starting.  
 
 
+### Generalize a Windows VM
 
 To generalize your Windows VM, follow these steps:
 
