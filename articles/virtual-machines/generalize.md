@@ -3,7 +3,7 @@ title: Deprovision or generalize a VM before creating an image
 description: Generalized or deprovision VM to remove machine specific information before creating an image.
 author: cynthn
 ms.author: cynthn
-ms.date: 01/27/2026
+ms.date: 01/282026
 ms.service: azure-virtual-machines
 ms.subservice: imaging
 ms.topic: how-to
@@ -23,7 +23,11 @@ Generalizing removes machine specific information so the image can be used to cr
 >
 > This article references CentOS, a Linux distribution that is End Of Life (EOL) status. Please consider your use and planning accordingly.
 
-## Linux
+## Deprovisioning a Linux VM before creating an image
+
+Use the Azure Linux Agent (waagent) to remove machine-specific information from a Linux VM to prepare it for imaging. Waagent deletes the Azure VM agent's provisioning data, machine-specific files, and the last provisioned user account, making the VM ready to be captured as a reusable image template.
+
+### Prerequisites for Linux VMs
 
 Distribution specific instructions for preparing Linux images for Azure are available here:
 - [Generic steps](./linux/create-upload-generic.md)
@@ -72,22 +76,36 @@ First you'll deprovision the VM by using the Azure VM agent to delete machine-sp
       --name myVM
    ```
 
-## Windows
+## Generalizing a Windows VM before creating an image
 
 Sysprep removes all your personal account and security information, and then prepares the machine to be used as an image. For information about Sysprep, see [Sysprep overview](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview).
 
-Make sure the server roles running on the machine are supported by Sysprep. For more information, see [Sysprep support for server roles](/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles) and [Unsupported scenarios](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview#unsupported-scenarios). 
-
 > [!IMPORTANT]
 > After you have run Sysprep on a VM, that VM is considered *generalized* and can't be restarted. The process of generalizing a VM isn't reversible. If you need to keep the original VM functioning, you should create a snapshot of the OS disk, create a VM from the snapshot, and then generalize that copy of the VM. 
->
-> Sysprep requires the drives to be fully decrypted. If you have enabled encryption on your VM, disable encryption before you run Sysprep.
->
-> If you plan to run Sysprep before uploading your virtual hard disk (VHD) to Azure for the first time, make sure you have [prepared your VM](./windows/prepare-for-upload-vhd-image.md).  
 > 
-> We do not support custom answer file in the sysprep step, hence you should not use the "/unattend:_answerfile_" switch with your sysprep command.  
->  
-> Azure platform mounts an ISO file to the DVD-ROM when a Windows VM is created from a generalized image. For this reason, the **DVD-ROM must be enabled in the OS in the generalized image**. If it is disabled, the Windows VM will be stuck at out-of-box experience (OOBE).
+> We do not support custom answer files in the sysprep step, so you can't use the "/unattend:_answerfile_" switch with your sysprep command.  
+
+
+### Prerequisites for Windows VMs
+
+- Verify the  CD/DVD-ROM is enabled. If it is disabled, the Windows VM will be stuck at out-of-box experience (OOBE). At a command prompt running as an administrator, run the following command:
+
+   ```cmd
+   REM Enable CD/DVD-ROM
+   reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\cdrom /v start /t REG_DWORD /d 1 /f
+   ```
+
+   The Azure platform mounts an ISO file to the DVD-ROM when a Windows VM is created from a generalized image. For this reason, the **DVD-ROM must be enabled in the OS in the generalized image**. If it is disabled, the Windows VM will be stuck at out-of-box experience (OOBE).
+
+- Verify there are no policies applied restricting removable storage access. For example: Computer configuration\Administrative Templates\System\Removable Storage Access\All Removable Storage classes: Deny all access
+
+- Make sure the server roles running on the machine are supported by Sysprep. For more information, see [Sysprep support for server roles](/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles) and [Unsupported scenarios](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview#unsupported-scenarios). 
+- 
+- Disable encryption. Sysprep requires the drives to be fully decrypted. If you have enabled encryption on your VM, disable encryption before you run Sysprep.
+
+- If you plan to run Sysprep before uploading your virtual hard disk (VHD) to Azure for the first time, make sure you have [prepared your VM](./windows/prepare-for-upload-vhd-image.md).  
+
+
 
 To generalize your Windows VM, follow these steps:
 
@@ -95,19 +113,13 @@ To generalize your Windows VM, follow these steps:
 
 1. Open a Command Prompt window as an administrator. 
 
-1. Delete the panther directory (C:\Windows\Panther) if it exists. 
+1. Delete the panther directory (C:\Windows\Panther) if it exists. This directory contains logs from previous Sysprep operations that can cause Sysprep to fail.
 
-1. Verify if CD/DVD-ROM is enabled. If it is disabled, the Windows VM will be stuck at out-of-box experience (OOBE).
-
-   ```
-   REM Enable CD/DVD-ROM
-   reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\cdrom /v start /t REG_DWORD /d 1 /f
+   ```cmd
+   rd /s /q C:\Windows\Panther
    ```
 
-   > [!NOTE]
-   > Verify if any policies applied restricting removable storage access (example: Computer configuration\Administrative Templates\System\Removable Storage Access\All Removable Storage classes: Deny all access)
-
-1. Then change the directory to %windir%\system32\sysprep, and then run:
+1. Change to the %windir%\system32\sysprep directory, and then run:
 
    ```
    sysprep.exe /generalize /shutdown
