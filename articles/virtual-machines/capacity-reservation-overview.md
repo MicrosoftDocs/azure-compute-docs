@@ -5,8 +5,9 @@ author: bdeforeest
 ms.author: bidefore
 ms.service: azure-virtual-machines
 ms.topic: overview
-ms.date: 02/24/2023
-ms.reviewer: cynthn, jushiman, mattmcinnes
+ms.date: 12/22/2025
+ms.update-cycle: 1095-days
+ms.reviewer: cynthn, mattmcinnes
 ms.custom: template-how-to
 # Customer intent: "As an IT administrator, I want to create and manage on-demand capacity reservations in Azure, so that I can ensure the availability of compute resources for critical workloads without long-term commitments."
 ---
@@ -63,10 +64,10 @@ From this example accumulation of Minutes Not Available, here's the calculation 
   | Type | VM Series |
   | ----- | ----------- |
   | General Purpose (Burstable) | B (Intel) <br> Bsv2 (Intel), Basv2 (AMD), Bpsv2 (ARM) |
-  | General Purpose (General use A, D) | Av2 (Intel) <br> D and Ds series, v2 and newer (Intel) <br> Dd and Dds, v4 and newer (Intel, local disk) <br> Dls and Dlds, v5 and newer (Intel, low memory) <br> Da and Das, v4 series and newer (AMD) <br> Dads, v5 and newer (AMD, local disk) <br> Dalsv6 and Daldsv6 (AMD) <br> Dps and Dpds series, v5 and newer (ARM) <br> Dpls and Dplds series, v5 and newer (ARM, low memory) |
-  | General Purpose (General use, high memory, E )| E and Es, all versions (Intel) <br> Ed and Eds series, v4 and newer (Intel, local disk) <br> Ebdsv5 and Ebsv5 series (Intel, block storage) <br> Ea and Eas, v4 and newer (AMD) <br> Eads, v5 series (AMD, local disk) <br> Eps and Epds series, v5 and newer (ARM) |
-  | General Purpose (General use, compute optimized, F) | Fsv2 series (Intel) <br> Fasv6 and Falsv6 series (AMD)  <br> Famsv6 (AMD) <br> FX series (Intel) <br> FXmsv2 (Intel) <br> FXmdsv2 (Intel) |
-  | Storage optimized| Lsv2 (Intel)-Preview <br> Lsv3 (Intel) <br> Lasv3 (AMD) |
+  | General Purpose (General use A, D) | Av2 (Intel) <br> D and Ds series, v2 and newer (Intel) <br> Dd and Dds, v4 and newer (Intel, local disk) <br> Dls and Dlds, v5 and newer (Intel, low memory) <br> Da and Das, v4 series and newer (AMD) <br> Dads, v5 and newer (AMD, local disk) <br> Dals and Dalds, v6 and newer (AMD) <br> Dps and Dpds series, v5 and newer (ARM) <br> Dpls and Dplds series, v5 and newer (ARM, low memory) |
+  | General Purpose (General use, high memory, E )| E and Es, all versions (Intel) <br> Ed and Eds series, v4 and newer (Intel, local disk) <br> Ebdsv5 and Ebsv5 series (Intel, block storage) <br> Ea and Eas, v4 and newer (AMD) <br> Eads, v5 and newer series (AMD, local disk) <br> Eps and Epds series, v5 and newer (ARM) |
+  | General Purpose (General use, compute optimized, F) | Fsv2 series (Intel) <br> Fas and Fals, v6 and newer series (AMD)  <br> Famsv6 and newer (AMD) <br> FX series (Intel) <br> FXmsv2 (Intel) <br> FXmdsv2 (Intel) <br> Fadsv7 (AMD) <br> Famdsv7 (AMD) <br> Faldsv7 (AMD) |
+  | Storage optimized| Lsv3 (Intel) <br> Lasv3 (AMD) <br> Lasv4 (AMD) <br> Laosv4 (AMD) |
   | Confidential compute | DCsv2 series (Intel) <br> DCasv5 and DCadsv5 series (AMD) <br> DCesv5 and DCedsv5 series (Intel) <br> ECasv5 and ECadsv5 series (AMD) <br> ECesv5 and ECedsv5 series (Intel) |
 
   Reserved capacity for these VM series supports only multi-zone high availability. Virtual Machine Scale Sets with a fault domain availability construct is not supported. 
@@ -75,12 +76,13 @@ From this example accumulation of Minutes Not Available, here's the calculation 
   | ----- | ----------- |
   | GPU-accelerated compute | NC-series, v3 (Intel) <br> NCasT4_v3 series (AMD) <br> NCADSA10_v4 series (AMD) <br> NC_A100_v4 series (AMD) <br> NV-series, v3 and newer (Intel) <br> NVadsA10_v5 series (AMD) <br> NVads V710 v5 series (AMD) <br> NGads V620_v1 series (AMD) |
   | Memory optimized | Msv2 Medium Memory series (Intel) <br> Mdsv2 Medium Memory series (Intel) <br> Mv2 (Intel) <br>Mdsv3 Medium Memory series (Intel) <br> Msv3 Medium Memory series (Intel) <br> Mbsv3 and Mbdsv3 series (Intel) |
+  | Storage optimized| Lsv2 (Intel)-Preview |
 
 - Support for other VM series isn't currently available:
   
   | Type | VM Series |
   | ----- | ----------- |
-  | GPU-accelerated compute | ND-series <br> Hb-series <br> Hc-series |
+  | GPU-accelerated compute | ND-series <br> NCads H100 v5-series <br> Hb-series <br> Hc-series |
   | Memory optimized | M series, v1 <br> Msv3 HM <br> Mdsv3 HM and Mdsv3 VHM |
   
 - The following deployment types are supported: 
@@ -99,7 +101,6 @@ From this example accumulation of Minutes Not Available, here's the calculation 
     - VMs resuming from hibernation 
 - A pinned subscription can't use the feature.
 - Deployments using On demand capacity reservations are compatible with vNet Encryption when deployed using a supported VM size. For more information on which VM sizes this feature supports, see [Virtual Network Encryption](/azure/virtual-network/virtual-network-encryption-overview).
-- Only the subscription that created the reservation can use it.
 - Reservations are only available to paid Azure customers. Sponsored accounts such as Free Trial and Azure for Students aren't eligible to use this feature.
 - Clouds supported for capacity reservation:
    - Azure Cloud

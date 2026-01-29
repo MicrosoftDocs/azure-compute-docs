@@ -6,7 +6,8 @@ author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
 ms.topic: concept-article
-ms.date: 03/27/2025
+ms.date: 11/17/2025
+ms.update-cycle: 1095-days
 ms.custom: references_regions
 
 # Customer intent: As a cloud architect, I want to understand the resource availability and quota limits for Azure Container Instances so that I can effectively plan and optimize container deployments based on regional capacities and service limitations.

@@ -26,11 +26,14 @@ ms.author: migreene
 > Azure Machine Configuration also includes hybrid machine support through
 > [Arc-enabled servers](/azure/azure-arc/servers/overview).
 
+
 This article describes the Azure Resource Manager template for the [Desired State Configuration
 (DSC) extension handler](dsc-overview.md).
 
 > [!NOTE]
 > You might encounter slightly different schema examples. The change in schema occurred in the October 2016 release. For details, see [Update from a previous format](#update-from-a-previous-format).
+
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
 
 ## Bicep example for a virtual machine
 

@@ -7,10 +7,12 @@ ms.subservice: hpc
 ms.collection: windows
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows
-ms.custom: devx-track-arm-template
 ms.date: 07/25/2024
-ms.author: jushiman
-author: ju-shim
+ms.author: cynthn
+author: cynthn
+ms.custom:
+  - devx-track-arm-template
+  - sfi-image-nochange
 # Customer intent: As an IT administrator managing Windows N-series virtual machines, I want to install the NVIDIA GPU Driver Extension so that I can utilize GPU capabilities for enhanced performance in computational tasks.
 ---
 
@@ -23,8 +25,14 @@ The instructions for manual installation of the drivers, and the list of current
 The NVIDIA GPU Driver Extension can also be deployed on Linux N-series VMs. For more information, see [NVIDIA GPU Driver Extension for Linux](hpccompute-gpu-linux.md).
 
 > [!Note]
+> For NVadsA10v5-series VMs, this extension will continue to use v17.x until we finish the v18.x rollout in sovereign clouds in January 2026.
+> 
+
+> [!Note]
 > The GPU driver extensions do not automatically update the driver after the extension is installed. If you need to move to a newer driver version then either manually download and install the driver or remove and add the extension again.
 >
+
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
 
 ## Prerequisites
 

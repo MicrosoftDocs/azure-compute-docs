@@ -6,7 +6,8 @@ author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
 ms.topic: concept-article
-ms.date: 08/29/2024
+ms.date: 11/17/2025
+ms.update-cycle: 1095-days
 ms.custom: mvc
 
 # Customer intent: As a cloud architect, I want to understand how to deploy and manage multi-container groups, so that I can efficiently utilize shared resources and streamline application tasks across containers in Azure Container Instances.

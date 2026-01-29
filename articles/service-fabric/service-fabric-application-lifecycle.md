@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.author: tomcassidy
 ms.topic: concept-article
 ms.date: 05/25/2022
+ms.update-cycle: 1095-days
 # Customer intent: "As a cloud application developer, I want to manage the complete lifecycle of applications in a microservices architecture, so that I can ensure seamless development, deployment, maintenance, upgrading, and removal within a distributed environment."
 ---
 

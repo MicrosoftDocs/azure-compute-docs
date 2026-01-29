@@ -5,15 +5,13 @@ author: archatC
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 07/29/2025
+ms.date: 01/21/2026
 ms.author: archat
 ms.reviewer: mattmcinnes
 # Customer intent: "As a cloud architect, I want to review the specifications of the Daldsv7 size series, so that I can select the appropriate virtual machine sizes that meet my application workload requirements."
 ---
 
-# Daldsv7 sizes series (Preview)
-
-[!INCLUDE [sizes-preview-tag](../includes/sizes-preview-tag.md)]
+# Daldsv7 sizes series
 
 [!INCLUDE [daldsv7-summary](./includes/daldsv7-series-summary.md)]
 
@@ -21,9 +19,16 @@ ms.reviewer: mattmcinnes
 [!INCLUDE [daldsv7-series-specs](./includes/daldsv7-series-specs.md)]
 
 ## Feature support
-[Premium Storage](../../premium-storage-performance.md): Supported <br>[Premium Storage caching](../../premium-storage-performance.md): Supported <br>[Memory Preserving Updates](../../maintenance-and-updates.md): Supported <br>[Generation 2 VMs](../../generation-2.md): Supported <br>[Generation 1 VMs](../../generation-2.md): Not Supported <br>[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported <br>[Ephemeral OS Disk](../../ephemeral-os-disks.md): Supported <br>[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Supported <br>
-[Azure Disk Encryption for Linux VMs](../../../virtual-machines/linux/disk-encryption-linux.md?tabs=azcliazure%2Cenableadecli%2Cefacli%2Cadedatacli#restrictions): Not Supported <br>
-[Azure Disk Encryption for Windows VMs](../../../virtual-machines/windows/disk-encryption-windows.md#restrictions): Not Supported <br>
+- [Premium Storage](../../premium-storage-performance.md): Supported
+- [Premium Storage caching](../../premium-storage-performance.md): Supported
+- [Live Migration](../../maintenance-and-updates.md): Supported
+- [Memory Preserving Updates](../../maintenance-and-updates.md): Supported
+- [Generation 2 VMs](../../generation-2.md): Supported
+- [Generation 1 VMs](../../generation-2.md): Not Supported
+- [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported
+- [Ephemeral OS Disk](../../ephemeral-os-disks.md): Supported
+- [Temporary local NVMe disks](../../enable-nvme-temp-faqs.yml): Supported
+- [Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Supported
 
 ## Sizes in series
 
@@ -51,18 +56,18 @@ vCPUs (Qty.) and Memory for each size
 
 Local (temp) storage info for each size
 
-| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read (RR)<sup>1</sup> IOPS | Temp Disk Random Read (RR)<sup>1</sup> Throughput (MB/s) |
-| --- | --- | --- | --- | --- |
-| Standard_D2alds_v7 | 1 | 110 | 37500 | 180 |
-| Standard_D4alds_v7 | 1 | 220 | 75000 | 360 |
-| Standard_D8alds_v7 | 1 | 440 | 150000 | 720 |
-| Standard_D16alds_v7 | 2 | 440 | 300000 | 1440 |
-| Standard_D32alds_v7 | 4 | 440 | 600000 | 2880 |
-| Standard_D48alds_v7 | 6 | 440 | 900000 | 4320 |
-| Standard_D64alds_v7 | 4 | 880 | 1200000 | 5760 |
-| Standard_D96alds_v7 | 6 | 880 | 1800000 | 8640 |
-| Standard_D128alds_v7 | 4 | 1760 | 2400000 | 11520 |
-| Standard_D160alds_v7 | 5 | 1760 | 3000000 | 14400 |
+| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read (RR)<sup>1</sup> IOPS | Temp Disk Random Read (RR)<sup>1</sup> Throughput (MB/s) | Temp Disk Random Write (RW)<sup>1</sup> IOPS | Temp Disk Random Write (RW)<sup>1</sup> Throughput (MB/s) |
+| --- | --- | --- | --- | --- | --- | --- |
+| Standard_D2alds_v7 | 1 | 110 | 37500 | 280 | 15000 | 140 |
+| Standard_D4alds_v7 | 1 | 220 | 75000 | 560 | 30000 | 280 |
+| Standard_D8alds_v7 | 1 | 440 | 150000 | 1120 | 60000 | 560 |
+| Standard_D16alds_v7 | 2 | 440 | 300000 | 2240 | 120000 | 1120 |
+| Standard_D32alds_v7 | 4 | 440 | 600000 | 4480 | 240000 | 2240 |
+| Standard_D48alds_v7 | 6 | 440 | 900000 | 6720 | 360000 | 3360 |
+| Standard_D64alds_v7 | 4 | 880 | 1200000 | 8960 | 480000 | 4480 |
+| Standard_D96alds_v7 | 6 | 880 | 1800000 | 13440 | 720000 | 6720 |
+| Standard_D128alds_v7 | 4 | 1760 | 2400000 | 17920 | 960000 | 8960 |
+| Standard_D160alds_v7 | 4 | 2200 | 3000000 | 22400 | 12000000 | 11200 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
@@ -70,7 +75,7 @@ Local (temp) storage info for each size
 - [Share an Azure managed disk](../../../virtual-machines/disks-shared.md)
 
 #### Table definitions
-- <sup>1</sup>Temp disk speed often differs between RR (Random Read) and RW (Random Write) operations. RR operations are typically faster than RW operations. The RW speed is usually slower than the RR speed on series where only the RR speed value is listed.
+- <sup>1</sup> Temp disk speed often differs between RR (Random Read) and RW (Random Write) operations. RR operations are typically faster than RW operations. The RW speed is usually slower than the RR speed on series where only the RR speed value is listed. Temp disk performance can vary based on workload, block size, and system conditions. Published numbers show peak performance under controlled testing, temp disk performance specifications should be viewed as best case performance numbers and may differ in real-world scenarios. Factors such as data patterns, SSD wear, and background processes can affect write speeds. For more details, please see [FAQ for Temp NVMe disks](../../../virtual-machines/enable-nvme-temp-faqs.yml)
 - Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
 - Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
 - To learn how to get the best storage performance for your VMs, see [Virtual machine and disk performance](../../../virtual-machines/disks-performance.md).

@@ -6,7 +6,7 @@ ms.author: fisteele
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
 ms.date: 06/14/2024
-ms.reviewer: jushiman
+ms.reviewer: cynthn
 ms.custom: mimckitt, devx-track-azurecli, vmss-flex, innovation-engine, linux-related-content
 # Customer intent: "As a cloud engineer, I want to create a Virtual Machine Scale Set using Azure CLI, so that I can efficiently manage and scale a group of virtual machines based on demand while ensuring high availability."
 ---

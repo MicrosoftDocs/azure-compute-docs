@@ -1,11 +1,11 @@
 ---
 title: Maintenance control for OS image upgrades on Azure Virtual Machine Scale Sets using PowerShell
 description: Learn how to control when automatic OS image upgrades are rolled out to your Azure Virtual Machine Scale Sets using Maintenance control and PowerShell.
-author: ju-shim
+author: cynthn
 ms.service: azure-virtual-machine-scale-sets
 ms.topic: how-to
 ms.date: 11/22/2022
-ms.author: jushiman
+ms.author: cynthn
 ms.custom: devx-track-azurepowershell
 #pmcontact: PPHILLIPS
 # Customer intent: As a cloud administrator, I want to control the timing of automatic OS image upgrades for my Virtual Machine Scale Sets using PowerShell, so that I can ensure maintenance occurs during specified windows and minimize disruption to services.
@@ -46,13 +46,13 @@ Set-AzContext 00a000aa-0a00-0a0a-00aa-a00a000aaa00
 
 $RGName="myMaintenanceRG"
 $MaintenanceConfig="myMaintenanceConfig"
-$location="eastus2"
+$location="centralus"
 $vmss="myMaintenanceVMSS"
 ```
 
 ## Create a maintenance configuration
 
-Create a resource group as a container for your configuration. In this example, a resource group named *myMaintenanceRG* is created in *eastus2*. If you already have a resource group that you want to use, you can skip this part. Just replace the resource group name with your own in the rest of the examples.
+Create a resource group as a container for your configuration. In this example, a resource group named *myMaintenanceRG* is created in *Central US*. If you already have a resource group that you want to use, you can skip this part. Just replace the resource group name with your own in the rest of the examples.
 
 ```azurepowershell-interactive
 New-AzResourceGroup `

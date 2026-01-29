@@ -36,24 +36,38 @@ To learn more about size series retirement, previous-gen sizes, and the retireme
 
 |Series name        | Retirement Status |Retirement Announcement                                            | Planned Retirement Date | Migration Guide |
 |-------------------|-------------------|-------------------------------------------------------------------|-------------------------|-----------------|
-| D-series          | **Announced**     | [03/31/25](https://azure.microsoft.com/updates?id=485569)         | 05/01/28                | -               |
-| Ds-series         | **Announced**     | [03/31/25](https://azure.microsoft.com/updates?id=485569)         | 05/01/28                | -               |
-| Dv2-series        | **Announced**     | [03/31/25](https://azure.microsoft.com/updates?id=485569)         | 05/01/28                | -               |
-| Dsv2-series       | **Announced**     | [03/31/25](https://azure.microsoft.com/updates?id=485569)         | 05/01/28                | -               |
+| D-series          | **Announced**     | [03/31/25](https://azure.microsoft.com/updates?id=485569)         | 05/01/28                | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide)               |
+| Ds-series         | **Announced**     | [03/31/25](https://azure.microsoft.com/updates?id=485569)         | 05/01/28                | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide)               |
+| Dv2-series        | **Announced**     | [03/31/25](https://azure.microsoft.com/updates?id=485569)         | 05/01/28                | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide)                |
+| Dsv2-series       | **Announced**     | [03/31/25](https://azure.microsoft.com/updates?id=485569)         | 05/01/28                | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide)               |
+| Av2/Amv2-series   | **Announced**     | [10/15/25](https://azure.microsoft.com/updates?id=500682)         | 11/15/28                | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide)            |
+| B-series          | **Announced**     | [10/15/25](https://azure.microsoft.com/updates?id=500682)         | 11/15/28                | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide)         |
 
 ## Compute optimized retired sizes
 
-Currently there are no compute optimized series retired or announced for retirement.
+|Series name        | Retirement Status |Retirement Announcement                                            | Planned Retirement Date | Migration Guide |
+|-------------------|-------------------|-------------------------------------------------------------------|-------------------------|-----------------|
+| F-series          | **Announced**     | [10/15/25](https://azure.microsoft.com/updates?id=500682)         | 11/15/28                | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide)               |
+| Fs-series         | **Announced**     | [10/15/25](https://azure.microsoft.com/updates?id=500682)         | 11/15/28                | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide)               |
+| Fsv2-series       | **Announced**     | [10/15/25](https://azure.microsoft.com/updates?id=500682)         | 11/15/28                | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide)               |
 
 ## Memory optimized retired sizes
 
-Currently there are no memory optimized series retired or announced for retirement.
+|Series name        | Retirement Status |Retirement Announcement                                            | Planned Retirement Date | Migration Guide |
+|-------------------|-------------------|-------------------------------------------------------------------|-------------------------|-----------------|
+| G-series          | **Announced**     | [10/15/25](https://azure.microsoft.com/updates?id=500682)         | 11/15/28                | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide)             |
+| Gs-series         | **Announced**     | [10/15/25](https://azure.microsoft.com/updates?id=500682)         | 11/15/28                | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide)     |
+| Standard_M192idms_v2         | **Announced**     | [03/22/2024](https://azure.microsoft.com/updates?id=support-for-standardm192idmsv2-will-be-retired-on-31-march-2027)         | 03/31/27                | [Migration Guide](/azure/virtual-machines/sizes/retirement/msv2-mdsv2-retirement)     |
+| Standard_M192ids_v2         | **Announced**     | [03/22/2024](https://azure.microsoft.com/updates?id=community-support-for-standardm192idsv2-is-ending-on-31-march-2027)         | 03/31/27                | [Migration Guide](/azure/virtual-machines/sizes/retirement/msv2-mdsv2-retirement)     |
+| Standard_M192ims_v2         | **Announced**     | [03/22/2024](https://azure.microsoft.com/updates?id=community-support-for-standardm192imsv2-is-ending-on-31-march-2027)         | 03/31/27                | [Migration Guide](/azure/virtual-machines/sizes/retirement/msv2-mdsv2-retirement)     |
+| Standard_M192is_v2         | **Announced**     | [03/22/2024](https://azure.microsoft.com/updates?id=community-support-for-standardm192isv2-is-ending-on-31-march-2027)         | 03/31/27                | [Migration Guide](/azure/virtual-machines/sizes/retirement/msv2-mdsv2-retirement)     |
 
 ## Storage optimized retired sizes
 
 |Series name        | Retirement Status |Retirement Announcement                                            | Planned Retirement Date | Migration Guide |
 |-------------------|-------------------|-------------------------------------------------------------------|-------------------------|-----------------|
-| Ls-series         | **Announced**     | [03/31/25](https://azure.microsoft.com/updates?id=485569)         | 05/01/28                | -               |
+| Ls-series         | **Announced**     | [03/31/25](https://azure.microsoft.com/updates?id=485569)         | 05/01/28                | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide)             |
+| Lsv2-series       | **Announced**     | [10/15/25](https://azure.microsoft.com/updates?id=500682)         | 11/15/28                | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide)            |
 
 ## GPU accelerated retired sizes
 

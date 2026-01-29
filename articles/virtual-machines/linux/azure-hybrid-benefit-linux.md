@@ -11,7 +11,11 @@ ms.topic: concept-article
 ms.date: 12/19/2024
 ms.author: clausw
 ms.reviewer: mattmcinnes
-ms.custom: kr2b-contr-experiment, linux-related-content, devx-track-azurecli
+ms.custom:
+  - kr2b-contr-experiment
+  - linux-related-content
+  - devx-track-azurecli
+  - sfi-image-nochange
 # Customer intent: "As a cloud engineer managing Linux virtual machines, I want to utilize Azure Hybrid Benefit to optimize my subscription model, so that I can reduce costs and maintain flexibility without incurring downtime."
 ---
 
@@ -485,6 +489,9 @@ Converting to a PAYG subscription model is supported for Azure Marketplace image
     ```
 
 ---
+
+> [!NOTE]
+> The AHBForRHEL extension currently supports RHEL 7 and RHEL 8, but doesn't support RHEL 9 or later. As a result, the extension doesn't automatically install the RHUI client on RHEL 9 or later versions. Until support for RHEL 9+ is introduced, repositories must be configured manually after installing the extension by following the procedure outlined in [Manual update procedure to use the Azure RHUI servers](/azure/virtual-machines/workloads/redhat/redhat-rhui#manual-update-procedure-to-use-the-azure-rhui-servers).
 
 ### Multiple VMs
 

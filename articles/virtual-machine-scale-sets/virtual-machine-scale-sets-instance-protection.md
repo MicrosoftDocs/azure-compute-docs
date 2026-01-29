@@ -1,8 +1,8 @@
 ---
 title: Instance Protection for Azure Virtual Machine Scale Set instances
 description: Learn how to protect Azure Virtual Machine Scale Set instances from scale-in and scale-set operations.
-author: ju-shim
-ms.author: jushiman
+author: cynthn
+ms.author: cynthn
 ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: instance-protection

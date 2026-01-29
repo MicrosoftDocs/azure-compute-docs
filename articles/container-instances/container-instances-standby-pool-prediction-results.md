@@ -7,7 +7,8 @@ ms.service: azure-container-instances
 ms.custom:
   - ignite-2024
 ms.topic: concept-article
-ms.date: 5/19/2025
+ms.date: 11/17/2025
+ms.update-cycle: 1095-days
 ms.reviewer: tomvcassidy
 # Customer intent: As a cloud administrator, I want to retrieve prediction results for my standby pool, so that I can optimize resource allocation and improve operational efficiency based on forecasted demand.
 ---

@@ -13,7 +13,7 @@ ms.custom: include file
 ---
 | Part | Quantity <br><sup>Count <sup>Units | Specs <br><sup>SKU ID, Performance <sup>Units</sup>, etc.  |
 |---|---|---|
-| Processor        | 2 - 112<sup>vCores    | Intel® Xeon® Platinum 8370C (Ice Lake) |
+| Processor        | 2 - 112<sup>vCores    | Intel® Xeon® Platinum 8370C (Ice Lake) [x86-64] <br>Intel Xeon Platinum 8573C (Emerald Rapids) [x86-64] |
 | Memory           | 16 - 672<sup>GiB      |                                                 |
 | Data Disks       | 4 - 64<sup>Disks     | 5500 - 450000<sup>IOPS</sup> / 125 - 8000<sup>MBps  |
 | Network          | 2 - 8<sup>NICs       | 12500 - 40000<sup>Mbps                          |

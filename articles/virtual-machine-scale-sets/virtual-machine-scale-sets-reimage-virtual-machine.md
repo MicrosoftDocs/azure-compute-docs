@@ -6,7 +6,7 @@ ms.author: mimckitt
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
 ms.date: 11/7/2024
-ms.reviewer: ju-shim
+ms.reviewer: cynthn
 ms.custom: upgradepolicy, ignite-2024
 # Customer intent: "As a cloud administrator managing Virtual Machine Scale Sets, I want to reimage individual instances, so that I can apply necessary OS and configuration updates to ensure optimal performance and security."
 ---

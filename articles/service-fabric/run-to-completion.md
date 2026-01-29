@@ -1,7 +1,7 @@
 ---
 title: RunToCompletion semantics and specifications
 description: Learn about Service Fabric RunToCompletion semantics and specifications, and see complete code examples and considerations.
-ms.topic: concept-article
+ms.topic: how-to
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric

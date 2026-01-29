@@ -5,6 +5,7 @@ author: mimckitt
 ms.author: mimckitt
 ms.service: azure-virtual-machines
 ms.topic: concept-article
+ms.update-cycle: 1095-days
 ms.date: 10/10/2024
 ms.custom: engagement-fy23
 # Customer intent: As a cloud infrastructure architect, I want to understand how availability sets work, so that I can effectively manage virtual machine deployments to ensure high availability and reduce the risk of correlated failures in my applications.

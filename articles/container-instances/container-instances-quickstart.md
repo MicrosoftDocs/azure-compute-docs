@@ -6,7 +6,8 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
-ms.date: 08/28/2025
+ms.date: 11/17/2025
+ms.update-cycle: 180-days
 ms.custom: mvc, devx-track-azurecli, mode-api
 # Customer intent: As a developer, I want to quickly deploy a Docker container using the command line, so that I can run my web application without managing complex orchestration platforms.
 ---

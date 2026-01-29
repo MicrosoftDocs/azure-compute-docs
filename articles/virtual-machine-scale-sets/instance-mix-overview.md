@@ -6,7 +6,7 @@ ms.author: brittanyrowe
 ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
 ms.date: 09/12/2025
-ms.reviewer: jushiman
+ms.reviewer: cynthn
 # Customer intent: As a cloud administrator, I want to utilize multiple VM sizes in a scale set with instance mix, so that I can optimize cost, capacity, and flexibility for my diverse workload requirements.
 ---
 
@@ -22,6 +22,9 @@ Instance mix lets you specify multiple Virtual Machine (VM) sizes in a Virtual M
 - A scale set that uses Flexible Orchestration Mode.
 - Sufficient quota for each VM size in the target subscription and region.
 - Consistent VM characteristics across selected sizes: architecture (x64/Arm64), storage interface, local disk configuration, and security profile.
+
+> [!TIP]
+> Instance Mix can utilize multiple VM sizes and chipsets. When using Instance Mix across several subscriptions, [Azure Quota Groups](/azure/quotas/quota-groups) make it easier for workloads to scale because quota is unified. Instance Mix respects your quota across all eligible stock keeping units (SKUs), and Quota Groups simplify management by consolidating quota allocation across subscriptions.
 
 ## When to use instance mix
 
@@ -92,6 +95,9 @@ Before you deploy an instance mix scale set:
 - Verify the scale set is using Flexible Orchestration Mode.
 - Confirm VM quotas for each selected size in the target subscription and region.
 - Ensure all selected VM sizes have consistent architecture, storage interface, local disk configuration, and security profile.
+
+> [!TIP]
+> When deploying Instance Mix across multiple subscriptions, [Azure Quota Groups](/azure/quotas/quota-groups) simplify quota management by unifying quota allocation. This makes it easier for workloads to scale since Instance Mix can utilize multiple VM sizes and chipsets while respecting your quota across all eligible SKUs.
 - Choose an allocation strategy that matches your goals (cost, availability, predictability).
 - For REST API deployments, ensure a virtual network exists in the target resource group.
 
@@ -110,6 +116,7 @@ Before you deploy an instance mix scale set:
 - VMs with different storage interfaces (SCSI vs NVMe) can't be mixed.
 - You can't mix VM SKUs that use premium storage and non-premium storage in the same instance mix.
 - All VMs must share the same Security Profile and local disk configuration.
+- **DiffDisk settings**: Instance mix currently doesn't support `diffDiskSettings` on the OS disk.
 - Instance mix doesn't support: Standby Pools, Azure Dedicated Host, Proximity Placement Groups, or on-demand capacity reservations.
 
 ## Next steps

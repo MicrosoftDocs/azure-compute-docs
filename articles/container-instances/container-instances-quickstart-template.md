@@ -6,7 +6,8 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
-ms.date: 08/29/2024
+ms.date: 11/17/2025
+ms.update-cycle: 180-days
 ms.custom: subject-armqs, mode-arm, devx-track-arm-template
 # Customer intent: As a developer, I want to quickly deploy a containerized web application using an Azure Resource Manager template, so that I can take advantage of serverless Docker container capabilities without needing a full container orchestration platform.
 ---

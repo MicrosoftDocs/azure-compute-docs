@@ -4,9 +4,9 @@ description: Compute throttling limits
 author: viveksingla
 ms.service: azure-virtual-machines
 ms.topic: concept-article
+ms.update-cycle: 1095-days
 ms.date: 05/27/2024
 ms.author: viveksingla
-ms.reviewer: 
 
 # Customer intent: As a cloud resource manager, I want to understand compute throttling limits across API requests, so that I can effectively manage resource allocations and avoid service interruptions due to throttling errors.
 ---

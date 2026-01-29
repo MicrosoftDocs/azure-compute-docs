@@ -3,7 +3,7 @@ title: What's new in Azure Disk Storage
 description: Learn about new features and enhancements in Azure Disk Storage.   
 author: roygara
 ms.author: rogarana
-ms.date: 09/04/2025
+ms.date: 12/23/2025
 ms.topic: concept-article
 ms.service: azure-disk-storage
 ms.custom: references_regions
@@ -17,7 +17,11 @@ Azure Disk Storage regularly receives updates for new features and enhancements.
 ## Update summary
 
 - [What's new in 2025](#whats-new-in-2025)
-    -  [Quarter 3 (July, August, September)](#quarter-3-july-august-september)
+  -  [Quarter 4 (October, November, December)](#quarter-4-october-november-december)
+        - [Expanded regional availability for Premium SSD v2](#expanded-regional-availability-for-premium-ssd-v2)
+        - [Public preview: Instant Access Snapshot for Premium SSD v2 and Ultra Disks](#public-preview-instant-access-snapshot-for-premium-ssd-v2-and-ultra-disks)
+        - [Generally available: Azure Site Recovery for Virtual Machines with Premium SSD v2 and Ultra disks](#generally-available-azure-site-recovery-for-virtual-machines-with-premium-ssd-v2-and-ultra-disks)
+  -  [Quarter 3 (July, August, September)](#quarter-3-july-august-september)
         - [Generally available: Live Resize for Premium SSD v2 and Ultra Disks using NVMe controllers](#generally-available-live-resize-for-premium-ssd-v2-and-ultra-disks-using-nvme-controllers)
         - [Generally available: Ultra Disk price reduction in West US 2, Central US, and UK South](#generally-available-ultra-disk-price-reduction-in-west-us-2-central-us-and-uk-south)
   - [Quarter 2 (April, May, June)](#quarter-2-april-may-june)
@@ -41,11 +45,26 @@ Azure Disk Storage regularly receives updates for new features and enhancements.
 
 ## What's new in 2025
 
+### Quarter 4 (October, November, December)
+
+#### Expanded regional availability for Premium SSD v2
+
+Premium SSD v2 disks were made available in Austria East and in a second Availability Zone in Japan West.
+
+#### Public preview: Instant Access Snapshot for Premium SSD v2 and Ultra Disks
+
+With Instant Access Snapshots for Premium SSD v2 and Ultra Disks, you can restore new disks immediately after creating snapshots of Premium SSD v2 and Ultra disks. Restore disks deliver high performance instantly, while data hydration continues rapidly in the background.  See [instant access for Azure managed disk](/azure/virtual-machines/disks-instant-access-snapshots?tabs=azure-cli%2Cazure-cli-snapshot-state#snapshots-of-ultra-disks-and-premium-ssd-v2) for details
+
+#### Generally available: Azure Site Recovery for Virtual Machines with Premium SSD v2 and Ultra disks
+
+Azure Site Recovery support for Virtual Machines with [Premium SSD v2](https://azure.microsoft.com/updates?id=495231) and [Ultra](https://azure.microsoft.com/updates?id=495843) disks is generally avaialble. Azure Site Recovery provides seamless disaster recovery for Virtual Machines across Azure Regions and from on-premises to Azure, helping organizations maintain business continuity. It offers cost-effective replication, automated failover, and easy disaster recovery simulation, ensuring minimal production impact during disaster events. [Learn more](/azure/site-recovery/azure-to-azure-support-matrix).
+
+
 ### Quarter 3 (July, August, September)
 
 #### Generally available: Live Resize for Premium SSD v2 and Ultra Disks using NVMe controllers
 
-You can dynamically expand the storage capacity of your Premium SSD v2 and Ultra Disks using [NVMe controllers](https://learn.microsoft.com/azure/virtual-machines/nvme-overview) without any disruption to your applications. To optimize costs, you can start with smaller disks and gradually increase their storage capacity as needed, without experiencing downtime. See [expand with Ultra Disks and Premium SSD v2](/azure/virtual-machines/windows/expand-disks#expand-with-ultra-disks-and-premium-ssd-v2) for details.
+You can dynamically expand the storage capacity of your Premium SSD v2 and Ultra Disks using [NVMe controllers](/azure/virtual-machines/nvme-overview) without any disruption to your applications. To optimize costs, you can start with smaller disks and gradually increase their storage capacity as needed, without experiencing downtime. See [expand with Ultra Disks and Premium SSD v2](/azure/virtual-machines/windows/expand-disks#expand-with-ultra-disks-and-premium-ssd-v2) for details.
 
 #### Generally available: Ultra Disk price reduction in West US 2, Central US, and UK South
 

@@ -1,12 +1,12 @@
 ---
 title: Azure Instance Metadata Service for virtual machines
-description: Learn about the Azure Instance Metadata Service and how it provides information about currently running virtual machine instances in Linux.
+description: Learn about the Azure Instance Metadata Service and how it provides information about currently running virtual machine instances.
 author: KumariSupriya
 manager: paulmey
 ms.service: azure-virtual-machines
 ms.topic: how-to
 ms.custom: linux-related-content
-ms.date: 04/11/2023
+ms.date: 07/29/2025
 ms.author: frdavid
 ms.reviewer: azmetadatadev
 # Customer intent: "As a cloud administrator, I want to access the Azure Instance Metadata Service from my virtual machine, so that I can retrieve configuration and runtime information about the VM for management and automation purposes."
@@ -39,7 +39,7 @@ Here's sample code to retrieve all metadata for an instance. To access a specifi
 > This example bypasses proxies. You **must** bypass proxies when querying IMDS. See [Proxies](#proxies) for additional information.
 
 > [!NOTE]
-> IMDS requests must be sent using VM's primary NIC and primary IP, and DHCP must be enabled.
+> IMDS requests must be sent using the VM's primary NIC and primary IP, and DHCP must be enabled.
 
 #### [Windows](#tab/windows/)
 
@@ -62,7 +62,7 @@ The `jq` utility is available in many cases, but not all. If the `jq` utility is
 **Response**
 
 > [!NOTE]
-> The response is a JSON string. The following example response is pretty-printed for readability.
+> The response is a JSON string. The following example response is formatted for readability.
 
 [!INCLUDE [imds-full-instance-response](./includes/imds-full-instance-response.md)]
 
@@ -285,7 +285,7 @@ When you don't specify a version, you get an error with a list of the newest sup
 
 ### Swagger
 
-A full Swagger definition for IMDS is available at: https://github.com/Azure/azure-rest-api-specs/blob/main/specification/imds/data-plane/readme.md
+A full Swagger definition for IMDS is available at: https://github.com/Azure/azure-rest-api-specs/blob/main/specification/imds/data-plane/InstanceMetadataService/readme.md
 
 ## Regional availability
 

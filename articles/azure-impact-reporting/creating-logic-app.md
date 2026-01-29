@@ -1,37 +1,37 @@
 ---
-title: Azure Impact Reporting - Creating a Logic App #Required; page title is displayed in search results. Include the brand.
-description: How to onboard your workload to Azure Impact Reporting using a Logic App #Required; article description that is displayed in search results. 
-author: anajib #Required; your GitHub user alias, with correct capitalization.
-ms.author: ashiknajib #Required; microsoft alias of author; optional team alias.
-ms.topic: how-to #Required; leave this attribute/value as-is.
-ms.date: 06/19/2024 #Required; mm/dd/yyyy format.
-ms.service: azure #Required; use either service or product per approved list. 
-ms.custom: template-overview #Required; leave this attribute/value as-is.
-# Customer intent: As a cloud solutions architect, I want to implement a Logic App for Azure Impact Reporting so that I can automate the collection and reporting of workload impacts efficiently and ensure proactive management of my resources.
+title: 'Azure Impact Reporting: Create a Logic App'
+description: Learn how to onboard your workload to Azure Impact Reporting by using a logic app. 
+author: anajib
+ms.author: ashiknajib
+ms.topic: how-to
+ms.date: 06/19/2024
+ms.service: azure 
+ms.custom: template-overview
+# Customer intent: As a cloud solutions architect, I want to implement a logic app for Azure Impact Reporting so that I can automate the collection and reporting of workload impacts efficiently and ensure proactive management of my resources.
 ---
 
-# Report Impacts Using a Logic App (Preview)
+# Report impacts by using a logic app (preview)
+
 > [!IMPORTANT]
-> Azure Impact Reporting is currently in Preview. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
+> Azure Impact Reporting is currently in preview. For legal terms that apply to Azure features that are in beta, in preview, or otherwise not yet released into general availability, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-> [!NOTE]
-> Please visit the [API Docs](https://aka.ms/ImpactRP/APIDocs) to learn more about available impact management actions.
+To learn more about available impact management actions, see the [API docs](https://aka.ms/ImpactRP/APIDocs).
 
-Use a Logic App as REST client for impact reporting.
+Use a logic app as a REST client for impact reporting.
 
-![Diagram showing how a scheduled logic app can be used as REST client for impact reporting.](images/logic-app-diagram.png)
+![Diagram that shows how a scheduled logic app is used as a REST client for impact reporting.](images/logic-app-diagram.png)
 
 ## Prerequisites
 
-A managed identity with PUT access to the ImpactRP API and read access to the data source for the workload is required. Additionally, a query with a 1 minute or greater polling interval for the data source to generate the following fields is needed:
+A managed identity with PUT access to the ImpactRP API and read access to the data source for the workload is required. You also need a query with a one-minute or greater polling interval for the data source to generate the following fields:
 
-- ImpactName
-- ImpactStartTime
-- ImpactedResourceId
-- WorkloadContext
-- ImpactCategory
+- `ImpactName`
+- `ImpactStartTime`
+- `ImpactedResourceId`
+- `WorkloadContext`
+- `ImpactCategory`
 
-This guide uses a Kusto cluster as an example data source with the following query:
+This article uses a Kusto cluster as an example data source with the following query:
 
 ```kusto
 ExampleTable
@@ -40,20 +40,21 @@ ExampleTable
 ```
 
 > [!NOTE]
-> Please replace the query with one to a datastore or source that is supported by Logic Apps and returns the same columns. If all of these columns are not readily available, additional steps must be added to the workflow to generate the missing fields.
+> Replace the query with one to a datastore or source that Azure Logic Apps supports and that returns the same columns. If all of these columns aren't readily available, add more steps to the workflow to generate the missing fields.
 
-## Steps
+## Create a logic app
 
-1. Create a new Logic Apps in Azure portal with the following settings:
-    - Publish: Workflow
-    - Region: Central US
-    - Plan: Standard
+1. Create a new logic app in the Azure portal with the following settings:
 
-2. (Optional) Under the "Monitoring" section, set "Enable Application Insights" to "Yes." to enable failure monitoring. More steps are at the bottom of this document.
+    - **Publish**: Set to **Workflow**.
+    - **Region**: Set to **Central US**.
+    - **Plan**: Set to **Standard**.
 
-3. Review and Create the Logic App. Once created, open the Logic App and navigate to "Settings" -> "Identity" in the side pane. In the "User assigned" section, select "Add" and select the managed identity created in the prerequisites. Select "Save" to save the changes.
+1. (Optional) Under the **Monitoring** section, set **Enable Application Insights** to **Yes** to enable failure monitoring.
 
-4. Navigate to "Workflows" -> "Connections" and select the "JSON View" tab. Create a connection for your data source. This example uses Kusto with managed identity, but any data source supported by Logic Apps can be used:
+1. Review and create the logic app. After you create it, open the logic app and go to **Settings** > **Identity** on the side pane. In the **User assigned** section, select **Add**, and select the managed identity that you created in the prerequisites. Select **Save** to save the changes.
+
+1. Go to **Workflows** > **Connections**, and select the **JSON View** tab. Create a connection for your data source. This example uses Kusto with the managed identity, but you can use any data source that Logic Apps supports:
 
     ```json
     {
@@ -81,11 +82,11 @@ ExampleTable
     }
     ```
 
-    Select "Save" to save the changes.
+    Select **Save** to save the changes.
 
-5. Navigate to "Workflows" -> "Workflows," then select "Add" and create and new blank workflow with "State Type" set as "Stateful."
+1. Go to **Workflows** > **Workflows,** select **Add**, and create a new blank workflow with **State Type** set as **Stateful**.
 
-6. Select the newly created workflow. Navigate to "Developer" -> "Code" and replace the JSON content with:
+1. Select the newly created workflow. Go to **Developer** > **Code** and replace the JSON content with:
 
     ```json
     {
@@ -168,17 +169,19 @@ ExampleTable
     }
     ```
 
-    Select "Save" to save the changes.
+    Select **Save** to save the changes.
 
-7. Navigate to "Developer" -> "Designer." Select the "Run KQL (Kusto Query Language) Query" block. Replace "Cluster URL" and "Database" with the target Kusto cluster and database. Replace the "Query" with the query from the prerequisites. Next, select the blue "Change connection" link underneath the query textbox. Set "Authentication" to Managed Identity and set "Managed identity" to the managed identity created in the prerequisites with an appropriate "Connection Name" and select "Create."
+1. Go to **Developer** > **Designer**. Select the `Run KQL (Kusto Query Language) Query` block. Replace **Cluster URL** and **Database** with the target Kusto cluster and database. Replace **Query** with the query from the prerequisites.
+
+1. Select the blue **Change connection** link. Set **Authentication** to **Managed identity**. Set **Managed identity** to the managed identity that you created in the prerequisites with an appropriate connection name, and then select **Create**.
 
     > [!NOTE]
-    > If using a source other than Kusto, replace the "Run KQL Query" block with the appropriate block for your data source. The "For Each" block will need to be updated to iterate over the results of the query and the "HTTP" block will need to be updated to use the appropriate data from the query results.
+    > If you use a source other than Kusto, replace the `Run KQL Query` block with the appropriate block for your data source. The `For Each` block must be updated to iterate over the results of the query. The `HTTP` block must be updated to use the appropriate data from the query results.
 
-8. (Optional) If the polling interval for the query is greater than 1 minute, select the "Recurrence" block and set the "Interval" to the polling interval in minutes.
+1. (Optional) If the polling interval for the query is greater than one minute, select the `Recurrence` block and set `Interval` to the polling interval in minutes.
 
-9. Select the "HTTP" block and update the "Authentication" to the managed identity created in the prerequisites. Select "Save" to save the changes.
+1. Select the `HTTP` block and update `Authentication` to the managed identity that you created in the prerequisites. Select **Save** to save the changes.
 
-10. Navigate to "Overview" and select "Run" to test the flow. Results are displayed under "Run History."
+1. Go to **Overview** and select **Run** to test the flow. The results appear under **Run History**.
 
-11. (Optional) Return to the Logic App screen in Azure portal. Navigate to "Settings" -> "Application Insights" and select the hyperlink to the Application Insights resource. Navigate to "Monitoring" -> "Alerts." Select "Create" -> "Alert Rule." From here, you can create an alert rule to notify on failures.
+1. (Optional) Return to the logic app in the Azure portal. Go to **Settings** > **Application Insights**, and select the hyperlink to the Application Insights resource. Go to **Monitoring** > **Alerts**. Select **Create** > **Alert Rule**. From here, you can create an alert rule to notify on failures.

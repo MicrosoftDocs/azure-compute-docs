@@ -4,11 +4,13 @@ description: Learn how to connect to a Linux VM in Azure.
 author: mattmcinnes
 ms.collection: linux
 ms.service: azure-virtual-machines
-ms.custom: linux-related-content
 ms.topic: how-to
 ms.date: 09/11/2025
 ms.author: mattmcinnes
 ms.reviewer: jamesser
+ms.custom:
+  - linux-related-content
+  - sfi-image-nochange
 # Customer intent: As a cloud administrator, I want to connect to a Linux virtual machine via SSH, so that I can manage and configure the server securely over the network.
 ---
 # Connect to a Linux VM

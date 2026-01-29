@@ -35,7 +35,7 @@ For a list of previous-gen size series that are considered *next-gen available*,
 
 ### Capacity limited
 
-Size series listed as *capacity limited* means that while no retirement plans have been made, no extra capacity for this series will be deployed. Similar to *next-gen available* previous-gen series, there are sufficient deployments of newer alternative sizes available to replace *capacity limited* size deployments.
+Size series listed as *capacity limited* means no extra capacity for this series will be deployed. Similar to *next-gen available* previous-gen series, there are sufficient deployments of newer alternative sizes available to replace *capacity limited* size deployments.
 
 If you had one VM running on a *capacity limited* size and require another VM of a similar size in the same series, there is no guarantee that capacity will be able to fulfill this request. Any new VMs should be created using sizes in [series that aren't considered previous-gen](../overview.md). Migrating to sizes considered *next-gen available* is not recommended since these sizes are also similarly outdated.
 
@@ -43,7 +43,7 @@ For a list of previous-gen size series that are considered *capacity limited*, s
 
 ## Retired sizes
 
-Retired size series are **no longer available** and can't be used. If you have VMs running on sizes that are considered *retired*, migrate to a newer next-gen size as soon as possible.
+Retired size series are **no longer available** and can't be used. If you have VMs running on sizes with **retirement announced** status, migrate to a newer next-gen size as soon as possible.
 
 Retiring hardware is necessary over time to ensure that the latest and greatest technology is available on Azure. Retirement ensures that the hardware is reliable, secure, and efficient. It also allows for the latest features and capabilities that may not be present on previous generations of hardware.
 

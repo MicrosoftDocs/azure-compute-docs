@@ -14,7 +14,7 @@ ms.author: ajkundna
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
-Support for Generation 2 virtual machines (VMs) is now available on Azure. You can't change a virtual machine's generation after you've created it, so review the considerations on this page before you choose a generation.
+Support for Generation 2 virtual machines (VMs) is now available on Azure. You can also upgrade existing Generation 1 virtual machines to Generation 2 with Trusted launch. Review the considerations on this page and the [upgrade guidance](trusted-launch-existing-vm-gen-1.md) before choosing or upgrading a generation.
 
 Generation 2 VMs support key features that aren't supported in Generation 1 VMs. These features include increased memory, Intel Software Guard Extensions (Intel SGX), and virtualized persistent memory (vPMEM). Generation 2 VMs running on-premises, have some features that aren't supported in Azure yet. For more information, see the [Features and capabilities](#features-and-capabilities) section.
 
@@ -89,7 +89,6 @@ For more information, see [Trusted launch](trusted-launch.md).
 | [Azure disk encryption](../virtual-machines/disk-encryption-overview.md)             | :heavy_check_mark: | :heavy_check_mark:                |
 | [Server-side encryption](disk-encryption.md)            | :heavy_check_mark: | :heavy_check_mark: |
 
-
 ## Creating a Generation 2 VM
 
 ### Azure Resource Manager Template
@@ -158,6 +157,9 @@ You can create a Generation 2 VM from a managed image or managed disk in the sam
 
 You can also create Generation 2 VMs by using virtual machine scale sets. In the Azure CLI, use Azure scale sets to create Generation 2 VMs.
 
+> [!NOTE]
+> Alternatively, you can upgrade an existing Generation 1 VM to Generation 2 with Trusted launch. For more information, see [Upgrade existing Gen1 VMs to Gen2-Trusted launch](trusted-launch-existing-vm-gen-1.md).
+
 ## Frequently asked questions
 
 * **Are Generation 2 VMs available in all Azure regions?**  
@@ -208,7 +210,7 @@ You can also create Generation 2 VMs by using virtual machine scale sets. In the
     Yes.
 
 * **Can I migrate a VM from Generation 1 to Generation 2?**  
-    Azure Virtual Machines supports upgrading Generation 1 virtual machines (VM) to Generation 2 by upgrading to the [trusted launch security type](trusted-launch-existing-vm-gen-1.md). 
+    Azure Virtual Machines supports upgrading existing Generation 1 VMs to Generation 2 by upgrading to the Trusted launch security type. See [Upgrade existing Gen1 VMs to Gen2-Trusted launch](trusted-launch-existing-vm-gen-1.md) for steps and prerequisites. 
 
 * **Why is my VM size not enabled in the size selector when I try to create a Generation 2 VM?**
 
@@ -222,3 +224,5 @@ You can also create Generation 2 VMs by using virtual machine scale sets. In the
 Learn more about the [trusted launch](trusted-launch-portal.md) with Generation 2 VMs.
 
 Learn about [Generation 2 virtual machines in Hyper-V](/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
+
+[Upgrade an existing Gen1 VM to Gen2-Trusted launch](trusted-launch-existing-vm-gen-1.md).

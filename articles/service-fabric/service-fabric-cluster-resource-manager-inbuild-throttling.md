@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 02/28/2024
+ms.update-cycle: 1095-days
 # Customer intent: As a system administrator, I want to configure InBuild throttling limits for replicas per node, so that I can manage resource utilization effectively during the InBuild phase and prevent performance degradation due to excessive I/O and memory consumption.
 ---
 

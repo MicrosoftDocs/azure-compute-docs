@@ -7,6 +7,8 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+ms.update-cycle: 1095-days
+ms.custom: sfi-image-nochange
 # Customer intent: As a cloud architect, I want to enable the DNS service in my microservices cluster, so that I can facilitate service discovery using standard DNS protocols and maintain the portability of my containerized applications across different environments.
 ---
 

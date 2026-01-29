@@ -9,7 +9,6 @@
   - name: Support Policy for ACI
     href: azure-container-instances-support-policy.md
 - name: Quickstarts
-  expanded: true
   items:
   - name: Deploy a container instance - CLI
     href: container-instances-quickstart.md
@@ -25,8 +24,7 @@
     href: container-instances-quickstart-template.md
   - name: Deploy a container instance - Terraform
     href: container-instances-quickstart-terraform.md
-  - name: Deploy a container instance - Docker CLI
-    href: quickstart-docker-cli.md
+  expanded: true
 - name: Tutorials
   items:
   - name: Create and deploy container image
@@ -48,17 +46,17 @@
     - name: Trigger with Azure Functions
       href: container-instances-tutorial-azure-function-trigger.md
   - name: Deploy a confidential container group
-    items: 
+    items:
     - name: Deploy a confidential container group - Resource Manager
       href: container-instances-tutorial-deploy-confidential-containers-cce-arm.md
     - name: Deploy a confidential container group - Portal
-      href: container-instances-tutorial-deploy-confidential-container-default-portal.md 
+      href: container-instances-tutorial-deploy-confidential-container-default-portal.md
   - name: Deploy a Spot container group
-    items: 
+    items:
     - name: Deploy a Spot container group - Azure CLI
       href: container-instances-tutorial-deploy-spot-containers-cli.md
     - name: Deploy a Spot container group - Portal
-      href: container-instances-tutorial-deploy-spot-containers-portal.md 
+      href: container-instances-tutorial-deploy-spot-containers-portal.md
   - name: Deploy virtual nodes on Azure Container Instances
     items:
     - name: Deploy virtual nodes on Azure Container Instances in your Azure Kubernetes Service cluster
@@ -87,16 +85,16 @@
       href: container-instance-ngroups\container-instances-rolling-update.md
   - name: Security
     items:
-     - name: Security baseline
-       href: /security/benchmark/azure/baselines/container-instances-security-baseline?toc=/azure/container-instances/TOC.json
-     - name: Security considerations
-       href: container-instances-image-security.md
+    - name: Security baseline
+      href: /security/benchmark/azure/baselines/container-instances-security-baseline?toc=/azure/container-instances/TOC.json
+    - name: Security considerations
+      href: container-instances-image-security.md
   - name: Virtual networking
     href: container-instances-virtual-network-concepts.md
   - name: Confidential container groups
     href: container-instances-confidential-overview.md
   - name: Attestation in Confidential containers
-    href: confidential-containers-attestation-concepts.md 
+    href: confidential-containers-attestation-concepts.md
   - name: About Azure Container Instances Spot containers
     href: container-instances-spot-containers-overview.md
   - name: Virtual nodes on Azure Container Instances
@@ -117,7 +115,7 @@
       href: container-instances-github-action.md
     - name: Encrypt deployment data
       href: container-instances-encrypt-data.md
-    - name: Availability zones and disaster recovery 
+    - name: Availability zones and disaster recovery
       href: /azure/reliability/reliability-container-instances
       maintainContext: true
     - name: Configure DNS name reuse
@@ -151,7 +149,7 @@
     - name: Enable automatic HTTPS with Caddy as reverse proxy
       href: container-instances-container-group-automatic-ssl.md
     - name: Expose static IP with App Gateway
-      href: container-instances-application-gateway.md  
+      href: container-instances-application-gateway.md
     - name: Use Azure Firewall for ingress and egress
       href: container-instances-egress-ip-address.md
     - name: Configure container group egress with NAT gateway
@@ -179,7 +177,7 @@
     - name: Update running containers
       href: container-instances-update.md
   - name: Manage a standby pool
-    items: 
+    items:
     - name: Overview
       href: container-instances-standby-pool-overview.md
     - name: Configure permissions
@@ -240,7 +238,7 @@
     href: /javascript/api/overview/azure/container-instances
   - name: Resource Manager template
     href: /azure/templates/microsoft.containerinstance/containergroups
-  - name: YAML  
+  - name: YAML
     href: container-instances-reference-yaml.md
   - name: Connector
     href: /connectors/aci

@@ -7,6 +7,8 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+ms.update-cycle: 1095-days
+ms.custom: sfi-image-nochange
 # Customer intent: As a cloud administrator, I want to utilize the EventStore service in Azure Service Fabric, so that I can efficiently monitor and diagnose the state and performance of my clusters and workloads at any given time.
 ---
 

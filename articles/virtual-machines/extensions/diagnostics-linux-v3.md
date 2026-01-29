@@ -61,6 +61,8 @@ The Linux diagnostic extension helps a user monitor the health of a Linux VM tha
 
 This extension works with both Azure deployment models.
 
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
+
 ## Install the extension on a VM
 
 You can enable the extension by using Azure PowerShell cmdlets, Azure CLI scripts, Azure Resource Monitor templates (ARM templates), or the Azure portal. For more information, see [Extensions features](features-linux.md).

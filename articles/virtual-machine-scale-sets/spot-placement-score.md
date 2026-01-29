@@ -1,13 +1,15 @@
 ---
 title: Spot Placement Score
 description: Learn how to use Azure Spot Placement Score to evaluate deployment success.
-author: ju-shim 
-ms.author: jushiman 
+author: cynthn 
+ms.author: cynthn 
 ms.service: azure-virtual-machines
 ms.subservice: azure-spot-vm
 ms.topic: how-to
 ms.date: 11/13/2024
-ms.reviewer: ju-shim
+ms.update-cycle: 180-days
+ms.custom: portal
+ms.reviewer: cynthn
 # Customer intent: As a cloud architect, I want to evaluate the Spot Placement Score for my virtual machine deployments so that I can optimize resource allocation and improve the likelihood of successful Spot VM deployments across regions and sizes.
 ---
 
@@ -41,7 +43,7 @@ There are no costs associated with this feature.
 
 - A subscription's available Spot VM quota needs to be checked or requested separately. 
 
-- Spot Placement Score supports both regionally and zonally scoped placement score. 
+- Spot Placement Score supports both availability zone-scoped and regional (nonzonal) placement score. 
 
 - Spot Placement Score API internally calls other GET APIs and is part of your GET call quota. 
 
@@ -134,7 +136,7 @@ Invoke-AzSpotPlacementScore
 The following examples have scenario assumptions and a table with the results score to help you understand how Spot Placement Score works.
 
 ### Scenario 1
-This table is an example of a request returning regionally scoped placement scores for multiple desired VM sizes and regions.
+This table is an example of a request returning regional (nonzonal) scoped placement scores for multiple desired VM sizes and regions.
 
 The following scenario assumptions apply to this example:
 - **Desired locations:** `westus`, `eastus`
@@ -150,7 +152,7 @@ The following scenario assumptions apply to this example:
 | Standard_D4_v2                    | eastus      | False                | True               | High             |
 
 ### Scenario 2
-This table is an example of a request returning zonally scoped placement scores for multiple desired VM sizes and regions.
+This table is an example of a request returning availability zone-scoped placement scores for multiple desired VM sizes and regions.
 
 The following scenario assumptions apply to this example:
 - **Desired locations:** `westus`, `eastus`

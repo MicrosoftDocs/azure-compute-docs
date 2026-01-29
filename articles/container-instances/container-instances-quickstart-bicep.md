@@ -4,7 +4,8 @@ description: In this quickstart, you use a Bicep file to quickly deploy a contai
 author: tomvcassidy
 services: container-instances
 ms.author: tomcassidy
-ms.date: 08/29/2024
+ms.date: 11/17/2025
+ms.update-cycle: 180-days
 ms.topic: quickstart
 ms.service: azure-container-instances
 ms.custom: subject-armqs, mode-arm, devx-track-bicep

@@ -7,7 +7,10 @@ ms.service: azure-virtual-machines
 ms.subservice: security
 ms.topic: quickstart
 ms.date: 09/23/2025
-ms.custom: mode-ui, linux-related-content
+ms.custom:
+  - mode-ui
+  - linux-related-content
+  - sfi-image-nochange
 # Customer intent: As a cloud administrator, I want to create and encrypt a Linux virtual machine using the portal so that I can ensure my virtual machine's data is secure and compliant with security regulations.
 ---
 

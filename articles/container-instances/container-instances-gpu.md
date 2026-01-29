@@ -1,14 +1,14 @@
 ---
-title: Deploy GPU-enabled container instance
-description: Learn how to deploy Azure container instances to run compute-intensive container applications using GPU resources.
+title: Deploy GPU-Enabled Container Instance
+description: Learn how to deploy Azure container instances to run compute-intensive container applications by using GPU resources.
 ms.topic: how-to
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-container-instances
 ms.custom: devx-track-azurecli
 services: container-instances
-ms.date: 08/29/2024
-# Customer intent: As a cloud developer, I want to deploy GPU-enabled container instances using YAML or Resource Manager templates, so that I can efficiently run compute-intensive applications like deep learning and CUDA workloads in Azure.
+ms.date: 11/17/2025
+# Customer intent: As a cloud developer, I want to deploy GPU-enabled container instances by using YAML or Azure Resource Manager templates so that I can efficiently run compute-intensive applications like deep learning and CUDA workloads in Azure.
 ---
 
 # Deploy container instances that use GPU resources
@@ -16,72 +16,70 @@ ms.date: 08/29/2024
 > [!IMPORTANT]
 > This product is retired as of July 14, 2025.
 
-To run certain compute-intensive workloads on Azure Container Instances, deploy your [container groups](container-instances-container-groups.md) with *GPU resources*. The container instances in the group can access one or more NVIDIA Tesla GPUs while running container workloads such as CUDA and deep learning applications.
+To run certain compute-intensive workloads on Azure Container Instances, deploy your [container groups](container-instances-container-groups.md) with *graphics processing unit (GPU) resources*. The container instances in the group can access one or more NVIDIA Tesla GPUs while running container workloads such as compute unified device architecture (CUDA) and deep learning applications.
 
-This article shows how to add GPU resources when you deploy a container group by using a [YAML file](container-instances-multi-container-yaml.md) or [Resource Manager template](container-instances-multi-container-group.md). You can also specify GPU resources when you deploy a container instance using the Azure portal.
+This article shows how to add GPU resources when you deploy a container group by using a [YAML file](container-instances-multi-container-yaml.md) or [Azure Resource Manager template (ARM template)](container-instances-multi-container-group.md). You can also specify GPU resources when you deploy a container instance by using the Azure portal.
 
 ## Prerequisites
 
-> [!NOTE]
-> Due to some current limitations, not all limit increase requests are guaranteed to be approved.
+Because of some current limitations, all limit increase requests might not be approved.
 
-* If you would like to use this sku for your production container deployments, create an [Azure Support request](https://azure.microsoft.com/support) to increase the limit.
+If you want to use this version for your production container deployments, create an [Azure Support request](https://azure.microsoft.com/support) to increase the limit.
 
 ## Preview limitations
 
-In preview, the following limitations apply when using GPU resources in container groups.
+In preview, the following limitations apply when you use GPU resources in container groups.
 
 [!INCLUDE [container-instances-gpu-regions](./includes/container-instances-gpu-regions.md)]
 
-Support will be added for additional regions over time.
+Support will be added for more regions over time.
 
-**Supported OS types**: Linux only
+**Supported OS types**: Linux only.
 
-**Additional limitations**: GPU resources can't be used when deploying a container group into a [virtual network](container-instances-vnet.md).
+**Other limitations**: You can't use GPU resources when you deploy a container group into a [virtual network](container-instances-vnet.md).
 
 ## About GPU resources
 
-### Count and SKU
+### Count and version
 
 To use GPUs in a container instance, specify a *GPU resource* with the following information:
 
-* **Count** - The number of GPUs: **1**, **2**, or **4**.
-* **SKU** - The GPU SKU: **V100**. Each SKU maps to the NVIDIA Tesla GPU in one the following Azure GPU-enabled VM families:
+* **Count**: The number of GPUs is one, two, or four.
+* **Version**: The GPU version is V100. Each version maps to the NVIDIA Tesla GPU in one the following Azure GPU-enabled VM families:
 
-  | SKU | VM family |
+  | Version | VM family |
   | --- | --- |
   | V100 | [NCv3](../virtual-machines/ncv3-series.md) |
 
 [!INCLUDE [container-instances-gpu-limits](./includes/container-instances-gpu-limits.md)]
 
-When deploying GPU resources, set CPU and memory resources appropriate for the workload, up to the maximum values shown in the preceding table. These values are currently larger than the CPU and memory resources available in container groups without GPU resources.
+When you deploy GPU resources, set CPU and memory resources appropriate for the workload, up to the maximum values shown in the preceding table. These values are currently larger than the CPU and memory resources available in container groups without GPU resources.
 
 > [!IMPORTANT]
-> Default [subscription limits](container-instances-quotas.md) (quotas) for GPU resources differ by SKU. The default CPU limits for V100 SKUs are initially set to 0. To request an increase in an available region, please submit an [Azure support request][azure-support].
+> Default [subscription limits](container-instances-quotas.md) (quotas) for GPU resources differ by version. The default CPU limits for V100 versions are initially set to 0. To request an increase in an available region, submit an [Azure Support request][azure-support].
 
 ### Things to know
 
-* **Deployment time** - Creation of a container group containing GPU resources takes up to **8-10 minutes**. This is due to the additional time to provision and configure a GPU VM in Azure.
+* **Deployment time**: Creation of a container group that contains GPU resources takes up to 8 to 10 minutes. More time is required to provision and configure a GPU virtual machine (VM) in Azure.
+* **Pricing**: Similar to container groups without GPU resources, Azure bills for resources that are consumed over the *duration* of a container group with GPU resources. The duration is calculated from the time to pull your first container's image until the container group terminates. It doesn't include the time to deploy the container group.
 
-* **Pricing** - Similar to container groups without GPU resources, Azure bills for resources consumed over the *duration* of a container group with GPU resources. The duration is calculated from the time to pull your first container's image until the container group terminates. It doesn't include the time to deploy the container group.
+  For more information, see [pricing details](https://azure.microsoft.com/pricing/details/container-instances/).
 
-  See [pricing details](https://azure.microsoft.com/pricing/details/container-instances/).
+* **CUDA drivers**: Container instances with GPU resources are pre-provisioned with NVIDIA CUDA drivers and container runtimes so that you can use container images developed for CUDA workloads.
 
-* **CUDA drivers** - Container instances with GPU resources are pre-provisioned with NVIDIA CUDA drivers and container runtimes, so you can use container images developed for CUDA workloads.
+  We support up through CUDA 11 at this stage. For example, you can use the following base images for your Docker file:
 
-  We support up through CUDA 11 at this stage. For example, you can use the following base images for your Dockerfile:
   * [nvidia/cuda:11.4.2-base-ubuntu20.04](https://hub.docker.com/r/nvidia/cuda/)
   * [tensorflow/tensorflow:devel-gpu](https://hub.docker.com/r/tensorflow/tensorflow)
 
-  > [!NOTE]
-  > To improve reliability when using a public container image from Docker Hub, import and manage the image in a private Azure container registry, and update your Dockerfile to use your privately managed base image. [Learn more about working with public images](/azure/container-registry/buffer-gate-public-content).
+  To improve reliability when you use a public container image from Docker Hub, import and manage the image in a private Azure container registry. Then update your Docker file to use your privately managed base image. [Learn more about working with public images](/azure/container-registry/buffer-gate-public-content).
 
 ## YAML example
 
-One way to add GPU resources is to deploy a container group by using a [YAML file](container-instances-multi-container-yaml.md). Copy the following YAML into a new file named *gpu-deploy-aci.yaml*, then save the file. This YAML creates a container group named *gpucontainergroup* specifying a container instance with a V100 GPU. The instance runs a sample CUDA vector addition application. The resource requests are sufficient to run the workload.
+One way to add GPU resources is to deploy a container group by using a [YAML file](container-instances-multi-container-yaml.md). Copy the following YAML into a new file named *gpu-deploy-aci.yaml*, and then save the file. This YAML creates a container group named `gpucontainergroup` that specifies a container instance with a V100 GPU. The instance runs a sample CUDA vector addition application. The resource requests are sufficient to run the workload.
 
  > [!NOTE]
-  > The following example uses a public container image. To improve reliability, import and manage the image in a private Azure container registry, and update your YAML to use your privately managed base image. [Learn more about working with public images](/azure/container-registry/buffer-gate-public-content).
+  > The following example uses a public container image. To improve reliability, import and manage the image in a private Azure container registry. Then update your YAML to use your privately managed base image. [Learn more about working with public images](/azure/container-registry/buffer-gate-public-content).
 
 ```yaml
 additional_properties: {}
@@ -103,7 +101,7 @@ properties:
   restartPolicy: OnFailure
 ```
 
-Deploy the container group with the [az container create][az-container-create] command, specifying the YAML file name for the `--file` parameter. You need to supply the name of a resource group and a location for the container group such as *eastus* that supports GPU resources.
+Deploy the container group with the [az container create][az-container-create] command and specify the YAML file name for the `--file` parameter. You need to supply the name of a resource group and a location for the container group, such as *eastus*, that supports GPU resources.
 
 ```azurecli-interactive
 az container create --resource-group myResourceGroup --file gpu-deploy-aci.yaml --location eastus
@@ -128,7 +126,7 @@ Done
 
 ## Resource Manager template example
 
-Another way to deploy a container group with GPU resources is by using a [Resource Manager template](container-instances-multi-container-group.md). Start by creating a file named `gpudeploy.json`, then copy the following JSON into it. This example deploys a container instance with a V100 GPU that runs a [TensorFlow](https://www.tensorflow.org/) training job against the MNIST dataset. The resource requests are sufficient to run the workload.
+Another way to deploy a container group with GPU resources is by using an [ARM template](container-instances-multi-container-group.md). Start by creating a file named `gpudeploy.json`. Then copy the following JSON into it. This example deploys a container instance with a V100 GPU that runs a [TensorFlow](https://www.tensorflow.org/) training job against the MNIST dataset. The resource requests are sufficient to run the workload.
 
 ```JSON
 {
@@ -186,7 +184,7 @@ Deploy the template with the [az deployment group create][az-deployment-group-cr
 az deployment group create --resource-group myResourceGroup --template-file gpudeploy.json
 ```
 
-The deployment takes several minutes to complete. Then, the container starts and runs the TensorFlow job. Run the [az container logs][az-container-logs] command to view the log output:
+The deployment takes several minutes to complete. Then the container starts and runs the TensorFlow job. Run the [az container logs][az-container-logs] command to view the log output:
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name gpucontainergrouprm --container-name gpucontainer
@@ -221,23 +219,23 @@ Adding run metadata for 999
 
 ## Clean up resources
 
-Because using GPU resources may be expensive, ensure that your containers don't run unexpectedly for long periods. Monitor your containers in the Azure portal, or check the status of a container group with the [az container show][az-container-show] command. For example:
+Because using GPU resources might be expensive, ensure that your containers don't run unexpectedly for long periods. Monitor your containers in the Azure portal. You can also check the status of a container group with the [az container show][az-container-show] command. For example:
 
 ```azurecli-interactive
 az container show --resource-group myResourceGroup --name gpucontainergroup --output table
 ```
 
-When you're done working with the container instances you created, delete them with the following commands:
+When you're finished working with the container instances that you created, delete them with the following commands:
 
 ```azurecli-interactive
 az container delete --resource-group myResourceGroup --name gpucontainergroup -y
 az container delete --resource-group myResourceGroup --name gpucontainergrouprm -y
 ```
 
-## Next steps
+## Related content
 
-* Learn more about deploying a container group using a [YAML file](container-instances-multi-container-yaml.md) or [Resource Manager template](container-instances-multi-container-group.md).
-* Learn more about [GPU optimized VM sizes](../virtual-machines/sizes-gpu.md) in Azure.
+* Learn more about how to deploy a container group by using a [YAML file](container-instances-multi-container-yaml.md) or an [ARM template](container-instances-multi-container-group.md).
+* Learn more about [GPU-optimized VM sizes](../virtual-machines/sizes-gpu.md) in Azure.
 
 
 <!-- IMAGES -->
