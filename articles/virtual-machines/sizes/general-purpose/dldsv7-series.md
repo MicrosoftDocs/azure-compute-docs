@@ -62,7 +62,7 @@ Local (temp) storage info for each size
 | Standard_D96lds_v7 | 6 | 880 | 2,400,000 | 13,440 | 1,200,000 | 6,720 |
 | Standard_D128lds_v7 | 4 | 1760 | 3,200,000 | 17,920 | 1,600,000 | 8,960 |
 | Standard_D192lds_v7 | 6 | 1760 | 4,800,000 | 26,880 | 2,400,000 | 13,440 |
-| Standard_D248lds_v7 | 8 | 1760 | 6,400,000 | 35,840 | 3,200,000 | 17,000 |
+| Standard_D248lds_v7 | 5 | 2,816 | 6,400,000 | 35,840 | 3,200,000 | 17,000 |
 
 #### Storage resources
 - [NVMe Overview](/azure/virtual-machines/nvme-overview)
