@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.date: 07/28/2024
+ms.date: 01/29/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
@@ -17,5 +17,5 @@ ms.custom: include file
 | Memory         | 8 - 256 GiB          |                                                    |
 | Local Storage  | 1 Disks     | 16 - 512 GiB <br>4000 - 128000 IOPS (RR) <br>32 - 1024 MBps (RR)|
 | Remote Storage | 4 - 32 Disk    |  4000 - 80000 IOPS <br>48 - 1200 MBps                     |
-| Network        | 2 - 8 NICs          | 1000 - 30000 Mbps                                            |
+| Network        | 2 - 8 NICs          | 1000 - 30000 Mbps   <br>Interfaces: NetVSC, ConnectX, [MANA](https://aka.ms/ManaFAQ1)   |
 | Accelerators   | None              |                                                     |
