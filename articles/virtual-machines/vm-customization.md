@@ -178,7 +178,7 @@ Run the following command to retrieve the list of compute SKUs for your subscrip
 ```Azure CLI
 az vm list-skus --location {location} --resource-type virtualMachines --query "[name=='VM_NAME_HERE']" 
 ```
-- This command exports shows the supported vCPU configurations. The "vCPUsConstraintsAllowed" field outlines supported vCores.
+- This command shows the supported vCPU configurations. The "vCPUsConstraintsAllowed" field outlines supported vCores.
 
 **Using Azure Portal**
 
