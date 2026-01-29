@@ -1,5 +1,5 @@
 ---
-title: Ignoring metrics
+title: Ignore metrics
 description: An introduction to the mechanism of ignoring certain metrics in service fabric. 
 author: tracygooo
 
@@ -9,7 +9,7 @@ ms.author: majovanovic
 # Customer intent: As a cloud service administrator, I want to enable/disable a certain set of metrics quickly, without editing the service description.
 ---
 
-# Ignoring metrics
+# Ignore metrics
 Service Fabric provides a way for customers to set custom metrics for their services, which the Cluster Resource Manager (CRM) uses for placement of said services and for keeping the cluster balanced. These metrics don't need to be physical cluster constraints, like CPU or memory, but can be any logical constraints that the customer wishes to impose upon the cluster.
 
 CRM introduces a way where the user can ignore a set of these metrics by enabling the feature through a dynamic config. When this feature is enabled, CRM considers capacities for the stated metrics on all of the nodes infinite, so they don't pose any constraint in placing services. This feature might come in handy when a large portion of the cluster nodes goes down. In this scenario, capacities need to be expanded in order to prioritize placing all of the services from the downed nodes. An example of such a scenario is when a whole availability zone (AZ) goes down.
@@ -52,7 +52,7 @@ This scenario demonstrates what happens when a large portion of cluster nodes go
 
 All 18 replicas (6 from each service) are distributed evenly. Each node hosts 3 replicas.
 
-### Large-scale failure: four out of six nodes go down (without ignoring metrics)
+### Large-scale failure: Four out of six nodes go down
 
 **Catastrophic scenario:** Node3, Node4, Node5, and Node6 fail simultaneously (67% of the cluster is down). CRM must redistribute twelve replicas from the failed nodes to the remaining two healthy nodes.
 
@@ -94,7 +94,7 @@ CRM needs to place twelve replicas (four of each service) onto just two nodes:
 
 **Problem:** The Custom Metric capacity of 50 units per node is the bottleneck. You could manually edit each node description to disable the metric, but this approach becomes impractical with many nodes or multiple custom metrics. The ignoring metrics feature solves this problem with a single cluster-wide configuration change.
 
-### After ignoring Custom Metric
+### Ignore the Custom Metric
 
 By ignoring the Custom Metric, you effectively expand the capacity from 50 units to infinite, allowing CRM to prioritize placing all services from the downed nodes.
 
@@ -127,11 +127,12 @@ By ignoring the Custom Metric, you effectively expand the capacity from 50 units
 
 **Result:** By ignoring the Custom Metric, the capacity constraint was removed and all 12 replicas from the downed nodes were successfully placed on the 2 remaining nodes. This restored full service redundancy and ensured high availability during the cluster failure.
 
-## 1. Specifying metrics to be ignored
+## 1. Specify metrics to ignore
 
 Configure which metrics can be ignored as part of your cluster configuration. You must specify these metrics in advance before you need to ignore them. This configuration is a global cluster setting that identifies individual metrics that can be ignored. The following examples show how to configure metrics. In this case, Metric1 is ignored (node capacities for that metric become infinite), while Metric2 continues to be enforced normally.
 
-***Note:*** Set the value to `true` only for metrics that should be ignored. Metrics not listed in the `ExpandedMetricsDuringZoneDownMode` section continue to be enforced normally.
+> [!NOTE]
+> Set the value to `true` only for metrics that should be ignored. Metrics not listed in the `ExpandedMetricsDuringZoneDownMode` section continue to be enforced normally.
 
 ClusterManifest.xml:
 
@@ -162,7 +163,7 @@ via ClusterConfig.json for Standalone deployments or Template.json for Azure hos
 ]
 ```
 
-## 2. Enable/Disable ignoring metrics
+## 2. Enable/Disable the feature
 
 Users must manually detect the scenario when metrics need to be ignored. Ignoring metrics feature is turned on/off by setting config `EnableZoneDownModeNodeCapacityExpansion` in `PlacementAndLoadBalancing` section of cluster manifest either using XML or JSON:
 
