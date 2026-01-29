@@ -146,7 +146,7 @@ The following JSON provides the schema for the Key Vault VM extension. All setti
 > This is because the `/secrets` path returns the full certificate, including the private key, while the `/certificates` path doesn't. More information about certificates can be found here: [Key Vault Certificates](/azure/key-vault/general/about-keys-secrets-certificates)
 
 > [!IMPORTANT]
-> The `authenticationSettings` property is required only when your VM or VM scale set uses **user-assigned managed identities** or when using **Azure Arc-enabled VMs**. For **system-assigned managed identities**, omit the `authenticationSettings` section. Including it will cause deployment to fail. Without this section, a VM with user assigned identities will result in the Key Vault extension failing and being unable to download certificates. Set msiClientId to the identity that will authenticate to Key Vault.
+> The `authenticationSettings` property is required only when your VM or VM scale set uses **user-assigned managed identities** or when using **Azure Arc-enabled VMs**. For **system-assigned managed identities**, omit the `authenticationSettings` section. Including it will cause deployment to fail. Without this section, a VM with user assigned identities will result in the Key Vault extension failing and being unable to download certificates. Set `msiClientId` to the identity that will authenticate to Key Vault.
 >
 > Also **required** for **Azure Arc-enabled VMs**.
 > Set msiEndpoint to `http://localhost:40342/metadata/identity`.
