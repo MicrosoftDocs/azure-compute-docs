@@ -59,11 +59,11 @@ First you deprovision the VM using the Azure Linux Agent (waagent) to delete mac
    ```
 
    > [!NOTE]
-   > Only run this command on a VM that you'll capture as an image. This command does not guarantee that the image is cleared of all sensitive information or is suitable for redistribution. The `+user` parameter also removes the last provisioned user account. To keep user account credentials in the VM, use only `-deprovision`.
+   > Only run this command on a VM that you'll capture as an image. This command doesn't guarantee that the image is cleared of all sensitive information or is suitable for redistribution. The `+user` parameter also removes the last provisioned user account. To keep user account credentials in the VM, use only `-deprovision`.
 
-1. Enter **y** to continue. You can add the `-force` parameter to avoid this confirmation step.
+1. Type **y** to continue. You can add the `-force` parameter to avoid this confirmation step.
 
-1. After the command completes, enter **exit** to close the SSH client.  The VM will still be running at this point.
+1. After the command completes, type **exit** to close the SSH client.  The VM will still be running at this point.
 
    Deallocate the VM that you deprovisioned with `az vm deallocate` so that it can be generalized.
 
@@ -73,7 +73,7 @@ First you deprovision the VM using the Azure Linux Agent (waagent) to delete mac
       --name myVM
    ```
 
-   Then the VM needs to be marked as generalized on the platform. 
+   Then mark the VM as generalized on the platform. 
 
    ```azurecli-interactive
    az vm generalize \
@@ -88,7 +88,7 @@ Sysprep removes all your personal account and security information, and then pre
 > [!IMPORTANT]
 > After you have run Sysprep on a VM, that VM is considered *generalized* and can't be restarted. The process of generalizing a VM isn't reversible. If you need to keep the original VM functioning, you should create a snapshot of the OS disk, create a VM from the snapshot, and then generalize that copy of the VM. 
 > 
-> We do not support custom answer files in the sysprep step, so you can't use the "/unattend:_answerfile_" switch with your sysprep command.  
+> Custom answer files are not supported in the sysprep step, so you can't use the '/unattend:_answerfile_' switch with your sysprep command.  
 
 
 ### Prerequisites for Windows VMs
