@@ -176,7 +176,7 @@ To determine which vCPUs can be constrained in a specific region, you can use th
 Run the following command to retrieve the list of compute SKUs for your subscription and region:
 
 ```Azure CLI
-az vm list-skus --location {location} --resource-type virtualMachines --query "[name=='VM_NAME_HERE'] 
+az vm list-skus --location {location} --resource-type virtualMachines --query "[name=='VM_NAME_HERE']" 
 ```
 - This command exports shows the supported vCPU configurations. The "vCPUsConstraintsAllowed" field outlines supported vCores.
 
