@@ -16,5 +16,5 @@ ms.custom: include file
 | Processor        | 2 - 112<sup>vCores    | Intel® Xeon® Platinum 8370C (Ice Lake) [x86-64] <br>Intel Xeon Platinum 8573C (Emerald Rapids) [x86-64] |
 | Memory           | 16 - 672<sup>GiB      |                                                 |
 | Data Disks       | 4 - 64<sup>Disks     | 5500 - 450000<sup>IOPS</sup> / 125 - 8000<sup>MBps  |
-| Network          | 2 - 8<sup>NICs       | 12500 - 40000<sup>Mbps <br>Interfaces: NetVSC, ConnectX, [MANA](/azure/virtual-network/accelerated-networking-mana-overview)  |
+| Network          | 2 - 8<sup>NICs       | 12500 - 40000<sup>Mbps <br>Interfaces: NetVSC, ConnectX, [MANA](https://aka.ms/ManaFAQ1)  |
 | Accelerators     | None                 |                                                 |

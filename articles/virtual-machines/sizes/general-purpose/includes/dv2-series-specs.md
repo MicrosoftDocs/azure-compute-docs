@@ -17,5 +17,5 @@ ms.custom: include file
 | Memory         | 3.5 - 56 GiB          |                                                    |
 | Local Storage  | 1 Disk     | 50 - 800 GiB <br>3000 - 48000 IOPS (RR) <br>46 - 750 MBps (RR)|
 | Remote Storage | 4 - 64 Disks    | 4x500 - 64x500 IOPS         |
-| Network        | 2 -  NICs          | 750 - 12000  Mbps    <br>Interfaces: NetVSC, ConnectX, [MANA](/azure/virtual-network/accelerated-networking-mana-overview)   |
+| Network        | 2 -  NICs          | 750 - 12000  Mbps    <br>Interfaces: NetVSC, ConnectX, [MANA](https://aka.ms/ManaFAQ1)   |
 | Accelerators   | None              |                                                     |
