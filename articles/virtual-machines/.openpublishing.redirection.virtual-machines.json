@@ -6709,11 +6709,6 @@
             "source_path_from_root": "/articles/virtual-machines/sizes/memory-optimized/mdsv3-very-high-memory-series.md",
             "redirect_url": "/azure/virtual-machines/sizes/memory-optimized/mdsv3-vhm-series",
             "redirect_document_id": false
-        },
-        {
-            "source_path_from_root": "/articles/virtual-machines/generalize.yml",
-            "redirect_url": "/azure/virtual-machines/generalize",
-            "redirect_document_id": false
         }
     ]
 }
