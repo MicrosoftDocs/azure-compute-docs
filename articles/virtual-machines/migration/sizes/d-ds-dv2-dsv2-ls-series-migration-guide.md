@@ -1,4 +1,3 @@
-
 ﻿---
 title: Retired VM Sizes Migration Guide
 description: Migration guide for retired VM size series
