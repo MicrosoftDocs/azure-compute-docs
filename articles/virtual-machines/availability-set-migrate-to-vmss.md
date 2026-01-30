@@ -38,9 +38,9 @@ For a complete comparison, see [Orchestration modes for Virtual Machine Scale Se
 
 Before you begin, ensure you have the following:
 
--**Azure subscription** with the migration preview feature registered
--**Contributor** role or higher on the resource group containing the availability set
--**Azure CLI 2.72.0** or later, or **Azure PowerShell Az module** installed
+- **Azure subscription** with the migration preview feature registered
+- **Contributor** role or higher on the resource group containing the availability set
+- **Azure CLI 2.72.0** or later, or **Azure PowerShell Az module** installed
 - An existing **availability set** with VMs you want to migrate
 - A target **Virtual Machine Scale Set** with Flexible orchestration mode (or create one during migration)
 
@@ -96,12 +96,12 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/providers/Micros
 
 The migration process consists of the following phases:
 
-1.**Create target Virtual Machine Scale Set** - Create a new scale set with Flexible orchestration mode (if you don't have one)
-2.**Validate migration** - Verify the availability set can be migrated
-3.**Start migration** - Put the availability set into migration mode
-4.**Migrate VMs** - Move each VM individually to the scale set
-5.**Start VMs** - Power on the migrated VMs
-6.**Clean up** - Delete the empty availability set
+1. **Create target Virtual Machine Scale Set** - Create a new scale set with Flexible orchestration mode (if you don't have one)
+2.* *Validate migration** - Verify the availability set can be migrated
+3. **Start migration** - Put the availability set into migration mode
+4. **Migrate VMs** - Move each VM individually to the scale set
+5. **Start VMs** - Power on the migrated VMs
+6. **Clean up** - Delete the empty availability set
 
 > [!IMPORTANT]
 > - VMs are deallocated during migration. Plan for downtime accordingly.
