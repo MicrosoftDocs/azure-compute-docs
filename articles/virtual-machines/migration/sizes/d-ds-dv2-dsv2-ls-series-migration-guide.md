@@ -1,20 +1,21 @@
+
 ﻿---
-title: General Purpose Sizes Migration Guide
-description: Migration guide for general purpose VM size series
+title: Retired VM Sizes Migration Guide
+description: Migration guide for retired VM size series
 author: iamwilliew
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 10/15/2025
+ms.date: 01/30/2026
 ms.author: wwilliams
 ms.reviewer: mattmcinnes
 ---
 
-# General Purpose Sizes Migration Guide
+# Retired VM Sizes Migration Guide
 
-This migration guide is designed for users of Azure General Purpose virtual machines (VMs), which are scheduled for retirement. To ensure minimal disruption and to continue optimizing cost and performance, this guide helps you transition to the latest series VMs.
+This migration guide is designed for users of Azure General Purpose virtual machines (VMs), which are scheduled for retirement. This guide helps you transition to the latest VM series, helping you minimize disruptions while optimizing cost and performance.
 
-This document covers:
+This guide covers:
 
  - Recommended replacement VM series
  - Detailed migration steps
@@ -24,7 +25,7 @@ By migrating to newer VM series, you gain access to improved price-performance r
 
 ## Recommended Replacement VM Series
 
-|Current VM Family | Target VM Family| Differences in Specification in Target VM*| 
+|Current VM Series | Target VM Series| Differences in Specification in Target VM*| 
 |--|--|--|
 | D<br>Ds<br>Dv2<br>Dsv2 | Dsv5/Ddsv5/Dasv5/Dadsv5<br>Dasv6/Dadsv6/Dalsv6/Daldsv6<br>Dsv6/Ddsv6/Dlsv6/Dldsv6|  Local Storage: Supported - SCSI<br>Local Storage Throughput: 9000 IOPS / 125 MBps<br>Remote Storage Throughput: 3750 IOPS / 82 MBps<br> Disk Controller Type: SCSI|
 | Ls | Lasv3<br>Lasv4 | Local Storage: Supported - NVMe<br>Remote Storage Throughput: 12800 IOPS / 200 MBps <br>Disk Controller Type: SCSI |
@@ -34,13 +35,19 @@ By migrating to newer VM series, you gain access to improved price-performance r
 | G<br>Gs | Lsv3/Lasv3<br>Lsv4/Lasv4| Local Storage: NVMe<br>Remote Storage Throughput: 12800 IOPS / 200 MBps<br>Disk Controller Type: SCSI|
 | Lsv2 | Lasv3<br>Lasv4| Local Storage: NVMe<br>Remote Storage Throughput: 12800 IOPS / 200 MBps<br>Disk Controller Type: SCSI|
 
-*Refers to the lowest VM size in the given target VM Family. For actual VM specifications, please refer to the VM product sizes page.
+*Refers to the smallest VM size in the given target VM series. Full VM specifications are available on each target VM series' product sizes page.
 
 > [!IMPORTANT]  
 > The following SKUs aren't available in the Sovereign clouds:
 > Bsv2, Bpsv2, Basv2
 
-For optimal performance and experience, we generally recommend using the newer v5 and v6 VM series. This ensures you have access to the latest features such as Premium Storage, Accelerated Networking, and Nested Virtualization. While the v6 VM series is preferred, there are certain scenarios where you might want to consider the v5 or even the v4 VM series. Here are some reasons why:
+## Recommended Replacement Isolated VM Sizes
+
+|Current VM Size | Target VM Sizes| Differences in Specification in Target VM*| 
+|--|--|--|
+| Standard_E64i_v3<br>Standard_E64is_v3| Standard_E192is_v6<br>Standard_E192ids_v6<br>Standard_E104i_v5<br>Standard_E104id_v5<br>Standard_E104is_v5<br>Standard_E104ids_v5<br>Standard_E80is_v4<br>StandardE80ids_v4|  Local Storage: Supported - NVMe<br>Local Storage Throughput: 37,500 IOPS / 180 MBps<br>Remote Storage Throughput: 3,750 IOPS / 106 MBps<br> Disk Controller Type: NVMe|
+
+For optimal performance and experience, we recommend using the newer v5 and v6 VM series. This ensures you have access to the latest features such as Premium Storage, Accelerated Networking, and Nested Virtualization. While the v6 VM series is preferred, there are certain scenarios where you might want to consider the v5 or even the v4 VM series. Here are some reasons why:
  - v6 VMs require [enabling NVMe](/azure/virtual-machines/nvme-overview) which means that you must have a [supported OS](/azure/virtual-machines/enable-nvme-interface).
  - v6 VMs support [Generation 2 VMs only](/azure/virtual-machines/generation-2).
  - v6 VMs require MANA ([Microsoft Azure Network Adapter](/azure/virtual-network/accelerated-networking-mana-overview)) and a MANA supported operating system.
@@ -77,10 +84,9 @@ You can resize your VM through the Azure portal, Azure CLI, or PowerShell. Follo
 Refer to the full [Azure VM resizing guide](/azure/virtual-machines/sizes/resize-vm?tabs=portal) for more detailed instructions.
 
 ## FAQ
-#### Q: Which Sizes Are Being Retired?
-To review retired sizes, see [retired Azure VM sizes](/azure/virtual-machines/sizes/retirement/retired-sizes-list).
-
-The following sizes are being retired by 15 November 2028.
+#### Q: Which sizes are being retired?
+To review retired sizes, see [retired Azure VM sizes](/azure/virtual-machines/sizes/retirement/retired-sizes-list). View retired isolated sizes at [Isolation for VMs in Azure](/azure/virtual-machines/isolation).
+The following sizes are being retired by November 15th, 2028: 
 
 - F
 - Fs
@@ -94,24 +100,25 @@ The following sizes are being retired by 15 November 2028.
 
 
 
-#### Q: Why Should I Migrate?
+#### Q: Why should I migrate my VM?
 
-If you are actively running any sizes listed in this article, these VMs are set to retire in 2028. Migration is mandatory to avoid unexpected shutdown. Additionally, migration yields the following benefits: 
+Migration is mandatory to avoid unexpected shutdown. Additionally, migration yields the following benefits: 
 
  - **Performance**: Newer VM series offer better price-to-performance ratios.
  - **Regional Availability**: The v5 and v6 series has broader regional support across Azure data centers.
  - **Future-proofing**: Migrate ahead of the retirement schedule to avoid disruption.
 
-#### Q: What Happens to my VMs After the Final Retirement Date?
+#### Q: What will happen to my VM if I do not resize my VM to a target size within the retirement timeline?
 
-After the retirement date, any remaining VM subscriptions will be deallocated. They will stop running, no longer incur billing charges, and the retired VM size will not be covered by SLA or supported.
+After retirement, VMs using this size will be deallocated and stop incurring charges. The size is no longer supported or covered by an SLA; in‑memory and temporary disk data is lost, but managed disk data is preserved. To resume service, you may resize to a supported size and restart the VM. 
 
-#### Q: I am on pay-as-you-go (PayGo) or Savings Plan Pricing. Is There a Concern with Migration?
+#### Q: Can I recover my VM after it has been deallocated?
+Yes, you can resize and restart your deallocated VM following the [Azure VM resizing guide](/azure/virtual-machines/sizes/resize-vm?tabs=portal).
 
+#### Q: Will VM migration disrupt Pay-as-You-Go (PayGo) or Savings Plan Pricing billing?
 No. If you’re using PayGo or a savings plan, migrating to a newer VM type won't disrupt your current billing. The migration process remains seamless with no changes required in your subscription or payment plan.
 
-#### Q: I'm on Reserved Instances (RIs) with an Older VM. How Do I Handle Migration?
-
+#### Q: How can I migrate my VM if I am on Reserved Instances (RIs) with a retired VM?
 If you have active Reserved Instances for D, Dv2, Dsv2, or L-series VMs, follow these steps:
 
 Step 1: Review Current Reservations
