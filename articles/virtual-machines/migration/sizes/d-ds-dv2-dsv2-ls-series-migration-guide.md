@@ -45,6 +45,7 @@ By migrating to newer VM series, you gain access to improved price-performance r
 |Current VM Size | Target VM Sizes| Differences in Specification in Target VM*| 
 |--|--|--|
 | Standard_E64i_v3<br>Standard_E64is_v3| Standard_E192is_v6<br>Standard_E192ids_v6<br>Standard_E104i_v5<br>Standard_E104id_v5<br>Standard_E104is_v5<br>Standard_E104ids_v5<br>Standard_E80is_v4<br>StandardE80ids_v4|  Local Storage: Supported - NVMe<br>Local Storage Throughput: 37,500 IOPS / 180 MBps<br>Remote Storage Throughput: 3,750 IOPS / 106 MBps<br> Disk Controller Type: NVMe|
+*Refers to the smallest VM size in the given target VM series. Full VM specifications are available on each target VM series' product sizes page.
 
 For optimal performance and experience, we recommend using the newer v5 and v6 VM series. This ensures you have access to the latest features such as Premium Storage, Accelerated Networking, and Nested Virtualization. While the v6 VM series is preferred, there are certain scenarios where you might want to consider the v5 or even the v4 VM series. Here are some reasons why:
  - v6 VMs require [enabling NVMe](/azure/virtual-machines/nvme-overview) which means that you must have a [supported OS](/azure/virtual-machines/enable-nvme-interface).
