@@ -45,13 +45,13 @@ Local (temp) storage info for each size.
 
 | Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GB) | Temp Disk Random Read<sup>1</sup> IOPS | Temp Disk Sequential Read<sup>1</sup> Throughput (MB/s) | Temp Disk Random Write<sup>1</sup> IOPS | Temp Disk Sequential Write<sup>1</sup> Throughput (MB/s) |
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_L2aos_v4 | 3 | 480 | 180,000 | 1,100 | 72,000 | 575 |
-| Standard_L4aos_v4 | 3 | 960 | 360,000 | 2,200 | 144,000 | 1,150 |
-| Standard_L8aos_v4 | 6 | 960 | 720,000 | 4,400 | 288,000 | 2,300 |
-| Standard_L12aos_v4 | 9 | 960 | 1,080,000 | 6,600 | 432,000 | 3,450 |
-| Standard_L16aos_v4 | 6 | 1,920 | 1,440,000 | 8,800 | 576,000 | 4,600 |
-| Standard_L24aos_v4 | 9 | 1,920 | 2,160,000 | 13,200 | 864,000 | 6,900 |
-| Standard_L32aos_v4 | 12 | 1,920 | 2,880,000 | 17,600 | 1,152,000 | 9,200 |
+| Standard_L2aos_v4 | 3 | 480 | 180,000 | 1,100 | 72,000 | 550 |
+| Standard_L4aos_v4 | 3 | 960 | 360,000 | 2,200 | 144,000 | 1,100 |
+| Standard_L8aos_v4 | 6 | 960 | 720,000 | 4,400 | 288,000 | 2,200 |
+| Standard_L12aos_v4 | 9 | 960 | 1,080,000 | 6,600 | 432,000 | 3,300 |
+| Standard_L16aos_v4 | 6 | 1,920 | 1,440,000 | 8,800 | 576,000 | 4,400 |
+| Standard_L24aos_v4 | 9 | 1,920 | 2,160,000 | 13,200 | 864,000 | 6,600 |
+| Standard_L32aos_v4 | 12 | 1,920 | 2,880,000 | 17,600 | 1,152,000 | 8,800 |
 
 #### Storage resources
 - [NVMe Overview](/azure/virtual-machines/nvme-overview)

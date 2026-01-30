@@ -24,7 +24,8 @@ ms.reviewer: mattmcinnes, tomvcassidy
 
 ## Feature Support
 - [Premium Storage](../../premium-storage-performance.md): Supported 
-- [Premium Storage caching](../../premium-storage-performance.md): Supported 
+- [Premium Storage caching](../../premium-storage-performance.md): Supported
+- [Live Migration](../../maintenance-and-updates.md#live-migration): Supported
 - [Memory Preserving Updates](../../maintenance-and-updates.md): Supported 
 - [VM Generation Support](../../generation-2.md): Generation 2 
 - [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported 
