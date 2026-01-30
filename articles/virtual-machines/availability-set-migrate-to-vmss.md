@@ -1,13 +1,13 @@
 ---
-title:Migrate virtual machines from availability sets to Virtual Machine Scale Sets
-description:Learn how to migrate your Azure Virtual Machines from availability sets to Virtual Machine Scale Sets with Flexible orchestration for improved availability and scale.
-author:mimckitt
-ms.author:mimckitt
-ms.service:azure-virtual-machines
-ms.topic:how-to
-ms.date:01/30/2026
-
+title: Migrate virtual machines from availability sets to Virtual Machine Scale Sets
+description: Learn how to migrate your Azure Virtual Machines from availability sets to Virtual Machine Scale Sets with Flexible orchestration for improved availability and scale.
+author: mimckitt
+ms.author: mimckitt
+ms.service: azure-virtual-machines
+ms.topic: how-to
+ms.date: 01/30/2026
 ---
+
 # Migrate virtual machines from availability sets to Virtual Machine Scale Sets
 
 **Applies to:** ✔️ Linux VMs ✔️ Windows VMs ✔️ Flexible scale sets
