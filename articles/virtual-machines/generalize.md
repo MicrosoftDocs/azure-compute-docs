@@ -12,7 +12,7 @@ ms.custom:
   - sysprep
   - waagent
   - linux
- 
+# Customer intent: As a cloud administrator, I want to create an image of a VM that doesn't contain VM specific information that might cause collisions, so I need to deprovision or generalize my VM first. 
 ---
 
 # Remove machine specific information by deprovisioning or generalizing a VM before creating an image
@@ -32,7 +32,8 @@ Use the Azure Linux Agent (waagent) to remove machine-specific information from 
 
 ### Prerequisites for Linux VMs
 
-Distribution specific instructions for preparing Linux images for Azure are available here:
+Before creating a deprovisioning a VM to create an image, we recommend you follow the distro specific instructions for production workloads. Distribution specific instructions for preparing Linux images for Azure are available here:
+
 - [Generic steps](./linux/create-upload-generic.md)
 - [CentOS](./linux/create-upload-centos.md)
 - [Debian](./linux/debian-create-upload-vhd.md)
@@ -44,7 +45,6 @@ Distribution specific instructions for preparing Linux images for Azure are avai
 - [SUSE](./linux/suse-create-upload-vhd.md)
 - [Ubuntu](./linux/create-upload-ubuntu.md)
 
-The following instructions only cover setting the VM to generalized. We recommend you follow the distro specific instructions for production workloads.
 
 ### Deprovision a Linux VM
 
@@ -87,9 +87,8 @@ Sysprep removes all your personal account and security information, and then pre
 
 > [!IMPORTANT]
 > After you have run Sysprep on a VM, that VM is considered *generalized* and can't be restarted. The process of generalizing a VM isn't reversible. If you need to keep the original VM functioning, you should create a snapshot of the OS disk, create a VM from the snapshot, and then generalize that copy of the VM. 
-> 
+>
 > Custom answer files are not supported in the sysprep step, so you can't use the '/unattend:_answerfile_' switch with your sysprep command.  
-
 
 ### Prerequisites for Windows VMs
 
@@ -110,14 +109,13 @@ Sysprep removes all your personal account and security information, and then pre
 
 - If you plan to run Sysprep on a local machine before uploading your virtual hard disk (VHD) to Azure for the first time, make sure you have [prepared your VM](./windows/prepare-for-upload-vhd-image.md) before starting.  
 
-
 ### Generalize a Windows VM
 
 To generalize your Windows VM, follow these steps:
 
 1. Sign in to your Windows VM.
 
-1. Open a Command Prompt window as an administrator. 
+1. Open a Command Prompt window as an administrator.
 
 1. Delete the panther directory (C:\Windows\Panther) if it exists. This directory contains logs from previous Sysprep operations that can cause Sysprep to fail.
 
@@ -127,7 +125,7 @@ To generalize your Windows VM, follow these steps:
 
 1. Change to the %windir%\system32\sysprep directory, and then run:
 
-   ```
+   ```cmd
    sysprep.exe /generalize /shutdown
    ```
 
