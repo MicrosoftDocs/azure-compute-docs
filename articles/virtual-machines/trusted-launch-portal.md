@@ -379,7 +379,7 @@ You can use the resulting image version to create Azure Trusted Launch VMs only.
 1. To create an Azure Compute Gallery Image from a VM, open an existing Trusted Launch VM and select **Capture**.
 1. On the **Create an Image** page, allow the image to be shared to the gallery as a VM image version. Creation of managed images isn't supported for Trusted Launch VMs.
 1. Create a new target Azure Compute Gallery or select an existing gallery.
-1. Select the **Operating system state** as either **Generalized** or **Specialized**. If you want to create a generalized image, ensure that you [generalize the VM to remove machine-specific information](generalize.yml) before you select this option. If Bitlocker-based encryption is enabled on your Trusted Launch Windows VM, you might not be able to generalize the same.
+1. Select the **Operating system state** as either **Generalized** or **Specialized**. If you want to create a generalized image, ensure that you [generalize the VM to remove machine-specific information](generalize.md) before you select this option. If Bitlocker-based encryption is enabled on your Trusted Launch Windows VM, you might not be able to generalize the same.
 1. Create a new image definition by providing a name, publisher, offer, and SKU details. **Security type** for the image definition should already be set to **Trusted launch**.
 1. Provide a version number for the image version.
 1. Modify replication options, if necessary.
@@ -431,7 +431,7 @@ Make sure that you're running the latest version of the Azure CLI.
     --features SecurityType=TrustedLaunch
     ```
 
-1. To create an image version, you can capture an existing Linux-based Trusted Launch VM. [Generalize the Trusted Launch VM](generalize.yml) before you create the image version.
+1. To create an image version, you can capture an existing Linux-based Trusted Launch VM. [Generalize the Trusted Launch VM](generalize.md) before you create the image version.
 
     ```azurecli-interactive
     az sig image-version create --resource-group MyResourceGroup \
@@ -475,7 +475,7 @@ Make sure that you're running the latest version of the Azure CLI.
     New-AzGalleryImageDefinition -ResourceGroupName $rgName -GalleryName $galleryName -Name $galleryImageDefinitionName -Location $location -Publisher $publisherName -Offer $offerName -Sku $skuName -HyperVGeneration "V2" -OsState "Generalized" -OsType "Windows" -Description $description -Feature $features
     ```
 
-1. To create an image version, you can capture an existing Windows-based Trusted Launch VM. [Generalize the Trusted Launch VM](generalize.yml) before you create the image version.
+1. To create an image version, you can capture an existing Windows-based Trusted Launch VM. [Generalize the Trusted Launch VM](generalize.md) before you create the image version.
 
     ```azurepowershell-interactive
     $rgName = "MyResourceGroup"
