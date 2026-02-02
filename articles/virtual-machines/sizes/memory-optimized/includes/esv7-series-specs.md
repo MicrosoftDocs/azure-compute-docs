@@ -1,15 +1,15 @@
 ---
-title: Esv6 series specs include
-description: Include file containing specifications of Esv6-series VM sizes.
+title: Esv7 series specs include
+description: Include file containing specifications of Esv7-series VM sizes.
 author: mattmcinnes
 ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.date: 08/01/2024
+ms.date: 02/02/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
-# Customer intent: As an IT specialist, I want to access detailed specifications for the Esv6-series VMs, so that I can select the appropriate configuration for my workloads based on performance and capacity needs.
+# Customer intent: As an IT specialist, I want to access detailed specifications for the Esv7-series VMs, so that I can select the appropriate configuration for my workloads based on performance and capacity needs.
 ---
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
 |---|---|---|
