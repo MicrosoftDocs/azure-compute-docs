@@ -80,13 +80,13 @@ Remote (uncached) storage info for each size
 
 | Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD Disk IOPS | Uncached Premium SSD Throughput (MBps) | Uncached Premium SSD Burst<sup>1</sup> IOPS | Uncached Premium SSD Burst<sup>1</sup> Throughput (MBps) | Uncached Ultra Disk and Premium SSD v2 IOPS | Uncached Ultra Disk and Premium SSD v2 Throughput (MBps) | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 IOPS | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 Disk Throughput (MBps) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_D2lds_v7 | 10 | 4,000 | 118 | 45,000 | 1,413 | 5,000 | 137 | 56,250 | 1,640 |
-| Standard_D4lds_v7 | 12 | 8,000 | 236 | 45.000 | 1,413 | 10,000 | 274 | 56,250 | 1,640 |
-| Standard_D8lds_v7 | 26| 16,000 | 472 | 45.000 | 1,413 | 20,000 | 548 | 56,250 | 1,640 |
-| Standard_D16lds_v7 | 48 | 32,000 | 944 | 75,000 | 1,413 | 40,000 | 1,096 | 93,750 | 1,640 |
-| Standard_D32lds_v7 | 64 | 64,000 | 1,888 | 100,000 | 1,916 | 80,000 | 2,192 | 125,000 | 2,225 |
-| Standard_D48lds_v7 | 64 | 96,000 | 2,832 | 160,000 | 2,875 | 120,000 | 3,288 | 200,000 | 3,338 |
-| Standard_D64lds_v7 | 64 | 128,000 | 3,776 | 160,000 | 3,833 | 160,000 | 4,384 | 200,000 | 4,450 |
+| Standard_D2lds_v7 | 10 | 4,000 | 115 | 45,000 | 1,410 | 5,000 | 135 | 56,250 | 1,640 |
+| Standard_D4lds_v7 | 12 | 8,000 | 230 | 45,000 | 1,410 | 10,000 | 270 | 56,250 | 1,640 |
+| Standard_D8lds_v7 | 26 | 16,000 | 460 | 45,000 | 1,410 | 20,000 | 540 | 56,250 | 1,640 |
+| Standard_D16lds_v7 | 48 | 32,000 | 940 | 75,000 | 1,410 | 40,000 | 1,080 | 93,750 | 1,640 |
+| Standard_D32lds_v7 | 64 | 64,000 | 1,885 | 100,000 | 1,915 | 80,000 | 2,160 | 125,000 | 2,225 |
+| Standard_D48lds_v7 | 64 | 96,000 | 2,830 | 160,000 | 2,875 | 120,000 | 3,285 | 200,000 | 3,335 |
+| Standard_D64lds_v7 | 64 | 128,000 | 3,775 | 160,000 | 3,830 | 160,000 | 4,320 | 200,000 | 4,450 |
 | Standard_D96lds_v7 | 64 | 192,000 | 5,664 | 200,000 | 5,749 | 240,000 | 6,576 | 250,000 | 6,675 |
 | Standard_D128lds_v7 | 64 | 204,000 | 7,552 | 225,280 | 7,664 | 320,000 | 8,786 | 352,000 | 8,898 |
 | Standard_D192lds_v7 | 64 | 307,200 | 11,328 | 350,000 | 12,000 | 480,000 | 13,152 | 546,875 | 13,932 |
