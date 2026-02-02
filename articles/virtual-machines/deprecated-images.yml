@@ -234,7 +234,7 @@ sections:
 
           ## Part 1: Create a new VM
 
-          1. **Identify the replacement image**: Check your deprecation email for the recommended replacement. To find alternative images, see [Find and use Azure Marketplace VM images](cli-ps-findimage.md).
+          1. **Identify the replacement image**: Check your deprecation email for the recommended replacement. For more information, see [Find and use images using the Azure CLI](./linux/cli-ps-findimage.md) or  [Find and use images using Azure PowerShell](./windows/cli-ps-findimage.md).
 
           1. **Configure the new VM**: For the simplest migration, match the region and networking settings of your existing VM. You can change VM size or region if needed.
 
