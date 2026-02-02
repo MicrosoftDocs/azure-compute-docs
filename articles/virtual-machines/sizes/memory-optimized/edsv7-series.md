@@ -5,10 +5,10 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 08/01/2024
+ms.date: 02/02/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
-# Customer intent: "As a cloud infrastructure manager, I want to understand the specifications and features of the Edsv6 size series virtual machines, so that I can select the appropriate VM size for my application workloads and resource requirements."
+# Customer intent: "As a cloud infrastructure manager, I want to understand the specifications and features of the Edsv7 size series virtual machines, so that I can select the appropriate VM size for my application workloads and resource requirements."
 ---
 
 # Edsv7 sizes series

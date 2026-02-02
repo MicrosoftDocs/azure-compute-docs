@@ -9,7 +9,7 @@ ms.date: 11/10/2025
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
-# Customer intent: "As a cloud architect, I want to review the specifications of Dldsv6-series VMs, so that I can determine which sizes meet the performance and resource needs of my applications."
+# Customer intent: "As a cloud architect, I want to review the specifications of Dldsv7-series VMs, so that I can determine which sizes meet the performance and resource needs of my applications."
 ---
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
 |---|---|---|

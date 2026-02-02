@@ -5,10 +5,10 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 07/29/2024
+ms.date: 02/02/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
-# Customer intent: "As a cloud architect, I want to evaluate the Ddsv6 size series specifications, so that I can choose the appropriate virtual machine size for my applications based on their resource requirements and performance characteristics."
+# Customer intent: "As a cloud architect, I want to evaluate the Ddsv7 size series specifications, so that I can choose the appropriate virtual machine size for my applications based on their resource requirements and performance characteristics."
 ---
 
 # Ddsv7 sizes series 

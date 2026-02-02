@@ -5,10 +5,10 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 08/01/2024
+ms.date: 02/02/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
-# Customer intent: As a cloud architect, I want to review the specifications and feature support of various Esv6-series virtual machine sizes, so that I can select the most appropriate size for my workloads and optimize performance in the cloud environment.
+# Customer intent: As a cloud architect, I want to review the specifications and feature support of various Esv7-series virtual machine sizes, so that I can select the most appropriate size for my workloads and optimize performance in the cloud environment.
 ---
 
 # Esv7 sizes series  

@@ -5,10 +5,10 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 10/17/2025
+ms.date: 02/02/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
-# Customer intent: As a cloud architect, I want to compare the specifications of the Dsv6 series virtual machine sizes, so that I can select the appropriate size for our workloads based on their vCPU, memory, storage, and network requirements.
+# Customer intent: As a cloud architect, I want to compare the specifications of the Dsv7 series virtual machine sizes, so that I can select the appropriate size for our workloads based on their vCPU, memory, storage, and network requirements.
 ---
 
 # Dsv7 sizes series 
