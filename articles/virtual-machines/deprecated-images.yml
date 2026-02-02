@@ -73,7 +73,11 @@ sections:
           **Required actions**
 
           To avoid disruption:
+<<<<<<< HEAD
           - Migrate your [virtual machine scale set](#how-do-i-migrate-a-virtual-machine-scale-set-to-a-different-image) to a supported image before the enforcement date if you need your virtual machine scale set to scale out after deprecation.
+=======
+          - [Migrate to a supported image](#how-do-i-migrate-a-vm-to-a-different-image) before the enforcement date if you need your virtual machine scale set to scale out after deprecation.
+>>>>>>> 8a1d945afd (Update VM migration guidance to recommend detach/attach method - Address Cynthn feedback: prioritize detaching data disks from old VM and attaching to new VM as primary migration method - Fix broken bookmark and file links - Add OS-specific documentation references - Maintain snapshot method as alternative for backup scenarios)
           - If you configured automatic OS upgrades, only offer or plan deprecation affects you, not individual version deprecation.
 
       - question: Which operations are affected by image deprecation?
@@ -236,25 +240,38 @@ sections:
 
           1. **Identify the replacement image**: Check your deprecation email for the recommended replacement. For more information, see [Find and use images using the Azure CLI](./linux/cli-ps-findimage.md) or  [Find and use images using Azure PowerShell](./windows/cli-ps-findimage.md).
 
-          1. **Configure the new VM**: For the simplest migration, match the region and networking settings of your existing VM. You can change VM size or region if needed.
+          1. **Configure the new VM**: Match the region and networking settings of your existing VM for simplest migration. You can change VM size or region if needed.
 
           1. **Deploy and test**: Confirm the VM starts correctly and your application dependencies are present.
 
           ## Part 2: Migrate data
 
-          **Method A: Disk snapshot (fastest for lift-and-shift)**
+          **Method A: Detach and attach data disks (recommended)**
 
-          1. [Create a snapshot](snapshot-copy-managed-disk.md) of the old VM's data disks.
-          1. [Create managed disks from the snapshots](snapshot-copy-managed-disk.md#create-a-disk-from-a-snapshot).
-          1. [Attach the disks to the new VM](attach-managed-disk-portal.md) and mount them.
-          1. Copy data to the new VM, then detach the old disks.
+          If your workload data is stored on data disks (not the OS disk):
 
-          **Method B: File-based transfer (safer for partial moves)**
+          1. Stop and deallocate the old VM.
+          1. Detach the data disks from the old VM. For more information, see [Detach a data disk from a Linux VM](linux/detach-disk.md) or [Detach a data disk from a Windows VM](windows/tutorial-manage-data-disk.md#detach-a-data-disk).
+          1. Attach the data disks to the new VM. For more information, see [Attach a data disk to a Linux VM](linux/attach-disk-portal.yml) or [Attach a data disk to a Windows VM](windows/attach-managed-disk-portal.yml).
+          1. Start the new VM and verify data accessibility.
 
-          Use OS transfer tools:
+          > [!NOTE]
+          > Data on the OS disk isn't preserved with this method. Only data on attached data disks is migrated.
+
+          **Method B: Snapshot and restore (for OS disk data or backup requirements)**
+
+          If you need to preserve OS disk data or create a backup before migration:
+
+          1. [Create a snapshot](snapshot-copy-managed-disk.md) of the data disks.
+          1. [Create managed disks from the snapshots](snapshot-copy-managed-disk.md).
+          1. Attach the disks to the new VM. For more information, see [Attach a data disk to a Linux VM](linux/attach-disk-portal.yml) or [Attach a data disk to a Windows VM](windows/attach-managed-disk-portal.yml).
+
+          **Method C: File-based transfer**
+
+          Use OS transfer tools for selective data migration:
           - **Windows**: Robocopy or SMB share
           - **Linux**: rsync, scp, or sftp
-          - **Cross-OS**: [Use AzCopy](/azure/storage/common/storage-use-azcopy-v10) with an Azure Storage account as intermediate share
+          - **Cross-OS**: [Use AzCopy](/azure/storage/common/storage-use-azcopy-v10) with Azure Storage as intermediate location
 
           ## Part 3: Switch over
 
@@ -283,7 +300,7 @@ sections:
 
           If an entire plan or SKU is deprecated, update to a different SKU from the same offer using a scale-out/scale-in approach:
 
-          1. Find an alternative SKU from your deprecation email or by using [Find and use Azure Marketplace VM images](cli-ps-findimage.md).
+          1. Find an alternative SKU from your deprecation email. For more information, see [Find and use images using the Azure CLI](linux/cli-ps-findimage.md) or [Find and use images using Azure PowerShell](windows/cli-ps-findimage.md).
 
           1. Update the VMSS model to use the new SKU:
 
