@@ -1,11 +1,11 @@
 ---
 title: Dlsv7-series summary include file
-description: Include file for Dlsv6-series summary
+description: Include file for Dlsv7-series summary
 author: mattmcinnes
 ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.date: 07/29/2024
+ms.date: 02/02/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file

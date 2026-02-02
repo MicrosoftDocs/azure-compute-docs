@@ -1,15 +1,15 @@
 ---
 title: Ddsv7-series summary include file
-description: Include file for Ddsv6-series summary
+description: Include file for Ddsv7-series summary
 author: mattmcinnes
 ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.date: 07/29/2024
+ms.date: 02/02/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
-# Customer intent: "As a cloud architect, I want to evaluate Ddsv6-series virtual machines’ specifications and capabilities, so that I can determine if they meet my organization’s performance and scalability requirements for general-purpose workloads."
+# Customer intent: "As a cloud architect, I want to evaluate Ddsv7-series virtual machines’ specifications and capabilities, so that I can determine if they meet my organization’s performance and scalability requirements for general-purpose workloads."
 ---
 
 Ddsv7-series virtual machines run on the Intel® Xeon® 6 Platinum 6973PC (Granite Rapids) processor reaching an all-core turbo clock speed of 3.6 GHz with a max turbo frequency is 4.2 GHz. This new processor features [Intel&reg; Turbo Boost Technology](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), 
