@@ -40,7 +40,7 @@ introduction: |
 
 prerequisites:
   dependencies:
-    - You need a [generalized](generalize.yml) VM in order to create an image.
+    - You need a [generalized](generalize.md) VM in order to create an image.
     - The VM cannot be a Trusted Launch VM.
 
 procedureSection:
