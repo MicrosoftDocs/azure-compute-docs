@@ -1,7 +1,7 @@
 ### YamlMime:FAQ
 metadata:
   title: Deprecated Azure Marketplace images
-  description: "Learn about how the deprecation of Marketplace images can affect your deployment."
+  description: "Learn how Marketplace image deprecation can affect your deployment."
   author: cynthn
   ms.service: azure-virtual-machines
   ms.topic: faq
@@ -13,7 +13,7 @@ metadata:
   ai-usage: ai-assisted
 title: Deprecated images FAQ
 summary: |
-  This article answers commonly asked questions about what happens when images in the Azure Marketplace are deprecated.
+  This article answers common questions about what happens when Azure Marketplace images are deprecated.
 
   ## Overview
 
@@ -23,7 +23,7 @@ summary: |
 
   Deprecation removes the image from the Azure Marketplace catalog but doesn't remove OS disks of existing VMs.
 
-  - A deprecated image can't be used for new VM or VMSS instance creation after the enforcement date.
+  - You can't use a deprecated image for new VM or VMSS instance creation after the enforcement date.
   - Existing VMs and VMSS instances that were created before the enforcement date continue operating normally.
   - VMSS scale-out operations are blocked after the enforcement date because scaling out requires creating new instances from the deprecated image.
 
@@ -32,7 +32,7 @@ summary: |
   - **No action required for existing VMs:** Once created, VMs boot from their OS disk—not from the original image. Deprecation doesn't affect running VMs.
   - **Most operations continue working:** Start, stop, restart, deallocate, and redeploy all work normally.
   - **Reimage is blocked:** This is the only VM operation affected because it requires recreating the OS disk from the source image.
-  - **VMSS instances continue running:** Existing instances are unaffected, but scale-out is blocked after enforcement.
+  - **VMSS instances continue running:** Existing instances aren't affected, but scale-out is blocked after enforcement.
 
 
 sections:
@@ -40,7 +40,7 @@ sections:
     questions:
       - question: What does it mean when I receive an image deprecation notice?
         answer: |
-          You receive an email notification when your virtual machine (VM) or virtual machine scale set runs on an image scheduled for deprecation. Publishers deprecate images for various reasons, including security concerns or when images reach end of life.
+          You receive an email notification when your virtual machine (VM) or virtual machine scale set runs on an image that's scheduled for deprecation. Publishers deprecate images for various reasons, including security concerns or when images reach end of life.
 
           :::image type="content" source="media/deprecated-images/mail.png" alt-text="Screenshot of the email notification for virtual machines or scale sets using an image scheduled for deprecation.":::
 
@@ -73,18 +73,14 @@ sections:
           **Required actions**
 
           To avoid disruption:
-<<<<<<< HEAD
           - Migrate your [virtual machine scale set](#how-do-i-migrate-a-virtual-machine-scale-set-to-a-different-image) to a supported image before the enforcement date if you need your virtual machine scale set to scale out after deprecation.
-=======
-          - [Migrate to a supported image](#how-do-i-migrate-a-vm-to-a-different-image) before the enforcement date if you need your virtual machine scale set to scale out after deprecation.
->>>>>>> 8a1d945afd (Update VM migration guidance to recommend detach/attach method - Address Cynthn feedback: prioritize detaching data disks from old VM and attaching to new VM as primary migration method - Fix broken bookmark and file links - Add OS-specific documentation references - Maintain snapshot method as alternative for backup scenarios)
           - If you configured automatic OS upgrades, only offer or plan deprecation affects you, not individual version deprecation.
 
       - question: Which operations are affected by image deprecation?
         answer: |
           **VM operations**
 
-          Once a VM is created, Azure creates an OS disk, and the VM boots exclusively from that disk—not from the original image reference. A deprecated or removed image doesn't impact an already-running VM.
+          After you create a VM, Azure creates an OS disk, and the VM boots exclusively from that disk—not from the original image reference. A deprecated or removed image doesn't affect an already-running VM.
 
           | Operation | Before enforcement | After enforcement | Explanation |
           |-----------|-------------------|-------------------|-------------|
@@ -94,7 +90,7 @@ sections:
           | **Deallocate / Stop** | Works | Works | These operations don't require the source image. |
 
           > [!NOTE]
-          > The VM's image reference property might disappear from the Azure portal, but this has no effect on VM operation. The OS disk is authoritative for boot.
+          > The VM's image reference property might disappear from the Azure portal, but this doesn't affect VM operation. The OS disk is authoritative for boot.
 
           **Virtual machine scale set operations**
 
@@ -106,7 +102,7 @@ sections:
           | Scale-out | Allowed | Blocked |
           | Reimage | Works | Blocked |
 
-          **Action required:** None for existing workloads. Migrate to a supported image before the enforcement date only if you need your virtual machine scale set to scale out after deprecation.
+          **Action required:** None for existing workloads. Migrate to a supported image before the enforcement date if you need to scale out your virtual machine scale set after deprecation.
 
       - question: How do I find VMs using deprecated images?
         answer: |
@@ -207,19 +203,19 @@ sections:
 
       - question: When should I migrate my VMs or virtual machine scale sets to a different image?
         answer: |
-          Migration isn't always required. Consider the following scenarios to determine whether you need to take action:
+          Migration isn't always required. Review the following scenarios to determine whether you need to take action:
 
           **Migration required**
 
           - **Virtual machine scale sets that need to scale out:** Scale-out operations are blocked after the enforcement date because they require creating new instances from the deprecated image. Migrate before enforcement if you need scale-out capability.
           - **Workloads that require reimage operations:** Reimage recreates the OS disk from the source image, which fails after the image is deprecated.
-          - **Disaster recovery scenarios:** Azure Site Recovery and backup restore operations that rely on the deprecated image won't work after enforcement.
+          - **Disaster recovery scenarios:** Azure Site Recovery and backup restore operations that rely on the deprecated image don't work after enforcement.
           - **Paid Marketplace images:** After deprecation, you can't create new workloads or perform restore operations because of missing purchase plan information. Migrate to a supported image.
 
           **Migration not required**
 
-          - **Running VMs that don't need reimage:** Once created, VMs boot from their OS disk—not from the original image. Deprecation doesn't affect already-running VMs.
-          - **Virtual machine scale sets that don't scale out:** Existing instances continue running normally.
+          - **Running VMs that don't need reimage:** After creation, VMs boot from their OS disk—not from the original image. Deprecation doesn't affect already-running VMs.
+          - **Virtual machine scale sets that don't scale out:** Existing instances continue to run normally.
           - **Routine operations:** Start, stop, restart, deallocate, and redeploy all continue to work after enforcement.
           - **Virtual machine scale sets using automatic OS upgrades:** If you configured automatic OS upgrades and only the image version is deprecated (not the entire offer or plan), you don't need to take action.
 
@@ -231,16 +227,16 @@ sections:
 
       - question: How do I migrate a VM to a different image?
         answer: |
-          Azure VMs don't support in-place OS upgrades. Create a new VM using a supported image, migrate your data, and decommission the old VM.
+          Azure VMs don't support in-place OS upgrades. Create a new VM with a supported image, migrate your data, and decommission the old VM.
 
           > [!IMPORTANT]
-          > For deprecated paid Marketplace images: After deprecation, you can't create new VMs or perform backup restore operations because of missing plan information. Migrate before the enforcement date.
+          > For deprecated paid Marketplace images, you can't create new VMs or perform backup restore operations after deprecation because of missing plan information. Migrate before the enforcement date.
 
           ## Part 1: Create a new VM
 
           1. **Identify the replacement image**: Check your deprecation email for the recommended replacement. For more information, see [Find and use images using the Azure CLI](./linux/cli-ps-findimage.md) or  [Find and use images using Azure PowerShell](./windows/cli-ps-findimage.md).
 
-          1. **Configure the new VM**: Match the region and networking settings of your existing VM for simplest migration. You can change VM size or region if needed.
+          1. **Configure the new VM**: Match the region and networking settings of your existing VM for the simplest migration. You can change VM size or region if needed.
 
           1. **Deploy and test**: Confirm the VM starts correctly and your application dependencies are present.
 
@@ -258,7 +254,7 @@ sections:
           > [!NOTE]
           > Data on the OS disk isn't preserved with this method. Only data on attached data disks is migrated.
 
-          **Method B: Snapshot and restore (for OS disk data or backup requirements)**
+          **Method B: Use snapshots (for OS disk data or backup requirements)**
 
           If you need to preserve OS disk data or create a backup before migration:
 
@@ -266,12 +262,12 @@ sections:
           1. [Create managed disks from the snapshots](snapshot-copy-managed-disk.md).
           1. Attach the disks to the new VM. For more information, see [Attach a data disk to a Linux VM](linux/attach-disk-portal.yml) or [Attach a data disk to a Windows VM](windows/attach-managed-disk-portal.yml).
 
-          **Method C: File-based transfer**
+          **Method C: Use file-based transfer**
 
           Use OS transfer tools for selective data migration:
           - **Windows**: Robocopy or SMB share
           - **Linux**: rsync, scp, or sftp
-          - **Cross-OS**: [Use AzCopy](/azure/storage/common/storage-use-azcopy-v10) with Azure Storage as intermediate location
+          - **Cross-OS**: [AzCopy](/azure/storage/common/storage-use-azcopy-v10) with Azure Storage as an intermediate location
 
           ## Part 3: Switch over
 
@@ -287,7 +283,7 @@ sections:
 
           If only a specific image version is deprecated:
 
-          - **Using "latest" version**: No action required for new instances. Azure resolves to the newest available version at deployment time. However, existing instances remain on their original version.
+          - **Using "latest" version**: No action required for new instances. Azure resolves to the newest available version at deployment time. Existing instances remain on their original version.
           - **Using automatic OS upgrades**: No action required. Azure upgrades existing instances to the latest version automatically, regardless of whether your image reference uses "latest" or a pinned version.
           - **Using a pinned version without automatic OS upgrades**: Update the image reference to a supported version. See [Modify an Azure virtual machine scale set](../virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set.md). After updating the model, upgrade existing instances using one of these methods:
             - **Manual upgrade**: Use `az vmss update-instances` (CLI) or `Update-AzVmssInstance` (PowerShell) to upgrade specific instances.
@@ -328,7 +324,7 @@ sections:
           1. Migrate traffic to the new scale set, then delete the old one.
 
           > [!NOTE]
-          > Creating a new VMSS is recommended over in-place updates when changing publishers or offers, because the differences between images are typically significant.
+          > We recommend that you create a new VMSS instead of doing in-place updates when you change publishers or offers, because the differences between images are typically significant.
 
       - question: How do I receive email notifications about image deprecation?
         answer: |
@@ -339,7 +335,7 @@ sections:
 
           **Notify additional recipients**
 
-          To notify team members who don't have Owner or Account Admin roles on the subscription, [create an Advisor alert](/azure/advisor/advisor-alerts-portal) with an action group. Action groups let you specify email addresses, SMS numbers, or webhooks to receive notifications when new deprecation recommendations are published.
+          To notify team members who don't have Owner or Account Admin roles on the subscription, [create an Advisor alert](/azure/advisor/advisor-alerts-portal) with an action group. Use action groups to specify email addresses, SMS numbers, or webhooks that receive notifications when new deprecation recommendations are published.
            
       - question: How do I check if a specific image is deprecated or scheduled for deprecation?
         answer: |
