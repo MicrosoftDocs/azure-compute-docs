@@ -1,6 +1,6 @@
 ---
 title: Esv7-series summary include file
-description: Include file for Esv6-series summary
+description: Include file for Esv7-series summary
 author: mattmcinnes
 ms.topic: include
 ms.service: azure-virtual-machines

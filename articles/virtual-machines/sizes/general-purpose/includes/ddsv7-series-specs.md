@@ -1,15 +1,15 @@
 ---
 title: Ddsv7 series specs include
-description: Include file containing specifications of Dsv7-series VM sizes.
+description: Include file containing specifications of Ddsv7-series VM sizes.
 author: mattmcinnes
 ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.date: 11/10/2025
+ms.date: 02/02/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
-# Customer intent: As a cloud architect, I want to review the specifications of Dsv6-series VM sizes, so that I can select the appropriate virtual machine configurations for my application’s requirements.
+# Customer intent: As a cloud architect, I want to review the specifications of Ddsv7-series VM sizes, so that I can select the appropriate virtual machine configurations for my application’s requirements.
 ---
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
 |---|---|---|

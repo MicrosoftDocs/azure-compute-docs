@@ -5,11 +5,11 @@ author: mattmcinnes
 ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.date: 11/10/2025
+ms.date: 02/02/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
-# Customer intent: As a cloud architect, I want to review the specifications of Dlsv6 series VM sizes, so that I can assess their suitability for my project's performance and resource requirements.
+# Customer intent: As a cloud architect, I want to review the specifications of Dlsv7 series VM sizes, so that I can assess their suitability for my project's performance and resource requirements.
 ---
 
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
