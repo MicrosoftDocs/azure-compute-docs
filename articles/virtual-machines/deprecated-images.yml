@@ -296,7 +296,7 @@ sections:
 
           If an entire plan or SKU is deprecated, update to a different SKU from the same offer using a scale-out/scale-in approach:
 
-          1. Find an alternative SKU from your deprecation email. For more information, see [Find and use images using the Azure CLI](linux/cli-ps-findimage.md) or [Find and use images using Azure PowerShell](windows/cli-ps-findimage.md).
+          1. Find an alternative SKU from your deprecation email. For more information, see [Find and use images using the Azure CLI](./linux/cli-ps-findimage.md) or [Find and use images using Azure PowerShell](./windows/cli-ps-findimage.md).
 
           1. Update the VMSS model to use the new SKU:
 
