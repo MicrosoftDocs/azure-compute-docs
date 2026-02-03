@@ -143,7 +143,7 @@ ClusterManifest.xml:
 </Section>
 ```
 
-via ClusterConfig.json for Standalone deployments or Template.json for Azure hosted clusters:
+Via ClusterConfig.json for Standalone deployments or Template.json for Azure hosted clusters:
 
 ```json
 "fabricSettings": [
