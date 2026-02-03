@@ -15,5 +15,5 @@ Esv7-series virtual machines run on the Intel® Xeon® Platinum 6973PC (Granite 
 This new processor features [Intel&reg; Turbo Boost Technology](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html),
 [Intel&reg; Advanced-Vector Extensions 512 (Intel&reg; AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html), and 
 [Intel&reg; Advanced Matrix Extensions](https://www.intel.com/content/www/us/en/products/docs/accelerator-engines/advanced-matrix-extensions/overview.html). 
-These virtual machines offer up to 128 vCPU and 1,024 GiB of RAM. Esv7-series virtual machines are ideal for memory-intensive workloads, such as relational database servers, 
+These virtual machines offer up to 192 vCPU and 2,832 GiB of RAM. Esv7-series virtual machines are ideal for memory-intensive workloads, such as relational database servers, 
 large databases, data analytics engines, in-memory caches, and more.

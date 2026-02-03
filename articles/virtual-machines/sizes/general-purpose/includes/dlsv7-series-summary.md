@@ -17,5 +17,5 @@ features [Intel&reg; Turbo Boost Technology](https://www.intel.com/content/www/u
 and [Intel&reg; Advanced Matrix Extensions](https://www.intel.com/content/www/us/en/products/docs/accelerator-engines/advanced-matrix-extensions/overview.html). 
 These virtual machines offer up to 248 vCPU and 496 GiB of RAM. Dlsv7-series virtual machines provide better performance for most general-purpose workloads compared to the prior generation for example, increased networking, increased remote storage performance, upgraded CPU, and elevated memory bandwidth. These virtual machine sizes can reduce cost when running non-memory intensive applications. Dlsv7-series virtual machines are ideal for many general computing workloads such as e-commerce systems, web applications, desktop virtualization solutions, application servers, and more.
 
-Dlsv7-series virtual machines don't have any temporary storage thus lowering the price of entry. You can attach Standard SSD, Standard HDD, and Premium SSD disk types. 
+Dlsv7-series virtual machines doesn't have any temporary storage thus lowering the price of entry. You can attach Standard SSD, Standard HDD, and Premium SSD disk types. 
 You can also attach Ultra Disk storage based on its regional availability. Disk storage is billed separately from virtual machines.
