@@ -63,11 +63,11 @@ ms.author: mattmcinnes
 [!INCLUDE [ebsv6-series-specs](./includes/ebsv6-series-specs.md)]
 
 #### [Ebdsv6-series](#tab/ebdsv6)
-[!INCLUDE [ebdsv6-series-summary](./includes/ebdsv6-series-summary.md)]
+[!INCLUDE [ebdsv7-series-summary](./includes/ebdsv6-series-summary.md)]
 
 [View the full Ebdsv6-series page](./ebdsv6-series.md).
 
-[!INCLUDE [ebdsv6-series-specs](./includes/ebdsv6-series-specs.md)]
+[!INCLUDE [ebdsv7-series-specs](./includes/ebdsv6-series-specs.md)]
 
 ---
 ### Epsv6 and Epdsv6-series 

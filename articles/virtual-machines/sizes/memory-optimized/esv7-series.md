@@ -43,7 +43,7 @@ vCPUs (Qty.) and Memory for each size
 | Standard_E128s_v7 | 128 | 1,024 |
 | Standard_E192s_v7 | 192 | 1,536 |
 | Standard_E248s_v7 | 248 | 1,984 |
-| Standard_E372s_v7 | 372 | 2,826 |
+| Standard_E372is_v7 | 372 | 2,832 |
 
 #### VM Basics resources
 - [Check vCPU quotas](../../../virtual-machines/quotas.md)
@@ -63,19 +63,19 @@ Remote (uncached) storage info for each size
 
 | Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD Disk IOPS | Uncached Premium SSD Throughput (MBps) | Uncached Premium SSD Burst<sup>1</sup> IOPS | Uncached Premium SSD Burst<sup>1</sup> Throughput (MBps) | Uncached Ultra Disk and Premium SSD v2 IOPS | Uncached Ultra Disk and Premium SSD v2 Throughput (MBps) | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 IOPS | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 Disk Throughput (MBps) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_E2s_v7 | 10 | 4,000 | 118 | 45,000 | 1,413 | 5,000 | 137 | 56,250| 1,640 |
-| Standard_E4s_v7 | 12 | 8,000 | 236 | 45,000 | 1,413 | 10,000 | 274 | 56,250 | 1,640 |
-| Standard_E8s_v7 | 26 | 16,000 | 472 | 45,000 | 1,413 | 20,000 | 548 | 56,250 | 1,640 |
-| Standard_E16s_v7 | 48 | 32,000 | 944 | 75,000 | 1,413 | 40,000 | 1,096| 93,750 | 1,640 |
-| Standard_E20s_v7 | 48 | 40,000 | 1,180 | 75,000 | 1,413 | 50,000 | 1,370 | 93,750 | 1,640 |
-| Standard_E32s_v7 | 64 | 64,000 | 1,888 | 100,000 | 1,916 | 80,000 | 2,192 | 125,000 | 2,225 |
-| Standard_E48s_v7 | 64 | 96,000 | 2,832 | 160,000 | 2,875 | 120,000 | 3,288 | 200,000 | 3,338 |
-| Standard_E64s_v7 | 64 | 128,000 | 3,776 | 160,000 | 3,833 | 160,000 | 4,384 | 200,000 | 4,450 |
-| Standard_E96s_v7 | 64 | 192,000 | 5,664 | 200,000 | 5,749 | 240,000 | 6,576 | 250,000 | 6,675 |
-| Standard_E128s_v7 | 64 | 204,800 | 7,552 | 225,280 | 7,664 | 320,000 | 8,768 | 352,000 | 8,898 |
-| Standard_E192s_v7 | 64 | 307,200 | 11,328 | 350,000 | 12,000 | 480,000 | 13,152 | 546,875 | 13,932 |
-| Standard_E248s_v7 | 64 | 396,800 | 13,144 | 500,000 | 15,000 | 620,000 | 16,988 | 781,250 | 19,387 |
-| Standard_E372s_v7 | 64 | 500,000 | 16,000 | 800,000 | 16,000 | 800,000 | 20,000 | 800,000 | 20,000 |
+| Standard_E2s_v7 | 10 | 4,000 | 115 | 45,000 | 1,410 | 5,000 | 135 | 56,250 | 1,640 |
+| Standard_E4s_v7 | 12 | 8,000 | 230 | 45,000 | 1,410 | 10,000 | 270 | 56,250 | 1,640 |
+| Standard_E8s_v7 | 26 | 16,000 | 460 | 45,000 | 1,410 | 20,000 | 540 | 56,250 | 1,640 |
+| Standard_E16s_v7 | 48 | 32,000 | 940 | 75,000 | 1,410 | 40,000 | 1,080 | 93,750 | 1,640 |
+| Standard_E20s_v7 | 48 | 40,000 | 1,150 | 75,000 | 1,410 | 50,000 | 1,350 | 93,750 | 1,640 |
+| Standard_E32s_v7 | 64 | 64,000 | 1,885 | 100,000 | 1,915 | 80,000 | 2,160 | 125,000 | 2,225 |
+| Standard_E48s_v7 | 64 | 96,000 | 2,830 | 160,000 | 2,875 | 120,000 | 3,285 | 200,000 | 3,335 |
+| Standard_E64s_v7 | 64 | 128,000 | 3,775 | 160,000 | 3,830 | 160,000 | 4,320 | 200,000 | 4,450 |
+| Standard_E96s_v7 | 64 | 192,000 | 5,665 | 200,000 | 5,745 | 240,000 | 6,570 | 205,000 | 6,675 |
+| Standard_E128s_v7 | 64 | 204,800 | 7,550 | 225,280 | 7,660 | 320,000 | 8,640 | 352,000 | 8,895 |
+| Standard_E192s_v7 | 64 | 307,200 | 11,325 | 350,000 | 12,000 | 480,000 | 13,140 | 546,875 | 13,930 |
+| Standard_E248s_v7 | 64 | 396,800 | 13,145 | 500,000 | 15,000 | 620,000 | 16,740 | 781,250 | 19,385 |
+| Standard_E372is_v7 | 64 | 500,000 | 16,000 | 500,000 | 16,000 | 800,000 | 20,000 | 800,000 | 20,000 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
@@ -83,7 +83,7 @@ Remote (uncached) storage info for each size
 - [Share an Azure managed disk](../../../virtual-machines/disks-shared.md)
 
 #### Table definitions
-- <sup>1</sup>Some sizes support [bursting](../../disk-bursting.md) to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.
+- <sup>1</sup>Temp disk performance depends on many factors including block size, workload patterns of read/writes, queue depth (QD), and others. Temp disk performance specifications should be viewed as best case performance numbers, assuming 4k block sizes and QD=256 for IOPS, and 256k block sizes with QD=64 for throughput. Additionally, temp disk performance often differs between read and write operations. During steady state operations, write performance is expected to be lower than read performance.
 
 - Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
 - Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
@@ -109,7 +109,7 @@ Network interface info for each size
 | Standard_E128s_v7 | 15 | 85,000 |
 | Standard_E192s_v7 | 15 | 100,000 |
 | Standard_E248s_v7 | 15 | 150,000 |
-| Standard_E372s_v7 | 15 | 400,000 |
+| Standard_E372is_v7 | 15 | 400,000 |
 
 #### Networking resources
 - [Virtual networks and virtual machines in Azure](/azure/virtual-network/network-overview)
