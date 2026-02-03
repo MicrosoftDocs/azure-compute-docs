@@ -44,7 +44,7 @@ By migrating to newer VM series, you gain access to improved price-performance r
 
 |Current VM Size | Target VM Sizes| Differences in Specification in Target VM*| 
 | --- | --- | --- |
-| Standard_E64i_v3<br>Standard_E64is_v3| Standard_E192is_v6<br>Standard_E192ids_v6<br>Standard_E104i_v5<br>Standard_E104id_v5<br>Standard_E104is_v5<br>Standard_E104ids_v5<br>Standard_E80is_v4<br>StandardE80ids_v4|  Local Storage: Supported - NVMe<br>Local Storage Throughput: 37,500 IOPS / 180 MBps<br>Remote Storage Throughput: 3,750 IOPS / 106 MBps<br> Disk Controller Type: NVMe|
+| Standard_E64i_v3<br>Standard_E64is_v3| Standard_E192is_v6<br>Standard_E192ids_v6<br>Standard_E104i_v5<br>Standard_E104id_v5<br>Standard_E104is_v5<br>Standard_E104ids_v5<br>Standard_E80is_v4<br>Standard_E80ids_v4|  Local Storage: Supported - NVMe<br>Local Storage Throughput: 37,500 IOPS / 180 MBps<br>Remote Storage Throughput: 3,750 IOPS / 106 MBps<br> Disk Controller Type: NVMe|
 
 *Refers to the smallest VM size in the given target VM series. Full VM specifications are available on each target VM series' product sizes page.
 
