@@ -25,16 +25,16 @@ The Azure Windows VM Agent supports the x64 and ARM64 architecture for these Win
 
 | OS Version | x64 | ARM64 |
 |:-----|:-----:|:-----:|
-| Windows 10 | Supported | Supported |
+| Windows 10 | Supported | Unsupported |
 | Windows 11 | Supported | Supported |
-| Windows Server 2016 | Supported | Supported |
-| Windows Server 2016 Core | Supported | Supported |
-| Windows Server 2019 | Supported | Supported |
-| Windows Server 2019 Core | Supported | Supported |
-| Windows Server 2022 | Supported | Supported |
-| Windows Server 2022 Core | Supported | Supported |
-| Windows Server 2025 | Supported | Supported |
-| Windows Server 2025 Core | Supported | Supported |
+| Windows Server 2016 | Supported | Unsupported |
+| Windows Server 2016 Core | Supported | Unsupported |
+| Windows Server 2019 | Supported | Unsupported |
+| Windows Server 2019 Core | Supported | Unsupported |
+| Windows Server 2022 | Supported | Unsupported |
+| Windows Server 2022 Core | Supported | Unsupported |
+| Windows Server 2025 | Supported | Unsupported |
+| Windows Server 2025 Core | Supported | Unsupported |
 
 > [!IMPORTANT]
 > - The Azure Windows VM Agent needs at least Windows Server 2016 (64-bit) to run, with the .NET Framework 4.0. See [Minimum version support for virtual machine agents in Azure](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support).
