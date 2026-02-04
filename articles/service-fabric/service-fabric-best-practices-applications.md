@@ -48,7 +48,7 @@ Decide on the data retention time frame:
 - **Long-term data**. Reliable collections can store your data permanently. But in this case you need to [prepare for disaster recovery](./service-fabric-disaster-recovery.md), including [configuring periodic backup policies](./service-fabric-backuprestoreservice-configure-periodic-backup.md) for your clusters. In effect, you configure what happens if your cluster is destroyed in a disaster, where you would need to create a new cluster, and how to deploy new application instances and recover from the latest backup.
 
 Save costs and improve availability:
-- You can reduce costs by using stateful services because you don't incur data access and transactions costs from the remote store, and because you don't need to use another service, like Azure Cache for Redis.
+- You can reduce costs by using stateful services because you don't incur data access and transactions costs from the remote store, and because you don't need to use another service, like Azure Managed Redis.
 - Using stateful services primarily for storage and not for compute is expensive, and we don't recommend it. Think of stateful services as compute with cheap local storage.
 - By removing dependencies on other services, you can improve your service availability. Managing state with HA in the cluster isolates you from other service downtimes or latency issues.
 
