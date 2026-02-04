@@ -36,7 +36,7 @@ This article assumes that you've already installed an Ubuntu Linux operating sys
 * For more tips on preparing Linux for Azure, see [General Linux installation notes](create-upload-generic.md#general-linux-installation-notes).
 * The VHDX format isn't supported in Azure, only *fixed VHD*. You can convert the disk to VHD format by using Hyper-V Manager or the `Convert-VHD` cmdlet.
 * When you install the Linux system, we recommend that you use standard partitions rather than Logical Volume Manager (LVM), which is often the default for many installations. These standard partitions avoid LVM name conflicts with cloned VMs, particularly if an OS disk ever needs to be attached to another VM for troubleshooting. [LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm) or [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid) can also be used on data disks.
-* Don't configure a swap partition or swap file on the OS disk. You can configure the `cloud-init` provisioning agent to create a swap file or a swap partition on the temporary resource disk. For more information about this process, see [Create a SWAP partition for an Azure Linux VM](https://learn.microsoft.com/en-us/troubleshoot/azure/virtual-machines/linux/create-swap-file-linux-vm).
+* Don't configure a swap partition or swap file on the OS disk. You can configure the `cloud-init` provisioning agent to create a swap file or a swap partition on the temporary resource disk. For more information about this process, see [Create a SWAP partition for an Azure Linux VM](https://learn.microsoft.com/troubleshoot/azure/virtual-machines/linux/create-swap-file-linux-vm).
 * All VHDs on Azure must have a virtual size aligned to 1 MB. When you convert from a raw disk to VHD, you must ensure that the raw disk size is a multiple of 1 MB before conversion. For more information, see [Linux installation notes](create-upload-generic.md#general-linux-installation-notes).
 
 You can upload a prebuilt Ubuntu image directly to Azure and use the resulting VHD to create new virtual machines. If this is your first time uploading a `.vhd` file, see [Create a Linux VM from a custom disk](upload-vhd.md#option-1-upload-a-vhd).
@@ -251,6 +251,7 @@ You can upload a prebuilt Ubuntu image directly to Azure and use the resulting V
 ## Related content
 
 You're now ready to use your Ubuntu Linux VHD to create new VMs in Azure. If this is the first time that you're uploading the .vhd file to Azure, see [Create a Linux VM from a custom disk](upload-vhd.md#option-1-upload-a-vhd).
+
 
 
 
