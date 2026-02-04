@@ -12,11 +12,16 @@ ms.reviewer: mattmcinnes
 # Customer intent: "As a cloud administrator, I want to create and upload a custom Ubuntu Linux VHD to Azure so that I can deploy specialized virtual machines tailored to my organization's specific needs."
 ---
 
+
 # Prepare an Ubuntu virtual machine for Azure
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Flexible scale sets
 
-Ubuntu now publishes official Azure virtual hard disks (VHDs) for download at the [Ubuntu Cloud Images webpage](https://cloud-images.ubuntu.com/). If you need to build your own specialized Ubuntu image for Azure instead of using the manual procedure that follows, start with these known working VHDs and customize them, as needed. You can always find the latest image releases at the following locations:
+
+Ubuntu provides official Azure-ready cloud images (cloudimg) that include all components required for successful provisioning on Azure, such as *cloud-init*, Azure-optimized kernels, Azure guest agent compatibility, and performance-tuned defaults for virtualized environments. These images are the recommended starting point when creating a custom VHD because they align with Azure VM provisioning requirements and reduce the manual configuration steps required.
+
+Ubuntu publishes these images in multiple formats, including ready-to-use Azure virtual hard disks (VHDs), on the https://cloud-images.ubuntu.com/ website. If you need to build a specialized Ubuntu image for Azure, you can start with these validated VHD builds and customize them as needed. The latest image releases are available at the following locations:
+
 
 * Ubuntu 20.04/Focal: [focal-server-cloudimg-amd64-azure.vhd.tar.gz](https://cloud-images.ubuntu.com/focal/current/focal-server-cloudimg-amd64-azure.vhd.tar.gz)
 * Ubuntu 22.04/Jammy: [jammy-server-cloudimg-amd64-azure.vhd.tar.gz](https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64-azure.vhd.tar.gz)
@@ -31,13 +36,23 @@ This article assumes that you've already installed an Ubuntu Linux operating sys
 * For more tips on preparing Linux for Azure, see [General Linux installation notes](create-upload-generic.md#general-linux-installation-notes).
 * The VHDX format isn't supported in Azure, only *fixed VHD*. You can convert the disk to VHD format by using Hyper-V Manager or the `Convert-VHD` cmdlet.
 * When you install the Linux system, we recommend that you use standard partitions rather than Logical Volume Manager (LVM), which is often the default for many installations. These standard partitions avoid LVM name conflicts with cloned VMs, particularly if an OS disk ever needs to be attached to another VM for troubleshooting. [LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm) or [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid) can also be used on data disks.
-* Don't configure a swap partition or swap file on the OS disk. You can configure the `cloud-init` provisioning agent to create a swap file or a swap partition on the temporary resource disk. For more information about this process, see the following steps.
+* Don't configure a swap partition or swap file on the OS disk. You can configure the `cloud-init` provisioning agent to create a swap file or a swap partition on the temporary resource disk. For more information about this process, see [Create a SWAP partition for an Azure Linux VM](https://learn.microsoft.com/en-us/troubleshoot/azure/virtual-machines/linux/create-swap-file-linux-vm).
 * All VHDs on Azure must have a virtual size aligned to 1 MB. When you convert from a raw disk to VHD, you must ensure that the raw disk size is a multiple of 1 MB before conversion. For more information, see [Linux installation notes](create-upload-generic.md#general-linux-installation-notes).
+
+You can upload a prebuilt Ubuntu image directly to Azure and use the resulting VHD to create new virtual machines. If this is your first time uploading a `.vhd` file, see [Create a Linux VM from a custom disk](upload-vhd.md#option-1-upload-a-vhd).
 
 ## Manual steps
 
 > [!NOTE]
 > Before you attempt to create your own custom Ubuntu image for Azure, consider using the prebuilt and tested images from the [Ubuntu Cloud Images webpage](https://cloud-images.ubuntu.com/) instead.
+
+> If you are using Windows to Extract the prebuilt it image , please use Windows WSL and run the following command 
+
+```bash
+     sudo tar --sparse -xvzf <image name>-azure.vhd.tar.gz 
+```
+
+
 >
 1. In the center pane of Hyper-V Manager, select the VM.
 
@@ -45,21 +60,38 @@ This article assumes that you've already installed an Ubuntu Linux operating sys
 
 1. Replace the current repositories in the image to use Ubuntu's Azure repository.
 
-    Before you edit `/etc/apt/sources.list`, we recommend that you make a backup:
+    Before you edit `/etc/apt/sources.list` `/etc/apt/sources.list.d/ubuntu.sources`, we recommend that you make a backup:
 
+    For Ubuntu 22.04 and earlier 
     ```bash
     sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
     ```
-    
+    For Ubuntu 24.04 and later 
+    ```bash
+    sudo cp /etc/apt/sources.list.d/ubuntu.sources /etc/apt/sources.list.d/ubuntu.sources.bak
+    ```
+    For Ubuntu 22.04 and earlier 
     ```bash
     sudo sed -i 's#http://archive\.ubuntu\.com/ubuntu#http://azure\.archive\.ubuntu\.com/ubuntu#g' /etc/apt/sources.list
     sudo sed -i 's#http://[a-z][a-z]\.archive\.ubuntu\.com/ubuntu#http://azure\.archive\.ubuntu\.com/ubuntu#g' /etc/apt/sources.list
     sudo sed -i 's#http://security\.ubuntu\.com/ubuntu#http://azure\.archive\.ubuntu\.com/ubuntu#g' /etc/apt/sources.list
     sudo sed -i 's#http://[a-z][a-z]\.security\.ubuntu\.com/ubuntu#http://azure\.archive\.ubuntu\.com/ubuntu#g' /etc/apt/sources.list
-    sudo apt-get update
+    sudo apt update
+    
+    ```
+    For Ubuntu 24.04 and later 
+    ```bash
+    sudo sed -i 's#http://archive\.ubuntu\.com/ubuntu#http://azure\.archive\.ubuntu\.com/ubuntu#g' /etc/apt/sources.list.d/ubuntu.sources
+    sudo sed -i 's#http://[a-z][a-z]\.archive\.ubuntu\.com/ubuntu#http://azure\.archive\.ubuntu\.com/ubuntu#g' /etc/apt/sources.list.d/ubuntu.sources
+    sudo sed -i 's#http://security\.ubuntu\.com/ubuntu#http://azure\.archive\.ubuntu\.com/ubuntu#g' /etc/apt/sources.list.d/ubuntu.sources
+    sudo sed -i 's#http://[a-z][a-z]\.security\.ubuntu\.com/ubuntu#http://azure\.archive\.ubuntu\.com/ubuntu#g' /etc/apt/sources.list.d/ubuntu.sources
+    sudo apt update
+    
     ```
 
-1. The Ubuntu Azure images are now using the [Azure-tailored kernel](https://ubuntu.com/blog/microsoft-and-canonical-increase-velocity-with-azure-tailored-kernel). Update the OS to the latest Azure-tailored kernel and install Azure Linux tools (including Hyper-V dependencies):
+
+
+1. The Ubuntu Azure images use Azure-Tailored Kernels [Azure-tailored kernel](https://ubuntu.com/blog/microsoft-and-canonical-increase-velocity-with-azure-tailored-kernel). Update the OS to the latest Azure-tailored kernel and install Azure Linux tools (including Hyper-V dependencies):
 
     ```bash
     sudo apt update
@@ -89,9 +121,17 @@ This article assumes that you've already installed an Ubuntu Linux operating sys
     > The `walinuxagent` package might remove the `NetworkManager` and `NetworkManager-gnome` packages, if they're installed.
 
 1. Remove `cloud-init` default configurations and leftover `netplan` artifacts that might conflict with `cloud-init` provisioning on Azure:
-
+    For Ubuntu 22.04 and earlier 
     ```bash
     sudo rm -f /etc/cloud/cloud.cfg.d/50-curtin-networking.cfg /etc/cloud/cloud.cfg.d/curtin-preserve-sources.cfg /etc/cloud/cloud.cfg.d/99-installer.cfg /etc/cloud/cloud.cfg.d/subiquity-disable-cloudinit-networking.cfg
+    sudo rm -f /etc/cloud/ds-identify.cfg
+    sudo rm -f /etc/netplan/*.yaml
+    ```
+
+    For Ubuntu 24.04 and later 
+
+    ```bash
+    sudo rm -f /etc/cloud/cloud.cfg.d/curtin-preserve-sources.cfg /etc/cloud/cloud.cfg.d/99-installer.cfg /etc/cloud/cloud.cfg.d/subiquity-disable-cloudinit-networking.cfg
     sudo rm -f /etc/cloud/ds-identify.cfg
     sudo rm -f /etc/netplan/*.yaml
     ```
@@ -211,4 +251,7 @@ This article assumes that you've already installed an Ubuntu Linux operating sys
 ## Related content
 
 You're now ready to use your Ubuntu Linux VHD to create new VMs in Azure. If this is the first time that you're uploading the .vhd file to Azure, see [Create a Linux VM from a custom disk](upload-vhd.md#option-1-upload-a-vhd).
+
+
+
 
