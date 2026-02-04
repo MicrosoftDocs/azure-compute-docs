@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 07/22/2024
+ms.date: 11/10/2025
 ms.author: mattmcinnes
 # Customer intent: As a cloud architect, I want to review the specifications and workloads of the E family VM sizes, so that I can select the most suitable virtual machines for memory-intensive applications in my organization.
 ---
@@ -22,6 +22,22 @@ ms.author: mattmcinnes
 
 ## Series in family
 
+### Esv7 and Edsv7-series
+#### [Esv7 series](#tab/esv7)
+[!INCLUDE [esv7-series-summary](./includes/esv7-series-summary.md)]
+
+[View the full Esv7-series page](./esv7-series.md).
+
+[!INCLUDE [esv7-series-specs](./includes/esv7-series-specs.md)]
+
+#### [Edsv7 series](#tab/edsv7)
+[!INCLUDE [edsv7-series-summary](./includes/edsv7-series-summary.md)]
+
+[View the full Edsv7-series page](./edsv7-series.md).
+
+[!INCLUDE [edsv7-series-specs](./includes/edsv7-series-specs.md)]
+
+---
 ### Easv7 series and Eadsv7 series
 #### [Easv7 series](#tab/easv7)
 [!INCLUDE [easv7-series-summary](./includes/easv7-series-summary.md)]
@@ -36,6 +52,22 @@ ms.author: mattmcinnes
 [View the full Eadsv7-series page](./eadsv7-series.md).
 
 [!INCLUDE [eadsv7-series-specs](./includes/eadsv7-series-specs.md)]
+
+---
+### Ebsv6 and Ebdsv6-series
+#### [Ebsv6-series](#tab/ebsv6)
+[!INCLUDE [ebsv6-series-summary](./includes/ebsv6-series-summary.md)]
+
+[View the full Ebsv6-series page](./ebsv6-series.md).
+
+[!INCLUDE [ebsv6-series-specs](./includes/ebsv6-series-specs.md)]
+
+#### [Ebdsv6-series](#tab/ebdsv6)
+[!INCLUDE [ebdsv7-series-summary](./includes/ebdsv6-series-summary.md)]
+
+[View the full Ebdsv6-series page](./ebdsv6-series.md).
+
+[!INCLUDE [ebdsv7-series-specs](./includes/ebdsv6-series-specs.md)]
 
 ---
 ### Epsv6 and Epdsv6-series 

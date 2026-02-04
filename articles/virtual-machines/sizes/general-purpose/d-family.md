@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 07/31/2025
+ms.date: 11/10/2025
 ms.author: mattmcinnes
 # Customer intent: "As a cloud architect, I want to review the specifications and use cases of the D-family VM sizes, so that I can select the most appropriate virtual machine for my workload requirements."
 ---
@@ -22,6 +22,39 @@ ms.author: mattmcinnes
 
 ## Series in family
 
+### Dsv7 series and Ddsv7 series
+#### [Dsv7 series](#tab/dsv7)
+[!INCLUDE [dsv7-series-summary](./includes/dsv7-series-summary.md)]
+
+[View the full Dsv7-series page](./dsv7-series.md).
+
+[!INCLUDE [dsv7-series-specs](./includes/dsv7-series-specs.md)]
+
+### [Ddsv7 series](#tab/ddsv7)
+[!INCLUDE [ddsv7-series-summary](./includes/ddsv7-series-summary.md)]
+
+[View the full Ddsv7-series page](./ddsv7-series.md).
+
+[!INCLUDE [ddsv7-series-specs](./includes/ddsv7-series-specs.md)]
+
+---
+
+### Dlsv7 series and Dldsv7 series
+#### [Dlsv7 series](#tab/dlsv7)
+[!INCLUDE [dlsv7-series-summary](./includes/dlsv7-series-summary.md)]
+
+[View the full Dlsv7-series page](./dlsv7-series.md).
+
+[!INCLUDE [dlsv7-series-specs](./includes/dlsv7-series-specs.md)]
+
+#### [Dldsv7 series](#tab/dldsv7)
+[!INCLUDE [dldsv7-series-summary](./includes/dldsv7-series-summary.md)]
+
+[View the full Dldsv7-series page](./dldsv7-series.md).
+
+[!INCLUDE [dldsv7-series-specs](./includes/dldsv7-series-specs.md)]
+
+---
 ### Dasv7 series and Dadsv7 series
 #### [Dasv7 series](#tab/dasv7)
 [!INCLUDE [dasv7-series-summary](./includes/dasv7-series-summary.md)]
