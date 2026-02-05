@@ -122,8 +122,8 @@ After retirement, VMs using this size will be deallocated and stop incurring cha
 #### Q: Can I recover my VM after it has been deallocated?
 Yes, you can resize and restart your deallocated VM following the [Azure VM resizing guide](/azure/virtual-machines/sizes/resize-vm?tabs=portal).
 
-#### Q: Will VM migration disrupt Pay-as-You-Go (PayGo) or Savings Plan Pricing billing?
-No. If you’re using PayGo or a savings plan, migrating to a newer VM type won't disrupt your current billing. The migration process remains seamless with no changes required in your subscription or payment plan.
+#### Q: Will VM migration disrupt pay-as-you-go or Savings Plan Pricing billing?
+No. If you’re using pay-as-you-go or a savings plan, migrating to a newer VM type won't disrupt your current billing. The migration process remains seamless with no changes required in your subscription or payment plan.
 
 #### Q: How can I migrate my VM if I am on Reserved Instances (RIs) with a retired VM?
 If you have active Reserved Instances for D, Dv2, Dsv2, or L-series VMs, follow these steps:
