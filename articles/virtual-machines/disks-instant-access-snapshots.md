@@ -25,17 +25,13 @@ Snapshots of Premium SSD, Standard SSD, and Standard HDD disk are instant access
 
 Disks created from snapshots of these disk types can be immediately attached to running VMs, Azure automatically initiates a background data copy to hydrate the disk from snapshot data. Disks experience a temporary degradation of performance until their background data copy completes. To reduce latency, store your snapshots on Premium Storage instead of Standard Storage.
 
-### Limitations
-
-- You can't use the `CompletionPercent` property to gauge the progress of the background data copy for snapshots created from Premium SSD, Standard SSD, and Standard HDD disks, or the disk hydration process from snapshots. It always reports 100%, even while copy is in progress.
-
 ## Snapshots of Ultra Disks and Premium SSD v2
 
 By default, snapshots of Ultra Disks and Premium SSD v2 aren't instant access snapshots and can't be used until the snapshot’s background data copy completes. To bypass this, you can explicitly choose to create an instant access snapshot (available as a preview for these disk types) when creating a snapshot.
 
-When you create a snapshot of an Ultra Disk or a Premium SSD v2, you can choose to make that snapshot an instant access snapshot by specifying a value in the `InstantAccessDurationMins` parameter. When you specify a value for that parameter, the snapshot that is created will be an instant access snapshot and can be immediately used to create disks. Disks created from instant access snapshots are rapidly hydrated with minimal performance impact and can be immediately attached to a running VM.
+When you create a snapshot of an Ultra Disk or a Premium SSD v2, you can choose to configure  instant access by specifying a value in the `InstantAccessDurationMins` parameter at the time of snapshot creation. When you specify a value for that parameter, the snapshot that is created will be an instant access snapshot and can be immediately used to create disks. Disks created from instant access snapshots are rapidly hydrated with minimal performance impact and can be immediately attached to a running VM.
 
-After the time specified in `InstantAccessDurationMins` elapses, or five hours has passed, then the snapshot becomes a Standard Storage snapshot and can still be used immediately if the background data copy completed. You can monitor its state using the `SnapshotAccessState` property. Until the data is fully copied to Standard Storage, snapshots in the **InstantAccess** state depend on the availability of the source disk and don't protect against disk and zonal failures. To ensure protection, a snapshot must have completed its background data copy. You can monitor a snapshot's background data copy progress by [checking the snapshot status](disks-incremental-snapshots.md#check-snapshot-status).
+After the time specified in `InstantAccessDurationMins` elapses, or five hours has passed, then the snapshot becomes a Standard Storage snapshot and can still be used if the background data copy completed. You can monitor its state using the `SnapshotAccessState` property. Until the data is fully copied to Standard Storage, snapshots in the **InstantAccess** state depend on the availability of the source disk and don't protect against disk and zonal failures. To ensure protection, a snapshot must have completed its background data copy. You can monitor a snapshot's background data copy progress by [checking the snapshot status](disks-incremental-snapshots.md#check-snapshot-status).
 
 ### Limitations
 
@@ -53,16 +49,23 @@ After the time specified in `InstantAccessDurationMins` elapses, or five hours h
 - Ultra Disks and Premium SSD v2 that have active instant access snapshots can't be attached across fault domains
 - To create instant access snapshots from Ultra disks, the snapshot must be created from a newly provisioned Ultra Disks.
 - When creating a new disk from an instant access snapshot, the source disk where instant access snapshot is created from must remain available and can't be deleted.
+- The greatest read latency improvements for disks created from instant access snapshots are currently available in Germany West Central, East Asia, Southeast Asia, Central India, and Sweden Central. In other regions, disks created from instant access snapshots may still experience improved read latency, but the improvement is less pronounced.
 
 
 ### Regional availability
 
-Instant access snapshots are currently supported in France Central, East Asia, Brazil South, Brazil Southeast, UK West, North Central US, Poland Central, New Zealand North, Switzerland North, South Africa North, Japan East, Australia Central, Australia Central 2, Australia East, Qatar Central, UAE North, Norway East, Norway West, Japan West, Korea South, Korea Central, Taiwan North, Israel Central, Canada East, Canada Central, US Gov South Central, US Gov Southwest, Malaysia West, Indonesia Central, Mexico Central, Spain Central, Italy North, Sweden Central, Germany West Central, North Europe, Central US, West Central US, South Central US, West US 2, West US 3,  East US, East US 2.
+Instant access snapshots are currently supported in all pulic regions.  France Central, East Asia, Brazil South, Brazil Southeast, UK West, North Central US, Poland Central, New Zealand North, Switzerland North, South Africa North, Japan East, Australia Central, Australia Central 2, Australia East, Qatar Central, UAE North, Norway East, Norway West, Japan West, Korea South, Korea Central, Taiwan North, Israel Central, Canada East, Canada Central, US Gov South Central, US Gov Southwest, Malaysia West, Indonesia Central, Mexico Central, Spain Central, Italy North, Sweden Central, Germany West Central, North Europe, Central US, West Central US, South Central US, West US 2, West US 3,  East US, East US 2.
 
 
 ### Billing of instant access snapshots of Ultra Disks and Premium SSD v2 disks
 
-During preview, there's no billing for using Instant Access snapshots for Ultra Disks and Premium SSD v2 disks. Learn more about Instant Access Snapshot pricing in [here](https://aka.ms/InstantAccessPricingPlaceHolder).
+During preview, there's no billing for using Instant Access snapshots for Ultra Disks and Premium SSD v2 disks. 
+
+Instant access snapshots use a usage-based pricing model with two components: a storage charge and a one-time restore fee.
+- Storage charge: You are billed only for the additional storage consumed by an instant access snapshot during its active lifetime. When a snapshot is first created, it starts at zero additional cost, as it references the source disk as its base. As data on the source disk changes or is deleted over time, the snapshot preserves the original point-in-time state, and its used size grows accordingly. This means you pay only for incremental changes of instant access snapshot, not for a full copy of the disk.
+- Restore charge: Each time you restore a disk from an instant access snapshot, a one-time restore operation fee is applied. This fee is calculated based on the provisioned size of the disk at the time of restore, providing predictable billing for restore operations.
+
+Learn more about Instant Access Snapshot pricing in [here](https://azure.microsoft.com/en-us/pricing/details/managed-disks/).
 
 ### Create an instant access snapshot
 
