@@ -129,12 +129,6 @@ Prepare the Azure environment before migrating workloads:
 - Remove AWS-specific agents and ensure Azure VM Agent support.
 - Use **Azure Migrate** for discovery, dependency mapping, and right-sizing when migrating multiple VMs.
 
-> **Tip**
->
-> Use Azure Migrate when migrating:
-> - **5+ uniform VMs** (same OS, similar size, simple dependencies)
-> - **3+ heterogeneous VMs** (mixed OS, sizes, or complex dependencies)
-
 ## Step 3: Process
 
 Each stage of the migration process requires careful planning and execution to ensure a successful transition from Amazon EC2 to Azure Virtual Machines. This section provides detailed guidance on how to approach the migration of compute, images, storage, networking, and availability features.
@@ -187,14 +181,6 @@ Use the [Azure VM size documentation](./sizes/overview.md) and AWS [instance typ
    - **Test in Azure**: run quick storage/network benchmarks before you finalize the VM size.
 1. If any accelerators (GPU, FPGA) are used, ensure the Azure VM series supports them.
 1. Consider Azure-specific features like [Spot VMs](./spot-vms.md) for cost savings or [VM Scale Sets](../virtual-machine-scale-sets/overview.md) for elasticity.
-
-
-> [!TIP]
-> Use **Azure Migrate** when the migration effort shifts from “a few manual builds” to “repeatable at scale.” As a rule of thumb:
-> - **Uniform VMs (same OS + similar size + simple dependencies):** use Azure Migrate when migrating **5+ VMs**.
-> - **Different VMs (mixed OS/sizes, multiple disks, or non-trivial dependencies):** use Azure Migrate when migrating **3+ VMs**.
-> 
-> Azure Migrate helps with discovery, dependency mapping, and right-sizing recommendations so you can avoid over/under-provisioning.
 
 ### Images
 
