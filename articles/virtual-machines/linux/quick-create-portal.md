@@ -5,7 +5,7 @@ author: cynthn
 ms.service: azure-virtual-machines
 ms.collection: linux
 ms.topic: quickstart
-ms.date: 01/04/2024
+ms.date: 02/06/2026
 ms.author: cynthn
 ms.reviewer: jushiman
 ms.custom: mvc, mode-ui, linux-related-content, accuracy
@@ -147,3 +147,4 @@ To learn more about Azure virtual machines, continue to the tutorial for Linux V
 
 > [!div class="nextstepaction"]
 > [Azure Linux virtual machine tutorial](./tutorial-manage-vm.md)
+
