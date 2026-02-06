@@ -61,11 +61,11 @@ Instant access snapshots are currently supported in all pulic regions.  France C
 
 During preview, there's no billing for using Instant Access snapshots for Ultra Disks and Premium SSD v2 disks. 
 
-Instant access snapshots use a usage-based pricing model with two components: a storage charge and a one-time restore fee.
+Instant access snapshots use a usage-based billing model with two components: a storage charge and a one-time restore fee.
 - Storage charge: You are billed only for the additional storage consumed by an instant access snapshot during its active lifetime. When a snapshot is first created, it starts at zero additional cost, as it references the source disk as its base. As data on the source disk changes or is deleted over time, the snapshot preserves the original point-in-time state, and its used size grows accordingly. This means you pay only for incremental changes of instant access snapshot, not for a full copy of the disk.
 - Restore charge: Each time you restore a disk from an instant access snapshot, a one-time restore operation fee is applied. This fee is calculated based on the provisioned size of the disk at the time of restore, providing predictable billing for restore operations.
 
-Learn more about Instant Access Snapshot pricing in [here](https://azure.microsoft.com/en-us/pricing/details/managed-disks/).
+Learn more about Instant Access Snapshot billing in [here](https://azure.microsoft.com/pricing/details/managed-disks/).
 
 ### Create an instant access snapshot
 
