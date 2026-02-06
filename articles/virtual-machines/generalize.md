@@ -110,7 +110,9 @@ Sysprep removes all your personal account and security information, and then pre
 - If you plan to run Sysprep on a local machine before uploading your virtual hard disk (VHD) to Azure for the first time, make sure you have [prepared your VM](./windows/prepare-for-upload-vhd-image.md) before starting.
   
 - Before generalizing a Windows virtual machine, ensure that all installed applications support Sysprep (preinstalled in an OS image). Some applications (Security related, Store applications, Virtualization agents, etc.) either do not support Sysprep or require a specific preparation process to function correctly in a generalized image. Always review and follow the application's official documentation to confirm the required steps before including it in a reusable image.
-// # In a future improvement we can include some most used apps that require an specific process to be included in an image (SQL, MDEP, etc.): 
+// # In a future improvement we can include some most used apps that require an specific process to be included in an image (SQL, MDEP, etc.)
+// SQL: https://learn.microsoft.com/en-us/sql/database-engine/install-windows/install-sql-server-using-sysprep?view=sql-server-ver17
+// Defender: https://techcommunity.microsoft.com/blog/coreinfrastructureandsecurityblog/mde-for-non%E2%80%91persistent-vdi-%E2%80%94-implementation-guide--best-practices-/4470439
 
 ### Generalize a Windows VM
 
