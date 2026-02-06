@@ -55,15 +55,15 @@ vCPUs (Qty.) and Memory for each size
 
 Local (temp) storage info for each size
 
-| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read (RR)<sup>1</sup> IOPS | Temp Disk Random Read (RR)<sup>1</sup> Throughput (MB/s) | Temp Disk Random Write (RW)<sup>1</sup> IOPS | Temp Disk Random Write (RW)<sup>1</sup> Throughput (MB/s) |
-| --- | --- | --- | --- | --- | --- | --- |
-| Standard_D2plds_v5 | 1 | 75 | 9375 | 125 | 3750 | 85 |
-| Standard_D4plds_v5 | 1 | 150 | 19000 | 250 | 6400 | 145 |
-| Standard_D8plds_v5 | 1 | 300 | 38000 | 500 | 12800 | 290 |
-| Standard_D16plds_v5 | 1 | 600 | 75000 | 1000 | 25600 | 600 |
-| Standard_D32plds_v5 | 1 | 1200 | 150000 | 2000 | 51200 | 865 |
-| Standard_D48plds_v5 | 1 | 1800 | 225000 | 3000 | 76800 | 1315 |
-| Standard_D64plds_v5 | 1 | 2400 | 300000 | 4000 | 80000 | 1735 |
+| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read (RR)<sup>1</sup> IOPS | Temp Disk Random Read (RR)<sup>1</sup> Throughput (MB/s) |
+| --- | --- | --- | --- | --- |
+| Standard_D2plds_v5 | 1 | 75 | 9375 | 125 |
+| Standard_D4plds_v5 | 1 | 150 | 19000 | 250 |
+| Standard_D8plds_v5 | 1 | 300 | 38000 | 500 |
+| Standard_D16plds_v5 | 1 | 600 | 75000 | 1000 |
+| Standard_D32plds_v5 | 1 | 1200 | 150000 | 2000 |
+| Standard_D48plds_v5 | 1 | 1800 | 225000 | 3000 |
+| Standard_D64plds_v5 | 1 | 2400 | 300000 | 4000 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
