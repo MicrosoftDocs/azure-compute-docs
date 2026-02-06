@@ -14,7 +14,7 @@ ms.collection:
 ---
 # Migrate from Amazon EC2 to Azure Virtual Machines
 
-This guide is designed for Amazon Web Services (AWS) professionals that are familiar with Amazon EC2 and are planning to migrate a workload that uses EC2 to Azure Virtual Machines (VMs). It explains key differences and similarities between the two platforms, provides architectural considerations, and outlines best practices for performance, cost, and availability. The goal is to help you plan and perform a migration to Azure’s Infrastructure as a Service (IaaS) environment.
+If you're currently using Amazon EC2 and planning to migrate your workload to Azure, this guide helps you understand the migration process, feature mappings, and best practices. This guide is designed for Amazon Web Services (AWS) professionals that are familiar with Amazon EC2 and are planning to migrate a workload that uses Amazon EC2 to Azure Virtual Machines (VMs). It explains key differences and similarities between the two platforms, provides architectural considerations, and outlines best practices for performance, cost, and availability. The goal is to help you plan and perform a migration to Azure’s Infrastructure as a Service (IaaS) environment.
 
 ## What you will accomplish
 
@@ -28,21 +28,34 @@ After completing this guide, you will be able to:
 - Learn prerequisite knowledge and skills needed for a successful migration.
 - Validate performance, resiliency, and functionality after migration.
 
-### Example scenario: Migrating a production EC2-based application stack
+### Example scenario: Migrating a production Amazon EC2-based application stack
 
 An organization runs a production web application on Amazon EC2 using:
 
-- General purpose EC2 instances in multiple Availability Zones
-- Elastic Load Balancer (ALB) for Layer 7 traffic
-- Auto Scaling Groups for elasticity
-- EBS volumes for persistent storage
-- Custom AMIs as a golden image baseline
+- General purpose EC2 instances in multiple Availability Zones (AZs)
+- Elastic Load Balancer (ELB)
+- Auto Scaling Groups (ASGs) for elasticity
+- Amazon Elastic Block Store (EBS) volumes for persistent storage
+- Custom Amazon Machine Images (AMIs) as a golden image baseline
 
 The goal is to migrate this workload to Azure Virtual Machines while maintaining availability, performance, and scaling characteristics.
 
+## Use Azure Migrate to migrate your EC2 instances to Azure
+Azure Migrate offers a unified platform to assess and migrate to Azure on-premises servers, infrastructure, applications, and data. You can use Azure Migrate to discover, assess, and migrate Amazon Web Services (AWS) EC2 instances to Azure. 
+
+> [!TIP]
+> 
+> Use Azure Migrate when the migration effort shifts from “a few manual builds” to “repeatable at scale.” 
+> 
+> As a rule of thumb:
+> - Uniform VMs (same OS + similar size + simple dependencies): use Azure Migrate when migrating 5+ VMs.
+> - Different VMs (mixed OS/sizes, multiple disks, or non-trivial dependencies): use Azure Migrate when migrating 3+ VMs.
+
+
+To learn how Azure Migrate helps with discovery, dependency mapping, and right-sizing recommendations so you can avoid over/under-provisioning follow this [tutorial](/azure/migrate/tutorial-migrate-aws-virtual-machines).
 ### Architectural overview
 
-In AWS, the workload uses EC2 instances distributed across Availability Zones inside a VPC, fronted by an Elastic Load Balancer and scaled using Auto Scaling Groups. Storage is provided by EBS, and images are derived from custom AMIs.
+In AWS, the workload uses EC2 instances distributed across AZs inside a VPC, fronted by an ELB and scaled using ASGs. Storage is provided by EBS, and images are derived from custom AMIs.
 
 In Azure, the equivalent architecture uses:
 
@@ -294,7 +307,7 @@ For network-attached storage, AWS **EFS/FSx** map most closely to Azure **Azure 
 
 #### Storage Migration Considerations
 - **Map EBS volumes to Azure Managed Disk tiers**:
-  - `gp2/gp3` → Standard SSD  
+  - `gp2/gp3` → Standard SSD  - light/moderate use
   - `gp2` → Premium SSD
   - `gp3` → Premium SSD v2  
   - `io2` → Ultra Disk Storage  
@@ -423,5 +436,7 @@ Successful validation indicates the workload is ready for production cutover.
 
 ## Related content
 
-- Azure Virtual Machines overview
-- Compare AWS and Azure services
+- [Azure Virtual Machines overview](/azure/virtual-machines/)
+- [Azure for AWS professionals](/azure/architecture/aws-professional/)
+- [Compare AWS and Azure compute services](/azure/architecture/aws-professional/compute)
+- [Migrate Amazon Web Services (AWS) to Microsoft Azure](/azure/migration/migrate-from-aws)
