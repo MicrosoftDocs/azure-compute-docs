@@ -88,6 +88,7 @@ When using standby pools with Virtual Machine Scale Sets, there are specific lim
 - **Region and Subscription**: The standby pool must be in the same region and subscription as the Virtual Machine Scale Set it's attached to. Cross-region or cross-subscription configurations aren't supported.
 - **Single Standby Pool**: A Virtual Machine Scale Set can only have one standby pool attached at a time. Attaching multiple standby pools to the same scale set is not supported.
 - **Orchestration Mode**: Standby pools are only supported with Virtual Machine Scale Sets using Flexible Orchestration. Uniform Orchestration is not supported.
+- **Autoscale**: You can attach a standby pool to a scale set with autoscale enabled. It is suggested to only use **Deallocated** or **Hibernated** pools when using in combination with autoscale. **Running** VMs in the pool will be included in autoscale calculations and may result in unexpected scaling events. 
 
 ## Next steps
 

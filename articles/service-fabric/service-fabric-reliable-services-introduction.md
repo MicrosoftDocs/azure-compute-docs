@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+ms.update-cycle: 1095-days
 # Customer intent: "As a software developer, I want to implement stateful and stateless Reliable Services using the Service Fabric framework, so that I can take advantage of built-in reliability, availability, and scalability features for my applications."
 ---
 

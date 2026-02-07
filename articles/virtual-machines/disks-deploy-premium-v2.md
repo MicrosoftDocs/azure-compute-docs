@@ -11,7 +11,8 @@ ms.custom:
   - devx-track-azurecli
   - devx-track-azurepowershell
   - innovation-engine
-  - sfi-ropc-nochange
+  - sfi-ropc-nochange\portal
+  - portal
 # Customer intent: As a cloud administrator, I want to deploy a Premium SSD v2 managed disk, so that I can enhance the performance of IO-intense workloads in my virtual machines with low latency and high throughput capabilities.
 ---
 

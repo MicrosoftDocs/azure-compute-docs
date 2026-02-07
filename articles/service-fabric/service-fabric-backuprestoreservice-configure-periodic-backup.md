@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 04/17/2025
+ms.update-cycle: 1095-days
 # Customer intent: "As a cloud administrator, I want to configure periodic backups for my stateful services, so that I can ensure data integrity and recovery in case of data loss."
 ---
 

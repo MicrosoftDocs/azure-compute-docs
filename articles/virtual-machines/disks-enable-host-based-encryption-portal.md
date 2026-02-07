@@ -8,6 +8,7 @@ ms.date: 10/22/2024
 ms.author: rogarana
 ms.custom:
   - ignite-2023
+  - portal
 # Customer intent: "As an IT administrator, I want to enable end-to-end encryption using host-based encryption for managed disks, so that I can ensure data security both at rest and in transit for my virtual machines."
 ---
 

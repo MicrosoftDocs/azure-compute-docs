@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
 ms.date: 11/17/2025
+ms.update-cycle: 1095-days
 ms.custom: mvc
 # Customer intent: "As a cloud operator, I want to implement confidential containers on Azure Container Instances, so that I can securely run containerized applications while protecting sensitive data through hardware-based execution environments and verifiable attestation."
 ---

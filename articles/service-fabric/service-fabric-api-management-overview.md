@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+ms.update-cycle: 1095-days
 # Customer intent: As a cloud application developer, I want to implement Azure API Management as a gateway for my Service Fabric applications, so that I can efficiently manage API routing, access control, and service discovery without having to build a custom solution.
 ---
 

@@ -7,6 +7,7 @@ author: athinanthny
 ms.service: azure-container-instances
 services: container-instances
 ms.date: 11/17/2025
+ms.update-cycle: 1095-days
 # Customer intent: As a cloud architect, I want to utilize ACI Spot containers for my interruptible workloads, so that I can leverage unused Azure capacity and achieve significant cost savings without strict availability requirements.
 ---
 

@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
 ms.date: 11/17/2025
+ms.update-cycle: 180-days
 ms.custom:
   - mvc
   - mode-ui

@@ -75,7 +75,7 @@ az sig image-version create `
     --gallery-image-version 1.0.0 `
     --gallery-name myGallery `
     --resource-group myResourceGroup `
-    --image-version $sourceImageID
+    --managed-image $sourceImageID
 ```
 
 ### [PowerShell](#tab/powershell)

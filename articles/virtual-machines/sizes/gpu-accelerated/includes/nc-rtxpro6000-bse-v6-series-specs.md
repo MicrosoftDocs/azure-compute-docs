@@ -5,16 +5,16 @@ author: mattmcinnes
 ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.date: 11/21/2025
+ms.date: 12/08/2025
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
 ---
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
 |---|---|---|
-| Processor      | 32 - 320 vCPUs       | Intel Xeon Granite Rapids-AP [x86-64]                   |
-| Memory         | 128 - 1280 GiB          |  High-speed DDR5  |
-| Local Storage  | 1 Disk         | 256 - 2048 GiB               |
+| Processor      | 128 - 320 vCPUs       | Intel Xeon Granite Rapids-AP [x86-64]                   |
+| Memory         | 256 - 1280 GiB          |  High-speed DDR5  |
+| Local Storage  | 1 Disk         | 1024 - 2048 GiB               |
 | Remote Storage | 16 Disks    |                   |
-| Network        | 6 - 8 NICs          | 25000 - 200000 Mbps              |
-| Accelerators   | 0.25 - 2              | Nvidia RTX PRO 6000 Blackwell Server Edition GPU (96GB)|
+| Network        | 6 - 8 NICs          | 75000 - 200000 Mbps              |
+| Accelerators   | 1 - 2              | Nvidia RTX PRO 6000 Blackwell Server Edition GPU (96GB)|

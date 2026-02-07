@@ -171,7 +171,7 @@ For more information about chrony, see [Using chrony](https://access.redhat.com/
 
 ### systemd 
 
-On SUSE and Ubuntu releases before 19.10, time sync is configured using [systemd](https://www.freedesktop.org/wiki/Software/systemd/). For more information about Ubuntu, see [Time Synchronization](https://help.ubuntu.com/lts/serverguide/NTP.html). For more information about SUSE, see [Time Synchronization in SUSE](https://documentation.suse.com/smart/network/html/ntp-time-synchronization/index.html).
+On SUSE and Ubuntu releases before 19.10, time sync is configured using [systemd](https://www.freedesktop.org/wiki/Software/). For more information about Ubuntu, see [Time Synchronization](https://help.ubuntu.com/lts/serverguide/NTP.html). For more information about SUSE, see [Time Synchronization in SUSE](https://documentation.suse.com/smart/network/html/ntp-time-synchronization/index.html).
 
 ### cloud-init
 

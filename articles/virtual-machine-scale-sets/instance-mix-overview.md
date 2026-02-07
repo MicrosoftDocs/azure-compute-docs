@@ -23,6 +23,9 @@ Instance mix lets you specify multiple Virtual Machine (VM) sizes in a Virtual M
 - Sufficient quota for each VM size in the target subscription and region.
 - Consistent VM characteristics across selected sizes: architecture (x64/Arm64), storage interface, local disk configuration, and security profile.
 
+> [!TIP]
+> Instance Mix can utilize multiple VM sizes and chipsets. When using Instance Mix across several subscriptions, [Azure Quota Groups](/azure/quotas/quota-groups) make it easier for workloads to scale because quota is unified. Instance Mix respects your quota across all eligible stock keeping units (SKUs), and Quota Groups simplify management by consolidating quota allocation across subscriptions.
+
 ## When to use instance mix
 
 - You want to run a heterogeneous set of VM sizes in a single scale set to increase the likelihood of successful provisioning.
@@ -92,6 +95,9 @@ Before you deploy an instance mix scale set:
 - Verify the scale set is using Flexible Orchestration Mode.
 - Confirm VM quotas for each selected size in the target subscription and region.
 - Ensure all selected VM sizes have consistent architecture, storage interface, local disk configuration, and security profile.
+
+> [!TIP]
+> When deploying Instance Mix across multiple subscriptions, [Azure Quota Groups](/azure/quotas/quota-groups) simplify quota management by unifying quota allocation. This makes it easier for workloads to scale since Instance Mix can utilize multiple VM sizes and chipsets while respecting your quota across all eligible SKUs.
 - Choose an allocation strategy that matches your goals (cost, availability, predictability).
 - For REST API deployments, ensure a virtual network exists in the target resource group.
 

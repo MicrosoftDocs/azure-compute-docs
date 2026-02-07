@@ -4,7 +4,7 @@ description: How to obtain help and support for questions or problems when you c
 author: mimckitt
 ms.author: mimckitt
 ms.service: azure-virtual-machine-scale-sets
-ms.topic: troubleshooting
+ms.topic: concept-article
 ms.date: 06/14/2024
 ms.reviewer: cynthn
 ms.custom: support-help-page

@@ -5,15 +5,13 @@ author: archatC
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 07/29/2025
+ms.date: 01/21/2026
 ms.author: archat
 ms.reviewer: mattmcinnes
 # Customer intent: As a cloud architect, I want to review the specifications of the Easv7 size series, so that I can select the appropriate virtual machine configurations for my applications' performance and storage needs.
 ---
 
-# Easv7 sizes series (Preview)
-
-[!INCLUDE [sizes-preview-tag](../includes/sizes-preview-tag.md)]
+# Easv7 sizes series
 
 [!INCLUDE [easv7-summary](./includes/easv7-series-summary.md)]
 
@@ -21,7 +19,7 @@ ms.reviewer: mattmcinnes
 [!INCLUDE [easv7-series-specs](./includes/easv7-series-specs.md)]
 
 ## Feature support
-[Premium Storage](../../premium-storage-performance.md): Supported <br>[Premium Storage caching](../../premium-storage-performance.md): Supported <br>[Memory Preserving Updates](../../maintenance-and-updates.md): Supported <br>[Generation 2 VMs](../../generation-2.md): Supported <br>[Generation 1 VMs](../../generation-2.md): Not Supported <br>[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported <br>[Ephemeral OS Disk](../../ephemeral-os-disks.md): Not Supported <br>[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Supported <br>
+[Premium Storage](../../premium-storage-performance.md): Supported <br>[Premium Storage caching](../../premium-storage-performance.md): Supported <br>[Live Migration](../../maintenance-and-updates.md): Supported <br>[Memory Preserving Updates](../../maintenance-and-updates.md): Supported <br>[Generation 2 VMs](../../generation-2.md): Supported <br>[Generation 1 VMs](../../generation-2.md): Not Supported <br>[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported <br>[Ephemeral OS Disk](../../ephemeral-os-disks.md): Not Supported <br>[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Supported <br>
 
 ## Sizes in series
 

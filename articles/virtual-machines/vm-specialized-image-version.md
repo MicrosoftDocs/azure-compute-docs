@@ -55,7 +55,7 @@ Use the image definition ID for `--image` to create the VM from the latest versi
 In this example, we're creating a VM from the latest version of the *myImageDefinition* image.
 
 ```azurecli
-az group create --name myResourceGroup --location eastus
+az group create --name myResourceGroup --location centralus
 az vm create --resource-group myResourceGroup \
     --name myVM \
     --image "/subscriptions/<Subscription ID>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition" \
@@ -149,13 +149,13 @@ New-AzVM `
 
 ### [Portal](#tab/portal)
 
-Now you can create one or more new VMs. This example creates a VM named *myVM*, in the *myResourceGroup*, in the *East US* datacenter.
+Now you can create one or more new VMs. This example creates a VM named *myVM*, in the *myResourceGroup*, in the *Central US* datacenter.
 
 1. Go to your image definition. You can use the resource filter to show all image definitions available.
 1. On the page for your image definition, select **Create VM** from the menu at the top of the page.
 1. For **Resource group**, select **Create new** and type *myResourceGroup* for the name.
 1. In **Virtual machine name**, type *myVM*.
-1. For **Region**, select *East US*.
+1. For **Region**, select *Central US*.
 1. For **Availability options**, leave the default of *No infrastructure redundancy required*.
 1. The value for **Image** is automatically filled with the `latest` image version if you started from the page for the image definition.
 1. For **Size**, choose a VM size from the list of available sizes and then choose **Select**.
@@ -178,7 +178,7 @@ You'll need the `imageID` of the image you want to use and make sure the image i
 
 image="/subscriptions/<Subscription ID>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition"
 vmResourceGroup='myResourceGroup'
-location='westus'
+location='centralus'
 vmName='myVM'
 
 az group create --name $vmResourceGroup --location $location
@@ -198,7 +198,7 @@ az vm create\
 # Create some variables for the new VM.
 
 $resourceGroup = "myResourceGroup"
-$location = "South Central US"
+$location = "Central US"
 $vmName = "myVM"
 $image = "/subscriptions/<Subscription ID>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition"
 
@@ -290,7 +290,7 @@ Create the VM using [az vm create](/cli/azure/vm#az-vm-create) using the `--spec
 
 imageid=""/subscriptions/<Subscription ID>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition""
 resourcegroup="myResourceGroup"
-location="West US 3"
+location="Central US"
 name='myVM'
 
 az group create --name $resourcegroup --location $location
@@ -320,7 +320,7 @@ Create the VM. Replace the information in the example with your own. Before you 
 # Create some variables for the new VM.
 
 $resourceGroup = "myResourceGroup"
-$location = "South Central US"
+$location = "Central US"
 $vmName = "myVM"
 
 # Set a variable for the image version in Tenant 1 using the full image ID of the image version
@@ -416,12 +416,12 @@ To create a VM using an image shared to a community gallery, use the unique ID o
 As an end user, to get the public name of a community gallery, you need to use the portal. Go to **Virtual machines** > **Create** > **Azure virtual machine** > **Image** > **See all images** > **Community Images** > **Public gallery name**.
 
 
-List all of the image definitions that are available in a community gallery using [az sig image-definition list-community](/cli/azure/sig/image-definition#az-sig-image-definition-list-community). In this example, we list all of the images in the *ContosoImage* gallery in *West US* and by name, the unique ID that is needed to create a VM, OS and OS state.
+List all of the image definitions that are available in a community gallery using [az sig image-definition list-community](/cli/azure/sig/image-definition#az-sig-image-definition-list-community). In this example, we list all of the images in the *ContosoImage* gallery in *Central US* and by name, the unique ID that is needed to create a VM, OS and OS state.
 
 ```azurecli-interactive 
  az sig image-definition list-community \
    --public-gallery-name "ContosoImages-1a2b3c4d-1234-abcd-1234-1a2b3c4d5e6f" \
-   --location westus \
+   --location centralus \
    --query [*]."{Name:name,ID:uniqueId,OS:osType,State:osState}" -o table
 ```
 
@@ -432,7 +432,7 @@ Create the VM using [az vm create](/cli/azure/vm#az-vm-create) using the `--spec
 In this example, we're creating a VM from the latest version of the *myImageDefinition* image.
 
 ```azurecli
-az group create --name myResourceGroup --location eastus
+az group create --name myResourceGroup --location centralus
 az vm create --resource-group myResourceGroup \
     --name myVM \
     --image "/CommunityGalleries/ContosoImages-f61bb1d9-3c5a-4ad2-99b5-744030225de6/Images/LinuxSpecializedVersions/latest" \
@@ -483,14 +483,14 @@ To create a VM using the latest version of an image shared to your subscription 
 /SharedGalleries/<uniqueID>/Images/<image name>/Versions/latest
 ```
 
-To find the `uniqueID` of a gallery that is shared with you, use [az sig list-shared](/cli/azure/sig/image-definition#az-sig-image-definition-list-shared). In this example, we're looking for galleries in the West US region.
+To find the `uniqueID` of a gallery that is shared with you, use [az sig list-shared](/cli/azure/sig/image-definition#az-sig-image-definition-list-shared). In this example, we're looking for galleries in the Central US region.
 
 ```azurecli-interactive
-region=westus
+region=centralus
 az sig list-shared --location $region --query "[].name" -o tsv
 ```
 
-Use the gallery name to find all of the images that are available. In this example, we list all of the images in *West US* and by name, the unique ID that is needed to create a VM, OS and OS state.
+Use the gallery name to find all of the images that are available. In this example, we list all of the images in *Central US* and by name, the unique ID that is needed to create a VM, OS and OS state.
 
 ```azurecli-interactive 
 galleryName="1a2b3c4d-1234-abcd-1234-1a2b3c4d5e6f-myDirectShared"
@@ -511,7 +511,7 @@ In this example, we're creating a VM from the latest version of the *myImageDefi
 ```azurecli
 imgDef="/SharedGalleries/1a2b3c4d-1234-abcd-1234-1a2b3c4d5e6f-MYDIRECTSHARED/Images/myDirectDefinition/Versions/latest"
 vmResourceGroup=myResourceGroup
-location=westus
+location=centralus
 vmName=myVM
 
 az group create --name $vmResourceGroup --location $location
@@ -528,7 +528,7 @@ az vm create\
 > [!NOTE]
 > **Known issue**: In the Azure portal, if you select a region, select an image, then change the region, you will get an error message: "You can only create VM in the replication regions of this image" even when the image is replicated to that region. To get rid of the error, select a different region, then switch back to the region you want. If the image is available, it should clear the error message.
 >
-> You can also use the Azure CLI to check what images are shared with you. For example, you can use `az sig list-shared --location westus" to see what images are shared with you in the West US region.
+> You can also use the Azure CLI to check what images are shared with you. For example, you can use `az sig list-shared --location centralus" to see what images are shared with you in the Central US region.
 
 1. Type **virtual machines** in the search.
 1. Under **Services**, select **Virtual machines**.

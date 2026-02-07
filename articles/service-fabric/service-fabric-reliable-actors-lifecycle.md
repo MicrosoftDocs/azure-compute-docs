@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+ms.update-cycle: 1095-days
 # Customer intent: As a software developer, I want to understand the actor lifecycle management in a cloud service so that I can effectively implement activation, deactivation, and garbage collection for my applications using actors.
 ---
 

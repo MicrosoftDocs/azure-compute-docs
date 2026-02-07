@@ -8,6 +8,7 @@ ms.custom:
   - ignite-2024
 ms.topic: concept-article
 ms.date: 11/17/2025
+ms.update-cycle: 1095-days
 ms.reviewer: tomvcassidy
 # Customer intent: As a cloud architect, I want to implement standby pools for Azure Container Instances, so that I can reduce scale-out latency and effectively manage container resources in response to fluctuating traffic demands.
 ---

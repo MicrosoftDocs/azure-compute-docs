@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+ms.update-cycle: 1095-days
 # Customer intent: As a cloud architect, I want to configure service affinity for my microservices in Service Fabric, so that I can optimize performance and maintain critical dependencies while transitioning from a monolithic architecture.
 ---
 

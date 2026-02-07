@@ -15,7 +15,9 @@ ms.custom: compute-cost-fy24, devx-track-azurecli, devx-track-azurepowershell, d
 
 This article shows you how to change an existing virtual machine's [VM size](../sizes.md).
 
-After you create a virtual machine (VM), you can scale the VM up or down by changing the VM size. In some cases, you must deallocate the VM first. Deallocation may be necessary if the new size isn't available on the same hardware cluster that is currently hosting the VM. It is important to understand that even when deallocation is not necessary, if the virtual machine is currently running, changing its size will cause it to restart. For this reason you should consider changing VM size as a disruptive procedure, especially for stateful workloads that are hosted on the VM.
+After you create a VM, you can scale it up or down by changing the VM size. This process works whether the VM is currently running or has already been deallocated.
+
+In some cases, you must deallocate the VM before resizing. Deallocation may be required if the new size isn’t available on the hardware cluster currently hosting the VM. Even when deallocation isn’t required, changing the size of a running VM will cause it to restart. For this reason, resizing a VM should be considered a disruptive operation, especially for stateful workloads.
 
 > [!WARNING]
 > If the virtual machine is currently running, changing its size will cause it to restart. 

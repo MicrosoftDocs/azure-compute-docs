@@ -5,15 +5,13 @@ author: archatC
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 07/29/2025
+ms.date: 01/26/2026
 ms.author: archat
 ms.reviewer: mattmcinnes
 # Customer intent: "As a cloud architect, I want to understand the specifications and features of the Dadsv7 series virtual machine sizes, so that I can select the appropriate resources for my applications based on performance and storage requirements."
 ---
 
-# Dadsv7 sizes series (Preview)
-
-[!INCLUDE [sizes-preview-tag](../includes/sizes-preview-tag.md)]
+# Dadsv7 sizes series
 
 [!INCLUDE [dadsv7-summary](./includes/dadsv7-series-summary.md)]
 
@@ -23,6 +21,7 @@ ms.reviewer: mattmcinnes
 ## Feature support
 - [Premium Storage](../../premium-storage-performance.md): Supported
 - [Premium Storage caching](../../premium-storage-performance.md): Supported
+- [Live Migration](../../maintenance-and-updates.md): Supported
 - [Memory Preserving Updates](../../maintenance-and-updates.md): Supported
 - [Generation 2 VMs](../../generation-2.md): Supported
 - [Generation 1 VMs](../../generation-2.md): Not Supported
@@ -30,8 +29,6 @@ ms.reviewer: mattmcinnes
 - [Ephemeral OS Disk](../../ephemeral-os-disks.md): Supported
 - [Temporary local NVMe disks](../../enable-nvme-temp-faqs.yml): Supported
 - [Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Supported
-- [Azure Disk Encryption for Linux VMs](../../../virtual-machines/linux/disk-encryption-linux.md?tabs=azcliazure%2Cenableadecli%2Cefacli%2Cadedatacli#restrictions): Not Supported
-- [Azure Disk Encryption for Windows VMs](../../../virtual-machines/windows/disk-encryption-windows.md#restrictions): Not Supported
 
 ## Sizes in series
 
@@ -59,18 +56,18 @@ vCPUs (Qty.) and Memory for each size
 
 Local (temp) storage info for each size
 
-| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB)<sup>1</sup> | Temp Disk Random Read (RR)<sup>2</sup> IOPS<sup>3</sup> | Temp Disk Random Read (RR)<sup>2</sup> Throughput (MB/s)<sup>3</sup> |
-| --- | --- | --- | --- | --- |
-| Standard_D2ads_v7 | 1 | 110 | 37500 | 180 |
-| Standard_D4ads_v7 | 1 | 220 | 75000 | 360 |
-| Standard_D8ads_v7 | 1 | 440 | 150000 | 720 |
-| Standard_D16ads_v7 | 2 | 440 | 300000 | 1440 |
-| Standard_D32ads_v7 | 4 | 440 | 600000 | 2880 |
-| Standard_D48ads_v7 | 6 | 440 | 900000 | 4320 |
-| Standard_D64ads_v7 | 4 | 880 | 1200000 | 5760 |
-| Standard_D96ads_v7 | 6 | 880 | 1800000 | 8640 |
-| Standard_D128ads_v7 | 4 | 1760 | 2400000 | 11520 |
-| Standard_D160ads_v7 | 5 | 1760 | 3000000 | 14400 |
+| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read (RR)<sup>1</sup>,<sup>2</sup> IOPS<sup>3</sup> | Temp Disk Random Read (RR)<sup>1</sup>,<sup>2</sup> Throughput (MB/s)<sup>3</sup> | Temp Disk Random Write (RW)<sup>1</sup> IOPS | Temp Disk Random Write (RW)<sup>1</sup> Throughput (MB/s) |
+| --- | --- | --- | --- | --- | --- | --- |
+| Standard_D2ads_v7 | 1 | 110 | 37500 | 280 | 15000 | 140 |
+| Standard_D4ads_v7 | 1 | 220 | 75000 | 560 | 30000 | 280 |
+| Standard_D8ads_v7 | 1 | 440 | 150000 | 1120 | 60000 | 560 |
+| Standard_D16ads_v7 | 2 | 440 | 300000 | 2240 | 120000 | 1120 |
+| Standard_D32ads_v7 | 4 | 440 | 600000 | 4480 | 240000 | 2240 |
+| Standard_D48ads_v7 | 6 | 440 | 900000 | 6720 | 360000 | 3360 |
+| Standard_D64ads_v7 | 4 | 880 | 1200000 | 8960 | 480000 | 4480 |
+| Standard_D96ads_v7 | 6 | 880 | 1800000 | 13440 | 720000 | 6720 |
+| Standard_D128ads_v7 | 4 | 1760 | 2400000 | 17920 | 960000 | 8960 |
+| Standard_D160ads_v7 | 4 | 2200 | 3000000 | 22400 | 12000000 | 11200 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
@@ -78,7 +75,7 @@ Local (temp) storage info for each size
 - [Share an Azure managed disk](../../../virtual-machines/disks-shared.md)
 
 #### Table definitions
-- <sup>1</sup> Total local temporary storage is calculated by multiplying the max number of storage disks with the temp disk size. For example, for the Standard_D160ads_v7, the total local temporary storage capacity is `5 x 1760 GiB = 8800 GiB`.
+- <sup>1</sup> Temp disk speed often differs between RR (Random Read) and RW (Random Write) operations. RR operations are typically faster than RW operations. The RW speed is usually slower than the RR speed on series where only the RR speed value is listed. Temp disk performance can vary based on workload, block size, and system conditions. Published numbers show peak performance under controlled testing, temp disk performance specifications should be viewed as best case performance numbers and may differ in real-world scenarios. Factors such as data patterns, SSD wear, and background processes can affect write speeds. For more details, please see [FAQ for Temp NVMe disks](../../../virtual-machines/enable-nvme-temp-faqs.yml)
 - <sup>2</sup> Temp disk speed often differs between RR (Random Read) and RW (Random Write) operations. RR operations are typically faster than RW operations. The RW speed is usually slower than the RR speed on series where only the RR speed value is listed.
 - <sup>3</sup> The IOPS and throughput values shown are the combined performance across all temp disks.
 - Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
@@ -109,7 +106,6 @@ Remote (uncached) storage info for each size
 
 #### Table definitions
 - <sup>1</sup>Some sizes support [bursting](../../disk-bursting.md) to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.
-
 - Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
 - Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
 - Data disks can operate in cached or uncached modes. For cached data disk operation, the host cache mode is set to ReadOnly or ReadWrite. For uncached data disk operation, the host cache mode is set to None.

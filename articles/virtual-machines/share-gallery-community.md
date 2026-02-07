@@ -118,7 +118,7 @@ You can also use the following links to report issues, but the forms aren't pre-
 
 ## Best practices
 
-- Images published to the community gallery should be [generalized](generalize.yml) and have no sensitive or machine-specific details. To learn more about preparing an image, see the OS-specific information for [Linux](./linux/create-upload-generic.md) or [Windows](./windows/prepare-for-upload-vhd-image.md).
+- Images published to the community gallery should be [generalized](generalize.md) and have no sensitive or machine-specific details. To learn more about preparing an image, see the OS-specific information for [Linux](./linux/create-upload-generic.md) or [Windows](./windows/prepare-for-upload-vhd-image.md).
 
 - If you want to block sharing images with the community at the organization level, create an Azure policy with the following policy rule:
 

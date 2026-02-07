@@ -3,8 +3,8 @@ title: Supported OS Images
 description: Get a list of supported operating system images for remote NVMe.
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.date: 05/23/2025
-ms.topic: how-to
+ms.date: 01/23/2026
+ms.topic: concept-article
 ms.custom: template-how-to-pattern
 # Customer intent: As a cloud architect, I want to access a list of supported operating system images for remote NVMe, so that I can ensure compatibility and optimize performance for my virtual machines.
 ---
@@ -24,6 +24,7 @@ For more information about enabling the NVMe interface on virtual machines creat
 > [!NOTE]
 > For Linux virtual machines using NVMe-attached storage, Microsoft recommends setting the kernel parameter `nvme_core.io_timeout` to `240` seconds. This setting effectively disables OS-level NVMe IO timeouts, ensuring that Azure's host-level timeout mechanism takes precedence to handle disk failures or interruptions. 
 > Some older Linux images may have the default `io_timeout` set to 30 seconds, which can cause the OS to timeout IOs before Azure can intervene.
+- Azure Linux 3.0
 - Almalinux 8.x
 - Almalinux 9.x
 - Debian 11
@@ -39,15 +40,17 @@ For more information about enabling the NVMe interface on virtual machines creat
 - Ubuntu 18.04
 - Ubuntu 20.04
 - Ubuntu 22.04
+- Ubuntu 24.04
+- Rocky Linux 8.10
+- Rocky Linux 9.6
 
 ## Supported Windows OS images
 - Windows Server 2025
-- Windows Server 2019*
 - Windows Server 2022
-- Windows Server 2025
+- Windows Server 2019*
 - Windows 10
 - Windows 11
 
 *Shared Disks on NVME are not compatible with Windows Server 2019
 
-To download an image, go to [Azure Marketplace](https://ms.portal.azure.com/#view/Microsoft_Azure_Marketplace/MarketplaceOffersBlade/selectedMenuItemId/home).
+To download an image, go to [Azure Marketplace](https://portal.azure.com/#view/Microsoft_Azure_Marketplace/MarketplaceOffersBlade/selectedMenuItemId/home).

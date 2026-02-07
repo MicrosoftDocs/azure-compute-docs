@@ -11,13 +11,20 @@ ms.custom: references_regions
 # Customer intent: As a software developer utilizing VM Image Builder, I want to stay informed about the latest API changes and feature updates, so that I can effectively manage and optimize my image creation processes without encountering compatibility issues.
 ---
 
-# What's new in Azure VM Image Builder
+# What's new in Azure VM Image Builder (AIB)
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
 This article contains all major API changes and feature updates for the Azure VM Image Builder service.
 
 ## Updates
+
+### March 2026
+
+#### Retirement: Azure unmanaged disks
+
+Azure is retiring Azure unmanaged disks. This change affects a subset of AIB customers who use AIB  to distribute images as VHDs and then use those VHDs to provision new VMs. After the unmanaged disks retirement, you will still be able to use AIB to create VHD artifacts, but those VHDs will not be able to provision new VMs. For complete details — including scope, timelines, and the recommended mitigation steps — see the official documentation: [Migrate your Azure unmanaged disks by March 31, 2026](./unmanaged-disks-deprecation.md)
+
 
 ### September 2024
 

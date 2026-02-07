@@ -46,13 +46,13 @@ Set-AzContext 00a000aa-0a00-0a0a-00aa-a00a000aaa00
 
 $RGName="myMaintenanceRG"
 $MaintenanceConfig="myMaintenanceConfig"
-$location="eastus2"
+$location="centralus"
 $vmss="myMaintenanceVMSS"
 ```
 
 ## Create a maintenance configuration
 
-Create a resource group as a container for your configuration. In this example, a resource group named *myMaintenanceRG* is created in *eastus2*. If you already have a resource group that you want to use, you can skip this part. Just replace the resource group name with your own in the rest of the examples.
+Create a resource group as a container for your configuration. In this example, a resource group named *myMaintenanceRG* is created in *Central US*. If you already have a resource group that you want to use, you can skip this part. Just replace the resource group name with your own in the rest of the examples.
 
 ```azurepowershell-interactive
 New-AzResourceGroup `

@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+ms.update-cycle: 1095-days
 # Customer intent: "As a cloud application developer, I want to implement robust security practices for my microservices on Service Fabric, so that I can protect sensitive data and ensure secure communication across services."
 ---
 

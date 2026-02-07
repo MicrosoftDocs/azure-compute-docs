@@ -5,7 +5,7 @@ author: cynthn
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: how-to
-ms.date: 02/15/2023
+ms.date: 01/16/2026
 ms.author: cynthn
 # Customer intent: "As a cloud infrastructure administrator, I want to monitor my vCPU quotas for virtual machines, so that I can ensure successful deployments without exceeding resource limits."
 ---
@@ -28,7 +28,7 @@ The vCPU quotas for virtual machines and scale sets are arranged in two tiers fo
 You can check your quota usage using [az vm list-usage](/cli/azure/vm).
 
 ```azurecli-interactive
-az vm list-usage --location "East US" -o table
+az vm list-usage --location "Central US" -o table
 ```
 
 The output should look something like this:
@@ -64,7 +64,7 @@ Premium Storage Managed Disks                  5    10000
 You can use the [Get-AzVMUsage](/powershell/module/az.compute/get-azvmusage) cmdlet to check on your quota usage.
 
 ```azurepowershell-interactive
-Get-AzVMUsage -Location "East US"
+Get-AzVMUsage -Location "Central US"
 ```
 
 The output looks similar to this:
@@ -117,6 +117,6 @@ Reserved VM Instances, scoped to a single subscription without VM size flexibili
 
 If a quota increase is required to either purchase a Single Subscription RI, you can [request a quota increase](/azure/azure-portal/supportability/regional-quota-requests) on your subscription.
 
-## Next steps
+## Related content
 
 For more information about billing and quotas, see [Azure subscription and service limits, quotas, and constraints](/azure/azure-resource-manager/management/azure-subscription-service-limits?toc=/azure/billing/TOC.json).

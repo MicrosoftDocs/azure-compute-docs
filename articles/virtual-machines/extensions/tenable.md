@@ -118,7 +118,7 @@ Parameter descriptions:
 
 "nessusAgentGroup" is "--groups"
 
-For more definitions of these parameters, see [Nessuscli Agent](https://docs.tenable.com/nessus/Content/NessusCLIAgent.htm).
+For more definitions of these parameters, see [Nessuscli Agent](https://docs.tenable.com/agent/Content/NessusCLIAgent.htm).
 
 
 ### Support

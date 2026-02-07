@@ -4,6 +4,7 @@ description: 'In this article, you create an Azure Container Instance with a pub
 ms.topic: quickstart
 ms.service: azure-container-instances
 ms.date: 11/17/2025
+ms.update-cycle: 180-days
 ms.custom: devx-track-terraform, linux-related-content
 author: TomArcherMsft
 ms.author: tarcher

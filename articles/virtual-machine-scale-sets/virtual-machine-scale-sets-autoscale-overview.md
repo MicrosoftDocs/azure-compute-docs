@@ -57,6 +57,7 @@ Update-AzVmss `
 ---
 
 ## Benefits of autoscale
+
 If your application demand increases, the load on the virtual machines in your scale set increases. If this increased load is consistent, rather than just a brief demand, you can configure autoscale rules to increase and decrease the number of virtual machines in the scale set.
 
 > [!NOTE]

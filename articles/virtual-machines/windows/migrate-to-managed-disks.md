@@ -1,11 +1,11 @@
 ---
 title: Migrate Azure VMs to Managed Disks 
 description: Migrate Azure virtual machines created using unmanaged disks in storage accounts to use Managed Disks.
-author: ankitaduttaMSFT
+author: roygara
 ms.service: azure-disk-storage
 ms.topic: how-to
 ms.date: 05/30/2019
-ms.author: ankitadutta
+ms.author: rogarana
 # Customer intent: "As a cloud administrator, I want to migrate Azure virtual machines from unmanaged to managed disks, so that I can enhance storage management, improve reliability, and reduce the risk of single points of failure."
 ---
 
@@ -13,8 +13,10 @@ ms.author: ankitadutta
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs 
 
-Azure Managed Disks simplifies your storage management by removing the need to separately manage storage accounts.  You can also migrate your existing Azure VMs to Managed Disks to benefit from better reliability of VMs in an Availability Set. It ensures that the disks of different VMs in an Availability Set are sufficiently isolated from each other to avoid single point of failures. It automatically places disks of different VMs in an Availability Set in different Storage scale units (stamps) which limits the impact of single Storage scale unit failures caused due to hardware and software failures.
-Based on your needs, you can choose from four types of storage options. To learn about the available disk types, see our article [Select a disk type](../disks-types.md)
+[!INCLUDE [disks-unmanaged-disks-retirement](../includes/disks-unmanaged-disks-retirement.md)]
+
+Azure managed disks simplifies your storage management by removing the need to separately manage storage accounts. Managed disks provide numerous benefits over unmanaged disks, such as [high availability](../disks-high-availability.md), better [scalability](../disks-scalability-targets.md), large disks, [bursting](disk-bursting.md), and [shared disks](disks-shared-enable.md). You can also migrate your existing Azure VMs to Managed Disks to benefit from better reliability of VMs in an Availability Set. It ensures that the disks of different VMs in an Availability Set are sufficiently isolated from each other to avoid single point of failures. It automatically places disks of different VMs in an Availability Set in different Storage scale units (stamps) which limits the impact of single Storage scale unit failures caused due to hardware and software failures.
+Based on your needs, you can choose from four types of storage options. To learn about the available disk types, see [Select a disk type](../disks-types.md)
 
 ## Migration scenarios
 

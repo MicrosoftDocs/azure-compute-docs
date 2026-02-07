@@ -5,6 +5,7 @@ author: tomvcassidy
 services: container-instances
 ms.author: tomcassidy
 ms.date: 11/17/2025
+ms.update-cycle: 180-days
 ms.topic: quickstart
 ms.service: azure-container-instances
 ms.custom: subject-armqs, mode-arm, devx-track-bicep

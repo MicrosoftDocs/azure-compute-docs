@@ -22,14 +22,17 @@ No, you can't mix multiple CPU architectures in a scale set using instance mix.
 ### Which regions support instance mix?
 All public Azure regions support instance mix.
 
-### Will instance mix request quota for me?
-No, you must have quota for the VMs you specify in the `skuProfile`. If you don't have quota for a given VM size, we'll try using another VM size specified that does have quota.
+### Does instance mix request quota for me?
+No, you must have quota for the VMs you specify in the `skuProfile`. If you don't have quota for a given VM size, we try using another VM size specified that does have quota.
+
+> [!TIP]
+> Instance Mix can utilize multiple VM sizes and chipsets. When using Instance Mix across several subscriptions, [Azure Quota Groups](/azure/quotas/quota-groups) make it easier for workloads to scale because quota is unified. Instance Mix respects your quota across all eligible stock keeping units (SKUs), and Quota Groups simplify management by consolidating quota allocation across subscriptions.
 
 ### I updated my scale set to use instance mix, why aren't my VMs aligning to my allocation strategy?
 After updating your scale set to use instance mix, all scale in or scale out actions use the inputs from instance mix to determine which VMs to scale in and out. 
 
 ### Can I use reserved instance or savings plan with instance mix?
-Yes, you can apply your reserved instance prices and savings plan with instance mix. It's recommended that you use the `Prioritized` allocation strategy and set the reservation or savings plan VM sizes as the first rank.
+Yes, you can apply your reserved instance prices and savings plan with instance mix. We recommend that you use the `Prioritized` allocation strategy and set the reservation or savings plan VM sizes as the first rank.
 
 ### Can I use an on-demand capacity reservation with instance mix?
 No, you can't use an on-demand capacity reservation with instance mix.

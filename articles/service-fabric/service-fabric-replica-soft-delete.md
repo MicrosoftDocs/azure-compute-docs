@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 11/07/2025
+ms.update-cycle: 1095-days
 # Customer intent: As a developer, I want to understand how the soft deletion of a replica feature works and what impact it has on the existing replica development model.
 ---
 

@@ -44,7 +44,7 @@ Local (temp) storage info for each size
 
 | Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Max NVMe Disks (Qty.) | NVMe Disk Size (TiB) |
 | --- | --- | --- | --- | --- |
-| Standard_ND96isr_H200_v5 | 1 | 28000 | 8 | 28 |
+| Standard_ND96isr_H200_v5 | 1 | 1024 | 8 | 28 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)

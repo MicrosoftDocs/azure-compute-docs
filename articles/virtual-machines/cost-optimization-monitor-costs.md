@@ -3,7 +3,7 @@ title: Monitor costs for virtual machines
 description: Learn how to monitor costs for virtual machines by using cost analysis in the Azure portal.
 author: tomvcassidy
 ms.author: tomcassidy
-ms.custom: subject-cost-optimization
+ms.custom: subject-cost-optimization, portal
 ms.service: azure-virtual-machines
 ms.topic: how-to
 ms.date: 02/21/2024

@@ -114,7 +114,7 @@ The following examples show how to use the Azure CLI to deploy scale sets with v
 > [!NOTE]
 > For zone-spanning and zonal Flexible virtual machine scale set deployments, the fault domain count is automatically set to 1 (max spreading) and can't be configured to a different value.
 
-- **Nonzonal Flexible scale set with fixed spreading:**
+- **Regional (nonzonal) Flexible scale set with fixed spreading:**
 
   ```azurecli-interactive
   az vmss create \
@@ -127,7 +127,7 @@ The following examples show how to use the Azure CLI to deploy scale sets with v
     --generate-ssh-keys
   ```
 
-- **Nonzonal Uniform scale set with max spreading:** 
+- **Regional (nonzonal) Uniform scale set with max spreading:** 
 
   ```azurecli-interactive
   az vmss create \

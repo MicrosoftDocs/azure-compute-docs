@@ -128,7 +128,7 @@ UUID=$(sudo blkid -s UUID -o value /dev/sdc1)
 echo "UUID=$UUID   /datadrive   xfs   defaults,nofail   1   2" | sudo tee -a /etc/fstab
 
 # For NVMe disks
-UID=$(sudo blkid -s UUID -o value /dev/nvme1n1p1)
+UUID=$(sudo blkid -s UUID -o value /dev/nvme1n1p1)
 echo "UUID=$UUID   /datadrive   xfs   defaults,nofail   1   2" | sudo tee -a /etc/fstab
 ```
 

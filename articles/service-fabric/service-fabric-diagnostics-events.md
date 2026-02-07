@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+ms.update-cycle: 1095-days
 # Customer intent: "As a cluster administrator, I want to access and analyze Service Fabric events, so that I can monitor the operational health, upgrades, and changes within my Azure Service Fabric cluster."
 ---
 

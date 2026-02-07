@@ -7,8 +7,9 @@ ms.service: azure-virtual-machine-scale-sets
 ms.subservice: azure-spot-vm
 ms.topic: concept-article
 ms.date: 06/14/2024
+ms.update-cycle: 180-days
 ms.reviewer: cynthn
-ms.custom: engagement-fy23
+ms.custom: engagement-fy23, portal
 # Customer intent: "As a cloud architect, I want to configure a mix of Spot and standard VMs in my Virtual Machine Scale Set, so that I can optimize for high availability while reducing infrastructure costs based on workload demands."
 ---
 

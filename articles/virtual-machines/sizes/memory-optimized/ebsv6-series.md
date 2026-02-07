@@ -11,7 +11,7 @@ ms.reviewer: mattmcinnes
 # Customer intent: As a cloud architect, I want to review the specifications and feature support of various Esv6-series virtual machine sizes, so that I can select the most appropriate size for my workloads and optimize performance in the cloud environment.
 ---
 
-# Ebsv6 sizes series 
+# Ebsv6 sizes series (Preview)
 
 [!INCLUDE [ebsv6-summary](./includes/ebsv6-series-summary.md)]
  

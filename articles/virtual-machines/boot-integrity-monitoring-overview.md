@@ -6,10 +6,12 @@ ms.author: cynthn
 ms.service: azure-virtual-machines
 ms.subservice: trusted-launch
 ms.topic: concept-article
+ms.update-cycle: 180-days
 ms.date: 04/10/2024
 ms.custom:
   - template-concept
   - sfi-image-nochange
+  - portal
 # Customer intent: As a cloud security administrator, I want to implement boot integrity monitoring on my virtual machines using guest attestation, so that I can ensure the security and validity of the boot sequence to protect against rootkit attacks.
 ---
 

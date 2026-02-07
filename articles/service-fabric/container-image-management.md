@@ -1,7 +1,7 @@
 ---
 title: Azure Service Fabric container image management
 description: How to use container image management in a service fabric cluster.
-ms.topic: concept-article
+ms.topic: how-to
 ms.author: sumeshkadam
 author: sumeshkms
 ms.service: azure-service-fabric
@@ -83,4 +83,5 @@ Starting Service Fabric version 10.0 there's a newer version of the container im
 
 ## Next steps
 See the following article for related information:
+
 * [Service Fabric and containers][containers-introduction-link]

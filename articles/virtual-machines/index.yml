@@ -10,7 +10,7 @@ metadata:
   ms.topic: landing-page
   author: cynthn
   ms.author: cynthn
-  ms.date: 12/13/2021
+  ms.date: 01/22/2026
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | tutorial | video | whats-new
 
 landingContent:
@@ -21,16 +21,16 @@ landingContent:
     linkLists:
       - linkListType: whats-new
         links:
+          - text: Dasv7 size series - general purpose
+            url: /azure/virtual-machines/sizes/general-purpose/dasv7-series
+          - text: Dsv6 size series - general purpose
+            url: /azure/virtual-machines/sizes/general-purpose/dsv6-series
+          - text: Fasv7 size series - compute optimized
+            url: /azure/virtual-machines/sizes/compute-optimized/fasv7-series
           - text: Azure Boost
             url: /azure/azure-boost/overview
           - text: Hibernation
             url: hibernate-resume.md
-          - text: Flexible Virtual Machine Scale Sets Orchestration
-            url: flexible-virtual-machine-scale-sets.md
-          - text: Community Gallery
-            url: share-gallery-community.md
-          - text: Azure VM Applications
-            url: ./vm-applications.md
 
 
   # Card (optional)
@@ -66,8 +66,8 @@ landingContent:
     linkLists:
       - linkListType: learn
         links:
-          - text:  Create a Linux virtual machine in Azure
-            url: /training/modules/create-linux-virtual-machine-in-azure/
+          - text:  Linux in Azure learning path
+            url: /training/paths/azure-linux/
           - text:  Create a Windows virtual machine in Azure
             url: /training/modules/create-windows-virtual-machine-in-azure/         
 
@@ -108,9 +108,9 @@ landingContent:
         links:
           - text: Azure Quickstart templates
             url: https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular
-          - text: Pricing
-            url: https://azure.microsoft.com/pricing/details/#Linux
+          - text: Linux VM pricing
+            url: https://azure.microsoft.com/pricing/details/virtual-machines/linux/
           - text: Regional availability
-            url: https://azure.microsoft.com/regions/services/
+            url: https://azure.microsoft.com/explore/global-infrastructure/products-by-region/
           - text: Virtual machines selector tool
             url: https://aka.ms/vm-selector

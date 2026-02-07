@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+ms.update-cycle: 1095-days
 # Customer intent: "As a cloud architect, I want to define and manage custom metrics for my services in a cloud-based cluster, so that I can optimize resource consumption and improve overall service performance."
 ---
 

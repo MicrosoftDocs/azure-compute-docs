@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 05/17/2023
+ms.update-cycle: 1095-days
 # Customer intent: "As a developer using Azure Service Fabric, I want to implement Reliable Collections best practices, so that I can ensure data consistency and avoid common pitfalls in my application."
 ---
 

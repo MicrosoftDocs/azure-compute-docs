@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
 ms.date: 11/17/2025
+ms.update-cycle: 180-days
 ms.custom: devx-track-azurepowershell, mvc, mode-api
 # Customer intent: "As a developer, I want to quickly deploy a Docker container to Azure Container Instances using PowerShell, so that I can run my containerized web application without the overhead of full container orchestration."
 ---

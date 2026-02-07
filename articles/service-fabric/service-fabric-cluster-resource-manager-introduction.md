@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+ms.update-cycle: 1095-days
 # Customer intent: As a cloud application developer, I want to manage service orchestration in a microservices environment, so that I can optimize resource allocation and maintain application performance without manual intervention during failures or upgrades.
 ---
 

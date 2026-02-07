@@ -5,10 +5,11 @@ author: sandeepraichura
 ms.service: azure-virtual-machines
 ms.subservice: gallery
 ms.topic: how-to
+ms.update-cycle: 180-days
 ms.date: 03/23/2023
 ms.author: saraic
 ms.reviewer: cynthn, mattmcinnes
-ms.custom: template-how-to, devx-track-azurecli
+ms.custom: template-how-to, devx-track-azurecli, portal
 ms.devlang: azurecli
 # Customer intent: As an IT administrator, I want to create a gallery for sharing VM images and application packages, so that I can efficiently distribute resources across my organization and manage them effectively within different regions.
 ---
@@ -57,10 +58,10 @@ Allowed characters for a gallery name are uppercase letters (A-Z), lowercase let
 
 ### [CLI](#tab/cli)
 
-Create a gallery by using [`az sig create`](/cli/azure/sig#az-sig-create). The following example creates a resource group named `myGalleryRG` in East US, and a gallery named `myGallery`:
+Create a gallery by using [`az sig create`](/cli/azure/sig#az-sig-create). The following example creates a resource group named `myGalleryRG` in Central US, and a gallery named `myGallery`:
 
 ```azurecli-interactive
-az group create --name myGalleryRG --location eastus
+az group create --name myGalleryRG --location centralus
 az sig create --resource-group myGalleryRG --gallery-name myGallery
 ```
 
@@ -71,7 +72,7 @@ Create a gallery by using [`New-AzGallery`](/powershell/module/az.compute/new-az
 ```azurepowershell-interactive
 $resourceGroup = New-AzResourceGroup `
    -Name 'myGalleryRG' `
-   -Location 'West Central US'  
+   -Location 'Central US'  
 $gallery = New-AzGallery `
    -GalleryName 'myGallery' `
    -ResourceGroupName $resourceGroup.ResourceGroupName `
@@ -87,7 +88,7 @@ Use the [REST API](/rest/api/resources/resource-groups/create-or-update) to crea
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}?api-version=2021-04-01
 
 {
-  "location": "eastus"
+  "location": "centralus"
 }
 ```
 
@@ -100,7 +101,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
   "properties": {
     "description": "Azure Compute Gallery for my organization"
   },
-  "location": "eastus",
+  "location": "centralus",
 }
 ```
 
@@ -215,7 +216,7 @@ To assign a role to a user, group, service principal, or managed identity, see [
 Use the `--public-name-prefix` value to create a name for the public version of your gallery. The `--public-name-prefix` value is the first part of the public name. The last part is a GUID, created by the platform, that's unique to your gallery.
 
 ```azurecli-interactive
-location=westus
+location=centralus
 galleryName=contosoGallery
 resourceGroup=myCGRG
 publisherUri=https://www.contoso.com
@@ -251,7 +252,7 @@ Specify `permissions` as `Community` and information about your gallery in the r
 
 ```json
 {
-  "location": "West US",
+  "location": "Central US",
   "properties": {
     "description": "This is the gallery description.",
     "sharingProfile": {

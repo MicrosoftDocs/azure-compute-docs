@@ -311,6 +311,9 @@ Update-AzVmss -ResourceGroupName <ResourceGroupName> -VMScaleSetName <VmssName> 
 
 The Azure Key Vault VM extension can be deployed by using the Azure CLI. Save Key Vault VM extension settings to a JSON file (settings.json). 
 
+> [!IMPORTANT]
+> When deploying via Azure CLI, you must specify `--version "3.0"` to ensure compatibility with Windows Server 2019 and to use extension features such as `pollingIntervalInS` and `linkOnRenewal`.
+
 The following JSON snippets provide example settings for deploying the Key Vault VM extension with the Azure CLI.
 
 ```json
@@ -354,19 +357,28 @@ az vm extension set --name "KeyVaultForWindows" `
  --publisher Microsoft.Azure.KeyVault `
  --resource-group "<resourcegroup>" `
  --vm-name "<vmName>" `
- --settings "@settings.json"
+ --settings "@settings.json" `
+ --version "3.0"
 ```
 
 #### Deploy on a Virtual Machine Scale Sets instance
 
-```
+```azurecli
 # Start the deployment
 az vmss extension set --name "KeyVaultForWindows" `
  --publisher Microsoft.Azure.KeyVault `
  --resource-group "<resourcegroup>" `
  --vmss-name "<vmssName>" `
- --settings "@settings.json"
+ --settings "@settings.json" `
+ --version "3.0"
 ```
+
+> [!TIP]
+> If the extension deployment fails, you may need to delete the existing extension before reinstalling with the correct version. Azure doesn't allow extension downgrades, so removing the faulty extension first may be necessary:
+>
+> ```azurecli
+> az vm extension delete --name "KeyVaultForWindows" --resource-group "<resourcegroup>" --vm-name "<vmName>"
+> ```
 
 ## <a name="troubleshoot-and-support"></a> Troubleshoot issues
 

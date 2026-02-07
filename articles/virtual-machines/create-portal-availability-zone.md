@@ -4,10 +4,11 @@ description: Create VMs in an availability zone with the Azure portal
 author: mimckitt
 ms.service: azure-virtual-machines
 ms.topic: how-to
+ms.update-cycle: 180-days
 ms.date: 06/06/2024
 ms.author: mimckitt
 ms.reviewer: cynthn
-ms.custom: references_regions
+ms.custom: references_regions, portal
 # Customer intent: As a cloud architect, I want to create highly resilient virtual machines in an availability zone using the Azure portal, so that I can ensure application and data protection against potential datacenter failures.
 ---
 

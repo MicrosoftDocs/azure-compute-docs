@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+ms.update-cycle: 1095-days
 # Customer intent: "As a cloud application developer, I want to configure my applications for different environments, so that I can ensure they run correctly and efficiently across local, development, and production clusters."
 ---
 
