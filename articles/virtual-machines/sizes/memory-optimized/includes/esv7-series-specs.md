@@ -13,9 +13,9 @@ ms.custom: include file
 ---
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
 |---|---|---|
-| Processor      | 2 - 192 vCPUs     | Intel Xeon 6 processor 6973PC (Granite Rapids) [x86-64] |
+| Processor      | 2 - 372 vCPUs     | Intel Xeon 6 processor 6973PC (Granite Rapids) [x86-64] |
 | Memory         | 16 - 2,832 GiB        |    |
 | Local Storage  | None         |  |
-| Remote Storage | 8 - 64 Disks        | 3,750 - 204,800 IOPS <br>106 - 6,782 MBps |
-| Network        | 2 - 8 NICs        | 12,500 - 54,000 Mbps |
+| Remote Storage | 8 - 64 Disks        | 4,000 - 500,000 IOPS <br>115 - 16,000 MBps |
+| Network        | 2 - 8 NICs        | 16,000 - 400,000 Mbps |
 | Accelerators   | None            |     |
