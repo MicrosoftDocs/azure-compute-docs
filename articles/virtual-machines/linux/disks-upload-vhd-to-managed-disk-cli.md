@@ -54,6 +54,7 @@ Replace `<yourdiskname>`, `<yourresourcegroupname>`, `<yourregion>` with values 
 > If you're creating an OS disk, add `--hyper-v-generation <yourGeneration>` to `az disk create`.
 > 
 > If you're using Microsoft Entra ID to [secure disk uploads](../disks-secure-upload-download.md), add `-dataAccessAuthmode 'AzureActiveDirectory'`.
+>
 > When uploading to an Ultra Disk or Premium SSD v2 you need to select the correct sector size of the target disk. If you're using a VHDX file with a 4k logical sector size, the target disk must be set to 4k. If you're using a VHD file with a 512 logical sector size, the target disk must be set to 512.
 >
 > VHDX files with logical sector size of 512k aren't supported.
