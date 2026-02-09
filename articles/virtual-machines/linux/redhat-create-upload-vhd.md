@@ -973,7 +973,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
 1. Convert the qcow2 image to the VHD format.
 
     > [!NOTE]
-    > There's a known bug in qemu-img versions >=2.2.1 that results in an improperly formatted VHD. The issue has been fixed in QEMU 2.6. We recommend that you use either qemu-img 2.2.0 or lower, or update to 2.6 or higher. For more information, see [this website](https://bugs.launchpad.net/qemu/+bug/1490611).
+    > There's a known bug in QEMU versions between 2.2.1 and 2.6 that results in an improperly formatted VHD. We recommend that you use either qemu-img 2.2.0 or lower, or update to 2.6 or higher. For more information, see [this website](https://bugs.launchpad.net/qemu/+bug/1490611).
     >
 
     First convert the image to raw format:
@@ -1125,7 +1125,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
 1. Shut down the VM and convert the VMDK file to the VHD format.
 
     > [!NOTE]
-    > There's a known bug in qemu-img versions >=2.2.1 that results in an improperly formatted VHD. The issue has been fixed in QEMU 2.6. We recommend that you use either qemu-img 2.2.0 or lower, or update to 2.6 or higher. For more information, see [this website](https://bugs.launchpad.net/qemu/+bug/1490611).
+    > There's a known bug in QEMU versions between 2.2.1 and 2.6 that results in an improperly formatted VHD. We recommend that you use either qemu-img 2.2.0 or lower, or update to 2.6 or higher. For more information, see [this website](https://bugs.launchpad.net/qemu/+bug/1490611).
     >
 
     First convert the image to raw format:
@@ -1636,7 +1636,7 @@ This section shows you how to prepare RHEL 7  from an ISO by using a kickstart f
 
 1. Enter `inst.ks=<the location of the kickstart file>` at the end of the boot options, and select the **Enter** key.
 
-1. Wait for the installation to finish. When it's finished, the VM shuts down automatically. Your Linux VHD is now ready to be uploaded to Azure.
+1. Wait for the installation to finish, then VM shuts down automatically. Your Linux VHD is now ready to be uploaded to Azure.
 
 ## Known issues
 
@@ -1867,7 +1867,7 @@ This section shows you how to prepare RHEL (8 OR 9)  from an ISO by using a kick
 
 1. Enter `inst.ks=<the location of the kickstart file>` at the end of the boot options, and select the **Enter** key.
 
-1. Wait for the installation to finish. When it's finished, the VM shuts down automatically. Your Linux VHD is now ready to be uploaded to Azure.
+1. Wait for the installation to finish, then VM shuts down automatically. Your Linux VHD is now ready to be uploaded to Azure.
 
 ## Known issues
 
@@ -1911,6 +1911,6 @@ For more information, see [Rebuilding initramfs](https://access.redhat.com/solut
 
 ## Related content
 
-* You're now ready to use your RHEL VHD to create new VMs in Azure. If this is the first time that you're uploading the .vhd file to Azure, see [Create a Linux VM from a custom disk](upload-vhd.md#option-1-upload-a-vhd).
+* You're now ready to use your RHEL VHD to create new VMs in Azure. For more information, see [Create a Linux VM from a custom disk](upload-vhd.md#option-1-upload-a-vhd).
 * For more information about the hypervisors that are certified to run RHEL, see the [Red Hat website](https://access.redhat.com/certified-hypervisors).
 * To learn more about using production-ready RHEL BYOS images, go to the documentation page for [Bring your own subscription](../workloads/redhat/byos.md).
