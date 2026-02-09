@@ -24,7 +24,7 @@ In this article, you learn how to prepare a Red Hat Enterprise Linux (RHEL) virt
 For more information about eligibility requirements for participating in Red Hat's Cloud Access program, see [the Red Hat Cloud Access website](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) and [Running RHEL on Azure](https://access.redhat.com/ecosystem/ccsp/microsoft-azure). For ways to automate building RHEL images, see [Azure Image Builder](../image-builder-overview.md).
 
 > [!NOTE]
-> Be aware of versions that are at their end of life (EOL) and are no longer supported by Red Hat. Uploaded images that are at or beyond EOL are supported on a reasonable business-effort basis. For more information, see the Red Hat [Product Life Cycles](https://access.redhat.com/product-life-cycles/?product=Red%20Hat%20Enterprise%20Linux,OpenShift%20Container%20Platform%204).
+> This section assumes you've already deployed RHEL7 and have it full licensed. Uploaded images that are at or beyond EOL are supported on a reasonable business-effort basis. For more information, see the Red Hat [Product Life Cycles](https://access.redhat.com/product-life-cycles/?product=Red%20Hat%20Enterprise%20Linux,OpenShift%20Container%20Platform%204).
 
 ### Prerequisites
 
@@ -34,15 +34,15 @@ This section assumes that you've already obtained an ISO file from the Red Hat w
 
 * Azure doesn't support the VHDX format. Azure supports only *fixed VHD*. You can use Hyper-V Manager to convert the disk to VHD format, or you can use the `convert-vhd` cmdlet. If you use VirtualBox, select **Fixed size** as opposed to the default dynamically allocated option when you create the disk.
 * Azure supports Gen1 (BIOS boot) and Gen2 (UEFI boot) VMs.
-* The maximum size that's allowed for the VHD is 1,023 GB.
+* The maximum allowed size for the VHD is 1,023 GB.
 * The vfat kernel module must be enabled in the kernel.
 * Logical Volume Manager (LVM) is supported and can be used on the OS disk or data disks in Azure VMs. In general, we recommend that you use standard partitions on the OS disk rather than LVM. This practice avoids LVM name conflicts with cloned VMs, particularly if you ever need to attach an operating system disk to another identical VM for troubleshooting. For more information, see the [LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm) and [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid) documentation.
-* *Kernel support for mounting Universal Disk Format (UDF) file systems is required*. At first boot on Azure, the UDF-formatted media that's attached to the guest passes the provisioning configuration to the Linux VM. The Azure Linux agent must be able to mount the UDF file system to read its configuration and provision the VM. Without this step, provisioning fails.
+* *Kernel support for mounting Universal Disk Format (UDF) file systems is required*. At first boot on Azure, the attached UDF-formatted media passes the provisioning configuration to the Linux VM. The Azure Linux agent must be able to mount the UDF file system to read its configuration and provision the VM. Without this step, provisioning fails.
 * Don't configure a swap partition on the operating system disk. For more information, read the following steps.
 * All VHDs on Azure must have a virtual size aligned to 1 MB. When you convert from a raw disk to VHD, you must ensure that the raw disk size is a multiple of 1 MB before conversion. For more information, read the following steps. See also [Linux installation notes](create-upload-generic.md#general-linux-installation-notes).
 
 > [!NOTE]
-> _Cloud-init >= 21.2 removes the UDF requirement_. However, without the UDF module enabled, the CD-ROM won't mount during provisioning, which prevents custom data from being applied. A workaround is to apply custom data by using user data. Unlike custom data, user data isn't encrypted. For more information, see [User data formats](https://cloudinit.readthedocs.io/en/latest/topics/format.html).
+> _Cloud-init >= 21.2 removes the UDF requirement_. However, without the UDF module enabled, the provided CD-ROM fails to mount, preventing custom data from being applied. A workaround is to apply custom data by using user data. Unlike custom data, user data isn't encrypted. For more information, see [User data formats](https://cloudinit.readthedocs.io/en/latest/topics/format.html).
 
 
 
@@ -75,7 +75,7 @@ This section assumes that you've already obtained an ISO file from the Red Hat w
     ```
 
     > [!NOTE]
-    > When you use Accelerated Networking, the synthetic interface that's created must be configured to be unmanaged by using a udev rule. This action prevents `NetworkManager` from assigning the same IP to it as the primary interface. <br>
+    > When you use Accelerated Networking, the provisioned synthetic interface must be configured to be unmanaged by using a udev rule. This action prevents `NetworkManager` from assigning the same IP to it as the primary interface. <br>
     
     To apply it:<br>
     
@@ -108,7 +108,7 @@ This section assumes that you've already obtained an ISO file from the Red Hat w
     GRUB_SERIAL_COMMAND="serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1"
     ```
 
-   This modification also ensures that all console messages are sent to the first serial port and enables interaction with the serial console, which can assist Azure support with debugging issues. This configuration also turns off the new naming conventions for network interface cards (NICs).
+   This modification also ensres that all console messages are sent to the first serial port and enables interaction with the serial console, which can assist Azure support with debugging issues. This configuration also turns off the new naming conventions for network interface cards (NICs).
 
    ```config
    rhgb quiet crashkernel=auto
@@ -131,7 +131,7 @@ This section assumes that you've already obtained an ISO file from the Red Hat w
     ClientAliveInterval 180
     ```
 
-1. The WALinuxAgent package, `WALinuxAgent-<version>`, has been pushed to the Red Hat extras repository. Enable the extras repository:
+1. The WALinuxAgent package, `WALinuxAgent-<version>`, is available from the Extras repository.
 
     ```bash
     sudo subscription-manager repos --enable=rhel-7-server-extras-rpms
@@ -206,7 +206,7 @@ This section assumes that you've already obtained an ISO file from the Red Hat w
 1. Swap configuration:
     - Don't create swap space on the operating system disk.
 
-       Previously, the Azure Linux agent was used to automatically configure swap space by using the local resource disk that's attached to the VM after the VM is provisioned on Azure. This action is now handled by `cloud-init`. You *must not* use the Linux agent to format the resource disk to create the swap file. Modify the following parameters in `/etc/waagent.conf` appropriately:
+       Previously, the Azure Linux agent was used to automatically configure swap space by using the local resource disk that's attached to the VM after the VM is provisioned on Azure. `cloud-init` now handles this action. You *must not* use the Linux agent to format the resource disk to create the swap file. Modify the following parameters in `/etc/waagent.conf` appropriately:
 
         ```config
         ResourceDisk.Format=n
@@ -303,7 +303,7 @@ This section assumes that you've already obtained an ISO file from the Red Hat w
     ```
     
     > [!NOTE]
-    > When you use Accelerated Networking, the synthetic interface that's created must be configured to be unmanaged by using a udev rule. This action prevents `NetworkManager` from assigning the same IP to it as the primary interface. <br>
+    > When you use Accelerated Networking, the provisioned synthetic interface must be configured to be unmanaged by using a udev rule. This action prevents `NetworkManager` from assigning the same IP to it as the primary interface. <br>
     
     To apply it:<br>
     
@@ -554,7 +554,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
     NM_CONTROLLED=yes
     ```
     > [!NOTE]
-    > When you use Accelerated Networking, the synthetic interface that's created must be configured to be unmanaged by using a udev rule. This action prevents `NetworkManager` from assigning the same IP to it as the primary interface. <br>
+    > When you use Accelerated Networking, the provisioned synthetic interface must be configured to be unmanaged by using a udev rule. This action prevents `NetworkManager` from assigning the same IP to it as the primary interface. <br>
     
     To apply it:<br>
     
@@ -720,7 +720,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
     ```
     
     > [!NOTE]
-    > When you use Accelerated Networking, the synthetic interface that's created must be configured to be unmanaged by using a udev rule. This action prevents `NetworkManager` from assigning the same IP to it as the primary interface. <br>
+    > When you use Accelerated Networking, the provisioned synthetic interface must be configured to be unmanaged by using a udev rule. This action prevents `NetworkManager` from assigning the same IP to it as the primary interface. <br>
     
     To apply it:<br>
     
@@ -1028,7 +1028,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
     NM_CONTROLLED=yes
     ```
     > [!NOTE]
-    > When you use Accelerated Networking, the synthetic interface that's created must be configured to be unmanaged by using a udev rule. This action prevents `NetworkManager` from assigning the same IP to it as the primary interface. <br>
+    > When you use Accelerated Networking, the provisioned synthetic interface must be configured to be unmanaged by using a udev rule. This action prevents `NetworkManager` from assigning the same IP to it as the primary interface. <br>
     
     To apply it:<br>
     
@@ -1171,7 +1171,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
     ```
     
     > [!NOTE]
-    > When you use Accelerated Networking, the synthetic interface that's created must be configured to be unmanaged by using a udev rule. This action prevents `NetworkManager` from assigning the same IP to it as the primary interface. <br>
+    > When you use Accelerated Networking, the provisioned synthetic interface must be configured to be unmanaged by using a udev rule. This action prevents `NetworkManager` from assigning the same IP to it as the primary interface. <br>
     
     To apply it:<br>
     
