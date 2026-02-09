@@ -65,14 +65,14 @@ Local (temp) storage info for each size
 
 | Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB)<sup>1</sup> | Temp Disk Random Read (RR)<sup>2</sup> IOPS<sup>3</sup> | Temp Disk Random Read (RR)<sup>2</sup> Throughput (MB/s)<sup>3</sup> | Temp Disk Random Write (RW)<sup>2</sup> IOPS<sup>3</sup> | Temp Disk Random Write (RW)<sup>2</sup> Throughput (MB/s)<sup>3</sup> |
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_D2pds_v6 | 1 | 110 | 15000 | 90 | 37500 | 180 |
-| Standard_D4pds_v6 | 1 | 220 | 30000 | 180 | 75000 | 360 |
-| Standard_D8pds_v6 | 1 | 440 | 60000 | 360 | 150000 | 720 |
-| Standard_D16pds_v6 | 2 | 440 | 120000 | 720 | 300000 | 1440 |
-| Standard_D32pds_v6 | 4 | 440 | 240000 | 1440 | 600000 | 2880 |
-| Standard_D48pds_v6 | 6 | 440 | 360000 | 2160 | 900000 | 4320 |
-| Standard_D64pds_v6 | 4 | 880 | 480000 | 2880 | 1200000 | 5760 |
-| Standard_D96pds_v6 | 6 | 880 | 720000 | 4320 | 1800000 | 8640 |
+| Standard_D2pds_v6  | 1 | 110 | 37500  | 90   | 15000  | 180 |
+| Standard_D4pds_v6  | 1 | 220 | 75000  | 180  | 30000  | 360 |
+| Standard_D8pds_v6  | 1 | 440 | 150000 | 360  | 60000  | 720 |
+| Standard_D16pds_v6 | 2 | 440 | 300000 | 720  | 120000 | 1440 |
+| Standard_D32pds_v6 | 4 | 440 | 600000 | 1440 | 240000 | 2880 |
+| Standard_D48pds_v6 | 6 | 440 | 900000 | 2160 | 360000 | 4320 |
+| Standard_D64pds_v6 | 4 | 880 | 1200000 | 2880 | 480000 | 5760 |
+| Standard_D96pds_v6 | 6 | 880 | 1800000 | 4320 | 720000 | 8640 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
