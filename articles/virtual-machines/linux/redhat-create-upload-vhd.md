@@ -108,7 +108,7 @@ For more information about eligibility requirements for participating in Red Hat
     GRUB_SERIAL_COMMAND="serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1"
     ```
 
-   This modification also ensres that all console messages are sent to the first serial port and enables interaction with the serial console, which can assist Azure support with debugging issues. This configuration also turns off the new naming conventions for network interface cards (NICs).
+   These modifications turn off the new naming convention for NICs, ensure all console messages are sent to the first serial port and enable interaction with the console, which can assist Aure support with debugging issues. 
 
    ```config
    rhgb quiet crashkernel=auto
@@ -338,7 +338,7 @@ For more information about eligibility requirements for participating in Red Hat
     GRUB_SERIAL_COMMAND="serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1"
     ```
 
-   This modification also ensures that all console messages are ent to the first serial port and enable interaction with the serial console, which can assist Azure support with debugging issues. This configuration also turns off the new naming conventions for NICs.
+   These modifications turn off the new naming convention for NICs, ensure all console messages are sent to the first serial port and enable interaction with the console, which can assist Aure support with debugging issues. 
 
    > [!NOTE]
    > If [ENABLE_BLSCFG=false](https://access.redhat.com/solutions/6929571) is present in `/etc/default/grub` instead of `ENABLE_BLSCFG=true`, tools such as *grubedit* or *gubby*, which rely on the Boot Loader Specification (BLS) for managing boot entries and configurations, might not function correctly in RHEL 8 and 9. If `ENABLE_BLSCFG` isn't present, the default behavior is `false`.
@@ -766,7 +766,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
     ENABLE_BLSCFG=true
     ```
 
-   This modification also ensures that all console messages are sent to the first serial port and enable interaction with the serial console, which can assist Azure support with debugging issues. This configuration also turns off the new naming conventions for NICs.
+   These modifications turn off the new naming convention for NICs, ensure all console messages are sent to the first serial port and enable interaction with the console, which can assist Aure support with debugging issues. 
 
    > [!NOTE]
    > If [ENABLE_BLSCFG=false](https://access.redhat.com/solutions/6929571) is present in `/etc/default/grub` instead of `ENABLE_BLSCFG=true`, tools such as *grubedit* or *gubby*, which rely on the Boot Loader Specification (BLS) for managing boot entries and configurations, might not function correctly in RHEL 8,9 and 10. If `ENABLE_BLSCFG` isn't present, the default behavior is `false`.
@@ -1215,7 +1215,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
     GRUB_SERIAL_COMMAND="serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1"
     ```
 
-   This modification also ensures that all console messages are sent to the first serial port and enable interaction with the serial console, which can assist Azure support with debugging issues. This configuration also turns off the new naming conventions for NICs.
+   These modifications turn off the new naming convention for NICs, ensure all console messages are sent to the first serial port and enable interaction with the console, which can assist Aure support with debugging issues. 
 
 1. We recommend that you also remove the following parameters:
 
