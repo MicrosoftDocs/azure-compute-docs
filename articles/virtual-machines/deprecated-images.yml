@@ -106,7 +106,11 @@ sections:
 
       - question: How do I find VMs using deprecated images?
         answer: |
-          **Option 1: Use Azure Resource Graph**
+          **Option 1: Use automated script (recommended)**
+          
+          Run [Get-AzVMImageDeprecationStatus.ps1](https://github.com/Azure/azure-support-scripts/tree/master/VMImages#readme) to list all VMs in a subscription that were created from deprecated or soon-to-be-deprecated images.
+
+          **Option 2: Use Azure Resource Graph**
 
           Run the following query in [Azure Resource Graph](/azure/governance/resource-graph/overview) to list all VMs and their image details:
           
@@ -119,7 +123,7 @@ sections:
           | project name, subscriptionId, resourceGroup, ImagePublisher=properties.storageProfile.imageReference.publisher, ImageOffer=properties.storageProfile.imageReference.offer, imageSku=properties.storageProfile.imageReference.sku, imageVersion=properties.storageProfile.imageReference.exactVersion
           ```
 
-          **Option 2: Use Azure CLI**
+          **Option 3: Use Azure CLI**
 
           To list all VMs using a specific SKU (replace `2016-Datacenter` with your deprecated SKU):
           
@@ -133,7 +137,7 @@ sections:
           az vm list --query "[?storageProfile.imageReference.version=='14393.4402.2105052108'].{VM:id, imageOffer:storageProfile.imageReference.offer, imagePublisher:StorageProfile.imageReference.publisher, imageSku: storageProfile.imageReference.sku, imageVersion:storageProfile.imageReference.version}"
           ```
 
-          **Option 3: Use PowerShell**
+          **Option 4: Use PowerShell**
 
           To list all VMs using a specific SKU (replace `2016-Datacenter` with your deprecated SKU):
           
@@ -147,13 +151,13 @@ sections:
           Get-AzVM | Where-Object {$_.StorageProfile.ImageReference.ExactVersion -eq '14393.4402.2105052108'} | Select-Object -Property ResourceGroupName, Name, @{label='imageOffer'; expression={$_.StorageProfile.ImageReference.Offer}}, @{label='imagePublisher'; expression={$_.StorageProfile.ImageReference.Publisher}}, @{label='imageSKU'; expression={$_.StorageProfile.ImageReference.Sku}}, @{label='imageVersion'; expression={$_.StorageProfile.ImageReference.ExactVersion}}
           ```
 
-          **Option 4: Use automated script**
-          
-          Run [Get-AzVMImageDeprecationStatus.ps1](https://github.com/Azure/azure-support-scripts/tree/master/VMImages#readme) to list all VMs in a subscription that were created from deprecated or soon-to-be-deprecated images.
-
       - question: How do I find virtual machine scale sets using deprecated images?
         answer: |
-          **Option 1: Use Azure Resource Graph**
+          **Option 1: Use automated script (recommended)**
+          
+          Run [Get-AzVMImageDeprecationStatus.ps1](https://github.com/Azure/azure-support-scripts/tree/master/VMImages#readme) to list all virtual machine scale sets in a subscription that were created from deprecated or soon-to-be-deprecated images.
+
+          **Option 2: Use Azure Resource Graph**
 
           Run the following query in [Azure Resource Graph](/azure/governance/resource-graph/overview) to list all virtual machine scale sets and their image details:
           
@@ -167,7 +171,7 @@ sections:
           | project name, subscriptionId, resourceGroup, ImagePublisher=properties.virtualMachineProfile.storageProfile.imageReference.publisher, ImageOffer=properties.virtualMachineProfile.storageProfile.imageReference.offer, imageSku=properties.virtualMachineProfile.storageProfile.imageReference.sku, imageVersion=properties.virtualMachineProfile.storageProfile.imageReference.version
           ```
 
-          **Option 2: Use Azure CLI**
+          **Option 3: Use Azure CLI**
 
           To list all virtual machine scale sets using a specific SKU (replace `2016-Datacenter` with your deprecated SKU):
           
@@ -181,7 +185,7 @@ sections:
           az vmss list --query "[?virtualMachineProfile.storageProfile.imageReference.version=='14393.4402.2105052108'].{VMSS:id, imageOffer:virtualMachineProfile.storageProfile.imageReference.offer, imagePublisher:virtualMachineProfile.storageProfile.imageReference.publisher, imageSku:virtualMachineProfile.storageProfile.imageReference.sku, imageVersion:virtualMachineProfile.storageProfile.imageReference.version}"
           ```
 
-          **Option 3: Use PowerShell**
+          **Option 4: Use PowerShell**
 
           To find virtual machine scale sets using a specific SKU (replace `2016-Datacenter` with your deprecated SKU):
           
@@ -196,10 +200,6 @@ sections:
           $vmsslist = Get-AzVmss
           $vmsslist | Where-Object {$_.virtualMachineProfile.storageProfile.imageReference.Version -eq '14393.4402.2105052108'} | Select-Object -Property ResourceGroupName, Name, @{label='imageOffer'; expression={$_.virtualMachineProfile.storageProfile.imageReference.Offer}}, @{label='imagePublisher'; expression={$_.virtualMachineProfile.storageProfile.imageReference.Publisher}}, @{label='imageSKU'; expression={$_.virtualMachineProfile.storageProfile.imageReference.Sku}}, @{label='imageVersion'; expression={$_.virtualMachineProfile.storageProfile.imageReference.Version}}
           ```
-
-          **Option 4: Use automated script**
-          
-          Run [Get-AzVMImageDeprecationStatus.ps1](https://github.com/Azure/azure-support-scripts/tree/master/VMImages#readme) to list all virtual machine scale sets in a subscription that were created from deprecated or soon-to-be-deprecated images.
 
       - question: When should I migrate my VMs or virtual machine scale sets to a different image?
         answer: |
@@ -232,7 +232,7 @@ sections:
           > [!IMPORTANT]
           > For deprecated paid Marketplace images, you can't create new VMs or perform backup restore operations after deprecation because of missing plan information. Migrate before the enforcement date.
 
-          ## Part 1: Create a new VM
+          ### Part 1: Create a new VM
 
           1. **Identify the replacement image**: Check your deprecation email for the recommended replacement. For more information, see [Find and use images using the Azure CLI](./linux/cli-ps-findimage.md) or  [Find and use images using Azure PowerShell](./windows/cli-ps-findimage.md).
 
@@ -240,7 +240,7 @@ sections:
 
           1. **Deploy and test**: Confirm the VM starts correctly and your application dependencies are present.
 
-          ## Part 2: Migrate data
+          ### Part 2: Migrate data
 
           **Method A: Detach and attach data disks (recommended)**
 
@@ -269,7 +269,7 @@ sections:
           - **Linux**: rsync, scp, or sftp
           - **Cross-OS**: [AzCopy](/azure/storage/common/storage-use-azcopy-v10) with Azure Storage as an intermediate location
 
-          ## Part 3: Switch over
+          ### Part 3: Switch over
 
           1. **Validate**: Verify network connectivity, application functionality, firewall rules, and extensions.
           1. **Update references**: Point DNS names, load balancers, or API endpoints to the new VM.
@@ -279,7 +279,7 @@ sections:
         answer: |
           The migration approach depends on whether an image version, plan/SKU, or entire offer is deprecated.
 
-          ## Version deprecation
+          ### Version deprecation
 
           If only a specific image version is deprecated:
 
@@ -292,7 +292,7 @@ sections:
           > [!TIP]
           > Enable [automatic OS image upgrade](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) to avoid manual intervention for future version deprecations.
 
-          ## Plan/SKU deprecation
+          ### Plan/SKU deprecation
 
           If an entire plan or SKU is deprecated, update to a different SKU from the same offer using a scale-out/scale-in approach:
 
@@ -311,7 +311,7 @@ sections:
           > [!IMPORTANT]
           > Upgrading or reimaging existing instances replaces their OS disks. Use scale-out/scale-in to avoid data loss on OS disks.
 
-          ## Offer deprecation
+          ### Offer deprecation
 
           If an entire offer is deprecated, create a new virtual machine scale set with a supported image:
 
