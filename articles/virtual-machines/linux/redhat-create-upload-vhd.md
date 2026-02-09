@@ -24,11 +24,11 @@ In this article, you learn how to prepare a Red Hat Enterprise Linux (RHEL) virt
 For more information about eligibility requirements for participating in Red Hat's Cloud Access program, see [the Red Hat Cloud Access website](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) and [Running RHEL on Azure](https://access.redhat.com/ecosystem/ccsp/microsoft-azure). For ways to automate building RHEL images, see [Azure Image Builder](../image-builder-overview.md).
 
 > [!NOTE]
-> This section assumes you've already deployed RHEL7 and have it full licensed. Uploaded images that are at or beyond EOL are supported on a reasonable business-effort basis. For more information, see the Red Hat [Product Life Cycles](https://access.redhat.com/product-life-cycles/?product=Red%20Hat%20Enterprise%20Linux,OpenShift%20Container%20Platform%204).
+> This section assumes you already deployed RHEL7 and have it full licensed. Uploaded images that are at or beyond EOL are supported on a reasonable business-effort basis. For more information, see the Red Hat [Product Life Cycles](https://access.redhat.com/product-life-cycles/?product=Red%20Hat%20Enterprise%20Linux,OpenShift%20Container%20Platform%204).
 
 ### Prerequisites
+> This section assumes you already deployed RHEL7 and have it full licensed. Uploaded images that are at or beyond EOL are supported on a reasonable business-effort basis. For more information, see the Red Hat [Product Life Cycles](https://access.redhat.com/product-life-cycles/?product=Red%20Hat%20Enterprise%20Linux,OpenShift%20Container%20Platform%204).
 
-This section assumes that you've already obtained an ISO file from the Red Hat website and installed the RHEL image to a virtual hard disk (VHD). For more information about how to use Hyper-V Manager to install an operating system image, see [Install the Hyper-V role and configure a virtual machine](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11)).
 
 ### RHEL installation notes
 
@@ -206,7 +206,7 @@ This section assumes that you've already obtained an ISO file from the Red Hat w
 1. Swap configuration:
     - Don't create swap space on the operating system disk.
 
-       Previously, the Azure Linux agent was used to automatically configure swap space by using the local resource disk that's attached to the VM after the VM is provisioned on Azure. `cloud-init` now handles this action. You *must not* use the Linux agent to format the resource disk to create the swap file. Modify the following parameters in `/etc/waagent.conf` appropriately:
+       Previously, the Azure Linux agent was used to automatically configure swap space using the local resource disk attached to the VM after the VM is provisioned on Azure, This action is now handled by `cloud-init`. You *must not* use the Linux agent to format the resource disk to create the swap file. Modify the following parameters in `/etc/waagent.conf` appropriately:
 
         ```config
         ResourceDisk.Format=n
@@ -338,7 +338,7 @@ This section assumes that you've already obtained an ISO file from the Red Hat w
     GRUB_SERIAL_COMMAND="serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1"
     ```
 
-   This modification also ensures that all console messages are sent to the first serial port and enable interaction with the serial console, which can assist Azure support with debugging issues. This configuration also turns off the new naming conventions for NICs.
+   This modification also ensures that all console messages are ent to the first serial port and enable interaction with the serial console, which can assist Azure support with debugging issues. This configuration also turns off the new naming conventions for NICs.
 
    > [!NOTE]
    > If [ENABLE_BLSCFG=false](https://access.redhat.com/solutions/6929571) is present in `/etc/default/grub` instead of `ENABLE_BLSCFG=true`, tools such as *grubedit* or *gubby*, which rely on the Boot Loader Specification (BLS) for managing boot entries and configurations, might not function correctly in RHEL 8 and 9. If `ENABLE_BLSCFG` isn't present, the default behavior is `false`.
@@ -437,7 +437,7 @@ This section assumes that you've already obtained an ISO file from the Red Hat w
 1. Swap configuration:
     - Don't create swap space on the operating system disk.
 
-       Previously, the Azure Linux agent was used to automatically configure swap space by using the local resource disk that's attached to the VM after the VM is provisioned on Azure. This action is now handled by `cloud-init`. You *must not* use the Linux agent to format the resource disk create the swap file. Modify the following parameters in `/etc/waagent.conf` appropriately:
+       Previously, the Azure Linux agent was used to automatically configure swap space using the local resource disk attached to the VM after the VM is provisioned on Azure, This action is now hadled by `cloud-init`. You *must not* use the Linux agent to format the resource disk to create the swap file. Modify the following parameters in `/etc/waagent.conf` appropriately:
 
        ```bash
        ResourceDisk.Format=n
@@ -634,7 +634,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
     ClientAliveInterval 180
     ```
 
-1. The WALinuxAgent package, `WALinuxAgent-<version>`, has been pushed to the Red Hat extras repository. Enable the extras repository:
+1. The WALinuxAgent package, `WALinuxAgent-<version>`, is located in the Red Hat extras repository. Enable the extras repository:
 
     ```bash
     sudo subscription-manager repos --enable=rhel-7-server-extras-rpms
@@ -896,7 +896,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
 1. Swap configuration:
     - Don't create swap space on the operating system disk.
 
-       Previously, the Azure Linux agent was used to automatically configure swap space by using the local resource disk that's attached to the VM after the VM is provisioned on Azure. This action is now handled by `cloud-init`. You *must not* use the Linux agent to format the resource disk create the swap file. Modify the following parameters in `/etc/waagent.conf` appropriately:
+       Previously, the Azure Linux agent was used to automatically configure swap space using the local resource disk attached to the VM after the VM is provisioned on Azure, This action is now handled by `cloud-init`. You *must not* use the Linux agent to format the resource disk to create the swap file. Modify the following parameters in `/etc/waagent.conf` appropriately:
 
        ```bash
        ResourceDisk.Format=n
@@ -1092,7 +1092,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
     ClientAliveInterval 180
     ```
 
-1. The WALinuxAgent package, `WALinuxAgent-<version>`, has been pushed to the Red Hat extras repository. Enable the extras repository:
+1. The WALinuxAgent package, `WALinuxAgent-<version>`, is not located in the Red Hat extras repository. Enable the extras repository:
 
     ```bash
     sudo subscription-manager repos --enable=rhel-7-server-extras-rpms
