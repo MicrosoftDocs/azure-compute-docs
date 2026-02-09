@@ -4,7 +4,7 @@ description: Learn how to secure managed disk downloads and uploads with Microso
 author: roygara
 ms.service: azure-disk-storage
 ms.topic: how-to
-ms.date: 01/07/2026
+ms.date: 02/09/2026
 ms.author: rogarana
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 # Customer intent: As a cloud engineer, I want to secure managed disk downloads and uploads with Microsoft Entra ID and RBAC roles, so that I can control who has access to import or export disk data and protect my data from unauthorized access.
