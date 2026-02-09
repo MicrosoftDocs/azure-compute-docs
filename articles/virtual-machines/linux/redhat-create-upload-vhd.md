@@ -102,14 +102,11 @@ This section assumes that you've already obtained an ISO file from the Red Hat w
 1. Modify the kernel boot line in your grub configuration to include more kernel parameters for Azure. To do this modification, open `/etc/default/grub` in a text editor and edit the `GRUB_CMDLINE_LINUX` parameter. For example:
 
     ```config-grub
-    GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0 net.ifnames=0"
-    GRUB_TERMINAL_OUTPUT="serial console"
+    GRUB_TIMEOUT=10
+    GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0 net.ifnames=0 nvme_core.io_timeout=240"
+    GRUB_TERMINAL="serial console"
     GRUB_SERIAL_COMMAND="serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1"
-    ENABLE_BLSCFG=true
     ```
-
-   > [!NOTE]
-   > If [ENABLE_BLSCFG=false](https://access.redhat.com/solutions/6929571) is present in `/etc/default/grub` instead of `ENABLE_BLSCFG=true`, tools such as *grubedit* or *gubby*, which rely on the Boot Loader Specification (BLS) for managing boot entries and configurations, might not function correctly in RHEL 8 and 9. If `ENABLE_BLSCFG` isn't present, the default behavior is `false`.
 
    This modification also ensures that all console messages are sent to the first serial port and enables interaction with the serial console, which can assist Azure support with debugging issues. This configuration also turns off the new naming conventions for network interface cards (NICs).
 
@@ -278,7 +275,7 @@ This section assumes that you've already obtained an ISO file from the Red Hat w
 
 
 
-#### [RHEL 8+/9+ using Hyper-V Manager](#tab/rhel89hv)
+#### [RHEL 8+/9+/10+ using Hyper-V Manager](#tab/rhel89hv)
 
 1. In Hyper-V Manager, select the VM.
 
@@ -288,6 +285,15 @@ This section assumes that you've already obtained an ISO file from the Red Hat w
 
     ```bash
     sudo systemctl enable NetworkManager.service
+    ```
+
+1. Prevent NetworkManager from configuring the adapter added for accelerated networking.
+
+    ```bash
+    sudo tee <<EOF /etc/NetworkManager/conf.d/99-azure-unmanaged-devices.conf > /dev/null
+    [keyfile]
+    unmanaged-devices=driver:mlx4_core,driver:mlx5_core
+    EOF
     ```
 
 1. Configure the network interface to automatically start at boot and use the Dynamic Host Configuration Protocol:
@@ -326,12 +332,17 @@ This section assumes that you've already obtained an ISO file from the Red Hat w
 1. Edit `/etc/default/grub` in a text editor, and add the following parameters:
 
     ```config-grub
-    GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 earlyprintk=ttyS0 net.ifnames=0"
-    GRUB_TERMINAL_OUTPUT="serial console"
+    GRUB_TIMEOUT=10
+    GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 earlyprintk=ttyS0 net.ifnames=0 nvme_core.io_timeout=240"
+    GRUB_TERMINAL="serial console"
     GRUB_SERIAL_COMMAND="serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1"
     ```
 
    This modification also ensures that all console messages are sent to the first serial port and enable interaction with the serial console, which can assist Azure support with debugging issues. This configuration also turns off the new naming conventions for NICs.
+
+   > [!NOTE]
+   > If [ENABLE_BLSCFG=false](https://access.redhat.com/solutions/6929571) is present in `/etc/default/grub` instead of `ENABLE_BLSCFG=true`, tools such as *grubedit* or *gubby*, which rely on the Boot Loader Specification (BLS) for managing boot entries and configurations, might not function correctly in RHEL 8 and 9. If `ENABLE_BLSCFG` isn't present, the default behavior is `false`.
+
 
 1. We recommend that you also remove the following parameters:
 
@@ -345,14 +356,9 @@ This section assumes that you've already obtained an ISO file from the Red Hat w
 
     ```bash
     sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+    sudo grubby --update-kernel=ALL
     ```
     
-    For a UEFI-enabled VM, run the following command:
-
-    ```bash
-    sudo grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg
-    ```
-
 1. Ensure that the SSH server is installed and configured to start at boot time, which is usually the default. Modify `/etc/ssh/sshd_config` to include the following line:
 
     ```config
@@ -381,6 +387,9 @@ This section assumes that you've already obtained an ISO file from the Red Hat w
         > If you're migrating a specific VM and don't want to create a generalized image, set `Provisioning.Agent=disabled` on the `/etc/waagent.conf` configuration.
 
     1. Configure mounts:
+
+        > [!NOTE]
+        > Not required for cloud-init v23.x and newer.
 
         ```bash
         sudo echo "Adding mounts and disk_setup to init stage"
@@ -572,7 +581,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
 1. Modify the kernel boot line in your grub configuration to include more kernel parameters for Azure. To do this configuration, open `/etc/default/grub` in a text editor and edit the `GRUB_CMDLINE_LINUX` parameter. For example:
 
     ```config-grub
-    GRUB_CMDLINE_LINUX="console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
+    GRUB_CMDLINE_LINUX="console=ttyS0 earlyprintk=ttyS0 net.ifnames=0 nvme_core.io_timeout=240"
     ```
 
    This command also ensures that all console messages are sent to the first serial port, which can assist Azure support with debugging issues. The command also turns off the new  naming conventions for NICs. We also recommend that you remove the following parameters:
@@ -588,6 +597,9 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
     ```bash
     sudo grub2-mkconfig -o /boot/grub2/grub.cfg
     ```
+
+    > [!NOTE]
+    > If you're uploading a UEFI-enabled VM, the command to update grub is `grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg`.
 
 1. Add Hyper-V modules into initramfs.
 
@@ -693,7 +705,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
     sudo qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-7.4.raw rhel-7.4.vhd
     ```
 
-#### [RHEL 8+/9+ using using KVM](#tab/rhel89KVM)
+#### [RHEL 8+/9+/10+ using using KVM](#tab/rhel89KVM)
 
 1. Ensure that the Network Manager service starts at boot time:
 
@@ -720,6 +732,16 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
     SUBSYSTEM=="net", DRIVERS=="hv_pci", ACTION!="remove", ENV{NM_UNMANAGED}="1"
     EOF
     ```
+
+1. Prevent NetworkManager from configuring the adapter added for accelerated networking.
+    
+    ```bash
+    sudo tee <<EOF /etc/NetworkManager/conf.d/99-azure-unmanaged-devices.conf > /dev/null
+    [keyfile]
+    unmanaged-devices=driver:mlx4_core,driver:mlx5_core
+    EOF
+    ```
+
 1. Register your Red Hat subscription to enable the installation of packages from the RHEL repository:
 
     ```bash
@@ -737,12 +759,18 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
 1. Edit `/etc/default/grub` in a text editor, and add the following parameters:
 
     ```config-grub
-    GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 earlyprintk=ttyS0 net.ifnames=0"
-    GRUB_TERMINAL_OUTPUT="serial console"
+    GRUB_TIMEOUT=10
+    GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 earlyprintk=ttyS0 net.ifnames=0 nvme_core.io_timeout=240"
+    GRUB_TERMINAL="serial console"
     GRUB_SERIAL_COMMAND="serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1"
+    ENABLE_BLSCFG=true
     ```
 
    This modification also ensures that all console messages are sent to the first serial port and enable interaction with the serial console, which can assist Azure support with debugging issues. This configuration also turns off the new naming conventions for NICs.
+
+   > [!NOTE]
+   > If [ENABLE_BLSCFG=false](https://access.redhat.com/solutions/6929571) is present in `/etc/default/grub` instead of `ENABLE_BLSCFG=true`, tools such as *grubedit* or *gubby*, which rely on the Boot Loader Specification (BLS) for managing boot entries and configurations, might not function correctly in RHEL 8,9 and 10. If `ENABLE_BLSCFG` isn't present, the default behavior is `false`.
+
 
 1. We recommend that you also remove the following parameters:
 
@@ -756,6 +784,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
 
     ```bash
     sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+    sudo grubby --update-kernel=ALL
     ```
 
 1. Add Hyper-V modules into initramfs.
@@ -1026,7 +1055,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
 1. Modify the kernel boot line in your grub configuration to include more kernel parameters for Azure. To do this modification, open `/etc/default/grub` in a text editor and edit the `GRUB_CMDLINE_LINUX` parameter. For example:
 
     ```config-grub
-    GRUB_CMDLINE_LINUX="console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
+    GRUB_CMDLINE_LINUX="console=ttyS0 earlyprintk=ttyS0 net.ifnames=0 nvme_core.io_timeout=240"
     ```
 
    This configuration ensures that all console messages are sent to the first serial port, which can assist Azure support with debugging issues. It also turns off the new RHEL 7 naming conventions for NICs. In addition, we recommend that you remove the following parameters:
@@ -1127,7 +1156,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
     sudo qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-[version].raw rhel-[version].vhd
 
 
-#### [RHEL 8+/9+ using VMware ](#tab/rhel89VMware)
+#### [RHEL 8+/9+/10+ using VMware ](#tab/rhel89VMware)
 
 1. Ensure that the Network Manager service starts at boot time:
 
@@ -1154,6 +1183,15 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
     SUBSYSTEM=="net", DRIVERS=="hv_pci", ACTION!="remove", ENV{NM_UNMANAGED}="1"
     EOF
     ```
+1. Prevent NetworkManager from configuring the adapter added for accelerated networking.
+    
+    ```bash
+    sudo tee <<EOF /etc/NetworkManager/conf.d/99-azure-unmanaged-devices.conf > /dev/null
+    [keyfile]
+    unmanaged-devices=driver:mlx4_core,driver:mlx5_core
+    EOF
+    ```
+
 1. Register your Red Hat subscription to enable the installation of packages from the RHEL repository:
 
     ```bash
@@ -1171,7 +1209,8 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
 1. Edit `/etc/default/grub` in a text editor, and add the following parameters:
 
     ```config-grub
-    GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 earlyprintk=ttyS0 net.ifnames=0"
+    GRUB_TIMEOUT=10
+    GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 earlyprintk=ttyS0 net.ifnames=0 nvme_core.io_timeout=240"
     GRUB_TERMINAL_OUTPUT="serial console"
     GRUB_SERIAL_COMMAND="serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1"
     ```
@@ -1234,6 +1273,9 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
         > If you're migrating a specific VM and don't want to create a generalized image, set `Provisioning.Agent=disabled` on the `/etc/waagent.conf` configuration.
 
     1. Configure mounts:
+
+        > [!NOTE]
+        > Not required for cloud-init v23.x and newer.
 
         ```bash
         sudo echo "Adding mounts and disk_setup to init stage"
@@ -1537,7 +1579,7 @@ This section shows you how to prepare RHEL 7  from an ISO by using a kickstart f
     EOF
 
     # Set the cmdline
-    sed -i 's/^\(GRUB_CMDLINE_LINUX\)=".*"$/\1="console=tty1 console=ttyS0 earlyprintk=ttyS0"/g' /etc/default/grub
+    sed -i 's/^\(GRUB_CMDLINE_LINUX\)=".*"$/\1="console=tty1 console=ttyS0 earlyprintk=ttyS0 nvme_core.io_timeout=240"/g' /etc/default/grub
 
     # Enable SSH keepalive
     sed -i 's/^#\(ClientAliveInterval\).*$/\1 180/g' /etc/ssh/sshd_config
@@ -1621,7 +1663,7 @@ sudo dracut -f -v
 ```
 
    
-#### [RHEL 8+/9+ using Kickstart](#tab/rhel89Kickstart)
+#### [RHEL 8+/9+/10+ using Kickstart](#tab/rhel89Kickstart)
 
 This section shows you how to prepare RHEL (8 OR 9)  from an ISO by using a kickstart file.
 
@@ -1763,7 +1805,7 @@ This section shows you how to prepare RHEL (8 OR 9)  from an ISO by using a kick
    EOF
    
     # Set the cmdline
-    sed -i 's/^\(GRUB_CMDLINE_LINUX\)=".*"$/\1="console=tty1 console=ttyS0 earlyprintk=ttyS0"/g' /etc/default/grub
+    sed -i 's/^\(GRUB_CMDLINE_LINUX\)=".*"$/\1="console=tty1 console=ttyS0 earlyprintk=ttyS0 nvme_core.io_timeout=240"/g' /etc/default/grub
 
     # Enable SSH keepalive
     sed -i 's/^#\(ClientAliveInterval\).*$/\1 180/g' /etc/ssh/sshd_config
@@ -1789,6 +1831,11 @@ This section shows you how to prepare RHEL (8 OR 9)  from an ISO by using a kick
     # This interface is transparently bonded to the synthetic interface,
     # so NetworkManager should just ignore any SRIOV interfaces.
     SUBSYSTEM=="net", DRIVERS=="hv_pci", ACTION!="remove", ENV{NM_UNMANAGED}="1"
+    EOF
+
+    sudo tee <<EOF /etc/NetworkManager/conf.d/99-azure-unmanaged-devices.conf > /dev/null
+    [keyfile]
+    unmanaged-devices=driver:mlx4_core,driver:mlx5_core
     EOF
 
     # Deprovision and prepare for Azure if you are creating a generalized image
