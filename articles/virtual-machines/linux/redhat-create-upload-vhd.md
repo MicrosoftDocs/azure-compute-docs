@@ -206,7 +206,7 @@ For more information about eligibility requirements for participating in Red Hat
 1. Swap configuration:
     - Don't create swap space on the operating system disk.
 
-       Previously, the Azure Linux agent was used to automatically configure swap space on the local resource disk attached to the VM after the VM is provisioned on Azure, This action is now handled by `cloud-init`. You *must not* use the Linux agent to format the resource disk to create the swap file. Modify the following parameters in `/etc/waagent.conf` appropriately:
+       Previously, the Azure Linux agent was used to automatically configure swap space on the local resource disk attached to the VM after the VM is provisioned on Azure, This action is handled by `cloud-init`. You *must not* use the Linux agent to format the resource disk to create the swap file. Modify the following parameters in `/etc/waagent.conf` appropriately:
 
         ```config
         ResourceDisk.Format=n
