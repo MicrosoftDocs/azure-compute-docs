@@ -688,7 +688,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
     ```bash
     MB=$((1024*1024))
     size=$(qemu-img info -f raw --output json "rhel-7.4.raw" | \
-    gawk 'match($0, /"virtual-size": ([0-9]+),/, val) {print val[1]}')
+           jq '."virtual-size"')
     rounded_size=$((($size/$MB + 1)*$MB))
     sudo qemu-img resize rhel-7.4.raw $rounded_size
     ```
@@ -987,7 +987,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
     ```bash
     MB=$((1024*1024))
     size=$(qemu-img info -f raw --output json "rhel-[version].raw" | \
-    gawk 'match($0, /"virtual-size": ([0-9]+),/, val) {print val[1]}')
+           jq '."virtual-size"')
     rounded_size=$((($size/$MB + 1)*$MB))
     sudo qemu-img resize rhel-[version].raw $rounded_size
     ```
