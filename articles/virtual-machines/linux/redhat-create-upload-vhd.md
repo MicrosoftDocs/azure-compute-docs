@@ -437,7 +437,7 @@ For more information about eligibility requirements for participating in Red Hat
 1. Swap configuration:
     - Don't create swap space on the operating system disk.
 
-       Previously, the Azure Linux agent was used to automatically configure swap space using the local resource disk attached to the VM after the VM is provisioned on Azure, This action is now hadled by `cloud-init`. You *must not* use the Linux agent to format the resource disk to create the swap file. Modify the following parameters in `/etc/waagent.conf` appropriately:
+       Previously, the Azure Linux agent was used to automatically configure swap space using the local resource disk attached to the VM after the VM is provisioned on Azure, This action is now handled by `cloud-init`. You *must not* use the Linux agent to format the resource disk to create the swap file. Modify the following parameters in `/etc/waagent.conf` appropriately:
 
        ```bash
        ResourceDisk.Format=n
@@ -674,7 +674,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
 1. Convert the qcow2 image to the VHD format.
 
     > [!NOTE]
-    > There's a known bug in qemu-img versions >=2.2.1 that results in an improperly formatted VHD. The issue has been fixed in QEMU 2.6. We recommend that you use either qemu-img 2.2.0 or lower, or update to 2.6 or higher. For more information, see [this website](https://bugs.launchpad.net/qemu/+bug/1490611).
+    > There's a known bug in QEMU versions between 2.2.1 and 2.6 that results in an improperly formatted VHD. We recommend that you use either qemu-img 2.2.0 or lower, or update to 2.6 or higher. For more information, see [this website](https://bugs.launchpad.net/qemu/+bug/1490611).
     >
 
     First convert the image to raw format:
