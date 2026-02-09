@@ -19,7 +19,7 @@ ms.custom:
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
-In this article, you learn how to prepare a Red Hat Enterprise Linux (RHEL) virtual machine (VM) for use in Azure. The versions of RHEL that are covered in this article are 7.x, 8.X., 9.x. The hypervisors for preparation that are covered in this article are Hyper-V, kernel-based VM (KVM), VMware and Kickstart.
+In this article, you learn how to prepare a Red Hat Enterprise Linux (RHEL) virtual machine (VM) for use in Azure. The versions of RHEL that are covered in this article are 7.x, 8.X., 9.x. The hypervisors for preparation that are covered in this article are Hyper-V, kernel-based VM (KVM), VMware, and Kickstart.
 
 For more information about eligibility requirements for participating in Red Hat's Cloud Access program, see [the Red Hat Cloud Access website](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) and [Running RHEL on Azure](https://access.redhat.com/ecosystem/ccsp/microsoft-azure). For ways to automate building RHEL images, see [Azure Image Builder](../image-builder-overview.md).
 
@@ -108,7 +108,7 @@ For more information about eligibility requirements for participating in Red Hat
     GRUB_SERIAL_COMMAND="serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1"
     ```
 
-   These modifications turn off the new naming convention for NICs, ensure all console messages are sent to the first serial port and enable interaction with the console, which can assist Aure support with debugging issues. 
+   These modifications turn off the new naming convention for NICs, ensure all console messages are sent to the first serial port, and enable interaction with the console, which can assist Aure support with debugging issues. 
 
    ```config
    rhgb quiet crashkernel=auto
@@ -338,7 +338,7 @@ For more information about eligibility requirements for participating in Red Hat
     GRUB_SERIAL_COMMAND="serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1"
     ```
 
-   These modifications turn off the new naming convention for NICs, ensure all console messages are sent to the first serial port and enable interaction with the console, which can assist Aure support with debugging issues. 
+   These modifications turn off the new naming convention for NICs, ensure all console messages are sent to the first serial port, and enable interaction with the console, which can assist Aure support with debugging issues. 
 
    > [!NOTE]
    > If [ENABLE_BLSCFG=false](https://access.redhat.com/solutions/6929571) is present in `/etc/default/grub` instead of `ENABLE_BLSCFG=true`, tools such as *grubedit* or *gubby*, which rely on the Boot Loader Specification (BLS) for managing boot entries and configurations, might not function correctly in RHEL 8 and 9. If `ENABLE_BLSCFG` isn't present, the default behavior is `false`.
@@ -766,7 +766,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
     ENABLE_BLSCFG=true
     ```
 
-   These modifications turn off the new naming convention for NICs, ensure all console messages are sent to the first serial port and enable interaction with the console, which can assist Aure support with debugging issues. 
+   These modifications turn off the new naming convention for NICs, ensure all console messages are sent to the first serial port, and enable interaction with the console, which can assist Aure support with debugging issues. 
 
    > [!NOTE]
    > If [ENABLE_BLSCFG=false](https://access.redhat.com/solutions/6929571) is present in `/etc/default/grub` instead of `ENABLE_BLSCFG=true`, tools such as *grubedit* or *gubby*, which rely on the Boot Loader Specification (BLS) for managing boot entries and configurations, might not function correctly in RHEL 8,9 and 10. If `ENABLE_BLSCFG` isn't present, the default behavior is `false`.
@@ -1058,7 +1058,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
     GRUB_CMDLINE_LINUX="console=ttyS0 earlyprintk=ttyS0 net.ifnames=0 nvme_core.io_timeout=240"
     ```
 
-   This configuration ensures that all console messages are sent to the first serial port, which can assist Azure support with debugging issues. It also turns off the new RHEL 7 naming conventions for NICs. In addition, we recommend that you remove the following parameters:
+   These modifications turn off the new naming convention for NICs, ensure all console messages are sent to the first serial port and enable interaction with the console, which can assist Aure support with debugging issues, we recommend that you remove the following parameters:
 
     ```config-grub
     rhgb quiet crashkernel=auto
