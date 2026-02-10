@@ -51,7 +51,7 @@ MPI bandwidth test from the OSU microbenchmark suite is run. Sample scripts are 
 
 ## Mellanox Perftest
 
-The [Mellanox Perftest package](https://enterprise-support.nvidia.com/s/article/perftest-package) has many InfiniBand tests such as latency (ib_send_lat) and bandwidth (ib_send_bw). An example command is below.
+The [Mellanox Perftest package](https://enterprise-support.nvidia.com/s/article/perftest-package) has many InfiniBand tests such as latency (ib_send_lat) and bandwidth (ib_send_bw). The following command serves as an example.
 
 
 ```bash
