@@ -15,7 +15,7 @@ author: cynthn
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
-Performance testing was conducted across multiple HC-series sizes. The following table summarize key findings from these tests.
+Performance testing was conducted across multiple HC-series sizes. The following table summarizes key findings from these tests.
 
 | Workload                                        | HC                    |
 |-------------------------------------------------|-----------------------|
@@ -27,7 +27,7 @@ Performance testing was conducted across multiple HC-series sizes. The following
 
 ## MPI latency
 
-MPI latency test from the OSU microbenchmark suite is run. Sample scripts are on [GitHub](https://github.com/Azure/azhpc-images/blob/04ddb645314a6b2b02e9edb1ea52f079241f1297/tests/run-tests.sh)
+MPI latency test from the OSU Micro-Benchmarks (OMB) suite is run. Sample scripts are on [GitHub](https://github.com/Azure/azhpc-images/blob/04ddb645314a6b2b02e9edb1ea52f079241f1297/tests/run-tests.sh)
 
 ```bash
 ./bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./osu_latency 
