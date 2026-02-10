@@ -424,4 +424,3 @@ For a Generation 2 VM that doesn't meet the [prerequisites](#prerequisites) to u
 - Refer to [Deploy Trusted launch virtual machines](trusted-launch-portal.md) for enabling Trusted launch on new virtual machine & scale set deployments.
 - Refer to [boot integrity monitoring](trusted-launch.md#microsoft-defender-for-cloud-integration) for enabling boot integrity monitoring and monitor the health of the VM by using Microsoft Defender for Cloud.
 - Learn more about [Trusted launch](trusted-launch.md) and review [frequently asked questions](trusted-launch-faq.md).
-- Learn more about [Cobalt 100-based VMs](./sizes/cobalt-overview.md) for Arm64 workloads.
