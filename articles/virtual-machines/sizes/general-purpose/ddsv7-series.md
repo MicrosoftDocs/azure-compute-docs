@@ -123,7 +123,7 @@ Network interface info for each size
 | Standard_D96ds_v7 | 15 | 70,000 |
 | Standard_D128ds_v7 | 15 | 85,000 |
 | Standard_D192ds_v7 | 15 | 100,000 |
-| Standard_D258ds_v7 | 15 | 150,000 |
+| Standard_D248ds_v7 | 15 | 150,000 |
 | Standard_D372ds_v7 | 15 | 200,000 |
 
 #### Networking resources

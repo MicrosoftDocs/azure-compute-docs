@@ -1,5 +1,5 @@
 ---
-title: Azure Windows VM Agent overview 
+title: Azure Windows VM Agent overview
 description: Learn how to install and detect the Azure Windows VM Agent to manage your virtual machine's interaction with the Azure fabric controller.
 ms.topic: how-to
 ms.service: azure-virtual-machines
@@ -86,10 +86,10 @@ If you don't have the agents installed, you can't use some Azure services, such 
 
 ### Manual installation
 
-To manually install the Azure Windows VM Agent, [download the installer](https://github.com/Azure/WindowsVMAgent) and select the latest release. You can also search for a specific version in the [GitHub page for Azure Windows VM Agent releases](https://github.com/Azure/WindowsVMAgent/releases). The Azure Windows VM Agent is supported on Windows Server 2008 (64 bit) and later.
+To manually install the Azure Windows VM Agent, [download the installer](https://github.com/Azure/WindowsVMAgent) and select the latest release. You can also search for a specific version in the [GitHub page for Azure Windows VM Agent releases](https://github.com/Azure/WindowsVMAgent/releases). The Azure Windows VM Agent is supported on Windows Server 2016 (64 bit) and later.
 
 > [!NOTE]
-> - If a VM was created from a custom or Marketplace image without `ProvisionVMAgent` enabled, then it is important to update the `AllowExtensionOperations` to `true` after you manually install the Azure Windows VM Agent.  
+> - If a VM was created from a custom or Marketplace image without `ProvisionVMAgent` enabled, then it is important to update the `AllowExtensionOperations` to `true` after you manually install the Azure Windows VM Agent.
 > - This is NOT required if the VM was created from a specialized disk. For example, if the VM was created directly from an existing disk.
 
 ```powershell
