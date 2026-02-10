@@ -30,7 +30,7 @@ Azure Virtual Machines supports enabling Azure Trusted launch on existing [Azure
 
  Azure VM is configured with:
 
-- [Trusted launch supported size family](trusted-launch.md#virtual-machines-sizes). Arm64 [Cobalt 100](./sizes/cobalt-overview.md)-based VM series (Dpsv6, Dplsv6, Epsv6) are also supported for Trusted Launch.
+- [Trusted launch supported size family](trusted-launch.md#virtual-machines-sizes). 
 - [Trusted launch supported operating system (OS) version](trusted-launch.md#operating-systems-supported). For custom OS images or disks, the base image should be *Trusted launch capable*.
 - Azure VM isn't using [features currently not supported with Trusted launch](trusted-launch.md#unsupported-features).
 - Azure Backup, if enabled, for VMs should be configured with the [Enhanced Backup policy](/azure/backup/backup-azure-vms-enhanced-policy). The Trusted launch security type can't be enabled for VMs configured with *Standard policy* backup protection.
