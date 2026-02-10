@@ -402,7 +402,7 @@ You need to explicitly bypass Trusted launch default if one of the following sce
 
 > [!NOTE]
 >
-> For managed images, use [Azure Compute Gallery](azure-compute-gallery.md) for the latest capabilities. Trusted Launch-enabled Arm64 images are also available in Azure Marketplace. If you have an existing managed image, you can [migrate it to Azure compute gallery](./migration/migration-managed-image-to-compute-gallery.md).
+> For managed images, use [Azure Compute Gallery](azure-compute-gallery.md) for the latest capabilities. All new features, like ARM64, Trusted Launch, and Confidential VM are only supported through Azure Compute Gallery.
 
 ### Can I disable Trusted Launch for a new VM deployment?
 
