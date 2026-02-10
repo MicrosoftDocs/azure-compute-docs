@@ -221,6 +221,14 @@
        - name: Overview
          displayName: D-series, sizes, size, vm size
          href: ./sizes/general-purpose/d-family.md
+       - name: Dsv7 series
+         href: ./sizes/general-purpose/dsv7-series.md
+       - name: Dlsv7 series
+         href: ./sizes/general-purpose/dlsv7-series.md
+       - name: Dldsv7 series
+         href: ./sizes/general-purpose/dldsv7-series.md
+       - name: Ddsv7 series
+         href: ./sizes/general-purpose/ddsv7-series.md
        - name: Dasv7 series
          href: ./sizes/general-purpose/dasv7-series.md
        - name: Dadsv7 series
@@ -373,6 +381,10 @@
        - name: Overview
          displayName: E-series, sizes, size, vm size
          href: ./sizes/memory-optimized/e-family.md
+       - name: Esv7 series
+         href: ./sizes/memory-optimized/esv7-series.md
+       - name: Edsv7 series
+         href: ./sizes/memory-optimized/edsv7-series.md
        - name: Easv7 series
          href: ./sizes/memory-optimized/easv7-series.md
        - name: Eadsv7 series
@@ -891,7 +903,7 @@
         href: ./windows/windows-desktop-multitenant-hosting-deployment.md
     - name: Generalizing a VM
       displayName: generalize sysprep deprovision
-      href: generalize.yml
+      href: generalize.md
     - name: Linux custom images
       items:
       - name: Overview

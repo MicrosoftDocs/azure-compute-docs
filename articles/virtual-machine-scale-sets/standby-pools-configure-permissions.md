@@ -6,6 +6,8 @@ ms.author: mimckitt
 ms.service: azure-virtual-machine-scale-sets
 ms.topic: how-to
 ms.date: 5/6/2025
+ms.update-cycle: 180-days
+ms.custom: portal
 # Customer intent: "As a cloud administrator managing standby pools, I want to configure role-based access control permissions, so that I can ensure proper functionality and prevent issues with resource creation and management in my subscription."
 ---
 

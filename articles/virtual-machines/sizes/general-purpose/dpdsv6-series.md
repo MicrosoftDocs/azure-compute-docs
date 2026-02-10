@@ -1,14 +1,14 @@
 ---
 title: Dpdsv6 size series
 description: Information on and specifications of the Dpdsv6-series sizes
-author: archatC
+author: noahwood28
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.custom:
   - build-2024
 ms.topic: concept-article
-ms.date: 08/27/2024
-ms.author: archat
+ms.date: 01/05/2026
+ms.author: noahwood
 ms.reviewer: mattmcinnes, tomcassidy
 # Customer intent: "As a cloud architect, I want to understand the specifications and features of the Dpdsv6 series of virtual machines, so that I can select the appropriate size for my workload requirements."
 ---
@@ -24,7 +24,8 @@ ms.reviewer: mattmcinnes, tomcassidy
 
 ## Feature Support
 - [Premium Storage](../../premium-storage-performance.md): Supported 
-- [Premium Storage caching](../../premium-storage-performance.md): Supported 
+- [Premium Storage caching](../../premium-storage-performance.md): Supported
+- [Live Migration](../../maintenance-and-updates.md#live-migration): Supported
 - [Memory Preserving Updates](../../maintenance-and-updates.md): Supported 
 - [VM Generation Support](../../generation-2.md): Generation 2 
 - [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported 
@@ -62,16 +63,16 @@ vCPUs (Qty.) and Memory for each size
 
 Local (temp) storage info for each size
 
-| Size Name | Max Temp Storage (Qty.) | Temp Storage Size (GiB)<sup>1</sup> | Temp ReadWrite Disk IOPS<sup>2</sup> | Temp ReadWrite Disk Speed (MBps)<sup>2</sup> | Temp ReadOnly Disk IOPS<sup>2</sup> | Temp ReadOnly Disk Speed (MBps)<sup>2</sup> |
+| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB)<sup>1</sup> | Temp Disk Random Read (RR)<sup>2</sup> IOPS<sup>3</sup> | Temp Disk Random Read (RR)<sup>2</sup> Throughput (MB/s)<sup>3</sup> | Temp Disk Random Write (RW)<sup>2</sup> IOPS<sup>3</sup> | Temp Disk Random Write (RW)<sup>2</sup> Throughput (MB/s)<sup>3</sup> |
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_D2pds_v6 | 1 | 110 | 15000 | 90 | 37500 | 180 |
-| Standard_D4pds_v6 | 1 | 220 | 30000 | 180 | 75000 | 360 |
-| Standard_D8pds_v6 | 1 | 440 | 60000 | 360 | 150000 | 720 |
-| Standard_D16pds_v6 | 2 | 440 | 120000 | 720 | 300000 | 1440 |
-| Standard_D32pds_v6 | 4 | 440 | 240000 | 1440 | 600000 | 2880 |
-| Standard_D48pds_v6 | 6 | 440 | 360000 | 2160 | 900000 | 4320 |
-| Standard_D64pds_v6 | 4 | 880 | 480000 | 2880 | 1200000 | 5760 |
-| Standard_D96pds_v6 | 6 | 880 | 720000 | 4320 | 1800000 | 8640 |
+| Standard_D2pds_v6  | 1 | 110 | 37500  | 90   | 15000  | 180 |
+| Standard_D4pds_v6  | 1 | 220 | 75000  | 180  | 30000  | 360 |
+| Standard_D8pds_v6  | 1 | 440 | 150000 | 360  | 60000  | 720 |
+| Standard_D16pds_v6 | 2 | 440 | 300000 | 720  | 120000 | 1440 |
+| Standard_D32pds_v6 | 4 | 440 | 600000 | 1440 | 240000 | 2880 |
+| Standard_D48pds_v6 | 6 | 440 | 900000 | 2160 | 360000 | 4320 |
+| Standard_D64pds_v6 | 4 | 880 | 1200000 | 2880 | 480000 | 5760 |
+| Standard_D96pds_v6 | 6 | 880 | 1800000 | 4320 | 720000 | 8640 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
@@ -80,7 +81,8 @@ Local (temp) storage info for each size
 
 #### Table definitions
 - <sup>1</sup> Total local temporary storage is calculated by multiplying the max number of storage disks with the temp disk size. For example, for the Standard_D96pds_v6, the total local temporary storage capacity is `6 x 880 GiB = 5280 GiB`.
-- <sup>2</sup> The IOPS and throughput values shown are the combined performance across all temp disks.
+- <sup>2</sup> Temp disk speed often differs between RR (Random Read) and RW (Random Write) operations. RR operations are typically faster than RW operations. The RW speed is usually slower than the RR speed on series where only the RR speed value is listed.
+- <sup>3</sup> The IOPS and throughput values shown are the combined performance across all temp disks.
 - Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
 - Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
 - Data disks can operate in cached or uncached modes. For cached data disk operation, the host cache mode is set to ReadOnly (R-O) or ReadWrite (R-W). For uncached data disk operation, the host cache mode is set to None.
@@ -98,8 +100,8 @@ Remote (uncached) storage info for each size
 | Standard_D16pds_v6 | 48 | 25600 | 848 | 40000 | 1250 | 33331 | 992 | 52080 | 1463 |
 | Standard_D32pds_v6 | 64 | 51200 | 1696 | 80000 | 2000 | 66662 | 1984 | 104160 | 2340 |
 | Standard_D48pds_v6 | 64 | 76800 | 2544 | 80000 | 3000 | 99994 | 2976 | 104160 | 3510 |
-| Standard_D64pds_v6 | 64 | 102400 | 3392 | 102400 | 3392 | 133325 | 3969 | 133325 | 4680 |
-| Standard_D96pds_v6 | 64 | 153600 | 5000 | 153600 | 5000 | 199987 | 5850 | 199987 | 5953 |
+| Standard_D64pds_v6 | 64 | 102400 | 3392 | 102400 | 3392 | 133325 | 3969 | 133325 | 3969 |
+| Standard_D96pds_v6 | 64 | 153600 | 5000 | 153600 | 5000 | 199987 | 5850 | 199987 | 5850 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)

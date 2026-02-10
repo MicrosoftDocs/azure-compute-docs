@@ -3,7 +3,7 @@ title: Supported OS Images
 description: Get a list of supported operating system images for remote NVMe.
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.date: 05/23/2025
+ms.date: 01/23/2026
 ms.topic: concept-article
 ms.custom: template-how-to-pattern
 # Customer intent: As a cloud architect, I want to access a list of supported operating system images for remote NVMe, so that I can ensure compatibility and optimize performance for my virtual machines.
@@ -41,6 +41,8 @@ For more information about enabling the NVMe interface on virtual machines creat
 - Ubuntu 20.04
 - Ubuntu 22.04
 - Ubuntu 24.04
+- Rocky Linux 8.10
+- Rocky Linux 9.6
 
 ## Supported Windows OS images
 - Windows Server 2025
