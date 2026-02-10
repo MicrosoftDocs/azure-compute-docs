@@ -20,6 +20,8 @@ Frequently asked questions (FAQs) about Azure Trusted Launch feature use cases, 
 
 This section answers questions about use cases for Trusted Launch.
 
+Trusted Launch is supported on both x64 and Arm64 Generation 2 Azure VMs, including [Cobalt 100](./sizes/cobalt-overview.md)-based Arm64 sizes when using supported images.
+
 ### Why should I use Trusted Launch? What does Trusted Launch guard against?
 
 Trusted Launch guards against boot kits, rootkits, and kernel-level malware. These sophisticated types of malware run in kernel mode and remain hidden from users. For example:
@@ -89,6 +91,8 @@ Backups taken before you [upgrade an existing Generation 2 VM to Trusted Launch]
 
 See the list of [Generation 2 VM sizes that support Trusted Launch](trusted-launch.md#virtual-machines-sizes), which includes both x64 and Arm64 sizes. 
 
+Arm64 [Cobalt 100](./sizes/cobalt-overview.md)-based VM sizes (Dpsv6, Dplsv6, Epsv6) support Trusted Launch. These Arm64 sizes are Gen2 and support Trusted Launch.
+
 Use the following commands to check if a [Generation 2 VM size](../virtual-machines/generation-2.md#generation-2-vm-sizes) doesn't support Trusted Launch.
 
 #### [CLI](#tab/adhoccli)
@@ -109,7 +113,7 @@ $vmSize = "Standard_M64"
 (Get-AzComputeResourceSku | where {$_.Locations.Contains($region) -and ($_.Name -eq $vmSize) })[0].Capabilities
 ```
 
-The response is similar to the following form. Output that includes `TrustedLaunchDisabled True` indicates that the Generation 2 VM size doesn't support Trusted Launch. If it's a Generation 2 VM size and `TrustedLaunchDisabled` isn't part of the output, Trusted Launch is supported for that VM size.
+The response is similar to the following form. Output that includes `TrustedLaunchDisabled True` indicates that the Generation 2 VM size doesn't support Trusted Launch. If it's a Generation 2 VM size and `TrustedLaunchDisabled` isn't part of the output, Trusted Launch is supported for that VM size. For Arm64 sizes, the `CpuArchitectureType` capability is `Arm64` and the absence of `TrustedLaunchDisabled` on a Gen2 Arm64 size indicates Trusted Launch support.
 
 ```
 Name                                         Value
@@ -149,6 +153,8 @@ MaxNetworkInterfaces                         8
 ### How can I validate that my OS image supports Trusted Launch?
 
 See the list of [OS versions supported with Trusted Launch](trusted-launch.md#operating-systems-supported).
+
+Both x64 and Arm64 Gen2 images can support Trusted Launch. For Arm64 images, the CLI/PowerShell outputs show `architecture` as `Arm64` and the `features` include `SecurityType` with `TrustedLaunch` or `TrustedLaunchSupported`.
 
 #### Marketplace OS images
 
@@ -208,6 +214,8 @@ The response is similar to the following form. If `hyperVGeneration` is `V2` and
   "tags": null
 }
 ```
+
+For Arm64 Marketplace images (for example, `Canonical:0001-com-ubuntu-server-jammy:22_04-lts-arm64:latest`), the output shows `"architecture": "Arm64"` with `SecurityType` including `TrustedLaunchSupported`.
 
 ##### [PowerShell](#tab/adhocPowerShell)
 

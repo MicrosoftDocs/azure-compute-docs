@@ -30,7 +30,7 @@ Azure Virtual Machines supports enabling Azure Trusted launch on existing [Azure
 
  Azure VM is configured with:
 
-- [Trusted launch supported size family](trusted-launch.md#virtual-machines-sizes).
+- [Trusted launch supported size family](trusted-launch.md#virtual-machines-sizes). 
 - [Trusted launch supported operating system (OS) version](trusted-launch.md#operating-systems-supported). For custom OS images or disks, the base image should be *Trusted launch capable*.
 - For Arm64 VMs, use Trusted launch-capable Arm64 images from Azure Marketplace and a supported Arm64 size family. [Cobalt 100-based Arm64 sizes](sizes/cobalt-overview.md) support Trusted launch.
 - Azure VM isn't using [features currently not supported with Trusted launch](trusted-launch.md#unsupported-features).
@@ -49,6 +49,7 @@ The following steps apply to both x64 and Arm64-based Generation 2 VMs when usin
 
 > [!NOTE]
 >
+> - These steps apply equally to x64 and Arm64 Gen2 VMs.
 > - vTPM is enabled by default.
 > - Secure boot isn't enabled by default. We strongly recommend that you enable Secure Boot, if you aren't using custom unsigned kernel or drivers. Secure Boot preserves boot integrity and enables foundational security for VMs.
 
@@ -415,7 +416,7 @@ Azure Advisor populates an **Enable Trusted launch foundational excellence, and 
 
 **What if there is Generation 2 VMs, that doesn't fit the prerequisites for Trusted launch?**
 
-For a Generation 2 VM that doesn't meet the [prerequisites](#prerequisites) to upgrade to Trusted launch, look how to fulfill the prerequisites. For example, If using a virtual machine size not supported, look for an [equivalent Trusted launch supported size](trusted-launch.md#virtual-machines-sizes) that supports Trusted launch.
+For a Generation 2 VM that doesn't meet the [prerequisites](#prerequisites) to upgrade to Trusted launch, look how to fulfill the prerequisites. For example, If using a virtual machine size not supported, look for an [equivalent Trusted launch supported size](trusted-launch.md#virtual-machines-sizes) that supports Trusted launch. 
 
 > [!NOTE]
 >

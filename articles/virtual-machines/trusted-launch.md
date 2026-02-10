@@ -38,12 +38,14 @@ Trusted Launch is supported for both x64 and Arm64 architectures.
 
 | Type | Supported size families | Currently not supported size families | Not supported size families
 |:--- |:--- |:--- |:--- |
-| [General purpose](./sizes/overview.md#general-purpose) | [B-family](./sizes/general-purpose/b-family.md), [D-family](./sizes/general-purpose/d-family.md), [Dpsv6-series](./sizes/general-purpose/dpsv6-series.md) (Arm64), [Dplsv6-series](./sizes/general-purpose/dplsv6-series.md) (Arm64) | [Dpsv5-series](./sizes/general-purpose/dpsv5-series.md), [Dpdsv5-series](./sizes/general-purpose/dpdsv5-series.md), [Dplsv5-series](./sizes/general-purpose/dplsv5-series.md), [Dpldsv5-series](./sizes/general-purpose/dpldsv5-series.md) | [A-family](./sizes/general-purpose/a-family.md), [Dv2-series](./sizes/general-purpose/dv2-series.md), [Dv3-series](./sizes/general-purpose/dv3-series.md), [DC-Confidential-family](./sizes/general-purpose/dc-family.md)
+| [General purpose](./sizes/overview.md#general-purpose) | [B-family](./sizes/general-purpose/b-family.md), [D-family](./sizes/general-purpose/d-family.md), [Dpsv6-series](./sizes/general-purpose/dpsv6-series.md)<sup>1</sup>, [Dplsv6-series](./sizes/general-purpose/dplsv6-series.md)<sup>1</sup> | [Dpsv5-series](./sizes/general-purpose/dpsv5-series.md), [Dpdsv5-series](./sizes/general-purpose/dpdsv5-series.md), [Dplsv5-series](./sizes/general-purpose/dplsv5-series.md), [Dpldsv5-series](./sizes/general-purpose/dpldsv5-series.md) | [A-family](./sizes/general-purpose/a-family.md), [Dv2-series](./sizes/general-purpose/dv2-series.md), [Dv3-series](./sizes/general-purpose/dv3-series.md), [DC-Confidential-family](./sizes/general-purpose/dc-family.md)
 | [Compute optimized](./sizes/overview.md#compute-optimized) | [F-family](./sizes/compute-optimized/f-family.md), [Fx-family](./sizes/compute-optimized/fx-family.md) | All sizes supported. | 
-| [Memory optimized](./sizes/overview.md#memory-optimized) | [E-family](./sizes/memory-optimized/e-family.md), [Eb-family](./sizes/memory-optimized/eb-family.md), [Epsv6-series](./sizes/memory-optimized/epsv6-series.md) (Arm64)    |  [M-family](./sizes/memory-optimized/m-family.md)  |    [EC-Confidential-family](./sizes/memory-optimized/ec-family.md)
+| [Memory optimized](./sizes/overview.md#memory-optimized) | [E-family](./sizes/memory-optimized/e-family.md), [Eb-family](./sizes/memory-optimized/eb-family.md), [Epsv6-series](./sizes/memory-optimized/epsv6-series.md)<sup>1</sup>   |  [M-family](./sizes/memory-optimized/m-family.md)  |    [EC-Confidential-family](./sizes/memory-optimized/ec-family.md)
 | [Storage optimized](./sizes/overview.md#storage-optimized) | [L-family](./sizes/storage-optimized/l-family.md) | All sizes supported. | 
 | [GPU](./sizes/overview.md#gpu-accelerated) | [NC-family](./sizes/gpu-accelerated/nc-family.md), [ND-family](./sizes/gpu-accelerated/nv-family.md), [NV-family](./sizes/gpu-accelerated/nv-family.md) | [NDasrA100_v4-series](nda100-v4-series.md), [NDm_A100_v4-series](ndm-a100-v4-series.md) | [NC-series](nc-series.md), [NV-series](nv-series.md), [NP-series](np-series.md)
 | [High Performance Compute](./sizes/overview.md#high-performance-compute) |[HBv2-series](./hbv2-series-overview.md), [HBv3-series](./hbv3-series-overview.md), [HBv4-series](./hbv4-series-overview.md), [HC-series](./hc-series-overview.md), [HX-series](./hx-series-overview.md) | All sizes supported. | 
+
+<sup>1</sup>Arm64 [Cobalt 100](./sizes/cobalt-overview.md)-based sizes that support Trusted Launch. 
 
 > [!NOTE]
 >
@@ -69,6 +71,9 @@ Trusted Launch is supported for both x64 and Arm64 architectures.
 | Windows Server |2016, 2019, 2022, 2022-Azure-Edition, 2025, 2025-Azure-Edition &#42; |
 
 &#42; Variations of this OS are supported.
+
+> [!NOTE]
+> Trusted Launch on Arm64 is supported when using applicable Arm64 Marketplace images for supported distributions and versions. For [Cobalt 100](./sizes/cobalt-overview.md) sizes, deploy Trusted Launch using Arm64 images available in Azure Marketplace.
 
 ## More information
 
