@@ -15,7 +15,7 @@ author: cynthn
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
-Several performance tests have been run on HC-series sizes. The following are some of the results of this performance testing.
+Performance testing was conducted across multiple HC-series sizes. The following table summarize key findings from these tests.
 
 | Workload                                        | HC                    |
 |-------------------------------------------------|-----------------------|
@@ -33,7 +33,7 @@ MPI latency test from the OSU microbenchmark suite is run. Sample scripts are on
 ./bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./osu_latency 
 ```
 
-![Screenshot of MPI latency.](./media//hpc/latency-hc.png)
+:::image type="content" source="./media/hpc/latency-hc.png" alt-text="Screenshot of MPI latency graph for HC-series virtual machines.":::
 
 ## MPI bandwidth
 
@@ -43,8 +43,7 @@ MPI bandwidth test from the OSU microbenchmark suite is run. Sample scripts are 
 ./mvapich2-2.3.install/bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./mvapich2-2.3/osu_benchmarks/mpi/pt2pt/osu_bw
 ```
 
-![Screenshot of MPI bandwidth.](./media/hpc/bandwidth-hc.png)
-
+:::image type="content" source="./media/hpc/bandwidth-hc.png" alt-text="Screenshot of MPI bandwidth graph for HC-series virtual machines.":::
 
 ## Mellanox Perftest
 
