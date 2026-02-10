@@ -21,7 +21,6 @@ ms.custom:
 
 [Trusted Launch](trusted-launch.md) is a way to improve the security of [Generation 2](generation-2.md) virtual machines (VMs). Trusted Launch protects against advanced and persistent attack techniques by combining infrastructure technologies like virtual Trusted Platform Module (vTPM) and secure boot.
 
-Trusted Launch is supported for both x64 and Arm64 Generation 2 VMs, including [Cobalt 100-based Arm64 sizes](sizes/cobalt-overview.md). For Arm64 deployments, select Trusted Launch-enabled Arm64 images from Azure Marketplace.
 
 ## Prerequisites
 
