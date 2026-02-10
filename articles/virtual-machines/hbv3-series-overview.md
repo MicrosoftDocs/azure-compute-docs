@@ -6,7 +6,7 @@ ms.custom:
 ms.service: azure-virtual-machines
 ms.subservice: hpc
 ms.topic: concept-article
-ms.date: 07/25/2024
+ms.date: 02/10/2026
 ms.reviewer: cynthn
 ms.author: padmalathas
 author: padmalathas
@@ -36,7 +36,7 @@ The following diagram shows the topology of the server. We reserve these 8 hyper
 
 ![Topology of the HBv3-series server](./media/hpc/architecture/hbv3/hbv3-topology-server.png)
 
-The CCD boundary is not equivalent to a NUMA boundary. On HBv3, a group of four consecutive (4) CCDs is configured as a NUMA domain, both at the host server level and within a guest VM. Thus, all HBv3 VM sizes expose 4 NUMA domains that appear to an OS and application as shown. 4 uniform NUMA domains, each with different number of cores depending on the specific [HBv3 VM size](hbv3-series.md).
+The CCD boundary isn't equivalent to a NUMA boundary. On HBv3, a group of four consecutive (4) CCDs is configured as a NUMA domain, both at the host server level and within a guest VM. Thus, all HBv3 VM sizes expose 4 NUMA domains that appear to an OS and application as shown. 4 uniform NUMA domains, each with different number of cores depending on the specific [HBv3 VM size](hbv3-series.md).
 
 ![Topology of the HBv3-series VM](./media/hpc/architecture/hbv3/hbv3-topology-vm.png)
 
@@ -51,9 +51,9 @@ Standard_HB120-32rs_v3            | 4            | 8                      | Dual
 Standard_HB120-16rs_v3            | 4            | 4                      | Dual-socket EPYC 72F3            |
 
 > [!NOTE]
-> The constrained cores VM sizes only reduce the number of physical cores exposed to the VM. All global shared assets (RAM, memory bandwidth, L3 cache, GMI and xGMI connectivity, InfiniBand, Azure Ethernet network, local SSD) stay constant. This allows a customer to pick a VM size best tailored to a given set of workload or software licensing needs.
+> The constrained cores VM sizes only reduce the number of physical cores exposed to the VM. All global shared assets (RAM, memory bandwidth, L3 cache, GMI and xGMI connectivity, InfiniBand, Azure Ethernet network, local SSD) stay constant. This capability allows a customer to pick a VM size best tailored to a given set of workload or software licensing needs.
 
-The virtual NUMA mapping of each HBv3 VM size is mapped to the underlying physical NUMA topology. There is no potentially misleading abstraction of the hardware topology.
+The virtual NUMA mapping of each HBv3 VM size is mapped to the underlying physical NUMA topology. The hardware topology is shown directly, without potentially misleading abstraction.
 
 The exact topology for the various [HBv3 VM size](hbv3-series.md) appears as follows using the output of [lstopo](https://linux.die.net/man/1/lstopo):
 ```bash
@@ -91,7 +91,7 @@ lstopo-no-graphics --no-io --no-legend --of txt
 </details>
 
 ## InfiniBand networking
-HBv3 VMs also feature Nvidia Mellanox HDR InfiniBand network adapters (ConnectX-6) operating at up to 200 Gigabits/sec. The NIC is passed through to the VM via SRIOV, enabling network traffic to bypass the hypervisor. As a result, customers load standard Mellanox OFED drivers on HBv3 VMs as they would a bare metal environment.
+HBv3 VMs also feature NVIDIA Mellanox HDR InfiniBand network adapters (ConnectX-6) operating at up to 200 Gigabits/sec. The NIC is passed through to the VM via SRIOV, enabling network traffic to bypass the hypervisor. As a result, customers load standard Mellanox OFED drivers on HBv3 VMs as they would a bare metal environment.
 
 HBv3 VMs support Adaptive Routing, the Dynamic Connected Transport (DCT, along with standard RC and UD transports), and hardware-based offload of MPI collectives to the onboard processor of the ConnectX-6 adapter. These features enhance application performance, scalability, and consistency, and usage of them is recommended.
 
@@ -127,10 +127,10 @@ When paired in a striped array, the NVMe SSD provides up to 7 GB/s reads and 3 G
 | Orchestrator Support           | Azure CycleCloud, Azure Batch, AKS; [cluster configuration options](sizes-hpc.md#cluster-configuration-options)                      |
 
 > [!NOTE]
-> Windows Server 2012 R2 is not supported on HBv3 and other VMs with more than 64 (virtual or physical) cores. For more details, see [Supported Windows guest operating systems for Hyper-V on Windows Server](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows).
+> Windows Server 2012 R2 isn't supported on HBv3 and other VMs with more than 64 (virtual or physical) cores. For more details, see [Supported Windows guest operating systems for Hyper-V on Windows Server](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows).
 
 > [!IMPORTANT]
-> This document references a release version of Linux that is nearing or at, End of Life(EOL). Please consider updating to a more current version.
+> This document references a release version of Linux that's nearing or at, End of Life(EOL). Consider updating to a more current version.
 
 ## Next steps
 
