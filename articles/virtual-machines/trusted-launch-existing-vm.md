@@ -413,7 +413,7 @@ Azure Advisor populates an **Enable Trusted launch foundational excellence, and 
 
 **What if there is Generation 2 VMs, that doesn't fit the prerequisites for Trusted launch?**
 
-For a Generation 2 VM that doesn't meet the [prerequisites](#prerequisites) to upgrade to Trusted launch, look how to fulfill the prerequisites. For example, If using a virtual machine size not supported, look for an [equivalent Trusted launch supported size](trusted-launch.md#virtual-machines-sizes) that supports Trusted launch. Sizes that do support Trusted Launch include the Arm64 [Cobalt 100](./sizes/cobalt-overview.md) series (Dpsv6, Dplsv6, Epsv6).
+For a Generation 2 VM that doesn't meet the [prerequisites](#prerequisites) to upgrade to Trusted launch, look how to fulfill the prerequisites. For example, If using a virtual machine size not supported, look for an [equivalent Trusted launch supported size](trusted-launch.md#virtual-machines-sizes) that supports Trusted launch. 
 
 > [!NOTE]
 >
