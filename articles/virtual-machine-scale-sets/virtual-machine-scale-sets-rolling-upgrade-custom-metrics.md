@@ -6,7 +6,7 @@ ms.author: mimckitt
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
 ms.date: 11/7/2024
-ms.reviewer: ju-shim
+ms.reviewer: cynthn
 ms.custom: upgradepolicy, N-Phase, ignite-2024
 # Customer intent: "As a system administrator, I want to configure custom metrics for rolling upgrades on Virtual Machine Scale Sets so that I can control the order and conditions under which my virtual machines are upgraded, ensuring minimal downtime and optimal application performance."
 ---
@@ -28,11 +28,11 @@ A phase is a grouping construct for virtual machines. Each phase is determined b
 
 When a rolling upgrade is initiated, the virtual machines are placed into their designated phases. The phased upgrades are performed in numerical sequence order. Virtual Machines in all batches within a phase will be completed before moving onto the next phase. If no phase ordering is received for a virtual machine, the scale set will place it into the last phase  
 
-**Regional scale set**
-:::image type="content" source="./media/upgrade-policy/n-phase-regional-scale-set.png" alt-text="Diagram that shows a high level diagram of what happens when using n-phase upgrades on a regional scale set.":::
+**Regional (nonzonal) scale set**
+:::image type="content" source="./media/upgrade-policy/n-phase-nonzonal-scale-set.png" alt-text="Diagram that shows a high level diagram of what happens when using n-phase upgrades on a regional (nonzonal) scale set.":::
 
-**Zonal scale set**
-:::image type="content" source="./media/upgrade-policy/n-phase-zonal-scale-set.png" alt-text="Diagram that shows a high level diagram of what happens when using n-phase upgrades on a zonal scale set.":::
+**Zone-spanning scale set**
+:::image type="content" source="./media/upgrade-policy/n-phase-zone-spanning-scale-set.png" alt-text="Diagram that shows a high level diagram of what happens when using n-phase upgrades on a zone-spanning scale set.":::
 
 
 To specify phase number the virtual machine should be associated with, use `phaseOrderingNumber` parameter.  
@@ -50,7 +50,7 @@ To specify phase number the virtual machine should be associated with, use `phas
 
 Skip upgrade functionality enables an individual instance to be omitted from an upgrade during the rolling upgrade. This is similar to utilizing instance protection but can more seamlessly integrate into the rolling upgrade workflow and into instance level applications. Similar to phase ordering, the skip upgrade information is passed to the Virtual Machine Scale Set via the application health extension and custom metrics settings. When the rolling upgrade is triggered, the Virtual Machine Scale Set checks the response of the application health extensions custom metrics and if skip upgrade is set to true, the instance is not included in the rolling upgrade. 
 
-:::image type="content" source="./media/upgrade-policy/skip-upgrade-zonal.png" alt-text="Diagram that shows a high level diagram of what happens when using skip upgrade on a zonal scale set.":::
+:::image type="content" source="./media/upgrade-policy/skip-upgrade-zone-spanning.png" alt-text="Diagram that shows a high level diagram of what happens when using skip upgrade on a zone-spanning scale set.":::
 
 For skipping an upgrade on a virtual machine, use `SkipUpgrade` parameter. This tells the rolling upgrade to skip over this virtual machine when performing the upgrades.  
 

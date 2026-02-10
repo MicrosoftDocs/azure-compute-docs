@@ -49,6 +49,10 @@ VM Guest State (VMGS) is specific to Trusted Launch VMs. It's a blob managed by 
 
 This section discusses Trusted Launch supported features and deployments.
 
+### Are Arm64 VM sizes and images supported with Trusted Launch?
+
+Yes, Trusted Launch is supported for Arm64 VMs. Arm64 images with Trusted Launch are available in Azure Marketplace. The [Cobalt 100-based Arm64 VM series](sizes/cobalt-overview.md) support Trusted Launch. You can deploy Trusted Launch on these Arm64 sizes using validated marketplace images.
+
 ### Is Azure Compute Gallery supported by Trusted Launch?
 
 Trusted Launch now allows images to be created and shared through the [Azure Compute Gallery](trusted-launch-portal.md#trusted-launch-vm-supported-images) (formerly Shared Image Gallery). The image source can be:
@@ -85,7 +89,7 @@ Backups taken before you [upgrade an existing Generation 2 VM to Trusted Launch]
 
 ### How can I find VM sizes that support Trusted Launch?
 
-See the list of [Generation 2 VM sizes that support Trusted Launch](trusted-launch.md#virtual-machines-sizes).
+See the list of [Generation 2 VM sizes that support Trusted Launch](trusted-launch.md#virtual-machines-sizes), which includes both x64 and Arm64 sizes. 
 
 Arm64 [Cobalt 100](./sizes/cobalt-overview.md)-based VM sizes (Dpsv6, Dplsv6, Epsv6) support Trusted Launch. These Arm64 sizes are Gen2 and support Trusted Launch.
 
@@ -154,7 +158,7 @@ Both x64 and Arm64 Gen2 images can support Trusted Launch. For Arm64 images, the
 
 #### Marketplace OS images
 
-Use the following commands to check if an Azure Marketplace OS image supports Trusted Launch.
+Use the following commands to check if an Azure Marketplace OS image supports Trusted Launch. 
 
 ##### [CLI](#tab/adhoccli)
 
@@ -162,7 +166,7 @@ Use the following commands to check if an Azure Marketplace OS image supports Tr
 az vm image show --urn "MicrosoftWindowsServer:WindowsServer:2022-datacenter-azure-edition:latest"
 ```
 
-The response is similar to the following form. If `hyperVGeneration` is `v2` and `SecurityType` contains `TrustedLaunch` in the output, the Generation 2 OS image supports Trusted Launch. For Arm64 images, the `architecture` field shows `Arm64`.
+The response is similar to the following form. If `hyperVGeneration` is `V2` and `SecurityType` contains `TrustedLaunch` in the output, the Generation 2 OS image supports Trusted Launch.
 
 ```json
 {
@@ -219,7 +223,7 @@ For Arm64 Marketplace images (for example, `Canonical:0001-com-ubuntu-server-jam
 Get-AzVMImage -Skus 22_04-lts-gen2 -PublisherName Canonical -Offer 0001-com-ubuntu-server-jammy -Location westus3 -Version latest
 ```
 
-You can use the output of the command with [Virtual machines - Get API](/rest/api/compute/virtual-machine-images/get). The response is similar to the following form. If `hyperVGeneration` is `v2` and `SecurityType` contains `TrustedLaunch` in the output, the Generation 2 OS image supports Trusted Launch.
+You can use the output of the command with [Virtual machines - Get API](/rest/api/compute/virtual-machine-images/get). The response is similar to the following form. If `hyperVGeneration` is `V2` and `SecurityType` contains `TrustedLaunch` in the output, the Generation 2 OS image supports Trusted Launch.
 
 ```json
 {
@@ -282,7 +286,7 @@ az sig image-definition show `
     --resource-group myImageGalleryRg
 ```
 
-The response is similar to the following form. If `hyperVGeneration` is `v2` and `SecurityType` contains `TrustedLaunch` in the output, the Generation 2 OS image supports Trusted Launch. For Arm64 images, `architecture` is `Arm64`.
+The response is similar to the following form. If `hyperVGeneration` is `V2` and `SecurityType` contains `TrustedLaunch` in the output, the Generation 2 OS image supports Trusted Launch.
 
 ```json
 {
@@ -328,7 +332,7 @@ Get-AzGalleryImageDefinition -ResourceGroupName myImageGalleryRg `
     -GalleryName myImageGallery -GalleryImageDefinitionName myImageDefinition
 ```
 
-The response is similar to the following form. If `hyperVGeneration` is `v2` and `SecurityType` contains `TrustedLaunch` in the output, the Generation 2 OS image supports Trusted Launch.
+The response is similar to the following form. If `hyperVGeneration` is `V2` and `SecurityType` contains `TrustedLaunch` in the output, the Generation 2 OS image supports Trusted Launch.
 
 ```
 ResourceGroupName : myImageGalleryRg
@@ -406,7 +410,7 @@ You need to explicitly bypass Trusted launch default if one of the following sce
 
 > [!NOTE]
 >
-> If deployment is dependent on managed images, for the most current technology, you're encouraged to use [Azure Compute Gallery](azure-compute-gallery.md). All new features, like ARM64, Trusted Launch, and Confidential VM are only supported through Azure Compute Gallery. If you have an existing managed image, you can [migrate it to Azure compute gallery](./migration/migration-managed-image-to-compute-gallery.md)
+> For managed images, use [Azure Compute Gallery](azure-compute-gallery.md) for the latest capabilities. All new features, like ARM64, Trusted Launch, and Confidential VM are only supported through Azure Compute Gallery.
 
 ### Can I disable Trusted Launch for a new VM deployment?
 

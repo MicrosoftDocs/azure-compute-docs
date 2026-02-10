@@ -26,7 +26,7 @@ If needed, install the Azure PowerShell using the instruction found in the [Azur
 
 ## Script explanation
 
-This script uses the following commands: Each command in the table links to command specific documentation.
+This Azure PowerShell script uses the following commands: Each command in the table links to command specific documentation.
 
 | Command | Notes |
 |---|---|

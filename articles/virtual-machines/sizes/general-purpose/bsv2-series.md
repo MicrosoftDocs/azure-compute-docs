@@ -1,5 +1,5 @@
 ---
-title: Bsv2 size series
+title: Bsv2-series sizes
 description: Information on and specifications of the Bsv2-series sizes
 author: mattmcinnes
 ms.service: azure-virtual-machines
@@ -8,10 +8,10 @@ ms.topic: concept-article
 ms.date: 09/24/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
-# Customer intent: "As a cloud architect evaluating virtual machine options, I want to understand the specifications and performance characteristics of the Bsv2 size series, so that I can make informed decisions for deploying efficient and cost-effective workloads."
+# Customer intent: "As a cloud architect evaluating virtual machine options, I want to understand the specifications and performance characteristics of the Bsv2-series sizes, so that I can make informed decisions for deploying efficient and cost-effective workloads."
 ---
 
-# Bsv2 sizes series
+# Bsv2-series sizes
 
 [!INCLUDE [bsv2-summary](./includes/bsv2-series-summary.md)]
 

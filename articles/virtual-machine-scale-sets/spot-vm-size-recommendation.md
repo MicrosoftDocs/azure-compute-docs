@@ -2,11 +2,13 @@
 title: Spot Virtual Machine Size Recommendation for Virtual Machine Scale Sets
 description: Learn how to pick the right VM size when using Azure Spot for Virtual Machine Scale Sets.
 author: cynthn
-ms.author: jushiman
+ms.author: cynthn
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: azure-spot-vm
 ms.topic: how-to
 ms.date: 11/22/2022
+ms.update-cycle: 180-days
+ms.custom: portal
 ms.reviewer: cynthn
 # Customer intent: "As a cloud architect, I want to utilize the Spot VM size recommendations tool during Virtual Machine Scale Set deployment, so that I can select the most cost-effective VM sizes that meet my workload's flexibility and fault tolerance requirements."
 ---

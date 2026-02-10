@@ -27,21 +27,21 @@ For more information, see [What are the Federal Information Processing Standards
 |:----------|:---------------------------------------------------:|
 | MICROSOFT.AKS.COMPUTE.AKS.LINUX.AKSNODE | Commercial,<br>Government |
 | MICROSOFT.AKS.COMPUTE.AKS.LINUX.BILLING | Commercial,<br>Government |
-| MICROSOFT.AZURE.EXTENSIONS.CUSTOMSCRIPT | Commercial |
-| MICROSOFT.AZURE.KEYVAULT.KEYVAULTFORLINUX | Commercial |
+| MICROSOFT.AZURE.EXTENSIONS.CUSTOMSCRIPT | Commercial,<br>Government |
+| MICROSOFT.AZURE.KEYVAULT.KEYVAULTFORLINUX | Commercial,<br>Government |
+| MICROSOFT.AZURE.MONITOR.AZUREMONITORLINUXAGENT | Commercial,<br>Government |
 | MICROSOFT.AZURE.MONITORING.DEPENDENCYAGENT.DEPENDENCYAGENTLINUX | Commercial |
 | MICROSOFT.AZURE.NETWORKWATCHER.NETWORKWATCHERAGENTLINUX | Commercial,<br>Government |
 | MICROSOFT.AZURE.RECOVERYSERVICES.VMSNAPSHOT | Commercial |
 | MICROSOFT.AZURE.SECURITY.MONITORING.AZURESECURITYLINUXAGENT | Commercial |
 | MICROSOFT.CPLAT.CORE.LINUXPATCHEXTENSION | Commercial,<br>Government |
-| MICROSOFT.CPLAT.CORE.RUNCOMMANDLINUX | Commercial |
-| MICROSOFT.CPLAT.CORE.VMAPPLICATIONMANAGERLINUX | Commercial |
-| MICROSOFT.CPLAT.PROXYAGENT.PROXYAGENTLINUX | Commercial |
-| MICROSOFT.CPLAT.PROXYAGENT.PROXYAGENTLINUXARM64 | Commercial |
-| MICROSOFT.CPLAT.PROXYAGENT.PROXYAGENTWINDOWS | Commercial |
+| MICROSOFT.CPLAT.CORE.RUNCOMMANDLINUX | Commercial,<br>Government |
+| MICROSOFT.CPLAT.CORE.VMAPPLICATIONMANAGERLINUX | Commercial,<br>Government |
+| MICROSOFT.CPLAT.PROXYAGENT.PROXYAGENTLINUX | Commercial,<br>Government |
+| MICROSOFT.CPLAT.PROXYAGENT.PROXYAGENTLINUXARM64 | Commercial,<br>Government |
 | MICROSOFT.GUESTCONFIGURATION.CONFIGURATIONFORLINUX | Commercial |
 | MICROSOFT.MANAGEDSERVICES.APPLICATIONHEALTHLINUX | Commercial,<br>Government |
-| MICROSOFT.OSTCEXTENSIONS.VMACCESSFORLINUX | Commercial |
+| MICROSOFT.OSTCEXTENSIONS.VMACCESSFORLINUX | Commercial,<br>Government |
 
 ## Prerequisites
 
@@ -64,7 +64,7 @@ To view the latest supported regions, use the Linux VM Guest [v2.14.0.1](https:/
 
 | Cloud | Region |
 |:-----|:-----|
-| Commercial | Australia Central, Australia Central 2, Australia East, Australia Southeast, Austria East, Brazil South, Brazil Southeast, Canada Central, Canada East, Central India, Denmark East, East Asia, France Central, France South, Germany North, Germany West Central, Indonesia Central, Israel Central, Italy North, Japan East, Japan West, Jio India Central, Jio India West, Korea Central, Korea South, Malaysia South, Malaysia West, Mexico Central, New Zealand North, Norway East, Norway West, Poland Central, Qatar Central, South Africa North, South Africa West, South Central US 2, South India, Southeast US, Southeast US 5, Spain Central, Sweden Central, Sweden South, Switzerland North, Switzerland West, Taiwan North, Taiwan Northwest, UAE Central, UAE North, UK West, West India, West US 2, West US 3 |
+| Commercial | All regions |
 | USGov | All regions |
 | Air-Gap | All regions |
 
@@ -139,7 +139,7 @@ az rest \
 
 Running the `put` command outputs the resulting JSON for the modified VM. For later verification, you can run this `get` command against the VM object, which outputs the full JSON again.
 
-``` 
+```
 az rest \
 --method get \
 --url 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>/?api-version=2024-11-01'
@@ -173,7 +173,7 @@ For comparison, one possible outcome when you try to enable FIPS 140-3 on a VM w
 })
 ```
 
-<!-- 
+<!--
 ---
 
 ##### Option 2 - modifying ARM with template

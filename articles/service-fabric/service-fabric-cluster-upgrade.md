@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 11/18/2024
+ms.update-cycle: 1095-days
 # Customer intent: "As a cloud administrator, I want to manage and upgrade Azure Service Fabric clusters automatically or manually, so that I can ensure they run on supported versions with minimal disruption to my applications."
 ---
 

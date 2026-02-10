@@ -35,7 +35,7 @@ The following table provides a comparison of the five disk types to help you dec
 | **Max disk size** | 65,536 GiB | 65,536 GiB |32,767 GiB | 32,767 GiB | 32,767 GiB |
 | **Max throughput** | 10,000 MB/s | 1,200 MB/s | 900 MB/s | 750 MB/s | 500 MB/s |
 | **Max IOPS** | 400,000 | 80,000 | 20,000 | 6,000 | 2,000, 3,000* |
-| **Usable as OS Disk?** | No | No | Yes | Yes | Yes |
+| **Usable as OS Disk?** | No | No | Yes | Yes | [Yes (retiring Sept 8, 2028)](disks-hdd-os-retirement.md) |
 
 \* Only applies to disks with performance plus enabled.
 
@@ -55,7 +55,7 @@ Ultra Disks must be used as data disks and can only be created as empty disks. W
 
 Ultra Disk sizes range from 4 GiB up to 64 TiB, in 1 GiB increments. Ultra Disk capacity works like Premium SSD v2 disks and you're billed on a per GiB ratio.
 
-Ultra Disks offer up to 100 TiB per region per subscription by default and Ultra Disks support higher capacity by request. To request an increase in capacity, request a quota increase or contact Azure Support.
+By default, for each individual region, you can deploy a total of 100 TiB of capacity as Ultra Disks per subscription. If you need more than 100 TiB of Ultra Disk capacity per region per subscription, request a quota increase or contact Azure Support.
 
 The following table provides an example of performance caps an Ultra Disk has depending on the size you set for the disk.
 
@@ -128,7 +128,7 @@ Unlike Premium SSDs, Premium SSD v2 doesn't have dedicated sizes. You can set a 
 
 ### Premium SSD v2 performance
 
-Premium SSD v2 disks are designed to provide provisioned IOPS and throughput 99.9% of the time. Premium SSD v2 disks are also designed to provide sub millisecond latencies. With Premium SSD v2 disks, you can individually set the capacity, throughput, and IOPS of a disk based on your workload needs, providing you with more flexibility and reduced costs. Each of these values determines the cost of your disk. You can adjust the performance of a Premium SSD v2 disk four times within a 24 hour period. Creating a disk counts as one of these times, so for the first 24 hours after creating a premium SSD v2 disk you can only adjust its performance up to three times.
+Premium SSD v2 disks are designed to provide provisioned IOPS and throughput 99.9% of the time. Premium SSD v2 disks are also designed to provide sub millisecond latencies. With Premium SSD v2 disks, you can individually set the capacity, throughput, and IOPS of a disk based on your workload needs, providing you with more flexibility and reduced costs. Each of these values determines the cost of your disk. You can adjust the performance of a Premium SSD v2 disk four times within a 24 hour period. Creating a disk counts as one of these times, so for the first 24 hours after creating a Premium SSD v2 disk you can only adjust its performance up to three times.
 
 #### Premium SSD v2 capacities
 
@@ -201,7 +201,9 @@ Azure Standard HDDs are suitable for latency-tolerant workloads using large, seq
 
 ### Standard HDD Transactions
 
-Standard HDD transactions incur a billable cost for every 10,000 disk operations.
+There are a few different ways that Standard HDDs count transactions, depending on the region your disk is in. For all Azure regions except for US Central, each I/O operation is considered a single transaction for billing purposes, and incurs a billable cost for every 10,000 billable transactions. There's no hourly limit on the number of billable transactions that can incur a billable cost.
+
+Currently, for only the US Central Azure region, Standard HDDs count transactions in two different ways depending on the disk size. For Standard HDDs sizes S4, S6, S70, and S80, each I/O operation less than 16 KiB of throughput is considered a single billable transaction. I/O operations larger than 16 KiB of throughput are considered multiple billable transactions of size 16 KiB for billing purposes. Cost is incurred for every 10,000 billable transactions but, there's an hourly limit on the number of billable transactions that can incur a billable cost. If your individual disk's billable transactions reach that hour limit, any additional billable transactions during that hour don't incur a cost. For the rest of the Standard HDD sizes (S10, S20, S30, S40, S50, S60, and snapshots) each I/O operation is considered a single billable transaction for billing purposes, and incurs a billable cost for every 10,000 billable transactions. There's no hourly limit on the number of billable transactions that can incur a cost for these Standard HDD disk sizes. 
 
 ## Billing
 
@@ -221,7 +223,7 @@ For more information on snapshots, see [Create a snapshot of a virtual hard disk
 
 **Outbound data transfers**: [Outbound data transfers](https://azure.microsoft.com/pricing/details/bandwidth/) (data going out of Azure data centers) incur billing for bandwidth usage.
 
-**Transactions**: You're billed for the number of transactions performed on a standard managed disk. For standard SSDs, each I/O operation less than or equal to 256 kB of throughput is considered a single I/O operation. I/O operations larger than 256 kB of throughput are considered multiple I/Os of size 256 kB. Standard HDD transactions incur a billable cost for every 10,000 disk operations.
+**Transactions**: You're billed for the number of transactions performed on a standard managed disk. For standard SSDs, each I/O operation less than or equal to 256 kB of throughput is considered a single I/O operation. I/O operations larger than 256 kB of throughput are considered multiple I/Os of size 256 kB. Standard HDD transaction charges depend on the region, size of the disk you deploy, and for some disk sizes, the size of each transaction. For details, [see this section](#standard-hdd-transactions).
 
 For detailed information on pricing for managed disks (including transaction costs), see [Managed Disks Pricing](https://azure.microsoft.com/pricing/details/managed-disks).
 

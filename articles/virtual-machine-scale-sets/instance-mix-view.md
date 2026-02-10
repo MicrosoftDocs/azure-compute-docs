@@ -6,7 +6,7 @@ ms.author: brittanyrowe
 ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
 ms.date: 08/19/2025
-ms.reviewer: jushiman
+ms.reviewer: cynthn
 # Customer intent: As a cloud administrator, I want to view the instance mix configurations of a virtual machine scale set, so that I can assess VM sizes and allocation strategies for effective resource management.
 ---
 

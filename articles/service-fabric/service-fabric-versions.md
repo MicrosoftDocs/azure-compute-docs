@@ -7,7 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: linux-related-content
 services: service-fabric
-ms.date: 10/22/2025
+ms.date: 12/11/2025
 # Customer intent: "As a system administrator, I want to understand the supported versions of Service Fabric and their upgrade paths, so that I can ensure the cluster is running a version that receives updates and maintains compatibility with my applications."
 ---
 
@@ -167,8 +167,9 @@ Support for Service Fabric on a specific OS ends when support for the OS version
 #### Ubuntu
 | OS version | Service Fabric support end date| OS Lifecycle link |
 | - | - | - |
-| Ubuntu 20.04 | April 2025 | <a href="https://wiki.ubuntu.com/Releases">Ubuntu lifecycle</a>|
-| Ubuntu 18.04 | April 2023 | <a href="https://wiki.ubuntu.com/Releases">Ubuntu lifecycle</a>|
+| Ubuntu 22.04 | June 2027 | <a href="https://wiki.ubuntu.com/Releases">Ubuntu lifecycle</a>|
+| Ubuntu 20.04 | April 2025 (No longer supported) | <a href="https://wiki.ubuntu.com/Releases">Ubuntu lifecycle</a>|
+| Ubuntu 18.04 | April 2023 (No longer supported) | <a href="https://wiki.ubuntu.com/Releases">Ubuntu lifecycle</a>|
 
 ---
 

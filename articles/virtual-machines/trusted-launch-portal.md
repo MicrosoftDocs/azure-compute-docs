@@ -3,7 +3,6 @@ title: Deploy a Trusted Launch VM
 description: Deploy a VM that uses Trusted Launch.
 author: cynthn
 ms.author: cynthn
-ms.reviewer: jushiman
 ms.service: azure-virtual-machines
 ms.subservice: trusted-launch
 ms.topic: how-to
@@ -27,6 +26,7 @@ Trusted Launch is supported on both x64 and Arm64 Generation 2 VMs where availab
 ## Prerequisites
 
 - We recommend that you [onboard your subscription to Microsoft Defender for Cloud](https://azure.microsoft.com/services/security-center/?&ef_id=CjwKCAjwwsmLBhACEiwANq-tXHeKhV--teH6kIijnBTmP-PgktfvGr5zW9TAx00SR7xsGUc3sTj5sBoCkEoQAvD_BwE:G:s&OCID=AID2200277_SEM_CjwKCAjwwsmLBhACEiwANq-tXHeKhV--teH6kIijnBTmP-PgktfvGr5zW9TAx00SR7xsGUc3sTj5sBoCkEoQAvD_BwE:G:s&gclid=CjwKCAjwwsmLBhACEiwANq-tXHeKhV--teH6kIijnBTmP-PgktfvGr5zW9TAx00SR7xsGUc3sTj5sBoCkEoQAvD_BwE#overview) if it isn't already. Defender for Cloud has a free tier, which offers useful insights for various Azure and hybrid resources. With the absence of Defender for Cloud, Trusted Launch VM users can't monitor [boot integrity](boot-integrity-monitoring-overview.md) of VM.
+- If you have existing Generation 1 VMs, you can upgrade them to Generation 2 with Trusted launch. See [Upgrade existing Gen1 VMs to Gen2-Trusted launch](trusted-launch-existing-vm-gen-1.md).
 - Assign Azure policy initiatives to your subscription. These policy initiatives need to be assigned only once per subscription. Policies will help deploy and audit for Trusted Launch VMs while automatically installing all required extensions on all supported VMs.
    - Configure the Trusted Launch VMs' [built-in policy initiative](trusted-launch-portal.md#trusted-launch-built-in-policies).
    - Configure prerequisites to enable Guest Attestation on Trusted Launch-enabled VMs.
@@ -40,7 +40,7 @@ Trusted Launch is supported on both x64 and Arm64 Generation 2 VMs where availab
 
 ## Deploy a Trusted Launch VM
 
-Create a VM with Trusted Launch enabled. Choose one of the following options.
+Choose one of the deployment methods to create a new Trusted launch VM
 
 ### [Portal](#tab/portal)
 
@@ -57,8 +57,8 @@ Create a VM with Trusted Launch enabled. Choose one of the following options.
 
 1. Under **Image**, select an image from **Recommended Gen 2 images compatible with Trusted launch**. Arm64 Gen2 images that support Trusted Launch are available in the Azure Marketplace. For a list, see [Trusted Launch](trusted-launch.md#virtual-machines-sizes).
    > [!TIP]
-   > If you don't see the Gen2 version of the image that you want in the dropdown list, select **See all images**. Then change the **Security type** filter to **Trusted Launch**. If targeting Arm64, set the **Architecture** filter to **Arm64** when browsing images.
-1. Select a VM size that supports Trusted Launch. Supported sizes include [Cobalt 100](./sizes/cobalt-overview.md) Arm64 VM families (Dpsv6, Dplsv6, Epsv6). For more information, see the list of [supported sizes](trusted-launch.md#virtual-machines-sizes).
+   > If you don't see the Gen2 version of the image that you want in the dropdown list, select **See all images**. Then change the **Security type** filter to **Trusted Launch**. 
+1.  Select a VM size that supports Trusted Launch. For more information, see the list of [supported sizes](trusted-launch.md#virtual-machines-sizes). 
 1.  Fill in the **Administrator account** information and then **Inbound port rules**.
 1.  At the bottom of the page, select **Review + Create**.
 1.  On the **Create a virtual machine** page, you can see the information about the VM you're about to deploy. After validation shows as passed, select **Create**.
@@ -389,7 +389,7 @@ You can use the resulting image version to create Azure Trusted Launch VMs only.
 1. To create an Azure Compute Gallery Image from a VM, open an existing Trusted Launch VM and select **Capture**.
 1. On the **Create an Image** page, allow the image to be shared to the gallery as a VM image version. Creation of managed images isn't supported for Trusted Launch VMs.
 1. Create a new target Azure Compute Gallery or select an existing gallery.
-1. Select the **Operating system state** as either **Generalized** or **Specialized**. If you want to create a generalized image, ensure that you [generalize the VM to remove machine-specific information](generalize.yml) before you select this option. If Bitlocker-based encryption is enabled on your Trusted Launch Windows VM, you might not be able to generalize the same.
+1. Select the **Operating system state** as either **Generalized** or **Specialized**. If you want to create a generalized image, ensure that you [generalize the VM to remove machine-specific information](generalize.md) before you select this option. If Bitlocker-based encryption is enabled on your Trusted Launch Windows VM, you might not be able to generalize the same.
 1. Create a new image definition by providing a name, publisher, offer, and SKU details. **Security type** for the image definition should already be set to **Trusted launch**.
 1. Provide a version number for the image version.
 1. Modify replication options, if necessary.
@@ -441,7 +441,7 @@ Make sure that you're running the latest version of the Azure CLI.
     --features SecurityType=TrustedLaunch
     ```
 
-1. To create an image version, you can capture an existing Linux-based Trusted Launch VM. [Generalize the Trusted Launch VM](generalize.yml) before you create the image version.
+1. To create an image version, you can capture an existing Linux-based Trusted Launch VM. [Generalize the Trusted Launch VM](generalize.md) before you create the image version.
 
     ```azurecli-interactive
     az sig image-version create --resource-group MyResourceGroup \
@@ -485,7 +485,7 @@ Make sure that you're running the latest version of the Azure CLI.
     New-AzGalleryImageDefinition -ResourceGroupName $rgName -GalleryName $galleryName -Name $galleryImageDefinitionName -Location $location -Publisher $publisherName -Offer $offerName -Sku $skuName -HyperVGeneration "V2" -OsState "Generalized" -OsType "Windows" -Description $description -Feature $features
     ```
 
-1. To create an image version, you can capture an existing Windows-based Trusted Launch VM. [Generalize the Trusted Launch VM](generalize.yml) before you create the image version.
+1. To create an image version, you can capture an existing Windows-based Trusted Launch VM. [Generalize the Trusted Launch VM](generalize.md) before you create the image version.
 
     ```azurepowershell-interactive
     $rgName = "MyResourceGroup"
@@ -563,10 +563,12 @@ Make sure that you're running the latest version of the Azure CLI.
        -Location $location `
        -VM $vm
     ```
+
 ---
+
 ## Trusted Launch built-in policies
 
-To help users adopt Trusted Launch, Azure policies are available to help resource owners adopt Trusted Launch. The main objective is to help convert Generation 1 and 2 VMs that are Trusted Launch capable.
+To help users adopt Trusted Launch, Azure policies are available to help resource owners adopt Trusted Launch. The main objective is to help upgrade Generation 1 and 2 VMs that are Trusted launch capable.
 
 The **Virtual machine should have Trusted launch enabled** single policy checks if the VM is currently enabled with Trusted Launch security configurations. The **Disks and OS supported for Trusted launch** policy checks if previously created VMs have the [capable Generation 2 OS and VM size](trusted-launch.md#virtual-machines-sizes) to deploy a Trusted Launch VM.
 
@@ -575,6 +577,7 @@ These two policies come together to make the Trusted Launch policy initiative. T
 To learn more and start deploying, see [Trusted Launch built-in policies](/azure/governance/policy/samples/built-in-policies#trusted-launch).
 
 ---
+
 ## Verify or update your settings
 
 For VMs created with Trusted Launch enabled, you can view the Trusted Launch configuration by going to the **Overview** page for the VM in the Azure portal. The **Properties** tab shows the status of Trusted Launch features.
@@ -589,5 +592,5 @@ If the VM is running, you receive a message that the VM will restart. Select **Y
 
 ## Related content
 
-Learn more about [Trusted Launch](trusted-launch.md) and [boot integrity monitoring](boot-integrity-monitoring-overview.md) VMs.
-
+- Learn more about [Trusted Launch](trusted-launch.md) and [boot integrity monitoring](boot-integrity-monitoring-overview.md) VMs.
+- If you have existing VMs or VM scale sets, you can upgrade them to Gen2-Trusted launch. For more information, see [Upgrade existing Gen1 VMs to Gen2-Trusted launch](trusted-launch-existing-vm-gen-1.md), [Upgrade existing Gen2 VMs to Gen2-Trusted launch](trusted-launch-existing-vm.md), [Upgrade existing Gen1 or Gen2 VM scale sets to Gen2-Trusted launch](trusted-launch-existing-vmss.md)

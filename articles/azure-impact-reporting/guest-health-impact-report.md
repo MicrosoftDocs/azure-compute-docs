@@ -176,7 +176,129 @@ To aid Guest Health Reporting in taking the correct action, you can provide more
 > [!IMPORTANT]
 > We advise you to include detailed row-remapping fields with the specified information in their claims to expedite node restoration.
 
+## Query workload impact insights
+
+After reporting a workload impact, Azure may generate a sequence of insights that describe how the event was detected, processed, acknowledged, and resolved. These insights can be queried programmatically through the Azure Resource Manager (ARM) API.
+
+### List insights for a workload impact
+
+
+To retrieve all insights for a specific workload impact, use the following REST API command:
+
+```bash
+GET "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Impact/workloadImpacts/{impactId}/insights?api-version=2025-01-01-preview"
+```
+
+#### Example Response
+
+```json
+{
+  "value": [
+    {
+      "id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Impact/workloadImpacts/impactid22/insights/insightId12",
+      "name": "insightId12",
+      "properties": {
+        "additionalDetails": {
+          "statusCode": "AcknowledgedUnhealthy",
+          "terminalInsight": false
+        },
+        "category": "MitigationAction",
+        "content": {
+          "description": "Your resource experienced a brief, transient impact due to a platform change on the host node or its dependencies. No further action is required, though customers may reduce exposure by using Azure availability features and service notifications.",
+          "title": "Customer reports investigate state - HPC Acknowledge"
+        },
+        "eventTime": "2025-06-15T04:00:00.009223Z",
+        "impact": {
+          "endTime": "0001-01-01T00:00:00Z",
+          "impactId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Impact/workloadImpacts/impactid22",
+          "impactedResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/AA_RG/providers/Microsoft.Compute/virtualMachineScaleSets/AA_VMSS/00001111",
+          "startTime": "2025-06-15T17:36:21Z"
+        },
+        "insightUniqueId": "000111222-2233-4455-6677-66778897c74cb",
+        "provisioningState": "Succeeded",
+        "status": "Resolved"
+      },
+      "systemData": {
+        "createdAt": "2025-06-15T04:00:00.009223Z",
+        "createdBy": "000111222-2233-4455-6677-66778897c74",
+        "createdByType": "Application",
+        "lastModifiedAt": "2025-07-15T17:50:16.7183274Z",
+        "lastModifiedBy": "000111222-2233-4455-6677-66778897c74",
+        "lastModifiedByType": "Application"
+      },
+      "type": "microsoft.impact/workloadimpacts/insights"
+    },
+    {
+      "id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Impact/workloadImpacts/impactid22/insights/insightId13",
+      "name": "insightId13",
+      "properties": {
+        "additionalDetails": {
+          "statusCode": "NodeRemovedFromService",
+          "terminalInsight": true
+        },
+        "category": "MitigationAction",
+        "content": {
+          "description": "Azure monitoring detected that your resource entered an unhealthy state due to a platform event affecting the host node or its dependency stack. The unhealthy pipeline completed successfully and the node was removed from service for repair or investigation. Availability options and service notifications can help reduce exposure to similar infrastructure events."
+        },
+        "eventTime": "2025-07-15T04:00:00.009223Z",
+        "impact": {
+          "endTime": "0001-01-01T00:00:00Z",
+          "impactId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Impact/workloadImpacts/impactid22",
+          "impactedResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/AA_RG/providers/Microsoft.Compute/virtualMachineScaleSets/AA_VMSS/00001111",
+          "startTime": "2025-07-15T17:36:21Z"
+        },
+        "insightUniqueId": "000111222-2233-4455-6677-66778897c74cb",
+        "provisioningState": "Succeeded",
+        "status": "Resolved"
+      },
+      "systemData": {
+        "createdAt": "2025-07-15T04:00:00.009223Z",
+        "createdBy": "000111222-2233-4455-6677-66778897c74",
+        "createdByType": "Application",
+        "lastModifiedAt": "2025-07-15T17:50:16.7183274Z",
+        "lastModifiedBy": "000111222-2233-4455-6677-66778897c74",
+        "lastModifiedByType": "Application"
+      },
+      "type": "microsoft.impact/workloadimpacts/insights"
+    }
+  ]
+}
+```
+
+| Name               | Type                  | Description                                                                                             |
+|--------------------|-----------------------|---------------------------------------------------------------------------------------------------------|
+| `additionalDetails` | object                | Additional details of the insight.                                                                      |
+| `category`         | string                | Category of the insight.                                                                               |
+| `content`          | object             | Contains title and description for the insight.                                                        |
+| `eventId`          | string                | Identifier of the event correlated with this insight. Used to aggregate insights for the same event.   |
+| `eventTime`        | string (date-time)    | Time of the event correlated with the impact.                                                           |
+| `groupId`          | string                | Identifier that can be used to group similar insights.                                                  |
+| `impact`           | object       | Details of the impact for which the insight has been generated.                                         |
+| `insightUniqueId`  | string                | Unique identifier of the insight.                                                                       |
+| `provisioningState`| string   | Resource provisioning state.                                                                            |
+| `status`           | string                | Status of the insight (e.g., *Resolved*, *Repaired*, other).                                            |
+### Additional Processing Fields
+
+Some insights include extra processing metadata under `additionalDetails`. These fields help you understand how the impact request progressed through the Guest Health Reporting pipeline.
+
+| Name | Type | Description |
+|------|------|-------------|
+ `additionalDetails.statusCode` | string | Detailed reason code explaining why this insight was generated (for example: `AcknowledgedUnhealthy`, `NodeRemovedFromService`, `TooManyRequests`). |
+| `additionalDetails.terminalInsight` | boolean | Indicates whether this is the final insight for the impact. If `true`, no further updates will follow. |
+
+These fields should be interpreted together:  
+- **`statusCode`** = tells you the specific condition or reason for the insight. 
+- **`terminalInsight`** = whether the pipeline has completed  
+
+Example:  
+`statusCode = "NodeRemovedFromService"` and `terminalInsight = true` tells you whether additional updates should be expected.
+
+Example:  
+ `statusCode = AcknowledgedUnhealthy`, `terminalInsight = false`  
+→ The node health update is still in progress.
+
 ## Related content
 
 * [What is Guest Health Reporting?](guest-health-overview.md)
 * [Impact categories for Guest Health Reporting](guest-health-impact-categories.md)
+

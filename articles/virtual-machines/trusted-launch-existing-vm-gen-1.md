@@ -3,7 +3,6 @@ title: Upgrade Gen1 VMs to Trusted launch
 description: Learn how to upgrade existing Azure Gen1 virtual machines (VMs) to Trusted launch.
 author: AjKundnani
 ms.author: ajkundna
-ms.reviewer: cynthn
 ms.service: azure-virtual-machines
 ms.subservice: trusted-launch
 ms.topic: how-to
@@ -20,9 +19,10 @@ Azure Virtual Machines supports upgrading Generation 1 virtual machines (VM) to 
 
 [Trusted launch](trusted-launch.md) is a way to enable foundational compute security on [Azure Generation 2 VMs](generation-2.md) and protects against advanced and persistent attack techniques like boot kits and rootkits. It does so by combining infrastructure technologies like Secure Boot, virtual Trusted Platform Module (vTPM), and boot integrity monitoring on your VM.
 
-> [!NOTE]
+> [!IMPORTANT]
 >
-> Support for *Upgrade of Gen1 VMs to Gen2 without enabling Trusted launch* is **not supported**.
+> - *Upgrade of Gen1 VMs to Gen2 without enabling Trusted launch* is **not supported**.
+> - This upgrade path doesn't change the VM CPU architecture. To use Arm64 with Trusted launch, create a new VM from an Arm64 Trusted launch image in Azure Marketplace on supported [Cobalt 100 sizes](sizes/cobalt-overview.md) .
 
 ## Prerequisites
 

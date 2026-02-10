@@ -7,7 +7,7 @@ ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: availability
 ms.date: 09/02/2025
-ms.reviewer: jushiman
+ms.reviewer: cynthn
 ms.custom: mimckitt, devx-track-azurecli
 
 # Customer intent: As an IT administrator managing cloud resources, I want to select the appropriate number of fault domains for my Virtual Machine Scale Set, so that I can ensure high availability and minimize the risk of downtime due to hardware failures.
@@ -114,7 +114,7 @@ The following examples show how to use the Azure CLI to deploy scale sets with v
 > [!NOTE]
 > For zone-spanning and zonal Flexible virtual machine scale set deployments, the fault domain count is automatically set to 1 (max spreading) and can't be configured to a different value.
 
-- **Nonzonal Flexible scale set with fixed spreading:**
+- **Regional (nonzonal) Flexible scale set with fixed spreading:**
 
   ```azurecli-interactive
   az vmss create \
@@ -127,7 +127,7 @@ The following examples show how to use the Azure CLI to deploy scale sets with v
     --generate-ssh-keys
   ```
 
-- **Nonzonal Uniform scale set with max spreading:** 
+- **Regional (nonzonal) Uniform scale set with max spreading:** 
 
   ```azurecli-interactive
   az vmss create \

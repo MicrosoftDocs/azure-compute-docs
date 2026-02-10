@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+ms.update-cycle: 1095-days
 # Customer intent: As a service administrator, I want to restore backup data for a Reliable Stateful service in Azure Service Fabric, so that I can recover from data loss or corruption and ensure continuous service operation.
 ---
 

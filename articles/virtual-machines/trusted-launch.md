@@ -18,13 +18,14 @@ ms.custom: template-concept; references_regions
 
 Azure offers Trusted Launch as a seamless way to improve the security of [Generation 2](generation-2.md) virtual machines (VM). Trusted Launch protects against advanced and persistent attack techniques. Trusted Launch is composed of several coordinated infrastructure technologies that can be enabled independently. Each technology provides another layer of defense against sophisticated threats.
 
-Trusted Launch is supported on both x64 and Arm64 Generation 2 VMs where supported images are available. Trusted Launch-supported Arm64 images are available in the Azure Marketplace for [Cobalt 100-based VM series](./sizes/cobalt-overview.md).
+Trusted Launch is supported for both x64 and Arm64 architectures. 
 
 > [!IMPORTANT]
 >
 > - Trusted Launch is the default state for newly created Azure Gen2 VM and scale sets. See the [Trusted Launch FAQs](trusted-launch-faq.md) if your new VM requires features that [aren't supported with Trusted launch](trusted-launch.md#unsupported-features).
-> - [Existing VM](overview.md) can have Trusted Launch enabled after being created. For more information, see [Enable Trusted Launch on existing VMs](trusted-launch-existing-vm.md).
-> - Existing [virtual machine scale set](../virtual-machine-scale-sets/overview.md) can have Trusted Launch enabled after being created. For more information, see [Enable Trusted Launch on existing scale set](trusted-launch-existing-vmss.md).
+> - You can upgrade existing Azure Gen1 VMs to Gen2-Trusted launch to enable Secure Boot and vTPM. See [Upgrade existing Gen1 VMs to Gen2-Trusted launch](trusted-launch-existing-vm-gen-1.md).
+> - [Existing VMs](overview.md) can have Trusted Launch enabled after being created. For more information, see [Enable Trusted Launch on existing Gen2 VMs](trusted-launch-existing-vm.md).
+> - Existing [virtual machine scale sets](../virtual-machine-scale-sets/overview.md) can have Trusted Launch enabled after being created. For more information, see [Enable Trusted Launch on existing scale set](trusted-launch-existing-vmss.md).
 
 ## Benefits
 
@@ -228,4 +229,4 @@ To disable the TLaD preview, unregister the preview feature `TrustedLaunchByDefa
 
 ## Related content
 
-Deploy a [Trusted Launch VM](trusted-launch-portal.md).
+- Deploy a [Trusted Launch VM](trusted-launch-portal.md).

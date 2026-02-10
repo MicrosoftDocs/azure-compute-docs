@@ -6,11 +6,13 @@ ms.author: fisteele
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
 ms.date: 04/24/2025
-ms.reviewer: jushiman
+ms.update-cycle: 180-days
+ms.reviewer: cynthn
 ms.custom:
   - mimckitt
   - vmss-flex
   - sfi-image-nochange
+  - portal
 # Customer intent: "As a cloud administrator, I want to create a Virtual Machine Scale Set using the portal, so that I can efficiently manage and scale virtual machine instances according to my application's needs."
 ---
 

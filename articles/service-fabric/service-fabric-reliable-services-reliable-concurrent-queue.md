@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+ms.update-cycle: 1095-days
 # Customer intent: As a developer working with distributed systems, I want to implement high-throughput queue operations using a concurrent queue, so that I can efficiently handle multiple parallel transactions without strict FIFO constraints.
 ---
 

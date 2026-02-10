@@ -7,6 +7,7 @@ ms.collection: linux
 ms.topic: overview
 ms.date: 03/27/2025
 ms.author: mattmcinnes
+ms.update-cycle: 1095-days
 # Customer intent: "As a cloud architect, I want to evaluate the features and management options of Azure virtual machines, so that I can determine the best deployment strategy for my applications and optimize costs and performance."
 ---
 

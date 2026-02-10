@@ -8,13 +8,13 @@ description: 'This article contains the details of the NVv3-series retirement. '
 author:      yangnicole-ml # GitHub alias
 ms.author: yangnicole
 ms.service: azure-virtual-machines
-ms.topic: article
+ms.topic: how-to
 ms.date:     06/13/2025
 ---
 
 # Migrate your NVv3-series virtual machines by September 30, 2026
 > [!NOTE]
-> 1-year and 3-year RI purchases for the NVv3-series will end September 30, 2025.  
+> 1-year and 3-year RI purchases for the NVv3-series ended November 1, 2025.  
 
 On September 30, 2026, Microsoft Azure will retire the Standard_NV12s_v3, Standard_NV12hs_v3, Standard_NV24s_v3, Standard_NV24ms_v3, Standard_NV32ms_v3, and Standard_NV48s_v3 virtual machines (VMs) in the NVv3-series virtual machines (VMs). To avoid any disruptions to your service, we recommend that you change the VM sizing for your workloads from the current NVv3-series VMs to the newer VM series in the same NV product line. 
 

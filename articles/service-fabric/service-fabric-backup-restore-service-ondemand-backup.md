@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 08/23/2024
+ms.update-cycle: 1095-days
 # Customer intent: As an application administrator, I want to perform on-demand backups of my Reliable Stateful services and Reliable Actors, so that I can protect against data loss or corruption during service updates or changes.
 ---
 

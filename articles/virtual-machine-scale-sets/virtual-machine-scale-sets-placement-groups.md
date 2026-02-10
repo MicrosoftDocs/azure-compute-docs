@@ -7,7 +7,7 @@ ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: management
 ms.date: 06/14/2024
-ms.reviewer: jushiman
+ms.reviewer: cynthn
 ms.custom: mimckitt, devx-track-azurecli
 
 # Customer intent: As a cloud architect, I want to deploy large Virtual Machine Scale Sets with multiple placement groups, so that I can efficiently manage a scalable infrastructure for applications requiring extensive resources and simple administration.
