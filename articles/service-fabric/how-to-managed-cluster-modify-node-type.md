@@ -277,7 +277,7 @@ In this walkthrough, you learn how to modify the OS image for a node type using 
 
 4) Select the `Node type name` you want to modify
 
-5) Adjust the `OS Image` to the new value you want and select `Apply` at the bottom. For instructions on adding custom OS images, please to the [custom image deployment documentation](https://learn.microsoft.com/azure/service-fabric/how-to-deploy-custom-image).
+5) Adjust the `OS Image` to the new value you want and select `Apply` at the bottom. For instructions on adding custom OS images, please refer to the [custom image deployment documentation](https://learn.microsoft.com/azure/service-fabric/how-to-deploy-custom-image).
 
 6) The `Provisioning state` shows a status of `Updating` and performs one upgrade domain at a time. When complete, it shows `Succeeded` again.
 ![Sample showing a node type updating][node-type-updating]
