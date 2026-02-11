@@ -328,7 +328,7 @@ Once unsharing happens, any VM or scale set previously associated to the CRG wou
 To unshare a Capacity Reservation Group with a subscription from the sharing profile, remove the subscription from the sharing profile. 
 
 #### [Portal](#tab/portal-3)
-To remove subscriptions from  the sharing profile of an existing capacity reservation group from Portal, follow the steps below:
+To remove subscriptions from  the sharing profile of an existing capacity reservation group from the portal, follow the steps:
 
 1. Open the [Azure portal](https://portal.azure.com).
 1. Go to your capacity reservation group.
