@@ -584,7 +584,7 @@ A single Virtual Machine can be removed from a Shared Capacity Reservation Group
 Virtual Machine Scale Set in Flexible and Uniform orchestration mode can be deployed in shared Capacity Reservation Group. To learn more, see [Associate a scale set -Flexible](/azure/virtual-machines/capacity-reservation-associate-virtual-machine-scale-set-flex) and [Associate a scale set - Uniform](/azure/virtual-machines/capacity-reservation-associate-virtual-machine-scale-set).
 
 #### Remove Virtual Machine Scale Set from Shared Capacity Reservation Group
-Virtual Machine Scale Set in Flexible and Uniform orchestration mode can be removed from shared Capacity Reservation Group. To learn more, see [Remove a scale set](/azure/virtual-machines/capacity-reservation-remove-virtual-machine-scale-set).
+Virtual Machine Scale Sets in Flexible and Uniform orchestration mode can be removed from a shared Capacity Reservation Group. To learn more, see [Remove a scale set](/azure/virtual-machines/capacity-reservation-remove-virtual-machine-scale-set).
 
 ## View shared Capacity Reservation Group
 
