@@ -600,7 +600,7 @@ To learn more, see [Create a Capacity Reservation](/azure/virtual-machines/capac
 1. Go to your capacity reservation group.
 1. Select **Settings** of the capacity reservation group.
 1. Select **Sharing**.
-1. View the subscriptions the capacity reservation group is shared with.
+1. View a list of the subscriptions the capacity reservation group is shared with.
 
 ### [API](#tab/api-5)
 
