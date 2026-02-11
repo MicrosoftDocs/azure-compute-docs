@@ -236,7 +236,7 @@ Add a sharing profile and share with subscriptions for an existing Capacity Rese
 
 
 #### [Portal](#tab/portal-2)
-To add subscriptions to the sharing profile of an existing capacity reservation group from Portal, follow the steps below:
+To add subscriptions to the sharing profile of an existing capacity reservation group from the portal, follow the steps:
 
 1. Open the [Azure portal](https://portal.azure.com).
 1. Go to your capacity reservation group.
