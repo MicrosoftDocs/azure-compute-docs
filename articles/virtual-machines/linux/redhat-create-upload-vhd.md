@@ -23,11 +23,9 @@ In this article, you learn how to prepare a Red Hat Enterprise Linux (RHEL) virt
 
 For more information about eligibility requirements for participating in Red Hat's Cloud Access program, see [the Red Hat Cloud Access website](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) and [Running RHEL on Azure](https://access.redhat.com/ecosystem/ccsp/microsoft-azure). For ways to automate building RHEL images, see [Azure Image Builder](../image-builder-overview.md).
 
-> [!NOTE]
-> This section assumes you already deployed RHEL7 and have it full licensed. Uploaded images that are at or beyond EOL are supported on a reasonable business-effort basis. For more information, see the Red Hat [Product Life Cycles](https://access.redhat.com/product-life-cycles/?product=Red%20Hat%20Enterprise%20Linux,OpenShift%20Container%20Platform%204).
-
 ### Prerequisites
-> This section assumes you already deployed RHEL7 and have it full licensed. Uploaded images that are at or beyond EOL are supported on a reasonable business-effort basis. For more information, see the Red Hat [Product Life Cycles](https://access.redhat.com/product-life-cycles/?product=Red%20Hat%20Enterprise%20Linux,OpenShift%20Container%20Platform%204).
+> [!NOTE]
+> This document assumes you already deployed RHEL7 and have it fully licensed. Uploaded images that are at or beyond EOL are supported on a reasonable business-effort basis. For more information, see the Red Hat [Product Life Cycles](https://access.redhat.com/product-life-cycles/?product=Red%20Hat%20Enterprise%20Linux,OpenShift%20Container%20Platform%204).
 
 
 ### RHEL installation notes
@@ -275,7 +273,7 @@ For more information about eligibility requirements for participating in Red Hat
 
 
 
-#### [RHEL 8+/9+/10+ using Hyper-V Manager](#tab/rhel89hv)
+#### [RHEL 8/9/10 using Hyper-V Manager](#tab/rhel89hv)
 
 1. In Hyper-V Manager, select the VM.
 
@@ -705,7 +703,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
     sudo qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-7.4.raw rhel-7.4.vhd
     ```
 
-#### [RHEL 8+/9+/10+ using using KVM](#tab/rhel89KVM)
+#### [RHEL 8/9/10 using using KVM](#tab/rhel89KVM)
 
 1. Ensure that the Network Manager service starts at boot time:
 
@@ -1156,7 +1154,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
     sudo qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-[version].raw rhel-[version].vhd
 
 
-#### [RHEL 8+/9+/10+ using VMware ](#tab/rhel89VMware)
+#### [RHEL 8/9/10 using VMware ](#tab/rhel89VMware)
 
 1. Ensure that the Network Manager service starts at boot time:
 
@@ -1663,7 +1661,7 @@ sudo dracut -f -v
 ```
 
    
-#### [RHEL 8+/9+/10+ using Kickstart](#tab/rhel89Kickstart)
+#### [RHEL 8/9/10 using Kickstart](#tab/rhel89Kickstart)
 
 This section shows you how to prepare RHEL (8 OR 9)  from an ISO by using a kickstart file.
 

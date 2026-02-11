@@ -52,6 +52,16 @@ vCPUs (Qty.) and Memory for each size
 
 Local (temp) storage info for each size
 
+| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read (RR)<sup>1</sup> IOPS | Temp Disk Random Read (RR)<sup>1</sup> Throughput (MB/s) |
+| --- | --- | --- | --- | --- |
+| Standard_EC2ads_v6 | 1 | 75 | 9000 | 125 |
+| Standard_EC4ads_v6 | 1 | 150 | 19000 | 250 |
+| Standard_EC8ads_v6 | 1 | 300 | 38000 | 500 |
+| Standard_EC16ads_v6 | 1 | 600 | 75000 | 1000 |
+| Standard_EC32ads_v6 | 1 | 1200 | 150000 | 2000 |
+| Standard_EC48ads_v6 | 1 | 1800 | 225000 | 3000 |
+| Standard_EC64ads_v6 | 1 | 2400 | 300000 | 4000 |
+| Standard_EC96ads_v6 | 1 | 3600 | 450000 | 4000 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
