@@ -34,8 +34,8 @@ Third party storage offerings on Azure that use page blobs via HTTP or HTTPS RES
 Start planning your migration to Azure managed disks today.
 
 - Make a list of all affected VMs:
-   - The VMs with **Uses managed disks** set to **No** on the [Azure portal's VM pane](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ClassicCompute%2FVirtualMachines) are all the affected VMs within the subscription.
-   - You can also query Azure Resource Graph by using the [portal](https://portal.azure.com/#blade/HubsExtension/ArgQueryBlade/query/resources%0A%7C%20where%20type%20%3D%3D%20%22microsoft.classiccompute%2Fvirtualmachines%22) or [PowerShell](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/governance/resource-graph/concepts/work-with-data.md) to view the list of all flagged VMs and related information for the selected subscriptions.
+   - On the [Azure portal's VM pane](https://portal.azure.com/#view/Microsoft_Azure_ComputeHub/ComputeHubMenuBlade/~/virtualMachinesBrowse), add the **Uses managed disks** filter and set its value to **No**, to get a list of all the affected VMs within the subscription.
+   - You can also query Azure Resource Graph by using the [portal](https://portal.azure.com/#view/Microsoft_Azure_Resources/ArgExplorer.ReactView/query/resources%0A%7C%20where%20type%20%3D~%20%22microsoft.compute%2Fvirtualmachines%22%0A%7C%20extend%20osDisk%20%3D%20properties.storageProfile.osDisk%0A%7C%20where%20isnull(osDisk.managedDisk.id)%0A%7C%20project%20subscriptionId%2C%20resourceGroup%2C%20name%2C%20location) to view the list of all flagged VMs and related information for the selected subscriptions.
    - On February 28, 2020, we sent out emails to subscription owners with a list of all subscriptions that contain these VMs. Use them to build this list.
 - Now that you have a list of all the affected VMs, see [Migrate Azure VMs to Managed Disks in Azure](windows/migrate-to-managed-disks.md) to learn how to migrate your unmanaged disks to managed disks. If you have other questions, see [Frequently asked questions about migrating to managed disks](faq-for-disks.yml).
 
