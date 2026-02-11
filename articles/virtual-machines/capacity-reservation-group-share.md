@@ -578,7 +578,7 @@ To share Reserved Instance discounts between a Capacity Reservation Group and VM
 A single Virtual Machine can be deployed in a shared Capacity Reservation Group. See [Associate a virtual machine to a Capacity Reservation group](/azure/virtual-machines/capacity-reservation-associate-vm).
 
 #### Remove a single Virtual Machine from Shared Capacity Reservation Group 
-Single Virtual Machine can be removed from Shared Capacity Reservation Group. See [Remove a virtual machine association from a Capacity Reservation group](/azure/virtual-machines/capacity-reservation-remove-vm).
+A single Virtual Machine can be removed from a Shared Capacity Reservation Group. See [Remove a virtual machine association from a Capacity Reservation group](/azure/virtual-machines/capacity-reservation-remove-vm).
 
 #### Associate or create a Virtual Machine Scale Set with shared Capacity Reservation Group 
 Virtual Machine Scale Set in Flexible and Uniform orchestration mode can be deployed in shared Capacity Reservation Group. To learn more, see [Associate a scale set -Flexible](/azure/virtual-machines/capacity-reservation-associate-virtual-machine-scale-set-flex) and [Associate a scale set - Uniform](/azure/virtual-machines/capacity-reservation-associate-virtual-machine-scale-set).
