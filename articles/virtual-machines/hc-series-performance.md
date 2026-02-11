@@ -4,7 +4,7 @@ description: Learn about performance testing results for HC-series VM sizes in A
 ms.service: azure-virtual-machines
 ms.subservice: hpc
 ms.topic: concept-article
-ms.date: 07/25/2024
+ms.date: 02/10/2026
 ms.reviewer: cynthn
 ms.author: padmalathas
 author: cynthn
@@ -15,9 +15,9 @@ author: cynthn
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
-Several performance tests have been run on HC-series sizes. The following are some of the results of this performance testing.
+Performance testing was conducted across multiple HC-series sizes. The following table summarizes key findings from these tests.
 
-| Workload                                        | HB                    |
+| Workload                                        | HC                    |
 |-------------------------------------------------|-----------------------|
 | STREAM Triad                                    | 190 GB/s (Intel MLC AVX-512)  |
 | High-Performance Linpack (HPL)                  | 3520 GigaFLOPS (Rpeak), 2970 GigaFLOPS (Rmax) |
@@ -27,13 +27,13 @@ Several performance tests have been run on HC-series sizes. The following are so
 
 ## MPI latency
 
-MPI latency test from the OSU microbenchmark suite is run. Sample scripts are on [GitHub](https://github.com/Azure/azhpc-images/blob/04ddb645314a6b2b02e9edb1ea52f079241f1297/tests/run-tests.sh)
+MPI latency test from the OSU Micro-Benchmarks (OMB) suite is run. Sample scripts are on [GitHub](https://github.com/Azure/azhpc-images/blob/04ddb645314a6b2b02e9edb1ea52f079241f1297/tests/run-tests.sh)
 
 ```bash
 ./bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./osu_latency 
 ```
 
-![Screenshot of MPI latency.](./media//hpc/latency-hc.png)
+:::image type="content" source="./media/hpc/latency-hc.png" alt-text="Screenshot of MPI latency graph for HC-series virtual machines.":::
 
 ## MPI bandwidth
 
@@ -43,8 +43,7 @@ MPI bandwidth test from the OSU microbenchmark suite is run. Sample scripts are 
 ./mvapich2-2.3.install/bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./mvapich2-2.3/osu_benchmarks/mpi/pt2pt/osu_bw
 ```
 
-![Screenshot of MPI bandwidth.](./media/hpc/bandwidth-hc.png)
-
+:::image type="content" source="./media/hpc/bandwidth-hc.png" alt-text="Screenshot of MPI bandwidth graph for HC-series virtual machines.":::
 
 ## Mellanox Perftest
 

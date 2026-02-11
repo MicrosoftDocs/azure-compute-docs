@@ -5,7 +5,7 @@ services: virtual-machines
 ms.service: azure-virtual-machines
 ms.subservice: hpc
 ms.topic: concept-article
-ms.date: 07/25/2024
+ms.date: 02/10/1016
 ms.reviewer: cynthn
 ms.author: padmalathas
 author: padmalathas

@@ -1736,7 +1736,7 @@ vnetConfig: {
 ---
 
 #### subnetId
-Resource ID of a pre-existing subnet on which the build VM and validation VM is deployed.
+Resource ID of a pre-existing subnet on which the build VM and validation VM is deployed. If any customization or validation scripts running in the build or validation VMs need outbound access then this subnet should also allow such access.
 
 #### containerInstanceSubnetId (optional)
 Resource ID of a pre-existing subnet on which Azure Container Instance (ACI) is deployed for [Isolated Builds](../security-isolated-image-builds-image-builder.md). If this field isn't specified, then a temporary Virtual Network,  along with subnets and Network Security Groups, is deployed in the staging resource group in addition to other networking resources (Private Endpoint, Private Link Service, Azure Load Balancer, and the Proxy VM) to enable communication between the ACI and the build VM.
