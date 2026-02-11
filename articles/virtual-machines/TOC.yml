@@ -2452,7 +2452,7 @@
     items:
     - name: Migrate from Amazon's EC2 Platform to Azure
       href: ./migration/migrate-from-ec2-architecture.md
-    - name: Migrate an AWS VMs to Azure
+    - name: Migrate an AWS VM instance to Azure
       href: /azure/migrate/tutorial-migrate-aws-virtual-machines
   - name: Retirement migration
     items:

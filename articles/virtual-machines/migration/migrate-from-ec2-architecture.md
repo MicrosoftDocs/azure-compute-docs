@@ -162,13 +162,13 @@ Azure VM sizes are defined by **SKU** (e.g., `Standard_D4s_v5`), which specifies
 - Temporary storage
 - Generation
 
-Check out this article on [VM size naming conventions](./vm-naming-conventions.md) for a more detailed description.
+Check out this article on [VM size naming conventions](../vm-naming-conventions.md) for a more detailed description.
 
 #### Key Differences
 - **Naming**: AWS uses family + size (e.g., `c5.xlarge`), while Azure uses series + SKU (e.g., `Standard_F4s_v2`).
 - **Performance Tiers**: Azure ties disk performance to VM size and disk SKU; AWS uses EBS-optimized instances.
 - **Regional Availability**: Both platforms' features vary by region. On Azure, certain features such as **Availability Zones** and **Spot** capacity aren't available in every region.
-- **Burstable Options**: AWS has `t` family for burstable workloads and can burst on other eligible sizes; Azure offers [B-series](./sizes/b-series-cpu-credit-model.md) for similar scenarios, and bursting is limited to the B-series.
+- **Burstable Options**: AWS has `t` family for burstable workloads and can burst on other eligible sizes; Azure offers [B-series](../sizes/b-series-cpu-credit-model.md) for similar scenarios, and bursting is limited to the B-series.
 - **Hypervisor Access**: Some AWS sizes allow for more direct control over the hypervisor (e.g., `i3.metal`); Azure does not expose this level of control.
 
 #### Mapping Strategy
@@ -180,7 +180,7 @@ Use the [Azure VM size documentation](./sizes/overview.md) and AWS [instance typ
    - **Map to Azure limits**: confirm disk SKU + VM size caps and the VM’s network limits (and whether **[Accelerated Networking](/azure/virtual-network/accelerated-networking-overview)** is supported).
    - **Test in Azure**: run quick storage/network benchmarks before you finalize the VM size.
 1. If any accelerators (GPU, FPGA) are used, ensure the Azure VM series supports them.
-1. Consider Azure-specific features like [Spot VMs](./spot-vms.md) for cost savings or [VM Scale Sets](../virtual-machine-scale-sets/overview.md) for elasticity.
+1. Consider Azure-specific features like [Spot VMs](../spot-vms.md) for cost savings or [VM Scale Sets](../../virtual-machine-scale-sets/overview.md) for elasticity.
 
 ### Images
 
