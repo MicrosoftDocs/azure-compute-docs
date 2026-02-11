@@ -27,7 +27,7 @@ The application health status is used to ensure that new virtual machines (VM) c
 
 **Configure the scale set with at least two availability zones**
 
-The Virtual Machine Scale Set must be zone-spanning with at least two [availability zones](./virtual-machine-scale-sets-use-availability-zones.md) configured (for example, `zones = [1, 2]`). This ensures that the VMs can be distributed across multiple zones for resiliency.
+The Virtual Machine Scale Set must be zone-spanning with at least two [availability zones](./virtual-machine-scale-sets-use-availability-zones.md) configured (for example, `zones = [1, 2]`). All VMs in the scale set must be assigned to an availability zone. Scale sets that contain regional (non-zonal) VMs don't qualify for automatic zone balance.  This ensures that the VMs can be distributed across multiple zones for resiliency.
 
 **Use best-effort zone balancing mode**
 

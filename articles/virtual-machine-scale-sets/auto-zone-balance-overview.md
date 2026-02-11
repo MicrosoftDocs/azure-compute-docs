@@ -47,23 +47,6 @@ Automatic zone balance waits up to 90 minutes for a newly created VM to report a
 
 :::image type="content" source="./media/virtual-machine-scale-sets-auto-zone-balance/auto-zone-balance-workflow.svg" alt-text="Diagram of the workflow for automatic zone balance.":::
 
-### When Does Rebalancing Occur?
-
-Automatic zone balance uses a two-factor approach to determine when rebalancing improves resiliency:
-
-1. **Total VM count**: The scale set must be imbalanced based on the total number of VMs (active + deallocated) across zones
-2. **Active VM distribution**: The under-provisioned zone must have fewer active VMs, ensuring that rebalancing improves the distribution of running workloads
-
-Rebalancing only occurs when both the total count is imbalanced **and** moving VMs would improve active VM distribution.
-
-#### Behavior Examples
-
-| Zone 1 | Zone 2 | Zone 3 | Rebalancing Behavior |
-|--------|--------|--------|---------------------|
-| 5 active VMs | 5 active VMs | 5 deallocated VMs | **No rebalancing** - Total count is balanced (5/5/5) |
-| 7 total VMs (2 active, 5 deallocated) | 4 active VMs | 4 active VMs | **No rebalancing** - Moving active VMs from Zone 1 would decrease resiliency |
-| 2 active VMs | 4 active VMs | 7 total VMs (5 active, 2 deallocated) | **Rebalances** to 4 active VMs / 4 active VMs / 5 total VMs (3 active, 2 deallocated) |
-
 ### Safety Features
 
 #### Safety Checks Before Rebalancing
@@ -76,9 +59,6 @@ Automatic zone balance won't move VMs under the [instance protection policy](./v
 
 #### Rebalancing Frequency
 Automatic zone balance performs a maximum of one rebalance operation every 12 hours. Only one VM is moved in each rebalance operation. This limit is in place to minimize churn and ensure that changes to your scale set are gradual and controlled. 
-
-#### Autoscale and Capacity Updates
-To ensure safe coordination with [Azure Autoscale](/azure/azure-monitor/autoscale/autoscale-overview), scale-in operations from autoscale are deferred while a rebalance is in progress and will execute after rebalancing completes. If a scale-out operation or customer-initiated capacity change occurs during rebalancing, the rebalance operation is canceled and the scale set is updated to the new desired capacity.
 
 ### Automatic Instance Repairs Integration
 
