@@ -15,7 +15,7 @@ ms.custom: devx-track-azurepowershell
 
 # Virtual machine extensions and features for Windows
 
-Azure virtual machine (VM) extensions are small applications that provide post-deployment configuration and automation tasks on Azure VMs. For example, if a virtual machine requires software installation, antivirus protection, or the ability to run a script inside of the VM, you can use a VM extension. 
+Azure virtual machine (VM) extensions are small applications that provide post-deployment configuration and automation tasks on Azure VMs. For example, if a virtual machine requires software installation, antivirus protection, or the ability to run a script inside of the VM, you can use a VM extension.
 
 You can run Azure VM extensions by using the Azure CLI, PowerShell, Azure Resource Manager (ARM) templates, and the Azure portal. You can bundle extensions with a new VM deployment or run them against any existing system.
 
@@ -43,15 +43,15 @@ Review the following prerequisites for working with Azure VM extensions.
 
 To handle extensions on the VM, you need the [Azure Virtual Machine Agent for Windows](agent-windows.md) installed. This agent is also referred to as the Azure VM Agent or the Windows Guest Agent. As you prepare to install extensions, keep in mind that some extensions have individual prerequisites, such as access to resources or dependencies.
 
-The Azure VM Agent manages interactions between an Azure VM and the Azure fabric controller. The agent is responsible for many functional aspects of deploying and managing Azure VMs, including running VM extensions. 
+The Azure VM Agent manages interactions between an Azure VM and the Azure fabric controller. The agent is responsible for many functional aspects of deploying and managing Azure VMs, including running VM extensions.
 
-The Azure VM Agent is preinstalled on Azure Marketplace images. The agent can also be installed manually on supported operating systems. 
+The Azure VM Agent is preinstalled on Azure Marketplace images. The agent can also be installed manually on supported operating systems.
 
 The agent runs on multiple operating systems. However, the extensions framework has a [limit for the operating systems that extensions use](/troubleshoot/azure/virtual-machines/extension-supported-os). Some extensions aren't supported across all operating systems and might emit error code 51 ("Unsupported OS"). Check the individual extension documentation for supportability.
 
 ### Network access
 
-Extension packages are downloaded from the Azure Storage extension repository. Extension status uploads are posted to Azure Storage. 
+Extension packages are downloaded from the Azure Storage extension repository. Extension status uploads are posted to Azure Storage.
 
 If you use a [supported version of the Azure VM Agent](/troubleshoot/azure/virtual-machines/support-extensions-agent-version), you don't need to allow access to Azure Storage in the VM region. You can use the VM Agent to redirect the communication to the Azure fabric controller for agent communications (via the `HostGAPlugin` feature through the privileged channel on private IP address [168.63.129.16](/azure/virtual-network/what-is-ip-address-168-63-129-16)). If you're on an unsupported version of the VM Agent, you need to allow outbound access to Azure Storage in that region from the VM.
 
@@ -91,7 +91,7 @@ AlertLogicLM        1.4.0.1
 
 Azure VM extensions run on existing VMs, which is useful when you need to make configuration changes or recover connectivity on an already deployed VM. VM extensions can also be bundled with ARM template deployments. By using extensions with ARM templates, you can deploy and configure Azure VMs without post-deployment intervention.
 
-You can use the following methods to run an extension against an existing VM. 
+You can use the following methods to run an extension against an existing VM.
 
 > [!NOTE]
 > Some of the following examples use `"<placeholder>"` parameter values in the commands. Before you run each command, make sure to replace any `"<placeholder>"` values with specific values for your configuration.
@@ -157,7 +157,7 @@ The following example shows the installation of the Microsoft Antimalware extens
 
 ### Azure Resource Manager templates
 
-You can add VM extensions to an ARM template and run them with the deployment of the template. When you deploy an extension with a template, you can create fully configured Azure deployments. 
+You can add VM extensions to an ARM template and run them with the deployment of the template. When you deploy an extension with a template, you can create fully configured Azure deployments.
 
 The following JSON example is from an [ARM template](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows) that deploys a set of load-balanced VMs and an Azure SQL database, and then installs a .NET Core application on each VM. The VM extension takes care of the software installation.
 
@@ -333,6 +333,59 @@ To get the latest minor-release bug fixes, we highly recommend that you always s
 
 If you disable automatic updates or you need to upgrade a major version, use the [Set-AzVMExtension](/powershell/module/az.compute/set-azvmextension) command and specify the target version.
 
+#### Check Extension Version
+
+> [!NOTE] **Model vs. Instance View**
+>
+> In Azure, the **model view** captures the configuration you defined for an extension (publisher, type, and requested version), while the **instance view** shows the live state and the actual handler version running on each VM or scale‑set instance—use instance view as the source of truth when verifying what’s really installed.
+
+**Check a single VM**
+
+**Azure CLI**
+
+```bash
+az vm get-instance-view -g <rg> -n <vm> \
+  --query "extensions[].{name:name,type:type,version:typeHandlerVersion,status:statuses[0].displayStatus}" \
+  -o table
+```
+
+Reads the VM’s **instance view** to show the actually installed handler version and status.
+
+**PowerShell**
+
+```powershell
+Get-AzVM -ResourceGroupName <rg> -Name <vmName> -Status |
+  Select-Object -ExpandProperty Extensions
+```
+
+Inspect `TypeHandlerVersion` and `Statuses` for each extension to confirm the running version and health.
+
+**Check scale sets (Uniform or Flexible)**
+
+**Azure CLI**
+
+```bash
+# Scale set summary (health)
+az vmss get-instance-view -g <rg> -n <vmss>
+
+# Per-instance extension versions
+az vmss list-instances -g <rg> -n <vmss> --expand instanceView \
+  --query "[].{instanceId:instanceId, extVers:instanceView.extensions[].typeHandlerVersion}"
+
+# Specific instance
+az vmss vm get-instance-view -g <rg> -n <vmss> --instance-id <id>
+```
+
+Use instance view at the scale‑set or per‑instance level to validate the actual handler versions.
+
+**PowerShell**
+
+```powershell
+Get-AzVmssVM -ResourceGroupName <rg> -VMScaleSetName <vmss> -InstanceView
+```
+
+Returns per‑instance runtime state, including extension versions and statuses.
+
 ### How to identify extension updates
 
 There are a few ways you can identify updates for an extension.
@@ -373,11 +426,11 @@ To perform its tasks, the Azure VM Agent needs to run as *Local System*.
 
 ## Troubleshoot VM extensions
 
-Each VM extension might have specific troubleshooting steps. For example, when you use the Custom Script Extension, you can find script execution details locally on the VM where the extension is run. 
+Each VM extension might have specific troubleshooting steps. For example, when you use the Custom Script Extension, you can find script execution details locally on the VM where the extension is run.
 
 The following troubleshooting actions apply to all VM extensions:
 
-- To check the Azure VM Agent Log, look at the activity when your extension was being provisioned in *C:\WindowsAzure\Logs\WaAppAgent.log*. 
+- To check the Azure VM Agent Log, look at the activity when your extension was being provisioned in *C:\WindowsAzure\Logs\WaAppAgent.log*.
 
 - Check the extension logs for more details in *C:\WindowsAzure\Logs\Plugins\<extensionName>*.
 

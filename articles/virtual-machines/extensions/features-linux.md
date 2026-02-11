@@ -319,6 +319,46 @@ To get the latest minor-release bug fixes, we highly recommend that you always s
 
 If you disable automatic updates or you need to upgrade a major version, use [az vm extension set](/cli/azure/vm/extension#az-vm-extension-set) or [Set-AzVMExtension](/powershell/module/az.compute/set-azvmextension) and specify the target version.
 
+#### Check Extension Version
+
+> [!NOTE] **Model vs. Instance View**
+>
+> In Azure, the **model view** captures the configuration you defined for an extension (publisher, type, and requested version), while the **instance view** shows the live state and the actual handler version running on each VM or scale‑set instance—use instance view as the source of truth when verifying what’s really installed.
+
+**Check a single VM**
+
+**Azure CLI**
+
+```bash
+az vm get-instance-view -g <rg> -n <vm> \
+  --query "extensions[].{name:name,type:type,version:typeHandlerVersion,status:statuses[0].displayStatus}" \
+  -o table
+```
+
+Reads the VM’s **instance view** to show the actually installed handler version and status.
+
+**Check scale sets (Uniform or Flexible)**
+
+**Azure CLI**
+
+```bash
+# Scale set summary (health)
+az vmss get-instance-view -g <rg> -n <vmss>
+
+# Per-instance extension versions
+az vmss list-instances -g <rg> -n <vmss> --expand instanceView \
+  --query "[].{instanceId:instanceId, extVers:instanceView.extensions[].typeHandlerVersion}"
+
+# Specific instance
+az vmss vm get-instance-view -g <rg> -n <vmss> --instance-id <id>
+```
+
+Use instance view at the scale‑set or per‑instance level to validate the actual handler versions.
+
+
+Returns per‑instance runtime state, including extension versions and statuses.
+
+
 ### How to identify extension updates
 
 #### Identify if the extension is set with autoUpgradeMinorVersion on a VM
