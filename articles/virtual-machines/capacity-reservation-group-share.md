@@ -411,7 +411,7 @@ To learn more, see [Update-AzCapacityReservation](/powershell/module/az.compute/
 To unshare a Capacity Reservation Group with all consumer subscriptions, remove all subscriptions from the sharing profile. 
 
 #### [Portal](#tab/portal-4)
-To remove subscriptions from  the sharing profile of an existing capacity reservation group from Portal, follow the steps below:
+To remove subscriptions from  the sharing profile of an existing capacity reservation group from the portal, follow the steps:
 
 1. Open the [Azure portal](https://portal.azure.com).
 1. Go to your capacity reservation group.
