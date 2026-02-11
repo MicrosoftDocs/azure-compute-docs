@@ -335,7 +335,8 @@ If you disable automatic updates or you need to upgrade a major version, use the
 
 #### Check Extension Version
 
-> [!NOTE] **Model vs. Instance View**
+> [!NOTE]
+> **Model vs. Instance View**
 >
 > In Azure, the **model view** captures the configuration you defined for an extension (publisher, type, and requested version), while the **instance view** shows the live state and the actual handler version running on each VM or scale‑set instance—use instance view as the source of truth when verifying what’s really installed.
 
