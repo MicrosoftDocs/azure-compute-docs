@@ -172,7 +172,7 @@ Check out this article on [VM size naming conventions](../vm-naming-conventions.
 - **Hypervisor Access**: Some AWS sizes allow for more direct control over the hypervisor (e.g., `i3.metal`); Azure does not expose this level of control.
 
 #### Mapping Strategy
-Use the [Azure VM size documentation](./sizes/overview.md) and AWS [instance type guide](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html) to:
+Use the [Azure VM size documentation](../sizes/overview.md) and AWS [instance type guide](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html) to:
 1. Identify your EC2 instance family and size.
 1. Match to an Azure VM series with equivalent CPU/memory ratio and CPU architecture (x86 or ARM).
 1. Validate storage and networking requirements (this is the step that prevents over/under-provisioning):
