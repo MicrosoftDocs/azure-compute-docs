@@ -88,7 +88,7 @@ Capacity Reservation Groups are shared by adding Consumer subscriptions in the s
 Share a Capacity Reservation Group during creation by adding subscriptions in the sharing profile.
 
 #### [Portal](#tab/portal-1)
-To create a Capacity Reservation Group with sharing profile from Portal, follow the steps below:
+To create a Capacity Reservation Group with sharing profile from the portal, follow the steps:
 
 1. Open the [Azure portal](https://portal.azure.com).
 1. In the search bar, enter **capacity reservation groups**.
