@@ -2448,7 +2448,7 @@
     href: move-region-maintenance-configuration.md
   - name: Move Maintenance Control configuration resources to another region
     href: move-region-maintenance-configuration-resources.md
-  - name: Migrate from other cloud providers
+  - name: Migrate from AWS
     items:
     - name: Migrate from Amazon's EC2 Platform to Azure
       href: ./migration/migrate-from-ec2-architecture.md
