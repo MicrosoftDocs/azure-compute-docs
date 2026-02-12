@@ -487,6 +487,20 @@ Converting to a PAYG subscription model is supported for Azure Marketplace image
     # In order to revert back to the original licensing model, set license-type to None.
     az vm update -g myResourceGroup -n myVmName --license-type NONE
     ```
+In some cases, you must utilize the Azure Management API to patch the license type in the virtual machine's metadata:
+
+1. Define a variable with a full path to the target virtual machine:
+   ```azurecli
+   VM_ID=$(az vm list --query "[?name=='YourVMName'].id" -o tsv)
+   ```
+1. Update the license type by patching the VM's metadata. For example, change PAYG license to SLES_SAP:
+   ```azurecli
+   az rest --method patch --url "https://management.azure.com${VM_ID}?api-version=2024-07-01" --body '{"properties":{"licenseType":"SLES_SAP"}}'
+   ```
+1. If you want to return the original subscription model, set `license-type` to `None`.
+   ```azurecli
+   az rest --method patch --url "https://management.azure.com${VM_ID}?api-version=2024-07-01" --body '{"properties":{"licenseType":"NONE"}}'
+   ```
 
 ---
 
