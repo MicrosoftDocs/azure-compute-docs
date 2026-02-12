@@ -19,30 +19,28 @@ ms.custom:
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
-In this article, you learn how to prepare a Red Hat Enterprise Linux (RHEL) virtual machine (VM) for use in Azure. The versions of RHEL that are covered in this article are 7.x, 8.X., 9.x. The hypervisors for preparation that are covered in this article are Hyper-V, kernel-based VM (KVM), VMware and Kickstart.
+In this article, you learn how to prepare a Red Hat Enterprise Linux (RHEL) virtual machine (VM) for use in Azure. The versions of RHEL that are covered in this article are 7.x, 8.X., 9.x. The hypervisors for preparation that are covered in this article are Hyper-V, kernel-based VM (KVM), VMware, and Kickstart.
 
 For more information about eligibility requirements for participating in Red Hat's Cloud Access program, see [the Red Hat Cloud Access website](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) and [Running RHEL on Azure](https://access.redhat.com/ecosystem/ccsp/microsoft-azure). For ways to automate building RHEL images, see [Azure Image Builder](../image-builder-overview.md).
 
-> [!NOTE]
-> Be aware of versions that are at their end of life (EOL) and are no longer supported by Red Hat. Uploaded images that are at or beyond EOL are supported on a reasonable business-effort basis. For more information, see the Red Hat [Product Life Cycles](https://access.redhat.com/product-life-cycles/?product=Red%20Hat%20Enterprise%20Linux,OpenShift%20Container%20Platform%204).
-
 ### Prerequisites
+> [!NOTE]
+> This document assumes you already deployed RHEL7 and have it fully licensed. Uploaded images that are at or beyond EOL are supported on a reasonable business-effort basis. For more information, see the Red Hat [Product Life Cycles](https://access.redhat.com/product-life-cycles/?product=Red%20Hat%20Enterprise%20Linux,OpenShift%20Container%20Platform%204).
 
-This section assumes that you've already obtained an ISO file from the Red Hat website and installed the RHEL image to a virtual hard disk (VHD). For more information about how to use Hyper-V Manager to install an operating system image, see [Install the Hyper-V role and configure a virtual machine](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11)).
 
 ### RHEL installation notes
 
 * Azure doesn't support the VHDX format. Azure supports only *fixed VHD*. You can use Hyper-V Manager to convert the disk to VHD format, or you can use the `convert-vhd` cmdlet. If you use VirtualBox, select **Fixed size** as opposed to the default dynamically allocated option when you create the disk.
 * Azure supports Gen1 (BIOS boot) and Gen2 (UEFI boot) VMs.
-* The maximum size that's allowed for the VHD is 1,023 GB.
+* The maximum allowed size for the VHD is 1,023 GB.
 * The vfat kernel module must be enabled in the kernel.
 * Logical Volume Manager (LVM) is supported and can be used on the OS disk or data disks in Azure VMs. In general, we recommend that you use standard partitions on the OS disk rather than LVM. This practice avoids LVM name conflicts with cloned VMs, particularly if you ever need to attach an operating system disk to another identical VM for troubleshooting. For more information, see the [LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm) and [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid) documentation.
-* *Kernel support for mounting Universal Disk Format (UDF) file systems is required*. At first boot on Azure, the UDF-formatted media that's attached to the guest passes the provisioning configuration to the Linux VM. The Azure Linux agent must be able to mount the UDF file system to read its configuration and provision the VM. Without this step, provisioning fails.
+* *Kernel support for mounting Universal Disk Format (UDF) file systems is required*. At first boot on Azure, the attached UDF-formatted media passes the provisioning configuration to the Linux VM. The Azure Linux agent must be able to mount the UDF file system to read its configuration and provision the VM. Without this step, provisioning fails.
 * Don't configure a swap partition on the operating system disk. For more information, read the following steps.
 * All VHDs on Azure must have a virtual size aligned to 1 MB. When you convert from a raw disk to VHD, you must ensure that the raw disk size is a multiple of 1 MB before conversion. For more information, read the following steps. See also [Linux installation notes](create-upload-generic.md#general-linux-installation-notes).
 
 > [!NOTE]
-> _Cloud-init >= 21.2 removes the UDF requirement_. However, without the UDF module enabled, the CD-ROM won't mount during provisioning, which prevents custom data from being applied. A workaround is to apply custom data by using user data. Unlike custom data, user data isn't encrypted. For more information, see [User data formats](https://cloudinit.readthedocs.io/en/latest/topics/format.html).
+> _Cloud-init >= 21.2 removes the UDF requirement_. However, without the UDF module enabled, the provided CD-ROM fails to mount, preventing custom data from being applied. A workaround is to apply custom data by using user data. Unlike custom data, user data isn't encrypted. For more information, see [User data formats](https://cloudinit.readthedocs.io/en/latest/topics/format.html).
 
 
 
@@ -75,7 +73,7 @@ This section assumes that you've already obtained an ISO file from the Red Hat w
     ```
 
     > [!NOTE]
-    > When you use Accelerated Networking, the synthetic interface that's created must be configured to be unmanaged by using a udev rule. This action prevents `NetworkManager` from assigning the same IP to it as the primary interface. <br>
+    > When you use Accelerated Networking, the provisioned synthetic interface must be configured to be unmanaged by using a udev rule. This action prevents `NetworkManager` from assigning the same IP to it as the primary interface. <br>
     
     To apply it:<br>
     
@@ -102,16 +100,13 @@ This section assumes that you've already obtained an ISO file from the Red Hat w
 1. Modify the kernel boot line in your grub configuration to include more kernel parameters for Azure. To do this modification, open `/etc/default/grub` in a text editor and edit the `GRUB_CMDLINE_LINUX` parameter. For example:
 
     ```config-grub
-    GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0 net.ifnames=0"
-    GRUB_TERMINAL_OUTPUT="serial console"
+    GRUB_TIMEOUT=10
+    GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0 net.ifnames=0 nvme_core.io_timeout=240"
+    GRUB_TERMINAL="serial console"
     GRUB_SERIAL_COMMAND="serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1"
-    ENABLE_BLSCFG=true
     ```
 
-   > [!NOTE]
-   > If [ENABLE_BLSCFG=false](https://access.redhat.com/solutions/6929571) is present in `/etc/default/grub` instead of `ENABLE_BLSCFG=true`, tools such as *grubedit* or *gubby*, which rely on the Boot Loader Specification (BLS) for managing boot entries and configurations, might not function correctly in RHEL 8 and 9. If `ENABLE_BLSCFG` isn't present, the default behavior is `false`.
-
-   This modification also ensures that all console messages are sent to the first serial port and enables interaction with the serial console, which can assist Azure support with debugging issues. This configuration also turns off the new naming conventions for network interface cards (NICs).
+   These modifications turn off the new naming convention for NICs, ensure all console messages are sent to the first serial port, and enable interaction with the console, which can assist Aure support with debugging issues. 
 
    ```config
    rhgb quiet crashkernel=auto
@@ -134,7 +129,7 @@ This section assumes that you've already obtained an ISO file from the Red Hat w
     ClientAliveInterval 180
     ```
 
-1. The WALinuxAgent package, `WALinuxAgent-<version>`, has been pushed to the Red Hat extras repository. Enable the extras repository:
+1. The WALinuxAgent package, `WALinuxAgent-<version>`, is available from the Extras repository.
 
     ```bash
     sudo subscription-manager repos --enable=rhel-7-server-extras-rpms
@@ -209,7 +204,7 @@ This section assumes that you've already obtained an ISO file from the Red Hat w
 1. Swap configuration:
     - Don't create swap space on the operating system disk.
 
-       Previously, the Azure Linux agent was used to automatically configure swap space by using the local resource disk that's attached to the VM after the VM is provisioned on Azure. This action is now handled by `cloud-init`. You *must not* use the Linux agent to format the resource disk to create the swap file. Modify the following parameters in `/etc/waagent.conf` appropriately:
+       Previously, the Azure Linux agent was used to automatically configure swap space on the local resource disk attached to the VM after the VM is provisioned on Azure, `cloud-init` handles now this action. You *must not* use the Linux agent to format the resource disk to create the swap file. Modify the following parameters in `/etc/waagent.conf` appropriately:
 
         ```config
         ResourceDisk.Format=n
@@ -278,7 +273,7 @@ This section assumes that you've already obtained an ISO file from the Red Hat w
 
 
 
-#### [RHEL 8+/9+ using Hyper-V Manager](#tab/rhel89hv)
+#### [RHEL 8/9/10 using Hyper-V Manager](#tab/rhel89hv)
 
 1. In Hyper-V Manager, select the VM.
 
@@ -290,6 +285,15 @@ This section assumes that you've already obtained an ISO file from the Red Hat w
     sudo systemctl enable NetworkManager.service
     ```
 
+1. Prevent NetworkManager from configuring the adapter added for accelerated networking.
+
+    ```bash
+    sudo tee <<EOF /etc/NetworkManager/conf.d/99-azure-unmanaged-devices.conf > /dev/null
+    [keyfile]
+    unmanaged-devices=driver:mlx4_core,driver:mlx5_core
+    EOF
+    ```
+
 1. Configure the network interface to automatically start at boot and use the Dynamic Host Configuration Protocol:
 
     ```bash
@@ -297,7 +301,7 @@ This section assumes that you've already obtained an ISO file from the Red Hat w
     ```
     
     > [!NOTE]
-    > When you use Accelerated Networking, the synthetic interface that's created must be configured to be unmanaged by using a udev rule. This action prevents `NetworkManager` from assigning the same IP to it as the primary interface. <br>
+    > When you use Accelerated Networking, the provisioned synthetic interface must be configured to be unmanaged by using a udev rule. This action prevents `NetworkManager` from assigning the same IP to it as the primary interface. <br>
     
     To apply it:<br>
     
@@ -326,12 +330,17 @@ This section assumes that you've already obtained an ISO file from the Red Hat w
 1. Edit `/etc/default/grub` in a text editor, and add the following parameters:
 
     ```config-grub
-    GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 earlyprintk=ttyS0 net.ifnames=0"
-    GRUB_TERMINAL_OUTPUT="serial console"
+    GRUB_TIMEOUT=10
+    GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 earlyprintk=ttyS0 net.ifnames=0 nvme_core.io_timeout=240"
+    GRUB_TERMINAL="serial console"
     GRUB_SERIAL_COMMAND="serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1"
     ```
 
-   This modification also ensures that all console messages are sent to the first serial port and enable interaction with the serial console, which can assist Azure support with debugging issues. This configuration also turns off the new naming conventions for NICs.
+   These modifications turn off the new naming convention for NICs, ensure all console messages are sent to the first serial port, and enable interaction with the console, which can assist Aure support with debugging issues. 
+
+   > [!NOTE]
+   > If [ENABLE_BLSCFG=false](https://access.redhat.com/solutions/6929571) is present in `/etc/default/grub` instead of `ENABLE_BLSCFG=true`, tools such as *grubedit* or *gubby*, which rely on the Boot Loader Specification (BLS) for managing boot entries and configurations, might not function correctly in RHEL 8 and 9. If `ENABLE_BLSCFG` isn't present, the default behavior is `false`.
+
 
 1. We recommend that you also remove the following parameters:
 
@@ -345,14 +354,9 @@ This section assumes that you've already obtained an ISO file from the Red Hat w
 
     ```bash
     sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+    sudo grubby --update-kernel=ALL
     ```
     
-    For a UEFI-enabled VM, run the following command:
-
-    ```bash
-    sudo grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg
-    ```
-
 1. Ensure that the SSH server is installed and configured to start at boot time, which is usually the default. Modify `/etc/ssh/sshd_config` to include the following line:
 
     ```config
@@ -381,6 +385,9 @@ This section assumes that you've already obtained an ISO file from the Red Hat w
         > If you're migrating a specific VM and don't want to create a generalized image, set `Provisioning.Agent=disabled` on the `/etc/waagent.conf` configuration.
 
     1. Configure mounts:
+
+        > [!NOTE]
+        > Not required for cloud-init v23.x and newer.
 
         ```bash
         sudo echo "Adding mounts and disk_setup to init stage"
@@ -428,7 +435,7 @@ This section assumes that you've already obtained an ISO file from the Red Hat w
 1. Swap configuration:
     - Don't create swap space on the operating system disk.
 
-       Previously, the Azure Linux agent was used to automatically configure swap space by using the local resource disk that's attached to the VM after the VM is provisioned on Azure. This action is now handled by `cloud-init`. You *must not* use the Linux agent to format the resource disk create the swap file. Modify the following parameters in `/etc/waagent.conf` appropriately:
+       Previously, the Azure Linux agent was used to automatically configure swap space on the local resource disk attached to the VM after the VM is provisioned on Azure, `cloud-init` handles now this action. You *must not* use the Linux agent to format the resource disk to create the swap file. Modify the following parameters in `/etc/waagent.conf` appropriately:
 
        ```bash
        ResourceDisk.Format=n
@@ -545,7 +552,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
     NM_CONTROLLED=yes
     ```
     > [!NOTE]
-    > When you use Accelerated Networking, the synthetic interface that's created must be configured to be unmanaged by using a udev rule. This action prevents `NetworkManager` from assigning the same IP to it as the primary interface. <br>
+    > When you use Accelerated Networking, the provisioned synthetic interface must be configured to be unmanaged by using a udev rule. This action prevents `NetworkManager` from assigning the same IP to it as the primary interface. <br>
     
     To apply it:<br>
     
@@ -572,7 +579,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
 1. Modify the kernel boot line in your grub configuration to include more kernel parameters for Azure. To do this configuration, open `/etc/default/grub` in a text editor and edit the `GRUB_CMDLINE_LINUX` parameter. For example:
 
     ```config-grub
-    GRUB_CMDLINE_LINUX="console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
+    GRUB_CMDLINE_LINUX="console=ttyS0 earlyprintk=ttyS0 net.ifnames=0 nvme_core.io_timeout=240"
     ```
 
    This command also ensures that all console messages are sent to the first serial port, which can assist Azure support with debugging issues. The command also turns off the new  naming conventions for NICs. We also recommend that you remove the following parameters:
@@ -588,6 +595,9 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
     ```bash
     sudo grub2-mkconfig -o /boot/grub2/grub.cfg
     ```
+
+    > [!NOTE]
+    > If you're uploading a UEFI-enabled VM, the command to update grub is `grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg`.
 
 1. Add Hyper-V modules into initramfs.
 
@@ -622,7 +632,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
     ClientAliveInterval 180
     ```
 
-1. The WALinuxAgent package, `WALinuxAgent-<version>`, has been pushed to the Red Hat extras repository. Enable the extras repository:
+1. The WALinuxAgent package, `WALinuxAgent-<version>`, is located in the Red Hat extras repository. Enable the extras repository:
 
     ```bash
     sudo subscription-manager repos --enable=rhel-7-server-extras-rpms
@@ -662,7 +672,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
 1. Convert the qcow2 image to the VHD format.
 
     > [!NOTE]
-    > There's a known bug in qemu-img versions >=2.2.1 that results in an improperly formatted VHD. The issue has been fixed in QEMU 2.6. We recommend that you use either qemu-img 2.2.0 or lower, or update to 2.6 or higher. For more information, see [this website](https://bugs.launchpad.net/qemu/+bug/1490611).
+    > There's a known bug in QEMU versions between 2.2.1 and 2.6 that results in an improperly formatted VHD. We recommend that you use either qemu-img 2.2.0 or lower, or update to 2.6 or higher. For more information, see [this website](https://bugs.launchpad.net/qemu/+bug/1490611).
     >
 
     First convert the image to raw format:
@@ -676,7 +686,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
     ```bash
     MB=$((1024*1024))
     size=$(qemu-img info -f raw --output json "rhel-7.4.raw" | \
-    gawk 'match($0, /"virtual-size": ([0-9]+),/, val) {print val[1]}')
+           jq '."virtual-size"')
     rounded_size=$((($size/$MB + 1)*$MB))
     sudo qemu-img resize rhel-7.4.raw $rounded_size
     ```
@@ -693,7 +703,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
     sudo qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-7.4.raw rhel-7.4.vhd
     ```
 
-#### [RHEL 8+/9+ using using KVM](#tab/rhel89KVM)
+#### [RHEL 8/9/10 using using KVM](#tab/rhel89KVM)
 
 1. Ensure that the Network Manager service starts at boot time:
 
@@ -708,7 +718,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
     ```
     
     > [!NOTE]
-    > When you use Accelerated Networking, the synthetic interface that's created must be configured to be unmanaged by using a udev rule. This action prevents `NetworkManager` from assigning the same IP to it as the primary interface. <br>
+    > When you use Accelerated Networking, the provisioned synthetic interface must be configured to be unmanaged by using a udev rule. This action prevents `NetworkManager` from assigning the same IP to it as the primary interface. <br>
     
     To apply it:<br>
     
@@ -720,6 +730,16 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
     SUBSYSTEM=="net", DRIVERS=="hv_pci", ACTION!="remove", ENV{NM_UNMANAGED}="1"
     EOF
     ```
+
+1. Prevent NetworkManager from configuring the adapter added for accelerated networking.
+    
+    ```bash
+    sudo tee <<EOF /etc/NetworkManager/conf.d/99-azure-unmanaged-devices.conf > /dev/null
+    [keyfile]
+    unmanaged-devices=driver:mlx4_core,driver:mlx5_core
+    EOF
+    ```
+
 1. Register your Red Hat subscription to enable the installation of packages from the RHEL repository:
 
     ```bash
@@ -737,12 +757,18 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
 1. Edit `/etc/default/grub` in a text editor, and add the following parameters:
 
     ```config-grub
-    GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 earlyprintk=ttyS0 net.ifnames=0"
-    GRUB_TERMINAL_OUTPUT="serial console"
+    GRUB_TIMEOUT=10
+    GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 earlyprintk=ttyS0 net.ifnames=0 nvme_core.io_timeout=240"
+    GRUB_TERMINAL="serial console"
     GRUB_SERIAL_COMMAND="serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1"
+    ENABLE_BLSCFG=true
     ```
 
-   This modification also ensures that all console messages are sent to the first serial port and enable interaction with the serial console, which can assist Azure support with debugging issues. This configuration also turns off the new naming conventions for NICs.
+   These modifications turn off the new naming convention for NICs, ensure all console messages are sent to the first serial port, and enable interaction with the console, which can assist Aure support with debugging issues. 
+
+   > [!NOTE]
+   > If [ENABLE_BLSCFG=false](https://access.redhat.com/solutions/6929571) is present in `/etc/default/grub` instead of `ENABLE_BLSCFG=true`, tools such as *grubedit* or *gubby*, which rely on the Boot Loader Specification (BLS) for managing boot entries and configurations, might not function correctly in RHEL 8,9 and 10. If `ENABLE_BLSCFG` isn't present, the default behavior is `false`.
+
 
 1. We recommend that you also remove the following parameters:
 
@@ -756,6 +782,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
 
     ```bash
     sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+    sudo grubby --update-kernel=ALL
     ```
 
 1. Add Hyper-V modules into initramfs.
@@ -867,7 +894,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
 1. Swap configuration:
     - Don't create swap space on the operating system disk.
 
-       Previously, the Azure Linux agent was used to automatically configure swap space by using the local resource disk that's attached to the VM after the VM is provisioned on Azure. This action is now handled by `cloud-init`. You *must not* use the Linux agent to format the resource disk create the swap file. Modify the following parameters in `/etc/waagent.conf` appropriately:
+       Previously, the Azure Linux agent was used to automatically configure swap space on the local resource disk attached to the VM after the VM is provisioned on Azure, `cloud-init` handles now this action. You *must not* use the Linux agent to format the resource disk to create the swap file. Modify the following parameters in `/etc/waagent.conf` appropriately:
 
        ```bash
        ResourceDisk.Format=n
@@ -944,7 +971,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
 1. Convert the qcow2 image to the VHD format.
 
     > [!NOTE]
-    > There's a known bug in qemu-img versions >=2.2.1 that results in an improperly formatted VHD. The issue has been fixed in QEMU 2.6. We recommend that you use either qemu-img 2.2.0 or lower, or update to 2.6 or higher. For more information, see [this website](https://bugs.launchpad.net/qemu/+bug/1490611).
+    > There's a known bug in QEMU versions between 2.2.1 and 2.6 that results in an improperly formatted VHD. We recommend that you use either qemu-img 2.2.0 or lower, or update to 2.6 or higher. For more information, see [this website](https://bugs.launchpad.net/qemu/+bug/1490611).
     >
 
     First convert the image to raw format:
@@ -958,7 +985,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
     ```bash
     MB=$((1024*1024))
     size=$(qemu-img info -f raw --output json "rhel-[version].raw" | \
-    gawk 'match($0, /"virtual-size": ([0-9]+),/, val) {print val[1]}')
+           jq '."virtual-size"')
     rounded_size=$((($size/$MB + 1)*$MB))
     sudo qemu-img resize rhel-[version].raw $rounded_size
     ```
@@ -999,7 +1026,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
     NM_CONTROLLED=yes
     ```
     > [!NOTE]
-    > When you use Accelerated Networking, the synthetic interface that's created must be configured to be unmanaged by using a udev rule. This action prevents `NetworkManager` from assigning the same IP to it as the primary interface. <br>
+    > When you use Accelerated Networking, the provisioned synthetic interface must be configured to be unmanaged by using a udev rule. This action prevents `NetworkManager` from assigning the same IP to it as the primary interface. <br>
     
     To apply it:<br>
     
@@ -1026,10 +1053,10 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
 1. Modify the kernel boot line in your grub configuration to include more kernel parameters for Azure. To do this modification, open `/etc/default/grub` in a text editor and edit the `GRUB_CMDLINE_LINUX` parameter. For example:
 
     ```config-grub
-    GRUB_CMDLINE_LINUX="console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
+    GRUB_CMDLINE_LINUX="console=ttyS0 earlyprintk=ttyS0 net.ifnames=0 nvme_core.io_timeout=240"
     ```
 
-   This configuration ensures that all console messages are sent to the first serial port, which can assist Azure support with debugging issues. It also turns off the new RHEL 7 naming conventions for NICs. In addition, we recommend that you remove the following parameters:
+   These modifications turn off the new naming convention for NICs, ensure all console messages are sent to the first serial port and enable interaction with the console, which can assist Aure support with debugging issues, we recommend that you remove the following parameters:
 
     ```config-grub
     rhgb quiet crashkernel=auto
@@ -1063,7 +1090,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
     ClientAliveInterval 180
     ```
 
-1. The WALinuxAgent package, `WALinuxAgent-<version>`, has been pushed to the Red Hat extras repository. Enable the extras repository:
+1. The WALinuxAgent package, `WALinuxAgent-<version>`, is not located in the Red Hat extras repository. Enable the extras repository:
 
     ```bash
     sudo subscription-manager repos --enable=rhel-7-server-extras-rpms
@@ -1096,7 +1123,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
 1. Shut down the VM and convert the VMDK file to the VHD format.
 
     > [!NOTE]
-    > There's a known bug in qemu-img versions >=2.2.1 that results in an improperly formatted VHD. The issue has been fixed in QEMU 2.6. We recommend that you use either qemu-img 2.2.0 or lower, or update to 2.6 or higher. For more information, see [this website](https://bugs.launchpad.net/qemu/+bug/1490611).
+    > There's a known bug in QEMU versions between 2.2.1 and 2.6 that results in an improperly formatted VHD. We recommend that you use either qemu-img 2.2.0 or lower, or update to 2.6 or higher. For more information, see [this website](https://bugs.launchpad.net/qemu/+bug/1490611).
     >
 
     First convert the image to raw format:
@@ -1127,7 +1154,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
     sudo qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-[version].raw rhel-[version].vhd
 
 
-#### [RHEL 8+/9+ using VMware ](#tab/rhel89VMware)
+#### [RHEL 8/9/10 using VMware ](#tab/rhel89VMware)
 
 1. Ensure that the Network Manager service starts at boot time:
 
@@ -1142,7 +1169,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
     ```
     
     > [!NOTE]
-    > When you use Accelerated Networking, the synthetic interface that's created must be configured to be unmanaged by using a udev rule. This action prevents `NetworkManager` from assigning the same IP to it as the primary interface. <br>
+    > When you use Accelerated Networking, the provisioned synthetic interface must be configured to be unmanaged by using a udev rule. This action prevents `NetworkManager` from assigning the same IP to it as the primary interface. <br>
     
     To apply it:<br>
     
@@ -1154,6 +1181,15 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
     SUBSYSTEM=="net", DRIVERS=="hv_pci", ACTION!="remove", ENV{NM_UNMANAGED}="1"
     EOF
     ```
+1. Prevent NetworkManager from configuring the adapter added for accelerated networking.
+    
+    ```bash
+    sudo tee <<EOF /etc/NetworkManager/conf.d/99-azure-unmanaged-devices.conf > /dev/null
+    [keyfile]
+    unmanaged-devices=driver:mlx4_core,driver:mlx5_core
+    EOF
+    ```
+
 1. Register your Red Hat subscription to enable the installation of packages from the RHEL repository:
 
     ```bash
@@ -1171,12 +1207,13 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
 1. Edit `/etc/default/grub` in a text editor, and add the following parameters:
 
     ```config-grub
-    GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 earlyprintk=ttyS0 net.ifnames=0"
+    GRUB_TIMEOUT=10
+    GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 earlyprintk=ttyS0 net.ifnames=0 nvme_core.io_timeout=240"
     GRUB_TERMINAL_OUTPUT="serial console"
     GRUB_SERIAL_COMMAND="serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1"
     ```
 
-   This modification also ensures that all console messages are sent to the first serial port and enable interaction with the serial console, which can assist Azure support with debugging issues. This configuration also turns off the new naming conventions for NICs.
+   These modifications turn off the new naming convention for NICs, ensure all console messages are sent to the first serial port and enable interaction with the console, which can assist Aure support with debugging issues. 
 
 1. We recommend that you also remove the following parameters:
 
@@ -1234,6 +1271,9 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
         > If you're migrating a specific VM and don't want to create a generalized image, set `Provisioning.Agent=disabled` on the `/etc/waagent.conf` configuration.
 
     1. Configure mounts:
+
+        > [!NOTE]
+        > Not required for cloud-init v23.x and newer.
 
         ```bash
         sudo echo "Adding mounts and disk_setup to init stage"
@@ -1301,7 +1341,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
 1. Swap configuration:
     - Don't create swap space on the operating system disk.
 
-       Previously, the Azure Linux agent was used to automatically configure swap space by using the local resource disk that's attached to the VM after the VM is provisioned on Azure. This action is now handled by `cloud-init`. You *must not* use the Linux agent to format the resource disk create the swap file. Modify the following parameters in `/etc/waagent.conf` appropriately:
+       Previously, the Azure Linux agent was used to automatically configure swap space on the local resource disk attached to the VM after the VM is provisioned on Azure, `cloud-init` handles now this action. You *must not* use the Linux agent to format the resource disk to create the swap file. Modify the following parameters in `/etc/waagent.conf` appropriately:
 
        ```bash
        ResourceDisk.Format=n
@@ -1537,7 +1577,7 @@ This section shows you how to prepare RHEL 7  from an ISO by using a kickstart f
     EOF
 
     # Set the cmdline
-    sed -i 's/^\(GRUB_CMDLINE_LINUX\)=".*"$/\1="console=tty1 console=ttyS0 earlyprintk=ttyS0"/g' /etc/default/grub
+    sed -i 's/^\(GRUB_CMDLINE_LINUX\)=".*"$/\1="console=tty1 console=ttyS0 earlyprintk=ttyS0 nvme_core.io_timeout=240"/g' /etc/default/grub
 
     # Enable SSH keepalive
     sed -i 's/^#\(ClientAliveInterval\).*$/\1 180/g' /etc/ssh/sshd_config
@@ -1594,7 +1634,7 @@ This section shows you how to prepare RHEL 7  from an ISO by using a kickstart f
 
 1. Enter `inst.ks=<the location of the kickstart file>` at the end of the boot options, and select the **Enter** key.
 
-1. Wait for the installation to finish. When it's finished, the VM shuts down automatically. Your Linux VHD is now ready to be uploaded to Azure.
+1. Wait for the installation to finish, then VM shuts down automatically. Your Linux VHD is now ready to be uploaded to Azure.
 
 ## Known issues
 
@@ -1621,7 +1661,7 @@ sudo dracut -f -v
 ```
 
    
-#### [RHEL 8+/9+ using Kickstart](#tab/rhel89Kickstart)
+#### [RHEL 8/9/10 using Kickstart](#tab/rhel89Kickstart)
 
 This section shows you how to prepare RHEL (8 OR 9)  from an ISO by using a kickstart file.
 
@@ -1763,7 +1803,7 @@ This section shows you how to prepare RHEL (8 OR 9)  from an ISO by using a kick
    EOF
    
     # Set the cmdline
-    sed -i 's/^\(GRUB_CMDLINE_LINUX\)=".*"$/\1="console=tty1 console=ttyS0 earlyprintk=ttyS0"/g' /etc/default/grub
+    sed -i 's/^\(GRUB_CMDLINE_LINUX\)=".*"$/\1="console=tty1 console=ttyS0 earlyprintk=ttyS0 nvme_core.io_timeout=240"/g' /etc/default/grub
 
     # Enable SSH keepalive
     sed -i 's/^#\(ClientAliveInterval\).*$/\1 180/g' /etc/ssh/sshd_config
@@ -1789,6 +1829,11 @@ This section shows you how to prepare RHEL (8 OR 9)  from an ISO by using a kick
     # This interface is transparently bonded to the synthetic interface,
     # so NetworkManager should just ignore any SRIOV interfaces.
     SUBSYSTEM=="net", DRIVERS=="hv_pci", ACTION!="remove", ENV{NM_UNMANAGED}="1"
+    EOF
+
+    sudo tee <<EOF /etc/NetworkManager/conf.d/99-azure-unmanaged-devices.conf > /dev/null
+    [keyfile]
+    unmanaged-devices=driver:mlx4_core,driver:mlx5_core
     EOF
 
     # Deprovision and prepare for Azure if you are creating a generalized image
@@ -1820,7 +1865,7 @@ This section shows you how to prepare RHEL (8 OR 9)  from an ISO by using a kick
 
 1. Enter `inst.ks=<the location of the kickstart file>` at the end of the boot options, and select the **Enter** key.
 
-1. Wait for the installation to finish. When it's finished, the VM shuts down automatically. Your Linux VHD is now ready to be uploaded to Azure.
+1. Wait for the installation to finish, then VM shuts down automatically. Your Linux VHD is now ready to be uploaded to Azure.
 
 ## Known issues
 
@@ -1864,6 +1909,6 @@ For more information, see [Rebuilding initramfs](https://access.redhat.com/solut
 
 ## Related content
 
-* You're now ready to use your RHEL VHD to create new VMs in Azure. If this is the first time that you're uploading the .vhd file to Azure, see [Create a Linux VM from a custom disk](upload-vhd.md#option-1-upload-a-vhd).
+* You're now ready to use your RHEL VHD to create new VMs in Azure. For more information, see [Create a Linux VM from a custom disk](upload-vhd.md#option-1-upload-a-vhd).
 * For more information about the hypervisors that are certified to run RHEL, see the [Red Hat website](https://access.redhat.com/certified-hypervisors).
 * To learn more about using production-ready RHEL BYOS images, go to the documentation page for [Bring your own subscription](../workloads/redhat/byos.md).
