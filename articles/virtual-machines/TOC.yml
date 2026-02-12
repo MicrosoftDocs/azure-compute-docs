@@ -2450,7 +2450,7 @@
     href: move-region-maintenance-configuration-resources.md
   - name: Migrate from AWS
     items:
-    - name: Migrate from Amazon's EC2 Platform to Azure
+    - name: Migrate Amazon EC2 instances to Azure
       href: ./migration/migrate-from-ec2-architecture.md
     - name: Migrate an AWS VM instance to Azure
       href: /azure/migrate/tutorial-migrate-aws-virtual-machines
