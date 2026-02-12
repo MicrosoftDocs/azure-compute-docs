@@ -39,7 +39,7 @@ An Azure resource group is a logical container into which Azure resources are de
 ```azurepowershell-interactive
 New-AzResourceGroup `
    -ResourceGroupName "myResourceGroupVM" `
-   -Location "EastUS"
+   -Location "CentralUS"
 ```
 
 The resource group is specified when creating or modifying a VM, which can be seen throughout this tutorial.
