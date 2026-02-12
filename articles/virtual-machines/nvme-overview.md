@@ -44,6 +44,77 @@ For v6, Ebsv5, and greater VMs; you need to transition from SCSI to NVMe. For mo
 ### VM sizes
 
 Typically, the older generations of general purpose, memory optimized, and compute optimized VMs (D/Ev5 or Fv2 and older) support SCSI. The newer generations (Ebsv5, Da/Ea/Fav6 and newer) typically support only the NVMe storage interface (or some offering supports SCSI and NVMe, both interfaces, Ebsv5 is an example of such offering).  Also, starting from Da/Ea/Fav6 and some of the future offering, we have introduced the NVMe interface for the local SSD disks.
+## FAQs
+
+### What is the NVMe-enabled DiskControllerType in Azure?
+
+NVMe-enabled DiskControllerType is a disk interface option that allows Azure Managed Disks (OS and Data disks) to be attached using an NVMe controller instead of the traditional SCSI controller, providing significantly higher IOPS and throughput.
+
+### Which Azure VM series support NVMe for managed disks?
+Only the Ebsv5 and Ebdsv5 VM sizes (Intel v5-based) support NVMe-enabled managed disks.
+
+### What are the performance benefits of enabling NVMe?
+
+	• Higher IOPS and throughput (multi-GBps, hundreds of thousands of IOPS depending on VM size).
+	• Lower latency compared to SCSI.
+	• Better performance/price efficiency for disk-heavy workloads.
+
+### How do I enable NVMe DiskControllerType when creating a VM?
+Specify DiskControllerTypes = ["NVMe"] during VM creation using Azure Portal, CLI, PowerShell, Bicep, or ARM template.
+
+### Can I change an existing VM’s DiskControllerType to NVMe?
+Yes, but the VM must support NVMe (Ebsv5/Ebdsv5), and you must:
+	1. Stop and deallocate the VM.
+	2. Update diskControllerTypes to "NVMe".
+	3. Ensure the OS image supports NVMe drivers.
+
+### Do all OS images support NVMe?
+No. Only Azure Marketplace images tagged as NVMe-supported can be used. Older OS images do not receive NVMe enablement.
+
+### What happens if I try to set NVMe on an unsupported VM size?
+Azure returns a validation error because the selected VM size does not support the NVMe controller type.
+
+### How can I verify if my OS image supports NVMe?
+Check the Azure Marketplace image metadata or refer to Microsoft’s “Supported OS Images for NVMe-enabled managed disks” documentation.
+
+### What are the prerequisites to switch a VM to NVMe?
+	• VM must be Ebsv5 or Ebdsv5.
+	• OS image must support NVMe.
+	• VM must be deallocated before modification.
+	• Disks and OS must have NVMe drivers.
+
+### Is there any cost difference for using NVMe DiskControllerType?
+No additional cost for choosing NVMe as a controller. You pay only for the VM size and disk type.
+
+### Is downtime required to change to NVMe?
+Yes. Switching to NVMe requires the VM to be stopped and deallocated, causing downtime.
+
+### Can I revert back to SCSI after enabling NVMe?
+Yes, but the VM must again be deallocated, and the OS must support SCSI drivers. Reverting may cause boot issues if drivers are missing.
+
+### What ARM/Bicep property enables NVMe?
+Answer:
+"storageProfile": {
+  "diskControllerTypes": ["NVMe"]
+}
+ What workloads benefit most from NVMe-enabled VMs?
+
+	• Databases (SQL, PostgreSQL, Oracle)
+	• Large analytics engines
+	• Distributed storage nodes
+	• High-throughput financial applications
+	• Heavy read/write workloads
+	
+ ### Can we enable NVMe for VM Scale Sets (VMSS)?
+
+Yes, VMSS supports the same diskControllerTypes property for VM profiles, provided the chosen SKU is Ebsv5/Ebdsv5.
+
+## Please find the below relevant public articles for reference.
+ 
+https://learn.microsoft.com/en-us/azure/virtual-machines/ebdsv5-ebsv5-series
+https://learn.microsoft.com/en-us/azure/virtual-machines/nvme-overview
+https://learn.microsoft.com/en-us/azure/virtual-machines/enable-nvme-remote-faqs
+https://azure.microsoft.com/en-au/updates/generally-available-ebsv5-and-ebdsv5-nvmeenabled-vm-sizes
 
 For specifics about which VM generations support which storage types, check the [documentation about VM sizes in Azure](/azure/virtual-machines/sizes).
 
