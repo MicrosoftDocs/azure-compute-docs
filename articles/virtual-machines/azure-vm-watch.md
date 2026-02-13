@@ -6,13 +6,13 @@ ms.author: wwilliams
 ms.service: azure-virtual-machines
 ms.topic: concept-article
 ms.update-cycle: 1095-days
-ms.date: 02/18/2025
+ms.date: 01/7/2026
 # Customer intent: "As a system administrator, I want to implement VM watch for my virtual machines, so that I can monitor their health efficiently and prevent potential issues with minimal resource impact."
 ---
 
-# VM watch: Enhancing VM health monitoring (preview)
+# VM watch: Enhancing VM health monitoring 
 
-VM watch is a standardized, lightweight, and adaptable service offering for virtual machines (VMs) and virtual machine scale sets. It runs health checks within a VM at configurable intervals and sends the results via a uniform data model to Azure. The AI operations (AIOps) engines for production monitoring in Azure consume these health results for regression detection and prevention.
+VMWatch, a standardized, lightweight, and open-sourced testing framework designed to enhance the monitoring and management of guest VMs on the Azure platform, including both first-party (1P) and third-party (3P) instances. VMWatch is engineered to collect vital health signals across multiple dimensions, which will be seamlessly integrated into Azure's quality systems. By leveraging these signals, VMWatch will enable Azure to swiftly detect and prevent regressions induced by platform updates or configuration changes, identify gaps in platform telemetry, and ultimately improve the guest experience for all Azure customers.
 
 VM watch is delivered via the [Application Health VM extension](/azure/virtual-machines/extensions/health-extension?tabs=rest-api) to provide ease of deployment and manageability for customers. In addition, VM watch is offered at no extra cost.
 
@@ -34,12 +34,17 @@ To maintain consistent performance across different virtual machine (VM) configu
 | 8 GB to 16 GB | 200MB |
 | Greater than 16 GB | 400MB |
 
+### VMWatch Signal Categories
+
+VMWatch measures VM health by emitting signals in different categories, including Network, Disk, CPU, Process, IMDS, Clock, AzBlob, Hardware.
+
 ### Network
 
 | **Signal name** | **Type** | **Description** |
 |:---:|:---:|:---:|
 | **Outbound connectivity** | Check | Verify the network outbound connectivity from the Azure VM. |
-| **DNS Resolution** | Check | Verify if one or more DNS names can be resolved. |
+| **LatencyInNanoSeconds** | Metric | Latency of network outbound connectivity from the Azure VM. |
+| **DNS Resolution** | Check | Verify if the dns name(s) can be resolved. |
 | **TCPSynRetransmits (Linux Only)** | Metric | The number of times the system retransmits a TCP SYN and SYN/ACK packet before giving up on establishing a connection.|
 | **SegmentsRetransmitted** | Metric | The number of transmitted TCP segments that contain one or more previously transmitted octets. |
 | **NormalizedSegmentsRetransmitted** | Metric | **SegmentsRetransmitted** / (**SegmentsSent** + **SegmentsRetransmitted**) |
@@ -58,13 +63,18 @@ To maintain consistent performance across different virtual machine (VM) configu
 
 | **Signal name** | **Type** | **Description** |
 |:---:|:---:|:---:|
-| **Azure Disk I/O** | Check | Verify file creation, write, and read. Delete operations on each drive mounted to the VM. |
+| **Disk I/O** | Check | Verify file creation, write, and read. Delete operations on each drive mounted to the VM. |
 | **FreeSpaceInBytes** | Metric | The free disk space of the target mount point. |
 | **UsedSpaceInBytes** | Metric | The used disk space of the target mount point. |
 | **CapacityInBytes**  | Metric | The disk space capacity of the target mount point. |
 | **UsedPercent**      | Metric | The percentage of used disk space for the target mount point. |
 | **WriteOps**         | Metric | The write operations per second for the target disk/partition. |
 | **ReadOps**          | Metric | The read operations per second for the target disk/partition. |
+| **WriteLatencyNs**   | Metric | The write latency in nano seconds of the target disk/partition. | 
+| **SyncLatencyNs**   | Metric | 	The write sync latency in nano seconds of the target disk/partition. |
+| **ReadLatencyNs**   | Metric | 	The read latency in nano seconds of the target disk/partition. |
+| **DiskReadBytesPerSec**| Metric | The read bytes per second of the target disk/partition. |
+| **DiskTransfersPerSec**| Metric | The transfer bytes per seconds of the target disk/partition. |
 
 ### CPU
 
@@ -73,6 +83,9 @@ To maintain consistent performance across different virtual machine (VM) configu
 | **ProcessCPUCoreUsage** | Metric | An instantaneous measurement of the percentage of a single CPU core that the target process is using (100 = 100%, a whole core). |
 | **ProcessCPUMachineUsage** | Metric | The percentage of the machine's total CPU that this process is using. |
 | **MachineTotalCpuUsage** | Metric | The VM's total instantaneous CPU utilization. |
+| **TotalCpuUsage** | Metric | The VM's total instantaneous CPU utlization. |
+| **CpuCount** | Metric | The VM's total number of CPU cores. |
+| **PerCore** | Metric | The list of CPU usage of each CPU core. |
 
 ### Memory
 
@@ -88,40 +101,41 @@ To maintain consistent performance across different virtual machine (VM) configu
 
 | **Signal name** | **Type** | **Description** |
 |:---:|:---:|:---:|
-| **Process Creation** | Check | Start a lightweight process to validate that process creation is possible. |
-| **Running Process(es)** | Check | Verify if the target process or processes are running. |
+| **Process** | Check | Start a lightweight process to validate that process creation is possible.Starts a lightweight process to validate that process creation is possible. Process to create: Windows: cmd.exe /c echo hello Linux: /bin/sh -c echo hello |
+| **process_monitor** | Check | Verify if the target process or processes are running. |
 | **UpTime** | Metric | How long the target process has been up and running since the last process startup. |
 
 ### IMDS
 
 | **Signal name** | **Type** | **Description** |
 |:---:|:---:|:---:|
-| **IMDS** | Check | Verify that the user can reach an Azure Instance Metadata Service (IMDS) endpoint from within the VM. VM information is returned from the IMDS endpoint query. |
+| **IMDS** | Check | Verify user can reach of IMDS endpoint from within the VM and VM information is returned from the IMDS endpoint query. |
 
 ### Clock
 
 | **Signal name** | **Type** | **Description** |
 |:---:|:---:|:---:|
-| **Clock Skew** | Check | Verify the clock skew between the remote Network Time Protocol (NTP) server and the Azure VM. For a Windows VM, fall back to check if the Windows Time service is synced with `w32tm` if the remote NTP server is inaccessible. |
+| **Clock Skew** | Check | Verify the clock skew between remote NTP server and the Azure VM. For Windows VM, fallback to check if Windows Time Service is sysnced with w32tm if remote NTP server is unaccessible. |
 
 ### OS
 
 | **Signal name** | **Type** | **Description** |
 |:---:|:---:|:---:|
-| **System Errors** | Metric | Collect the number of errors from the system-level event log (Windows only) where the SystemData <=2 (including LOG_ALWAYS, Critical, Error). The measurementTarget is defined as the Source_EventId of the EventLog using default Windows locale. Each collection is limited to more than 10 different measurement targets. |
+| **System Errors** | EventLog | Collect the count of error at system level event log (Windows only) whose SystemData <=2 (including LOG_ALWAYS, Critital, Error). The measurementTarget is defined as Source_EventId_ShortHash of the EventLog using default Windows locale. A cap of no more than 10 different measurementTargets is applied in each collection. |
+| **vm_blip** | Metric | Measure the elapsed time in milliseconds for the given measurement interval, to detect any VM blip. |
 
 ### azblob
 
 | **Signal name** | **Type** | **Description** |
 |:---:|:---:|:---:|
-| **Azure Storage blob connectivity** | Check | Verify the connectivity to the Azure Storage blob and download the blob by using MSI or a shared access signature (SAS) token. |
+| **az_storage_blob** | Check | Verify the connectivity to the Azure Storage Blob and download the Blob with MSI or SAS token. |
 
 ### Hardware
 
 | **Signal name** | **Type** | **Description** |
 |:---:|:---:|:---:|
-| **Hardware Health Monitor** | EventLog | Collect hardware health info from the Windows event log. Currently, only disk-related critical events are collected, including events with ID 7, 500, 504, 505, 512, and 549. |
-| **Hardware Health Nvidia Smi** | EventLog | Collect GPU stats including memory and GPU usage, temp and others by running nvidia-smi command (Linux Ubuntu only) |
+| **Hardware Health Monitor** | Text | Collect hardware health info from Windows event log, currently only disk related critical events are collected, including events with id 7, 500, 504, 505, 512 and 549. Those events include critical metrics about disk health status, for NVMe directly attached devices, it is exclusively available on the VM side only. With those metric it is possible to monitor and alert the disk status, thus to improve the VM service availabilities. |
+| **Hardware Health Nvidia Smi** | Text | Collect GPU stats including memory and GPU usage, temp and other by running nvidia-smi command (Linux Ubuntu only) |
 
 ## Related content
 
