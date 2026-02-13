@@ -56,7 +56,7 @@ The following table summarizes the support matrix for VM restore points.
 **VMs with Host based encryption enabled with PMK/CMK/Double encryption** | Yes. The encryption of source disk will not be enabled on the restore point.
 **VMs with ADE (Azure Disk Encryption)** | Yes. The encryption of source disk will not be enabled on the restore point.
 **VMs using Accelerated Networking** | Yes
-**Azure [Boost](/azure/azure-boost/overview) compatible Virtual machine sizes** | Yes
+**Azure [Boost](/azure/azure-boost/overview) compatible Virtual machine sizes** | Yes for **Application consistent**. **Crash-consistent** restore points created for Intel V6+ (Dsv6-series, Edsv6-series, Esv6-series etc.) and AMD V7+ (Dasv7-series, Dadsv7-series, Easv7-series, Faldsv7-series etc.) Virtual Machines (VMs) with more than one data disk may not be consistent across disks. 
 **Minimum Frequency at which App consistent restore point can be taken** | 3 hours
 **Minimum Frequency at which crash consistent restore points can be taken** | 1 hour
 **API version for Application consistent restore point** | 2021-03-01 or later
