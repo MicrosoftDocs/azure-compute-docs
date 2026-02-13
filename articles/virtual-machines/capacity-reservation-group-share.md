@@ -495,7 +495,7 @@ To check the Physical Zone and Logical Zone mapping for your subscription, see [
 
 ### Secure existing zonal workloads using zero size reservation in Shared capacity Reservation Group
 
-Zone-deployed virtual machines or virtual machine scale sets from Consumer subscription can be converted to using a shared Capacity Reservation without reallocation. If you do not have capacity in an existing shared capacity reservation group, you can start by creating a zero size matching reservation to secure your workloads. The basic process involves 3 steps:
+Zonally deployed virtual machines or virtual machine scale sets from Consumer subscription can be converted to using a shared Capacity Reservation without reallocation. If you do not have capacity in an existing shared capacity reservation group, you can start by creating a zero size matching reservation to secure your workloads. The basic process involves 3 steps:
 
 1. Create a shared Capacity Reservation Group and then matching capacity reservations in each target zone with the reserved quantity set to zero. This requires no additional quota or capacity for the Provider subscription. For more information on how to create a reservation, see [Create a capacity reservation](/azure/virtual-machines/capacity-reservation-create?tabs=portal1%2Capi1%2Capi2#create-a-capacity-reservation-1).
 
