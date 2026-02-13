@@ -133,8 +133,14 @@
     maintainContext: true
   - name: Availability Zones
     href: virtual-machine-scale-sets-use-availability-zones.md
-  - name: Zone balancing
-    href: virtual-machine-scale-sets-zone-balancing.md
+  - name: Zone Balance
+    items:
+      - name: Zone balancing in virtual machine scale sets
+        href: virtual-machine-scale-sets-zone-balancing.md
+      - name: Automatic zone balance (Preview)
+        href: auto-zone-balance-overview.md
+      - name: Enable a scale set with automatic zone balance (Preview)
+        href: auto-zone-balance-enable.md
   - name: Capacity reservations
     href: ../virtual-machines/capacity-reservation-overview.md
   - name: Automatic instance repairs

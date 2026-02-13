@@ -46,7 +46,7 @@ Single VMs using only [Premium SSD disks](disks-types.md#premium-ssds) as the OS
 
 ### Use zone-redundant storage disks
 
-Zone-redundant storage (ZRS) disks synchronously replicate data across three availability zones, which are separated groups of data centers in a region that have independent power, cooling, and networking infrastructure. With ZRS disks, your data is accessible even in the event of a zonal outage. Also, ZRS data disks allow you to [forcibly detach](/rest/api/compute/virtual-machines/attach-detach-data-disks?tabs=HTTP#diskdetachoptiontypes) them from VMs experiencing issues. ZRS disks have limitations, see the [limitations](disks-redundancy.md#limitations) section of the redundancy options article for details.
+Zone-redundant storage (ZRS) disks synchronously replicate data across three availability zones, which are separated groups of data centers in a region that have independent power, cooling, and networking infrastructure. With ZRS disks, your data is accessible even in the event of a zone outage. Also, ZRS data disks allow you to [forcibly detach](/rest/api/compute/virtual-machines/attach-detach-data-disks?tabs=HTTP#diskdetachoptiontypes) them from VMs experiencing issues. ZRS disks have limitations, see the [limitations](disks-redundancy.md#limitations) section of the redundancy options article for details.
 
 ## Recommendations for applications running on multiple VMs
 
@@ -77,7 +77,7 @@ With zone-spanning Virtual Machine Scale Sets using the flexible orchestration m
 
 #### Deploy VMs and disks across three availability zones
 
-Another method to distribute VMs and disks across availability zones is to deploy the VMs and disks across three availability zones. This deployment provides redundancy in VMs and disks across multiple data centers in a region, allowing you to fail over to another zone if there's a data center or zonal outage.
+Another method to distribute VMs and disks across availability zones is to deploy the VMs and disks across three availability zones. This deployment provides redundancy in VMs and disks across multiple data centers in a region, allowing you to fail over to another zone if there's a data center or zone outage.
 
 
 ### Deploy VMs and disks across multiple fault domains

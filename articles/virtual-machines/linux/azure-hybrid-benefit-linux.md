@@ -323,7 +323,7 @@ If the license type of the VM isn't modified, this command returns an empty stri
 
 ### [Azure PowerShell](#tab/licensepowershell)
 
-1. Red Hat: You can use the `az vm get-instance-view` command to check whether the extension is installed. Look for the `AHBForSLES` or `AHBForRHEL` extension. If the corresponding extension is installed, the Azure Hybrid Benefit is enabled. Review the license type to determine which licensing model is applied to your VM.
+1. Red Hat: You can use the `Get-AzVM` command to check whether the extension is installed. Look for the `AHBForSLES` or `AHBForRHEL` extension. If the corresponding extension is installed, the Azure Hybrid Benefit is enabled. Review the license type to determine which licensing model is applied to your VM.
 
    ```azurepowershell
    Get-AzVM -ResourceGroupName MyResourceGroup -Name myVM -Status | Select-Object -ExpandProperty Extensions
