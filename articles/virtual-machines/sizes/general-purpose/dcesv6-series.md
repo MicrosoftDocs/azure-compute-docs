@@ -13,10 +13,10 @@ ms.reviewer: simranparkhe
 
 # DCesv6-series sizes
 
-[!INCLUDE [dcesv5-summary](./includes/dcesv5-series-summary.md)]
+[!INCLUDE [dcesv6-summary](./includes/dcesv6-series-summary.md)]
 
 ## Host specifications
-[!INCLUDE [dcesv5-series-specs](./includes/dcesv5-series-specs.md)]
+[!INCLUDE [dcesv6-series-specs](./includes/dcesv6-series-specs.md)]
 
 ## Feature support
 
