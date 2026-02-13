@@ -49,7 +49,7 @@ The subscription must be registered with the Azure Feature Exposure Control (AFE
 1. From the left menu, under **Settings** select **Preview features**.
 1. Filter for **AutomaticVMSSZoneRebalancing** and select it
 1. Select **Register**
-:::image type="content" source=".\media\virtual-machine-scale-sets-auto-zone-balance/auto-zone-balance-register-afec.png" alt-text="Screenshot of Azure portal with Register button for Automatic Zone Balancing preview flag.":::
+:::image type="content" source=".\media\virtual-machine-scale-sets-auto-zone-balance/auto-zone-balance-register-afec.png" alt-text="Screenshot of Azure portal with Register button for Automatic Zone Balancing preview flag." lightbox=".\media\virtual-machine-scale-sets-auto-zone-balance/auto-zone-balance-register-afec.png":::
 
 1. Select **OK**
 
@@ -112,7 +112,7 @@ PUT or PATCH on '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupNa
 1. In the **Basics** tab, ensure that at least 2 zones are selected in the **Availability zone** dropdown.
 1. In the **Health** tab, enable and configure **[application health monitoring](./virtual-machine-scale-sets-health-extension.md)**.
 1. Select the checkbox for **Automatic zone balancing**.
-:::image type="content" source="media/virtual-machine-scale-sets-auto-zone-balance/enable-rebalance-create-vmss.png" alt-text="Screenshot of the Health tab in Azure portal showing application health monitoring enabled and automatic zone balancing checkbox selected under Resiliency section.":::
+:::image type="content" source="media/virtual-machine-scale-sets-auto-zone-balance/enable-rebalance-create-vmss.png" alt-text="Screenshot of the Health tab in Azure portal showing application health monitoring enabled and automatic zone balancing checkbox selected under Resiliency section." lightbox="media/virtual-machine-scale-sets-auto-zone-balance/enable-rebalance-create-vmss.png":::
 
 1. Complete additional setup for your scale set. When ready, select **Review and Create**.
 1. Select **Create**.
@@ -127,7 +127,7 @@ PUT or PATCH on '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupNa
 1. Under **Resiliency** section, select the checkbox for **Automatic zone balancing**.
 1. Select **Save**.
 
-:::image type="content" source="media/virtual-machine-scale-sets-auto-zone-balance/enable-rebalance-existing-vmss.png" alt-text="A screenshot showing how to enable automatic zone balance on an existing Virtual Machine Scale Set in the portal.":::
+:::image type="content" source="media/virtual-machine-scale-sets-auto-zone-balance/enable-rebalance-existing-vmss.png" alt-text="A screenshot showing how to enable automatic zone balance on an existing Virtual Machine Scale Set in the portal." lightbox="media/virtual-machine-scale-sets-auto-zone-balance/enable-rebalance-existing-vmss.png":::
 
 ### [Azure CLI](#tab/CLI-2)
 
@@ -209,7 +209,7 @@ New-AzVmss -ResourceGroupName $resourceGroupName -Name $vmssName -VirtualMachine
 
 ---
 
-## Enable Automatic Zone Balance Without Instance Repairs
+## Enable automatic zone balance without instance repairs
 
 By default, enabling automatic zone balance also enables [automatic instance repairs](./virtual-machine-scale-sets-automatic-instance-repairs.md) to provide high availability for your scale set. If you prefer to use automatic zone balance without automatic instance repairs, you can disable instance repairs separately.
 
@@ -376,7 +376,7 @@ If there isn’t enough quota to create a new VM, the rebalance operation won’
 ### Can I control which VMs are excluded from rebalancing?
 Yes. You can apply an [instance protection policy](./virtual-machine-scale-sets-instance-protection.md) to specific VMs to prevent them from being selected for rebalancing.
 
-## Next Steps
+## Next steps
 - Learn more about [automatic zone balance for Virtual Machine Scale Sets](./auto-zone-balance-overview.md).
 - Learn more about [zone balancing for Virtual Machine Scale Sets](./virtual-machine-scale-sets-zone-balancing.md).
 

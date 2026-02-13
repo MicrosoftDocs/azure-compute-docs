@@ -47,9 +47,9 @@ Automatic zone balance waits up to 90 minutes for a newly created VM to report a
 
 :::image type="content" source="./media/virtual-machine-scale-sets-auto-zone-balance/auto-zone-balance-workflow.svg" alt-text="Diagram of the workflow for automatic zone balance.":::
 
-### Safety Features
+### Safety features
 
-#### Safety Checks Before Rebalancing
+#### Safety checks before rebalancing
 Automatic zone balance is designed to be minimally intrusive, prioritizing the stability and availability of your workloads. A rebalance operation (creating a VM in a new zone and deleting a VM from an over-provisioned zone) only begins if the following safety conditions are met:
 
 - The scale set isn't marked for deletion.
@@ -57,10 +57,10 @@ Automatic zone balance is designed to be minimally intrusive, prioritizing the s
 
 Automatic zone balance won't move VMs under the [instance protection policy](./virtual-machine-scale-sets-instance-protection.md), or in deallocated / to-be-deleted state. 
 
-#### Rebalancing Frequency
+#### Rebalancing frequency
 Automatic zone balance performs a maximum of one rebalance operation every 12 hours. Only one VM is moved in each rebalance operation. This limit is in place to minimize churn and ensure that changes to your scale set are gradual and controlled. 
 
-### Automatic Instance Repairs Integration
+### Automatic instance repairs integration
 
 Automatic zone balance works together with [automatic instance repairs](./virtual-machine-scale-sets-automatic-instance-repairs.md) to help you maintain highly available scale sets:
 
@@ -79,6 +79,6 @@ To learn more about automatic instance repairs, see [Automatic instance repairs 
 - **SKU preservation**: New VMs created by Automatic Zone Balance always use the latest SKU in your scale set model; any VMs with a different SKU won't retain their SKU after rebalancing.
   - If you would like to prevent specific VMs from being rebalanced, you can [apply an instance protection policy](./virtual-machine-scale-sets-instance-protection.md).
 
-## Next Steps
+## Next steps
 - Learn how to [enable automatic zone balance on your scale set](./auto-zone-balance-enable.md).
 - Learn more about [zone balancing for Virtual Machine Scale Sets](./virtual-machine-scale-sets-zone-balancing.md). 
