@@ -51,8 +51,8 @@ ms.author: mattmcinnes
 
 ---
 ### DCesv6-series
-#### [DCesv6-series](#tab/dcesv6)
 [!INCLUDE [dcesv6-series-summary](./includes/dcesv6-series-summary.md)]
+[View the full DCesv6-series page](./dcesv6-series.md).
 
 ---
 ### DCas_cc_v5 and DCads_cc_v5-series
