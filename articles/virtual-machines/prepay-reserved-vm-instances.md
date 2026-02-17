@@ -17,6 +17,8 @@ ms.reviewer: jushiman
 
 When you commit to an Azure reserved VM instance you can save money. The reservation discount is applied automatically to the number of running virtual machines that match the reservation scope and attributes. You don't need to assign a reservation to a virtual machine to get the discounts. A reserved instance purchase covers only the compute part of your VM usage. For Windows VMs, the usage meter is split into two separate meters. There's a compute meter, which is same as the Linux meter, and a Windows server license. The charges that you see when you make the purchase are only for the compute costs. Charges don't include Windows software costs. For more information about software costs, see [Software costs not included with Azure Reserved VM Instances](/azure/cost-management-billing/reservations/reserved-instance-windows-software-costs).
 
+Reserved VM Instances provide a billing discount only and do not reserve or guarantee compute capacity. Azure still needs available capacity in the target region or availability zone when you deploy a VM. A deployment can fail because of capacity constraints even when quota is approved and you already purchased a Reserved VM Instance. To guarantee capacity for your workloads, use [On-demand capacity reservation](capacity-reservation-overview.md). You can combine Reserved VM Instances with capacity reservations for both cost savings and capacity assurance.
+
 ## Determine the right VM size before you buy
 
 Before you buy a reservation, you should determine the size of the VM that you need. The following sections will help you determine the right VM size.

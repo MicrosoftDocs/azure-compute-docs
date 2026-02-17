@@ -19,6 +19,12 @@ The vCPU quotas for virtual machines and scale sets are arranged in two tiers fo
 > [!NOTE]
 > Quota is calculated based on the total number of cores in use both allocated and deallocated. If you need additional cores, [request a quota increase](/azure/azure-portal/supportability/regional-quota-requests) or delete VMs that are no longer needed. 
 
+## Quota and capacity
+
+Azure checks quota and capacity separately. Quota is your subscription's permission to deploy a certain number of vCPUs or VMs. Capacity is the actual compute resources available in the selected region or availability zone.
+
+Even with sufficient quota, deployments can still fail if Azure doesn't have enough capacity for your requested VM size in the target region or zone. To improve deployment success, try a different VM size, zone, or region. For guaranteed capacity, see [On-demand capacity reservation](capacity-reservation-overview.md).
+
 
 ## Check usage
 

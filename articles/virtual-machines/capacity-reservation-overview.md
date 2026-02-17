@@ -28,6 +28,10 @@ Capacity reservation has some basic properties that are always defined at the ti
 
 To create a capacity reservation, the parameters are passed to Azure as a capacity request. If Azure doesn't have capacity available that meets the request, the reservation deployment fails. Your deployment fails if you don't have an adequate subscription quota. Request a higher quota or try a different VM size, location, or zone combination. 
 
+Quota and capacity are separate checks. Quota is your subscription's permission to deploy resources, while capacity is the underlying infrastructure available in a specific region or zone.
+
+Capacity reservations and Reserved Instances are also different. Capacity reservation secures capacity availability for deployment. Reserved Instances provide a billing discount only and don't guarantee capacity.
+
 After Azure accepts your reservation request, it's available for VMs with matching configurations. To consume capacity reservation, the VM has to specify the reservation in its properties. Otherwise, the capacity reservation isn't used. One benefit of this design is that you can target only critical workloads to reservations and other noncritical workloads can run without reserved capacity. 
 
 ## Benefits of capacity reservation 

@@ -494,13 +494,19 @@ Check whether the regional VMs you added have any dependencies on other resource
     
 ### Availability Zones VM SKU, Quota and Capacity validations
 
-Azure provides recommendations when the selected Availability Zone doesn't have the virtual machine SKU, or when there is not enough Quota or Capacity available. Here are some examples of these recommendations and the actions that should be taken if the virtual machine SKU is not available.
+Azure provides recommendations when the selected availability zone doesn't have the virtual machine SKU, when quota is insufficient, or when there isn't enough zonal capacity for your requested configuration.
+
+Quota and capacity are validated separately:
+- **Quota** is your subscription limit for vCPUs and virtual machines.
+- **Capacity** is the available infrastructure in the selected region and zone.
+
+A move can fail because of capacity constraints even after quota is approved.
 
 #### VM SKU not available
 
 When the source virtual machine size `Standard_DC1ds_v3` isn't available in the selected availability zone `1`.
 
-**Recommended Action**: Choose a different virtual machine size in the same availability zone or select a different availability zone with corresponding recommended VM size.
+Choose a different virtual machine size in the same availability zone, or select a different availability zone with a corresponding recommended VM size.
 
 **Recommendations**:
 
@@ -515,11 +521,11 @@ When the source virtual machine size `Standard_DC1ds_v3` isn't available in the 
 - SKU: Standard_D2s_v5, Zones: [ 2, 3 ]
 
 
-### Capacity recommendations
+### Capacity constraints
 
-Capacity recommendations for the current selection virtual machine size `Standard_DC1ds_v3` in the selected availability zone `1`.
+The following example shows recommendations for the current selection virtual machine size `Standard_DC1ds_v3` in selected availability zone `1` when capacity is constrained.
 
-**Recommended Action:** To increase the likelihood of a successful deployment, Azure has identified other recommended virtual machine sizes and zones. To deploy seamlessly, choose a different VM size in the same availability zone or a different availability zone with corresponding virtual machine size.
+To increase the likelihood of a successful deployment, choose a different VM size in the same availability zone, or choose a different availability zone with a corresponding recommended VM size.
 
 **Recommendations**:
 
@@ -556,9 +562,9 @@ To address the situations where the VM SKU is not found or there is a capacity i
 
 ### Insufficient Quota
 
-Selected virtual machine can't be moved to availability zone due to insufficient quota.
+Selected virtual machine can't be moved to the availability zone because of insufficient quota.
 
-**Recommended Action:** In-sufficient quota found. Refer to link and contact [support](/azure/azure-resource-manager/management/azure-subscription-service-limits).
+Request a quota increase through [Azure subscription and service limits, quotas, and constraints](/azure/azure-resource-manager/management/azure-subscription-service-limits), and then run validation again.
 
 
 
