@@ -1,11 +1,9 @@
 ---
-title: Tutorial - Move Azure single instance Virtual Machines from regional to zonal availability zones 
+title: Move Azure single instance Virtual Machines from regional to zonal availability zones 
 description: Learn how to move single instance Azure virtual machines from a regional configuration to a target Availability Zone within the same Azure region.
-author: ankitaduttaMSFT
 ms.service: azure-virtual-machines
 ms.topic: tutorial
-ms.date: 07/08/2024
-ms.author: ankitadutta
+ms.date: 02/17/2026
 ms.custom: sfi-image-nochange
 # Customer intent: "As a cloud administrator, I want to move Azure single instance virtual machines from a regional configuration to zonal availability zones, so that I can improve the reliability and performance of my applications within the same region."
 ---
@@ -13,7 +11,6 @@ ms.custom: sfi-image-nochange
 # Move Azure single instance VMs from regional to zonal target availability zones 
 
 This article provides information on how to move Azure single instance Virtual Machines (VMs) from a regional to a zonal configuration within the same Azure region.
-
 
 ## Prerequisites
 
@@ -24,7 +21,7 @@ Ensure the following before you begin:
 - **VM SKU availability**: The availability of VM sizes, or SKUs, can differ based on the region and zone. Ensure to plan for the use of Availability Zones. [Learn more](../virtual-machines/windows/create-powershell-availability-zone.md#check-vm-sku-availability) about the available VM SKUs for each Azure region and zone. 
 
 - **Subscription permissions**: Check that you have *Owner* access on the subscription containing the VMs that you want to move.
-   The first time you add a VM to be moved to Zonal configuration, a [system-assigned managed identity](/azure/active-directory/managed-identities-azure-resources/overview#managed-identity-types) (formerly, Managed Service Identify (MSI)) that's trusted by the subscription is necessary. To create the identity, and to assign it the required role (Contributor or User Access administrator in the source subscription), the account you use to add resources needs Owner permissions on the subscription. [Learn more](/azure/role-based-access-control/rbac-and-directory-admin-roles#azure-roles) about Azure roles.
+   The first time you add a VM to be moved to Zonal configuration, a [system-assigned managed identity](/azure/active-directory/managed-identities-azure-resources/overview#managed-identity-types) that's trusted by the subscription is necessary. To create the identity, and to assign it the required role (Contributor or User Access administrator in the source subscription), the account you use to add resources needs Owner permissions on the subscription. [Learn more](/azure/role-based-access-control/rbac-and-directory-admin-roles#azure-roles) about Azure roles.
 
 - **VM support**: Check that the VMs you want to move are supported. [Learn more](/azure/reliability/migrate-vm). Check supported VM settings.
       
