@@ -1,6 +1,6 @@
 ---
 title: Migrate a regional virtual machine to an availability zone
-description: Learn how to migrate your Azure Virtual Machines from a regional deployment to an availability zone for improved resiliency and higher availability SLA.
+description: Learn how to migrate your Azure Virtual Machines from a regional deployment to an availability zone.
 author: mimckitt
 ms.author: mimckitt
 ms.service: azure-virtual-machines
@@ -236,7 +236,7 @@ A successful zone assignment returns HTTP status code **200**.
 
 ## Step 3: Start the VM
 
-After zone assignment, the VM is in a **Stopped (deallocated)** state. Start the VM to make it available:
+After zone assignment, the VM is in a **Stopped (deallocated)** state. Start the VM:
 
 # [Azure CLI](#tab/cli)
 
@@ -362,7 +362,7 @@ Consider changing the VM size before migration if the current size isn't availab
 
 **Solution:** Ensure you have **Contributor** role or higher on the resource group.
 
-### VMSS attachment fails after zone assignment
+### Scale Set attachment fails after zone assignment
 
 **Error:** `Cannot attach VM to the specified Virtual Machine Scale Set`
 
