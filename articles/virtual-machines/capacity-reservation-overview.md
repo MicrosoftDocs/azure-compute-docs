@@ -5,7 +5,7 @@ author: bdeforeest
 ms.author: bidefore
 ms.service: azure-virtual-machines
 ms.topic: overview
-ms.date: 12/22/2025
+ms.date: 02/17/2026
 ms.update-cycle: 1095-days
 ms.reviewer: cynthn, mattmcinnes
 ms.custom: template-how-to
@@ -61,10 +61,10 @@ From this example accumulation of Minutes Not Available, here's the calculation 
 
 - Creating capacity reservations requires a quota in the same manner as when you create VMs.
 - Creating capacity reservations is currently limited to certain VM series and sizes. The compute [Resource SKUs list](/rest/api/compute/resource-skus/list) advertises the set of supported VM sizes.
-- The following VM series support the creation of capacity reservations:
+- Reserved capacity for these VM series supports high availability using multi-zone or fault domains. The fault domain count for a Virtual Machine Scale Set is limited to 3, enforced at deployment.
 
-  Reserved capacity for these VM series supports high availability using multi-zone or fault domains. The fault domain count for a Virtual Machine Scale Set is limited to 3, enforced at deployment.  
-
+  The following VM series support the creation of capacity reservations:
+  
   | Type | VM Series |
   | ----- | ----------- |
   | General Purpose (Burstable) | B (Intel) <br> Bsv2 (Intel), Basv2 (AMD), Bpsv2 (ARM) |
@@ -119,8 +119,7 @@ If you then deploy a D2s_v3 VM and specify the reservation property, the capacit
 
 Both used and unused capacity reservations are eligible for Savings Plan and Reserved Instances term commitment discounts. In the previous example, if you have reserved instances for two D2s_v3 VMs in the same Azure region, the billing for two resources (either VM or unused capacity reservation) is zeroed out. The remaining eight D2s_v3 are billed normally. The term commitment discounts could be applied on either the VM or the unused capacity reservation.
 
-## Difference between on-demand capacity reservation and reserved instances
-
+## Difference between on-demand capacity reservations and reserved instances
 
 | Differences | On-demand capacity reservation | Reserved instances|
 |---|---|---|
