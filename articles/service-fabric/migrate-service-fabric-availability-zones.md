@@ -137,7 +137,7 @@ To support multiple availability zones, the Service Fabric node type must be ena
   
   * If this value is set to `Parallel`: VMs under the node type are grouped into UDs and ignore the zone info in five UDs. This setting causes UDs across all zones to be upgraded at the same time. Although this deployment mode is faster for upgrades, we don't recommend it because it goes against the SDP guidelines, which state that the updates should be applied to one zone at a time.
 
-  * If this value is omitted or set to `Hierarchical`: VMs are grouped to reflect the zonal distribution in up to 15 UDs. Each of the three zones has five UDs. This ensures that the zones are updated one at a time, moving to next zone only after completing five UDs within the first zone. The update process is safer for the cluster and the user application.
+  * If this value is omitted or set to `Hierarchical`: VMs are grouped to reflect the zone distribution in up to 15 UDs. Each of the three zones has five UDs. This ensures that the zones are updated one at a time, moving to next zone only after completing five UDs within the first zone. The update process is safer for the cluster and the user application.
 
   This property only defines the upgrade behavior for Service Fabric application and code upgrades. The underlying Virtual Machine Scale Set upgrades are still parallel in all Availability Zones. This property doesn't affect the UD distribution for node types that don't have multiple zones enabled.
 
@@ -183,7 +183,7 @@ To support multiple availability zones, the Service Fabric node type must be ena
 > * SF supports just 3 AvailabilityZones. Any higher number is not supported right now.
 
 >[!TIP]
-> We recommend setting `sfZonalUpgradeMode` to `Hierarchical` or omitting it. Deployment will follow the zonal distribution of VMs and affect a smaller amount of replicas or instances, making them safer.
+> We recommend setting `sfZonalUpgradeMode` to `Hierarchical` or omitting it. Deployment will follow the zone distribution of VMs and affect a smaller amount of replicas or instances, making them safer.
 > Use `sfZonalUpgradeMode` set to `Parallel` if deployment speed is a priority or only stateless workloads run on the node type with multiple Availability Zones. This causes the UD walk to happen in parallel in all Availability Zones.
 
 ##### Migrate to the node type with multiple Availability Zones
