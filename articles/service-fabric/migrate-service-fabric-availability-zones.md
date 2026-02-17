@@ -33,7 +33,7 @@ Sample templates are available at [Service Fabric cross availability zone templa
 Required:
 
 * Standard SKU cluster.
-* Three [availability zones in the region](regions-list.md).
+* Three [availability zones in the region](/azure/reliability/regions-list).
 
 
 Recommended:
