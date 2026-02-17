@@ -147,6 +147,8 @@
     href: virtual-machine-scale-sets-automatic-instance-repairs.md
   - name: Resilient create and delete (Preview)
     href: resilient-vm-create-delete.md
+  - name: Migrate VMs to an availability zone
+    href: ./../virtual-machines/migrate-to-availability-zones.md
 - name: Cost optimization
   items:
   - name: Azure Spot Virtual Machines
