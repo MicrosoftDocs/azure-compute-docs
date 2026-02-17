@@ -36,8 +36,9 @@ The following script looks for unattached [managed disks](../managed-disks-overv
 ```azurecli
 # Set deleteUnattachedDisks=1 if you want to delete unattached Managed Disks
 # Set deleteUnattachedDisks=0 if you want to see the Id of the unattached Managed Disks
+# Provide RGname of the resource group for which you want to identify/delete the Unattached disk
 deleteUnattachedDisks=0
-unattachedDiskIds=$(az disk list --query '[?managedBy==`null`].[id]' -o tsv)
+unattachedDiskIds=$(az disk list -g <RGname> --query '[?managedBy==`null`].[id]' -o tsv)
 for id in ${unattachedDiskIds[@]}
 do
     if (( $deleteUnattachedDisks == 1 ))
