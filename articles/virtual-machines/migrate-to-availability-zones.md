@@ -16,20 +16,6 @@ This article describes how to migrate an Azure Virtual Machine (VM) from a regio
 > [!IMPORTANT]
 > The regional to zonal VM migration feature is currently in **Public Preview**. Preview features should be tested in non-production environments before migrating production workloads.
 
-## Why migrate to an availability zone?
-
-Availability zones provide physical separation within an Azure region, protecting your workloads from datacenter-level failures. Migrating regional VMs to availability zones offers several advantages:
-
-| Feature                                            | Zonal VM              | Regional VM             |
-| -------------------------------------------------- | --------------------- | ----------------------- |
-| **Datacenter fault isolation**               | Yes                   | No                      |
-| **Availability SLA**                         | 99.99% (across zones) | 99.9% (single instance) |
-| **Zone-redundant storage support**           | Yes                   | Yes                     |
-| **Integration with zone-redundant services** | Yes                   | Limited                 |
-| **Disaster recovery posture**                | Higher                | Lower                   |
-
-For more information about availability zones, see [What are Azure availability zones?](/azure/reliability/availability-zones-overview).
-
 ## Prerequisites
 
 Before you begin, ensure you have the following:
