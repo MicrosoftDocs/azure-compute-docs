@@ -7,7 +7,7 @@ ms.service: azure-virtual-machines
 ms.topic: how-to
 ms.date: 02/17/2026
 ---
-# Migrate a regional virtual machine to an availability zone
+# Migrate a regional virtual machine to an availability zone (Preview)
 
 **Applies to:** ✔️ Linux VMs ✔️ Windows VMs
 
