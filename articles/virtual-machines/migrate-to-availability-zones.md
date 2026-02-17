@@ -396,4 +396,3 @@ az vmss show --resource-group "<resource-group-name>" --name "<scale-set-name>" 
 - [Availability zone service and regional support](/azure/reliability/availability-zones-service-support)
 - [What are Virtual Machine Scale Sets?](/azure/virtual-machine-scale-sets/overview)
 - [Orchestration modes for Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes)
-- [Migrate virtual machines from availability sets to Virtual Machine Scale Sets](/azure/virtual-machines/availability-set-to-vmss-migration)
