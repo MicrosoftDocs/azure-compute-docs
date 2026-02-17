@@ -148,7 +148,7 @@
   - name: Resilient create and delete (Preview)
     href: resilient-vm-create-delete.md
   - name: Migrate VMs to an availability zone (Preview)
-    href: ./../virtual-machines/migrate-to-availability-zones.md
+    href: ./../virtual-machines/migrate-to-availability-zone.md
 - name: Cost optimization
   items:
   - name: Azure Spot Virtual Machines
