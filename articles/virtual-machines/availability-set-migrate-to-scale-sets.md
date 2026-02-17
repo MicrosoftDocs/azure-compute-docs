@@ -7,7 +7,6 @@ ms.service: azure-virtual-machines
 ms.topic: how-to
 ms.date: 01/30/2026
 ---
-
 # Migrate virtual machines from availability sets to Virtual Machine Scale Sets
 
 **Applies to:** ✔️ Linux VMs ✔️ Windows VMs ✔️ Flexible scale sets
@@ -21,16 +20,16 @@ This article describes how to migrate your Azure Virtual Machines (VMs) from ava
 
 Virtual Machine Scale Sets with Flexible orchestration provide several advantages over availability sets:
 
-| Feature | Virtual Machine Scale Sets (Flexible) | Availability sets |
-|---------|--------------------------------------|-------------------|
-| **Maximum instances** | Up to 1,000 VMs | Up to 200 VMs |
-| **Availability Zones support** | Yes | No |
-| **Autoscaling** | Yes | No |
-| **Rolling upgrades** | Yes | No |
-| **Instance protection** | Yes | No |
-| **Availability SLA** | 99.95% (fault domains) or 99.99% (availability zones) | 99.95% |
-| **Mixed VM sizes** | Yes | Yes |
-| **Azure Backup support** | Yes | Yes |
+| Feature                              | Virtual Machine Scale Sets (Flexible)                 | Availability sets |
+| ------------------------------------ | ----------------------------------------------------- | ----------------- |
+| **Maximum instances**          | Up to 1,000 VMs                                       | Up to 200 VMs     |
+| **Availability Zones support** | Yes                                                   | No                |
+| **Autoscaling**                | Yes                                                   | No                |
+| **Rolling upgrades**           | Yes                                                   | No                |
+| **Instance protection**        | Yes                                                   | No                |
+| **Availability SLA**           | 99.95% (fault domains) or 99.99% (availability zones) | 99.95%            |
+| **Mixed VM sizes**             | Yes                                                   | Yes               |
+| **Azure Backup support**       | Yes                                                   | Yes               |
 
 For a complete comparison, see [Orchestration modes for Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes#a-comparison-of-flexible-uniform-and-availability-sets).
 
@@ -97,13 +96,14 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/providers/Micros
 The migration process consists of the following phases:
 
 1. **Create target Virtual Machine Scale Set** - Create a new scale set with Flexible orchestration mode (if you don't have one)
-2.* *Validate migration** - Verify the availability set can be migrated
-3. **Start migration** - Put the availability set into migration mode
-4. **Migrate VMs** - Move each VM individually to the scale set
-5. **Start VMs** - Power on the migrated VMs
-6. **Clean up** - Delete the empty availability set
+   2.* *Validate migration** - Verify the availability set can be migrated
+2. **Start migration** - Put the availability set into migration mode
+3. **Migrate VMs** - Move each VM individually to the scale set
+4. **Start VMs** - Power on the migrated VMs
+5. **Clean up** - Delete the empty availability set
 
 > [!IMPORTANT]
+>
 > - VMs are deallocated during migration. Plan for downtime accordingly.
 > - Once migration starts, the availability set is locked. No other changes can be made until migration completes or is canceled.
 > - Migration is a one-way operation. You cannot migrate back to availability sets after completion.
@@ -112,10 +112,10 @@ The migration process consists of the following phases:
 
 ### Migration paths
 
-| Source | Target | Description |
-|--------|--------|-------------|
+| Source           | Target                             | Description                                            |
+| ---------------- | ---------------------------------- | ------------------------------------------------------ |
 | Availability set | Regional Virtual Machine Scale Set | VMs distributed across fault domains within the region |
-| Availability set | Zonal Virtual Machine Scale Set | VMs placed in specific availability zones (1, 2, or 3) |
+| Availability set | Zonal Virtual Machine Scale Set    | VMs placed in specific availability zones (1, 2, or 3) |
 
 ### Limitations
 
@@ -166,13 +166,14 @@ az vm availability-set validate-migration-to-vmss \
 
 ```azurepowershell
 $vmss = Get-AzVmss -ResourceGroupName "<resource-group-name>" -VMScaleSetName "<scale-set-name>"
-Invoke-AzAvailabilitySetValidateMigrationToVmss `
+Test-AzAvailabilitySetMigration `
     -ResourceGroupName "<resource-group-name>" `
     -AvailabilitySetName "<availability-set-name>" `
-    -VirtualMachineScaleSetId $vmss.Id
+    -VirtualMachineScaleSetFlexibleId $vmss.Id
 ```
 
 # [REST API](#tab/rest)
+
 ```http
 POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}/validateMigrationToVirtualMachineScaleSet?api-version=2024-11-01
 
@@ -204,10 +205,10 @@ az vm availability-set start-migration-to-vmss \
 
 ```azurepowershell
 $vmss = Get-AzVmss -ResourceGroupName "<resource-group-name>" -VMScaleSetName "<scale-set-name>"
-Start-AzAvailabilitySetMigrationToVmss `
+Start-AzAvailabilitySetMigration `
     -ResourceGroupName "<resource-group-name>" `
     -AvailabilitySetName "<availability-set-name>" `
-    -VirtualMachineScaleSetId $vmss.Id
+    -VirtualMachineScaleSetFlexibleId $vmss.Id
 ```
 
 # [REST API](#tab/rest)
@@ -246,7 +247,7 @@ az vm migrate-to-vmss \
 # [Azure PowerShell](#tab/powershell)
 
 ```azurepowershell
-Move-AzVMToVmss `
+Move-AzVirtualMachineToVmss`
     -ResourceGroupName "<resource-group-name>" `
     -VMName "<vm-name>"
 ```
@@ -276,7 +277,7 @@ az vm migrate-to-vmss \
 # [Azure PowerShell](#tab/powershell)
 
 ```azurepowershell
-Move-AzVMToVmss `
+Move-AzVirtualMachineToVmss`
     -ResourceGroupName "<resource-group-name>" `
     -VMName "<vm-name>" `
     -TargetZone "1"
