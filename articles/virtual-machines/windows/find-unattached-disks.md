@@ -71,6 +71,7 @@ foreach ($storageAccount in $storageAccounts) {
 
     foreach ($container in $containers) {
         $blobs = Get-AzStorageBlob -Container $container.Name -Context $context
+        #Fetch all the Page blobs with extension .vhd as only Page blobs can be attached as disk to Azure VMs
         $blobs | Where-Object {$_.BlobType -eq 'PageBlob' -and $_.Name.EndsWith('.vhd')} | ForEach-Object {
             if ($_.BlobProperties.LeaseStatus -eq 'Unlocked') {
                 if ($deleteUnattachedVHDs) {
