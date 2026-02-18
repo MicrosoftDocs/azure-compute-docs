@@ -4,7 +4,7 @@ description: How to find and delete unattached Azure managed and unmanaged (VHDs
 author: roygara
 ms.service: azure-disk-storage
 ms.topic: how-to
-ms.date: 03/30/2018
+ms.date: 02/18/2026
 ms.author: rogarana
 ms.custom:
   - devx-track-azurecli
