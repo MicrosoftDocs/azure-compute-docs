@@ -1,5 +1,5 @@
 ---
-title: Dasv6 size series
+title: Dasv6-series size
 description: Information on and specifications of the Dasv6-series sizes
 author: mattmcinnes
 ms.service: azure-virtual-machines
@@ -11,20 +11,31 @@ ms.reviewer: mattmcinnes
 # Customer intent: As a cloud architect, I want to understand the specifications and features of the Dasv6 series virtual machines, so that I can select the appropriate size for my workload requirements.
 ---
 
-# Dasv6 sizes series
+# Dasv6-series size
 [!INCLUDE [dasv6-summary](./includes/dasv6-series-summary.md)]
 
 ## Host specifications
 [!INCLUDE [dasv6-series-specs](./includes/dasv6-series-specs.md)]
 
-## Feature support
-[Premium Storage](../../premium-storage-performance.md): Supported <br>[Premium Storage caching](../../premium-storage-performance.md): Supported <br>[Memory Preserving Updates](../../maintenance-and-updates.md): Supported <br>[Generation 2 VMs](../../generation-2.md): Supported <br>[Generation 1 VMs](../../generation-2.md): Not Supported <br>[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported <br>[Ephemeral OS Disk](../../ephemeral-os-disks.md): Not Supported <br>[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Supported <br>
+## Feature support for the Dasv6-series
 
-## Sizes in series
+|Feature name | Support status | 
+| --- | --- |
+|[Premium Storage](../../premium-storage-performance.md)| Supported |
+|[Premium Storage caching](../../premium-storage-performance.md)| Supported |
+|[Live Migration](../../maintenance-and-updates.md)| Supported |
+|[Memory Preserving Updates](../../maintenance-and-updates.md)| Supported |
+|[Generation 2 VMs](../../generation-2.md)| Supported |
+|[Generation 1 VMs](../../generation-2.md)| Not Supported |
+|[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli)| Supported |
+|[Ephemeral OS Disk](../../ephemeral-os-disks.md)| Not Supported |
+|[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)| Supported |
+
+## Sizes in the Dasv6-series
 
 ### [Basics](#tab/sizebasic)
 
-vCPUs (Qty.) and Memory for each size
+vCPUs (Qty.) and Memory for each size in the Dasv6-series.
 
 | Size Name | vCPUs (Qty.) | Memory (GB) |
 | --- | --- | --- |
@@ -42,7 +53,7 @@ vCPUs (Qty.) and Memory for each size
 
 ### [Local Storage](#tab/sizestoragelocal)
 
-Local (temp) storage info for each size
+Local (temp) storage info for each size in the Dasv6-series.
 
 > [!NOTE]
 > No local storage present in this series.
@@ -53,7 +64,7 @@ Local (temp) storage info for each size
 
 ### [Remote Storage](#tab/sizestorageremote)
 
-Remote (uncached) storage info for each size
+Remote (uncached) storage info for each size in the Dasv6-series.
 
 | Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD Disk IOPS | Uncached Premium SSD Throughput (MB/s) | Uncached Premium SSD Burst<sup>1</sup> IOPS | Uncached Premium SSD Burst<sup>1</sup> Throughput (MB/s) | Uncached Ultra Disk and Premium SSD v2 IOPS | Uncached Ultra Disk and Premium SSD v2 Throughput (MB/s) | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 IOPS | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 Disk Throughput (MB/s) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -82,7 +93,7 @@ Remote (uncached) storage info for each size
 
 ### [Network](#tab/sizenetwork)
 
-Network interface info for each size
+Network interface info for each size in the Dasv6-series.
 
 | Size Name | Max NICs (Qty.) | Max Network Bandwidth (Mb/s) |
 | --- | --- | --- |
@@ -106,7 +117,7 @@ Network interface info for each size
 
 ### [Accelerators](#tab/sizeaccelerators)
 
-Accelerator (GPUs, FPGAs, etc.) info for each size
+Accelerator (GPUs, FPGAs, etc.) info for each size in the Dasv6-series.
 
 > [!NOTE]
 > No accelerators are present in this series.

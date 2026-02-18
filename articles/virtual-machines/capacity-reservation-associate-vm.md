@@ -5,9 +5,10 @@ author: bdeforeest
 ms.author: bidefore
 ms.service: azure-virtual-machines
 ms.topic: how-to
+ms.update-cycle: 180-days
 ms.date: 11/22/2022
 ms.reviewer: cynthn, jushiman
-ms.custom: template-how-to, devx-track-azurecli, devx-track-azurepowershell
+ms.custom: template-how-to, devx-track-azurecli, devx-track-azurepowershell, portal
 # Customer intent: "As a cloud administrator, I want to associate a virtual machine with a capacity reservation group, so that I can ensure reserved resources are allocated for my applications and workloads."
 ---
 
@@ -573,7 +574,7 @@ To learn more, see the Azure PowerShell commands [Stop-AzVM](/powershell/module/
 
 ### Secure existing zonal virtual machine using zero size reservation
 
-Zonally deployed virtual machines can be converted to using an On Demand Capacity Reservation without reallocation. If you do not have capacity in an existing capacity reservation group, you can start by creating a zero size matching reservation to secure your workloads. The basic process involves 3 steps:
+Zonal virtual machines can be converted to using an On Demand Capacity Reservation without reallocation. If you do not have capacity in an existing capacity reservation group, you can start by creating a zero size matching reservation to secure your workloads. The basic process involves 3 steps:
 
 1. Create a Capacity Reservation Group and then matching capacity reservations in each target zone with the reserved quantity set to zero. This requires no additional quota or capacity. For more information on how to create a reservation, see [Create a capacity reservation](/azure/virtual-machines/capacity-reservation-create?tabs=portal1%2Capi1%2Capi2#create-a-capacity-reservation-1).
 

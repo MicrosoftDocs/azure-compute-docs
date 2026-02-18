@@ -133,7 +133,7 @@
   items:
   - name: Code samples
     href: /samples/browse/
-  - name: Azure PowerShell
+  - name: PowerShell
     href: service-fabric-powershell-samples.md
   - name: Service Fabric CLI
     href: samples-cli.md
@@ -381,6 +381,8 @@
         href: service-fabric-cluster-resource-manager-node-tagging.md
       - name: InBuild replicas per node throttling
         href: service-fabric-cluster-resource-manager-inbuild-throttling.md
+      - name: Ignore metrics
+        href: service-fabric-cluster-resource-manager-ignore-metrics.md
   - name: Monitoring and diagnostics
     items:
     - name: Monitor Service Fabric
@@ -616,6 +618,8 @@
           href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
         - name: Upgrading Linux OS for Azure Service Fabric
           href: service-fabric-cluster-upgrade-os.md
+      - name: Migrate your Service Fabric cluster to availability zone support
+        href: migrate-service-fabric-availability-zones.md
     - name: Standalone clusters
       items:
       - name: Create

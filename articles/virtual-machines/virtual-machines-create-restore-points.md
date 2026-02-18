@@ -28,7 +28,9 @@ Application consistency is supported for VMs running Windows operating systems a
 A multidisk crash-consistent VM restore point stores the VM configuration and point-in-time write-order-consistent snapshots for all managed disks attached to a VM. This information is the same as the status of data in the VM after a power outage or a crash. The `consistencyMode` optional parameter has to be set to `crashConsistent` in the creation request.
 
 > [!NOTE]
-> For disks configured with read/write host caching, multidisk crash consistency can't be guaranteed because writes that occur while the snapshot is taken might not be acknowledged by Azure Storage. If maintaining consistency is crucial, we recommend that you use the application-consistency mode.
+> Multidisk crash consistency can't be guaranteed in below scenarios:
+> - For disks configured with read/write host caching, multidisk crash consistency can't be guaranteed because writes that occur while the snapshot is taken might not be acknowledged by Azure Storage. If maintaining consistency is crucial, we recommend that you use the application-consistency mode.
+> - Crash-consistent restore points created for Intel V6+ (Dsv6-series, Edsv6-series, Esv6-series etc.) and AMD V7+ (Dasv7-series, Dadsv7-series, Easv7-series, Faldsv7-series etc.) Virtual Machines (VMs) with more than one data disk may not be consistent across disks. These SKUs use Azure Boost, which offloads storage operations to hardware for performance. For VM SKUs using the latest gen of Azure boost, current Crash consistent restore point orchestration does not guarantee simultaneous snapshots across multiple disks, leading to timing gaps (sub-second skew) between disks.
 
 VM restore points are organized into restore point collections. A restore point collection is an Azure Resource Manager resource that contains the restore points for a specific VM. If you want to utilize Azure Resource Manager templates (ARM templates) for creating restore points and restore point collections, see the public [Virtual-Machine-Restore-Points](https://github.com/Azure/Virtual-Machine-Restore-Points) repository in GitHub.
 

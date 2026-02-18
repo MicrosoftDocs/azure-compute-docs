@@ -65,10 +65,10 @@ First, you need to set some variables that you'll repeatedly use in commands.
 ```azurecli-interactive
 # Resource group name - ibTriggersTestRG in this example
 resourceGroupName=ibTriggersRG
-# Datacenter location - West US 2 in this example
-location=westus2
-# Additional region to replicate the image to - East US in this example
-additionalregion=eastus2
+# Datacenter location - Central US in this example
+location=centralus
+# Additional region to replicate the image to - West US in this example
+additionalregion=westus
 # Name of the Azure Compute Gallery - ibTriggersGallery in this example
 acgName=ibTriggersGallery
 # Name of the image definition to be created - ibTriggersImageDef in this example

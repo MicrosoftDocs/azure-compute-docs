@@ -27,8 +27,9 @@ For more information, see [What are the Federal Information Processing Standards
 |:----------|:---------------------------------------------------:|
 | MICROSOFT.AKS.COMPUTE.AKS.LINUX.AKSNODE | Commercial,<br>Government |
 | MICROSOFT.AKS.COMPUTE.AKS.LINUX.BILLING | Commercial,<br>Government |
+| MICROSOFT.AZURE.AZUREDEFENDERFORSERVERS.MDE.LINUX | Commercial,<br>Government |
 | MICROSOFT.AZURE.EXTENSIONS.CUSTOMSCRIPT | Commercial,<br>Government |
-| MICROSOFT.AZURE.KEYVAULT.KEYVAULTFORLINUX | Commercial |
+| MICROSOFT.AZURE.KEYVAULT.KEYVAULTFORLINUX | Commercial,<br>Government |
 | MICROSOFT.AZURE.MONITOR.AZUREMONITORLINUXAGENT | Commercial,<br>Government |
 | MICROSOFT.AZURE.MONITORING.DEPENDENCYAGENT.DEPENDENCYAGENTLINUX | Commercial |
 | MICROSOFT.AZURE.NETWORKWATCHER.NETWORKWATCHERAGENTLINUX | Commercial,<br>Government |
@@ -139,7 +140,7 @@ az rest \
 
 Running the `put` command outputs the resulting JSON for the modified VM. For later verification, you can run this `get` command against the VM object, which outputs the full JSON again.
 
-``` 
+```
 az rest \
 --method get \
 --url 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>/?api-version=2024-11-01'
@@ -173,7 +174,7 @@ For comparison, one possible outcome when you try to enable FIPS 140-3 on a VM w
 })
 ```
 
-<!-- 
+<!--
 ---
 
 ##### Option 2 - modifying ARM with template

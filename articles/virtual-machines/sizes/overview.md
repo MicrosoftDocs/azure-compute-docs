@@ -19,10 +19,7 @@ Azure Virtual Machine (VM) sizes are designed to provide a wide range of options
 
 This article describes what sizes are, gives an overview of the available sizes and shows different options for Azure virtual machine instances you can use to run your apps and workloads.
 
-> [!TIP]
-> Try the **[Virtual machines selector tool](https://aka.ms/vm-selector)** to find other sizes that best fit your workload.
-
-:::image type="content" source="./media/azure-vms-thumb.jpg" alt-text="YouTube video for selecting the right size for your VM." link="https://youtu.be/zOSvnJFd3ZM":::
+:::image type="content" source="./media/vm-series-video-play.png" alt-text="YouTube video for selecting the right size for your VM." link="https://www.youtube.com/watch?v=zKUBjtof6nU":::
 
 ## VM size and series naming
 
@@ -84,7 +81,7 @@ General purpose VM sizes provide balanced CPU-to-memory ratio. Ideal for testing
 | [A-family](./general-purpose/a-family.md)  | Entry-level economical |  [Av2-series](./general-purpose/a-family.md#av2-series) <br> [Previous-gen A-family series](./previous-gen-sizes-list.md#general-purpose-previous-gen-sizes) |
 | [B-family](./general-purpose/b-family.md)  | Burstable | [Bsv2-series](./general-purpose/b-family.md#bsv2-series) <br> [Basv2-series](./general-purpose/b-family.md#basv2-series) <br> [Bpsv2-series](./general-purpose/b-family.md#bpsv2-series) <br>[Previous-gen B-family series](./previous-gen-sizes-list.md#general-purpose-previous-gen-sizes) |
 | [D-family](./general-purpose/d-family.md) | Enterprise-grade applications <br> Relational databases <br> In-memory caching <br> Data analytics | [Dasv7 and Dadsv7 series](./general-purpose/d-family.md#dasv7-series-and-dadsv7-series) <br> [Dasv7 and Dadsv7 series](./general-purpose/d-family.md#dalsv7-series-and-daldsv7-series) <br> [Dpsv6 and Dplsv6-series](./general-purpose/d-family.md#dpsv6-and-dplsv6-series ) <br> [Dpdsv6 and Dpldsv6-series](./general-purpose/d-family.md#dpdsv6-and-dpldsv6-series) <br> [Dasv6 and Dadsv6-series](./general-purpose/d-family.md#dasv6-and-dadsv6-series) <br> [Dalsv6 and Daldsv6-series](./general-purpose/d-family.md#dalsv6-and-daldsv6-series) <br> [Dpsv5 and Dpdsv5-series](./general-purpose/d-family.md#dpsv5-and-dpdsv5-series) <br> [Dpldsv5 and Dpldsv5-series](./general-purpose/d-family.md#dplsv5-and-dpldsv5-series) <br> [Dlsv5 and Dldsv5-series](./general-purpose/d-family.md#dlsv5-and-dldsv5-series) <br> [Dv5 and Dsv5-series](./general-purpose/d-family.md#dv5-and-dsv5-series) <br> [Ddv5 and Ddsv5-series](./general-purpose/d-family.md#ddv5-and-ddsv5-series) <br> [Dasv5 and Dadsv5-series](./general-purpose/d-family.md#dasv5-and-dadsv5-series) <br> [Previous-gen D-family series](./previous-gen-sizes-list.md#general-purpose-previous-gen-sizes) |
-| [DC-family](./general-purpose/dc-family.md) | D-family with confidential computing | [DCasv5 and DCadsv5-series](./general-purpose/dc-family.md#dcasv5-and-dcadsv5-series) <br> [DCas_cc_v5 and DCads_cc_v5-series](./general-purpose/dc-family.md#dcas_cc_v5-and-dcads_cc_v5-series) <br> [DCesv6 and DCedsv5-series](./general-purpose/dc-family.md#dcesv6-and-dcedsv5-series) <br> [DCasv6 and DCadsv6-series](./general-purpose/dc-family.md#dcasv6-and-dcadsv6-series) <br> [DCsv3 and DCdsv3-series](./general-purpose/dc-family.md#dcsv3-and-dcdsv3-series) <br> [Previous-gen DC-family](./previous-gen-sizes-list.md#general-purpose-previous-gen-sizes)|
+| [DC-family](./general-purpose/dc-family.md) | D-family with confidential computing | [DCasv5 and DCadsv5-series](./general-purpose/dc-family.md#dcasv5-and-dcadsv5-series) <br> [DCas_cc_v5 and DCads_cc_v5-series](./general-purpose/dc-family.md#dcas_cc_v5-and-dcads_cc_v5-series) <br> [DCesv6-series](./general-purpose/dc-family.md#dcesv6-series) <br> [DCasv6 and DCadsv6-series](./general-purpose/dc-family.md#dcasv6-and-dcadsv6-series) <br> [DCsv3 and DCdsv3-series](./general-purpose/dc-family.md#dcsv3-and-dcdsv3-series) <br> [Previous-gen DC-family](./previous-gen-sizes-list.md#general-purpose-previous-gen-sizes)|
 
 
 

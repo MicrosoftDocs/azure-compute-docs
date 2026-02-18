@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+ms.update-cycle: 1095-days
 # Customer intent: "As a cloud application developer, I want to design and implement both stateful and stateless microservices using a reliable platform, so that I can optimize resource management, achieve high availability, and ensure low latency for my applications."
 ---
 

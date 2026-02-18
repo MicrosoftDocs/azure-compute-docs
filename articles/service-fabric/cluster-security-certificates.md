@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+ms.update-cycle: 1095-days
 # Customer intent: "As a cluster administrator, I want to configure and troubleshoot X.509 certificate-based authentication in a Service Fabric cluster, so that I can ensure secure communication and proper identity validation among cluster nodes."
 ---
 

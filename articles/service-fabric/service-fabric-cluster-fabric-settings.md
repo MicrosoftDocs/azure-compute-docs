@@ -16,7 +16,7 @@ This article describes the various fabric settings for your Service Fabric clust
 There are three different upgrade policies:
 
 - **Dynamic** – Changes to a dynamic configuration don't cause any process restarts of either Service Fabric processes or your service host processes. 
-- **Static** – Changes to a static configuration cause the Service Fabric node to restart in order to consume the change. Services on the nodes is restarted.
+- **Static** – Changes to a static configuration cause the Service Fabric node to restart in order to consume the change. Services on the nodes are restarted.
 - **NotAllowed** – These settings cannot be modified. Changing these settings requires that the cluster be destroyed and a new cluster created. 
 
 The following is a list of Fabric settings that you can customize, organized by section.
@@ -39,7 +39,7 @@ The following is a list of Fabric settings that you can customize, organized by 
 |IgnoreCrlOfflineError|bool, default is TRUE|Dynamic|Whether to ignore CRL offline error for application/service certificate verification. |
 |IsEnabled |Bool, default is false |Static| Enables/Disables the HttpApplicationGateway. HttpApplicationGateway is disabled by default and this config needs to be set to enable it. |
 |NumberOfParallelOperations | Uint, default is 5000 |Static|Number of reads to post to the http server queue. This controls the number of concurrent requests that can be satisfied by the HttpGateway. |
-|RemoveServiceResponseHeaders|string, default is "Date; Server"|Static|Semi colon/ comma-separated list of response headers that is removed from the service response; before forwarding it to the client. If this is set to empty string; pass all the headers returned by the service as-is. i.e, don't overwrite the Date and Server |
+|RemoveServiceResponseHeaders|string, default is "Date; Server"|Static|Semi colon/ comma-separated list of response headers that is removed from the service response; before forwarding it to the client. If this is set to empty string; pass all the headers returned by the service as-is. i.e., don't overwrite the Date and Server |
 |ResolveServiceBackoffInterval |Time in seconds, default is 5 |Dynamic|Specify timespan in seconds.  Gives the default back-off interval before retrying a failed resolve service operation. |
 |SecureOnlyMode|bool, default is FALSE|Dynamic| SecureOnlyMode: true: Reverse Proxy will only forward to services that publish secure endpoints. false: Reverse Proxy can forward requests to secure/non-secure endpoints. To learn more, see [Reverse proxy endpoint selection logic](service-fabric-reverseproxy-configure-secure-communication.md#endpoint-selection-logic-when-services-expose-secure-as-well-as-unsecured-endpoints).  |
 |ServiceCertificateThumbprints|string, default is ""|Dynamic|The comma-separated list of thumbprints of the remote certs that the reverse proxy can trust. To learn more, see [Reverse proxy secure connection](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services). |
@@ -183,6 +183,11 @@ The following is a list of Fabric settings that you can customize, organized by 
 |PlacementConstraints|string, default is    ""|Static|    The PlacementConstraints for EventStore service |
 |TargetReplicaSetSize|int, default is    0|Static| The TargetReplicaSetSize for EventStore service |
 
+## ExpandedMetricsDuringZoneDownMode
+| **Parameter** | **Allowed Values** |**Upgrade Policy**| **Guidance or Short Description** |
+| --- | --- | --- | --- |
+|PropertyGroup|KeyBoolValueMap, default is None|Static|Determines which metrics have their node capacities treated as infinite when the ignoring metrics feature is enabled. Set the value to `true` for metrics that should be ignored.
+
 ## FabricClient
 
 | **Parameter** | **Allowed Values** | **Upgrade Policy** | **Guidance or Short Description** |
@@ -280,11 +285,11 @@ The following is a list of Fabric settings that you can customize, organized by 
 | --- | --- | --- | --- |
 |CompletedActionKeepDurationInSeconds | Int, default is 604800 |Static| This is approximately how long to keep actions that are in a terminal state. This also depends on StoredActionCleanupIntervalInSeconds; since the work to clean up is only done on that interval. 604800 is seven days. |
 |DataLossCheckPollIntervalInSeconds|int, default is 5|Static|This is the time between the checks the system performs while waiting for data loss to happen. The number of times the data loss number will be checked per internal iteration is DataLossCheckWaitDurationInSeconds/this. |
-|DataLossCheckWaitDurationInSeconds|int, default is 25|Static|The total amount of time; in seconds; that the system waits for data loss to happen. This is internally used when the StartPartitionDataLossAsync() api is called. |
+|DataLossCheckWaitDurationInSeconds|int, default is 25|Static|The total amount of time; in seconds; that the system waits for data loss to happen. This is internally used when the StartPartitionDataLossAsync() API is called. |
 |MinReplicaSetSize |Int, default is 0 |Static|The MinReplicaSetSize for FaultAnalysisService. |
 |PlacementConstraints | string, default is ""|Static| The PlacementConstraints for FaultAnalysisService. |
 |QuorumLossWaitDuration | Time in seconds, default is MaxValue |Static|Specify timespan in seconds. The QuorumLossWaitDuration for FaultAnalysisService. |
-|ReplicaDropWaitDurationInSeconds|int, default is 600|Static|This parameter is used when the data loss api is called. It controls how long the system will wait for a replica to get dropped after remove replica is internally invoked on it. |
+|ReplicaDropWaitDurationInSeconds|int, default is 600|Static|This parameter is used when the data loss API is called. It controls how long the system will wait for a replica to get dropped after remove replica is internally invoked on it. |
 |ReplicaRestartWaitDuration |Time in seconds, default is 60 minutes|Static|Specify timespan in seconds. The ReplicaRestartWaitDuration for FaultAnalysisService. |
 |StandByReplicaKeepDuration| Time in seconds, default is (60*24*7) minutes |Static|Specify timespan in seconds. The StandByReplicaKeepDuration for FaultAnalysisService. |
 |StoredActionCleanupIntervalInSeconds | Int, default is 3600 |Static|This is how often the store is cleaned up. Only actions in a terminal state; and that completed at least CompletedActionKeepDurationInSeconds ago will be removed. |
@@ -380,7 +385,7 @@ The following is a list of Fabric settings that you can customize, organized by 
 |ActivationRetryBackoffInterval |Time in Seconds, default is 5 |Dynamic|Backoff interval on every activation failure; On every continuous activation failure, the system retries the activation for up to the MaxActivationFailureCount. The retry interval on every try is a product of continuous activation failure and the activation back-off interval. |
 |ActivationTimeout| TimeSpan, default is Common::TimeSpan::FromSeconds(180)|Dynamic| Specify timespan in seconds. The timeout for application activation; deactivation and upgrade. |
 |ApplicationHostCloseTimeout| TimeSpan, default is Common::TimeSpan::FromSeconds(120)|Dynamic| Specify timespan in seconds. When Fabric exit is detected in a self activated processes; FabricRuntime closes all of the replicas in the user's host (applicationhost) process. This is the timeout for the close operation. |
-| CnsNetworkPluginCnmUrlPort | wstring, default is L"48080" | Static | Azure cnm api url port |
+| CnsNetworkPluginCnmUrlPort | wstring, default is L"48080" | Static | Azure cnm API url port |
 | CnsNetworkPluginCnsUrlPort | wstring, default is L"10090" | Static | Azure cns url port |
 |ContainerServiceArguments|string, default is "-H localhost:2375 -H npipe://"|Static|Service Fabric (SF) manages docker daemon (except on windows client machines like Windows 10). This configuration allows user to specify custom arguments that should be passed to docker daemon when starting it. When custom arguments are specified, Service Fabric doesn't pass any other argument to Docker engine except '--pidfile' argument. Hence users shouldn't specify '--pidfile' argument as part of their customer arguments. Also, the custom arguments should ensure that docker daemon listens on default name pipe on Windows (or Unix domain socket on Linux) for Service Fabric to be able to communicate with it.|
 |ContainerServiceLogFileMaxSizeInKb|int, default is 32768|Static|Maximum file size of log file generated by docker containers.  Windows only.|
@@ -622,6 +627,7 @@ The following is a list of Fabric settings that you can customize, organized by 
 |DetailedVerboseHealthReportLimit | Int, default is 200 | Dynamic|Defines the number of times an unplaced replica has to be persistently unplaced before detailed health reports are emitted. |
 |EnforceUserServiceMetricCapacities|bool, default is FALSE | Static |Enables fabric services protection. All user services are under one job object/cgroup and limited to specified amount of resources. This needs to be static (requires restart of FabricHost) as creation/removal of user job object and setting limits in done during open of Fabric Host. |
 |EnableServiceSensitivity | bool, default is False | Dynamic|Feature switch to enable/disable the replica sensitivity feature. |
+|EnableZoneDownModeNodeCapacityExpansion | bool, default is False | Dynamic|Feature switch to enable/disable ignoring metrics. When enabled, metrics specified in the `ExpandedMetricsDuringZoneDownMode` section have their node capacities treated as infinite. When disabled, all metrics are enforced normally. |
 |FaultDomainConstraintPriority | Int, default is 0 |Dynamic| Determines the priority of fault domain constraint: 0: Hard; 1: Soft; negative: Ignore. |
 |GlobalMovementThrottleCountingInterval | Time in seconds, default is 600 |Static| Specify timespan in seconds. Indicate the length of the past interval for which to track per domain replica movements (used along with GlobalMovementThrottleThreshold). Can be set to 0 to ignore global throttling altogether. |
 |GlobalMovementThrottleThreshold | Uint, default is 1000 |Dynamic| Maximum number of movements allowed in the Balancing Phase in the past interval indicated by GlobalMovementThrottleCountingInterval. |
@@ -852,9 +858,9 @@ The following is a list of Fabric settings that you can customize, organized by 
 |GetFolderSize |string, default is "Admin" |Dynamic|Security configuration for FileStoreService's getting folder size |
 |GetNodeDeactivationStatus |string, default is "Admin" |Dynamic| Security configuration for checking deactivation status. |
 |GetNodeTransitionProgress | string, default is "Admin\|\|User" |Dynamic| Security configuration for getting progress on a node transition command. |
-|GetPartitionDataLossProgress | string, default is "Admin\|\|User" | Dynamic|Fetches the progress for an invoke data loss api call. |
-|GetPartitionQuorumLossProgress | string, default is "Admin\|\|User" |Dynamic| Fetches the progress for an invoke quorum loss api call. |
-|GetPartitionRestartProgress | string, default is "Admin\|\|User" |Dynamic| Fetches the progress for a restart partition api call. |
+|GetPartitionDataLossProgress | string, default is "Admin\|\|User" | Dynamic|Fetches the progress for an invoke data loss API call. |
+|GetPartitionQuorumLossProgress | string, default is "Admin\|\|User" |Dynamic| Fetches the progress for an invoke quorum loss API call. |
+|GetPartitionRestartProgress | string, default is "Admin\|\|User" |Dynamic| Fetches the progress for a restart partition API call. |
 |GetSecrets|string, default is "Admin"|Dynamic|Get secret values |
 |GetServiceDescription |string, default is "Admin\|\|User" |Dynamic| Security configuration for long-poll service notifications and reading service descriptions. |
 |GetStagingLocation |string, default is "Admin" |Dynamic| Security configuration for image store client staging location retrieval. |
@@ -874,7 +880,7 @@ The following is a list of Fabric settings that you can customize, organized by 
 |NodeControl |string, default is "Admin" |Dynamic| Security configuration for starting; stopping; and restarting nodes. |
 |NodeStateRemoved |string, default is "Admin" |Dynamic| Security configuration for reporting node state removed. |
 |Ping |string, default is "Admin\|\|User" |Dynamic| Security configuration for client pings. |
-|PredeployPackageToNode |string, default is "Admin" |Dynamic| Predeployment api. |
+|PredeployPackageToNode |string, default is "Admin" |Dynamic| Predeployment API. |
 |PrefixResolveService |string, default is "Admin\|\|User" |Dynamic| Security configuration for complaint-based service prefix resolution. |
 |PropertyReadBatch |string, default is "Admin\|\|User" |Dynamic| Security configuration for Naming property read operations. |
 |PropertyWriteBatch |string, default is "Admin" |Dynamic|Security configurations for Naming property write operations. |
