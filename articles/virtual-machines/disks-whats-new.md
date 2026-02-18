@@ -15,7 +15,9 @@ ms.custom: references_regions
 Azure Disk Storage regularly receives updates for new features and enhancements. This article provides information about what's new in Azure Disk Storage.
 
 ## Update summary
-
+- [What's new in 2026](#whats-new-in-2026)
+  -  [Quarter 1 (January, Febraury, March)](#quarter-1-january-february-march)
+        - [Expanded regional availability for Premium SSD v2](#expanded-regional-availability-for-premium-ssd-v2)
 - [What's new in 2025](#whats-new-in-2025)
   -  [Quarter 4 (October, November, December)](#quarter-4-october-november-december)
         - [Expanded regional availability for Premium SSD v2](#expanded-regional-availability-for-premium-ssd-v2)
@@ -42,6 +44,14 @@ Azure Disk Storage regularly receives updates for new features and enhancements.
       - [Generally available: Trusted launch support for Ultra Disks and Premium SSD v2](#generally-available-trusted-launch-support-for-ultra-disks-and-premium-ssd-v2)
       - [Expanded regional availability for Ultra Disks](#expanded-regional-availability-for-ultra-disks)
       - [Expanded regional availability for zone-redundant storage disks](#expanded-regional-availability-for-zone-redundant-storage-disks)
+
+## What's new in 2026
+
+### Quarter 1 (January, February, March)
+
+#### Expanded regional availability for Premium SSD v2
+
+Premium SSD v2 disks were made available in Brazil Southeast and in a third Availability Zone in Indonesia Central and Malaysia West.
 
 ## What's new in 2025
 
