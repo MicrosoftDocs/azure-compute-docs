@@ -1,6 +1,6 @@
 ---
 title: Move Azure single-instance virtual machines from regional to zonal availability
-description: Learn how to move single-instance Azure virtual machines from a regional deployment to an Availability Zone in the same region.
+description: Learn how to move single-instance Azure virtual machines from a regional deployment to an Availability Zone in the same region by using the Azure portal, PowerShell, or CLI.
 ms.service: azure-virtual-machines
 ms.topic: tutorial
 ms.date: 02/17/2026
@@ -31,7 +31,11 @@ Before you begin, verify the following:
 
 Use the following steps to move a VM from regional to zonal deployment in the same region.
 
-### Select the VM
+## Choose your tool
+
+# [Portal](#tab/portal)
+
+## Portal: Select the VM
 
 1. In the [Azure portal](https://ms.portal.azure.com/#home), go to your VM.
 1. In the VM resource pane, select **Availability + scaling** > **Edit**.
@@ -39,7 +43,7 @@ Use the following steps to move a VM from regional to zonal deployment in the sa
 
 You can also open **Availability + scale** from the VM overview and then select **Availability + scaling**.
 
-### Select the target availability zones
+## Portal: Select the target availability zone
 
 1. Under **Target availability zone**, select the zone you want to use (for example, Zone 1).
    :::image type="content" source="./media/tutorial-move-regional-zonal/availability-scaling-home.png" alt-text="Screenshot of Availability + scaling homepage.":::
@@ -55,11 +59,11 @@ If the selected VM configuration isn't supported for move, validation fails and 
 
 The managed identity setup can take a few minutes. Progress updates are shown in the portal.
 
-### Review VM properties before move
+## Portal: Review VM properties before move
 
 1. On **Review properties**, review the target VM configuration.
 
-#### VM properties
+### VM properties
 
 The following source VM properties are retained by default in the target zonal VM:
 
@@ -87,7 +91,7 @@ The following properties are newly created by default in the target zonal VM:
 1. Select the consent statement at the bottom of the page, then continue with the move.
    :::image type="content" source="./media/tutorial-move-regional-zonal/migrate-vms.png" alt-text="Screenshot of migrating virtual machine page.":::
 
-### Move the VM
+## Portal: Move the VM
 
 Select **Move** to complete the move to Availability Zones.
 
@@ -98,11 +102,101 @@ During move:
 - The source VM is stopped, so brief downtime occurs.
 - A target zonal VM is created and started.
 
-### Configure settings after move
+# [PowerShell](#tab/powershell)
+
+## PowerShell: Sign in and set context
+
+```azurepowershell-interactive
+Set-AzContext -SubscriptionId "<subscription-id>"
+Connect-AzAccount -Subscription "<subscription-id>"
+```
+
+## PowerShell: Create move collection and identity
+
+```azurepowershell-interactive
+New-AzResourceGroup -Name "RegionToZone-DemoMCRG" -Location "EastUS"
+Register-AzResourceProvider -ProviderNamespace Microsoft.Migrate
+New-AzResourceMoverMoveCollection -Name "RegionToZone-DemoMC" -ResourceGroupName "RegionToZone-DemoMCRG" -MoveRegion "eastus" -Location "eastus2euap" -IdentityType "SystemAssigned" -MoveType "RegionToZone"
+```
+
+## PowerShell: Add VM move resource and resolve dependencies
+
+```azurepowershell-interactive
+$targetResourceSettingsObj = @{ 
+  "resourceType" = "Microsoft.Compute/virtualMachines"
+  "targetAvailabilityZone" = "2"
+  "targetResourceName" = "<target-vm-name>"
+  "targetVmSize" = "<target-vm-size>"
+}
+
+Add-AzResourceMoverMoveResource -ResourceGroupName "RegionToZone-DemoMCRG" -MoveCollectionName "RegionToZone-DemoMC" -SourceId "/subscriptions/<subscription-id>/resourcegroups/<rg>/providers/Microsoft.Compute/virtualMachines/<source-vm-name>" -Name "demoVM-MoveResource" -ResourceSetting $targetResourceSettingsObj
+Resolve-AzResourceMoverMoveCollectionDependency -ResourceGroupName "RegionToZone-DemoMCRG" -MoveCollectionName "RegionToZone-DemoMC"
+```
+
+## PowerShell: Validate recommendations (SKU, quota, capacity)
+
+Quota and capacity are validated separately:
+
+- **Quota** is your subscription limit for vCPUs and virtual machines.
+- **Capacity** is available infrastructure in the selected region and zone.
+
+If recommendations require a different zone or size, update the move resource and resolve dependencies again.
+
+```azurepowershell-interactive
+$targetResourceSettingsObj.TargetVmSize = "Standard_DC1ds_v3"
+$targetResourceSettingsObj.TargetAvailabilityZone = "3"
+Add-AzResourceMoverMoveResource -ResourceGroupName "RegionToZone-DemoMCRG" -MoveCollectionName "RegionToZone-DemoMC" -SourceId "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Compute/virtualMachines/<source-vm-name>" -Name "demoVM-MoveResource" -ResourceSetting $targetResourceSettingsObj
+Resolve-AzResourceMoverMoveCollectionDependency -ResourceGroupName "RegionToZone-DemoMCRG" -MoveCollectionName "RegionToZone-DemoMC"
+```
+
+## PowerShell: Initiate and commit move
+
+```azurepowershell-interactive
+Invoke-AzResourceMoverInitiateMove -ResourceGroupName "RegionToZone-DemoMCRG" -MoveCollectionName "RegionToZone-DemoMC" -MoveResource $("demoVM-MoveResource")
+Invoke-AzResourceMoverCommit -ResourceGroupName "RegionToZone-DemoMCRG" -MoveCollectionName "RegionToZone-DemoMC" -MoveResource $("demoVM-MoveResource")
+```
+
+# [CLI](#tab/cli)
+
+## CLI: Sign in and set subscription
+
+```azurecli-interactive
+az login
+az account set --subscription <subscription-id>
+```
+
+## CLI: Create move collection and identity
+
+```azurecli-interactive
+az group create --location eastus2 --name clidemo-RG
+az resource-mover move-collection create --identity type=SystemAssigned --location eastus2 --move-region eastus --name cliDemo-zonalMC --resource-group clidemo-RG --move-type RegionToZone
+```
+
+## CLI: Add VM move resource and resolve dependencies
+
+```azurecli-interactive
+az resource-mover move-resource add --resource-group clidemo-RG --move-collection-name cliDemo-zonalMC --name vm-demoMR --source-id "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Compute/virtualMachines/<source-vm-name>" --resource-settings '{"resourceType":"Microsoft.Compute/virtualMachines","targetResourceName":"<target-vm-name>","targetAvailabilityZone":"2","targetVmSize":"<target-vm-size>"}'
+az resource-mover move-collection resolve-dependency --name cliDemo-zonalMC --resource-group clidemo-RG
+```
+
+## CLI: Validate recommendations (SKU, quota, capacity)
+
+Quota and capacity are validated separately. If move recommendations require a different zone or VM size, update the move resource settings and resolve dependencies again before initiating the move.
+
+## CLI: Initiate and commit move
+
+```azurecli-interactive
+az resource-mover move-collection initiate-move --move-resources "/subscriptions/<subscription-id>/resourceGroups/clidemo-RG/providers/Microsoft.Migrate/moveCollections/cliDemo-zonalMC/moveResources/vm-demoMR" --validate-only false --name cliDemo-zonalMC --resource-group clidemo-RG
+az resource-mover move-collection commit --move-resources "/subscriptions/<subscription-id>/resourceGroups/clidemo-RG/providers/Microsoft.Migrate/moveCollections/cliDemo-zonalMC/moveResources/vm-demoMR" --validate-only false --name cliDemo-zonalMC --resource-group clidemo-RG
+```
+
+---
+
+## Configure settings after move
 
 Review source VM settings and reconfigure as needed (for example, extensions, RBAC, Public IP configuration, backup, and disaster recovery settings).
 
-### Delete or keep the source VM
+## Delete or keep the source VM
 
 After move completion, the source VM remains stopped. You can delete it or keep it for another purpose.
 
@@ -118,4 +212,5 @@ To remove the move collection:
 
 ## Next steps
 
-To perform the same workflow using scripting, see [Move Azure single-instance VMs from regional to zonal deployment using PowerShell or CLI](./move-virtual-machines-regional-zonal-powershell.md).
+- For deployment guidance and limits, see [Move to Availability Zones (Azure portal)](/azure/availability-zones/migrate-vm?toc=/azure/virtual-machines/toc.json&bc=/azure/virtual-machines/breadcrumb/toc.json).
+- See [Regional to zonal move FAQ](./move-virtual-machines-regional-zonal-faq.md).
