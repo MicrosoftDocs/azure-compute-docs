@@ -102,25 +102,27 @@ Within these offers, associated plans and images are described as a "Pay-As-You-
 **SUSE Linux Enterprise Server**
 * [ SUSE Linux Enterprise Server 16.0 + 24x7 Support](https://marketplace.microsoft.com/en-us/product/suse.sles-16-0-x86-64?tab=Overview)
 * [ SUSE Linux Enterprise Server 16.0 for Arm64 + 24x7 Support](https://marketplace.microsoft.com/en-us/product/suse.sles-16-0-arm64?tab=Overview)
-* [ SUSE Linux Enterprise Server 16.0 + Patching](https://marketplace.microsoft.com/en-us/product/suse.sles-16-0-basic-x86-64?tab=Overview)
+* [ SUSE Linux Enterprise Server 16.0 + 24x7 Support](https://marketplace.microsoft.com/product/suse.sles-16-0-x86-64?tab=Overview)
+* [ SUSE Linux Enterprise Server 16.0 for Arm64 + 24x7 Support](https://marketplace.microsoft.com/product/suse.sles-16-0-arm64?tab=Overview)
+* [ SUSE Linux Enterprise Server 16.0 + Patching](https://marketplace.microsoft.com/product/suse.sles-16-0-basic-x86-64?tab=Overview)
   
 * [ SUSE Linux Enterprise Server 15 SP7 + 24x7 Support](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/suse.sles-15-sp7?tab=Overview)
 * [ SUSE Linux Enterprise Server 15 SP7 Arm64 + 24x7 Support](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/suse.sles-15-sp7-arm64?tab=PlansAndPrice)
 * [ SUSE Linux Enterprise Server 15 SP7 + Patching](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/suse.sles-15-sp7-basic?tab=Overview)
 
  _SLES 15 SP6 - End-of-Support: 31-Dec-2025 - LTSS 31-Dec-2028_
-* _[ SUSE Linux Enterprise Server 15 SP6 + 24x7 Support](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/suse.sles-15-sp6?tab=Overview)_
-* _[ SUSE Linux Enterprise Server 15 SP6 Arm64 + 24x7 Support](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/suse.sles-15-sp6-arm64?tab=PlansAndPrice)_
-* _[ SUSE Linux Enterprise Server 15 SP6 + Patching](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/suse.sles-15-sp6-basic?tab=Overview)_
+* _[ SUSE Linux Enterprise Server 15 SP6 + 24x7 Support](https://azuremarketplace.microsoft.com/marketplace/apps/suse.sles-15-sp6?tab=Overview)_
+* _[ SUSE Linux Enterprise Server 15 SP6 Arm64 + 24x7 Support](https://azuremarketplace.microsoft.com/marketplace/apps/suse.sles-15-sp6-arm64?tab=PlansAndPrice)_
+* _[ SUSE Linux Enterprise Server 15 SP6 + Patching](https://azuremarketplace.microsoft.com/marketplace/apps/suse.sles-15-sp6-basic?tab=Overview)_
 
  _SLES 15 SP5 - End-of-Support: 31-Dec-2024 - LTSS 31-Dec-2027_
-* _[ SUSE Linux Enterprise Server 15 SP5 + 24x7 Support](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/suse.sles-15-sp5?tab=Overview)_
-* _[ SUSE Linux Enterprise Server 15 SP5 Arm64 + 24x7 Support](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/suse.sles-15-sp5-arm64?tab=Overview)_
-* _[ SUSE Linux Enterprise Server 15 SP5 + Patching](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/suse.sles-15-sp5-basic?tab=Overview)_
+* _[ SUSE Linux Enterprise Server 15 SP5 + 24x7 Support](https://azuremarketplace.microsoft.com/marketplace/apps/suse.sles-15-sp5?tab=Overview)_
+* _[ SUSE Linux Enterprise Server 15 SP5 Arm64 + 24x7 Support](https://azuremarketplace.microsoft.com/marketplace/apps/suse.sles-15-sp5-arm64?tab=Overview)_
+* _[ SUSE Linux Enterprise Server 15 SP5 + Patching](https://azuremarketplace.microsoft.com/marketplace/apps/suse.sles-15-sp5-basic?tab=Overview)_
 
 
 **SUSE Linux Enterprise Server for SAP applications**
-* [ SUSE Linux Enterprise Server for SAP applications 16.0 + 24x7 Support](https://marketplace.microsoft.com/en-us/product/suse.sles-sap-16-0-x86-64?tab=Overview)
+* [ SUSE Linux Enterprise Server for SAP applications 16.0 + 24x7 Support](https://marketplace.microsoft.com/product/suse.sles-sap-16-0-x86-64?tab=Overview)
   
 * [ SUSE Linux Enterprise Server for SAP applications 15 SP7 + 24x7 Support](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/suse.sles-sap-15-sp7?tab=Overview)
 * [ SUSE Linux Enterprise Server for SAP applications 15 SP7 Hardened + 24x7 Support](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/suse.sles-sap-15-sp7-hardened?tab=Overview)
