@@ -4,7 +4,7 @@ description: Learn how to migrate both managed and nonmanaged Azure Service Fabr
 author: tomvcassidy
 ms.service: azure-service-fabric
 ms.topic: conceptual
-ms.date: 03/23/2023
+ms.date: 02/18/2026
 ms.author: tomcassidy
 ---
 
