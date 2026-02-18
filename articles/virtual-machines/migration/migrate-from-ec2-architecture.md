@@ -1,6 +1,6 @@
 ---
-title: Migrate from Amazon EC2 to Azure Virtual Machines
-description: Learn to migrate from Amazon EC2 to Azure Virtual Machines with step-by-step guidance, feature mapping, and validation strategies.
+title: Migrate from Amazon Elastic Compute Cloud (Amazon EC2) to Azure Virtual Machines
+description: Learn to migrate from Amazon Elastic Compute Cloud (Amazon EC2) to Azure Virtual Machines with step-by-step guidance, feature mapping, and validation strategies.
 author: mattmcinnes
 ms.author: mattmcinnes
 ms.topic: how-to
@@ -11,13 +11,13 @@ ms.collection:
   - aws-to-azure
 ai-usage: ai-assisted
 
-#customer intent: As a workload architect, I want to understand how to migrate from Amazon EC2 to Azure Virtual Machines as part of my workload's like-for-like migration to Azure. Without this guidance, I might overlook behavior differences or implementation details that could introduce delays, cause frustration, or lead to migration failures.
+#customer intent: As a workload architect, I want to understand how to migrate to Azure Virtual Machines from Amazon EC2 as part of my workload's like-for-like migration to Azure. Without this guidance I will miss behavior differences or implementation details that will cause my migration experience delay, frustration, or be to a failure.
 ---
 # Migrate from Amazon EC2 to Azure Virtual Machines
 
-If you use Amazon EC2 and plan to migrate your workload to Azure, this guide helps you understand the migration process, feature mappings, and recommended practices. It's for Amazon Web Services (AWS) professionals who are familiar with Amazon EC2 and plan to move workloads to Azure Virtual Machines. The guide explains key similarities and differences between the platforms, highlights architectural considerations, and outlines best practices for performance, cost, and availability. The goal is to help you plan and complete a successful migration to an Azure infrastructure as a service (IaaS) environment.
+If you use Amazon Elastic Compute Cloud (Amazon EC2) and plan to migrate your workload to Azure, this guide helps you understand the migration process, feature mappings, and best practices. It's for Amazon Web Services (AWS) professionals who are familiar with Amazon EC2 and plan to move workloads to Azure Virtual Machines. The guide explains key similarities and differences between the platforms, provides architectural considerations, and outlines best practices for performance, cost, and availability. The goal is to help you plan and complete a successful migration to an Azure infrastructure as a service (IaaS) environment.
 
-## What you accomplish
+## What you will accomplish
 
 After you complete this guide, you can take the following actions:
 
@@ -25,9 +25,9 @@ After you complete this guide, you can take the following actions:
 
 - Translate Amazon Machine Image (AMI)-based workloads to Microsoft Marketplace or custom images.
 
-- Design Azure storage architectures that meet or exceed existing Amazon Elastic Block Store (EBS) performance characteristics.
+- Design Azure storage architectures that meet or exceed existing Amazon Elastic Block Store (Amazon EBS) performance characteristics.
 
-- Recreate Amazon Virtual Private Cloud (AWS VPC) networking, security, and load balancing patterns by using Azure-native services.
+- Recreate AWS Amazon Virtual Private Cloud (VPC) networking, security, and load-balancing patterns by using Azure-native services.
 
 - Understand availability, scaling, and placement strategies in Azure that align with AWS designs.
 
@@ -40,8 +40,8 @@ After you complete this guide, you can take the following actions:
 An organization runs a production web application on Amazon EC2 that uses the following components:
 
 - General purpose EC2 instances in multiple availability zones
-- Elastic Load Balancer (ELB)
-- Auto scaling groups (ASGs) for elasticity
+- Elastic Load Balancer (ELB) from AWS
+- Auto Scaling groups (ASGs) for elasticity
 - Amazon EBS volumes for persistent storage
 - Custom AMIs as a golden image baseline
 
@@ -49,7 +49,7 @@ The goal is to migrate this workload to Virtual Machines while maintaining avail
 
 ## Use Azure Migrate to migrate your EC2 instances to Azure
 
-Azure Migrate provides a unified platform to assess and migrate on-premises servers, infrastructure, applications, and data to Azure. You can use Azure Migrate to discover, assess, and migrate Amazon Web Services (AWS) EC2 instances to Azure. 
+Azure Migrate provides a unified platform to assess and migrate on-premises servers, infrastructure, applications, and data to Azure. You can use Azure Migrate to discover, assess, and migrate AWS EC2 instances to Azure. 
 
 > [!TIP]
 > 
@@ -61,11 +61,11 @@ Azure Migrate provides a unified platform to assess and migrate on-premises serv
 >
 > For VMs that use different operating systems or sizes, have multiple disks, or have complex dependencies, use Azure Migrate when you migrate three or more VMs.
 
-For more information about discovery, dependency mapping, and rightsizing in Azure Migrate, see [Discover, assess, and migrate Amazon Web Services (AWS) EC2 instances to Azure](/azure/migrate/tutorial-migrate-aws-virtual-machines).
+For more information about discovery, dependency mapping, and rightsizing in Azure Migrate, see [Discover, assess, and migrate AWS EC2 instances to Azure](/azure/migrate/tutorial-migrate-aws-virtual-machines).
 
 ### Architectural overview
 
-In AWS, the workload uses EC2 instances distributed across availability zones inside a VPC, fronted by an ELB and scaled by using ASGs. EBS provides storage, and custom AMIs provide images.
+In AWS, the workload uses EC2 instances distributed across availability zones inside a VPC, fronted by an ELB and scaled by using ASGs. Amazon EBS provides storage, and custom AMIs provide images.
 
 In Azure, the equivalent architecture uses:
 
@@ -95,7 +95,7 @@ The key assessment activities include these items:
 
 - Capture baseline and peak CPU, memory, disk IOPS, throughput, latency, and network usage.
 
-- Document EBS volume types and performance settings.
+- Document Amazon EBS volume types and performance settings.
 
 - Review ASG policies and placement strategies.
 
@@ -116,7 +116,7 @@ Formalize your findings by categorizing capabilities as:
 | EC2 instance families (`t`, `m`, `c`, `r`, `i`, `p`) | Azure VM series (B, D, F, E, L, NC/ND/NP) | Select Azure VM SKUs with equivalent CPU-to-memory ratios and architecture. |
 | ASGs | Virtual Machine Scale Sets | Set up Virtual Machine Scale Sets autoscaling and distribute instances across zones. |
 | Elastic Load Balancer (ALB/NLB) | Load Balancer and Application Gateway | Map layer 4 or layer 7 behavior and health probes. |
-| EBS volumes | Azure Managed Disks | Map EBS volume types to appropriate disk SKUs and validate limits. |
+| Amazon EBS volumes | Azure Managed Disks | Map Amazon EBS volume types to appropriate disk SKUs and validate limits. |
 | Availability zones | Azure availability zones | Deploy VMs or Virtual Machine Scale Sets instances across zones where supported. |
 
 ### Capability mismatches and alternative strategies
@@ -131,7 +131,7 @@ Some EC2 capabilities don't translate directly:
 
 - **Hypervisor access:** EC2 bare-metal instances expose more control than Azure VMs. Use Azure Dedicated Hosts for hardware isolation requirements.
 
-## Step 2: Preparation
+## Step 2: Prepare
 
 Prepare the Azure environment before you migrate workloads:
 
@@ -200,7 +200,7 @@ Check out this article on [VM size naming conventions](../vm-naming-conventions.
 
 - **Naming:** AWS uses family and size (like `c5.xlarge`), while Azure uses series and SKU (like `Standard_F4s_v2`).
 
-- **Performance tiers:** Azure ties disk performance to VM size and disk SKU; AWS uses EBS-optimized instances.
+- **Performance tiers:** Azure ties disk performance to VM size and disk SKU; AWS uses Amazon EBS-optimized instances.
 
 - **Regional availability:** Features vary by region on both platforms. On Azure, certain features like availability zones and spot capacity aren't available in every region.
 
@@ -218,7 +218,7 @@ Use the [Azure VM size documentation](../sizes/overview.md) and AWS [instance ty
 
 1. Validate storage and network requirements to prevent over-provisioning or under-provisioning:
 
-   - **Establish a baseline in AWS.** Capture typical and peak EBS IOPS, throughput, and latency, and capture network bandwidth and packets-per-second (PPS) usage.
+   - **Establish a baseline in AWS.** Capture typical and peak Amazon EBS IOPS, throughput, and latency, and capture network bandwidth and packets-per-second (PPS) usage.
    
    - **Map to Azure limits.** Confirm disk SKU and VM size caps and the VM's network limits, including whether it supports [accelerated networking](/azure/virtual-network/accelerated-networking-overview).
    
@@ -309,7 +309,7 @@ Storage architecture is a critical factor when you migrate from Amazon EC2 to Vi
 
 #### AWS EC2 storage options
 
-- **EBS:** Persistent block storage for EC2 instances. Supports SSD and HDD volumes:
+- **Amazon EBS:** Persistent block storage for EC2 instances. Supports SSD and HDD volumes:
   
   - General purpose SSD (`gp3`/`gp2`)
   - Provisioned IOPS SSD (`io1`/`io2`)
@@ -327,7 +327,7 @@ Storage architecture is a critical factor when you migrate from Amazon EC2 to Vi
 
 Key features:
 
-- Snapshots for EBS volumes are stored in S3.
+- Snapshots for Amazon EBS volumes are stored in S3.
 
 - Performance depends on volume type and size.
 
@@ -375,7 +375,7 @@ For network-attached storage, AWS EFS/FSx map most closely to Azure Files and Az
 
 #### Storage migration considerations
 
-- Map EBS volumes to Azure Managed Disk tiers:
+- Map Amazon EBS volumes to Azure Managed Disk tiers:
 
   - `gp2/gp3` → Standard SSD - Light/moderate use
   - `gp2` → Premium SSD
@@ -411,7 +411,7 @@ Networking architecture is a critical component when you migrate from Amazon EC2
 
 - **Elastic IP addresses:** Static public IP addresses for instances.
 
-- **Load balancing:** Elastic Load Balancer supports layer 4 and layer 7 traffic.
+- **Load balancing:** ELB supports layer 4 and layer 7 traffic.
 
 - **Hybrid connectivity:** VPN and Direct Connect for private links to on-premises.
 
@@ -436,7 +436,7 @@ Networking architecture is a critical component when you migrate from Amazon EC2
 
 - **Azure Bastion:** Secure RDP/SSH access without exposing public IP addresses.
 
-- **ExpressRoute:** Private dedicated connectivity to Azure for hybrid scenarios.
+- **Azure ExpressRoute:** Private dedicated connectivity to Azure for hybrid scenarios.
 
 #### Key differences
 
@@ -469,7 +469,7 @@ High availability and resiliency strategies differ between AWS EC2 and Virtual M
 
 - **ASGs:** Automatically adjust instance count based on demand.
 
-- **Elastic Load balancing (ELB):** Distributes traffic across multiple instances.
+- **ELB:** Distributes traffic across multiple instances.
 
 - **Placement groups:** Control instance placement for low-latency or high-throughput workloads.
 
@@ -519,3 +519,10 @@ AWS and Azure use different constructs for scale and placement. Understand these
 - **VM profiles:** Define VM configuration and support deep deletion for resource cleanup.
 
 - **Fault domains and availability sets:** Provide rack-level isolation similar to AWS partitioning. For dedicated hardware, use Azure Dedicated Hosts.
+
+## Related content
+
+- [Migrate from AWS and other platforms to managed disks in Azure](../windows/on-prem-to-azure.md)
+- [Availability options for Azure Virtual Machines](../availability.md)
+
+
