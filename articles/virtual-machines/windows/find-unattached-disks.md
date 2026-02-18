@@ -17,16 +17,16 @@ ms.custom: devx-track-azurepowershell
 When you delete a virtual machine (VM) in Azure, by default, any disks that are attached to the VM aren't deleted. This feature helps to prevent data loss due to the unintentional deletion of VMs. After a VM is deleted, you will continue to pay for unattached disks. This article shows you how to find and delete any unattached disks and reduce unnecessary costs.
 
 > [!NOTE]
-> You can use the `Get-AzureDisk` command to get the `LastOwnershipUpdateTime` for any disk. This property represents when the disk’s state was last updated. For an unattached disk, this shows the time when the disk was unattached. This property is blank for newly created disks, until their state changes.
+> You can use the `Get-AzureDisk` command to get the `LastOwnershipUpdateTime` for any disk. This property represents when the disk’s state was last updated. For an unattached disk, this value shows the time when the disk was unattached. This property is blank for newly created disks, until their state changes.
 
 ## Managed disks: Find and delete unattached disks
 
-The following script looks for unattached [managed disks](../managed-disks-overview.md) by examining the value of the **ManagedBy** property. When a managed disk is attached to a VM, the **ManagedBy** property contains the resource ID of the VM. When a managed disk is unattached, the **ManagedBy** property is null. The script examines all the managed disks in an Azure subscription. When the script locates a managed disk with the **ManagedBy** property set to null, the script determines that the disk is unattached.
+The following script looks for unattached [managed disks](../managed-disks-overview.md) by examining the value of the **ManagedBy** property. When you attach a managed disk to a VM, the **ManagedBy** property contains the resource ID of the VM. When a managed disk is unattached, the **ManagedBy** property is null. The script examines all the managed disks in an Azure subscription. When the script locates a managed disk with the **ManagedBy** property set to null, the script determines that the disk is unattached.
 
 >[!IMPORTANT]
 >First, run the script by setting the **deleteUnattachedDisks** variable to 0. This action lets you find and view all the unattached managed disks.
 >
->After you review all the unattached disks, run the script again and set the **deleteUnattachedDisks** variable to 1. This action lets you delete all the unattached managed disks.
+>After you review all the unattached disks, run the script again and set the **deleteUnattachedDisks** variable to 1. This action deletes all the unattached managed disks.
 
 ```azurepowershell-interactive
 # Set deleteUnattachedDisks=1 if you want to delete unattached Managed Disks
@@ -55,7 +55,7 @@ Unmanaged disks are VHD files that are stored as [page blobs](/rest/api/storages
 >[!IMPORTANT]
 >The script has **deleteUnattachedVHDs** variable set to `$false` by default. This setting lets you find and view all the unattached unmanaged VHDs.
 >
->After you review all the unattached disks, if you want to delete all those VHDs, set **deleteUnattachedVHDs** variable to `$true` and run the script again. This deletes all unattached VHDs.
+>After you review all the unattached disks, if you want to delete all those VHDs, set the **deleteUnattachedVHDs** variable to `$true` and run the script again. This action deletes all unattached VHDs.
 
 ```azurepowershell-interactive
 # Set deleteUnattachedVHDs=$true if you want to delete unattached VHDs
@@ -89,4 +89,4 @@ foreach ($storageAccount in $storageAccounts) {
 
 ## Next steps
 
-For more information, see [Delete a storage account](/azure/storage/common/storage-account-create#delete-a-storage-account) and [Identify Orphaned Disks Using PowerShell](/archive/blogs/ukplatforms/azure-cost-optimisation-series-identify-orphaned-disks-using-powershell)
+For more information, see [Delete a storage account](/azure/storage/common/storage-account-create#delete-a-storage-account) and [Identify Orphaned Disks Using PowerShell](/archive/blogs/ukplatforms/azure-cost-optimisation-series-identify-orphaned-disks-using-powershell).
