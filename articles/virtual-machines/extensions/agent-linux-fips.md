@@ -27,6 +27,7 @@ For more information, see [What are the Federal Information Processing Standards
 |:----------|:---------------------------------------------------:|
 | MICROSOFT.AKS.COMPUTE.AKS.LINUX.AKSNODE | Commercial,<br>Government |
 | MICROSOFT.AKS.COMPUTE.AKS.LINUX.BILLING | Commercial,<br>Government |
+| MICROSOFT.AZURE.AZUREDEFENDERFORSERVERS.MDE.LINUX | Commercial,<br>Government |
 | MICROSOFT.AZURE.EXTENSIONS.CUSTOMSCRIPT | Commercial,<br>Government |
 | MICROSOFT.AZURE.KEYVAULT.KEYVAULTFORLINUX | Commercial,<br>Government |
 | MICROSOFT.AZURE.MONITOR.AZUREMONITORLINUXAGENT | Commercial,<br>Government |
