@@ -13,7 +13,7 @@ ms.reviewer: cynthn
 
 # Resilient create and delete for Virtual Machine Scale Sets
 
-Resilient create and delete for Virtual Machine Scale Sets reduces Virtual Machine (VM) create and delete errors by automatically retrying those operations on your behalf. This feature helps reduce manual intervention and increases the success rate of VM provisioning and deletion.
+Resilient create and delete enables your Virtual Machine Scale Sets to automatically recover from VM provisioning and deletion failures without manual intervention. The feature retries failed Virtual Machine (VM) create and delete operations on your behalf. Resilient create increases the overall success rate of VM provisioning by retrying through provisioning timeout errors. Resilient delete ensures VMs are properly cleaned up by automatically retrying deletions that fail due to transient platform issues.
 
 ## Resilient create
 
@@ -123,14 +123,13 @@ In the request body, add in the resiliency policies:
 ---
 
 ## Get status of retries
-
-Get the status of Resilient create and delete for your scale set.
+Because Resilient create and delete operations run automatically in the background, monitoring their progress helps you understand whether retries are still in progress or if a VM requires manual attention.
 
 ### Resilient create
-Your VM shows a state of `Creating` while the retries are in progress.
+Your VM shows a state of `Creating` while the retries are in progress. In rare circumstances, if all retry attempts are exhausted without success, the VM moves to a `Failed` state.
 
-### Resilient Delete
-During deletion, VMs show a provisioning state of `Deleting`. If a delete attempt fails, the VM temporarily returns to `Failed` before the next retry. This means you may see VMs alternate between `Deleting` and `Failed` states while Resilient delete continues to retry. **To check the status of your VM during Resilient delete, retrieve the value returned by the `ResilientVMDeletionStatus` property.**
+### Resilient delete
+During retries, VMs alternate between a provisioning state of `Deleting` and `Failed` as each attempt is made. To determine whether Resilient delete is still actively retrying or has exhausted all attempts, retrieve the `ResilientVMDeletionStatus` property for your VM.
 
 The following return values of `ResilientVMDeletionStatus` indicate the progress of Resilient delete.
 
