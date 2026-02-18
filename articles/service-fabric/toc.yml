@@ -618,6 +618,8 @@
           href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
         - name: Upgrading Linux OS for Azure Service Fabric
           href: service-fabric-cluster-upgrade-os.md
+      - name: Migrate your Service Fabric cluster to availability zone support
+        href: migrate-service-fabric-availability-zones.md
     - name: Standalone clusters
       items:
       - name: Create
