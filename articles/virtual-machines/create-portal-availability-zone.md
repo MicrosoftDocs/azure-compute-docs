@@ -4,10 +4,11 @@ description: Create VMs in an availability zone with the Azure portal
 author: mimckitt
 ms.service: azure-virtual-machines
 ms.topic: how-to
+ms.update-cycle: 180-days
 ms.date: 06/06/2024
 ms.author: mimckitt
 ms.reviewer: cynthn
-ms.custom: references_regions
+ms.custom: references_regions, portal
 # Customer intent: As a cloud architect, I want to create highly resilient virtual machines in an availability zone using the Azure portal, so that I can ensure application and data protection against potential datacenter failures.
 ---
 
@@ -117,7 +118,7 @@ Existing OS and Data Disks are currently not supported. New Data Disk Source Typ
 ### Other resources
  - Existing Public IPs aren't supported for an Azure-selected zone. They can be added after deployment.
  - New Public IPs must be Zone Redundant or use an Azure-Selected Zone.
- - Load Balancers and Application Gateways must be Zonally Resilient to attach during the VM deployment.
+ - Load Balancers and Application Gateways must be zone-resilient to attach during the VM deployment.
  - Proximity Placement Groups, Capacity Reservation Groups, and Azure Dedicated Host aren't supported. 
  - Site Recovery configuration isn't available during VM creation but can be configured after deployment. 
 

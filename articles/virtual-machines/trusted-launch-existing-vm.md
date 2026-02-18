@@ -17,7 +17,7 @@ ms.custom:
 
 # Enable Trusted launch on existing Azure Gen2 VMs
 
-**Applies to:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: Generation 2 VM
+**Applies to:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM
 
 Azure Virtual Machines supports enabling Azure Trusted launch on existing [Azure Generation 2](generation-2.md) virtual machines (VM) by upgrading to the [Trusted launch](trusted-launch.md) security type.
 
@@ -30,8 +30,9 @@ Azure Virtual Machines supports enabling Azure Trusted launch on existing [Azure
 
  Azure VM is configured with:
 
-- [Trusted launch supported size family](trusted-launch.md#virtual-machines-sizes).
+- [Trusted launch supported size family](trusted-launch.md#virtual-machines-sizes). 
 - [Trusted launch supported operating system (OS) version](trusted-launch.md#operating-systems-supported). For custom OS images or disks, the base image should be *Trusted launch capable*.
+- For Arm64 VMs, use Trusted launch-capable Arm64 images from Azure Marketplace and a supported Arm64 size family. [Cobalt 100-based Arm64 sizes](sizes/cobalt-overview.md) support Trusted launch.
 - Azure VM isn't using [features currently not supported with Trusted launch](trusted-launch.md#unsupported-features).
 - Azure Backup, if enabled, for VMs should be configured with the [Enhanced Backup policy](/azure/backup/backup-azure-vms-enhanced-policy). The Trusted launch security type can't be enabled for VMs configured with *Standard policy* backup protection.
   - Existing Azure VM backup can be migrated from the *Standard* to the *Enhanced* policy. Follow the steps in [Migrate Azure VM backups from Standard to Enhanced policy (preview)](/azure/backup/backup-azure-vm-migrate-enhanced-policy).
@@ -44,8 +45,11 @@ Azure Virtual Machines supports enabling Azure Trusted launch on existing [Azure
 
 ## Enable Trusted launch on an existing VM
 
+The following steps apply to both x64 and Arm64-based Generation 2 VMs when using Trusted launch-capable images.
+
 > [!NOTE]
 >
+> - These steps apply equally to x64 and Arm64 Gen2 VMs.
 > - vTPM is enabled by default.
 > - Secure boot isn't enabled by default. We strongly recommend that you enable Secure Boot, if you aren't using custom unsigned kernel or drivers. Secure Boot preserves boot integrity and enables foundational security for VMs.
 
@@ -339,7 +343,7 @@ Make sure that you install the latest [Azure CLI](/cli/azure/install-az-cli2) an
         --resource-group myResourceGroup --name myVm
     ```
 
-3. Enable Trusted launch by setting `--security-type` to `Standard`.
+3. Disable Trusted launch by setting `--security-type` to `Standard`.
 
     ```azurecli-interactive
     az vm update \
@@ -381,7 +385,7 @@ To roll-back changes from Trusted launch to previous known good configuration, s
     Stop-AzVM -ResourceGroupName myResourceGroup -Name myVm
     ```
 
-3. Enable Trusted launch by setting `-SecurityType` to `TrustedLaunch`.
+3. Disable Trusted launch by setting `-SecurityType` to `Standard`.
 
     ```azurepowershell-interactive
     Get-AzVM -ResourceGroupName myResourceGroup -VMName myVm `
@@ -412,7 +416,7 @@ Azure Advisor populates an **Enable Trusted launch foundational excellence, and 
 
 **What if there is Generation 2 VMs, that doesn't fit the prerequisites for Trusted launch?**
 
-For a Generation 2 VM that doesn't meet the [prerequisites](#prerequisites) to upgrade to Trusted launch, look how to fulfill the prerequisites. For example, If using a virtual machine size not supported, look for an [equivalent Trusted launch supported size](trusted-launch.md#virtual-machines-sizes) that supports Trusted launch.
+For a Generation 2 VM that doesn't meet the [prerequisites](#prerequisites) to upgrade to Trusted launch, look how to fulfill the prerequisites. For example, If using a virtual machine size not supported, look for an [equivalent Trusted launch supported size](trusted-launch.md#virtual-machines-sizes) that supports Trusted launch. 
 
 > [!NOTE]
 >
@@ -423,3 +427,4 @@ For a Generation 2 VM that doesn't meet the [prerequisites](#prerequisites) to u
 - Refer to [Deploy Trusted launch virtual machines](trusted-launch-portal.md) for enabling Trusted launch on new virtual machine & scale set deployments.
 - Refer to [boot integrity monitoring](trusted-launch.md#microsoft-defender-for-cloud-integration) for enabling boot integrity monitoring and monitor the health of the VM by using Microsoft Defender for Cloud.
 - Learn more about [Trusted launch](trusted-launch.md) and review [frequently asked questions](trusted-launch-faq.md).
+- Learn about [Cobalt 100-based Arm64 VM sizes](sizes/cobalt-overview.md) that support Trusted Launch.

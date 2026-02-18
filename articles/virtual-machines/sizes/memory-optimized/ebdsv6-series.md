@@ -11,7 +11,7 @@ ms.reviewer: mattmcinnes
 # Customer intent: "As a cloud infrastructure manager, I want to understand the specifications and features of the Edsv6 size series virtual machines, so that I can select the appropriate VM size for my application workloads and resource requirements."
 ---
 
-# Ebdsv6 sizes series
+# Ebdsv6 sizes series (Preview)
 
 [!INCLUDE [ebdsv6-summary](./includes/ebdsv6-series-summary.md)]
 

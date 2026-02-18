@@ -8,7 +8,7 @@ description: 'This article contains the details of the NVv4-series retirement. '
 author:      yangnicole-ml # GitHub alias
 ms.author: yangnicole
 ms.service: azure-virtual-machines
-ms.topic: article
+ms.topic: how-to
 ms.date:     06/13/2025
 ---
 
