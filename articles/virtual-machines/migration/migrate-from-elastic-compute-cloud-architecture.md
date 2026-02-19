@@ -353,9 +353,7 @@ Key features of Amazon EC2 storage options include the following items:
 Key features of Azure VM storage options include the following items:
 
 - Disk performance tiers depend on VM size and disk SKU.
-
 - Built-in snapshots and integration with Azure Backup.
-
 - Encryption at rest uses default keys and supports customer-managed keys.
 
 #### Architectural differences
@@ -487,11 +485,8 @@ High availability and resiliency strategies vary between Amazon EC2 and Virtual 
 #### Best practices
 
 - Deploy across multiple zones for disaster recovery.
-
 - Use Virtual Machine Scale Sets with autoscaling policies for elasticity.
-
 - Use ZRS for critical data.
-
 - Integrate Azure Monitor for health checks and alerting.
 
 ### Scaling and placement
