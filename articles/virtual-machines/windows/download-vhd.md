@@ -23,7 +23,7 @@ If you want to use the VHD as an [image](tutorial-custom-images.md) to create ot
 
 To use the VHD as an image to create other VMs, generalize the VM.
 
-1. If you haven't already done so, sign in to the [Azure portal](https://portal.azure.com/).
+1. Sign in to the [Azure portal](https://portal.azure.com/).
 1. [Connect to the VM](connect-logon.md). 
 1. On the VM, open the Command Prompt window as an administrator.
 1. Change the directory to *%windir%\system32\sysprep* and run sysprep.exe.
