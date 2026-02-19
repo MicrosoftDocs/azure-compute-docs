@@ -18,9 +18,9 @@ Resilient create and delete enables your Virtual Machine Scale Sets to automatic
 
 ## Resilient create
 
-Resilient create automatically retries VM provisioning failures during scale set creation or scale-out operations.
+Resilient create automatically retries VM provisioning timeout failures during scale set creation or scale-out operations.
 
-It specifically addresses:
+It exclusively addresses:
 - `OSProvisioningTimedOut`
 - `VMStartTimedOut` 
 
@@ -203,7 +203,7 @@ No, the retry behavior is predefined and can't be customized.
 Resilient create can take up to 30 minutes to complete all retry attempts. If your VM remains in 'Creating' state, Resilient create is still attempting to provision it. After 30 minutes, if unsuccessful, the VM will move to a 'Failed' state.
 
 ### Why does my VM show a 'Failed' state even though Resilient delete is enabled?
-When a delete attempt fails, the VM temporarily returns to a 'Failed' state before the next retry begins. This behavior is expected. Resilient delete makes up to five retry attempts, so you may see the VM alternate between 'Deleting' and 'Failed' states during this process. To check if Resilient delete is still actively retrying, see [Get status for Resilient create or delete](#get-status-of-retries).
+When a delete attempt fails, the VM temporarily returns to a 'Failed' state before the next retry begins. This behavior is expected. Resilient delete makes up to five retry attempts, so you will see the VM alternate between 'Deleting' and 'Failed' states during this process. To check if Resilient delete is still actively retrying, see [Get status for Resilient create or delete](#get-status-of-retries).
 
 ### Does Resilient create work when I attach a new virtual machine to my scale set? 
 No, Resilient create operates during a scale-out of a scale set or when you create a new scale set. 
