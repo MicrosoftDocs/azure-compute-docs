@@ -29,10 +29,6 @@ The application health status is used to ensure that new virtual machines (VM) c
 
 The Virtual Machine Scale Set must be zone-spanning with at least two [availability zones](./virtual-machine-scale-sets-use-availability-zones.md) configured (for example, `zones = [1, 2]`). All VMs in the scale set must be assigned to an availability zone. Scale sets that contain regional (non-zonal) VMs don't qualify for automatic zone balance.  This ensures that the VMs can be distributed across multiple zones for resiliency.
 
-**Use best-effort zone balancing mode**
-
-The scale set must use best-effort zone balancing mode (`zoneBalance = false`). Automatic zone balance can't be enabled on scale sets with strict zone balancing (`zoneBalance = true`). For more information on zone balance modes, see [Zone balance modes](./virtual-machine-scale-sets-zone-balancing.md#zone-balance-modes).
-
 **Use a supported Compute API version**
 
 Automatic zone balance is supported for Compute API version 2024-07-01 or higher. 
