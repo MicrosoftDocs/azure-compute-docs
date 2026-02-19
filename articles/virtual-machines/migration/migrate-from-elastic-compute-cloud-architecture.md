@@ -15,7 +15,7 @@ ai-usage: ai-assisted
 ---
 # Migrate from Amazon EC2 to Azure Virtual Machines
 
-If you use Amazon Elastic Compute Cloud (Amazon EC2) and plan to migrate your workload to Azure, this guide helps you understand the migration process, feature mappings, and best practices. It's for Amazon Web Services (AWS) professionals who are familiar with Amazon EC2 and plan to move workloads to Azure Virtual Machines. The guide highlights key similarities and differences between the platforms and outlines important architectural considerations. It also provides best practices for performance, cost, and availability to help you plan and complete a successful migration to an Azure infrastructure as a service (IaaS) environment.
+If you use Amazon Elastic Compute Cloud (Amazon EC2) and plan to migrate your workload to Azure, this guide can help you understand the migration process, feature mappings, and best practices. It's for Amazon Web Services (AWS) professionals who are familiar with Amazon EC2 and plan to move workloads to Azure Virtual Machines. The guide highlights key similarities and differences between the platforms and outlines important architectural considerations. It also provides best practices for performance, cost, and availability to help you plan and complete a successful migration to an Azure infrastructure as a service (IaaS) environment.
 
 ## What you will accomplish
 
@@ -57,9 +57,9 @@ Azure Migrate provides a unified platform to assess and migrate on-premises serv
 > 
 > Use these guidelines to determine when Azure Migrate suits your VM migration:
 >
-> For VMs that use the same operating system, have similar sizes, and have simple dependencies, use Azure Migrate when you migrate five or more VMs.
+> - For VMs that use the same operating system, have similar sizes, and have simple dependencies, use Azure Migrate when you migrate five or more VMs.
 >
-> For VMs that use different operating systems or sizes, have multiple disks, or have complex dependencies, use Azure Migrate when you migrate three or more VMs.
+> - For VMs that use different operating systems or sizes, have multiple disks, or have complex dependencies, use Azure Migrate when you migrate three or more VMs.
 
 For more information, see [Discover, assess, and migrate Amazon EC2 instances to Azure](/azure/migrate/tutorial-migrate-aws-virtual-machines).
 
@@ -113,7 +113,7 @@ Formalize your findings by categorizing each capability into one of the followin
 
 | Amazon EC2 capability | Virtual Machines equivalent | Migration approach |
 |---|---|---|
-| Amazon EC2 instance families like `t`, `m`, `c`, `r`, `i`, and `p` | Azure VM series like B, D, F, E, L, and NC, ND, or NP | Select Azure VM SKUs with equivalent CPU-to-memory ratios and architecture. |
+| Amazon EC2 instance families like `t`, `m`, `c`, `r`, `i`, and `p` | Azure VM series like B, D, F, E, L, and NC, ND, or NP | Select Azure VM SKUs that have equivalent CPU-to-memory ratios and architecture. |
 | ASGs | Virtual Machine Scale Sets | Set up autoscaling in Virtual Machine Scale Sets and distribute instances across zones. |
 | Amazon ELB (ALB/NLB) | Load Balancer and Application Gateway | Map layer 4 or layer 7 behavior and health probes. |
 | Amazon EBS volumes | Azure managed disks | Map Amazon EBS volume types to the right disk SKUs and validate limits. |
@@ -253,11 +253,11 @@ Start by identifying what the AMI represents:
 
 Then find an equivalent Azure image:
 
-- Marketplace images match best to public AMIs.
+- Marketplace images best match to public AMIs.
 
 - Images that your organization publishes through Compute Gallery are most similar to private or shared AMIs.
 
-If your AWS workload depends on a vendor AMI, like a firewall, appliance, or hardened image, identify the vendor's equivalent offering in Marketplace and validate that it meets the following requirements:
+If your AWS workload depends on a vendor AMI, like a firewall, appliance, or hardened image, identify the vendor's equivalent offering in Marketplace and confirm that it meets the following requirements:
 
 - Supported VM sizes and required networking features
 - Required disk layout and performance
@@ -295,7 +295,7 @@ Consider these operational requirements to plan your *where do you start* checkl
 
 - **Drivers and agents:** Ensure that the image supports the Azure VM agent and remove any AWS-specific agents or tools that no longer apply.
 
-- **VM generation:** Choose Gen1 or Gen2 early. because your base image choice typically determines the generation.
+- **VM generation:** Choose Gen1 or Gen2 early because your base image choice typically determines the generation.
 
 - **Identity and secrets:** Use managed identity and Azure Key Vault instead of embedding secrets in images.
 
@@ -337,7 +337,7 @@ Key features of Amazon EC2 storage options include the following items:
 
   - **Standard SSD:** Balanced performance for general workloads.
 
-  - **Premium SSD:** Low latency for production and performance sensitive apps.
+  - **Premium SSD:** Low latency for production and performance-sensitive apps.
 
   - **Ultra Disk:** High throughput for data-intensive workloads.
 
@@ -361,7 +361,7 @@ Key features of Azure VM storage options include the following items:
 |---|---|---|
 | Performance scaling | Based on volume type and size | Based on VM size and disk SKU |
 | Snapshot integration | Stored in Amazon S3 | Built-in, integrates with Azure Backup |
-| Encryption | AWS KMS | Azure Disk Encryption and Key Vault |
+| Encryption | AWS KMS | Azure disk encryption and Key Vault |
 | Resiliency | Availability zone-level replication optional | Zone-redundant storage (ZRS) available |
 
 For NAS, Amazon EFS and Amazon FSx map most directly to Azure Files and Azure NetApp Files.
@@ -377,11 +377,11 @@ Map Amazon EBS volumes to Azure managed disk tiers:
 
 - Validate IOPS and throughput requirements. Azure Premium SSD and Ultra Disk support high-performance workloads.
 
-- Plan for encryption compliance. Use Azure Disk Encryption and Key Vault for sensitive data.
+- Plan for encryption compliance. Use Azure disk encryption and Key Vault for sensitive data.
 
 - For externalized storage migration, you can use the following approaches:
 
-  - Migrate Amazon S3 to Blob Storage by using AzCopy or Azure Storage Migration tools.
+  - Migrate Amazon S3 to Blob Storage by using AzCopy or Azure Storage migration tools.
   
   - Migrate Amazon EFS and Amazon FSx to Azure Files for general-purpose file shares, or to Azure NetApp Files for high-performance NAS.
 
@@ -500,11 +500,11 @@ AWS and Azure use different constructs for scaling and placement. These differen
 
 #### Azure approach
 
-- **Virtual Machine Scale Sets:** Native orchestration for horizontal scaling, integrated with Load Balancer or Application Gateway.
+- **Virtual Machine Scale Sets:** Provides native orchestration for horizontal scaling, integrated with Load Balancer or Application Gateway.
 
-- **VM profiles:** Define VM configuration and support deep deletion for resource cleanup.
+- **VM profiles:** Defines VM configuration and support deep deletion for resource cleanup.
 
-- **Fault domains and availability sets:** Provide rack-level isolation similar to AWS partitioning. For dedicated hardware, use Dedicated Host.
+- **Fault domains and availability sets:** Provides rack-level isolation similar to AWS partitioning. For dedicated hardware, use Dedicated Host.
 
 #### Key differences
 
