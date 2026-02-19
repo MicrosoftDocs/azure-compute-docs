@@ -218,6 +218,10 @@
       "redirect_url": "dcesv6-series"
     },
     {
+      "source_path": "articles/virtual-machines/ecesv5-ecedsv5-series.md",
+      "redirect_url": "ecesv6-series"
+    },
+    {
       "source_path": "articles/virtual-machine-scale-sets/virtual-machine-scale-sets-instance-mix.md",
       "redirect_url": "instance-mix-overview"
     },

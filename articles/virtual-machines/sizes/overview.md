@@ -70,7 +70,7 @@ Here's a breakdown of a 'Standard_**DC8ads_v5**' size in the 'DCadsv5-series'
 
 This section contains a list of all current generation size series with tabs dedicated to each size family. Each group has a 'Series List' column with a linked list of all available size series, These links will bring you to the family page for that series, where you can find detailed information on each size in that series or go to the series' page for a list of sizes in that series. 
 
-To learn more about a size family, click the 'family' tab under each type section. There you can read a summary on the family, see the workloads it's recommended for, and view the full family page with specifications for all series in that family.
+To learn more about a size family, select the 'family' tab under each type section. There you can read a summary on the family, see the workloads it's recommended for, and view the full family page with specifications for all series in that family.
 
 ### General purpose
 General purpose VM sizes provide balanced CPU-to-memory ratio. Ideal for testing and development, small to medium databases, and low to medium traffic web servers.
@@ -129,7 +129,7 @@ List of compute optimized VM size families:
 | [F-family](./compute-optimized/f-family.md)  | Medium traffic web servers <br> Network appliances <br> Batch processes <br> Application servers | [Fasv7 and Fadsv7 series](./compute-optimized/f-family.md#fasv7-series-and-fadsv7-series) <br> [Famsv7 and Famdsv7 series](./compute-optimized/f-family.md#famsv7-series-and-famdsv7-series) <br> [Falsv7 and Faldsv7 series](./compute-optimized/f-family.md#falsv7-series-and-faldsv7-series) <br> [Fasv6, Falsv6, and Famsv6-series](./compute-optimized/f-family.md#fasv6-falsv6-and-famsv6-series) <br> [Fsv2-series](./compute-optimized/f-family.md#fsv2-series) <br> [Previous-gen F-family](./previous-gen-sizes-list.md)|
 | [FX-family](./compute-optimized/fx-family.md)  | Electronic Design Automation (EDA) <br> Large memory relational databases <br> Medium to large caches <br> In-memory analytics | [FX-series](./compute-optimized/fx-family.md#fx-series) |
 
-To learn more about a specific size family or series, click the tab for that family and scroll to find your desired size series. 
+To learn more about a specific size family or series, select the tab for that family and scroll to find your desired size series. 
 
 
 #### [F family](#tab/comp-a-fam)
@@ -163,7 +163,7 @@ List of memory optimized VM sizes with links to each series' family page section
 | [M-family](./memory-optimized/m-family.md)  | Extremely large databases <br> Large amounts of memory | [Mbsv3 and Mbdsv3-series](./memory-optimized/m-family.md#mbsv3-and-mbdsv3-series)<br> [Msv3 and Mdsv3 Medium Memory series](./memory-optimized/m-family.md#msv3-and-mdsv3-medium-memory-series)<br> [Msv3 and Mdsv3 High Memory series](./memory-optimized/m-family.md#msv3-and-mdsv3-high-memory-series)<br> [Mdsv3 Very High Memory series](./memory-optimized/m-family.md#mdsv3-very-high-memory-series) <br> [Msv2 and Mdsv2-series](./memory-optimized/m-family.md#msv2-and-mdsv2-medium-memory-series) <br> [Msv2 High Memory Series](./memory-optimized/m-family.md#msv2-high-memory-series)<br> [M-series](./memory-optimized/m-family.md#m-series)<br> |
 | Other families | Older generation memory optimized sizes | [Previous-gen families](./previous-gen-sizes-list.md#memory-optimized-previous-gen-sizes) |
 
-To learn more about a specific size family or series, click the tab for that family and scroll to find your desired size series. 
+To learn more about a specific size family or series, select the tab for that family and scroll to find your desired size series. 
 
 
 #### [E family](#tab/mem-e-fam)
@@ -208,7 +208,7 @@ List of storage optimized VM size families:
 |----|---|---|
 | [L-family](./storage-optimized/l-family.md)  | High disk throughput and IO <br> Big Data <br> SQL and NoSQL databases <br> Data warehousing <br> Large transactional databases | [Lsv3-series](./storage-optimized/l-family.md#lsv3-series) <br> [Lasv3-series](./storage-optimized/l-family.md#lasv3-series) <br> [Previous-gen L-family](./previous-gen-sizes-list.md#storage-optimized-previous-gen-sizes)|
 
-To learn more about a specific size family or series, click the tab for that family and scroll to find your desired size series. 
+To learn more about a specific size family or series, select the tab for that family and scroll to find your desired size series. 
 
 #### [L family](#tab/stor-l-fam)
 ##### L family
@@ -231,7 +231,7 @@ List of GPU optimized VM size families:
 | [NG-family](./gpu-accelerated/ng-family.md)  | Virtual Desktop (VDI) <br> Cloud gaming |  [NGads V620-series](./gpu-accelerated/ng-family.md#ngads-v620-series) |
 | [NV-family](./gpu-accelerated/nv-family.md)  | Virtual desktop (VDI) <br> Single-precision compute <br> Video encoding and rendering |  [NV-series](./gpu-accelerated/nv-family.md#nv-series-v1) <br> [NVv3-series](./gpu-accelerated/nv-family.md#nvv3-series) <br> [NVv4-series](./gpu-accelerated/nv-family.md#nvv4-series) <br> [NVadsA10_v5-series](./gpu-accelerated/nv-family.md#nvads-a10-v5-series) <br> [Previous-gen NV-family](./previous-gen-sizes-list.md#gpu-accelerated-previous-gen-sizes) |
 
-To learn more about a specific size family or series, click the tab for that family and scroll to find your desired size series. 
+To learn more about a specific size family or series, select the tab for that family and scroll to find your desired size series. 
 
 #### [NC family](#tab/gpu-nc-fam)
 ##### NC family
@@ -276,7 +276,7 @@ List of field programmable gate array accelerated VM size families:
 |----|---|---|
 | [NP-family](./fpga-accelerated/np-family.md)  | Machine learning inference <br> Video transcoding <br> Database search and analytics | [NP-series](./fpga-accelerated/np-family.md#np-series) |
 
-To learn more about a specific size family or series, click the tab for that family and scroll to find your desired size series. 
+To learn more about a specific size family or series, select the tab for that family and scroll to find your desired size series. 
 
 
 #### [NP family](#tab/fpga-np-fam)
@@ -299,7 +299,7 @@ List of high performance computing optimized VM size families:
 | [HC-family](./high-performance-compute/hc-family.md) | High density compute <br> Finite element analysis <br> Molecular dynamics <br> Computational chemistry | [HC-series](./high-performance-compute/hc-series.md) |
 | [HX-family](./high-performance-compute/hx-family.md) | Large memory capacity <br> Electronic Design Automation (EDA) | [HX-series](./high-performance-compute/hx-series.md) |
 
-To learn more about a specific size family or series, click the tab for that family and scroll to find your desired size series. 
+To learn more about a specific size family or series, select the tab for that family and scroll to find your desired size series. 
 
 #### [HB family](#tab/hpc-hb-fam)
 [!INCLUDE [hb-family-summary](./high-performance-compute/includes/hb-family-summary.md)]

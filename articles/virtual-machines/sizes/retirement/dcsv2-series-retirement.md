@@ -148,16 +148,16 @@ To migrate your VMs to one of these available regions, follow these steps:
 1. Verify that your subscription has sufficient quota for the DCdsv3-series VMs in the target region. Request a quota through the [Azure portal](/azure/azure-portal/supportability/per-vm-quota-requests) if needed.
 1.	Navigate to VM you want to resize in the portal.
 1.	**Stop the VM** and wait for status of the VM to be Stopped (deallocated).
-1. Find the **Capture** drop down in the overview tab of the VM (circled bellow). From the drop-down select **capture**, then image.  
-![Screenshot of the capture drop down selection.](./media/dcsv2-series-retirement/capture-drop-down.jpg)
+1. Find the **Capture** drop-down in the overview tab of the VM (circled bellow). From the drop-down select **capture**, then image.  
+![Screenshot of the capture drop-down selection.](./media/dcsv2-series-retirement/capture-drop-down.jpg)
 1. When you reach **the image creation page**:
     * Ensure you select **Automatically delete this virtual machine** after creating the image.
     * If you don't have a gallery, select **Create new** in the gallery option and name your gallery.
     * Fill in the name and other required options. 
     * Create an image definition if none is available.
     * Read the descriptions for specialized vs generalized images and choose your option.  (If not sure, generalized should work for most cases.)
-:::image type="content" source="./media/dcsv2-series-retirement/image-creation-page.png" alt-text="Screenshot of an example of the drop down selection.":::
-    * Continue to fill in the other options. In the replication section of the image capture option, add the region where you wish to relocate your VM. You'll need to select the target region from the dropdown menu.
+:::image type="content" source="./media/dcsv2-series-retirement/image-creation-page.png" alt-text="Screenshot of an example of the drop-down selection.":::
+    * Continue to fill in the other options. In the replication section of the image capture option, add the region where you wish to relocate your VM. You'll need to select the target region from the drop-down menu.
     ![Screenshot of the replication section.](./media/dcsv2-series-retirement/select-target-region.png)
 1. Go to your gallery and select the image you captured. In the top left, select **Create a VM**. 
     * Fill in all options and ensure you select the new region and new size.
