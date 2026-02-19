@@ -55,7 +55,7 @@ Enable Resilient create and delete on an *existing* scale set:
 
 ### [CLI](#tab/cli-1)
 
-Enable Resilient create and delete on an *existing* scale set:
+Enable Resilient create and delete on an *existing* scale set using the Azure CLI:
 
 ```azurecli-interactive
 az vmss update \ 
