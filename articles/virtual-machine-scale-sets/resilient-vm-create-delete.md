@@ -36,9 +36,6 @@ Resilient delete automatically retries VM deletions that fail during scale set d
 
 You can enable Resilient create and delete on a new or existing Virtual Machine Scale Set.
 
-### Prerequisites
-Resilient create and delete is supported for Compute API version 2024-07-01 or higher.
-
 ### [Portal](#tab/portal-1)
 
 Enable Resilient create and delete on a *new* scale set on Azure portal:
@@ -125,6 +122,9 @@ In the request body, add in the resiliency policies:
 }
 ```
 ---
+
+### Prerequisites
+Resilient create and delete is supported for Compute API version 2024-07-01 or higher.
 
 ## Get status of retries
 Because Resilient create and delete operations run automatically in the background, monitoring their progress helps you understand whether retries are still in progress or if a VM requires manual attention.
