@@ -317,7 +317,6 @@ Storage architecture is a critical factor when you migrate from Amazon EC2 to Vi
 - **Network-attached storage (NAS):** Shared file storage for Linux and Windows workloads:
 
   - **Amazon Elastic File System (Amazon EFS)**
-
   - **Amazon FSx**, like Windows File Server, NetApp ONTAP, and Lustre
 
 - **Instance store:** Ephemeral storage that's physically attached to the host. Data is deleted when the instance stops or terminates.
