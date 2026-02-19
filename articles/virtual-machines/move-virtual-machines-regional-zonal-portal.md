@@ -48,7 +48,7 @@ You can also open **Availability + scale** from the VM overview and then select 
 1. Under **Target availability zone**, select the zone you want to use (for example, Zone 1).
    :::image type="content" source="./media/tutorial-move-regional-zonal/availability-scaling-home.png" alt-text="Screenshot of Availability + scaling homepage.":::
 
-If the selected VM configuration isn't supported for move, validation fails and you must restart with a supported VM configuration. See the [support matrix](/azure/reliability/migrate-vm#support-matrix).
+   If the selected VM configuration isn't supported for move, validation fails and you must restart with a supported VM configuration. See the [support matrix](/azure/reliability/migrate-vm#support-matrix).
 
 1. If Azure recommends a different VM size to improve deployment success in the selected zone, choose the recommended size, or choose a different zone and keep the current size.
    :::image type="content" source="./media/tutorial-move-regional-zonal/aure-recommendation.png" alt-text="Screenshot showing Azure recommendation to increase virtual machine size.":::
@@ -63,7 +63,6 @@ The managed identity setup can take a few minutes. Progress updates are shown in
 
 1. On **Review properties**, review the target VM configuration.
 
-### VM properties
 
 The following source VM properties are retained by default in the target zonal VM:
 
@@ -101,6 +100,18 @@ During move:
 
 - The source VM is stopped, so brief downtime occurs.
 - A target zonal VM is created and started.
+- 
+- ## Configure settings after move
+
+- Review source VM settings and reconfigure as needed (for example, extensions, RBAC, Public IP configuration, backup, and disaster recovery settings).
+
+- After move completion, the source VM remains stopped. You can delete it or keep it for another purpose.
+
+- After the move, you can manually delete the move collection. To remove the move collection:
+
+    1. Enable hidden resources (the move collection is hidden by default).
+    1. Go to the move collection resource group by searching for *ZonalMove-MC-RG-SourceRegion*.
+    1. Delete the move collection (for example, *ZonalMove-MC-RG-UKSouth*).
 
 # [PowerShell](#tab/powershell)
 
@@ -192,23 +203,14 @@ az resource-mover move-collection commit --move-resources "/subscriptions/<subsc
 
 ---
 
-## Configure settings after move
+## Delete source regional VMs
 
-Review source VM settings and reconfigure as needed (for example, extensions, RBAC, Public IP configuration, backup, and disaster recovery settings).
+After you commit the move and verify that the resources work as expected in the target region, you can delete each source resource using:
 
-## Delete or keep the source VM
+- [Azure portal](/azure/azure-resource-manager/management/manage-resources-portal#delete-resources)
+- [PowerShell](/azure/azure-resource-manager/management/manage-resources-powershell#delete-resources)
+- [Azure CLI](/azure/azure-resource-manager/management/manage-resource-groups-cli#delete-resource-groups)
 
-After move completion, the source VM remains stopped. You can delete it or keep it for another purpose.
-
-## Delete move resources created during migration
-
-After the move, you can manually delete the move collection.
-
-To remove the move collection:
-
-1. Enable hidden resources (the move collection is hidden by default).
-1. Go to the move collection resource group by searching for *ZonalMove-MC-RG-SourceRegion*.
-1. Delete the move collection (for example, *ZonalMove-MC-RG-UKSouth*).
 
 ## Next steps
 
