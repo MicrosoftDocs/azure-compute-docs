@@ -12,7 +12,7 @@ ms.custom: devx-track-azurecli, devx-track-azurepowershell
 
 # Secure downloads and uploads of Azure managed disks
 
-If you use [Microsoft Entra ID](/azure/active-directory/fundamentals/active-directory-whatis) to control resource access, you can also use it to restrict uploads and downloads of Azure managed disks. When a user attempts to upload or download a disk, Azure validates the identity of the requesting user in Microsoft Entra ID, and confirms that user has the required permissions. If a user doesn't have the required permissions, they can't upload or download managed disks.
+If you use [Microsoft Entra ID](/azure/active-directory/fundamentals/active-directory-whatis) to control resource access, you can also use it to restrict uploads and downloads of Azure managed disks. When a user tries to upload or download a disk, Azure validates the identity of the requesting user in Microsoft Entra ID, and confirms that user has the required permissions. If a user doesn't have the required permissions, they can't upload or download managed disks.
 
 At a higher level, a system administrator can set a policy at the Azure account or subscription level, to ensure that all disks and snapshots must use Microsoft Entra ID for uploads or downloads. If you have any questions on securing uploads or downloads by using Microsoft Entra ID, reach out to: azuredisks@microsoft .com.
 
@@ -24,7 +24,7 @@ At a higher level, a system administrator can set a policy at the Azure account 
 
 ## Assign RBAC role
 
-To access managed disks secured with Microsoft Entra ID, requesting users must have either the [Data Operator for Managed Disks](/azure/role-based-access-control/built-in-roles#data-operator-for-managed-disks) role, or a [custom role](/azure/role-based-access-control/custom-roles-portal) with the following permissions: 
+To access managed disks secured by using Microsoft Entra ID, users must have either the [Data Operator for Managed Disks](/azure/role-based-access-control/built-in-roles#data-operator-for-managed-disks) role or a [custom role](/azure/role-based-access-control/custom-roles-portal) with the following permissions: 
 
 - **Microsoft.Compute/disks/download/action**
 - **Microsoft.Compute/disks/upload/action**
@@ -39,7 +39,7 @@ To restrict access to an individual disk, enable **data access authentication mo
 
 # [Portal](#tab/azure-portal)
 
-You can either enable it when creating the disk, or you can enable it on the **Disk Export** page under **Settings** for existing disks.
+You can enable this setting when creating the disk, or you can enable it on the **Disk Export** page under **Settings** for existing disks.
 
 :::image type="content" source="./media/disks-upload-download-portal/disks-data-access-auth-mode.png" alt-text="Screenshot of a disk's data access authentication mode checkbox, tick the checkbox to restrict access to the disk, and save your changes." lightbox="./media/disks-upload-download-portal/disks-data-access-auth-mode.png":::
 
@@ -63,7 +63,7 @@ az disk update --name yourDiskName --resource-group yourResourceGroup --data-acc
 
 ## Assign Azure policy
 
-You can also assign an Azure policy with a remediation task. A policy with a remediation task continously audits your resources and notifies you when any of them don't comply. The built-in policy definition you'd assign is **Protect your data with authentication requirements when exporting or uploading to a disk or snapshot**. To learn how to assign an Azure policy see the [Azure portal](/azure/governance/policy/assign-policy-portal), [Azure CLI](/azure/governance/policy/assign-policy-azurecli), or [Azure PowerShell module](/azure/governance/policy/assign-policy-powershell) articles.
+You can also assign an Azure policy with a remediation task. A policy with a remediation task continuously audits your resources and notifies you when any of them don't comply. The built-in policy definition you'd assign is **Protect your data with authentication requirements when exporting or uploading to a disk or snapshot**. To learn how to assign an Azure policy see the [Azure portal](/azure/governance/policy/assign-policy-portal), [Azure CLI](/azure/governance/policy/assign-policy-azurecli), or [Azure PowerShell module](/azure/governance/policy/assign-policy-powershell) articles.
 
 ## Next steps
 
