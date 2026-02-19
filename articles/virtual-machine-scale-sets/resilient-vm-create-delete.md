@@ -36,9 +36,12 @@ Resilient delete automatically retries VM deletions that fail during scale set d
 
 You can enable Resilient create and delete on a new or existing Virtual Machine Scale Set.
 
+### Prerequisites
+Resilient create and delete is supported for Compute API version 2024-07-01 or higher.
+
 ### [Portal](#tab/portal-1)
 
-Enable Resilient create and delete on a *new* scale set:
+Enable Resilient create and delete on a *new* scale set on Azure Portal:
 
 1. In the [Azure portal](https://portal.azure.com) search bar, search for and select **Virtual Machine Scale Sets**.
 1. Select **Create** on the **Virtual Machine Scale Sets** page.
@@ -47,7 +50,7 @@ Enable Resilient create and delete on a *new* scale set:
 1. Select checkboxes *Resilient VM create* and *Resilient VM delete*.
 1. Finish creating your Virtual Machine Scale Set. 
 
-Enable Resilient create and delete on an *existing* scale set:
+Enable Resilient create and delete on an *existing* scale set on Azure Portal:
 
 1. Navigate to your Virtual Machine Scale Set in the [Azure portal](https://portal.azure.com).
 1. Under **Capabilities** select **Health and repair**.
@@ -71,7 +74,7 @@ az vmss update
 --enable-resilient-deletion true 
 ```
 
-Enable Resilient create and delete on a *new* scale set:
+Enable Resilient create and delete on a *new* scale set using the Azure CLI:
 
 ```azurecli-interactive
 az vmss create \ 
@@ -89,7 +92,7 @@ az vmss create
 
 ### [PowerShell](#tab/powershell-1)
 
-Enable Resilient create and delete after creating a scale set. 
+Enable Resilient create and delete after creating a scale set using PowerShell. 
 
 ```azurepowershell-interactive
 #Create a VM Scale Set profile 
@@ -101,7 +104,7 @@ Update-azvmss -ResourceGroupName <resourceGroupName> -VMScaleSetName <scaleSetNa
 
 ### [REST](#tab/rest-1)
 
-Use a `PUT` call for a new scale set and a `PATCH` call for an existing scale set. 
+Use a `PUT` call for a new scale set and a `PATCH` call for an existing scale set through REST API. 
 
 ```json
 PUT or PATCH https://management.azure.com/subscriptions/{YourSubscriptionId}/resourceGroups/{YourResourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{yourScaleSetName}?api-version=2023-07-01
@@ -189,9 +192,6 @@ GET https://management.azure.com/subscriptions/{{subscriptionId}}/resourceGroups
 ---
 
 ## FAQ
-
-### What is the minimum API version to use this policy? 
-Use API version `2023-07-01`.
 
 ### Can I disable Resilient create or delete after enabling it?
 Yes, you can disable Resilient create or delete at any time by updating the resiliency policy on your scale set. However, any in-progress retries are completed before the policy change takes effect.
