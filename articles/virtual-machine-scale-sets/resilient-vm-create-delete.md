@@ -41,7 +41,7 @@ Resilient create and delete is supported for Compute API version 2024-07-01 or h
 
 ### [Portal](#tab/portal-1)
 
-Enable Resilient create and delete on a *new* scale set on Azure Portal:
+Enable Resilient create and delete on a *new* scale set on Azure portal:
 
 1. In the [Azure portal](https://portal.azure.com) search bar, search for and select **Virtual Machine Scale Sets**.
 1. Select **Create** on the **Virtual Machine Scale Sets** page.
@@ -50,7 +50,7 @@ Enable Resilient create and delete on a *new* scale set on Azure Portal:
 1. Select checkboxes *Resilient VM create* and *Resilient VM delete*.
 1. Finish creating your Virtual Machine Scale Set. 
 
-Enable Resilient create and delete on an *existing* scale set on Azure Portal:
+Enable Resilient create and delete on an *existing* scale set on Azure portal:
 
 1. Navigate to your Virtual Machine Scale Set in the [Azure portal](https://portal.azure.com).
 1. Under **Capabilities** select **Health and repair**.
@@ -203,7 +203,7 @@ No, the retry behavior is predefined and can't be customized.
 Resilient create can take up to 30 minutes to complete all retry attempts. If your VM remains in 'Creating' state, Resilient create is still attempting to provision it. After 30 minutes, if unsuccessful, the VM will move to a 'Failed' state.
 
 ### Why does my VM show a 'Failed' state even though Resilient delete is enabled?
-When a delete attempt fails, the VM temporarily returns to a 'Failed' state before the next retry begins. This behavior is expected. Resilient delete makes up to five retry attempts, so you will see the VM alternate between 'Deleting' and 'Failed' states during this process. To check if Resilient delete is still actively retrying, see [Get status for Resilient create or delete](#get-status-of-retries).
+When a delete attempt fails, the VM temporarily returns to a 'Failed' state before the next retry begins. This behavior is expected. Resilient delete makes up to five retry attempts, so you'll see the VM alternate between 'Deleting' and 'Failed' states during this process. To check if Resilient delete is still actively retrying, see [Get status for Resilient create or delete](#get-status-of-retries).
 
 ### Does Resilient create work when I attach a new virtual machine to my scale set? 
 No, Resilient create operates during a scale-out of a scale set or when you create a new scale set. 
