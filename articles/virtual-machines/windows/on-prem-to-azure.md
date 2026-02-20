@@ -19,8 +19,6 @@ ms.custom:
 
 **Applies to:** :heavy_check_mark: Windows VMs 
 
-[!INCLUDE [disks-unmanaged-disks-retirement](../includes/disks-unmanaged-disks-retirement.md)]
-
 You can upload VHD files from AWS or on-premises virtualization solutions to Azure to create virtual machines (VMs) that use managed disks. Azure managed disks removes the need to manage storage accounts for Azure IaaS VMs. You just specify the type of disk, and the size of that disk that you need, and Azure creates and manages the disk for you. 
 
 You can upload either generalized and specialized VHDs. 

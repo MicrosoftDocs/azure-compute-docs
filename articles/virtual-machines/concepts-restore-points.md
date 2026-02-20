@@ -11,8 +11,6 @@ ms.custom: template-concept
 
 # Support matrix for VM restore points
 
-[!INCLUDE [disks-unmanaged-disks-retirement](includes/disks-unmanaged-disks-retirement.md)]
-
 This article summarizes the support matrix and limitations of using [VM restore points](virtual-machines-create-restore-points.md).
 
 

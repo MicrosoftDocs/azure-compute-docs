@@ -14,8 +14,6 @@ ms.author: rogarana
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows 
 
-[!INCLUDE [disks-unmanaged-disks-retirement](includes/disks-unmanaged-disks-retirement.md)]
-
 There are five disk types of Azure managed disks: Azure Ultra Disks, Premium SSD v2, premium SSD, Standard SSD, and Standard HDD. You can easily switch between Premium SSD, Standard SSD, and Standard HDD based on your performance needs. Premium SSD and Standard SSD are also available with [Zone-redundant storage](disks-redundancy.md#zone-redundant-storage-for-managed-disks). For most cases, you can't yet switch from or to an Ultra Disk, you must [deploy a new one with a snapshot of an existing disk](#migrate-to-premium-ssd-v2-or-ultra-disk-using-snapshots). However, you can switch from existing disks to a Premium SSD v2. See [Convert Premium SSD v2 disks](#convert-premium-ssd-v2-disks) for details.
 
 This functionality isn't supported for unmanaged disks. But you can easily convert an unmanaged disk to a managed disk with [CLI](linux/convert-unmanaged-to-managed-disks.md) or [PowerShell](windows/convert-unmanaged-to-managed-disks.md) to be able to switch between disk types.
