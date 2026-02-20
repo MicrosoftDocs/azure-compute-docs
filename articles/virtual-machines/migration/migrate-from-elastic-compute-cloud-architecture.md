@@ -141,7 +141,7 @@ Prepare the Azure environment before you migrate workloads:
 
 - Choose availability zones or availability sets based on your workload requirements and regional support.
 
-- Select base Marketplace images that match the OS version, architecture, and boot mode.
+- Select base Marketplace images that match the operating system version, architecture, and boot mode.
 
 - Remove AWS-specific agents and ensure Azure VM Agent support.
 
@@ -175,17 +175,17 @@ AWS instances scale vertically by selecting larger sizes within a family, like m
 
 Azure uses VM series to categorize compute resources:
 
-- **D-series:** General-purpose workloads, similar to the AWS `m` family.
+- **D-series:** General-purpose workloads, similar to the AWS `m` family
 
-- **F-series:** Compute optimized, comparable to the AWS `c` family.
+- **F-series:** Compute optimized, comparable to the AWS `c` family
 
-- **E-series:** Memory optimized, similar to the AWS `r` family.
+- **E-series:** Memory optimized, similar to the AWS `r` family
 
-- **M-series:** Ultra-high memory for SAP HANA and large databases.
+- **M-series:** Ultra-high memory for SAP HANA and large databases
 
-- **L-series:** Storage optimized with local Non‑Volatile Memory Express (NVMe) disks, and comparable to the AWS `i` family.
+- **L-series:** Storage optimized with local Non‑Volatile Memory Express (NVMe) disks, and comparable to the AWS `i` family
 
-- **NC, ND, and NP-series:** GPU enabled for AI and machine learning workloads, similar to the AWS `p` and `g` families.
+- **NC, ND, and NP-series:** GPU enabled for AI and machine learning workloads, similar to the AWS `p` and `g` families
 
 Azure defines VM sizes by a SKU, like `Standard_D4s_v5`. The SKU specifies the following properties:
 
@@ -241,7 +241,7 @@ When you migrate workloads that start from an AMI, plan for an *image translatio
 
 Start by identifying what the AMI represents:
 
-- OS distribution and version, like Ubuntu 22.04, RHEL 8.9, and Windows Server 2022
+- Operating system distribution and version, like Ubuntu 22.04, RHEL 8.9, and Windows Server 2022
 
 - CPU architecture, like `x86_64` versus `ARM64`
 
@@ -352,7 +352,7 @@ Key features of Amazon EC2 storage options include the following items:
 Key features of Azure VM storage options include the following items:
 
 - Disk performance tiers depend on VM size and disk SKU.
-- Built-in snapshots and integration with Azure Backup.
+- Azure VM storage includes built‑in snapshot capabilities and integrates with Azure Backup.
 - Encryption at rest uses default keys and supports customer-managed keys.
 
 #### Architectural differences
@@ -518,7 +518,7 @@ AWS and Azure use different constructs for scaling and placement. These differen
 
 After the migration completes, do the following validation steps:
 
-- Validate operation system boot and agent health.
+- Validate operating system boot and agent health.
 - Confirm that disk throughput, latency, and network performance meet expectations.
 - Test scaling behavior and load balancing.
 - Validate application functionality and dependencies.
