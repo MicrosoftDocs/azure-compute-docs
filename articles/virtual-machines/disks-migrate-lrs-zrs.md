@@ -12,6 +12,8 @@ ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell, 
 
 # Convert a disk from LRS to ZRS
 
+[!INCLUDE [disks-unmanaged-disks-retirement](includes/disks-unmanaged-disks-retirement.md)]
+
 This article explains how to convert an existing disk from locally redundant storage (LRS) to zone-redundant storage (ZRS).
 
 For conceptual information on ZRS, see [Zone-redundant storage for managed disks](disks-redundancy.md#zone-redundant-storage-for-managed-disks)

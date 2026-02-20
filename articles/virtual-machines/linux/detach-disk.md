@@ -14,6 +14,8 @@ ms.custom: devx-track-azurecli, linux-related-content
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Flexible scale sets
 
+[!INCLUDE [disks-unmanaged-disks-retirement](../includes/disks-unmanaged-disks-retirement.md)]
+
 When you no longer need a data disk that's attached to a virtual machine, you can easily detach it. This removes the disk from the virtual machine (VM), but doesn't remove it from storage. In this article, we're working with an Ubuntu LTS 16.04 distribution. If you're using a different distribution, the instructions for unmounting the disk might be different.
 
 > [!WARNING]
