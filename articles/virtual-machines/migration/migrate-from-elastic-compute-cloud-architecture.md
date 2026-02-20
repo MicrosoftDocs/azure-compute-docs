@@ -333,13 +333,13 @@ Key features of Amazon EC2 storage options include the following items:
 
 - **Managed disks:** Azure manages persistent block storage:
   
-  - **Standard HDD:** Cost effective for infrequent access, nonproduction workloads, and long-term backups.
+  - **Azure Standard HDD:** Cost effective for infrequent access, nonproduction workloads, and long-term backups.
 
-  - **Standard SSD:** Balanced performance for general workloads.
+  - **Azure Standard SSD:** Balanced performance for general workloads.
 
-  - **Premium SSD:** Low latency for production and performance-sensitive apps.
+  - **Azure Premium SSD:** Low latency for production and performance-sensitive apps.
 
-  - **Ultra Disk:** High throughput for data-intensive workloads.
+  - **Azure Ultra Disk Storage:** High throughput for data-intensive workloads.
 
 - **Ephemeral OS disks:** Temporary storage for stateless workloads.
 
@@ -357,7 +357,7 @@ Key features of Azure VM storage options include the following items:
 
 #### Architectural differences
 
-| Feature | Amazon EC2 (Amazon EBS) | Azure VMs (managed disks) |
+| Feature | Amazon EC2 (Amazon EBS) | Azure Virtual Machines (managed disks) |
 |---|---|---|
 | Performance scaling | Based on volume type and size | Based on VM size and disk SKU |
 | Snapshot integration | Stored in Amazon S3 | Built-in, integrates with Azure Backup |
@@ -429,7 +429,7 @@ Networking architecture is a critical component when you migrate from Amazon EC2
 
 #### Key differences
 
-| Feature | Amazon EC2 (Amazon VPC) | Azure VMs (virtual network) |
+| Feature | Amazon EC2 (Amazon VPC) | Azure Virtual Machines (virtual network) |
 |---|---|---|
 | Firewall integration | Security groups and NACLs | NSGs and Azure Firewall |
 | Private service access | Amazon VPC endpoints | Private Link |
@@ -474,7 +474,7 @@ High-availability and resiliency strategies vary between Amazon EC2 and Virtual 
 
 #### Mapping translation
 
-| Feature | Amazon EC2 | Azure VMs | Migration considerations |
+| Feature | Amazon EC2 | Azure Virtual Machines | Migration considerations |
 |---|---|---|---|
 | Zone redundancy | Availability zone-based deployment | Availability zones and ZRS | Map AWS availability zone deployment to Azure availability zones. When you use Virtual Machine Scale Sets, distribute instances across zones for maximum resiliency. |
 | Rack-level protection | Not explicit | Availability sets | Use availability sets for rack-level resiliency. |
@@ -508,7 +508,7 @@ AWS and Azure use different constructs for scaling and placement. These differen
 
 #### Key differences
 
-| Feature | Amazon EC2 | Azure VMs |
+| Feature | Amazon EC2 | Azure Virtual Machines |
 |-----|-----|----|
 | Scaling construct | ASGs | Virtual Machine Scale Sets and autoscaling |
 | Instance configuration | Launch template | VM configuration profile and deep deletion |
@@ -528,7 +528,7 @@ Successful validation indicates that the workload is ready for production cutove
 
 ## Related content
 
-- [Virtual Machines overview](/azure/virtual-machines/overview)
+- [Virtual machines overview](/azure/virtual-machines/overview)
 - [Azure for AWS professionals](/azure/architecture/aws-professional/)
 - [Compare AWS and Azure compute services](/azure/architecture/aws-professional/compute)
 - [Migrate AWS to Azure](/azure/migration/migrate-from-aws)
