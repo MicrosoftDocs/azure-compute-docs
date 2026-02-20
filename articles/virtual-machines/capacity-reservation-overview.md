@@ -30,7 +30,7 @@ To create a capacity reservation, the parameters are passed to Azure as a capaci
 
 Quota and capacity are separate checks. Quota is your subscription's permission to deploy resources, while capacity is the underlying infrastructure available in a specific region or zone.
 
-Capacity reservations and Reserved Instances are also different. Capacity reservation secures capacity availability for deployment. Reserved Instances provide a billing discount only and don't guarantee capacity.
+Capacity reservations and [Reserved Instances](/azure/virtual-machines/prepay-reserved-vm-instances) are also different. Capacity reservation secures capacity availability for deployment. Reserved Instances provide a billing discount only and don't guarantee capacity.
 
 After Azure accepts your reservation request, it's available for VMs with matching configurations. To consume capacity reservation, the VM has to specify the reservation in its properties. Otherwise, the capacity reservation isn't used. One benefit of this design is that you can target only critical workloads to reservations and other noncritical workloads can run without reserved capacity. 
 
