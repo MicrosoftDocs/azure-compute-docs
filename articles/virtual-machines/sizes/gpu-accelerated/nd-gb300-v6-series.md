@@ -5,7 +5,7 @@ author: iamwilliew
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 11/12/2025
+ms.date: 02/20/2026
 ms.author: wwilliams
 ms.reviewer: mattmcinnes
 # Customer intent: As a cloud architect, I want to assess the specifications and features of the ND GB300-v6 series, so that I can choose the optimal virtual machine size for our high-performance computing needs.
@@ -29,7 +29,7 @@ vCPUs (Qty.) and Memory for each size
 
 | Size Name | vCPUs (Qty.) | Memory (GB) |
 | --- | --- | --- |
-| Standard_ND128isr_NDR_GB300_v6 | 128 | 864 |
+| Standard_ND128isr_GB300_v6 | 128 | 864 |
 
 #### VM Basics resources
 - [Check vCPU quotas](../../../virtual-machines/quotas.md)
@@ -40,7 +40,7 @@ Local (temp) storage info for each size
 
 | Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (TB) |
 | --- | --- | --- |
-| Standard_ND128isr_NDR_GB300_v6 | 4 | 16 |
+| Standard_ND128isr_GB300_v6 | 4 | 16 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
@@ -59,7 +59,7 @@ Remote (uncached) storage info for each size
 
 | Size Name | Max Remote Storage Disks (Qty.) | Uncached Disk IOPS | Uncached Disk Speed (MBps) |
 | --- | --- | --- | --- |
-| Standard_ND128isr_NDR_GB300_v6 | 16 | 80000 | 1200 |
+| Standard_ND128isr_GB300_v6 | 16 | 80000 | 1200 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
@@ -81,7 +81,7 @@ Network interface info for each size
 
 | Size Name | Max Front-end NICs (Qty.) | Max Front-end Bandwidth (Mbps) | Max Scale-up NICS (Qty.) | Max Scale-Up Bandwidth (TBps)<sup>1</sup> | Max Scale-out NICS (Qty.) | Max Scale-Out Bandwidth (Gbps)<sup>2</sup> |
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_ND128isr_NDR_GB300_v6 | 1 | 160 | 4 | 1.8 | 4 | 4x800 |
+| Standard_ND128isr_GB300_v6 | 1 | 160 | 4 | 1.8 | 4 | 4x800 |
 
 #### Networking resources
 - [Virtual networks and virtual machines in Azure](/azure/virtual-network/network-overview)
@@ -100,7 +100,7 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 
 | Size Name | Accelerators (Qty.) | Accelerator-Memory (GB) |
 | --- | --- | --- |
-| Standard_ND128isr_NDR_GB300_v6 | 4 | 288 |
+| Standard_ND128isr_GB300_v6 | 4 | 288 |
 
 ---
 
