@@ -13,9 +13,6 @@ ms.custom: mimckitt, devx-track-azurecli, vmss-flex
 
 # Orchestration modes for Virtual Machine Scale Sets in Azure
 
-> [!NOTE]
-> Unmanaged disks are being retired on March 31, 2026. If you're using unmanaged disks, migrate to managed disks before that date. For more information, see [Migrate your Azure unmanaged disks by March 31, 2026](/azure/virtual-machines/unmanaged-disks-deprecation).
-
 Virtual Machines Scale Sets provide a logical grouping of platform-managed virtual machines. With scale sets, you create a virtual machine configuration model, automatically add or remove additional instances based on CPU or memory load, and automatically upgrade to the latest OS version. Traditionally, scale sets allow you to create virtual machines using a VM configuration model provided at the time of scale set creation, and the scale set can only manage virtual machines that are implicitly created based on the configuration model. 
 
 Scale set orchestration modes allow you to have greater control over how virtual machine instances are managed by the scale set.

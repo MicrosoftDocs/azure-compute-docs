@@ -13,9 +13,6 @@ ms.reviewer: cynthn
 
 # Attach or detach a Virtual Machine to or from a Virtual Machine Scale Set
 
-> [!NOTE]
-> Unmanaged disks are being retired on March 31, 2026. If you're using unmanaged disks, migrate to managed disks before that date. For more information, see [Migrate your Azure unmanaged disks by March 31, 2026](/azure/virtual-machines/unmanaged-disks-deprecation).
-
 ## Attaching a Virtual Machine to a Virtual Machine Scale Set
 
 > [!IMPORTANT]
