@@ -20,8 +20,6 @@ ms.custom:
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Flexible scale sets
 
-[!INCLUDE [disks-unmanaged-disks-retirement](../includes/disks-unmanaged-disks-retirement.md)]
-
 The scope of this article is to validate the encryption status of a virtual machine by using different methods: the Azure portal, PowerShell, the Azure CLI, or the operating system of the virtual machine (VM).
 
 You can validate the encryption status during or after the encryption, by either:
@@ -273,6 +271,8 @@ echo "==========================================================================
 ```
 
 ### Unmanaged disks
+
+[!INCLUDE [disks-unmanaged-disks-retirement](../includes/disks-unmanaged-disks-retirement.md)]
 
 Unmanaged disks are VHD files that are stored as page blobs in Azure storage accounts.
 
