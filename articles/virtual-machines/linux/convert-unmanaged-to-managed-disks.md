@@ -15,8 +15,6 @@ ms.custom: devx-track-azurecli, linux-related-content
 
 **Applies to:** :heavy_check_mark: Linux VMs 
 
-[!INCLUDE [disks-unmanaged-disks-retirement](../includes/disks-unmanaged-disks-retirement.md)]
-
 If you have existing Linux virtual machines (VMs) that use unmanaged disks, you can migrate the VMs to use [Azure Managed Disks](../managed-disks-overview.md). This process converts both the OS disk and any attached data disks.
 
 This article shows you how to migrate VMs by using the Azure CLI. If you need to install or upgrade it, see [Install Azure CLI](/cli/azure/install-azure-cli). 

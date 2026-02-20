@@ -14,8 +14,6 @@ ms.author: rogarana
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
-[!INCLUDE [disks-unmanaged-disks-retirement](includes/disks-unmanaged-disks-retirement.md)]
-
 This article provides guidelines for building high-performance applications by using Azure premium storage. You can use the instructions provided in this document combined with performance best practices applicable to technologies used by your application. To illustrate the guidelines, we use SQL Server running on premium storage as an example throughout this document.
 
 While we address performance scenarios for the storage layer in this article, you need to optimize the application layer. For example, if you're hosting a SharePoint Farm on premium storage, you can use the SQL Server examples from this article to optimize the database server. You can also optimize the SharePoint Farm's web server and application server to get the most performance.
