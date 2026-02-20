@@ -115,7 +115,7 @@ Formalize your findings by categorizing each capability into one of the followin
 |---|---|---|
 | Amazon EC2 instance families like `t`, `m`, `c`, `r`, `i`, and `p` | Azure VM series like B, D, F, E, L, and NC, ND, or NP | Select Azure VM SKUs that have equivalent CPU-to-memory ratios and architecture. |
 | ASGs | Virtual Machine Scale Sets | Set up autoscaling in Virtual Machine Scale Sets and distribute instances across zones. |
-| Amazon ELB (ALB/NLB) | Load Balancer and Application Gateway | Map layer-4 or layer-7 behavior and health probes. |
+| Amazon ELB: Amazon Application Load Balancer (ALB) and Amazon Network Load Balancer (NLB) | Load Balancer and Application Gateway | Map layer-4 or layer-7 behavior and health probes. |
 | Amazon EBS volumes | Azure managed disks | Map Amazon EBS volume types to the right disk SKUs and validate limits. |
 | Availability zones | Azure availability zones | Deploy VMs or Virtual Machine Scale Sets instances across zones where supported. |
 
