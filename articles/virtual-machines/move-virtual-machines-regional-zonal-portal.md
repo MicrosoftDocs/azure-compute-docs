@@ -2,13 +2,15 @@
 title: Move Azure single-instance virtual machines from regional to zonal availability
 description: Learn how to move single-instance Azure virtual machines from a regional deployment to an Availability Zone in the same region by using the Azure portal, PowerShell, or CLI.
 ms.service: azure-virtual-machines
-ms.topic: tutorial
-ms.date: 02/17/2026
+ms.topic: how-to
+ms.date: 02/20/2026
 ms.custom: sfi-image-nochange
 # Customer intent: "As a cloud administrator, I want to move Azure single instance virtual machines from a regional configuration to zonal availability zones, so that I can improve the reliability and performance of my applications within the same region."
 ---
 
-This tutorial explains how to move a single-instance Azure virtual machine (VM) from a regional deployment to a zonal deployment in the same Azure region.
+# Move Azure single-instance virtual machines from regional to zonal availability
+
+This article explains how to move a single-instance Azure virtual machine (VM) from a regional deployment to a zonal deployment in the same Azure region.
 
 ## Prerequisites
 
@@ -31,17 +33,16 @@ Before you begin, verify the following:
 
 Use the following steps to move a VM from regional to zonal deployment in the same region.
 
-## Choose your tool
+### Choose your tool:
 
 # [Portal](#tab/portal)
 
 ## Portal: Select the VM
 
 1. In the [Azure portal](https://ms.portal.azure.com/#home), go to your VM.
-1. In the VM resource pane, select **Availability + scaling** > **Edit**.
+1. In the VM overview, select **Availability + scaling** > **Edit**.
    :::image type="content" source="./media/tutorial-move-regional-zonal/scaling-pane.png" alt-text="Screenshot of Availability + scaling pane.":::
 
-You can also open **Availability + scale** from the VM overview and then select **Availability + scaling**.
 
 ## Portal: Select the target availability zone
 
@@ -55,7 +56,7 @@ You can also open **Availability + scale** from the VM overview and then select 
 
 1. Select the consent statement for the **System Assigned Managed Identity** process, then select **Next**.
 
-   :::image type="content" source="./media/tutorial-move-regional-zonal/move-virtual-machine-availability-zone.png" alt-text="Screenshot of select target availability zone.":::
+   
 
 The managed identity setup can take a few minutes. Progress updates are shown in the portal.
 
@@ -69,13 +70,12 @@ The following source VM properties are retained by default in the target zonal V
 | Property | Description |
 | --- | --- |
 | VM name | The source VM name is retained in the target zonal VM. |
-| VNET | The source virtual network is retained, and the target zonal VM is created in the same VNET by default. You can select a different VNET. |
-| Subnet | The source subnet is retained by default. You can select a different subnet. |
-| NSG | The source NSG is retained by default. You can select or create a different NSG. |
+| Virtual network/subnet| The source virtual network (VNET) and subnet are retained, and the target zonal VM is created in the same VNET and subnet by default. You can also select or create a different VNET and subnet. |
+| Network Security Group (NSG) | The source NSG is retained by default. You can select or create a different NSG. |
 | Load balancer (Standard SKU) | Standard SKU load balancers support zonal deployment and are retained. |
 | Public IP (Standard SKU) | Standard SKU public IP addresses support zonal deployment and are retained. |
 
-The following properties are newly created by default in the target zonal VM:
+The following properties are newly created by default in the target zonal VM as needed:
 
 | Property | Description |
 | --- | --- |
@@ -87,18 +87,13 @@ The following properties are newly created by default in the target zonal VM:
 | Public IP (Basic SKU) | Basic SKU public IP addresses don't support zonal deployment and aren't retained. A new Standard SKU public IP is created by default. You can edit this or select an existing target public IP. |
 
 1. Resolve any validation errors.
-1. Select the consent statement at the bottom of the page, then continue with the move.
-   :::image type="content" source="./media/tutorial-move-regional-zonal/migrate-vms.png" alt-text="Screenshot of migrating virtual machine page.":::
+1. Select the consent statement at the bottom of the page to show you understand that the source VM(s) will be stopped during the process. t
+1. Select **Move** to complete the move.
 
-## Portal: Move the VM
 
-Select **Move** to complete the move to Availability Zones.
+During the move:
 
-:::image type="content" source="./media/tutorial-move-regional-zonal/move-completed.png" alt-text="Screenshot of move completion page.":::
-
-During move:
-
-- The source VM is stopped, so brief downtime occurs.
+- The source VM is **stopped**, so brief downtime occurs.
 - A target zonal VM is created and started.
 - 
 - ## Configure settings after move
