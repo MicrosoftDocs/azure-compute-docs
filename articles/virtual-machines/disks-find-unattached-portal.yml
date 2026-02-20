@@ -16,9 +16,9 @@ title: |
 introduction: |
   **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
-  [!INCLUDE [disks-unmanaged-disks-retirement](includes/disks-unmanaged-disks-retirement.md)]
-
   When you delete a virtual machine (VM) in Azure, by default, any disks that are attached to the VM aren't deleted. This helps to prevent data loss due to the unintentional deletion of VMs. After a VM is deleted, you will continue to pay for unattached disks. This article shows you how to find and delete any unattached disks using the Azure portal, and reduce unnecessary costs. Deletions are permanent, you will not be able to recover data once you delete a disk.
+
+  [!INCLUDE [disks-unmanaged-disks-retirement](includes/disks-unmanaged-disks-retirement.md)]
 
   Unmanaged disks are VHD files that are stored as [page blobs](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-page-blobs) in [Azure storage accounts](/azure/storage/common/storage-account-overview).
 
