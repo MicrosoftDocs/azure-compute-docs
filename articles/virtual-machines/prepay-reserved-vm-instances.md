@@ -5,10 +5,11 @@ author: vikramdesai01
 manager: vikramdesai01
 ms.service: azure-virtual-machines
 ms.subservice: billing
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 01/09/2023
 ms.author: vikdesai
 ms.reviewer: jushiman
+# Customer intent: As an IT administrator, I want to purchase Azure Reserved Virtual Machine Instances, so that I can optimize my compute costs and save money on consistent VM usage.
 ---
 # Save costs with Azure Reserved VM Instances
 
@@ -107,7 +108,7 @@ If you have an EA agreement, you can use the **Add more option** to quickly add 
 |Term        |One year or three years. There's also a 5-year term available only for HBv2 VMs.|
 |Quantity    |The number of instances being purchased within the reservation. The quantity is the number of running VM instances that can get the billing discount. For example, if you are running 10 Standard_D2 VMs in the East US, then you would specify quantity as 10 to maximize the benefit for all running VMs. |
 
-> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2PjmT]
+> [!VIDEO https://learn-video.azurefd.net/vod/player?id=4e688b15-2bc8-47b5-b67e-16ea39397709]
 
 ## Usage data and reservation utilization
 

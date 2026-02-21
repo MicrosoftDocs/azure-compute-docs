@@ -4,10 +4,11 @@ description: Information on and specifications of the Dlsv5-series sizes
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 07/18/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
+# Customer intent: "As a cloud architect, I want to evaluate the specifications and capabilities of the Dlsv5 VM sizes, so that I can select the most appropriate virtual machine configurations for my workload requirements."
 ---
 
 # Dlsv5 sizes series

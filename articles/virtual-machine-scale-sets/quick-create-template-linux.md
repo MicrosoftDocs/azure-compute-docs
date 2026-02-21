@@ -1,14 +1,15 @@
 ---
 title: Quickstart - Create a Linux Virtual Machine Scale Set with an Azure Resource Manager template
 description: Learn how to quickly create a Linux virtual machine scale with an Azure Resource Manager template that deploys a sample app and configures autoscale rules
-author: ju-shim
-ms.author: jushiman
+author: cynthn
+ms.author: cynthn
 ms.topic: quickstart
 ms.service: azure-virtual-machine-scale-sets
 ms.collection: linux
 ms.date: 06/14/2024
 ms.reviewer: mimckitt
 ms.custom: mimckitt, subject-armqs, mode-arm, devx-track-arm-template, linux-related-content
+# Customer intent: As a cloud architect, I want to deploy a Linux Virtual Machine Scale Set using an ARM template, so that I can automate resource management and ensure my application scales efficiently based on demand.
 ---
 
 # Quickstart: Create a Linux Virtual Machine Scale Set with an ARM template
@@ -30,7 +31,7 @@ If your environment meets the prerequisites and you're familiar with using ARM t
 
 ## Prerequisites
 
-If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 ## Review the template
 

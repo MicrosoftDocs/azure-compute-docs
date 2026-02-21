@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: "As a DevOps engineer, I want to retrieve event logs from the Service Fabric Event Store, so that I can monitor application health and troubleshoot issues effectively."
 ---
 
 # sfctl events

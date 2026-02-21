@@ -5,14 +5,20 @@ author: vamckMS
 ms.author: vakavuru
 ms.reviewer: mattmcinnes
 ms.service: azure-dedicated-host
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 01/23/2023
+ms.update-cycle: 1095-days
+# Customer intent: As a cloud architect, I want to understand the specifications and packing configurations of Memory Optimized Azure Dedicated Host SKUs so that I can efficiently provision VMs that meet my application performance requirements.
 ---
 
 # Memory Optimized Azure Dedicated Host SKUs
 Azure Dedicated Host SKUs are the combination of a VM family and a certain hardware specification. You can only deploy VMs of the VM series that the Dedicated Host SKU specifies. For example, on the Dsv3-Type3, you can only provision [Dsv3-series](dv3-dsv3-series.md#dsv3-series) VMs. 
 
 This document goes through the hardware specifications and VM packings for all memory optimized Dedicated Host SKUs.
+
+>[!NOTE]
+>The host reserves a portion of the "Available vCPUs" and "Available RAM" listed in the tables below for its own operations. To determine the actual usable resources, refer to the host [pricing page](https://aka.ms/ADHPricing).
+>"Available vCPUs" doesn't account for VM overhead, which varies by VM size. This overhead consumes part of the vCPU allocation, meaning not all advertised vCPUs are available for use.
 
 ## Limitations
 

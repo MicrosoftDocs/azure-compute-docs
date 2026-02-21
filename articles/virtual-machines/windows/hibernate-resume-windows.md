@@ -8,6 +8,7 @@ ms.date: 05/16/2024
 ms.author: jainan
 ms.reviewer: mattmcinnes
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
+# Customer intent: "As an IT administrator, I want to enable hibernation on my Windows virtual machines, so that I can efficiently manage resources and reduce costs during downtime."
 ---
 
 # Hibernating Windows virtual machines
@@ -27,6 +28,7 @@ For a list of hibernation compatible VM sizes, check out the [supported VM sizes
 ### Supported Windows versions
 The following Windows operating systems support hibernation:
 
+- Windows Server 2025
 - Windows Server 2022
 - Windows Server 2019
 - Windows 11 Pro
@@ -39,6 +41,9 @@ The following Windows operating systems support hibernation:
 ### Prerequisites and configuration limitations
 - The Windows page file can't be on the temp disk.  
 - Applications such as Device Guard and Credential Guard that require virtualization-based security (VBS) work with hibernation when you enable Trusted Launch on the VM and Nested Virtualization in the guest OS.
+
+>[!NOTE]
+> To use VBS and Hibernation, Windows 11 24H2 OS build must be 26100.3037 or later. You can verify OS build using `winver` command. Marketplace images of Windows 11 24H2 installed after February 2025 support VBS and Hibernation.
 
 For general limitations, Azure feature limitations supported VM sizes, and feature prerequisites check out the ["Supported configurations" section in the hibernation overview](../hibernate-resume.md#supported-configurations).
 

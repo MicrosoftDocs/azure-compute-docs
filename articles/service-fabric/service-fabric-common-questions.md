@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 08/16/2024
+# Customer intent: As a cloud architect, I want to understand Service Fabric's capabilities and best practices for setup and management, so that I can design resilient and efficient applications that leverage distributed microservices architecture.
 ---
 
 
@@ -125,7 +126,7 @@ No. Low-priority VMs are not supported.
 The following are means for your application to obtain credentials for authenticating to Key Vault:
 
 A. During your applications build/packing job, you can pull a certificate into your SF app's data package, and use this to authenticate to Key Vault.
-B. For virtual machine scale set MSI enabled hosts, you can develop a simple PowerShell SetupEntryPoint for your SF app to get [an access token from the MSI endpoint](/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token), and then [retrieve your secrets from Key Vault](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret).
+B. For virtual machine scale set MSI enabled hosts, you can develop a simple PowerShell SetupEntryPoint for your SF app to get [an access token from the MSI endpoint](/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token), and then [retrieve your secrets from Key Vault](/powershell/module/az.keyvault/get-azkeyvaultsecret).
 
 ### Can I transfer my subscription to a different Microsoft Entra tenant?
 No. At this time you would need to create a new Service Fabric cluster resource after the subscription has been transferred to a different Microsoft Entra tenant.

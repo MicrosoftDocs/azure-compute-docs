@@ -9,6 +9,7 @@ ms.date: 07/31/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
+# Customer intent: "As a data scientist, I want to utilize the NDm A100 v4 series virtual machines for deep learning and HPC workloads, so that I can leverage high-performance GPU resources for training AI models efficiently and effectively."
 ---
 The NDm A100 v4 series virtual machine(VM) is a new flagship addition to the Azure GPU family. These sizes are designed for high-end Deep Learning training and tightly coupled scale-up and scale-out HPC workloads.
 

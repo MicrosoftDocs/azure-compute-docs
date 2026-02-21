@@ -9,6 +9,7 @@ ms.service: azure-virtual-machines
 ms.topic: how-to
 ms.tgt_pltfrm: vm
 ms.date: 05/01/2023
+# Customer intent: "As a cloud administrator, I want to analyze Azure virtual machine usage details, so that I can optimize cost management and resource allocation across my organization."
 ---
 
 # Understanding Azure virtual machine usage
@@ -25,7 +26,7 @@ To begin, [download your usage details](/azure/cost-management-billing/understan
 |---|---|---|
 | Usage Date | The date when the resource was used | `11/23/2017` |
 | Meter ID | Identifies the top-level service for which this usage belongs to| `Virtual Machines`|
-| Meter Sub-Category | The billed meter identifier. <br><br> For Compute Hour usage, there's a meter for each VM Size + OS (Windows, Non-Windows) + Region. <br><br> For Premium software usage, there's a meter for each software type. Most premium software images have different meters for each core size. For more information, visit the [Compute Pricing Page](https://azure.microsoft.com/pricing/details/virtual-machines/)</li></ul>| `2005544f-659d-49c9-9094-8e0aea1be3a5`|
+| Meter Sub-Category | The billed meter identifier. <br><br> For Compute Hour usage, there's a meter for each VM Size + OS (Windows, Non-Windows) + Region. <br><br> For Premium software usage, there's a meter for each software type. Most premium software images have different meters for each core size. For more information, visit the [Compute Pricing Page](https://azure.microsoft.com/pricing/details/virtual-machines/)</li></ul>| `aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb`|
 | Meter Name| This value is specific for each service in Azure. For compute, it is always “Compute Hours”.| `Compute Hours`|
 | Meter Region| Identifies the location of the datacenter for certain services that are priced based on datacenter location.|  `JA East`|
 | Unit| Identifies the unit that the service is charged in. Compute resources are billed per hour.| `Hours`|

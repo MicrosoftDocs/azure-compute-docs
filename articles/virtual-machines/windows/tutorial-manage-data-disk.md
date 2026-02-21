@@ -9,6 +9,7 @@ ms.tgt_pltfrm: vm-windows
 ms.date: 12/06/2024
 ms.custom: template-tutorial, devx-track-azurepowershell
 #Customer intent: As an IT administrator, I want to learn about Azure Managed Disks so that I can create and manage storage for Windows VMs in Azure.
+# Customer intent: As an IT administrator, I want to manage Azure disks using PowerShell commands so that I can effectively create, attach, initialize, expand, and delete disks for virtual machines as part of my cloud infrastructure management.
 ---
 
 # Tutorial: Manage disks with Azure PowerShell
@@ -26,7 +27,7 @@ This tutorial covers deployment and management of VM disks. In this tutorial, yo
 
 ## Prerequisites
 
-You must have an Azure account with an active subscription. If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+You must have an Azure account with an active subscription. If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 [!INCLUDE [cloud-shell-try-it.md](~/reusable-content/ce-skilling/azure/includes/cloud-shell-try-it.md)]
 

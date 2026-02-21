@@ -9,6 +9,7 @@
  ms.author: jainan
  ms.reviewer: mattmcinnes
  ms.custom: include file
+# Customer intent: As a cloud infrastructure manager, I want to use VM hibernation to pause unused virtual machines, so that I can reduce compute costs and optimize resource allocation for temporary workloads or long boot time applications.
 ---
 
 

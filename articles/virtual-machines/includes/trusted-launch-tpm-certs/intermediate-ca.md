@@ -1,22 +1,24 @@
 ---
-title: Intermediate CA for TPM cert
+title: Intermediate CA for TPM cert ICA-01
 description: Include file for Intermediate CA
-author: ju-shim
+author: prasadmsft
 ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.date: 09/28/2023
-ms.author: jushiman
+ms.date: 08/05/2025
+ms.author: reprasa
 ms.custom: include file
+# Customer intent: As an IT security professional, I want to obtain the Intermediate Certificate Authority for TPM certificates so that I can establish secure communication and trust within my organization's infrastructure.
 ---
 
 <details>
-<summary>Select to view the intermediate CA content</summary>
+<summary>Select to view the intermediate CA content (ICA-01)</summary>
 
-Intermediate Certificate Authority for TPM cert:
+"Global Virtual TPM CA - 01" (intermediate CA) [.cer]:
 
 ```
-"Global Virtual TPM CA - XX" (intermediate CA) [.cer], 
+
+ 
 -----BEGIN CERTIFICATE-----
 MIIFnDCCA4SgAwIBAgITMwAAAALA0XtLj5ecNQAAAAAAAjANBgkqhkiG9w0BAQwF
 ADBpMQswCQYDVQQGEwJVUzEeMBwGA1UEChMVTWljcm9zb2Z0IENvcnBvcmF0aW9u
@@ -50,11 +52,6 @@ VS1vVqG4zC0EfRnO65ogPPfrtK6ZiFmVHSWP9vPkFcUNYDnYQXW/TArO/JCe2I++
 GClM7AcDQwWLxcopzskGQdHNM1zMsprRRwYaVpTJH67xeNda6+Y7IOPJYTvyoXHP
 -----END CERTIFICATE-----
 
-Intermediate Certificate Authority
-
-Thumbprint # db1f3959dcce7091f87c43446be1f4ab2d3415b7
-Serial Number # 3300000002c0d17b4b8f979c35000000000002
-Valid Until # November 3rd, 2025
 ``````
 
 </details>

@@ -6,7 +6,9 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 01/23/2026
+ms.update-cycle: 1095-days
+# Customer intent: As a cloud developer, I want to utilize a distributed systems platform for building and managing scalable microservices, so that I can effectively deploy, monitor, and maintain applications across various environments.
 ---
 
 # Overview of Azure Service Fabric
@@ -45,7 +47,7 @@ For [Windows development](service-fabric-get-started.md), the Service Fabric .NE
 
 ## Compliance
 
-Azure Service Fabric Resource Provider is available in all Azure regions and is compliant with all Azure compliance certifications, including: SOC, ISO, PCI DSS, HIPAA, and GDPR. For a complete list, see
+Azure Service Fabric Resource Provider is available in all Azure regions and is compliant with all Azure compliance certifications. For a complete list, see
 [Microsoft compliance offerings](/compliance/regulatory/offering-home).
 
 ## Next steps

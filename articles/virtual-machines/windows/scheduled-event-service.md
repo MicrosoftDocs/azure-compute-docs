@@ -1,39 +1,41 @@
 ---
-title: Monitor scheduled events for your VMs in Azure 
-description: Learn how to monitor your Azure virtual machines for scheduled events.
+title: Monitor scheduled events for your Windows VMs in Azure 
+description: Learn how to monitor your Windows virtual machines for scheduled events.
 author: mysarn
 ms.service: azure-virtual-machines
 ms.subservice: scheduled-events
-ms.date: 08/20/2019
+ms.date: 12/12/2024
 ms.author: sarn
 ms.topic: how-to
+ms.custom: sfi-image-nochange
 # Monitoring Scheduled Events
+# Customer intent: "As a system administrator, I want to monitor scheduled events for my Windows VMs, so that I can proactively manage maintenance and minimize downtime for critical applications."
 ---
 
-# Monitor scheduled events for your Azure VMs
+# Monitor scheduled events for your Windows VMs
 
 **Applies to:** VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
-Updates are applied to different parts of Azure every day, to keep the services running on them secure, and up-to-date. In addition to planned updates, unplanned events may also occur. For example, if any hardware degradation or fault is detected, Azure services may need to perform unplanned maintenance. Using live migration, memory preserving updates and generally keeping a strict bar on the impact of updates, in most cases these events are almost transparent to customers, and they have no impact or at most cause a few seconds of virtual machine freeze. However, for some applications, even a few seconds of virtual machine freeze could cause an impact. Knowing in advance about upcoming Azure maintenance is important, to ensure the best experience for those applications. [Scheduled Events service](scheduled-events.md) provides you a programmatic interface to be notified about upcoming maintenance, and enables you to gracefully handle the maintenance. 
+Updates are applied to different parts of Azure every day, to keep the services running on them secure, and up-to-date. In addition to planned updates, unplanned events may also occur. For example, if any hardware degradation or fault is detected, Azure services may need to perform unplanned maintenance. Using live migration, memory preserving updates and keeping a strict limit on the impact of updates, allow these events to be almost transparent to customers. At most, they can cause a few seconds of virtual machine freeze. For some applications however, even a few seconds of virtual machine freeze could cause an impact. Knowing in advance about upcoming Azure maintenance is important to ensure the best experience for those applications. [Scheduled Events service](scheduled-events.md) provides you with a programmatic interface to be notified about upcoming maintenance, and enables you to gracefully handle the maintenance. 
 
-In this article, we will show how you can use scheduled events to be notified about maintenance events that could be affecting your VMs and build some basic automation that can help with monitoring and analysis.
+This article shows how you can use scheduled events to be notified about maintenance events that could affect your VMs and build some basic automation that can help with monitoring and analysis.
 
 
 ## Routing scheduled events to Log Analytics
 
 Scheduled Events is available as part of the [Azure Instance Metadata Service](instance-metadata-service.md), which is available on every Azure virtual machine. Customers can write automation to query the endpoint of their virtual machines to find scheduled maintenance notifications and perform mitigations, like saving the state and taking the virtual machine out of rotation. We recommend building automation to record the Scheduled Events so you can have an auditing log of Azure maintenance events. 
 
-In this article, we will walk you through how to capture maintenance Scheduled Events to Log Analytics. Then, we will trigger some basic notification actions, like sending an email to your team and getting a historical view of all events that have affected your virtual machines. For the event aggregation and automation we will use [Log Analytics](/azure/azure-monitor/logs/quick-create-workspace), but you can use any monitoring solution to collect these logs and trigger automation.
+In this article, we walk you through how to capture maintenance Scheduled Events to Log Analytics. Then, we trigger some basic notification actions, like sending an email to your team and getting a historical view of all events that have affected your virtual machines. For the event aggregation and automation we use [Log Analytics](/azure/azure-monitor/logs/quick-create-workspace), but you can use any monitoring solution to collect these logs and trigger automation.
 
 ![Diagram showing the event lifecycle](./media/notifications/events.png)
 
 ## Prerequisites
 
-For this example, you will need to create a [Windows Virtual Machine in an Availability Set](tutorial-availability-sets.md). Scheduled Events provide notifications about changes that can affect any of the virtual machines in your availability set, Cloud Service, Virtual Machine Scale Set or standalone VMs. We will be running a [service](https://github.com/microsoft/AzureScheduledEventsService) that polls for scheduled events on one of the VMs that will act as a collector, to get events for all of the other VMs in the availability set.    
+For this example, you need to create a [Windows Virtual Machine in an Availability Set](tutorial-availability-sets.md). Scheduled Events provide notifications about changes that can affect any of the virtual machines in your availability set, Cloud Service, Virtual Machine Scale Set or standalone VMs. A [service](https://github.com/microsoft/AzureScheduledEventsService) is run that polls for scheduled events on one of the VMs that act as a collector, to get events for all of the other VMs in the availability set.    
 
 Don't delete the group resource group at the end of the tutorial.
 
-You will also need to [create a Log Analytics workspace](/azure/azure-monitor/logs/quick-create-workspace) that we will use to aggregate information from the VMs in the availability set.
+You also need to [create a Log Analytics workspace](/azure/azure-monitor/logs/quick-create-workspace) that we use to aggregate information from the VMs in the availability set.
 
 ## Set up the environment
 
@@ -54,31 +56,29 @@ New-AzVm `
 ```
  
 
-Download the installation .zip file of the project from [GitHub](https://github.com/microsoft/AzureScheduledEventsService/archive/master.zip).
+1. Download the installation .zip file of the project from [GitHub](https://github.com/microsoft/AzureScheduledEventsService/archive/master.zip).
 
-Connect to **myCollectorVM** and copy the .zip file to the virtual machine and extract all of the files. On your VM, open a PowerShell prompt. Move your prompt into the folder containing `SchService.ps1`, for example: `PS C:\Users\azureuser\AzureScheduledEventsService-master\AzureScheduledEventsService-master\Powershell>`,  and set up the service.
+1. Connect to **myCollectorVM** and copy the .zip file to the virtual machine and extract all of the files. On your VM, open a PowerShell prompt. Move your prompt into the folder containing `SchService.ps1`, for example: `PS C:\Users\azureuser\AzureScheduledEventsService-master\AzureScheduledEventsService-master\Powershell>`,  and set up the service.
 
-```powershell
-.\SchService.ps1 -Setup
-```
+   ```powershell
+   .\SchService.ps1 -Setup
+   ```
 
-Start the service.
+1. Start the service.
 
-```powershell
-.\SchService.ps1 -Start
-```
+   ```powershell
+   .\SchService.ps1 -Start
+   ```
 
-The service will now start polling every 10 seconds for any scheduled events and approve the events to expedite the maintenance.  Freeze, Reboot, Redeploy, and Preempt are the events captured by Schedule events.   Note that you can extend the script to trigger some mitigations prior to approving the event.
+1. Validate the service status and make sure it is running.
 
-Validate the service status and make sure it is running.
+   ```powershell
+   .\SchService.ps1 -status  
+   ```
 
-```powershell
-.\SchService.ps1 -status  
-```
+   The validation command should return `Running`.
 
-This should return `Running`.
-
-The service will now start polling every 10 seconds for any scheduled events and approve the events to expedite the maintenance.  Freeze, Reboot, Redeploy and Preempt are the events captured by Schedule events. You can extend the script to trigger some mitigations prior to approving the event.
+The service will now start polling every 10 seconds for any scheduled events and approve the events to expedite the maintenance.  Freeze, Reboot, Redeploy, and Preempt are the events captured by Schedule events. You can extend the script to trigger some mitigations prior to approving the event.
 
 When any of the above events are captured by Schedule Event service, it will get logged in the Application Event Log Event Status, Event Type, Resources (Virtual machine names) and NotBefore (minimum notice period). You can locate the events with ID 1234 in the Application Event Log.
 
@@ -95,36 +95,44 @@ When events are captured by the Schedule Event service, it will get logged in th
 
 At any point you can stop/remove the Scheduled Event Service by using the switches `–stop` and `–remove`.
 
-## Connect to the workspace
-
+## Connect to the Log Analytics Workspace
 
 We now want to connect a Log Analytics Workspace to the collector VM. The Log Analytics workspace acts as a repository and we will configure event log collection to capture the application logs from the collector VM. 
 
- To route the Scheduled Events to the Events Log, which will be saved as Application log by our service, you will need to connect your virtual machine to your Log Analytics workspace.  
- 
-1. Open the page for the workspace you created.
-1. Under **Connect to a data source** select **Azure virtual machines (VMs)**.
+To route the Scheduled Events to the Events Log, which is saved as Application log by our service, you will need to connect your virtual machine to your Log Analytics workspace.  
 
-    ![Connect to a VM as a data source](./media/notifications/connect-to-data-source.png)
+### Set up data collection
 
-1. Search for and select **myCollectorVM**. 
-1. On the new page for **myCollectorVM**, select **Connect**.
+1. Open the Azure portal.
 
-This will install the [Microsoft Monitoring agent](../extensions/oms-windows.md) in your virtual machine. It will take a few minutes to connect your VM to the workspace and install the extension. 
+1. In the search bar at the top, type **Log Analytics Workspaces** and select it from the search results.
 
-## Configure the workspace
+1. Choose the workspace you created to open its page.
 
-1. Open the page for your workspace and select **Advanced settings**.
-1. Select **Data** from the left menu, then select **Windows Event Logs**.
-1. In **Collect from the following event logs**, start typing *application* and then select **Application** from the list.
+1. Under Settings, select **Agents** and then click **Virtual Machines**.
 
-    ![Select Advanced settings](./media/notifications/advanced.png)
+1. Under the **Windows servers** tab, click **Data Collection Rules**.
 
-1. Leave **ERROR**, **WARNING**, and **INFORMATION** selected and then select **Save** to save the settings.
+1. Enter the **Collect and Deliver** tab and click **Add data source**
+    ![Screenshot of the 'Collect and deliver' tab with an empty data source section.](./media/notifications/create-data-collection-rule.png)
+
+1. Under the **Data source** tab, select **Windows Event Logs** from the dropdown.
+
+1. Select the event logs you'd like to collect. Ensure that **ERROR**, **WARNING**, and **INFORMATION** are selected.
+    ![Screenshot of the 'Add data source' tab, showing several selected checkboxes.](./media/notifications/add-data-source-windows-event-logs.png)
+
+1. Click **Next : Destination >**
+
+1. Under the **Destination** tab, click **Add destination**.
+
+1. Fill out the **Destination Type**, **Subscription**, and **Destination Details** sections with your collector VM and its subscription's details.
+    ![Screenshot of the Destination tab showing type, subscription, and destination details.](./media/notifications/add-destination-details.png)
+
+1. Once you've selected the correct VM, the [Microsoft Monitoring agent](../extensions/oms-windows.md) will be automatically installed on your virtual machine. It will take a few minutes to connect your VM to the workspace and install the extension.
 
 
 > [!NOTE]
-> There will be some delay, and it may take up to 10 minutes before the log is available. 
+> There is some delay, and it may take up to 10 minutes before the log is available. 
 
 
 ## Creating an alert rule with Azure Monitor 
@@ -163,7 +171,7 @@ Once the events are pushed to Log Analytics, you can run the following [query](/
 1. Select **Email**, type in your e-mail address, then select **OK**.
 1. In the **Add action group** page, select **OK**. 
 1. In the **Create rule** page, under **ALERT DETAILS**, type *myAlert* for the **Alert rule name**, and then type *Email alert rule* for the **Description**.
-1. When you are finished, select **Create alert rule**.
+1. When you're finished, select **Create alert rule**.
 1. Restart one of the VMs in the availability set. Within a few minutes, you should get an e-mail that the alert has been triggered.
 
 To manage your alert rules, go to the resource group, select **Alerts** from the left menu, and then select **Manage alert rules** from the top of the page.

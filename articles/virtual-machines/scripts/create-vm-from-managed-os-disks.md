@@ -11,6 +11,7 @@ ms.tgt_pltfrm: vm-linux
 ms.date: 02/23/2022
 ms.author: rogarana
 ms.custom: mvc, devx-track-azurecli
+# Customer intent: "As a cloud administrator, I want to create a virtual machine using an existing managed disk, so that I can efficiently deploy resources without the need for additional configurations or data migrations."
 ---
 
 # Create a virtual machine using an existing managed OS disk with CLI

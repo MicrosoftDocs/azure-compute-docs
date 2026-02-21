@@ -1,13 +1,14 @@
 ---
 title: Quickstart - Create a Windows VM using the Azure CLI
 description: In this quickstart, you learn how to use the Azure CLI to create a Windows virtual machine
-author: ju-shim
+author: cynthn
 ms.service: azure-virtual-machines
 ms.collection: windows
 ms.topic: quickstart
 ms.date: 02/23/2023
-ms.author: jushiman
+ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli, mode-api
+# Customer intent: As a cloud developer, I want to create and deploy a Windows virtual machine using command line tools, so that I can manage resources efficiently and automate setup processes for applications and web servers.
 ---
 
 # Quickstart: Create a Windows virtual machine with the Azure CLI
@@ -16,7 +17,7 @@ ms.custom: mvc, devx-track-azurecli, mode-api
 
 The Azure CLI is used to create and manage Azure resources from the command line or in scripts. This quickstart shows you how to use the Azure CLI to deploy a virtual machine (VM) in Azure that runs Windows Server 2022. To see your VM in action, you then RDP to the VM and install the IIS web server.
 
-If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 ## Launch Azure Cloud Shell
 
@@ -26,11 +27,11 @@ To open the Cloud Shell, just select **Try it** from the upper right corner of a
 
 ## Create a resource group
 
-Create a resource group with the [az group create](/cli/azure/group) command. An Azure resource group is a logical container into which Azure resources are deployed and managed. The following example creates a resource group named *myResourceGroup* in the *West US 3* location. Replace the value of the variables as needed.
+Create a resource group with the [az group create](/cli/azure/group) command. An Azure resource group is a logical container into which Azure resources are deployed and managed. The following example creates a resource group named *myResourceGroup* in the *Central US* location. Replace the value of the variables as needed.
 
 ```azurecli-interactive
 resourcegroup="myResourceGroupCLI"
-location="westus3"
+location="centralus"
 az group create --name $resourcegroup --location $location
 ```
 
@@ -60,7 +61,7 @@ It takes a few minutes to create the VM and supporting resources. The following 
 {
   "fqdns": "",
   "id": "/subscriptions/<guid>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
-  "location": "westus3",
+  "location": "centralus",
   "macAddress": "00-0D-3A-23-9A-49",
   "powerState": "VM running",
   "privateIpAddress": "10.0.0.4",

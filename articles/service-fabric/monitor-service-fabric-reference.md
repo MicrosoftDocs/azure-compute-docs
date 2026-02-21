@@ -7,6 +7,7 @@ ms.topic: reference
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
+# Customer intent: "As a systems administrator, I want to monitor Service Fabric metrics and events, so that I can ensure the health and performance of my applications running in the cluster."
 ---
 
 # Azure Service Fabric monitoring data reference

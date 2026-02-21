@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 11/14/2024
+# Customer intent: "As an Azure developer, I want to grant access to managed identities for my Service Fabric application, so that it can securely interact with other Azure resources like Storage and Key Vault."
 ---
 
 # Grant a Service Fabric application access to Azure resources on a Service Fabric cluster

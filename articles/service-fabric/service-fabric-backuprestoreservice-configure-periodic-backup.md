@@ -1,12 +1,14 @@
 ---
 title: Understanding periodic backup configuration
 description: Use Service Fabric's periodic backup and restore feature to configure periodic backup of your Reliable stateful services or Reliable Actors.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 08/23/2024
+ms.date: 04/17/2025
+ms.update-cycle: 1095-days
+# Customer intent: "As a cloud administrator, I want to configure periodic backups for my stateful services, so that I can ensure data integrity and recovery in case of data loss."
 ---
 
 # Understanding periodic backup configuration in Azure Service Fabric
@@ -97,12 +99,12 @@ A backup policy consists of the following configurations:
 
         follow steps for managed-identity assignment on Azure resource:
 
-        1. Enable system assigned or User assigned managed identity in the VMSS [Configure managed identities on virtual machine scale set](https://learn.microsoft.com/entra/identity/managed-identities-azure-resources/how-to-configure-managed-identities-scale-sets?pivots=identity-mi-methods-azp)
+        1. Enable system assigned or User assigned managed identity in the VMSS [Configure managed identities on virtual machine scale set](/entra/identity/managed-identities-azure-resources/how-to-configure-managed-identities-scale-sets)
 
-        2. Assign role to the VMSS managed identity to storage account [Assign Azure roles using the Azure portal - Azure RBAC](https://learn.microsoft.com/azure/role-based-access-control/role-assignments-portal?tabs=current#step-2-open-the-add-role-assignment-pane)
-            1. Storage Blob Data Contributor Role at minimum 
+        2. Assign role to the VMSS managed identity to storage account by following the instructions starting in step two of [Assign Azure roles using the Azure portal - Azure RBAC](/azure/role-based-access-control/role-assignments-portal)
+            * Storage Account Contributor, Storage Blob Data Contributor, and Storage Table Data Contributor Role at minimum
 
-        [For more information on Managed Identity](https://learn.microsoft.com/entra/identity/managed-identities-azure-resources/overview)
+        [For more information on Managed Identity](/entra/identity/managed-identities-azure-resources/overview)
     
     2. **Azure blob store with ConnectionString**: This storage type should be selected when the need is to store generated backups in Azure. Both _standalone_ and _Cloud-based_ clusters can use this storage type. Description for this storage type requires connection string and name of the container where backups need to be uploaded. If the container with the specified name is not available, then it gets created during upload of a backup.
 

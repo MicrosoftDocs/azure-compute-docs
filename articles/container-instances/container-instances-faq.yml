@@ -7,7 +7,7 @@ metadata:
   ms.service: azure-container-instances
   services: container-instances
   ms.topic: faq
-  ms.date: 08/29/2024
+  ms.date: 11/17/2025
 title: Frequently asked questions about Azure Container Instances
 summary: This article addresses frequently asked questions about Azure Container Instances.
 
@@ -123,7 +123,7 @@ sections:
       - question: |
           Can I deploy with more than 4 cores and 16 GB of RAM?
         answer: |
-          Not yet. Currently, these values are the maximums for a container group. Contact Azure Support with specific requirements or requests. 
+          See the [big containers ](big-containers.md) article for compute and memory intensive workloads. Big containers has support for vCPU counts greater than 4 and memory capacities of 16 GB, with a maximum of 32 vCPU and 256 GB per standard container group and 32 vCPU and 192 GB per confidential container group.
 
       - question: |
           When will ACI be in a specific region?

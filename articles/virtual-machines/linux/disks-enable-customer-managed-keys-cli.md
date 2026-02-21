@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.author: rogarana
 ms.service: azure-disk-storage
 ms.custom: devx-track-azurecli, linux-related-content
+# Customer intent: As an IT administrator, I want to enable server-side encryption with customer-managed keys on managed disks using the command-line interface, so that I can ensure data security and compliance within my organization's cloud infrastructure.
 ---
 
 # Use the Azure CLI to enable server-side encryption with customer-managed keys for managed disks
@@ -55,6 +56,7 @@ rgName=yourResourceGroupName
 diskName=yourDiskName
 diskEncryptionSetName=yourDiskEncryptionSetName
 
+diskEncryptionSetId=$(az disk-encryption-set show -n $diskEncryptionSetName -g $rgName --query [id] -o tsv)
 az disk update -n $diskName -g $rgName --encryption-type EncryptionAtRestWithCustomerKey --disk-encryption-set $diskEncryptionSetId
 ```
 

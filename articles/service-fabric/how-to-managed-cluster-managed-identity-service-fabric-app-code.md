@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a cloud developer, I want to implement managed identities in my Service Fabric application, so that I can securely authenticate and access Azure services without handling credentials explicitly.
 ---
 
 # How to leverage a Service Fabric application's managed identity to access Azure services on a Service Fabric managed cluster
@@ -96,7 +97,7 @@ Access tokens will be cached by Service Fabric at various levels (node, cluster,
 
 Sample request:
 ```http
-GET 'https://localhost:2377/metadata/identity/oauth2/token?api-version=2019-07-01-preview&resource=https://vault.azure.net/' HTTP/1.1 Secret: 912e4af7-77ba-4fa5-a737-56c8e3ace132
+GET 'https://localhost:2377/metadata/identity/oauth2/token?api-version=2019-07-01-preview&resource=https://vault.azure.net/' HTTP/1.1 Secret: aaaabbbb-0000-cccc-1111-dddd2222eeee
 ```
 where:
 
@@ -392,7 +393,7 @@ If an error occurs, the corresponding HTTP response body contains a JSON object 
 
 Sample error:
 ```json
-{"error":{"correlationId":"7f30f4d3-0f3a-41e0-a417-527f21b3848f","code":"SecretHeaderNotFound","message":"Secret is not found in the request headers."}}
+{"error":{"correlationId":"aaaa0000-bb11-2222-33cc-444444dddddd","code":"SecretHeaderNotFound","message":"Secret is not found in the request headers."}}
 ```
 
 Following is a list of typical Service Fabric errors specific to managed identities:

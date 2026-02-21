@@ -3,17 +3,18 @@ title: Convert managed disks storage between different disk types
 description: How to convert Azure managed disks between the different disks types by using Azure PowerShell, Azure CLI, or the Azure portal.
 author: roygara
 ms.service: azure-disk-storage
-ms.custom: devx-track-azurecli, devx-track-azurepowershell, references_regions
+ms.custom: devx-track-azurecli, devx-track-azurepowershell, references_regions, portal
 ms.topic: how-to
-ms.date: 12/03/2024
+ms.date: 04/17/2025
 ms.author: rogarana
+# Customer intent: As a cloud administrator, I want to convert Azure managed disks between different disk types, so that I can optimize storage performance and cost of my environments, according to my workloads' requirements.
 ---
 
 # Convert the disk type of an Azure managed disk
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows 
 
-There are five disk types of Azure managed disks: Azure Ultra Disks, Premium SSD v2, premium SSD, Standard SSD, and Standard HDD. You can easily switch between Premium SSD, Standard SSD, and Standard HDD based on your performance needs. Premium SSD and Standard SSD are also available with [Zone-redundant storage](disks-redundancy.md#zone-redundant-storage-for-managed-disks). For most cases, you can't yet switch from or to an Ultra Disk or a Premium SSD v2, you must [deploy a new one with a snapshot of an existing disk](#migrate-to-premium-ssd-v2-or-ultra-disk-using-snapshots). However, you can switch from existing disks to a Premium SSD v2. See [Convert Premium SSD v2 disks](#convert-premium-ssd-v2-disks) for details.
+There are five disk types of Azure managed disks: Azure Ultra Disks, Premium SSD v2, premium SSD, Standard SSD, and Standard HDD. You can easily switch between Premium SSD, Standard SSD, and Standard HDD based on your performance needs. Premium SSD and Standard SSD are also available with [Zone-redundant storage](disks-redundancy.md#zone-redundant-storage-for-managed-disks). For most cases, you can't yet switch from or to an Ultra Disk, you must [deploy a new one with a snapshot of an existing disk](#migrate-to-premium-ssd-v2-or-ultra-disk-using-snapshots). However, you can switch from existing disks to a Premium SSD v2. See [Convert Premium SSD v2 disks](#convert-premium-ssd-v2-disks) for details.
 
 This functionality isn't supported for unmanaged disks. But you can easily convert an unmanaged disk to a managed disk with [CLI](linux/convert-unmanaged-to-managed-disks.md) or [PowerShell](windows/convert-unmanaged-to-managed-disks.md) to be able to switch between disk types.
 
@@ -26,6 +27,7 @@ Because conversion requires a restart of the virtual machine (VM), schedule the 
 
 - You can only change disk type twice per day.
 - You can only change the disk type of managed disks. If your disk is unmanaged, convert it to a managed disk with [CLI](linux/convert-unmanaged-to-managed-disks.md) or [PowerShell](windows/convert-unmanaged-to-managed-disks.md) to switch between disk types.
+- You can't migrate a disk to Premium SSD v2 if your original disk was created from an Azure Compute Gallery image.
 
 ## Change the type of an individual managed disk
 
@@ -270,7 +272,7 @@ az disk-encryption-set update --name "nameOfYourDiskEncryptionSetHere" --resourc
 
 [!INCLUDE [managed-disk-premium-ssd-v2-conversion-preview](./includes/managed-disk-premium-ssd-v2-conversion-preview.md)]
 
-Currently, you can only migrate an existing disk to either a Premium SSD v2 or an Ultra Disk through snapshots stored on Standard Storage (Incremental Standard HDD Snapshot). Migration with snapshots stored on Premium storage and other options isn't supported. Migration via snapshot from Premium SSD v2 or Ultra Disk to Premium SSD v1, Standard SSD and Standard HDD is not supported.
+Premium SSD, Standard SSD, and Standard HDD disks support both incremental and full snapshots. However, migration using full snapshots is not supported for these disk types. To create Premium SSD v2 or Ultra disks from a snapshot, you must use incremental snapshots.
 
 Both Premium SSD v2 disks and Ultra Disks have their own set of restrictions. For example, neither can be used as an OS disk, and also aren't available in all regions. See the [Premium SSD v2 limitations](disks-deploy-premium-v2.md#limitations) and [Ultra Disk GA scope and limitations](disks-enable-ultra-ssd.md#ga-scope-and-limitations) sections of their articles for more information.
 

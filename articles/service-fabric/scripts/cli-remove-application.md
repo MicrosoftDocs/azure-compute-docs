@@ -9,6 +9,7 @@ ms.topic: sample
 ms.date: 12/06/2017
 ms.author: atsenthi
 ms.custom: mvc
+# Customer intent: As a cloud administrator, I want to remove an application from a Service Fabric cluster using a script, so that I can efficiently manage application instances and free up resources in the cloud environment.
 ---
 
 # Remove an application from a Service Fabric cluster using the Service Fabric CLI

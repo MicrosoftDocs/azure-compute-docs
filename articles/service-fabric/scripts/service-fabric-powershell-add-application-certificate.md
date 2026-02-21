@@ -9,11 +9,12 @@ ms.topic: sample
 ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc, devx-track-azurepowershell
+# Customer intent: As a cloud administrator, I want to automate the process of adding application certificates to a Service Fabric cluster, so that I can enhance security and manage secrets efficiently across my virtual machine scale sets.
 ---
 
 # Add an application certificate to a Service Fabric cluster
 
-This sample script walks through how to create a certificate in Key Vault and then deploy it to one of the virtual machine scale sets your cluster runs on. This scenario does not use Service Fabric directly, but rather depends on Key Vault and on virtual machine scale sets.
+This sample Azure PowerShell script walks through how to create a certificate in Key Vault and then deploy it to one of the virtual machine scale sets your cluster runs on. This scenario does not use Service Fabric directly, but rather depends on Key Vault and on virtual machine scale sets.
 
 [!INCLUDE [updated-for-az](~/reusable-content/ce-skilling/azure/includes/updated-for-az.md)]
 

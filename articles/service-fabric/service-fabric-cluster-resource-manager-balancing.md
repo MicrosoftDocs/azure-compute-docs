@@ -1,12 +1,14 @@
 ---
 title: Balance your Azure Service Fabric cluster 
 description: An introduction to balancing your cluster with the Service Fabric Cluster Resource Manager.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+ms.update-cycle: 1095-days
+# Customer intent: As a cloud administrator, I want to configure the Service Fabric Cluster Resource Manager's balancing settings, so that I can optimize resource distribution and ensure efficient cluster operation based on changing workloads.
 ---
 
 # Balancing your service fabric cluster

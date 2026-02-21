@@ -1,14 +1,15 @@
 ---
 title: Networking for Azure Virtual Machine Scale Sets
 description: How to configuration some of the more advanced networking properties for Azure Virtual Machine Scale Sets.
-author: ju-shim
-ms.author: jushiman
+author: cynthn
+ms.author: cynthn
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: networking
 ms.date: 06/14/2024
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurepowershell, devx-track-azurecli
+# Customer intent: As a cloud architect, I want to configure advanced networking features for Azure Virtual Machine Scale Sets, so that I can optimize network performance and security for my applications.
 ---
 
 # Networking for Azure Virtual Machine Scale Sets
@@ -52,7 +53,10 @@ To add a scale set to the backend pool of an Application Gateway, reference the 
 When adding Uniform Virtual Machine Scale Sets to an Application Gateway's backend pool, the process will differ for new or existing scale sets:
 
 - For new scale sets, reference the Application Gateway's backend pool ID in your scale set model's network profile, under one or more network interface IP configurations. When deployed, instances added to your scale set will be placed in the Application Gateway's backend pool. 
-- For existing scale sets, first add the Application Gateway's backend pool ID in your scale set model's network profile, then apply the model your existing instances by an upgrade. If the scale set's upgrade policy is `Automatic` or `Rolling`, instances will be updated for you. If it is `Manual`, you need to upgrade the instances manually. 
+- For existing scale sets, first add the Application Gateway's backend pool ID in your scale set model's network profile, then apply the model your existing instances by an upgrade. If the scale set's upgrade policy is `Automatic` or `Rolling`, instances will be updated for you. If it is `Manual`, you need to upgrade the instances manually.
+
+> [!NOTE]
+> The application gateway must be in the same virtual network as the scale set, but it must be in a different subnet than the scale set.
 
 #### [Portal](#tab/portal1)
 
@@ -221,9 +225,9 @@ Note when Virtual Machine Scale Sets with public IPs per instance are created wi
 
 Example template using a Basic Load Balancer: [vmss-public-ip-linux](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vmss-public-ip-linux)
 
-Alternatively, a [Public IP Prefix](/azure/virtual-network/ip-services/public-ip-address-prefix) (a contiguous block of Standard SKU Public IPs) can be used to generate instance-level IPs in a Virtual Machine Scale Set. The zonal properties of the prefix will be passed to the instance IPs, though they will not be shown in the output.
+Alternatively, a [Public IP Prefix](/azure/virtual-network/ip-services/public-ip-address-prefix) (a contiguous block of Standard SKU Public IPs) can be used to generate instance-level IPs in a Virtual Machine Scale Set. The availability zone properties of the prefix will be passed to the instance IPs, though they will not be shown in the output.
 
-Example template using a Public IP Prefix: [vmms-with-public-ip-prefix](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vmss-with-public-ip-prefix)
+Example template using a Public IP Prefix: [vmss-with-public-ip-prefix](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vmss-with-public-ip-prefix)
 
 ### Querying the public IP addresses of the virtual machines in a scale set
 To list the public IP addresses assigned to scale set virtual machines using the CLI, use the **az vmss list-instance-public-ips** command.

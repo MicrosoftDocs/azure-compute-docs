@@ -8,6 +8,7 @@ ms.topic: sample
 ms.date: 02/23/2022
 ms.author: rogarana
 ms.custom: mvc, devx-track-azurecli
+# Customer intent: "As a cloud engineer, I want to copy a managed snapshot to a storage account in a different region using the CLI, so that I can maintain backups for disaster recovery and ensure data availability across regions."
 ---
 
 # Export/Copy a snapshot to a storage account in different region with CLI

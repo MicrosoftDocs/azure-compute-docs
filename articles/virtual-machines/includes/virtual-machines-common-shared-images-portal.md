@@ -2,12 +2,13 @@
  title: include file
  description: include file
  services: virtual-machines
-author: jushiman
+author: cynthnan
  ms.service: virtual-machines
  ms.topic: include
  ms.date: 11/06/2019
-ms.author: jushiman
+ms.author: cynthn
  ms.custom: include file
+# Customer intent: As a cloud administrator, I want to create and manage shared image galleries and definitions, so that I can efficiently organize and replicate VM images across different regions for deployment.
 ---
 
 

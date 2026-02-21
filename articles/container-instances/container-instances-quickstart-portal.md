@@ -6,8 +6,13 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
-ms.date: 08/29/2024
-ms.custom: mvc, mode-ui
+ms.date: 11/17/2025
+ms.update-cycle: 180-days
+ms.custom:
+  - mvc
+  - mode-ui
+  - sfi-image-nochange
+# Customer intent: "As a developer, I want to quickly deploy a containerized web application using the cloud portal, so that I can easily run and manage my application without the complexity of a full container orchestration platform."
 ---
 
 # Quickstart: Deploy a container instance in Azure using the Azure portal
@@ -45,6 +50,11 @@ On the **Basics** page, choose a subscription and enter the following values for
 
 > [!NOTE]
 > For this quickstart, you use default settings to deploy the public Microsoft `aci-helloworld:latest` image. This sample Linux image packages a small web app written in Node.js that serves a static HTML page. You can also bring your own container images stored in Azure Container Registry, Docker Hub, or other registries.
+
+To [deploy the container into a specific availability zone](/azure/reliability/reliability-container-instances#availability-zone-support), for **Availability zones**, select the logical zone where you want the container to be deployed. If you don't need it to run in a specific zone, keep the default *None* value. 
+
+> [!IMPORTANT]
+> Zonal deployments are only available in regions that support availability zones. To see if your region supports availability zones, see [Azure Regions List](/azure/reliability/regions-list).
 
 Leave the other values as their defaults, then select **Next: Networking**.
 

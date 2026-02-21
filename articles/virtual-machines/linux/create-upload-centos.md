@@ -9,13 +9,10 @@ ms.topic: how-to
 ms.date: 12/14/2022
 ms.author: vakavuru
 ms.reviewer: mattmcinnes
+# Customer intent: As a system administrator, I want to create and configure a CentOS-based virtual hard disk for Azure, so that I can deploy consistent virtual machines that meet organizational requirements.
 ---
 
 # Prepare a CentOS-based virtual machine for Azure
-
-> [!CAUTION]
->
-> This article references CentOS, a Linux distribution that's nearing end-of-life (EOL) status. Consider your use and plan accordingly. For more information, see the [CentOS end-of-life guidance](~/articles/virtual-machines/workloads/centos/centos-end-of-life.md).
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Flexible scale sets
 
@@ -23,6 +20,10 @@ Learn to create and upload an Azure virtual hard disk (VHD) that contains a Cent
 
 * [Prepare a CentOS 6.x virtual machine (VM) for Azure](#centos-6x)
 * [Prepare a CentOS 7.0+ VM for Azure](#centos-70)
+
+> [!CAUTION]
+>
+> This article references CentOS, a Linux distribution that's nearing end-of-life (EOL) status. Consider your use and plan accordingly. For more information, see the [CentOS end-of-life guidance](~/articles/virtual-machines/workloads/centos/centos-end-of-life.md).
 
 ## Prerequisites
 

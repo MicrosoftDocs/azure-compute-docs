@@ -9,6 +9,7 @@ ms.subservice: sizes
 ms.date: 04/18/2024
 ms.author: mattmcinnes
 ms.custom: include file
+# Customer intent: As a cloud architect, I want to access the specifications for ECasv5 and ECadsv5 VM sizes, so that I can choose the appropriate virtual machine configuration for my workload requirements.
 ---
 | Part | Quantity <br><sup>Count <sup>Units | Specs <br><sup>SKU ID, Performance <sup>Units</sup>, etc.  |
 |---|---|---|

@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a developer troubleshooting my local Azure Service Fabric cluster, I want to understand common setup and connection errors, so that I can resolve issues quickly and ensure smooth application deployment.
 ---
 
 # Troubleshoot your local development cluster setup

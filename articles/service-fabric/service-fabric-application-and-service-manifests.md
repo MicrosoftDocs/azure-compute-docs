@@ -1,12 +1,14 @@
 ---
 title: Describing Azure Service Fabric apps and services 
 description: Describes how manifests are used to describe Service Fabric applications and services.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+ms.update-cycle: 1095-days
+# Customer intent: "As a cloud developer, I want to understand how to define and version Service Fabric applications and services using manifests, so that I can effectively manage deployment and configuration across different service instances."
 ---
 
 # Service Fabric application and service manifests

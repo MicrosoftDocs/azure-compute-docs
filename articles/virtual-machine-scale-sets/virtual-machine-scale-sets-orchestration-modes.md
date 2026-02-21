@@ -3,11 +3,12 @@ title: Orchestration modes for Virtual Machine Scale Sets in Azure
 description: Learn how to use Flexible and Uniform orchestration modes for Virtual Machine Scale Sets in Azure.
 author: fitzgeraldsteele
 ms.author: fisteele
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
 ms.date: 06/14/2024
-ms.reviewer: jushiman
+ms.reviewer: cynthn
 ms.custom: mimckitt, devx-track-azurecli, vmss-flex
+# Customer intent: "As a cloud architect, I want to understand the differences between Flexible and Uniform orchestration modes for Virtual Machine Scale Sets, so that I can choose the most suitable option for managing virtual machine instances based on workload requirements and scalability needs."
 ---
 
 # Orchestration modes for Virtual Machine Scale Sets in Azure
@@ -19,24 +20,16 @@ Scale set orchestration modes allow you to have greater control over how virtual
 > [!IMPORTANT]
 > The orchestration mode is defined when you create the scale set and cannot be changed or updated later.
 
-## Scale sets with Uniform orchestration
+## Scale Sets with Flexible Orchestration (Recommended)
+Optimized for high availability and scalability with identical or mixed virtual machine types. Flexible Orchestration is the recommended orchestration mode when deploying scale sets in Azure. 
 
-Optimized for large-scale stateless workloads with identical instances.
-
-Virtual Machine Scale Sets with Uniform orchestration use a virtual machine profile or template to scale up to desired capacity. While there is some ability to manage or customize individual virtual machine instances, Uniform uses identical VM instances. Individual Uniform VM instances are exposed via the Virtual Machine Scale Set VM API commands. Individual instances aren't compatible with the standard Azure IaaS VM API commands, Azure management features such as Azure Resource Manager resource tagging, RBAC permissions, Azure Backup, or Azure Site Recovery. Uniform orchestration provides fault domain high availability guarantees when configured with fewer than 100 instances. Uniform orchestration is generally available and supports a full range of scale set management and orchestration, including metrics-based autoscaling, instance protection, and automatic OS upgrades.
+Flexible orchestration provides a unified experience across the Azure VM ecosystem while offering enhanced availability guarantees (up to 1,000 VMs). VMs are automatically distributed across Availability Zone or fault domains within a region ensuring resilience for both stateless and stateful applications. Flexible orchestration supports a broad range of workloads, including quorum-based applications, open-source databases, and high-availability services. Additionally, it allows for dynamic instance mixing, enabling the use of different VM types, as well as a combination of Spot and on-demand instances, for optimized performance and cost efficiency. Flexible orchestration supports all key scale set features such as metrics-based autoscaling, instance protection, standby pools, upgrade policies, and more.
 
 
-## Scale sets with Flexible orchestration
+## Scale Sets with Uniform Orchestration
+Optimized for large-scale workloads with identical virtual machine instances.
 
-Achieve high availability at scale with identical or multiple virtual machine types.
-
-With Flexible orchestration, Azure provides a unified experience across the Azure VM ecosystem. Flexible orchestration offers high availability guarantees (up to 1000 VMs) by spreading VMs across fault domains in a region or within an Availability Zone. This enables you to scale out your application while maintaining fault domain isolation that is essential to run quorum-based or stateful workloads, including:
-- Quorum-based workloads
-- Open-Source databases
-- Stateful applications
-- Services that require High Availability and large scale
-- Services that want to mix virtual machine types or Spot and on-demand VMs together
-- Existing Availability Set applications
+Uniform orchestration ensures consistency by using a predefined virtual machine profile to deploy identical instances within a scale set. While some customization of individual VMs is possible, Uniform orchestration primarily manages VMs as a group. Individual instances are accessible via Virtual Machine Scale Set VM API commands but lack compatibility with standard Azure IaaS VM API commands, Azure Resource Manager tagging, RBAC, Azure Backup, or Azure Site Recovery. Uniform orchestration supports key scale set features, including metrics-based autoscaling, instance protection, and automatic OS upgrades.
 
 
 ## What has changed with Flexible orchestration mode?
@@ -52,7 +45,7 @@ Flexible orchestration mode can be used with all VM sizes. Flexible orchestratio
 | Mix operating systems | Yes | Yes |
 | Mix Spot and On-demand instances | Yes | No | 
 | Mix General Purpose and Specialty SKU Types | Yes (`FDCount = 1`) | No | 
-| Maximum Fault Domain Count | Regional – 3 (depending on the regional fault domain max count) <br> Zonal – 1  | Regional – 3 <br> Zonal – 1  |
+| Maximum Fault Domain Count | Regional (nonzonal) – 3 (depending on the region's fault domain max count) <br> Zone-spanning and zonal – 1  | Regional (nonzonal) – 3 <br> Zone-spanning and zonal – 1  |
 | Spread instances across zones | Yes | Yes | 
 | Assign VM to a Specific Zone | Yes | Yes | 
 | Assign VM to a Specific Fault domain | Yes | No | 
@@ -172,7 +165,7 @@ The following table compares the Flexible orchestration mode, Uniform orchestrat
 | Availability Zones | Specify instances land across 1, 2 or 3 availability zones | Specify instances land across 1, 2 or 3 availability zones | Not supported |
 | Assign VM to a Specific Availability Zone | Yes | No | No |
 | Fault Domain – Max Spreading (Azure will maximally spread instances) | Yes | Yes | No |
-| Fault Domain – Fixed Spreading | 2-3 FDs (depending on regional maximum FD Count); 1 for zonal deployments | 2, 3, 5 FDs; 1, 5 for zonal deployments | 2-3 FDs (depending on regional maximum FD Count) |
+| Fault Domain – Fixed Spreading | 2-3 FDs (depending on region's maximum FD Count); 1 for zone-spanning and zonal deployments | 2, 3, 5 FDs; 1, 5 for zone-spanning and zonal deployments | 2-3 FDs (depending on region's maximum FD Count) |
 | Assign VM to a Specific Fault Domain | Yes | No | No |
 | Update Domains | Depreciated (platform maintenance performed FD by FD) | 5 update domains | Up to 20 update domains |
 | Perform Maintenance | Trigger maintenance on each instance using VM API | Yes | N/A |

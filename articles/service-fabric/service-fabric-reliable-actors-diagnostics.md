@@ -1,12 +1,14 @@
 ---
 title: Actors diagnostics and monitoring
 description: This article describes the diagnostics and performance monitoring features in the Service Fabric Reliable Actors runtime, including the events and performance counters emitted by it.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+ms.update-cycle: 1095-days
+# Customer intent: "As a developer implementing Reliable Actors, I want to monitor diagnostics and performance metrics, so that I can troubleshoot issues and optimize the runtime's behavior effectively."
 ---
 
 # Diagnostics and performance monitoring for Reliable Actors

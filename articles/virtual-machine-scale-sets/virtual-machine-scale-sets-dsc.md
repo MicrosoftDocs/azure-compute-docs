@@ -1,8 +1,8 @@
 ---
 title: Using Desired State Configuration With Virtual Machine Scale Sets
 description: Using Virtual Machine Scale Sets with the Azure Desired State Configuration Extension to configure virtual machines.
-author: ju-shim
-ms.author: jushiman
+author: cynthn
+ms.author: cynthn
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: extensions
@@ -10,10 +10,20 @@ ms.date: 06/14/2024
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 
+# Customer intent: As a cloud administrator, I want to use the Desired State Configuration with Virtual Machine Scale Sets, so that I can automate the configuration and management of multiple virtual machines efficiently as they scale.
 ---
 # Using Virtual Machine Scale Sets with the Azure DSC Extension
 
 [Virtual Machine Scale Sets](./overview.md) can be used with the [Azure Desired State Configuration (DSC)](../virtual-machines/extensions/dsc-overview.md?toc=/azure/virtual-machines/windows/toc.json) extension handler. Virtual Machine Scale Sets provide a way to deploy and manage large numbers of virtual machines, and can elastically scale in and out in response to load. DSC is used to configure the VMs as they come online so they are running the production software.
+
+> [!NOTE]
+> DSC extension will be retired on March 31, 2028. Please transition to
+> [Azure Machine Configuration](/azure/governance/machine-configuration/overview) by that date.
+> For more information, see the [blog post](https://azure.microsoft.com/updates/?id=485828)
+> announcement. The Azure Machine Configuration service combines certain features of DSC Extension, Azure
+> Automation State Configuration, and commonly requested features from customer feedback.
+> Azure Machine Configuration also includes hybrid machine support through
+> [Arc-enabled servers](/azure/azure-arc/servers/overview).
 
 ## Differences between deploying to Virtual Machines and Virtual Machine Scale Sets
 The underlying template structure for a Virtual Machine Scale Set is slightly different from a single VM. Specifically, a single VM deploys extensions under the "virtualMachines" node. There is an entry of type "extensions" where DSC is added to the template

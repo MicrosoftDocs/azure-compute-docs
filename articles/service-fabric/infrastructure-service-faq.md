@@ -1,12 +1,13 @@
 ---
 title: Introduction to the Service Fabric Infrastructure Service
 description: Frequently asked questions about Service Fabric Infrastructure Service
-ms.topic: conceptual
+ms.topic: faq
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a cloud infrastructure administrator, I want to understand the functionality and management of the Infrastructure Service in Azure Service Fabric, so that I can safely perform updates and maintain the health of my virtual machine clusters.
 ---
 
 # Introduction to the Service Fabric Infrastructure Service

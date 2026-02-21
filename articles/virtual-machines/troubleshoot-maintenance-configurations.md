@@ -4,9 +4,10 @@ description: This article provides details on known and fixed issues and how to 
 author: ApnaLakshay
 ms.service: azure-virtual-machines
 ms.subservice: maintenance
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 10/13/2023
 ms.author: lnagpal
+# Customer intent: "As a cloud administrator, I want to troubleshoot issues with Maintenance Configurations for virtual machines, so that I can ensure scheduled patches and updates are applied efficiently without errors."
 ---
 
 # Troubleshoot problems with Maintenance Configurations
@@ -21,7 +22,9 @@ A maintenance configuration doesn't install a scheduled patch on the VMs and giv
 
 #### Resolution
 
-In a static scope, it's crucial to avoid relying on outdated VM configurations. So, you have to ensure that the VM is up and running while the patch is getting installed. If the VM instance is recreated with the same name then prioritize reassigning configuration after you re-create VM instance.
+In a static scope, it's essential to avoid relying on outdated VM configurations. Therefore, it's imperative to ensure that the VM is up and running while the patch is being installed. **If the VM instance is recreated with the same name, it's crucial to prioritize reassigning the configuration after the VM instance is recreated.**
+
+**The system will automatically perform this action within 12 hours of recreation if not performed by the user.** If the maintenance configuration of the attached recreated VM is triggered within 12 hours of recreating the VM with the same name, a `ShutdownOrUnresponsive` error is displayed. Therefore, it's recommended to either perform the previously mentioned action or wait for 12 hours before applying the patch to the machine via maintenance configuration.  
 
 ### Scheduled patching times out or fails
 
@@ -31,7 +34,10 @@ Scheduled patching fails with a `TimeOut` or `Failed` error after you move a VM 
 
 #### Resolution
 
-This is a known bug, and we're working on resolving it. If you encounter this problem, contact the support team for assistance.
+If the VM instance is recreated with the same name, it's crucial to prioritize reassigning the configuration after the VM instance is recreated in a different region.
+
+**The system will automatically perform this action within 12 hours of recreation if not performed by the user.** If the maintenance configuration of the attached recreated VM is triggered within 12 hours of recreating the VM with the same name, a `TimeOut` or `Failed` error is displayed. Therefore, it's recommended to either perform the previously mentioned action or wait for 12 hours before applying the patch to the machine via maintenance configuration.  
+
 
 ### Unable to delete configuration assignment
 
@@ -46,7 +52,7 @@ Use the following steps to mitigate this issue:
 1. Delete the existing maintenance configuration in which you are encountering this issue.
 1. Create a new maintenance configuration and assign the required set of dynamic scope and VMs as attached in the deleted maintenance configuration.
 
-If you want to create new maintenance configuration with the same name as the deleted maintenance configuration, you will have to wait 20 minutes for the cleanup to take place in the backend. The system won't allow the creation of maintenance configuration with the same name if cleanup is not performed in the backend. 
+If you want to create new maintenance configuration with the same name as the deleted maintenance configuration, you will have to wait 20 minutes for the cleanup to take place in the backend. The system doesn't allow the creation of maintenance configuration with the same name if cleanup isn't performed in the backend. 
 
 ### Scheduled patching stops working after the resource is moved
 
@@ -56,7 +62,7 @@ If you move a resource to a different resource group or subscription, scheduled 
 
 #### Resolution
 
-The system currently doesn't support moving resources across resource groups or subscriptions. As a workaround, use the following steps for the resource that you want to move. **As a pre requisite, first remove the assignment before following the steps.** 
+The system currently doesn't support moving resources across resource groups or subscriptions. As a workaround, use the following steps for the resource that you want to move. **As a prerequisite, first remove the assignment before following the steps.** 
 
 If you're using a `static` scope:
 
@@ -69,7 +75,7 @@ If you're using a `dynamic` scope:
 1. Move the resource to a different resource group or subscription.
 1. Re-create the resource assignment.
 
-If any of the steps are missed, please move the resource to the previous resource group or subscription ID and reattempt the steps.
+If any of the steps are missed, move the resource to the previous resource group or subscription ID and reattempt the steps.
 
 > [!NOTE]
 > If the resource group is deleted, recreate it with the same name. If the subscription ID is deleted, reach out to the support team for mitigation.
@@ -82,7 +88,7 @@ After creating a Maintenance Configuration with a repeat value of either week or
 
 #### Resolution
 
-The Maintenance Configuration first run occurs on the first recurrence value following the specified start date, not necessarily on the start date itself. For example, if the maintenance configuration starts on January 17th (Wednesday) and is set to recur every Monday, the first run of the schedule will be on the first Monday after January 17th, which is January 22nd.
+The Maintenance Configuration first run occurs on the first recurrence value following the specified start date, not necessarily on the start date itself. For example, if the maintenance configuration starts on January 17 (Wednesday) and is set to recur every Monday, the first run of the schedule will be on the first Monday after January 17, which is January 22.
 
 You can view first 4 instances of the scheduled run when creating a new maintenance configuration from Azure Portal.
 
@@ -97,7 +103,7 @@ You can't create a dynamic scope because of role-based access control (RBAC).
 To create a dynamic scope, you must have the permission at the subscription level or at the resource group level. Specifically, following are the requirements you need to take care of.
 
 1. The subscription under which dynamic scope is getting created should be registered to Maintenance RP.
-1. It is recommended to have the 'Scheduled Patching Contributor' role to be assigned to the following scopes:
+1. It's recommended to have the 'Scheduled Patching Contributor' role to be assigned to the following scopes:
     1. The subscription/resource group at which the dynamic scope is being created.
     1. The maintenance configuration scope.
 
@@ -123,7 +129,8 @@ A maintenance configuration doesn't block the update of a dedicated host, and th
 
 #### Resolution
 
-If you re-create a dedicated host with the same name, Maintenance Configurations retains the old dedicated host ID, which prevents it from blocking updates. You can resolve this problem by removing the maintenance configuration and reassigning it. If the problem persists, contact the support team for assistance.
+If you re-create a dedicated host with the same name, Maintenance Configurations retains the old dedicated host ID, which prevents it from blocking updates. You can resolve this problem by removing the maintenance configuration and reassigning it.
+**The system will automatically perform this action within 12 hours of recreation if not performed by the user.** It's recommended to either perform the previously mentioned action or wait for 12 hours before this action is performed automatically.
 
 ### A schedule isn't triggered
 
@@ -153,7 +160,7 @@ Dynamic scope flattening fails because of throttling, and the service can't dete
 
 #### Resolution
 
-Make sure that the number of subscriptions per dynamic scope is not more than 200. [Learn more about the service limits of dynamic scoping](../virtual-machines/maintenance-configurations.md#service-limits).
+Make sure that the number of subscriptions per dynamic scope isn't more than 200. [Learn more about the service limits of dynamic scoping](../virtual-machines/maintenance-configurations.md#service-limits).
 
 ### Configuration assignment of a dedicated host isn't cleaned up after the host's removal
 
@@ -165,7 +172,7 @@ After you delete the dedicated hosts, configuration assignments that are attache
 
 Before you delete a dedicated host, be sure to delete the maintenance configuration that's associated with it. If the dedicated host is deleted but still appears in the portal, contact the support team for assistance. Cleanup processes are currently in place for dedicated hosts, to help prevent any impact on customers.
 
-### You can't provide multiple tag values for dynamic scopes
+### Can't provide multiple tag values for dynamic scopes
 
 #### Problem
 
@@ -203,7 +210,29 @@ A newly created maintenance configuration with the same name as a previously del
 
 #### Resolution
 
-Ensure a minimum wait time of 20 minutes between deleting a maintenance configuration and creating a new one with the same name.
+Ensure a minimum wait time of 20 minutes between deleting a maintenance configuration and creating a new one with the same name. If the problem persists, contact the support team for assistance.
+
+### Maintenance assignment fails with `InternalServerError` error
+
+#### Problem
+
+Maintenance assignment fails with `InternalServerError` when using either bicep template or MRP API. The assignment can be done successfully using either portal or CLI or PowerShell.
+
+#### Resolution
+
+It is recommended to use the location/region in a normalized form for the bicep template and MRP API. The normalized form involves removing whitespace and converting the text to lowercase. For example, `EAST US 2` will result in an internal server error, whereas `eastus2` will be processed successfully.
+
+### Workload isolation in maintenance configuration
+
+#### Problem
+
+Unexpected outage due to assumption of maintenance configuration respecting workload isolation
+
+#### Resolution
+
+Maintenance configurations will initiate updates on all resources associated with it simultaneously. Customers have the flexibility to decide on the isolation and maintenance windows for their workloads. They can create single or multiple maintenance configurations based on the isolation that is optimal for their workloads.
+
+For example, if a customer wants to isolate updates for their development environment resources from the production environment resources, they can create separate maintenance configurations for each environment. This way, workloads in maintenance configuration with development resources are updated first, while the remaining workloads are updated in another configuration that does not overlap. This approach allows customers to control workload isolation and manage updates independently. 
 
 ### Maintenance Configurations doesn't support an API
 

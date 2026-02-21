@@ -4,10 +4,11 @@ description: Information on and specifications of the Lsv2-series sizes
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 07/31/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
+# Customer intent: "As an IT infrastructure planner, I want to review the specifications and feature support of the Lsv2-series virtual machines, so that I can determine the appropriate VM size for my organization's performance and storage requirements."
 ---
 
 # Lsv2 sizes series

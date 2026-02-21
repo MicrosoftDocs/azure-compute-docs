@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a cloud administrator, I want to configure autoscaling for Service Fabric managed clusters, so that I can optimize resource allocation and reduce management overhead based on workload demand.
 ---
 
 # Introduction to Autoscaling on Service Fabric managed clusters

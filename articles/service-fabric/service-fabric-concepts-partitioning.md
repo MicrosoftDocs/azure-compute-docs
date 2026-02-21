@@ -1,12 +1,14 @@
 ---
 title: Partitioning Service Fabric services 
 description: Learn how to partition Service Fabric stateless and stateful services
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+ms.update-cycle: 1095-days
+# Customer intent: As a cloud developer, I want to implement partitioning for my stateful services in a service mesh environment, so that I can optimize data storage and compute resources to enhance application scalability and performance.
 ---
 
 # Partition Service Fabric reliable services

@@ -4,10 +4,11 @@ description: This topic provides an overview of running scripts within an Azure 
 ms.service: azure-virtual-machines
 ms.custom: linux-related-content
 author: nikhilpatel909
-ms.author: jushiman
+ms.author: cynthn
 ms.date: 03/10/2023
 ms.topic: how-to
 ms.reviewer: jushiman
+# Customer intent: As a system administrator, I want to utilize Run Command to execute scripts on Azure VMs, so that I can efficiently manage, diagnose, and automate tasks within my virtual machine environment.
 ---
 
 # Run scripts in your VM by using Run Command

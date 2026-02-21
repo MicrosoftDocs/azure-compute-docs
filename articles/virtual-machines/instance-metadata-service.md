@@ -1,14 +1,15 @@
 ---
 title: Azure Instance Metadata Service for virtual machines
-description: Learn about the Azure Instance Metadata Service and how it provides information about currently running virtual machine instances in Linux.
+description: Learn about the Azure Instance Metadata Service and how it provides information about currently running virtual machine instances.
 author: KumariSupriya
 manager: paulmey
 ms.service: azure-virtual-machines
 ms.topic: how-to
 ms.custom: linux-related-content
-ms.date: 04/11/2023
+ms.date: 07/29/2025
 ms.author: frdavid
 ms.reviewer: azmetadatadev
+# Customer intent: "As a cloud administrator, I want to access the Azure Instance Metadata Service from my virtual machine, so that I can retrieve configuration and runtime information about the VM for management and automation purposes."
 ---
 
 # Azure Instance Metadata Service
@@ -38,12 +39,12 @@ Here's sample code to retrieve all metadata for an instance. To access a specifi
 > This example bypasses proxies. You **must** bypass proxies when querying IMDS. See [Proxies](#proxies) for additional information.
 
 > [!NOTE]
-> IMDS requests must be sent using VM's primary NIC and primary IP, and DHCP must be enabled.
+> IMDS requests must be sent using the VM's primary NIC and primary IP, and DHCP must be enabled.
 
 #### [Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance?api-version=2021-02-01" | ConvertTo-Json -Depth 64
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance?api-version=2025-04-07" | ConvertTo-Json -Depth 64
 ```
 
 `-NoProxy` requires PowerShell V6 or greater. See our [samples repository](https://github.com/microsoft/azureimds) for examples with older PowerShell versions.
@@ -51,7 +52,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http:
 #### [Linux](#tab/linux/)
 
 ```bash
-curl -s -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?api-version=2021-02-01" | jq
+curl -s -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?api-version=2025-04-07" | jq
 ```
 
 The `jq` utility is available in many cases, but not all. If the `jq` utility is missing, use `| python -m json.tool` instead.
@@ -61,7 +62,7 @@ The `jq` utility is available in many cases, but not all. If the `jq` utility is
 **Response**
 
 > [!NOTE]
-> The response is a JSON string. The following example response is pretty-printed for readability.
+> The response is a JSON string. The following example response is formatted for readability.
 
 [!INCLUDE [imds-full-instance-response](./includes/imds-full-instance-response.md)]
 
@@ -110,14 +111,14 @@ Endpoints may support required and/or optional parameters. See [Schema](#schema)
 IMDS endpoints support HTTP query string parameters. For example:
 
 ```URL
-http://169.254.169.254/metadata/instance/compute?api-version=2021-01-01&format=json
+http://169.254.169.254/metadata/instance/compute?api-version=2025-04-07&format=json
 ```
 
 Specifies the parameters:
 
 | Name | Value |
 |------|-------|
-| `api-version` | `2021-01-01`
+| `api-version` | `2025-04-07`
 | `format` | `json`
 
 Requests with duplicate query parameter names will be rejected.
@@ -151,8 +152,9 @@ For example, `/metadata/instance` returns the json object:
                     }]
                 },
                 "ipv6": {
-                    "ipAddress": [
-                     ]
+                    "ipAddress": [{
+                        "privateIpAddress": "b4bc:8fce:f33b:4990:cced:d94e:ab4f:6ea0"
+                    }]
                 },
                 "macAddress": "0011AAFFBB22"
             },
@@ -189,8 +191,9 @@ would filter to the first element from the `Network.interface` property and retu
         }]
     },
     "ipv6": {
-        "ipAddress": [
-         ]
+        "ipAddress": [{
+            "privateIpAddress": "b4bc:8fce:f33b:4990:cced:d94e:ab4f:6ea0"
+        }]
     },
     "macAddress": "0011AAFFBB22"
 }
@@ -210,13 +213,13 @@ To access a non-default response format, specify the requested format as a query
 #### [Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance?api-version=2025-04-07&format=text"
 ```
 
 #### [Linux](#tab/linux/)
 
 ```bash
-curl -s -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
+curl -s -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?api-version=2025-04-07&format=text"
 ```
 
 ---
@@ -233,20 +236,20 @@ When you don't specify a version, you get an error with a list of the newest sup
 
 ```json
 {
-    "error": "Bad request. api-version was not specified in the request. For more information refer to aka.ms/azureimds",
+    "error": "Bad request. api-version is invalid or was not specified in the request. For more information refer to aka.ms/azureimds",
     "newest-versions": [
-        "2020-10-01",
-        "2020-09-01",
-        "2020-07-15"
+        "2025-04-07",
+        "2024-07-17",
+        "2024-03-15"
     ]
 }
 ```
 
 #### Supported API versions
 
-> [!NOTE]
-> Version 2023-11-15 is still being rolled out, it may not be available in some regions.
-
+- 2025-04-07
+- 2024-07-17
+- 2024-03-15
 - 2023-11-15
 - 2023-07-01
 - 2021-12-13
@@ -282,7 +285,7 @@ When you don't specify a version, you get an error with a list of the newest sup
 
 ### Swagger
 
-A full Swagger definition for IMDS is available at: https://github.com/Azure/azure-rest-api-specs/blob/main/specification/imds/data-plane/readme.md
+A full Swagger definition for IMDS is available at: https://github.com/Azure/azure-rest-api-specs/blob/main/specification/imds/data-plane/InstanceMetadataService/readme.md
 
 ## Regional availability
 
@@ -483,11 +486,11 @@ If there's [no local temp disk for the VM](azure-vms-no-temp-disk.yml), this val
 
 | Data | Description | Version introduced |
 |------|-------------|--------------------|
-| `ipv4.privateIpAddress` | Local IPv4 address of the VM | 2017-04-02
-| `ipv4.publicIpAddress` | Public IPv4 address of the VM | 2017-04-02
-| `subnet.address` | Subnet address of the VM | 2017-04-02
-| `subnet.prefix` | Subnet prefix, example 24 | 2017-04-02
-| `ipv6.ipAddress` | Local IPv6 address of the VM | 2017-04-02
+| `ipv4.ipAddress.privateIpAddress` | Local IPv4 address of the VM | 2017-04-02
+| `ipv4.ipAddress.publicIpAddress` | Public IPv4 address of the VM | 2017-04-02
+| `ipv4.subnet.address` | Subnet address of the VM | 2017-04-02
+| `ipv4.subnet.prefix` | Subnet prefix, example 24 | 2017-04-02
+| `ipv6.ipAddress.privateIpAddress` | Local IPv6 address of the VM | 2017-04-02
 | `macAddress` | VM mac address | 2017-04-02
 
 > [!NOTE]
@@ -505,14 +508,14 @@ To set up user data, utilize the quickstart template [here](https://aka.ms/ImdsU
 #### [Windows](#tab/windows/)
 
 ```powershell
-$userData = Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute/userData?api-version=2021-01-01&format=text"
+$userData = Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute/userData?api-version=2025-04-07&format=text"
 [System.Text.Encoding]::UTF8.GetString([Convert]::FromBase64String($userData))
 ```
 
 #### [Linux](#tab/linux/)
 
 ```bash
-curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/userData?api-version=2021-01-01&format=text" | base64 --decode
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/userData?api-version=2025-04-07&format=text" | base64 --decode
 ```
 
 ---
@@ -526,13 +529,13 @@ As a service provider, you may require to track the number of VMs running your s
 #### [Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute/vmId?api-version=2017-08-01&format=text"
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute/vmId?api-version=2025-04-07&format=text"
 ```
 
 #### [Linux](#tab/linux/)
 
 ```bash
-curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/vmId?api-version=2017-08-01&format=text"
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/vmId?api-version=2025-04-07&format=text"
 ```
 
 ---
@@ -555,13 +558,13 @@ You can query this data directly via IMDS.
 #### [Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute/platformFaultDomain?api-version=2017-08-01&format=text"
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute/platformFaultDomain?api-version=2025-04-07&format=text"
 ```
 
 #### [Linux](#tab/linux/)
 
 ```bash
-curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/platformFaultDomain?api-version=2017-08-01&format=text"
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/platformFaultDomain?api-version=2025-04-07&format=text"
 ```
 
 ---
@@ -582,13 +585,13 @@ Tags may have been applied to your Azure VM to logically organize them into a ta
 #### [Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute/tags?api-version=2017-08-01&format=text"
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute/tags?api-version=2025-04-07&format=text"
 ```
 
 #### [Linux](#tab/linux/)
 
 ```bash
-curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/tags?api-version=2017-08-01&format=text"
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/tags?api-version=2025-04-07&format=text"
 ```
 
 ---
@@ -606,13 +609,13 @@ The `tags` field is a string with the tags delimited by semicolons. This output 
 #### [Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04" | ConvertTo-Json -Depth 64
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2025-04-07" | ConvertTo-Json -Depth 64
 ```
 
 #### [Linux](#tab/linux/)
 
 ```bash
-curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04" | jq
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2025-04-07" | jq
 ```
 
 The `jq` utility is available in many cases, but not all. If the `jq` utility is missing, use `| python -m json.tool` instead.
@@ -673,13 +676,13 @@ As a service provider, you may get a support call where you would like to know m
 #### [Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute?api-version=2020-09-01" | ConvertTo-Json -Depth 64
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute?api-version=2025-04-07" | ConvertTo-Json -Depth 64
 ```
 
 #### [Linux](#tab/linux/)
 
 ```bash
-curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute?api-version=2020-09-01"
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute?api-version=2025-04-07"
 ```
 
 ---
@@ -986,13 +989,13 @@ Azure has various sovereign clouds like [Azure Government](https://azure.microso
 #### [Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute/azEnvironment?api-version=2018-10-01&format=text"
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute/azEnvironment?api-version=2025-04-07&format=text"
 ```
 
 #### [Linux](#tab/linux/)
 
 ```bash
-curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/azEnvironment?api-version=2018-10-01&format=text"
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/azEnvironment?api-version=2025-04-07&format=text"
 ```
 
 ---
@@ -1019,13 +1022,13 @@ The cloud and the values of the Azure environment are listed here.
 #### [Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/network?api-version=2017-08-01" | ConvertTo-Json  -Depth 64
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/network?api-version=2025-04-07" | ConvertTo-Json  -Depth 64
 ```
 
 #### [Linux](#tab/linux/)
 
 ```bash
-curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/network?api-version=2017-08-01"
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/network?api-version=2025-04-07"
 ```
 
 ---
@@ -1051,7 +1054,9 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/ne
         ]
       },
       "ipv6": {
-        "ipAddress": []
+        "ipAddress": [{
+          "privateIpAddress": "b4bc:8fce:f33b:4990:cced:d94e:ab4f:6ea0"
+        }]
       },
       "macAddress": "000D3AF806EC"
     }
@@ -1064,13 +1069,13 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/ne
 #### [Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/publicIpAddress?api-version=2017-08-01&format=text"
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/publicIpAddress?api-version=2025-04-07&format=text"
 ```
 
 #### [Linux](#tab/linux/)
 
 ```bash
-curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/publicIpAddress?api-version=2017-08-01&format=text"
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/publicIpAddress?api-version=2025-04-07&format=text"
 ```
 
 ---
@@ -1137,7 +1142,7 @@ Example document:
       "publisher":"planPublisher"
    },
    "sku":"Windows-Server-2012-R2-Datacenter",
-   "subscriptionId":"8d10da13-8125-4ba9-a717-bf7490507b3d",
+   "subscriptionId":"aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e",
    "timeStamp":{
       "createdOn":"11/30/20 21:19:19 -0000",
       "expiresOn":"11/30/20 21:19:24 -0000"
@@ -1182,7 +1187,7 @@ Vendors in Azure Marketplace want to ensure that their software is licensed to r
 
 ```powershell
 # Get the signature
-$attestedDoc = Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http://169.254.169.254/metadata/attested/document?api-version=2020-09-01
+$attestedDoc = Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http://169.254.169.254/metadata/attested/document?api-version=2025-04-07
 # Decode the signature
 $signature = [System.Convert]::FromBase64String($attestedDoc.signature)
 ```
@@ -1214,7 +1219,7 @@ $json = $content | ConvertFrom-Json
 
 ```bash
 # Get the signature
-curl --silent -H Metadata:True --noproxy "*" "http://169.254.169.254/metadata/attested/document?api-version=2020-09-01" | jq -r '.["signature"]' > signature
+curl --silent -H Metadata:True --noproxy "*" "http://169.254.169.254/metadata/attested/document?api-version=2025-04-07" | jq -r '.["signature"]' > signature
 # Decode the signature
 base64 -d signature > decodedsignature
 # Get PKCS7 format
@@ -1517,7 +1522,7 @@ If there's a data element not found or a malformed request, the Instance Metadat
 
 ## Support
 
-If you'ren't able to get a metadata response after multiple attempts, you can create a support issue in the Azure portal.
+If you aren't able to get a metadata response after multiple attempts, you can create a support issue in the Azure portal.
 
 ## Product feedback
 

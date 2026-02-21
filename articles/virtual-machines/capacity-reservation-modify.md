@@ -5,9 +5,11 @@ author: bdeforeest
 ms.author: bidefore
 ms.service: azure-virtual-machines
 ms.topic: how-to
+ms.update-cycle: 180-days
 ms.date: 11/22/2022
 ms.reviewer: cynthn, jushiman
-ms.custom: template-how-to, devx-track-azurecli, devx-track-azurepowershell
+ms.custom: template-how-to, devx-track-azurecli, devx-track-azurepowershell, portal
+# Customer intent: "As a cloud administrator, I want to modify the capacity reserved for virtual machines, so that I can efficiently manage resource allocation and ensure optimal performance for my applications."
 ---
 
 # Modify a capacity reservation

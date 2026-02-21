@@ -7,6 +7,7 @@ ms.custom: linux-related-content
 ms.topic: how-to
 ms.date: 04/27/2023
 ms.author: mattmcinnes
+# Customer intent: "As a cloud administrator, I want to generate and manage SSH keys in the cloud portal, so that I can securely connect to and manage my Linux virtual machines effectively."
 ---
 
 # Generate and store SSH keys in the Azure portal

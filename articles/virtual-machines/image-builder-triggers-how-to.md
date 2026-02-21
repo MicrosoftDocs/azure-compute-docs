@@ -9,6 +9,7 @@ ms.subservice: image-builder
 ms.topic: how-to
 ms.date: 11/10/2023
 ms.custom: template-how-to-pattern, devx-track-azurecli
+# Customer intent: As a cloud engineer, I want to set up automatic image creation using triggers in the image builder service, so that I can streamline my build pipeline and ensure images are updated without manual intervention.
 ---
 
 # How to enable Automatic Image Creation with Azure Image Builder triggers
@@ -64,10 +65,10 @@ First, you need to set some variables that you'll repeatedly use in commands.
 ```azurecli-interactive
 # Resource group name - ibTriggersTestRG in this example
 resourceGroupName=ibTriggersRG
-# Datacenter location - West US 2 in this example
-location=westus2
-# Additional region to replicate the image to - East US in this example
-additionalregion=eastus2
+# Datacenter location - Central US in this example
+location=centralus
+# Additional region to replicate the image to - West US in this example
+additionalregion=westus
 # Name of the Azure Compute Gallery - ibTriggersGallery in this example
 acgName=ibTriggersGallery
 # Name of the image definition to be created - ibTriggersImageDef in this example

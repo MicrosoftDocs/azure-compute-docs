@@ -9,6 +9,7 @@ ms.topic: how-to
 ms.service: azure-virtual-machines
 ms.subservice: image-builder
 ms.custom: devx-track-azurecli, linux-related-content
+# Customer intent: As a cloud engineer, I want to create a customized Linux VM image connected to an existing Azure virtual network, so that I can efficiently manage my resources without requiring public network connectivity.
 ---
 
 # Use Azure VM Image Builder for Linux VMs to access an existing Azure virtual network
@@ -117,7 +118,7 @@ az network vnet subnet update \
   --name $subnetName \
   --resource-group $vnetRgName \
   --vnet-name $vnetName \
-  --disable-private-link-service-network-policies true 
+  --private-link-service-network-policies Disabled 
 ```
 
 For more information, see [Azure VM Image Builder networking options](image-builder-networking.md).

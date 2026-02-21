@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a cloud administrator, I want to add a new node type to an existing Service Fabric cluster, so that I can scale my application resources horizontally without downtime, ensuring optimal performance and availability for running workloads.
 ---
 
 # Scale a Service Fabric cluster out by adding a virtual machine scale set

@@ -6,8 +6,9 @@ ms.service: azure-disk-storage
 ms.topic: sample
 ms.tgt_pltfrm: vm-windows
 ms.custom: devx-track-azurepowershell
-ms.date: 01/19/2024
+ms.date: 01/06/2026
 ms.author: rogarana
+# Customer intent: "As a system administrator, I want to restore a managed disk from a snapshot using PowerShell, so that I can quickly recover virtual machines and maintain uptime while managing performance impacts."
 ---
 
 # Create a managed disk from a snapshot with PowerShell 
@@ -24,10 +25,7 @@ This script creates a managed disk from a snapshot. Use it to restore a virtual 
 
 ## Performance impact - background copy process
 
-When you create a managed disk from a snapshot, it starts a background copy process. You can attach a disk to a VM while this process is running but you'll experience performance impact (4k disks experience read impact, 512e experience both read and write impact). For Ultra Disks and Premium SSD v2, you can check the status of the background copy process with the [Azure CLI](create-managed-disk-from-snapshot.md#performance-impact---background-copy-process). This isn't currently supported with the Azure PowerShell module.
-
-> [!IMPORTANT]
-> You can't use the following sections to get the status of the background copy process for disk types other than Ultra Disk or Premium SSD v2. Other disk types will always report 100%.
+When you create a managed disk from a snapshot, it starts a background copy process. You can attach a disk to a VM while this process is running but you'll experience performance impact (4k disks experience read impact, 512e experience both read and write impact). For Ultra Disks and Premium SSD v2, you can check the status of the background copy process with the [Azure CLI or Azure PowerShell module](../disks-incremental-snapshots.md#check-snapshot-status). You can only check the status of the background copy process for Ultra Disks or Premium SSD v2 disks, other disk types always report 100%.
 
 ## Script explanation
 

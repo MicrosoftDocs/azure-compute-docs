@@ -9,6 +9,7 @@ ms.date: 08/15/2023
 ms.author: saraic
 ms.reviewer: cynthn, mattmcinnes
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
+# Customer intent: As a cloud administrator, I want to create a virtual machine from a generalized image in an Azure gallery, so that I can efficiently deploy consistent and scalable environments for my applications.
 ---
 # Create a VM from a generalized image version
 
@@ -43,7 +44,7 @@ This example is for creating a Linux VM secured with SSH. For Windows or to secu
 ```azurecli-interactive
 imgDef="/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition"
 vmResourceGroup=myResourceGroup
-location=eastus
+location=centralus
 vmName=myVM
 adminUsername=azureuser
 
@@ -200,7 +201,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
             ]
         }
     },
-    "location": "eastus"
+    "location": "centralus",
 }
 ```
 
@@ -222,7 +223,7 @@ Create a public IP address.
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPAddresses/{pIPName}?api-version=2020-11-01
 
 {
-  "location": "eastus"
+  "location": "centralus"
 }
 
 ```
@@ -251,7 +252,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
       }
     ]
   },
-  "location": "eastus"
+  "location": "centralus"
 }
 ```
 
@@ -281,7 +282,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
             }
         ]
     },
-    "location": "eastus",
+    "location": "centralus",
 }
 ```
 
@@ -292,7 +293,7 @@ Create a Linux VM. The `oSProfile` section contains some OS specific details. Se
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}?api-version=2020-06-01
 
 {
-    "location": "eastus",
+    "location": "centralus",
     "properties": {
         "hardwareProfile": {
             "vmSize": "Standard_DS3_v2"
@@ -343,7 +344,7 @@ Create a Windows VM.
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}?api-version=2020-06-01
 
 {
-    "location": "eastus",
+    "location": "centralus",
     "properties": {
         "hardwareProfile": {
             "vmSize": "Standard_DS3_v2"
@@ -377,13 +378,13 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 ### [Portal](#tab/portal)
 
-Now you can create one or more new VMs. This example creates a VM named *myVM*, in the *myResourceGroup*, in the *East US* datacenter.
+Now you can create one or more new VMs. This example creates a VM named *myVM*, in the *myResourceGroup*, in the *Central US* datacenter.
 
 1. Go to your image definition. You can use the resource filter to show all image definitions available.
 1. On the page for your image definition, select **Create VM** from the menu at the top of the page.
 1. For **Resource group**, select **Create new** and type *myResourceGroup* for the name.
 1. In **Virtual machine name**, type *myVM*.
-1. For **Region**, select *East US*.
+1. For **Region**, select *Central US*.
 1. For **Availability options**, leave the default of *No infrastructure redundancy required*.
 1. The value for **Image** is automatically filled with the `latest` image version if you started from the page for the image definition.
 1. For **Size**, choose a VM size from the list of available sizes and then choose **Select**.
@@ -407,7 +408,7 @@ Make sure the state of the image is `Generalized`. If you want to use an image w
 ```azurecli-interactive
 imgDef="/SharedGalleries/1a2b3c4d-1234-abcd-1234-1a2b3c4d5e6f-MYDIRECTSHARED/Images/myDirectDefinition/Versions/latest"
 vmResourceGroup=myResourceGroup
-location=westus
+location=centralus
 vmName=myVM
 adminUsername=azureuser
 
@@ -596,13 +597,13 @@ To create a VM using an image shared to a community gallery, use the unique ID o
 Follow these instructions to get the list of Community images using CLI:
 ```
 Step 1:  Show all 'Community images' in a specific location
-az sig list-community --location westus2
+az sig list-community --location centralus
 
 Step 2: Once you have the public gallery name from Step 1, Get the Image definition (Name) of the image by running the following command
-az sig image-definition list-community --public-gallery-name <<public gallery name>> --location westus2
+az sig image-definition list-community --public-gallery-name <<public gallery name>> --location centralus
 
 Step 3: Finally, run the following command to list different image versions available for the specific image
-az sig image-version list-community --public-gallery-name <<galleryname>> --gallery-image-definition <<image name>> --location westus2
+az sig image-version list-community --public-gallery-name <<galleryname>> --gallery-image-definition <<image name>> --location centralus
 ```
 
 To get the public name of a community gallery from portal. Go to **Virtual machines** > **Create** > **Azure virtual machine** > **Image** > **See all images** > **Community Images** > **Public gallery name**.
@@ -612,7 +613,7 @@ In this example, we're creating a VM from a Linux image and creating SSH keys fo
 ```azurecli-interactive
 imgDef="/CommunityGalleries/ContosoImages-1a2b3c4d-1234-abcd-1234-1a2b3c4d5e6f>/Images/myLinuxImage/Versions/latest"
 vmResourceGroup=myResourceGroup
-location=eastus
+location=centralus
 vmName=myVM
 adminUsername=azureuser
 
@@ -647,7 +648,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 Response:
 
 ```json 
-"location": "West US",
+"location": "Central US",
   "identifier": {
     "uniqueId": "/CommunityGalleries/{PublicGalleryName}/Images/{imageName}/Versions/{verionsName}"
   },
@@ -734,15 +735,14 @@ To create a VM using an image shared to your subscription or tenant, you need th
 /SharedGalleries/<uniqueID>/Images/<image name>/Versions/latest
 ```
 
-To find the `uniqueID` of a gallery that is shared with you, use [az sig list-shared](/cli/azure/sig/image-definition#az-sig-image-definition-list-shared). In this example, we are looking for galleries in the West US region.
+To find the `uniqueID` of a gallery that is shared with you, use [az sig list-shared](/cli/azure/sig/image-definition#az-sig-image-definition-list-shared). In this example, we are looking for galleries in the Central US region.
 
 ```azurecli-interactive
-region=westus
+region=centralus
 az sig list-shared --location $region --query "[].name" -o tsv
 ```
 
-Use the gallery name to find the images that are available. In this example, we list all of the images in *West US* and by name, the unique ID that is needed to create a VM, OS and OS state.
-
+Use the gallery name to find the images that are available. In this example, we list all of the images in *Central US* and by name, the unique ID that is needed to create a VM, OS and OS state.
 ```azurecli-interactive 
 galleryName="1a2b3c4d-1234-abcd-1234-1a2b3c4d5e6f-myDirectShared"
  az sig image-definition list-shared \
@@ -758,7 +758,7 @@ Use the `Id` from the output, appended with `/Versions/latest` to use the latest
 ```azurecli-interactive
 imgDef="/SharedGalleries/1a2b3c4d-1234-abcd-1234-1a2b3c4d5e6f-MYDIRECTSHARED/Images/myDirectDefinition/Versions/latest"
 vmResourceGroup=myResourceGroup
-location=westus
+location=centralus
 vmName=myVM
 adminUsername=azureuser
 
@@ -786,7 +786,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 Response:
 
 ```json 
-"location": "West US",
+"location": "Central US",
   "identifier": {
     "uniqueId": "/sharedGalleries/{PublicGalleryName}/Images/{imageName}/Versions/{verionsName}"
   },
@@ -845,7 +845,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{rg}/
 > [!NOTE]
 > **Known issue**: In the Azure portal, if you select a region, select an image, then change the region, you'll get an error message: "You can only create VM in the replication regions of this image" even when the image is replicated to that region. To get rid of the error, select a different region, then switch back to the region you want. If the image is available, it should clear the error message.
 >
-> You can also use the Azure CLI to check what images are shared with you. For example, you can use `az sig list-shared --location westus` to see what images are shared with you in the West US region.
+> You can also use the Azure CLI to check what images are shared with you. For example, you can use `az sig list-shared --location centralus` to see what images are shared with you in the Central US region.
 
 1. Type **virtual machines** in the search.
 1. Under **Services**, select **Virtual machines**.

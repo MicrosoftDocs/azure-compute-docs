@@ -5,10 +5,11 @@ ms.service: azure-virtual-machines
 ms.subservice: hpc
 ms.custom: linux-related-content
 ms.topic: how-to
-ms.date: 07/25/2024
+ms.date: 12/02/2025
 ms.reviewer: cynthn
-ms.author: jushiman
-author: ju-shim
+ms.author: cynthn
+author: cynthn
+# Customer intent: "As an HPC administrator, I want to enable InfiniBand on my VMs, so that I can enhance the performance and scalability of my distributed-node workloads."
 ---
 
 # Enable InfiniBand
@@ -18,6 +19,9 @@ author: ju-shim
 [RDMA capable](../sizes-hpc.md#rdma-capable-instances) [HB-series](../sizes-hpc.md) and [N-series](../sizes-gpu.md) VMs communicate over the low latency and high bandwidth InfiniBand network. The RDMA capability over such an interconnect is critical to boost the scalability and performance of distributed-node HPC and AI workloads. The InfiniBand enabled HB-series and N-series VMs are connected in a non-blocking fat tree with a low-diameter design for optimized and consistent RDMA performance.
 
 There are various ways to enable InfiniBand on the capable VM sizes.
+
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
+
 
 ## VM Images with InfiniBand drivers
 
@@ -37,7 +41,7 @@ To add the VM extension to a VM, you can use [Azure PowerShell](/powershell/azur
 
 ### Linux
 
-The [OFED drivers for Linux](https://www.mellanox.com/products/infiniband-drivers/linux/mlnx_ofed) can be installed with the example below. Though the example here is for RHEL, but the steps are general and can be used for any compatible Linux operating system such as Ubuntu (18.04, 19.04, 20.04) and SLES (12 SP4+ and 15). More examples for other distros are on the [azhpc-images repo](https://github.com/Azure/azhpc-images/blob/master/ubuntu/ubuntu-20.x/ubuntu-20.04-hpc/install_prerequisites.sh). The inbox drivers also work as well, but the Mellanox OFED drivers provide more features.
+The [OFED drivers for Linux](https://www.mellanox.com/products/infiniband-drivers/linux/mlnx_ofed) can be installed with the example below. Though the example here is for RHEL, but the steps are general and can be used for any compatible Linux operating system such as Ubuntu (22.04, 24.04) and SLES (12 SP4+ and 15). More examples for other distros are on the [azhpc-images repo](https://github.com/Azure/azhpc-images/tree/master/distros). The inbox drivers also work as well, but the Mellanox OFED drivers provide more features.
 
 ```bash
 MLNX_OFED_DOWNLOAD_URL=http://content.mellanox.com/ofed/MLNX_OFED-5.0-2.1.8.0/MLNX_OFED_LINUX-5.0-2.1.8.0-rhel7.7-x86_64.tgz

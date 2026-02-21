@@ -5,8 +5,10 @@ author: vamckMS
 ms.author: vakavuru
 ms.reviewer: mattmcinnes
 ms.service: azure-dedicated-host
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 01/23/2023
+ms.update-cycle: 1095-days
+# Customer intent: As a cloud architect, I want to understand the packing configurations and specifications of Compute Optimized Dedicated Host SKUs, so that I can effectively plan resource allocation and maximize VM deployment efficiency in my infrastructure.
 ---
 
 # Compute Optimized Azure Dedicated Host SKUs

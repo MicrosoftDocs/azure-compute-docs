@@ -6,8 +6,10 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
-ms.date: 08/29/2024
+ms.date: 11/17/2025
+ms.update-cycle: 180-days
 ms.custom: mvc, devx-track-azurecli, mode-api
+# Customer intent: As a developer, I want to quickly deploy a Docker container using the command line, so that I can run my web application without managing complex orchestration platforms.
 ---
 
 # Quickstart: Deploy a container instance in Azure using the Azure CLI
@@ -31,7 +33,7 @@ In this quickstart, you use the Azure CLI to deploy an isolated Docker container
 
 Azure container instances, like all Azure resources, must be deployed into a resource group. Resource groups allow you to organize and manage related Azure resources.
 
-First, create a resource group named *myResourceGroup* in the *eastus* location with the following [az group create][az-group-create] command:
+First, create a resource group named *myResourceGroup* in the *eastus* location with the [az group create][az-group-create] command:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -46,8 +48,17 @@ You can expose your containers to the internet by specifying one or more ports t
 Execute a command similar to the following to start a container instance. Set a `--dns-name-label` value that's unique within the Azure region where you create the instance. If you receive a "DNS name label not available" error message, try a different DNS name label.
 
 ```azurecli-interactive
-az container create --resource-group myResourceGroup --name mycontainer --image mcr.microsoft.com/azuredocs/aci-helloworld --dns-name-label aci-demo --ports 80
+az container create --resource-group myResourceGroup --name mycontainer --image mcr.microsoft.com/azuredocs/aci-helloworld --dns-name-label aci-demo --ports 80 --os-type linux --memory 1.5 --cpu 1
 ```
+
+To [deploy the container into a specific availability zone](/azure/reliability/reliability-container-instances#availability-zone-support), use the `--zone` argument and specify the logical zone number:
+
+```azurecli-interactive
+az container create --resource-group myResourceGroup --name mycontainer --image mcr.microsoft.com/azuredocs/aci-helloworld --dns-name-label aci-demo --ports 80 --os-type linux --memory 1.5 --cpu 1 --zone 1
+```
+
+> [!IMPORTANT]
+> Zonal deployments are only available in regions that support availability zones. To see if your region supports availability zones, see [Azure Regions List](/azure/reliability/regions-list).
 
 Within a few seconds, you should get a response from the Azure CLI indicating the deployment completed. Check its status with the [az container show][az-container-show] command:
 

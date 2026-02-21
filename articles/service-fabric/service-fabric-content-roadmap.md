@@ -1,12 +1,14 @@
 ---
 title: Learn more about Azure Service Fabric 
 description: Learn about the core concepts and major areas of Azure Service Fabric. Provides an extended overview of Service Fabric and how to create microservices. 
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+ms.update-cycle: 1095-days
+# Customer intent: "As a cloud developer, I want to understand the core concepts of microservices on a distributed platform, so that I can effectively design, deploy, and manage scalable applications using Service Fabric."
 ---
 
 # So you want to learn about Service Fabric?

@@ -9,6 +9,7 @@ ms.topic: troubleshooting
 ms.date: 08/04/2022
 ms.author: genli
 ms.custom: engagement-fy23
+# Customer intent: "As a system administrator preparing to migrate a Windows virtual machine, I want to prepare and generalize a VHD for Azure upload, so that I can successfully deploy the VM in the Azure environment while ensuring it meets necessary configurations and requirements."
 ---
 
 # Prepare a Windows VHD or VHDX to upload to Azure
@@ -268,7 +269,7 @@ Make sure the following settings are configured correctly for remote access:
  > [!IMPORTANT]
  > 168.63.129.16 is a special public IP address that is owned by Microsoft for Azure. For more information, see [What is IP address 168.63.129.16](/azure/virtual-network/what-is-ip-address-168-63-129-16).
 
-1. If the VM is part of a domain, check the following Microsoft Entra policies to make sure the previous
+1. If the VM is part of a domain, check the following Active Directory policies to make sure the previous
    settings aren't reverted.
 
     |                 Goal                 |                                                                         Policy                                                                          |                  Value                  |
@@ -374,7 +375,7 @@ Make sure the VM is healthy, secure, and RDP accessible:
 
    - `Computer Configuration\Windows Settings\Security Settings\Local Policies\User Rights Assignment`
 
-1. Check the following Microsoft Entra policies to make sure they're not blocking RDP access:
+1. Check the following Active Directory policies to make sure they're not blocking RDP access:
 
    - `Computer Configuration\Windows Settings\Security Settings\Local Policies\User Rights
       Assignment\Deny access to this computer from the network`
@@ -382,7 +383,7 @@ Make sure the VM is healthy, secure, and RDP accessible:
    - `Computer Configuration\Windows Settings\Security Settings\Local Policies\User Rights
       Assignment\Deny log on through Remote Desktop Services`
 
-1. Check the following Microsoft Entra policy to make sure they're not removing any of the required access
+1. Check the following Active Directory policy to make sure they're not removing any of the required access
    accounts:
 
    - `Computer Configuration\Windows Settings\Security Settings\Local Policies\User Rights Assignment\Access this computer from the network`
@@ -617,10 +618,6 @@ Resize-VHD -Path C:\test\MyNewVM.vhd -SizeBytes 105906176
 
 In this example, replace the value for **Path** with the path to the virtual hard disk that you want
 to resize. Replace the value for **SizeBytes** with the new size in bytes for the disk.
-
-### Convert from VMware VMDK disk format
-
-If you have a Windows VM image in the [VMDK file format](https://en.wikipedia.org/wiki/VMDK), then you can use [Azure Migrate](/azure/migrate/server-migrate-overview) to convert the VMDK and upload it to Azure.
 
 ## Complete the recommended configurations
 

@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: devx-track-extended-java
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a Java developer, I want to debug my Service Fabric application using Eclipse and redirect logs to a custom location, so that I can troubleshoot issues efficiently in my local development environment."
 ---
 
 # Tutorial: Debug a Java application deployed on a local Service Fabric cluster

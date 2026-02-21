@@ -4,10 +4,11 @@ description: Information on and specifications of the Ev5-series sizes
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 08/01/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
+# Customer intent: As an IT administrator evaluating virtual machine options, I want to understand the specifications of the Ev5 size series, so that I can select the appropriate configuration for my organization's workloads.
 ---
 
 # Ev5 sizes series

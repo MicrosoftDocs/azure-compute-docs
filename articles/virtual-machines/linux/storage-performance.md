@@ -5,11 +5,12 @@ author: sasha-melamed
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.collection: linux
-ms.topic: conceptual
+ms.topic: concept-article
 ms.tgt_pltfrm: vm-linux
 ms.custom: linux-related-content
 ms.date: 06/01/2022
-ms.author: sasham
+ms.author: mattmcinnes
+# Customer intent: "As a cloud architect, I want to optimize performance on Lsv3, Lasv3, and Lsv2-series Linux VMs, so that I can ensure high I/O throughput for my workload-intensive applications and manage local storage efficiently."
 --- 
 
 # Optimize performance on Lsv3, Lasv3, and Lsv2-series Linux VMs

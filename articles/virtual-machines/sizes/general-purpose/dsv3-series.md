@@ -4,10 +4,11 @@ description: Information on and specifications of the Dsv3-series sizes
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 09/24/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
+# Customer intent: "As a cloud architect, I want to understand the specifications and features of the Dsv3 series virtual machine sizes, so that I can select the appropriate size for our application's performance and resource requirements."
 ---
 
 # Dsv3 sizes series
@@ -51,17 +52,17 @@ vCPUs (Qty.) and Memory for each size
 
 ### [Local Storage](#tab/sizestoragelocal)
 
-Local (temp) storage info for each size
+Local (cached & temp) storage info for each size
 
-| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read (RR)<sup>1</sup> IOPS | Temp Disk Random Read (RR)<sup>1</sup> Throughput (MB/s) | Temp Disk Random Write (RW)<sup>1</sup> IOPS |
-| --- | --- | --- | --- | --- | --- | --- |
-| Standard_D2s_v3 | 1 | 16 | 4000 | 32 |
-| Standard_D4s_v3 | 1 | 32 | 8000 | 64 |
-| Standard_D8s_v3 | 1 | 64 | 16000 | 128 |
-| Standard_D16s_v3 | 1 | 128 | 32000 | 256 |
-| Standard_D32s_v3 | 1 | 256 | 64000 | 512 |
-| Standard_D48s_v3 | 1 | 384 | 96000 | 768 |
-| Standard_D64s_v3 | 1 | 512 | 128000 | 1024 |
+| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Disk Cache Size (GiB) | Cached Disk Random Read (RR)<sup>1</sup> IOPS | Cached Disk Random Read (RR)<sup>1</sup> Throughput (MB/s) |
+| --- | --- | --- | --- | --- | --- |
+| Standard_D2s_v3 | 1 | 16   | 50   | 4000 | 32 |
+| Standard_D4s_v3 | 1 | 32   | 100  | 8000 | 64 |
+| Standard_D8s_v3 | 1 | 64   | 200  | 16000 | 128 |
+| Standard_D16s_v3 | 1 | 128 | 400  | 32000 | 256 |
+| Standard_D32s_v3 | 1 | 256 | 800  | 64000 | 512 |
+| Standard_D48s_v3 | 1 | 384 | 1200 | 96000 | 768 |
+| Standard_D64s_v3 | 1 | 512 | 1600 |128000 | 1024 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)

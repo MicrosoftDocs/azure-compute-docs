@@ -1,13 +1,15 @@
 ---
 title: Polymorphism in the Reliable Actors framework 
 description: Build hierarchies of .NET interfaces and types in the Reliable Actors framework to reuse functionality and API definitions.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-dotnet
 services: service-fabric
 ms.date: 07/11/2022
+ms.update-cycle: 1095-days
+# Customer intent: As a software developer, I want to implement polymorphism in the Reliable Actors framework, so that I can create reusable actor hierarchies and efficiently define APIs for communication within my cloud applications.
 ---
 
 # Polymorphism in the Reliable Actors framework

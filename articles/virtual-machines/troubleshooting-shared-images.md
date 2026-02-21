@@ -8,6 +8,7 @@ ms.reviewer: cynthn, mattmcinnes
 ms.subservice: gallery
 ms.topic: troubleshooting
 ms.date: 02/28/2023
+# Customer intent: "As an IT administrator managing Azure Compute Gallery resources, I want to troubleshoot issues with shared images, so that I can resolve errors efficiently and ensure smooth operations for my virtual machines and scale sets."
 ---
 
 # Troubleshoot images in an Azure Compute Gallery
@@ -94,7 +95,8 @@ If you have problems performing any operations on Azure Compute Gallery (formerl
 > | The disk encryption set \<diskEncryptionSetID\> must be in the same subscription \<subscriptionID\> as the gallery resource | The Azure Compute Gallery does not currently support using a disk encryption set in a different subscription | Create the image version and disk encryption set in the same subscription | 
 > | Replication failed in this region due to 'The GalleryImageVersion source resource size 2520 exceeds the max size 2048 supported | A data disk in the source is greater than 2TB | Resize the data disk to under 2 TB |
 > | Operation 'Update Gallery Image Version' is not on allowed on \<versionNumber>; since it is marked for deletion. You can only retry the Delete operation (or wait for an ongoing one to complete) | You attempted to update a gallery image version that is in the process of being deleted | Wait for the deletion event to complete and recreate the image version again |
-> | Encryption is not supported for source resource '\<sourceID>'. Please use a different source resource type which supports encryption or remove encryption properties | Currently the Azure Compute Gallery only supports encryption for VMs, disks, snapshots and managed images. One of the sources provided for the image version is not in the previous list of sources that support encryption | Remove the disk encryption set from the image version and contact the support team.
+> | Encryption is not supported for source resource '\<sourceID>'. Please use a different source resource type which supports encryption or remove encryption properties | Currently the Azure Compute Gallery only supports encryption for VMs, disks, snapshots and managed images. One of the sources provided for the image version is not in the previous list of sources that support encryption | Remove the disk encryption set from the image version and contact the support team |
+> | DeleteGalleryImageVersionBlockedBeforeEndOfLife. Deletion of Gallery image version is not allowed because the image is enabled for blockDeletionBeforeEndOfLife and its endOfLifeDate has not reached yet | The deletion is blocked because the image is enabled for BlockDeletionBeforeEndOfLife property and its EndOfLife has not expired yet | Either make the "blockDeletionBeforeEndOfLife" = false for your image and try deleting it again (or) update the EndOfLife date to the current date and delete the image once the EndOfLife date has crossed.
 
 ## Creating or updating a VM or scale sets from an image version ##
 

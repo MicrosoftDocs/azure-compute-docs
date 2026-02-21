@@ -7,7 +7,8 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-arm-template
 services: service-fabric
-ms.date: 06/14/2024
+ms.date: 01/22/2025
+# Customer intent: As a cloud developer, I want to deploy and manage Service Fabric applications using Azure Resource Manager templates, so that I can streamline application lifecycle operations and improve management efficiency on my managed cluster.
 ---
 
 # Manage application lifecycle on a managed cluster using Azure Resource Manager
@@ -20,7 +21,7 @@ Managing your applications as resources in Resource Manager can help you gain im
 * Role-based access control: You can manage access to clusters and to applications deployed on the cluster by using the same Resource Manager template.
 * Management efficiency: Using Resource Manager gives you a single location (the Azure portal) for managing your cluster and critical application deployments.
 
-In this document, you will learn how to:
+In this document, you learn how to:
 
 > [!div class="checklist"]
 >
@@ -61,7 +62,7 @@ You can grant access to the container in one of the following ways:
 
 * You can assign an Azure RBAC role that grants permissions to the container to a security principal, so that that security principal can access data in the container via Microsoft Entra authorization. For more information, see [Authorize access to blobs using Microsoft Entra ID](/azure/storage/blobs/authorize-access-azure-active-directory).
 * You can delegate access to the container with a shared access signature to grant a client access to blobs in the container for a limited period of time and with specific permissions. For more information, see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](/azure/storage/common/storage-sas-overview).
-* You can use the account access keys to authorize access to blob data. This approach is the least secure and so is not recommended.
+* You can use the account access keys to authorize access to blob data. This approach is the least secure and so isn't recommended.
 
 ### Stage the application in your storage account
 
@@ -167,7 +168,7 @@ You might upgrade an application that's already deployed to a Service Fabric clu
     ```
 ## Delete Service Fabric application resources
 > [!NOTE]
-> Applications should not be deleted via Azure Resource Manager (ARM) template as there is no declarative way to cleanup individual resources
+> Applications shouldn't be deleted via Azure Resource Manager (ARM) template as there's no declarative way to cleanup individual resources
 
 To delete a service fabric application that was deployed by using the application resource model in Resource Manager:
 
@@ -177,18 +178,17 @@ To delete a service fabric application that was deployed by using the applicatio
     Get-AzResource  -Name <String> | f1
     ```
 
-1. Use the [Remove-AzServiceFabricApplication](/powershell/module/az.servicefabric/remove-azservicefabricapplication) cmdlet to delete the application resources:
+1. Use the [Remove-AzServiceFabricManagedClusterApplication](/powershell/module/az.servicefabric/remove-azservicefabricmanagedclusterapplication) cmdlet to delete the application resources:
 
     ```powershell
-    Remove-AzServiceFabricApplication -ResourceId <String> [-Force]
+    Remove-AzServiceFabricManagedClusterApplication -ResourceId <String> [-Force]
     ```
-
 
 ## Migration from classic to managed clusters
 
-If you are migrating application(s) from classic to managed clusters you will need to make sure to validate types are correctly specified or you will encounter errors. 
+If you're migrating applications from classic to managed clusters, you need to make sure to validate types are correctly specified to avoid errors. 
 
-The following items are called out specifically due to frequency of usage, but not meant to be an exclusive list of differences. 
+The following items are called out due to frequency of usage, but not meant to be an exclusive list of differences. 
 
 * upgradeReplicaSetCheckTimeout is now an integer for managed, but a string on classic SFRP. 
 

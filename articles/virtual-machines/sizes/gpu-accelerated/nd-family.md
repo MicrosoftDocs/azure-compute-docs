@@ -6,9 +6,10 @@ ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.custom:
   - build-2024
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 06/06/2024
 ms.author: mattmcinnes
+# Customer intent: As a cloud architect, I want to analyze the different GPU-accelerated VM sizes in the ND family, so that I can select the most suitable options for my high-performance computing workloads.
 ---
 
 # 'ND' sub-family GPU accelerated virtual machine size series

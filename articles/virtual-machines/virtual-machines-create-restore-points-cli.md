@@ -1,13 +1,14 @@
 ---
 title: Creating Virtual Machine Restore Points using Azure CLI
 description: Creating Virtual Machine Restore Points using Azure CLI
-author: ju-shim
-ms.author: jushiman
+author: cynthn
+ms.author: cynthn
 ms.service: azure-virtual-machines
 ms.subservice: recovery
 ms.topic: tutorial
 ms.date: 06/30/2022
 ms.custom: template-tutorial, devx-track-azurecli
+# Customer intent: "As a cloud administrator, I want to create and manage virtual machine restore points using command line tools, so that I can automate the backup process and ensure data protection against potential downtime."
 ---
 
 

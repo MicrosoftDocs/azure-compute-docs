@@ -1,6 +1,6 @@
 ---
 title: Upgrade a Service Fabric application in PowerShell
-description: Azure PowerShell Script Sample - Upgrade and monitor an Azure Service Fabric application using PowerShell.
+description: PowerShell Script Sample - Upgrade and monitor a Service Fabric application using PowerShell.
 services: service-fabric
 author: athinanthny
 manager: chackdan
@@ -9,11 +9,12 @@ ms.topic: sample
 ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc, devx-track-azurepowershell
+# Customer intent: "As a DevOps engineer, I want to upgrade a Service Fabric application using PowerShell, so that I can streamline the deployment process and ensure my application is running the latest version efficiently."
 ---
 
 # Upgrade a Service Fabric application
 
-This sample script upgrades a running Service Fabric application instance to version 1.3.0. The script copies the new application package to the cluster image store, registers the application type, and removes the unnecessary application package.  The script starts a monitored upgrade and continuously checks the upgrade status until the upgrade completes or rolls back. Customize the parameters as needed. 
+This sample Service Fabric SDK PowerShell script upgrades a running Service Fabric application instance to version 1.3.0. The script copies the new application package to the cluster image store, registers the application type, and removes the unnecessary application package.  The script starts a monitored upgrade and continuously checks the upgrade status until the upgrade completes or rolls back. Customize the parameters as needed. 
 
 If needed, install the Service Fabric PowerShell module with the [Service Fabric SDK](../service-fabric-get-started.md). 
 
@@ -39,6 +40,8 @@ This script uses the following commands. Each command in the table links to comm
 
 ## Next steps
 
-For more information on the Service Fabric PowerShell module, see [Azure PowerShell documentation](/powershell/azure/service-fabric/overview).
+For more information on the Service Fabric SDK PowerShell module, see [SDK PowerShell documentation](/powershell/module/servicefabric).
 
-Additional PowerShell samples for Azure Service Fabric can be found in the [Azure PowerShell samples](../service-fabric-powershell-samples.md).
+For more information on the Service Fabric Azure PowerShell module, see [Azure PowerShell documentation](/powershell/azure/service-fabric/overview).
+
+Additional PowerShell samples for Azure Service Fabric can be found in the [PowerShell samples](../service-fabric-powershell-samples.md).

@@ -6,10 +6,11 @@ ms.custom:
 ms.service: azure-virtual-machines
 ms.subservice: hpc
 ms.topic: concept-article
-ms.date: 07/25/2024
+ms.date: 02/10/2026
 ms.reviewer: cynthn
 ms.author: padmalathas
 author: padmalathas
+# Customer intent: As an HPC application developer, I want to understand the specifications and performance characteristics of the HBv2-series virtual machines, so that I can optimize my workloads and ensure efficient resource allocation for high-performance computing tasks.
 ---
 
 
@@ -65,7 +66,7 @@ Process pinning works on HBv2-series VMs because we expose the underlying silico
 | Orchestrator Support        | CycleCloud, Batch, AKS; [cluster configuration options](sizes-hpc.md#cluster-configuration-options)  |
 
 > [!NOTE]
-> Windows Server 2012 R2 is not supported on HBv2 and other VMs with more than 64 (virtual or physical) cores. For more information, see [Supported Windows guest operating systems for Hyper-V on Windows Server](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows). 
+> Windows Server 2012 R2 isn't supported on HBv2 and other VMs with more than 64 (virtual or physical) cores. For more information, see [Supported Windows guest operating systems for Hyper-V on Windows Server](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows). 
 
 ## Next steps
 

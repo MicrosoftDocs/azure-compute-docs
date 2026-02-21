@@ -9,6 +9,7 @@ ms.topic: sample
 ms.date: 03/19/2018
 ms.author: atsenthi
 ms.custom: mvc, devx-track-azurepowershell
+# Customer intent: "As a cloud administrator, I want to update the RDP username and password for all nodes in a Service Fabric cluster, so that I can ensure secure access and maintain the configuration of my virtual machines."
 ---
 
 # Update the admin username and password of the VMs in a cluster
@@ -25,7 +26,7 @@ If needed, install the Azure PowerShell using the instruction found in the [Azur
 
 ## Script explanation
 
-This script uses the following commands: Each command in the table links to command specific documentation.
+This Azure PowerShell script uses the following commands: Each command in the table links to command specific documentation.
 
 | Command | Notes |
 |---|---|

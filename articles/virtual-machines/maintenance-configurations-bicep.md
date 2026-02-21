@@ -8,6 +8,7 @@ ms.topic: how-to
 ms.date: 11/5/2024
 ms.author: lnagpal
 #pmcontact: lnagpal
+# Customer intent: As a cloud administrator, I want to configure maintenance schedules for Azure VMs using Bicep templates, so that I can manage updates and minimize downtime effectively.
 ---
 
 # Control updates with Maintenance Configurations and Bicep
@@ -261,7 +262,7 @@ resource symbolicname 'Microsoft.Maintenance/configurationAssignments@2023-04-01
   "location": null,
   "name": "samplebicep",
   "properties": {
-    "correlationId": "b125fc6f-f771-46d7-9b88-b31e0da959f5",
+    "correlationId": "aaaa0000-bb11-2222-33cc-444444dddddd",
     "debugSetting": null,
     "dependencies": [
       {

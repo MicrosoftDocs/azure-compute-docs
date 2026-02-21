@@ -3,10 +3,11 @@ title: Scaling profile for Virtual Machine Scale Sets
 description: The virtual machine scaling profile for Virtual Machine Scale Sets define the VM configuration you want to use when adding instances to the scale set via autoscaling 
 author: fitzgeraldsteele 
 ms.author: fisteele
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
 ms.date: 06/14/2024
-ms.reviewer: jushiman
+ms.reviewer: cynthn
+# Customer intent: "As a cloud administrator, I want to configure a Virtual Machine Scale Set with specific properties, so that I can efficiently manage instance scaling and deployment according to my application's requirements."
 ---
 
 # Scaling profile
@@ -51,8 +52,11 @@ Virtual machine scale sets in Flexible Orchestration Mode can optionally be crea
 
 Once you have created the virtual machine scale set, you can manually attach virtual machines.
 
-> [!NOTE]
-> You cannot create a virtual machine scale set without a scaling profile in the Azure portal.
+### [Azure portal](#tab/portal)
+1. Navigate to the **Create a Virtual Machine Scale Set (VMSS)** blade.
+2. Set your resource group, scale set name, region, availability zone, and orchestration mode.
+3. In the **Scaling** section, select **No scaling profile**.
+4. Complete the **Advanced** and **Tags** section before selecting the **Review + create** button.
 
 ### [Azure CLI](#tab/cli)
 

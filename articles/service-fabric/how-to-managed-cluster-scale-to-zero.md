@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: devx-track-arm-template
 services: service-fabric
 ms.date: 05/24/2024
+# Customer intent: "As a cloud administrator, I want to scale my Service Fabric managed clusters down to zero nodes, so that I can reduce costs during periods of inactivity."
 ---
 
 # Scale to zero nodes for Service Fabric managed clusters

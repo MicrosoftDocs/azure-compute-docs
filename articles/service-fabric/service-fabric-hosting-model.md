@@ -1,12 +1,14 @@
 ---
 title: Azure Service Fabric hosting model 
 description: Describes the relationship between replicas (or instances) of a deployed Service Fabric service and the service-host process.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+ms.update-cycle: 1095-days
+# Customer intent: "As a cloud architect, I want to understand the differences between the Shared Process and Exclusive Process hosting models in Service Fabric, so that I can make informed decisions about resource management and service isolation in my application deployments."
 ---
 
 # Azure Service Fabric hosting model

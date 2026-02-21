@@ -1,12 +1,14 @@
 ---
 title: Learn about Azure Service Fabric application security
 description: An overview of how to securely run microservices applications on Service Fabric. Learn how to run services and startup script under different security accounts, authenticate and authorize users, manage application secrets, secure service communications, use an API gateway, and secure application data at rest. 
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+ms.update-cycle: 1095-days
+# Customer intent: "As a cloud application developer, I want to implement robust security practices for my microservices on Service Fabric, so that I can protect sensitive data and ensure secure communication across services."
 ---
 
 # Service Fabric application and service security

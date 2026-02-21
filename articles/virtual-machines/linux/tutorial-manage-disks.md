@@ -7,7 +7,7 @@ ms.service: azure-disk-storage
 ms.topic: tutorial
 ms.date: 12/06/2024
 ms.custom: mvc, devx-track-azurecli, linux-related-content
-#Customer intent: As an IT administrator, I want to learn about Azure Managed Disks so that I can create and manage storage for Linux VMs in Azure.
+# Customer intent: As an IT administrator, I want to use the Azure CLI to manage VM disks, so that I can efficiently create, attach, and configure storage for Azure virtual machines in a cloud environment.
 ---
 
 # Tutorial - Manage Azure disks with the Azure CLI

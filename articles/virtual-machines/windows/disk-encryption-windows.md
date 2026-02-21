@@ -9,9 +9,12 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 02/20/2026
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
+# Customer intent: As a cloud administrator, I want to enable Azure Disk Encryption on Windows VMs, so that I can secure my virtual machine data using BitLocker and manage encryption keys effectively with Azure Key Vault.
 ---
 
 # Azure Disk Encryption scenarios on Windows VMs
+
+[!INCLUDE [Azure Disk Encryption retirement notice](~/reusable-content/ce-skilling/azure/includes/security/azure-disk-encryption-retirement.md)]
 
 **Applies to:** :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets 
 
@@ -38,6 +41,8 @@ Encrypting or disabling encryption may cause a VM to reboot.
 Azure Disk Encryption does not work for the following scenarios, features, and technology:
 
 - Encrypting basic tier VM or VMs created through the classic VM creation method.
+- Encrypting v6 series VMs with temporary disks (Ddsv6, Dldsv6, Edsv6, Dadsv6, Daldsv6, Eadsv6, Dpdsv6, Dpldsv6, Epdsv6, or Endsv6). For more information, see the individual pages for each of these VM sizes listed on [Sizes for virtual machines in Azure](../sizes/overview.md)
+- Encrypting V7 series and newer VM sizes.
 - All requirements and restrictions of BitLocker, such as requiring NTFS. For more information, see [BitLocker overview](/windows/security/operating-system-security/data-protection/bitlocker/#system-requirements).
 - Encrypting VMs configured with software-based RAID systems.
 - Encrypting VMs configured with Storage Spaces Direct (S2D), or Windows Server versions before 2016 configured with Windows Storage Spaces.
@@ -51,13 +56,13 @@ Azure Disk Encryption does not work for the following scenarios, features, and t
 - Encryption of shared/distributed file systems like (but not limited to) DFS, GFS, DRDB, and CephFS.
 - Moving an encrypted VM to another subscription or region.
 - Creating an image or snapshot of an encrypted VM and using it to deploy additional VMs.
+- 'L' family storage optimized VM size series.
 - M-series VMs with Write Accelerator disks.
 - Applying ADE to a VM that has disks encrypted with [Encryption at Host](../disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data) or [server-side encryption with customer-managed keys](../disk-encryption.md) (SSE + CMK). Applying SSE + CMK to a data disk or adding a data disk with SSE + CMK configured to a VM encrypted with ADE is an unsupported scenario as well.
 - Migrating a VM that is encrypted with ADE, or has **ever** been encrypted with ADE, to [Encryption at Host](../disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data) or [server-side encryption with customer-managed keys](../disk-encryption.md).
 - Encrypting VMs in failover clusters.
 - Encryption of [Azure ultra disks](../disks-enable-ultra-ssd.md).
 - Encryption of [Premium SSD v2 disks](../disks-types.md#premium-ssd-v2-limitations).
-- V7 and newer VM sizes.
 - Encryption of VMs in subscriptions that have the [`Secrets should have the specified maximum validity period`](https://ms.portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F342e8053-e12e-4c44-be01-c3c2f318400f) policy enabled with the [DENY effect](/azure/governance/policy/concepts/effects).
 - Encryption of VMs in subscriptions that have the [`Key Vault secrets should have an expiration date`](https://ms.portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F98728c90-32c7-4049-8429-847dc0f4fe37) policy enabled with the [DENY effect](/azure/governance/policy/concepts/effects)
 
@@ -166,33 +171,6 @@ The following table lists the Resource Manager template parameters for existing 
 | resizeOSDisk | Should the OS partition be resized to occupy full OS VHD before splitting system volume. |
 | location | Location for all resources. |
 
-## Enable encryption on NVMe disks for Lsv2 VMs
-
-This scenario describes enabling Azure Disk Encryption on NVMe disks for Lsv2 series VMs.  The Lsv2-series features local NVMe storage. Local NVMe Disks are temporary, and data will be lost on these disks if you stop/deallocate your VM (See: [Lsv2-series](../lsv2-series.md)).
-
-To enable encryption on NVMe disks:
-
-1. Initialize the NVMe disks and create NTFS volumes.
-1. Enable encryption on the VM with the VolumeType parameter set to All. This will enable encryption for all OS and data disks, including volumes backed by NVMe disks. For information, see [Enable encryption on an existing or running Windows VM](#enable-encryption-on-an-existing-or-running-windows-vm).
-
-Encryption will persist on the NVMe disks in the following scenarios:
-- VM reboot
-- Virtual machine scale set reimage
-- Swap OS
-
-NVMe disks will be uninitialized the following scenarios:
-
-- Start VM after deallocation
-- Service healing
-- Backup
-
-In these scenarios, the NVMe disks need to be initialized after the VM starts. To enable encryption on the NVMe disks, run command to enable Azure Disk Encryption again after the NVMe disks are initialized.
-
-In addition to the scenarios listed in the [Restrictions](#restrictions) section, encryption of NVMe disks is not supported for:
-
-- VMs encrypted with Azure Disk Encryption with Microsoft Entra ID (previous release)
-- NVMe disks with storage spaces
-- Azure Site Recovery of SKUs with NVMe disks (see [Support matrix for Azure VM disaster recovery between Azure regions: Replicated machines - storage](/azure/site-recovery/azure-to-azure-support-matrix#replicated-machines---storage)).
 
 ## New IaaS VMs created from customer-encrypted VHD and encryption keys
 

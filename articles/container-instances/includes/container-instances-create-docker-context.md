@@ -3,8 +3,9 @@ services: container-instances
 author: tomvcassidy
 ms.service: azure-container-instances
 ms.topic: include
-ms.date: 08/29/2024
+ms.date: 11/17/2025
 ms.author: tomcassidy
+# Customer intent: As a developer utilizing containerization, I want to create an Azure context with Docker, so that I can manage and deploy container instances seamlessly within my Azure subscription and resource group.
 ---
 
 ## Create Azure context

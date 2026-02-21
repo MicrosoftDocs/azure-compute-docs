@@ -1,12 +1,14 @@
 ---
 title: Overview of Service Fabric and containers 
 description: An overview of Service Fabric and the use of containers to deploy microservice applications. This article provides an overview of how containers can be used and the available capabilities in Service Fabric.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+ms.update-cycle: 1095-days
+# Customer intent: As a developer, I want to understand how to deploy and manage microservices using containers on a distributed systems platform, so that I can build scalable and reliable applications efficiently.
 ---
 
 # Service Fabric and containers

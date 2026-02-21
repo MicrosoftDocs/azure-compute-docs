@@ -1,13 +1,14 @@
 ---
 title: Time sync for Linux VMs in Azure
 description: Time sync for Linux virtual machines.
-author: ju-shim
+author: cynthn
 ms.service: azure-virtual-machines
 ms.custom: linux-related-content
 ms.collection: linux
 ms.topic: how-to
 ms.date: 12/09/2024
-ms.author: jushiman
+ms.author: cynthn
+# Customer intent: "As a system administrator managing Linux VMs in Azure, I want to configure effective time synchronization methods, so that I can ensure accurate timekeeping across my virtual machines to support security protocols and improve event logging consistency."
 ---
 
 # Time sync for Linux VMs in Azure
@@ -170,7 +171,7 @@ For more information about chrony, see [Using chrony](https://access.redhat.com/
 
 ### systemd 
 
-On SUSE and Ubuntu releases before 19.10, time sync is configured using [systemd](https://www.freedesktop.org/wiki/Software/systemd/). For more information about Ubuntu, see [Time Synchronization](https://help.ubuntu.com/lts/serverguide/NTP.html). For more information about SUSE, see Section 4.5.8 in [SUSE Linux Enterprise Server 12 SP3 Release Notes](https://www.suse.com/releasenotes/x86_64/SUSE-SLES/12-SP3/#InfraPackArch.ArchIndependent.SystemsManagement).
+On SUSE and Ubuntu releases before 19.10, time sync is configured using [systemd](https://www.freedesktop.org/wiki/Software/). For more information about Ubuntu, see [Time Synchronization](https://help.ubuntu.com/lts/serverguide/NTP.html). For more information about SUSE, see [Time Synchronization in SUSE](https://documentation.suse.com/smart/network/html/ntp-time-synchronization/index.html).
 
 ### cloud-init
 

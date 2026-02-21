@@ -4,13 +4,17 @@ description: Information on and specifications of the NVv4-series sizes
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 07/31/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
+# Customer intent: As an IT decision-maker, I want to compare the specifications and features of NVv4 series virtual machine sizes, so that I can select the appropriate size for my organization's computing needs.
 ---
 
 # NVv4 sizes series
+
+> [!NOTE]
+> The NVv4-series will be retired on September 30, 2026. Refer to the [NVv4-series retirement page](/azure/virtual-machines/sizes/gpu-accelerated/nvv4-retirement) for more information and migration recommendations. 
 
 [!INCLUDE [nvv4-summary](./includes/nvv4-series-summary.md)]
 

@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a system administrator, I want to utilize the Azure Service Fabric Standalone package for Windows Server, so that I can efficiently configure, manage, and deploy clusters in a secure development environment.
 ---
 
 # Contents of Service Fabric Standalone package for Windows Server

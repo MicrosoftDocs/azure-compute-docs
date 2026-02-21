@@ -1,12 +1,14 @@
 ---
 title: Reliable Actors state management 
 description: Describes how Reliable Actors state is managed, persisted, and replicated for high availability.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+ms.update-cycle: 1095-days
+# Customer intent: As a developer working with Reliable Actors, I want to configure the state persistence and replication settings for my actor instances, so that I can manage their reliability and performance according to my application's requirements.
 ---
 
 # Reliable Actors state management

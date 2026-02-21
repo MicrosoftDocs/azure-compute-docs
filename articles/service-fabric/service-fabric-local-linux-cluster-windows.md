@@ -11,6 +11,7 @@ ms.date: 07/14/2022
 
 # Maintainer notes: Keep these documents in sync:
 # service-fabric-local-linux-cluster-windows-wsl2.md
+# Customer intent: As a developer working on cross-platform applications, I want to set up a local Linux Service Fabric cluster on my Windows machine using Docker, so that I can test and deploy applications targeted for Linux environments efficiently.
 ---
 
 # Set up a Linux Service Fabric cluster on your Windows developer machine

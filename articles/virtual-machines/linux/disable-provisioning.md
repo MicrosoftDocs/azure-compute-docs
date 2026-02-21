@@ -1,15 +1,16 @@
 ---
 title: Disable or remove the provisioning agent
 description: Learn how to disable or remove the provisioning agent in Linux VMs and images.
-author: danielsollondon
+author: vamckMS
 ms.service: azure-virtual-machines
 ms.collection: linux
 ms.subservice: imaging
 ms.topic: how-to
 ms.custom: devx-track-azurecli, linux-related-content
-ms.date: 04/11/2023
-ms.author: danis
+ms.date: 09/02/2025
+ms.author: vakavuru
 ms.reviewer: cynthn
+# Customer intent: As a system administrator managing Linux VMs, I want to disable or remove the provisioning agent, so that I can control VM extensions and prepare custom images without unnecessary components.
 ---
 
 # Disable or remove the Linux Agent from VMs and images
@@ -58,23 +59,28 @@ Ensure you have **removed** all existing extensions from the VM before, as per a
 
 If you just remove the Linux Agent, and not the associated configuration artifacts, you can reinstall at a later date. Run one of the following, as root, to remove the Azure Linux Agent:
 
-#### For Ubuntu 18.04+
+#### [Ubuntu](#tab/ubuntu-remove)
 
 ```bash
+#For Ubuntu 18.04+:
 sudo apt -y remove walinuxagent
 ```
 
-#### For Redhat 7.X, 8.X and 9.X
+#### [Red Hat](#tab/redhat-remove)
 
 ```bash
+#For Red Hat 7.x, 8.x, and 9.x:
 sudo yum -y remove WALinuxAgent
 ```
 
-#### For SUSE 12.X, 15.X
+#### [SUSE](#tab/suse-remove)
 
 ```bash
+#For SUSE 12.x and 15.x:
 sudo zypper --non-interactive remove python-azure-agent
 ```
+
+---
 
 ### Step 2: (Optional) Remove the Azure Linux Agent artifacts
 
@@ -84,32 +90,37 @@ sudo zypper --non-interactive remove python-azure-agent
 
 If you know you will not ever reinstall the Linux Agent again, then you can run the following:
 
-#### For Ubuntu 18.04+
+#### [Ubuntu](#tab/ubuntu-remove-artifacts)
 
 ```bash
-sudo pt -y purge walinuxagent
+#For Ubuntu 18.04+:
+sudo apt -y purge walinuxagent
 sudo cp -rp /var/lib/waagent /var/lib/waagent.bkp
 sudo rm -rf /var/lib/waagent
 sudo rm -f /var/log/waagent.log
 ```
 
-#### For Redhat 7.X, 8.X, 9.X
+#### [Red Hat](#tab/redhat-remove-artifacts)
 
 ```bash
+#For Red Hat 7.x, 8.x, and 9.x:
 sudo yum -y remove WALinuxAgent
 sudo rm -f /etc/waagent.conf.rpmsave
 sudo rm -rf /var/lib/waagent
 sudo rm -f /var/log/waagent.log
 ```
 
-#### For SUSE 12.X, 15.X
+#### [SUSE](#tab/suse-remove-artifacts)
 
 ```bash
+#For SUSE 12.x and 15.x:
 sudo zypper --non-interactive remove python-azure-agent
 sudo rm -f /etc/waagent.conf.rpmsave
 sudo rm -rf /var/lib/waagent
 sudo rm -f /var/log/waagent.log
 ```
+
+---
 
 ## Preparing an image without the Linux Agent
 

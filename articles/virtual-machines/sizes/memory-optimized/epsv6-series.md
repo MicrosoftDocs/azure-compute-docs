@@ -1,15 +1,16 @@
 ---
 title: Epsv6 size series 
 description: Information on and specifications of the Epsv6-series sizes
-author: archatC
+author: noahwood28
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.custom:
   - build-2024
-ms.topic: conceptual
-ms.date: 08/27/2024
-ms.author: archat
+ms.topic: concept-article
+ms.date: 01/05/2026
+ms.author: noahwood
 ms.reviewer: mattmcinnes, tomvcassidy
+# Customer intent: As a cloud architect, I want to review the specifications and supported features of the Epsv6 series for virtual machines, so that I can select the appropriate VM sizes that meet my application's performance and resource requirements.
 ---
 
 # Epsv6 sizes series
@@ -23,7 +24,8 @@ ms.reviewer: mattmcinnes, tomvcassidy
 
 ## Feature Support
 - [Premium Storage](../../premium-storage-performance.md): Supported 
-- [Premium Storage caching](../../premium-storage-performance.md): Supported 
+- [Premium Storage caching](../../premium-storage-performance.md): Supported
+- [Live Migration](../../maintenance-and-updates.md#live-migration): Supported
 - [Memory Preserving Updates](../../maintenance-and-updates.md): Supported 
 - [VM Generation Support](../../generation-2.md): Generation 2 
 - [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported 
@@ -72,8 +74,8 @@ Remote (uncached) storage info for each size:
 | Standard_E16ps_v6 | 48 | 25600 | 848 | 40000 | 1250 | 33331 | 992 | 52080 | 1463 |
 | Standard_E32ps_v6 | 64 | 51200 | 1696 | 80000 | 2000 | 66662 | 1984 | 104160 | 2340 |
 | Standard_E48ps_v6 | 64 | 76800 | 2544 | 80000 | 3000 | 99994 | 2976 | 104160 | 3510 |
-| Standard_E64ps_v6 | 64 | 102400 | 3392 | 102400 | 3392 | 133325 | 3969 | 133325 | 4680 |
-| Standard_E96ps_v6 | 64 | 153600 | 5000 | 153600 | 5000 | 199987 | 5850 | 199987 | 5953 |
+| Standard_E64ps_v6 | 64 | 102400 | 3392 | 102400 | 3392 | 133325 | 3969 | 133325 | 3969 |
+| Standard_E96ps_v6 | 64 | 153600 | 5000 | 153600 | 5000 | 199987 | 5850 | 199987 | 5850 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)

@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: devx-track-azurepowershell
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a cloud system administrator, I want to effectively scale my Service Fabric cluster by adding or removing nodes and configuring auto-scale rules, so that I can optimize resource allocation based on application demand and ensure high availability for my services.
 ---
 
 # Scale a cluster in or out

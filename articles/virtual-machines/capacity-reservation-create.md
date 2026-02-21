@@ -5,9 +5,11 @@ author: bdeforeest
 ms.author: bidefore
 ms.service: azure-virtual-machines
 ms.topic: how-to
+ms.update-cycle: 180-days
 ms.date: 04/24/2023
 ms.reviewer: cynthn, jushiman, mattmcinnes
-ms.custom: template-how-to, devx-track-azurecli, devx-track-azurepowershell
+ms.custom: template-how-to, devx-track-azurecli, devx-track-azurepowershell, portal
+# Customer intent: As an IT administrator, I want to create a capacity reservation and group in a cloud environment, so that I can ensure dedicated compute resources for my virtual machine deployment.
 ---
 
 # Create a capacity reservation

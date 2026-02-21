@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: devx-track-dotnet
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a developer, I want to implement structured logging in my .NET Service Fabric application, so that I can effectively debug issues and improve application performance through detailed diagnostic insights."
 ---
 
 # Add logging to your Service Fabric application

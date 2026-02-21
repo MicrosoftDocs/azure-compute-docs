@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 11/21/2024
+# Customer intent: "As a cloud architect, I want to deploy a Service Fabric cluster across multiple Availability Zones, so that I can ensure high availability and resilience for my applications against datacenter failures."
 ---
 
 # Deploy an Azure Service Fabric cluster across Availability Zones

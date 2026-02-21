@@ -9,6 +9,7 @@ ms.date: 07/31/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
+# Customer intent: "As a cloud architect, I want to assess the capabilities of Lsv3-series virtual machines, so that I can determine their suitability for high-performance workloads like NoSQL databases with high IOPS and throughput requirements."
 ---
 The Lsv3-series of Azure Virtual Machines (Azure VMs) features high-throughput, low latency, directly mapped local NVMe storage. These VMs run on the 3rd Generation Intel® Xeon® Platinum 8370C (Ice Lake) processor in a hyper-threaded configuration. This new processor features an all-core turbo clock speed of 3.5 GHz with Intel® Turbo Boost Technology, Intel® Advanced-Vector Extensions 512 (Intel® AVX-512) and Intel® Deep Learning Boost. The Lsv3-series VMs are available in sizes from 8 to 80 vCPUs. There are 8 GiB of memory allocated per vCPU, and one 1.92TB NVMe SSD device allocated per 8 vCPUs, with up to 19.2TB (10x1.92TB) available on the L80s_v3 size.
 

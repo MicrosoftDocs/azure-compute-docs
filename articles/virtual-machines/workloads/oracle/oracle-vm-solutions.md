@@ -8,6 +8,7 @@ ms.collection: linux
 ms.topic: concept-article
 ms.date: 10/08/2024
 ms.author: jacobjaygbay
+# Customer intent: As a cloud architect, I want to deploy Oracle virtual machine images on Azure so that I can leverage Oracle's software capabilities alongside Azure's infrastructure for my applications and database workloads.
 ---
 # Oracle virtual machine images and their deployment on Microsoft Azure
 

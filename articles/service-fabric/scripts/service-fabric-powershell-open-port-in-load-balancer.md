@@ -9,15 +9,14 @@ ms.topic: sample
 ms.date: 05/18/2018
 ms.author: atsenthi
 ms.custom: mvc, devx-track-azurepowershell
+# Customer intent: As a cloud administrator, I want to open application ports in an Azure load balancer using PowerShell so that my Service Fabric application can communicate with external clients effectively.
 ---
 
 # Open an application port in the Azure load balancer
 
-A Service Fabric application running in Azure sits behind the Azure load balancer. This sample script opens a port in an Azure load balancer so that a Service Fabric application can communicate with external clients. Customize the parameters as needed. If your cluster is in a network security group, also [add an inbound network security group rule](service-fabric-powershell-add-nsg-rule.md) to allow inbound traffic.
+A Service Fabric application running in Azure sits behind the Azure load balancer. This sample Azure PowerShell script opens a port in an Azure load balancer so that a Service Fabric application can communicate with external clients. Customize the parameters as needed. If your cluster is in a network security group, also [add an inbound network security group rule](service-fabric-powershell-add-nsg-rule.md) to allow inbound traffic.
 
 [!INCLUDE [updated-for-az](~/reusable-content/ce-skilling/azure/includes/updated-for-az.md)]
-
-If needed, install the Service Fabric PowerShell module with the [Service Fabric SDK](../service-fabric-get-started.md). 
 
 ## Sample script
 

@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: devx-track-extended-java, linux-related-content
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: "As a Java developer using a Linux environment, I want to deploy a Java application to Azure Service Fabric, so that I can create scalable microservices that efficiently manage processing and data storage within a distributed systems platform."
 ---
 # Quickstart:  Deploy a Java app to Azure Service Fabric on Linux
 

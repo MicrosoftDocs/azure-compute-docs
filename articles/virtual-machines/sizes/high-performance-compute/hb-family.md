@@ -1,11 +1,11 @@
 ---
-title: HB family VM size series
-description: List of sizes in the HB family.
+title: HB sub-family VM size series
+description: Overview of the 'HB' sub-family of virtual machine sizes
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
-ms.date: 06/06/2024
+ms.topic: concept-article
+ms.date: 11/24/2025
 ms.author: mattmcinnes
 ---
 
@@ -13,26 +13,28 @@ ms.author: mattmcinnes
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
-[!INCLUDE [hb-family-summary](./includes/hb-family-summary.md)]
+The 'HB' sub-family of VM size series are one of Azure's high-performance computing (HPC) optimized H-family VM instances. They're designed for compute-intensive workloads, such as computational fluid dynamics, finite element analysis, and large-scale scientific simulations. HB-series VMs, equipped with high-performance AMD EPYC processors and fast memory, deliver exceptional CPU and memory bandwidth. They're ideal for applications that need extensive computational resources to handle large-scale calculations and data processing. They're well-suited for industries such as engineering, scientific research, and data analysis. In these fields, processing speed and accuracy are essential for maintaining productivity and driving innovation.
 
 ## Workloads and use cases
 
-[!INCLUDE [hb-family-workloads](./includes/hb-family-workloads.md)]
+**Computational Fluid Dynamics (CFD):** HB family VMs are ideal for simulations in fields like aerospace, automotive design, and manufacturing, where fluid dynamics calculations are intensive.
+
+**Finite Element Analysis (FEA):** HB family VMs are suitable for engineering analyses that simulate physical phenomena, requiring intensive computational power to model complex systems and materials.
+
+**Weather Forecasting:** HB family VMs can handle the massive datasets and complex simulations required for high-resolution weather modeling and forecasting.
+
+**Seismic Processing:** HB family VMs are in the oil and gas industry, HB family VMs can process seismic data to help map and understand subsurface structures.
+
+**Scientific Research:** HB family VMs support a wide range of scientific research that requires large-scale mathematical modeling, including physics and computational chemistry simulations.
+
+**Genomics and Bioinformatics:** HB family VMs are also used in life sciences for genomic analysis, where large amounts of data need to be processed quickly to decode genetic information.
 
 ## Series in family
-
-### HB-series V1
-[!INCLUDE [hb-series-summary](./includes/hb-series-summary.md)]
-
-[View the full hb-series page](./hb-series.md).
-
-[!INCLUDE [hb-series-specs](./includes/hb-series-specs.md)]
-
 
 ### HBv2-series
 [!INCLUDE [hbv2-series-summary](./includes/hbv2-series-summary.md)]
 
-[View the full hbv2-series page](./hbv2-series.md).
+[View the full hbv2-series page](../../hbv2-series.md).
 
 [!INCLUDE [hbv2-series-specs](./includes/hbv2-series-specs.md)]
 
@@ -40,7 +42,7 @@ ms.author: mattmcinnes
 ### HBv3-series
 [!INCLUDE [hbv3-series-summary](./includes/hbv3-series-summary.md)]
 
-[View the full hbv3-series page](./hbv3-series.md).
+[View the full hbv3-series page](../../hbv3-series.md).
 
 [!INCLUDE [hbv3-series-specs](./includes/hbv3-series-specs.md)]
 
@@ -48,12 +50,17 @@ ms.author: mattmcinnes
 ### HBv4-series
 [!INCLUDE [hbv4-series-summary](./includes/hbv4-series-summary.md)]
 
-[View the full hbv4-series page](./hbv4-series.md).
+[View the full hbv4-series page](../../hbv4-series.md).
 
 [!INCLUDE [hbv4-series-specs](./includes/hbv4-series-specs.md)]
 
 
-### Previous-generation HB family series
-For older sizes, see [previous generation sizes](../previous-gen-sizes-list.md#hpc-previous-gen-sizes).
+### HBv5-series
+[!INCLUDE [hbv5-series-summary](./includes/hbv5-series-summary.md)]
+
+[View the full hbv5-series page](hbv5-series.md).
+
+[!INCLUDE [hbv5-series-specs](./includes/hbv5-series-specs.md)]
+
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]

@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a developer working on stateful services in a distributed environment, I want to implement and execute unit tests that account for replica behavior and state consistency, so that I can ensure my services function correctly under different contexts and avoid data discrepancies during role changes.
 ---
 
 # Create unit tests for Stateful Services

@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a software developer, I want to test service-to-service communication scenarios in a distributed application, so that I can ensure robustness and handle service instance movements or failures gracefully within my microservices architecture.
 ---
 
 # Service Fabric testability scenarios: Service communication

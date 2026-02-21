@@ -8,6 +8,7 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-windows
 ms.date: 03/01/2023
 ms.author: rogarana
+# Customer intent: "As an IT admin, I want to export a managed disk's VHD to a storage account in a different region using PowerShell, so that I can facilitate regional expansion and ensure data availability across locations."
 ---
 
 # Export/Copy the VHD of a managed disk to a storage account in different region with PowerShell (Windows)
@@ -32,8 +33,8 @@ This script uses the following commands to generate SAS URI of a managed disk an
 | Command | Notes |
 |---|---|
 | [Grant-AzDiskAccess](/powershell/module/az.compute/grant-azdiskaccess) | Generates SAS URI for a managed disk that is used to copy the underlying VHD to a storage account. |
-| [New-AzureStorageContext](/powershell/module/azure.storage/new-azurestoragecontext) | Creates a storage account context using the account name and key. This context can be used to perform read/write operations on the storage account. |
-| [Start-AzureStorageBlobCopy](/powershell/module/azure.storage/start-azurestorageblobcopy) | Copies the underlying VHD of a snapshot to a storage account |
+| [New-AzStorageContext](/powershell/module/az.storage/new-azstoragecontext) | Creates a storage account context using the account name and key. This context can be used to perform read/write operations on the storage account. |
+| [Start-AzStorageBlobCopy](/powershell/module/az.storage/start-azstorageblobcopy) | Copies the underlying VHD of a snapshot to a storage account |
 
 ## Next steps
 

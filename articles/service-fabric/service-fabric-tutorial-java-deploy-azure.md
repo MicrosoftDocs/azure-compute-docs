@@ -5,9 +5,12 @@ ms.topic: tutorial
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
-ms.custom: devx-track-extended-java
 services: service-fabric
 ms.date: 07/14/2022
+ms.custom:
+  - devx-track-extended-java
+  - sfi-image-nochange
+# Customer intent: "As a Java developer, I want to deploy my Java application to a Service Fabric cluster in Azure, so that I can leverage cloud-based resources for scalability and manageability of my application."
 ---
 
 # Tutorial: Deploy a Java application to a Service Fabric cluster in Azure
@@ -33,7 +36,7 @@ In this tutorial series you learn how to:
 
 Before you begin this tutorial:
 
-* If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn)
 * [Install the Azure CLI](/cli/azure/install-azure-cli)
 * Install the Service Fabric SDK for [Mac](service-fabric-get-started-mac.md) or [Linux](service-fabric-get-started-linux.md)
 * [Install Python 3](https://wiki.python.org/moin/BeginnersGuide/Download)

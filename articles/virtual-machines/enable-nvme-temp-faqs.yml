@@ -5,24 +5,20 @@ metadata:
   ms.service: azure-virtual-machines
   ms.topic: faq
   ms.custom: references_regions
-  ms.date: 12/13/2024
-title: FAQ for temp NVMe disks
+  ms.date: 11/24/2025
+
+title: FAQ for Temp NVMe disks
 summary: |
-  This article addresses some common questions about support for temporary NVM Express (temp NVMe) disks on virtual machines (VMs) created in Azure.
-
-
+  This article addresses some common questions about support for temporary Non-Volatile Memory Express (NVMe) disks on virtual machines (VMs) created in Azure. In this article, the term "temp disk" is referring to the temporary disk that is created on local SSD.   
 
 sections:
   - name: Azure Storage considerations for temp NVMe disks
     questions:
       - question: |
-          What are the prerequisites to enable the temp NVMe interface on my VM?
+          What are the prerequisites to create temp disk that uses NVMe interface for my VM?
         answer: |
-          To enable the temp NVMe interface on your VM, you must meet the following prerequisites:
-          
-          - Choose a VM family that supports NVMe (such as v6 VMs). 
-          - Select an operating system that supports NVMe
-          - Make sure that you're using a Generation 2 VM, because NVMe supports only Generation 2 images.          
+          NVMe support for local temp disks varies at a virtual machine (VM) family level. All of the new v6 VMs with local disk support NVMe temp disks, but v5 VMs and earlier versions may not support NVMe local temp disks, as most of those sizes local disks are on the SCSI interface. Some VM families like L-series, include attached NVMe SSDs from Lsv2 generation VMs onward. Refer to the VM family overviews to determine if NVMe temp disks are supported. Also, note your Guest OS needs to have NVMe driver support in order to use local NVMe, which most of the recent OS releases have by default.             
+  
       - question: |
           How are temp NVMe disks in my Dl/D/E_v6 VMs different from remote NVMe disks?
         answer: |
@@ -38,13 +34,29 @@ sections:
           - You can span separate NVMe drives into one as needed after the VM starts up.
           - A Windows pagefile is placed on persistent OS disks (unless you're using the ephemeral OS feature), but you can move it to temp NVMe disks as needed after the VM starts up.
           - The ephemeral OS feature, if you use it, converts one or several NVMe disks (depending on the VM and image size) into a slower SCSI/VHD-based disk, similar to how it was on v5 and older VMs. For the larger VM sizes, the remaining drives stay as raw unformatted NVMe.
-          - The [list of resource SKUs in the REST API](https://learn.microsoft.com/en-us/rest/api/compute/resource-skus/list?tabs=HTTP) exposes several capabilities of virtual machines. The next iteration of VM sizes uses the faster and more efficient NVMe protocol for local storage, instead of the SCSI protocol that earlier VM sizes use.
+          - The [list of resource Stock Keeping Units (SKUs) in the REST API](https://learn.microsoft.com/en-us/rest/api/compute/resource-skus/list?tabs=HTTP) exposes several capabilities of virtual machines. The next iteration of VM sizes uses the faster and more efficient NVMe protocol for local storage, instead of the SCSI protocol that earlier VM sizes use.
           
             For Azure virtual machines, SCSI-based local storage is a temporary resource disk, and the `MaxResourceVolumeMB` value specifies the size of this disk. In contrast, the `NVMeDiskSizeInMiB` value specifies the size of NVMe-based local storage. 
       - question: |
-          How can I encrypt my temp NVMe disks?
+          What is the minimum encryption offered by Azure for the temp NVMe disks?
         answer: |
-          Temp NVMe disks support the feature of data encryption at rest. A unique data encryption key (DEK) encrypts the data for each temp NVMe disk assigned to the VM. A key encryption key (KEK) helps protect the DEK. When you delete a VM, the data on its temp NVMe disk is cryptographically erased. 
+          All local NVMe disks on Azure virtual machines (VMs) have built-in encryption enabled by default for data protection. Temp NVMe disks support the feature of data encryption at rest. A unique data encryption key (DEK) encrypts the data for each temp NVMe disk assigned to the VM. A key encryption key (KEK) helps protect the DEK. When you delete a VM, the data on its temp NVMe disk is cryptographically erased. All the v6 VMs that are introduced from 2024 and onward, have their local NVMe drives encrypted by default using hardware based encryption with a Platform Managed Key.
+            - Data is encrypted using XTS-AES-256, AES-256-GCM, or a stronger cipher.
+            - Device generates a unique Media Encryption Key (MEK) for each disk in the VM.
+            - The MEK is:
+                - Generated and stored entirely within the device hardware.
+                - Never exposed to the host, VM, or any external component including the operator, or Azure system.
+            - All encryption and decryption operations occur within the device using the MEK.
+            - The MEK is destroyed when you delete your VM, ensuring that no component can access the data afterward.
+      - question:  |
+          What is Enhanced Encryption at Rest?
+        answer:  |
+          Enhanced Encryption at rest is another layer of protection that's available on the Azure V6-series and Lsv4-series VMs through support for TCG-OPAL standards. You don't need to take any action for this feature, it's the default for these VM types.
+            - Azure infrastructure generates and securely stores a PIN value for each MEK.
+            - The PIN is passed through a Key Derivation Function (KDF) within the storage device to generate a Key Encrypting Key (KEK). The PIN acts as a Platform management key (PMK). 
+            - The MEK is encrypted using the KEK and stored internally within the storage device.
+            - The KEK isn't stored anywhere and the storage device dynamically generates the KEK when the PIN is used to successfully authenticate it. Without this PIN, the device can't decrypt its own stored data—even if physically accessed.
+            - The storage device is authenticated when the VM starts. It’s locked when the VM stops, which ensures data is accessible only while the VM is running.
       - question: |
           How can I resize a v5 or older VM with a temp disk to v6?
         answer: |
@@ -181,7 +193,7 @@ sections:
           elif [ -e "/etc/mdadm.conf" ]; then
               mdadm_conf_path="/etc/mdadm.conf"
           else
-              print "Couldn't find mdadm.conf file"
+              printf "Couldn't find mdadm.conf file"
               exit 1
           fi
            
@@ -311,6 +323,11 @@ sections:
            
           exit 0
           ```
+          For RHEL/CentOS based distributions, replace `update-initramfs -u` to `dracut --force` to regenerate initramfs file. 
+          If script stops execution with "Couldn't find mdadm.conf file", then you can create mdadm.conf file using the following command:
+          ```
+          sudo touch /etc/mdadm/mdadm.conf
+          ```
       - question: |
           How can I move the Windows pagefile from an OS disk to a temp NVMe disk?
         answer: |
@@ -409,3 +426,8 @@ sections:
           If the VM moved to new hardware, these drives unmount, and new unmounted disks are presented to the operating system when it comes back up. If the VM didn't change hardware, the temp NVMe disks might still be present. The preceding script for mounting the drives checks for unmounted drives before it tries to mount. 
           
           It's a best practice to run the mounting script automatically every time the VM starts and delay any other startup scripts that need the drives until after the mounting script finishes running.
+
+      - question: |
+          Why are my temporary disk write speeds different than published specifications?
+        answer: |
+          Temporary disk performance is influenced by several factors, such as block size, workload read/write patterns, queue depth (QD). Published performance specifications represent best-case scenarios, based on 4k random block sizes with multiple workers (≥8) at QD≥64 per worker for peak IOPS, and large sequential block sizes (≥128k) for maximum throughput. Write performance may also be affected by data patterns, SSD state (overprovisioned capacity, percent of LBA written), and background activities such as garbage collection. Performance figures assume the device is in a fresh-out-of-box (FOB) state, which provides the highest speeds. Once the disk reaches steady state after SNIA-standard preconditioning specifications, write performance may be lower than FOB levels.

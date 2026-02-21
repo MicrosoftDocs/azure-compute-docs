@@ -1,12 +1,14 @@
 ---
 title: Resource Manager Architecture 
 description: An overview of and architectural information about the Azure Service Fabric Cluster Resource Manager service.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+ms.update-cycle: 1095-days
+# Customer intent: As a DevOps engineer managing a cloud cluster, I want to optimize resource allocation among services, so that I can ensure high availability and performance while responding dynamically to changes in service demands and node availability.
 ---
 
 # Cluster resource manager architecture overview

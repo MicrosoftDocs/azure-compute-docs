@@ -5,8 +5,9 @@ author: roygara
 ms.service: azure-disk-storage
 ms.topic: sample
 ms.custom: devx-track-azurepowershell
-ms.date: 07/01/2024
+ms.date: 12/19/2024
 ms.author: rogarana
+# Customer intent: As a cloud administrator, I want to create managed disks from VHD files using PowerShell, so that I can efficiently manage virtual machines and optimize storage resources within my Azure environment.
 ---
 
 # Create a managed disk from a VHD file in a storage account in same or different subscription with PowerShell
@@ -79,10 +80,10 @@ Set-AzContext -Subscription $subscriptionId
 #$HyperVGeneration = 'yourHyperVGen'
 
 #If you're creating an OS disk, add -HyperVGeneration and -OSType parameters
-$diskConfig = New-AzDiskConfig -SkuName $sku -Location $location -DiskSizeGB $diskSize -SourceUri $vhdUri -CreateOption Import
+$diskConfig = New-AzDiskConfig -SkuName $sku -Location $location -DiskSizeGB $diskSize -StorageAccountId $storageAccountId -SourceUri $vhdUri -CreateOption Import
 
 #Create Managed disk
-New-AzDisk -DiskName $diskName -Disk $diskConfig -ResourceGroupName $resourceGroupName -StorageAccountId $storageAccountId
+New-AzDisk -DiskName $diskName -Disk $diskConfig -ResourceGroupName $resourceGroupName
 ```
 
 ## Script explanation

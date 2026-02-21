@@ -1,12 +1,14 @@
 ---
 title: Azure Service Fabric cluster scaling 
 description: Learn about scaling Azure Service Fabric clusters in or out and up or down. As application demands change, so can Service Fabric clusters.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+ms.update-cycle: 1095-days
+# Customer intent: As a cloud architect, I want to understand the scaling options for Azure Service Fabric clusters, so that I can effectively manage application resources based on varying workload demands.
 ---
 
 # Scaling Azure Service Fabric clusters

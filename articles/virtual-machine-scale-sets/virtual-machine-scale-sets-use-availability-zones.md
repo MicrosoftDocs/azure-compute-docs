@@ -3,12 +3,13 @@ title: Create an Azure scale set that uses Availability Zones
 description: Learn how to create Azure Virtual Machine Scale Sets that use Availability Zones for increased redundancy against outages
 author: mimckitt
 ms.author: mimckitt
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: availability
-ms.date: 06/14/2024
-ms.reviewer: jushiman, fisteele
+ms.date: 03/21/2025
+ms.reviewer: cynthn, fisteele
 ms.custom: mimckitt, devx-track-azurecli, devx-track-azurepowershell, devx-track-arm-template
+# Customer intent: As a cloud architect, I want to create Azure Virtual Machine Scale Sets across Availability Zones, so that I can ensure high availability and resilience against data center outages for my applications.
 ---
 
 # Create a Virtual Machine Scale Set that uses Availability Zones
@@ -19,15 +20,19 @@ To protect your Virtual Machine Scale Sets from datacenter-level failures, you c
 
 ## Design considerations for availability zones
 
-Virtual Machine Scale Sets supports three zonal deployment models:
+Virtual Machine Scale Sets supports three availability zone deployment models:
 
-- Zone redundant or zone spanning (recommended)
+- Zone spanning (recommended)
 - Zonal or zone aligned (single zone)
-- Regional
+- Regional (also called *nonzonal*)
 
-### Zone redundant or zone spanning
+<a name="zone-redundant-or-zone-spanning"></a>
 
-A zone redundant or zone spanning scale set spreads instances across all selected zones, `"zones": ["1","2","3"]`. By default, the scale set performs a best effort approach to evenly spread instances across selected zones. However, you can specify that you want strict zone balance by setting `"zoneBalance": "true"` in your deployment. Each VM and its disks are zonal, so they are pinned to a specific zone. Instances between zones are connected by high-performance network with low latency. In the event of a zonal outage or connectivity issue, connectivity to instances within the affected zone may be compromised, while instances in other availability zones should be unaffected. You may add capacity to the scale set during a zonal outage, and the scale set adds more instances to the unaffected zones. When the zone is restored, you may need to scale down your scale set to the original capacity. A best practice would be to configure [autoscale](virtual-machine-scale-sets-autoscale-overview.md) rules based on CPU or memory usage. The autoscale rules would allow the scale set to respond to a loss of the VM instances in that one zone by scaling out new instances in the remaining operational zones.
+### Zone spanning
+
+A zone spanning scale set spreads instances across all selected zones, `"zones": ["1","2","3"]`. This is similar to zone redundant deployments in other Azure services.
+
+By default, the scale set performs a best effort approach to evenly spread instances across selected zones. However, you can specify that you want strict zone balance by setting `"zoneBalance": "true"` in your deployment. Each VM and its disks are zonal, so they are pinned to a specific zone. Instances between zones are connected by high-performance network with low latency. In the event of a zone outage or connectivity issue, connectivity to instances within the affected zone may be compromised, while instances in other availability zones should be unaffected. You may add capacity to the scale set during a zone outage, and the scale set adds more instances to the unaffected zones. When the zone is restored, you may need to scale down your scale set to the original capacity. A best practice would be to configure [autoscale](virtual-machine-scale-sets-autoscale-overview.md) rules based on CPU or memory usage. The autoscale rules would allow the scale set to respond to a loss of the VM instances in that one zone by scaling out new instances in the remaining operational zones.
 
 Spreading instances across availability zones meets the 99.99% SLA for instances spread across availability zones, and is recommended for most workloads in Azure.
 
@@ -35,18 +40,20 @@ Spreading instances across availability zones meets the 99.99% SLA for instances
 
 A zonal or zone aligned scale set places instances in a single availability zone `"zones": ['1']`. Each VM and its disks are zonal, so they are pinned to a specific zone. This configuration is primarily used when you need lower latency between instances.
 
-### Regional
+<a name="regional"></a>
 
-A regional Virtual Machine Scale Set is when the zone assignment isn't explicitly set (`"zones"=[]` or `"zones"=null`). In this configuration, the scale set creates Regional (not-zone pinned) instances and implicitly places instances throughout the region. There is no guarantee for balance or spread across zones, or that instances land in the same availability zone. Disk colocation is guaranteed for Ultra and Premium v2 disks, best effort for Premium V1 disks, and not guaranteed for Standard SKU (SSD or HDD) disks.
+### Regional (nonzonal)
 
-In the rare case of a full zonal outage, any or all instances within the scale set may be impacted.
+A regional (nonzonal) Virtual Machine Scale Set is when the zone assignment isn't explicitly set (`"zones"=[]` or `"zones"=null`). In this configuration, the scale set creates regional (nonzonal, not zone-pinned) instances and implicitly places instances throughout the region. There is no guarantee for balance or spread across zones, or that instances land in the same availability zone. Disk colocation is guaranteed for Ultra and Premium v2 disks, best effort for Premium V1 disks, and not guaranteed for Standard SKU (SSD or HDD) disks.
+
+In the rare case of a full zone outage, any or all instances within the scale set may be impacted.
 
 ### Fault domains and availability zones
 A fault domain is a fault isolation group within an availability zone or datacenter of hardware nodes that share the same power, networking, cooling, and platform maintenance schedule. VM instances that are on different fault domains are not likely to be impacted by the same planned or unplanned outage. You can specify how instances are spread across fault domains within a region or zone.
 
 - Max spreading (platformFaultDomainCount = 1)
 - Fixed spreading (platformFaultDomainCount = 5)
-- Fixed spreading aligned with storage disk fault domains (platformFaultDomainCount = 2 or 3, for regional deployments only)
+- Fixed spreading aligned with storage disk fault domains (platformFaultDomainCount = 2 or 3, for regional (nonzonal) deployments only)
 
 With max spreading, the scale set spreads your VMs across as many fault domains as possible within each zone. This spreading could be across greater or fewer than five fault domains per zone. With static fixed spreading, the scale set spreads your VMs across the specified number of fault domains. If the scale set can't allocate to at least the specified fault domain count to satisfy the allocation request, the request fails.
 
@@ -60,7 +67,7 @@ With max spreading, the scale set spreads your VMs across as many fault domains 
 > [!IMPORTANT]
 > Placement groups only apply to Virtual Machine Scale Sets running in Uniform orchestration mode.
 
-When you deploy a scale set, you can deploy with a single [placement group](./virtual-machine-scale-sets-placement-groups.md) per Availability Zone, or with multiple per zone. For regional (non-zonal) scale sets, the choice is to have a single placement group in the region or to have multiple in the region. If the scale set property called `singlePlacementGroup` is set to false, the scale set can be composed of multiple placement groups and has a range of 0-1,000 VMs. When set to the default value of true, the scale set is composed of a single placement group, and has a range of 0-100 VMs. For most workloads, we recommend multiple placement groups, which allows for greater scale. In API version *2017-12-01*, scale sets default to multiple placement groups for single-zone and cross-zone scale sets, but they default to single placement group for regional (non-zonal) scale sets.
+When you deploy a scale set, you can deploy with a single [placement group](./virtual-machine-scale-sets-placement-groups.md) per Availability Zone, or with multiple per zone. For regional (nonzonal) scale sets, the choice is to have a single placement group in the region or to have multiple in the region. If the scale set property called `singlePlacementGroup` is set to false, the scale set can be composed of multiple placement groups and has a range of 0-1,000 VMs. When set to the default value of true, the scale set is composed of a single placement group, and has a range of 0-100 VMs. For most workloads, we recommend multiple placement groups, which allows for greater scale. In API version *2017-12-01*, scale sets default to multiple placement groups for single-zone and cross-zone scale sets, but they default to single placement group for regional (nonzonal) scale sets.
 
 
 
@@ -69,19 +76,7 @@ When you deploy a scale set, you can deploy with a single [placement group](./vi
 
 ### Zone balancing
 
-For scale sets deployed across multiple zones, you also have the option of choosing "best effort zone balance" or "strict zone balance." A scale set is considered "balanced" if each zone has the same number of VMs +\\- 1 VM as all other zones for the scale set. For example:
-
-- A scale set with 2 VMs in zone 1, 3 VMs in zone 2, and 3 VMs in zone 3 is considered balanced. There is only one zone with a different VM count and it is only 1 less than the other zones.
-- A scale set with 1 VM in zone 1, 3 VMs in zone 2, and 3 VMs in zone 3 is considered unbalanced. Zone 1 has 2 fewer VMs than zones 2 and 3.
-
-It's possible that VMs in the scale set are successfully created, but extensions on those VMs fail to deploy. These VMs with extension failures are still counted when determining if a scale set is balanced. For instance, a scale set with 3 VMs in zone 1, 3 VMs in zone 2, and 3 VMs in zone 3 is considered balanced even if all extensions failed in zone 1 and all extensions succeeded in zones 2 and 3.
-
-With best-effort zone balance, the scale set attempts to scale in and out while maintaining balance. However, if for some reason zone balance isn't possible (for example, if one zone goes down, the scale set can't create a new VM in that zone), the scale set allows temporary imbalance to successfully scale in or out. On subsequent scale-out attempts, the scale set adds VMs to zones that need more VMs for the scale set to be balanced. Similarly, on subsequent scale in attempts, the scale set removes VMs from zones that need fewer VMs for the scale set to be balanced. With "strict zone balance", the scale set fails any attempts to scale in or out if doing so would cause unbalance.
-
-To use best-effort zone balance, set *zoneBalance* to *false*. This setting is the default in API version *2017-12-01*. To use strict zone balance, set *zoneBalance* to *true*.
-
->[!NOTE]
-> The `zoneBalance` property can only be set if the zones property of the scale set contains more than one zone. If there are no zones or only one zone specified, then zoneBalance property should not be set.
+For scale sets deployed across multiple zones, you also have the option of choosing "best effort zone balance" or "strict zone balance." For more information, see [Zone balancing in scale sets](./virtual-machine-scale-sets-zone-balancing.md).
 
 ## Create zone spanning or zonal scale sets
 
@@ -160,7 +155,7 @@ If you create a public IP address or a load balancer, specify the `"sku": {"name
 
 ## Update scale set to add availability zones
 
-You can modify a scale to expand the set of zones over which to spread VM instances. Expanding allows you to take advantage of higher zonal availability SLA (99.99%) versus regional availability SLA (99.95%). Or expand your scale set to take advantage of new availability zones that were not available when the scale set was created.
+You can modify a scale to expand the set of zones over which to spread VM instances. Expanding allows you to take advantage of higher availability SLA (99.99%) versus regional (nonzonal) availability SLA (99.95%). Or expand your scale set to take advantage of new availability zones that were not available when the scale set was created.
 
 This feature can be used with API version 2023-03-01 or greater.
 
@@ -168,25 +163,25 @@ This feature can be used with API version 2023-03-01 or greater.
 You can update the scale set to scale out instances to one or more additional availability zones, up to the number of availability zones supported by the region. For regions that support zones, the minimum number of zones is 3.
 
 > [!IMPORTANT]
-> When you expand the scale set to additional zones, the original instances are not migrated or changed. When you scale out, new instances will be created and spread evenly across the selected availability zones. Data from the original instances are not migrated to the new zones. When you scale in the scale set, any regional instances will be priorized for removal first. After that, instances will be removed based on the [scale in policy](virtual-machine-scale-sets-scale-in-policy.md).
+> When you expand the scale set to additional zones, the original instances are not migrated or changed. When you scale out, new instances will be created and spread evenly across the selected availability zones. Data from the original instances are not migrated to the new zones. When you scale in the scale set, any regional (nonzonal) instances will be priorized for removal first. After that, instances will be removed based on the [scale in policy](virtual-machine-scale-sets-scale-in-policy.md).
 
-Expanding to a zonal scale set is done in 3 steps:
+Expanding to a zone-spanning scale set is done in 3 steps:
 
-1. Prepare for zonal expansion
+1. Prepare for zone expansion
 2. Update zones parameter on the scale set
 3. Add new zonal instances and remove original instances
 
-#### Prepare for zonal expansion
+#### Prepare for zone expansion
 
 > [!WARNING]
-> This feature allows you to add zones to the scale set. You can't go back to a regional scale set or remove zones once they have been added.
+> This feature allows you to add zones to the scale set. You can't go back to a regional (nonzonal) scale set or remove zones once they have been added.
 
-In order to prepare for zonal expansion:
+In order to prepare for zone expansion:
 * [Check that you have enough quota](../virtual-machines/quotas.md) for the VM size in the selected region to handle more instances.
 * Check that the VM size and disk types you are using are available in all the desired zones. You can use the [Compute Resources SKUs API](/rest/api/compute/resource-skus/list?tabs=HTTP) to determine which sizes are available in which zones
-* Validate that the scale set configuration is valid for zonal scale sets:
-    * `platformFaultDomainCount` must be set to 1 or 5. Fixed spreading with 2 or 3 fault domains isn't supported for zonal deployments.
-    * Capacity reservations are not supported during zone expansion. Once the scale set is fully zonal (no more regional instances), you can add a capacity reservation group to the scale set.
+* Validate that the scale set configuration is valid for zonal and zone-spanning scale sets:
+    * `platformFaultDomainCount` must be set to 1 or 5. Fixed spreading with 2 or 3 fault domains isn't supported for zonal and zone-spanning scale sets.
+    * Capacity reservations are not supported during zone expansion. Once the scale set is fully zone-spanning or zonal (no more regional (nonzonal) instances), you can add a capacity reservation group to the scale set.
     * Azure Dedicated Host deployments are not supported.
 
 #### Update the zones parameter on the scale set
@@ -196,7 +191,7 @@ Update the scale set to change the zones parameter.
 ### [Azure portal](#tab/portal-2)
 
 1. Navigate to the scale set you want to update
-1. On the Properties tab of the scale set landing page, find the **Availability zone** property and press **Edit**
+1. On the Availability tab of the scale set landing page, find the **Availability zone** property and press **Edit**
 1. On the **Edit Location** dialog box, select the desired zone(s)
 1. Select **Apply**
 
@@ -237,13 +232,7 @@ PATCH /subscriptions/subscriptionid/resourceGroups/resourcegroupo/providers/Micr
 
 ### Add new zonal instances and remove original instances
 
-#### Manually scale out and in
-
-[Update the capacity](virtual-machine-scale-sets-autoscale-overview.md) of the scale set to add more instances. The new capacity should be set to the original capacity plus the number of new instances. For example, if your scale set had 5 regional instances and you would like to scale out so that you have 3 instances in each of 3 zones, you should set the capacity to 14.
-
-You can update the zones parameter and the scale set capacity in the same ARM template or REST API call.
-
-When you are satisfied that the new instances are ready, scale in your scale set to remove the original regional instances. You can either manually delete the specific regional instances, or scale in by reducing the scale set capacity. When scaling in via reducing scale set capacity, the platform will always prefer removing the regional instances, then follow the scale in policy.
+You can manually balance your scale set across zones by triggering a scale-out operation and then scaling in. For more details, see [How to manually balance your scale set](./virtual-machine-scale-sets-zone-balancing.md#how-to-manually-balance-your-scale-set).
 
 ### Known issues and limitations
 
@@ -253,11 +242,11 @@ When you are satisfied that the new instances are ready, scale in your scale set
 
 * You can't remove or replace zones, only add zones
 
-* You can't update from a zone spanning or zonal scale set to a regional scaleset.
+* You can't update from a zone spanning or zonal scale set to a regional (nonzonal) scaleset.
 
-* `platformFaultDomainCount` must be set to 1 or 5. Fixed spreading with 2 or 3 fault domains isn't supported for zonal deployments.
+* `platformFaultDomainCount` must be set to 1 or 5. Fixed spreading with 2 or 3 fault domains isn't supported for zone-spanning or zonal deployments.
 
-* Capacity reservations are not supported during zone expansion. Once the scale set is fully zonal (no more regional instances), you can add a capacity reservation group to the scale set.
+* Capacity reservations are not supported during zone expansion. Once the scale set is fully zone-spanning or zonal (no more regional (nonzonal) instances), you can add a capacity reservation group to the scale set.
 
 * Azure Dedicated Host deployments are not supported
 

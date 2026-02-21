@@ -1,17 +1,21 @@
 ---
 title: Tutorial - Use a custom VM image in a scale set with Azure CLI
 description: Learn how to use the Azure CLI to create a custom VM image that you can use to deploy a Virtual Machine Scale Set
-author: ju-shim
+author: cynthn
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: shared-image-gallery
 ms.topic: tutorial
 ms.date: 10/28/2024
 ms.reviewer: mimckitt
-ms.author: jushiman
+ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli, innovation-engine
+# Customer intent: As a cloud architect, I want to create and utilize a custom VM image for a scale set using the CLI, so that I can efficiently deploy pre-configured VM instances that meet my application's requirements.
 ---
 
 # Tutorial: Create and use a custom image for Virtual Machine Scale Sets with the Azure CLI
+
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://go.microsoft.com/fwlink/?linkid=2303113)
+
 When you create a scale set, you specify an image to be used when the VM instances are deployed. To reduce the number of tasks after VM instances are deployed, you can use a custom VM image. This custom VM image includes any required application installs or configurations. Any VM instances created in the scale set use the custom VM image and are ready to serve your application traffic. In this tutorial you learn how to:
 
 > [!div class="checklist"]

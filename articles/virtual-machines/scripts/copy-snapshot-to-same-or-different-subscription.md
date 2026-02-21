@@ -7,6 +7,7 @@ ms.topic: sample
 ms.date: 02/22/2023
 ms.author: rogarana
 ms.custom: mvc, devx-track-azurecli
+# Customer intent: As a cloud administrator, I want to copy managed disk snapshots across subscriptions using CLI scripts, so that I can efficiently manage storage costs and improve data reliability in my cloud environment.
 ---
 
 # Copy snapshot of a managed disk to same or different subscription with CLI

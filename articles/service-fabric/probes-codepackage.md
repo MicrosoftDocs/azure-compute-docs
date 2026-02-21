@@ -1,12 +1,13 @@
 ---
 title: Azure Service Fabric probes
 description: How to model a liveness and readiness probe in Azure Service Fabric by using application and service manifest files.
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+# Customer intent: As a cloud application developer, I want to configure liveness and readiness probes in Service Fabric manifest files, so that I can ensure my application instances are properly monitored and can handle traffic efficiently.
 ---
 
 # Service Fabric Probes
@@ -106,7 +107,28 @@ The HTTP probe has additional properties that you can set:
 * `host`: The host IP address to connect to.
 
 > [!NOTE]
-> Port and scheme is not supported for non-containerized applications. For this scenario please use **EndpointRef="EndpointName"** attribute. Replace 'EndpointName' with the name from the Endpoint defined in ServiceManifest.xml.
+> Port is not supported for non-containerized applications. For this scenario please use **EndpointRef="EndpointName"** attribute. Replace 'EndpointName' with the name from the Endpoint defined in ServiceManifest.xml.
+> 
+> If you use `EndpointRef` with an HTTP endpoint, the `scheme` attribute is optional as HTTP is the default. If you use `EndpointRef` with an HTTPS endpoint, you must explicitly set the `scheme` attribute to "https". 
+```xml
+  <ServiceManifestImport>
+    <ServiceManifestRef ServiceManifestName="Stateless1Pkg" ServiceManifestVersion="1.0.0" />
+    <ConfigOverrides />
+    <Policies>
+      <CodePackagePolicy CodePackageRef="Code">
+        <Probes>
+          <Probe Type="Readiness" FailureThreshold="10" SuccessThreshold="2" InitialDelaySeconds="600" PeriodSeconds="60" TimeoutSeconds="20">
+            <HttpGet Path="/" EndpointRef="ServiceEndpoint" Scheme="https">
+            </HttpGet>
+          </Probe>
+        </Probes>
+      </CodePackagePolicy>
+    </Policies>
+  </ServiceManifestImport>
+```
+
+> [!NOTE]
+> Service Fabric HTTPS probes do not support client certificate authentication during the TLS handshake. For details on the handshake process, see the [TLS Handshake Protocol][tls-handshake-link].
 >
 
 ### TCP probe
@@ -164,4 +186,5 @@ See the following article for related information:
 [health-introduction-link]: service-fabric-health-introduction.md
 [application-model-link]: service-fabric-application-model.md
 [hosting-model-link]: service-fabric-hosting-model.md
+[tls-handshake-link]: /windows/win32/secauthn/tls-handshake-protocol
 

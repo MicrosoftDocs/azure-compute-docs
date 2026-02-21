@@ -1,28 +1,25 @@
 ---
-title: Dlsv6 size series (Preview)
+title: Dlsv6 size series
 description: Information on and specifications of the Dlsv6-series sizes
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
-ms.date: 07/29/2024
+ms.topic: concept-article
+ms.date: 01/28/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
+# Customer intent: As an IT administrator, I want to understand the specifications and capabilities of the Dlsv6 series virtual machines, so that I can make informed decisions when selecting the appropriate VM size for my cloud computing needs.
 ---
 
-# Dlsv6 sizes series (Preview)
+# Dlsv6 sizes series
 
-[!INCLUDE [dlsv6-summary](./includes/dlsv6-series-summary.md)]
-
-> [!NOTE]
-> - This VM series is currently in **Preview**. 
-> - See the [Preview Terms Of Use | Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability. 
+[!INCLUDE [dlsv6-summary](./includes/dlsv6-series-summary.md)] 
 
 ## Host specifications
 [!INCLUDE [dlsv6-series-specs](./includes/dlsv6-series-specs.md)]
 
 ## Feature support
-[Premium Storage](../../premium-storage-performance.md): Supported <br>[Premium Storage caching](../../premium-storage-performance.md): Supported <br>[Live Migration](../../maintenance-and-updates.md): Not Supported <br>[Memory Preserving Updates](../../maintenance-and-updates.md): Supported <br>[Generation 2 VMs](../../generation-2.md): Supported <br>[Generation 1 VMs](../../generation-2.md): Not Supported <br>[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported <br>[Ephemeral OS Disk](../../ephemeral-os-disks.md): Not Supported <br>[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Supported <br>
+[Premium Storage](../../premium-storage-performance.md): Supported <br>[Premium Storage caching](../../premium-storage-performance.md): Supported <br>[Live Migration](../../maintenance-and-updates.md): Supported <br>[Memory Preserving Updates](../../maintenance-and-updates.md): Supported <br>[Generation 2 VMs](../../generation-2.md): Supported <br>[Generation 1 VMs](../../generation-2.md): Not Supported <br>[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported <br>[Ephemeral OS Disk](../../ephemeral-os-disks.md): Not Supported <br>[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Supported <br>
 
 ## Sizes in series
 

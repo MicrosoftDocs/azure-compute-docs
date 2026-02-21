@@ -5,10 +5,12 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
-ms.topic: conceptual
-ms.date: 08/29/2024
+ms.topic: concept-article
+ms.date: 11/17/2025
+ms.update-cycle: 1095-days
 ms.custom: references_regions
 
+# Customer intent: As a cloud architect, I want to understand the resource availability and quota limits for Azure Container Instances so that I can effectively plan and optimize container deployments based on regional capacities and service limitations.
 ---
 # Resource availability & quota limits for ACI
 
@@ -29,8 +31,6 @@ Certain default limits and quotas can be increased. To request an increase of on
 
 > [!IMPORTANT]  
 > Not all limit increase requests are guaranteed to be approved.
-> Deployments with GPU resources are not supported in an Azure virtual network deployment and are only available on Linux container groups.
-> Using GPU resources (preview) is not fully supported yet and any support is provided on a best-effort basis.
 
 ### Unchangeable (Hard) Limits 
 
@@ -51,49 +51,41 @@ The following limits are default limits that can’t be increased through a quot
 | --- | :--- | 
 | Standard sku container groups per region per subscription | 100 | 
 | Standard sku cores (CPUs) per region per subscription | 100 |  
-| Standard sku cores (CPUs) for V100 GPU per region per subscription | 0 | 
 | Container group creates per hour |300<sup>1</sup> | 
 | Container group creates per 5 minutes | 100<sup>1</sup> | 
 | Container group deletes per hour | 300<sup>1</sup> | 
 | Container group deletes per 5 minutes | 100<sup>1</sup> |
 
 > [!NOTE]
-> 1: Indicates that the feature maximum is configurable and may be increased through a support request. For more information on how to request a quota increase, please see the [How to request a quota increase section of Increase VM-family vCPU quotes](/azure/quotas/per-vm-quota-requests).
+> 1: Indicates that the feature maximum is configurable and may be increased through a support request. For more information on how to request a quota increase, see the [How to request a quota increase section of Increase VM-family vCPU quotes](/azure/quotas/per-vm-quota-requests).
 >
 > You can also create a support ticket if you'd like to discuss your specific needs with the support team.
 
 ## Standard Container Resources 
 
-### Linux Container Groups 
-
 By default, the following resources are available general purpose (standard core SKU) containers in general deployments and [Azure virtual network](container-instances-vnet.md) deployments) for Linux & Windows containers. These maximums are hard limits and can't be increased.
+
+For a general list of available regions for Azure Container Instances, see [available regions](https://azure.status.microsoft/status/#services/). 
+
+> [!IMPORTANT]
+> If you're encountering deployment failures when creating container groups with more than 4 vCPUs and 16 GB of memory, it may be due to regional capacity limits. To resolve this, you can request a quota increase to enable additional capacity for your workloads. In the meantime, consider deploying to another region, where additional capacity may be more available.
 
 | Max CPU | Max Memory (GB) | Virtual network Max CPU | Virtual network Max Memory (GB) | Storage (GB) | 
 | :---: | :---: | :----: | :-----: | :-------: |
-| 4 | 16 | 4 | 16 | 50 | 
+| 31 | 240 | 31 | 240 | 50 | 
 
-For a general list of available regions for Azure Container Instances, see [available regions](https://azure.microsoft.com/regions/services/). 
+The following resources are available in all Azure Regions supported by Azure Container Instances. For a general list of available regions for Azure Container Instances, see [available regions](https://azure.status.microsoft/status/#services/). 
 
-### Windows Containers 
+## Confidential Container Resources
 
-The following regions and maximum resources are available to container groups with [supported and preview](./container-instances-faq.yml) Windows Server containers. These maximums are hard limits and can't be increased.
+The following maximum resources are available to a container group deployed using [Confidential Containers](container-instances-confidential-overview.md). These maximums are hard limits and can't be increased.
 
-#### Windows Server 2022 LTSC 
+> [!IMPORTANT]
+> If you're encountering deployment failures when creating container groups with more than 4 vCPUs and 16 GB of memory, it may be due to regional capacity limits. To resolve this, you can request a quota increase to enable additional capacity for your workloads. In the meantime, consider deploying to another region, where additional capacity may be more available.
 
-| 3B Max CPU | 3B Max Memory (GB) | Storage (GB) | Availability Zone support | 
-| :----: | :-----: | :-------: | 
-| 4 | 16 | 20 | Y | 
-
-#### Windows Server 2019 LTSC 
-
-> [!NOTE] 
-> 1B and 2B hosts have been deprecated for Windows Server 2019 LSTC. See [Host and container version compatibility](/virtualization/windowscontainers/deploy-containers/update-containers#host-and-container-version-compatibility) for more information on 1B, 2B, and 3B hosts. 
-
-The following resources are available in all Azure Regions supported by Azure Container Instances. For a general list of available regions for Azure Container Instances, see [available regions](https://azure.microsoft.com/regions/services/). 
-
-| 3B Max CPU | 3B Max Memory (GB) | Storage (GB) | Availability Zone support | 
-| :----: | :-----: | :-------: | 
-| 4 | 16 | 20 | Y | 
+| Max CPU | Max Memory (GB) | Virtual network Max CPU | Virtual network Max Memory (GB) | Storage (GB) | 
+| :---: | :---: | :----: | :-----: | :-------: |
+| 31 | 180 | 32 | 180 | 50 | 
 
 ## Spot Container Resources (Preview)
 
@@ -106,26 +98,10 @@ The following maximum resources are available to a container group deployed usin
 | :---: | :---: | :----: | :-----: | :-------: |
 | 4 | 16 | N/A | N/A | 50 | 
 
-## Confidential Container Resources
-
-The following maximum resources are available to a container group deployed using [Confidential Containers](container-instances-confidential-overview.md). These maximums are hard limits and can't be increased.
-
-> [!NOTE]
-> Confidential Containers are currently available in the following regions: Central India, East Asia, East US, Germany West Central, Italy North, Japan East, North Europe, Southeast Asia, Switzerland North, UAE North, West Europe, and West US.
-
-| Max CPU | Max Memory (GB) | Virtual network Max CPU | Virtual network Max Memory (GB) | Storage (GB) | 
-| :---: | :---: | :----: | :-----: | :-------: |
-| 4 | 16 | 4 | 16 | 50 | 
-
 ## GPU Container Resources (Preview) 
 
 > [!IMPORTANT]
-> K80 and P100 GPU SKUs were retired on August 31st, 2023. This is due to the retirement of the underlying VMs used: [NC Series](../virtual-machines/nc-series-retirement.md) and [NCv2 Series](../virtual-machines/ncv2-series-retirement.md) Although V100 SKUs will be available, it is recommended to use Azure Kubernetes Service instead. GPU resources are not fully supported and should not be used for production workloads. Use the following resources to migrate to AKS today: [How to Migrate to AKS](/azure/aks/aks-migration).
-
-> [!NOTE]
-> Not all limit increase requests are guaranteed to be approved.
-> Deployments with GPU resources are not supported in an Azure virtual network deployment and are only available on Linux container groups.
-> Using GPU resources (preview) is not fully supported yet and any support is provided on a best-effort basis.
+> This product is retired as of July 14, 2025.
 
 The following maximum resources are available to a container group deployed with [GPU resources](container-instances-gpu.md) (preview). These maximums are hard limits and can't be increased.
 

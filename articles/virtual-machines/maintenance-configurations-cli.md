@@ -1,14 +1,15 @@
 ---
 title: Maintenance Configurations for Azure virtual machines using the Azure CLI
 description: Learn how to control when maintenance is applied to your Azure VMs by using Maintenance Configurations and the Azure CLI.
-author: ju-shim
+author: cynthn
 ms.service: azure-virtual-machines
 ms.subservice: maintenance
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 ms.date: 07/01/2024
-ms.author: jushiman
+ms.author: cynthn
 #pmcontact: shants
+# Customer intent: "As an IT administrator managing Azure virtual machines, I want to create and assign maintenance configurations using the command-line interface, so that I can control platform update schedules effectively and minimize service disruptions."
 ---
 
 # Control updates with Maintenance Configurations and the Azure CLI
@@ -201,7 +202,7 @@ az maintenance assignment list \
    --provider-name Microsoft.Compute \
    --resource-group myMaintenanceRG \
    --resource-name myVMSS \
-   --resource-type virtualMachines \
+   --resource-type "virtualMachineScaleSets" \
    --query "[].{resource:resourceGroup, configName:name}" \
    --output table
 ```
@@ -233,7 +234,7 @@ If there are updates, the command returns only one, even if multiple updates are
     "impactType": "Freeze",
     "maintenanceScope": "Host",
     "notBefore": "2020-03-03T07:23:04.905538+00:00",
-    "resourceId": "/subscriptions/9120c5ff-e78e-4bd0-b29f-75c19cadd078/resourcegroups/DemoRG/providers/Microsoft.Compute/hostGroups/demoHostGroup/hosts/myHost",
+    "resourceId": "/subscriptions/a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1/resourcegroups/DemoRG/providers/Microsoft.Compute/hostGroups/demoHostGroup/hosts/myHost",
     "status": "Pending"
   }
 ]
@@ -264,7 +265,7 @@ az maintenance update list \
    --resource-name myHost \
    --resource-type hosts \
    --provider-name Microsoft.Compute \
-   --resource-parentname myHostGroup \
+   --resource-parent-name myHostGroup \
    --resource-parent-type hostGroups \
    --output table
 ```
@@ -316,16 +317,16 @@ az maintenance applyupdate create \
 
 ## Check the status of applying updates
 
-You can check on the progress of the updates by using `az maintenance applyupdate get`.
+You can check on the progress of the updates by using `az maintenance applyupdate show`.
 
 To see results for the last update, use `default` as the update name. Or replace `myUpdateName` with the name of the update that was returned when you ran `az maintenance applyupdate create`.
 
 ```text
 Status         : Completed
-ResourceId     : /subscriptions/12ae7457-4a34-465c-94c1-17c058c2bd25/resourcegroups/TestShantS/providers/Microsoft.Comp
+ResourceId     : /subscriptions/b1b1b1b1-cccc-dddd-eeee-f2f2f2f2f2f2/resourcegroups/TestShantS/providers/Microsoft.Comp
 ute/virtualMachines/DXT-test-04-iso
 LastUpdateTime : 1/1/2020 12:00:00 AM
-Id             : /subscriptions/12ae7457-4a34-465c-94c1-17c058c2bd25/resourcegroups/TestShantS/providers/Microsoft.Comp
+Id             : /subscriptions/b1b1b1b1-cccc-dddd-eeee-f2f2f2f2f2f2/resourcegroups/TestShantS/providers/Microsoft.Comp
 ute/virtualMachines/DXT-test-04-iso/providers/Microsoft.Maintenance/applyUpdates/default
 Name           : default
 Type           : Microsoft.Maintenance/applyUpdates
@@ -336,7 +337,7 @@ Type           : Microsoft.Maintenance/applyUpdates
 ### Isolated VM
 
 ```azurecli-interactive
-az maintenance applyupdate get \
+az maintenance applyupdate show \
    --subscription {subscriptionID} \ 
    --resource-group myMaintenanceRG \
    --resource-name myVM \
@@ -350,7 +351,7 @@ az maintenance applyupdate get \
 ### Dedicated host
 
 ```azurecli-interactive
-az maintenance applyupdate get \
+az maintenance applyupdate show \
    --subscription {subscriptionID} \ 
    --resource-group myMaintenanceRG \
    --resource-name myHost \
@@ -366,7 +367,7 @@ az maintenance applyupdate get \
 ### Virtual machine scale sets
 
 ```azurecli-interactive
-az maintenance applyupdate get \
+az maintenance applyupdate show \
    --subscription {subscriptionID} \ 
    --resource-group myMaintenanceRG \
    --resource-name myVMSS \

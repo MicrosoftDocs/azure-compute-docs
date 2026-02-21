@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 05/17/2024
+# Customer intent: As a developer, I want to implement continuous integration and continuous deployment for my Service Fabric application using Azure Pipelines, so that I can automate the build and deployment processes and ensure my application is consistently up to date in the cloud.
 ---
 
 # Tutorial: Set up CI/CD for a Service Fabric application by using Azure Pipelines
@@ -34,7 +35,7 @@ The tutorial series shows you how to:
 
 Before you begin this tutorial:
 
-* If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 * [Install Visual Studio 2019](https://www.visualstudio.com/), including the Azure development workload and the ASP.NET and web development workload.
 * [Install the Service Fabric SDK](service-fabric-get-started.md).
 * Create a Windows Service Fabric cluster in Azure, for example, by [following this tutorial](service-fabric-tutorial-create-vnet-and-windows-cluster.md).

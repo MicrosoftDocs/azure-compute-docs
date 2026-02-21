@@ -6,8 +6,14 @@ ms.author: rogarana
 ms.date: 02/10/2024
 ms.topic: how-to
 ms.service: azure-disk-storage
-ms.custom: references_regions, devx-track-azurepowershell, devx-track-azurecli
 ms.devlang: azurecli
+ms.custom:
+  - references_regions
+  - devx-track-azurepowershell
+  - devx-track-azurecli
+  - sfi-ropc-nochange
+  - portal
+# Customer intent: "As a cloud administrator, I want to deploy zone-redundant storage (ZRS) managed disks for my virtual machines, so that I can ensure high availability and resilience for my applications across multiple availability zones."
 ---
 
 # Deploy a managed disk that uses zone-redundant storage

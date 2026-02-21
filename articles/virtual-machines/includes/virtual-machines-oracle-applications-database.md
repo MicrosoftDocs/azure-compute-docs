@@ -4,6 +4,7 @@ ms.service: azure-virtual-machines
 ms.topic: include
 ms.date: 06/01/2020
 ms.author: danlep
+# Customer intent: As a database administrator, I want to understand deployment options for Oracle databases in both Azure and OCI, so that I can choose the best architecture for my application's needs while ensuring optimal performance and security.
 ---
 ### Database tier
 

@@ -7,9 +7,10 @@ ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.collection: windows
 ms.topic: how-to
-ms.date: 09/24/2018
+ms.date: 06/19/2025
 ms.author: vikancha
 ms.custom: H1Hack27Feb2017
+# Customer intent: As a cloud administrator, I want to install and verify NVIDIA GPU drivers on N-series VMs running Windows, so that I can ensure optimal performance for GPU-accelerated applications in my Azure environment.
 ---
 # Install NVIDIA GPU drivers on N-series VMs running Windows 
 
@@ -20,6 +21,9 @@ To take advantage of the GPU capabilities of Azure N-series VMs backed by NVIDIA
 If you choose to install NVIDIA GPU drivers manually, this article provides supported operating systems, drivers, and installation and verification steps. Manual driver setup information is also available for [Linux VMs](../linux/n-series-driver-setup.md).
 
 For basic specs, storage capacities, and disk details, see [GPU Windows VM sizes](../sizes-gpu.md?toc=/azure/virtual-machines/windows/toc.json). 
+
+> [!WARNING]
+> Installing NVIDIA drivers using methods other than those outlined in this guide may result in failure of the intended driver installation. To ensure proper functionality and support, please follow only the installation steps and use the driver versions specified in this documentation. 
 
 [!INCLUDE [virtual-machines-n-series-windows-support](../includes/virtual-machines-n-series-windows-support.md)]
 
@@ -33,19 +37,18 @@ After GRID driver installation on a VM, a restart is required. After CUDA driver
 
 ## Verify driver installation
 
-Please note that the Nvidia Control panel is only accessible with the GRID driver installation. If you have installed CUDA drivers then the Nvidia control panel will not be visible.
+Please note that the NVIDIA Control panel is only accessible with the GRID driver installation. If you have installed CUDA drivers then the NVIDIA control panel will not be visible.
 
-You can verify driver installation in Device Manager. The following example shows successful configuration of the Tesla K80 card on an Azure NC VM.
+You can verify driver installation in Device Manager. 
 
-![GPU driver properties](./media/n-series-driver-setup/GPU_driver_properties.png)
+> [!NOTE]
+> If you're running Windows 10 build 1903 or higher, dxdiag shows no information in the 'Display' tab. Use the 'Save All Information' option at the bottom and the output file shows the information related to NVIDIA GPU.
 
 To query the GPU device state, run the [nvidia-smi](https://developer.nvidia.com/nvidia-system-management-interface) command-line utility installed with the driver.
 
 1. Open a command prompt and change to the **C:\Program Files\NVIDIA Corporation\NVSMI** directory.
 
-2. Run `nvidia-smi`. If the driver is installed, you will see output similar to the following. The **GPU-Util** shows **0%** unless you are currently running a GPU workload on the VM. Your driver version and GPU details may be different from the ones shown.
-
-![NVIDIA device status](./media/n-series-driver-setup/smi.png)  
+2. Run `nvidia-smi`. If the driver is installed, Nvidia SMI will list the **GPU-Util** as N/A until you run a GPU workload on the VM.
 
 ## RDMA network connectivity
 
@@ -63,3 +66,4 @@ The RDMA network supports Message Passing Interface (MPI) traffic for applicatio
 ## Next steps
 
 * Developers building GPU-accelerated applications for the NVIDIA Tesla GPUs can also download and install the latest [CUDA Toolkit](https://developer.nvidia.com/cuda-downloads). For more information, see the [CUDA Installation Guide](https://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/index.html#axzz4ZcwJvqYi).
+

@@ -6,7 +6,8 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/17/2024
+ms.date: 01/26/2026
+# Customer intent: As a cloud administrator, I want to configure and modify Service Fabric managed cluster node types, so that I can optimize resource allocation and manage workload efficiently within my cloud environment.
 ---
 
 # Service Fabric managed cluster node types
@@ -22,9 +23,6 @@ The rest of this document covers how to adjust various settings, including:
 * Setting computer name prefix
 
 This document focuses on using Azure portal and Azure Resource Manager templates to make changes.
-
-> [!IMPORTANT]
-> At this time, Service Fabric Managed Clusters do not support custom OS images.
 
 > [!NOTE]
 > You will not be able to modify the node type while a change is in progress. It is recommended to let any requested change complete before doing another.
@@ -152,8 +150,7 @@ In this walkthrough, you learn how to modify the node count for a node type usin
 
 1) Sign in to [Azure portal](https://portal.azure.com/)
 
-2) Navigate to your cluster resource Overview page. 
-![Sample Overview page][overview]
+2) Navigate to your cluster resource Overview page.
 
 3) Select `Node Types` under the `Settings` section 
 
@@ -163,7 +160,7 @@ In this walkthrough, you learn how to modify the node count for a node type usin
 
 ![Sample showing a node count increase][adjust-node-count]
 
-6) Select `Manage node type scaling` to configure the scaling settings and choose between custom autoscale and manual scale options. Autoscale is a built-in feature that helps applications perform their best when demand changes. You can choose to scale your resource manually to a specific instance count or via a custom autoscale policy that scales based on metric thresholds. You can also schedule instance counts to scale during designated time windows. [Learn more about Azure Autoscale](/azure/azure-monitor/platform/autoscale-get-started?WT.mc_id=Portal-Microsoft_Azure_Monitoring) or [view the how-to video](https://www.microsoft.com/videoplayer/embed/RE4u7ts).
+6) Select `Manage node type scaling` to configure the scaling settings and choose between custom autoscale and manual scale options. Autoscale is a built-in feature that helps applications perform their best when demand changes. You can choose to scale your resource manually to a specific instance count or via a custom autoscale policy that scales based on metric thresholds. You can also schedule instance counts to scale during designated time windows. [Learn more about Azure Autoscale](/azure/azure-monitor/platform/autoscale-get-started?WT.mc_id=Portal-Microsoft_Azure_Monitoring) or [view the how-to video](https://learn-video.azurefd.net/vod/player?id=125ecef8-c287-4a81-9001-69c01558398c).
 
    * **Custom autoscale**: Select the appropriate `scale mode` to define the custom Autoscale policy - `Scale to a specific instance count`or `Scale based on a metric`. The latter is based on metric trigger rules, for example, increase instance count by 1 when CPU Percentage is above 70%. Once you define the policy, select `Save` at the top.
 
@@ -280,8 +277,7 @@ In this walkthrough, you learn how to modify the OS image for a node type using 
 
 4) Select the `Node type name` you want to modify
 
-5) Adjust the `OS Image` to the new value you want and select `Apply` at the bottom. 
-![Sample showing changing the OS image][change-os-image]
+5) Adjust the `OS Image` to the new value you want and select `Apply` at the bottom. For instructions on adding custom OS images, please refer to the [custom image deployment documentation](https://learn.microsoft.com/azure/service-fabric/how-to-deploy-custom-image).
 
 6) The `Provisioning state` shows a status of `Updating` and performs one upgrade domain at a time. When complete, it shows `Succeeded` again.
 ![Sample showing a node type updating][node-type-updating]
@@ -484,6 +480,5 @@ Implement the following ARM template changes to set the computer name prefix:
 [adjust-node-count]: ./media/how-to-managed-cluster-modify-node-type/sfmc-adjust-node-counts-new.png
 [manual-scale-setting]: ./media/how-to-managed-cluster-modify-node-type/sfmc-manual-scale-setting.png
 [auto-scale-setting]: ./media/how-to-managed-cluster-modify-node-type/sfmc-auto-scale-setting-new.png
-[change-nodetype-os-image]: ./media/how-to-managed-cluster-modify-node-type/sfmc-change-os-image.png
 [nodetype-placement-property]: ./media/how-to-managed-cluster-modify-node-type/sfmc-nodetype-placement-property.png
 [addremove]: ./media/how-to-managed-cluster-modify-node-type/sfmc-addremove-node-type.png

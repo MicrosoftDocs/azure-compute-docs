@@ -9,6 +9,7 @@ ms.topic: how-to
 ms.date: 04/06/2023
 ms.author: mattmcinnes
 ms.reviewer: cynthn
+# Customer intent: "As a cloud administrator, I want to configure internal DNS for virtual network interface cards on Azure, so that I can ensure reliable name resolution for essential services like Jenkins and Git servers within my infrastructure."
 ---
 
 # Create virtual network interface cards and use internal DNS for VM name resolution on Azure

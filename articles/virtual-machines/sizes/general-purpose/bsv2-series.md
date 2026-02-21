@@ -1,16 +1,17 @@
 ---
-title: Bsv2 size series
+title: Bsv2-series sizes
 description: Information on and specifications of the Bsv2-series sizes
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 09/24/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
+# Customer intent: "As a cloud architect evaluating virtual machine options, I want to understand the specifications and performance characteristics of the Bsv2-series sizes, so that I can make informed decisions for deploying efficient and cost-effective workloads."
 ---
 
-# Bsv2 sizes series
+# Bsv2-series sizes
 
 [!INCLUDE [bsv2-summary](./includes/bsv2-series-summary.md)]
 
@@ -20,7 +21,7 @@ Read more about the [B-series CPU credit model](../../b-series-cpu-credit-model/
 [!INCLUDE [bsv2-series-specs](./includes/bsv2-series-specs.md)]
 
 ## Feature support
-[Premium Storage](../../premium-storage-performance.md): Supported <br>[Premium Storage caching](../../premium-storage-performance.md): Supported <br>[Live Migration](../../maintenance-and-updates.md): Supported <br>[Memory Preserving Updates](../../maintenance-and-updates.md): Supported <br>[Generation 2 VMs](../../generation-2.md): Supported <br>[Generation 1 VMs](../../generation-2.md): Not Supported <br>[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported <br>[Ephemeral OS Disk](../../ephemeral-os-disks.md): Not Supported <br>[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Not Supported <br>
+[Premium Storage](../../premium-storage-performance.md): Supported <br>[Premium Storage caching](../../premium-storage-performance.md): Supported <br>[Live Migration](../../maintenance-and-updates.md): Supported <br>[Memory Preserving Updates](../../maintenance-and-updates.md): Supported <br>[Generation 2 VMs](../../generation-2.md): Supported <br>[Generation 1 VMs](../../generation-2.md): Supported <br>[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported <br>[Ephemeral OS Disk](../../ephemeral-os-disks.md): Not Supported <br>[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Not Supported <br>
 
 ## Sizes in series
 

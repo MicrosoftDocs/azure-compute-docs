@@ -9,5 +9,6 @@ ms.date: 08/01/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
+# Customer intent: "As an IT administrator managing enterprise applications, I want to understand the specifications of the Edsv4 virtual machine series, so that I can determine if it meets the demands of memory-intensive workloads and low latency storage requirements for my organization."
 ---
-Edsv4-series sizes run on the 3rd Generation Intel® Xeon® Platinum 8370C (Ice Lake) or the Intel® Xeon® Platinum 8272CL (Cascade Lake) processors. The Edsv4 virtual machine sizes feature up to 504 GiB of RAM, in addition to fast and large local SSD storage (up to 2,400 GiB). These virtual machines are ideal for memory-intensive enterprise applications and applications that benefit from low latency, high-speed local storage.
+Edsv4-series sizes run on the Intel® Xeon® Platinum 8573C (Emerald Rapids), Intel® Xeon® Platinum 8370C (Ice Lake) or the Intel® Xeon® Platinum 8272CL (Cascade Lake) processors. The Edsv4 virtual machine sizes feature up to 504 GiB of RAM, in addition to fast and large local SSD storage (up to 2,400 GiB). These virtual machines are ideal for memory-intensive enterprise applications and applications that benefit from low latency, high-speed local storage.

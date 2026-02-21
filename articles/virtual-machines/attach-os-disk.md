@@ -1,12 +1,14 @@
 ---
 title: Attach an existing OS disk to a VM
 description: Create a new Windows VM by attaching a specialized OS disk.
-author: ju-shim
+author: cynthn
 ms.service: azure-virtual-machines
 ms.topic: how-to
+ms.update-cycle: 180-days
 ms.date: 12/12/2024
-ms.author: jushiman
-ms.custom: devx-track-azurepowershell
+ms.author: cynthn
+ms.custom: devx-track-azurepowershell, portal
+# Customer intent: As a cloud administrator, I want to create a new virtual machine by attaching an existing OS disk, so that I can quickly recover from a non-functional VM while preserving the configuration of the original environment.
 ---
 # Create a VM from a specialized disk using PowerShell
 

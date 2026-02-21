@@ -8,6 +8,7 @@ ms.date: 11/21/2024
 ms.reviewer: cynthn
 ms.author: padmalathas
 author: padmalathas
+# Customer intent: "As a cloud engineer, I want to configure InfiniBand on HPC virtual machines, so that I can enhance the network performance and scalability of my high-performance computing applications."
 ---
 
 # Set up InfiniBand
@@ -65,7 +66,7 @@ Also, VMSS serves as the isolation boundary between workloads within the same cl
 
 ## Deployment considerations
 
-- **Azure subscription** – To deploy more than a few compute-intensive instances, consider a pay-as-you-go subscription or other purchase options. If you're using an [Azure free account](https://azure.microsoft.com/free/), you can use only a limited number of Azure compute cores.
+- **Azure subscription** – To deploy more than a few compute-intensive instances, consider a pay-as-you-go subscription or other purchase options. If you're using an [Azure free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn), you can use only a limited number of Azure compute cores.
 
 - **Pricing and availability** - Check [VM pricing](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) and [availability](https://azure.microsoft.com/global-infrastructure/services/) by Azure regions.
 

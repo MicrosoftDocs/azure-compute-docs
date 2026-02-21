@@ -2,9 +2,11 @@
 title: Support matrix for VM restore points
 description: Support matrix for VM restore points
 ms.service: azure-virtual-machines
-ms.topic: conceptual
+ms.topic: concept-article
+ms.update-cycle: 1095-days
 ms.date: 07/05/2022
 ms.custom: template-concept
+# Customer intent: "As a cloud administrator, I want to understand the support matrix for VM restore points, so that I can determine the compatibility and limitations for my virtual machine backup and recovery strategy."
 ---
 
 # Support matrix for VM restore points
@@ -20,6 +22,7 @@ The following table summarizes the support matrix for VM restore points.
 --- | ---
 **VMs using Managed disks** | Yes
 **VMs using unmanaged disks** | No
+**VM sizes** | **Crash consistency** is supported for VM SKUs that support Premium storage. Crash-consistent restore points created for Intel V6+ (Dsv6-series, Edsv6-series, Esv6-series etc.) and AMD V7+ (Dasv7-series, Dadsv7-series, Easv7-series, Faldsv7-series etc.) Virtual Machines (VMs) with **more than one data disk might not be consistent across disks**. **Application consistency** is supported for all VM SKUs.
 **VMs using Ultra Disks** | Yes. Supported for application consistency. Not supported for crash consistency. Exclude these disks and create a VM restore point when using crash consistency.
 **VMs using Premium SSD v2 Disks** | Yes. Supported for application consistency. Not supported for crash consistency. Exclude these disks and create a VM restore point when using crash consistency.
 **VMs using Ephemeral OS Disks** | No. Exclude these disks and create a VM restore point.
@@ -29,7 +32,7 @@ The following table summarizes the support matrix for VM restore points.
 **Data disks restored from Trusted launch enabled OS Disk** | No
 **Confidential VMs** | No
 **Generation 2 VMs (UEFI boot)** | Yes
-**VMs with NVMe disks (Storage optimized - Lsv2-series)** | Yes
+**VMs with NVMe disks (Storage optimized - Lsv2-series)** | Yes for **Application consistent**. **Crash-consistent** restore points created for Intel V6+ (Dsv6-series, Edsv6-series, Esv6-series etc.) and AMD V7+ (Dasv7-series, Dadsv7-series, Easv7-series, Faldsv7-series etc.) Virtual Machines (VMs) with more than one data disk might not be consistent across disks. 
 **VMs in Proximity placement groups** | Yes
 **VMs in an availability set** | Yes. You can create VM restore points for individual VMs within an availability set. You need to create restore points for all the VMs within an availability set to protect an entire availability set instance.
 **VMs inside VMSS with uniform orchestration** | No
@@ -47,13 +50,13 @@ The following table summarizes the support matrix for VM restore points.
 **VMs with standard SSDs** | Yes
 **VMs with premium SSDs** | Yes
 **VMs with ZRS disks** | Yes
-**VMs with server-side encryption using service-managed keys** | Yes. The encryption of source disk will not be enabled on the restore point.
-**VMs with server-side encryption using customer-managed keys** | Yes. The encryption of source disk will not be enabled on the restore point.
-**VMs with double encryption at rest** | Yes. The encryption of source disk will not be enabled on the restore point.
-**VMs with Host based encryption enabled with PMK/CMK/Double encryption** | Yes. The encryption of source disk will not be enabled on the restore point.
-**VMs with ADE (Azure Disk Encryption)** | Yes. The encryption of source disk will not be enabled on the restore point.
+**VMs with server-side encryption using service-managed keys** | Yes. The encryption of source disk won't be enabled on the restore point.
+**VMs with server-side encryption using customer-managed keys** | Yes. The encryption of source disk won't be enabled on the restore point.
+**VMs with double encryption at rest** | Yes. The encryption of source disk won't be enabled on the restore point.
+**VMs with Host based encryption enabled with PMK/CMK/Double encryption** | Yes. The encryption of source disk won't be enabled on the restore point.
+**VMs with ADE (Azure Disk Encryption)** | Yes. The encryption of source disk won't be enabled on the restore point.
 **VMs using Accelerated Networking** | Yes
-**Azure [Boost](/azure/azure-boost/overview) compatible Virtual machine sizes** | Yes
+**Azure [Boost](/azure/azure-boost/overview) compatible Virtual machine sizes** | Yes for **Application consistent**. **Crash-consistent** restore points created for Intel V6+ (Dsv6-series, Edsv6-series, Esv6-series etc.) and AMD V7+ (Dasv7-series, Dadsv7-series, Easv7-series, Faldsv7-series etc.) Virtual Machines (VMs) with more than one data disk may not be consistent across disks. 
 **Minimum Frequency at which App consistent restore point can be taken** | 3 hours
 **Minimum Frequency at which crash consistent restore points can be taken** | 1 hour
 **API version for Application consistent restore point** | 2021-03-01 or later

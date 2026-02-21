@@ -9,6 +9,7 @@ ms.date: 03/29/2023
 ms.author: mattmcinnes
 ms.subservice: cloud-init
 ms.custom: devx-track-azurecli, linux-related-content
+# Customer intent: As a system administrator, I want to configure a swap partition on a Linux VM using cloud-init during provisioning, so that I can optimize resource management and ensure better performance of the virtual machine.
 ---
 # Use cloud-init to configure a swap partition on a Linux VM
 

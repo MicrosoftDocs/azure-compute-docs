@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 10/30/2024
+# Customer intent: As a cloud administrator, I want to set up IP tags on a Service Fabric managed cluster, so that I can enhance the security of network access controls without the complexity of frequent updates to network security rules.
 ---
 
 # Set up IP tags on a Service Fabric managed cluster (SFMC)

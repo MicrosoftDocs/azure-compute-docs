@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a cloud developer, I want to package and deploy containers using a template generator, so that I can efficiently manage my Service Fabric applications on Azure."
 ---
 
 # Tutorial: Package and deploy containers as a Service Fabric application using Yeoman

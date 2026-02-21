@@ -1,12 +1,14 @@
 ---
 title: Attestation in Confidential containers on Azure Containers Instances 
 description: Full attestation of container groups in confidential containers on Azure Container Instances  
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomcassidy
 ms.service: azure-container-instances
 services: container-instances
-ms.date: 08/29/2024
+ms.date: 11/17/2025
+ms.update-cycle: 1095-days
+# Customer intent: As a cloud developer, I want to implement attestation in my confidential container groups on Azure Container Instances, so that I can ensure they run on trusted hardware and comply with security policies essential for safeguarding sensitive data.
 ---
 
 # Attestation in Confidential containers on Azure Container Instances 

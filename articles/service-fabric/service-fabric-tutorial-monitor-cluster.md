@@ -7,6 +7,8 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 11/14/2024
+ms.custom: sfi-image-nochange
+# Customer intent: As a cloud administrator, I want to monitor a Service Fabric cluster using performance counters and event logs, so that I can ensure optimal performance and quickly troubleshoot any issues.
 ---
 
 # Tutorial: Monitor a Service Fabric cluster in Azure
@@ -36,7 +38,7 @@ In this tutorial series you learn how to:
 
 Before you begin this tutorial:
 
-* If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn)
 * Install [Azure PowerShell](/powershell/azure/install-azure-powershell) or [Azure CLI](/cli/azure/install-azure-cli).
 * Create a secure [Windows cluster](service-fabric-tutorial-create-vnet-and-windows-cluster.md) 
 * Set up [diagnostics collection](service-fabric-tutorial-create-vnet-and-windows-cluster.md#configurediagnostics_anchor) for the cluster

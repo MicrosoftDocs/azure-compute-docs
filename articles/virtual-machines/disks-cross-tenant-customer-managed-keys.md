@@ -4,9 +4,10 @@ description: Learn how to use customer-managed keys with your Azure disks in dif
 author: roygara
 ms.service: azure-disk-storage
 ms.topic: how-to
-ms.date: 11/30/2022
+ms.date: 06/12/2025
 ms.author: rogarana
-ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.custom: devx-track-azurecli, devx-track-azurepowershell, references_regions
+# Customer intent: As a cloud administrator, I want to encrypt managed disks across different tenants using customer-managed keys, so that I can ensure data security while complying with customer encryption requirements.
 ---
 
 # Encrypt managed disks with cross-tenant customer-managed keys
@@ -20,8 +21,36 @@ If you have questions about cross-tenant customer-managed keys with managed disk
 ## Limitations
 
 - Managed Disks and the customer's Key Vault must be in the same Azure region, but they can be in different subscriptions.
-- This feature doesn't support Ultra Disks or Azure Premium SSD v2 managed disks.
-- This feature isn't available in Microsoft Azure operated by 21Vianet or Government clouds.
+
+### Preview - Ultra Disk and Premium SSD v2
+
+This configuration is also available for Ultra Disks and Premium SSD v2 disks, as a preview configuration, in [select regions](#preview-regional-availability).
+
+Sign up for the preview using either the PowerShell:
+
+```azurepowershell
+Register-AzProviderFeature -FeatureName UserAssignedIdentityForDirectDriveDisks -ProviderNamespace Microsoft.Compute
+Register-AzProviderFeature -FeatureName CrossTenantCMKForDirectDriveDisks -ProviderNamespace Microsoft.Compute
+```
+
+Or the CLI:
+
+```azurecli
+az feature register --name UserAssignedIdentityForDirectDriveDisks  --namespace Microsoft.Compute
+az feature register --name CrossTenantCMKForDirectDriveDisks  --namespace Microsoft.Compute
+```
+
+### Preview regional availability
+
+The preview for Ultra Disks and Premium SSD v2 disks is currently only available in the following regions:
+
+- Australia South East
+- Southeast Asia
+- North Europe
+- Germany West Central
+- UK South
+- Central US
+- UAE North
 
 [!INCLUDE [entra-msi-cross-tenant-cmk-overview](~/reusable-content/ce-skilling/azure/includes/entra-msi-cross-tenant-cmk-overview.md)]
 

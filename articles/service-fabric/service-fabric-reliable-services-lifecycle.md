@@ -1,12 +1,14 @@
 ---
 title: Overview of the lifecycle of Reliable Services 
 description: Learn about the lifecycle events in an Azure Service Fabric Reliable Services application for stateful and stateless services.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+ms.update-cycle: 1095-days
+# Customer intent: As a cloud service developer, I want to understand the lifecycle events of Reliable Services in Azure Service Fabric, so that I can effectively manage service startup, shutdown, and role changes for both stateful and stateless services.
 ---
 
 # Reliable Services lifecycle overview

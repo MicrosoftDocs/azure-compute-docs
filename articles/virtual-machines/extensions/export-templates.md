@@ -8,7 +8,8 @@ ms.author: gabsta
 author: GabstaMSFT
 ms.reviewer: jushiman
 ms.collection: windows
-ms.date: 03/29/2023
+ms.date: 08/18/2025
+# Customer intent: "As a cloud administrator, I want to export Azure resource groups containing VM extensions into a Resource Manager template, so that I can replicate and redeploy infrastructure while managing extension compatibility and sensitive configuration settings effectively."
 ---
 
 # Export resource groups that contain VM extensions
@@ -23,7 +24,7 @@ Many VM extensions are available. You can't export all extensions into a Resourc
 
 You can export the following extensions by using the automation script feature:
 
-> Acronis Backup, Acronis Backup Linux, BGInfo, BMC Control-M Agent Linux, BMC Control-M Agent Windows, Chef Client, Custom Script, Custom Script Extension, Custom Script for Linux, Datadog Linux Agent, Datadog Windows Agent, Docker Extension, DSC Extension, Dynatrace Linux, Dynatrace Windows, HPE Security Application Defender for Cloud, IaaS Antimalware, IaaS Diagnostics, Linux Chef Client, Linux Diagnostic, OS Patching for Linux, Puppet Agent, Site24x7 APM Insight, Site24x7 Linux Server, Site24x7 Windows Server, Trend Micro DSA, Trend Micro DSA Linux, VM Access For Linux, VM Access For Linux, VM Snapshot, VM Snapshot Linux
+> Acronis Backup, Acronis Backup Linux, BGInfo, BMC Control-M Agent Linux, BMC Control-M Agent Windows, Chef Client, Custom Script, Custom Script Extension, Custom Script for Linux, Datadog Linux Agent, Datadog Windows Agent, Docker Extension, Dynatrace Linux, Dynatrace Windows, HPE Security Application Defender for Cloud, IaaS Antimalware, IaaS Diagnostics, Linux Chef Client, Linux Diagnostic, OS Patching for Linux, Puppet Agent, Site24x7 APM Insight, Site24x7 Linux Server, Site24x7 Windows Server, Trend Micro DSA, Trend Micro DSA Linux, VM Access For Linux, VM Access For Linux, VM Snapshot, VM Snapshot Linux
 
 ## Export the resource group
 

@@ -9,6 +9,7 @@
  ms.date: 05/13/2024
  ms.author: mattmcinnes
 ms.custom: include file, build-2024
+# Customer intent: "As a cloud architect, I want to access comprehensive information on virtual machine sizes and disk types, so that I can make informed decisions on optimizing resource allocation for high-performance computing workloads."
 ---
 
 ## Other size information

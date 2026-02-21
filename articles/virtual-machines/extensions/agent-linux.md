@@ -1,57 +1,66 @@
 ---
-title: Azure Linux VM Agent overview
+title: Azure Linux VM Agent Overview
 description: Learn how to install and configure the Azure Linux VM Agent (waagent) to manage your virtual machine's interaction with the Azure fabric controller.
 ms.topic: how-to
 ms.service: azure-virtual-machines
 ms.subservice: extensions
 ms.author: gabsta
 author: GabstaMSFT
-ms.custom: GGAL-freshness822, linux-related-content
 ms.collection: linux
-ms.date: 03/28/2023
+ms.date: 08/18/2025
+ms.custom:
+  - GGAL-freshness822
+  - linux-related-content
+  - sfi-ropc-nochange
+# Customer intent: "As a system administrator managing Linux virtual machines, I want to install and configure the Azure Linux VM Agent, so that I can automate provisioning, networking, and diagnostics for efficient VM management."
 ---
 # Azure Linux VM Agent overview
 
-The Microsoft Azure Linux VM Agent (waagent) manages Linux and FreeBSD provisioning, along with virtual machine (VM) interaction with the Azure fabric controller. In addition to the Linux agent providing provisioning functionality, Azure provides the option of using cloud-init for some Linux operating systems.
+The Azure Linux VM Agent (waagent) manages Linux and FreeBSD provisioning, along with virtual machine (VM) interaction with the Azure fabric controller. In addition to the Linux agent providing provisioning functionality, Azure provides the option of using cloud-init for some Linux operating systems.
+
+> [!IMPORTANT]
+> For the latest on FIPS 140-3 support on the VM Guest Agent and Extensions go to [aka.ms/linuxagentfipssupport](https://aka.ms/linuxagentfipssupport).
 
 The Linux agent provides the following functionality for Linux and FreeBSD Azure Virtual Machines deployments. For more information, see the [Azure Linux VM Agent readme on GitHub](https://github.com/Azure/WALinuxAgent/blob/master/README.md).
 
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
+
 ### Image provisioning
 
-- Creates a user account
-- Configures SSH authentication types
-- Deploys SSH public keys and key pairs
-- Sets the host name
-- Publishes the host name to the platform DNS
-- Reports the SSH host key fingerprint to the platform
-- Manages the resource disk
-- Formats and mounts the resource disk
-- Configures swap space
+- Creates a user account.
+- Configures SSH authentication types.
+- Deploys Secure Shell (SSH) public keys and key pairs.
+- Sets the host name.
+- Publishes the host name to the platform Domain Name System (DNS).
+- Reports the SSH host key fingerprint to the platform.
+- Manages the resource disk.
+- Formats and mounts the resource disk.
+- Configures swap space.
 
 ### Networking
 
-- Manages routes to improve compatibility with platform DHCP servers
-- Ensures the stability of the network interface name
+- Manages routes to improve compatibility with platform DHCP servers.
+- Ensures the stability of the network interface name.
 
 ### Kernel
 
-- Configures virtual NUMA (disabled for kernel 2.6.37)
-- Consumes Hyper-V entropy for */dev/random*
-- Configures SCSI timeouts for the root device, which can be remote
+- Configures virtual NUMA (disabled for kernel 2.6.37).
+- Consumes Hyper-V entropy for */dev/random*.
+- Configures SCSI timeouts for the root device, which can be remote.
 
 ### Diagnostics
 
-- Provides console redirection to the serial port
+- Provides console redirection to the serial port.
 
 ### System Center Virtual Machine Manager deployments
 
-- Detects and bootstraps the Virtual Machine Manager agent for Linux when it's running in a System Center Virtual Machine Manager 2012 R2 environment
+- Detects and bootstraps the Virtual Machine Manager agent for Linux when it's running in a System Center Virtual Machine Manager 2012 R2 environment.
 
-### VM Extension
+### VM extension
 
-- Injects components authored by Microsoft and partners into Linux VMs to enable software and configuration automation
+- Injects components authored by Microsoft and partners into Linux VMs to enable software and configuration automation.
 
-You can find a VM Extension reference implementation on [GitHub](https://github.com/Azure/azure-linux-extensions).
+You can find a VM extension reference implementation on [GitHub](https://github.com/Azure/azure-linux-extensions).
 
 ## Communication
 
@@ -62,30 +71,27 @@ Information flow from the platform to the agent occurs through two channels:
 
 ## Requirements
 
-Testing has confirmed that the following systems work with the Azure Linux VM Agent.
+Testing confirms that the following systems work with the Azure Linux VM Agent.
 
 > [!NOTE]
 > This list might differ from the [endorsed Linux distributions on Azure](../linux/endorsed-distros.md).
 
-| Distribution | x64 | ARM64 |
-|:-----|:-----:|:-----:|
-| Alma Linux | 9.x+ | 9.x+ |
-| Debian | 10+ | 11.x+ |
-| Flatcar Linux | 3374.2.x+ | 3374.2.x+ |
-| Azure Linux | 2.x | 2.x |
-| openSUSE | 12.3+ | *Not supported* |
-| Oracle Linux | 6.4+, 7.x+, 8.x+ | *Not supported* |
-| Red Hat Enterprise Linux | 6.7+, 7.x+,  8.x+, 9.x+ | 8.6+, 9.0+ |
-| Rocky Linux | 9.x+ | 9.x+ |
-| SLES | 12.x+, 15.x+ | 15.x SP4+ |
-| Ubuntu (LTS releases)| 18.04+, 20.04+, 22.04+, 24.04+ | 20.04+, 22.04+, 24.04+ |
-
-> [!IMPORTANT]
-> FIPS 140-3 Enforced is not supported on RHEL/Ubuntu with extensions using 'protectedSettings'.  ETA for support is mid 2025.
+| Publisher | Distribution | x64 | ARM64 |
+|:-----|:-----|:-----:|:-----:|
+| Alma Linux Community | Alma Linux | 8.x+, 9.x+ | 8.x+, 9.x+ |
+| Credativ | Debian | 10+ | 11.x+ |
+| Kinvolk | Flatcar Linux | 3374.2.x+ | 3374.2.x+ |
+| Microsoft | Azure Linux | 2.x | 2.x |
+| openSUSE Project | openSUSE | 12.3+ | *Not supported* |
+| Oracle | Oracle Linux | 6.4+, 7.x+, 8.x+ | *Not supported* |
+| Red Hat | Red Hat Enterprise Linux | 6.7+, 7.x+,  8.x+, 9.x+, 10.x+ | 8.6+, 9.0+, 10.x+ |
+| CIQ | Rocky Linux | 9.x+ | 9.x+ |
+| SUSE | SLES | 12.x+, 15.x+ | 15.x SP4+ |
+| Canonical | Ubuntu (LTS releases)| 18.04+, 20.04+, 22.04+, 24.04+ | 20.04+, 22.04+, 24.04+ |
 
 Other supported systems:
 
-- The Agent works on more systems than those listed in the documentation. However, we do not test or provide support for distros that are not on the endorsed list. In particular, FreeBSD is not endorsed. The customer can try FreeBSD 8 and if they  run into problems they can open an issue in our [GitHub repository](https://github.com/Azure/WALinuxAgent) and we may be able to help.
+- The agent works on more systems than the ones listed in the documentation. However, we don't test or provide support for distros that aren't on the endorsed list. In particular, FreeBSD isn't endorsed. You can try FreeBSD 8. If you run into problems, you can open an issue in our [GitHub repository](https://github.com/Azure/WALinuxAgent) and we might be able to help.
 
 The Linux agent depends on these system packages to function properly:
 
@@ -103,10 +109,11 @@ Ensure that your VM has access to IP address 168.63.129.16. For more information
 ## Installation
 
 The supported method of installing and upgrading the Azure Linux VM Agent uses an RPM or a DEB package from your distribution's package repository. All the [endorsed distribution providers](../linux/endorsed-distros.md) integrate the Azure Linux VM Agent package into their images and repositories.
-Some Linux distributions might disable the Azure Linux VM Agent **Auto Update** feature and some of the repositories might also contain older versions, those might have issues with modern extensions so, we recommend to have the latest stable version installed.
-To make sure the Azure Linux VM Agent is updating properly we recommend having the option `AutoUpdate.Enabled=Y` in the `/etc/waagent.conf` file or simply commenting out that option will result in its defaults too. Having `AutoUpdate.Enabled=N` will not allow the Azure Linux VM Agent to update properly.
+Some Linux distributions might disable the Azure Linux VM Agent **Auto Update** feature. Some of the repositories might also contain older versions. Older versions might have issues with modern extensions, so we recommend that you install the latest stable version.
 
-For advanced installation options, such as installing from a source or to custom locations or prefixes, see [Microsoft Azure Linux VM Agent](https://github.com/Azure/WALinuxAgent). Other than these scenarios, we do not support or recommend upgrading or reinstalling the Azure Linux VM Agent from source.
+You need to make sure that the Azure Linux VM Agent is updating properly. We recommend that you have the option `AutoUpdate.Enabled=Y` in the `/etc/waagent.conf` file because commenting out that option results in defaults too. Having `AutoUpdate.Enabled=N` doesn't allow the Azure Linux VM Agent to update properly.
+
+For advanced installation options, such as installing from a source or to custom locations or prefixes, see [Microsoft Azure Linux VM Agent](https://github.com/Azure/WALinuxAgent). Other than these scenarios, we don't support or recommend upgrading or reinstalling the Azure Linux VM Agent from source.
 
 ## Command-line options
 
@@ -197,7 +204,7 @@ Default: y
 
 If the value is `y`, the agent deletes all SSH host key pairs from */etc/ssh/* during the provisioning process, including ECDSA, DSA, and RSA. The agent generates a single fresh key pair.
 
-Configure the encryption type for the fresh key pair by using the `Provisioning.SshHostKeyPairType` entry. Some distributions re-create SSH key pairs for any missing encryption types when the SSH daemon is restarted--for example, after a reboot.
+Configure the encryption type for the fresh key pair by using the `Provisioning.SshHostKeyPairType` entry. Some distributions re-create SSH key pairs for any missing encryption types when the SSH daemon is restarted. An example is after a reboot.
 
 ### Provisioning.SshHostKeyPairType
 
@@ -346,7 +353,7 @@ Type: Integer
 Default: 300
 ```
 
-This option configures the SCSI timeout in seconds on the OS disk and data drives. If it's not set, the system defaults are used.
+This option configures the SCSI timeout in seconds on the operating system disk and data drives. If it isn't set, the system defaults are used.
 
 ### OS.OpensslPath
 
@@ -399,4 +406,4 @@ Ubuntu Cloud Images use [cloud-init](https://launchpad.net/ubuntu/+source/cloud-
 To configure the resource disk mount point and swap space on Ubuntu Cloud Images during provisioning, see the following resources:
 
 - [Ubuntu wiki: AzureSwapPartitions](https://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
-- [Deploy applications to a Windows virtual machine in Azure with the Custom Script Extension](../windows/tutorial-automate-vm-deployment.md)
+- [Deploy applications to a Windows virtual machine in Azure with the Custom Script extension](../windows/tutorial-automate-vm-deployment.md)

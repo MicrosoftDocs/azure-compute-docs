@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: devx-track-azurepowershell, linux-related-content
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a system administrator managing an Azure Service Fabric cluster, I want to upgrade the Linux OS from Ubuntu 18.04 LTS to 20.04 LTS, so that I can ensure continued support and maintain optimal performance for my applications."
 ---
 
 # Upgrade Linux OS for Azure Service Fabric
@@ -46,7 +47,7 @@ This procedure demonstrates how to quickly prototype the node type migration by 
 
     ```powershell
     # Replace subscriptionId, resourceGroup, clusterName with ones corresponding to your cluster.
-    $subscriptionId="cea219db-0593-4b27-8bfa-a703332bf433"
+    $subscriptionId="aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e"
     Login-AzAccount; Select-AzSubscription -SubscriptionId $subscriptionId
 
     $resourceGroup="Group1"

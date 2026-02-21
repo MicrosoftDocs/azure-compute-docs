@@ -7,6 +7,7 @@ ms.service: azure-virtual-machines
 ms.topic: troubleshooting
 ms.date: 05/30/2024
 ms.custom: support-help-page
+# Customer intent: As a cloud solutions developer, I want to access troubleshooting resources and support options for Azure Virtual Machines, so that I can efficiently resolve issues and ensure smooth application deployment and management.
 ---
 
 # Support and troubleshooting for Azure VMs
@@ -83,7 +84,7 @@ If you need help with the language and tools used to develop and manage Azure Vi
 
 Learn about important product updates, roadmap, and announcements in [Azure Updates](https://azure.microsoft.com/updates/?category=compute).
 
-News and information about Azure Virtual Machines is shared at the [Azure blog](https://azure.microsoft.com/blog/topics/virtual-machines/).
+News and information about Azure Virtual Machines is shared at the [Azure blog](https://azure.microsoft.com/blog/product/virtual-machines/).
 
 
 ## Next steps

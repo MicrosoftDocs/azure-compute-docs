@@ -9,12 +9,14 @@ ms.date: 08/01/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
+# Customer intent: "As a cloud architect, I want to review the specifications of Edsv6 series VMs, so that I can select the appropriate size for my application's performance and resource requirements."
 ---
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
 |---|---|---|
-| Processor      | 2 - 128 vCPUs     | Intel Xeon Platinum 8573C (Emerald Rapids) [x86-64] |
+| Processor      | 2 - 192 vCPUs     | Intel Xeon Platinum 8573C (Emerald Rapids) [x86-64] |
 | Memory         | 16 - 1024 GiB        |    |
 | Local Storage  | 1 - 4 Disks         | 110 - 1760 GiB 37500 - 2400000 IOPS <br>180 - 11520 MBps |
-| Remote Storage | 8 - 64 Disks        | 3750 - 204800 IOPS <br>106 - 6782 MBps |
+| Remote Storage <br /> [Premium SSD](../../../disks-types.md#premium-ssds) | 8 - 64 Disks        | 3750 - 360000 IOPS <br>106 - 17280 MBps |
+| Remote Storage <br /> [Premium SSD v2](../../../disks-types.md#premium-ssd-v2) / [Ultra Disks](../../../disks-types.md#ultra-disks) | 8 - 64 Disks        | 4167 - 400000 IOPS <br>124 - 12000 MBps |
 | Network        | 2 - 8 NICs        | 12500 - 54000 Mbps |
 | Accelerators   | None            |     |

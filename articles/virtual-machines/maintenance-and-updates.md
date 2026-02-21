@@ -2,9 +2,10 @@
 title: Maintenance and updates
 description: Overview of maintenance and updates for virtual machines running in Azure.
 ms.service: azure-virtual-machines
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 04/01/2024
 #pmcontact:shants
+# Customer intent: As a cloud administrator, I want to understand the maintenance processes for virtual machines, so that I can effectively manage uptime and minimize disruptions during scheduled updates.
 ---
 # Maintenance for virtual machines in Azure
 
@@ -29,7 +30,7 @@ Most platform updates don't affect customer VMs. When a no-impact update isn't p
 
 When VM impacting maintenance is required it will almost always be completed through a VM pause for less than 10 seconds. In rare circumstances, no more than once every 18 months for general purpose VM sizes, Azure uses a mechanism that will pause the VM for about 30 seconds. After any pause operation the VM clock is automatically synchronized upon resume. 
 
-Memory-preserving maintenance works for more than 90 percent of Azure VMs. It doesn't work for G, M, N, and H series. Azure increasingly uses live-migration technologies and improves memory-preserving maintenance mechanisms to reduce the pause durations.  
+Memory-preserving maintenance works for more than 90 percent of Azure VMs. It doesn't work for G, L, N, and H series. For more information, see [which VM sizes support memory-preserving maintenance](./sizes/overview.md). Azure increasingly uses live-migration technologies and improves memory-preserving maintenance mechanisms to reduce the pause durations.  
 
 These maintenance operations that don't require a reboot are applied one fault domain at a time. They stop if they receive any warning health signals from platform monitoring tools. Maintenance operations that do not require a reboot may occur simultaneously in paired regions or Availability Zones. For a given change, the deployment are mostly sequenced across Availability Zones and across Region pairs, but there can be overlap at the tail.
 
@@ -40,19 +41,21 @@ For greater control on all maintenance activities including zero-impact and rebo
 
 ### Live migration
 
-Live migration is an operation that doesn't require a reboot and that preserves memory for the VM. It causes a pause or freeze, typically lasting no more than 5 seconds. Except for G, L, N, and H series, all infrastructure as a service (IaaS) VMs, are eligible for live migration. Live Migration is available on majority of M-Series SKUs. Eligible VMs represent more than 90 percent of the IaaS VMs that are deployed to the Azure fleet. 
+Live migration is an operation that doesn't require a reboot and that preserves memory for the VM. It causes a pause or freeze, typically lasting no more than 5 seconds. Except for G, L, N, and H series, all infrastructure as a service (IaaS) VMs, are eligible for live migration. Live migration is available on majority of M-Series SKUs. Eligible VMs represent more than 90 percent of the IaaS VMs that are deployed to the Azure fleet. 
 
 > [!NOTE]
-> You won't receive a notification in the Azure portal for live migration operations that don't require a reboot. To see a list of live migrations that don't require a reboot, [query for scheduled events](./windows/scheduled-events.md#query-for-events).
+> You won't receive a notification in the Azure portal for live migration operations that were attempted or don't require a reboot. To see a list of live migrations that don't require a reboot, [query for scheduled events](./windows/scheduled-events.md#query-for-events).
+>
+> Live migration is performed on a best effort basis. In some rare cases, live migration may not succeed and the VM will be scheduled to be Service Healed, if required, prior to notification. Live migration is not a guaranteed operation.
 
-The Azure platform starts live migration in the following scenarios:
+The Azure platform triggers live migration in the following scenarios:
 - Planned maintenance
 - Hardware failure
 - Allocation optimizations
 
-Some planned-maintenance scenarios use live migration, and you can use Scheduled Events to know in advance when live migration operations will start.
+Some planned-maintenance scenarios use live migration, and you can use Scheduled Events to know in advance when live migration operations will start. 
 
-Live migration can also be used to move VMs when Azure Machine Learning algorithms predict an impending hardware failure or when you want to optimize VM allocations. For more information about predictive modeling that detects instances of degraded hardware, see [Improving Azure VM resiliency with predictive machine learning and live migration](https://azure.microsoft.com/blog/improving-azure-virtual-machine-resiliency-with-predictive-ml-and-live-migration/?WT.mc_id=thomasmaurer-blog-thmaure). Live-migration notifications appear in the Azure portal in the Monitor and Service Health logs as well as in Scheduled Events if you use these services.
+Live migration can also be used to move VMs when Azure Machine Learning algorithms predict an impending hardware failure or VM allocations optimization. For more information about predictive modeling that detects instances of degraded hardware, see [Improving Azure VM resiliency with predictive machine learning and live migration](https://azure.microsoft.com/blog/improving-azure-virtual-machine-resiliency-with-predictive-ml-and-live-migration/?WT.mc_id=thomasmaurer-blog-thmaure). Live-migration notifications appear in the Azure portal in the Monitor and Service Health logs as well as in Scheduled Events if you use these services.
 
 
 

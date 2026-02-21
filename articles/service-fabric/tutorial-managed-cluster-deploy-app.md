@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a DevOps engineer, I want to deploy an application to a Service Fabric managed cluster using PowerShell, so that I can streamline the application management and ensure efficient scaling of services within the cluster."
 ---
 
 # Tutorial: Deploy an app to a Service Fabric managed cluster

@@ -2,11 +2,19 @@
 title: "Quickstart: Deploy WebLogic Server on Azure Virtual Machines (VMs)"
 description: Shows how to quickly stand up WebLogic Server on Azure Virtual Machine.
 author: KarlErickson
-ms.author: haiche
+ms.author: karler
+ms.reviewer: haiche
 ms.topic: quickstart
-ms.date: 10/08/2024
+ms.date: 12/24/2024
 ms.service: oracle-on-azure
-ms.custom: devx-track-java, devx-track-javaee, devx-track-javaee-wls, devx-track-javaee-wls-vm, devx-track-extended-java
+ms.custom:
+  - devx-track-java
+  - devx-track-javaee
+  - devx-track-javaee-wls
+  - devx-track-javaee-wls-vm
+  - devx-track-extended-java
+  - sfi-image-nochange
+# Customer intent: As a cloud administrator, I want to deploy WebLogic Server on Azure Virtual Machines quickly, so that I can expedite my application development and management processes in a cost-effective and efficient manner.
 ---
 
 # Quickstart: Deploy WebLogic Server on Azure Virtual Machines (VMs)
@@ -46,7 +54,7 @@ The following steps show you how to deploy WebLogic Server on a VM using the [si
 
 1. On the **Basics** pane, ensure the value shown in the **Subscription** field is the same one that you used to sign in to the Azure portal.
 
-1. The offer must be deployed in an empty resource group. In the **Resource group** field, select **Create new** and fill in a value for the resource group. Because resource groups must be unique within a subscription, pick a unique name. An easy way to have unique names is to use a combination of your initials, today's date, and some identifier. For example, *ejb0802wls*.
+1. In the **Resource group** field, select **Create new** and fill in a value for the resource group. Because resource groups must be unique within a subscription, pick a unique name. An easy way to have unique names is to use a combination of your initials, today's date, and some identifier - for example, *ejb0802wls*.
 
 1. Under **Instance details**, select the region for the deployment.
 

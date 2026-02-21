@@ -1,13 +1,14 @@
 ---
 title: Custom Image
 description: Learn how to deploy a custom image on Azure Service Fabric clusters (SFMC).
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-arm-template
 services: service-fabric
 ms.date: 09/12/2023
+# Customer intent: As a cloud administrator, I want to deploy a custom image on Azure Service Fabric clusters, so that I can configure and manage node types with specific application and OS settings to meet my organization's requirements.
 ---
 
 # Deploy a custom Windows or Azure Marketplace virtual machine scale set image on new node types within a Service Fabric Managed Cluster

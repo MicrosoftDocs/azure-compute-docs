@@ -8,12 +8,15 @@ ms.custom: devx-track-azurecli, linux-related-content
 ms.author: gabsta
 author: GabstaMSFT
 ms.collection: linux
-ms.date: 09/21/2018
+ms.date: 08/18/2025
+# Customer intent: As a DevOps engineer, I want to deploy the Chef VM Extension on Azure virtual machines, so that I can automate the configuration management for both Linux and Windows environments efficiently.
 ---
 
 # Chef VM Extension for Linux and Windows
 
 Chef Software provides a DevOps automation platform for Linux and Windows that enables the management of both physical and virtual server configurations. The Chef VM Extension is an extension that enables Chef on virtual machines.
+
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
 
 ## Prerequisites
 
@@ -93,7 +96,7 @@ The following JSON shows the schema for the Chef VM Extension. The extension req
 
 ## Template deployment
 
-Azure VM extensions can be deployed with Azure Resource Manager templates. Templates can be used to deploy one or more virtual machines, install the Chef Client, connect to the Chef Server and the perform the initial configuration on the server as defined by the [Run-list](https://docs.chef.io/run_lists.html)
+Azure VM extensions can be deployed with Azure Resource Manager templates. Templates can be used to deploy one or more virtual machines, install the Chef Client, connect to the Chef Server and perform the initial configuration on the server as defined by the [Run-list](https://docs.chef.io/run_lists.html)
 
 A sample Resource Manager template that includes the Chef VM Extension can be found in the [Azure quickstart gallery](https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/chef/chef-json-parameters-linux-vm).
 

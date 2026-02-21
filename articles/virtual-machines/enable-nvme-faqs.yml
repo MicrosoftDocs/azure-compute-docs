@@ -1,6 +1,7 @@
 ### YamlMime:FAQ
 metadata:
   title: NVMe - General FAQ
+  ms.date: 01/31/2025
   description: Get answers to common questions about enabling the NVMe interface on virtual machines.
   ms.service: azure-virtual-machines
   ms.topic: faq

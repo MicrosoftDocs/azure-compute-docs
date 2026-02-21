@@ -7,6 +7,8 @@ ms.service: azure-service-fabric
 services: service-fabric
 ms.author: tomcassidy
 ms.date: 11/14/2024
+ms.custom: sfi-image-nochange
+# Customer intent: "As a cloud architect, I want to deploy a Service Fabric managed cluster using the Azure portal, so that I can efficiently test and manage scalable microservices in a distributed environment."
 ---
 
 # Quickstart: Deploy a Service Fabric managed cluster using the Azure portal
@@ -29,7 +31,7 @@ The three-node Basic SKU cluster created in this tutorial is only intended for i
 
 ## Prerequisites
 
-* An Azure subscription. If you don't already have one, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+* An Azure subscription. If you don't already have one, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 * A resource group to manage all the resources you use in this quickstart. We use the example resource group name **ServiceFabricResources** throughout this quickstart.
 

@@ -2,17 +2,20 @@
 title: Azure Monitor Dependency virtual machine extension for Linux
 description: Deploy the Azure Monitor Dependency agent on Linux virtual machine by using a virtual machine extension.
 ms.topic: concept-article
-ms.service: azure-monitor
-ms.subservice: agents
+ms.service: azure-virtual-machines
+ms.subservice: extensions
 ms.custom: devx-track-azurecli, linux-related-content
 author: guywi-ms
 ms.author: guywild
 ms.collection: linux
-ms.date: 08/29/2023
+ms.date: 01/14/2025
+# Customer intent: "As a cloud administrator, I want to deploy the Azure Monitor Dependency agent extension on my Linux virtual machines, so that I can monitor and manage dependencies effectively across my infrastructure."
 ---
 # Azure Monitor Dependency virtual machine extension for Linux
 
 The Azure Monitor for VMs Map feature gets its data from the Microsoft Dependency agent. The Azure VM Dependency agent virtual machine extension for Linux installs the Dependency agent on Azure virtual machines. This document details the supported platforms, configurations, and deployment options for the Azure VM Dependency agent virtual machine extension for Linux.
+
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
 
 ## Prerequisites
 
@@ -135,14 +138,15 @@ When you place the extension JSON at the root of the template, the resource name
 You can use the Azure CLI to deploy the Dependency agent VM extension to an existing virtual machine.  
 
 ```azurecli
-
 az vm extension set \
     --resource-group myResourceGroup \
     --vm-name myVM \
     --name DependencyAgentLinux \
     --publisher Microsoft.Azure.Monitoring.DependencyAgent \
-    --version 9.5
+    --version 9.10 \
+    --settings '{"enableAMA": "true"}'
 ```
+
 
 ## Automatic extension upgrade
 A new feature to [automatically upgrade minor versions](../automatic-extension-upgrade.md) of Dependency extension is now available.

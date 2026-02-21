@@ -4,8 +4,9 @@ author: tomvcassidy
 services: container-instances
 ms.service: azure-container-instances
 ms.topic: include
-ms.date: 08/29/2024
+ms.date: 11/17/2025
 ms.custom: include file
+# Customer intent: "As a cloud administrator, I want to understand the changes in API versions regarding network profiles, so that I can ensure my applications are configured correctly without relying on deprecated features."
 ---
 
 > [!IMPORTANT]

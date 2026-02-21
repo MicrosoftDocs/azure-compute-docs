@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: devx-track-azurepowershell
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a cloud administrator, I want to delete a Service Fabric cluster and its resources so that I can free up resources in my Azure environment.
 ---
 
 # Tutorial: Remove a Service Fabric cluster running in Azure
@@ -35,7 +36,7 @@ In this tutorial series you learn how to:
 
 Before you begin this tutorial:
 
-* If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn)
 * Install [Azure PowerShell](/powershell/azure//install-az-ps) or [Azure CLI](/cli/azure/install-azure-cli).
 * Create a secure [Windows cluster](service-fabric-tutorial-create-vnet-and-windows-cluster.md) on Azure
 

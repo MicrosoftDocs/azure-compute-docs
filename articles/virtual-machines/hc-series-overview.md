@@ -5,10 +5,11 @@ ms.service: azure-virtual-machines
 ms.subservice: hpc
 ms.custom:
 ms.topic: concept-article
-ms.date: 08/06/2024
+ms.date: 02/10/2026
 ms.reviewer: wwilliams
 ms.author: padmalathas
 author: padmalathas
+# Customer intent: As an HPC administrator, I want to understand the specifications and architecture of HC-series virtual machines, so that I can optimize performance for high-performance computing applications in my cloud environment.
 ---
 
 # HC-series virtual machine overview

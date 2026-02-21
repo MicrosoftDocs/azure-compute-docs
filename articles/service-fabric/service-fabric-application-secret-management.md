@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a cloud application developer, I want to securely manage application secrets in Service Fabric, so that I can protect sensitive information such as passwords and connection strings throughout the application lifecycle."
 ---
 
 # Manage encrypted secrets in Service Fabric applications

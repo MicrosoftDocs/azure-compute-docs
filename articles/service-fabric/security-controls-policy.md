@@ -1,12 +1,14 @@
 ---
 title: Azure Policy Regulatory Compliance controls for Azure Service Fabric
 description: Lists Azure Policy Regulatory Compliance controls available for Azure Service Fabric. These built-in policy definitions provide common approaches to managing the compliance of your Azure resources.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 02/06/2024
+ms.update-cycle: 1095-days
+# Customer intent: "As a compliance officer, I want to utilize Azure Policy built-in compliance controls for Azure Service Fabric, so that I can ensure our Azure resources meet regulatory standards effectively."
 ---
 # Azure Policy Regulatory Compliance controls for Azure Service Fabric
 
@@ -19,7 +21,7 @@ compliant with the specific standard.
 
 [!INCLUDE [azure-policy-compliancecontrols-introwarning](~/azure-docs-pr/includes/policy/standards/intro-warning.md)]
 
-[!INCLUDE [azure-policy-compliancecontrols-servicefabric](~/azure-docs-pr/includes/policy/standards/byrp/microsoft.servicefabric.md)]
+[!INCLUDE [azure-policy-compliancecontrols-servicefabric](~/azure-policy-autogen-docs/includes/policy/standards/byrp/microsoft.servicefabric.md)]
 
 ## Next steps
 

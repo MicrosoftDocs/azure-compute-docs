@@ -9,6 +9,7 @@ ms.topic: quickstart
 ms.date: 03/10/2022
 ms.custom: subject-armqs, mode-arm, devx-track-bicep, linux-related-content
 tags: azure-resource-manager, bicep
+# Customer intent: As a cloud developer, I want to deploy an Ubuntu Linux virtual machine using a Bicep file, so that I can automate the provisioning of resources in Azure for efficient environment setup.
 ---
 
 # Quickstart: Create an Ubuntu Linux virtual machine using a Bicep file
@@ -21,7 +22,7 @@ This quickstart shows you how to use a Bicep file to deploy an Ubuntu Linux virt
 
 ## Prerequisites
 
-If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 ## Review the Bicep file
 

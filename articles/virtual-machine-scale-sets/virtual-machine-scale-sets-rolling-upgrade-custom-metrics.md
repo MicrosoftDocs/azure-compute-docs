@@ -1,18 +1,16 @@
 ---
-title: Custom metrics for rolling upgrades on Virtual Machine Scale Sets (Preview)
+title: Custom metrics for rolling upgrades on Virtual Machine Scale Sets
 description: Learn about how to configure custom metrics for rolling upgrades on Virtual Machine Scale Sets.
 author: mimckitt
 ms.author: mimckitt
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
 ms.date: 11/7/2024
-ms.reviewer: ju-shim
+ms.reviewer: cynthn
 ms.custom: upgradepolicy, N-Phase, ignite-2024
+# Customer intent: "As a system administrator, I want to configure custom metrics for rolling upgrades on Virtual Machine Scale Sets so that I can control the order and conditions under which my virtual machines are upgraded, ensuring minimal downtime and optimal application performance."
 ---
-# Configure custom metrics for rolling upgrades on Virtual Machine Scale Sets (Preview)
-
-> [!NOTE]
->**Custom metrics for rolling upgrades on Virtual Machine Scale Sets is currently in preview.** Previews are made available to you on the condition that you agree to the [supplemental terms of use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Some aspects of these features may change prior to general availability (GA).
+# Configure custom metrics for rolling upgrades on Virtual Machine Scale Sets
 
 Custom metrics for rolling upgrades enables you to utilize the [application health extension](virtual-machine-scale-sets-health-extension.md) to emit custom metrics to your Virtual Machine Scale Set. These custom metrics can be used to tell the scale set the order in which virtual machines should be updated when a rolling upgrade is triggered. The custom metrics can also inform your scale set when an upgrade should be skipped on a specific instance. This allows you to have more control over the ordering and the update process itself. 
 
@@ -30,11 +28,11 @@ A phase is a grouping construct for virtual machines. Each phase is determined b
 
 When a rolling upgrade is initiated, the virtual machines are placed into their designated phases. The phased upgrades are performed in numerical sequence order. Virtual Machines in all batches within a phase will be completed before moving onto the next phase. If no phase ordering is received for a virtual machine, the scale set will place it into the last phase  
 
-**Regional scale set**
-:::image type="content" source="./media/upgrade-policy/n-phase-regional-scale-set.png" alt-text="Diagram that shows a high level diagram of what happens when using n-phase upgrades on a regional scale set.":::
+**Regional (nonzonal) scale set**
+:::image type="content" source="./media/upgrade-policy/n-phase-nonzonal-scale-set.png" alt-text="Diagram that shows a high level diagram of what happens when using n-phase upgrades on a regional (nonzonal) scale set.":::
 
-**Zonal scale set**
-:::image type="content" source="./media/upgrade-policy/n-phase-zonal-scale-set.png" alt-text="Diagram that shows a high level diagram of what happens when using n-phase upgrades on a zonal scale set.":::
+**Zone-spanning scale set**
+:::image type="content" source="./media/upgrade-policy/n-phase-zone-spanning-scale-set.png" alt-text="Diagram that shows a high level diagram of what happens when using n-phase upgrades on a zone-spanning scale set.":::
 
 
 To specify phase number the virtual machine should be associated with, use `phaseOrderingNumber` parameter.  
@@ -52,7 +50,7 @@ To specify phase number the virtual machine should be associated with, use `phas
 
 Skip upgrade functionality enables an individual instance to be omitted from an upgrade during the rolling upgrade. This is similar to utilizing instance protection but can more seamlessly integrate into the rolling upgrade workflow and into instance level applications. Similar to phase ordering, the skip upgrade information is passed to the Virtual Machine Scale Set via the application health extension and custom metrics settings. When the rolling upgrade is triggered, the Virtual Machine Scale Set checks the response of the application health extensions custom metrics and if skip upgrade is set to true, the instance is not included in the rolling upgrade. 
 
-:::image type="content" source="./media/upgrade-policy/skip-upgrade-zonal.png" alt-text="Diagram that shows a high level diagram of what happens when using skip upgrade on a zonal scale set.":::
+:::image type="content" source="./media/upgrade-policy/skip-upgrade-zone-spanning.png" alt-text="Diagram that shows a high level diagram of what happens when using skip upgrade on a zone-spanning scale set.":::
 
 For skipping an upgrade on a virtual machine, use `SkipUpgrade` parameter. This tells the rolling upgrade to skip over this virtual machine when performing the upgrades.  
 
@@ -85,7 +83,7 @@ The [application health extension](virtual-machine-scale-sets-health-extension.m
           "publisher": "Microsoft.ManagedServices",
           "type": "<ApplicationHealthLinux or ApplicationHealthWindows>",
           "autoUpgradeMinorVersion": true,
-          "typeHandlerVersion": "1.0",
+          "typeHandlerVersion": "2.0",
           "settings": {
             "protocol": "<protocol>",
             "port": <port>,
@@ -233,8 +231,7 @@ Request body
 ### Configure the application health extension response
 Configuring the custom metrics response can be accomplished in many different ways. It can be integrated into existing applications, dynamically updated and be used along side various functions to provide an output based on a specific situation. 
 
-#### Example 1: Phase order
-This sample application can be installed on a virtual machine in a scale set to emit the phase belongs to.
+These sample applications include phase order and skip upgrade parameters into the custom metrics response. 
 
 ##### [Bash](#tab/bash)
 
@@ -253,191 +250,12 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 def generate_response_json():
     return json.dumps({
         "ApplicationHealthState": "Healthy",
-        "CustomMetrics": {
-            "RollingUpgrade": {
-                "PhaseOrderingNumber": 0
-            }
-        }
-    })
-
-class RequestHandler(BaseHTTPRequestHandler):
-    def do_GET(self):
-        # Respond with HTTP 200 and JSON content
-        self.send_response(200)
-        self.send_header('Content-type', 'application/json')
-        self.end_headers()
-        response = generate_response_json()
-        self.wfile.write(response.encode('utf-8'))
-
-# Set up the HTTP server
-def run(server_class=HTTPServer, handler_class=RequestHandler):
-    server_address = ('localhost', 8000)
-    httpd = server_class(server_address, handler_class)
-    print('Starting server on port 8000...')
-    httpd.serve_forever()
-
-if __name__ == "__main__":
-    run()
-EOF
-
-# Run the server
-python3 server.py
-
-```
-
-##### [PowerShell](#tab/powershell)
-
-```powershell
- New-NetFirewallRule -DisplayName 'HTTP(S) Inbound' -Direction Inbound -Action Allow -Protocol TCP -LocalPort @('8000')
-                $Hso = New-Object Net.HttpListener
-                $Hso.Prefixes.Add('http://localhost:8000/')
-                $Hso.Start()
-                function GenerateResponseJson()
-                {
-                    $appHealthState = "Healthy"
-                    $phaseOrderingNumber = 0
-                    $hashTable = @{
-                        'ApplicationHealthState' = $appHealthState
-                        'CustomMetrics' = @{
-                            'RollingUpgrade' = @{
-                                'PhaseOrderingNumber' = $phaseOrderingNumber
-                            }
-                        }
-                    } 
-                    $hashTable.CustomMetrics = ($hashTable.CustomMetrics | ConvertTo-Json)
-                    return ($hashTable | ConvertTo-Json)
-                }
-                While($Hso.IsListening)
-                {
-                    $context = $Hso.GetContext()
-                    $response = $context.Response
-                    $response.StatusCode = 200
-                    $response.ContentType = 'application/json'
-                    $responseJson = GenerateResponseJson
-                    $responseBytes = [System.Text.Encoding]::UTF8.GetBytes($responseJson)
-                    $response.OutputStream.Write($responseBytes, 0, $responseBytes.Length)
-                    $response.Close()
-                }
-                $Hso.Stop()
-```
-
----
-
-#### Example 2: Skip upgrade
-This sample application can be installed on a virtual machine in a scale set to emit that the instance should be omitted from the upcoming rolling upgrade. 
-
-##### [Bash](#tab/bash)
-
-```bash
-#!/bin/bash
-
-# Open firewall port (replace with your firewall rules as needed)
-sudo iptables -A INPUT -p tcp --dport 8000 -j ACCEPT
-
-# Create Python HTTP server for responding with JSON
-cat <<EOF > server.py
-import json
-from http.server import BaseHTTPRequestHandler, HTTPServer
-
-# Function to generate the JSON response
-def generate_response_json():
-    return json.dumps({
-        "ApplicationHealthState": "Healthy",
-        "CustomMetrics": {
-            "RollingUpgrade": {
-                "SkipUpgrade": "true"
-            }
-        }
-    })
-
-class RequestHandler(BaseHTTPRequestHandler):
-    def do_GET(self):
-        # Respond with HTTP 200 and JSON content
-        self.send_response(200)
-        self.send_header('Content-type', 'application/json')
-        self.end_headers()
-        response = generate_response_json()
-        self.wfile.write(response.encode('utf-8'))
-
-# Set up the HTTP server
-def run(server_class=HTTPServer, handler_class=RequestHandler):
-    server_address = ('localhost', 8000)
-    httpd = server_class(server_address, handler_class)
-    print('Starting server on port 8000...')
-    httpd.serve_forever()
-
-if __name__ == "__main__":
-    run()
-EOF
-
-# Run the server
-python3 server.py
-
-```
-
-##### [PowerShell](#tab/powershell)
-
-```powershell
- New-NetFirewallRule -DisplayName 'HTTP(S) Inbound' -Direction Inbound -Action Allow -Protocol TCP -LocalPort @('8000')
-                $Hso = New-Object Net.HttpListener
-                $Hso.Prefixes.Add('http://localhost:8000/')
-                $Hso.Start()
-                function GenerateResponseJson()
-                {
-                    $appHealthState = "Healthy"
-                    $hashTable = @{
-                        'ApplicationHealthState' = $appHealthState
-                        'CustomMetrics' = @{
-                            'RollingUpgrade' = @{
-                                'SkipUpgrade' = "true"
-                            }
-                        }
-                    } 
-                    $hashTable.CustomMetrics = ($hashTable.CustomMetrics | ConvertTo-Json)
-                    return ($hashTable | ConvertTo-Json)
-                }
-                While($Hso.IsListening)
-                {
-                    $context = $Hso.GetContext()
-                    $response = $context.Response
-                    $response.StatusCode = 200
-                    $response.ContentType = 'application/json'
-                    $responseJson = GenerateResponseJson
-                    $responseBytes = [System.Text.Encoding]::UTF8.GetBytes($responseJson)
-                    $response.OutputStream.Write($responseBytes, 0, $responseBytes.Length)
-                    $response.Close()
-                }
-                $Hso.Stop()
-```
----
-
-
-#### Example 3: Combined phase order and skip upgrade
-This sample application includes phase order and skip upgrade parameters into the custom metrics response. 
-
-##### [Bash](#tab/bash)
-
-```bash
-#!/bin/bash
-
-# Open firewall port (replace with your firewall rules as needed)
-sudo iptables -A INPUT -p tcp --dport 8000 -j ACCEPT
-
-# Create Python HTTP server for responding with JSON
-cat <<EOF > server.py
-import json
-from http.server import BaseHTTPRequestHandler, HTTPServer
-
-# Function to generate the JSON response
-def generate_response_json():
-    return json.dumps({
-        "ApplicationHealthState": "Healthy",
-        "CustomMetrics": {
+        "CustomMetrics": json.dumps({
             "RollingUpgrade": {
                 "PhaseOrderingNumber": 1,
                 "SkipUpgrade": "false"
             }
-        }
+        })
     })
 
 class RequestHandler(BaseHTTPRequestHandler):
@@ -460,51 +278,332 @@ if __name__ == "__main__":
     run()
 EOF
 
-# Run the server
-python3 server.py
+# Run the server in the background
+python3 server.py &
+
+# Store the process ID of the server
+SERVER_PID=$!
+
+# Wait a few seconds to ensure the server starts
+sleep 2
+
+# Confirm execution
+echo "Server has been started on port 8000 with PID $SERVER_PID"
 
 ```
 
 ##### [PowerShell](#tab/powershell)
 
 ```powershell
- New-NetFirewallRule -DisplayName 'HTTP(S) Inbound' -Direction Inbound -Action Allow -Protocol TCP -LocalPort @('8000')
-                $Hso = New-Object Net.HttpListener
-                $Hso.Prefixes.Add('http://localhost:8000/')
-                $Hso.Start()
-                function GenerateResponseJson()
-                {
-                    $appHealthState = "Healthy"
-                    $hashTable = @{
-                        'ApplicationHealthState' = $appHealthState
-                        'CustomMetrics' = @{
-                            'RollingUpgrade' = @{
-                                'PhaseOrderingNumber' = 1
-                                'SkipUpgrade' = "false"
-                            }
-                        }
-                    } 
-                    $hashTable.CustomMetrics = ($hashTable.CustomMetrics | ConvertTo-Json)
-                    return ($hashTable | ConvertTo-Json)
-                }
-                While($Hso.IsListening)
-                {
-                    $context = $Hso.GetContext()
-                    $response = $context.Response
-                    $response.StatusCode = 200
-                    $response.ContentType = 'application/json'
-                    $responseJson = GenerateResponseJson
-                    $responseBytes = [System.Text.Encoding]::UTF8.GetBytes($responseJson)
-                    $response.OutputStream.Write($responseBytes, 0, $responseBytes.Length)
-                    $response.Close()
-                }
-                $Hso.Stop()
+# Define the script path
+$scriptPath = "$env:TEMP\server.ps1"
+
+# Create the PowerShell HTTP Server Script
+$serverScript = @"
+`$Hso = New-Object Net.HttpListener
+`$Hso.Prefixes.Add('http://localhost:8000/')
+`$Hso.Start()
+
+Write-Host 'Starting server on port 8000...'
+
+# Function to Generate JSON Response (Matching Python Format)
+function GenerateResponseJson {
+    # Create JSON string for CustomMetrics
+    `$customMetricsJson = (@{
+        'RollingUpgrade' = @{
+            'PhaseOrderingNumber' = 1
+            'SkipUpgrade' = 'false'
+        }
+    } | ConvertTo-Json -Depth 10) -replace "`n", "" -replace "\s{2,}", ""  # Ensuring a single-line JSON string
+
+    # Create main JSON response
+    `$response = @{
+        'ApplicationHealthState' = 'Healthy'
+        'CustomMetrics' = `$customMetricsJson  # Embed JSON string inside JSON
+    }
+
+    return (`$response | ConvertTo-Json -Depth 10)
+}
+
+# Keep the server running
+while (`$Hso.IsListening) {
+    try {
+        `$context = `$Hso.GetContext()
+        `$response = `$context.Response
+        `$response.StatusCode = 200
+        `$response.ContentType = 'application/json'
+        `$responseJson = GenerateResponseJson
+        `$responseBytes = [System.Text.Encoding]::UTF8.GetBytes(`$responseJson)
+        `$response.OutputStream.Write(`$responseBytes, 0, `$responseBytes.Length)
+        `$response.Close()
+        Write-Host "Responded to request at $(Get-Date)"
+    }
+    catch {
+        Write-Host "Error occurred: $_"
+    }
+}
+"@
+
+# Write the script to a file
+$serverScript | Out-File -FilePath $scriptPath -Encoding UTF8
+
+# Verify if the file exists before starting the process
+if (Test-Path $scriptPath) {
+    Write-Host "Server script successfully created at $scriptPath"
+    Start-Process -NoNewWindow -FilePath "powershell.exe" -ArgumentList "-ExecutionPolicy Bypass -File `"$scriptPath`"" -PassThru | ForEach-Object {
+        # Store Process ID
+        $SERVER_PID = $_.Id
+        Write-Host "Server has been started on port 8000 with PID $SERVER_PID"
+    }
+} else {
+    Write-Host "Error: Server script not found at $scriptPath"
+}
+
 ```
 
 ---
 
 For more response configuration examples, see [application health samples](https://github.com/Azure-Samples/application-health-samples)
 
+### Verify and query custom metrics data
+
+After configuring the application health extension to return custom metrics, you can verify that the custom metrics are being reported correctly and query the data from your Virtual Machine Scale Set instances.
+
+> [!NOTE]
+> The method for querying custom metrics differs between Uniform and Flexible orchestration modes. Uniform mode uses `az vmss get-instance-view`, while Flexible mode requires querying individual VMs using `az vm get-instance-view`.
+
+#### For Uniform Orchestration Mode
+
+##### [CLI](#tab/azure-cli)
+
+```azurecli-interactive
+az vmss get-instance-view \
+  --resource-group <resource-group-name> \
+  --name <vmss-name> \
+  --instance-id <instance-id>
+```
+
+**Sample output (snippet):**
+
+```json
+{
+  "extensions": [
+    {
+      "name": "ApplicationHealthExtension",
+      "substatuses": [
+        {
+          "code": "ComponentStatus/CustomMetrics/succeeded",
+          "message": "{\"rollingUpgrade\": {\"PhaseOrderingNumber\": 2, \"SkipUpgrade\": false}}"
+        }
+      ]
+    }
+  ]
+}
+```
+
+The custom metrics are in the `message` field of the `ComponentStatus/CustomMetrics/succeeded` substatus.
+
+##### [PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
+Get-AzVmssVM `
+  -ResourceGroupName <resource-group-name> `
+  -VMScaleSetName <vmss-name> `
+  -InstanceId <instance-id> `
+  -InstanceView
+```
+
+**Sample output (snippet):**
+
+```json
+{
+  "extensions": [
+    {
+      "name": "ApplicationHealthExtension",
+      "substatuses": [
+        {
+          "code": "ComponentStatus/CustomMetrics/succeeded",
+          "message": "{\"rollingUpgrade\": {\"PhaseOrderingNumber\": 2, \"SkipUpgrade\": false}}"
+        }
+      ]
+    }
+  ]
+}
+```
+
+The custom metrics are in the `message` field of the `ComponentStatus/CustomMetrics/succeeded` substatus.
+
+##### [REST](#tab/rest-api)
+
+```http
+GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmssName}/virtualMachines/{instanceId}/instanceView?api-version=2023-09-01
+```
+
+**Sample response (snippet):**
+
+```json
+{
+  "extensions": [
+    {
+      "name": "ApplicationHealthExtension",
+      "type": "Microsoft.ManagedServices.ApplicationHealthLinux",
+      "typeHandlerVersion": "2.0",
+      "substatuses": [
+        {
+          "code": "ComponentStatus/CustomMetrics/succeeded",
+          "level": "Info",
+          "displayStatus": "Provisioning succeeded",
+          "message": "{\"rollingUpgrade\": {\"PhaseOrderingNumber\": 2, \"SkipUpgrade\": false}}"
+        }
+      ]
+    }
+  ]
+}
+```
+
+The custom metrics are in the `message` field of the `ComponentStatus/CustomMetrics/succeeded` substatus.
+
+---
+
+#### For Flexible Orchestration Mode
+
+In Flexible orchestration mode, instances are individual VMs. Use the `az vm get-instance-view` command and specify the VM name.
+
+**Get custom metrics for a specific VM:**
+
+##### [CLI](#tab/azure-cli)
+
+```azurecli-interactive
+az vm get-instance-view \
+  --resource-group <resource-group-name> \
+  --name <vm-name>
+```
+
+**Sample output (snippet):**
+
+```json
+{
+  "extensions": [
+    {
+      "name": "ApplicationHealthExtension",
+      "substatuses": [
+        {
+          "code": "ComponentStatus/CustomMetrics/succeeded",
+          "message": "{\"rollingUpgrade\": {\"PhaseOrderingNumber\": 1, \"SkipUpgrade\": false}}"
+        }
+      ]
+    }
+  ]
+}
+```
+
+The custom metrics are in the `message` field of the `ComponentStatus/CustomMetrics/succeeded` substatus.
+
+##### [PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
+Get-AzVM `
+  -ResourceGroupName <resource-group-name> `
+  -Name <vm-name> `
+  -Status
+```
+
+**Sample output (snippet):**
+
+```json
+{
+  "extensions": [
+    {
+      "name": "ApplicationHealthExtension",
+      "substatuses": [
+        {
+          "code": "ComponentStatus/CustomMetrics/succeeded",
+          "message": "{\"rollingUpgrade\": {\"PhaseOrderingNumber\": 1, \"SkipUpgrade\": false}}"
+        }
+      ]
+    }
+  ]
+}
+```
+
+The custom metrics are in the `message` field of the `ComponentStatus/CustomMetrics/succeeded` substatus.
+
+##### [REST](#tab/rest-api)
+
+```http
+GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/instanceView?api-version=2023-09-01
+```
+
+**Sample response (snippet):**
+
+```json
+{
+  "extensions": [
+    {
+      "name": "ApplicationHealthExtension",
+      "type": "Microsoft.ManagedServices.ApplicationHealthLinux",
+      "typeHandlerVersion": "2.0",
+      "substatuses": [
+        {
+          "code": "ComponentStatus/CustomMetrics/succeeded",
+          "level": "Info",
+          "displayStatus": "Provisioning succeeded",
+          "message": "{\"rollingUpgrade\": {\"PhaseOrderingNumber\": 1, \"SkipUpgrade\": false}}"
+        }
+      ]
+    }
+  ]
+}
+```
+
+The custom metrics are in the `message` field of the `ComponentStatus/CustomMetrics/succeeded` substatus.
+
+---
+
+#### Troubleshooting custom metrics
+
+If custom metrics are not being reported correctly, verify the following:
+
+1. **Check Application Health Extension status:**
+
+```bash
+az vmss get-instance-view \
+  --resource-group <resource-group-name> \
+  --name <vmss-name> \
+  --instance-id <instance-id> \
+  --query "extensions[?name=='ApplicationHealthExtension'].statuses"
+```
+
+2. **Verify the health endpoint is responding:**
+
+```bash
+# Get the public IP of an instance
+PUBLIC_IP=$(az vmss list-instance-public-ips \
+  --resource-group <resource-group-name> \
+  --name <vmss-name> \
+  --query "[0].ipAddress" \
+  --output tsv)
+
+# Test the health endpoint
+curl -v http://$PUBLIC_IP:<port>/<request-path>
+```
+
+3. **Check that the response format is correct:**
+
+The application health endpoint must return a JSON response in this exact format:
+
+```json
+{
+  "ApplicationHealthState": "Healthy",
+  "customMetrics": "{\"rollingUpgrade\": {\"PhaseOrderingNumber\": 0, \"SkipUpgrade\": false}}"
+}
+```
+
+> [!IMPORTANT]
+>
+> - The `customMetrics` value must be a **JSON string** (double-serialized), not a JSON object
+> - The `ApplicationHealthState` must be set to "Healthy" for the instance to be included in the rolling upgrade
+> - The custom metrics are only read at the start of a rolling upgrade; changes during an upgrade won't affect the current upgrade
 
 ## Next steps
 Learn how to [perform manual upgrades](virtual-machine-scale-sets-perform-manual-upgrades.md) on Virtual Machine Scale Sets. 

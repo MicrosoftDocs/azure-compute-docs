@@ -1,12 +1,14 @@
 ---
 title: Networking patterns for Azure Service Fabric 
 description: Describes common networking patterns for Service Fabric and how to create a cluster by using Azure networking features.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 11/21/2024
+ms.update-cycle: 1095-days
+# Customer intent: "As a cloud engineer, I want to configure a Service Fabric cluster with various Azure networking features, so that I can optimize network performance and ensure proper connectivity for my applications."
 ---
 
 # Service Fabric networking patterns

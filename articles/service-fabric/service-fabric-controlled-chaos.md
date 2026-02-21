@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a developer working with distributed systems, I want to use fault injection and chaos engineering in Service Fabric, so that I can validate the robustness of my services under unstable conditions and improve overall service reliability."
 ---
 
 # Induce controlled Chaos in Service Fabric clusters

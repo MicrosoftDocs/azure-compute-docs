@@ -1,12 +1,14 @@
 ---
 title: Manage certificates in a Service Fabric cluster 
 description: Learn about managing certificates in a Service Fabric cluster that's secured with X.509 certificates.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 07/11/2022
+ms.update-cycle: 1095-days
+# Customer intent: "As a cloud administrator, I want to automate the management of X.509 certificates in a Service Fabric cluster, so that I can ensure continuous security and availability while minimizing manual interventions during operations like renewal and provisioning."
 ---
 # Manage certificates in Service Fabric clusters
 

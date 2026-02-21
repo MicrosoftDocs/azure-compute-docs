@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: devx-track-extended-java
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: "As a Java developer using Eclipse, I want to set up remote debugging for my Service Fabric application, so that I can efficiently troubleshoot and improve the reliability and performance of my services."
 ---
 
 # Debug your Java Service Fabric application using Eclipse

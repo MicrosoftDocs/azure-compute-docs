@@ -1,13 +1,19 @@
 ---
 title: What are solutions for running Oracle WebLogic Server on Azure Virtual Machines
 description: Learn how to run Oracle WebLogic Server on Microsoft Azure Virtual Machines.
-author: rezar
+author: jjaygbay1
 ms.service: oracle-on-azure
 ms.collection: linux
-ms.topic: how-to
+ms.topic: concept-article
 ms.date: 10/08/2024
-ms.author: rezar
-ms.custom: devx-track-java, devx-track-javaee, devx-track-javaee-wls, devx-track-javaee-wls-vm
+ms.author: jacobjaygbay
+ms.custom:
+  - devx-track-java
+  - devx-track-javaee
+  - devx-track-javaee-wls
+  - devx-track-javaee-wls-vm
+  - sfi-image-nochange
+# Customer intent: "As a system administrator, I want to deploy Oracle WebLogic Server on Azure Virtual Machines, so that I can leverage cloud infrastructure for mission-critical Java applications while ensuring flexibility and high availability in my deployment scenarios."
 ---
 # What are solutions for running Oracle WebLogic Server on Azure Virtual Machines?
 

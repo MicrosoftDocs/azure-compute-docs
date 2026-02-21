@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 08/09/2024
+# Customer intent: As a cloud engineer, I want to deploy a Service Fabric managed cluster with stateless node types, so that I can take advantage of improved scaling, cost savings using Spot VMs, and efficient resource management for stateless workloads.
 ---
 
 # Deploy a Service Fabric managed cluster with stateless node types
@@ -119,7 +120,7 @@ This configuration can only be enabled on new Spot nodetypes by specifying the *
 To configure a Stateless node type for zone resiliency, you must [configure managed cluster zone spanning](how-to-managed-cluster-availability-zones.md) at the cluster level. 
 
 >[!NOTE]
-> The zonal resiliency property must be set at the cluster level, and this property can't be changed in place.
+> The zone resiliency property must be set at the cluster level, and this property can't be changed in place.
 
 ## Temporary disk support
 Stateless node types can be configured to use temporary disk as the data disk instead of a Managed Disk. Using a temporary disk can reduce costs for stateless workloads. To configure a stateless node type to use the temporary disk set the **useTempDataDisk** property to **true**. 

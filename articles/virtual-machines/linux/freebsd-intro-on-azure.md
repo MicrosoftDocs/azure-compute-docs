@@ -8,6 +8,7 @@ ms.collection: linux
 ms.topic: how-to
 ms.date: 09/13/2017
 ms.author: mimckitt
+# Customer intent: As a system administrator, I want to set up and manage FreeBSD virtual machines on a cloud platform, so that I can leverage the specific features and capabilities of FreeBSD for my server and application needs.
 ---
 
 # Introduction to FreeBSD on Azure

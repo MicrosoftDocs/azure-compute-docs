@@ -5,9 +5,10 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: overview
 ms.service: azure-virtual-machine-scale-sets
-ms.date: 11/7/2024
-ms.reviewer: ju-shim
+ms.date: 03/21/2025
+ms.reviewer: cynthn
 ms.custom: upgradepolicy, ignite-2024
+# Customer intent: As a cloud administrator, I want to understand the different upgrade policy modes for Virtual Machine Scale Sets, so that I can choose the most appropriate approach to manage updates while ensuring service uptime and instance availability.
 ---
 # Upgrade policy modes for Virtual Machine Scale Sets
 
@@ -17,17 +18,12 @@ The upgrade policy mode you choose can impact the overall service uptime of your
 
 ## Upgrade policy modes
 
-> [!NOTE]
-> To update the image reference version during an upgrade, register the following feature flag: <br>
-> `Register-AzProviderFeature -FeatureName ImageReferenceUpgradeForVmoVMs -ProviderNamespace Microsoft.Compute`
-
 Each Virtual Machine Scale Set has an **upgrade policy mode** which determines how instances are brought up to date with the latest scale set model. Changes to the scale set model include updates that need to be applied to each individual instance. Some examples include: 
 - Image reference upgrades
 - SKU changes
 - Add/ remove a data disk
 - Add/ remove extensions
 - Adding availability zones
-- Changing fault domain information
 
 Additionally, there can be situations where you might want specific instances in your scale set to be treated differently from the rest. For example, certain instances in the scale set could be needed to perform different tasks than the other members of the scale set. In these situations, [Instance Protection](virtual-machine-scale-sets-instance-protection.md) or [custom metrics for rolling upgrade policy (preview)](virtual-machine-scale-sets-rolling-upgrade-custom-metrics.md) provide the controls needed to protect these instances from being upgraded along side the other instances. 
 
@@ -70,7 +66,6 @@ Some upgrades require a virtual machine restart while others can be completed wi
 - Image Reference updates
 - Virtual machine size changes
 - Adding Availability Zones
-- Fault Domain changes
 - Proximity Placement Group changes
 
 > [!NOTE]

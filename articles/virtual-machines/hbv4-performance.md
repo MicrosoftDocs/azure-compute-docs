@@ -5,10 +5,11 @@ services: virtual-machines
 ms.service: azure-virtual-machines
 ms.subservice: hpc
 ms.topic: concept-article
-ms.date: 07/25/2024
+ms.date: 02/10/2026
 ms.reviewer: cynthn
 ms.author: padmalathas
 author: padmalathas
+# Customer intent: "As a data engineer, I want to understand the performance and scalability of HBv4-series VMs, so that I can optimize high-performance computing workloads and ensure efficient resource utilization."
 ---
 
 # HBv4-series virtual machine performance

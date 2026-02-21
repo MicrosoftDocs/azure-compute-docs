@@ -6,6 +6,8 @@ ms.author: rogarana
 ms.date: 07/12/2024
 ms.topic: how-to
 ms.service: azure-disk-storage
+ms.custom: portal
+# Customer intent: "As a cloud architect, I want to purchase Azure Disk Storage reservations, so that I can optimize costs and maximize savings on my premium SSD managed disks."
 ---
 
 # Reduce costs with Azure Disks Reservation

@@ -9,6 +9,7 @@ ms.subservice: sizes
 ms.date: 04/19/2024
 ms.author: mattmcinnes
 ms.custom: include file
+# Customer intent: As a cloud architect, I want to understand the capabilities of E-family VMs, so that I can determine if they meet the memory-intensive workload requirements of our enterprise applications and data processing needs.
 ---
 **Memory-Intensive Workloads:** E-family VMs are for workloads that demands a large memory footprint to efficiently handle tasks, such as simulations, large-scale computations in scientific research, or financial risk modeling.
 

@@ -3,12 +3,14 @@ title: Maintenance notifications for Virtual Machine Scale Sets in Azure
 description: View maintenance notifications and start self-service maintenance for Virtual Machine Scale Sets in Azure.
 author: mimckitt
 ms.author: mimckitt
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: maintenance-control
 ms.date: 06/14/2024
-ms.reviewer: jushiman
-ms.custom: mimckitt
+ms.update-cycle: 180-days
+ms.reviewer: cynthn
+ms.custom: portal
+# Customer intent: "As an IT administrator managing Virtual Machine Scale Sets, I want to receive notifications and initiate self-service maintenance, so that I can control the maintenance timing and minimize downtime for my workloads during planned updates."
 ---
 
 # Planned maintenance notifications for Virtual Machine Scale Sets

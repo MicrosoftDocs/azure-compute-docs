@@ -6,17 +6,18 @@ ms.service: azure-virtual-machines
 ms.subservice: hpc
 ms.custom:
 ms.topic: concept-article
-ms.date: 07/25/2024
+ms.date: 02/10/2026
 ms.reviewer: cynthn
 ms.author: padmalathas
 author: padmalathas
+# Customer intent: "As a performance engineer, I want to analyze the performance metrics of HBv2-series virtual machine sizes, so that I can optimize our HPC workloads and ensure they meet the required benchmarks for efficiency."
 ---
 
 # HBv2-series virtual machine sizes
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
-Several performance tests have been run on [HBv2-series](hbv2-series.md) size VMs. The following are some of the results of this performance testing.
+Performance testing was conducted across multiple [HBv2-series](hbv2-series.md) size VMs. The following table summarizes key findings from these tests.
 
 
 | Workload                                        | HBv2                                                              |
@@ -30,7 +31,7 @@ Several performance tests have been run on [HBv2-series](hbv2-series.md) size VM
 
 ## MPI latency
 
-MPI latency test from the OSU microbenchmark suite is run. Sample scripts are on [GitHub](https://github.com/Azure/azhpc-images/blob/04ddb645314a6b2b02e9edb1ea52f079241f1297/tests/run-tests.sh).
+MPI latency test from the OSU Micro-Benchmark (OMB) suite is run. Sample scripts are on [GitHub](https://github.com/Azure/azhpc-images/blob/04ddb645314a6b2b02e9edb1ea52f079241f1297/tests/run-tests.sh).
 
 ```bash
 ./bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./osu_latency
@@ -50,7 +51,7 @@ MPI bandwidth test from the OSU microbenchmark suite is run. Sample scripts are 
 
 ## Mellanox Perftest
 
-The [Mellanox Perftest package](https://enterprise-support.nvidia.com/s/article/perftest-package) has many InfiniBand tests such as latency (ib_send_lat) and bandwidth (ib_send_bw). An example command is below.
+The [Mellanox Perftest package](https://enterprise-support.nvidia.com/s/article/perftest-package) has many InfiniBand tests such as latency (ib_send_lat) and bandwidth (ib_send_bw). The following command serves as an example.
 
 
 ```bash

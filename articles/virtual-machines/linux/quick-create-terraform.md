@@ -11,6 +11,7 @@ ms.custom: devx-track-terraform, linux-related-content
 content_well_notification: 
   - AI-contribution
 ai-usage: ai-assisted
+# Customer intent: As a cloud engineer, I want to use Terraform to automate the creation of a Linux virtual machine and its supporting resources, so that I can streamline the process and improve efficiency in managing my cloud infrastructure.
 ---
 
 # Quickstart: Use Terraform to create a Linux VM

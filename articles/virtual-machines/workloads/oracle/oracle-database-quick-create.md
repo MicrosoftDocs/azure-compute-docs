@@ -9,13 +9,14 @@ ms.date: 10/03/2024
 ms.author: jacobjaygbay
 ms.custom: mode-other, devx-track-azurecli, devx-track-java
 ms.devlang: azurecli
+# Customer intent: As a cloud administrator, I want to deploy an Oracle Database in an Azure VM using the CLI, so that I can quickly set up a scalable database environment without manual configuration.
 ---
 
 # Create an Oracle Database in an Azure VM
 
 **Applies to:** :heavy_check_mark: Linux VMs 
 
-This article describes how to use the Azure CLI to deploy an Azure virtual machine (VM) from the [Oracle marketplace gallery image](https://azuremarketplace.microsoft.com/marketplace/apps/Oracle.OracleDatabase12102EnterpriseEdition?tab=Overview) to create an Oracle Database 19c database. After you deploy the server, you connect the server via SSH to configure the Oracle database. 
+This article describes how to use the Azure CLI to deploy an Azure virtual machine (VM) from the [Oracle marketplace gallery image](https://azuremarketplace.microsoft.com/marketplace/apps) to create an Oracle Database 19c database. After you deploy the server, you connect the server via SSH to configure the Oracle database. 
 
 ## Prerequisites
 
@@ -97,7 +98,6 @@ In this task, you must configure some external endpoints for the database listen
    ```azurecli-interactive
    az network nsg create --resource-group rg-oracle --name vmoracle19cNSG
    ```
-
 1. Create an NSG rule with the [az network nsg rule create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create) command. This command creates the **allow-oracle** NSG rule to open the endpoint for remote access to the Oracle database:
 
    ```azurecli-interactive
@@ -121,7 +121,17 @@ In this task, you must configure some external endpoints for the database listen
        --priority 1002 \
        --destination-port-range 5502
    ```
+1. Create an NSG rule with the [az network nsg rule create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create) command. This command creates the **allow-ssh** NSG rule to open the endpoint for remote access via ssh:
 
+   ```azurecli-interactive
+   az network nsg rule create \
+       --resource-group rg-oracle \
+       --nsg-name vmoracle19cNSG \
+       --name allow-ssh \
+       --protocol tcp \
+       --priority 1001 \
+       --destination-port-range 22
+   ```
 1. As needed, use the [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) command to get the public IP address of your VM:
 
    ```azurecli-interactive

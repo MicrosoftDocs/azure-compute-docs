@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: devx-track-python
 services: service-fabric
 ms.date: 07/14/2022
+# Customer intent: As a developer, I want to create and deploy a Windows container application using Service Fabric, so that I can leverage containerization to scale and manage my Python web application efficiently in the cloud.
 ---
 
 # Create your first Service Fabric container application on Windows
@@ -16,10 +17,10 @@ ms.date: 07/14/2022
 > * [Windows](service-fabric-get-started-containers.md)
 > * [Linux](service-fabric-get-started-containers-linux.md)
 
-Running an existing application in a Windows container on a Service Fabric cluster doesn't require any changes to your application. This article walks you through creating a Docker image containing a Python [Flask](http://flask.pocoo.org/) web application and deploying it to an Azure Service Fabric cluster. You will also share your containerized application through [Azure Container Registry](/azure/container-registry/). This article assumes a basic understanding of Docker. You can learn about Docker by reading the [Docker Overview](https://docs.docker.com/engine/understanding-docker/).
+Running an existing application in a Windows container on a Service Fabric cluster doesn't require any changes to your application. This article walks you through creating a Docker image containing a Python [Flask](http://flask.pocoo.org/) web application and deploying it to an Azure Service Fabric cluster. You'll also share your containerized application through [Azure Container Registry](/azure/container-registry/). This article assumes a basic understanding of Docker. You can learn about Docker by reading the [Docker Overview](https://docs.docker.com/engine/understanding-docker/).
 
 > [!NOTE]
-> This article applies to a Windows development environment.  The Service Fabric cluster runtime and the Docker runtime must be running on the same OS.  You cannot run Windows containers on a Linux cluster.
+> This article applies to a Windows development environment.  The Service Fabric cluster runtime and the Docker runtime must be running on the same OS.  You can't run Windows containers on a Linux cluster.
 
 
 [!INCLUDE [updated-for-az](~/reusable-content/ce-skilling/azure/includes/updated-for-az.md)]
@@ -29,11 +30,11 @@ Running an existing application in a Windows container on a Service Fabric clust
 * A development computer running:
   * Visual Studio 2015 or Visual Studio 2019.
   * [Service Fabric SDK and tools](service-fabric-get-started.md).
-  *  Docker for Windows. [Get Docker CE for Windows (stable)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description). After installing and starting Docker, right-click on the tray icon and select **Switch to Windows containers**. This step is required to run Docker images based on Windows.
+  * Docker for Windows. [Get Docker CE for Windows (stable)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description). After installing and starting Docker, right-click on the tray icon and select **Switch to Windows containers**. This step is required to run Docker images based on Windows.
 
-* A Windows cluster with three or more nodes running on Windows Server with Containers. 
+* A Windows cluster with three or more nodes running on Windows Server with Docker installed. For more information on how to install Docker on the cluster, refer to [Installing Mirantis Runtime](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Deployment/Mirantis-Installation.md).
 
-  For this article, the version (build) of Windows Server with Containers running on your cluster nodes must match that on your development machine. This is because you build the docker image on your development machine and there are compatibility constraints between versions of the container OS and the host OS on which it is deployed. For more information, see [Windows Server container OS and host OS compatibility](#windows-server-container-os-and-host-os-compatibility). 
+  For this article, the version (build) of Windows Server running on your cluster nodes must match that on your development machine. This is because you build the docker image on your development machine and there are compatibility constraints between versions of the container OS and the host OS on which it's deployed. For more information, see [Windows Server container OS and host OS compatibility](#windows-server-container-os-and-host-os-compatibility).
   
     To determine the version of Windows Server with Containers you need for your cluster, run the `ver` command from a Windows command prompt on your development machine. Refer to [Windows Server container OS and host OS compatibility](#windows-server-container-os-and-host-os-compatibility) before you [creating a cluster](service-fabric-cluster-creation-via-portal.md).
 
@@ -145,7 +146,7 @@ Once the container starts, find its IP address so that you can connect to your r
 docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" my-web-site
 ```
 
-If that command does not return anything, run the following command and inspect the **NetworkSettings**->**Networks** element for the IP address:
+If that command doesn't return anything, run the following command and inspect the **NetworkSettings**->**Networks** element for the IP address:
 ```
 docker inspect my-web-site
 ```
@@ -273,7 +274,7 @@ Windows supports two isolation modes for containers: process and Hyper-V. With t
    >
 
 ## Configure resource governance
-[Resource governance](service-fabric-resource-governance.md) restricts the resources that the container can use on the host. The `ResourceGovernancePolicy` element, which is specified in the application manifest, is used to declare resource limits for a service code package. Resource limits can be set for the following resources: Memory, MemorySwap, CpuShares (CPU relative weight), MemoryReservationInMB, BlkioWeight (BlockIO relative weight). In this example, service package Guest1Pkg gets one core on the cluster nodes where it is placed. Memory limits are absolute, so the code package is limited to 1024 MB of memory (and a soft-guarantee reservation of the same). Code packages (containers or processes) are not able to allocate more memory than this limit, and attempting to do so results in an out-of-memory exception. For resource limit enforcement to work, all code packages within a service package should have memory limits specified.
+[Resource governance](service-fabric-resource-governance.md) restricts the resources that the container can use on the host. The `ResourceGovernancePolicy` element, which is specified in the application manifest, is used to declare resource limits for a service code package. Resource limits can be set for the following resources: Memory, MemorySwap, CpuShares (CPU relative weight), MemoryReservationInMB, BlkioWeight (BlockIO relative weight). In this example, service package Guest1Pkg gets one core on the cluster nodes where it's placed. Memory limits are absolute, so the code package is limited to 1024 MB of memory (and a soft-guarantee reservation of the same). Code packages (containers or processes) aren't able to allocate more memory than this limit, and attempting to do so results in an out-of-memory exception. For resource limit enforcement to work, all code packages within a service package should have memory limits specified.
 
 ```xml
 <ServiceManifestImport>
@@ -318,7 +319,7 @@ If *RestartContainerOnUnhealthyDockerHealthStatus* is set to **true**, a contain
 
 If *TreatContainerUnhealthyStatusAsError* is set to **true**, **ERROR** health reports will appear when the container's *health_status* is *unhealthy*.
 
-If you want to the disable the **HEALTHCHECK** integration for the entire Service Fabric cluster, you will need to set [EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) to **false**.
+If you want to the disable the **HEALTHCHECK** integration for the entire Service Fabric cluster, you'll need to set [EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) to **false**.
 
 ## Deploy the container application
 Save all your changes and build the application. To publish your application, right-click on **MyFirstContainer** in Solution Explorer and select **Publish**.
@@ -348,9 +349,9 @@ docker rmi myregistry.azurecr.io/samples/helloworldapp
 
 ## Windows Server container OS and host OS compatibility
 
-Windows Server containers are not compatible across all versions of a host OS. For example:
+Windows Server containers aren't compatible across all versions of a host OS. For example:
  
-- Windows Server containers built using Windows Server version 1709 do not work on a host running Windows Server version 2016. 
+- Windows Server containers built using Windows Server version 1709 don't work on a host running Windows Server version 2016. 
 - Windows Server containers built using Windows Server 2016 work in Hyper-V isolation mode only on a host running Windows Server version 1709. 
 - With Windows Server containers built using Windows Server 2016, it might be necessary to ensure that the revision of the container OS and host OS are the same when running in process isolation mode on a host running Windows Server 2016.
  
@@ -359,7 +360,7 @@ To learn more, see [Windows Container Version Compatibility](/virtualization/win
 Consider the compatibility of the host OS and your container OS when building and deploying containers to your Service Fabric cluster. For example:
 
 - Make sure you deploy containers with an OS compatible with the OS on your cluster nodes.
-- Make sure that the isolation mode specified for your container application is consistent with support for the container OS on the node where it is being deployed.
+- Make sure that the isolation mode specified for your container application is consistent with support for the container OS on the node where it's being deployed.
 - Consider how OS upgrades to your cluster nodes or containers may affect their compatibility. 
 
 We recommend the following practices to make sure that containers are deployed correctly on your Service Fabric cluster:
@@ -373,7 +374,7 @@ We recommend the following practices to make sure that containers are deployed c
  
 ## Specify OS build specific container images 
 
-Windows Server containers may not be compatible across different versions of the OS. For example, Windows Server containers built using Windows Server 2016 do not work on Windows Server version 1709 in process isolation mode. Hence, if cluster nodes are updated to the latest version, container services built using the earlier versions of the OS may fail. To circumvent this with version 6.1 of the runtime and newer, Service Fabric supports specifying multiple OS images per container and tagging them with the build versions of the OS in the application manifest. You can get the build version of the OS by running `winver` at a Windows command prompt. Update the application manifests and specify image overrides per OS version before updating the OS on the nodes. The following snippet shows how to specify multiple container images in the application manifest, **ApplicationManifest.xml**:
+Windows Server containers may not be compatible across different versions of the OS. For example, Windows Server containers built using Windows Server 2016 don't work on Windows Server version 1709 in process isolation mode. Hence, if cluster nodes are updated to the latest version, container services built using the earlier versions of the OS may fail. To circumvent this with version 6.1 of the runtime and newer, Service Fabric supports specifying multiple OS images per container and tagging them with the build versions of the OS in the application manifest. You can get the build version of the OS by running `winver` at a Windows command prompt. Update the application manifests and specify image overrides per OS version before updating the OS on the nodes. The following snippet shows how to specify multiple container images in the application manifest, **ApplicationManifest.xml**:
 
 
 ```xml
@@ -394,7 +395,7 @@ The build version for Windows Server 2016 is 14393, and the build version for Wi
 ```
 
    > [!NOTE]
-   > The OS build version tagging features is only available for Service Fabric on Windows
+   > The OS build version tagging feature is only available for Service Fabric on Windows
    >
 
 If the underlying OS on the VM is build 16299 (version 1709), Service Fabric picks the container image corresponding to that Windows Server version. If an untagged container image is also provided alongside tagged container images in the application manifest, then Service Fabric treats the untagged image as one that works across versions. Tag the container images explicitly to avoid issues during upgrades.
@@ -541,7 +542,6 @@ You can configure the Service Fabric cluster to remove unused container images f
                 "value": "mcr.microsoft.com/windows/servercore|mcr.microsoft.com/windows/nanoserver|mcr.microsoft.com/dotnet/framework/aspnet|..."
           }
           ...
-          }
         ]
 	} 
 ]
@@ -564,6 +564,7 @@ The Service Fabric runtime allocates 20 minutes to download and extract containe
               "name": "ContainerImageDownloadTimeout",
               "value": "1200"
           }
+          ...
         ]
 	}
 ]
@@ -572,18 +573,18 @@ The Service Fabric runtime allocates 20 minutes to download and extract containe
 
 ## Set container retention policy
 
-To assist with diagnosing container startup failures, Service Fabric (version 6.1 or higher) supports retaining containers that terminated or failed to startup. This policy can be set in the **ApplicationManifest.xml** file as shown in the following snippet:
+To assist with diagnosing container startup failures, Service Fabric (version 6.1 or higher) supports retaining containers that terminated or failed to start up. This policy can be set in the **ApplicationManifest.xml** file as shown in the following snippet:
 
 ```xml
  <ContainerHostPolicies CodePackageRef="NodeService.Code" Isolation="process" ContainersRetentionCount="2"  RunInteractive="true"> 
 ```
 
-The setting **ContainersRetentionCount** specifies the number of containers to retain when they fail. If a negative value is specified, all failing containers will be retained. When the **ContainersRetentionCount**  attribute is not specified, no containers will be retained. The attribute **ContainersRetentionCount** also supports Application Parameters so users can specify different values for test and production clusters. Use placement constraints to target the container service to a particular node when using this feature to prevent the container service from moving to other nodes. 
+The setting **ContainersRetentionCount** specifies the number of containers to retain when they fail. If a negative value is specified, all failing containers will be retained. When the **ContainersRetentionCount**  attribute isn't specified, no containers will be retained. The attribute **ContainersRetentionCount** also supports Application Parameters so users can specify different values for test and production clusters. Use placement constraints to target the container service to a particular node when using this feature to prevent the container service from moving to other nodes. 
 Any containers retained using this feature must be manually removed.
 
 ## Start the Docker daemon with custom arguments
 
-With the 6.2 version of the Service Fabric runtime and greater, you can start the Docker daemon with custom arguments. When custom arguments are specified, Service Fabric does not pass any other argument to docker engine except the `--pidfile` argument. Hence, `--pidfile` shouldn't be passed as an argument. Additionally, the argument should continue to have the docker daemon listen on the default name pipe on Windows (or unix domain socket on Linux) for Service Fabric to communicate with the Daemon. The custom arguments are passed in the cluster manifest under the **Hosting** section under **ContainerServiceArguments** as shown in the following snippet: 
+With the 6.2 version of the Service Fabric runtime and greater, you can start the Docker daemon with custom arguments. When custom arguments are specified, Service Fabric doesn't pass any other argument to docker engine except the `--pidfile` argument. Hence, `--pidfile` shouldn't be passed as an argument. Additionally, the argument should continue to have the docker daemon listen on the default name pipe on Windows (or unix domain socket on Linux) for Service Fabric to communicate with the Daemon. The custom arguments are passed in the cluster manifest under the **Hosting** section under **ContainerServiceArguments** as shown in the following snippet: 
  
 
 ```json
@@ -595,16 +596,17 @@ With the 6.2 version of the Service Fabric runtime and greater, you can start th
           { 
             "name": "ContainerServiceArguments", 
             "value": "-H localhost:1234 -H unix:///var/run/docker.sock" 
-          } 
+          }
+          ...
         ] 
 	} 
 ]
 ```
 
 ## EntryPoint Override
-With 8.2 version of ServiceFabric Runtime, entrypoint for **container** and **exe host** code package can be overridden. This can be used in cases where all the manifest elements remains the same but the container image needs to be changed, then provisioning a different app type version is not required anymore, or different arguments needs to be passed based on test or prod scenario and the entry point remains the same.
+With 8.2 version of ServiceFabric Runtime, entrypoint for **container** and **exe host** code package can be overridden. This can be used in cases where all the manifest elements remain the same but the container image needs to be changed, then provisioning a different app type version isn't required anymore, or different arguments needs to be passed based on test or prod scenario and the entry point remains the same.
 
-Following is an example on how to override container entry point:
+Following is an example of how to override container entry point:
 
 ### ApplicationManifest.xml
 ```xml
@@ -690,13 +692,13 @@ Similarly, below is an example on how to override the **ExeHost**:
 </Policies>
 ```
 > [!NOTE]
-> Entry point override is not supported for SetupEntryPoint.
+> Entry point override isn't supported for SetupEntryPoint.
 
 ## Next steps
 * Learn more about running [containers on Service Fabric](service-fabric-containers-overview.md).
 * Read the [Deploy a .NET application in a container](service-fabric-host-app-in-a-container.md) tutorial.
 * Learn about the Service Fabric [application life-cycle](service-fabric-application-lifecycle.md).
-* Checkout the [Service Fabric container code samples](https://github.com/Azure-Samples/service-fabric-containers) on GitHub.
+* Check out the [Service Fabric container code samples](https://github.com/Azure-Samples/service-fabric-containers) on GitHub.
 
 [1]: ./media/service-fabric-get-started-containers/MyFirstContainerError.png
 [2]: ./media/service-fabric-get-started-containers/MyFirstContainerReady.png

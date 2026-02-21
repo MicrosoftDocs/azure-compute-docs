@@ -9,6 +9,7 @@ ms.subservice: sizes
 ms.date: 04/19/2024
 ms.author: mattmcinnes
 ms.custom: include file
+# Customer intent: "As a cloud architect, I want to assess the capabilities of D-series virtual machines, so that I can determine their suitability for hosting enterprise applications, development environments, and web services in my organization's cloud infrastructure."
 ---
 **Balanced Performance:** D-series VMs provide a solid balance between CPU capabilities and memory size, which makes them suitable for most production workloads. They are equipped with faster processors compared to the A-series and provide more memory per core.
 

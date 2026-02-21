@@ -4,9 +4,10 @@
  author: albecker1
  ms.service: azure-disk-storage
  ms.topic: include
- ms.date: 11/09/2021
+ ms.date: 01/14/2025
  ms.author: albecker1
  ms.custom: include file
+# Customer intent: As a cloud resource manager, I want to understand the cost and performance implications of on-demand and credit-based disk bursting, so that I can optimize our workloads' IOPS and throughput while managing expenses effectively.
 ---
 ### On-demand bursting
 
@@ -17,10 +18,6 @@ If you expect your workloads to frequently run beyond the provisioned perf targe
 Before you enable on-demand bursting, understand the following:
 
 [!INCLUDE [managed-disk-bursting-regions-limitations](managed-disk-bursting-regions-limitations.md)]
-
-#### Regional availability
-
-[!INCLUDE [managed-disk-bursting-availability](managed-disk-bursting-availability.md)]
 
 #### Billing
 

@@ -5,9 +5,12 @@ ms.topic: quickstart
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
-ms.custom: linux-related-content
 services: service-fabric
 ms.date: 07/11/2022
+ms.custom:
+  - linux-related-content
+  - sfi-image-nochange
+# Customer intent: As a developer, I want to deploy a Linux container application to a distributed systems platform, so that I can manage, scale, and ensure the reliability of my microservices effectively in Azure.
 ---
 
 # Quickstart: Deploy Linux containers to Service Fabric
@@ -22,7 +25,7 @@ This quickstart shows how to deploy Linux containers to a Service Fabric cluster
 
 To complete this quickstart:
 
-1. Create a [free Azure account](https://azure.microsoft.com/free/) before you begin if you don't have a subscription.
+1. Create a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin if you don't have a subscription.
 
 2. Install the [Azure CLI](/cli/azure/install-azure-cli-apt)
 

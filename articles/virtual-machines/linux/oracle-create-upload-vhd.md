@@ -8,8 +8,9 @@ ms.subservice: oracle
 ms.custom: linux-related-content
 ms.topic: how-to
 ms.date: 11/09/2021
-ms.author: vamckMS
+ms.author: vakavuru
 ms.reviewer: mattmcinnes
+# Customer intent: As a cloud administrator, I want to create and upload an Oracle Linux VHD to Azure, so that I can deploy virtual machines efficiently using a customized operating system image.
 ---
 
 # Prepare an Oracle Linux virtual machine for Azure

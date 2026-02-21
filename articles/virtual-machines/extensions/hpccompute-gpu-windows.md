@@ -7,10 +7,13 @@ ms.subservice: hpc
 ms.collection: windows
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows
-ms.custom: devx-track-arm-template
 ms.date: 07/25/2024
-ms.author: jushiman
-author: ju-shim
+ms.author: cynthn
+author: cynthn
+ms.custom:
+  - devx-track-arm-template
+  - sfi-image-nochange
+# Customer intent: As an IT administrator managing Windows N-series virtual machines, I want to install the NVIDIA GPU Driver Extension so that I can utilize GPU capabilities for enhanced performance in computational tasks.
 ---
 
 # NVIDIA GPU Driver Extension for Windows
@@ -22,8 +25,14 @@ The instructions for manual installation of the drivers, and the list of current
 The NVIDIA GPU Driver Extension can also be deployed on Linux N-series VMs. For more information, see [NVIDIA GPU Driver Extension for Linux](hpccompute-gpu-linux.md).
 
 > [!Note]
+> For NVadsA10v5-series VMs, this extension will continue to use v17.x until we finish the v18.x rollout in sovereign clouds in January 2026.
+> 
+
+> [!Note]
 > The GPU driver extensions do not automatically update the driver after the extension is installed. If you need to move to a newer driver version then either manually download and install the driver or remove and add the extension again.
 >
+
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
 
 ## Prerequisites
 
@@ -62,7 +71,7 @@ The following JSON snippet shows the schema for the extension:
   "properties": {
     "publisher": "Microsoft.HpcCompute",
     "type": "NvidiaGpuDriverWindows",
-    "typeHandlerVersion": "1.4",
+    "typeHandlerVersion": "1.10",
     "autoUpgradeMinorVersion": true,
     "settings": {
     }
@@ -79,7 +88,7 @@ The JSON schema includes values for the following parameters.
 | `apiVersion` | 2015-06-15 | date |
 | `publisher` | Microsoft.HpcCompute | string |
 | `type` | NvidiaGpuDriverWindows | string |
-| `typeHandlerVersion` | 1.4 | int |
+| `typeHandlerVersion` | 1.10 | int |
 
 ## Deploy the extension
 
@@ -136,7 +145,7 @@ The following example assumes the extension is nested inside the virtual machine
   "properties": {
     "publisher": "Microsoft.HpcCompute",
     "type": "NvidiaGpuDriverWindows",
-    "typeHandlerVersion": "1.4",
+    "typeHandlerVersion": "1.10",
     "autoUpgradeMinorVersion": true,
     "settings": {
     }
@@ -156,7 +165,7 @@ Set-AzVMExtension
     -Publisher "Microsoft.HpcCompute" `
     -ExtensionName "NvidiaGpuDriverWindows" `
     -ExtensionType "NvidiaGpuDriverWindows" `
-    -TypeHandlerVersion 1.4 `
+    -TypeHandlerVersion 1.10 `
     -SettingString '{ `
 	}'
 ```
@@ -171,7 +180,7 @@ az vm extension set \
   --vm-name <myVM> \
   --name NvidiaGpuDriverWindows \
   --publisher Microsoft.HpcCompute \
-  --version 1.4 \
+  --version 1.10 \
   --settings '{ \
   }'
 ```
@@ -230,7 +239,7 @@ az vm extension set  --resource-group <rg-name> --vm-name <vm-name>  --name Nvid
   "properties": {
     "publisher": "Microsoft.HpcCompute",
     "type": "NvidiaGpuDriverWindows",
-    "typeHandlerVersion": "1.9",
+    "typeHandlerVersion": "1.10",
     "autoUpgradeMinorVersion": true,
     "settings": {
          "driverVersion": "538.46"

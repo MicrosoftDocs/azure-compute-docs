@@ -1,13 +1,15 @@
 ---
 title: Azure Service Fabric Reliable Services lifecycle 
 description: Learn about the lifecycle events in an Azure Service Fabric Reliable Services application using Java for stateful and stateless services.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-extended-java
 services: service-fabric
 ms.date: 07/11/2022
+ms.update-cycle: 1095-days
+# Customer intent: As a Java developer working with Azure Service Fabric, I want to understand the lifecycle events of Reliable Services, so that I can effectively manage stateful and stateless service behaviors during startup, shutdown, and primary swaps.
 ---
 
 # Reliable Services lifecycle

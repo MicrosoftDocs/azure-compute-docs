@@ -1,9 +1,11 @@
 ---
 title: Service Fabric managed cluster automatic node repair 
 description: Learn how Azure Service Fabric managed cluster performs automatic node repair if they go down.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 07/18/2022
+ms.update-cycle: 1095-days
 ms.author: ankujain
+# Customer intent: "As an IT administrator managing a Service Fabric managed cluster, I want to understand how automatic node repair functions so that I can minimize downtime and reduce the operational burden of cluster management."
 ---
 # Azure Service Fabric managed cluster (SFMC) node auto-repair
 
