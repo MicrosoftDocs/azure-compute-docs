@@ -7,7 +7,7 @@ ms.subservice: security
 ms.collection: linux
 ms.topic: conceptual
 ms.author: mbaldwin
-ms.date: 08/25/2024
+ms.date: 02/20/2026
 ms.custom: linux-related-content
 ---
 
@@ -39,6 +39,8 @@ You can learn the fundamentals of Azure Disk Encryption for Linux in just a few 
 Linux VMs are available in a [range of sizes](../sizes.md). Azure Disk Encryption is supported on Generation 1 and Generation 2 VMs. Azure Disk Encryption is also available for VMs with premium storage.
 
 See [Azure VM sizes with no local temporary disk](../azure-vms-no-temp-disk.yml).
+
+Azure Disk Encryption is not supported on v7 and newer VM sizes.
 
 Azure Disk Encryption is also not available on [Basic, A-series VMs](https://azure.microsoft.com/pricing/details/virtual-machines/series/), or on virtual machines that do not meet these minimum memory requirements:
 

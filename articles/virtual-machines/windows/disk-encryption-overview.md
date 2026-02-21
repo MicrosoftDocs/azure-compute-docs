@@ -7,7 +7,7 @@ ms.subservice: security
 ms.collection: windows
 ms.topic: conceptual
 ms.author: mbaldwin
-ms.date: 08/21/2024
+ms.date: 02/20/2026
 ---
 
 # Azure Disk Encryption for Windows VMs
@@ -35,7 +35,7 @@ You can learn the fundamentals of Azure Disk Encryption for Windows in just a fe
 
 Windows VMs are available in a [range of sizes](../sizes-general.md). Azure Disk Encryption is supported on Generation 1 and Generation 2 VMs. Azure Disk Encryption is also available for VMs with premium storage.
 
-Azure Disk Encryption is not available on [Basic, A-series VMs](https://azure.microsoft.com/pricing/details/virtual-machines/series/), or on virtual machines with a less than 2 GB of memory.  For more exceptions, see [Azure Disk Encryption: Restrictions](disk-encryption-windows.md#restrictions).
+Azure Disk Encryption is not available on [Basic, A-series VMs](https://azure.microsoft.com/pricing/details/virtual-machines/series/), or on virtual machines with a less than 2 GB of memory. Azure Disk Encryption is also not supported on v7 and newer VM sizes. For more exceptions, see [Azure Disk Encryption: Restrictions](disk-encryption-windows.md#restrictions).
 
 ### Supported operating systems
 
