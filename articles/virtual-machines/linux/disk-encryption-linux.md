@@ -7,7 +7,7 @@ ms.subservice: security
 ms.collection: linux
 ms.topic: conceptual
 ms.author: mbaldwin
-ms.date: 08/06/2024
+ms.date: 02/20/2026
 ms.custom: devx-track-azurepowershell, linux-related-content, devx-track-azurecli
 ---
 
@@ -64,6 +64,7 @@ Azure Disk Encryption does not work for the following Linux scenarios, features,
 - Encrypting VMs in failover clusters.
 - Encryption of [Azure ultra disks](../disks-enable-ultra-ssd.md).
 - Encryption of [Premium SSD v2 disks](../disks-types.md#premium-ssd-v2-limitations).
+- V7 and newer VM sizes.
 - Encryption of VMs in subscriptions that have the [Secrets should have the specified maximum validity period](https://portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F342e8053-e12e-4c44-be01-c3c2f318400f) policy enabled with the [DENY effect](/azure/governance/policy/concepts/effects).
 
 ## Install tools and connect to Azure
