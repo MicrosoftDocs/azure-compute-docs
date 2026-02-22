@@ -14,6 +14,8 @@ ms.author: rogarana
 
 **Applies to:** :heavy_check_mark: Windows VMs 
 
+[!INCLUDE [disks-unmanaged-disks-retirement](../includes/disks-unmanaged-disks-retirement.md)]
+
 If you have existing Windows virtual machines (VMs) that use unmanaged disks, you can migrate the VMs to use managed disks through the [Azure Managed Disks](../managed-disks-overview.md) service. This process converts both the operating system (OS) disk and any attached data disks.
 
 
