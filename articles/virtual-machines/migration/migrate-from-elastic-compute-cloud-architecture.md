@@ -214,7 +214,7 @@ Use the [Azure VM size documentation](../sizes/overview.md) and [AWS instance ty
 
 1. Identify your Amazon EC2 instance family and size.
 
-1. Match to an Azure VM series with equivalent CPU-to-memory ratio and the required CPU architecture, like `x86_64` or `ARM`.
+1. Match to an Azure VM series with equivalent CPU-to-memory ratio and the required CPU architecture, like `x86` or `ARM`.
 
 1. Validate storage and network requirements to prevent overprovisioning or underprovisioning:
 
