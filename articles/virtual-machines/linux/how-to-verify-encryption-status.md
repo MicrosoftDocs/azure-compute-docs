@@ -272,6 +272,8 @@ echo "==========================================================================
 
 ### Unmanaged disks
 
+[!INCLUDE [disks-unmanaged-disks-retirement](../includes/disks-unmanaged-disks-retirement.md)]
+
 Unmanaged disks are VHD files that are stored as page blobs in Azure storage accounts.
 
 To get the details for a specific disk, you need to provide:

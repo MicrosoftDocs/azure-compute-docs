@@ -50,6 +50,8 @@ foreach ($md in $managedDisks) {
 
 ## Unmanaged disks: Find and delete unattached disks
 
+[!INCLUDE [disks-unmanaged-disks-retirement](../includes/disks-unmanaged-disks-retirement.md)]
+
 Unmanaged disks are VHD files that are stored as [page blobs](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-page-blobs) in [Azure storage accounts](/azure/storage/common/storage-account-overview). The following script looks for unattached unmanaged disks (page blobs) by examining the value of the **LeaseStatus** property. When an unmanaged disk is attached to a VM, the **LeaseStatus** property is set to **Locked**. When an unmanaged disk is unattached, the **LeaseStatus** property is set to **Unlocked**. The script examines all the unmanaged disks in all the Azure storage accounts in an Azure subscription. When the script locates an unmanaged disk with a **LeaseStatus** property set to **Unlocked**, the script determines that the disk is unattached.
 
 >[!IMPORTANT]
