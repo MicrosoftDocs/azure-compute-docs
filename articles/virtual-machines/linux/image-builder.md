@@ -82,6 +82,8 @@ az group create -n $sigResourceGroup -l $location
 
 VM Image Builder uses the provided [user-identity](/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity) to inject the image into an Azure Compute Gallery. In this example, you create an Azure role definition with specific actions for distributing the image. The role definition is then assigned to the user identity.
 
+The success of the following command relies on RBAC propagation, which can take up to ~30 minutes in some cases.  Wait about 5 minutes before running the command and retry after a delay if an error occurs.  
+
 ```azurecli-interactive
 # Create user-assigned identity for VM Image Builder to access the storage account where the script is stored
 identityName=aibBuiUserId$(date +'%s')
@@ -106,7 +108,8 @@ sed -i -e "s/Azure Image Builder Service Image Creation Role/$imageRoleDefName/g
 # Create role definitions
 az role definition create --role-definition ./aibRoleImageCreation.json
 
-# Grant a role definition to the user-assigned identity
+# Grant a role definition to the user-assigned identity. The success of the following command relies on RBAC propagation, which can take up to ~30 minutes.  Wait about 5 minutes before running the command and wait a few more minutes before retrying if you get an error.  
+
 az role assignment create \
     --assignee $imgBuilderCliId \
     --role "$imageRoleDefName" \
