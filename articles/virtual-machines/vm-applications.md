@@ -1,6 +1,6 @@
 ---
 title: Overview of Azure VM Applications in the Azure Compute Gallery
-description: Learn about Azure VM Applications in Azure Compute Gallery used to publish, create and deploy applications on Azure Virtual Machines and Virtual Machine Scale Sets.
+description: Learn about Azure VM Applications in Azure Compute Gallery used to publish, create, and deploy applications on Azure Virtual Machines and Virtual Machine Scale Sets.
 ms.service: azure-virtual-machines
 ms.subservice: gallery
 ms.topic: concept-article
@@ -17,11 +17,11 @@ ms.custom: linux-related-content
 
 VM Applications are a resource type in Azure Compute Gallery that simplifies application management for your virtual machines (VMs) and Virtual Machine Scale Sets. You package your applications once, store them in your gallery, and deploy them to any VM in your organization.
 
-With VM Applications, you decouple application deployment from your base VM images. This separation enables you to update applications independently without rebuilding images, reducing maintenance overhead, accelerating deployment cycles and effectively handle critical vulnerabilities and disaster recovery.
+With VM Applications, you decouple application deployment from your base VM images. This separation enables you to update applications independently without rebuilding images, reducing maintenance overhead, accelerating deployment cycles, and effectively handle critical vulnerabilities and disaster recovery.
 
 ## When to use VM Applications
 
-VM Applications are the recommended approach when you need to publish, deploy and manage software across Azure VMs. Consider VM Applications when you want to:
+VM Applications are the recommended approach when you need to publish, deploy, and manage software across Azure VMs. Consider VM Applications when you want to:
 
 - Deploy applications across large VM fleets with consistent configuration.
 - Update applications frequently without rebuilding VM images.
@@ -29,7 +29,7 @@ VM Applications are the recommended approach when you need to publish, deploy an
 - Respond to zero-day vulnerabilities by publishing new versions quickly and updating your fleet centrally with Azure Policy.
 - Enforce application presence and configuration using Azure Policy.
 <!--- Deploy to hybrid environments using Azure Arc-enabled servers.-->
-- Reduce deployment latency for high-scale AI and HPC workloads.
+- Reduce deployment latency for high-scale and time-sensitive workloads like AI inferencing and gaming.
 - Gain visibility into deployed applications with post-deployment inventory and monitoring.
 - Modularize applications and scripts for reusability and operational efficiency.
 - Consolidate application management into a single Azure-managed solution.
@@ -38,37 +38,13 @@ VM Applications are the recommended approach when you need to publish, deploy an
 
 VM Applications integrate with your existing development workflows and Azure infrastructure to provide end-to-end application lifecycle management.
 
-:::image type="content" source="media/vmapps/vm-application-overview.png" alt-text="Diagram showing the VM Applications lifecycle from development through publishing, deployment, and monitoring.":::
+:::image type="content" source="media/vmapps/vm-applications-overview.png" alt-text="Diagram showing the VM Applications lifecycle from development through publishing, deployment, and monitoring.":::
 
-- **Develop and publish**: Teams develop applications, scripts, and configurations independently. Each team publishes their packages as Azure VM Application to Azure Compute Gallery, which serves as a personal app repository. 
-- **Deploy or update**: Deploy applications to VMs and Virtual Machine Scale Sets using Portal, PowerShell, CLI, REST API, or ARM/Bicep templates. 
+- **Develop and publish**: Different teams develops applications, scripts, and configurations independently. Each team publishes their packages as Azure VM Application to Azure Compute Gallery, which serves as a personal app repository. 
+- **Deploy or update**: Deploy applications to VMs and Virtual Machine Scale Sets using Azure portal, PowerShell, CLI, REST API, or ARM/Bicep templates. 
 - **Enforce**: Use Azure Policy to automatically inject required applications across your fleet. 
 - **Automate**: Automate publishing, deployment and updates using CI/CD pipelines like Azure DevOps, GitHub Actions, GitLab pipelines, Jenkins, and scripts.
 - **Monitor**: View application inventory & state across your infrastructure. Use Azure Policy and Azure Resource Graph for fleet-wide compliance monitoring, or view per-resource details in the Azure portal, PowerShell, CLI, and activity logs.
-
-## Why use Azure VM Applications
-
-Azure VM Applications are best suited when customers want
-1. Improved privacy and security
-    - Personal app store with role based access control
-    - Control applications and versions usable by the organization. 
-1. Improved operational efficiency & resiliency
-    - Version and modularize applications and installation scripts
-    - Azure managed application replicas across regions and zones eliminating single point of failure. 
-1. Improved governance and compliance
-    - Post-deployment monitoring, management and update capabilities. 
-    - Azure policy driven monitoring and enforcement.
-    - At scale monitoring using Azure Resource Graph.
-1. Improved performance at high-scale for AI & HPC workloads
-    - Package up to 50GB (2GB per VM Application)
-    - Package reside closer to VM with multiple replicas for faster creates at scale. 
-1. One stop solution for hybrid & multi-cloud VM application management
-    - Alternative to SCCM for application management
-    - Native support for Arc enabled Servers
-1. Low cost application management solution
-    - Pay only for storage used by Azure Compute Gallery
-
-
 
 ## Key capabilities
 
@@ -89,7 +65,7 @@ Azure VM Applications are best suited when customers want
 - Download packages from Azure-managed infrastructure instead of external URLs eliminating need to keep VM internet facing. 
 - Use [Managed Identity assigned to Azure Compute Gallery](vm-applications-publish-with-managed-identity.md) for securely publishing VM applications. 
 - Handle critical security vulnerabilities by quickly publishing new version and updating your fleet using Azure Policy or Scripts. 
-- Use Azure Policy to enforce specific applications, security components or application configuration across the infrastructure. 
+- Use Azure Policy to enforce specific applications, security components, or application configuration across the infrastructure. 
 
 ### Flexible deployment options
 
@@ -102,7 +78,7 @@ Azure VM Applications are best suited when customers want
 
 ### Failure resiliency and high-scale performance
 
-- Automatically replicate application packages across Azure regions and availability zones providing resiliency to region, zone or CDN failure.
+- Automatically replicate application packages across Azure regions and availability zones providing resiliency to region, zone, or content delivery network (CDN) failure.
 - Create up to 10 replicas per region to distribute load during high-scale deployments.
 - Deploy 25 packages up to 2 GB each, 50 GB total per VM.
 - Use block blobs for chunked uploads and background streaming of large packages.
@@ -110,10 +86,19 @@ Azure VM Applications are best suited when customers want
 ### Governance and compliance
 
 - Use Azure Policy to audit and enforce application presence and configuration across your fleet.
-- Monitor application inventory and state using Azure Portal, Azure Policy, and Azure Resource Graph.
+- Monitor application inventory and state using Azure portal, Azure Policy, and Azure Resource Graph.
 - Monitor and apply pending updates across your infrastructure.
 
-## 
+## Cost
+
+There's no extra charge for using VM Application Packages, but you're charged for the following resources:
+
+- Storage costs of storing each package and any replicas.
+- Network egress charges for replication of the first version from the source region to the replicated regions. Subsequent replicas are handled within the region, so there are no extra charges.
+
+For more information on network egress, see [Bandwidth pricing](https://azure.microsoft.com/pricing/details/bandwidth/).
+
+## VM Application resources & schema
 
 | Resource | Description |
 | ---------- | ------------ |
@@ -123,8 +108,8 @@ Azure VM Applications are best suited when customers want
 | **Storage Account** | Application packages are first uploaded to your storage account. Azure Compute Gallery then downloads the application package from this storage account using SAS URLs and stores it within the VM Application version. Azure Compute Gallery also replicates this package across regions & regional replicas per the VM Application version definition. The application package in the storage account can be deleted after VM application version is created in Azure Compute Gallery. |
 
 
-## Create VM Applications & VM Applications version resource
-The VM application is stored in Azure Compute Gallery. The VM application resource defines the following about your VM application:
+### Create VM Applications & VM Applications version resource
+The VM application is stored in Azure Compute Gallery. The **VM application resource** defines the following properties about your VM application:
 
 | Property | Description | Limitations |
 |----------|-------------|-------------|
@@ -136,7 +121,7 @@ The VM application is stored in Azure Compute Gallery. The VM application resour
 | privacyStatementUri | Optional. Reference to privacy statement for the application. | |
 | releaseNoteUri | Optional. Reference to release notes for the application. | |
 
-VM application versions are the deployable resources within the VM Application resource. Versions are defined with the following properties:
+**VM application versions** are the deployable resources within the VM Application resource. Versions are defined with the following properties:
 
 | Property | Description | Limitations |
 |----------|-------------|-------------|
@@ -151,10 +136,10 @@ VM application versions are the deployable resources within the VM Application r
 | replicaCount | Optional. Defines the number of replicas across each region. Takes effect if regionalReplicaCount isn't defined. Improves resiliency to region or cluster failure and create latency during high scale. | Integer between 1 and 3 inclusive. |
 | endOfLifeDate | Optional. A future end of life date for the application version. This property is for customer reference only and isn't enforced. | Valid future date |
 | excludeFromLatest | Exclude version from being used as the latest version of the application when 'latest' keyword is used in applicationProfile. | |
-| storageAccountType | Optional. Type of storage account to use in each region for storing application package. Defaults to Standard_LRS. | This property is non-updatable. |
+| storageAccountType | Optional. Type of storage account to use in each region for storing application package. Defaults to Standard_LRS. | This property is nonupdatable. |
 | safetyProfile/allowDeletionOfReplicatedLocations | Optional. Indicates whether or not removing this Gallery Image Version from replicated regions is allowed.| |
-| settings/packageFileName | Package file name to use when the package is downloaded to the VM. | This is limited to 4,096 characters. |
-| settings/configFileName | Configuration file name to be use when the configuration is downloaded to the VM. | This is limited to 4,096 characters. |
+| settings/packageFileName | Package file name to use when the package is downloaded to the VM. | Character limit is of 4,096 characters. |
+| settings/configFileName | Configuration file name to be use when the configuration is downloaded to the VM. | Character limit is of 4,096 characters. |
 | settings/scriptBehaviorAfterReboot | Optional. The action to be taken for installing, updating, or removing gallery application after the VM is rebooted. | |
 
 #### [Template](#tab/template)
@@ -332,10 +317,10 @@ VM application versions are the deployable resources within the VM Application r
 ```
 ---
 
-## Deploy Azure VM Applications
+### Deploy Azure VM Applications
 After the VM Application version is published to Azure Compute Gallery, you can deploy the version across Azure Virtual Machines (VM) and Azure Virtual Machine Scale Sets. 
 
-The `applicationProfile` in Azure VM and Virtual Machine Scale Sets defines the following:
+The `applicationProfile` in Azure VM and Virtual Machine Scale Sets defines the following properties:
 
 | Property | Description | Limitations |
 |----------|-------------|-------------|
@@ -505,15 +490,6 @@ The order field may be used to specify dependencies between applications. The ru
 ```
 ---
 
-## Cost
-
-There's no extra charge for using VM Application Packages, but you're charged for the following resources:
-
-- Storage costs of storing each package and any replicas.
-- Network egress charges for replication of the first image version from the source region to the replicated regions. Subsequent replicas are handled within the region, so there are no extra charges.
-
-For more information on network egress, see [Bandwidth pricing](https://azure.microsoft.com/pricing/details/bandwidth/).
-
 ## Technical Details
 
 ### Considerations and Current Limits
@@ -548,11 +524,11 @@ The install/update/remove commands should be written assuming the application pa
 
 ### File naming
 
-When the application file gets downloaded to the VM, Azure uses VM Application name as the file name without any file extension. For example, if VM Application name is "TestPythonApp", the python.exe file uploaded in the VM Application will get downloaded as TestPythonApp. Azure is unable to retain the original file name and file extension. 
+When the application file gets downloaded to the VM, Azure uses VM Application name as the file name without any file extension. For example, if VM Application name is "TestPythonApp", the python.exe file uploaded in the VM Application gets downloaded as TestPythonApp. Azure is unable to retain the original file name and file extension. 
 
-Similarly, if configuration file is passes via `defaultConfigurationLink` in `publishingProfile` or via `configurationReference` in `applicationProfile`, Azure downloads the file with <vm-application-name>-config. For example, if the configuration file name is `config.json' and VM Application name is "TestPythonApp", the downloaded file is named TestPythonApp-config. 
+Similarly, if configuration file is passes via `defaultConfigurationLink` in `publishingProfile` or via `configurationReference` in `applicationProfile`, Azure downloads the file with <`vm application name`>-config. For example, if the configuration file name is `config.json' and VM Application name is "TestPythonApp", the downloaded file is named TestPythonApp-config. 
 
-VM Applications provide `packageFileName` and `configFileName` properties in the `publishingProfile\settings` to override the default file names and allow customers to set custom file names. For example, if `packageFileName="pythonApp.exe"` and `configFileName="pythonConfig.json`, Azure will download the files with respective names. 
+VM Applications provide `packageFileName` and `configFileName` properties in the `publishingProfile\settings` to override the default file names and allow customers to set custom file names. For example, if `packageFileName="pythonApp.exe"` and `configFileName="pythonConfig.json`, Azure downloads the files with respective names. 
 
 Alternatively, include a command for renaming the files before execution in the `installScript`.
 
@@ -581,7 +557,7 @@ To change this behavior, set the `treatFailureAsDeploymentFailure` property to `
 
 | Message | Description |
 |--|--|
-| Current VM Application Version {name} was deprecated at {date}. | You tried to deploy a VM Application version that has already been deprecated. Try using `latest` instead of specifying a specific version. |
+| Current VM Application Version {name} was deprecated at {date}. | You tried to deploy a VM Application version that was deprecated. Try using `latest` instead of specifying a specific version. |
 | Current VM Application Version {name} supports OS {OS}, while current OSDisk's OS is {OS}. | You tried to deploy a Linux application to Windows instance or vice versa. |
 | The maximum number of VM applications (max=5, current={count}) has been exceeded. Use fewer applications and retry the request. | We currently only support five VM applications per VM or scale set. |
 | More than one VM Application was specified with the same packageReferenceId. | The same application was specified more than once. |

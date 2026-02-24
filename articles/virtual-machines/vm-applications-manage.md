@@ -13,10 +13,10 @@ ms.custom: devx-track-azurepowershell, devx-track-azurecli
 
 # Manage Azure VM Applications
 
-This article talks about how to view, update and delete published VM Application in Azure Compute Gallery. It then talks about how to view, monitor, update, and delete deployed VM application resource on Azure Virtual Machine (VM) or Virtual Machine Scale Sets.
+This article talks about how to view, update, and delete published VM Application in Azure Compute Gallery. It then talks about how to view, monitor, update, and delete deployed VM application resource on Azure Virtual Machine (VM) or Virtual Machine Scale Sets.
 
 ## Managed VM Application published in Azure Compute Gallery
-This section explains about how to view, update and delete **published VM Applications** in Azure Compute Gallery. 
+This section explains about how to view, update, and delete **published VM Applications** in Azure Compute Gallery. 
 
 ### View published VM Applications
 
@@ -189,7 +189,7 @@ Get-AzGalleryApplicationVersion `
 
 ### View published VM applications using Azure Resource Graph
 
-[Azure resource graph query](/azure/governance/resource-graph/first-query-portal) can be used to view all published VM applications and their properties across all compute galleries. It priovides a programmatic way to view application inventory, and their properties at high scale. This is a preferred method for integrating with dashboards and custom reports.
+[Azure resource graph query](/azure/governance/resource-graph/first-query-portal) can be used to view all published VM applications and their properties across all compute galleries. It provides a programmatic way to view application inventory, and their properties at high scale. Use this method for integrating with dashboards and custom reports.
 
 
 **View list of all compute galleries**
@@ -244,16 +244,16 @@ resources
 
 <!-->
 ### Update published VM Application
-- Tags, targetRegion, SASToken for mediaLink and defaultConfigurationLink
+- Tags, targetRegion, SAS Token for mediaLink and defaultConfigurationLink
 -->
 
 ### Delete the VM Application from Azure Compute Gallery
 To delete the VM Application resource, you need to first delete all its versions. Deleting the application version causes deletion of the application version resource from Azure Compute Gallery and all its replicas. The application blob in Storage Account used to create the application version is unaffected. 
 
 > [!WARNING]
-> - Deleting the application version causes subsequent PUT operations on VMs using that version to fail. Use `latest` keyword as the version number in the `applicationProfile` instead of hard coding the version number to address this failure.  
+> - Deleting the application version causes subsequent PUT operations on VMs using that version to fail. To prevent this failure, use `latest` keyword as the version number in the `applicationProfile` instead of hard coding the version number  .  
 >
-> - Deleting the VM application that is referenced by any VM or VMSS causes subsequent PUT operations on those resources to fail (for example, update, scale, or reimage). Before deleting, ensure all VMs/VMSS instances stop using the application by removing it from their applicationProfile. 
+> - Deleting the VM application that is deployed on any VM or VMSS causes subsequent PUT operations on these resources to fail (for example, update, scale, or reimage). Before deleting, ensure all VMs/VMSS instances stop using the application by removing it from their applicationProfile.
 >
 >- To prevent accidental deletion,  set `safetyProfile/allowDeletionOfReplicatedLocations` to `false` while publishing the version and apply an Azure Resource Manager lock (CanNotDelete or ReadOnly) on the VM application resource.
 
@@ -309,7 +309,7 @@ Remove-AzGalleryApplication -ResourceGroupName $rgNmae -GalleryName $galleryName
 This section explains how to view deployed application details and monitor deployed applications across infrastructure. It also talks about how to update, and delete **deployed VM Applications** on Azure VMs and Scale Sets. 
 
 ### View deployed VM Applications & their state
-Azure uses VMAppExtension to deploy, monitor and manage VM Applications on the VM. Therefore, provisioning state of the deployed VM Application is described in the status of the VMAppExtension. 
+Azure uses VMAppExtension to deploy, monitor, and manage VM Applications on the VM. Therefore, provisioning state of the deployed VM Application is described in the status of the VMAppExtension. 
 
 #### [Portal](#tab/portal3)
 To show the VM application status, go to the **Extensions + applications** tab under settings and check the status of the VMAppExtension:
@@ -498,7 +498,7 @@ For more information, see [Invoke-AzVMRunCommand](/powershell/module/az.compute/
 
 ### View all deployed VM applications using Azure Resource Graph
 
-[Azure resource graph query](/azure/governance/resource-graph/first-query-portal) can be used to view all deployed VM applications and their properties across all VMs and VM Scale Sets. It priovides a programmatic way to view application inventory, state and deployed versions at high scale. This is a preferred method for integrating with dashboards and custom reports.
+[Azure resource graph query](/azure/governance/resource-graph/first-query-portal) can be used to view all deployed VM applications and their properties across all VMs and VM Scale Sets. It provides a programmatic way to view application inventory, state, and deployed versions at high scale. Use this method for integrating with dashboards and custom reports.
 
 ```kusto-interactive
 resources

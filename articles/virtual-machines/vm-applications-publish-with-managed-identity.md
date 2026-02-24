@@ -11,24 +11,24 @@ ms.reviewer: jushiman
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
 ---
 
-# Publish VM applications using managed identity
+# Publish Azure VM applications using managed identity
 
-This article explains how to use managed identity with Azure Compute Gallery to securely publish VM applications using blob URLs, eliminating the need for SAS URLs or publicly accessible storage accounts.
+This article explains how to use managed identity with Azure Compute Gallery to securely publish Azure VM applications using blob URLs, eliminating the need for SAS URLs or publicly accessible storage accounts.
 
 ## Overview
 
-Deploying applications through [VM applications](vm-applications.md) requires you to upload the application package to a storage account and provide a URL to the blob. Azure Compute Gallery uses this URL to access the blob and publish it as a VM application version.
+Deploying applications through [Azure VM applications](vm-applications.md) requires you to upload the application package to a storage account and provide a URL to the blob. Azure Compute Gallery uses this URL to access the blob and publish it as a VM application version.
 
 Without managed identity, you have two options to provide blob access:
 
 - **Blob URL** - Requires the storage account to enable anonymous access.
 - **SAS URL** - The SAS token is stored as plain text in the application version resource, and you must manage token expiration and regeneration.
 
-Both approaches are insecure as blob URLs expose your storage account to the public internet, and SAS URLs which are secrets must be stored in plain text.
+Both approaches are insecure as blob URLs expose your storage account to the public internet, and SAS URLs, which are secrets must be stored in plain text.
 
 ### Managed identity for Azure Compute Gallery
 
-A managed identity is a security feature that lets an Azure service prove its identity to other Azure services without storing passwords, keys, or tokens in your code or configuration. Instead of you managing credentials, Microsoft Entra ID handles authentication automatically.
+A managed identity is a security feature that lets an Azure service prove it's identity to other Azure services without storing passwords, keys, or tokens in your code or configuration. Instead of you managing credentials, Microsoft Entra ID handles authentication automatically.
 
 By attaching a [user-assigned managed identity](/azure/active-directory/managed-identities-azure-resources/overview) to your Azure Compute Gallery, you give the gallery permission to access blobs in your storage account on your behalf. The gallery presents this identity when it needs to read your application package, and Microsoft Entra ID verifies the identity and grants access. Because Azure Compute Gallery is a trusted Microsoft service, this access works even when the storage account is behind a virtual network.
 
@@ -40,7 +40,7 @@ This approach enables you to:
 
 ### How it works
 
-At a high level, the authentication and access flow works as follows:
+At a high level, the authentication and access flow work as follows:
 
 1. You upload your application package to a blob in your storage account.
 1. You create a user-assigned managed identity and grant it the **Storage Blob Data Contributor** role on the storage account.
@@ -52,7 +52,7 @@ At a high level, the authentication and access flow works as follows:
 ## Prerequisites
 
 - An [Azure Compute Gallery](azure-compute-gallery.md)
-- A storage account with your VM application package [uploaded to a blob container](/azure/storage/blobs/storage-blobs-upload-tutorial).
+- A storage account with your VM application package [uploaded to a blob container](/azure/storage/blobs/storage-quickstart-blobs-portal#upload-a-block-blob).
 
 ## Step 1: Create a user-assigned managed identity
 

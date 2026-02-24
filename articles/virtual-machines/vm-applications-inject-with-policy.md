@@ -15,7 +15,7 @@ ms.custom: devx-track-azurepowershell, devx-track-azurecli
 
 ## Overview
 
-[Azure VM Applications](./vm-applications.md) in Azure Compute Gallery let you package, version, and deliver software, files, scripts, security components, etc. from [Azure Compute Gallery](/azure/virtual-machines/azure-compute-gallery) to Azure Virtual Machines (VMs) and Virtual Machine Scale Sets (VMSS). [Learn more about Azure VM Applications.](./vm-applications.md)
+[Azure VM Applications](./vm-applications.md) let you package, version, and deliver software to Azure Virtual Machines (VMs) and Virtual Machine Scale Sets from an [Azure Compute Gallery](/azure/virtual-machines/azure-compute-gallery).
 
 Using [Azure Policy](/azure/governance/policy/overview) with VM Applications enables customers and admin teams to: 
 - Monitor presence of required VM Applications across Virtual Machines & Virtual Machines Scale Sets. 
@@ -43,7 +43,7 @@ Azure Policy with `audit` effect can be used to monitor presence of specific VM 
 
 #### 1. Create a custom policy definition
 
-[Create a new custom policy](/azure/governance/policy/tutorials/create-and-manage#implement-a-new-custom-policy) using the policy definition to check for the presence of VM applications on Virtual Machines and Virtual Machines Scale Sets and reports the number of compliance and noncompliant instances.
+[Create a new custom policy](/azure/governance/policy/tutorials/create-and-manage#implement-a-new-custom-policy) using the following definition. This policy checks whether specific VM Applications are present on Virtual Machines and Virtual Machine Scale Sets, and reports compliance status.
 
 #### [Policy](#tab/policy1)
 This policy monitors compliance of all Virtual Machines, Virtual Machines Scale Sets across linux and windows. Linux apps on windows VMs and windows apps on linux VMs are considered as compliant resources. 
@@ -120,7 +120,7 @@ This policy monitors compliance of all Virtual Machines, Virtual Machines Scale 
 #### 2. Assign the policy and view compliance
 [Assign the newly created policy](/azure/governance/policy/tutorials/create-and-manage#assign-a-policy) to start monitoring the VM application and generate compliance score. All Virtual Machines and Virtual Machine Scale Sets within the assigned scope are monitored for compliance. 
 
-Create separate assignments per VM application for granual and accurate monitoring.
+Create separate assignments per VM application for granular and accurate monitoring.
 
 Once the policy is assigned, all existing resources are evaluated and [displayed on compliance monitor](/azure/governance/policy/tutorials/create-and-manage#check-initial-compliance). Noncompliant resources are missing the VM Application defined in the policy. Resources without `applicationProfile` are also counted as noncompliant. Newly created or updated resources may take a few minutes to appear in evaluation cycles.
 
@@ -153,7 +153,7 @@ Azure Policy with `modify` effect injects VM applications while creating new Vir
 
 #### 1. Create a custom policy definition
 
-[Create a new custom policy](/azure/governance/policy/tutorials/create-and-manage#implement-a-new-custom-policy) using the policy definition. This policy checks for the presence of VM applications while creating Virtual Machines or Virtual Machine Scale Sets and appends the VM application if it doesn't exist. To modify multiple resource types (Virtual Machine and Virtual Machine Scale Sets), its recommended to create different policies per resource type. 
+[Create a new custom policy](/azure/governance/policy/tutorials/create-and-manage#implement-a-new-custom-policy) using the policy definition. This policy checks for the presence of VM applications while creating Virtual Machines or Virtual Machine Scale Sets and appends the VM application if it doesn't exist. To modify multiple resource types (Virtual Machine and Virtual Machine Scale Sets), it's recommended to create different policies per resource type. 
 
 #### [VM](#tab/vm)
 
@@ -357,16 +357,16 @@ Azure Policy with `modify` effect injects VM applications while creating new Vir
 Creating new Virtual Machines and Virtual Machine Scale Sets resource triggers this policy and modifies the applicationProfile of the resource to inject the application. 
 
 #### 3. Create Remediation Task and modify existing resources
-Create a new [Remediation tasks](/azure/governance/policy/how-to/remediate-resources) to modify existing resources. 
+To modify existing resources, create a new [Remediation tasks](/azure/governance/policy/how-to/remediate-resources). 
 
 > [!NOTE]
-> Gradually remediate noncompliant resources for higher availability and failure resiliency. Create multiple remediation tasks, each scoped to one region or a few resources. 
+> Gradually remediate noncompliant resources for higher availability and failure resiliency. Create multiple remediation tasks, each scoped to one or more regions. 
 
 :::image type="content" source="./media/vmapps/vm-applications-create-remediation-task.png" alt-text="Portal experience showing how to create a new remediation task.":::
 
 #### Common adjustments
 
-The following examples show additional conditions you can add to the `allOf` block within `policyRule` to narrow the policy scope.
+The following examples show more conditions you can add to the `allOf` block within `policyRule` to narrow the policy scope.
 
 - **Limit policy scope by OS image**: Filter based on a specific image offer and SKU:
 
@@ -381,7 +381,7 @@ The following examples show additional conditions you can add to the `allOf` blo
     { "field": "location", "in": "[parameters('allowedLocations')]" }
     ```
 
-- **Limit policy scope by resource group or subscription**: Use the [assignment scope](/azure/governance/policy/concepts/assignment-structure#scope) when assigning the policy rather than modifying the policy definition. Assign the policy to a specific resource group or subscription to narrow the scope. For more granular control, use [exclusions](/azure/governance/policy/concepts/assignment-structure#excluded-scopes) to omit specific resource groups from the assignment.
+- **Limit policy scope by resource group or subscription**: To reduce the scope for remediation, assign the policy to a specific resource group or subscription. Use the [assignment scope](/azure/governance/policy/concepts/assignment-structure#scope) when assigning the policy rather than modifying the policy definition. For more granular control, use [exclusions](/azure/governance/policy/concepts/assignment-structure#excluded-scopes) to omit specific resource groups from the assignment.
 
 ---
 

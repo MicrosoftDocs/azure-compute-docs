@@ -15,24 +15,27 @@ ms.custom: devx-track-azurepowershell, devx-track-azurecli
 # Create and deploy VM Application
 
 VM Application is a resource type in Azure Compute Gallery that simplifies publishing, deployment, management, sharing, and global distribution of applications and scripts for your virtual machines. 
-VM Applications are suited for apps and workloads with varying needs such as high scale, low latency, failure resiliency, secure trusted deployments, consistency across the fleet, micro-service architecture, and/or post-deployment management. [Learn more about VM Application](./vm-applications.md)
+VM Applications support a wide range of scenarios, including high-scale deployments, low-latency requirements, failure resiliency, secure trusted rollouts, fleet-wide consistency, microservice architectures, and post-deployment management. [Learn more about VM Applications](./vm-applications.md).
 
-To create and deploy applications on Azure VM, first package and upload your application to Azure Storage Account as a storage blob. Then create `Azure VM application` resource and `VM application version` resource referencing these storage blobs. Azure stores and replicates these blobs in regional managed storage accounts.  Finally, deploy the application on any VM or Virtual Machine Scale Set by passing application reference in `applicationProfile`.
+To create and deploy applications on Azure VM, first package and upload your application to Azure Storage Account as a storage blob. Then create `Azure VM application` resource and `VM application version` resource referencing these storage blobs. Azure stores and replicates these blobs in regional managed storage accounts. Finally, deploy the application on any VM or Virtual Machine Scale Set by passing application reference in `applicationProfile`.
 
-:::image type="content" source="media/vmapps/vm-application-how-to.png" alt-text="Diagram showing step-by-step process involved in publishing and deploying VM applications.":::
+:::image type="content" source="media/vmapps/vm-applications-how-to.png" alt-text="Diagram showing step-by-step process involved in publishing and deploying VM applications.":::
 
 ## Prerequisites
-1. Create [Azure storage account](/azure/storage/common/storage-account-create#create-a-storage-account) and [storage container](/azure/storage/blobs/blob-containers-portal#create-a-container). This container is used to upload your application files. It's recommended to use storage account with anonymous access disabled for added security. 
+1. Create [Azure storage account](/azure/storage/common/storage-account-create#create-a-storage-account) and [storage container](/azure/storage/blobs/blob-containers-portal#create-a-container). This container is used to upload your application files.
 1. Create [Azure Compute Gallery for storing and sharing application resources](create-gallery.md).
-1. Create [user-assigned managed identity](/entra/identity/managed-identities-azure-resources/overview) and [assign to Azure Compute Gallery]()
+1. Create [user-assigned managed identity](/entra/identity/managed-identities-azure-resources/overview) and [assign to Azure Compute Gallery](vm-applications-publish-with-managed-identity.md)
 
 ## Package the application
 :::image type="content" source="media/vmapps/vm-application-folder-structure.png" alt-text="Screenshot showing the folder structure recommended for uploading and creating VM Applications.":::
 
 #### 1. Package the application files
-   - If your application installation requires a single file (.exe, .msi, .sh, .ps, etc.) then you can package it into VM Application.
-   - If your application installation requires multiple files (Executable file with configuration file, dependencies, manifest files, scripts, etc.), then you must archive it (using .zip, .tar, .tar.gz, etc.) into a single file and package the archive file into VM application.
-   - For microservice application, you can package and publish each microservice as a separate Azure VM Application. This facilitates application reusability, cross-team development, and sequential installation of microservices using `order` property in the [applicationProfile](#deploy-the-vm-apps).
+
+  - If your application installation requires a single file (.exe, .msi, .sh, .ps, etc.) then you can package it into VM Application.
+  - If your application requires multiple files (executables, dependencies, scripts, or configuration files), archive them into a single file (`.zip`, `.tar`, `.tar.gz`) before packaging as a VM application.
+  - For microservice application, you can package and publish each microservice as a separate Azure VM Application. This modularization facilitates application reusability, cross-team development, and sequential installation of microservices using `order` property in the [applicationProfile](#deploy-the-vm-apps).
+
+  Learn more about [creating application packages for Azure VM Applications](vm-applications-create-app-package.md). 
      
 #### 2. (Optional) Package the application configuration file
    - You can provide the configuration file separately using `defaultConfigurationLink` in the `publishingProfile` of the VM Application. This reduces the overhead of archiving and unarchiving application packages. 
@@ -44,15 +47,15 @@ After the application and configuration blob is downloaded on the VM, Azure exec
 There may be few operations required to be performed in the install script
 
 - **(Optional) Use the right command interpreter**
-	The default command interpreter used by Azure are `/bin/bash` on Linux OS and `cmd.exe` on Windows OS. It's possible to use a different interpreter like Chocolatey or PowerShell, if its installed on the machine. Call the executable and pass the commands to it. E.g., `powershell.exe -command '<powershell command>'`. If you're using PowerShell, you need to be using version 3.11.0 of the Az.Storage module.
+	The default command interpreter used by Azure are `/bin/bash` on Linux OS and `cmd.exe` on Windows OS. It's possible to use a different interpreter like Chocolatey or PowerShell, if its installed on the machine. Call the executable and pass the commands to it. For example, `powershell.exe -command '<powershell command>'`. If you're using PowerShell, you need to be using version 3.11.0 of the Az.Storage module.
 
 - **(Optional) Rename application blob and configuration blob**
-	Azure can't retain the original blob name and the file extensions. Azure downloads the application file with the name of the VM application resource published on Azure Compute Gallery. So if name of VM App is "VMApp1", the file downloaded on VM has the name "VMApp1" without an extension. The configuration file have a default name as "VMApp1-config" without a file extension.
+	Azure can't retain the original blob name and the file extensions. Azure downloads the application file with the name of the VM application resource published on Azure Compute Gallery. So if name of VM App is "VMApp1", the file downloaded on VM has the name "VMApp1" without an extension. The configuration file has a default name as "VMApp1-config" without a file extension.
   
-  You can rename the file with the file extension using the install script or you can also pass the names in `packageFileName` and `configFileName` properties of the [`publishingProfile` of VM Application version resource](#create-the-vm-application). Azure will then use these names instead of default names while downloading the files. 
+  You can rename the file with the file extension using the install script or you can also pass the names in `packageFileName` and `configFileName` properties of the [`publishingProfile` of VM Application version resource](#create-the-vm-application). Azure uses these names instead of default names while downloading the files. 
    
 - **Unarchive application blob**
-	For archived application packages, it needs to be unarchived before installing the application. It's recommended to use .zip or .tar since most OS has built-in support for unarchiving these formats. For other formats, make sure the Guest OS provides support.     
+	For archived application packages, it needs to be unarchived before installing the application. Use .zip or .tar since most OS has built-in support for unarchiving these formats. For other formats, make sure the Guest OS provides support.     
 
 - **Convert the script to string**
    	The install script is passed as a string for the `install` property in the `publishingProfile` of Azure VM Application version resource. 
@@ -86,7 +89,7 @@ There may be few operations required to be performed in the install script
 
 	Windows: `C:\Packages\Plugins\Microsoft.CPlat.Core.VMApplicationManagerWindows\1.0.16\Downloads\<application name>\<application version>`
 
-Here are sample install scripts based on the file extension of the application blob. If `packageFileName` & `configFileName` properties are provided in the `publishingProfile` with file name and extension, remove the code for renaming files in below scripts.
+Here are few sample install scripts based on the file extension of the application blob. If `packageFileName` & `configFileName` properties are provided in the `publishingProfile` with file name and extension, remove the code for renaming files in following scripts.
 
 #### [.TAR](#tab/TAR)
 Replace `VMApp1` with your VM App name in application package (VMApp1) and configuration file (VMApp1-config).
@@ -308,9 +311,9 @@ There may be few operations that delete script must perform.
 ## Upload the application files to Azure storage account
 
 > [!IMPORTANT]
-> Before uploading files or generating SAS URLs, assign following Azure RBAC roles to the user, service principal, or managed identity that performs these operations on the target Storage account or container:
+> Before uploading files or generating SAS URLs, assign roles to the user, service principal, or managed identity that performs these operations on the target Storage account or container:
 > - Storage Blob Data Contributor or Storage Blob Data Owner: required to upload, modify, or delete blobs.
-> - For generating SAS with Azure AD (for example, using --auth-mode login in CLI/PowerShell), also assign Storage Blob Delegator at the storage account scope.
+> - For generating SAS with Azure AD (for example, using `--auth-mode` login in CLI/PowerShell), also assign Storage Blob Delegator at the storage account scope.
 >
 > [Learn More](/azure/storage/blobs/storage-auth-abac)
 #### 1. **[Upload your application and configuration files to a container](/azure/storage/blobs/storage-quickstart-blobs-portal) in an [Azure storage account](/azure/storage/common/storage-account-create)**.
@@ -356,13 +359,16 @@ if ($remainder -ne 0){
 ----
 
 #### 2. **Generate SAS or Blob URL for the application package and the configuration file** 
-Once the application and configuration files are uploaded to the storage account, you need to generate a [SAS URL](/azure/storage/common/storage-sas-overview#get-started-with-sas) or Blob URL with read privilege for these blobs. These URLs are then provided as reference while creating the VM Application version resource. 
+Once the application and configuration files are uploaded to the storage account, you need to generate a Blob URL or [SAS URL](/azure/storage/common/storage-sas-overview#get-started-with-sas) with read privilege for these blobs. These URLs are then provided as reference while creating the VM Application version resource. 
 
-Use blob URL: 
-- If [managed identity is assigned to Azure Compute Gallery](vm-applications-publish-with-managed-identity.md). This is the recommended method since its secure.
-- If storage accounts is enabled for anonymous access. Use this method only for testing since its insecure. 
+> [!NOTE]
+> Use of blob URL with managed identity is strongly recommended for improved security and privacy.
 
-Use SAS URL:
+**Use blob URL:**
+- If [managed identity is assigned to Azure Compute Gallery](vm-applications-publish-with-managed-identity.md).
+- If storage account is enabled for anonymous access. Use this method only for testing since its insecure. 
+
+**Use SAS URL:**
 - If storage account is disabled for anonymous access and managed identity isn't assigned to Azure Compute Gallery. 
 
 Blob URL = https://${STORAGE_ACCOUNT}.blob.core.windows.net/${CONTAINER_NAME}/${BLOB_NAME}
@@ -650,7 +656,7 @@ if ($configFile -and (Test-Path $configFile)) {
 1. In the [Azure portal](https://portal.azure.com), navigate to your storage account and select **Containers**.
 1. Select your container (or create one), then select **Upload**.
 1. Browse to your application package and configuration files, select them, and select **Upload**.
-1. After upload completes, select each blob and copy the **URL**. Generate SAS tokens if [managed identity is not attached to compute gallery](vm-applications-publish-with-managed-identity.md) or anonymous access is disabled.
+1. After upload completes, select each blob and copy the **URL**. Generate SAS tokens if [managed identity isn't attached to compute gallery](vm-applications-publish-with-managed-identity.md) or anonymous access is disabled.
 
 For detailed steps, see [Upload blobs to Azure Storage using the portal](/azure/storage/blobs/storage-quickstart-blobs-portal).
 
@@ -691,7 +697,7 @@ PUT
 - Next we're creating version within the application definition. It takes blob/SAS URL created in previous step to pull application and configuration blob from storage account.
 - Update mediaLink, install and remove properties for your application.
 - Update defaultConfigurationLink to optionally pass configuration file. 
-- Update packageFileName and configFileName enabling Azure to download files with this name. This eliminates the need to rename downloaded files in install script. 
+- Update packageFileName and configFileName enabling Azure to download files with this name. These properties eliminates the need to rename downloaded files in install script. 
 
 ```rest
 PUT
@@ -762,7 +768,7 @@ az sig gallery-application create \
 - Next we're creating version within the application definition. It takes blob/SAS Url created in previous step to pull application blob from storage account.
 - Update package_url, install_command, remove_command for your application.
 - Uncomment and update config_url, and default-configuration-file-link to optionally pass configuration file. 
-- Optionally, update package_file_name and config_file_name. Azure will download files with this name eliminating the need to rename downloaded files in install script. 
+- Optionally, update package_file_name and config_file_name. Azure downloads files with this name eliminating the need to rename downloaded files in install script. 
 
 ```azurecli-interactive
 version_name="1.0.0"
@@ -821,7 +827,7 @@ New-AzGalleryApplication `
 - Next we're creating version within the application definition. It takes blob/SAS Url created in previous step to pull application blob from storage account.
 - Update package_url, install_command, remove_command for your application.
 - Uncomment and update config_url, and default-configuration-file-link to optionally pass configuration file. 
-- Optionally, update package_file_name and config_file_name. Azure will download files with this name eliminating the need to rename downloaded files in install script. 
+- Optionally, update package_file_name and config_file_name. Azure downloads files with this name eliminating the need to rename downloaded files in install script. 
 
 ```azurepowershell-interactive
 $galleryName = "myGallery"
@@ -1633,5 +1639,5 @@ Select the VM application from the list and then select **Save** at the bottom o
 
 
 ## Next steps
-- Learn to [manage, update or delete](vm-applications-manage.md) Azure VM Applications.
+- Learn to [manage, update, or delete](vm-applications-manage.md) Azure VM Applications.
 - Learn more about [Azure VM Applications](vm-applications.md).
