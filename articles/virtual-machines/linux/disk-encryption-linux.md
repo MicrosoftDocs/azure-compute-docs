@@ -7,7 +7,7 @@ ms.subservice: security
 ms.collection: linux
 ms.topic: concept-article
 ms.author: mbaldwin
-ms.date: 09/23/2025
+ms.date: 02/20/2026
 ms.custom: devx-track-azurepowershell, linux-related-content, devx-track-azurecli
 # Customer intent: As a Linux VM administrator, I want to enable Azure Disk Encryption for my virtual machines, so that I can secure my data at rest and ensure compliance with data protection standards.
 ---
@@ -44,6 +44,7 @@ Azure Disk Encryption does not work for the following Linux scenarios, features,
 
 - Encrypting basic tier VM or VMs created through the classic VM creation method.
 - Encrypting v6 series VMs with temporary disks (Ddsv6, Dldsv6, Edsv6, Dadsv6, Daldsv6, Eadsv6, Dpdsv6, Dpldsv6, Epdsv6, or Endsv6). For more information, see the individual pages for each of these VM sizes listed on [Sizes for virtual machines in Azure](../sizes/overview.md)
+- Encrypting V7 series and newer VM sizes.
 - Disabling encryption on an OS drive or data drive of a Linux VM when the OS drive is encrypted.
 - Encrypting the OS drive for Linux Virtual Machine Scale Sets.
 - Encrypting custom images on Linux VMs.

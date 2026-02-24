@@ -19,6 +19,3 @@ These VMs have native support for [confidential disk encryption](/azure/virtual-
 
 The DCesv6-series offers a balance of memory to vCPU performance. With up to 128 vCPUs, 512 GB of RAM, and support for remote disk storage, this size series works well for many general computing workloads, e-commerce systems, web front ends, desktop virtualization solutions, sensitive databases, other enterprise applications.
 
-> [!IMPORTANT]
-> These virtual machines are in public preview and not recommended for production usage. Sign up at aka.ms/acc/v6preview for access.
-> These VMs are available in West Europe, East US, West US, and West US 3.
