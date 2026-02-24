@@ -61,7 +61,7 @@ Azure Migrate provides a unified platform to assess and migrate on-premises serv
 >
 > - For VMs that use different operating systems or sizes, have multiple disks, or have complex dependencies, use Azure Migrate when you migrate three or more VMs.
 
-For more information, see [Discover, assess, and migrate Amazon EC2 instances to Azure](/azure/migrate/tutorial-migrate-aws-virtual-machines).
+For more information, see [Migrate Amazon EC2 instances by using Azure Migrate(/azure/migrate/tutorial-migrate-aws-virtual-machines).
 
 ### Architectural overview
 
@@ -85,13 +85,13 @@ When you transition from Amazon EC2 to Virtual Machines, plan for the following 
 - Network security rule evaluation and service integration
 - Differences in monitoring, logging, and automation
 
-## Step 1: Assessment
+## Step 1: Plan
 
 Inventory the existing Amazon EC2 workload and capture how it behaves in production.
 
 The key assessment activities include the following items:
 
-- Identify Amazon EC2 instance families, sizes, and CPU architecture, like `x86_64` or `ARM64`.
+- Identify Amazon EC2 instance families, sizes, and CPU architecture, like `x86` or `ARM64`.
 
 - Capture baseline and peak CPU, memory, disk input/output operations per second (IOPS), throughput, latency, and network usage.
 
@@ -147,7 +147,7 @@ Prepare the Azure environment before you migrate workloads:
 
 - Use Azure Migrate for discovery, dependency map creation, and rightsizing recommendations when you migrate multiple VMs.
 
-## Step 3: Process
+## Step 3: Execute
 
 Each stage of the migration process requires careful planning and execution to ensure a successful transition from Amazon EC2 to Virtual Machines. This section describes how to migrate compute, images, storage, networking, and availability features.
 
@@ -514,7 +514,7 @@ AWS and Azure use different constructs for scaling and placement. These differen
 | Instance configuration | Launch template | VM configuration profile and deep deletion |
 | Placement strategy | Partition placement groups | Fault domains, availability sets, and Dedicated Host |
 
-## Step 4: Validation
+## Step 4: Evaluate
 
 After the migration completes, do the following validation steps:
 
@@ -531,4 +531,4 @@ Successful validation indicates that the workload is ready for production cutove
 - [Virtual machines overview](/azure/virtual-machines/overview)
 - [Azure for AWS professionals](/azure/architecture/aws-professional/)
 - [Compare AWS and Azure compute services](/azure/architecture/aws-professional/compute)
-- [Migrate AWS to Azure](/azure/migration/migrate-from-aws)
+- [Migrate a workload from AWS to Azure](/azure/migration/migrate-workload-from-aws-introduction)
