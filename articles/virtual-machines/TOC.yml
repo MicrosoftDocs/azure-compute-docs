@@ -2232,12 +2232,6 @@
     href: /azure/automation/update-management/overview?toc=/azure/virtual-machines/toc.json
   - name: Update Manager
     href: /azure/update-center/
-  - name: Machine enrollment
-    items:
-    - name: Overview
-      href: /azure/operations/configuration-enrollment?toc=/azure/virtual-machines/toc.json
-    - name: Troubleshooting
-      href: /azure/operations/configuration-enrollment-troubleshoot?toc=/azure/virtual-machines/toc.json
   - name: Maintenance
     items:
     - name: Overview
@@ -2378,6 +2372,12 @@
     href: ./linux/metrics-vm-usage-rest.md
   - name: Boot diagnostics
     href: boot-diagnostics.md
+- name: Machine enrollment
+  items:
+  - name: Overview
+    href: /azure/operations/configuration-enrollment?toc=/azure/virtual-machines/toc.json
+  - name: Troubleshooting
+    href: /azure/operations/configuration-enrollment-troubleshoot?toc=/azure/virtual-machines/toc.json
 - name: Backup and recovery
   items:
   - name: Overview
