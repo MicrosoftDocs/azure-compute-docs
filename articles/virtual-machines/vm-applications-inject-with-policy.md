@@ -128,95 +128,122 @@ Once the policy is assigned, all existing resources are evaluated and [displayed
 
 #### Common adjustments
 
-- <b>Audit multiple required applications</b>: Create a separate policy (one per application) or update the policy by adding other applications under `allOf` parameter.
-- <b>Block creation of Virtual Machines without the required applications</b>: Change effect to `deny` to prevent noncompliant creations.
-- <b>Limit policy scope to Virtual Machines or Virtual Machine Scale Sets</b>: Remove the unused branch from `anyOf` within `policyRule`.
-- <b>Limit policy scope by OS type</b>: Check `osType` of `storageProfile` within `policyRule` to filter based on Window / Linux OS:
+- **Audit multiple required applications**: Create a separate policy (one per application) or update the policy by adding other applications under `allOf` parameter.
+- **Block creation of Virtual Machines without the required applications**: Change effect to `deny` to prevent noncompliant creations.
+- **Limit policy scope to Virtual Machines or Virtual Machine Scale Sets**: Remove the unused branch from `anyOf` within `policyRule`.
+- **Limit policy scope by OS type**: Check `osType` of `storageProfile` within `policyRule` to filter based on Window / Linux OS:
     ```json
     { "field": "Microsoft.Compute/virtualMachines/storageProfile.osDisk.osType", "equals": "[parameters('osType')]" }
     ```
 
-- Limit policy scope by OS Image: Check `offer` and `sku` within `policyRule` to filter based on image:
+- **Limit policy scope by OS Image**: Check `offer` and `sku` within `policyRule` to filter based on image:
     ```json
     { "field": "Microsoft.Compute/virtualMachines/storageProfile.imageReference.offer", "equals": "[parameters('imageOffer')]" },
     { "field": "Microsoft.Compute/virtualMachines/storageProfile.imageReference.sku", "equals": "[parameters('imageSku')]" }
     ```
 ---
 
+
 ## Inject VM Applications on Virtual Machine and Virtual Machine Scale Sets
 
 Azure Policy with `modify` effect injects VM applications while creating new Virtual Machine and Virtual Machine Scale Sets. Remediation tasks can be used to modify existing resources and inject the VM Application. 
 
 ### Pre-requisite
-- Managed identity on the policy assignment (system-assigned) so remediation can modify resources. See [remediation identity requirements](/azure/governance/policy/how-to/remediate-resources#identity-requirements).
+- Managed identity on the policy assignment with **Virtual Machine Contributor** role, so remediation can modify resources. See [remediation identity requirements](/azure/governance/policy/how-to/remediate-resources#identity-requirements).
 
 #### 1. Create a custom policy definition
 
-[Create a new custom policy](/azure/governance/policy/tutorials/create-and-manage#implement-a-new-custom-policy) using the policy definition. This policy checks for the presence of VM applications while creating Virtual Machines or Virtual Machine Scale Sets and inserts the VM application if it doesn't exist. To modify multiple resource types (Virtual Machine and Virtual Machine Scale Sets), Azure policy requires different policies per resource type. 
+[Create a new custom policy](/azure/governance/policy/tutorials/create-and-manage#implement-a-new-custom-policy) using the policy definition. This policy checks for the presence of VM applications while creating Virtual Machines or Virtual Machine Scale Sets and appends the VM application if it doesn't exist. To modify multiple resource types (Virtual Machine and Virtual Machine Scale Sets), its recommended to create different policies per resource type. 
 
 #### [VM](#tab/vm)
 
 ```json
 {
-    "displayName": "Inject VM Application into Single Instance VMs",
+    "displayName": "Inject VM Application into single instance VMs",
     "policyType": "Custom",
     "mode": "Indexed",
-    "description": "Adds VM Application reference to applicationProfile for single instance VMs.",
+    "description": "Appends a VM Application reference to applicationProfile for single instance VMs if the application is not already present. Filters by OS type to prevent cross-platform injection.",
     "parameters": {
       "subscriptionId": {
         "type": "String",
         "metadata": {
-          "description": "Subscription ID where the Compute Gallery resides"
+          "description": "Subscription ID where the Compute Gallery resides."
         }
       },
       "resourceGroup": {
         "type": "String",
         "metadata": {
-          "description": "Resource group of the Compute Gallery"
+          "description": "Resource group of the Compute Gallery."
         }
       },
       "galleryName": {
         "type": "String",
         "metadata": {
-          "description": "Name of the Compute Gallery"
+          "description": "Name of the Compute Gallery."
         }
       },
       "applicationName": {
         "type": "String",
         "metadata": {
-          "description": "VM Application name"
+          "description": "VM Application name."
         }
       },
       "applicationVersion": {
         "type": "String",
         "defaultValue": "latest",
         "metadata": {
-          "description": "VM Application version (defaults to latest)"
+          "description": "VM Application version. Defaults to latest."
+        }
+      },
+      "osType": {
+        "type": "String",
+        "allowedValues": [
+          "Windows",
+          "Linux"
+        ],
+        "metadata": {
+          "description": "Target OS type. Ensures the application is only injected onto VMs with a matching OS."
         }
       }
     },
     "policyRule": {
       "if": {
-        "field": "type",
-        "equals": "Microsoft.Compute/virtualMachines"
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Compute/virtualMachines"
+          },
+          {
+            "field": "Microsoft.Compute/virtualMachines/storageProfile.osDisk.osType",
+            "equals": "[parameters('osType')]"
+          },
+          {
+            "count": {
+              "field": "Microsoft.Compute/virtualMachines/applicationProfile.galleryApplications[*]",
+              "where": {
+                "field": "Microsoft.Compute/virtualMachines/applicationProfile.galleryApplications[*].packageReferenceId",
+                "contains": "[concat('/galleries/', parameters('galleryName'), '/applications/', parameters('applicationName'), '/')]"
+              }
+            },
+            "equals": 0
+          }
+        ]
       },
       "then": {
         "effect": "modify",
         "details": {
           "roleDefinitionIds": [
-            "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+            "/providers/Microsoft.Authorization/roleDefinitions/9980e02c-c2be-4d73-94e8-173b1dc7cf3c"
           ],
           "operations": [
             {
-              "operation": "addOrReplace",
+              "operation": "add",
               "field": "Microsoft.Compute/virtualMachines/applicationProfile.galleryApplications",
-              "value": [
-                {
-                  "packageReferenceId": "[concat('/subscriptions/', parameters('subscriptionId'), '/resourceGroups/', parameters('resourceGroup'), '/providers/Microsoft.Compute/galleries/', parameters('galleryName'), '/applications/', parameters('applicationName'), '/versions/', parameters('applicationVersion'))]",
-                  "order": 1,
-                  "enableAutomaticUpgrade": true
-                }
-              ]
+              "value": {
+                "packageReferenceId": "[concat('/subscriptions/', parameters('subscriptionId'), '/resourceGroups/', parameters('resourceGroup'), '/providers/Microsoft.Compute/galleries/', parameters('galleryName'), '/applications/', parameters('applicationName'), '/versions/', parameters('applicationVersion'))]",
+                "order": 1,
+                "treatFailureAsDeploymentFailure": true
+              }
             }
           ]
         }
@@ -232,62 +259,88 @@ Azure Policy with `modify` effect injects VM applications while creating new Vir
     "displayName": "Inject VM Application into Virtual Machine Scale Sets",
     "policyType": "Custom",
     "mode": "Indexed",
-    "description": "Adds VM Application reference to applicationProfile for Virtual Machine Scale Sets.",
+    "description": "Appends a VM Application reference to applicationProfile for Virtual Machine Scale Sets if the application is not already present. Filters by OS type to prevent cross-platform injection.",
     "parameters": {
       "subscriptionId": {
         "type": "String",
         "metadata": {
-          "description": "Subscription ID where the Compute Gallery resides"
+          "description": "Subscription ID where the Compute Gallery resides."
         }
       },
       "resourceGroup": {
         "type": "String",
         "metadata": {
-          "description": "Resource group of the Compute Gallery"
+          "description": "Resource group of the Compute Gallery."
         }
       },
       "galleryName": {
         "type": "String",
         "metadata": {
-          "description": "Name of the Compute Gallery"
+          "description": "Name of the Compute Gallery."
         }
       },
       "applicationName": {
         "type": "String",
         "metadata": {
-          "description": "VM Application name"
+          "description": "VM Application name."
         }
       },
       "applicationVersion": {
         "type": "String",
         "defaultValue": "latest",
         "metadata": {
-          "description": "VM Application version (defaults to latest)"
+          "description": "VM Application version. Defaults to latest."
+        }
+      },
+      "osType": {
+        "type": "String",
+        "allowedValues": [
+          "Windows",
+          "Linux"
+        ],
+        "metadata": {
+          "description": "Target OS type. Ensures the application is only injected onto scale sets with a matching OS."
         }
       }
     },
     "policyRule": {
       "if": {
-        "field": "type",
-        "equals": "Microsoft.Compute/virtualMachineScaleSets"
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Compute/virtualMachineScaleSets"
+          },
+          {
+            "field": "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.storageProfile.osDisk.osType",
+            "equals": "[parameters('osType')]"
+          },
+          {
+            "count": {
+              "field": "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.applicationProfile.galleryApplications[*]",
+              "where": {
+                "field": "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.applicationProfile.galleryApplications[*].packageReferenceId",
+                "contains": "[concat('/galleries/', parameters('galleryName'), '/applications/', parameters('applicationName'), '/')]"
+              }
+            },
+            "equals": 0
+          }
+        ]
       },
       "then": {
         "effect": "modify",
         "details": {
           "roleDefinitionIds": [
-            "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+            "/providers/Microsoft.Authorization/roleDefinitions/9980e02c-c2be-4d73-94e8-173b1dc7cf3c"
           ],
           "operations": [
             {
-              "operation": "addOrReplace",
+              "operation": "add",
               "field": "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.applicationProfile.galleryApplications",
-              "value": [
-                {
-                  "packageReferenceId": "[concat('/subscriptions/', parameters('subscriptionId'), '/resourceGroups/', parameters('resourceGroup'), '/providers/Microsoft.Compute/galleries/', parameters('galleryName'), '/applications/', parameters('applicationName'), '/versions/', parameters('applicationVersion'))]",
-                  "order": 1,
-                  "enableAutomaticUpgrade": true
-                }
-              ]
+              "value": {
+                "packageReferenceId": "[concat('/subscriptions/', parameters('subscriptionId'), '/resourceGroups/', parameters('resourceGroup'), '/providers/Microsoft.Compute/galleries/', parameters('galleryName'), '/applications/', parameters('applicationName'), '/versions/', parameters('applicationVersion'))]",
+                "order": 1,
+                "treatFailureAsDeploymentFailure": true
+              }
             }
           ]
         }
@@ -301,27 +354,39 @@ Azure Policy with `modify` effect injects VM applications while creating new Vir
 #### 2. Assign the policy
 [Assign the newly created policy](/azure/governance/policy/tutorials/create-and-manage#assign-a-policy) to start generating compliance score. All Virtual Machines and Virtual Machine Scale Sets within the assigned scope are monitored for compliance. Once the policy is assigned, all existing resources are evaluated and [displayed on compliance monitor](/azure/governance/policy/tutorials/create-and-manage#check-initial-compliance).
 
-Creating new Virtual Machines and Virtual Machine Scale Sets resource triggers this policy and modifies the applicationProfile of the resource to inject the application or configure it correctly. 
+Creating new Virtual Machines and Virtual Machine Scale Sets resource triggers this policy and modifies the applicationProfile of the resource to inject the application. 
 
 #### 3. Create Remediation Task and modify existing resources
 Create a new [Remediation tasks](/azure/governance/policy/how-to/remediate-resources) to modify existing resources. 
 
-It's recommended to gradually remediate noncompliant resources for higher availability and failure resiliency. This gradual can be done by creating multiple remediation tasks, each scoped to one region or few resources.
-
-It's recommended to create separate policies for windows & linux.  
+> [!NOTE]
+> Gradually remediate noncompliant resources for higher availability and failure resiliency. Create multiple remediation tasks, each scoped to one region or a few resources. 
 
 :::image type="content" source="./media/vmapps/vm-applications-create-remediation-task.png" alt-text="Portal experience showing how to create a new remediation task.":::
 
 #### Common adjustments
-- <b>Limit policy scope by OS type</b>: Check `osType` of `storageProfile` within `policyRule` to filter based on Window / Linux OS:
-    ```json
-    { "field": "Microsoft.Compute/virtualMachines/storageProfile.osDisk.osType", "equals": "[parameters('osType')]" }
-    ```
-    
 
-- <b>Limit policy scope by OS Image</b>: Check `offer` and `sku` within `policyRule` to filter based on image:
+The following examples show additional conditions you can add to the `allOf` block within `policyRule` to narrow the policy scope.
+
+- **Limit policy scope by OS image**: Filter based on a specific image offer and SKU:
+
     ```json
     { "field": "Microsoft.Compute/virtualMachines/storageProfile.imageReference.offer", "equals": "[parameters('imageOffer')]" },
     { "field": "Microsoft.Compute/virtualMachines/storageProfile.imageReference.sku", "equals": "[parameters('imageSku')]" }
     ```
+
+- **Limit policy scope by region**: Target specific Azure regions:
+
+    ```json
+    { "field": "location", "in": "[parameters('allowedLocations')]" }
+    ```
+
+- **Limit policy scope by resource group or subscription**: Use the [assignment scope](/azure/governance/policy/concepts/assignment-structure#scope) when assigning the policy rather than modifying the policy definition. Assign the policy to a specific resource group or subscription to narrow the scope. For more granular control, use [exclusions](/azure/governance/policy/concepts/assignment-structure#excluded-scopes) to omit specific resource groups from the assignment.
+
 ---
+
+## Next steps
+- Learn more about [Azure VM Applications](vm-applications.md).
+- Learn how to [create and deploy VM application packages](vm-applications-how-to.md).
+- Learn how to [manage and delete Azure VM Applications](vm-applications-manage.md).
+- Learn how to [create application package for VM Applications](vm-applications-create-app-package.md)

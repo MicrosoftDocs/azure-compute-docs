@@ -13,9 +13,13 @@ ms.custom: devx-track-azurepowershell, devx-track-azurecli
 
 # Manage Azure VM Applications
 
-This article talks about how to monitor, update, and delete the published VM Application and the deployed VM application resource on Azure Virtual Machine (VM) or Virtual Machine Scale Sets.
+This article talks about how to view, update and delete published VM Application in Azure Compute Gallery. It then talks about how to view, monitor, update, and delete deployed VM application resource on Azure Virtual Machine (VM) or Virtual Machine Scale Sets.
 
-## View published VM Applications
+## Managed VM Application published in Azure Compute Gallery
+This section explains about how to view, update and delete **published VM Applications** in Azure Compute Gallery. 
+
+### View published VM Applications
+
 #### [Portal](#tab/portal1)
 To view the properties of a published VM Application in the Azure portal:
 
@@ -182,18 +186,141 @@ Get-AzGalleryApplicationVersion `
 ```
 ---
 
-## View deployed VM Applications & their state
+
+### View published VM applications using Azure Resource Graph
+
+[Azure resource graph query](/azure/governance/resource-graph/first-query-portal) can be used to view all published VM applications and their properties across all compute galleries. It priovides a programmatic way to view application inventory, and their properties at high scale. This is a preferred method for integrating with dashboards and custom reports.
+
+
+**View list of all compute galleries**
+```kusto-interactive
+resources
+| where type == "microsoft.compute/galleries"
+| where subscriptionId == "85236c53-92ad-4e66-97a4-8253a5246b99"
+| extend provisioningState = properties["provisioningState"]
+| extend permissions = properties["sharingProfile"]["permissions"]
+| extend communityGalleryInfo = properties["sharingProfile"]["communityGalleryInfo"]
+| project subscriptionId, resourceGroup, location, name, provisioningState, permissions, communityGalleryInfo
+```
+
+**View list of all published VM Applications across all galleries**
+```kusto-interactive
+resources
+| where subscriptionId == "85236c53-92ad-4e66-97a4-8253a5246b99"
+| where type == "microsoft.compute/galleries/applications"
+| extend OSType = properties["supportedOSType"]
+| extend description = properties["description"]
+| extend endOfLifeDate = properties["endOfLifeDate"]
+| parse id with  "/subscriptions/" SubId "/resourceGroups/" rgName "/providers/Microsoft.Compute/galleries/" gallaryName "/applications/" appName  
+| project subscriptionId, resourceGroup, location, gallaryName, name, OSType, description
+```
+
+**View list of all published VM Application Versions across all applications and galleries**
+```kusto-interactive
+resources
+| where type == "microsoft.compute/galleries/applications/versions"
+| project subscriptionId, resourceGroup, id, location, properties
+| parse id with  "/subscriptions/" SubId "/resourceGroups/" rgName "/providers/Microsoft.Compute/galleries/" gallaryName "/applications/" appName "/versions/" versionNumber 
+| extend provisioningState = properties["provisioningState"]
+| extend publishingProfile = properties["publishingProfile"]
+| extend storageAccountType = publishingProfile["storageAccountType"]
+| extend scriptBehaviorAfterReboot = publishingProfile["settings"]["scriptBehaviorAfterReboot"]
+| extend packageFileName = publishingProfile["settings"]["packageFileName"]
+| extend configFileName = publishingProfile["settings"]["configFileName"]
+| extend mediaLink = publishingProfile["source"]["mediaLink"]
+| extend defaultConfigurationLink = publishingProfile["source"]["defaultConfigurationLink"]
+| extend excludeFromLatest = publishingProfile["excludeFromLatest"]
+| extend targetRegions = publishingProfile["targetRegions"]
+| extend replicaCount = publishingProfile["replicaCount"]
+| extend publishedDate = publishingProfile["publishedDate"]
+| extend installScript = publishingProfile["manageActions"]["install"]
+| extend removeScript = publishingProfile["manageActions"]["remove"]
+| extend safetyProfile = properties["safetyProfile"]
+| extend allowDeletionOfReplicatedLocations = safetyProfile["allowDeletionOfReplicatedLocations"]
+| project-away safetyProfile, publishingProfile, SubId, rgName, id, properties
+```
+
+---
+
+<!-->
+### Update published VM Application
+- Tags, targetRegion, SASToken for mediaLink and defaultConfigurationLink
+-->
+
+### Delete the VM Application from Azure Compute Gallery
+To delete the VM Application resource, you need to first delete all its versions. Deleting the application version causes deletion of the application version resource from Azure Compute Gallery and all its replicas. The application blob in Storage Account used to create the application version is unaffected. 
+
+> [!WARNING]
+> - Deleting the application version causes subsequent PUT operations on VMs using that version to fail. Use `latest` keyword as the version number in the `applicationProfile` instead of hard coding the version number to address this failure.  
+>
+> - Deleting the VM application that is referenced by any VM or VMSS causes subsequent PUT operations on those resources to fail (for example, update, scale, or reimage). Before deleting, ensure all VMs/VMSS instances stop using the application by removing it from their applicationProfile. 
+>
+>- To prevent accidental deletion,  set `safetyProfile/allowDeletionOfReplicatedLocations` to `false` while publishing the version and apply an Azure Resource Manager lock (CanNotDelete or ReadOnly) on the VM application resource.
 
 #### [Portal](#tab/portal2)
-To show the VM application status, go to the **Extensions + applications** tab/settings and check the status of the VMAppExtension:
+1. Sign in to the [Azure portal](https://portal.azure.com).
+2. Search for Azure Compute Gallery and open the target gallery.
+3. Select the VM application you want to remove.
+4. Select one or more versions, which you want to delete.
+5. To delete the VM application, first delete all the versions. Then click delete (on top of the blade).
+6. Monitor Notifications for completion. If deletion is blocked, remove any locks and ensure no VM or scale set references the application.
+
+:::image type="content" source="media/vmapps/vm-applications-delete-from-gallery-portal.png" alt-text="Screenshot showing deletion of a VM application and its versions in the Azure portal.":::
+
+#### [REST](#tab/rest2)
+Delete the VM Application version:
+```rest
+DELETE
+https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{galleryApplicationName}/versions/{galleryApplicationVersionName}?api-version=2024-03-03
+```
+
+Delete the VM Application after all its versions are deleted:
+```rest
+DELETE
+https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{galleryApplicationName}?api-version=2024-03-03
+```
+
+#### [CLI](#tab/cli2)
+Delete the VM Application version:
+```azurecli-interactive
+az sig gallery-application version delete --resource-group $rg-name --gallery-name $gallery-name --application-name $app-name --version-name $version-name
+```
+
+Delete the VM Application after all its versions are deleted:
+```azurecli-interactive
+az sig gallery-application delete --resource-group $rg-name --gallery-name $gallery-name --application-name $app-name
+```
+
+#### [PowerShell](#tab/powershell2)
+Delete the VM Application version: 
+```azurepowershell-interactive
+Remove-AzGalleryApplicationVersion -ResourceGroupName $rgNmae -GalleryName $galleryName -GalleryApplicationName $galleryApplicationName -Name $name
+```
+
+Delete the VM Application after all its versions are deleted:
+```azurepowershell-interactive
+Remove-AzGalleryApplication -ResourceGroupName $rgNmae -GalleryName $galleryName -Name $name
+```
+---
+
+
+
+## Manage deployed VM Application on Azure VM and Scale Set
+This section explains how to view deployed application details and monitor deployed applications across infrastructure. It also talks about how to update, and delete **deployed VM Applications** on Azure VMs and Scale Sets. 
+
+### View deployed VM Applications & their state
+Azure uses VMAppExtension to deploy, monitor and manage VM Applications on the VM. Therefore, provisioning state of the deployed VM Application is described in the status of the VMAppExtension. 
+
+#### [Portal](#tab/portal3)
+To show the VM application status, go to the **Extensions + applications** tab under settings and check the status of the VMAppExtension:
 
 :::image type="content" source="media/vmapps/select-app-status.png" alt-text="Screenshot showing VM application status.":::
 
-To show the VM application status for a scale set, go to the Azure portal Virtual Machine Scale Sets page. In the Instances section, select one of the scales sets listed, then go to **VMAppExtension**:
+To show the VM application status for a scale set, go to the Azure portal Virtual Machine Scale Sets page. In the Instances section, select one of the instances. Then go to **Extensions + Applications** tab under settings and check the status of the **VMAppExtension**:
 
 :::image type="content" source="media/vmapps/select-apps-status-vmss-portal.png" alt-text="Screenshot showing virtual machine scale sets application status.":::
 
-#### [REST](#tab/rest2)
+#### [REST](#tab/rest3)
 
 If the VM application isn't installed on the VM, the value is empty. 
 
@@ -241,7 +368,7 @@ GET
 ```
 The output is similar to the VM example earlier.
 
-#### [CLI](#tab/cli2)
+#### [CLI](#tab/cli3)
 
 To verify application deployment status on a VM, use ['az vm get-instance-view'](/cli/azure/vm/#az-vm-get-instance-view):
 
@@ -254,9 +381,9 @@ To verify application deployment status on Virtual Machine Scale Set, use ['az v
 az vmss get-instance-view --ids (az vmss list-instances -g myResourceGroup -n myVmss --query "[*].id" -o tsv) --query "[*].extensions[?name == 'VMAppExtension']"
 ```
 
-#### [PowerShell](#tab/powershell2)
+#### [PowerShell](#tab/powershell3)
 
-Verify the application succeeded:
+To view the provisioning state of deployed VM Application on Azure VMs, use [Get-AzVM](/powershell/module/az.compute/get-azvm) command. 
 
 ```azurepowershell-interactive
 $rgName = "myResourceGroup"
@@ -265,7 +392,8 @@ $result = Get-AzVM -ResourceGroupName $rgName -VMName $vmName -Status
 $result.Extensions | Where-Object {$_.Name -eq "VMAppExtension"} | ConvertTo-Json
 ```
 
-To verify on your Virtual Machine Scale Set:
+To view the provisioning state of deployed VM Application on Virtual Machine Scale Set, use [Get-AzVMSS](/powershell/module/az.compute/get-azvmss) command. 
+
 ```azurepowershell-interactive
 $rgName = "myResourceGroup"
 $vmssName = "myVMss"
@@ -279,10 +407,98 @@ $resultSummary | ConvertTo-Json -Depth 5
 ```
 ---
 
-## View deployed VM applications at scale
 
-#### [AzureResourceGraph](#tab/aureresourcegraph2)
-[Azure resource graph query](/azure/governance/resource-graph/first-query-portal) can be used to view all deployed VM applications and its properties across VMs and VM Scale Sets
+<!--
+### View logs of application installation using Run command
+When Azure VM Applications downloads and installs the application on Azure VM or scale set, it pipes all stdout results to `stdout` file within the application repository. Customers can [enable verbose logging for the application installation and write custom logs](vm-applications-how-to.md#3-create-the-install-script) using the `installScript`. Customers can then manually check the `stdout` and `stderr` file or use Runcommand to get the file content. 
+
+Use the following PowerShell script in your managed run command. Update the `AppName` and `AppVersion` variables for your application
+
+#### [Windows](#tab/windows)
+```azure-powershell-interactive
+$AppName = "deeptivaiwinapp"        # VM Application definition name
+$AppVersion = "1.0.0"               # VM Application version name
+
+$VMAppManagerVersion = "1.0.16"     # Version of the VMApplicationManagerWindows extension on the VM
+$StdoutFilePath = "C:\Packages\Plugins\Microsoft.CPlat.Core.VMApplicationManagerWindows\$VMAppManagerVersion\Downloads\$AppName\$AppVersion\stdout"
+$StderrFilePath = "C:\Packages\Plugins\Microsoft.CPlat.Core.VMApplicationManagerWindows\$VMAppManagerVersion\Downloads\$AppName\$AppVersion\stderr"
+
+try {
+ if(-not (Test-Path $StdoutFilePath)) {
+  Throw "File not found: $StdoutFilePath"
+ }
+ if(-not (Test-Path $StderrFilePath)) {
+  Throw "File not found: $StderrFilePath"
+ }
+} 
+catch
+{
+ Write-Host "Could not find stdout and/or stderr files"
+}
+
+Write-Host "`n=== Contents of stdout ==="
+Get-Content -Path $StdoutFilePath
+
+Write-Host "`n=== Contents of stdout ==="
+Get-Content -Path $StdoutFilePath
+```
+#### [Linux](#tab/Linux)
+
+
+---
+
+Execute the run command to get the application logs. 
+
+#### [Portal](#tab/portal4)
+1. Open the [Azure portal](https://portal.azure.com) and navigate to your VM.
+2. Under **Operations**, select **Run command**.
+3. Choose **RunPowerShellScript** from the list.
+4. Enter your PowerShell script in the editor.
+5. Select **Run** to execute the script.
+6. View the output in the **Output** section. If the script fails, check the **Error** section for details.
+
+For more information, see [Run PowerShell scripts in your Windows VM by using Run Command](/azure/virtual-machines/windows/run-command).
+
+#### [PowerShell](#tab/powershell4)
+
+Option 1: Pass the script path using the `-ScriptLocalPath` parameter: 
+
+```azurepowershell-interactive
+$rgName = "myResourceGroup"
+$vmName = "myVM"
+
+Invoke-AzVMRunCommand `
+    -ResourceGroupName $rgName `
+    -VMName $vmName `
+    -CommandId "RunPowerShellScript" `
+    -ScriptLocalPath "C:\path\to\your\script.ps1"
+```
+ 
+Option 2: Pass the script inline using the `-ScriptString` parameter:
+
+```azurepowershell-interactive
+$rgName = "myResourceGroup"
+$vmName = "myVM"
+$scriptContent = Get-Content -Path "C:\path\to\your\script.ps1" -Raw
+
+Invoke-AzVMRunCommand `
+    -ResourceGroupName $rgName `
+    -VMName $vmName `
+    -CommandId "RunPowerShellScript" `
+    -ScriptString $scriptContent
+```
+
+For more information, see [Invoke-AzVMRunCommand](/powershell/module/az.compute/invoke-azvmruncommand).
+
+#### [CLI](#tab/cli4)
+
+---
+-->
+
+
+### View all deployed VM applications using Azure Resource Graph
+
+[Azure resource graph query](/azure/governance/resource-graph/first-query-portal) can be used to view all deployed VM applications and their properties across all VMs and VM Scale Sets. It priovides a programmatic way to view application inventory, state and deployed versions at high scale. This is a preferred method for integrating with dashboards and custom reports.
 
 ```kusto-interactive
 resources
@@ -297,9 +513,165 @@ resources
 | parse packageReferenceId with "/subscriptions/" publisherSubcriptionId "/resourceGroups/" publisherResourceGroup "/providers/Microsoft.Compute/galleries/" galleryName "/applications/" appName "/versions/" version
 | project tenantId, subscriptionId, resourceGroup, resourceName = name, type, location, appName, version, enableAutomaticUpgrade, treatFailureAsDeploymentFailure, galleryName, publisherSubcriptionId, publisherResourceGroup, properties
 ```
+
+
+### Audit required VM Application using Azure Policy
+Azure Policy helps enforce governance by auditing whether required VM applications are deployed across your VMs and scale sets. You can create and assign custom policies to check compliance and ensure that specific applications are present on your infrastructure.
+
+For step-by-step instructions on how to audit VM application deployment using Azure Policy, see [Audit required VM applications using Azure Policy](vm-applications-inject-with-policy.md#set-up-compliance-monitor-to-govern-required-vm-applications).
+
+<!--### View VM Application logs in Activity Logs
+-->
+
+### Update the deployed VM Application
+To update a deployed VM application, modify the `applicationProfile` to reference a newer version or change deployment settings such as `treatFailureAsDeploymentFailure` or `order`.
+
+#### [REST](#tab/rest4)
+
+**Update the VM application version or settings on a single VM:**
+
+```rest
+PATCH
+https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}?api-version=2024-03-03
+
+Body
+{
+    "properties": {
+        "applicationProfile": {
+            "galleryApplications": [
+                {
+                    "packageReferenceId": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{applicationName}/versions/{newVersion}",
+                    "treatFailureAsDeploymentFailure": true,
+                    "enableAutomaticUpgrade": true
+                }
+            ]
+        }
+    }
+}
+```
+
+**Update VM application on a VM scale set (model):**
+
+```rest
+PATCH
+https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmssName}?api-version=2024-03-03
+
+Body
+{
+    "properties": {
+        "virtualMachineProfile": {
+            "applicationProfile": {
+                "galleryApplications": [
+                    {
+                        "packageReferenceId": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{applicationName}/versions/{newVersion | latest}",
+                        "treatFailureAsDeploymentFailure": true,
+                        "order": 2
+                    }
+                ]
+            }
+        }
+    }
+}
+```
+
+Apply the change to existing VMSS instances (required when upgradePolicy.mode is Manual):
+
+```rest
+POST
+https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmssName}/updateInstances?api-version=2024-03-03
+
+Body
+{
+    "instanceIds": ["*"]
+}
+```
+
+#### [CLI](#tab/cli4)
+
+**Update VM application on a single VM:**
+
+```azurecli-interactive
+az vm application set \
+    --resource-group myResourceGroup \
+    --name myVM \
+    --app-version-ids /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/galleries/myGallery/applications/myApp/versions/latest \
+    --treat-deployment-as-failure true
+```
+
+**Update VM application on a VM scale set (model):**
+
+```azurecli-interactive
+az vmss application set \
+    --resource-group myResourceGroup \
+    --name myVMss \
+    --app-version-ids /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/galleries/myGallery/applications/myApp/versions/latest \
+    --treat-deployment-as-failure true
+```
+
+Apply the change to existing VMSS instances (If upgradeMode set to manual):
+
+```azurecli-interactive
+az vmss update-instances -g myResourceGroup -n myVMss --instance-ids "*"
+```
+
+#### [PowerShell](#tab/powershell4)
+
+**Update VM application on a single VM:**
+
+```azurepowershell-interactive
+$rgName = "myResourceGroup"
+$vmName = "myVM"
+$galleryName = "myGallery"
+$applicationName = "myApp"
+$newVersion = "latest"
+
+$vm = Get-AzVM -ResourceGroupName $rgName -Name $vmName
+$appVersion = Get-AzGalleryApplicationVersion `
+    -ResourceGroupName $rgName `
+    -GalleryName $galleryName `
+    -GalleryApplicationName $applicationName `
+    -Name $newVersion
+$packageId = $appVersion.Id
+
+$app = New-AzVmGalleryApplication -PackageReferenceId $packageId -TreatFailureAsDeploymentFailure
+$vm.ApplicationProfile.GalleryApplications = @($app)
+Update-AzVM -ResourceGroupName $rgName -VM $vm
+```
+
+**Update VM application on a VM scale set (model):**
+
+```azurepowershell-interactive
+$rgName = "myResourceGroup"
+$vmssName = "myVMss"
+$galleryName = "myGallery"
+$applicationName = "myApp"
+$newVersion = "latest"
+
+$vmss = Get-AzVmss -ResourceGroupName $rgName -VMScaleSetName $vmssName
+$appVersion = Get-AzGalleryApplicationVersion `
+    -ResourceGroupName $rgName `
+    -GalleryName $galleryName `
+    -GalleryApplicationName $applicationName `
+    -Name $newVersion
+$packageId = $appVersion.Id
+
+$app = New-AzVmssGalleryApplication -PackageReferenceId $packageId -TreatFailureAsDeploymentFailure
+$vmss.VirtualMachineProfile.ApplicationProfile.GalleryApplications = @($app)
+Update-AzVmss -ResourceGroupName $rgName -VMScaleSetName $vmssName -VirtualMachineScaleSet $vmss
+```
+
+Apply the change to existing VMSS instances (If upgradeMode set to Manual):
+
+```azurepowershell-interactive
+$instanceIds = (Get-AzVmssVM -ResourceGroupName $rgName -VMScaleSetName $vmssName).InstanceId
+Update-AzVmssInstance -ResourceGroupName $rgName -VMScaleSetName $vmssName -InstanceId $instanceIds
+```
 ---
 
-## Remove the VM Application from Azure VM or VMSS
+> [!TIP]
+> Use `latest` as the version identifier in `packageReferenceId` to automatically deploy the newest published version without manually updating deployments.
+
+### Remove the VM Application from Azure VM or VMSS
 
 #### [Portal](#tab/portal3)
 1. Open the Azure portal and go to the target virtual machine (VM) or Virtual Machine Scale Set.
@@ -396,61 +768,6 @@ Update-AzVmssInstance -ResourceGroupName $rgName -VMScaleSetName $vmssName -Inst
 ```
 ---
 
-## Delete the VM Application from Azure Compute Gallery
-To delete the VM Application resource, you need to first delete all its versions. Deleting the application version causes deletion of the application version resource from Azure Compute Gallery and all its replicas. The application blob in Storage Account used to create the application version is unaffected. 
-
-> [!WARNING]
-> - Deleting the application version causes subsequent PUT operations on VMs using that version to fail. Use `latest` keyword as the version number in the `applicationProfile` instead of hard coding the version number to address this failure.  
->
-> - Deleting the VM application that is referenced by any VM or VMSS causes subsequent PUT operations on those resources to fail (for example, update, scale, or reimage). Before deleting, ensure all VMs/VMSS instances stop using the application by removing it from their applicationProfile. 
->
->- To prevent accidental deletion,  set `safetyProfile/allowDeletionOfReplicatedLocations` to `false` while publishing the version and apply an Azure Resource Manager lock (CanNotDelete or ReadOnly) on the VM application resource.
-
-#### [Portal](#tab/portal4)
-1. Sign in to the [Azure portal](https://portal.azure.com).
-2. Search for Azure Compute Gallery and open the target gallery.
-3. Select the VM application you want to remove.
-4. Select one or more versions, which you want to delete.
-5. To delete the VM application, first delete all the versions. Then click delete (on top of the blade).
-6. Monitor Notifications for completion. If deletion is blocked, remove any locks and ensure no VM or scale set references the application.
-
-:::image type="content" source="media/vmapps/vm-applications-delete-from-gallery-portal.png" alt-text="Screenshot showing deletion of a VM application and its versions in the Azure portal.":::
-
-#### [REST](#tab/rest4)
-Delete the VM Application version:
-```rest
-DELETE
-https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{galleryApplicationName}/versions/{galleryApplicationVersionName}?api-version=2024-03-03
-```
-
-Delete the VM Application after all its versions are deleted:
-```rest
-DELETE
-https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{galleryApplicationName}?api-version=2024-03-03
-```
-
-#### [CLI](#tab/cli4)
-Delete the VM Application version:
-```azurecli-interactive
-az sig gallery-application version delete --resource-group $rg-name --gallery-name $gallery-name --application-name $app-name --version-name $version-name
-```
-
-Delete the VM Application after all its versions are deleted:
-```azurecli-interactive
-az sig gallery-application delete --resource-group $rg-name --gallery-name $gallery-name --application-name $app-name
-```
-
-#### [PowerShell](#tab/powershell4)
-Delete the VM Application version: 
-```azurepowershell-interactive
-Remove-AzGalleryApplicationVersion -ResourceGroupName $rgNmae -GalleryName $galleryName -GalleryApplicationName $galleryApplicationName -Name $name
-```
-
-Delete the VM Application after all its versions are deleted:
-```azurepowershell-interactive
-Remove-AzGalleryApplication -ResourceGroupName $rgNmae -GalleryName $galleryName -Name $name
-```
----
 
 ## Next steps
 - Learn more about [Azure VM Applications](vm-applications.md).

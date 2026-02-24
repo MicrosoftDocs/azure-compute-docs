@@ -14,24 +14,29 @@ ms.custom: devx-track-azurepowershell, devx-track-azurecli
 
 # Create and deploy VM Application
 
-VM Application is a resource type in Azure Compute Gallery that simplifies debployment, management, sharing, and global distribution of applications and scripts for your virtual machines. VM Applications are best suited for deploying apps and workloads that need high scale, low latency, failure resiliency, secure trusted deployments, consistency across the fleet, micro-service architecture, and/or post-deployment management. [Learn more about VM Application](./vm-applications.md)
+VM Application is a resource type in Azure Compute Gallery that simplifies publishing, deployment, management, sharing, and global distribution of applications and scripts for your virtual machines. 
+VM Applications are suited for apps and workloads with varying needs such as high scale, low latency, failure resiliency, secure trusted deployments, consistency across the fleet, micro-service architecture, and/or post-deployment management. [Learn more about VM Application](./vm-applications.md)
 
-To create and deploy applications on Azure VM, first package and upload your application to Azure Storage Account as a storage blob. Then create `Azure VM application` resource and `VM application version` resource referencing these storage blobs. Finally, deploy the application on any VM or Virtual Machine Scale Set by passing application reference in `applicationProfile`.
+To create and deploy applications on Azure VM, first package and upload your application to Azure Storage Account as a storage blob. Then create `Azure VM application` resource and `VM application version` resource referencing these storage blobs. Azure stores and replicates these blobs in regional managed storage accounts.  Finally, deploy the application on any VM or Virtual Machine Scale Set by passing application reference in `applicationProfile`.
+
+:::image type="content" source="media/vmapps/vm-application-how-to.png" alt-text="Diagram showing step-by-step process involved in publishing and deploying VM applications.":::
 
 ## Prerequisites
 1. Create [Azure storage account](/azure/storage/common/storage-account-create#create-a-storage-account) and [storage container](/azure/storage/blobs/blob-containers-portal#create-a-container). This container is used to upload your application files. It's recommended to use storage account with anonymous access disabled for added security. 
 1. Create [Azure Compute Gallery for storing and sharing application resources](create-gallery.md).
+1. Create [user-assigned managed identity](/entra/identity/managed-identities-azure-resources/overview) and [assign to Azure Compute Gallery]()
 
 ## Package the application
 :::image type="content" source="media/vmapps/vm-application-folder-structure.png" alt-text="Screenshot showing the folder structure recommended for uploading and creating VM Applications.":::
 
 #### 1. Package the application files
-   - If your application installation requires a single file (.exe, .msi, .sh, .ps, etc.) then you can use it as is.
-   - If your application installation requires multiple files (Executable file with configuration file, dependencies, manifest files, scripts, etc.), then you must archive it (using .zip, .tar, .tar.gz, etc.) into a single file.
+   - If your application installation requires a single file (.exe, .msi, .sh, .ps, etc.) then you can package it into VM Application.
+   - If your application installation requires multiple files (Executable file with configuration file, dependencies, manifest files, scripts, etc.), then you must archive it (using .zip, .tar, .tar.gz, etc.) into a single file and package the archive file into VM application.
    - For microservice application, you can package and publish each microservice as a separate Azure VM Application. This facilitates application reusability, cross-team development, and sequential installation of microservices using `order` property in the [applicationProfile](#deploy-the-vm-apps).
      
 #### 2. (Optional) Package the application configuration file
-   - You can optionally provide the configuration file separately. This reduces the overhead of archiving and unarchiving application packages. Configuration files can also be passed during app deployment enabling customized installation per VM.
+   - You can provide the configuration file separately using `defaultConfigurationLink` in the `publishingProfile` of the VM Application. This reduces the overhead of archiving and unarchiving application packages. 
+   - Configuration files can also be passed during app deployment using `configurationReference` property in the `applicationProfile` of the VM enabling customized installation per VM.
      
 #### 3. Create the install script
 After the application and configuration blob is downloaded on the VM, Azure executes the provided install script to install the application. **The install script is provided as a string** and has a maximum character limit of 4,096 chars. The install commands should be written assuming the application package and the configuration file are in the current directory.
@@ -42,341 +47,262 @@ There may be few operations required to be performed in the install script
 	The default command interpreter used by Azure are `/bin/bash` on Linux OS and `cmd.exe` on Windows OS. It's possible to use a different interpreter like Chocolatey or PowerShell, if its installed on the machine. Call the executable and pass the commands to it. E.g., `powershell.exe -command '<powershell command>'`. If you're using PowerShell, you need to be using version 3.11.0 of the Az.Storage module.
 
 - **(Optional) Rename application blob and configuration blob**
-	Azure can't retain the original file name and the file extensions. Therefore, the downloaded application file and the configuration file have a default name as "MyVMApp" and "MyVMApp-config" without a file extension. You can rename the file with the file extension using the install script or you can also pass the names in `packageFileName` and `configFileName` properties of the [`publishingProfile` of VM Application version resource](#create-the-vm-application). Azure will then use these names instead of default names while downloading the files. 
-    
+	Azure can't retain the original blob name and the file extensions. Azure downloads the application file with the name of the VM application resource published on Azure Compute Gallery. So if name of VM App is "VMApp1", the file downloaded on VM has the name "VMApp1" without an extension. The configuration file have a default name as "VMApp1-config" without a file extension.
+  
+  You can rename the file with the file extension using the install script or you can also pass the names in `packageFileName` and `configFileName` properties of the [`publishingProfile` of VM Application version resource](#create-the-vm-application). Azure will then use these names instead of default names while downloading the files. 
+   
+- **Unarchive application blob**
+	For archived application packages, it needs to be unarchived before installing the application. It's recommended to use .zip or .tar since most OS has built-in support for unarchiving these formats. For other formats, make sure the Guest OS provides support.     
+
+- **Convert the script to string**
+   	The install script is passed as a string for the `install` property in the `publishingProfile` of Azure VM Application version resource. 
+
+- **Install quietly and synchronously**
+  Install applications quietly or silently without any user interface prompts. Since the installation runs on a VM where customer input isn't available, you must use silent or unattended installation flags. Additionally, if the application installer spawns background or child processes or runs asynchronously, the parent script might return before the installation completes. To ensure the full installation finishes before Azure marks the operation as successful, use wait flags or blocking commands. This approach helps when installation involves multiple steps that run asynchronously or you need to verify installation completes before the subsequent application in the `order` sequence begins.
+
+   Common examples include: 
+    - **Windows .msi**: `start /wait msiexec /i app.msi /quiet /qn`
+    - **Windows .exe**: `start /wait app.exe /silent` or `start /wait app.exe /quiet` or `start /wait app.exe /S`
+    - **PowerShell**: `Start-Process -FilePath '.\app.exe' -ArgumentList '/quiet' -Wait`
+    - **Linux .sh**: `./install.sh --silent` (shell scripts run synchronously by default)
+    - **Linux .deb**: `sudo DEBIAN_FRONTEND=noninteractive dpkg -i app.deb` (runs synchronously by default)
+    - **Linux .rpm**: `sudo rpm -ivh app.rpm` (runs synchronously by default) 
+
+- **(Optional) Set right execution policy and permissions**
+	After unarchiving, file permissions could be reset. It's a good practice to set the right permissions before executing the files.
+
+- **(Optional) Set verbose execution and logging**
+  VM Applications automatically captures any output from the install script and stores it in a stdout file on the VM. Use this capability to log installation progress, debug failures, and verify successful deployments.
+  - **Enable verbose mode** to capture application installer logs. Bash: `set -x`, PowerShell: `$VerbosePreference='Continue'`, Cmd: `@echo on`.
+  - **Add custom messages** to track script progress. Bash:  `echo "Install started"`, PowerShell: `Write-Output "Install started"`, Cmd: `echo Install started`
+ 
+  You can retrieve these logs using Run Command or by connecting to the VM directly.
+
+
 - **(Optional) Move application and configuration blob to appropriate location**
 	Azure downloads the application blob and configuration blob to following locations. The install script must move the files to appropriate locations when necessary.
 
 	Linux: `/var/lib/waagent/Microsoft.CPlat.Core.VMApplicationManagerLinux/<application name>/<application version>`
 
 	Windows: `C:\Packages\Plugins\Microsoft.CPlat.Core.VMApplicationManagerWindows\1.0.16\Downloads\<application name>\<application version>`
-   
-- **Unarchive application blob**
-	For archived application packages, it needs to be unarchived before installing the application. It's recommended to use .zip or .tar since most OS has built-in support for unarchiving these formats. For other formats, make sure the Guest OS provides support.     
-   
-- **(Optional) Set right execution policy and permissions**
-	After unarchiving, file permissions could be reset. It's a good practice to set the right permissions before executing the files.
 
-- **Convert the script to string**
-   	The install script is passed as a string for the `install` property in the `publishingProfile` of Azure VM Application version resource. 
+Here are sample install scripts based on the file extension of the application blob. If `packageFileName` & `configFileName` properties are provided in the `publishingProfile` with file name and extension, remove the code for renaming files in below scripts.
 
-Here are sample install scripts based on the file extension of the application blob
 #### [.TAR](#tab/TAR)
+Replace `VMApp1` with your VM App name in application package (VMApp1) and configuration file (VMApp1-config).
+Replace `app.tar` with desired app name. 
+Replace `config.yaml` with your desired config name.
+
+**Install using bash without config file:**
 ```bash
-#!/bin/bash
-
-# Rename blobs
-mv MyVMApp app.tar
-# mv MyVMApp-config app-config.yaml
-
-# Unarchive application
-mkdir -p app
-tar -xf app.tar -C app
-
-# Set permissions
-chmod -R +x app
-chmod -R +r app
-
-# Install the script (example: install.sh)
-bash ./app/install.sh 
-
-# OR Install the script with config (example: install.sh with config)
-# bash ./app/install.sh --config app-config.yaml
-
-# OR Install the .deb package (example: install.deb without config)
-# sudo dpkg -i ./app/install.deb
-
-# OR Install the .rpm package (example: install.rpm without config)
-# sudo rpm -ivh ./app/install.rpm
+mv VMApp1 app.tar && tar -xf app.tar && chmod -R +xr . && bash ./install.sh
+```
+```bash
+mv VMApp1 app.tar && tar -xf app.tar && chmod -R +xr . && sudo DEBIAN_FRONTEND=noninteractive dpkg -i ./app.deb
 ```
 
-Script as string:
-```code
-Without config: 
-"#!/bin/bash\nmv MyVMApp app.tar\nmkdir -p app\ntar -xf app.tar -C app\nchmod -R +x app\nchmod -R +r app\nbash ./app/install.sh\n# sudo dpkg -i ./app/install.deb\n# sudo rpm -ivh ./app/install.rpm"
-
-With config:
-"#!/bin/bash\nmv MyVMApp app.tar\nmv MyVMApp-config app-config.yaml\nmkdir -p app\ntar -xf app.tar -C app\nchmod -R +x app\nchmod -R +r app\nbash ./app/install.sh --config app-config.yaml\n# sudo dpkg -i ./app/install.deb\n# sudo rpm -ivh ./app/install.rpm"
+**Install using bash with config file:**
+```bash
+mv VMApp1 app.tar && mv VMApp1-config config.yaml && tar -xf app.tar && chmod -R +xr . && bash ./install.sh --config config.yaml
+```
+If config file is packaged within the tar file
+```bash
+mv VMApp1 app.tar && tar -xf app.tar && chmod -R +xr . && sudo debconf-set-selections < config.cfg && sudo DEBIAN_FRONTEND=noninteractive dpkg -i ./app.deb
 ```
 
-#### [.ZIP with CMD](#tab/ZIPCmd)
+#### [.ZIP](#tab/ZIPCmd)
+Replace `VMApp1` with your VM App name in application package (VMApp1) and configuration file (VMApp1-config).
+Replace `python.zip` with desired app name. 
+Replace `config.json` with your desired config name.
+
+**Install using CMD without config file:**
+
+Replace VMApp1 with your VM App name and python.zip with desired name for your executable in the below script. 
 ```cli-interactive
-:: Rename blobs
-rename MyVMApp app.zip
-:: rename MyVMApp-config app-config.json
-
-:: Unzip using built-in tar (available on Windows 10+)
-mkdir app
-tar -xf app.zip -C app
-
-:: Install .exe application
-app\setup.exe
-
-:: Install .exe application with config (example: setup.exe with config)
-:: app\setup.exe /config app-config.json
-
-:: install .msi application (example: setup.exe without config)
-:: msiexec /i app\setup.msi
-
-:: Install JavaScript (example: setup.js with config)
-:: cscript //nologo app\setup.js app-config.json
-
-:: Install python script (example: install.py with config) - Needs python pre-installed
-:: python app\install.py app-config.json
-
-:: Install ruby application  (example: install.rb with config) - Needs Ruby pre-installed
-:: ruby app\install.rb app-config.json
+ren VMApp1 python.zip && tar -xf python.zip && start /wait python.exe /quiet InstallAllUsers=1 PrependPath=1
 ```
 
-Script as string: 
-```code
-Without config: 
-"rename MyVMApp app.zip\r\nmkdir app\r\ntar -xf app.zip -C app\r\napp\\setup.exe\r\n:: msiexec /i app\\setup.msi /qn /l*v install.log\r\n:: cscript //nologo app\\setup.js app-config.json\r\n:: python app\\install.py app-config.json\r\n:: ruby app\\install.rb app-config.json"
-
-With config: 
-"rename MyVMApp app.zip\r\nrename MyVMApp-config app-config.json\r\nmkdir app\r\ntar -xf app.zip -C app\r\napp\\setup.exe /config app-config.json\r\n:: msiexec /i app\\setup.msi\r\n:: cscript //nologo app\\setup.js app-config.json\r\n:: python app\\install.py app-config.json\r\n:: ruby app\\install.rb app-con*
+**Install using CMD with config file:**
+```cli-interactive
+ren VMApp1 python.zip && tar -xf python.zip && ren VMApp1-config config.json && start /wait python.exe --config config.json /quiet InstallAllUsers=1 PrependPath=1
 ```
 
-#### [.ZIP with PowerShell](#tab/ZIPPowershell)
+If config file is included in the .zip package
+```cli-interactive
+ren VMApp1 python.zip && tar -xf python.zip && start /wait python.exe --config config.json /quiet InstallAllUsers=1 PrependPath=1
+```
+
+**Install using PowerShell without config file:**
 ```powershell-interactive
-powershell.exe -command "
-# Rename blobs
-Rename-Item -Path '.\MyVMApp' -NewName 'app.zip'
-# Rename-Item -Path '.\MyVMApp-config' -NewName 'app-config.json'
-
-# Unzip application package
-Expand-Archive -Path '.\app.zip' -DestinationPath '.\app'
-
-# Set execution policy
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
-
-# Install the .exe application (example: setup.exe)
-Start-Process -FilePath '.\app\setup.exe' -Wait
-
-# Install the .exe application with config (example: setup.exe with config)
-# Start-Process -FilePath '.\app\setup.exe' -ArgumentList '/config app-config.json' -Wait
-
-# Install PowerShell script (example: setup.ps1 with config)
-# powershell.exe -ExecutionPolicy Bypass -File '.\app\setup.ps1' -ConfigFile 'app-config.json'
-
-# Install .msi application (example: setup.msi without config)
-# Start-Process -FilePath 'msiexec.exe' -ArgumentList '/i .\app\setup.msi' -Wait
-"
+powershell.exe -ExecutionPolicy Bypass -NoProfile -Command "Rename-Item VMApp1 python.zip; Expand-Archive -Path '.\python.zip' -DestinationPath '.'; Start-Process -FilePath '.\python.exe' -ArgumentList '/quiet','InstallAllUsers=1','PrependPath=1' -Wait -NoNewWindow"
 ```
 
-Script as string:
-```code
-Without config: 
-"powershell.exe -command \"Rename-Item -Path '.\\MyVMApp' -NewName 'app.zip'; Expand-Archive -Path '.\\app.zip' -DestinationPath '.\\app'; Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force; Start-Process -FilePath '.\\app\\setup.exe' -Wait; # powershell.exe -ExecutionPolicy Bypass -File '.\\app\\setup.ps1' -ConfigFile 'app-config.json'; # Start-Process -FilePath 'msiexec.exe' -ArgumentList '/i .\\app\\setup.msi' -Wait\""
-
-With config: 
-"powershell.exe -command \"Rename-Item -Path '.\\MyVMApp' -NewName 'app.zip'; Rename-Item -Path '.\\MyVMApp-config' -NewName 'app-config.json'; Expand-Archive -Path '.\\app.zip' -DestinationPath '.\\app'; Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force; Start-Process -FilePath '.\\app\\setup.exe' -ArgumentList '/config app-config.json' -Wait; # powershell.exe -ExecutionPolicy Bypass -File '.\\app\\setup.ps1' -ConfigFile 'app-config.json'; # Start-Process -FilePath 'msiexec.exe' -ArgumentList '/i .\\app\\setup.msi' -Wait\""
+**Install using PowerShell with config file:**
+```powershell-interactive
+powershell.exe -ExecutionPolicy Bypass -NoProfile -Command "Rename-Item VMApp1 python.zip; Rename-Item VMApp1-config config.json Expand-Archive -Path '.\python.zip' -DestinationPath '.'; Start-Process -FilePath '.\python.exe' -ArgumentList '--config','config.json','/quiet','InstallAllUsers=1','PrependPath=1' -Wait -NoNewWindow"
+```
+If config file is included in the .zip package
+```powershell-interactive
+powershell.exe -ExecutionPolicy Bypass -NoProfile -Command "Rename-Item VMApp1 python.zip; Expand-Archive -Path '.\python.zip' -DestinationPath '.'; Start-Process -FilePath '.\python.exe' -ArgumentList '--config','config.json','/quiet','InstallAllUsers=1','PrependPath=1' -Wait -NoNewWindow"
 ```
 
 #### [.EXE](#tab/EXE)
+Replace `VMApp1` with your VM App name in application package (VMApp1) and configuration file (VMApp1-config).
+Replace `python.exe` with desired app name. 
+Replace `config.json` with your desired config name.
+
+**Install using CMD without config file:**
+
+Replace VMApp1 with your VM App name and python.exe with desired name for your executable. 
 ```cli-interactive
-:: Rename blobs
-rename MyVMApp app.exe
-:: rename MyVMApp-config app-config.json
-
-:: Run the installer
-app.exe
-
-:: Run the installer with config
-:: app.exe /config app-config.json
-```
-Script as string:
-```code
-Without config: 
-"rename MyVMApp app.exe\r\napp.exe"
-
-With config: 
-"rename MyVMApp app.exe\r\nrename MyVMApp-config app-config.json\r\napp.exe /config app-config.json"
+ren VMApp1 python.exe && start /wait python.exe /quiet InstallAllUsers=1 PrependPath=1
 ```
 
+**Install using CMD with config file:**
+```cli-interactive
+ren VMApp1 python.exe && ren VMApp1-config config.json && start /wait python.exe --config config.json /quiet InstallAllUsers=1 PrependPath=1
+```
+
+**Install using PowerShell without config file:**
 ```powershell-interactive
-powershell.exe -command "
-# Rename blobs
-Rename-Item -Path '.\MyVMApp' -NewName 'app.exe'
-# Rename-Item -Path '.\MyVMApp-config' -NewName 'app-config.json'
-
-# Set execution policy
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
-
-# Install the .exe application (example: setup.exe)
-Start-Process -FilePath '.\app.exe' -Wait
-
-# Install the .exe application with config (example: setup.exe with config)
-Start-Process -FilePath '.\app.exe' -ArgumentList '/config app-config.json' -Wait
-"
+powershell.exe -ExecutionPolicy Bypass -NoProfile -Command "Rename-Item VMApp1 python.exe; Start-Process -FilePath '.\python.exe' -ArgumentList '/quiet','InstallAllUsers=1','PrependPath=1' -Wait -NoNewWindow"
 ```
-Script as string: 
-```code
-Without config:
-"powershell.exe -command \"Rename-Item -Path '.\\MyVMApp' -NewName 'app.exe'; Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force; Start-Process -FilePath '.\\app.exe' -Wait\""
 
-With config: 
-"powershell.exe -command \"Rename-Item -Path '.\\MyVMApp' -NewName 'app.exe'; Rename-Item -Path '.\\MyVMApp-config' -NewName 'app-config.json'; Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force; Start-Process -FilePath '.\\app.exe' -ArgumentList '/config app-config.json' -Wait\""
-
+**Install using PowerShell with config file:**
+```powershell-interactive
+powershell.exe -ExecutionPolicy Bypass -NoProfile -Command "Rename-Item VMApp1 python.exe; Rename-Item VMApp1-config config.json; Start-Process -FilePath '.\python.exe' -ArgumentList '--config','config.json','/quiet','InstallAllUsers=1','PrependPath=1' -Wait -NoNewWindow"
 ```
 
 #### [.MSI](#tab/MSI)
+Replace `VMApp1` with your VM App name in application package (VMApp1) and configuration file (VMApp1-config).
+Replace `app.deb` with desired app name. 
+Replace `config.json` with your desired config name.
+
+**Install using CMD without config file:**
+
+Replace VMApp1 with your VM App name and python.msi with desired name for your MSI file. 
 ```cli-interactive
-:: Rename blobs
-rename MyVMApp app.msi
-:: rename MyVMApp-config app-config.json
-
-:: install .msi application (example: setup.exe)
-msiexec /i app.msi
-
-:: Install .msi application with config (example: setup.exe with config.json)
-:: msiexec /i app.msi CONFIGFILE=config.json
-
-```
-Script as string: 
-```code
-Without config:
-"rename MyVMApp app.msi\r\nmsiexec /i app.msi"
-
-With config: 
-"rename MyVMApp app.msi\r\nrename MyVMApp-config app-config.json\r\nmsiexec /i app.msi CONFIGFILE=app-config.json"
+ren VMApp1 python.msi && msiexec /i python.msi /quiet InstallAllUsers=1 PrependPath=1
 ```
 
+**Install using CMD with config file:**
+```cli-interactive
+ren VMApp1 python.msi && ren VMApp1-config config.json && msiexec /i python.msi CONFIGFILE=config.json /quiet InstallAllUsers=1 PrependPath=1
+```
+
+**Install using PowerShell without config file:**
 ```powershell-interactive
-powershell.exe -command "
-# Rename blobs
-Rename-Item -Path '.\MyVMApp' -NewName 'app.zip'
-# Rename-Item -Path '.\MyVMApp-config' -NewName 'app-config.json'
-
-# Set execution policy
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
-
-# Install .msi application (example: setup.msi)
-Start-Process -FilePath 'msiexec.exe' -ArgumentList '/i .\app\setup.msi' -Wait
-
-# Install .msi application with config (example: setup.msi with config.json)
-# Start-Process -FilePath 'msiexec.exe' -ArgumentList '/i .\app\setup.msi CONFIGFILE=.\app\config.json' -Wait
-"
+powershell.exe -ExecutionPolicy Bypass -NoProfile -Command "Rename-Item VMApp1 python.msi; Start-Process -FilePath 'msiexec.exe' -ArgumentList '/i','.\python.msi','/quiet','InstallAllUsers=1','PrependPath=1' -Wait -NoNewWindow"
 ```
-Script as string: 
-```code
-Without config: 
-"powershell.exe -command \"Rename-Item -Path '.\\MyVMApp' -NewName 'app.zip'; Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force; Start-Process -FilePath 'msiexec.exe' -ArgumentList '/i .\\app\\setup.msi' -Wait\""
 
-With config: 
-"powershell.exe -command \"Rename-Item -Path '.\\MyVMApp' -NewName 'app.zip'; Rename-Item -Path '.\\MyVMApp-config' -NewName 'app-config.json'; Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force; Start-Process -FilePath 'msiexec.exe' -ArgumentList '/i .\\app\\setup.msi CONFIGFILE=.\\app\\app-config.json' -Wait\""
+**Install using PowerShell with config file:**
+```powershell-interactive
+powershell.exe -ExecutionPolicy Bypass -NoProfile -Command "Rename-Item VMApp1 python.msi; Rename-Item VMApp1-config config.json; Start-Process -FilePath 'msiexec.exe' -ArgumentList '/i','.\python.msi','CONFIGFILE=config.json','/quiet','InstallAllUsers=1','PrependPath=1' -Wait -NoNewWindow"
 ```
 
 #### [.DEB](#tab/DEB)
+Replace `VMApp1` with your VM App name in application package (VMApp1) and configuration file (VMApp1-config).
+Replace `app.deb` with desired app name. 
+Replace `config.cfg` with your desired config name.
+
+**Install using bash without config file:**
 ```bash
-#!/bin/bash
-
-# Rename blobs
-mv MyVMApp app.deb
-
-# Set permissions
-chmod -R +x app.deb
-chmod -R +r app.deb
-
-# Install .deb package (example: install.deb)
-sudo dpkg -i ./app.deb
+mv VMApp1 app.deb && chmod +xr app.deb && sudo DEBIAN_FRONTEND=noninteractive dpkg -i ./app.deb
 ```
-Script as string: 
-```code
-"#!/bin/bash\nmv MyVMApp app.deb\nchmod -R +x app.deb\nchmod -R +r app.deb\nsudo dpkg -i ./app.deb"
+
+**Install using bash with config file:**
+```bash
+mv VMApp1 app.deb && mv VMApp1-config config.cfg  && chmod +xr app.deb && sudo debconf-set-selections < config.cfg && sudo DEBIAN_FRONTEND=noninteractive dpkg -i ./app.deb
 ```
+
 
 #### [.RPM](#tab/RPM)
+Replace `VMApp1` with your VM App name in application package (VMApp1) and configuration file (VMApp1-config).
+Replace `app.rpm` with desired app name. 
+Replace `config.cfg` with your desired config name.
+
+**Install using bash without config file:**
 ```bash
-#!/bin/bash
-
-# Rename blobs
-mv MyVMApp app.rpm
-
-# Set permissions
-chmod -R +x app.rpm
-chmod -R +r app.rpm
-
-# Install .rpm package (example: install.rpm)
-sudo rpm -ivh ./app.rpm
+mv VMApp1 app.rpm && chmod +xr app.rpm && sudo rpm -ivh ./app.rpm
 ```
-Script as string: 
-```code
-"#!/bin/bash\nmv MyVMApp app.rpm\nchmod -R +x app.rpm\nchmod -R +r app.rpm\nsudo rpm -ivh ./app.rpm"
+
+**Install using bash with config file:**
+```bash
+mv VMApp1 app.rpm && mv VMApp1-config config.cfg && chmod +xr app.rpm && sudo rpm -ivh ./app.rpm --rcfile config.cfg
 ```
 
 #### [.SH](#tab/SH)
+Replace `VMApp1` with your VM App name in application package (VMApp1) and configuration file (VMApp1-config).
+Replace `install.sh` with desired script name. 
+Replace `config.yaml` with your desired config name.
+
+**Install using bash without config file:**
 ```bash
-#!/bin/bash
-
-# Rename blobs
-mv MyVMApp app.sh
-# mv MyVMApp-config app-config.yaml
-
-# Set permissions
-chmod -R +x app.sh
-chmod -R +r app.sh
-
-# Install the script (example: install.sh)
-bash ./app.sh
-
-# Install the script (example: install.sh with config)
-# bash ./app.sh --config app-config.yaml
+mv VMApp1 install.sh && chmod +xr install.sh && bash ./install.sh
 ```
-Script as string: 
-```code
-Without config: 
-"#!/bin/bash\nmv MyVMApp app.sh\nchmod -R +x app.sh\nchmod -R +r app.sh\nbash ./app.sh"
 
-With config: 
-"#!/bin/bash\nmv MyVMApp app.sh\nmv MyVMApp-config app-config.yaml\nchmod -R +x app.sh\nchmod -R +r app.sh\nbash ./app.sh --config app-config.yaml"
+**Install using bash with config file:**
+```bash
+mv VMApp1 install.sh && mv VMApp1-config config.yaml && chmod +xr install.sh && bash ./install.sh --config config.yaml
 ```
 
 #### [.PS1](#tab/PS)
+Replace `VMApp1` with your VM App name in application package (VMApp1) and configuration file (VMApp1-config).
+Replace `install.ps1` with desired script name. 
+Replace `config.json` with your desired config name.
+
+**Install using PowerShell without config file:**
 ```powershell-interactive
-powershell.exe -command "
-# Rename blobs
-Rename-Item -Path '.\MyVMApp' -NewName 'app.ps1'
-# Rename-Item -Path '.\MyVMApp-config' -NewName 'app-config.json'
-
-# Set execution policy
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
-
-# Install PowerShell script (example: setup.ps1)
-powershell.exe -ExecutionPolicy Bypass -File '.\app.ps1'
-
-# Install PowerShell script (example: setup.ps1 with config)
-# powershell.exe -ExecutionPolicy Bypass -File '.\app.ps1' -ConfigFile 'app-config.json'
-"
-```
-Script as string: 
-```code
-Without config: 
-"powershell.exe -command \"Rename-Item -Path '.\\MyVMApp' -NewName 'app.ps1'; Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force; powershell.exe -ExecutionPolicy Bypass -File '.\\app.ps1'\""
-
-With config: 
-"powershell.exe -command \"Rename-Item -Path '.\\MyVMApp' -NewName 'app.ps1'; Rename-Item -Path '.\\MyVMApp-config' -NewName 'app-config.json'; Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force; powershell.exe -ExecutionPolicy Bypass -File '.\\app.ps1' -ConfigFile 'app-config.json'\""
+powershell.exe -ExecutionPolicy Bypass -NoProfile -Command "Rename-Item -Path '.\VMApp1' -NewName 'install.ps1'; .\install.ps1"
 ```
 
+**Install using PowerShell with config file:**
+```powershell-interactive
+powershell.exe -ExecutionPolicy Bypass -NoProfile -Command "Rename-Item -Path '.\VMApp1' -NewName 'install.ps1'; Rename-Item -Path '.\VMApp1-config' -NewName 'config.json'; .\install.ps1 -ConfigFile 'config.json'"
+```
 ---
 
 #### 4. Create the delete script
 
-The delete script enables you to define the delete operations for the application. The delete script is provided as a string and has a maximum character limit of 4,096 characters. Write the delete commands assuming the application package and the configuration file are in the current directory.
+The delete script enables you to define the delete operations for the application. The delete script is provided as a string and has a maximum character limit of 4,096 characters. Write the delete commands assuming the application package and the configuration file are in the current directory. During uninstall operation, Azure runs the uninstall script and then deletes all files from the repository. 
 
 There may be few operations that delete script must perform. 
 
 - **Uninstall application:**
 	Properly uninstall the application from the VM. For example, 
-  - CMD on Windows: `"./uninstall.exe"`
-  - PowerShell on Windows: `"Start-Process -FilePath \".\\uninstall.exe\" -Wait"`
-  - CMD on Linux: `"sudo ./uninstall.sh"` OR `"sudo apt remove app"` 
+  - CMD on Windows: 
+    ```cli-interactive
+    start /wait uninstall.exe /quiet
+    ```
+    ```cli-interactive
+    start /wait python.exe /uninstall /quiet
+    ```
+    ```cli-interactive
+    start /wait msiexec /x app.msi /quiet /qn
+    ```
+  - PowerShell on Windows:
+    ```powershell-interactive
+    powershell.exe -ExecutionPolicy Bypass -NoProfile -Command "Start-Process -FilePath '.\uninstall.exe' -ArgumentList '/quiet' -Wait -NoNewWindow"
+    ```
+    ```powershell-interactive
+    powershell.exe -ExecutionPolicy Bypass -NoProfile -Command "Start-Process -FilePath '.\python.exe' -ArgumentList '/uninstall','/quiet' -Wait -NoNewWindow"
+    ```
+    ```powershell-interactive
+    powershell.exe -ExecutionPolicy Bypass -NoProfile -Command "Start-Process -FilePath 'msiexec.exe' -ArgumentList '/x','.\app.msi','/quiet','/qn' -Wait -NoNewWindow"
+    ```
+  - Bash on Linux: 
+    ```bash
+    sudo ./uninstall.sh
+    ```
+    ```bash
+    sudo apt remove -y app
+    ```
+    ```bash
+    sudo rpm -e app
+    ```
 
 - **Remove residual files:**
-   	Delete residual applications files from the VM. For example, 
-    - CMD on Windows: `"del *.* & for /d %i in (*) do rmdir /s /q \"%i\""`
-    - PowerShell on Windows: `"Remove-Item -Path * -Recurse -Force"`
-    - CMD on Linux: `"rm -rf ./*"`
+   	If the application installation creates files in other parts of the file system, remove those files.
 
 
 ## Upload the application files to Azure storage account
@@ -425,22 +351,96 @@ if ($remainder -ne 0){
     $bytesToPad = [System.Byte[]]::CreateInstance([System.Byte], $difference)
 
     Add-Content -Path $inputFile -Value $bytesToPad -Encoding Byte
-    }
+}
 ```
 ----
 
-#### 2. **Generate SAS URL for the application package and the configuration file** 
-Once the application and configuration files are uploaded to the storage account, you need to [generate a SAS URL](/azure/storage/common/storage-sas-overview#get-started-with-sas) with read privilege for these blobs. These SAS URLs are then provided as reference while creating the VM Application version resource. For Storage accounts enabled for anonymous access, blob URL can also be used. However, it's recommended to use SAS URL for improved security. You can use [Storage Explorer](/azure/vs-azure-tools-storage-explorer-blobs) to quickly create a SAS URI if you don't already have one.
+#### 2. **Generate SAS or Blob URL for the application package and the configuration file** 
+Once the application and configuration files are uploaded to the storage account, you need to generate a [SAS URL](/azure/storage/common/storage-sas-overview#get-started-with-sas) or Blob URL with read privilege for these blobs. These URLs are then provided as reference while creating the VM Application version resource. 
 
-#### [CLI](#tab/cli2)
-```shell-session
+Use blob URL: 
+- If [managed identity is assigned to Azure Compute Gallery](vm-applications-publish-with-managed-identity.md). This is the recommended method since its secure.
+- If storage accounts is enabled for anonymous access. Use this method only for testing since its insecure. 
 
+Use SAS URL:
+- If storage account is disabled for anonymous access and managed identity isn't assigned to Azure Compute Gallery. 
+
+Blob URL = https://${STORAGE_ACCOUNT}.blob.core.windows.net/${CONTAINER_NAME}/${BLOB_NAME}
+SAS URL  = https://${STORAGE_ACCOUNT}.blob.core.windows.net/${CONTAINER_NAME}/${BLOB_NAME}?${SAS_TOKEN}
+
+#### [CLI using Blob URL](#tab/cli21)
+
+Use the following script if [managed identity is assigned to Azure Compute Gallery](vm-applications-publish-with-managed-identity.md). This approach uses blob URLs without SAS tokens.
+
+```azurecli-interactive
 #!/bin/bash
+set -euo pipefail
 
 # === CONFIGURATION ===
 STORAGE_ACCOUNT="yourstorageaccount"
 CONTAINER_NAME="yourcontainer"
-LOCAL_FOLDER="./your-local-folder"
+APP_FILE="./your-app-file"           # Path to your application payload file        
+CONFIG_FILE="./your-config-file"     # Path to your configuration file (optional)   
+
+# === LOGIN (if not already logged in) ===
+az login --only-show-errors
+
+# === CREATE CONTAINER IF NOT EXISTS ===
+az storage container create \
+  --name "$CONTAINER_NAME" \
+  --account-name "$STORAGE_ACCOUNT" \
+  --auth-mode login \
+  --only-show-errors
+
+# === UPLOAD APPLICATION FILE ===
+APP_BLOB_NAME=$(basename "$APP_FILE")
+az storage blob upload \
+  --account-name "$STORAGE_ACCOUNT" \
+  --container-name "$CONTAINER_NAME" \
+  --name "$APP_BLOB_NAME" \
+  --file "$APP_FILE" \
+  --auth-mode login \
+  --overwrite \
+  --only-show-errors
+
+# === UPLOAD CONFIG FILE (optional) ===
+if [ -n "$CONFIG_FILE" ] && [ -f "$CONFIG_FILE" ]; then
+  CONFIG_BLOB_NAME=$(basename "$CONFIG_FILE")
+  az storage blob upload \
+    --account-name "$STORAGE_ACCOUNT" \
+    --container-name "$CONTAINER_NAME" \
+    --name "$CONFIG_BLOB_NAME" \
+    --file "$CONFIG_FILE" \
+    --auth-mode login \
+    --overwrite \
+    --only-show-errors
+fi
+
+# === GENERATE BLOB URLs ===
+echo "Generating Blob URLs..."
+
+APP_BLOB_URL="https://${STORAGE_ACCOUNT}.blob.core.windows.net/${CONTAINER_NAME}/${APP_BLOB_NAME}"
+echo "Application file: $APP_BLOB_URL"
+
+if [ -n "$CONFIG_FILE" ] && [ -f "$CONFIG_FILE" ]; then
+  CONFIG_BLOB_URL="https://${STORAGE_ACCOUNT}.blob.core.windows.net/${CONTAINER_NAME}/${CONFIG_BLOB_NAME}"
+  echo "Configuration file: $CONFIG_BLOB_URL"
+fi
+```
+
+#### [CLI using SAS URL](#tab/cli22)
+
+Use the following script if storage account has anonymous access disabled and managed identity isn't assigned to Azure Compute Gallery. This approach generates time-limited SAS tokens.
+
+```azurecli-interactive
+#!/bin/bash
+set -euo pipefail
+
+# === CONFIGURATION ===
+STORAGE_ACCOUNT="yourstorageaccount"
+CONTAINER_NAME="yourcontainer"
+APP_FILE="./your-app-file"           # Path to your application payload file
+CONFIG_FILE="./your-config-file"     # Path to your configuration file (optional)
 SAS_EXPIRY_HOURS=24
 
 # === LOGIN (if not already logged in) ===
@@ -448,139 +448,267 @@ az login --only-show-errors
 
 # === CREATE CONTAINER IF NOT EXISTS ===
 az storage container create \
-  --name $CONTAINER_NAME \
-  --account-name $STORAGE_ACCOUNT \
-  --auth-mode login \
-  --only-show-errors
+  --name "$CONTAINER_NAME" \
+  --account-name "$STORAGE_ACCOUNT" \
+  --auth-mode login \
+  --only-show-errors
 
-# === UPLOAD FILES ===
-az storage blob upload-batch \
-  --account-name $STORAGE_ACCOUNT \
-  --destination $CONTAINER_NAME \
-  --source $LOCAL_FOLDER \
-  --auth-mode login \
-  --only-show-errors
+# === UPLOAD APPLICATION FILE ===
+APP_BLOB_NAME=$(basename "$APP_FILE")
+az storage blob upload \
+  --account-name "$STORAGE_ACCOUNT" \
+  --container-name "$CONTAINER_NAME" \
+  --name "$APP_BLOB_NAME" \
+  --file "$APP_FILE" \
+  --auth-mode login \
+  --overwrite \
+  --only-show-errors
+
+# === UPLOAD CONFIG FILE (optional) ===
+if [ -n "$CONFIG_FILE" ] && [ -f "$CONFIG_FILE" ]; then
+  CONFIG_BLOB_NAME=$(basename "$CONFIG_FILE")
+  az storage blob upload \
+    --account-name "$STORAGE_ACCOUNT" \
+    --container-name "$CONTAINER_NAME" \
+    --name "$CONFIG_BLOB_NAME" \
+    --file "$CONFIG_FILE" \
+    --auth-mode login \
+    --overwrite \
+    --only-show-errors
+fi
 
 # === GENERATE SAS URLs ===
+# Note: Using --auth-mode login --as-user requires "Storage Blob Delegator" role at the storage account scope
+
 echo "Generating SAS URLs..."
-FILES=$(find $LOCAL_FOLDER -type f)
+EXPIRY=$(date -u -d "+$SAS_EXPIRY_HOURS hours" '+%Y-%m-%dT%H:%MZ')
 
-for FILE in $FILES; do
-  BLOB_NAME="${FILE#$LOCAL_FOLDER/}"
-  EXPIRY=$(date -u -d "+$SAS_EXPIRY_HOURS hours" '+%Y-%m-%dT%H:%MZ')
+APP_SAS_TOKEN=$(az storage blob generate-sas \
+  --account-name "$STORAGE_ACCOUNT" \
+  --container-name "$CONTAINER_NAME" \
+  --name "$APP_BLOB_NAME" \
+  --permissions r \
+  --expiry "$EXPIRY" \
+  --auth-mode login \
+  --as-user \
+  -o tsv)
 
-  SAS_TOKEN=$(az storage blob generate-sas \
-    --account-name $STORAGE_ACCOUNT \
-    --container-name $CONTAINER_NAME \
-    --name "$BLOB_NAME" \
-    --permissions r \
-    --expiry $EXPIRY \
-    --auth-mode login --as-user \
-    -o tsv)
+APP_SAS_URL="https://${STORAGE_ACCOUNT}.blob.core.windows.net/${CONTAINER_NAME}/${APP_BLOB_NAME}?${APP_SAS_TOKEN}"
+echo "Application file: $APP_SAS_URL"
 
-  SAS_URL="https://${STORAGE_ACCOUNT}.blob.core.windows.net/${CONTAINER_NAME}/${BLOB_NAME}?${SAS_TOKEN}"
-  echo "$BLOB_NAME: $SAS_URL"
-done
+if [ -n "$CONFIG_FILE" ] && [ -f "$CONFIG_FILE" ]; then
+  CONFIG_SAS_TOKEN=$(az storage blob generate-sas \
+    --account-name "$STORAGE_ACCOUNT" \
+    --container-name "$CONTAINER_NAME" \
+    --name "$CONFIG_BLOB_NAME" \
+    --permissions r \
+    --expiry "$EXPIRY" \
+    --auth-mode login \
+    --as-user \ 
+    -o tsv)
+
+  CONFIG_SAS_URL="https://${STORAGE_ACCOUNT}.blob.core.windows.net/${CONTAINER_NAME}/${CONFIG_BLOB_NAME}?${CONFIG_SAS_TOKEN}"
+  echo "Configuration file: $CONFIG_SAS_URL"
+fi
 ```
 
-#### [PS](#tab/ps2)
-```powershell-interactive
+#### [PowerShell using Blob URL](#tab/ps21)
+
+Use the following script if [managed identity is assigned to Azure Compute Gallery](vm-applications-publish-with-managed-identity.md). This approach uses blob URLs without SAS tokens.
+
+```azurepowershell-interactive
 # === CONFIGURATION ===
-$storageAccount = "yourstorageaccount"
+$subscriptionId = "your-subscription-id"
+$resourceGroupName = "yourresourcegroup"
+$storageAccountName = "yourstorageaccount"
 $containerName = "yourcontainer"
-$localFolder = "C:\path\to\your\local\folder"
+$appFile = "C:\path\to\your-app-file"           # Path to your application payload file
+$configFile = "C:\path\to\your-config-file"     # Path to your configuration file (optional, set to $null if not needed)
 $sasExpiryHours = 24
 
 # === LOGIN (if not already logged in) ===
-az login | Out-Null
+Connect-AzAccount -Subscription $subscriptionId
+
+# === GET STORAGE CONTEXT ===
+$storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
+$context = $storageAccount.Context
 
 # === CREATE CONTAINER IF NOT EXISTS ===
-az storage container create `
-    --name $containerName `
-    --account-name $storageAccount `
-    --auth-mode login `
-    --only-show-errors | Out-Null
+$container = Get-AzStorageContainer -Name $containerName -Context $context -ErrorAction SilentlyContinue
+if (-not $container) {
+    New-AzStorageContainer -Name $containerName -Context $context -Permission Off
+}
 
-# === UPLOAD FILES ===
-az storage blob upload-batch `
-    --account-name $storageAccount `
-    --destination $containerName `
-    --source $localFolder `
-    --auth-mode login `
-    --only-show-errors
+# === UPLOAD APPLICATION FILE ===
+$appBlobName = Split-Path -Leaf $appFile
+Set-AzStorageBlobContent `
+    -File $appFile `
+    -Container $containerName `
+    -Blob $appBlobName `
+    -Context $context `
+    -Force
+
+# === UPLOAD CONFIG FILE (optional) ===
+if ($configFile -and (Test-Path $configFile)) {
+    $configBlobName = Split-Path -Leaf $configFile
+    Set-AzStorageBlobContent `
+        -File $configFile `
+        -Container $containerName `
+        -Blob $configBlobName `
+        -Context $context `
+        -Force
+}
+
+# === GENERATE BLOB URLs ===
+Write-Host "`nGenerating Blob URLs..."
+
+$appBlobUrl = "https://$storageAccountName.blob.core.windows.net/$containerName/$appBlobName"
+Write-Host "Application file: $appBlobUrl"
+
+if ($configFile -and (Test-Path $configFile)) {
+  $configBlobUrl = "https://$storageAccountName.blob.core.windows.net/$containerName/$configBlobName"
+  Write-Host "Configuration file: $configBlobUrl"
+}
+```
+
+#### [PowerShell using SAS URL](#tab/ps22)
+
+Use the following script if storage account has anonymous access disabled and [managed identity isn't assigned to Azure Compute Gallery](vm-applications-publish-with-managed-identity.md). This approach generates time-limited SAS tokens.
+
+```azurepowershell-interactive
+# === CONFIGURATION ===
+$subscriptionId = "your-subscription-id"
+$resourceGroupName = "yourresourcegroup"
+$storageAccountName = "yourstorageaccount"
+$containerName = "yourcontainer"
+$appFile = "C:\path\to\your-app-file"           # Path to your application payload file
+$configFile = "C:\path\to\your-config-file"     # Path to your configuration file (optional, set to $null if not needed)
+$sasExpiryHours = 24
+
+# === LOGIN (if not already logged in) ===
+Connect-AzAccount -Subscription $subscriptionId
+
+# === GET STORAGE CONTEXT ===
+$storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
+$context = $storageAccount.Context
+
+# === CREATE CONTAINER IF NOT EXISTS ===
+$container = Get-AzStorageContainer -Name $containerName -Context $context -ErrorAction SilentlyContinue
+if (-not $container) {
+    New-AzStorageContainer -Name $containerName -Context $context -Permission Off
+}
+
+# === UPLOAD APPLICATION FILE ===
+$appBlobName = Split-Path -Leaf $appFile
+Set-AzStorageBlobContent `
+    -File $appFile `
+    -Container $containerName `
+    -Blob $appBlobName `
+    -Context $context `
+    -Force
+
+# === UPLOAD CONFIG FILE (optional) ===
+if ($configFile -and (Test-Path $configFile)) {
+    $configBlobName = Split-Path -Leaf $configFile
+    Set-AzStorageBlobContent `
+        -File $configFile `
+        -Container $containerName `
+        -Blob $configBlobName `
+        -Context $context `
+        -Force
+}
 
 # === GENERATE SAS URLs ===
 Write-Host "`nGenerating SAS URLs..."
-$files = Get-ChildItem -Recurse -File -Path $localFolder
+$expiryTime = (Get-Date).AddHours($sasExpiryHours)
 
-foreach ($file in $files) {
-    $relativePath = $file.FullName.Substring($localFolder.Length + 1).Replace("\", "/")
-    $expiry = (Get-Date).ToUniversalTime().AddHours($sasExpiryHours).ToString("yyyy-MM-ddTHH:mmZ")
+$appSasToken = New-AzStorageBlobSASToken `
+    -Container $containerName `
+    -Blob $appBlobName `
+    -Permission r `
+    -ExpiryTime $expiryTime `
+    -Context $context
 
-    $sasToken = az storage blob generate-sas `
-        --account-name $storageAccount `
-        --container-name $containerName `
-        --name $relativePath `
-        --permissions r `
-        --expiry $expiry `
-        --auth-mode login --as-user`
-        -o tsv
+$appSasUrl = "https://$storageAccountName.blob.core.windows.net/$containerName/$appBlobName$appSasToken"
+Write-Host "Application file: $appSasUrl"
 
-    $sasUrl = "https://$storageAccount.blob.core.windows.net/$containerName/$relativePath`?$sasToken"
-    Write-Host "$relativePath:`n$sasUrl`n"
+if ($configFile -and (Test-Path $configFile)) {
+    $configSasToken = New-AzStorageBlobSASToken `
+        -Container $containerName `
+        -Blob $configBlobName `
+        -Permission r `
+        -ExpiryTime $expiryTime `
+        -Context $context
+
+    $configSasUrl = "https://$storageAccountName.blob.core.windows.net/$containerName/$configBlobName$configSasToken"
+    Write-Host "Configuration file: $configSasUrl"
 }
 ```
 
 #### [Portal](#tab/portal2)
-[Upload application package and configuration files to Azure Storage Account using Portal](/azure/storage/blobs/storage-quickstart-blobs-portal)
+
+1. In the [Azure portal](https://portal.azure.com), navigate to your storage account and select **Containers**.
+1. Select your container (or create one), then select **Upload**.
+1. Browse to your application package and configuration files, select them, and select **Upload**.
+1. After upload completes, select each blob and copy the **URL**. Generate SAS tokens if [managed identity is not attached to compute gallery](vm-applications-publish-with-managed-identity.md) or anonymous access is disabled.
+
+For detailed steps, see [Upload blobs to Azure Storage using the portal](/azure/storage/blobs/storage-quickstart-blobs-portal).
 
 ---
+
 ## Create the VM Application
-To create the VM Application, first create the VM Application resource, which describes the application. Then create a VM Application Version resource within it, which contains the VM application payload and scripts to install, update, and delete the application. Payload is supplied using SAS URL to the blob container in Azure Storage Account. 
+To create the VM Application, first create the **VM Application** resource, which describes the application. Then create **VM Application Version** resource within it, which contains the VM application payload and scripts to install, update, and delete the application. Payload is supplied using Blob URL or SAS URL to the blob container in Azure Storage Account. 
 
 Refer [schema for VM Application and VM Application version resource](vm-applications.md#create-vm-applications--vm-applications-version-resource) to learn more about each property. 
 
 #### [REST](#tab/rest3)
 
-Create the VM Application definition using the ['create gallery application API'](/rest/api/compute/gallery-applications)
+**Create the VM Application definition** using the ['create gallery application API'](/rest/api/compute/gallery-applications)
+
+- We're creating a VM application definition named *myApp*.
 
 ```rest
 PUT
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{applicationName}?api-version=2024-03-03
 
 {
-    "location": "West US",
-    "name": "myApp",
-    "properties": {
-        "supportedOSType": "Windows | Linux",
-        "endOfLifeDate": "2020-01-01",
-	"description": "Description of the App",
-	"eula": "Link to End-User License Agreement (EULA)",
-	"privacyStatementUri": "Link to privacy statement for the application",
-	"releaseNoteUri": "Link to release notes for the application"
-    }
+  "location": "West US",
+  "name": "myApp",
+  "properties": {
+    "supportedOSType": "Windows | Linux",
+    "endOfLifeDate": "2030-01-01",
+	  "description": "Description of the App",
+	  "eula": "Link to End-User License Agreement (EULA)",
+	  "privacyStatementUri": "Link to privacy statement for the application",
+	  "releaseNoteUri": "Link to release notes for the application"
+  }
 }
 
 ```
 
-Create a VM application version using the ['create gallery application version API'](/rest/api/compute/gallery-applications).
+**Create a VM application version** using the ['create gallery application version API'](/rest/api/compute/gallery-applications).
+
+- Next we're creating version within the application definition. It takes blob/SAS URL created in previous step to pull application and configuration blob from storage account.
+- Update mediaLink, install and remove properties for your application.
+- Update defaultConfigurationLink to optionally pass configuration file. 
+- Update packageFileName and configFileName enabling Azure to download files with this name. This eliminates the need to rename downloaded files in install script. 
 
 ```rest
 PUT
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{applicationName}/versions/{versionName}?api-version=2024-03-03
 
 {
-  "location": "$location",
+  "location": "West US",
   "properties": {
     "publishingProfile": {
       "source": {
-        "mediaLink": "$mediaLink",
-        "defaultConfigurationLink": "$configLink"
+        "mediaLink": "Blob or SAS URL of application blob",
+        "defaultConfigurationLink": "Blob or SAS URL of configuration blob. Optional"
       },
       "manageActions": {
-        "install": "$installScriptAsString",
-        "remove": "$removeScriptAsString",
-        "update": "$updateScriptAsString"
+        "install": "Install script for application as string",
+        "remove": "Uninstall script for application as string",
+        "update": "Update script for application as string. Optional "
       },
       "targetRegions": [
         {
@@ -588,20 +716,20 @@ PUT
           "regionalReplicaCount": 1
         },
 	      {
-	        "name": "East US"
+	        "name": "East US. Optional"
 	      }
       ]
-      "endofLifeDate": "datetime",
+      "endofLifeDate": "2030-01-01",
       "replicaCount": 1,
       "excludeFromLatest": false,
-      "storageAccountType": "PremiumV2_LRS | Premium_LRS | Standard_LRS | Standard_ZRS"
+      "storageAccountType": "PremiumV2_LRS | Premium_LRS | Standard_LRS | Standard_ZRS",
       "safetyProfile": {
-	"allowDeletionOfReplicatedLocations": false
-      }
+	      "allowDeletionOfReplicatedLocations": false
+      },
       "settings": {
 	      "scriptBehaviorAfterReboot": "None | Rerun",
-	      "configFileName": "$appConfigFileName",
-	      "packageFileName": "$appPackageFileName"
+	      "configFileName": "Name for downloaded configuration file on the VM",
+	      "packageFileName": "Name for downloaded application file on the VM"
       }
    }
 }
@@ -610,17 +738,17 @@ PUT
 
 #### [CLI](#tab/cli3)
 
-VM applications require [Azure CLI](/cli/azure/install-azure-cli) version 2.30.0 or later.
+**Create the VM application definition** using ['az sig gallery-application create'](/cli/azure/sig/gallery-application#az_sig_gallery_application_create).
 
-Create the VM application definition using ['az sig gallery-application create'](/cli/azure/sig/gallery-application#az_sig_gallery_application_create). In this example, we're creating a VM application definition named *myApp* for Linux-based VMs.
-
+- We're creating a VM application definition named *myApp* for Linux-based VMs. 
+- VM applications require [Azure CLI](/cli/azure/install-azure-cli) version 2.30.0 or later.
 
 ```azurecli-interactive
 application_name="myApp"
 gallery_name="myGallery"
 resource_group="myResourceGroup"
 location="East US"
-os_type="Linux
+os_type="Linux"
 
 az sig gallery-application create \
   --application-name "$application_name" \
@@ -630,16 +758,22 @@ az sig gallery-application create \
   --location "$location"
 ```
 
-Create a VM application version using ['az sig gallery-application version create'](/cli/azure/sig/gallery-application/version#az-sig-gallery-application-version-create). Allowed characters for version are numbers and periods. Numbers must be within the range of a 32-bit integer. Format: *MajorVersion*.*MinorVersion*.*Patch*.
-
-Replace the values of the parameters with your own.
+**Create a VM application version** using ['az sig gallery-application version create'](/cli/azure/sig/gallery-application/version#az-sig-gallery-application-version-create). 
+- Next we're creating version within the application definition. It takes blob/SAS Url created in previous step to pull application blob from storage account.
+- Update package_url, install_command, remove_command for your application.
+- Uncomment and update config_url, and default-configuration-file-link to optionally pass configuration file. 
+- Optionally, update package_file_name and config_file_name. Azure will download files with this name eliminating the need to rename downloaded files in install script. 
 
 ```azurecli-interactive
 version_name="1.0.0"
-packageUrl = "https://<storage account name>.blob.core.windows.net/<container name>/<filename>?<blob sas token>"
-installCommand = "mv myApp app.trz && tar -xzf app.trz && ./install.sh"
-removeCommand = "rm -rf ./*"
-targetRegions='[
+package_url="Blob or SAS URL for application blob"
+package_file_name="Name to give for downloaded application file on VM"
+# config_url="Blob or SAS URL for configuration"
+# config_file_name="Name to give for downloaded config file on VM"
+
+install_command="install script for your application"
+remove_command="uninstall script for you application"
+target_regions='[
   {"name": "South Central US", "regionalReplicaCount": 2},
   {"name": "West Europe", "regionalReplicaCount": 1}
 ]'
@@ -650,17 +784,22 @@ az sig gallery-application version create \
    --gallery-name "$gallery_name" \
    --location "$location" \
    --resource-group "$resource_group" \
-   --package-file-link "$packageUrl" \
-   --install-command "$installCommand" \
-   --remove-command "$removeCommand" \
-   --target-regions "$targetRegions"
+   --package-file-link "$package_url" \
+   --package-file-name "$package_file_name" \
+   --install-command "$install_command" \
+   --remove-command "$remove_command" \
+   --target-regions "$target_regions"
+   # --default-configuration-file-link "$config_url" \
+   # --config-file-name "$config_file_name" \
 
 ```
 
 
 #### [PowerShell](#tab/powershell3)
 
-Create the VM Application definition using ['New-AzGalleryApplication'](/powershell/module/az.compute/new-azgalleryapplication). In this example, we're creating a Linux app named *myApp* in the *myGallery* Azure Compute Gallery and in the *myGallery* resource group. Replace the values for variables as needed.
+**Create the VM Application definition** using ['New-AzGalleryApplication'](/powershell/module/az.compute/new-azgalleryapplication). 
+- We're creating a Linux app named *myApp* in the *myGallery* Azure Compute Gallery and in the *myGallery* resource group. 
+- Replace the values for variables as needed.
 
 ```azurepowershell-interactive
 $galleryName = "myGallery"
@@ -678,22 +817,28 @@ New-AzGalleryApplication `
   -Description $description
 ```
 
-Create a version of your VM Application using ['New-AzGalleryApplicationVersion'](/powershell/module/az.compute/new-azgalleryapplicationversion). Allowed characters for version are numbers and periods. Numbers must be within the range of a 32-bit integer. Format: *MajorVersion*.*MinorVersion*.*Patch*.
-
-In this example, we're creating version number *1.0.0*. Replace the values of the variables as needed.
+**Create a version of your VM Application** using ['New-AzGalleryApplicationVersion'](/powershell/module/az.compute/new-azgalleryapplicationversion). 
+- Next we're creating version within the application definition. It takes blob/SAS Url created in previous step to pull application blob from storage account.
+- Update package_url, install_command, remove_command for your application.
+- Uncomment and update config_url, and default-configuration-file-link to optionally pass configuration file. 
+- Optionally, update package_file_name and config_file_name. Azure will download files with this name eliminating the need to rename downloaded files in install script. 
 
 ```azurepowershell-interactive
 $galleryName = "myGallery"
 $rgName = "myResourceGroup"
-$applicationName = "myApp"
 $location = "East US"
+$applicationName = "myApp"
 $version = "1.0.0"
-$packageUrl = "https://<storage account name>.blob.core.windows.net/<container name>/<filename>?<blob sas token>"
-$installCommand = 'rename myApp app.exe && .\app.exe'
-$removeCommand = 'Remove-Item -Recurse -Force *'
-$targetRegions = @(
-    @{ Name = "South Central US"; ReplicaCount = 2 },
-    @{ Name = "West Europe"; ReplicaCount = 1 }
+
+$package_url = "Blob or SAS URL for application blob in storage account"
+$package_file_name="Name to give for downloaded application file on VM"
+# $config_url = "Blob or SAS URL for configuration blob in storage account"
+# $config_file_name="Name to give for downloaded config file on VM"
+$install_command = "Install script for your application"
+$remove_command = "Uninstall script for your application"
+$target_regions = @(
+  @{ Name = "South Central US"; RegionalReplicaCount = 2 },
+  @{ Name = "West Europe"; RegionalReplicaCount = 1 }
 )
 
 New-AzGalleryApplicationVersion `
@@ -701,11 +846,15 @@ New-AzGalleryApplicationVersion `
    -GalleryName $galleryName `
    -GalleryApplicationName $applicationName `
    -Name $version `
-   -PackageFileLink $packageUrl `
+   -PackageFileLink $package_url `
+   -PackageFileName $package_file_name `
    -Location $location `
-   -Install $installCommand `
-   -Remove $removeCommand `
-   -TargetRegion $targetRegions
+   -Install $install_command `
+   -Remove $remove_command `
+   -TargetRegion $target_regions
+   # -DefaultConfigFileLink $config_url `
+   #  -ConfigFileName $config_file_name `
+
 ```
 
 #### [Portal](#tab/portal3)
@@ -722,7 +871,7 @@ New-AzGalleryApplicationVersion `
     - URI for release notes
 1. When you're done, select **Review + create**.
 1. When validation completes, select **Create** to have the definition deployed.
-1. Once the deployment is complete, select **Go to resource**.
+1. After deployment completes, select **Go to resource**.
 1. On the page for the application, select **Create a VM application version**. The **Create a VM Application Version** page opens.
 1. Enter a version number like 1.0.0.
 1. Select the region where your application packages are uploaded.
@@ -736,6 +885,7 @@ New-AzGalleryApplicationVersion `
 1. When validation shows as passed, select **Create** to deploy your VM application version.
 
 #### [GitHub Actions](#tab/ga3)
+
 ```yaml
 name: Deploy Azure VM Application
 
@@ -745,7 +895,6 @@ on:
       - main
 
 env:
-  # Customize your app and config filenames here
   APP_FILE: app.exe
   CONFIG_FILE: app-config.json
 
@@ -765,11 +914,9 @@ jobs:
       contents: read
 
     steps:
-    # Step 1: Checkout repo
     - name: Checkout
       uses: actions/checkout@v4
 
-    # Step 2: Login to Azure using OIDC
     - name: Azure Login
       uses: azure/login@v2
       with:
@@ -777,7 +924,6 @@ jobs:
         tenant-id: ${{ secrets.AZURE_TENANT_ID }}
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
-    # Step 3: Upload app and config files to Azure Blob
     - name: Upload files to Azure Blob Storage
       run: |
         set -euo pipefail
@@ -789,13 +935,14 @@ jobs:
           --auth-mode login \
           --only-show-errors
 
-	echo "Uploading files..."
+        echo "Uploading files..."
         az storage blob upload \
           --account-name "$AZURE_STORAGE_ACCOUNT" \
           --container-name "$AZURE_CONTAINER_NAME" \
           --name "$APP_FILE" \
           --file "$APP_FILE" \
           --auth-mode login \
+          --overwrite \
           --only-show-errors
 
         az storage blob upload \
@@ -804,34 +951,33 @@ jobs:
           --name "$CONFIG_FILE" \
           --file "$CONFIG_FILE" \
           --auth-mode login \
+          --overwrite \
           --only-show-errors
 
-    # Step 4: Create VM Application (if missing)
     - name: Create VM Application if missing
       run: |
         set -euo pipefail
 
-	echo "Checking for existing VM Application..."
+        echo "Checking for existing VM Application..."
         if ! az sig gallery-application show \
           --resource-group "$AZURE_RESOURCE_GROUP" \
           --gallery-name "$GALLERY_NAME" \
-          --name "$APPLICATION_NAME" &>/dev/null; then
+          --application-name "$APPLICATION_NAME" &>/dev/null; then
 
           az sig gallery-application create \
             --resource-group "$AZURE_RESOURCE_GROUP" \
             --gallery-name "$GALLERY_NAME" \
-            --name "$APPLICATION_NAME" \
+            --application-name "$APPLICATION_NAME" \
             --location "$AZURE_LOCATION" \
             --os-type Windows
         fi
 
-    # Step 5: Generate SAS URLs
     - name: Generate SAS URLs
       id: sas
       run: |
         set -euo pipefail
 
-	echo "Generating SAS URLs valid for 24 hours..."
+        echo "Generating SAS URLs valid for 24 hours..."
         EXPIRY=$(date -u -d "+1 day" '+%Y-%m-%dT%H:%MZ')
 
         APP_SAS=$(az storage blob generate-sas \
@@ -840,7 +986,9 @@ jobs:
           --name "$APP_FILE" \
           --permissions r \
           --expiry "$EXPIRY" \
-          --auth-mode login -o tsv)
+          --auth-mode login \
+          --as-user \
+          -o tsv)
 
         CONFIG_SAS=$(az storage blob generate-sas \
           --account-name "$AZURE_STORAGE_ACCOUNT" \
@@ -848,39 +996,36 @@ jobs:
           --name "$CONFIG_FILE" \
           --permissions r \
           --expiry "$EXPIRY" \
-          --auth-mode login -o tsv)
+          --auth-mode login \
+          --as-user \
+          -o tsv)
 
         echo "APP_SAS=$APP_SAS" >> $GITHUB_ENV
         echo "CONFIG_SAS=$CONFIG_SAS" >> $GITHUB_ENV
 
-    # Step 6: Create Application Version using semantic versioning
     - name: Create VM Application Version
       run: |
         set -euo pipefail
 
-	# Generate a unique version name
-	MAJOR=1
-	MINOR=0
-	PATCH=$(date +%Y%m%d)
-	VERSION="$MAJOR.$MINOR.$PATCH"
+        MAJOR=1
+        MINOR=0
+        PATCH=$(date +%Y%m%d)
+        VERSION="$MAJOR.$MINOR.$PATCH"
 
-	# Load install/uninstall commands from .txt files as strings
         INSTALL_CMD=$(jq -Rs '.' < install-script-as-string.txt)
         REMOVE_CMD=$(jq -Rs '.' < uninstall-script-as-string.txt)
 
         PACKAGE_URL="https://${AZURE_STORAGE_ACCOUNT}.blob.core.windows.net/${AZURE_CONTAINER_NAME}/${APP_FILE}?${APP_SAS}"
         CONFIG_URL="https://${AZURE_STORAGE_ACCOUNT}.blob.core.windows.net/${AZURE_CONTAINER_NAME}/${CONFIG_FILE}?${CONFIG_SAS}"
 
-	# Create the version
         az sig gallery-application version create \
           --resource-group "$AZURE_RESOURCE_GROUP" \
           --gallery-name "$GALLERY_NAME" \
-          --gallery-application-name "$APPLICATION_NAME" \
-          --gallery-application-version-name "$VERSION" \
+          --application-name "$APPLICATION_NAME" \
           --version-name "$VERSION" \
           --location "$AZURE_LOCATION" \
           --package-file-link "$PACKAGE_URL" \
-          --default-file-link "$CONFIG_URL" \
+          --default-configuration-file-link "$CONFIG_URL" \
           --install-command "$INSTALL_CMD" \
           --remove-command "$REMOVE_CMD" \
           --only-show-errors
@@ -893,10 +1038,8 @@ trigger:
     include: [ main ]
 
 variables:
-  # Customize filenames below
   APP_FILE: app.exe
   CONFIG_FILE: app-config.json
-
   AZURE_RESOURCE_GROUP: $(AZURE_RESOURCE_GROUP)
   AZURE_LOCATION: $(AZURE_LOCATION)
   AZURE_STORAGE_ACCOUNT: $(AZURE_STORAGE_ACCOUNT)
@@ -914,9 +1057,8 @@ stages:
         steps:
           - checkout: self
 
-          # Step 1: Upload files to Blob
           - task: AzureCLI@2
-            displayName: Upload app (exe, zip, etc) + config to Blob
+            displayName: Upload app and config to Blob
             inputs:
               azureSubscription: 'AzureServiceConnection'
               scriptType: bash
@@ -932,24 +1074,26 @@ stages:
                   --only-show-errors
 
                 echo "Uploading files..."
-		az storage blob upload \
-		  --account-name "$AZURE_STORAGE_ACCOUNT" \
-		  --container-name "$AZURE_CONTAINER_NAME" \
-		  --name "$APP_FILE" \
-		  --file "$APP_FILE" \
-		  --auth-mode login \
-		  --only-show-errors
+                az storage blob upload \
+                  --account-name "$AZURE_STORAGE_ACCOUNT" \
+                  --container-name "$AZURE_CONTAINER_NAME" \
+                  --name "$APP_FILE" \
+                  --file "$APP_FILE" \
+                  --auth-mode login \
+                  --overwrite \
+                  --only-show-errors
 
-		az storage blob upload \
-		  --account-name "$AZURE_STORAGE_ACCOUNT" \
-            	  --container-name "$AZURE_CONTAINER_NAME" \
-            	  --name "$CONFIG_FILE" \
-            	  --file "$CONFIG_FILE" \
-            	  --auth-mode login --only-show-errors
+                az storage blob upload \
+                  --account-name "$AZURE_STORAGE_ACCOUNT" \
+                  --container-name "$AZURE_CONTAINER_NAME" \
+                  --name "$CONFIG_FILE" \
+                  --file "$CONFIG_FILE" \
+                  --auth-mode login \
+                  --overwrite \
+                  --only-show-errors
 
-          # Step 2: Create VM Application Definition (if not exists)
           - task: AzureCLI@2
-            displayName: Create VM Application Definition
+            displayName: Create VM Application Definition
             inputs:
               azureSubscription: 'AzureServiceConnection'
               scriptType: bash
@@ -959,9 +1103,9 @@ stages:
 
                 echo "Checking for existing VM Application..."
                 if ! az sig gallery-application show \
-                    --resource-group "$AZURE_RESOURCE_GROUP" \
-                    --gallery-name "$GALLERY_NAME" \
-                    --name "$APPLICATION_NAME" &>/dev/null; then
+                  --resource-group "$AZURE_RESOURCE_GROUP" \
+                  --gallery-name "$GALLERY_NAME" \
+                  --application-name "$APPLICATION_NAME" &>/dev/null; then
                   echo "Creating new VM Application..."
                   az sig gallery-application create \
                     --resource-group "$AZURE_RESOURCE_GROUP" \
@@ -973,7 +1117,6 @@ stages:
                   echo "VM Application definition already exists."
                 fi
 
-          # Step 3: Generate SAS URLs
           - task: AzureCLI@2
             displayName: Generate SAS URLs
             inputs:
@@ -987,25 +1130,28 @@ stages:
                 EXPIRY=$(date -u -d "+1 day" '+%Y-%m-%dT%H:%MZ')
 
                 APP_SAS=$(az storage blob generate-sas \
-		  --account-name "$AZURE_STORAGE_ACCOUNT" \
-	          --container-name "$AZURE_CONTAINER_NAME" \
-	          --name "$APP_FILE" \
-	          --permissions r \
-	          --expiry "$EXPIRY" \
-	          --auth-mode login -o tsv)
-	
-		CONFIG_SAS=$(az storage blob generate-sas \
-	          --account-name "$AZURE_STORAGE_ACCOUNT" \
-	          --container-name "$AZURE_CONTAINER_NAME" \
-	          --name "$CONFIG_FILE" \
-	          --permissions r \
-	          --expiry "$EXPIRY" \
-	          --auth-mode login -o tsv)
+                  --account-name "$AZURE_STORAGE_ACCOUNT" \
+                  --container-name "$AZURE_CONTAINER_NAME" \
+                  --name "$APP_FILE" \
+                  --permissions r \
+                  --expiry "$EXPIRY" \
+                  --auth-mode login \
+                  --as-user \
+                  -o tsv)
 
-		echo "##vso[task.setvariable variable=APP_SAS]$APP_SAS"
-	        echo "##vso[task.setvariable variable=CONFIG_SAS]$CONFIG_SAS"
+                CONFIG_SAS=$(az storage blob generate-sas \
+                  --account-name "$AZURE_STORAGE_ACCOUNT" \
+                  --container-name "$AZURE_CONTAINER_NAME" \
+                  --name "$CONFIG_FILE" \
+                  --permissions r \
+                  --expiry "$EXPIRY" \
+                  --auth-mode login \
+                  --as-user \
+                  -o tsv)
 
-          # Step 4: Create VM Application Version
+                echo "##vso[task.setvariable variable=APP_SAS]$APP_SAS"
+                echo "##vso[task.setvariable variable=CONFIG_SAS]$CONFIG_SAS"
+
           - task: AzureCLI@2
             displayName: Create VM Application Version
             inputs:
@@ -1015,32 +1161,28 @@ stages:
               inlineScript: |
                 set -euo pipefail
 
-	       	# Generate a unique version name
                 MAJOR=1
-      		MINOR=0
-		PATCH=$(date +%Y%m%d)
-		VERSION="$MAJOR.$MINOR.$PATCH"
+                MINOR=0
+                PATCH=$(date +%Y%m%d)
+                VERSION="$MAJOR.$MINOR.$PATCH"
 
-                # Load install/uninstall commands from .txt files as strings
                 INSTALL_CMD=$(jq -Rs '.' < install-script-as-string.txt)
                 REMOVE_CMD=$(jq -Rs '.' < uninstall-script-as-string.txt)
 
-		# Load SAS URL for Application and config file
-		PACKAGE_URL="https://${AZURE_STORAGE_ACCOUNT}.blob.core.windows.net/${AZURE_CONTAINER_NAME}/${APP_FILE}?${APP_SAS}"
-          	CONFIG_URL="https://${AZURE_STORAGE_ACCOUNT}.blob.core.windows.net/${AZURE_CONTAINER_NAME}/${CONFIG_FILE}?${CONFIG_SAS}"
+                PACKAGE_URL="https://${AZURE_STORAGE_ACCOUNT}.blob.core.windows.net/${AZURE_CONTAINER_NAME}/${APP_FILE}?${APP_SAS}"
+                CONFIG_URL="https://${AZURE_STORAGE_ACCOUNT}.blob.core.windows.net/${AZURE_CONTAINER_NAME}/${CONFIG_FILE}?${CONFIG_SAS}"
 
-                # Create the version
                 az sig gallery-application version create \
                   --resource-group "$AZURE_RESOURCE_GROUP" \
                   --gallery-name "$GALLERY_NAME" \
                   --application-name "$APPLICATION_NAME" \
-                  --name "$VERSION" \
+                  --version-name "$VERSION" \
                   --location "$AZURE_LOCATION" \
                   --package-file-link "$PACKAGE_URL" \
                   --default-configuration-file-link "$CONFIG_URL" \
                   --install-command "$INSTALL_CMD" \
                   --remove-command "$REMOVE_CMD" \
-                  --version-name $VERSION
+                  --only-show-errors
 ```
 
 #### [GitLab Pipeline](#tab/gitlab3)
@@ -1049,10 +1191,8 @@ stages:
   - deploy
 
 variables:
-  # Customize your filenames here
   APP_FILE: "app.exe"
   CONFIG_FILE: "app-config.json"
-
   AZURE_RESOURCE_GROUP: "$AZURE_RESOURCE_GROUP"
   AZURE_LOCATION: "$AZURE_LOCATION"
   AZURE_STORAGE_ACCOUNT: "$AZURE_STORAGE_ACCOUNT"
@@ -1063,16 +1203,14 @@ variables:
 deploy_vm_app:
   image: mcr.microsoft.com/azure-cli
   stage: deploy
-  only:
-    - main
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
   script:
-    # Login to Azure using service principal
     - az login --service-principal -u "$AZURE_CLIENT_ID" -p "$AZURE_CLIENT_SECRET" --tenant "$AZURE_TENANT_ID"
     - az account set --subscription "$AZURE_SUBSCRIPTION_ID"
 
-    # Step 1: Upload app and config files to Blob Storage
     - |
-      echo "Uploading $APP_FILE and $CONFIG_FILE to blob..."
+      echo "Creating container and uploading files..."
       az storage container create \
         --name "$AZURE_CONTAINER_NAME" \
         --account-name "$AZURE_STORAGE_ACCOUNT" \
@@ -1085,6 +1223,7 @@ deploy_vm_app:
         --name "$APP_FILE" \
         --file "$APP_FILE" \
         --auth-mode login \
+        --overwrite \
         --only-show-errors
 
       az storage blob upload \
@@ -1093,9 +1232,9 @@ deploy_vm_app:
         --name "$CONFIG_FILE" \
         --file "$CONFIG_FILE" \
         --auth-mode login \
+        --overwrite \
         --only-show-errors
 
-    # Step 2: Create VM Application Definition if missing
     - |
       echo "Checking for existing VM Application..."
       if ! az sig gallery-application show \
@@ -1114,16 +1253,19 @@ deploy_vm_app:
         echo "VM Application already exists."
       fi
 
-    # Step 3: Generate SAS URLs
     - |
+      echo "Generating SAS URLs and creating VM Application Version..."
       EXPIRY=$(date -u -d "+1 day" '+%Y-%m-%dT%H:%MZ')
+
       APP_SAS=$(az storage blob generate-sas \
         --account-name "$AZURE_STORAGE_ACCOUNT" \
         --container-name "$AZURE_CONTAINER_NAME" \
         --name "$APP_FILE" \
         --permissions r \
         --expiry "$EXPIRY" \
-        --auth-mode login -o tsv)
+        --auth-mode login \
+        --as-user \
+        -o tsv)
 
       CONFIG_SAS=$(az storage blob generate-sas \
         --account-name "$AZURE_STORAGE_ACCOUNT" \
@@ -1131,10 +1273,10 @@ deploy_vm_app:
         --name "$CONFIG_FILE" \
         --permissions r \
         --expiry "$EXPIRY" \
-        --auth-mode login -o tsv)
+        --auth-mode login \
+        --as-user \
+        -o tsv)
 
-    # Step 4: Create VM Application Version (semantic version: 1.0.YYYYMMDD)
-    - |
       MAJOR=1
       MINOR=0
       PATCH=$(date +%Y%m%d)
@@ -1148,7 +1290,6 @@ deploy_vm_app:
         --resource-group "$AZURE_RESOURCE_GROUP" \
         --gallery-name "$GALLERY_NAME" \
         --application-name "$APPLICATION_NAME" \
-        --gallery-application-version-name "$VERSION" \
         --version-name "$VERSION" \
         --location "$AZURE_LOCATION" \
         --package-file-link "https://${AZURE_STORAGE_ACCOUNT}.blob.core.windows.net/${AZURE_CONTAINER_NAME}/${APP_FILE}?${APP_SAS}" \
@@ -1156,7 +1297,6 @@ deploy_vm_app:
         --install-command "$INSTALL_CMD" \
         --remove-command "$REMOVE_CMD" \
         --only-show-errors
-
 ```
 
 #### [Jenkins](#tab/jenkins3)
@@ -1186,8 +1326,8 @@ pipeline {
       steps {
         sh '''
           az login --service-principal \
-            --username "$AZURE_CLIENT_ID" \
-            --password "$AZURE_CLIENT_SECRET" \
+            -u "$AZURE_CLIENT_ID" \
+            -p "$AZURE_CLIENT_SECRET" \
             --tenant "$AZURE_TENANT_ID"
           az account set --subscription "$AZURE_SUBSCRIPTION_ID"
         '''
@@ -1200,21 +1340,26 @@ pipeline {
           az storage container create \
             --name "$AZURE_CONTAINER_NAME" \
             --account-name "$AZURE_STORAGE_ACCOUNT" \
-            --auth-mode login --only-show-errors
+            --auth-mode login \
+            --only-show-errors
 
           az storage blob upload \
             --account-name "$AZURE_STORAGE_ACCOUNT" \
             --container-name "$AZURE_CONTAINER_NAME" \
             --name "$APP_FILE" \
             --file "$APP_FILE" \
-            --auth-mode login --only-show-errors
+            --auth-mode login \
+            --overwrite \
+            --only-show-errors
 
           az storage blob upload \
             --account-name "$AZURE_STORAGE_ACCOUNT" \
             --container-name "$AZURE_CONTAINER_NAME" \
             --name "$CONFIG_FILE" \
             --file "$CONFIG_FILE" \
-            --auth-mode login --only-show-errors
+            --auth-mode login \
+            --overwrite \
+            --only-show-errors
         '''
       }
     }
@@ -1231,42 +1376,37 @@ pipeline {
               --gallery-name "$GALLERY_NAME" \
               --application-name "$APPLICATION_NAME" \
               --location "$AZURE_LOCATION" \
-              --os-type Windows
+              --os-type Windows \
+              --only-show-errors
           fi
         '''
       }
     }
 
-    stage('Generate SAS URLs') {
+    stage('Generate SAS and Create Version') {
       steps {
         sh '''
-          export EXPIRY=$(date -u -d "+1 day" '+%Y-%m-%dT%H:%MZ')
-          export APP_SAS=$(az storage blob generate-sas \
+          EXPIRY=$(date -u -d "+1 day" '+%Y-%m-%dT%H:%MZ')
+
+          APP_SAS=$(az storage blob generate-sas \
             --account-name "$AZURE_STORAGE_ACCOUNT" \
             --container-name "$AZURE_CONTAINER_NAME" \
             --name "$APP_FILE" \
             --permissions r \
             --expiry "$EXPIRY" \
-            --auth-mode login -o tsv)
+            --auth-mode login \
+            --as-user \
+            -o tsv)
 
-          export CONFIG_SAS=$(az storage blob generate-sas \
+          CONFIG_SAS=$(az storage blob generate-sas \
             --account-name "$AZURE_STORAGE_ACCOUNT" \
             --container-name "$AZURE_CONTAINER_NAME" \
             --name "$CONFIG_FILE" \
             --permissions r \
             --expiry "$EXPIRY" \
-            --auth-mode login -o tsv)
-
-          echo "APP_SAS=$APP_SAS" > sas.env
-          echo "CONFIG_SAS=$CONFIG_SAS" >> sas.env
-        '''
-      }
-    }
-
-    stage('Create Application Version') {
-      steps {
-        sh '''
-          source sas.env
+            --auth-mode login \
+            --as-user \
+            -o tsv)
 
           MAJOR=1
           MINOR=0
@@ -1276,15 +1416,17 @@ pipeline {
           INSTALL_CMD=$(jq -Rs '.' < install-script-as-string.txt)
           REMOVE_CMD=$(jq -Rs '.' < uninstall-script-as-string.txt)
 
+          PACKAGE_URL="https://${AZURE_STORAGE_ACCOUNT}.blob.core.windows.net/${AZURE_CONTAINER_NAME}/${APP_FILE}?${APP_SAS}"
+          CONFIG_URL="https://${AZURE_STORAGE_ACCOUNT}.blob.core.windows.net/${AZURE_CONTAINER_NAME}/${CONFIG_FILE}?${CONFIG_SAS}"
+
           az sig gallery-application version create \
             --resource-group "$AZURE_RESOURCE_GROUP" \
             --gallery-name "$GALLERY_NAME" \
             --application-name "$APPLICATION_NAME" \
-            --gallery-application-version-name "$VERSION" \
             --version-name "$VERSION" \
             --location "$AZURE_LOCATION" \
-            --package-file-link "https://${AZURE_STORAGE_ACCOUNT}.blob.core.windows.net/${AZURE_CONTAINER_NAME}/${APP_FILE}?$APP_SAS" \
-            --default-configuration-file-link "https://${AZURE_STORAGE_ACCOUNT}.blob.core.windows.net/${AZURE_CONTAINER_NAME}/${CONFIG_FILE}?$CONFIG_SAS" \
+            --package-file-link "$PACKAGE_URL" \
+            --default-configuration-file-link "$CONFIG_URL" \
             --install-command "$INSTALL_CMD" \
             --remove-command "$REMOVE_CMD" \
             --only-show-errors
@@ -1491,5 +1633,5 @@ Select the VM application from the list and then select **Save** at the bottom o
 
 
 ## Next steps
-Learn more about [Azure VM Applications](vm-applications.md).
-Learn to [manage, update or delete](vm-applications-manage.md) Azure VM Applications.
+- Learn to [manage, update or delete](vm-applications-manage.md) Azure VM Applications.
+- Learn more about [Azure VM Applications](vm-applications.md).
