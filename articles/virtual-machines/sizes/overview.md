@@ -322,6 +322,11 @@ To learn more about a specific size family or series, select the tab for that fa
 [!INCLUDE [hx-series-workloads](./high-performance-compute/includes/hx-family-workloads.md)]
 
 ---
+### List available machine sizes by region.
+The Azure CLI can be leveraged to identify which machine sizes are available for a particular region using the command:
+```
+az vm list-skus --location <region> --output table
+```
 
 ## Learn platform sizes content
 - For information about pricing of the various sizes, see the pricing pages for [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/#Linux) or [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/Windows/#Windows).
