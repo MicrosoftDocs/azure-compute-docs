@@ -2483,8 +2483,12 @@
     href: move-region-maintenance-configuration.md
   - name: Move Maintenance Control configuration resources to another region
     href: move-region-maintenance-configuration-resources.md
-  - name: Migrate AWS VMs to Azure
-    href: /azure/migrate/tutorial-migrate-aws-virtual-machines
+  - name: Migrate from AWS
+    items:
+    - name: Migrate Amazon EC2 instances to Azure
+      href: ./migration/migrate-from-elastic-compute-cloud-architecture.md
+    - name: Migrate Amazon EC2 instances by using Azure Migrate
+      href: /azure/migrate/tutorial-migrate-aws-virtual-machines
   - name: Retirement migration
     items:
     - name: VM size series retirement migration guides
