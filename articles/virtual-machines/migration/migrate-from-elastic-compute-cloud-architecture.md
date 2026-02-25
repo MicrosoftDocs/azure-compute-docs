@@ -52,10 +52,9 @@ Azure Migrate provides a unified platform to assess and migrate on-premises serv
 > Use these guidelines to determine when Azure Migrate suits your VM migration:
 >
 > - For VMs that use the same operating system, have similar sizes, and have simple dependencies, use Azure Migrate when you migrate five or more VMs.
->
 > - For VMs that use different operating systems or sizes, have multiple disks, or have complex dependencies, use Azure Migrate when you migrate three or more VMs.
 
-For more information, see [Migrate Amazon EC2 instances by using Azure Migrate(/azure/migrate/tutorial-migrate-aws-virtual-machines).
+For more information, see [Migrate Amazon EC2 instances by using Azure Migrate](/azure/migrate/tutorial-migrate-aws-virtual-machines).
 
 ### Architectural overview
 
@@ -100,7 +99,7 @@ Formalize your findings by categorizing each capability into one of the followin
 
 ### Direct capability mapping
 
-| Amazon EC2 capability | Virtual Machines equivalent | Migration approach |
+| Amazon EC2 capability | Azure Virtual Machines equivalent | Migration approach |
 |---|---|---|
 | Amazon EC2 instance families like `t`, `m`, `c`, `r`, `i`, and `p` | Azure VM series like B, D, F, E, L, and NC, ND, or NP | Select Azure VM SKUs that have equivalent CPU-to-memory ratios and architecture. |
 | ASGs | Virtual Machine Scale Sets | Set up autoscaling in Virtual Machine Scale Sets and distribute instances across zones. |
@@ -186,7 +185,6 @@ Use the [Azure VM size documentation](../sizes/overview.md) and [AWS instance ty
    - **Establish a baseline in AWS.** Capture typical and peak Amazon EBS IOPS, throughput, and latency, and capture network bandwidth and packets-per-second (PPS) usage.
    - **Map to Azure limits.** Confirm disk SKU and VM size caps and the VM's network limits, including whether it supports [Azure accelerated networking](/azure/virtual-network/accelerated-networking-overview).
    - **Test in Azure.** Run quick storage and network benchmarks before you finalize the VM size.
-
 1. If you use accelerators, like GPU or Field‑Programmable Gate Array (FPGA), ensure that the Azure VM series supports them.
 1. Consider Azure-specific features like [spot VMs](../spot-vms.md) for cost savings or [virtual machine scale sets](../../virtual-machine-scale-sets/overview.md) for elasticity.
 
@@ -302,12 +300,11 @@ For NAS, Amazon EFS and Amazon FSx map most directly to Azure Files and Azure Ne
 
 #### Storage migration considerations
 
-Map Amazon EBS volumes to Azure managed disk tiers:
-
-- The `gp2` and `gp3` volume types map to Standard SSD for light or moderate use
-- The `gp2` volume type maps to Premium SSD
-- The `gp3` volume type maps to Premium SSD v2
-- The `io2` volume type maps to Ultra Disk Storage
+- Map Amazon EBS volumes to Azure managed disk tiers:
+  - The `gp2` and `gp3` volume types map to Standard SSD for light or moderate use.
+  - The `gp2` volume type maps to Premium SSD.
+  - The `gp3` volume type maps to Premium SSD v2.
+  - The `io2` volume type maps to Ultra Disk Storage.
 - Validate IOPS and throughput requirements. Premium SSD and Ultra Disk Storage support high-performance workloads.
 - Plan for encryption compliance. Use Azure disk encryption and Key Vault for sensitive data.
 - For externalized storage migration, you can use the following approaches:
