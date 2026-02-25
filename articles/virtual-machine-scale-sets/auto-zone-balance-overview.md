@@ -53,10 +53,7 @@ Automatic zone balance is designed to be minimally intrusive, prioritizing the s
 - The scale set isn't marked for deletion.
 - The scale set doesn't have any ongoing or recently completed `PUT`, `PATCH`, `POST` operations within the past 60 minutes; such as VMs being added or deleted, or upgrades in progress.
 
-Automatic zone balance won't move VMs under the [instance protection policy](./virtual-machine-scale-sets-instance-protection.md), or in deallocated / to-be-deleted state. 
-
-#### Rebalancing frequency
-Automatic zone balance performs a maximum of one rebalance operation every 12 hours. Only one VM is moved in each rebalance operation. This limit is in place to minimize churn and ensure that changes to your scale set are gradual and controlled. 
+Automatic zone balance won't move VMs under the [instance protection policy](./virtual-machine-scale-sets-instance-protection.md), or in deallocated / to-be-deleted state. Only one VM is moved per rebalance operation to minimize churn and ensure that changes to your scale set are gradual and controlled.
 
 ### Automatic instance repairs integration
 
