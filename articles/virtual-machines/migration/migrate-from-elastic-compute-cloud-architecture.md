@@ -22,17 +22,11 @@ If you use Amazon Elastic Compute Cloud (Amazon EC2) and plan to migrate your wo
 This guide describes how to do the following tasks:
 
 - Map Amazon EC2 instance families and sizes to the right Azure virtual machine (VM) series and SKUs.
-
 - Translate Amazon machine image (AMI)-based workloads to Microsoft Marketplace or custom images.
-
 - Design Azure storage architectures that meet or exceed existing Amazon Elastic Block Store (Amazon EBS) performance characteristics.
-
 - Recreate Amazon Virtual Private Cloud (Amazon VPC) networking, security, and load-balancing patterns by using Azure-native services.
-
 - Learn about availability, scaling, and placement strategies in Azure that align with AWS designs.
-
 - Build the prerequisite knowledge and skills for a successful migration.
-
 - Validate performance, resiliency, and functionality after migration.
 
 ## Example scenario: Migrate a production Amazon EC2-based application stack
@@ -92,15 +86,10 @@ Inventory the existing Amazon EC2 workload and capture how it behaves in product
 The key assessment activities include the following items:
 
 - Identify Amazon EC2 instance families, sizes, and CPU architecture, like `x86` or `ARM64`.
-
 - Capture baseline and peak CPU, memory, disk input/output operations per second (IOPS), throughput, latency, and network usage.
-
 - Document Amazon EBS volume types and performance settings.
-
 - Review ASG policies and placement strategies.
-
 - Enumerate security group and network access control list (NACL) rules.
-
 - Identify AMI sources, like public, vendor, or custom images.
 
 Formalize your findings by categorizing each capability into one of the following groups:
@@ -124,11 +113,8 @@ Formalize your findings by categorizing each capability into one of the followin
 Some Amazon EC2 capabilities don't map directly to Azure:
 
 - **AMI portability:** Azure doesn't support a lift-and-shift approach for AMIs. You must map images to Marketplace images or rebuild them as custom images.
-
 - **Bursting behavior:** AWS supports CPU bursts beyond the `t` family. Azure limits CPU bursts to the B-series.
-
 - **Disk performance scale:** AWS decouples disk performance from instance size. In Azure, both disk SKU and VM size constrain disk performance.
-
 - **Hypervisor access:** Amazon EC2 bare-metal instances expose more control than Azure VMs. For hardware isolation requirements in Azure, use Azure Dedicated Host.
 
 ## Step 2: Prepare
@@ -136,15 +122,10 @@ Some Amazon EC2 capabilities don't map directly to Azure:
 Prepare the Azure environment before you migrate workloads:
 
 - Design Azure virtual networks and subnets that align with existing Amazon VPC segmentation.
-
 - Establish identity and access control by using Azure role-based access control (Azure RBAC).
-
 - Choose availability zones or availability sets based on your workload requirements and regional support.
-
 - Select base Marketplace images that match the operating system version, architecture, and boot mode.
-
 - Remove AWS-specific agents and ensure Azure VM Agent support.
-
 - Use Azure Migrate for discovery, dependency map creation, and rightsizing recommendations when you migrate multiple VMs.
 
 ## Step 3: Execute
@@ -160,13 +141,9 @@ When you migrate from Amazon EC2 to Virtual Machines, you must know how instance
 AWS organizes compute resources into instance families based on workload type:
 
 - **General purpose:** Balanced CPU, memory, and networking, like `t3` and `m5`.
-
 - **Compute optimized:** High CPU-to-memory ratio for compute-intensive tasks, like `c5` and `c6g`.
-
 - **Memory optimized:** Large memory footprint for in-memory databases or analytics, like `r5` and `x1e`.
-
 - **Storage optimized:** High disk throughput for large datasets, like `i3` and `d2`.
-
 - **Accelerated computing:** GPU-based workloads for machine learning or graphics, like `p3` and `g4dn`.
 
 AWS instances scale vertically by selecting larger sizes within a family, like moving from `m5.large` to `m5.4xlarge`, and horizontally by using ASGs.
@@ -176,15 +153,10 @@ AWS instances scale vertically by selecting larger sizes within a family, like m
 Azure uses VM series to categorize compute resources:
 
 - **D-series:** General-purpose workloads, similar to the AWS `m` family
-
 - **F-series:** Compute optimized, comparable to the AWS `c` family
-
 - **E-series:** Memory optimized, similar to the AWS `r` family
-
 - **M-series:** Ultra-high memory for SAP HANA and large databases
-
 - **L-series:** Storage optimized with local Non‑Volatile Memory Express (NVMe) disks, and comparable to the AWS `i` family
-
 - **NC, ND, and NP-series:** GPU enabled for AI and machine learning workloads, similar to the AWS `p` and `g` families
 
 Azure defines VM sizes by a SKU, like `Standard_D4s_v5`. The SKU specifies the following properties:
@@ -199,13 +171,9 @@ For more information, see [VM size naming conventions](../vm-naming-conventions.
 #### Key differences
 
 - **Naming:** AWS uses family and size, like `c5.xlarge`. Azure uses VM series and VM SKU, like `Standard_F4s_v2`.
-
 - **Performance tiers:** Azure sets disk performance according to VM size and disk SKU. AWS uses Amazon EBS-optimized instances.
-
 - **Regional availability:** Features vary by region on both platforms. On Azure, features like availability zones and spot capacity are available only in specific regions.
-
 - **Burstable options:** The AWS `t` family supports burstable workloads, and AWS provides burst capability on other eligible instance sizes. Azure limits bursting to the [B-series](../sizes/b-series-cpu-credit-model.md).
-
 - **Hypervisor access:** Some AWS sizes allow for more direct control over the hypervisor, like `i3.metal`. Azure provides less control at this layer.
 
 #### Mapping strategy
@@ -213,19 +181,13 @@ For more information, see [VM size naming conventions](../vm-naming-conventions.
 Use the [Azure VM size documentation](../sizes/overview.md) and [AWS instance type guide](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html) to complete the following tasks:
 
 1. Identify your Amazon EC2 instance family and size.
-
 1. Match to an Azure VM series with equivalent CPU-to-memory ratio and the required CPU architecture, like `x86` or `ARM`.
-
 1. Validate storage and network requirements to prevent overprovisioning or underprovisioning:
-
    - **Establish a baseline in AWS.** Capture typical and peak Amazon EBS IOPS, throughput, and latency, and capture network bandwidth and packets-per-second (PPS) usage.
-   
    - **Map to Azure limits.** Confirm disk SKU and VM size caps and the VM's network limits, including whether it supports [Azure accelerated networking](/azure/virtual-network/accelerated-networking-overview).
-   
    - **Test in Azure.** Run quick storage and network benchmarks before you finalize the VM size.
 
 1. If you use accelerators, like GPU or Field‑Programmable Gate Array (FPGA), ensure that the Azure VM series supports them.
-
 1. Consider Azure-specific features like [spot VMs](../spot-vms.md) for cost savings or [virtual machine scale sets](../../virtual-machine-scale-sets/overview.md) for elasticity.
 
 ### Images
@@ -242,19 +204,14 @@ When you migrate workloads that start from an AMI, plan for an *image translatio
 Start by identifying what the AMI represents:
 
 - Operating system distribution and version, like Ubuntu 22.04, RHEL 8.9, and Windows Server 2022
-
 - CPU architecture, like `x86_64` versus `ARM64`
-
 - Boot mode and VM generation assumptions, like UEFI with Gen2 VMs or BIOS with Gen1 VMs
-
 - Installed components, like monitoring agents, security tools, and web and app runtimes
-
 - Licensing model, like bring-your-own versus marketplace-provided
 
 Then find an equivalent Azure image:
 
 - Marketplace images best match to public AMIs.
-
 - Images that your organization publishes through Compute Gallery are most similar to private or shared AMIs.
 
 If your AWS workload depends on a vendor AMI, like a firewall, appliance, or hardened image, identify the vendor's equivalent offering in Marketplace and confirm that it meets the following requirements:
@@ -270,35 +227,24 @@ If the AMI is a custom image, like a golden image, a hardened baseline, or an im
 Use the following steps as a recommended starting point:
 
 1. **Pick a clean base image** from Marketplace that matches the operating system, version, and architecture that you need.
-
 1. **Automate customization** by applying packages, configuration, agents, and hardening through a repeatable pipeline.
-
 1. **Validate the image** when you deploy test VMs and run smoke tests.
-
 1. **Publish and version the image** in Compute Gallery and replicate it to target regions.
 
 Consider the following common tooling patterns:
 
 - **Azure VM Image Builder** is a managed image build service for image creation and distribution.
-
 - **HashiCorp Packer**, including the Azure builders, is for building images in continuous integration and continuous delivery (CI/CD) pipelines.
-
 - **Configuration management tools** like Ansible, Chef, or Puppet help keep customization reproducible.
 
 Consider these operational requirements to plan your *where do you start* checklist:
 
 - **Generalization:**
-
   - On Windows, run Sysprep before you capture the image.
-
   - On Linux, install the Azure Linux VM Agent (`waagent`) before you capture the image.
-
 - **Drivers and agents:** Ensure that the image supports the Azure VM Agent and remove any AWS-specific agents or tools that no longer apply.
-
 - **VM generation:** Choose Gen1 or Gen2 early because your base image choice typically determines the generation.
-
 - **Identity and secrets:** Use managed identity and Azure Key Vault instead of embedding secrets in images.
-
 - **Updates:** Patch the image during build and define an image refresh cadence.
 
 ### Storage
@@ -308,19 +254,14 @@ Storage architecture is a critical factor when you migrate from Amazon EC2 to Vi
 #### Amazon EC2 storage options
 
 - **Amazon EBS:** Persistent block storage for Amazon EC2 instances. Supports solid-state drive (SSD) and hard disk drive (HDD) volumes:
-  
   - General-purpose SSD that uses `gp3` and `gp2`
   - Provisioned IOPS SSD that uses `io1` and `io2`
   - Throughput-optimized HDD that uses `st1`
   - Cold HDD that uses `sc1`
-
 - **Network-attached storage (NAS):** Shared file storage for Linux and Windows workloads:
-
   - **Amazon Elastic File System (Amazon EFS)**
   - **Amazon FSx**, like Windows File Server, NetApp ONTAP, and Lustre
-
 - **Instance store:** Ephemeral storage that's physically attached to the host. Data is deleted when the instance stops or terminates.
-
 - **Amazon Simple Storage Service (Amazon S3):** Object storage for unstructured data, backups, and archival storage.
 
 Key features of Amazon EC2 storage options include the following items:
@@ -332,19 +273,12 @@ Key features of Amazon EC2 storage options include the following items:
 #### Azure VM storage options
 
 - **Managed disks:** Azure manages persistent block storage:
-  
   - **Azure Standard HDD:** Cost effective for infrequent access, nonproduction workloads, and long-term backups.
-
   - **Azure Standard SSD:** Balanced performance for general workloads.
-
   - **Azure Premium SSD:** Low latency for production and performance-sensitive apps.
-
   - **Azure Ultra Disk Storage:** High throughput for data-intensive workloads.
-
 - **Ephemeral OS disks:** Temporary storage for stateless workloads.
-
 - **Externalized storage (NAS and object storage):** Network-attached and object-based storage for shared file access, backups, archival, and large-scale data:
-
   - Azure Blob Storage
   - Azure Files
   - Azure NetApp Files
@@ -374,15 +308,10 @@ Map Amazon EBS volumes to Azure managed disk tiers:
 - The `gp2` volume type maps to Premium SSD
 - The `gp3` volume type maps to Premium SSD v2
 - The `io2` volume type maps to Ultra Disk Storage
-
 - Validate IOPS and throughput requirements. Premium SSD and Ultra Disk Storage support high-performance workloads.
-
 - Plan for encryption compliance. Use Azure disk encryption and Key Vault for sensitive data.
-
 - For externalized storage migration, you can use the following approaches:
-
   - Migrate Amazon S3 to Blob Storage by using AzCopy or Azure Storage migration tools.
-  
   - Migrate Amazon EFS and Amazon FSx to Azure Files for general-purpose file shares, or to Azure NetApp Files for high-performance NAS.
 
 Validate IOPS and throughput requirements carefully because both disk SKU and VM size constrain Azure disk performance.
@@ -394,37 +323,23 @@ Networking architecture is a critical component when you migrate from Amazon EC2
 #### Amazon EC2 networking
 
 - **Amazon VPC:** Logical isolation of resources within AWS.
-
 - **Subnets:** Network segments within an Amazon VPC for isolation and segmentation.
-
 - **Security groups:** Stateful firewall rules applied at the instance level.
-
 - **Network ACLs:** Stateless rules applied at the subnet level.
-
 - **Elastic IP addresses:** Static public IP addresses for instances.
-
 - **Load balancing:** Amazon ELB supports layer-4 and layer-7 traffic.
-
 - **Hybrid connectivity:** Virtual private network (VPN) and AWS Direct Connect for private links to on-premises.
 
 #### Azure VM networking components
 
 - **Virtual network:** An isolated and segmented network environment equivalent to an Amazon VPC.
-
 - **Subnets:** Network segments within a virtual network that provide isolation and support network security groups (NSGs) for traffic filtering.
-
 - **NSGs:** Stateful inbound and outbound traffic rules applied at the subnet or network interface card (NIC) level.
-
 - **Azure Firewall:** A managed, cloud-based firewall used for centralized policy enforcement.
-
 - **Azure Private Link:** Private IP address-based access to Azure services.
-
 - **Public IP addresses:** Static or dynamic public IP addresses that you assign to resources.
-
 - **Load balancing:** Load Balancer at layer 4 and Application Gateway at layer 7 with Secure Sockets Layer (SSL) termination and Azure Web Application Firewall.
-
 - **Azure Bastion:** Secure Remote Desktop Protocol (RDP) and Secure Shell (SSH) access without exposing public IP addresses.
-
 - **Azure ExpressRoute:** Private dedicated connectivity to Azure for hybrid scenarios.
 
 #### Key differences
@@ -439,13 +354,9 @@ Networking architecture is a critical component when you migrate from Amazon EC2
 #### Migration considerations
 
 1. **Plan virtual network architecture:** Align with existing Amazon VPC design for subnet segmentation.
-
 1. **Security rules:** Convert AWS security group rules to NSGs. Review inbound and outbound traffic.
-
 1. **Hybrid connectivity:** Replace AWS Direct Connect with ExpressRoute for private connectivity.
-
 1. **Load balancing:** Map Amazon ELB configurations to Load Balancer or Application Gateway.
-
 1. **Access control:** Use Azure Bastion for secure remote access instead of exposing public IP addresses.
 
 ### Clustering, availability, and zones
@@ -455,21 +366,15 @@ High-availability and resiliency strategies vary between Amazon EC2 and Virtual 
 #### Amazon EC2 availability features
 
 - **Availability zones:** Isolated locations within a region for redundancy.
-
 - **ASGs:** Automatic scaling of instance counts based on demand.
-
 - **Amazon ELB:** Traffic distribution across multiple instances.
-
 - **Placement groups:** Instance placement for low-latency or high-throughput workloads.
 
 #### Azure VM availability features
 
 - **Availability zones:** Physically separate datacenters within a region for zone-level resiliency.
-
 - **Availability sets:** Logical grouping to protect against rack-level failures.
-
 - **Virtual Machine Scale Sets:** Built-in orchestration for horizontal workload scale.
-
 - **Load Balancer and Application Gateway:** Layer-4 and layer-7 traffic distribution.
 
 #### Mapping translation
@@ -495,15 +400,12 @@ AWS and Azure use different constructs for scaling and placement. These differen
 #### AWS approach
 
 - **ASGs:** Automatically adjust Amazon EC2 instance count based on demand by using launch templates, which define instance configuration and life cycle, including NICs and disks.
-
 - **Partition placement groups:** Spread Amazon EC2 instances across multiple partitions for resiliency and low-latency workloads.
 
 #### Azure approach
 
 - **Virtual Machine Scale Sets:** Provides native orchestration for horizontal scaling, integrated with Load Balancer or Application Gateway.
-
 - **VM profiles:** Defines VM configuration and support deep deletion for resource cleanup.
-
 - **Fault domains and availability sets:** Provides rack-level isolation similar to AWS partitioning. For dedicated hardware, use Dedicated Host.
 
 #### Key differences
