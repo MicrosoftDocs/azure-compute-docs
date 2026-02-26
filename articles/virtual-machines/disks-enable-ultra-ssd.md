@@ -66,7 +66,7 @@ Now that you know which zone to deploy to, follow the deployment steps in this a
 
 ### VMs with no redundancy options
 
-Ultra Disks deployed in select regions must be deployed without any redundancy options, for now. However, not every VM size that supports Ultra Disks are necessarily in these regions. To determine which VM sizes support Ultra Disks, use either of the following code snippets. Make sure to replace the `vmSize`, `region`, and `subscriptionId` values first:
+Ultra Disks deployed in select regions must be deployed without any redundancy options for now. However, not every VM size that supports Ultra Disks are necessarily in these regions. To determine which VM sizes support Ultra Disks, use either of the following code snippets. Make sure to replace the `vmSize`, `region`, and `subscriptionId` values first:
 
 ```azurecli
 subscriptionId="<yourSubID>"
