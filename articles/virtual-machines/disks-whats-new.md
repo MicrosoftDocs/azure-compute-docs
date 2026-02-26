@@ -22,13 +22,13 @@ Azure Disk Storage regularly receives updates for new features and enhancements.
   -  [Quarter 4 (October, November, December)](#quarter-4-october-november-december)
         - [Expanded regional availability for Premium SSD v2](#expanded-regional-availability-for-premium-ssd-v2)
         - [Public preview: Instant Access Snapshot for Premium SSD v2 and Ultra Disks](#public-preview-instant-access-snapshot-for-premium-ssd-v2-and-ultra-disks)
-        - [Generally available: Azure Site Recovery for Virtual Machines with Premium SSD v2 and Ultra disks](#generally-available-azure-site-recovery-for-virtual-machines-with-premium-ssd-v2-and-ultra-disks)
+        - [Generally available: Azure Site Recovery for Virtual Machines with Premium SSD v2 and Ultra Disks](#generally-available-azure-site-recovery-for-virtual-machines-with-premium-ssd-v2-and-ultra-disks)
   -  [Quarter 3 (July, August, September)](#quarter-3-july-august-september)
         - [Generally available: Live Resize for Premium SSD v2 and Ultra Disks using NVMe controllers](#generally-available-live-resize-for-premium-ssd-v2-and-ultra-disks-using-nvme-controllers)
         - [Generally available: Ultra Disk price reduction in West US 2, Central US, and UK South](#generally-available-ultra-disk-price-reduction-in-west-us-2-central-us-and-uk-south)
   - [Quarter 2 (April, May, June)](#quarter-2-april-may-june)
     - [Generally available: Troubleshoot Disk Performance with Copilot in Azure](#generally-available-troubleshoot-disk-performance-with-copilot-in-azure)
-    - [Generally available: Availability Set support for Premium SSD v2 Disk Storage](#generally-available-availability-set-support-for-premium-ssd-v2-disk-storage)
+    - [Generally available: Availability Set support for Premium SSD v2 Storage](#generally-available-availability-set-support-for-premium-ssd-v2-storage)
     - [Expanded regional availability for Premium SSD v2](#expanded-regional-availability-for-premium-ssd-v2)
   - [Quarter 1 (January, February, March)](#quarter-1-january-february-march-2)
     - [Public Preview: Troubleshoot Disk Performance with Copilot in Azure](#public-preview-troubleshoot-disk-performance-with-copilot-in-azure)
@@ -63,9 +63,9 @@ Premium SSD v2 disks are now available in Austria East and in a second Availabil
 
 #### Public preview: Instant Access Snapshot for Premium SSD v2 and Ultra Disks
 
-By using Instant Access Snapshots for Premium SSD v2 and Ultra Disks, you can restore new disks right after creating snapshots of Premium SSD v2 and Ultra disks. Restore disks deliver high performance instantly, while data hydration continues rapidly in the background. For more information, see [instant access for Azure managed disk](/azure/virtual-machines/disks-instant-access-snapshots?tabs=azure-cli%2Cazure-cli-snapshot-state#snapshots-of-ultra-disks-and-premium-ssd-v2).
+By using Instant Access Snapshots for Premium SSD v2 and Ultra Disks, you can restore new disks right after creating snapshots of Premium SSD v2 and Ultra Disks. Restore disks deliver high performance instantly, while data hydration continues rapidly in the background. For more information, see [instant access for Azure Managed Disk](/azure/virtual-machines/disks-instant-access-snapshots?tabs=azure-cli%2Cazure-cli-snapshot-state#snapshots-of-ultra-disks-and-premium-ssd-v2).
 
-#### Generally available: Azure Site Recovery for Virtual Machines with Premium SSD v2 and Ultra disks
+#### Generally available: Azure Site Recovery for Virtual Machines with Premium SSD v2 and Ultra Disks
 
 Azure Site Recovery support for Virtual Machines with [Premium SSD v2](https://azure.microsoft.com/updates?id=495231) and [Ultra](https://azure.microsoft.com/updates?id=495843) disks is generally available. Azure Site Recovery provides seamless disaster recovery for Virtual Machines across Azure Regions and from on-premises to Azure, helping organizations maintain business continuity. It offers cost-effective replication, automated failover, and easy disaster recovery simulation, ensuring minimal production impact during disaster events. [Learn more](/azure/site-recovery/azure-to-azure-support-matrix).
 
@@ -82,7 +82,7 @@ To better support performance sensitive and mission critical workloads on Azure,
 
 ### Quarter 2 (April, May, June)
 
-#### Public preview: Azure Site Recovery for Virtual Machines with Premium SSD v2 and Ultra disks
+#### Public preview: Azure Site Recovery for Virtual Machines with Premium SSD v2 and Ultra Disks
 
 Azure Site Recovery support for Virtual Machines with [Premium SSD v2](https://azure.microsoft.com/updates?id=495231) and [Ultra](https://azure.microsoft.com/updates?id=495843) disks is in public preview. Azure Site Recovery provides seamless disaster recovery for Virtual Machines across Azure Regions and from on-premises to Azure, helping organizations maintain business continuity. It offers cost-effective replication, automated failover, and easy disaster recovery simulation, ensuring minimal production impact during disaster events. With built-in security, compliance support, and native integration with Azure services, Azure Site Recovery helps your organization stay resilient and minimize downtime. [Learn more](/azure/site-recovery/azure-to-azure-support-matrix).
 
@@ -90,9 +90,9 @@ Azure Site Recovery support for Virtual Machines with [Premium SSD v2](https://a
 
 The Disk Performance Troubleshooting Capability for Copilot in Azure is now [generally available](https://azure.microsoft.com/updates?id=474649) as a part of the Copilot in Azure General Availability. Now, you can use Copilot in Azure to analyze your [disk metrics](disks-metrics.md) and resolve any performance degradation issues when your application requires higher performance than what you configured for your VMs and disks. To learn more, see [Troubleshoot Disk Performance using Microsoft Copilot in Azure](/azure/copilot/troubleshoot-disk-performance).
 
-#### Generally available: Availability Set support for Premium SSD v2 Disk Storage
+#### Generally available: Availability Set support for Premium SSD v2 Storage
 
-Availability Set support for Premium SSD v2 disk storage is now [generally available](https://azure.microsoft.com/updates?id=494088). Availability Set enhances application availability by distributing virtual machines and their associated Premium SSD v2 disks across multiple fault domains, reducing the risk of a single point of failure. Premium SSD v2 provides low latency, consistent performance, flexible scalability, and cost efficiency making it an ideal choice for enterprise workloads such as SAP, SQL Server, and Oracle. The combination of Availability Set and Premium SSD v2 enables customers to achieve higher availability, performance, and cost optimization for their critical applications. For more information, see [Availability Sets with Premium SSD v2 documentation](https://aka.ms/AvSetWithPv2). 
+Availability Set support for Premium SSD v2 storage is now [generally available](https://azure.microsoft.com/updates?id=494088). Availability Set enhances application availability by distributing virtual machines and their associated Premium SSD v2 disks across multiple fault domains, reducing the risk of a single point of failure. Premium SSD v2 provides low latency, consistent performance, flexible scalability, and cost efficiency making it an ideal choice for enterprise workloads such as SAP, SQL Server, and Oracle. The combination of Availability Set and Premium SSD v2 enables customers to achieve higher availability, performance, and cost optimization for their critical applications. For more information, see [Availability Sets with Premium SSD v2 documentation](https://aka.ms/AvSetWithPv2). 
 
 #### Expanded regional availability for Premium SSD v2
 
@@ -110,7 +110,7 @@ The Disk Performance Troubleshooting Capability for Copilot in Azure is now avai
 
 #### Generally available: Convert existing disks to Premium SSD v2 disks
 
-Directly converting a disk to a Premium SSD v2 disk is [generally available](https://azure.microsoft.com/updates/?id=466729). This feature makes it easier to move your workloads from Standard HDD, Standard SSD, and Premium Disks, to Premium SSD v2 disks, and take advantage of its balance of price and performance capabilities. To learn more, see [Convert Premium SSD v2 disks](disks-convert-types.md#convert-premium-ssd-v2-disks).
+Directly converting a disk to a Premium SSD v2 is [generally available](https://azure.microsoft.com/updates/?id=466729). This feature makes it easier to move your workloads from Standard HDD, Standard SSD, and Premium Disks, to Premium SSD v2 disks, and take advantage of its balance of price and performance capabilities. To learn more, see [Convert Premium SSD v2 disks](disks-convert-types.md#convert-premium-ssd-v2-disks).
 
 #### Generally available: Expand Ultra Disks and Premium SSD v2 without downtime
 
@@ -130,7 +130,7 @@ The `LastOwnershipUpdateTime` property is now available for disks in the Azure p
 
 #### Generally available: Azure VM Backup support for Ultra Disks and Premium SSD v2
 
-Azure Backup enabled support on Azure VMs using Ultra Disks and Premium SSD v2 that offers high throughput, high IOPS, and low latency. Azure VM Backup support allows you to ensure business continuity for your virtual machines and to recover from any disasters or ransomware attacks. Enabling backup on VMs using Ultra Disks and Premium SSD v2 is available in all regions where Ultra disks and Premium SSD v2 disks are supported. For more information, see the [documentation](/azure/backup/backup-support-matrix-iaas#vm-storage-support) and enable backup on your Azure VMs. 
+Azure Backup enabled support on Azure VMs using Ultra Disks and Premium SSD v2 that offers high throughput, high IOPS, and low latency. Azure VM Backup support allows you to ensure business continuity for your virtual machines and to recover from any disasters or ransomware attacks. Enabling backup on VMs using Ultra Disks and Premium SSD v2 is available in all regions where Ultra Disks and Premium SSD v2 disks are supported. For more information, see the [documentation](/azure/backup/backup-support-matrix-iaas#vm-storage-support) and enable backup on your Azure VMs. 
 
 
 #### Generally available: Trusted launch support for Ultra Disks and Premium SSD v2
@@ -220,9 +220,9 @@ In quarter 1, support was added for creating disks from snapshots or other disks
 
 #### GA: Entra ID support for managed disks
 
-In quarter 1, support was added for using Entra ID to secure uploads and downloads of managed disks. For details, see [Secure downloads and uploads of Azure managed disks](disks-secure-upload-download.md).
+In quarter 1, support was added for using Entra ID to secure uploads and downloads of managed disks. For details, see [Secure downloads and uploads of Azure Managed Disks](disks-secure-upload-download.md).
 
 ## Next steps
 
-- [Azure managed disk types](disks-types.md)
-- [Introduction to Azure managed disks](managed-disks-overview.md)
+- [Azure Managed Disk types](disks-types.md)
+- [Introduction to Azure Managed Disks](managed-disks-overview.md)

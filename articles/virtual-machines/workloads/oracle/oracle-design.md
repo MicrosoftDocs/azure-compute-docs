@@ -155,7 +155,7 @@ Here are some tips as you consider disks.
 
 - **Default OS disks:** These disk types offer persistent data and caching. They're optimized for operating system access at startup, and aren't designed for either transactional or data warehouse (analytical) workloads.
 
-- **Managed disks:** Azure manages the storage accounts that you use for your VM disks. You specify the disk type and the size of the disk that you need. The type is most often Premium (SSD) for Oracle workloads. Azure creates and manages the disk for you. A premium SSD-managed disk is only available for memory-optimized and designed VM series. After you choose a particular VM size, the menu shows only the available premium storage SKUs that are based on that VM size.
+- **Managed disks:** Azure manages the storage accounts that you use for your VM disks. You specify the disk type and the size of the disk that you need. The type is most often Premium (SSD) for Oracle workloads. Azure creates and manages the disk for you. A Premium SSD-managed disk is only available for memory-optimized and designed VM series. After you choose a particular VM size, the menu shows only the available premium storage SKUs that are based on that VM size.
 
   :::image type="content" source="./media/oracle-design/premium_disk01.png" alt-text="Screenshot of the managed disk page." lightbox="./media/oracle-design/premium_disk01.png":::
 
@@ -181,7 +181,7 @@ After you have a clear picture of the I/O requirements, you can choose a combina
 - Separate redo logs, temp, and undo tablespaces on separate data disks.
 - Don't put any application files on default operating system disks. These disks aren't optimized for fast VM boot times, and they might not provide good performance for your application.
 - When you're using M-Series VMs on premium storage, enable [write accelerator](../../how-to-enable-write-accelerator.md) on the redo logs disk.
-- Consider moving redo logs with high latency to the ultra disk.
+- Consider moving redo logs with high latency to the Ultra Disk.
 
 ### Disk cache settings
 
@@ -193,11 +193,11 @@ To maximize throughput, start with read-only for host caching whenever possible.
 
 :::image type="content" source="./media/oracle-design/premium_disk02.png" alt-text="Screenshot of the managed disk page that shows the read-only option." lightbox="./media/oracle-design/premium_disk02.png":::
 
-- For operating system disks, use premium SSD with read-write host caching.
-- For data disks that contain the following, use premium SSD with read-only host caching: Oracle data files, temp files, control files, block change tracking files, BFILEs, files for external tables, and flashback logs.
-- For data disks that contain Oracle online redo log files, use premium SSD or UltraDisk with no host caching, the **None** option. Oracle redo log files that are archived and Oracle Recovery Manager backup sets, can also reside with the online redo log files. Host caching is limited to 4,095 GiB, so don't allocate a premium SSD larger than P50 with host caching. If you need more than 4 TiB of storage, stripe several premium SSDs with RAID-0. Use Linux LVM2 or Oracle Automatic Storage Management.
+- For operating system disks, use Premium SSD with read-write host caching.
+- For data disks that contain the following, use Premium SSD with read-only host caching: Oracle data files, temp files, control files, block change tracking files, BFILEs, files for external tables, and flashback logs.
+- For data disks that contain Oracle online redo log files, use Premium SSD or Ultra Disk with no host caching, the **None** option. Oracle redo log files that are archived and Oracle Recovery Manager backup sets, can also reside with the online redo log files. Host caching is limited to 4,095 GiB, so don't allocate a Premium SSD larger than P50 with host caching. If you need more than 4 TiB of storage, stripe several Premium SSDs with RAID-0. Use Linux LVM2 or Oracle Automatic Storage Management.
 
-If workloads vary greatly between the day and evening, and the I/O workload can support it, P1-P20 premium SSD with bursting might provide the performance required during night-time batch loads or limited I/O demands.  
+If workloads vary greatly between the day and evening, and the I/O workload can support it, P1-P20 Premium SSD with bursting might provide the performance required during night-time batch loads or limited I/O demands.  
 
 ## Security
 

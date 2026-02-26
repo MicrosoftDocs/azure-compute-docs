@@ -11,7 +11,7 @@ ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell, 
 
 ---
 
-# Use premium SSD v2 with VMs in availability set
+# Use Premium SSD v2 with VMs in availability set
 
 ## Introduction
 
@@ -21,7 +21,7 @@ Premium SSD v2 managed disks are supported with Azure Virtual Machines in availa
 
 Availability sets have fault isolation for many possible failures, to minimize single points of failure and to offer high availability.  If there's a failure in one storage fault domain, only the virtual machine (VM) instances with Premium SSD v2 disks on that specific fault domain are affected. Other VM instances, whose disks are placed on separate fault domains, remain unaffected and continue to operate normally. Availability sets are susceptible to certain shared infrastructure failures, like datacenter network failures, physical hardware failures or power interruptions which can affect multiple fault domains. 
 
-When a Premium SSD v2 disk located in one fault domain is attached to a VM in another fault domain, the system triggers a background copy. This process moves the disk to match the VM’s fault domain, helping ensure consistent alignment between compute and storage for better reliability and availability. 
+When a Premium SSD v2 located in one fault domain is attached to a VM in another fault domain, the system triggers a background copy. This process moves the disk to match the VM’s fault domain, helping ensure consistent alignment between compute and storage for better reliability and availability. 
 
 :::image type="content" source="media/availability-set-disk-move.png" alt-text="Diagram Showing Availability Set with Managed Disk Fault Domain alignment Disk Move." lightbox="media/availability-set-disk-move.png":::
 
@@ -62,7 +62,7 @@ To proceed, register the feature manually:
   az feature registration show --provider Microsoft.Compute --name PV2WithAVSetRegionWithoutZone 
   ```
 
-## Deploy a VM and a Premium SSD v2 disk within an availability set
+## Deploy a VM and a Premium SSD v2 within an availability set
 
 ### [Azure CLI](#tab/CLI)
  
@@ -93,13 +93,13 @@ az vm availability-set create -n myAvSet -g myResourceGroup --platform-fault-dom
 az vm create -n myVMname -g myResourceGroupName --availability-set myAvSetName --image Win2016Datacenter --count MyCount 
 ```
  
-* Attach a new Premium SSD v2 disk to existing VMs in an availability set
+* Attach a new Premium SSD v2 to existing VMs in an availability set
  
 ```azurecli-interactive
 az vm disk attach -g MyResourceGroupName --vm-name MyVMname --name MyDiskName --new --sku PremiumV2_LRS --size-gb MySize
 ```
  
-* Attach existing Premium SSD v2 disk to existing VMs in an Availability Set:
+* Attach existing Premium SSD v2 to existing VMs in an Availability Set:
  
 ```azurecli-interactive
 az vm disk attach -g MyResourceGroupName --vm-name MyVMname --disks MyDiskName
@@ -140,7 +140,7 @@ New-AzVm `
 -Credential $credential
 ```
 
-* Attach a new Premium SSD v2 disk to existing VMs in an availability set: 
+* Attach a new Premium SSD v2 to existing VMs in an availability set: 
 ```powershell
 
 $vm = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmName 
@@ -148,7 +148,7 @@ $vm = Add-AzVMDataDisk -VM $vm -Name $diskName -CreateOption Empty -StorageAccou
 Update-AzVM -VM $vm -ResourceGroupName $resourceGroupName 
 ```
 
-* Attach existing Premium SSD v2 disk to existing VMs in an availability set:
+* Attach existing Premium SSD v2 to existing VMs in an availability set:
  
 ```powershell
 $vm = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmName

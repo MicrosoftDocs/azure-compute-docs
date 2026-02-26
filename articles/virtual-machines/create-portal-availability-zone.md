@@ -106,7 +106,7 @@ Existing OS and Data Disks are currently not supported. New Data Disk Source Typ
    #### Supported Disk types
    - Standard HDDs (hard disk drives)
    - Premium SSDs
-   - Premium SSD V2
+   - Premium SSD v2
    - Ultra Disks
   - Standard SSD ZRS
 

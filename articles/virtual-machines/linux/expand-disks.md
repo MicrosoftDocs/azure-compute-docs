@@ -59,7 +59,7 @@ lrwxrwxrwx. 1 root root  12 Sep  9 21:54 lun2 -> ../../../sde
 lrwxrwxrwx. 1 root root  13 Sep  9 21:54 lun2-part1 -> ../../../sde1
 ```
 
-## Expand an Azure managed disk
+## Expand an Azure Managed Disk
 
 ### Expand without downtime
 
@@ -69,7 +69,7 @@ This feature has the following limitations.
 
 [!INCLUDE [virtual-machines-disks-expand-without-downtime-restrictions](../includes/virtual-machines-disks-expand-without-downtime-restrictions.md)]
 
-### Expand Azure managed disk
+### Expand Azure Managed Disk
 
 Make sure that you have the latest [Azure CLI](/cli/azure/install-az-cli2) installed and are signed in to an Azure account by using [az login](/cli/azure/reference-index#az-login).
 

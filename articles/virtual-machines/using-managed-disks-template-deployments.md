@@ -228,14 +228,14 @@ To create managed availability sets with VMs using managed disks, add the `sku` 
 }
 ```
 
-### Standard SSD disks
+### Standard SSDs
 
-Below are the parameters needed in the Resource Manager template to create Standard SSD Disks:
+Below are the parameters needed in the Resource Manager template to create Standard SSDs:
 
 * *apiVersion* for Microsoft.Compute must be set as `2018-04-01` (or later)
 * Specify *managedDisk.storageAccountType* as `StandardSSD_LRS`
 
-The following example shows the *properties.storageProfile.osDisk* section for a VM that uses Standard SSD Disks:
+The following example shows the *properties.storageProfile.osDisk* section for a VM that uses Standard SSDs:
 
 ```json
 "osDisk": {
@@ -249,7 +249,7 @@ The following example shows the *properties.storageProfile.osDisk* section for a
 }
 ```
 
-For a complete template example of how to create a Standard SSD disk with a template, see [Create a VM from a Windows Image with Standard SSD Data Disks](https://github.com/azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-with-standardssd-disk/).
+For a complete template example of how to create a Standard SSD with a template, see [Create a VM from a Windows Image with Standard SSD Data Disks](https://github.com/azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-with-standardssd-disk/).
 
 ### Additional scenarios and customizations
 

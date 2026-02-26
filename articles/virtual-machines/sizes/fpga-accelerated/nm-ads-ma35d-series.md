@@ -64,11 +64,11 @@ Local (temp) storage info for each size
 *Full Windows guest OS image is not supported on ephemeral OS disk.
 
 ### Storage resources
-- [Introduction to Azure managed disks](/azure/virtual-machines/managed-disks-overview) 
+- [Introduction to Azure Managed Disks](/azure/virtual-machines/managed-disks-overview) 
 
-- [Azure managed disk types](/azure/virtual-machines/disks-types) 
+- [Azure Managed Disk types](/azure/virtual-machines/disks-types) 
 
-- [Share an Azure managed disk](/azure/virtual-machines/disks-shared)   
+- [Share an Azure Managed Disk](/azure/virtual-machines/disks-shared)   
 
 ### [Network](#tab/Network)
 

@@ -147,7 +147,7 @@ The following diagram is an architecture that uses Oracle Active Data Guard FSFO
 
 GoldenGate enables the exchange and manipulation of data at the transaction level among multiple, heterogeneous platforms across the enterprise. It moves committed transactions with transaction integrity and minimal overhead on your existing infrastructure. Its modular architecture gives you the flexibility to extract and replicate selected data records, transactional changes, and changes to data definition language (DDL) across various topologies.
 
-Oracle GoldenGate allows you to configure your database for high availability by providing bidirectional replication. This approach allows you to set up a *multi-master* or *active-active configuration* that requires application-level awareness. The following diagram is a recommended architecture for Oracle GoldenGate active-active setup on Azure. In the following architecture, the Oracle database has been configured using a hyperthreaded [memory optimized virtual machine](../../sizes-memory.md) with [constrained core vCPUs](../../../virtual-machines/constrained-vcpu.md) to save on licensing costs and maximize performance. The architecture uses multiple premium or ultra disks (managed disks) for performance and availability.
+Oracle GoldenGate allows you to configure your database for high availability by providing bidirectional replication. This approach allows you to set up a *multi-master* or *active-active configuration* that requires application-level awareness. The following diagram is a recommended architecture for Oracle GoldenGate active-active setup on Azure. In the following architecture, the Oracle database has been configured using a hyperthreaded [memory optimized virtual machine](../../sizes-memory.md) with [constrained core vCPUs](../../../virtual-machines/constrained-vcpu.md) to save on licensing costs and maximize performance. The architecture uses multiple premium or Ultra Disks (managed disks) for performance and availability.
 
 :::image type="content" source="./media/oracle-reference-architecture/oracledb_gg_az.png" alt-text="Diagram that shows Oracle Database using availability zones with Data Guard Broker - FSFO." lightbox="./media/oracle-reference-architecture/oracledb_gg_az.png":::
 
@@ -257,10 +257,10 @@ Patching your virtual machine operating system can be automated using [Azure Aut
 
 ## Architecture and design considerations
 
-- Consider using hyperthreaded [memory optimized virtual machine](../../sizes-memory.md) with [constrained core vCPUs](../../../virtual-machines/constrained-vcpu.md) for your Oracle Database VM to save on licensing costs and maximize performance. Use multiple premium or ultra disks (managed disks) for performance and availability.
+- Consider using hyperthreaded [memory optimized virtual machine](../../sizes-memory.md) with [constrained core vCPUs](../../../virtual-machines/constrained-vcpu.md) for your Oracle Database VM to save on licensing costs and maximize performance. Use multiple premium or Ultra Disks (managed disks) for performance and availability.
 - When you use managed disks, the disk/device name might change on restart. We recommend that you use the device UUID instead of the name to ensure your mounts persist in sprite of restarting. For more information, see [Add the new file system to /etc/fstab](/previous-versions/azure/virtual-machines/linux/configure-raid#add-the-new-file-system-to-etcfstab).
 - Use availability zones to achieve high availability in-region.
-- Consider using ultra disks when available or premium disks for your Oracle database.
+- Consider using Ultra Disks when available or premium disks for your Oracle database.
 - Consider setting up a standby Oracle database in another Azure region using Oracle Data Guard.
 - Consider using [proximity placement groups](../../co-location.md#proximity-placement-groups) to reduce the latency between your application and database tier.
 - Azure VMs maximum network bandwidth is (typically) higher than the maximum disk throughput on the same SKU. You can achieve higher throughput on the same VM SKU or use a smaller VM SKU by using high-performance, low-latency networked storage such as [Azure NetApp Files](/azure/azure-netapp-files/azure-netapp-files-introduction). for the database.

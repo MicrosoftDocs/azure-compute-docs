@@ -15,7 +15,7 @@ ms.devlang: azurecli
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
-Images in an Azure Compute Gallery (formerly known as Shared Image Gallery) are stored as snapshots. These images are automatically encrypted through server-side 256-bit encryption [AES encryption](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard). Server-side encryption is also FIPS 140-2 compliant. For more information about the cryptographic modules underlying Azure managed disks, see [Cryptography API: Next Generation](/windows/desktop/seccng/cng-portal).
+Images in an Azure Compute Gallery (formerly known as Shared Image Gallery) are stored as snapshots. These images are automatically encrypted through server-side 256-bit encryption [AES encryption](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard). Server-side encryption is also FIPS 140-2 compliant. For more information about the cryptographic modules underlying Azure Managed Disks, see [Cryptography API: Next Generation](/windows/desktop/seccng/cng-portal).
 
 You can rely on platform-managed keys for the encryption of your images, or use your own keys. You can also use both of these features together for doubled encryption. If you choose to manage encryption with your own keys, you can specify a *customer-managed key* to use for encrypting and decrypting all disks in your images. 
 

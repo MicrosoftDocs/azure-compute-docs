@@ -60,9 +60,9 @@ Local (temp) storage information for each size.
 | Standard_NV28adms_V710_v5 | 14 | 1536 |
 
 #### Storage resources
-- [Introduction to Azure managed disks](../../managed-disks-overview.md)
-- [Azure managed disk types](../../disks-types.md)
-- [Share an Azure managed disk](../../disks-shared.md)
+- [Introduction to Azure Managed Disks](../../managed-disks-overview.md)
+- [Azure Managed Disk types](../../disks-types.md)
+- [Share an Azure Managed Disk](../../disks-shared.md)
 
 #### Table definitions
 - <sup>1</sup>Temp disk speed often differs between RR (Random Read) and RW (Random Write) operations. RR operations are typically faster than RW operations. The RW speed is usually slower than the RR speed on series where only the RR speed value is listed.
@@ -83,9 +83,9 @@ Remote (uncached) storage information for each size.
 | Standard_NV28adms_V710_v5 | 14 | 5320 | 1260 |
 
 #### Storage resources
-- [Introduction to Azure managed disks](../../managed-disks-overview.md)
-- [Azure managed disk types](../../disks-types.md)
-- [Share an Azure managed disk](../../disks-shared.md)
+- [Introduction to Azure Managed Disks](../../managed-disks-overview.md)
+- [Azure Managed Disk types](../../disks-types.md)
+- [Share an Azure Managed Disk](../../disks-shared.md)
 
 #### Table definitions
 - <sup>1</sup>Some sizes support [bursting](../../disk-bursting.md) to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.

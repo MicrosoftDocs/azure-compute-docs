@@ -11,7 +11,7 @@
 # Customer intent: As a cloud architect, I want to understand the `maxShares` limits for different disk types, so that I can configure shared disks for my failover cluster effectively without exceeding the allowable limits.
 ---
 
-For now, only ultra disks, premium SSD v2, premium SSD, and standard SSDs can enable shared disks. Different disk sizes may have a different `maxShares` limit, which you can't exceed when setting the `maxShares` value.
+For now, only Ultra Disks, Premium SSD v2, Premium SSD, and Standard SSDs can enable shared disks. Different disk sizes may have a different `maxShares` limit, which you can't exceed when setting the `maxShares` value.
 
 For each disk, you can define a `maxShares` value that represents the maximum number of nodes that can simultaneously share the disk. For example, if you plan to set up a 2-node failover cluster, you would set `maxShares=2`. The maximum value is an upper bound. Nodes can join or leave the cluster (mount or unmount the disk) as long as the number of nodes is lower than the specified `maxShares` value.
 
@@ -20,7 +20,7 @@ For each disk, you can define a `maxShares` value that represents the maximum nu
 
 ### Premium SSD ranges
 
-The following table illustrates the allowed maximum values for `maxShares` by premium SSD sizes:
+The following table illustrates the allowed maximum values for `maxShares` by Premium SSD sizes:
 
 |Disk sizes  |maxShares limit  |
 |---------|---------|
@@ -32,7 +32,7 @@ The IOPS and bandwidth limits for a disk aren't affected by the `maxShares` valu
 
 ### Standard SSD ranges
 
-The following table illustrates the allowed maximum values for `maxShares` by standard SSD sizes:
+The following table illustrates the allowed maximum values for `maxShares` by Standard SSD sizes:
 
 |Disk sizes  |maxShares limit  |
 |---------|---------|
@@ -42,10 +42,10 @@ The following table illustrates the allowed maximum values for `maxShares` by st
 
 The IOPS and bandwidth limits for a disk aren't affected by the `maxShares` value. For example, the max IOPS of a E15 disk is 500 whether maxShares = 1 or maxShares > 1.
 
-### Ultra disk ranges
+### Ultra Disk ranges
 
-The minimum `maxShares` value is 1, while the maximum `maxShares` value is 15. There are no size restrictions on ultra disks, any size ultra disk can use any value for `maxShares`, up to and including the maximum value.
+The minimum `maxShares` value is 1, while the maximum `maxShares` value is 15. There are no size restrictions on Ultra Disks, any size Ultra Disk can use any value for `maxShares`, up to and including the maximum value.
 
 ### Premium SSD v2 ranges
 
-The minimum `maxShares` value is 1, while the maximum `maxShares` value is 15. There are no size restrictions on Premium SSD v2, any size Premium SSD v2 disk can use any value for `maxShares`, up to and including the maximum value.
+The minimum `maxShares` value is 1, while the maximum `maxShares` value is 15. There are no size restrictions on Premium SSD v2, any size Premium SSD v2 can use any value for `maxShares`, up to and including the maximum value.
