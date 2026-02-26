@@ -26,7 +26,6 @@ To cover as many scenarios as possible, it is suggested to provide the following
 - **Azure Container Instances Contributor**
 - **Standby Container Group Pool Contributor**
 - **Network Contributor**
-- **Managed Identity Contributor**
 - **Managed Identity Operator** (If creating container group in standby pool requires MI (for example: to download private image))
 - **Storage Blob Data Contributor** (if using Azure Storage for container data)
 - **Container Registry Repository Reader** (if using images stored in Azure Container Registry)
