@@ -51,7 +51,7 @@ Azure Disk Storage regularly receives updates for new features and enhancements.
 
 #### Expanded regional availability for Premium SSD v2
 
-Premium SSD v2 disks are now available in Brazil Southeast and in a third Availability Zone in Indonesia Central and Malaysia West.
+Premium SSD v2 disks are now available in Brazil Southeast, Germany North, Switzerland West and in a third Availability Zone in Indonesia Central, Malaysia West and New Zealand North.
 
 ## What's new in 2025
 
