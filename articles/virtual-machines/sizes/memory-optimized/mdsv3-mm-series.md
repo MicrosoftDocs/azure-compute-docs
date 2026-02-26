@@ -66,9 +66,9 @@ Local (temp) storage info for each size
 | Standard_M176ds_4_v3 | 1 | 400 | 160,000 | 1,600 |
 
 #### Storage resources
-- [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
-- [Azure managed disk types](../../../virtual-machines/disks-types.md)
-- [Share an Azure managed disk](../../../virtual-machines/disks-shared.md)
+- [Introduction to Azure Managed Disks](../../../virtual-machines/managed-disks-overview.md)
+- [Azure Managed Disk types](../../../virtual-machines/disks-types.md)
+- [Share an Azure Managed Disk](../../../virtual-machines/disks-shared.md)
 
 #### Table definitions
 - <sup>1</sup>Temp disk speed often differs between SR (Sequential Read) and RW (Sequential Write) operations. SR operations are typically faster than SW operations. The SW speed is usually slower than the SR speed on series where only the SR speed value is listed.
@@ -80,7 +80,7 @@ Local (temp) storage info for each size
 
 Remote (uncached) storage info for each size
 
-| Size Name | Max Remote Storage Disks (Qty.) | Max Uncached Premium SSD Disk IOPS | Max Uncached Premium SSD Throughput (MB/s) | Max Uncached Ultra Disk and Premium SSD v2 IOPS | Max Uncached Ultra Disk and Premium SSD v2 Throughput (MB/s) |
+| Size Name | Max Remote Storage Disks (Qty.) | Max Uncached Premium SSD IOPS | Max Uncached Premium SSD Throughput (MB/s) | Max Uncached Ultra Disk and Premium SSD v2 IOPS | Max Uncached Ultra Disk and Premium SSD v2 Throughput (MB/s) |
 | --- | --- | --- | --- | --- | --- |
 | Standard_M12ds_v3 | 64 | 16,250 | 390 | 16,250 | 390 |
 | Standard_M24ds_v3 | 64 | 32,500 | 780 | 32,500 | 780 |
@@ -91,9 +91,9 @@ Remote (uncached) storage info for each size
 | Standard_M176ds_4_v3 | 64 | 130,000 | 4,000 | 130,000 | 4,000 |
 
 #### Storage resources
-- [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
-- [Azure managed disk types](../../../virtual-machines/disks-types.md)
-- [Share an Azure managed disk](../../../virtual-machines/disks-shared.md)
+- [Introduction to Azure Managed Disks](../../../virtual-machines/managed-disks-overview.md)
+- [Azure Managed Disk types](../../../virtual-machines/disks-types.md)
+- [Share an Azure Managed Disk](../../../virtual-machines/disks-shared.md)
 
 #### Table definitions
 - <sup>1</sup>Some sizes support [bursting](../../disk-bursting.md) to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.

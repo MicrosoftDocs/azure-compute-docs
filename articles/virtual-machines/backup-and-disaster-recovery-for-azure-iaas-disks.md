@@ -9,15 +9,15 @@
 # Customer intent: "As a cloud architect, I want to develop a robust backup and disaster recovery strategy for my Azure VMs and their managed disks, so that my organization can ensure data availability and minimize downtime during outages or data loss incidents."
 ---
 
-# Backup and disaster recovery for Azure managed disks
+# Backup and disaster recovery for Azure Managed Disks
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets
 
-This article explains how to plan for backup and disaster recovery for Azure managed disks. It introduces Azure built-in redundancy and some common failure types. After that, it covers typical backup and disaster recovery scenarios. Finally, it compares each backup and disaster recovery option for Azure managed disks.
+This article explains how to plan for backup and disaster recovery for Azure Managed Disks. It introduces Azure built-in redundancy and some common failure types. After that, it covers typical backup and disaster recovery scenarios. Finally, it compares each backup and disaster recovery option for Azure Managed Disks.
 
 ## Azure built-in redundancy options
 
-Azure managed disks have [two built-in redundancy options](disks-redundancy.md) to protect your data against failures:
+Azure Managed Disks have [two built-in redundancy options](disks-redundancy.md) to protect your data against failures:
 -	Locally redundant storage (LRS) replicates your data three times within a single data center in a particular region. LRS protects your data against server rack and drive failures. 
 -	Zone-redundant storage (ZRS) provides synchronous replication of data across zones in a region, enabling disks to tolerate zonal failures that may occur due to natural disasters or hardware issues.
 

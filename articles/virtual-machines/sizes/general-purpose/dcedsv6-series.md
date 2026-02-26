@@ -85,7 +85,7 @@ Local (temp) storage available for each size.
 
 Remote (uncached) storage available for each size.
 
-| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD Disk IOPS | Uncached Premium SSD Throughput (MB/s) 
+| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD IOPS | Uncached Premium SSD Throughput (MB/s) 
 | --- | --- | --- | --- |
 | Standard_DC2eds_v6 | 8 | 3750 | 106 |
 | Standard_DC4eds_v6 | 12 | 6400 | 212 |
@@ -98,9 +98,9 @@ Remote (uncached) storage available for each size.
 | Standard_DC128eds_v6 | 64 | 204800 | 4000 |
 
 #### Storage resources
-- [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
-- [Azure managed disk types](../../../virtual-machines/disks-types.md)
-- [Share an Azure managed disk](../../../virtual-machines/disks-shared.md)
+- [Introduction to Azure Managed Disks](../../../virtual-machines/managed-disks-overview.md)
+- [Azure Managed Disk types](../../../virtual-machines/disks-types.md)
+- [Share an Azure Managed Disk](../../../virtual-machines/disks-shared.md)
 
 #### Table definitions
 

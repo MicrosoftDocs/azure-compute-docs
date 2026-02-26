@@ -13,7 +13,7 @@ ms.custom: references_regions
 
 The memory-optimized Ebsv5 and Ebdsv5 Azure virtual machine (VM) series deliver higher remote storage performance in each VM size than the [Ev4 series](ev4-esv4-series.md). The increased remote storage performance of the Ebsv5 and Ebdsv5 VMs is ideal for storage throughput-intensive workloads. For example, relational databases and data analytics applications.  
 
-The Ebsv5 and Ebdsv5 VMs offer up to 260000 IOPS and 8000 MBps of remote disk storage throughput. Both series also include up to 672 GiB of RAM. The Ebdsv5 series has local SSD storage up to 3800 GiB. Both series provide a 3X increase in remote storage performance of data-intensive workloads compared to prior VM generations. You can use these series to consolidate existing workloads on fewer VMs or smaller VM sizes while achieving potential cost savings. The Ebdsv5 series comes with a local disk and Ebsv5 is without a local disk. We recommend choosing Premium SSD, Premium SSD v2 or Ultra disks to attain the published disk performance.
+The Ebsv5 and Ebdsv5 VMs offer up to 260000 IOPS and 8000 MBps of remote disk storage throughput. Both series also include up to 672 GiB of RAM. The Ebdsv5 series has local SSD storage up to 3800 GiB. Both series provide a 3X increase in remote storage performance of data-intensive workloads compared to prior VM generations. You can use these series to consolidate existing workloads on fewer VMs or smaller VM sizes while achieving potential cost savings. The Ebdsv5 series comes with a local disk and Ebsv5 is without a local disk. We recommend choosing Premium SSD, Premium SSD v2 or Ultra Disks to attain the published disk performance.
 
 The Ebdsv5 and Ebsv5 series run on the Intel® Xeon® Platinum 8370C (Ice Lake) processors in a hyper-threaded configuration. The series are ideal for various memory-intensive enterprise applications. They feature:
 
@@ -46,7 +46,7 @@ Ebdsv5-series sizes run on the Intel® Xeon® Platinum 8370C (Ice Lake) processo
 
 ## Ebdsv5 Series (NVMe)
 
-| Size | vCPU | Memory: GiB | Temp storage (SSD) GiB | Max data disks | Max temp storage throughput: IOPS / MBps | Max uncached Premium SSD  disk throughput: IOPS/MBps  | Max burst uncached Premium SSD disk throughput: IOPS/MBps  | Max uncached Ultra Disk and Premium SSD V2 disk throughput: IOPS/MBps  | Max burst uncached Ultra Disk and Premium SSD V2 disk throughput: IOPS/MBps | Max NICs | Network bandwidth |
+| Size | vCPU | Memory: GiB | Temp storage (SSD) GiB | Max data disks | Max temp storage throughput: IOPS / MBps | Max uncached Premium SSD throughput: IOPS/MBps  | Max burst uncached Premium SSD throughput: IOPS/MBps  | Max uncached Ultra Disk and Premium SSD v2 throughput: IOPS/MBps  | Max burst uncached Ultra Disk and Premium SSD v2 throughput: IOPS/MBps | Max NICs | Network bandwidth |
 |----------------------|-----|-----|------|----|-------------|-------------|-------------|--------------|--------------|---|-------|
 | Standard_E2bds_v5    | 2   | 16  | 75   | 4  | 9000/125    | 8000/230    | 10000/1200  | 12000/300    | 15000/1200   | 2 | 12500 |
 | Standard_E4bds_v5    | 4   | 32  | 150  | 8  | 19000/250   | 16000/460   | 20000/1200  | 21400/600    | 30000/1200   | 2 | 12500 |
@@ -60,7 +60,7 @@ Ebdsv5-series sizes run on the Intel® Xeon® Platinum 8370C (Ice Lake) processo
 
 ## Ebdsv5 Series (SCSI)
 
-| Size | vCPU | Memory: GiB | Temp storage (SSD) GiB | Max data disks | Max temp storage throughput: IOPS / MBps | Max uncached Premium SSD disk throughput: IOPS/MBps  | Max burst uncached Premium SSD disk throughput: IOPS/MBps  | Max uncached Ultra Disk and Premium SSD V2 disk throughput: IOPS/MBps  | Max burst uncached Ultra Disk and Premium SSD V2 disk throughput: IOPS/MBps | Max NICs | Network bandwidth |
+| Size | vCPU | Memory: GiB | Temp storage (SSD) GiB | Max data disks | Max temp storage throughput: IOPS / MBps | Max uncached Premium SSD throughput: IOPS/MBps  | Max burst uncached Premium SSD throughput: IOPS/MBps  | Max uncached Ultra Disk and Premium SSD v2 throughput: IOPS/MBps  | Max burst uncached Ultra Disk and Premium SSD v2 throughput: IOPS/MBps | Max NICs | Network bandwidth |
 |--------------------|----|-----|------|----|-------------|-------------|-------------|--------------|------------|---|-------|
 | Standard_E2bds_v5  | 2  | 16  | 75   | 4  | 9000/125    | 6000/170    | 10000/1200  | 8000/170    | 15000/1200  | 2 | 12500 |
 | Standard_E4bds_v5  | 4  | 32  | 150  | 8  | 19000/250   | 12100/350   | 20000/1200  | 16200/350   | 30000/1200  | 2 | 12500 |
@@ -88,7 +88,7 @@ Ebsv5-series sizes run on the Intel® Xeon® Platinum 8272CL (Cascade Lake). The
 
 ## Ebsv5 Series (NVMe)
 
-| Size | vCPU | Memory: GiB | Max data disks |  Max uncached Premium SSD disk throughput: IOPS/MBps  | Max burst uncached Premium SSD disk throughput: IOPS/MBps  | Max uncached Ultra Disk and Premium SSD V2 disk throughput: IOPS/MBps  | Max burst uncached Ultra Disk and Premium SSD V2 disk throughput: IOPS/MBps  | Max NICs | Network bandwidth |
+| Size | vCPU | Memory: GiB | Max data disks |  Max uncached Premium SSD throughput: IOPS/MBps  | Max burst uncached Premium SSD throughput: IOPS/MBps  | Max uncached Ultra Disk and Premium SSD v2 throughput: IOPS/MBps  | Max burst uncached Ultra Disk and Premium SSD v2 throughput: IOPS/MBps  | Max NICs | Network bandwidth |
 |---------------------|-----|-----|----|-------------|-------------|--------------|--------------|---|-------|
 | Standard_E2bs_v5    | 2   | 16  | 4  | 8000/230    | 10000/1200  | 12000/300    | 15000/1200   | 2 | 12500 |
 | Standard_E4bs_v5    | 4   | 32  | 8  | 16000/460   | 20000/1200  | 21400/600    | 30000/1200   | 2 | 12500 |
@@ -102,7 +102,7 @@ Ebsv5-series sizes run on the Intel® Xeon® Platinum 8272CL (Cascade Lake). The
 
 ## Ebsv5 Series (SCSI)
 
-| Size | vCPU | Memory: GiB | Max data disks |  Max uncached Premium SSD disk throughput: IOPS/MBps  | Max burst uncached Premium SSD disk throughput: IOPS/MBps  | Max uncached Ultra Disk and Premium SSD V2 disk throughput: IOPS/MBps  | Max burst uncached Ultra Disk and Premium SSD V2 disk throughput: IOPS/MBps  | Max NICs | Network bandwidth |
+| Size | vCPU | Memory: GiB | Max data disks |  Max uncached Premium SSD throughput: IOPS/MBps  | Max burst uncached Premium SSD throughput: IOPS/MBps  | Max uncached Ultra Disk and Premium SSD v2 throughput: IOPS/MBps  | Max burst uncached Ultra Disk and Premium SSD v2 throughput: IOPS/MBps  | Max NICs | Network bandwidth |
 |-------------------|----|-----|----|-------------|-------------|-------------|-------------|---|-------|
 | Standard_E2bs_v5  | 2  | 16  | 4  | 6000/170    | 10000/1200  | 8000/170    | 15000/1200  | 2 | 12500 |
 | Standard_E4bs_v5  | 4  | 32  | 8  | 12100/350   | 20000/1200  | 16200/350   | 30000/1200  | 2 | 12500 |
@@ -118,7 +118,7 @@ Ebsv5-series sizes run on the Intel® Xeon® Platinum 8272CL (Cascade Lake). The
 ## Ebsv5 NVMe FAQ
 
 ### How is the NVMe enabled Ebsv5 different from the L series VM that Azure offers?
-The NVMe enabled Ebsv5 series is designed to offer the highest Azure managed disk storage performance. The L series VMs are designed to offer higher IOPS and throughout on the local NVMe disks, which are ephemeral. Refer to the [VM sizes documentation](/azure/virtual-machines/sizes) for details on the performance offered by the Ebsv5 and L series. 
+The NVMe enabled Ebsv5 series is designed to offer the highest Azure Managed Disk storage performance. The L series VMs are designed to offer higher IOPS and throughout on the local NVMe disks, which are ephemeral. Refer to the [VM sizes documentation](/azure/virtual-machines/sizes) for details on the performance offered by the Ebsv5 and L series. 
 
 ### What I/O size is recommended to achieve the published performance? 
 To achieve the maximum IOPS, we recommend using a 4 KiB or 8 KiB block size. For maximum performance throughput, you can choose to use one of the following block sizes: 64 KiB, 128 KiB, 256 KiB, 512 KiB or 1024 KiB. However, it's important to optimize the I/O size based on the specific requirements of your application and to use the recommended block sizes only as a guideline. 

@@ -351,7 +351,7 @@ Before you can take advantage of the new disk size, you need to expand the volum
 
 ## Upgrade a disk
 
-There are several ways to respond to changes in your organization's workloads. For example, you may choose to upgrade a standard HDD to a premium SSD to handle increased demand.
+There are several ways to respond to changes in your organization's workloads. For example, you may choose to upgrade a Standard HDD to a Premium SSD to handle increased demand.
 
 Follow the steps in this section to upgrade a managed disk from standard to premium.
 

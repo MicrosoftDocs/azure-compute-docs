@@ -43,7 +43,7 @@ The following table provides a comparison of the five disk types to help you dec
 
 [!INCLUDE [disks-hdd-os-statement](../virtual-machines/includes/disks-hdd-os-statement.md)]
 
-|         | Ultra disk | Premium SSD v2 | Premium SSD | Standard SSD | <nobr>Standard HDD</nobr> |
+|         | Ultra Disk | Premium SSD v2 | Premium SSD | Standard SSD | <nobr>Standard HDD</nobr> |
 | ------- | ---------- | ----------- | ------------ | ------------ | ------------ |
 | **Disk type** | SSD | SSD |SSD | SSD | HDD |
 | **Scenario**  | IO-intensive workloads such as SAP HANA, top tier databases (for example, SQL, Oracle), and other transaction-heavy workloads. | Production and performance-sensitive workloads that consistently require low latency and high IOPS and throughput | Production and performance sensitive workloads | Web servers, lightly used enterprise applications and dev/test | Backup, non-critical, infrequent access |

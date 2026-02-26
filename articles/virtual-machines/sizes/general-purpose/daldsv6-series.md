@@ -67,9 +67,9 @@ Local (temp) storage info for each size
 | Standard_D96alds_v6 | 6 | 880 | 1800000 | 8640 |
 
 #### Storage resources
-- [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
-- [Azure managed disk types](../../../virtual-machines/disks-types.md)
-- [Share an Azure managed disk](../../../virtual-machines/disks-shared.md)
+- [Introduction to Azure Managed Disks](../../../virtual-machines/managed-disks-overview.md)
+- [Azure Managed Disk types](../../../virtual-machines/disks-types.md)
+- [Share an Azure Managed Disk](../../../virtual-machines/disks-shared.md)
 
 #### Table definitions
 - <sup>1</sup> Total local temporary storage is calculated by multiplying the max number of storage disks with the temp disk size. For example, for the Standard_D96alds_v6, the total local temporary storage capacity is `6 x 880 GiB = 5280 GiB`.
@@ -83,7 +83,7 @@ Local (temp) storage info for each size
 
 Remote (uncached) storage info for each size
 
-| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD Disk IOPS | Uncached Premium SSD Throughput (MB/s) | Uncached Premium SSD Burst<sup>1</sup> IOPS | Uncached Premium SSD Burst<sup>1</sup> Throughput (MB/s) | Uncached Ultra Disk and Premium SSD v2 IOPS | Uncached Ultra Disk and Premium SSD v2 Throughput (MB/s) | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 IOPS | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 Disk Throughput (MB/s) |
+| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD IOPS | Uncached Premium SSD Throughput (MB/s) | Uncached Premium SSD Burst<sup>1</sup> IOPS | Uncached Premium SSD Burst<sup>1</sup> Throughput (MB/s) | Uncached Ultra Disk and Premium SSD v2 IOPS | Uncached Ultra Disk and Premium SSD v2 Throughput (MB/s) | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 IOPS | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 Throughput (MB/s) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_D2alds_v6 | 4 | 4000 | 90 | 20000 | 1250 | 4000 | 90 | 20000 | 1250 |
 | Standard_D4alds_v6 | 8 | 7600 | 180 | 20000 | 1250 | 7600 | 180 | 20000 | 1250 |
@@ -95,9 +95,9 @@ Remote (uncached) storage info for each size
 | Standard_D96alds_v6 | 32 | 175000 | 4320 | 175000 | 5090 | 175000 | 4320 | 175000 | 5090 |
 
 #### Storage resources
-- [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
-- [Azure managed disk types](../../../virtual-machines/disks-types.md)
-- [Share an Azure managed disk](../../../virtual-machines/disks-shared.md)
+- [Introduction to Azure Managed Disks](../../../virtual-machines/managed-disks-overview.md)
+- [Azure Managed Disk types](../../../virtual-machines/disks-types.md)
+- [Share an Azure Managed Disk](../../../virtual-machines/disks-shared.md)
 
 #### Table definitions
 - <sup>1</sup>Some sizes support [bursting](../../disk-bursting.md) to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.

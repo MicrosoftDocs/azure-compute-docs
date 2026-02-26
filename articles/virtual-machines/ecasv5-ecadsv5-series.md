@@ -26,7 +26,7 @@ These VM series also offer a combination of vCPUs and memory to meet the require
 
 ECasv5-series VMs offer a combination of vCPU and memory for memory-intensive enterprise applications. These VMs with no local disk provide a better value proposition for workloads where you don't need a local temp disk. For more information, see the [FAQ for Azure VM sizes with no local temporary disk](azure-vms-no-temp-disk.yml). 
 
-This series supports Standard SSD, Standard HDD, and Premium SSD disk types. Billing for disk storage and VMs is separate. To estimate your costs, use the [Pricing Calculator](https://azure.microsoft.com/pricing/calculator/).
+This series supports Standard SSD, Standard HDD, and Premium SSD types. Billing for disk storage and VMs is separate. To estimate your costs, use the [Pricing Calculator](https://azure.microsoft.com/pricing/calculator/).
 
 > [!NOTE]
 > There are some [pricing differences based on your encryption settings](/azure/confidential-computing/confidential-vm-overview#encryption-pricing-differences) for confidential VMs.
@@ -66,7 +66,7 @@ This series supports Standard SSD, Standard HDD, and Premium SSD disk types. Bil
 
 ECadsv5-series VMs offer a combination of vCPU, memory, and temporary storage for memory-intensive enterprise applications. These VMs offer local storage.
 
-This series supports Standard SSD, Standard HDD, and Premium SSD disk types. Billing for disk storage and VMs is separate. To estimate your costs, use the [Pricing Calculator](https://azure.microsoft.com/pricing/calculator/).
+This series supports Standard SSD, Standard HDD, and Premium SSD types. Billing for disk storage and VMs is separate. To estimate your costs, use the [Pricing Calculator](https://azure.microsoft.com/pricing/calculator/).
 
 > [!NOTE]
 > There are some [pricing differences based on your encryption settings](/azure/confidential-computing/confidential-vm-overview#encryption-pricing-differences) for confidential VMs.

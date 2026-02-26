@@ -57,7 +57,7 @@ Local (temp) storage info for each size
 
 Remote (uncached) storage info for each size
 
-| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD Disk IOPS | Uncached Premium SSD Throughput (MB/s) | Uncached Premium SSD Burst<sup>1</sup> IOPS | Uncached Premium SSD Burst<sup>1</sup> Throughput (MB/s) | Uncached Ultra Disk and Premium SSD v2 IOPS | Uncached Ultra Disk and Premium SSD v2 Throughput (MB/s) | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 IOPS | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 Disk Throughput (MB/s) |
+| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD IOPS | Uncached Premium SSD Throughput (MB/s) | Uncached Premium SSD Burst<sup>1</sup> IOPS | Uncached Premium SSD Burst<sup>1</sup> Throughput (MB/s) | Uncached Ultra Disk and Premium SSD v2 IOPS | Uncached Ultra Disk and Premium SSD v2 Throughput (MB/s) | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 IOPS | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 Throughput (MB/s) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_FX2ms_v2 | 8 | 8,000 | 273 | 40,000 | 1,250 | 12,000 | 300 | 60,000 | 1,375 |
 | Standard_FX4ms_v2 | 12 | 16,000 | 545 | 65,000 | 1,800 | 21,400 | 600 | 86,938 | 1,980 |
@@ -71,9 +71,9 @@ Remote (uncached) storage info for each size
 | Standard_FX96ms_v2 | 64 | 260,000 | 10,000 | 260,000 | 10,625 | 400,000 | 11,250 | 400,000 | 12,000 |
 
 #### Storage resources
-- [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
-- [Azure managed disk types](../../../virtual-machines/disks-types.md)
-- [Share an Azure managed disk](../../../virtual-machines/disks-shared.md)
+- [Introduction to Azure Managed Disks](../../../virtual-machines/managed-disks-overview.md)
+- [Azure Managed Disk types](../../../virtual-machines/disks-types.md)
+- [Share an Azure Managed Disk](../../../virtual-machines/disks-shared.md)
 
 #### Table definitions
 - <sup>1</sup>Some sizes support [bursting](../../disk-bursting.md) to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.

@@ -1,5 +1,5 @@
 ---
-title: Server-side encryption of Azure managed disks
+title: Server-side encryption of Azure Managed Disks
 description: Azure Storage protects your data by encrypting it at rest before persisting it to Storage clusters. You can use customer-managed keys to manage encryption with your own keys, or you can rely on Microsoft-managed keys for the encryption of your managed disks.
 author: roygara
 ms.date: 03/28/2025
@@ -9,16 +9,16 @@ ms.service: azure-disk-storage
 ms.custom:
   - references_regions
   - ignite-2023
-# Customer intent: "As a security administrator, I want to learn about the various server-side encryption options for Azure managed disks, so that I can implement the most appropriate security measures for protecting data in Azure virtual machines."
+# Customer intent: "As a security administrator, I want to learn about the various server-side encryption options for Azure Managed Disks, so that I can implement the most appropriate security measures for protecting data in Azure virtual machines."
 ---
 
 # Server-side encryption of Azure Disk Storage
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
-Most Azure managed disks are encrypted with Azure Storage encryption, which uses server-side encryption (SSE) to protect your data and to help you meet your organizational security and compliance commitments. Azure Storage encryption automatically encrypts your data stored on Azure managed disks (OS and data disks) at rest by default when persisting it to the cloud. Disks with encryption at host enabled, however, aren't encrypted through Azure Storage. For disks with encryption at host enabled, the server hosting your VM provides the encryption for your data, and that encrypted data flows into Azure Storage.
+Most Azure Managed Disks are encrypted with Azure Storage encryption, which uses server-side encryption (SSE) to protect your data and to help you meet your organizational security and compliance commitments. Azure Storage encryption automatically encrypts your data stored on Azure Managed Disks (OS and data disks) at rest by default when persisting it to the cloud. Disks with encryption at host enabled, however, aren't encrypted through Azure Storage. For disks with encryption at host enabled, the server hosting your VM provides the encryption for your data, and that encrypted data flows into Azure Storage.
 
-Data in Azure managed disks is encrypted transparently using 256-bit [AES encryption](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), one of the strongest block ciphers available, and is FIPS 140-2 compliant. For more information about the cryptographic modules underlying Azure managed disks, see [Cryptography API: Next Generation](/windows/desktop/seccng/cng-portal)
+Data in Azure Managed Disks is encrypted transparently using 256-bit [AES encryption](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), one of the strongest block ciphers available, and is FIPS 140-2 compliant. For more information about the cryptographic modules underlying Azure Managed Disks, see [Cryptography API: Next Generation](/windows/desktop/seccng/cng-portal)
 
 Azure Storage encryption doesn't impact the performance of managed disks and there's no extra cost. For more information about Azure Storage encryption, see [Azure Storage encryption](/azure/storage/common/storage-service-encryption).
 
@@ -47,7 +47,7 @@ You must use one of the following Azure key stores to store your customer-manage
 - [Azure Key Vault](/azure/key-vault/general/overview)
 - [Azure Key Vault Managed Hardware Security Module (HSM)](/azure/key-vault/managed-hsm/overview)
 
-You can either import [your RSA keys](/azure/key-vault/keys/hsm-protected-keys) to your Key Vault or generate new RSA keys in Azure Key Vault. Azure managed disks handles the encryption and decryption in a fully transparent fashion using envelope encryption. It encrypts data using an [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 256 based data encryption key (DEK), which is, in turn, protected using your keys. The Storage service generates data encryption keys and encrypts them with customer-managed keys using RSA encryption. The envelope encryption allows you to rotate (change) your keys periodically as per your compliance policies without impacting your VMs. When you rotate your keys, the Storage service re-encrypts the data encryption keys with the new customer-managed keys. 
+You can either import [your RSA keys](/azure/key-vault/keys/hsm-protected-keys) to your Key Vault or generate new RSA keys in Azure Key Vault. Azure Managed Disks handles the encryption and decryption in a fully transparent fashion using envelope encryption. It encrypts data using an [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 256 based data encryption key (DEK), which is, in turn, protected using your keys. The Storage service generates data encryption keys and encrypts them with customer-managed keys using RSA encryption. The envelope encryption allows you to rotate (change) your keys periodically as per your compliance policies without impacting your VMs. When you rotate your keys, the Storage service re-encrypts the data encryption keys with the new customer-managed keys. 
 
 Managed disks and the Key Vault or managed HSM must be in the same Azure region, but they can be in different subscriptions. They must also be in the same Microsoft Entra tenant, unless you're using [Encrypt managed disks with cross-tenant customer-managed keys](disks-cross-tenant-customer-managed-keys.md).
 

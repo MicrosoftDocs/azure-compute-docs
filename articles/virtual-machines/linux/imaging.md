@@ -39,7 +39,7 @@ There are two main types of scale sets:
 
 Azure allows you to bring a VHD to the platform to use as a [Managed Disk](../faq-for-disks.yml) or as a source for an image. 
 
-An Azure managed disk is a single VHD. You can either take an existing VHD and create a managed disk from it, or create an empty managed disk from scratch. You can create VMs from managed disks by attaching the disk to the VM, but you can only use a VHD with one VM. You won't be able to modify any OS properties as Azure will just try to turn on the VM and start up using that disk. 
+An Azure Managed Disk is a single VHD. You can either take an existing VHD and create a managed disk from it, or create an empty managed disk from scratch. You can create VMs from managed disks by attaching the disk to the VM, but you can only use a VHD with one VM. You won't be able to modify any OS properties as Azure will just try to turn on the VM and start up using that disk. 
 
 Azure images can be made up of multiple OS disks and data disks. When you use a managed image to create a VM, the platform makes a copy of the image and uses that to create the VM.  This allows managed images to support reusing the same image for multiple VMs. Azure also provides advanced management capabilities for images, like global replication and versioning through [Azure Compute Gallery](../shared-image-galleries.md) (formerly known as Shared Image Gallery). 
 

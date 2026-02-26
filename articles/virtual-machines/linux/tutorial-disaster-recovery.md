@@ -38,7 +38,7 @@ If you don't have an Azure subscription, create a [free account](https://azure.m
     - Either the Virtual Machine Contributor built-in role, or specific permissions to:
         - Create a VM in the selected virtual network.
         - Write to an Azure storage account.
-        - Write to an Azure managed disk.
+        - Write to an Azure Managed Disk.
      - The Site Recovery Contributor built-in role, to manage Site Recovery operations in the vault. 
 3. Check that the Linux VM is running a [supported operating system](/azure/site-recovery/azure-to-azure-support-matrix#linux).
 4. If VM outbound connections use a URL-based proxy, make sure it can access these URLs. Using an authenticated proxy isn't supported.
@@ -110,7 +110,7 @@ If you want to enable disaster recovery on an existing VM, use this procedure.
         - By default one cache storage account is created per vault and reused.
         - You can select a different storage account if you want to customize the cache account for the VM.
     - **Storage settings-Replica managed disk**. By default, Site Recovery creates replica managed disks in the target region.
-        -  By default the target managed disk mirror the source VM managed disks, using the same storage type (standard HDD/SSD, or premium SSD).
+        -  By default the target managed disk mirror the source VM managed disks, using the same storage type (Standard HDD/SSD, or Premium SSD).
         - You can customize the storage type as needed.
     - **Replication settings**. Shows the vault in which the VM is located, and the replication policy used for the VM. By default, recovery points created by Site Recovery for the VM are kept for 24 hours.
     - **Extension settings**. Indicates that Site Recovery manages updates to the Site Recovery Mobility Service extension that's installed on VMs you replicate.
