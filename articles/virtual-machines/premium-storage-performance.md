@@ -1,6 +1,6 @@
 ---
 title: 'Azure premium storage: Design for high performance'
-description: Design high-performance apps by using Azure premium SSD managed disks. Azure premium storage offers high-performance, low-latency disk support for I/O-intensive workloads running on Azure VMs.
+description: Design high-performance apps by using Azure Premium SSD managed disks. Azure premium storage offers high-performance, low-latency disk support for I/O-intensive workloads running on Azure VMs.
 author: roygara
 ms.service: azure-disk-storage
 ms.custom: linux-related-content

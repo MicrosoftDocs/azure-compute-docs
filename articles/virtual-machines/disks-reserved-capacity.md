@@ -1,13 +1,13 @@
 ---
 title: Optimize costs for Azure Disk Storage with reservations
-description: Learn about purchasing Azure Disk Storage reservations to save costs on premium SSD managed disks.
+description: Learn about purchasing Azure Disk Storage reservations to save costs on Premium SSD managed disks.
 author: roygara
 ms.author: rogarana
 ms.date: 07/12/2024
 ms.topic: how-to
 ms.service: azure-disk-storage
 ms.custom: portal
-# Customer intent: "As a cloud architect, I want to purchase Azure Disk Storage reservations, so that I can optimize costs and maximize savings on my premium SSD managed disks."
+# Customer intent: "As a cloud architect, I want to purchase Azure Disk Storage reservations, so that I can optimize costs and maximize savings on my Premium SSD managed disks."
 ---
 
 # Reduce costs with Azure Disks Reservation
@@ -16,11 +16,11 @@ ms.custom: portal
 
 Save on your Azure Disk Storage usage with reserved capacity. Azure Disk Storage reservations combined with Azure Reserved Virtual Machine Instances let you lower your total virtual machine (VM) costs. The reservation discount is applied automatically to the matching disks in the selected reservation scope. Because of this automatic application, you don't need to assign a reservation to a managed disk to get the discounts.
 
-Discounts are applied hourly depending on the disk usage. Unused reserved capacity doesn't carry over. Azure Disk Storage reservation discounts don't apply to unmanaged disks, ultra disks, or page blob consumption.
+Discounts are applied hourly depending on the disk usage. Unused reserved capacity doesn't carry over. Azure Disk Storage reservation discounts don't apply to unmanaged disks, Ultra Disks, or page blob consumption.
 
 ## Determine your storage needs
 
-Before you purchase a reservation, determine your storage needs. Currently, Azure Disk Storage reservations are available only for select Azure premium SSD SKUs. The SKU of a premium SSD determines the disk's size and performance.
+Before you purchase a reservation, determine your storage needs. Currently, Azure Disk Storage reservations are available only for select Azure Premium SSD SKUs. The SKU of a Premium SSD determines the disk's size and performance.
 
 When determining your storage needs, don't think of disks based on just capacity. For example, you can't have a reservation for a P40 disk and use that to pay for two smaller P30 disks. When purchasing a reservation, you're only purchasing a reservation for the total number of disks per SKU.
 

@@ -65,7 +65,7 @@ In Azure, the following components form the equivalent architecture:
 - Virtual Machines or Azure Virtual Machine Scale Sets
 - Azure Virtual Network with subnets
 - Azure Load Balancer or Azure Application Gateway
-- Azure managed disks
+- Azure Managed Disks
 - Marketplace images or custom images stored in Azure Compute Gallery
 
 ### Production environment considerations
@@ -104,7 +104,7 @@ Formalize your findings by categorizing each capability into one of the followin
 | Amazon EC2 instance families like `t`, `m`, `c`, `r`, `i`, and `p` | Azure VM series like B, D, F, E, L, and NC, ND, or NP | Select Azure VM SKUs that have equivalent CPU-to-memory ratios and architecture. |
 | ASGs | Virtual Machine Scale Sets | Set up autoscaling in Virtual Machine Scale Sets and distribute instances across zones. |
 | Amazon ELB: Amazon Application Load Balancer (ALB) and Amazon Network Load Balancer (NLB) | Load Balancer and Application Gateway | Map layer-4 or layer-7 behavior and health probes. |
-| Amazon EBS volumes | Azure managed disks | Map Amazon EBS volume types to the right disk SKUs and validate limits. |
+| Amazon EBS volumes | Azure Managed Disks | Map Amazon EBS volume types to the right disk SKUs and validate limits. |
 | Availability zones | Azure availability zones | Deploy VMs or Virtual Machine Scale Sets instances across zones where supported. |
 
 ### Capability mismatches and alternative strategies
@@ -300,7 +300,7 @@ For NAS, Amazon EFS and Amazon FSx map most directly to Azure Files and Azure Ne
 
 #### Storage migration considerations
 
-- Map Amazon EBS volumes to Azure managed disk tiers:
+- Map Amazon EBS volumes to Azure Managed Disk tiers:
   - The `gp2` and `gp3` volume types map to Standard SSD for light or moderate use.
   - The `gp2` volume type maps to Premium SSD.
   - The `gp3` volume type maps to Premium SSD v2.

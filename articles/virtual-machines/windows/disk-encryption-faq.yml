@@ -62,7 +62,7 @@ sections:
       - question: |
           What is Storage server-side encryption?
         answer: |
-          Storage server-side encryption encrypts Azure managed disks in Azure Storage. Managed disks are encrypted by default with Server-side encryption with a platform-managed key (as of June 10, 2017). You can manage encryption of managed disks with your own keys by specifying a customer-managed key. For more information, see [Server-side encryption of Azure managed disks](../disk-encryption.md).
+          Storage server-side encryption encrypts Azure Managed Disks in Azure Storage. Managed disks are encrypted by default with Server-side encryption with a platform-managed key (as of June 10, 2017). You can manage encryption of managed disks with your own keys by specifying a customer-managed key. For more information, see [Server-side encryption of Azure Managed Disks](../disk-encryption.md).
            
       - question: |
           How is Azure Disk Encryption different from Storage server-side encryption with customer-managed key and when should I use each solution?

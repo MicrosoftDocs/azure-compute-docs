@@ -11,13 +11,13 @@ ms.service: azure-disk-storage
 
 # Best practices for achieving high availability with Azure virtual machines and managed disks
 
-Azure offers several configuration options for ensuring high availability of Azure virtual machines (VMs) and Azure managed disks. This article covers the default availability and durability of managed disks and provides recommendations to further increase your application's availability and resiliency.
+Azure offers several configuration options for ensuring high availability of Azure virtual machines (VMs) and Azure Managed Disks. This article covers the default availability and durability of managed disks and provides recommendations to further increase your application's availability and resiliency.
 
 ## At a glance
 
 |Configuration  |Recommendation  |Benefits  |
 |---------|---------|---------|
-|[Applications running on a single VM](#recommendations-for-applications-running-on-a-single-vm)     |[Use Ultra Disks, Premium SSD v2, and Premium SSD disks](#use-ultra-disks-premium-ssd-v2-or-premium-ssd).         |Single VMs using only Premium SSD disks as the OS disks, and either Ultra Disks, Premium SSD v2, or Premium SSD disks as data disks have the highest uptime service level agreement (SLA), and these disk types offer the best performance.         |
+|[Applications running on a single VM](#recommendations-for-applications-running-on-a-single-vm)     |[Use Ultra Disks, Premium SSD v2, and Premium SSDs](#use-ultra-disks-premium-ssd-v2-or-premium-ssd).         |Single VMs using only Premium SSDs as the OS disks, and either Ultra Disks, Premium SSD v2, or Premium SSDs as data disks have the highest uptime service level agreement (SLA), and these disk types offer the best performance.         |
 |     |[Use zone-redundant storage (ZRS) disks](#use-zone-redundant-storage-disks).         |Access to your data even if an entire zone experiences an outage.         |
 |[Applications running on multiple VMs](#recommendations-for-applications-running-on-multiple-vms)    |Distribute VMs and disks across multiple availability zones using a [zone-spanning Virtual Machine Scale Set with flexible orchestration mode](#use-zone-spanning-virtual-machine-scale-sets-with-flexible-orchestration) or by deploying VMs and disks across [three availability zones](#deploy-vms-and-disks-across-three-availability-zones).        |Multiple VMs have the highest uptime SLA when deployed across multiple zones.         |
 |     |Deploy VMs and disks across multiple fault domains with either [regional Virtual Machine Scale Sets with flexible orchestration mode](#use-regional-virtual-machine-scale-sets-with-flexible-orchestration) or [availability sets](#use-availability-sets).         |Multiple VMs have the second highest uptime SLA when deployed across fault domains.         |
@@ -42,7 +42,7 @@ Legacy applications, traditional web servers, line-of-business applications, dev
 
 ### Use Ultra Disks, Premium SSD v2, or Premium SSD
 
-Single VMs using only [Premium SSD disks](disks-types.md#premium-ssds) as the OS disk, and either [Ultra Disks](disks-types.md#ultra-disks), [Premium SSD v2](disks-types.md#premium-ssd-v2), or [Premium SSD disks](disks-types.md#premium-ssds) as data disks have the [highest single VM uptime SLA](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services?lang=1), and these disk types offer the best performance.
+Single VMs using only [Premium SSDs](disks-types.md#premium-ssds) as the OS disk, and either [Ultra Disks](disks-types.md#ultra-disks), [Premium SSD v2](disks-types.md#premium-ssd-v2), or [Premium SSDs](disks-types.md#premium-ssds) as data disks have the [highest single VM uptime SLA](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services?lang=1), and these disk types offer the best performance.
 
 ### Use zone-redundant storage disks
 
@@ -109,7 +109,7 @@ Availability sets don't let you select the fault domains for your VMs, can't be 
 
 ### Use ZRS disks when sharing disks between VMs
 
-You should use ZRS when sharing a disk between multiple VMs. If you use LRS, the shared disk becomes a single point of failure for your clustered application. This means that if your shared LRS disk experiences an outage, all the VMs to which this disk is attached will experience downtime. Using a ZRS disk mitigates this, since the disk's data is in three different availability zones. To learn more about shared disks, see [Share an Azure managed disk](disks-shared.md).
+You should use ZRS when sharing a disk between multiple VMs. If you use LRS, the shared disk becomes a single point of failure for your clustered application. This means that if your shared LRS disk experiences an outage, all the VMs to which this disk is attached will experience downtime. Using a ZRS disk mitigates this, since the disk's data is in three different availability zones. To learn more about shared disks, see [Share an Azure Managed Disk](disks-shared.md).
 
 ## Next steps
 
