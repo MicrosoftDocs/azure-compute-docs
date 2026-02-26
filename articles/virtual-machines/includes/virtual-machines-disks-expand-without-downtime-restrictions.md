@@ -13,7 +13,7 @@
 > [!IMPORTANT]
 > This limitation doesn't apply to Premium SSD v2 or Ultra Disks.
 >
-> If a Standard HDD, Standard SSD, or Premium SSD disk is 4 TiB or less, deallocate your VM and detach the disk before you expand it beyond 4 TiB. If one of those disk types is already greater than 4 TiB, you can expand it without deallocating the VM and detaching the disk.
+> If a Standard HDD, Standard SSD, or Premium SSD is 4 TiB or less, deallocate your VM and detach the disk before you expand it beyond 4 TiB. If one of those disk types is already greater than 4 TiB, you can expand it without deallocating the VM and detaching the disk.
 
 - Is supported only for data disks.
 - Isn't supported for shared disks.

@@ -9,7 +9,7 @@ metadata:
   ms.author: rogarana
   ms.custom: references_regions
 title: Frequently asked questions about Azure IaaS VM disks and managed and unmanaged premium disks
-summary: This article answers some frequently asked questions about Azure Managed Disks and Azure Premium SSD disks.
+summary: This article answers some frequently asked questions about Azure Managed Disks and Azure Premium SSDs.
 
 
 sections:
@@ -213,10 +213,10 @@ sections:
         answer: |
           Yes.
 
-  - name: Ultra disks
+  - name: Ultra Disks
     questions:
       - question: |
-          What should I set my ultra disk throughput to?
+          What should I set my Ultra Disk throughput to?
         answer: |
           If you're unsure what to set your disk throughput to, we recommend you start by assuming an IO size of 16 KiB and adjust the performance from there as you monitor your application. The formula is: Throughput in MB/s = # of IOPS * 16 / 1000.
           
@@ -226,27 +226,27 @@ sections:
           In addition to the disk throttle, there's an IO throttle that gets imposed at the VM level. Ensure that the VM size you're using can support the levels that are configured on your disks. For details regarding IO limits imposed by your VM, see [Sizes for virtual machines in Azure](sizes.md).
           
       - question: |
-          Can I use caching levels with an ultra disk?
+          Can I use caching levels with an Ultra Disk?
         answer: |
-          No, ultra disks don't support the different caching methods that are supported on other disk types. Set the disk caching to **None**.
+          No, Ultra Disks don't support the different caching methods that are supported on other disk types. Set the disk caching to **None**.
 
       - question: |
-          Can I attach an ultra disk to my existing VM?
+          Can I attach an Ultra Disk to my existing VM?
         answer: |
-          Maybe, your VM has to be in a region and availability zone pair that supports Ultra disks. See [getting started with ultra disks](disks-enable-ultra-ssd.md) for details.
+          Maybe, your VM has to be in a region and availability zone pair that supports Ultra Disks. See [getting started with Ultra Disks](disks-enable-ultra-ssd.md) for details.
           
       - question: |
-          Can I use an ultra disk as the OS disk for my VM?
+          Can I use an Ultra Disk as the OS disk for my VM?
         answer: |
-          No, ultra Disks are only supported as data disks. You can migrate data from an existing data disk to an Ultra Disk. Attach both disks to the same VM and directly copy the data to the Ultra Disk, or utilize a third party solution for data migration.
+          No, Ultra Disks are only supported as data disks. You can migrate data from an existing data disk to an Ultra Disk. Attach both disks to the same VM and directly copy the data to the Ultra Disk, or utilize a third party solution for data migration.
 
       - question: |
-          Can I convert an existing disk to an ultra disk?
+          Can I convert an existing disk to an Ultra Disk?
         answer: |
-          No, but you can migrate the data from an existing disk to an ultra disk. To migrate an existing disk to an ultra Disk, attach both disks to the same VM, and copy the disk's data from one disk to the other or use a third party solution for data migration.
+          No, but you can migrate the data from an existing disk to an Ultra Disk. To migrate an existing disk to an Ultra Disk, attach both disks to the same VM, and copy the disk's data from one disk to the other or use a third party solution for data migration.
 
       - question: |
-          Can I attach an ultra disk to a VM running in an availability set?
+          Can I attach an Ultra Disk to a VM running in an availability set?
         answer: |
           No, this isn't currently supported.
 
@@ -392,7 +392,7 @@ sections:
   - name: "Premium disks: Managed and unmanaged"
     questions:
       - question: |
-          If a VM uses a size series that supports Premium SSD disks, such as a DSv2, can I attach both premium and standard data disks? 
+          If a VM uses a size series that supports Premium SSDs, such as a DSv2, can I attach both premium and standard data disks? 
         answer: |
           Yes.
       
@@ -402,12 +402,12 @@ sections:
           Not all OS images support deploying with an unmanaged disk in the Azure portal. If your chosen image doesn't support this method of deployment, we recommend that you use managed disks for new workloads and [convert](windows/convert-unmanaged-to-managed-disks.md) your existing disk to a managed disk. If you’re unable to use managed disks, you can deploy a VM using unmanaged disks with either the Azure PowerShell module or the Azure CLI.
 
       - question: |
-          Can I attach both premium and standard data disks to a size series that doesn't support Premium SSD disks, such as D, Dv2, G, or F series?
+          Can I attach both premium and standard data disks to a size series that doesn't support Premium SSDs, such as D, Dv2, G, or F series?
         answer: |
-          No. You can attach only standard data disks to VMs that don't use a size series that supports Premium SSD disks.
+          No. You can attach only standard data disks to VMs that don't use a size series that supports Premium SSDs.
 
       - question: |
-          Are there transaction costs to use Premium SSD disks?
+          Are there transaction costs to use Premium SSDs?
         answer: |
           There's a fixed cost for each disk size, which comes provisioned with specific limits on IOPS and throughput. The other costs are outbound bandwidth, snapshot capacity, and costs associated with [on-demand bursting](disk-bursting.md#billing), if applicable. For more information, see the [pricing page](https://azure.microsoft.com/pricing/details/managed-disks/).
           
@@ -475,14 +475,14 @@ sections:
           The largest disk size supported by Azure Backup is 32 TiB (4 TiB for encrypted disks). The largest disk size supported by Azure Site Recovery is 8 TiB. Support for the larger disks up to 32 TiB isn't yet available in Azure Site Recovery.
 
       - question: |
-          What are the recommended VM sizes for larger disk sizes (>4 TiB) for Standard SSD and Standard HDD disks to achieve optimized disk IOPS and Bandwidth?
+          What are the recommended VM sizes for larger disk sizes (>4 TiB) for Standard SSD and Standard HDDs to achieve optimized disk IOPS and Bandwidth?
         answer: |
           To achieve the disk throughput of Standard SSD and Standard HDD large disk sizes (>4 TiB) beyond 500 IOPS and 60 MB/s, we recommend you deploy a new VM from one of the following VM sizes to optimize your performance: B-series, DSv2-series, Dsv3-Series, ESv3-Series, Fs-series, Fsv2-series, M-series, GS-series, NCv2-series, NCv3-series, or Ls-series VMs. Attaching large disks to existing VMs or VMs that aren't using the recommended sizes above may experience lower performance.
           
       - question: |
           How can I upgrade my disks (>4 TiB) which were deployed during the larger disk sizes preview in order to get the higher IOPS & bandwidth at GA?
         answer: |
-          You can either stop and start the VM that the disk is attached to or, detach and reattach your disk. The performance targets of larger disk sizes have been increased for both premium SSDs and standard SSDs at GA.
+          You can either stop and start the VM that the disk is attached to or, detach and reattach your disk. The performance targets of larger disk sizes have been increased for both Premium SSDs and Standard SSDs at GA.
 
       - question: |
           Do we support enabling Host Caching on all disk sizes?

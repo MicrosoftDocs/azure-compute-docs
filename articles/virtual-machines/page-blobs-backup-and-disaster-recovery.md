@@ -45,7 +45,7 @@ To ensure that you always maintain three replicas, Azure Storage automatically s
 
 Because of this architecture, Azure has consistently delivered enterprise-grade durability for IaaS disks, with an industry-leading zero percent [annualized failure rate](https://en.wikipedia.org/wiki/Annualized_failure_rate).
 
-Localized hardware faults on the compute host or in the Storage platform can sometimes result in of the temporary unavailability of the VM that is covered by the [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) for VM availability. Azure also provides an industry-leading SLA for single VM instances that use Azure premium SSDs.
+Localized hardware faults on the compute host or in the Storage platform can sometimes result in of the temporary unavailability of the VM that is covered by the [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) for VM availability. Azure also provides an industry-leading SLA for single VM instances that use Azure Premium SSDs.
 
 To safeguard application workloads from downtime due to the temporary unavailability of a disk or VM, customers can use [availability sets](./availability.md). Two or more virtual machines in an availability set provide redundancy for the application. Azure then creates these VMs and disks in separate fault domains with different power, network, and server components.
 
@@ -98,7 +98,7 @@ IaaS application data issues are another possibility. Consider an application th
 
 [Azure Backup](https://azure.microsoft.com/services/backup/) is used for backups and DR, and it works with [managed disks](managed-disks-overview.md) as well as unmanaged disks. You can create a backup job with time-based backups, easy VM restoration, and backup retention policies.
 
-If you use [premium SSDs](disks-types.md), [managed disks](managed-disks-overview.md), or other disk types with the [locally redundant storage](/azure/storage/common/storage-redundancy#locally-redundant-storage) option, it's especially important to make periodic DR backups. Azure Backup stores the data in your recovery services vault for long-term retention. Choose the [geo-redundant storage](/azure/storage/common/storage-redundancy#geo-redundant-storage) option for the backup recovery services vault. That option ensures that backups are replicated to a different Azure region for safeguarding from regional disasters.
+If you use [Premium SSDs](disks-types.md), [managed disks](managed-disks-overview.md), or other disk types with the [locally redundant storage](/azure/storage/common/storage-redundancy#locally-redundant-storage) option, it's especially important to make periodic DR backups. Azure Backup stores the data in your recovery services vault for long-term retention. Choose the [geo-redundant storage](/azure/storage/common/storage-redundancy#geo-redundant-storage) option for the backup recovery services vault. That option ensures that backups are replicated to a different Azure region for safeguarding from regional disasters.
 
 For unmanaged disks, you can use the locally redundant storage type for IaaS disks, but ensure that Azure Backup is enabled with the geo-redundant storage option for the recovery services vault.
 
@@ -109,7 +109,7 @@ For unmanaged disks, you can use the locally redundant storage type for IaaS dis
 
 | Scenario | Automatic replication | DR solution |
 | --- | --- | --- |
-| Premium SSD disks | Local ([locally redundant storage](/azure/storage/common/storage-redundancy#locally-redundant-storage)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
+| Premium SSDs | Local ([locally redundant storage](/azure/storage/common/storage-redundancy#locally-redundant-storage)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
 | Managed disks | Local ([locally redundant storage](/azure/storage/common/storage-redundancy#locally-redundant-storage)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
 | Unmanaged locally redundant storage disks | Local ([locally redundant storage](/azure/storage/common/storage-redundancy#locally-redundant-storage)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
 | Unmanaged geo-redundant storage disks | Cross region ([geo-redundant storage](/azure/storage/common/storage-redundancy#geo-redundant-storage)) | [Azure Backup](https://azure.microsoft.com/services/backup/)<br/>[Consistent snapshots](#alternative-solution-consistent-snapshots) |

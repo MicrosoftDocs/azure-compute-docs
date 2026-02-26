@@ -124,7 +124,7 @@ The following table compares the Flexible orchestration mode, Uniform orchestrat
 | Accelerated networking  | Yes  | Yes  | Yes |
 | Spot instances and pricing   | Yes, you can have both Spot and Regular priority instances  | Yes, instances must either be all Spot or all Regular  | No, Regular priority instances only |
 | Mix operating systems  | Yes, Linux and Windows can reside in the same Flexible scale set  | No, instances are the same operating system  | Yes, Linux and Windows can reside in the same availability set |
-| Disk Types  | Managed disks only, all storage types  | Managed and unmanaged disks  | Managed and unmanaged disks. Ultradisk not supported |
+| Disk Types  | Managed disks only, all storage types  | Managed and unmanaged disks  | Managed and unmanaged disks. Ultra Disk not supported |
 | Disk Server Side Encryption with Customer Managed Keys | Yes | Yes | Yes |
 | Write Accelerator   | Yes  | Yes  | Yes |
 | Proximity Placement Groups   | Yes, when using one Availability Zone or none. Cannot be changed after deployment. Read [Proximity Placement Groups documentation](../virtual-machine-scale-sets/proximity-placement-groups.md) | Yes, when using one Availability Zone or none. Can be changed after deployment stopping all instances. Read [Proximity Placement Groups documentation](../virtual-machine-scale-sets/proximity-placement-groups.md) | Yes |
@@ -199,7 +199,7 @@ The following table compares the Flexible orchestration mode, Uniform orchestrat
 
 The following Virtual Machine Scale Set parameters aren't currently supported with Virtual Machine Scale Sets in Flexible orchestration mode:
 - Single placement group - this can be set to `null` and the platform will select the correct value
-- Ultra disk configuration: `diskIOPSReadWrite`, `diskMBpsReadWrite`
+- Ultra Disk configuration: `diskIOPSReadWrite`, `diskMBpsReadWrite`
 - Virtual Machine Scale Set Overprovisioning
 - Image-based Automatic OS Upgrades
 - Application health via SLB health probe - use Application Health Extension on instances

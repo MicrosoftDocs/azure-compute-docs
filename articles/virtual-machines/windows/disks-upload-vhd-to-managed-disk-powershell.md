@@ -1,6 +1,6 @@
 ---
 title: Upload a VHD to Azure or copy a disk across regions - Azure PowerShell
-description: Learn how to upload a VHD to an Azure managed disk and copy a managed disk across regions, using Azure PowerShell, via direct upload.    
+description: Learn how to upload a VHD to an Azure Managed Disk and copy a managed disk across regions, using Azure PowerShell, via direct upload.    
 author: roygara
 ms.author: rogarana
 ms.date: 02/09/2026
@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.service: azure-disk-storage
 ms.tgt_pltfrm: linux
 ms.custom: references_regions, devx-track-azurepowershell
-# Customer intent: As an IT administrator, I want to upload a VHD to an Azure managed disk using PowerShell, so that I can restore backups or migrate disks across regions efficiently and securely.
+# Customer intent: As an IT administrator, I want to upload a VHD to an Azure Managed Disk using PowerShell, so that I can restore backups or migrate disks across regions efficiently and securely.
 ---
 
 # Upload a VHD to Azure or copy a managed disk to another region - Azure PowerShell
 
 **Applies to:** :heavy_check_mark: Windows VMs 
 
-This article explains how to either upload a VHD from your local machine to an Azure managed disk or copy a managed disk to another region, using the Azure PowerShell module. The process of uploading a managed disk, also known as direct upload, enables you to upload a VHD up to 32 TiB in size directly into a managed disk. Currently, direct upload is supported for Ultra Disks, Premium SSD v2, Premium SSD, Standard SSD, and Standard HDD.
+This article explains how to either upload a VHD from your local machine to an Azure Managed Disk or copy a managed disk to another region, using the Azure PowerShell module. The process of uploading a managed disk, also known as direct upload, enables you to upload a VHD up to 32 TiB in size directly into a managed disk. Currently, direct upload is supported for Ultra Disks, Premium SSD v2, Premium SSD, Standard SSD, and Standard HDD.
 
-If you're providing a backup solution for IaaS VMs in Azure, you should use direct upload to restore customer backups to managed disks. When uploading a VHD from a source external to Azure, speeds depend on your local bandwidth. When uploading or copying from an Azure VM, your bandwidth would be the same as standard HDDs.
+If you're providing a backup solution for IaaS VMs in Azure, you should use direct upload to restore customer backups to managed disks. When uploading a VHD from a source external to Azure, speeds depend on your local bandwidth. When uploading or copying from an Azure VM, your bandwidth would be the same as Standard HDDs.
 
-If you're using [Microsoft Entra ID](/azure/active-directory/fundamentals/active-directory-whatis) to control resource access, you can use it to restrict uploading of Azure managed disks. See [Secure downloads and uploads of Azure managed disks](../disks-secure-upload-download.md) for details.
+If you're using [Microsoft Entra ID](/azure/active-directory/fundamentals/active-directory-whatis) to control resource access, you can use it to restrict uploading of Azure Managed Disks. See [Secure downloads and uploads of Azure Managed Disks](../disks-secure-upload-download.md) for details.
 
 ## Get started
 
@@ -53,7 +53,7 @@ New-AzRoleAssignment -SignInName <emailOrUserprincipalname> `
 
 ### Use Add-AzVHD
 
-The following example uploads a VHD from your local machine to a new Azure managed disk using [Add-AzVHD](/powershell/module/az.compute/add-azvhd). Replace `<your-filepath-here>`, `<your-resource-group-name>`,`<desired-region>`, and `<desired-managed-disk-name>` with your parameters:
+The following example uploads a VHD from your local machine to a new Azure Managed Disk using [Add-AzVHD](/powershell/module/az.compute/add-azvhd). Replace `<your-filepath-here>`, `<your-resource-group-name>`,`<desired-region>`, and `<desired-managed-disk-name>` with your parameters:
 
 > [!NOTE]
 > If you're using Microsoft Entra ID to [secure disk uploads](../disks-secure-upload-download.md), add `-DataAccessAuthMode 'AzureActiveDirectory'` to the end of your `Add-AzVhd` command.
@@ -91,13 +91,13 @@ This kind of managed disk has two unique states:
 - ActiveUpload, which means that the disk is ready to receive an upload and the SAS has been generated.
 
 > [!NOTE]
-> While in either of these states, the managed disk will be billed at [standard HDD pricing](https://azure.microsoft.com/pricing/details/managed-disks/), regardless of the actual type of disk. For example, a P10 will be billed as an S10. This will be true until `revoke-access` is called on the managed disk, which is required in order to attach the disk to a VM.
+> While in either of these states, the managed disk will be billed at [Standard HDD pricing](https://azure.microsoft.com/pricing/details/managed-disks/), regardless of the actual type of disk. For example, a P10 will be billed as an S10. This will be true until `revoke-access` is called on the managed disk, which is required in order to attach the disk to a VM.
 
 ### Create an empty managed disk
 
-Before you can create an empty standard HDD for uploading, you'll need the file size of the VHD you want to upload, in bytes. The example code will get that for you but, to do it yourself you can use: `$vhdSizeBytes = (Get-Item "<fullFilePathHere>").length`. This value is used when specifying the **-UploadSizeInBytes** parameter.
+Before you can create an empty Standard HDD for uploading, you'll need the file size of the VHD you want to upload, in bytes. The example code will get that for you but, to do it yourself you can use: `$vhdSizeBytes = (Get-Item "<fullFilePathHere>").length`. This value is used when specifying the **-UploadSizeInBytes** parameter.
 
-Now, on your local shell, create an empty standard HDD for uploading by specifying the **Upload** setting in the **-CreateOption** parameter as well as the **-UploadSizeInBytes** parameter in the [New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig) cmdlet. Then call [New-AzDisk](/powershell/module/az.compute/new-azdisk) to create the disk.
+Now, on your local shell, create an empty Standard HDD for uploading by specifying the **Upload** setting in the **-CreateOption** parameter as well as the **-UploadSizeInBytes** parameter in the [New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig) cmdlet. Then call [New-AzDisk](/powershell/module/az.compute/new-azdisk) to create the disk.
 
 Replace `<yourdiskname>`, `<yourresourcegroupname>`, and `<yourregion>` then run the following commands:
 
@@ -145,7 +145,7 @@ Use AzCopy v10 to upload your local VHD or VHDX file to a managed disk by specif
 > [!NOTE]
 > If you need to upload VHDx files larger than 2TB (which exceeds the VHD format limit) and can't convert them to VHD due to their size, please be aware that VHDx files are only supported for upload to PremiumSSDv2 and UltraSSD disk SKUs. For files smaller than 2TB, it's recommended to convert them to the VHD format before uploading.
 
-This upload has the same throughput as the equivalent [standard HDD](../disks-types.md#standard-hdds). For example, if you have a size that equates to S4, you'll have a throughput of up to 60 MiB/s. But, if you have a size that equates to S70, you'll have a throughput of up to 500 MiB/s.
+This upload has the same throughput as the equivalent [Standard HDD](../disks-types.md#standard-hdds). For example, if you have a size that equates to S4, you'll have a throughput of up to 60 MiB/s. But, if you have a size that equates to S70, you'll have a throughput of up to 500 MiB/s.
 
 ```
 AzCopy.exe copy "c:\somewhere\mydisk.vhd" $diskSas.AccessSAS --blob-type PageBlob

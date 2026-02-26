@@ -13,7 +13,7 @@ ms.date: 05/21/2024
 
 # Select managed disk types for Service Fabric managed cluster nodes
 
-Azure Service Fabric managed clusters use managed disks for all storage needs, including application data, for scenarios such as reliable collections and actors. Azure managed disks are block-level storage volumes managed by Azure and used with Azure Virtual Machines. Managed disks are like a physical disk in an on-premises server but, virtualized. With managed disks, all you have to do is specify the disk size, the disk type, and provision the disk. Once you provision the disk, Azure handles the rest. For more information about managed disks, see [Introduction to Azure managed disks
+Azure Service Fabric managed clusters use managed disks for all storage needs, including application data, for scenarios such as reliable collections and actors. Azure Managed Disks are block-level storage volumes managed by Azure and used with Azure Virtual Machines. Managed disks are like a physical disk in an on-premises server but, virtualized. With managed disks, all you have to do is specify the disk size, the disk type, and provision the disk. Once you provision the disk, Azure handles the rest. For more information about managed disks, see [Introduction to Azure Managed Disks
 ](../virtual-machines/managed-disks-overview.md).
 
 **Disk size update:** Customers have the capability to update the disk size on current node type; however, it's important to note that only new nodes on the existing node type receive the new disk size. To implement this change, users can follow two approaches:

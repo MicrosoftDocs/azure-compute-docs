@@ -1565,9 +1565,9 @@
     href: disks-redundancy.md
   - name: What's new in Azure Disk Storage
     href: disks-whats-new.md
-  - name: Deploy an ultra disk
+  - name: Deploy an Ultra Disk
     href: disks-enable-ultra-ssd.md
-  - name: Deploy a premium SSD v2
+  - name: Deploy a Premium SSD v2
     displayName: Performance, cost, perf, disks, disk
     href: disks-deploy-premium-v2.md
   - name: Deploy a ZRS disk
@@ -1700,7 +1700,7 @@
     items:
     - name: Performance options for managed disks
       href: disks-performance-options.md
-    - name: Increase performance of premium SSD and standard SSD/HDDs
+    - name: Increase performance of Premium SSD and Standard SSD/HDDs
       href: disks-enable-performance.md
     - name: Torn write prevention with managed disks
       href: disks-torn-write-prevention.md
@@ -1818,13 +1818,13 @@
         href: ./scripts/virtual-machines-powershell-sample-copy-snapshot-to-same-or-different-subscription.md
     - name: Migrate AWS and on-premises disk to Azure
       href: ./windows/on-prem-to-azure.md
-    - name: Migrate to premium SSDs with Azure Site Recovery
+    - name: Migrate to Premium SSDs with Azure Site Recovery
       items:
       - name: Linux
-        displayName: Migrate to premium SSDs with Azure Site Recovery
+        displayName: Migrate to Premium SSDs with Azure Site Recovery
         href: ./linux/migrate-to-premium-storage-using-azure-site-recovery.md
       - name: Windows
-        displayName: Migrate to premium SSDs with Azure Site Recovery
+        displayName: Migrate to Premium SSDs with Azure Site Recovery
         href: ./windows/migrate-to-premium-storage-using-azure-site-recovery.md
     - name: Migrate to Managed Disks
       href: ./windows/migrate-to-managed-disks.md

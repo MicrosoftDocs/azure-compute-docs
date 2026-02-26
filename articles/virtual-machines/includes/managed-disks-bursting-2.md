@@ -52,7 +52,7 @@ To enable on-demand bursting, see [Enable on-demand bursting](/azure/virtual-mac
 
 ### Credit-based bursting
 
-For Premium SSD managed disks, credit-based bursting is available for disk sizes P20 and smaller. For standard SSDs, credit-based bursting is available for disk sizes E30 and smaller. For both standard and Premium SSD managed disks, credit-based bursting is available in all regions in Azure Public, Government, and China Clouds. By default, disk bursting is enabled on all new and existing deployments of supported disk sizes. VM-level bursting only uses credit-based bursting.
+For Premium SSD managed disks, credit-based bursting is available for disk sizes P20 and smaller. For Standard SSDs, credit-based bursting is available for disk sizes E30 and smaller. For both standard and Premium SSD managed disks, credit-based bursting is available in all regions in Azure Public, Government, and China Clouds. By default, disk bursting is enabled on all new and existing deployments of supported disk sizes. VM-level bursting only uses credit-based bursting.
 
 ## Virtual machine-level bursting
 

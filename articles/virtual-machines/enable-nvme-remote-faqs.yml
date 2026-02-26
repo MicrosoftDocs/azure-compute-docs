@@ -87,11 +87,11 @@ sections:
       - question: |
           Which Azure disk storage options are compatible with remote NVMe disks?
         answer: |
-          NVMe sizes can be combined with Azure Standard HDD, Standard SSD, Premium SSD v1, Premium SSD v2, and Ultra Disk Storage. For more information on Azure disk offerings, see [Azure managed disk types](/azure/virtual-machines/disks-types).
+          NVMe sizes can be combined with Azure Standard HDD, Standard SSD, Premium SSD v1, Premium SSD v2, and Ultra Disk Storage. For more information on Azure disk offerings, see [Azure Managed Disk types](/azure/virtual-machines/disks-types).
       - question: |
           Does Azure support live resizing on disks with NVMe VM sizes?
         answer: |
-          Live resizing of NVMe is supported on Azure Premium SSD v1 disks, Premium SSD v2 disks, Standard SSD disks, and Standard HDD disks. You can also add remote NVMe disks without restarting the VM.
+          Live resizing of NVMe is supported on Azure Premium SSD v1 disks, Premium SSD v2 disks, Standard SSDs, and Standard HDDs. You can also add remote NVMe disks without restarting the VM.
       - question: |
           How can I identify remote NVMe disks on a Linux VM?
         answer: |
