@@ -74,14 +74,14 @@ To programmatically determine the regions and zones you can deploy to, use eithe
 
 ---
 
-Now that you know the region and zone to deploy to, follow the deployment steps in this article to create a Premium SSD v2 disk and attach it to a VM.
+Now that you know the region and zone to deploy to, follow the deployment steps in this article to create a Premium SSD v2 and attach it to a VM.
 
 ## Use Premium SSD v2 in Regions with Availability Zones
 Currently, Premium SSD v2 disks are only available in [select regions with Availability Zones (AZs)](#regional-availability).
 
 # [Azure CLI](#tab/azure-cli)
 
-Create a Premium SSD v2 disk in an availability zone by using the [az disk create](/cli/azure/disk#az-disk-create) command. Then create a VM in the same region and availability zone that supports Premium Storage and attach the disk to it by using the [az vm create](/cli/azure/vm#az-vm-create) command. 
+Create a Premium SSD v2 in an availability zone by using the [az disk create](/cli/azure/disk#az-disk-create) command. Then create a VM in the same region and availability zone that supports Premium Storage and attach the disk to it by using the [az vm create](/cli/azure/vm#az-vm-create) command. 
 
 The following script creates a Premium SSD v2 with a 4k sector size, to deploy one with a 512 sector size, update the `$logicalSectorSize` parameter. Replace the values of all the variables with your own, then run the following script:
 
@@ -99,7 +99,7 @@ adminPassword="yourAdminPassword"
 adminUserName="yourAdminUserName"
 vmSize="Standard_D4s_v3"
 
-## Create a Premium SSD v2 disk
+## Create a Premium SSD v2
 az disk create -n $diskName -g $resourceGroupName \
 --size-gb 100 \
 --disk-iops-read-write 5000 \
@@ -121,7 +121,7 @@ az vm create -n $vmName -g $resourceGroupName \
 
 # [PowerShell](#tab/azure-powershell)
 
-Create a Premium SSD v2 disk in an availability zone by using the [New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig) to define the configuration of your disk and the [New-AzDisk](/powershell/module/az.compute/new-azdisk) command to create your disk. Next, create a VM in the same region and availability zone that supports Premium Storage by using the [az vm create](/cli/azure/vm#az-vm-create). Finally, attach the disk to it by using the [Get-AzVM](/powershell/module/az.compute/get-azvm) command to identify variables for the virtual machine, the [Get-AzDisk](/powershell/module/az.compute/get-azdisk) command to identify variables for the disk, the [Add-AzVMDataDisk](/powershell/module/az.compute/add-azvmdatadisk) command to add the disk, and the [Update-AzVM](/powershell/module/az.compute/update-azvm) command to attach the new disk to the virtual machine. 
+Create a Premium SSD v2 in an availability zone by using the [New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig) to define the configuration of your disk and the [New-AzDisk](/powershell/module/az.compute/new-azdisk) command to create your disk. Next, create a VM in the same region and availability zone that supports Premium Storage by using the [az vm create](/cli/azure/vm#az-vm-create). Finally, attach the disk to it by using the [Get-AzVM](/powershell/module/az.compute/get-azvm) command to identify variables for the virtual machine, the [Get-AzDisk](/powershell/module/az.compute/get-azdisk) command to identify variables for the disk, the [Add-AzVMDataDisk](/powershell/module/az.compute/add-azvmdatadisk) command to add the disk, and the [Update-AzVM](/powershell/module/az.compute/update-azvm) command to attach the new disk to the virtual machine. 
 
 The following script creates a Premium SSD v2 with a 4k sector size, to deploy one with a 512 sector size, update the `$logicalSectorSize` parameter. Replace the values of all the variables with your own, then run the following script:
 
@@ -205,7 +205,7 @@ Update-AzVM -VM $vm -ResourceGroupName $resourceGroupName
 
 1. Proceed through the rest of the VM deployment, making any choices that you desire.
 
-You've now deployed a VM with a premium SSD v2.
+You've now deployed a VM with a Premium SSD v2.
 
 ---
 
@@ -213,9 +213,9 @@ You've now deployed a VM with a premium SSD v2.
 Currently, Premium SSD v2 disks are only available in [select regions without Availability Zones (AZs)](#regional-availability). Regions without AZ support may experience slightly higher average latency for Premium SSD v2 disks compared to regions with AZ support.
 # [Azure CLI](#tab/azure-cli)
 
-Create a Premium SSD v2 disk in a region without availability zone support by using the [az disk create](/cli/azure/disk#az-disk-create) command. Then create a VM in the same region that supports Premium Storage and attach the disk to it by using the [az vm create](/cli/azure/vm#az-vm-create) command. 
+Create a Premium SSD v2 in a region without availability zone support by using the [az disk create](/cli/azure/disk#az-disk-create) command. Then create a VM in the same region that supports Premium Storage and attach the disk to it by using the [az vm create](/cli/azure/vm#az-vm-create) command. 
 
-The following script creates a Premium SSD v2 disk with a 4k sector size. To create a disk with a 512 sector size, update the `$logicalSectorSize` parameter. Replace the values of all the variables with your own, then run the following script:
+The following script creates a Premium SSD v2 with a 4k sector size. To create a disk with a 512 sector size, update the `$logicalSectorSize` parameter. Replace the values of all the variables with your own, then run the following script:
 
 ```azurecli-interactive
 ## Initialize variables
@@ -230,7 +230,7 @@ adminPassword="yourAdminPassword"
 adminUserName="yourAdminUserName"
 vmSize="Standard_D4s_v3"
 
-## Create a Premium SSD v2 disk
+## Create a Premium SSD v2
 az disk create -n $diskName -g $resourceGroupName \
 --size-gb 100 \
 --disk-iops-read-write 5000 \
@@ -251,9 +251,9 @@ az vm create -n $vmName -g $resourceGroupName \
 
 # [PowerShell](#tab/azure-powershell)
 
-Create a Premium SSD v2 disk in a region without availability zone support by using the [New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig) to define the configuration of your disk and the [New-AzDisk](/powershell/module/az.compute/new-azdisk) command to create your disk. Next, create a VM in the same region and availability zone that supports Premium Storage by using the [az vm create](/cli/azure/vm#az-vm-create). Finally, attach the disk to it by using the [Get-AzVM](/powershell/module/az.compute/get-azvm) command to identify variables for the virtual machine, the [Get-AzDisk](/powershell/module/az.compute/get-azdisk) command to identify variables for the disk, the [Add-AzVMDataDisk](/powershell/module/az.compute/add-azvmdatadisk) command to add the disk, and the [Update-AzVM](/powershell/module/az.compute/update-azvm) command to attach the new disk to the virtual machine. 
+Create a Premium SSD v2 in a region without availability zone support by using the [New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig) to define the configuration of your disk and the [New-AzDisk](/powershell/module/az.compute/new-azdisk) command to create your disk. Next, create a VM in the same region and availability zone that supports Premium Storage by using the [az vm create](/cli/azure/vm#az-vm-create). Finally, attach the disk to it by using the [Get-AzVM](/powershell/module/az.compute/get-azvm) command to identify variables for the virtual machine, the [Get-AzDisk](/powershell/module/az.compute/get-azdisk) command to identify variables for the disk, the [Add-AzVMDataDisk](/powershell/module/az.compute/add-azvmdatadisk) command to add the disk, and the [Update-AzVM](/powershell/module/az.compute/update-azvm) command to attach the new disk to the virtual machine. 
 
-The following script creates a Premium SSD v2 disk with a 4k sector size. To create a disk with a 512 sector size, update the `$logicalSectorSize` parameter. Replace the values of all the variables with your own, then run the following script:
+The following script creates a Premium SSD v2 with a 4k sector size. To create a disk with a 512 sector size, update the `$logicalSectorSize` parameter. Replace the values of all the variables with your own, then run the following script:
 
 ```powershell
 # Initialize variables
@@ -273,7 +273,7 @@ $vmAdminUser = "yourAdminUserName"
 $vmAdminPassword = ConvertTo-SecureString "yourAdminUserPassword" -AsPlainText -Force
 $credential = New-Object System.Management.Automation.PSCredential ($vmAdminUser, $vmAdminPassword);
 
-# Create a Premium SSD v2 disk
+# Create a Premium SSD v2
 $diskconfig = New-AzDiskConfig `
 -Location $region `
 -DiskSizeGB $diskSizeInGiB `
@@ -322,13 +322,13 @@ Update-AzVM -VM $vm -ResourceGroupName $resourceGroupName
 
 ## Adjust disk performance
 
-You can adjust the performance of a Premium SSD v2 disk four times within a 24 hour period. Creating a disk counts as one of these times, so for the first 24 hours after creating a premium SSD v2 disk you can only adjust its performance up to three times.
+You can adjust the performance of a Premium SSD v2 four times within a 24 hour period. Creating a disk counts as one of these times, so for the first 24 hours after creating a Premium SSD v2 you can only adjust its performance up to three times.
 
 For conceptual information on adjusting disk performance, see [Premium SSD v2 performance](disks-types.md#premium-ssd-v2-performance).
 
 # [Azure CLI](#tab/azure-cli)
 
-Use the [az disk update](/cli/azure/disk#az-disk-update) command to change the performance configuration of your Premium SSD v2 disk. For example, you can use the `disk-iops-read-write` parameter to adjust the max IOPS limit, and the `disk-mbps-read-write` parameter to adjust the max throughput limit of your Premium SSD v2 disk.  
+Use the [az disk update](/cli/azure/disk#az-disk-update) command to change the performance configuration of your Premium SSD v2. For example, you can use the `disk-iops-read-write` parameter to adjust the max IOPS limit, and the `disk-mbps-read-write` parameter to adjust the max throughput limit of your Premium SSD v2.  
 
 The following command adjusts the performance of your disk. Update the values in the command, and then run it:
 
@@ -338,7 +338,7 @@ az disk update --subscription $subscription --resource-group $rgname --name $dis
 
 # [PowerShell](#tab/azure-powershell)
 
-Use the [New-AzDiskUpdateConfig](/powershell/module/az.compute/new-azdiskupdateconfig) command to define your new performance configuration values for your Premium SSD v2 disks, and then use the [Update-AzDisk](/powershell/module/az.compute/update-azdisk) command to apply your configuration changes to your disk. For example, you can use the `DiskIOPSReadWrite` parameter to adjust the max IOPS limit, and the `DiskMBpsReadWrite` parameter to adjust the max throughput limit of your Premium SSD v2 disk.  
+Use the [New-AzDiskUpdateConfig](/powershell/module/az.compute/new-azdiskupdateconfig) command to define your new performance configuration values for your Premium SSD v2 disks, and then use the [Update-AzDisk](/powershell/module/az.compute/update-azdisk) command to apply your configuration changes to your disk. For example, you can use the `DiskIOPSReadWrite` parameter to adjust the max IOPS limit, and the `DiskMBpsReadWrite` parameter to adjust the max throughput limit of your Premium SSD v2.  
 
 The following command adjusts the performance of your disk. Update the values in the command, and then run it:
 

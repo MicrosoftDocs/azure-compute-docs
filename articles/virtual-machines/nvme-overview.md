@@ -13,7 +13,7 @@ ms.topic: overview
 
 NVM Express (NVMe) is a communication protocol that facilitates faster and more efficient data transfer between servers and storage systems by using nonvolatile memory (NVM). With NVMe, data can be transferred at the highest throughput and with the fastest response times. In this overview, learn about NVMe support on virtual machines (VM) created in Azure.
 
-NVMe offers higher input/output operations per second (IOPS) and higher throughput in megabytes per second (MBps). This capability can significantly improve the performance of both temporary (local) and remote NVMe disk storage with [Azure managed disks](/azure/virtual-machines/managed-disks-overview). Higher performance is especially beneficial for I/O-intensive workloads that require fast data transfer to the Azure managed disks.
+NVMe offers higher input/output operations per second (IOPS) and higher throughput in megabytes per second (MBps). This capability can significantly improve the performance of both temporary (local) and remote NVMe disk storage with [Azure Managed Disks](/azure/virtual-machines/managed-disks-overview). Higher performance is especially beneficial for I/O-intensive workloads that require fast data transfer to the Azure Managed Disks.
 
 ## Benefits
 
@@ -29,7 +29,7 @@ The VM families that use NVMe disks demonstrate performance benefits compared to
 
 Azure Boost is a Microsoft-designed system that offloads server virtualization processes traditionally performed by the hypervisor and host OS onto purpose-built software and hardware. Offloading these processes enables faster storage and networking performance for Azure VM customers.
 
-One of the primary advantages of Azure Boost is its ability to enhance the throughput of Azure managed disks and local storage. This enhancement is enabled by offloading the storage processing tasks to hardware dedicated for Azure Boost.
+One of the primary advantages of Azure Boost is its ability to enhance the throughput of Azure Managed Disks and local storage. This enhancement is enabled by offloading the storage processing tasks to hardware dedicated for Azure Boost.
 
 Azure Boost also optimizes performance by using the industry-standard NVMe interface, which capitalizes on the low latency and internal parallelism of solid-state storage drives. For details on the performance that Azure Boost offers, refer to the [Microsoft blog post about general availability of Azure Boost](https://techcommunity.microsoft.com/t5/azure-infrastructure-blog/announcing-the-general-availability-of-azure-boost/ba-p/3981384).
 

@@ -19,4 +19,4 @@ Endsv6 VMs offer up to 200 Gbps network bandwidth, 15 vNICs and up to 400k Conne
 
 Both series provide up to 3x improvement in NW BW/vCPU than the current generation Intel Ev6 VMs. This series will be relevant for workloads such as network virtual appliances, large-scale e-commerce applications, express route, application gateway, and more that requires the ability to handle a high number of user connections and data transfers. They're also suited for media processing tasks that involve transferring large amounts of data quickly, and other applications that benefit from high NW BW/vCPU and CPS & flow limit configurations.
 
-The Endsv6 series comes with a local disk. We recommend choosing Premium SSD, Premium SSD v2, or Ultra disks to attain the published disk performance. 
+The Endsv6 series comes with a local disk. We recommend choosing Premium SSD, Premium SSD v2, or Ultra Disks to attain the published disk performance. 

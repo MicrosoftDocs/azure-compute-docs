@@ -60,7 +60,7 @@ The throttling would fail with error code 429. Please retry the operation after 
 ## Limitations
 
 - Restore points are supported only for managed disks.
-- Ultra disks, Premium SSD v2 disks, Write-accelerated disks, Ephemeral OS disks, and shared disks aren't supported for crash consistency mode.
+- Ultra Disks, Premium SSD v2 disks, Write-accelerated disks, Ephemeral OS disks, and shared disks aren't supported for crash consistency mode.
 - Ephemeral OS disks, and shared disks aren't supported for application consistency mode.
 - The API version for an application-consistent restore point is 2021-03-01, or later.
 - The API version for a crash-consistent restore point is 2021-07-01, or later.

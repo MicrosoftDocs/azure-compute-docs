@@ -24,7 +24,7 @@ The following table summarizes the support matrix for VM restore points.
 **VMs using unmanaged disks** | No
 **VM sizes** | **Crash consistency** is supported for VM SKUs that support Premium storage. Crash-consistent restore points created for Intel V6+ (Dsv6-series, Edsv6-series, Esv6-series etc.) and AMD V7+ (Dasv7-series, Dadsv7-series, Easv7-series, Faldsv7-series etc.) Virtual Machines (VMs) with **more than one data disk might not be consistent across disks**. **Application consistency** is supported for all VM SKUs.
 **VMs using Ultra Disks** | Yes. Supported for application consistency. Not supported for crash consistency. Exclude these disks and create a VM restore point when using crash consistency.
-**VMs using Premium SSD v2 Disks** | Yes. Supported for application consistency. Not supported for crash consistency. Exclude these disks and create a VM restore point when using crash consistency.
+**VMs using Premium SSD v2 disks** | Yes. Supported for application consistency. Not supported for crash consistency. Exclude these disks and create a VM restore point when using crash consistency.
 **VMs using Ephemeral OS Disks** | No. Exclude these disks and create a VM restore point.
 **VMs using shared disks** | No. Exclude these disks and create a VM restore point.
 **VMs with extensions** | Yes
@@ -46,9 +46,9 @@ The following table summarizes the support matrix for VM restore points.
 **VMs migrated from on-prem using Azure Migrate** | Yes
 **VMs with RBAC policies** | Yes
 **Temporary disk in VMs** | Yes. You can create VM restore point for VMs with temporary disks. However, the restore points created don't contain the data from the temporary disks.
-**VMs with standard HDDs** | Yes
-**VMs with standard SSDs** | Yes
-**VMs with premium SSDs** | Yes
+**VMs with Standard HDDs** | Yes
+**VMs with Standard SSDs** | Yes
+**VMs with Premium SSDs** | Yes
 **VMs with ZRS disks** | Yes
 **VMs with server-side encryption using service-managed keys** | Yes. The encryption of source disk won't be enabled on the restore point.
 **VMs with server-side encryption using customer-managed keys** | Yes. The encryption of source disk won't be enabled on the restore point.

@@ -6,12 +6,12 @@ ms.service: azure-disk-storage
 ms.topic: how-to
 ms.date: 01/06/2026
 ms.author: rogarana
-# Customer intent: As an IT security administrator, I want to restrict the import and export of Azure managed disks, so that I can safeguard sensitive data and ensure compliance with organizational policies.
+# Customer intent: As an IT security administrator, I want to restrict the import and export of Azure Managed Disks, so that I can safeguard sensitive data and ensure compliance with organizational policies.
 ---
 
 # Restrict managed disks from being imported or exported
 
-This article provides an overview of your options for preventing your Azure managed disks from being imported or exported.
+This article provides an overview of your options for preventing your Azure Managed Disks from being imported or exported.
 
 ## Custom role
 
@@ -26,7 +26,7 @@ Any custom role without those permissions can't upload or download managed disks
 
 ## Microsoft Entra authentication
 
-If you're using Microsoft Entra ID to control resource access, you can also use it to restrict uploading of Azure managed disks. When a user attempts to upload a disk, Azure validates the identity of the requesting user in Microsoft Entra ID, and confirms that user has the required permissions. To learn more, see [Secure downloads and uploads of Azure managed disks](disks-secure-upload-download.md).
+If you're using Microsoft Entra ID to control resource access, you can also use it to restrict uploading of Azure Managed Disks. When a user attempts to upload a disk, Azure validates the identity of the requesting user in Microsoft Entra ID, and confirms that user has the required permissions. To learn more, see [Secure downloads and uploads of Azure Managed Disks](disks-secure-upload-download.md).
 
 ## Private links
 

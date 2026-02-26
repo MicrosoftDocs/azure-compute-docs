@@ -59,7 +59,7 @@ Local (temp) storage info for each size
 
 Remote (uncached) storage info for each size
 
-| Size Name | Max Remote Storage Disks (Qty.) | Max Uncached Premium SSD Disk IOPS | Max Uncached Premium SSD Throughput (MB/s) | Max Uncached Premium SSD Burst<sup>1</sup> IOPS | Max Uncached Premium SSD Burst<sup>1</sup> Throughput (MB/s) |
+| Size Name | Max Remote Storage Disks (Qty.) | Max Uncached Premium SSD IOPS | Max Uncached Premium SSD Throughput (MB/s) | Max Uncached Premium SSD Burst<sup>1</sup> IOPS | Max Uncached Premium SSD Burst<sup>1</sup> Throughput (MB/s) |
 | --- | --- | --- | --- | --- | --- |
 | Standard_M32ms_v2 | 32 | 20,000 | 500 | 40,000 | 1,000 |
 | Standard_M64s_v2 | 64 | 40,000 | 1,000 | 80,000 | 2,000 |
@@ -70,12 +70,12 @@ Remote (uncached) storage info for each size
 | Standard_M192ims_v2 | 64 | 80,000 | 2,000 | 80,000 | 4,000 |
 
 #### Storage resources
-- Attaching Ultra Disk or Premium SSDs V2 to Standard_M192is_v2 results in higher IOPs and MBps than standard premium disks:
-    - Max uncached Ultra Disk and Premium SSD V2 throughput (IOPS/ MBps): 120000/2000
-    - Max burst uncached Ultra Disk and Premium SSD V2 disk throughput (IOPS/ MBps): 120000/4000
-- [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
-- [Azure managed disk types](../../../virtual-machines/disks-types.md)
-- [Share an Azure managed disk](../../../virtual-machines/disks-shared.md)
+- Attaching Ultra Disk or Premium SSD v2 disks to Standard_M192is_v2 results in higher IOPs and MBps than standard premium disks:
+    - Max uncached Ultra Disk and Premium SSD v2 throughput (IOPS/ MBps): 120000/2000
+    - Max burst uncached Ultra Disk and Premium SSD v2 throughput (IOPS/ MBps): 120000/4000
+- [Introduction to Azure Managed Disks](../../../virtual-machines/managed-disks-overview.md)
+- [Azure Managed Disk types](../../../virtual-machines/disks-types.md)
+- [Share an Azure Managed Disk](../../../virtual-machines/disks-shared.md)
 
 #### Table definitions
 - <sup>1</sup>Some sizes support [bursting](../../disk-bursting.md) to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.

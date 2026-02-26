@@ -23,11 +23,11 @@ Shared disks have general limitations that apply to all shared disks, regardless
 
 Each managed disk that has shared disks enabled are also subject to the following limitations, organized by disk type:
 
-### Ultra disks
+### Ultra Disks
 
-Ultra disks have their own separate list of limitations, unrelated to shared disks. For ultra disk limitations, refer to [Using Azure ultra disks](/azure/virtual-machines/disks-enable-ultra-ssd).
+Ultra Disks have their own separate list of limitations, unrelated to shared disks. For Ultra Disk limitations, refer to [Using Azure Ultra Disks](/azure/virtual-machines/disks-enable-ultra-ssd).
 
-When sharing ultra disks, they have the following additional limitations:
+When sharing Ultra Disks, they have the following additional limitations:
 
 - Only basic disks can be used with some versions of Windows Server Failover Cluster, for details see [Failover clustering hardware requirements and storage options](/windows-server/failover-clustering/clustering-requirements).
 - Can't be shared across availability zones.
@@ -45,8 +45,8 @@ When sharing Premium SSD v2 disks, they have the following additional limitation
 ### Premium SSD
 
 - Can only be enabled on data disks, not OS disks.
-- Host caching isn't available for premium SSD disks with `maxShares>1`.
-- Disk bursting isn't available for premium SSD disks with `maxShares>1`.
+- Host caching isn't available for Premium SSDs with `maxShares>1`.
+- Disk bursting isn't available for Premium SSDs with `maxShares>1`.
 - When using Availability sets or Virtual Machine Scale Sets with Azure shared disks, [storage fault domain alignment](/azure/virtual-machines/availability) with virtual machine fault domain isn't enforced for the shared data disk.
 - When using [proximity placement groups (PPG)](/azure/virtual-machines/windows/proximity-placement-groups), all virtual machines sharing a disk must be part of the same PPG.
 - Only basic disks can be used with some versions of Windows Server Failover Cluster, for details see [Failover clustering hardware requirements and storage options](/windows-server/failover-clustering/clustering-requirements).
@@ -58,7 +58,7 @@ When sharing Premium SSD v2 disks, they have the following additional limitation
 ### Standard SSDs
 
 - Can only be enabled on data disks, not OS disks.
-- Host caching isn't available for standard SSDs with `maxShares>1`.
+- Host caching isn't available for Standard SSDs with `maxShares>1`.
 - When using Availability sets and Virtual Machine Scale Sets with Azure shared disks, [storage fault domain alignment](/azure/virtual-machines/availability) with virtual machine fault domain isn't enforced for the shared data disk.
 - When using [proximity placement groups (PPG)](/azure/virtual-machines/windows/proximity-placement-groups), all virtual machines sharing a disk must be part of the same PPG.
 - Only basic disks can be used with some versions of Windows Server Failover Cluster, for details see [Failover clustering hardware requirements and storage options](/windows-server/failover-clustering/clustering-requirements).

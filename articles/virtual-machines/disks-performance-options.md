@@ -1,20 +1,20 @@
 ---
-title: Overview - Options to improve Azure managed disk performance
-description: Learn the available options for improving Azure managed disk performance, organized by disk type.
+title: Overview - Options to improve Azure Managed Disk performance
+description: Learn the available options for improving Azure Managed Disk performance, organized by disk type.
 author: roygara
 ms.service: azure-disk-storage
 ms.topic: concept-article
 ms.date: 04/15/2025
 ms.author: rogarana
 ms.custom: accpeerreview2025-2
-# Customer intent: As a cloud architect, I want to understand the performance options for Azure managed disks, so that I can optimize disk usage and meet the varying demands of workloads effectively.
+# Customer intent: As a cloud architect, I want to understand the performance options for Azure Managed Disks, so that I can optimize disk usage and meet the varying demands of workloads effectively.
 ---
 
-# Overview of options to improve Azure managed disk performance
+# Overview of options to improve Azure Managed Disk performance
 
 This article outlines the capabilities each disk type offers to adjust its performance. Use the headings to navigate to the disk types you're interested in to get a quick overview of the capabilities available to it.
 
-The demands and needs of your workload can shift over time, either due to high demand during a holiday, sudden bursts of traffic, or scaling up to meet client needs. Azure managed disks have several capabilities you can take advantage of to improve their performance and match the shifting needs of your workloads. Different disk types offer different capabilities, some disk types have capabilities you can use to ensure their performance automatically shifts to meet the changing demands of your workload, others require manual adjustment, and other disk types can't do either.
+The demands and needs of your workload can shift over time, either due to high demand during a holiday, sudden bursts of traffic, or scaling up to meet client needs. Azure Managed Disks have several capabilities you can take advantage of to improve their performance and match the shifting needs of your workloads. Different disk types offer different capabilities, some disk types have capabilities you can use to ensure their performance automatically shifts to meet the changing demands of your workload, others require manual adjustment, and other disk types can't do either.
 
 ## Ultra Disks and Premium SSD v2
 
@@ -41,7 +41,7 @@ With on-demand disk bursting enabled, the disk bursts whenever its needs exceed 
 
 ### Change performance tiers
 
-The performance of a Premium SSD is set when you create your disk, in the form of their performance tier. When you set the provisioned size of your disk, a performance tier is automatically selected. The performance tier determines the IOPS and throughput your managed disk has. For Premium SSD disks only, the performance tier can be changed at deployment or afterwards, without changing the size of the disk, and without downtime. To learn more, see [Performance tiers for managed disks](/azure/virtual-machines/disks-change-performance).
+The performance of a Premium SSD is set when you create your disk, in the form of their performance tier. When you set the provisioned size of your disk, a performance tier is automatically selected. The performance tier determines the IOPS and throughput your managed disk has. For Premium SSDs only, the performance tier can be changed at deployment or afterwards, without changing the size of the disk, and without downtime. To learn more, see [Performance tiers for managed disks](/azure/virtual-machines/disks-change-performance).
 
 ### Caching
 
@@ -49,7 +49,7 @@ High-scale Azure Virtual Machines that can use premium storage have a multitier 
 
 ### Write accelerator
 
-Write accelerator is a disk capability for M-Series VMs on Premium SSD managed disks. Write accelerator improves the I/O latency of writes against Premium SSD disks. Write accelerator is optimized for volumes that contain the transaction log or redo logs of a DBMS, and shouldn't be used for data volumes. To learn more, see the [write accelerator](/azure/virtual-machines/how-to-enable-write-accelerator) article.
+Write accelerator is a disk capability for M-Series VMs on Premium SSD managed disks. Write accelerator improves the I/O latency of writes against Premium SSDs. Write accelerator is optimized for volumes that contain the transaction log or redo logs of a DBMS, and shouldn't be used for data volumes. To learn more, see the [write accelerator](/azure/virtual-machines/how-to-enable-write-accelerator) article.
 
 ### Performance plus
 

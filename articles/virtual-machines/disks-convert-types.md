@@ -1,20 +1,20 @@
 ---
 title: Convert managed disks storage between different disk types
-description: How to convert Azure managed disks between the different disks types by using Azure PowerShell, Azure CLI, or the Azure portal.
+description: How to convert Azure Managed Disks between the different disks types by using Azure PowerShell, Azure CLI, or the Azure portal.
 author: roygara
 ms.service: azure-disk-storage
 ms.custom: devx-track-azurecli, devx-track-azurepowershell, references_regions, portal
 ms.topic: how-to
 ms.date: 04/17/2025
 ms.author: rogarana
-# Customer intent: As a cloud administrator, I want to convert Azure managed disks between different disk types, so that I can optimize storage performance and cost of my environments, according to my workloads' requirements.
+# Customer intent: As a cloud administrator, I want to convert Azure Managed Disks between different disk types, so that I can optimize storage performance and cost of my environments, according to my workloads' requirements.
 ---
 
-# Convert the disk type of an Azure managed disk
+# Convert the disk type of an Azure Managed Disk
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows 
 
-There are five disk types of Azure managed disks: Azure Ultra Disks, Premium SSD v2, premium SSD, Standard SSD, and Standard HDD. You can easily switch between Premium SSD, Standard SSD, and Standard HDD based on your performance needs. Premium SSD and Standard SSD are also available with [Zone-redundant storage](disks-redundancy.md#zone-redundant-storage-for-managed-disks). For most cases, you can't yet switch from or to an Ultra Disk, you must [deploy a new one with a snapshot of an existing disk](#migrate-to-premium-ssd-v2-or-ultra-disk-using-snapshots). However, you can switch from existing disks to a Premium SSD v2. See [Convert Premium SSD v2 disks](#convert-premium-ssd-v2-disks) for details.
+There are five disk types of Azure Managed Disks: Azure Ultra Disks, Premium SSD v2, Premium SSD, Standard SSD, and Standard HDD. You can easily switch between Premium SSD, Standard SSD, and Standard HDD based on your performance needs. Premium SSD and Standard SSD are also available with [Zone-redundant storage](disks-redundancy.md#zone-redundant-storage-for-managed-disks). For most cases, you can't yet switch from or to an Ultra Disk, you must [deploy a new one with a snapshot of an existing disk](#migrate-to-premium-ssd-v2-or-ultra-disk-using-snapshots). However, you can switch from existing disks to a Premium SSD v2. See [Convert Premium SSD v2 disks](#convert-premium-ssd-v2-disks) for details.
 
 This functionality isn't supported for unmanaged disks. But you can easily convert an unmanaged disk to a managed disk with [CLI](linux/convert-unmanaged-to-managed-disks.md) or [PowerShell](windows/convert-unmanaged-to-managed-disks.md) to be able to switch between disk types.
 
@@ -31,7 +31,7 @@ Because conversion requires a restart of the virtual machine (VM), schedule the 
 
 ## Change the type of an individual managed disk
 
-For your dev/test workload, you might want a mix of Standard and Premium disks to reduce your costs. You can choose to upgrade only those disks that need better performance. This example shows how to convert a single VM disk from Standard to Premium storage. However, by changing the $storageType variable in this example, you can convert the VM's disks type to standard SSD or standard HDD. To use Premium managed disks, your VM must use a [VM size](sizes.md) that supports Premium storage. You can also use these examples to change a disk from [Locally redundant storage (LRS)](disks-redundancy.md#locally-redundant-storage-for-managed-disks) disk to a [Zone-redundant storage (ZRS)](disks-redundancy.md#zone-redundant-storage-for-managed-disks) disk or vice-versa. This example also shows how to switch to a size that supports Premium storage:
+For your dev/test workload, you might want a mix of Standard and Premium disks to reduce your costs. You can choose to upgrade only those disks that need better performance. This example shows how to convert a single VM disk from Standard to Premium storage. However, by changing the $storageType variable in this example, you can convert the VM's disks type to Standard SSD or Standard HDD. To use Premium managed disks, your VM must use a [VM size](sizes.md) that supports Premium storage. You can also use these examples to change a disk from [Locally redundant storage (LRS)](disks-redundancy.md#locally-redundant-storage-for-managed-disks) disk to a [Zone-redundant storage (ZRS)](disks-redundancy.md#zone-redundant-storage-for-managed-disks) disk or vice-versa. This example also shows how to switch to a size that supports Premium storage:
 
 # [Azure PowerShell](#tab/azure-powershell)
 
@@ -126,7 +126,7 @@ The disk type conversion is instantaneous. You can start your VM after the conve
 
 ## Switch all managed disks of a VM from one account to another
 
-This example shows how to convert all of a VM's disks to premium storage. However, by changing the $storageType variable in this example, you can convert the VM's disks type to standard SSD or standard HDD. To use Premium managed disks, your VM must use a [VM size](sizes.md) that supports Premium storage. This example also switches to a size that supports premium storage:
+This example shows how to convert all of a VM's disks to premium storage. However, by changing the $storageType variable in this example, you can convert the VM's disks type to Standard SSD or Standard HDD. To use Premium managed disks, your VM must use a [VM size](sizes.md) that supports Premium storage. This example also switches to a size that supports premium storage:
 
 # [Azure PowerShell](#tab/azure-powershell)
 
@@ -216,7 +216,7 @@ You can switch existing disks to Premium SSD v2 disks the same way you do for ot
 
 Switching to Premium SSD v2 disks has some additional limitations:
 
-- You can't switch an OS disk to a Premium SSD v2 disk.
+- You can't switch an OS disk to a Premium SSD v2.
 - Existing disks can only be directly switched to 512 sector size Premium SSD v2 disks.
 - You can only perform 50 conversions at the same time per subscription per region.
 - If your existing disk is a shared disk, detach all VMs before changing to Premium SSD v2.
@@ -272,7 +272,7 @@ az disk-encryption-set update --name "nameOfYourDiskEncryptionSetHere" --resourc
 
 [!INCLUDE [managed-disk-premium-ssd-v2-conversion-preview](./includes/managed-disk-premium-ssd-v2-conversion-preview.md)]
 
-Premium SSD, Standard SSD, and Standard HDD disks support both incremental and full snapshots. However, migration using full snapshots is not supported for these disk types. To create Premium SSD v2 or Ultra disks from a snapshot, you must use incremental snapshots.
+Premium SSD, Standard SSD, and Standard HDDs support both incremental and full snapshots. However, migration using full snapshots is not supported for these disk types. To create Premium SSD v2 or Ultra Disks from a snapshot, you must use incremental snapshots.
 
 Both Premium SSD v2 disks and Ultra Disks have their own set of restrictions. For example, neither can be used as an OS disk, and also aren't available in all regions. See the [Premium SSD v2 limitations](disks-deploy-premium-v2.md#limitations) and [Ultra Disk GA scope and limitations](disks-enable-ultra-ssd.md#ga-scope-and-limitations) sections of their articles for more information.
 

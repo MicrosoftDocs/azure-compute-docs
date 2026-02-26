@@ -15,7 +15,7 @@ ms.date: 02/19/2026
 
 This article explains how to download a Windows virtual hard disk (VHD) file from Azure. To download a VHD, the disk can't be attached to a running VM, which means the VM experiences downtime. However, some configurations can safely avoid downtime by [snapshotting the disk](#alternative-snapshot-the-vm-disk) and downloading the VHD from the snapshot.
 
-If you're using [Microsoft Entra ID](/azure/active-directory/fundamentals/active-directory-whatis) to control resource access, you can use it to restrict uploading of Azure managed disks. For more information, see [Secure downloads and uploads of Azure managed disks](../disks-secure-upload-download.md).
+If you're using [Microsoft Entra ID](/azure/active-directory/fundamentals/active-directory-whatis) to control resource access, you can use it to restrict uploading of Azure Managed Disks. For more information, see [Secure downloads and uploads of Azure Managed Disks](../disks-secure-upload-download.md).
 
 ## Optional: Generalize the VM
 

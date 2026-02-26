@@ -1,6 +1,6 @@
 ---
-title: Redundancy options for Azure managed disks
-description: Learn about zone-redundant storage and locally redundant storage for Azure managed disks.
+title: Redundancy options for Azure Managed Disks
+description: Learn about zone-redundant storage and locally redundant storage for Azure Managed Disks.
 author: roygara
 ms.author: rogarana
 ms.date: 07/29/2024
@@ -14,7 +14,7 @@ ms.custom: references_regions
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
-Azure managed disks offer two storage redundancy options, zone-redundant storage (ZRS), and locally redundant storage. ZRS provides higher availability for managed disks than locally redundant storage (LRS) does. However, the write latency for LRS disks is better than ZRS disks because LRS disks synchronously write data to three copies in a single data center.
+Azure Managed Disks offer two storage redundancy options, zone-redundant storage (ZRS), and locally redundant storage. ZRS provides higher availability for managed disks than locally redundant storage (LRS) does. However, the write latency for LRS disks is better than ZRS disks because LRS disks synchronously write data to three copies in a single data center.
 
 ## Locally redundant storage for managed disks
 
@@ -29,7 +29,7 @@ If your workflow doesn't support application-level synchronous writes across zon
 
 ## Zone-redundant storage for managed disks
 
-Zone-redundant storage (ZRS) synchronously replicates your Azure managed disk across three Azure availability zones in the region you select. Each availability zone is a separate physical location with independent power, cooling, and networking. ZRS disks provide at least 99.9999999999% (12 9's) of durability over a given year.
+Zone-redundant storage (ZRS) synchronously replicates your Azure Managed Disk across three Azure availability zones in the region you select. Each availability zone is a separate physical location with independent power, cooling, and networking. ZRS disks provide at least 99.9999999999% (12 9's) of durability over a given year.
 
 A ZRS disk lets you recover from failures in availability zones. If a zone went down and your virtual machine (VM) wasn't affected, then your workloads continue running. But if your VM was affected by an outage and you want to recover before it's resolved, you can [force detach](/rest/api/compute/virtual-machines/attach-detach-data-disks?tabs=HTTP#diskdetachoptiontypes) your ZRS disks from the failed VM, freeing them to attach to another VM.
 

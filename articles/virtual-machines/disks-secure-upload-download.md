@@ -10,9 +10,9 @@ ms.custom: devx-track-azurecli, devx-track-azurepowershell
 # Customer intent: As a cloud engineer, I want to secure managed disk downloads and uploads with Microsoft Entra ID and RBAC roles, so that I can control who has access to import or export disk data and protect my data from unauthorized access.
 ---
 
-# Secure downloads and uploads of Azure managed disks
+# Secure downloads and uploads of Azure Managed Disks
 
-If you use [Microsoft Entra ID](/azure/active-directory/fundamentals/active-directory-whatis) to control resource access, you can also use it to restrict uploads and downloads of Azure managed disks. When a user tries to upload or download a disk, Azure validates the identity of the requesting user in Microsoft Entra ID, and confirms that user has the required permissions. If a user doesn't have the required permissions, they can't upload or download managed disks.
+If you use [Microsoft Entra ID](/azure/active-directory/fundamentals/active-directory-whatis) to control resource access, you can also use it to restrict uploads and downloads of Azure Managed Disks. When a user tries to upload or download a disk, Azure validates the identity of the requesting user in Microsoft Entra ID, and confirms that user has the required permissions. If a user doesn't have the required permissions, they can't upload or download managed disks.
 
 At a higher level, a system administrator can set a policy at the Azure account or subscription level, to ensure that all disks and snapshots must use Microsoft Entra ID for uploads or downloads. If you have any questions on securing uploads or downloads by using Microsoft Entra ID, reach out to: azuredisks@microsoft .com.
 

@@ -51,11 +51,11 @@ Each of these options has advantages or disadvantages in the areas of capacity, 
 
 | **Type** | **Tier** | **Docs** | **Mount protocol for VM** | **Support model** | **Prices** | **Notes** |
 |---|---|---|---|---|---|---|
-| **Managed disk** | Standard HDD | [Introduction to Azure managed disks](/azure/virtual-machines/managed-disks-overview) | SCSI | Microsoft | [Managed disks pricing](https://azure.microsoft.com/pricing/details/managed-disks/) | 1 |
-| **Managed disk** | Standard SSD | [Introduction to Azure managed disks](/azure/virtual-machines/managed-disks-overview) | SCSI | Microsoft | [Managed Disks pricing](https://azure.microsoft.com/pricing/details/managed-disks/) | 1 |
-| **Managed disk** | Premium SSD | [Introduction to Azure managed disks](/azure/virtual-machines/managed-disks-overview) | SCSI | Microsoft | [Managed Disks pricing](https://azure.microsoft.com/pricing/details/managed-disks/) | 1 |
-| **Managed disk** | Premium SSD v2 | [Introduction to Azure managed disks](/azure/virtual-machines/managed-disks-overview) | SCSI | Microsoft | [Managed Disks pricing](https://azure.microsoft.com/pricing/details/managed-disks/) | 1 |
-| **Managed disk** | UltraDisk | [Introduction to Azure managed disks](/azure/virtual-machines/managed-disks-overview) | SCSI | Microsoft | [Managed Disks pricing](https://azure.microsoft.com/pricing/details/managed-disks/) | 1 |
+| **Managed disk** | Standard HDD | [Introduction to Azure Managed Disks](/azure/virtual-machines/managed-disks-overview) | SCSI | Microsoft | [Managed disks pricing](https://azure.microsoft.com/pricing/details/managed-disks/) | 1 |
+| **Managed disk** | Standard SSD | [Introduction to Azure Managed Disks](/azure/virtual-machines/managed-disks-overview) | SCSI | Microsoft | [Managed Disks pricing](https://azure.microsoft.com/pricing/details/managed-disks/) | 1 |
+| **Managed disk** | Premium SSD | [Introduction to Azure Managed Disks](/azure/virtual-machines/managed-disks-overview) | SCSI | Microsoft | [Managed Disks pricing](https://azure.microsoft.com/pricing/details/managed-disks/) | 1 |
+| **Managed disk** | Premium SSD v2 | [Introduction to Azure Managed Disks](/azure/virtual-machines/managed-disks-overview) | SCSI | Microsoft | [Managed Disks pricing](https://azure.microsoft.com/pricing/details/managed-disks/) | 1 |
+| **Managed disk** | Ultra Disk | [Introduction to Azure Managed Disks](/azure/virtual-machines/managed-disks-overview) | SCSI | Microsoft | [Managed Disks pricing](https://azure.microsoft.com/pricing/details/managed-disks/) | 1 |
 | **Azure blob** | Block blobs | [Mount Blob Storage by using the Network File System (NFS) 3.0 protocol](/azure/storage/blobs/network-file-system-protocol-support-how-to?tabs=linux) | NFS v3.0 | Microsoft | [Azure Blob Storage pricing](https://azure.microsoft.com/pricing/details/storage/blobs/) | 2 |
 | **Azure** **blobfuse** | v1 | [How to mount Azure Blob Storage as a file system with BlobFuse v1](/azure/storage/blobs/storage-how-to-mount-container-linux?tabs=RHEL) | Fuse | Open source/GitHub | n/a | 3, 5, 6 |
 | **Azure** **blobfuse** | v2 | [What is BlobFuse? - BlobFuse2](/azure/storage/blobs/blobfuse2-what-is) | Fuse | Open source/GitHub | n/a | 3, 5, 6 |

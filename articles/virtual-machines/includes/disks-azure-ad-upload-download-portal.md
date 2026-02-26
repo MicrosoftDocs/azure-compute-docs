@@ -7,9 +7,9 @@
  ms.date: 01/30/2024
  ms.author: rogarana
  ms.custom: include file
-# Customer intent: As a system administrator, I want to restrict uploads and downloads for Azure managed disks using identity verification, so that I can enforce security policies and ensure only authorized users can access sensitive data.
+# Customer intent: As a system administrator, I want to restrict uploads and downloads for Azure Managed Disks using identity verification, so that I can enforce security policies and ensure only authorized users can access sensitive data.
 ---
-If you're using [Microsoft Entra ID](/azure/active-directory/fundamentals/active-directory-whatis) to control resource access, you can now use it to restrict uploads and downloads of Azure managed disks. This feature is available as a GA offering in all regions. When a user attempts to upload or download a disk, Azure validates the identity of the requesting user in Microsoft Entra ID, and confirms that user has the required permissions. At a higher level, a system administrator could set a policy at the Azure account or subscription level, to ensure that all disks and snapshots must use Microsoft Entra ID for uploads or downloads. If you have any questions on securing uploads or downloads with Microsoft Entra ID, reach out to this email: azuredisks@microsoft .com
+If you're using [Microsoft Entra ID](/azure/active-directory/fundamentals/active-directory-whatis) to control resource access, you can now use it to restrict uploads and downloads of Azure Managed Disks. This feature is available as a GA offering in all regions. When a user attempts to upload or download a disk, Azure validates the identity of the requesting user in Microsoft Entra ID, and confirms that user has the required permissions. At a higher level, a system administrator could set a policy at the Azure account or subscription level, to ensure that all disks and snapshots must use Microsoft Entra ID for uploads or downloads. If you have any questions on securing uploads or downloads with Microsoft Entra ID, reach out to this email: azuredisks@microsoft .com
 
 ### Restrictions
 [!INCLUDE [disks-azure-ad-upload-download-restrictions](disks-azure-ad-upload-download-restrictions.md)]

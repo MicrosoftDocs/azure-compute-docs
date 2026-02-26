@@ -1016,11 +1016,6 @@ Specifies whether to use old way of tracing PLB decisions regarding scheduling p
 ## TransactionalReplicator
 <i> **Warning Note** : Changing Replication/TranscationalReplicator settings at cluster level changes settings for all stateful services include system services. This is generally not recommended. See this document [Configure Azure Service Fabric Reliable Services - Azure Service Fabric | Microsoft Docs](./service-fabric-reliable-services-configuration.md) to configure services at app level.</i>
 
-## TransactionalReplicator2
-
-| **Parameter** | **Allowed Values** | **Upgrade Policy** | **Guidance or Short Description** |
-| --- | --- | --- | --- |
-|TrackLastModifiedUTC |bool, default is FALSE | Static |TODO: GET DETAILS AND ADD TO GenerateConfigurationsCSV.pl |
 
 | **Parameter** | **Allowed Values** | **Upgrade Policy** | **Guidance or Short Description** |
 | --- | --- | --- | --- |
@@ -1034,6 +1029,14 @@ Specifies whether to use old way of tracing PLB decisions regarding scheduling p
 |ReplicatorAddress |string, default is "localhost:0" | Static | The endpoint in form of a string -'IP:Port' which is used by the Windows Fabric Replicator to establish connections with other replicas in order to send/receive operations. |
 |ReplicationBatchSendInterval|TimeSpan, default is Common::TimeSpan::FromMilliseconds(15) | Static | Specify timespan in seconds. Determines the amount of time that the replicator waits after receiving an operation before force sending a batch.|
 |ShouldAbortCopyForTruncation |bool, default is FALSE | Static | Allow pending log truncation to go through during copy. With this enabled the copy stage of builds can be canceled if the log is full and they are block truncation. |
+
+
+## TransactionalReplicator2
+
+| **Parameter** | **Allowed Values** | **Upgrade Policy** | **Guidance or Short Description** |
+|---------------|-------------------|--------------------|------------------------------------|
+| TrackLastModifiedUTC | bool, (default: FALSE) | Static | Controls whether Key Value Store (KVS) backed by TStore tracks and exposes the last modified UTC timestamp for each entry. Available in SF 11.4 and beyond.<br><br>When set to **true**, the system records the UTC timestamp of the most recent modification for each entry, and APIs expose this value through the `LastModifiedUTC` field. Each update refreshes the stored timestamp.<br><br>When set to **false**, the system does not expose last modified timestamps. APIs return the default value `1970-01-01T00:00:00Z` (Unix epoch). Previously recorded timestamps are retained internally but are not returned while the setting remains disabled. Disabling affects visibility only and does not impact data correctness. |
+
 
 ## Transport
 | **Parameter** | **Allowed Values** |**Upgrade policy** |**Guidance or Short Description** |
