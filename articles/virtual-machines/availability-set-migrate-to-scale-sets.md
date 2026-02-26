@@ -14,7 +14,7 @@ ms.date: 01/30/2026
 This article describes how to migrate your Azure Virtual Machines (VMs) from availability sets to Virtual Machine Scale Sets with Flexible orchestration mode.
 
 > [!IMPORTANT]
-> The availability set to Virtual Machine Scale Sets migration feature is currently in **Public Preview**. Preview features should be tested in non-production environments before migrating production workloads.
+> The availability set to Virtual Machine Scale Sets migration feature is currently in **preview**. Previews are made available to you on the condition that you agree to the [supplemental terms of use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Some aspects of this feature may change prior to general availability (GA).
 
 ## Why migrate to Virtual Machine Scale Sets?
 
