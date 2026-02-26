@@ -23,7 +23,7 @@ sections:
       - question: |
           What does no local temp disk mean? 
         answer: |
-          Traditionally, we have had VM sizes (for example, Standard_D2s_v3, Standard_E48_v3) that include a small local disk (that is, a D: Drive). With the VM series such as [Dasv5](dasv5-dadsv5-series.md) and [Easv5](easv5-eadsv5-series.md) that small local disk no longer exists. However, you can still attach Standard HDD, Premium SSD or Ultra SSD to use as remote storage.
+          Traditionally, we have had VM sizes (for example, Standard_D2s_v3, Standard_E48_v3) that include a small local disk (that is, a D: Drive). With the VM series such as [Dasv5](dasv5-dadsv5-series.md) and [Easv5](easv5-eadsv5-series.md) that small local disk no longer exists. However, you can still attach Standard HDD, Premium SSD or Ultra Disk to use as remote storage.
           
       - question: |
           What if I still want a local temp disk?
@@ -31,7 +31,7 @@ sections:
           If your workload requires a local temporary disk, we still offer sizes such as the [Dadsv5](dasv5-dadsv5-series.md). 
           
           > [!NOTE]
-          > Local temporary disk isn't persistent; to ensure your data is persistent, please use Standard HDD, Premium SSD or Ultra SSD options. 
+          > Local temporary disk isn't persistent; to ensure your data is persistent, please use Standard HDD, Premium SSD or Ultra Disk options. 
 
           
       - question: |

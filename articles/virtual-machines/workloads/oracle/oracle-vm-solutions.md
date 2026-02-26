@@ -222,7 +222,7 @@ You can also choose to base your solutions on a custom image that you create fro
 
 ## Oracle database VM images
 
-Oracle supports running Oracle Database 12.1 and higher Standard and Enterprise editions in Azure on VM images based on Oracle Linux. For the best performance for production workloads of Oracle Database on Azure, be sure to properly size the VM image and use Premium SSD or Ultra SSD Managed Disks. For instructions on how to quickly get an Oracle Database up and running in Azure using the Oracle published VM image, see [Create an Oracle Database in an Azure VM](oracle-database-quick-create.md).
+Oracle supports running Oracle Database 12.1 and higher Standard and Enterprise editions in Azure on VM images based on Oracle Linux. For the best performance for production workloads of Oracle Database on Azure, be sure to properly size the VM image and use Premium SSD or Ultra Disk Managed Disks. For instructions on how to quickly get an Oracle Database up and running in Azure using the Oracle published VM image, see [Create an Oracle Database in an Azure VM](oracle-database-quick-create.md).
 
 ### Attached disk configuration options
 
