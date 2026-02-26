@@ -58,7 +58,7 @@ The following sections describe the different components at a high level.
 
 ### Application (middle) tier
 
-The application tier is isolated in its own subnet. There are multiple virtual machines set up for fault tolerance and easy patch management. These VMs can be backed with shared storage offered by Azure NetApp Files and Ultra SSDs. This configuration allows for easier deployment of patches without downtime. The machines in the application tier should be fronted by a public load balancer so requests to the EBS application tier are processed even if one machine in the tier is offline due to a fault.
+The application tier is isolated in its own subnet. There are multiple virtual machines set up for fault tolerance and easy patch management. These VMs can be backed with shared storage offered by Azure NetApp Files and Ultra Disks. This configuration allows for easier deployment of patches without downtime. The machines in the application tier should be fronted by a public load balancer so requests to the EBS application tier are processed even if one machine in the tier is offline due to a fault.
 
 ### Load balancer
 
