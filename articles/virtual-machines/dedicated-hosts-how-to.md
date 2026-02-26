@@ -54,7 +54,7 @@ In this example, we'll create a host group using one availability zone and two f
 1. For **Host group name**, type *myHostGroup*.
 1. For **Location**, select **East US**.
 1. For **Availability Zone**, select **1**.
-1. Select **Enable Ultra SSD** to use Ultra Disks with supported Virtual Machines.
+1. Select **Enable Ultra Disk** to use Ultra Disks with supported Virtual Machines.
 1. For **Fault domain count**, select **2**.
 1. Select **Automatic placement** to automatically assign VMs and scale set instances to an available host in this group.
 1. Select **Review + create** and then wait for validation.
@@ -210,7 +210,7 @@ $dHost = New-AzHost `
 
 Now create a VM on the host.
 
-If you would like to create a VM with Ultra Disks support, make sure the host group in which the VM will be placed is ultra SSD enabled. Once you've confirmed, create the VM in the same host group. See [Deploy an Ultra Disk](disks-enable-ultra-ssd.md#deploy-an-ultra-disk) for the steps to attach an Ultra Disk to a VM.
+If you would like to create a VM with Ultra Disks support, make sure the host group in which the VM will be placed is Ultra Disk enabled. Once you've confirmed, create the VM in the same host group. See [Deploy an Ultra Disk](disks-enable-ultra-ssd.md#deploy-an-ultra-disk) for the steps to attach an Ultra Disk to a VM.
 
 ### [Portal](#tab/portal)
 
