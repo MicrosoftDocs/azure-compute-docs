@@ -111,36 +111,37 @@ For more information on network egress, see [Bandwidth pricing](https://azure.mi
 ### Create VM Applications & VM Applications version resource
 The VM application is stored in Azure Compute Gallery. The **VM application resource** defines the following properties about your VM application:
 
-| Property | Description | Limitations |
-|----------|-------------|-------------|
-| name | Name of the application | Max length of 117 characters. Allowed characters are uppercase or lowercase letters, digits, hyphen(-), period (.), underscore (_). Names not allowed to end with period(.).|
-| supportedOSType | Define the supported OS type | "Linux" or "Windows" |
-| endOfLifeDate | A future end of life date for the application. The date is for reference only and isn't enforced. | |
-| description | Optional. A description of the VM application | |
-| eula | Optional. Reference to End User License Agreement (EULA) | |
-| privacyStatementUri | Optional. Reference to privacy statement for the application. | |
-| releaseNoteUri | Optional. Reference to release notes for the application. | |
+| Property | Description | Updatable | Limitations |
+| -------- | ----------- | --------- | ----------- |
+| name | Name of the application | Yes | Max length of 117 characters. Allowed characters are uppercase or lowercase letters, digits, hyphen(-), period (.), underscore (_). Names not allowed to end with period(.). |
+| location | Location of the resource | No | |
+| supportedOSType | Define the supported OS type | No | "Linux" or "Windows" |
+| endOfLifeDate | A future end of life date for the application. The date is for reference only and isn't enforced. | Yes | |
+| description | Optional. A description of the VM application | Yes | |
+| eula | Optional. Reference to End User License Agreement (EULA) | Yes | |
+| privacyStatementUri | Optional. Reference to privacy statement for the application. | Yes | |
+| releaseNoteUri | Optional. Reference to release notes for the application. | Yes | |
 
 **VM application versions** are the deployable resources within the VM Application resource. Versions are defined with the following properties:
 
-| Property | Description | Limitations |
-|----------|-------------|-------------|
-| location | Source location for the VM Application version. | Valid Azure Region |
-| source/mediaLink | Link to the application package file in a storage account | Valid and existing storage url|
-| source/defaultConfigurationLink | Optional. A link to the configuration file for the VM application. It can be overridden at deployment time. | Valid and existing storage url |
-| manageActions/install | Install script as string to properly install the application | Valid command for the given OS in string format. |
-| manageActions/remove | Remove script as string to properly remove the application | Valid command for the given OS in string format |
-| manageActions/update | Optional. Update script as string to properly update the VM application to a newer version. | Valid command for the given OS in string format |
-| targetRegions/name | Name of target regions to which to replicate. Improves resiliency to region failure and create latency. | Valid Azure region |
-| targetRegions/regionalReplicaCount | Optional. The number of replicas to create in the region. Improves load handling and create latency. Defaults to 1. | Integer between 1 and 3 inclusive |
-| replicaCount | Optional. Defines the number of replicas across each region. Takes effect if regionalReplicaCount isn't defined. Improves resiliency to region or cluster failure and create latency during high scale. | Integer between 1 and 3 inclusive. |
-| endOfLifeDate | Optional. A future end of life date for the application version. This property is for customer reference only and isn't enforced. | Valid future date |
-| excludeFromLatest | Exclude version from being used as the latest version of the application when 'latest' keyword is used in applicationProfile. | |
-| storageAccountType | Optional. Type of storage account to use in each region for storing application package. Defaults to Standard_LRS. | This property is nonupdatable. |
-| safetyProfile/allowDeletionOfReplicatedLocations | Optional. Indicates whether or not removing this Gallery Image Version from replicated regions is allowed.| |
-| settings/packageFileName | Package file name to use when the package is downloaded to the VM. | Character limit is of 4,096 characters. |
-| settings/configFileName | Configuration file name to be use when the configuration is downloaded to the VM. | Character limit is of 4,096 characters. |
-| settings/scriptBehaviorAfterReboot | Optional. The action to be taken for installing, updating, or removing gallery application after the VM is rebooted. | |
+| Property | Description | Updatable | Limitations |
+| -------- | ----------- | --------- | ----------- |
+| location | Source location for the VM Application version. | No | Valid Azure Region |
+| source/mediaLink | Link to the application package file in a storage account | Partially. | Valid and existing storage url. Only SASToken within the SASURL can be changed. |
+| source/defaultConfigurationLink | Optional. A link to the configuration file for the VM application. It can be overridden at deployment time. | Partially | Valid and existing storage url. Only SASToken within the SASURL can be changed. |
+| manageActions/install | Install script as string to properly install the application | No | Valid command for the given OS in string format. |
+| manageActions/remove | Remove script as string to properly remove the application | No | Valid command for the given OS in string format |
+| manageActions/update | Optional. Update script as string to properly update the VM application to a newer version. | No | Valid command for the given OS in string format |
+| targetRegions/name | Name of target regions to which to replicate. Improves resiliency to region failure and create latency. | Yes | Valid Azure region |
+| targetRegions/regionalReplicaCount | Optional. The number of replicas to create in the region. Improves load handling and create latency. Defaults to 1. | Yes | Integer between 1 and 3 inclusive |
+| replicaCount | Optional. Defines the number of replicas across each region. Takes effect if regionalReplicaCount isn't defined. Improves resiliency to region or cluster failure and create latency during high scale. | Yes | Integer between 1 and 3 inclusive. |
+| endOfLifeDate | Optional. A future end of life date for the application version. This property is for customer reference only and isn't enforced. | Yes | Valid future date |
+| excludeFromLatest | Exclude version from being used as the latest version of the application when 'latest' keyword is used in applicationProfile. | Yes | |
+| storageAccountType | Optional. Type of storage account to use in each region for storing application package. Defaults to Standard_LRS. | No | This property is nonupdatable. |
+| safetyProfile/allowDeletionOfReplicatedLocations | Optional. Indicates whether or not removing this Gallery Image Version from replicated regions is allowed. | Yes | |
+| settings/packageFileName | Package file name to use when the package is downloaded to the VM. | No | Character limit is of 4,096 characters. |
+| settings/configFileName | Configuration file name to be use when the configuration is downloaded to the VM. | No | Character limit is of 4,096 characters. |
+| settings/scriptBehaviorAfterReboot | Optional. The action to be taken for installing, updating, or removing gallery application after the VM is rebooted. | No | |
 
 #### [Template](#tab/template)
 ```json
@@ -323,9 +324,9 @@ After the VM Application version is published to Azure Compute Gallery, you can 
 The `applicationProfile` in Azure VM and Virtual Machine Scale Sets defines the following properties:
 
 | Property | Description | Limitations |
-|----------|-------------|-------------|
+| -------- | ----------- | ----------- |
 | galleryApplications | Gallery Applications to deploy | |
-| packageReferenceId | Reference to application version to deploy | Valid application version reference|
+| packageReferenceId | Reference to application version to deploy | Valid application version reference |
 | configurationReference | Optional. The full url of a storage blob containing the configuration for this deployment. This overrides any value provided for defaultConfiguration earlier. | Valid storage blob reference | 
 | order | Optional. Order in which to deploy applications. When not set, the application is installed last after all ordered applications are installed. | Valid integer |
 | treatFailureAsDeploymentFailure | Optional. Mark application failure as VM deployment failure for failure handling | True or False |
@@ -333,7 +334,7 @@ The `applicationProfile` in Azure VM and Virtual Machine Scale Sets defines the 
 The order field may be used to specify dependencies between applications. The rules for order are as follows:
 
 | Case | Install Meaning | Failure Meaning |
-|--|--|--|
+| ---- | --------------- | --------------- |
 | No order specified | Unordered applications are installed after ordered applications. There's no guarantee of installation order among the unordered applications. | Installation failures of other applications, be it ordered or unordered doesn’t affect the installation of unordered applications. |
 | Duplicate order values | Application is installed in any order compared to other applications with the same order. All applications of the same order are installed after the ones with lower orders and before the ones with higher orders. | If a previous application with a lower order failed to install, no applications with this order install. If any application with this order fails to install, no applications with a higher order install. |
 | Increasing orders | Application will be installed after the ones with lower orders and before the ones with higher orders. | If a previous application with a lower order failed to install, this application doesn't install. If this application fails to install, no application with a higher order installs. |
@@ -556,7 +557,7 @@ To change this behavior, set the `treatFailureAsDeploymentFailure` property to `
 ## Error messages
 
 | Message | Description |
-|--|--|
+| ------- | ----------- |
 | Current VM Application Version {name} was deprecated at {date}. | You tried to deploy a VM Application version that was deprecated. Try using `latest` instead of specifying a specific version. |
 | Current VM Application Version {name} supports OS {OS}, while current OSDisk's OS is {OS}. | You tried to deploy a Linux application to Windows instance or vice versa. |
 | The maximum number of VM applications (max=5, current={count}) has been exceeded. Use fewer applications and retry the request. | We currently only support five VM applications per VM or scale set. |
@@ -586,8 +587,13 @@ To change this behavior, set the `treatFailureAsDeploymentFailure` property to `
 
 ## Next steps
 
-- Learn how to [create and deploy VM application packages](vm-applications-how-to.md).
-- Learn how to [manage and delete Azure VM Applications](vm-applications-manage.md).
-- Learn how to [create application package for VM Applications](vm-applications-create-app-package.md)
-- Check out [Azure dev blogs about Azure VM Applications](https://devblogs.microsoft.com/azure-vm-runtime/category/vm-applications/).
+Learn how to
+- [Create and deploy VM application packages](vm-applications-how-to.md).
+- [Manage and delete Azure VM Applications](vm-applications-manage.md).
+- [Create application package for VM Applications](vm-applications-create-app-package.md)
+- [Publish VM application using Managed Identity](vm-applications-publish-with-managed-identity.md)
+- [Govern and enforce applications using Azure Policy](vm-applications-inject-with-policy.md)
+
+Check out
+- [Azure dev blogs about Azure VM Applications](https://devblogs.microsoft.com/azure-vm-runtime/category/vm-applications/).
 - [Reimagining VM Application Management for an AI-powered, secure future](https://techcommunity.microsoft.com/blog/AzureCompute/reimagining-vm-application-management-for-an-ai-powered-secure-future/4470127)

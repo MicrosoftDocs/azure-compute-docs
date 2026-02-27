@@ -22,9 +22,12 @@ To create and deploy applications on Azure VM, first package and upload your app
 :::image type="content" source="media/vmapps/vm-applications-how-to.png" alt-text="Diagram showing step-by-step process involved in publishing and deploying VM applications.":::
 
 ## Prerequisites
-1. Create [Azure storage account](/azure/storage/common/storage-account-create#create-a-storage-account) and [storage container](/azure/storage/blobs/blob-containers-portal#create-a-container). This container is used to upload your application files.
+1. Create [Azure storage account](/azure/storage/common/storage-account-create#create-a-storage-account) and [storage container](/azure/storage/blobs/blob-containers-portal#create-a-container). This container is used to upload your application files. 
 1. Create [Azure Compute Gallery for storing and sharing application resources](create-gallery.md).
 1. Create [user-assigned managed identity](/entra/identity/managed-identities-azure-resources/overview) and [assign to Azure Compute Gallery](vm-applications-publish-with-managed-identity.md)
+
+> [!NOTE]
+> Create your storage account with anonymous access disabled for improved security. Use a [managed identity assigned to Azure Compute Gallery](vm-applications-publish-with-managed-identity.md) to publish your VM Applications securely without requiring SAS tokens.
 
 ## Package the application
 :::image type="content" source="media/vmapps/vm-application-folder-structure.png" alt-text="Screenshot showing the folder structure recommended for uploading and creating VM Applications.":::
@@ -39,7 +42,8 @@ To create and deploy applications on Azure VM, first package and upload your app
      
 #### 2. (Optional) Package the application configuration file
    - You can provide the configuration file separately using `defaultConfigurationLink` in the `publishingProfile` of the VM Application. This reduces the overhead of archiving and unarchiving application packages. 
-   - Configuration files can also be passed during app deployment using `configurationReference` property in the `applicationProfile` of the VM enabling customized installation per VM.
+   - Configuration files can also be passed during app deployment using `configurationReference` property in the `applicationProfile` of the VM enabling customized installation per VM. 
+   - If both properties are set, `configurationReference` overrides the configuration passed using `defaultConfigurationLink`. 
      
 #### 3. Create the install script
 After the application and configuration blob is downloaded on the VM, Azure executes the provided install script to install the application. **The install script is provided as a string** and has a maximum character limit of 4,096 chars. The install commands should be written assuming the application package and the configuration file are in the current directory.
@@ -249,7 +253,7 @@ mv VMApp1 install.sh && chmod +xr install.sh && bash ./install.sh
 mv VMApp1 install.sh && mv VMApp1-config config.yaml && chmod +xr install.sh && bash ./install.sh --config config.yaml
 ```
 
-#### [.PS1](#tab/PS)
+#### [.PS1](#tab/powershell)
 Replace `VMApp1` with your VM App name in application package (VMApp1) and configuration file (VMApp1-config).
 Replace `install.ps1` with desired script name. 
 Replace `config.json` with your desired config name.
@@ -273,6 +277,7 @@ There may be few operations that delete script must perform.
 
 - **Uninstall application:**
 	Properly uninstall the application from the VM. For example, 
+  # [CMD](tab/cmd5)
   - CMD on Windows: 
     ```cli-interactive
     start /wait uninstall.exe /quiet
@@ -283,6 +288,7 @@ There may be few operations that delete script must perform.
     ```cli-interactive
     start /wait msiexec /x app.msi /quiet /qn
     ```
+  # [PowerShell](tab/powershell5)
   - PowerShell on Windows:
     ```powershell-interactive
     powershell.exe -ExecutionPolicy Bypass -NoProfile -Command "Start-Process -FilePath '.\uninstall.exe' -ArgumentList '/quiet' -Wait -NoNewWindow"
@@ -293,6 +299,7 @@ There may be few operations that delete script must perform.
     ```powershell-interactive
     powershell.exe -ExecutionPolicy Bypass -NoProfile -Command "Start-Process -FilePath 'msiexec.exe' -ArgumentList '/x','.\app.msi','/quiet','/qn' -Wait -NoNewWindow"
     ```
+  # [Bash](tab/bash5)
   - Bash on Linux: 
     ```bash
     sudo ./uninstall.sh
@@ -303,6 +310,7 @@ There may be few operations that delete script must perform.
     ```bash
     sudo rpm -e app
     ```
+  ---
 
 - **Remove residual files:**
    	If the application installation creates files in other parts of the file system, remove those files.
@@ -518,7 +526,7 @@ if [ -n "$CONFIG_FILE" ] && [ -f "$CONFIG_FILE" ]; then
 fi
 ```
 
-#### [PowerShell using Blob URL](#tab/ps21)
+#### [PowerShell using Blob URL](#tab/powershell21)
 
 Use the following script if [managed identity is assigned to Azure Compute Gallery](vm-applications-publish-with-managed-identity.md). This approach uses blob URLs without SAS tokens.
 
@@ -577,7 +585,7 @@ if ($configFile -and (Test-Path $configFile)) {
 }
 ```
 
-#### [PowerShell using SAS URL](#tab/ps22)
+#### [PowerShell using SAS URL](#tab/powershell22)
 
 Use the following script if storage account has anonymous access disabled and [managed identity isn't assigned to Azure Compute Gallery](vm-applications-publish-with-managed-identity.md). This approach generates time-limited SAS tokens.
 

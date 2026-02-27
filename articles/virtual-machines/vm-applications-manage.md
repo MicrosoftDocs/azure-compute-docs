@@ -242,10 +242,125 @@ resources
 
 ---
 
-<!-->
 ### Update published VM Application
-- Tags, targetRegion, SAS Token for mediaLink and defaultConfigurationLink
--->
+> [!NOTE]
+> Not all properties of a published VM Application or VM Application version can be updated. For a complete list of updatable properties, refer to the [VM Application resource and VM Application version resource schema](vm-applications.md#create-vm-applications--vm-applications-version-resource).
+
+#### [REST](#tab/rest2)
+
+**Update VM Application resource:**
+```rest
+PATCH
+https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{galleryApplicationName}?api-version=2024-03-03
+
+Body
+{
+    "properties": {
+        "description": "Updated description",
+        "endOfLifeDate": "2026-12-31T00:00:00Z",
+        "eula": "Updated EULA text",
+        "privacyStatementUri": "https://contoso.com/privacy",
+        "releaseNoteUri": "https://contoso.com/release-notes"
+    }
+}
+```
+
+**Update VM Application version resource:**
+```rest
+PATCH
+https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{galleryApplicationName}/versions/{galleryApplicationVersionName}?api-version=2024-03-03
+
+Body
+{
+    "properties": {
+        "publishingProfile": {
+            "targetRegions": [
+                {
+                    "name": "eastus",
+                    "regionalReplicaCount": 2,
+                    "storageAccountType": "Standard_LRS"
+                },
+                {
+                    "name": "westus",
+                    "regionalReplicaCount": 1,
+                    "storageAccountType": "Standard_LRS"
+                }
+            ],
+            "excludeFromLatest": false
+        }
+    }
+}
+```
+
+#### [CLI](#tab/cli2)
+
+**Update VM Application resource:**
+```azurecli-interactive
+az sig gallery-application update \
+    --resource-group $rgName \
+    --gallery-name $galleryName \
+    --application-name $appName \
+    --description "Updated description for the VM Application"
+```
+
+**Update VM Application version resource:**
+```azurecli-interactive
+az sig gallery-application version update \
+    --resource-group $rgName \
+    --gallery-name $galleryName \
+    --application-name $appName \
+    --version-name $versionName \
+    --target-regions "eastus=2" "westus=1"
+```
+
+#### [PowerShell](#tab/powershell2)
+
+Set variables:
+```azurepowershell-interactive
+$rgName      = "myResourceGroup"
+$galleryName = "myGallery"
+$appName     = "myVmApp"
+$versionName = "1.0.0"
+```
+
+**Update VM Application resource:**
+```azurepowershell-interactive
+$app = Get-AzGalleryApplication `
+    -ResourceGroupName $rgName `
+    -GalleryName $galleryName `
+    -Name $appName
+
+Update-AzGalleryApplication `
+    -ResourceGroupName $rgName `
+    -GalleryName $galleryName `
+    -Name $appName `
+    -Description "Updated description for the VM Application"
+```
+
+**Update VM Application version resource:**
+```azurepowershell-interactive
+$targetRegions = @(
+    @{
+        Name = "eastus"
+        RegionalReplicaCount = 2
+        StorageAccountType = "Standard_LRS"
+    },
+    @{
+        Name = "westus"
+        RegionalReplicaCount = 1
+        StorageAccountType = "Standard_LRS"
+    }
+)
+
+Update-AzGalleryApplicationVersion `
+    -ResourceGroupName $rgName `
+    -GalleryName $galleryName `
+    -GalleryApplicationName $appName `
+    -Name $versionName `
+    -PublishingProfileTargetRegion $targetRegions `
+    -PublishingProfileExcludeFromLatest:$false
+```
+---
 
 ### Delete the VM Application from Azure Compute Gallery
 To delete the VM Application resource, you need to first delete all its versions. Deleting the application version causes deletion of the application version resource from Azure Compute Gallery and all its replicas. The application blob in Storage Account used to create the application version is unaffected. 
@@ -408,48 +523,46 @@ $resultSummary | ConvertTo-Json -Depth 5
 ---
 
 
-<!--
 ### View logs of application installation using Run command
 When Azure VM Applications downloads and installs the application on Azure VM or scale set, it pipes all stdout results to `stdout` file within the application repository. Customers can [enable verbose logging for the application installation and write custom logs](vm-applications-how-to.md#3-create-the-install-script) using the `installScript`. Customers can then manually check the `stdout` and `stderr` file or use Runcommand to get the file content. 
 
-Use the following PowerShell script in your managed run command. Update the `AppName` and `AppVersion` variables for your application
+Use the following PowerShell script in your managed run command. Update the `appName` and `appVersion` variables for your application
 
 #### [Windows](#tab/windows)
+
 ```azure-powershell-interactive
-$AppName = "deeptivaiwinapp"        # VM Application definition name
-$AppVersion = "1.0.0"               # VM Application version name
+$appName = "vm-application-name"        # VM Application definition name
+$appVersion = "1.0.0"                   # VM Application version name
 
-$VMAppManagerVersion = "1.0.16"     # Version of the VMApplicationManagerWindows extension on the VM
-$StdoutFilePath = "C:\Packages\Plugins\Microsoft.CPlat.Core.VMApplicationManagerWindows\$VMAppManagerVersion\Downloads\$AppName\$AppVersion\stdout"
-$StderrFilePath = "C:\Packages\Plugins\Microsoft.CPlat.Core.VMApplicationManagerWindows\$VMAppManagerVersion\Downloads\$AppName\$AppVersion\stderr"
-
-try {
- if(-not (Test-Path $StdoutFilePath)) {
-  Throw "File not found: $StdoutFilePath"
- }
- if(-not (Test-Path $StderrFilePath)) {
-  Throw "File not found: $StderrFilePath"
- }
-} 
-catch
-{
- Write-Host "Could not find stdout and/or stderr files"
-}
+$VMAppManagerVersion = "1.0.16"         # Version of the VMApplicationManagerWindows extension on the VM
+$StdoutFilePath = "C:\Packages\Plugins\Microsoft.CPlat.Core.VMApplicationManagerWindows\$VMAppManagerVersion\Downloads\$appName\$appVersion\stdout"
+$StderrFilePath = "C:\Packages\Plugins\Microsoft.CPlat.Core.VMApplicationManagerWindows\$VMAppManagerVersion\Downloads\$appName\$appVersion\stderr"
 
 Write-Host "`n=== Contents of stdout ==="
 Get-Content -Path $StdoutFilePath
 
-Write-Host "`n=== Contents of stdout ==="
-Get-Content -Path $StdoutFilePath
+Write-Host "`n=== Contents of stderr ==="
+Get-Content -Path $StderrFilePath
 ```
+
 #### [Linux](#tab/Linux)
 
+```bash
+appName="vm-application-name"       # VM Application definition name
+appVersion="1.0.0"                  # VM Application version name
 
+stdoutFilePath="/var/lib/waagent/Microsoft.CPlat.Core.VMApplicationManagerLinux/$appName/$appVersion/stdout"
+stderrFilePath="/var/lib/waagent/Microsoft.CPlat.Core.VMApplicationManagerLinux/$appName/$appVersion/stderr"
+
+printf "=== Contents of stdout ===\n%s \n" "$(cat $stdoutFilePath)"
+printf '=== Contents of stderr ===\n%s \n' "$(cat $stderrFilePath)"
+```
 ---
 
-Execute the run command to get the application logs. 
+Execute the run command using the scripts and get the application install logs. 
 
 #### [Portal](#tab/portal4)
+
 1. Open the [Azure portal](https://portal.azure.com) and navigate to your VM.
 2. Under **Operations**, select **Run command**.
 3. Choose **RunPowerShellScript** from the list.
@@ -461,40 +574,86 @@ For more information, see [Run PowerShell scripts in your Windows VM by using Ru
 
 #### [PowerShell](#tab/powershell4)
 
-Option 1: Pass the script path using the `-ScriptLocalPath` parameter: 
-
+**Option 1: Using Action run command**
 ```azurepowershell-interactive
 $rgName = "myResourceGroup"
 $vmName = "myVM"
+$scriptPath = ".\path\to\script.ps1"
 
-Invoke-AzVMRunCommand `
+$result = Invoke-AzVMRunCommand `
     -ResourceGroupName $rgName `
-    -VMName $vmName `
+    -Name $vmName `
     -CommandId "RunPowerShellScript" `
-    -ScriptLocalPath "C:\path\to\your\script.ps1"
-```
- 
-Option 2: Pass the script inline using the `-ScriptString` parameter:
+    -ScriptPath $scriptPath
 
+$result.Value[0].Message
+```
+Learn more about [Action run command](/powershell/module/az.compute/invoke-azvmruncommand) to run a local PowerShell script on the VM.
+
+**Option 2: Using Managed run**
 ```azurepowershell-interactive
 $rgName = "myResourceGroup"
 $vmName = "myVM"
-$scriptContent = Get-Content -Path "C:\path\to\your\script.ps1" -Raw
+$runCommandName = "GetInstallLogsRunCommand"
+$vmlocation = "myVMLocation"
 
-Invoke-AzVMRunCommand `
+Set-AzVMRunCommand `
     -ResourceGroupName $rgName `
     -VMName $vmName `
-    -CommandId "RunPowerShellScript" `
-    -ScriptString $scriptContent
-```
+    -RunCommandName $runCommandName `
+    -Location $vmLocation `
+    -SourceScript $(Get-Content -Path "./GetInstallLogs.ps1" -Raw) 
 
-For more information, see [Invoke-AzVMRunCommand](/powershell/module/az.compute/invoke-azvmruncommand).
+$result = Get-AzVMRunCommand `
+    -ResourceGroupName $rgName `
+    -VMName $vmName `
+    -RunCommandName $runCommandName `
+    -Expand InstanceView
+
+$result.InstanceView
+```
+Learn more about [managed run command](/azure/virtual-machines/windows/run-command-managed) to run a local PowerShell script on the VM. 
 
 #### [CLI](#tab/cli4)
 
----
--->
+**Option 1: Using Action run command:**
+```azurecli-interactive
+rgName="myResourceGroup"
+vmName="myVM"
+az vm run-command invoke \
+  --resource-group myResourceGroup \
+  --name myVm \
+  --command-id RunShellScript \
+  --scripts @./path/to/script.sh
+```
+Learn more about [Action run command](/azure/virtual-machines/linux/run-command) to run a local script on the VM.
 
+**Option 2: Using managed run command:**
+```azurecli-interactive
+rgName="myResourceGroup"
+vmName="myVM"
+subId="mySubscriptionId"
+vmLocation="myVMLocation"
+
+az vm run-command create \
+    --name view-vmapp-install-logs \
+    --vm-name $vmName \
+    --resource-group $rgName \
+    --subscription $subId \
+    --location $vmLocation \
+    --script @.\path\to\script.sh \
+    --timeout-in-seconds 600
+
+az vm run-command show \
+    --name view-vmapp-install-logs \
+    --vm-name $vmName \
+    --resource-group $rgName \
+    --subscription $subId \
+    --instance-view
+```
+Learn more about [managed run command](/azure/virtual-machines/linux/run-command-managed) to run a script on the VM. 
+
+---
 
 ### View all deployed VM applications using Azure Resource Graph
 
@@ -772,3 +931,4 @@ Update-AzVmssInstance -ResourceGroupName $rgName -VMScaleSetName $vmssName -Inst
 ## Next steps
 - Learn more about [Azure VM Applications](vm-applications.md).
 - Learn to [create Azure VM applications](vm-applications-how-to.md).
+- 
