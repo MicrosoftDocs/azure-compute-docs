@@ -28,7 +28,6 @@ VM Applications are the recommended approach when you need to publish, deploy, a
 - Manage application versions and roll back when issues arise.
 - Respond to zero-day vulnerabilities by publishing new versions quickly and updating your fleet centrally with Azure Policy.
 - Enforce application presence and configuration using Azure Policy.
-<!--- Deploy to hybrid environments using Azure Arc-enabled servers.-->
 - Reduce deployment latency for high-scale and time-sensitive workloads like AI inferencing and gaming.
 - Gain visibility into deployed applications with post-deployment inventory and monitoring.
 - Modularize applications and scripts for reusability and operational efficiency.
@@ -41,7 +40,7 @@ VM Applications integrate with your existing development workflows and Azure inf
 :::image type="content" source="media/vmapps/vm-applications-overview.png" alt-text="Diagram showing the VM Applications lifecycle from development through publishing, deployment, and monitoring.":::
 
 - **Develop and publish**: Different teams develops applications, scripts, and configurations independently. Each team publishes their packages as Azure VM Application to Azure Compute Gallery, which serves as a personal app repository. 
-- **Deploy or update**: Deploy applications to VMs and Virtual Machine Scale Sets using Azure portal, PowerShell, CLI, REST API, or ARM/Bicep templates. 
+- **Deploy or update**: Deploy published applications to VMs and Virtual Machine Scale Sets using Azure portal, PowerShell, CLI, REST API, or ARM/Bicep templates. 
 - **Enforce**: Use Azure Policy to automatically inject required applications across your fleet. 
 - **Automate**: Automate publishing, deployment and updates using CI/CD pipelines like Azure DevOps, GitHub Actions, GitLab pipelines, Jenkins, and scripts.
 - **Monitor**: View application inventory & state across your infrastructure. Use Azure Policy and Azure Resource Graph for fleet-wide compliance monitoring, or view per-resource details in the Azure portal, PowerShell, CLI, and activity logs.
@@ -98,18 +97,24 @@ There's no extra charge for using VM Application Packages, but you're charged fo
 
 For more information on network egress, see [Bandwidth pricing](https://azure.microsoft.com/pricing/details/bandwidth/).
 
-## VM Application resources & schema
+## Publish application as Azure VM Application
 
-| Resource | Description |
-| ---------- | ------------ |
-| **Azure Compute Gallery** | A gallery is a repository for managing and sharing application packages. Users can share the gallery resource and all the child resources are shared automatically. The gallery name must be unique per subscription. For example, you may have one gallery to store all your OS images and another gallery to store all your VM applications. |
-| **VM Application** | The definition of your VM application. It's a *logical* resource that stores the common metadata for all the versions under it. For example, you may have an application definition for Apache Tomcat and have multiple versions within it. |
-| **VM Application version** | The deployable resource, which holds your application package and version specific configurations. You can globally replicate your VM application versions to target regions closer to your VM infrastructure. The VM Application version must be replicated to a region before it may be deployed on a VM in that region. |
-| **Storage Account** | Application packages are first uploaded to your storage account. Azure Compute Gallery then downloads the application package from this storage account using SAS URLs and stores it within the VM Application version. Azure Compute Gallery also replicates this package across regions & regional replicas per the VM Application version definition. The application package in the storage account can be deleted after VM application version is created in Azure Compute Gallery. |
+To deploy VM applications, first the application needs to be published to Azure Compute Gallery. To publish Azure VM Application
+1. First, create a **VM Application Resource** which is a logical resource containing metadata about the appliaction. 
+1. Then create a **VM Application Version Resource** within the VM Application resource containing the application package and instructions on how to install, update, delete and replicate the VM application.  
 
+### Azure resources required to publish Azure VM Application
 
-### Create VM Applications & VM Applications version resource
-The VM application is stored in Azure Compute Gallery. The **VM application resource** defines the following properties about your VM application:
+| Resource | ARM Resource Type | Description |
+| -------- | ----------------- | ----------- |
+| **Azure Compute Gallery** | Microsoft.Compute/galleries | A gallery is a repository for managing and sharing application packages. Users can share the gallery resource and all the child resources are shared automatically. The gallery name must be unique per subscription. For example, you may have one gallery to store all your OS images and another gallery to store all your VM applications. |
+| **VM Application** | Microsoft.Compute/galleries/applications | The definition of your VM application. This logical resource stores the common metadata for all its versions, including the name, description, supported OS type, and end-of-life information. Think of it as a container that holds all versions of a single application. For example, you might have a VM Application called *Apache Tomcat* that contains version 9.0.0, 9.0.1, and 10.0.0. |
+| **VM Application Version** | Microsoft.Compute/galleries/applications/versions | The deployable resource that contains your actual application package and version-specific configuration. Each version points to the application binary or script in your storage account and defines the install, update, and remove commands. You can replicate versions to multiple Azure regions to improve deployment reliability and reduce latency. Before you deploy an application to a VM, the version must be replicated to the VM's region. |
+| **Storage Account** | Microsoft.Storage/storageAccounts | Application packages are first uploaded to your storage account. Azure Compute Gallery then downloads the application package from this storage account using SAS URLs and stores it within the VM Application version. Azure Compute Gallery also replicates this package across regions & regional replicas per the VM Application version definition. The application package in the storage account can be deleted after VM application version is created in Azure Compute Gallery. |
+
+### Properties in VM Application Resource 
+
+The VM Application resource defines follows properties:
 
 | Property | Description | Updatable | Limitations |
 | -------- | ----------- | --------- | ----------- |
@@ -121,6 +126,8 @@ The VM application is stored in Azure Compute Gallery. The **VM application reso
 | eula | Optional. Reference to End User License Agreement (EULA) | Yes | |
 | privacyStatementUri | Optional. Reference to privacy statement for the application. | Yes | |
 | releaseNoteUri | Optional. Reference to release notes for the application. | Yes | |
+
+### Properties in VM Application Version Resource
 
 **VM application versions** are the deployable resources within the VM Application resource. Versions are defined with the following properties:
 
@@ -143,183 +150,11 @@ The VM application is stored in Azure Compute Gallery. The **VM application reso
 | settings/configFileName | Configuration file name to be use when the configuration is downloaded to the VM. | No | Character limit is of 4,096 characters. |
 | settings/scriptBehaviorAfterReboot | Optional. The action to be taken for installing, updating, or removing gallery application after the VM is rebooted. | No | |
 
-#### [Template](#tab/template)
-```json
 
-{
-  "$schema": "https://schema.management.azure.com/schemas/2020-06-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "galleryName": {
-      "type": "string"
-    },
-    "applicationName": {
-      "type": "string"
-    },
-    "versionName": {
-      "type": "string",
-      "metadata": {
-        "description": "Must follow the format: major.minor.patch (Example: 1.0.0)"
-      }
-    },
-    "location": {
-      "type": "string",
-      "defaultValue": "West US"
-    },
-    "supportedOSType": {
-      "type": "string",
-      "allowedValues": ["Windows", "Linux"]
-    },
-    "endOfLifeDate": {
-      "type": "string",
-      "metadata": {
-        "description": "Optional. This property is for information only and doesn't block app deployment."
-      }
-    },
-    "description": {
-      "type": "string",
-      "defaultValue": "Description of the application"
-    },
-    "eula": {
-      "type": "string",
-      "defaultValue": ""
-    },
-    "privacyStatementUri": {
-      "type": "string",
-      "defaultValue": ""
-    },
-    "releaseNoteUri": {
-      "type": "string",
-      "defaultValue": ""
-    },
-    "mediaLink": {
-      "type": "string"
-    },
-    "configLink": {
-      "type": "string"
-    },
-    "appConfigFileName": {
-      "type": "string"
-    },
-    "appPackageFileName": {
-      "type": "string"
-    },
-    "replicaRegion1": {
-      "type": "string",
-      "defaultValue": "East US"
-    },
-    "replicaRegion2": {
-      "type": "string",
-      "defaultValue": "South Central US"
-    },
-    "installScript": {
-      "type": "string",
-      "metadata": {
-        "description": "Optional. Script to run to install the application. Example: echo 'Installing application...'"
-      }
-    },
-    "updateScript": {
-      "type": "string",
-      "metadata": {
-        "description": "Optional. Script to run to update the application. Example: echo 'Updating application...'"
-      }
-    },
-    "removeScript": {
-      "type": "string",
-      "metadata": {
-        "description": "Optional. Script to run to delete the application. Example: echo 'Deleting application...'"
-      }
-    },
-    "storageAccountType": {
-      "type": "string",
-      "allowedValues": ["PremiumV2_LRS", "Premium_LRS", "Standard_LRS", "Standard_ZRS"],
-      "defaultValue": "Standard_LRS"
-    }
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Compute/galleries",
-      "apiVersion": "2024-03-03",
-      "name": "[parameters('galleryName')]",
-      "location": "[parameters('location')]",
-      "properties": {
-        "identifier": {}
-      }
-    },
-    {
-      "type": "Microsoft.Compute/galleries/applications",
-      "apiVersion": "2024-03-03",
-      "name": "[format('{0}/{1}', parameters('galleryName'), parameters('applicationName'))]",
-      "location": "[parameters('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Compute/galleries', parameters('galleryName'))]"
-      ],
-      "properties": {
-        "supportedOSType": "[parameters('supportedOSType')]",
-        "endOfLifeDate": "[parameters('endOfLifeDate')]",
-        "description": "[parameters('description')]",
-        "eula": "[if(equals(parameters('eula'), ''), json('null'), parameters('eula'))]",
-        "privacyStatementUri": "[if(equals(parameters('privacyStatementUri'), ''), json('null'), parameters('privacyStatementUri'))]",
-        "releaseNoteUri": "[if(equals(parameters('releaseNoteUri'), ''), json('null'), parameters('releaseNoteUri'))]"
-      }
-    },
-    {
-      "type": "Microsoft.Compute/galleries/applications/versions",
-      "apiVersion": "2024-03-03",
-      "name": "[format('{0}/{1}/{2}', parameters('galleryName'), parameters('applicationName'), parameters('versionName'))]",
-      "location": "[parameters('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Compute/galleries/applications', parameters('galleryName'), parameters('applicationName'))]"
-      ],
-      "properties": {
-        "publishingProfile": {
-          "source": {
-            "mediaLink": "[parameters('mediaLink')]",
-            "defaultConfigurationLink": "[parameters('configLink')]"
-          },
-          "manageActions": {
-            "install": "[parameters('installScript')]",
-            "remove": "[parameters('removeScript')]",
-            "update": "[parameters('updateScript')]"
-          },
-          "settings": {
-            "scriptBehaviorAfterReboot": "Rerun",
-            "configFileName": "[parameters('appConfigFileName')]",
-            "packageFileName": "[parameters('appPackageFileName')]"
-          },
-          "targetRegions": [
-            {
-              "name": "[parameters('location')]",
-              "regionalReplicaCount": 3,
-              "storageAccountType": "[parameters('storageAccountType')]"
-            },
-            {
-              "name": "[parameters('replicaRegion1')]",
-              "regionalReplicaCount": 1,
-              "storageAccountType": "[parameters('storageAccountType')]"
-            },
-            {
-              "name": "[parameters('replicaRegion2')]"
-            },
-          ],
-          "excludeFromLatest": false,
-          "replicaCount": 2,
-          "storageAccountType": "[parameters('storageAccountType')]"
-        },
-        "safetyProfile": {
-          "allowDeletionOfReplicatedLocations": true
-        },
-        "endOfLifeDate": "[parameters('endOfLifeDate')]"
-      }
-    }
-  ]
-}
+## Deploy Azure VM Applications
+After the VM Application version is published to Azure Compute Gallery, you can deploy the version across Azure Virtual Machines (VM) and Azure Virtual Machine Scale Sets. This deployment is done by referencing the ARM ID of the VM application in the `applicationProfile` of the Azure VM and VM Scale Set. 
 
-```
----
-
-### Deploy Azure VM Applications
-After the VM Application version is published to Azure Compute Gallery, you can deploy the version across Azure Virtual Machines (VM) and Azure Virtual Machine Scale Sets. 
+### Properties in applicationProfile of VM and VM Scale Set
 
 The `applicationProfile` in Azure VM and Virtual Machine Scale Sets defines the following properties:
 
@@ -339,161 +174,9 @@ The order field may be used to specify dependencies between applications. The ru
 | Duplicate order values | Application is installed in any order compared to other applications with the same order. All applications of the same order are installed after the ones with lower orders and before the ones with higher orders. | If a previous application with a lower order failed to install, no applications with this order install. If any application with this order fails to install, no applications with a higher order install. |
 | Increasing orders | Application will be installed after the ones with lower orders and before the ones with higher orders. | If a previous application with a lower order failed to install, this application doesn't install. If this application fails to install, no application with a higher order installs. |
 
-#### [Deploy on virtual machine scale sets](#tab/VMSS)
-```json
+## Technical Details for VM Applications
 
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "vmssName": {
-      "type": "string"
-    },
-    "location": {
-      "type": "string"
-    },
-    "subscriptionId": {
-      "type": "string"
-    },
-    "resourceGroupName": {
-      "type": "string"
-    },
-    "galleryName": {
-      "type": "string"
-    },
-    "applicationName1": {
-      "type": "string"
-    },
-    "applicationVersion1": {
-      "type": "string",
-      "defaultValue": "latest"
-    },
-    "configurationReference1": {
-      "type": "string",
-      "metadata": {
-        "description": "Optional path to configuration file from Storage Account. Overrides default configuration file."
-      }
-    },
-    "applicationName2": {
-      "type": "string"
-    },
-    "applicationVersion2": {
-      "type": "string",
-      "defaultValue": "latest"
-    }
-  },
-  "variables": {
-    "packageReferenceId1": "[format('/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Compute/galleries/{2}/applications/{3}/versions/{4}', parameters('subscriptionId'), parameters('resourceGroupName'), parameters('galleryName'), parameters('applicationName1'), parameters('applicationVersion1'))]",
-    "packageReferenceId2": "[format('/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Compute/galleries/{2}/applications/{3}/versions/{4}', parameters('subscriptionId'), parameters('resourceGroupName'), parameters('galleryName'), parameters('applicationName2'), parameters('applicationVersion2'))]"
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Compute/virtualMachineScaleSets",
-      "apiVersion": "2024-03-03",
-      "name": "[parameters('vmssName')]",
-      "location": "[parameters('location')]",
-      "properties": {
-        "virtualMachineProfile": {
-          "applicationProfile": {
-            "galleryApplications": [
-              {
-                "order": 1,
-                "packageReferenceId": "[variables('packageReferenceId1')]",
-                "configurationReference": "[parameters('configurationReference1')]",
-                "treatFailureAsDeploymentFailure": true
-              },
-              {
-                "order": 2,
-                "packageReferenceId": "[variables('packageReferenceId2')]",
-                "treatFailureAsDeploymentFailure": false
-              }
-            ]
-          }
-        }
-      }
-    }
-  ]
-}
-```
-
-#### [Deploy on VM](#tab/VM)
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "vmName": {
-      "type": "string"
-    },
-    "location": {
-      "type": "string"
-    },
-    "subscriptionId": {
-      "type": "string"
-    },
-    "resourceGroupName": {
-      "type": "string"
-    },
-    "galleryName": {
-      "type": "string"
-    },
-    "applicationName1": {
-      "type": "string"
-    },
-    "applicationVersion1": {
-      "type": "string",
-      "defaultValue": "latest"
-    },
-    "configurationReference1": {
-      "type": "string",
-      "metadata": {
-        "description": "Optional path to configuration blob for application 1"
-      }
-    },
-    "applicationName2": {
-      "type": "string"
-    },
-    "applicationVersion2": {
-      "type": "string",
-      "defaultValue": "latest"
-    }
-  },
-  "variables": {
-    "packageReferenceId1": "[format('/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Compute/galleries/{2}/applications/{3}/versions/{4}', parameters('subscriptionId'), parameters('resourceGroupName'), parameters('galleryName'), parameters('applicationName1'), parameters('applicationVersion1'))]",
-    "packageReferenceId2": "[format('/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Compute/galleries/{2}/applications/{3}/versions/{4}', parameters('subscriptionId'), parameters('resourceGroupName'), parameters('galleryName'), parameters('applicationName2'), parameters('applicationVersion2'))]"
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Compute/virtualMachines",
-      "apiVersion": "2024-07-01",
-      "name": "[parameters('vmName')]",
-      "location": "[parameters('location')]",
-      "properties": {
-        "applicationProfile": {
-          "galleryApplications": [
-            {
-              "order": 1,
-              "packageReferenceId": "[variables('packageReferenceId1')]",
-              "configurationReference": "[parameters('configurationReference1')]",
-              "treatFailureAsDeploymentFailure": true
-            },
-            {
-              "order": 2,
-              "packageReferenceId": "[variables('packageReferenceId2')]",
-              "treatFailureAsDeploymentFailure": false
-            }
-          ]
-        }
-      }
-    }
-  ]
-}
-```
----
-
-## Technical Details
-
-### Considerations and Current Limits
+### Considerations and Current Limits for VM Applications
 
 - **Up to 10 replicas per region**: When you're creating a VM Application version, the maximum number of replicas per region is 10 for both page blob and block blob.
   
@@ -523,7 +206,7 @@ The download location of the application package and the configuration files are
 
 The install/update/remove commands should be written assuming the application package and the configuration file are in the current directory.
 
-### File naming
+### File naming for deployed VM application
 
 When the application file gets downloaded to the VM, Azure uses VM Application name as the file name without any file extension. For example, if VM Application name is "TestPythonApp", the python.exe file uploaded in the VM Application gets downloaded as TestPythonApp. Azure is unable to retain the original file name and file extension. 
 
@@ -533,7 +216,7 @@ VM Applications provide `packageFileName` and `configFileName` properties in the
 
 Alternatively, include a command for renaming the files before execution in the `installScript`.
 
-### Command interpreter
+### Command interpreter used by VM application
 
 The default command interpreters are:
 
@@ -542,19 +225,20 @@ The default command interpreters are:
 
 It's possible to use a different interpreter like Chocolatey or PowerShell, as long as it's installed on the machine, by calling the executable and passing the command to it. For example, to have your command run in PowerShell on Windows instead of cmd, you can pass `powershell.exe -Command '<powershell commmand>'`
 
-### How updates are handled
+### How VM Application updates are handled
 
 When you update an application version on a VM or Virtual Machine Scale Sets, the update command you provided during deployment is used. If the updated version doesn't have an update command, then the current version is removed and the new version is installed.
 
 Update commands should be written with the expectation that it could be updating from any older version of the VM Application.
 
-### Treat failure as deployment failure
+### Treat failure as extension deployment failure
 
 By default, if an application fails to install, update, or remove, the VM Application extension still reports its status as *success*. The extension only reports a failure on its own when there's a problem with the extension itself or the underlying infrastructure, not with your application scripts.
 
 To change this behavior, set the `treatFailureAsDeploymentFailure` property to `true` on the application in the VM's `applicationProfile`. When enabled, any application installation, update, or removal failure causes the entire VM deployment to be reported as failed.
 
 ## Error messages
+These are the error messages that you might encounter when publishing and deploying your VM applications.
 
 | Message | Description |
 | ------- | ----------- |

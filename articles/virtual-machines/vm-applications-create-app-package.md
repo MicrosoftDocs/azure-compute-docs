@@ -19,7 +19,7 @@ Third party applications for Linux can be packaged in a few ways. Let's explore 
 
 ### .tar and .gz files
 
-These files are compressed archives and can be extracted to a desired location. Check the installation instructions for the original package to in case they need to be extracted to a specific location. If .tar.gz file contains source code, see the instructions for the package for how to install from source.
+These files are compressed archives and can be extracted to a desired location. Check the installation instructions for the original package in case they need to be extracted to a specific location. If .tar.gz file contains source code, see the instructions for the package for how to install from source.
 
 Example to install command to install `golang` on a Linux machine:
 
@@ -38,6 +38,8 @@ sudo rm -rf /usr/local/go
 You can download individual packages for platform specific package managers, but they usually don't contain all the dependencies. For these files, you must also include all dependencies in the application package, or have the system package manager download the dependencies through the repositories that are available to the VM. If you're working with a VM with restricted internet access, you must package all the dependencies yourself.
 
 Figuring out the dependencies can be a bit tricky. There are third party tools that can show you the entire dependency tree.
+
+Following process shows how to identify application dependencies, download them and package them together for different linux OS flavors. 
 
 #### [Ubuntu](#tab/ubuntu)
 

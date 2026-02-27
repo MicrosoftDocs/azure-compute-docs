@@ -32,7 +32,7 @@ To create and deploy applications on Azure VM, first package and upload your app
 ## Package the application
 :::image type="content" source="media/vmapps/vm-application-folder-structure.png" alt-text="Screenshot showing the folder structure recommended for uploading and creating VM Applications.":::
 
-#### 1. Package the application files
+### 1. Package the application files
 
   - If your application installation requires a single file (.exe, .msi, .sh, .ps, etc.) then you can package it into VM Application.
   - If your application requires multiple files (executables, dependencies, scripts, or configuration files), archive them into a single file (`.zip`, `.tar`, `.tar.gz`) before packaging as a VM application.
@@ -40,12 +40,12 @@ To create and deploy applications on Azure VM, first package and upload your app
 
   Learn more about [creating application packages for Azure VM Applications](vm-applications-create-app-package.md). 
      
-#### 2. (Optional) Package the application configuration file
+### 2. (Optional) Package the application configuration file
    - You can provide the configuration file separately using `defaultConfigurationLink` in the `publishingProfile` of the VM Application. This reduces the overhead of archiving and unarchiving application packages. 
    - Configuration files can also be passed during app deployment using `configurationReference` property in the `applicationProfile` of the VM enabling customized installation per VM. 
    - If both properties are set, `configurationReference` overrides the configuration passed using `defaultConfigurationLink`. 
      
-#### 3. Create the install script
+### 3. Create the install script
 After the application and configuration blob is downloaded on the VM, Azure executes the provided install script to install the application. **The install script is provided as a string** and has a maximum character limit of 4,096 chars. The install commands should be written assuming the application package and the configuration file are in the current directory.
 
 There may be few operations required to be performed in the install script
@@ -117,94 +117,103 @@ If config file is packaged within the tar file
 mv VMApp1 app.tar && tar -xf app.tar && chmod -R +xr . && sudo debconf-set-selections < config.cfg && sudo DEBIAN_FRONTEND=noninteractive dpkg -i ./app.deb
 ```
 
-#### [.ZIP](#tab/ZIPCmd)
+#### [.ZIP](#tab/ZIP)
 Replace `VMApp1` with your VM App name in application package (VMApp1) and configuration file (VMApp1-config).
-Replace `python.zip` with desired app name. 
+Replace `app.zip` with desired app name. 
 Replace `config.json` with your desired config name.
+
+Following examples assumes vm application is installing python application and the pythonInstaller.exe is packaged inside app.zip. 
 
 **Install using CMD without config file:**
 
-Replace VMApp1 with your VM App name and python.zip with desired name for your executable in the below script. 
+Replace VMApp1 with your VM App name and app.zip with desired name for your executable in the below script. 
+
 ```cli-interactive
-ren VMApp1 python.zip && tar -xf python.zip && start /wait python.exe /quiet InstallAllUsers=1 PrependPath=1
+ren VMApp1 app.zip && tar -xf app.zip && start /wait pythonInstaller.exe /quiet InstallAllUsers=1 PrependPath=1
 ```
 
 **Install using CMD with config file:**
 ```cli-interactive
-ren VMApp1 python.zip && tar -xf python.zip && ren VMApp1-config config.json && start /wait python.exe --config config.json /quiet InstallAllUsers=1 PrependPath=1
+ren VMApp1 app.zip && tar -xf app.zip && ren VMApp1-config config.json && start /wait pythonInstaller.exe --config config.json /quiet InstallAllUsers=1 PrependPath=1
 ```
 
 If config file is included in the .zip package
 ```cli-interactive
-ren VMApp1 python.zip && tar -xf python.zip && start /wait python.exe --config config.json /quiet InstallAllUsers=1 PrependPath=1
+ren VMApp1 app.zip && tar -xf app.zip && start /wait pythonInstaller.exe --config config.json /quiet InstallAllUsers=1 PrependPath=1
 ```
 
 **Install using PowerShell without config file:**
 ```powershell-interactive
-powershell.exe -ExecutionPolicy Bypass -NoProfile -Command "Rename-Item VMApp1 python.zip; Expand-Archive -Path '.\python.zip' -DestinationPath '.'; Start-Process -FilePath '.\python.exe' -ArgumentList '/quiet','InstallAllUsers=1','PrependPath=1' -Wait -NoNewWindow"
+powershell.exe -ExecutionPolicy Bypass -NoProfile -Command "Rename-Item VMApp1 app.zip; Expand-Archive -Path '.\app.zip' -DestinationPath '.'; Start-Process -FilePath '.\pythonInstaller.exe' -ArgumentList '/quiet','InstallAllUsers=1','PrependPath=1' -Wait -NoNewWindow"
 ```
 
 **Install using PowerShell with config file:**
 ```powershell-interactive
-powershell.exe -ExecutionPolicy Bypass -NoProfile -Command "Rename-Item VMApp1 python.zip; Rename-Item VMApp1-config config.json Expand-Archive -Path '.\python.zip' -DestinationPath '.'; Start-Process -FilePath '.\python.exe' -ArgumentList '--config','config.json','/quiet','InstallAllUsers=1','PrependPath=1' -Wait -NoNewWindow"
+powershell.exe -ExecutionPolicy Bypass -NoProfile -Command "Rename-Item VMApp1 app.zip; Rename-Item VMApp1-config config.json Expand-Archive -Path '.\app.zip' -DestinationPath '.'; Start-Process -FilePath '.\pythonInstaller.exe' -ArgumentList '--config','config.json','/quiet','InstallAllUsers=1','PrependPath=1' -Wait -NoNewWindow"
 ```
 If config file is included in the .zip package
 ```powershell-interactive
-powershell.exe -ExecutionPolicy Bypass -NoProfile -Command "Rename-Item VMApp1 python.zip; Expand-Archive -Path '.\python.zip' -DestinationPath '.'; Start-Process -FilePath '.\python.exe' -ArgumentList '--config','config.json','/quiet','InstallAllUsers=1','PrependPath=1' -Wait -NoNewWindow"
+powershell.exe -ExecutionPolicy Bypass -NoProfile -Command "Rename-Item VMApp1 app.zip; Expand-Archive -Path '.\app.zip' -DestinationPath '.'; Start-Process -FilePath '.\pythonInstaller.exe' -ArgumentList '--config','config.json','/quiet','InstallAllUsers=1','PrependPath=1' -Wait -NoNewWindow"
 ```
 
 #### [.EXE](#tab/EXE)
 Replace `VMApp1` with your VM App name in application package (VMApp1) and configuration file (VMApp1-config).
-Replace `python.exe` with desired app name. 
+Replace `pythonInstaller.exe` with desired app name. 
 Replace `config.json` with your desired config name.
+
+Following examples assumes vm application is installing python application using EXE. 
 
 **Install using CMD without config file:**
 
-Replace VMApp1 with your VM App name and python.exe with desired name for your executable. 
+Replace VMApp1 with your VM App name and pythonInstaller.exe with desired name for your executable. 
+
 ```cli-interactive
-ren VMApp1 python.exe && start /wait python.exe /quiet InstallAllUsers=1 PrependPath=1
+ren VMApp1 pythonInstaller.exe && start /wait pythonInstaller.exe /quiet InstallAllUsers=1 PrependPath=1
 ```
 
 **Install using CMD with config file:**
 ```cli-interactive
-ren VMApp1 python.exe && ren VMApp1-config config.json && start /wait python.exe --config config.json /quiet InstallAllUsers=1 PrependPath=1
+ren VMApp1 pythonInstaller.exe && ren VMApp1-config config.json && start /wait pythonInstaller.exe --config config.json /quiet InstallAllUsers=1 PrependPath=1
 ```
 
 **Install using PowerShell without config file:**
 ```powershell-interactive
-powershell.exe -ExecutionPolicy Bypass -NoProfile -Command "Rename-Item VMApp1 python.exe; Start-Process -FilePath '.\python.exe' -ArgumentList '/quiet','InstallAllUsers=1','PrependPath=1' -Wait -NoNewWindow"
+powershell.exe -ExecutionPolicy Bypass -NoProfile -Command "Rename-Item VMApp1 pythonInstaller.exe; Start-Process -FilePath '.\pythonInstaller.exe' -ArgumentList '/quiet','InstallAllUsers=1','PrependPath=1' -Wait -NoNewWindow"
 ```
 
 **Install using PowerShell with config file:**
 ```powershell-interactive
-powershell.exe -ExecutionPolicy Bypass -NoProfile -Command "Rename-Item VMApp1 python.exe; Rename-Item VMApp1-config config.json; Start-Process -FilePath '.\python.exe' -ArgumentList '--config','config.json','/quiet','InstallAllUsers=1','PrependPath=1' -Wait -NoNewWindow"
+powershell.exe -ExecutionPolicy Bypass -NoProfile -Command "Rename-Item VMApp1 pythonInstaller.exe; Rename-Item VMApp1-config config.json; Start-Process -FilePath '.\pythonInstaller.exe' -ArgumentList '--config','config.json','/quiet','InstallAllUsers=1','PrependPath=1' -Wait -NoNewWindow"
 ```
 
 #### [.MSI](#tab/MSI)
 Replace `VMApp1` with your VM App name in application package (VMApp1) and configuration file (VMApp1-config).
-Replace `app.deb` with desired app name. 
+Replace `pythonInstaller.msi` with desired app name. 
 Replace `config.json` with your desired config name.
+
+Following examples assumes vm application is installing python application using MSI. 
 
 **Install using CMD without config file:**
 
-Replace VMApp1 with your VM App name and python.msi with desired name for your MSI file. 
+Replace VMApp1 with your VM App name and pythonInstaller.msi with desired name for your MSI file. 
+
 ```cli-interactive
-ren VMApp1 python.msi && msiexec /i python.msi /quiet InstallAllUsers=1 PrependPath=1
+ren VMApp1 pythonInstaller.msi && msiexec /i pythonInstaller.msi /quiet InstallAllUsers=1 PrependPath=1
 ```
 
 **Install using CMD with config file:**
 ```cli-interactive
-ren VMApp1 python.msi && ren VMApp1-config config.json && msiexec /i python.msi CONFIGFILE=config.json /quiet InstallAllUsers=1 PrependPath=1
+ren VMApp1 pythonInstaller.msi && ren VMApp1-config config.json && msiexec /i pythonInstaller.msi CONFIGFILE=config.json /quiet InstallAllUsers=1 PrependPath=1
 ```
 
 **Install using PowerShell without config file:**
 ```powershell-interactive
-powershell.exe -ExecutionPolicy Bypass -NoProfile -Command "Rename-Item VMApp1 python.msi; Start-Process -FilePath 'msiexec.exe' -ArgumentList '/i','.\python.msi','/quiet','InstallAllUsers=1','PrependPath=1' -Wait -NoNewWindow"
+powershell.exe -ExecutionPolicy Bypass -NoProfile -Command "Rename-Item VMApp1 pythonInstaller.msi; Start-Process -FilePath 'msiexec.exe' -ArgumentList '/i','.\pythonInstaller.msi','/quiet','InstallAllUsers=1','PrependPath=1' -Wait -NoNewWindow"
 ```
 
 **Install using PowerShell with config file:**
 ```powershell-interactive
-powershell.exe -ExecutionPolicy Bypass -NoProfile -Command "Rename-Item VMApp1 python.msi; Rename-Item VMApp1-config config.json; Start-Process -FilePath 'msiexec.exe' -ArgumentList '/i','.\python.msi','CONFIGFILE=config.json','/quiet','InstallAllUsers=1','PrependPath=1' -Wait -NoNewWindow"
+powershell.exe -ExecutionPolicy Bypass -NoProfile -Command "Rename-Item VMApp1 pythonInstaller.msi; Rename-Item VMApp1-config config.json; Start-Process -FilePath 'msiexec.exe' -ArgumentList '/i','.\pythonInstaller.msi','CONFIGFILE=config.json','/quiet','InstallAllUsers=1','PrependPath=1' -Wait -NoNewWindow"
 ```
 
 #### [.DEB](#tab/DEB)
@@ -269,7 +278,7 @@ powershell.exe -ExecutionPolicy Bypass -NoProfile -Command "Rename-Item -Path '.
 ```
 ---
 
-#### 4. Create the delete script
+### 4. Create the delete script
 
 The delete script enables you to define the delete operations for the application. The delete script is provided as a string and has a maximum character limit of 4,096 characters. Write the delete commands assuming the application package and the configuration file are in the current directory. During uninstall operation, Azure runs the uninstall script and then deletes all files from the repository. 
 
@@ -277,7 +286,7 @@ There may be few operations that delete script must perform.
 
 - **Uninstall application:**
 	Properly uninstall the application from the VM. For example, 
-  # [CMD](tab/cmd5)
+  #### [CMD](tab/cmd1)
   - CMD on Windows: 
     ```cli-interactive
     start /wait uninstall.exe /quiet
@@ -288,7 +297,7 @@ There may be few operations that delete script must perform.
     ```cli-interactive
     start /wait msiexec /x app.msi /quiet /qn
     ```
-  # [PowerShell](tab/powershell5)
+  #### [PowerShell](tab/powershell1)
   - PowerShell on Windows:
     ```powershell-interactive
     powershell.exe -ExecutionPolicy Bypass -NoProfile -Command "Start-Process -FilePath '.\uninstall.exe' -ArgumentList '/quiet' -Wait -NoNewWindow"
@@ -299,7 +308,7 @@ There may be few operations that delete script must perform.
     ```powershell-interactive
     powershell.exe -ExecutionPolicy Bypass -NoProfile -Command "Start-Process -FilePath 'msiexec.exe' -ArgumentList '/x','.\app.msi','/quiet','/qn' -Wait -NoNewWindow"
     ```
-  # [Bash](tab/bash5)
+  #### [Bash](tab/bash1)
   - Bash on Linux: 
     ```bash
     sudo ./uninstall.sh
@@ -323,12 +332,13 @@ There may be few operations that delete script must perform.
 > - Storage Blob Data Contributor or Storage Blob Data Owner: required to upload, modify, or delete blobs.
 > - For generating SAS with Azure AD (for example, using `--auth-mode` login in CLI/PowerShell), also assign Storage Blob Delegator at the storage account scope.
 >
-> [Learn More](/azure/storage/blobs/storage-auth-abac)
-#### 1. **[Upload your application and configuration files to a container](/azure/storage/blobs/storage-quickstart-blobs-portal) in an [Azure storage account](/azure/storage/common/storage-account-create)**.
-   
-   Your application can be stored in a block or page blob. If you choose to use a page blob, you need to byte align the files before you upload them. Use the following sample to byte align your file.
+### 1. **Upload your application and configuration files to a [container](/azure/storage/blobs/blob-containers-portal#create-a-container) in your [Azure storage account](/azure/storage/common/storage-account-create)**.
 
-#### [CLI](#tab/cli1)
+Upload your packaged application and optional configuration file as blobs. Block blobs work for most scenarios. 
+
+Optionally, if you need to use page blobs, byte-align your files before uploading using one of the following scripts:
+
+#### [CLI](#tab/cli2)
 ```azurecli-interactive
 inputFile="<the file you want to pad>"
 
@@ -339,15 +349,15 @@ fileSize=$(stat -c %s "$inputFile")
 remainder=$((fileSize % 512))
 
 if [ "$remainder" -ne 0 ]; then
-    # Calculate how many bytes to pad
-    difference=$((512 - remainder))
-    
-    # Create padding (empty bytes)
-    dd if=/dev/zero bs=1 count=$difference >> "$inputFile"
+  # Calculate how many bytes to pad
+  difference=$((512 - remainder))
+  
+  # Create padding (empty bytes)
+  dd if=/dev/zero bs=1 count=$difference >> "$inputFile"
 fi
 ```
 
-#### [PowerShell](#tab/powershell1)
+#### [PowerShell](#tab/powershell2)
 ```azurepowershell-interactive
 $inputFile = <the file you want to pad>
 
@@ -357,16 +367,16 @@ $remainder = $fileInfo.Length % 512
 
 if ($remainder -ne 0){
 
-    $difference = 512 - $remainder
+  $difference = 512 - $remainder
 
-    $bytesToPad = [System.Byte[]]::CreateInstance([System.Byte], $difference)
+  $bytesToPad = [System.Byte[]]::CreateInstance([System.Byte], $difference)
 
-    Add-Content -Path $inputFile -Value $bytesToPad -Encoding Byte
+  Add-Content -Path $inputFile -Value $bytesToPad -Encoding Byte
 }
 ```
 ----
 
-#### 2. **Generate SAS or Blob URL for the application package and the configuration file** 
+### 2. **Generate SAS or Blob URL for the application package and the configuration file** 
 Once the application and configuration files are uploaded to the storage account, you need to generate a Blob URL or [SAS URL](/azure/storage/common/storage-sas-overview#get-started-with-sas) with read privilege for these blobs. These URLs are then provided as reference while creating the VM Application version resource. 
 
 > [!NOTE]
@@ -382,7 +392,7 @@ Once the application and configuration files are uploaded to the storage account
 Blob URL = https://${STORAGE_ACCOUNT}.blob.core.windows.net/${CONTAINER_NAME}/${BLOB_NAME}
 SAS URL  = https://${STORAGE_ACCOUNT}.blob.core.windows.net/${CONTAINER_NAME}/${BLOB_NAME}?${SAS_TOKEN}
 
-#### [CLI using Blob URL](#tab/cli21)
+#### [CLI using Blob URL](#tab/cli3)
 
 Use the following script if [managed identity is assigned to Azure Compute Gallery](vm-applications-publish-with-managed-identity.md). This approach uses blob URLs without SAS tokens.
 
@@ -442,7 +452,7 @@ if [ -n "$CONFIG_FILE" ] && [ -f "$CONFIG_FILE" ]; then
 fi
 ```
 
-#### [CLI using SAS URL](#tab/cli22)
+#### [CLI using SAS URL](#tab/cli3)
 
 Use the following script if storage account has anonymous access disabled and managed identity isn't assigned to Azure Compute Gallery. This approach generates time-limited SAS tokens.
 
@@ -526,7 +536,7 @@ if [ -n "$CONFIG_FILE" ] && [ -f "$CONFIG_FILE" ]; then
 fi
 ```
 
-#### [PowerShell using Blob URL](#tab/powershell21)
+#### [PowerShell using Blob URL](#tab/powershell3)
 
 Use the following script if [managed identity is assigned to Azure Compute Gallery](vm-applications-publish-with-managed-identity.md). This approach uses blob URLs without SAS tokens.
 
@@ -585,7 +595,7 @@ if ($configFile -and (Test-Path $configFile)) {
 }
 ```
 
-#### [PowerShell using SAS URL](#tab/powershell22)
+#### [PowerShell using SAS URL](#tab/powershell3)
 
 Use the following script if storage account has anonymous access disabled and [managed identity isn't assigned to Azure Compute Gallery](vm-applications-publish-with-managed-identity.md). This approach generates time-limited SAS tokens.
 
@@ -659,7 +669,7 @@ if ($configFile -and (Test-Path $configFile)) {
 }
 ```
 
-#### [Portal](#tab/portal2)
+#### [Portal](#tab/portal3)
 
 1. In the [Azure portal](https://portal.azure.com), navigate to your storage account and select **Containers**.
 1. Select your container (or create one), then select **Upload**.
@@ -673,9 +683,185 @@ For detailed steps, see [Upload blobs to Azure Storage using the portal](/azure/
 ## Create the VM Application
 To create the VM Application, first create the **VM Application** resource, which describes the application. Then create **VM Application Version** resource within it, which contains the VM application payload and scripts to install, update, and delete the application. Payload is supplied using Blob URL or SAS URL to the blob container in Azure Storage Account. 
 
-Refer [schema for VM Application and VM Application version resource](vm-applications.md#create-vm-applications--vm-applications-version-resource) to learn more about each property. 
+Refer [schema for VM Application and VM Application version resource](vm-applications.md#publish-application-as-azure-vm-application) to learn more about each property. 
 
-#### [REST](#tab/rest3)
+#### [Template](#tab/template4)
+
+Use the following ARM template to create an Azure Compute Gallery, VM Application, and VM Application version. This template demonstrates the key properties and configuration options for publishing your application package.
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2020-06-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "galleryName": {
+      "type": "string"
+    },
+    "applicationName": {
+      "type": "string"
+    },
+    "versionName": {
+      "type": "string",
+      "metadata": {
+        "description": "Must follow the format: major.minor.patch (Example: 1.0.0)"
+      }
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "West US"
+    },
+    "supportedOSType": {
+      "type": "string",
+      "allowedValues": ["Windows", "Linux"]
+    },
+    "endOfLifeDate": {
+      "type": "string",
+      "metadata": {
+        "description": "Optional. This property is for information only and doesn't block app deployment."
+      }
+    },
+    "description": {
+      "type": "string",
+      "defaultValue": "Description of the application"
+    },
+    "eula": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "privacyStatementUri": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "releaseNoteUri": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "mediaLink": {
+      "type": "string"
+    },
+    "configLink": {
+      "type": "string"
+    },
+    "appConfigFileName": {
+      "type": "string"
+    },
+    "appPackageFileName": {
+      "type": "string"
+    },
+    "replicaRegion1": {
+      "type": "string",
+      "defaultValue": "East US"
+    },
+    "replicaRegion2": {
+      "type": "string",
+      "defaultValue": "South Central US"
+    },
+    "installScript": {
+      "type": "string",
+      "metadata": {
+        "description": "Optional. Script to run to install the application. Example: echo 'Installing application...'"
+      }
+    },
+    "updateScript": {
+      "type": "string",
+      "metadata": {
+        "description": "Optional. Script to run to update the application. Example: echo 'Updating application...'"
+      }
+    },
+    "removeScript": {
+      "type": "string",
+      "metadata": {
+        "description": "Optional. Script to run to delete the application. Example: echo 'Deleting application...'"
+      }
+    },
+    "storageAccountType": {
+      "type": "string",
+      "allowedValues": ["PremiumV2_LRS", "Premium_LRS", "Standard_LRS", "Standard_ZRS"],
+      "defaultValue": "Standard_LRS"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Compute/galleries",
+      "apiVersion": "2024-03-03",
+      "name": "[parameters('galleryName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "identifier": {}
+      }
+    },
+    {
+      "type": "Microsoft.Compute/galleries/applications",
+      "apiVersion": "2024-03-03",
+      "name": "[format('{0}/{1}', parameters('galleryName'), parameters('applicationName'))]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/galleries', parameters('galleryName'))]"
+      ],
+      "properties": {
+        "supportedOSType": "[parameters('supportedOSType')]",
+        "endOfLifeDate": "[parameters('endOfLifeDate')]",
+        "description": "[parameters('description')]",
+        "eula": "[if(equals(parameters('eula'), ''), json('null'), parameters('eula'))]",
+        "privacyStatementUri": "[if(equals(parameters('privacyStatementUri'), ''), json('null'), parameters('privacyStatementUri'))]",
+        "releaseNoteUri": "[if(equals(parameters('releaseNoteUri'), ''), json('null'), parameters('releaseNoteUri'))]"
+      }
+    },
+    {
+      "type": "Microsoft.Compute/galleries/applications/versions",
+      "apiVersion": "2024-03-03",
+      "name": "[format('{0}/{1}/{2}', parameters('galleryName'), parameters('applicationName'), parameters('versionName'))]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/galleries/applications', parameters('galleryName'), parameters('applicationName'))]"
+      ],
+      "properties": {
+        "publishingProfile": {
+          "source": {
+            "mediaLink": "[parameters('mediaLink')]",
+            "defaultConfigurationLink": "[parameters('configLink')]"
+          },
+          "manageActions": {
+            "install": "[parameters('installScript')]",
+            "remove": "[parameters('removeScript')]",
+            "update": "[parameters('updateScript')]"
+          },
+          "settings": {
+            "scriptBehaviorAfterReboot": "Rerun",
+            "configFileName": "[parameters('appConfigFileName')]",
+            "packageFileName": "[parameters('appPackageFileName')]"
+          },
+          "targetRegions": [
+            {
+              "name": "[parameters('location')]",
+              "regionalReplicaCount": 3,
+              "storageAccountType": "[parameters('storageAccountType')]"
+            },
+            {
+              "name": "[parameters('replicaRegion1')]",
+              "regionalReplicaCount": 1,
+              "storageAccountType": "[parameters('storageAccountType')]"
+            },
+            {
+              "name": "[parameters('replicaRegion2')]"
+            },
+          ],
+          "excludeFromLatest": false,
+          "replicaCount": 2,
+          "storageAccountType": "[parameters('storageAccountType')]"
+        },
+        "safetyProfile": {
+          "allowDeletionOfReplicatedLocations": true
+        },
+        "endOfLifeDate": "[parameters('endOfLifeDate')]"
+      }
+    }
+  ]
+}
+
+```
+
+#### [REST](#tab/rest4)
 
 **Create the VM Application definition** using the ['create gallery application API'](/rest/api/compute/gallery-applications)
 
@@ -750,7 +936,7 @@ PUT
 
 ```
 
-#### [CLI](#tab/cli3)
+#### [CLI](#tab/cli4)
 
 **Create the VM application definition** using ['az sig gallery-application create'](/cli/azure/sig/gallery-application#az_sig_gallery_application_create).
 
@@ -809,7 +995,7 @@ az sig gallery-application version create \
 ```
 
 
-#### [PowerShell](#tab/powershell3)
+#### [PowerShell](#tab/powershell4)
 
 **Create the VM Application definition** using ['New-AzGalleryApplication'](/powershell/module/az.compute/new-azgalleryapplication). 
 - We're creating a Linux app named *myApp* in the *myGallery* Azure Compute Gallery and in the *myGallery* resource group. 
@@ -867,11 +1053,11 @@ New-AzGalleryApplicationVersion `
    -Remove $remove_command `
    -TargetRegion $target_regions
    # -DefaultConfigFileLink $config_url `
-   #  -ConfigFileName $config_file_name `
+   # -ConfigFileName $config_file_name `
 
 ```
 
-#### [Portal](#tab/portal3)
+#### [Portal](#tab/portal4)
 
 1. Go to the [Azure portal](https://portal.azure.com), then search for and select **Azure Compute Gallery**.
 1. Select the gallery you want to use from the list.
@@ -898,7 +1084,7 @@ New-AzGalleryApplicationVersion `
 1. When you're done making changes, select **Review + create** at the bottom of the page.
 1. When validation shows as passed, select **Create** to deploy your VM application version.
 
-#### [GitHub Actions](#tab/ga3)
+#### [GitHub Actions](#tab/ga4)
 
 ```yaml
 name: Deploy Azure VM Application
@@ -1045,7 +1231,7 @@ jobs:
           --only-show-errors
 ```
 
-#### [Azure DevOps Pipeline](#tab/devops3)
+#### [Azure DevOps Pipeline](#tab/devops4)
 ```yaml
 trigger:
   branches:
@@ -1199,7 +1385,7 @@ stages:
                   --only-show-errors
 ```
 
-#### [GitLab Pipeline](#tab/gitlab3)
+#### [GitLab Pipeline](#tab/gitlab4)
 ```yaml
 stages:
   - deploy
@@ -1313,7 +1499,7 @@ deploy_vm_app:
         --only-show-errors
 ```
 
-#### [Jenkins](#tab/jenkins3)
+#### [Jenkins](#tab/jenkins4)
 ```
 pipeline {
   agent any
@@ -1457,8 +1643,162 @@ pipeline {
 One or more VM Applications can now be referenced in the `applicationProfile` of Azure VM or Azure Virtual Machine Scale Sets. Azure then pulls the payload of the VM Application and installs it on each VM using the provided install script. The `order` property defines the sequential order in which the VM Applications are installed on the VM. 
 
 Refer [schema of applicationProfile of the VM / Virtual Machine Scale Set](vm-applications.md#deploy-azure-vm-applications) to learn more about each property. 
-								
-#### [REST](#tab/rest4)
+
+#### [Template](#tab/Template5)
+
+Use the following ARM template to deploy VM Application on Azure VM or Azure Virtual Machine Scale Set. This template demonstrates the key properties and configuration options for deploying your VM application.
+
+**Deploy VM Application on Virtual Machine Scale Set**
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "vmssName": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "subscriptionId": {
+      "type": "string"
+    },
+    "resourceGroupName": {
+      "type": "string"
+    },
+    "galleryName": {
+      "type": "string"
+    },
+    "applicationName1": {
+      "type": "string"
+    },
+    "applicationVersion1": {
+      "type": "string",
+      "defaultValue": "latest"
+    },
+    "configurationReference1": {
+      "type": "string",
+      "metadata": {
+        "description": "Optional path to configuration file from Storage Account. Overrides default configuration file."
+      }
+    },
+    "applicationName2": {
+      "type": "string"
+    },
+    "applicationVersion2": {
+      "type": "string",
+      "defaultValue": "latest"
+    }
+  },
+  "variables": {
+    "packageReferenceId1": "[format('/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Compute/galleries/{2}/applications/{3}/versions/{4}', parameters('subscriptionId'), parameters('resourceGroupName'), parameters('galleryName'), parameters('applicationName1'), parameters('applicationVersion1'))]",
+    "packageReferenceId2": "[format('/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Compute/galleries/{2}/applications/{3}/versions/{4}', parameters('subscriptionId'), parameters('resourceGroupName'), parameters('galleryName'), parameters('applicationName2'), parameters('applicationVersion2'))]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Compute/virtualMachineScaleSets",
+      "apiVersion": "2024-03-03",
+      "name": "[parameters('vmssName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "virtualMachineProfile": {
+          "applicationProfile": {
+            "galleryApplications": [
+              {
+                "order": 1,
+                "packageReferenceId": "[variables('packageReferenceId1')]",
+                "configurationReference": "[parameters('configurationReference1')]",
+                "treatFailureAsDeploymentFailure": true
+              },
+              {
+                "order": 2,
+                "packageReferenceId": "[variables('packageReferenceId2')]",
+                "treatFailureAsDeploymentFailure": false
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
+**Deploy VM Application on Azure VM**
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "vmName": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "subscriptionId": {
+      "type": "string"
+    },
+    "resourceGroupName": {
+      "type": "string"
+    },
+    "galleryName": {
+      "type": "string"
+    },
+    "applicationName1": {
+      "type": "string"
+    },
+    "applicationVersion1": {
+      "type": "string",
+      "defaultValue": "latest"
+    },
+    "configurationReference1": {
+      "type": "string",
+      "metadata": {
+        "description": "Optional path to configuration blob for application 1"
+      }
+    },
+    "applicationName2": {
+      "type": "string"
+    },
+    "applicationVersion2": {
+      "type": "string",
+      "defaultValue": "latest"
+    }
+  },
+  "variables": {
+    "packageReferenceId1": "[format('/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Compute/galleries/{2}/applications/{3}/versions/{4}', parameters('subscriptionId'), parameters('resourceGroupName'), parameters('galleryName'), parameters('applicationName1'), parameters('applicationVersion1'))]",
+    "packageReferenceId2": "[format('/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Compute/galleries/{2}/applications/{3}/versions/{4}', parameters('subscriptionId'), parameters('resourceGroupName'), parameters('galleryName'), parameters('applicationName2'), parameters('applicationVersion2'))]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Compute/virtualMachines",
+      "apiVersion": "2024-07-01",
+      "name": "[parameters('vmName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "applicationProfile": {
+          "galleryApplications": [
+            {
+              "order": 1,
+              "packageReferenceId": "[variables('packageReferenceId1')]",
+              "configurationReference": "[parameters('configurationReference1')]",
+              "treatFailureAsDeploymentFailure": true
+            },
+            {
+              "order": 2,
+              "packageReferenceId": "[variables('packageReferenceId2')]",
+              "treatFailureAsDeploymentFailure": false
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
+```
+
+#### [REST](#tab/rest5)
 
 To add a VM application version to a VM, perform a PUT on the VM.
 
@@ -1541,7 +1881,7 @@ relevant parts.
 
 ```
 
-#### [CLI](#tab/cli4)
+#### [CLI](#tab/cli5)
 Set a VM application to an existing VM using ['az vm application set'](/cli/azure/vm/application#az-vm-application-set) and replace the values of the parameters with your own.
 
 ```azurecli-interactive
@@ -1578,7 +1918,7 @@ az vmss application set \
 	--treat-deployment-as-failure true
 ```
 
-#### [PowerShell](#tab/powershell4)
+#### [PowerShell](#tab/powershell5)
 
 To add the application to an existing VM, get the application version and use that to get the VM application version ID. Create the application object using ID with ['New-AzVmGalleryApplication'](/powershell/module/az.compute/new-azvmgalleryapplication) and add the application to the VM configuration using ['Add-AzVmGalleryApplication'](/powershell/module/az.compute/add-azvmgalleryapplication).
 
@@ -1621,7 +1961,7 @@ Add-AzVmssGalleryApplication -VirtualMachineScaleSetVM $vmss.VirtualMachineProfi
 Update-AzVmss -ResourceGroupName $rgName -VirtualMachineScaleSet $vmss -VMScaleSetName $vmssName
 ```
 
-#### [Portal](#tab/portal4)
+#### [Portal](#tab/portal5)
 
 Now you can create a VM and deploy the VM application to it using the portal. Just create the VM as usual, and under the **Advanced** tab, choose **Select a VM application to install**.
 
