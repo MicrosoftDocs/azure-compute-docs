@@ -408,7 +408,7 @@ Once the application and configuration files are uploaded to the storage account
 Blob URL = https://${STORAGE_ACCOUNT}.blob.core.windows.net/${CONTAINER_NAME}/${BLOB_NAME}
 SAS URL  = https://${STORAGE_ACCOUNT}.blob.core.windows.net/${CONTAINER_NAME}/${BLOB_NAME}?${SAS_TOKEN}
 
-#### [CLI using Blob URL](#tab/cli3)
+#### [CLI using Blob URL](#tab/cli31)
 
 Use the following script if [managed identity is assigned to Azure Compute Gallery](vm-applications-publish-with-managed-identity.md). This approach uses blob URLs without SAS tokens.
 
@@ -468,7 +468,7 @@ if [ -n "$CONFIG_FILE" ] && [ -f "$CONFIG_FILE" ]; then
 fi
 ```
 
-#### [CLI using SAS URL](#tab/cli3)
+#### [CLI using SAS URL](#tab/cli32)
 
 Use the following script if storage account has anonymous access disabled and managed identity isn't assigned to Azure Compute Gallery. This approach generates time-limited SAS tokens.
 
@@ -552,7 +552,7 @@ if [ -n "$CONFIG_FILE" ] && [ -f "$CONFIG_FILE" ]; then
 fi
 ```
 
-#### [PowerShell using Blob URL](#tab/powershell3)
+#### [PowerShell using Blob URL](#tab/powershell31)
 
 Use the following script if [managed identity is assigned to Azure Compute Gallery](vm-applications-publish-with-managed-identity.md). This approach uses blob URLs without SAS tokens.
 
@@ -611,7 +611,7 @@ if ($configFile -and (Test-Path $configFile)) {
 }
 ```
 
-#### [PowerShell using SAS URL](#tab/powershell3)
+#### [PowerShell using SAS URL](#tab/powershell32)
 
 Use the following script if storage account has anonymous access disabled and [managed identity isn't assigned to Azure Compute Gallery](vm-applications-publish-with-managed-identity.md). This approach generates time-limited SAS tokens.
 
