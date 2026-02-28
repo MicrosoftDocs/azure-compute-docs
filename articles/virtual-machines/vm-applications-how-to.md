@@ -282,44 +282,60 @@ powershell.exe -ExecutionPolicy Bypass -NoProfile -Command "Rename-Item -Path '.
 
 The delete script enables you to define the delete operations for the application. The delete script is provided as a string and has a maximum character limit of 4,096 characters. Write the delete commands assuming the application package and the configuration file are in the current directory. During uninstall operation, Azure runs the uninstall script and then deletes all files from the repository. 
 
-There may be few operations that delete script must perform. 
+There are few operations that the delete script must perform. 
 
 - **Uninstall application:**
-	Properly uninstall the application from the VM. For example, 
-  #### [CMD](tab/cmd1)
-  - CMD on Windows: 
-    ```cli-interactive
-    start /wait uninstall.exe /quiet
-    ```
-    ```cli-interactive
-    start /wait python.exe /uninstall /quiet
-    ```
-    ```cli-interactive
-    start /wait msiexec /x app.msi /quiet /qn
-    ```
-  #### [PowerShell](tab/powershell1)
-  - PowerShell on Windows:
-    ```powershell-interactive
-    powershell.exe -ExecutionPolicy Bypass -NoProfile -Command "Start-Process -FilePath '.\uninstall.exe' -ArgumentList '/quiet' -Wait -NoNewWindow"
-    ```
-    ```powershell-interactive
-    powershell.exe -ExecutionPolicy Bypass -NoProfile -Command "Start-Process -FilePath '.\python.exe' -ArgumentList '/uninstall','/quiet' -Wait -NoNewWindow"
-    ```
-    ```powershell-interactive
-    powershell.exe -ExecutionPolicy Bypass -NoProfile -Command "Start-Process -FilePath 'msiexec.exe' -ArgumentList '/x','.\app.msi','/quiet','/qn' -Wait -NoNewWindow"
-    ```
-  #### [Bash](tab/bash1)
-  - Bash on Linux: 
-    ```bash
-    sudo ./uninstall.sh
-    ```
-    ```bash
-    sudo apt remove -y app
-    ```
-    ```bash
-    sudo rpm -e app
-    ```
-  ---
+  Properly uninstall the application from the VM. For example: 
+
+#### [CMD](#tab/cmd1)
+
+CMD on Windows: 
+
+```cli-interactive
+start /wait uninstall.exe /quiet
+```
+
+```cli-interactive
+start /wait python.exe /uninstall /quiet
+```
+
+```cli-interactive
+start /wait msiexec /x app.msi /quiet /qn
+```
+
+#### [PowerShell](#tab/powershell1)
+
+PowerShell on Windows:
+
+```powershell-interactive
+powershell.exe -ExecutionPolicy Bypass -NoProfile -Command "Start-Process -FilePath '.\uninstall.exe' -ArgumentList '/quiet' -Wait -NoNewWindow"
+```
+
+```powershell-interactive
+powershell.exe -ExecutionPolicy Bypass -NoProfile -Command "Start-Process -FilePath '.\python.exe' -ArgumentList '/uninstall','/quiet' -Wait -NoNewWindow"
+```
+
+```powershell-interactive
+powershell.exe -ExecutionPolicy Bypass -NoProfile -Command "Start-Process -FilePath 'msiexec.exe' -ArgumentList '/x','.\app.msi','/quiet','/qn' -Wait -NoNewWindow"
+```
+
+#### [Bash](#tab/bash1)
+
+Bash on Linux: 
+
+```bash
+sudo ./uninstall.sh
+```
+
+```bash
+sudo apt remove -y app
+```
+
+```bash
+sudo rpm -e app
+```
+
+---
 
 - **Remove residual files:**
    	If the application installation creates files in other parts of the file system, remove those files.
@@ -374,7 +390,7 @@ if ($remainder -ne 0){
   Add-Content -Path $inputFile -Value $bytesToPad -Encoding Byte
 }
 ```
-----
+---
 
 ### 2. **Generate SAS or Blob URL for the application package and the configuration file** 
 Once the application and configuration files are uploaded to the storage account, you need to generate a Blob URL or [SAS URL](/azure/storage/common/storage-sas-overview#get-started-with-sas) with read privilege for these blobs. These URLs are then provided as reference while creating the VM Application version resource. 
@@ -401,10 +417,10 @@ Use the following script if [managed identity is assigned to Azure Compute Galle
 set -euo pipefail
 
 # === CONFIGURATION ===
-STORAGE_ACCOUNT="yourstorageaccount"
-CONTAINER_NAME="yourcontainer"
-APP_FILE="./your-app-file"           # Path to your application payload file        
-CONFIG_FILE="./your-config-file"     # Path to your configuration file (optional)   
+STORAGE_ACCOUNT="your-storage-account-name"
+CONTAINER_NAME="your-container-name"
+APP_FILE="./path/to/your-app-file"           # Path to your application payload file        
+CONFIG_FILE="./path/to/your-config-file"     # Path to your configuration file (optional)   
 
 # === LOGIN (if not already logged in) ===
 az login --only-show-errors
@@ -1076,7 +1092,9 @@ New-AzGalleryApplicationVersion `
 1. Enter a version number like 1.0.0.
 1. Select the region where your application packages are uploaded.
 1. Under **Source application package**, select **Browse**. Select the storage account, then the container where your package is located. Select the package from the list and then select **Select** when you're done. Alternatively, you can paste the SAS URI in this field if preferred.
-1. Provide the '**Install script**'. You can also provide the '**Uninstall script**' and the '**Update script**'. See the [Overview](vm-applications.md#command-interpreter) for information on how to create the scripts.
+1. Provide the '**Install script**'.
+1. Provide the '**Uninstall script**'.
+1. Optionally, provide the '**Update script**'.
 1. If you have a default configuration file uploaded to a storage account, you can select it in **Default configuration**.
 1. Select **Exclude from latest** if you don't want this version to appear as the latest version when you create a VM.
 1. For **End of life date**, choose a date in the future to track when this version should be retired. It isn't deleted or removed automatically, it's only for your own tracking.

@@ -244,7 +244,7 @@ resources
 
 ### Update published VM Application
 > [!NOTE]
-> Not all properties of a published VM Application or VM Application version can be updated. For a complete list of updatable properties, refer to the [VM Application resource and VM Application version resource schema](vm-applications.md#create-vm-applications--vm-applications-version-resource).
+> Not all properties of a published VM Application or VM Application version can be updated. For a complete list of updatable properties, refer to the [VM Application resource and VM Application version resource schema](vm-applications.md#publish-application-as-azure-vm-application).
 
 #### [REST](#tab/rest2)
 

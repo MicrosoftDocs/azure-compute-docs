@@ -121,7 +121,7 @@ The VM Application resource defines follows properties:
 | name | Name of the application | Yes | Max length of 117 characters. Allowed characters are uppercase or lowercase letters, digits, hyphen(-), period (.), underscore (_). Names not allowed to end with period(.). |
 | location | Location of the resource | No | |
 | supportedOSType | Define the supported OS type | No | "Linux" or "Windows" |
-| endOfLifeDate | A future end of life date for the application. The date is for reference only and isn't enforced. | Yes | |
+| endOfLifeDate | Optional. A future end of life date for the application. The date is for reference only and isn't enforced. | Yes | |
 | description | Optional. A description of the VM application | Yes | |
 | eula | Optional. Reference to End User License Agreement (EULA) | Yes | |
 | privacyStatementUri | Optional. Reference to privacy statement for the application. | Yes | |
@@ -143,11 +143,11 @@ The VM Application resource defines follows properties:
 | targetRegions/regionalReplicaCount | Optional. The number of replicas to create in the region. Improves load handling and create latency. Defaults to 1. | Yes | Integer between 1 and 3 inclusive |
 | replicaCount | Optional. Defines the number of replicas across each region. Takes effect if regionalReplicaCount isn't defined. Improves resiliency to region or cluster failure and create latency during high scale. | Yes | Integer between 1 and 3 inclusive. |
 | endOfLifeDate | Optional. A future end of life date for the application version. This property is for customer reference only and isn't enforced. | Yes | Valid future date |
-| excludeFromLatest | Exclude version from being used as the latest version of the application when 'latest' keyword is used in applicationProfile. | Yes | |
-| storageAccountType | Optional. Type of storage account to use in each region for storing application package. Defaults to Standard_LRS. | No | This property is nonupdatable. |
+| excludeFromLatest | Optional. Exclude version from being used as the latest version of the application when 'latest' keyword is used in applicationProfile.  | Yes | Defaults to false. |
+| storageAccountType | Optional. Type of storage account to use in each region for storing application package. Defaults to Standard_LRS. | No | |
 | safetyProfile/allowDeletionOfReplicatedLocations | Optional. Indicates whether or not removing this Gallery Image Version from replicated regions is allowed. | Yes | |
-| settings/packageFileName | Package file name to use when the package is downloaded to the VM. | No | Character limit is of 4,096 characters. |
-| settings/configFileName | Configuration file name to be use when the configuration is downloaded to the VM. | No | Character limit is of 4,096 characters. |
+| settings/packageFileName | Optional. Package file name to use when the package is downloaded to the VM. | No | Character limit is of 4,096 characters. |
+| settings/configFileName | Optional. Configuration file name to be use when the configuration is downloaded to the VM. | No | Character limit is of 4,096 characters. |
 | settings/scriptBehaviorAfterReboot | Optional. The action to be taken for installing, updating, or removing gallery application after the VM is rebooted. | No | |
 
 
@@ -231,11 +231,11 @@ When you update an application version on a VM or Virtual Machine Scale Sets, th
 
 Update commands should be written with the expectation that it could be updating from any older version of the VM Application.
 
-### Treat failure as extension deployment failure
+### Treat VM Application failure as deployment failure
 
 By default, if an application fails to install, update, or remove, the VM Application extension still reports its status as *success*. The extension only reports a failure on its own when there's a problem with the extension itself or the underlying infrastructure, not with your application scripts.
 
-To change this behavior, set the `treatFailureAsDeploymentFailure` property to `true` on the application in the VM's `applicationProfile`. When enabled, any application installation, update, or removal failure causes the entire VM deployment to be reported as failed.
+To change this behavior, set the `treatFailureAsDeploymentFailure` property to `true` on the application in the VM's `applicationProfile`. When you enable this setting, any application installation, update, or removal failure causes the VMAppExtension provisioning status to report failure. This failure also causes the VM provisioning status to report as failed.
 
 ## Error messages
 These are the error messages that you might encounter when publishing and deploying your VM applications.
