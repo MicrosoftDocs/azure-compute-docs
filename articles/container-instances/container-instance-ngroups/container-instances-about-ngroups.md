@@ -142,7 +142,7 @@ Here's a sample of an NGroups resource with managed identity and zones that refe
 ### NGroups Feature Highlights
 
 - Offers both Rolling and Manual update
-- Manage cross-zonal container groups
+- Manage cross-zone container groups
 - Supports managed identities
 - Add load balancer and application gateway to manage traffic across container groups
 - Manage container groups with different container group profiles
