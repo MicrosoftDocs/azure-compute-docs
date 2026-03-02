@@ -7,7 +7,7 @@ ms.service: azure-virtual-machines
 ms.subservice: extensions
 ms.collection: linux
 ms.topic: concept-article
-ms.date: 04/29/2025
+ms.date: 02/26/2026
 ms.author: mbaldwin
 ms.custom: devx-track-azurepowershell, devx-track-azurecli, linux-related-content
 # Customer intent: As a system administrator managing Linux virtual machines, I want to deploy the Key Vault VM extension so that I can automate the refresh of certificates stored in Azure Key Vault and ensure seamless certificate management.
@@ -467,18 +467,21 @@ Symbolic links or Symlinks are advanced shortcuts. To avoid monitoring the folde
 
 ## Certificate Installation on Linux
 
-The Key Vault VM extension for Linux installs certificates as PEM files with the full certificate chain included. When a certificate is downloaded from Key Vault, the extension:
+The Key Vault VM extension for Linux installs certificates as PEM files. When a certificate is downloaded from Key Vault, the extension:
 
 1. Creates a storage folder based on the `certificateStoreLocation` setting (defaults to `/var/lib/waagent/Microsoft.Azure.KeyVault.Store/` if not specified)
-2. Installs the full certificate chain and private key in a PEM file following [RFC 5246 section 7.4.2](https://datatracker.ietf.org/doc/html/rfc5246#section-7.4.2) in this specific order:
+2. Installs the certificate chain and private key as stored in Key Vault. The PEM file follows [RFC 5246 section 7.4.2](https://datatracker.ietf.org/doc/html/rfc5246#section-7.4.2) ordering:
    - Leaf certificate (end-entity certificate) comes first
-   - Intermediate certificate(s) follow in order, where each certificate directly certifies the one before it
+   - Intermediate certificate(s) follow in order, where each certificate directly certifies the one before it (if present in Key Vault)
    - Root certificate, if present (though it's not required for validation if already trusted by the system)
    - Private key, corresponding to the leaf certificate, is placed at the end of the file
 3. Automatically creates a symbolic link named `[VaultName].[CertificateName]` that points to the latest version of the certificate
 
+> [!NOTE]
+> The extension outputs exactly what is returned from Key Vault. It does not fetch or add intermediate or root certificates automatically. If your certificate was imported to Key Vault without the full chain, the downloaded PEM file will also be missing those certificates.
+
 This approach ensures that:
-- Applications always have access to the complete certificate chain needed for validation
+- Applications have access to the certificate chain as stored in Key Vault
 - The certificate chain is properly ordered for TLS handshakes according to RFC standards
 - The private key is available for use by the service
 - Applications can reference a stable symbolic link path that automatically updates when certificates are renewed
