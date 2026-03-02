@@ -477,9 +477,6 @@ The Key Vault VM extension for Linux installs certificates as PEM files. When a 
    - Private key, corresponding to the leaf certificate, is placed at the end of the file
 3. Automatically creates a symbolic link named `[VaultName].[CertificateName]` that points to the latest version of the certificate
 
-> [!NOTE]
-> The extension outputs exactly what is returned from Key Vault. It does not fetch or add intermediate or root certificates automatically. If your certificate was imported to Key Vault without the full chain, the downloaded PEM file will also be missing those certificates.
-
 This approach ensures that:
 - Applications have access to the certificate chain as stored in Key Vault
 - The certificate chain is properly ordered for TLS handshakes according to RFC standards
