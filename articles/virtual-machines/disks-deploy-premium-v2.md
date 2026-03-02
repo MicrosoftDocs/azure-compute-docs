@@ -13,7 +13,7 @@ ms.custom:
   - innovation-engine
   - sfi-ropc-nochange\portal
   - portal
-# Customer intent: As a cloud administrator, I want to deploy a Premium SSD v2 managed disk, so that I can enhance the performance of IO-intense workloads in my virtual machines with low latency and high throughput capabilities.
+# Customer intent: As a cloud administrator, I want to deploy a Premium SSD v2 disk, so that I can enhance the performance of IO-intense workloads in my virtual machines with low latency and high throughput capabilities.
 ---
 
 # Deploy a Premium SSD v2
@@ -22,7 +22,7 @@ ms.custom:
 
 Azure Premium SSD v2 is designed for IO-intense enterprise workloads that require sub-millisecond disk latencies and high IOPS and throughput at a low cost. Premium SSD v2 is suited for a broad range of workloads such as SQL server, Oracle, MariaDB, SAP, Cassandra, Mongo DB, big data/analytics, gaming, on virtual machines or stateful containers. For conceptual information on Premium SSD v2, see [Premium SSD v2](disks-types.md#premium-ssd-v2).
 
-Premium SSD v2 support a 4k physical sector size by default, but can be configured to use a 512E sector size as well. While most applications are compatible with 4k sector sizes, some require 512 byte sector sizes. Oracle Database, for example, requires release 12.2 or later in order to support 4k native disks.
+Premium SSD v2 disks support a 4k physical sector size by default, but can be configured to use a 512E sector size as well. While most applications are compatible with 4k sector sizes, some require 512 byte sector sizes. Oracle Database, for example, requires release 12.2 or later in order to support 4k native disks.
 
 ## Limitations
 
@@ -38,11 +38,11 @@ Premium SSD v2 support a 4k physical sector size by default, but can be configur
 
 ## Determine region availability programmatically
 
-Since not every region and zone supports Premium SSD v2, you can use the Azure CLI or PowerShell to determine region and zone supportability.
+Since not every region and zone support Premium SSD v2 disks, you can use the Azure CLI or PowerShell to determine region and zone supportability.
 
 # [Azure CLI](#tab/azure-cli)
 
-To determine the regions and zones that support Premium SSD v2, replace `yourSubscriptionId` with your subscription, and then run the [az vm list-skus](/cli/azure/vm#az-vm-list-skus) command:
+To determine the regions and zones that support Premium SSD v2 disks, replace `yourSubscriptionId` with your subscription, and then run the [az vm list-skus](/cli/azure/vm#az-vm-list-skus) command:
 
 ```azurecli
 az login
@@ -56,7 +56,7 @@ az vm list-skus --resource-type disks --query "[?name=='PremiumV2_LRS'].{Region:
 
 # [PowerShell](#tab/azure-powershell)
 
-To determine the regions and zones that support Premium SSD v2, replace `yourSubscriptionId` with your subscription, and then run the [Get-AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku) command:
+To determine the regions and zones that support Premium SSD v2 disks, replace `yourSubscriptionId` with your subscription, and then run the [Get-AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku) command:
 
 ```powershell
 Connect-AzAccount
