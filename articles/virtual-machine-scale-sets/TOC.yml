@@ -149,6 +149,8 @@
     href: resilient-vm-create-delete.md
   - name: Migrate VMs to an availability zone (Preview)
     href: ./../virtual-machines/migrate-to-availability-zone.md
+  - name: Migrate from regional to zonal scale sets (Preview)
+    href: migrate-vmss-flex-to-availability-zones.md
 - name: Cost optimization
   items:
   - name: Azure Spot Virtual Machines
