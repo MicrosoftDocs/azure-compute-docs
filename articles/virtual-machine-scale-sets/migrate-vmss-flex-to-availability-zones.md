@@ -11,7 +11,7 @@ ms.date: 03/03/2026
 
 **Applies to:** ✔️ Linux VMs ✔️ Windows VMs ✔️ Flexible scale sets
 
-This article describes how to migrate existing VMs in a regional (non-zonal) Virtual Machine Scale Set with Flexible orchestration into specific availability zones while preserving VM names, data disks, and other stateful properties.
+This article describes how to migrate existing VMs in a regional (nonzonal) Virtual Machine Scale Set with Flexible orchestration into specific availability zones while preserving VM names, data disks, and other stateful properties.
 
 > [!IMPORTANT]
 > Stateful regional to zonal VM migration is currently in **Public Preview**. Preview features should be tested in non-production environments before migrating production workloads. Updating a Flexible scale set to include availability zones is generally available.
@@ -19,13 +19,6 @@ This article describes how to migrate existing VMs in a regional (non-zonal) Vir
 ## Overview
 
 Virtual Machine Scale Sets allow you to combine the scalability of scale sets with the flexibility of individual VMs. If your scale set was originally deployed without availability zones (regional), you can update the scale set to include zones and then migrate the existing VMs into those zones in place.
-
-This is a **stateful migration** — each VM retains its:
-
-- **VM name and resource ID**
-- **OS disk and all data disks** (contents preserved)
-- **Network interface**, private IP address, and MAC address
-- **Scale set association** (the VM stays attached to the same scale set)
 
 The migration process involves:
 
@@ -42,12 +35,10 @@ The migration process involves:
 
 ## Prerequisites
 
-Before you begin, ensure you have the following:
-
 - **Azure subscription** with the migration preview feature registered
 - **Contributor** role or higher on the resource group containing the scale set
 - **Azure CLI 2.72.0** or later, or **Azure PowerShell Az module** installed
-- An existing **regional (non-zonal) Virtual Machine Scale Set** with **Flexible** orchestration mode
+- An existing **regional (nonzonal) Virtual Machine Scale Set** with **Flexible** orchestration mode
 - The target availability zones must support the VM sizes used in the scale set
 
 ### Register the preview feature
@@ -116,7 +107,7 @@ The following configurations aren't supported for migration:
 
 ## Step 1: Update the scale set to include availability zones
 
-Before migrating individual VMs, update the scale set to include the target availability zones in its configuration. This step doesn't affect running VMs — it updates the scale set model so that VMs can be assigned to zones.
+Before migrating individual VMs, update the scale set to include the target availability zones in its configuration. This step doesn't affect running VMs. Only the scale set model is updated so that VMs can be assigned to zones.
 
 # [Azure CLI](#tab/cli)
 
@@ -274,7 +265,7 @@ Consider changing the VM size before migration if the current size isn't availab
 
 **Solution:** Verify the following:
 
-- The scale set has been updated to include the target zone (Step 1)
+- The scale set has been updated to include the target zone
 - The VM is fully deallocated
 - The VM's size is available in the target zone
 - No other operations are running on the scale set
