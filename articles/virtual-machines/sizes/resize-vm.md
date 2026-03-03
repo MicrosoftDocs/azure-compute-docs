@@ -45,9 +45,7 @@ For more information on choosing the right SKU, you can use the following resour
 
 ## Limitations
 
-1. You can't resize a VM size that has a local temp disk to a VM size with no local temp disk and vice versa.
-
-   The only combinations allowed for resizing are:
+1. Resizing between VM sizes that have a local temp disk and VM sizes that have no local temp disk is supported for Linux VMs. For Windows VMs, only the following resize combinations are allowed:
 
 - VM (with local temp disk) -> VM (with local temp disk); and
 - VM (with no local temp disk) -> VM (with no local temp disk).
