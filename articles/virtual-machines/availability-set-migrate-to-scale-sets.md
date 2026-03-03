@@ -41,7 +41,7 @@ Before you begin, ensure you have the following:
 - **Contributor** role or higher on the resource group containing the availability set
 - **Azure CLI 2.72.0** or later, or **Azure PowerShell Az module** installed
 - An existing **availability set** with VMs you want to migrate
-- A target **Virtual Machine Scale Set** with Flexible orchestration mode (or create one during migration)
+- A target **Virtual Machine Scale Set** with Flexible orchestration mode
 
 ### Register the preview feature
 
@@ -51,12 +51,12 @@ The migration feature requires registration. Register the `MigrateToVmssFlex` pr
 
 ```azurecli
 # Set your subscription context
-az account set --subscription "<subscription-name-or-id>"
+az account set --subscription "<subscriptionId>"
 
 # Register the migration feature
 az feature register --namespace Microsoft.Compute --name MigrateToVmssFlex
 
-# Check registration status (wait for "Registered" state)
+# Check registration status
 az feature show --namespace Microsoft.Compute --name MigrateToVmssFlex --query properties.state -o tsv
 ```
 
@@ -64,12 +64,12 @@ az feature show --namespace Microsoft.Compute --name MigrateToVmssFlex --query p
 
 ```azurepowershell
 # Set your subscription context
-Set-AzContext -Subscription "<subscription-name-or-id>"
+Set-AzContext -Subscription "<subscriptionId>"
 
 # Register the migration feature
 Register-AzProviderFeature -FeatureName MigrateToVmssFlex -ProviderNamespace Microsoft.Compute
 
-# Check registration status (wait for "Registered" state)
+# Check registration status
 Get-AzProviderFeature -FeatureName MigrateToVmssFlex -ProviderNamespace Microsoft.Compute
 ```
 
@@ -96,11 +96,11 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/providers/Micros
 The migration process consists of the following phases:
 
 1. **Create target Virtual Machine Scale Set** - Create a new scale set with Flexible orchestration mode (if you don't have one)
-   2.* *Validate migration** - Verify the availability set can be migrated
-2. **Start migration** - Put the availability set into migration mode
-3. **Migrate VMs** - Move each VM individually to the scale set
-4. **Start VMs** - Power on the migrated VMs
-5. **Clean up** - Delete the empty availability set
+2. **Validate migration** - Verify the availability set can be migrated
+3. **Start migration** - Put the availability set into migration mode
+4. **Migrate VMs** - Move each VM individually to the scale set
+5. **Start VMs** - Power on the migrated VMs
+6. **Clean up** - Delete the empty availability set
 
 > [!IMPORTANT]
 >
@@ -124,17 +124,7 @@ The following configurations aren't supported for migration:
 - VMs with **Basic public IP addresses** - Upgrade to Standard SKU before migration
 - VMs behind a **Basic Load Balancer** - Upgrade to Standard Load Balancer before migration
 - VMs with **unmanaged disks** - Convert to managed disks before migration
-- Availability sets with VMs in different resource groups
 
-### Supported disk types
-
-All managed disk types are supported and preserved during migration:
-
-- Standard HDD (Standard_LRS)
-- Standard SSD (StandardSSD_LRS)
-- Premium SSD (Premium_LRS)
-- Premium SSD v2 (PremiumV2_LRS)
-- Ultra Disk (UltraSSD_LRS)
 
 ## Step 1: Create a target Virtual Machine Scale Set
 
@@ -230,7 +220,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 ## Step 4: Migrate individual VMs
 
-Migrate each VM from the availability set to the scale set. You can choose between **regional** or **zonal** migration for each VM.
+Migrate each VM from the availability set to the scale set. 
 
 ### Regional migration
 
@@ -263,7 +253,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 ### Zonal migration
 
-For zonal migration, specify the target availability zone:
+For zonal migration, specify the target availability zone for each virtual machine:
 
 # [Azure CLI](#tab/cli)
 
@@ -313,7 +303,7 @@ You can optionally change the VM size during zonal migration:
 
 ## Step 5: Start migrated VMs
 
-After migration, VMs are in a **Stopped (deallocated)** state. Start each VM to make it available:
+After migration, VMs are in a **Stopped (deallocated)** state. You can start VMs immediately after they reach the **Stopped (deallocated)** state.
 
 # [Azure CLI](#tab/cli)
 
@@ -335,8 +325,6 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 ---
 
-> [!NOTE]
-> You can start VMs immediately after they reach the **Stopped (deallocated)** state, even if background data migration is still in progress. The data migration continues transparently.
 
 ## Step 6: Clean up the empty availability set
 

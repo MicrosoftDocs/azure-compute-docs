@@ -198,6 +198,10 @@
   - name: Migrate to Flexible Orchestration
     href: flexible-virtual-machine-scale-sets-migration-resources.md
     maintainContext: true
+  - name: Migrate from availability sets
+    href: ../virtual-machines/availablity-set-migrate-to-scale-sets.md
+     maintainContext: true
+    href: virtual-machine-scale-sets-migrate-availability-set.md
   - name: Proximity placement groups
     href: proximity-placement-groups.md
   - name: Connect to Virtual Machines
