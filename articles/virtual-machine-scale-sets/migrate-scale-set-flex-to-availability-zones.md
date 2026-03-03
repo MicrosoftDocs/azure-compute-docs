@@ -238,7 +238,7 @@ Repeat Steps 2 through 4 for each VM in the scale set that you want to migrate.
 
 **Error:** `Cannot update zones on the Virtual Machine Scale Set`
 
-**Solution:** Ensure the scale set uses **Flexible** orchestration mode and that the target zones are available in the scale set's region. Check that none of the VMs in the scale set are currently undergoing another operation.
+**Solution:** Ensure the scale set uses **Flexible** orchestration mode and that the target zones are available in the scale set's region. Check that none of the VMs in the scale set is currently undergoing another operation.
 
 ### VM size not available in zone
 
