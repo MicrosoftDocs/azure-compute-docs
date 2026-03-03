@@ -1,5 +1,5 @@
 ---
-title: Migrate from a regional to a zonal Virtual Machine Scale Set
+title: Migrate from regional to a zonal Virtual Machine Scale Sets
 description: Learn how to migrate VMs from a regional Virtual Machine Scale Set with Flexible orchestration to a zonal scale set while preserving VM state.
 author: mimckitt
 ms.author: mimckitt
@@ -7,7 +7,7 @@ ms.service: azure-virtual-machine-scale-sets
 ms.topic: how-to
 ms.date: 03/03/2026
 ---
-# Migrate from a regional to a zonal Virtual Machine Scale Set (Preview)
+# Migrate from regional to a zonal Virtual Machine Scale Sets (Preview)
 
 **Applies to:** ✔️ Linux VMs ✔️ Windows VMs ✔️ Flexible scale sets
 
@@ -24,7 +24,7 @@ The migration process involves:
 
 1. **Update the scale set** to include availability zones in its configuration
 2. **Deallocate each VM** in the scale set
-3. **Assign each VM to an availability zone** 
+3. **Assign each VM to an availability zone**
 4. **Start each VM** in its new zone
 
 > [!IMPORTANT]
@@ -92,8 +92,8 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/providers/Micros
 
 ### Migration paths
 
-| Source | Target | Description |
-| ------ | ------ | ----------- |
+| Source                              | Target                           | Description                                                                                                                      |
+| ----------------------------------- | -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
 | Regional VM in a Flexible scale set | Zonal VM in a Flexible scale set | VM placed in a specific availability zone (1, 2, or 3) while preserving VM name, disks, network config, and scale set membership |
 
 ### Limitations
@@ -103,7 +103,6 @@ The following configurations aren't supported for migration:
 - VMs with **Basic public IP addresses** - Upgrade to Standard SKU before migration
 - VMs behind a **Basic Load Balancer** - Upgrade to Standard Load Balancer before migration
 - VMs with **unmanaged disks** - Convert to managed disks before migration
-
 
 ## Step 1: Update the scale set to include availability zones
 
