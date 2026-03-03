@@ -11,34 +11,33 @@ ms.date: 03/03/2026
 
 **Applies to:** ✔️ Linux VMs ✔️ Windows VMs ✔️ Flexible scale sets
 
-This article describes how to migrate existing VMs in a regional (non-zonal) Virtual Machine Scale Set with Flexible orchestration into specific availability zones while preserving VM names, data disks, network configuration, and other stateful properties.
+This article describes how to migrate existing VMs in a regional (non-zonal) Virtual Machine Scale Set with Flexible orchestration into specific availability zones while preserving VM names, data disks, and other stateful properties.
 
 > [!IMPORTANT]
 > Stateful regional to zonal VM migration is currently in **Public Preview**. Preview features should be tested in non-production environments before migrating production workloads. Updating a Flexible scale set to include availability zones is generally available.
 
 ## Overview
 
-Virtual Machine Scale Sets with Flexible orchestration allow you to combine the scalability of scale sets with the flexibility of individual VMs. If your Flexible scale set was originally deployed without availability zones (regional), you can update the scale set to include zones (GA) and then migrate the existing VMs into those zones in place.
+Virtual Machine Scale Sets allow you to combine the scalability of scale sets with the flexibility of individual VMs. If your scale set was originally deployed without availability zones (regional), you can update the scale set to include zones and then migrate the existing VMs into those zones in place.
 
 This is a **stateful migration** — each VM retains its:
 
 - **VM name and resource ID**
 - **OS disk and all data disks** (contents preserved)
 - **Network interface**, private IP address, and MAC address
-- **Scale set membership** (the VM stays attached to the same Flexible scale set)
+- **Scale set association** (the VM stays attached to the same scale set)
 
 The migration process involves:
 
-1. **Update the scale set** to include availability zones in its configuration (GA)
+1. **Update the scale set** to include availability zones in its configuration
 2. **Deallocate each VM** in the scale set
-3. **Assign each VM to an availability zone** (Preview)
+3. **Assign each VM to an availability zone** 
 4. **Start each VM** in its new zone
 
 > [!IMPORTANT]
 >
 > - Each VM must be deallocated before zone assignment. Plan for downtime accordingly.
-> - Data migration between disks and zones happens transparently in the background after the zone is assigned.
-> - VMs can be started immediately after zone assignment completes, even while background data migration is still in progress.
+> - VMs can be started immediately after zone assignment completes.
 > - Migration is a one-way operation. You can't migrate a zonal VM back to a regional deployment.
 
 ## Prerequisites
@@ -53,7 +52,7 @@ Before you begin, ensure you have the following:
 
 ### Register the preview feature
 
-The stateful VM zone migration requires registration of a preview feature. Updating the scale set itself to include zones doesn't require any feature registration. Register the `RegionalToZonalVMMigrationForDeallocatedVM` preview feature for your subscription:
+Register the `RegionalToZonalVMMigrationForDeallocatedVM` preview feature for your subscription:
 
 # [Azure CLI](#tab/cli)
 
@@ -64,7 +63,7 @@ az account set --subscription "<subscription-name-or-id>"
 # Register the migration feature
 az feature register --namespace Microsoft.Compute --name RegionalToZonalVMMigrationForDeallocatedVM
 
-# Check registration status (wait for "Registered" state)
+# Check registration status
 az feature show --namespace Microsoft.Compute --name RegionalToZonalVMMigrationForDeallocatedVM --query properties.state -o tsv
 ```
 
@@ -77,7 +76,7 @@ Set-AzContext -Subscription "<subscription-name-or-id>"
 # Register the migration feature
 Register-AzProviderFeature -FeatureName RegionalToZonalVMMigrationForDeallocatedVM -ProviderNamespace Microsoft.Compute
 
-# Check registration status (wait for "Registered" state)
+# Check registration status
 Get-AzProviderFeature -FeatureName RegionalToZonalVMMigrationForDeallocatedVM -ProviderNamespace Microsoft.Compute
 ```
 
@@ -114,19 +113,10 @@ The following configurations aren't supported for migration:
 - VMs behind a **Basic Load Balancer** - Upgrade to Standard Load Balancer before migration
 - VMs with **unmanaged disks** - Convert to managed disks before migration
 
-### Supported disk types
-
-All managed disk types are supported and preserved during migration:
-
-- Standard HDD (Standard_LRS)
-- Standard SSD (StandardSSD_LRS)
-- Premium SSD (Premium_LRS)
-- Premium SSD v2 (PremiumV2_LRS)
-- Ultra Disk (UltraSSD_LRS)
 
 ## Step 1: Update the scale set to include availability zones
 
-Before migrating individual VMs, update the Flexible scale set to include the target availability zones in its configuration. This is a generally available operation and doesn't require preview feature registration. This step doesn't affect running VMs — it updates the scale set model so that VMs can be assigned to zones.
+Before migrating individual VMs, update the scale set to include the target availability zones in its configuration. This step doesn't affect running VMs — it updates the scale set model so that VMs can be assigned to zones.
 
 # [Azure CLI](#tab/cli)
 
@@ -248,7 +238,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 ---
 
 > [!NOTE]
-> You can start the VM immediately after zone assignment completes, even if background data migration is still in progress. The data migration continues transparently.
+> You can start the VM immediately after zone assignment completes.
 
 Repeat Steps 2 through 4 for each VM in the scale set that you want to migrate.
 
