@@ -199,7 +199,7 @@
     href: flexible-virtual-machine-scale-sets-migration-resources.md
     maintainContext: true
   - name: Migrate from availability sets
-    href: ../../virtual-machines/availablity-set-migrate-to-scale-sets.md
+    href: ../virtual-machines/availability-set-migrate-to-scale-sets.md
     maintainContext: true
   - name: Proximity placement groups
     href: proximity-placement-groups.md
