@@ -18,7 +18,7 @@ This article talks about how to view, update, and delete published VM Applicatio
 ## Managed VM Application published in Azure Compute Gallery
 This section explains about how to view, update, and delete **published VM Applications** in Azure Compute Gallery. 
 
-### View published VM Applications
+## View published VM Applications
 
 #### [Portal](#tab/portal1)
 To view the properties of a published VM Application in the Azure portal:
@@ -187,7 +187,7 @@ Get-AzGalleryApplicationVersion `
 ---
 
 
-### View published VM applications using Azure Resource Graph
+## View published VM applications using Azure Resource Graph
 
 [Azure resource graph query](/azure/governance/resource-graph/first-query-portal) can be used to view all published VM applications and their properties across all compute galleries. It provides a programmatic way to view application inventory, and their properties at high scale. Use this method for integrating with dashboards and custom reports.
 
@@ -242,7 +242,7 @@ resources
 
 ---
 
-### Update published VM Application
+## Update published VM Application
 > [!NOTE]
 > Not all properties of a published VM Application or VM Application version can be updated. For a complete list of updatable properties, refer to the [VM Application resource and VM Application version resource schema](vm-applications.md#publish-application-as-azure-vm-application).
 
@@ -362,13 +362,13 @@ Update-AzGalleryApplicationVersion `
 ```
 ---
 
-### Delete the VM Application from Azure Compute Gallery
+## Delete published VM Application from Azure Compute Gallery
 To delete the VM Application resource, you need to first delete all its versions. Deleting the application version causes deletion of the application version resource from Azure Compute Gallery and all its replicas. The application blob in Storage Account used to create the application version is unaffected. 
 
 > [!WARNING]
 > - Deleting the application version causes subsequent PUT operations on VMs using that version to fail. To prevent this failure, use `latest` keyword as the version number in the `applicationProfile` instead of hard coding the version number  .  
 >
-> - Deleting the VM application that is deployed on any VM or VMSS causes subsequent PUT operations on these resources to fail (for example, update, scale, or reimage). Before deleting, ensure all VMs/VMSS instances stop using the application by removing it from their applicationProfile.
+> - Deleting the VM application that is deployed on any VM or scale sets causes subsequent PUT operations on these resources to fail (for example, update, scale, or reimage). Before deleting, ensure all VMs/scale sets instances stop using the application by removing it from their applicationProfile.
 >
 >- To prevent accidental deletion,  set `safetyProfile/allowDeletionOfReplicatedLocations` to `false` while publishing the version and apply an Azure Resource Manager lock (CanNotDelete or ReadOnly) on the VM application resource.
 
@@ -421,9 +421,9 @@ Remove-AzGalleryApplication -ResourceGroupName $rgNmae -GalleryName $galleryName
 
 
 ## Manage deployed VM Application on Azure VM and Scale Set
-This section explains how to view deployed application details and monitor deployed applications across infrastructure. It also talks about how to update, and delete **deployed VM Applications** on Azure VMs and Scale Sets. 
+This section explains how to view deployed application details and monitor deployed applications across infrastructure. It also talks about how to update and delete **deployed VM Applications** on Azure VMs and Scale Sets. 
 
-### View deployed VM Applications & their state
+## View deployed VM Applications & their state
 Azure uses VMAppExtension to deploy, monitor, and manage VM Applications on the VM. Therefore, provisioning state of the deployed VM Application is described in the status of the VMAppExtension. 
 
 #### [Portal](#tab/portal4)
@@ -523,7 +523,7 @@ $resultSummary | ConvertTo-Json -Depth 5
 ---
 
 
-### View logs of application installation using Run command
+## View logs of application installation using Run command
 When Azure VM Applications downloads and installs the application on Azure VM or scale set, it pipes all stdout results to `stdout` file within the application repository. Customers can [enable verbose logging for the application installation and write custom logs](vm-applications-how-to.md#3-create-the-install-script) using the `installScript`. Customers can then manually check the `stdout` and `stderr` file or use Runcommand to get the file content. 
 
 Use the following PowerShell script in your managed run command. Update the `appName` and `appVersion` variables for your application
@@ -656,7 +656,7 @@ Learn more about [managed run command](/azure/virtual-machines/windows/run-comma
 
 ---
 
-### View all deployed VM applications using Azure Resource Graph
+## View all deployed VM applications using Azure Resource Graph
 
 [Azure resource graph query](/azure/governance/resource-graph/first-query-portal) can be used to view all deployed VM applications and their properties across all VMs and VM Scale Sets. It provides a programmatic way to view application inventory, state, and deployed versions at high scale. Use this method for integrating with dashboards and custom reports.
 
@@ -674,12 +674,12 @@ resources
 | project tenantId, subscriptionId, resourceGroup, resourceName = name, type, location, appName, version, enableAutomaticUpgrade, treatFailureAsDeploymentFailure, galleryName, publisherSubcriptionId, publisherResourceGroup, properties
 ```
 
-### Audit required VM Application using Azure Policy
+## Audit required VM Application using Azure Policy
 Azure Policy helps enforce governance by auditing whether required VM applications are deployed across your VMs and scale sets. You can create and assign custom policies to check compliance and ensure that specific applications are present on your infrastructure.
 
 For step-by-step instructions on how to audit VM application deployment using Azure Policy, see [Audit required VM applications using Azure Policy](vm-applications-inject-with-policy.md#set-up-compliance-monitor-to-govern-required-vm-applications).
 
-### Update the deployed VM Application
+## Update the deployed VM Application
 To update a deployed VM application, modify the `applicationProfile` to reference a newer version or change deployment settings such as `treatFailureAsDeploymentFailure` or `order`.
 
 #### [REST](#tab/rest6)
@@ -730,7 +730,7 @@ Body
 }
 ```
 
-Apply the change to existing VMSS instances (required when upgradePolicy.mode is Manual):
+Apply the change to existing scale set instances (required when upgradePolicy.mode is Manual):
 
 ```rest
 POST
@@ -754,7 +754,7 @@ az vm application set \
     --treat-deployment-as-failure true
 ```
 
-**Update VM application on a VM scale set (model):**
+**Update VM application on a virtual machine scale set (model):**
 
 ```azurecli-interactive
 az vmss application set \
@@ -764,7 +764,7 @@ az vmss application set \
     --treat-deployment-as-failure true
 ```
 
-Apply the change to existing VMSS instances (If upgradeMode set to manual):
+Apply the change to existing scale set instances (If upgradeMode set to manual):
 
 ```azurecli-interactive
 az vmss update-instances -g myResourceGroup -n myVMss --instance-ids "*"
@@ -827,7 +827,7 @@ Update-AzVmssInstance -ResourceGroupName $rgName -VMScaleSetName $vmssName -Inst
 > [!TIP]
 > Use `latest` as the version identifier in `packageReferenceId` to automatically deploy the newest published version without manually updating deployments.
 
-### Remove the VM Application from Azure VM or VMSS
+## Remove the VM Application from Azure VM or Scale Sets
 
 #### [Portal](#tab/portal7)
 1. Open the Azure portal and go to the target virtual machine (VM) or Virtual Machine Scale Set.
@@ -872,7 +872,7 @@ Body
 }
 ```
 
-Apply the change to existing VMSS instances (required when upgradePolicy.mode is Manual):
+Apply the change to existing scale set instances (required when upgradePolicy.mode is Manual):
 ```rest
 POST
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmssName}/updateInstances?api-version=2024-03-03

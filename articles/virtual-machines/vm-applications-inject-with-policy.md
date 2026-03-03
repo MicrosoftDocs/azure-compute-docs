@@ -252,7 +252,7 @@ Azure Policy with `modify` effect injects VM applications while creating new Vir
 }
 ```
 
-#### [VMSS](#tab/vmss)
+#### [Scale Set](#tab/vmss)
 
 ```json
 {
@@ -383,7 +383,6 @@ The following examples show more conditions you can add to the `allOf` block wit
 
 - **Limit policy scope by resource group or subscription**: To reduce the scope for remediation, assign the policy to a specific resource group or subscription. Use the [assignment scope](/azure/governance/policy/concepts/assignment-structure#scope) when assigning the policy rather than modifying the policy definition. For more granular control, use [exclusions](/azure/governance/policy/concepts/assignment-structure#excluded-scopes) to omit specific resource groups from the assignment.
 
----
 
 ## Next steps
 - Learn more about [Azure VM Applications](vm-applications.md).

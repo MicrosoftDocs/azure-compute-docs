@@ -30,12 +30,14 @@ To create and deploy applications on Azure VM, first package and upload your app
 > Create your storage account with anonymous access disabled for improved security. Use a [managed identity assigned to Azure Compute Gallery](vm-applications-publish-with-managed-identity.md) to publish your VM Applications securely without requiring SAS tokens.
 
 ## Package the application
+Before publishing the VM Application resource in Azure Compute Gallery, package your application files for upload to Azure Storage Account. The following diagram shows possible folder structures for organizing your application files:
+
 :::image type="content" source="media/vmapps/vm-application-folder-structure.png" alt-text="Screenshot showing the folder structure recommended for uploading and creating VM Applications.":::
 
 ### 1. Package the application files
-
-  - If your application installation requires a single file (.exe, .msi, .sh, .ps, etc.) then you can package it into VM Application.
-  - If your application requires multiple files (executables, dependencies, scripts, or configuration files), archive them into a single file (`.zip`, `.tar`, `.tar.gz`) before packaging as a VM application.
+VM Application requires a single file as the application package. 
+  - If your application installation requires a single executable file (.exe, .msi, .sh, .ps, etc.) then you can use it as the application package.
+  - If your application requires multiple files (executables, dependencies, scripts, metadata, etc.), archive them into a single file (`.zip`, `.tar`, `.tar.gz`) and use this file as the application package.
   - For microservice application, you can package and publish each microservice as a separate Azure VM Application. This modularization facilitates application reusability, cross-team development, and sequential installation of microservices using `order` property in the [applicationProfile](#deploy-the-vm-apps).
 
   Learn more about [creating application packages for Azure VM Applications](vm-applications-create-app-package.md). 
@@ -83,8 +85,9 @@ There may be few operations required to be performed in the install script
   - **Enable verbose mode** to capture application installer logs. Bash: `set -x`, PowerShell: `$VerbosePreference='Continue'`, Cmd: `@echo on`.
   - **Add custom messages** to track script progress. Bash:  `echo "Install started"`, PowerShell: `Write-Output "Install started"`, Cmd: `echo Install started`
  
-  You can retrieve these logs using Run Command or by connecting to the VM directly.
-
+  You can retrieve these logs using [Run Command](./vm-applications-manage.md#view-logs-of-application-installation-using-run-command) or by connecting to the VM. The `stdout` and `stderr` files are  are located at the following path
+  - Linux: `/var/lib/waagent/Microsoft.CPlat.Core.VMApplicationManagerLinux/<application name>/<application version>/`
+  - Windows: `C:\Packages\Plugins\Microsoft.CPlat.Core.VMApplicationManagerWindows\1.0.9\Downloads\<application name>\<application version>/`
 
 - **(Optional) Move application and configuration blob to appropriate location**
 	Azure downloads the application blob and configuration blob to following locations. The install script must move the files to appropriate locations when necessary.
