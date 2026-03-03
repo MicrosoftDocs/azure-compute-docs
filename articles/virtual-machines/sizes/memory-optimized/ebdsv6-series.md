@@ -49,17 +49,16 @@ Local (temp) storage info for each size
 
 | Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read (RR)<sup>1</sup> IOPS | Temp Disk Random Read (RR)<sup>1</sup> Throughput (MB/s) | Temp Disk Random Write (RW)<sup>1</sup> IOPS | Temp Disk Random Write (RW)<sup>1</sup> Throughput (MB/s) |
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_E2ds_v6 | 1 | 110 | 37500 | 180 | 15000 | 90 |
-| Standard_E4ds_v6 | 1 | 220 | 75000 | 360 | 30000 | 180 |
-| Standard_E8ds_v6 | 1 | 440 | 150000 | 720 | 60000 | 360 |
-| Standard_E16ds_v6 | 2 | 440 | 300000 | 1440 | 120000 | 720 |
-| Standard_E20ds_v6 | 2 | 550 | 375000 | 1800 | 150000 | 900 |
-| Standard_E32ds_v6 | 4 | 440 | 600000 | 2880 | 240000 | 1440 |
-| Standard_E48ds_v6 | 6 | 440 | 900000 | 4320 | 360000 | 2160 |
-| Standard_E64ds_v6 | 4 | 880 | 1200000 | 5760 | 480000 | 2880 |
-| Standard_E96ds_v6 | 6 | 880 | 1800000 | 8640 | 720000 | 4320 |
-| Standard_E128ds_v6 | 4 | 1760 | 2400000 | 11520 | 960000 | 5760 |
-| Standard_E192ids_v6 | 6 | 1760 | 3600000 | 17280 | 1440000 | 8640 |
+| Standard_E2bds_v6 | 1 | 110 | 37500 | 180 | 15000 | 90 |
+| Standard_E4bds_v6 | 1 | 220 | 75000 | 360 | 30000 | 180 |
+| Standard_E8bds_v6 | 1 | 440 | 150000 | 720 | 60000 | 360 |
+| Standard_E16bds_v6 | 2 | 440 | 300000 | 1440 | 120000 | 720 |
+| Standard_E32bds_v6 | 4 | 440 | 600000 | 2880 | 240000 | 1440 |
+| Standard_E48bds_v6 | 6 | 440 | 900000 | 4320 | 360000 | 2160 |
+| Standard_E64bds_v6 | 4 | 880 | 1200000 | 5760 | 480000 | 2880 |
+| Standard_E96bds_v6 | 6 | 880 | 1800000 | 8640 | 720000 | 4320 |
+| Standard_E128bds_v6 | 4 | 1760 | 2400000 | 11520 | 960000 | 5760 |
+| Standard_E192ibds_v6 | 6 | 1760 | 3600000 | 17280 | 1440000 | 8640 |
 
 #### Storage resources
 - [Introduction to Azure Managed Disks](../../../virtual-machines/managed-disks-overview.md)
