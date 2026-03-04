@@ -28,7 +28,7 @@ Both approaches are insecure as blob URLs expose your storage account to the pub
 
 ### Managed identity for Azure Compute Gallery
 
-A managed identity is a security feature that lets an Azure service prove it's identity to other Azure services without storing passwords, keys, or tokens in your code or configuration. Instead of you managing credentials, Microsoft Entra ID handles authentication automatically.
+A managed identity is a security feature that lets an Azure service prove its identity to other Azure services without storing passwords, keys, or tokens in your code or configuration. Instead of you managing credentials, Microsoft Entra ID handles authentication automatically.
 
 By attaching a [user-assigned managed identity](/azure/active-directory/managed-identities-azure-resources/overview) to your Azure Compute Gallery, you give the gallery permission to access blobs in your storage account on your behalf. The gallery presents this identity when it needs to read your application package, and Microsoft Entra ID verifies the identity and grants access. Because Azure Compute Gallery is a trusted Microsoft service, this access works even when the storage account is behind a virtual network.
 
@@ -74,7 +74,7 @@ For detailed steps, see [Assign Azure roles using the Azure portal](/azure/role-
 
 Update your Azure Compute Gallery to use the user-assigned managed identity. Portal experience isn't currently available for this step.
 
-### [REST API](#tab/rest)
+**Using REST API**
 
 Use the [Galleries - Create Or Update](/rest/api/compute/galleries/create-or-update) API to attach the managed identity to your gallery.
 
@@ -116,7 +116,6 @@ Update-AzGallery -ResourceGroupName <resource-group-name> -Name <gallery-name> `
 
 For detailed information about this command, see [Update-AzGallery](/powershell/module/az.compute/update-azgallery).
 
----
 -->
 
 ## Step 4: Get the blob URL for your application package

@@ -39,7 +39,7 @@ VM Applications integrate with your existing development workflows and Azure inf
 
 :::image type="content" source="media/vmapps/vm-applications-overview.png" alt-text="Diagram showing the VM Applications lifecycle from development through publishing, deployment, and monitoring.":::
 
-- **Develop and publish**: Different teams develops applications, scripts, and configurations independently. Each team publishes their packages as Azure VM Application to Azure Compute Gallery, which serves as a personal app repository. 
+- **Develop and publish**: Different teams develop applications, scripts, and configurations independently. Each team publishes their packages as Azure VM Application to Azure Compute Gallery, which serves as a personal app repository. 
 - **Deploy or update**: Deploy published applications to VMs and Virtual Machine Scale Sets using Azure portal, PowerShell, CLI, REST API, or ARM/Bicep templates. 
 - **Enforce**: Use Azure Policy to automatically inject required applications across your fleet. 
 - **Automate**: Automate publishing, deployment and updates using CI/CD pipelines like Azure DevOps, GitHub Actions, GitLab pipelines, Jenkins, and scripts.
@@ -100,7 +100,7 @@ For more information on network egress, see [Bandwidth pricing](https://azure.mi
 ## Publish application as Azure VM Application
 
 To deploy VM applications, first the application needs to be published to Azure Compute Gallery. To publish Azure VM Application
-1. First, create a **VM Application Resource** which is a logical resource containing metadata about the appliaction. 
+1. First, create a **VM Application Resource** which is a logical resource containing metadata about the application. 
 1. Then create a **VM Application Version Resource** within the VM Application resource containing the application package and instructions on how to install, update, delete and replicate the VM application.  
 
 ### Azure resources required to publish Azure VM Application

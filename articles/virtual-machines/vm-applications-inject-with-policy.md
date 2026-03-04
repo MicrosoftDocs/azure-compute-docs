@@ -13,8 +13,6 @@ ms.custom: devx-track-azurepowershell, devx-track-azurecli
 
 # Govern and enforce compliance for Azure VM Applications using Azure Policy
 
-## Overview
-
 [Azure VM Applications](./vm-applications.md) let you package, version, and deliver software to Azure Virtual Machines (VMs) and Virtual Machine Scale Sets from an [Azure Compute Gallery](/azure/virtual-machines/azure-compute-gallery).
 
 Using [Azure Policy](/azure/governance/policy/overview) with VM Applications enables customers and admin teams to: 
@@ -124,7 +122,7 @@ Create separate assignments per VM application for granular and accurate monitor
 
 Once the policy is assigned, all existing resources are evaluated and [displayed on compliance monitor](/azure/governance/policy/tutorials/create-and-manage#check-initial-compliance). Noncompliant resources are missing the VM Application defined in the policy. Resources without `applicationProfile` are also counted as noncompliant. Newly created or updated resources may take a few minutes to appear in evaluation cycles.
 
-:::image type="content" source="./media/vmapps/vm-applications-compliance-monitor.png" alt-text="Azure Policy compliance view showing VMs and VM scale sets audited for required VM Application presence.":::
+:::image type="content" source="./media/vmapps/vm-applications-compliance-monitor.png" alt-text="Screenshot that shows Azure Policy compliance view listing VMs and VM scale sets audited for required VM Application presence.":::
 
 #### Common adjustments
 
@@ -362,7 +360,7 @@ To modify existing resources, create a new [Remediation tasks](/azure/governance
 > [!NOTE]
 > Gradually remediate noncompliant resources for higher availability and failure resiliency. Create multiple remediation tasks, each scoped to one or more regions. 
 
-:::image type="content" source="./media/vmapps/vm-applications-create-remediation-task.png" alt-text="Portal experience showing how to create a new remediation task.":::
+:::image type="content" source="./media/vmapps/vm-applications-create-remediation-task.png" alt-text="Screenshot of Azure Portal experience showing how to create a new remediation task.":::
 
 #### Common adjustments
 

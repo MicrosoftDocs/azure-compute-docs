@@ -85,7 +85,7 @@ There may be few operations required to be performed in the install script
   - **Enable verbose mode** to capture application installer logs. Bash: `set -x`, PowerShell: `$VerbosePreference='Continue'`, Cmd: `@echo on`.
   - **Add custom messages** to track script progress. Bash:  `echo "Install started"`, PowerShell: `Write-Output "Install started"`, Cmd: `echo Install started`
  
-  You can retrieve these logs using [Run Command](./vm-applications-manage.md#view-logs-of-application-installation-using-run-command) or by connecting to the VM. The `stdout` and `stderr` files are  are located at the following path
+  You can retrieve these logs using [Run Command](./vm-applications-manage.md#view-logs-of-application-installation-using-run-command) or by connecting to the VM. The `stdout` and `stderr` files are located at the following path
   - Linux: `/var/lib/waagent/Microsoft.CPlat.Core.VMApplicationManagerLinux/<application name>/<application version>/`
   - Windows: `C:\Packages\Plugins\Microsoft.CPlat.Core.VMApplicationManagerWindows\1.0.9\Downloads\<application name>\<application version>/`
 
@@ -281,11 +281,11 @@ powershell.exe -ExecutionPolicy Bypass -NoProfile -Command "Rename-Item -Path '.
 ```
 ---
 
-### 4. Create the delete script
+### 4. Create the remove script
 
-The delete script enables you to define the delete operations for the application. The delete script is provided as a string and has a maximum character limit of 4,096 characters. Write the delete commands assuming the application package and the configuration file are in the current directory. During uninstall operation, Azure runs the uninstall script and then deletes all files from the repository. 
+The `remove` script enables you to define the operations for removing the application. The `remove` script is provided as a string and has a maximum character limit of 4,096 characters. Write the commands assuming the application package and the configuration file are in the current directory. During uninstall operation, Azure runs the uninstall script and then deletes all files from the repository. 
 
-There are few operations that the delete script must perform. 
+There are few operations that the `remove` script must perform. 
 
 - **Uninstall application:**
   Properly uninstall the application from the VM. For example: 
@@ -907,10 +907,11 @@ PUT
 
 **Create a VM application version** using the ['create gallery application version API'](/rest/api/compute/gallery-applications).
 
-- Next we're creating version within the application definition. It takes blob/SAS URL created in previous step to pull application and configuration blob from storage account.
-- Update mediaLink, install and remove properties for your application.
-- Update defaultConfigurationLink to optionally pass configuration file. 
-- Update packageFileName and configFileName enabling Azure to download files with this name. These properties eliminates the need to rename downloaded files in install script. 
+Next we're creating version within the application definition. It takes blob/SAS URL created in previous step to pull application and configuration blob from storage account.
+
+1. Update mediaLink, install and remove properties for your application.
+1. (Optional) Update defaultConfigurationLink to pass configuration file. 
+1. (Optional) Update packageFileName and configFileName enabling Azure to download files with this name. These properties eliminate the need to rename downloaded files in install script. 
 
 ```rest
 PUT
@@ -978,10 +979,12 @@ az sig gallery-application create \
 ```
 
 **Create a VM application version** using ['az sig gallery-application version create'](/cli/azure/sig/gallery-application/version#az-sig-gallery-application-version-create). 
-- Next we're creating version within the application definition. It takes blob/SAS Url created in previous step to pull application blob from storage account.
-- Update package_url, install_command, remove_command for your application.
-- Uncomment and update config_url, and default-configuration-file-link to optionally pass configuration file. 
-- Optionally, update package_file_name and config_file_name. Azure downloads files with this name eliminating the need to rename downloaded files in install script. 
+
+Next we're creating version within the application definition. It takes blob/SAS Url created in previous step to pull application blob from storage account.
+
+1. Update package_url, install_command, remove_command for your application.
+1. (Optional) Uncomment and update config_url, and default-configuration-file-link to optionally pass configuration file. 
+1. (Optional) Update package_file_name and config_file_name. Azure downloads files with this name eliminating the need to rename downloaded files in install script. 
 
 ```azurecli-interactive
 version_name="1.0.0"
@@ -1037,10 +1040,12 @@ New-AzGalleryApplication `
 ```
 
 **Create a version of your VM Application** using ['New-AzGalleryApplicationVersion'](/powershell/module/az.compute/new-azgalleryapplicationversion). 
-- Next we're creating version within the application definition. It takes blob/SAS Url created in previous step to pull application blob from storage account.
-- Update package_url, install_command, remove_command for your application.
-- Uncomment and update config_url, and default-configuration-file-link to optionally pass configuration file. 
-- Optionally, update package_file_name and config_file_name. Azure downloads files with this name eliminating the need to rename downloaded files in install script. 
+
+Next we're creating version within the application definition. It takes blob/SAS Url created in previous step to pull application blob from storage account.
+
+1. Update package_url, install_command, remove_command for your application.
+1. (Optional) Uncomment and update config_url, and default-configuration-file-link to optionally pass configuration file. 
+1. (Optional) Update package_file_name and config_file_name. Azure downloads files with this name eliminating the need to rename downloaded files in install script. 
 
 ```azurepowershell-interactive
 $galleryName = "myGallery"
