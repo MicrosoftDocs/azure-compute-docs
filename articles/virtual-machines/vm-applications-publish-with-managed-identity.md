@@ -139,7 +139,7 @@ For detailed steps on creating a VM application version, see [Create a VM applic
 
 ## Limitations
 
-- Managed identity access is supported only when **publishing** a VM application version to Azure Compute Gallery. It can't be used when deploying a VM application to a VM or virtual machine scale set.
+- Managed identity access is supported only when **publishing** a VM application version to Azure Compute Gallery. It can't be used when deploying a VM application to a VM or Virtual Machine Scale Sets.
 - Portal experience for attaching managed identity to the gallery isn't currently available. Use the REST API, Azure CLI, or Azure PowerShell.
 
 ## Related content

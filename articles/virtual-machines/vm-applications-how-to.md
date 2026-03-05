@@ -17,7 +17,7 @@ ms.custom: devx-track-azurepowershell, devx-track-azurecli
 VM Application is a resource type in Azure Compute Gallery that simplifies publishing, deployment, management, sharing, and global distribution of applications and scripts for your virtual machines. 
 VM Applications support a wide range of scenarios, including high-scale deployments, low-latency requirements, failure resiliency, secure trusted rollouts, fleet-wide consistency, microservice architectures, and post-deployment management. [Learn more about VM Applications](./vm-applications.md).
 
-To create and deploy applications on Azure VM, first package and upload your application to Azure Storage Account as a storage blob. Then create `Azure VM application` resource and `VM application version` resource referencing these storage blobs. Azure stores and replicates these blobs in regional managed storage accounts. Finally, deploy the application on any VM or Virtual Machine Scale Set by passing application reference in `applicationProfile`.
+To create and deploy applications on Azure VM, first package and upload your application to Azure Storage Account as a storage blob. Then create `Azure VM application` resource and `VM application version` resource referencing these storage blobs. Azure stores and replicates these blobs in regional managed storage accounts. Finally, deploy the application on any VM or Virtual Machine Scale Sets by passing application reference in `applicationProfile`.
 
 :::image type="content" source="media/vmapps/vm-applications-how-to.png" alt-text="Diagram showing step-by-step process involved in publishing and deploying VM applications.":::
 
@@ -1668,13 +1668,13 @@ pipeline {
 ## Deploy the VM Apps
 One or more VM Applications can now be referenced in the `applicationProfile` of Azure VM or Azure Virtual Machine Scale Sets. Azure then pulls the payload of the VM Application and installs it on each VM using the provided install script. The `order` property defines the sequential order in which the VM Applications are installed on the VM. 
 
-Refer [schema of applicationProfile of the VM / Virtual Machine Scale Set](vm-applications.md#deploy-azure-vm-applications) to learn more about each property. 
+Refer [schema of applicationProfile of the VM / Virtual Machine Scale Sets](vm-applications.md#deploy-azure-vm-applications) to learn more about each property. 
 
 #### [Template](#tab/Template5)
 
-Use the following ARM template to deploy VM Application on Azure VM or Azure Virtual Machine Scale Set. This template demonstrates the key properties and configuration options for deploying your VM application.
+Use the following ARM template to deploy VM Application on Azure VM or Azure Virtual Machine Scale Sets. This template demonstrates the key properties and configuration options for deploying your VM application.
 
-**Deploy VM Application on Virtual Machine Scale Set**
+**Deploy VM Application on Virtual Machine Scale Sets**
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
@@ -1852,7 +1852,7 @@ PUT
 ```
 
 
-To apply the VM application to a uniform scale set:
+To apply the VM application to a uniform Virtual Machine Scale Sets:
 
 ```rest
 PUT
@@ -1926,7 +1926,7 @@ az vm application set \
 	--app-version-ids /subscriptions/{subId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/galleries/myGallery/applications/myApp/versions/1.0.0 /subscriptions/{subId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/galleries/myGallery/applications/myApp2/versions/1.0.1 \
 	--treat-deployment-as-failure true true
 ```
-To add an application to a Virtual Machine Scale Set, use ['az vmss application set'](/cli/azure/vmss/application#az-vmss-application-set):
+To add an application to a Virtual Machine Scale Sets, use ['az vmss application set'](/cli/azure/vmss/application#az-vmss-application-set):
 
 ```azurecli-interactive
 az vmss application set \
@@ -1935,7 +1935,7 @@ az vmss application set \
 	--app-version-ids /subscriptions/{subId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/galleries/myGallery/applications/myApp/versions/1.0.0 \
 	--treat-deployment-as-failure true
 ```
-To add multiple applications to a Virtual Machine Scale Set:
+To add multiple applications to a Virtual Machine Scale Sets:
 ```azurecli-interactive
 az vmss application set \
 	--resource-group myResourceGroup \
@@ -1967,7 +1967,7 @@ Add-AzVmGalleryApplication -VM $vm -GalleryApplication $app -TreatFailureAsDeplo
 Update-AzVM -ResourceGroupName $rgName -VM $vm
 ```
 
-To add the application to a Virtual Machine Scale Set:
+To add the application to a Virtual Machine Scale Sets:
 ```azurepowershell-interactive
 $galleryName = "myGallery"
 $rgName = "myResourceGroup"

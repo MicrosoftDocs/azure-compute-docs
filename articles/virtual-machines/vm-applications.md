@@ -68,7 +68,7 @@ VM Applications integrate with your existing development workflows and Azure inf
 
 ### Flexible deployment options
 
-- Deploy to individual VMs, flexible scale sets, or uniform scale sets.
+- Deploy to individual VMs, flexible, or uniform Virtual Machine Scale Sets.
 - Install, update, or remove applications independently without rebuilding VM images.
 - Define custom install, update, and remove commands for each application.
 - Specify deployment order when installing multiple applications.
@@ -152,9 +152,9 @@ The VM Application resource defines follows properties:
 
 
 ## Deploy Azure VM Applications
-After the VM Application version is published to Azure Compute Gallery, you can deploy the version across Azure Virtual Machines (VM) and Azure Virtual Machine Scale Sets. This deployment is done by referencing the ARM ID of the VM application in the `applicationProfile` of the Azure Virtual Machine and Virtual Machine Scale Set. 
+After the VM Application version is published to Azure Compute Gallery, you can deploy the version across Azure Virtual Machines (VM) and Azure Virtual Machine Scale Sets. This deployment is done by referencing the ARM ID of the VM application in the `applicationProfile` of the Azure Virtual Machine and Virtual Machine Scale Sets. 
 
-### Properties in applicationProfile of VM and Scale Set
+### Properties in applicationProfile of VM and Virtual Machine Scale Sets
 
 The `applicationProfile` in Azure VM and Virtual Machine Scale Sets defines the following properties:
 
@@ -244,7 +244,7 @@ These are the error messages that you might encounter when publishing and deploy
 | ------- | ----------- |
 | Current VM Application Version {name} was deprecated at {date}. | You tried to deploy a VM Application version that was deprecated. Try using `latest` instead of specifying a specific version. |
 | Current VM Application Version {name} supports OS {OS}, while current OSDisk's OS is {OS}. | You tried to deploy a Linux application to Windows instance or vice versa. |
-| The maximum number of VM applications (max=5, current={count}) has been exceeded. Use fewer applications and retry the request. | We currently only support five VM applications per VM or scale set. |
+| The maximum number of VM applications (max=5, current={count}) has been exceeded. Use fewer applications and retry the request. | We currently only support five VM applications per VM or Virtual Machine Scale Sets. |
 | More than one VM Application was specified with the same packageReferenceId. | The same application was specified more than once. |
 | Subscription not authorized to access this image. | The subscription doesn't have access to this application version. |
 | Storage account in the arguments doesn't exist. | There are no applications for this subscription. |

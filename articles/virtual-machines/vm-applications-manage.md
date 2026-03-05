@@ -368,7 +368,7 @@ To delete the VM Application resource, you need to first delete all its versions
 > [!WARNING]
 > - Deleting the application version causes subsequent PUT operations on VMs using that version to fail. To prevent this failure, use `latest` keyword as the version number in the `applicationProfile` instead of hard coding the version number  .  
 >
-> - Deleting the VM application that is deployed on any VM or scale sets causes subsequent PUT operations on these resources to fail (for example, update, scale, or reimage). Before deleting, ensure all VMs/scale sets instances stop using the application by removing it from their applicationProfile.
+> - Deleting the VM application that is deployed on any VM or Virtual Machine Scale Sets causes subsequent PUT operations on these resources to fail (for example, update, scale, or reimage). Before deleting, ensure all VMs/Virtual Machine Scale Sets instances stop using the application by removing it from their applicationProfile.
 >
 >- To prevent accidental deletion,  set `safetyProfile/allowDeletionOfReplicatedLocations` to `false` while publishing the version and apply an Azure Resource Manager lock (CanNotDelete or ReadOnly) on the VM application resource.
 
@@ -378,7 +378,7 @@ To delete the VM Application resource, you need to first delete all its versions
 3. Select the VM application you want to remove.
 4. Select one or more versions, which you want to delete.
 5. To delete the VM application, first delete all the versions. Then click delete (on top of the blade).
-6. Monitor Notifications for completion. If deletion is blocked, remove any locks and ensure no VM or scale set references the application.
+6. Monitor Notifications for completion. If deletion is blocked, remove any locks and ensure no VM or Virtual Machine Scale Sets references the application.
 
 :::image type="content" source="media/vmapps/vm-applications-delete-from-gallery-portal.png" alt-text="Screenshot showing deletion of a VM application and its versions in the Azure portal.":::
 
@@ -420,8 +420,8 @@ Remove-AzGalleryApplication -ResourceGroupName $rgNmae -GalleryName $galleryName
 
 
 
-## Manage deployed VM Application on Azure VM and Scale Set
-This section explains how to view deployed application details and monitor deployed applications across infrastructure. It also talks about how to update and delete **deployed VM Applications** on Azure VMs and Scale Sets. 
+## Manage deployed VM Application on Azure VM and Virtual Machine Scale Sets
+This section explains how to view deployed application details and monitor deployed applications across infrastructure. It also talks about how to update and delete **deployed VM Applications** on Azure VMs and Virtual Machine Scale Sets. 
 
 ## View deployed VM Applications & their state
 Azure uses VMAppExtension to deploy, monitor, and manage VM Applications on the VM. Therefore, provisioning state of the deployed VM Application is described in the status of the VMAppExtension. 
@@ -431,9 +431,9 @@ To show the VM application status, go to the **Extensions + applications** tab u
 
 :::image type="content" source="media/vmapps/select-app-status.png" alt-text="Screenshot showing VM application status.":::
 
-To show the VM application status for a scale set, go to the Azure portal Virtual Machine Scale Sets page. In the Instances section, select one of the instances. Then go to **Extensions + Applications** tab under settings and check the status of the **VMAppExtension**:
+To show the VM application status for a Virtual Machine Scale Sets, go to the Azure portal Virtual Machine Scale Sets page. In the Instances section, select one of the instances. Then go to **Extensions + Applications** tab under settings and check the status of the **VMAppExtension**:
 
-:::image type="content" source="media/vmapps/select-apps-status-vmss-portal.png" alt-text="Screenshot showing virtual machine scale sets application status.":::
+:::image type="content" source="media/vmapps/select-apps-status-vmss-portal.png" alt-text="Screenshot showing Virtual Machine Scale Sets application status.":::
 
 #### [REST](#tab/rest4)
 
@@ -475,7 +475,7 @@ The result looks like this:
 
 The VM App status is in the status message of the result of the VM App extension in the instance view.
 
-To get the status for the application on the Virtual Machine Scale Set:
+To get the status for the application on the Virtual Machine Scale Sets:
 
 ```rest
 GET
@@ -490,7 +490,7 @@ To verify application deployment status on a VM, use ['az vm get-instance-view']
 ```azurecli-interactive
 az vm get-instance-view -g myResourceGroup -n myVM --query "instanceView.extensions[?name == 'VMAppExtension']"
 ```
-To verify application deployment status on Virtual Machine Scale Set, use ['az vmss get-instance-view'](/cli/azure/vmss/#az-vmss-get-instance-view):
+To verify application deployment status on Virtual Machine Scale Sets, use ['az vmss get-instance-view'](/cli/azure/vmss/#az-vmss-get-instance-view):
 
 ```azurecli-interactive
 az vmss get-instance-view --ids (az vmss list-instances -g myResourceGroup -n myVmss --query "[*].id" -o tsv) --query "[*].extensions[?name == 'VMAppExtension']"
@@ -507,7 +507,7 @@ $result = Get-AzVM -ResourceGroupName $rgName -VMName $vmName -Status
 $result.Extensions | Where-Object {$_.Name -eq "VMAppExtension"} | ConvertTo-Json
 ```
 
-To view the provisioning state of deployed VM Application on Virtual Machine Scale Set, use [Get-AzVMSS](/powershell/module/az.compute/get-azvmss) command. 
+To view the provisioning state of deployed VM Application on Virtual Machine Scale Sets, use [Get-AzVMSS](/powershell/module/az.compute/get-azvmss) command. 
 
 ```azurepowershell-interactive
 $rgName = "myResourceGroup"
@@ -524,7 +524,7 @@ $resultSummary | ConvertTo-Json -Depth 5
 
 
 ## View logs of application installation using Run command
-When Azure VM Applications downloads and installs the application on Azure VM or scale set, it pipes all stdout results to `stdout` file within the application repository. Customers can [enable verbose logging for the application installation and write custom logs](vm-applications-how-to.md#3-create-the-install-script) using the `installScript`. Customers can then manually check the `stdout` and `stderr` file or use Runcommand to get the file content. 
+When Azure VM Applications downloads and installs the application on Azure VM or Virtual Machine Scale Sets, it pipes all stdout results to `stdout` file within the application repository. Customers can [enable verbose logging for the application installation and write custom logs](vm-applications-how-to.md#3-create-the-install-script) using the `installScript`. Customers can then manually check the `stdout` and `stderr` file or use Runcommand to get the file content. 
 
 Use the following PowerShell script in your managed run command. Update the `appName` and `appVersion` variables for your application
 
@@ -658,7 +658,7 @@ Learn more about [managed run command](/azure/virtual-machines/windows/run-comma
 
 ## View all deployed VM applications using Azure Resource Graph
 
-[Azure resource graph query](/azure/governance/resource-graph/first-query-portal) can be used to view all deployed VM applications and their properties across all VMs and Scale Sets. It provides a programmatic way to view application inventory, state, and deployed versions at high scale. Use this method for integrating with dashboards and custom reports.
+[Azure resource graph query](/azure/governance/resource-graph/first-query-portal) can be used to view all deployed VM applications and their properties across all VMs and Virtual Machine Scale Sets. It provides a programmatic way to view application inventory, state, and deployed versions at high scale. Use this method for integrating with dashboards and custom reports.
 
 ```kusto-interactive
 resources
@@ -675,7 +675,7 @@ resources
 ```
 
 ## Audit required VM Application using Azure Policy
-Azure Policy helps enforce governance by auditing whether required VM applications are deployed across your VMs and scale sets. You can create and assign custom policies to check compliance and ensure that specific applications are present on your infrastructure.
+Azure Policy helps enforce governance by auditing whether required VM applications are deployed across your VMs and Virtual Machine Scale Sets. You can create and assign custom policies to check compliance and ensure that specific applications are present on your infrastructure.
 
 For step-by-step instructions on how to audit VM application deployment using Azure Policy, see [Audit required VM applications using Azure Policy](vm-applications-inject-with-policy.md#set-up-compliance-monitor-to-govern-required-vm-applications).
 
@@ -706,7 +706,7 @@ Body
 }
 ```
 
-**Update VM application on a scale set (model):**
+**Update VM application on a Virtual Machine Scale Sets (model):**
 
 ```rest
 PATCH
@@ -730,7 +730,7 @@ Body
 }
 ```
 
-Apply the change to existing scale set instances (required when upgradePolicy.mode is Manual):
+Apply the change to existing Virtual Machine Scale Sets instances (required when upgradePolicy.mode is Manual):
 
 ```rest
 POST
@@ -754,7 +754,7 @@ az vm application set \
     --treat-deployment-as-failure true
 ```
 
-**Update VM application on a virtual machine scale set (model):**
+**Update VM application on a Virtual Machine Scale Sets (model):**
 
 ```azurecli-interactive
 az vmss application set \
@@ -764,7 +764,7 @@ az vmss application set \
     --treat-deployment-as-failure true
 ```
 
-Apply the change to existing scale set instances (If upgradeMode set to manual):
+Apply the change to existing Virtual Machine Scale Sets instances (If upgradeMode set to manual):
 
 ```azurecli-interactive
 az vmss update-instances -g myResourceGroup -n myVMss --instance-ids "*"
@@ -794,7 +794,7 @@ $vm.ApplicationProfile.GalleryApplications = @($app)
 Update-AzVM -ResourceGroupName $rgName -VM $vm
 ```
 
-**Update VM application on a scale set (model):**
+**Update VM application on a Virtual Machine Scale Sets (model):**
 
 ```azurepowershell-interactive
 $rgName = "myResourceGroup"
@@ -827,10 +827,10 @@ Update-AzVmssInstance -ResourceGroupName $rgName -VMScaleSetName $vmssName -Inst
 > [!TIP]
 > Use `latest` as the version identifier in `packageReferenceId` to automatically deploy the newest published version without manually updating deployments.
 
-## Remove the VM Application from Azure VM or Scale Sets
+## Remove the VM Application from Azure VM or Virtual Machine Scale Sets
 
 #### [Portal](#tab/portal7)
-1. Open the Azure portal and go to the target virtual machine (VM) or Virtual Machine Scale Set.
+1. Open the Azure portal and go to the target virtual machine (VM) or Virtual Machine Scale Sets.
 2. In Settings, select **Extensions + applications**, then select the **VM Applications** tab.
 3. Click uninstall button on the VM Application and Save.
 4. Track progress in Notifications or check Instance view for the VMAppExtension status.
@@ -855,7 +855,7 @@ Body
 }
 ```
 
-Remove from a scale set (model):
+Remove from a Virtual Machine Scale Sets (model):
 ```rest
 PATCH
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmssName}?api-version=2024-03-03
@@ -872,7 +872,7 @@ Body
 }
 ```
 
-Apply the change to existing scale set instances (required when upgradePolicy.mode is Manual):
+Apply the change to existing Virtual Machine Scale Sets instances (required when upgradePolicy.mode is Manual):
 ```rest
 POST
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmssName}/updateInstances?api-version=2024-03-03
@@ -889,7 +889,7 @@ Remove from a single VM:
 az vm update -g myResourceGroup -n myVM --set "properties.applicationProfile.galleryApplications=[]"
 ```
 
-Remove from a scale set (model):
+Remove from a Virtual Machine Scale Sets (model):
 ```azurecli-interactive
 az vmss update -g myResourceGroup -n myVMss --set "virtualMachineProfile.applicationProfile.galleryApplications=[]"
 ```
@@ -910,7 +910,7 @@ $vm.ApplicationProfile.GalleryApplications = @()
 Update-AzVM -ResourceGroupName $rgName -VM $vm
 ```
 
-Remove from a scale set (model) and apply to instances:
+Remove from a Virtual Machine Scale Sets (model) and apply to instances:
 ```azurepowershell-interactive
 $rgName   = "myResourceGroup"
 $vmssName = "myVMss"
