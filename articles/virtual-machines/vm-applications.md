@@ -152,9 +152,9 @@ The VM Application resource defines follows properties:
 
 
 ## Deploy Azure VM Applications
-After the VM Application version is published to Azure Compute Gallery, you can deploy the version across Azure Virtual Machines (VM) and Azure Virtual Machine Scale Sets. This deployment is done by referencing the ARM ID of the VM application in the `applicationProfile` of the Azure VM and VM Scale Set. 
+After the VM Application version is published to Azure Compute Gallery, you can deploy the version across Azure Virtual Machines (VM) and Azure Virtual Machine Scale Sets. This deployment is done by referencing the ARM ID of the VM application in the `applicationProfile` of the Azure Virtual Machine and Virtual Machine Scale Set. 
 
-### Properties in applicationProfile of VM and VM Scale Set
+### Properties in applicationProfile of VM and Scale Set
 
 The `applicationProfile` in Azure VM and Virtual Machine Scale Sets defines the following properties:
 

@@ -658,7 +658,7 @@ Learn more about [managed run command](/azure/virtual-machines/windows/run-comma
 
 ## View all deployed VM applications using Azure Resource Graph
 
-[Azure resource graph query](/azure/governance/resource-graph/first-query-portal) can be used to view all deployed VM applications and their properties across all VMs and VM Scale Sets. It provides a programmatic way to view application inventory, state, and deployed versions at high scale. Use this method for integrating with dashboards and custom reports.
+[Azure resource graph query](/azure/governance/resource-graph/first-query-portal) can be used to view all deployed VM applications and their properties across all VMs and Scale Sets. It provides a programmatic way to view application inventory, state, and deployed versions at high scale. Use this method for integrating with dashboards and custom reports.
 
 ```kusto-interactive
 resources
@@ -706,7 +706,7 @@ Body
 }
 ```
 
-**Update VM application on a VM scale set (model):**
+**Update VM application on a scale set (model):**
 
 ```rest
 PATCH
@@ -794,7 +794,7 @@ $vm.ApplicationProfile.GalleryApplications = @($app)
 Update-AzVM -ResourceGroupName $rgName -VM $vm
 ```
 
-**Update VM application on a VM scale set (model):**
+**Update VM application on a scale set (model):**
 
 ```azurepowershell-interactive
 $rgName = "myResourceGroup"
@@ -855,7 +855,7 @@ Body
 }
 ```
 
-Remove from a VM scale set (model):
+Remove from a scale set (model):
 ```rest
 PATCH
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmssName}?api-version=2024-03-03
@@ -889,7 +889,7 @@ Remove from a single VM:
 az vm update -g myResourceGroup -n myVM --set "properties.applicationProfile.galleryApplications=[]"
 ```
 
-Remove from a VM scale set (model):
+Remove from a scale set (model):
 ```azurecli-interactive
 az vmss update -g myResourceGroup -n myVMss --set "virtualMachineProfile.applicationProfile.galleryApplications=[]"
 ```
@@ -910,7 +910,7 @@ $vm.ApplicationProfile.GalleryApplications = @()
 Update-AzVM -ResourceGroupName $rgName -VM $vm
 ```
 
-Remove from a VM scale set (model) and apply to instances:
+Remove from a scale set (model) and apply to instances:
 ```azurepowershell-interactive
 $rgName   = "myResourceGroup"
 $vmssName = "myVMss"

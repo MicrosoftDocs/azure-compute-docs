@@ -1,6 +1,6 @@
 ---
 title: Govern and enforce compliance for VM Applications with Azure Policy
-description: Use Azure Policy to govern and enforce Azure Virtual Machine (VM) Application with right configurations across all VMs and VM scale sets.
+description: Use Azure Policy to govern and enforce Azure Virtual Machine (VM) Application with right configurations across all VMs and scale sets.
 author: tanmaygore
 ms.service: azure-virtual-machines
 ms.subservice: gallery
@@ -122,7 +122,7 @@ Create separate assignments per VM application for granular and accurate monitor
 
 Once the policy is assigned, all existing resources are evaluated and [displayed on compliance monitor](/azure/governance/policy/tutorials/create-and-manage#check-initial-compliance). Noncompliant resources are missing the VM Application defined in the policy. Resources without `applicationProfile` are also counted as noncompliant. Newly created or updated resources may take a few minutes to appear in evaluation cycles.
 
-:::image type="content" source="./media/vmapps/vm-applications-compliance-monitor.png" alt-text="Screenshot that shows Azure Policy compliance view listing VMs and VM scale sets audited for required VM Application presence.":::
+:::image type="content" source="./media/vmapps/vm-applications-compliance-monitor.png" alt-text="Screenshot that shows Azure Policy compliance view listing VMs and scale sets audited for required VM Application presence.":::
 
 #### Common adjustments
 
