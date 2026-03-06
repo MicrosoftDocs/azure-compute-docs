@@ -205,6 +205,9 @@ In general, Azure scale set virtual machines do not require their own public IP 
 
 However, some scenarios do require scale set virtual machines to have their own public IP addresses. An example is gaming, where a console needs to make a direct connection to a cloud virtual machine, which is doing game physics processing. Another example is where virtual machines need to make external connections to one another across regions in a distributed database.
 
+>[!IMPORTANT]
+> It is not recommended to associate more than 500 Public IP addresses with a single Virtual Machine Scale Set instance due to scale considerations.
+
 ### Creating a scale set with public IP per virtual machine
 To create a scale set that assigns a public IP address to each virtual machine with the CLI, add the **--public-ip-per-vm** parameter to the **vmss create** command.
 
