@@ -73,7 +73,7 @@
     - name: Create VM images
       href: ./linux/tutorial-custom-images.md
     - name: Create & deploy VM application
-      href: ./vm-applications-how-to.md?tabs=cli%2Ccli1%2Ccli2%2Ccli3%2Ccli4
+      href: ./vm-applications-how-to.md
     - name: Automate configuration
       href: ./linux/tutorial-automate-vm-deployment.md
     - name: Manage networking
@@ -91,7 +91,7 @@
     - name: Create VM images
       href: ./windows/tutorial-custom-images.md
     - name: Create & deploy VM application
-      href: ./vm-applications-how-to.md?tabs=powershell%2Cpowershell1%2Cpowershell2%2Cpowershell3%2Cpowershell4
+      href: ./vm-applications-how-to.md
     - name: Automate configuration
       href: ./windows/tutorial-automate-vm-deployment.md
     - name: Manage networking
@@ -889,6 +889,12 @@
         href: vm-applications-how-to.md
       - name: Manage VM Applications
         href: vm-applications-manage.md
+      - name: Create package for VM Application
+        href: vm-applications-create-app-package.md
+      - name: Publish VM Application using Managed Identity
+        href: vm-applications-publish-with-managed-identity.md
+      - name: Govern and enforce VM Applications using Azure Policy
+        href: vm-applications-inject-with-policy.md
   - name: Images
     items:
     - name: Find Azure Marketplace images
