@@ -54,7 +54,7 @@ Until the data is fully copied to Standard Storage, snapshots in the **InstantAc
 
 ### Regional availability
 
-Instant access snapshots are currently supported in all pulic regions.
+Instant access snapshots are currently supported in all public regions.
 
 
 ### Billing of instant access snapshots of Ultra Disks and Premium SSD v2 disks
