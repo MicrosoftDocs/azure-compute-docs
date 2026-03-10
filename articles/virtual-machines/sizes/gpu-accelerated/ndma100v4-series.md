@@ -18,17 +18,7 @@ ms.reviewer: mattmcinnes
 ## Host specifications
 [!INCLUDE [ndma100v4-series-specs](./includes/ndma100v4-series-specs.md)]
 
-## Feature support
-- [Premium Storage](../../premium-storage-performance.md): Supported
-- [Premium Storage caching](../../premium-storage-performance.md): Supported
-- [Live Migration](../../maintenance-and-updates.md): Not Supported
-- [Memory Preserving Updates](../../maintenance-and-updates.md): Not Supported
-- [Generation 2 VMs](../../generation-2.md): Supported
-- [Generation 1 VMs](../../generation-2.md): Not Supported
-- [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported
-- [Ephemeral OS Disk](../../ephemeral-os-disks.md): Supported
-- [Local temporary storage](../../overview.md#local-temporary-storage): Supported
-- [Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Not Supported
+For features supported by this series, see the [Feature support](#feature-support) section.
 
 ## Sizes in series
 
@@ -110,5 +100,21 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 | Standard_ND96amsr_A100_v4 | 8 | 80 |
 
 ---
+
+## Feature support
+
+|Feature name | Support status |
+| --- | --- |
+|[Premium Storage](../../premium-storage-performance.md)| Supported |
+|[Premium Storage caching](../../premium-storage-performance.md)| Supported |
+|[Live Migration](../../maintenance-and-updates.md)| Not Supported |
+|[Memory Preserving Updates](../../maintenance-and-updates.md)| Not Supported |
+|[Generation 2 VMs](../../generation-2.md)| Supported |
+|[Generation 1 VMs](../../generation-2.md)| Not Supported |
+|[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli)| Supported |
+|[Ephemeral OS Disk](../../ephemeral-os-disks.md)| Supported |
+|[Local temporary storage](../../overview.md#local-temporary-storage)| Supported |
+|[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)| Not Supported |
+
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]
