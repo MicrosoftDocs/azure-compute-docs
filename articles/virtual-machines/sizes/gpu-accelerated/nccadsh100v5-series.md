@@ -18,17 +18,7 @@ ms.reviewer: mattmcinnes
 ## Host specifications
 [!INCLUDE [nccadsh100v5-series-specs](./includes/nccadsh100v5-series-specs.md)]
 
-## Feature support
-- [Premium Storage](../../premium-storage-performance.md): Supported
-- [Premium Storage caching](../../premium-storage-performance.md): Supported
-- [Live Migration](../../maintenance-and-updates.md#live-migration): Not Supported
-- [Memory Preserving Updates](../../maintenance-and-updates.md): Not Supported
-- [Generation 2 VMs](../../generation-2.md): Supported
-- [Generation 1 VMs](../../generation-2.md): Not Supported
-- [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Not Supported
-- [Ephemeral OS Disk](../../ephemeral-os-disks.md): Supported
-- [Local temporary storage](../../overview.md#local-temporary-storage): Supported
-- [Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Not Supported
+For features supported by this series, see the [Feature support](#feature-support) section.
 
 ## Sizes in series
 
@@ -110,6 +100,22 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 | Standard_NCC40ads_H100_v5 | 1 | 94 |
 
 ---
+
+## Feature support
+
+|Feature name | Support status |
+| --- | --- |
+|[Premium Storage](../../premium-storage-performance.md)| Supported |
+|[Premium Storage caching](../../premium-storage-performance.md)| Supported |
+|[Live Migration](../../maintenance-and-updates.md#live-migration)| Not Supported |
+|[Memory Preserving Updates](../../maintenance-and-updates.md)| Not Supported |
+|[Generation 2 VMs](../../generation-2.md)| Supported |
+|[Generation 1 VMs](../../generation-2.md)| Not Supported |
+|[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli)| Not Supported |
+|[Ephemeral OS Disk](../../ephemeral-os-disks.md)| Supported |
+|[Local temporary storage](../../overview.md#local-temporary-storage)| Supported |
+|[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)| Not Supported |
+
 
 ## Creating VM 
 To get started with NCCads H100 v5 VMs and for information regarding confidential GPU driver and attesetation configuration, see [confidential GPU Configuration](https://aka.ms/cgpu-onboarding-steps) 
