@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 03/24/2025
+ms.date: 03/10/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 # Customer intent: "As a cloud architect, I want to assess the Mdsv3 Very High Memory VM series specifications, so that I can determine the best configuration for our memory-intensive applications and ensure optimal performance and cost-effectiveness."
@@ -18,18 +18,7 @@ ms.reviewer: mattmcinnes
 ## Host specifications
 [!INCLUDE [mdsv3-mm-series-specs](./includes/mdsv3-mm-series-specs.md)]
 
-## Feature support
-- [Premium Storage](../../premium-storage-performance.md): Supported
-- [Premium Storage caching](../../premium-storage-performance.md): Supported
-- [Live Migration](../../maintenance-and-updates.md#live-migration): Supported
-- [Memory Preserving Updates](../../maintenance-and-updates.md): Not Supported
-- [Generation 2 VMs](../../generation-2.md): Supported
-- [Generation 1 VMs](../../generation-2.md): Not Supported
-- [Accelerated Networking](/azure/virtual-network/create-virtual-machine-accelerated-networking): Supported
-- [Ephemeral OS Disk](../../ephemeral-os-disks.md): Supported
-- [Temporary local NVMe disks](../../enable-nvme-temp-faqs.yml): Supported
-- [Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Not Supported
-- [Hibernation](../../hibernate-resume.md): Not Supported
+For features supported by this series, see the [Feature support](#feature-support) section.
 
 ## Sizes in series
 
@@ -135,5 +124,22 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 > No accelerators are present in this series.
 
 ---
+
+## Feature support
+
+|Feature name | Support status |
+| --- | --- |
+|[Premium Storage](../../premium-storage-performance.md)| Supported |
+|[Premium Storage caching](../../premium-storage-performance.md)| Supported |
+|[Live Migration](../../maintenance-and-updates.md#live-migration)| Supported |
+|[Memory Preserving Updates](../../maintenance-and-updates.md)| Not Supported |
+|[Generation 2 VMs](../../generation-2.md)| Supported |
+|[Generation 1 VMs](../../generation-2.md)| Not Supported |
+|[Accelerated Networking](/azure/virtual-network/create-virtual-machine-accelerated-networking)| Supported |
+|[Ephemeral OS Disk](../../ephemeral-os-disks.md)| Supported |
+|[Temporary local NVMe disks](../../enable-nvme-temp-faqs.yml)| Supported |
+|[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)| Not Supported |
+|[Hibernation](../../hibernate-resume.md)| Not Supported |
+
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]

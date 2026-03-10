@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.date: 07/31/2024
+ms.date: 03/09/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
@@ -17,5 +17,5 @@ ms.custom: include file
 | Memory         | 4 - 32 GiB          |                                  |
 | Local Storage  | 1 Disk           | 50 - 400 GiB                            |
 | Remote Storage | 1 - 8 Disks    |    |
-| Network        | 1 NICs          |                           |
+| Network        | 1 NICs          | Interfaces: NetVSC, ConnectX                           |
 | Accelerators   | None              |                                   |

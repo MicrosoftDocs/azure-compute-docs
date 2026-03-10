@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.date: 11/06/2025
+ms.date: 03/09/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
@@ -17,6 +17,6 @@ ms.custom: include file
 | Processor      | 2 - 16 vCPUs       | Ampere Altra [Arm64]                              |
 | Memory         | 1 - 64 GiB          |                                  |
 | Local Storage  | None           |                                |
-| Remote Storage | 4 - 32 Disks    | 3750 - 25,600 IOPS <br>85 - 600 MBps   |
-| Network        | 2 - 4 NICs          | 6250 Mbps                          |
+| Remote Storage | 4 - 32 Disks | 3,750 - 25,600 IOPS <br>85 - 600 MBps <br>Disk Types: [Premium SSD](../../../disks-types.md#premium-ssds) |
+| Network        | 2 - 4 NICs          | 6,250 Mbps <br>Interfaces: NetVSC, ConnectX                          |
 | Accelerators   | None              |                                   |

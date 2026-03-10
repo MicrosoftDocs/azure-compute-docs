@@ -16,7 +16,6 @@ ms.custom: include file, build-2024
 | Processor    | 2 - 96  vCPUs      | Azure Cobalt 100 [Arm64]                     |
 | Memory       | 8 - 384  GiB          |                         |
 | Local Storage  | None                 |                            |
-| Remote Storage<br /> [Premium SSD](../../../disks-types.md#premium-ssds)   | 8 - 64 Disks     | 3750 - 153600 IOPS <br>106 - 5000 MBps     |
-| Remote Storage<br /> [Premium SSD v2](../../../disks-types.md#premium-ssd-v2) / [Ultra Disks](../../../disks-types.md#ultra-disks)   | 8 - 64 Disks     | 4163 - 199987 IOPS <br>124 - 5850 MBps     |
-| Network      | 2 - 8  NICs          | 12500 - 60000  Mbps           |
+| Remote Storage | 8 - 64 Disks | 3,750 - 199,987 IOPS <br>106 - 5,850 MBps <br>Disk Types: [Standard SDD/HDD](../../../disks-types.md#standard-ssds), [Premium SSD](../../../disks-types.md#premium-ssds), [Premium SSD v2](../../../disks-types.md#premium-ssd-v2), [Ultra Disk](../../../disks-types.md#ultra-disks) |
+| Network      | 2 - 8  NICs          | 12,500 - 60,000  Mbps <br>Interfaces: NetVSC, ConnectX |
 | Accelerators | None         |                          |

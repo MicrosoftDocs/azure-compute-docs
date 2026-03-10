@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 09/24/2024
+ms.date: 03/10/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 # Customer intent: "As a cloud architect evaluating virtual machine options, I want to understand the specifications and performance characteristics of the Bsv2-series sizes, so that I can make informed decisions for deploying efficient and cost-effective workloads."
@@ -20,8 +20,7 @@ Read more about the [B-series CPU credit model](../../b-series-cpu-credit-model/
 ## Host specifications
 [!INCLUDE [bsv2-series-specs](./includes/bsv2-series-specs.md)]
 
-## Feature support
-[Premium Storage](../../premium-storage-performance.md): Supported <br>[Premium Storage caching](../../premium-storage-performance.md): Supported <br>[Live Migration](../../maintenance-and-updates.md): Supported <br>[Memory Preserving Updates](../../maintenance-and-updates.md): Supported <br>[Generation 2 VMs](../../generation-2.md): Supported <br>[Generation 1 VMs](../../generation-2.md): Supported <br>[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported <br>[Ephemeral OS Disk](../../ephemeral-os-disks.md): Not Supported <br>[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Not Supported <br>
+For features supported by this series, see the [Feature support](#feature-support) section.
 
 ## Sizes in series
 
@@ -66,7 +65,7 @@ Base CPU performance, Credits, and other CPU bursting related info
 | Standard_B32s_v2  | 40% | 960 | 768 | 18432 |
 
 #### CPU Burst resources
-- <sup>1</sup>The base CPU performance metric hasn't changed. The updated (2024) numbers were normalized using a `0 – 100%` scale. Previously, the scale was `0 – (vCPU x 100%)`.
+- <sup>1</sup>The base CPU performance metric hasn't changed. The updated (2024) numbers were normalized using a `0 - 100%` scale. Previously, the scale was `0 - (vCPU x 100%)`.
 - Bsv2-series virtual machines can burst their disk performance and get up to their bursting max for up to 30 minutes at a time.
 - Learn more about [CPU bursting](../../b-series-cpu-credit-model/b-series-cpu-credit-model.md)
 
@@ -148,6 +147,21 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 > No accelerators are present in this series.
 
 ---
+
+
+
+## Feature support
+|Feature name | Support status |
+| --- | --- |
+|[Premium Storage](../../premium-storage-performance.md)| Supported |
+|[Premium Storage caching](../../premium-storage-performance.md)| Supported |
+|[Live Migration](../../maintenance-and-updates.md)| Supported |
+|[Memory Preserving Updates](../../maintenance-and-updates.md)| Supported |
+|[Generation 2 VMs](../../generation-2.md)| Supported |
+|[Generation 1 VMs](../../generation-2.md)| Supported |
+|[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli)| Supported |
+|[Ephemeral OS Disk](../../ephemeral-os-disks.md)| Not Supported |
+|[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)| Not Supported |
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]
 

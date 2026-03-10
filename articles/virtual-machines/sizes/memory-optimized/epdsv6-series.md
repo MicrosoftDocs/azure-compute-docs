@@ -7,7 +7,7 @@ ms.subservice: sizes
 ms.custom:
   - build-2024
 ms.topic: concept-article
-ms.date: 01/05/2026
+ms.date: 03/10/2026
 ms.author: noahwood
 ms.reviewer: mattmcinnes, tomcassidy
 # Customer intent: "As a cloud architect, I want to understand the specifications and capabilities of the Epdsv6-series virtual machine sizes, so that I can select the appropriate configuration for my application workloads and optimize performance."
@@ -22,18 +22,7 @@ ms.reviewer: mattmcinnes, tomcassidy
 ## Host specifications
 [!INCLUDE [epdsv6-series-specs](./includes/epdsv6-series-specs.md)]
 
-## Feature Support
-- [Premium Storage](../../premium-storage-performance.md): Supported 
-- [Premium Storage caching](../../premium-storage-performance.md): Supported
-- [Live Migration](../../maintenance-and-updates.md#live-migration): Supported
-- [Memory Preserving Updates](../../maintenance-and-updates.md#live-migration): Supported 
-- [VM Generation Support](../../generation-2.md): Generation 2 
-- [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported 
-- [Ephemeral OS Disks](../../ephemeral-os-disks.md): Supported
-- [Temporary local NVMe disks](../../enable-nvme-temp-faqs.yml): Supported
-- [Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Not Supported 
-- [Azure Disk Encryption for Linux VMs](../../../virtual-machines/linux/disk-encryption-linux.md?tabs=azcliazure%2Cenableadecli%2Cefacli%2Cadedatacli#restrictions): Not Supported
-- [Azure Disk Encryption for Windows VMs](../../../virtual-machines/windows/disk-encryption-windows.md#restrictions): Not Supported
+For features supported by this series, see the [Feature support](#feature-support) section.
 
 ## Sizes in series
 
@@ -150,6 +139,23 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 > No accelerators are present in this series.
 
 ---
+
+## Feature support
+
+|Feature name | Support status |
+| --- | --- |
+|[Premium Storage](../../premium-storage-performance.md)| Supported |
+|[Premium Storage caching](../../premium-storage-performance.md)| Supported |
+|[Live Migration](../../maintenance-and-updates.md#live-migration)| Supported |
+|[Memory Preserving Updates](../../maintenance-and-updates.md#live-migration)| Supported |
+|[VM Generation Support](../../generation-2.md)| Generation 2 |
+|[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli)| Supported |
+|[Ephemeral OS Disks](../../ephemeral-os-disks.md)| Supported |
+|[Temporary local NVMe disks](../../enable-nvme-temp-faqs.yml)| Supported |
+|[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)| Not Supported |
+|[Azure Disk Encryption for Linux VMs](../../../virtual-machines/linux/disk-encryption-linux.md?tabs=azcliazure%2Cenableadecli%2Cefacli%2Cadedatacli#restrictions)| Not Supported |
+|[Azure Disk Encryption for Windows VMs](../../../virtual-machines/windows/disk-encryption-windows.md#restrictions)| Not Supported |
+
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]
 

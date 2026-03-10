@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 08/01/2024
+ms.date: 03/10/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 # Customer intent: "As a cloud architect, I want to understand the specifications and support features of the Easv4 size series, so that I can effectively select the appropriate virtual machine size based on my application’s performance and resource needs."
@@ -18,8 +18,7 @@ ms.reviewer: mattmcinnes
 ## Host specifications
 [!INCLUDE [easv4-series-specs](./includes/easv4-series-specs.md)]
 
-## Feature support
-[Premium Storage](../../premium-storage-performance.md): Supported <br>[Premium Storage caching](../../premium-storage-performance.md): Supported <br>[Live Migration](../../maintenance-and-updates.md): Supported <br>[Memory Preserving Updates](../../maintenance-and-updates.md): Supported <br>[Generation 2 VMs](../../generation-2.md): Supported <br>[Generation 1 VMs](../../generation-2.md): Supported <br>[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported <br>[Ephemeral OS Disk](../../ephemeral-os-disks.md): Supported <br>[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Not Supported <br>
+For features supported by this series, see the [Feature support](#feature-support) section.
 
 ## Sizes in series
 
@@ -132,6 +131,21 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 > No accelerators are present in this series.
 
 ---
+
+## Feature support
+
+|Feature name | Support status |
+| --- | --- |
+|[Premium Storage](../../premium-storage-performance.md)| Supported |
+|[Premium Storage caching](../../premium-storage-performance.md)| Supported |
+|[Live Migration](../../maintenance-and-updates.md)| Supported |
+|[Memory Preserving Updates](../../maintenance-and-updates.md)| Supported |
+|[Generation 2 VMs](../../generation-2.md)| Supported |
+|[Generation 1 VMs](../../generation-2.md)| Supported |
+|[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli)| Supported |
+|[Ephemeral OS Disk](../../ephemeral-os-disks.md)| Supported |
+|[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)| Not Supported |
+
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]
 
