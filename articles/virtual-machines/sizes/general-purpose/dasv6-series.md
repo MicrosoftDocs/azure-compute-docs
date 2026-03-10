@@ -11,7 +11,7 @@ ms.reviewer: mattmcinnes
 # Customer intent: As a cloud architect, I want to understand the specifications and features of the Dasv6 series virtual machines, so that I can select the appropriate size for my workload requirements.
 ---
 
-# Dasv6-series size
+# Dasv6-series sizes
 [!INCLUDE [dasv6-summary](./includes/dasv6-series-summary.md)]
 
 ## Host specifications
@@ -110,9 +110,10 @@ Accelerator (GPUs, FPGAs, etc.) info for each size in the Dasv6-series.
 > [!NOTE]
 > No accelerators are present in this series.
 
----
+---
 
-## Feature support for the Dasv6-series
+
+## Feature support
 
 |Feature name | Support status | 
 | --- | --- |
