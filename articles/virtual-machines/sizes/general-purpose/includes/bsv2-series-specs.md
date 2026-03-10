@@ -16,6 +16,6 @@ ms.custom: include file
 | Processor      | 2 - 32 vCPUs       | Intel Xeon Platinum 8473C (Sapphire Rapids) [x86-64] <br>Intel Xeon Platinum 8370C (Ice Lake) [x86-64]  <br>Intel Xeon Platinum 8573C (Emerald Rapids) [x86-64] |
 | Memory         | 1 - 128 GiB          |                                  |
 | Local Storage  | None           |                                |
-| Remote Storage<br /> ([Premium SSD](../../../disks-types.md#premium-ssds)) | 4 - 32 Disks | 3,750 - 51,200 IOPS <br>85 - 600 MBps |
+| Remote Storage | 4 - 32 Disks | 3,750 - 51,200 IOPS <br>85 - 600 MBps <br>Disk Types: [Standard SDD/HDD](../../..//disks-types#standard-ssds), [Premium SSD](../../../disks-types.md#premium-ssds) |
 | Network        | 2 - 4 NICs          | 6,250 Mbps     <br>Interfaces: NetVSC, ConnectX, [MANA](https://aka.ms/ManaFAQ1)   |
 | Accelerators   | None              |                                   |

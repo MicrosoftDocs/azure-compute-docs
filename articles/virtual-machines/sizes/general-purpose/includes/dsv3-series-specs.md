@@ -15,7 +15,7 @@ ms.custom: include file
 |---|---|---|
 | Processor      | 2 - 64 vCPUs       | Intel Xeon Platinum 8370C (Ice Lake) [x86-64] <br>Intel Xeon Platinum 8272CL (Cascade Lake) [x86-64] <br>Intel Xeon 8171M (Skylake) [x86-64] <br>Intel Xeon E5-2673 v4 (Broadwell) [x86-64] <br>Intel Xeon E5-2673 v3 (Haswell) [x86-64] <br>Intel Xeon Platinum 8573C (Emerald Rapids) [x86-64] |
 | Memory         | 8 - 256 GiB          |                                                    |
-| Local Storage  | 1 Disks     | 16 - 512 GiB <br>4000 - 128000 IOPS (RR) <br>32 - 1024 MBps (RR)|
-| Remote Storage<br /> ([Premium SSD](../../../disks-types.md#premium-ssds), [Premium SSD v2](../../../disks-types.md#premium-ssd-v2), [Ultra Disk](../../../disks-types.md#ultra-disks)) | 4 - 32 Disks | 4000 - 80000 IOPS <br>48 - 1200 MBps |
-| Network        | 2 - 8 NICs          | 1000 - 30000 Mbps   <br>Interfaces: NetVSC, ConnectX, [MANA](https://aka.ms/ManaFAQ1)   |
+| Local Storage  | 1 Disks     | 16 - 512 GiB <br>4,000 - 128,000 IOPS (RR) <br>32 - 1,024 MBps (RR)|
+| Remote Storage | 4 - 32 Disks | 4,000 - 80,000 IOPS <br>48 - 1,200 MBps <br>Disk Types: [Standard SDD/HDD](../../..//disks-types#standard-ssds), [Premium SSD](../../../disks-types.md#premium-ssds), [Premium SSD v2](../../../disks-types.md#premium-ssd-v2), [Ultra Disk](../../../disks-types.md#ultra-disks) |
+| Network        | 2 - 8 NICs          | 1,000 - 30,000 Mbps   <br>Interfaces: NetVSC, ConnectX, [MANA](https://aka.ms/ManaFAQ1)   |
 | Accelerators   | None              |                                                     |

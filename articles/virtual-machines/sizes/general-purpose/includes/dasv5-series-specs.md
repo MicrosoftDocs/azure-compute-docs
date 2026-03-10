@@ -16,6 +16,6 @@ ms.custom: include file
 | Processor      | 2 - 96 vCPUs       | AMD EPYC 7763v (Milan) [x86-64] <br>AMD EPYC 9004 (Genoa) [x86-64]     |
 | Memory         | 8 - 384 GiB          |                                  |
 | Local Storage  | None           |                                |
-| Remote Storage<br /> ([Premium SSD](../../../disks-types.md#premium-ssds), [Ultra Disk](../../../disks-types.md#ultra-disks)) | 4 - 32 Disks | 3,750 - 80,000 IOPS <br>82 - 1,600 MBps |
+| Remote Storage | 4 - 32 Disks | 3,750 - 80,000 IOPS <br>82 - 1,600 MBps <br>Disk Types: [Standard SDD/HDD](../../..//disks-types#standard-ssds), [Premium SSD](../../../disks-types.md#premium-ssds), [Ultra Disk](../../../disks-types.md#ultra-disks) |
 | Network        | 2 - 8 NICs          | 12,500 - 40,000 Mbps <br>Interfaces: NetVSC, ConnectX |
 | Accelerators   | None              |                                   |

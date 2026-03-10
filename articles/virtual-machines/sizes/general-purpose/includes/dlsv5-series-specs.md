@@ -9,13 +9,13 @@ ms.date: 03/04/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
-# Customer intent: As a cloud architect, I want to review the specifications of Dlsv5-series VM sizes, so that I can determine the best configuration for my application’s performance and resource requirements.
+# Customer intent: As a cloud architect, I want to review the specifications of Dlsv5-series VM sizes, so that I can determine the best configuration for my applicationâ€™s performance and resource requirements.
 ---
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
 |---|---|---|
 | Processor      | 2 - 96 vCPUs      | Intel Xeon Platinum 8473C (Sapphire Rapids) [x86-64] <br>Intel Xeon Platinum 8370C (Ice Lake) [x86-64] <br>Intel Xeon Platinum 8573C (Emerald Rapids) [x86-64] |
 | Memory         | 4 - 192 GiB          |                         |
 | Local Storage  | None     | |
-| Remote Storage<br /> ([Standard HDD/SSD](/azure/virtual-machines/disks-types#standard-ssds), [Premium SSD](../../../disks-types.md#premium-ssds), [Premium SSD v2](../../../disks-types.md#premium-ssd-v2), [Ultra Disk](../../../disks-types.md#ultra-disks)) | 4 - 32 Disks    | 3750 - 80000 IOPS <br>85 - 4000 MBps     |
-| Network        | 2 - 8 NICs          | 12500 - 35000 Mbps <br>Interfaces: NetVSC, ConnectX, [MANA](https://aka.ms/ManaFAQ1)  |
+| Remote Storage | 4 - 32 Disks    | 3,750 - 80,000 IOPS <br>85 - 4,000 MBps <br>Disk Types: [Standard HDD/SSD](/azure/virtual-machines/disks-types#standard-ssds), [Premium SSD](../../../disks-types.md#premium-ssds), [Premium SSD v2](../../../disks-types.md#premium-ssd-v2), [Ultra Disk](../../../disks-types.md#ultra-disks)     |
+| Network        | 2 - 8 NICs          | 12,500 - 35,000 Mbps <br>Interfaces: NetVSC, ConnectX, [MANA](https://aka.ms/ManaFAQ1)  |
 | Accelerators   | None  |                          |

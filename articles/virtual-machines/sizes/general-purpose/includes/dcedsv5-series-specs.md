@@ -16,6 +16,6 @@ ms.custom: include file
 | Processor      | 2 - 96 vCPUs       | Intel Xeon (Sapphire Rapids) [x86-64]                               |
 | Memory         | 8 - 384 GiB          |                                  |
 | Local Storage  | 1 Disk           | 47 - 2,823 GiB <br>9,300 - 459,200 IOPS (RR) <br>100 - 4,000 MBps (RR)                               |
-| Remote Storage <br />([Premium SSD](../../../disks-types.md#premium-ssds)) | 4 - 32 Disks    | 3,750 - 80,000 IOPS <br>80 - 2,600 MBps   |
+| Remote Storage | 4 - 32 Disks | 3,750 - 80,000 IOPS <br>80 - 2,600 MBps <br>Disk Types: [Premium SSD](../../../disks-types.md#premium-ssds) |
 | Network        | 2 - 8 NICs          | 3,000 - 30,000 Mbps <br>Interfaces: NetVSC, ConnectX                          |
 | Accelerators   | None              |                                   |

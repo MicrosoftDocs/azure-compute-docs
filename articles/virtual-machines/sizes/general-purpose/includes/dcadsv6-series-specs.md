@@ -15,6 +15,6 @@ ms.custom: include file
 | Processor      | 2 - 96 vCPUs       |     AMD EPYC™ 9004 (Genoa) [x86-64]  |
 | Memory         | 8 - 384 GiB          |                                  |
 | Local Storage  |            |   75 - 3,600 GiB <br> 9,000 - 450,000 IOPS (RR) <br> 125 - 4,000 MBps (RR)  |
-| Remote Storage<br /> ([Premium SSD](../../../disks-types.md#premium-ssds), [Premium SSD v2](../../../disks-types.md#premium-ssd-v2)) | 8 - 64 Disks | 4,000 - 175,000 IOPS <br>90 - 4,320 MBps |
+| Remote Storage | 8 - 64 Disks | 4,000 - 175,000 IOPS <br>90 - 4,320 MBps <br>Disk Types: [Standard SDD/HDD](../../..//disks-types#standard-ssds), [Premium SSD](../../../disks-types.md#premium-ssds), [Premium SSD v2](../../../disks-types.md#premium-ssd-v2) |
 | Network        | 2 - 8 NICs          | 12,500 - 34,000 Mbps <br>Interfaces: NetVSC, ConnectX                  |
 | Accelerators   | None              |                                   |
