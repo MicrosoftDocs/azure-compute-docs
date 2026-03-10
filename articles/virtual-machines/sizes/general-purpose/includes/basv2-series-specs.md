@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.date: 11/06/2025
+ms.date: 03/09/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
@@ -17,6 +17,6 @@ ms.custom: include file
 | Processor      | 2 - 32 vCPUs       | AMD EPYC 7763v (Milan) [x86-64]                               |
 | Memory         | 1 - 128 GiB          |                                  |
 | Local Storage  | None           |                                |
-| Remote Storage | 4 - 32 Disks    | 3750 - 25,600 IOPS <br>85 - 600 MBps   |
-| Network        | 2 - 4 NICs          | 6250 Mbps                          |
+| Remote Storage<br /> ([Premium SSD](../../../disks-types.md#premium-ssds)) | 4 - 32 Disks    | 3,750 - 25,600 IOPS <br>85 - 600 MBps   |
+| Network        | 2 - 4 NICs          | 6,250 Mbps <br>Interfaces: NetVSC, ConnectX                          |
 | Accelerators   | None              |                                   |

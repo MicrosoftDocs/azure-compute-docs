@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.date: 07/31/2024
+ms.date: 03/09/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
@@ -15,7 +15,7 @@ ms.custom: include file
 |---|---|---|
 | Processor      | 2 - 96 vCPUs       | Intel Xeon (Sapphire Rapids) [x86-64]                               |
 | Memory         | 8 - 384 GiB          |                                  |
-| Local Storage  | 1 Disk           | 47 - 2823 GiB <br>9300 - 459200 IOPS (RR) <br>100 - 4000 MBps (RR)                               |
-| Remote Storage | 4 - 32 Disks    | 3750 - 80000 IOPS <br>80 - 2600 MBps   |
-| Network        | 2 - 8 NICs          | 3000 - 30000 Mbps                          |
+| Local Storage  | 1 Disk           | 47 - 2,823 GiB <br>9,300 - 459,200 IOPS (RR) <br>100 - 4,000 MBps (RR)                               |
+| Remote Storage <br />([Premium SSD](../../../disks-types.md#premium-ssds)) | 4 - 32 Disks    | 3,750 - 80,000 IOPS <br>80 - 2,600 MBps   |
+| Network        | 2 - 8 NICs          | 3,000 - 30,000 Mbps <br>Interfaces: NetVSC, ConnectX                          |
 | Accelerators   | None              |                                   |

@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.date: 01/29/2026
+ms.date: 03/09/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
@@ -16,6 +16,6 @@ ms.custom: include file
 | Processor      | 2 - 96 vCPUs       | Intel Xeon Platinum 8370C (Ice Lake) [x86-64] <br>Intel Xeon Platinum 8573C (Emerald Rapids) [x86-64] |
 | Memory         | 8 - 384 GiB          |                                                    |
 | Local Storage  | 1 Disk     | 75 - 3600 GiB <br>9000 - 450000 IOPS (RR) <br>125 - 4000 MBps (RR)|
-| Remote Storage | 4 - 32 Disks    | 3750 - 80000 IOPS <br>85 - 2600 MBps                     |
+| Remote Storage<br /> ([Premium SSD](../../../disks-types.md#premium-ssds)) | 4 - 32 Disks | 3750 - 80000 IOPS <br>85 - 2600 MBps |
 | Network        | 2 - 8 NICs          | 12500 - 35000 Mbps <br>Interfaces: NetVSC, ConnectX, [MANA](https://aka.ms/ManaFAQ1)  |
 | Accelerators   | None              |                                                     |

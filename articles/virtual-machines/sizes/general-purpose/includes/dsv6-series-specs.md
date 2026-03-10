@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.date: 07/29/2024
+ms.date: 03/04/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
@@ -16,7 +16,7 @@ ms.custom: include file
 | Processor      | 2 - 192 vCPUs       | Intel Xeon Platinum 8573C (Emerald Rapids) [x86-64]                               |
 | Memory         | 8 - 768 GiB          |                                  |
 | Local Storage  | None           |                                |
-| Remote Storage<br /> [Premium SSD](../../../disks-types.md#premium-ssds) | 8 - 64 Disks    | 3750 - 260000 IOPS <br>106 - 12000 MBps   |
-| Remote Storage<br /> [Premium SSD v2](../../../disks-types.md#premium-ssd-v2) / [Ultra Disks](../../../disks-types.md#ultra-disks) | 8 - 64 Disks    | 4167 - 400400 IOPS <br>124 - 12000 MBps   |
+| Remote Storage<br /> ([Premium SSD](../../../disks-types.md#premium-ssds), [Premium SSD v2](../../../disks-types.md#premium-ssd-v2), [Ultra Disk](../../../disks-types.md#ultra-disks)) | 8 - 64 Disks    | 3750 - 400400 IOPS <br>106 - 12000 MBps   |
+| Remote Storage<br />  | 8 - 64 Disks    | 4167 - 400400 IOPS <br>124 - 12000 MBps   |
 | Network        | 2 - 8 NICs          | 12500 - 82000 Mbps                          |
 | Accelerators   | None              |                                   |

@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.date: 07/29/2024
+ms.date: 03/09/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
@@ -15,8 +15,7 @@ ms.custom: include file
 |---|---|---|
 | Processor      | 2 - 192 vCPUs       | Intel Xeon Platinum 8573C (Emerald Rapids) [x86-64]                               |
 | Memory         | 8 - 768 GiB          |                                  |
-| Local Storage  | 1 - 6 Disks           | 110 - 1760 GiB/Disk <br>37500 - 3600000 IOPS (RR) <br>180 - 17280 MBps (RR)                               |
-| Remote Storage <br /> [Premium SSD](../../../disks-types.md#premium-ssds) | 8 - 64 Disks    | 3750 - 260000 IOPS <br>106 - 12000 MBps   |
-| Remote Storage <br /> [Premium SSD v2](../../../disks-types.md#premium-ssd-v2) / [Ultra Disks](../../../disks-types.md#ultra-disks) | 8 - 64 Disks    | 4167 - 400400 IOPS <br>124 - 12000 MBps   |
-| Network        | 2 - 8 NICs          | 12500 - 82000 Mbps                          |
+| Local Storage  | 1 - 6 Disks           | 110 - 1,760 GiB/Disk <br>37,500 - 3,600,000 IOPS (RR) <br>180 - 17,280 MBps (RR)                               |
+| Remote Storage<br /> ([Premium SSD](../../../disks-types.md#premium-ssds), [Premium SSD v2](../../../disks-types.md#premium-ssd-v2)) | 8 - 64 Disks | 3,750 - 400,400 IOPS <br>106 - 12,000 MBps |
+| Network        | 2 - 8 NICs          | 12,500 - 82,000 Mbps <br>Interfaces: NetVSC, ConnectX |
 | Accelerators   | None              |                                   |

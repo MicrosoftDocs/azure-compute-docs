@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.date: 07/29/2024
+ms.date: 03/09/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
@@ -16,7 +16,6 @@ ms.custom: include file
 | Processor      | 2 - 96 vCPUs       | AMD EPYC 9004 (Genoa) [x86-64]                               |
 | Memory         | 4 - 192 GiB          |                                  |
 | Local Storage  | None           |                                |
-| Remote Storage <br /> [Premium SSD](../../../disks-types.md#premium-ssds) | 4 - 32 Disks    | 4000 - 175000 IOPS <br>90 - 4320 MBps   |
-| Remote Storage <br /> [Premium SSD v2](../../../disks-types.md#premium-ssd-v2) / [Ultra Disks](../../../disks-types.md#ultra-disks) | 4 - 32 Disks    | 4000 - 175000 IOPS <br>90 - 4320 MBps   |
-| Network        | 2 - 8 NICs          | 12500 - 40000 Mbps                          |
+| Remote Storage<br /> ([Premium SSD](../../../disks-types.md#premium-ssds), [Premium SSD v2](../../../disks-types.md#premium-ssd-v2)) | 4 - 32 Disks | 4,000 - 175,000 IOPS <br>90 - 4,320 MBps |
+| Network        | 2 - 8 NICs          | 12,500 - 40,000 Mbps <br>Interfaces: NetVSC, ConnectX |
 | Accelerators   | None              |                                   |

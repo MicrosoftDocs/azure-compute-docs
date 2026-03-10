@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.date: 07/29/2024
+ms.date: 03/09/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
@@ -15,8 +15,7 @@ ms.custom: include file
 |---|---|---|
 | Processor      | 2 - 96 vCPUs       | AMD EPYC 9004 (Genoa) [x86-64]                               |
 | Memory         | 8 - 384 GiB          |                                  |
-| Local Storage  | 1 - 6 Disks           | 110 - 880 GiB/Disk <br>37500 - 1800000 IOPS (RR) <br>180 - 8640 MBps (RR)                               |
-| Remote Storage <br /> [Premium SSD](../../../disks-types.md#premium-ssds) | 4 - 32 Disks    | 4000 - 175000 IOPS <br>90 - 4320 MBps   |
-| Remote Storage <br /> [Premium SSD v2](../../../disks-types.md#premium-ssd-v2) / [Ultra Disks](../../../disks-types.md#ultra-disks) | 4 - 32 Disks    | 4000 - 175000 IOPS <br>90 - 4320 MBps   |
-| Network        | 2 - 8 NICs          | 12500 - 40000 Mbps                          |
+| Local Storage  | 1 - 6 Disks           | 110 - 880 GiB/Disk <br>37,500 - 1,800,000 IOPS (RR) <br>180 - 8,640 MBps (RR)                               |
+| Remote Storage<br /> ([Premium SSD](../../../disks-types.md#premium-ssds), [Premium SSD v2](../../../disks-types.md#premium-ssd-v2)) | 4 - 32 Disks | 4,000 - 175,000 IOPS <br>90 - 4,320 MBps |
+| Network        | 2 - 8 NICs          | 12,500 - 40,000 Mbps <br>Interfaces: NetVSC, ConnectX |
 | Accelerators   | None              |                                   |

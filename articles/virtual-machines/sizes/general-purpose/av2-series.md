@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 07/29/2024
+ms.date: 03/04/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 # Customer intent: As a cloud architect, I want to understand the specifications and capabilities of the Av2-series virtual machine sizes so that I can select the appropriate VM type for my workload requirements.
@@ -18,16 +18,7 @@ ms.reviewer: mattmcinnes
 ## Host specifications
 [!INCLUDE [av2-series-specs](./includes/av2-series-specs.md)]
 
-## Feature support
-
-Premium Storage: Not Supported<br>
-Premium Storage caching: Not Supported<br>
-Live Migration: Supported<br>
-Memory Preserving Updates: Supported<br>
-VM Generation Support: Generation 1<br>
-Accelerated Networking: Not Supported<br>
-Ephemeral OS Disks: Not Supported<br>
-Nested Virtualization: Not Supported<br>
+For features supported by this series, see the [Feature support](#feature-support) section.
 
 ## Sizes in series
 
@@ -133,6 +124,17 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 > No accelerators are present in this series.
 
 ---
+
+## Feature support
+
+[Premium Storage](/azure/virtual-machines/premium-storage-performance): Not Supported<br>
+[Premium Storage caching](/azure/virtual-machines/premium-storage-performance): Not Supported<br>
+[Live Migration](/azure/virtual-machines/maintenance-and-updates#live-migration): Supported<br>
+[Memory Preserving Updates](/azure/virtual-machines/maintenance-and-updates): Supported<br>
+[VM Generation Support](/azure/virtual-machines/generation-2): Generation 1<br>
+[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Not Supported<br>
+[Ephemeral OS Disks](/azure/virtual-machines/ephemeral-os-disks): Not Supported<br>
+[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Not Supported<br>
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]
 

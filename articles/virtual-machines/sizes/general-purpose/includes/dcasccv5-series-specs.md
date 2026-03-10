@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.date: 07/30/2024
+ms.date: 03/09/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
@@ -16,6 +16,6 @@ ms.custom: include file
 | Processor      | 4 - 96 vCPUs       | AMD EPYC (Milan) [x86-64]                               |
 | Memory         | 16 - 384 GiB          |                                  |
 | Local Storage  | None           |                                |
-| Remote Storage | 8 - 32 Disks    | 6400 - 80000 IOPS <br>144 - 1600 MBps   |
-| Network        | 2 - 8 NICs          |  Mbps                          |
+| Remote Storage <br />([Premium SSD](../../../disks-types.md#premium-ssds)) | 8 - 32 Disks    | 6,400 - 80,000 IOPS <br>144 - 1,600 MBps   |
+| Network        | 2 - 8 NICs          | Mbps <br>Interfaces: NetVSC, ConnectX                          |
 | Accelerators   | None              |                                   |
