@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.date: 07/31/2024
+ms.date: 03/09/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
@@ -15,7 +15,7 @@ ms.custom: include file
 |---|---|---|
 | Processor      | 1 - 48 Cores       | Intel Xeon (Ice Lake) [x86-64]                               |
 | Memory         | 8 - 384 GiB          |                                  |
-| Local Storage  | 1 Disk           | 75 - 2400 GiB                               |
+| Local Storage  | 1 Disk           | 75 - 2,400 GiB                               |
 | Remote Storage | 4 - 32 Disks    |     |
-| Network        | 2 - 8 NICs          |                            |
+| Network        | 2 - 8 NICs          | Interfaces: NetVSC, ConnectX                            |
 | Accelerators   | None              |                                   |
