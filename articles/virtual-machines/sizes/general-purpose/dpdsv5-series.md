@@ -18,18 +18,7 @@ ms.reviewer: mattmcinnes
 ## Host specifications
 [!INCLUDE [dpdsv5-series-specs](./includes/dpdsv5-series-specs.md)]
 
-## Feature support
-
-- [Premium Storage](../../premium-storage-performance.md): Supported
-- [Premium Storage caching](../../premium-storage-performance.md): Supported
-- [Live Migration](../../maintenance-and-updates.md#live-migration): Supported
-- [Memory Preserving Updates](../../maintenance-and-updates.md): Supported
-- [VM Generation Support](../../generation-2.md): Generation 2
-- [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported
-- [Ephemeral OS Disks](../../ephemeral-os-disks.md): Supported
-- [Local temporary storage](../../overview.md#local-temporary-storage): Supported
-- [Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Not supported
-
+For features supported by this series, see the [Feature support](#feature-support) section.
 
 ## Sizes in series
 
@@ -135,6 +124,20 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 > No accelerators are present in this series.
 
 ---
+
+
+
+## Feature support
+
+- [Premium Storage](../../premium-storage-performance.md): Supported
+- [Premium Storage caching](../../premium-storage-performance.md): Supported
+- [Live Migration](../../maintenance-and-updates.md#live-migration): Supported
+- [Memory Preserving Updates](../../maintenance-and-updates.md): Supported
+- [VM Generation Support](../../generation-2.md): Generation 2
+- [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported
+- [Ephemeral OS Disks](../../ephemeral-os-disks.md): Supported
+- [Local temporary storage](../../overview.md#local-temporary-storage): Supported
+- [Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Not supported
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]
 

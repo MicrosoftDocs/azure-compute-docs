@@ -18,7 +18,7 @@ ms.reviewer: mattmcinnes
 ## Host specifications
 [!INCLUDE [dav4-series-specs](./includes/dav4-series-specs.md)]
 
-To view what features are supported, see the [Feature support](#feature-support) section below.
+For features supported by this series, see the [Feature support](#feature-support) section.
 
 ## Sizes in series
 

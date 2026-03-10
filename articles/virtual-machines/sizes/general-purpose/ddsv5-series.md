@@ -18,16 +18,7 @@ ms.reviewer: mattmcinnes
 ## Host specifications
 [!INCLUDE [ddsv5-series-specs](./includes/ddsv5-series-specs.md)]
 
-## Feature support
-
-Premium Storage: Supported<br>
-Premium Storage caching: Supported<br>
-Live Migration: Supported<br>
-Memory Preserving Updates: Supported<br>
-VM Generation Support: Generation 1 and 2<br>
-Accelerated Networking1: Required<br>
-Ephemeral OS Disks: Supported<br>
-Nested Virtualization: Supported<br>
+For features supported by this series, see the [Feature support](#feature-support) section.
 
 ## Sizes in series
 
@@ -137,6 +128,19 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 > No accelerators are present in this series.
 
 ---
+
+
+
+## Feature support
+
+[Premium Storage](../../premium-storage-performance.md): Supported<br>
+[Premium Storage caching](../../premium-storage-performance.md): Supported<br>
+[Live Migration](../../maintenance-and-updates.md#live-migration): Supported<br>
+[Memory Preserving Updates](../../maintenance-and-updates.md): Supported<br>
+[VM Generation Support](../../generation-2.md): Generation 1 and 2<br>
+[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli)1: Required<br>
+[Ephemeral OS Disks](../../ephemeral-os-disks.md): Supported<br>
+[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Supported<br>
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]
 

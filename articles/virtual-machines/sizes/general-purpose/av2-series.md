@@ -18,16 +18,7 @@ ms.reviewer: mattmcinnes
 ## Host specifications
 [!INCLUDE [av2-series-specs](./includes/av2-series-specs.md)]
 
-## Feature support
-
-Premium Storage: Not Supported<br>
-Premium Storage caching: Not Supported<br>
-Live Migration: Supported<br>
-Memory Preserving Updates: Supported<br>
-VM Generation Support: Generation 1<br>
-Accelerated Networking: Not Supported<br>
-Ephemeral OS Disks: Not Supported<br>
-Nested Virtualization: Not Supported<br>
+For features supported by this series, see the [Feature support](#feature-support) section.
 
 ## Sizes in series
 
@@ -133,6 +124,19 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 > No accelerators are present in this series.
 
 ---
+
+
+
+## Feature support
+
+[Premium Storage](../../premium-storage-performance.md): Not Supported<br>
+[Premium Storage caching](../../premium-storage-performance.md): Not Supported<br>
+[Live Migration](../../maintenance-and-updates.md#live-migration): Supported<br>
+[Memory Preserving Updates](../../maintenance-and-updates.md): Supported<br>
+[VM Generation Support](../../generation-2.md): Generation 1<br>
+[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Not Supported<br>
+[Ephemeral OS Disks](../../ephemeral-os-disks.md): Not Supported<br>
+[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Not Supported<br>
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]
 
