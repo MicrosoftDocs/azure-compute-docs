@@ -4,7 +4,7 @@ description: Specifications for the Dv2 and DSv2-series VMs.
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 12/21/2022
+ms.date: 03/10/2026
 # Customer intent: As a cloud architect, I want to understand the specifications of Dv2 and DSv2-series VMs, so that I can choose the appropriate virtual machine sizes to optimize performance for memory-intensive applications.
 ---
 
@@ -20,16 +20,6 @@ Dv2 and Dsv2-series, a follow-on to the original D-series, features a more power
 
 Dv2-series sizes run on the third Generation Intel® Xeon® Platinum 8370C (Ice Lake), the Intel® Xeon® Platinum 8272CL (Cascade Lake), the Intel® Xeon® 8171M 2.1 GHz (Skylake), the Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell), or the Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) processors.
 
-[Premium Storage](../../premium-storage-performance.md): Not Supported<br>
-[Premium Storage caching](../../premium-storage-performance.md): Not Supported<br>
-[Live Migration](../../maintenance-and-updates.md): Supported<br>
-[Memory Preserving Updates](../../maintenance-and-updates.md): Supported<br>
-[VM Generation Support](../../generation-2.md): Generation 1<br>
-[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported<br>
-[Ephemeral OS Disks](../../ephemeral-os-disks.md): Not Supported <br>
-[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Not Supported <br>
-<br> 
-
 | Size | vCPU | Memory: GiB | Temp storage (SSD) GiB | Max temp storage throughput: IOPS/Read MBps/Write MBps | Max data disks/throughput: IOPS | Max NICs| Expected network bandwidth (Mbps) |
 |---|---|---|---|---|---|---|---|
 | Standard_D11_v2 | 2  | 14  | 100 | 6000/93/46    | 8/8x500   | 2|1500  |
@@ -41,19 +31,20 @@ Dv2-series sizes run on the third Generation Intel® Xeon® Platinum 8370C (Ice 
 <sup>1</sup> Instance is isolated to hardware dedicated to a single customer.<br>
 <sup>2</sup> 25000 Mbps with Accelerated Networking.
 
+| Feature Name | Support status |
+| --- | --- |
+| [Premium Storage](../../premium-storage-performance.md) | Not Supported |
+| [Premium Storage caching](../../premium-storage-performance.md) | Not Supported |
+| [Live Migration](../../maintenance-and-updates.md) | Supported |
+| [Memory Preserving Updates](../../maintenance-and-updates.md) | Supported |
+| [VM Generation Support](../../generation-2.md) | Generation 1 |
+| [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli) | Supported |
+| [Ephemeral OS Disks](../../ephemeral-os-disks.md) | Not Supported |
+| [Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization) | Not Supported |
+
 ## DSv2-series 11-15
 
 DSv2-series sizes run on the third Generation Intel® Xeon® Platinum 8370C (Ice Lake), the Intel® Xeon® Platinum 8272CL (Cascade Lake), the Intel® Xeon® 8171M 2.1 GHz (Skylake), the Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell), or the Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) processors.
-
-[Premium Storage](../../premium-storage-performance.md): Supported<br>
-[Premium Storage caching](../../premium-storage-performance.md): Supported<br>
-[Live Migration](../../maintenance-and-updates.md): Supported<br>
-[Memory Preserving Updates](../../maintenance-and-updates.md): Supported<br>
-[VM Generation Support](../../generation-2.md): Generation 1 and 2<br>
-[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported <br>
-[Ephemeral OS Disks](../../ephemeral-os-disks.md): Supported <br>
-[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Not Supported <br>
-<br> 
 
 | Size | vCPU | Memory: GiB | Temp storage (SSD) GiB | Max data disks | Max cached and temp storage throughput: IOPS/MBps (cache size in GiB) | Max uncached disk throughput: IOPS/MBps | Max NICs| Expected network bandwidth (Mbps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |---|
@@ -67,5 +58,16 @@ DSv2-series sizes run on the third Generation Intel® Xeon® Platinum 8370C (Ice
 2.  Instance is isolated to the Intel Haswell based hardware and dedicated to a single customer.  
 3. Constrained core sizes available.  
 4. 25,000 Mbps with Accelerated Networking.<br>
+
+| Feature Name | Support status |
+| --- | --- |
+| [Premium Storage](../../premium-storage-performance.md) | Supported |
+| [Premium Storage caching](../../premium-storage-performance.md) | Supported |
+| [Live Migration](../../maintenance-and-updates.md) | Supported |
+| [Memory Preserving Updates](../../maintenance-and-updates.md) | Supported |
+| [VM Generation Support](../../generation-2.md) | Generation 1 and 2 |
+| [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli) | Supported |
+| [Ephemeral OS Disks](../../ephemeral-os-disks.md) | Supported |
+| [Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization) | Not Supported |
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]
