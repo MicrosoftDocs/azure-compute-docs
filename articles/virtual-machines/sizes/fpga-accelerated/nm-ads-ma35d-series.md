@@ -27,17 +27,7 @@ Compared with existing general-purpose CPU or GPU based solutions, the NMads MA3
 | Network        |  5 NICs        |  |
 | Accelerators   |  10 MA35D cards/20 VPUs           | AMD Xilinx Alveo MA35D   |
 
-## Feature support 
-
-- [Premium Storage](/azure/virtual-machines/premium-storage-performance): Supported
-- [Premium Storage caching](/azure/virtual-machines/premium-storage-performance): Supported
-- [Live Migration](/azure/virtual-machines/maintenance-and-updates): Not Supported
-- [Memory Preserving Updates](/azure/virtual-machines/maintenance-and-updates): Not Supported
-- [VM Generation 2 Support](/azure/virtual-machines/generation-2): Supported
-- [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported
-- [Ephemeral OS Disk](/azure/virtual-machines/ephemeral-os-disks): Supported
-- [Temporary local NVMe disks](../../enable-nvme-temp-faqs.yml): Supported
-- [Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Not Supported
+For features supported by this series, see the [Feature support](#feature-support) section.
 
 ## Sizes in series 
 
@@ -100,6 +90,20 @@ Expected network bandwidth is the maximum aggregated bandwidth allocated per VM 
 Upper limits aren't guaranteed. Limits offer guidance for selecting the right VM type for the intended application. Actual network performance depends on several factors including network congestion, application loads, and network settings. For information on optimizing network throughput, see [Optimize network throughput for Azure virtual machines](/azure/virtual-network/virtual-network-optimize-network-bandwidth). 
 
 To achieve the expected network performance on Linux or Windows, you may need to select a specific version or optimize your VM. For more information, see [Bandwidth/Throughput testing (NTTTCP)](/azure/virtual-network/virtual-network-bandwidth-testing). 
+
+## Feature support
+
+|Feature name | Support status |
+| --- | --- |
+|[Premium Storage](/azure/virtual-machines/premium-storage-performance)| Supported |
+|[Premium Storage caching](/azure/virtual-machines/premium-storage-performance)| Supported |
+|[Live Migration](/azure/virtual-machines/maintenance-and-updates)| Not Supported |
+|[Memory Preserving Updates](/azure/virtual-machines/maintenance-and-updates)| Not Supported |
+|[VM Generation 2 Support](/azure/virtual-machines/generation-2)| Supported |
+|[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli)| Supported |
+|[Ephemeral OS Disk](/azure/virtual-machines/ephemeral-os-disks)| Supported |
+|[Temporary local NVMe disks](../../enable-nvme-temp-faqs.yml)| Supported |
+|[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)| Not Supported |
 
 ## Other size information 
 
