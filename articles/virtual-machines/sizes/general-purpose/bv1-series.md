@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 09/24/2024
+ms.date: 03/10/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 # Customer intent: "As a cloud architect, I want to understand the specifications and capabilities of the Bv1 size series, so that I can select the appropriate virtual machine sizes for my workloads based on performance and resource needs."
@@ -21,11 +21,7 @@ Read more about the [B-series CPU credit model](../../b-series-cpu-credit-model/
 ## Host specifications
 [!INCLUDE [bv1-series-specs](./includes/bv1-series-specs.md)]
 
-## Feature support
-[Premium Storage](../../premium-storage-performance.md): Supported <br>[Premium Storage caching](../../premium-storage-performance.md): Not Supported <br>[Live Migration](../../maintenance-and-updates.md): Supported <br>[Memory Preserving Updates](../../maintenance-and-updates.md): Supported <br>[Generation 2 VMs](../../generation-2.md): Supported <br>[Generation 1 VMs](../../generation-2.md): Supported <br>[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported <br>[Ephemeral OS Disk](../../ephemeral-os-disks.md): Supported <br>[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Not Supported <br>
-
-> [!NOTE] 
-> Accelerated Networking is only supported for Standard_B12ms, Standard_B16ms and Standard_B20ms.
+For features supported by this series, see the [Feature support](#feature-support) section.
 
 ## Sizes in series
 
@@ -68,7 +64,7 @@ Base CPU performance, Credits, and other CPU bursting related info
 | Standard_B20ms | 17% | 600 | 202 | 4867 |
 
 #### CPU Burst resources
-- <sup>1</sup>The base CPU performance metric hasn't changed. The updated (2024) numbers were normalized using a `0 – 100%` scale. Previously, the scale was `0 – (vCPU x 100%)`.
+- <sup>1</sup>The base CPU performance metric hasn't changed. The updated (2024) numbers were normalized using a `0 ΓÇô 100%` scale. Previously, the scale was `0 ΓÇô (vCPU x 100%)`.
 - B-series VMs can burst their disk performance and get up to their bursting max for up to 30 minutes at a time.
 - B1ls is supported only on Linux
 - Learn more about [CPU bursting](../../b-series-cpu-credit-model/b-series-cpu-credit-model.md)
@@ -166,6 +162,24 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 > No accelerators are present in this series.
 
 ---
+
+
+
+## Feature support
+|Feature name | Support status |
+| --- | --- |
+|[Premium Storage](../../premium-storage-performance.md)| Supported |
+|[Premium Storage caching](../../premium-storage-performance.md)| Not Supported |
+|[Live Migration](../../maintenance-and-updates.md)| Supported |
+|[Memory Preserving Updates](../../maintenance-and-updates.md)| Supported |
+|[Generation 2 VMs](../../generation-2.md)| Supported |
+|[Generation 1 VMs](../../generation-2.md)| Supported |
+|[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli)| Supported |
+|[Ephemeral OS Disk](../../ephemeral-os-disks.md)| Supported |
+|[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)| Not Supported |
+
+> [!NOTE] 
+> [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli) is only supported for Standard_B12ms, Standard_B16ms and Standard_B20ms.
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]
 
