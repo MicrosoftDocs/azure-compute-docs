@@ -16,6 +16,6 @@ ms.custom: include file
 | Processor      | 2 - 192 vCPUs       | Intel Xeon Platinum 8573C (Emerald Rapids) [x86-64]                               |
 | Memory         | 8 - 768 GiB          |                                  |
 | Local Storage  | 1 - 6 Disks           | 110 - 1,760 GiB/Disk <br>37,500 - 3,600,000 IOPS (RR) <br>180 - 17,280 MBps (RR)                               |
-| Remote Storage | 8 - 64 Disks | 3,750 - 400,400 IOPS <br>106 - 12,000 MBps <br>Disk Types: [Standard SDD/HDD](../../..//disks-types#standard-ssds), [Premium SSD](../../../disks-types.md#premium-ssds), [Premium SSD v2](../../../disks-types.md#premium-ssd-v2) |
+| Remote Storage | 8 - 64 Disks | 3,750 - 400,400 IOPS <br>106 - 12,000 MBps <br>Disk Types: [Standard SDD/HDD](../../../disks-types#standard-ssds), [Premium SSD](../../../disks-types.md#premium-ssds), [Premium SSD v2](../../../disks-types.md#premium-ssd-v2) |
 | Network        | 2 - 8 NICs          | 12,500 - 82,000 Mbps <br>Interfaces: NetVSC, ConnectX |
 | Accelerators   | None              |                                   |

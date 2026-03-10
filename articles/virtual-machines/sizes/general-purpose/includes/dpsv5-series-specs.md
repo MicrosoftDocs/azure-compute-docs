@@ -16,6 +16,6 @@ ms.custom: include file
 | Processor      | 2 - 64 vCPUs       | Ampere Altra [Arm64]                                               |
 | Memory         | 8 - 208 GiB          |                                                    |
 | Local Storage  |  None     |  |
-| Remote Storage | 4 - 32 Disks | 3,750 - 80,000 IOPS <br>85 - 1,735 MBps <br>Disk Types: [Standard SDD/HDD](../../..//disks-types#standard-ssds), [Premium SSD](../../../disks-types.md#premium-ssds) |
+| Remote Storage | 4 - 32 Disks | 3,750 - 80,000 IOPS <br>85 - 1,735 MBps <br>Disk Types: [Standard SDD/HDD](../../../disks-types#standard-ssds), [Premium SSD](../../../disks-types.md#premium-ssds) |
 | Network        | 2 - 8 NICs          | 12,500 - 40,000 Mbps <br>Interfaces: NetVSC, ConnectX |
 | Accelerators   | None              |                                                     |

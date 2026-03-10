@@ -17,6 +17,6 @@ ms.custom: include file
 | Processor      | 2 - 248 vCPUs       |Intel Xeon 6 6973PC (Granite Rapids) [x86-64]  |
 | Memory         | 4 - 496 GiB          |                                  |
 | Local Storage  | None           |                                |
-| Remote Storage | 10 - 64 Disks | 4,000 - 396,800 IOPS <br>115 - 13,145 MBps <br>Disk Types: [Standard SDD/HDD](../../..//disks-types#standard-ssds), [Premium SSD](../../../disks-types.md#premium-ssds), [Premium SSD v2](../../../disks-types.md#premium-ssd-v2), [Ultra Disk](../../../disks-types.md#ultra-disks) |
+| Remote Storage | 10 - 64 Disks | 4,000 - 396,800 IOPS <br>115 - 13,145 MBps <br>Disk Types: [Standard SDD/HDD](../../../disks-types#standard-ssds), [Premium SSD](../../../disks-types.md#premium-ssds), [Premium SSD v2](../../../disks-types.md#premium-ssd-v2), [Ultra Disk](../../../disks-types.md#ultra-disks) |
 | Network        | 3 - 15 NICs          | 16,000 - 150,000 Mbps <br>Interfaces: NetVSC, ConnectX |
 | Accelerators   | None              |                                   |

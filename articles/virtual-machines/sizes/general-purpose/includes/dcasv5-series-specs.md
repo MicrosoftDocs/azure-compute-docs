@@ -16,6 +16,6 @@ ms.custom: include file
 | Processor      | 2 - 96 vCPUs       | AMD EPYC (Milan) [x86-64]                               |
 | Memory         | 8 - 384 GiB          |                                  |
 | Local Storage  | None           |                                |
-| Remote Storage | 4 - 32 Disks    | 3,750 - 80,000 IOPS <br>82 - 1,600 MBps <br>Disk Types: [Standard SDD/HDD](../../..//disks-types#standard-ssds), [Premium SSD](../../../disks-types.md#premium-ssds)   |
+| Remote Storage | 4 - 32 Disks    | 3,750 - 80,000 IOPS <br>82 - 1,600 MBps <br>Disk Types: [Standard SDD/HDD](../../../disks-types#standard-ssds), [Premium SSD](../../../disks-types.md#premium-ssds)   |
 | Network        | 2 - 8 NICs          | 3,000 - 20,000 Mbps <br>Interfaces: NetVSC, ConnectX                          |
 | Accelerators   | None              |                                   |
