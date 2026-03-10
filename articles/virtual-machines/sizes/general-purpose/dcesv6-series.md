@@ -5,7 +5,7 @@ author: simranparkhe
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 04/15/2025
+ms.date: 03/10/2026
 ms.author: simranparkhe
 ms.reviewer: simranparkhe
 # Customer intent: As a cloud architect, I want to review the specifications and features of the DCesv6-series virtual machine sizes, so that I can select the appropriate size for my applications based on performance and resource needs.
@@ -119,15 +119,17 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 
 ## Feature support
 
-- [Premium Storage](../../premium-storage-performance.md): Supported <br>
-- [Premium Storage caching](../../premium-storage-performance.md): Supported <br>
-- [Live Migration](../../maintenance-and-updates.md): Not Supported <br>
-- [Memory Preserving Updates](../../maintenance-and-updates.md): Not Supported <br>
-- [Generation 2 VMs](../../generation-2.md): Supported <br>
-- [Generation 1 VMs](../../generation-2.md): Not Supported <br>
-- [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Not Supported <br>
-- [Ephemeral OS Disk](../../ephemeral-os-disks.md): Not Supported <br>
-- [Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Not Supported <br>
+|Feature name | Support status |
+| --- | --- |
+|[Premium Storage](../../premium-storage-performance.md)| Supported |
+|[Premium Storage caching](../../premium-storage-performance.md)| Supported |
+|[Live Migration](../../maintenance-and-updates.md)| Not Supported |
+|[Memory Preserving Updates](../../maintenance-and-updates.md)| Not Supported |
+|[Generation 2 VMs](../../generation-2.md)| Supported |
+|[Generation 1 VMs](../../generation-2.md)| Not Supported |
+|[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli)| Not Supported |
+|[Ephemeral OS Disk](../../ephemeral-os-disks.md)| Not Supported |
+|[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)| Not Supported |
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]
 

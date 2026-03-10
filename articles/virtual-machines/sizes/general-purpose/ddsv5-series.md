@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 07/29/2024
+ms.date: 03/10/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 # Customer intent: As a cloud architect, I want to evaluate the specifications and capabilities of the Ddsv5 series sizes, so that I can select the appropriate virtual machine type for my workloads and optimize performance.
@@ -133,14 +133,16 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 
 ## Feature support
 
-[Premium Storage](../../premium-storage-performance.md): Supported<br>
-[Premium Storage caching](../../premium-storage-performance.md): Supported<br>
-[Live Migration](../../maintenance-and-updates.md#live-migration): Supported<br>
-[Memory Preserving Updates](../../maintenance-and-updates.md): Supported<br>
-[VM Generation Support](../../generation-2.md): Generation 1 and 2<br>
-[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli)1: Required<br>
-[Ephemeral OS Disks](../../ephemeral-os-disks.md): Supported<br>
-[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Supported<br>
+|Feature name | Support status |
+| --- | --- |
+|[Premium Storage](../../premium-storage-performance.md)| Supported |
+|[Premium Storage caching](../../premium-storage-performance.md)| Supported |
+|[Live Migration](../../maintenance-and-updates.md#live-migration)| Supported |
+|[Memory Preserving Updates](../../maintenance-and-updates.md)| Supported |
+|[VM Generation Support](../../generation-2.md)| Generation 1 and 2 |
+|[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli)1| Required |
+|[Ephemeral OS Disks](../../ephemeral-os-disks.md)| Supported |
+|[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)| Supported |
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]
 

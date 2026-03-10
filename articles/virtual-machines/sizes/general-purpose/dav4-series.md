@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 02/27/2026
+ms.date: 03/10/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 # Customer intent: As a cloud architect, I want to understand the specifications and capabilities of Dav4 series virtual machines, so that I can select the appropriate size for my application workload requirements.
@@ -129,15 +129,17 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 ---
 
 ## Feature support
-- [Premium Storage](../../premium-storage-performance.md): Not Supported 
-- [Premium Storage caching](../../premium-storage-performance.md): Not Supported 
-- [Live Migration](../../maintenance-and-updates.md): Supported 
-- [Memory Preserving Updates](../../maintenance-and-updates.md): Supported 
-- [Generation 2 VMs](../../generation-2.md): Supported 
-- [Generation 1 VMs](../../generation-2.md): Supported 
-- [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported 
-- [Ephemeral OS Disk](../../ephemeral-os-disks.md): Supported 
-- [Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Not Supported 
+|Feature name | Support status |
+| --- | --- |
+|[Premium Storage](../../premium-storage-performance.md)| Not Supported |
+|[Premium Storage caching](../../premium-storage-performance.md)| Not Supported |
+|[Live Migration](../../maintenance-and-updates.md)| Supported |
+|[Memory Preserving Updates](../../maintenance-and-updates.md)| Supported |
+|[Generation 2 VMs](../../generation-2.md)| Supported |
+|[Generation 1 VMs](../../generation-2.md)| Supported |
+|[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli)| Supported |
+|[Ephemeral OS Disk](../../ephemeral-os-disks.md)| Supported |
+|[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)| Not Supported |
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]
 

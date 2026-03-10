@@ -5,7 +5,7 @@ author: simranparkhe
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 02/17/2026
+ms.date: 03/10/2026
 ms.author: simranparkhe
 ms.reviewer: simranparkhe
 # Customer intent: As a cloud architect, I want to review the specifications and features of the DCesv6-series virtual machine sizes, so that I can select the appropriate size for my applications based on performance and resource needs.
@@ -13,9 +13,9 @@ ms.reviewer: simranparkhe
 
 # DCedsv6-series sizes
 
-The DCedsv6-series are [Azure confidential VMs](/azure/confidential-computing/confidential-vm-overview) that protect the confidentiality and integrity of code and data while it's being processed. Organizations can use these VMs to seamlessly bring confidential workloads to the cloud without any code changes to the application. These machines are powered by Intel® 5th Generation Xeon® Scalable processors reaching an all-core turbo clock speed of 3.0 GHz and [Intel® AMX](https://www.intel.com/content/www/us/en/products/docs/accelerator-engines/advanced-matrix-extensions/overview.html) for AI acceleration. 
+The DCedsv6-series are [Azure confidential VMs](/azure/confidential-computing/confidential-vm-overview) that protect the confidentiality and integrity of code and data while it's being processed. Organizations can use these VMs to seamlessly bring confidential workloads to the cloud without any code changes to the application. These machines are powered by Intel┬« 5th Generation Xeon┬« Scalable processors reaching an all-core turbo clock speed of 3.0 GHz and [Intel┬« AMX](https://www.intel.com/content/www/us/en/products/docs/accelerator-engines/advanced-matrix-extensions/overview.html) for AI acceleration. 
 
-Featuring [Intel® Trust Domain Extensions (TDX)](https://www.intel.com/content/www/us/en/developer/tools/trust-domain-extensions/overview.html), these VMs are hardened from the cloud virtualized environment by denying the hypervisor, other host management code, and administrators access to the VM memory and state. It helps to protect VMs against a broad range of sophisticated [hardware and software attacks](https://www.intel.com/content/www/us/en/developer/articles/technical/intel-trust-domain-extensions.html). 
+Featuring [Intel┬« Trust Domain Extensions (TDX)](https://www.intel.com/content/www/us/en/developer/tools/trust-domain-extensions/overview.html), these VMs are hardened from the cloud virtualized environment by denying the hypervisor, other host management code, and administrators access to the VM memory and state. It helps to protect VMs against a broad range of sophisticated [hardware and software attacks](https://www.intel.com/content/www/us/en/developer/articles/technical/intel-trust-domain-extensions.html). 
 
 These VMs have native support for [confidential disk encryption](/azure/virtual-machines/disk-encryption-overview) meaning organizations can encrypt their VM disks at boot with either a customer-managed key (CMK), or platform-managed key (PMK). This feature is fully integrated with [Azure Key Vault](/azure/key-vault/general/overview) or [Azure Managed HSM](/azure/key-vault/managed-hsm/overview) with validation for FIPS 140-2 Level 3. 
 
@@ -139,14 +139,16 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 
 ## Feature support
 
-- [Premium Storage](../../premium-storage-performance.md): Supported <br>
-- [Premium Storage caching](../../premium-storage-performance.md): Supported <br>
-- [Live Migration](../../maintenance-and-updates.md): Not Supported <br>
-- [Memory Preserving Updates](../../maintenance-and-updates.md): Not Supported <br>
-- [Generation 2 VMs](../../generation-2.md): Supported <br>
-- [Generation 1 VMs](../../generation-2.md): Not Supported <br>
-- [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Not Supported <br>
-- [Ephemeral OS Disk](../../ephemeral-os-disks.md): Not Supported <br>
-- [Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Not Supported <br>
+|Feature name | Support status |
+| --- | --- |
+|[Premium Storage](../../premium-storage-performance.md)| Supported |
+|[Premium Storage caching](../../premium-storage-performance.md)| Supported |
+|[Live Migration](../../maintenance-and-updates.md)| Not Supported |
+|[Memory Preserving Updates](../../maintenance-and-updates.md)| Not Supported |
+|[Generation 2 VMs](../../generation-2.md)| Supported |
+|[Generation 1 VMs](../../generation-2.md)| Not Supported |
+|[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli)| Not Supported |
+|[Ephemeral OS Disk](../../ephemeral-os-disks.md)| Not Supported |
+|[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)| Not Supported |
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]

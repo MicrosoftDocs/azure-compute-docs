@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 07/29/2024
+ms.date: 03/10/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 # Customer intent: As a cloud architect, I want to understand the specifications and features of the Dasv6 series virtual machines, so that I can select the appropriate size for my workload requirements.
@@ -129,7 +129,7 @@ Accelerator (GPUs, FPGAs, etc.) info for each size in the Dasv6-series.
 
 
 > [!NOTE]
-> This VM series will only work on OS images that support NVMe. If your current OS image doesn't have NVMe support, you’ll see an error message. [NVMe](../../../virtual-machines/enable-nvme-interface.md) support is available on the most popular OS images, and we're continuously improving OS image compatibility.
+> This VM series will only work on OS images that support NVMe. If your current OS image doesn't have NVMe support, you'll see an error message. [NVMe](../../../virtual-machines/enable-nvme-interface.md) support is available on the most popular OS images, and we're continuously improving OS image compatibility.
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]
 

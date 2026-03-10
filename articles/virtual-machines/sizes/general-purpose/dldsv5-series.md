@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 07/18/2024
+ms.date: 03/10/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 # Customer intent: As a cloud infrastructure planner, I want to understand the specifications and features of the Dldsv5 virtual machine sizes, so that I can select the appropriate size for my workload requirements and optimize resource allocation.
@@ -132,15 +132,17 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 
 
 ## Feature support
-- [Premium Storage](../../premium-storage-performance.md): Supported
-- [Premium Storage caching](../../premium-storage-performance.md): Supported
-- [Live Migration](../../maintenance-and-updates.md#live-migration): Supported
-- [Memory Preserving Updates](../../maintenance-and-updates.md): Supported
-- [VM Generation Support](../../generation-2.md): Generation 1 and 2
-- [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Required
-- [Ephemeral OS Disks](../../ephemeral-os-disks.md): Supported
-- [Local temporary storage](../../overview.md#local-temporary-storage): Supported
-- [Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Supported
+|Feature name | Support status |
+| --- | --- |
+|[Premium Storage](../../premium-storage-performance.md)| Supported |
+|[Premium Storage caching](../../premium-storage-performance.md)| Supported |
+|[Live Migration](../../maintenance-and-updates.md#live-migration)| Supported |
+|[Memory Preserving Updates](../../maintenance-and-updates.md)| Supported |
+|[VM Generation Support](../../generation-2.md)| Generation 1 and 2 |
+|[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli)| Required |
+|[Ephemeral OS Disks](../../ephemeral-os-disks.md)| Supported |
+|[Local temporary storage](../../overview.md#local-temporary-storage)| Supported |
+|[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)| Supported |
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]
 

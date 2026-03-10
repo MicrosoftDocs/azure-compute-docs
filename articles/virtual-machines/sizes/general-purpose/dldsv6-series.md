@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 01/28/2026
+ms.date: 03/10/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 # Customer intent: "As a cloud architect, I want to review the specifications of the Dldsv6 size series, so that I can select the most appropriate virtual machine type for my application workloads and ensure optimal performance."
@@ -137,17 +137,19 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 
 
 ## Feature support
-- [Premium Storage](../../premium-storage-performance.md): Supported
-- [Premium Storage caching](../../premium-storage-performance.md): Supported
-- [Live Migration](../../maintenance-and-updates.md#live-migration): Supported
-- [Memory Preserving Updates](../../maintenance-and-updates.md): Supported
-- [Generation 2 VMs](../../generation-2.md): Supported
-- [Generation 1 VMs](../../generation-2.md): Not Supported
-- [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported
-- [Ephemeral OS Disk](../../ephemeral-os-disks.md): Supported
-- [Temporary local NVMe disks](../../enable-nvme-temp-faqs.yml): Supported
-- [Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Supported
-- [Azure Disk Encryption for Linux VMs](../../../virtual-machines/linux/disk-encryption-linux.md?tabs=azcliazure%2Cenableadecli%2Cefacli%2Cadedatacli#restrictions): Not Supported
-- [Azure Disk Encryption for Windows VMs](../../../virtual-machines/windows/disk-encryption-windows.md#restrictions): Not Supported
+|Feature name | Support status |
+| --- | --- |
+|[Premium Storage](../../premium-storage-performance.md)| Supported |
+|[Premium Storage caching](../../premium-storage-performance.md)| Supported |
+|[Live Migration](../../maintenance-and-updates.md#live-migration)| Supported |
+|[Memory Preserving Updates](../../maintenance-and-updates.md)| Supported |
+|[Generation 2 VMs](../../generation-2.md)| Supported |
+|[Generation 1 VMs](../../generation-2.md)| Not Supported |
+|[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli)| Supported |
+|[Ephemeral OS Disk](../../ephemeral-os-disks.md)| Supported |
+|[Temporary local NVMe disks](../../enable-nvme-temp-faqs.yml)| Supported |
+|[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)| Supported |
+|[Azure Disk Encryption for Linux VMs](../../../virtual-machines/linux/disk-encryption-linux.md?tabs=azcliazure%2Cenableadecli%2Cefacli%2Cadedatacli#restrictions)| Not Supported |
+|[Azure Disk Encryption for Windows VMs](../../../virtual-machines/windows/disk-encryption-windows.md#restrictions)| Not Supported |
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]

@@ -5,7 +5,7 @@ author: linuxelf001
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 09/01/2025
+ms.date: 03/10/2026
 ms.author: raginjup
 ms.reviewer: raginjup
 ---
@@ -103,15 +103,17 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 
 
 ## Feature support
-- [Premium Storage](../../premium-storage-performance.md): Supported
-- [Premium Storage caching](../../premium-storage-performance.md): Supported
-- [Live Migration](../../maintenance-and-updates.md): Not Supported
-- [Memory Preserving Updates](../../maintenance-and-updates.md): Not Supported
-- [Generation 2 VMs](../../generation-2.md): Supported
-- [Generation 1 VMs](../../generation-2.md): Not Supported
-- [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Not Supported
-- [Ephemeral OS Disk](../../ephemeral-os-disks.md): Supported
-- [Temporary local NVMe disks](../../enable-nvme-temp-faqs.yml): Supported
-- [Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Not Supported
+|Feature name | Support status |
+| --- | --- |
+|[Premium Storage](../../premium-storage-performance.md)| Supported |
+|[Premium Storage caching](../../premium-storage-performance.md)| Supported |
+|[Live Migration](../../maintenance-and-updates.md)| Not Supported |
+|[Memory Preserving Updates](../../maintenance-and-updates.md)| Not Supported |
+|[Generation 2 VMs](../../generation-2.md)| Supported |
+|[Generation 1 VMs](../../generation-2.md)| Not Supported |
+|[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli)| Not Supported |
+|[Ephemeral OS Disk](../../ephemeral-os-disks.md)| Supported |
+|[Temporary local NVMe disks](../../enable-nvme-temp-faqs.yml)| Supported |
+|[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)| Not Supported |
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]
