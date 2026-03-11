@@ -89,7 +89,7 @@ The following diagram depicts several container groups deployed to a subnet dele
 Customers can deploy scalable containerized applications using Azure Container Instances and distribute incoming traffic evenly across multiple container groups using Azure Standard Load Balancer.
 
 > [!IMPORTANT]
-> To take advantage of load balancing capabilities the use of [ARM](https://learn.microsoft.com/azure/templates/microsoft.network/loadbalancers/backendaddresspools?pivots=deployment-language-arm-template), [Bicep](https://learn.microsoft.com/azure/templates/microsoft.network/loadbalancers/backendaddresspools?pivots=deployment-language-bicep), [Terraform](https://learn.microsoft.com/azure/templates/microsoft.network/loadbalancers/backendaddresspools?pivots=deployment-language-terraform), [CLI](#example-add-aci-instances-to-backendpool-using-azure-cli) or [Powershell](#example-add-aci-instances-to-backendpool-using-powershell) is required to set subnet.id/name.
+> To take advantage of load balancing capabilities the use of [ARM](https://learn.microsoft.com/azure/templates/microsoft.network/loadbalancers/backendaddresspools?pivots=deployment-language-arm-template), [Bicep](https://learn.microsoft.com/azure/templates/microsoft.network/loadbalancers/backendaddresspools?pivots=deployment-language-bicep), [Terraform](https://learn.microsoft.com/azure/templates/microsoft.network/loadbalancers/backendaddresspools?pivots=deployment-language-terraform), [CLI](#example-add-aci-instances-to-backendpool-using-azure-cli) or [PowerShell](#example-add-aci-instances-to-backendpool-using-powershell) is required to set subnet.id/name.
 
 ### Prerequisites
 
