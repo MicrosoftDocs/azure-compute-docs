@@ -15,7 +15,7 @@ ms.custom: include file
 |---|---|---|
 | Processor      | 2 - 64 vCPUs       | Ampere Altra [Arm64]                                               |
 | Memory         | 4 - 128 GiB          |                                                    |
-| Local Storage  | 1 Disk     | 75 - 2,400 GiB <br>9,375 - 300,000 IOPS (RR) <br>125 - 4,000 MBps (RR)|
-| Remote Storage | 4 - 32 Disks | 3,750 - 80,000 IOPS <br>85 - 1,735 MBps <br>Disk Types: [Premium SSD](../../../disks-types.md#premium-ssds) |
+| Local Storage  | 1 Disk     | 75 - 2,400 GiB <br>9,000 - 300,000 IOPS <br>125 - 4,000 MBps|
+| Remote Storage | 4 - 32 Disks | 4,000 - 80,000 IOPS <br>85 - 1,735 MBps <br>Disk Types: [Premium SSD](../../../disks-types.md#premium-ssds) |
 | Network        | 2 - 8 NICs          | 12,500 - 40,000 Mbps <br>Interfaces: NetVSC, ConnectX                                            |
 | Accelerators   | None              |                                                     |
