@@ -5,7 +5,7 @@ author: archatC
 ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.date: 07/29/2025
+ms.date: 03/09/2026
 ms.author: archat
 ms.reviewer: mattmcinnes
 ms.custom: include file
@@ -15,8 +15,7 @@ ms.custom: include file
 |---|---|---|
 | Processor      | 2 - 160 vCPUs       | AMD EPYC 9005 (Turin) [x86-64]                               |
 | Memory         | 4 - 320 GiB          |                                  |
-| Local Storage  | 1 - 6 Disks           | 110 - 2200 GiB <br>37500 - 3000000 IOPS (RR) <br>280 - 22400 MBps (RR)                               |
-| Remote Storage <br /> [Premium SSD](../../../disks-types.md#premium-ssds) | 10 - 64 Disks    | 4000 - 212000 IOPS <br>118 - 10344 MBps   |
-| Remote Storage <br /> [Premium SSD v2](../../../disks-types.md#premium-ssd-v2) / [Ultra Disks](../../../disks-types.md#ultra-disks) | 10 - 64 Disks    | 4400 - 310000 IOPS <br>136 - 10356 MBps   |
-| Network        | 2 - 15 NICs          | 16000 - 80000 Mbps                          |
+| Local Storage  | 1 - 6 Disks           | 110 - 2,200 GiB <br>37,500 - 3,000,000 IOPS (RR) <br>280 - 22,400 MBps (RR)                               |
+| Remote Storage | 10 - 64 Disks | 4,000 - 310,000 IOPS <br>118 - 10,356 MBps <br>Disk Types: [Standard SDD/HDD](../../../disks-types.md#standard-ssds), [Premium SSD](../../../disks-types.md#premium-ssds), [Premium SSD v2](../../../disks-types.md#premium-ssd-v2) |
+| Network        | 2 - 15 NICs          | 16,000 - 80,000 Mbps <br>Interfaces: NetVSC, ConnectX |
 | Accelerators   | None              |                                   |
