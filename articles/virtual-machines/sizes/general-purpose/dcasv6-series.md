@@ -54,7 +54,7 @@ Local (temp) storage info for each size
 
 #### Table definitions
 
-- Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
+- Storage capacity is shown in units of GiB or 1,024^3 bytes. When you compare disks measured in GB (1,000^3 bytes) to disks measured in GiB (1,024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1,023 GiB = 1,098.4 GB.
 - Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
 - Data disks can operate in cached or uncached modes. For cached data disk operation, the host cache mode is set to ReadOnly or ReadWrite. For uncached data disk operation, the host cache mode is set to None.
 - To learn how to get the best storage performance for your VMs, see [Virtual machine and disk performance](../../../virtual-machines/disks-performance.md).
@@ -64,16 +64,16 @@ Local (temp) storage info for each size
 
 Network interface info for each size
 
-| Size Name | Max NICs (Qty.) | Max Network Bandwidth (Mb/s) |
+| Size Name | Max NICs (Qty.) | Max Network Bandwidth (Mbps) |
 | --- | --- | --- |
-| Standard_DC2as_v6 | 2 | 12500 |
-| Standard_DC4as_v6 | 2 | 12500 |
-| Standard_DC8as_v6 | 4 | 12500 |
-| Standard_DC16as_v6 | 8 | 12500 |
-| Standard_DC32as_v6 | 8 | 16000 |
-| Standard_DC48as_v6 | 8 | 24000 |
-| Standard_DC64as_v6 | 8 | 30000 |
-| Standard_DC96as_v6 | 8 | 34000 |
+| Standard_DC2as_v6 | 2 | 12,500 |
+| Standard_DC4as_v6 | 2 | 12,500 |
+| Standard_DC8as_v6 | 4 | 12,500 |
+| Standard_DC16as_v6 | 8 | 12,500 |
+| Standard_DC32as_v6 | 8 | 16,000 |
+| Standard_DC48as_v6 | 8 | 24,000 |
+| Standard_DC64as_v6 | 8 | 30,000 |
+| Standard_DC96as_v6 | 8 | 34,000 |
 
 #### Networking resources
 - [Virtual networks and virtual machines in Azure](/azure/virtual-network/network-overview)

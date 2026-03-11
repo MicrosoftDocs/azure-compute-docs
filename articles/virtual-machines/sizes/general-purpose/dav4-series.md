@@ -44,16 +44,16 @@ vCPUs (Qty.) and Memory for each size
 
 Local (temp) storage info for each size
 
-| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read (RR)<sup>1</sup> IOPS | Temp Disk Random Read (RR)<sup>1</sup> Throughput (MB/s) | Temp Disk Random Write (RW)<sup>1</sup> Throughput (MB/s) |
+| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read (RR)<sup>1</sup> IOPS | Temp Disk Random Read (RR)<sup>1</sup> Throughput (MBps) | Temp Disk Random Write (RW)<sup>1</sup> Throughput (MBps) |
 | --- | --- | --- | --- | --- | --- |
-| Standard_D2a_v4 | 1 | 50 | 3000 | 46 | 23 |
-| Standard_D4a_v4 | 1 | 100 | 6000 | 93 | 46 |
-| Standard_D8a_v4 | 1 | 200 | 12000 | 187 | 93 |
-| Standard_D16a_v4 | 1 | 400 | 24000 | 375 | 187 |
-| Standard_D32a_v4 | 1 | 800 | 48000 | 750 | 375 |
-| Standard_D48a_v4 | 1 | 1200 | 96000 | 1000 | 500 |
-| Standard_D64a_v4 | 1 | 1600 | 96000 | 1000 | 500 |
-| Standard_D96a_v4 | 1 | 2400 | 96000 | 1000 | 500 |
+| Standard_D2a_v4 | 1 | 50 | 3,000 | 46 | 23 |
+| Standard_D4a_v4 | 1 | 100 | 6,000 | 93 | 46 |
+| Standard_D8a_v4 | 1 | 200 | 12,000 | 187 | 93 |
+| Standard_D16a_v4 | 1 | 400 | 24,000 | 375 | 187 |
+| Standard_D32a_v4 | 1 | 800 | 48,000 | 750 | 375 |
+| Standard_D48a_v4 | 1 | 1,200 | 96,000 | 1,000 | 500 |
+| Standard_D64a_v4 | 1 | 1,600 | 96,000 | 1,000 | 500 |
+| Standard_D96a_v4 | 1 | 2,400 | 96,000 | 1,000 | 500 |
 
 #### Storage resources
 - [Introduction to Azure Managed Disks](../../../virtual-machines/managed-disks-overview.md)
@@ -62,7 +62,7 @@ Local (temp) storage info for each size
 
 #### Table definitions
 - <sup>1</sup>Temp disk speed often differs between RR (Random Read) and RW (Random Write) operations. RR operations are typically faster than RW operations. The RW speed is usually slower than the RR speed on series where only the RR speed value is listed.
-- Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
+- Storage capacity is shown in units of GiB or 1,024^3 bytes. When you compare disks measured in GB (1,000^3 bytes) to disks measured in GiB (1,024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1,023 GiB = 1,098.4 GB.
 - Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
 - To learn how to get the best storage performance for your VMs, see [Virtual machine and disk performance](../../../virtual-machines/disks-performance.md).
 
@@ -70,16 +70,16 @@ Local (temp) storage info for each size
 
 Remote (uncached) storage info for each size
 
-| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD IOPS | Uncached Premium SSD Throughput (MB/s) | Uncached Premium SSD Burst<sup>1</sup> IOPS | Uncached Premium SSD Burst<sup>1</sup> Throughput (MB/s) |
+| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD IOPS | Uncached Premium SSD Throughput (MBps) | Uncached Premium SSD Burst<sup>1</sup> IOPS | Uncached Premium SSD Burst<sup>1</sup> Throughput (MBps) |
 | --- | --- | --- | --- | --- | --- |
-| Standard_D2a_v4 | 4 | 3200 | 48 | 4000 | 200 |
-| Standard_D4a_v4 | 8 | 6400 | 96 | 8000 | 200 |
-| Standard_D8a_v4 | 16 | 12800 | 192 | 16000 | 400 |
-| Standard_D16a_v4 | 32 | 25600 | 384 | 32000 | 800 |
-| Standard_D32a_v4 | 32 | 51200 | 768 | 64000 | 1600 |
-| Standard_D48a_v4 | 32 | 76800 | 1148 | 80000 | 2000 |
-| Standard_D64a_v4 | 32 | 80000 | 1200 | 80000 | 2000 |
-| Standard_D96a_v4 | 32 | 80000 | 1200 | 80000 | 2000 |
+| Standard_D2a_v4 | 4 | 3,200 | 48 | 4,000 | 200 |
+| Standard_D4a_v4 | 8 | 6,400 | 96 | 8,000 | 200 |
+| Standard_D8a_v4 | 16 | 12,800 | 192 | 16,000 | 400 |
+| Standard_D16a_v4 | 32 | 25,600 | 384 | 32,000 | 800 |
+| Standard_D32a_v4 | 32 | 51,200 | 768 | 64,000 | 1,600 |
+| Standard_D48a_v4 | 32 | 76,800 | 1,148 | 80,000 | 2000 |
+| Standard_D64a_v4 | 32 | 80,000 | 1,200 | 80,000 | 2000 |
+| Standard_D96a_v4 | 32 | 80,000 | 1,200 | 80,000 | 2000 |
 
 #### Storage resources
 - [Introduction to Azure Managed Disks](../../../virtual-machines/managed-disks-overview.md)
@@ -89,7 +89,7 @@ Remote (uncached) storage info for each size
 #### Table definitions
 - <sup>1</sup>Some sizes support [bursting](../../disk-bursting.md) to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.
 
-- Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
+- Storage capacity is shown in units of GiB or 1,024^3 bytes. When you compare disks measured in GB (1,000^3 bytes) to disks measured in GiB (1,024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1,023 GiB = 1,098.4 GB.
 - Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
 - Data disks can operate in cached or uncached modes. For cached data disk operation, the host cache mode is set to ReadOnly or ReadWrite. For uncached data disk operation, the host cache mode is set to None.
 - To learn how to get the best storage performance for your VMs, see [Virtual machine and disk performance](../../../virtual-machines/disks-performance.md).
@@ -99,16 +99,16 @@ Remote (uncached) storage info for each size
 
 Network interface info for each size
 
-| Size Name | Max NICs (Qty.) | Max Network Bandwidth (Mb/s) |
+| Size Name | Max NICs (Qty.) | Max Network Bandwidth (Mbps) |
 | --- | --- | --- |
 | Standard_D2a_v4 | 2 | 2000 |
-| Standard_D4a_v4 | 2 | 4000 |
-| Standard_D8a_v4 | 4 | 8000 |
-| Standard_D16a_v4 | 8 | 10000 |
-| Standard_D32a_v4 | 8 | 16000 |
-| Standard_D48a_v4 | 8 | 24000 |
-| Standard_D64a_v4 | 8 | 32000 |
-| Standard_D96a_v4 | 8 | 40000 |
+| Standard_D4a_v4 | 2 | 4,000 |
+| Standard_D8a_v4 | 4 | 8,000 |
+| Standard_D16a_v4 | 8 | 10,000 |
+| Standard_D32a_v4 | 8 | 16,000 |
+| Standard_D48a_v4 | 8 | 24,000 |
+| Standard_D64a_v4 | 8 | 32,000 |
+| Standard_D96a_v4 | 8 | 40,000 |
 
 #### Networking resources
 - [Virtual networks and virtual machines in Azure](/azure/virtual-network/network-overview)

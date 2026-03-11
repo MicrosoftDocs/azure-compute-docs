@@ -6,9 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
-ms.date: 11/17/2025
-ms.update-cycle: 1095-days
-# Customer intent: As a cloud architect, I want to deploy container groups into an Azure virtual network so that I can enable secure communication between my containerized applications and other resources while ensuring proper network configurations and compliance with limitations.
+ms.date: 08/29/2024
 ---
 
 # Virtual network scenarios and resources
@@ -16,28 +14,28 @@ ms.update-cycle: 1095-days
 > [!IMPORTANT]
 > If you deploy your container group into a virtual network, you must use a NAT gateway for outbound connectivity. This is the only supported configuration for outbound connectivity from your container group in a virtual network. See [Configure a NAT gateway for static IP address for outbound traffic from a container group](./container-instances-nat-gateway.md) for more information on how to configure this.
 
-[Azure Virtual Network](/azure/virtual-network/virtual-networks-overview) provides secure, private networking for your Azure and on-premises resources. By deploying container groups into an Azure virtual network, your containers can communicate securely with other resources in the virtual network. 
+[Azure Virtual Network](/azure/virtual-network/virtual-networks-overview) provides secure, private networking for your Azure and on-premises resources. By deploying container groups into an Azure virtual network, your containers can communicate securely with other resources in the virtual network.
 
 This article provides background about virtual network scenarios, limitations, and resources. For deployment examples using the Azure CLI, see [Deploy container instances into an Azure virtual network](container-instances-vnet.md).
 
 > [!IMPORTANT]
-> Container group deployment to a virtual network is generally available for Linux and Windows containers, in most regions where Azure Container Instances is available. For details, see [Resource availability and quota limits](container-instances-resource-and-quota-limits.md). 
+> Container group deployment to a virtual network is generally available for Linux and Windows containers, in most regions where Azure Container Instances is available. For details, see [Resource availability and quota limits](container-instances-resource-and-quota-limits.md).
 
 ## Scenarios
 
 Container groups deployed into an Azure virtual network enable scenarios like:
 
-* Direct communication between container groups in the same subnet
-* Send [task-based](container-instances-restart-policy.md) workload output from container instances to a database in the virtual network
-* Retrieve content for container instances from a [service endpoint](/azure/virtual-network/virtual-network-service-endpoints-overview) in the virtual network
-* Enable container communication with on-premises resources through a [VPN gateway](/azure/vpn-gateway/vpn-gateway-about-vpngateways) or [ExpressRoute](/azure/expressroute/expressroute-introduction)
-* Integrate with [Azure Firewall](/azure/firewall/overview) to identify outbound traffic originating from the container 
-* Resolve names via the internal Azure DNS for communication with Azure resources in the virtual network, such as virtual machines
-* Use NSG rules to control container access to subnets or other network resources
+* Direct communication between container groups in the same subnet.
+* Send [task-based](container-instances-restart-policy.md) workload output from container instances to a database in the virtual network.
+* Retrieve content for container instances from a [service endpoint](/azure/virtual-network/virtual-network-service-endpoints-overview) in the virtual network.
+* Enable container communication with on-premises resources through a [VPN gateway](/azure/vpn-gateway/vpn-gateway-about-vpngateways) or [ExpressRoute](/azure/expressroute/expressroute-introduction).
+* Integrate with [Azure Firewall](/azure/firewall/overview) to identify outbound traffic originating from the container.
+* Resolve names via the internal Azure DNS for communication with Azure resources in the virtual network, such as virtual machines.
+* Use NSG rules to control container access to subnets or other network resources.
+* Deploy a scalable containerized application using Azure Container Instances (ACI), and distribute incoming traffic evenly across multiple container groups using Azure Standard Load Balancer.
 
-## Unsupported networking scenarios 
+## Unsupported networking scenarios
 
-* **Azure Load Balancer** - Placing an Azure Load Balancer in front of container instances in a networked container group isn't supported
 * **Global virtual network peering** - Global peering (connecting virtual networks across Azure regions) isn't supported
 * **Public IP or DNS label** - Container groups deployed to a virtual network don't currently support exposing containers directly to the internet with a public IP address or a fully qualified domain name
 * **Managed Identity with Virtual Network in Azure Government Regions** - Managed Identity with virtual networking capabilities isn't supported in Azure Government Regions
@@ -54,9 +52,9 @@ Container groups deployed into an Azure virtual network enable scenarios like:
 * Depending on your subscription type, [certain ports could be blocked](/azure/virtual-network/network-security-groups-overview#azure-platform-considerations).
 * Container instances don't read or inherit DNS settings from an associated virtual network. DNS settings must be explicitly set for container instances.
 
-## Required network resources
+## Deploy Container Groups to a Virtual Network
 
-There are three Azure Virtual Network resources required for deploying container groups to a virtual network: the [virtual network](#virtual-network) itself, a [delegated subnet](#subnet-delegated) within the virtual network, and a [network profile](#network-profile). 
+There are three Azure Virtual Network resources required for deploying container groups to a virtual network: the [virtual network](#virtual-network) itself, a [delegated subnet](#subnet-delegated) within the virtual network, and a [network profile](#network-profile).
 
 ### Virtual network
 
@@ -69,30 +67,66 @@ Subnets segment the virtual network into separate address spaces usable by the A
 The subnet that you use for container groups can contain only container groups. Before you deploy a container group to a subnet, you must explicitly delegate the subnet before provisioning. Once delegated, the subnet can be used only for container groups. If you attempt to deploy resources other than container groups to a delegated subnet, the operation fails.
 
 ### Outbound connectivity
+
 NAT gateway should be configured with public IP so the container groups outbound flows through that public IP. This also allows customers to use service tagged IPs and/or have appropriate NSG rules.
 
-Use the following [az network nat gateway create][az-network-nat-gateway-create] to create a NAT gateway that uses the public IP you created in the previous step.
-
-:::code language="azurecli" source="~/azure_cli_scripts/container-instances/nat-gateway.sh" id="natgateway":::
+Use the following [Quickstart: Create a NAT gateway](https://github.com/MicrosoftDocs/azure-docs/blob/main/articles/nat-gateway/quickstart-create-nat-gateway.md) to create a NAT gateway.
 
 ### Network profile
 
 [!INCLUDE [network profile callout](./includes/network-profile-callout.md)]
 
-A network profile is a network configuration template for Azure resources. It specifies certain network properties for the resource, for example, the subnet into which it should be deployed. When you first use the [az container create][az-container-create] command to deploy a container group to a subnet (and thus a virtual network), Azure creates a network profile for you. You can then use that network profile for future deployments to the subnet. 
+A network profile is a network configuration template for Azure resources. It specifies certain network properties for the resource, for example, the subnet into which it should be deployed. When you first use the [az container create][az-container-create] command to deploy a container group to a subnet (and thus a virtual network), Azure creates a network profile for you. You can then use that network profile for future deployments to the subnet.
 
-To use a Resource Manager template, YAML file, or a programmatic method to deploy a container group to a subnet, you need to provide the full Resource Manager resource ID of a network profile. You can use a profile previously created using [az container create][az-container-create], or create a profile using a Resource Manager template (see [template example](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.containerinstance/aci-vnet) and [reference](/azure/templates/microsoft.network/networkprofiles)). To get the ID of a previously created profile, use the [az network profile list][az-network-profile-list] command. 
+To use a Resource Manager template, YAML file, or a programmatic method to deploy a container group to a subnet, you need to provide the full Resource Manager resource ID of a network profile. You can use a profile previously created using [az container create][az-container-create], or create a profile using a Resource Manager template (see [template example](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.containerinstance/aci-vnet) and [reference](/azure/templates/microsoft.network/networkprofiles)). To get the ID of a previously created profile, use the [az network profile list][az-network-profile-list] command.
 
 The following diagram depicts several container groups deployed to a subnet delegated to Azure Container Instances. Once you deploy one container group to a subnet, you can deploy more container groups to it by specifying the same network profile.
 
 ![Container groups within a virtual network][aci-vnet-01]
+
+## Deploy Container Groups with Azure Standard Load Balancer
+
+Customers can deploy scalable containerized applications using Azure Container Instances and distribute incoming traffic evenly across multiple container groups using Azure Standard Load Balancer.
+
+> [!IMPORTANT]
+> To take advantage of load balancing capabilities the use of [ARM](https://learn.microsoft.com/azure/templates/microsoft.network/loadbalancers/backendaddresspools?pivots=deployment-language-arm-template), [Bicep](https://learn.microsoft.com/azure/templates/microsoft.network/loadbalancers/backendaddresspools?pivots=deployment-language-bicep), [Terraform](https://learn.microsoft.com/azure/templates/microsoft.network/loadbalancers/backendaddresspools?pivots=deployment-language-terraform), [CLI](#example-add-aci-instances-to-backendpool-using-azure-cli) or [PowerShell](#example-add-aci-instances-to-backendpool-using-powershell) is required to set subnet.id/name.
+
+### Prerequisites
+
+Customers should create a public or internal load balancer with the respective front end IP configuration, health probes, load balancing rules and a backend pool(s) as required by the workload.
+
+### Example: Add ACI Instances to backendpool using Azure CLI
+
+```azurecli
+az network lb address-pool update -g MyResourceGroup --lb-name MyLb -n MyAddressPool --vnet MyVnetResource --backend-addresses "[{name:ACI-Instance1,ip-address:10.0.0.5,subnet:subnetName},{name:ACI-Instance2,ip-address:10.0.0.6,subnet:subnetName},{name:ACI-Instance3,ip-address:10.0.0.7,subnet:subnetName}]"
+```
+
+### Example: Add ACI Instances to backendpool using PowerShell
+
+```powershell
+$vnetName = "vnetname"
+$subnetName = "ACI subnet name"
+$resourceGroup = "rg name"
+$loadBalancerName = "LB Name"
+
+$virtualNetwork = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroup
+$subnet = Get-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $virtualNetwork
+$loadBalancer = Get-AzLoadBalancer -ResourceGroupName $resourceGroup -Name $loadBalancerName
+$ip1 = New-AzLoadBalancerBackendAddressConfig -IpAddress "10.0.0.5" -Name "ACI-Instance1" -SubnetId $subnet.Id
+$ip2 = New-AzLoadBalancerBackendAddressConfig -IpAddress "10.0.0.6" -Name "ACI-Instance2" -SubnetId $subnet.Id
+$ip3 = New-AzLoadBalancerBackendAddressConfig -IpAddress "10.0.0.7" -Name "ACI-Instance3" -SubnetId $subnet.Id
+$backendPool = $loadBalancer.BackendAddressPools[0]
+$backendPool.LoadBalancerBackendAddresses.Add($ip1)
+$backendPool.LoadBalancerBackendAddresses.Add($ip2)
+$backendPool.LoadBalancerBackendAddresses.Add($ip3)
+Set-AzLoadBalancerBackendAddressPool -InputObject $backendPool
+```
 
 ## Next steps
 
 * For deployment examples with the Azure CLI, see [Deploy container instances into an Azure virtual network](container-instances-vnet.md).
 * To deploy a new virtual network, subnet, network profile, and container group using a Resource Manager template, see [Create an Azure container group with virtual network](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.containerinstance/aci-vnet).
 * When using the [Azure portal](container-instances-quickstart-portal.md) to create a container instance, you can also provide settings for a new or existing virtual network on the **Networking** tab.
-
 
 <!-- IMAGES -->
 [aci-vnet-01]: ./media/container-instances-virtual-network-concepts/aci-vnet-01.png

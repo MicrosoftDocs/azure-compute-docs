@@ -13,7 +13,7 @@ ms.custom: include file
 ---
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
 |---|---|---|
-| Processor      | 1 - 8 Cores       | Intel Xeon E-2288G (Coffee Lake) [x86-64]                               |
+| Processor      | 1 - 8 vCPUs       | Intel Xeon E-2288G (Coffee Lake) [x86-64]                               |
 | Memory         | 4 - 32 GiB          |                                  |
 | Local Storage  | 1 Disk           | 50 - 400 GiB                            |
 | Remote Storage | 1 - 8 Disks    |    |
