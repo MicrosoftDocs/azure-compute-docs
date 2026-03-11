@@ -17,6 +17,6 @@ ms.custom: include file
 | Processor      | 2 - 32 vCPUs       | AMD EPYC 7763v (Milan) [x86-64]                               |
 | Memory         | 1 - 128 GiB          |                                  |
 | Local Storage  | None           |                                |
-| Remote Storage | 4 - 32 Disks | 3,750 - 25,600 IOPS <br>85 - 600 MBps <br>Disk Types: [Premium SSD](../../../disks-types.md#premium-ssds) |
+| Remote Storage | 4 - 32 Disks | 4,000 - 26,000 IOPS <br>85 - 600 MBps <br>Disk Types: [Premium SSD](../../../disks-types.md#premium-ssds) |
 | Network        | 2 - 4 NICs          | 6,250 Mbps <br>Interfaces: NetVSC, ConnectX                          |
 | Accelerators   | None              |                                   |
