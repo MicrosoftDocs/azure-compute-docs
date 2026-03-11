@@ -9,14 +9,14 @@ ms.date: 03/04/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
-# Customer intent: As a cloud architect, I want to review the specifications of Dsv6-series VM sizes, so that I can select the appropriate virtual machine configurations for my applicationâ€™s requirements.
+# Customer intent: As a cloud architect, I want to review the specifications of Dsv6-series VM sizes, so that I can select the appropriate virtual machine configurations for my application's requirements.
 ---
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
 |---|---|---|
 | Processor      | 2 - 192 vCPUs       | Intel Xeon Platinum 8573C (Emerald Rapids) [x86-64]                               |
 | Memory         | 8 - 768 GiB          |                                  |
 | Local Storage  | None           |                                |
-| Remote Storage | 8 - 64 Disks | 3,750 - 400,400 IOPS <br>106 - 12,000 MBps <br>Disk Types: [Standard SDD/HDD](../../../disks-types.md#standard-ssds), [Premium SSD](../../../disks-types.md#premium-ssds), [Premium SSD v2](../../../disks-types.md#premium-ssd-v2), [Ultra Disk](../../../disks-types.md#ultra-disks) |
-| Remote Storage | 8 - 64 Disks | 4,167 - 400,400 IOPS <br>124 - 12,000 MBps |
+| Remote Storage | 8 - 64 Disks | 4,000 - 400,000 IOPS <br>106 - 12,000 MBps <br>Disk Types: [Standard SDD/HDD](../../../disks-types.md#standard-ssds), [Premium SSD](../../../disks-types.md#premium-ssds), [Premium SSD v2](../../../disks-types.md#premium-ssd-v2), [Ultra Disk](../../../disks-types.md#ultra-disks) |
+| Remote Storage | 8 - 64 Disks | 4,000 - 400,000 IOPS <br>124 - 12,000 MBps |
 | Network        | 2 - 8 NICs          | 12,500 - 82,000 Mbps                          |
 | Accelerators   | None              |                                   |

@@ -46,18 +46,18 @@ vCPUs (Qty.) and Memory for each size
 
 Local (temp) storage info for each size
 
-| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read (RR)<sup>1</sup>,<sup>2</sup> IOPS<sup>3</sup> | Temp Disk Random Read (RR)<sup>1</sup>,<sup>2</sup> Throughput (MB/s)<sup>3</sup> | Temp Disk Random Write (RW)<sup>1</sup> IOPS | Temp Disk Random Write (RW)<sup>1</sup> Throughput (MB/s) |
+| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read (RR)<sup>1</sup>,<sup>2</sup> IOPS<sup>3</sup> | Temp Disk Random Read (RR)<sup>1</sup>,<sup>2</sup> Throughput (MBps)<sup>3</sup> | Temp Disk Random Write (RW)<sup>1</sup> IOPS | Temp Disk Random Write (RW)<sup>1</sup> Throughput (MBps) |
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_D2ads_v7 | 1 | 110 | 37500 | 280 | 15000 | 140 |
-| Standard_D4ads_v7 | 1 | 220 | 75000 | 560 | 30000 | 280 |
-| Standard_D8ads_v7 | 1 | 440 | 150000 | 1120 | 60000 | 560 |
-| Standard_D16ads_v7 | 2 | 440 | 300000 | 2240 | 120000 | 1120 |
-| Standard_D32ads_v7 | 4 | 440 | 600000 | 4480 | 240000 | 2240 |
-| Standard_D48ads_v7 | 6 | 440 | 900000 | 6720 | 360000 | 3360 |
-| Standard_D64ads_v7 | 4 | 880 | 1200000 | 8960 | 480000 | 4480 |
-| Standard_D96ads_v7 | 6 | 880 | 1800000 | 13440 | 720000 | 6720 |
-| Standard_D128ads_v7 | 4 | 1760 | 2400000 | 17920 | 960000 | 8960 |
-| Standard_D160ads_v7 | 4 | 2200 | 3000000 | 22400 | 12000000 | 11200 |
+| Standard_D2ads_v7 | 1 | 110 | 37,500 | 280 | 15,000 | 140 |
+| Standard_D4ads_v7 | 1 | 220 | 75,000 | 560 | 30,000 | 280 |
+| Standard_D8ads_v7 | 1 | 440 | 150,000 | 1,120 | 60,000 | 560 |
+| Standard_D16ads_v7 | 2 | 440 | 300,000 | 2,240 | 120,000 | 1,120 |
+| Standard_D32ads_v7 | 4 | 440 | 600,000 | 4,480 | 240,000 | 2,240 |
+| Standard_D48ads_v7 | 6 | 440 | 900,000 | 6,720 | 360,000 | 3,360 |
+| Standard_D64ads_v7 | 4 | 880 | 1,200,000 | 8,960 | 480,000 | 4,480 |
+| Standard_D96ads_v7 | 6 | 880 | 1,800,000 | 13,440 | 720,000 | 6,720 |
+| Standard_D128ads_v7 | 4 | 1,760 | 2,400,000 | 17,920 | 960,000 | 8,960 |
+| Standard_D160ads_v7 | 4 | 2,200 | 3,000,000 | 22,400 | 12,000,000 | 11,200 |
 
 #### Storage resources
 - [Introduction to Azure Managed Disks](../../../virtual-machines/managed-disks-overview.md)
@@ -68,7 +68,7 @@ Local (temp) storage info for each size
 - <sup>1</sup> Temp disk speed often differs between RR (Random Read) and RW (Random Write) operations. RR operations are typically faster than RW operations. The RW speed is usually slower than the RR speed on series where only the RR speed value is listed. Temp disk performance can vary based on workload, block size, and system conditions. Published numbers show peak performance under controlled testing, temp disk performance specifications should be viewed as best case performance numbers and may differ in real-world scenarios. Factors such as data patterns, SSD wear, and background processes can affect write speeds. For more details, please see [FAQ for Temp NVMe disks](../../../virtual-machines/enable-nvme-temp-faqs.yml)
 - <sup>2</sup> Temp disk speed often differs between RR (Random Read) and RW (Random Write) operations. RR operations are typically faster than RW operations. The RW speed is usually slower than the RR speed on series where only the RR speed value is listed.
 - <sup>3</sup> The IOPS and throughput values shown are the combined performance across all temp disks.
-- Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
+- Storage capacity is shown in units of GiB or 1,024^3 bytes. When you compare disks measured in GB (1,000^3 bytes) to disks measured in GiB (1,024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1,023 GiB = 1,098.4 GB.
 - Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
 - To learn how to get the best storage performance for your VMs, see [Virtual machine and disk performance](../../../virtual-machines/disks-performance.md).
 
@@ -76,18 +76,18 @@ Local (temp) storage info for each size
 
 Remote (uncached) storage info for each size
 
-| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD IOPS | Uncached Premium SSD Throughput (MB/s) | Uncached Premium SSD Burst<sup>1</sup> IOPS | Uncached Premium SSD Burst<sup>1</sup> Throughput (MB/s) | Uncached Ultra Disk and Premium SSD v2 IOPS | Uncached Ultra Disk and Premium SSD v2 Throughput (MB/s) | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 IOPS | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 Throughput (MB/s) |
+| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD IOPS | Uncached Premium SSD Throughput (MBps) | Uncached Premium SSD Burst<sup>1</sup> IOPS | Uncached Premium SSD Burst<sup>1</sup> Throughput (MBps) | Uncached Ultra Disk and Premium SSD v2 IOPS | Uncached Ultra Disk and Premium SSD v2 Throughput (MBps) | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 IOPS | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 Throughput (MBps) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_D2ads_v7 | 10 | 4000 | 118 | 44000 | 1412 | 4400 | 136 | 48400 | 1653 |
-| Standard_D4ads_v7 | 12 | 8000 | 234 | 47200 | 1412 | 8800 | 273 | 52083 | 1653 |
-| Standard_D8ads_v7 | 26 | 16000 | 468 | 47200 | 1412 | 17600 | 547 | 52083 | 1653 |
-| Standard_D16ads_v7 | 48 | 32000 | 936 | 72700 | 1412 | 35200 | 1095 | 80000 | 1653 |
-| Standard_D32ads_v7 | 64 | 64000 | 1872 | 94400 | 1916 | 70400 | 2191 | 104167 | 2241 |
-| Standard_D48ads_v7 | 64 | 96000 | 2808 | 99000 | 2874 | 105600 | 3291 | 108900 | 3362 |
-| Standard_D64ads_v7 | 64 | 128000 | 3744 | 132000 | 3832 | 140800 | 4382 | 145200 | 4484 |
-| Standard_D96ads_v7 | 64 | 192000 | 5663 | 192500 | 5749 | 211200 | 6573 | 211750 | 6669 |
-| Standard_D128ads_v7 | 64 | 204800 | 7488 | 225280 | 7663 | 281600 | 8764 | 310886 | 8966 |
-| Standard_D160ads_v7 | 64 | 212000 | 10344 | 242640 | 11410 | 310000 | 10356 | 355443 | 11450 |
+| Standard_D2ads_v7 | 10 | 4,000 | 118 | 44,000 | 1,412 | 4,400 | 136 | 48,400 | 1,653 |
+| Standard_D4ads_v7 | 12 | 8,000 | 234 | 47,200 | 1,412 | 8,800 | 273 | 52,083 | 1,653 |
+| Standard_D8ads_v7 | 26 | 16,000 | 468 | 47,200 | 1,412 | 17,600 | 547 | 52,083 | 1,653 |
+| Standard_D16ads_v7 | 48 | 32,000 | 936 | 72,700 | 1,412 | 35,200 | 1,095 | 80,000 | 1,653 |
+| Standard_D32ads_v7 | 64 | 64,000 | 1,872 | 94,400 | 1916 | 70,400 | 2,191 | 104,167 | 2,241 |
+| Standard_D48ads_v7 | 64 | 96,000 | 2,808 | 99,000 | 2,874 | 105,600 | 3,291 | 108,900 | 3,362 |
+| Standard_D64ads_v7 | 64 | 128,000 | 3,744 | 132,000 | 3,832 | 140,800 | 4,382 | 145,200 | 4,484 |
+| Standard_D96ads_v7 | 64 | 192,000 | 5,663 | 192,500 | 5,749 | 211,200 | 6,573 | 211,750 | 6,669 |
+| Standard_D128ads_v7 | 64 | 204,800 | 7,488 | 225,280 | 7,663 | 281,600 | 8,764 | 310,886 | 8,966 |
+| Standard_D160ads_v7 | 64 | 212,000 | 10,344 | 242,640 | 11,410 | 310,000 | 10,356 | 355,443 | 11,450 |
 
 #### Storage resources
 - [Introduction to Azure Managed Disks](../../../virtual-machines/managed-disks-overview.md)
@@ -96,7 +96,7 @@ Remote (uncached) storage info for each size
 
 #### Table definitions
 - <sup>1</sup>Some sizes support [bursting](../../disk-bursting.md) to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.
-- Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
+- Storage capacity is shown in units of GiB or 1,024^3 bytes. When you compare disks measured in GB (1,000^3 bytes) to disks measured in GiB (1,024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1,023 GiB = 1,098.4 GB.
 - Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
 - Data disks can operate in cached or uncached modes. For cached data disk operation, the host cache mode is set to ReadOnly or ReadWrite. For uncached data disk operation, the host cache mode is set to None.
 - To learn how to get the best storage performance for your VMs, see [Virtual machine and disk performance](../../../virtual-machines/disks-performance.md).
@@ -106,18 +106,18 @@ Remote (uncached) storage info for each size
 
 Network interface info for each size
 
-| Size Name | Max NICs (Qty.) | Max Network Bandwidth (Mb/s) |
+| Size Name | Max NICs (Qty.) | Max Network Bandwidth (Mbps) |
 | --- | --- | --- |
-| Standard_D2ads_v7 | 2 | 16000 |
-| Standard_D4ads_v7 | 2 | 16000 |
-| Standard_D8ads_v7 | 4 | 25000 |
-| Standard_D16ads_v7 | 8 | 25000 |
-| Standard_D32ads_v7 | 8 | 25000 |
-| Standard_D48ads_v7 | 8 | 35000 |
-| Standard_D64ads_v7 | 8 | 45000 |
-| Standard_D96ads_v7 | 8 | 70000 |
-| Standard_D128ads_v7 | 15 | 75000 |
-| Standard_D160ads_v7 | 15 | 80000 |
+| Standard_D2ads_v7 | 2 | 16,000 |
+| Standard_D4ads_v7 | 2 | 16,000 |
+| Standard_D8ads_v7 | 4 | 25,000 |
+| Standard_D16ads_v7 | 8 | 25,000 |
+| Standard_D32ads_v7 | 8 | 25,000 |
+| Standard_D48ads_v7 | 8 | 35,000 |
+| Standard_D64ads_v7 | 8 | 45,000 |
+| Standard_D96ads_v7 | 8 | 70,000 |
+| Standard_D128ads_v7 | 15 | 75,000 |
+| Standard_D160ads_v7 | 15 | 80,000 |
 
 #### Networking resources
 - [Virtual networks and virtual machines in Azure](/azure/virtual-network/network-overview)
@@ -154,6 +154,6 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 
 
 > [!NOTE]
-> This VM series will only work on OS images that support NVMe. If your current OS image doesn't have NVMe support, youΓÇÖll see an error message. [NVMe](../../../virtual-machines/enable-nvme-interface.md) support is available on the most popular OS images, and we're continuously improving OS image compatibility.
+> This VM series will only work on OS images that support NVMe. If your current OS image doesn't have NVMe support, you'll see an error message. [NVMe](../../../virtual-machines/enable-nvme-interface.md) support is available on the most popular OS images, and we're continuously improving OS image compatibility.
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]

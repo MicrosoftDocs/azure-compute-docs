@@ -45,16 +45,16 @@ vCPUs (Qty.) and Memory for each size
 
 Local (temp) storage info for each size
 
-| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read (RR)<sup>1</sup> IOPS | Temp Disk Random Read (RR)<sup>1</sup> Throughput (MB/s) |
+| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read (RR)<sup>1</sup> IOPS | Temp Disk Random Read (RR)<sup>1</sup> Throughput (MBps) |
 | --- | --- | --- | --- | --- |
-| Standard_D2d_v5 | 1 | 75 | 9000 | 125 |
-| Standard_D4d_v5 | 1 | 150 | 19000 | 250 |
-| Standard_D8d_v5 | 1 | 300 | 38000 | 500 |
-| Standard_D16d_v5 | 1 | 600 | 75000 | 1000 |
-| Standard_D32d_v5 | 1 | 1200 | 150000 | 2000 |
-| Standard_D48d_v5 | 1 | 1800 | 225000 | 3000 |
-| Standard_D64d_v5 | 1 | 2400 | 300000 | 4000 |
-| Standard_D96d_v5 | 1 | 3600 | 450000 | 4000 |
+| Standard_D2d_v5 | 1 | 75 | 9,000 | 125 |
+| Standard_D4d_v5 | 1 | 150 | 19,000 | 250 |
+| Standard_D8d_v5 | 1 | 300 | 38,000 | 500 |
+| Standard_D16d_v5 | 1 | 600 | 75,000 | 1,000 |
+| Standard_D32d_v5 | 1 | 1,200 | 150,000 | 2000 |
+| Standard_D48d_v5 | 1 | 1,800 | 225,000 | 3,000 |
+| Standard_D64d_v5 | 1 | 2,400 | 300,000 | 4,000 |
+| Standard_D96d_v5 | 1 | 3,600 | 450,000 | 4,000 |
 
 #### Storage resources
 - [Introduction to Azure Managed Disks](../../../virtual-machines/managed-disks-overview.md)
@@ -63,7 +63,7 @@ Local (temp) storage info for each size
 
 #### Table definitions
 - <sup>1</sup>Temp disk speed often differs between RR (Random Read) and RW (Random Write) operations. RR operations are typically faster than RW operations. The RW speed is usually slower than the RR speed on series where only the RR speed value is listed.
-- Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
+- Storage capacity is shown in units of GiB or 1,024^3 bytes. When you compare disks measured in GB (1,000^3 bytes) to disks measured in GiB (1,024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1,023 GiB = 1,098.4 GB.
 - Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
 - To learn how to get the best storage performance for your VMs, see [Virtual machine and disk performance](../../../virtual-machines/disks-performance.md).
 
@@ -71,16 +71,16 @@ Local (temp) storage info for each size
 
 Remote (uncached) storage info for each size
 
-| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD IOPS | Uncached Premium SSD Throughput (MB/s) | Uncached Premium SSD Burst<sup>1</sup> IOPS | Uncached Premium SSD Burst<sup>1</sup> Throughput (MB/s) |
+| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD IOPS | Uncached Premium SSD Throughput (MBps) | Uncached Premium SSD Burst<sup>1</sup> IOPS | Uncached Premium SSD Burst<sup>1</sup> Throughput (MBps) |
 | --- | --- | --- | --- | --- | --- |
-| Standard_D2d_v5 | 4 | 3750 | 85 | 10000 | 1200 |
-| Standard_D4d_v5 | 8 | 6400 | 145 | 20000 | 1200 |
-| Standard_D8d_v5 | 16 | 12800 | 290 | 20000 | 1200 |
-| Standard_D16d_v5 | 32 | 25600 | 600 | 40000 | 1200 |
-| Standard_D32d_v5 | 32 | 51200 | 865 | 80000 | 2000 |
-| Standard_D48d_v5 | 32 | 76800 | 1315 | 80000 | 3000 |
-| Standard_D64d_v5 | 32 | 80000 | 1735 | 80000 | 3000 |
-| Standard_D96d_v5 | 32 | 80000 | 2600 | 80000 | 4000 |
+| Standard_D2d_v5 | 4 | 3,750 | 85 | 10,000 | 1,200 |
+| Standard_D4d_v5 | 8 | 6,400 | 145 | 20,000 | 1,200 |
+| Standard_D8d_v5 | 16 | 12,800 | 290 | 20,000 | 1,200 |
+| Standard_D16d_v5 | 32 | 25,600 | 600 | 40,000 | 1,200 |
+| Standard_D32d_v5 | 32 | 51,200 | 865 | 80,000 | 2000 |
+| Standard_D48d_v5 | 32 | 76,800 | 1,315 | 80,000 | 3,000 |
+| Standard_D64d_v5 | 32 | 80,000 | 1,735 | 80,000 | 3,000 |
+| Standard_D96d_v5 | 32 | 80,000 | 2,600 | 80,000 | 4,000 |
 
 #### Storage resources
 - [Introduction to Azure Managed Disks](../../../virtual-machines/managed-disks-overview.md)
@@ -90,7 +90,7 @@ Remote (uncached) storage info for each size
 #### Table definitions
 - <sup>1</sup>Some sizes support [bursting](../../disk-bursting.md) to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.
 
-- Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
+- Storage capacity is shown in units of GiB or 1,024^3 bytes. When you compare disks measured in GB (1,000^3 bytes) to disks measured in GiB (1,024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1,023 GiB = 1,098.4 GB.
 - Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
 - Data disks can operate in cached or uncached modes. For cached data disk operation, the host cache mode is set to ReadOnly or ReadWrite. For uncached data disk operation, the host cache mode is set to None.
 - To learn how to get the best storage performance for your VMs, see [Virtual machine and disk performance](../../../virtual-machines/disks-performance.md).
@@ -100,16 +100,16 @@ Remote (uncached) storage info for each size
 
 Network interface info for each size
 
-| Size Name | Max NICs (Qty.) | Max Network Bandwidth (Mb/s) |
+| Size Name | Max NICs (Qty.) | Max Network Bandwidth (Mbps) |
 | --- | --- | --- |
-| Standard_D2d_v5 | 2 | 12500 |
-| Standard_D4d_v5 | 2 | 12500 |
-| Standard_D8d_v5 | 4 | 12500 |
-| Standard_D16d_v5 | 8 | 12500 |
-| Standard_D32d_v5 | 8 | 16000 |
-| Standard_D48d_v5 | 8 | 24000 |
-| Standard_D64d_v5 | 8 | 30000 |
-| Standard_D96d_v5 | 8 | 35000 |
+| Standard_D2d_v5 | 2 | 12,500 |
+| Standard_D4d_v5 | 2 | 12,500 |
+| Standard_D8d_v5 | 4 | 12,500 |
+| Standard_D16d_v5 | 8 | 12,500 |
+| Standard_D32d_v5 | 8 | 16,000 |
+| Standard_D48d_v5 | 8 | 24,000 |
+| Standard_D64d_v5 | 8 | 30,000 |
+| Standard_D96d_v5 | 8 | 35,000 |
 
 #### Networking resources
 - [Virtual networks and virtual machines in Azure](/azure/virtual-network/network-overview)

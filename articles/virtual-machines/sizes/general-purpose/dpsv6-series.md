@@ -10,7 +10,7 @@ ms.topic: concept-article
 ms.date: 03/10/2026
 ms.author: noahwood
 ms.reviewer: mattmcinnes, tomvcassidy
-# Customer intent: As a cloud architect, I want to understand the specifications and capabilities of the Dpsv6 series virtual machine sizes, so that I can select the appropriate VM size for my applicationΓÇÖs performance and resource requirements.
+# Customer intent: As a cloud architect, I want to understand the specifications and capabilities of the Dpsv6 series virtual machine sizes, so that I can select the appropriate VM size for my application's performance and resource requirements.
 ---
 
 # Dpsv6 sizes series
@@ -58,16 +58,16 @@ Local (temp) storage info for each size
 
 Remote (uncached) storage info for each size
 
-| Size Name | Max Remote Storage (Qty.) | Uncached Premium SSD IOPS | Uncached Premium SSD Throughput (MB/s) | Uncached Premium SSD Burst<sup>1</sup> IOPS | Uncached Premium SSD Burst<sup>1</sup> Throughput (MB/s) | Uncached Ultra Disk and Premium SSD v2 IOPS | Uncached Ultra Disk and Premium SSD v2 Throughput (MB/s) | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 IOPS | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 Throughput (MB/s) |
+| Size Name | Max Remote Storage (Qty.) | Uncached Premium SSD IOPS | Uncached Premium SSD Throughput (MBps) | Uncached Premium SSD Burst<sup>1</sup> IOPS | Uncached Premium SSD Burst<sup>1</sup> Throughput (MBps) | Uncached Ultra Disk and Premium SSD v2 IOPS | Uncached Ultra Disk and Premium SSD v2 Throughput (MBps) | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 IOPS | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 Throughput (MBps) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_D2ps_v6 | 8 | 3750 | 106 | 10000 | 1250 | 4163 | 124 | 11100 | 1463 |
-| Standard_D4ps_v6 | 12 | 6400 | 212 | 20000 | 1250 | 8333 | 248 | 26040 | 1463 |
-| Standard_D8ps_v6 | 24 | 12800 | 424 | 20000 | 1250 | 16666 | 496 | 26040 | 1463 |
-| Standard_D16ps_v6 | 48 | 25600 | 848 | 40000 | 1250 | 33331 | 992 | 52080 | 1463 |
-| Standard_D32ps_v6 | 64 | 51200 | 1696 | 80000 | 2000 | 66662 | 1984 | 104160 | 2340 |
-| Standard_D48ps_v6 | 64 | 76800 | 2544 | 80000 | 3000 | 99994 | 2976 | 104160 | 3510 |
-| Standard_D64ps_v6 | 64 | 102400 | 3392 | 102400 | 3392 | 133325 | 3969 | 133325 | 3969 |
-| Standard_D96ps_v6 | 64 | 153600 | 5000 | 153600 | 5000 | 199987 | 5850 | 199987 | 5850 |
+| Standard_D2ps_v6 | 8 | 3,750 | 106 | 10,000 | 1,250 | 4,163 | 124 | 11,100 | 1,463 |
+| Standard_D4ps_v6 | 12 | 6,400 | 212 | 20,000 | 1,250 | 8,333 | 248 | 26,040 | 1,463 |
+| Standard_D8ps_v6 | 24 | 12,800 | 424 | 20,000 | 1,250 | 16,666 | 496 | 26,040 | 1,463 |
+| Standard_D16ps_v6 | 48 | 25,600 | 848 | 40,000 | 1,250 | 33,331 | 992 | 52,080 | 1,463 |
+| Standard_D32ps_v6 | 64 | 51,200 | 1,696 | 80,000 | 2000 | 66,662 | 1984 | 104,160 | 2,340 |
+| Standard_D48ps_v6 | 64 | 76,800 | 2,544 | 80,000 | 3,000 | 99,994 | 2,976 | 104,160 | 3,510 |
+| Standard_D64ps_v6 | 64 | 102,400 | 3,392 | 102,400 | 3,392 | 133,325 | 3,969 | 133,325 | 3,969 |
+| Standard_D96ps_v6 | 64 | 153,600 | 5,000 | 153,600 | 5,000 | 199,987 | 5,850 | 199,987 | 5,850 |
 
 #### Storage resources
 - [Introduction to Azure Managed Disks](../../../virtual-machines/managed-disks-overview.md)
@@ -77,7 +77,7 @@ Remote (uncached) storage info for each size
 #### Table definitions
 - <sup>1</sup>These sizes support [bursting](../../disk-bursting.md) to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.
 
-- Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
+- Storage capacity is shown in units of GiB or 1,024^3 bytes. When you compare disks measured in GB (1,000^3 bytes) to disks measured in GiB (1,024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1,023 GiB = 1,098.4 GB.
 - Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
 - Data disks can operate in cached or uncached modes. For cached data disk operation, the host cache mode is set to ReadOnly or ReadWrite. For uncached data disk operation, the host cache mode is set to None.
 - To learn how to get the best storage performance for your VMs, see [Virtual machine and disk performance](../../../virtual-machines/disks-performance.md).
@@ -86,16 +86,16 @@ Remote (uncached) storage info for each size
 
 Network interface info for each size
 
-| Size Name | Max NICs (Qty.) | Max Network Bandwidth (Mb/s) |
+| Size Name | Max NICs (Qty.) | Max Network Bandwidth (Mbps) |
 | --- | --- | --- |
-| Standard_D2ps_v6 | 2 | 12500 |
-| Standard_D4ps_v6 | 2 | 12500 |
-| Standard_D8ps_v6 | 4 | 15000 |
-| Standard_D16ps_v6 | 8 | 15000 |
-| Standard_D32ps_v6 | 8 | 20000 |
-| Standard_D48ps_v6 | 8 | 30000 |
-| Standard_D64ps_v6 | 8 | 40000 |
-| Standard_D96ps_v6 | 8 | 60000 |
+| Standard_D2ps_v6 | 2 | 12,500 |
+| Standard_D4ps_v6 | 2 | 12,500 |
+| Standard_D8ps_v6 | 4 | 15,000 |
+| Standard_D16ps_v6 | 8 | 15,000 |
+| Standard_D32ps_v6 | 8 | 20,000 |
+| Standard_D48ps_v6 | 8 | 30,000 |
+| Standard_D64ps_v6 | 8 | 40,000 |
+| Standard_D96ps_v6 | 8 | 60,000 |
 
 #### Networking resources
 - [Virtual networks and virtual machines in Azure](/azure/virtual-network/network-overview)
