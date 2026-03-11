@@ -54,15 +54,15 @@ Base CPU performance, Credits, and other CPU bursting related info
 | --- | --- | --- | --- | --- |
 | Standard_B2ts_v2  | 20% | 60  | 24  | 576 |
 | Standard_B2ls_v2  | 30% | 60  | 36  | 864 |
-| Standard_B2s_v2   | 40% | 60  | 48  | 1152 |
-| Standard_B4ls_v2  | 30% | 120 | 72  | 1728 |
-| Standard_B4s_v2   | 40% | 120 | 96  | 2304 |
-| Standard_B8ls_v2  | 30% | 240 | 144 | 3456 |
-| Standard_B8s_v2   | 40% | 240 | 192 | 4608 |
-| Standard_B16ls_v2 | 30% | 480 | 288 | 6912 |
-| Standard_B16s_v2  | 40% | 480 | 384 | 9216 |
-| Standard_B32ls_v2 | 30% | 960 | 576 | 13824 |
-| Standard_B32s_v2  | 40% | 960 | 768 | 18432 |
+| Standard_B2s_v2   | 40% | 60  | 48  | 1,152 |
+| Standard_B4ls_v2  | 30% | 120 | 72  | 1,728 |
+| Standard_B4s_v2   | 40% | 120 | 96  | 2,304 |
+| Standard_B8ls_v2  | 30% | 240 | 144 | 3,456 |
+| Standard_B8s_v2   | 40% | 240 | 192 | 4,608 |
+| Standard_B16ls_v2 | 30% | 480 | 288 | 6,912 |
+| Standard_B16s_v2  | 40% | 480 | 384 | 9,216 |
+| Standard_B32ls_v2 | 30% | 960 | 576 | 13,824 |
+| Standard_B32s_v2  | 40% | 960 | 768 | 18,432 |
 
 #### CPU Burst resources
 - <sup>1</sup>The base CPU performance metric hasn't changed. The updated (2024) numbers were normalized using a `0 - 100%` scale. Previously, the scale was `0 - (vCPU x 100%)`.
@@ -84,11 +84,11 @@ Local (temp) storage info for each size
 
 Remote (uncached) storage info for each size
 
-| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD IOPS | Uncached Premium SSD Throughput (MB/s) | Uncached Premium SSD Burst<sup>1</sup> IOPS | Uncached Premium SSD Burst<sup>1</sup> Throughput (MB/s) |
+| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD IOPS | Uncached Premium SSD Throughput (MBps) | Uncached Premium SSD Burst<sup>1</sup> IOPS | Uncached Premium SSD Burst<sup>1</sup> Throughput (MBps) |
 | --- | --- | --- | --- | --- | --- |
-| Standard_B2ts_v2 | 4 | 3750 | 85 | 10,000 | 960 |
-| Standard_B2ls_v2 | 4 | 3750 | 85 | 10,000 | 960 |
-| Standard_B2s_v2 | 4 | 3750 | 85 | 10,000 | 960 |
+| Standard_B2ts_v2 | 4 | 3,750 | 85 | 10,000 | 960 |
+| Standard_B2ls_v2 | 4 | 3,750 | 85 | 10,000 | 960 |
+| Standard_B2s_v2 | 4 | 3,750 | 85 | 10,000 | 960 |
 | Standard_B4ls_v2 | 8 | 6,400 | 145 | 20,000 | 960 |
 | Standard_B4s_v2 | 8 | 6,400 | 145 | 20,000 | 960 |
 | Standard_B8ls_v2 | 16 | 12,800 | 290 | 20,000 | 960 |
@@ -106,7 +106,7 @@ Remote (uncached) storage info for each size
 #### Table definitions
 - <sup>1</sup>Some sizes support [bursting](../../disk-bursting.md) to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.
 
-- Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
+- Storage capacity is shown in units of GiB or 1,024^3 bytes. When you compare disks measured in GB (1,000^3 bytes) to disks measured in GiB (1,024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1,023 GiB = 1,098.4 GB.
 - Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
 - Data disks can operate in cached or uncached modes. For cached data disk operation, the host cache mode is set to ReadOnly or ReadWrite. For uncached data disk operation, the host cache mode is set to None.
 - To learn how to get the best storage performance for your VMs, see [Virtual machine and disk performance](../../../virtual-machines/disks-performance.md).
@@ -116,19 +116,19 @@ Remote (uncached) storage info for each size
 
 Network interface info for each size
 
-| Size Name | Max NICs (Qty.) | Max Network Bandwidth (Mb/s) |
+| Size Name | Max NICs (Qty.) | Max Network Bandwidth (Mbps) |
 | --- | --- | --- |
-| Standard_B2ts_v2 | 2 | 6250 |
-| Standard_B2ls_v2 | 2 | 6250 |
-| Standard_B2s_v2 | 2 | 6250 |
-| Standard_B4ls_v2 | 2 | 6250 |
-| Standard_B4s_v2 | 2 | 6250 |
-| Standard_B8ls_v2 | 2 | 6250 |
-| Standard_B8s_v2 | 2 | 6250 |
-| Standard_B16ls_v2 | 4 | 6250 |
-| Standard_B16s_v2 | 4 | 6250 |
-| Standard_B32ls_v2 | 4 | 6250 |
-| Standard_B32s_v2 | 4 | 6250 |
+| Standard_B2ts_v2 | 2 | 6,250 |
+| Standard_B2ls_v2 | 2 | 6,250 |
+| Standard_B2s_v2 | 2 | 6,250 |
+| Standard_B4ls_v2 | 2 | 6,250 |
+| Standard_B4s_v2 | 2 | 6,250 |
+| Standard_B8ls_v2 | 2 | 6,250 |
+| Standard_B8s_v2 | 2 | 6,250 |
+| Standard_B16ls_v2 | 4 | 6,250 |
+| Standard_B16s_v2 | 4 | 6,250 |
+| Standard_B32ls_v2 | 4 | 6,250 |
+| Standard_B32s_v2 | 4 | 6,250 |
 
 #### Networking resources
 - [Virtual networks and virtual machines in Azure](/azure/virtual-network/network-overview)

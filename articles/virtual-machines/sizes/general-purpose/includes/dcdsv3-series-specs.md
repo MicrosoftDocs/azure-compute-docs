@@ -13,7 +13,7 @@ ms.custom: include file
 ---
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
 |---|---|---|
-| Processor      | 1 - 48 Cores       | Intel Xeon (Ice Lake) [x86-64]                               |
+| Processor      | 1 - 48 vCPUs       | Intel Xeon (Ice Lake) [x86-64]                               |
 | Memory         | 8 - 384 GiB          |                                  |
 | Local Storage  | 1 Disk           | 75 - 2,400 GiB                               |
 | Remote Storage | 4 - 32 Disks    |     |

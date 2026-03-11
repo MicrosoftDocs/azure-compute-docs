@@ -57,14 +57,14 @@ Base CPU performance, Credits, and other CPU bursting related info
 | Standard_B1ms  | 20% | 30 | 12 | 288 |
 | Standard_B2s   | 20% | 60 | 24 | 576 |
 | Standard_B2ms  | 30% | 60 | 36 | 864 |
-| Standard_B4ms  | 22.5% | 120 | 54 | 1296 |
+| Standard_B4ms  | 22.5% | 120 | 54 | 1,296 |
 | Standard_B8ms  | 17% | 240 | 81 | 1994 |
-| Standard_B12ms | 17% | 360 | 121 | 2908 |
-| Standard_B16ms | 17% | 480 | 162 | 3888 |
-| Standard_B20ms | 17% | 600 | 202 | 4867 |
+| Standard_B12ms | 17% | 360 | 121 | 2,908 |
+| Standard_B16ms | 17% | 480 | 162 | 3,888 |
+| Standard_B20ms | 17% | 600 | 202 | 4,867 |
 
 #### CPU Burst resources
-- <sup>1</sup>The base CPU performance metric hasn't changed. The updated (2024) numbers were normalized using a `0 ΓÇô 100%` scale. Previously, the scale was `0 ΓÇô (vCPU x 100%)`.
+- <sup>1</sup>The base CPU performance metric hasn't changed. The updated (2024) numbers were normalized using a `0 - 100%` scale. Previously, the scale was `0 - (vCPU x 100%)`.
 - B-series VMs can burst their disk performance and get up to their bursting max for up to 30 minutes at a time.
 - B1ls is supported only on Linux
 - Learn more about [CPU bursting](../../b-series-cpu-credit-model/b-series-cpu-credit-model.md)
@@ -93,7 +93,7 @@ Local (temp) storage info for each size
 
 #### Table definitions
 - <sup>1</sup>Temp disk speed often differs between RR (Random Read) and RW (Random Write) operations. RR operations are typically faster than RW operations. The RW speed is usually slower than the RR speed on series where only the RR speed value is listed.
-- Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
+- Storage capacity is shown in units of GiB or 1,024^3 bytes. When you compare disks measured in GB (1,000^3 bytes) to disks measured in GiB (1,024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1,023 GiB = 1,098.4 GB.
 - Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
 - To learn how to get the best storage performance for your VMs, see [Virtual machine and disk performance](../../../virtual-machines/disks-performance.md).
 
@@ -101,18 +101,18 @@ Local (temp) storage info for each size
 
 Remote (uncached) storage info for each size
 
-| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD IOPS | Uncached Premium SSD Throughput (MB/s) | Uncached Premium SSD Burst<sup>1</sup> IOPS | Uncached Premium SSD Burst<sup>1</sup> Throughput (MB/s) |
+| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD IOPS | Uncached Premium SSD Throughput (MBps) | Uncached Premium SSD Burst<sup>1</sup> IOPS | Uncached Premium SSD Burst<sup>1</sup> Throughput (MBps) |
 | --- | --- | --- | --- | --- | --- |
-| Standard_B1ls2 | 2 | 160 | 10 | 4000 | 100 |
-| Standard_B1s | 2 | 320 | 10 | 4000 | 100 |
-| Standard_B1ms | 2 | 640 | 10 | 4000 | 100 |
-| Standard_B2s | 4 | 1280 | 15 | 4000 | 100 |
-| Standard_B2ms | 4 | 1920 | 22.5 | 4000 | 100 |
-| Standard_B4ms | 8 | 2880 | 35 | 8000 | 200 |
-| Standard_B8ms | 16 | 4320 | 50 | 8000 | 200 |
-| Standard_B12ms | 16 | 4320 | 50 | 16000 | 400 |
-| Standard_B16ms | 32 | 4320 | 50 | 16000 | 400 |
-| Standard_B20ms | 32 | 4320 | 50 | 16000 | 400 |
+| Standard_B1ls2 | 2 | 160 | 10 | 4,000 | 100 |
+| Standard_B1s | 2 | 320 | 10 | 4,000 | 100 |
+| Standard_B1ms | 2 | 640 | 10 | 4,000 | 100 |
+| Standard_B2s | 4 | 1,280 | 15 | 4,000 | 100 |
+| Standard_B2ms | 4 | 1920 | 22.5 | 4,000 | 100 |
+| Standard_B4ms | 8 | 2,880 | 35 | 8,000 | 200 |
+| Standard_B8ms | 16 | 4,320 | 50 | 8,000 | 200 |
+| Standard_B12ms | 16 | 4,320 | 50 | 16,000 | 400 |
+| Standard_B16ms | 32 | 4,320 | 50 | 16,000 | 400 |
+| Standard_B20ms | 32 | 4,320 | 50 | 16,000 | 400 |
 
 #### Storage resources
 - [Introduction to Azure Managed Disks](../../../virtual-machines/managed-disks-overview.md)
@@ -122,7 +122,7 @@ Remote (uncached) storage info for each size
 #### Table definitions
 - <sup>1</sup>Some sizes support [bursting](../../disk-bursting.md) to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.
 
-- Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
+- Storage capacity is shown in units of GiB or 1,024^3 bytes. When you compare disks measured in GB (1,000^3 bytes) to disks measured in GiB (1,024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1,023 GiB = 1,098.4 GB.
 - Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
 - Data disks can operate in cached or uncached modes. For cached data disk operation, the host cache mode is set to ReadOnly or ReadWrite. For uncached data disk operation, the host cache mode is set to None.
 - To learn how to get the best storage performance for your VMs, see [Virtual machine and disk performance](../../../virtual-machines/disks-performance.md).

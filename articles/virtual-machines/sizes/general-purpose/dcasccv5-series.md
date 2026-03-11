@@ -56,15 +56,15 @@ Local (temp) storage info for each size
 
 Remote (uncached) storage info for each size
 
-| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD IOPS | Uncached Premium SSD Throughput (MB/s) |
+| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD IOPS | Uncached Premium SSD Throughput (MBps) |
 | --- | --- | --- | --- |
-| Standard_DC4as_cc_v5 | 8 | 6400 | 144 |
-| Standard_DC8as_cc_v5 | 16 | 12800 | 200 |
-| Standard_DC16as_cc_v5 | 32 | 25600 | 384 |
-| Standard_DC32as_cc_v5 | 32 | 51200 | 768 |
-| Standard_DC48as_cc_v5 | 32 | 76800 | 1152 |
-| Standard_DC64as_cc_v5 | 32 | 80000 | 1200 |
-| Standard_DC96as_cc_v5 | 32 | 80000 | 1600 |
+| Standard_DC4as_cc_v5 | 8 | 6,400 | 144 |
+| Standard_DC8as_cc_v5 | 16 | 12,800 | 200 |
+| Standard_DC16as_cc_v5 | 32 | 25,600 | 384 |
+| Standard_DC32as_cc_v5 | 32 | 51,200 | 768 |
+| Standard_DC48as_cc_v5 | 32 | 76,800 | 1,152 |
+| Standard_DC64as_cc_v5 | 32 | 80,000 | 1,200 |
+| Standard_DC96as_cc_v5 | 32 | 80,000 | 1,600 |
 
 #### Storage resources
 - [Introduction to Azure Managed Disks](../../../virtual-machines/managed-disks-overview.md)
@@ -74,7 +74,7 @@ Remote (uncached) storage info for each size
 #### Table definitions
 - <sup>1</sup>Some sizes support [bursting](../../disk-bursting.md) to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.
 
-- Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
+- Storage capacity is shown in units of GiB or 1,024^3 bytes. When you compare disks measured in GB (1,000^3 bytes) to disks measured in GiB (1,024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1,023 GiB = 1,098.4 GB.
 - Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
 - Data disks can operate in cached or uncached modes. For cached data disk operation, the host cache mode is set to ReadOnly or ReadWrite. For uncached data disk operation, the host cache mode is set to None.
 - To learn how to get the best storage performance for your VMs, see [Virtual machine and disk performance](../../../virtual-machines/disks-performance.md).
