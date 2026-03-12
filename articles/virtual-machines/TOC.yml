@@ -2378,7 +2378,7 @@
     href: ./linux/metrics-vm-usage-rest.md
   - name: Boot diagnostics
     href: boot-diagnostics.md
-- name: Machine enrollment
+- name: Essential machine management
   items:
   - name: Overview
     href: /azure/operations/configuration-enrollment?toc=/azure/virtual-machines/toc.json
