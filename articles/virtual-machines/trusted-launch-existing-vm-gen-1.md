@@ -6,7 +6,7 @@ ms.author: ajkundna
 ms.service: azure-virtual-machines
 ms.subservice: trusted-launch
 ms.topic: how-to
-ms.date: 11/29/2024
+ms.date: 03/09/2026
 ms.custom: template-how-to, devx-track-azurepowershell
 # Customer intent: As a cloud administrator, I want to upgrade existing Azure Generation 1 VMs to Trusted launch, so that I can enhance security against advanced threats and comply with organizational security policies.
 ---
@@ -375,6 +375,10 @@ Windows 10 Gen1 VM is successfully upgraded to Trusted launch followed by succes
 
 > [!NOTE]
 > The upgrade can fail if you use outdated Windows 11 installation media. To avoid this issue, ensure you use the most recent Windows 11 image. You can download the latest ISO from the [Microsoft Software Download page](https://www.microsoft.com/software-download/windows11). If you have a volume licensing agreement, use the [Microsoft 365 admin center](https://admin.microsoft.com/adminportal/home#/subscriptions/vlnew) to access updated Windows 11 images.
+
+### Windows Server 2022 boot fails after in-place upgrade of Trusted launch VM migrated from Gen1
+
+Windows Server 2019 Gen1 VMs upgraded to Trusted launch followed by an in-place upgrade to Windows Server 2022 may fail to boot with **"The boot loader did not load an operating system"**. This issue is caused by a partition number mismatch in the UEFI boot entry after MBR-to-GPT conversion and is fixed in Windows Server 2025 and later. Take a snapshot of the OS disk before performing the in-place upgrade.
 
 ### [Windows] MBR to GPT conversion fails with error Cannot find room for the EFI system partition
 
