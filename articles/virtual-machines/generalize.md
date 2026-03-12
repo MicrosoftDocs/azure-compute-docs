@@ -88,7 +88,7 @@ Sysprep removes all your personal account and security information, and then pre
 > [!IMPORTANT]
 > After you have run Sysprep on a VM, that VM is considered *generalized* and can't be restarted. The process of generalizing a VM isn't reversible. If you need to keep the original VM functioning, you should create a snapshot of the OS disk, create a VM from the snapshot, and then generalize that copy of the VM. 
 >
-> Custom answer files are not supported in the sysprep step, so you can't use the '/unattend:_answerfile_' switch with your sysprep command.  
+> Custom answer files aren't supported in the sysprep step, so you can't use the `/unattend:_answerfile_` switch with your sysprep command.  
 
 ### Prerequisites for Windows VMs
 
