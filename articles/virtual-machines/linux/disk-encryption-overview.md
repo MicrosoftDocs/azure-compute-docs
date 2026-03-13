@@ -200,7 +200,7 @@ The following table defines some of the common terms used in Azure disk encrypti
 - [Quickstart - Create and encrypt a Linux VM with Azure CLI ](disk-encryption-cli-quickstart.md)
 - [Quickstart - Create and encrypt a Linux VM with Azure PowerShell](disk-encryption-powershell-quickstart.md)
 - [Azure Disk Encryption scenarios on Linux VMs](disk-encryption-linux.md)
-- [Migrate from Azure Disk Encryption to server-side encryption](../disk-encryption-migrate.md)
+- [Migrate from Azure Disk Encryption to encryption at host](../disk-encryption-migrate.md)
 - [Azure Disk Encryption prerequisites CLI script](https://github.com/ejarvi/ade-cli-getting-started)
 - [Azure Disk Encryption prerequisites PowerShell script](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)
 - [Creating and configuring a key vault for Azure Disk Encryption](disk-encryption-key-vault.md)
