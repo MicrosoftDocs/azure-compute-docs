@@ -61,6 +61,6 @@ Here's a comparison of Disk Storage SSE, ADE, encryption at host, and Confidenti
 - [Azure Disk Encryption for Windows VMs](./windows/disk-encryption-overview.md)
 - [Server-side encryption of Azure Disk Storage](./disk-encryption.md)
 - [Encryption at host](./disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)
-- [Migrate from Azure Disk Encryption to server-side encryption](./disk-encryption-migrate.md)
+- [Migrate from Azure Disk Encryption to encryption at host](./disk-encryption-migrate.md)
 - [DCasv5 and ECasv5 series confidential VMs](/azure/confidential-computing/confidential-vm-overview#confidential-os-disk-encryption)
 - [Azure Security Fundamentals - Azure encryption overview](/azure/security/fundamentals/encryption-overview)
