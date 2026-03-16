@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
-ms.date: 11/17/2025
+ms.date: 03/16/2026
 ms.custom: mvc, devx-track-azurecli, devx-track-arm-template
 # Customer intent: As a cloud developer, I want to deploy a multi-container group using a Resource Manager template, so that I can efficiently manage containerized applications with sidecar configurations for services like logging and monitoring.
 ---
@@ -62,7 +62,7 @@ This Resource Manager template defines a container group with two containers, a 
     "container1name": "aci-tutorial-app",
     "container1image": "mcr.microsoft.com/azuredocs/aci-helloworld:latest",
     "container2name": "aci-tutorial-sidecar",
-    "container2image": "mcr.microsoft.com/azuredocs/aci-tutorial-sidecar"
+    "container2image": "mcr.microsoft.com/mirror/docker/library/alpine:3.20"
   },
   "resources": [
     {
@@ -96,6 +96,7 @@ This Resource Manager template defines a container group with two containers, a 
             "name": "[variables('container2name')]",
             "properties": {
               "image": "[variables('container2image')]",
+              "command": ["sh", "-c", "apk add --no-cache curl && while true; do curl -I http://localhost; sleep 3; done"],
               "resources": {
                 "requests": {
                   "cpu": 1,
@@ -172,7 +173,7 @@ If you'd like to view the running application, navigate to its IP address in you
 ```console
 Name              ResourceGroup    Status    Image                                                                                               IP:ports              Network    CPU/Memory       OsType    Location
 ----------------  ---------------  --------  --------------------------------------------------------------------------------------------------  --------------------  ---------  ---------------  --------  ----------
-myContainerGroup  danlep0318r      Running   mcr.microsoft.com/azuredocs/aci-tutorial-sidecar,mcr.microsoft.com/azuredocs/aci-helloworld:latest  20.42.26.114:80,8080  Public     1.0 core/1.5 gb  Linux     eastus
+myContainerGroup  danlep0318r      Running   mcr.microsoft.com/mirror/docker/library/alpine:3.20,mcr.microsoft.com/azuredocs/aci-helloworld:latest  20.42.26.114:80,8080  Public     1.0 core/1.5 gb  Linux     eastus
 ```
 
 ## View container logs
