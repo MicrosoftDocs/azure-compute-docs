@@ -54,7 +54,7 @@ Until the data is fully copied to Standard Storage, snapshots in the **InstantAc
 
 ### Regional availability
 
-Instant access snapshots are currently supported in all pulic regions.
+Instant access snapshots are currently supported in all public regions.
 
 
 ### Billing of instant access snapshots of Ultra Disks and Premium SSD v2 disks
@@ -81,7 +81,7 @@ In the Azure portal, you can't specify a duration, so snapshots created through 
 subscriptionId="yourSubscriptionId"
 diskName="yourDiskName"
 resourceGroupName="yourResourceGroupName"
-snapshotName="desiredInstantAaccessSnapshotName"
+snapshotName="desiredInstantAccessSnapshotName"
 
 # Set Subscription Id
 
@@ -93,7 +93,7 @@ yourDiskID=$(az disk show -n $diskName -g $resourceGroupName --query "id" --outp
 
 # Create an instant access snapshot
 
-az snapshot create -g $resourceGroupName -n $snapshotName --source $yourDiskID --incremental true --location eastus2euap  --sku Standard_ZRS --ia-duration 300 
+az snapshot create -g $resourceGroupName -n $snapshotName --source $yourDiskID --incremental true --location eastus  --sku Standard_ZRS --ia-duration 300 
 ```
 
 #### [Azure PowerShell](#tab/azure-powershell)
@@ -103,7 +103,7 @@ az snapshot create -g $resourceGroupName -n $snapshotName --source $yourDiskID -
 $subscriptionId="yourSubscriptionId"
 $diskName = "yourDiskName"
 $resourceGroupName = "yourResourceGroupName"
-$snapshotName = " desiredInstantAaccessSnapshotName"
+$snapshotName = " desiredInstantAccessSnapshotName"
 $location = "yourLocation"
 
 # Set Subscription Id
@@ -140,7 +140,7 @@ New-AzSnapshot -ResourceGroupName $resourceGroupName -SnapshotName $snapshotName
             "type": "String"        
                         },
         "location": {
-            "defaultValue": "eastus2euap",
+            "defaultValue": "eastus",
             "type": "String",
             "metadata": {
                 "description": "Location for all resources."
@@ -199,4 +199,4 @@ az resource show --ids $snapshotId --query "properties.creationData.instantAcces
 
 Access your snapshot in the [Azure portal](https://portal.azure.com), the access state is displayed under **Essentials** on **Overview**.
 
-:::image type="content" source="media/disks-instant-access-snapshots/disks-snapshot-instant-access-state.png" alt-text="Screenshot displaying the acesss state of a snapshot in the Azure portal." lightbox="media/disks-instant-access-snapshots/disks-snapshot-instant-access-state.png":::
+:::image type="content" source="media/disks-instant-access-snapshots/disks-snapshot-instant-access-state.png" alt-text="Screenshot displaying the access state of a snapshot in the Azure portal." lightbox="media/disks-instant-access-snapshots/disks-snapshot-instant-access-state.png":::
