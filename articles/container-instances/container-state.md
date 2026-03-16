@@ -6,7 +6,7 @@ author: tomvcassidy
 ms.topic: how-to
 ms.service: azure-container-instances
 services: container-instances
-ms.date: 11/17/2025
+ms.date: 03/16/2026
 # Customer intent: "As a cloud administrator, I want to monitor the provisioning states of Azure Container Instances and their containers, so that I can effectively manage deployments and troubleshoot any issues that arise during operation."
 ---
 
@@ -107,3 +107,13 @@ These values are applicable to POST (stop) and DELETE (delete) events.
 - **Succeeded**: The operation to stop or delete the container group completed successfully.
 
 - **Failed**: The container group failed to reach the **Succeeded** provisioning state, meaning the stop/delete event didn't complete. More information on the failure can be found under `events` in the JSON view.
+
+## Monitor and alert on container states
+
+You can use Azure Monitor to detect and alert on problematic container states, such as containers stuck in a restart loop or container groups in an unhealthy state.
+
+- **Activity log alerts**: Create [activity log alerts](/azure/azure-monitor/alerts/alerts-activity-log) to get notified when specific provisioning operations occur, such as a container group entering the **Failed**, **Unhealthy**, or **Repairing** state. For a list of trackable Container Instances operations, see [Container Instances monitoring data reference](monitor-azure-container-instances-reference.md#activity-log).
+- **Log alerts for restart loops**: If you send container logs to a Log Analytics workspace, you can create [log search alerts](/azure/azure-monitor/alerts/alerts-log) that detect restart loops. For example, query the `ContainerEvent_CL` table for repeated container start events within a short time window. For setup instructions, see [Container group and instance logging with Azure Monitor logs](container-instances-log-analytics.md).
+- **Metric alerts**: Set [metric alerts](/azure/azure-monitor/alerts/alerts-metric) on CPU or memory usage to detect containers that are consuming unexpected resources, which can indicate a crash loop or other abnormal behavior.
+
+For full details on monitoring and alerting for Azure Container Instances, see [Monitor Azure Container Instances](monitor-azure-container-instances.md).
