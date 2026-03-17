@@ -79,7 +79,7 @@ Using in-built [MBR2GPT.exe](/windows/deployment/mbr-to-gpt) utility, you can en
 > [!NOTE]
 > Windows Server 2016 doesn't support `MBR2GPT.exe`. Workaround is to update the Guest OS to Windows Server 2019 or 2022 and followed by `MBR to GPT conversion`. Refer to [In-place upgrade for VMs running Windows Server in Azure](windows-in-place-upgrade.md#perform-in-place-upgrade-to-windows-server-2016-2019-2022-or-2025).
 
-1. Remotely connect (using RDP or command-line) to Gen1 Windows VM for executing conversion.
+1. Remotely connect (using Remote desktop (RDP) or command-line) to Gen1 Windows VM for executing conversion.
 2. Run command `MBR2GPT /validate /allowFullOS` and ensure `Disk layout validation` completes successfully. **Do not proceed** if the `Disk layout validation` fails. Refer to [Known issues](#known-issues) for list of common causes and associated resolution for failure. For more information and troubleshooting, see [MBR2GPT troubleshooting](/windows/deployment/mbr-to-gpt#troubleshooting).
 3. Run command `MBR2GPT /convert /allowFullOS` to **execute** MBR to GPT conversion. Sample successful output:
 
@@ -106,7 +106,7 @@ Using in-built [MBR2GPT.exe](/windows/deployment/mbr-to-gpt) utility, you can en
 > [!IMPORTANT]
 > Upgrade of existing Azure Gen1 Linux VMs to Trusted launch is **only supported** for VMs created using [supported OS](trusted-launch.md#operating-systems-supported) images published in Azure Marketplace (*excluding Debian, Azure Linux*).
 
-Azure Gen1 Linux VMs created using endorsed distros (Canonical, RHEL, SUSE) images published in [Azure Marketplace](https://azuremarketplace.microsoft.com/) don't require any change in Guest OS volume. That is, they already have `GPT` disk layout and `EFI system partition` configured. For other Azure Gen1 Linux VMs requiring this upgrade support including Azure Linux & Debian, submit registration at [Linux Gen1 to Trusted launch upgrade support](https://aka.ms/Gen1ToTLUpgrade).
+Azure Gen1 Linux VMs created using endorsed distros (Canonical, RedHat (RHEL), SUSE) images published in [Azure Marketplace](https://azuremarketplace.microsoft.com/) don't require any change in Guest OS volume. That is, they already have `GPT` disk layout and `EFI system partition` configured. For other Azure Gen1 Linux VMs requiring this upgrade support including Azure Linux & Debian, submit registration at [Linux Gen1 to Trusted launch upgrade support](https://aka.ms/Gen1ToTLUpgrade).
 
 Validate Guest OS volume readiness for Trusted launch upgrade with following commands. **DO NOT** proceed with Trusted launch upgrade if any of the validation step fails.
 
@@ -132,6 +132,42 @@ Validate Guest OS volume readiness for Trusted launch upgrade with following com
 >
 > - vTPM is enabled by default.
 > - Secure boot isn't enabled by default. We strongly recommend that you enable Secure Boot, if you aren't using custom unsigned kernel or drivers. Secure Boot preserves boot integrity and enables foundational security for VMs.
+
+### [Portal](#tab/portal)
+
+Enable Trusted launch on an existing Azure Generation 1 VM by using the Azure portal.
+
+1. Complete the [Guest OS Volume update](#update-guest-os-volume).
+2. Sign in to the [Azure portal](https://portal.azure.com).
+3. Confirm that the VM generation is **V1** and ensure VM is **Running**.
+
+    :::image type="content" source="./media/trusted-launch/generation-1-to-trusted-launch-stop-vm.png" alt-text="Screenshot that shows the Gen1 VM to be deallocated." lightbox="./media/trusted-launch/generation-1-to-trusted-launch-stop-vm.png":::
+
+4. On the **Overview** page in the VM properties, under **Security type**, select **Standard**. The **Configuration** page for the VM opens.
+
+    :::image type="content" source="./media/trusted-launch/generation-1-to-trusted-launch-click-standard.png" alt-text="Screenshot that shows the Security type as Standard." lightbox="./media/trusted-launch/generation-1-to-trusted-launch-click-standard.png":::
+
+5. On the **Configuration** page, under the **Security type** section, select the **Security type** dropdown list.
+
+    :::image type="content" source="./media/trusted-launch/generation-1-to-trusted-launch-select-dropdown.png" alt-text="Screenshot that shows the Security type dropdown list." lightbox="./media/trusted-launch/generation-1-to-trusted-launch-select-dropdown.png":::
+
+6. Under the dropdown list, select **Trusted launch**. Acknowledge that Guest OS Volume was updated & validated.
+
+    :::image type="content" source="./media/trusted-launch/generation-1-to-trusted-launch-validate-guest-os-volume.png" alt-text="Screenshot that shows the Validate guest OS volume button." lightbox="./media/trusted-launch/generation-1-to-trusted-launch-validate-guest-os-volume.png":::
+
+7. Select checkboxes to enable **Secure Boot** and **vTPM**. After you make the changes, select **Save**.
+
+    :::image type="content" source="./media/trusted-launch/generation-1-to-trusted-launch-select-secure-boot-settings.png" alt-text="Screenshot that shows the Secure Boot and vTPM settings." lightbox="./media/trusted-launch/generation-1-to-trusted-launch-select-secure-boot-settings.png":::
+
+8. VM needs to be **deallocated** to complete the upgrade. Confirm VM deallocate operation by clicking **Yes**.
+
+    :::image type="content" source="./media/trusted-launch/generation-1-to-trusted-launch-deallocate-vm.png" alt-text="Screenshot that shows the VM deallocate confirmation prompt." lightbox="./media/trusted-launch/generation-1-to-trusted-launch-deallocate-vm.png":::
+
+9. After the update successfully finishes, close the **Configuration** page. On the **Overview** page in the VM properties, confirm the **Security type** settings.
+
+    :::image type="content" source="./media/trusted-launch/generation-1-to-trusted-launch-validate-secure-boot.png" alt-text="Screenshot that shows the Trusted launch upgraded VM." lightbox="./media/trusted-launch/generation-1-to-trusted-launch-validate-secure-boot.png":::
+
+10. Start the upgraded Trusted launch VM. Verify that you can sign in to the VM by using either RDP (for Windows VMs) or SSH (for Linux VMs).
 
 ### [PowerShell](#tab/powershell)
 
@@ -378,7 +414,7 @@ Windows 10 Gen1 VM is successfully upgraded to Trusted launch followed by succes
 
 ### Windows Server 2022 boot fails after in-place upgrade of Trusted launch VM migrated from Gen1
 
-Windows Server 2019 Gen1 VMs upgraded to Trusted launch followed by an in-place upgrade to Windows Server 2022 may fail to boot with **"The boot loader did not load an operating system"**. This issue is caused by a partition number mismatch in the UEFI boot entry after MBR-to-GPT conversion and is fixed in Windows Server 2025 and later. Take a snapshot of the OS disk before performing the in-place upgrade.
+Windows Server 2019 Gen1 VMs upgraded to Trusted launch followed by an in-place upgrade to Windows Server 2022 might fail to boot with **"The boot loader did not load an operating system"**. This issue is due to partition number mismatch in the UEFI boot entry after MBR-to-GPT conversion. The issue is fixed in Windows Server 2025 and later. Take a snapshot of the OS disk before performing the in-place upgrade.
 
 ### [Windows] MBR to GPT conversion fails with error Cannot find room for the EFI system partition
 
