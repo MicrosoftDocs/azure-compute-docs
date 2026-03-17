@@ -5,7 +5,7 @@ author: cynthn
 ms.service: azure-virtual-machines
 ms.topic: how-to
 ms.update-cycle: 180-days
-ms.date: 05/09/2022
+ms.date: 02/06/2026
 ms.author: cynthn
 ms.custom: template-how-to, devx-track-azurecli, devx-track-azurepowershell, portal
 # Customer intent: As a cloud administrator, I want to configure delete options for virtual machines and attached resources, so that I can control which components are removed when the VM is deleted and manage costs effectively.
