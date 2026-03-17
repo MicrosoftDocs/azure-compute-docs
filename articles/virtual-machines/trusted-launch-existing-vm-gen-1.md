@@ -157,7 +157,7 @@ Enable Trusted launch on an existing Azure Generation 1 VM by using the Azure po
 
 7. Select checkboxes to enable **Secure Boot** and **vTPM**. After you make the changes, select **Save**.
 
-    :::image type="content" source="./media/trusted-launch/generation-1-to-trusted-launch-select-uefi-settings.png" alt-text="Screenshot that shows the Secure Boot and vTPM settings.":::
+    :::image type="content" source="./media/trusted-launch/generation-1-to-trusted-launch-select-secure-boot-settings.png" alt-text="Screenshot that shows the Secure Boot and vTPM settings.":::
 
 8. VM needs to be **deallocated** to complete the upgrade. Confirm VM deallocate operation by clicking **Yes**.
 
@@ -165,7 +165,7 @@ Enable Trusted launch on an existing Azure Generation 1 VM by using the Azure po
 
 9. After the update successfully finishes, close the **Configuration** page. On the **Overview** page in the VM properties, confirm the **Security type** settings.
 
-    :::image type="content" source="./media/trusted-launch/generation-1-to-trusted-launch-validate-uefi.png" alt-text="Screenshot that shows the Trusted launch upgraded VM.":::
+    :::image type="content" source="./media/trusted-launch/generation-1-to-trusted-launch-validate-secure-boot.png" alt-text="Screenshot that shows the Trusted launch upgraded VM.":::
 
 10. Start the upgraded Trusted launch VM. Verify that you can sign in to the VM by using either RDP (for Windows VMs) or SSH (for Linux VMs).
 
