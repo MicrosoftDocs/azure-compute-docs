@@ -179,8 +179,9 @@ PUT https://management.azure.com/subscriptions/subid/resourceGroups/rg1/provider
 You can change the behavior when you delete a VM.
 
 ### [CLI](#tab/cli3)
+The following example uses the Azure CLI to set the delete option to `detach` so you can reuse the disk.
+
 Make sure to login to correct subscription using `az account set --subscription "SubscriptionIDName"`
-The following example sets the delete option to `detach` so you can reuse the disk.
 
 ```azurecli-interactive
 az resource update --resource-group myResourceGroup --name myVM --resource-type virtualMachines --namespace Microsoft.Compute --set properties.storageProfile.osDisk.deleteOption=detach
