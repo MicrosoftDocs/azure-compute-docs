@@ -189,7 +189,8 @@ az resource update --resource-group myResourceGroup --name myVM --resource-type 
 
 ### [PowerShell](#tab/powershell3)
 
-The following example updates VM to delete the OS disk, all data disks, and all NICs when the VM is deleted.
+The following Azure PowerShell example updates the VM to delete the OS disk, all data disks, and all NICs when the VM is deleted.
+
 Make sure to login to correct subscription using `Set-AzContext -Subscription "Subid"`.
 
 ```azurepowershell
