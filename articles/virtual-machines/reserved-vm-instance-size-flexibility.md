@@ -40,13 +40,13 @@ The following sections show what sizes are in the same size series group when yo
 
 You can also use API or Powershell to fetch the ratios, read more [here](/azure/cost-management-billing/reservations/instance-size-flexibility).
 
-## Instance size flexibility ratio for VMs 
+## Instance size flexibility ratio
 
 CSV below has the instance size flexibility groups, ArmSkuName and the ratios.  
 
 [Instance size flexibility ratios](https://aka.ms/isf)
 
-Azure keeps link and schema updated so that you can use the file programmatically.
+You can also use API or Powershell to fetch the ratios, read more [here](/azure/cost-management-billing/reservations/instance-size-flexibility).
 
 ## View VM size recommendations
 
