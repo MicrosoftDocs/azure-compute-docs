@@ -30,9 +30,10 @@ To open the Cloud Shell, just select **Try it** from the upper right corner of a
 Create a resource group with the [az group create](/cli/azure/group) command. An Azure resource group is a logical container into which Azure resources are deployed and managed. The following example creates a resource group named *myResourceGroup* in the *Central US* location. Replace the value of the variables as needed.
 
 ```azurecli-interactive
-Login to correct sub id : az account set --subscription "SubIDName"
+subscription="SubscriptionIDName"
 resourcegroup="myResourceGroupCLI"
 location="centralus"
+az account set --subscription $subscription 
 az group create --name $resourcegroup --location $location
 ```
 
