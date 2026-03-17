@@ -141,31 +141,31 @@ Enable Trusted launch on an existing Azure Generation 1 VM by using the Azure po
 2. Sign in to the [Azure portal](https://portal.azure.com).
 3. Confirm that the VM generation is **V1** and ensure VM is **Running**.
 
-    :::image type="content" source="./media/trusted-launch/generation-1-to-trusted-launch-stop-vm.png" alt-text="Screenshot that shows the Gen1 VM to be deallocated.":::
+    :::image type="content" source="./media/trusted-launch/generation-1-to-trusted-launch-stop-vm.png" alt-text="Screenshot that shows the Gen1 VM to be deallocated." lightbox="./media/trusted-launch/generation-1-to-trusted-launch-stop-vm.png":::
 
 4. On the **Overview** page in the VM properties, under **Security type**, select **Standard**. The **Configuration** page for the VM opens.
 
-    :::image type="content" source="./media/trusted-launch/generation-1-to-trusted-launch-click-standard.png" alt-text="Screenshot that shows the Security type as Standard.":::
+    :::image type="content" source="./media/trusted-launch/generation-1-to-trusted-launch-click-standard.png" alt-text="Screenshot that shows the Security type as Standard." lightbox="./media/trusted-launch/generation-1-to-trusted-launch-click-standard.png":::
 
 5. On the **Configuration** page, under the **Security type** section, select the **Security type** dropdown list.
 
-    :::image type="content" source="./media/trusted-launch/generation-1-to-trusted-launch-select-dropdown.png" alt-text="Screenshot that shows the Security type dropdown list.":::
+    :::image type="content" source="./media/trusted-launch/generation-1-to-trusted-launch-select-dropdown.png" alt-text="Screenshot that shows the Security type dropdown list." lightbox="./media/trusted-launch/generation-1-to-trusted-launch-select-dropdown.png":::
 
 6. Under the dropdown list, select **Trusted launch**. Acknowledge that Guest OS Volume was updated & validated.
 
-    :::image type="content" source="./media/trusted-launch/generation-1-to-trusted-launch-validate-guest-os-volume.png" alt-text="Screenshot that shows the Validate guest OS volume button.":::
+    :::image type="content" source="./media/trusted-launch/generation-1-to-trusted-launch-validate-guest-os-volume.png" alt-text="Screenshot that shows the Validate guest OS volume button." lightbox="./media/trusted-launch/generation-1-to-trusted-launch-validate-guest-os-volume.png":::
 
 7. Select checkboxes to enable **Secure Boot** and **vTPM**. After you make the changes, select **Save**.
 
-    :::image type="content" source="./media/trusted-launch/generation-1-to-trusted-launch-select-secure-boot-settings.png" alt-text="Screenshot that shows the Secure Boot and vTPM settings.":::
+    :::image type="content" source="./media/trusted-launch/generation-1-to-trusted-launch-select-secure-boot-settings.png" alt-text="Screenshot that shows the Secure Boot and vTPM settings." lightbox="./media/trusted-launch/generation-1-to-trusted-launch-select-secure-boot-settings.png":::
 
 8. VM needs to be **deallocated** to complete the upgrade. Confirm VM deallocate operation by clicking **Yes**.
 
-    :::image type="content" source="./media/trusted-launch/generation-1-to-trusted-launch-deallocate-vm.png" alt-text="Screenshot that shows the VM deallocate confirmation prompt.":::
+    :::image type="content" source="./media/trusted-launch/generation-1-to-trusted-launch-deallocate-vm.png" alt-text="Screenshot that shows the VM deallocate confirmation prompt." lightbox="./media/trusted-launch/generation-1-to-trusted-launch-deallocate-vm.png":::
 
 9. After the update successfully finishes, close the **Configuration** page. On the **Overview** page in the VM properties, confirm the **Security type** settings.
 
-    :::image type="content" source="./media/trusted-launch/generation-1-to-trusted-launch-validate-secure-boot.png" alt-text="Screenshot that shows the Trusted launch upgraded VM.":::
+    :::image type="content" source="./media/trusted-launch/generation-1-to-trusted-launch-validate-secure-boot.png" alt-text="Screenshot that shows the Trusted launch upgraded VM." lightbox="./media/trusted-launch/generation-1-to-trusted-launch-validate-secure-boot.png":::
 
 10. Start the upgraded Trusted launch VM. Verify that you can sign in to the VM by using either RDP (for Windows VMs) or SSH (for Linux VMs).
 
