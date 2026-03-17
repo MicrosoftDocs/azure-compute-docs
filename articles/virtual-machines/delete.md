@@ -179,7 +179,7 @@ PUT https://management.azure.com/subscriptions/subid/resourceGroups/rg1/provider
 You can change the behavior when you delete a VM.
 
 ### [CLI](#tab/cli3)
-Make sure to login to correct subscription : az account set --subscription "SubscriptionIDName"
+Make sure to login to correct subscription using `az account set --subscription "SubscriptionIDName"`
 The following example sets the delete option to `detach` so you can reuse the disk.
 
 ```azurecli-interactive
@@ -189,7 +189,8 @@ az resource update --resource-group myResourceGroup --name myVM --resource-type 
 ### [PowerShell](#tab/powershell3)
 
 The following example updates VM to delete the OS disk, all data disks, and all NICs when the VM is deleted.
-Make sure to login to correct subscription : Set-AzContext -Subscription "Subid"
+Make sure to login to correct subscription using `Set-AzContext -Subscription "Subid"`.
+
 ```azurepowershell
 $vmConfig = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM
 $vmConfig.StorageProfile.OsDisk.DeleteOption = 'Delete'
