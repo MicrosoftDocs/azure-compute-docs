@@ -132,3 +132,23 @@ A: No, you can't have a mix of ephemeral and persistent OS disk instances within
 **Q: Can the ephemeral OS disk be created using PowerShell or CLI?**
 
 A: Yes, you can create VMs with Ephemeral OS Disk using REST, Templates, PowerShell, and CLI.
+
+**Q: What is ephemeral OS disk with full caching?**
+
+A: Ephemeral OS disk with full caching (preview) enhances the standard Ephemeral OS Disk by fully caching the OS disk onto the local disk. This removes the dependency on remote storage in steady state, improving resilience during remote storage outages. With partial caching (the default mode), writes go to a diff disk on local storage and reads for original files come from a remote base disk. With full caching, the entire OS disk is cached locally, eliminating remote read/write latency.
+
+**Q: What are the prerequisites for full caching?**
+
+A: The local disk size of the VM SKU must be greater than (2 &times; OS disk size + 1 GiB). The API version must be `2025-04-01` or later. Full caching is currently supported on all VM SKUs except 2/4-core VMs. For more details, see [Ephemeral OS disks](ephemeral-os-disks.md#full-caching-mode-for-ephemeral-os-disks-preview).
+
+**Q: Is there any additional cost for full caching?**
+
+A: No, there's no additional cost charged for full caching beyond the standard VM and disk costs.
+
+**Q: How long does full caching take to complete?**
+
+A: The OS disk is cached in the background after the VM boots up, so there's no impact to VM create times. Full OS caching typically completes within 12 hours; however, a 12-hour waiting period is suggested as a safe limit before running any disaster recovery drills.
+
+**Q: What is the current availability status of full caching?**
+
+A: Ephemeral OS disk with full caching is currently in public preview.
