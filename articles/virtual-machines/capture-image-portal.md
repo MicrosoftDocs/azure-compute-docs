@@ -6,7 +6,7 @@ ms.service: azure-virtual-machines
 ms.subservice: imaging
 ms.topic: how-to
 ms.update-cycle: 180-days
-ms.date: 04/12/2022
+ms.date: 02/06/2026
 ms.author: cynthn
 ms.custom: portal
 # Customer intent: "As a cloud administrator, I want to capture an image of a virtual machine using the portal, so that I can create multiple VMs from a single source and ensure data consistency during the process."
@@ -69,3 +69,4 @@ For images stored in an Azure Compute Gallery (formerly known as Shared Image Ga
 ## Next steps
 
 - [Azure Compute Galleries overview](shared-image-galleries.md)
+

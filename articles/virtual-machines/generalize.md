@@ -3,7 +3,7 @@ title: Deprovision or generalize a VM before creating an image
 description: Generalized or deprovision VM to remove machine specific information before creating an image.
 author: cynthn
 ms.author: cynthn
-ms.date: 01/28/2026
+ms.date: 02/06/2026
 ms.service: azure-virtual-machines
 ms.subservice: imaging
 ms.topic: how-to
@@ -88,7 +88,7 @@ Sysprep removes all your personal account and security information, and then pre
 > [!IMPORTANT]
 > After you have run Sysprep on a VM, that VM is considered *generalized* and can't be restarted. The process of generalizing a VM isn't reversible. If you need to keep the original VM functioning, you should create a snapshot of the OS disk, create a VM from the snapshot, and then generalize that copy of the VM. 
 >
-> Custom answer files are not supported in the sysprep step, so you can't use the '/unattend:_answerfile_' switch with your sysprep command.  
+> Custom answer files aren't supported in the sysprep step, so you can't use the `/unattend:_answerfile_` switch with your sysprep command.  
 
 ### Prerequisites for Windows VMs
 
@@ -107,7 +107,12 @@ Sysprep removes all your personal account and security information, and then pre
  
 - Disable encryption. Sysprep requires the drives to be fully decrypted. If encryption is enabled on your VM, disable encryption before you run Sysprep.
 
-- If you plan to run Sysprep on a local machine before uploading your virtual hard disk (VHD) to Azure for the first time, make sure you have [prepared your VM](./windows/prepare-for-upload-vhd-image.md) before starting.  
+- If you plan to run Sysprep on a local machine before uploading your virtual hard disk (VHD) to Azure for the first time, make sure you have [prepared your VM](./windows/prepare-for-upload-vhd-image.md) before starting.
+  
+- Before generalizing a Windows virtual machine, ensure that all installed applications support Sysprep (preinstalled in an OS image). Some applications (Security related, Store applications, Virtualization agents, etc.) either do not support Sysprep or require a specific preparation process to function correctly in a generalized image. Always review and follow the application's official documentation to confirm the required steps before including it in a reusable image.
+
+- For more information about using Sysprep with SQL, see [Install SQL Server with SysPrep](/sql/database-engine/install-windows/install-sql-server-using-sysprep).
+- For information about using creating images with Microsoft Defender for Endpoint (MDE), see [MDE for Non‑Persistent VDI — Implementation Guide & Best Practices.](https://techcommunity.microsoft.com/blog/coreinfrastructureandsecurityblog/mde-for-non%E2%80%91persistent-vdi-%E2%80%94-implementation-guide--best-practices-/4470439)
 
 ### Generalize a Windows VM
 
