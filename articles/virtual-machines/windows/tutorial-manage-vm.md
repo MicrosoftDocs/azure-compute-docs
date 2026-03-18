@@ -60,7 +60,7 @@ Create the VM with [New-AzVM](/powershell/module/az.compute/new-azvm).
 New-AzVm `
     -ResourceGroupName "myResourceGroupVM" `
     -Name "myVM" `
-    -Location "EastUS" `
+    -Location "CentralUS" `
     -VirtualNetworkName "myVnet" `
     -SubnetName "mySubnet" `
     -SecurityGroupName "myNetworkSecurityGroup" `
@@ -89,19 +89,19 @@ In the **Windows Security** window, select **More choices** and then **Use a dif
 
 ## Understand marketplace images
 
-The Azure marketplace includes many images that can be used to create a new VM. In the previous steps, a VM was created using the Windows Server 2016 Datacenter image. In this step, the PowerShell module is used to search the marketplace for other Windows images, which can also be used as a base for new VMs. This process consists of finding the publisher, offer, SKU, and optionally a version number to [identify](cli-ps-findimage.md#terminology) the image.
+The Azure marketplace includes many images that can be used to create a new VM. In the previous steps, a VM was created using the default Windows Server image. In this step, the PowerShell module is used to search the marketplace for other Windows images, which can also be used as a base for new VMs. This process consists of finding the publisher, offer, SKU, and optionally a version number to [identify](cli-ps-findimage.md#terminology) the image.
 
 Use the [Get-AzVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) command to return a list of image publishers:
 
 ```azurepowershell-interactive
-Get-AzVMImagePublisher -Location "EastUS"
+Get-AzVMImagePublisher -Location "CentralUS"
 ```
 
 Use the [Get-AzVMImageOffer](/powershell/module/az.compute/get-azvmimageoffer) to return a list of image offers. With this command, the returned list is filtered on the specified publisher named `MicrosoftWindowsServer`:
 
 ```azurepowershell-interactive
 Get-AzVMImageOffer `
-   -Location "EastUS" `
+   -Location "CentralUS" `
    -PublisherName "MicrosoftWindowsServer"
 ```
 
@@ -179,10 +179,10 @@ The following table categorizes sizes into use cases.
 
 ### Find available VM sizes
 
-To see a list of VM sizes available in a particular region, use the [Get-AzVMSize](/powershell/module/az.compute/get-azvmsize) command.
+To see a list of VM sizes available in a particular region, use the [Get-AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku) command.
 
 ```azurepowershell-interactive
-Get-AzVMSize -Location "EastUS"
+Get-AzComputeResourceSku -Location "CentralUS"
 ```
 
 ## Resize a VM
@@ -226,7 +226,7 @@ Start-AzVM `
 
 ## VM power states
 
-An Azure VM can have one of many power states. 
+An Azure VM can have one of many [power states]( https://learn.microsoft.com/en-us/azure/virtual-machines/states-billing#power-states-and-billing). 
 
 
 | Power State | Description
