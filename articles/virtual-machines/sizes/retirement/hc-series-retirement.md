@@ -12,11 +12,11 @@ ms.date: 01/06/2026
 > [!NOTE]
 > 1-year and 3-year purchases for the HC-series end April 2, 2026.
 
-Microsoft Azure has announced the retirement of its HC-series virtual machines effective May 31, 2027. Introduced in 2019, the HC-series is equipped with Intel Xeon Platinum 8,168 processor cores, 8 GB of RAM per CPU core, and a 100 Gb/sec Mellanox EDR InfiniBand. Since launching this series, Microsoft introduced HBv5, HBv4, HX, and HBv3 series virtual machines. These newer offerings pack the latest technological improvements in compute, memory, and backend networking, enabling superior performance, scaling efficiency, and cost-effectiveness for a wide range of high-performance computing workloads.
+Microsoft Azure has announced the retirement of its HC-series virtual machines effective May 31, 2027. Introduced in 2019, the HC-series is equipped with Intel Xeon Platinum 8,168 processor cores, 8 GB of RAM per CPU core, and a 100 Gb/sec Mellanox EDR InfiniBand. Since launching this series, Microsoft introduced HBv5, HBv4, HX, and HBv3 series virtual machines. These newer offerings pack the latest technological improvements in compute, memory, and backend networking. This enables superior performance, scaling efficiency, and cost-effectiveness for a wide range of high-performance computing workloads.
 
 ## How does the retirement of the HC-series virtual machines affect me?
 
-After May 31, 2027, any remaining HC-series virtual machines (VMs) subscriptions will be set to a deallocated state. They will stop working and no longer incur billing charges. HC-series will no longer be under SLA or have support included.
+After May 31, 2027, any remaining HC-series virtual machines (VMs) subscriptions will be set to a deallocated state. They'll stop working and no longer incur billing charges. HC-series will no longer be under SLA or have support included.
 
 ## What action do I need to take before the retirement date?
 
@@ -28,10 +28,10 @@ To ensure continuity and optimal performance, we recommend transitioning from th
 
 | Workload | Recommended VM to migrate to |
 |---|---|
-| Memory-bandwidth intensive HPC applications (e.g. CFD, structural mechanics, energy research, weather and climate, chemistry & materials) | HBv5, HBv4, HBv3 |
-| Memory capacity/latency bound (e.g. silicon design/EDA) | HX, HBv5, HBv3 |
-| Compute bound (e.g. financial calculations, rendering) | HX, HBv4, HBv3 |
-| Intel-specific requirements (e.g. Intel MKL, ISV certification on Xeon) | Ddsv6/Edsv6, Ddsv5/Edsv5, Ddsv4/Edsv4 |
+| Memory-bandwidth intensive HPC applications (for example, CFD, structural mechanics, energy research, weather, and climate, chemistry & materials) | HBv5, HBv4, HBv3 |
+| Memory capacity/latency bound (for example, silicon design/EDA) | HX, HBv5, HBv3 |
+| Compute bound (for example, financial calculations, rendering) | HX, HBv4, HBv3 |
+| Intel-specific requirements (for example, Intel MKL, ISV certification on Xeon) | Ddsv6/Edsv6, Ddsv5/Edsv5, Ddsv4/Edsv4 |
 
 > [!NOTE]
 > These virtual machine recommendations are listed in order of cost performance benefit to customers from most to least.
@@ -54,7 +54,7 @@ If you have a support plan and you need technical help, create a [support reques
 
 1. Under *Subscription*, select your subscription.
 
-1. Under *Service*, click **My services.**
+1. Under *Service*, select **My services.**
 
 1. Under *Service type*, select **Virtual Machine running Windows/Linux.**
 
