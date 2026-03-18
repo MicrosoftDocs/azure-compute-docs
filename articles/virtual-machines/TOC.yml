@@ -789,9 +789,9 @@
        - name: High performance compute
          items:
          - name: HC series
-            href: ./sizes/retirement/hc-series-retirement.md
+           href: ./sizes/retirement/hc-series-retirement.md
          - name: HBv2 series
-            href: ./sizes/retirement/hbv2-series-retirement.md
+           href: ./sizes/retirement/hbv2-series-retirement.md
      - name: Retired sizes
        href: ./sizes/retirement/retired-sizes-list.md
    - name: Generation 2 VMs
