@@ -756,16 +756,12 @@
        href: ./sizes/previous-gen-sizes-list.md
      - name: Previous-gen size pages
        items:
-       - name: A-family
+       - name: General purpose
          items:
          - name: Av1-series retirement
            href: ./sizes/retirement/av1-series-retirement.md
-       - name: B-family
-         items:
          - name: B series V1
            href: ./sizes/general-purpose/bv1-series.md
-       - name: D-family
-         items:
          - name: Dv3 series
            href: ./sizes/general-purpose/dv3-series.md
          - name: Dsv3 series
@@ -776,18 +772,26 @@
            href: ./sizes/general-purpose/dsv2-series.md
          - name: Dv2 and DSv2 series (11-15)
            href: dv2-dsv2-series-memory.md
-       - name: E-family
+         - name: DCsv2 series
+           href: ./sizes/retirement/dcsv2-series-retirement.md
+       - name: Memory optimized
          items:
          - name: Ev3 and Esv3 series
            href: ev3-esv3-series.md
-       - name: L-family
+       - name: Storage optimized
          items:
          - name: Lsv2 series
            href: ./sizes/storage-optimized/lsv2-series.md
-       - name: DC-family
+       - name: FPGA accelerated
          items:
-         - name: DCsv2 series
-           href: ./sizes/retirement/dcsv2-series-retirement.md
+         - name: NP series
+           href: ./sizes/retirement/np-series-retirement.md
+       - name: High performance compute
+         items:
+         - name: HC series
+            href: ./sizes/retirement/hc-series-retirement.md
+         - name: HBv2 series
+            href: ./sizes/retirement/hbv2-series-retirement.md
      - name: Retired sizes
        href: ./sizes/retirement/retired-sizes-list.md
    - name: Generation 2 VMs
