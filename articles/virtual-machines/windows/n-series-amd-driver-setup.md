@@ -1,14 +1,14 @@
 ---
 title: Azure N-series AMD GPU driver setup for Windows
 description: How to set up AMD GPU drivers for N-series VMs running Windows Server or Windows in Azure
-author: vikancha-MSFT
+author: magatala-MSFT
 manager: jkabat
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.collection: windows
 ms.topic: how-to
 ms.date: 05/05/2025
-ms.author: vikancha
+ms.author: v-nmagatala
 ---
 
 # Install AMD GPU drivers on N-series VMs running Windows
@@ -28,9 +28,9 @@ For basic specs, storage capacities, and disk details, see [GPU Windows VM sizes
 
 | OS | Driver |
 | -------- |------------- |
-| Windows 10, Windows 11 64-bit 21H2, 22H2, 23H2<br/><br/>Windows 10 64-bit 21H2, 22H2, 20H2 <br/><br/> | [24.Q2](https://go.microsoft.com/fwlink/?linkid=2291063) (.exe) |
-| Windows Server 2022, Windows 11 EMS <br/><br/> | [24.Q2](https://go.microsoft.com/fwlink/?linkid=2292204) (.exe)|
-| Windows Server 2019, Windows 10 EMS <br/><br/> | [24.Q2](https://go.microsoft.com/fwlink/?linkid=2292402) (.exe)|
+| Windows 10 22h2 <br/><br/>Windows 11 23H2, 24H2, 25h2 <br/><br/> | [25.Q4](https://download.microsoft.com/download/04605f8a-4b3e-4e08-9f88-b5b7d55d8cb5/v710-win11.exe) (.exe) |
+| Windows Server 2025, Windows 11 EMS <br/><br/> | [25.Q4](https://download.microsoft.com/download/68cc41fd-fe9d-47ac-98ec-c9a921a11397/v710-winsvr2025.exe) (.exe)|
+| Windows Server 2022 <br/><br/> | [25.Q4](https://download.microsoft.com/download/8eb8c91e-6c08-4c76-99a9-042bb84a7e86/v710-winsvr2022.exe) (.exe)|
 
 ### VM Creation
 Create the VMs using CLI. (Azure AMD GPU driver extensions don't support NVads V710 v5 Series during preview)
