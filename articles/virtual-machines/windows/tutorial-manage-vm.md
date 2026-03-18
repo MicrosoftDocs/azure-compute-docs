@@ -106,7 +106,6 @@ Get-AzVMImageOffer `
 ```
 
 
-Windows-HUB       MicrosoftWindowsServer EastUS
 
 The [Get-AzVMImageSku](/powershell/module/az.compute/get-azvmimagesku) command will then filter on the publisher and offer name to return a list of image names.
 
