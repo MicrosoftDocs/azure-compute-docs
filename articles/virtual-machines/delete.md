@@ -5,7 +5,7 @@ author: cynthn
 ms.service: azure-virtual-machines
 ms.topic: how-to
 ms.update-cycle: 180-days
-ms.date: 05/09/2022
+ms.date: 02/06/2026
 ms.author: cynthn
 ms.custom: template-how-to, devx-track-azurecli, devx-track-azurepowershell, portal
 # Customer intent: As a cloud administrator, I want to configure delete options for virtual machines and attached resources, so that I can control which components are removed when the VM is deleted and manage costs effectively.
@@ -179,8 +179,9 @@ PUT https://management.azure.com/subscriptions/subid/resourceGroups/rg1/provider
 You can change the behavior when you delete a VM.
 
 ### [CLI](#tab/cli3)
+The following example uses the Azure CLI to set the delete option to `detach` so you can reuse the disk.
 
-The following example sets the delete option to `detach` so you can reuse the disk.
+Make sure to login to correct subscription using `az account set --subscription "SubscriptionIDName"`
 
 ```azurecli-interactive
 az resource update --resource-group myResourceGroup --name myVM --resource-type virtualMachines --namespace Microsoft.Compute --set properties.storageProfile.osDisk.deleteOption=detach
@@ -188,7 +189,9 @@ az resource update --resource-group myResourceGroup --name myVM --resource-type 
 
 ### [PowerShell](#tab/powershell3)
 
-The following example updates VM to delete the OS disk, all data disks, and all NICs when the VM is deleted.
+The following Azure PowerShell example updates the VM to delete the OS disk, all data disks, and all NICs when the VM is deleted.
+
+Make sure to login to correct subscription using `Set-AzContext -Subscription "Subid"`.
 
 ```azurepowershell
 $vmConfig = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM
@@ -315,7 +318,7 @@ Use the `--force-deletion` parameter for [az vm delete](/cli/azure/vm#az-vm-dele
 az vm delete \
     --resource-group myResourceGroup \
     --name myVM \
-    --force-deletion none
+    --force-deletion true
 ```
 
 ### [PowerShell](#tab/powershell4)
