@@ -218,7 +218,7 @@ Start-AzVM `
 
 ## VM power states
 
-An Azure VM can have one of many [power states]( https://learn.microsoft.com/en-us/azure/virtual-machines/states-billing#power-states-and-billing). 
+An Azure VM can have one of many [power states](/azure/virtual-machines/states-billing#power-states-and-billing). 
 
 
 | Power State | Description
