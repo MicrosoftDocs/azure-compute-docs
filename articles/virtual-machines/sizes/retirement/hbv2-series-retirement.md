@@ -53,7 +53,7 @@ If you have a support plan and you need technical help, create a [support reques
 
 1. Under *Subscription*, select your subscription.
 
-1. Under *Service*, click **My services.**
+1. Under *Service*, select **My services.**
 
 1. Under *Service type*, select **Virtual Machine running Windows/Linux.**
 
