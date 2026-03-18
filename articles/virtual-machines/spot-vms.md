@@ -6,8 +6,8 @@ ms.author: cynthn
 ms.service: azure-virtual-machines
 ms.subservice: azure-spot-vm
 ms.topic: how-to
-ms.date: 08/05/2024
-ms.reviewer: ju-shim
+ms.date: 02/06/2026
+ms.reviewer: cynthn
 # Customer intent: "As a cost-conscious IT manager, I want to utilize Azure Spot Virtual Machines for my batch processing and development environments, so that I can leverage unused capacity and significantly reduce expenses while accepting possible interruptions."
 ---
 

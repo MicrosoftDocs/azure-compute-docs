@@ -5,7 +5,7 @@ author: cynthn
 ms.service: azure-virtual-machines
 ms.collection: windows
 ms.topic: quickstart
-ms.date: 02/23/2023
+ms.date: 02/06/2026
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli, mode-api
 # Customer intent: As a cloud developer, I want to create and deploy a Windows virtual machine using command line tools, so that I can manage resources efficiently and automate setup processes for applications and web servers.
@@ -30,8 +30,10 @@ To open the Cloud Shell, just select **Try it** from the upper right corner of a
 Create a resource group with the [az group create](/cli/azure/group) command. An Azure resource group is a logical container into which Azure resources are deployed and managed. The following example creates a resource group named *myResourceGroup* in the *Central US* location. Replace the value of the variables as needed.
 
 ```azurecli-interactive
+subscription="SubscriptionIDName"
 resourcegroup="myResourceGroupCLI"
 location="centralus"
+az account set --subscription $subscription 
 az group create --name $resourcegroup --location $location
 ```
 
@@ -114,3 +116,4 @@ In this quickstart, you deployed a simple virtual machine, open a network port f
 
 > [!div class="nextstepaction"]
 > [Azure Windows virtual machine tutorials](./tutorial-manage-vm.md)
+
