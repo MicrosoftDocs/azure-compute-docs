@@ -113,7 +113,6 @@ Offer             PublisherName          Location
 Windows-HUB       MicrosoftWindowsServer EastUS
 WindowsServer     MicrosoftWindowsServer EastUS
 WindowsServer-HUB MicrosoftWindowsServer EastUS
-```
 
 The [Get-AzVMImageSku](/powershell/module/az.compute/get-azvmimagesku) command will then filter on the publisher and offer name to return a list of image names.
 
