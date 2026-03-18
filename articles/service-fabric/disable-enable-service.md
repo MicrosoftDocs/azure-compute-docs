@@ -1,7 +1,7 @@
 ---
 title: Scale to Zero - Disable and enable services in Azure Service Fabric
 description: Learn how to disable and enable services in Azure Service Fabric to free cluster resources without deleting service metadata.
-ms.topic: how-to-guide
+ms.topic: concept-article
 ms.author: vpavlovic
 author: vpavlovic
 ms.service: azure-service-fabric
@@ -18,7 +18,7 @@ System services such as the Failover Manager, Cluster Manager, and Naming Servic
 
 ## Prerequisites
 
-- A Service Fabric cluster running version 10.1 or later.
+- A Service Fabric cluster running version 11.5 or later.
 - The `AllowDisableEnableService` configuration flag set to `true` in the **FailoverManager** section:
 
   ```xml
@@ -70,7 +70,7 @@ await client.ServiceManager.DisableServiceAsync(description);
 #### [REST API](#tab/disable-rest)
 
 ```http
-POST /Services/{serviceName}/$/Disable?api-version=6.0
+POST /Services/{serviceName}/$/Disable
 
 {
     "DisableServiceFlag": "RemoveData"
@@ -80,7 +80,7 @@ POST /Services/{serviceName}/$/Disable?api-version=6.0
 To force-disable, include the `ForceDisable` property:
 
 ```http
-POST /Services/{serviceName}/$/Disable?api-version=6.0
+POST /Services/{serviceName}/$/Disable
 
 {
     "DisableServiceFlag": "RemoveData",
@@ -113,7 +113,7 @@ await client.ServiceManager.EnableServiceAsync(new Uri("fabric:/MyApp/MyService"
 #### [REST API](#tab/enable-rest)
 
 ```http
-POST /Services/{serviceName}/$/Enable?api-version=6.0
+POST /Services/{serviceName}/$/Enable
 ```
 
 ---
@@ -248,7 +248,7 @@ The following table lists error codes specific to the disable/enable feature:
 | `ServiceAlreadyInRequestedState` | The service is already in the requested state (already disabled or already enabled). |
 | `ServiceDisableInProgress` | A disable operation is already in progress for this service. |
 | `DisableEnableServiceFeatureDisabled` | The feature is turned off. Set `AllowDisableEnableService` to `true` in the FailoverManager configuration. |
-| `MaxAllowedDisabledServicesReached` | The cluster limit for disabled services is reached. Increase `MaxAllowedDisabledServices` in the FailoverManager configuration. |
+| `MaxAllowedDisabledServicesReached` | The cluster limit for disabled services is reached. |
 | `OperationFailedServicePurged` | The service was purged after an FM data loss event. Re-create the service to restore it. |
 
 ## Configuration reference
@@ -258,12 +258,14 @@ Set the following values in the **FailoverManager** section of the cluster confi
 | Setting | Type | Default | Description |
 |---|---|---|---|
 | `AllowDisableEnableService` | bool | `false` | Enable or disable the feature cluster-wide. This setting is dynamic and doesn't require a cluster upgrade. |
-| `MaxAllowedDisabledServices` | int | `100000` | Maximum number of services that can be disabled simultaneously. |
+
+> [!NOTE]
+> The maximum number of services that can be in the disabled state simultaneously is 100,000.
 
 ## Known limitations
 
 - System services can't be disabled.
-- In a unlikely event where FM experiences data loss, disabled services might be permanently lost and require re-creation.
+- In an unlikely event where FM experiences data loss, disabled services will be permanently lost and require re-creation. After recovery, these services may still appear in Service Fabric Explorer (SFX) but in an **Unknown** state. They are cleaned up on the next `DeleteService` or `DisableService`/`EnableService` API call, which returns `OperationFailedServicePurged`.
 - `ForceDisable` on stateful services can leave persisted state on disk that isn't properly cleaned up.
 
 ## Related content
