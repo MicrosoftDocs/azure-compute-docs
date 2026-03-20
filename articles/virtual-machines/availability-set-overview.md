@@ -23,27 +23,27 @@ This article provides an overview of the availability features of Azure virtual 
 > - Allow VM instances to be centrally managed, configured, and updated.
 > - Automatically increase or decrease the number of VM instances in response to demand or a defined schedule.
 >
-> Availability sets offer only high availability.
+> Availability sets provide high availability but do not offer the same level of resiliency as availability zones.
 
 ## What is an availability set?
 
-Availability sets are logical groupings of VMs that reduce the chance of correlated failures bringing down related VMs at the same time. Availability sets place VMs in different fault domains for better reliability. This action is especially beneficial if a region doesn't support availability zones.
+Availability sets are logical groupings of VMs that reduce the chance of correlated failures bringing down related VMs at the same time. Availability sets distribute VMs across multiple fault domains, improving reliability. This configuration is especially useful in regions that do not support availability zones.
 
 When you use availability sets, create two or more VMs within an availability set. Using two or more VMs in an availability set helps keep applications highly available and meets the 99.95% Azure service-level agreement (SLA). There's no extra cost for using availability sets. You only pay for each VM instance that you create.
 
-Availability sets offer improved VM-to-VM latencies compared to availability zones, because VMs in an availability set are allocated in closer proximity. Availability sets have fault isolation for many possible failures, to minimize single points of failure and to offer high availability. Availability sets are still susceptible to certain shared infrastructure failures, like datacenter network failures, which can affect multiple fault domains.
+Availability sets provide lower VM‑to‑VM latency than availability zones because the VMs are placed in closer physical proximity. Availability sets have fault isolation for many possible failures, to minimize single points of failure and to offer high availability. Availability sets are still susceptible to certain shared infrastructure failures, such as datacenter-level network outages, which can affect multiple fault domains.
 
 For more reliability than availability sets offer, use [availability zones](availability.md#availability-zones). Availability zones have the highest reliability. Each VM is deployed in multiple datacenters to help protect you from loss of power, networking, or cooling in an individual datacenter. If your highest priority is the best reliability for your workload, replicate your VMs across multiple availability zones.
 
 ## How do availability sets work?
 
-The underlying Azure platform assigns an *update domain* and a *fault domain* to each virtual machine in your availability set. Each availability set can have up to 3 fault domains and 20 update domains. You can't change these configurations after you create the availability set.
+The underlying Azure platform assigns an *update domain* and a *fault domain* to each virtual machine in your availability set. Each availability set can have up to 3 fault domains and 20 update domains. These settings cannot be changed after the availability set is created.
 
 ### Update domains
 
 Update domains indicate groups of virtual machines and underlying physical hardware that can be restarted at the same time.
 
-When more than five virtual machines are configured within a single availability set with five update domains, the sixth virtual machine is placed into the same update domain as the first virtual machine. The seventh virtual machine is placed in the same update domain as the second virtual machine. And the sequence continues.
+If more than five VMs are configured in an availability set with five update domains, the sixth VM is placed in the same update domain as the first, the seventh with the second, and so on.
 
 The order of update domains being restarted might not proceed sequentially during planned maintenance, but only one update domain is restarted at a time. A restarted update domain has 30 minutes to recover before maintenance starts on a different update domain.
 
