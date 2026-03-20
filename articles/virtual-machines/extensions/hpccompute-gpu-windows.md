@@ -25,7 +25,7 @@ The instructions for manual installation of the drivers, and the list of current
 The NVIDIA GPU Driver Extension can also be deployed on Linux N-series VMs. For more information, see [NVIDIA GPU Driver Extension for Linux](hpccompute-gpu-linux.md).
 
 > [!Note]
-> For NVadsA10v5-series VMs, this extension will continue to use v17.x until we finish the v18.x rollout in sovereign clouds in January 2026.
+> For NVadsA10v5-series VMs, this extension will continue to use v17.x until we finish the v18.x rollout in the Azure Government and China regions in March 2026.
 > 
 
 > [!Note]
