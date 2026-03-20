@@ -260,8 +260,8 @@ Set the following values in the [**FailoverManager**][fabric-settings-link] sect
 
 ## Related content
 
-- [Service Fabric application upgrade](application-upgrade-link)
-- [Customize Service Fabric cluster settings](fabric-settings-link)
+- [Service Fabric application upgrade][application-upgrade-link]
+- [Customize Service Fabric cluster settings][fabric-settings-link]
 
 <!-- Links -->
 [application-upgrade-link]: service-fabric-application-upgrade.md
