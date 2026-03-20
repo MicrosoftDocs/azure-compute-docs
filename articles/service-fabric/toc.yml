@@ -311,6 +311,8 @@
       href: initializer-codepackages.md
     - name: RunToCompletion
       href: run-to-completion.md
+    - name: Scale Services to Zero
+      href: disable-enable-service.md
   - name: Clusters
     items:
     - name: Clusters overview

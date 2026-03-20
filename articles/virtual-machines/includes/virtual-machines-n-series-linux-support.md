@@ -35,7 +35,7 @@ For the latest CUDA drivers and supported operating systems, visit the [NVIDIA](
 > [!NOTE]
 > [vGPU18](https://download.microsoft.com/download/f5fdb58d-8a8b-4894-9add-6b93a1456f58/NVIDIA-Linux-x86_64-570.133.20-grid-azure.run) is available for the NCasT4_v3-series.
 >
-> [vGPU18](https://download.microsoft.com/download/0541e1a5-dff2-4b8c-a79c-96a7664b1d49/NVIDIA-Linux-x86_64-570.195.03-grid-azure.run) is now available for the NVadsA10_v5-series in **public regions only**. vGPU18 for the NVadsA10_v5-series is **not** supported in the Mooncake and Fairfax regions yet. We'll provide an update once vGPU18 becomes supported for the NVadsA10_v5-series in the Mooncake and Fairfax regions.
+> [vGPU18](https://download.microsoft.com/download/0541e1a5-dff2-4b8c-a79c-96a7664b1d49/NVIDIA-Linux-x86_64-570.195.03-grid-azure.run) is now available for the NVadsA10_v5-series in **Public, China, and Azure Government regions only**. vGPU18 for the NVadsA10_v5-series is **not** supported in the Azure Secret regions yet. We'll provide an update once vGPU18 becomes supported for the NVadsA10_v5-series in the Azure Secret regions.
 
 Microsoft redistributes NVIDIA GRID driver installers for NV and NVv3-series VMs used as virtual workstations or for virtual applications. Install only these GRID drivers on Azure NV VMs, only on the operating systems listed in the following table. These drivers include licensing for GRID Virtual GPU Software in Azure. You don't need to set up an NVIDIA vGPU software license server.
 
@@ -45,7 +45,7 @@ For more information on the specific vGPU and driver branch versions, visit the 
 
 |Distribution|Driver|
 |---|--|
-|Ubuntu 20.04 LTS, 22.04 LTS, 24.04 LTS<br/><br/>Red Hat Enterprise Linux 8.6, 8.8, 8.9, 8.10, 9.0, 9.2, 9.3, 9.4, 9.5<br/><br/>SUSE Linux Enterprise Server 15 SP2, 12 SP2,12 SP5<br/><br/>Rocky Linux 8.4| NVIDIA vGPU 18.5, driver branch [R570](https://download.microsoft.com/download/0541e1a5-dff2-4b8c-a79c-96a7664b1d49/NVIDIA-Linux-x86_64-570.195.03-grid-azure.run) <br/><br/> NVIDIA vGPU 18.5, driver branch [R570](https://download.microsoft.com/download/0541e1a5-dff2-4b8c-a79c-96a7664b1d49/NVIDIA-Linux-x86_64-570.195.03-grid-azure.run)
+|Ubuntu 20.04 LTS, 22.04 LTS, 24.04 LTS<br/><br/>Red Hat Enterprise Linux 8.6, 8.8, 8.9, 8.10, 9.0, 9.2, 9.3, 9.4, 9.5<br/><br/>SUSE Linux Enterprise Server 15 SP2, 12 SP2,12 SP5<br/><br/>Rocky Linux 8.4| NVIDIA vGPU 18.6, driver branch [R570](https://download.microsoft.com/download/2a04ca6a-9eec-40d9-9564-9cdea1ab795f/NVIDIA-Linux-x86_64-570.211.01-grid-azure.run) <br/><br/> NVIDIA vGPU 18.6, driver branch [R570](https://download.microsoft.com/download/2a04ca6a-9eec-40d9-9564-9cdea1ab795f/NVIDIA-Linux-x86_64-570.211.01-grid-azure.run)
 
 > [!NOTE]
 >For Azure NVads A10 v5 VMs, we recommend that you use the latest driver version. The latest NVIDIA major driver branch (n) is only backward compatibile with the previous major branch (n-1). For example, vGPU 17.x is backward compatible with vGPU 16.x only. Driver failures might occur on any VMs still running n-2 or lower when the latest drive branch is rolled out to Azure hosts.
