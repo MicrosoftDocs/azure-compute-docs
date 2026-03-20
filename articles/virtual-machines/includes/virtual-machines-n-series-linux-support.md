@@ -35,7 +35,7 @@ For the latest CUDA drivers and supported operating systems, visit the [NVIDIA](
 > [!NOTE]
 > [vGPU18](https://download.microsoft.com/download/f5fdb58d-8a8b-4894-9add-6b93a1456f58/NVIDIA-Linux-x86_64-570.133.20-grid-azure.run) is available for the NCasT4_v3-series.
 >
-> [vGPU18](https://download.microsoft.com/download/0541e1a5-dff2-4b8c-a79c-96a7664b1d49/NVIDIA-Linux-x86_64-570.195.03-grid-azure.run) is now available for the NVadsA10_v5-series in **public regions only**. vGPU18 for the NVadsA10_v5-series is **not** supported in the Mooncake and Fairfax regions yet. We'll provide an update once vGPU18 becomes supported for the NVadsA10_v5-series in the Mooncake and Fairfax regions.
+> [vGPU18](https://download.microsoft.com/download/0541e1a5-dff2-4b8c-a79c-96a7664b1d49/NVIDIA-Linux-x86_64-570.195.03-grid-azure.run) is now available for the NVadsA10_v5-series in **Public, China, and Azure Government regions only**. vGPU18 for the NVadsA10_v5-series is **not** supported in the Azure Secret regions yet. We'll provide an update once vGPU18 becomes supported for the NVadsA10_v5-series in the Azure Secret regions.
 
 Microsoft redistributes NVIDIA GRID driver installers for NV and NVv3-series VMs used as virtual workstations or for virtual applications. Install only these GRID drivers on Azure NV VMs, only on the operating systems listed in the following table. These drivers include licensing for GRID Virtual GPU Software in Azure. You don't need to set up an NVIDIA vGPU software license server.
 
