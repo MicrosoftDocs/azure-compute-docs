@@ -10,16 +10,14 @@ ms.date: 03/13/2026
 
 # Scale to Zero - Disable and enable services in Azure Service Fabric
 
-In this article, you learn how to disable (pause) and enable (resume) services in an Azure Service Fabric cluster. Disabling a service removes all of its replicas and instances while preserving the service definition. When you enable the service again, Service Fabric rebuilds the replicas without requiring a full re-creation. This approach frees cluster resources for other workloads while keeping the service metadata intact for fast recovery.
+To increase resource utilization in a cluster, scale to zero feature can be used to free resources that are being held by services not currently in use. In this article, you learn how to disable and enable services in an Azure Service Fabric cluster. Disabling a service removes all of its replicas and instances while preserving the service definition. When you enable the service again, Service Fabric rebuilds the replicas without requiring a full re-creation.
 
 Both stateful and stateless services are supported on Windows and Linux platforms.
-
-System services such as the Failover Manager, Cluster Manager, and Naming Service can't be disabled.
 
 ## Prerequisites
 
 - A Service Fabric cluster running version 11.5 or later.
-- The `AllowDisableEnableService` configuration flag set to `true` in the **FailoverManager** section:
+- The `AllowDisableEnableService` configuration flag set to `true` in the [**FailoverManager**][fabric-settings-link] section:
 
   ```xml
   <Section Name="FailoverManager">
@@ -90,7 +88,7 @@ POST /Services/{serviceName}/$/Disable
 
 ---
 
-> [!WARNING]
+> [!CAUTION]
 > `ForceDisable` on stateful services can leave persisted state on disk that isn't properly cleaned up, because replicas are terminated without a graceful shutdown.
 
 ## Enable a service
@@ -229,16 +227,6 @@ Application upgrades proceed regardless of whether services in the application a
 
 Fabric (runtime) upgrades aren't blocked by disabled services. However, rolling back a fabric upgrade to a version that predates the disable/enable feature is rejected when disabled services exist in the cluster, because the rollback would cause inconsistent service states.
 
-## Recover from Failover Manager data loss
-
-If the Failover Manager (FM) experiences data loss while services are disabled, Service Fabric might lose knowledge of those services. The platform handles this situation automatically:
-
-1. Service Fabric persists the disabled flag in the Naming Store in addition to the FM's own records.
-1. When a disable or enable call encounters a service-not-found error from the FM, the platform cleans up the orphaned record in the Naming Store and Cluster Manager.
-1. The operation returns `OperationFailedServicePurged`, which signals that the service was purged and must be re-created.
-
-After an FM data loss event, re-create any purged services by using `CreateService`. The platform cleans up orphaned metadata automatically, **but you must re-provision the service definition**.
-
 ## Error codes
 
 The following table lists error codes specific to the disable/enable feature:
@@ -247,28 +235,34 @@ The following table lists error codes specific to the disable/enable feature:
 |---|---|
 | `ServiceAlreadyInRequestedState` | The service is already in the requested state (already disabled or already enabled). |
 | `ServiceDisableInProgress` | A disable operation is already in progress for this service. |
-| `DisableEnableServiceFeatureDisabled` | The feature is turned off. Set `AllowDisableEnableService` to `true` in the FailoverManager configuration. |
+| `DisableEnableServiceFeatureDisabled` | The feature is turned off. Set `AllowDisableEnableService` to `true` in the [FailoverManager][fabric-settings-link] configuration. |
 | `MaxAllowedDisabledServicesReached` | The cluster limit for disabled services is reached. |
 | `OperationFailedServicePurged` | The service was purged after an FM data loss event. Re-create the service to restore it. |
 
 ## Configuration reference
 
-Set the following values in the **FailoverManager** section of the cluster configuration:
+Set the following values in the [**FailoverManager**][fabric-settings-link] section of the cluster configuration:
 
 | Setting | Type | Default | Description |
 |---|---|---|---|
-| `AllowDisableEnableService` | bool | `false` | Enable or disable the feature cluster-wide. This setting is dynamic and doesn't require a cluster upgrade. |
-
-> [!NOTE]
-> The maximum number of services that can be in the disabled state simultaneously is 100,000.
+| `AllowDisableEnableService` | bool | `false` | Turn the Scale-to-Zero feature on or off. This setting is dynamic and cluster-wide. |
 
 ## Known limitations
 
 - System services can't be disabled.
-- In an unlikely event where FM experiences data loss, disabled services will be permanently lost and require re-creation. After recovery, these services may still appear in Service Fabric Explorer (SFX) but in an **Unknown** state. They are cleaned up on the next `DeleteService` or `DisableService`/`EnableService` API call, which returns `OperationFailedServicePurged`.
-- `ForceDisable` on stateful services can leave persisted state on disk that isn't properly cleaned up.
+- In an unlikely event where FM experiences data loss, disabled services will be permanently lost and require re-creation. After recovery, these services may still appear in Service Fabric Explorer (SFX) but in an **Unknown** state. They are cleaned up on the next `DeleteService` or `DisableService`/`EnableService` API call, which returns `OperationFailedServicePurged` meaning that the service was purged and must be re-created.
+
+> [!IMPORTANT]
+> The maximum number of services that can be in the disabled state simultaneously is 100,000.
+
+> [!CAUTION]
+> Disabled services are automatically deleted after a retention period of **90 days**. Once the timeout expires, the Service Fabric permanently removes the service. To keep a disabled service beyond this period, enable it before the timeout expires.
 
 ## Related content
 
-- [Service Fabric application upgrade](service-fabric-application-upgrade.md)
-- [Customize Service Fabric cluster settings](service-fabric-cluster-fabric-settings.md)
+- [Service Fabric application upgrade](application-upgrade-link)
+- [Customize Service Fabric cluster settings](fabric-settings-link)
+
+<!-- Links -->
+[application-upgrade-link]: service-fabric-application-upgrade.md
+[fabric-settings-link]: service-fabric-cluster-fabric-settings.md#failovermanager
