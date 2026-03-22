@@ -1,12 +1,12 @@
 ---
 title: Run a script when an Azure Service Fabric service starts 
-description: Learn how to configure a policy for a Service Fabric service setup entry point and run a script at service start up time.
+description: Learn how to configure a policy for a Service Fabric service setup entry point and run a script at service startup time.
 ms.topic: how-to
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
 # Customer intent: As a cloud developer, I want to configure and run a startup script in a Service Fabric service setup entry point, so that I can perform necessary environment configurations before my service starts executing.
 ---
 
@@ -95,7 +95,7 @@ The following application manifest example shows how to configure the service se
 
 First, create a **Principals** section with a user name, such as SetupAdminUser. The SetupAdminUser user account is a member of the Administrators system group.
 
-Next, under the **ServiceManifestImport** section, configure a policy to apply this principal to **SetupEntryPoint**. This policy tells Service Fabric that when the **MySetup.bat** file is run it should run as SetupAdminUser ( with administrator privileges). Since you have *not* applied a policy to the main entry point, the code in **MyServiceHost.exe** runs under the system **NetworkService** account. This is the default account that all service entry points are run as.
+Next, under the **ServiceManifestImport** section, configure a policy to apply this principal to **SetupEntryPoint**. This policy tells Service Fabric that when the **MySetup.bat** file is run it should run as SetupAdminUser ( with administrator privileges). Since you haven't* applied a policy to the main entry point, the code in **MyServiceHost.exe** runs under the system **NetworkService** account. This is the default account that all service entry points are run as.
 
 ### Configure the policy by using local system accounts
 Often, it's preferable to run the startup script using a local system account rather than an administrator account. Running the RunAs policy as a member of the Administrators group typically doesn’t work well because computers have User Access Control (UAC) enabled by default. In such cases, the recommendation is to run the SetupEntryPoint as LocalSystem, instead of as a local user added to Administrators group. The following example shows setting the SetupEntryPoint to run as LocalSystem:
@@ -132,11 +132,11 @@ Often, it's preferable to run the startup script using a local system account ra
 > For Linux clusters, to run a service or the setup entry point as **root**, you can specify the  **AccountType** as **LocalSystem**.
 
 ## Run a script from the setup entry point
-Now add a start up script to the project to run under administrator privileges. 
+Now add a startup script to the project to run under administrator privileges. 
 
 In Visual Studio, right-click the service project and add a new file called *MySetup.bat*.
 
-Next, ensure that the *MySetup.bat* file is included in the service package. By default, it is not. Select the file, right-click to get the context menu, and choose **Properties**. In the Properties dialog box, ensure that **Copy to Output Directory** is set to **Copy if newer**. See the following screenshot.
+Next, ensure that the *MySetup.bat* file is included in the service package. By default, it isn't. Select the file, right-click to get the context menu, and choose **Properties**. In the Properties dialog box, ensure that **Copy to Output Directory** is set to **Copy if newer**. See the following screenshot.
 
 ![Visual Studio CopyToOutput for SetupEntryPoint batch file][image1]
 
@@ -215,7 +215,7 @@ The following service manifest example shows setting the console redirection wit
 </SetupEntryPoint>
 ```
 
-If you now change the MySetup.ps1 file to write an **Echo** command, this will write to the output file for debugging purposes:
+If you now change the MySetup.ps1 file to write an **Echo** command, this writes to the output file for debugging purposes:
 
 ```
 Echo "Test console redirection which writes to the application log folder on the node that the application is deployed to"

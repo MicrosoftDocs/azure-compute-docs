@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: As a cloud architect, I want to implement security best practices for Azure Service Fabric applications and clusters so that I can ensure robust protection against vulnerabilities and unauthorized access.
 ---
 
@@ -18,7 +18,7 @@ For more information about [Azure Security Best Practices](/azure/security/), re
 
 [Azure Key Vault](/azure/key-vault/) is the recommended secrets management service for Azure Service Fabric applications and clusters.
 > [!NOTE]
-> If certificates/secrets from a Key Vault are deployed to a Virtual Machine Scale Set as a Virtual Machine Scale Set Secret, then the Key Vault and Virtual Machine Scale Set must be co-located.
+> If certificates/secrets from a Key Vault are deployed to a Virtual Machine Scale Set as a Virtual Machine Scale Set Secret, then the Key Vault and Virtual Machine Scale Set must be colocated.
 
 ## Create certificate authority issued Service Fabric certificate
 
@@ -31,7 +31,7 @@ Review [Azure Keyvault Certificate Creation Methods](/azure/key-vault/certificat
 
 ## Deploy Key Vault certificates to Service Fabric cluster virtual machine scale sets
 
-To deploy certificates from a co-located keyvault to a Virtual Machine Scale Set, use Virtual Machine Scale Set [osProfile](/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosprofile). The following are the Resource Manager template properties:
+To deploy certificates from a colocated keyvault to a Virtual Machine Scale Set, use Virtual Machine Scale Set [osProfile](/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosprofile). The following are the Resource Manager template properties:
 
 ```json
 "secrets": [
@@ -221,10 +221,10 @@ The following example shows how to do this for a Azure Cosmos DB resource:
 COSMOS_DB_PASSWORD=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBSCRIPTION>/resourceGroups/<YOUR RG>/providers/Microsoft.DocumentDB/databaseAccounts/<YOUR ACCOUNT>/listKeys?api-version=2016-03-31' -X POST -d "" -H "Authorization: Bearer $ACCESS_TOKEN" | python -c "import sys, json; print(json.load(sys.stdin)['primaryMasterKey'])")
 ```
 ## Windows security baselines
-[We recommend that you implement an industry-standard configuration that is broadly known and well-tested, such as Microsoft security baselines, as opposed to creating a baseline yourself](/windows/security/threat-protection/windows-security-baselines); an option for provisioning these on your Virtual Machine Scale Sets is to use Azure Desired State Configuration (DSC) extension handler, to configure the VMs as they come online, so they are running the production software.
+[We recommend that you implement an industry-standard configuration that is broadly known and well-tested, such as Microsoft security baselines, as opposed to creating a baseline yourself](/windows/security/threat-protection/windows-security-baselines); an option for provisioning these on your Virtual Machine Scale Sets is to use Azure Desired State Configuration (DSC) extension handler, to configure the VMs as they come online, so they're running the production software.
 
 ## Azure Firewall
-[Azure Firewall is a managed, cloud-based network security service that protects your Azure Virtual Network resources. It is a fully stateful firewall as a service with built-in high availability and unrestricted cloud scalability.](/azure/firewall/overview); this enables the ability to limit outbound HTTP/S traffic to a specified list of fully qualified domain names (FQDN) including wild cards. This feature does not require TLS/SSL termination. Its recommended that you leverage [Azure Firewall FQDN tags](/azure/firewall/fqdn-tags) for Windows Updates, and to enable network traffic to Microsoft Windows Update endpoints can flow through your firewall. [Deploy Azure Firewall using a template](/azure/firewall/deploy-template) provides a sample for Microsoft.Network/azureFirewalls resource template definition. Firewall rules common to Service Fabric Applications is to allow the following for your clusters virtual network:
+[Azure Firewall is a managed, cloud-based network security service that protects your Azure Virtual Network resources. It's a fully stateful firewall as a service with built-in high availability and unrestricted cloud scalability.](/azure/firewall/overview); this enables the ability to limit outbound HTTP/S traffic to a specified list of fully qualified domain names (FQDN) including wild cards. This feature doesn't require TLS/SSL termination. Its recommended that you leverage [Azure Firewall FQDN tags](/azure/firewall/fqdn-tags) for Windows Updates, and to enable network traffic to Microsoft Windows Update endpoints can flow through your firewall. [Deploy Azure Firewall using a template](/azure/firewall/deploy-template) provides a sample for Microsoft.Network/azureFirewalls resource template definition. Firewall rules common to Service Fabric Applications is to allow the following for your clusters virtual network:
 
 - *download.microsoft.com
 - *servicefabric.azure.com
@@ -272,13 +272,13 @@ By default, Windows Defender antivirus is installed on Windows Server 2016. For 
 ```
 
 > [!NOTE]
-> Refer to your Antimalware documentation for configuration rules if you are not using Windows Defender. 
+> Refer to your anti-malware documentation for configuration rules if you are not using Windows Defender. 
 > Windows Defender isn't supported on Linux.
 
 ## Hosting untrusted applications in a Service Fabric cluster
-A Service Fabric cluster is single tenant by design and hosted applications are considered **trusted**. Applications are, therefore, granted access to the Service Fabric runtime, which manifests in different forms, some of which are: [environment variables](service-fabric-environment-variables-reference.md) pointing to file paths on the host corresponding to application and Fabric files, host paths mounted with write access onto container workloads, an inter-process communication endpoint which accepts application-specific requests, and the client certificate which Fabric expects the application to use to authenticate itself.
+A Service Fabric cluster is single tenant by design and hosted applications are considered **trusted**. Applications are, therefore, granted access to the Service Fabric runtime, which manifests in different forms, some of which are: [environment variables](service-fabric-environment-variables-reference.md) pointing to file paths on the host corresponding to application and Fabric files, host paths mounted with write access onto container workloads, an inter-process communication endpoint that accepts application-specific requests, and the client certificate which Fabric expects the application to use to authenticate itself.
 
-If you are considering hosting **untrusted applications**, you must take additional steps to define and own the hostile multi-tenant experience for your Service Fabric cluster. This will require you to consider multiple aspects, in the context of your scenario, including, but not limited to, the following:
+If you're considering hosting **untrusted applications**, you must take additional steps to define and own the hostile multi-tenant experience for your Service Fabric cluster. This will require you to consider multiple aspects, in the context of your scenario, including, but not limited to, the following:
 * A thorough security review of the untrusted applications' interactions with other applications, the cluster itself, and the underlying compute infrastructure.
 * Use of the strongest sandboxing technology applicable (e.g., appropriate [isolation modes](/virtualization/windowscontainers/manage-containers/hyperv-container) for container workloads).
 * Risk assessment of the untrusted applications escaping the sandboxing technology, as the next trust and security boundary is the cluster itself.

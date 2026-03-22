@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
 ms.update-cycle: 1095-days
 # Customer intent: As a developer, I want to define and configure service endpoints in the service manifest, so that I can control communication and security settings for my Service Fabric applications without modifying the compiled code.
 ---
@@ -20,12 +20,12 @@ The service manifest allows resources that are used by the service to be declare
 ## Endpoints
 When an endpoint resource is defined in the service manifest, Service Fabric assigns ports from the reserved application port range when a port isn't specified explicitly. For example, look at the endpoint *ServiceEndpoint1* specified in the manifest snippet provided after this paragraph. Additionally, services can also request a specific port in a resource. Service replicas running on different cluster nodes can be assigned different port numbers, while replicas of a service running on the same node share the port. The service replicas can then use these ports as needed for replication and listening for client requests.
 
-Upon activating a service that specifies an https endpoint, Service Fabric will set the access control entry for the port, bind the specified server certificate to the port, and also grant the identity that the service is running as permissions to the certificate's private key. The activation flow is invoked every time Service Fabric starts, or when the certificate declaration of the application is changed via an upgrade. The endpoint certificate will also be monitored for changes/renewals, and permissions will be periodically reapplied as necessary.
+Upon activating a service that specifies an https endpoint, Service Fabric sets the access control entry for the port, bind the specified server certificate to the port, and also grant the identity that the service is running as permissions to the certificate's private key. The activation flow is invoked every time Service Fabric starts, or when the certificate declaration of the application is changed via an upgrade. The endpoint certificate will also be monitored for changes/renewals, and permissions will be periodically reapplied as necessary.
 
 Upon the termination of the service, Service Fabric will clean up the endpoint access control entry, and remove the certificate binding. However, any permissions applied to the certificate's private key will not be cleaned up.
 
 > [!WARNING] 
-> By design static ports should not overlap with application port range specified in the ClusterManifest. If you specify a static port, assign it outside of application port range, otherwise it will result in port conflicts. With release 6.5CU2 we will issue a **Health Warning** when we detect such a conflict but let the deployment continue in sync with the shipped 6.5 behaviour. However, we may prevent the application deployment from the next major releases.
+> By design static ports shouldn't overlap with application port range specified in the ClusterManifest. If you specify a static port, assign it outside of application port range, otherwise it results in port conflicts. With release 6.5CU2 we will issue a **Health Warning** when we detect such a conflict but let the deployment continue in sync with the shipped 6.5 behaviour. However, we may prevent the application deployment from the next major releases.
 >
 > With release 7.0 we will issue a **Health Warning** when we detect application port range usage goes beyond HostingConfig::ApplicationPortExhaustThresholdPercentage(default 80%).
 >
@@ -105,15 +105,15 @@ The following service manifest defines one TCP endpoint resource and two HTTP en
 The HTTPS protocol provides server authentication and is also used for encrypting client-server communication. To enable HTTPS on your Service Fabric service, specify the protocol in the *Resources -> Endpoints -> Endpoint* section of the service manifest, as shown earlier for the endpoint *ServiceEndpoint3*.
 
 > [!NOTE]
-> A service’s protocol cannot be changed during application upgrade. If it is changed during upgrade, it is a breaking change.
+> A service’s protocol can't be changed during application upgrade. If it's changed during upgrade, it's a breaking change.
 > 
 
 > [!WARNING] 
-> When using HTTPS, do not use the same port and certificate for different service instances (independent of the application) deployed to the same node. Upgrading two different services using the same port in different application instances will result in an upgrade failure. For more information, see [Upgrading multiple applications with HTTPS endpoints
+> When using HTTPS, don't use the same port and certificate for different service instances (independent of the application) deployed to the same node. Upgrading two different services using the same port in different application instances will result in an upgrade failure. For more information, see [Upgrading multiple applications with HTTPS endpoints
 ](service-fabric-application-upgrade.md#upgrading-multiple-applications-with-https-endpoints).
 >
 
-Here is an example ApplicationManifest demonstrating the configuration required for an HTTPS endpoint. The server/endpoint certificate may be declared by thumbprint or subject common name, and a value must be provided. The EndpointRef is a reference to EndpointResource in ServiceManifest, and whose protocol must have been set to the 'https' protocol. You can add more than one EndpointCertificate.  
+Here's an example ApplicationManifest demonstrating the configuration required for an HTTPS endpoint. The server/endpoint certificate may be declared by thumbprint or subject common name, and a value must be provided. The EndpointRef is a reference to EndpointResource in ServiceManifest, and whose protocol must have been set to the 'https' protocol. You can add more than one EndpointCertificate.  
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -162,7 +162,7 @@ For Linux clusters, the **MY** store defaults to the folder **/var/lib/sfcerts**
 For an example of a full application that makes use of an HTTPS endpoint, see [add an HTTPS endpoint to an ASP.NET Core Web API front-end service using Kestrel](./service-fabric-tutorial-dotnet-app-enable-https-endpoint.md#define-an-https-endpoint-in-the-service-manifest).
 
 ## Port ACLing for HTTP Endpoints
-Service Fabric will automatically ACL HTTP(S) endpoints specified by default. It will **not** perform automatic ACLing if an endpoint does not have a [SecurityAccessPolicy](service-fabric-assign-policy-to-endpoint.md) associated with it and Service Fabric is configured to run using an account with Administrator privileges.
+Service Fabric will automatically ACL HTTP(S) endpoints specified by default. It will **not** perform automatic ACLing if an endpoint doesn't have a [SecurityAccessPolicy](service-fabric-assign-policy-to-endpoint.md) associated with it and Service Fabric is configured to run using an account with Administrator privileges.
 
 ## Overriding Endpoints in ServiceManifest.xml
 
@@ -222,7 +222,7 @@ If in the ServiceManifest you specified
 
 Assume the Port1 and Protocol1 value for Application parameters is null or empty. The port will be decided by ServiceFabric and the Protocol will be tcp.
 
-Suppose you specify a wrong value. Say for Port you specified a string value "Foo" instead of an int.  New-ServiceFabricApplication command will fail with an error:
+Suppose you specify a wrong value. Say for Port you specified a string value "Foo" instead of an int.  New-ServiceFabricApplication command fails with an error:
 `The override parameter with name 'ServiceEndpoint1' attribute 'Port1' in section 'ResourceOverrides' is invalid. The value specified is 'Foo' and required is 'int'.`
 
 ## Next Steps

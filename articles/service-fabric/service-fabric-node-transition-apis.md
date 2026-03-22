@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
 # Customer intent: As a developer testing a Service Fabric application, I want to use the Node Transition API to manage node states effectively, so that I can avoid confusion between stopped and down nodes while injecting faults for testing.
 ---
 
@@ -14,39 +14,40 @@ ms.date: 07/11/2022
 
 ## What do the Stop Node and Start Node APIs do?
 
-The Stop Node API (managed: [StopNodeAsync()][stopnode], PowerShell: [Stop-ServiceFabricNode][stopnodeps]) stops a Service Fabric node.  A Service Fabric node is process, not a VM or machine – the VM or machine will still be running.  For the rest of the document "node" will mean Service Fabric node.  Stopping a node puts it into a *stopped* state where it is not a member of the cluster and cannot host services, thus simulating a *down* node.  This is useful for injecting faults into the system to test your application.  The Start Node API (managed: [StartNodeAsync()][startnode], PowerShell: [Start-ServiceFabricNode][startnodeps]]) reverses the Stop Node API,  which brings the node back to a normal state.
+The Stop Node API (managed: [StopNodeAsync()][stopnode], PowerShell: [Stop-ServiceFabricNode][stopnodeps]) stops a Service Fabric node. A Service Fabric node is process, not a VM or machine – the VM or machine will still be running. For the rest of the document "node" will mean Service Fabric node. Stopping a node puts it into a *stopped* state where it isn't a member of the cluster and can't host services, thus simulating a *down* node. This is useful for injecting faults into the system to test your application.  The Start Node API (managed: [StartNodeAsync()][startnode], PowerShell: [Start-ServiceFabricNode][startnodeps]]) reverses the Stop Node API,  which brings the node back to a normal state.
 
 ## Why are we replacing these?
 
-As described earlier, a *stopped* Service Fabric node is a node intentionally targeted using the Stop Node API.  A *down* node is a node that is down for any other reason (for example, the VM or machine is off).  With the Stop Node API, the system does not expose information to differentiate between *stopped* nodes and *down* nodes.
+As described earlier, a *stopped* Service Fabric node is a node intentionally targeted using the Stop Node API. A *down* node is a node that is down for any other reason (for example, the VM or machine is off). With the Stop Node API, the system doesn't expose information to differentiate between *stopped* nodes and *down* nodes.
 
-In addition, some errors returned by these APIs are not as descriptive as they could be.  For example, invoking the Stop Node API on an already *stopped* node will return the error *InvalidAddress*.  This experience could be improved.
+In addition, some errors returned by these APIs aren't as descriptive as they could be. For example, invoking the Stop Node API on an already *stopped* node returns the error *InvalidAddress*. This experience could be improved.
 
-Also, the duration a node remains stopped for is "infinite" until the Start Node API is invoked.  We've found this can cause problems and may be error-prone.  For example, we've seen problems where a user invoked the Stop Node API on a node and then forgot about it.  Later, it was unclear if the node was *down* or *stopped*.
+Also, the duration a node remains stopped for is "infinite" until the Start Node API is invoked. We've found this can cause problems and may be error-prone. For example, we've seen problems where a user invoked the Stop Node API on a node and then forgot about it. Later, it was unclear if the node was *down* or *stopped*.
 
 
 ## Introducing the Node Transition APIs
 
-We've addressed these issues above in a new set of APIs.  The new Node Transition API (managed: [StartNodeTransitionAsync()][snt]) may be used to transition a Service Fabric node to a *stopped* state, or to transition it from a *stopped* state to a normal up state.  Please note that the "Start" in the name of the API does not refer to starting a node.  It refers to beginning an asynchronous operation that the system will execute to transition the node to either *stopped* or started state.
+We've addressed these issues above in a new set of APIs. The new Node Transition API (managed: [StartNodeTransitionAsync()][snt]) may be used to transition a Service Fabric node to a *stopped* state, or to transition it from a *stopped* state to a normal up state. Note that the "Start" in the name of the API doesn't refer to starting a node. It refers to beginning an asynchronous operation that the system executes to transition the node to either *stopped* or started state.
 
 **Usage**
 
-If the Node Transition API does not throw an exception when invoked, then the system has accepted the asynchronous operation, and will execute it.  A successful call does not imply the operation is finished yet.  To get information about the current state of the operation, call the Node Transition Progress API (managed: [GetNodeTransitionProgressAsync()][gntp]) with the guid used when invoking Node Transition API for this operation.  The Node Transition Progress API returns a NodeTransitionProgress object.  This object's State property specifies the current state of the operation.  If the state is "Running", then the operation is executing.  If it is Completed, the operation finished without error.  If it is Faulted, there was a problem executing the operation.  The Result property's Exception property will indicate what the issue was.  See [TestCommandProgressState Enum](/dotnet/api/system.fabric.testcommandprogressstate) for more information about the State property, and the "Sample Usage" section below for code examples.
+If the Node Transition API doesn't throw an exception when invoked, then the system has accepted the asynchronous operation, and will execute it. A successful call doesn't imply the operation is finished yet. To get information about the current state of the operation, call the Node Transition Progress API (managed: [GetNodeTransitionProgressAsync()][gntp]) with the guid used when invoking Node Transition API for this operation. The Node Transition Progress API returns a NodeTransitionProgress object. This object's State property specifies the current state of the operation. If the state is "Running", then the operation is executing. If it's Completed, the operation finished without error. If it's Faulted, there was a problem executing the operation. The Result property's Exception property indicates what the issue was. See [TestCommandProgressState Enum](/dotnet/api/system.fabric.testcommandprogressstate) for more information about the State property, and the "Sample Usage" section below for code examples.
 
 **Differentiating between a stopped node and a down node**
-If a node is *stopped* using the Node Transition API, the output of a node query (managed: [GetNodeListAsync()][nodequery], PowerShell: [Get-ServiceFabricNode][nodequeryps]) will show that this node has an *IsStopped* property value of true.  Note this is different from the value of the *NodeStatus* property, which will say *Down*.  If the *NodeStatus* property has a value of *Down*, but *IsStopped* is false, then the node was not stopped using the Node Transition API, and is *Down* due to some other reason.  If the *IsStopped* property is true, and the *NodeStatus* property is *Down*, then it was stopped using the Node Transition API.
+If a node is *stopped* using the Node Transition API, the output of a node query (managed: [GetNodeListAsync()][nodequery], PowerShell: [Get-ServiceFabricNode][nodequeryps]) will show that this node has an *IsStopped* property value of true. Note this is different from the value of the *NodeStatus* property, which will say *Down*. If the *NodeStatus* property has a value of *Down*, but *IsStopped* is false, then the node wasn't stopped using the Node Transition API, and is *Down* due to some other reason. If the *IsStopped* property is true, and the *NodeStatus* property is *Down*, then it was stopped using the Node Transition API.
 
-Starting a *stopped* node using the Node Transition API will return it to function as a normal member of the cluster again.  The output of the node query API will show *IsStopped* as false, and *NodeStatus* as something that is not Down (for example, Up).
+Starting a *stopped* node using the Node Transition API returns it to function as a normal member of the cluster again. The output of the node query API shows *IsStopped* as false, and *NodeStatus* as something that isn't Down (for example, Up).
 
 
 **Limited Duration**
-When using the Node Transition API to stop a node, one of the required parameters, *stopNodeDurationInSeconds*, represents the amount of time in seconds to keep the node *stopped*.  This value must be in the allowed range, which has a minimum of 600, and a maximum of 14400.  After this time expires, the node will restart itself into Up state automatically.  Refer to Sample 1 below for an example of usage.
+When using the Node Transition API to stop a node, one of the required parameters, *stopNodeDurationInSeconds*, represents the amount of time in seconds to keep the node *stopped*. This value must be in the allowed range, which has a minimum of 600, and a maximum of 14400. After this time expires, the node will restart itself into Up state automatically. Refer to Sample 1 below for an example of usage.
 
 > [!WARNING]
-> Avoid mixing Node Transition APIs and the Stop Node and Start Node APIs.  The recommendation is to  use the Node Transition API only.  > If a node has been already been stopped using the Stop Node API, it should be started using the Start Node API first before using the > Node Transition APIs.
+> Avoid mixing Node Transition APIs and the Stop Node and Start Node APIs. The recommendation is to  use the Node Transition API only.
+> If a node has been already been stopped using the Stop Node API, it should be started using the Start Node API first before using the > Node Transition APIs.
 
 > [!WARNING]
-> Multiple Node Transition APIs calls cannot be made on the same node in parallel.  In such a situation, the Node Transition API will    > throw a FabricException with an ErrorCode property value of NodeTransitionInProgress.  Once a node transition on a specific node has  > been started, you should wait until the operation reaches a terminal state (Completed, Faulted, or ForceCancelled) before starting a  > new transition on the same node.  Parallel node transition calls on different nodes are allowed.
+> Multiple Node Transition APIs calls can't be made on the same node in parallel. In such a situation, the Node Transition API throws a FabricException with an ErrorCode property value of NodeTransitionInProgress. Once a node transition on a specific node starts, you should wait until the operation reaches a terminal state (Completed, Faulted, or ForceCancelled) before starting a new transition on the same node. Parallel node transition calls on different nodes are allowed.
 
 
 #### Sample Usage
@@ -154,7 +155,7 @@ When using the Node Transition API to stop a node, one of the required parameter
         }
 ```
 
-**Sample 2** - The following sample starts a *stopped* node.  It uses some helper methods from the first sample.
+**Sample 2** - The following sample starts a *stopped* node. It uses some helper methods from the first sample.
 
 ```csharp
         static async Task StartNodeAsync(FabricClient fc, string nodeName)
@@ -197,7 +198,7 @@ When using the Node Transition API to stop a node, one of the required parameter
         }
 ```
 
-**Sample 3** - The following sample shows incorrect usage.  This usage is incorrect because the *stopDurationInSeconds* it provides is greater than the allowed range.  Since StartNodeTransitionAsync() will fail with a fatal error, the operation was not accepted, and the progress API should not be called.  This sample uses some helper methods from the first sample.
+**Sample 3** - The following sample shows incorrect usage. This usage is incorrect because the *stopDurationInSeconds* it provides is greater than the allowed range. Since StartNodeTransitionAsync() will fail with a fatal error, the operation wasn't accepted, and the progress API shouldn't be called. This sample uses some helper methods from the first sample.
 
 ```csharp
         static async Task StopNodeWithOutOfRangeDurationAsync(FabricClient fc, string nodeName)
@@ -228,7 +229,7 @@ When using the Node Transition API to stop a node, one of the required parameter
         }
 ```
 
-**Sample 4** - The following sample shows the error information that will be returned from the Node Transition Progress API when the operation initiated by the Node Transition API is accepted, but fails later while executing.  In the case, it fails because the Node Transition API attempts to start a node that does not exist.  This sample uses some helper methods from the first sample.
+**Sample 4** - The following sample shows the error information that's returned from the Node Transition Progress API when the operation initiated by the Node Transition API is accepted, but fails later while executing. In the case, it fails because the Node Transition API attempts to start a node that doesn't exist. This sample uses some helper methods from the first sample.
 
 ```csharp
         static async Task StartNodeWithNonexistentNodeAsync(FabricClient fc)

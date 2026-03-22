@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: As a developer, I want to implement continuous integration and deployment for my container application, so that I can automate the build and release process, ensure consistent updates, and improve the efficiency of my development workflow.
 ---
 
@@ -110,7 +110,7 @@ Select **Tasks**, then **Environment 1**, and then **+New** to add a new cluster
 
 ![Add cluster connection][add-cluster-connection]
 
-In the **Add new Service Fabric Connection** view select **Certificate Based** or **Microsoft Entra ID** authentication.  Specify a connection name of "mysftestcluster" and a cluster endpoint of "tcp://mysftestcluster.southcentralus.cloudapp.azure.com:19000" (or the endpoint of the cluster you are deploying to).
+In the **Add new Service Fabric Connection** view select **Certificate Based** or **Microsoft Entra ID** authentication.  Specify a connection name of "mysftestcluster" and a cluster endpoint of "tcp://mysftestcluster.southcentralus.cloudapp.azure.com:19000" (or the endpoint of the cluster you're deploying to).
 
 For certificate based authentication, add the **Server certificate thumbprint** of the server certificate used to create the cluster.  In **Client certificate**, add the base-64 encoding of the client certificate file. See the help pop-up on that field for info on how to get that base-64 encoded representation of the certificate. Also add the **Password** for the certificate.  You can use the cluster or server certificate if you don't have a separate client certificate.
 
@@ -135,7 +135,7 @@ Enable a continuous deployment trigger so that a release is automatically create
 
 Select **+ Release** -> **Create a Release** -> **Create** to manually create a release. You can monitor the release progress in the **Releases** tab.
 
-Verify that the deployment succeeded and the application is running in the cluster.  Open a web browser and navigate to `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`.  Note the application version, in this example it is "1.0.0.20170616.3".
+Verify that the deployment succeeded and that the application is running in the cluster.  Open a web browser and navigate to `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`.  Note the application version, in this example it is "1.0.0.20170616.3".
 
 ## Commit and push changes, trigger a release
 
@@ -155,7 +155,7 @@ Pushing the changes to Azure DevOps automatically triggers a build.  When the bu
 
 To check your build progress, switch to the **Builds** tab in **Team Explorer** in Visual Studio.  Once you verify that the build executes successfully, define a release definition that deploys your application to a cluster.
 
-Verify that the deployment succeeded and the application is running in the cluster.  Open a web browser and navigate to `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`.  Note the application version, in this example it is "1.0.0.20170815.3".
+Verify that the deployment succeeded and the application is running in the cluster. Open a web browser and navigate to `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`. Note the application version, in this example it is "1.0.0.20170815.3".
 
 ![Screenshot of the Voting app in Service Fabric Explorer. In the Essentials tab, the app version "1.0.0.20170815.3" is highlighted.][sfx1]
 
@@ -167,7 +167,7 @@ Once the upgrade of the application begins, you can watch the upgrade progress i
 
 ![Screenshot of the Voting app in Service Fabric Explorer. An "Upgrade in Progress" message is highlighted and the app Status is "Upgrading".][sfx2]
 
-The application upgrade may take several minutes. When the upgrade is complete, the application will be running the next version.  In this example "1.0.0.20170815.4".
+The application upgrade may take several minutes. When the upgrade is complete, the application will be running the next version. In this example "1.0.0.20170815.4".
 
 ![Screenshot of the Voting app in Service Fabric Explorer. In the Essentials tab, the updated app version "1.0.0.20170815.4" is highlighted.][sfx3]
 
