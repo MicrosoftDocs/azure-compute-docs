@@ -16,8 +16,10 @@ Azure Disk Storage regularly receives updates for new features and enhancements.
 
 ## Update summary
 - [What's new in 2026](#whats-new-in-2026)
-  -  [Quarter 1 (January, February, March)](#quarter-1-january-february-march)
-        - [Expanded regional availability for Premium SSD v2](#expanded-regional-availability-for-premium-ssd-v2)
+
+  - [Quarter 1 (January, February, March)](#quarter-1-january-february-march)
+  
+  - [Expanded regional availability for Premium SSD v2](#expanded-regional-availability-for-premium-ssd-v2)
 - [What's new in 2025](#whats-new-in-2025)
   -  [Quarter 4 (October, November, December)](#quarter-4-october-november-december)
         - [Expanded regional availability for Premium SSD v2](#expanded-regional-availability-for-premium-ssd-v2)
@@ -51,7 +53,7 @@ Azure Disk Storage regularly receives updates for new features and enhancements.
 
 #### Expanded regional availability for Premium SSD v2
 
-Premium SSD v2 disks are now available in Brazil Southeast, Germany North, Switzerland West and in a third Availability Zone in Indonesia Central, Malaysia West and New Zealand North.
+Premium SSD v2 disks are now available in Brazil Southeast, Germany North, India South, Switzerland West and in a third Availability Zone in Indonesia Central, Malaysia West and New Zealand North.
 
 ## What's new in 2025
 
@@ -226,3 +228,4 @@ In quarter 1, support was added for using Entra ID to secure uploads and downloa
 
 - [Azure Managed Disk types](disks-types.md)
 - [Introduction to Azure Managed Disks](managed-disks-overview.md)
+
