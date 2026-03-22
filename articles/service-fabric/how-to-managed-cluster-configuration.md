@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 03/12/2024
+ms.date: 03/22/2026
 # Customer intent: "As a cloud architect, I want to configure a Service Fabric managed cluster for optimal resource management and security settings, so that I can ensure scalability and efficiency in my applications' deployment."
 ---
 

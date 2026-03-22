@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
 # Customer intent: As a cloud administrator, I want to configure an Azure Service Fabric managed cluster for Microsoft Entra client access, so that I can ensure secure authentication and management of cluster resources.
 ---
 
