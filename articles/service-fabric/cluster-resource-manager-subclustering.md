@@ -98,7 +98,7 @@ For this situation, the Resource Manager isn't able to give a proposal how to sp
 ## Configuring subclustering
 
 The behavior of Resource Manager about subclustering can be modified by modifying the following configuration parameters:
-* SubclusteringEnabled - parameter determines whether Resource Manager takes subclustering into account when doing load balancing. If this parameter is turned off, Resource Manager ignores subclustering and try to achieve optimal balance on a global level. The default value of this parameter is false.
+* SubclusteringEnabled - parameter determines whether Resource Manager takes subclustering into account when doing load balancing. If this parameter is turned off, Resource Manager ignores subclustering and tries to achieve optimal balance on a global level. The default value of this parameter is false.
 * SubclusteringReportingPolicy - determines how Resource Manager emits health reports for hierarchical and partial-overlap subclustering. A value of zero means that health reports about subclustering are turned off, "1" means that warning health reports will be produced for suboptimal subclustering situations and a value of "2" will produce "OK" health reports. The default value for this parameter is "1".
 
 ClusterManifest.xml:
