@@ -22,16 +22,16 @@ ms.date: 03/22/2026
 * Only [Azure Monitor published metrics](/azure/azure-monitor/essentials/metrics-supported) are supported.
 
 >[!NOTE] 
-> If using Windows OS image with Hyper-V role enabled, ie. the VM will be configured for nested virtualization, the Available Memory Metric will not be available, since the dynamic memory driver within the VM will be in a stopped state.
+> If using Windows OS image with Hyper-V role enabled, that is, the virtual machine (VM) is configured for nested virtualization, the Available Memory Metric won't be available, since the dynamic memory driver within the VM will be in a stopped state.
 
 
-A common scenario where autoscaling is useful is when the load on a particular service varies over time. For example, a service such as a gateway can scale based on the amount of resources necessary to handle incoming requests. Let's take a look at an example of what those scaling rules could look like and we'll use them later in the article:
-* If all instances of my gateway are using more than 70% on average, then scale the gateway service out by adding two more instances. Do this every 30 minutes, but never have more than twenty instances in total.
+A common scenario where autoscaling is useful is when the load on a particular service varies over time. For example, a service such as a gateway can scale based on the amount of resources necessary to handle incoming requests. Let's take a look at an example of what those scaling rules could look like and we use them later in the article:
+* If all instances of my gateway are using more than 70% on average, then scale out the gateway service by adding two more instances. Do this every 30 minutes, but never have more than 20 instances in total.
 * If all instances of my gateway are using less than 40% cores on average, then scale the service in by removing one instance. Do this every 30 minutes, but never have fewer than three instances in total.
 
 ## Example autoscale deployment
 
-This example will walk through: 
+This example walks through: 
 * Creating a Standard SKU Service Fabric managed cluster with two node types, `NT1` and `NT2` by default.
 * Adding autoscale rules to the secondary node type, `NT2`.
 
@@ -66,7 +66,7 @@ The following will take you step by step through setup of a cluster with autosca
 
 3) Configure and enable autoscale rules on a secondary node type
  
-   Download the [managed cluster autoscale sample template](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/SF-Managed-Standard-SKU-2-NT-Autoscale/sfmc-deploy-autoscale.json) that you will use to configure autoscaling with the following commands:
+   Download the [managed cluster autoscale sample template](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/SF-Managed-Standard-SKU-2-NT-Autoscale/sfmc-deploy-autoscale.json) that you'll use to configure autoscaling with the following commands:
 
    ```powershell
    $parameters = @{ 
@@ -76,12 +76,12 @@ The following will take you step by step through setup of a cluster with autosca
    ```
 
 >[!NOTE]
-> After this deployment completes, future cluster resource deployments should set the `vmInstanceCount` property to `-1` on secondary node types that have autoscale rules enabled. This will make sure cluster deployments do not conflict with autoscale.
+> After this deployment completes, future cluster resource deployments should set the `vmInstanceCount` property to `-1` on secondary node types that have autoscale rules enabled. This will make sure cluster deployments don't conflict with autoscale.
 
 
 ## Enable or disable autoscaling on a secondary node type
 
-Node types deployed by Service Fabric managed cluster do not enable autoscaling by default. Autoscaling can be enabled or disabled at any time, per node type, that are configured and available.
+Node types deployed by Service Fabric managed cluster don't enable autoscaling by default. Autoscaling can be enabled or disabled at any time, per node type, that are configured and available.
 
 To enable this feature, configure the `enabled` property under the type `Microsoft.Insights/autoscaleSettings` in an ARM Template as shown below:
 
@@ -103,7 +103,7 @@ To disable autoscaling, set the value to `false`
 
 ## Delete autoscaling rules
 
-To delete any autoscaling policies setup for a node type you can run the following PowerShell command.
+To delete any autoscaling policies setup for a node type, you can run the following PowerShell command.
 
 ```PowerShell
 Remove-AzResource -ResourceId "/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/microsoft.insights/autoscalesettings/$name" -Force
@@ -111,9 +111,9 @@ Remove-AzResource -ResourceId "/subscriptions/$subscriptionId/resourceGroups/$re
 
 ## Set policies for autoscaling
 
- A Service Fabric managed cluster does not configure any [policies for autoscaling](/azure/azure-monitor/autoscale/autoscale-understanding-settings) by default. Autoscaling policies must be configured for any scaling actions to occur on the underlying resources.
+ A Service Fabric managed cluster doesn't configure any [policies for autoscaling](/azure/azure-monitor/autoscale/autoscale-understanding-settings) by default. Autoscaling policies must be configured for any scaling actions to occur on the underlying resources.
 
-The following example will set a policy for `nodeType2Name` to be at least 3 nodes, but allow scaling up to 20 nodes. It will trigger scaling up when average CPU usage is 70% over the last 30 minutes with 1 minute granularity. It will trigger scaling down once average CPU usage is under 40% for the last 30 minutes with 1 minute granularity.
+The following example sets a policy for `nodeType2Name` to be at least three nodes, but allow scaling up to 20 nodes. It triggers scaling up when average CPU usage is 70% over the last 30 minutes with 1-minute granularity. It triggers scaling down once average CPU usage is under 40% for the last 30 minutes with 1-minute granularity.
 
 ```JSON
     "resources": [
@@ -193,12 +193,12 @@ You can view configured autoscale settings by using [Azure Resource Explorer](ht
 
 2) Navigate to `subscriptions` -> `SubscriptionName` -> `resource group` -> `microsoft.insights` -> `autoscalesettings` -> Autoscale policy name: e.g. `sfmc01-NT2`. 
 
-   You'll see something similar to this on the navigation tree:
+   You should see something similar to this on the navigation tree:
 
    ![Azure Resource Explorer example tree view][autoscale-are-tree]
 
 
-3) On the right-hand side, you can view the full definition of this autoscale setting. 
+3) On the right-hand side, you can view the full definition of this autoscale setting.
 
    In this example, autoscale is configured with a CPU% based scale-out and scale-in rule.
 
@@ -219,14 +219,14 @@ Some things to consider:
 
 * Are your scale-in and scale-out thresholds sufficiently different?
 
-   Suppose you set a rule to scale out when average CPU is greater than 50% over five minutes, and to scale in when average CPU is less than 50%. This setting would cause a "flapping" problem when CPU usage is close to the threshold, with scale actions constantly increasing and decreasing the size of the set. Because of this setting, the autoscale service tries to prevent "flapping", which can manifest as not scaling. Therefore, be sure your scale-out and scale-in thresholds are sufficiently different to allow some space in between scaling.
+   Suppose you set a rule to scale out when average CPU is greater than 50% over five minutes, and to scale in when average CPU is less than 50%. This setting would cause a "flapping" problem when CPU usage is close to the threshold, with scale actions constantly increasing and decreasing the size of the set. Because of this setting, the autoscale service tries to prevent "flapping," which can manifest as not scaling. Therefore, be sure your scale-out and scale-in thresholds are sufficiently different to allow some space in between scaling.
 
 * Can you scale in or out a node type?
    Adjust the count of nodes at the node type level and make sure it completes successfully. [How to scale a node type on a managed cluster](how-to-managed-cluster-modify-node-type.md#scale-a-node-type)
 
 * Check your Microsoft.ServiceFabric/managedclusters/nodetypes, and Microsoft.Insights resources in the Azure Resource Explorer
 
-   The Azure Resource Explorer is an indispensable troubleshooting tool that shows you the state of your Azure Resource Manager resources. Click on your subscription and look at the Resource Group you are troubleshooting. Under the `ServiceFabric/managedclusters/clustername` resource provider, look under `NodeTypes` for node types you created and check properties to validate `provisioningState` is `Succeeded`. Then, go into the Microsoft.Insights resource provider under `clustername` and check that the autoscale rules look right. 
+   The Azure Resource Explorer is an indispensable troubleshooting tool that shows you the state of your Azure Resource Manager resources. Select your subscription and look at the Resource Group you're troubleshooting. Under the `ServiceFabric/managedclusters/clustername` resource provider, look under `NodeTypes` for node types you created and check properties to validate `provisioningState` is `Succeeded`. Then, go into the Microsoft.Insights resource provider under `clustername` and check that the autoscale rules look right. 
 
 * Are your emitted metric values as expected?
    Use the `Get-AzMetric` [PowerShell module to get the metric values of a resource](/powershell/module/az.monitor/get-azmetric) and review

@@ -17,7 +17,7 @@ To deploy a Service Fabric application with managed identity, the application ne
 
 > [!NOTE] 
 > 
-> Applications which are not deployed as an Azure resource **cannot** have Managed Identities. 
+> Applications that aren't deployed as an Azure resource **cannot** have Managed Identities.
 >
 > Service Fabric application deployment with Managed Identity is supported with API version `"2021-05-01"` on managed clusters.
 
@@ -25,10 +25,10 @@ Sample managed cluster templates are available here: [Service Fabric managed clu
 
 ## Managed identity support in Service Fabric managed cluster
 
-When a Service Fabric application is configured with [Managed identities for Azure resources](/azure/active-directory/managed-identities-azure-resources/overview) and deployed to the cluster it will trigger automatic configuration of the *Managed Identity Token Service* on the Service Fabric managed cluster. This service is responsible for the authentication of Service Fabric applications using their managed identities, and for obtaining access tokens on their behalf. Once the service is enabled, you can see it in Service Fabric Explorer under the **System** section in the left pane, running under the name **fabric:/System/ManagedIdentityTokenService**.
+When a Service Fabric application is configured with [Managed identities for Azure resources](/azure/active-directory/managed-identities-azure-resources/overview) and deployed to the cluster it triggers automatic configuration of the *Managed Identity Token Service* on the Service Fabric managed cluster. This service is responsible for the authentication of Service Fabric applications using their managed identities, and for obtaining access tokens on their behalf. Once the service is enabled, you can see it in Service Fabric Explorer under the **System** section in the left pane, running under the name **fabric:/System/ManagedIdentityTokenService**.
 
 >[!NOTE]
->The first time an application is deployed with Managed Identities you should expect to see a one-time longer deployment due to the automatic cluster configuration change. You should expect this to take from 15 minutes for a zonal cluster to 45 minutes for a zone-spanning cluster. If there are any other deployments in flight, the Managed Identity configuration will have to wait for those to complete first.
+>The first time an application is deployed with Managed Identities you should expect to see a one-time longer deployment due to the automatic cluster configuration change. You should expect this to take from 15 minutes for a zonal cluster to 45 minutes for a zone-spanning cluster. If there are any other deployments in flight, the Managed Identity configuration has to wait for those to complete first.
 
 Application resource supports assignment of both SystemAssigned or UserAssigned and assignment can be done as shown in below snippet.
 
@@ -47,7 +47,7 @@ Application resource supports assignment of both SystemAssigned or UserAssigned 
 
 ## User-Assigned Identity
 
-To enable application with User-Assigned identity, first add the **identity** property to the application resource with type **userAssigned** and the referenced user-assigned identities. Then add a **managedIdentities** section inside the **properties** section for the **application** resource which contains a list of friendly name to principalId mapping for each of the user-assigned identities. For more information about User Assigned Identities see [Create, list or delete a user-assigned managed identity](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell).
+To enable application with User-Assigned identity, first add the **identity** property to the application resource with type **userAssigned** and the referenced user-assigned identities. Then add a **managedIdentities** section inside the **properties** section for the **application** resource that contains a list of friendly name to principalId mapping for each of the user-assigned identities. For more information about User Assigned Identities, see [Create, list or delete a user-assigned managed identity](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell).
 
 ### Application template
 
@@ -167,7 +167,7 @@ This property declares (to Azure Resource Manager, and the Managed Identity and 
     ```
     This maps the identity assigned to the application as a resource to a friendly name, for further assignment to the services comprising the application. 
 
-2. In the **ServiceManifestImport** section corresponding to the service that is being assigned the managed identity, add an **IdentityBindingPolicy** element, as indicated below:
+2. In the **ServiceManifestImport** section corresponding to the service that's being assigned the managed identity, add an **IdentityBindingPolicy** element, as indicated below:
 
     **ApplicationManifest.xml**
 
@@ -179,7 +179,7 @@ This property declares (to Azure Resource Manager, and the Managed Identity and 
         </ServiceManifestImport>
       ```
 
-    This element assigns the identity of the application to the service; without this assignment, the service will not be able to access the identity of the application. In the snippet above, the `SystemAssigned` identity (which is a reserved keyword) is mapped to the service's definition under the friendly name `WebAdmin`.
+    This element assigns the identity of the application to the service; without this assignment, the service won't be able to access the identity of the application. In the snippet above, the `SystemAssigned` identity (which is a reserved keyword) is mapped to the service's definition under the friendly name `WebAdmin`.
 
 3. Update the service manifest to add a **ManagedIdentity** element inside the **Resources** section with the name matching the value of the `ServiceIdentityRef` setting from the `IdentityBindingPolicy` definition in the application manifest:
 
@@ -197,4 +197,4 @@ This property declares (to Azure Resource Manager, and the Managed Identity and 
 
 ## Next steps
 * [Granting a Service Fabric application's managed identity access to Azure resources on a Service Fabric managed cluster](how-to-managed-cluster-grant-access-other-resources.md)
-* [Leverage the managed identity of a Service Fabric application from service code](how-to-managed-identity-service-fabric-app-code.md)
+* [Use the managed identity of a Service Fabric application from service code](how-to-managed-identity-service-fabric-app-code.md)
