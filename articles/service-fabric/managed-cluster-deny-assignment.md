@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/17/2024
+ms.date: 03/22/2026
 ms.update-cycle: 1095-days
 # Customer intent: "As a cloud administrator, I want to implement deny assignment policies for Service Fabric managed clusters, so that I can prevent accidental changes to cluster resources that could lead to desynchronization and potential downtime."
 ---
