@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
 ms.update-cycle: 1095-days
 # Customer intent: As a cloud application developer, I want to implement Reliable Collections in Service Fabric, so that I can create highly available, scalable, and low-latency applications without increased complexity in state management.
 ---

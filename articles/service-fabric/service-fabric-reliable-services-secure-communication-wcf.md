@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
 # Customer intent: As a developer configuring WCF-based services, I want to secure the communication channels in my Azure Service Fabric cluster, so that I can ensure reliable and secure service interactions.
 ---
 

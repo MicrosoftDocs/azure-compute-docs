@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 11/21/2024
+ms.date: 03/22/2026
 # Customer intent: "As a cloud architect, I want to deploy a Service Fabric cluster across multiple Availability Zones, so that I can ensure high availability and resilience for my applications against datacenter failures."
 ---
 

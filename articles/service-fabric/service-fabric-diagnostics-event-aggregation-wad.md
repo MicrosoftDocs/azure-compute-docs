@@ -7,7 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-arm-template
 services: service-fabric
-ms.date: 09/29/2025
+ms.date: 03/22/2026
 # Customer intent: As a cloud administrator, I want to configure event aggregation and diagnostics for Azure Service Fabric clusters so that I can effectively monitor, analyze, and troubleshoot issues within the applications and services deployed in the cluster.
 ---
 

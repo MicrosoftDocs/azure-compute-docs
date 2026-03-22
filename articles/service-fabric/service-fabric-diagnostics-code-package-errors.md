@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: As a cloud developer, I want to troubleshoot code package termination errors in Azure Service Fabric, so that I can identify the root causes and apply appropriate fixes to ensure smooth application performance.
 ---
 

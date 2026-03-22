@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
 ms.update-cycle: 1095-days
 # Customer intent: As a software developer, I want to understand how Reliable Actors operate within the Service Fabric platform, so that I can effectively implement stateful services and manage their lifecycle and messaging.
 ---
