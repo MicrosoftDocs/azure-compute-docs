@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 ms.custom: sfi-image-nochange
 # Customer intent: "As a service developer, I want to utilize health reporting and monitoring tools in Azure Service Fabric, so that I can quickly detect and address service issues to ensure optimal application performance."
 ---

@@ -7,7 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-python
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: As a developer, I want to create and deploy a Windows container application using Service Fabric, so that I can leverage containerization to scale and manage my Python web application efficiently in the cloud.
 ---
 

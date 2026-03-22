@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 10/05/2023
+ms.date: 03/22/2026
 # Customer intent: "As a cloud architect, I want to configure multiple network interface cards in a Service Fabric managed cluster, so that I can optimize subnet usage for both front-end and back-end connectivity."
 ---
 

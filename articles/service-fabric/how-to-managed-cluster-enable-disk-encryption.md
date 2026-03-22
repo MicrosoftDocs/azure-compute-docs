@@ -7,7 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-azurecli, devx-track-azurepowershell, devx-track-arm-template
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
 # Customer intent: As a cloud administrator, I want to enable disk encryption for Service Fabric managed cluster nodes, so that I can safeguard sensitive data and comply with security requirements.
 ---
 # Enable disk encryption for Service Fabric managed cluster nodes

@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 11/21/2024
+ms.date: 03/22/2026
 ms.update-cycle: 1095-days
 # Customer intent: "As a cloud engineer, I want to configure a Service Fabric cluster with various Azure networking features, so that I can optimize network performance and ensure proper connectivity for my applications."
 ---

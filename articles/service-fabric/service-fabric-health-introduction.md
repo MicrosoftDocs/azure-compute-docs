@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 ms.update-cycle: 1095-days
 # Customer intent: "As a cloud service administrator, I want to implement health monitoring in Service Fabric, so that I can proactively detect and resolve issues within my applications and ensure high availability of services within the cluster."
 ---

@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 05/17/2024
+ms.date: 03/22/2026
 # Customer intent: As a developer, I want to implement continuous integration and continuous deployment for my Service Fabric application using Azure Pipelines, so that I can automate the build and deployment processes and ensure my application is consistently up to date in the cloud.
 ---
 

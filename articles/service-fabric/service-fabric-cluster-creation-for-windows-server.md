@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: "As a system administrator, I want to create a standalone Service Fabric cluster on Windows Server, so that I can deploy and manage applications in a self-service environment on-premises or in any cloud."
 ---
 

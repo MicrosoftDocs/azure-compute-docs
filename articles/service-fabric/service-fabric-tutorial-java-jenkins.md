@@ -7,7 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-extended-java, devx-track-jenkins
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: As a developer, I want to configure Jenkins for continuous integration and deployment of a Java application on Service Fabric, so that I can automate the upgrade process and improve deployment efficiency.
 ---
 

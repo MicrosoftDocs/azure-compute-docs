@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 08/09/2024
+ms.date: 03/22/2026
 # Customer intent: As a cloud architect, I want to configure a secondary node type for large virtual machine scale sets in a Service Fabric managed cluster, so that I can efficiently manage scaling and improve the performance of my applications.
 ---
 
@@ -17,7 +17,7 @@ A virtual machine scale set backs each node type in a Service Fabric managed clu
 Since the Azure Service Fabric managed cluster resource provider orchestrates scaling and uses managed disks for data, we're able to support large scale sets for both stateful and stateless secondary node types.
 
 > [!NOTE]
-> This property can not be modified after a node type is deployed.
+> This property can’t be modified after a node type is deployed.
 
 ## Enable large virtual machine scale sets in a Service Fabric managed cluster
 To configure a secondary node type as a large scale set, set the **multiplePlacementGroups** property to **true**.

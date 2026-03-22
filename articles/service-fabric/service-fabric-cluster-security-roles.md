@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: "As a cloud administrator, I want to define client roles and permissions for a Service Fabric cluster, so that I can enhance security and control access to management operations based on user needs."
 ---
 

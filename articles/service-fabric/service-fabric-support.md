@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
 # Customer intent: As a cloud administrator managing Service Fabric clusters, I want to access various support options and troubleshooting resources, so that I can efficiently resolve issues and ensure optimal performance of my applications.
 ---
 

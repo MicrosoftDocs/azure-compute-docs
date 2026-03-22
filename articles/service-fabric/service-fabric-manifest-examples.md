@@ -6,13 +6,13 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
 ms.update-cycle: 1095-days
 # Customer intent: "As a software developer, I want to access examples of application and service manifests, so that I can effectively configure the settings for my Service Fabric applications."
 ---
 
 # Service Fabric application and service manifest examples
-This section contains examples of application and service manifests. These examples are not meant to show important scenarios, but to show the different settings that are available and how to use them. 
+This section contains examples of application and service manifests. These examples aren't meant to show important scenarios, but to show the different settings that are available and how to use them. 
 
 The following is an index of the features shown and the example manifest(s) they're a part of.
 

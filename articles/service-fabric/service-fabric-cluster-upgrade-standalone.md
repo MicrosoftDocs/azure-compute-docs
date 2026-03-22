@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 ms.update-cycle: 1095-days
 # Customer intent: "As an IT administrator managing a Service Fabric standalone cluster, I want to upgrade the fabric version and customize configuration settings, so that I can ensure optimal performance and maintain up-to-date support for my deployment."
 ---

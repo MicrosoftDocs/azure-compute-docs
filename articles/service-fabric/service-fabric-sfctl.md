@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
 # Customer intent: "As a cloud administrator, I want to utilize the Service Fabric CLI to manage clusters and applications, so that I can efficiently deploy and maintain services within my cloud infrastructure."
 ---
 

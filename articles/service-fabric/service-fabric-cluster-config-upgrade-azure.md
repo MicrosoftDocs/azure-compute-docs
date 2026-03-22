@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: As a cloud administrator, I want to upgrade the configuration of my Azure Service Fabric cluster using Resource Manager templates, so that I can customize fabric settings for optimal performance and management.
 ---
 
@@ -15,14 +15,14 @@ ms.date: 07/14/2022
 This article describes how to customize the various fabric settings for your Service Fabric cluster. For clusters hosted in Azure, you can customize settings through the [Azure portal](https://portal.azure.com) or by using an Azure Resource Manager template.
 
 > [!NOTE]
-> Not all settings are available in the portal, and it is a [best practice to customize it using an Azure Resource Manager template](./service-fabric-best-practices-infrastructure-as-code.md); Portal is for Service Fabric Dev\Test scenario's only.
+> Not all settings are available in the portal, and it's a [best practice to customize it using an Azure Resource Manager template](./service-fabric-best-practices-infrastructure-as-code.md); Portal is for Service Fabric Dev\Test scenario's only.
 > 
 
 
 [!INCLUDE [updated-for-az](~/reusable-content/ce-skilling/azure/includes/updated-for-az.md)]
 
 ## Customize cluster settings using Resource Manager templates
-Azure clusters can be configured through the JSON Resource Manager template. To learn more about the different settings, see [Configuration settings for clusters](service-fabric-cluster-fabric-settings.md). As an example, the steps below show how to add a new setting *MaxDiskQuotaInMB* to the *Diagnostics* section using Azure Resource Explorer.
+Azure clusters can be configured through the JSON Resource Manager template. To learn more about the different settings, see [Configuration settings for clusters](service-fabric-cluster-fabric-settings.md). As an example, the following steps show how to add a new setting *MaxDiskQuotaInMB* to the *Diagnostics* section using Azure Resource Explorer.
 
 1. Go to https://resources.azure.com
 2. Navigate to your subscription by expanding **subscriptions** -> **\<Your Subscription>** -> **resourceGroups** -> **\<Your Resource Group>** -> **providers** -> **Microsoft.ServiceFabric** -> **clusters** -> **\<Your Cluster Name>**

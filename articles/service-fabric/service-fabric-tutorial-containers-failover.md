@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: As a cloud application developer, I want to implement failover and scaling for my container services using a cluster management tool, so that I can ensure high availability and optimal resource usage for my applications.
 ---
 
