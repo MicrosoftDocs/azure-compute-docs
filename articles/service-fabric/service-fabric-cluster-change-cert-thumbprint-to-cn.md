@@ -7,7 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-arm-template
 services: service-fabric
-ms.date: 08/23/2024
+ms.date: 03/22/2026
 # Customer intent: As a system administrator, I want to convert an Azure Service Fabric cluster's certificate declarations from thumbprints to common names, so that I can simplify certificate management and facilitate easier certificate rollover without requiring cluster upgrades.
 ---
 

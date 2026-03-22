@@ -7,7 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-extended-java, linux-related-content
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: As a service developer using Linux, I want to implement effective logging and diagnostics for my Service Fabric applications, so that I can monitor and troubleshoot issues during both development and production stages.
 ---
 
@@ -24,7 +24,7 @@ Monitoring, detecting, diagnosing, and troubleshooting allow for services to con
 
 ## Debugging Service Fabric Java applications
 
-For Java applications, [multiple logging frameworks](https://en.wikipedia.org/wiki/Java_logging_framework) are available. Since `java.util.logging` is the default option with the JRE, it is also used for the [code examples in GitHub](https://github.com/Azure-Samples/service-fabric-java-getting-started). The following discussion explains how to configure the `java.util.logging` framework.
+For Java applications, [multiple logging frameworks](https://en.wikipedia.org/wiki/Java_logging_framework) are available. Since `java.util.logging` is the default option with the JRE, it's also used for the [code examples in GitHub](https://github.com/Azure-Samples/service-fabric-java-getting-started). The following discussion explains how to configure the `java.util.logging` framework.
 
 Using java.util.logging you can redirect your application logs to memory, output streams, console files, or sockets. For each of these options, there are default handlers already provided in the framework. You can create a `app.properties` file to configure the file handler for your application to redirect all logs to a local file.
 

@@ -7,7 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-extended-java
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: As a Java developer, I want to set up my Eclipse IDE with the Service Fabric plug-in so that I can efficiently develop, deploy, and manage Service Fabric applications in both local and cloud environments.
 ---
 

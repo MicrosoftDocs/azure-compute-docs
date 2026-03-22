@@ -7,7 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-arm-template
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 ms.update-cycle: 1095-days
 # Customer intent: As a DevOps engineer, I want to deploy and manage Service Fabric applications using Resource Manager templates, so that I can streamline application lifecycle management and enhance operational efficiency.
 ---

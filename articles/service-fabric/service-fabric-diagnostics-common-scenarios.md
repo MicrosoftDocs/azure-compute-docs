@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 09/29/2025
+ms.date: 03/22/2026
 # Customer intent: "As a cloud application administrator, I want to troubleshoot monitoring and diagnostic issues in Azure Service Fabric, so that I can ensure the performance and reliability of my applications."
 ---
 

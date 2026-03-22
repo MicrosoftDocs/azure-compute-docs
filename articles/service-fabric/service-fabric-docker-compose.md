@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 08/23/2024
+ms.date: 03/22/2026
 ms.update-cycle: 1095-days
 # Customer intent: "As a cloud developer familiar with Docker, I want to deploy multi-container applications using Docker Compose on Azure Service Fabric, so that I can leverage the orchestration capabilities of Service Fabric without having to adapt to a different deployment format."
 ---

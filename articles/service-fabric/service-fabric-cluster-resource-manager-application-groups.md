@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 ms.update-cycle: 1095-days
 # Customer intent: As a cloud application architect, I want to define application groups within a service cluster, so that I can manage resource allocation, set capacity limits, and optimize performance for specific application instances.
 ---

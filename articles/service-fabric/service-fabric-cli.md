@@ -7,7 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-python
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: As a developer, I want to install and use the Azure Service Fabric CLI, so that I can manage applications and interact with Service Fabric clusters efficiently across different operating systems.
 ---
 

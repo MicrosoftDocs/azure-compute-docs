@@ -7,7 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-azurepowershell
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
 # Customer intent: "As a cloud developer, I want to utilize PowerShell scripts for creating and managing Azure Service Fabric clusters and applications, so that I can streamline my deployment and infrastructure management processes."
 ---
 

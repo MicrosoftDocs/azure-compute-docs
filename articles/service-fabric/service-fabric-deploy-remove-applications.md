@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: As a DevOps engineer, I want to deploy and manage applications in an Azure Service Fabric cluster using PowerShell, so that I can streamline application lifecycle operations like registration, scaling, and removal without relying on Visual Studio.
 ---
 
