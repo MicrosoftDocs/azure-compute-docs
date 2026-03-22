@@ -58,7 +58,7 @@ In this example, you override a configuration value using parameters in your app
 > [!NOTE]
 > Too many or large overrides can affect API performance.
 >
-> Instead of using [FabricClient.QueryClient.GetApplicationListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationlistasync?view=azure-dotnet#system-fabric-fabricclient-queryclient-getapplicationlistasync), fetch parameters using the method described in this section. For clusters with many applications, try using default values to improve performance. The impact of application parameters on performance depends on factors like VM size, the number of parameters, the number of applications, and the length of the values.
+> Instead of using [FabricClient.QueryClient.GetApplicationListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationlistasync?view=azure-dotnet#system-fabric-fabricclient-queryclient-getapplicationlistasync&preserve-view=true), fetch parameters using the method described in this section. For clusters with many applications, try using default values to improve performance. The impact of application parameters on performance depends on factors like VM size, the number of parameters, the number of applications, and the length of the values.
 
 You can access the configuration in your settings.xml file programmatically. Take, for example, the following configuration XML file:
 
