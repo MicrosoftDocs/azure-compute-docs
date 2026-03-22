@@ -7,7 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom:
 services: service-fabric
-ms.date: 09/05/2023
+ms.date: 03/22/2026
 # Customer intent: As an IT administrator managing a Service Fabric cluster, I want to troubleshoot SNAT port exhaustion issues, so that I can ensure reliable outbound connectivity for my applications and prevent connection failures.
 ---
 

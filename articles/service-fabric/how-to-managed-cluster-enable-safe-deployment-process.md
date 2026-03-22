@@ -7,7 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 
 services: service-fabric
-ms.date: 05/08/2024
+ms.date: 03/22/2026
 # Customer intent: "As a DevOps engineer, I want to enable coordinated Safe Deployment Process on Service Fabric managed clusters, so that I can manage service updates with enhanced control over rollout scope, schedule, and health signals for my virtual machine scale sets."
 ---
 
