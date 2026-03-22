@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
 # Customer intent: "As a cloud application developer, I want to assign a system-managed identity to my Azure Service Fabric application so that I can secure access to resources without managing credentials explicitly."
 ---
 
