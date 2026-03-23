@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
 # Customer intent: As a cloud administrator, I want to add virtual machine scale set extensions to my Service Fabric managed cluster node types, so that I can automate configuration and improve management of the cluster nodes.
 ---
 
@@ -60,7 +60,7 @@ For more information on configuring Service Fabric managed cluster node types, s
 To provision extensions before the Service Fabric runtime starts, you can use the `setupOrder` parameter with the value `BeforeSFRuntime` in the extension properties for each extension as needed. This allows you to set up the environment and dependencies before the runtime and applications begin running on the node. See the example below for clarification:
 
 >[!NOTE]
-> It's essential to note that if an extension marked with `BeforeSFRuntime` fails, it will prevent the Service Fabric runtime from starting. Consequently, the node will be down from the Service Fabric perspective. Therefore, it is crucial to maintain these extensions with correct configurations and promptly address any issues that may arise to ensure the health of nodes within the cluster.
+> It's essential to note that if an extension marked with `BeforeSFRuntime` fails, it will prevent the Service Fabric runtime from starting. Consequently, the node will be down from the Service Fabric perspective. Therefore, it's crucial to maintain these extensions with correct configurations and promptly address any issues that may arise to ensure the health of nodes within the cluster.
 
 ### Requirements
 Use Service Fabric API version `2023-09-01-preview` or later.
@@ -126,7 +126,7 @@ Use Service Fabric API version `2023-09-01-preview` or later.
 ```
 
 >[!NOTE]
-> Special handling for AzureDiskEncryption (ADE) extension: ADE needs to run before the Service Fabric runtime to ensures that the disk is decrypted after a reimage operations, allowing the Service Fabric runtime to start using it. Even if the extension is not explicitly marked with `BeforeSFRuntime`, it will run before the runtime. But note that enabling encryption at host is recommended over using ADE extension. For detailed instructions, refer to [Enable encryption at host](how-to-managed-cluster-enable-disk-encryption.md#enable-encryption-at-host).
+> Special handling for AzureDiskEncryption (ADE) extension: ADE needs to run before the Service Fabric runtime to ensures that the disk is decrypted after a reimage operations, allowing the Service Fabric runtime to start using it. Even if the extension isn't explicitly marked with `BeforeSFRuntime`, it runs before the runtime. But note that enabling encryption at host is recommended over using ADE extension. For detailed instructions, refer to [Enable encryption at host](how-to-managed-cluster-enable-disk-encryption.md#enable-encryption-at-host).
 
 ## Next steps
 

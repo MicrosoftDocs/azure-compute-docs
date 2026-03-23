@@ -7,13 +7,13 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: linux-related-content
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 ms.update-cycle: 1095-days
 # Customer intent: As a cloud architect, I want to create and manage Service Fabric clusters on Windows Server and Linux, so that I can efficiently deploy and scale microservices while maintaining security and optimizing resource usage.
 ---
 
 # Overview of Service Fabric clusters on Azure
-A Service Fabric cluster is a network-connected set of virtual or physical machines into which your microservices are deployed and managed. A machine or VM that is part of a cluster is called a cluster node. Clusters can scale to thousands of nodes. If you add new nodes to the cluster, Service Fabric rebalances the service partition replicas and instances across the increased number of nodes. Overall application performance improves and contention for access to memory decreases. If the nodes in the cluster are not being used efficiently, you can decrease the number of nodes in the cluster. Service Fabric again rebalances the partition replicas and instances across the decreased number of nodes to make better use of the hardware on each node.
+A Service Fabric cluster is a network-connected set of virtual or physical machines into which your microservices are deployed and managed. A machine or VM that is part of a cluster is called a cluster node. Clusters can scale to thousands of nodes. If you add new nodes to the cluster, Service Fabric rebalances the service partition replicas and instances across the increased number of nodes. Overall application performance improves and contention for access to memory decreases. If the nodes in the cluster aren't being used efficiently, you can decrease the number of nodes in the cluster. Service Fabric again rebalances the partition replicas and instances across the decreased number of nodes to make better use of the hardware on each node.
 
 A node type defines the size, number, and properties for a set of nodes (virtual machines) in the cluster. Each node type can then be scaled up or down independently, have different sets of ports open, and can have different capacity metrics. Node types are used to define roles for a set of cluster nodes, such as "front end" or "back end". Your cluster can have more than one node type, but the primary node type must have at least five VMs for production clusters (or at least three VMs for test clusters). [Service Fabric system services](service-fabric-technical-overview.md#system-services) are placed on the nodes of the primary node type. 
 
@@ -33,7 +33,7 @@ A [virtual machine](../virtual-machines/index.yml) that's part of a cluster is c
 
 Each VM is associated with a virtual network interface card (NIC) and each NIC is assigned a private IP address.  A VM is assigned to a virtual network and local balancer through the NIC.
 
-All VMs in a cluster are placed in a virtual network.  All nodes in the same node type/scale set are placed on the same subnet on the virtual network.  These nodes only have private IP addresses and are not directly addressable outside the virtual network.  Clients can access services on the nodes through the Azure load balancer.
+All VMs in a cluster are placed in a virtual network.  All nodes in the same node type/scale set are placed on the same subnet on the virtual network.  These nodes only have private IP addresses and aren't directly addressable outside the virtual network.  Clients can access services on the nodes through the Azure load balancer.
 
 ### Scale set/node type
 When you create a cluster, you define one or more node types.  The nodes, or VMs, in a node type have the same size and characteristics such as number of CPUs, memory, number of disks, and disk I/O.  For example, one node type could be for small, front-end VMs with ports open to the internet while another node type could be for large, back-end VMs that process data. In Azure clusters, each node type is mapped to a [virtual machine scale set](../virtual-machine-scale-sets/index.yml).
@@ -54,7 +54,7 @@ VMs in a cluster have only [private IP addresses](/azure/virtual-network/ip-serv
 Each cluster node type is supported by an [Azure storage account](/azure/storage/common/storage-introduction) and managed disks.
 
 ## Cluster security
-A Service Fabric cluster is a resource that you own.  It is your responsibility to secure your clusters to help prevent unauthorized users from connecting to them. A secure cluster is especially important when you are running production workloads on the cluster. 
+A Service Fabric cluster is a resource that you own.  It is your responsibility to secure your clusters to help prevent unauthorized users from connecting to them. A secure cluster is especially important when you're running production workloads on the cluster. 
 
 ### Node-to-node security
 Node-to-node security secures communication between the VMs or computers in a cluster. This security scenario ensures that only computers that are authorized to join the cluster can participate in hosting applications and services in the cluster. Service Fabric uses X.509 certificates to secure a cluster and provide application security features.  A cluster certificate is required to secure cluster traffic and provide cluster and server authentication.  Self signed-certificates can be used for test clusters, but a certificate from a trusted certificate authority should be used to secure production clusters.
@@ -93,7 +93,7 @@ An Azure Service Fabric cluster is a resource that you own, but is partly manage
 For more information, read [Upgrading clusters](service-fabric-cluster-upgrade.md).
 
 ## Supported operating systems
-Please see [Supported Versions in Azure](./service-fabric-versions.md) for additional information
+See [Supported Versions in Azure](./service-fabric-versions.md) for additional information
 
 
 ## Next steps

@@ -7,7 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-arm-template
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: "As a cloud architect deploying a Service Fabric cluster via Azure Resource Manager, I want to understand common configuration pitfalls and their solutions, so that I can ensure a successful and stable deployment without encountering errors."
 ---
 
@@ -16,7 +16,7 @@ When deploying a Service Fabric cluster, guardrails are put in place, which will
 
 ## Durability mismatch
 ### Overview
-The durability value for a Service Fabric node type is defined in two different sections of an Azure Resource Manager template. The Virtual Machine Scale Set extension section of the Virtual Machine Scale Set resource, and the Node Type section of the Service Fabric cluster resource. It is a requirement that the durability value in these sections match, otherwise the resource deployment will fail.
+The durability value for a Service Fabric node type is defined in two different sections of an Azure Resource Manager template. The Virtual Machine Scale Set extension section of the Virtual Machine Scale Set resource, and the Node Type section of the Service Fabric cluster resource. It's a requirement that the durability value in these sections match, otherwise the resource deployment will fail.
 
 The following section contains an example of a durability mismatch between the Virtual Machine Scale Set extension durability setting and the Service Fabric Node Type durability setting:  
 
@@ -53,8 +53,8 @@ The following section contains an example of a durability mismatch between the V
 ```
 
 ### Error messages
-* Virtual Machine Scale Set durability mismatch does not match the current Service Fabric Node Type durability level
-* Virtual Machine Scale Set durability does not match the target Service Fabric Node Type durability level
+* Virtual Machine Scale Set durability mismatch doesn't match the current Service Fabric Node Type durability level
+* Virtual Machine Scale Set durability doesn't match the target Service Fabric Node Type durability level
 * Virtual Machine Scale Set durability does match the current Service Fabric durability level or the target Service Fabric Node Type durability level 
 
 ### Mitigation
@@ -73,10 +73,10 @@ Seed node removal operation has been detected, and will be rejected.
 * Removing {0} seed nodes out of {1} would result in the cluster going down due to loss of seed node quorum. Maximum number of seed nodes that can be removed at a time is {2}.
  
 ### Mitigation 
-Ensure that your primary node type has enough Virtual Machines for the reliability specified on your cluster. You will not be able to remove a Virtual Machine if it will bring the Virtual Machine Scale Set below the minimum number of nodes for the given reliability tier.
+Ensure that your primary node type has enough Virtual Machines for the reliability specified on your cluster. You won't be able to remove a Virtual Machine if it brings the Virtual Machine Scale Set below the minimum number of nodes for the given reliability tier.
 * If the reliability tier is correctly specified, make sure that you have enough nodes in the primary node type as needed for the reliability tier. 
 * If the reliability tier is incorrect, initiate a change on the Service Fabric resource to lower the reliability level first before initiating any Virtual Machine Scale Set operations, and wait for it to complete.
-* If the reliability tier is Bronze, please follow these [steps](./service-fabric-cluster-scale-in-out.md#manually-remove-vms-from-a-node-typevirtual-machine-scale-set) to scale in your cluster gracefully.
+* If the reliability tier is Bronze, follow these [steps](./service-fabric-cluster-scale-in-out.md#manually-remove-vms-from-a-node-typevirtual-machine-scale-set) to scale in your cluster gracefully.
 
 ## Next steps
 * Create a cluster on VMs or computers running Windows Server: [Service Fabric cluster creation for Windows Server](service-fabric-cluster-creation-for-windows-server.md)
