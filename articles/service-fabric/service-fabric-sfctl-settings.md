@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 03/22/2026
+ms.update-cycle: 1825-days
 # Customer intent: "As a developer using the Azure Service Fabric CLI, I want to configure local sfctl settings, so that I can customize the command line interface to better suit my application's telemetry and management needs."
 ---
 
@@ -17,7 +18,6 @@ Configure settings local to this instance of sfctl.
 |Subgroup|Description|
 | --- | --- |
 | [telemetry](service-fabric-sfctl-settings-telemetry.md) | Configure telemetry settings local to this instance of sfctl. |
-
 
 ## Next steps
 - [Set up](service-fabric-cli.md) the Service Fabric CLI.

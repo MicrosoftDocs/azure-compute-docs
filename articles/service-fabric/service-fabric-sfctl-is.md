@@ -6,7 +6,8 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
+ms.update-cycle: 1825-days
 # Customer intent: "As a cloud administrator, I want to utilize the command-line interface for Service Fabric, so that I can efficiently manage infrastructure commands and queries for my service instances."
 ---
 
@@ -23,15 +24,15 @@ Query and send commands to the infrastructure service.
 ## sfctl is command
 Invokes an administrative command on the given Infrastructure Service instance.
 
-For clusters that have one or more instances of the Infrastructure Service configured, this API provides a way to send infrastructure-specific commands to a particular instance of the Infrastructure Service. Available commands and their corresponding response formats vary depending upon the infrastructure on which the cluster is running. This API supports the Service Fabric platform; it is not meant to be used directly from your code.
+For clusters that have one or more instances of the Infrastructure Service configured, this API provides a way to send infrastructure-specific commands to a particular instance of the Infrastructure Service. Available commands and their corresponding response formats vary depending upon the infrastructure on which the cluster is running. This API supports the Service Fabric platform; it isn't meant to be used directly from your code.
 
 ### Arguments
 
 |Argument|Description|
 | --- | --- |
 | --command [Required] | The text of the command to be invoked. The content of the command is infrastructure-specific. |
-| --service-id | The identity of the infrastructure service. <br><br> This is the full name of the infrastructure service without the 'fabric\:' URI scheme. This parameter required only for the cluster that has more than one instance of infrastructure service running. |
-| --timeout -t | Default\: 60. |
+| --service-id | The identity of the infrastructure service. <br><br> This identity is the full name of the infrastructure service without the 'fabric\:' URI scheme. This parameter required only for the cluster that has more than one instance of infrastructure service running. |
+| --timeout -t | Default: 60. |
 
 ### Global Arguments
 
@@ -39,22 +40,22 @@ For clusters that have one or more instances of the Infrastructure Service confi
 | --- | --- |
 | --debug | Increase logging verbosity to show all debug logs. |
 | --help -h | Show this help message and exit. |
-| --output -o | Output format.  Allowed values\: json, jsonc, table, tsv.  Default\: json. |
-| --query | JMESPath query string. See http\://jmespath.org/ for more information and examples. |
+| --output -o | Output format. Allowed values: json, jsonc, table, tsv. Default: json. |
+| --query | JMESPath query string. For more information and examples, see https://jmespath.org/. |
 | --verbose | Increase logging verbosity. Use --debug for full debug logs. |
 
 ## sfctl is query
 Invokes a read-only query on the given infrastructure service instance.
 
-For clusters that have one or more instances of the Infrastructure Service configured, this API provides a way to send infrastructure-specific queries to a particular instance of the Infrastructure Service. Available commands and their corresponding response formats vary depending upon the infrastructure on which the cluster is running. This API supports the Service Fabric platform; it is not meant to be used directly from your code.
+For clusters that have one or more instances of the Infrastructure Service configured, this API provides a way to send infrastructure-specific queries to a particular instance of the Infrastructure Service. Available commands and their corresponding response formats vary depending upon the infrastructure on which the cluster is running. This API supports the Service Fabric platform; it isn't meant to be used directly from your code.
 
 ### Arguments
 
 |Argument|Description|
 | --- | --- |
 | --command [Required] | The text of the command to be invoked. The content of the command is infrastructure-specific. |
-| --service-id | The identity of the infrastructure service. <br><br> This is the full name of the infrastructure service without the 'fabric\:' URI scheme. This parameter required only for the cluster that has more than one instance of infrastructure service running. |
-| --timeout -t | Default\: 60. |
+| --service-id | The identity of the infrastructure service. <br><br> This identity is the full name of the infrastructure service without the 'fabric\:' URI scheme. This parameter required only for the cluster that has more than one instance of infrastructure service running. |
+| --timeout -t | Default: 60. |
 
 ### Global Arguments
 
@@ -62,8 +63,8 @@ For clusters that have one or more instances of the Infrastructure Service confi
 | --- | --- |
 | --debug | Increase logging verbosity to show all debug logs. |
 | --help -h | Show this help message and exit. |
-| --output -o | Output format.  Allowed values\: json, jsonc, table, tsv.  Default\: json. |
-| --query | JMESPath query string. See http\://jmespath.org/ for more information and examples. |
+| --output -o | Output format. Allowed values: json, jsonc, table, tsv. Default: json. |
+| --query | JMESPath query string. For more information and examples, see https://jmespath.org/. |
 | --verbose | Increase logging verbosity. Use --debug for full debug logs. |
 
 
