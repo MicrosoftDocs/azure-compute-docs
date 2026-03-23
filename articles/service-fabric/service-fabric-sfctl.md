@@ -7,13 +7,14 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 03/22/2026
+ms.update-cycle: 1825-days
 # Customer intent: "As a cloud administrator, I want to utilize the Service Fabric CLI to manage clusters and applications, so that I can efficiently deploy and maintain services within my cloud infrastructure."
 ---
 
 # sfctl
 Commands for managing Service Fabric clusters and entities. This version is compatible with Service Fabric 7.0 runtime.
 
-Commands follow the noun-verb pattern. See subgroups for more information.
+Commands follow the noun-verb pattern. For more information, see subgroups.
 
 ## Subgroups
 |Subgroup|Description|
