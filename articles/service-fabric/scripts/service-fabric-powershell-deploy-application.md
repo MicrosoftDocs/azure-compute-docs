@@ -2,19 +2,18 @@
 title: Deploy application to a cluster in PowerShell
 description: PowerShell Script Sample - Deploy an application to a Service Fabric cluster.
 services: service-fabric
-author: athinanthny
-manager: chackdan
+author: tomvcassidy
 ms.service: azure-service-fabric
 ms.topic: sample
-ms.date: 01/18/2018
-ms.author: atsenthi
+ms.date: 03/22/2026
+ms.author: tomcassidy
 ms.custom: mvc, devx-track-azurepowershell
 # Customer intent: As a cloud developer, I want to deploy an application to a Service Fabric cluster using PowerShell scripts, so that I can efficiently manage and automate application instances within my cloud environment.
 ---
 
 # Deploy an application to a Service Fabric cluster
 
-This sample Service Fabric SDK PowerShell script copies an application package to a cluster image store, registers the application type in the cluster, removes the unnecessary application package, and creates an application instance from the application type.  If any default services were defined in the application manifest of the target application type, then those services are created at this time. Customize the parameters as needed. 
+This sample Service Fabric SDK PowerShell script copies an application package to a cluster image store, registers the application type in the cluster, removes the unnecessary application package, and creates an application instance from the application type. If any default services were defined in the application manifest of the target application type, then those services are created at this time. Customize the parameters as needed. 
 
 If needed, install the Service Fabric PowerShell module with the [Service Fabric SDK](../service-fabric-get-started.md). 
 
@@ -24,7 +23,7 @@ If needed, install the Service Fabric PowerShell module with the [Service Fabric
 
 ## Clean up deployment 
 
-After the script sample has been run, the script in [Remove an application](service-fabric-powershell-remove-application.md) can be used to remove the application instance, unregister the application type, and delete the application package from the image store.
+After the script sample runs, the script in [Remove an application](service-fabric-powershell-remove-application.md) can be used to remove the application instance, unregister the application type, and delete the application package from the image store.
 
 ## Script explanation
 
