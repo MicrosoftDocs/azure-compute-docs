@@ -6,14 +6,15 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
+ms.update-cycle: 1825-days
 # Customer intent: As a cloud operator, I want to configure telemetry settings for the Service Fabric CLI, so that I can control the data collection for command execution and ensure compliance with my organization's monitoring policies.
 ---
 
 # sfctl settings telemetry
 Configure telemetry settings local to this instance of sfctl.
 
-Sfctl telemetry collects command name without parameters provided or their values, sfctl version, OS type, Python version, the success or failure of the command, the error message returned.
+Sfctl telemetry collects command name without parameters provided or their values, sfctl version, OS type, Python version, the success or failure of the command, and the error message returned.
 
 ## Commands
 
@@ -37,8 +38,8 @@ Turn on or off telemetry.
 | --- | --- |
 | --debug | Increase logging verbosity to show all debug logs. |
 | --help -h | Show this help message and exit. |
-| --output -o | Output format.  Allowed values\: json, jsonc, table, tsv.  Default\: json. |
-| --query | JMESPath query string. See http\://jmespath.org/ for more information and examples. |
+| --output -o | Output format. Allowed values: json, jsonc, table, tsv. Default: json. |
+| --query | JMESPath query string. For more information and examples, see https://jmespath.org/. |
 | --verbose | Increase logging verbosity. Use --debug for full debug logs. |
 
 ### Examples
