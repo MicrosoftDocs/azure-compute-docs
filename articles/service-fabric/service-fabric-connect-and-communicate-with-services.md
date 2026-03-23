@@ -6,28 +6,28 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 ms.update-cycle: 1095-days
 # Customer intent: "As a developer, I want to configure and manage service communication within a Service Fabric cluster, so that I can ensure reliable connections and efficient data exchange among microservices."
 ---
 
 # Connect and communicate with services in Service Fabric
-In Service Fabric, a service runs somewhere in a Service Fabric cluster, typically distributed across multiple VMs. It can be moved from one place to another, either by the service owner, or automatically by Service Fabric. Services are not statically tied to a particular machine or address.
+In Service Fabric, a service runs somewhere in a Service Fabric cluster, typically distributed across multiple VMs. It can be moved from one place to another, either by the service owner, or automatically by Service Fabric. Services aren't statically tied to a particular machine or address.
 
 A Service Fabric application is generally composed of many different services, where each service performs a specialized task. These services may communicate with each other to form a complete function, such as rendering different parts of a web application. There are also client applications that connect to and communicate with services. This document discusses how to set up communication with and between your services in Service Fabric.
 
 [Check this page for a training video that also discusses service communication:](/shows/building-microservices-applications-on-azure-service-fabric/service-network-communication)
 ## Bring your own protocol
-Service Fabric helps manage the lifecycle of your services but it does not make decisions about what your services do. This includes communication. When your service is opened by Service Fabric, that's your service's opportunity to set up an endpoint for incoming requests, using whatever protocol or communication stack you want. Your service will listen on a normal **IP:port** address using any addressing scheme, such as a URI. Multiple service instances or replicas may share a host process, in which case they will either need to use different ports or use a port-sharing mechanism, such as the http.sys kernel driver in Windows. In either case, each service instance or replica in a host process must be uniquely addressable.
+Service Fabric helps manage the lifecycle of your services but it doesn't make decisions about what your services do. This includes communication. When your service is opened by Service Fabric, that's your service's opportunity to set up an endpoint for incoming requests, using whatever protocol or communication stack you want. Your service will listen on a normal **IP:port** address using any addressing scheme, such as a URI. Multiple service instances or replicas may share a host process, in which case they will either need to use different ports or use a port-sharing mechanism, such as the http.sys kernel driver in Windows. In either case, each service instance or replica in a host process must be uniquely addressable.
 
 ![service endpoints][1]
 
 ## Service discovery and resolution
-In a distributed system, services may move from one machine to another over time. This can happen for various reasons, including resource balancing, upgrades, failovers, or scale-out. This means service endpoint addresses change as the service moves to nodes with different IP addresses, and may open on different ports if the service uses a dynamically selected port.
+In a distributed system, services may move from one machine to another over time. This can happen for various reasons, including resource balancing, upgrades, failovers, or scale out. This means service endpoint addresses change as the service moves to nodes with different IP addresses, and may open on different ports if the service uses a dynamically selected port.
 
 ![Distribution of services][7]
 
-Service Fabric provides a discovery and resolution service called the Naming Service. The Naming Service maintains a table that maps named service instances to the endpoint addresses they listen on. All named service instances in Service Fabric have unique names represented as URIs, for example, `"fabric:/MyApplication/MyService"`. The name of the service does not change over the lifetime of the service, it's only the endpoint addresses that can change when services move. This is analogous to websites that have constant URLs but where the IP address may change. And similar to DNS on the web, which resolves website URLs to IP addresses, Service Fabric has a registrar that maps service names to their endpoint address.
+Service Fabric provides a discovery and resolution service called the Naming Service. The Naming Service maintains a table that maps named service instances to the endpoint addresses they listen on. All named service instances in Service Fabric have unique names represented as URIs, for example, `"fabric:/MyApplication/MyService"`. The name of the service doesn't change over the lifetime of the service, it's only the endpoint addresses that can change when services move. This is analogous to websites that have constant URLs but where the IP address may change. And similar to DNS on the web, which resolves website URLs to IP addresses, Service Fabric has a registrar that maps service names to their endpoint address.
 
 ![Diagram that shows that Service Fabric has a registrar that maps service names to their endpoint address.][2]
 
@@ -42,7 +42,7 @@ Services connecting to each other inside a cluster generally can directly access
 
 
 ### DNS service
-Since many services, especially containerized services, can have an existing URL name, being able to resolve these using the standard DNS protocol (rather than the Naming Service protocol) is very convenient, especially in application "lift and shift" scenarios. This is exactly what the DNS service does. It enables you to map DNS names to a service name and hence resolve endpoint IP addresses. 
+Since many services, especially containerized services, can have an existing URL name, being able to resolve these using the standard DNS protocol (rather than the Naming Service protocol) is convenient, especially in application "lift and shift" scenarios. This is exactly what the DNS service does. It enables you to map DNS names to a service name and hence resolve endpoint IP addresses. 
 
 As shown in the following diagram, the DNS service, running in the Service Fabric cluster, maps DNS names to service names which are then resolved by the Naming Service to return the endpoint addresses to connect to. The DNS name for the service is provided at the time of creation. 
 
@@ -55,13 +55,13 @@ The reverse proxy addresses services in the cluster that exposes HTTP endpoints 
 
 ![Diagram that shows how the reverse proxy addresses services in the cluster that exposes HTTP endpoints including HTTPS.][10]
 
-For more details on how to use the reverse proxy service see [Reverse proxy in Azure Service Fabric](service-fabric-reverseproxy.md) article.
+For more information on how to use the reverse proxy service, see [Reverse proxy in Azure Service Fabric](service-fabric-reverseproxy.md) article.
 
 ## Connections from external clients
 Services connecting to each other inside a cluster generally can directly access the endpoints of other services because the nodes in a cluster are on the same local network. In some environments, however, a cluster may be behind a load balancer that routes ingress traffic through a limited set of ports. In these cases, services can still communicate with each other and resolve addresses using the Naming Service, but extra steps must be taken to allow external clients to connect to services.
 
 ## Service Fabric in Azure
-A Service Fabric cluster in Azure is placed behind an Azure Load Balancer. All external traffic to the cluster must pass through the load balancer. The load balancer will automatically forward traffic inbound on a given port to a random *node* that has the same port open. The Azure Load Balancer only knows about ports open on the *nodes*, it does not know about ports open by individual *services*.
+A Service Fabric cluster in Azure is placed behind an Azure Load Balancer. All external traffic to the cluster must pass through the load balancer. The load balancer will automatically forward traffic inbound on a given port to a random *node* that has the same port open. The Azure Load Balancer only knows about ports open on the *nodes*, it doesn't know about ports open by individual *services*.
 
 ![Azure Load Balancer and Service Fabric topology][3]
 

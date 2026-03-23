@@ -7,7 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-azurecli, linux-related-content
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: "As a cloud developer, I want to deploy a Linux Service Fabric cluster into an Azure virtual network using a command line interface, so that I can run my applications in a secure and scalable environment."
 ---
 
@@ -79,7 +79,7 @@ The names of the virtual network and subnet are declared in the template paramet
 * virtual network address space: 10.0.0.0/16
 * Service Fabric subnet address space: 10.0.2.0/24
 
-If any other application ports are needed, then you will need to adjust the Microsoft.Network/loadBalancers resource to allow the traffic in.
+If any other application ports are needed, then you need to adjust the Microsoft.Network/loadBalancers resource to allow the traffic in.
 
 ### Service Fabric Extension
 
@@ -137,7 +137,7 @@ The **AzureDeploy.Parameters** file declares many values used to deploy the clus
 
 Next, set up the network topology and deploy the Service Fabric cluster. The **AzureDeploy.json** Resource Manager template creates a virtual network (VNET) and a subnet for Service Fabric. The template also deploys a cluster with certificate security enabled.  For production clusters, use a certificate from a certificate authority (CA) as the cluster certificate. A self-signed certificate can be used to secure test clusters.
 
-The template in this article deploys a cluster that uses the certificate thumbprint to identify the cluster certificate.  No two certificates can have the same thumbprint, which makes certificate management more difficult. Switching a deployed cluster from using certificate thumbprints to using certificate common names makes certificate management much simpler.  To learn how to update the cluster to use certificate common names for certificate management, read [change cluster to certificate common name management](service-fabric-cluster-change-cert-thumbprint-to-cn.md).
+The template in this article deploys a cluster that uses the certificate thumbprint to identify the cluster certificate.  No two certificates can have the same thumbprint, which makes certificate management more difficult. Switching a deployed cluster from using certificate thumbprints to using certificate common names makes certificate management simpler.  To learn how to update the cluster to use certificate common names for certificate management, read [change cluster to certificate common name management](service-fabric-cluster-change-cert-thumbprint-to-cn.md).
 
 ### Create a cluster using an existing certificate
 
@@ -194,7 +194,7 @@ sfctl cluster select --endpoint https://aztestcluster.southcentralus.cloudapp.az
 --pem ./aztestcluster201709151446.pem --no-verify
 ```
 
-Check that you are connected and the cluster is healthy using the `sfctl cluster health` command.
+Check that you're connected and the cluster is healthy using the `sfctl cluster health` command.
 
 ```console
 sfctl cluster health
@@ -208,7 +208,7 @@ If you're not immediately moving on to the next article, you might want to [dele
 
 Learn how to [scale a Cluster](service-fabric-tutorial-scale-cluster.md).
 
-The template in this article deploys a cluster that uses the certificate thumbprint to identify the cluster certificate.  No two certificates can have the same thumbprint, which makes certificate management more difficult. Switching a deployed cluster from using certificate thumbprints to using certificate common names makes certificate management much simpler.  To learn how to update the cluster to use certificate common names for certificate management, read [change cluster to certificate common name management](service-fabric-cluster-change-cert-thumbprint-to-cn.md).
+The template in this article deploys a cluster that uses the certificate thumbprint to identify the cluster certificate.  No two certificates can have the same thumbprint, which makes certificate management more difficult. Switching a deployed cluster from using certificate thumbprints to using certificate common names makes certificate management simpler.  To learn how to update the cluster to use certificate common names for certificate management, read [change cluster to certificate common name management](service-fabric-cluster-change-cert-thumbprint-to-cn.md).
 
 [template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Ubuntu-3-NodeTypes-Secure/AzureDeploy.json
 [parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Ubuntu-3-NodeTypes-Secure/AzureDeploy.Parameters.json

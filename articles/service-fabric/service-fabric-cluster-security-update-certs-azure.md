@@ -7,7 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-arm-template
 services: service-fabric
-ms.date: 11/14/2024
+ms.date: 03/22/2026
 # Customer intent: As a cloud administrator, I want to manage certificates in an Azure Service Fabric cluster so that I can ensure secure communication and compliance with my organization's security policies.
 ---
 
@@ -19,7 +19,7 @@ Azure Service Fabrics SDK's default certificate load behavior is to deploy and u
 Service fabric lets you specify two cluster certificates, a primary and a secondary, when you configure certificate security during cluster creation, in addition to client certificates. Refer to [creating an Azure cluster via portal](service-fabric-cluster-creation-via-portal.md) or [creating an Azure cluster via Azure Resource Manager](service-fabric-cluster-creation-via-arm.md) for details on setting them up at create time. If you specify only one cluster certificate at create time, then that is used as the primary certificate. After cluster creation, you can add a new certificate as a secondary.
 
 > [!NOTE]
-> For a secure cluster, you will always need at least one valid (not revoked and not expired) cluster certificate (primary or secondary) deployed (if not, the cluster stops functioning). 90 days before all valid certificates reach expiration, the system generates a warning trace and a warning health event on the node. These are currently the only notifications Service Fabric sends regarding certificate expiration.
+> For a secure cluster, you will always need at least one valid (not revoked and not expired) cluster certificate (primary or secondary) deployed (if not, the cluster stops functioning). Ninety days before all valid certificates reach expiration, the system generates a warning trace and a warning health event on the node. These are currently the only notifications Service Fabric sends regarding certificate expiration.
 
 [!INCLUDE [updated-for-az](~/reusable-content/ce-skilling/azure/includes/updated-for-az.md)]
 
@@ -38,7 +38,7 @@ If your intent is to remove the certificate that is marked primary, then you nee
 These steps assume you're familiar with how Resource Manager works and have deployed at least one Service Fabric cluster using a Resource Manager template, and have the template that you used to set up the cluster handy. It's also assumed that you're comfortable using JSON.
 
 > [!NOTE]
-> If you are looking for a sample template and parameters that you can use to follow along or as a starting point, then download it from this [git-repo](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample). 
+> If you're looking for a sample template and parameters that you can use to follow along or as a starting point, then download it from this [git-repo](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample). 
 
 ### Edit your Resource Manager template
 
@@ -156,7 +156,7 @@ For ease of following along, sample 5-VM-1-NodeTypes-Secure_Step2.JSON contains 
 
 
 > [!NOTE]
-> Make sure that you have repeated steps 4 and 5 for all the Nodetypes/Microsoft.Compute/virtualMachineScaleSets resource definitions in your template. If you miss one of them, the certificate will not get installed on that virtual machine scale set and you will have unpredictable results in your cluster, including the cluster going down (if you end up with no valid certificates that the cluster can use for security. So double check, before proceeding further.
+> Make sure that you have repeated steps 4 and 5 for all the Nodetypes/Microsoft.Compute/virtualMachineScaleSets resource definitions in your template. If you miss one of them, the certificate won't get installed on that virtual machine scale set and you will have unpredictable results in your cluster, including the cluster going down (if you end up with no valid certificates that the cluster can use for security. So double check, before proceeding further.
 > 
 > 
 
@@ -196,7 +196,7 @@ Test-AzResourceGroupDeployment -ResourceGroupName <Resource Group that your clus
 Deploy the template to your resource group. Use the same Resource Group that your cluster is currently deployed to. Run the New-AzResourceGroupDeployment command. You don't need to specify the mode, since the default value is **incremental**.
 
 > [!NOTE]
-> If you set Mode to Complete, you can inadvertently delete resources that are not in your template. So do not use it in this scenario.
+> If you set Mode to Complete, you can inadvertently delete resources that aren't in your template. So don't use it in this scenario.
 > 
 > 
 

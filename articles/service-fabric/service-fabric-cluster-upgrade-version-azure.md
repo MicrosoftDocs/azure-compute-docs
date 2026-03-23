@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: "As a cloud administrator, I want to manage the upgrade mode of my Service Fabric cluster, so that I can ensure it remains secure and up-to-date while meeting my organization’s operational requirements."
 ---
 
@@ -18,7 +18,7 @@ For further background on cluster upgrade concepts and processes, see [Upgrading
 
 ## Set upgrade mode
 
-You can set your cluster to receive automatic Service Fabric upgrades as they are released by Microsoft, or you can manually choose from a list of currently supported versions by setting the upgrade mode for your cluster. This can be done either through the *Fabric upgrade mode* control in Azure portal or the `upgradeMode` setting in your cluster deployment template.
+You can set your cluster to receive automatic Service Fabric upgrades as they're released by Microsoft, or you can manually choose from a list of currently supported versions by setting the upgrade mode for your cluster. This can be done either through the *Fabric upgrade mode* control in Azure portal or the `upgradeMode` setting in your cluster deployment template.
 
 ### Azure portal
 
@@ -34,7 +34,7 @@ You can also toggle between automatic or manual upgrades from the **Fabric upgra
 
 When you select the manual upgrade option, all that's needed to initiate an upgrade is to select from the available versions  dropdown and then *Save*. From there, the cluster upgrade gets kicked off immediately.
 
-The [cluster health policies](#custom-policies-for-manual-upgrades) (a combination of node health and the health all the applications running in the cluster) are adhered to during the upgrade. If cluster health policies are not met, the upgrade will be rolled back.
+The [cluster health policies](#custom-policies-for-manual-upgrades) (a combination of node health and the health all the applications running in the cluster) are adhered to during the upgrade. If cluster health policies aren't met, the upgrade will be rolled back.
 
 Once you have fixed the issues that resulted in the rollback, you'll need to initiate the upgrade again, by following the same steps as before.
 
@@ -46,7 +46,7 @@ To change your cluster upgrade mode using a Resource Manager template, specify e
 
 Upon successful deployment of the template, changes to the cluster upgrade mode will be applied. If your cluster is in manual mode, the cluster upgrade will kick off automatically.
 
-The [cluster health policies](#custom-policies-for-manual-upgrades) (a combination of node health and the health all the applications running in the cluster) are adhered to during the upgrade. If cluster health policies are not met, the upgrade is rolled back.
+The [cluster health policies](#custom-policies-for-manual-upgrades) (a combination of node health and the health all the applications running in the cluster) are adhered to during the upgrade. If cluster health policies aren't met, the upgrade is rolled back.
 
 Once you have fixed the issues that resulted in the rollback, you'll need to initiate the upgrade again, by following the same steps as before.
 

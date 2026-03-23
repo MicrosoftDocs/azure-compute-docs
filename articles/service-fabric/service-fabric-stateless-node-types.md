@@ -6,11 +6,11 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 11/21/2024
+ms.date: 03/22/2026
 # Customer intent: As a cloud architect, I want to deploy stateless-only node types in a Service Fabric cluster, so that I can optimize scaling and management of resources using the latest capabilities in Azure.
 ---
 # Deploy an Azure Service Fabric cluster with stateless-only node types
-Service Fabric node types come with inherent assumption that at some point of time, stateful services might be placed on the nodes. Stateless node types change this assumption for a node type, thus allowing the node type to use other features such as faster scale out operations, support for Automatic OS Upgrades on Bronze durability and scaling out to more than 100 nodes in a single virtual machine scale set.
+Service Fabric node types come with inherent assumption that at some point of time, stateful services might be placed on the nodes. Stateless node types change this assumption for a node type, thus allowing the node type to use other features such as faster scale-out operations, support for Automatic OS Upgrades on Bronze durability and scaling out to more than 100 nodes in a single virtual machine scale set.
 
 * Primary node types can't be configured to be stateless
 * Stateless node types are only supported with Bronze Durability Levels
@@ -70,10 +70,10 @@ To enable stateless node types, you should configure the underlying virtual mach
 
 * The value  **singlePlacementGroup** property, which should be set to **false** if you require to scale to more than 100 VMs.
 * The Scale set's **upgradePolicy** should be set to **Rolling**.
-* Rolling Upgrade Mode requires Application Health Extension or Health probes configured. For more details on configuring the health probes or the application health extension refer to this [doc](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md#how-does-automatic-os-image-upgrade-work). Configure health probe with the default configuration for Stateless Node types as suggested below. Once the applications are deployed to the node type, Health Probe/Health extension ports can be changed to monitor the actual application health.
+* Rolling Upgrade Mode requires Application Health Extension or Health probes configured. For more information on configuring the health probes or the application health extension, see this [doc](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md#how-does-automatic-os-image-upgrade-work). Configure health probe with the default configuration for Stateless Node types as suggested below. Once the applications are deployed to the node type, Health Probe/Health extension ports can be changed to monitor the actual application health.
 
 >[!NOTE]
-> While using AutoScaling with Stateless node types, after scale down operation, node state is not automatically cleaned up. In order to cleanup the NodeState of Down Nodes during AutoScale, using [Service Fabric AutoScale Helper](https://github.com/Azure/service-fabric-autoscale-helper) is advised.
+> While using AutoScaling with Stateless node types, after scale down operation, node state isn't automatically cleaned up. In order to clean up the NodeState of Down Nodes during AutoScale, using [Service Fabric AutoScale Helper](https://github.com/Azure/service-fabric-autoscale-helper) is advised.
 
 ```json
 {
@@ -147,7 +147,7 @@ For reference, look at the [template](https://github.com/Azure-Samples/service-f
 
 ### Public IP and Load Balancer Resource
 
-To enable scaling to more than 100 VMs on a virtual machine scale set resource, the load balancer and IP resource referenced by that virtual machine scale set must both be using a *Standard* SKU. Creating an IP resource without the SKU property will create a Basic SKU, which doesn't support scaling to more than 100 VMs. A Standard SKU load balancer blocks all traffic from the outside by default; to allow outside traffic, an NSG must be deployed to the subnet.
+To enable scaling to more than 100 VMs on a virtual machine scale set resource, the load balancer and IP resource referenced by that virtual machine scale set must both be using a *Standard* SKU. Creating an IP resource without the SKU property creates a Basic SKU, which doesn't support scaling to more than 100 VMs. A Standard SKU load balancer blocks all traffic from the outside by default; to allow outside traffic, an NSG must be deployed to the subnet.
 
 ```json
 {
@@ -192,7 +192,7 @@ To enable scaling to more than 100 VMs on a virtual machine scale set resource, 
 ```
 
 >[!NOTE]
-> It is not possible to do an in-place change of SKU on the public IP and load balancer resources. 
+> It isn't possible to do an in-place change of SKU on the public IP and load balancer resources. 
 
 ### Virtual machine scale set NAT rules
 The load balancer inbound NAT rules should match the NAT pools from the virtual machine scale set. Each virtual machine scale set must have a unique inbound NAT pool.
@@ -245,7 +245,7 @@ The load balancer inbound NAT rules should match the NAT pools from the virtual 
 Standard Public IP introduce new abilities and different behaviors to outbound connectivity when compared to using the Basic SKU. If you want outbound connectivity when working with Standard SKUs, you must explicitly define it either with Standard Public IP addresses or Standard public Load Balancer. For more information, see [Outbound connections](/azure/load-balancer/load-balancer-outbound-connections) and [Azure Standard Load Balancer](/azure/load-balancer/load-balancer-overview).
 
 >[!NOTE]
-> The standard template references an NSG which allows all outbound traffic by default. Inbound traffic is limited to the ports that are required for Service Fabric management operations. The NSG rules can be modified to meet your requirements.
+> The standard template references an NSG that allows all outbound traffic by default. Inbound traffic is limited to the ports that are required for Service Fabric management operations. The NSG rules can be modified to meet your requirements.
 
 >[!NOTE]
 > Any Service Fabric cluster making use of a Standard SKU SLB needs to ensure that each node type has a rule allowing outbound traffic on port 443. This is necessary to complete cluster setup, and any deployment without such a rule will fail.
@@ -256,11 +256,11 @@ Standard Public IP introduce new abilities and different behaviors to outbound c
 
 For all migration scenarios, a new stateless-only node type needs to be added. Existing node type can't be migrated to be stateless-only.
 
-To migrate a cluster, which was using an IP with a basic SKU, you must first create an entirely new IP resource using the standard SKU. It is not possible to update these resources in-place.
+To migrate a cluster, which was using an IP with a basic SKU, you must first create an entirely new IP resource using the standard SKU. It isn't possible to update these resources in-place.
 
 The new LB and IP should be referenced in the new Stateless node types that you would like to use. In the example above, a new virtual machine scale set resources is added to be used for Stateless node types. These virtual machine scale sets reference the newly created LB and IP and are marked as stateless node types in the Service Fabric Cluster Resource.
 
-To begin, you will need to add the new resources to your existing Resource Manager template. These resources include:
+To begin, you need to add the new resources to your existing Resource Manager template. These resources include:
 * A Public IP Resource using Standard SKU.
 * A Load Balancer Resource using Standard SKU.
 * A NSG referenced by the subnet in which you deploy your virtual machine scale sets.

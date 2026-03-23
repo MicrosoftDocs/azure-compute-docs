@@ -7,16 +7,16 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-dotnet
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
 ms.update-cycle: 1095-days
 # Customer intent: As a software developer, I want to implement polymorphism in the Reliable Actors framework, so that I can create reusable actor hierarchies and efficiently define APIs for communication within my cloud applications.
 ---
 
 # Polymorphism in the Reliable Actors framework
-The Reliable Actors framework allows you to build actors using many of the same techniques that you would use in object-oriented design. One of those techniques is polymorphism, which allows types and interfaces to inherit from more generalized parents. Inheritance in the Reliable Actors framework generally follows the .NET model with a few additional constraints. In case of Java/Linux, it follows the Java model.
+The Reliable Actors framework allows you to build actors using many of the same techniques that you would use in object-oriented design. One of those techniques is polymorphism, which allows types and interfaces to inherit from more generalized parents. Inheritance in the Reliable Actors framework generally follows the .NET model with a few more constraints. In Java/Linux, it follows the Java model.
 
 ## Interfaces
-The Reliable Actors framework requires you to define at least one interface to be implemented by your actor type. This interface is used to generate a proxy class that can be used by clients to communicate with your actors. Interfaces can inherit from other interfaces as long as every interface that is implemented by an actor type and all of its parents ultimately derive from IActor(C#) or Actor(Java) . IActor(C#) and Actor(Java) are the platform-defined base interfaces for actors in the frameworks .NET and Java respectively. Thus, the classic polymorphism example using shapes might look something like this:
+The Reliable Actors framework requires you to define at least one interface to be implemented by your actor type. This interface is used to generate a proxy class that can be used by clients to communicate with your actors. Interfaces can inherit from other interfaces as long as every interface that is implemented by an actor type and all of its parents ultimately derive from IActor(C#) or Actor(Java). IActor(C#) and Actor(Java) are the platform-defined base interfaces for actors in the frameworks .NET and Java respectively. Thus, the classic polymorphism example using shapes might look something like this:
 
 ![Interface hierarchy for shape actors][shapes-interface-hierarchy]
 

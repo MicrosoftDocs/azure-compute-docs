@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: As a cloud administrator, I want to use EventStore APIs to query cluster events, so that I can monitor and analyze the health and operational status of my Service Fabric environment effectively.
 ---
 
@@ -18,15 +18,15 @@ This article covers how to query the EventStore APIs that are available in Servi
 >The EventStore APIs are GA as of Service Fabric version 6.4 for only Windows clusters running on Azure.
 
 The EventStore APIs can be accessed directly via a REST endpoint, or programmatically. Depending on the query, there are several parameters that are required to gather the right data. These parameters typically include:
-* `api-version`: the version of the EventStore APIs you are using
-* `StartTimeUtc`: defines the start of the period you are interested in looking at
+* `api-version`: the version of the EventStore APIs you're using
+* `StartTimeUtc`: defines the start of the period you're interested in looking at
 * `EndTimeUtc`: end of the time period
 
 In addition to these parameters, there are optional parameters available as well, such as:
 * `timeout`: override the default 60 second timeout for performing the request operation
 * `eventstypesfilter`: this gives you the option to filter for specific event types
-* `ExcludeAnalysisEvents`: do not return 'Analysis' events. By default, EventStore queries will return with "analysis" events where possible. Analysis events are richer operational channel events that contain additional context or information beyond a regular Service Fabric event and provide more depth.
-* `SkipCorrelationLookup`: do not look for potential correlated events in the cluster. By default, the EventStore will attempt to correlate events across a cluster, and link your events together when possible. 
+* `ExcludeAnalysisEvents`: don't return 'Analysis' events. By default, EventStore queries will return with "analysis" events where possible. Analysis events are richer operational channel events that contain additional context or information beyond a regular Service Fabric event and provide more depth.
+* `SkipCorrelationLookup`: don't look for potential correlated events in the cluster. By default, the EventStore attempts to correlate events across a cluster, and link your events together when possible. 
 
 Each entity in a cluster can be queries for events. You can also query for events for all entities of the type. For example, you can query for events for a specific node, or for all nodes in your cluster. The current set of entities for which you can query for events is (with how the query would be structured):
 * Cluster: `/EventsStore/Cluster/Events`
@@ -114,7 +114,7 @@ You can also query the EventStore programmatically, via the [Service Fabric clie
 Once you have your Service Fabric Client set up, you can query for events by accessing the EventStore like this:
 `sfhttpClient.EventStore.<request>`
 
-Here is an example request for all cluster events between `2018-04-03T18:00:00Z` and `2018-04-04T18:00:00Z`, via the `GetClusterEventListAsync` function.
+Here's an example request for all cluster events between `2018-04-03T18:00:00Z` and `2018-04-04T18:00:00Z`, via the `GetClusterEventListAsync` function.
 
 ```csharp
 var sfhttpClient = ServiceFabricClientFactory.Create(clusterUrl, settings);
@@ -127,7 +127,7 @@ var clstrEvents = sfhttpClient.EventsStore.GetClusterEventListAsync(
     .ToList();
 ```
 
-Here is another example that queries for the cluster health and all node events in September 2018 and prints them out.
+Here's another example that queries for the cluster health and all node events in September 2018 and prints them out.
 
 ```csharp
   const int timeoutSecs = 60;

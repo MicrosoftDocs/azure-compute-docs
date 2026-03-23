@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 ms.update-cycle: 1095-days
 # Customer intent: "As a cluster administrator, I want to access and analyze Service Fabric events, so that I can monitor the operational health, upgrades, and changes within my Azure Service Fabric cluster."
 ---
@@ -24,9 +24,9 @@ The Service Fabric platform writes several structured events for key operational
 To see a full list of events exposed by the platform - [List of Service Fabric events](service-fabric-diagnostics-event-generation-operational.md).
 
 Here are some examples of scenarios that you should see events for in your cluster. 
-* Node lifecycle events: as nodes come up, go down, scale in/out, restart, and are activated/deactivated, these events will be exposed showing you what happened, and help you identify if there's something wrong with the machine itself or if there was an API that was called through SF to modify the status of a node.
-* Cluster upgrade: as your cluster is upgraded (SF version or configuration change), you will see the upgrade initiate, roll through each of your Upgrade Domains, and complete (or rollback). 
-* Application upgrades: just like cluster upgrades, there is a comprehensive set of events as the upgrade rolls through. These events can be useful to understand when an upgrade was scheduled, the current state of an upgrade, and the overall sequence of events. This is useful for looking back to see what upgrades have been rolled out successfully or whether a rollback was triggered.
+* Node lifecycle events: as nodes come up, go down, scale in/out, restart, and are activated/deactivated. These events are exposed to show you what happened. The events help you identify if there's something wrong with the machine itself or if an API was called through SF to modify the status of a node.
+* Cluster upgrade: as your cluster is upgraded (SF version or configuration change), you will see the upgrade initiate, roll through each of your Upgrade Domains, and complete (or roll back). 
+* Application upgrades: just like cluster upgrades, there's a comprehensive set of events as the upgrade rolls through. These events can be useful to understand when an upgrade was scheduled, the current state of an upgrade, and the overall sequence of events. This is useful for looking back to see what upgrades have been rolled out successfully or whether a rollback was triggered.
 * Application/Service deployment / deletion: there are events for each application, service, and container, being created or deleted and useful when scaling in or out e.g. increasing the number of replicas
 * Partition moves (reconfiguration): whenever a stateful partition goes through a reconfiguration (a change in the replica set), an event is logged. This is useful if you are trying to understand how often your partition replica set is changing or failing over, or track which node was running your primary replica at any point in time.
 * Chaos Events: when using Service Fabric's [Chaos](service-fabric-controlled-chaos.md) service, you will see events every time the service is started or stopped, or when it injects a fault in the system.

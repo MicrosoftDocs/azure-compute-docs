@@ -6,21 +6,21 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 ms.update-cycle: 1095-days
 # Customer intent: As a cloud architect, I want to understand the scaling options for Azure Service Fabric clusters, so that I can effectively manage application resources based on varying workload demands.
 ---
 
 # Scaling Azure Service Fabric clusters
-A Service Fabric cluster is a network-connected set of virtual or physical machines into which your microservices are deployed and managed. A machine or VM that's part of a cluster is called a node. Clusters can contain potentially thousands of nodes. After creating a Service Fabric cluster, you can scale the cluster horizontally (change the number of nodes) or vertically (change the resources of the nodes).  You can scale the cluster at any time, even when workloads are running on the cluster.  As the cluster scales, your applications automatically scale as well.
+A Service Fabric cluster is a network-connected set of virtual or physical machines into which your microservices are deployed and managed. A machine or virtual machine (VM) that's part of a cluster is referred to as a node. Clusters can contain potentially thousands of nodes. After creating a Service Fabric cluster, you can scale the cluster horizontally, which changes the number of nodes, or vertically, which changes the resources of the nodes. You can scale the cluster at any time, even when workloads are running on the cluster. As the cluster scales, your applications automatically scale as well.
 
 Why scale the cluster? Application demands change over time.  You may need to increase cluster resources to meet increased application workload or network traffic or decrease cluster resources when demand drops.
 
 ## Scaling in and out, or horizontal scaling
-Changes the number of nodes in the cluster.  Once the new nodes join the cluster, the [Cluster Resource Manager](service-fabric-cluster-resource-manager-introduction.md) moves services to them which reduces load on the existing nodes.  You can also decrease the number of nodes if the cluster's resources are not being used efficiently.  As nodes leave the cluster, services move off those nodes and load increases on the remaining nodes.  Reducing the number of nodes in a cluster running in Azure can save you money, since you pay for the number of VMs you use and not the workload on those VMs.  
+Changes the number of nodes in the cluster. Once the new nodes join the cluster, the [Cluster Resource Manager](service-fabric-cluster-resource-manager-introduction.md) moves services to them, which reduces load on the existing nodes. You can also decrease the number of nodes if the cluster's resources aren't being used efficiently. As nodes leave the cluster, services move off those nodes and load increases on the remaining nodes. Reducing the number of nodes in a cluster running in Azure can save you money, since you pay for the number of VMs you use and not the workload on those VMs.  
 
-- Advantages: Infinite scale, in theory.  If your application is designed for scalability, you can enable limitless growth by adding more nodes.  The tooling in cloud environments makes it easy to add or remove nodes, so it's easy to adjust capacity and you only pay for the resources you use.  
-- Disadvantages: Applications must be [designed for scalability](service-fabric-concepts-scalability.md).  Application databases and persistence may require additional architectural work to scale as well.  [Reliable collections](service-fabric-reliable-services-reliable-collections.md) in Service Fabric stateful services, however, make it much easier to scale your application data.
+- Advantages: Infinite scale, in theory. If your application is designed for scalability, you can enable limitless growth by adding more nodes. The tooling in cloud environments makes it easy to add or remove nodes, so it's easy to adjust capacity and you only pay for the resources you use.  
+- Disadvantages: Applications must be [designed for scalability](service-fabric-concepts-scalability.md). Application databases and persistence could require more architectural work to scale as well. [Reliable collections](service-fabric-reliable-services-reliable-collections.md) in Service Fabric stateful services, however, make it much easier to scale your application data.
 
 Virtual machine scale sets are an Azure compute resource that you can use to deploy and manage a collection of virtual machines as a set. Every node type that is defined in an Azure cluster is [set up as a separate scale set](service-fabric-cluster-nodetypes.md). Each node type can then be scaled in or out independently, have different sets of ports open, and can have different capacity metrics. 
 
@@ -29,7 +29,7 @@ When scaling an Azure cluster, keep the following guidelines in mind:
 - non-primary node types running stateful production workloads should always have five or more nodes.
 - non-primary node types running stateless production workloads should always have two or more nodes.
 - Any node type of [durability level](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) of Gold or Silver should always have five or more nodes.
-- Do not remove random VM instances/nodes from a node type, always use the virtual machine scale set scale in feature. The deletion of random VM instances can adversely affect the systems ability to properly load balance.
+- Do not remove random VM instances/nodes from a node type. Always use the virtual machine scale set scale in feature. The deletion of random VM instances can adversely affect the systems ability to properly load balance.
 - If using autoscale rules, set the rules so that scaling in (removing VM instances) is done one node at a time. Scaling down more than one instance at a time is not safe.
 
 Since the Service Fabric node types in your cluster are made up of virtual machine scale sets at the backend, you can [set up auto-scale rules or manually scale](service-fabric-cluster-scale-in-out.md) each node type/virtual machine scale set.
@@ -67,12 +67,12 @@ When scaling an Azure cluster, keep the following guideline in mind:
 The process of scaling a node type up or down is different depending on whether it is a non-primary or primary node type.
 
 ### Scaling non-primary node types
-Create a new node type with the resources you need.  Update the placement constraints of running services to include the new node type.  Gradually (one at a time), reduce the instance count of the old node type instance count to zero so that the reliability of the cluster is not affected.  Services will gradually migrate to the new node type as the old node type is decommissioned.
+Create a new node type with the resources you need.  Update the placement constraints of running services to include the new node type. Gradually (one at a time), reduce the instance count of the old node type instance count to zero so that the reliability of the cluster isn't affected. Services will gradually migrate to the new node type as the old node type is decommissioned.
 
 ### Scaling the primary node type
 Deploy a new primary node type with updated VM SKU, then disable the original primary node type instances one at a time so that the system services migrate to the new scale set. Verify the cluster and new nodes are healthy, then remove the original scale set and node state for the deleted nodes.
 
-If that's not possible, you can create a new cluster and [restore application state](service-fabric-reliable-services-backup-restore.md) (if applicable) from your old cluster. You do not need to restore any system service state, they are recreated when you deploy your applications to your new cluster. If you were just running stateless applications on your cluster, then all you do is deploy your applications to the new cluster, you have nothing to restore.
+If that's not possible, you can create a new cluster and [restore application state](service-fabric-reliable-services-backup-restore.md) (if applicable) from your old cluster. You don't need to restore any system service state, they're recreated when you deploy your applications to your new cluster. If you're only running stateless applications on your cluster, all you need to do is deploy your applications to the new cluster. You have nothing to restore.
 
 ## Next steps
 * Learn about [application scalability](service-fabric-concepts-scalability.md).

@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
 # Customer intent: As a DevOps engineer, I want to manage the chaos scheduling for my service fabric clusters using the command line, so that I can automate and control the testing of system resilience effectively.
 ---
 
@@ -29,7 +29,7 @@ Gets the version of the Chaos Schedule in use and the Chaos Schedule that define
 
 |Argument|Description|
 | --- | --- |
-| --timeout -t | The server timeout for performing the operation in seconds. This timeout specifies the time duration that the client is willing to wait for the requested operation to complete. The default value for this parameter is 60 seconds.  Default\: 60. |
+| --timeout -t | The server timeout for performing the operation in seconds. This timeout specifies the time duration that the client is willing to wait for the requested operation to complete. The default value for this parameter is 60 seconds. Default\: 60. |
 
 ### Global Arguments
 
@@ -37,23 +37,23 @@ Gets the version of the Chaos Schedule in use and the Chaos Schedule that define
 | --- | --- |
 | --debug | Increase logging verbosity to show all debug logs. |
 | --help -h | Show this help message and exit. |
-| --output -o | Output format.  Allowed values\: json, jsonc, table, tsv.  Default\: json. |
+| --output -o | Output format. Allowed values\: json, jsonc, table, tsv. Default\: json. |
 | --query | JMESPath query string. See http\://jmespath.org/ for more information and examples. |
 | --verbose | Increase logging verbosity. Use --debug for full debug logs. |
 
 ## sfctl chaos schedule set
 Set the schedule used by Chaos.
 
-Chaos will automatically schedule runs based on the Chaos Schedule. The Chaos Schedule will be updated if the provided version matches the version on the server. When updating the Chaos Schedule, the version on the server is incremented by 1. The version on the server will wrap back to 0 after reaching a large number. If Chaos is running when this call is made, the call will fail.
+Chaos automatically schedules runs based on the Chaos Schedule. The Chaos Schedule updates if the provided version matches the version on the server. When the Chaos Schedule updates, the version on the server increments by 1. The version on the server will wrap back to 0 after reaching a large number. If Chaos is running when this call is made, the call fails.
 
 ### Arguments
 
 |Argument|Description|
 | --- | --- |
 | --chaos-parameters-dictionary | JSON encoded list representing a mapping of string names to ChaosParameters to be used by Jobs. |
-| --expiry-date-utc | The date and time for when to stop using the Schedule to schedule Chaos.  Default\: 9999-12-31T23\:59\:59.999Z. |
+| --expiry-date-utc | The date and time for when to stop using the Schedule to schedule Chaos. Default\: 9999-12-31T23\:59\:59.999Z. |
 | --jobs | JSON encoded list of ChaosScheduleJobs representing when to run Chaos and with what parameters to run Chaos with. |
-| --start-date-utc | The date and time for when to start using the Schedule to schedule Chaos.  Default\: 1601-01-01T00\:00\:00.000Z. |
+| --start-date-utc | The date and time for when to start using the Schedule to schedule Chaos. Default\: 1601-01-01T00\:00\:00.000Z. |
 | --timeout -t | Default\: 60. |
 | --version | The version number of the Schedule. |
 
@@ -63,15 +63,15 @@ Chaos will automatically schedule runs based on the Chaos Schedule. The Chaos Sc
 | --- | --- |
 | --debug | Increase logging verbosity to show all debug logs. |
 | --help -h | Show this help message and exit. |
-| --output -o | Output format.  Allowed values\: json, jsonc, table, tsv.  Default\: json. |
-| --query | JMESPath query string. See http\://jmespath.org/ for more information and examples. |
+| --output -o | Output format. Allowed values\: json, jsonc, table, tsv. Default\: json. |
+| --query | JMESPath query string. For more information and examples, see https://jmespath.org/. |
 | --verbose | Increase logging verbosity. Use --debug for full debug logs. |
 
 ### Examples
 
 The following command sets a schedule (assuming the current schedule has version 0) that starts
 on 2016-01-01 and expires on 2038-01-01 that runs Chaos 24 hours of the day, 7 days a week.
-Chaos will be scheduled on the cluster for that time.
+Chaos is scheduled on the cluster for that time.
 ```
 sfctl chaos schedule set --version 0 --start-date-utc "2016-01-01T00:00:00.000Z" --expiry-date-utc "2038-01-01T00:00:00.000Z"
     --chaos-parameters-dictionary

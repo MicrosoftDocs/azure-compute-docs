@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 ms.update-cycle: 1095-days
 ms.custom: sfi-image-nochange
 # Customer intent: As a cloud architect, I want to enable the DNS service in my microservices cluster, so that I can facilitate service discovery using standard DNS protocols and maintain the portability of my containerized applications across different environments.
@@ -15,7 +15,7 @@ ms.custom: sfi-image-nochange
 # DNS service in Azure Service Fabric
 DNS service is an optional system service that you can enable in your cluster to discover other services using the DNS protocol.
 
-Many services, especially containerized services, are addressable through a pre-existing URL. Being able to resolve these services using the standard DNS protocol, rather than the Service Fabric Naming Service protocol, is desirable. DNS service enables you to map DNS names to a service name and hence resolve endpoint IP addresses. Such functionality maintains the portability of containerized services across different platforms and can make  "lift and shift" scenarios easier, by letting you use existing service URLs rather than rewriting code to use the Naming Service.
+Many services, especially containerized services, are addressable through a preexisting URL. Being able to resolve these services using the standard DNS protocol, rather than the Service Fabric Naming Service protocol, is desirable. DNS service enables you to map DNS names to a service name and hence resolve endpoint IP addresses. Such functionality maintains the portability of containerized services across different platforms and can make  "lift and shift" scenarios easier, by letting you use existing service URLs rather than rewriting code to use the Naming Service.
 
 DNS service maps DNS names to service names, which in turn are resolved by the Naming Service to return the service endpoint. The DNS name for the service is provided at the time of creation. The following diagram shows how DNS service works for stateless services. For brevity, the diagrams only show one endpoint for the services, although each service can have multiple endpoints. 
 
@@ -31,10 +31,10 @@ The following diagram shows how DNS service works for partitioned stateful servi
 
 ![Diagram showing how DNS names are mapped to service names by DNS service for partitioned stateful services.](./media/service-fabric-dnsservice/stateful-dns.png) 
 
-For more information on partitioned queries, refer to the [section below](#making-dns-queries-on-a-stateful-service-partition).
+For more information on partitioned queries, see the [section below](#making-dns-queries-on-a-stateful-service-partition).
 
 ## OS support
-DNS service is supported on both Windows and Linux clusters, although support for Linux is currently limited to containerized services and cannot be enabled through Azure portal. Windows, however, supports all of the service types and deployment models. 
+DNS service is supported on both Windows and Linux clusters, although support for Linux is currently limited to containerized services and can't be enabled through Azure portal. Windows, however, supports all of the service types and deployment models. 
 
 ## Enabling DNS service
 > [!NOTE]
@@ -338,7 +338,7 @@ public class ValuesController : Controller
 ```
 
 ## Recursive queries
-For DNS names that DNS service can't resolve on its own (for example, a public DNS name), it will forward the query to pre-existing recursive DNS servers on the nodes. 
+For DNS names that DNS service can't resolve on its own (for example, a public DNS name), it will forward the query to preexisting recursive DNS servers on the nodes. 
 
 ![Diagram showing how DNS queries for public names are resolved.](./media/service-fabric-dnsservice/recursive-dns.png) 
 
@@ -355,8 +355,8 @@ Fine-grained options are also introduced in Service Fabric 9.0 to control the be
 
 ## Limitations and known issues
 * Dynamic ports are not supported by DNS service. To resolve services exposed on dynamic ports, use the [reverse proxy service](./service-fabric-reverseproxy.md).
-* Support for Linux is currently limited to containerized services. Process-based services on Linux currently cannot use DNS service.
-* DNS service for Linux clusters cannot be enabled through Azure portal.
+* Support for Linux is currently limited to containerized services. Process-based services on Linux currently can't use DNS service.
+* DNS service for Linux clusters can't be enabled through Azure portal.
 * If a DNS name is changed for a service, the name updates may not be immediately visible in some scenarios. To resolve the issue, DNS service instances should be restarted across the cluster. 
 
 ## Next steps

@@ -6,13 +6,13 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
 # Customer intent: "As a developer using Azure Service Fabric, I want to implement managed identities in my application, so that I can securely access Azure resources without managing explicit credentials."
 ---
 
 # How to leverage a Service Fabric application's managed identity to access Azure services
 
-Service Fabric applications can leverage managed identities to access other Azure resources which support Microsoft Entra ID-based authentication. An application can obtain an [access token](/azure/active-directory/develop/developer-glossary#access-token) representing its identity, which may be system-assigned or user-assigned, and use it as a 'bearer' token to authenticate itself to another service - also known as a [protected resource server](/azure/active-directory/develop/developer-glossary#resource-server). The token represents the identity assigned to the Service Fabric application, and will only be issued to Azure resources (including SF applications) which share that identity. Refer to the [managed identity overview](/azure/active-directory/managed-identities-azure-resources/overview) documentation for a detailed description of managed identities, as well as the distinction between system-assigned and user-assigned identities. We will refer to a managed-identity-enabled Service Fabric application as the [client application](/azure/active-directory/develop/developer-glossary#client-application) throughout this article.
+Service Fabric applications can leverage managed identities to access other Azure resources which support Microsoft Entra ID-based authentication. An application can obtain an [access token](/azure/active-directory/develop/developer-glossary#access-token) representing its identity, which may be system-assigned or user-assigned, and use it as a 'bearer' token to authenticate itself to another service - also known as a [protected resource server](/azure/active-directory/develop/developer-glossary#resource-server). The token represents the identity assigned to the Service Fabric application, and will only be issued to Azure resources (including SF applications) which share that identity. Refer to the [managed identity overview](/azure/active-directory/managed-identities-azure-resources/overview) documentation for a detailed description of managed identities, as well as the distinction between system-assigned and user-assigned identities. We'll refer to a managed-identity-enabled Service Fabric application as the [client application](/azure/active-directory/develop/developer-glossary#client-application) throughout this article.
 
 See a companion sample application that demonstrates using system-assigned and user-assigned [Service Fabric application managed identities](https://github.com/Azure-Samples/service-fabric-managed-identity) with Reliable Services and containers.
 
@@ -20,7 +20,7 @@ See a companion sample application that demonstrates using system-assigned and u
 > A managed identity represents the association between an Azure resource and a service principal in the corresponding Microsoft Entra tenant associated with the subscription containing the resource. As such, in the context of Service Fabric, managed identities are only supported for applications deployed as Azure resources. 
 
 > [!IMPORTANT]
-> Prior to using the managed identity of a Service Fabric application, the client application must be granted access to the protected resource. Please refer to the list of [Azure services which support Microsoft Entra authentication](/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities#azure-services-that-support-managed-identities-for-azure-resources)
+> Prior to using the managed identity of a Service Fabric application, the client application must be granted access to the protected resource. Refer to the list of [Azure services which support Microsoft Entra authentication](/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities#azure-services-that-support-managed-identities-for-azure-resources)
  to check for support, and then to the respective service's documentation for specific steps to grant an identity access to resources of interest. 
 
 ## Leverage a managed identity using Azure.Identity
@@ -82,7 +82,7 @@ Specifically, the environment of a managed-identity-enabled Service Fabric servi
 - 'IDENTITY_SERVER_THUMBPRINT': Thumbprint of service fabric managed identity server
 
 > [!IMPORTANT]
-> The application code should consider the value of the 'IDENTITY_HEADER' environment variable as sensitive data - it should not be logged or otherwise disseminated. The authentication code has no value outside of the local node, or after the process hosting the service has terminated, but it does represent the identity of the Service Fabric service, and so should be treated with the same precautions as the access token itself.
+> The application code should consider the value of the 'IDENTITY_HEADER' environment variable as sensitive data - it shouldn't be logged or otherwise disseminated. The authentication code has no value outside of the local node, or after the process hosting the service has terminated, but it does represent the identity of the Service Fabric service, and so should be treated with the same precautions as the access token itself.
 
 To obtain a token, the client performs the following steps:
 - forms a URI by concatenating the managed identity endpoint (IDENTITY_ENDPOINT value) with the API version and the resource (audience) required for the token
@@ -91,9 +91,9 @@ To obtain a token, the client performs the following steps:
 - adds the authentication code (IDENTITY_HEADER value) as a header to the request
 - submits the request
 
-A successful response will contain a JSON payload representing the resulting access token, as well as metadata describing it. A failed response will also include an explanation of the failure. See below for additional details on error handling.
+A successful response contains a JSON payload representing the resulting access token, as well as metadata describing it. A failed response will also include an explanation of the failure. See below for additional details on error handling.
 
-Access tokens will be cached by Service Fabric at various levels (node, cluster, resource provider service), so a successful response does not necessarily imply that the token was issued directly in response to the user application's request. Tokens will be cached for less than their lifetime, and so an application is guaranteed to receive a valid token. It is recommended that the application code caches itself any access tokens it acquires; the caching key should include (a derivation of) the audience. 
+Access tokens will be cached by Service Fabric at various levels (node, cluster, resource provider service), so a successful response doesn't necessarily imply that the token was issued directly in response to the user application's request. Tokens are cached for less than their lifetime, and so an application is guaranteed to receive a valid token. It's recommended that the application code caches itself any access tokens it acquires; the caching key should include (a derivation of) the audience. 
 
 Sample request:
 ```http
@@ -378,10 +378,10 @@ The 'status code' field of the HTTP response header indicates the success status
 
 | Status Code | Error Reason | How To Handle |
 | ----------- | ------------ | ------------- |
-| 404 Not found. | Unknown authentication code, or the application was not assigned a managed identity. | Rectify the application setup or token acquisition code. |
+| 404 Not found. | Unknown authentication code, or the application wasn't assigned a managed identity. | Rectify the application setup or token acquisition code. |
 | 429 Too many requests. |  Throttle limit reached, imposed by Microsoft Entra ID or SF. | Retry with Exponential Backoff. See guidance below. |
-| 4xx Error in request. | One or more of the request parameters was incorrect. | Do not retry.  Examine the error details for more information.  4xx errors are design-time errors.|
-| 5xx Error from service. | The managed identity subsystem or Microsoft Entra ID returned a transient error. | It is safe to retry after a short while. You may hit a throttling condition (429) upon retrying.|
+| 4xx Error in request. | One or more of the request parameters was incorrect. | Don't retry.  Examine the error details for more information.  4xx errors are design-time errors.|
+| 5xx Error from service. | The managed identity subsystem or Microsoft Entra ID returned a transient error. | It's safe to retry after a short while. You may hit a throttling condition (429) upon retrying.|
 
 If an error occurs, the corresponding HTTP response body contains a JSON object with the error details:
 
@@ -400,19 +400,19 @@ Following is a list of typical Service Fabric errors specific to managed identit
 
 | Code | Message | Description | 
 | ----------- | ----- | ----------------- |
-| SecretHeaderNotFound | Secret is not found in the request headers. | The authentication code was not provided with the request. | 
+| SecretHeaderNotFound | Secret isn't found in the request headers. | The authentication code wasn't provided with the request. | 
 | ManagedIdentityNotFound | Managed identity not found for the specified application host. | The application has no identity, or the authentication code is unknown. |
-| ArgumentNullOrEmpty | The parameter 'resource' should not be null or empty string. | The resource (audience) was not provided in the request. |
-| InvalidApiVersion | The api-version '' is not supported. Supported version is '2019-07-01-preview'. | Missing or unsupported API version specified in the request URI. |
+| ArgumentNullOrEmpty | The parameter 'resource' shouldn't be null or empty string. | The resource (audience) wasn't provided in the request. |
+| InvalidApiVersion | The api-version '' isn't supported. Supported version is '2019-07-01-preview'. | Missing or unsupported API version specified in the request URI. |
 | InternalServerError | An error occurred. | An error was encountered in the managed identity subsystem, possibly outside of the Service Fabric stack. Most likely cause is an incorrect value specified for the resource (check for trailing '/'?) | 
 
 ## Retry guidance 
 
 Typically the only retryable error code is 429 (Too Many Requests); internal server errors/5xx error codes may be retryable, though the cause may be permanent. 
 
-Throttling limits apply to the number of calls made to the managed identity subsystem - specifically the 'upstream' dependencies (the Managed Identity Azure service, or the secure token service). Service Fabric caches tokens at various levels in the pipeline, but given the distributed nature of the involved components, the caller may experience inconsistent throttling responses (i.e. get throttled on one node/instance of an application, but not on a different node while requesting a token for the same identity.) When the throttling condition is set, subsequent requests from the same application may fail with the HTTP status code 429 (Too Many Requests) until the condition is cleared.  
+Throttling limits apply to the number of calls made to the managed identity subsystem - specifically the 'upstream' dependencies (the Managed Identity Azure service, or the secure token service). Service Fabric caches tokens at various levels in the pipeline, but given the distributed nature of the involved components, the caller may experience inconsistent throttling responses (that is, get throttled on one node/instance of an application, but not on a different node while requesting a token for the same identity.) When the throttling condition is set, subsequent requests from the same application may fail with the HTTP status code 429 (Too Many Requests) until the condition is cleared.  
 
-It is recommended that requests failed due to throttling are retried with an exponential backoff, as follows: 
+It's recommended that requests failed due to throttling are retried with an exponential backoff, as follows: 
 
 | Call index | Action on receiving 429 | 
 | --- | --- | 

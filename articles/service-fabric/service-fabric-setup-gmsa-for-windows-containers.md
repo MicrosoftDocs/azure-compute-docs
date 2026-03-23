@@ -1,12 +1,12 @@
 ---
-title: Setup gMSA for Azure Service Fabric container services
-description: Learn now to setup group Managed Service Accounts (gMSA) for a container running in Azure Service Fabric.
+title: Set up gMSA for Azure Service Fabric container services
+description: Learn now to set up group Managed Service Accounts (gMSA) for a container running in Azure Service Fabric.
 ms.topic: how-to
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
 # Customer intent: "As a system administrator, I want to set up group Managed Service Accounts for Windows containers in Azure Service Fabric, so that I can ensure secure authentication and access control for my containerized applications."
 ---
 

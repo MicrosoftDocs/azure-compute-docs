@@ -6,18 +6,18 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 ms.update-cycle: 1095-days
 # Customer intent: "As a cloud architect, I want to understand how to scale standalone Service Fabric clusters, so that I can efficiently manage application demands and resources in both on-premises and cloud environments."
 ---
 
 # Scaling Service Fabric standalone clusters
-A Service Fabric cluster is a network-connected set of virtual or physical machines into which your microservices are deployed and managed. A machine or VM that's part of a cluster is called a node. Clusters can contain potentially thousands of nodes. After creating a Service Fabric cluster, you can scale the cluster horizontally (change the number of nodes) or vertically (change the resources of the nodes).  You can scale the cluster at any time, even when workloads are running on the cluster.  As the cluster scales, your applications automatically scale as well.
+A Service Fabric cluster is a network-connected set of virtual or physical machines into which your microservices are deployed and managed. A machine or virtual machine (VM) that's part of a cluster is referred to as a node. Clusters can contain potentially thousands of nodes. After creating a Service Fabric cluster, you can scale the cluster horizontally, which changes the number of nodes, or vertically, which changes the resources of the nodes. You can scale the cluster at any time, even when workloads are running on the cluster. As the cluster scales, your applications automatically scale as well.
 
 Why scale the cluster? Application demands change over time.  You may need to increase cluster resources to meet increased application workload or network traffic or decrease cluster resources when demand drops.
 
 ## Scaling in and out, or horizontal scaling
-Changes the number of nodes in the cluster.  Once the new nodes join the cluster, the [Cluster Resource Manager](service-fabric-cluster-resource-manager-introduction.md) moves services to them which reduces load on the existing nodes.  You can also decrease the number of nodes if the cluster's resources are not being used efficiently.  As nodes leave the cluster, services move off those nodes and load increases on the remaining nodes.  Reducing the number of nodes in a cluster running in Azure can save you money, since you pay for the number of VMs you use and not the workload on those VMs.  
+Changes the number of nodes in the cluster. Once the new nodes join the cluster, the [Cluster Resource Manager](service-fabric-cluster-resource-manager-introduction.md) moves services to them, which reduces load on the existing nodes. You can also decrease the number of nodes if the cluster's resources aren't being used efficiently. As nodes leave the cluster, services move off those nodes and load increases on the remaining nodes. Reducing the number of nodes in a cluster running in Azure can save you money, since you pay for the number of VMs you use and not the workload on those VMs.  
 
 - Advantages: Infinite scale, in theory.  If your application is designed for scalability, you can enable limitless growth by adding more nodes.  The tooling in cloud environments makes it easy to add or remove nodes, so it's easy to adjust capacity and you only pay for the resources you use.  
 - Disadvantages: Applications must be [designed for scalability](service-fabric-concepts-scalability.md).  Application databases and persistence may require additional architectural work to scale as well.  [Reliable collections](service-fabric-reliable-services-reliable-collections.md) in Service Fabric stateful services, however, make it much easier to scale your application data.
@@ -27,7 +27,7 @@ Standalone clusters allow you to deploy Service Fabric cluster on-premises or in
 Removal of nodes may initiate multiple upgrades. Some nodes are marked with `IsSeedNode=”true”` tag and can be identified by querying the cluster manifest using [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest). Removal of such nodes may take longer than others since the seed nodes will have to be moved around in such scenarios. The cluster must maintain a minimum of three primary node type nodes.
 
 > [!WARNING]
-> We recommend that you do not lower the node count below the [Cluster Size of the Reliability Tier](service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster) for the cluster. This will interfere with the ability of the Service Fabric System Services to be replicated across the cluster, and will destabilize or possibly destroy the cluster.
+> We recommend that you don't lower the node count below the [Cluster Size of the Reliability Tier](service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster) for the cluster. Doing so will interfere with the ability of the Service Fabric System Services to be replicated across the cluster, and will destabilize or possibly destroy the cluster.
 >
 
 When scaling a standalone cluster, keep the following guidelines in mind:

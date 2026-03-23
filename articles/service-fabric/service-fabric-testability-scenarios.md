@@ -6,22 +6,22 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
 # Customer intent: As a developer, I want to conduct chaos and failover tests on my services in Service Fabric, so that I can validate their reliability and stability under simulated fault conditions.
 ---
 
 # Testability scenarios
 Large distributed systems like cloud infrastructures are inherently unreliable. Azure Service Fabric gives developers the ability to write services to run on top of unreliable infrastructures. In order to write high-quality services, developers need to be able to induce such unreliable infrastructure to test the stability of their services.
 
-The Fault Analysis Service gives developers the ability to induce fault actions to test services in the presence of failures. However, targeted simulated faults will get you only so far. To take the testing further, you can use the test scenarios in Service Fabric: a chaos test and a failover test. These scenarios simulate continuous interleaved faults, both graceful and ungraceful, throughout the cluster over extended periods of time. Once a test is configured with the rate and kind of faults, it can be started through either C# APIs or PowerShell, to generate faults in the cluster and your service.
+The Fault Analysis Service gives developers the ability to induce fault actions to test services in the presence of failures. However, targeted simulated faults get you only so far. To take the testing further, you can use the test scenarios in Service Fabric: a chaos test and a failover test. These scenarios simulate continuous interleaved faults, both graceful and ungraceful, throughout the cluster over extended periods of time. Once a test is configured with the rate and type of faults, it can be started through either C# APIs or PowerShell, to generate faults in the cluster and your service.
 
 > [!WARNING]
-> ChaosTestScenario is being replaced by a more resilient, service-based Chaos. Please refer to the new article [Controlled Chaos](service-fabric-controlled-chaos.md) for more details.
+> ChaosTestScenario is being replaced by a more resilient, service-based Chaos. Refer to the new article [Controlled Chaos](service-fabric-controlled-chaos.md) for more details.
 > 
 > 
 
 ## Chaos test
-The chaos scenario generates faults across the entire Service Fabric cluster. The scenario compresses faults generally seen in months or years to a few hours. The combination of interleaved faults with the high fault rate finds corner cases that are otherwise missed. This leads to a significant improvement in the code quality of the service.
+The chaos scenario generates faults across the entire Service Fabric cluster. The scenario compresses faults seen in months or years to a few hours. The combination of interleaved faults with the high fault rate finds corner cases that are otherwise missed. This leads to a significant improvement in the code quality of the service.
 
 ### Faults simulated in the chaos test
 * Restart a node
@@ -33,16 +33,16 @@ The chaos scenario generates faults across the entire Service Fabric cluster. Th
 
 The chaos test runs multiple iterations of faults and cluster validations for the specified period of time. The time spent for the cluster to stabilize and for validation to succeed is also configurable. The scenario fails when you hit a single failure in cluster validation.
 
-For example, consider a test set to run for one hour with a maximum of three concurrent faults. The test will induce three faults, and then validate the cluster health. The test will iterate through the previous step till the cluster becomes unhealthy or one hour passes. If the cluster becomes unhealthy in any iteration, i.e. it does not stabilize within a configured time, the test will fail with an exception. This exception indicates that something has gone wrong and needs further investigation.
+For example, consider a test set to run for one hour with a maximum of three concurrent faults. The test induces three faults, and then validate the cluster health. The test iterates through the previous step till the cluster becomes unhealthy or one hour passes. If the cluster becomes unhealthy in any iteration, that is, it doesn't stabilize within a configured time, the test fails with an exception. This exception indicates that something has gone wrong and needs further investigation.
 
 In its current form, the fault generation engine in the chaos test induces only safe faults. This means that in the absence of external faults, a quorum or data loss will never occur.
 
 ### Important configuration options
-* **TimeToRun**: Total time that the test will run before finishing with success. The test can finish earlier in lieu of a validation failure.
+* **TimeToRun**: Total time that the test runs before finishing with success. The test can finish earlier in lieu of a validation failure.
 * **MaxClusterStabilizationTimeout**: Maximum amount of time to wait for the cluster to become healthy before failing the test. The checks performed are whether cluster health is OK, service health is OK, the target replica set size is achieved for the service partition, and no InBuild replicas exist.
-* **MaxConcurrentFaults**: Maximum number of concurrent faults induced in each iteration. The higher the number, the more aggressive the test, hence resulting in more complex failovers and transition combinations. The test guarantees that in absence of external faults there will not be a quorum or data loss, irrespective of how high this configuration is.
+* **MaxConcurrentFaults**: Maximum number of concurrent faults induced in each iteration. The higher the number, the more aggressive the test, hence resulting in more complex failovers and transition combinations. The test guarantees that in absence of external faults there won't be a quorum or data loss, irrespective of how high this configuration is.
 * **EnableMoveReplicaFaults**: Enables or disables the faults that are causing the move of the primary or secondary replicas. These faults are disabled by default.
-* **WaitTimeBetweenIterations**: Amount of time to wait between iterations, i.e. after a round of faults and corresponding validation.
+* **WaitTimeBetweenIterations**: Amount of time to wait between iterations, that is, after a round of faults and corresponding validation.
 
 ### How to run the chaos test
 C# sample
@@ -122,7 +122,7 @@ class Test
 
 PowerShell
 
-The Service Fabric PowerShell module includes two ways to begin a chaos scenario. `Invoke-ServiceFabricChaosTestScenario` is client-based, and if the client machine is shutdown midway through the test, no further faults will be introduced. Alternatively, there is a set of commands meant to keep the test running in the event of machine shutdown. `Start-ServiceFabricChaos` uses a stateful and reliable system service called FaultAnalysisService, ensuring faults will remain introduced until the TimeToRun is up. `Stop-ServiceFabricChaos` can be used to manually stop the scenario, and `Get-ServiceFabricChaosReport` will obtain a report. For more information see the [Azure Service Fabric PowerShell reference](/powershell/module/ServiceFabric/New-ServiceFabricService?preserve-view=true&view=azureservicefabricps) and [Inducing controlled chaos in Service Fabric clusters](service-fabric-controlled-chaos.md).
+The Service Fabric PowerShell module includes two ways to begin a chaos scenario. `Invoke-ServiceFabricChaosTestScenario` is client-based, and if the client machine is shutdown midway through the test, no further faults are introduced. Alternatively, there's a set of commands meant to keep the test running in the event of machine shutdown. `Start-ServiceFabricChaos` uses a stateful and reliable system service called FaultAnalysisService, ensuring faults remain introduced until the TimeToRun is up. `Stop-ServiceFabricChaos` can be used to manually stop the scenario, and `Get-ServiceFabricChaosReport` will obtain a report. For more information, see the [Azure Service Fabric PowerShell reference](/powershell/module/ServiceFabric/New-ServiceFabricService?preserve-view=true&view=azureservicefabricps) and [Inducing controlled chaos in Service Fabric clusters](service-fabric-controlled-chaos.md).
 
 ```powershell
 $connection = "localhost:19000"
@@ -148,7 +148,7 @@ The failover test scenario is a version of the chaos test scenario that targets 
 * Move a secondary replica
 * Restart the partition
 
-The failover test induces a chosen fault and then runs validation on the service to ensure its stability. The failover test induces only one fault at a time, as opposed to possible multiple faults in the chaos test. If the service partition does not stabilize within the configured timeout after each fault, the test fails. The test induces only safe faults. This means that in absence of external failures, a quorum or data loss will not occur.
+The failover test induces a chosen fault and then runs validation on the service to ensure its stability. The failover test induces only one fault at a time, as opposed to possible multiple faults in the chaos test. If the service partition doesn't stabilize within the configured timeout after each fault, the test fails. The test induces only safe faults. This means that in absence of external failures, a quorum or data loss won't occur.
 
 ### Important configuration options
 * **PartitionSelector**: Selector object that specifies the partition that needs to be targeted.

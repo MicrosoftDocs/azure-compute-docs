@@ -6,15 +6,15 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: "As a cloud architect, I want to integrate API management with a Service Fabric backend, so that I can efficiently route traffic and manage APIs for my cloud applications."
 ---
 
 # Integrate API Management with Service Fabric in Azure
 
-Deploying Azure API Management with Service Fabric is an advanced scenario.  API Management is useful when you need to publish APIs with a rich set of routing rules for your back-end Service Fabric services. Cloud applications typically need a front-end gateway to provide a single point of ingress for users, devices, or other applications. In Service Fabric, a gateway can be any stateless service designed for traffic ingress such as an ASP.NET Core application, Event Hubs, IoT Hub, or Azure API Management.
+Deploying Azure API Management with Service Fabric is an advanced scenario. API Management is useful when you need to publish APIs with a rich set of routing rules for your back-end Service Fabric services. Cloud applications typically need a front-end gateway to provide a single point of ingress for users, devices, or other applications. In Service Fabric, a gateway can be any stateless service designed for traffic ingress such as an ASP.NET Core application, Event Hubs, IoT Hub, or Azure API Management.
 
-This article shows you how to set up [Azure API Management](/azure/api-management/api-management-key-concepts) with Service Fabric to route traffic to a back-end service in Service Fabric.  When you're finished, you have deployed API Management to a VNET, configured an API operation to send traffic to back-end stateless services. To learn more about Azure API Management scenarios with Service Fabric, see the [overview](service-fabric-api-management-overview.md) article.
+This article shows you how to set up [Azure API Management](/azure/api-management/api-management-key-concepts) with Service Fabric to route traffic to a back-end service in Service Fabric. When you're finished, you have deployed API Management to a VNET, configured an API operation to send traffic to back-end stateless services. To learn more about Azure API Management scenarios with Service Fabric, see the [overview](service-fabric-api-management-overview.md) article.
 
 
 [!INCLUDE [updated-for-az](~/reusable-content/ce-skilling/azure/includes/updated-for-az.md)]
@@ -119,21 +119,21 @@ This article uses the same certificate for client authentication and cluster nod
 
 [Microsoft.ApiManagement/service/backends](/azure/templates/microsoft.apimanagement/service/backends) describes the  backend service that traffic is forwarded to.
 
-For Service Fabric backends, the Service Fabric cluster is the backend instead of a specific Service Fabric service. This allows a single policy to route to more than one service in the cluster. The **url** field here is a fully qualified service name of a service in your cluster that all requests are routed to by default if no service name is specified in a backend policy. You may use a fake service name, such as "fabric:/fake/service" if you do not intend to have a fallback service. **resourceId** specifies the cluster management endpoint.  **clientCertificateThumbprint** and **serverCertificateThumbprints** identify certificates used to authenticate with the cluster.
+For Service Fabric backends, the Service Fabric cluster is the backend instead of a specific Service Fabric service. This allows a single policy to route to more than one service in the cluster. The **url** field here's a fully qualified service name of a service in your cluster that all requests are routed to by default if no service name is specified in a backend policy. You may use a fake service name, such as "fabric:/fake/service" if you don't intend to have a fallback service. **resourceId** specifies the cluster management endpoint.  **clientCertificateThumbprint** and **serverCertificateThumbprints** identify certificates used to authenticate with the cluster.
 
 ### Microsoft.ApiManagement/service/products
 
 [Microsoft.ApiManagement/service/products](/azure/templates/microsoft.apimanagement/service/products) creates a product. In Azure API Management, a product contains one or more APIs as well as a usage quota and the terms of use. Once a product is published, developers can subscribe to the product and begin to use the product's APIs.
 
-Enter a descriptive **displayName** and **description** for the product. For this article, a subscription is required but subscription approval by an admin is not.  This product **state** is "published" and is visible to subscribers.
+Enter a descriptive **displayName** and **description** for the product. For this article, a subscription is required but subscription approval by an admin isn't.  This product **state** is "published" and is visible to subscribers.
 
 ### Microsoft.ApiManagement/service/apis
 
 [Microsoft.ApiManagement/service/apis](/azure/templates/microsoft.apimanagement/service/apis) creates an API. An API in API Management represents a set of operations that can be invoked by client applications. Once the operations are added, the API is added to a product and can be published. Once an API is published, it can be subscribed to and used by developers.
 
 * **displayName** can be any name for your API. For this article, use "Service Fabric App".
-* **name** provides a unique and descriptive name for the API, such as "service-fabric-app". It is displayed in the developer and publisher portals.
-* **serviceUrl** references the HTTP service implementing the API. API management forwards requests to this address. For Service Fabric backends, this URL value is not used. You can put any value here. For this article, for example "http:\//servicefabric".
+* **name** provides a unique and descriptive name for the API, such as "service-fabric-app". It's displayed in the developer and publisher portals.
+* **serviceUrl** references the HTTP service implementing the API. API management forwards requests to this address. For Service Fabric backends, this URL value isn't used. You can put any value here. For this article, for example "http:\//servicefabric".
 * **path** is appended to the base URL for the API management service. The base URL is common for all APIs hosted by an API Management service instance. API Management distinguishes APIs by their suffix and therefore the suffix must be unique for every API for a given publisher.
 * **protocols** determine which protocols can be used to access the API. For this article, list **http** and **https**.
 * **path** is a suffix for the API. For this article, use "myapp".
@@ -147,7 +147,7 @@ To add a front-end API operation, fill out the values:
 
 * **displayName** and **description** describe the operation. For this article, use "Values".
 * **method** specifies the HTTP verb.  For this article, specify **GET**.
-* **urlTemplate** is appended to the base URL of the API and identifies a single HTTP operation.  For this article, use `/api/values` if you added the .NET backend service or `getMessage` if you added the Java backend service.  By default, the URL path specified here is the URL path sent to the backend Service Fabric service. If you use the same URL path here that your service uses, such as "/api/values", then the operation works without further modification. You may also specify a URL path here that is different from the URL path used by your backend Service Fabric service, in which case you also need to specify a path rewrite in your operation policy later.
+* **urlTemplate** is appended to the base URL of the API and identifies a single HTTP operation.  For this article, use `/api/values` if you added the .NET backend service or `getMessage` if you added the Java backend service.  By default, the URL path specified here's the URL path sent to the backend Service Fabric service. If you use the same URL path here that your service uses, such as "/api/values", then the operation works without further modification. You may also specify a URL path here that's different from the URL path used by your backend Service Fabric service, in which case you also need to specify a path rewrite in your operation policy later.
 
 ### Microsoft.ApiManagement/service/apis/policies
 

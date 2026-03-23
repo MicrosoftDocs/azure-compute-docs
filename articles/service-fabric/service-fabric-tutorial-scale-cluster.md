@@ -6,13 +6,13 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: As a cloud administrator, I want to scale an existing service cluster by adding or removing nodes and types, so that I can optimize resource allocation based on application demand and ensure efficient workload management.
 ---
 
 # Tutorial: Scale a Service Fabric cluster in Azure
 
-This tutorial is part three of a series, and shows you how to scale your existing cluster out and in. When you've finished, you will know how to scale your cluster and how to clean up any left-over resources.  For more information on scaling a cluster running in Azure, read [Scaling Service Fabric clusters](service-fabric-cluster-scaling.md).
+This tutorial is part three of a series, and shows you how to scale your existing cluster out and in. When you've finished, you'll know how to scale your cluster and how to clean up any left-over resources.  For more information on scaling a cluster running in Azure, read [Scaling Service Fabric clusters](service-fabric-cluster-scaling.md).
 
 In this tutorial, you learn how to:
 
@@ -44,18 +44,18 @@ Before you begin this tutorial:
 
 Application workloads change over time, do your existing services need more (or less) resources?  [Add or remove nodes](#add-nodes-to-or-remove-nodes-from-a-node-type) from a node type to increase or decrease cluster resources.
 
-Do you need to add more than 100 nodes to your cluster?  A single Service Fabric node type/scale set can not contain more than 100 nodes/VMs.  To scale a cluster beyond 100 nodes, [add additional node types](#add-nodes-to-or-remove-nodes-from-a-node-type).
+Do you need to add more than 100 nodes to your cluster?  A single Service Fabric node type/scale set can’t contain more than 100 nodes/VMs.  To scale a cluster beyond 100 nodes, [add additional node types](#add-nodes-to-or-remove-nodes-from-a-node-type).
 
 Does your application have multiple services, and do any of them need to be public or internet facing?  Typical applications contain a front-end gateway service that receives input from a client and one or more back-end services that communicate with the front-end services. In this case, we recommend you [add at least two node types](#add-nodes-to-or-remove-nodes-from-a-node-type) to the cluster.  
 
-Do your services have different infrastructure needs such as greater RAM or higher CPU cycles? For example, your application contains a front-end service and a back-end service. The front-end service can run on smaller VMs (VM sizes like D2) that have ports open to the internet. The back-end service, however, is computation intensive and needs to run on larger VMs (with VM sizes like D4, D6, D15) that are not internet facing. In this case, we recommended that you [add two or more node types](#add-nodes-to-or-remove-nodes-from-a-node-type) to your cluster. This allows each node type to have distinct properties such as internet connectivity or VM size. The number of VMs can be scaled independently, as well.
+Do your services have different infrastructure needs such as greater RAM or higher CPU cycles? For example, your application contains a front-end service and a back-end service. The front-end service can run on smaller VMs (VM sizes like D2) that have ports open to the internet. The back-end service, however, is computation intensive and needs to run on larger VMs (with VM sizes like D4, D6, D15) that aren't internet facing. In this case, we recommended that you [add two or more node types](#add-nodes-to-or-remove-nodes-from-a-node-type) to your cluster. This allows each node type to have distinct properties such as internet connectivity or VM size. The number of VMs can be scaled independently, as well.
 
 When scaling an Azure cluster, keep the following guidelines in mind:
 
-* A single Service Fabric node type/scale set can not contain more than 100 nodes/VMs.  To scale a cluster beyond 100 nodes, add additional node types.
+* A single Service Fabric node type/scale set can’t contain more than 100 nodes/VMs.  To scale a cluster beyond 100 nodes, add additional node types.
 * Primary node types running production workloads should have a [durability level][durability] of Gold or Silver and always have five or more nodes.
-* Non-primary node types running stateful production workloads should always have five or more nodes.
-* Non-primary node types running stateless production workloads should always have two or more nodes.
+* Nonprimary node types running stateful production workloads should always have five or more nodes.
+* Nonprimary node types running stateless production workloads should always have two or more nodes.
 * Any node type of [durability level][durability] of Gold or Silver should always have five or more nodes.
 * If scaling in (removing nodes from) a primary node type, you should never decrease the number of instances to less than what the [reliability level][reliability] requires.
 
@@ -81,7 +81,7 @@ Scaling in and out, or horizontal scaling, changes the number of nodes in the cl
 
 [Export a template and parameters file](#export-the-template-for-the-resource-group) from the resource group for the most recent deployment.  Open the *parameters.json* file.  If you deployed the cluster using the [sample template][template] in this tutorial, there are three node types in the cluster and three parameters that set the number of nodes for each node type: *nt0InstanceCount*, *nt1InstanceCount*, and *nt2InstanceCount*.  The *nt1InstanceCount* parameter, for example, sets the instance count for the second node type and sets the number of VMs in the associated virtual machine scale set.
 
-So, by updating the value of the *nt1InstanceCount* you change the number of nodes in the second node type.  Remember, you cannot scale a node type out to more than 100 nodes.  Non-primary node types running stateful production workloads should always have five or more nodes. Non-primary node types running stateless production workloads should always have two or more nodes.
+So, by updating the value of the *nt1InstanceCount* you change the number of nodes in the second node type.  Remember, you can't scale a node type out to more than 100 nodes.  Nonprimary node types running stateful production workloads should always have five or more nodes. Nonprimary node types running stateless production workloads should always have two or more nodes.
 
 If you are scaling in, removing nodes from, a node type of Bronze [durability level][durability] you must [manually remove the state of those nodes](service-fabric-cluster-scale-in-out.md#manually-remove-vms-from-a-node-typevirtual-machine-scale-set).  For Silver and Gold durability tier, these steps are done automatically by the platform.
 
@@ -98,13 +98,13 @@ az deployment group create --resource-group sfclustertutorialgroup --template-fi
 
 ## Add a node type to the cluster
 
-Every node type that is defined in a Service Fabric cluster running in Azure is set up as a [separate virtual machine scale set](service-fabric-cluster-nodetypes.md). Each node type can then be managed separately. You can independently scale each node type up or down, have different sets of ports open, and use different capacity metrics. You can also independently change the OS SKU running on each cluster node, but note that you can't have a mix of Windows and Linux running in the sample cluster. A single node type/scale set cannot contain more than 100 nodes.  You can scale a cluster horizontally to more than 100 nodes by adding additional node types/scale sets. You can scale the cluster at any time, even when workloads are running on the cluster.
+Every node type that is defined in a Service Fabric cluster running in Azure is set up as a [separate virtual machine scale set](service-fabric-cluster-nodetypes.md). Each node type can then be managed separately. You can independently scale each node type up or down, have different sets of ports open, and use different capacity metrics. You can also independently change the OS SKU running on each cluster node, but note that you can't have a mix of Windows and Linux running in the sample cluster. A single node type/scale set can't contain more than 100 nodes.  You can scale a cluster horizontally to more than 100 nodes by adding additional node types/scale sets. You can scale the cluster at any time, even when workloads are running on the cluster.
 
 ### Update the template
 
-[Export a template and parameters file](#export-the-template-for-the-resource-group) from the resource group for the most recent deployment.  Open the *parameters.json* file.  If you deployed the cluster using the [sample template][template] in this tutorial, there are three node types in the cluster.  In this section you add a fourth node type by updating and deploying a Resource Manager template. 
+[Export a template and parameters file](#export-the-template-for-the-resource-group) from the resource group for the most recent deployment. Open the *parameters.json* file. If you deployed the cluster using the [sample template][template] in this tutorial, there are three node types in the cluster. In this section you add a fourth node type by updating and deploying a Resource Manager template. 
 
-In addition to the new node type, you also add the associated virtual machine scale set (which runs in a separate subnet of the virtual network) and network security group.  You can choose to add new or existing public IP address and Azure load balancer resources for the new scale set.  The new node type has a [durability level][durability] of Silver and size of "Standard_D2_V2".
+In addition to the new node type, you also add the associated virtual machine scale set (which runs in a separate subnet of the virtual network) and network security group. You can choose to add new or existing public IP address and Azure load balancer resources for the new scale set. The new node type has a [durability level][durability] of Silver and size of "Standard_D2_V2".
 
 In the *template.json* file, add the following new parameters:
 ```json
@@ -361,7 +361,7 @@ In the *template.json* file, add new public IP address and load balancer resourc
 },
 ```
 
-In the *template.json* file, add new network security group and virtual machine scale set resources.  The NodeTypeRef property within the Service Fabric extension properties of the virtual machine scale set maps the specified node type to the scale set.
+In the *template.json* file, add new network security group and virtual machine scale set resources. The NodeTypeRef property within the Service Fabric extension properties of the virtual machine scale set maps the specified node type to the scale set.
 
 ```json
 {
@@ -792,7 +792,7 @@ In the *parameters.json* file, add the following new parameters and values:
 ```
 
 ### Deploy the updated template
-Save any changes to the *template.json* and *parameters.json* files.  To deploy the updated template, run the following command:
+Save any changes to the *template.json* and *parameters.json* files. To deploy the updated template, run the following command:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "AddingNodeType"
@@ -806,11 +806,10 @@ az deployment group create --resource-group sfclustertutorialgroup --template-fi
 After creating a Service Fabric cluster, you can scale a cluster horizontally by removing a node type (virtual machine scale set) and all of its nodes. You can scale the cluster at any time, even when workloads are running on the cluster. As the cluster scales, your applications automatically scale as well.
 
 > [!WARNING]
-> Using Remove-AzServiceFabricNodeType to remove a node type from a production cluster is
-> not recommended to be used on a frequent basis. It is a dangerous command as it deletes the virtual machine scale set 
+> Using Remove-AzServiceFabricNodeType to remove a node type from a production cluster isn't recommended to be used on a frequent basis. It's a dangerous command as it deletes the virtual machine scale set 
 > resource behind the node type. 
 
-To remove the node type, run the [Remove-AzServiceFabricNodeType](/powershell/module/az.servicefabric/remove-azservicefabricnodetype) cmdlet.  The node type must be Silver or Gold [durability level][durability]  The cmdlet deletes the scale set associated with the node type and takes some time to complete.  Then run the [Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate) cmdlet on each of the nodes to remove, which deletes the node state and removes the nodes from the cluster. If there are services on the nodes, then the services are first moved out to another node. If the cluster manager cannot find a node for the replica/service, then the operation is delayed/blocked.
+To remove the node type, run the [Remove-AzServiceFabricNodeType](/powershell/module/az.servicefabric/remove-azservicefabricnodetype) cmdlet. The node type must be Silver or Gold [durability level][durability]  The cmdlet deletes the scale set associated with the node type and takes some time to complete. Then run the [Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate) cmdlet on each of the nodes to remove, which deletes the node state and removes the nodes from the cluster. If there are services on the nodes, then the services are first moved out to another node. If the cluster manager can't find a node for the replica/service, then the operation is delayed/blocked.
 
 ```powershell
 $groupname = "sfclustertutorialgroup"
@@ -834,23 +833,23 @@ Foreach($node in $nodes)
 ```
 
 ## Increase node resources 
-After creating a Service Fabric cluster, you can scale a cluster node type vertically (change the resources of the nodes) or upgrade the operating system of the node type VMs by replacing the original node type with a new node type (with updated VM SKU or OS image). For further details, see [Scale up an Azure Service Fabric node type](service-fabric-scale-up-primary-node-type.md).
+After creating a Service Fabric cluster, you can scale a cluster node type vertically (change the resources of the nodes) or upgrade the operating system of the node type VMs by replacing the original node type with a new node type (with updated VM SKU or OS image). For more information, see [Scale up an Azure Service Fabric node type](service-fabric-scale-up-primary-node-type.md).
 
 > [!IMPORTANT]
 > Never attempt an in-place change of VM SKU or OS image, which is a dangerous operation and unsupported.
 
-If that not possible, you can create a new cluster and [restore application state](service-fabric-reliable-services-backup-restore.md) (if applicable) from your old cluster. You do not need to restore any system service state; they are recreated when you deploy your applications to your new cluster. If you were just running stateless applications on your cluster, then all you do is deploy your applications to the new cluster, you have nothing to restore.
+If that not possible, you can create a new cluster and [restore application state](service-fabric-reliable-services-backup-restore.md) (if applicable) from your old cluster. You don't need to restore any system service state; they're recreated when you deploy your applications to your new cluster. If you were just running stateless applications on your cluster, then all you do is deploy your applications to the new cluster, you have nothing to restore.
 
 ### Update the template
 
-[Export a template and parameters file](#export-the-template-for-the-resource-group) from the resource group for the most recent deployment.  Open the *parameters.json* file.  If you deployed the cluster using the [sample template][template] in this tutorial, there are three node types in the cluster.  
+[Export a template and parameters file](#export-the-template-for-the-resource-group) from the resource group for the most recent deployment. Open the *parameters.json* file. If you deployed the cluster using the [sample template][template] in this tutorial, there are three node types in the cluster.  
 
-The size of the VMs in the second node type is set in the *vmNodeType1Size* parameter.  Change the *vmNodeType1Size* parameter value from Standard_D2_V2 to [Standard_D3_V2](../virtual-machines/dv2-dsv2-series.md), which doubles the resources of each VM instance.
+The size of the VMs in the second node type is set in the *vmNodeType1Size* parameter. Change the *vmNodeType1Size* parameter value from Standard_D2_V2 to [Standard_D3_V2](../virtual-machines/dv2-dsv2-series.md), which doubles the resources of each VM instance.
 
-The VM SKU for all three node types is set in the *vmImageSku* parameter.  Again, changing the VM SKU of a node type should be approached with caution and is not recommended for the primary node type.
+The VM SKU for all three node types is set in the *vmImageSku* parameter. Again, changing the VM SKU of a node type should be approached with caution and isn't recommended for the primary node type.
 
 ### Deploy the updated template
-Save any changes to the *template.json* and *parameters.json* files.  To deploy the updated template, run the following command:
+Save any changes to the *template.json* and *parameters.json* files. To deploy the updated template, run the following command:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ScaleUpNodeType"
