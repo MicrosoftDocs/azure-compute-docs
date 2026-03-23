@@ -16,9 +16,7 @@ Azure Disk Storage regularly receives updates for new features and enhancements.
 
 ## Update summary
 - [What's new in 2026](#whats-new-in-2026)
-
   - [Quarter 1 (January, February, March)](#quarter-1-january-february-march)
-  
   - [Expanded regional availability for Premium SSD v2](#expanded-regional-availability-for-premium-ssd-v2)
 - [What's new in 2025](#whats-new-in-2025)
   -  [Quarter 4 (October, November, December)](#quarter-4-october-november-december)
