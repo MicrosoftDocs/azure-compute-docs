@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: "As an application administrator, I want to upgrade my Service Fabric application using PowerShell, so that I can ensure smooth deployment and manage application health during the upgrade process."
 ---
 
@@ -27,7 +27,7 @@ With Service Fabric monitored rolling upgrades, the application administrator ca
 
 [Check this page for a training video that also walks you through an application upgrade:](/shows/building-microservices-applications-on-azure-service-fabric/upgrading-an-application)
 > [!NOTE]
-> [ApplicationParameter](/dotnet/api/system.fabric.description.applicationdescription.applicationparameters#System_Fabric_Description_ApplicationDescription_ApplicationParameters)s are not preserved across an application upgrade. In order to preserve current application parameters, the user should get the parameters first and pass them into the upgrade API call like below:
+> [ApplicationParameter](/dotnet/api/system.fabric.description.applicationdescription.applicationparameters#System_Fabric_Description_ApplicationDescription_ApplicationParameters)s aren't preserved across an application upgrade. In order to preserve current application parameters, the user should get the parameters first and pass them into the upgrade API call like below:
 ```powershell
 $myApplication = Get-ServiceFabricApplication -ApplicationName fabric:/myApplication
 $appParamCollection = $myApplication.ApplicationParameters
@@ -45,7 +45,7 @@ Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/myApplication -Ap
 Build and publish the application by right-clicking on the application project, **VisualObjectsApplication,** and selecting the **Publish** command.  For more information, see [Service Fabric application upgrade tutorial](service-fabric-application-upgrade-tutorial.md).  Alternatively, you can use PowerShell to deploy your application.
 
 > [!NOTE]
-> Before any of the Service Fabric commands may be used in PowerShell, you first need to connect to the cluster by using the `Connect-ServiceFabricCluster` cmdlet. Similarly, it is assumed that the Cluster has already been set up on your local machine. See the article on [setting up your Service Fabric development environment](service-fabric-get-started.md).
+> Before any of the Service Fabric commands may be used in PowerShell, you first need to connect to the cluster by using the `Connect-ServiceFabricCluster` cmdlet. Similarly, it's assumed that the Cluster has already been set up on your local machine. See the article on [setting up your Service Fabric development environment](service-fabric-get-started.md).
 > 
 > 
 
@@ -54,7 +54,7 @@ After building the project in Visual Studio, you can use the PowerShell command 
 Now, you can use [Service Fabric Explorer to view the cluster and the application](service-fabric-visualizing-your-cluster.md). The application has a web service that can be navigated to in Internet Explorer by typing `http://localhost:8081/visualobjects` in the address bar.  You should see some floating visual objects moving around in the screen.  Additionally, you can use [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication) to check the application status.
 
 ## Step 2: Update the Visual Objects sample
-You might notice that with the version that was deployed in Step 1, the visual objects do not rotate. Let's upgrade this application to one where the visual objects also rotate.
+You might notice that with the version that was deployed in Step 1, the visual objects don't rotate. Let's upgrade this application to one where the visual objects also rotate.
 
 Select the VisualObjects.ActorService project within the VisualObjects solution, and open the StatefulVisualObjectActor.cs file. Within that file, navigate to the method `MoveObject`, comment out `this.State.Move()`, and uncomment `this.State.Move(true)`. This change rotates the objects after the service is upgraded.
 
@@ -80,7 +80,7 @@ Now the *ApplicationManifest.xml* file (found under the **VisualObjects** projec
 Now, build the project by selecting just the **ActorService** project, and then right-clicking and selecting the **Build** option in Visual Studio. If you select **Rebuild all**, you should update the versions for all projects, since the code would have changed. Next, let's package the updated application by right-clicking on ***VisualObjectsApplication***, selecting the Service Fabric Menu, and choosing **Package**. This action creates an application package that can be deployed.  Your updated application is ready to be deployed.
 
 ## Step 3:  Decide on health policies and upgrade parameters
-Familiarize yourself with the [application upgrade parameters](service-fabric-application-upgrade-parameters.md) and the [upgrade process](service-fabric-application-upgrade.md) to get a good understanding of the various upgrade parameters, time-outs, and health criterion applied. For this walkthrough, the service health evaluation criterion is set to the default (and recommended) values, which means that all services and instances should be *healthy* after the upgrade.  
+Familiarize yourself with the [application upgrade parameters](service-fabric-application-upgrade-parameters.md) and the [upgrade process](service-fabric-application-upgrade.md) to get a good understanding of the various upgrade parameters, timeouts, and health criterion applied. For this walkthrough, the service health evaluation criterion is set to the default (and recommended) values, which means that all services and instances should be *healthy* after the upgrade.  
 
 However, let's increase the *HealthCheckStableDuration* to 180 seconds (so that the services are healthy for at least 120 seconds before the upgrade proceeds to the next update domain).  Let's also set the *UpgradeDomainTimeout* to be 1200 seconds and the *UpgradeTimeout* to be 3000 seconds.
 
@@ -95,9 +95,9 @@ UpgradeDomainTimeoutSec = 1200
 UpgradeTimeout = 3000
 
 ## Step 4: Prepare application for upgrade
-Now the application is built and ready to be upgraded. If you open up a PowerShell window as an administrator and type [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication), it should let you know that it is application type 1.0.0.0 of **VisualObjects** that's been deployed.  
+Now the application is built and ready to be upgraded. If you open up a PowerShell window as an administrator and type [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication), it should let you know that it's application type 1.0.0.0 of **VisualObjects** that's been deployed.  
 
-The application package is stored under the following relative path where you uncompressed the Service Fabric SDK: *Samples\Services\Stateful\VisualObjects\VisualObjects\obj\x64\Debug*. You should find a "Package" folder in that directory, where the application package is stored. Check the timestamps to ensure that it is the latest build (you may need to modify the paths appropriately as well).
+The application package is stored under the following relative path where you uncompressed the Service Fabric SDK: *Samples\Services\Stateful\VisualObjects\VisualObjects\obj\x64\Debug*. You should find a "Package" folder in that directory, where the application package is stored. Check the timestamps to ensure that it's the latest build (you may need to modify the paths appropriately as well).
 
 Now let's copy the updated application package to the Service Fabric ImageStore (where the application packages are stored by Service Fabric). The parameter *ApplicationPackagePathInImageStore* informs Service Fabric where it can find the application package. We have put the updated application in "VisualObjects\_V2" with the following command (you may need to modify paths again appropriately).
 
@@ -111,7 +111,7 @@ The next step is to register this application with Service Fabric, which can be 
 Register-ServiceFabricApplicationType -ApplicationPathInImageStore "VisualObjects\_V2"
 ```
 
-If the preceding command doesn't succeed, it is likely that you need a rebuild of all services. As mentioned in Step 2, you may have to update your WebService version as well.
+If the preceding command doesn't succeed, it's likely that you need a rebuild of all services. As mentioned in Step 2, you may have to update your WebService version as well.
 
 It's recommended that you remove the application package after the application is successfully registered.  Deleting application packages from the image store frees up system resources.  Keeping unused application packages consumes disk storage and leads to application performance issues.
 
@@ -127,7 +127,7 @@ Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/VisualObjects -Ap
 ```
 
 
-The application name is the same as it was described in the *ApplicationManifest.xml* file. Service Fabric uses this name to identify which application is getting upgraded. If you set the time-outs to be too short, you may encounter a failure message that states the problem. Refer to the troubleshooting section, or increase the time-outs.
+The application name is the same as it was described in the *ApplicationManifest.xml* file. Service Fabric uses this name to identify which application is getting upgraded. If you set the timeouts to be too short, you may encounter a failure message that states the problem. Refer to the troubleshooting section, or increase the timeouts.
 
 Now, as the application upgrade proceeds, you can monitor it using Service Fabric Explorer, or by using the [Get-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/get-servicefabricapplicationupgrade) PowerShell command: 
 
@@ -137,7 +137,7 @@ Get-ServiceFabricApplicationUpgrade fabric:/VisualObjects
 
 In a few minutes, the status that you got by using the preceding PowerShell command, should state that all update domains were upgraded (completed). And you should find that the visual objects in your browser window have started rotating!
 
-You can try upgrading from version 2 to version 3, or from version 2 to version 1 as an exercise. Moving from version 2 to version 1 is also considered an upgrade. Play with time-outs and health policies to make yourself familiar with them. When you are deploying to an Azure cluster, the parameters need to be set appropriately. It is good to set the time-outs conservatively.
+You can try upgrading from version 2 to version 3, or from version 2 to version 1 as an exercise. Moving from version 2 to version 1 is also considered an upgrade. Play with timeouts and health policies to make yourself familiar with them. When you're deploying to an Azure cluster, the parameters need to be set appropriately. It's good to set the timeouts conservatively.
 
 ## Next steps
 [Upgrading your application using Visual Studio](service-fabric-application-upgrade-tutorial.md) walks you through an application upgrade using Visual Studio.
