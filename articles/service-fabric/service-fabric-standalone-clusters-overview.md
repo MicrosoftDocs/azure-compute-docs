@@ -7,7 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: linux-related-content
 services: service-fabric
-ms.date: 06/24/2025
+ms.date: 03/22/2026
 ms.update-cycle: 1095-days
 # Customer intent: As a cloud architect, I want to deploy and manage microservices on standalone Service Fabric clusters, so that I can efficiently scale resources and ensure secure communication for my applications across various operating environments.
 ---

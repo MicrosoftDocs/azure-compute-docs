@@ -6,13 +6,13 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: As a cloud engineer, I want to programmatically scale an Azure Service Fabric cluster using a fluent SDK, so that I can efficiently manage resources based on custom triggers without manual intervention.
 ---
 
 # Scale a Service Fabric cluster programmatically 
 
-Service Fabric clusters running in Azure are built on top of virtual machine scale sets.  [Cluster scaling](./service-fabric-cluster-scale-in-out.md) describes how Service Fabric clusters can be scaled either manually or with auto-scale rules. This article describes how to manage credentials and scale a cluster in or out using the fluent Azure compute SDK, which is a more advanced scenario. For an overview, read [programmatic methods of coordinating Azure scaling operations](service-fabric-cluster-scaling.md#programmatic-scaling). 
+Service Fabric clusters running in Azure are built on top of virtual machine scale sets.  [Cluster scaling](./service-fabric-cluster-scale-in-out.md) describes how Service Fabric clusters can be scaled either manually or with autoscale rules. This article describes how to manage credentials and scale a cluster in or out using the fluent Azure compute SDK, which is a more advanced scenario. For an overview, read [programmatic methods of coordinating Azure scaling operations](service-fabric-cluster-scaling.md#programmatic-scaling). 
 
 
 [!INCLUDE [updated-for-az](~/reusable-content/ce-skilling/azure/includes/updated-for-az.md)]
@@ -117,6 +117,6 @@ await client.ClusterManager.RemoveNodeStateAsync(mostRecentLiveNode.NodeName);
 
 To get started implementing your own auto-scaling logic, familiarize yourself with the following concepts and useful APIs:
 
-- [Scaling manually or with auto-scale rules](./service-fabric-cluster-scale-in-out.md)
+- [Scaling manually or with autoscale rules](./service-fabric-cluster-scale-in-out.md)
 - [Azure Management Libraries for .NET](https://github.com/Azure/azure-libraries-for-net) (useful for interacting with a Service Fabric cluster's underlying virtual machine scale sets)
 - [System.Fabric.FabricClient](/dotnet/api/system.fabric.fabricclient) (useful for interacting with a Service Fabric cluster and its nodes)

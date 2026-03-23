@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: "As a DevOps engineer, I want to troubleshoot application upgrades in a service fabric environment, so that I can effectively resolve upgrade failures and enhance application reliability."
 ---
 
@@ -148,7 +148,7 @@ The upgrade was suspended upon failing by specifying a **FailureAction** of manu
 
 ### Recover from a suspended upgrade
 
-With a rollback **FailureAction**, there is no recovery needed since the upgrade automatically rolls back upon failing. With a manual **FailureAction**, there are several recovery options:
+With a rollback **FailureAction**, there's no recovery needed since the upgrade automatically rolls back upon failing. With a manual **FailureAction**, there are several recovery options:
 
 1.  trigger a rollback
 2. Proceed through the remainder of the upgrade manually
@@ -156,7 +156,7 @@ With a rollback **FailureAction**, there is no recovery needed since the upgrade
 
 The **Start-ServiceFabricApplicationRollback** command can be used at any time to start rolling back the application. Once the command returns successfully, the rollback request has been registered in the system and starts shortly thereafter.
 
-The **Resume-ServiceFabricApplicationUpgrade** command can be used to proceed through the remainder of the upgrade manually, one upgrade domain at a time. In this mode, only safety checks are performed by the system. No more health checks are performed. This command can only be used when the *UpgradeState* shows *RollingForwardPending*, which means that the current upgrade domain has finished upgrading but the next one has not started (pending).
+The **Resume-ServiceFabricApplicationUpgrade** command can be used to proceed through the remainder of the upgrade manually, one upgrade domain at a time. In this mode, only safety checks are performed by the system. No more health checks are performed. This command can only be used when the *UpgradeState* shows *RollingForwardPending*, which means that the current upgrade domain has finished upgrading but the next one hasn't started (pending).
 
 The **Update-ServiceFabricApplicationUpgrade** command can be used to resume the monitored upgrade with both safety and health checks being performed.
 
@@ -186,7 +186,7 @@ The upgrade continues from the upgrade domain where it was last suspended and us
 
 ## Further troubleshooting
 
-### Service Fabric is not following the specified health policies
+### Service Fabric isn't following the specified health policies
 
 Possible Cause 1:
 

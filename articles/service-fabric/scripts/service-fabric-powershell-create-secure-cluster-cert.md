@@ -2,20 +2,19 @@
 title: Create a Service Fabric cluster in PowerShell
 description: Azure PowerShell Script Sample - Create a Service Fabric cluster secured with an X.509 certificate.
 services: service-fabric
-author: athinanthny
-manager: chackdan
+author: tomvcassidy
 ms.assetid: 0f9c8bc5-3789-4eb3-8deb-ae6e2200795a
 ms.service: azure-service-fabric
 ms.topic: sample
-ms.date: 01/19/2018
-ms.author: atsenthi
+ms.date: 03/22/2026
+ms.author: tomcassidy
 ms.custom: mvc, devx-track-azurepowershell
 # Customer intent: As a cloud administrator, I want to create a secure Service Fabric cluster using PowerShell so that I can manage and deploy applications with high availability and scalability.
 ---
 
 # Create a Service Fabric cluster
 
-This sample Azure PowerShell script creates a five-node Service Fabric cluster secured with an X.509 certificate.  The command creates a self-signed certificate and uploads it to a new key vault. The certificate is also copied to a local directory.  Set the *-OS* parameter to choose the version of Windows or Linux that runs on the cluster nodes.  Customize the parameters as needed.
+This sample Azure PowerShell script creates a five-node Service Fabric cluster secured with an X.509 certificate. The command creates a self-signed certificate and uploads it to a new key vault. The certificate is also copied to a local directory. Set the *-OS* parameter to choose the version of Windows or Linux that runs on the cluster nodes. Customize the parameters as needed.
 
 [!INCLUDE [updated-for-az](~/reusable-content/ce-skilling/azure/includes/updated-for-az.md)]
 
@@ -27,7 +26,7 @@ If needed, install the Azure PowerShell using the instruction found in the [Azur
 
 ## Clean up deployment 
 
-After the script sample has been run, the following command can be used to remove the resource group, cluster, and all related resources.
+After the script sample runs, the following command can be used to remove the resource group, cluster, and all related resources.
 
 ```powershell
 $groupname="mysfclustergroup"

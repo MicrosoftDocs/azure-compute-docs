@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: As a cloud architect, I want to implement disaster recovery strategies using Azure Service Fabric, so that I can ensure high availability and data protection against unpredictable hardware, software, and operational failures.
 ---
 # Disaster recovery in Azure Service Fabric

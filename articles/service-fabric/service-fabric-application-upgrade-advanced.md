@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 ms.update-cycle: 1095-days
 # Customer intent: "As a DevOps engineer, I want to upgrade a Service Fabric application with minimal downtime and ensure all services are properly configured, so that I can maintain application performance and reliability during updates."
 ---
@@ -15,7 +15,7 @@ ms.update-cycle: 1095-days
 
 ## Add or remove service types during an application upgrade
 
-If a new service type is added to a published application as part of an upgrade, then the new service type is added to the deployed application. Such an upgrade does not affect any of the service instances that were already part of the application, but an instance of the service type that was added must be created for the new service type to be active (see [New-ServiceFabricService](/powershell/module/servicefabric/new-servicefabricservice)).
+If a new service type is added to a published application as part of an upgrade, then the new service type is added to the deployed application. Such an upgrade doesn't affect any of the service instances that were already part of the application, but an instance of the service type that was added must be created for the new service type to be active (see [New-ServiceFabricService](/powershell/module/servicefabric/new-servicefabricservice)).
 
 Similarly, service types can be removed from an application as part of an upgrade. However, all service instances of the to-be-removed service type must be removed before proceeding with the upgrade (see [Remove-ServiceFabricService](/powershell/module/servicefabric/remove-servicefabricservice)).
 
@@ -23,7 +23,7 @@ Similarly, service types can be removed from an application as part of an upgrad
 
 For planned stateless instance downtimes, such as application/cluster upgrade or node deactivation, connections can get dropped as the exposed endpoint is removed after the instance goes down, which results in forceful connection closures.
 
-To avoid this, configure the *RequestDrain* feature by adding an *instance close delay duration* in the service configuration to allow existing requests from within the cluster to drain on the exposed endpoints. This is achieved as the endpoint advertised by the stateless instance is removed *before* the delay starts prior to closing the instance. This delay enables existing requests to drain gracefully before the instance actually goes down. Clients are notified of the endpoint change by a callback function at the time of starting the delay, so that they can re-resolve the endpoint and avoid sending new requests to the instance which is going down. These requests could be originating from clients using [Reverse Proxy](./service-fabric-reverseproxy.md) or using service endpoint resolution api's with the notification model ([ServiceNotificationFilterDescription](/dotnet/api/system.fabric.description.servicenotificationfilterdescription)) for updating the endpoints.
+To avoid this, configure the *RequestDrain* feature by adding an *instance close delay duration* in the service configuration to allow existing requests from within the cluster to drain on the exposed endpoints. This is achieved as the endpoint advertised by the stateless instance is removed *before* the delay starts prior to closing the instance. This delay enables existing requests to drain gracefully before the instance actually goes down. Clients are notified of the endpoint change by a callback function at the time of starting the delay, so that they can re-resolve the endpoint and avoid sending new requests to the instance which is going down. These requests could be originating from clients using [Reverse Proxy](./service-fabric-reverseproxy.md) or using service endpoint resolution API's with the notification model ([ServiceNotificationFilterDescription](/dotnet/api/system.fabric.description.servicenotificationfilterdescription)) for updating the endpoints.
 
 ### Service configuration
 
@@ -79,7 +79,7 @@ There are several ways to configure the delay on the service side.
 ### Client configuration
 
 To receive notification when an endpoint has changed, clients should register a callback see [Sample ServiceNotificationFilterDescription](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.servicenotificationfiltermatched).
-The change notification is an indication that the endpoints have changed, the client should re-resolve the endpoints, and not use the endpoints which are not advertised anymore, as they will go down soon.
+The change notification is an indication that the endpoints have changed, the client should re-resolve the endpoints, and not use the endpoints which aren't advertised anymore, as they will go down soon.
 
 ### Optional upgrade overrides
 
@@ -91,12 +91,12 @@ Start-ServiceFabricApplicationUpgrade [-ApplicationName] <Uri> [-ApplicationType
 Start-ServiceFabricClusterUpgrade [-CodePackageVersion] <String> [-ClusterManifestVersion] <String> [-InstanceCloseDelayDurationSec <UInt32>]
 ```
 
-The overridden delay duration only applies to the invoked upgrade instance and does not otherwise change individual service delay configurations. For example, you can use this to specify a delay of `0` in order to skip any preconfigured upgrade delays.
+The overridden delay duration only applies to the invoked upgrade instance and doesn't otherwise change individual service delay configurations. For example, you can use this to specify a delay of `0` in order to skip any preconfigured upgrade delays.
 
 > [!NOTE]
-> * The settings to drain requests will not be able to prevent the Azure Load balancer from sending new requests to the endpoints which are undergoing drain.
-> * A complaint based resolution mechanism will not result in graceful draining of requests, as it triggers a service resolution after a failure. As described earlier, this should instead be enhanced to subscribe to the endpoint change notifications using [ServiceNotificationFilterDescription](/dotnet/api/system.fabric.description.servicenotificationfilterdescription).
-> * The settings are not honored when the upgrade is an impactless one i.e when the replicas will not be brought down during the upgrade.
+> * The settings to drain requests won't be able to prevent the Azure Load balancer from sending new requests to the endpoints which are undergoing drain.
+> * A complaint based resolution mechanism won't result in graceful draining of requests, as it triggers a service resolution after a failure. As described earlier, this should instead be enhanced to subscribe to the endpoint change notifications using [ServiceNotificationFilterDescription](/dotnet/api/system.fabric.description.servicenotificationfilterdescription).
+> * The settings aren't honored when the upgrade is an impactless one i.e when the replicas won't be brought down during the upgrade.
 > * The max value of InstanceCloseDelayDuration that can be configured in the service description or the InstanceCloseDelayDurationSec in the upgrade description can't be greater than cluster config FailoverManager.MaxInstanceCloseDelayDurationInSeconds, which defaults to 1800 seconds. To update the max value, the cluster level config should to be updated. This configuration is only available in the runtime version 9.0 or later.
 >
 >

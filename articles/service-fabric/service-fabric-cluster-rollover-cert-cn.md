@@ -7,16 +7,16 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-azurepowershell
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: "As an IT administrator managing a Service Fabric cluster, I want to roll over the cluster certificate before it expires, so that I can ensure secure operations and maintain cluster services without disruption."
 ---
 
 # Manually roll over a Service Fabric cluster certificate
-When a Service Fabric cluster certificate is close to expiring, you need to update the certificate.  Certificate rollover is simple if the cluster was [set up to use certificates based on common name](service-fabric-cluster-change-cert-thumbprint-to-cn.md) (instead of thumbprint).  Get a new certificate from a certificate authority with a new expiration date.  Self-signed certificates are not support for production Service Fabric clusters, to include certificates generated during Azure portal Cluster creation workflow. The new certificate must have the same common name as the older certificate. 
+When a Service Fabric cluster certificate is close to expiring, you need to update the certificate.  Certificate rollover is simple if the cluster was [set up to use certificates based on common name](service-fabric-cluster-change-cert-thumbprint-to-cn.md) (instead of thumbprint).  Get a new certificate from a certificate authority with a new expiration date.  Self-signed certificates aren't support for production Service Fabric clusters, to include certificates generated during Azure portal Cluster creation workflow. The new certificate must have the same common name as the older certificate. 
 
 [!INCLUDE [updated-for-az](~/reusable-content/ce-skilling/azure/includes/updated-for-az.md)]
 
-Service Fabric cluster will automatically use the declared certificate with a further into the future expiration date; when more than one validate certificate is installed on the host. A best practice is to use a Resource Manager template to provision Azure Resources. For non-production environment the following script can be used to upload a new certificate to a key vault and then installs the certificate on the virtual machine scale set: 
+Service Fabric cluster will automatically use the declared certificate with a further into the future expiration date; when more than one validate certificate is installed on the host. A best practice is to use a Resource Manager template to provision Azure Resources. For nonproduction environment the following script can be used to upload a new certificate to a key vault and then installs the certificate on the virtual machine scale set: 
 
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser -Force
@@ -72,7 +72,7 @@ Update-AzVmss -ResourceGroupName $VmssResourceGroupName -Name $VmssName -Virtual
 ```
 
 >[!NOTE]
-> Computes Virtual Machine Scale Set Secrets do not support the same resource id for two separate secrets, as each secret is a versioned unique resource. 
+> Computes Virtual Machine Scale Set Secrets don't support the same resource id for two separate secrets, as each secret is a versioned unique resource. 
 
 ## Next Steps
 

@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: As a system administrator managing a Service Fabric cluster, I want to upgrade to the latest supported version of Service Fabric, so that I can ensure the reliability and security of my deployment while benefiting from new features and improvements.
 ---
 
@@ -23,7 +23,7 @@ You can upgrade your cluster to the new version only if you're using a productio
 
 Two distinct workflows can upgrade your cluster to the latest version or a supported Service Fabric version. One workflow is for clusters that have connectivity to download the latest version automatically. The other workflow is for clusters that don't have connectivity to download the latest Service Fabric version.
 
-## Enable auto-upgrade of the Service Fabric version of your cluster
+## Enable autoupgrade of the Service Fabric version of your cluster
 To set your cluster to download updates of Service Fabric when Microsoft releases a new version, set the `fabricClusterAutoupgradeEnabled` cluster configuration to *true*. To manually select a supported version of Service Fabric that you want your cluster to be on, set the `fabricClusterAutoupgradeEnabled` cluster configuration to *false*.
 
 ## Upgrade clusters that have connectivity to download the latest code and configuration

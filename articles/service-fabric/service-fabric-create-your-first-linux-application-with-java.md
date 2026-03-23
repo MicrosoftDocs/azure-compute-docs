@@ -7,7 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-extended-java, linux-related-content
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: "As a Java developer on Linux, I want to create and deploy a Reliable Actors application using Service Fabric, so that I can quickly build a scalable and reliable service that leverages cloud-based architecture."
 ---
 
@@ -40,17 +40,17 @@ To get started with Reliable Actors, you only need to understand a few basic con
 * **Actor interface**. The actor interface is used to define a strongly typed public interface of an actor. In the Reliable Actor model terminology, the actor interface defines the types of messages that the actor can understand and process. The actor interface is used by other actors and client applications to "send" (asynchronously) messages to the actor. Reliable Actors can implement multiple interfaces.
 * **ActorProxy class**. The ActorProxy class is used by client applications to invoke the methods exposed through the actor interface. The ActorProxy class provides two important functionalities:
 
-  * Name resolution: It is able to locate the actor in the cluster (find the node of the cluster where it is hosted).
+  * Name resolution: It's able to locate the actor in the cluster (find the node of the cluster where it's hosted).
   * Failure handling: It can retry method invocations and re-resolve the actor location after, for example, a failure that requires the actor to be relocated to another node in the cluster.
 
 The following rules that pertain to actor interfaces are worth mentioning:
 
-* Actor interface methods cannot be overloaded.
+* Actor interface methods can't be overloaded.
 * Actor interface methods must not have out, ref, or optional parameters.
-* Generic interfaces are not supported.
+* Generic interfaces aren't supported.
 
 ## Create the application
-A Service Fabric application contains one or more services, each with a specific role in delivering the application's functionality. The generator you installed in the last section, makes it easy to create your first service and to add more later.  You can also create, build, and deploy Service Fabric Java applications using a plugin for Eclipse. See [Create and deploy your first Java application using Eclipse](service-fabric-get-started-eclipse.md). For this quick start, use Yeoman to create an application with a single service that stores and gets a counter value.
+A Service Fabric application contains one or more services, each with a specific role in delivering the application's functionality. The generator you installed in the last section, makes it easy to create your first service and to add later.  You can also create, build, and deploy Service Fabric Java applications using a plugin for Eclipse. See [Create and deploy your first Java application using Eclipse](service-fabric-get-started-eclipse.md). For this quick start, use Yeoman to create an application with a single service that stores and gets a counter value.
 
 1. In a terminal, type ``yo azuresfjava``.
 2. Name your application.
@@ -102,7 +102,7 @@ HelloWorldActorApplication/
 The basic concepts described earlier translate into the basic building blocks of a Reliable Actor service.
 
 ### Actor interface
-This contains the interface definition for the actor. This interface defines the actor contract that is shared by the actor implementation and the clients calling the actor, so it typically makes sense to define it in a place that is separate from the actor implementation and can be shared by multiple other services or client applications.
+This contains the interface definition for the actor. This interface defines the actor contract that is shared by the actor implementation and the clients calling the actor, so it typically makes sense to define it in a place that's separate from the actor implementation and can be shared by multiple other services or client applications.
 
 `HelloWorldActorInterface/src/reliableactor/HelloWorldActor.java`:
 
@@ -177,7 +177,7 @@ public static void main(String[] args) throws Exception {
 
 ## Build the application
 The Service Fabric Yeoman templates include a build script for [Gradle](https://gradle.org/), which you can use to build the application from the terminal.
-Service Fabric Java dependencies get fetched from Maven. To build and work on the Service Fabric Java applications, you need to ensure that you have JDK and Gradle installed. If they are not installed, see [Service Fabric getting started with Linux](service-fabric-get-started-linux.md#set-up-java-development) for instructions on installing JDK and Gradle.
+Service Fabric Java dependencies get fetched from Maven. To build and work on the Service Fabric Java applications, you need to ensure that you have JDK and Gradle installed. If they aren't installed, see [Service Fabric getting started with Linux](service-fabric-get-started-linux.md#set-up-java-development) for instructions on installing JDK and Gradle.
 
 To build and package the application, run the following:
 
@@ -211,7 +211,7 @@ Parameters to these commands can be found in the generated manifests inside the 
 Once the application has been deployed, open a browser and navigate to
 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) at
 `http://localhost:19080/Explorer`.
-Then, expand the **Applications** node and note that there is now an entry for your application type and another for
+Then, expand the **Applications** node and note that there's now an entry for your application type and another for
 the first instance of that type.
 
 > [!IMPORTANT]
@@ -219,14 +219,14 @@ the first instance of that type.
 >
 
 ## Start the test client and perform a failover
-Actors do not do anything on their own, they require another service or client to send them messages. The actor template includes a simple test script that you can use to interact with the actor service.
+Actors don't do anything on their own. They require another service or client to send them messages. The actor template includes a simple test script that you can use to interact with the actor service.
 
 > [!NOTE]
-> The test client uses the ActorProxy class to communicate with actors, which must run within the same cluster as the actor service or share the same IP address space.  You can run the test client on the same computer as the local development cluster.  To communicate with actors in a remote cluster, however, you must deploy a gateway on the cluster that handles external communication with the actors.
+> The test client uses the ActorProxy class to communicate with actors, which must run within the same cluster as the actor service or share the same IP address space. You can run the test client on the same computer as the local development cluster. To communicate with actors in a remote cluster, however, you must deploy a gateway on the cluster that handles external communication with the actors.
 
 1. Run the script using the watch utility to see the output of the actor service.  The test script calls the `setCountAsync()` method on the actor to increment a counter, calls the `getCountAsync()` method on the actor to get the new counter value, and displays that value to the console.
 
-   In case of MAC OS X, you need to copy the HelloWorldTestClient folder into the some location inside the container by running the following additional commands.
+   For macOS X, you need to copy the HelloWorldTestClient folder into a location inside the container by running the following additional commands.
 
     ```bash
      docker cp HelloWorldTestClient [first-four-digits-of-container-ID]:/home
@@ -239,11 +239,11 @@ Actors do not do anything on their own, they require another service or client t
     watch -n 1 ./testclient.sh
     ```
 
-2. In Service Fabric Explorer, locate the node hosting the primary replica for the actor service. In the screenshot below, it is node 3. The primary service replica handles read and write operations.  Changes in service state are then replicated out to the secondary replicas, running on nodes 0 and 1 in the screenshot below.
+2. In Service Fabric Explorer, locate the node hosting the primary replica for the actor service. In the screenshot below, it's node 3. The primary service replica handles read and write operations.  Changes in service state are then replicated out to the secondary replicas, running on nodes 0 and 1 in the screenshot below.
 
     ![Finding the primary replica in Service Fabric Explorer][sfx-primary]
 
-3. In **Nodes**, click the node you found in the previous step, then select **Deactivate (restart)** from the Actions menu. This action restarts the node running the primary service replica and forces a failover to one of the secondary replicas running on another node.  That secondary replica is promoted to primary, another secondary replica is created on a different node, and the primary replica begins to take read/write operations. As the node restarts, watch the output from the test client and note that the counter continues to increment despite the failover.
+3. In **Nodes**, select the node you found in the previous step, then select **Deactivate (restart)** from the Actions menu. This action restarts the node running the primary service replica and forces a failover to one of the secondary replicas running on another node.  That secondary replica is promoted to primary, another secondary replica is created on a different node, and the primary replica begins to take read/write operations. As the node restarts, watch the output from the test client and note that the counter continues to increment despite the failover.
 
 ## Remove the application
 Use the uninstall script provided in the template to delete the application instance, unregister the application package, and remove the application package from the cluster's image store.
@@ -302,7 +302,7 @@ Service Fabric Reliable Services support for your application.
 ### Others
 #### Transport
 
-Transport layer support for Service Fabric Java application. You do not need to explicitly add this dependency to your Reliable Actor or Service applications, unless you program at the transport layer.
+Transport layer support for Service Fabric Java application. You don't need to explicitly add this dependency to your Reliable Actor or Service applications, unless you program at the transport layer.
 
   ```xml
   <dependency>
@@ -323,7 +323,7 @@ Transport layer support for Service Fabric Java application. You do not need to 
 
 #### Fabric support
 
-System level support for Service Fabric, which talks to native Service Fabric runtime. You do not need to explicitly add this dependency to your Reliable Actor or Service applications. This gets fetched automatically from Maven, when you include the other dependencies above.
+System level support for Service Fabric, which talks to native Service Fabric runtime. You don't need to explicitly add this dependency to your Reliable Actor or Service applications. This gets fetched automatically from Maven, when you include the other dependencies above.
 
   ```xml
   <dependency>

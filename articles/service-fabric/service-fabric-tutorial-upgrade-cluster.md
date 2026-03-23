@@ -7,7 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-azurepowershell
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: "As a cloud administrator, I want to upgrade the runtime of my Azure Service Fabric cluster using PowerShell, so that I can ensure my applications are running on the latest features and improvements."
 ---
 
