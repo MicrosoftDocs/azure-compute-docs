@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: As a cloud architect, I want to set up AWS infrastructure for a Service Fabric cluster so that I can deploy and manage applications in a scalable and flexible environment.
 ---
 
@@ -68,19 +68,19 @@ Finally, select **Launch Instances**, and then **View Instances**.  You have the
 
 Service Fabric requires a number of ports open between the hosts in your cluster. To open these ports in the AWS infrastructure, select one of the instances that you created. Then select the name of the security group, for example,  **launch-wizard-1**. Now, select the **Inbound** tab.
 
-To avoid opening these ports to the world, you instead open them only for hosts in the same security group. Take note of the security group ID, in the example it's **sg-c4fb1eba**.  Then select **Edit**.
+To avoid opening these ports to the world, you instead open them only for hosts in the same security group. Take note of the security group ID, in the example it's **sg-c4fb1eba**. Then select **Edit**.
 
 Next, add four rules to the security group for service dependencies, and then three more for Service Fabric itself. The first rule is to allow ICMP traffic, for basic connectivity checks. The others rules open the required ports to enable SMB and Remote Registry.
 
 For the first rule select **Add Rule**, then from the dropdown menu selects **All ICMP - IPv4**. Select the entry box next to custom and enter your security group ID from above.
 
-For the last three dependencies, you need to follow a similar process.  Select **Add Rule**, from the drop-down select **Custom TCP Rule**, in the port range enter one of `135`, `137-139`, and `445` for each rule. Finally, in the source box enter your security group ID.
+For the last three dependencies, you need to follow a similar process. Select **Add Rule**, from the drop-down select **Custom TCP Rule**, in the port range enter one of `135`, `137-139`, and `445` for each rule. Finally, in the source box enter your security group ID.
 
 ![Security group ports][aws-ec2securityports]
 
 Now that the ports for the dependencies are open, you need to do the same thing for the ports that Service Fabric itself uses to communicate. Select **Add Rule**, from the drop-down select **Custom TCP Rule**, in the port range enter `20001-20031` enter the security group in the source box.
 
-Next, add a rule for the ephemeral port range.  Select **Add Rule**, from the drop-down select **Custom TCP Rule**, in the port range enter `20606-20861`. Finally, in the source box enter your security group ID.
+Next, add a rule for the ephemeral port range. Select **Add Rule**, from the drop-down select **Custom TCP Rule**, in the port range enter `20606-20861`. Finally, in the source box enter your security group ID.
 
 For the final two rules for Service Fabric, open it up to the world so you can manage your service fabric cluster from your personal computer. Select **Add Rule**, from the drop-down select **Custom TCP Rule**, in the port range enter one of `19000-19003`, and `19080-19081` then change the Source drop down to Anywhere.
 
@@ -90,15 +90,15 @@ All of the rules are now entered. Select **Save**.
 
 ## Connect to an instance and validate connectivity
 
-From the security group tab, select **Instances** from the left-hand menu.  Select each of the instances that you've created and note their private IP addresses for the examples below will use `172.31.21.141` and `172.31.20.163`.
+From the security group tab, select **Instances** from the left-hand menu. Select each of the instances that you've created and note their private IP addresses for the examples below will use `172.31.21.141` and `172.31.20.163`.
 
-Once you have all of the IP addresses select one of the instances to connect to, right-click on the instance and select **Connect**.  From here, you can download the RDP file for this particular instance.  Select **Download Remote Desktop File**, and then open the file that is downloaded to establish your remote desktop connection (RDP) to this instance.  When prompted enter your password `serv1ceF@bricP@ssword`.
+Once you have all of the IP addresses select one of the instances to connect to, right-click on the instance and select **Connect**. From here, you can download the RDP file for this particular instance. Select **Download Remote Desktop File**, and then open the file that is downloaded to establish your remote desktop connection (RDP) to this instance. When prompted enter your password `serv1ceF@bricP@ssword`.
 
 ![Download Remote Desktop File][aws-rdp]
 
-Once you have successfully connected to your instance validate that you can connect between them and also share files.  You've gathered the IP addresses for all the instances, select one that you are not currently connected to. Go to **Start**, enter `cmd` and select **Command Prompt**.
+Once you have successfully connected to your instance validate that you can connect between them and also share files. Once you've gathered the IP addresses for all the instances, select one that you aren't currently connected to. Go to **Start**, enter `cmd` and select **Command Prompt**.
 
-In these examples the RDP connection was established to the following IP address: 172.31.21.141. All connectivity test then occur to the other IP address: 172.31.20.163.
+In these examples, the RDP connection was established to the following IP address: 172.31.21.141. All connectivity test then occur to the other IP address: 172.31.20.163.
 
 To validate that basic connectivity works, use the ping command.
 
@@ -106,7 +106,7 @@ To validate that basic connectivity works, use the ping command.
 ping 172.31.20.163
 ```
 
-If your output looks like `Reply from 172.31.20.163: bytes=32 time<1ms TTL=128` repeated four times then your connection between the instances is working.  Now validate that your SMB sharing works with the following command:
+If your output looks like `Reply from 172.31.20.163: bytes=32 time<1ms TTL=128` repeated four times then your connection between the instances is working. Now validate that your SMB sharing works with the following command:
 
 ```
 net use * \\172.31.20.163\c$
@@ -116,7 +116,7 @@ It should return `Drive Z: is now connected to \\172.31.20.163\c$.` as the outpu
 
 ## Prep instances for Service Fabric
 
-If you were creating this from scratch, you'd need to take a couple extra steps.  Namely, you'd need to validate that remote registry was running, enable SMB, and open the requisite ports for SMB and remote registry.
+If you were creating this from scratch, you'd need to take a couple extra steps. Namely, you'd need to validate that remote registry was running, enable SMB, and open the requisite ports for SMB and remote registry.
 
 To make it easier you embedded all of this work when you bootstrapped the instances with your user data script.
 

@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 ms.update-cycle: 1095-days
 # Customer intent: "As a cloud developer, I want to understand how to manage service state in Azure Service Fabric, so that I can build scalable and reliable stateful applications."
 ---
@@ -21,9 +21,9 @@ Now consider the same calculator, but with an additional method for storing and 
 In Azure Service Fabric, the first service is called a stateless service. The second service is called a stateful service.
 
 ## Storing service state
-State can be either externalized or co-located with the code that is manipulating the state. Externalization of state is typically done by using an external database or other data store that runs on different machines over the network or out of process on the same machine. In our calculator example, the data store could be a SQL database or instance of Azure Table Store. Every request to compute the sum performs an update on this data, and requests to the service to return the value result in the current value being fetched from the store. 
+State can be either externalized or colocated with the code that is manipulating the state. Externalization of state is typically done by using an external database or other data store that runs on different machines over the network or out of process on the same machine. In our calculator example, the data store could be a SQL database or instance of Azure Table Store. Every request to compute the sum performs an update on this data, and requests to the service to return the value result in the current value being fetched from the store. 
 
-State can also be co-located with the code that manipulates the state. Stateful services in Service Fabric are typically built using this model. Service Fabric provides the infrastructure to ensure that this state is highly available, consistent, and durable, and that the services built this way can easily scale.
+State can also be colocated with the code that manipulates the state. Stateful services in Service Fabric are typically built using this model. Service Fabric provides the infrastructure to ensure that this state is highly available, consistent, and durable, and that the services built this way can easily scale.
 
 ## Next steps
 For more information on Service Fabric concepts, see the following articles:

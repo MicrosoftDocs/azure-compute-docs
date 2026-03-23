@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: "As a cloud architect, I want to implement best practices for managing Azure Service Fabric networking, so that I can ensure optimal performance and security for my service clusters."
 ---
 
@@ -37,7 +37,7 @@ Maximize your Virtual Machine's performance with Accelerated Networking, by decl
 ```
 Service Fabric cluster can be provisioned on [Linux with Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli), and [Windows with Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-powershell).
 
-Accelerated Networking is supported for Azure Virtual Machine Series SKUs: D/DSv2, D/DSv3, E/ESv3, F/FS, FSv2, and Ms/Mms. Accelerated Networking was tested successfully using the Standard_DS8_v3 SKU on 01/23/2019 for a Service Fabric Windows Cluster, and using Standard_DS12_v2 on 01/29/2019 for a Service Fabric Linux Cluster. Note that Accelerated Networking requires at least 4 vCPUs. 
+Accelerated Networking is supported for Azure Virtual Machine Series SKUs: D/DSv2, D/DSv3, E/ESv3, F/FS, FSv2, and Ms/Mms. Accelerated Networking was tested successfully using the Standard_DS8_v3 SKU on 01/23/2019 for a Service Fabric Windows Cluster, and using Standard_DS12_v2 on 01/29/2019 for a Service Fabric Linux Cluster. Accelerated Networking requires at least 4 vCPUs.
 
 To enable Accelerated Networking on an existing Service Fabric cluster, you need to first [Scale a Service Fabric cluster out by adding a Virtual Machine Scale Set](virtual-machine-scale-set-scale-node-type-scale-out.md), to perform the following steps:
 1. Provision a NodeType with Accelerated Networking enabled
@@ -112,7 +112,7 @@ More information about the outbound security rules:
 Use Azure Firewall with [NSG flow log](/azure/network-watcher/network-watcher-nsg-flow-logging-overview) and [traffic analytics](/azure/network-watcher/traffic-analytics) to track connectivity issues. The ARM template [Service Fabric with NSG](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG) is a good example to start. 
 
 > [!NOTE]
-> The default network security rules should not be overwritten as they ensure the communication between the nodes. [Network Security Group - How it works](/azure/virtual-network/network-security-group-how-it-works). Another example, outbound connectivity on port 80 is needed to do the Certificate Revocation List check.
+> The default network security rules shouldn't be overwritten as they ensure the communication between the nodes. [Network Security Group - How it works](/azure/virtual-network/network-security-group-how-it-works). Another example, outbound connectivity on port 80 is needed to do the Certificate Revocation List check.
 
 ### Common scenarios needing additional rules
 
@@ -120,7 +120,7 @@ All additional scenarios can be covered with [Azure Service Tags](/azure/virtual
 
 #### Restricting outbound traffic
 
-For some customers, the default NSG rules described above don't suffice to meet their network security requirements. For example, a common requirement — which is not provided by default, is to block outbound traffic to the internet. To achieve this, customers can apply NSG rules based on the reference table below to restrict outbound traffic while maintaining essential cluster functionality. These rules can be applied to both Classic and Managed Clusters. For Managed Clusters, ensure they do not override any default rules (prefixed with 'SFMC-'). 
+For some customers, the default NSG rules described above don't suffice to meet their network security requirements. For example, a common requirement — which isn't provided by default, is to block outbound traffic to the internet. To achieve this, customers can apply NSG rules based on the reference table below to restrict outbound traffic while maintaining essential cluster functionality. These rules can be applied to both Classic and Managed Clusters. For Managed Clusters, ensure they don't override any default rules (prefixed with 'SFMC-'). 
 
 >[!Note]
 > The table below is intended to be used only as a reference.
@@ -156,7 +156,7 @@ The classic PowerShell tasks in Azure DevOps (Service Tag: AzureCloud) need Clie
 
 #### Updating Windows
 
-Best practice to patch the Windows operating system is replacing the OS disk by [automatic OS image upgrades](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md), no additional rule is required.
+Best practice to patch the Windows operating system is replacing the OS disk by [automatic OS image upgrades](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md). No additional rule is required.
 The [Patch Orchestration Application](service-fabric-patch-orchestration-application.md) is managing in-VM upgrades where Windows Updates applies operating system patches, this needs access to the Download Center (Service Tag: AzureUpdateDelivery) to download the update binaries.
 
 |Priority   |Name               |Port        |Protocol  |Source    |Destination           |Action  |Direction      

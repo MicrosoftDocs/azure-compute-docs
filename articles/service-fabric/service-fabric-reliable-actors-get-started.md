@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
 # Customer intent: "As a developer, I want to create and debug an actor-based service using Reliable Actors, so that I can build scalable applications on the Service Fabric platform."
 ---
 
@@ -41,9 +41,9 @@ The solution contains three projects:
 
 * **The application project (MyApplication)**. This project packages all of the services together for deployment. It contains the *ApplicationManifest.xml* and PowerShell scripts for managing the application.
 
-* **The interface project (HelloWorld.Interfaces)**. This project contains the interface definition for the actor. Actor interfaces can be defined in any project with any name.  The interface defines the actor contract that is shared by the actor implementation and the clients calling the actor.  Because client projects may depend on it, it typically makes sense to define it in an assembly that is separate from the actor implementation.
+* **The interface project (HelloWorld.Interfaces)**. This project contains the interface definition for the actor. Actor interfaces can be defined in any project with any name.  The interface defines the actor contract that is shared by the actor implementation and the clients calling the actor.  Because client projects may depend on it, it typically makes sense to define it in an assembly that's separate from the actor implementation.
 
-* **The actor service project (HelloWorld)**. This project defines the Service Fabric service that is going to host the actor. It contains the implementation of the actor, *HelloWorld.cs*. An actor implementation is a class that derives from the base type `Actor` and implements the interfaces defined in the *MyActor.Interfaces* project. An actor class must also implement a constructor that accepts an `ActorService` instance and an `ActorId` and passes them to the base `Actor` class.
+* **The actor service project (HelloWorld)**. This project defines the Service Fabric service that's going to host the actor. It contains the implementation of the actor, *HelloWorld.cs*. An actor implementation is a class that derives from the base type `Actor` and implements the interfaces defined in the *MyActor.Interfaces* project. An actor class must also implement a constructor that accepts an `ActorService` instance and an `ActorId` and passes them to the base `Actor` class.
     
     This project also contains *Program.cs*, which registers actor classes with the Service Fabric runtime using `ActorRuntime.RegisterActorAsync<T>()`. The `HelloWorld` class is already registered. Any additional actor implementations added to the project must also be registered in the `Main()` method.
 
@@ -91,7 +91,7 @@ Create a simple console application to call the actor service.
     ![Add New Project dialog][6]    
     
     > [!NOTE]
-    > A console application is not the type of app you would typically use as a client in Service Fabric, but it makes a convenient example for debugging and testing using the local Service Fabric cluster.
+    > A console application isn't the type of app you would typically use as a client in Service Fabric, but it makes a convenient example for debugging and testing using the local Service Fabric cluster.
 
 3. The console application must be a 64-bit application to maintain compatibility with the interface project and other dependencies.  In Solution Explorer, right-click the **ActorClient** project, and then click **Properties**.  On the **Build** tab, set **Platform target** to **x64**.
     
@@ -144,7 +144,7 @@ When the output contains the text, *The application is ready*, it's possible to 
 ![Application output][9]
 
 > [!TIP]
-> The Service Fabric Actors runtime emits some [events and performance counters related to actor methods](service-fabric-reliable-actors-diagnostics.md#actor-method-events-and-performance-counters). They are useful in diagnostics and performance monitoring.
+> The Service Fabric Actors runtime emits some [events and performance counters related to actor methods](service-fabric-reliable-actors-diagnostics.md#actor-method-events-and-performance-counters). They're useful in diagnostics and performance monitoring.
 
 ## Next steps
 Learn more about [how Reliable Actors use the Service Fabric platform](service-fabric-reliable-actors-platform.md).

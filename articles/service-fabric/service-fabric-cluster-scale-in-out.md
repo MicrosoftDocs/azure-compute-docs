@@ -1,13 +1,13 @@
 ---
 title: Scale a Service Fabric cluster in or out 
-description: Scale a Service Fabric cluster in or out to match demand by setting auto-scale rules for each node type/virtual machine scale set. Add or remove nodes to a Service Fabric cluster
+description: Scale a Service Fabric cluster in or out to match demand by setting autoscale rules for each node type/virtual machine scale set. Add or remove nodes to a Service Fabric cluster
 ms.topic: how-to
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-azurepowershell
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: As a cloud system administrator, I want to effectively scale my Service Fabric cluster by adding or removing nodes and configuring auto-scale rules, so that I can optimize resource allocation based on application demand and ensure high availability for my services.
 ---
 
@@ -21,21 +21,21 @@ Scaling compute resources to source your application work load requires intentio
 
 [!INCLUDE [updated-for-az](~/reusable-content/ce-skilling/azure/includes/updated-for-az.md)]
 
-## Scale a Service Fabric cluster in or out using auto-scale rules or manually
-Virtual machine scale sets are an Azure compute resource that you can use to deploy and manage a collection of virtual machines as a set. Every node type that is defined in a Service Fabric cluster is set up as a separate virtual machine scale set. Each node type can then be scaled in or out independently, have different sets of ports open, and can have different capacity metrics. Read more about it in the [Service Fabric node types](service-fabric-cluster-nodetypes.md) document. Since the Service Fabric node types in your cluster are made of virtual machine scale sets at the backend, you need to set up auto-scale rules for each node type/virtual machine scale set.
+## Scale a Service Fabric cluster in or out using autoscale rules or manually
+Virtual machine scale sets are an Azure compute resource that you can use to deploy and manage a collection of virtual machines as a set. Every node type that is defined in a Service Fabric cluster is set up as a separate virtual machine scale set. Each node type can then be scaled in or out independently, have different sets of ports open, and can have different capacity metrics. Read more about it in the [Service Fabric node types](service-fabric-cluster-nodetypes.md) document. Since the Service Fabric node types in your cluster are made of virtual machine scale sets at the backend, you need to set up autoscale rules for each node type/virtual machine scale set.
 
 > [!NOTE]
-> Your subscription must have enough cores to add the new VMs that make up this cluster. There is no model validation currently, so you get a deployment time failure, if any of the quota limits are hit. 
+> Your subscription must have enough cores to add the new VMs that make up this cluster. There's no model validation currently, so you get a deployment time failure, if any of the quota limits are hit. 
 >
 >
 > [!NOTE]
-> If using Windows OS image with Hyper-V role enabled, ie. the VM will be configured for nested virtualization, the Available Memory Metric will not be available, since the dynamic memory driver within the VM will be in a stopped state.
+> If using Windows OS image with Hyper-V role enabled, that is, the VM is configured for nested virtualization, the Available Memory Metric won't be available, since the dynamic memory driver within the VM will be in a stopped state.
 >
 >
 
 
 ## Choose the node type/Virtual Machine scale set to scale
-Currently, you are not able to specify the auto-scale rules for virtual machine scale sets using the portal to create a Service Fabric Cluster, so let us use Azure PowerShell (1.0+) to list the node types and then add auto-scale rules to them.
+Currently, you aren't able to specify the autoscale rules for virtual machine scale sets using the portal to create a Service Fabric Cluster, so let us use Azure PowerShell (1.0+) to list the node types and then add autoscale rules to them.
 
 To get the list of virtual machine scale sets that make up your cluster, run the following cmdlets:
 
@@ -45,17 +45,17 @@ Get-AzResource -ResourceGroupName <RGname> -ResourceType Microsoft.Compute/Virtu
 Get-AzVmss -ResourceGroupName <RGname> -VMScaleSetName <virtual machine scale set name>
 ```
 
-## Set auto-scale rules for the node type/virtual machine scale set
-If your cluster has multiple node types, then repeat this for each node types/virtual machine scale sets that you want to scale (in or out). Take into account the number of nodes that you must have before you set up auto-scaling. The minimum number of nodes that you must have for the primary node type is driven by the reliability level you have chosen. Read more about [reliability levels](service-fabric-cluster-capacity.md).
+## Set autoscale rules for the node type/virtual machine scale set
+If your cluster has multiple node types, then repeat this for each node types/virtual machine scale sets that you want to scale (in or out). Take into account the number of nodes that you must have before you set up autoscaling. The minimum number of nodes that you must have for the primary node type is driven by the reliability level you have chosen. Read more about [reliability levels](service-fabric-cluster-capacity.md).
 
 > [!NOTE]
-> Scaling in the primary node type to less than the minimum number will make the cluster unstable or even bring it down. This could result in data loss for your applications and for the system services.
+> Scaling in the primary node type to less than the minimum number makes the cluster unstable or even bring it down. This could result in data loss for your applications and for the system services.
 > 
 > 
 
-Currently the auto-scale feature is not driven by the loads that your applications may be reporting to Service Fabric. So at this time the auto-scale you get is purely driven by the performance counters that are emitted by each of the virtual machine scale set instances.  
+Currently the autoscale feature isn't driven by the loads that your applications may be reporting to Service Fabric. So at this time the autoscale you get is purely driven by the performance counters that are emitted by each of the virtual machine scale set instances.  
 
-Follow these instructions [to set up auto-scale for each virtual machine scale set](../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview.md).
+Follow these instructions [to set up autoscale for each virtual machine scale set](../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview.md).
 
 > [!NOTE]
 > In a scale in scenario, unless your node type has a [durability level][durability] of Gold or Silver you need to call the [Remove-ServiceFabricNodeState cmdlet](/powershell/module/servicefabric/remove-servicefabricnodestate) with the appropriate node name. For the Bronze durability, it's not recommended to scale in more than one node at a time.

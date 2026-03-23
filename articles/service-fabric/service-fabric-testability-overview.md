@@ -6,13 +6,13 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
 ms.update-cycle: 1095-days
 # Customer intent: "As a service developer, I want to use the Fault Analysis Service to simulate real-world failures, so that I can validate the resilience and functionality of my distributed applications in a controlled environment before deploying to production."
 ---
 
 # Introduction to the Fault Analysis Service
-The Fault Analysis Service is designed for testing services that are built on Microsoft Azure Service Fabric. With the Fault Analysis Service you can induce meaningful faults and run complete test scenarios against your applications. These faults and scenarios exercise and validate the numerous states and transitions that a service will experience throughout its lifetime, all in a controlled, safe, and consistent manner.
+The Fault Analysis Service is designed for testing services that are built on Microsoft Azure Service Fabric. With the Fault Analysis Service you can induce meaningful faults and run complete test scenarios against your applications. These faults and scenarios exercise and validate the numerous states and transitions that a service experiences throughout its lifetime, all in a controlled, safe, and consistent manner.
 
 Actions are the individual faults targeting a service for testing it. A service developer can use these as building blocks to write complicated scenarios. For example:
 
@@ -37,7 +37,7 @@ When a fault action or test scenario is initiated, a command is sent to the Faul
 Service Fabric makes the job of writing and managing distributed scalable applications significantly easier. The Fault Analysis Service makes testing a distributed application similarly easier. There are three main issues that need to be solved while testing:
 
 1. Simulating/generating failures that might occur in real-world scenarios: One of the important aspects of Service Fabric is that it enables distributed applications to recover from various failures. However, to test that the application is able to recover from these failures, we need a mechanism to simulate/generate these real-world failures in a controlled test environment.
-1. The ability to generate correlated failures: Basic failures in the system, such as network failures and machine failures, are easy to produce individually. Generating a significant number of scenarios that can happen in the real world as a result of the interactions of these individual failures is non-trivial.
+1. The ability to generate correlated failures: Basic failures in the system, such as network failures and machine failures, are easy to produce individually. Generating a significant number of scenarios that can happen in the real world as a result of the interactions of these individual failures is nontrivial.
 1. Unified experience across various levels of development and deployment: There are many fault injection systems that can do various types of failures. However, the experience in all of these is poor when moving from one-box developer scenarios, to running the same tests in large test environments, to using them for tests in production.
 
 While there are many mechanisms to solve these problems, a system that does the same with required guarantees--all the way from a one-box developer environment, to test in production clusters--is missing. The Fault Analysis Service helps the application developers concentrate on testing their business logic. The Fault Analysis Service provides all the capabilities needed to test the interaction of the service with the underlying distributed system.
@@ -48,7 +48,7 @@ To test the robustness of a distributed system against failures, we need a mecha
 1. From the client, issue a shutdown node request.
 1. Send the request to the right node.
    
-    a. If the node is not found, it should fail.
+    a. If the node isn't found, it should fail.
    
     b. If the node is found, it should return only if the node is shut down.
 
@@ -59,7 +59,7 @@ While simulating a real-world failure consistently is tough to start with, the a
 
 1. Only a write quorum of the replicas are caught up on replication. All the secondary replicas lag behind the primary.
 1. The write quorum goes down because of the replicas going down (due to a code package or node going down).
-1. The write quorum cannot come back up because the data for the replicas is lost (due to disk corruption or machine reimaging).
+1. The write quorum can't come back up because the data for the replicas is lost (due to disk corruption or machine reimaging).
 
 These correlated failures do happen in the real world but not as frequently as individual failures. The ability to test for these scenarios before they happen in production is critical. Even more important is the ability to simulate these scenarios with production workloads in controlled circumstances (in the middle of the day with all engineers on deck). That is much better than having it happen for the first time in production at 2:00 A.M.
 

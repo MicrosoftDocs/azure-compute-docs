@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 ms.update-cycle: 1095-days
 # Customer intent: As a .NET developer, I want to implement Reliable Collections in my Azure Service Fabric applications, so that I can manage stateful data with transactional integrity, scalability, and high availability.
 ---
@@ -40,27 +40,27 @@ catch (TimeoutException)
 }
 ```
 
-All operations on reliable dictionary objects (except for ClearAsync, which is not undoable), require an ITransaction object. This object has associated with it any and all changes you're attempting to make to any reliable dictionary and/or reliable queue objects within a single partition. You acquire an ITransaction object by calling the partition's StateManager's CreateTransaction method.
+All operations on reliable dictionary objects (except for ClearAsync, which isn't undoable), require an ITransaction object. This object has associated with it any and all changes you're attempting to make to any reliable dictionary and/or reliable queue objects within a single partition. You acquire an ITransaction object by calling the partition's StateManager's CreateTransaction method.
 
-In the code above, the ITransaction object is passed to a reliable dictionary's AddAsync method. Internally, dictionary methods that accept a key take a reader/writer lock associated with the key. If the method modifies the key's value, the method takes a write lock on the key and if the method only reads from the key's value, then a read lock is taken on the key. Since AddAsync modifies the key's value to the new, passed-in value, the key's write lock is taken. So, if 2 (or more) threads attempt to add values with the same key at the same time, one thread will acquire the write lock, and the other threads will block. By default, methods block for up to 4 seconds to acquire the lock; after 4 seconds, the methods throw a TimeoutException. Method overloads exist allowing you to pass an explicit timeout value if you'd prefer.
+In the code above, the ITransaction object is passed to a reliable dictionary's AddAsync method. Internally, dictionary methods that accept a key take a reader/writer lock associated with the key. If the method modifies the key's value, the method takes a write lock on the key and if the method only reads from the key's value, then a read lock is taken on the key. Since AddAsync modifies the key's value to the new, passed-in value, the key's write lock is taken. So, if 2 (or more) threads attempt to add values with the same key at the same time, one thread acquires the write lock, and the other threads block. By default, methods block for up to 4 seconds to acquire the lock; after 4 seconds, the methods throw a TimeoutException. Method overloads exist allowing you to pass an explicit timeout value if you'd prefer.
 
 Usually, you write your code to react to a TimeoutException by catching it and retrying the entire operation (as shown in the code above). In this simple code, we're just calling Task.Delay passing 100 milliseconds each time. But, in reality, you might be better off using some kind of exponential back-off delay instead.
 
-Once the lock is acquired, AddAsync adds the key and value object references to an internal temporary dictionary associated with the ITransaction object. This is done to provide you with read-your-own-writes semantics. That is, after you call AddAsync, a later call to TryGetValueAsync using the same ITransaction object will return the value even if you have not yet committed the transaction.
+Once the lock is acquired, AddAsync adds the key and value object references to an internal temporary dictionary associated with the ITransaction object. This is done to provide you with read-your-own-writes semantics. That is, after you call AddAsync, a later call to TryGetValueAsync using the same ITransaction object will return the value even if you haven't yet committed the transaction.
 
 > [!NOTE]
-> Calling TryGetValueAsync with a new transaction will return a reference to the last committed value. Do not modify that reference directly, as that bypasses the mechanism for persisting and replicating the changes. We recommend making the values read-only so that the only way to change the value for a key is through reliable dictionary APIs.
+> Calling TryGetValueAsync with a new transaction returns a reference to the last committed value. Don't modify that reference directly, as that bypasses the mechanism for persisting and replicating the changes. We recommend making the values read-only so that the only way to change the value for a key is through reliable dictionary APIs.
 
-Next, AddAsync serializes your key and value objects to byte arrays and appends these byte arrays to a log file on the local node. Finally, AddAsync sends the byte arrays to all the secondary replicas so they have the same key/value information. Even though the key/value information has been written to a log file, the information is not considered part of the dictionary until the transaction that they are associated with has been committed.
+Next, AddAsync serializes your key and value objects to byte arrays and appends these byte arrays to a log file on the local node. Finally, AddAsync sends the byte arrays to all the secondary replicas so they have the same key/value information. Even though the key/value information has been written to a log file, the information isn't considered part of the dictionary until the transaction that they're associated with has been committed.
 
 In the code above, the call to CommitAsync commits all of the transaction's operations. Specifically, it appends commit information to the log file on the local node and also sends the commit record to all the secondary replicas. Once a quorum (majority) of the replicas has replied, all data changes are considered permanent and any locks associated with keys that were manipulated via the ITransaction object are released so other threads/transactions can manipulate the same keys and their values.
 
-If CommitAsync is not called (usually due to an exception being thrown), then the ITransaction object gets disposed. When disposing an uncommitted ITransaction object, Service Fabric appends abort information to the local node's log file and nothing needs to be sent to any of the secondary replicas. And then, any locks associated with keys that were manipulated via the transaction are released.
+If CommitAsync isn't called (usually due to an exception being thrown), then the ITransaction object gets disposed. When disposing an uncommitted ITransaction object, Service Fabric appends abort information to the local node's log file and nothing needs to be sent to any of the secondary replicas. And then, any locks associated with keys that were manipulated via the transaction are released.
 
 ## Volatile Reliable Collections 
 In some workloads, like a replicated cache for example, occasional data loss can be tolerated. Avoiding persistence of the data to disk can allow for better latencies and throughputs when writing to Reliable Dictionaries. The tradeoff for a lack of persistence is that if quorum loss occurs, full data loss will occur. Since quorum loss is a rare occurrence, the increased performance may be worth the rare possibility of data loss for those workloads.
 
-Currently, volatile support is only available for Reliable Dictionaries and Reliable Queues, and not ReliableConcurrentQueues. Please see the list of [Caveats](service-fabric-reliable-services-reliable-collections-guidelines.md#additional-guidelines-for-volatile-reliable-collections) to inform your decision on whether to use volatile collections.
+Currently, volatile support is only available for Reliable Dictionaries and Reliable Queues, and not ReliableConcurrentQueues. See the list of [Caveats](service-fabric-reliable-services-reliable-collections-guidelines.md#additional-guidelines-for-volatile-reliable-collections) to inform your decision on whether to use volatile collections.
 
 To enable volatile support in your service, set the ```HasPersistedState``` flag in service type declaration to ```false```, like so:
 ```xml
@@ -68,7 +68,7 @@ To enable volatile support in your service, set the ```HasPersistedState``` flag
 ```
 
 >[!NOTE]
->Existing persisted services cannot be made volatile, and vice versa. If you wish to do so, you will need to delete the existing service and then deploy the service with the updated flag. This means that you must be willing to incur full data loss if you wish to change the ```HasPersistedState``` flag. 
+>Existing persisted services can't be made volatile, and vice versa. If you wish to do so, you need to delete the existing service and then deploy the service with the updated flag. This means that you must be willing to incur full data loss if you wish to change the ```HasPersistedState``` flag. 
 
 ## Common pitfalls and how to avoid them
 Now that you understand how the reliable collections work internally, let's take a look at some common misuses of them. See the code below:
@@ -88,9 +88,9 @@ using (ITransaction tx = StateManager.CreateTransaction())
 }
 ```
 
-When working with a regular .NET dictionary, you can add a key/value to the dictionary and then change the value of a property (such as LastLogin). However, this code will not work correctly with a reliable dictionary. Remember from the earlier discussion, the call to AddAsync serializes the key/value objects to byte arrays and then saves the arrays to a local file and also sends them to the secondary replicas. If you later change a property, this changes the property's value in memory only; it does not impact the local file or the data sent to the replicas. If the process crashes, what's in memory is thrown away. When a new process starts or if another replica becomes primary, then the old property value is what is available.
+When working with a regular .NET dictionary, you can add a key/value to the dictionary and then change the value of a property (such as LastLogin). However, this code won't work correctly with a reliable dictionary. Remember from the earlier discussion, the call to AddAsync serializes the key/value objects to byte arrays and then saves the arrays to a local file and also sends them to the secondary replicas. If you later change a property, this changes the property's value in memory only; it doesn't impact the local file or the data sent to the replicas. If the process crashes, what's in memory is thrown away. When a new process starts or if another replica becomes primary, then the old property value is what is available.
 
-I cannot stress enough how easy it is to make the kind of mistake shown above. And, you will only learn about the mistake if/when the process goes down. The correct way to write the code is simply to reverse the two lines:
+I can't stress enough how easy it's to make the kind of mistake shown above. And, you'll only learn about the mistake if/when the process goes down. The correct way to write the code is simply to reverse the two lines:
 
 
 ```csharp
@@ -102,7 +102,7 @@ using (ITransaction tx = StateManager.CreateTransaction())
 }
 ```
 
-Here is another example showing a common mistake:
+Here's another example showing a common mistake:
 
 ```csharp
 using (ITransaction tx = StateManager.CreateTransaction())
@@ -152,7 +152,7 @@ using (ITransaction tx = StateManager.CreateTransaction())
 ```
 
 ## Define immutable data types to prevent programmer error
-Ideally, we'd like the compiler to report errors when you accidentally produce code that mutates state of an object that you're supposed to consider immutable. But, the C# compiler does not have the ability to do this. So, to avoid potential programmer bugs, we highly recommend that you define the types you use with reliable collections to be immutable types. Specifically, this means that you stick to core value types (such as numbers [Int32, UInt64, etc.], DateTime, Guid, TimeSpan, and the like). You can also use String. It is best to avoid collection properties as serializing and deserializing them can frequently hurt performance. However, if you want to use collection properties, we highly recommend the use of .NET's immutable collections library ([System.Collections.Immutable](https://www.nuget.org/packages/System.Collections.Immutable/)). This library is available for download from https://nuget.org. We also recommend sealing your classes and making fields read-only whenever possible.
+Ideally, we'd like the compiler to report errors when you accidentally produce code that mutates state of an object that you're supposed to consider immutable. But, the C# compiler doesn't have the ability to do this. So, to avoid potential programmer bugs, we highly recommend that you define the types you use with reliable collections to be immutable types. Specifically, this means that you stick to core value types (such as numbers [Int32, UInt64, etc.], DateTime, Guid, TimeSpan, and the like). You can also use String. It is best to avoid collection properties as serializing and deserializing them can frequently hurt performance. However, if you want to use collection properties, we highly recommend the use of .NET's immutable collections library ([System.Collections.Immutable](https://www.nuget.org/packages/System.Collections.Immutable/)). This library is available for download from https://nuget.org. We also recommend sealing your classes and making fields read-only whenever possible.
 
 The UserInfo type below demonstrates how to define an immutable type taking advantage of aforementioned recommendations.
 
@@ -212,13 +212,13 @@ public struct ItemId
 ## Schema versioning (upgrades)
 Internally, Reliable Collections serialize your objects using .NET's DataContractSerializer. The serialized objects are persisted to the primary replica's local disk and are also transmitted to the secondary replicas. As your service matures, it's likely you'll want to change the kind of data (schema) your service requires. Approach versioning of your data with great care. First and foremost, you must always be able to deserialize old data. Specifically, this means your deserialization code must be infinitely backward compatible: Version 333 of your service code must be able to operate on data placed in a reliable collection by version 1 of your service code 5 years ago.
 
-Furthermore, service code is upgraded one upgrade domain at a time. So, during an upgrade, you have two different versions of your service code running simultaneously. You must avoid having the new version of your service code use the new schema as old versions of your service code might not be able to handle the new schema. When possible, you should design each version of your service to be forward compatible by one version. Specifically, this means that V1 of your service code should be able to ignore any schema elements it does not explicitly handle. However, it must be able to save any data it doesn't explicitly know about and write it back out when updating a dictionary key or value.
+Furthermore, service code is upgraded one upgrade domain at a time. So, during an upgrade, you have two different versions of your service code running simultaneously. You must avoid having the new version of your service code use the new schema as old versions of your service code might not be able to handle the new schema. When possible, you should design each version of your service to be forward compatible by one version. Specifically, this means that V1 of your service code should be able to ignore any schema elements it doesn't explicitly handle. However, it must be able to save any data it doesn't explicitly know about and write it back out when updating a dictionary key or value.
 
 > [!WARNING]
 > While you can modify the schema of a key, you must ensure that your key's equality and comparison algorithms are stable.
-> Behavior of reliable collections after a change in either of these algorithms is undefined and may lead to data corruption, loss and
+> Behavior of reliable collections after a change in either of these algorithms is undefined and may lead to data corruption, loss, and
 > service crashes.
-> .NET Strings can be used as a key but use the string itself as the key--do not use the result of String.GetHashCode as the key.
+> .NET Strings can be used as a key but use the string itself as the key--don't use the result of String.GetHashCode as the key.
 
 Alternatively, you can perform a multi-phase upgrade. 
 1. Upgrade service to a new version that
@@ -227,7 +227,7 @@ Alternatively, you can perform a multi-phase upgrade.
     - performs all operations on the original, V1 collection using the V1 data contracts.
 2. Upgrade service to a new version that
     - [creates a new, V2 collection](/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.getoraddasync);
-    - performs each add, update and delete operation on first V1 and then V2 collections in a single transaction;
+    - performs each add, update, and delete operation on first V1 and then V2 collections in a single transaction;
     - performs read operations on the V1 collection only.
 3. Copy all data from the V1 collection to the V2 collection.
     - This can be done in a background process by the service version deployed in step 2.
@@ -250,7 +250,7 @@ Alternatively, you can perform a multi-phase upgrade.
 4. Upgrade service to a new version that
     - performs read operations on the V2 collection only;
     - still performs each add, update and delete operation on first V1 and then V2 collections to maintain the option of rolling back to V1.
-5. Comprehensively test the service and confirm it is working as expected.
+5. Comprehensively test the service and confirm it's working as expected.
     - If you missed any value access operation that wasn't updated to work on both V1 and V2 collection, you may notice missing data.
     - If any data is missing roll back to Step 1, remove the V2 collection and repeat the process.
 6. Upgrade service to a new version that

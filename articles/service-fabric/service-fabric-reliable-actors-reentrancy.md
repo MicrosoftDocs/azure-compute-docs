@@ -6,13 +6,13 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
 ms.update-cycle: 1095-days
 # Customer intent: As a cloud developer, I want to configure actor reentrancy settings in Service Fabric, so that I can control message processing behavior and optimize the performance of my actor-based applications.
 ---
 
 # Reliable Actors reentrancy
-The Reliable Actors runtime, by default, allows logical call context-based reentrancy. This allows for actors to be reentrant if they are in the same call context chain. For example, Actor A sends a message to Actor B, who sends a message to Actor C. As part of the message processing, if Actor C calls Actor A, the message is reentrant, so it will be allowed. Any other messages that are part of a different call context will be blocked on Actor A until it finishes processing.
+The Reliable Actors runtime, by default, allows logical call context-based reentrancy. This allows for actors to be re-entrant if they are in the same call context chain. For example, Actor A sends a message to Actor B, who sends a message to Actor C. As part of the message processing, if Actor C calls Actor A, the message is re-entrant, so it will be allowed. Any other messages that are part of a different call context will be blocked on Actor A until it finishes processing.
 
 There are two options available for actor reentrancy defined in the `ActorReentrancyMode` enum:
 
@@ -35,7 +35,7 @@ public enum ActorReentrancyMode
 ```
 Reentrancy can be configured in an `ActorService`'s settings during registration. The setting applies to all actor instances created in the actor service.
 
-The following example shows an actor service that sets the reentrancy mode to `ActorReentrancyMode.Disallowed`. In this case, if an actor sends a reentrant message to another actor, an exception of type `FabricException` will be thrown.
+The following example shows an actor service that sets the reentrancy mode to `ActorReentrancyMode.Disallowed`. In this case, if an actor sends a re-entrant message to another actor, an exception of type `FabricException` will be thrown.
 
 ```csharp
 static class Program

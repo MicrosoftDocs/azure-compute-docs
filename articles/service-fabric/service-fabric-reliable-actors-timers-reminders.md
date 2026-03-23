@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
 # Customer intent: "As a software developer implementing Reliable Actors, I want to understand how to use timers and reminders effectively, so that I can schedule periodic tasks and manage state persistence within my applications."
 ---
 
@@ -16,7 +16,7 @@ Actors can schedule periodic work on themselves by registering either timers or 
 ## Actor timers
 Actor timers provide a simple wrapper around a .NET or Java timer to ensure that the callback methods respect the turn-based concurrency guarantees that the Actors runtime provides.
 
-Actors can use the `RegisterTimer`(C#) or `registerTimer`(Java)  and `UnregisterTimer`(C#) or `unregisterTimer`(Java) methods on their base class to register and unregister their timers. The example below shows the use of timer APIs. The APIs are very similar to the .NET timer or Java timer. In this example, when the timer is due, the Actors runtime will call the `MoveObject`(C#) or `moveObject`(Java) method. The method is guaranteed to respect the turn-based concurrency. This means that no other actor methods or timer/reminder callbacks will be in progress until this callback completes execution.
+Actors can use the `RegisterTimer`(C#) or `registerTimer`(Java)  and `UnregisterTimer`(C#) or `unregisterTimer`(Java) methods on their base class to register and unregister their timers. The example below shows the use of timer APIs. The APIs are similar to the .NET timer or Java timer. In this example, when the timer is due, the Actors runtime calls the `MoveObject`(C#) or `moveObject`(Java) method. The method is guaranteed to respect the turn-based concurrency. This means that no other actor methods or timer/reminder callbacks will be in progress until this callback completes execution.
 
 ```csharp
 class VisualObjectActor : Actor, IVisualObject

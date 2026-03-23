@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
 ms.update-cycle: 1095-days
 # Customer intent: As a microservices developer, I want to utilize the reverse proxy in Azure Service Fabric, so that I can simplify communication between services within the cluster and manage external access without extensive configuration.
 ---
@@ -24,7 +24,7 @@ Microservices in Service Fabric run on a subset of nodes in the cluster and can 
 For more information, see [Connect and communicate with services](service-fabric-connect-and-communicate-with-services.md).
 
 ### Communicating by using the reverse proxy
-Reverse proxy is a service that runs on every node and handles endpoint resolution, automatic retry, and other connection failures on behalf of client services. Reverse proxy can be configured to apply various policies as it handles requests from client services. Using a reverse proxy allows the client service to use any client-side HTTP communication libraries and does not require special resolution and retry logic in the service. 
+Reverse proxy is a service that runs on every node and handles endpoint resolution, automatic retry, and other connection failures on behalf of client services. Reverse proxy can be configured to apply various policies as it handles requests from client services. Using a reverse proxy allows the client service to use any client-side HTTP communication libraries and doesn't require special resolution and retry logic in the service. 
 
 Reverse proxy exposes one or more endpoints on local node for client services to use for sending requests to other services.
 
@@ -35,11 +35,11 @@ Reverse proxy exposes one or more endpoints on local node for client services to
 >
 > Reverse proxy in Service Fabric currently supports the following platforms
 > * *Windows Cluster*: Windows 8 and later or Windows Server 2012 and later
-> * *Linux Cluster*: Reverse Proxy is not currently available for Linux clusters
+> * *Linux Cluster*: Reverse Proxy isn't currently available for Linux clusters
 >
 
 ## Reaching microservices from outside the cluster
-The default external communication model for microservices is an opt-in model where each service cannot be accessed directly from external clients. [Azure Load Balancer](/azure/load-balancer/load-balancer-overview), which is a network boundary between microservices and external clients, performs network address translation and forwards external requests to internal IP:port endpoints. To make a microservice's endpoint directly accessible to external clients, you must first configure Load Balancer to forward traffic to each port that the service uses in the cluster. However, most microservices, especially stateful microservices, don't live on all nodes of the cluster. The microservices can move between nodes on failover. In such cases, Load Balancer cannot effectively determine the location of the target node of the replicas to which it should forward traffic.
+The default external communication model for microservices is an opt-in model where each service can't be accessed directly from external clients. [Azure Load Balancer](/azure/load-balancer/load-balancer-overview), which is a network boundary between microservices and external clients, performs network address translation and forwards external requests to internal IP:port endpoints. To make a microservice's endpoint directly accessible to external clients, you must first configure Load Balancer to forward traffic to each port that the service uses in the cluster. However, most microservices, especially stateful microservices, don't live on all nodes of the cluster. The microservices can move between nodes on failover. In such cases, Load Balancer can't effectively determine the location of the target node of the replicas to which it should forward traffic.
 
 ### Reaching microservices via the reverse proxy from outside the cluster
 Instead of configuring the port of an individual service in Load Balancer, you can configure just the port of the reverse proxy in Load Balancer. This configuration lets clients outside the cluster reach services inside the cluster by using the reverse proxy without additional configuration.
@@ -49,7 +49,7 @@ Instead of configuring the port of an individual service in Load Balancer, you c
 > [!WARNING]
 > When you configure the reverse proxy's port in Load Balancer, all microservices in the cluster that expose an HTTP endpoint are addressable from outside the cluster. This means that microservices meant to be internal may be discoverable by a determined malicious user. This potentially presents serious vulnerabilities that can be exploited; for example:
 >
-> * A malicious user may launch a denial of service attack by repeatedly calling an internal service that does not have a sufficiently hardened attack surface.
+> * A malicious user may launch a denial of service attack by repeatedly calling an internal service that doesn't have a sufficiently hardened attack surface.
 > * A malicious user may deliver malformed packets to an internal service resulting in unintended behavior.
 > * A service meant to be internal may return private or sensitive information not intended to be exposed to services outside the cluster, thus exposing this sensitive information to a malicious user. 
 >
@@ -71,11 +71,11 @@ http(s)://<Cluster FQDN | internal IP>:Port/<ServiceInstanceName>/<Suffix path>?
 
     The service instance name is case-sensitive. Using a different casing for the service instance name in the URL causes the requests to fail with 404 (Not Found).
 * **Suffix path:** This is the actual URL path, such as *myapi/values/add/3*, for the service that you want to connect to.
-* **PartitionKey:** For a partitioned service, this is the computed partition key of the partition that you want to reach. Note that this is *not* the partition ID GUID. This parameter is not required for services that use the singleton partition scheme.
-* **PartitionKind:** This is the service partition scheme. This can be 'Int64Range' or 'Named'. This parameter is not required for services that use the singleton partition scheme.
+* **PartitionKey:** For a partitioned service, this is the computed partition key of the partition that you want to reach. Note that this isn't* the partition ID GUID. This parameter isn't required for services that use the singleton partition scheme.
+* **PartitionKind:** This is the service partition scheme. This can be 'Int64Range' or 'Named'. This parameter isn't required for services that use the singleton partition scheme.
 * **ListenerName** The endpoints from the service are of the form {"Endpoints":{"Listener1":"Endpoint1","Listener2":"Endpoint2" ...}}. When the service exposes multiple endpoints, this identifies the endpoint that the client request should be forwarded to. This can be omitted if the service has only one listener.
 * **TargetReplicaSelector** This specifies how the target replica or instance should be selected.
-  * When the target service is stateful, the TargetReplicaSelector can be one of the following:  'PrimaryReplica', 'RandomSecondaryReplica', or 'RandomReplica'. When this parameter is not specified, the default is 'PrimaryReplica'.
+  * When the target service is stateful, the TargetReplicaSelector can be one of the following:  'PrimaryReplica', 'RandomSecondaryReplica', or 'RandomReplica'. When this parameter isn't specified, the default is 'PrimaryReplica'.
   * When the target service is stateless, reverse proxy picks a random instance of the service partition to forward the request to.
 * **Timeout:**  This specifies the timeout for the HTTP request created by the reverse proxy to the service on behalf of the client request. The default value is 120 seconds. This is an optional parameter.
 
@@ -112,7 +112,7 @@ The gateway will then forward these requests to the service's URL:
 * `http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/api/users/6`
 
 ## Special handling for port-sharing services
-The Service Fabric reverse proxy attempts to resolve a service address again and retry the request when a service cannot be reached. Generally, when a service cannot be reached, the service instance or replica has moved to a different node as part of its normal lifecycle. When this happens, the reverse proxy might receive a network connection error indicating that an endpoint is no longer open on the originally resolved address.
+The Service Fabric reverse proxy attempts to resolve a service address again and retry the request when a service can't be reached. Generally, when a service can't be reached, the service instance or replica has moved to a different node as part of its normal lifecycle. When this happens, the reverse proxy might receive a network connection error indicating that an endpoint is no longer open on the originally resolved address.
 
 However, replicas or service instances can share a host process and might also share a port when hosted by an http.sys-based web server, including:
 
@@ -122,7 +122,7 @@ However, replicas or service instances can share a host process and might also s
 
 In this situation, it is likely that the web server is available in the host process and responding to requests, but the resolved service instance or replica is no longer available on the host. In this case, the gateway will receive an HTTP 404 response from the web server. Thus, an HTTP 404 response can have two distinct meanings:
 
-- Case #1: The service address is correct, but the resource that the user requested does not exist.
+- Case #1: The service address is correct, but the resource that the user requested doesn't exist.
 - Case #2: The service address is incorrect, and the resource that the user requested might exist on a different node.
 
 The first case is a normal HTTP 404, which is considered a user error. However, in the second case, the user has requested a resource that does exist. The reverse proxy was unable to locate it because the service itself has moved. The reverse proxy needs to resolve the address again and retry the request.
@@ -134,7 +134,7 @@ The reverse proxy thus needs a way to distinguish between these two cases. To ma
 
   `X-ServiceFabric : ResourceNotFound`
 
-This HTTP response header indicates a normal HTTP 404 situation in which the requested resource does not exist, and the reverse proxy will not attempt to resolve the service address again.
+This HTTP response header indicates a normal HTTP 404 situation in which the requested resource doesn't exist, and the reverse proxy will not attempt to resolve the service address again.
 
 ## Special handling for services running in containers
 

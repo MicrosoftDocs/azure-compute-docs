@@ -6,13 +6,13 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: As a cloud administrator, I want to add and remove node types in a Service Fabric managed cluster, so that I can effectively scale resources according to application demands and maintain optimal performance.
 ---
 
 # Tutorial: Add and remove node types from a Service Fabric managed cluster
 
-In this tutorial series we will discuss:
+In this tutorial series we discuss:
 
 > [!div class="checklist"]
 > * [How to deploy a Service Fabric managed cluster](tutorial-managed-cluster-deploy.md)
@@ -33,11 +33,11 @@ This part of the series covers how to:
 
 ## Add a node type to a Service Fabric managed cluster
 
-You can add a node type to a Service Fabric managed cluster through an Azure Resource Manager template, PowerShell, or CLI. In this tutorial, we will be adding a node type using the Azure PowerShell.
+You can add a node type to a Service Fabric managed cluster through an Azure Resource Manager template, PowerShell, or CLI. In this tutorial, we are adding a node type using the Azure PowerShell.
 
-To create a new node type, you'll need to define three properties:
+To create a new node type, you need to define three properties:
 
-* **Node Type Name**: Name that is unique from any existing node types in the cluster.
+* **Node Type Name**: Name that's unique from any existing node types in the cluster.
 * **Instance Count**: Initial number of nodes of the new node type.
 * **VM Size**: VM SKU for the nodes. If not specified, the default value *Standard_D2* is used.
 
@@ -55,10 +55,10 @@ New-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroup -ClusterNam
 
 ## Remove a node type from a Service Fabric managed cluster
 
-To remove a node type from a Service Fabric managed cluster, you must use PowerShell or CLI. In this tutorial, we will remove a node type using Azure PowerShell.
+To remove a node type from a Service Fabric managed cluster, you must use PowerShell or CLI. In this tutorial, we remove a node type using Azure PowerShell.
 
 > [!NOTE]
-> It is not possible to remove a primary node type if it is the only primary node type in the cluster.  
+> It isn't possible to remove a primary node type if it's the only primary node type in the cluster.  
 
 To remove a node type:
 

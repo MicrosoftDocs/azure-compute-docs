@@ -1,19 +1,19 @@
 ---
-title: Scale up an Azure Service Fabric non-primary node type 
-description: Vertically scale your Service Fabric cluster by adding a new non-primary node type and removing the previous one.
+title: Scale up an Azure Service Fabric nonprimary node type 
+description: Vertically scale your Service Fabric cluster by adding a new nonprimary node type and removing the previous one.
 ms.topic: how-to
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-azurepowershell
 services: service-fabric
-ms.date: 08/26/2022
+ms.date: 03/22/2026
 # Customer intent: "As an IT administrator, I want to vertically scale a non-primary node type in my Service Fabric cluster, so that I can upgrade the VM size and operating system without incurring downtime or data loss during the process."
 ---
 
-# Scale up a Service Fabric cluster non-primary node type
+# Scale up a Service Fabric cluster nonprimary node type
 
-This article describes how to scale up a Service Fabric cluster non-primary node type with minimal downtime. In-place SKU upgrades aren't supported on Service Fabric cluster nodes, as such operations potentially involve data and availability loss. The safest, most reliable, and recommended method for scaling up a Service Fabric node type is to:
+This article describes how to scale up a Service Fabric cluster nonprimary node type with minimal downtime. In-place SKU upgrades aren't supported on Service Fabric cluster nodes, as such operations potentially involve data and availability loss. The safest, most reliable, and recommended method for scaling up a Service Fabric node type is to:
 
 1. Add a new node type to your Service Fabric cluster, backed by your upgraded (or modified) virtual machine scale set SKU and configuration. This step also involves setting up a new load balancer, subnet, and public IP for the scale set.
 
@@ -21,7 +21,7 @@ This article describes how to scale up a Service Fabric cluster non-primary node
 
 1. Verify the cluster is healthy, then remove the original scale set (and related resources) and node state for the deleted nodes.
 
-The following will walk you through the process for updating the VM size and operating system of non-primary node type VMs of a sample cluster with [Silver durability](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster), backed by a single scale set with five nodes used as a secondary node type. The primary node type with Service Fabric system services will remain untouched. We'll be upgrading the non-primary node type:
+The following will walk you through the process for updating the VM size and operating system of nonprimary node type VMs of a sample cluster with [Silver durability](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster), backed by a single scale set with five nodes used as a secondary node type. The primary node type with Service Fabric system services will remain untouched. We'll be upgrading the nonprimary node type:
 
 - From VM size *Standard_D2_V2* to *Standard D4_V2*, and
 - From VM operating system *Windows Server 2019 Datacenter* to *Windows Server 2022 Datacenter*.
@@ -29,7 +29,7 @@ The following will walk you through the process for updating the VM size and ope
 > [!WARNING]
 > Before attempting this procedure on a production cluster, we recommend that you study the sample templates and verify the process against a test cluster. 
 >
-> Do not attempt a non-primary node type scale up procedure if the cluster status is unhealthy, as this will only destabilize the cluster further.
+> Do not attempt a nonprimary node type scale up procedure if the cluster status is unhealthy, as this will only destabilize the cluster further.
 We'll make use of the step-by-step Azure deployment templates used in the [Scale up a Service Fabric cluster primary node type](service-fabric-scale-up-primary-node-type.md) guide. However, we'll modify them so they aren't specific to primary node types. The templates are [available on GitHub](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade).
 
 ## Set up the test cluster
@@ -147,15 +147,15 @@ Get-ServiceFabricClusterHealth
 
 With that, we're ready to begin the upgrade procedure.
 
-## Deploy a new non-primary node type with an upgraded scale set
+## Deploy a new nonprimary node type with an upgraded scale set
 
-In order to upgrade (vertically scale) a node type, we'll first need to deploy a new node type backed by a new scale set and supporting resources. The new scale set will be marked as non-primary (`isPrimary: false`), just like the original scale set. If you want to scale up a primary node type, see [Scale up a Service Fabric cluster primary node type](service-fabric-scale-up-primary-node-type.md). The resources created in the following section will ultimately become the new node type in your cluster, and the original node type resources will be deleted.
+In order to upgrade (vertically scale) a node type, we'll first need to deploy a new node type backed by a new scale set and supporting resources. The new scale set will be marked as nonprimary (`isPrimary: false`), just like the original scale set. If you want to scale up a primary node type, see [Scale up a Service Fabric cluster primary node type](service-fabric-scale-up-primary-node-type.md). The resources created in the following section will ultimately become the new node type in your cluster, and the original node type resources will be deleted.
 
 ### Update the cluster template with the upgraded scale set
 
 Here are the section-by-section modifications of the original cluster deployment template for adding a new node type and supporting resources.
 
-Most of the required changes for this step have already been made for you in the [*Step1-AddPrimaryNodeType.json*](https://github.com/microsoft/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Step1-AddPrimaryNodeType.json) template file. However, an additional change must be made so the template file works for non-primary node types. The following sections will explain these changes in detail, and call outs will be made when you must make a change.
+Most of the required changes for this step have already been made for you in the [*Step1-AddPrimaryNodeType.json*](https://github.com/microsoft/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Step1-AddPrimaryNodeType.json) template file. However, an additional change must be made so the template file works for nonprimary node types. The following sections will explain these changes in detail, and call outs will be made when you must make a change.
 
 > [!Note]
 > Ensure that you use names that are unique from the original node type, scale set, load balancer, public IP, and subnet of the original non-primary node type, as these resources will be deleted at a later step in the process.
@@ -231,11 +231,11 @@ OS SKU
 
 Also, ensure you include any additional extensions that are required for your workload.
 
-#### Add a new non-primary node type to the cluster
+#### Add a new nonprimary node type to the cluster
 
 Now that the new node type (vmNodeType1Name) has its own name, subnet, IP, load balancer, and scale set, it can reuse all other variables from the original node type (such as `nt0applicationEndPort`, `nt0applicationStartPort`, and `nt0fabricTcpGatewayPort`).
 
-In the existing template file, the `isPrimary` parameter is set to `true` for the [Scale up a Service Fabric cluster primary node type](service-fabric-scale-up-primary-node-type.md) guide. Change `isPrimary` to `false` for your non-primary node type:
+In the existing template file, the `isPrimary` parameter is set to `true` for the [Scale up a Service Fabric cluster primary node type](service-fabric-scale-up-primary-node-type.md) guide. Change `isPrimary` to `false` for your nonprimary node type:
 
 ```json
 "name": "[variables('vmNodeType1Name')]",
@@ -408,9 +408,9 @@ foreach($node in $nodes)
 
 Service Fabric Explorer should now reflect only the five nodes of the new node type (nt1vm), all with Health State values of *OK*. We'll remediate that next by updating the template to reflect the latest changes and redeploying.
 
-### Update the deployment template to reflect the newly scaled-up non-primary node type
+### Update the deployment template to reflect the newly scaled-up nonprimary node type
 
-Most of the required changes for this step have already been made for you in the [*Step3-CleanupOriginalPrimaryNodeType.json*](https://github.com/microsoft/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Step3-CleanupOriginalPrimaryNodeType.json) template file. However, an additional change must be made so the template file works for non-primary node types. The following sections will explain these changes in detail, and call outs will be made when you must make a change.
+Most of the required changes for this step have already been made for you in the [*Step3-CleanupOriginalPrimaryNodeType.json*](https://github.com/microsoft/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Step3-CleanupOriginalPrimaryNodeType.json) template file. However, an additional change must be made so the template file works for nonprimary node types. The following sections will explain these changes in detail, and call outs will be made when you must make a change.
 
 #### Update the cluster management endpoint
 
@@ -424,7 +424,7 @@ Update the cluster `managementEndpoint` on the deployment template to reference 
 
 Remove the original node type reference from the Service Fabric resource in the deployment template.
 
-In the existing template file, the `isPrimary` parameter is set to `true` for the [Scale up a Service Fabric cluster primary node type](service-fabric-scale-up-primary-node-type.md) guide. Change `isPrimary` to `false` for your non-primary node type:
+In the existing template file, the `isPrimary` parameter is set to `true` for the [Scale up a Service Fabric cluster primary node type](service-fabric-scale-up-primary-node-type.md) guide. Change `isPrimary` to `false` for your nonprimary node type:
 
 ```json
 "name": "[variables('vmNodeType0Name')]",
@@ -523,7 +523,7 @@ The upgrade will change settings to the *InfrastructureService*; therefore, a no
 
 Once the deployment has completed, verify in Azure portal that the Service Fabric resource Status is *Ready*. Verify you can reach the new Service Fabric Explorer endpoint, the **Cluster Health State** is *OK*, and any deployed applications function properly.
 
-With that, you've vertically scaled a cluster non-primary node type!
+With that, you've vertically scaled a cluster nonprimary node type!
 
 ## Next steps
 

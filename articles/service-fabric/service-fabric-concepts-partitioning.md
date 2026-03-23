@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 ms.update-cycle: 1095-days
 # Customer intent: As a cloud developer, I want to implement partitioning for my stateful services in a service mesh environment, so that I can optimize data storage and compute resources to enhance application scalability and performance.
 ---
@@ -18,18 +18,18 @@ This article provides an introduction to the basic concepts of partitioning Azur
 > A [complete sample](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions) of the code in this article is available on GitHub.
 
 ## Partitioning
-Partitioning is not unique to Service Fabric. In fact, it is a core pattern of building scalable services. In a broader sense, we can think about partitioning as a concept of dividing state (data) and compute into smaller accessible units to improve scalability and performance. A well-known form of partitioning is [data partitioning][wikipartition], also known as sharding.
+Partitioning is not unique to Service Fabric. In fact, it's a core pattern of building scalable services. In a broader sense, we can think about partitioning as a concept of dividing state (data) and compute into smaller accessible units to improve scalability and performance. A well-known form of partitioning is [data partitioning][wikipartition], also known as sharding.
 
 ### Partition Service Fabric stateless services
 For stateless services, you can think about a partition being a logical unit that contains one or more instances of a service. Figure 1 shows a stateless service with five instances distributed across a cluster using one partition.
 
 ![Stateless service](./media/service-fabric-concepts-partitioning/statelessinstances.png)
 
-There are really two types of stateless service solutions. The first one is a service that persists its state externally, for example in a database in Azure SQL Database (like a website that stores the session information and data). The second one is computation-only services (like a calculator or image thumbnailing) that do not manage any persistent state.
+There are really two types of stateless service solutions. The first one is a service that persists its state externally, for example in a database in Azure SQL Database (like a website that stores the session information and data). The second one is computation-only services (like a calculator or image thumb nailing) that don't manage any persistent state.
 
-In either case, partitioning a stateless service is a very rare scenario--scalability and availability are normally achieved by adding more instances. The only time you want to consider multiple partitions for stateless service instances is when you need to meet special routing requests.
+In either case, partitioning a stateless service is a rare scenario--scalability and availability are normally achieved by adding more instances. The only time you want to consider multiple partitions for stateless service instances is when you need to meet special routing requests.
 
-As an example, consider a case where users with IDs in a certain range should only be served by a particular service instance. Another example of when you could partition a stateless service is when you have a truly partitioned backend (e.g. a sharded database in SQL Database) and you want to control which service instance should write to the database shard--or perform other preparation work within the stateless service that requires the same partitioning information as is used in the backend. Those types of scenarios can also be solved in different ways and do not necessarily require service partitioning.
+As an example, consider a case where users with IDs in a certain range should only be served by a particular service instance. Another example of when you could partition a stateless service is when you have a truly partitioned backend (for example, a sharded database in SQL Database) and you want to control which service instance should write to the database shard--or perform other preparation work within the stateless service that requires the same partitioning information as is used in the backend. Those types of scenarios can also be solved in different ways and don't necessarily require service partitioning.
 
 The remainder of this walkthrough focuses on stateful services.
 
@@ -52,26 +52,26 @@ Before implementing a service, you should always consider the partitioning strat
 
 A good approach is to think about the structure of the state that needs to be partitioned, as the first step.
 
-Let's take a simple example. If you were to build a service for a county-wide poll, you could create a partition for each city in the county. Then, you could store the votes for every person in the city in the partition that corresponds to that city. Figure 3 illustrates a set of people and the city in which they reside.
+Let's explore an example. If you were to build a service for a county-wide poll, you could create a partition for each city in the county. Then, you could store the votes for every person in the city in the partition that corresponds to that city. Figure 3 illustrates a set of people and the city in which they reside.
 
 ![Simple partition](./media/service-fabric-concepts-partitioning/cities.png)
 
-As the population of cities varies widely, you may end up with some partitions that contain a lot of data (e.g. Seattle) and other partitions with very little state (e.g. Kirkland). So what is the impact of having partitions with uneven amounts of state?
+As the population of cities varies widely, you may end up with some partitions that contain a lot of data (for example, Seattle) and other partitions with little state (for example, Kirkland). So what is the impact of having partitions with uneven amounts of state?
 
 If you think about the example again, you can easily see that the partition that holds the votes for Seattle will get more traffic than the Kirkland one. By default, Service Fabric makes sure that there is about the same number of primary and secondary replicas on each node. So you may end up with nodes that hold replicas that serve more traffic and others that serve less traffic. You would preferably want to avoid hot and cold spots like this in a cluster.
 
 In order to avoid this, you should do two things, from a partitioning point of view:
 
-* Try to partition the state so that it is evenly distributed across all partitions.
+* Try to partition the state so that it's evenly distributed across all partitions.
 * Report load from each of the replicas for the service. (For information on how, check out this article on [Metrics and Load](service-fabric-cluster-resource-manager-metrics.md)). Service Fabric provides the capability to report load consumed by services, such as amount of memory or number of records. Based on the metrics reported, Service Fabric detects that some partitions are serving higher loads than others and rebalances the cluster by moving replicas to more suitable nodes, so that overall no node is overloaded.
 
-Sometimes, you cannot know how much data will be in a given partition. So a general recommendation is to do both--first, by adopting a partitioning strategy that spreads the data evenly across the partitions and second, by reporting load.  The first method prevents situations described in the voting example, while the second helps smooth out temporary differences in access or load over time.
+Sometimes, you can't know how much data will be in a given partition. So a general recommendation is to do both--first, by adopting a partitioning strategy that spreads the data evenly across the partitions and second, by reporting load.  The first method prevents situations described in the voting example, while the second helps smooth out temporary differences in access or load over time.
 
 Another aspect of partition planning is to choose the correct number of partitions to begin with.
-From a Service Fabric perspective, there is nothing that prevents you from starting out with a higher number of partitions than anticipated for your scenario.
+From a Service Fabric perspective, there's nothing that prevents you from starting out with a higher number of partitions than anticipated for your scenario.
 In fact, assuming the maximum number of partitions is a valid approach.
 
-In rare cases, you may end up needing more partitions than you have initially chosen. As you cannot change the partition count after the fact, you would need to apply some advanced partition approaches, such as creating a new service instance of the same service type. You would also need to implement some client-side logic that routes the requests to the correct service instance, based on client-side knowledge that your client code must maintain.
+In rare cases, you may end up needing more partitions than you have initially chosen. As you can't change the partition count after the fact, you would need to apply some advanced partition approaches, such as creating a new service instance of the same service type. You would also need to implement some client-side logic that routes the requests to the correct service instance, based on client-side knowledge that your client code must maintain.
 
 Another consideration for partitioning planning is the available computer resources. As the state needs to be accessed and stored, you are bound to follow:
 
@@ -90,9 +90,9 @@ Service Fabric offers a choice of three partition schemes:
 
 * Ranged partitioning (otherwise known as UniformInt64Partition).
 * Named partitioning. Applications using this model usually have data that can be bucketed, within a bounded set. Some common examples of data fields used as named partition keys would be regions, postal codes, customer groups, or other business boundaries.
-* Singleton partitioning. Singleton partitions are typically used when the service does not require any additional routing. For example, stateless services use this partitioning scheme by default.
+* Singleton partitioning. Singleton partitions are typically used when the service doesn't require any additional routing. For example, stateless services use this partitioning scheme by default.
 
-Named and Singleton partitioning schemes are special forms of ranged partitions. By default, the Visual Studio templates for Service Fabric use ranged partitioning, as it is the most common and useful one. The remainder of this article focuses on the ranged partitioning scheme.
+Named and Singleton partitioning schemes are special forms of ranged partitions. By default, the Visual Studio templates for Service Fabric use ranged partitioning, as it's the most common and useful one. The remainder of this article focuses on the ranged partitioning scheme.
 
 ### Ranged partitioning scheme
 This is used to specify an integer range (identified by a low key and high key) and a number of partitions (n). It creates n partitions, each responsible for a non-overlapping subrange of the overall partition key range. For example, a ranged partitioning scheme with a low key of 0, a high key of 99, and a count of 4 would create four partitions, as shown below.
@@ -104,7 +104,7 @@ A common approach is to create a hash based on a unique key within the data set.
 ### Select a hash algorithm
 An important part of hashing is selecting your hash algorithm. A consideration is whether the goal is to group similar keys near each other (locality sensitive hashing)--or if activity should be distributed broadly across all partitions (distribution hashing), which is more common.
 
-The characteristics of a good distribution hashing algorithm are that it is easy to compute, it has few collisions, and it distributes the keys evenly. A good example of an efficient hash algorithm is the [FNV-1](https://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function) hash algorithm.
+The characteristics of a good distribution hashing algorithm are that it's easy to compute, it has few collisions, and it distributes the keys evenly. A good example of an efficient hash algorithm is the [FNV-1](https://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function) hash algorithm.
 
 A good resource for general hash code algorithm choices is the [Wikipedia page on hash functions](https://en.wikipedia.org/wiki/Hash_function).
 

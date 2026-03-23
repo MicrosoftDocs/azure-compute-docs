@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
 # Customer intent: As a cloud architect, I want to configure networking modes for container services in Azure Service Fabric so that I can optimize service deployment and avoid errors when multiple services listen on the same ports.
 ---
 
@@ -19,7 +19,7 @@ If you have one container service with a static endpoint in your service manifes
 When a container service restarts or moves to another node in the cluster, the IP address changes. For this reason, we don't recommend using the dynamically assigned IP address to discover container services. Only the Service Fabric Naming Service or the DNS Service should be used for service discovery. 
 
 >[!WARNING]
->Azure allows a total of 65,356 IPs per virtual network. The sum of the number of nodes and the number of container service instances (that are using Open mode) can't exceed 65,356 IPs within a virtual network. For high-density scenarios, we recommend nat networking mode. In addition, other dependencies such as the load balancer will have other [limitations](/azure/azure-resource-manager/management/azure-subscription-service-limits) to consider. Currently up to 50 IPs per node have been tested and proven stable. 
+>Azure allows a total of 65,356 IPs per virtual network. The sum of the number of nodes and the number of container service instances (that are using Open mode) can't exceed 65,356 IPs within a virtual network. For high-density scenarios, we recommend nat networking mode. In addition, other dependencies such as the load balancer has other [limitations](/azure/azure-resource-manager/management/azure-subscription-service-limits) to consider. Currently up to 50 IPs per node have been tested and proven stable. 
 >
 
 ## Set up Open networking mode
@@ -198,7 +198,7 @@ When a container service restarts or moves to another node in the cluster, the I
    |Service | DNS (UDP/53) |
    |Action | Allow  |
 
-4. Specify the networking mode in the application manifest for each service: `<NetworkConfig NetworkType="Open">`. **Open** networking mode results in the service getting a dedicated IP address. If a mode isn't specified, the service defaults to **nat** mode. In the following manifest example, the `NodeContainerServicePackage1` and `NodeContainerServicePackage2` services can each listen on the same port (both services are listening on `Endpoint1`). When Open networking mode is specified, `PortBinding` configurations cannot be specified.
+4. Specify the networking mode in the application manifest for each service: `<NetworkConfig NetworkType="Open">`. **Open** networking mode results in the service getting a dedicated IP address. If a mode isn't specified, the service defaults to **nat** mode. In the following manifest example, the `NodeContainerServicePackage1` and `NodeContainerServicePackage2` services can each listen on the same port (both services are listening on `Endpoint1`). When Open networking mode is specified, `PortBinding` configurations can't be specified.
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>
@@ -230,7 +230,7 @@ When a container service restarts or moves to another node in the cluster, the I
     You can mix and match different networking modes across services within an application for a Windows cluster. Some services can use Open mode while others use nat mode. When a service is configured to use nat mode, the port that the service is listening on must be unique.
 
     >[!NOTE]
-    >On Linux clusters, mixing networking modes for different services is not supported. 
+    >On Linux clusters, mixing networking modes for different services isn't supported. 
     >
 
 5. When the **Open** mode is selected, the **Endpoint** definition in the service manifest should explicitly point to the code package corresponding to the endpoint, even if the service package has only one code package in it. 
@@ -243,7 +243,7 @@ When a container service restarts or moves to another node in the cluster, the I
    </Resources>
    ```
    
-6. For Windows, a VM reboot will cause the open network to be recreated. This is to mitigate an underlying issue in the networking stack. The default behavior is to recreate the network. If this behavior needs to be turned off, the following configuration can be used followed by a config upgrade.
+6. For Windows, a VM reboot causes the open network to be recreated. This is to mitigate an underlying issue in the networking stack. The default behavior is to recreate the network. If this behavior needs to be turned off, the following configuration can be used followed by a config upgrade.
 
 ```json
 "fabricSettings": [

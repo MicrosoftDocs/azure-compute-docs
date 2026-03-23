@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
 # Customer intent: As a software developer, I want to test service-to-service communication scenarios in a distributed application, so that I can ensure robustness and handle service instance movements or failures gracefully within my microservices architecture.
 ---
 
@@ -24,16 +24,16 @@ There are numerous considerations to make when these service boundaries are wire
 Whether you use one of the built-in service communication components provided by Service Fabric or you build your own, testing the interactions between your services is critical to ensuring resiliency in your application.
 
 ## Prepare for services to move
-Service instances may move around over time. This is especially true when they are configured with load metrics for custom-tailored optimal resource balancing. Service Fabric moves your service instances to maximize their availability even during upgrades, failovers, scale-out, and other situations that occur over the lifetime of a distributed system.
+Service instances may move around over time. This is especially true when they're configured with load metrics for custom-tailored optimal resource balancing. Service Fabric moves your service instances to maximize their availability even during upgrades, failovers, scale-out, and other situations that occur over the lifetime of a distributed system.
 
 As services move around in the cluster, your clients and other services should be prepared to handle two scenarios when they talk to a service:
 
 * The service instance or partition replica has moved since the last time you talked to it. This is a normal part of a service lifecycle, and it should be expected to happen during the lifetime of your application.
-* The service instance or partition replica is in the process of moving. Although failover of a service from one node to another occurs very quickly in Service Fabric, there may be a delay in availability if the communication component of your service is slow to start.
+* The service instance or partition replica is in the process of moving. Although failover of a service from one node to another occurs quickly in Service Fabric, there may be a delay in availability if the communication component of your service is slow to start.
 
 Handling these scenarios gracefully is important for a smooth-running system. To do so, keep in mind that:
 
-* Every service that can be connected to has an *address* that it listens on (for example, HTTP or WebSockets). When a service instance or partition moves, its address endpoint changes. (It moves to a different node with a different IP address.) If you're using the built-in communication components, they will handle re-resolving service addresses for you.
+* Every service that can be connected to has an *address* that it listens on (for example, HTTP or WebSockets). When a service instance or partition moves, its address endpoint changes. (It moves to a different node with a different IP address.) If you're using the built-in communication components, they handle re-resolving service addresses for you.
 * There may be a temporary increase in service latency as the service instance starts up its listener again. This depends on how quickly the service opens the listener after the service instance is moved.
 * Any existing connections need to be closed and reopened after the service opens on a new node. A graceful node shutdown or restart allows time for existing connections to be shut down gracefully.
 
