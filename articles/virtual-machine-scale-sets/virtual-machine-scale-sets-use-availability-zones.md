@@ -18,7 +18,7 @@ Azure availability zones are fault-isolated locations within an Azure region tha
 
 To protect your Virtual Machine Scale Sets from datacenter-level failures, you can create a scale set across availability zones. To use availability zones, your scale set must be created in a [supported Azure region](/azure/reliability/availability-zones-region-support).
 
-For more information about availability zone support and other types of reliability and resiliency, see [Reliability in Azure Virtual Machine Scale Sets](/azure/reliability/reliability-virtual-machine-scale-sets?toc=/azure/virtual-machine-scale-sets/toc.json&bc=/azure/virtual-machine-scale-sets/breadcrumb/toc.json).
+For more information about how scale sets can be resilient to availability zone failures and other types of resiliency, see [Reliability in Azure Virtual Machine Scale Sets](/azure/reliability/reliability-virtual-machine-scale-sets?toc=/azure/virtual-machine-scale-sets/toc.json&bc=/azure/virtual-machine-scale-sets/breadcrumb/toc.json).
 
 ## Design considerations for availability zones
 
