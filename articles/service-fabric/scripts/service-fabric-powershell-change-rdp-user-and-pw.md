@@ -31,7 +31,7 @@ This Azure PowerShell script uses the following commands: Each command in the ta
 |---|---|
 | [Get-AzVmss](/powershell/module/az.compute/get-azvmss) | Gets the properties of a cluster node type (a virtual machine scale set).   |
 | [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension)| Adds an extension to the virtual machine scale set.|
-| [Update-AzVmss](/powershell/module/az.compute/update-azvmss)|Updates the state of a virtual machine scale set to the state of a local VMSS object.|
+| [Update-AzVmss](/powershell/module/az.compute/update-azvmss)|Updates the state of a virtual machine scale set to the state of a local virtual machine scale set object.|
 
 ## Duration
 
