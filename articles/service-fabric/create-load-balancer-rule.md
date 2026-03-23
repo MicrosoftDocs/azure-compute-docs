@@ -7,7 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-azurecli
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
 # Customer intent: As a cloud administrator, I want to configure Azure Load Balancer rules for my Service Fabric cluster, so that I can ensure traffic is properly routed to my application based on updated port settings.
 ---
 

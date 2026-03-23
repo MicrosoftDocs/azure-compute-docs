@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
 ms.update-cycle: 1095-days
 # Customer intent: "As a cloud administrator, I want to understand subclustering and its impact on load balancing, so that I can optimize resource allocation and prevent artificial imbalances in my cluster."
 ---
@@ -14,11 +14,11 @@ ms.update-cycle: 1095-days
 
 ## What is subclustering
 
-Subclustering happens when services with different placement constraints have a common metric and they both report load for it. If the load reported by the services differs significantly, the total load on the nodes will have a large standard deviation and it would look like the cluster is imbalanced, even when it has the best possible balance.
+Subclustering happens when services with different placement constraints have a common metric and they both report load for it. If the load reported by the services differs significantly, the total load on the nodes have a large standard deviation and it would look like the cluster is imbalanced, even when it has the best possible balance.
 
 ## How subclustering affects load balancing
 
-If the load reported by the services on different nodes differs significantly, it may look like there is a large imbalance where there is none. Also, if the false imbalance caused by subclustering is larger than the actual imbalance, it has the potential to confuse the Resource Manager balancing algorithm and to produce suboptimal balance in the cluster.
+If the load reported by the services on different nodes differs significantly, it may look like there's a large imbalance where there's none. Also, if the false imbalance caused by subclustering is larger than the actual imbalance, it has the potential to confuse the Resource Manager balancing algorithm and to produce suboptimal balance in the cluster.
 
 For example, let's say we have four services and they all report a load for metric Metric1:
 
@@ -35,13 +35,13 @@ And we have the following placement:
 ![Subclustered placement example][Image1]
 </center>
 
-The cluster may look unbalanced, we have a large load on nodes 3 and 4, but this placement creates the best possible balance in this situation.
+The cluster may look unbalanced. We have a large load on nodes 3 and 4, but this placement creates the best possible balance in this situation.
 
 Resource Manager can recognize subclustering situations and in almost all cases it can produce the optimal balance for the given situation.
 
-For some exceptional situations when Resource Manager is not able to optimally balance a subclustered metric it will still detect subclustering and it will generate a health report to advise you to fix the problem.
+For some exceptional situations when Resource Manager isn't able to optimally balance a subclustered metric it will still detect subclustering and it generates a health report to advise you to fix the problem.
 
-## Types of subclustering and how they are handled
+## Types of subclustering and how they're handled
 
 Subclustering situations can be classified into three different categories. The category of a specific subclustering situation determines how it will be handled by Resource Manager.
 
@@ -68,13 +68,13 @@ This configuration creates a subset-superset relation between node groups for di
 ![Subset superset subclusters][Image2]
 </center>
 
-In this situation, there is a chance that a suboptimal balance gets made.
+In this situation, there's a chance that a suboptimal balance gets made.
 
-Resource Manager will recognize this situation and produce a health report advising you to split Service A into two services – Service A1 that can be placed on Frontend nodes and Service A2 that can be placed on Backend nodes. This will bring us back to first category situation that can be balanced optimally.
+Resource Manager recognizes this situation and produce a health report advising you to split Service A into two services – Service A1 that can be placed on Frontend nodes and Service A2 that can be placed on Backend nodes. This brings us back to first category situation that can be balanced optimally.
 
 ### Third category – subclustering with partial overlap between node sets
 
-This situation happens when there is a partial overlap between sets of nodes onto which some services can be placed.
+This situation happens when there's a partial overlap between sets of nodes onto which some services can be placed.
 
 For example, if we have a node property called NodeColor and we have three nodes:
 
@@ -89,17 +89,17 @@ And we have two services:
 
 Because of this, Service A can be placed on nodes 1 and 2 and Service B can be placed on nodes 2 and 3.
 
-In this situation, there is a chance that a suboptimal balance gets made.
+In this situation, there's a chance that a suboptimal balance gets made.
 
-Resource Manager will recognize this situation and produce a health report advising you to split some of the services.
+Resource Manager recognizes this situation and produce a health report advising you to split some of the services.
 
-For this situation, the Resource Manager is not able to give a proposal how to split the services, since multiple splits can be done and there is no way to estimate which way would be the optimal one to split the services.
+For this situation, the Resource Manager isn't able to give a proposal how to split the services, since multiple splits can be done and there's no way to estimate which way would be the optimal one to split the services.
 
 ## Configuring subclustering
 
 The behavior of Resource Manager about subclustering can be modified by modifying the following configuration parameters:
-* SubclusteringEnabled - parameter determines whether Resource Manager will take subclustering into account when doing load balancing. If this parameter is turned off, Resource Manager will ignore subclustering and try to achieve optimal balance on a global level. The default value of this parameter is false.
-* SubclusteringReportingPolicy - determines how Resource Manager will emit health reports for hierarchical and partial-overlap subclustering. A value of zero means that health reports about subclustering are turned off, "1" means that warning health reports will be produced for suboptimal subclustering situations and a value of "2" will produce "OK" health reports. The default value for this parameter is "1".
+* SubclusteringEnabled - parameter determines whether Resource Manager takes subclustering into account when doing load balancing. If this parameter is turned off, Resource Manager ignores subclustering and tries to achieve optimal balance on a global level. The default value of this parameter is false.
+* SubclusteringReportingPolicy - determines how Resource Manager emits health reports for hierarchical and partial-overlap subclustering. A value of zero means that health reports about subclustering are turned off, "1" means that warning health reports will be produced for suboptimal subclustering situations and a value of "2" will produce "OK" health reports. The default value for this parameter is "1".
 
 ClusterManifest.xml:
 
@@ -110,7 +110,7 @@ ClusterManifest.xml:
         </Section>
 ```
 
-via ClusterConfig.json for Standalone deployments or Template.json for Azure hosted clusters:
+Via ClusterConfig.json for Standalone deployments or Template.json for Azure hosted clusters:
 
 ```json
 "fabricSettings": [

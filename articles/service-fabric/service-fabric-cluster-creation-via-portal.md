@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 09/29/2025
+ms.date: 03/22/2026
 # Customer intent: "As a cloud architect, I want to set up a secure Service Fabric cluster in Azure using the portal, so that I can manage and deploy applications with proper authentication and encryption for production workloads."
 ---
 

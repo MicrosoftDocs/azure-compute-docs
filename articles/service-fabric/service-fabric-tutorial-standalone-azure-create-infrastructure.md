@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: As an IT administrator, I want to set up the necessary Azure VM infrastructure for a Service Fabric cluster, so that I can efficiently host and manage applications in a scalable environment.
 ---
 
@@ -56,7 +56,7 @@ To complete this tutorial, you need an Azure subscription.  If you don't already
    * Port `8080`, for web browser requests.
 
    > [!TIP]
-   > To connect your virtual machines together in Service Fabric, the VMs that are hosting your infrastructure need to have the same credentials.  There are two common ways to get consistent credentials: join them all to the same domain, or set the same administrator password on each VM. Fortunately, Azure allows all virtual machines on the same **Virtual network** to easily connect, so we will be sure to have all our instances on the same network.
+   > To connect your virtual machines together in Service Fabric, the VMs that are hosting your infrastructure need to have the same credentials.  There are two common ways to get consistent credentials: join them all to the same domain, or set the same administrator password on each VM. Fortunately, Azure allows all virtual machines on the same **Virtual network** to easily connect, so we are sure to have all our instances on the same network.
 
 9. Add another rule. Set the source to be **Service Tag** and set the source service tag to **VirtualNetwork**. Service Fabric requires the following ports to be open for communication within the cluster: 135,137-139,445,20001-20031,20606-20861.
 
@@ -66,7 +66,7 @@ To complete this tutorial, you need an Azure subscription.  If you don't already
 
 ## Creating more instances for your Service Fabric cluster
 
-Launch two more **Virtual Machines**, being sure to maintain the same settings outlined in the previous section. Particularly, maintain the same administrator username and password. The **Virtual Network** and **NIC network security group** should not be recreated; select the ones you already created from the dropdown menu. It may take a few minutes for each of your instances to be deployed.
+Launch two more **Virtual Machines**, being sure to maintain the same settings outlined in the previous section. Particularly, maintain the same administrator username and password. The **Virtual Network** and **NIC network security group** shouldn't be recreated; select the ones you already created from the dropdown menu. It may take a few minutes for each of your instances to be deployed.
 
 ## Connect to your instances
 
@@ -74,11 +74,11 @@ Launch two more **Virtual Machines**, being sure to maintain the same settings o
 
 2. In the **Overview** tab, take note of the *private* IP address. Then, click **Connect**.
 
-3. In the **RDP** tab, note that we are using the public IP address and port 3389, which we specifically opened earlier. Download the RDP file.
+3. In the **RDP** tab, note that we're using the public IP address and port 3389, which we specifically opened earlier. Download the RDP file.
  
 4. Open the RDP file, and when prompted enter the username and password you provided in the VM setup.
 
-5. Once you are connected to an instance, you need to validate that remote registry was running, enable SMB, and open the requisite ports for SMB and remote registry.
+5. Once you're connected to an instance, you need to validate that remote registry was running, enable SMB, and open the requisite ports for SMB and remote registry.
 
    To enable SMB, this is the PowerShell command:
 
@@ -86,7 +86,7 @@ Launch two more **Virtual Machines**, being sure to maintain the same settings o
    netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=Yes
    ```
 
-6. To open the ports in the firewall here is the PowerShell command:
+6. To open the ports in the firewall here's the PowerShell command:
 
    ```powershell
    New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139, 445

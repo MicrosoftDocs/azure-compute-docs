@@ -7,7 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-extended-java
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: "As a Java developer using Eclipse, I want to set up remote debugging for my Service Fabric application, so that I can efficiently troubleshoot and improve the reliability and performance of my services."
 ---
 
@@ -24,7 +24,7 @@ ms.date: 07/14/2022
     ```sh
     java -Xdebug -Xrunjdwp:transport=dt_socket,address=8001,server=y,suspend=n -Djava.library.path=$LD_LIBRARY_PATH -jar myapp.jar
     ```
-3. Update the Application Manifest by setting the instance count or the replica count for the service that is being debugged to 1. This setting avoids conflicts for the port that is used for debugging. For example, for stateless services, set `InstanceCount="1"` and for stateful services set the target and min replica set sizes to 1 as follows: `TargetReplicaSetSize="1" MinReplicaSetSize="1"`.
+3. Update the Application Manifest by setting the instance count or the replica count for the service that's being debugged to 1. This setting avoids conflicts for the port that is used for debugging. For example, for stateless services, set `InstanceCount="1"` and for stateful services set the target and min replica set sizes to 1 as follows: `TargetReplicaSetSize="1" MinReplicaSetSize="1"`.
 
 4. Deploy the application.
 
@@ -36,7 +36,7 @@ ms.date: 07/14/2022
    ```
 6.  Set breakpoints at desired points and debug the application.
 
-If the application is crashing, you may also want to enable coredumps. Execute `ulimit -c` in a shell and if it returns 0, then coredumps are not enabled. To enable unlimited coredumps, execute the following command: `ulimit -c unlimited`. You can also verify the status using the command `ulimit -a`.  If you wanted to update the coredump generation path, execute `echo '/tmp/core_%e.%p' | sudo tee /proc/sys/kernel/core_pattern`. 
+If the application is crashing, you may also want to enable coredumps. Execute `ulimit -c` in a shell and if it returns 0, then coredumps aren't enabled. To enable unlimited coredumps, execute the following command: `ulimit -c unlimited`. You can also verify the status using the command `ulimit -a`.  If you wanted to update the coredump generation path, execute `echo '/tmp/core_%e.%p' | sudo tee /proc/sys/kernel/core_pattern`. 
 
 ### Next steps
 

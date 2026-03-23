@@ -2,21 +2,20 @@
 title: Upgrade a Service Fabric application in PowerShell
 description: PowerShell Script Sample - Upgrade and monitor a Service Fabric application using PowerShell.
 services: service-fabric
-author: athinanthny
-manager: chackdan
+author: tomvcassidy
 ms.service: azure-service-fabric
 ms.topic: sample
-ms.date: 01/18/2018
-ms.author: atsenthi
+ms.date: 03/22/2026
+ms.author: tomcassidy
 ms.custom: mvc, devx-track-azurepowershell
 # Customer intent: "As a DevOps engineer, I want to upgrade a Service Fabric application using PowerShell, so that I can streamline the deployment process and ensure my application is running the latest version efficiently."
 ---
 
 # Upgrade a Service Fabric application
 
-This sample Service Fabric SDK PowerShell script upgrades a running Service Fabric application instance to version 1.3.0. The script copies the new application package to the cluster image store, registers the application type, and removes the unnecessary application package.  The script starts a monitored upgrade and continuously checks the upgrade status until the upgrade completes or rolls back. Customize the parameters as needed. 
+This sample Service Fabric SDK PowerShell script upgrades a running Service Fabric application instance to version 1.3.0. The script copies the new application package to the cluster image store, registers the application type, and removes the unnecessary application package. The script starts a monitored upgrade and continuously checks the upgrade status until the upgrade completes or rolls back. Customize the parameters as needed.
 
-If needed, install the Service Fabric PowerShell module with the [Service Fabric SDK](../service-fabric-get-started.md). 
+If needed, install the Service Fabric PowerShell module with the [Service Fabric SDK](../service-fabric-get-started.md).
 
 ## Sample script
 

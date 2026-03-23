@@ -7,7 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-azurepowershell
 services: service-fabric
-ms.date: 11/21/2024
+ms.date: 03/22/2026
 # Customer intent: "As a cloud administrator, I want to configure network settings for my Service Fabric managed cluster, so that I can manage NSG rules, enable RDP access, and optimize load balancer configurations according to my deployment requirements."
 ---
 

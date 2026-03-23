@@ -1,18 +1,18 @@
 ---
 title: Migrate from Java SDK to Maven
-description: Update the older Java applications which used to use the Service Fabric Java SDK, to fetch Service Fabric Java dependencies from Maven. After completing this setup, your older Java applications would be able to build.
+description: Update the older Java applications that used to use the Service Fabric Java SDK, to fetch Service Fabric Java dependencies from Maven. After completing this setup, your older Java applications would be able to build.
 ms.topic: how-to
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-extended-java
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
 # Customer intent: "As a Java developer maintaining legacy applications, I want to migrate from the Service Fabric Java SDK to Maven for dependencies, so that I can modernize my build process and ensure compatibility with the latest Service Fabric features."
 ---
 
 # Update your previous Java Service Fabric application to fetch Java libraries from Maven
-Service Fabric Java binaries have moved from the Service Fabric Java SDK to Maven hosting. You can use **mavencentral** to fetch the latest Service Fabric Java dependencies. This guide will help you update existing Java applications created for the Service Fabric Java SDK using either Yeoman template or Eclipse to be compatible with the Maven-based build.
+Service Fabric Java binaries have moved from the Service Fabric Java SDK to Maven hosting. You can use **mavencentral** to fetch the latest Service Fabric Java dependencies. This guide helps you update existing Java applications created for the Service Fabric Java SDK using either Yeoman template or Eclipse to be compatible with the Maven-based build.
 
 ## Prerequisites
 
@@ -34,7 +34,7 @@ Service Fabric Java binaries have moved from the Service Fabric Java SDK to Mave
 4. Update the install/uninstall scripts of your application to use the new Service Fabric CLI following the steps mentioned [here](service-fabric-application-lifecycle-sfctl.md). You can refer to our getting-started [examples](https://github.com/Azure-Samples/service-fabric-java-getting-started) for reference.
 
 > [!TIP]
-> After uninstalling the Service Fabric Java SDK, Yeoman will not work. Follow the Prerequisites mentioned [here](service-fabric-create-your-first-linux-application-with-java.md) to have Service Fabric Yeoman Java template generator up and working.
+> After uninstalling the Service Fabric Java SDK, Yeoman won't work. Follow the Prerequisites mentioned [here](service-fabric-create-your-first-linux-application-with-java.md) to have Service Fabric Yeoman Java template generator up and working.
 
 ## Service Fabric Java libraries on Maven
 
@@ -86,7 +86,7 @@ Service Fabric Stateless Service support for your application.
 
 #### Transport
 
-Transport layer support for Service Fabric Java application. You do not need to explicitly add this dependency to your Reliable Actor or Service applications, unless you program at the transport layer.
+Transport layer support for Service Fabric Java application. You don't need to explicitly add this dependency to your Reliable Actor or Service applications, unless you program at the transport layer.
 
   ```xml
   <dependency>
@@ -107,7 +107,7 @@ Transport layer support for Service Fabric Java application. You do not need to 
 
 #### Fabric support
 
-System level support for Service Fabric, which talks to native Service Fabric runtime. You do not need to explicitly add this dependency to your Reliable Actor or Service applications. This gets fetched automatically from Maven, when you include the other dependencies above.
+System level support for Service Fabric, which talks to native Service Fabric runtime. You don't need to explicitly add this dependency to your Reliable Actor or Service applications. This gets fetched automatically from Maven, when you include the other dependencies above.
 
   ```xml
   <dependency>

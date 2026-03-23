@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 06/26/2025
+ms.date: 03/22/2026
 # Customer intent: As a cloud architect currently using Cloud Services, I want to evaluate my options to migrate my current Cloud Services solution to other Azure services, so that I can make the right choice for my architecture.
 ---
 

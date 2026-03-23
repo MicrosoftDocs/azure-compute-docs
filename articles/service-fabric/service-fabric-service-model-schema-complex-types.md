@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
 # Customer intent: As an application developer, I want to understand the XML schema definitions and complex types in the Service Fabric service model, so that I can correctly define and manage my application services and their corresponding configurations in a cloud environment.
 ---
 
@@ -1261,7 +1261,7 @@ The name of the configuration package in the service manifest which contains the
 |minOccurs|0|
 
 ## ConfigPackageDescriptionType complexType
-Declares a folder, named by the Name attribute, that contains a Settings.xml file. This file contains sections of user-defined, key-value pair settings that the process can read back at run time. During an upgrade, if only the ConfigPackage version has changed, then the running process is not restarted. Instead, a callback notifies the process that configuration settings have changed so they can be reloaded dynamically.
+Declares a folder, named by the Name attribute, that contains a Settings.xml file. This file contains sections of user-defined, key-value pair settings that the process can read back at run time. During an upgrade, if only the ConfigPackage version has changed, then the running process isn't restarted. Instead, a callback notifies the process that configuration settings have changed so they can be reloaded dynamically.
 
 |Attribute|Value|
 |---|---|
@@ -1383,7 +1383,7 @@ Section Name of the ConfigPackage Settings.xml.
 |maxOccurs|unbounded|
 
 ## ConfigPackageType complexType
-Declares a folder, named by the Name attribute, under PackageRoot that contains a Settings.xml file. This file contains sections of user-defined, key-value pair settings that the process can read back at run time. During an upgrade, if only the ConfigPackage version has changed, then the running process is not restarted. Instead, a callback notifies the process that configuration settings have changed so they can be reloaded dynamically.
+Declares a folder, named by the Name attribute, under PackageRoot that contains a Settings.xml file. This file contains sections of user-defined, key-value pair settings that the process can read back at run time. During an upgrade, if only the ConfigPackage version has changed, then the running process isn't restarted. Instead, a callback notifies the process that configuration settings have changed so they can be reloaded dynamically.
 
 |Attribute|Value|
 |---|---|
@@ -1581,7 +1581,7 @@ Specifies docker HEALTHCHECK integration options for the container.
 #### IncludeDockerHealthStatusInSystemHealthReport
 If the container has HEALTHCHECK enabled and docker reports health_status event for this container, 
             Service Fabric will include this as part of system reported health. When health_status is unhealthy
-            Service Fabric will report a health warning. By default it is set to true.
+            Service Fabric will report a health warning. By default it's set to true.
 
 |Attribute|Value|
 |---|---|
@@ -1593,7 +1593,7 @@ If the container has HEALTHCHECK enabled and docker reports health_status event 
 #### RestartContainerOnUnhealthyDockerHealthStatus
 If the container has HEALTHCHECK enabled and docker reports health_status event for this container, 
             Service Fabric will restart the container when health_status reported by docker is unhealthy.
-            By default it is set to false.
+            By default it's set to false.
 
 |Attribute|Value|
 |---|---|
@@ -1853,7 +1853,7 @@ Flag indicating whether removal of containers will occur automatically (true) or
 |type|xs:string|
 
 #### RunInteractive
-Run container with interactive flag enabled. Valid values are true/false. false by default.
+Run container with interactive flag enabled. Valid values are true/false. False by default.
 
 |Attribute|Value|
 |---|---|
@@ -2731,7 +2731,7 @@ Specifies the collection of the contents of a particular folder on the local nod
 |maxOccurs|unbounded|
 
 ## DllHostEntryPointType complexType
-Unsupported, do not use. DLL hosting support (assembly entry point) is provided through the FWP.exe process. Service Fabric starts the Fabric Worker Process (FWP.exe) and loads the assembly as part of the activation process.
+Unsupported, don't use. DLL hosting support (assembly entry point) is provided through the FWP.exe process. Service Fabric starts the Fabric Worker Process (FWP.exe) and loads the assembly as part of the activation process.
 
 |Attribute|Value|
 |---|---|
@@ -2770,7 +2770,7 @@ Unsupported, do not use. DLL hosting support (assembly entry point) is provided 
 ### Attribute details
 
 #### IsolationPolicy
-Unsupported, do not use. Defines the isolation policy for the Unmanaged DLLs and Managed Assemblies loaded in the DllHost. 
+Unsupported, don't use. Defines the isolation policy for the Unmanaged DLLs and Managed Assemblies loaded in the DllHost. 
 
 |Attribute|Value|
 |---|---|
@@ -2922,7 +2922,7 @@ If set to Encrypted, the application developer is responsible for creating a cer
 ### Attribute details
 
 #### EndpointRef
-The name of the endpoint, which must be declared in the Resources section of the service manifest.  When using HTTPS, do not use
+The name of the endpoint, which must be declared in the Resources section of the service manifest.  When using HTTPS, don't use
           the same port and certificate for different service instances (independent of the application) deployed to the same node. Upgrading two different services
           using the same port in different application instances will result in an upgrade failure.
 
@@ -3064,7 +3064,7 @@ The port number for the endpoint. Overrides the value in the service manifest.
 |type|xs:string|
 
 #### Protocol
-The protocol for the endpoint. Overrides the value in the service manifest. HTTPS endpoints must also have an EndpointCertificate and an EndpointBindingPolicy declared in the application manifest. The protocol cannot be changed later in an application upgrade. 
+The protocol for the endpoint. Overrides the value in the service manifest. HTTPS endpoints must also have an EndpointCertificate and an EndpointBindingPolicy declared in the application manifest. The protocol can't be changed later in an application upgrade. 
 
 |Attribute|Value|
 |---|---|
@@ -3098,7 +3098,7 @@ The path suffix. For example, "/myapp1". Overrides the value in the service mani
 |use|optional|
 
 ## EndpointType complexType
-Defines an endpoint for the service. Specific ports can be requested.  If a port is not explicitly specified, a port is assigned from the reserved application port range. Service replicas running on different cluster nodes can be assigned different port numbers, while replicas of the same service running on the same node share the same port. Such ports can be used by the service replicas for various purposes such as replication or listening for client requests.
+Defines an endpoint for the service. Specific ports can be requested.  If a port isn't explicitly specified, a port is assigned from the reserved application port range. Service replicas running on different cluster nodes can be assigned different port numbers, while replicas of the same service running on the same node share the same port. Such ports can be used by the service replicas for various purposes such as replication or listening for client requests.
 
 |Attribute|Value|
 |---|---|
@@ -3197,7 +3197,7 @@ The name of the endpoint.
 |use|required|
 
 #### Protocol
-The protocol for the endpoint: http, https, tcp, or udp. HTTPS endpoints must also have an EndpointCertificate and an EndpointBindingPolicy declared in the application manifest. The protocol cannot be changed later in an application upgrade. 
+The protocol for the endpoint: http, https, tcp, or udp. HTTPS endpoints must also have an EndpointCertificate and an EndpointBindingPolicy declared in the application manifest. The protocol can't be changed later in an application upgrade. 
 
 |Attribute|Value|
 |---|---|
@@ -3206,7 +3206,7 @@ The protocol for the endpoint: http, https, tcp, or udp. HTTPS endpoints must al
 |default|tcp|
 
 #### Type
-The type of the endpoint.  Input endpoints are used to expose the port to the outside, internal endpoints are used for intra-application communication.
+The type of the endpoint. Input endpoints are used to expose the port to the outside, internal endpoints are used for intra-application communication.
 
 |Attribute|Value|
 |---|---|
@@ -3223,7 +3223,7 @@ The name of code Package that will use this endpoint.
 |use|optional|
 
 #### CertificateRef
-Do not use, this attribute is not supported.
+Don't use, this attribute isn't supported.
 
 |Attribute|Value|
 |---|---|
@@ -3237,14 +3237,14 @@ The port will be replaced with a port determined by Microsoft Azure Service Fabr
 |name|Port|
 
 #### UriScheme
-The URI scheme.  For example, "http", "https", or "ftp".
+The URI scheme. For example, "http", "https", or "ftp".
 
 |Attribute|Value|
 |---|---|
 |name|UriScheme|
 
 #### PathSuffix
-The path suffix.  For example, "/myapp1".
+The path suffix. For example, "/myapp1".
 
 |Attribute|Value|
 |---|---|
@@ -3679,7 +3679,7 @@ The executable name. For example, "MySetup.bat" or "MyServiceHost.exe".
 |minOccurs|0|
 
 #### ConsoleRedirection
-Warning! Do not use console redirection in a production application, only use it for local development and debugging. Redirects console output from the startup script to an output file in the application folder called "log" on the cluster node where the application is deployed and run.
+Warning! Don't use console redirection in a production application, only use it for local development and debugging. Redirects console output from the startup script to an output file in the application folder called "log" on the cluster node where the application is deployed and run.
 
 |Attribute|Value|
 |---|---|
@@ -4314,7 +4314,7 @@ Specifies if password is encrypted or plain text.
 |minOccurs|0|
 
 ## ImageOverridesType complexType
-Windows Server containers may not be compatible across different versions of the OS.  You can specify multiple OS images per container and tag
+Windows Server containers may not be compatible across different versions of the OS. You can specify multiple OS images per container and tag
         them with the build versions of the OS. Get the build version of the OS by running "winver" at a Windows command prompt. If the underlying OS
         is build version 16299 (Windows Server version 1709), Service Fabric picks the container image tagged with Os="16299". An untagged container image
         is assumed to work across all versions of the OS and overrides the image specified in the service manifest.
@@ -4349,7 +4349,7 @@ Windows Server containers may not be compatible across different versions of the
 ### Content element details
 
 #### Image
-Container image corresponding to OS build version number to be launched. If the Os attribute is not specified, the container image
+Container image corresponding to OS build version number to be launched. If the Os attribute isn't specified, the container image
             is assumed to work across all versions of the OS and overrides the image specified in the service manifest.
 
 |Attribute|Value|
@@ -4527,7 +4527,7 @@ The IP address or the FQDN of the machine on which to place this node.
 |use|required|
 
 #### RoleOrTierName
-Name of the role which links to node type ref which is defined in the NodeTypes section.
+Name of the role which links to node type ref that is defined in the NodeTypes section.
 
 |Attribute|Value|
 |---|---|
@@ -4536,7 +4536,7 @@ Name of the role which links to node type ref which is defined in the NodeTypes 
 |use|required|
 
 #### NodeTypeRef
-Name of the node type which is defined in the NodeTypes section.
+Name of the node type that is defined in the NodeTypes section.
 
 |Attribute|Value|
 |---|---|
@@ -4727,7 +4727,7 @@ Describe the certificates associated with this node type
 |name|NodeList|
 
 ## LoadMetricType complexType
-A resource that this service should be balanced on, such as memory or CPU usage.  Includes information about how much of that resource each replica or instance of this service consumes by default.
+A resource that this service should be balanced on, such as memory or CPU usage. Includes information about how much of that resource each replica or instance of this service consumes by default.
 
 |Attribute|Value|
 |---|---|
@@ -4804,7 +4804,7 @@ The default amount of load that this stateless service creates for this metric.
 |default|0|
 
 #### PrimaryDefaultLoad
-The default amount of load that this service will exert for this metric when it's a primary replica.
+The default amount of load that this service exerts for this metric when it's a primary replica.
 
 |Attribute|Value|
 |---|---|
@@ -4814,7 +4814,7 @@ The default amount of load that this service will exert for this metric when it'
 |default|0|
 
 #### SecondaryDefaultLoad
-The default amount of load that this service will exert for this metric when it's a secondary replica.
+The default amount of load that this service exerts for this metric when it's a secondary replica.
 
 |Attribute|Value|
 |---|---|
@@ -4954,7 +4954,7 @@ The path of the LogicalDirectory.
 |default|application|
 
 ## ManagedAssemblyType complexType
-Unsupported, do not use. The name of managed assembly (for example, Queue.dll), to host.
+Unsupported, don't use. The name of managed assembly (for example, Queue.dll), to host.
 
 |Attribute|Value|
 |---|---|
@@ -5496,7 +5496,7 @@ Block IO weight, relative to other code packages. Must be a positive integer bet
 |default|0|
 
 #### DiskQuotaInMB
-Disk quota for containers.  Must be a positive integer.
+Disk quota for containers. Must be a positive integer.
 
 |Attribute|Value|
 |---|---|
@@ -5506,7 +5506,7 @@ Disk quota for containers.  Must be a positive integer.
 |default|0|
 
 #### KernelMemoryInMB
-Kernel memory limits in bytes.  Must be a positive integer.  Note this is Linux specific and docker on windows will error out if this is set.
+Kernel memory limits in bytes. Must be a positive integer. Note this is Linux specific and docker on windows will error out if this is set.
 
 |Attribute|Value|
 |---|---|
@@ -5516,7 +5516,7 @@ Kernel memory limits in bytes.  Must be a positive integer.  Note this is Linux 
 |default|0|
 
 #### ShmSizeInMB
-Size of /dev/shm in bytes. If omitted, the system uses 64MB.  Must be a positive integer.  Note this is Linux specific, however, docker will NOT error out if specified.  It is simply ignored.
+Size of /dev/shm in bytes. If omitted, the system uses 64MB. Must be a positive integer. Note this is Linux specific, however, docker will NOT error out if specified. It's ignored.
 
 |Attribute|Value|
 |---|---|
@@ -5673,7 +5673,7 @@ The name of the code package. Must match the name of the CodePackage specified i
 |use|required|
 
 #### UserRef
-The user account that the service code package will run as.  The user account must be declared in the Principals section. Often it is preferable to run the setup entry point using a local system account rather than an administrators account.
+The user account that the service code package will run as.  The user account must be declared in the Principals section. Often it's preferable to run the setup entry point using a local system account rather than an administrators account.
 
 |Attribute|Value|
 |---|---|
@@ -5713,7 +5713,7 @@ A scaling policy description consisting of a trigger and a mechanism for scaling
 
 ```
 ## SecurityAccessPolicyType complexType
-Grants access permissions to a principal on a resource (such as an endpoint) defined in a service manifest. Typically, it is very useful to control and restrict access of services to different resources in order to minimize security risks. This is especially important when the application is built from a collection of services from a marketplace which are developed by different developers.
+Grants access permissions to a principal on a resource (such as an endpoint) defined in a service manifest. Typically, it's very useful to control and restrict access of services to different resources in order to minimize security risks. This is especially important when the application is built from a collection of services from a marketplace which are developed by different developers.
 
 |Attribute|Value|
 |---|---|
@@ -8042,7 +8042,7 @@ Describes a stateless service type.
 |minOccurs|1|
 
 ## UnmanagedDllType complexType
-Unsupported, do not use. The name of unmanaged assembly (for example, Queue.dll), to host.
+Unsupported, don't use. The name of unmanaged assembly (for example, Queue.dll), to host.
 
 |Attribute|Value|
 |---|---|

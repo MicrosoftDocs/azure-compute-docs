@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
 # Customer intent: As a cloud application administrator, I want to delete Reliable Actors and their state in Azure Service Fabric, so that I can manage resources effectively and ensure that unused data is cleared from the system.
 ---
 

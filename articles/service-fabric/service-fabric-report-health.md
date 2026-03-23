@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
 ms.update-cycle: 1095-days
 # Customer intent: As a service developer, I want to implement custom health reporting for my Azure Service Fabric applications, so that I can monitor and diagnose service conditions effectively and ensure optimal performance and reliability in the cloud.
 ---

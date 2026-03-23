@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 05/17/2024
+ms.date: 03/22/2026
 ms.custom: sfi-image-nochange
 # Customer intent: "As a developer, I want to deploy a Service Fabric application to a new cluster in Azure using Visual Studio, so that I can efficiently manage and scale microservices in a cloud environment."
 ---

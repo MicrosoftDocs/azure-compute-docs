@@ -6,7 +6,7 @@ ms.topic: quickstart
 ms.service: azure-service-fabric
 services: service-fabric
 ms.author: tomcassidy
-ms.date: 11/14/2024
+ms.date: 03/22/2026
 ms.custom: sfi-image-nochange
 # Customer intent: "As a cloud engineer, I want to deploy a three-node Service Fabric cluster using the cloud management portal, so that I can test and manage scalable microservices in a distributed environment."
 ---

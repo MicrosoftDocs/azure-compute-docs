@@ -7,7 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-azurepowershell, devx-track-dotnet
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: As a developer, I want to containerize and deploy a .NET application to Azure Service Fabric, so that I can leverage a scalable, cloud-based environment with persistent data storage in Azure SQL Database.
 ---
 
@@ -45,7 +45,7 @@ In this tutorial, you learn how to:
 
 ## Create an Azure SQL DB
 
-When running the Fabrikam Fiber CallCenter application in production, the data needs to be persisted in a database. There is currently no way to guarantee persistent data in a container, therefore you cannot store production data in SQL Server in a container.
+When running the Fabrikam Fiber CallCenter application in production, the data needs to be persisted in a database. There's currently no way to guarantee persistent data in a container, therefore you can't store production data in SQL Server in a container.
 
 We recommend [Azure SQL Database](/azure/azure-sql/database/powershell-script-content-guide). To set up and run a managed SQL Server DB in Azure, run the following script.  Modify the script variables as necessary. *clientIP* is the IP address of your development computer. Take note of the name of the server outputted by the script.
 

@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: As a cloud architect, I want to configure the TargetReplicaSetSize and MinReplicaSetSize parameters for stateful services, so that I can ensure high availability and avoid quorum loss during planned and unplanned failures.
 ---
 
@@ -19,12 +19,12 @@ Replica set size for stateful services is configured using two parameters.
 
 The basic idea behind these two parameters is to allow for such a configuration that it allows for at least two concurrent failures to happen without partition going in quorum loss. That situation can happen when there's one planned failover (upgrade bringing node/replica down) and one unplanned failover (node crashes).
 
-For example, if TargetReplicaSetSize =5, MinReplicaSetSize =3, then normally (without failures) there will be five replicas in the Service Fabrics view of the replica set. When failures happen, Service Fabrics view of the replica set will decrease until it reaches MinReplicaSetSize.
+For example, if TargetReplicaSetSize =5, MinReplicaSetSize =3, then normally (without failures) there will be five replicas in the Service Fabrics view of the replica set. When failures happen, Service Fabrics view of the replica set decreases until it reaches MinReplicaSetSize.
 
 Service Fabric uses the majority quorum of the number of replicas maintained in this view, so majority quorum of the MinReplicaSetSize is minimum level of reliability of any operation. If the total number of replicas drops below the majority quorum of the MinReplicaSetSize then further writes will be disallowed. It's important to note that when service is in quorum loss, it can require replicas to come back in a specific order to get out of quorum loss. 
 
 >[!IMPORTANT]
->In the example where TargetReplicaSetSize = 5, MinReplicaSetSize = 3, majority quorum of MinReplicaSetSize is 2. That means that even if there are three concurrent failures that will result in only two remaining replicas running, Service Fabric will still have 3 replicas in its view of the replica set (two up and one down), and two remaining running replicas will be enough to satisfy the majority quorum.
+>In the example where TargetReplicaSetSize = 5, MinReplicaSetSize = 3, majority quorum of MinReplicaSetSize is 2. That means that even if there are three concurrent failures that result in only two remaining replicas running, Service Fabric will still have three replicas in its view of the replica set (two up and one down), and two remaining running replicas are enough to satisfy the majority quorum.
 
 ## Examples of suboptimal configurations
 

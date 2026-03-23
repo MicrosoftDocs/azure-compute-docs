@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 ms.update-cycle: 1095-days
 # Customer intent: "As a cloud application developer, I want to implement robust security practices for my microservices on Service Fabric, so that I can protect sensitive data and ensure secure communication across services."
 ---
@@ -14,12 +14,12 @@ ms.update-cycle: 1095-days
 # Service Fabric application and service security
 A microservices architecture can bring [many benefits](service-fabric-overview-microservices.md). Managing the security of microservices, however, is a challenge and different than managing traditional monolithic applications security. 
 
-With a monolith, the application is typically running on one or more servers within a network and it's easier to identify the exposed ports and APIs and IP address. There is often one perimeter or boundary and one database to protect. If that system is compromised because of a security breach or attack, it is likely that everything within the system will be available to the attacker. With microservices, the system is more complex.  Services are decentralized and distributed across many hosts and migrate from host to host.  With proper security, you limit the privileges an attacker can get and the amount of data available in a single attack by breaching one service.  Communication is not internal, but happens over a network, and there are many exposed ports and interactions between services. Knowing what these service interactions are and when they happen is crucial to your application security.
+With a monolith, the application is typically running on one or more servers within a network and it's easier to identify the exposed ports and APIs and IP address. There's often one perimeter or boundary and one database to protect. If that system is compromised because of a security breach or attack, it's likely that everything within the system will be available to the attacker. With microservices, the system is more complex.  Services are decentralized and distributed across many hosts and migrate from host to host.  With proper security, you limit the privileges an attacker can get and the amount of data available in a single attack by breaching one service.  Communication isn't internal, but happens over a network, and there are many exposed ports and interactions between services. Knowing what these service interactions are and when they happen is crucial to your application security.
 
-This article is not a guide to microservices security, there are many such resources available online, but describes how different aspects of security can be accomplished in Service Fabric.
+This article isn't a guide to microservices security, there are many such resources available online, but describes how different aspects of security can be accomplished in Service Fabric.
 
 ## Authentication and authorization
-It is often necessary for resources and APIs exposed by a service to be limited to certain trusted users or clients. Authentication is the process of reliably ascertaining a user’s identity.  Authorization is the process that makes APIs or services available to some authenticated users but not others.
+It's often necessary for resources and APIs exposed by a service to be limited to certain trusted users or clients. Authentication is the process of reliably ascertaining a user’s identity.  Authorization is the process that makes APIs or services available to some authenticated users but not others.
 
 ### Authentication
 The first step to making API-level trust decisions is authentication. Authentication is the process of reliably ascertaining a user’s identity.  In microservice scenarios, authentication is typically handled centrally. If you are using an API Gateway, you can [offload authentication](/azure/architecture/patterns/gateway-offloading) to the gateway. If you use this approach, make sure that the individual services cannot be reached directly (without the API Gateway) unless additional security is in place to authenticate messages whether they come from the gateway or not.

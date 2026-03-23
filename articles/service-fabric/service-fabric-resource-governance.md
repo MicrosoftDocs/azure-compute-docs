@@ -6,14 +6,14 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
 ms.update-cycle: 1095-days
 # Customer intent: As a developer managing multiple services in a containerized environment, I want to specify resource requests and limits for those services, so that I can prevent resource contention and optimize performance in my Service Fabric cluster.
 ---
 
 # Resource governance
 
-When you're running multiple services on the same node or cluster, it is possible that one service might consume more resources, starving other services in the process. This problem is referred to as the "noisy neighbor" problem. Azure Service Fabric enables the developer to control this behavior by specifying requests and limits per service to limit resource usage.
+When you're running multiple services on the same node or cluster, it's possible that one service might consume more resources, starving other services in the process. This problem is referred to as the "noisy neighbor" problem. Azure Service Fabric enables the developer to control this behavior by specifying requests and limits per service to limit resource usage.
 
 > Before you proceed with this article, we recommend that you get familiar with the [Service Fabric application model][application-model-link] and the [Service Fabric hosting model][hosting-model-link].
 >
@@ -22,14 +22,14 @@ When you're running multiple services on the same node or cluster, it is possibl
 
 Resource governance is supported in Service Fabric in accordance with the [service package][application-model-link]. The resources that are assigned to the service package can be further divided between code packages. Service Fabric supports CPU and memory governance per service package, with two built-in [metrics](service-fabric-cluster-resource-manager-metrics.md):
 
-* *CPU* (metric name `servicefabric:/_CpuCores`): A logical core that is available on the host machine. All cores across all nodes are weighted the same.
+* *CPU* (metric name `servicefabric:/_CpuCores`): A logical core that's available on the host machine. All cores across all nodes are weighted the same.
 
-* *Memory* (metric name `servicefabric:/_MemoryInMB`): Memory is expressed in megabytes, and it maps to physical memory that is available on the machine.
+* *Memory* (metric name `servicefabric:/_MemoryInMB`): Memory is expressed in megabytes, and it maps to physical memory that's available on the machine.
 
 For these two metrics, [Cluster Resource Manager (CRM)][cluster-resource-manager-description-link] tracks total cluster capacity, the load on each node in the cluster, and the remaining resources in the cluster. These two metrics are equivalent to any other user or custom metric. 
 
 > [!NOTE]
-> Custom metric names should not be one of these two metric names as it will lead to undefined behavior.
+> Custom metric names shouldn't be one of these two metric names as it leads to undefined behavior.
 >
 
 All existing features can be used with them:
@@ -38,7 +38,7 @@ All existing features can be used with them:
 * When [describing a cluster][cluster-resource-manager-description-link], buffered capacity can be set for these two metrics.
 
 > [!NOTE]
-> [Dynamic load reporting](service-fabric-cluster-resource-manager-metrics.md) is not supported for these metrics; loads for these metrics are defined at creation time.
+> [Dynamic load reporting](service-fabric-cluster-resource-manager-metrics.md) isn't supported for these metrics; loads for these metrics are defined at creation time.
 
 ## Resource governance mechanism
 
@@ -51,24 +51,24 @@ Starting with version 7.2, Service Fabric runtime supports specification of requ
 
 * *Limits:* CPU and Memory limit values represent the actual resource limits applied when a process or a container is activated on a node.
 
-Service Fabric allows **RequestsOnly, LimitsOnly** and both **RequestsAndLimits** specifications for CPU and memory.
+Service Fabric allows **RequestsOnly, LimitsOnly**, and both **RequestsAndLimits** specifications for CPU and memory.
 * When RequestsOnly specification is used, service fabric also uses the request values as limits.
 * When LimitsOnly specification is used, service fabric considers the request values to be 0.
 * When RequestsAndLimits specification is used, the limit values must be greater than or equal to the request values.
 
-To better understand the resource governance mechanism, let's look at an example placement scenario with a **RequestsOnly** specification for the CPU resource (mechanism for memory governance is equivalent). Consider a node with two CPU cores and two service packages that will be placed on it. The first service package to be placed, is composed of just one container code package and only specifies a request of one CPU core. The second service package to be placed, is composed of just one process based code package and also only specifies a request of one CPU core. Since both service packages have a RequestsOnly specification, their limit values are set to their request values.
+To better understand the resource governance mechanism, let's look at an example placement scenario with a **RequestsOnly** specification for the CPU resource (mechanism for memory governance is equivalent). Consider a node with two CPU cores and two service packages that will be placed on it. The first service package to be placed is composed of just one container code package and only specifies a request of one CPU core. The second service package to be placed is composed of just one process based code package and also only specifies a request of one CPU core. Since both service packages have a RequestsOnly specification, their limit values are set to their request values.
 
 1. First the container based service package requesting one CPU core is placed on the node. The runtime activates the container and sets the CPU limit to one core. The container won't be able to use more than one core.
 
 2. Next, the process based service package requesting one CPU core is placed on the node. The runtime activates the service process and sets its CPU limit to one core.
 
-At this point, the sum of requests is equal to the capacity of the node. CRM will not place any more containers or service processes with CPU requests on this node. On the node, a process and a container are running with one core each and will not contend with each other for CPU.
+At this point, the sum of requests is equal to the capacity of the node. CRM won't place any more containers or service processes with CPU requests on this node. On the node, a process and a container are running with one core each and won't contend with each other for CPU.
 
 Let's now revisit our example with a **RequestsAndLimits** specification. This time the container based service package specifies a request of one CPU core and a limit of two CPU cores. The process based service package specifies both a request and a limit of one CPU core.
   1. First the container based service package is placed on the node. The runtime activates the container and sets the CPU limit to two cores. The container won't be able to use more than two cores.
   2. Next, the process based service package is placed on the node. The runtime activates the service process and sets its CPU limit to one core.
 
-  At this point, the sum of CPU requests of service packages that are placed on the node is equal to the CPU capacity of the node. CRM will not place any more containers or service processes with CPU requests on this node. However, on the node, the sum of limits (two cores for the container + one core for the process) exceeds the capacity of two cores. If the container and the process burst at the same time, there is possibility of contention for the CPU resource. Such contention will be managed by the underlying OS for the platform. For this example, the container could burst up to two CPU cores, resulting in the process's request of one CPU core not being guaranteed.
+  At this point, the sum of CPU requests of service packages that are placed on the node is equal to the CPU capacity of the node. CRM won't place any more containers or service processes with CPU requests on this node. However, on the node, the sum of limits (two cores for the container + one core for the process) exceeds the capacity of two cores. If the container and the process burst at the same time, there's possibility of contention for the CPU resource. Such contention will be managed by the underlying OS for the platform. For this example, the container could burst up to two CPU cores, resulting in the process's request of one CPU core not being guaranteed.
 
 > [!NOTE]
 > As illustrated in the previous example, the request values for CPU and memory **do not lead to reservation of resources on a node**. These values represent the resource consumption that the Cluster Resource Manager considers when making placement decisions. Limit values represent the actual resource limits applied when a process or a container is activated on a node.
@@ -76,11 +76,11 @@ Let's now revisit our example with a **RequestsAndLimits** specification. This t
 
 There are a few situations in which there might be contention for CPU. In these situations, the process and container from our example might experience the noisy neighbor problem:
 
-* *Mixing governed and non-governed services and containers*: If a user creates a service without any resource governance specified, the runtime sees it as consuming no resources, and can place it on the node in our example. In this case, this new process effectively consumes some CPU at the expense of the services that are already running on the node. There are two solutions to this problem. Either don't mix governed and non-governed services on the same cluster, or use [placement constraints](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md) so that these two types of services don't end up on the same set of nodes.
+* *Mixing governed and nongoverned services and containers*: If a user creates a service without any resource governance specified, the runtime sees it as consuming no resources, and can place it on the node in our example. In this case, this new process effectively consumes some CPU at the expense of the services that are already running on the node. There are two solutions to this problem. Either don't mix governed and nongoverned services on the same cluster, or use [placement constraints](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md) so that these two types of services don't end up on the same set of nodes.
 
 * *When another process is started on the node, outside Service Fabric (for example, an OS service)*: In this situation, the process outside Service Fabric also contends for CPU with existing services. The solution to this problem is to set up node capacities correctly to account for OS overhead, as shown in the next section.
 
-* *When requests are not equal to limits*: As described in the RequestsAndLimits example earlier, requests do not lead to reservation of resources on a node. When a service with limits greater than requests is placed on a node, it may consume resources (if available) up to it limits. In such cases, other services on the node might not be able to consume resources up to their request values.
+* *When requests aren't equal to limits*: As described in the RequestsAndLimits example earlier, requests don't lead to reservation of resources on a node. When a service with limits greater than requests is placed on a node, it may consume resources (if available) up to it limits. In such cases, other services on the node might not be able to consume resources up to their request values.
 
 ## Cluster setup for enabling resource governance
 
@@ -88,7 +88,7 @@ When a node starts and joins the cluster, Service Fabric detects the available a
 
 To leave buffer space for the operating system, and for other processes that might be running on the node, Service Fabric uses only 80% of the available resources on the node. This percentage is configurable, and can be changed in the cluster manifest.
 
-Here is an example of how to instruct Service Fabric to use 50% of available CPU and 70% of available memory:
+Here's an example of how to instruct Service Fabric to use 50% of available CPU and 70% of available memory:
 
 ```xml
 <Section Name="PlacementAndLoadBalancing">
@@ -98,7 +98,7 @@ Here is an example of how to instruct Service Fabric to use 50% of available CPU
 </Section>
 ```
 
-For most customers and scenarios, automatic detection of node capacities for CPU and memory is the recommended configuration (automatic detection is turned on by default). However, if you need full manual setup of node capacities, you can configure them per node type using the mechanism for describing nodes in the cluster. Here is an example of how to set up the node type with four cores and 2 GB of memory:
+For most customers and scenarios, automatic detection of node capacities for CPU and memory is the recommended configuration (automatic detection is turned on by default). However, if you need full manual setup of node capacities, you can configure them per node type using the mechanism for describing nodes in the cluster. Here's an example of how to set up the node type with four cores and 2 GB of memory:
 
 ```xml
     <NodeType Name="MyNodeType">
@@ -109,13 +109,13 @@ For most customers and scenarios, automatic detection of node capacities for CPU
     </NodeType>
 ```
 
-When auto-detection of available resources is enabled, and node capacities are manually defined in the cluster manifest, Service Fabric checks that the node has enough resources to support the capacity that the user has defined:
+When autodetection of available resources is enabled, and node capacities are manually defined in the cluster manifest, Service Fabric checks that the node has enough resources to support the capacity that the user has defined:
 
 * If node capacities that are defined in the manifest are less than or equal to the available resources on the node, then Service Fabric uses the capacities that are specified in the manifest.
 
 * If node capacities that are defined in the manifest are greater than available resources, Service Fabric uses the available resources as node capacities.
 
-Auto-detection of available resources can be turned off if it is not required. To turn it off, change the following setting:
+Auto-detection of available resources can be turned off if it isn't required. To turn it off, change the following setting:
 
 ```xml
 <Section Name="PlacementAndLoadBalancing">
@@ -142,7 +142,7 @@ For optimal performance, the following setting should also be turned on in the c
 > We have changed the rule on how the available capacity for Service Fabric user services is calculated in the following way:
 >
 > * Before Service Fabric 7.0, available capacity for user services would be calculated to **5 cores** (capacity buffer of 20% is ignored)
-> * Starting with Service Fabric 7.0, available capacity for user services would be calculated to **4 cores** (capacity buffer of 20% is not ignored)
+> * Starting with Service Fabric 7.0, available capacity for user services would be calculated to **4 cores** (capacity buffer of 20% isn't ignored)
 
 ## Specify resource governance
 
@@ -162,13 +162,13 @@ Resource governance requests and limits are specified in the application manifes
   </ServiceManifestImport>
 ```
 
-In this example, the `CpuCores` attribute is used to specify a request of 1 CPU core for **ServicePackageA**. Since the CPU limit (`CpuCoresLimit` attribute) is not specified, Service Fabric also uses the specified request value of 1 core as the CPU limit for the service package.
+In this example, the `CpuCores` attribute is used to specify a request of 1 CPU core for **ServicePackageA**. Since the CPU limit (`CpuCoresLimit` attribute) isn't specified, Service Fabric also uses the specified request value of 1 core as the CPU limit for the service package.
 
-**ServicePackageA** will only be placed on a node where the remaining CPU capacity after subtracting the **sum of CPU requests of all service packages placed on that node** is greater than or equal to 1 core. On the node, the service package will be limited to one core. The service package contains two code packages (**CodeA1** and **CodeA2**), and both specify the `CpuShares` attribute. The proportion of CpuShares 512:256 is used to calculate the CPU limits for the individual code packages. Thus, CodeA1 will be limited to two-thirds of a core, and CodeA2 will be limited to one-third of a core. If CpuShares are not specified for all code packages, Service Fabric divides the CPU limit equally among them.
+**ServicePackageA** will only be placed on a node where the remaining CPU capacity after subtracting the **sum of CPU requests of all service packages placed on that node** is greater than or equal to 1 core. On the node, the service package will be limited to one core. The service package contains two code packages (**CodeA1** and **CodeA2**), and both specify the `CpuShares` attribute. The proportion of CpuShares 512:256 is used to calculate the CPU limits for the individual code packages. Thus, CodeA1 will be limited to two-thirds of a core, and CodeA2 will be limited to one-third of a core. If CpuShares aren't specified for all code packages, Service Fabric divides the CPU limit equally among them.
 
-While CpuShares specified for code packages represent their relative proportion of the service package's overall CPU limit, memory values for code packages are specified in absolute terms. In this example, the `MemoryInMB` attribute is used to specify memory requests of 1024 MB for both CodeA1 and CodeA2. Since the memory limit (`MemoryInMBLimit` attribute) is not specified, Service Fabric also uses the specified request values as the limits for the code packages. The memory request (and limit) for the service package is calculated as the sum of memory request (and limit) values of its constituent code packages. Thus for **ServicePackageA**, the memory request and limit is calculated as 2048 MB.
+While CpuShares specified for code packages represent their relative proportion of the service package's overall CPU limit, memory values for code packages are specified in absolute terms. In this example, the `MemoryInMB` attribute is used to specify memory requests of 1024 MB for both CodeA1 and CodeA2. Since the memory limit (`MemoryInMBLimit` attribute) isn't specified, Service Fabric also uses the specified request values as the limits for the code packages. The memory request (and limit) for the service package is calculated as the sum of memory request (and limit) values of its constituent code packages. Thus for **ServicePackageA**, the memory request and limit is calculated as 2048 MB.
 
-**ServicePackageA** will only be placed on a node where the remaining memory capacity after subtracting the **sum of memory requests of all service packages placed on that node** is greater than or equal to 2048 MB. On the node, both code packages will be limited to 1024 MB of memory each. Code packages (containers or processes) will not be able to allocate more memory than this limit, and attempting to do so will result in out-of-memory exceptions.
+**ServicePackageA** will only be placed on a node where the remaining memory capacity after subtracting the **sum of memory requests of all service packages placed on that node** is greater than or equal to 2048 MB. On the node, both code packages will be limited to 1024 MB of memory each. Code packages (containers or processes) won't be able to allocate more memory than this limit, and attempting to do so will result in out-of-memory exceptions.
 
 **Example 2: LimitsOnly specification**
 ```xml
@@ -183,7 +183,7 @@ While CpuShares specified for code packages represent their relative proportion 
     </Policies>
   </ServiceManifestImport>
 ```
-This example uses `CpuCoresLimit` and `MemoryInMBLimit` attributes, which are only available in SF versions 7.2 and later. The CpuCoresLimit attribute is used to specify a CPU limit of 1 core for **ServicePackageA**. Since CPU request (`CpuCores` attribute) is not specified, it is considered to be 0. `MemoryInMBLimit` attribute is used to specify memory limits of 1024 MB for CodeA1 and CodeA2 and since requests (`MemoryInMB` attribute) are not specified, they are considered to be 0. The memory request and limit for **ServicePackageA** are thus calculated as 0 and 2048 respectively. Since both CPU and memory requests for **ServicePackageA** are 0, it presents no load for CRM to consider for placement, for the `servicefabric:/_CpuCores` and `servicefabric:/_MemoryInMB` metrics. Therefore, from a resource governance perspective, **ServicePackageA** can be placed on any node **regardless of remaining capacity**. Similar to example 1, on the node, CodeA1 will be limited to two-thirds of a core and 1024 MB of memory, and CodeA2 will be limited to one-third of a core and 1024 MB of memory.
+This example uses `CpuCoresLimit` and `MemoryInMBLimit` attributes, which are only available in SF versions 7.2 and later. The CpuCoresLimit attribute is used to specify a CPU limit of 1 core for **ServicePackageA**. Since CPU request (`CpuCores` attribute) isn't specified, it's considered to be 0. `MemoryInMBLimit` attribute is used to specify memory limits of 1024 MB for CodeA1 and CodeA2 and since requests (`MemoryInMB` attribute) aren't specified, they are considered to be 0. The memory request and limit for **ServicePackageA** are thus calculated as 0 and 2048 respectively. Since both CPU and memory requests for **ServicePackageA** are 0, it presents no load for CRM to consider for placement, for the `servicefabric:/_CpuCores` and `servicefabric:/_MemoryInMB` metrics. Therefore, from a resource governance perspective, **ServicePackageA** can be placed on any node **regardless of remaining capacity**. Similar to example 1, on the node, CodeA1 will be limited to two-thirds of a core and 1024 MB of memory, and CodeA2 will be limited to one-third of a core and 1024 MB of memory.
 
 **Example 3: RequestsAndLimits specification**
 ```xml
@@ -202,7 +202,7 @@ Building upon the first two examples, this example demonstrates specifying both 
 
 ### Using application parameters
 
-When specifying resource governance settings, it is possible to use [application parameters](service-fabric-manage-multiple-environment-app-configuration.md) to manage multiple app configurations. The following example shows the usage of application parameters:
+When specifying resource governance settings, it's possible to use [application parameters](service-fabric-manage-multiple-environment-app-configuration.md) to manage multiple app configurations. The following example shows the usage of application parameters:
 
 ```xml
 <?xml version='1.0' encoding='UTF-8'?>
@@ -245,11 +245,11 @@ In this example, default parameter values are set for the production environment
 > [!IMPORTANT]
 > Specifying resource governance with application parameters is available starting with Service Fabric version 6.1.<br>
 >
-> When application parameters are used to specify resource governance, Service Fabric cannot be downgraded to a version prior to version 6.1.
+> When application parameters are used to specify resource governance, Service Fabric can't be downgraded to a version prior to version 6.1.
 
 ## Enforcing the resource limits for user services
 
-While applying resource governance to your Service Fabric services guarantees that those resource-governed services cannot exceed their resources quota, many users still need to run some of their Service Fabric services in ungoverned mode. When using ungoverned Service Fabric services, it is possible to run into situations where "runaway" ungoverned services consume all available resources on the Service Fabric nodes, which can lead to serious issues like:
+While applying resource governance to your Service Fabric services guarantees that those resource-governed services can't exceed their resources quota, many users still need to run some of their Service Fabric services in ungoverned mode. When using ungoverned Service Fabric services, it's possible to run into situations where "runaway" ungoverned services consume all available resources on the Service Fabric nodes, which can lead to serious issues like:
 
 * Resource starvation of other services running on the nodes (including Service Fabric system services)
 * Nodes ending up in an unhealthy state
@@ -266,7 +266,7 @@ To prevent these situations from occurring, Service Fabric allows you to *enfo
 Additional remarks:
 
 * Resource limit enforcement only applies to the `servicefabric:/_CpuCores` and `servicefabric:/_MemoryInMB` resource metrics
-* Resource limit enforcement only works if node capacities for the resource metrics are available to Service Fabric, either via auto-detection mechanism, or via users manually specifying the node  capacities (as explained in the [Cluster setup for enabling resource governance](service-fabric-resource-governance.md#cluster-setup-for-enabling-resource-governance) section). If node capacities are not configured, the resource limit enforcement capability cannot be used since Service Fabric can't know how much resources to reserve for user services. Service Fabric will issue a health warning if "EnforceUserServiceMetricCapacities" is true but node capacities are not configured.
+* Resource limit enforcement only works if node capacities for the resource metrics are available to Service Fabric, either via autodetection mechanism, or via users manually specifying the node  capacities (as explained in the [Cluster setup for enabling resource governance](service-fabric-resource-governance.md#cluster-setup-for-enabling-resource-governance) section). If node capacities aren't configured, the resource limit enforcement capability can't be used since Service Fabric can't know how much resources to reserve for user services. Service Fabric will issue a health warning if "EnforceUserServiceMetricCapacities" is true but node capacities aren't configured.
 
 ## Other resources for containers
 
@@ -274,8 +274,8 @@ Besides CPU and memory, it's possible to specify other [resource limits for cont
 
 * *MemorySwapInMB*: The total amount of swap memory that can be used, in MB. Must be a positive integer.
 * *MemoryReservationInMB*: The soft limit (in MB) for memory governance that is enforced only when memory contention is detected on the node. Must be a positive integer.
-* *CpuPercent*: Usable percentage of available CPUs (Windows only). Must be a positive integer. Cannot be used with CpuShares, CpuCores, or CpuCoresLimit.
-* *CpuShares*: Relative CPU weight. Must be a positive integer. Cannot be used with CpuPercent, CpuCores, or CpuCoresLimit.
+* *CpuPercent*: Usable percentage of available CPUs (Windows only). Must be a positive integer. Can't be used with CpuShares, CpuCores, or CpuCoresLimit.
+* *CpuShares*: Relative CPU weight. Must be a positive integer. Can't be used with CpuPercent, CpuCores, or CpuCoresLimit.
 * *MaximumIOps*: Maximum IO rate (read and write) in terms of IOps that can be used. Must be a positive integer.
 * *MaximumIOBandwidth*: The maximum IO (bytes per second) that can be used (read and write). Must be a positive integer.
 * *BlockIOWeight*: Block IO weight, relative to other code packages. Must be a positive integer between 10 and 1000.
@@ -283,7 +283,7 @@ Besides CPU and memory, it's possible to specify other [resource limits for cont
 * *KernelMemoryInMB*: Kernel memory limits in bytes.  Must be a positive integer.  Note this is Linux-specific and Docker on Windows will error out if this is set.
 * *ShmSizeInMB*: Size of */dev/shm* in bytes. If omitted, the system uses 64MB.  Must be a positive integer. Note this is Linux-specific, however, Docker will only ignore (and not error out) if specified.
 
-These resources can be combined with CPU and memory. Here is an example of how to specify additional resources for containers:
+These resources can be combined with CPU and memory. Here's an example of how to specify additional resources for containers:
 
 ```xml
     <ServiceManifestImport>

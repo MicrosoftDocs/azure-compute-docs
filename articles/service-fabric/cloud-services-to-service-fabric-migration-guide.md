@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 09/29/2025
+ms.date: 03/22/2026
 # Customer intent: As a cloud architect currently using Cloud Services, I want to know the steps involved in migrating from Cloud Services to Service Fabric, so that I can efficiently migrate my existing cloud architecture to Service Fabric.
 ---
 

@@ -2,12 +2,11 @@
 title: List applications on a cluster in sfctl
 description: Service Fabric CLI Script Sample - List the applications provisioned on a Service Fabric cluster.
 services: service-fabric
-author: athinanthny
-manager: chackdan
+author: tomvcassidy
 ms.service: azure-service-fabric
 ms.topic: sample
-ms.date: 04/13/2018
-ms.author: atsenthi
+ms.date: 03/22/2026
+ms.author: tomcassidy
 # Customer intent: As a cloud administrator, I want to use a script to list all applications on a Service Fabric cluster, so that I can manage and monitor the provisioned applications effectively.
 ---
 

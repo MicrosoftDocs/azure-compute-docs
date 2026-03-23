@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 ms.update-cycle: 1095-days
 # Customer intent: As a cloud architect, I want to model applications and services using manifest files in Service Fabric, so that I can effectively manage their development, deployment, and lifecycle in a scalable and reliable manner.
 ---

@@ -1,7 +1,10 @@
 ---
 ms.service: azure-service-fabric
 ms.topic: include
-ms.date: 11/25/2018
+ms.author: tomcassidy
+author: tomvcassidy
+services: service-fabric
+ms.date: 03/22/2026
 # Customer intent: As an operations engineer, I want to understand the differences between Azure CLI and Service Fabric CLI, so that I can effectively manage Azure resources and Service Fabric clusters according to my requirements.
 ---
 > [!IMPORTANT]

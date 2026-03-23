@@ -7,7 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: linux-related-content
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
 # Customer intent: As a cloud application developer, I want to understand the XML schema elements of the service model, so that I can design, deploy, and manage my services in a Service Fabric environment effectively.
 ---
 
@@ -853,7 +853,7 @@ Describes a Microsoft Azure Service Fabric Cluster.
 
 <a id="CodePackageElementCodePackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedCodePackageelement"></a>
 ## CodePackage element
-Describes a code package that supports a defined service type. When a service is instantiated against one of these service types, all code packages declared in this manifest are activated by running their entry points. The resulting processes are expected to register the supported service types at run time. When there are multiple code packages, they are all activated whenever the system looks for any one of the declared service types.
+Describes a code package that supports a defined service type. When a service is instantiated against one of these service types, all code packages declared in this manifest are activated by running their entry points. The resulting processes are expected to register the supported service types at run time. When there are multiple code packages, they're all activated whenever the system looks for any one of the declared service types.
 
 |Attribute|Value|
 |---|---|
@@ -916,7 +916,7 @@ Describes the configuration overrides for a particular config package in the imp
 
 <a id="ConfigOverridesElementanonymouscomplexTypeComplexTypeDefinedInServiceManifestImportelement"></a>
 ## ConfigOverrides element
-Describes configuration overrides for the imported service manifest. Configuration overrides allow the flexibility of re-using the same service manifests across multiple application types by overriding the service manifest's configuration only when used with a particular application type. Configuration overrides can change any default configuration in a service manifest as long as default configuration is defined using the Settings.xml in the ConfigPackage folder. 
+Describes configuration overrides for the imported service manifest. Configuration overrides allow the flexibility of reusing the same service manifests across multiple application types by overriding the service manifest's configuration only when used with a particular application type. Configuration overrides can change any default configuration in a service manifest as long as default configuration is defined using the Settings.xml in the ConfigPackage folder. 
 
 |Attribute|Value|
 |---|---|
@@ -954,7 +954,7 @@ Describes configuration overrides for the imported service manifest. Configurati
 
 <a id="ConfigPackageElementConfigPackageDescriptionTypeComplexTypeDefinedInConfigPackagePoliciesTypecomplexType"></a>
 ## ConfigPackage element (type ConfigPackageDescriptionType) 
-Declares a folder, named by the Name attribute, that contains a Settings.xml file. This file contains sections of user-defined, key-value pair settings that the process can read back at run time. During an upgrade, if only the ConfigPackage version has changed, then the running process is not restarted. Instead, a callback notifies the process that configuration settings have changed so they can be reloaded dynamically.
+Declares a folder, named by the Name attribute, that contains a Settings.xml file. This file contains sections of user-defined, key-value pair settings that the process can read back at run time. During an upgrade, if only the ConfigPackage version has changed, then the running process isn't restarted. Instead, a callback notifies the process that configuration settings have changed so they can be reloaded dynamically.
 
 |Attribute|Value|
 |---|---|
@@ -974,7 +974,7 @@ Declares a folder, named by the Name attribute, that contains a Settings.xml fil
 
 <a id="ConfigPackageElementConfigPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedConfigPackageelement"></a>
 ## ConfigPackage element (type ConfigPackageType) 
-Declares a folder, named by the Name attribute, and PackageRoot that contains a Settings.xml file. This file contains sections of user-defined, key-value pair settings that the process can read back at run time. During an upgrade, if only the ConfigPackage version has changed, then the running process is not restarted. Instead, a callback notifies the process that configuration settings have changed so they can be reloaded dynamically.
+Declares a folder, named by the Name attribute, and PackageRoot that contains a Settings.xml file. This file contains sections of user-defined, key-value pair settings that the process can read back at run time. During an upgrade, if only the ConfigPackage version has changed, then the running process isn't restarted. Instead, a callback notifies the process that configuration settings have changed so they can be reloaded dynamically.
 
 |Attribute|Value|
 |---|---|
@@ -1017,7 +1017,7 @@ Config Packages to be mounted inside the container.
 
 <a id="ConsoleRedirectionElementanonymouscomplexTypeComplexTypeDefinedInExeHostEntryPointTypecomplexType"></a>
 ## ConsoleRedirection element
-Warning! Do not use console redirection in a production application, only use it for local development and debugging. Redirects console output from the startup script to an output file in the application folder called "log" on the cluster node where the application is deployed and run.
+Warning! Don't use console redirection in a production application, only use it for local development and debugging. Redirects console output from the startup script to an output file in the application folder called "log" on the cluster node where the application is deployed and run.
 
 |Attribute|Value|
 |---|---|
@@ -1062,7 +1062,7 @@ Warning! Do not use console redirection in a production application, only use it
 ### Attribute details
 
 #### FileRetentionCount
-Sets the number of console redirection output files to retain.  Must be a positive integer, the default value is "2".
+Sets the number of console redirection output files to retain. Must be a positive integer, the default value is "2".
 
 |Attribute|Value|
 |---|---|
@@ -1070,7 +1070,7 @@ Sets the number of console redirection output files to retain.  Must be a positi
 |default|2|
 
 #### FileMaxSizeInKb
-Set the maximum size of a console redirection output file.  Must be a positive integer greater than 128KB, the default value is "20480".
+Set the maximum size of a console redirection output file  Must be a positive integer greater than 128KB, the default value is "20480".
 
 |Attribute|Value|
 |---|---|
@@ -1285,7 +1285,7 @@ Specifies crash dump collection. Crash dumps are collected for executables that 
 ### Attribute details
 
 #### IsEnabled
-Whether or not crash dump collection is enabled. By default, it is not enabled.
+Whether or not crash dump collection is enabled. By default, it isn't enabled.
 
 |Attribute|Value|
 |---|---|
@@ -1418,7 +1418,7 @@ Specify a default user account for all service code packages that don't have a s
 ### Attribute details
 
 #### UserRef
-The user account that the service code packages will run as.  The user account must be declared in the Principals section. Often it is preferable to run the setup entry point using a local system account rather than an administrators account.
+The user account that the service code packages will run as.  The user account must be declared in the Principals section. Often it's preferable to run the setup entry point using a local system account rather than an administrators account.
 
 |Attribute|Value|
 |---|---|
@@ -2246,7 +2246,7 @@ Specifies config policies for mounts.
 
 <a id="DllHostElementDllHostEntryPointTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType"></a>
 ## DllHost element
-Unsupported, do not use. DLL hosting support (assembly entry point) is provided through the FWP.exe process. Service Fabric starts the Fabric Worker Process (FWP.exe) and loads the assembly as part of the activation process.
+Unsupported, don't use. DLL hosting support (assembly entry point) is provided through the FWP.exe process. Service Fabric starts the Fabric Worker Process (FWP.exe) and loads the assembly as part of the activation process.
 
 |Attribute|Value|
 |---|---|
@@ -2419,7 +2419,7 @@ Lists the ETW provider GUIDs for the components of this service manifest.
 |minOccurs|0|
 
 #### ManifestDataPackages
-Lists the data packages containing ETW manifests for the components of this service manifest. The data package containing ETW manifests should not contain any other files. 
+Lists the data packages containing ETW manifests for the components of this service manifest. The data package containing ETW manifests shouldn't contain any other files. 
 
 |Attribute|Value|
 |---|---|
@@ -2473,7 +2473,7 @@ Specifies ETW trace collection. ETW traces are collected for the providers that 
 ### Attribute details
 
 #### IsEnabled
-Whether or not ETW trace collection is enabled. By default, it is not enabled.
+Whether or not ETW trace collection is enabled. By default, it isn't enabled.
 
 |Attribute|Value|
 |---|---|
@@ -2523,7 +2523,7 @@ The endpoint, declared in the service manifest, to override.
 
 <a id="EndpointElementEndpointTypeComplexTypeDefinedInEndpointselementDefinedInDigestedEndpointelement"></a>
 ## Endpoint element (type EndpointType) 
-Defines an endpoint for the service. Specific ports can be requested.  If a port is not explicitly specified, a port is assigned from the reserved application port range. Service replicas running on different cluster nodes can be assigned different port numbers, while replicas of the same service running on the same node share the same port. Such ports can be used by the service replicas for various purposes such as replication or listening for client requests.
+Defines an endpoint for the service. Specific ports can be requested.  If a port isn't explicitly specified, a port is assigned from the reserved application port range. Service replicas running on different cluster nodes can be assigned different port numbers, while replicas of the same service running on the same node share the same port. Such ports can be used by the service replicas for various purposes such as replication or listening for client requests.
 
 |Attribute|Value|
 |---|---|
@@ -3216,7 +3216,7 @@ Specifies the collection of the contents of a particular folder on the local nod
 ### Attribute details
 
 #### IsEnabled
-Whether or not collection of the contents of this folder is enabled. By default, it is not enabled.
+Whether or not collection of the contents of this folder is enabled. By default, it isn't enabled.
 
 |Attribute|Value|
 |---|---|
@@ -3364,7 +3364,7 @@ Name of the local group account. The name will be prefixed with the application 
 
 <a id="GroupElementanonymouscomplexTypeComplexTypeDefinedInMemberOfelement"></a>
 ## Group element (defined in MemberOf) 
-The group to add the user to.  The group must be defined in the Groups section.
+The group to add the user to. The group must be defined in the Groups section.
 
 |Attribute|Value|
 |---|---|
@@ -3561,7 +3561,7 @@ Describes the policy for evaluating health events reported on various applicatio
 
 <a id="ImageElementImageTypeComplexTypeDefinedInImageOverridesTypecomplexType"></a>
 ## Image element
-Container image corresponding to OS build version number to be launched. If the Os attribute is not specified, the container image
+Container image corresponding to OS build version number to be launched. If the Os attribute isn't specified, the container image
             is assumed to work across all versions of the OS and overrides the image specified in the service manifest.
 
 |Attribute|Value|
@@ -3962,7 +3962,7 @@ Specifies the labels for the container.
 
 <a id="LoadMetricElementLoadMetricTypeComplexTypeDefinedInLoadMetricselementDefinedInLoadMetricselementDefinedInLoadMetricselementDefinedInLoadMetricselementDefinedInLoadMetricselement"></a>
 ## LoadMetric element
-A resource that this service should be balanced on, such as memory or CPU usage.  Includes information about how much of that resource each replica or instance of this service consumes by default.
+A resource that this service should be balanced on, such as memory or CPU usage. Includes information about how much of that resource each replica or instance of this service consumes by default.
 
 |Attribute|Value|
 |---|---|
@@ -4356,7 +4356,7 @@ Describes a LogicalDirectoryType.
 
 <a id="ManagedAssemblyElementManagedAssemblyTypeComplexTypeDefinedInDllHostEntryPointTypecomplexType"></a>
 ## ManagedAssembly element
-Unsupported, do not use. The name of managed assembly (for example, Queue.dll), to host.
+Unsupported, don't use. The name of managed assembly (for example, Queue.dll), to host.
 
 |Attribute|Value|
 |---|---|
@@ -4394,7 +4394,7 @@ Declares a folder, named by the Name attribute, under PackageRoot which contains
 
 <a id="ManifestDataPackagesElementanonymouscomplexTypeComplexTypeDefinedInETWelement"></a>
 ## ManifestDataPackages element
-Lists the data packages containing ETW manifests for the components of this service manifest. The data package containing ETW manifests should not contain any other files. 
+Lists the data packages containing ETW manifests for the components of this service manifest. The data package containing ETW manifests shouldn't contain any other files. 
 
 |Attribute|Value|
 |---|---|
@@ -5430,7 +5430,7 @@ The name of the parameter to be used in the manifest as "[Name]".
 |use|required|
 
 #### DefaultValue
-Default value for the parameter, used if the parameter value is not provided during application instantiation.
+Default value for the parameter, used if the parameter value isn't provided during application instantiation.
 
 |Attribute|Value|
 |---|---|
@@ -6715,7 +6715,7 @@ List of security policies applied to resources at the application level.
 
 <a id="SecurityAccessPolicyElementSecurityAccessPolicyTypeComplexTypeDefinedInServiceManifestImportPoliciesTypecomplexTypeDefinedInSecurityAccessPolicieselementDefinedInDigestedEndpointelement"></a>
 ## SecurityAccessPolicy element
-Grants access permissions to a principal on a resource (such as an endpoint) defined in a service manifest. Typically, it is very useful to control and restrict access of services to different resources in order to minimize security risks. This is especially important when the application is built from a collection of services from a marketplace which are developed by different developers.
+Grants access permissions to a principal on a resource (such as an endpoint) defined in a service manifest. Typically, it's very useful to control and restrict access of services to different resources in order to minimize security risks. This is especially important when the application is built from a collection of services from a marketplace which are developed by different developers.
 
 |Attribute|Value|
 |---|---|
@@ -7055,7 +7055,7 @@ Specifies policies that determine how the service fabric runtime is exposed to t
 
 <a id="ServiceGroupElementanonymouscomplexTypeComplexTypeDefinedInDefaultServicesTypecomplexType"></a>
 ## ServiceGroup element
-A collection of services that are automatically located together, so they are also moved together during fail-over or resource management.
+A collection of services that are automatically located together, so they're also moved together during fail-over or resource management.
 
 |Attribute|Value|
 |---|---|
@@ -7298,7 +7298,7 @@ Imports a service manifest created by the service developer. A service manifest 
 |type|[ServiceManifestRefType](service-fabric-service-model-schema-complex-types.md#servicemanifestreftype-complextype)|
 
 #### ConfigOverrides
-Describes configuration overrides for the imported service manifest. Configuration overrides allow the flexibility of re-using the same service manifests across multiple application types by overriding the service manifest's configuration only when used with a particular application type. Configuration overrides can change any default configuration in a service manifest as long as default configuration is defined using the Settings.xml in the ConfigPackage folder. 
+Describes configuration overrides for the imported service manifest. Configuration overrides allow the flexibility of reusing the same service manifests across multiple application types by overriding the service manifest's configuration only when used with a particular application type. Configuration overrides can change any default configuration in a service manifest as long as default configuration is defined using the Settings.xml in the ConfigPackage folder. 
 
 |Attribute|Value|
 |---|---|
@@ -7505,7 +7505,7 @@ Declares placement policies for a service.  Useful when the cluster spans geogra
 ### Content element details
 
 #### ServicePlacementPolicy
-Defines a service placement policy, which specifies that the service should or should not run in certain cluster fault domains.  Useful when the cluster spans geographic distances or and/or geopolitical regions.
+Defines a service placement policy, which specifies that the service should or shouldn't run in certain cluster fault domains. Useful when the cluster spans geographic distances or and/or geopolitical regions.
 
 |Attribute|Value|
 |---|---|
@@ -7514,7 +7514,7 @@ Defines a service placement policy, which specifies that the service should or s
 
 <a id="ServicePlacementPoliciesElementanonymouscomplexTypeComplexTypeDefinedInServiceTypecomplexType"></a>
 ## ServicePlacementPolicies element (defined in ServiceType) 
-Declares placement policies for a service.  Useful when the cluster spans geographic distances or and/or geopolitical regions.
+Declares placement policies for a service. Useful when the cluster spans geographic distances or and/or geopolitical regions.
 
 |Attribute|Value|
 |---|---|
@@ -7572,7 +7572,7 @@ Declares placement policies for a service.  Useful when the cluster spans geogra
 ### Content element details
 
 #### ServicePlacementPolicy
-Defines a service placement policy, which specifies that the service should or should not run in certain cluster fault domains.  Useful when the cluster spans geographic distances or and/or geopolitical regions.
+Defines a service placement policy, which specifies that the service should or shouldn't run in certain cluster fault domains. Useful when the cluster spans geographic distances or and/or geopolitical regions.
 
 |Attribute|Value|
 |---|---|
@@ -7581,7 +7581,7 @@ Defines a service placement policy, which specifies that the service should or s
 
 <a id="ServicePlacementPolicyElementanonymouscomplexTypeComplexTypeDefinedInServicePlacementPolicieselement"></a>
 ## ServicePlacementPolicy element defined in ServicePlacementPolicies
-Defines a service placement policy, which specifies that the service should or should not run in certain cluster fault domains.  Useful when the cluster spans geographic distances or and/or geopolitical regions.
+Defines a service placement policy, which specifies that the service should or shouldn't run in certain cluster fault domains. Useful when the cluster spans geographic distances or and/or geopolitical regions.
 
 |Attribute|Value|
 |---|---|
@@ -7630,14 +7630,14 @@ Defines a service placement policy, which specifies that the service should or s
 ### Attribute details
 
 #### DomainName
-The fault domain where the service should or should not be placed, depending on the Type value.
+The fault domain where the service should or shouldn't be placed, depending on the Type value.
 
 |Attribute|Value|
 |---|---|
 |name|DomainName|
 
 #### Type
-InvalidDomain allows you to specify that a particular Fault Domain is invalid for this workload. RequiredDomain requires that all of the replicas be present in the specified domain. Multiple required domains can be specified. PreferredPrimaryDomain specifies the preferred Fault Domain for primary replicas. Useful in geographically spanned clusters where you are using other locations for redundancy, but would prefer that the primary replicas be placed in a certain location in order to provider lower latency for operations which go to the primary. RequiredDomainDistribution specifies that replicas are required to be distributed among the available fault domains. NonPartiallyPlace controls if the service replicas will be partially place if not all of them can be placed.
+InvalidDomain allows you to specify that a particular Fault Domain is invalid for this workload. RequiredDomain requires that all of the replicas be present in the specified domain. Multiple required domains can be specified. PreferredPrimaryDomain specifies the preferred Fault Domain for primary replicas. Useful in geographically spanned clusters where you're using other locations for redundancy, but would prefer that the primary replicas be placed in a certain location in order to provider lower latency for operations which go to the primary. RequiredDomainDistribution specifies that replicas are required to be distributed among the available fault domains. NonPartiallyPlace controls if the service replicas are partially place if not all of them can be placed.
 
 |Attribute|Value|
 |---|---|
@@ -7647,7 +7647,7 @@ InvalidDomain allows you to specify that a particular Fault Domain is invalid fo
 
 <a id="ServicePlacementPolicyElementanonymouscomplexTypeComplexTypeDefinedInServicePlacementPolicieselement"></a>
 ## ServicePlacementPolicy element (defined in ServicePlacementPolicies) 
-Defines a service placement policy, which specifies that the service should or should not run in certain cluster fault domains.  Useful when the cluster spans geographic distances or and/or geopolitical regions.
+Defines a service placement policy, which specifies that the service should or shouldn't run in certain cluster fault domains. Useful when the cluster spans geographic distances or and/or geopolitical regions.
 
 |Attribute|Value|
 |---|---|
@@ -7696,14 +7696,14 @@ Defines a service placement policy, which specifies that the service should or s
 ### Attribute details
 
 #### DomainName
-The fault domain where the service should or should not be placed, depending on the Type value.
+The fault domain where the service should or shouldn't be placed, depending on the Type value.
 
 |Attribute|Value|
 |---|---|
 |name|DomainName|
 
 #### Type
-InvalidDomain allows you to specify that a particular Fault Domain is invalid for this workload. RequiredDomain requires that all of the replicas be present in the specified domain. Multiple required domains can be specified. PreferredPrimaryDomain specifies the preferred Fault Domain for primary replicas. Useful in geographically spanned clusters where you are using other locations for redundancy, but would prefer that the primary replicas be placed in a certain location in order to provider lower latency for operations which go to the primary. RequiredDomainDistribution specifies that replicas are required to be distributed among the available fault domains. NonPartiallyPlace controls if the service replicas will be partially place if not all of them can be placed. 
+InvalidDomain allows you to specify that a particular Fault Domain is invalid for this workload. RequiredDomain requires that all of the replicas be present in the specified domain. Multiple required domains can be specified. PreferredPrimaryDomain specifies the preferred Fault Domain for primary replicas. Useful in geographically spanned clusters where you're using other locations for redundancy, but would prefer that the primary replicas be placed in a certain location in order to provider lower latency for operations which go to the primary. RequiredDomainDistribution specifies that replicas are required to be distributed among the available fault domains. NonPartiallyPlace controls if the service replicas are partially place if not all of them can be placed. 
 
 |Attribute|Value|
 |---|---|
@@ -8269,7 +8269,7 @@ Describes a stateless service type.
 
 <a id="SystemGroupElementanonymouscomplexTypeComplexTypeDefinedInMemberOfelement"></a>
 ## SystemGroup element (defined in MemberOf) 
-The system group to add the user to.  The system group must be defined in the Groups section.
+The system group to add the user to. The system group must be defined in the Groups section.
 
 |Attribute|Value|
 |---|---|
@@ -8423,7 +8423,7 @@ Describes a uniform partitioning scheme based on Int64 keys.
 ### Attribute details
 
 #### PartitionCount
-Total number of partitions (positive integer). Each partition is responsible for a non-overlapping subrange of the overall partition key range.
+Total number of partitions (positive integer). Each partition is responsible for a nonoverlapping subrange of the overall partition key range.
 
 |Attribute|Value|
 |---|---|
@@ -8452,7 +8452,7 @@ Inclusive high range of the partition key (long).
 
 <a id="UnmanagedDllElementUnmanagedDllTypeComplexTypeDefinedInDllHostEntryPointTypecomplexType"></a>
 ## UnmanagedDll element
-Unsupported, do not use. The name of unmanaged assembly (for example, Queue.dll), to host.
+Unsupported, don't use. The name of unmanaged assembly (for example, Queue.dll), to host.
 
 |Attribute|Value|
 |---|---|
@@ -8624,7 +8624,7 @@ Name of the user account.
 |use|required|
 
 #### AccountType
-Specifies the type of account: LocalUser, DomainUser, NetworkService, LocalService, ManagedServiceAccount, or LocalSystem.  The default is LocalUser. Local user accounts are created on the machines where the application is deployed. By default, these accounts do not have the same names as those specified here. Instead, they are dynamically generated and have random passwords. Supported local system account types are LocalUser, NetworkService, LocalService and LocalSystem. Domain accounts are supported on Windows Server deployments where Microsoft Entra ID is available.
+Specifies the type of account: LocalUser, DomainUser, NetworkService, LocalService, ManagedServiceAccount, or LocalSystem. The default is LocalUser. Local user accounts are created on the machines where the application is deployed. By default, these accounts don't have the same names as those specified here. Instead, they're dynamically generated and have random passwords. Supported local system account types are LocalUser, NetworkService, LocalService and LocalSystem. Domain accounts are supported on Windows Server deployments where Microsoft Entra ID is available.
 
 |Attribute|Value|
 |---|---|
