@@ -84,8 +84,8 @@ Remote (uncached) storage info for each size
 | Standard_M416s_6_v3 | 64 | 130,000 | 4,000 | 130,000 | 4,000 |
 | Standard_M416s_8_v3 | 64 | 130,000 | 4,000 | 130,000 | 4,000 |
 | Standard_M624s_12_v3 | 64 | 130,000 | 4,000 | 130,000 | 4,000 |
-| Standard_M832s_12_v3 | 64 | 130,000 | 4,000 | 130,000 | 4,000 |
-| Standard_M832is_16_v3 | 64 | 130,000 | 4,000 | 130,000 | 4,000 |
+| Standard_M832s_12_v3 | 64 | 130,000 | 4,000 | 215,000 | 6,000 |
+| Standard_M832is_16_v3 | 64 | 130,000 | 4,000 | 215,000 | 6,000 |
 
 #### Storage resources
 - [Introduction to Azure Managed Disks](../../../virtual-machines/managed-disks-overview.md)
