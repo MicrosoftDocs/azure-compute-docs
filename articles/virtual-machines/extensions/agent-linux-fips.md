@@ -59,17 +59,7 @@ Afterward, validate to ensure the functionality of the VM extensions.
 
 ## Implement prerequisites
 
-### 1. Enabled regions
-
-To view the latest supported regions, use the Linux VM Guest [v2.14.0.1](https://github.com/Azure/WALinuxAgent/releases/tag/v2.14.0.1) release page.
-
-| Cloud | Region |
-|:-----|:-----|
-| Commercial | All regions |
-| USGov | All regions |
-| Air-Gap | All regions |
-
-### 2. Subscription enablement/opt-in
+### Subscription enablement/opt-in
 
 Because not all extensions are onboarded by using FIPS 140-3 encryption yet, we require the subscription to opt in to the feature `_Microsoft.Compute/OptInToFips1403Compliance_`.
 
@@ -97,7 +87,7 @@ az feature list | jq '.[] | select(.name=="Microsoft.Compute/OptInToFips1403Comp
 
 ---
 
-### 3. Per-VM opt-in
+### 2. Per-VM opt-in
 
 There are different methods available for opting in to each VM. You can make the changes at deployment for a new VM. You can also alter an existing VM to add the FIPS 140-3 enablement on the Azure platform.
 
@@ -111,12 +101,12 @@ To deploy a new VM with FIPS 140-3 enablement turned on immediately, use an Azur
 ```json
 {
   "type": "Microsoft.Compute/virtualMachines",
-  "apiVersion": "2022-03-01",
+  "apiVersion": "2025-04-01",
   "name": "[parameters('vmName')]",
   "location": "[parameters('location')]",
   "properties": {
 	  "additionalCapabilities": {
-      "enableFips1403Encryption": "true"
+      "enableFips1403Encryption": "true" //bool here but string in the sample
     }
   }
 }
@@ -150,7 +140,7 @@ The command output should include:
 
 ```json
 {
- "enableFips1403Encryption": true
+ "enableFips1403Encryption": true //bool here but string in the sample
 }
 ```
 
