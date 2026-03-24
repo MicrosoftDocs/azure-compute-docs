@@ -24,7 +24,7 @@ Isolated Image Builds enables defense-in-depth by limiting network access of you
 2. **Network Isolation:** Isolated Image Builds removes all direct network WinRM/SSH communication between your build VM and backend components of the AIB service.
     - If you're provisioning an AIB template without your own subnet for build VM, then a Public IP Address resource is no longer provisioned in your staging resource group at image build time.
     - If you're provisioning an AIB template with an existing subnet for build VM, then a Private Link-based communication channel is no longer set up between your build VM and AIB's backend platform resources. Instead, the communication channel is set up between the ACI and the build VM resources, both of which reside in the staging resource group in your subscription.
-    - Starting with API version 2024-02-01, you can specify a second subnet for deploying the ACI in addition to the subnet for the build VM. If specified, AIB deploys the ACI on this subnet, and there is no need for AIB to set up the Private Link-based communication channel between the ACI and the build VM. For more information about the second subnet, see [Bring your own build VM subnet and bring your own ACI subnet](./security-isolated-image-builds-image-builder.md#bring-your-own-build-vm-subnet-and-bring-your-own-aci-subnet).
+    - Starting with API version 2024-02-01, you can specify a second subnet for deploying the ACI in addition to the subnet for the build VM. If specified, AIB deploys the ACI on this subnet, and there is no need for AIB to set up the Private Link-based communication channel between the ACI and the build VM.
 
 3. **Transparency:** AIB is built on HashiCorp [Packer](https://www.packer.io/). Isolated Image Builds executes Packer in the ACI in your subscription, which allows you to inspect the ACI resource and its containers. Similarly, having the entire network communication pipeline in your subscription allows you to inspect all the network resources, their settings, and their allowances.
 4. **Better viewing of live logs:** AIB writes customization logs to a storage account in the staging resource group in your subscription. Isolated Image Builds provides another way to follow the same logs directly in the Azure portal by navigating to AIB's container in the ACI resource.
@@ -36,7 +36,7 @@ For more information about networking topologies and connectivity behavior, see 
 
 ## Backward compatibility
 
-Isolated Image Builds is a platform-level change and doesn't affect AIB's interfaces. So, your existing Image Template and Trigger resources continue to function and there's no change in the way you deploy new resources of these types. You need to create new templates or update existing templates if you want to use [the network topology that allows you to bring your own ACI subnet](./security-isolated-image-builds-image-builder.md#bring-your-own-build-vm-subnet-and-bring-your-own-aci-subnet).
+Isolated Image Builds is a platform-level change and doesn't affect AIB's interfaces. So, your existing Image Template and Trigger resources continue to function and there's no change in the way you deploy new resources of these types. You need to create new templates or update existing templates if you want to use the network topology that allows you to bring your own ACI subnet.
 
 Your image builds are automatically migrated to Isolated Image Builds and you need to take no action to opt in. Also, customization logs continue to be available in the storage account.
 
