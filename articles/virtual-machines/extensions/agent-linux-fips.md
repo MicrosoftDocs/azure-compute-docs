@@ -106,7 +106,7 @@ To deploy a new VM with FIPS 140-3 enablement turned on immediately, use an Azur
   "location": "[parameters('location')]",
   "properties": {
 	  "additionalCapabilities": {
-      "enableFips1403Encryption": "true" //bool here but string in the sample
+      "enableFips1403Encryption": true
     }
   }
 }
@@ -140,7 +140,7 @@ The command output should include:
 
 ```json
 {
- "enableFips1403Encryption": true //bool here but string in the sample
+ "enableFips1403Encryption": true
 }
 ```
 
