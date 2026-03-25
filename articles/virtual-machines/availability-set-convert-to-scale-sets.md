@@ -26,7 +26,7 @@ Azure provides two approaches for moving VMs from availability sets to Virtual M
 | **Availability zone support** | No. Regional only.                              | Yes. Target specific zones.                         |
 | **Future zonal migration**    | Not supported                                     | Not applicable. Already zonal.                      |
 | **VM size changes**           | No                                                | Yes (during migration)                                |
-| **VMSS creation**             | Auto-created by the API                           | Must pre-create VMSS                                  |
+| **VMSS creation**             | Automatically created                          | Create VMSS prior to migration                                  |
 | **Best for**                  | Zero-downtime conversion when zones aren't needed | Full VMSS capabilities, zonal deployments             |
 
 > [!IMPORTANT]
