@@ -11,22 +11,22 @@ ms.date: 03/17/2026
 
 **Applies to:** ✔️ Linux VMs ✔️ Windows VMs ✔️ Flexible scale sets
 
-This article describes how to convert an availability set and all its VMs to a Virtual Machine Scale Set with Flexible orchestration mode using the Convert API. The conversion is a single operation that requires **zero downtime** — VMs remain running throughout the process.
+This article describes how to convert an availability set and all its VMs to a Virtual Machine Scale Set with Flexible orchestration mode using the Convert API. The conversion is a single operation that requires **zero downtime**. VMs remain running throughout the process.
 
 > [!IMPORTANT]
 > The availability set to Virtual Machine Scale Sets conversion feature is currently in **preview**. Previews are made available to you on the condition that you agree to the [supplemental terms of use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Some aspects of this feature may change prior to general availability (GA).
 
 ## Choose the right migration approach
 
-Azure provides two approaches for moving VMs from availability sets to Virtual Machine Scale Sets. Review the differences carefully before choosing an approach — the choice affects the capabilities available to your workloads after migration.
+Azure provides two approaches for moving VMs from availability sets to Virtual Machine Scale Sets. Review the differences carefully before choosing an approach. The choice affects the capabilities available to your workloads after migration.
 
 | Feature                             | Convert API                                       | [Migrate API](availability-set-migrate-to-scale-sets.md) |
 | ----------------------------------- | ------------------------------------------------- | ----------------------------------------------------- |
-| **Downtime**                  | None — VMs remain running                        | VMs deallocated during migration                      |
+| **Downtime**                  | None. VMs remain running.                       | VMs deallocated during migration                      |
 | **Migration scope**           | All VMs at once                                   | One VM at a time                                      |
-| **VMSS capabilities**         | Limited — subset of Flexible features            | Full — all Flexible features available               |
-| **Availability zone support** | No — regional only                               | Yes — target specific zones                          |
-| **Future zonal migration**    | Not supported                                     | Not applicable — already zonal                       |
+| **VMSS capabilities**         | Limited. Subset of Flexible features.           | Full. All Flexible features available.              |
+| **Availability zone support** | No. Regional only.                              | Yes. Target specific zones.                         |
+| **Future zonal migration**    | Not supported                                     | Not applicable. Already zonal.                      |
 | **VM size changes**           | No                                                | Yes (during migration)                                |
 | **VMSS creation**             | Auto-created by the API                           | Must pre-create VMSS                                  |
 | **Best for**                  | Zero-downtime conversion when zones aren't needed | Full VMSS capabilities, zonal deployments             |
@@ -43,9 +43,9 @@ Azure provides two approaches for moving VMs from availability sets to Virtual M
 - You want to **change VM sizes** or configurations during migration
 - You can tolerate brief per-VM downtime during a maintenance window
 
-**Use the Convert API** (this article) only when:
+**Use the Convert API** only when:
 
-- You **cannot tolerate any downtime** — not even a brief maintenance window
+- You **cannot tolerate any downtime**. Not even a brief maintenance window.
 - You **don't need availability zones** and won't need them in the future
 - You accept the **limited feature set** of converted scale sets
 - Regional fault domain distribution is sufficient for your availability requirements
@@ -70,13 +70,13 @@ Before you begin, ensure you have the following:
 
 The following configurations and scenarios aren't supported for conversion:
 
-- **Azure portal** — Conversion isn't supported in the Azure portal. 
-- VMs with **basic public IP addresses** — Upgrade to Standard SKU before conversion
-- VMs behind a **basic Load Balancer** — Upgrade to Standard Load Balancer before conversion
-- VMs with **unmanaged disks** — Convert to managed disks before conversion
-- **Zonal deployments** — The Convert API creates regional scale sets only. Use the [Migrate API](availability-set-migrate-to-scale-sets.md) for availability zone targeting
-- **Migration to availability zones after conversion** — Scale sets created through conversion can't be migrated to availability zones. If zonal deployment is a future requirement, use the [Migrate API](availability-set-migrate-to-scale-sets.md) instead
-- An existing scale set with the **same name** as the target VMSS name — Rename or remove the existing scale set before conversion
+- **Azure portal**. Conversion isn't supported in the Azure portal.
+- VMs with **basic public IP addresses**. Upgrade to Standard SKU before conversion.
+- VMs behind a **basic Load Balancer**. Upgrade to Standard Load Balancer before conversion.
+- VMs with **unmanaged disks**. Convert to managed disks before conversion.
+- **Zonal deployments**. The Convert API creates regional scale sets only. Use the [Migrate API](availability-set-migrate-to-scale-sets.md) for availability zone targeting.
+- **Migration to availability zones after conversion**. Scale sets created through conversion can't be migrated to availability zones. If zonal deployment is a future requirement, use the [Migrate API](availability-set-migrate-to-scale-sets.md) instead
+- An existing scale set with the **same name** as the target VMSS name. Rename or remove the existing scale set before conversion.
 
 ### Register the preview feature
 
@@ -137,7 +137,7 @@ The Convert API automatically:
 - Removes the original availability set after successful conversion
 
 > [!IMPORTANT]
-> Conversion is a **one-way operation** — you can't convert back to an availability set. The original availability set is deleted upon successful conversion.
+> Conversion is a **one-way operation**. You can't convert back to an availability set. The original availability set is deleted upon successful conversion.
 
 ## Step 1: Convert the availability set
 
@@ -286,7 +286,7 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 ## Next steps
 
-- [Migrate availability sets to Virtual Machine Scale Sets](availability-set-migrate-to-scale-sets.md) — Alternative approach with per-VM control and availability zone support
+- [Migrate availability sets to Virtual Machine Scale Sets](availability-set-migrate-to-scale-sets.md). Alternative approach with per-VM control and availability zone support.
 - [What are Virtual Machine Scale Sets?](/azure/virtual-machine-scale-sets/overview)
 - [Orchestration modes for Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes)
 - [Flexible orchestration mode for Virtual Machine Scale Sets](/azure/virtual-machines/flexible-virtual-machine-scale-sets)
