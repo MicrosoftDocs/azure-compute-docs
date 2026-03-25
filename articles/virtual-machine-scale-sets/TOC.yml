@@ -200,6 +200,7 @@
     maintainContext: true
   - name: Migrate from availability sets
     href: ../virtual-machines/availability-set-migrate-to-scale-sets.md
+    matainContext: true
   - name: Convert from availability sets
     href: ../virtual-machines/availability-set-convert-to-scale-sets.md    
     maintainContext: true
