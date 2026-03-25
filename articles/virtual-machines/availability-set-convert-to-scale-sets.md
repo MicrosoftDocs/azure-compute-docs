@@ -74,7 +74,6 @@ The following configurations and scenarios aren't supported for conversion:
 - VMs with **unmanaged disks**. Convert to managed disks before conversion.
 - **Zonal deployments**. The Convert API creates regional scale sets only. Use the [Migrate API](availability-set-migrate-to-scale-sets.md) for availability zone targeting.
 - **Migration to availability zones after conversion**. Scale sets created through conversion can't be migrated to availability zones. If zonal deployment is a future requirement, use the [Migrate API](availability-set-migrate-to-scale-sets.md) instead
-- An existing scale set with the **same name** as the target scale set name. Rename or remove the existing scale set before conversion.
 
 ### Register the preview feature
 
@@ -184,49 +183,40 @@ After the conversion completes, verify that all VMs are now members of the new V
 # [Azure CLI](#tab/cli)
 
 ```azurecli
-# List VM instances in the new scale set
+# List VMs in the scale set and their status
 az vmss list-instances \
   --resource-group "<resource-group-name>" \
   --name "<scale-set-name>" \
   --output table
 
-# Get scale set details
-az vmss show \
-  --resource-group "<resource-group-name>" \
-  --name "<scale-set-name>" \
-  --query "{name:name, orchestrationMode:orchestrationMode, platformFaultDomainCount:platformFaultDomainCount}"
-
 # Confirm the availability set no longer exists
-az vm availability-set show \
-  --name "<availability-set-name>" \
-  --resource-group "<resource-group-name>" 2>/dev/null || echo "Availability set removed successfully"
+az vm availability-set list \
+  --resource-group "<resource-group-name>" \
+  --output table
 ```
 
 # [Azure PowerShell](#tab/powershell)
 
 ```azurepowershell
-# List all VM instances in the new scale set
+# List VMs in the scale set and their status
 Get-AzVmssVM -ResourceGroupName "<resource-group-name>" -VMScaleSetName "<scale-set-name>"
 
-# Get scale set details
-Get-AzVmss -ResourceGroupName "<resource-group-name>" -VMScaleSetName "<scale-set-name>"
-
 # Confirm the availability set no longer exists
-Get-AzAvailabilitySet -ResourceGroupName "<resource-group-name>" -Name "<availability-set-name>" -ErrorAction SilentlyContinue
+Get-AzAvailabilitySet -ResourceGroupName "<resource-group-name>"
 ```
 
 # [REST API](#tab/rest)
 
-List VM instances in the new scale set:
+List VMs in the scale set:
 
 ```http
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{scaleSetName}/virtualMachines?api-version=2024-11-01
 ```
 
-Get scale set details:
+List availability sets in the resource group:
 
 ```http
-GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{scaleSetName}?api-version=2024-11-01
+GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets?api-version=2024-11-01
 ```
 
 ---
