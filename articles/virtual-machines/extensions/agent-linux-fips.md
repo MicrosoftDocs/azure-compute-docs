@@ -59,7 +59,7 @@ Afterward, validate to ensure the functionality of the VM extensions.
 
 ## Implement prerequisites
 
-### Subscription enablement/opt-in
+### 1. Subscription enablement/opt-in
 
 Because not all extensions are onboarded by using FIPS 140-3 encryption yet, we require the subscription to opt in to the feature `_Microsoft.Compute/OptInToFips1403Compliance_`.
 
@@ -172,7 +172,7 @@ Leaving the marker here, but deleting the content pending research -->
 
 ---
 
-### 4. In-guest considerations
+### 3. In-guest considerations
 
 Important changes must be made to the Linux OS environment to enable and support FIPS 140-3 compliance.
 
