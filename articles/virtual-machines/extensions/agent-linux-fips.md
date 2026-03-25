@@ -140,7 +140,7 @@ The command output should include:
 
 ```json
 {
- "enableFips1403Encryption": true //bool here but string in the sample
+ "enableFips1403Encryption": true
 }
 ```
 
