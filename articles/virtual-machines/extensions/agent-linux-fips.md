@@ -101,7 +101,7 @@ To deploy a new VM with FIPS 140-3 enablement turned on immediately, use an Azur
 ```json
 {
   "type": "Microsoft.Compute/virtualMachines",
-  "apiVersion": "2025-04-01",
+  "apiVersion": "2024-11-01",
   "name": "[parameters('vmName')]",
   "location": "[parameters('location')]",
   "properties": {
