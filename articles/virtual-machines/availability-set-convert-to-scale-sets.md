@@ -22,15 +22,15 @@ Azure provides two approaches for moving VMs from availability sets to Virtual M
 | ----------------------------------- | ------------------------------------------------- | ----------------------------------------------------- |
 | **Downtime**                  | None. VMs remain running.                       | VMs deallocated during migration                      |
 | **Migration scope**           | All VMs at once                                   | One VM at a time                                      |
-| **VMSS capabilities**         | Limited. Subset of Flexible features.           | Full. All Flexible features available.              |
+| **Scale set capabilities**         | Limited. Subset of Flexible features.           | Full. All Flexible features available.              |
 | **Availability zone support** | No. Regional only.                              | Yes. Target specific zones.                         |
 | **Future zonal migration**    | Not supported                                     | Not applicable. Already zonal.                      |
 | **VM size changes**           | No                                                | Yes (during migration)                                |
-| **VMSS creation**             | Automatically created                          | Create VMSS prior to migration                                  |
-| **Best for**                  | Zero-downtime conversion when zones aren't needed | Full VMSS capabilities, zonal deployments             |
+| **Scale set creation**             | Automatically created                          | Create scale set prior to migration                                  |
+| **Best for**                  | Zero-downtime conversion when zones aren't needed | Full scale capabilities, zonal deployments             |
 
 > [!IMPORTANT]
-> The Convert API produces a scale set with a **limited subset of Flexible orchestration features** and **no availability zone support**. If you need full VMSS capabilities or zone placement, use the [Migrate API](availability-set-migrate-to-scale-sets.md) instead.
+> The Convert API produces a scale set with a **limited subset of Flexible orchestration features** and **no availability zone support**. If you need full scale capabilities or zone placement, use the [Migrate API](availability-set-migrate-to-scale-sets.md) instead.
 
 ### When to use each approach
 
@@ -74,7 +74,7 @@ The following configurations and scenarios aren't supported for conversion:
 - VMs with **unmanaged disks**. Convert to managed disks before conversion.
 - **Zonal deployments**. The Convert API creates regional scale sets only. Use the [Migrate API](availability-set-migrate-to-scale-sets.md) for availability zone targeting.
 - **Migration to availability zones after conversion**. Scale sets created through conversion can't be migrated to availability zones. If zonal deployment is a future requirement, use the [Migrate API](availability-set-migrate-to-scale-sets.md) instead
-- An existing scale set with the **same name** as the target VMSS name. Rename or remove the existing scale set before conversion.
+- An existing scale set with the **same name** as the target scale set name. Rename or remove the existing scale set before conversion.
 
 ### Register the preview feature
 
@@ -129,7 +129,7 @@ The Convert API performs the entire migration in a single call. After conversion
 
 The Convert API automatically:
 
-- Creates a new Virtual Machine Scale Set with Flexible orchestration. You can specify a custom VMSS name using the CLI or PowerShell, or the API defaults to the availability set name.
+- Creates a new Virtual Machine Scale Set with Flexible orchestration. You can specify a custom scale set name using the CLI or PowerShell, or the API defaults to the availability set name.
 - Moves all VMs from the availability set into the scale set
 - Keeps all VMs **running** throughout the process (zero downtime)
 - Removes the original availability set after successful conversion
