@@ -209,8 +209,8 @@ sections:
 
           - **Virtual machine scale sets that need to scale out:** Scale-out operations are blocked after the enforcement date because they require creating new instances from the deprecated image. Migrate before enforcement if you need scale-out capability.
           - **Workloads that require reimage operations:** Reimage recreates the OS disk from the source image, which fails after the image is deprecated.
-          - **Disaster recovery scenarios:** Azure Site Recovery and backup restore operations that rely on the deprecated image don't work after enforcement.
-          - **Paid Marketplace images:** After deprecation, you can't create new workloads or perform restore operations because of missing purchase plan information. Migrate to a supported image.
+          - **Disaster recovery scenarios for non-endorsed images:** Azure Site Recovery and backup restore operations that rely on deprecated non-Microsoft-endorsed images don't work after enforcement. [Microsoft-endorsed Linux distributions](linux/endorsed-distros.md) (like Canonical Ubuntu, Red Hat, SUSE) and [Windows Server images](windows/windows-desktop-multitenant-hosting-deployment.md) aren't affected—Azure Site Recovery and backup operations continue to work normally for these images even after deprecation.
+          - **Images with plan info:** After deprecation, you can't create new workloads or perform restore operations because of missing [purchase plan information](marketplace-images.md). Migrate to a supported image.
 
           **Migration not required**
 
