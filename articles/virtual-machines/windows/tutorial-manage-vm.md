@@ -4,7 +4,7 @@ description: In this tutorial, you learn how to use Azure PowerShell to create a
 author: cynthn
 ms.service: azure-virtual-machines
 ms.topic: tutorial
-ms.date: 10/28/2024
+ms.date: 03/26/2026
 ms.author: cynthn
 ms.collection: windows
 ms.custom: mvc, devx-track-azurepowershell
