@@ -36,8 +36,8 @@ Sign in to the [Azure portal](https://portal.azure.com).
 
 1. Enter *virtual machines* in the search.
 1. Under **Services**, select **Virtual machines**.
-1. In the **Virtual machines** page, select **Create** and then **Virtual machine**. The **Create a virtual machine** page opens.
-1. Under **Instance details**, enter *myVM* for the **Virtual machine name** and choose *Windows Server 2022 Datacenter: Azure Edition - x64 Gen 2* for the **Image**. The page will fill in the other fields with defaults and use the VM name to create default names for the other resources that are needed.
+1. In the **Virtual machines** page, select **Create** from the menu at the top of the page and then select **Virtual machine** from the drop-down. The **Create a virtual machine** page opens.
+1. Under **Instance details**, enter *myVM* for the **Virtual machine name** and choose *Windows Server 2022 Datacenter: Azure Edition - x64 Gen 2* for the **Image**. The page will fill in the other fields with defaults and use the VM name to create similar names for the other resources that are needed.
 
     :::image type="content" source="media/quick-create-portal/instance-details.png" alt-text="Screenshot of the Instance details section where you provide a name for the virtual machine and select its region, image and size." lightbox="media/quick-create-portal/instance-details.png":::
 
@@ -55,7 +55,7 @@ Sign in to the [Azure portal](https://portal.azure.com).
 
 1. At the top of the page, select the **Management** tab.
 1. In the **Auto-shutdown** section, select the **Enable auto-shutdown** option.
-1. Select a **Shutdown time** and the **Time zone** to use (UTC is the default). You can also choose to be notified by e-mail before the shutdown.For more information see [Auto-shutdown](/azure/virtual-machines/auto-shutdown-vm).
+1. Select a **Shutdown time** and the **Time zone** to use (UTC is the default). Optionally you can choose to be notified by e-mail before the shutdown. For more information see [Auto-shutdown](/azure/virtual-machines/auto-shutdown-vm).
 
 1. Leave the remaining defaults and then select the **Review + create** button at the bottom of the page.
 
