@@ -1562,8 +1562,10 @@
     - name: Availability set support for Premium SSD v2
       displayName: availability and scale, availability, scale, autoscale, availability sets, AV sets
       href: use-premium-ssd-v2-with-availability-set.md
-    - name: Migrate VMs to a Virtual Machine Scale set
+    - name: Migrate from an availability set to a scale set
       href: availability-set-migrate-to-scale-sets.md
+    - name: Convert from an availability set to a scale set
+      href: availability-set-convert-to-scale-sets.md
 - name: Disks
   items:
   - name: Overview

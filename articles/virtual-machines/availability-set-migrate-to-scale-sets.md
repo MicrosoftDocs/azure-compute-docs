@@ -9,8 +9,6 @@ ms.date: 01/30/2026
 ---
 # Migrate virtual machines from availability sets to Virtual Machine Scale Sets
 
-**Applies to:** ✔️ Linux VMs ✔️ Windows VMs ✔️ Flexible scale sets
-
 This article describes how to migrate your Azure Virtual Machines (VMs) from availability sets to Virtual Machine Scale Sets with Flexible orchestration mode.
 
 > [!IMPORTANT]
@@ -125,7 +123,6 @@ The following configurations aren't supported for migration:
 - VMs behind a **Basic Load Balancer** - Upgrade to Standard Load Balancer before migration
 - VMs with **unmanaged disks** - Convert to managed disks before migration
 
-
 ## Step 1: Create a target Virtual Machine Scale Set
 
 If you don't have an existing scale set, create one as the migration target. The scale set must use **Flexible orchestration mode**.
@@ -220,7 +217,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 ## Step 4: Migrate individual VMs
 
-Migrate each VM from the availability set to the scale set. 
+Migrate each VM from the availability set to the scale set.
 
 ### Regional migration
 
@@ -324,7 +321,6 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 ```
 
 ---
-
 
 ## Step 6: Clean up the empty availability set
 
