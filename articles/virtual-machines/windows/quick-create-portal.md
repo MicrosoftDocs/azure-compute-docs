@@ -75,7 +75,6 @@ Create a remote desktop connection to the virtual machine. These directions tell
 
 1. On the overview page for your virtual machine, select **Connect** and then select **Connect** again from the drop-down. 
 
-    :::image type="content" source="media/quick-create-portal/portal-quick-start-9.png" alt-text="Screenshot of the virtual machine overview page showing the location of the connect button.":::
 
 2. In the **Native RDP** page, select the **Check access** button to make sure port 3389 is available.
 1. Select **Download RDP file** to download the connection file to your computer. 
