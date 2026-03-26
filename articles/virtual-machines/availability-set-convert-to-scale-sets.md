@@ -73,7 +73,7 @@ The following configurations and scenarios aren't supported for conversion:
 - VMs behind a **basic Load Balancer**. Upgrade to Standard Load Balancer before conversion.
 - VMs with **unmanaged disks**. Convert to managed disks before conversion.
 - **Zonal deployments**. The Convert API creates regional scale sets only. Use the [Migrate API](availability-set-migrate-to-scale-sets.md) for availability zone targeting.
-- **Migration to availability zones after conversion**. Scale sets created through conversion can't be migrated to availability zones. If zonal deployment is a future requirement, use the [Migrate API](availability-set-migrate-to-scale-sets.md) instead
+- **Migration to availability zones after conversion**. Scale sets created through conversion can't be migrated to availability zones. If zonal deployment is a future requirement, use the [Migrate API](availability-set-migrate-to-scale-sets.md) instead.
 
 ### Register the preview feature
 

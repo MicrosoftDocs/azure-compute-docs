@@ -1565,7 +1565,7 @@
     - name: Migrate from an availability set to a scale set
       href: availability-set-migrate-to-scale-sets.md
     - name: Convert from an availability set to a scale set
-      href: 
+      href: availability-set-convert-to-scale-sets.md
 - name: Disks
   items:
   - name: Overview
