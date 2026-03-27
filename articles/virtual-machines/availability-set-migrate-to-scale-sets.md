@@ -113,7 +113,7 @@ The following configurations aren't supported for migration:
 > - Once migration starts, the availability set is locked. No other changes can be made until migration completes or is canceled.
 > - Migration is a one-way operation. You cannot migrate back to availability sets after completion.
 
-The **Azure portal** provides a guided wizard that handles validation, scale set selection (or creation), zone assignment, and migration in a streamlined experience.
+The **Azure portal** provides a guided experience that handles validation, scale set selection (or creation), zone assignment, and migration in a streamlined flow.
 
 For **Azure CLI, Azure PowerShell, or REST API**, the migration process consists of the following phases:
 
@@ -126,9 +126,12 @@ For **Azure CLI, Azure PowerShell, or REST API**, the migration process consists
 
 ## Migrate using the Azure portal
 
-The Azure portal provides a guided wizard that walks you through the entire migration process.
+The Azure portal provides a guided experience that walks you through the entire migration process.
 
-### Step 1: Start the migration wizard
+> [!NOTE]
+> The portal migrates **all VMs in the availability set at once**. If you need to migrate VMs one at a time to maintain application uptime during the migration, use the [Azure CLI, Azure PowerShell, or REST API](#migrate-using-azure-cli-azure-powershell-or-rest-api) instead.
+
+### Step 1: Start the migration process
 
 1. In the [Azure portal](https://portal.azure.com), navigate to the availability set you want to migrate.
 2. On the availability set **Overview** page, select **Migrate option** from the toolbar.
@@ -137,7 +140,7 @@ The Azure portal provides a guided wizard that walks you through the entire migr
 
 ### Step 2: Select target scale set
 
-The first page of the wizard lists all virtual machines in the availability set along with their current status and size.
+The first page lists all virtual machines in the availability set along with their current status and size.
 
 > [!NOTE]
 > An information banner reminds you that VMs will be stopped and deallocated during migration. You'll be able to restart them once migration completes.
@@ -146,11 +149,11 @@ The first page of the wizard lists all virtual machines in the availability set 
 
 1. Under **Select target scale set**, choose an existing scale set from the dropdown. Only compatible scale set configurations are displayed.
 
-   :::image type="content" source="media/availability-set-migration/availability-set-migration-select-target-scale-set.png" alt-text="Screenshot showing step 1 of the migration wizard with the list of VMs, the Select a scale set dropdown set to myScaleSet, and the region displayed as UK South.":::
+   :::image type="content" source="media/availability-set-migration/availability-set-migration-select-target-scale-set.png" alt-text="Screenshot showing step 1 of the migration experience with the list of VMs, the Select a scale set dropdown set to myScaleSet, and the region displayed as UK South.":::
 
 #### Quick create a new scale set
 
-If you don't have an existing scale set, you can create one directly from the wizard:
+If you don't have an existing scale set, you can create one directly from the migration experience:
 
 1. Select **Quick create a new scale set** below the dropdown.
 2. In the **scale set quick create** pane, provide a name for the scale set and complete the administrator account settings. The subscription, resource group, location, and VM size are pre-populated from your availability set configuration.
