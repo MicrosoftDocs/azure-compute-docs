@@ -59,7 +59,7 @@ The first page of the wizard lists all virtual machines in the availability set 
 
 1. Under **Select target scale set**, choose an existing scale set from the dropdown. Only compatible scale set configurations are displayed.
 
-   :::image type="content" source="media/availability-set-migration/availability-set-migration-select-target-vmss.png" alt-text="Screenshot showing step 1 of the migration wizard with the list of VMs, the Select a scale set dropdown set to myScaleSet, and the region displayed as UK South.":::
+   :::image type="content" source="media/availability-set-migration/availability-set-migration-select-target-scale-set.png" alt-text="Screenshot showing step 1 of the migration wizard with the list of VMs, the Select a scale set dropdown set to myScaleSet, and the region displayed as UK South.":::
 
 ### Quick create a new scale set
 
