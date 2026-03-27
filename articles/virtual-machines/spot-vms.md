@@ -1,18 +1,18 @@
 ---
-title: Use Azure Spot Virtual Machines
-description: Learn how to use Azure Spot Virtual Machines to save on costs.
+title: About Azure Spot Virtual Machines
+description: Learn about Azure Spot Virtual Machines to save on costs.
 author: cynthn
 ms.author: cynthn
 ms.service: azure-virtual-machines
 ms.subservice: azure-spot-vm
-ms.topic: how-to
+ms.topic: overview
 ms.date: 02/06/2026
 ms.reviewer: cynthn
 # Customer intent: "As a cost-conscious IT manager, I want to utilize Azure Spot Virtual Machines for my batch processing and development environments, so that I can leverage unused capacity and significantly reduce expenses while accepting possible interruptions."
 ---
 
 
-# Use Azure Spot Virtual Machines 
+# Azure Spot Virtual Machines 
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
