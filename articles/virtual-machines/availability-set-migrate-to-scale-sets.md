@@ -142,9 +142,6 @@ The Azure portal provides a guided experience that walks you through the entire 
 
 The first page lists all virtual machines in the availability set along with their current status and size.
 
-> [!NOTE]
-> An information banner reminds you that VMs will be stopped and deallocated during migration. You'll be able to restart them once migration completes.
-
 #### Use an existing scale set
 
 1. Under **Select target scale set**, choose an existing scale set from the dropdown. Only compatible scale set configurations are displayed.
@@ -173,13 +170,10 @@ If you select a zonal scale set (one configured with availability zones), an add
 1. The review page displays the target scale set details and lists each VM with its migration status.
 
    :::image type="content" source="media/availability-set-migration/availability-set-migration-review-zonal.png" alt-text="Screenshot showing the review page for a zonal migration with three VMs showing their zone assignments and Not started status.":::
-
 2. Review the VM list and zone assignments (if applicable), then select **Migrate**.
-
 3. The status for each VM changes to **Migration in progress**.
 
    :::image type="content" source="media/availability-set-migration/availability-set-migration-in-progress-zonal.png" alt-text="Screenshot showing three VMs with Migration in progress status during a zonal migration.":::
-
 4. When all VMs finish migrating, the status changes to **Migration completed**.
 
    :::image type="content" source="media/availability-set-migration/availability-set-migration-completed-zonal.png" alt-text="Screenshot showing three VMs with Migration completed status and green checkmarks.":::
@@ -190,13 +184,12 @@ If you select a zonal scale set (one configured with availability zones), an add
 
    > [!IMPORTANT]
    > After migrating your VMs in the Azure portal and navigating to your scale set instances tab, you might notice some of the VMs missing from the list. This is just a delay from the portal viewer, the VMs have been migrated. If needed, navigate to the Virtual Machine overview blade to view/ start/ etc.
+   >
 
    :::image type="content" source="media/availability-set-migration/availability-set-migration-start-delete.png" alt-text="Screenshot showing the next steps section with Restart your VMs and Delete your availability set cards.":::
-
 2. After all VMs are migrated and verified, the availability set is empty and can be safely deleted. Select **Go to the availability set** to navigate back to the availability set.
 
    :::image type="content" source="media/availability-set-migration/availability-set-empty.png" alt-text="Screenshot showing the empty availability set with 0 virtual machines and the Migrate to scale set Flex button grayed out.":::
-
 3. Select **Delete** to remove the empty availability set.
 
 ## Migrate using Azure CLI, Azure PowerShell, or REST API
