@@ -5,7 +5,7 @@ author: cynthn
 ms.service: azure-virtual-machines
 ms.collection: linux
 ms.topic: quickstart
-ms.date: 02/06/2026
+ms.date: 03/27/2026
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli, mode-api, innovation-engine, linux-related-content
 # Customer intent: "As a cloud administrator, I want to use the command line to create a Linux virtual machine, so that I can efficiently manage resources and automate deployment in my Azure environment."
@@ -17,25 +17,25 @@ ms.custom: mvc, devx-track-azurecli, mode-api, innovation-engine, linux-related-
 
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://go.microsoft.com/fwlink/?linkid=2285977)
 
-This quickstart shows you how to use the Azure CLI to deploy a Linux virtual machine (VM) in Azure. The Azure CLI is used to create and manage Azure resources via either the command line or scripts.
+This quickstart shows you how to use the Azure CLI to deploy a Linux virtual machine (VM) in Azure. Use the Azure CLI to create and manage Azure resources from the command line or in scripts.
 
-If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
+If you don't have an Azure subscription, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 ## Launch Azure Cloud Shell
 
 The Azure Cloud Shell is a free interactive shell that you can use to run the steps in this article. It has common Azure tools preinstalled and configured to use with your account. 
 
-To open the Cloud Shell, just select **Try it** from the upper right corner of a code block. You can also open Cloud Shell in a separate browser tab by going to [https://shell.azure.com/bash](https://shell.azure.com/bash). Select **Copy** to copy the blocks of code, paste it into the Cloud Shell, and select **Enter** to run it.
+To open the Cloud Shell, select **Try it** from the upper right corner of a code block. You can also open Cloud Shell in a separate browser tab by going to [https://shell.azure.com/bash](https://shell.azure.com/bash). Select **Copy** to copy the blocks of code, paste it into the Cloud Shell, and select **Enter** to run it.
 
 If you prefer to install and use the CLI locally, this quickstart requires Azure CLI version 2.0.30 or later. Run `az --version` to find the version. If you need to install or upgrade, see [Install Azure CLI]( /cli/azure/install-azure-cli).
 
 ## Log in to Azure using the CLI
 
-In order to run commands in Azure using the CLI, you need to log in first. Log in using the `az login` command.
+To run commands in Azure by using the CLI, you need to sign in first. Sign in by using the `az login` command.
 
 ## Create a resource group
 
-A resource group is a container for related resources. All resources must be placed in a resource group. The [az group create](/cli/azure/group) command creates a resource group with the previously defined $MY_RESOURCE_GROUP_NAME and $REGION parameters.
+A resource group is a container for related resources. You must place all resources in a resource group. Use the [az group create](/cli/azure/group) command to create a resource group with the previously defined `$MY_RESOURCE_GROUP_NAME` and `$REGION` parameters.
 
 ```bash
 export RANDOM_ID="$(openssl rand -hex 3)"
@@ -65,9 +65,9 @@ Results:
 
 To create a VM in this resource group, use the `vm create` command. 
 
-The following example creates a VM and adds a user account. The `--generate-ssh-keys` parameter causes the CLI to look for an available ssh key in `~/.ssh`. If one is found, that key is used. If not, one is generated and stored in `~/.ssh`. The `--public-ip-sku Standard` parameter ensures that the machine is accessible via a public IP address. Finally, we deploy the latest `Ubuntu 22.04` image.
+The following example creates a VM and adds a user account. The `--generate-ssh-keys` parameter causes the CLI to look for an available SSH key in `~/.ssh`. If it finds one, it uses that key. If not, it generates and stores a key in `~/.ssh`. The `--public-ip-sku Standard` parameter ensures that the machine is accessible through a public IP address. Finally, it deploys the latest `Ubuntu 22.04` image.
 
-All other values are configured using environment variables.
+Configure all other values by using environment variables.
 
 ```bash
 export MY_VM_NAME="myVM$RANDOM_ID"
@@ -101,9 +101,9 @@ Results:
 }
 ```
 
-## Enable Azure AD Login for a Linux virtual machine in Azure
+## Enable Azure AD Authentication for a Linux virtual machine in Azure
 
-The following code example deploys a Linux VM and then installs the extension to enable an Azure AD Login for a Linux VM. VM extensions are small applications that provide post-deployment configuration and automation tasks on Azure virtual machines.
+The following code example deploys a Linux VM and then installs the extension to enable Azure AD Authentication for a Linux VM. VM extensions are small applications that provide post-deployment configuration and automation tasks on Azure virtual machines.
 
 ```bash
 az vm extension set \
@@ -113,7 +113,7 @@ az vm extension set \
     --vm-name $MY_VM_NAME
 ```
 
-## Store IP address of VM in order to SSH
+## Store IP address of VM to use with SSH
 
 Run the following command to store the IP address of the VM as an environment variable:
 
@@ -138,7 +138,7 @@ You can now SSH into the VM by running the output of the following command in yo
 ssh -o StrictHostKeyChecking=no $MY_USERNAME@$IP_ADDRESS
 ```
 
-## Next Steps
+## Related content
 
 * [Learn about virtual machines](../index.yml)
 * [Use Cloud-Init to initialize a Linux VM on first boot](tutorial-automate-vm-deployment.md)
