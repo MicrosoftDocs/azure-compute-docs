@@ -198,6 +198,9 @@
   - name: Migrate to Flexible Orchestration
     href: flexible-virtual-machine-scale-sets-migration-resources.md
     maintainContext: true
+  - name: Migrate from an availability sets using the Azure portal
+    href: ../virtual-machines/availability-set-migrate-to-scale-sets-portal.md
+    maintainContext: true
   - name: Migrate from availability sets
     href: ../virtual-machines/availability-set-migrate-to-scale-sets.md
     maintainContext: true
