@@ -29,7 +29,7 @@ For a full list of supported configurations and limitations, see [Supported conf
 
 The portal wizard consolidates the migration into two steps:
 
-1. **Select target VMSS** - Choose an existing scale set or quick create a new one. For zonal scale sets, assign each VM to an availability zone.
+1. **Select target scale set** - Choose an existing scale set or quick create a new one. For zonal scale sets, assign each VM to an availability zone.
 2. **Review and migrate** - Review the migration plan, then migrate all VMs at once.
 
 After migration completes, the portal provides next steps to restart your VMs and clean up the empty availability set.
@@ -42,13 +42,13 @@ After migration completes, the portal provides next steps to restart your VMs an
 ## Start the migration wizard
 
 1. In the [Azure portal](https://portal.azure.com), navigate to the availability set you want to migrate.
-2. On the availability set **Overview** page, select **Migrate to VMSS Flex** from the toolbar.
+2. On the availability set **Overview** page, select **Migrate option** from the toolbar.
 
-   :::image type="content" source="media/avset-migration/avset-migration-start-migration-wizard.png" alt-text="Screenshot showing the availability set overview page with the Migrate to VMSS Flex button in the toolbar and a banner promoting migration.":::
+   :::image type="content" source="media/avset-migration/avset-migration-start-migration-wizard.png" alt-text="Screenshot showing the availability set overview page with the Migrate button in the toolbar and a banner promoting migration.":::
 
-   The **Migrate Availability Set VMs to VMSS** wizard opens.
+   The **Migrate Availability Set VMs** wizard opens.
 
-## Step 1: Select target VMSS
+## Step 1: Select target scale set
 
 The first page of the wizard lists all virtual machines in the availability set along with their current status and size.
 
@@ -57,23 +57,23 @@ The first page of the wizard lists all virtual machines in the availability set 
 
 ### Use an existing scale set
 
-1. Under **Select target VMSS**, choose an existing scale set from the **Select a VMSS** dropdown. Only compatible VMSS configurations are displayed.
+1. Under **Select target scale set**, choose an existing scale set from the dropdown. Only compatible scale set configurations are displayed.
 
-   :::image type="content" source="media/avset-migration/avset-migration-select-target-vmss.png" alt-text="Screenshot showing step 1 of the migration wizard with the list of VMs, the Select a VMSS dropdown set to myScaleSet, and the region displayed as UK South.":::
+   :::image type="content" source="media/avset-migration/avset-migration-select-target-vmss.png" alt-text="Screenshot showing step 1 of the migration wizard with the list of VMs, the Select a scale set dropdown set to myScaleSet, and the region displayed as UK South.":::
 
-### Quick create a new VMSS
+### Quick create a new scale set
 
 If you don't have an existing scale set, you can create one directly from the wizard:
 
-1. Select **Quick create a new VMSS** below the dropdown.
-2. In the **VMSS quick create** pane, provide a name for the scale set and complete the administrator account settings. The subscription, resource group, location, and VM size are pre-populated from your availability set configuration.
-3. Select **Create a VMSS** to create the scale set and return to the wizard.
+1. Select **Quick create a new scale set** below the dropdown.
+2. In the **scale set quick create** pane, provide a name for the scale set and complete the administrator account settings. The subscription, resource group, location, and VM size are pre-populated from your availability set configuration.
+3. Select **Create a scale set** to create the scale set and return to the wizard.
 
 ### Assign availability zones (zonal migration)
 
-If you select a zonal VMSS (one configured with availability zones), an additional **VM allocation** section appears. Use the dropdown for each VM to assign it to a specific availability zone.
+If you select a zonal scale set (one configured with availability zones), an additional **VM allocation** section appears. Use the dropdown for each VM to assign it to a specific availability zone.
 
-:::image type="content" source="media/avset-migration/avset-migration-assign-target-zones.png" alt-text="Screenshot showing the VM allocation section for a zonal VMSS with availability zone dropdowns for each VM, showing Zone 1, Zone 2, and Zone 3 assignments.":::
+:::image type="content" source="media/avset-migration/avset-migration-assign-target-zones.png" alt-text="Screenshot showing the VM allocation section for a zonal scale set with availability zone dropdowns for each VM, showing Zone 1, Zone 2, and Zone 3 assignments.":::
 
 > [!TIP]
 > Distribute VMs across all available zones for maximum resilience. For example, assign VM1 to Zone 1, VM2 to Zone 2, and VM3 to Zone 3.
@@ -82,17 +82,17 @@ If you select a zonal VMSS (one configured with availability zones), an addition
 
 ## Step 2: Review and migrate
 
-The review page displays the target VMSS details and lists each VM with its migration status.
+The review page displays the target scale set details and lists each VM with its migration status.
 
 ### Regional migration
 
-For a regional VMSS, the review page shows each VM with its current size and status:
+For a regional scale set, the review page shows each VM with its current size and status:
 
 :::image type="content" source="media/avset-migration/avset-migration-review-regional.png" alt-text="Screenshot showing the review page for a regional migration with three VMs listed as Not started.":::
 
 ### Zonal migration
 
-For a zonal VMSS, the review page also displays the assigned **Zone** for each VM:
+For a zonal scale set, the review page also displays the assigned **Zone** for each VM:
 
 :::image type="content" source="media/avset-migration/avset-migration-review-zonal.png" alt-text="Screenshot showing the review page for a zonal migration with three VMs showing their zone assignments and Not started status.":::
 
@@ -116,7 +116,7 @@ After migration completes, the wizard displays two actions:
 
 VMs are in a **Stopped (deallocated)** state after migration. To start them:
 
-1. Select **Start VMs** to start all migrated VMs, or select **Go to VMSS instances** to start them individually from the scale set.
+1. Select **Start VMs** to start all migrated VMs, or select **Go to scale set instances** to start them individually from the scale set.
 
 ### Delete the empty availability set
 
@@ -124,10 +124,10 @@ After all VMs are migrated and verified, the availability set is empty and can b
 
 1. Select **Go to the availability set** to navigate back to the availability set.
 
-   :::image type="content" source="media/avset-migration/avset-migration-empty.png" alt-text="Screenshot showing the empty availability set with 0 virtual machines and the Migrate to VMSS Flex button grayed out.":::
+   :::image type="content" source="media/avset-migration/avset-empty.png" alt-text="Screenshot showing the empty availability set with 0 virtual machines and the Migrate to scale set Flex button grayed out.":::
 2. Select **Delete** to remove the empty availability set.
 
-## Whats next
+## What's next
 
 - [Migrate availability sets to Virtual Machine Scale Sets (CLI, PowerShell, REST)](availability-set-migrate-to-scale-sets.md)
 - [Convert availability sets to Virtual Machine Scale Sets](availability-set-convert-to-scale-sets.md)
