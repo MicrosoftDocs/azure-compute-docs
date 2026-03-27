@@ -44,7 +44,7 @@ After migration completes, the portal provides next steps to restart your VMs an
 1. In the [Azure portal](https://portal.azure.com), navigate to the availability set you want to migrate.
 2. On the availability set **Overview** page, select **Migrate option** from the toolbar.
 
-   :::image type="content" source="media/avset-migration/avset-migration-start-migration-wizard.png" alt-text="Screenshot showing the availability set overview page with the Migrate button in the toolbar and a banner promoting migration.":::
+   :::image type="content" source="media/availability-set-migration/availability-set-migration-start-migration-wizard.png" alt-text="Screenshot showing the availability set overview page with the Migrate button in the toolbar and a banner promoting migration.":::
 
    The **Migrate Availability Set VMs** wizard opens.
 
@@ -59,7 +59,7 @@ The first page of the wizard lists all virtual machines in the availability set 
 
 1. Under **Select target scale set**, choose an existing scale set from the dropdown. Only compatible scale set configurations are displayed.
 
-   :::image type="content" source="media/avset-migration/avset-migration-select-target-vmss.png" alt-text="Screenshot showing step 1 of the migration wizard with the list of VMs, the Select a scale set dropdown set to myScaleSet, and the region displayed as UK South.":::
+   :::image type="content" source="media/availability-set-migration/availability-set-migration-select-target-vmss.png" alt-text="Screenshot showing step 1 of the migration wizard with the list of VMs, the Select a scale set dropdown set to myScaleSet, and the region displayed as UK South.":::
 
 ### Quick create a new scale set
 
@@ -73,7 +73,7 @@ If you don't have an existing scale set, you can create one directly from the wi
 
 If you select a zonal scale set (one configured with availability zones), an additional **VM allocation** section appears. Use the dropdown for each VM to assign it to a specific availability zone.
 
-:::image type="content" source="media/avset-migration/avset-migration-assign-target-zones.png" alt-text="Screenshot showing the VM allocation section for a zonal scale set with availability zone dropdowns for each VM, showing Zone 1, Zone 2, and Zone 3 assignments.":::
+:::image type="content" source="media/availability-set-migration/availability-set-migration-assign-target-zones.png" alt-text="Screenshot showing the VM allocation section for a zonal scale set with availability zone dropdowns for each VM, showing Zone 1, Zone 2, and Zone 3 assignments.":::
 
 > [!TIP]
 > Distribute VMs across all available zones for maximum resilience. For example, assign VM1 to Zone 1, VM2 to Zone 2, and VM3 to Zone 3.
@@ -88,29 +88,29 @@ The review page displays the target scale set details and lists each VM with its
 
 For a regional scale set, the review page shows each VM with its current size and status:
 
-:::image type="content" source="media/avset-migration/avset-migration-review-regional.png" alt-text="Screenshot showing the review page for a regional migration with three VMs listed as Not started.":::
+:::image type="content" source="media/availability-set-migration/availability-set-migration-review-regional.png" alt-text="Screenshot showing the review page for a regional migration with three VMs listed as Not started.":::
 
 ### Zonal migration
 
 For a zonal scale set, the review page also displays the assigned **Zone** for each VM:
 
-:::image type="content" source="media/avset-migration/avset-migration-review-zonal.png" alt-text="Screenshot showing the review page for a zonal migration with three VMs showing their zone assignments and Not started status.":::
+:::image type="content" source="media/availability-set-migration/availability-set-migration-review-zonal.png" alt-text="Screenshot showing the review page for a zonal migration with three VMs showing their zone assignments and Not started status.":::
 
 ### Run the migration
 
 1. Review the VM list and zone assignments (if applicable), then select **Migrate**.
 2. The status for each VM changes to **Migration in progress**.
 
-   :::image type="content" source="media/avset-migration/avset-migration-in-progress-zonal.png" alt-text="Screenshot showing three VMs with Migration in progress status during a zonal migration.":::
+   :::image type="content" source="media/availability-set-migration/availability-set-migration-in-progress-zonal.png" alt-text="Screenshot showing three VMs with Migration in progress status during a zonal migration.":::
 3. When all VMs finish migrating, the status changes to **Migration completed**.
 
-   :::image type="content" source="media/avset-migration/avset-migration-completed-zonal.png" alt-text="Screenshot showing three VMs with Migration completed status and green checkmarks.":::
+   :::image type="content" source="media/availability-set-migration/availability-set-migration-completed-zonal.png" alt-text="Screenshot showing three VMs with Migration completed status and green checkmarks.":::
 
 ## After migration: Next steps
 
 After migration completes, the wizard displays two actions:
 
-:::image type="content" source="media/avset-migration/avset-migration-start-delete.png" alt-text="Screenshot showing the next steps section with Restart your VMs and Delete your availability set cards.":::
+:::image type="content" source="media/availability-set-migration/availability-set-migration-start-delete.png" alt-text="Screenshot showing the next steps section with Restart your VMs and Delete your availability set cards.":::
 
 ### Restart your VMs
 
@@ -124,7 +124,7 @@ After all VMs are migrated and verified, the availability set is empty and can b
 
 1. Select **Go to the availability set** to navigate back to the availability set.
 
-   :::image type="content" source="media/avset-migration/avset-empty.png" alt-text="Screenshot showing the empty availability set with 0 virtual machines and the Migrate to scale set Flex button grayed out.":::
+   :::image type="content" source="media/availability-set-migration/availability-set-empty.png" alt-text="Screenshot showing the empty availability set with 0 virtual machines and the Migrate to scale set Flex button grayed out.":::
 2. Select **Delete** to remove the empty availability set.
 
 ## What's next
