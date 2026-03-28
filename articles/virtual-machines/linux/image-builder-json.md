@@ -1679,6 +1679,8 @@ How to use the `validate` property to validate Linux images:
 
 ## Properties: vmProfile
 
+For details of networking-related configuration in this section, see [Azure VM Image Builder networking options](image-builder-networking.md).
+
 ### vmSize (optional)
 
 Image Builder uses a default SKU size of `Standard_D1_v2` for Gen1 images and `Standard_D2ds_v4` for Gen2 images. The generation is defined by the image you specify in the `source`. You can override vmSize for these reasons:

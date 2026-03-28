@@ -147,7 +147,7 @@ New portal functionality was added for VM Image Builder. Search for **Image Temp
 
 - You can use the new `managedResourceTags` property to apply tags to the resources that the VM Image Builder service creates in the staging resource group during the image build. For more information, see [Properties: `managedResourceTags`](../virtual-machines/linux/image-builder-json.md#properties-managedresourcetags).
 
-- You can use the new `containerInstanceSubnetId` property to specify a subnet on which Azure Container Instances will be deployed for Isolated Image Builds. You can specify this field only if you specify `subnetId`. This field must be on the same virtual network as the subnet specified in `subnetId`. For more information, see [Bring your own build VM subnet and bring your own Container Instances subnet](./security-isolated-image-builds-image-builder.md#bring-your-own-build-vm-subnet-and-bring-your-own-aci-subnet).
+- You can use the new `containerInstanceSubnetId` property to specify a subnet on which Azure Container Instances will be deployed for Isolated Image Builds. You can specify this field only if you specify `subnetId`. This field must be on the same virtual network as the subnet specified in `subnetId`. For more information, see [Bring your own build VM subnet and bring your own Container Instances subnet](./security-isolated-image-builds-image-builder.md).
 
 - This version adds support for updating the `vmProfile` property, including the following fields:
   - `vmSize`
