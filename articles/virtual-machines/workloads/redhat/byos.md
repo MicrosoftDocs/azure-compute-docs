@@ -20,6 +20,14 @@ ms.author: cynthn
 Red Hat Enterprise Linux (RHEL) images are available in Azure via a pay-as-you-go or bring-your-own-subscription (BYOS) (Red Hat Gold Image) model. This article provides an overview of the Red Hat Gold Images in Azure.
 
 >[!NOTE]
+- During December 2025, StoreAPI Engineering team identified an enforcement gap related to an existing business rule under which Private plans are not supported for CSP subscriptions. Although this rule had been in place for a long time, the enforcement was not functioning as intended. Once the issue was identified, Engineering team corrected the enforcement.
+Although this business rule has existed for some time, it may only now be surfacing for some customers due to corrected enforcement.
+- CSP-led customers cannot purchase BYOS offering via Private Plans, instead they should be using Private **Offers**.
+- Details on [CSP private offers](https://learn.microsoft.com/partner-center/marketplace-offers/private-offers-for-channel#csp-private-offers)
+- Details on [Private plans in Microsoft Marketplace](https://learn.microsoft.com/partner-center/marketplace-offers/private-plans)
+
+
+>[!NOTE]
 > RHEL BYOS Gold Images are available in Azure Public (commercial) and Azure Government clouds. They're not available in Microsoft Azure operated by 21Vianet or Azure Blackforest clouds.
 
 ## Important points to consider
