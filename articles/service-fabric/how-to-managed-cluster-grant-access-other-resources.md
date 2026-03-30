@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 11/14/2024
+ms.date: 03/22/2026
 # Customer intent: "As an Azure developer, I want to grant access to managed identities for my Service Fabric application, so that it can securely interact with other Azure resources like Storage and Key Vault."
 ---
 

@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: "As a cloud application developer, I want to secure my Service Fabric applications by configuring them to run under local or system user accounts, so that I can manage permissions and enhance security for my services."
 ---
 
@@ -22,7 +22,7 @@ By default, the RunAs policy is applied to the main entry point.  You can also a
 >
 
 ## Run a service as a local user
-You can create a local user that can be used to help secure a service within the application. When a **LocalUser** account type is specified in the principals section of the application manifest, Service Fabric creates local user accounts on machines where the application is deployed. By default, these accounts do not have the same names as those specified in the application manifest (for example, *Customer3* in the following application manifest example). Instead, they are dynamically generated and have random passwords.
+You can create a local user that can be used to help secure a service within the application. When a **LocalUser** account type is specified in the principals section of the application manifest, Service Fabric creates local user accounts on machines where the application is deployed. By default, these accounts don't have the same names as those specified in the application manifest (for example, *Customer3* in the following application manifest example). Instead, they're dynamically generated and have random passwords.
 
 In the **RunAsPolicy** section for a **ServiceManifestImport**, specify the user account from the **Principals** section to run the service code package.  The following example shows how to create a local user and apply a RunAs policy to the main entry point:
 
@@ -117,7 +117,7 @@ You can create user groups and add one or more users to the group. This is usefu
 ```
 
 ## Apply a default policy to all service code packages
-You use the **DefaultRunAsPolicy** section to specify a default user account for all code packages that don’t have a specific **RunAsPolicy** defined. If most of the code packages that are specified in the service manifest used by an application need to run under the same user, the application can just define a default RunAs policy with that user account. The following example specifies that if a code package does not have a **RunAsPolicy** specified, the code package should run under the **MyDefaultAccount** user specified in the principals section.  Supported account types are LocalUser, NetworkService, LocalSystem, and LocalService.  If using a local user or service, also specify the account name and password.
+You use the **DefaultRunAsPolicy** section to specify a default user account for all code packages that don’t have a specific **RunAsPolicy** defined. If most of the code packages that are specified in the service manifest used by an application need to run under the same user, the application can just define a default RunAs policy with that user account. The following example specifies that if a code package doesn't have a **RunAsPolicy** specified, the code package should run under the **MyDefaultAccount** user specified in the principals section.  Supported account types are LocalUser, NetworkService, LocalSystem, and LocalService.  If using a local user or service, also specify the account name and password.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

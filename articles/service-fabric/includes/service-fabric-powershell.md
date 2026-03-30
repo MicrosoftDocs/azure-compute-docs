@@ -1,8 +1,10 @@
 ---
 ms.service: azure-service-fabric
-ms.custom:
 ms.topic: include
-ms.date: 11/25/2018
+ms.author: tomcassidy
+author: tomvcassidy
+services: service-fabric
+ms.date: 03/22/2026
 # Customer intent: "As an IT admin managing a Service Fabric environment, I want to understand the difference between the Azure PowerShell and Azure Service Fabric SDK, so that I can effectively manage resources and applications in my clusters."
 ---
 > [!IMPORTANT]

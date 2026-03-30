@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
 # Customer intent: As a developer working with Reliable Actors, I want to manage actor state through access, saving, and removal methods, so that I can ensure data consistency and reliability in my cloud-based applications.
 ---
 
@@ -26,7 +26,7 @@ State is accessed through the state manager by key. State manager methods are al
 * An actor is reactivated, either after being deactivated or after failure.
 * The state provider pages state to disk. This behavior depends on the state provider implementation. The default state provider for the `Persisted` setting has this behavior.
 
-You can retrieve state by using a standard *Get* operation that throws `KeyNotFoundException`(C#) or `NoSuchElementException`(Java) if an entry does not exist for the key:
+You can retrieve state by using a standard *Get* operation that throws `KeyNotFoundException`(C#) or `NoSuchElementException`(Java) if an entry doesn't exist for the key:
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -59,7 +59,7 @@ class MyActorImpl extends FabricActor implements  MyActor
 }
 ```
 
-You can also retrieve state by using a *TryGet* method that does not throw if an entry does not exist for a key:
+You can also retrieve state by using a *TryGet* method that doesn't throw if an entry doesn't exist for a key:
 
 ```csharp
 class MyActor : Actor, IMyActor
@@ -102,7 +102,7 @@ class MyActorImpl extends FabricActor implements  MyActor
 ```
 
 ## Save state
-The state manager retrieval methods return a reference to an object in local memory. Modifying this object in local memory alone does not cause it to be saved durably. When an object is retrieved from the state manager and modified, it must be reinserted into the state manager to be saved durably.
+The state manager retrieval methods return a reference to an object in local memory. Modifying this object in local memory alone doesn't cause it to be saved durably. When an object is retrieved from the state manager and modified, it must be reinserted into the state manager to be saved durably.
 
 You can insert state by using an unconditional *Set*, which is the equivalent of the `dictionary["key"] = value` syntax:
 
@@ -170,7 +170,7 @@ class MyActorImpl extends FabricActor implements  MyActor
 }
 ```
 
-You can also add state by using a *TryAdd* method. This method does not throw when it tries to add a key that already exists.
+You can also add state by using a *TryAdd* method. This method doesn't throw when it tries to add a key that already exists.
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -270,7 +270,7 @@ class MyActorImpl extends FabricActor implements  MyActor
 }
 ```
 
-You can also remove state permanently by using the *TryRemove* method. This method does not throw when it tries to remove a key that does not exist.
+You can also remove state permanently by using the *TryRemove* method. This method doesn't throw when it tries to remove a key that doesn't exist.
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]

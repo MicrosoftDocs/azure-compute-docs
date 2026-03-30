@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
 ms.update-cycle: 1095-days
 # Customer intent: "As a software architect, I want to understand the key terminology and concepts of a distributed systems platform, so that I can effectively design and manage scalable microservices applications using Service Fabric."
 ---

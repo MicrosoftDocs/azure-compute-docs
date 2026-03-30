@@ -7,7 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: linux-related-content
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: "As a DevOps engineer deploying applications on Linux clusters, I want to configure X.509 certificates for my applications, so that they can securely communicate with the Service Fabric runtime and adhere to security protocols."
 ---
 
@@ -25,7 +25,7 @@ If you install your certificate from Azure Key Vault by using either a [Resource
 
 ## Certificates referenced in the application manifest
 
-Certificates specified in the application manifest, for example, through the [**SecretsCertificate**](./service-fabric-service-model-schema-elements.md#secretscertificate-element) or [**EndpointCertificate**](./service-fabric-service-model-schema-elements.md#endpointcertificate-element) elements, must be present in the */var/lib/sfcerts* directory. The elements that are used to specify certificates in the application manifest do not take a path attribute, so the certificates must be present in the default directory. These elements do take an optional **X509StoreName** attribute. The default is "My", which points to the */var/lib/sfcerts* directory on Linux nodes. Any other value is undefined on a Linux cluster. We recommend that you omit the **X509StoreName** attribute for apps that run on Linux clusters. 
+Certificates specified in the application manifest, for example, through the [**SecretsCertificate**](./service-fabric-service-model-schema-elements.md#secretscertificate-element) or [**EndpointCertificate**](./service-fabric-service-model-schema-elements.md#endpointcertificate-element) elements, must be present in the */var/lib/sfcerts* directory. The elements that are used to specify certificates in the application manifest don't take a path attribute, so the certificates must be present in the default directory. These elements do take an optional **X509StoreName** attribute. The default is "My", which points to the */var/lib/sfcerts* directory on Linux nodes. Any other value is undefined on a Linux cluster. We recommend that you omit the **X509StoreName** attribute for apps that run on Linux clusters. 
 
 ## Certificates referenced in the configuration package (Settings.xml)
 
@@ -33,7 +33,7 @@ For some services, you can configure X.509 certificates in the [ConfigPackage](.
 
 ### Using X509 SecurityCredentialsType
 
-WIth the .NET or Java SDKs, you can specify **X509** for the **SecurityCredentialsType**. This corresponds to the `X509Credentials` ([.NET](/previous-versions/azure/reference/mt124925(v=azure.100))/[Java](/java/api/system.fabric.x509credentials)) type of `SecurityCredentials` ([.NET](/previous-versions/azure/reference/mt124894(v=azure.100))/[Java](/java/api/system.fabric.securitycredentials)).
+With the .NET or Java SDKs, you can specify **X509** for the **SecurityCredentialsType**. This corresponds to the `X509Credentials` ([.NET](/previous-versions/azure/reference/mt124925(v=azure.100))/[Java](/java/api/system.fabric.x509credentials)) type of `SecurityCredentials` ([.NET](/previous-versions/azure/reference/mt124894(v=azure.100))/[Java](/java/api/system.fabric.securitycredentials)).
 
 The **X509** reference locates the certificate in a certificate store. The following XML shows the parameters used to specify the location of the certificate:
 
@@ -45,7 +45,7 @@ The **X509** reference locates the certificate in a certificate store. The follo
 
 For a service running on Linux, **LocalMachine**/**My** points to the default location for certificates, the */var/lib/sfcerts* directory. For Linux, any other combinations of **CertificateStoreLocation** and **CertificateStoreName** are undefined. 
 
-Always specify **LocalMachine** for the **CertificateStoreLocation** parameter. There is no need to specify the **CertificateStoreName** parameter because it defaults to "My". With an **X509** reference, the certificate files must be located in the */var/lib/sfcerts* directory on the cluster node.  
+Always specify **LocalMachine** for the **CertificateStoreLocation** parameter. There's no need to specify the **CertificateStoreName** parameter because it defaults to "My". With an **X509** reference, the certificate files must be located in the */var/lib/sfcerts* directory on the cluster node.  
 
 The following XML shows a **TransportSettings** section based on this style:
 
@@ -66,7 +66,7 @@ The following XML shows a **TransportSettings** section based on this style:
 
 With the Java SDK, you can specify **X509_2** for the **SecurityCredentialsType**. This corresponds to the `X509Credentials2` ([Java](/java/api/system.fabric.x509credentials2)) type of `SecurityCredentials` ([Java](/java/api/system.fabric.securitycredentials)). 
 
-With an **X509_2** reference, you specify a path parameter, so you can locate the certificate in a directory other than */var/lib/sfcerts*.  The following XML shows the parameters used to specify the location of the certificate: 
+With an **X509_2** reference, you specify a path parameter, so you can locate the certificate in a directory other than */var/lib/sfcerts*. The following XML shows the parameters used to specify the location of the certificate: 
 
 ```xml
      <Parameter Name="SecurityCredentialsType" Value="X509_2" />
@@ -88,7 +88,7 @@ The following XML shows a **TransportSettings** section based on this style.
 ```
 
 > [!NOTE]
-> The certificate is specified as a .crt file in the preceding XML. This implies that there is also a .key file containing the private key in the same location.
+> The certificate is specified as a .crt file in the preceding XML. This implies that there's also a .key file containing the private key in the same location.
 
 ## Configure a Reliable Services app to run on Linux clusters
 

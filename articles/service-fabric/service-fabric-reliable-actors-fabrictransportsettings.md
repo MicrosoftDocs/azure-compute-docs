@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
 # Customer intent: As a developer configuring cloud-based actor services, I want to adjust FabricTransport settings in my application, so that I can optimize communication parameters and enhance the security of my actor services and clients.
 ---
 
@@ -49,7 +49,7 @@ You can use a [config package](service-fabric-application-and-service-manifests.
 
 Add a TransportSettings section in the settings.xml file.
 
-By default, actor code looks for SectionName as "&lt;ActorName&gt;TransportSettings". If that's not found, it checks for SectionName as "TransportSettings".
+By default, actor code looks for SectionName as `&lt;ActorName&gt;TransportSettings`. If that's not found, it checks for SectionName as `TransportSettings`.
 
   ```xml
   <Section Name="MyActorServiceTransportSettings">
@@ -68,7 +68,7 @@ By default, actor code looks for SectionName as "&lt;ActorName&gt;TransportSetti
 
 ### Configure FabricTransport settings for the actor client assembly
 
-If the client is not running as part of a service, you can create a "&lt;Client Exe Name&gt;.settings.xml" file in the same location as the client .exe file. Then add a TransportSettings section in that file. SectionName should be "TransportSettings".
+If the client isn't running as part of a service, you can create a "&lt;Client Exe Name&gt;.settings.xml" file in the same location as the client .exe file. Then add a TransportSettings section in that file. SectionName should be `TransportSettings`.
 
   ```xml
   <?xml version="1.0" encoding="utf-8"?>

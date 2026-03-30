@@ -6,20 +6,20 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
 # Customer intent: As a system administrator, I want to configure a group-managed service account for a Service Fabric service, so that I can enhance security and eliminate the need for password management within the application manifest.
 ---
 
 # Run a service as a group Managed Service Account
 
-On a Windows Server standalone cluster, you can run a service as a *group managed service account* (gMSA) using a *RunAs* policy.  By default, Service Fabric applications run under the account that the `Fabric.exe` process runs under. Running applications under different accounts, even in a shared hosted environment, makes them more secure from one another. By using a gMSA, there is no password or encrypted password stored in the application manifest.  You can also run a service as an [Active Directory user or group](service-fabric-run-service-as-ad-user-or-group.md).
+On a Windows Server standalone cluster, you can run a service as a *group managed service account* (gMSA) using a *RunAs* policy. By default, Service Fabric applications run under the account that the `Fabric.exe` process runs under. Running applications under different accounts, even in a shared hosted environment, makes them more secure from one another. By using a gMSA, there's no password or encrypted password stored in the application manifest. You can also run a service as an [Active Directory user or group](service-fabric-run-service-as-ad-user-or-group.md).
 
 The following example shows how to create a gMSA account called *svc-Test$*, how to deploy that managed service account to the cluster nodes, and how to configure the user principal.
 
 > [!NOTE]
 > Using a gMSA with a standalone Service Fabric cluster requires Active Directory on-premises within your domain (rather than Microsoft Entra ID).
 
-Pre-requisites:
+Prerequisites:
 
 - The domain needs a KDS root key.
 - There must be at least one Windows Server 2012 (or R2) DC in the domain.
@@ -59,7 +59,7 @@ Pre-requisites:
     ```
 
 > [!NOTE]
-> If you apply a RunAs policy to a service and the service manifest declares endpoint resources with the HTTP protocol, you must specify a **SecurityAccessPolicy**.  For more information, see [Assign a security access policy for HTTP and HTTPS endpoints](service-fabric-assign-policy-to-endpoint.md).
+> If you apply a RunAs policy to a service and the service manifest declares endpoint resources with the HTTP protocol, you must specify a **SecurityAccessPolicy**. For more information, see [Assign a security access policy for HTTP and HTTPS endpoints](service-fabric-assign-policy-to-endpoint.md).
 >
 
 The following articles will guide you through next steps:

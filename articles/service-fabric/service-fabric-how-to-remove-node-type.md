@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: "As a cloud administrator, I want to remove a node type from my Service Fabric cluster, so that I can effectively scale my resources and manage workloads without risking data integrity."
 ---
 
@@ -14,17 +14,16 @@ ms.date: 07/14/2022
 This article describes how to scale an Azure Service Fabric cluster by removing an existing node type from a cluster. A Service Fabric cluster is a network-connected set of virtual or physical machines into which your microservices are deployed and managed. A machine or VM that's part of a cluster is called a node. Virtual machine scale sets are an Azure compute resource that you use to deploy and manage a collection of virtual machines as a set. Every node type that is defined in an Azure cluster is [set up as a separate scale set](service-fabric-cluster-nodetypes.md). Each node type can then be managed separately. After creating a Service Fabric cluster, you can scale a cluster horizontally by removing a node type (virtual machine scale set) and all of its nodes.  You can scale the cluster at any time, even when workloads are running on the cluster.  As the cluster scales, your applications automatically scale as well.
 
 > [!WARNING]
-> Using this approach to remove a node type from a production cluster is
-> not recommended to be used on a frequent basis. It is a dangerous command as it deletes the virtual machine scale set 
+> Using this approach to remove a node type from a production cluster isn't recommended to be used on a frequent basis. It's a dangerous command as it deletes the virtual machine scale set 
 > resource behind the node type. 
 
 ## Durability characteristics
 Safety is prioritized over speed when using Remove-AzServiceFabricNodeType. The node type must be Silver or Gold [durability level](./service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster), because:
-- Bronze does not give you any guarantees about saving state information.
+- Bronze doesn't give you any guarantees about saving state information.
 - Silver and Gold durability trap any changes to the scale set.
 - Gold also gives you control over the Azure updates underneath scale set.
 
-Service Fabric "orchestrates" underlying changes and updates so that data is not lost. However, when you remove a node type with Bronze durability, you may lose state information. If you're removing a primary node type and your application is stateless, Bronze is acceptable. When you run stateful workloads in production, the minimum configuration should be Silver. Similarly, for production scenarios the primary node type should always be Silver or Gold.
+Service Fabric "orchestrates" underlying changes and updates so that data isn't lost. However, when you remove a node type with Bronze durability, you may lose state information. If you're removing a primary node type and your application is stateless, Bronze is acceptable. When you run stateful workloads in production, the minimum configuration should be Silver. Similarly, for production scenarios the primary node type should always be Silver or Gold.
 
 ### More about Bronze durability
 
@@ -32,7 +31,7 @@ When removing a node type that is Bronze, all the nodes in the node type go down
 
 ## Remove a node type
 
-1. Take care of these pre-requisites before you start the process.
+1. Take care of these prerequisites before you start the process.
 
     - The cluster is healthy.
     - There will still be sufficient capacity after the node type is removed, for example, number of nodes to place required replica count.
@@ -46,11 +45,11 @@ When removing a node type that is Bronze, all the nodes in the node type go down
     - All the services modified above are no longer running on the Node belonging to the node type.
     - All the services are healthy.
 
-3. Mark the node type as non-primary (Skip for non-primary node types).
+3. Mark the node type as nonprimary (Skip for nonprimary node types).
 
     - Locate the Azure Resource Manager template used for deployment.
     - Find the section related to the node type in the Service Fabric section.
-    - Change isPrimary property to false. ** Do not remove the section related to the node type in this task.
+    - Change isPrimary property to false. ** Don't remove the section related to the node type in this task.
     - Deploy the modified Azure Resource Manager template. ** Depending on the cluster configuration this step may take a while.
     
     Then validate that:

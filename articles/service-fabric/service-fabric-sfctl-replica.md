@@ -6,7 +6,8 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
+ms.update-cycle: 1825-days
 # Customer intent: As a cloud administrator, I want to manage replicas in a Service Fabric cluster using the CLI, so that I can monitor health, restart, and remove replicas effectively to maintain service reliability.
 ---
 
@@ -38,7 +39,7 @@ Gets the details of the replica deployed on a Service Fabric node. The informati
 | --node-name    [Required] | The name of the node. |
 | --partition-id [Required] | The identity of the partition. |
 | --replica-id   [Required] | The identifier of the replica. |
-| --timeout -t | The server timeout for performing the operation in seconds. This timeout specifies the time duration that the client is willing to wait for the requested operation to complete. The default value for this parameter is 60 seconds.  Default\: 60. |
+| --timeout -t | The server timeout for performing the operation in seconds. This timeout specifies the time duration that the client is willing to wait for the requested operation to complete. The default value for this parameter is 60 seconds. Default: 60. |
 
 ### Global Arguments
 
@@ -46,14 +47,14 @@ Gets the details of the replica deployed on a Service Fabric node. The informati
 | --- | --- |
 | --debug | Increase logging verbosity to show all debug logs. |
 | --help -h | Show this help message and exit. |
-| --output -o | Output format.  Allowed values\: json, jsonc, table, tsv.  Default\: json. |
-| --query | JMESPath query string. See http\://jmespath.org/ for more information and examples. |
+| --output -o | Output format. Allowed values: json, jsonc, table, tsv. Default: json. |
+| --query | JMESPath query string. For more information and examples, see https://jmespath.org/. |
 | --verbose | Increase logging verbosity. Use --debug for full debug logs. |
 
 ## sfctl replica deployed-list
 Gets the list of replicas deployed on a Service Fabric node.
 
-Gets the list containing the information about replicas deployed on a Service Fabric node. The information include partition ID, replica ID, status of the replica, name of the service, name of the service type, and other information. Use PartitionId or ServiceManifestName query parameters to return information about the deployed replicas matching the specified values for those parameters.
+Gets the list containing the information about replicas deployed on a Service Fabric node. The information includes partition ID, replica ID, status of the replica, name of the service, name of the service type, and other information. Use PartitionId or ServiceManifestName query parameters to return information about the deployed replicas matching the specified values for those parameters.
 
 ### Arguments
 
@@ -63,7 +64,7 @@ Gets the list containing the information about replicas deployed on a Service Fa
 | --node-name      [Required] | The name of the node. |
 | --partition-id | The identity of the partition. |
 | --service-manifest-name | The name of a service manifest registered as part of an application type in a Service Fabric cluster. |
-| --timeout -t | The server timeout for performing the operation in seconds. This timeout specifies the time duration that the client is willing to wait for the requested operation to complete. The default value for this parameter is 60 seconds.  Default\: 60. |
+| --timeout -t | The server timeout for performing the operation in seconds. This timeout specifies the time duration that the client is willing to wait for the requested operation to complete. The default value for this parameter is 60 seconds. Default: 60. |
 
 ### Global Arguments
 
@@ -71,8 +72,8 @@ Gets the list containing the information about replicas deployed on a Service Fa
 | --- | --- |
 | --debug | Increase logging verbosity to show all debug logs. |
 | --help -h | Show this help message and exit. |
-| --output -o | Output format.  Allowed values\: json, jsonc, table, tsv.  Default\: json. |
-| --query | JMESPath query string. See http\://jmespath.org/ for more information and examples. |
+| --output -o | Output format. Allowed values: json, jsonc, table, tsv. Default: json. |
+| --query | JMESPath query string. For more information and examples, see https://jmespath.org/. |
 | --verbose | Increase logging verbosity. Use --debug for full debug logs. |
 
 ## sfctl replica health
@@ -87,7 +88,7 @@ Gets the health of a Service Fabric replica. Use EventsHealthStateFilter to filt
 | --partition-id    [Required] | The identity of the partition. |
 | --replica-id      [Required] | The identifier of the replica. |
 | --events-health-state-filter | Allows filtering the collection of HealthEvent objects returned based on health state. The possible values for this parameter include integer value of one of the following health states. Only events that match the filter are returned. All events are used to evaluate the aggregated health state. If not specified, all entries are returned. The state values are flag-based enumeration, so the value could be a combination of these values, obtained using the bitwise 'OR' operator. For example, If the provided value is 6 then all of the events with HealthState value of OK (2) and Warning (4) are returned.  <br> - Default - Default value. Matches any HealthState. The value is zero.  <br> - None - Filter that doesn't match any HealthState value. Used in order to return no results on a given collection of states. The value is 1.  <br> - Ok - Filter that matches input with HealthState value Ok. The value is 2.  <br> - Warning - Filter that matches input with HealthState value Warning. The value is 4.  <br> - Error - Filter that matches input with HealthState value Error. The value is 8.  <br> - All - Filter that matches input with any HealthState value. The value is 65535. |
-| --timeout -t | The server timeout for performing the operation in seconds. This timeout specifies the time duration that the client is willing to wait for the requested operation to complete. The default value for this parameter is 60 seconds.  Default\: 60. |
+| --timeout -t | The server timeout for performing the operation in seconds. This timeout specifies the time duration that the client is willing to wait for the requested operation to complete. The default value for this parameter is 60 seconds. Default: 60. |
 
 ### Global Arguments
 
@@ -95,8 +96,8 @@ Gets the health of a Service Fabric replica. Use EventsHealthStateFilter to filt
 | --- | --- |
 | --debug | Increase logging verbosity to show all debug logs. |
 | --help -h | Show this help message and exit. |
-| --output -o | Output format.  Allowed values\: json, jsonc, table, tsv.  Default\: json. |
-| --query | JMESPath query string. See http\://jmespath.org/ for more information and examples. |
+| --output -o | Output format. Allowed values: json, jsonc, table, tsv. Default: json. |
+| --query | JMESPath query string. For more information and examples, see https://jmespath.org/. |
 | --verbose | Increase logging verbosity. Use --debug for full debug logs. |
 
 ## sfctl replica info
@@ -110,7 +111,7 @@ The response includes the ID, role, status, health, node name, uptime, and other
 | --- | --- |
 | --partition-id [Required] | The identity of the partition. |
 | --replica-id   [Required] | The identifier of the replica. |
-| --timeout -t | The server timeout for performing the operation in seconds. This timeout specifies the time duration that the client is willing to wait for the requested operation to complete. The default value for this parameter is 60 seconds.  Default\: 60. |
+| --timeout -t | The server timeout for performing the operation in seconds. This timeout specifies the time duration that the client is willing to wait for the requested operation to complete. The default value for this parameter is 60 seconds. Default: 60. |
 
 ### Global Arguments
 
@@ -118,8 +119,8 @@ The response includes the ID, role, status, health, node name, uptime, and other
 | --- | --- |
 | --debug | Increase logging verbosity to show all debug logs. |
 | --help -h | Show this help message and exit. |
-| --output -o | Output format.  Allowed values\: json, jsonc, table, tsv.  Default\: json. |
-| --query | JMESPath query string. See http\://jmespath.org/ for more information and examples. |
+| --output -o | Output format. Allowed values: json, jsonc, table, tsv. Default: json. |
+| --query | JMESPath query string. For more information and examples, see https://jmespath.org/. |
 | --verbose | Increase logging verbosity. Use --debug for full debug logs. |
 
 ## sfctl replica list
@@ -132,8 +133,8 @@ The GetReplicas endpoint returns information about the replicas of the specified
 |Argument|Description|
 | --- | --- |
 | --partition-id [Required] | The identity of the partition. |
-| --continuation-token | The continuation token parameter is used to obtain next set of results. A continuation token with a non-empty value is included in the response of the API when the results from the system do not fit in a single response. When this value is passed to the next API call, the API returns next set of results. If there are no further results, then the continuation token does not contain a value. The value of this parameter should not be URL encoded. |
-| --timeout -t | The server timeout for performing the operation in seconds. This timeout specifies the time duration that the client is willing to wait for the requested operation to complete. The default value for this parameter is 60 seconds.  Default\: 60. |
+| --continuation-token | The continuation token parameter is used to obtain next set of results. A continuation token with a nonempty value is included in the response of the API when the results from the system don't fit in a single response. When this value is passed to the next API call, the API returns next set of results. If there are no further results, then the continuation token doesn't contain a value. The value of this parameter shouldn't be URL encoded. |
+| --timeout -t | The server timeout for performing the operation in seconds. This timeout specifies the time duration that the client is willing to wait for the requested operation to complete. The default value for this parameter is 60 seconds. Default: 60. |
 
 ### Global Arguments
 
@@ -141,8 +142,8 @@ The GetReplicas endpoint returns information about the replicas of the specified
 | --- | --- |
 | --debug | Increase logging verbosity to show all debug logs. |
 | --help -h | Show this help message and exit. |
-| --output -o | Output format.  Allowed values\: json, jsonc, table, tsv.  Default\: json. |
-| --query | JMESPath query string. See http\://jmespath.org/ for more information and examples. |
+| --output -o | Output format. Allowed values: json, jsonc, table, tsv. Default: json. |
+| --query | JMESPath query string. For more information and examples, see https://jmespath.org/. |
 | --verbose | Increase logging verbosity. Use --debug for full debug logs. |
 
 ## sfctl replica remove
@@ -158,7 +159,7 @@ This API simulates a Service Fabric replica failure by removing a replica from a
 | --partition-id [Required] | The identity of the partition. |
 | --replica-id   [Required] | The identifier of the replica. |
 | --force-remove | Remove a Service Fabric application or service forcefully without going through the graceful shutdown sequence. This parameter can be used to forcefully delete an application or service for which delete is timing out due to issues in the service code that prevents graceful close of replicas. |
-| --timeout -t | The server timeout for performing the operation in seconds. This timeout specifies the time duration that the client is willing to wait for the requested operation to complete. The default value for this parameter is 60 seconds.  Default\: 60. |
+| --timeout -t | The server timeout for performing the operation in seconds. This timeout specifies the time duration that the client is willing to wait for the requested operation to complete. The default value for this parameter is 60 seconds. Default: 60. |
 
 ### Global Arguments
 
@@ -166,14 +167,14 @@ This API simulates a Service Fabric replica failure by removing a replica from a
 | --- | --- |
 | --debug | Increase logging verbosity to show all debug logs. |
 | --help -h | Show this help message and exit. |
-| --output -o | Output format.  Allowed values\: json, jsonc, table, tsv.  Default\: json. |
-| --query | JMESPath query string. See http\://jmespath.org/ for more information and examples. |
+| --output -o | Output format. Allowed values: json, jsonc, table, tsv. Default: json. |
+| --query | JMESPath query string. For more information and examples, see https://jmespath.org/. |
 | --verbose | Increase logging verbosity. Use --debug for full debug logs. |
 
 ## sfctl replica report-health
 Sends a health report on the Service Fabric replica.
 
-Reports health state of the specified Service Fabric replica. The report must contain the information about the source of the health report and property on which it is reported. The report is sent to a Service Fabric gateway Replica, which forwards to the health store. The report may be accepted by the gateway, but rejected by the health store after extra validation. For example, the health store may reject the report because of an invalid parameter, like a stale sequence number. To see whether the report was applied in the health store, run get replica health and check that the report appears in the HealthEvents section.
+Reports health state of the specified Service Fabric replica. The report must contain the information about the source of the health report and property on which it's reported. The report is sent to a Service Fabric gateway Replica, which forwards to the health store. The report may be accepted by the gateway, but rejected by the health store after extra validation. For example, the health store may reject the report because of an invalid parameter, like a stale sequence number. To see whether the report was applied in the health store, run get replica health and check that the report appears in the HealthEvents section.
 
 ### Arguments
 
@@ -184,12 +185,12 @@ Reports health state of the specified Service Fabric replica. The report must co
 | --partition-id    [Required] | The identity of the partition. |
 | --replica-id      [Required] | The identity of the partition. |
 | --source-id       [Required] | The source name that identifies the client/watchdog/system component that generated the health information. |
-| --description | The description of the health information. <br><br> It represents free text used to add human readable information about the report. The maximum string length for the description is 4096 characters. If the provided string is longer, it will be automatically truncated. When truncated, the last characters of the description contain a marker "[Truncated]", and total string size is 4096 characters. The presence of the marker indicates to users that truncation occurred. Note that when truncated, the description has less than 4096 characters from the original string. |
-| --immediate | A flag that indicates whether the report should be sent immediately. <br><br> A health report is sent to a Service Fabric gateway Application, which forwards to the health store. If Immediate is set to true, the report is sent immediately from HTTP Gateway to the health store, regardless of the fabric client settings that the HTTP Gateway Application is using. This is useful for critical reports that should be sent as soon as possible. Depending on timing and other conditions, sending the report may still fail, for example if the HTTP Gateway is closed or the message doesn't reach the Gateway. If Immediate is set to false, the report is sent based on the health client settings from the HTTP Gateway. Therefore, it will be batched according to the HealthReportSendInterval configuration. This is the recommended setting because it allows the health client to optimize health reporting messages to health store as well as health report processing. By default, reports are not sent immediately. |
-| --remove-when-expired | Value that indicates whether the report is removed from health store when it expires. <br><br> If set to true, the report is removed from the health store after it expires. If set to false, the report is treated as an error when expired. The value of this property is false by default. When clients report periodically, they should set RemoveWhenExpired false (default). This way, is the reporter has issues (e.g. deadlock) and can't report, the entity is evaluated at error when the health report expires. This flags the entity as being in Error health state. |
-| --sequence-number | The sequence number for this health report as a numeric string. <br><br> The report sequence number is used by the health store to detect stale reports. If not specified, a sequence number is auto-generated by the health client when a report is added. |
-| --service-kind | The kind of service replica (stateless or stateful) for which the health is being reported. Following are the possible values\: 'Stateless', 'Stateful'.  Default\: Stateful. |
-| --timeout -t | Default\: 60. |
+| --description | The description of the health information. <br><br> It represents free text used to add human readable information about the report. The maximum string length for the description is 4,096 characters. If the provided string is longer, it is automatically truncated. When truncated, the last characters of the description contain a marker "[Truncated]", and total string size is 4,096 characters. The presence of the marker indicates to users that truncation occurred. When truncated, the description has less than 4,096 characters from the original string. |
+| --immediate | A flag that indicates whether the report should be sent immediately. <br><br> A health report is sent to a Service Fabric gateway Application, which forwards to the health store. If Immediate is set to true, the report is sent immediately from HTTP Gateway to the health store, regardless of the fabric client settings that the HTTP Gateway Application is using. This is useful for critical reports that should be sent as soon as possible. Depending on timing and other conditions, sending the report may still fail, for example if the HTTP Gateway is closed or the message doesn't reach the Gateway. If Immediate is set to false, the report is sent based on the health client settings from the HTTP Gateway. Therefore, it is batched according to the HealthReportSendInterval configuration. This is the recommended setting because it allows the health client to optimize health reporting messages to health store as well as health report processing. By default, reports aren't sent immediately. |
+| --remove-when-expired | Value that indicates whether the report is removed from health store when it expires. <br><br> If set to true, the report is removed from the health store after it expires. If set to false, the report is treated as an error when expired. The value of this property is false by default. When clients report periodically, they should set RemoveWhenExpired false (default). This way, if the reporter has issues (for example, deadlock) and can't report, the entity is evaluated at error when the health report expires. This flags the entity as being in Error health state. |
+| --sequence-number | The sequence number for this health report as a numeric string. <br><br> The report sequence number is used by the health store to detect stale reports. If not specified, a sequence number is autogenerated by the health client when a report is added. |
+| --service-kind | The kind of service replica (stateless or stateful) for which the health is being reported. Following are the possible values\: 'Stateless', 'Stateful'. Default: Stateful. |
+| --timeout -t | Default: 60. |
 | --ttl | The duration for which this health report is valid. This field uses ISO8601 format for specifying the duration. <br><br> When clients report periodically, they should send reports with higher frequency than time to live. If clients report on transition, they can set the time to live to infinite. When time to live expires, the health event that contains the health information is either removed from health store, if RemoveWhenExpired is true, or evaluated at error, if RemoveWhenExpired false. If not specified, time to live defaults to infinite value. |
 
 ### Global Arguments
@@ -198,8 +199,8 @@ Reports health state of the specified Service Fabric replica. The report must co
 | --- | --- |
 | --debug | Increase logging verbosity to show all debug logs. |
 | --help -h | Show this help message and exit. |
-| --output -o | Output format.  Allowed values\: json, jsonc, table, tsv.  Default\: json. |
-| --query | JMESPath query string. See http\://jmespath.org/ for more information and examples. |
+| --output -o | Output format. Allowed values: json, jsonc, table, tsv. Default: json. |
+| --query | JMESPath query string. For more information and examples, see https://jmespath.org/. |
 | --verbose | Increase logging verbosity. Use --debug for full debug logs. |
 
 ## sfctl replica restart
@@ -214,7 +215,7 @@ Restarts a service replica of a persisted service running on a node. Warning - T
 | --node-name    [Required] | The name of the node. |
 | --partition-id [Required] | The identity of the partition. |
 | --replica-id   [Required] | The identifier of the replica. |
-| --timeout -t | The server timeout for performing the operation in seconds. This timeout specifies the time duration that the client is willing to wait for the requested operation to complete. The default value for this parameter is 60 seconds.  Default\: 60. |
+| --timeout -t | The server timeout for performing the operation in seconds. This timeout specifies the time duration that the client is willing to wait for the requested operation to complete. The default value for this parameter is 60 seconds. Default: 60. |
 
 ### Global Arguments
 
@@ -222,8 +223,8 @@ Restarts a service replica of a persisted service running on a node. Warning - T
 | --- | --- |
 | --debug | Increase logging verbosity to show all debug logs. |
 | --help -h | Show this help message and exit. |
-| --output -o | Output format.  Allowed values\: json, jsonc, table, tsv.  Default\: json. |
-| --query | JMESPath query string. See http\://jmespath.org/ for more information and examples. |
+| --output -o | Output format. Allowed values: json, jsonc, table, tsv. Default: json. |
+| --query | JMESPath query string. For more information and examples, see https://jmespath.org/. |
 | --verbose | Increase logging verbosity. Use --debug for full debug logs. |
 
 

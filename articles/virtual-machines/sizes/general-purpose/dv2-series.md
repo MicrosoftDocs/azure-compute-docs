@@ -43,13 +43,13 @@ vCPUs (Qty.) and Memory for each size
 
 Local (temp) storage info for each size
 
-| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read (RR)<sup>1</sup> IOPS | Temp Disk Random Read (RR)<sup>1</sup> Throughput (MB/s) | Temp Disk Random Write (RW)<sup>1</sup> Throughput (MB/s) |
+| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read (RR)<sup>1</sup> IOPS | Temp Disk Random Read (RR)<sup>1</sup> Throughput (MBps) | Temp Disk Random Write (RW)<sup>1</sup> Throughput (MBps) |
 | --- | --- | --- | --- | --- | --- |
-| Standard_D1_v2 | 1 | 50 | 3000 | 46 | 23 |
-| Standard_D2_v2 | 1 | 100 | 6000 | 93 | 46 |
-| Standard_D3_v2 | 1 | 200 | 12000 | 187 | 93 |
-| Standard_D4_v2 | 1 | 400 | 24000 | 375 | 187 |
-| Standard_D5_v2 | 1 | 800 | 48000 | 750 | 375 |
+| Standard_D1_v2 | 1 | 50 | 3,000 | 46 | 23 |
+| Standard_D2_v2 | 1 | 100 | 6,000 | 93 | 46 |
+| Standard_D3_v2 | 1 | 200 | 12,000 | 187 | 93 |
+| Standard_D4_v2 | 1 | 400 | 24,000 | 375 | 187 |
+| Standard_D5_v2 | 1 | 800 | 48,000 | 750 | 375 |
 
 #### Storage resources
 - [Introduction to Azure Managed Disks](../../../virtual-machines/managed-disks-overview.md)
@@ -58,7 +58,7 @@ Local (temp) storage info for each size
 
 #### Table definitions
 - <sup>1</sup>Temp disk speed often differs between RR (Random Read) and RW (Random Write) operations. RR operations are typically faster than RW operations. The RW speed is usually slower than the RR speed on series where only the RR speed value is listed.
-- Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
+- Storage capacity is shown in units of GiB or 1,024^3 bytes. When you compare disks measured in GB (1,000^3 bytes) to disks measured in GiB (1,024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1,023 GiB = 1,098.4 GB.
 - Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
 - To learn how to get the best storage performance for your VMs, see [Virtual machine and disk performance](../../../virtual-machines/disks-performance.md).
 
@@ -82,7 +82,7 @@ Remote (uncached) storage info for each size
 #### Table definitions
 - <sup>1</sup>These sizes support [bursting](../../disk-bursting.md) to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.
 
-- Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
+- Storage capacity is shown in units of GiB or 1,024^3 bytes. When you compare disks measured in GB (1,000^3 bytes) to disks measured in GiB (1,024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1,023 GiB = 1,098.4 GB.
 - Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
 - Data disks can operate in cached or uncached modes. For cached data disk operation, the host cache mode is set to ReadOnly or ReadWrite. For uncached data disk operation, the host cache mode is set to None.
 - To learn how to get the best storage performance for your VMs, see [Virtual machine and disk performance](../../../virtual-machines/disks-performance.md).
@@ -92,13 +92,13 @@ Remote (uncached) storage info for each size
 
 Network interface info for each size
 
-| Size Name | Max NICs (Qty.) | Max Network Bandwidth (Mb/s) |
+| Size Name | Max NICs (Qty.) | Max Network Bandwidth (Mbps) |
 | --- | --- | --- |
 | Standard_D1_v2 | 2 | 750 |
-| Standard_D2_v2 | 2 | 1500 |
-| Standard_D3_v2 | 4 | 3000 |
-| Standard_D4_v2 | 8 | 6000 |
-| Standard_D5_v2 | 8 | 12000 |
+| Standard_D2_v2 | 2 | 1,500 |
+| Standard_D3_v2 | 4 | 3,000 |
+| Standard_D4_v2 | 8 | 6,000 |
+| Standard_D5_v2 | 8 | 12,000 |
 |  |  |  |
 
 #### Networking resources

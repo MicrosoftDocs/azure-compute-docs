@@ -7,7 +7,7 @@ author: tomvcassidy
 ms.service: azure-container-instances
 ms.custom: devx-track-azurecli
 services: container-instances
-ms.date: 11/17/2025
+ms.date: 03/16/2026
 # Customer intent: As a cloud developer, I want to deploy a multi-container group using a YAML file, so that I can utilize a sidecar configuration for maintaining application services effectively.
 ---
 
@@ -64,7 +64,8 @@ properties:
       - port: 8080
   - name: aci-tutorial-sidecar
     properties:
-      image: mcr.microsoft.com/azuredocs/aci-tutorial-sidecar
+      image: mcr.microsoft.com/mirror/docker/library/alpine:3.20
+      command: ["sh", "-c", "apk add --no-cache curl && while true; do curl -I http://localhost; sleep 3; done"]
       resources:
         requests:
           cpu: 1
@@ -119,7 +120,7 @@ If you'd like to view the running application, navigate to its IP address in you
 ```console
 Name              ResourceGroup    Status    Image                                                                                               IP:ports              Network    CPU/Memory       OsType    Location
 ----------------  ---------------  --------  --------------------------------------------------------------------------------------------------  --------------------  ---------  ---------------  --------  ----------
-myContainerGroup  danlep0318r      Running   mcr.microsoft.com/azuredocs/aci-tutorial-sidecar,mcr.microsoft.com/azuredocs/aci-helloworld:latest  20.42.26.114:80,8080  Public     1.0 core/1.5 gb  Linux     eastus
+myContainerGroup  danlep0318r      Running   mcr.microsoft.com/mirror/docker/library/alpine:3.20,mcr.microsoft.com/azuredocs/aci-helloworld:latest  20.42.26.114:80,8080  Public     1.0 core/1.5 gb  Linux     eastus
 ```
 
 ## View container logs

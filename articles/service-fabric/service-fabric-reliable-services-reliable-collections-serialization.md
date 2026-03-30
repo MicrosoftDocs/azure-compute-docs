@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
 ms.update-cycle: 1095-days
 # Customer intent: "As a cloud application developer, I want to implement custom serialization for Reliable Collections, so that I can optimize performance and ensure data compatibility during application upgrades."
 ---
@@ -22,7 +22,7 @@ Reliable State Manager contains built-in serializers and allows custom serialize
 
 Reliable State Manager includes built-in serializer for some common types, so that they can be serialized efficiently by default. 
 For other types, Reliable State Manager falls back to use the [DataContractSerializer](/dotnet/api/system.runtime.serialization.datacontractserializer).
-Built-in serializers are more efficient since they know their types cannot change and they do not need to include information about the type like its type name.
+Built-in serializers are more efficient since they know their types can't change and they don't need to include information about the type like its type name.
 
 Reliable State Manager has built-in serializer for following types: 
 - Guid
@@ -138,7 +138,7 @@ During this process, some upgrade domains will be on the newer version of your a
 During the rollout, the new version of your application must be able to read the old version of your data, and the old version of your application must be able to read the new version of your data. 
 If the data format is not forward and backward compatible, the upgrade may fail, or worse, data may be lost or corrupted.
 
-If you are using  built-in serializer, you do not have to worry about compatibility.
+If you are using  built-in serializer, you don't have to worry about compatibility.
 However, if you are using a custom serializer or the DataContractSerializer, the data have to be infinitely backwards and forwards compatible.
 In other words, each version of serializer needs to be able to serialize and de-serialize any version of the type.
 

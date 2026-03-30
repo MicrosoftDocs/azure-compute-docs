@@ -7,15 +7,15 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: no-azure-ad-ps-ref
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: "As a cloud architect, I want to create a Resource Manager template for a Service Fabric cluster, so that I can efficiently deploy secure microservices with proper authentication and configuration management."
 ---
 
-# Create a Service Fabric cluster Resource Manager template
+# Create a Service Fabric cluster resource manager template
 
 An [Azure Service Fabric cluster](service-fabric-deploy-anywhere.md) is a network-connected set of virtual machines into which your microservices are deployed and managed. A Service Fabric cluster running in Azure is an Azure resource and is deployed, managed, and monitored using the Resource Manager.  This article describes how create a Resource Manager template for a Service Fabric cluster running in Azure.  When the template is complete, you can [deploy the cluster on Azure](service-fabric-cluster-creation-via-arm.md).
 
-Cluster security is configured when the cluster is first set up and cannot be changed later. Before setting up a cluster, read [Service Fabric cluster security scenarios][service-fabric-cluster-security]. In Azure, Service Fabric uses x509 certificate to secure your cluster and its endpoints, authenticate clients, and encrypt data. Microsoft Entra ID is also recommended to secure access to management endpoints. Microsoft Entra tenants and users must be created before creating the cluster.  For more information, read [Set up Microsoft Entra ID to authenticate clients](service-fabric-cluster-creation-setup-aad.md).
+Cluster security is configured when the cluster is first set up and can't be changed later. Before setting up a cluster, read [Service Fabric cluster security scenarios][service-fabric-cluster-security]. In Azure, Service Fabric uses x509 certificate to secure your cluster and its endpoints, authenticate clients, and encrypt data. Microsoft Entra ID is also recommended to secure access to management endpoints. Microsoft Entra tenants and users must be created before creating the cluster.  For more information, read [Set up Microsoft Entra ID to authenticate clients](service-fabric-cluster-creation-setup-aad.md).
 
 Before deploying a production cluster to run production workloads, be sure to first read the [Production readiness checklist](service-fabric-production-readiness-checklist.md).
 
@@ -31,7 +31,7 @@ This article uses the [five-node secure cluster][service-fabric-secure-cluster-5
 > For national clouds (Azure Government, Microsoft Azure operated by 21Vianet, Azure Germany), you should also add the following `fabricSettings` to your template: `AADLoginEndpoint`, `AADTokenEndpointFormat` and `AADCertEndpointFormat`.
 
 ## Add certificates
-You add certificates to a cluster Resource Manager template by referencing the key vault that contains the certificate keys. Add those key-vault parameters and values in a Resource Manager template parameters file (*azuredeploy.parameters.json*).
+You add certificates to a cluster resource manager template by referencing the key vault that contains the certificate keys. Add those key-vault parameters and values in a Resource Manager template parameters file (*azuredeploy.parameters.json*).
 
 ### Add all certificates to the virtual machine scale set osProfile
 Every certificate that's installed in the cluster must be configured in the **osProfile** section of the scale set resource (Microsoft.Compute/virtualMachineScaleSets). This action instructs the resource provider to install the certificate on the VMs. This installation includes both the cluster certificate and any application security certificates that you plan to use for your applications:
@@ -135,7 +135,7 @@ The cluster authentication certificate must be configured in both the Service Fa
 
 ## Add Microsoft Entra configuration to use Microsoft Entra ID for client access
 
-You add the Microsoft Entra configuration to a cluster Resource Manager template by referencing the key vault that contains the certificate keys. Add those Microsoft Entra parameters and values in a Resource Manager template parameters file (*azuredeploy.parameters.json*). 
+You add the Microsoft Entra configuration to a cluster resource manager template by referencing the key vault that contains the certificate keys. Add those Microsoft Entra parameters and values in a Resource Manager template parameters file (*azuredeploy.parameters.json*). 
 
 > [!NOTE]
 > On Linux, Microsoft Entra tenants and users must be created before creating the cluster.  For more information, read [Set up Microsoft Entra ID to authenticate clients](service-fabric-cluster-creation-setup-aad.md).
@@ -171,7 +171,7 @@ You add the Microsoft Entra configuration to a cluster Resource Manager template
 
 Finally, use the output values from the key vault and Microsoft Entra PowerShell commands to populate the parameters file.
 
-If you plan to use the Azure service fabric RM PowerShell modules, then you do not need to populate the cluster certificate information. If you want the system to generate the self signed certificate for cluster security you, just keep them as null. 
+If you plan to use the Azure service fabric RM PowerShell modules, then you don't need to populate the cluster certificate information. If you want the system to generate the self signed certificate for cluster security you, just keep them as null. 
 
 > [!NOTE]
 > For the RM modules to pick up and populate these empty parameter values, the parameters names much match the names below
@@ -191,9 +191,9 @@ If you plan to use the Azure service fabric RM PowerShell modules, then you do n
 },
 ```
 
-If you are using application certs or are using an existing cluster that you have uploaded to the key vault, you need to get this information and populate it.
+If you're using application certs or are using an existing cluster that you have uploaded to the key vault, you need to get this information and populate it.
 
-The RM modules do not have the ability to generate the Microsoft Entra configuration for you, so if you plan to use the Microsoft Entra ID for client access, you need to populate it.
+The RM modules don't have the ability to generate the Microsoft Entra configuration for you, so if you plan to use the Microsoft Entra ID for client access, you need to populate it.
 
 ```json
 {

@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 08/09/2024
+ms.date: 03/22/2026
 # Customer intent: As a cloud engineer, I want to deploy a Service Fabric managed cluster with stateless node types, so that I can take advantage of improved scaling, cost savings using Spot VMs, and efficient resource management for stateless workloads.
 ---
 

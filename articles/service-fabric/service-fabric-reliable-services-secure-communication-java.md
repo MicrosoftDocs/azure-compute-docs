@@ -7,7 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-extended-java
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
 # Customer intent: As a Java developer, I want to secure service remoting communications in my Azure Service Fabric application, so that I can ensure the integrity and confidentiality of data exchanged between services.
 ---
 

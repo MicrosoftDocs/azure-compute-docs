@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/24/2023
+ms.date: 03/22/2026
 # Customer intent: As a cloud architect, I want to configure a NAT gateway for my Service Fabric managed cluster, so that I can enhance security and provide internet access to internal resources without exposing them directly to the internet.
 ---
 

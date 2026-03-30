@@ -7,7 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom:
 services: service-fabric
-ms.date: 07/05/2023
+ms.date: 03/22/2026
 # Customer intent: "As a cloud architect, I want to configure a public IP address prefix for a Service Fabric managed cluster, so that I can streamline IP management and enhance security for my deployments."
 ---
 

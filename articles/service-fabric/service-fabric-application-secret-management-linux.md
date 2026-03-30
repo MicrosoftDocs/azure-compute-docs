@@ -7,7 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: linux-related-content
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: "As a system administrator managing Linux clusters, I want to set up an encryption certificate and encrypt secrets, so that I can securely handle sensitive information within my applications."
 ---
 

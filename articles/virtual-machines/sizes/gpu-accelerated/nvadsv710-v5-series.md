@@ -134,7 +134,27 @@ Accelerator (GPUs, FPGAs, etc.) information for each size.
 |[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli)| Supported |
 |[Ephemeral OS Disk](../../ephemeral-os-disks.md)| Supported |
 |[Local temporary storage](../../overview.md#local-temporary-storage)| Supported |
-|[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)| Not Supported |
+|[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)| Supported |
+
+## Certified ISV Applications
+
+|Application | Video Card |	OS | Driver |
+| --- | --- | --- | --- |
+|3ds Max 2025 | AMD Radeon™ PRO V710 | Windows 11 - 64-Bit Edition | [24.Q2](../../windows/n-series-amd-driver-setup.md)|
+|After Effects 25.1.0 (Verified / Tested) | AMD Radeon™ PRO V710 | Windows 11 - 64-Bit Edition | [24.Q2](../../windows/n-series-amd-driver-setup.md)|
+|Ansys Fluent 2025 R1 (Verified / Tested) |AMD Radeon™ PRO V710 | Windows 11 - 64-Bit Edition |[24.Q2](../../windows/n-series-amd-driver-setup.md)|
+|Ansys HFSS 2025 R1 (Verified / Tested) |AMD Radeon™ PRO V710 | Windows 11 - 64-Bit Edition | [24.Q2](../../windows/n-series-amd-driver-setup.md)|
+|Ansys Mechanical APDL 2025 R1 (Verified / Tested) |AMD Radeon™ PRO V710 | Windows 11 - 64-Bit Edition |[24.Q2](../../windows/n-series-amd-driver-setup.md)|
+|AutoCAD 2025 | AMD Radeon™ PRO V710 |Windows 11 - 64-Bit Edition |[24.Q2](../../windows/n-series-amd-driver-setup.md)|
+|Autodesk Fusion 360| AMD Radeon™ PRO V710 |Windows 11 - 64-Bit Edition |[24.Q2](../../windows/n-series-amd-driver-setup.md)|
+|Dassault 3DEXPERIENCE Part Design (CATIA) (Verified / Tested)| AMD Radeon™ PRO V710|Windows 11 - 64-Bit Edition| [25.Q2](../../windows/n-series-amd-driver-setup.md)|
+|Inventor 2025| AMD Radeon™ PRO V710 | Windows 11 - 64-Bit Edition |[24.Q2](../../windows/n-series-amd-driver-setup.md)|
+|Maya 2025| AMD Radeon™ PRO V710 | Windows 11 - 64-Bit Edition | [24.Q2](../../windows/n-series-amd-driver-setup.md)|
+|Photoshop 26.3.0 (Verified / Tested) | AMD Radeon™ PRO V710 | Windows 11 - 64-Bit Edition | [24.Q2](../../windows/n-series-amd-driver-setup.md)|
+|Premiere Pro 25.1.0 (Verified / Tested) | AMD Radeon™ PRO V710 | Windows 11 - 64-Bit Edition | [24.Q2](../../windows/n-series-amd-driver-setup.md)|
+|Revit 2024| AMD Radeon™ PRO V710| Windows 11 - 64-Bit Edition| [24.Q2](../../windows/n-series-amd-driver-setup.md)|
+|Siemens NX (Verified / Tested)| AMD Radeon™ PRO V710| Windows 11 - 64-Bit Edition| [24.Q2](../../windows/n-series-amd-driver-setup.md)|
+
 
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]

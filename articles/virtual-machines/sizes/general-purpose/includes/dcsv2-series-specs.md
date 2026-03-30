@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.date: 07/31/2024
+ms.date: 03/09/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
@@ -13,9 +13,9 @@ ms.custom: include file
 ---
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
 |---|---|---|
-| Processor      | 1 - 8 Cores       | Intel Xeon E-2288G (Coffee Lake) [x86-64]                               |
+| Processor      | 1 - 8 vCPUs       | Intel Xeon E-2288G (Coffee Lake) [x86-64]                               |
 | Memory         | 4 - 32 GiB          |                                  |
 | Local Storage  | 1 Disk           | 50 - 400 GiB                            |
 | Remote Storage | 1 - 8 Disks    |    |
-| Network        | 1 NICs          |                           |
+| Network        | 1 NICs          | Interfaces: NetVSC, ConnectX                           |
 | Accelerators   | None              |                                   |

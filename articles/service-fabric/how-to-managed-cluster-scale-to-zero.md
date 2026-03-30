@@ -7,13 +7,13 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-arm-template
 services: service-fabric
-ms.date: 05/24/2024
+ms.date: 03/22/2026
 # Customer intent: "As a cloud administrator, I want to scale my Service Fabric managed clusters down to zero nodes, so that I can reduce costs during periods of inactivity."
 ---
 
 # Scale to zero nodes for Service Fabric managed clusters
 
-The scale to zero feature allows customers to create clusters that have one or more node types with zero nodes. Customers who have test clusters that do not need nodes on an ongoing basis will benefit from lower cost by scaling down to zero. Also, customers who wish to prep their cluster with all necessary configuration before adding nodes will benefit from scale to zero.
+The scale to zero feature allows customers to create clusters that have one or more node types with zero nodes. Customers who have test clusters that don't need nodes on an ongoing basis will benefit from lower cost by scaling down to zero. Also, customers who wish to prep their cluster with all necessary configuration before adding nodes will benefit from scale to zero.
 
 ## Limitations
 

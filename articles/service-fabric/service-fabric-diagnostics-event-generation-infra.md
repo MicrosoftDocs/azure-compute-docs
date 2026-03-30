@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 ms.update-cycle: 1095-days
 # Customer intent: As a cloud operations engineer, I want to monitor Azure Service Fabric clusters using structured events and logs, so that I can ensure optimal performance, diagnose issues, and make informed scaling decisions based on resource utilization and health metrics.
 ---

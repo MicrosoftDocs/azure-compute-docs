@@ -1,7 +1,7 @@
 ---
 title: Monitoring data reference for Azure Service Fabric
 description: This article contains important reference material you need when you monitor Service Fabric.
-ms.date: 03/26/2024
+ms.date: 03/22/2026
 ms.custom: horz-monitor
 ms.topic: reference
 ms.author: tomcassidy

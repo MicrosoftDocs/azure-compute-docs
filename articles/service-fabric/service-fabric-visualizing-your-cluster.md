@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: "As a cloud application administrator, I want to visualize my Service Fabric cluster using a management tool, so that I can monitor its health, manage applications, and execute necessary actions efficiently."
 ---
 
@@ -21,7 +21,7 @@ Service Fabric Explorer is also hosted in a Service Fabric cluster's HTTP manage
 For developer workstation setup, you can launch Service Fabric Explorer on your local cluster by navigating to https://localhost:19080/Explorer. Look at this article to [prepare your development environment](service-fabric-get-started.md).
 
 > [!NOTE]
-> If your cluster is secured by a self-signed certificate you will receive an error message from the web browser "This site is not secure". You can simply proceed through most modern web browsers by overriding the warning. In a production environment your cluster should be secured using common name and a certificate authority issued certificate. 
+> If your cluster is secured by a self-signed certificate, you receive an error message from the web browser "This site isn't secure". You can proceed through most modern web browsers by overriding the warning. In a production environment, your cluster should be secured using common name and a certificate authority issued certificate. 
 >
 >
 
@@ -84,7 +84,7 @@ You can also use Service Fabric Explorer to create application instances for a g
 ![Creating an application instance in Service Fabric Explorer][sfx-create-app-instance]
 
 > [!NOTE]
-> Service Fabric Explorer does not support parameters when creating application instances. Application instances use default parameter values.
+> Service Fabric Explorer doesn't support parameters when creating application instances. Application instances use default parameter values.
 >
 >
 
@@ -94,7 +94,7 @@ EventStore is a feature offered by the platform that provides Service Fabric pla
 ![Screenshot shows the Nodes pane with EVENTS selected.][sfx-eventstore]
 
 >[!NOTE]
->As of Service Fabric version 6.4. EventStore is not enabled by default and must be enabled in the resource manager template
+>As of Service Fabric version 6.4. EventStore isn't enabled by default and must be enabled in the resource manager template
 
 >[!NOTE]
 >As of Service Fabric version 6.4. the EventStore APIs are only available for Windows clusters running on Azure only. We are working on porting this functionality to Linux as well as our Standalone clusters.

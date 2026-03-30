@@ -6,19 +6,19 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: "As a cloud architect, I want to plan and prepare a production Azure Service Fabric cluster deployment, so that I can ensure optimized reliability and performance for my applications in a scalable environment."
 ---
 
 # Plan and prepare for a cluster deployment
 
-Planning and preparing for a production cluster deployment is very important.  There are many factors to consider.  This article walks you through the steps of preparing your cluster deployment.
+Planning and preparing for a production cluster deployment is very important. There are many factors to consider. This article walks you through the steps of preparing your cluster deployment.
 
 ## Read the best-practices information
-To manage Azure Service Fabric applications and clusters successfully, there are operations that we highly recommend you perform to optimize the reliability of your production environment.  For more information, read [Service Fabric application and cluster best practices](./service-fabric-best-practices-security.md).
+To manage Azure Service Fabric applications and clusters successfully, there are operations that we highly recommend you perform to optimize the reliability of your production environment. For more information, read [Service Fabric application and cluster best practices](./service-fabric-best-practices-security.md).
 
 ## Select the OS for the cluster
-Service Fabric allows for the creation of Service Fabric clusters on any VMs or computers running Windows Server or Linux.  Before deploying your cluster, you must choose the OS:  Windows or Linux.  Every node (virtual machine) in the cluster runs the same OS, you cannot mix Windows and Linux VMs in the same cluster.
+Service Fabric allows for the creation of Service Fabric clusters on any VMs or computers running Windows Server or Linux. Before deploying your cluster, you must choose the OS: Windows or Linux. Every node (virtual machine) in the cluster runs the same OS. You can't mix Windows and Linux VMs in the same cluster.
 
 ## Capacity planning
 For any production deployment, capacity planning is an important step. Here are some things to consider as a part of that process.
@@ -28,7 +28,7 @@ For any production deployment, capacity planning is an important step. Here are 
 * The reliability and durability characteristics of the cluster
 
 ### Select the initial number of node types
-First, you need to figure out what the cluster you are creating is going to be used for. What kinds of applications you are planning to deploy into this cluster? Does your application have multiple services, and do any of them need to be public or internet facing? Do your services (that make up your application) have different infrastructure needs such as greater RAM or higher CPU cycles? A Service Fabric cluster can consist of more than one node type: a primary node type and one or more non-primary node types. Each node type is mapped to a virtual machine scale set. Each node type can then be scaled up or down independently, have different sets of ports open, and can have different capacity metrics. [Node properties and placement constraints][placementconstraints] can be set up to constrain specific services to specific node types.  For more information, see [Service Fabric cluster capacity planning](service-fabric-cluster-capacity.md).
+First, you need to figure out what the cluster you're creating is going to be used for. What kinds of applications you're planning to deploy into this cluster? Does your application have multiple services, and do any of them need to be public or internet facing? Do your services (that make up your application) have different infrastructure needs such as greater RAM or higher CPU cycles? A Service Fabric cluster can consist of more than one node type: a primary node type and one or more nonprimary node types. Each node type is mapped to a virtual machine scale set. Each node type can then be scaled up or down independently, have different sets of ports open, and can have different capacity metrics. [Node properties and placement constraints][placementconstraints] can be set up to constrain specific services to specific node types.  For more information, see [Service Fabric cluster capacity planning](service-fabric-cluster-capacity.md).
 
 ### Select node properties for each node type
 Node types define the VM SKU, number, and properties of the VMs in the associated scale set.
@@ -49,7 +49,7 @@ Any more than the minimum number of nodes should be based on the number of repli
 * Enable faster reset/reimage node management operations
 * Reduce overall costs (the disks are free and incur no additional storage cost)
 
-Ephemeral OS disks is not a specific Service Fabric feature, but rather a feature of the Azure *virtual machine scale sets* that are mapped to Service Fabric node types. Using them with Service Fabric requires the following in your cluster Azure Resource Manager template:
+Ephemeral OS disks isn't a specific Service Fabric feature, but rather a feature of the Azure *virtual machine scale sets* that are mapped to Service Fabric node types. Using them with Service Fabric requires the following in your cluster Azure Resource Manager template:
 
 1. Ensure your node types specify [supported Azure VM sizes](../virtual-machines/ephemeral-os-disks.md) for  Ephemeral OS disks, and that the VM size has sufficient cache size to support its OS disk size (see *Note* below.) For example:
 
@@ -88,7 +88,7 @@ Ephemeral OS disks is not a specific Service Fabric feature, but rather a featur
     ```
 
 > [!NOTE]
-> User applications should not have any dependency/file/artifact on the OS disk, as the OS disk would be lost in the case of an OS upgrade.
+> User applications shouldn't have any dependency/file/artifact on the OS disk, as the OS disk would be lost in the case of an OS upgrade.
 
 > [!NOTE]
 > Existing non-ephemeral VMSS can't be upgraded in-place to use ephemeral disks.

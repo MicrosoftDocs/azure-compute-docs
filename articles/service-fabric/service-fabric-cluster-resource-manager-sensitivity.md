@@ -4,7 +4,7 @@ description: An introduction to service sensitivity and how to set service sensi
 author: tracygooo
 
 ms.topic: concept-article
-ms.date: 09/07/2023
+ms.date: 03/22/2026
 ms.update-cycle: 1095-days
 ms.author: mattmcinnes
 # Customer intent: As a cloud service administrator, I want to configure service sensitivity and maximum load settings for replicas, so that I can optimize resource allocation and ensure the high availability of critical services in the cluster.

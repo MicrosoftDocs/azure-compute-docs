@@ -1,7 +1,7 @@
 ---
 title: Monitor Azure Service Fabric
 description: Start here to learn how to monitor Service Fabric.
-ms.date: 09/29/2025
+ms.date: 03/22/2026
 ms.topic: how-to
 ms.author: tomcassidy
 author: tomvcassidy

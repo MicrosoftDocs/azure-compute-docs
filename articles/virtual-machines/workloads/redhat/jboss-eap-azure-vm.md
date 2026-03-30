@@ -5,7 +5,7 @@ author: KarlErickson
 ms.author: karler
 ms.reviewer: jiangma
 ms.topic: quickstart
-ms.date: 06/19/2024
+ms.date: 03/26/2026
 ms.service: azure-virtual-machines
 ms.custom:
   - devx-track-java

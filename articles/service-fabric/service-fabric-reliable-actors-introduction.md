@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
 ms.update-cycle: 1095-days
 # Customer intent: As a software developer, I want to understand the Service Fabric Reliable Actors programming model, so that I can effectively implement scalable and reliable application services using the Virtual Actor pattern.
 ---
@@ -23,7 +23,7 @@ Service Fabric Reliable Actors is an implementation of the actor design pattern.
 Although the actor design pattern can be a good fit to a number of distributed systems problems and scenarios, careful consideration of the constraints of the pattern and the framework implementing it must be made. As general guidance, consider the actor pattern to model your problem or scenario if:
 
 * Your problem space involves a large number (thousands or more) of small, independent, and isolated units of state and logic.
-* You want to work with single-threaded objects that do not require significant interaction from external components, including querying state across a set of actors.
+* You want to work with single-threaded objects that don't require significant interaction from external components, including querying state across a set of actors.
 * Your actor instances won't block callers with unpredictable delays by issuing I/O operations.
 
 ## Actors in Service Fabric
@@ -32,7 +32,7 @@ In Service Fabric, actors are implemented in the Reliable Actors framework: An a
 Every actor is defined as an instance of an actor type, identical to the way a .NET object is an instance of a .NET type. For example, there may be an actor type that implements the functionality of a calculator and there could be many actors of that type that are distributed on various nodes across a cluster. Each such actor is uniquely identified by an actor ID.
 
 ## Actor Lifetime
-Service Fabric actors are virtual, meaning that their lifetime is not tied to their in-memory representation. As a result, they do not need to be explicitly created or destroyed. The Reliable Actors runtime automatically activates an actor the first time it receives a request for that actor ID. If an actor is not used for a period of time, the Reliable Actors runtime garbage-collects the in-memory object. It will also maintain knowledge of the actor's existence should it need to be reactivated later. For more details, see [Actor lifecycle and garbage collection](service-fabric-reliable-actors-lifecycle.md).
+Service Fabric actors are virtual, meaning that their lifetime is not tied to their in-memory representation. As a result, they don't need to be explicitly created or destroyed. The Reliable Actors runtime automatically activates an actor the first time it receives a request for that actor ID. If an actor is not used for a period of time, the Reliable Actors runtime garbage-collects the in-memory object. It will also maintain knowledge of the actor's existence should it need to be reactivated later. For more details, see [Actor lifecycle and garbage collection](service-fabric-reliable-actors-lifecycle.md).
 
 This virtual actor lifetime abstraction carries some caveats as a result of the virtual actor model, and in fact the Reliable Actors implementation deviates at times from this model.
 
