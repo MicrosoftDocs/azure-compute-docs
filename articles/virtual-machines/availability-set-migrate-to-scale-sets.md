@@ -81,6 +81,7 @@ Check registration status:
 ```http
 GET https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/MigrateToVmssFlex?api-version=2021-07-01
 ```
+---
 
 ## Supported Migration paths
 

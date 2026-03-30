@@ -109,6 +109,8 @@ Check registration status:
 GET https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/MigrateToVmssFlex?api-version=2021-07-01
 ```
 
+---
+
 ## Conversion overview
 
 The Convert API performs the entire migration in a single call. After conversion, verify that all VMs are members of the new scale set.
