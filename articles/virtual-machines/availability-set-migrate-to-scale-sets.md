@@ -243,6 +243,9 @@ A successful validation returns HTTP status code **200**. If validation fails, r
 
 After successful validation, start the migration process. This action puts the availability set into migration mode.
 
+> [!CAUTION]
+> After starting the migration, the availability set is locked. You can only migrate VMs, complete migration, or cancel migration until the process finishes.
+
 # [Azure CLI](#tab/cli)
 
 ```azurecli
@@ -275,9 +278,6 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 ```
 
 ---
-
-> [!CAUTION]
-> After starting the migration, the availability set is locked. You can only migrate VMs, complete migration, or cancel migration until the process finishes.
 
 ### Step 4: Migrate individual VMs
 
@@ -351,6 +351,9 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 You can optionally change the VM size during zonal migration:
 
+> [!TIP]
+> To distribute VMs across availability zones for maximum resilience, assign different zones to different VMs. For example, migrate VM1 to Zone 1, VM2 to Zone 2, and VM3 to Zone 3.
+
 ```json
 {
   "targetZone": "1",
@@ -358,9 +361,6 @@ You can optionally change the VM size during zonal migration:
 }
 
 ```
-
-> [!TIP]
-> To distribute VMs across availability zones for maximum resilience, assign different zones to different VMs. For example, migrate VM1 to Zone 1, VM2 to Zone 2, and VM3 to Zone 3.
 
 ### Step 5: Start migrated VMs
 
@@ -419,6 +419,9 @@ DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourceGroup
 
 If you need to cancel an in-progress migration before all VMs are migrated:
 
+> [!WARNING]
+> VMs that have already been migrated remain in the scale set. Only VMs that haven't yet been migrated stay in the availability set.
+
 # [Azure CLI](#tab/cli)
 
 ```azurecli
@@ -442,9 +445,6 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 ```
 
 ---
-
-> [!WARNING]
-> VMs that have already been migrated remain in the scale set. Only VMs that haven't yet been migrated stay in the availability set.
 
 ## Troubleshooting
 
