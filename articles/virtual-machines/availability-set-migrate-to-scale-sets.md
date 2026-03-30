@@ -105,7 +105,7 @@ The following configurations aren't supported for migration:
 > - Once migration starts, the availability set is locked. No other changes can be made until migration completes or is canceled.
 > - Migration is a one-way operation. You cannot migrate back to availability sets after completion.
 
-The **Azure portal** provides a guided experience that handles validation, scale set selection (or creation), zone assignment, and migration in a streamlined flow. When migrating using the Azure portal, you can only migrate all virtual machines at the sametime. If you need to migrate a single virtual machine at a time to ensure application availability, use alternative migration methods such as CLI, PowerShell or REST.
+The **Azure portal** provides a guided experience that handles validation, scale set selection (or creation), zone assignment, and migration in a streamlined flow. When migrating using the Azure portal, you can only migrate all virtual machines at the same time. If you need to migrate a single virtual machine at a time to ensure application availability, use alternative migration methods such as CLI, PowerShell, or REST.
 
 For **Azure CLI, Azure PowerShell, or REST API**, the migration process consists of the following phases:
 
@@ -144,7 +144,7 @@ The first page lists all virtual machines in the availability set along with the
 If you don't have an existing scale set, you can create one directly from the migration experience:
 
 1. Select **Quick create a new scale set** below the dropdown.
-2. In the **scale set quick create** pane, provide a name for the scale set and complete the administrator account settings. The subscription, resource group, location, and VM size are pre-populated from your availability set configuration.
+2. In the **scale set quick create** pane, provide a name for the scale set and complete the administrator account settings. The subscription, resource group, location, and VM size are prepopulated from your availability set configuration.
 3. Select **Create a scale set** to create the scale set and continue with the migration.
 
 ### Step 3: Assign availability zones (zonal migration only)
@@ -174,7 +174,7 @@ If you select a zonal scale set (one configured with availability zones), an add
 1. Select **Start VMs** to start all migrated VMs, or select **Go to scale set instances** to start them individually from the scale set.
 
    > [!IMPORTANT]
-   > After migrating your VMs in the Azure portal and navigating to your scale set instances tab, you might notice some of the VMs missing from the list. This is just a delay from the portal viewer, the VMs have been migrated. If needed, you also can view the migrated VMs in the Virtual Machine overview blade and start them from there.
+   > After migrating your VMs in the Azure portal and navigating to your scale set instances tab, you might notice some of the VMs missing from the list. This is just a delay from the portal viewer. The VMs have been migrated. If needed, you also can view the migrated VMs in the Virtual Machine overview blade and start them from there.
    >
 
    :::image type="content" source="media/availability-set-migration/availability-set-migration-start-delete.png" alt-text="Screenshot showing the next steps section with Restart your VMs and Delete your availability set cards.":::
@@ -279,7 +279,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 ---
 
 > [!CAUTION]
-> After starting migration, the availability set is locked. You can only migrate VMs, complete migration, or cancel migration until the process finishes.
+> After starting the migration, the availability set is locked. You can only migrate VMs, complete migration, or cancel migration until the process finishes.
 
 ### Step 4: Migrate individual VMs
 
@@ -366,7 +366,7 @@ You can optionally change the VM size during zonal migration:
 
 ### Step 5: Start migrated VMs
 
-After migration, VMs are in a **Stopped (deallocated)** state. They will not be started automatically. You can start VMs immediately after they reach the **Stopped (deallocated)** state.
+After migration, VMs are in a **Stopped (deallocated)** state. They do not start automatically. You can start VMs immediately after they reach the **Stopped (deallocated)** state.
 
 # [Azure CLI](#tab/cli)
 

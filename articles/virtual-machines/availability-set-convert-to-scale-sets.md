@@ -9,7 +9,7 @@ ms.date: 03/17/2026
 ---
 # Convert availability sets to Virtual Machine Scale Sets
 
-This article describes how to convert an availability set and all its VMs to a Virtual Machine Scale Set with Flexible orchestration mode using the Convert API. The conversion is a single operation that requires **zero downtime**. VMs remain running throughout the process.
+This article describes how to convert an availability set and all its VMs to a Virtual Machine Scale Set with Flexible orchestration mode using the Convert API. The conversion is a single operation that requires **zero downtime**. VMs remain online throughout the process.
 
 > [!IMPORTANT]
 > The availability set to Virtual Machine Scale Sets conversion feature is currently in **preview**. Previews are made available to you on the condition that you agree to the [supplemental terms of use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Some aspects of this feature may change prior to general availability (GA).
@@ -23,7 +23,7 @@ Azure provides two approaches for moving VMs from availability sets to Virtual M
 
 | Feature                                  | Convert API                                                                             | [Migrate API](availability-set-migrate-to-scale-sets.md) |
 | ---------------------------------------- | --------------------------------------------------------------------------------------- | ----------------------------------------------------- |
-| **Downtime**                       | None. VMs remain running.                                                               | VMs deallocated during migration                      |
+| **Downtime**                       | None. VMs remain online.                                                                | VMs deallocated during migration                      |
 | **Migration scope**                | All VMs at once                                                                         | One VM at a time                                      |
 | **scale set capabilities**         | Limited. Subset of scale set features.                                                  | Full. All sale set features available.                |
 | **Availability zone support**      | No. Regional only.                                                                      | Yes. Target specific zones.                           |
@@ -220,7 +220,7 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 **Error:** `A virtual machine scale set with the specified name already exists`
 
-**Solution:** A scale set with the target name already exists in the resource group. Rename or delete the existing scale set, or use the [Migrate API](availability-set-migrate-to-scale-sets.md) which lets you specify a different target.
+**Solution:** A scale set with the target name already exists in the resource group. Rename or delete the existing scale set, or use the [Migrate API](availability-set-migrate-to-scale-sets.md), which lets you specify a different target.
 
 ### Basic public IP or Load Balancer
 
