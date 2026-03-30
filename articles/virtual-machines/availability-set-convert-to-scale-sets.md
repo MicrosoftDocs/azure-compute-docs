@@ -36,25 +36,25 @@ Azure provides two approaches for moving VMs from availability sets to Virtual M
 
 **Use the [Migrate API](availability-set-migrate-to-scale-sets.md)** (recommended for most scenarios) when:
 
-- You need **availability zone** support (now or in the future)
-- You want the **full Virtual Machine Scale Sets feature set**
-- You want to **change VM sizes** or configurations during migration
-- You can tolerate brief per-VM downtime during a maintenance window
+- You need **availability zone** support (now or in the future).
+- You want the **full Virtual Machine Scale Sets feature set**.
+- You want to **change VM sizes** or configurations during migration.
+- You can tolerate brief per-VM downtime during a maintenance window.
 
 **Use the Convert API** only when:
 
 - You **cannot tolerate any downtime**. Not even a brief maintenance window.
-- You **don't need availability zones** and won't need them in the future
-- You accept the **limited feature set** of converted scale sets
-- Regional fault domain distribution is sufficient for your availability requirements now and in the future
+- You **don't need availability zones** and won't need them in the future.
+- You accept the **limited feature set** of converted scale sets.
+- Regional fault domain distribution is sufficient for your availability requirements now and in the future.
 
 ## Prerequisites
 
 Before you begin, ensure you have the following:
 
-- **Azure subscription** with the migration preview feature registered
-- **Azure CLI 2.72.0** or later, or **Azure PowerShell Az.Compute module 11.3.0** or later
-- An existing **availability set** with VMs you want to convert
+- **Azure subscription** with the migration preview feature registered.
+- **Azure CLI 2.72.0** or later, or **Azure PowerShell Az.Compute module 11.3.0** or later.
+- An existing **availability set** with VMs you want to convert.
 
 ### Limitations
 
@@ -118,11 +118,11 @@ The Convert API performs the entire migration in a single call. After conversion
 The Convert API automatically:
 
 - Creates a new Virtual Machine Scale Set with Flexible orchestration. You can specify a custom scale set name using the CLI or PowerShell, or the API defaults to the availability set name.
-- Moves all VMs from the availability set into the scale set
-- Keeps all VMs **running** throughout the process (zero downtime)
-- Removes the original availability set after successful conversion
+- Moves all VMs from the availability set into the scale set.
+- Keeps all VMs **running** throughout the process (zero downtime).
+- Removes the original availability set after successful conversion.
 
-> [!CAUSION]
+> [!CAUTION]
 > Conversion is a **one-way operation**. You can't convert back to an availability set. The original availability set is deleted upon successful conversion.
 
 ## Step 1: Convert the availability set

@@ -35,9 +35,9 @@ For a complete comparison, see [Orchestration modes for Virtual Machine Scale Se
 
 Before you begin, ensure you have the following:
 
-- **Azure subscription** with the migration preview feature registered
-- **Azure CLI 2.72.0** or later, or **Azure PowerShell Az module** installed
-- An existing **availability set** with VMs you want to migrate
+- **Azure subscription** with the migration preview feature registered.
+- **Azure CLI 2.72.0** or later, or **Azure PowerShell Az module** installed.
+- An existing **availability set** with VMs you want to migrate.
 
 ### Register the preview feature
 
@@ -94,9 +94,9 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/providers/Micros
 
 The following configurations aren't supported for migration:
 
-- VMs with **Basic public IP addresses** - Upgrade to Standard SKU before migration
-- VMs behind a **Basic Load Balancer** - Upgrade to Standard Load Balancer before migration
-- VMs with **unmanaged disks** - Convert to managed disks before migration
+- VMs with **Basic public IP addresses** - Upgrade to Standard SKU before migration.
+- VMs behind a **Basic Load Balancer** - Upgrade to Standard Load Balancer before migration.
+- VMs with **unmanaged disks** - Convert to managed disks before migration.
 
 ## Migration overview
 
@@ -109,12 +109,12 @@ The **Azure portal** provides a guided experience that handles validation, scale
 
 For **Azure CLI, Azure PowerShell, or REST API**, the migration process consists of the following phases:
 
-1. **Create target Virtual Machine Scale Set** - Create a new scale set with Flexible orchestration mode (if you don't have one)
-2. **Validate migration** - Verify the availability set can be migrated
-3. **Start migration** - Put the availability set into migration mode
-4. **Migrate VMs** - Move each VM individually to the scale set
-5. **Start VMs** - Power on the migrated VMs
-6. **Clean up** - Delete the empty availability set
+1. **Create target Virtual Machine Scale Set** - Create a new scale set with Flexible orchestration mode (if you don't have one).
+2. **Validate migration** - Verify the availability set can be migrated.
+3. **Start migration** - Put the availability set into migration mode.
+4. **Migrate VMs** - Move each VM individually to the scale set.
+5. **Start VMs** - Power on the migrated VMs.
+6. **Clean up** - Delete the empty availability set.
 
 ## Migrate using the Azure portal
 
@@ -195,10 +195,10 @@ For detailed instructions on creating a scale set, see [Create virtual machines 
 
 When creating the scale set for migration:
 
-- Select **Flexible** orchestration mode
-- For **zonal deployment** (recommended for highest availability), select one or more availability zones (1, 2, 3)
-- For **regional deployment**, don't select any availability zones
-- Set **Instance count** to **0** to create an empty scale set for migration
+- Select **Flexible** orchestration mode.
+- For **zonal deployment** (recommended for highest availability), select one or more availability zones (1, 2, 3).
+- For **regional deployment**, don't select any availability zones.
+- Set **Instance count** to **0** to create an empty scale set for migration.
 
 ### Step 2: Validate migration
 
