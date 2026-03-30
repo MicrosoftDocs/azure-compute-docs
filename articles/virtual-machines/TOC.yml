@@ -1564,8 +1564,6 @@
       href: use-premium-ssd-v2-with-availability-set.md
     - name: Migrate from an availability set to a scale set (preview)
       href: availability-set-migrate-to-scale-sets.md
-    - name: Convert from an availability set to a scale set (preview)
-      href: availability-set-convert-to-scale-sets.md
 - name: Disks
   items:
   - name: Overview
