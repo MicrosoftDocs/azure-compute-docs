@@ -9,7 +9,7 @@ ms.date: 03/27/2026
 ---
 # Migrate availability sets to Virtual Machine Scale Sets
 
-This article describes how to migrate your Azure Virtual Machines (VMs) from availability sets to Virtual Machine Scale Sets with Flexible orchestration mode. You can migrate using the Azure portal, Azure CLI, Azure PowerShell, or REST API.
+This article describes how to migrate your Azure Virtual Machines (VMs) from availability sets to Virtual Machine Scale Sets with Flexible orchestration mode. 
 
 > [!IMPORTANT]
 > The availability set to Virtual Machine Scale Sets migration feature is currently in **preview**. Previews are made available to you on the condition that you agree to the [supplemental terms of use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Some aspects of this feature may change prior to general availability (GA).
@@ -36,13 +36,12 @@ For a complete comparison, see [Orchestration modes for Virtual Machine Scale Se
 Before you begin, ensure you have the following:
 
 - **Azure subscription** with the migration preview feature registered
-- **Contributor** role or higher on the resource group containing the availability set
-- **Azure CLI 2.72.0** or later, or **Azure PowerShell Az module** installed (for CLI or PowerShell migration)
+- **Azure CLI 2.72.0** or later, or **Azure PowerShell Az module** installed
 - An existing **availability set** with VMs you want to migrate
 
 ### Register the preview feature
 
-The migration feature requires registration. Register the `MigrateToVmssFlex` preview feature for your subscription:
+Register the `MigrateToVmssFlex` preview feature for your subscription:
 
 # [Azure CLI](#tab/cli)
 
@@ -82,15 +81,9 @@ Check registration status:
 ```http
 GET https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/MigrateToVmssFlex?api-version=2021-07-01
 ```
-
 ---
 
-> [!NOTE]
-> Feature registration may take several minutes to complete. Wait until the state shows **Registered** before proceeding.
-
-## Supported configurations
-
-### Migration paths
+## Supported Migration paths
 
 | Source           | Target                             | Description                                            |
 | ---------------- | ---------------------------------- | ------------------------------------------------------ |
@@ -113,7 +106,7 @@ The following configurations aren't supported for migration:
 > - Once migration starts, the availability set is locked. No other changes can be made until migration completes or is canceled.
 > - Migration is a one-way operation. You cannot migrate back to availability sets after completion.
 
-The **Azure portal** provides a guided experience that handles validation, scale set selection (or creation), zone assignment, and migration in a streamlined flow.
+The **Azure portal** provides a guided experience that handles validation, scale set selection (or creation), zone assignment, and migration in a streamlined flow. When migrating using the Azure portal, you can only migrate all virtual machines at the same time. If you need to migrate a single virtual machine at a time to ensure application availability, use alternative migration methods such as CLI, PowerShell, or REST.
 
 For **Azure CLI, Azure PowerShell, or REST API**, the migration process consists of the following phases:
 
@@ -126,15 +119,14 @@ For **Azure CLI, Azure PowerShell, or REST API**, the migration process consists
 
 ## Migrate using the Azure portal
 
-The Azure portal provides a guided experience that walks you through the entire migration process.
+[!NOTE]
 
-> [!NOTE]
 > The portal migrates **all VMs in the availability set at once**. If you need to migrate VMs one at a time to maintain application uptime during the migration, use the [Azure CLI, Azure PowerShell, or REST API](#migrate-using-azure-cli-azure-powershell-or-rest-api) instead.
 
 ### Step 1: Start the migration process
 
 1. In the [Azure portal](https://portal.azure.com), navigate to the availability set you want to migrate.
-2. On the availability set **Overview** page, select **Migrate option** from the toolbar.
+2. On the availability set **Overview** page, select the **Migrate option** from the toolbar.
 
    :::image type="content" source="media/availability-set-migration/availability-set-migration-start-migration-wizard.png" alt-text="Screenshot showing the availability set overview page with the Migrate button in the toolbar and a banner promoting migration.":::
 
@@ -153,8 +145,8 @@ The first page lists all virtual machines in the availability set along with the
 If you don't have an existing scale set, you can create one directly from the migration experience:
 
 1. Select **Quick create a new scale set** below the dropdown.
-2. In the **scale set quick create** pane, provide a name for the scale set and complete the administrator account settings. The subscription, resource group, location, and VM size are pre-populated from your availability set configuration.
-3. Select **Create a scale set** to create the scale set and return to the wizard.
+2. In the **scale set quick create** pane, provide a name for the scale set and complete the administrator account settings. The subscription, resource group, location, and VM size are prepopulated from your availability set configuration.
+3. Select **Create a scale set** to create the scale set and continue with the migration.
 
 ### Step 3: Assign availability zones (zonal migration only)
 
@@ -183,11 +175,11 @@ If you select a zonal scale set (one configured with availability zones), an add
 1. Select **Start VMs** to start all migrated VMs, or select **Go to scale set instances** to start them individually from the scale set.
 
    > [!IMPORTANT]
-   > After migrating your VMs in the Azure portal and navigating to your scale set instances tab, you might notice some of the VMs missing from the list. This is just a delay from the portal viewer, the VMs have been migrated. If needed, navigate to the Virtual Machine overview blade to view/ start/ etc.
+   > After migrating your VMs in the Azure portal and navigating to your scale set instances tab, you might notice some of the VMs missing from the list. This is just a delay from the portal viewer. The VMs have been migrated. If needed, you also can view the migrated VMs in the Virtual Machine overview blade and start them from there.
    >
 
    :::image type="content" source="media/availability-set-migration/availability-set-migration-start-delete.png" alt-text="Screenshot showing the next steps section with Restart your VMs and Delete your availability set cards.":::
-2. After all VMs are migrated and verified, the availability set is empty and can be safely deleted. Select **Go to the availability set** to navigate back to the availability set.
+2. After all VMs are migrated and verified, the availability set is empty and can be safely deleted
 
    :::image type="content" source="media/availability-set-migration/availability-set-empty.png" alt-text="Screenshot showing the empty availability set with 0 virtual machines and the Migrate to scale set Flex button grayed out.":::
 3. Select **Delete** to remove the empty availability set.
@@ -195,6 +187,10 @@ If you select a zonal scale set (one configured with availability zones), an add
 ## Migrate using Azure CLI, Azure PowerShell, or REST API
 
 ### Step 1: Create a target Virtual Machine Scale Set
+
+[!NOTE]
+
+> Migration via the available SDKs provides additional control over the migration steps, such as migrating individual VMs at a time or canceling the migration. If you are okay migrating all VMs at once, you can opt to use the Azure portal instead. Otherwise, if you do need more control over the individual migration steps, continue with the below steps. 
 
 If you don't have an existing scale set, create one as the migration target. The scale set must use **Flexible orchestration mode**.
 
@@ -284,7 +280,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 ---
 
 > [!CAUTION]
-> After starting migration, the availability set is locked. You can only migrate VMs, complete migration, or cancel migration until the process finishes.
+> After starting the migration, the availability set is locked. You can only migrate VMs, complete migration, or cancel migration until the process finishes.
 
 ### Step 4: Migrate individual VMs
 
@@ -371,7 +367,7 @@ You can optionally change the VM size during zonal migration:
 
 ### Step 5: Start migrated VMs
 
-After migration, VMs are in a **Stopped (deallocated)** state. You can start VMs immediately after they reach the **Stopped (deallocated)** state.
+After migration, VMs are in a **Stopped (deallocated)** state. They do not start automatically. You can start VMs immediately after they reach the **Stopped (deallocated)** state.
 
 # [Azure CLI](#tab/cli)
 
