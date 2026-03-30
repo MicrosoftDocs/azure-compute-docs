@@ -7,7 +7,7 @@ ms.service: azure-virtual-machines
 ms.topic: how-to
 ms.date: 03/17/2026
 ---
-# Convert availability sets to Virtual Machine Scale Sets
+# Convert availability sets to Virtual Machine Scale Sets (preview)
 
 This article describes how to convert an availability set and all its VMs to a Virtual Machine Scale Set with Flexible orchestration mode using the Convert API. The conversion is a single operation that requires **zero downtime**. VMs remain online throughout the process.
 

@@ -198,10 +198,10 @@
   - name: Migrate to Flexible Orchestration
     href: flexible-virtual-machine-scale-sets-migration-resources.md
     maintainContext: true
-  - name: Migrate from availability sets
+  - name: Migrate from availability sets (preview)
     href: ../virtual-machines/availability-set-migrate-to-scale-sets.md
     maintainContext: true
-  - name: Convert from availability sets
+  - name: Convert from availability sets (preview)
     href: ../virtual-machines/availability-set-convert-to-scale-sets.md    
     maintainContext: true
   - name: Proximity placement groups

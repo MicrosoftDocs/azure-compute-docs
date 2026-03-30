@@ -7,7 +7,7 @@ ms.service: azure-virtual-machines
 ms.topic: how-to
 ms.date: 03/27/2026
 ---
-# Migrate availability sets to Virtual Machine Scale Sets
+# Migrate availability sets to Virtual Machine Scale Sets (preview)
 
 This article describes how to migrate your Azure Virtual Machines (VMs) from availability sets to Virtual Machine Scale Sets with Flexible orchestration mode. 
 
@@ -101,7 +101,6 @@ The following configurations aren't supported for migration:
 ## Migration overview
 
 > [!IMPORTANT]
->
 > - VMs are stopped and deallocated during migration. Schedule the migration during a maintenance window where downtime is acceptable.
 > - Once migration starts, the availability set is locked. No other changes can be made until migration completes or is canceled.
 > - Migration is a one-way operation. You cannot migrate back to availability sets after completion.
@@ -119,8 +118,7 @@ For **Azure CLI, Azure PowerShell, or REST API**, the migration process consists
 
 ## Migrate using the Azure portal
 
-[!NOTE]
-
+>[!NOTE]
 > The portal migrates **all VMs in the availability set at once**. If you need to migrate VMs one at a time to maintain application uptime during the migration, use the [Azure CLI, Azure PowerShell, or REST API](#migrate-using-azure-cli-azure-powershell-or-rest-api) instead.
 
 ### Step 1: Start the migration process
