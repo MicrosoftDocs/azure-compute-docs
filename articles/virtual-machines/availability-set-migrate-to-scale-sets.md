@@ -186,8 +186,7 @@ If you select a zonal scale set (one configured with availability zones), an add
 
 ### Step 1: Create a target Virtual Machine Scale Set
 
-[!NOTE]
-
+> [!NOTE]
 > Migration via the available SDKs provides additional control over the migration steps, such as migrating individual VMs at a time or canceling the migration. If you are okay migrating all VMs at once, you can opt to use the Azure portal instead. Otherwise, if you do need more control over the individual migration steps, continue with the below steps. 
 
 If you don't have an existing scale set, create one as the migration target. The scale set must use **Flexible orchestration mode**.
