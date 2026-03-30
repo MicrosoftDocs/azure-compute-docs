@@ -487,7 +487,6 @@ az vm list-skus --location "<region>" --zone "<zone>" --resource-type virtualMac
 
 ## Next steps
 
-- [Convert availability sets to Virtual Machine Scale Sets](availability-set-convert-to-scale-sets.md)
 - [What are Virtual Machine Scale Sets?](/azure/virtual-machine-scale-sets/overview)
 - [Orchestration modes for Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes)
 - [Flexible orchestration mode for Virtual Machine Scale Sets](/azure/virtual-machines/flexible-virtual-machine-scale-sets)
