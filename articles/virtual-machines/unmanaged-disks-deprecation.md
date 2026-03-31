@@ -1,21 +1,21 @@
 ---
-title: We're retiring Azure unmanaged disks by March 31, 2026
+title: Unmanaged disks have been retired
 description: This article provides a high-level overview of the retirement of Azure unmanaged disks and how to migrate to Azure Managed Disks.
 author: roygara
 ms.service: azure-disk-storage
 ms.topic: concept-article
-ms.date: 08/28/2025
+ms.date: 03/10/2026
 ms.author: rogarana
 # Customer intent: As an Azure user managing virtual machines, I want to migrate my unmanaged disks to managed disks before the retirement deadline, so that I can ensure continued operation and take advantage of the enhanced reliability and features of managed disks.
 ---
 
-# Migrate your Azure unmanaged disks by March 31, 2026
+# Migrate unmanaged disks to managed disks
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs
 
-In 2017, we launched [Azure Managed Disks](https://azure.microsoft.com/blog/announcing-general-availability-of-managed-disks-and-larger-scale-sets/). We've been enhancing capabilities ever since. Because Azure Managed Disks now have the full capabilities of unmanaged disks and other advancements, we announced the retirement for unmanaged disks on September 13, 2022. Unmanaged disks will be fully retired on March 31, 2026 (extended from previously published date of September 30, 2025).
+In 2017, we launched [Azure Managed Disks](https://azure.microsoft.com/blog/announcing-general-availability-of-managed-disks-and-larger-scale-sets/). We've been enhancing capabilities ever since. Because Azure Managed Disks now have the full capabilities of unmanaged disks and other advancements, we announced the retirement for unmanaged disks on September 13, 2022. Unmanaged disks were fully retired on March 31, 2026 (extended from previously published date of September 30, 2025). If you're still using unmanaged disks, migrate to managed disks as soon as possible.
 
-By using managed disks, you don't need to manage storage accounts for creating a disk, because Azure manages the storage accounts under the hood. This abstraction reduces maintenance overhead for you. Also, it allows managed disks to provide numerous benefits over unmanaged disks, such as [high availability](disks-high-availability.md), better [scalability](disks-scalability-targets.md), large disks, [bursting](disk-bursting.md), and [shared disks](disks-shared-enable.md). If you use unmanaged disks, start planning your [Windows](windows/convert-unmanaged-to-managed-disks.md) or [Linux](linux/convert-unmanaged-to-managed-disks.md) migration now. Complete the migration by March 31, 2026, and take advantage of Azure Managed Disks.
+By using managed disks, you don't need to manage storage accounts for creating a disk, because Azure manages the storage accounts under the hood. This abstraction reduces maintenance overhead for you. Also, it allows managed disks to provide numerous benefits over unmanaged disks, such as [high availability](disks-high-availability.md), better [scalability](disks-scalability-targets.md), large disks, [bursting](disk-bursting.md), and [shared disks](disks-shared-enable.md). If you use unmanaged disks, start planning your [Windows](windows/convert-unmanaged-to-managed-disks.md) or [Linux](linux/convert-unmanaged-to-managed-disks.md) migration now.
 
 ## How am I affected?
 
