@@ -86,7 +86,7 @@ The following are the property descriptions:
 | nicPrefixOverride | string | Subnet Prefix like "10.0.0.0/24" |
 | commonNames | string[] | Common Names of installed cluster certificates |
 | x509StoreName | string | Name of Store where installed cluster certificate is located |
-| typeHandlerVersion | 1.1 (ServiceFabricNode), 2.0 (ServiceFabricLinuxNode) | Version of Extension. 1.0 classic versions of extension are recommended to upgrade to 1.1 |
+| typeHandlerVersion | 1.1 (ServiceFabricNode), 2.0 (ServiceFabricLinuxNode) | Version of Extension. |
 | dataPath | string | Path to the drive used to save state for Service Fabric system services and application data.
 
 ## Next steps
