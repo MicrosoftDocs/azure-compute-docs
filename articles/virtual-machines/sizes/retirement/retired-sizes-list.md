@@ -41,7 +41,7 @@ To learn more about size series retirement, previous-gen sizes, and the retireme
 | Dv2-series        | **Announced**     | [03/31/25](https://azure.microsoft.com/updates?id=485569)         | 05/01/28                | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide)                |
 | Dsv2-series       | **Announced**     | [03/31/25](https://azure.microsoft.com/updates?id=485569)         | 05/01/28                | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide)               |
 | Av2/Amv2-series   | **Announced**     | [10/15/25](https://azure.microsoft.com/updates?id=500682)         | 11/15/28                | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide)            |
-| B-series          | **Announced**     | [10/15/25](https://azure.microsoft.com/updates?id=500682)         | 11/15/28                | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide)         |
+| B-series (V1)     | **Announced**     | [10/15/25](https://azure.microsoft.com/updates?id=500682)         | 11/15/28                | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide)         |
 
 ## Compute optimized retired sizes
 
