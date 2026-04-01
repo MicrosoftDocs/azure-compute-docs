@@ -116,7 +116,7 @@ Following are popular extensions supported for automatic upgrades (and more are 
 | Microsoft.Azure.Security.Monitoring               | AzureSecurityWindowsAgent     |
 | Microsoft.Azure.Security.WindowsAttestation       | [GuestAttestation](../virtual-machines/boot-integrity-monitoring-overview.md)              |
 | Microsoft.Azure.Security.WindowsCodeIntegrity     | CodeIntegrityAgent            |
-| Microsoft.Azure.ServiceFabric                     | ServiceFabricNode             |
+| Microsoft.Azure.ServiceFabric                     | [ServiceFabricNode](../service-fabric/service-fabric-cluster-nodetypes.md##service-fabric-virtual-machine-extension)             |
 | Microsoft.Azure.ServiceFabric                     | [ServiceFabricLinuxNode](../service-fabric/service-fabric-tutorial-create-vnet-and-linux-cluster.md#service-fabric-extension)        |
 | Microsoft.Azure.Watson                            | WatsonLinuxAgent              |
 | Microsoft.Azure.Workloads                         | MonitoringExtensionLinux      |
