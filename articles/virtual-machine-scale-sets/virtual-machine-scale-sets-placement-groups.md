@@ -32,7 +32,7 @@ To decide whether your application can make effective use of large scale sets, c
 - If you are planning to deploy large number of VMs, your Compute vCPU quota limits may need to be increased. 
 - Scale sets created from Azure Marketplace images or Azure Compute Gallery images can scale up to 1,000 VMs.
 - Scale sets created from custom images (VM images you create and upload yourself) can currently scale up to 600 VMs.
-- Large scale sets require Azure Managed Disks. Scale sets that are not created with Managed Disks require multiple storage accounts (one for every 20 VMs). Large scale sets are designed to work exclusively with Managed Disks to reduce your storage management overhead, and to avoid the risk of running into subscription limits for storage accounts. 
+- Large scale sets require Azure managed disks. Scale sets that are not created with managed disks require multiple storage accounts (one for every 20 VMs). Large scale sets are designed to work exclusively with managed disks to reduce your storage management overhead, and to avoid the risk of running into subscription limits for storage accounts. 
 - Large scale (SPG=false) does not support InfiniBand networking
 - Layer-4 load balancing with scale sets composed of multiple placement groups requires [Azure Load Balancer Standard SKU](/azure/load-balancer/load-balancer-overview). The Load Balancer Standard SKU provides additional benefits, such as the ability to load balance between multiple scale sets. Standard SKU also requires that the scale set has a Network Security Group associated with it, otherwise NAT pools don't work correctly. If you need to use the Azure Load Balancer Basic SKU, make sure the scale set is configured to use a single placement group, which is the default setting.
 - Layer-7 load balancing with the Azure Application Gateway is supported for all scale sets.
@@ -58,7 +58,7 @@ The _vmss create_ command defaults certain configuration values if you do not sp
 az vmss create --help
 ```
 
-If you are creating a large scale set by composing an Azure Resource Manager template, make sure the template creates a scale set based on Azure Managed Disks. You can set the _singlePlacementGroup_ property to _false_ in the _properties_ section of the _Microsoft.Compute/virtualMachineScaleSets_ resource. The following JSON fragment shows the beginning of a scale set template, including the 1,000 VM capacity and the _"singlePlacementGroup" : false_ setting:
+If you are creating a large scale set by composing an Azure Resource Manager template, make sure the template creates a scale set based on Azure managed disks. You can set the _singlePlacementGroup_ property to _false_ in the _properties_ section of the _Microsoft.Compute/virtualMachineScaleSets_ resource. The following JSON fragment shows the beginning of a scale set template, including the 1,000 VM capacity and the _"singlePlacementGroup" : false_ setting:
 
 ```json
 {

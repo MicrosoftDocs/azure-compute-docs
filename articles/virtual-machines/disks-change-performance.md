@@ -35,7 +35,7 @@ When you first deploy or provision a disk, the baseline performance tier for tha
 
 Disk billing changes as its performance tier changes. For example, if you provision a P10 disk (128 GiB), your baseline performance tier is set as P10 (500 IOPS and 100 MBps). Your disk is billed at the P10 rate. You can set the disk's performance tier to P50 (7,500 IOPS and 250 MBps) without increasing the disk size. While the disk's performance tier is set to P50, your disk is billed at the P50 rate. When you no longer need the higher performance, you can set the performance tier of the disk back to the P10 tier and your disk's billing will return to the P10 rate.
 
-For billing information, see [Managed disk pricing](https://azure.microsoft.com/pricing/details/managed-disks/).
+For billing information, see [managed disk pricing](https://azure.microsoft.com/pricing/details/managed-disks/).
 
 ## What tiers can be changed
 

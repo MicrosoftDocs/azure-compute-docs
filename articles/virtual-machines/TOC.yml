@@ -1890,7 +1890,7 @@
     items:
     - name: Linux
       items:
-      - name: Managed disks
+      - name: managed disks
         href: ./linux/disks-format-mount-data-disks-linux.md
       - name: Temporary disks
         href: ./linux/disks-format-mount-temp-disks-linux.md

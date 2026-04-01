@@ -58,7 +58,7 @@ sections:
       - question: |
           What kind of Azure role-based access control support is available for managed disks?
         answer: |
-          managed disks supports three key default roles:
+          Managed disks supports three key default roles:
           
           * Owner: Can manage everything, including access
           * Contributor: Can manage everything except access
@@ -435,7 +435,7 @@ sections:
           The partition type that Azure supports for Gen1 operating system disks is the master boot record (MBR). Although Gen1 OS disks only support MBR the data disks support GPT. While you can allocate up to a 4-TiB OS disk, the MBR partition type can only use up to 2 TiB of this disk space for the operating system. Azure supports up to 32 TiB for managed data disks.
 
       - question: |
-          What is the largest Managed disk size supported for operating system and data disks on Gen2 VMs?
+          What is the largest managed disk size supported for operating system and data disks on Gen2 VMs?
         answer: |
           The partition type that Azure supports for Gen2 operating system disks is GUID Partition Table (GPT). Gen2 VMs support up to a 4-TiB OS disk. Azure supports up to 32 TiB for managed data disks.
           
