@@ -65,7 +65,7 @@ The following is a snippet of Service Fabric Virtual Machine extension:
            "x509StoreName": "[parameters('certificateStoreValue')]"
          }
        },
-       "typeHandlerVersion": "2.0"
+       "typeHandlerVersion": "1.1"
      }
    },
 ```
@@ -77,7 +77,7 @@ The following are the property descriptions:
 | name | string | Unique name for extension |
 | type | "ServiceFabricLinuxNode" or "ServiceFabricNode" | Identifies OS Service Fabric is bootstrapping to |
 | autoUpgradeMinorVersion | true or false | Use newest minor version of extension at deployment time |
-| enableAutomaticUpgrade | true or false | Automatically upgrade extension once a non-major version is available. Only available for type ServiceFabricLinuxNode |
+| enableAutomaticUpgrade | true or false | Automatically upgrade extension once a non-major version is available. Available for both ServiceFabricLinuxNode and ServiceFabricNode types |
 | publisher | Microsoft.Azure.ServiceFabric | Name of the Service Fabric extension publisher |
 | clusterEndpoint | string | URI:PORT to Management endpoint |
 | nodeTypeRef | string | Name of nodeType |

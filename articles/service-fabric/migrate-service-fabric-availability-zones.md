@@ -242,7 +242,8 @@ To enable a zone on a Virtual Machine Scale Set, include the following three val
           "name": "[concat(parameters('vmNodeType1Name'),'_ServiceFabricNode')]",
           "properties": {
             "type": "ServiceFabricNode",
-            "autoUpgradeMinorVersion": false,
+            "autoUpgradeMinorVersion": true,
+            "enableAutomaticUpgrade": true,
             "publisher": "Microsoft.Azure.ServiceFabric",
             "settings": {
               "clusterEndpoint": "[reference(parameters('clusterName')).clusterEndpoint]",
@@ -258,14 +259,7 @@ To enable a zone on a Virtual Machine Scale Set, include the following three val
               },
               "faultDomainOverride": "az1"
             },
-            "typeHandlerVersion": "1.0"
-          }
-        }
-      ]
-    }
-  }
-}
-```
+            "typeHandlerVersion": "1.1"
 
 ##### Enable multiple primary node types in the Service Fabric cluster resource
 
