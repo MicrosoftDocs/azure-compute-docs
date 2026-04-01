@@ -111,6 +111,7 @@ From:
                     "properties": {
                         "type": "ServiceFabricNode",
                         "autoUpgradeMinorVersion": true,
+                        "enableAutomaticUpgrade": true,
                         "protectedSettings": {
                             ...
                         },
@@ -136,6 +137,7 @@ To:
                     "properties": {
                         "type": "ServiceFabricNode",
                         "autoUpgradeMinorVersion": true,
+                        "enableAutomaticUpgrade": true,
                         "protectedSettings": {
                             ...
                         },
