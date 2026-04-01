@@ -67,9 +67,9 @@ Remote (uncached) storage info for each size
 | Standard_M416bs_v3 | 64 | 240,000 | 8,000 | 550,000 | 10,000 |
 
 #### Storage resources
-- [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
-- [Azure managed disk types](../../../virtual-machines/disks-types.md)
-- [Share an Azure managed disk](../../../virtual-machines/disks-shared.md)
+- [Introduction to Azure Managed Disks](../../../virtual-machines/managed-disks-overview.md)
+- [Azure Managed Disk types](../../../virtual-machines/disks-types.md)
+- [Share an Azure Managed Disk](../../../virtual-machines/disks-shared.md)
 
 #### Table definitions
 - Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3), remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.

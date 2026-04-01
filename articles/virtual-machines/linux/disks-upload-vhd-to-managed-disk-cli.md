@@ -1,6 +1,6 @@
 ---
 title: Upload a VHD to Azure or copy a disk across regions - Azure CLI
-description: Learn how to upload a VHD to an Azure managed disk and copy a managed disk across regions, using the Azure CLI, via direct upload.
+description: Learn how to upload a VHD to an Azure Managed Disk and copy a managed disk across regions, using the Azure CLI, via direct upload.
 services: "virtual-machines,storage"
 author: roygara
 ms.author: rogarana
@@ -8,22 +8,22 @@ ms.date: 02/09/2026
 ms.topic: how-to
 ms.service: azure-disk-storage
 ms.custom: devx-track-azurecli, linux-related-content
-# Customer intent: As a cloud administrator, I want to upload a VHD to an Azure managed disk and copy disks across regions using the CLI, so that I can ensure efficient data management and backup for my virtual machines.
+# Customer intent: As a cloud administrator, I want to upload a VHD to an Azure Managed Disk and copy disks across regions using the CLI, so that I can ensure efficient data management and backup for my virtual machines.
 ---
 
 # Upload a VHD to Azure or copy a managed disk to another region - Azure CLI
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets 
 
-This article explains how to either upload a VHD from your local machine to an Azure managed disk or copy a managed disk to another region, using AzCopy. This process, direct upload, enables you to upload a VHD up to 32 TiB in size directly into a managed disk. Currently, direct upload is supported for Ultra Disks, Premium SSD v2, Premium SSD, Standard SSD, and Standard HDD.
+This article explains how to either upload a VHD from your local machine to an Azure Managed Disk or copy a managed disk to another region, using AzCopy. This process, direct upload, enables you to upload a VHD up to 32 TiB in size directly into a managed disk. Currently, direct upload is supported for Ultra Disks, Premium SSD v2, Premium SSD, Standard SSD, and Standard HDD.
 
 If you're providing a backup solution for IaaS VMs in Azure, you should use direct upload to restore customer backups to managed disks. When uploading a VHD from a source external to Azure, speeds depend on your local bandwidth. When uploading or copying from an Azure VM, your bandwidth would be the same as Standard HDDs.
 
-If you're using [Microsoft Entra ID](/azure/active-directory/fundamentals/active-directory-whatis) to control resource access, you can use it to restrict uploading of Azure managed disks. See [Secure downloads and uploads of Azure managed disks](../disks-secure-upload-download.md) for details.
+If you're using [Microsoft Entra ID](/azure/active-directory/fundamentals/active-directory-whatis) to control resource access, you can use it to restrict uploading of Azure Managed Disks. See [Secure downloads and uploads of Azure Managed Disks](../disks-secure-upload-download.md) for details.
 
 ## Get started
 
-If you'd prefer to upload disks through a GUI, you can do so using Azure Storage Explorer. For details refer to: [Use Azure Storage Explorer to manage Azure managed disks](../disks-use-storage-explorer-managed-disks.md)
+If you'd prefer to upload disks through a GUI, you can do so using Azure Storage Explorer. For details refer to: [Use Azure Storage Explorer to manage Azure Managed Disks](../disks-use-storage-explorer-managed-disks.md)
 
 ### Prerequisites
 
@@ -73,7 +73,7 @@ If you're using Microsoft Entra ID to [secure disk uploads](../disks-secure-uplo
 
 ```azurecli
 az role assignment create --assignee "{assignee}" \
---role "{Data Operator for managed disks}" \
+--role "{Data Operator for Managed Disks}" \
 --scope "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceType}/{resourceSubType}/{diskName}"
 ```
 

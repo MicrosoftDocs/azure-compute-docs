@@ -15,7 +15,7 @@ ms.subservice: disks
 
 [!INCLUDE [disks-unmanaged-disks-retirement](includes/disks-unmanaged-disks-retirement.md)]
 
-This document walks through the differences between managed and unmanaged disks when using Azure Resource Manager templates to provision virtual machines. The examples help you to update existing templates that are using unmanaged Disks to managed disks. For reference, we are using the [vm-simple-windows](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-simple-windows) template as a guide. You can see the template using both [managed disks](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-simple-windows/azuredeploy.json) and a prior version using [unmanaged disks](https://github.com/Azure/azure-quickstart-templates/tree/93b5f72a9857ea9ea43e87d2373bf1b4f724c6aa/101-vm-simple-windows/azuredeploy.json) if you'd like to directly compare them.
+This document walks through the differences between managed and unmanaged disks when using Azure Resource Manager templates to provision virtual machines. The examples help you to update existing templates that are using unmanaged Disks to managed disks. For reference, we are using the [vm-simple-windows](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-simple-windows) template as a guide. You can see the template using both [managed Disks](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-simple-windows/azuredeploy.json) and a prior version using [unmanaged disks](https://github.com/Azure/azure-quickstart-templates/tree/93b5f72a9857ea9ea43e87d2373bf1b4f724c6aa/101-vm-simple-windows/azuredeploy.json) if you'd like to directly compare them.
 
 
 ## Unmanaged Disks template formatting
@@ -86,7 +86,7 @@ Within the virtual machine object, add a dependency on the storage account to en
 
 ## Managed disks template formatting
 
-With Azure managed disks, the disk becomes a top-level resource and no longer requires a storage account to be created by the user. Managed disks were first exposed in the `2016-04-30-preview` API version, they are available in all subsequent API versions and are now the default disk type. The following sections walk through the default settings and detail how to further customize your disks.
+With Azure Managed Disks, the disk becomes a top-level resource and no longer requires a storage account to be created by the user. Managed disks were first exposed in the `2016-04-30-preview` API version, they are available in all subsequent API versions and are now the default disk type. The following sections walk through the default settings and detail how to further customize your disks.
 
 > [!NOTE]
 > It is recommended to use an API version later than `2016-04-30-preview` as there were breaking changes between `2016-04-30-preview` and `2017-03-30`.
@@ -260,7 +260,7 @@ To find full information on the REST API specifications, please review the [crea
 * For full templates that use managed disks visit the following Azure Quickstart Repo links.
     * [Windows VM with managed disk](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-simple-windows)
     * [Linux VM with managed disk](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-simple-linux)
-* Visit the [Azure managed disks Overview](managed-disks-overview.md) document to learn more about managed disks.
+* Visit the [Azure Managed Disks Overview](managed-disks-overview.md) document to learn more about managed disks.
 * Review the template reference documentation for virtual machine resources by visiting the [Microsoft.Compute/virtualMachines template reference](/azure/templates/microsoft.compute/virtualmachines) document.
 * Review the template reference documentation for disk resources by visiting the [Microsoft.Compute/disks template reference](/azure/templates/microsoft.compute/disks) document.
 * For information on how to use managed disks in Azure virtual machine scale sets, visit the [Use data disks with scale sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md) document.

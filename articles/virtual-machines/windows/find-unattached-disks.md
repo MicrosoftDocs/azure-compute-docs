@@ -29,18 +29,18 @@ The following script looks for unattached [managed disks](../managed-disks-overv
 >After you review all the unattached disks, run the script again and set the **deleteUnattachedDisks** variable to 1. This action deletes all the unattached managed disks.
 
 ```azurepowershell-interactive
-# Set deleteUnattachedDisks=1 if you want to delete unattached managed disks
-# Set deleteUnattachedDisks=0 if you want to see the Id of the unattached managed disks
+# Set deleteUnattachedDisks=1 if you want to delete unattached Managed Disks
+# Set deleteUnattachedDisks=0 if you want to see the Id of the unattached Managed Disks
 $deleteUnattachedDisks=0
 $managedDisks = Get-AzDisk
 foreach ($md in $managedDisks) {
-    # ManagedBy property stores the Id of the VM to which managed disk is attached to
-    # If ManagedBy property is $null then it means that the managed disk is not attached to a VM
+    # ManagedBy property stores the Id of the VM to which Managed Disk is attached to
+    # If ManagedBy property is $null then it means that the Managed Disk is not attached to a VM
     if($md.ManagedBy -eq $null){
         if($deleteUnattachedDisks -eq 1){
-            Write-Host "Deleting unattached managed disk with Id: $($md.Id)"
+            Write-Host "Deleting unattached Managed Disk with Id: $($md.Id)"
             $md | Remove-AzDisk -Force
-            Write-Host "Deleted unattached managed disk with Id: $($md.Id) "
+            Write-Host "Deleted unattached Managed Disk with Id: $($md.Id) "
         }else{
             $md.Id
         }

@@ -386,7 +386,7 @@ Im some scenarios, your limitations might require you to resize an existing disk
 
     :::image type="content" source="./media/disk-encryption/resize-lvm/020-resize-lvm-scenarioc-check-df.png" alt-text="Screenshot showing the code that checks file system utilization with the command and results highlighted.":::
 
-6. Resize the data disks by following the instructions in [Expand an Azure managed disk](expand-disks.md#expand-an-azure-managed-disk). You can use the portal, the CLI, or PowerShell.
+6. Resize the data disks by following the instructions in [Expand an Azure Managed Disk](expand-disks.md#expand-an-azure-managed-disk). You can use the portal, the CLI, or PowerShell.
 
     >[!IMPORTANT]
     >Some data disks on Linux VMs can be resized without Deallocating the VM, please check [Expand virtual hard disks on a Linux VM](/azure/virtual-machines/linux/expand-disks? tabs=ubuntu#expand-an-azure-managed-disk) in order to verify your disks meet the requirements.

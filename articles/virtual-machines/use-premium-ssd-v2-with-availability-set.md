@@ -23,7 +23,7 @@ Availability sets have fault isolation for many possible failures, to minimize s
 
 When a Premium SSD v2 located in one fault domain is attached to a VM in another fault domain, the system triggers a background copy. This process moves the disk to match the VM’s fault domain, helping ensure consistent alignment between compute and storage for better reliability and availability. 
 
-:::image type="content" source="media/availability-set-disk-move.png" alt-text="Diagram Showing Availability Set with managed disk Fault Domain alignment Disk Move." lightbox="media/availability-set-disk-move.png":::
+:::image type="content" source="media/availability-set-disk-move.png" alt-text="Diagram Showing Availability Set with Managed Disk Fault Domain alignment Disk Move." lightbox="media/availability-set-disk-move.png":::
 
 As the previous diagram illustrates, if a disk located in fault domain 1 is attached to a VM in fault domain 1 and is later detached and attached to a VM in fault domain 2, the system automatically triggers a background copy of the disk to move it from fault domain 1 to fault domain 2 for compute and storage fault domain alignment. This background move process can take up to 24 hours to complete.    
 

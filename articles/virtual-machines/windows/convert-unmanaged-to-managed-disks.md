@@ -16,15 +16,15 @@ ms.author: rogarana
 
 [!INCLUDE [disks-unmanaged-disks-retirement](../includes/disks-unmanaged-disks-retirement.md)]
 
-If you have existing Windows virtual machines (VMs) that use unmanaged disks, you can migrate the VMs to use managed disks through the [Azure managed disks](../managed-disks-overview.md) service. This process converts both the operating system (OS) disk and any attached data disks.
+If you have existing Windows virtual machines (VMs) that use unmanaged disks, you can migrate the VMs to use managed disks through the [Azure Managed Disks](../managed-disks-overview.md) service. This process converts both the operating system (OS) disk and any attached data disks.
 
 
 ## Before you begin
 
 
-* Review [Plan for the migration to managed disks](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks).
+* Review [Plan for the migration to Managed Disks](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks).
 
-* Review [the FAQ about migration to managed disks](../faq-for-disks.yml).
+* Review [the FAQ about migration to Managed Disks](../faq-for-disks.yml).
 
 * Ensure the VM is in a healthy sate before converting.
 
@@ -110,6 +110,6 @@ The VM will be stopped and restarted after migration is complete.
 
 ## Next steps
 
-[Change the disk type of an Azure managed disk](../disks-convert-types.md).
+[Change the disk type of an Azure Managed Disk](../disks-convert-types.md).
 
 Take a read-only copy of a VM by using [snapshots](snapshot-copy-managed-disk.md).

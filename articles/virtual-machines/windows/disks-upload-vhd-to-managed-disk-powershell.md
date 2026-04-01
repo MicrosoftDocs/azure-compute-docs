@@ -1,6 +1,6 @@
 ---
 title: Upload a VHD to Azure or copy a disk across regions - Azure PowerShell
-description: Learn how to upload a VHD to an Azure managed disk and copy a managed disk across regions, using Azure PowerShell, via direct upload.    
+description: Learn how to upload a VHD to an Azure Managed Disk and copy a managed disk across regions, using Azure PowerShell, via direct upload.    
 author: roygara
 ms.author: rogarana
 ms.date: 02/09/2026
@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.service: azure-disk-storage
 ms.tgt_pltfrm: linux
 ms.custom: references_regions, devx-track-azurepowershell
-# Customer intent: As an IT administrator, I want to upload a VHD to an Azure managed disk using PowerShell, so that I can restore backups or migrate disks across regions efficiently and securely.
+# Customer intent: As an IT administrator, I want to upload a VHD to an Azure Managed Disk using PowerShell, so that I can restore backups or migrate disks across regions efficiently and securely.
 ---
 
 # Upload a VHD to Azure or copy a managed disk to another region - Azure PowerShell
 
 **Applies to:** :heavy_check_mark: Windows VMs 
 
-This article explains how to either upload a VHD from your local machine to an Azure managed disk or copy a managed disk to another region, using the Azure PowerShell module. The process of uploading a managed disk, also known as direct upload, enables you to upload a VHD up to 32 TiB in size directly into a managed disk. Currently, direct upload is supported for Ultra Disks, Premium SSD v2, Premium SSD, Standard SSD, and Standard HDD.
+This article explains how to either upload a VHD from your local machine to an Azure Managed Disk or copy a managed disk to another region, using the Azure PowerShell module. The process of uploading a managed disk, also known as direct upload, enables you to upload a VHD up to 32 TiB in size directly into a managed disk. Currently, direct upload is supported for Ultra Disks, Premium SSD v2, Premium SSD, Standard SSD, and Standard HDD.
 
 If you're providing a backup solution for IaaS VMs in Azure, you should use direct upload to restore customer backups to managed disks. When uploading a VHD from a source external to Azure, speeds depend on your local bandwidth. When uploading or copying from an Azure VM, your bandwidth would be the same as Standard HDDs.
 
-If you're using [Microsoft Entra ID](/azure/active-directory/fundamentals/active-directory-whatis) to control resource access, you can use it to restrict uploading of Azure managed disks. See [Secure downloads and uploads of Azure managed disks](../disks-secure-upload-download.md) for details.
+If you're using [Microsoft Entra ID](/azure/active-directory/fundamentals/active-directory-whatis) to control resource access, you can use it to restrict uploading of Azure Managed Disks. See [Secure downloads and uploads of Azure Managed Disks](../disks-secure-upload-download.md) for details.
 
 ## Get started
 
@@ -47,13 +47,13 @@ If Microsoft Entra ID is used to enforce upload restrictions on a subscription o
 
 ```azurepowershell
 New-AzRoleAssignment -SignInName <emailOrUserprincipalname> `
--RoleDefinitionName "Data Operator for managed disks" `
+-RoleDefinitionName "Data Operator for Managed Disks" `
 -Scope /subscriptions/<subscriptionId>
 ```
 
 ### Use Add-AzVHD
 
-The following example uploads a VHD from your local machine to a new Azure managed disk using [Add-AzVHD](/powershell/module/az.compute/add-azvhd). Replace `<your-filepath-here>`, `<your-resource-group-name>`,`<desired-region>`, and `<desired-managed-disk-name>` with your parameters:
+The following example uploads a VHD from your local machine to a new Azure Managed Disk using [Add-AzVHD](/powershell/module/az.compute/add-azvhd). Replace `<your-filepath-here>`, `<your-resource-group-name>`,`<desired-region>`, and `<desired-managed-disk-name>` with your parameters:
 
 > [!NOTE]
 > If you're using Microsoft Entra ID to [secure disk uploads](../disks-secure-upload-download.md), add `-DataAccessAuthMode 'AzureActiveDirectory'` to the end of your `Add-AzVhd` command.

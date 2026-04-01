@@ -38,7 +38,7 @@ If you don't have an Azure subscription, create a [free account](https://azure.m
     - Either the Virtual Machine Contributor built-in role, or specific permissions to:
         - Create a VM in the selected virtual network.
         - Write to an Azure storage account.
-        - Write to an Azure managed disk.
+        - Write to an Azure Managed Disk.
      - The Site Recovery Contributor built-in role, to manage Site Recovery operations in the vault. 
 3. Check that the Linux VM is running a [supported operating system](/azure/site-recovery/azure-to-azure-support-matrix#linux).
 4. If VM outbound connections use a URL-based proxy, make sure it can access these URLs. Using an authenticated proxy isn't supported.
