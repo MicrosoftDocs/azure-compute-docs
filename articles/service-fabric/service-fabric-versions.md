@@ -7,7 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: linux-related-content
 services: service-fabric
-ms.date: 03/20/2026
+ms.date: 04/01/2026
 # Customer intent: "As a system administrator, I want to understand the supported versions of Service Fabric and their upgrade paths, so that I can ensure the cluster is running a version that receives updates and maintains compatibility with my applications."
 ---
 
@@ -87,8 +87,9 @@ Support for Service Fabric on a specific OS ends when support for the OS version
 
 | OS version | Service Fabric support end date | OS Lifecycle link |
 | -  |- | - |
-|Windows Server 2022|10/14/2031|<a href="/lifecycle/products/windows-server-2022">Windows Server 2022 - Microsoft Lifecycle</a>|
-|Windows Server 2019|1/9/2029|<a href="/lifecycle/products/windows-server-2019">Windows Server 2019 - Microsoft Lifecycle</a>|
+|Windows Server 2025|11/13/2029|<a href="/lifecycle/products/windows-server-2025">Windows Server 2025 - Microsoft Lifecycle</a>|
+|Windows Server 2022|3/31/2027|<a href="/lifecycle/products/windows-server-2022">Windows Server 2022 - Microsoft Lifecycle</a>|
+|Windows Server 2019|3/31/2027|<a href="/lifecycle/products/windows-server-2019">Windows Server 2019 - Microsoft Lifecycle</a>|
 |Windows Server 2016 |1/12/2027|<a href="/lifecycle/products/windows-server-2016">Windows Server 2016 - Microsoft Lifecycle</a>|
 |Windows Server 2012 R2 |10/10/2023|<a href="/lifecycle/products/windows-server-2012-r2">Windows Server 2012 R2 - Microsoft Lifecycle</a>|
 |Version 20H2 |5/10/2022|<a href="/lifecycle/products/windows-server">Windows Server - Microsoft Lifecycle</a>|
