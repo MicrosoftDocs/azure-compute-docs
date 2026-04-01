@@ -1,20 +1,20 @@
 ---
-title: Share an Azure Managed Disk across VMs
-description: Learn about sharing Azure Managed Disks across multiple Linux VMs.
+title: Share an Azure managed disk across VMs
+description: Learn about sharing Azure managed disks across multiple Linux VMs.
 author: roygara
 ms.service: azure-disk-storage
 ms.custom: linux-related-content
 ms.topic: concept-article
 ms.date: 12/03/2025
 ms.author: rogarana
-# Customer intent: As a cloud architect, I want to understand how to share Azure Managed Disks across multiple VMs, so that I can effectively deploy and manage clustered applications in the cloud.
+# Customer intent: As a cloud architect, I want to understand how to share Azure managed disks across multiple VMs, so that I can effectively deploy and manage clustered applications in the cloud.
 ---
 
-# Share an Azure Managed Disk across VMs
+# Share an Azure managed disk across VMs
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
-Azure shared disks is a feature for Azure Managed Disks that allows you to attach a managed disk to multiple virtual machines (VMs) simultaneously. This capability enables you to deploy new or migrate existing clustered applications to Azure without modifying your architecture. Shared disks ensure high availability for clustered applications, as other VMs in the cluster retain full access to the disk if one VM fails.
+Azure shared disks is a feature for Azure managed disks that allows you to attach a managed disk to multiple virtual machines (VMs) simultaneously. This capability enables you to deploy new or migrate existing clustered applications to Azure without modifying your architecture. Shared disks ensure high availability for clustered applications, as other VMs in the cluster retain full access to the disk if one VM fails.
 
 Shared disks require a cluster manager, like Windows Server Failover Cluster (WSFC), or Pacemaker, that handles cluster node communication and write locking. Shared managed disks don't natively offer a fully managed file system that can be accessed using SMB/NFS.
 

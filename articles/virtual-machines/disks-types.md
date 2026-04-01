@@ -7,14 +7,14 @@ ms.date: 11/06/2025
 ms.topic: concept-article
 ms.service: azure-disk-storage
 ms.custom: references_regions
-# Customer intent: As an IT professional, I want to compare Azure Managed Disk types so that I can select the most suitable disk for each of my virtual machine workloads and optimize cost and performance.
+# Customer intent: As an IT professional, I want to compare Azure managed disk types so that I can select the most suitable disk for each of my virtual machine workloads and optimize cost and performance.
 ---
 
-# Azure Managed Disk types
+# Azure managed disk types
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
-Azure Managed Disks currently offers five disk types, each intended to address a specific customer scenario:
+Azure managed disks currently offers five disk types, each intended to address a specific customer scenario:
 
 - [Ultra Disks](#ultra-disks)
 - [Premium SSD v2](#premium-ssd-v2)
@@ -225,7 +225,7 @@ For more information on snapshots, see [Create a snapshot of a virtual hard disk
 
 **Transactions**: You're billed for the number of transactions performed on a standard managed disk. For Standard SSDs, each I/O operation less than or equal to 256 kB of throughput is considered a single I/O operation. I/O operations larger than 256 kB of throughput are considered multiple I/Os of size 256 kB. Standard HDD transaction charges depend on the region, size of the disk you deploy, and for some disk sizes, the size of each transaction. For details, [see this section](#standard-hdd-transactions).
 
-For detailed information on pricing for managed disks (including transaction costs), see [Managed Disks Pricing](https://azure.microsoft.com/pricing/details/managed-disks).
+For detailed information on pricing for managed disks (including transaction costs), see [managed disks Pricing](https://azure.microsoft.com/pricing/details/managed-disks).
 
 ### Ultra Disks VM reservation fee
 

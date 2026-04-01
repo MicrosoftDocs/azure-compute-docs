@@ -1,6 +1,6 @@
 ---
 title: Tutorial - Create and use disks for scale sets with Azure CLI
-description: Learn how to use the Azure CLI to create and use Managed Disks with Virtual Machine Scale Set. Including how to add, prepare, list, and detach disks.
+description: Learn how to use the Azure CLI to create and use managed disks with Virtual Machine Scale Set. Including how to add, prepare, list, and detach disks.
 author: cynthn
 ms.author: cynthn
 ms.topic: tutorial
@@ -45,7 +45,7 @@ Azure provides two types of disk.
 Backed by HDDs or SSDs, standard storage delivers cost-effective storage and performance. Standard disks are ideal for cost effective development and test workloads.
 
 ### Premium disk
-Premium disks are backed by SSD-based high-performance, low-latency disk. These disks are recommended for VMs that run production workloads. Premium Storage supports DS-series, DSv2-series, GS-series, and FS-series VMs. For more information, see [Azure Managed Disk types](../virtual-machines/disks-types.md).
+Premium disks are backed by SSD-based high-performance, low-latency disk. These disks are recommended for VMs that run production workloads. Premium Storage supports DS-series, DSv2-series, GS-series, and FS-series VMs. For more information, see [Azure managed disk types](../virtual-machines/disks-types.md).
 
 ## Create and attach disks
 You can create and attach disks when you create a scale set, or with an existing scale set.
