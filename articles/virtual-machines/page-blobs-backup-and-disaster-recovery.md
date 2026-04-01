@@ -110,7 +110,7 @@ For unmanaged disks, you can use the locally redundant storage type for IaaS dis
 | Scenario | Automatic replication | DR solution |
 | --- | --- | --- |
 | Premium SSDs | Local ([locally redundant storage](/azure/storage/common/storage-redundancy#locally-redundant-storage)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
-| Managed disks | Local ([locally redundant storage](/azure/storage/common/storage-redundancy#locally-redundant-storage)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
+| managed disks | Local ([locally redundant storage](/azure/storage/common/storage-redundancy#locally-redundant-storage)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
 | Unmanaged locally redundant storage disks | Local ([locally redundant storage](/azure/storage/common/storage-redundancy#locally-redundant-storage)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
 | Unmanaged geo-redundant storage disks | Cross region ([geo-redundant storage](/azure/storage/common/storage-redundancy#geo-redundant-storage)) | [Azure Backup](https://azure.microsoft.com/services/backup/)<br/>[Consistent snapshots](#alternative-solution-consistent-snapshots) |
 | Unmanaged read-access geo-redundant storage disks | Cross region ([read-access geo-redundant storage](/azure/storage/common/storage-redundancy#read-access-to-data-in-the-secondary-region)) | [Azure Backup](https://azure.microsoft.com/services/backup/)<br/>[Consistent snapshots](#alternative-solution-consistent-snapshots) |

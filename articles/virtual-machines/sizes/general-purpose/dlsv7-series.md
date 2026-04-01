@@ -73,9 +73,9 @@ Remote (uncached) storage info for each size
 | Standard_D248ls_v7 | 64 | 396,800 | 13,145 | 500,000 | 15,000 | 620,000 | 16,740 | 781,250 | 19,385 |
 
 #### Storage resources
-- [Introduction to Azure Managed Disks](../../../virtual-machines/managed-disks-overview.md)
-- [Azure Managed Disk types](../../../virtual-machines/disks-types.md)
-- [Share an Azure Managed Disk](../../../virtual-machines/disks-shared.md)
+- [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
+- [Azure managed disk types](../../../virtual-machines/disks-types.md)
+- [Share an Azure managed disk](../../../virtual-machines/disks-shared.md)
 
 #### Table definitions
 - <sup>1</sup>Some sizes support bursting to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.

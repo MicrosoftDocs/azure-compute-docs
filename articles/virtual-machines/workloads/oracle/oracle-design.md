@@ -155,7 +155,7 @@ Here are some tips as you consider disks.
 
 - **Default OS disks:** These disk types offer persistent data and caching. They're optimized for operating system access at startup, and aren't designed for either transactional or data warehouse (analytical) workloads.
 
-- **Managed disks:** Azure manages the storage accounts that you use for your VM disks. You specify the disk type and the size of the disk that you need. The type is most often Premium (SSD) for Oracle workloads. Azure creates and manages the disk for you. A Premium SSD-managed disk is only available for memory-optimized and designed VM series. After you choose a particular VM size, the menu shows only the available premium storage SKUs that are based on that VM size.
+- **managed disks:** Azure manages the storage accounts that you use for your VM disks. You specify the disk type and the size of the disk that you need. The type is most often Premium (SSD) for Oracle workloads. Azure creates and manages the disk for you. A Premium SSD-managed disk is only available for memory-optimized and designed VM series. After you choose a particular VM size, the menu shows only the available premium storage SKUs that are based on that VM size.
 
   :::image type="content" source="./media/oracle-design/premium_disk01.png" alt-text="Screenshot of the managed disk page." lightbox="./media/oracle-design/premium_disk01.png":::
 

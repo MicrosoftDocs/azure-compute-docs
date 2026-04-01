@@ -9,11 +9,11 @@ metadata:
   ms.author: rogarana
   ms.custom: references_regions
 title: Frequently asked questions about Azure IaaS VM disks and managed and unmanaged premium disks
-summary: This article answers some frequently asked questions about Azure Managed Disks and Azure Premium SSDs.
+summary: This article answers some frequently asked questions about Azure managed disks and Azure Premium SSDs.
 
 
 sections:
-  - name: Managed Disks
+  - name: managed disks
     questions:
       - question: |
           If I create a standard managed disk from an existing VHD that's 80 GiB, how much will that cost me?
@@ -56,9 +56,9 @@ sections:
           Depending on the region where the availability set that uses managed disks is located, the supported fault domain count is 2 or 3.
 
       - question: |
-          What kind of Azure role-based access control support is available for Managed Disks?
+          What kind of Azure role-based access control support is available for managed disks?
         answer: |
-          Managed Disks supports three key default roles:
+          Managed disks supports three key default roles:
           
           * Owner: Can manage everything, including access
           * Contributor: Can manage everything except access
@@ -97,7 +97,7 @@ sections:
       - question: |
           Where can I find sample Azure Resource Manager templates to create VMs with managed disks?
         answer: |
-          * [List of templates using Managed Disks](https://github.com/Azure/azure-quickstart-templates/)
+          * [List of templates using managed disks](https://github.com/Azure/azure-quickstart-templates/)
           * https://github.com/chagarw/MDPP
           
       - question: |
@@ -120,7 +120,7 @@ sections:
       - question: |
           What options does Azure disk reservation offer?    
         answer: |
-          Azure disk reservation provides the option to purchase Premium SSDs in the specified SKUs from P30 (1 TiB) up to P80 (32 TiB) for a one-year term. There's no limitation on the minimum number of disks necessary to purchase a disk reservation. Additionally, you can choose to pay with a single, upfront payment or monthly payments. There's no additional transactional cost applied for Premium SSD Managed Disks.    
+          Azure disk reservation provides the option to purchase Premium SSDs in the specified SKUs from P30 (1 TiB) up to P80 (32 TiB) for a one-year term. There's no limitation on the minimum number of disks necessary to purchase a disk reservation. Additionally, you can choose to pay with a single, upfront payment or monthly payments. There's no additional transactional cost applied for Premium SSD managed disks.    
           
           Reservations are made in the form of disks, not capacity. In other words, when you reserve a P80 (32 TiB) disk, you get a single P80 disk, you can't then divide that specific reservation up into two smaller P70 (16 TiB) disks. You can reserve as many or as few disks as you like, including two separate P70 (16 TiB) disks.
           
@@ -262,7 +262,7 @@ sections:
         answer: |
           No.
 
-  - name: Migrate to Managed Disks
+  - name: Migrate to managed disks
     questions:
       - question: |
           Is there any impact of migration on the managed disks performance?
@@ -270,7 +270,7 @@ sections:
           Migration involves movement of the disk from one storage location to another. This is orchestrated via background copy of data, which can take several hours to complete, typically less than 24 Hrs depending on the amount of data in the disks. During that time your application can experience higher than usual read latency as some reads can get redirected to the original location, and can take longer to complete. There's no impact on write latency during this period.  
 
       - question: |
-          What changes are required in a pre-existing Azure Backup service configuration prior/after migration to Managed Disks?
+          What changes are required in a pre-existing Azure Backup service configuration prior/after migration to managed disks?
         answer: |
           No changes are required.
 
@@ -297,19 +297,19 @@ sections:
       - question: |
           Can I fail over my on-premises machines protected by Azure Site Recovery to a VM with managed disks?
         answer: |
-          Yes, you can choose to fail over to a VM with Managed Disks.
+          Yes, you can choose to fail over to a VM with managed disks.
 
       - question: |
           Is there any impact of migration on Azure VMs protected by Azure Site Recovery via Azure to Azure replication?
         answer: |
-          No. Azure Site Recovery Azure to Azure protection for VMs with Managed Disks is available.
+          No. Azure Site Recovery Azure to Azure protection for VMs with managed disks is available.
 
       - question: |
           Can I migrate VMs with unmanaged disks that are located on storage accounts that are or were previously encrypted to managed disks?
         answer: |
           Yes
 
-  - name: Managed Disks and Storage Service Encryption
+  - name: managed disks and Storage Service Encryption
     questions:
       - question: |
           Is Server-side Encryption enabled by default when I create a managed disk?
@@ -332,7 +332,7 @@ sections:
           Yes. 
 
       - question: |
-          Can I backup Managed Disks encrypted with server-side encryption with customer-managed key using Azure Backup service?
+          Can I backup managed disks encrypted with server-side encryption with customer-managed key using Azure Backup service?
         answer: |
           Yes.
 
@@ -435,7 +435,7 @@ sections:
           The partition type that Azure supports for Gen1 operating system disks is the master boot record (MBR). Although Gen1 OS disks only support MBR the data disks support GPT. While you can allocate up to a 4-TiB OS disk, the MBR partition type can only use up to 2 TiB of this disk space for the operating system. Azure supports up to 32 TiB for managed data disks.
 
       - question: |
-          What is the largest Managed disk size supported for operating system and data disks on Gen2 VMs?
+          What is the largest managed disk size supported for operating system and data disks on Gen2 VMs?
         answer: |
           The partition type that Azure supports for Gen2 operating system disks is GUID Partition Table (GPT). Gen2 VMs support up to a 4-TiB OS disk. Azure supports up to 32 TiB for managed data disks.
           
