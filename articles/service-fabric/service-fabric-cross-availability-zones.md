@@ -338,6 +338,13 @@ To enable a zone on a virtual machine scale set, include the following three val
               "faultDomainOverride": "az1"
             },
             "typeHandlerVersion": "1.1"
+          }
+        }
+      ]
+    }
+  }
+}
+```
 
 ### Enable multiple primary node types in the Service Fabric cluster resource
 

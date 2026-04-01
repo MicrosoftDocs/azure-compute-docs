@@ -575,6 +575,7 @@ In the *template.json* file, add new network security group and virtual machine 
                             "type": "ServiceFabricNode",
                             "autoUpgradeMinorVersion": true,
                             "enableAutomaticUpgrade": true,
+                            "publisher": "Microsoft.Azure.ServiceFabric",
                             "protectedSettings": {
                                 "StorageAccountKey1": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')),'2015-05-01-preview').key1]",
                                 "StorageAccountKey2": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')),'2015-05-01-preview').key2]"
