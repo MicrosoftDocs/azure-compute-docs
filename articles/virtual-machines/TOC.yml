@@ -1836,19 +1836,19 @@
       - name: Windows
         displayName: Migrate to Premium SSDs with Azure Site Recovery
         href: ./windows/migrate-to-premium-storage-using-azure-site-recovery.md
-    - name: Migrate to Managed Disks
+    - name: Migrate to managed disks
       href: ./windows/migrate-to-managed-disks.md
     - name: Unmanaged Disks retirement
       href: ./unmanaged-disks-deprecation.md
     - name: Migrate your Standard HDD OS disks
       href: disks-hdd-os-retirement.md
-    - name: Unmanaged VM to Managed Disks
+    - name: Unmanaged VM to managed disks
       items:
       - name: CLI
-        displayName: Unmanaged VM to Managed Disks
+        displayName: Unmanaged VM to managed disks
         href: ./linux/convert-unmanaged-to-managed-disks.md
       - name: PowerShell
-        displayName: Unmanaged VM to Managed Disks
+        displayName: Unmanaged VM to managed disks
         href: ./windows/convert-unmanaged-to-managed-disks.md
   - name: Create resources
     items:

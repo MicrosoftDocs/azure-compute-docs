@@ -41,7 +41,7 @@ Snapshots can be used to create new managed disks when a VM is rebuilt. They're 
 
 For more information on creating snapshots, see:
 
-* [Create copy of VHD stored as a Managed Disk](./windows/snapshot-copy-managed-disk.md)
+* [Create copy of VHD stored as a managed disk](./windows/snapshot-copy-managed-disk.md)
 
 ## Virtual machine restore points
 

@@ -123,7 +123,7 @@ To configure a Stateless node type for zone resiliency, you must [configure mana
 > The zone resiliency property must be set at the cluster level, and this property can't be changed in place.
 
 ## Temporary disk support
-Stateless node types can be configured to use temporary disk as the data disk instead of a Managed Disk. Using a temporary disk can reduce costs for stateless workloads. To configure a stateless node type to use the temporary disk set the **useTempDataDisk** property to **true**. 
+Stateless node types can be configured to use temporary disk as the data disk instead of a managed disk. Using a temporary disk can reduce costs for stateless workloads. To configure a stateless node type to use the temporary disk set the **useTempDataDisk** property to **true**. 
 
 * Temporary disk size must be 32 GB or more. The size of the temporary disk depends on the VM size.
 * The temporary disk isn't encrypted by server side encryption unless you enable encryption at host.

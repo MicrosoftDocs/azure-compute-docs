@@ -38,7 +38,7 @@ Use the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculato
 
    ![Screenshot showing the your estimate section and main options available for virtual machines.](media/plan-to-manage-costs/virtual-machines-pricing-calculator-overview.png)
 
-1. Below the **Savings Options** section, there are choices for optional, additional resources you can deploy with your virtual machine, including **Managed Disks**, **Storage transactions**, and **Bandwidth**. For optimal performance, we recommend pairing your virtual machines with [managed disks](https://azure.microsoft.com/pricing/details/managed-disks/), but make sure to review the additional cost incurred by these resources.
+1. Below the **Savings Options** section, there are choices for optional, additional resources you can deploy with your virtual machine, including **managed disks**, **Storage transactions**, and **Bandwidth**. For optimal performance, we recommend pairing your virtual machines with [managed disks](https://azure.microsoft.com/pricing/details/managed-disks/), but make sure to review the additional cost incurred by these resources.
 
    ![Screenshot of choices for optional, additional resources.](media/plan-to-manage-costs/virtual-machines-pricing-additional-resources.png)
 

@@ -118,7 +118,7 @@ Ebsv5-series sizes run on the Intel® Xeon® Platinum 8272CL (Cascade Lake). The
 ## Ebsv5 NVMe FAQ
 
 ### How is the NVMe enabled Ebsv5 different from the L series VM that Azure offers?
-The NVMe enabled Ebsv5 series is designed to offer the highest Azure Managed Disk storage performance. The L series VMs are designed to offer higher IOPS and throughout on the local NVMe disks, which are ephemeral. Refer to the [VM sizes documentation](/azure/virtual-machines/sizes) for details on the performance offered by the Ebsv5 and L series. 
+The NVMe enabled Ebsv5 series is designed to offer the highest Azure managed disk storage performance. The L series VMs are designed to offer higher IOPS and throughout on the local NVMe disks, which are ephemeral. Refer to the [VM sizes documentation](/azure/virtual-machines/sizes) for details on the performance offered by the Ebsv5 and L series. 
 
 ### What I/O size is recommended to achieve the published performance? 
 To achieve the maximum IOPS, we recommend using a 4 KiB or 8 KiB block size. For maximum performance throughput, you can choose to use one of the following block sizes: 64 KiB, 128 KiB, 256 KiB, 512 KiB or 1024 KiB. However, it's important to optimize the I/O size based on the specific requirements of your application and to use the recommended block sizes only as a guideline. 
