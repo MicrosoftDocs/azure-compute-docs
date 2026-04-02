@@ -1,20 +1,20 @@
 ---
-title: Overview - Options to improve Azure Managed Disk performance
-description: Learn the available options for improving Azure Managed Disk performance, organized by disk type.
+title: Overview - Options to improve Azure managed disk performance
+description: Learn the available options for improving Azure managed disk performance, organized by disk type.
 author: roygara
 ms.service: azure-disk-storage
 ms.topic: concept-article
 ms.date: 04/15/2025
 ms.author: rogarana
 ms.custom: accpeerreview2025-2
-# Customer intent: As a cloud architect, I want to understand the performance options for Azure Managed Disks, so that I can optimize disk usage and meet the varying demands of workloads effectively.
+# Customer intent: As a cloud architect, I want to understand the performance options for Azure managed disks, so that I can optimize disk usage and meet the varying demands of workloads effectively.
 ---
 
-# Overview of options to improve Azure Managed Disk performance
+# Overview of options to improve Azure managed disk performance
 
 This article outlines the capabilities each disk type offers to adjust its performance. Use the headings to navigate to the disk types you're interested in to get a quick overview of the capabilities available to it.
 
-The demands and needs of your workload can shift over time, either due to high demand during a holiday, sudden bursts of traffic, or scaling up to meet client needs. Azure Managed Disks have several capabilities you can take advantage of to improve their performance and match the shifting needs of your workloads. Different disk types offer different capabilities, some disk types have capabilities you can use to ensure their performance automatically shifts to meet the changing demands of your workload, others require manual adjustment, and other disk types can't do either.
+The demands and needs of your workload can shift over time, either due to high demand during a holiday, sudden bursts of traffic, or scaling up to meet client needs. Azure managed disks have several capabilities you can take advantage of to improve their performance and match the shifting needs of your workloads. Different disk types offer different capabilities, some disk types have capabilities you can use to ensure their performance automatically shifts to meet the changing demands of your workload, others require manual adjustment, and other disk types can't do either.
 
 ## Ultra Disks and Premium SSD v2
 
@@ -27,7 +27,7 @@ Premium SSD supports several performance options, each geared towards different 
 |  |Credit-based bursting  |On-demand bursting  |Changing performance tier  |Caching |Write accelerator |Performance plus |
 |---------|---------|---------|---------|---------|---------|---------|
 | **Scenarios**|Ideal for short-term scaling (30 minutes or less).|Ideal for short-term uses like determining your workloads performance needs.|Ideal if your workload would otherwise continually be running in burst. |Ideal for workloads that can be configured to rely on data from the cache. |Ideal for scenarios where log files are required to persist to a disk in a performant manner for modern databases. |Ideal for workloads that require higher sustained performance. |
-|**Cost**     |Free         |Cost is variable, see the [Billing](/azure/virtual-machines/disk-bursting#billing) section of the bursting article for details.        |The cost of each performance tier is fixed, see [Managed Disks pricing](https://azure.microsoft.com/pricing/details/managed-disks/) for details.         |Free. |Free. |Free. |
+|**Cost**     |Free         |Cost is variable, see the [Billing](/azure/virtual-machines/disk-bursting#billing) section of the bursting article for details.        |The cost of each performance tier is fixed, see [managed disks pricing](https://azure.microsoft.com/pricing/details/managed-disks/) for details.         |Free. |Free. |Free. |
 |**Availability**     |Only available for Premium SSD managed disks 512 GiB and smaller, and Standard SSDs 1,024 GiB and smaller.         |Only available for Premium SSD managed disks larger than 512 GiB.         |Available to all Premium SSD sizes.         |Available to all Premium SSD managed disk, Standard SSD, and Standard HDD sizes. |Only available to M-series Azure Virtual Machines, but can be configured with all Premium SSD sizes attached to M-series virtual machines. |Available for Standard HDD, Standard SSD, and Premium SSD managed disks 513 GiB and larger. |
 |**Enablement**     |Enabled by default on eligible disks.         |User must enable manually.         |User must manually change their tier.         |User must manually configure both their cache settings and their workloads and applications. |User must manually configure and enable. |Must enable performance plus when you create the disk, can't be enabled on existing disks. |
 

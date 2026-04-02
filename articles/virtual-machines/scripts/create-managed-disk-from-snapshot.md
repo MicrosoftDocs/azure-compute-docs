@@ -31,22 +31,22 @@ This article contains two scripts for creating a managed disk from a snapshot. T
 ### Disks with customer-managed keys
 
 ```azurecli
-#Provide the subscription Id of the subscription where you want to create Managed Disks
+#Provide the subscription Id of the subscription where you want to create managed disks
 subscriptionId="<subscriptionId>"
 
 #Provide the name of your resource group
 resourceGroupName=myResourceGroupName
 
-#Provide the name of the snapshot that will be used to create Managed Disks
+#Provide the name of the snapshot that will be used to create managed disks
 snapshotName=mySnapshotName
 
-#Provide the name of the new Managed Disks that will be create
+#Provide the name of the new managed disks that will be create
 diskName=myDiskName
 
 #Provide the size of the disks in GB. It should be greater than the VHD file size.
 diskSize=128
 
-#Provide the storage type for Managed Disk. Premium_LRS or Standard_LRS.
+#Provide the storage type for managed disk. Premium_LRS or Standard_LRS.
 storageType=Premium_LRS
 
 #Provide the name of the target disk encryption set
@@ -59,7 +59,7 @@ diskEncryptionResourceGroup=myGroup
 #Provide the Availability Zone you'd like the disk to be created in, default is 1
 zone=1
 
-#Set the context to the subscription Id where Managed Disk will be created
+#Set the context to the subscription Id where managed disk will be created
 az account set --subscription $subscriptionId
 
 #Get the snapshot Id 
@@ -68,7 +68,7 @@ snapshotId=$(az snapshot show --name $snapshotName --resource-group $resourceGro
 #Get the disk encryption set ID
 diskEncryptionSetId=$(az disk-encryption-set show --name $diskEncryptionSetName --resource-group $diskEncryptionResourceGroup)
 
-#Create a new Managed Disks using the snapshot Id
+#Create a new managed disks using the snapshot Id
 #Note that managed disk will be created in the same location as the snapshot
 #To change the location, add the --location parameter
 #If you're creating a Premium SSD v2 or an Ultra Disk, add "--zone $zone" to the end of the command

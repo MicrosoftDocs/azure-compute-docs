@@ -64,9 +64,9 @@ Local (temp) storage info for each size
 | Standard_D96plds_v6 | 6 | 880 | 1,800,000 | 4,320 | 720,000 | 8,640 |
 
 #### Storage resources
-- [Introduction to Azure Managed Disks](../../../virtual-machines/managed-disks-overview.md)
-- [Azure Managed Disk types](../../../virtual-machines/disks-types.md)
-- [Share an Azure Managed Disk](../../../virtual-machines/disks-shared.md)
+- [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
+- [Azure managed disk types](../../../virtual-machines/disks-types.md)
+- [Share an Azure managed disk](../../../virtual-machines/disks-shared.md)
 
 #### Table definitions
 - <sup>1</sup> Total local temporary storage is calculated by multiplying the max number of storage disks with the temp disk size. For example, for the Standard_D96plds_v6, the total local temporary storage capacity is `6 x 880 GiB = 5,280 GiB`.
@@ -93,9 +93,9 @@ Remote (uncached) storage info for each size
 | Standard_D96plds_v6 | 64 | 153,600 | 5,000 | 153,600 | 5,000 | 199,987 | 5,850 | 199,987 | 5,850 |
 
 #### Storage resources
-- [Introduction to Azure Managed Disks](../../../virtual-machines/managed-disks-overview.md)
-- [Azure Managed Disk types](../../../virtual-machines/disks-types.md)
-- [Share an Azure Managed Disk](../../../virtual-machines/disks-shared.md)
+- [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
+- [Azure managed disk types](../../../virtual-machines/disks-types.md)
+- [Share an Azure managed disk](../../../virtual-machines/disks-shared.md)
 
 #### Table definitions
 - <sup>1</sup>These sizes support [bursting](../../disk-bursting.md) to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.

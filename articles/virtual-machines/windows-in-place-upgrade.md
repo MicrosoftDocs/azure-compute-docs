@@ -46,9 +46,9 @@ The upgrade media provided by Azure requires the VM to be configured for Windows
 
  
 
-## Upgrade to Managed Disks
+## Upgrade to managed disks
 
-The in-place upgrade process requires the use of Managed Disks on the VM to be upgraded. Most VMs in Azure are using Managed Disks, and retirement for unmanaged disks support was announced in November of 2022. If the VM is currently using unmanaged disks, then follow these steps to [migrate to Managed Disks](./windows/migrate-to-managed-disks.md).
+The in-place upgrade process requires the use of managed disks on the VM to be upgraded. Most VMs in Azure are using managed disks, and retirement for unmanaged disks support was announced in November of 2022. If the VM is currently using unmanaged disks, then follow these steps to [migrate to managed disks](./windows/migrate-to-managed-disks.md).
 
  ## Create snapshot of the operating system disk
 
@@ -59,14 +59,14 @@ We recommend that you create a snapshot of your operating system disk and any da
  
 ## Create upgrade media disk
 
-To start an in-place upgrade the upgrade media must be attached to the VM as a Managed Disk. To create the upgrade media, modify the variables in the following PowerShell script for Windows Server 2025. The upgrade media disk can be used to upgrade multiple VMs, but it can only be used to upgrade a single VM at a time. To upgrade multiple VMs simultaneously multiple upgrade disks must be created for each simultaneous upgrade.
+To start an in-place upgrade the upgrade media must be attached to the VM as a managed disk. To create the upgrade media, modify the variables in the following PowerShell script for Windows Server 2025. The upgrade media disk can be used to upgrade multiple VMs, but it can only be used to upgrade a single VM at a time. To upgrade multiple VMs simultaneously multiple upgrade disks must be created for each simultaneous upgrade.
 
 | Parameter | Definition |
 |---|---|
-| resourceGroup | Name of the resource group where the upgrade media Managed Disk will be created. The named resource group is created if it doesn't exist. |
-| location | Azure region where the upgrade media Managed Disk is created. This must be the same region as the VM to be upgraded. |
-| zone | Azure zone in the selected region where the upgrade media Managed Disk will be created. This must be the same zone as the VM to be upgraded. For regional VMs (nonzonal) the zone parameter should be "". |
-| diskName | Name of the Managed Disk that will contain the upgrade media |
+| resourceGroup | Name of the resource group where the upgrade media managed disk will be created. The named resource group is created if it doesn't exist. |
+| location | Azure region where the upgrade media managed disk is created. This must be the same region as the VM to be upgraded. |
+| zone | Azure zone in the selected region where the upgrade media managed disk will be created. This must be the same zone as the VM to be upgraded. For regional VMs (nonzonal) the zone parameter should be "". |
+| diskName | Name of the managed disk that will contain the upgrade media |
 | sku | Windows Server upgrade media version. This must be either: `server2025Upgrade` or `server2022Upgrade` or `server2019Upgrade` or  `server2016Upgrade` or `server2012Upgrade`. The upgrade media disk is created using the latest version of the specified SKU. |
 
 If you have more than one subscription, you should run `Set-AzContext -Subscription '<subscription name or id>` to specify which subscription to use.
@@ -125,7 +125,7 @@ if (-not (Get-AzResourceGroup -Name $resourceGroup -ErrorAction SilentlyContinue
 }
 
 #
-# Create Managed Disk from LUN 0
+# Create managed disk from LUN 0
 #
 
 if ($zone){
@@ -231,7 +231,7 @@ Once the upgrade process has completed successfully the following steps should b
 
 - Delete the snapshots of the OS disk and data disk(s) if they were created.
 
-- Delete the upgrade media Managed Disk.
+- Delete the upgrade media managed disk.
 
 - Enable any antivirus, anti-spyware, or firewall software that may have been disabled at the start of the upgrade process.
 
@@ -242,7 +242,7 @@ Once the upgrade process has completed successfully the following steps should b
 ## Recover from failure
 If the in-place upgrade process failed to complete successfully you can return to the previous version of the VM if snapshots of the operating system disk and data disk(s) were created. To revert the VM to the previous state using snapshots complete the following steps: 
 
-1. Create a new Managed Disk from the OS disk snapshot and each data disk snapshot following the steps in [Create a disk from a snapshot](scripts/virtual-machines-powershell-sample-create-managed-disk-from-snapshot.md) making sure to create the disks in the same Availability Zone as the VM if the VM is in a zone.
+1. Create a new managed disk from the OS disk snapshot and each data disk snapshot following the steps in [Create a disk from a snapshot](scripts/virtual-machines-powershell-sample-create-managed-disk-from-snapshot.md) making sure to create the disks in the same Availability Zone as the VM if the VM is in a zone.
 
 1. Stop the VM.
 

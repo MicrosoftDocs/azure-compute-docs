@@ -11,7 +11,7 @@ ms.service: azure-disk-storage
 
 # Best practices for achieving high availability with Azure virtual machines and managed disks
 
-Azure offers several configuration options for ensuring high availability of Azure virtual machines (VMs) and Azure Managed Disks. This article covers the default availability and durability of managed disks and provides recommendations to further increase your application's availability and resiliency.
+Azure offers several configuration options for ensuring high availability of Azure virtual machines (VMs) and Azure managed disks. This article covers the default availability and durability of managed disks and provides recommendations to further increase your application's availability and resiliency.
 
 ## At a glance
 
@@ -109,7 +109,7 @@ Availability sets don't let you select the fault domains for your VMs, can't be 
 
 ### Use ZRS disks when sharing disks between VMs
 
-You should use ZRS when sharing a disk between multiple VMs. If you use LRS, the shared disk becomes a single point of failure for your clustered application. This means that if your shared LRS disk experiences an outage, all the VMs to which this disk is attached will experience downtime. Using a ZRS disk mitigates this, since the disk's data is in three different availability zones. To learn more about shared disks, see [Share an Azure Managed Disk](disks-shared.md).
+You should use ZRS when sharing a disk between multiple VMs. If you use LRS, the shared disk becomes a single point of failure for your clustered application. This means that if your shared LRS disk experiences an outage, all the VMs to which this disk is attached will experience downtime. Using a ZRS disk mitigates this, since the disk's data is in three different availability zones. To learn more about shared disks, see [Share an Azure managed disk](disks-shared.md).
 
 ## Next steps
 

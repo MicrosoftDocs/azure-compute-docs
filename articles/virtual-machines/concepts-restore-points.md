@@ -20,7 +20,7 @@ The following table summarizes the support matrix for VM restore points.
 
 **Scenarios** | **Supported by VM restore points**
 --- | ---
-**VMs using Managed disks** | Yes
+**VMs using managed disks** | Yes
 **VMs using unmanaged disks** | No
 **VM sizes** | **Crash consistency** is supported for VM SKUs that support Premium storage. Crash-consistent restore points created for Intel V6+ (Dsv6-series, Edsv6-series, Esv6-series, etc.) and AMD V7+ (Dasv7-series, Dadsv7-series, Easv7-series, Faldsv7-series, etc.) Virtual Machines (VMs) with **more than one data disk might not be consistent across disks**. **Application consistency** is supported for all VM SKUs.
 **VMs using Ultra Disks** | Yes. Supported for application consistency. Not supported for crash consistency. Exclude these disks and create a VM restore point when using crash consistency.

@@ -56,7 +56,7 @@ Some services or VM features are only available in certain regions, such as spec
 ## Storage availability
 Understanding Azure regions and geographies becomes important when you consider the available storage replication options. Depending on the storage type, you have different replication options.
 
-**Azure Managed Disks**
+**Azure managed disks**
 * Locally redundant storage (LRS)
   * Replicates your data three times within the region in which you created your storage account.
 
@@ -78,7 +78,7 @@ The following table provides a quick overview of the differences between the sto
 | Data can be read from the secondary location and from the primary location. |No |No |No |Yes |
 | Number of copies of data maintained on separate nodes. |3 |3 |6 |6 |
 
-You can read more about [Azure Storage replication options here](/azure/storage/common/storage-redundancy). For more information about managed disks, see [Azure Managed Disks overview](./managed-disks-overview.md).
+You can read more about [Azure Storage replication options here](/azure/storage/common/storage-redundancy). For more information about managed disks, see [Azure managed disks overview](./managed-disks-overview.md).
 
 
 ## Next steps
