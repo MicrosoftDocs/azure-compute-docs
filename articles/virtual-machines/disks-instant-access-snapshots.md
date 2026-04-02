@@ -10,9 +10,9 @@ ms.custom: references_regions, portal
 # Customer intent: As a cloud administrator, I want to create incremental snapshots for managed disks, so that I can efficiently back up and restore disk data while minimizing storage costs and improving performance.
 ---
 
-# Instant access snapshots for Azure Managed Disks 
+# Instant access snapshots for Azure managed disks 
 
-Azure Managed Disk snapshots provide point-in-time backups of disks that can be used as backup during software upgrades, disaster recovery, or to create new environments. When creating snapshots from Azure Managed Disks, Azure automatically copies the data from the disk to the snapshot in the background.
+Azure managed disk snapshots provide point-in-time backups of disks that can be used as backup during software upgrades, disaster recovery, or to create new environments. When creating snapshots from Azure managed disks, Azure automatically copies the data from the disk to the snapshot in the background.
 
 Snapshots of Premium SSD, Standard SSD, and Standard HDDs are by default instant access. Immediately upon creation, these snapshots can be used to restore new disks, download underlying data, and copy to other Azure regions. 
 
@@ -173,7 +173,7 @@ New-AzSnapshot -ResourceGroupName $resourceGroupName -SnapshotName $snapshotName
 
 ## Check snapshot access state
 
-You can monitor Managed Disk Snapshot across different states using the `SnapshotAccessState` property of the snapshot resource. This property indicates the current access state of a snapshot, helping you understand its readiness for operations. Here are the states and what they imply:
+You can monitor managed disk Snapshot across different states using the `SnapshotAccessState` property of the snapshot resource. This property indicates the current access state of a snapshot, helping you understand its readiness for operations. Here are the states and what they imply:
 
 | **State**                  | **Description**                                                                                                                                                                                                                     | **Applies To**                                                                                                                                                                                                 |
 |----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

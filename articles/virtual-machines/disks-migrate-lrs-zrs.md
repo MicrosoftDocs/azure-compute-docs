@@ -167,7 +167,7 @@ Now that you have snapshots of your original disks, you can use them to create Z
 1. Create a ZRS managed disk from the source disk snapshot by using the following Azure CLI snippet: 
 
     ```azurecli
-    # Create a new ZRS Managed Disks using the snapshot Id and the SKU supported   
+    # Create a new ZRS managed disks using the snapshot Id and the SKU supported   
     storageType=Premium_ZRS 
     location=westus2 
 

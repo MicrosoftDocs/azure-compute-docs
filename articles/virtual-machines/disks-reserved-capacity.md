@@ -63,7 +63,7 @@ Follow these steps to purchase reserved capacity:
 
 1. Go to the [Purchase reservations](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/Browse_AddCommand) pane in the Azure portal.
 
-1. Select **Azure Managed Disks** to purchase a reservation.
+1. Select **Azure managed disks** to purchase a reservation.
 
     ![Pane for purchasing reservations](media/disks-reserved-capacity/disks-reserved-purchase-reservation.png) 
 

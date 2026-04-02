@@ -31,7 +31,7 @@ sections:
         answer: |
           Yes. A scale set can define the configuration of an attached data disk that applies to all VMs in the set. For more information, see [Azure scale sets and attached data disks](virtual-machine-scale-sets-attached-disks.md). Other options for storing data include:
 
-          * Azure Managed Disks - Premium v2, Premium, Standard, Ultra
+          * Azure managed disks - Premium v2, Premium, Standard, Ultra
           * Azure Files - Server Message Block (SMB) or Network File System (NFS) shared drives
           * Azure NetApp Files
           * Azure shared disks

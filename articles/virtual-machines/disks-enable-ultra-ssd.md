@@ -1,5 +1,5 @@
 ---
-title: Ultra Disks for VMs - Azure Managed Disks
+title: Ultra Disks for VMs - Azure managed disks
 description: Learn about Ultra Disks for Azure VMs
 author: roygara
 ms.service: azure-disk-storage

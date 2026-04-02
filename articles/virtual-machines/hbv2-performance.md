@@ -26,7 +26,7 @@ Performance testing was conducted across multiple [HBv2-series](hbv2-series.md) 
 | High-Performance Linpack (HPL)                  | 4 TeraFLOPS (Rpeak, FP64), 8 TeraFLOPS (Rmax, FP32)               |
 | RDMA latency & bandwidth                        | 1.2 microseconds, 190 Gb/s                                        |
 | FIO on local NVMe SSD                           | 2.7 GB/s reads, 1.1 GB/s writes; 102k IOPS reads, 115 IOPS writes |
-| IOR on 8 * Azure Premium SSD (P40 Managed Disks, RAID0)**  | 1.3 GB/s reads,  2.5 GB/writes; 101k IOPS reads, 105k IOPS writes |
+| IOR on 8 * Azure Premium SSD (P40 managed disks, RAID0)**  | 1.3 GB/s reads,  2.5 GB/writes; 101k IOPS reads, 105k IOPS writes |
 
 
 ## MPI latency
