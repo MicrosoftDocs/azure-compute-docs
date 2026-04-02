@@ -36,7 +36,7 @@ introduction: |
     > concurrent VM deployments.
 
     For information on how managed images are billed, see
-    [managed disks pricing](https://azure.microsoft.com/pricing/details/managed-disks/).
+    [Managed disk pricing](https://azure.microsoft.com/pricing/details/managed-disks/).
 
 prerequisites:
   dependencies:

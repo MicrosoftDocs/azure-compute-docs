@@ -215,7 +215,7 @@ When using managed disks, the following billing considerations apply:
 - Outbound data transfers
 - Number of transactions
 
-**managed disk size**: managed disks are billed according to their provisioned size. Azure maps the provisioned size (rounded up) to the nearest offered disk size. For details of the disk sizes offered, see the previous tables. Each disk maps to a supported provisioned disk-size offering and is billed accordingly. For example, if you provisioned a 200-GiB Standard SSD, it maps to the disk size offer of E15 (256 GiB). Billing for any provisioned disk is prorated hourly by using the monthly price for the storage offering. For example, you provision an E10 disk and delete it after 20 hours of use. In this case, you're billed for the E10 offering prorated to 20 hours, regardless of the amount of data written to the disk.
+**Managed disk size**: managed disks are billed according to their provisioned size. Azure maps the provisioned size (rounded up) to the nearest offered disk size. For details of the disk sizes offered, see the previous tables. Each disk maps to a supported provisioned disk-size offering and is billed accordingly. For example, if you provisioned a 200-GiB Standard SSD, it maps to the disk size offer of E15 (256 GiB). Billing for any provisioned disk is prorated hourly by using the monthly price for the storage offering. For example, you provision an E10 disk and delete it after 20 hours of use. In this case, you're billed for the E10 offering prorated to 20 hours, regardless of the amount of data written to the disk.
 
 **Snapshots**: Snapshots are billed based on the size used. For example, you create a snapshot of a managed disk with provisioned capacity of 64 GiB and actual used data size of 10 GiB. In this case, the snapshot is billed only for the used data size of 10 GiB.
 
@@ -225,7 +225,7 @@ For more information on snapshots, see [Create a snapshot of a virtual hard disk
 
 **Transactions**: You're billed for the number of transactions performed on a standard managed disk. For Standard SSDs, each I/O operation less than or equal to 256 kB of throughput is considered a single I/O operation. I/O operations larger than 256 kB of throughput are considered multiple I/Os of size 256 kB. Standard HDD transaction charges depend on the region, size of the disk you deploy, and for some disk sizes, the size of each transaction. For details, [see this section](#standard-hdd-transactions).
 
-For detailed information on pricing for managed disks (including transaction costs), see [managed disks Pricing](https://azure.microsoft.com/pricing/details/managed-disks).
+For detailed information on pricing for managed disks (including transaction costs), see [managed disk pricing](https://azure.microsoft.com/pricing/details/managed-disks).
 
 ### Ultra Disks VM reservation fee
 

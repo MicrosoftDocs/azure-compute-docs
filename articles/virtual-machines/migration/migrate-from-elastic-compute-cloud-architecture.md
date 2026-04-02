@@ -270,7 +270,7 @@ Key features of Amazon EC2 storage options include the following items:
 
 #### Azure VM storage options
 
-- **managed disks:** Azure manages persistent block storage:
+- **Managed disks:** Azure manages persistent block storage:
   - **Azure Standard HDD:** Cost effective for infrequent access, nonproduction workloads, and long-term backups.
   - **Azure Standard SSD:** Balanced performance for general workloads.
   - **Azure Premium SSD:** Low latency for production and performance-sensitive apps.

@@ -13,7 +13,7 @@ summary: This article answers some frequently asked questions about Azure manage
 
 
 sections:
-  - name: managed disks
+  - name: Managed disks
     questions:
       - question: |
           If I create a standard managed disk from an existing VHD that's 80 GiB, how much will that cost me?
