@@ -21,7 +21,7 @@ Red Hat Enterprise Linux (RHEL) images are available in Azure via a pay-as-you-g
 
 >[!NOTE]
 > During December 2025, StoreAPI Engineering team identified an enforcement gap related to an existing business rule under which Private plans are not supported for CSP subscriptions. Although this rule had been in place for a long time, the enforcement was not functioning as intended. Once the issue was identified, Engineering team corrected the enforcement.
-> Although this business rule has existed for some time, it may only now be surfacing for some customers due to corrected enforcement.
+> Although this business rule has existed for some time, it might only now be surfacing for some customers due to corrected enforcement.
 > - CSP-led customers cannot purchase BYOS offering via Private Plans, instead they should be using Private **Offers**.
 > - For more information, see [CSP private offers](/partner-center/marketplace-offers/private-offers-for-channel#csp-private-offers).
 > - For more information, see [Private plans in Microsoft Marketplace](/partner-center/marketplace-offers/private-plans).
