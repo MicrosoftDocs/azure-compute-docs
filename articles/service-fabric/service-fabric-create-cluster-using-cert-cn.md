@@ -138,6 +138,7 @@ Next, open the *azuredeploy.json* file in a text editor and make three updates t
             "properties": {
               "type": "ServiceFabricNode",
               "autoUpgradeMinorVersion": true,
+              "enableAutomaticUpgrade": true,
               "protectedSettings": {
                 "StorageAccountKey1": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')),'2015-05-01-preview').key1]",
                 "StorageAccountKey2": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')),'2015-05-01-preview').key2]"
@@ -157,7 +158,7 @@ Next, open the *azuredeploy.json* file in a text editor and make three updates t
                   "x509StoreName": "[parameters('certificateStoreValue')]"
                 }
               },
-              "typeHandlerVersion": "1.0"
+              "typeHandlerVersion": "1.1"
             }
           },
     ```

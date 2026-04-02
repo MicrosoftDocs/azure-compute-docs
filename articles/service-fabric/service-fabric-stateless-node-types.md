@@ -98,7 +98,8 @@ To enable stateless node types, you should configure the underlying virtual mach
     "name": "[concat(parameters('vmNodeType1Name'),'_ServiceFabricNode')]",
     "properties": {
         "type": "ServiceFabricNode",
-        "autoUpgradeMinorVersion": false,
+        "autoUpgradeMinorVersion": true,
+        "enableAutomaticUpgrade": true,
         "publisher": "Microsoft.Azure.ServiceFabric",
         "settings": {
             "clusterEndpoint": "[reference(parameters('clusterName')).clusterEndpoint]",
