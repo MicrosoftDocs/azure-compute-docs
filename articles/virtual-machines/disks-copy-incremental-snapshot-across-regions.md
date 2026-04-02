@@ -177,6 +177,6 @@ Incremental snapshots offer a differential capability. They enable you to get th
 
 ## Next steps
 
-If you'd like to see sample code demonstrating the differential capability of incremental snapshots, using .NET, see [Copy Azure Managed Disks backups to another region with differential capability of incremental snapshots](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots).
+If you'd like to see sample code demonstrating the differential capability of incremental snapshots, using .NET, see [Copy Azure managed disks backups to another region with differential capability of incremental snapshots](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots).
 
 If you have additional questions on snapshots, see the [snapshots](faq-for-disks.yml#snapshots) section of the FAQ.

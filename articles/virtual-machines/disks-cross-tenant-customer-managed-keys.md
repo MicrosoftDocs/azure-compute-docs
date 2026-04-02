@@ -20,7 +20,7 @@ If you have questions about cross-tenant customer-managed keys with managed disk
 
 ## Limitations
 
-- Managed Disks and the customer's Key Vault must be in the same Azure region, but they can be in different subscriptions.
+- Managed disks and the customer's Key Vault must be in the same Azure region, but they can be in different subscriptions.
 
 ### Preview - Ultra Disk and Premium SSD v2
 

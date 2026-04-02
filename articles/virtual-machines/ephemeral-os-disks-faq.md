@@ -40,7 +40,7 @@ A: NVMe Disk Placement utilizes the minimum number of disks required for the OS 
 
 A: Yes. There's no option of Stop-Deallocate for Ephemeral VMs, rather users need to Delete instead of deallocating them.
 
-**Q: Can I attach a Managed Disks to an Ephemeral VM?**
+**Q: Can I attach a managed disks to an Ephemeral VM?**
 
 A: Yes, you can attach a managed data disk to a VM that uses an ephemeral OS disk. 
 
