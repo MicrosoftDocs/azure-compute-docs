@@ -72,8 +72,8 @@ If your script is on a local server, you might still need to open other firewall
 - Ensure you don't have any custom setting in the registry key `HKLM\SOFTWARE\Microsoft\Command Processor\AutoRun` (*detailed [here](/windows-server/administration/windows-commands/cmd)*). This would trigger during the Custom Script Extension install or enable phases and cause an error like `'XYZ is not recognized as an internal or external command, operable program or batch file'`.
 - The Custom Script Extension runs under the `LocalSystem` account.
 - If you plan to use the `storageAccountName` and `storageAccountKey` properties, these properties must be collocated in `protectedSettings`.
-- You can have only one version of an extension applied to the VM. To run a second custom script, you can update the existing extension with a new configuration. Alternatively, you can remove the custom script extension and reapply it with the updated script
-- Custom Script Extrensions interpret Unicode "smart quotes" (U+201C and U+201D) as corrupted characters, causing parsing errors even when the file appears correct in your editor. Always use standard ASCII double quotes (") in your scripts. Avoid special Unicode characters like ✓ and ⚠ in output messages.
+- You can have only one version of an extension applied to the VM. To run a second custom script, you can update the existing extension with a new configuration. Alternatively, you can remove the custom script extension and reapply it with the updated script.
+- Custom Script Extensions interpret Unicode "smart quotes" (U+201C and U+201D) as corrupted characters, causing parsing errors even when the file appears correct in your editor. Always use standard ASCII double quotes (") in your scripts. Avoid special Unicode characters like ✓ and ⚠ in output messages.
 
 ## Extension schema
 
