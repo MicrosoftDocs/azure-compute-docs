@@ -200,7 +200,7 @@ Multiple products are available that cover these three areas, and you are free t
 * Learn to [manage and orchestrate cluster resources](service-fabric-cluster-resource-manager-introduction.md).
 * Look through the [Service Fabric samples](/samples/browse/?products=azure).
 * Learn about [Service Fabric support options](service-fabric-support.md).
-* Read the [team blog](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) for articles and announcements.
+* Read the [team blog](https://azure.microsoft.com/blog/product/azure-service-fabric/) for articles and announcements.
 
 
 [cluster-application-instances]: media/service-fabric-content-roadmap/cluster-application-instances.png

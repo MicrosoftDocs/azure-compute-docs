@@ -28,7 +28,7 @@ Become familiar with the [general architecture](/azure/architecture/reference-ar
 Use an API gateway service that communicates to back-end services that can then be scaled out. The most common API gateway services used are:
 
 - [Azure API Management](./service-fabric-api-management-overview.md), which is [integrated with Service Fabric](./service-fabric-tutorial-deploy-api-management.md).
-- [Træfik reverse proxy](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric), using the [Azure Service Fabric provider](https://docs.traefik.io/v1.6/configuration/backends/servicefabric/).
+- [Træfik reverse proxy](https://azure.microsoft.com/blog/product/azure-service-fabric/), using the [Azure Service Fabric provider](https://docs.traefik.io/v1.6/configuration/backends/servicefabric/).
 - [Azure Application Gateway](/azure/application-gateway/).
 
    > [!NOTE] 
