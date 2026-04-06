@@ -23,11 +23,11 @@ This article provides an overview of the availability features of Azure virtual 
 > - Allow VM instances to be centrally managed, configured, and updated.
 > - Automatically increase or decrease the number of VM instances in response to demand or a defined schedule.
 >
-> Availability sets provide high availability but do not offer the same level of resiliency as availability zones.
+> Availability sets provide high availability but don't offer the same level of resiliency as availability zones.
 
 ## What is an availability set?
 
-Availability sets are logical groupings of VMs that reduce the chance of correlated failures bringing down related VMs at the same time. Availability sets distribute VMs across multiple fault domains, improving reliability. This configuration is especially useful in regions that do not support availability zones.
+Availability sets are logical groupings of VMs that reduce the chance of correlated failures bringing down related VMs at the same time. Availability sets distribute VMs across multiple fault domains, improving reliability. This configuration is especially useful in regions that don't support availability zones.
 
 When you use availability sets, create two or more VMs within an availability set. Using two or more VMs in an availability set helps keep applications highly available and meets the 99.95% Azure service-level agreement (SLA). There's no extra cost for using availability sets. You only pay for each VM instance that you create.
 
@@ -37,7 +37,7 @@ For more reliability than availability sets offer, use [availability zones](avai
 
 ## How do availability sets work?
 
-The underlying Azure platform assigns an *update domain* and a *fault domain* to each virtual machine in your availability set. Each availability set can have up to 3 fault domains and 20 update domains. These settings cannot be changed after the availability set is created.
+The underlying Azure platform assigns an *update domain* and a *fault domain* to each virtual machine in your availability set. Each availability set can have up to 3 fault domains and 20 update domains. These settings can't be changed after the availability set is created.
 
 ### Update domains
 
