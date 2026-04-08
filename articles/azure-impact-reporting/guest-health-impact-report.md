@@ -59,7 +59,6 @@ Descriptions of URI parameters are as follows:
       "additionalProperties": {
             "LogUrl": "https://someurl.blob.core.windows.net/rma",
             "PhysicalHostName": "GGBB90904476",
-            "VmUniqueId": "1111111-22dr-3345-22rf-34454g89j", //GUID
             "Manufacturer": "Nvidia",
             "SerialNumber": "12345679",
             "ModelNumber": "NV3LB225",
@@ -81,7 +80,6 @@ Descriptions of URI parameters are as follows:
       "impactedResourceId": "/subscriptions/111111-f1122-2233-11bc-bb00123/resourceGroups/<rg_name>/providers/Microsoft.Compute/virtualMachines/<vm_name>",
       "additionalProperties": {
             "LogUrl": "https://someurl.blob.core.windows.net/rma",
-            "VmUniqueId": "1111111-22dr-3345-22rf-34454g89j", //GUID
             "CollectTelemtery": "0"
       }
    }
@@ -100,8 +98,7 @@ Descriptions of URI parameters are as follows:
       "impactedResourceId": "/subscriptions/111111-f1122-2233-11bc-bb00123/resourceGroups/<rg_name>/providers/Microsoft.Compute/virtualMachines/<vm_name>",
       "additionalProperties": {
             "LogUrl": "https://someurl.blob.core.windows.net/rma",
-            "PhysicalHostName": "GGBB90904476",
-            "VmUniqueId": "1111111-22dr-3345-22rf-34454g89j"
+            "PhysicalHostName": "GGBB90904476"
       }
    }
 }
@@ -117,7 +114,6 @@ Descriptions of URI parameters are as follows:
 | `impactDescription`     | Yes            | `string`        | Description of the reported impact.                                            |
 | `impactedResourceId`    | Yes            | `string`        | Fully qualified URI for the Azure resource.                             |
 | `physicalHostName`      | Yes            | `string`        | Node identifier, available in metadata.                                        |
-| `VmUniqueId`            | Yes            | `string`        | Unique ID of the VM. Queryable inside the VM.                                |
 | `logUrl`                | No           | `string`        | URL to saved logs.                                                             |
 | `manufacturer`          | No           | `string`        | GPU manufacturer.                                                              |
 | `serialNumber`          | No           | `string`        | GPU serial number.                                                             |
@@ -143,11 +139,8 @@ To aid Guest Health Reporting in taking the correct action, you can provide more
 `Resource.Hpc.*` fields:
 
 * `LogUrl` (string): URL to the relevant log file.
-* `PhysicalHostName` (string): Physical host name of the node (alphanumeric).
-* `VmUniqueId` (string):  Unique ID of the VM (GUID).
+* `PhysicalHostName` (string): Physical host name of the node (REQUIRED, alphanumeric).
 
-> [!IMPORTANT]
-> All HPC impact requests must include either `PhysicalHostName` (preferred) or `VmUniqueId`. The VM in question can be from any subscription. It isn't limited to the VMs in the subscription that you're reporting from.
 
 `Resource.Hpc.Unhealthy.*` fields specific to GPUs:
 
