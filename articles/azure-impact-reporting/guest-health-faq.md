@@ -16,45 +16,13 @@ Here are answers to common questions about Guest Health Reporting.
 > [!IMPORTANT]
 > Guest Health Reporting is currently in preview. For legal terms that apply to Azure features that are in beta, in preview, or otherwise not yet released into general availability, see the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## What happens if I don't deallocate a node after sending the request to Guest Health Reporting?
+## What happens after sending the request to Guest Health Reporting?
 
-For regular Guest Health Reporting requests to mark a node as unallocatable (UA) or out for repair (OFR), if you don't deallocate virtual machines (VMs) within 30 days after the node becomes UA, the node automatically enters a **HumanInvestigate** status.
-
-For a reset request, there's no timeout because the request doesn't require you to deallocate VMs.
-
-For a restart request, if you don't deallocate VMs within 30 days after the node becomes UA, the node is set to **Available**. This status means that your request to restart the node is ignored.
-
-## How do I upload logs?
-
-1. Get an access token to your storage account or container via
-`/subscriptions/[subscriptionId]/providers/Microsft.Impact/getUploadtoken?api-version=2025-01-01preview`.
-
-2. Upload logs by using the upload URL or the shared access signature (SAS) token:
-
-    ```bash
-    az storage blob upload –file "path/to/local/file.zip" –blob-url
-    https://[storageAccount].blob.core.windows.net/[container]/[datetime]_[randomHash].zip?[SasToken]
-    ```
-
-3. Trim off the SAS token and send the report with `LogUrl` filled in:
-
-    ```json
-    {
-        "properties": {
-            "startDateTime": "2025-09-15T01:06:21.3886467Z",
-            "impactCategory": "Resource.Hpc.Unhealthy.IBPerformance",
-            "impactDescription": "IB low bandwidth",
-            "impactedResourceId": "/subscriptions/111111-f1122-2233-11bc-bb00123/resourceGroups/<rg_name>/providers/Microsoft.Compute/virtualMachines/<vm_name>",
-            "additionalProperties": {
-                    "LogUrl": "https://someurl.blob.core.windows.net/rma",
-                    "PhysicalHostName": "GGBB90904476"
-            }
-        }
-    }
-
-    ```
+Reports with unhealthy impact categories are evaluated to determine the best way to recover. In some cases recovery can be done while the VM is running, in other cases Interruption is needed. Progress updates are provided as Insights, which belong to the original Impact, see [list impacts for a workload impact](guest-health-impact-report.md#query-workload-impact-insights). The terminal insight advises whether VM deallocation is required. Similarly the VM availability through [Project Flash](/azure/virtual-machines/flash-overview) changes. Once these signals appear, typically within minutes, the platform has a repair planned and is waiting for the virtual machine (VM) to be deallocated. If after 30 days the VM isn't deallocated the platform tries to move the VM to an alternate node. If an alternate node isn't available, the platform continues waiting for a VM deallocate/delete call.
 
 ## Related content
 
 * [What is Guest Health Reporting?](guest-health-overview.md)
 * [Report node health by using Guest Health Reporting](guest-health-impact-report.md)
+* [How to provide a diagnostic log file with Guest Health Reporting](guest-health-log-upload.md)
+:q

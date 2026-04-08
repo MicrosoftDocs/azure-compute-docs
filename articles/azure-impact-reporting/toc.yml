@@ -38,6 +38,8 @@
     href: guest-health-impact-categories.md
   - name: FAQ for Guest Health Reporting
     href: guest-health-faq.md
+  - name: Log Upload for Guest Health Reporting
+    href: guest-health-log-upload.md
 - name: FAQ for Azure Impact Reporting
   href: faq.md
   
