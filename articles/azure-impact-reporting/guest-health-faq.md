@@ -47,8 +47,7 @@ For a restart request, if you don't deallocate VMs within 30 days after the node
             "impactedResourceId": "/subscriptions/111111-f1122-2233-11bc-bb00123/resourceGroups/<rg_name>/providers/Microsoft.Compute/virtualMachines/<vm_name>",
             "additionalProperties": {
                     "LogUrl": "https://someurl.blob.core.windows.net/rma",
-                    "PhysicalHostName": "GGBB90904476",
-                    "VmUniqueId": "1111111-22dr-3345-22rf-34454g89j"
+                    "PhysicalHostName": "GGBB90904476"
             }
         }
     }
