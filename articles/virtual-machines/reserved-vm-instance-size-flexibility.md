@@ -45,6 +45,7 @@ You also use API or PowerShell to fetch the ratios. The CSV link and schema are 
 
 CSV below has the instance size flexibility groups, ArmSkuName and the ratios. 
 
+
 [Instance size flexibility ratios](https://aka.ms/isf)
 
 > [!CAUTION]
