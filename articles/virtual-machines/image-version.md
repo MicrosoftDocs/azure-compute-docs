@@ -319,37 +319,37 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 ---
 
-## Create an image in one tenant using the source image in another tenant
+## Create an image version in one tenant using the source image version in another tenant
 
-In the subscription where the source image exists, grant reader permissions to the user. Once the user has reader permission to the source image, login to both accounts (source and target).
+In the subscription where the source image version exists, grant reader permissions to the user. Once the user has reader permission to the source image version, login to both accounts (source and target).
 
-You will need the `tenantID` of the source image, the `subscriptionID` for the subscription where the new image will be stored (target), and the `resourceID` of the source image. Additionally, you need to ensure that the source image's region or replica and target region are the same.
+You will need the tenantID of the source image version, the subscriptionID for the subscription where the new image version will be stored (target), and the resourceID of the source image version. Additionally, you need to ensure that the source image version's region or replica and target region are the same.
 
 ### [CLI](#tab/cli2)
 
 ```azurecli-interactive
 # Set some variables
-tenantID="<tenant ID for the source image>"
-subID="<subscription ID where the image will be creted>"
-sourceImageID="<resource ID of the source image>"
+tenantID="<tenant ID for the source image version>"
+subID="<subscription ID where the image version will be created>"
+sourceImageVersionID="<resource ID of the source image version>"
 
-# Login to the subscription where the new image will be created
+# Login to the subscription where the new image version will be created
 az login
 
-# Log in to the tenant where the source image is available
+# Log in to the tenant where the source image version is available
 az login --tenant $tenantID
 
-# Log back in to the subscription where the image will be created and ensure subscription context is set
+# Log back in to the subscription where the image version will be created and ensure subscription context is set
 az login
 az account set --subscription $subID
 
-# Create the image
+# Create the image version from the source image version
 az sig image-version create `
    --gallery-image-definition myImageDef `
    --gallery-image-version 1.0.0 `
    --gallery-name myGallery `
    --resource-group myResourceGroup `
-   --image-version $sourceImageID
+   --image-version $sourceImageVersionID `
    --location myLocation
 ```
 
@@ -357,25 +357,20 @@ az sig image-version create `
 ### [PowerShell](#tab/powershell2)
 
 ```azurepowershell-interactive
-# Set variables 
+# Set variables
 $targetSubID = "<subscription ID for the target>"
-$sourceTenantID = "<tenant ID where for the source image>"
-$sourceImageID = "<resource ID of the source image>"
+$sourceTenantID = "<tenant ID for the source image version>"
+$sourceImageVersionID = "<resource ID of the source image version>"
 
-# Login to the tenant where the source image is published
-Connect-AzAccount -Tenant $sourceTenantID -UseDeviceAuthentication 
+# Login to the tenant where the source image version is published
+Connect-AzAccount -Tenant $sourceTenantID -UseDeviceAuthentication
 
-# Login to the subscription where the new image will be created and set the context
+# Login to the subscription where the new image version will be created and set the context
 Connect-AzAccount -UseDeviceAuthentication -Subscription $targetSubID
-Set-AzContext -Subscription $targetSubID 
+Set-AzContext -Subscription $targetSubID
 
-# Create the image version from another image version in a different tenant
-New-AzGalleryImageVersion `
-   -ResourceGroupName myResourceGroup -GalleryName myGallery `
-   -GalleryImageDefinitionName myImageDef `
-   -Location "West US 2" `
-   -Name 1.0.0 `
-   -SourceImageId $sourceImageID
+# Create the image version from the source image version in a different tenant
+New-AzGalleryImageVersion -ResourceGroupName myResourceGroup -GalleryName myGallery -GalleryImageDefinitionName myImageDef -Location "West US 2" -Name 1.0.0 -SourceImageId $sourceImageVersionID
 ```
 
 ---
