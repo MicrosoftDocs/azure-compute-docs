@@ -1508,14 +1508,12 @@
     - name: Migrate to Availability Zones
       displayName: availability and scale, availability, scale, autoscale, availability zones, AV zones
       href: /azure/availability-zones/migrate-vm?toc=/azure/virtual-machines/toc.json&bc=/azure/virtual-machines/breadcrumb/toc.json
-    - name: Regional to zonal move guides
-      items:
-      - name: Portal, PowerShell, and CLI
-        displayName: availability and scale, availability, scale, single instance virtual machines, availability zones, AV zones
-        href: ./move-virtual-machines-regional-zonal-portal.md
-      - name: FAQ
-        displayName: availability and scale, availability, scale, single instance virtual machines, availability zones, AV zones
-        href: ./move-virtual-machines-regional-zonal-faq.md
+    - name: Regional to zonal move guide
+      displayName: availability and scale, availability, scale, single instance virtual machines, availability zones, AV zones
+      href: ./move-virtual-machines-regional-zonal-portal.md
+    - name: FAQ
+      displayName: availability and scale, availability, scale, single instance virtual machines, availability zones, AV zones
+      href: ./move-virtual-machines-regional-zonal-faq.md
   - name: Virtual Machine Scale Sets
     items:
     - name: Overview
