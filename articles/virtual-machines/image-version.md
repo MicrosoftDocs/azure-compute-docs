@@ -141,7 +141,7 @@ az sig image-definition create \
 > For image definitions that will contain images descended from third-party marketplace images, the plan information must match exactly the plan information from the third-party image. Include the plan information in the image definition by adding `--plan-name`, `--plan-product`, and `--plan-publisher` when you create the image definition.
 >
 
-**Create the image version**
+#### Create the image version
 
 Create an image version using [az sig image version create](/cli/azure/sig/image-version#az-sig-image-version-create).  
 
@@ -209,7 +209,7 @@ $imageDefinition = New-AzGalleryImageDefinition `
 > For image definitions that will contain images descended from third-party images, the plan information must match exactly the plan information from the third-party image. Include the plan information in the image definition by adding `-PurchasePlanName`, `-PurchasePlanProduct`, and `-PurchasePlanPublisher` when you create the image definition.
 >
 
-**Create an image version**
+#### Create an image version
 
 Create an image version using [New-AzGalleryImageVersion](/powershell/module/az.compute/new-azgalleryimageversion). 
 
