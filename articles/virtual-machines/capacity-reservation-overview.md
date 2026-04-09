@@ -5,7 +5,7 @@ author: bdeforeest
 ms.author: bidefore
 ms.service: azure-virtual-machines
 ms.topic: overview
-ms.date: 12/22/2025
+ms.date: 02/17/2026
 ms.update-cycle: 1095-days
 ms.reviewer: cynthn, mattmcinnes
 ms.custom: template-how-to
@@ -27,6 +27,10 @@ Capacity reservation has some basic properties that are always defined at the ti
 - **Quantity**: Each reservation has a quantity of instances to be reserved.
 
 To create a capacity reservation, the parameters are passed to Azure as a capacity request. If Azure doesn't have capacity available that meets the request, the reservation deployment fails. Your deployment fails if you don't have an adequate subscription quota. Request a higher quota or try a different VM size, location, or zone combination. 
+
+Quota and capacity are separate checks. Quota is your subscription's permission to deploy resources, while capacity is the underlying infrastructure available in a specific region or zone.
+
+Capacity reservations and [Reserved Instances](/azure/virtual-machines/prepay-reserved-vm-instances) are also different. Capacity reservation secures capacity availability for deployment. Reserved Instances provide a billing discount only and don't guarantee capacity.
 
 After Azure accepts your reservation request, it's available for VMs with matching configurations. To consume capacity reservation, the VM has to specify the reservation in its properties. Otherwise, the capacity reservation isn't used. One benefit of this design is that you can target only critical workloads to reservations and other noncritical workloads can run without reserved capacity. 
 
@@ -57,10 +61,10 @@ From this example accumulation of Minutes Not Available, here's the calculation 
 
 - Creating capacity reservations requires a quota in the same manner as when you create VMs.
 - Creating capacity reservations is currently limited to certain VM series and sizes. The compute [Resource SKUs list](/rest/api/compute/resource-skus/list) advertises the set of supported VM sizes.
-- The following VM series support the creation of capacity reservations:
+- Reserved capacity for these VM series supports high availability using multi-zone or fault domains. The fault domain count for a Virtual Machine Scale Set is limited to 3, enforced at deployment.
 
-  Reserved capacity for these VM series supports high availability using multi-zone or fault domains. The fault domain count for a Virtual Machine Scale Set is limited to 3, enforced at deployment.  
-
+  The following VM series support the creation of capacity reservations:
+  
   | Type | VM Series |
   | ----- | ----------- |
   | General Purpose (Burstable) | B (Intel) <br> Bsv2 (Intel), Basv2 (AMD), Bpsv2 (ARM) |
@@ -115,8 +119,7 @@ If you then deploy a D2s_v3 VM and specify the reservation property, the capacit
 
 Both used and unused capacity reservations are eligible for Savings Plan and Reserved Instances term commitment discounts. In the previous example, if you have reserved instances for two D2s_v3 VMs in the same Azure region, the billing for two resources (either VM or unused capacity reservation) is zeroed out. The remaining eight D2s_v3 are billed normally. The term commitment discounts could be applied on either the VM or the unused capacity reservation.
 
-## Difference between on-demand capacity reservation and reserved instances
-
+## Differences between on-demand capacity reservations and reserved instances
 
 | Differences | On-demand capacity reservation | Reserved instances|
 |---|---|---|
@@ -135,7 +138,7 @@ The group specifies the Azure location:
 
 - The group sets the region in which all reservations are created. Examples are East US, North Europe, or Southeast Asia. 
 - The group sets the eligible zones. Examples are AZ1, AZ2, and AZ3 in any combination. 
-- If no zones are specified, then Azure will select the best zone available upon initial capacity reservation creation. All VMs using the capacity reservation group must be deployed without specifying a zone; each associated VM wil be deployed to the zone Azure selected for the group.
+- If no zones are specified, then Azure will select the best zone available upon initial capacity reservation creation. All VMs using the capacity reservation group must be deployed without specifying a zone; each associated VM will be deployed to the zone Azure selected for the group.
 
 Each reservation in a group is for one VM size. If eligible zones were selected for the group, the reservation must be for one of the supported zones. 
 
@@ -156,7 +159,7 @@ When a reservation is created, Azure sets aside the requested number of capacity
 Track the state of the overall reservation through the following properties: 
  
 - `capacity`: Total quantity of instances reserved by the customer. 
-- `virtualMachinesAllocated`: List of VMs allocated against the capacity reservation and count toward consuming the capacity. These VMs are either **Running** or **Stopped** (**Allocated**), or they're in a transitional state such as **Starting** or **Stopping**. This list doesn't include the VMs that are in a deallocated state, which are referred to as **Stopped** (deallocated). 
+- `virtualMachinesAllocated`: List of VMs allocated against the capacity reservation and count toward consuming the capacity. These VMs are either **Running** or **Stopped** (**Allocated**), or they're in a transitional state such as **Starting** or **Stopping**. This list doesn't include the VMs that are in a deallocated state, which is referred to as **Stopped** (deallocated). 
 - `virtualMachinesAssociated`: List of VMs associated to the capacity reservation. This list has all the VMs that were configured to use the reservation, including the ones that are in a deallocated state.
 
 The previous example starts with `capacity` as 2 and the length of `virtualMachinesAllocated` and `virtualMachinesAssociated` as 0.

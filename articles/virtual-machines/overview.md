@@ -89,6 +89,7 @@ The number of virtual machines that your application uses can scale up and out t
 
 ## Virtual machine total core limits
 Your subscription has default [quota limits](/azure/azure-resource-manager/management/azure-subscription-service-limits) in place that could impact the deployment of many virtual machines for your project. The current limit on a per subscription basis is 20 virtual machine total cores per region. Limits can be raised by [filing a support ticket requesting an increase](/azure/azure-portal/supportability/regional-quota-requests)
+Quota and capacity are checked separately during deployment. Even with approved quota, deployment can still fail if there isn't enough capacity in the target region or availability zone.
 
 ## Managed disks
 
