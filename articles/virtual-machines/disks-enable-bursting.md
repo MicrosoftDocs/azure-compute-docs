@@ -14,7 +14,7 @@ ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell, 
 
 Premium solid-state drives (SSD) have two available bursting models; credit-based bursting and on-demand bursting. This article covers how to switch to on-demand bursting. Disks that use the on-demand model can burst beyond their original provisioned targets. On-demand bursting occurs as often as needed by the workload, up to the maximum burst target. On-demand bursting incurs additional charges.
 
-For details on disk bursting, see [Managed disk bursting](disk-bursting.md). 
+For details on disk bursting, see [managed disk bursting](disk-bursting.md). 
 
 For the max burst targets on each supported disk, see [Scalability and performance targets for VM disks](disks-scalability-targets.md#premium-ssd-managed-disks-per-disk-limits).
 

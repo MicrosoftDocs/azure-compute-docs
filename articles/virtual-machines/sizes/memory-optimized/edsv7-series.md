@@ -40,7 +40,7 @@ vCPUs (Qty.) and Memory for each size
 | Standard_E96ds_v7 | 96 | 768 |
 | Standard_E128ds_v7 | 128 | 1,024 |
 | Standard_E192ds_v7 | 192 | 1,536 |
-| Standard_E248ds_v7 | 248 | 1,984 |
+| Standard_E248ds_v7 | 248 | 1,888 |
 | Standard_E372ids_v7 | 372 | 2,832 |
 
 #### VM Basics resources
@@ -99,9 +99,9 @@ Remote (uncached) storage info for each size
 | Standard_E372ids_v7 | 64 | 500,000 | 16,000 | 500,000 | 16,000 | 800,000 | 20,000 | 800,000 | 20,000 |
 
 #### Storage resources
-- [Introduction to Azure Managed Disks](../../../virtual-machines/managed-disks-overview.md)
-- [Azure Managed Disk types](../../../virtual-machines/disks-types.md)
-- [Share an Azure Managed Disk](../../../virtual-machines/disks-shared.md)
+- [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
+- [Azure managed disk types](../../../virtual-machines/disks-types.md)
+- [Share an Azure managed disk](../../../virtual-machines/disks-shared.md)
 
 #### Table definitions
 - <sup>1</sup>Some sizes support bursting to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.

@@ -269,7 +269,7 @@ Due to the current COVID-19 crisis, and taking into consideration the challenges
 
 You're able to update to 7.1 via through the [Azure portal](./service-fabric-cluster-upgrade-version-azure.md#manual-upgrades-with-azure-portal) or via an [Azure Resource Manager deployment](./service-fabric-cluster-upgrade-version-azure.md#resource-manager-template).
 
-Service Fabric clusters with automatic upgrades enabled will begin to receive the 7.1 update automatically once we resume the standard rollout procedure. We provide another announcement before the standard rollout begins on the [Service Fabric Tech Community Site](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric).
+Service Fabric clusters with automatic upgrades enabled will begin to receive the 7.1 update automatically once we resume the standard rollout procedure. We provide another announcement before the standard rollout begins on the [Service Fabric Tech Community Site](https://azure.microsoft.com/blog/product/azure-service-fabric/).
 We also have published updates to end of support date for major releases starting from 6.5 up to 7.1 [here](./service-fabric-versions.md). 
 
 #### Key announcements
@@ -398,8 +398,8 @@ For more information, see the [Service Fabric 6.5 Release Notes](https://github.
 
 | Release date | Release | More info |
 |---|---|---|
-| June 11, 2019 | [Azure Service Fabric 6.5](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)  | [Release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65.pdf)|
-| July 2, 2019 | [Azure Service Fabric 6.5 Refresh Release](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)  | [Release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU1.pdf)  |
+| June 11, 2019 | [Azure Service Fabric 6.5](https://azure.microsoft.com/blog/product/azure-service-fabric/)  | [Release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65.pdf)|
+| July 2, 2019 | [Azure Service Fabric 6.5 Refresh Release](https://azure.microsoft.com/blog/product/azure-service-fabric/)  | [Release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU1.pdf)  |
 | July 29, 2019 | [Azure Service Fabric 6.5 Refresh Release](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Azure-Service-Fabric-6-5-Second-Refresh-Release/ba-p/800523)  | [Release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU2.pdf)  |
 | Aug 23, 2019 | [Azure Service Fabric 6.5 Refresh Release](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Azure-Service-Fabric-6-5-Third-Refresh-Release/ba-p/818599)  | [Release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU3.pdf)  |
 | Oct 14, 2019 | [Azure Service Fabric 6.5 Refresh Release](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Azure-Service-Fabric-6-5-Fifth-Refresh-Release/ba-p/913296)  | [Release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU5.md) |
@@ -409,9 +409,9 @@ For more information, see the [Service Fabric 6.5 Release Notes](https://github.
 | Release date | Release |
 |---|---|
 | November 30, 2018 | [Azure Service Fabric 6.4](https://blogs.msdn.microsoft.com/azureservicefabric/2018/11/30/azure-service-fabric-6-4-release/) |
-| December 12, 2018 | [Azure Service Fabric 6.4 Refresh Release for Windows clusters](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) |
-| February 4, 2019 | [Azure Service Fabric 6.4 Refresh Release](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) |
-| March 4, 2019 | [Azure Service Fabric 6.4 Refresh Release](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) |
-| April 8, 2019 | [Azure Service Fabric 6.4 Refresh Release](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) |
-| May 2, 2019 | [Azure Service Fabric 6.4 Refresh Release](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) |
-| May 28, 2019 | [Azure Service Fabric 6.4 Refresh Release](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) |
+| December 12, 2018 | [Azure Service Fabric 6.4 Refresh Release for Windows clusters](https://azure.microsoft.com/blog/product/azure-service-fabric/) |
+| February 4, 2019 | [Azure Service Fabric 6.4 Refresh Release](https://azure.microsoft.com/blog/product/azure-service-fabric/) |
+| March 4, 2019 | [Azure Service Fabric 6.4 Refresh Release](https://azure.microsoft.com/blog/product/azure-service-fabric/) |
+| April 8, 2019 | [Azure Service Fabric 6.4 Refresh Release](https://azure.microsoft.com/blog/product/azure-service-fabric/) |
+| May 2, 2019 | [Azure Service Fabric 6.4 Refresh Release](https://azure.microsoft.com/blog/product/azure-service-fabric/) |
+| May 28, 2019 | [Azure Service Fabric 6.4 Refresh Release](https://azure.microsoft.com/blog/product/azure-service-fabric/) |

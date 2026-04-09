@@ -231,6 +231,7 @@ Here's a JSON excerpt from a template that corresponds to such a state. The exce
                 "properties": {
                   "type": "ServiceFabricNode",
                   "autoUpgradeMinorVersion": true,
+                  "enableAutomaticUpgrade": true,
                   "publisher": "Microsoft.Azure.ServiceFabric",
                   "settings": {
                     "clusterEndpoint": "[reference(parameters('clusterName')).clusterEndpoint]",
@@ -429,6 +430,8 @@ In the next step, you'll do the following:
         "name": "[concat('ServiceFabricNodeVmExt','_vmNodeTypeName')]",
         "properties": {
           "type": "ServiceFabricNode",
+          "autoUpgradeMinorVersion": true,
+          "enableAutomaticUpgrade": true,
           "provisionAfterExtensions" : [ "KVVMExtension" ],
           "publisher": "Microsoft.Azure.ServiceFabric",
           "settings": {
@@ -439,7 +442,7 @@ In the next step, you'll do the following:
                 "x509StoreName": "[parameters('certificateStoreValue')]"
             }
             },
-            "typeHandlerVersion": "1.0"
+            "typeHandlerVersion": "1.1"
           }
         },
   ] } ## extension profile

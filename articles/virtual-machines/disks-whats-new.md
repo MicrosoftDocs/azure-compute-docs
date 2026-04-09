@@ -63,7 +63,7 @@ Premium SSD v2 disks are now available in Austria East and in a second Availabil
 
 #### Public preview: Instant Access Snapshot for Premium SSD v2 and Ultra Disks
 
-By using Instant Access Snapshots for Premium SSD v2 and Ultra Disks, you can restore new disks right after creating snapshots of Premium SSD v2 and Ultra Disks. Restore disks deliver high performance instantly, while data hydration continues rapidly in the background. For more information, see [instant access for Azure Managed Disk](/azure/virtual-machines/disks-instant-access-snapshots?tabs=azure-cli%2Cazure-cli-snapshot-state#snapshots-of-ultra-disks-and-premium-ssd-v2).
+By using Instant Access Snapshots for Premium SSD v2 and Ultra Disks, you can restore new disks right after creating snapshots of Premium SSD v2 and Ultra Disks. Restore disks deliver high performance instantly, while data hydration continues rapidly in the background. For more information, see [instant access for Azure managed disk](/azure/virtual-machines/disks-instant-access-snapshots?tabs=azure-cli%2Cazure-cli-snapshot-state#snapshots-of-ultra-disks-and-premium-ssd-v2).
 
 #### Generally available: Azure Site Recovery for Virtual Machines with Premium SSD v2 and Ultra Disks
 
@@ -220,10 +220,10 @@ In quarter 1, support was added for creating disks from snapshots or other disks
 
 #### GA: Entra ID support for managed disks
 
-In quarter 1, support was added for using Entra ID to secure uploads and downloads of managed disks. For details, see [Secure downloads and uploads of Azure Managed Disks](disks-secure-upload-download.md).
+In quarter 1, support was added for using Entra ID to secure uploads and downloads of managed disks. For details, see [Secure downloads and uploads of Azure managed disks](disks-secure-upload-download.md).
 
 ## Next steps
 
-- [Azure Managed Disk types](disks-types.md)
-- [Introduction to Azure Managed Disks](managed-disks-overview.md)
+- [Azure managed disk types](disks-types.md)
+- [Introduction to Azure managed disks](managed-disks-overview.md)
 

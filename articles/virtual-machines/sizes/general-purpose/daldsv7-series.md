@@ -60,9 +60,9 @@ Local (temp) storage info for each size
 | Standard_D160alds_v7 | 4 | 2,200 | 3,000,000 | 22,400 | 12,000,000 | 11,200 |
 
 #### Storage resources
-- [Introduction to Azure Managed Disks](../../../virtual-machines/managed-disks-overview.md)
-- [Azure Managed Disk types](../../../virtual-machines/disks-types.md)
-- [Share an Azure Managed Disk](../../../virtual-machines/disks-shared.md)
+- [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
+- [Azure managed disk types](../../../virtual-machines/disks-types.md)
+- [Share an Azure managed disk](../../../virtual-machines/disks-shared.md)
 
 #### Table definitions
 - <sup>1</sup> Temp disk speed often differs between RR (Random Read) and RW (Random Write) operations. RR operations are typically faster than RW operations. The RW speed is usually slower than the RR speed on series where only the RR speed value is listed. Temp disk performance can vary based on workload, block size, and system conditions. Published numbers show peak performance under controlled testing, temp disk performance specifications should be viewed as best case performance numbers and may differ in real-world scenarios. Factors such as data patterns, SSD wear, and background processes can affect write speeds. For more details, please see [FAQ for Temp NVMe disks](../../../virtual-machines/enable-nvme-temp-faqs.yml)
@@ -88,9 +88,9 @@ Remote (uncached) storage info for each size
 | Standard_D160alds_v7 | 64 | 212,000 | 10,344 | 242,640 | 11,410 | 310,000 | 10,356 | 355,443 | 11,450 |
 
 #### Storage resources
-- [Introduction to Azure Managed Disks](../../../virtual-machines/managed-disks-overview.md)
-- [Azure Managed Disk types](../../../virtual-machines/disks-types.md)
-- [Share an Azure Managed Disk](../../../virtual-machines/disks-shared.md)
+- [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
+- [Azure managed disk types](../../../virtual-machines/disks-types.md)
+- [Share an Azure managed disk](../../../virtual-machines/disks-shared.md)
 
 #### Table definitions
 - <sup>1</sup>Some sizes support [bursting](../../disk-bursting.md) to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.

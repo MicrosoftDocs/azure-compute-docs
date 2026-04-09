@@ -61,7 +61,7 @@ Local (temp) storage info for each size
 | Standard_D96ds_v7 | 6 | 880 | 2,400,000 | 13,440 | 1,200,000 | 6,720 |
 | Standard_D128ds_v7 | 4 | 1,760 | 3,200,000 | 17,920 | 1,600,000 | 8,960 |
 | Standard_D192ds_v7 | 6 | 1,760 | 4,800,000 | 26,880 | 2,400,000 | 13,440 |
-| Standard_D248ds_v7 | 8 | 1,760 | 6,400,000 | 35,840 | 3,200,000 | 17,000 |
+| Standard_D248ds_v7 | 5 | 2,816 | 6,400,000 | 35,840 | 3,200,000 | 17,000 |
 | Standard_D372ds_v7 | 6 | 3,520 | 9,600,000 | 53,760 | 4,800,000 | 20,400 |
 
 #### Storage resources
@@ -96,9 +96,9 @@ Remote (uncached) storage info for each size
 | Standard_D372ds_v7 | 64 | 500,000 | 16,000 | 500,000 | 16,000 | 800,000 | 20,000 | 800,000 | 20,000 |
 
 #### Storage resources
-- [Introduction to Azure Managed Disks](../../../virtual-machines/managed-disks-overview.md)
-- [Azure Managed Disk types](../../../virtual-machines/disks-types.md)
-- [Share an Azure Managed Disk](../../../virtual-machines/disks-shared.md)
+- [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
+- [Azure managed disk types](../../../virtual-machines/disks-types.md)
+- [Share an Azure managed disk](../../../virtual-machines/disks-shared.md)
 
 #### Table definitions
 - <sup>1</sup>Some sizes support bursting to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.
