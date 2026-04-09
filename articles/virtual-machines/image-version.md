@@ -13,10 +13,7 @@ ms.reviewer: cynthn
 
 # Create an image definition and an image version 
 
-> [!CAUTION]
-> This article references CentOS, a Linux distribution that is End Of Life (EOL) status. Please consider your use and plan accordingly. For more information, see the [CentOS End Of Life guidance](~/articles/virtual-machines/workloads/centos/centos-end-of-life.md).
-
-An [Azure Compute Gallery](shared-image-galleries.md) (formerly known as Shared Image Gallery) simplifies custom image sharing across your organization. Custom images are like marketplace images, but you create them yourself. Images can be created from a VM, VHD, snapshot, managed image, or another image version. 
+An [Azure Compute Gallery](shared-image-galleries.md) simplifies custom image sharing across your organization. Custom images are like marketplace images, but you create them yourself. Images can be created from a VM, VHD, snapshot, managed image, or another image version. 
 
 The Azure Compute Gallery lets you share your custom VM images with others in your organization, within or across regions, within a Microsoft Entra tenant, or publicly using a [community gallery](azure-compute-gallery.md#community). Choose which images you want to share, which regions you want to make them available in, and who you want to share them with. You can create multiple galleries so that you can logically group images. Many new features like ARM64, Accelerated Networking and TrustedVM are only supported through Azure Compute Gallery and not available for managed images.
 
@@ -25,7 +22,7 @@ The Azure Compute Gallery feature has multiple resource types:
 [!INCLUDE [virtual-machines-shared-image-gallery-resources](./includes/virtual-machines-shared-image-gallery-resources.md)]
 
 
-## Before you begin
+## Prerequisites
 
 To complete this article, you must have an existing Azure Compute Gallery, and a source for your image available in Azure. Image sources can be:
 - A VM in your subscription. You can capture an image from both [specialized and generalized](shared-image-galleries.md#generalized-and-specialized-images) VMs. 
@@ -60,7 +57,7 @@ For [generalized](generalize.md) images, see the OS specific guidance before cap
    
       If you plan to run Sysprep before uploading your virtual hard disk (VHD) to Azure for the first time, make sure you have [prepared your VM](./windows/prepare-for-upload-vhd-image.md).  
 
-## Community gallery
+### Community gallery
 
 If you will be sharing your images using a [community gallery](azure-compute-gallery.md#community), make sure that you create your gallery, image definitions, and image versions in the same region. 
 
@@ -120,7 +117,7 @@ You can also capture an existing VM as an image, from the portal. For more infor
 
 ### [CLI](#tab/cli)
 
-Image definitions create a logical grouping for images. They are used to manage information about the image versions that are created within them.
+To create an image using the Azure CLI, you first need to create an image definition. Image definitions create a logical grouping for images. They are used to manage information about the image versions that are created within them.
 
 Create an image definition in a gallery using [az sig image-definition create](/cli/azure/sig/image-definition#az-sig-image-definition-create). Make sure your image definition is the right type. If you have [generalized](generalize.md) the VM (using `waagent -deprovision` for Linux, or Sysprep for Windows) then you should create a generalized image definition using `--os-state generalized`. If you want to use the VM without removing existing user accounts, create a specialized image definition using `--os-state specialized`.
 
@@ -144,7 +141,7 @@ az sig image-definition create \
 > For image definitions that will contain images descended from third-party marketplace images, the plan information must match exactly the plan information from the third-party image. Include the plan information in the image definition by adding `--plan-name`, `--plan-product`, and `--plan-publisher` when you create the image definition.
 >
 
-**Create the image version**
+#### Create the image version
 
 Create an image version using [az sig image version create](/cli/azure/sig/image-version#az-sig-image-version-create).  
 
@@ -187,7 +184,7 @@ az sig image-version create \
 
 ### [PowerShell](#tab/powershell)
 
-Image definitions create a logical grouping for images. When making your image definition, make sure it has all of the correct information. If you [generalized](generalize.md) the source VM, then you should create an image definition using `-OsState generalized`. If you didn't generalized the source, create an image definition using `-OsState specialized`.
+To create an image using PowerShell, you first need to create an image definition. Image definitions create a logical grouping for images. When making your image definition, make sure it has all of the correct information. If you [generalized](generalize.md) the source VM, then you should create an image definition using `-OsState generalized`. If you didn't generalized the source, create an image definition using `-OsState specialized`.
 
 For more information about the values you can specify for an image definition, see [Image definitions](./shared-image-galleries.md#image-definitions).
 
@@ -212,7 +209,7 @@ $imageDefinition = New-AzGalleryImageDefinition `
 > For image definitions that will contain images descended from third-party images, the plan information must match exactly the plan information from the third-party image. Include the plan information in the image definition by adding `-PurchasePlanName`, `-PurchasePlanProduct`, and `-PurchasePlanPublisher` when you create the image definition.
 >
 
-**Create an image version**
+#### Create an image version
 
 Create an image version using [New-AzGalleryImageVersion](/powershell/module/az.compute/new-azgalleryimageversion). 
 
@@ -319,63 +316,62 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 ---
 
-## Create an image in one tenant using the source image in another tenant
+## Create an image version in one tenant using the source image version in another tenant
 
-In the subscription where the source image exists, grant reader permissions to the user. Once the user has reader permission to the source image, login to both accounts (source and target).
+In the subscription where the source image version exists, grant reader permissions to the user. Once the user has reader permission to the source image version, sign in to both accounts (source and target).
 
-You will need the `tenantID` of the source image, the `subscriptionID` for the subscription where the new image will be stored (target), and the `resourceID` of the source image. Additionally, you need to ensure that the source image's region or replica and target region are the same.
+You will need the `tenantID` of the source image version, the `subscriptionID` for the subscription where the new image version will be stored (target), and the `resourceID` of the source image version. The target gallery image definition must already exist before you create the image version with `az sig image-version create` or `New-AzGalleryImageVersion`. Additionally, ensure that the source image version's region or replica and target region are the same.
 
 ### [CLI](#tab/cli2)
 
+Use the Azure CLI to create an image version in one tenant using the source image version in another tenant.
+
 ```azurecli-interactive
 # Set some variables
-tenantID="<tenant ID for the source image>"
-subID="<subscription ID where the image will be creted>"
-sourceImageID="<resource ID of the source image>"
+tenantID="<tenant ID for the source image version>"
+subID="<subscription ID where the image version will be created>"
+sourceImageVersionID="<resource ID of the source image version>"
 
-# Login to the subscription where the new image will be created
+# Sign in to the subscription where the new image version will be created
 az login
 
-# Log in to the tenant where the source image is available
+# Sign in to the tenant where the source image version is available
 az login --tenant $tenantID
 
-# Log back in to the subscription where the image will be created and ensure subscription context is set
+# Sign back in to the subscription where the image version will be created and ensure subscription context is set
 az login
 az account set --subscription $subID
 
-# Create the image
-az sig image-version create `
-   --gallery-image-definition myImageDef `
-   --gallery-image-version 1.0.0 `
-   --gallery-name myGallery `
-   --resource-group myResourceGroup `
-   --image-version $sourceImageID
+# Create the image version from the source image version
+az sig image-version create \
+   --gallery-image-definition myImageDef \
+   --gallery-image-version 1.0.0 \
+   --gallery-name myGallery \
+   --resource-group myResourceGroup \
+   --image-version $sourceImageVersionID \
    --location myLocation
 ```
 
 
 ### [PowerShell](#tab/powershell2)
 
+Use PowerShell to create an image version in one tenant using the source image version in another tenant.
+
 ```azurepowershell-interactive
-# Set variables 
+# Set variables
 $targetSubID = "<subscription ID for the target>"
-$sourceTenantID = "<tenant ID where for the source image>"
-$sourceImageID = "<resource ID of the source image>"
+$sourceTenantID = "<tenant ID for the source image version>"
+$sourceImageVersionID = "<resource ID of the source image version>"
 
-# Login to the tenant where the source image is published
-Connect-AzAccount -Tenant $sourceTenantID -UseDeviceAuthentication 
+# Sign in to the tenant where the source image version is published
+Connect-AzAccount -Tenant $sourceTenantID -UseDeviceAuthentication
 
-# Login to the subscription where the new image will be created and set the context
+# Sign in to the subscription where the new image version will be created and set the context
 Connect-AzAccount -UseDeviceAuthentication -Subscription $targetSubID
-Set-AzContext -Subscription $targetSubID 
+Set-AzContext -Subscription $targetSubID
 
-# Create the image version from another image version in a different tenant
-New-AzGalleryImageVersion `
-   -ResourceGroupName myResourceGroup -GalleryName myGallery `
-   -GalleryImageDefinitionName myImageDef `
-   -Location "West US 2" `
-   -Name 1.0.0 `
-   -SourceImageId $sourceImageID
+# Create the image version from the source image version in a different tenant
+New-AzGalleryImageVersion -ResourceGroupName myResourceGroup -GalleryName myGallery -GalleryImageDefinitionName myImageDef -Location "West US 2" -Name 1.0.0 -SourceImageId $sourceImageVersionID
 ```
 
 ---
