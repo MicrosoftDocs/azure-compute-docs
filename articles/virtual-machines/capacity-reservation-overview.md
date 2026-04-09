@@ -138,7 +138,7 @@ The group specifies the Azure location:
 
 - The group sets the region in which all reservations are created. Examples are East US, North Europe, or Southeast Asia. 
 - The group sets the eligible zones. Examples are AZ1, AZ2, and AZ3 in any combination. 
-- If no zones are specified, then Azure will select the best zone available upon initial capacity reservation creation. All VMs using the capacity reservation group must be deployed without specifying a zone; each associated VM wil be deployed to the zone Azure selected for the group.
+- If no zones are specified, then Azure will select the best zone available upon initial capacity reservation creation. All VMs using the capacity reservation group must be deployed without specifying a zone; each associated VM will be deployed to the zone Azure selected for the group.
 
 Each reservation in a group is for one VM size. If eligible zones were selected for the group, the reservation must be for one of the supported zones. 
 
@@ -159,7 +159,7 @@ When a reservation is created, Azure sets aside the requested number of capacity
 Track the state of the overall reservation through the following properties: 
  
 - `capacity`: Total quantity of instances reserved by the customer. 
-- `virtualMachinesAllocated`: List of VMs allocated against the capacity reservation and count toward consuming the capacity. These VMs are either **Running** or **Stopped** (**Allocated**), or they're in a transitional state such as **Starting** or **Stopping**. This list doesn't include the VMs that are in a deallocated state, which are referred to as **Stopped** (deallocated). 
+- `virtualMachinesAllocated`: List of VMs allocated against the capacity reservation and count toward consuming the capacity. These VMs are either **Running** or **Stopped** (**Allocated**), or they're in a transitional state such as **Starting** or **Stopping**. This list doesn't include the VMs that are in a deallocated state, which is referred to as **Stopped** (deallocated). 
 - `virtualMachinesAssociated`: List of VMs associated to the capacity reservation. This list has all the VMs that were configured to use the reservation, including the ones that are in a deallocated state.
 
 The previous example starts with `capacity` as 2 and the length of `virtualMachinesAllocated` and `virtualMachinesAssociated` as 0.
