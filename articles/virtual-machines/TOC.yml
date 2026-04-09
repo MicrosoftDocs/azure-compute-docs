@@ -310,18 +310,18 @@
        - name: Overview
          displayName: DC-series, sizes, size, vm size
          href: ./sizes/general-purpose/dc-family.md
-       - name: DCasv5 series
-         href: ./sizes/general-purpose/dcasv5-series.md
-       - name: DCadsv5 series
-         href: ./sizes/general-purpose/dcadsv5-series.md
-       - name: DCasv6 series
-         href: ./sizes/general-purpose/dcasv6-series.md
-       - name: DCadsv6 series
-         href: ./sizes/general-purpose/dcadsv6-series.md
        - name: DCesv6 series
          href: ./sizes/general-purpose/dcesv6-series.md
        - name: DCedsv6 series
          href: ./sizes/general-purpose/dcedsv6-series.md
+       - name: DCasv6 series
+         href: ./sizes/general-purpose/dcasv6-series.md
+       - name: DCadsv6 series
+         href: ./sizes/general-purpose/dcadsv6-series.md
+       - name: DCasv5 series
+         href: ./sizes/general-purpose/dcasv5-series.md
+       - name: DCadsv5 series
+         href: ./sizes/general-purpose/dcadsv5-series.md
        - name: DCas_cc_v5 series
          href: ./sizes/general-purpose/dcasccv5-series.md
        - name: DCads_cc_v5 series
@@ -451,18 +451,22 @@
        - name: Overview
          displayName: EC-series, sizes, size, vm size
          href: ./sizes/memory-optimized/ec-family.md
-       - name: ECasv5 and ECadsv5 series
-         href: ecasv5-ecadsv5-series.md
+       - name: ECesv6 series
+         href: ecesv6-series.md
+       - name: ECedsv6 series
+         href: ecedsv6-series.md
        - name: ECasv6 series
          href: ./sizes/memory-optimized/ecasv6-series.md
        - name: ECadsv6 series
          href: ./sizes/memory-optimized/ecadsv6-series.md
-       - name: ECesv6 series
-         href: ecesv6-series.md
-       - name: ECedsv6 series
-         href: ecedsv6-series.md         
-       - name: ECas_cc_v5 and ECads_cc_v5 series
+       - name: ECasv5 series
+         href: ecasv5-ecadsv5-series.md
+       - name: ECadsv5 series
+         href: ecadsv5-series.md
+       - name: ECas_cc_v5 series
          href: ecasccv5-ecadsccv5-series.md
+       - name: ECads_cc_v5 series
+         href: ecadsccv5-series.md
      - name: M family
        items:
        - name: Overview
