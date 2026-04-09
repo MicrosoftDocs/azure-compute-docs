@@ -20,6 +20,12 @@ ms.author: cynthn
 Red Hat Enterprise Linux (RHEL) images are available in Azure via a pay-as-you-go or bring-your-own-subscription (BYOS) (Red Hat Gold Image) model. This article provides an overview of the Red Hat Gold Images in Azure.
 
 >[!NOTE]
+> During December 2025, StoreAPI Engineering team identified an enforcement gap related to an existing business rule under which Private plans are not supported for CSP subscriptions. Although this rule had been in place for a long time, the enforcement was not functioning as intended. Once the issue was identified, Engineering team corrected the enforcement.
+> Although this business rule has existed for some time, it might only now be surfacing for some customers due to corrected enforcement.
+> - CSP-led customers cannot purchase the BYOS offering via private plans. Instead, they should use private offers.
+> - For more information, see [CSP private offers](/partner-center/marketplace-offers/private-offers-for-channel#csp-private-offers).
+> - For more information, see [Private plans in Microsoft Marketplace](/partner-center/marketplace-offers/private-plans).
+>
 > RHEL BYOS Gold Images are available in Azure Public (commercial) and Azure Government clouds. They're not available in Microsoft Azure operated by 21Vianet or Azure Blackforest clouds.
 
 ## Important points to consider
@@ -218,8 +224,8 @@ For steps to apply Azure Disk Encryption, see [Azure Disk Encryption scenarios o
 ## Next steps
 
 - More details about Red Hat Cloud Access are available at the [Red Hat public cloud documentation](https://access.redhat.com/public-cloud)
-- For step-by-step guides and program details for Cloud Access, see the [Red Hat Cloud Access documentation](https://docs.redhat.com/en/documentation/subscription_central/1-latest/html/getting_started_with_rhel_system_registration/red-hat-cloud-access-program-overview_#red-hat-cloud-access-program-overview_).
+- For step-by-step guides and program details for Cloud Access, see the [Red Hat Cloud Access documentation](https://docs.redhat.com/en/documentation/subscription_central/1-latest/html/getting_started_with_rhel_system_registration/assembly-red-hat-cloud-access-program-overview_assembly-red-hat-cloud-access-program-overview).
 - To learn more about the Red Hat Update Infrastructure, see [Azure Red Hat Update Infrastructure](./redhat-rhui.md).
 - To learn more about all the Red Hat images in Azure, see the [documentation page](./redhat-images.md).
 - For information on Red Hat support policies for all versions of RHEL, see the [Red Hat Enterprise Linux life cycle](https://access.redhat.com/support/policy/updates/errata) page.
-- For additional documentation on the RHEL Gold Images, see the [Red Hat documentation](https://access.redhat.com/documentation/en-us/subscription_central/1-latest/html/red_hat_cloud_access_reference_guide/understanding-gold-images_cloud-access).
+- For additional documentation on the RHEL Gold Images, see the [Red Hat documentation](https://docs.redhat.com/en/documentation/subscription_central/1-latest/html/getting_started_with_rhel_system_registration/assembly-red-hat-cloud-access-program-overview_assembly-red-hat-cloud-access-program-overview#assembly-understanding-gold-images_assembly-understanding-gold-images).

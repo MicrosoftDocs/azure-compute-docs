@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 ms.update-cycle: 1095-days
 # Customer intent: "As a cloud architect, I want to understand the lifecycle and roles of replicas and instances in Service Fabric, so that I can effectively design and manage stateful and stateless services within my applications."
 ---
@@ -20,7 +20,7 @@ An instance of a stateless service is a copy of the service logic that runs on o
 ![Instance lifecycle](./media/service-fabric-concepts-replica-lifecycle/instance.png)
 
 ### InBuild (IB)
-After the Cluster Resource Manager determines a placement for the instance, it enters this lifecycle state. The instance is started on the node. The application host is started, the instance is created and then opened. After the startup finishes, the instance transitions to the ready state. 
+After the Cluster Resource Manager determines a placement for the instance, it enters this lifecycle state. The instance is started on the node. Once the application starts, the instance is created and then opened. After the startup finishes, the instance transitions to the ready state. 
 
 If the application host or node for this instance crashes, it transitions to the dropped state.
 
@@ -36,7 +36,7 @@ In the closing state, Azure Service Fabric is in the process of shutting down th
 In the dropped state, the instance is no longer running on the node. At this point, Service Fabric maintains the metadata about this instance, which is eventually deleted as well.
 
 > [!NOTE]
-> It is possible to transition from any state to the dropped state by using the **ForceRemove** option on `Remove-ServiceFabricReplica`.
+> It's possible to transition from any state to the dropped state by using the **ForceRemove** option on `Remove-ServiceFabricReplica`.
 >
 
 ## Replicas of stateful services
@@ -57,7 +57,7 @@ If the application host or the node for an InBuild replica crashes, it transitio
 
    - **IdleSecondary InBuild replicas**: These are either new replicas that are created by the Cluster Resource Manager, or existing replicas that went down and need to be added back into the set. These replicas are seeded or built by the primary before they can join the replica set as ActiveSecondary and participate in quorum acknowledgement of operations.
 
-   - **ActiveSecondary InBuild replicas**: This state is observed in some queries. It is an optimization where the replica set is not changing, but a replica needs to be built. The replica itself follows the normal state machine transitions (as described in the section on replica roles).
+   - **ActiveSecondary InBuild replicas**: This state is observed in some queries. It's an optimization where the replica set isn't changing, but a replica needs to be built. The replica itself follows the normal state machine transitions (as described in the section on replica roles).
 
 ### Ready (RD)
 A Ready replica is a replica that's participating in replication and quorum acknowledgement of operations. The ready state is applicable to primary and active secondary replicas.
@@ -67,7 +67,7 @@ If the application host or the node for a ready replica crashes, it transitions 
 ### Closing (CL)
 A replica enters the closing state in the following scenarios:
 
-- **Shutting down the code for the replica**: Service Fabric might need to shut down the running code for a replica. This shutdown might be for many reasons. For example, it can happen because of an application, fabric, or infrastructure upgrade, or because of a fault reported by the replica. When the replica close finishes, the replica transitions to the down state. The persisted state associated with this replica that's stored on disk is not cleaned up.
+- **Shutting down the code for the replica**: Service Fabric might need to shut down the running code for a replica. This shutdown might be for many reasons. For example, it can happen because of an application, fabric, or infrastructure upgrade, or because of a fault reported by the replica. When the replica close finishes, the replica transitions to the down state. The persisted state associated with this replica that's stored on disk isn't cleaned up.
 
 - **Removing the replica from the cluster**: Service Fabric might need to remove the persisted state and shut down the running code for a replica. This shutdown might be for many reasons, for example, load balancing.
 
@@ -75,25 +75,25 @@ A replica enters the closing state in the following scenarios:
 In the dropped state, the instance is no longer running on the node. There is also no state left on the node. At this point, Service Fabric maintains the metadata about this instance, which is eventually deleted as well.
 
 ### Down (D)
-In the down state, the replica code is not running, but the persisted state for that replica exists on that node. A replica can be down for many reasons--for example, the node being down, a crash in the replica code, an application upgrade, or replica faults.
+In the down state, the replica code isn't running, but the persisted state for that replica exists on that node. A replica can be down for many reasons--for example, the node being down, a crash in the replica code, an application upgrade, or replica faults.
 
 A down replica is opened by Service Fabric as required, for example, when the upgrade finishes on the node.
 
-The replica role is not relevant in the down state.
+The replica role isn't relevant in the down state.
 
 ### Opening (OP)
 A down replica enters the opening state when Service Fabric needs to bring the replica back up again. For example, this state might be after a code upgrade for the application finishes on a node. 
 
 If the application host or the node for an opening replica crashes, it transitions to the down state.
 
-The replica role is not relevant in the opening state.
+The replica role isn't relevant in the opening state.
 
 ### StandBy (SB)
 A StandBy replica is a replica of a persisted service that went down and was then opened. This replica might be used by Service Fabric if it needs to add another replica to the replica set (because the replica already has some portion of the state and the build process is faster). After the StandByReplicaKeepDuration expires, the standby replica is discarded.
 
 If the application host or the node for a standby replica crashes, it transitions to the down state.
 
-The replica role is not relevant in the standby state.
+The replica role isn't relevant in the standby state.
 
 > [!NOTE]
 > Any replica that's not down or dropped is considered to be *up*.

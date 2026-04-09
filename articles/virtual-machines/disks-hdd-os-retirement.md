@@ -13,9 +13,9 @@ ai-usage: ai-assisted
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs
 
-On September 8, 2028, the ability to use Standard HDD disks as [OS disks](managed-disks-overview.md#os-disk) will be retired. After that date, all Standard HDD disks being used as OS disks will be automatically converted to Standard SSD disks of equivalent size. To avoid potential service disruptions during the conversion to Standard SSD after the retirement date, convert your Standard HDD OS disks to either Standard SSD or Premium SSD disks before the retirement date.
+On September 8, 2028, the ability to use Standard HDDs as [OS disks](managed-disks-overview.md#os-disk) will be retired. After that date, all Standard HDDs being used as OS disks will be automatically converted to Standard SSDs of equivalent size. To avoid potential service disruptions during the conversion to Standard SSD after the retirement date, convert your Standard HDD OS disks to either Standard SSD or Premium SSDs before the retirement date.
 
-If you're using Standard HDD as OS disks, begin planning a migration now. Generally, Standard SSD provides the closest price to performance ratio as Standard HDD disks. If you need higher performance, migrate to Premium SSD.
+If you're using Standard HDD as OS disks, begin planning a migration now. Generally, Standard SSD provides the closest price to performance ratio as Standard HDDs. If you need higher performance, migrate to Premium SSD.
 
 ## How am I affected?
 
@@ -23,7 +23,7 @@ After September 8, 2028, any existing virtual machines using Standard HDD OS Dis
 
 ## What is being retired?
 
-This retirement is only for the ability to use Standard HDD disks as OS disks. None of the other managed disk types or ephemeral OS disks will be affected by this retirement.
+This retirement is only for the ability to use Standard HDDs as OS disks. None of the other managed disk types or ephemeral OS disks will be affected by this retirement.
 
 ## What actions should I take?
 
@@ -35,7 +35,7 @@ If you have multiple subscriptions, use the [Disk Storage Center](https://portal
 
 The Disk Storage Center still works for individual subscriptions. But, if you prefer, you can use the Azure CLI or the Azure PowerShell module to get the same list for an individual subscription. For the Azure PowerShell module, use `Get-AzDisk | Where-Object { $_.Sku.Name -eq "Standard_LRS" -and $_.OsType }` and for the Azure CLI, use `az disk list --query "[?sku.name=='Standard_LRS' && osType!=null]" --output table`.
 
-Once you have a list of Standard HDD OS disks, [convert your Standard HDD OS disks](disks-convert-types.md#change-the-type-of-an-individual-managed-disk) to either Standard SSD or Premium SSD disks. Review [Azure Disk Storage billing guidance](disks-understand-billing.md) to choose the most cost-effective disk type for your workloads.
+Once you have a list of Standard HDD OS disks, [convert your Standard HDD OS disks](disks-convert-types.md#change-the-type-of-an-individual-managed-disk) to either Standard SSD or Premium SSDs. Review [Azure Disk Storage billing guidance](disks-understand-billing.md) to choose the most cost-effective disk type for your workloads.
 
 For technical questions and issues, contact support.
 

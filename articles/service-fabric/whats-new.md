@@ -4,7 +4,7 @@ description: Learn about what's new for Service Fabric.
 author: tomvcassidy
 ms.service: azure-service-fabric
 ms.topic: whats-new
-ms.date: 10/22/2025
+ms.date: 03/20/2026
 ms.author: tomcassidy
 # Customer intent: "As a system administrator, I want to stay informed about the latest updates and features for Service Fabric, so that I can ensure my applications utilize the most current and efficient functionalities for improved performance and reliability."
 ---
@@ -22,6 +22,12 @@ This article provides information about:
 * Retired functionality
 
 ## Announcements
+
+### March 2026
+* Service Fabric 11 CU4 released. For more information, see the [release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_114.md).
+
+### November 2025
+* Service Fabric 11 CU3 released. For more information, see the [release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_113.md).
 
 ### September 2025
 * Service Fabric 11 CU2 released. For more information, see the [release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_112.md).

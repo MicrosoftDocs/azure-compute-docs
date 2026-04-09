@@ -50,7 +50,7 @@ Costs associated with selecting existing resources during the VM creation proces
 | Resource or feature                      | Notes                                          |
 |------------------------------------------|-----------------------------------------------------------|
 | [OS Disk](https://azure.microsoft.com/pricing/details/managed-disks/) | Estimate for using the selected disk to host the selected operating system is displayed.|
-| [Ultra disk Reservation charge](https://azure.microsoft.com/pricing/details/managed-disks/) | A reservation charge is only imposed if Ultra Disk compatibility is enabled on the VM without attaching an Ultra Disk.|
+| [Ultra Disk Reservation charge](https://azure.microsoft.com/pricing/details/managed-disks/) | A reservation charge is only imposed if Ultra Disk compatibility is enabled on the VM without attaching an Ultra Disk.|
 | [Data Disk](https://azure.microsoft.com/pricing/details/managed-disks/) | Estimate for using the selected disk, to store and access data, is displayed. A disk share estimate is displayed if enabled and other charges apply. Transaction and bursting costs aren't included in the estimate. |
 
 ### Networking

@@ -5,14 +5,15 @@ author: cynthn
 ms.service: azure-virtual-machines
 ms.collection: windows
 ms.topic: quickstart
-ms.date: 01/22/2025
+ms.date: 03/25/2026
 ms.update-cycle: 180-days
 ms.author: cynthn
-ms.reviewer: jushiman
+ms.reviewer: williew
 ms.custom:
   - mvc
   - mode-ui
   - sfi-image-nochange
+  - portal
 # Customer intent: As a cloud user, I want to create a Windows virtual machine through the portal, so that I can deploy and test applications in a controlled environment.
 ---
 
@@ -35,8 +36,8 @@ Sign in to the [Azure portal](https://portal.azure.com).
 
 1. Enter *virtual machines* in the search.
 1. Under **Services**, select **Virtual machines**.
-1. In the **Virtual machines** page, select **Create** and then **Azure virtual machine**. The **Create a virtual machine** page opens.
-1. Under **Instance details**, enter *myVM* for the **Virtual machine name** and choose *Windows Server 2022 Datacenter: Azure Edition - x64 Gen 2* for the **Image**. Leave the other defaults.
+1. In the **Virtual machines** page, select **Create** from the menu at the top of the page and then select **Virtual machine** from the drop-down. The **Create a virtual machine** page opens.
+1. Under **Instance details**, enter *myVM* for the **Virtual machine name** and choose *Windows Server 2022 Datacenter: Azure Edition - x64 Gen 2* for the **Image**. The page will fill in the other fields with defaults and use the VM name to create similar names for the other resources that are needed.
 
     :::image type="content" source="media/quick-create-portal/instance-details.png" alt-text="Screenshot of the Instance details section where you provide a name for the virtual machine and select its region, image and size." lightbox="media/quick-create-portal/instance-details.png":::
 
@@ -52,10 +53,13 @@ Sign in to the [Azure portal](https://portal.azure.com).
 
     :::image type="content" source="media/quick-create-portal/inbound-port-rules.png" alt-text="Screenshot of the inbound port rules section where you select what ports inbound connections are allowed on":::
 
+1. At the top of the page, select the **Management** tab.
+1. In the **Auto-shutdown** section, select the **Enable auto-shutdown** option.
+1. Select a **Shutdown time** and the **Time zone** to use (UTC is the default). Optionally you can choose to be notified by e-mail before the shutdown. For more information see [Auto-shutdown](/azure/virtual-machines/auto-shutdown-vm).
+
 1. Leave the remaining defaults and then select the **Review + create** button at the bottom of the page.
 
     :::image type="content" source="media/quick-create-portal/review-create.png" alt-text="Screenshot showing the Review + create button at the bottom of the page.":::
-
 
 1. After validation runs, select the **Create** button at the bottom of the page.
     :::image type="content" source="media/quick-create-portal/validation.png" alt-text="Screenshot showing that validation has passed. Select the Create button to create the VM." lightbox="media/quick-create-portal/validation.png":::
@@ -69,17 +73,15 @@ Sign in to the [Azure portal](https://portal.azure.com).
 
 Create a remote desktop connection to the virtual machine. These directions tell you how to connect to your VM from a Windows computer. On a Mac, you need an RDP client such as this [Remote Desktop Client](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12) from the Mac App Store.
 
-1. On the overview page for your virtual machine, select the **Connect** > **RDP**. 
+1. On the overview page for your virtual machine, select **Connect** and then select **Connect** again from the drop-down. 
 
-    :::image type="content" source="media/quick-create-portal/portal-quick-start-9.png" alt-text="Screenshot of the virtual machine overview page showing the location of the connect button.":::
 
-2. In the **Connect with RDP** tab, keep the default options to connect by IP address, over port 3389, and click **Download RDP file**.
+2. In the **Native RDP** page, select the **Check access** button to make sure port 3389 is available.
+1. Select **Download RDP file** to download the connection file to your computer. 
 
-3. Open the downloaded RDP file and click **Connect** when prompted.
+7. Open the downloaded RDP file and click **Connect** when prompted.
 
-4. In the **Windows Security** window, select **More choices** and then **Use a different account**. Type the username as **localhost**\\*username*, enter the password you created for the virtual machine, and then click **OK**.
-
-5. You may receive a certificate warning during the sign-in process. Click **Yes** or **Continue** to create the connection.
+9. You may receive a certificate warning during the sign-in process. Click **Yes** or **Continue** to create the connection.
 
 ## Install web server
 
@@ -106,18 +108,6 @@ When no longer needed, you can delete the resource group, virtual machine, and a
 1. On the Overview page for the VM, select the **Resource group** link.
 1. At the top of the page for the resource group, select **Delete resource group**. 
 1. A page will open warning you that you are about to delete resources. Type the name of the resource group and select **Delete** to finish deleting the resources and the resource group.
-
-### Auto-shutdown
-If the VM is still needed, Azure provides an Auto-shutdown feature for virtual machines to help manage costs and ensure you are not billed for unused resources.
-
-1. On the **Operations** section for the VM, select the **Auto-shutdown** option.
-1. A page will open where you can configure the auto-shutdown time. Select the **On** option to enable and then set a time that works for you.
-1. Once you have set the time, select **Save**  at the top to enable your Auto-shutdown configuration.
-
-> [!NOTE]
-> Remember to configure the time zone correctly to match your requirements, as (UTC) Coordinated Universal Time is the default setting in the Time zone dropdown.
-
-For more information see [Auto-shutdown](/azure/virtual-machines/auto-shutdown-vm).
 
 ## Next steps
 

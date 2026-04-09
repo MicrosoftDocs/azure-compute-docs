@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
 # Customer intent: As a developer troubleshooting my local Azure Service Fabric cluster, I want to understand common setup and connection errors, so that I can resolve issues quickly and ensure smooth application deployment.
 ---
 
@@ -14,7 +14,7 @@ ms.date: 07/11/2022
 If you run into an issue while interacting with your local Azure Service Fabric development cluster, review the following suggestions for potential solutions.
 
 ## Cluster setup failures
-### Cannot clean up Service Fabric logs
+### Can't clean up Service Fabric logs
 #### Problem
 While running the DevClusterSetup script, you see the following error:
 
@@ -33,10 +33,10 @@ Close the current PowerShell window and open a new PowerShell window as an admin
 
 ### Type Initialization exception
 #### Problem
-When you are connecting to the cluster in PowerShell, you see the error TypeInitializationException for System.Fabric.Common.AppTrace.
+When you're connecting to the cluster in PowerShell, you see the error TypeInitializationException for System.Fabric.Common.AppTrace.
 
 #### Solution
-Your path variable was not correctly set during installation. Sign out of Windows and sign back in. This refreshes your path.
+Your path variable wasn't correctly set during installation. Sign out of Windows and sign back in. This refreshes your path.
 
 ### Cluster connection fails with "Object is closed"
 #### Problem
@@ -61,10 +61,10 @@ When debugging from Visual Studio, you get a FabricConnectionDeniedException err
 #### Solution
 This error usually occurs when you try to start a service host process manually.
 
-Ensure that you do not have any service projects set as startup projects in your solution. Only Service Fabric application projects should be set as startup projects.
+Ensure that you don't have any service projects set as startup projects in your solution. Only Service Fabric application projects should be set as startup projects.
 
 > [!TIP]
-> If, following setup, your local cluster begins to behave abnormally, you can reset it using the local cluster manager system tray application. This removes the existing cluster and set up a new one. Note that all deployed applications and associated data is removed.
+> If, following setup, your local cluster begins to behave abnormally, you can reset it using the local cluster manager system tray application. This removes the existing cluster and sets up a new one. All deployed applications and associated data is removed.
 > 
 > 
 

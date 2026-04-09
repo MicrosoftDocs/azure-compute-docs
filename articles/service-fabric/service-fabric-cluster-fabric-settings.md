@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: "As a cloud administrator, I want to customize settings for my Service Fabric cluster, so that I can optimize performance and manage upgrades according to my organization's requirements."
 ---
 
@@ -49,6 +49,13 @@ The following is a list of Fabric settings that you can customize, organized by 
 | **Parameter** | **Allowed Values** | **Upgrade Policy** | **Guidance or Short Description** |
 | --- | --- | --- | --- |
 |PropertyGroup|X509NameMap, default is None|Dynamic| Subject name and issuer thumbprint of the remote certs that the reverse proxy can trust. To learn more, see [Reverse proxy secure connection](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services). |
+
+## ApplicationProxyService
+
+| **Parameter** | **Allowed Values** | **Upgrade Policy** | **Guidance or Short Description** |
+| --- | --- | --- | --- |
+|IsEnabled|Bool, default is false|Static| Application Proxy Service is an optional system service currently in preview. Setting controls if it is enabled. |
+
 
 ## BackupRestoreService
 
@@ -611,6 +618,8 @@ The following is a list of Fabric settings that you can customize, organized by 
 |ApplicationCapacityConstraintPriority | Int, default is 0 | Dynamic|Determines the priority of capacity constraint: 0: Hard; 1: Soft; negative: Ignore. |
 |AutoDetectAvailableResources|bool, default is TRUE|Static|This config triggers auto detection of available resources on node (CPU and Memory) When this config is set to true - we read real capacities and correct them if user specified bad node capacities or didn't define them at all If this config is set to false - we trace a warning that user specified bad node capacities; but we will not correct them; meaning that user wants to have the capacities specified as > than the node really has or if capacities are undefined; it will assume unlimited capacity |
 |AuxiliaryInBuildThrottlingWeight | double, default is 1 | Static|Auxiliary replica's weight against the current InBuildThrottling max limit. |
+|AllowMovementOnPausedNodes | bool, default is FALSE | Dynamic|If true; allows PLB to move and drop replicas on nodes that are deactivated with Pause intent. |
+|AllowNewReplicaPlacementOnNodeInClusterUpgrade | bool, default is TRUE | Dynamic|Setting which determines if any new replica placements will be allowed on upgrading nodes. When set to false; no new replica placement will be allowed on upgrading node. By default; only single replica replacements and primary moves are forbidden on nodes in upgrade; and all other new placements are allowed to prioritize availability. |
 |BalancingDelayAfterNewNode | Time in seconds, default is 120 |Dynamic|Specify timespan in seconds. Don't start balancing activities within this period after adding a new node. |
 |BalancingDelayAfterNodeDown | Time in seconds, default is 120 |Dynamic|Specify timespan in seconds. Don't start balancing activities within this period after a node down event. |
 |BlockNodeInUpgradeConstraintPriority | Int, default is -1 |Dynamic|Determines the priority of capacity constraint: 0: Hard; 1: Soft; negative: Ignore  |
@@ -679,6 +688,8 @@ The following is a list of Fabric settings that you can customize, organized by 
 |VerboseHealthReportLimit | Int, default is 20 | Dynamic|Defines the number of times a replica has to go unplaced before a health warning is reported for it (if verbose health reporting is enabled). |
 |NodeLoadsOperationalTracingEnabled | Bool, default is true |Dynamic|Config that enables Node Load operational structural trace in the event store. |
 |NodeLoadsOperationalTracingInterval | TimeSpan, default is Common::TimeSpan::FromSeconds(20) | Dynamic|Specify timespan in seconds. The interval with which to trace node loads to event store for each service domain. |
+|ReduceDecisionTracing | bool, default is FALSE | Dynamic|	
+Specifies whether to use old way of tracing PLB decisions regarding scheduling phases (PLB.SchedulerAction; PLB.DecisionToken and CRM.Decision are all traced) or to use tracing with reduced trace frequency (tracing only CRM.Decision; as all data from other traces is contained in it) |
 |QuorumBasedReplicaDistributionPerUpgradeDomains | Bool, default is false | Dynamic|Specifies whether replica distribution among upgrade domains should be based on a partition write quorum (Quorum safe approach) or PLB should keep max replica difference between number of replicas per upgrade domains up to 1 (Maximum difference approach). |
 |QuorumBasedReplicaDistributionPerFaultDomains | Bool, default is false | Dynamic|Specifies whether replica distribution among fault domains should be based on a partition write quorum (Quorum safe approach) or PLB should keep max replica difference between number of replicas per fault domains up to 1 (Maximum difference approach). |
 |QuorumBasedLogicAutoSwitch | Bool, default is true | Dynamic|Specifies whether replica distribution among fault and upgrade domains should automatically (when necessary) switch from maximum difference approach to a quorum safe approach. |
@@ -793,6 +804,7 @@ The following is a list of Fabric settings that you can customize, organized by 
 |DisableFirewallRuleForDomainProfile| bool, default is TRUE |Static| Indicates if firewall rule shouldn't be enabled for domain profile |
 |DisableFirewallRuleForPrivateProfile| bool, default is TRUE |Static| Indicates if firewall rule shouldn't be enabled for private profile | 
 |DisableFirewallRuleForPublicProfile| bool, default is TRUE | Static|Indicates if firewall rule shouldn't be enabled for public profile |
+|EnableRBACClientIssuerStoreSettings| bool, default is FALSE | Dynamic|False: ClientCertificateIssuerStores will have all Reader; Adm and ElevatedAdm roles as always. And AdminClientCertificateIssuerStores and ElevatedAdminClientCertificateIssuerStores are ignored. True: ClientCertificateIssuerStores will only have Reader role. SF will honor the configs and roles of AdminClientCertificateIssuerStores and ElevatedAdminClientCertificateIssuerStores respectively. |
 | EnforceLinuxMinTlsVersion | bool, default is FALSE | Static | If set to true; only TLS version 1.2+ is supported.  If false; support earlier TLS versions. Applies to Linux only |
 | EnforcePrevalidationOnSecurityChanges | bool, default is FALSE| Dynamic | Flag controlling the behavior of cluster upgrade upon detecting changes of its security settings. If set to 'true', the cluster upgrade will attempt to ensure that at least one of the certificates matching any of the presentation rules can pass a corresponding validation rule. The pre-validation is executed before the new settings are applied to any node, but runs only on the node hosting the primary replica of the Cluster Manager service at the time of initiating the upgrade. The default is currently set to 'false'; starting with release 7.1, the setting will be set to 'true' for new Azure Service Fabric clusters.|
 | EnforceStrictRoleMapping | bool, default is FALSE | Dynamic | The permissions mapping in the SF runtime for the ElevatedAdmin role includes all current operations and any newly introduced functionality remains accessible to ElevatedAmin; i.e. the EA role gets a "*" permission in the code - that is; a blank authorization to invoke all SF APIs. The intent is that a 'deny' rule (Security/ClientAccess MyOperation="None") won't apply to the ElevatedAdmin role by default. However; if EnforceStrictRoleMapping is set to true; existing code or cluster manifest overrides which specify "operation": "Admin" (in Security/ClientAccess section) will make "operation" in effect inaccessible to the ElevatedAdmin role. |
@@ -817,6 +829,18 @@ The following is a list of Fabric settings that you can customize, organized by 
 | **Parameter** | **Allowed Values** | **Upgrade Policy** | **Guidance or Short Description** |
 | --- | --- | --- | --- |
 |PropertyGroup|X509NameMap, default is None|Dynamic|Certificate common names of fabric clients in elevated admin role; used to authorize privileged fabric operations. It is a comma separated list. |
+
+## Security/AdminClientCertificateIssuerStores
+
+| **Parameter** | **Allowed Values** | **Upgrade Policy** | **Guidance or Short Description** |
+| --- | --- | --- | --- |
+|PropertyGroup|IssuerStoreKeyValueMapIssuerStoreKeyValueMap, default is None|Dynamic|X509 issuer certificate stores for client certificates; Name = clientIssuerCN; Value = comma separated list of stores. |
+
+## Security/ElevatedAdminClientCertificateIssuerStores
+
+| **Parameter** | **Allowed Values** | **Upgrade Policy** | **Guidance or Short Description** |
+| --- | --- | --- | --- |
+|PropertyGroup|IssuerStoreKeyValueMap, default is None|Dynamic|X509 issuer certificate stores for client certificates; Name = clientIssuerCN; Value = comma separated list of stores. |
 
 ## Security/ClientAccess
 
@@ -992,6 +1016,7 @@ The following is a list of Fabric settings that you can customize, organized by 
 ## TransactionalReplicator
 <i> **Warning Note** : Changing Replication/TranscationalReplicator settings at cluster level changes settings for all stateful services include system services. This is generally not recommended. See this document [Configure Azure Service Fabric Reliable Services - Azure Service Fabric | Microsoft Docs](./service-fabric-reliable-services-configuration.md) to configure services at app level.</i>
 
+
 | **Parameter** | **Allowed Values** | **Upgrade Policy** | **Guidance or Short Description** |
 | --- | --- | --- | --- |
 |BatchAcknowledgementInterval | Time in seconds, default is 0.015 | Static | Specify timespan in seconds. Determines the amount of time that the replicator waits after receiving an operation before sending back an acknowledgment. Other operations received during this time period will have their acknowledgments sent back in a single message-> reducing network traffic but potentially reducing the throughput of the replicator. |
@@ -1004,6 +1029,14 @@ The following is a list of Fabric settings that you can customize, organized by 
 |ReplicatorAddress |string, default is "localhost:0" | Static | The endpoint in form of a string -'IP:Port' which is used by the Windows Fabric Replicator to establish connections with other replicas in order to send/receive operations. |
 |ReplicationBatchSendInterval|TimeSpan, default is Common::TimeSpan::FromMilliseconds(15) | Static | Specify timespan in seconds. Determines the amount of time that the replicator waits after receiving an operation before force sending a batch.|
 |ShouldAbortCopyForTruncation |bool, default is FALSE | Static | Allow pending log truncation to go through during copy. With this enabled the copy stage of builds can be canceled if the log is full and they are block truncation. |
+
+
+## TransactionalReplicator2
+
+| **Parameter** | **Allowed Values** | **Upgrade Policy** | **Guidance or Short Description** |
+|---------------|-------------------|--------------------|------------------------------------|
+| TrackLastModifiedUTC | bool, (default: FALSE) | Static | Controls whether Key Value Store (KVS) backed by TStore tracks and exposes the last modified UTC timestamp for each entry. Available in SF 11.4 and beyond.<br><br>When set to **true**, the system records the UTC timestamp of the most recent modification for each entry, and APIs expose this value through the `LastModifiedUTC` field. Each update refreshes the stored timestamp.<br><br>When set to **false**, the system does not expose last modified timestamps. APIs return the default value `1970-01-01T00:00:00Z` (Unix epoch). Previously recorded timestamps are retained internally but are not returned while the setting remains disabled. Disabling affects visibility only and does not impact data correctness. |
+
 
 ## Transport
 | **Parameter** | **Allowed Values** |**Upgrade policy** |**Guidance or Short Description** |

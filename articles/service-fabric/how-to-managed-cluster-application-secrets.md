@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 04/08/2024
+ms.date: 03/22/2026
 # Customer intent: As a cloud developer, I want to securely manage and deploy application secrets using Azure Key Vault in a Service Fabric managed cluster, so that I can ensure sensitive information is handled properly without risking exposure in plain text.
 ---
 

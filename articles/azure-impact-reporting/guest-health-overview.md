@@ -30,12 +30,6 @@ To use Guest Health Reporting to report the health of a node, you need to onboar
 
    :::image type="content" source="images/guest-health-registration.png" alt-text="Screenshot that shows the button for registering a resource provider.":::
 
-1. On the left menu, go to **Settings** > **Preview features**.
-
-1. Search for and select **Allow Impact Reporting**, and then select **Register**.
-
-   :::image type="content" source="images/guest-health-preview-feature-selection.png" alt-text="Screenshot that shows selections for allowing Impact Reporting.":::
-
 1. On the left pane, go to **Settings** > **Overview**. Retrieve your subscription ID and send it to the Azure team member who's helping you complete the onboarding process.
 
 1. Wait for confirmation that the onboarding process is complete before you proceed with submitting Guest Health Reporting requests.
@@ -50,9 +44,9 @@ To submit Guest Health Reporting requests from a resource within Azure, you must
 
    :::image type="content" source="images/guest-health-add-role.png" alt-text="Screenshot that shows selections for adding a role assignment.":::
 
-3. Search for and select the **Impact reporter** role.
+3. Search for and select the **Azure Impact Reporter** role.
 
-   :::image type="content" source="images/guest-health-impact-reporter-role.png" alt-text="Screenshot that shows search results for the Impact Reporter role on the pane for adding a role assignment.":::
+   :::image type="content" source="images/guest-health-impact-reporter-role.png" alt-text="Screenshot that shows search results for the Azure Impact Reporter role on the pane for adding a role assignment.":::
 
 4. Go to the **Members** tab. Search for and select the user identity, app ID, or  service principal. Then select **Members**. The app ID is the service principal for the app to be used for reporting.
 

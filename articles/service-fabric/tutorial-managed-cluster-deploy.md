@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 03/12/2024
+ms.date: 03/22/2026
 # Customer intent: "As a cloud administrator, I want to deploy a Service Fabric managed cluster for testing, so that I can evaluate its capabilities and set up a scalable environment for my applications."
 ---
 

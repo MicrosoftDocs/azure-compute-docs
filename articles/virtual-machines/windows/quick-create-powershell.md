@@ -5,7 +5,7 @@ author: cynthn
 ms.service: azure-virtual-machines
 ms.collection: windows
 ms.topic: quickstart
-ms.date: 04/04/2023
+ms.date: 02/02/2026
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurepowershell, mode-api
 # Customer intent: "As a system administrator, I want to deploy a Windows virtual machine using PowerShell, so that I can manage it efficiently and host services like a web server on Azure."
@@ -85,3 +85,4 @@ In this quickstart, you deployed a simple virtual machine, opened a network port
 
 > [!div class="nextstepaction"]
 > [Azure Windows virtual machine tutorials](./tutorial-manage-vm.md)
+

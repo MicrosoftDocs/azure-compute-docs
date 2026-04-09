@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
 # Customer intent: As a cloud administrator, I want to enable managed identity support in my existing Service Fabric cluster, so that I can authenticate applications and obtain access tokens securely without managing credentials manually.
 ---
 
@@ -19,11 +19,11 @@ To use [Managed identities for Azure resources](/azure/active-directory/managed-
 >
 > You can find the Service Fabric version of a cluster from the Azure portal by opening the cluster resource and checking the **Service Fabric version** property in the **Essentials** section.
 >
-> If the cluster is on **Manual** upgrade mode, you will need to first upgrade it to 6.5.658.9590 or later.
+> If the cluster is on **Manual** upgrade mode, you'll need to first upgrade it to 6.5.658.9590 or later.
 
 ## Enable *Managed Identity Token Service* in an existing cluster
 
-To enable the Managed Identity Token Service in an existing cluster, you will need to initiate a cluster upgrade specifying two changes: (1) Enabling the Managed Identity Token Service, and (2) requesting a restart of each node. First, add the following snippet your cluster Azure Resource Manager template:
+To enable the Managed Identity Token Service in an existing cluster, you'll need to initiate a cluster upgrade specifying two changes: (1) Enabling the Managed Identity Token Service, and (2) requesting a restart of each node. First, add the following snippet your cluster Azure Resource Manager template:
 
 ```json
 "fabricSettings": [
@@ -39,7 +39,7 @@ To enable the Managed Identity Token Service in an existing cluster, you will ne
 ]
 ```
 
-In order for the changes to take effect, you will also need to change the upgrade policy to specify a forceful restart of the Service Fabric runtime on each node as the upgrade progresses through the cluster. This restart ensures that the newly enabled system service is started and running on each node. In the snippet below, `forceRestart` is the essential setting to enable restart. For the remaining parameters, use values described below or use existing custom values already specified for the cluster resource. Custom settings for Fabric Upgrade Policy ('upgradeDescription') can be viewed from Azure portal by selecting 'Fabric Upgrades' option on the Service Fabric resource or resources.azure.com. Default options for the upgrade policy ('upgradeDescription') are not viewable from PowerShell or resources.azure.com. See [ClusterUpgradePolicy](/dotnet/api/microsoft.azure.management.servicefabric.models.clusterupgradepolicy) for additional information.  
+In order for the changes to take effect, you'll also need to change the upgrade policy to specify a forceful restart of the Service Fabric runtime on each node as the upgrade progresses through the cluster. This restart ensures that the newly enabled system service is started and running on each node. In the snippet below, `forceRestart` is the essential setting to enable restart. For the remaining parameters, use values described below or use existing custom values already specified for the cluster resource. Custom settings for Fabric Upgrade Policy ('upgradeDescription') can be viewed from Azure portal by selecting 'Fabric Upgrades' option on the Service Fabric resource or resources.azure.com. Default options for the upgrade policy ('upgradeDescription') aren't viewable from PowerShell or resources.azure.com. See [ClusterUpgradePolicy](/dotnet/api/microsoft.azure.management.servicefabric.models.clusterupgradepolicy) for additional information.  
 
 ```json
 "upgradeDescription": {
@@ -54,11 +54,11 @@ In order for the changes to take effect, you will also need to change the upgrad
 ```
 
 > [!NOTE]
-> Upon the successful completion of the upgrade, do not forget to roll back the `forceRestart` setting, to minimize the impact of subsequent upgrades. 
+> Upon the successful completion of the upgrade, don't forget to roll back the `forceRestart` setting, to minimize the impact of subsequent upgrades. 
 
 ## Errors and troubleshooting
 
-If the deployment fails with the following message, it means the cluster is not running on a high enough Service Fabric version:
+If the deployment fails with the following message, it means the cluster isn't running on a high enough Service Fabric version:
 
 ```json
 {
@@ -70,5 +70,5 @@ If the deployment fails with the following message, it means the cluster is not 
 ## Next steps
 * [Deploy an Azure Service Fabric application with a system-assigned managed identity](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
 * [Deploy an Azure Service Fabric application with a user-assigned managed identity](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
-* [Leverage the managed identity of a Service Fabric application from service code](./how-to-managed-identity-service-fabric-app-code.md)
+* [Use the managed identity of a Service Fabric application from service code](./how-to-managed-identity-service-fabric-app-code.md)
 * [Grant an Azure Service Fabric application access to other Azure resources](./how-to-grant-access-other-resources.md)

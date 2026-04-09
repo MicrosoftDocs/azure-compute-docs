@@ -7,7 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-arm-template
 services: service-fabric
-ms.date: 05/17/2024
+ms.date: 03/22/2026
 # Customer intent: As a cloud architect, I want to deploy a Service Fabric managed cluster with distinct subnets for each NodeType, so that I can enhance network isolation and manage traffic effectively through tailored Network Security Group rules.
 ---
 

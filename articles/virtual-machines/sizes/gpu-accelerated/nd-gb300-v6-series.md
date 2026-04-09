@@ -5,7 +5,7 @@ author: iamwilliew
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 11/12/2025
+ms.date: 02/20/2026
 ms.author: wwilliams
 ms.reviewer: mattmcinnes
 # Customer intent: As a cloud architect, I want to assess the specifications and features of the ND GB300-v6 series, so that I can choose the optimal virtual machine size for our high-performance computing needs.
@@ -18,8 +18,7 @@ ms.reviewer: mattmcinnes
 ## Host specifications
 [!INCLUDE [nd-gb300-v6-series-specs](./includes/nd-gb300-v6-series-specs.md)]
 
-## Feature support
-[Premium Storage](../../premium-storage-performance.md): Supported <br>[Premium Storage caching](../../premium-storage-performance.md): Supported <br>[Live Migration](../../maintenance-and-updates.md): Not Supported <br>[Memory Preserving Updates](../../maintenance-and-updates.md): Not Supported <br>[Generation 2 VMs](../../generation-2.md): Supported <br>[Generation 1 VMs](../../generation-2.md): Not Supported <br>[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported <br>[Ephemeral OS Disk](../../ephemeral-os-disks.md): Supported <br>[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Not Supported <br>
+For features supported by this series, see the [Feature support](#feature-support) section.
 
 ## Sizes in series
 
@@ -29,7 +28,7 @@ vCPUs (Qty.) and Memory for each size
 
 | Size Name | vCPUs (Qty.) | Memory (GB) |
 | --- | --- | --- |
-| Standard_ND128isr_NDR_GB300_v6 | 128 | 864 |
+| Standard_ND128isr_GB300_v6 | 128 | 864 |
 
 #### VM Basics resources
 - [Check vCPU quotas](../../../virtual-machines/quotas.md)
@@ -40,7 +39,7 @@ Local (temp) storage info for each size
 
 | Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (TB) |
 | --- | --- | --- |
-| Standard_ND128isr_NDR_GB300_v6 | 4 | 16 |
+| Standard_ND128isr_GB300_v6 | 4 | 16 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
@@ -59,7 +58,7 @@ Remote (uncached) storage info for each size
 
 | Size Name | Max Remote Storage Disks (Qty.) | Uncached Disk IOPS | Uncached Disk Speed (MBps) |
 | --- | --- | --- | --- |
-| Standard_ND128isr_NDR_GB300_v6 | 16 | 80000 | 1200 |
+| Standard_ND128isr_GB300_v6 | 16 | 80000 | 1200 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
@@ -81,7 +80,7 @@ Network interface info for each size
 
 | Size Name | Max Front-end NICs (Qty.) | Max Front-end Bandwidth (Mbps) | Max Scale-up NICS (Qty.) | Max Scale-Up Bandwidth (TBps)<sup>1</sup> | Max Scale-out NICS (Qty.) | Max Scale-Out Bandwidth (Gbps)<sup>2</sup> |
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_ND128isr_NDR_GB300_v6 | 1 | 160 | 4 | 1.8 | 4 | 4x800 |
+| Standard_ND128isr_GB300_v6 | 1 | 160 | 4 | 1.8 | 4 | 4x800 |
 
 #### Networking resources
 - [Virtual networks and virtual machines in Azure](/azure/virtual-network/network-overview)
@@ -100,8 +99,23 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 
 | Size Name | Accelerators (Qty.) | Accelerator-Memory (GB) |
 | --- | --- | --- |
-| Standard_ND128isr_NDR_GB300_v6 | 4 | 288 |
+| Standard_ND128isr_GB300_v6 | 4 | 288 |
 
 ---
+
+## Feature support
+
+|Feature name | Support status |
+| --- | --- |
+|[Premium Storage](../../premium-storage-performance.md)| Supported |
+|[Premium Storage caching](../../premium-storage-performance.md)| Supported |
+|[Live Migration](../../maintenance-and-updates.md)| Not Supported |
+|[Memory Preserving Updates](../../maintenance-and-updates.md)| Not Supported |
+|[Generation 2 VMs](../../generation-2.md)| Supported |
+|[Generation 1 VMs](../../generation-2.md)| Not Supported |
+|[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli)| Supported |
+|[Ephemeral OS Disk](../../ephemeral-os-disks.md)| Supported |
+|[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)| Not Supported |
+
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]

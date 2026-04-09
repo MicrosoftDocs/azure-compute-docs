@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 11/14/2024
+ms.date: 03/22/2026
 # Customer intent: As a software developer, I want to debug my Service Fabric applications locally using Visual Studio, so that I can improve the reliability and performance of my services during development.
 ---
 

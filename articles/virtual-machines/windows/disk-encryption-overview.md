@@ -7,8 +7,7 @@ ms.subservice: security
 ms.collection: windows
 ms.topic: concept-article
 ms.author: mbaldwin
-ms.date: 09/23/2025
-# Customer intent: As an IT security professional, I want to enable disk encryption on Windows virtual machines, so that I can protect sensitive data and meet compliance requirements within my organization.
+ms.date: 02/20/2026
 ---
 
 # Azure Disk Encryption for Windows VMs
@@ -38,7 +37,7 @@ You can learn the fundamentals of Azure Disk Encryption for Windows in just a fe
 
 Windows VMs are available in a [range of sizes](../sizes-general.md). Azure Disk Encryption is supported on Generation 1 and Generation 2 VMs. Azure Disk Encryption is also available for VMs with premium storage.
 
-Azure Disk Encryption is not available on [Basic, A-series VMs, v6 series VMs](https://azure.microsoft.com/pricing/details/virtual-machines/series/), or on virtual machines with a less than 2 GB of memory.  For more exceptions, see [Azure Disk Encryption: Restrictions](disk-encryption-windows.md#restrictions).
+Azure Disk Encryption is not available on [Basic, A-series VMs, v6 series VMs, v7 series VMs, or newer](https://azure.microsoft.com/pricing/details/virtual-machines/series/), or on virtual machines with a less than 2 GB of memory.  For more exceptions, see [Azure Disk Encryption: Restrictions](disk-encryption-windows.md#restrictions).
 
 ### Supported operating systems
 
@@ -92,7 +91,7 @@ The following table defines some of the common terms used in Azure disk encrypti
 - [Quickstart - Create and encrypt a Windows VM with Azure CLI ](disk-encryption-cli-quickstart.md)
 - [Quickstart - Create and encrypt a Windows VM with Azure PowerShell](disk-encryption-powershell-quickstart.md)
 - [Azure Disk Encryption scenarios on Windows VMs](disk-encryption-windows.md)
-- [Migrate from Azure Disk Encryption to server-side encryption](../disk-encryption-migrate.md)
+- [Migrate from Azure Disk Encryption to encryption at host](../disk-encryption-migrate.md)
 - [Azure Disk Encryption prerequisites CLI script](https://github.com/ejarvi/ade-cli-getting-started)
 - [Azure Disk Encryption prerequisites PowerShell script](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)
 - [Creating and configuring a key vault for Azure Disk Encryption](disk-encryption-key-vault.yml)

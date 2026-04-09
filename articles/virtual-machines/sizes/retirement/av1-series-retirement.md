@@ -1,12 +1,12 @@
 ---
 title: Av1-series retirement
 description: Retirement information for the Av1 series virtual machine sizes. Before retirement, migrate your workloads to Av2-series virtual machines.
-author: rishabv90
+author: akashdubey-ms
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: how-to
 ms.date: 06/08/2022
-ms.author: risverma
+ms.author: akashdubey
 ms.custom: kr2b-contr-experiment
 # Customer intent: As an IT administrator managing virtual machines, I want to migrate from Av1-series to Av2-series VMs before the retirement date, so that I can ensure my workloads continue to run efficiently without interruption.
 ---

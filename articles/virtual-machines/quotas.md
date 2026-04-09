@@ -60,8 +60,8 @@ Standard G Family vCPUs                        0      100
 Standard GS Family vCPUs                       0      100
 Standard F Family vCPUs                        0      100
 Standard FS Family vCPUs                       0      100
-Standard Storage Managed Disks                 5    10000
-Premium Storage Managed Disks                  5    10000
+Standard Storage managed disks                 5    10000
+Premium Storage managed disks                  5    10000
 ...
 ```
 
@@ -111,8 +111,8 @@ Standard ND Family vCPUs                     0     0 Count
 Standard NCv2 Family vCPUs                   0     0 Count
 Standard NCv3 Family vCPUs                   0     0 Count
 Standard LSv2 Family vCPUs                   0     0 Count
-Standard Storage Managed Disks               2 10000 Count
-Premium Storage Managed Disks                1 10000 Count
+Standard Storage managed disks               2 10000 Count
+Premium Storage managed disks                1 10000 Count
 ...
 ```
 

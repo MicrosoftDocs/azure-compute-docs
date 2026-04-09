@@ -51,11 +51,11 @@ If you are planning on migrating from unmanaged disks to managed disks, you shou
 
 ### Location
 
-Pick a location where Azure managed disks are available. If you are migrating to premium SSDs, also ensure that premium storage is available in the region where you are planning to migrate to. See [Azure Services by Region](https://azure.microsoft.com/regions/#services) for up-to-date information on available locations.
+Pick a location where Azure managed disks are available. If you are migrating to Premium SSDs, also ensure that premium storage is available in the region where you are planning to migrate to. See [Azure Services by Region](https://azure.microsoft.com/regions/#services) for up-to-date information on available locations.
 
 ### VM sizes
 
-If you are migrating to premium SSDs, you have to update the size of the VM to premium storage capable size available in the region where VM is located. Review the VM sizes that are premium storage capable. The Azure VM size specifications are listed in [Sizes for virtual machines](../sizes.md).
+If you are migrating to Premium SSDs, you have to update the size of the VM to premium storage capable size available in the region where VM is located. Review the VM sizes that are premium storage capable. The Azure VM size specifications are listed in [Sizes for virtual machines](../sizes.md).
 Review the performance characteristics of virtual machines that work with premium storage and choose the most appropriate VM size that best suits your workload. Make sure that there is sufficient bandwidth available on your VM to drive the disk traffic.
 
 ### Disk sizes
@@ -64,7 +64,7 @@ For information on available disk types and sizes, see [What disk types are avai
 
 ### Disk caching policy 
 
-**Premium Managed Disks**
+**Premium managed disks**
 
 By default, disk caching policy is *Read-Only* for all the Premium data disks, and *Read-Write* for the Premium operating system disk attached to the VM. This configuration setting is recommended to achieve the optimal performance for your application’s IOs. For write-heavy or write-only data disks (such as SQL Server log files), disable disk caching so that you can achieve better application performance.
 

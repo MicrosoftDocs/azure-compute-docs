@@ -14,7 +14,7 @@ ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell, 
 
 Premium solid-state drives (SSD) have two available bursting models; credit-based bursting and on-demand bursting. This article covers how to switch to on-demand bursting. Disks that use the on-demand model can burst beyond their original provisioned targets. On-demand bursting occurs as often as needed by the workload, up to the maximum burst target. On-demand bursting incurs additional charges.
 
-For details on disk bursting, see [Managed disk bursting](disk-bursting.md). 
+For details on disk bursting, see [managed disk bursting](disk-bursting.md). 
 
 For the max burst targets on each supported disk, see [Scalability and performance targets for VM disks](disks-scalability-targets.md#premium-ssd-managed-disks-per-disk-limits).
 
@@ -45,7 +45,7 @@ On-demand bursting cmdlets are available in version 5.5.0 and newer of the Az Po
 
 ### Create an empty data disk with on-demand bursting
 
-A managed disk must be larger than 512 GiB to enable on-demand bursting. Replace the `<myResourceGroupDisk>` and `<myDataDisk>` parameters then run the following script to create a premium SSD with on-demand bursting:
+A managed disk must be larger than 512 GiB to enable on-demand bursting. Replace the `<myResourceGroupDisk>` and `<myDataDisk>` parameters then run the following script to create a Premium SSD with on-demand bursting:
 
 ```azurepowershell
 Set-AzContext -SubscriptionName <yourSubscriptionName>
@@ -69,7 +69,7 @@ On-demand bursting cmdlets are available in version 2.19.0 and newer of the [Azu
 
 ### Create and attach an on-demand bursting data disk
 
-A managed disk must be larger than 512 GiB to enable on-demand bursting. Replace the `<yourDiskName>`, `<yourResourceGroup>`, and `<yourVMName>` parameters, then run the following commands to create a premium SSD with on-demand bursting:
+A managed disk must be larger than 512 GiB to enable on-demand bursting. Replace the `<yourDiskName>`, `<yourResourceGroup>`, and `<yourVMName>` parameters, then run the following commands to create a Premium SSD with on-demand bursting:
 
 ```azurecli
 az disk create -g <yourResourceGroup> -n <yourDiskName> --size-gb 1024 --sku Premium_LRS -l westcentralus --enable-bursting true
@@ -87,7 +87,7 @@ az disk update --name <yourDiskName> --resource-group <yourResourceGroup> --enab
 
 # [Azure Resource Manager](#tab/azure-resource-manager)
 
-With the `2020-09-30` disk API, you can enable on-demand bursting on newly created or existing premium SSDs larger than 512 GiB. The `2020-09-30` API introduced a new property, `burstingEnabled`. By default, this property is set to false. The following sample template creates a 1TiB premium SSD in West Central US, with disk bursting enabled:
+With the `2020-09-30` disk API, you can enable on-demand bursting on newly created or existing Premium SSDs larger than 512 GiB. The `2020-09-30` API introduced a new property, `burstingEnabled`. By default, this property is set to false. The following sample template creates a 1TiB Premium SSD in West Central US, with disk bursting enabled:
 
 ```
 {

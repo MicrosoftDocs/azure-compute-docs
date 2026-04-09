@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 ms.update-cycle: 1095-days
 # Customer intent: "As a cloud architect, I want to understand the differences between the Shared Process and Exclusive Process hosting models in Service Fabric, so that I can make informed decisions about resource management and service isolation in my application deployments."
 ---
@@ -51,7 +51,7 @@ The preceding section describes the default hosting model provided by Service Fa
 ## Exclusive Process model
 The other hosting model provided by Service Fabric is the Exclusive Process model. In this model, on a given node, each replica lives in its own dedicated process. Service Fabric activates a new copy of *ServicePackage* (which starts all the *CodePackages* contained in it). Replicas are placed in the *CodePackage* that registered the *ServiceType* of the service to which the replica belongs. 
 
-If you are using Service Fabric version 5.6 or later, you can choose the Exclusive Process model at the time you create a service (by using [PowerShell][p1], [REST][r1], or [FabricClient][c1]). Specify **ServicePackageActivationMode** as 'ExclusiveProcess'.
+If you're using Service Fabric version 5.6 or later, you can choose the Exclusive Process model at the time you create a service (by using [PowerShell][p1], [REST][r1], or [FabricClient][c1]). Specify **ServicePackageActivationMode** as 'ExclusiveProcess'.
 
 ```powershell
 PS C:\>New-ServiceFabricService -ApplicationName "fabric:/App1" -ServiceName "fabric:/App1/ServiceA" -ServiceTypeName "MyServiceType" -Stateless -PartitionSchemeSingleton -InstanceCount -1 -ServicePackageActivationMode "ExclusiveProcess"
@@ -103,23 +103,23 @@ When you use only the Shared Process model for an application, there is only one
 >
 
 ## Work with a deployed service package
-An active copy of a *ServicePackage* on a node is referred to as a [deployed service package][p3]. When you use the Exclusive Process model for creating services, for a given application, there might be multiple deployed service packages for the same *ServicePackage*. If you are performing operations specific to a deployed service package, you should provide **ServicePackageActivationId** to identify a specific deployed service package. For example, provide the ID if you are [reporting the health of a deployed service package][p4] or [restarting the code package of a deployed service package][p5].
+An active copy of a *ServicePackage* on a node is referred to as a [deployed service package][p3]. When you use the Exclusive Process model for creating services, for a given application, there might be multiple deployed service packages for the same *ServicePackage*. If you're performing operations specific to a deployed service package, you should provide **ServicePackageActivationId** to identify a specific deployed service package. For example, provide the ID if you're [reporting the health of a deployed service package][p4] or [restarting the code package of a deployed service package][p5].
 
-You can find out the **ServicePackageActivationId** of a deployed service package by querying the list of [deployed service packages][p3] on a node. When you are querying for the [deployed service types][p6], [deployed replicas][p7], and [deployed code packages][p8] on a node, the query result also contains the **ServicePackageActivationId** of the parent deployed service package.
+You can find out the **ServicePackageActivationId** of a deployed service package by querying the list of [deployed service packages][p3] on a node. When you're querying for the [deployed service types][p6], [deployed replicas][p7], and [deployed code packages][p8] on a node, the query result also contains the **ServicePackageActivationId** of the parent deployed service package.
 
 > [!NOTE]
 >- Under the Shared Process hosting model, on a given node, for a given application, only one copy of a *ServicePackage* is activated. It has a **ServicePackageActivationId** equal to *empty string*, and need not be specified while performing operations related to the deployed service package. 
 >
-> - Under the Exclusive Process hosting model, on a given node, for a given application, one or more copies of a *ServicePackage* can be active. Each activation has a *non-empty* **ServicePackageActivationId**, specified while performing operations related to the deployed service package. 
+> - Under the Exclusive Process hosting model, on a given node, for a given application, one or more copies of a *ServicePackage* can be active. Each activation has a *nonempty* **ServicePackageActivationId**, specified while performing operations related to the deployed service package. 
 >
-> - If **ServicePackageActivationId** is omitted, it defaults to *empty string*. If a deployed service package that was activated under the Shared Process model is present, the operation will be performed on it. Otherwise, the operation fails.
+> - If **ServicePackageActivationId** is omitted, it defaults to *empty string*. If a deployed service package that was activated under the Shared Process model is present, the operation is performed on it. Otherwise, the operation fails.
 >
-> - Do not query once and cache the **ServicePackageActivationId**. The ID is dynamically generated, and can change for various reasons. Before performing an operation that needs **ServicePackageActivationId**, you should first query the list of [deployed service packages][p3] on a node. Then use the **ServicePackageActivationId** from the query result to perform the original operation.
+> - Don't query once and cache the **ServicePackageActivationId**. The ID is dynamically generated, and can change for various reasons. Before performing an operation that needs **ServicePackageActivationId**, you should first query the list of [deployed service packages][p3] on a node. Then use the **ServicePackageActivationId** from the query result to perform the original operation.
 >
 >
 
 ## Guest executable and container applications
-Service Fabric treats [guest executable][a2] and [container][a3] applications as stateless services, which are self-contained. There is no Service Fabric runtime in *ServiceHost* (a process or container). Because these services are self-contained, the number of replicas per *ServiceHost* is not applicable for these services. The most common configuration used with these services is single-partition, with [InstanceCount][c2] equal to -1 (one copy of the service code running on each node of the cluster). 
+Service Fabric treats [guest executable][a2] and [container][a3] applications as stateless services, which are self-contained. There's no Service Fabric runtime in *ServiceHost* (a process or container). Because these services are self-contained, the number of replicas per *ServiceHost* isn't applicable for these services. The most common configuration used with these services is single-partition, with [InstanceCount][c2] equal to -1 (one copy of the service code running on each node of the cluster). 
 
 The default **ServicePackageActivationMode** for these services is **SharedProcess**, in which case Service Fabric only activates one copy of *ServicePackage* on a node for a given application.  This means only one copy of service code will run a node. If you want multiple copies of your service code to run on a node, specify **ServicePackageActivationMode** as **ExclusiveProcess** at the time of creating the service. For example, you can do this when you create multiple services (*Service1* to *ServiceN*) of *ServiceType* (specified in *ServiceManifest*), or when your service is multi-partitioned. 
 
@@ -129,7 +129,7 @@ At the present time, you can't change the hosting model of an existing service f
 ## Choose between the hosting models
 You should evaluate which hosting model best fits your requirements. The Shared Process model uses operating system resources better, because fewer processes are spawned, and multiple replicas in the same process can share ports. However, if one of the replicas has an error where it needs to bring down the service host, it impacts all other replicas in same process.
 
- The Exclusive Process model provides better isolation, with every replica in its own process. If one of the replicas has an error, it does not impact other replicas. This model is useful for cases where port sharing is not supported by the communication protocol. It facilitates the ability to apply resource governance at replica level. However, the Exclusive Process consumes more operating system resources, as it spawns one process for each replica on the node.
+ The Exclusive Process model provides better isolation, with every replica in its own process. If one of the replicas has an error, it does not impact other replicas. This model is useful for cases where port sharing isn't supported by the communication protocol. It facilitates the ability to apply resource governance at replica level. However, the Exclusive Process consumes more operating system resources, as it spawns one process for each replica on the node.
 
 ## Exclusive Process model and application model considerations
 For most applications, you can model your application in Service Fabric by keeping one *ServiceType* per *ServicePackage*. 
@@ -140,7 +140,7 @@ For certain cases, Service Fabric also allows more than one *ServiceType* per *S
 - Replicas from different *ServiceTypes* need to share some common data that has a high initialization or memory cost.
 - You have a free service offering, and you want to put a limit on resource utilization by putting all replicas of the service in same process.
 
-The Exclusive Process hosting model is not coherent with an application model having multiple *ServiceTypes* per *ServicePackage*. This is because multiple *ServiceTypes* per *ServicePackage* are designed to achieve higher resource sharing among replicas, and enables higher replica density per process. The Exclusive Process model is designed to achieve different outcomes.
+The Exclusive Process hosting model isn't coherent with an application model having multiple *ServiceTypes* per *ServicePackage*. This is because multiple *ServiceTypes* per *ServicePackage* are designed to achieve higher resource sharing among replicas, and enables higher replica density per process. The Exclusive Process model is designed to achieve different outcomes.
 
 Consider the case of multiple *ServiceTypes* per *ServicePackage*, with a different *CodePackage* registering each *ServiceType*. Let's say we have a *ServicePackage* 'MultiTypeServicePackage', which has two *CodePackages*:
 

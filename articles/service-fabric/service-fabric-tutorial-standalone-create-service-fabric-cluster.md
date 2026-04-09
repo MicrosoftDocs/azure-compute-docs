@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: As a system administrator, I want to install and configure a standalone Service Fabric cluster, so that I can deploy and manage applications in a customizable cloud environment.
 ---
 
@@ -27,7 +27,7 @@ In this article, you'll learn how to:
 
 Service Fabric provides a setup package to create Service Fabric standalone clusters.  [Download the setup package](https://go.microsoft.com/fwlink/?LinkId=730690) on your local computer.  Once it has successfully downloaded copy it over the RDP connection to your VM, and paste it on the Desktop.
 
-Select the zip file and open the context menu and select **Extract All** > **Extract**.  As you extract the files, you will generate a folder on the desktop that is the same as the zip file name.
+Select the zip file and open the context menu and select **Extract All** > **Extract**.  As you extract the files, you generate a folder on the desktop that is the same as the zip file name.
 
 If you want to get more detail on the [contents of the setup package](service-fabric-cluster-standalone-package-contents.md).
 
@@ -51,7 +51,7 @@ After updating the nodes, they appear as follows:
 
 Then you need to update a couple of the properties.  On line 34, you need to modify the connection string for the diagnostic store it should look like this `"connectionstring": "C:\\ProgramData\\SF\\DiagnosticsStore"`
 
-Finally, in the `nodeTypes` section of the configuration add a new section to map the ephemeral ports that windows will use.  The configuration file should look like the following:
+Finally, in the `nodeTypes` section of the configuration add a new section to map the ephemeral ports that windows use.  The configuration file should look like the following:
 
 ```json
 "applicationPorts": {
@@ -74,7 +74,7 @@ cd .\Desktop\Microsoft.Azure.ServiceFabric.WindowsServer.6.2.274.9494\
 .\TestConfiguration.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.MultiMachine.json
 ```
 
-You should see output like the example below. If the bottom field "Passed" is returned as `True`, sanity checks have passed and the cluster looks to be deployable based on the input configuration.
+You should see output like the example below. If the bottom field "Passed" is returned as `True`, checks have passed and the cluster looks to be deployable based on the input configuration.
 
 ```powershell
 Trace folder already exists. Traces will be written to existing trace folder: C:\Users\Administrator\Desktop\Microsoft.Azure.ServiceFabric.WindowsServer.6.2.274.9494\DeploymentTraces

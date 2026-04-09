@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
 ms.update-cycle: 1095-days
 # Customer intent: "As a data architect, I want to use Backup Explorer to read and update Reliable Collections backups, so that I can ensure data integrity and recover from corruption effectively."
 ---

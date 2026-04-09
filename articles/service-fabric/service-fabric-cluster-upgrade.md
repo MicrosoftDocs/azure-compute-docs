@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 11/18/2024
+ms.date: 03/22/2026
 ms.update-cycle: 1095-days
 # Customer intent: "As a cloud administrator, I want to manage and upgrade Azure Service Fabric clusters automatically or manually, so that I can ensure they run on supported versions with minimal disruption to my applications."
 ---
@@ -17,7 +17,7 @@ An Azure Service Fabric cluster is a resource you own, but it's partly managed b
 
 ## Automatic versus manual upgrades
 
-It's critical to ensure your Service Fabric cluster is always running a [supported runtime version](service-fabric-versions.md). Each time Microsoft announces the release of a new version of Service Fabric, the previous version is marked for *end of support* after a minimum of 60 days from that date. New releases are announced on the [Service Fabric team blog](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric).
+It's critical to ensure your Service Fabric cluster is always running a [supported runtime version](service-fabric-versions.md). Each time Microsoft announces the release of a new version of Service Fabric, the previous version is marked for *end of support* after a minimum of 60 days from that date. New releases are announced on the [Service Fabric team blog](https://azure.microsoft.com/blog/product/azure-service-fabric/).
 
 Fourteen days before the expiry of the release your cluster is running, a health event is generated that puts your cluster into a *Warning* health state. The cluster remains in a warning state until you upgrade to a supported runtime version.
 
@@ -30,7 +30,7 @@ You can also set your cluster upgrade mode and select a runtime version [using a
 Automatic upgrades are the recommended upgrade mode, as this option ensures your cluster stays in a supported state and benefits from the latest fixes and features while also allowing you to schedule updates in a manner that is least disruptive to your workloads using a [wave deployment](#wave-deployment-for-automatic-upgrades) strategy.
 
 > [!NOTE]
-> If you change an existing cluster to automatic mode, the cluster will be enrolled for the next upgrade period starting with a new release. New releases are announced on the [Service Fabric team blog](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric). Per upgrade period the highest possible upgrade path is chosen, see [supported versions](service-fabric-versions.md). The manual upgrade mode triggers an immediate upgrade. 
+> If you change an existing cluster to automatic mode, the cluster will be enrolled for the next upgrade period starting with a new release. New releases are announced on the [Service Fabric team blog](https://azure.microsoft.com/blog/product/azure-service-fabric/). Per upgrade period the highest possible upgrade path is chosen, see [supported versions](service-fabric-versions.md). The manual upgrade mode triggers an immediate upgrade. 
 
 ## Wave deployment for automatic upgrades
 

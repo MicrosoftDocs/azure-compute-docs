@@ -1,6 +1,6 @@
 ---
-title: Migrate Azure VMs to Managed Disks 
-description: Migrate Azure virtual machines created using unmanaged disks in storage accounts to use Managed Disks.
+title: Migrate Azure VMs to managed disks 
+description: Migrate Azure virtual machines created using unmanaged disks in storage accounts to use managed disks.
 author: roygara
 ms.service: azure-disk-storage
 ms.topic: how-to
@@ -9,18 +9,18 @@ ms.author: rogarana
 # Customer intent: "As a cloud administrator, I want to migrate Azure virtual machines from unmanaged to managed disks, so that I can enhance storage management, improve reliability, and reduce the risk of single points of failure."
 ---
 
-# Migrate Azure VMs to Managed Disks in Azure
+# Migrate Azure VMs to managed disks in Azure
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs 
 
 [!INCLUDE [disks-unmanaged-disks-retirement](../includes/disks-unmanaged-disks-retirement.md)]
 
-Azure managed disks simplifies your storage management by removing the need to separately manage storage accounts. Managed disks provide numerous benefits over unmanaged disks, such as [high availability](../disks-high-availability.md), better [scalability](../disks-scalability-targets.md), large disks, [bursting](disk-bursting.md), and [shared disks](disks-shared-enable.md). You can also migrate your existing Azure VMs to Managed Disks to benefit from better reliability of VMs in an Availability Set. It ensures that the disks of different VMs in an Availability Set are sufficiently isolated from each other to avoid single point of failures. It automatically places disks of different VMs in an Availability Set in different Storage scale units (stamps) which limits the impact of single Storage scale unit failures caused due to hardware and software failures.
+Azure managed disks simplifies your storage management by removing the need to separately manage storage accounts. Managed disks provide numerous benefits over unmanaged disks, such as [high availability](../disks-high-availability.md), better [scalability](../disks-scalability-targets.md), large disks, [bursting](disk-bursting.md), and [shared disks](disks-shared-enable.md). You can also migrate your existing Azure VMs to managed disks to benefit from better reliability of VMs in an Availability Set. It ensures that the disks of different VMs in an Availability Set are sufficiently isolated from each other to avoid single point of failures. It automatically places disks of different VMs in an Availability Set in different Storage scale units (stamps) which limits the impact of single Storage scale unit failures caused due to hardware and software failures.
 Based on your needs, you can choose from four types of storage options. To learn about the available disk types, see [Select a disk type](../disks-types.md)
 
 ## Migration scenarios
 
-You can migrate to Managed Disks in following scenarios:
+You can migrate to managed disks in following scenarios:
 
 |Scenario  |Article  |
 |---------|---------|
@@ -33,5 +33,5 @@ You can migrate to Managed Disks in following scenarios:
 
 ## Next steps
 
-- Learn more about [Managed Disks](../managed-disks-overview.md)
-- Review the [pricing for Managed Disks](https://azure.microsoft.com/pricing/details/managed-disks/).
+- Learn more about [managed disks](../managed-disks-overview.md)
+- Review the [pricing for managed disks](https://azure.microsoft.com/pricing/details/managed-disks/).

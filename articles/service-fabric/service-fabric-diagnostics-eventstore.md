@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 ms.update-cycle: 1095-days
 ms.custom: sfi-image-nochange
 # Customer intent: As a cloud administrator, I want to utilize the EventStore service in Azure Service Fabric, so that I can efficiently monitor and diagnose the state and performance of my clusters and workloads at any given time.
@@ -15,7 +15,7 @@ ms.custom: sfi-image-nochange
 # EventStore Overview
 
 >[!NOTE]
->As of Service Fabric version 6.4. the EventStore APIs are only available for Windows clusters running on Azure only. We are working on porting this functionality to Linux as well as our Standalone clusters.
+>As of Service Fabric version 6.4. the EventStore APIs are only available for Windows clusters running on Azure only. We're working on porting this functionality to Linux as well as our Standalone clusters.
 
 ## Overview
 
@@ -31,7 +31,7 @@ The EventStore is a stateful Service Fabric service that maintains events from t
 To see a full list of events available in the EventStore, see [Service Fabric events](service-fabric-diagnostics-event-generation-operational.md).
 
 >[!NOTE]
->As of Service Fabric version 6.4. the EventStore APIs and UX are generally available for Azure Windows clusters. We are working on porting this functionality to Linux as well as our Standalone clusters.
+>As of Service Fabric version 6.4. the EventStore APIs and UX are generally available for Azure Windows clusters. We're working on porting this functionality to Linux as well as our Standalone clusters.
 
 The EventStore service can be queried for events that are available for each entity and entity type in your cluster. This means you can query for events on the following levels:
 * Cluster: events specific to the cluster itself (e.g. cluster upgrade)

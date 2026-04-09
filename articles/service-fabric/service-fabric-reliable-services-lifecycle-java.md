@@ -7,7 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-extended-java
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
 ms.update-cycle: 1095-days
 # Customer intent: As a Java developer working with Azure Service Fabric, I want to understand the lifecycle events of Reliable Services, so that I can effectively manage stateful and stateless service behaviors during startup, shutdown, and primary swaps.
 ---
@@ -45,7 +45,7 @@ The lifecycle of a stateless service is fairly straightforward. Here's the order
 2. `StatelessService.createServiceInstanceListeners()` is invoked, and any returned listeners are opened. `CommunicationListener.openAsync()` is called on each listener.
 3. Then in parallel:
     - The service's `runAsync` method (`StatelessService.runAsync()`) is called.
-    - If present, the service's own `onOpenAsync` method is called. Specifically, `StatelessService.onOpenAsync()` is called. This is an uncommon override, but it is available.
+    - If present, the service's own `onOpenAsync` method is called. Specifically, `StatelessService.onOpenAsync()` is called. This is an uncommon override, but it's available.
 
 ## Stateless service shutdown
 When shutting down a stateless service, the same pattern is followed, but in reverse:
@@ -79,11 +79,11 @@ Like stateless services, the lifecycle events during shutdown are the same as du
 > [!NOTE]
 > Waiting for `runAsync` to finish is necessary only if this replica is a primary replica.
 
-3. After `runAsync()` finishes, the service's `StatefulServiceBase.onCloseAsync()` method is called. This call is an uncommon override, but it is available.
+3. After `runAsync()` finishes, the service's `StatefulServiceBase.onCloseAsync()` method is called. This call is an uncommon override, but it's available.
 4. After `StatefulServiceBase.onCloseAsync()` finishes, the service object is destructed.
 
 ## Stateful service primary swaps
-While a stateful service is running, communication listeners are opened and the `runAsync` method is called only for the primary replicas of that stateful services. Secondary replicas are constructed, but see no further calls. While a stateful service is running, the replica that's currently the primary can change. The lifecycle events that a stateful replica can see depends on whether it is the replica being demoted or promoted during the swap.
+While a stateful service is running, communication listeners are opened and the `runAsync` method is called only for the primary replicas of that stateful services. Secondary replicas are constructed, but see no further calls. While a stateful service is running, the replica that's currently the primary can change. The lifecycle events that a stateful replica can see depends on whether it's the replica being demoted or promoted during the swap.
 
 ### For the demoted primary
 Service Fabric needs the primary replica that's demoted to stop processing messages and stop any background work. This step is similar to when the service is shut down. One difference is that the service isn't destructed or closed, because it remains as a secondary. The following events occur:

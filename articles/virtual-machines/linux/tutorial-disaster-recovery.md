@@ -110,7 +110,7 @@ If you want to enable disaster recovery on an existing VM, use this procedure.
         - By default one cache storage account is created per vault and reused.
         - You can select a different storage account if you want to customize the cache account for the VM.
     - **Storage settings-Replica managed disk**. By default, Site Recovery creates replica managed disks in the target region.
-        -  By default the target managed disk mirror the source VM managed disks, using the same storage type (standard HDD/SSD, or premium SSD).
+        -  By default the target managed disk mirror the source VM managed disks, using the same storage type (Standard HDD/SSD, or Premium SSD).
         - You can customize the storage type as needed.
     - **Replication settings**. Shows the vault in which the VM is located, and the replication policy used for the VM. By default, recovery points created by Site Recovery for the VM are kept for 24 hours.
     - **Extension settings**. Indicates that Site Recovery manages updates to the Site Recovery Mobility Service extension that's installed on VMs you replicate.

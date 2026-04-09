@@ -7,7 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-arm-template, devx-track-azurepowershell
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: As a cloud developer, I want to deploy applications and services using Azure Resource Manager templates, so that I can streamline the management and governance of my Service Fabric cluster in a single deployment step.
 ---
 
@@ -271,7 +271,7 @@ Remove-AzResource -ResourceId $appTypeVersion.Id
 # remove application type 
 # Remove-AzResource -ResourceId $appType.Id
 ```
-Simply removing Microsoft.ServiceFabric/clusters/application from your ARM template won't unprovision the Application. PowerShell command Remove-AzResource as shown above or performing a REST DELETE [Application Type Versions - Delete](/rest/api/servicefabric/application/application-type-versions/delete) directly are two options that can be used.
+Simply removing Microsoft.ServiceFabric/clusters/application from your ARM template won't unprovision the Application. PowerShell command Remove-AzResource as shown above or performing a REST DELETE [Application Type Versions - Delete](/rest/api/servicefabric/application-type-versions/delete) directly are two options that can be used.
 
 >[!NOTE]
 > Once the removal is complete you should not see the package version in SFX or ARM anymore. You cannot delete the application type version resource that the application is running with; ARM/SFRP will prevent this. If you try to unprovision the running package, SF runtime will prevent it.

@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 01/23/2026
+ms.date: 03/22/2026
 ms.update-cycle: 1095-days
 # Customer intent: As a cloud developer, I want to utilize a distributed systems platform for building and managing scalable microservices, so that I can effectively deploy, monitor, and maintain applications across various environments.
 ---
@@ -23,7 +23,7 @@ Service Fabric powers many Microsoft services today, including Azure SQL Databas
 
 ## Container orchestration
 
-Service Fabric is Microsoft's [container orchestrator](service-fabric-cluster-resource-manager-introduction.md) for deploying and managing microservices across a cluster of machines, benefiting from the lessons learned running  Microsoft services at massive scale. Service Fabric can deploy applications in seconds, at high density with hundreds or thousands of applications or containers per machine. With Service Fabric, you can mix both services in processes and services in containers in the same application.
+Service Fabric is Microsoft's [container orchestrator](service-fabric-cluster-resource-manager-introduction.md) for deploying and managing microservices across a cluster of machines, benefiting from the lessons learned by running Microsoft services at massive scale. Service Fabric can deploy applications in seconds, at high density with hundreds or thousands of applications or containers per machine. With Service Fabric, you can mix both services in processes and services in containers in the same application.
 
 [Learn more about Service Fabric](service-fabric-content-roadmap.md) core concepts, programming models, application lifecycle, testing, clusters, and health monitoring.
 

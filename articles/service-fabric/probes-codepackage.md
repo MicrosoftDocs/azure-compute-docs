@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
 # Customer intent: As a cloud application developer, I want to configure liveness and readiness probes in Service Fabric manifest files, so that I can ensure my application instances are properly monitored and can handle traffic efficiently.
 ---
 
@@ -17,7 +17,7 @@ Before you proceed with this article, become familiar with the [Service Fabric a
 Starting with version 7.1, Azure Service Fabric supports a liveness probe mechanism for containerize and non containerized applications. A liveness probe helps to report the liveness of a code package, which will restart if it doesn't respond quickly.
 
 ## Readiness probe
-Starting with 8.2, readiness probe is also supported. A readiness probe is used to decide whether a code package is ready to accept traffic. For example if your container is taking a long time to process request or if the request queue is full, then your code package cannot accept anymore traffic and hence the endpoints to reach the code package will be removed. 
+Starting with 8.2, readiness probe is also supported. A readiness probe is used to decide whether a code package is ready to accept traffic. For example if your container is taking a long time to process request or if the request queue is full, then your code package can't accept anymore traffic and hence the endpoints to reach the code package will be removed. 
 
 The behavior of the Readiness Probe is:
 1.	The container/code package instance starts
@@ -29,7 +29,7 @@ The behavior of the Readiness Probe is:
 7.	Requests are routed again and succeed since it was ready to serve requests
 
 > [!NOTE] 
-> For Readiness probe, the code package is not restarted, just the endpoints are unpublished so the replica/partition set in not impacted.
+> For Readiness probe, the code package isn't restarted, just the endpoints are unpublished so the replica/partition set in not impacted.
 >
 
 ## Semantics
@@ -71,9 +71,9 @@ The probe can be for any of the following:
 
 ### HTTP probe
 
-For an HTTP probe, Service Fabric will send an HTTP request to the port and path that you specify. A return code that is greater than or equal to 200, and less than 400, indicates success.
+For an HTTP probe, Service Fabric will send an HTTP request to the port and path that you specify. A return code that's greater than or equal to 200, and less than 400, indicates success.
 
-Here is an example of how to specify an HTTP Liveness probe:
+Here's an example of how to specify an HTTP Liveness probe:
 
 ```xml
   <ServiceManifestImport>
@@ -107,7 +107,7 @@ The HTTP probe has additional properties that you can set:
 * `host`: The host IP address to connect to.
 
 > [!NOTE]
-> Port is not supported for non-containerized applications. For this scenario please use **EndpointRef="EndpointName"** attribute. Replace 'EndpointName' with the name from the Endpoint defined in ServiceManifest.xml.
+> Port isn't supported for non-containerized applications. For this scenario, use **EndpointRef="EndpointName"** attribute. Replace 'EndpointName' with the name from the Endpoint defined in ServiceManifest.xml.
 > 
 > If you use `EndpointRef` with an HTTP endpoint, the `scheme` attribute is optional as HTTP is the default. If you use `EndpointRef` with an HTTPS endpoint, you must explicitly set the `scheme` attribute to "https". 
 ```xml
@@ -128,7 +128,7 @@ The HTTP probe has additional properties that you can set:
 ```
 
 > [!NOTE]
-> Service Fabric HTTPS probes do not support client certificate authentication during the TLS handshake. For details on the handshake process, see the [TLS Handshake Protocol][tls-handshake-link].
+> Service Fabric HTTPS probes don't support client certificate authentication during the TLS handshake. For details on the handshake process, see the [TLS Handshake Protocol][tls-handshake-link].
 >
 
 ### TCP probe

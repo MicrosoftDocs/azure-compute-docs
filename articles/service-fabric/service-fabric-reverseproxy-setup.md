@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
 ms.custom:
   - devx-track-arm-template
   - sfi-image-nochange
@@ -133,7 +133,8 @@ After you have a Resource Manager template, you can enable the reverse proxy wit
               "name": "[concat(parameters('vmNodeType0Name'),'_ServiceFabricNode')]",
               "properties": {
                       "type": "ServiceFabricNode",
-                      "autoUpgradeMinorVersion": false,
+                      "autoUpgradeMinorVersion": true,
+                      "enableAutomaticUpgrade": true,
                       ...
                       "publisher": "Microsoft.Azure.ServiceFabric",
                       "settings": {
@@ -147,7 +148,7 @@ After you have a Resource Manager template, you can enable the reverse proxy wit
                           "x509StoreName": "[parameters('sfReverseProxyCertificateStoreValue')]"
                         },
                   },
-                  "typeHandlerVersion": "1.0"
+                  "typeHandlerVersion": "1.1"
               }
           },
       ]

@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 02/06/2024
+ms.date: 03/22/2026
 # Customer intent: "As an Azure administrator, I want to access and utilize built-in policy definitions for Azure Service Fabric, so that I can effectively manage governance and compliance for my cloud resources."
 ---
 

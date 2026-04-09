@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
 # Customer intent: As a cloud administrator, I want to manage the upgrade settings of my Azure Service Fabric managed cluster, so that I can control the timing and process of updates to ensure system stability and performance.
 ---
 # Manage Service Fabric managed cluster upgrades
@@ -15,7 +15,7 @@ An Azure Service Fabric cluster is a resource you own, but it's partly managed b
 
 ## Set upgrade mode
 
-Azure Service Fabric managed clusters are set by default to receive automatic Service Fabric upgrades as they are released by Microsoft using a [wave deployment](#wave-deployment-for-automatic-upgrades) strategy. As an alternative, you can set up manual mode upgrades in which you choose from a list of currently supported versions. You can configure these settings either through the *Fabric upgrades* control in Azure portal or the `ClusterUpgradeMode` setting in your cluster deployment template.
+Azure Service Fabric managed clusters are set by default to receive automatic Service Fabric upgrades as they're released by Microsoft using a [wave deployment](#wave-deployment-for-automatic-upgrades) strategy. As an alternative, you can set up manual mode upgrades in which you choose from a list of currently supported versions. You can configure these settings either through the *Fabric upgrades* control in Azure portal or the `ClusterUpgradeMode` setting in your cluster deployment template.
 
 ## Wave deployment for automatic upgrades
 

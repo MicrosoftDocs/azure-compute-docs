@@ -1,18 +1,18 @@
 ---
 title: Deploy an application to a Service Fabric managed cluster via PowerShell
-description: In this tutorial, you will connect to a Service Fabric managed cluster and deploy an application via PowerShell.
+description: In this tutorial, you connect to a Service Fabric managed cluster and deploy an application via PowerShell.
 ms.topic: tutorial
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: "As a DevOps engineer, I want to deploy an application to a Service Fabric managed cluster using PowerShell, so that I can streamline the application management and ensure efficient scaling of services within the cluster."
 ---
 
 # Tutorial: Deploy an app to a Service Fabric managed cluster
 
-In this tutorial series we will discuss:
+In this tutorial series we discuss:
 
 > [!div class="checklist"]
 > * [How to deploy a Service Fabric managed cluster](tutorial-managed-cluster-deploy.md)
@@ -58,14 +58,14 @@ Connect-ServiceFabricCluster -ConnectionEndpoint $connectionEndpoint -KeepAliveI
 
 ### Upload an application package
 
-In this tutorial, we will be using the [Service Fabric Voting Application](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/voting-sample-no-reverse-proxy) sample. For more details on Service Fabric application deployment through PowerShell see [Service Fabric deploy and remove applications](service-fabric-deploy-remove-applications.md).
+In this tutorial, we'll be using the [Service Fabric Voting Application](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/voting-sample-no-reverse-proxy) sample. For more details on Service Fabric application deployment through PowerShell, see [Service Fabric deploy and remove applications](service-fabric-deploy-remove-applications.md).
 
 > [!NOTE]
-> In the Service Fabric managed cluster preview you will not be able to publish applications directly from Visual Studio.
+> In the Service Fabric managed cluster preview you won't be able to publish applications directly from Visual Studio.
 
-You will first need to [package the application for deployment](service-fabric-package-apps.md). For this tutorial, please follow the steps for packaging an application from within Visual Studio. It is important to take note of the path where the application has been packaged as it will be used for the path below.
+You'll first need to [package the application for deployment](service-fabric-package-apps.md). For this tutorial, please follow the steps for packaging an application from within Visual Studio. It's important to take note of the path where the application has been packaged as it will be used for the path below.
 
-Once the application package has been created you can upload the application package to your cluster. Update the `$path` value to represent the path where your application package exists, and run the following:
+Once the application package has been created, you can upload the application package to your cluster. Update the `$path` value to represent the path where your application package exists, and run the following:
 
 ```powershell
 $path = "C:\Users\<user>\Documents\service-fabric-dotnet-quickstart\Voting\pkg\Debug"

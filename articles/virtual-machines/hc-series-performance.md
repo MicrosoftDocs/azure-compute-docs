@@ -23,7 +23,7 @@ Performance testing was conducted across multiple HC-series sizes. The following
 | High-Performance Linpack (HPL)                  | 3520 GigaFLOPS (Rpeak), 2970 GigaFLOPS (Rmax) |
 | RDMA latency & bandwidth                        | 1.05 microseconds, 96.8 Gb/s   |
 | FIO on local NVMe SSD                           | 1.3 GB/s reads, 900 MB/s writes |  
-| IOR on 4 Azure Premium SSD (P30 Managed Disks, RAID0)**  | 780 MB/s reads, 780 MB/writes |
+| IOR on 4 Azure Premium SSD (P30 managed disks, RAID0)**  | 780 MB/s reads, 780 MB/writes |
 
 ## MPI latency
 

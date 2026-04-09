@@ -17,10 +17,6 @@ ms.date: 4/15/2025
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs 
 
-> [!IMPORTANT]
-> These virtual machines are in public preview and not recommended for production usage. Please sign up at aka.ms/acc/v6preview for access.
-> These VMs are available in West Europe, East US, West US and West US 3.
-
 The ECesv6-series are [Azure confidential VMs](/azure/confidential-computing/confidential-vm-overview) that can be used to protect the confidentiality and integrity of your code and data while it's being processed in the public cloud. Organizations can use these VMs to seamlessly bring confidential workloads to the cloud without any code changes to the application. 
 
 These machines are powered by Intel® 5th Generation Xeon® Scalable processors reaching an all-core turbo clock speed of 3.0 GHz and [Intel® Advanced Matrix Extensions (AMX)](https://www.intel.com/content/www/us/en/products/docs/accelerator-engines/advanced-matrix-extensions/overview.html) for AI acceleration. 
@@ -32,8 +28,6 @@ These VMs have native support for [confidential disk encryption](disk-encryption
 > [!NOTE]
 > There are some [pricing differences based on your encryption settings](/azure/confidential-computing/confidential-vm-overview#encryption-pricing-differences) for confidential VMs.
 
-> [!NOTE]
-> Certain applications which are time sensitive may experience asynchronous time at VM boot. Whilst a long-term fix is in development, a [workaround is available](/azure/confidential-computing/confidential-vm-faq#what-can-i-do-if-the-time-on-my-dcesv5-ecesv5-series-vm-differs-from-utc-) for Linux customers today. If you need additional support, please create a support request.
 
 ### ECesv6-series feature support
 
@@ -54,7 +48,7 @@ These VMs have native support for [confidential disk encryption](disk-encryption
 
 The ECesv6 VMs offer even higher memory to vCPU ratio and an all new VM size with up to 64 vCPUs and 512 GiB of RAM. These VMs are ideal for memory intensive applications, large relational database servers, business intelligence applications, and critical applications that process sensitive and regulated data. 
 
-This series supports Standard SSD, Standard HDD, and Premium SSD disk types. Billing for disk storage and VMs is separate. To estimate your costs, use the [Pricing Calculator](https://azure.microsoft.com/pricing/calculator/). 
+This series supports Standard SSD, Standard HDD, and Premium SSD types. Billing for disk storage and VMs is separate. To estimate your costs, use the [Pricing Calculator](https://azure.microsoft.com/pricing/calculator/). 
 
 ### ECesv6-series specifications
 

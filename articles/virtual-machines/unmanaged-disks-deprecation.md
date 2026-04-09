@@ -1,21 +1,21 @@
 ---
-title: We're retiring Azure unmanaged disks by March 31, 2026
+title: Unmanaged disks have been retired
 description: This article provides a high-level overview of the retirement of Azure unmanaged disks and how to migrate to Azure managed disks.
 author: roygara
 ms.service: azure-disk-storage
 ms.topic: concept-article
-ms.date: 08/28/2025
+ms.date: 03/10/2026
 ms.author: rogarana
 # Customer intent: As an Azure user managing virtual machines, I want to migrate my unmanaged disks to managed disks before the retirement deadline, so that I can ensure continued operation and take advantage of the enhanced reliability and features of managed disks.
 ---
 
-# Migrate your Azure unmanaged disks by March 31, 2026
+# Migrate unmanaged disks to managed disks
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs
 
-In 2017, we launched [Azure managed disks](https://azure.microsoft.com/blog/announcing-general-availability-of-managed-disks-and-larger-scale-sets/). We've been enhancing capabilities ever since. Because Azure managed disks now have the full capabilities of unmanaged disks and other advancements, we announced the retirement for unmanaged disks on September 13, 2022. Unmanaged disks will be fully retired on March 31, 2026 (extended from previously published date of September 30, 2025).
+In 2017, we launched [Azure managed disks](https://azure.microsoft.com/blog/announcing-general-availability-of-managed-disks-and-larger-scale-sets/). We've been enhancing capabilities ever since. Because Azure managed disks now have the full capabilities of unmanaged disks and other advancements, we announced the retirement for unmanaged disks on September 13, 2022. Unmanaged disks were fully retired on March 31, 2026 (extended from previously published date of September 30, 2025). If you're still using unmanaged disks, migrate to managed disks as soon as possible.
 
-By using managed disks, you don't need to manage storage accounts for creating a disk, because Azure manages the storage accounts under the hood. This abstraction reduces maintenance overhead for you. Also, it allows managed disks to provide numerous benefits over unmanaged disks, such as [high availability](disks-high-availability.md), better [scalability](disks-scalability-targets.md), large disks, [bursting](disk-bursting.md), and [shared disks](disks-shared-enable.md). If you use unmanaged disks, start planning your [Windows](windows/convert-unmanaged-to-managed-disks.md) or [Linux](linux/convert-unmanaged-to-managed-disks.md) migration now. Complete the migration by March 31, 2026, and take advantage of Azure managed disks.
+By using managed disks, you don't need to manage storage accounts for creating a disk, because Azure manages the storage accounts under the hood. This abstraction reduces maintenance overhead for you. Also, it allows managed disks to provide numerous benefits over unmanaged disks, such as [high availability](disks-high-availability.md), better [scalability](disks-scalability-targets.md), large disks, [bursting](disk-bursting.md), and [shared disks](disks-shared-enable.md). If you use unmanaged disks, start planning your [Windows](windows/convert-unmanaged-to-managed-disks.md) or [Linux](linux/convert-unmanaged-to-managed-disks.md) migration now.
 
 ## How am I affected?
 
@@ -37,7 +37,7 @@ Start planning your migration to Azure managed disks today.
    - On the [Azure portal's VM pane](https://portal.azure.com/#view/Microsoft_Azure_ComputeHub/ComputeHubMenuBlade/~/virtualMachinesBrowse), add the **Uses managed disks** filter and set its value to **No**, to get a list of all the affected VMs within the subscription.
    - You can also query Azure Resource Graph by using the [portal](https://portal.azure.com/#view/Microsoft_Azure_Resources/ArgExplorer.ReactView/query/resources%0A%7C%20where%20type%20%3D~%20%22microsoft.compute%2Fvirtualmachines%22%0A%7C%20extend%20osDisk%20%3D%20properties.storageProfile.osDisk%0A%7C%20where%20isnull(osDisk.managedDisk.id)%0A%7C%20project%20subscriptionId%2C%20resourceGroup%2C%20name%2C%20location) to view the list of all flagged VMs and related information for the selected subscriptions.
    - On February 28, 2020, we sent out emails to subscription owners with a list of all subscriptions that contain these VMs. Use them to build this list.
-- Now that you have a list of all the affected VMs, see [Migrate Azure VMs to Managed Disks in Azure](windows/migrate-to-managed-disks.md) to learn how to migrate your unmanaged disks to managed disks. If you have other questions, see [Frequently asked questions about migrating to managed disks](faq-for-disks.yml).
+- Now that you have a list of all the affected VMs, see [Migrate Azure VMs to managed disks in Azure](windows/migrate-to-managed-disks.md) to learn how to migrate your unmanaged disks to managed disks. If you have other questions, see [Frequently asked questions about migrating to managed disks](faq-for-disks.yml).
 
 - If you have further technical questions, problems, and need help with adding subscriptions to the allow list, [contact support](https://portal.azure.com/#create/Microsoft.Support/Parameters/%7B%22pesId%22:%226f16735c-b0ae-b275-ad3a-03479cfa1396%22,%22supportTopicId%22:%228a82f77d-c3ab-7b08-d915-776b4ff64ff4%22%7D).
 

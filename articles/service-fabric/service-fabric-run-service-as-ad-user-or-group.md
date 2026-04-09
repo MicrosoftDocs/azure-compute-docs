@@ -6,18 +6,18 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
 # Customer intent: As a system administrator, I want to configure a Service Fabric service to run under an Active Directory user or group, so that I can enhance security and access necessary domain resources.
 ---
 
 # Run a service as an Active Directory user or group
-On a Windows Server standalone cluster, you can run a service as an Active Directory user or group using a RunAs policy.  By default, Service Fabric applications run under the account that the Fabric.exe process runs under. Running applications under different accounts, even in a shared hosted environment, makes them more secure from one another. Note that this uses Active Directory on-premises within your domain and not Microsoft Entra ID.  You can also run a service as a [group Managed Service Account (gMSA)](service-fabric-run-service-as-gmsa.md).
+On a Windows Server standalone cluster, you can run a service as an Active Directory user or group using a RunAs policy.  By default, Service Fabric applications run under the account that the Fabric.exe process runs under. Running applications under different accounts, even in a shared hosted environment, makes them more secure from one another. This uses Active Directory on-premises within your domain and not Microsoft Entra ID.  You can also run a service as a [group Managed Service Account (gMSA)](service-fabric-run-service-as-gmsa.md).
 
 By using a domain user or group, you can then access other resources in the domain (for example, file shares) that have been granted permissions.
 
 The following example shows an Active Directory user called *TestUser* with their domain password encrypted by using a certificate called *MyCert*. You can use the `Invoke-ServiceFabricEncryptText` PowerShell command to create the secret cipher text. See [Managing secrets in Service Fabric applications](service-fabric-application-secret-management.md) for details.
 
-You must deploy the private key of the certificate to decrypt the password to the local machine by using an out-of-band method (in Azure, this is via Azure Resource Manager). Then, when Service Fabric deploys the service package to the machine, it is able to decrypt the secret and (along with the user name) authenticate with Active Directory to run under those credentials.
+You must deploy the private key of the certificate to decrypt the password to the local machine by using an out-of-band method (in Azure, this is via Azure Resource Manager). Then, when Service Fabric deploys the service package to the machine, it's able to decrypt the secret and (along with the user name) authenticate with Active Directory to run under those credentials.
 
 ```xml
 <Principals>

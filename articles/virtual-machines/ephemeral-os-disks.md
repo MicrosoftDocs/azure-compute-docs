@@ -141,7 +141,7 @@ For more information on [Encryption at host](./disk-encryption.md)
 SSD support is a new option that allows customers to choose the type of base disk that is used for the ephemeral OS disk. Previously, the base disk could only be Standard HDD. Now, customers can choose between the three types of disks: Standard HDD(Standard_LRS), Standard SSD (StandardSSD_LRS) or Premium SSD (Premium_LRS). By utilizing SSD with Ephemeral OS disk, customers can benefit from the following enhancements:
 
 - **Enhanced SLA**: VMs created with Premium SSD provide higher SLA than VMs created with Standard HDD. Customers can enhance [SLA](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services) for their Ephemeral VMs by choosing Premium SSD as base disk.
-- **Improved performance**: By choosing Premium SSD as the base disk, customers can enhance the disk read performance of their VMs. While most writes occur on the local temp disk, some reads are performed from managed disks. Premium SSD disks provide 8-10 times higher IOPS than Standard HDD. 
+- **Improved performance**: By choosing Premium SSD as the base disk, customers can enhance the disk read performance of their VMs. While most writes occur on the local temp disk, some reads are performed from managed disks. Premium SSDs provide 8-10 times higher IOPS than Standard HDD. 
 
 ## Local temporary storage
 

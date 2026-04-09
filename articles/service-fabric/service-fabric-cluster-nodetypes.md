@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 ms.update-cycle: 1095-days
 # Customer intent: As an application architect, I want to understand how Azure Service Fabric node types interact with virtual machine scale sets, so that I can effectively design and manage my cloud infrastructure for optimal performance and scalability.
 ---
@@ -77,7 +77,7 @@ The following are the property descriptions:
 | name | string | Unique name for extension |
 | type | "ServiceFabricLinuxNode" or "ServiceFabricNode" | Identifies OS Service Fabric is bootstrapping to |
 | autoUpgradeMinorVersion | true or false | Use newest minor version of extension at deployment time |
-| enableAutomaticUpgrade | true or false | Automatically upgrade extension once a non-major version is available. Only available for type ServiceFabricLinuxNode |
+| enableAutomaticUpgrade | true or false | Automatically upgrade extension once a non-major version is available. Available for both ServiceFabricLinuxNode and ServiceFabricNode types |
 | publisher | Microsoft.Azure.ServiceFabric | Name of the Service Fabric extension publisher |
 | clusterEndpoint | string | URI:PORT to Management endpoint |
 | nodeTypeRef | string | Name of nodeType |
@@ -86,7 +86,7 @@ The following are the property descriptions:
 | nicPrefixOverride | string | Subnet Prefix like "10.0.0.0/24" |
 | commonNames | string[] | Common Names of installed cluster certificates |
 | x509StoreName | string | Name of Store where installed cluster certificate is located |
-| typeHandlerVersion | 1.1 | Version of Extension. 1.0 classic versions of extension are recommended to upgrade to 1.1 |
+| typeHandlerVersion | 1.1 (ServiceFabricNode), 2.0 (ServiceFabricLinuxNode) | Version of Extension. |
 | dataPath | string | Path to the drive used to save state for Service Fabric system services and application data.
 
 ## Next steps

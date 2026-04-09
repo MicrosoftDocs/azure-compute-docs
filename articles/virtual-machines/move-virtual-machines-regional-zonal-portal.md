@@ -4,7 +4,7 @@ description: Learn how to move single-instance Azure virtual machines from a reg
 ms.service: azure-virtual-machines
 ms.topic: how-to
 ms.date: 02/20/2026
-ms.custom: sfi-image-nochange
+ms.custom: sfi-image-nochange portal
 # Customer intent: "As a cloud administrator, I want to move Azure single instance virtual machines from a regional configuration to zonal availability zones, so that I can improve the reliability and performance of my applications within the same region."
 ---
 

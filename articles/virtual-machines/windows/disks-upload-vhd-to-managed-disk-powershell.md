@@ -3,7 +3,7 @@ title: Upload a VHD to Azure or copy a disk across regions - Azure PowerShell
 description: Learn how to upload a VHD to an Azure managed disk and copy a managed disk across regions, using Azure PowerShell, via direct upload.    
 author: roygara
 ms.author: rogarana
-ms.date: 08/15/2024
+ms.date: 02/09/2026
 ms.topic: how-to
 ms.service: azure-disk-storage
 ms.tgt_pltfrm: linux
@@ -17,30 +17,9 @@ ms.custom: references_regions, devx-track-azurepowershell
 
 This article explains how to either upload a VHD from your local machine to an Azure managed disk or copy a managed disk to another region, using the Azure PowerShell module. The process of uploading a managed disk, also known as direct upload, enables you to upload a VHD up to 32 TiB in size directly into a managed disk. Currently, direct upload is supported for Ultra Disks, Premium SSD v2, Premium SSD, Standard SSD, and Standard HDD.
 
-If you're providing a backup solution for IaaS VMs in Azure, you should use direct upload to restore customer backups to managed disks. When uploading a VHD from a source external to Azure, speeds depend on your local bandwidth. When uploading or copying from an Azure VM, your bandwidth would be the same as standard HDDs.
+If you're providing a backup solution for IaaS VMs in Azure, you should use direct upload to restore customer backups to managed disks. When uploading a VHD from a source external to Azure, speeds depend on your local bandwidth. When uploading or copying from an Azure VM, your bandwidth would be the same as Standard HDDs.
 
-<a name='secure-uploads-with-azure-ad'></a>
-
-## Secure uploads with Microsoft Entra ID
-
-If you're using [Microsoft Entra ID](/azure/active-directory/fundamentals/active-directory-whatis) to control resource access, you can now use it to restrict uploading of Azure managed disks. This feature is available as a GA offering in all regions. When a user attempts to upload a disk, Azure validates the identity of the requesting user in Microsoft Entra ID, and confirms that user has the required permissions. At a higher level, a system administrator could set a policy at the Azure account or subscription level to ensure that a Microsoft Entra identity has the necessary permissions for uploading before allowing a disk or a disk snapshot to be uploaded. If you have any questions on securing uploads with Microsoft Entra ID, reach out to this email: azuredisks@microsoft .com
-
-### Prerequisites
-[!INCLUDE [disks-azure-ad-upload-download-prereqs](../includes/disks-azure-ad-upload-download-prereqs.md)]
-
-### Restrictions
-[!INCLUDE [disks-azure-ad-upload-download-restrictions](../includes/disks-azure-ad-upload-download-restrictions.md)]
-
-### Assign RBAC role
-
-To access managed disks secured with Microsoft Entra ID, the requesting user must have either the [Data Operator for Managed Disks](/azure/role-based-access-control/built-in-roles#data-operator-for-managed-disks) role, or a [custom role](/azure/role-based-access-control/custom-roles-powershell) with the following permissions: 
-
-- **Microsoft.Compute/disks/download/action**
-- **Microsoft.Compute/disks/upload/action**
-- **Microsoft.Compute/snapshots/download/action**
-- **Microsoft.Compute/snapshots/upload/action**
-
-For detailed steps on assigning a role, see [Assign Azure roles using Azure PowerShell](/azure/role-based-access-control/role-assignments-powershell). To create or update a custom role, see [Create or update Azure custom roles using Azure PowerShell](/azure/role-based-access-control/custom-roles-powershell).
+If you're using [Microsoft Entra ID](/azure/active-directory/fundamentals/active-directory-whatis) to control resource access, you can use it to restrict uploading of Azure managed disks. See [Secure downloads and uploads of Azure managed disks](../disks-secure-upload-download.md) for details.
 
 ## Get started
 
@@ -64,11 +43,11 @@ For guidance on how to copy a managed disk from one region to another, see [Copy
 
 ### (Optional) Grant access to the disk
 
-If Microsoft Entra ID is used to enforce upload restrictions on a subscription or at the account level, [Add-AzVHD](/powershell/module/az.compute/add-azvhd) only succeeds if attempted by a user that has the [appropriate RBAC role or necessary permissions](#assign-rbac-role). You'll need to [assign RBAC permissions](/azure/role-based-access-control/role-assignments-powershell) to grant access to the disk and generate a writeable SAS.
+If Microsoft Entra ID is used to enforce upload restrictions on a subscription or at the account level, [Add-AzVHD](/powershell/module/az.compute/add-azvhd) only succeeds if attempted by a user that has the [appropriate RBAC role or necessary permissions](../disks-secure-upload-download.md#assign-rbac-role). You'll need to [assign RBAC permissions](/azure/role-based-access-control/role-assignments-powershell) to grant access to the disk and generate a writeable SAS.
 
 ```azurepowershell
 New-AzRoleAssignment -SignInName <emailOrUserprincipalname> `
--RoleDefinitionName "Data Operator for Managed Disks" `
+-RoleDefinitionName "Data Operator for managed disks" `
 -Scope /subscriptions/<subscriptionId>
 ```
 
@@ -77,7 +56,7 @@ New-AzRoleAssignment -SignInName <emailOrUserprincipalname> `
 The following example uploads a VHD from your local machine to a new Azure managed disk using [Add-AzVHD](/powershell/module/az.compute/add-azvhd). Replace `<your-filepath-here>`, `<your-resource-group-name>`,`<desired-region>`, and `<desired-managed-disk-name>` with your parameters:
 
 > [!NOTE]
-> If you're using Microsoft Entra ID to enforce upload restrictions, add `DataAccessAuthMode 'AzureActiveDirectory'` to the end of your `Add-AzVhd` command.
+> If you're using Microsoft Entra ID to [secure disk uploads](../disks-secure-upload-download.md), add `-DataAccessAuthMode 'AzureActiveDirectory'` to the end of your `Add-AzVhd` command.
 
 ```azurepowershell
 # Required parameters
@@ -112,20 +91,21 @@ This kind of managed disk has two unique states:
 - ActiveUpload, which means that the disk is ready to receive an upload and the SAS has been generated.
 
 > [!NOTE]
-> While in either of these states, the managed disk will be billed at [standard HDD pricing](https://azure.microsoft.com/pricing/details/managed-disks/), regardless of the actual type of disk. For example, a P10 will be billed as an S10. This will be true until `revoke-access` is called on the managed disk, which is required in order to attach the disk to a VM.
+> While in either of these states, the managed disk will be billed at [Standard HDD pricing](https://azure.microsoft.com/pricing/details/managed-disks/), regardless of the actual type of disk. For example, a P10 will be billed as an S10. This will be true until `revoke-access` is called on the managed disk, which is required in order to attach the disk to a VM.
 
 ### Create an empty managed disk
 
-Before you can create an empty standard HDD for uploading, you'll need the file size of the VHD you want to upload, in bytes. The example code will get that for you but, to do it yourself you can use: `$vhdSizeBytes = (Get-Item "<fullFilePathHere>").length`. This value is used when specifying the **-UploadSizeInBytes** parameter.
+Before you can create an empty Standard HDD for uploading, you'll need the file size of the VHD you want to upload, in bytes. The example code will get that for you but, to do it yourself you can use: `$vhdSizeBytes = (Get-Item "<fullFilePathHere>").length`. This value is used when specifying the **-UploadSizeInBytes** parameter.
 
-Now, on your local shell, create an empty standard HDD for uploading by specifying the **Upload** setting in the **-CreateOption** parameter as well as the **-UploadSizeInBytes** parameter in the [New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig) cmdlet. Then call [New-AzDisk](/powershell/module/az.compute/new-azdisk) to create the disk.
+Now, on your local shell, create an empty Standard HDD for uploading by specifying the **Upload** setting in the **-CreateOption** parameter as well as the **-UploadSizeInBytes** parameter in the [New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig) cmdlet. Then call [New-AzDisk](/powershell/module/az.compute/new-azdisk) to create the disk.
 
 Replace `<yourdiskname>`, `<yourresourcegroupname>`, and `<yourregion>` then run the following commands:
 
 > [!IMPORTANT]
 > If you're creating an OS disk, add `-HyperVGeneration '<yourGeneration>'` to `New-AzDiskConfig`.
 > 
-> If you're using Microsoft Entra ID to secure your uploads, add `-dataAccessAuthMode 'AzureActiveDirectory'` to `New-AzDiskConfig`.  
+> If you're using Microsoft Entra ID to [secure disk uploads](../disks-secure-upload-download.md), add `-dataAccessAuthMode 'AzureActiveDirectory'` to `New-AzDiskConfig`.
+>
 > When uploading to an Ultra Disk or Premium SSD v2 you need to select the correct sector size of the target disk. If you're using a VHD file with a 512 logical sector size, the target disk must be set to 512. If you're using a VHDX file with a 4k logical sector size, the target disk must be set to 4k, and target disk size must match VHDX file size. Note that uploading a VHDX file will result in a size expansion to the next 256 MiB alignment.
 >
 > VHDX files with logical sector size of 512 aren't supported.
@@ -165,7 +145,7 @@ Use AzCopy v10 to upload your local VHD or VHDX file to a managed disk by specif
 > [!NOTE]
 > If you need to upload VHDx files larger than 2TB (which exceeds the VHD format limit) and can't convert them to VHD due to their size, please be aware that VHDx files are only supported for upload to PremiumSSDv2 and UltraSSD disk SKUs. For files smaller than 2TB, it's recommended to convert them to the VHD format before uploading.
 
-This upload has the same throughput as the equivalent [standard HDD](../disks-types.md#standard-hdds). For example, if you have a size that equates to S4, you'll have a throughput of up to 60 MiB/s. But, if you have a size that equates to S70, you'll have a throughput of up to 500 MiB/s.
+This upload has the same throughput as the equivalent [Standard HDD](../disks-types.md#standard-hdds). For example, if you have a size that equates to S4, you'll have a throughput of up to 60 MiB/s. But, if you have a size that equates to S70, you'll have a throughput of up to 500 MiB/s.
 
 ```
 AzCopy.exe copy "c:\somewhere\mydisk.vhd" $diskSas.AccessSAS --blob-type PageBlob

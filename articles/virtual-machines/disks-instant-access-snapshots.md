@@ -12,16 +12,16 @@ ms.custom: references_regions, portal
 
 # Instant access snapshots for Azure managed disks 
 
-Azure Managed Disk snapshots provide point-in-time backups of disks that can be used as backup during software upgrades, disaster recovery, or to create new environments. When creating snapshots from Azure Managed Disks, Azure automatically copies the data from the disk to the snapshot in the background.
+Azure managed disk snapshots provide point-in-time backups of disks that can be used as backup during software upgrades, disaster recovery, or to create new environments. When creating snapshots from Azure managed disks, Azure automatically copies the data from the disk to the snapshot in the background.
 
-Snapshots of Premium SSD, Standard SSD, and Standard HDD disks are by default instant access. Immediately upon creation, these snapshots can be used to restore new disks, download underlying data, and copy to other Azure regions. 
+Snapshots of Premium SSD, Standard SSD, and Standard HDDs are by default instant access. Immediately upon creation, these snapshots can be used to restore new disks, download underlying data, and copy to other Azure regions. 
 
 Snapshots of Ultra Disks and Premium SSD v2 aren't instant access by default and require the background data copy to complete before they can be used. To create instant access snapshots, you can opt in to enable instant access using the existing snapshot API at the time of snapshot creation.
 
 
-## Snapshots of Premium SSD, Standard SSD, and Standard HDD disks
+## Snapshots of Premium SSD, Standard SSD, and Standard HDDs
 
-Snapshots of Premium SSD, Standard SSD, and Standard HDD disks are instant access by default. As soon as snapshots are created, you can immediately use these snapshots to create new disks of any supported disk types, generate SAS URIs to download data, or copy snapshots to other Azure regions for regional disaster recovery. After snapshot creation, Azure automatically initiates a background data copy from the source disk to snapshot.
+Snapshots of Premium SSD, Standard SSD, and Standard HDDs are instant access by default. As soon as snapshots are created, you can immediately use these snapshots to create new disks of any supported disk types, generate SAS URIs to download data, or copy snapshots to other Azure regions for regional disaster recovery. After snapshot creation, Azure automatically initiates a background data copy from the source disk to snapshot.
 
 Disks created from snapshots of Premium SSD, Standard SSD, and Standard HDD can be immediately attached to running virtual machines. During disk creation, Azure automatically initiates a background data copy to hydrate the disk from snapshot data. During this process, the disk may experience temporary performance degradation until the background copy completes. To reduce the performance impact, you can create a full snapshot on Premium Storage and restore the disk from that snapshot.
 
@@ -49,12 +49,12 @@ Until the data is fully copied to Standard Storage, snapshots in the **InstantAc
 - The encryption property of a disk created from an instant access snapshot can't be updated during disk hydration and you can't update the encryption settings for Ultra Disks and Premium SSD v2 that currently have active instant access snapshots
 - Attaching Ultra Disks and Premium SSD v2 across fault domains (using either a VM in an availability set or a Virtual Machine Scale Set) triggers the background data copy and prevents you from creating an instant access snapshot during the background data copy. 
 - Ultra Disk and Premium SSD v2 that have active instant access snapshots can't be attached across fault domains
-- To create instant access snapshots from Ultra disks, the snapshot must be created from a newly provisioned Ultra Disks.
+- To create instant access snapshots from Ultra Disks, the snapshot must be created from a newly provisioned Ultra Disks.
 - The greatest read latency improvements for disks created from instant access snapshots are currently available in Germany West Central, East Asia, Southeast Asia, Central India, and Sweden Central.
 
 ### Regional availability
 
-Instant access snapshots are currently supported in all pulic regions.
+Instant access snapshots are currently supported in all public regions.
 
 
 ### Billing of instant access snapshots of Ultra Disks and Premium SSD v2 disks
@@ -67,7 +67,7 @@ Learn more about Instant Access Snapshot billing in [here](https://azure.microso
 
 ### Create an instant access snapshot
 
-Instant access snapshots of Ultra DIsk and Premium SSD v2 are not a separate snapshot resource class to manage. They are incremental snapshots that temporarily enter Instant Access state for the specified duration. When this duration expires, snapshots automatically transition out of the Instant Access state and continue as Standard ZRS snapshots for better reliability and long-term retention.
+Instant access snapshots of Ultra Disk and Premium SSD v2 are not a separate snapshot resource class to manage. They are incremental snapshots that temporarily enter Instant Access state for the specified duration. When this duration expires, snapshots automatically transition out of the Instant Access state and continue as Standard ZRS snapshots for better reliability and long-term retention.
 
 To create instant access snapshots of Ultra Disk and Premium SSD v2, you use the same Snapshot API and commands, but add an additional parameter that specifies the how long the snapshot remains in the instant access state (minimum 60 minutes, maximum 300 minutes). After the specified duration expires, the snapshot automatically transitions to a Standard Storage snapshot. You can monitor your snapshot's state by [checking the snapshot's access state](#check-snapshot-access-state).
 
@@ -81,7 +81,7 @@ In the Azure portal, you can't specify a duration, so snapshots created through 
 subscriptionId="yourSubscriptionId"
 diskName="yourDiskName"
 resourceGroupName="yourResourceGroupName"
-snapshotName="desiredInstantAaccessSnapshotName"
+snapshotName="desiredInstantAccessSnapshotName"
 
 # Set Subscription Id
 
@@ -93,7 +93,7 @@ yourDiskID=$(az disk show -n $diskName -g $resourceGroupName --query "id" --outp
 
 # Create an instant access snapshot
 
-az snapshot create -g $resourceGroupName -n $snapshotName --source $yourDiskID --incremental true --location eastus2euap  --sku Standard_ZRS --ia-duration 300 
+az snapshot create -g $resourceGroupName -n $snapshotName --source $yourDiskID --incremental true --location eastus  --sku Standard_ZRS --ia-duration 300 
 ```
 
 #### [Azure PowerShell](#tab/azure-powershell)
@@ -103,7 +103,7 @@ az snapshot create -g $resourceGroupName -n $snapshotName --source $yourDiskID -
 $subscriptionId="yourSubscriptionId"
 $diskName = "yourDiskName"
 $resourceGroupName = "yourResourceGroupName"
-$snapshotName = " desiredInstantAaccessSnapshotName"
+$snapshotName = " desiredInstantAccessSnapshotName"
 $location = "yourLocation"
 
 # Set Subscription Id
@@ -140,7 +140,7 @@ New-AzSnapshot -ResourceGroupName $resourceGroupName -SnapshotName $snapshotName
             "type": "String"        
                         },
         "location": {
-            "defaultValue": "eastus2euap",
+            "defaultValue": "eastus",
             "type": "String",
             "metadata": {
                 "description": "Location for all resources."
@@ -173,12 +173,12 @@ New-AzSnapshot -ResourceGroupName $resourceGroupName -SnapshotName $snapshotName
 
 ## Check snapshot access state
 
-You can monitor Managed Disk Snapshot across different states using the `SnapshotAccessState` property of the snapshot resource. This property indicates the current access state of a snapshot, helping you understand its readiness for operations. Here are the states and what they imply:
+You can monitor managed disk Snapshot across different states using the `SnapshotAccessState` property of the snapshot resource. This property indicates the current access state of a snapshot, helping you understand its readiness for operations. Here are the states and what they imply:
 
 | **State**                  | **Description**                                                                                                                                                                                                                     | **Applies To**                                                                                                                                                                                                 |
 |----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Pending**                | This snapshot can't be used to create a new disk, download data, or copy to another region.                                                                                                 | Incremental snapshots from Ultra Disks and Premium SSD v2 disks during background data copy; snapshots being copied across regions.                                                                            |
-| **Available**              | This snapshot can be used to create a new disk (with a performance impact), download data, or copy to another region.                                                                       | Snapshots of Premium SSD, Standard SSD, and Standard HDD disks; incremental snapshots for Ultra Disks and Premium SSD v2 disks after background copy completes; snapshots copied within the same region using shallow copy. |
+| **Available**              | This snapshot can be used to create a new disk (with a performance impact), download data, or copy to another region.                                                                       | Snapshots of Premium SSD, Standard SSD, and Standard HDDs; incremental snapshots for Ultra Disks and Premium SSD v2 disks after background copy completes; snapshots copied within the same region using shallow copy. |
 | **InstantAccess**          | This snapshot can be used to create rapidly hydrated disk with minimal performance impact, but the underlying data can't be downloaded and it can't be copied to another region.                        | Instant access snapshots for Ultra Disks and Premium SSD v2 disks when the instant access duration hasn't lapsed and the background data copy is ongoing.                                                     |
 | **AvailableWithInstantAccess** | This snapshot can be used to create rapidly hydrated disk with minimal performance impact, the underlying data can be downloaded, and it can be copied to another region.                              | Instant access snapshots for Ultra Disks and Premium SSD v2 disks when the instant access duration hasn't lapsed and the background data copy completes.                                                      |
 
@@ -199,4 +199,4 @@ az resource show --ids $snapshotId --query "properties.creationData.instantAcces
 
 Access your snapshot in the [Azure portal](https://portal.azure.com), the access state is displayed under **Essentials** on **Overview**.
 
-:::image type="content" source="media/disks-instant-access-snapshots/disks-snapshot-instant-access-state.png" alt-text="Screenshot displaying the acesss state of a snapshot in the Azure portal." lightbox="media/disks-instant-access-snapshots/disks-snapshot-instant-access-state.png":::
+:::image type="content" source="media/disks-instant-access-snapshots/disks-snapshot-instant-access-state.png" alt-text="Screenshot displaying the access state of a snapshot in the Azure portal." lightbox="media/disks-instant-access-snapshots/disks-snapshot-instant-access-state.png":::

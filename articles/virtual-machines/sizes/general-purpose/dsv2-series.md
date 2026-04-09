@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 07/29/2024
+ms.date: 03/10/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 # Customer intent: As a cloud architect, I want to review the specifications of the Dsv2 series sizes, so that I can select the appropriate virtual machine types for my applications based on their resource requirements and feature support.
@@ -19,16 +19,7 @@ ms.reviewer: mattmcinnes
 ## Host specifications
 [!INCLUDE [dsv2-series-specs](./includes/dsv2-series-specs.md)]
 
-## Feature support
-
-Premium Storage: Supported<br>
-Premium Storage caching: Not Supported<br>
-Live Migration: Supported<br>
-Memory Preserving Updates: Supported<br>
-VM Generation Support: Generation 1<br>
-Accelerated Networking: Supported<br>
-Ephemeral OS Disks: Not Supported<br>
-Nested Virtualization: Not Supported<br>
+For features supported by this series, see the [Feature support](#feature-support) section.
 
 ## Sizes in series
 
@@ -52,13 +43,13 @@ vCPUs (Qty.) and Memory for each size
 
 Local (temp) storage info for each size
 
-| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read (RR)<sup>1</sup> IOPS | Temp Disk Random Read (RR)<sup>1</sup> Throughput (MB/s) |
+| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read (RR)<sup>1</sup> IOPS | Temp Disk Random Read (RR)<sup>1</sup> Throughput (MBps) |
 | --- | --- | --- | --- | --- |
-| Standard_DS1_v2 | 1 | 7 | 4000 | 32 |
-| Standard_DS2_v2 | 1 | 14 | 8000 | 64 |
-| Standard_DS3_v2 | 1 | 28 | 16000 | 128 |
-| Standard_DS4_v2 | 1 | 56 | 32000 | 256 |
-| Standard_DS5_v2 | 1 | 112 | 64000 | 512 |
+| Standard_DS1_v2 | 1 | 7 | 4,000 | 32 |
+| Standard_DS2_v2 | 1 | 14 | 8,000 | 64 |
+| Standard_DS3_v2 | 1 | 28 | 16,000 | 128 |
+| Standard_DS4_v2 | 1 | 56 | 32,000 | 256 |
+| Standard_DS5_v2 | 1 | 112 | 64,000 | 512 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
@@ -67,7 +58,7 @@ Local (temp) storage info for each size
 
 #### Table definitions
 - <sup>1</sup>Temp disk speed often differs between RR (Random Read) and RW (Random Write) operations. RR operations are typically faster than RW operations. The RW speed is usually slower than the RR speed on series where only the RR speed value is listed.
-- Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
+- Storage capacity is shown in units of GiB or 1,024^3 bytes. When you compare disks measured in GB (1,000^3 bytes) to disks measured in GiB (1,024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1,023 GiB = 1,098.4 GB.
 - Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
 - To learn how to get the best storage performance for your VMs, see [Virtual machine and disk performance](../../../virtual-machines/disks-performance.md).
 
@@ -75,13 +66,13 @@ Local (temp) storage info for each size
 
 Remote (uncached) storage info for each size
 
-| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD Disk IOPS | Uncached Premium SSD Throughput (MB/s) |
+| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD IOPS | Uncached Premium SSD Throughput (MBps) |
 | --- | --- | --- | --- |
-| Standard_DS1_v2 | 4 | 3200 | 48 |
-| Standard_DS2_v2 | 8 | 6400 | 96 |
-| Standard_DS3_v2 | 16 | 12800 | 192 |
-| Standard_DS4_v2 | 32 | 25600 | 384 |
-| Standard_DS5_v2 | 64 | 51200 | 768 |
+| Standard_DS1_v2 | 4 | 3,200 | 48 |
+| Standard_DS2_v2 | 8 | 6,400 | 96 |
+| Standard_DS3_v2 | 16 | 12,800 | 192 |
+| Standard_DS4_v2 | 32 | 25,600 | 384 |
+| Standard_DS5_v2 | 64 | 51,200 | 768 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
@@ -91,7 +82,7 @@ Remote (uncached) storage info for each size
 #### Table definitions
 - <sup>1</sup>These sizes support [bursting](../../disk-bursting.md) to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.
 
-- Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
+- Storage capacity is shown in units of GiB or 1,024^3 bytes. When you compare disks measured in GB (1,000^3 bytes) to disks measured in GiB (1,024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1,023 GiB = 1,098.4 GB.
 - Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
 - Data disks can operate in cached or uncached modes. For cached data disk operation, the host cache mode is set to ReadOnly or ReadWrite. For uncached data disk operation, the host cache mode is set to None.
 - To learn how to get the best storage performance for your VMs, see [Virtual machine and disk performance](../../../virtual-machines/disks-performance.md).
@@ -101,13 +92,13 @@ Remote (uncached) storage info for each size
 
 Network interface info for each size
 
-| Size Name | Max NICs (Qty.) | Max Network Bandwidth (Mb/s) |
+| Size Name | Max NICs (Qty.) | Max Network Bandwidth (Mbps) |
 | --- | --- | --- |
 | Standard_DS1_v2 | 2 | 750 |
-| Standard_DS2_v2 | 2 | 1500 |
-| Standard_DS3_v2 | 4 | 3000 |
-| Standard_DS4_v2 | 8 | 6000 |
-| Standard_DS5_v2 | 8 | 12000 |
+| Standard_DS2_v2 | 2 | 1,500 |
+| Standard_DS3_v2 | 4 | 3,000 |
+| Standard_DS4_v2 | 8 | 6,000 |
+| Standard_DS5_v2 | 8 | 12,000 |
 
 #### Networking resources
 - [Virtual networks and virtual machines in Azure](/azure/virtual-network/network-overview)
@@ -126,6 +117,21 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 > No accelerators are present in this series.
 
 ---
+
+
+
+## Feature support
+
+|Feature name | Support status |
+| --- | --- |
+|[Premium Storage](../../premium-storage-performance.md)| Supported |
+|[Premium Storage caching](../../premium-storage-performance.md)| Not Supported |
+|[Live Migration](../../maintenance-and-updates.md#live-migration)| Supported |
+|[Memory Preserving Updates](../../maintenance-and-updates.md)| Supported |
+|[VM Generation Support](../../generation-2.md)| Generation 1 |
+|[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli)| Supported |
+|[Ephemeral OS Disks](../../ephemeral-os-disks.md)| Not Supported |
+|[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)| Not Supported |
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]
 

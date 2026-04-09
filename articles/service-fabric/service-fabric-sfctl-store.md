@@ -6,7 +6,8 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
+ms.update-cycle: 1825-days
 # Customer intent: As a DevOps engineer, I want to perform file level operations on the image store using the command line, so that I can manage application packages efficiently within the Azure Service Fabric environment.
 ---
 
@@ -24,14 +25,14 @@ Perform basic file level operations on the cluster image store.
 ## sfctl store delete
 Deletes existing image store content.
 
-Deletes existing image store content being found within the given image store relative path. This command can be used to delete uploaded application packages once they are provisioned.
+Deletes existing image store content being found within the given image store relative path. This command can be used to delete uploaded application packages once they're provisioned.
 
 ### Arguments
 
 |Argument|Description|
 | --- | --- |
 | --content-path [Required] | Relative path to file or folder in the image store from its root. |
-| --timeout -t | The server timeout for performing the operation in seconds. This timeout specifies the time duration that the client is willing to wait for the requested operation to complete. The default value for this parameter is 60 seconds.  Default\: 60. |
+| --timeout -t | The server timeout for performing the operation in seconds. This timeout specifies the time duration that the client is willing to wait for the requested operation to complete. The default value for this parameter is 60 seconds. Default: 60. |
 
 ### Global Arguments
 
@@ -39,8 +40,8 @@ Deletes existing image store content being found within the given image store re
 | --- | --- |
 | --debug | Increase logging verbosity to show all debug logs. |
 | --help -h | Show this help message and exit. |
-| --output -o | Output format.  Allowed values\: json, jsonc, table, tsv.  Default\: json. |
-| --query | JMESPath query string. See http\://jmespath.org/ for more information and examples. |
+| --output -o | Output format. Allowed values: json, jsonc, table, tsv. Default: json. |
+| --query | JMESPath query string. For more information and examples, see https://jmespath.org/. |
 | --verbose | Increase logging verbosity. Use --debug for full debug logs. |
 
 ## sfctl store root-info
@@ -52,7 +53,7 @@ Returns the information about the image store content at the root of the image s
 
 |Argument|Description|
 | --- | --- |
-| --timeout -t | The server timeout for performing the operation in seconds. This timeout specifies the time duration that the client is willing to wait for the requested operation to complete. The default value for this parameter is 60 seconds.  Default\: 60. |
+| --timeout -t | The server timeout for performing the operation in seconds. This timeout specifies the time duration that the client is willing to wait for the requested operation to complete. The default value for this parameter is 60 seconds. Default: 60. |
 
 ### Global Arguments
 
@@ -60,8 +61,8 @@ Returns the information about the image store content at the root of the image s
 | --- | --- |
 | --debug | Increase logging verbosity to show all debug logs. |
 | --help -h | Show this help message and exit. |
-| --output -o | Output format.  Allowed values\: json, jsonc, table, tsv.  Default\: json. |
-| --query | JMESPath query string. See http\://jmespath.org/ for more information and examples. |
+| --output -o | Output format. Allowed values: json, jsonc, table, tsv. Default: json. |
+| --query | JMESPath query string. For more information and examples, see https://jmespath.org/. |
 | --verbose | Increase logging verbosity. Use --debug for full debug logs. |
 
 ## sfctl store stat
@@ -74,7 +75,7 @@ Returns the information about the image store content at the specified contentPa
 |Argument|Description|
 | --- | --- |
 | --content-path [Required] | Relative path to file or folder in the image store from its root. |
-| --timeout -t | The server timeout for performing the operation in seconds. This timeout specifies the time duration that the client is willing to wait for the requested operation to complete. The default value for this parameter is 60 seconds.  Default\: 60. |
+| --timeout -t | The server timeout for performing the operation in seconds. This timeout specifies the time duration that the client is willing to wait for the requested operation to complete. The default value for this parameter is 60 seconds. Default: 60. |
 
 ### Global Arguments
 
@@ -82,8 +83,8 @@ Returns the information about the image store content at the specified contentPa
 | --- | --- |
 | --debug | Increase logging verbosity to show all debug logs. |
 | --help -h | Show this help message and exit. |
-| --output -o | Output format.  Allowed values\: json, jsonc, table, tsv.  Default\: json. |
-| --query | JMESPath query string. See http\://jmespath.org/ for more information and examples. |
+| --output -o | Output format. Allowed values: json, jsonc, table, tsv. Default: json. |
+| --query | JMESPath query string. For more information and examples, see https://jmespath.org/. |
 | --verbose | Increase logging verbosity. Use --debug for full debug logs. |
 
 

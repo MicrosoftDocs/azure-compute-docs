@@ -7,7 +7,7 @@ ms.subservice: security
 ms.collection: linux
 ms.topic: concept-article
 ms.author: mbaldwin
-ms.date: 09/23/2025
+ms.date: 02/20/2026
 ms.custom: linux-related-content
 # Customer intent: "As a system administrator managing Linux virtual machines, I want to enable disk encryption on my VMs, so that I can ensure data security and comply with organizational security standards."
 ---
@@ -43,7 +43,7 @@ Linux VMs are available in a [range of sizes](../sizes.md). Azure Disk Encryptio
 
 See [Azure VM sizes with no local temporary disk](../azure-vms-no-temp-disk.yml).
 
-Azure Disk Encryption is not available on [Basic, A-series VMs,v6 series VMs](https://azure.microsoft.com/pricing/details/virtual-machines/series/), or on virtual machines that do not meet these minimum memory requirements:
+Azure Disk Encryption is not available on [Basic, A-series VMs,v6 series VMs, v7 series VMs, or newer](https://azure.microsoft.com/pricing/details/virtual-machines/series/), or on virtual machines that do not meet these minimum memory requirements:
 
 ### Memory requirements
 
@@ -200,7 +200,7 @@ The following table defines some of the common terms used in Azure disk encrypti
 - [Quickstart - Create and encrypt a Linux VM with Azure CLI ](disk-encryption-cli-quickstart.md)
 - [Quickstart - Create and encrypt a Linux VM with Azure PowerShell](disk-encryption-powershell-quickstart.md)
 - [Azure Disk Encryption scenarios on Linux VMs](disk-encryption-linux.md)
-- [Migrate from Azure Disk Encryption to server-side encryption](../disk-encryption-migrate.md)
+- [Migrate from Azure Disk Encryption to encryption at host](../disk-encryption-migrate.md)
 - [Azure Disk Encryption prerequisites CLI script](https://github.com/ejarvi/ade-cli-getting-started)
 - [Azure Disk Encryption prerequisites PowerShell script](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)
 - [Creating and configuring a key vault for Azure Disk Encryption](disk-encryption-key-vault.md)

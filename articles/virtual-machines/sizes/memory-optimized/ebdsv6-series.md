@@ -5,7 +5,7 @@ author: bansal-misha
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 11/17/2025
+ms.date: 03/10/2026
 ms.author: mishabansal
 ms.reviewer: mattmcinnes
 # Customer intent: "As a cloud infrastructure manager, I want to understand the specifications and features of the Edsv6 size series virtual machines, so that I can select the appropriate VM size for my application workloads and resource requirements."
@@ -18,8 +18,7 @@ ms.reviewer: mattmcinnes
 ## Host specifications
 [!INCLUDE [ebdsv6-series-specs](./includes/ebdsv6-series-specs.md)]
 
-## Feature support
-[Premium Storage](../../premium-storage-performance.md): Supported <br>[Premium Storage caching](../../premium-storage-performance.md): Supported <br>[Live Migration](../../maintenance-and-updates.md): Not Supported <br>[Memory Preserving Updates](../../maintenance-and-updates.md): Supported <br>[Generation 2 VMs](../../generation-2.md): Supported <br>[Generation 1 VMs](../../generation-2.md): Not Supported <br>[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported <br>[Ephemeral OS Disk](../../ephemeral-os-disks.md): Supported <br>[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Supported <br> [Azure Disk Encryption for Linux VMs](../../../virtual-machines/linux/disk-encryption-linux.md#restrictions): Not Supported <br>[Azure Disk Encryption for Windows VMs](../../../virtual-machines/windows/disk-encryption-windows.md#restrictions): Not Supported <br>
+For features supported by this series, see the [Feature support](#feature-support) section.
 
 ## Sizes in series
 
@@ -49,17 +48,16 @@ Local (temp) storage info for each size
 
 | Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read (RR)<sup>1</sup> IOPS | Temp Disk Random Read (RR)<sup>1</sup> Throughput (MB/s) | Temp Disk Random Write (RW)<sup>1</sup> IOPS | Temp Disk Random Write (RW)<sup>1</sup> Throughput (MB/s) |
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_E2ds_v6 | 1 | 110 | 37500 | 180 | 15000 | 90 |
-| Standard_E4ds_v6 | 1 | 220 | 75000 | 360 | 30000 | 180 |
-| Standard_E8ds_v6 | 1 | 440 | 150000 | 720 | 60000 | 360 |
-| Standard_E16ds_v6 | 2 | 440 | 300000 | 1440 | 120000 | 720 |
-| Standard_E20ds_v6 | 2 | 550 | 375000 | 1800 | 150000 | 900 |
-| Standard_E32ds_v6 | 4 | 440 | 600000 | 2880 | 240000 | 1440 |
-| Standard_E48ds_v6 | 6 | 440 | 900000 | 4320 | 360000 | 2160 |
-| Standard_E64ds_v6 | 4 | 880 | 1200000 | 5760 | 480000 | 2880 |
-| Standard_E96ds_v6 | 6 | 880 | 1800000 | 8640 | 720000 | 4320 |
-| Standard_E128ds_v6 | 4 | 1760 | 2400000 | 11520 | 960000 | 5760 |
-| Standard_E192ids_v6 | 6 | 1760 | 3600000 | 17280 | 1440000 | 8640 |
+| Standard_E2bds_v6 | 1 | 110 | 37500 | 180 | 15000 | 90 |
+| Standard_E4bds_v6 | 1 | 220 | 75000 | 360 | 30000 | 180 |
+| Standard_E8bds_v6 | 1 | 440 | 150000 | 720 | 60000 | 360 |
+| Standard_E16bds_v6 | 2 | 440 | 300000 | 1440 | 120000 | 720 |
+| Standard_E32bds_v6 | 4 | 440 | 600000 | 2880 | 240000 | 1440 |
+| Standard_E48bds_v6 | 6 | 440 | 900000 | 4320 | 360000 | 2160 |
+| Standard_E64bds_v6 | 4 | 880 | 1200000 | 5760 | 480000 | 2880 |
+| Standard_E96bds_v6 | 6 | 880 | 1800000 | 8640 | 720000 | 4320 |
+| Standard_E128bds_v6 | 4 | 1760 | 2400000 | 11520 | 960000 | 5760 |
+| Standard_E192ibds_v6 | 6 | 1760 | 3600000 | 17280 | 1440000 | 8640 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
@@ -76,7 +74,7 @@ Local (temp) storage info for each size
 
 Remote (uncached) storage info for each size
 
-| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD Disk IOPS | Uncached Premium SSD Throughput (MB/s) | Uncached Premium SSD Burst<sup>1</sup> IOPS | Uncached Premium SSD Burst<sup>1</sup> Throughput (MB/s) | Uncached Ultra Disk and Premium SSD v2 IOPS | Uncached Ultra Disk and Premium SSD v2 Throughput (MB/s) | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 IOPS | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 Disk Throughput (MB/s) |
+| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD IOPS | Uncached Premium SSD Throughput (MB/s) | Uncached Premium SSD Burst<sup>1</sup> IOPS | Uncached Premium SSD Burst<sup>1</sup> Throughput (MB/s) | Uncached Ultra Disk and Premium SSD v2 IOPS | Uncached Ultra Disk and Premium SSD v2 Throughput (MB/s) | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 IOPS | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 Throughput (MB/s) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_E2bds_v6 | 8 | 8800 | 253 | 30000 | 1200 | 13200 | 330 | 45000 | 1565 |
 | Standard_E4bds_v6 | 12 | 17600 | 506 | 35000 | 1200 | 23540 | 660 | 46813 | 1565 |
@@ -138,5 +136,22 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 > No accelerators are present in this series.
 
 ---
+
+## Feature support
+
+|Feature name | Support status |
+| --- | --- |
+|[Premium Storage](../../premium-storage-performance.md)| Supported |
+|[Premium Storage caching](../../premium-storage-performance.md)| Supported |
+|[Live Migration](../../maintenance-and-updates.md)| Not Supported |
+|[Memory Preserving Updates](../../maintenance-and-updates.md)| Supported |
+|[Generation 2 VMs](../../generation-2.md)| Supported |
+|[Generation 1 VMs](../../generation-2.md)| Not Supported |
+|[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli)| Supported |
+|[Ephemeral OS Disk](../../ephemeral-os-disks.md)| Supported |
+|[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)| Supported |
+|[Azure Disk Encryption for Linux VMs](../../../virtual-machines/linux/disk-encryption-linux.md#restrictions)| Not Supported |
+|[Azure Disk Encryption for Windows VMs](../../../virtual-machines/windows/disk-encryption-windows.md#restrictions)| Not Supported |
+
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]

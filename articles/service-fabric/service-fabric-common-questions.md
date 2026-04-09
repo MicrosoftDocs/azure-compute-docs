@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 08/16/2024
+ms.date: 03/22/2026
 # Customer intent: As a cloud architect, I want to understand Service Fabric's capabilities and best practices for setup and management, so that I can design resilient and efficient applications that leverage distributed microservices architecture.
 ---
 
@@ -195,9 +195,9 @@ Containers offer a simple way to package services and their dependencies such th
 
 We have open-sourced parts of Service Fabric ([reliable services framework](https://github.com/Azure/service-fabric-services-and-actors-dotnet), [reliable actors framework](https://github.com/Azure/service-fabric-services-and-actors-dotnet), [ASP.NET Core integration libraries](https://github.com/Azure/service-fabric-aspnetcore), [Service Fabric Explorer](https://github.com/Azure/service-fabric-explorer), and [Service Fabric CLI](https://github.com/Azure/service-fabric-cli)) on GitHub and accept community contributions to those projects. 
 
-We [recently announced](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) that we plan to open-source the Service Fabric runtime. At this point, we have the [Service Fabric repo](https://github.com/Microsoft/service-fabric/) up on GitHub with Linux build and test tools, which means you can clone the repo, build Service Fabric for Linux, run basic tests, open issues, and submit pull requests. We’re working hard to get the Windows build environment migrated over as well, along with a complete CI environment.
+We [recently announced](https://azure.microsoft.com/blog/product/azure-service-fabric/) that we plan to open-source the Service Fabric runtime. At this point, we have the [Service Fabric repo](https://github.com/Microsoft/service-fabric/) up on GitHub with Linux build and test tools, which means you can clone the repo, build Service Fabric for Linux, run basic tests, open issues, and submit pull requests. We’re working hard to get the Windows build environment migrated over as well, along with a complete CI environment.
 
-Follow the [Service Fabric blog](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) for more details as they're announced.
+Follow the [Service Fabric blog](https://azure.microsoft.com/blog/product/azure-service-fabric/) for more details as they're announced.
 
 ## Next steps
 
