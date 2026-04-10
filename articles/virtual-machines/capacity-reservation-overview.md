@@ -79,7 +79,7 @@ From this example accumulation of Minutes Not Available, here's the calculation 
   | Type | VM Series |
   | ----- | ----------- |
   | GPU-accelerated compute | NC-series, v3 (Intel) <br> NCasT4_v3 series (AMD) <br> NCADSA10_v4 series (AMD) <br> NC_A100_v4 series (AMD) <br> NV-series, v3 and newer (Intel) <br> NVadsA10_v5 series (AMD) <br> NVads V710 v5 series (AMD) <br> NGads V620_v1 series (AMD) |
-  | Memory optimized | Msv2 Medium Memory series (Intel) <br> Mdsv2 Medium Memory series (Intel) <br> Mv2 (Intel) <br>Mdsv3 Medium Memory series (Intel) <br> Msv3 Medium Memory series (Intel) <br> Mbsv3 and Mbdsv3 series (Intel) |
+  | Memory optimized | Msv2 Medium Memory series (Intel) <br> Mdsv2 Medium Memory series (Intel) <br> Msv2 High Memory (Intel) <br> Mdsv3 Medium Memory series (Intel) <br> Msv3 Medium Memory series (Intel) <br> Mbsv3 and Mbdsv3 series (Intel) |
   | Storage optimized| Lsv2 (Intel)-Preview |
 
 - Support for other VM series isn't currently available:
