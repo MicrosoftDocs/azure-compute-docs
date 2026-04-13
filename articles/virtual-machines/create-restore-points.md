@@ -15,7 +15,7 @@ ms.custom: template-quickstart
 
 You can protect your data by taking backups at regular intervals. Azure VM restore point APIs are a lightweight option you can use to implement granular backup and retention policies. VM restore points support application consistency for VMs running Windows operating systems and support file system consistency for VMs running Linux operating system. 
 
-You can use the APIs to create restore points for your source VM in either the same region, or in other regions. You can also copy existing VM restore points between regions.
+You can use APIs to create restore points for a source VM within the same region. Existing VM restore points can also be copied to other regions.
 
 ## Prerequisites
 

@@ -2,14 +2,14 @@
 title: Azure N-series GPU driver setup for Linux
 description: How to set up NVIDIA GPU drivers for N-series VMs running Linux in Azure
 services: virtual-machines
-author: vikancha-MSFT
+author: akashdubey-ms
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.collection: linux
 ms.topic: how-to
 ms.custom: linux-related-content
 ms.date: 12/04/2025
-ms.author: vikancha
+ms.author: akashdubey
 ms.reviewer: padmalathas, mattmcinnes
 # Customer intent: "As a cloud administrator, I want to install and configure NVIDIA GPU drivers on Linux-based N-series VMs, so that I can fully utilize their GPU capabilities for high-performance computing applications."
 ---

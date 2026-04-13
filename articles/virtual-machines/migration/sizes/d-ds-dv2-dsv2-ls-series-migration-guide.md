@@ -29,8 +29,8 @@ By migrating to newer VM series, you gain access to improved price-performance r
 |--|--|--|
 | D<br>Ds<br>Dv2<br>Dsv2 | Dsv5/Ddsv5/Dasv5/Dadsv5<br>Dasv6/Dadsv6/Dsv6/Ddsv6<br>Dasv7/Dadsv7<br>Esv6/Edsv6/Easv6/Eadsv6<br>Easv7/Eadsv7| D/Ev5 disk controller type: SCSI <br> D/Ev6, D/Ev7 disk controller type: NVMe<br>Local Storage Throughput: 9000 IOPS / 125 MBps<br>Remote Storage Throughput: 3750 IOPS / 82 MBps|
 | Ls | Lsv3/Lasv3<br>Lsv4/Lasv4 | Local Storage: Supported - NVMe<br>Remote Storage Throughput: 12800 IOPS / 200 MBps <br>Disk Controller Type: SCSI and NVMe |
-| Av2<br>Amv2 | Bsv2/Bpsv2/Basv2<br>Dsv5/Ddv5/Dasv5/Dpsv5<br>Esv5/Edv5/Easv5/Epsv5<br>Dsv6/Ddsv6/Dasv6/Dpsv6<br>Esv6/Edsv6/Easv6/Epsv6 | B/Bp/Bav2, D/Ev5 disk controller type: SCSI <br> D/Ev6 disk controller type: NVMe<br>Remote Storage Throughput: 3750 IOPS / 85 MBps
-| B | Bsv2/Bpsv2/Basv2<br>Dlsv5/Dldsv5/Dalsv5/Daldsv5<br>Dlsv6/Dldsv6/Dalsv6/Daldsv6 | B/Bp/Bav2, D/Ev5 disk controller type: SCSI <br> D/Ev6 disk controller type: NVMe<br>Remote Storage Throughput: 3750 IOPS / 85 MBps<br>Disk Controller Type: SCSI|
+| Av2<br>Amv2 | Bsv2/Basv2<br>Dsv5/Ddv5/Dasv5<br>Esv5/Edv5/Easv5<br>Dsv6/Ddsv6/Dasv6<br>Esv6/Edsv6/Easv6 | B/Bp/Bav2, D/Ev5 disk controller type: SCSI <br> D/Ev6 disk controller type: NVMe<br>Remote Storage Throughput: 3750 IOPS / 85 MBps
+| Bv1 | Bsv2/Basv2<br>Dlsv5/Dldsv5/Dalsv5/Daldsv5<br>Dlsv6/Dldsv6/Dalsv6/Daldsv6 | B/Bp/Bav2, D/Ev5 disk controller type: SCSI <br> D/Ev6 disk controller type: NVMe<br>Remote Storage Throughput: 3750 IOPS / 85 MBps<br>Disk Controller Type: SCSI|
 | F<br>Fs<br>Fsv2 | Dlsv6/Dldsv6/Dalsv6/Daldsv6<br>Falsv6<br>Dldsv5/Dlsv5/Dsv5/Ddsv5| D/Ev5 disk controller type: SCSI <br> D/Ev6 disk controller type: NVMe <br> Remote Storage Throughput: 4167 IOPS / 124 MBps|
 | G<br>Gs | Lsv3/Lasv3<br>Lsv4/Lasv4| Lv3/Lv4 controller type: SCSI and NVMe <br>Remote Storage Throughput: 12800 IOPS / 200 MBps|
 | Lsv2 | Lsv3/Lasv3<br>Lasv4/Lasv4| Local Storage: NVMe<br>Remote Storage Throughput: 12800 IOPS / 200 MBps<br>Disk Controller Type: SCSI and NVMe|
@@ -98,7 +98,7 @@ To review retired sizes, see [retired Azure VM sizes](/azure/virtual-machines/si
 
 | VM Series | 3 YR RI expiration date | 1 YR RI expiration date | Retirement Date|
 |----|----|----|----|
-| D | 05/01/2025 |	05/01/2027	| 05/01/2028 |
+| D        | 05/01/2025 |	05/01/2027 | 05/01/2028 |
 | Ds       | 05/01/2025 | 05/01/2027 | 05/01/2028 |
 | Dv2      | 05/01/2025 | 05/01/2027 | 05/01/2028 |
 | Dsv2     | 05/01/2025 | 05/01/2027 | 05/01/2028 |
@@ -112,9 +112,8 @@ To review retired sizes, see [retired Azure VM sizes](/azure/virtual-machines/si
 | Av2      | 11/15/2025 | 11/15/2027 | 11/15/2028 |
 | Amv2     | 11/15/2025 | 11/15/2027 | 11/15/2028 |
 | B-series | 11/15/2025 | 11/15/2027 | 11/15/2028 |
+| Bv1      | 11/15/2025 | 11/15/2027 | 11/15/2028 |
 | HBv2     | 04/02/2026 | 04/02/2026 | 05/31/2027 |
-
-
 
 
 #### Q: Why should I migrate my VM?
