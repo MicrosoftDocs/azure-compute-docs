@@ -1,12 +1,12 @@
 ---
 title: NV series migration guide
 description: NV series migration guide
-author: vikancha-MSFT
+author: akashdubey-ms
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
 ms.date: 02/27/2023
-ms.author: vikancha
+ms.author: akashdubey
 # Customer intent: As a cloud administrator, I want to migrate legacy GPU virtual machines to newer NV series, so that I can leverage improved performance and cost efficiency for my graphics-intensive workloads.
 ---
 # NV series migration guide

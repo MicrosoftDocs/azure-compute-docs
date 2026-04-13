@@ -57,7 +57,7 @@ Local (temp) storage info for each size
 | Standard_E64ads_v7 | 4 | 880 | 1200000 | 8960 | 480000 | 4480 |
 | Standard_E96ads_v7 | 6 | 880 | 1800000 | 13440 | 720000 | 6720 |
 | Standard_E128ads_v7 | 4 | 1760 | 2400000 | 17920 | 960000 | 8960 |
-| Standard_E160ads_v7 | 4 | 2200 | 3000000 | 22400 | 12000000 | 11200 |
+| Standard_E160ads_v7 | 4 | 2200 | 3000000 | 22400 | 1200000 | 11200 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
