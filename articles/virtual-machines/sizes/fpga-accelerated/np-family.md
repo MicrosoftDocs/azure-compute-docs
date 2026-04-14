@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 06/06/2024
+ms.date: 04/13/2026
 ms.author: mattmcinnes
 # Customer intent: "As a cloud architect, I want to explore the NP family VM sizes, so that I can select the appropriate storage optimized VMs for my workloads."
 ---
@@ -13,6 +13,9 @@ ms.author: mattmcinnes
 # 'NP' family storage optimized VM size series
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
+
+> [!NOTE] 
+> Azure NP-series VMs are scheduled for retirement on May 31, 2027. For more information, see [NP-series virtual machine migration guidance](../retirement/np-series-retirement.md)
 
 [!INCLUDE [np-family-summary](./includes/np-family-summary.md)]
 
