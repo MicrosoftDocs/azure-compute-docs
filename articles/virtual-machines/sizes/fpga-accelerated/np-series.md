@@ -5,15 +5,17 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 07/31/2024
+ms.date: 04/13/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 # Customer intent: As a cloud architect, I want to evaluate the specifications and feature support of NP-series virtual machines, so that I can determine the appropriate size for my organization's computational and storage needs.
 ---
 
 # NP sizes series
-
 [!INCLUDE [np-summary](./includes/np-series-summary.md)]
+
+> [!NOTE]
+> Azure NP-series virtual machines are scheduled for retirement on May 31, 2027. For more information, see [NP-series virtual machine migration guidance](../retirement/np-series-retirement.md).
 
 ## Host specifications
 [!INCLUDE [np-series-specs](./includes/np-series-specs.md)]
