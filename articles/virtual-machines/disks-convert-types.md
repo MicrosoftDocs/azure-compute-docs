@@ -218,7 +218,7 @@ Switching to Premium SSD v2 disks has some additional limitations:
 
 - You can't switch an OS disk to a Premium SSD v2.
 - Existing disks can only be directly switched to 512 sector size Premium SSD v2 disks.
-- Standard HDDs and Standard SSDs need to be detached from their VMs to change to Premium SSD v2
+- Standard HDDs and Standard SSDs must be detached from their VMs to convert to Premium SSD v2 disks.
 - If your existing disk is a shared disk, detach all VMs before changing to Premium SSD v2.
 - If your existing disk is using host caching, [set it to none](#disable-host-caching) before changing to Premium SSD v2.
 - If your existing disk is using bursting, [disable it](#disable-bursting) before changing to Premium SSD v2.
