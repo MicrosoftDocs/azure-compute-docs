@@ -10,12 +10,12 @@ ms.custom: template-overview
 ---
 
 
-# How to Upload Log Files to Guest Health Reporting
+# How to upload log files to Guest Health Reporting
 
 Providing a log file helps make more precise repair actions. A log file should be uploaded prior to making the guest health report (GHR), with the GHR request containing a `LogUrl` field inside the `additionalProperties` section of the request body. The `LogUrl` points to the uploaded log file from one of the supported platform-specific diagnostic tools (for example NVidia bug report). 
 
 
-## Log Capture
+## Log capture
 
 1. Collect the log that captures the diagnostic information for the virtual machine associated with the GHR.  
   For this payload to be automatically processed, the payload format **MUST** conform to specific requirements as defined in the *Preparing Log Files for Upload* section.
@@ -49,15 +49,15 @@ Providing a log file helps make more precise repair actions. A log file should b
 }
 ```
 
-## Preparing Log Files for Upload
+## Prepare log files for upload
 
 For GHR to automatically process log files and influence the repair, the uploaded log MUST be platform-relevant issue reporting format - for example an Nvidia Bug Report (NVBR) log file. Other files can be uploaded, such as dmesg output, as long as they're gzipped for offline investigation. GHR accepts log files as a single file compressed as a .gz file.
 
-### Uploading a Gzip File (*.gz)
+### Upload a gzip file (*.gz)
 
 Collect the log and compress it via gzip (if the output isn't already a .gz file).  When uploading the source is this local file and the destination is the LogUrl as returned by the /getUploadToken endpoint, described in the next section. The LogURL grants temporary write access to the container via the provided SAS token. The LogURL has a blob name which renames the file during upload.
 
-### Understanding the LogUrl to Upload
+### Understand the logUrl to upload
 
 The /getUploadToken endpoint returns a LogUrl. Here's an example return value:
 `https://ghrloguploadprod.blob.core.windows.net/hpcdemo/20260323194745_99e980b9.gz?sasTokenHere`
