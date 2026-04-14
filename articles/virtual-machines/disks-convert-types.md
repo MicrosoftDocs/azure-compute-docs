@@ -212,13 +212,13 @@ Use either PowerShell or CLI.
 ---
 
 ## Convert Premium SSD v2 disks 
-You can switch existing disks to Premium SSD v2 disks the same way you do for other disk types. Premium SSD v2 disks have some limitations, see the [Premium SSD v2 limitations](disks-deploy-premium-v2.md#limitations) section of their article to learn more.
+You can switch existing disks to Premium SSD v2 disks the same way you do for other disk types. Review the [Premium SSD v2 limitations](disks-deploy-premium-v2.md#limitations) to learn more. If you're going to convert a substantial number of disks to Premium SSD v2, convert them in batches of 50 to 100 disks per subscription per region for best performance. If you're going to migrate more than 1,000 disks at the same time, submit a support ticket for planning and execution assistance.
 
 Switching to Premium SSD v2 disks has some additional limitations:
 
 - You can't switch an OS disk to a Premium SSD v2.
 - Existing disks can only be directly switched to 512 sector size Premium SSD v2 disks.
-- You can only perform 50 conversions at the same time per subscription per region.
+- Standard HDDs and Standard SSDs must be detached from their VMs to convert to Premium SSD v2 disks.
 - If your existing disk is a shared disk, detach all VMs before changing to Premium SSD v2.
 - If your existing disk is using host caching, [set it to none](#disable-host-caching) before changing to Premium SSD v2.
 - If your existing disk is using bursting, [disable it](#disable-bursting) before changing to Premium SSD v2.
