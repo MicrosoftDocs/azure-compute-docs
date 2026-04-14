@@ -8,11 +8,12 @@ ms.topic: concept-article
 ms.date: 01/30/2026
 ms.author: wwilliams
 ms.reviewer: mattmcinnes
+ai-usage: ai-assisted
 ---
 
 # Retired VM Sizes Migration Guide
 
-This migration guide is designed for users of Azure General Purpose virtual machines (VMs), which are scheduled for retirement. This guide helps you transition to the latest VM series, helping you minimize disruptions while optimizing cost and performance.
+This migration guide is designed for users of Azure virtual machines (VMs) scheduled for retirement. This guide helps you transition to the latest VM series, helping you minimize disruptions while optimizing cost and performance. The guide covers General Purpose, Storage Optimized, and other VM series. It also surfaces critical information for HPC HBv2-series VMs undergoing retirement; specialized workload validation is recommended when migrating HPC workloads.
 
 This guide covers:
 
@@ -33,6 +34,7 @@ By migrating to newer VM series, you gain access to improved price-performance r
 | F<br>Fs<br>Fsv2 | Dlsv6/Dldsv6/Dalsv6/Daldsv6<br>Falsv6<br>Dldsv5/Dlsv5/Dsv5/Ddsv5| D/Ev5 disk controller type: SCSI <br> D/Ev6 disk controller type: NVMe <br> Remote Storage Throughput: 4167 IOPS / 124 MBps|
 | G<br>Gs | Lsv3/Lasv3<br>Lsv4/Lasv4| Lv3/Lv4 controller type: SCSI and NVMe <br>Remote Storage Throughput: 12800 IOPS / 200 MBps|
 | Lsv2 | Lsv3/Lasv3<br>Lasv4/Lasv4| Local Storage: NVMe<br>Remote Storage Throughput: 12800 IOPS / 200 MBps<br>Disk Controller Type: SCSI and NVMe|
+| HBv2 | HBv5<br>HX<br>HBv4<br>HBv3 | Transition to newer AMD EPYC generations (Milan/Genoa/Zen4) and newer InfiniBand fabrics (HDR on HBv3 → NDR on HBv4/HBv5). Validate MPI workload performance, memory bandwidth requirements, and RDMA compatibility on the target series. |
 
 *Refers to the smallest VM size in the given target VM series. Full VM specifications are available on each target VM series' product sizes page.
 
@@ -66,6 +68,7 @@ Use the [Azure VM size documentation](/azure/virtual-machines/sizes) to help ide
 
 - Review your current reservations using the [Azure Reservation Management](/azure/cost-management-billing/reservations/manage-reserved-vm-instance) page.
 - If applicable, exchange existing reservations for newer VM series or trade in your reservations for an **Azure Savings Plan for compute**.
+- **HBv2 customers**: 1-year and 3-year HBv2 Reserved Instance purchases ended on April 2, 2026. If you have active HBv2 RIs, consider exchanging them for supported HPC series RIs (such as HBv3, HBv4, HBv5, or HX) or trading them in for an Azure Savings Plan for compute before the retirement date of May 31, 2027.
 
 ####  Identify the Target VM Size
 
@@ -90,9 +93,12 @@ Refer to the full [Azure VM resizing guide](/azure/virtual-machines/sizes/resize
 #### Q: Which sizes are being retired?
 To review retired sizes, see [retired Azure VM sizes](/azure/virtual-machines/sizes/retirement/retired-sizes-list). View retired isolated sizes at [Isolation for VMs in Azure](/azure/virtual-machines/isolation).
 
+> [!NOTE]
+> HPC HBv2-series VMs are also retiring. See the HBv2 row in the table below for the applicable dates.
+
 | VM Series | 3 YR RI expiration date | 1 YR RI expiration date | Retirement Date|
 |----|----|----|----|
-| D | 05/01/2025 |	05/01/2027	| 05/01/2028 |
+| D        | 05/01/2025 |	05/01/2027 | 05/01/2028 |
 | Ds       | 05/01/2025 | 05/01/2027 | 05/01/2028 |
 | Dv2      | 05/01/2025 | 05/01/2027 | 05/01/2028 |
 | Dsv2     | 05/01/2025 | 05/01/2027 | 05/01/2028 |
@@ -105,9 +111,9 @@ To review retired sizes, see [retired Azure VM sizes](/azure/virtual-machines/si
 | Gs       | 11/15/2025 | 11/15/2027 | 11/15/2028 |
 | Av2      | 11/15/2025 | 11/15/2027 | 11/15/2028 |
 | Amv2     | 11/15/2025 | 11/15/2027 | 11/15/2028 |
+| B-series | 11/15/2025 | 11/15/2027 | 11/15/2028 |
 | Bv1      | 11/15/2025 | 11/15/2027 | 11/15/2028 |
-
-
+| HBv2     | 04/02/2026 | 04/02/2026 | 05/31/2027 |
 
 
 #### Q: Why should I migrate my VM?
@@ -120,7 +126,9 @@ Migration is mandatory to avoid unexpected shutdown. Additionally, migration yie
 
 #### Q: What will happen to my VM if I do not resize my VM to a target size within the retirement timeline?
 
-After retirement, VMs using this size will be deallocated and stop incurring charges. The size is no longer supported or covered by an SLA; in‑memory and temporary disk data is lost, but managed disk data is preserved. To resume service, you may resize to a supported size and restart the VM. 
+After retirement, VMs using this size will be deallocated and stop incurring charges. The size is no longer supported or covered by an SLA; in‑memory and temporary disk data is lost, but managed disk data is preserved. To resume service, you may resize to a supported size and restart the VM.
+
+Specifically for HBv2-series: after May 31, 2027, HBv2-series VMs (Standard_HB120rs_v2 and derived sizes) will be automatically set to a deallocated state. After that date, HBv2 VMs will stop working, lose SLA and support, and stop incurring billing charges.
 
 #### Q: Can I recover my VM after it has been deallocated?
 Yes, you can resize and restart your deallocated VM following the [Azure VM resizing guide](/azure/virtual-machines/sizes/resize-vm?tabs=portal).
