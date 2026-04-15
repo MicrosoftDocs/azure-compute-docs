@@ -71,10 +71,14 @@ To learn more about size series retirement, previous-gen sizes, and the retireme
 
 ## GPU accelerated retired sizes
 
+NVv3-series and NVv4-series have announced retirements planned for September 30, 2026. Review the entries below and migrate to a supported alternative before that date.
+
 | Series name        | Retirement Status |Retirement Announcement      | Planned Retirement Date | Migration Guide |
 |--------------------|-------------------|-----------------------------|-------------------------|-----------------|
 | NCv3-NC24rs Series | **Retired**       | -                           | 30/9/25                 | [NCv3-NC24rs-series Retirement](../../ncv3-nc24rs-retirement.md) |
 | NCv3-Series        | **Retired**       | -                           | 30/9/25                 | [NCv3-series Retirement](../../ncv3-retirement.md)     |
+| NVv3-series        | **Announced**     | [04/15/25](https://azure.microsoft.com/updates?id=516070) | 09/30/26 | [NVv3-series Retirement](/azure/virtual-machines/sizes/gpu-accelerated/nvv3-series-retirement) |
+| NVv4-series        | **Announced**     | [04/15/25](https://azure.microsoft.com/updates?id=516070) | 09/30/26 | [NVv4-series Retirement](/azure/virtual-machines/sizes/gpu-accelerated/nvv4-retirement) |
 
 ## FPGA accelerated retired sizes
 
@@ -93,3 +97,4 @@ Currently there are no retired ADH series retired or announced for retirement.
 ## Next steps
 - For a list of older and capacity limited sizes, see [Previous generation Azure VM sizes](../previous-gen-sizes-list.md).
 - For more information on VM sizes, see [Sizes for virtual machines in Azure](../overview.md).
+- For information on Azure Batch VM size support, see [VM sizes supported by Azure Batch](/azure/batch/batch-pool-vm-sizes).
