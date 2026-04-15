@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 03/22/2026
+ai-usage: ai-assisted
 # Customer intent: As a cloud architect, I want to understand Service Fabric's capabilities and best practices for setup and management, so that I can design resilient and efficient applications that leverage distributed microservices architecture.
 ---
 
@@ -44,6 +45,12 @@ Some things to consider:
 You can use [Virtual Machine Scale Set Automatic OS Image Update](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) Generally Available feature today.
 
 For clusters that are NOT run in Azure, we have [provided an application](service-fabric-patch-orchestration-application.md) to patch the operating systems underneath your Service Fabric nodes.
+
+When using Automatic OS Image Update, Service Fabric clusters should follow the documented rolling/node-type scaling upgrade guidance to control upgrade domains and maintain application availability. For upgrading to Windows Server 2022 or Windows Server 2025, see the OS image upgrade guidance for [primary node types](service-fabric-scale-up-primary-node-type.md) and [non-primary node types](service-fabric-scale-up-non-primary-node-type.md).
+
+### Until when is Windows Server 2019 supported for Service Fabric clusters?
+
+Service Fabric support for clusters running on Windows Server 2019 ends on **March 31, 2027**. Azure Virtual Machine Scale Sets with Windows Server 2019 will continue to run after this date, but Service Fabric support ceases on that date. Service Fabric supports Windows Server OS images only through their mainstream support end dates, and explicit retirement announcements supersede the general rule. Plan to migrate your clusters to Windows Server 2025 well ahead of March 31, 2027, and validate application compatibility on Windows Server 2025 images using a staging cluster and the documented rolling upgrade approach. For more information, see the [Service Fabric supported versions page](service-fabric-versions.md) and the [retirement announcement](https://azure.microsoft.com/updates?id=558246).
 
 ### Can I use large virtual machine scale sets in my SF cluster? 
 
@@ -91,7 +98,7 @@ If you would like to create clusters for testing your application before it's de
 
 ### How do I upgrade my Operating System (for example from Windows Server 2012 to Windows Server 2016)?
 
-While we're working on an improved experience, today, you're responsible for the upgrade. You must upgrade the OS image on the virtual machines of the cluster one VM at a time. 
+The recommended approach is to perform OS image upgrades by scaling out node types and using supported rolling procedures to avoid application impact, then drain and remove the old nodes. Use the documented scale-out/scale-in method for the node type to add nodes with the new OS image, migrate workloads, and decommission nodes on the old OS image. This procedure applies whether upgrading from Windows Server 2019 to Windows Server 2022 or to Windows Server 2025. For step-by-step guidance, see [Scale up a Service Fabric cluster primary node type](service-fabric-scale-up-primary-node-type.md) and [Scale up a Service Fabric cluster non-primary node type](service-fabric-scale-up-non-primary-node-type.md).
 
 ### Can I encrypt attached data disks in a cluster node type (virtual machine scale set)?
 Yes.  For more information, see [Create a cluster with attached data disks](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks) and [Azure Disk Encryption for Virtual Machine Scale Sets](../virtual-machine-scale-sets/disk-encryption-overview.md).
@@ -201,4 +208,6 @@ Follow the [Service Fabric blog](https://azure.microsoft.com/blog/product/azure-
 
 ## Next steps
 
-Learn about [Service Fabric runtime concepts and best practices](/shows/building-microservices-applications-on-azure-service-fabric/run-time-concepts)
+Learn about [Service Fabric runtime concepts and best practices](/shows/building-microservices-applications-on-azure-service-fabric/run-time-concepts).
+
+Plan your migration from Windows Server 2019 well ahead of March 31, 2027, by reviewing the [Service Fabric supported versions](service-fabric-versions.md) page and following the node type OS upgrade procedures for [primary node types](service-fabric-scale-up-primary-node-type.md) and [non-primary node types](service-fabric-scale-up-non-primary-node-type.md).

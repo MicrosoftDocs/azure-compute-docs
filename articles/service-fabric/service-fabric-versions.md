@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 ms.custom: linux-related-content
 services: service-fabric
 ms.date: 04/01/2026
+ai-usage: ai-assisted
 # Customer intent: "As a system administrator, I want to understand the supported versions of Service Fabric and their upgrade paths, so that I can ensure the cluster is running a version that receives updates and maintains compatibility with my applications."
 ---
 
@@ -81,7 +82,7 @@ For currently supported versions, all releases are listed. For currently unsuppo
 <sup>4</sup> The upgrade and downgrade pathways from 9.1 to 10.1CU5 and vice versa are blocked, resulting in 10.0's listing in these places. These blockages aren't present for other versions of 10.1.
 
 ## Supported Windows versions and support end date
-Support for Service Fabric on a specific OS ends when support for the OS version reaches its End of Life.
+Service Fabric supports Windows Server OS images through their mainstream support end dates. Explicit retirement notices—such as the retirement of Windows Server 2019 support on March 31, 2027—supersede this general rule.
 
 ### Windows Server
 
@@ -95,6 +96,9 @@ Support for Service Fabric on a specific OS ends when support for the OS version
 |Version 20H2 |5/10/2022|<a href="/lifecycle/products/windows-server">Windows Server - Microsoft Lifecycle</a>|
 |Version 2004 |12/14/2021|<a href="/lifecycle/products/windows-server">Windows Server - Microsoft Lifecycle</a>|
 |Version 1909 |5/11/2021|<a href="/lifecycle/products/windows-server">Windows Server - Microsoft Lifecycle</a>|
+
+> [!NOTE]
+> Azure Virtual Machine Scale Sets running Windows Server 2019 will continue to operate after March 31, 2027, but Service Fabric support for clusters on that OS image ends on that date. Plan to upgrade your node types to a supported Windows Server version before March 31, 2027. For guidance on upgrading cluster node types to a newer OS image, see [Scale up a Service Fabric cluster primary node type](service-fabric-scale-up-primary-node-type.md) and [Scale up a Service Fabric cluster non-primary node type](service-fabric-scale-up-non-primary-node-type.md). The documented upgrade steps for moving from Windows Server 2019 to Windows Server 2022 also apply when upgrading to Windows Server 2025.
 
 ### Windows 10
 

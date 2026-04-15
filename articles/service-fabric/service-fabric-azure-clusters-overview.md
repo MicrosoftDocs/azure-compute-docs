@@ -9,6 +9,7 @@ ms.custom: linux-related-content
 services: service-fabric
 ms.date: 03/22/2026
 ms.update-cycle: 1095-days
+ai-usage: ai-assisted
 # Customer intent: As a cloud architect, I want to create and manage Service Fabric clusters on Windows Server and Linux, so that I can efficiently deploy and scale microservices while maintaining security and optimizing resource usage.
 ---
 
@@ -38,7 +39,7 @@ All VMs in a cluster are placed in a virtual network.  All nodes in the same nod
 ### Scale set/node type
 When you create a cluster, you define one or more node types.  The nodes, or VMs, in a node type have the same size and characteristics such as number of CPUs, memory, number of disks, and disk I/O.  For example, one node type could be for small, front-end VMs with ports open to the internet while another node type could be for large, back-end VMs that process data. In Azure clusters, each node type is mapped to a [virtual machine scale set](../virtual-machine-scale-sets/index.yml).
 
-You can use scale sets to deploy and manage a collection of virtual machines as a set. Each node type that you define in an Azure Service Fabric cluster sets up a separate scale set. The Service Fabric runtime is bootstrapped onto each virtual machine in the scale set using Azure VM extensions. You can independently scale each node type up or down, change the OS SKU running on each cluster node, have different sets of ports open, and use different capacity metrics. A scale set has five [upgrade domains](service-fabric-cluster-resource-manager-cluster-description.md#upgrade-domains) and five [fault domains](service-fabric-cluster-resource-manager-cluster-description.md#fault-domains) and can have up to 100 VMs.  You create clusters of more than 100 nodes by creating multiple scale sets/node types.
+You can use scale sets to deploy and manage a collection of virtual machines as a set. Each node type that you define in an Azure Service Fabric cluster sets up a separate scale set. The Service Fabric runtime is bootstrapped onto each virtual machine in the scale set using Azure VM extensions. You can independently scale each node type up or down, change the OS SKU running on each cluster node, have different sets of ports open, and use different capacity metrics. Changing the OS SKU is the supported method to move node types off OS versions that have reached, or are approaching, the end of mainstream support. While Azure Virtual Machine Scale Set instances running Windows Server 2019 continue to operate, Service Fabric support for clusters on that OS image ends on March 31, 2027. A scale set has five [upgrade domains](service-fabric-cluster-resource-manager-cluster-description.md#upgrade-domains) and five [fault domains](service-fabric-cluster-resource-manager-cluster-description.md#fault-domains) and can have up to 100 VMs.  You create clusters of more than 100 nodes by creating multiple scale sets/node types.
 
 > [!IMPORTANT]
 > Choosing the number of node types for your cluster and the properties of each of node type (size, primary, internet facing, number of VMs, etc.) is an important task.  For more information, read [cluster capacity planning considerations](service-fabric-cluster-capacity.md).
@@ -90,15 +91,23 @@ For more information, read [Scaling Azure clusters](service-fabric-cluster-scali
 ## Upgrading
 An Azure Service Fabric cluster is a resource that you own, but is partly managed by Microsoft. Microsoft is responsible for patching the underlying OS and performing Service Fabric runtime upgrades on your cluster. You can set your cluster to receive automatic runtime upgrades, when Microsoft releases a new version, or choose to select a supported runtime version that you want. In addition to runtime upgrades, you can also update cluster configuration such as certificates or application ports.
 
+### Operating system image upgrades for node types
+
+To upgrade cluster node types from one Windows Server version to another—including moving from Windows Server 2019 to Windows Server 2022 or Windows Server 2025—use the node type scale-out/scale-in approach with VMSS-based OS image rollouts. This method maintains application availability when performed per the documented rolling upgrade procedures. The steps documented for upgrading from Windows Server 2019 to Windows Server 2022 also apply when upgrading to Windows Server 2025.
+
 For more information, read [Upgrading clusters](service-fabric-cluster-upgrade.md).
 
 ## Supported operating systems
-See [Supported Versions in Azure](./service-fabric-versions.md) for additional information
+See [Supported Versions in Azure](./service-fabric-versions.md) for additional information.
 
+> [!NOTE]
+> Service Fabric supports Windows Server OS images only through their mainstream support end dates. Support for Service Fabric clusters running on Windows Server 2019 ends on March 31, 2027. Plan to upgrade your clusters to Windows Server 2025 before that date. See the [Service Fabric supported versions page](./service-fabric-versions.md) and the [retirement notice](https://azure.microsoft.com/updates?id=558246) for details.
 
 ## Next steps
 Read more about [securing](service-fabric-cluster-security.md), [scaling](service-fabric-cluster-scaling.md), and [upgrading](service-fabric-cluster-upgrade.md) Azure clusters.
 
 Learn about [Service Fabric support options](service-fabric-support.md).
+
+Learn how to upgrade OS images for Service Fabric node types: [Scale up a primary node type](service-fabric-scale-up-primary-node-type.md) and [Scale up a non-primary node type](service-fabric-scale-up-non-primary-node-type.md) (the same steps apply when upgrading to Windows Server 2025).
 
 [Image]: media/service-fabric-azure-clusters-overview/Cluster.PNG
