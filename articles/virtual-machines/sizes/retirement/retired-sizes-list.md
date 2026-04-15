@@ -8,6 +8,7 @@ ms.topic: concept-article
 ms.date: 06/13/2025
 ms.author: mattmcinnes
 ms.reviewer: iamwilliew
+ai-usage: ai-assisted
 # Customer intent: As a cloud administrator, I want to review the list of retired virtual machine size series and their migration guides, so that I can ensure my systems are updated and transition to supported VM sizes before any planned retirements.
 ---
 
@@ -71,8 +72,12 @@ To learn more about size series retirement, previous-gen sizes, and the retireme
 
 ## GPU accelerated retired sizes
 
+Some GPU series have upcoming retirements in addition to already-retired series. NVv3-series and NVv4-series are newly announced for retirement with a planned retirement date of September 30, 2026.
+
 | Series name        | Retirement Status |Retirement Announcement      | Planned Retirement Date | Migration Guide |
 |--------------------|-------------------|-----------------------------|-------------------------|-----------------|
+| NVv3-series        | **Announced**     | [04/15/26](https://azure.microsoft.com/updates?id=516070) | 09/30/26 | [Migrate to NVads A10 v5 or NVads v710 v5](/azure/virtual-machines/nva10v5-series) |
+| NVv4-series        | **Announced**     | [04/15/26](https://azure.microsoft.com/updates?id=516070) | 09/30/26 | [Migrate to NVads A10 v5 or NVads v710 v5](/azure/virtual-machines/nva10v5-series) |
 | NCv3-NC24rs Series | **Retired**       | -                           | 30/9/25                 | [NCv3-NC24rs-series Retirement](../../ncv3-nc24rs-retirement.md) |
 | NCv3-Series        | **Retired**       | -                           | 30/9/25                 | [NCv3-series Retirement](../../ncv3-retirement.md)     |
 
@@ -93,3 +98,4 @@ Currently there are no retired ADH series retired or announced for retirement.
 ## Next steps
 - For a list of older and capacity limited sizes, see [Previous generation Azure VM sizes](../previous-gen-sizes-list.md).
 - For more information on VM sizes, see [Sizes for virtual machines in Azure](../overview.md).
+- For customers using NVv3 or NVv4 in Azure Batch, see [VM sizes supported by Azure Batch](/azure/batch/batch-pool-vm-sizes).

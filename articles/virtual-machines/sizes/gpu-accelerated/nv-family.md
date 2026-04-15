@@ -7,6 +7,7 @@ ms.subservice: sizes
 ms.topic: concept-article
 ms.date: 09/17/2024
 ms.author: mattmcinnes
+ai-usage: ai-assisted
 # Customer intent: As a cloud architect, I want to assess the various NV series VM sizes, so that I can select the most suitable GPU-accelerated instance for my high-performance computing workloads.
 ---
 
@@ -31,6 +32,10 @@ ms.author: mattmcinnes
 
 
 ### NVv3-series
+
+> [!IMPORTANT]
+> NVv3-series VMs are planned to retire on September 30, 2026. We recommend migrating your workloads to [NVads A10 v5-series](../../nva10v5-series.md) or [NVads v710 v5-series](./nvadsv710-v5-series.md) before that date. For more information on resizing, see [Change the size of a virtual machine](/azure/virtual-machines/resize-vm).
+
 [!INCLUDE [nvv3-series-summary](./includes/nvv3-series-summary.md)]
 
 [View the full NVv3-series page](../../nvv3-series.md).
@@ -39,6 +44,10 @@ ms.author: mattmcinnes
 
 
 ### NVv4-series
+
+> [!IMPORTANT]
+> NVv4-series VMs are planned to retire on September 30, 2026. We recommend migrating your workloads to [NVads A10 v5-series](../../nva10v5-series.md) or [NVads v710 v5-series](./nvadsv710-v5-series.md) before that date. For more information on resizing, see [Change the size of a virtual machine](/azure/virtual-machines/resize-vm).
+
 [!INCLUDE [nvv4-series-summary](./includes/nvv4-series-summary.md)]
 
 [View the full NVv4-series page](../../nvv4-series.md).
@@ -65,6 +74,6 @@ ms.author: mattmcinnes
 
 
 ### Previous-generation NV family series
-For older sizes, see [previous generation sizes](../previous-gen-sizes-list.md#gpu-accelerated-previous-gen-sizes).
+For older sizes, see [previous generation sizes](../previous-gen-sizes-list.md#gpu-accelerated-previous-gen-sizes). After their retirement on September 30, 2026, NVv3-series and NVv4-series will also be listed there as previous-generation sizes.
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]

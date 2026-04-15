@@ -9,12 +9,13 @@ ms.date: 07/31/2024
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
+ai-usage: ai-assisted
 # Customer intent: As a cloud architect, I want to understand the implications of the NV-series VM retirement and the migration options available, so that I can effectively transition workloads to suitable alternatives and ensure continued performance for graphic-intensive applications.
 ---
 > [!IMPORTANT]
 > NV and NV_Promo series Azure virtual machines (VMs) will be retired on September 6, 2023. For more information, see the [NV and NV_Promo retirement information](../../../nv-series-retirement.md). For how to migrate your workloads to other VM sizes, see the [NV and NV_Promo series migration guide](../../../nv-series-migration-guide.md).
 >
-> This retirement announcement doesn't apply to NVv3 and NVv4 series VMs. 
+> NVv3 and NVv4 series VMs are planned to retire on September 30, 2026. For more information, see the [NVv3 and NVv4 retirement announcement](https://azure.microsoft.com/updates?id=516070).
 
 The NV-series virtual machines are powered by [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPUs and NVIDIA GRID technology for desktop accelerated applications and virtual desktops where customers are able to visualize their data or simulations. Users are able to visualize their graphics intensive workflows on the NV instances to get superior graphics capability and additionally run single precision workloads such as encoding and rendering. NV-series VMs are also powered by Intel Xeon E5-2690 v3 (Haswell) CPUs.
 
