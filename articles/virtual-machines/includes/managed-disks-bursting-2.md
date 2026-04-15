@@ -4,7 +4,7 @@
  author: albecker1
  ms.service: azure-disk-storage
  ms.topic: include
- ms.date: 01/14/2025
+ ms.date: 04/15/2026
  ms.author: albecker1
  ms.custom: include file
 # Customer intent: As a cloud resource manager, I want to understand the cost and performance implications of on-demand and credit-based disk bursting, so that I can optimize our workloads' IOPS and throughput while managing expenses effectively.
@@ -62,7 +62,7 @@ VM-level bursting only uses the credit-based model for bursting, it's enabled by
 
 ## Bursting flow
 
-The bursting credit system applies in the same manner at both the VM level and disk level. Your resource, either a VM or disk, will start with fully stocked credits in its own burst bucket. These credits allow you to burst for up to 30 minutes at the maximum burst rate. You accumulate credits whenever the resource's IOPS or MB/s are being utilized below the resource's performance target. If your resource has accrued bursting credits and your workload needs the extra performance, your resource can use those credits to go above its performance limits and increase its performance to meet the workload demands.
+The bursting credit system applies in the same manner at both the VM level and disk level. Your resource, either a VM or disk, will start with fully stocked credits in its own burst bucket. These credits allow you to burst for up to 30 minutes at the maximum burst rate. You accumulate credits whenever the resource's IOPS or MB/s are being utilized below the resource's performance target. If your resource has accrued bursting credits and your workload needs the extra performance, your resource can use those credits to go above its performance limits on a best-effort basis to help meet workload demands.
 
 ![Bursting bucket diagram.](media/managed-disks-bursting/bucket-diagram.jpg)
 
