@@ -41,12 +41,11 @@ The following sections show what sizes are in the same size series group when yo
 
 ## Instance size flexibility ratio
 
-You also use API or PowerShell to fetch the ratios. The CSV link and schema are kept up to date so you can use them programmatically. Read more [here](/azure/cost-management-billing/reservations/instance-size-flexibility).
-
 CSV below has the instance size flexibility groups, ArmSkuName and the ratios. 
 
-
 [Instance size flexibility ratios](https://aka.ms/isf)
+
+You can also use API or PowerShell to fetch the ratios. The CSV link and schema are kept up to date so you can use them programmatically. Read more [here](/azure/cost-management-billing/reservations/instance-size-flexibility).
 
 > [!CAUTION]
  > Beginning May 9, 2026, the CSV file will no longer receive updates and will be removed on August 30, 2026, in favor of accessing data through the API or PowerShell. Read more [here](/azure/cost-management-billing/reservations/instance-size-flexibility).
