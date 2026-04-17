@@ -125,7 +125,7 @@ Now that you have setup an Azure Key Vault and disk encryption set, you can depl
     >
     > - Selecting a disk encryption set in the portal supports cross-tenant customer-managed key configurations.
     > - Ensure cross-tenant Key Vault and permissions prerequisites are completed before proceeding; otherwise, disk encryption set configuration fails.
-    > - The portal steps are unchanged, but the Key Vault and permissions prerequisites differ for cross-tenant scenarios.
+    > - The portal UI and selection steps remain the same, but the Key Vault and permissions prerequisites differ for cross-tenant scenarios.
     >
     > For details, see [Encrypt managed disks with cross-tenant customer-managed keys](./disks-cross-tenant-customer-managed-keys.md).
 

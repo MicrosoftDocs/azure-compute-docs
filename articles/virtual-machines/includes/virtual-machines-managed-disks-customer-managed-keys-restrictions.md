@@ -17,7 +17,8 @@
     - [HSM](/azure/key-vault/keys/hsm-protected-keys) keys require the **premium** tier of Azure Key vaults.
 - For Ultra Disks and Premium SSD v2 disks only:
     - (Preview) User-assigned managed identities are available for Ultra Disks and Premium SSD v2 disks encrypted with customer-managed keys.
-    - Ultra Disks and Premium SSD v2 disks can be encrypted with customer-managed keys using Azure Key Vaults stored in a different Microsoft Entra tenant. For setup prerequisites, see [Encrypt managed disks with cross-tenant customer-managed keys](/azure/virtual-machines/disks-cross-tenant-customer-managed-keys).
+    - Ultra Disks and Premium SSD v2 disks can be encrypted with customer-managed keys using Azure Key Vaults stored in a different Microsoft Entra tenant.
+    - For setup prerequisites, see [Encrypt managed disks with cross-tenant customer-managed keys](/azure/virtual-machines/disks-cross-tenant-customer-managed-keys).
 - Most resources related to your customer-managed keys (disk encryption sets, VMs, disks, and snapshots) must be in the same subscription and region.
     - Azure Key Vaults may be used from a different subscription but must be in the same region as your disk encryption set. Cross-tenant Key Vault support is available for Ultra Disks and Premium SSD v2 disks. For current support details across disk types, see [Encrypt managed disks with cross-tenant customer-managed keys](/azure/virtual-machines/disks-cross-tenant-customer-managed-keys).
 - Disks encrypted with customer-managed keys can only move to another resource group if the VM they're attached to is deallocated.
