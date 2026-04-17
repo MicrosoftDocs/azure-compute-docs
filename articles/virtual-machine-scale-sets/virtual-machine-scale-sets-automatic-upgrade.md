@@ -159,6 +159,10 @@ The following platform SKUs are currently supported (and more are added periodic
 | MicrosoftWindowsServer  | WindowsServer | 2022-Datacenter-g2 |
 | MicrosoftWindowsServer  | WindowsServer | 2022-Datacenter-smalldisk-g2 |
 | MicrosoftWindowsServer  | WindowsServer | Datacenter-core-20h2-with-containers-smalldisk-gs |
+| MicrosoftWindowsServer | WindowsServer | 2025-Datacenter |
+| MicrosoftWindowsServer | WindowsServer | 2025-Datacenter-core |
+| MicrosoftWindowsServer | WindowsServer | 2025-Datacenter-core-smalldisk |
+| MicrosoftWindowsServer | WindowsServer | 2025-Datacenter-smalldisk |
 
 ## Requirements for configuring automatic OS image upgrade
 
