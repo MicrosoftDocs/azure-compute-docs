@@ -13,7 +13,19 @@ ms.reviewer: mattmcinnes
 
 # HC sizes series
 
+> [!IMPORTANT]
+> Azure Virtual Machines HC-series sizes (Standard_HC44rs, Standard_HC44-16rs, Standard_HC44-32rs) will be retired on May 31, 2027. After this date, any remaining HC-series VMs will be deallocated, stop running, and will no longer incur charges. HC-series will no longer have SLA or support following retirement. Sales of 1-year and 3-year Reserved Instances for HC-series ended on April 2, 2026. For more information, see [Migrate your HC-series virtual machines by May 31, 2027](../../sizes/retirement/hc-series-retirement.md).
+
 [!INCLUDE [hc-summary](./includes/hc-series-summary.md)]
+
+## Migration and alternatives
+
+To avoid service disruption, plan to migrate your HC-series workloads before May 31, 2027. For current-generation HPC alternatives, consider:
+
+- **[HBv5-series](hbv5-series.md)** – Offers higher compute performance and better price-performance than HBv4, suitable for most memory-bandwidth intensive HPC workloads.
+- **[HX-series](hx-series.md)** – Optimized for high-memory HPC workloads with approximately twice the memory capacity of HBv4, ideal for large-scale EDA and molecular dynamics.
+
+For migration steps, see [Change the size of a virtual machine](../../../virtual-machines/resize-vm.md).
 
 ## Host specifications
 [!INCLUDE [hc-series-specs](./includes/hc-series-specs.md)]
@@ -139,5 +151,18 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 |[Backend Network](./hc-series.md)| InfiniBand EDR |
 
 
+## Availability and purchasing
+
+> [!IMPORTANT]
+> Sales of 1-year and 3-year Reserved Instances for HC-series are no longer available as of April 2, 2026. Pay-as-you-go remains available until the retirement date of May 31, 2027. After May 31, 2027, service-level agreements and support for HC-series end, and all remaining HC-series VMs will be automatically deallocated.
+
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]
 
+## Next steps for HC-series customers
+
+> [!CAUTION]
+> Plan to migrate your HC-series workloads before May 31, 2027. After this date, remaining HC-series VMs will be automatically deallocated. Evaluate these current-generation alternatives for your HPC workloads:
+> - [HBv5-series](hbv5-series.md) – Higher compute performance and better price-performance than HBv4
+> - [HX-series](hx-series.md) – High-memory HPC workloads with approximately twice the memory capacity of HBv4
+>
+> For migration steps, see [Change the size of a virtual machine](../../../virtual-machines/resize-vm.md) and [Migrate your HC-series virtual machines by May 31, 2027](../../sizes/retirement/hc-series-retirement.md).

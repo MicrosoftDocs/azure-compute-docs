@@ -12,7 +12,15 @@ ms.date: 01/06/2026
 > [!NOTE]
 > 1-year and 3-year purchases for the HC-series end April 2, 2026.
 
-Microsoft Azure has announced the retirement of its HC-series virtual machines effective May 31, 2027. Introduced in 2019, the HC-series is equipped with Intel Xeon Platinum 8,168 processor cores, 8 GB of RAM per CPU core, and a 100 Gb/sec Mellanox EDR InfiniBand. Since launching this series, Microsoft introduced HBv5, HBv4, HX, and HBv3 series virtual machines. These newer offerings pack the latest technological improvements in compute, memory, and backend networking. This enables superior performance, scaling efficiency, and cost-effectiveness for a wide range of high-performance computing workloads.
+Microsoft Azure has announced the retirement of its HC-series virtual machines effective May 31, 2027. Introduced in 2019, HC-series VMs are equipped with Intel Xeon Platinum 8168 processors, 8 GB of RAM per CPU core, and a 100 Gb/sec Mellanox EDR InfiniBand. Since launching this series, Microsoft introduced HBv5, HBv4, HX, and HBv3 series virtual machines. These newer offerings pack the latest technological improvements in compute, memory, and backend networking. This enables superior performance, scaling efficiency, and cost-effectiveness for a wide range of high-performance computing workloads.
+
+## Impacted sizes
+
+The following HC-series VM sizes are being retired on May 31, 2027:
+
+- Standard_HC44rs
+- Standard_HC44-16rs
+- Standard_HC44-32rs
 
 ## How does the retirement of the HC-series virtual machines affect me?
 
@@ -24,7 +32,7 @@ To avoid service disruption, deallocate your HC-series VMs and migrate these wor
 
 ## Suggested alternative Azure VM sizes
 
-To ensure continuity and optimal performance, we recommend transitioning from the current HC-series VMs to newer VM series within Azure's HPC portfolio.
+To ensure continuity and optimal performance, we recommend transitioning from the current HC-series VMs to newer VM series within Azure's HPC portfolio. [HBv5-series](../high-performance-compute/hbv5-series.md) offers higher performance and better price-performance than HBv4, making it well-suited for most HPC workloads. [HX-series](../high-performance-compute/hx-series.md) is optimized for high-memory HPC workloads with approximately twice the memory capacity of HBv4.
 
 | Workload | Recommended VM to migrate to |
 |---|---|
