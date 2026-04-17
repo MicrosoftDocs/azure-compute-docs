@@ -25,7 +25,7 @@ Temporary disks and ephemeral OS disks are encrypted at rest with platform-manag
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-restrictions](./includes/virtual-machines-disks-encryption-at-host-restrictions.md)]
 
-- Cross-tenant customer-managed keys are supported for managed disks. On April 15, 2026, this support was added for Premium SSD v2 and Ultra Disks. For prerequisites, see [Encrypt managed disks with cross-tenant customer-managed keys](./disks-cross-tenant-customer-managed-keys.md).
+- Cross-tenant customer-managed keys are supported for managed disks. For prerequisites, see [Encrypt managed disks with cross-tenant customer-managed keys](./disks-cross-tenant-customer-managed-keys.md).
 
 ### Supported VM sizes
 

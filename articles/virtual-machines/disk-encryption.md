@@ -52,7 +52,7 @@ You can either import [your RSA keys](/azure/key-vault/keys/hsm-protected-keys) 
 
 Managed disks and the Key Vault or managed HSM must be in the same Azure region, but they can be in different subscriptions. They must also be in the same Microsoft Entra tenant, unless you're using [Encrypt managed disks with cross-tenant customer-managed keys](disks-cross-tenant-customer-managed-keys.md).
 
-Managed disks support using a Key Vault in a different Microsoft Entra tenant with cross-tenant customer-managed keys. This support enables separation of resource and key ownership across tenants for multitenant and service provider scenarios. On April 15, 2026, this support was added for Premium SSD v2 and Ultra Disks. For setup details, see [Encrypt managed disks with cross-tenant customer-managed keys](disks-cross-tenant-customer-managed-keys.md).
+Managed disks support using a Key Vault in a different Microsoft Entra tenant with cross-tenant customer-managed keys. This support enables separation of resource and key ownership across tenants for multitenant and service provider scenarios. For setup details, see [Encrypt managed disks with cross-tenant customer-managed keys](disks-cross-tenant-customer-managed-keys.md).
 
 #### Full control of your keys
 

@@ -26,8 +26,7 @@ Setting up customer-managed keys for your disks requires you to create resources
     > Your disk encryption set, VM, disks, and snapshots must all be in the same region and subscription for deployment to succeed.
     >
     > - Azure Key Vaults may be used from a different subscription, but they must be in the same region as your disk encryption set.
-    > - Azure Key Vaults in different Microsoft Entra tenants are supported for managed disks.
-    > - On April 15, 2026, cross-tenant support was added for Premium SSD v2 and Ultra Disks. For prerequisites, see [Encrypt managed disks with cross-tenant customer-managed keys](/azure/virtual-machines/disks-cross-tenant-customer-managed-keys).
+    > - Azure Key Vaults in different Microsoft Entra tenants are supported for managed disks. For prerequisites, see [Encrypt managed disks with cross-tenant customer-managed keys](/azure/virtual-machines/disks-cross-tenant-customer-managed-keys).
 
 1. Select **+Create** to create a new Key Vault.
 1. Create a new resource group.
