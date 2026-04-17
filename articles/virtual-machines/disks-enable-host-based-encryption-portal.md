@@ -25,7 +25,7 @@ Temporary disks and ephemeral OS disks are encrypted at rest with platform-manag
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-restrictions](./includes/virtual-machines-disks-encryption-at-host-restrictions.md)]
 
-- Cross-tenant customer-managed keys are supported for Premium SSD v2 and Ultra Disks. Other managed disk types require the Key Vault to be in the same Microsoft Entra tenant as the disk encryption set. For prerequisites, see [Encrypt managed disks with cross-tenant customer-managed keys](./disks-cross-tenant-customer-managed-keys.md).
+- Cross-tenant customer-managed keys are supported for managed disks. On April 15, 2026, this support was added for Premium SSD v2 and Ultra Disks. For prerequisites, see [Encrypt managed disks with cross-tenant customer-managed keys](./disks-cross-tenant-customer-managed-keys.md).
 
 ### Supported VM sizes
 
@@ -121,7 +121,7 @@ Now that you have setup an Azure Key Vault and disk encryption set, you can depl
 1. Select **Key management** and select one of your customer-managed keys.
 
     > [!NOTE]
-    > For VMs that use Premium SSD v2 or Ultra Disks:
+    > For VMs that use cross-tenant customer-managed keys:
     >
     > - Selecting a disk encryption set in the portal supports cross-tenant customer-managed key configurations.
     > - Ensure cross-tenant Key Vault and permissions prerequisites are completed before proceeding; otherwise, the disk encryption set fails to authenticate with the Key Vault.

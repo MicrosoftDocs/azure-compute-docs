@@ -26,8 +26,8 @@ Setting up customer-managed keys for your disks requires you to create resources
     > Your disk encryption set, VM, disks, and snapshots must all be in the same region and subscription for deployment to succeed.
     >
     > - Azure Key Vaults may be used from a different subscription, but they must be in the same region as your disk encryption set.
-    > - For all managed disk types except Premium SSD v2 and Ultra Disks, the Key Vault must be in the same Microsoft Entra tenant as your disk encryption set.
-    > - For Premium SSD v2 and Ultra Disks, you can use a Key Vault in a different Microsoft Entra tenant. For prerequisites, see [Encrypt managed disks with cross-tenant customer-managed keys](/azure/virtual-machines/disks-cross-tenant-customer-managed-keys).
+    > - Azure Key Vaults in different Microsoft Entra tenants are supported for managed disks.
+    > - On April 15, 2026, cross-tenant support was added for Premium SSD v2 and Ultra Disks. For prerequisites, see [Encrypt managed disks with cross-tenant customer-managed keys](/azure/virtual-machines/disks-cross-tenant-customer-managed-keys).
 
 1. Select **+Create** to create a new Key Vault.
 1. Create a new resource group.
@@ -72,7 +72,7 @@ Now that you've created the Azure key vault and a key, you must add an Azure RBA
 1. Select the key vault and key you created previously, and the version.
 
     > [!NOTE]
-    > For Premium SSD v2 or Ultra Disks with cross-tenant customer-managed keys, the selected key can be in a Key Vault in a different Microsoft Entra tenant.
+    > For managed disks with cross-tenant customer-managed keys, the selected key can be in a Key Vault in a different Microsoft Entra tenant.
     >
     > Ensure the disk encryption set managed identity has key permissions, including **Get**, **Wrap Key**, and **Unwrap Key**, in that Key Vault, along with the required cross-tenant access configuration. For detailed setup steps, see [Encrypt managed disks with cross-tenant customer-managed keys](/azure/virtual-machines/disks-cross-tenant-customer-managed-keys).
 
