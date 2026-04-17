@@ -82,7 +82,7 @@ For currently supported versions, all releases are listed. For currently unsuppo
 <sup>4</sup> The upgrade and downgrade pathways from 9.1 to 10.1CU5 and vice versa are blocked, resulting in 10.0's listing in these places. These blockages aren't present for other versions of 10.1.
 
 ## Supported Windows versions and support end date
-Service Fabric supports Windows Server OS images through their mainstream support end dates. Explicit retirement notices—such as the retirement of Windows Server 2019 support on March 31, 2027—supersede this general rule.
+Service Fabric supports Windows Server OS images through their mainstream support end dates. Explicit retirement notices, like the retirement of Windows Server 2019 support on March 31, 2027, supersede this general rule.
 
 ### Windows Server
 
