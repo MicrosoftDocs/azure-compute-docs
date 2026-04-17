@@ -9,6 +9,7 @@ ms.service: azure-disk-storage
 ms.custom:
   - references_regions
   - ignite-2023
+ai-usage: ai-assisted
 # Customer intent: "As a security administrator, I want to learn about the various server-side encryption options for Azure managed disks, so that I can implement the most appropriate security measures for protecting data in Azure virtual machines."
 ---
 
@@ -50,6 +51,8 @@ You must use one of the following Azure key stores to store your customer-manage
 You can either import [your RSA keys](/azure/key-vault/keys/hsm-protected-keys) to your Key Vault or generate new RSA keys in Azure Key Vault. Azure managed disks handles the encryption and decryption in a fully transparent fashion using envelope encryption. It encrypts data using an [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 256 based data encryption key (DEK), which is, in turn, protected using your keys. The Storage service generates data encryption keys and encrypts them with customer-managed keys using RSA encryption. The envelope encryption allows you to rotate (change) your keys periodically as per your compliance policies without impacting your VMs. When you rotate your keys, the Storage service re-wraps the data encryption keys with the new customer-managed key version. The underlying disk data itself is not re-encrypted. Both old and new key versions must remain enabled until re-wrapping is complete.
 
 Managed disks and the Key Vault or managed HSM must be in the same Azure region, but they can be in different subscriptions. They must also be in the same Microsoft Entra tenant, unless you're using [Encrypt managed disks with cross-tenant customer-managed keys](disks-cross-tenant-customer-managed-keys.md).
+
+Premium SSD v2 and Ultra Disks support using a Key Vault in a different Microsoft Entra tenant with cross-tenant customer-managed keys. This support enables separation of resource and key ownership across tenants for multitenant and service provider scenarios. For setup details, see [Encrypt managed disks with cross-tenant customer-managed keys](disks-cross-tenant-customer-managed-keys.md).
 
 #### Full control of your keys
 

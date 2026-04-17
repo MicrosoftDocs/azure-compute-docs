@@ -9,6 +9,7 @@ ms.author: rogarana
 ms.custom:
   - ignite-2023
   - portal
+ai-usage: ai-assisted
 # Customer intent: "As an IT administrator, I want to enable end-to-end encryption using host-based encryption for managed disks, so that I can ensure data security both at rest and in transit for my virtual machines."
 ---
 
@@ -23,6 +24,8 @@ Temporary disks and ephemeral OS disks are encrypted at rest with platform-manag
 ## Restrictions
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-restrictions](./includes/virtual-machines-disks-encryption-at-host-restrictions.md)]
+
+- Cross-tenant customer-managed keys are supported for Premium SSD v2 and Ultra Disks. Other managed disk types require the Key Vault to be in the same Microsoft Entra tenant as the disk encryption set. For prerequisites, see [Encrypt managed disks with cross-tenant customer-managed keys](./disks-cross-tenant-customer-managed-keys.md).
 
 ### Supported VM sizes
 
@@ -116,6 +119,10 @@ Now that you have setup an Azure Key Vault and disk encryption set, you can depl
 1. Fill in the other values on the **Basic** pane as you like, then proceed to the **Disks** pane.
 1. On the **Disks** pane, select **Encryption at host**.
 1. Select **Key management** and select one of your customer-managed keys.
+
+    > [!NOTE]
+    > For VMs that use Premium SSD v2 or Ultra Disks, selecting a disk encryption set in the portal also supports cross-tenant customer-managed key configurations when prerequisites are completed. The portal steps are unchanged, but the Key Vault and permissions prerequisites differ for cross-tenant scenarios. For details, see [Encrypt managed disks with cross-tenant customer-managed keys](./disks-cross-tenant-customer-managed-keys.md).
+
 1. Make the remaining selections as you like.
 
    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-host-based-encryption-customer-managed-keys.png" alt-text="Screenshot of the virtual machine creation disks pane, encryption at host is highlighted, customer-managed keys selected." lightbox="media/virtual-machines-disks-encryption-at-host-portal/disks-host-based-encryption-customer-managed-keys.png":::
