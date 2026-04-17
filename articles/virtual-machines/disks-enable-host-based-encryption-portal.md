@@ -124,7 +124,7 @@ Now that you have setup an Azure Key Vault and disk encryption set, you can depl
     > For VMs that use Premium SSD v2 or Ultra Disks:
     >
     > - Selecting a disk encryption set in the portal supports cross-tenant customer-managed key configurations.
-    > - Ensure cross-tenant Key Vault and permissions prerequisites are completed before proceeding; otherwise, disk encryption set configuration fails.
+    > - Ensure cross-tenant Key Vault and permissions prerequisites are completed before proceeding; otherwise, the disk encryption set fails to authenticate with the Key Vault.
     > - The portal UI and selection steps remain the same, but the Key Vault and permissions prerequisites differ for cross-tenant scenarios.
     >
     > For details, see [Encrypt managed disks with cross-tenant customer-managed keys](./disks-cross-tenant-customer-managed-keys.md).
