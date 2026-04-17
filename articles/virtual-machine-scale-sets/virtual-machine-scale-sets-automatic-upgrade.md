@@ -69,26 +69,25 @@ The scale set OS upgrade orchestrator checks for the overall scale set health be
 To modify the default settings associated with Rolling Upgrades, review Azure's [Rolling Upgrade Policy](/rest/api/compute/virtual-machine-scale-sets/create-or-update?tabs=HTTP#rollingupgradepolicy).
 ### VMSS Flex considerations
 
-When upgrading virtual machines in a scale set that uses **Flexible orchestration mode**, the following considerations apply:
+When upgrading virtual machines in a scale set that uses Flexible orchestration mode, the following considerations apply:
 
 1. **Image reference consistency**  
    Virtual machines must use the same image reference as defined in the virtual machine scale set (VMSS) model.
 
 2. **Image version requirement**  
-   For VMSS Flex, the image version must be set to `latest`. Specifying an explicit image version isn't supported for Automatic OS Image Upgrades in Flexible orchestration mode.
-
+   For VMSS Flex, the image version configured on the virtual machine must be set to latest.
+   
 3. **Provisioning data behavior**  
    During an automatic OS image upgrade, provisioning data on the virtual machine is overwritten by the VMSS model. This includes administrator credentials and custom data. This behavior is specific to VMSS Flex and aligns with how reimage operations work in Flexible orchestration mode.
 
-4. **MaxSurge limitation**  
+4. **Application health monitoring**  
+   VMSS Flex supports application health monitoring through the Application Health Extension. The extension version on the virtual machine must match the version configured on the VMSS.
+
+5. **MaxSurge limitation**  
    Automatic OS Image Upgrades can't be enabled at the same time as MaxSurge for VMSS Flex.
 
    > **Note**  
    > Using MaxSurge together with Automatic OS Image Upgrades in Flexible orchestration mode isn't currently supported.
-
-5. **Application health monitoring**  
-   VMSS Flex supports application health monitoring through the **Application Health Extension**. The extension version on the virtual machine must match the version configured on the VMSS.
-
 ## OS image upgrade versus reimage
 
 Both **OS Image Upgrade** and **[Reimage](/rest/api/compute/virtual-machine-scale-sets/reimage)** are methods used to update virtual machines within a scale set, but they serve different purposes and have distinct impacts.
