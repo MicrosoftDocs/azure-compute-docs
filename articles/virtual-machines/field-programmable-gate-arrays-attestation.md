@@ -16,7 +16,7 @@ The FPGA Attestation service performs a series of validations on a design checkp
 > [!NOTE]
 > - The Azure NP-series FPGA Attestation Service will close to new preview sign-ups on May 1, 2026.
 > - The attestation service will remain available to previously approved users until June 1, 2026. Bitstreams that have already been attested will continue to function on NP-series virtual machines until the platform retirement date.
-> - This change is related to the upcoming retirement of NP-series virtual machines. For more information, see ../retirement/np-series-retirement.md. 
+> - This change is related to the upcoming retirement of NP-series virtual machines. For more information, see [NP-series virtual machine migration guidance](../retirement/np-series-retirement.md). 
 > - See the [Preview Terms Of Use | Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability. 
 > - [Sign up for the public preview.](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-2EKbNvC7xEohJW7nFBrIFUNzVVNzlMQ002TzdYRzZUR0EwOTFGQjZJUy4u)
 
