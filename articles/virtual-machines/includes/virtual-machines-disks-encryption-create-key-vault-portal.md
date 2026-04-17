@@ -23,7 +23,11 @@ Setting up customer-managed keys for your disks requires you to create resources
     :::image type="content" source="media/virtual-machines-disk-encryption-portal/server-side-encryption-key-vault-portal-search.png" alt-text="Screenshot of the Azure portal with the search dialog box expanded." lightbox="media/virtual-machines-disk-encryption-portal/sever-side-encryption-key-vault-portal-search-expanded.png":::
 
     > [!IMPORTANT]
-    > Your disk encryption set, VM, disks, and snapshots must all be in the same region and subscription for deployment to succeed. Azure Key Vaults may be used from a different subscription but must be in the same region as your disk encryption set. For most disk types, the Key Vault must also be in the same Microsoft Entra tenant as your disk encryption set. For Premium SSD v2 and Ultra Disks, you can use a Key Vault in a different Microsoft Entra tenant. For prerequisites, see [Encrypt managed disks with cross-tenant customer-managed keys](/azure/virtual-machines/disks-cross-tenant-customer-managed-keys).
+    > Your disk encryption set, VM, disks, and snapshots must all be in the same region and subscription for deployment to succeed.
+    >
+    > - Azure Key Vaults may be used from a different subscription, but they must be in the same region as your disk encryption set.
+    > - For most disk types, the Key Vault must be in the same Microsoft Entra tenant as your disk encryption set.
+    > - For Premium SSD v2 and Ultra Disks, you can use a Key Vault in a different Microsoft Entra tenant. For prerequisites, see [Encrypt managed disks with cross-tenant customer-managed keys](/azure/virtual-machines/disks-cross-tenant-customer-managed-keys).
 
 1. Select **+Create** to create a new Key Vault.
 1. Create a new resource group.
@@ -68,7 +72,9 @@ Now that you've created the Azure key vault and a key, you must add an Azure RBA
 1. Select the key vault and key you created previously, and the version.
 
     > [!NOTE]
-    > If you're configuring Premium SSD v2 or Ultra Disks with cross-tenant customer-managed keys, the selected key can be in a Key Vault in a different Microsoft Entra tenant. Ensure the disk encryption set managed identity has key permissions such as **Get**, **Wrap Key**, and **Unwrap Key** in that Key Vault, along with the required cross-tenant access configuration. For detailed setup steps, see [Encrypt managed disks with cross-tenant customer-managed keys](/azure/virtual-machines/disks-cross-tenant-customer-managed-keys).
+    > If you're configuring Premium SSD v2 or Ultra Disks with cross-tenant customer-managed keys, the selected key can be in a Key Vault in a different Microsoft Entra tenant.
+    >
+    > Ensure the disk encryption set managed identity has key permissions such as **Get**, **Wrap Key**, and **Unwrap Key** in that Key Vault, along with the required cross-tenant access configuration. For detailed setup steps, see [Encrypt managed disks with cross-tenant customer-managed keys](/azure/virtual-machines/disks-cross-tenant-customer-managed-keys).
 
 1. If you want to enable [automatic rotation of customer managed keys](/azure/virtual-machines/disk-encryption#automatic-key-rotation-of-customer-managed-keys), select **Auto key rotation**.
 1. Select **Review + Create** and then **Create**.
