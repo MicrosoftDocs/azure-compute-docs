@@ -9,7 +9,6 @@ ms.author: rogarana
 ms.custom:
   - ignite-2023
   - portal
-ai-usage: ai-assisted
 # Customer intent: "As an IT administrator, I want to enable end-to-end encryption using host-based encryption for managed disks, so that I can ensure data security both at rest and in transit for my virtual machines."
 ---
 
@@ -117,16 +116,6 @@ Now that you have setup an Azure Key Vault and disk encryption set, you can depl
 1. Fill in the other values on the **Basic** pane as you like, then proceed to the **Disks** pane.
 1. On the **Disks** pane, select **Encryption at host**.
 1. Select **Key management** and select one of your customer-managed keys.
-
-    > [!NOTE]
-    > For VMs that use cross-tenant customer-managed keys:
-    >
-    > - Selecting a disk encryption set in the portal supports cross-tenant customer-managed key configurations.
-    > - Ensure cross-tenant Key Vault and permissions prerequisites are completed before proceeding; otherwise, the disk encryption set fails to authenticate with the Key Vault.
-    > - The portal UI and selection steps remain the same, but the Key Vault and permissions prerequisites differ for cross-tenant scenarios.
-    >
-    > For details, see [Encrypt managed disks with cross-tenant customer-managed keys](./disks-cross-tenant-customer-managed-keys.md).
-
 1. Make the remaining selections as you like.
 
    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-host-based-encryption-customer-managed-keys.png" alt-text="Screenshot of the virtual machine creation disks pane, encryption at host is highlighted, customer-managed keys selected." lightbox="media/virtual-machines-disks-encryption-at-host-portal/disks-host-based-encryption-customer-managed-keys.png":::

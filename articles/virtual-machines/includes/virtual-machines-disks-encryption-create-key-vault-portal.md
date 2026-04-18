@@ -72,8 +72,6 @@ Now that you've created the Azure key vault and a key, you must add an Azure RBA
 
     > [!NOTE]
     > For managed disks with cross-tenant customer-managed keys, the selected key can be in a Key Vault in a different Microsoft Entra tenant.
-    >
-    > Ensure the disk encryption set managed identity has key permissions, including **Get**, **Wrap Key**, and **Unwrap Key**, in that Key Vault, along with the required cross-tenant access configuration. For detailed setup steps, see [Encrypt managed disks with cross-tenant customer-managed keys](/azure/virtual-machines/disks-cross-tenant-customer-managed-keys).
 
 1. If you want to enable [automatic rotation of customer managed keys](/azure/virtual-machines/disk-encryption#automatic-key-rotation-of-customer-managed-keys), select **Auto key rotation**.
 1. Select **Review + Create** and then **Create**.
