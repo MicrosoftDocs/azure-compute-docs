@@ -257,7 +257,7 @@ When you migrate Oracle software and workloads from on-premises to Microsoft Azu
 
 When using Oracle databases in Azure, you're responsible for implementing a high availability and disaster recovery solution to avoid any downtime.
 
-You can implement high availability and disaster recovery for Oracle Database Enterprise Edition by using [Data Guard, Active Data Guard](https://www.oracle.com/database/technologies/high-availability/dataguard.html), or [Oracle GoldenGate](https://www.oracle.com/technetwork/middleware/goldengate). The approach requires two databases on two separate VMs, which should be in the same [virtual network](/azure/virtual-network/) to ensure they can access each other over the private persistent IP address.
+You can implement high availability and disaster recovery for Oracle Database Enterprise Edition by using [Data Guard, Active Data Guard](https://www.oracle.com/database/data-guard/), or [Oracle GoldenGate](https://www.oracle.com/technetwork/middleware/goldengate). The approach requires two databases on two separate VMs, which should be in the same [virtual network](/azure/virtual-network/) to ensure they can access each other over the private persistent IP address.
 
 We recommend placing the VMs in the same availability set to allow Azure to place them into separate fault domains and upgrade domains. If you want to have geo-redundancy, set up the two databases to replicate between two different regions and connect the two instances with a VPN Gateway. To walk through the basic setup procedure on Azure, see [Implement Oracle Data Guard on an Azure Linux virtual machine](configure-oracle-dataguard.md).
 
