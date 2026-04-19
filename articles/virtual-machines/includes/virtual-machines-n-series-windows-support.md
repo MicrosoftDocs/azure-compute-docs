@@ -31,7 +31,7 @@ NVIDIA Tesla (CUDA) drivers for all NC* and ND*-series VMs (optional for NV*-ser
 >
 > [vGPU18](https://download.microsoft.com/download/dcf4d002-3a53-469d-91af-04bddf57a9d7/573.76_grid_win10_win11_server2019_server2022_server2025_dch_64bit_international_azure_swl.exe) is now available for the NVadsA10_v5-series in **Public, China, and Azure Government regions only**.
 >
-> [vGPU20] (https://download.microsoft.com/download/169e58c8-9099-481e-a9a9-c237a189710c/595.97_grid_win10_win11_server2022_server2025_dch_64bit_international_azure_swl.exe) is now available for the NCv6 RTX Pro 6000 BSE series. vGPU20 is **not** yet supported on the NVadsA10_v5-series. We will provide an update for when vGPU20 is supported on the NVadsA10_v5-series. 
+> [vGPU20](https://download.microsoft.com/download/169e58c8-9099-481e-a9a9-c237a189710c/595.97_grid_win10_win11_server2022_server2025_dch_64bit_international_azure_swl.exe) is only available for the NCv6 RTX PRO 6000 BSE series. vGPU20 is **not** yet supported on the NVadsA10_v5-series. We will provide an update for when vGPU20 is supported on the NVadsA10_v5-series. 
 
 > [!Note]
 >For Azure NVads A10 v5 VMs we recommend customers to always be on the latest driver version. The latest NVIDIA major driver branch(n) is only backward compatbile with the previous major branch(n-1). For eg, vGPU 17.x is backward compatible with vGPU 16.x only. Any VMs still runnig n-2 or lower may see driver failures when the latest drive branch is rolled out to Azure hosts.
