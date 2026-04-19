@@ -203,6 +203,7 @@ Deploy RDMA-capable N-series VMs from one of the images in the Azure Marketplace
 
 1. Ensure that secure boot and vTPM are disabled.
 2. Install prerequisites.
+   
    Ubuntu (24.04, 22.04, 20.04):
    ```
    sudo apt update 
@@ -213,16 +214,16 @@ Deploy RDMA-capable N-series VMs from one of the images in the Azure Marketplace
    sudo yum check-update 
    sudo yum install -y make automake gcc gcc-c++ kernel-devel-$(uname -r) kernel-headers-$(uname -r) 
    ```
-3. Download the Linux Driver (with v20.x vGPU Unified Driver).
+4. Download the Linux Driver (with v20.x vGPU Unified Driver).
    ```
    wget -O /var/tmp/NVIDIA-Linux-x86_64-595.58.03-grid-azure.run https://download.microsoft.com/download/51239696-ec04-4c02-a6b3-1d9c608fb57c/NVIDIA-Linux-x86_64-59… 
    ```
-4. Install the driver.
+5. Install the driver.
    ```
    sudo chmod +x /var/tmp/NVIDIA-Linux-x86_64-595.58.03-grid-azure.run 
-   sudo /var/tmp/NVIDIA-Linux-x86_64-595.58.03-grid-azure.run --silent -- tmpdir /var/tmp 
+   sudo /var/tmp/NVIDIA-Linux-x86_64-595.58.03-grid-azure.run --silent --tmpdir /var/tmp 
    ```
-5. Verify the driver installation. 
+6. Verify the driver installation. 
    ```
    nvidia-smi
    ```
