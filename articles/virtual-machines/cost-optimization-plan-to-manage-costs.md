@@ -3,9 +3,10 @@ title: Plan to manage costs for virtual machines
 description: Learn how to plan for and manage costs for virtual machines by using cost analysis in the Azure portal.
 author: tomvcassidy
 ms.author: tomcassidy
-ms.custom: subject-cost-optimization
+ms.custom: subject-cost-optimization, portal
 ms.service: azure-virtual-machines
-ms.topic: concept-article
+ms.topic: how-to
+ms.update-cycle: 180-days
 ms.date: 02/21/2024
 # Customer intent: "As a cloud administrator, I want to estimate and review costs for virtual machines, so that I can effectively manage and optimize our cloud spending."
 ---
@@ -37,7 +38,7 @@ Use the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculato
 
    ![Screenshot showing the your estimate section and main options available for virtual machines.](media/plan-to-manage-costs/virtual-machines-pricing-calculator-overview.png)
 
-1. Below the **Savings Options** section, there are choices for optional, additional resources you can deploy with your virtual machine, including **Managed Disks**, **Storage transactions**, and **Bandwidth**. For optimal performance, we recommend pairing your virtual machines with [managed disks](https://azure.microsoft.com/pricing/details/managed-disks/), but make sure to review the additional cost incurred by these resources.
+1. Below the **Savings Options** section, there are choices for optional, additional resources you can deploy with your virtual machine, including **managed disks**, **Storage transactions**, and **Bandwidth**. For optimal performance, we recommend pairing your virtual machines with [managed disks](https://azure.microsoft.com/pricing/details/managed-disks/), but make sure to review the additional cost incurred by these resources.
 
    ![Screenshot of choices for optional, additional resources.](media/plan-to-manage-costs/virtual-machines-pricing-additional-resources.png)
 
@@ -96,7 +97,7 @@ After you delete virtual machines resources, the following resources might conti
 - Bandwidth
 - Load balancer
 
-If your OS disk isn't deleted with your VM, it likely incurs [P10 disk costs](https://azure.microsoft.com/pricing/details/managed-disks/) even in a stopped state. The OS disk size is smaller by default for some images and incurs lower costs accordingly.
+If your OS disk isn't deleted with your VM, it continues to occur costs, even in a stopped state. The OS disk size is smaller by default for some images and incurs lower costs accordingly.
 
 For virtual networks, one virtual network is billed per subscription and per region. Virtual networks can't span regions or subscriptions. Setting up private endpoints in vNet setups may also incur charges.
 

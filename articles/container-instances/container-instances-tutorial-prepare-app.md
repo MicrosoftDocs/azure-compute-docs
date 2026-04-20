@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
-ms.date: 08/29/2024
+ms.date: 11/17/2025
 ms.custom: mvc
 # Customer intent: "As a developer, I want to create a container image from my Node.js application so that I can deploy it to Azure Container Instances efficiently without managing virtual machines."
 ---

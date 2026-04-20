@@ -1,14 +1,14 @@
 ---
 title: Epsv6 size series 
 description: Information on and specifications of the Epsv6-series sizes
-author: archatC
+author: noahwood28
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.custom:
   - build-2024
 ms.topic: concept-article
-ms.date: 08/27/2024
-ms.author: archat
+ms.date: 03/10/2026
+ms.author: noahwood
 ms.reviewer: mattmcinnes, tomvcassidy
 # Customer intent: As a cloud architect, I want to review the specifications and supported features of the Epsv6 series for virtual machines, so that I can select the appropriate VM sizes that meet my application's performance and resource requirements.
 ---
@@ -22,14 +22,7 @@ ms.reviewer: mattmcinnes, tomvcassidy
 ## Host specifications
 [!INCLUDE [epsv6-series-specs](./includes/epsv6-series-specs.md)]
 
-## Feature Support
-- [Premium Storage](../../premium-storage-performance.md): Supported 
-- [Premium Storage caching](../../premium-storage-performance.md): Supported 
-- [Memory Preserving Updates](../../maintenance-and-updates.md): Supported 
-- [VM Generation Support](../../generation-2.md): Generation 2 
-- [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported 
-- [Ephemeral OS Disks](../../ephemeral-os-disks.md): Not supported
-- [Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Not supported
+For features supported by this series, see the [Feature support](#feature-support) section.
 
 ## Sizes in series
 
@@ -65,7 +58,7 @@ Local (temp) storage info for each size:
 
 Remote (uncached) storage info for each size:
 
-| Size Name | Max Remote Storage (Qty.) | Uncached Premium SSD Disk IOPS | Uncached Premium SSD Throughput (MB/s) | Uncached Premium SSD Burst<sup>1</sup> IOPS | Uncached Premium SSD Burst<sup>1</sup> Throughput (MB/s) | Uncached Ultra Disk and Premium SSD v2 IOPS | Uncached Ultra Disk and Premium SSD v2 Throughput (MB/s) | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 IOPS | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 Disk Throughput (MB/s) |
+| Size Name | Max Remote Storage (Qty.) | Uncached Premium SSD IOPS | Uncached Premium SSD Throughput (MB/s) | Uncached Premium SSD Burst<sup>1</sup> IOPS | Uncached Premium SSD Burst<sup>1</sup> Throughput (MB/s) | Uncached Ultra Disk and Premium SSD v2 IOPS | Uncached Ultra Disk and Premium SSD v2 Throughput (MB/s) | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 IOPS | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 Throughput (MB/s) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_E2ps_v6 | 8 | 3750 | 106 | 10000 | 1250 | 4163 | 124 | 11100 | 1463 |
 | Standard_E4ps_v6 | 12 | 6400 | 212 | 20000 | 1250 | 8333 | 248 | 26040 | 1463 |
@@ -73,8 +66,8 @@ Remote (uncached) storage info for each size:
 | Standard_E16ps_v6 | 48 | 25600 | 848 | 40000 | 1250 | 33331 | 992 | 52080 | 1463 |
 | Standard_E32ps_v6 | 64 | 51200 | 1696 | 80000 | 2000 | 66662 | 1984 | 104160 | 2340 |
 | Standard_E48ps_v6 | 64 | 76800 | 2544 | 80000 | 3000 | 99994 | 2976 | 104160 | 3510 |
-| Standard_E64ps_v6 | 64 | 102400 | 3392 | 102400 | 3392 | 133325 | 3969 | 133325 | 4680 |
-| Standard_E96ps_v6 | 64 | 153600 | 5000 | 153600 | 5000 | 199987 | 5850 | 199987 | 5953 |
+| Standard_E64ps_v6 | 64 | 102400 | 3392 | 102400 | 3392 | 133325 | 3969 | 133325 | 3969 |
+| Standard_E96ps_v6 | 64 | 153600 | 5000 | 153600 | 5000 | 199987 | 5850 | 199987 | 5850 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
@@ -124,6 +117,20 @@ Accelerator (GPUs, FPGAs, etc.) info for each size:
 > No accelerators are present in this series.
 
 ---
+
+## Feature support
+
+|Feature name | Support status |
+| --- | --- |
+|[Premium Storage](../../premium-storage-performance.md)| Supported |
+|[Premium Storage caching](../../premium-storage-performance.md)| Supported |
+|[Live Migration](../../maintenance-and-updates.md#live-migration)| Supported |
+|[Memory Preserving Updates](../../maintenance-and-updates.md)| Supported |
+|[VM Generation Support](../../generation-2.md)| Generation 2 |
+|[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli)| Supported |
+|[Ephemeral OS Disks](../../ephemeral-os-disks.md)| Not supported |
+|[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)| Not supported |
+
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]
 

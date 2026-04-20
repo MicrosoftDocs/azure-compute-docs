@@ -22,6 +22,18 @@ ms.author: mattmcinnes
 
 ## Series in family
 
+### DCasv6 and DCadsv6-series
+#### [DCasv6-series](#tab/dcasv6)
+[!INCLUDE [dcasv6-series-summary](./includes/dcasv6-series-summary.md)]
+[View the full DCasv6-series page](./dcasv6-series.md).
+[!INCLUDE [dcasv6-series-specs](./includes/dcasv6-series-specs.md)]
+
+#### [DCadsv6-series](#tab/dcadsv6)
+[!INCLUDE [dcadsv6-series-summary](./includes/dcadsv6-series-summary.md)]
+[View the full DCadsv6-series page](./dcadsv6-series.md).
+[!INCLUDE [dcadsv6-series-specs](./includes/dcadsv6-series-specs.md)]
+
+---
 ### DCasv5 and DCadsv5-series
 #### [DCasv5-series](#tab/dcasv5)
 [!INCLUDE [dcasv5-series-summary](./includes/dcasv5-series-summary.md)]
@@ -38,20 +50,9 @@ ms.author: mattmcinnes
 [!INCLUDE [dcadsv5-series-specs](./includes/dcadsv5-series-specs.md)]
 
 ---
-### DCesv6 and DCedsv5-series
-#### [DCesv6-series](#tab/dcesv6)
-[!INCLUDE [dcesv5-series-summary](./includes/dcesv5-series-summary.md)]
-
+### DCesv6-series
+[!INCLUDE [dcesv6-series-summary](./includes/dcesv6-series-summary.md)]
 [View the full DCesv6-series page](./dcesv6-series.md).
-
-[!INCLUDE [dcesv5-series-specs](./includes/dcesv5-series-specs.md)]
-
-#### [DCedsv5-series](#tab/dcedsv5)
-[!INCLUDE [dcedsv5-series-summary](./includes/dcedsv5-series-summary.md)]
-
-[View the full DCedsv5-series page](./dcedsv5-series.md).
-
-[!INCLUDE [dcedsv5-series-specs](./includes/dcedsv5-series-specs.md)]
 
 ---
 ### DCas_cc_v5 and DCads_cc_v5-series

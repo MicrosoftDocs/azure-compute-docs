@@ -9,6 +9,7 @@ ms.topic: concept-article
 ms.date: 04/21/2025
 ms.reviewer: jushiman
 ms.custom: template-concept; references_regions
+ai-usage: ai-assisted
 # Customer intent: "As a cloud administrator, I want to enable Trusted Launch for Azure virtual machines, so that I can enhance the security of my deployments against advanced threats and ensure the integrity of the boot process."
 ---
 
@@ -18,11 +19,14 @@ ms.custom: template-concept; references_regions
 
 Azure offers Trusted Launch as a seamless way to improve the security of [Generation 2](generation-2.md) virtual machines (VM). Trusted Launch protects against advanced and persistent attack techniques. Trusted Launch is composed of several coordinated infrastructure technologies that can be enabled independently. Each technology provides another layer of defense against sophisticated threats.
 
+Trusted Launch is supported for both x64 and Arm64 architectures. 
+
 > [!IMPORTANT]
 >
 > - Trusted Launch is the default state for newly created Azure Gen2 VM and scale sets. See the [Trusted Launch FAQs](trusted-launch-faq.md) if your new VM requires features that [aren't supported with Trusted launch](trusted-launch.md#unsupported-features).
-> - [Existing VM](overview.md) can have Trusted Launch enabled after being created. For more information, see [Enable Trusted Launch on existing VMs](trusted-launch-existing-vm.md).
-> - Existing [virtual machine scale set](../virtual-machine-scale-sets/overview.md) can have Trusted Launch enabled after being created. For more information, see [Enable Trusted Launch on existing scale set](trusted-launch-existing-vmss.md).
+> - You can upgrade existing Azure Gen1 VMs to Gen2-Trusted launch to enable Secure Boot and vTPM. See [Upgrade existing Gen1 VMs to Gen2-Trusted launch](trusted-launch-existing-vm-gen-1.md).
+> - [Existing VMs](overview.md) can have Trusted Launch enabled after being created. For more information, see [Enable Trusted Launch on existing Gen2 VMs](trusted-launch-existing-vm.md).
+> - Existing [virtual machine scale sets](../virtual-machine-scale-sets/overview.md) can have Trusted Launch enabled after being created. For more information, see [Enable Trusted Launch on existing scale set](trusted-launch-existing-vmss.md).
 
 ## Benefits
 
@@ -35,12 +39,18 @@ Azure offers Trusted Launch as a seamless way to improve the security of [Genera
 
 | Type | Supported size families | Currently not supported size families | Not supported size families
 |:--- |:--- |:--- |:--- |
-| [General purpose](./sizes/overview.md#general-purpose) | [B-family](./sizes/general-purpose/b-family.md), [D-family](./sizes/general-purpose/d-family.md) | [Dpsv5-series](./sizes/general-purpose/dpsv5-series.md), [Dpdsv5-series](./sizes/general-purpose/dpdsv5-series.md), [Dplsv5-series](./sizes/general-purpose/dplsv5-series.md), [Dpldsv5-series](./sizes/general-purpose/dpldsv5-series.md) | [A-family](./sizes/general-purpose/a-family.md), [Dv2-series](./sizes/general-purpose/dv2-series.md), [Dv3-series](./sizes/general-purpose/dv3-series.md), [DC-Confidential-family](./sizes/general-purpose/dc-family.md)
+| [General purpose](./sizes/overview.md#general-purpose) | [B-family](./sizes/general-purpose/b-family.md), [D-family](./sizes/general-purpose/d-family.md), [Dpsv6-series](./sizes/general-purpose/dpsv6-series.md)<sup>1</sup>, [Dplsv6-series](./sizes/general-purpose/dplsv6-series.md)<sup>1</sup> | [Dpsv5-series](./sizes/general-purpose/dpsv5-series.md), [Dpdsv5-series](./sizes/general-purpose/dpdsv5-series.md), [Dplsv5-series](./sizes/general-purpose/dplsv5-series.md), [Dpldsv5-series](./sizes/general-purpose/dpldsv5-series.md) | [A-family](./sizes/general-purpose/a-family.md), [Dv2-series](./sizes/general-purpose/dv2-series.md), [Dv3-series](./sizes/general-purpose/dv3-series.md), [DC-Confidential-family](./sizes/general-purpose/dc-family.md)
 | [Compute optimized](./sizes/overview.md#compute-optimized) | [F-family](./sizes/compute-optimized/f-family.md), [Fx-family](./sizes/compute-optimized/fx-family.md) | All sizes supported. | 
-| [Memory optimized](./sizes/overview.md#memory-optimized) | [E-family](./sizes/memory-optimized/e-family.md), [Eb-family](./sizes/memory-optimized/eb-family.md)    |  [M-family](./sizes/memory-optimized/m-family.md)  |    [EC-Confidential-family](./sizes/memory-optimized/ec-family.md)
+| [Memory optimized](./sizes/overview.md#memory-optimized) | [E-family](./sizes/memory-optimized/e-family.md), [Eb-family](./sizes/memory-optimized/eb-family.md), [Epsv6-series](./sizes/memory-optimized/epsv6-series.md)<sup>1</sup>   |  [M-family](./sizes/memory-optimized/m-family.md)  |    [EC-Confidential-family](./sizes/memory-optimized/ec-family.md)
 | [Storage optimized](./sizes/overview.md#storage-optimized) | [L-family](./sizes/storage-optimized/l-family.md) | All sizes supported. | 
 | [GPU](./sizes/overview.md#gpu-accelerated) | [NC-family](./sizes/gpu-accelerated/nc-family.md), [ND-family](./sizes/gpu-accelerated/nv-family.md), [NV-family](./sizes/gpu-accelerated/nv-family.md) | [NDasrA100_v4-series](nda100-v4-series.md), [NDm_A100_v4-series](ndm-a100-v4-series.md) | [NC-series](nc-series.md), [NV-series](nv-series.md), [NP-series](np-series.md)
-| [High Performance Compute](./sizes/overview.md#high-performance-compute) |[HBv2-series](./hbv2-series-overview.md), [HBv3-series](./hbv3-series-overview.md), [HBv4-series](./hbv4-series-overview.md), [HC-series](./hc-series-overview.md), [HX-series](./hx-series-overview.md) | All sizes supported. | 
+| [High Performance Compute](./sizes/overview.md#high-performance-compute) |[HBv2-series](./hbv2-series-overview.md)<sup>2</sup>, [HBv3-series](./hbv3-series-overview.md), [HBv4-series](./hbv4-series-overview.md), [HBv5-series](./hbv5-series-overview.md), [HC-series](./hc-series-overview.md)<sup>3</sup>, [HX-series](./hx-series-overview.md) | All sizes supported. | 
+
+<sup>1</sup>Arm64 [Cobalt 100](./sizes/cobalt-overview.md)-based sizes that support Trusted Launch. 
+
+<sup>2</sup>HBv2-series is currently supported for Trusted Launch but is scheduled for retirement on May 31, 2027. For new HPC Trusted Launch deployments, prefer HBv5-series, HX-series, HBv4-series, or HBv3-series sizes.
+
+<sup>3</sup>HC-series sizes (Standard_HC44rs, Standard_HC44-16rs, Standard_HC44-32rs) are scheduled for retirement on May 31, 2027. After this date, remaining HC-series VMs will be deallocated and stop incurring charges, and HC-series will no longer have SLA or support. Sales of 1-year and 3-year Reserved Instances ended April 2, 2026. For new HPC Trusted Launch deployments, consider [HBv5-series](./hbv5-series-overview.md) for higher performance and better price-performance, or [HX-series](./hx-series-overview.md) for high-memory HPC workloads. Plan to transition off HC-series well before the retirement date to avoid disruption.
 
 > [!NOTE]
 >
@@ -66,6 +76,9 @@ Azure offers Trusted Launch as a seamless way to improve the security of [Genera
 | Windows Server |2016, 2019, 2022, 2022-Azure-Edition, 2025, 2025-Azure-Edition &#42; |
 
 &#42; Variations of this OS are supported.
+
+> [!NOTE]
+> Trusted Launch on Arm64 is supported when using applicable Arm64 Marketplace images for supported distributions and versions. For [Cobalt 100](./sizes/cobalt-overview.md) sizes, deploy Trusted Launch using Arm64 images available in Azure Marketplace.
 
 ## More information
 
@@ -121,6 +134,10 @@ Trusted Launch is integrated with Defender for Cloud to ensure that your VMs are
    If your VMs are properly set up with Trusted Launch, Defender for Cloud can detect and alert you of VM health problems.
 
 - **Alert for VM attestation failure**: Defender for Cloud periodically performs attestation on your VMs. The attestation also happens after your VM boots. If the attestation fails, it triggers a medium-severity alert.
+
+    > [!NOTE]
+    > VM client boot attestation alerts surfaced in Microsoft Defender for Cloud are informational and are not currently presented in the Defender portal.
+   
     VM attestation can fail for the following reasons:
   - The attested information, which includes a boot log, deviates from a trusted baseline. Any deviation can indicate that untrusted modules are loaded, and the OS could be compromised.
   - The attestation quote couldn't be verified to originate from the vTPM of the attested VM. An unverified origin can indicate that malware is present and could be intercepting traffic to the vTPM.
@@ -217,4 +234,4 @@ To disable the TLaD preview, unregister the preview feature `TrustedLaunchByDefa
 
 ## Related content
 
-Deploy a [Trusted Launch VM](trusted-launch-portal.md).
+- Deploy a [Trusted Launch VM](trusted-launch-portal.md).

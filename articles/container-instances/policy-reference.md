@@ -6,7 +6,7 @@ author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
 ms.topic: reference
-ms.date: 08/29/2024
+ms.date: 11/17/2025
 ms.custom: subject-policy-reference
 # Customer intent: As a cloud administrator, I want to access built-in policy definitions for Azure Container Instances, so that I can effectively manage compliance and governance of my container resources.
 ---

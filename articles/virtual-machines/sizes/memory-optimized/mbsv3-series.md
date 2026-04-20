@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 03/24/2025
+ms.date: 03/10/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 # Customer intent: "As a cloud architect, I want to assess the Mbsv3 and Mbdsv3 VM series specifications, so that I can determine the best virtual machine options for storage-intensive workloads like SQL Server and data analytics."
@@ -18,8 +18,7 @@ ms.reviewer: mattmcinnes
 ## Host specifications
 [!INCLUDE [mbsv3-series-specs](./includes/mbsv3-series-specs.md)]
 
-## Feature support
-[Premium Storage](../../premium-storage-performance.md): Supported <br>[Premium Storage caching](../../premium-storage-performance.md): Supported <br>[Live Migration](../../maintenance-and-updates.md): Not Supported <br>[Memory Preserving Updates](../../maintenance-and-updates.md): Not Supported <br>[Generation 2 VMs](../../generation-2.md): Supported <br>[Generation 1 VMs](../../generation-2.md): Not Supported <br>[Accelerated Networking](/azure/virtual-network/create-virtual-machine-accelerated-networking): Supported <br>[Ephemeral OS Disk](../../ephemeral-os-disks.md): Not Supported <br>[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Not Supported <br>[Hibernation](../../hibernate-resume.md): Not Supported <br> [Write Accelerator](/azure/virtual-machines/how-to-enable-write-accelerator): Supported
+For features supported by this series, see the [Feature support](#feature-support) section.
 
 ## Sizes in series (NVMe)
 
@@ -36,6 +35,7 @@ vCPUs (Qty.) and Memory for each size
 | Standard_M96bs_v3 | 96 | 768 |
 | Standard_M128bs_v3 | 128 | 1024 |
 | Standard_M176bs_v3 | 176 | 1536 |
+| Standard_M416bs_v3 | 416 | 3800 |
 
 #### VM Basics resources
 - [Check vCPU quotas](../../../virtual-machines/quotas.md)
@@ -55,7 +55,7 @@ Local (temp) storage info for each size
 
 Remote (uncached) storage info for each size
 
-| Size Name | Max Remote Storage Disks (Qty.) | Max Uncached Premium SSD Disk IOPS | Max Uncached Premium SSD Throughput (MB/s) | Max Uncached Ultra Disk and Premium SSD v2 IOPS | Max Uncached Ultra Disk and Premium SSD v2 Throughput (MB/s) |
+| Size Name | Max Remote Storage Disks (Qty.) | Max Uncached Premium SSD IOPS | Max Uncached Premium SSD Throughput (MB/s) | Max Uncached Ultra Disk and Premium SSD v2 IOPS | Max Uncached Ultra Disk and Premium SSD v2 Throughput (MB/s) |
 | --- | --- | --- | --- | --- | --- |
 | Standard_M16bs_v3 | 64 | 44,000 | 1,000 | 64,000 | 1,000 |
 | Standard_M32bs_v3 | 64 | 88,000 | 2,000 | 88,000 | 2,000 |
@@ -64,6 +64,7 @@ Remote (uncached) storage info for each size
 | Standard_M96bs_v3 | 64 | 260,000 | 4,000 | 260,000 | 4,000 |
 | Standard_M128bs_v3 | 64 | 260,000 | 4,000 | 400,000 | 4,000 |
 | Standard_M176bs_v3 | 64 | 260,000 | 6,000 | 650,000 | 6,000 |
+| Standard_M416bs_v3 | 64 | 240,000 | 8,000 | 550,000 | 10,000 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
@@ -92,6 +93,7 @@ Network interface info for each size
 | Standard_M96bs_v3 | 8 | 25,000 |
 | Standard_M128bs_v3 | 8 | 40,000 |
 | Standard_M176bs_v3 | 8 | 50,000 |
+| Standard_M416bs_v3 | 8 | 50,000 |
 
 #### Networking resources
 - [Virtual networks and virtual machines in Azure](/azure/virtual-network/network-overview)
@@ -113,5 +115,20 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 > No accelerators are present in this series.
 
 ---
+## Feature support
+
+| Feature name | Support status |
+| --- | --- |
+| [Premium Storage](../../premium-storage-performance.md) | Supported |
+| [Premium Storage caching](../../premium-storage-performance.md) | Supported |
+| [Live Migration](../../maintenance-and-updates.md) | Restricted Support |
+| [Memory Preserving Updates](../../maintenance-and-updates.md) | Not Supported |
+| [Generation 2 VMs](../../generation-2.md) | Supported |
+| [Generation 1 VMs](../../generation-2.md) | Not Supported |
+| [Accelerated Networking](/azure/virtual-network/create-virtual-machine-accelerated-networking) | Supported |
+| [Ephemeral OS Disk](../../ephemeral-os-disks.md) | Not Supported |
+| [Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization) | Not Supported |
+| [Hibernation](../../hibernate-resume.md) | Not Supported |
+| [Write Accelerator](/azure/virtual-machines/how-to-enable-write-accelerator) | Supported |
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]

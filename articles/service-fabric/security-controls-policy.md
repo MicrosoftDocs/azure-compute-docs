@@ -6,7 +6,8 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 02/06/2024
+ms.date: 03/22/2026
+ms.update-cycle: 1095-days
 # Customer intent: "As a compliance officer, I want to utilize Azure Policy built-in compliance controls for Azure Service Fabric, so that I can ensure our Azure resources meet regulatory standards effectively."
 ---
 # Azure Policy Regulatory Compliance controls for Azure Service Fabric

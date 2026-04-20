@@ -1,8 +1,8 @@
 ---
 title: Azure Virtual Machine Scale Sets overview
 description: Learn about Azure Virtual Machine Scale Sets and how to automatically scale your applications
-author: ju-shim
-ms.author: jushiman
+author: cynthn
+ms.author: cynthn
 ms.topic: overview
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice:
@@ -54,7 +54,7 @@ Azure Virtual Machine Scale Sets provide the management capabilities for applica
 
 - **Works at large-scale**
     - Scale sets support up to 1,000 VM instances for standard marketplace images and custom images through the Azure Compute Gallery (formerly known as Shared Image Gallery). If you create a scale set using a managed image, the limit is 600 VM instances.
-    - For the best performance with production workloads, use [Azure Managed Disks](../virtual-machines/managed-disks-overview.md).
+    - For the best performance with production workloads, use [Azure managed disks](../virtual-machines/managed-disks-overview.md).
 
 - **Cost-effective service**
     - There's no extra cost for using scale sets. You're charged based on the compute, network, and storage resources that the scale set uses.

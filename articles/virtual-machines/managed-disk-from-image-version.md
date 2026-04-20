@@ -1,7 +1,7 @@
 ---
 title: Export an image version to a managed disk
 description: Export an image version from an Azure Compute Gallery to a managed disk.
-author: ju-shim
+author: cynthn
 ms.service: azure-virtual-machines
 ms.subservice: gallery
 ms.topic: how-to

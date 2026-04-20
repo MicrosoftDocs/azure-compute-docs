@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: "As a cloud application developer, I want to utilize the Central Secret Service to securely manage and access secrets, so that my applications can operate without hardcoding sensitive information and maintain compliance with security best practices."
 ---
 
@@ -17,10 +17,10 @@ Central Secret Service is a durable, replicated in-cluster secret cache; secrets
 
 CSS is also instrumental in provisioning application secrets declared as [KeyVault secret URIs](service-fabric-keyvault-references.md), in combination with [Managed Identity for Azure-deployed Service Fabric Applications](concepts-managed-identity.md).
 
-Central Secret Service is not meant to be a replacement for a dedicated, external secrets management service, such as Azure Key Vault. 
+Central Secret Service isn't meant to be a replacement for a dedicated, external secrets management service, such as Azure Key Vault. 
 
   > [!NOTE] 
-  > When activating CSS on an SF cluster running a version earlier than [7.1. CU3](service-fabric-versions.md#service-fabric-version-name-and-number-reference), activation can fail and leave CSS in a permanently unhealthy state if the cluster is configured for Windows authentication or if `EncryptionCertificateThumbprint` is declared incorrectly or the corresponding certificate is not installed. In either case, it is advisable to upgrade the cluster to an SF runtime version newer than 7.1. CU3 before proceeding. 
+  > When activating CSS on an SF cluster running a version earlier than [7.1. CU3](service-fabric-versions.md#service-fabric-version-name-and-number-reference), activation can fail and leave CSS in a permanently unhealthy state if the cluster is configured for Windows authentication or if `EncryptionCertificateThumbprint` is declared incorrectly or the corresponding certificate isn't installed. In either case, it's advisable to upgrade the cluster to an SF runtime version newer than 7.1. CU3 before proceeding. 
   
 ## Enable Central Secrets Service
 To enable Central Secret Service, update the cluster configuration as described below.
@@ -49,7 +49,7 @@ To enable Central Secret Service, update the cluster configuration as described 
 ```
 
   > [!NOTE]
-  > Prior to Service Fabric [version 10.1 CU4](service-fabric-versions.md#service-fabric-version-name-and-number-reference), it is necessary to provision to the compute a certificate which CSS will use for encrypting the store. It must be installed on all nodes and its SHA-1 thumbprint be declared using the fabric setting parameter "EncryptionCertificateThumbprint" under section "CentralSecretService". We recommend that you use an encryption certificate that is different from your cluster certificate. From 10.1 CU4 onward, if this setting is not passed, CSS will default to using a cluster-managed certificate for encryption. An existing CSS deployment can be moved to the cluster-managed certificate by removing the thumbprint declaration in an upgrade.
+  > Prior to Service Fabric [version 10.1 CU4](service-fabric-versions.md#service-fabric-version-name-and-number-reference), it's necessary to provision to the compute a certificate which CSS will use for encrypting the store. It must be installed on all nodes and its SHA-1 thumbprint be declared using the fabric setting parameter "EncryptionCertificateThumbprint" under section "CentralSecretService". We recommend that you use an encryption certificate that's different from your cluster certificate. From 10.1 CU4 onward, if this setting isn't passed, CSS will default to using a cluster-managed certificate for encryption. An existing CSS deployment can be moved to the cluster-managed certificate by removing the thumbprint declaration in an upgrade.
 
   > [!NOTE] 
   > The configuration setting "DeployedState", introduced in Service Fabric [version 8.0](service-fabric-versions.md#service-fabric-version-name-and-number-reference), is the preferred mechanism to enable or disable CSS; this function was served in previous versions by the configuration setting "IsEnabled", which is now considered obsolete.
@@ -151,7 +151,7 @@ It is important to note that certificates remain valid for decryption beyond the
 
 1. Provision the new certificate to each node of the cluster. At this time, do not remove/continue provisioning the previous encryption certificate.
 2. Start a cluster configuration upgrade to change the value of `EncryptionCertificateThumbprint` to the SHA-1 thumbprint of the new certificate.
-Upon the completion of the upgrade, CSS will begin re-encrypting its existing content to the new encryption certificate. All secrets added to CSS after this point will be encrypted directly to the new encryption certificate. Since the convergence to having all secrets protected by the new certificate is asynchronous, it is important that the previous encryption certificate remains installed on all nodes, and available to CSS.
+Upon the completion of the upgrade, CSS will begin re-encrypting its existing content to the new encryption certificate. All secrets added to CSS after this point will be encrypted directly to the new encryption certificate. Since the convergence to having all secrets protected by the new certificate is asynchronous, it's important that the previous encryption certificate remains installed on all nodes, and available to CSS.
 
 ## Removing Central Secret Service from your cluster
 Safe removal of Central Secret Service from a cluster requires two upgrades. The first upgrade functionally disables CSS, while the second upgrade removes the service from the cluster definition, which includes the permanent deletion of its content. This two-stage process prevents accidental deletion of the service, and helps to ensure that there are no orphaned dependencies on CSS during the removal process. This feature is available from SF version 8.0 onward.

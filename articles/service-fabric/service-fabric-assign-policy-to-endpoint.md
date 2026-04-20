@@ -6,12 +6,12 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: As a software developer, I want to assign security access policies to my service endpoints so that I can ensure proper access control and secure communication for my applications deployed on Service Fabric.
 ---
 
 # Assign a security access policy for HTTP and HTTPS endpoints
-If you apply a run-as policy and the service manifest declares HTTP endpoint resources, you must specify a **SecurityAccessPolicy**.  **SecurityAccessPolicy** ensures that ports allocated to these endpoints are correctly restricted to the user account that the service runs as. Otherwise, **http.sys** does not have access to the service, and you get failures with calls from the client. The following example applies the Customer1 account to an endpoint called **EndpointName**, which gives it full access rights.
+If you apply a run-as policy and the service manifest declares HTTP endpoint resources, you must specify a **SecurityAccessPolicy**.  **SecurityAccessPolicy** ensures that ports allocated to these endpoints are correctly restricted to the user account that the service runs as. Otherwise, **http.sys** doesn't have access to the service, and you get failures with calls from the client. The following example applies the Customer1 account to an endpoint called **EndpointName**, which gives it full access rights.
 
 ```xml
 <Policies>

@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
 # Customer intent: "As a service developer, I want to implement Reliable Services communication using the provided APIs and listeners, so that I can facilitate robust and flexible communication between services within a cloud environment."
 ---
 
@@ -126,7 +126,7 @@ Finally, describe the endpoints that are required for the service in the [servic
 
 ```
 
-The communication listener can access the endpoint resources allocated to it from the `CodePackageActivationContext` in the `ServiceContext`. The listener can then start listening for requests when it is opened.
+The communication listener can access the endpoint resources allocated to it from the `CodePackageActivationContext` in the `ServiceContext`. The listener can then start listening for requests when it's opened.
 
 ```csharp
 var codePackageActivationContext = serviceContext.CodePackageActivationContext;
@@ -140,7 +140,7 @@ int port = codePackageActivationContext.getEndpoint("ServiceEndpoint").getPort()
 ```
 
 > [!NOTE]
-> Endpoint resources are common to the entire service package, and they are allocated by Service Fabric when the service package is activated. Multiple service replicas hosted in the same ServiceHost may share the same port. This means that the communication listener should support port sharing. The recommended way of doing this is for the communication listener to use the partition ID and replica/instance ID when it generates the listen address.
+> Endpoint resources are common to the entire service package, and they're allocated by Service Fabric when the service package is activated. Multiple service replicas hosted in the same ServiceHost may share the same port. This means that the communication listener should support port sharing. The recommended way of doing this is for the communication listener to use the partition ID and replica/instance ID when it generates the listen address.
 >
 >
 
@@ -229,7 +229,7 @@ public interface CreateFabricClient {
 }
 ```
 
-`FabricClient` is the object that is used to communicate with the Service Fabric cluster for various management operations on the cluster. This is useful when you want more control over how a service partition resolver interacts with your cluster. `FabricClient` performs caching internally and is generally expensive to create, so it is important to reuse `FabricClient` instances as much as possible.
+`FabricClient` is the object that is used to communicate with the Service Fabric cluster for various management operations on the cluster. This is useful when you want more control over how a service partition resolver interacts with your cluster. `FabricClient` performs caching internally and is generally expensive to create, so it's important to reuse `FabricClient` instances as much as possible.
 
 ```csharp
 ServicePartitionResolver resolver = new  ServicePartitionResolver(() => CreateMyFabricClient());
@@ -255,12 +255,12 @@ CompletableFuture<ResolvedServicePartition> partition =
 
 A service address can be resolved easily using a ServicePartitionResolver, but more work is required to ensure the resolved address can be used correctly. Your client needs to detect whether the connection attempt failed because of a transient error and can be retried (e.g., service moved or is temporarily unavailable), or a permanent error (e.g., service was deleted or the requested resource no longer exists). Service instances or replicas can move around from node to node at any time for multiple reasons. The service address resolved through ServicePartitionResolver may be stale by the time your client code attempts to connect. In that case again the client needs to re-resolve the address. Providing the previous `ResolvedServicePartition` indicates that the resolver needs to try again rather than simply retrieve a cached address.
 
-Typically, the client code need not work with the ServicePartitionResolver directly. It is created and passed on to communication client factories in the Reliable Services API. The factories use the resolver internally to generate a client object that can be used to communicate with services.
+Typically, the client code need not work with the ServicePartitionResolver directly. It's created and passed on to communication client factories in the Reliable Services API. The factories use the resolver internally to generate a client object that can be used to communicate with services.
 
 ### Communication clients and factories
 The communication factory library implements a typical fault-handling retry pattern that makes retrying connections to resolved service endpoints easier. The factory library provides the retry mechanism while you provide the error handlers.
 
-`ICommunicationClientFactory(C#) / CommunicationClientFactory(Java)` defines the base interface implemented by a communication client factory that produces clients that can talk to a Service Fabric service. The implementation of the CommunicationClientFactory depends on the communication stack used by the Service Fabric service where the client wants to communicate. The Reliable Services API provides a `CommunicationClientFactoryBase<TCommunicationClient>`. This provides a base implementation of the CommunicationClientFactory interface and performs tasks that are common to all the communication stacks. (These tasks include using a ServicePartitionResolver to determine the service endpoint). Clients usually implement the abstract CommunicationClientFactoryBase class to handle logic that is specific to the communication stack.
+`ICommunicationClientFactory(C#) / CommunicationClientFactory(Java)` defines the base interface implemented by a communication client factory that produces clients that can talk to a Service Fabric service. The implementation of the CommunicationClientFactory depends on the communication stack used by the Service Fabric service where the client wants to communicate. The Reliable Services API provides a `CommunicationClientFactoryBase<TCommunicationClient>`. This provides a base implementation of the CommunicationClientFactory interface and performs tasks that are common to all the communication stacks. (These tasks include using a ServicePartitionResolver to determine the service endpoint). Clients usually implement the abstract CommunicationClientFactoryBase class to handle logic that's specific to the communication stack.
 
 The communication client just receives an address and uses it to connect to a service. The client can use whatever protocol it wants.
 
@@ -334,8 +334,8 @@ Finally, an exception handler is responsible for determining what action to take
 
 * **Non retryable** exceptions simply get rethrown back to the caller.
 * **retryable** exceptions are further categorized into **transient** and **non-transient**.
-  * **Transient** exceptions are those that can simply be retried without re-resolving the service endpoint address. These will include transient network problems or service error responses other than those that indicate the service endpoint address does not exist.
-  * **Non-transient** exceptions are those that require the service endpoint address to be re-resolved. These include exceptions that indicate the service endpoint could not be reached, indicating the service has moved to a different node.
+  * **Transient** exceptions are those that can be retried without re-resolving the service endpoint address. These will include transient network problems or service error responses other than those that indicate the service endpoint address doesn't exist.
+  * **Non-transient** exceptions are those that require the service endpoint address to be re-resolved. These include exceptions that indicate the service endpoint couldn't be reached, indicating the service has moved to a different node.
 
 The `TryHandleException` makes a decision about a given exception. If it **does not know** what decisions to make about an exception, it should return **false**. If it **does know** what decision to make, it should set the result accordingly and return **true**.
 

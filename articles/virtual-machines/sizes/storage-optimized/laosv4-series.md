@@ -17,8 +17,7 @@ ms.reviewer: mattmcinnes
 ## Host specifications
 [!INCLUDE [laosv4-series-specs](./includes/laosv4-series-specs.md)]
 
-## Feature support
-[Premium Storage](../../premium-storage-performance.md): Supported <br>[Premium Storage caching](../../premium-storage-performance.md): Supported (except for L32aos_v4) <br>[Live Migration](../../maintenance-and-updates.md): Not Supported <br>[Memory Preserving Updates](../../maintenance-and-updates.md): Supported <br>[Generation 2 VMs](../../generation-2.md): Supported <br>[Generation 1 VMs](../../generation-2.md): Not Supported <br>[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported <br>[Ephemeral OS Disk](../../ephemeral-os-disks.md): Supported <br>[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Supported <br>
+For features supported by this series, see the [Feature support](#feature-support) section.
 
 ## Sizes in series
 
@@ -45,13 +44,13 @@ Local (temp) storage info for each size.
 
 | Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GB) | Temp Disk Random Read<sup>1</sup> IOPS | Temp Disk Sequential Read<sup>1</sup> Throughput (MB/s) | Temp Disk Random Write<sup>1</sup> IOPS | Temp Disk Sequential Write<sup>1</sup> Throughput (MB/s) |
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_L2aos_v4 | 3 | 480 | 180,000 | 1,100 | 72,000 | 575 |
-| Standard_L4aos_v4 | 3 | 960 | 360,000 | 2,200 | 144,000 | 1,150 |
-| Standard_L8aos_v4 | 6 | 960 | 720,000 | 4,400 | 288,000 | 2,300 |
-| Standard_L12aos_v4 | 9 | 960 | 1,080,000 | 6,600 | 432,000 | 3,450 |
-| Standard_L16aos_v4 | 6 | 1,920 | 1,440,000 | 8,800 | 576,000 | 4,600 |
-| Standard_L24aos_v4 | 9 | 1,920 | 2,160,000 | 13,200 | 864,000 | 6,900 |
-| Standard_L32aos_v4 | 12 | 1,920 | 2,880,000 | 17,600 | 1,152,000 | 9,200 |
+| Standard_L2aos_v4 | 3 | 480 | 180,000 | 1,100 | 72,000 | 550 |
+| Standard_L4aos_v4 | 3 | 960 | 360,000 | 2,200 | 144,000 | 1,100 |
+| Standard_L8aos_v4 | 6 | 960 | 720,000 | 4,400 | 288,000 | 2,200 |
+| Standard_L12aos_v4 | 9 | 960 | 1,080,000 | 6,600 | 432,000 | 3,300 |
+| Standard_L16aos_v4 | 6 | 1,920 | 1,440,000 | 8,800 | 576,000 | 4,400 |
+| Standard_L24aos_v4 | 9 | 1,920 | 2,160,000 | 13,200 | 864,000 | 6,600 |
+| Standard_L32aos_v4 | 12 | 1,920 | 2,880,000 | 17,600 | 1,152,000 | 8,800 |
 
 #### Storage resources
 - [NVMe Overview](/azure/virtual-machines/nvme-overview)
@@ -68,7 +67,7 @@ Local (temp) storage info for each size.
 
 Remote (uncached) storage info for each size.
 
-| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD Disk IOPS | Uncached Premium SSD Throughput (MB/s) | Uncached Premium SSD Burst<sup>1</sup> IOPS | Uncached Premium SSD Burst<sup>1</sup> Throughput (MB/s) | Uncached Ultra Disk and Premium SSD v2 IOPS | Uncached Ultra Disk and Premium SSD v2 Throughput (MB/s) | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 IOPS | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 Disk Throughput (MB/s) |
+| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD IOPS | Uncached Premium SSD Throughput (MB/s) | Uncached Premium SSD Burst<sup>1</sup> IOPS | Uncached Premium SSD Burst<sup>1</sup> Throughput (MB/s) | Uncached Ultra Disk and Premium SSD v2 IOPS | Uncached Ultra Disk and Premium SSD v2 Throughput (MB/s) | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 IOPS | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 Throughput (MB/s) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_L2aos_v4 | 4 | 4,400 | 150 | 20,000 | 1,250 | 4,400 | 150 | 20,000 | 1,250 |
 | Standard_L4aos_v4 | 8 | 8,800 | 300 | 20,000 | 1,250 | 8,800 | 300 | 20,000 | 1,250 |
@@ -122,6 +121,21 @@ Accelerator (GPUs, FPGAs, etc.) info for each size.
 > No accelerators are present in this series.
 
 ---
+
+## Feature support
+
+|Feature name | Support status |
+| --- | --- |
+|[Premium Storage](../../premium-storage-performance.md)| Supported |
+|[Premium Storage caching](../../premium-storage-performance.md)| Supported (except for L32aos_v4) |
+|[Live Migration](../../maintenance-and-updates.md)| Not Supported |
+|[Memory Preserving Updates](../../maintenance-and-updates.md)| Supported |
+|[Generation 2 VMs](../../generation-2.md)| Supported |
+|[Generation 1 VMs](../../generation-2.md)| Not Supported |
+|[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli)| Supported |
+|[Ephemeral OS Disk](../../ephemeral-os-disks.md)| Supported |
+|[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)| Supported |
+
 > [!NOTE]
 > This VM series will only work on OS images that support NVMe. If your current OS image doesn't have NVMe support, you’ll see an error message. [NVMe](/azure/virtual-machines/enable-nvme-interface) support is available on the most popular OS images, and we're continuously improving OS image compatibility.
 

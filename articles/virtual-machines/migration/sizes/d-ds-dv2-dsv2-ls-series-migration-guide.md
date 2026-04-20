@@ -1,45 +1,64 @@
-﻿---
-title: D, Ds, Dv2, Dsv2, and Ls-series Migration Guide
-description: Migration guide for D, Ds, Dv2, Dsv2, and Ls-series VM sizes
+---
+title: Retired VM Sizes Migration Guide
+description: Migration guide for retired VM size series
 author: iamwilliew
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 03/17/2025
+ms.date: 01/30/2026
 ms.author: wwilliams
 ms.reviewer: mattmcinnes
+ai-usage: ai-assisted
 ---
 
-# D, Ds, Dv2, Dsv2, and Ls-series Migration Guide
+# Retired VM Sizes Migration Guide
 
-This migration guide is designed for users of Azure D, Ds, Dv2, Dsv2, and Ls-series virtual machines (VMs), which are scheduled for retirement in **2028**. To ensure minimal disruption and to continue optimizing cost and performance, this guide helps you transition to the latest series VMs.
+This migration guide is designed for users of Azure virtual machines (VMs) scheduled for retirement. This guide helps you transition to the latest VM series, helping you minimize disruptions while optimizing cost and performance. The guide covers General Purpose, Storage Optimized, and other VM series. It also surfaces critical information for HPC HBv2-series VMs undergoing retirement; specialized workload validation is recommended when migrating HPC workloads.
 
-This document covers:
+This guide covers:
 
  - Recommended replacement VM series
  - Detailed migration steps
  - Common questions and guidance on handling RIs.
 
 By migrating to newer VM series, you gain access to improved price-performance ratios, broader regional availability, and the latest hardware capabilities.
+
 ## Recommended Replacement VM Series
 
-|Current VM Family | Target VM Family| Differences in Specification in Target VM*| 
+|Current VM Series | Target VM Series| Differences in Specification in Target VM*| 
 |--|--|--|
-| D<br>Ds<br>Dv2<br>Dsv2 | Dasv5<br>Dsv5|  Local Storage: Not Supported<br>Remote Storage Throughput: 3750 IOPS / 82 MBps<br> Disk Controller Type: SCSI|
-| D<br>Ds<br>Dv2<br>Dsv2 | Dadsv5<br>Ddsv5| Local Storage: Supported - SCSI<br>Local Storage Throughput: 9000 IOPS / 125 MBps<br>Remote Storage Throughput: 3750 IOPS / 82 MBps<br>Disk Controller Type: SCSI|
-| D<br>Ds<br>Dv2<br>Dsv2 | Dasv6<br>Dalsv6<br>Dsv6<br>Dlsv6 | Local Storage: Not Supported<br>Remote Storage Throughput: 4000 IOPS / 90 MBps<br>Disk Controller Type: NVMe|
-| D<br>Ds<br>Dv2<br>Dsv2 | Dadsv6<br>Daldsv6<br>Ddsv6<br>Dldsv6 | Local Storage: Supported - NVMe<br>Local Storage Throughput: 37500 IOPS / 180 MBps<br>Remote Storage Throughput: 4000 IOPS / 90 MBps<br>Disk Controller Type: NVMe|
-| Ls | Lsv3<br>Lasv3 | Local Storage: Supported - NVMe<br>Remote Storage Throughput: 12800 IOPS / 200 MBps <br>Disk Controller Type: SCSI |
+| D<br>Ds<br>Dv2<br>Dsv2 | Dsv5/Ddsv5/Dasv5/Dadsv5<br>Dasv6/Dadsv6/Dsv6/Ddsv6<br>Dasv7/Dadsv7<br>Esv6/Edsv6/Easv6/Eadsv6<br>Easv7/Eadsv7| D/Ev5 disk controller type: SCSI <br> D/Ev6, D/Ev7 disk controller type: NVMe<br>Local Storage Throughput: 9000 IOPS / 125 MBps<br>Remote Storage Throughput: 3750 IOPS / 82 MBps|
+| Ls | Lsv3/Lasv3<br>Lsv4/Lasv4 | Local Storage: Supported - NVMe<br>Remote Storage Throughput: 12800 IOPS / 200 MBps <br>Disk Controller Type: SCSI and NVMe |
+| Av2<br>Amv2 | Bsv2/Basv2<br>Dsv5/Ddv5/Dasv5<br>Esv5/Edv5/Easv5<br>Dsv6/Ddsv6/Dasv6<br>Esv6/Edsv6/Easv6 | B/Bp/Bav2, D/Ev5 disk controller type: SCSI <br> D/Ev6 disk controller type: NVMe<br>Remote Storage Throughput: 3750 IOPS / 85 MBps
+| Bv1 | Bsv2/Basv2<br>Dlsv5/Dldsv5/Dalsv5/Daldsv5<br>Dlsv6/Dldsv6/Dalsv6/Daldsv6 | B/Bp/Bav2, D/Ev5 disk controller type: SCSI <br> D/Ev6 disk controller type: NVMe<br>Remote Storage Throughput: 3750 IOPS / 85 MBps<br>Disk Controller Type: SCSI|
+| F<br>Fs<br>Fsv2 | Dlsv6/Dldsv6/Dalsv6/Daldsv6<br>Falsv6<br>Dldsv5/Dlsv5/Dsv5/Ddsv5| D/Ev5 disk controller type: SCSI <br> D/Ev6 disk controller type: NVMe <br> Remote Storage Throughput: 4167 IOPS / 124 MBps|
+| G<br>Gs | Lsv3/Lasv3<br>Lsv4/Lasv4| Lv3/Lv4 controller type: SCSI and NVMe <br>Remote Storage Throughput: 12800 IOPS / 200 MBps|
+| Lsv2 | Lsv3/Lasv3<br>Lasv4/Lasv4| Local Storage: NVMe<br>Remote Storage Throughput: 12800 IOPS / 200 MBps<br>Disk Controller Type: SCSI and NVMe|
+| HBv2 | HBv5<br>HX<br>HBv4<br>HBv3 | Transition to newer AMD EPYC generations (Milan/Genoa/Zen4) and newer InfiniBand fabrics (HDR on HBv3 → NDR on HBv4/HBv5). Validate MPI workload performance, memory bandwidth requirements, and RDMA compatibility on the target series. |
 
-*Refers to the lowest VM size in the given target VM Family. For actual VM specifications, please refer to the VM product sizes page.
+*Refers to the smallest VM size in the given target VM series. Full VM specifications are available on each target VM series' product sizes page.
 
-For optimal performance and experience, we generally recommend using the newer v5 and v6 VM series. This ensures you have access to the latest features such as Premium Storage, Accelerated Networking, and Nested Virtualization. While the v6 VM series is preferred, there are certain scenarios where you might want to consider the v5 or even the v4 VM series. Here are some reasons why:
+*Refers to the smallest VM size in the given target VM series. Full VM specifications are available on each target VM series' product sizes page.
+
+> [!IMPORTANT]  
+> The following SKUs aren't available in the Sovereign clouds:
+> Bsv2, Bpsv2, Basv2
+
+## Recommended Replacement Isolated VM Sizes
+
+|Current VM Size | Target VM Sizes| Differences in Specification in Target VM*| 
+| --- | --- | --- |
+| Standard_E64i_v3<br>Standard_E64is_v3| Standard_E192is_v6<br>Standard_E192ids_v6<br>Standard_E104i_v5<br>Standard_E104id_v5<br>Standard_E104is_v5<br>Standard_E104ids_v5<br>Standard_E80is_v4<br>Standard_E80ids_v4|  Local Storage: Supported - NVMe<br>Local Storage Throughput: 37,500 IOPS / 180 MBps<br>Remote Storage Throughput: 3,750 IOPS / 106 MBps<br> Disk Controller Type: NVMe|
+
+*Refers to the smallest VM size in the given target VM series. Full VM specifications are available on each target VM series' product sizes page.
+
+For optimal performance and experience, we recommend using the newer v5 and v6 VM series. This ensures you have access to the latest features such as Premium Storage, Accelerated Networking, and Nested Virtualization. While the v6 VM series is preferred, there are certain scenarios where you might want to consider the v5 or even the v4 VM series. Here are some reasons why:
  - v6 VMs require [enabling NVMe](/azure/virtual-machines/nvme-overview) which means that you must have a [supported OS](/azure/virtual-machines/enable-nvme-interface).
  - v6 VMs support [Generation 2 VMs only](/azure/virtual-machines/generation-2).
  - v6 VMs require MANA ([Microsoft Azure Network Adapter](/azure/virtual-network/accelerated-networking-mana-overview)) and a MANA supported operating system.
  - v6 VMs may not have available capacity in the regions and zones you need.
  
-Note that Lsv3 and Lasv3 series are the latest generation L-series VMs.
+Note that Lsv4 and Lasv4 series are the latest generation L-series VMs.
 
 Use the [Azure VM size documentation](/azure/virtual-machines/sizes) to help identify suitable VM sizes.
 
@@ -49,6 +68,7 @@ Use the [Azure VM size documentation](/azure/virtual-machines/sizes) to help ide
 
 - Review your current reservations using the [Azure Reservation Management](/azure/cost-management-billing/reservations/manage-reserved-vm-instance) page.
 - If applicable, exchange existing reservations for newer VM series or trade in your reservations for an **Azure Savings Plan for compute**.
+- **HBv2 customers**: 1-year and 3-year HBv2 Reserved Instance purchases ended on April 2, 2026. If you have active HBv2 RIs, consider exchanging them for supported HPC series RIs (such as HBv3, HBv4, HBv5, or HX) or trading them in for an Azure Savings Plan for compute before the retirement date of May 31, 2027.
 
 ####  Identify the Target VM Size
 
@@ -70,38 +90,53 @@ You can resize your VM through the Azure portal, Azure CLI, or PowerShell. Follo
 Refer to the full [Azure VM resizing guide](/azure/virtual-machines/sizes/resize-vm?tabs=portal) for more detailed instructions.
 
 ## FAQ
-#### Q: Which Sizes Are Being Retired?
-The following sizes are being retired by 1 May 2028.
- - D/Ds series: 
-	 - Standard_D1 to Standard_D4
-	 - Standard_DS1 to Standard_DS4
-	 - Standard_D11 to Standard_D14
-	 - Standard_DS11 to Standard_DS14
- - Dv2/Dsv2 series:
-	 - Standard_D1v2 to Standard_D5_v2
-	 - Standard_DS1v2 to Standard_DS5_v2
-	 - Standard_D11_v2 to Standard_D15_v2
-	 - Standard_DS11_v2 to Standard_DS15_v2
-	 - Standard_D2_v2_Promo to Standard_D5_v2_Promo
-	 - Standard_DS2_v2_Promo to Standard_DS5_v2_Promo
- - LS series:
-	 - Standard_L4s to Standard_L32s
+#### Q: Which sizes are being retired?
+To review retired sizes, see [retired Azure VM sizes](/azure/virtual-machines/sizes/retirement/retired-sizes-list). View retired isolated sizes at [Isolation for VMs in Azure](/azure/virtual-machines/isolation).
+
+> [!NOTE]
+> HPC HBv2-series VMs are also retiring. See the HBv2 row in the table below for the applicable dates.
+
+| VM Series | 3 YR RI expiration date | 1 YR RI expiration date | Retirement Date|
+|----|----|----|----|
+| D        | 05/01/2025 |	05/01/2027 | 05/01/2028 |
+| Ds       | 05/01/2025 | 05/01/2027 | 05/01/2028 |
+| Dv2      | 05/01/2025 | 05/01/2027 | 05/01/2028 |
+| Dsv2     | 05/01/2025 | 05/01/2027 | 05/01/2028 |
+| Ls       | 05/01/2025 | 05/01/2027 | 05/01/2028 |
+| F        | 11/15/2025 | 11/15/2027 | 11/15/2028 |
+| Fs       | 11/15/2025 | 11/15/2027 | 11/15/2028 |
+| Fsv2     | 11/15/2025 | 11/15/2027 | 11/15/2028 |
+| Lsv2     | 11/15/2025 | 11/15/2027 | 11/15/2028 |
+| G        | 11/15/2025 | 11/15/2027 | 11/15/2028 |
+| Gs       | 11/15/2025 | 11/15/2027 | 11/15/2028 |
+| Av2      | 11/15/2025 | 11/15/2027 | 11/15/2028 |
+| Amv2     | 11/15/2025 | 11/15/2027 | 11/15/2028 |
+| B-series | 11/15/2025 | 11/15/2027 | 11/15/2028 |
+| Bv1      | 11/15/2025 | 11/15/2027 | 11/15/2028 |
+| HBv2     | 04/02/2026 | 04/02/2026 | 05/31/2027 |
 
 
-#### Q: Why Should I Migrate?
+#### Q: Why should I migrate my VM?
 
-If you are on D, Dv2, Dsv2, and L-series VMs, these VMs are set to retire in 2028. Migration is mandatory to avoid unexpected shutdown. Additionally, migration yields the following benefits: 
+Migration is mandatory to avoid unexpected shutdown. Additionally, migration yields the following benefits: 
 
  - **Performance**: Newer VM series offer better price-to-performance ratios.
  - **Regional Availability**: The v5 and v6 series has broader regional support across Azure data centers.
  - **Future-proofing**: Migrate ahead of the retirement schedule to avoid disruption.
 
-#### Q: I am on pay-as-you-go (PayGo) or Savings Plan Pricing. Is There a Concern with Migration?
+#### Q: What will happen to my VM if I do not resize my VM to a target size within the retirement timeline?
 
-No. If you’re using PayGo or a savings plan, migrating to a newer VM type won't disrupt your current billing. The migration process remains seamless with no changes required in your subscription or payment plan.
+After retirement, VMs using this size will be deallocated and stop incurring charges. The size is no longer supported or covered by an SLA; in‑memory and temporary disk data is lost, but managed disk data is preserved. To resume service, you may resize to a supported size and restart the VM.
 
-#### Q: I'm on Reserved Instances (RIs) with an Older VM. How Do I Handle Migration?
+Specifically for HBv2-series: after May 31, 2027, HBv2-series VMs (Standard_HB120rs_v2 and derived sizes) will be automatically set to a deallocated state. After that date, HBv2 VMs will stop working, lose SLA and support, and stop incurring billing charges.
 
+#### Q: Can I recover my VM after it has been deallocated?
+Yes, you can resize and restart your deallocated VM following the [Azure VM resizing guide](/azure/virtual-machines/sizes/resize-vm?tabs=portal).
+
+#### Q: Will VM migration disrupt pay-as-you-go or Savings Plan Pricing billing?
+No. If you’re using pay-as-you-go or a savings plan, migrating to a newer VM type won't disrupt your current billing. The migration process remains seamless with no changes required in your subscription or payment plan.
+
+#### Q: How can I migrate my VM if I am on Reserved Instances (RIs) with a retired VM?
 If you have active Reserved Instances for D, Dv2, Dsv2, or L-series VMs, follow these steps:
 
 Step 1: Review Current Reservations

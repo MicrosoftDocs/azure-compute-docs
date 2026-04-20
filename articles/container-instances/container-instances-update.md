@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
-ms.date: 08/29/2024
+ms.date: 11/17/2025
 # Customer intent: As a cloud developer, I want to update running containers in my container group, so that I can modify properties and optimize deployment speeds without needing to redeploy the entire group.
 ---
 

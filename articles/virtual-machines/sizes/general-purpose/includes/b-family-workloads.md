@@ -6,7 +6,7 @@ author: mattmcinnes
 ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.date: 04/19/2024
+ms.date: 11/06/2025
 ms.author: mattmcinnes
 ms.custom: include file
 # Customer intent: "As a cloud architect, I want to evaluate the capabilities of B-family VMs, so that I can determine their suitability for workloads with variable CPU performance needs."

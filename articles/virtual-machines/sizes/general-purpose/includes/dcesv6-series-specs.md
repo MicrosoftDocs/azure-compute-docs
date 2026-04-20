@@ -1,0 +1,21 @@
+---
+title: DCesv6 series specs include
+description: Include file containing specifications of DCesv6-series VM sizes.
+author: mattmcinnes
+ms.topic: include
+ms.service: azure-virtual-machines
+ms.subservice: sizes
+ms.date: 07/31/2024
+ms.author: mattmcinnes
+ms.reviewer: mattmcinnes
+ms.custom: include file
+# Customer intent: "As a cloud architect, I want to access the specifications of the DCesv6 series VM sizes, so that I can evaluate their capabilities for my organization's workload requirements."
+---
+| Part | Quantity min - max | Specs <br><sup>SKU ID, Performance Units, etc.  |
+|---|---|---|
+| Processor      | 2 - 128 vCPUs       | Intel Xeon Platinum 8573C (Emerald Rapids) [x86-64]                               |
+| Memory         | 8 - 512 GB          |                                  |
+| Local Storage  | None           |                                |
+| Remote Storage | 8 - 64 Disks | 4,000 - 205,000 IOPS <br>80 - 4,000 MBps <br>Disk Types: [Standard SDD/HDD](../../../disks-types.md#standard-ssds), [Premium SSD](../../../disks-types.md#premium-ssds), [Premium SSD v2](../../../disks-types.md#premium-ssd-v2), [Ultra Disk](../../../disks-types.md#ultra-disks) |
+| Network        | 2 - 8 NICs          | 12,500 Mbps to 40,000 Mbps                          |
+| Accelerators   | None              |                                   |

@@ -2,11 +2,11 @@
 title: Prepay for Azure Dedicated Hosts to save money
 description: Learn how to buy Azure Dedicated Hosts Reserved Instances to save on your compute costs.
 services: virtual-machines
-author: primittal
+author: pri-mittal
 ms.service: azure-dedicated-host
 ms.topic: concept-article
 ms.date: 04/15/2024
-ms.author: banders
+ms.author: primittal
 ms.reviewer: mattmcinnes
 # Customer intent: "As a cloud architect, I want to purchase reserved instances for Azure Dedicated Hosts, so that I can optimize compute costs for my organization effectively."
 ---
@@ -17,6 +17,8 @@ ms.reviewer: mattmcinnes
 
 When you commit to a reserved instance of Azure Dedicated Hosts, you can save money. The reservation discount is applied automatically to the number of running dedicated hosts that match the reservation scope and attributes. You don't need to assign a reservation to a dedicated host to get the discounts. A reserved instance purchase covers only the compute part of your usage and does
 include software licensing costs. See the [Overview of Azure Dedicated Hosts for virtual machines](./dedicated-hosts.md).
+
+Purchasing a reserved instance of Azure Dedicated Hosts provides a billing discount only. It doesn't reserve or guarantee that Dedicated Host capacity will be available when you deploy the host. Capacity constraints can still block deployment even when quota is approved and a reservation is purchased. 
 
 ## Determine the right dedicated host SKU before you buy
 

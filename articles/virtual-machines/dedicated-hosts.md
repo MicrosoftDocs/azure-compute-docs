@@ -7,6 +7,7 @@ ms.topic: concept-article
 ms.date: 1/25/2023
 ms.author: vakavuru
 ms.reviewer: mattmcinnes
+ms.update-cycle: 1095-days
 #Customer intent: As an IT administrator, I want to learn more about using a dedicated host for my Azure virtual machines
 # Customer intent: As an IT administrator, I want to understand how Azure Dedicated Hosts function for virtual machine deployment, so that I can effectively utilize dedicated resources for my workloads while optimizing performance, security, and cost.
 ---
@@ -131,12 +132,12 @@ Not all scale-set orchestration and optimizations settings are supported by dedi
 - Use the ScaleSetVM orchestration mode
 - Don't use proximity placement groups for co-location
 
-### Ultra disk support for virtual machines on dedicated hosts
-[Ultra disks](./disks-enable-ultra-ssd.md) offer higher IOPS (maximum of 160,00 IOPS per disk) and higher disk throughput (maximum of 4000 MBps per disk) depending on the disk size. All the limitations of ultra disks would still apply. To use ultra disks on dedicated hosts following requirements needs to be satisfied:
-- Host group needs to have Ultra SSD 'Enabled', this property cannot be changed once the host group is created
-- Dedicated host's virtual machine series should be compatible with ultra disks.
+### Ultra Disk support for virtual machines on dedicated hosts
+[Ultra Disks](./disks-enable-ultra-ssd.md) offer higher IOPS (maximum of 160,00 IOPS per disk) and higher disk throughput (maximum of 4000 MBps per disk) depending on the disk size. All the limitations of Ultra Disks would still apply. To use Ultra Disks on dedicated hosts following requirements needs to be satisfied:
+- Host group needs to have Ultra Disk 'Enabled', this property cannot be changed once the host group is created
+- Dedicated host's virtual machine series should be compatible with Ultra Disks.
 
-Dedicated hosts also support ultra disks with specialty VM sizes: LSv2, M, Mv2, Msv2, Mdsv2, NVv3, NVv4. However in these cases below listed additional limitations would apply:
+Dedicated hosts also support Ultra Disks with specialty VM sizes: LSv2, M, Mv2, Msv2, Mdsv2, NVv3, NVv4. However in these cases below listed additional limitations would apply:
 - Host group should have Automatic Placement 'Disabled'
 - Host group's fault domain count should be set to '1' only.
 

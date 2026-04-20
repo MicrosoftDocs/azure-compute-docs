@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: As a cloud application developer, I want to migrate my Cloud Services (extended support) Web and Worker Roles to Service Fabric stateless services, so that I can take advantage of improved scalability and simplified deployment within a Service Fabric cluster.
 ---
 
@@ -16,17 +16,17 @@ This article describes how to migrate your Cloud Services (extended support) Web
 ## Cloud Services (extended support) project to Service Fabric application project
  A Cloud Service project and a Service Fabric Application project have a similar structure and both represent the deployment unit for your application - that is, they each define the complete package that is deployed to run your application. A Cloud Service project contains one or more Web or Worker Roles. Similarly, a Service Fabric Application project contains one or more services. 
 
-The difference is that the Cloud Service project couples the application deployment with a VM deployment and thus contains VM configuration settings in it, whereas the Service Fabric Application project only defines an application that will be deployed to a set of existing VMs in a Service Fabric cluster. The Service Fabric cluster itself is only deployed once, either through an Resource Manager template or through the Azure portal, and multiple Service Fabric applications can be deployed to it.
+The difference is that the Cloud Service project couples the application deployment with a VM deployment and thus contains VM configuration settings in it, whereas the Service Fabric Application project only defines an application that will be deployed to a set of existing VMs in a Service Fabric cluster. The Service Fabric cluster itself is only deployed once, either through a Resource Manager template or through the Azure portal, and multiple Service Fabric applications can be deployed to it.
 
 ![Service Fabric and Cloud Services (extended support) project comparison][3]
 
 ## Worker Role to stateless service
-Conceptually, a Worker Role represents a stateless workload, meaning every instance of the workload is identical and requests can be routed to any instance at any time. Each instance is not expected to remember the previous request. State that the workload operates on is managed by an external state store, such as Azure Table Storage or Azure Cosmos DB. In Service Fabric, this type of workload is represented by a Stateless Service. The simplest approach to migrating a Worker Role to Service Fabric can be done by converting Worker Role code to a Stateless Service.
+Conceptually, a Worker Role represents a stateless workload, meaning every instance of the workload is identical and requests can be routed to any instance at any time. Each instance isn't expected to remember the previous request. State that the workload operates on is managed by an external state store, such as Azure Table Storage or Azure Cosmos DB. In Service Fabric, this type of workload is represented by a Stateless Service. The simplest approach to migrating a Worker Role to Service Fabric can be done by converting Worker Role code to a Stateless Service.
 
 ![Worker Role to Stateless Service][4]
 
 ## Web Role to stateless service
-Similar to Worker Role, a Web Role also represents a stateless workload, and so conceptually it too can be mapped to a Service Fabric stateless service. However, unlike Web Roles, Service Fabric does not support IIS. To migrate a web application from a Web Role to a stateless service requires first moving to a web framework that can be self-hosted and does not depend on IIS or System.Web, such as ASP.NET Core 1.
+Similar to Worker Role, a Web Role also represents a stateless workload, and so conceptually it too can be mapped to a Service Fabric stateless service. However, unlike Web Roles, Service Fabric does not support IIS. To migrate a web application from a Web Role to a stateless service requires first moving to a web framework that can be self-hosted and doesn't depend on IIS or System.Web, such as ASP.NET Core 1.
 
 | **Application** | **Supported** | **Migration path** |
 | --- | --- | --- |

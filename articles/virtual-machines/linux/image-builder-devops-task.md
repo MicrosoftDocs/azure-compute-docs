@@ -8,8 +8,12 @@ ms.date: 07/31/2023
 ms.topic: how-to
 ms.service: azure-virtual-machines
 ms.subservice: image-builder
-ms.custom: devx-track-azurepowershell, devx-track-azurecli, linux-related-content
 ms.devlang: azurecli
+ms.custom:
+  - devx-track-azurepowershell
+  - devx-track-azurecli
+  - linux-related-content
+  - sfi-image-nochange
 # Customer intent: "As a DevOps engineer, I want to use the Azure VM Image Builder task to automate the injection of build artifacts into VM images, so that I can efficiently configure and deploy applications across my virtual machine instances."
 ---
 

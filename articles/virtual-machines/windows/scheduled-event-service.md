@@ -7,6 +7,7 @@ ms.subservice: scheduled-events
 ms.date: 12/12/2024
 ms.author: sarn
 ms.topic: how-to
+ms.custom: sfi-image-nochange
 # Monitoring Scheduled Events
 # Customer intent: "As a system administrator, I want to monitor scheduled events for my Windows VMs, so that I can proactively manage maintenance and minimize downtime for critical applications."
 ---

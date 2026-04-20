@@ -27,7 +27,7 @@ Premium SSD supports several performance options, each geared towards different 
 |  |Credit-based bursting  |On-demand bursting  |Changing performance tier  |Caching |Write accelerator |Performance plus |
 |---------|---------|---------|---------|---------|---------|---------|
 | **Scenarios**|Ideal for short-term scaling (30 minutes or less).|Ideal for short-term uses like determining your workloads performance needs.|Ideal if your workload would otherwise continually be running in burst. |Ideal for workloads that can be configured to rely on data from the cache. |Ideal for scenarios where log files are required to persist to a disk in a performant manner for modern databases. |Ideal for workloads that require higher sustained performance. |
-|**Cost**     |Free         |Cost is variable, see the [Billing](/azure/virtual-machines/disk-bursting#billing) section of the bursting article for details.        |The cost of each performance tier is fixed, see [Managed Disks pricing](https://azure.microsoft.com/pricing/details/managed-disks/) for details.         |Free. |Free. |Free. |
+|**Cost**     |Free         |Cost is variable, see the [Billing](/azure/virtual-machines/disk-bursting#billing) section of the bursting article for details.        |The cost of each performance tier is fixed, see [managed disks pricing](https://azure.microsoft.com/pricing/details/managed-disks/) for details.         |Free. |Free. |Free. |
 |**Availability**     |Only available for Premium SSD managed disks 512 GiB and smaller, and Standard SSDs 1,024 GiB and smaller.         |Only available for Premium SSD managed disks larger than 512 GiB.         |Available to all Premium SSD sizes.         |Available to all Premium SSD managed disk, Standard SSD, and Standard HDD sizes. |Only available to M-series Azure Virtual Machines, but can be configured with all Premium SSD sizes attached to M-series virtual machines. |Available for Standard HDD, Standard SSD, and Premium SSD managed disks 513 GiB and larger. |
 |**Enablement**     |Enabled by default on eligible disks.         |User must enable manually.         |User must manually change their tier.         |User must manually configure both their cache settings and their workloads and applications. |User must manually configure and enable. |Must enable performance plus when you create the disk, can't be enabled on existing disks. |
 
@@ -41,7 +41,7 @@ With on-demand disk bursting enabled, the disk bursts whenever its needs exceed 
 
 ### Change performance tiers
 
-The performance of a Premium SSD is set when you create your disk, in the form of their performance tier. When you set the provisioned size of your disk, a performance tier is automatically selected. The performance tier determines the IOPS and throughput your managed disk has. For Premium SSD disks only, the performance tier can be changed at deployment or afterwards, without changing the size of the disk, and without downtime. To learn more, see [Performance tiers for managed disks](/azure/virtual-machines/disks-change-performance).
+The performance of a Premium SSD is set when you create your disk, in the form of their performance tier. When you set the provisioned size of your disk, a performance tier is automatically selected. The performance tier determines the IOPS and throughput your managed disk has. For Premium SSDs only, the performance tier can be changed at deployment or afterwards, without changing the size of the disk, and without downtime. To learn more, see [Performance tiers for managed disks](/azure/virtual-machines/disks-change-performance).
 
 ### Caching
 
@@ -49,7 +49,7 @@ High-scale Azure Virtual Machines that can use premium storage have a multitier 
 
 ### Write accelerator
 
-Write accelerator is a disk capability for M-Series VMs on Premium SSD managed disks. Write accelerator improves the I/O latency of writes against Premium SSD disks. Write accelerator is optimized for volumes that contain the transaction log or redo logs of a DBMS, and shouldn't be used for data volumes. To learn more, see the [write accelerator](/azure/virtual-machines/how-to-enable-write-accelerator) article.
+Write accelerator is a disk capability for M-Series VMs on Premium SSD managed disks. Write accelerator improves the I/O latency of writes against Premium SSDs. Write accelerator is optimized for volumes that contain the transaction log or redo logs of a DBMS, and shouldn't be used for data volumes. To learn more, see the [write accelerator](/azure/virtual-machines/how-to-enable-write-accelerator) article.
 
 ### Performance plus
 

@@ -1,12 +1,13 @@
 ---
 title: Capture an image of a VM using the portal
 description: Create an image of a VM using the Azure portal.
-author: ju-shim
+author: cynthn
 ms.service: azure-virtual-machines
 ms.subservice: imaging
 ms.topic: how-to
-ms.date: 04/12/2022
-ms.author: jushiman
+ms.update-cycle: 180-days
+ms.date: 02/06/2026
+ms.author: cynthn
 ms.custom: portal
 # Customer intent: "As a cloud administrator, I want to capture an image of a virtual machine using the portal, so that I can create multiple VMs from a single source and ensure data consistency during the process."
 ---
@@ -14,7 +15,7 @@ ms.custom: portal
 
 An image can be created from a VM and then used to create multiple VMs.
 
-For images stored in an Azure Compute Gallery (formerly known as Shared Image Gallery), you can use VMs that already have accounts created on them (specialized) or you can generalize the VM before creating the image to remove machine accounts and other machines specific information. To generalize a VM, see [Generalized a VM](generalize.yml). For more information, see [Generalized and specialized images](shared-image-galleries.md#generalized-and-specialized-images).
+For images stored in an Azure Compute Gallery (formerly known as Shared Image Gallery), you can use VMs that already have accounts created on them (specialized) or you can generalize the VM before creating the image to remove machine accounts and other machines specific information. To generalize a VM, see [Generalized a VM](generalize.md). For more information, see [Generalized and specialized images](shared-image-galleries.md#generalized-and-specialized-images).
 
 > [!IMPORTANT]
 > Once you mark a VM as `generalized` in Azure, you cannot restart the VM. Legacy **managed images** are automatically marked as generalized.
@@ -68,3 +69,4 @@ For images stored in an Azure Compute Gallery (formerly known as Shared Image Ga
 ## Next steps
 
 - [Azure Compute Galleries overview](shared-image-galleries.md)
+

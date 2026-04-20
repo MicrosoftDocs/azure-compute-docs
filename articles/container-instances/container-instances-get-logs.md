@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
-ms.date: 08/29/2024
+ms.date: 11/17/2025
 ms.custom: mvc
 # Customer intent: As a DevOps engineer, I want to retrieve and analyze container logs and events in Azure Container Instances, so that I can troubleshoot issues effectively and ensure smooth application performance.
 ---

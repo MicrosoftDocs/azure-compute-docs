@@ -1,12 +1,13 @@
 ---
 title: Delete a VM and attached resources
 description: Learn how to delete a VM and the resources attached to the VM.
-author: ju-shim
+author: cynthn
 ms.service: azure-virtual-machines
 ms.topic: how-to
-ms.date: 05/09/2022
-ms.author: jushiman
-ms.custom: template-how-to, devx-track-azurecli, devx-track-azurepowershell
+ms.update-cycle: 180-days
+ms.date: 02/06/2026
+ms.author: cynthn
+ms.custom: template-how-to, devx-track-azurecli, devx-track-azurepowershell, portal
 # Customer intent: As a cloud administrator, I want to configure delete options for virtual machines and attached resources, so that I can control which components are removed when the VM is deleted and manage costs effectively.
 ---
 
@@ -178,8 +179,9 @@ PUT https://management.azure.com/subscriptions/subid/resourceGroups/rg1/provider
 You can change the behavior when you delete a VM.
 
 ### [CLI](#tab/cli3)
+The following example uses the Azure CLI to set the delete option to `detach` so you can reuse the disk.
 
-The following example sets the delete option to `detach` so you can reuse the disk.
+Make sure to login to correct subscription using `az account set --subscription "SubscriptionIDName"`
 
 ```azurecli-interactive
 az resource update --resource-group myResourceGroup --name myVM --resource-type virtualMachines --namespace Microsoft.Compute --set properties.storageProfile.osDisk.deleteOption=detach
@@ -187,7 +189,9 @@ az resource update --resource-group myResourceGroup --name myVM --resource-type 
 
 ### [PowerShell](#tab/powershell3)
 
-The following example updates VM to delete the OS disk, all data disks, and all NICs when the VM is deleted.
+The following Azure PowerShell example updates the VM to delete the OS disk, all data disks, and all NICs when the VM is deleted.
+
+Make sure to login to correct subscription using `Set-AzContext -Subscription "Subid"`.
 
 ```azurepowershell
 $vmConfig = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM
@@ -314,7 +318,7 @@ Use the `--force-deletion` parameter for [az vm delete](/cli/azure/vm#az-vm-dele
 az vm delete \
     --resource-group myResourceGroup \
     --name myVM \
-    --force-deletion none
+    --force-deletion true
 ```
 
 ### [PowerShell](#tab/powershell4)
@@ -388,6 +392,16 @@ A: For shared disks, you can't set the ‘deleteOption’ property to ‘Delete�
 A: This feature is supported on all managed disk types used as OS disks and Data disks, NICs, and Public IPs
 
 
+### Q: What happens to the data on the disks when a VM is deleted?
+
+A: When a VM is deleted, the data on the disks is not automatically deleted. The OS disk and any attached data disks remain in your resource group and continue to incur charges. You need to manually delete these disks if you no longer need them.
+
+
+### Q: What happens to VM backups when I delete the VM?
+
+A: Azure Backup retains VM backups according to the backup policy, even after the VM is deleted. Retained backups continue to incur storage charges until they are deleted. To avoid unnecessary costs, review your backup retention and delete backups you no longer need.
+
+To manage or delete VM backups, go to the Azure portal, navigate to your **Recovery Services** vault, select **Backup items**, then select **Azure Virtual Machine**, and choose the VM whose backups you want to manage. From there, you can stop backup and delete backup data as needed.
 ### Q: Can I use this feature on disks and NICs that aren't associated with a VM?
 
 A: No, this feature is only available on disks and NICs associated with a VM.

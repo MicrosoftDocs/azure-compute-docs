@@ -4,7 +4,7 @@ description: This topic provides an overview of running scripts within an Azure 
 ms.service: azure-virtual-machines
 ms.custom: linux-related-content
 author: nikhilpatel909
-ms.author: jushiman
+ms.author: cynthn
 ms.date: 03/10/2023
 ms.topic: how-to
 ms.reviewer: jushiman
@@ -19,9 +19,7 @@ Run Command uses the virtual machine (VM) agent to run scripts within an Azure W
 The original set of commands are action orientated. The updated set of commands are management orientated and enable you to run multiple scripts and has less restrictions. This article will explain the difference between the two sets of run commands and help you decide which set is the right one to use in your scenario.  
 
 > [!IMPORTANT]
-> **Managed Run Command**  is currently available in Azure CLI, PowerShell, and API at this time. Portal functionality will soon be available.
-
-
+> **Managed Run Command**  is currently available in Azure CLI, PowerShell, and API at this time. Portal functionality isn't currently available.
 
 ## When to use action or managed commands
 

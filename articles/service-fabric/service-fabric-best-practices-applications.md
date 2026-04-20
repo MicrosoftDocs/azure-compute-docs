@@ -1,12 +1,12 @@
 ---
 title: Azure Service Fabric application design best practices 
 description: Best practices and design considerations for developing applications and services using Azure Service Fabric.
-ms.topic: concept-article
+ms.topic: best-practice
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: "As a software architect, I want to adopt best practices for Azure Service Fabric application design, so that I can optimize performance, enhance scalability, and ensure effective management of stateful and stateless services."
 ---
 
@@ -28,7 +28,7 @@ Become familiar with the [general architecture](/azure/architecture/reference-ar
 Use an API gateway service that communicates to back-end services that can then be scaled out. The most common API gateway services used are:
 
 - [Azure API Management](./service-fabric-api-management-overview.md), which is [integrated with Service Fabric](./service-fabric-tutorial-deploy-api-management.md).
-- [Træfik reverse proxy](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric), using the [Azure Service Fabric provider](https://docs.traefik.io/v1.6/configuration/backends/servicefabric/).
+- [Træfik reverse proxy](https://azure.microsoft.com/blog/product/azure-service-fabric/), using the [Azure Service Fabric provider](https://docs.traefik.io/v1.6/configuration/backends/servicefabric/).
 - [Azure Application Gateway](/azure/application-gateway/).
 
    > [!NOTE] 
@@ -48,7 +48,7 @@ Decide on the data retention time frame:
 - **Long-term data**. Reliable collections can store your data permanently. But in this case you need to [prepare for disaster recovery](./service-fabric-disaster-recovery.md), including [configuring periodic backup policies](./service-fabric-backuprestoreservice-configure-periodic-backup.md) for your clusters. In effect, you configure what happens if your cluster is destroyed in a disaster, where you would need to create a new cluster, and how to deploy new application instances and recover from the latest backup.
 
 Save costs and improve availability:
-- You can reduce costs by using stateful services because you don't incur data access and transactions costs from the remote store, and because you don't need to use another service, like Azure Cache for Redis.
+- You can reduce costs by using stateful services because you don't incur data access and transactions costs from the remote store, and because you don't need to use another service, like Azure Managed Redis.
 - Using stateful services primarily for storage and not for compute is expensive, and we don't recommend it. Think of stateful services as compute with cheap local storage.
 - By removing dependencies on other services, you can improve your service availability. Managing state with HA in the cluster isolates you from other service downtimes or latency issues.
 

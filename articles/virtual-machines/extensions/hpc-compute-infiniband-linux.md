@@ -9,8 +9,8 @@ ms.topic: concept-article
 ms.tgt_pltfrm: vm-linux
 ms.date: 07/25/2024
 ms.custom: devx-track-azurepowershell, linux-related-content
-ms.author: jushiman
-author: ju-shim
+ms.author: cynthn
+author: cynthn
 # Customer intent: As a cloud engineer, I want to install InfiniBand drivers on HB- and N-series Linux VMs, so that I can enable high-performance computing capabilities for data-intensive applications.
 ---
 
@@ -21,6 +21,8 @@ This extension installs InfiniBand OFED drivers on InfiniBand and SR-IOV-enabled
 Instructions on manual installation of the OFED drivers are available in [Enable InfiniBand on HPC VMs](enable-infiniband.md#manual-installation).
 
 An extension is also available to install InfiniBand drivers for [Windows VMs](hpc-compute-infiniband-windows.md).
+
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
 
 ## Prerequisites
 

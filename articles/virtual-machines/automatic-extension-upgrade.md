@@ -4,9 +4,9 @@ description: Learn how to enable the Automatic Extension Upgrade for your virtua
 ms.service: azure-virtual-machines
 ms.subservice: extensions
 ms.topic: how-to
-ms.reviewer: jushiman
+ms.update-cycle: 180-days
 ms.date: 11/7/2023
-ms.custom: devx-track-azurepowershell
+ms.custom: devx-track-azurepowershell, portal
 # Customer intent: "As an IT administrator, I want to enable Automatic Extension Upgrade for virtual machines and scale sets, so that I can ensure all extensions are automatically updated to the latest versions without manual intervention for improved security and functionality."
 ---
 
@@ -108,6 +108,7 @@ Following are popular extensions supported for automatic upgrades (and more are 
 | Microsoft.Azure.Networking.DNS                    | DNSClientCache                |
 | Microsoft.Azure.SCOMMI                            | GatewayServer                 |
 | Microsoft.Azure.SCOMMI                            | WindowsAgent                  |
+| Microsoft.Azure.Security                          | IaaSAntimalware               |
 | Microsoft.Azure.Security.AntimalwareSignature     | AntimalwareConfiguration      |
 | Microsoft.Azure.Security.Dsms                     | DSMSForWindows                |
 | Microsoft.Azure.Security.LinuxAttestation         | [GuestAttestation](../virtual-machines/boot-integrity-monitoring-overview.md)              |
@@ -115,6 +116,7 @@ Following are popular extensions supported for automatic upgrades (and more are 
 | Microsoft.Azure.Security.Monitoring               | AzureSecurityWindowsAgent     |
 | Microsoft.Azure.Security.WindowsAttestation       | [GuestAttestation](../virtual-machines/boot-integrity-monitoring-overview.md)              |
 | Microsoft.Azure.Security.WindowsCodeIntegrity     | CodeIntegrityAgent            |
+| Microsoft.Azure.ServiceFabric                     | [ServiceFabricNode](../service-fabric/service-fabric-cluster-nodetypes.md#service-fabric-virtual-machine-extension)             |
 | Microsoft.Azure.ServiceFabric                     | [ServiceFabricLinuxNode](../service-fabric/service-fabric-tutorial-create-vnet-and-linux-cluster.md#service-fabric-extension)        |
 | Microsoft.Azure.Watson                            | WatsonLinuxAgent              |
 | Microsoft.Azure.Workloads                         | MonitoringExtensionLinux      |

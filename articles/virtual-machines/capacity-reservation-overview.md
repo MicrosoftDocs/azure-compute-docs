@@ -5,8 +5,9 @@ author: bdeforeest
 ms.author: bidefore
 ms.service: azure-virtual-machines
 ms.topic: overview
-ms.date: 02/24/2023
-ms.reviewer: cynthn, jushiman, mattmcinnes
+ms.date: 02/17/2026
+ms.update-cycle: 1095-days
+ms.reviewer: cynthn, mattmcinnes
 ms.custom: template-how-to
 # Customer intent: "As an IT administrator, I want to create and manage on-demand capacity reservations in Azure, so that I can ensure the availability of compute resources for critical workloads without long-term commitments."
 ---
@@ -26,6 +27,10 @@ Capacity reservation has some basic properties that are always defined at the ti
 - **Quantity**: Each reservation has a quantity of instances to be reserved.
 
 To create a capacity reservation, the parameters are passed to Azure as a capacity request. If Azure doesn't have capacity available that meets the request, the reservation deployment fails. Your deployment fails if you don't have an adequate subscription quota. Request a higher quota or try a different VM size, location, or zone combination. 
+
+Quota and capacity are separate checks. Quota is your subscription's permission to deploy resources, while capacity is the underlying infrastructure available in a specific region or zone.
+
+Capacity reservations and [Reserved Instances](/azure/virtual-machines/prepay-reserved-vm-instances) are also different. Capacity reservation secures capacity availability for deployment. Reserved Instances provide a billing discount only and don't guarantee capacity.
 
 After Azure accepts your reservation request, it's available for VMs with matching configurations. To consume capacity reservation, the VM has to specify the reservation in its properties. Otherwise, the capacity reservation isn't used. One benefit of this design is that you can target only critical workloads to reservations and other noncritical workloads can run without reserved capacity. 
 
@@ -56,57 +61,34 @@ From this example accumulation of Minutes Not Available, here's the calculation 
 
 - Creating capacity reservations requires a quota in the same manner as when you create VMs.
 - Creating capacity reservations is currently limited to certain VM series and sizes. The compute [Resource SKUs list](/rest/api/compute/resource-skus/list) advertises the set of supported VM sizes.
-- The following VM series support the creation of capacity reservations:
+- Reserved capacity for these VM series supports high availability using multi-zone or fault domains. The fault domain count for a Virtual Machine Scale Set is limited to 3, enforced at deployment.
 
-    - Av2 
-    - B
-    - Bpsv2
-    - Bsv2 (Intel) and Basv2 (AMD)
-    - D and Ds series, v2 and newer; AMD and Intel
-    - Dadsv5 and Dadsv6
-    - Dav4 series
-    - Dasv4 and newer
-    - Ddv4 and v5 series
-    - Dds series, v4 and newer
-    - Dlsv5 and newer series
-    - Dldsv5 and newer series
-    - DCsv2 series
-    - DCasv5 and DCadsv5 series
-    - DCesv5 and DCedsv5 series
-    - ECasv5 and ECadsv5 series
-    - ECesv5 and ECedsv5 series
-    - Dplsv5 and newer series
-    - Dps and Dpds series, v5 and newer
-    - Dplds series, v5 and newer
-    - Eps and Epds series, v5 and newer
-    - E series, all versions; AMD and Intel
-    - Eav4 and Easv4 series
-    - Easv5 and Eadsv5 series and newer
-    - Ebdsv5 and Ebsv5 series
-    - Ed and Eds series, v4 and newer
-    - F series, all versions
-    - Fx series
-    - Lsv3 (Intel) and Lasv3 (AMD)
+  The following VM series support the creation of capacity reservations:
+  
+  | Type | VM Series |
+  | ----- | ----------- |
+  | General Purpose (Burstable) | B (Intel) <br> Bsv2 (Intel), Basv2 (AMD), Bpsv2 (ARM) |
+  | General Purpose (General use A, D) | Av2 (Intel) <br> D and Ds series, v2 and newer (Intel) <br> Dd and Dds, v4 and newer (Intel, local disk) <br> Dls and Dlds, v5 and newer (Intel, low memory) <br> Da and Das, v4 series and newer (AMD) <br> Dads, v5 and newer (AMD, local disk) <br> Dals and Dalds, v6 and newer (AMD) <br> Dps and Dpds series, v5 and newer (ARM) <br> Dpls and Dplds series, v5 and newer (ARM, low memory) |
+  | General Purpose (General use, high memory, E )| E and Es, all versions (Intel) <br> Ed and Eds series, v4 and newer (Intel, local disk) <br> Ebdsv5 and Ebsv5 series (Intel, block storage) <br> Ea and Eas, v4 and newer (AMD) <br> Eads, v5 and newer series (AMD, local disk) <br> Eps and Epds series, v5 and newer (ARM) |
+  | General Purpose (General use, compute optimized, F) | Fsv2 series (Intel) <br> Fas and Fals, v6 and newer series (AMD)  <br> Famsv6 and newer (AMD) <br> FX series (Intel) <br> FXmsv2 (Intel) <br> FXmdsv2 (Intel) <br> Fadsv7 (AMD) <br> Famdsv7 (AMD) <br> Faldsv7 (AMD) |
+  | Storage optimized| Lsv3 (Intel) <br> Lasv3 (AMD) <br> Lasv4 (AMD) <br> Laosv4 (AMD) |
+  | Confidential compute | DCsv2 series (Intel) <br> DCasv5 and DCadsv5 series (AMD) <br> DCesv5 and DCedsv5 series (Intel) <br> ECasv5 and ECadsv5 series (AMD) <br> ECesv5 and ECedsv5 series (Intel) |
 
-    At VM deployment, you can set a fault domain (FD) count of up to three by using Azure Virtual Machine Scale Sets. A deployment with more than three FDs fails to deploy against a capacity reservation.
-- At VM deployment for the following VM series for capacity reservation, you can set an FD count of one by using Virtual Machine Scale Sets. A deployment with more than one FD fails to deploy against a capacity reservation:
-    - NC-series, v3
-    - NCasT4_v3 series
-    - NCADSA10_v4 series
-    - NC_A100_v4 series
-    - NV-series, v3 and newer
-    - NVadsA10_v5 series
-    - NGads V620_v1 series
-    - M-series, v2
-    - M-series, v3
-- Support for the following VM series for capacity reservation is in public preview:
-    - Lsv2
+  Reserved capacity for these VM series supports only multi-zone high availability. Virtual Machine Scale Sets with a fault domain availability construct is not supported. 
+
+  | Type | VM Series |
+  | ----- | ----------- |
+  | GPU-accelerated compute | NC-series, v3 (Intel) <br> NCasT4_v3 series (AMD) <br> NCADSA10_v4 series (AMD) <br> NC_A100_v4 series (AMD) <br> NV-series, v3 and newer (Intel) <br> NVadsA10_v5 series (AMD) <br> NVads V710 v5 series (AMD) <br> NGads V620_v1 series (AMD) |
+  | Memory optimized | Msv2 Medium Memory series (Intel) <br> Mdsv2 Medium Memory series (Intel) <br> Msv2 High Memory (Intel) <br> Mdsv3 Medium Memory series (Intel) <br> Msv3 Medium Memory series (Intel) <br> Mbsv3 and Mbdsv3 series (Intel) |
+  | Storage optimized| Lsv2 (Intel)-Preview |
+
 - Support for other VM series isn't currently available:
-    - M series, v1
-    - M series, HM and VHM
-    - ND-series 
-    - Hb-series 
-    - Hc-series 
+  
+  | Type | VM Series |
+  | ----- | ----------- |
+  | GPU-accelerated compute | ND-series <br> NCads H100 v5-series <br> Hb-series <br> Hc-series |
+  | Memory optimized | M series, v1 <br> Msv3 HM <br> Mdsv3 HM and Mdsv3 VHM |
+  
 - The following deployment types are supported: 
     - Single VM
     - Virtual Machine Scale Sets with Uniform Orchestration
@@ -121,15 +103,13 @@ From this example accumulation of Minutes Not Available, here's the calculation 
     - Virtual Machine Scale Sets with single placement group set to `true` 
     - Azure Ultra Disk Storage (formerly UltraSSD)
     - VMs resuming from hibernation 
-    - VMs requiring virtual network encryption
 - A pinned subscription can't use the feature.
-- Only the subscription that created the reservation can use it.
+- Deployments using On demand capacity reservations are compatible with vNet Encryption when deployed using a supported VM size. For more information on which VM sizes this feature supports, see [Virtual Network Encryption](/azure/virtual-network/virtual-network-encryption-overview).
 - Reservations are only available to paid Azure customers. Sponsored accounts such as Free Trial and Azure for Students aren't eligible to use this feature.
 - Clouds supported for capacity reservation:
    - Azure Cloud
    - Azure for Government
-   - Azure in China (Preview)
-     - Support is not available for China North and China East
+   - Azure in China
 
 ## Pricing and billing 
 
@@ -139,8 +119,7 @@ If you then deploy a D2s_v3 VM and specify the reservation property, the capacit
 
 Both used and unused capacity reservations are eligible for Savings Plan and Reserved Instances term commitment discounts. In the previous example, if you have reserved instances for two D2s_v3 VMs in the same Azure region, the billing for two resources (either VM or unused capacity reservation) is zeroed out. The remaining eight D2s_v3 are billed normally. The term commitment discounts could be applied on either the VM or the unused capacity reservation.
 
-## Difference between on-demand capacity reservation and reserved instances
-
+## Differences between on-demand capacity reservations and reserved instances
 
 | Differences | On-demand capacity reservation | Reserved instances|
 |---|---|---|
@@ -159,7 +138,7 @@ The group specifies the Azure location:
 
 - The group sets the region in which all reservations are created. Examples are East US, North Europe, or Southeast Asia. 
 - The group sets the eligible zones. Examples are AZ1, AZ2, and AZ3 in any combination. 
-- If no zones are specified, then Azure will select the best zone available upon initial capacity reservation creation. All VMs using the capacity reservation group must be deployed without specifying a zone; each associated VM wil be deployed to the zone Azure selected for the group.
+- If no zones are specified, then Azure will select the best zone available upon initial capacity reservation creation. All VMs using the capacity reservation group must be deployed without specifying a zone; each associated VM will be deployed to the zone Azure selected for the group.
 
 Each reservation in a group is for one VM size. If eligible zones were selected for the group, the reservation must be for one of the supported zones. 
 
@@ -180,7 +159,7 @@ When a reservation is created, Azure sets aside the requested number of capacity
 Track the state of the overall reservation through the following properties: 
  
 - `capacity`: Total quantity of instances reserved by the customer. 
-- `virtualMachinesAllocated`: List of VMs allocated against the capacity reservation and count toward consuming the capacity. These VMs are either **Running** or **Stopped** (**Allocated**), or they're in a transitional state such as **Starting** or **Stopping**. This list doesn't include the VMs that are in a deallocated state, which are referred to as **Stopped** (deallocated). 
+- `virtualMachinesAllocated`: List of VMs allocated against the capacity reservation and count toward consuming the capacity. These VMs are either **Running** or **Stopped** (**Allocated**), or they're in a transitional state such as **Starting** or **Stopping**. This list doesn't include the VMs that are in a deallocated state, which is referred to as **Stopped** (deallocated). 
 - `virtualMachinesAssociated`: List of VMs associated to the capacity reservation. This list has all the VMs that were configured to use the reservation, including the ones that are in a deallocated state.
 
 The previous example starts with `capacity` as 2 and the length of `virtualMachinesAllocated` and `virtualMachinesAssociated` as 0.

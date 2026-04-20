@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 11/21/2024
+ms.date: 03/22/2026
 # Customer intent: "As a cloud architect, I want to deploy a Service Fabric cluster across multiple Availability Zones, so that I can ensure high availability and resilience for my applications against datacenter failures."
 ---
 
@@ -320,7 +320,8 @@ To enable a zone on a virtual machine scale set, include the following three val
           "name": "[concat(parameters('vmNodeType1Name'),'_ServiceFabricNode')]",
           "properties": {
             "type": "ServiceFabricNode",
-            "autoUpgradeMinorVersion": false,
+            "autoUpgradeMinorVersion": true,
+            "enableAutomaticUpgrade": true,
             "publisher": "Microsoft.Azure.ServiceFabric",
             "settings": {
               "clusterEndpoint": "[reference(parameters('clusterName')).clusterEndpoint]",
@@ -336,7 +337,7 @@ To enable a zone on a virtual machine scale set, include the following three val
               },
               "faultDomainOverride": "az1"
             },
-            "typeHandlerVersion": "1.0"
+            "typeHandlerVersion": "1.1"
           }
         }
       ]

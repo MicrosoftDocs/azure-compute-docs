@@ -6,7 +6,7 @@ ms.author: fisteele
 ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
 ms.date: 06/14/2024
-ms.reviewer: jushiman
+ms.reviewer: cynthn
 ms.custom: mimckitt, devx-track-azurecli, vmss-flex
 # Customer intent: "As a cloud architect, I want to understand the differences between Flexible and Uniform orchestration modes for Virtual Machine Scale Sets, so that I can choose the most suitable option for managing virtual machine instances based on workload requirements and scalability needs."
 ---
@@ -45,7 +45,7 @@ Flexible orchestration mode can be used with all VM sizes. Flexible orchestratio
 | Mix operating systems | Yes | Yes |
 | Mix Spot and On-demand instances | Yes | No | 
 | Mix General Purpose and Specialty SKU Types | Yes (`FDCount = 1`) | No | 
-| Maximum Fault Domain Count | Regional – 3 (depending on the regional fault domain max count) <br> Zonal – 1  | Regional – 3 <br> Zonal – 1  |
+| Maximum Fault Domain Count | Regional (nonzonal) – 3 (depending on the region's fault domain max count) <br> Zone-spanning and zonal – 1  | Regional (nonzonal) – 3 <br> Zone-spanning and zonal – 1  |
 | Spread instances across zones | Yes | Yes | 
 | Assign VM to a Specific Zone | Yes | Yes | 
 | Assign VM to a Specific Fault domain | Yes | No | 
@@ -124,7 +124,7 @@ The following table compares the Flexible orchestration mode, Uniform orchestrat
 | Accelerated networking  | Yes  | Yes  | Yes |
 | Spot instances and pricing   | Yes, you can have both Spot and Regular priority instances  | Yes, instances must either be all Spot or all Regular  | No, Regular priority instances only |
 | Mix operating systems  | Yes, Linux and Windows can reside in the same Flexible scale set  | No, instances are the same operating system  | Yes, Linux and Windows can reside in the same availability set |
-| Disk Types  | Managed disks only, all storage types  | Managed and unmanaged disks  | Managed and unmanaged disks. Ultradisk not supported |
+| Disk Types  | managed disks only, all storage types  | Managed and unmanaged disks  | Managed and unmanaged disks. Ultra Disk not supported |
 | Disk Server Side Encryption with Customer Managed Keys | Yes | Yes | Yes |
 | Write Accelerator   | Yes  | Yes  | Yes |
 | Proximity Placement Groups   | Yes, when using one Availability Zone or none. Cannot be changed after deployment. Read [Proximity Placement Groups documentation](../virtual-machine-scale-sets/proximity-placement-groups.md) | Yes, when using one Availability Zone or none. Can be changed after deployment stopping all instances. Read [Proximity Placement Groups documentation](../virtual-machine-scale-sets/proximity-placement-groups.md) | Yes |
@@ -165,7 +165,7 @@ The following table compares the Flexible orchestration mode, Uniform orchestrat
 | Availability Zones | Specify instances land across 1, 2 or 3 availability zones | Specify instances land across 1, 2 or 3 availability zones | Not supported |
 | Assign VM to a Specific Availability Zone | Yes | No | No |
 | Fault Domain – Max Spreading (Azure will maximally spread instances) | Yes | Yes | No |
-| Fault Domain – Fixed Spreading | 2-3 FDs (depending on regional maximum FD Count); 1 for zonal deployments | 2, 3, 5 FDs; 1, 5 for zonal deployments | 2-3 FDs (depending on regional maximum FD Count) |
+| Fault Domain – Fixed Spreading | 2-3 FDs (depending on region's maximum FD Count); 1 for zone-spanning and zonal deployments | 2, 3, 5 FDs; 1, 5 for zone-spanning and zonal deployments | 2-3 FDs (depending on region's maximum FD Count) |
 | Assign VM to a Specific Fault Domain | Yes | No | No |
 | Update Domains | Depreciated (platform maintenance performed FD by FD) | 5 update domains | Up to 20 update domains |
 | Perform Maintenance | Trigger maintenance on each instance using VM API | Yes | N/A |
@@ -199,7 +199,7 @@ The following table compares the Flexible orchestration mode, Uniform orchestrat
 
 The following Virtual Machine Scale Set parameters aren't currently supported with Virtual Machine Scale Sets in Flexible orchestration mode:
 - Single placement group - this can be set to `null` and the platform will select the correct value
-- Ultra disk configuration: `diskIOPSReadWrite`, `diskMBpsReadWrite`
+- Ultra Disk configuration: `diskIOPSReadWrite`, `diskMBpsReadWrite`
 - Virtual Machine Scale Set Overprovisioning
 - Image-based Automatic OS Upgrades
 - Application health via SLB health probe - use Application Health Extension on instances

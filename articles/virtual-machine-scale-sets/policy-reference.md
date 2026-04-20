@@ -2,8 +2,8 @@
 title: Built-in policy definitions for Azure Virtual Machine Scale Sets
 description: Lists Azure Policy built-in policy definitions for Azure Virtual Machine Scale Sets. These built-in policy definitions provide common approaches to managing your Azure resources.
 ms.topic: reference
-author: ju-shim
-ms.author: jushiman
+author: cynthn
+ms.author: cynthn
 ms.service: azure-virtual-machine-scale-sets
 ms.custom: subject-policy-reference
 ms.date: 06/14/2024

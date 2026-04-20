@@ -6,6 +6,7 @@ ms.author: tomcassidy
 ms.custom: subject-cost-optimization
 ms.service: azure-virtual-machines
 ms.topic: concept-article
+ms.update-cycle: 1095-days
 ms.date: 02/21/2024
 # Customer intent: "As a cloud administrator, I want to implement best practices for virtual machine cost optimization, so that I can effectively manage and reduce our cloud spending."
 ---
@@ -33,7 +34,7 @@ The following are some best practices you can use to reduce the cost of your vir
         - Use Logic Apps or Azure Automation to implement an automatic start and stop schedule for your VMs
     - For production environments:
         - Use the dedicated Standard pricing tier or higher
-        - Use a Premium SSD v2 disk and programmatically adjust its performance to account for either higher or lower demand based on your workload patterns
+        - Use a Premium SSD v2 and programmatically adjust its performance to account for either higher or lower demand based on your workload patterns
         - For other disk types, size your disks to achieve your desired performance without the need for over-provisioning. Account for fluctuating workload patterns, and minimizing unused provisioned capacity
 - Use [role-based-access-control (RBAC)](/azure/role-based-access-control/built-in-roles) to control who can create resources
 - Use [Azure Spot virtual machines](spot-vms.md) where you can

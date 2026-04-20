@@ -28,6 +28,7 @@ For a list of hibernation compatible VM sizes, check out the [supported VM sizes
 ### Supported Windows versions
 The following Windows operating systems support hibernation:
 
+- Windows Server 2025
 - Windows Server 2022
 - Windows Server 2019
 - Windows 11 Pro
@@ -42,7 +43,7 @@ The following Windows operating systems support hibernation:
 - Applications such as Device Guard and Credential Guard that require virtualization-based security (VBS) work with hibernation when you enable Trusted Launch on the VM and Nested Virtualization in the guest OS.
 
 >[!NOTE]
-> To use VBS and Hibernation, Windows 11 24H2 OS build must be 26100.3037 or later. You can verify OS build using `wmic qfe list` command. Marketplace images of Windows 11 24H2 installed after February 2025 support VBS and Hibernation.
+> To use VBS and Hibernation, Windows 11 24H2 OS build must be 26100.3037 or later. You can verify OS build using `winver` command. Marketplace images of Windows 11 24H2 installed after February 2025 support VBS and Hibernation.
 
 For general limitations, Azure feature limitations supported VM sizes, and feature prerequisites check out the ["Supported configurations" section in the hibernation overview](../hibernate-resume.md#supported-configurations).
 

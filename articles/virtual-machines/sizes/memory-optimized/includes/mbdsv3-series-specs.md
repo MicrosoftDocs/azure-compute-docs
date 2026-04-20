@@ -16,6 +16,6 @@ ms.custom: include file
 | Processor      | 16 - 176 vCPUs       | Intel Xeon 4th gen Scalable (Sapphire Rapids) [x86-64]                   |
 | Memory         | 128 - 3892 GiB          |                      |
 | Local Storage  | 1 Disk           | 400 - 8000 GiB <br>10,000 - 160,000 IOPS (RR) <br>100 - 1600 MBps (RR)                   |
-| Remote Storage | 64 Disks    | 44,000 - 260,000 IOPS <br>1,000 - 8,000 MBps |
-| Network        | 8 NICs          | 8,000 - 40,000 Mbps              |
+| Remote Storage | 64 Disks    | 44,000 - 650,000 IOPS <br>1,000 - 8,000 MBps |
+| Network        | 8 NICs          | 8,000 - 50,000 Mbps              |
 | Accelerators   | None              |                       |

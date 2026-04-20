@@ -1,12 +1,12 @@
 ---
-title: Ultra disks for VMs - Azure managed disks
+title: Ultra Disks for VMs - Azure managed disks
 description: Learn about Ultra Disks for Azure VMs
 author: roygara
 ms.service: azure-disk-storage
 ms.topic: how-to
 ms.date: 10/21/2024
 ms.author: rogarana
-ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell, devx-track-arm-template
+ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell, devx-track-arm-template, portal
 # Customer intent: "As a cloud administrator, I want to deploy Ultra Disks for Azure VMs, so that I can achieve maximum performance for data-intensive workloads and optimize that performance without needing to restart my virtual machines."
 ---
 
@@ -14,7 +14,7 @@ ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell, 
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
-This article explains how to deploy and use an Ultra Disk, for conceptual information about Ultra Disks, refer to [What disk types are available in Azure?](disks-types.md#ultra-disks).
+This article explains how to deploy and use an Ultra Disk, for conceptual information about Ultra Disks, refer to [What disk types are available in Azure?](disks-types.md#ultra-disks)
 
 Azure Ultra Disks offer high throughput, high IOPS, and consistent low latency disk storage for Azure IaaS virtual machines (VMs). This new offering provides top of the line performance at the same availability levels as our existing disks offerings. One major benefit of Ultra Disks is the ability to dynamically change the performance of the SSD along with your workloads without the need to restart your VMs. Ultra Disks are suited for data-intensive workloads such as SAP HANA, top tier databases, and transaction-heavy workloads.
 
@@ -53,7 +53,7 @@ if($sku){$sku[0].LocationInfo[0].ZoneDetails} Else {Write-host "$vmSize is not s
 
 The response will be similar to the form below, where X is the zone to use for deploying in your chosen region. X could be either 1, 2, or 3.
 
-Preserve the **Zones** value, it represents your availability zone and you'll need it in order to deploy an Ultra disk.
+Preserve the **Zones** value, it represents your availability zone and you'll need it in order to deploy an Ultra Disk.
 
 |ResourceType  |Name  |Location  |Zones  |Restriction  |Capability  |Value  |
 |---------|---------|---------|---------|---------|---------|---------|
@@ -66,7 +66,7 @@ Now that you know which zone to deploy to, follow the deployment steps in this a
 
 ### VMs with no redundancy options
 
-Ultra disks deployed in select regions must be deployed without any redundancy options, for now. However, not every VM size that supports Ultra Disks are necessarily in these regions. To determine which VM sizes support Ultra Disks, use either of the following code snippets. Make sure to replace the `vmSize`, `region`, and `subscriptionId` values first:
+Ultra Disks deployed in select regions must be deployed without any redundancy options for now. However, not every VM size that supports Ultra Disks are necessarily in these regions. To determine which VM sizes support Ultra Disks, use either of the following code snippets. Make sure to replace the `vmSize`, `region`, and `subscriptionId` values first:
 
 ```azurecli
 subscriptionId="<yourSubID>"
@@ -144,7 +144,7 @@ This section covers deploying a virtual machine equipped with an Ultra Disk as a
     :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/new-ultra-vm-create.png" alt-text="Screenshot of vm creation flow, Basics blade." lightbox="media/virtual-machines-disks-getting-started-ultra-ssd/new-ultra-vm-create.png":::
 
 1. On the Disks blade, select **Yes** for **Enable Ultra Disk compatibility**.
-1. Select **Create and attach a new disk** to attach an Ultra disk now.
+1. Select **Create and attach a new disk** to attach an Ultra Disk now.
 
     :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/new-ultra-vm-disk-enable.png" alt-text="Screenshot of vm creation flow, disk blade, Ultra Disk compatibility is enabled and create and attach a new disk is highlighted."  lightbox="media/virtual-machines-disks-getting-started-ultra-ssd/new-ultra-vm-disk-enable.png":::
 
@@ -257,7 +257,7 @@ You must create a VM that is capable of using Ultra Disks in order to attach an 
 Replace or set the **$vmName**, **$rgName**, **$diskName**, **$region**, **$password**, **$user** variables with your own values. Set **$zone** to the value of your availability zone that you got from the [start of this article](#determine-vm-size-and-region-availability). Then run the following CLI command to create a VM with an Ultra Disk that has a 512-byte sector size:
 
 ```azurecli
-# Create an ultra disk with 512-byte sector size
+# Create an Ultra Disk with 512-byte sector size
 az disk create --subscription $subscriptionId -n $diskName -g $rgName --size-gb 1024 --location $region --sku UltraSSD_LRS --disk-iops-read-write 8192 --disk-mbps-read-write 400 --logical-sector-size 512
 az vm create --subscription $subscriptionId -n $vmName -g $rgName --image Win2016Datacenter --ultra-ssd-enabled true --zone $zone --authentication-type password --admin-password $password --admin-username $user --size Standard_D4s_v3 --location $region --attach-data-disks $diskName
 ```
@@ -365,7 +365,7 @@ rgName="<yourResourceGroupName>"
 vmName="<yourVMName>"
 diskName="<yourDiskName>"
 
-# Create an Ultra disk
+# Create an Ultra Disk
 az disk create `
 --subscription $subscriptionId `
 -n $diskName `
@@ -397,7 +397,7 @@ Alternatively, if your existing VM is in a region/availability zone that is capa
 
 If your VM meets the requirements outlined in [GA scope and limitations](#ga-scope-and-limitations) and is in the [appropriate zone for your account](#determine-vm-size-and-region-availability), then you can enable Ultra Disk compatibility on your VM.
 
-To enable Ultra Disk compatibility, you must stop the VM. After you stop the VM, you can enable compatibility, then restart the VM. Once compatibility is enabled, you can attach an Ultra disk:
+To enable Ultra Disk compatibility, you must stop the VM. After you stop the VM, you can enable compatibility, then restart the VM. Once compatibility is enabled, you can attach an Ultra Disk:
 
 ```powershell
 # Stop the VM

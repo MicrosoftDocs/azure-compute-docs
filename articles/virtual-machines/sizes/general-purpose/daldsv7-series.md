@@ -1,0 +1,158 @@
+---
+title: Daldsv7 size series
+description: Information on and specifications of the Daldsv7-series sizes
+author: archatC
+ms.service: azure-virtual-machines
+ms.subservice: sizes
+ms.topic: concept-article
+ms.date: 03/10/2026
+ms.author: archat
+ms.reviewer: mattmcinnes
+# Customer intent: "As a cloud architect, I want to review the specifications of the Daldsv7 size series, so that I can select the appropriate virtual machine sizes that meet my application workload requirements."
+---
+
+# Daldsv7 sizes series
+
+[!INCLUDE [daldsv7-summary](./includes/daldsv7-series-summary.md)]
+
+## Host specifications
+[!INCLUDE [daldsv7-series-specs](./includes/daldsv7-series-specs.md)]
+
+For features supported by this series, see the [Feature support](#feature-support) section.
+
+## Sizes in series
+
+### [Basics](#tab/sizebasic)
+
+vCPUs (Qty.) and Memory for each size
+
+| Size Name | vCPUs (Qty.) | Memory (GB) |
+| --- | --- | --- |
+| Standard_D2alds_v7 | 2 | 4 |
+| Standard_D4alds_v7 | 4 | 8 |
+| Standard_D8alds_v7 | 8 | 16 |
+| Standard_D16alds_v7 | 16 | 32 |
+| Standard_D32alds_v7 | 32 | 64 |
+| Standard_D48alds_v7 | 48 | 96 |
+| Standard_D64alds_v7 | 64 | 128 |
+| Standard_D96alds_v7 | 96 | 192 |
+| Standard_D128alds_v7 | 128 | 256 |
+| Standard_D160alds_v7 | 160 | 320 |
+
+#### VM Basics resources
+- [Check vCPU quotas](../../../virtual-machines/quotas.md)
+
+### [Local Storage](#tab/sizestoragelocal)
+
+Local (temp) storage info for each size
+
+| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read (RR)<sup>1</sup> IOPS | Temp Disk Random Read (RR)<sup>1</sup> Throughput (MBps) | Temp Disk Random Write (RW)<sup>1</sup> IOPS | Temp Disk Random Write (RW)<sup>1</sup> Throughput (MBps) |
+| --- | --- | --- | --- | --- | --- | --- |
+| Standard_D2alds_v7 | 1 | 110 | 37,500 | 280 | 15,000 | 140 |
+| Standard_D4alds_v7 | 1 | 220 | 75,000 | 560 | 30,000 | 280 |
+| Standard_D8alds_v7 | 1 | 440 | 150,000 | 1,120 | 60,000 | 560 |
+| Standard_D16alds_v7 | 2 | 440 | 300,000 | 2,240 | 120,000 | 1,120 |
+| Standard_D32alds_v7 | 4 | 440 | 600,000 | 4,480 | 240,000 | 2,240 |
+| Standard_D48alds_v7 | 6 | 440 | 900,000 | 6,720 | 360,000 | 3,360 |
+| Standard_D64alds_v7 | 4 | 880 | 1,200,000 | 8,960 | 480,000 | 4,480 |
+| Standard_D96alds_v7 | 6 | 880 | 1,800,000 | 13,440 | 720,000 | 6,720 |
+| Standard_D128alds_v7 | 4 | 1,760 | 2,400,000 | 17,920 | 960,000 | 8,960 |
+| Standard_D160alds_v7 | 4 | 2,200 | 3,000,000 | 22,400 | 1,200,000 | 11,200 |
+
+#### Storage resources
+- [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
+- [Azure managed disk types](../../../virtual-machines/disks-types.md)
+- [Share an Azure managed disk](../../../virtual-machines/disks-shared.md)
+
+#### Table definitions
+- <sup>1</sup> Temp disk speed often differs between RR (Random Read) and RW (Random Write) operations. RR operations are typically faster than RW operations. The RW speed is usually slower than the RR speed on series where only the RR speed value is listed. Temp disk performance can vary based on workload, block size, and system conditions. Published numbers show peak performance under controlled testing, temp disk performance specifications should be viewed as best case performance numbers and may differ in real-world scenarios. Factors such as data patterns, SSD wear, and background processes can affect write speeds. For more details, please see [FAQ for Temp NVMe disks](../../../virtual-machines/enable-nvme-temp-faqs.yml)
+- Storage capacity is shown in units of GiB or 1,024^3 bytes. When you compare disks measured in GB (1,000^3 bytes) to disks measured in GiB (1,024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1,023 GiB = 1,098.4 GB.
+- Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
+- To learn how to get the best storage performance for your VMs, see [Virtual machine and disk performance](../../../virtual-machines/disks-performance.md).
+
+### [Remote Storage](#tab/sizestorageremote)
+
+Remote (uncached) storage info for each size
+
+| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD IOPS | Uncached Premium SSD Throughput (MBps) | Uncached Premium SSD Burst<sup>1</sup> IOPS | Uncached Premium SSD Burst<sup>1</sup> Throughput (MBps) | Uncached Ultra Disk and Premium SSD v2 IOPS | Uncached Ultra Disk and Premium SSD v2 Throughput (MBps) | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 IOPS | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 Throughput (MBps) |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Standard_D2alds_v7 | 10 | 4,000 | 118 | 44,000 | 1,412 | 4,400 | 136 | 48,400 | 1,653 |
+| Standard_D4alds_v7 | 12 | 8,000 | 234 | 47,200 | 1,412 | 8,800 | 273 | 52,083 | 1,653 |
+| Standard_D8alds_v7 | 26 | 16,000 | 468 | 47,200 | 1,412 | 17,600 | 547 | 52,083 | 1,653 |
+| Standard_D16alds_v7 | 48 | 32,000 | 936 | 72,700 | 1,412 | 35,200 | 1,095 | 80,000 | 1,653 |
+| Standard_D32alds_v7 | 64 | 64,000 | 1,872 | 94,400 | 1916 | 70,400 | 2,191 | 104,167 | 2,241 |
+| Standard_D48alds_v7 | 64 | 96,000 | 2,808 | 99,000 | 2,874 | 105,600 | 3,291 | 108,900 | 3,362 |
+| Standard_D64alds_v7 | 64 | 128,000 | 3,744 | 132,000 | 3,832 | 140,800 | 4,382 | 145,200 | 4,484 |
+| Standard_D96alds_v7 | 64 | 192,000 | 5,663 | 192,500 | 5,749 | 211,200 | 6,573 | 211,750 | 6,669 |
+| Standard_D128alds_v7 | 64 | 204,800 | 7,488 | 225,280 | 7,663 | 281,600 | 8,764 | 310,886 | 8,966 |
+| Standard_D160alds_v7 | 64 | 212,000 | 10,344 | 242,640 | 11,410 | 310,000 | 10,356 | 355,443 | 11,450 |
+
+#### Storage resources
+- [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
+- [Azure managed disk types](../../../virtual-machines/disks-types.md)
+- [Share an Azure managed disk](../../../virtual-machines/disks-shared.md)
+
+#### Table definitions
+- <sup>1</sup>Some sizes support [bursting](../../disk-bursting.md) to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.
+
+- Storage capacity is shown in units of GiB or 1,024^3 bytes. When you compare disks measured in GB (1,000^3 bytes) to disks measured in GiB (1,024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1,023 GiB = 1,098.4 GB.
+- Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
+- Data disks can operate in cached or uncached modes. For cached data disk operation, the host cache mode is set to ReadOnly or ReadWrite. For uncached data disk operation, the host cache mode is set to None.
+- To learn how to get the best storage performance for your VMs, see [Virtual machine and disk performance](../../../virtual-machines/disks-performance.md).
+
+
+### [Network](#tab/sizenetwork)
+
+Network interface info for each size
+
+| Size Name | Max NICs (Qty.) | Max Network Bandwidth (Mbps) |
+| --- | --- | --- |
+| Standard_D2alds_v7 | 2 | 16,000 |
+| Standard_D4alds_v7 | 2 | 16,000 |
+| Standard_D8alds_v7 | 4 | 25,000 |
+| Standard_D16alds_v7 | 8 | 25,000 |
+| Standard_D32alds_v7 | 8 | 25,000 |
+| Standard_D48alds_v7 | 8 | 35,000 |
+| Standard_D64alds_v7 | 8 | 45,000 |
+| Standard_D96alds_v7 | 8 | 70,000 |
+| Standard_D128alds_v7 | 15 | 75,000 |
+| Standard_D160alds_v7 | 15 | 80,000 |
+
+#### Networking resources
+- [Virtual networks and virtual machines in Azure](/azure/virtual-network/network-overview)
+- [Virtual machine network bandwidth](/azure/virtual-network/virtual-machine-network-throughput)
+
+#### Table definitions
+- Expected network bandwidth is the maximum aggregated bandwidth allocated per VM type across all NICs, for all destinations. For more information, see [Virtual machine network bandwidth](/azure/virtual-network/virtual-machine-network-throughput)
+- Upper limits aren't guaranteed. Limits offer guidance for selecting the right VM type for the intended application. Actual network performance will depend on several factors including network congestion, application loads, and network settings. For information on optimizing network throughput, see [Optimize network throughput for Azure virtual machines](/azure/virtual-network/virtual-network-optimize-network-bandwidth). 
+-  To achieve the expected network performance on Linux or Windows, you may need to select a specific version or optimize your VM. For more information, see [Bandwidth/Throughput testing (NTTTCP)](/azure/virtual-network/virtual-network-bandwidth-testing).
+
+### [Accelerators](#tab/sizeaccelerators)
+
+Accelerator (GPUs, FPGAs, etc.) info for each size
+
+> [!NOTE]
+> No accelerators are present in this series.
+
+---
+
+
+## Feature support
+|Feature name | Support status |
+| --- | --- |
+|[Premium Storage](../../premium-storage-performance.md)| Supported |
+|[Premium Storage caching](../../premium-storage-performance.md)| Supported |
+|[Live Migration](../../maintenance-and-updates.md)| Supported |
+|[Memory Preserving Updates](../../maintenance-and-updates.md)| Supported |
+|[Generation 2 VMs](../../generation-2.md)| Supported |
+|[Generation 1 VMs](../../generation-2.md)| Not Supported |
+|[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli)| Supported |
+|[Ephemeral OS Disk](../../ephemeral-os-disks.md)| Supported |
+|[Temporary local NVMe disks](../../enable-nvme-temp-faqs.yml)| Supported |
+|[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)| Supported |
+
+
+> [!NOTE]
+> This VM series will only work on OS images that support NVMe. If your current OS image doesn't have NVMe support, you'll see an error message. [NVMe](../../../virtual-machines/enable-nvme-interface.md) support is available on the most popular OS images, and we're continuously improving OS image compatibility.
+
+[!INCLUDE [sizes-footer](../includes/sizes-footer.md)]

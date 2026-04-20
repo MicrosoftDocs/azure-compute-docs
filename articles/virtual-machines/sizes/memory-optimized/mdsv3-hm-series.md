@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 04/08/2025
+ms.date: 03/10/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ---
@@ -17,8 +17,7 @@ ms.reviewer: mattmcinnes
 ## Host specifications
 [!INCLUDE [mdsv3-hm-series-specs](./includes/mdsv3-hm-series-specs.md)]
 
-## Feature support
-[Premium Storage](../../premium-storage-performance.md): Supported <br>[Premium Storage caching](../../premium-storage-performance.md): Supported <br>[Live Migration](../../maintenance-and-updates.md): Not Supported <br>[Memory Preserving Updates](../../maintenance-and-updates.md): Not Supported <br>[Generation 2 VMs](../../generation-2.md): Supported <br>[Generation 1 VMs](../../generation-2.md): Not Supported <br>[Accelerated Networking](/azure/virtual-network/create-virtual-machine-accelerated-networking): Supported <br>[Ephemeral OS Disk](../../ephemeral-os-disks.md): Supported <br>[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Not Supported <br>[Hibernation](../../hibernate-resume.md): Not Supported <br> [Write Accelerator](/azure/virtual-machines/how-to-enable-write-accelerator): Supported
+For features supported by this series, see the [Feature support](#feature-support) section.
 
 ## Sizes in series
 
@@ -94,24 +93,24 @@ Remote (uncached) storage info for each size
 
 #### Mdsv3 High Memory series (NVMe)
 
-| Size Name | Max Remote Storage Disks (Qty.) | Max Uncached Premium SSD Disk IOPS | Max Uncached Premium SSD Throughput (MB/s) | Max Uncached Ultra Disk and Premium SSD v2 IOPS | Max Uncached Ultra Disk and Premium SSD v2 Throughput (MB/s) |
+| Size Name | Max Remote Storage Disks (Qty.) | Max Uncached Premium SSD IOPS | Max Uncached Premium SSD Throughput (MB/s) | Max Uncached Ultra Disk and Premium SSD v2 IOPS | Max Uncached Ultra Disk and Premium SSD v2 Throughput (MB/s) |
 | --- | --- | --- | --- | --- | --- |
 | Standard_M416ds_6_v3 | 64 | 130,000 | 4,000 | 130,000 | 4,000 |
 | Standard_M416ds_8_v3 | 64 | 130,000 | 4,000 | 130,000 | 4,000 |
 | Standard_M624ds_12_v3 | 64 | 130,000 | 4,000 | 130,000 | 4,000 |
-| Standard_M832ds_12_v3 | 64 | 130,000 | 4,000 | 130,000 | 4,000 |
+| Standard_M832ds_12_v3 | 64 | 130,000 | 4,000 | 260,000 | 8,000 |
 | Standard_M832ids_16_v3 | 64 | 130,000 | 4,000 | 260,000 | 8,000 |
 
 
 #### Mdsv3 High Memory series (SCSI)
 
-| Size Name | Max Remote Storage Disks (Qty.) | Max Uncached Premium SSD Disk IOPS | Max Uncached Premium SSD Throughput (MB/s) | Max Uncached Ultra Disk and Premium SSD v2 IOPS | Max Uncached Ultra Disk and Premium SSD v2 Throughput (MB/s) |
+| Size Name | Max Remote Storage Disks (Qty.) | Max Uncached Premium SSD IOPS | Max Uncached Premium SSD Throughput (MB/s) | Max Uncached Ultra Disk and Premium SSD v2 IOPS | Max Uncached Ultra Disk and Premium SSD v2 Throughput (MB/s) |
 | --- | --- | --- | --- | --- | --- |
 | Standard_M416ds_6_v3 | 64 | 130,000 | 4,000 | 130,000 | 4,000 |
 | Standard_M416ds_8_v3 | 64 | 130,000 | 4,000 | 130,000 | 4,000 |
 | Standard_M624ds_12_v3 | 64 | 130,000 | 4,000 | 130,000 | 4,000 |
-| Standard_M832ds_12_v3 | 64 | 130,000 | 4,000 | 130,000 | 4,000 |
-| Standard_M832ids_16_v3 | 64 | 130,000 | 4,000 | 260,000 | 8,000 |
+| Standard_M832ds_12_v3 | 64 | 130,000 | 4,000 | 215,000 | 6,000 |
+| Standard_M832ids_16_v3 | 64 | 130,000 | 4,000 | 215,000 | 6,000 |
 
 
 #### Storage resources
@@ -139,8 +138,8 @@ Network interface info for each size
 | Standard_M416ds_6_v3 | 8 | 40,000 |
 | Standard_M416ds_8_v3 | 8 | 40,000 |
 | Standard_M624ds_12_v3 | 8 | 40,000 |
-| Standard_M832ds_12_v3 | 8 | 40,000 |
-| Standard_M832ids_16_v3 | 8 | 40,000 |
+| Standard_M832ds_12_v3 | 8 | 100,000 |
+| Standard_M832ids_16_v3 | 8 | 100,000 |
 
 
 #### Mdsv3 High Memory series (SCSI)
@@ -150,8 +149,8 @@ Network interface info for each size
 | Standard_M416ds_6_v3 | 8 | 40,000 |
 | Standard_M416ds_8_v3 | 8 | 40,000 |
 | Standard_M624ds_12_v3 | 8 | 40,000 |
-| Standard_M832ds_12_v3 | 8 | 40,000 |
-| Standard_M832ids_16_v3 | 8 | 40,000 |
+| Standard_M832ds_12_v3 | 8 | 100,000 |
+| Standard_M832ids_16_v3 | 8 | 100,000 |
 
 #### Networking resources
 - [Virtual networks and virtual machines in Azure](/azure/virtual-network/network-overview)
@@ -170,5 +169,22 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 > No accelerators are present in this series.
 
 ---
+
+## Feature support
+
+|Feature name | Support status |
+| --- | --- |
+|[Premium Storage](../../premium-storage-performance.md)| Supported |
+|[Premium Storage caching](../../premium-storage-performance.md)| Supported |
+|[Live Migration](../../maintenance-and-updates.md)| Not Supported |
+|[Memory Preserving Updates](../../maintenance-and-updates.md)| Not Supported |
+|[Generation 2 VMs](../../generation-2.md)| Supported |
+|[Generation 1 VMs](../../generation-2.md)| Not Supported |
+|[Accelerated Networking](/azure/virtual-network/create-virtual-machine-accelerated-networking)| Supported |
+|[Ephemeral OS Disk](../../ephemeral-os-disks.md)| Supported |
+|[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)| Not Supported |
+|[Hibernation](../../hibernate-resume.md)| Not Supported |
+|[Write Accelerator](/azure/virtual-machines/how-to-enable-write-accelerator)| Supported |
+
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]

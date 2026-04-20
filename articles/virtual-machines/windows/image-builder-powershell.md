@@ -22,7 +22,7 @@ Builder PowerShell module.
 
 ## Prerequisites
 
-If you don't have an Azure subscription, [create a free account](https://azure.microsoft.com/free/) before you begin.
+If you don't have an Azure subscription, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 If you choose to use PowerShell locally, this article requires that you install the Azure PowerShell
 module and connect to your Azure account by using the [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet. For more information, see [Install Azure PowerShell](/powershell/azure/install-azure-powershell).

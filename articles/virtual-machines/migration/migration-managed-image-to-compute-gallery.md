@@ -5,7 +5,7 @@ author: AjKundnani
 ms.service: azure-virtual-machines
 ms.subservice: gallery
 ms.topic: how-to
-ms.date: 03/09/2024
+ms.date: 08/24/2025
 ms.author: ajkundna
 ms.reviewer: cynthn
 ms.custom: template-how-to, devx-track-azurepowershell
@@ -75,7 +75,7 @@ az sig image-version create `
     --gallery-image-version 1.0.0 `
     --gallery-name myGallery `
     --resource-group myResourceGroup `
-    --image-version $sourceImageID
+    --managed-image $sourceImageID
 ```
 
 ### [PowerShell](#tab/powershell)

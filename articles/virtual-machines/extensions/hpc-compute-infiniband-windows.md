@@ -9,8 +9,8 @@ ms.topic: concept-article
 ms.tgt_pltfrm: vm-windows
 ms.date: 07/25/2024
 ms.custom: devx-track-azurepowershell
-ms.author: jushiman
-author: ju-shim
+ms.author: cynthn
+author: cynthn
 # Customer intent: As a cloud administrator managing H- and N-series Windows VMs, I want to install InfiniBand drivers using an Azure extension, so that I can optimize VM performance for high throughput and low latency computing tasks.
 ---
 
@@ -19,6 +19,8 @@ author: ju-shim
 This extension installs InfiniBand ND drivers (for non-SR-IOV enabled) and OFED drivers (for SR-IOV-enabled) ('r' sizes) [H-series](../sizes-hpc.md) and [N-series](../sizes-gpu.md) VMs running Windows. Depending on the VM family, the extension installs the appropriate drivers for the Connect-X NIC.
 
 An extension is also available to install InfiniBand drivers for [Linux VMs](hpc-compute-infiniband-linux.md).
+
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
 
 ## Prerequisites
 

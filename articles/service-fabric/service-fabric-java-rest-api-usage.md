@@ -7,7 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-extended-java
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: As a Java developer, I want to generate and use Service Fabric client APIs, so that I can deploy and manage microservices in a Service Fabric cluster efficiently.
 ---
 
@@ -17,18 +17,18 @@ Service Fabric client APIs allows deploying and managing microservices based app
 
 ## Generate the client code using AutoRest
 
-[AutoRest](https://github.com/Azure/autorest) is a tool that generates client libraries for accessing RESTful web services. Input to AutoRest is a specification that describes the REST API using the OpenAPI Specification format. [Service Fabric client REST APIs](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/servicefabric/data-plane) follow this specification .
+[AutoRest](https://github.com/Azure/autorest) is a tool that generates client libraries for accessing RESTful web services. Input to AutoRest is a specification that describes the REST API using the OpenAPI Specification format. [Service Fabric client REST APIs](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/servicefabric/data-plane) follow this specification.
 
 Follow the steps mentioned below to generate Service Fabric Java client code using the AutoRest tool.
 
 1. Install nodejs and NPM on your machine
 
-    If you are using Linux then:
+    If you're using Linux, then:
     ```bash
     sudo apt-get install npm
     sudo apt install nodejs
     ```
-    If you are using Mac OS X then:
+    If you're using macOS X, then:
     ```bash
     brew install node
     ```
@@ -47,15 +47,15 @@ Follow the steps mentioned below to generate Service Fabric Java client code usi
     ```
 
     > [!NOTE]
-    > If your cluster version is not 6.0.* then go to the appropriate directory in the stable folder.
+    > If your cluster version isn't 6.0.* then go to the appropriate directory in the stable folder.
 
-5. Run the following autorest command to generate the Java client code.
+5. Run the following AutoRest command to generate the Java client code.
 
     ```bash
     autorest --input-file= servicefabric.json --java --output-folder=[output-folder-name] --namespace=[namespace-of-generated-client]
     ```
 
-   Below is an example demonstrating the usage of autorest.
+   Below is an example demonstrating the usage of AutoRest.
 
     ```bash
     autorest --input-file=servicefabric.json --java --output-folder=java-rest-api-code --namespace=servicefabricrest
@@ -67,7 +67,7 @@ Follow the steps mentioned below to generate Service Fabric Java client code usi
 
 1. Add the generated code appropriately into your project. We recommend that you create a library using the generated code and include this library in your project.
 
-2. If you are creating a library then include the following dependency in your library's project. If you are following a different approach then include the dependency appropriately.
+2. If you're creating a library, then include the following dependency in your library's project. If you're following a different approach, then include the dependency appropriately.
 
     ```
     GroupId:  com.microsoft.rest
@@ -75,7 +75,7 @@ Follow the steps mentioned below to generate Service Fabric Java client code usi
     Version: 1.2.1
     ```
 
-    For example, if you are using Maven build system include the following in your ``pom.xml`` file:
+    For example, if you're using Maven build system include the following in your ``pom.xml`` file:
 
     ```xml
         <dependency>
@@ -96,7 +96,7 @@ Follow the steps mentioned below to generate Service Fabric Java client code usi
         ServiceFabricClientAPIs client = new ServiceFabricClientAPIsImpl(simpleClient);
     ```
 
-4. Use the client object and make the appropriate calls as required. Here are some examples which demonstrate the usage of client object. We assume that the application package is built and uploaded into image store before using the below API's.
+4. Use the client object and make the appropriate calls as required. Here are some examples which demonstrate the usage of client object. We assume that the application package is built and uploaded into image store before using the below APIs.
 
     * Provision an application
     

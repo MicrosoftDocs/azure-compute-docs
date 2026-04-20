@@ -6,7 +6,7 @@ ms.service: azure-disk-storage
 ms.topic: how-to
 ms.date: 07/08/2024
 ms.author: rogarana
-ms.custom: devx-track-azurepowershell, devx-track-azurecli 
+ms.custom: devx-track-azurepowershell, devx-track-azurecli, portal
 ms.devlang: azurecli
 # Customer intent: "As a cloud administrator, I want to copy incremental snapshots of managed disks to different regions, so that I can optimize data recovery and reduce storage costs."
 ---
@@ -177,6 +177,6 @@ Incremental snapshots offer a differential capability. They enable you to get th
 
 ## Next steps
 
-If you'd like to see sample code demonstrating the differential capability of incremental snapshots, using .NET, see [Copy Azure Managed Disks backups to another region with differential capability of incremental snapshots](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots).
+If you'd like to see sample code demonstrating the differential capability of incremental snapshots, using .NET, see [Copy Azure managed disks backups to another region with differential capability of incremental snapshots](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots).
 
 If you have additional questions on snapshots, see the [snapshots](faq-for-disks.yml#snapshots) section of the FAQ.

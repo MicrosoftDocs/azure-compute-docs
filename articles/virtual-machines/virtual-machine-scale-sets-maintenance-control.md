@@ -1,11 +1,11 @@
 ---
 title: Overview of Maintenance control for OS image upgrades on Azure Virtual Machine Scale Sets
 description: Learn how to control when automatic OS image upgrades are rolled out to your Azure Virtual Machine Scale Sets using Maintenance control.
-author: ju-shim
+author: cynthn
 ms.service: azure-virtual-machine-scale-sets
 ms.topic: overview
 ms.date: 11/22/2022
-ms.author: jushiman
+ms.author: cynthn
 #pmcontact: PPHILLIPS
 # Customer intent: "As a cloud administrator, I want to configure maintenance control for OS image upgrades in my Virtual Machine Scale Sets, so that I can manage update rollouts more predictably and minimize disruption to services."
 ---

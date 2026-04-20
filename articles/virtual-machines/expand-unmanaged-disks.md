@@ -1,13 +1,12 @@
 ---
 title: Expand Unmanaged Disks in Azure
 description: Expand the size of unmanaged virtual hard disks attached to a virtual machine by using Azure PowerShell in the Resource Manager deployment model.
-author: kirpasingh
-manager: roshar
+author: roygara
 ms.service: azure-disk-storage
 ms.collection: windows
 ms.topic: how-to
 ms.date: 11/17/2021
-ms.author: kirpas
+ms.author: rogarana
 ms.custom: devx-track-azurepowershell
 # Customer intent: "As a cloud administrator, I want to expand unmanaged virtual hard disks for virtual machines using PowerShell, so that I can accommodate legacy applications and manage disk space effectively."
 ---
@@ -16,6 +15,8 @@ ms.custom: devx-track-azurepowershell
 This article covers how to expand unmanaged disks. To learn how to expand a managed disk, use either the [Windows](windows/expand-os-disk.md) or [Linux](linux/expand-disks.md) articles.
 
 **Applies to:** :heavy_check_mark: Windows VMs :heavy_check_mark: Linux VMs :heavy_check_mark: Flexible scale sets 
+
+[!INCLUDE [disks-unmanaged-disks-retirement](includes/disks-unmanaged-disks-retirement.md)]
 
 When you create a new virtual machine (VM) in a resource group by deploying an image from [Azure Marketplace](https://azure.microsoft.com/marketplace/), the default operating system (OS) drive is often 127 GB. (Some images have smaller OS disk sizes by default.) It's possible to add data disks to the VM, and the number depends on the version you chose. We recommend that you install applications and CPU-intensive workloads on these addendum disks, but customers often need to expand the OS drive to support specific scenarios:
 

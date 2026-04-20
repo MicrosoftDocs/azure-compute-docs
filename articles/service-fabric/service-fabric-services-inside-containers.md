@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
 # Customer intent: As a developer, I want to containerize my Service Fabric applications on Windows, so that I can deploy and manage them efficiently within a containerized environment.
 ---
 

@@ -7,7 +7,9 @@ ms.collection: windows
 ms.topic: tutorial
 ms.date: 05/18/2020
 ms.author: raynew
-ms.custom: mvc
+ms.custom:
+  - mvc
+  - sfi-image-nochange
 #Customer intent: As an Azure admin, I want to prepare for disaster recovery by replicating my Windows VMs to another Azure region.
 # Customer intent: As an Azure administrator, I want to set up disaster recovery for my Windows VMs to a different Azure region so that I can ensure business continuity in case of a disaster.
 ---
@@ -34,7 +36,7 @@ If you don't have an Azure subscription, create a [free account](https://azure.m
     - Either the Virtual Machine Contributor built-in role, or specific permissions to:
         - Create a VM in the selected virtual network.
         - Write to an Azure storage account.
-        - Write to an Azure-managed disk.
+        - Write to an Azure managed disk.
     - The Site Recovery Contributor built-in role, to manage Site Recovery operations in the vault.
 3. We recommend you use a Windows VM running Windows Server 2012 or later. The VM disk shouldn't be encrypted for the purpose of this tutorial.
 4. If VM outbound connections use a URL-based proxy, make sure it can access these URLs. Using an authenticated proxy isn't supported.
@@ -109,7 +111,7 @@ If you want to enable disaster recovery on an existing VM instead of for a new V
         - By default one cache storage account is created per vault and reused.
         - You can select a different storage account if you want to customize the cache account for the VM.
     - **Storage settings-Replica managed disk**. By default, Site Recovery creates replica managed disks in the target region.
-        -  By default the target managed disk mirror the source VM managed disks, using the same storage type (standard HDD/SSD, or premium SSD).
+        -  By default the target managed disk mirror the source VM managed disks, using the same storage type (Standard HDD/SSD, or Premium SSD).
         - You can customize the storage type as needed.
     - **Replication settings**. Shows the vault in which the VM is located, and the replication policy used for the VM. By default, recovery points created by Site Recovery for the VM are kept for 24 hours.
     - **Extension settings**. Indicates that Site Recovery manages updates to the Site Recovery Mobility Service extension that's installed on VMs you replicate.

@@ -7,12 +7,14 @@ ms.subservice: security
 ms.collection: linux
 ms.topic: concept-article
 ms.author: mbaldwin
-ms.date: 08/01/2025
+ms.date: 02/20/2026
 ms.custom: devx-track-azurepowershell, linux-related-content, devx-track-azurecli
 # Customer intent: As a Linux VM administrator, I want to enable Azure Disk Encryption for my virtual machines, so that I can secure my data at rest and ensure compliance with data protection standards.
 ---
 
 # Azure Disk Encryption scenarios on Linux VMs
+
+[!INCLUDE [Azure Disk Encryption retirement notice](~/reusable-content/ce-skilling/azure/includes/security/azure-disk-encryption-retirement.md)]
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Flexible scale sets
 
@@ -41,7 +43,8 @@ Disabling encryption on Linux VMs is only supported for data volumes. Disabling 
 Azure Disk Encryption does not work for the following Linux scenarios, features, and technology:
 
 - Encrypting basic tier VM or VMs created through the classic VM creation method.
-- Encrypting v6 series VMs. For more information, see the individual pages for each of these VM sizes listed on [Sizes for virtual machines in Azure](../sizes/overview.md)
+- Encrypting v6 series VMs with temporary disks (Ddsv6, Dldsv6, Edsv6, Dadsv6, Daldsv6, Eadsv6, Dpdsv6, Dpldsv6, Epdsv6, or Endsv6). For more information, see the individual pages for each of these VM sizes listed on [Sizes for virtual machines in Azure](../sizes/overview.md)
+- Encrypting V7 series and newer VM sizes.
 - Disabling encryption on an OS drive or data drive of a Linux VM when the OS drive is encrypted.
 - Encrypting the OS drive for Linux Virtual Machine Scale Sets.
 - Encrypting custom images on Linux VMs.
@@ -65,7 +68,7 @@ Azure Disk Encryption does not work for the following Linux scenarios, features,
 - Applying ADE to a VM that has disks encrypted with [Encryption at Host](../disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data) or [server-side encryption with customer-managed keys](../disk-encryption.md) (SSE + CMK). Applying SSE + CMK to a data disk or adding a data disk with SSE + CMK configured to a VM encrypted with ADE is an unsupported scenario as well.
 - Migrating a VM that is encrypted with ADE, or was **ever** encrypted with ADE, to [Encryption at Host](../disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data) or [server-side encryption with customer-managed keys](../disk-encryption.md).
 - Encrypting VMs in failover clusters.
-- Encryption of [Azure ultra disks](../disks-enable-ultra-ssd.md).
+- Encryption of [Azure Ultra Disks](../disks-enable-ultra-ssd.md).
 - Encryption of [Premium SSD v2 disks](../disks-types.md#premium-ssd-v2-limitations).
 - Encryption of VMs in subscriptions that have the [Secrets should have the specified maximum validity period](https://portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F342e8053-e12e-4c44-be01-c3c2f318400f) policy enabled with the [DENY effect](/azure/governance/policy/concepts/effects).
 
@@ -428,6 +431,8 @@ You can disable encryption using Azure PowerShell, the Azure CLI, or with a Reso
 
 > [!WARNING]
 > Once decryption starts, it is advisable not to interfere with the process.
+>
+> To check the progress of decryption, use the [Get-AzVMDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) PowerShell cmdlet or the [az vm encryption show](/cli/azure/vm/encryption#az-vm-encryption-show) CLI command, once the decryption process is completed, you can proceed to remove the encryption extension
 
 ### Remove the encryption extension
 

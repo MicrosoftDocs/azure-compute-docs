@@ -6,7 +6,8 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
+ms.update-cycle: 1095-days
 # Customer intent: "As a cloud developer, I want to understand the core concepts of microservices on a distributed platform, so that I can effectively design, deploy, and manage scalable applications using Service Fabric."
 ---
 
@@ -199,7 +200,7 @@ Multiple products are available that cover these three areas, and you are free t
 * Learn to [manage and orchestrate cluster resources](service-fabric-cluster-resource-manager-introduction.md).
 * Look through the [Service Fabric samples](/samples/browse/?products=azure).
 * Learn about [Service Fabric support options](service-fabric-support.md).
-* Read the [team blog](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) for articles and announcements.
+* Read the [team blog](https://azure.microsoft.com/blog/product/azure-service-fabric/) for articles and announcements.
 
 
 [cluster-application-instances]: media/service-fabric-content-roadmap/cluster-application-instances.png

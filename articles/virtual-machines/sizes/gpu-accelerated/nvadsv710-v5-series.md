@@ -18,8 +18,7 @@ ms.reviewer: mattmcinnes
 ## Host specifications
 [!INCLUDE [nvadsv710-v5-series-specs](./includes/nvadsv710-v5-series-specs.md)]
 
-## Feature support
-[Premium Storage](../../premium-storage-performance.md): Supported <br>[Premium Storage caching](../../premium-storage-performance.md): Supported <br>[Live Migration](../../maintenance-and-updates.md): Not Supported <br>[Memory Preserving Updates](../../maintenance-and-updates.md): Not Supported <br>[Generation 2 VMs](../../generation-2.md): Supported <br>[Generation 1 VMs](../../generation-2.md): Not Supported <br>[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported <br>[Ephemeral OS Disk](../../ephemeral-os-disks.md): Supported <br>[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Not Supported <br>
+For features supported by this series, see the [Feature support](#feature-support) section.
 
 ## Sizes in series
 
@@ -121,5 +120,41 @@ Accelerator (GPUs, FPGAs, etc.) information for each size.
 | Standard_NV28adms_V710_v5 | 1 | 24 |
 
 ---
+
+## Feature support
+
+|Feature name | Support status |
+| --- | --- |
+|[Premium Storage](../../premium-storage-performance.md)| Supported |
+|[Premium Storage caching](../../premium-storage-performance.md)| Supported |
+|[Live Migration](../../maintenance-and-updates.md#live-migration)| Not Supported |
+|[Memory Preserving Updates](../../maintenance-and-updates.md)| Not Supported |
+|[Generation 2 VMs](../../generation-2.md)| Supported |
+|[Generation 1 VMs](../../generation-2.md)| Not Supported |
+|[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli)| Supported |
+|[Ephemeral OS Disk](../../ephemeral-os-disks.md)| Supported |
+|[Local temporary storage](../../overview.md#local-temporary-storage)| Supported |
+|[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)| Supported |
+
+## Certified ISV Applications
+
+|Application | Video Card |	OS | Driver |
+| --- | --- | --- | --- |
+|3ds Max 2025 | AMD Radeon™ PRO V710 | Windows 11 - 64-Bit Edition | [24.Q2](../../windows/n-series-amd-driver-setup.md)|
+|After Effects 25.1.0 (Verified / Tested) | AMD Radeon™ PRO V710 | Windows 11 - 64-Bit Edition | [24.Q2](../../windows/n-series-amd-driver-setup.md)|
+|Ansys Fluent 2025 R1 (Verified / Tested) |AMD Radeon™ PRO V710 | Windows 11 - 64-Bit Edition |[24.Q2](../../windows/n-series-amd-driver-setup.md)|
+|Ansys HFSS 2025 R1 (Verified / Tested) |AMD Radeon™ PRO V710 | Windows 11 - 64-Bit Edition | [24.Q2](../../windows/n-series-amd-driver-setup.md)|
+|Ansys Mechanical APDL 2025 R1 (Verified / Tested) |AMD Radeon™ PRO V710 | Windows 11 - 64-Bit Edition |[24.Q2](../../windows/n-series-amd-driver-setup.md)|
+|AutoCAD 2025 | AMD Radeon™ PRO V710 |Windows 11 - 64-Bit Edition |[24.Q2](../../windows/n-series-amd-driver-setup.md)|
+|Autodesk Fusion 360| AMD Radeon™ PRO V710 |Windows 11 - 64-Bit Edition |[24.Q2](../../windows/n-series-amd-driver-setup.md)|
+|Dassault 3DEXPERIENCE Part Design (CATIA) (Verified / Tested)| AMD Radeon™ PRO V710|Windows 11 - 64-Bit Edition| [25.Q2](../../windows/n-series-amd-driver-setup.md)|
+|Inventor 2025| AMD Radeon™ PRO V710 | Windows 11 - 64-Bit Edition |[24.Q2](../../windows/n-series-amd-driver-setup.md)|
+|Maya 2025| AMD Radeon™ PRO V710 | Windows 11 - 64-Bit Edition | [24.Q2](../../windows/n-series-amd-driver-setup.md)|
+|Photoshop 26.3.0 (Verified / Tested) | AMD Radeon™ PRO V710 | Windows 11 - 64-Bit Edition | [24.Q2](../../windows/n-series-amd-driver-setup.md)|
+|Premiere Pro 25.1.0 (Verified / Tested) | AMD Radeon™ PRO V710 | Windows 11 - 64-Bit Edition | [24.Q2](../../windows/n-series-amd-driver-setup.md)|
+|Revit 2024| AMD Radeon™ PRO V710| Windows 11 - 64-Bit Edition| [24.Q2](../../windows/n-series-amd-driver-setup.md)|
+|Siemens NX (Verified / Tested)| AMD Radeon™ PRO V710| Windows 11 - 64-Bit Edition| [24.Q2](../../windows/n-series-amd-driver-setup.md)|
+
+
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]

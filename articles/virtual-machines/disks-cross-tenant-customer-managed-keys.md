@@ -20,41 +20,16 @@ If you have questions about cross-tenant customer-managed keys with managed disk
 
 ## Limitations
 
-- Managed Disks and the customer's Key Vault must be in the same Azure region, but they can be in different subscriptions.
+- Managed disks and the customer's Key Vault must be in the same Azure region, but they can be in different subscriptions.
 
-### Preview - Ultra Disk and Premium SSD v2
+## Ultra Disk and Premium SSD v2
 
-This configuration is also available for Ultra Disks and Premium SSD v2 disks, as a preview configuration, in [select regions](#preview-regional-availability).
+The feature is available for Ultra Disks and Premium SSD v2 disks in all regions except:
 
-Sign up for the preview using either the PowerShell:
-
-```azurepowershell
-Register-AzProviderFeature -FeatureName UserAssignedIdentityForDirectDriveDisks -ProviderNamespace Microsoft.Compute
-Register-AzProviderFeature -FeatureName CrossTenantCMKForDirectDriveDisks -ProviderNamespace Microsoft.Compute
-```
-
-Or the CLI:
-
-```azurecli
-az feature register --name UserAssignedIdentityForDirectDriveDisks  --namespace Microsoft.Compute
-az feature register --name CrossTenantCMKForDirectDriveDisks  --namespace Microsoft.Compute
-```
-
-### Preview regional availability
-
-The preview for Ultra Disks and Premium SSD v2 disks is currently only available in the following regions:
-
-- Australia East
--  Southeast Asia
-- Canada Central
-- North Europe
-- France Central
-- Germany West Central
-- Korea Central
-- Sweden Central
-- UK South
-- West US
-- Central US
+- US Gov Virginia
+- US Gov Arizona
+- US Gov Texas
+- China North 3
 
 [!INCLUDE [entra-msi-cross-tenant-cmk-overview](~/reusable-content/ce-skilling/azure/includes/entra-msi-cross-tenant-cmk-overview.md)]
 

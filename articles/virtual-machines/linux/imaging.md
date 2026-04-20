@@ -1,14 +1,14 @@
 ---
 title: Overview of creating Linux images for Azure
 description: How to bring your Linux VM images or create new images to use in Azure.
-author: ju-shim
+author: cynthn
 ms.service: azure-virtual-machines
 ms.subservice: imaging
 ms.custom: linux-related-content
 ms.collection: linux
 ms.topic: overview
 ms.date: 09/01/2023
-ms.author: jushiman
+ms.author: cynthn
 ms.reviewer: cynthn
 # Customer intent: As a cloud engineer, I want to create and manage Linux images for Azure virtual machines, so that I can efficiently deploy and scale my applications across multiple environments.
 ---
@@ -21,10 +21,23 @@ This overview covers the basic concepts around imaging and how to successfully b
 
 This article talks through the image decision points and requirements as well as explain key concepts so that you can follow this and be able to create your own custom images to your specification.
 
+
+VM scale set lets you deploy and manage a group of identical (or similar) VMs automatically.
+Azure handles:
+- Scaling up/down (adding/removing VMs)
+- Load balancing
+- Health monitoring
+- Zone/region distribution
+
+There are two main types of scale sets:
+- Uniform scale set: Use when you want simplicity and speed. All VMs are identical — same size, image, and configuration.
+- Flexible scale set:  Use when you want flexibility and high availability. VMs can be different sizes or configurations, and you can mix Spot + Regular VMs.
+
+
 ## Difference between managed disks and images
 
 
-Azure allows you to bring a VHD to the platform to use as a [Managed Disk](../faq-for-disks.yml) or as a source for an image. 
+Azure allows you to bring a VHD to the platform to use as a [managed disk](../faq-for-disks.yml) or as a source for an image. 
 
 An Azure managed disk is a single VHD. You can either take an existing VHD and create a managed disk from it, or create an empty managed disk from scratch. You can create VMs from managed disks by attaching the disk to the VM, but you can only use a VHD with one VM. You won't be able to modify any OS properties as Azure will just try to turn on the VM and start up using that disk. 
 

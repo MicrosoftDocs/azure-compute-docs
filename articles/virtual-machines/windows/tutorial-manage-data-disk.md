@@ -8,7 +8,7 @@ ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.date: 12/06/2024
 ms.custom: template-tutorial, devx-track-azurepowershell
-#Customer intent: As an IT administrator, I want to learn about Azure Managed Disks so that I can create and manage storage for Windows VMs in Azure.
+#Customer intent: As an IT administrator, I want to learn about Azure managed disks so that I can create and manage storage for Windows VMs in Azure.
 # Customer intent: As an IT administrator, I want to manage Azure disks using PowerShell commands so that I can effectively create, attach, initialize, expand, and delete disks for virtual machines as part of my cloud infrastructure management.
 ---
 
@@ -27,7 +27,7 @@ This tutorial covers deployment and management of VM disks. In this tutorial, yo
 
 ## Prerequisites
 
-You must have an Azure account with an active subscription. If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+You must have an Azure account with an active subscription. If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 [!INCLUDE [cloud-shell-try-it.md](~/reusable-content/ce-skilling/azure/includes/cloud-shell-try-it.md)]
 
@@ -351,7 +351,7 @@ Before you can take advantage of the new disk size, you need to expand the volum
 
 ## Upgrade a disk
 
-There are several ways to respond to changes in your organization's workloads. For example, you may choose to upgrade a standard HDD to a premium SSD to handle increased demand.
+There are several ways to respond to changes in your organization's workloads. For example, you may choose to upgrade a Standard HDD to a Premium SSD to handle increased demand.
 
 Follow the steps in this section to upgrade a managed disk from standard to premium.
 

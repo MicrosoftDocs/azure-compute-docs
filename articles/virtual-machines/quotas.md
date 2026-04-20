@@ -1,12 +1,12 @@
 ---
 title: vCPU quotas
 description: Check your vCPU quotas for Azure virtual-machines.
-author: ju-shim
+author: cynthn
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: how-to
-ms.date: 02/15/2023
-ms.author: jushiman
+ms.date: 01/16/2026
+ms.author: cynthn
 # Customer intent: "As a cloud infrastructure administrator, I want to monitor my vCPU quotas for virtual machines, so that I can ensure successful deployments without exceeding resource limits."
 ---
 
@@ -19,6 +19,12 @@ The vCPU quotas for virtual machines and scale sets are arranged in two tiers fo
 > [!NOTE]
 > Quota is calculated based on the total number of cores in use both allocated and deallocated. If you need additional cores, [request a quota increase](/azure/azure-portal/supportability/regional-quota-requests) or delete VMs that are no longer needed. 
 
+## Quota and capacity
+
+Azure checks quota and capacity separately. Quota is your subscription's permission to deploy a certain number of vCPUs or VMs. Capacity is the actual compute resources available in the selected region or availability zone.
+
+Even with sufficient quota, deployments can still fail if Azure doesn't have enough capacity for your requested VM size in the target region or zone. To improve deployment success, try a different VM size, zone, or region. For guaranteed capacity, see [On-demand capacity reservation](capacity-reservation-overview.md).
+
 
 ## Check usage
 
@@ -28,7 +34,7 @@ The vCPU quotas for virtual machines and scale sets are arranged in two tiers fo
 You can check your quota usage using [az vm list-usage](/cli/azure/vm).
 
 ```azurecli-interactive
-az vm list-usage --location "East US" -o table
+az vm list-usage --location "Central US" -o table
 ```
 
 The output should look something like this:
@@ -54,8 +60,8 @@ Standard G Family vCPUs                        0      100
 Standard GS Family vCPUs                       0      100
 Standard F Family vCPUs                        0      100
 Standard FS Family vCPUs                       0      100
-Standard Storage Managed Disks                 5    10000
-Premium Storage Managed Disks                  5    10000
+Standard Storage managed disks                 5    10000
+Premium Storage managed disks                  5    10000
 ...
 ```
 
@@ -64,7 +70,7 @@ Premium Storage Managed Disks                  5    10000
 You can use the [Get-AzVMUsage](/powershell/module/az.compute/get-azvmusage) cmdlet to check on your quota usage.
 
 ```azurepowershell-interactive
-Get-AzVMUsage -Location "East US"
+Get-AzVMUsage -Location "Central US"
 ```
 
 The output looks similar to this:
@@ -105,8 +111,8 @@ Standard ND Family vCPUs                     0     0 Count
 Standard NCv2 Family vCPUs                   0     0 Count
 Standard NCv3 Family vCPUs                   0     0 Count
 Standard LSv2 Family vCPUs                   0     0 Count
-Standard Storage Managed Disks               2 10000 Count
-Premium Storage Managed Disks                1 10000 Count
+Standard Storage managed disks               2 10000 Count
+Premium Storage managed disks                1 10000 Count
 ...
 ```
 
@@ -117,6 +123,6 @@ Reserved VM Instances, scoped to a single subscription without VM size flexibili
 
 If a quota increase is required to either purchase a Single Subscription RI, you can [request a quota increase](/azure/azure-portal/supportability/regional-quota-requests) on your subscription.
 
-## Next steps
+## Related content
 
 For more information about billing and quotas, see [Azure subscription and service limits, quotas, and constraints](/azure/azure-resource-manager/management/azure-subscription-service-limits?toc=/azure/billing/TOC.json).

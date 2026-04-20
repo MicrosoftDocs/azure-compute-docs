@@ -19,7 +19,7 @@ If you're using [Microsoft Entra ID](/azure/active-directory/fundamentals/active
 
 ### Assign RBAC role
 
-To access managed disks secured with Microsoft Entra ID, the requesting user must have either the [Data Operator for Managed Disks](/azure/role-based-access-control/built-in-roles#data-operator-for-managed-disks) role, or a [custom role](/azure/role-based-access-control/custom-roles-portal) with the following permissions: 
+To access managed disks secured with Microsoft Entra ID, the requesting user must have either the [Data Operator for managed disks](/azure/role-based-access-control/built-in-roles#data-operator-for-managed-disks) role, or a [custom role](/azure/role-based-access-control/custom-roles-portal) with the following permissions: 
 
 - **Microsoft.Compute/disks/download/action**
 - **Microsoft.Compute/disks/upload/action**

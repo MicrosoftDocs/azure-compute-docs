@@ -1,11 +1,13 @@
 ---
 title: Estimate the cost of creating a Virtual Machine in the Azure portal (Preview)
 description: Use the Azure portal Virtual Machine creation flow cost card to estimate the final cost of your Virtual Machine.
-author: ju-shim
+author: cynthn
 ms.service: azure-virtual-machines
 ms.topic: concept-article
+ms.update-cycle: 180-days
 ms.date: 04/03/2024
-ms.author: jushiman
+ms.author: cynthn
+ms.custom: portal
 # Customer intent: As a cloud architect, I want to use the estimated cost card during the VM creation process, so that I can accurately budget for the resources and services required for my Azure virtual machines.
 ---
 
@@ -48,7 +50,7 @@ Costs associated with selecting existing resources during the VM creation proces
 | Resource or feature                      | Notes                                          |
 |------------------------------------------|-----------------------------------------------------------|
 | [OS Disk](https://azure.microsoft.com/pricing/details/managed-disks/) | Estimate for using the selected disk to host the selected operating system is displayed.|
-| [Ultra disk Reservation charge](https://azure.microsoft.com/pricing/details/managed-disks/) | A reservation charge is only imposed if Ultra Disk compatibility is enabled on the VM without attaching an Ultra Disk.|
+| [Ultra Disk Reservation charge](https://azure.microsoft.com/pricing/details/managed-disks/) | A reservation charge is only imposed if Ultra Disk compatibility is enabled on the VM without attaching an Ultra Disk.|
 | [Data Disk](https://azure.microsoft.com/pricing/details/managed-disks/) | Estimate for using the selected disk, to store and access data, is displayed. A disk share estimate is displayed if enabled and other charges apply. Transaction and bursting costs aren't included in the estimate. |
 
 ### Networking

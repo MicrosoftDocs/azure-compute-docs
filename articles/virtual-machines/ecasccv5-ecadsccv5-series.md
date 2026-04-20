@@ -24,7 +24,7 @@ ms.date: 03/29/2022
 
 Confidential child capable VMs allow you to borrow resources from the parent VM you deploy, to create AMD SEV-SNP protected child VMs. The parent VM has almost complete feature parity with any other general purpose Azure VM (for example, [E-series VMs](easv5-eadsv5-series.md)). This parent-child deployment model can help you achieve higher levels of isolation from the Azure host and parent VM. These confidential child capable VMs are built on the same hardware that powers our [Azure confidential VMs](/azure/confidential-computing/confidential-vm-overview). Azure confidential VMs are now generally available.  
 
-This series supports Standard SSD, Standard HDD, and Premium SSD disk types. Billing for disk storage and VMs is separate. To estimate your costs, use the [Pricing Calculator](https://azure.microsoft.com/pricing/calculator/). For more information on disk types, see [What disk types are available in Azure?](disks-types.md)
+This series supports Standard SSD, Standard HDD, and Premium SSD types. Billing for disk storage and VMs is separate. To estimate your costs, use the [Pricing Calculator](https://azure.microsoft.com/pricing/calculator/). For more information on disk types, see [What disk types are available in Azure?](disks-types.md)
 
 
 > [!NOTE]
@@ -35,16 +35,15 @@ This series supports Standard SSD, Standard HDD, and Premium SSD disk types. Bil
 
 The ECas_cc_v5-series sizes offer a combination of vCPU and memory for most production workloads. The ECas_cc_v5-series sizes offer a combination of vCPU and memory that is ideal for memory-intensive enterprise applications. These new VMs with no local disk provide a better value proposition for workloads that do not require local temp disk.
 
-[Trusted Launch](trusted-launch.md): Not Supported - we are working to support for this feature. For now - please choose Standard security type when using this VM size) <br>
-[Premium Storage](premium-storage-performance.md): Supported <br>
-[Premium Storage caching](premium-storage-performance.md): Supported <br>
-[Live Migration](maintenance-and-updates.md): Not Supported <br>
-[Memory Preserving Updates](maintenance-and-updates.md): Not Supported <br>
-[VM Generation Support](generation-2.md): Generation 2 <br>
-[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported <br>
-[Ephemeral OS Disks](ephemeral-os-disks.md): Supported <br>
-[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Supported <br>
-<br>
+- [Trusted Launch](trusted-launch.md): Not Supported - we are working to support this feature. For now, please choose Standard security type when using this VM size.
+- [Premium Storage](premium-storage-performance.md): Supported
+- [Premium Storage caching](premium-storage-performance.md): Supported
+- [Live Migration](maintenance-and-updates.md): Not Supported
+- [Memory Preserving Updates](maintenance-and-updates.md): Not Supported
+- [VM Generation Support](generation-2.md): Generation 2
+- [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported
+- [Ephemeral OS Disks](ephemeral-os-disks.md): Supported
+- [Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Supported
 
 
 | Size | vCPU | Memory: GiB | Temp storage (SSD) GiB | Max data disks | Max uncached disk throughput: IOPS/MBps | Max NICs |
@@ -63,16 +62,16 @@ The ECas_cc_v5-series sizes offer a combination of vCPU and memory for most prod
 
 The ECads_cc_v5-series sizes offer a combination of vCPU, memory and temporary storage for most production workloads. The ECads_cc_v5-series sizes offer a combination of vCPU, memory and temporary storage that is ideal for memory-intensive enterprise applications. 
 
-[Trusted Launch](trusted-launch.md): Not Supported - we are working to support for this feature. For now - please choose Standard security type when using this VM size) <br>
-[Premium Storage](premium-storage-performance.md): Supported <br>
-[Premium Storage caching](premium-storage-performance.md): Supported <br>
-[Live Migration](maintenance-and-updates.md): Not Supported <br>
-[Memory Preserving Updates](maintenance-and-updates.md): Not Supported <br>
-[VM Generation Support](generation-2.md): Generation 2 <br>
-[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported <br>
-[Ephemeral OS Disks](ephemeral-os-disks.md): Supported <br>
-[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Supported <br>
-<br>
+- [Trusted Launch](trusted-launch.md): Not Supported - we are working to support this feature. For now, please choose Standard security type when using this VM size.
+- [Premium Storage](premium-storage-performance.md): Supported
+- [Premium Storage caching](premium-storage-performance.md): Supported
+- [Live Migration](maintenance-and-updates.md): Not Supported
+- [Memory Preserving Updates](maintenance-and-updates.md): Not Supported
+- [VM Generation Support](generation-2.md): Generation 2
+- [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported
+- [Ephemeral OS Disks](ephemeral-os-disks.md): Supported
+- [Local temporary storage](overview.md#local-temporary-storage): Supported
+- [Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Supported
 
 | Size | vCPU | Memory: GiB | Temp storage (SSD) GiB | Max data disks | Max uncached disk throughput: IOPS/MBps | Max NICs |
 |---|---|---|---|---|---|---|

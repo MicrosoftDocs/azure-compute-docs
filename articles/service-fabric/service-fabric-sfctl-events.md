@@ -6,14 +6,15 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
+ms.update-cycle: 1825-days
 # Customer intent: "As a DevOps engineer, I want to retrieve event logs from the Service Fabric Event Store, so that I can monitor application health and troubleshoot issues effectively."
 ---
 
 # sfctl events
 Retrieve events from the events store (if EventStore service is already installed).
 
-The EventStore system service can be added through a config upgrade to any SFRP cluster running >=6.4. To check, see [EventStore overview](./service-fabric-diagnostics-eventstore.md).
+The EventStore system service can be added through a config upgrade to any Service Fabric Resource Provider (SFRP) cluster running >=6.4. To check, see [EventStore overview](./service-fabric-diagnostics-eventstore.md).
 
 ## Commands
 
@@ -23,13 +24,13 @@ The EventStore system service can be added through a config upgrade to any SFRP 
 | all-nodes-list | Gets all Nodes-related Events. |
 | all-partitions-list | Gets all Partitions-related events. |
 | all-services-list | Gets all Services-related events. |
-| application-list | Gets an Application-related events. |
+| application-list | Gets all Application-related events. |
 | cluster-list | Gets all Cluster-related events. |
-| node-list | Gets a Node-related events. |
+| node-list | Gets all Node-related events. |
 | partition-all-replicas-list | Gets all Replicas-related events for a Partition. |
-| partition-list | Gets a Partition-related events. |
-| partition-replica-list | Gets a Partition Replica-related events. |
-| service-list | Gets a Service-related events. |
+| partition-list | Gets all Partition-related events. |
+| partition-replica-list | Gets all Partition Replica-related events. |
+| service-list | Gets all Service-related events. |
 
 ## sfctl events all-applications-list
 Gets all Applications-related events.
@@ -45,7 +46,7 @@ The response is list of ApplicationEvent objects.
 | --events-types-filter | This is a comma separated string specifying the types of FabricEvents that should only be included in the response. |
 | --exclude-analysis-events | This param disables the retrieval of AnalysisEvents if true is passed. |
 | --skip-correlation-lookup | This param disables the search of CorrelatedEvents information if true is passed. otherwise the CorrelationEvents get processed and HasCorrelatedEvents field in every FabricEvent gets populated. |
-| --timeout -t | The server timeout for performing the operation in seconds. This timeout specifies the time duration that the client is willing to wait for the requested operation to complete. The default value for this parameter is 60 seconds.  Default\: 60. |
+| --timeout -t | The server timeout for performing the operation in seconds. This timeout specifies the time duration that the client is willing to wait for the requested operation to complete. The default value for this parameter is 60 seconds. Default: 60. |
 
 ### Global Arguments
 
@@ -53,8 +54,8 @@ The response is list of ApplicationEvent objects.
 | --- | --- |
 | --debug | Increase logging verbosity to show all debug logs. |
 | --help -h | Show this help message and exit. |
-| --output -o | Output format.  Allowed values\: json, jsonc, table, tsv.  Default\: json. |
-| --query | JMESPath query string. See http\://jmespath.org/ for more information and examples. |
+| --output -o | Output format. Allowed values: json, jsonc, table, tsv. Default: json. |
+| --query | JMESPath query string. For more information and examples, see https://jmespath.org/. |
 | --verbose | Increase logging verbosity. Use --debug for full debug logs. |
 
 ## sfctl events all-nodes-list
@@ -71,7 +72,7 @@ The response is list of NodeEvent objects.
 | --events-types-filter | This is a comma separated string specifying the types of FabricEvents that should only be included in the response. |
 | --exclude-analysis-events | This param disables the retrieval of AnalysisEvents if true is passed. |
 | --skip-correlation-lookup | This param disables the search of CorrelatedEvents information if true is passed. otherwise the CorrelationEvents get processed and HasCorrelatedEvents field in every FabricEvent gets populated. |
-| --timeout -t | The server timeout for performing the operation in seconds. This timeout specifies the time duration that the client is willing to wait for the requested operation to complete. The default value for this parameter is 60 seconds.  Default\: 60. |
+| --timeout -t | The server timeout for performing the operation in seconds. This timeout specifies the time duration that the client is willing to wait for the requested operation to complete. The default value for this parameter is 60 seconds. Default: 60. |
 
 ### Global Arguments
 
@@ -79,8 +80,8 @@ The response is list of NodeEvent objects.
 | --- | --- |
 | --debug | Increase logging verbosity to show all debug logs. |
 | --help -h | Show this help message and exit. |
-| --output -o | Output format.  Allowed values\: json, jsonc, table, tsv.  Default\: json. |
-| --query | JMESPath query string. See http\://jmespath.org/ for more information and examples. |
+| --output -o | Output format. Allowed values: json, jsonc, table, tsv. Default: json. |
+| --query | JMESPath query string. For more information and examples, see https://jmespath.org/. |
 | --verbose | Increase logging verbosity. Use --debug for full debug logs. |
 
 ## sfctl events all-partitions-list
@@ -97,7 +98,7 @@ The response is list of PartitionEvent objects.
 | --events-types-filter | This is a comma separated string specifying the types of FabricEvents that should only be included in the response. |
 | --exclude-analysis-events | This param disables the retrieval of AnalysisEvents if true is passed. |
 | --skip-correlation-lookup | This param disables the search of CorrelatedEvents information if true is passed. otherwise the CorrelationEvents get processed and HasCorrelatedEvents field in every FabricEvent gets populated. |
-| --timeout -t | The server timeout for performing the operation in seconds. This timeout specifies the time duration that the client is willing to wait for the requested operation to complete. The default value for this parameter is 60 seconds.  Default\: 60. |
+| --timeout -t | The server timeout for performing the operation in seconds. This timeout specifies the time duration that the client is willing to wait for the requested operation to complete. The default value for this parameter is 60 seconds. Default: 60. |
 
 ### Global Arguments
 
@@ -105,8 +106,8 @@ The response is list of PartitionEvent objects.
 | --- | --- |
 | --debug | Increase logging verbosity to show all debug logs. |
 | --help -h | Show this help message and exit. |
-| --output -o | Output format.  Allowed values\: json, jsonc, table, tsv.  Default\: json. |
-| --query | JMESPath query string. See http\://jmespath.org/ for more information and examples. |
+| --output -o | Output format. Allowed values: json, jsonc, table, tsv. Default: json. |
+| --query | JMESPath query string. For more information and examples, see https://jmespath.org/. |
 | --verbose | Increase logging verbosity. Use --debug for full debug logs. |
 
 ## sfctl events all-services-list
@@ -123,7 +124,7 @@ The response is list of ServiceEvent objects.
 | --events-types-filter | This is a comma separated string specifying the types of FabricEvents that should only be included in the response. |
 | --exclude-analysis-events | This param disables the retrieval of AnalysisEvents if true is passed. |
 | --skip-correlation-lookup | This param disables the search of CorrelatedEvents information if true is passed. otherwise the CorrelationEvents get processed and HasCorrelatedEvents field in every FabricEvent gets populated. |
-| --timeout -t | The server timeout for performing the operation in seconds. This timeout specifies the time duration that the client is willing to wait for the requested operation to complete. The default value for this parameter is 60 seconds.  Default\: 60. |
+| --timeout -t | The server timeout for performing the operation in seconds. This timeout specifies the time duration that the client is willing to wait for the requested operation to complete. The default value for this parameter is 60 seconds. Default: 60. |
 
 ### Global Arguments
 
@@ -131,12 +132,12 @@ The response is list of ServiceEvent objects.
 | --- | --- |
 | --debug | Increase logging verbosity to show all debug logs. |
 | --help -h | Show this help message and exit. |
-| --output -o | Output format.  Allowed values\: json, jsonc, table, tsv.  Default\: json. |
-| --query | JMESPath query string. See http\://jmespath.org/ for more information and examples. |
+| --output -o | Output format. Allowed values: json, jsonc, table, tsv. Default: json. |
+| --query | JMESPath query string. For more information and examples, see https://jmespath.org/. |
 | --verbose | Increase logging verbosity. Use --debug for full debug logs. |
 
 ## sfctl events application-list
-Gets an Application-related events.
+Gets all Application-related events.
 
 The response is list of ApplicationEvent objects.
 
@@ -150,7 +151,7 @@ The response is list of ApplicationEvent objects.
 | --events-types-filter | This is a comma separated string specifying the types of FabricEvents that should only be included in the response. |
 | --exclude-analysis-events | This param disables the retrieval of AnalysisEvents if true is passed. |
 | --skip-correlation-lookup | This param disables the search of CorrelatedEvents information if true is passed. otherwise the CorrelationEvents get processed and HasCorrelatedEvents field in every FabricEvent gets populated. |
-| --timeout -t | The server timeout for performing the operation in seconds. This timeout specifies the time duration that the client is willing to wait for the requested operation to complete. The default value for this parameter is 60 seconds.  Default\: 60. |
+| --timeout -t | The server timeout for performing the operation in seconds. This timeout specifies the time duration that the client is willing to wait for the requested operation to complete. The default value for this parameter is 60 seconds. Default: 60. |
 
 ### Global Arguments
 
@@ -158,8 +159,8 @@ The response is list of ApplicationEvent objects.
 | --- | --- |
 | --debug | Increase logging verbosity to show all debug logs. |
 | --help -h | Show this help message and exit. |
-| --output -o | Output format.  Allowed values\: json, jsonc, table, tsv.  Default\: json. |
-| --query | JMESPath query string. See http\://jmespath.org/ for more information and examples. |
+| --output -o | Output format. Allowed values: json, jsonc, table, tsv. Default: json. |
+| --query | JMESPath query string. For more information and examples, see https://jmespath.org/. |
 | --verbose | Increase logging verbosity. Use --debug for full debug logs. |
 
 ## sfctl events cluster-list
@@ -176,7 +177,7 @@ The response is list of ClusterEvent objects.
 | --events-types-filter | This is a comma separated string specifying the types of FabricEvents that should only be included in the response. |
 | --exclude-analysis-events | This param disables the retrieval of AnalysisEvents if true is passed. |
 | --skip-correlation-lookup | This param disables the search of CorrelatedEvents information if true is passed. otherwise the CorrelationEvents get processed and HasCorrelatedEvents field in every FabricEvent gets populated. |
-| --timeout -t | The server timeout for performing the operation in seconds. This timeout specifies the time duration that the client is willing to wait for the requested operation to complete. The default value for this parameter is 60 seconds.  Default\: 60. |
+| --timeout -t | The server timeout for performing the operation in seconds. This timeout specifies the time duration that the client is willing to wait for the requested operation to complete. The default value for this parameter is 60 seconds. Default: 60. |
 
 ### Global Arguments
 
@@ -184,12 +185,12 @@ The response is list of ClusterEvent objects.
 | --- | --- |
 | --debug | Increase logging verbosity to show all debug logs. |
 | --help -h | Show this help message and exit. |
-| --output -o | Output format.  Allowed values\: json, jsonc, table, tsv.  Default\: json. |
-| --query | JMESPath query string. See http\://jmespath.org/ for more information and examples. |
+| --output -o | Output format. Allowed values: json, jsonc, table, tsv. Default: json. |
+| --query | JMESPath query string. For more information and examples, see https://jmespath.org/. |
 | --verbose | Increase logging verbosity. Use --debug for full debug logs. |
 
 ## sfctl events node-list
-Gets a Node-related events.
+Gets all Node-related events.
 
 The response is list of NodeEvent objects.
 
@@ -203,7 +204,7 @@ The response is list of NodeEvent objects.
 | --events-types-filter | This is a comma separated string specifying the types of FabricEvents that should only be included in the response. |
 | --exclude-analysis-events | This param disables the retrieval of AnalysisEvents if true is passed. |
 | --skip-correlation-lookup | This param disables the search of CorrelatedEvents information if true is passed. otherwise the CorrelationEvents get processed and HasCorrelatedEvents field in every FabricEvent gets populated. |
-| --timeout -t | The server timeout for performing the operation in seconds. This timeout specifies the time duration that the client is willing to wait for the requested operation to complete. The default value for this parameter is 60 seconds.  Default\: 60. |
+| --timeout -t | The server timeout for performing the operation in seconds. This timeout specifies the time duration that the client is willing to wait for the requested operation to complete. The default value for this parameter is 60 seconds. Default: 60. |
 
 ### Global Arguments
 
@@ -211,8 +212,8 @@ The response is list of NodeEvent objects.
 | --- | --- |
 | --debug | Increase logging verbosity to show all debug logs. |
 | --help -h | Show this help message and exit. |
-| --output -o | Output format.  Allowed values\: json, jsonc, table, tsv.  Default\: json. |
-| --query | JMESPath query string. See http\://jmespath.org/ for more information and examples. |
+| --output -o | Output format. Allowed values: json, jsonc, table, tsv. Default: json. |
+| --query | JMESPath query string. For more information and examples, see https://jmespath.org/. |
 | --verbose | Increase logging verbosity. Use --debug for full debug logs. |
 
 ## sfctl events partition-all-replicas-list
@@ -230,7 +231,7 @@ The response is list of ReplicaEvent objects.
 | --events-types-filter | This is a comma separated string specifying the types of FabricEvents that should only be included in the response. |
 | --exclude-analysis-events | This param disables the retrieval of AnalysisEvents if true is passed. |
 | --skip-correlation-lookup | This param disables the search of CorrelatedEvents information if true is passed. otherwise the CorrelationEvents get processed and HasCorrelatedEvents field in every FabricEvent gets populated. |
-| --timeout -t | The server timeout for performing the operation in seconds. This timeout specifies the time duration that the client is willing to wait for the requested operation to complete. The default value for this parameter is 60 seconds.  Default\: 60. |
+| --timeout -t | The server timeout for performing the operation in seconds. This timeout specifies the time duration that the client is willing to wait for the requested operation to complete. The default value for this parameter is 60 seconds. Default: 60. |
 
 ### Global Arguments
 
@@ -238,12 +239,12 @@ The response is list of ReplicaEvent objects.
 | --- | --- |
 | --debug | Increase logging verbosity to show all debug logs. |
 | --help -h | Show this help message and exit. |
-| --output -o | Output format.  Allowed values\: json, jsonc, table, tsv.  Default\: json. |
-| --query | JMESPath query string. See http\://jmespath.org/ for more information and examples. |
+| --output -o | Output format. Allowed values: json, jsonc, table, tsv. Default: json. |
+| --query | JMESPath query string. For more information and examples, see https://jmespath.org/. |
 | --verbose | Increase logging verbosity. Use --debug for full debug logs. |
 
 ## sfctl events partition-list
-Gets a Partition-related events.
+Gets all Partition-related events.
 
 The response is list of PartitionEvent objects.
 
@@ -257,7 +258,7 @@ The response is list of PartitionEvent objects.
 | --events-types-filter | This is a comma separated string specifying the types of FabricEvents that should only be included in the response. |
 | --exclude-analysis-events | This param disables the retrieval of AnalysisEvents if true is passed. |
 | --skip-correlation-lookup | This param disables the search of CorrelatedEvents information if true is passed. otherwise the CorrelationEvents get processed and HasCorrelatedEvents field in every FabricEvent gets populated. |
-| --timeout -t | The server timeout for performing the operation in seconds. This timeout specifies the time duration that the client is willing to wait for the requested operation to complete. The default value for this parameter is 60 seconds.  Default\: 60. |
+| --timeout -t | The server timeout for performing the operation in seconds. This timeout specifies the time duration that the client is willing to wait for the requested operation to complete. The default value for this parameter is 60 seconds. Default: 60. |
 
 ### Global Arguments
 
@@ -265,12 +266,12 @@ The response is list of PartitionEvent objects.
 | --- | --- |
 | --debug | Increase logging verbosity to show all debug logs. |
 | --help -h | Show this help message and exit. |
-| --output -o | Output format.  Allowed values\: json, jsonc, table, tsv.  Default\: json. |
-| --query | JMESPath query string. See http\://jmespath.org/ for more information and examples. |
+| --output -o | Output format. Allowed values: json, jsonc, table, tsv. Default: json. |
+| --query | JMESPath query string. For more information and examples, see https://jmespath.org/. |
 | --verbose | Increase logging verbosity. Use --debug for full debug logs. |
 
 ## sfctl events partition-replica-list
-Gets a Partition Replica-related events.
+Gets all Partition Replica-related events.
 
 The response is list of ReplicaEvent objects.
 
@@ -285,7 +286,7 @@ The response is list of ReplicaEvent objects.
 | --events-types-filter | This is a comma separated string specifying the types of FabricEvents that should only be included in the response. |
 | --exclude-analysis-events | This param disables the retrieval of AnalysisEvents if true is passed. |
 | --skip-correlation-lookup | This param disables the search of CorrelatedEvents information if true is passed. otherwise the CorrelationEvents get processed and HasCorrelatedEvents field in every FabricEvent gets populated. |
-| --timeout -t | The server timeout for performing the operation in seconds. This timeout specifies the time duration that the client is willing to wait for the requested operation to complete. The default value for this parameter is 60 seconds.  Default\: 60. |
+| --timeout -t | The server timeout for performing the operation in seconds. This timeout specifies the time duration that the client is willing to wait for the requested operation to complete. The default value for this parameter is 60 seconds. Default: 60. |
 
 ### Global Arguments
 
@@ -293,12 +294,12 @@ The response is list of ReplicaEvent objects.
 | --- | --- |
 | --debug | Increase logging verbosity to show all debug logs. |
 | --help -h | Show this help message and exit. |
-| --output -o | Output format.  Allowed values\: json, jsonc, table, tsv.  Default\: json. |
-| --query | JMESPath query string. See http\://jmespath.org/ for more information and examples. |
+| --output -o | Output format. Allowed values: json, jsonc, table, tsv. Default: json. |
+| --query | JMESPath query string. For more information and examples, see https://jmespath.org/. |
 | --verbose | Increase logging verbosity. Use --debug for full debug logs. |
 
 ## sfctl events service-list
-Gets a Service-related events.
+Gets all Service-related events.
 
 The response is list of ServiceEvent objects.
 
@@ -312,7 +313,7 @@ The response is list of ServiceEvent objects.
 | --events-types-filter | This is a comma separated string specifying the types of FabricEvents that should only be included in the response. |
 | --exclude-analysis-events | This param disables the retrieval of AnalysisEvents if true is passed. |
 | --skip-correlation-lookup | This param disables the search of CorrelatedEvents information if true is passed. otherwise the CorrelationEvents get processed and HasCorrelatedEvents field in every FabricEvent gets populated. |
-| --timeout -t | The server timeout for performing the operation in seconds. This timeout specifies the time duration that the client is willing to wait for the requested operation to complete. The default value for this parameter is 60 seconds.  Default\: 60. |
+| --timeout -t | The server timeout for performing the operation in seconds. This timeout specifies the time duration that the client is willing to wait for the requested operation to complete. The default value for this parameter is 60 seconds. Default: 60. |
 
 ### Global Arguments
 
@@ -320,6 +321,6 @@ The response is list of ServiceEvent objects.
 | --- | --- |
 | --debug | Increase logging verbosity to show all debug logs. |
 | --help -h | Show this help message and exit. |
-| --output -o | Output format.  Allowed values\: json, jsonc, table, tsv.  Default\: json. |
-| --query | JMESPath query string. See http\://jmespath.org/ for more information and examples. |
+| --output -o | Output format. Allowed values: json, jsonc, table, tsv. Default: json. |
+| --query | JMESPath query string. For more information and examples, see https://jmespath.org/. |
 | --verbose | Increase logging verbosity. Use --debug for full debug logs. |

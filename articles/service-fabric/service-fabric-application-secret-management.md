@@ -6,12 +6,12 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: "As a cloud application developer, I want to securely manage application secrets in Service Fabric, so that I can protect sensitive information such as passwords and connection strings throughout the application lifecycle."
 ---
 
 # Manage encrypted secrets in Service Fabric applications
-This guide walks you through the steps of managing secrets in a Service Fabric application. Secrets can be any sensitive information, such as storage connection strings, passwords, or other values that should not be handled in plain text.
+This guide walks you through the steps of managing secrets in a Service Fabric application. Secrets can be any sensitive information, such as storage connection strings, passwords, or other values that shouldn't be handled in plain text.
 
 Using encrypted secrets in a Service Fabric application involves three steps:
 * Set up an encryption certificate and encrypt secrets.
@@ -56,9 +56,9 @@ The secrets should also be included in your Service Fabric application by specif
 </ApplicationManifest>
 ```
 > [!NOTE]
-> Upon activating an application which specifies a SecretsCertificate, Service Fabric will find the matching certificate, and grant the identity the application is running under full permissions to the certificate's private key. Service Fabric will also monitor the certificate for changes, and re-apply the permissions accordingly. To detect changes for certificates declared by common name, Service Fabric runs a periodic task which finds all matching certificates, and compares it with a cached list of thumbprints. When a new thumbprint is detected, it means that a certificate by that subject has been renewed. The task runs once per minute on each node of the cluster.
+> Upon activating an application which specifies a SecretsCertificate, Service Fabric will find the matching certificate, and grant the identity the application is running under full permissions to the certificate's private key. Service Fabric will also monitor the certificate for changes, and reapply the permissions accordingly. To detect changes for certificates declared by common name, Service Fabric runs a periodic task which finds all matching certificates, and compares it with a cached list of thumbprints. When a new thumbprint is detected, it means that a certificate by that subject has been renewed. The task runs once per minute on each node of the cluster.
 >
-> While the SecretsCertificate does allow subject-based declarations, do note that the encrypted settings are tied to the key pair which was used to encrypt the setting on the client. You must ensure that the original encryption certificate (or an equivalent) matches the subject-based declaration, and that it is installed, including its corresponding private key, on every node of the cluster which could host the application. All time-valid certificates matching the subject-based declaration and built from the same the key pair as the original encryption certificate are considered equivalents.
+> While the SecretsCertificate does allow subject-based declarations, do note that the encrypted settings are tied to the key pair which was used to encrypt the setting on the client. You must ensure that the original encryption certificate (or an equivalent) matches the subject-based declaration, and that it's installed, including its corresponding private key, on every node of the cluster which could host the application. All time-valid certificates matching the subject-based declaration and built from the same the key pair as the original encryption certificate are considered equivalents.
 >
 
 ### Inject application secrets into application instances
@@ -124,7 +124,7 @@ await fabricClient.ApplicationManager.CreateApplicationAsync(applicationDescript
 ```
 
 ## Decrypt encrypted secrets from service code
-The APIs for accessing [parameters][parameters-link] and [environment variables][environment-variables-link] allow for easy decryption of encrypted values. Since the encrypted string contains information about the certificate used for encryption, you do not need to manually specify the certificate. The certificate just needs to be installed on the node that the service is running on.
+The APIs for accessing [parameters][parameters-link] and [environment variables][environment-variables-link] allow for easy decryption of encrypted values. Since the encrypted string contains information about the certificate used for encryption, you don't need to manually specify the certificate. The certificate just needs to be installed on the node that the service is running on.
 
 ```csharp
 // Access decrypted parameters from Settings.xml

@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 # Customer intent: "As a cloud administrator, I want to customize settings for my Service Fabric cluster, so that I can optimize performance and manage upgrades according to my organization's requirements."
 ---
 
@@ -16,7 +16,7 @@ This article describes the various fabric settings for your Service Fabric clust
 There are three different upgrade policies:
 
 - **Dynamic** – Changes to a dynamic configuration don't cause any process restarts of either Service Fabric processes or your service host processes. 
-- **Static** – Changes to a static configuration cause the Service Fabric node to restart in order to consume the change. Services on the nodes is restarted.
+- **Static** – Changes to a static configuration cause the Service Fabric node to restart in order to consume the change. Services on the nodes are restarted.
 - **NotAllowed** – These settings cannot be modified. Changing these settings requires that the cluster be destroyed and a new cluster created. 
 
 The following is a list of Fabric settings that you can customize, organized by section.
@@ -39,7 +39,7 @@ The following is a list of Fabric settings that you can customize, organized by 
 |IgnoreCrlOfflineError|bool, default is TRUE|Dynamic|Whether to ignore CRL offline error for application/service certificate verification. |
 |IsEnabled |Bool, default is false |Static| Enables/Disables the HttpApplicationGateway. HttpApplicationGateway is disabled by default and this config needs to be set to enable it. |
 |NumberOfParallelOperations | Uint, default is 5000 |Static|Number of reads to post to the http server queue. This controls the number of concurrent requests that can be satisfied by the HttpGateway. |
-|RemoveServiceResponseHeaders|string, default is "Date; Server"|Static|Semi colon/ comma-separated list of response headers that is removed from the service response; before forwarding it to the client. If this is set to empty string; pass all the headers returned by the service as-is. i.e, don't overwrite the Date and Server |
+|RemoveServiceResponseHeaders|string, default is "Date; Server"|Static|Semi colon/ comma-separated list of response headers that is removed from the service response; before forwarding it to the client. If this is set to empty string; pass all the headers returned by the service as-is. i.e., don't overwrite the Date and Server |
 |ResolveServiceBackoffInterval |Time in seconds, default is 5 |Dynamic|Specify timespan in seconds.  Gives the default back-off interval before retrying a failed resolve service operation. |
 |SecureOnlyMode|bool, default is FALSE|Dynamic| SecureOnlyMode: true: Reverse Proxy will only forward to services that publish secure endpoints. false: Reverse Proxy can forward requests to secure/non-secure endpoints. To learn more, see [Reverse proxy endpoint selection logic](service-fabric-reverseproxy-configure-secure-communication.md#endpoint-selection-logic-when-services-expose-secure-as-well-as-unsecured-endpoints).  |
 |ServiceCertificateThumbprints|string, default is ""|Dynamic|The comma-separated list of thumbprints of the remote certs that the reverse proxy can trust. To learn more, see [Reverse proxy secure connection](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services). |
@@ -49,6 +49,13 @@ The following is a list of Fabric settings that you can customize, organized by 
 | **Parameter** | **Allowed Values** | **Upgrade Policy** | **Guidance or Short Description** |
 | --- | --- | --- | --- |
 |PropertyGroup|X509NameMap, default is None|Dynamic| Subject name and issuer thumbprint of the remote certs that the reverse proxy can trust. To learn more, see [Reverse proxy secure connection](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services). |
+
+## ApplicationProxyService
+
+| **Parameter** | **Allowed Values** | **Upgrade Policy** | **Guidance or Short Description** |
+| --- | --- | --- | --- |
+|IsEnabled|Bool, default is false|Static| Application Proxy Service is an optional system service currently in preview. Setting controls if it is enabled. |
+
 
 ## BackupRestoreService
 
@@ -183,6 +190,11 @@ The following is a list of Fabric settings that you can customize, organized by 
 |PlacementConstraints|string, default is    ""|Static|    The PlacementConstraints for EventStore service |
 |TargetReplicaSetSize|int, default is    0|Static| The TargetReplicaSetSize for EventStore service |
 
+## ExpandedMetricsDuringZoneDownMode
+| **Parameter** | **Allowed Values** |**Upgrade Policy**| **Guidance or Short Description** |
+| --- | --- | --- | --- |
+|PropertyGroup|KeyBoolValueMap, default is None|Static|Determines which metrics have their node capacities treated as infinite when the ignoring metrics feature is enabled. Set the value to `true` for metrics that should be ignored.
+
 ## FabricClient
 
 | **Parameter** | **Allowed Values** | **Upgrade Policy** | **Guidance or Short Description** |
@@ -280,11 +292,11 @@ The following is a list of Fabric settings that you can customize, organized by 
 | --- | --- | --- | --- |
 |CompletedActionKeepDurationInSeconds | Int, default is 604800 |Static| This is approximately how long to keep actions that are in a terminal state. This also depends on StoredActionCleanupIntervalInSeconds; since the work to clean up is only done on that interval. 604800 is seven days. |
 |DataLossCheckPollIntervalInSeconds|int, default is 5|Static|This is the time between the checks the system performs while waiting for data loss to happen. The number of times the data loss number will be checked per internal iteration is DataLossCheckWaitDurationInSeconds/this. |
-|DataLossCheckWaitDurationInSeconds|int, default is 25|Static|The total amount of time; in seconds; that the system waits for data loss to happen. This is internally used when the StartPartitionDataLossAsync() api is called. |
+|DataLossCheckWaitDurationInSeconds|int, default is 25|Static|The total amount of time; in seconds; that the system waits for data loss to happen. This is internally used when the StartPartitionDataLossAsync() API is called. |
 |MinReplicaSetSize |Int, default is 0 |Static|The MinReplicaSetSize for FaultAnalysisService. |
 |PlacementConstraints | string, default is ""|Static| The PlacementConstraints for FaultAnalysisService. |
 |QuorumLossWaitDuration | Time in seconds, default is MaxValue |Static|Specify timespan in seconds. The QuorumLossWaitDuration for FaultAnalysisService. |
-|ReplicaDropWaitDurationInSeconds|int, default is 600|Static|This parameter is used when the data loss api is called. It controls how long the system will wait for a replica to get dropped after remove replica is internally invoked on it. |
+|ReplicaDropWaitDurationInSeconds|int, default is 600|Static|This parameter is used when the data loss API is called. It controls how long the system will wait for a replica to get dropped after remove replica is internally invoked on it. |
 |ReplicaRestartWaitDuration |Time in seconds, default is 60 minutes|Static|Specify timespan in seconds. The ReplicaRestartWaitDuration for FaultAnalysisService. |
 |StandByReplicaKeepDuration| Time in seconds, default is (60*24*7) minutes |Static|Specify timespan in seconds. The StandByReplicaKeepDuration for FaultAnalysisService. |
 |StoredActionCleanupIntervalInSeconds | Int, default is 3600 |Static|This is how often the store is cleaned up. Only actions in a terminal state; and that completed at least CompletedActionKeepDurationInSeconds ago will be removed. |
@@ -380,7 +392,7 @@ The following is a list of Fabric settings that you can customize, organized by 
 |ActivationRetryBackoffInterval |Time in Seconds, default is 5 |Dynamic|Backoff interval on every activation failure; On every continuous activation failure, the system retries the activation for up to the MaxActivationFailureCount. The retry interval on every try is a product of continuous activation failure and the activation back-off interval. |
 |ActivationTimeout| TimeSpan, default is Common::TimeSpan::FromSeconds(180)|Dynamic| Specify timespan in seconds. The timeout for application activation; deactivation and upgrade. |
 |ApplicationHostCloseTimeout| TimeSpan, default is Common::TimeSpan::FromSeconds(120)|Dynamic| Specify timespan in seconds. When Fabric exit is detected in a self activated processes; FabricRuntime closes all of the replicas in the user's host (applicationhost) process. This is the timeout for the close operation. |
-| CnsNetworkPluginCnmUrlPort | wstring, default is L"48080" | Static | Azure cnm api url port |
+| CnsNetworkPluginCnmUrlPort | wstring, default is L"48080" | Static | Azure cnm API url port |
 | CnsNetworkPluginCnsUrlPort | wstring, default is L"10090" | Static | Azure cns url port |
 |ContainerServiceArguments|string, default is "-H localhost:2375 -H npipe://"|Static|Service Fabric (SF) manages docker daemon (except on windows client machines like Windows 10). This configuration allows user to specify custom arguments that should be passed to docker daemon when starting it. When custom arguments are specified, Service Fabric doesn't pass any other argument to Docker engine except '--pidfile' argument. Hence users shouldn't specify '--pidfile' argument as part of their customer arguments. Also, the custom arguments should ensure that docker daemon listens on default name pipe on Windows (or Unix domain socket on Linux) for Service Fabric to be able to communicate with it.|
 |ContainerServiceLogFileMaxSizeInKb|int, default is 32768|Static|Maximum file size of log file generated by docker containers.  Windows only.|
@@ -606,6 +618,8 @@ The following is a list of Fabric settings that you can customize, organized by 
 |ApplicationCapacityConstraintPriority | Int, default is 0 | Dynamic|Determines the priority of capacity constraint: 0: Hard; 1: Soft; negative: Ignore. |
 |AutoDetectAvailableResources|bool, default is TRUE|Static|This config triggers auto detection of available resources on node (CPU and Memory) When this config is set to true - we read real capacities and correct them if user specified bad node capacities or didn't define them at all If this config is set to false - we trace a warning that user specified bad node capacities; but we will not correct them; meaning that user wants to have the capacities specified as > than the node really has or if capacities are undefined; it will assume unlimited capacity |
 |AuxiliaryInBuildThrottlingWeight | double, default is 1 | Static|Auxiliary replica's weight against the current InBuildThrottling max limit. |
+|AllowMovementOnPausedNodes | bool, default is FALSE | Dynamic|If true; allows PLB to move and drop replicas on nodes that are deactivated with Pause intent. |
+|AllowNewReplicaPlacementOnNodeInClusterUpgrade | bool, default is TRUE | Dynamic|Setting which determines if any new replica placements will be allowed on upgrading nodes. When set to false; no new replica placement will be allowed on upgrading node. By default; only single replica replacements and primary moves are forbidden on nodes in upgrade; and all other new placements are allowed to prioritize availability. |
 |BalancingDelayAfterNewNode | Time in seconds, default is 120 |Dynamic|Specify timespan in seconds. Don't start balancing activities within this period after adding a new node. |
 |BalancingDelayAfterNodeDown | Time in seconds, default is 120 |Dynamic|Specify timespan in seconds. Don't start balancing activities within this period after a node down event. |
 |BlockNodeInUpgradeConstraintPriority | Int, default is -1 |Dynamic|Determines the priority of capacity constraint: 0: Hard; 1: Soft; negative: Ignore  |
@@ -622,6 +636,7 @@ The following is a list of Fabric settings that you can customize, organized by 
 |DetailedVerboseHealthReportLimit | Int, default is 200 | Dynamic|Defines the number of times an unplaced replica has to be persistently unplaced before detailed health reports are emitted. |
 |EnforceUserServiceMetricCapacities|bool, default is FALSE | Static |Enables fabric services protection. All user services are under one job object/cgroup and limited to specified amount of resources. This needs to be static (requires restart of FabricHost) as creation/removal of user job object and setting limits in done during open of Fabric Host. |
 |EnableServiceSensitivity | bool, default is False | Dynamic|Feature switch to enable/disable the replica sensitivity feature. |
+|EnableZoneDownModeNodeCapacityExpansion | bool, default is False | Dynamic|Feature switch to enable/disable ignoring metrics. When enabled, metrics specified in the `ExpandedMetricsDuringZoneDownMode` section have their node capacities treated as infinite. When disabled, all metrics are enforced normally. |
 |FaultDomainConstraintPriority | Int, default is 0 |Dynamic| Determines the priority of fault domain constraint: 0: Hard; 1: Soft; negative: Ignore. |
 |GlobalMovementThrottleCountingInterval | Time in seconds, default is 600 |Static| Specify timespan in seconds. Indicate the length of the past interval for which to track per domain replica movements (used along with GlobalMovementThrottleThreshold). Can be set to 0 to ignore global throttling altogether. |
 |GlobalMovementThrottleThreshold | Uint, default is 1000 |Dynamic| Maximum number of movements allowed in the Balancing Phase in the past interval indicated by GlobalMovementThrottleCountingInterval. |
@@ -673,6 +688,11 @@ The following is a list of Fabric settings that you can customize, organized by 
 |VerboseHealthReportLimit | Int, default is 20 | Dynamic|Defines the number of times a replica has to go unplaced before a health warning is reported for it (if verbose health reporting is enabled). |
 |NodeLoadsOperationalTracingEnabled | Bool, default is true |Dynamic|Config that enables Node Load operational structural trace in the event store. |
 |NodeLoadsOperationalTracingInterval | TimeSpan, default is Common::TimeSpan::FromSeconds(20) | Dynamic|Specify timespan in seconds. The interval with which to trace node loads to event store for each service domain. |
+|ReduceDecisionTracing | bool, default is FALSE | Dynamic|	
+Specifies whether to use old way of tracing PLB decisions regarding scheduling phases (PLB.SchedulerAction; PLB.DecisionToken and CRM.Decision are all traced) or to use tracing with reduced trace frequency (tracing only CRM.Decision; as all data from other traces is contained in it) |
+|QuorumBasedReplicaDistributionPerUpgradeDomains | Bool, default is false | Dynamic|Specifies whether replica distribution among upgrade domains should be based on a partition write quorum (Quorum safe approach) or PLB should keep max replica difference between number of replicas per upgrade domains up to 1 (Maximum difference approach). |
+|QuorumBasedReplicaDistributionPerFaultDomains | Bool, default is false | Dynamic|Specifies whether replica distribution among fault domains should be based on a partition write quorum (Quorum safe approach) or PLB should keep max replica difference between number of replicas per fault domains up to 1 (Maximum difference approach). |
+|QuorumBasedLogicAutoSwitch | Bool, default is true | Dynamic|Specifies whether replica distribution among fault and upgrade domains should automatically (when necessary) switch from maximum difference approach to a quorum safe approach. |
 
 ## ReconfigurationAgent
 
@@ -784,6 +804,7 @@ The following is a list of Fabric settings that you can customize, organized by 
 |DisableFirewallRuleForDomainProfile| bool, default is TRUE |Static| Indicates if firewall rule shouldn't be enabled for domain profile |
 |DisableFirewallRuleForPrivateProfile| bool, default is TRUE |Static| Indicates if firewall rule shouldn't be enabled for private profile | 
 |DisableFirewallRuleForPublicProfile| bool, default is TRUE | Static|Indicates if firewall rule shouldn't be enabled for public profile |
+|EnableRBACClientIssuerStoreSettings| bool, default is FALSE | Dynamic|False: ClientCertificateIssuerStores will have all Reader; Adm and ElevatedAdm roles as always. And AdminClientCertificateIssuerStores and ElevatedAdminClientCertificateIssuerStores are ignored. True: ClientCertificateIssuerStores will only have Reader role. SF will honor the configs and roles of AdminClientCertificateIssuerStores and ElevatedAdminClientCertificateIssuerStores respectively. |
 | EnforceLinuxMinTlsVersion | bool, default is FALSE | Static | If set to true; only TLS version 1.2+ is supported.  If false; support earlier TLS versions. Applies to Linux only |
 | EnforcePrevalidationOnSecurityChanges | bool, default is FALSE| Dynamic | Flag controlling the behavior of cluster upgrade upon detecting changes of its security settings. If set to 'true', the cluster upgrade will attempt to ensure that at least one of the certificates matching any of the presentation rules can pass a corresponding validation rule. The pre-validation is executed before the new settings are applied to any node, but runs only on the node hosting the primary replica of the Cluster Manager service at the time of initiating the upgrade. The default is currently set to 'false'; starting with release 7.1, the setting will be set to 'true' for new Azure Service Fabric clusters.|
 | EnforceStrictRoleMapping | bool, default is FALSE | Dynamic | The permissions mapping in the SF runtime for the ElevatedAdmin role includes all current operations and any newly introduced functionality remains accessible to ElevatedAmin; i.e. the EA role gets a "*" permission in the code - that is; a blank authorization to invoke all SF APIs. The intent is that a 'deny' rule (Security/ClientAccess MyOperation="None") won't apply to the ElevatedAdmin role by default. However; if EnforceStrictRoleMapping is set to true; existing code or cluster manifest overrides which specify "operation": "Admin" (in Security/ClientAccess section) will make "operation" in effect inaccessible to the ElevatedAdmin role. |
@@ -808,6 +829,18 @@ The following is a list of Fabric settings that you can customize, organized by 
 | **Parameter** | **Allowed Values** | **Upgrade Policy** | **Guidance or Short Description** |
 | --- | --- | --- | --- |
 |PropertyGroup|X509NameMap, default is None|Dynamic|Certificate common names of fabric clients in elevated admin role; used to authorize privileged fabric operations. It is a comma separated list. |
+
+## Security/AdminClientCertificateIssuerStores
+
+| **Parameter** | **Allowed Values** | **Upgrade Policy** | **Guidance or Short Description** |
+| --- | --- | --- | --- |
+|PropertyGroup|IssuerStoreKeyValueMapIssuerStoreKeyValueMap, default is None|Dynamic|X509 issuer certificate stores for client certificates; Name = clientIssuerCN; Value = comma separated list of stores. |
+
+## Security/ElevatedAdminClientCertificateIssuerStores
+
+| **Parameter** | **Allowed Values** | **Upgrade Policy** | **Guidance or Short Description** |
+| --- | --- | --- | --- |
+|PropertyGroup|IssuerStoreKeyValueMap, default is None|Dynamic|X509 issuer certificate stores for client certificates; Name = clientIssuerCN; Value = comma separated list of stores. |
 
 ## Security/ClientAccess
 
@@ -849,9 +882,9 @@ The following is a list of Fabric settings that you can customize, organized by 
 |GetFolderSize |string, default is "Admin" |Dynamic|Security configuration for FileStoreService's getting folder size |
 |GetNodeDeactivationStatus |string, default is "Admin" |Dynamic| Security configuration for checking deactivation status. |
 |GetNodeTransitionProgress | string, default is "Admin\|\|User" |Dynamic| Security configuration for getting progress on a node transition command. |
-|GetPartitionDataLossProgress | string, default is "Admin\|\|User" | Dynamic|Fetches the progress for an invoke data loss api call. |
-|GetPartitionQuorumLossProgress | string, default is "Admin\|\|User" |Dynamic| Fetches the progress for an invoke quorum loss api call. |
-|GetPartitionRestartProgress | string, default is "Admin\|\|User" |Dynamic| Fetches the progress for a restart partition api call. |
+|GetPartitionDataLossProgress | string, default is "Admin\|\|User" | Dynamic|Fetches the progress for an invoke data loss API call. |
+|GetPartitionQuorumLossProgress | string, default is "Admin\|\|User" |Dynamic| Fetches the progress for an invoke quorum loss API call. |
+|GetPartitionRestartProgress | string, default is "Admin\|\|User" |Dynamic| Fetches the progress for a restart partition API call. |
 |GetSecrets|string, default is "Admin"|Dynamic|Get secret values |
 |GetServiceDescription |string, default is "Admin\|\|User" |Dynamic| Security configuration for long-poll service notifications and reading service descriptions. |
 |GetStagingLocation |string, default is "Admin" |Dynamic| Security configuration for image store client staging location retrieval. |
@@ -871,7 +904,7 @@ The following is a list of Fabric settings that you can customize, organized by 
 |NodeControl |string, default is "Admin" |Dynamic| Security configuration for starting; stopping; and restarting nodes. |
 |NodeStateRemoved |string, default is "Admin" |Dynamic| Security configuration for reporting node state removed. |
 |Ping |string, default is "Admin\|\|User" |Dynamic| Security configuration for client pings. |
-|PredeployPackageToNode |string, default is "Admin" |Dynamic| Predeployment api. |
+|PredeployPackageToNode |string, default is "Admin" |Dynamic| Predeployment API. |
 |PrefixResolveService |string, default is "Admin\|\|User" |Dynamic| Security configuration for complaint-based service prefix resolution. |
 |PropertyReadBatch |string, default is "Admin\|\|User" |Dynamic| Security configuration for Naming property read operations. |
 |PropertyWriteBatch |string, default is "Admin" |Dynamic|Security configurations for Naming property write operations. |
@@ -983,6 +1016,7 @@ The following is a list of Fabric settings that you can customize, organized by 
 ## TransactionalReplicator
 <i> **Warning Note** : Changing Replication/TranscationalReplicator settings at cluster level changes settings for all stateful services include system services. This is generally not recommended. See this document [Configure Azure Service Fabric Reliable Services - Azure Service Fabric | Microsoft Docs](./service-fabric-reliable-services-configuration.md) to configure services at app level.</i>
 
+
 | **Parameter** | **Allowed Values** | **Upgrade Policy** | **Guidance or Short Description** |
 | --- | --- | --- | --- |
 |BatchAcknowledgementInterval | Time in seconds, default is 0.015 | Static | Specify timespan in seconds. Determines the amount of time that the replicator waits after receiving an operation before sending back an acknowledgment. Other operations received during this time period will have their acknowledgments sent back in a single message-> reducing network traffic but potentially reducing the throughput of the replicator. |
@@ -995,6 +1029,14 @@ The following is a list of Fabric settings that you can customize, organized by 
 |ReplicatorAddress |string, default is "localhost:0" | Static | The endpoint in form of a string -'IP:Port' which is used by the Windows Fabric Replicator to establish connections with other replicas in order to send/receive operations. |
 |ReplicationBatchSendInterval|TimeSpan, default is Common::TimeSpan::FromMilliseconds(15) | Static | Specify timespan in seconds. Determines the amount of time that the replicator waits after receiving an operation before force sending a batch.|
 |ShouldAbortCopyForTruncation |bool, default is FALSE | Static | Allow pending log truncation to go through during copy. With this enabled the copy stage of builds can be canceled if the log is full and they are block truncation. |
+
+
+## TransactionalReplicator2
+
+| **Parameter** | **Allowed Values** | **Upgrade Policy** | **Guidance or Short Description** |
+|---------------|-------------------|--------------------|------------------------------------|
+| TrackLastModifiedUTC | bool, (default: FALSE) | Static | Controls whether Key Value Store (KVS) backed by TStore tracks and exposes the last modified UTC timestamp for each entry. Available in SF 11.4 and beyond.<br><br>When set to **true**, the system records the UTC timestamp of the most recent modification for each entry, and APIs expose this value through the `LastModifiedUTC` field. Each update refreshes the stored timestamp.<br><br>When set to **false**, the system does not expose last modified timestamps. APIs return the default value `1970-01-01T00:00:00Z` (Unix epoch). Previously recorded timestamps are retained internally but are not returned while the setting remains disabled. Disabling affects visibility only and does not impact data correctness. |
+
 
 ## Transport
 | **Parameter** | **Allowed Values** |**Upgrade policy** |**Guidance or Short Description** |

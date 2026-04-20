@@ -6,7 +6,8 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 07/11/2022
+ms.date: 03/22/2026
+ms.update-cycle: 1825-days
 # Customer intent: "As a DevOps engineer, I want to manage repair tasks using the command line interface, so that I can efficiently query, approve, and delete repair tasks within the Azure Service Fabric environment."
 ---
 
@@ -24,14 +25,14 @@ Query and send commands to the repair manager service.
 ## sfctl rpm approve-force
 Forces the approval of the given repair task.
 
-This API supports the Service Fabric platform; it is not meant to be used directly from your code.
+This API supports the Service Fabric platform; it isn't meant to be used directly from your code.
 
 ### Arguments
 
 |Argument|Description|
 | --- | --- |
 | --task-id [Required] | The ID of the repair task. |
-| --version | The current version number of the repair task. If non-zero, then the request will only succeed if this value matches the actual current version of the repair task. If zero, then no version check is performed. |
+| --version | The current version number of the repair task. If nonzero, the request only succeeds if this value matches the actual current version of the repair task. If zero, no version check is performed. |
 
 ### Global Arguments
 
@@ -39,21 +40,21 @@ This API supports the Service Fabric platform; it is not meant to be used direct
 | --- | --- |
 | --debug | Increase logging verbosity to show all debug logs. |
 | --help -h | Show this help message and exit. |
-| --output -o | Output format.  Allowed values\: json, jsonc, table, tsv.  Default\: json. |
-| --query | JMESPath query string. See http\://jmespath.org/ for more information and examples. |
+| --output -o | Output format. Allowed values: json, jsonc, table, tsv. Default: json. |
+| --query | JMESPath query string. For more information and examples, see https://jmespath.org/. |
 | --verbose | Increase logging verbosity. Use --debug for full debug logs. |
 
 ## sfctl rpm delete
 Deletes a completed repair task.
 
-This API supports the Service Fabric platform; it is not meant to be used directly from your code.
+This API supports the Service Fabric platform; it isn't meant to be used directly from your code.
 
 ### Arguments
 
 |Argument|Description|
 | --- | --- |
 | --task-id [Required] | The ID of the completed repair task to be deleted. |
-| --version | The current version number of the repair task. If non-zero, then the request will only succeed if this value matches the actual current version of the repair task. If zero, then no version check is performed. |
+| --version | The current version number of the repair task. If nonzero, the request only succeeds if this value matches the actual current version of the repair task. If zero, no version check is performed. |
 
 ### Global Arguments
 
@@ -61,14 +62,14 @@ This API supports the Service Fabric platform; it is not meant to be used direct
 | --- | --- |
 | --debug | Increase logging verbosity to show all debug logs. |
 | --help -h | Show this help message and exit. |
-| --output -o | Output format.  Allowed values\: json, jsonc, table, tsv.  Default\: json. |
-| --query | JMESPath query string. See http\://jmespath.org/ for more information and examples. |
+| --output -o | Output format. Allowed values: json, jsonc, table, tsv. Default: json. |
+| --query | JMESPath query string. For more information and examples, see https://jmespath.org/. |
 | --verbose | Increase logging verbosity. Use --debug for full debug logs. |
 
 ## sfctl rpm list
 Gets a list of repair tasks matching the given filters.
 
-This API supports the Service Fabric platform; it is not meant to be used directly from your code.
+This API supports the Service Fabric platform; it isn't meant to be used directly from your code.
 
 ### Arguments
 
@@ -84,8 +85,8 @@ This API supports the Service Fabric platform; it is not meant to be used direct
 | --- | --- |
 | --debug | Increase logging verbosity to show all debug logs. |
 | --help -h | Show this help message and exit. |
-| --output -o | Output format.  Allowed values\: json, jsonc, table, tsv.  Default\: json. |
-| --query | JMESPath query string. See http\://jmespath.org/ for more information and examples. |
+| --output -o | Output format. Allowed values: json, jsonc, table, tsv. Default: json. |
+| --query | JMESPath query string. For more information and examples, see https://jmespath.org/. |
 | --verbose | Increase logging verbosity. Use --debug for full debug logs. |
 
 

@@ -1,12 +1,12 @@
 ---
 title: Overview backup options for VMs
 description: Overview backup options for Azure virtual machines.
-author: ju-shim
+author: cynthn
 ms.service: azure-virtual-machines
 ms.subservice: recovery
 ms.topic: overview
 ms.date: 01/12/2023
-ms.author: jushiman
+ms.author: cynthn
 # Customer intent: "As a cloud administrator, I want to explore backup and restore options for Azure VMs, so that I can effectively protect data and ensure recoverability in case of failures or disasters."
 ---
 
@@ -41,7 +41,7 @@ Snapshots can be used to create new managed disks when a VM is rebuilt. They're 
 
 For more information on creating snapshots, see:
 
-* [Create copy of VHD stored as a Managed Disk](./windows/snapshot-copy-managed-disk.md)
+* [Create copy of VHD stored as a managed disk](./windows/snapshot-copy-managed-disk.md)
 
 ## Virtual machine restore points
 

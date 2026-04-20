@@ -1,5 +1,5 @@
 ---
-title: Azure Windows VM Agent overview 
+title: Azure Windows VM Agent overview
 description: Learn how to install and detect the Azure Windows VM Agent to manage your virtual machine's interaction with the Azure fabric controller.
 ms.topic: how-to
 ms.service: azure-virtual-machines
@@ -7,7 +7,7 @@ ms.subservice: extensions
 ms.author: gabsta
 author: GabstaMSFT
 ms.collection: windows
-ms.date: 02/27/2023 
+ms.date: 08/18/2025
 # Customer intent: "As a cloud administrator, I want to install and manage the Azure Windows VM Agent on my virtual machines, so that I can enable and utilize necessary extensions for configuration and recovery tasks effectively."
 ---
 
@@ -17,25 +17,27 @@ The Microsoft Azure Windows VM Agent is a secure, lightweight process that manag
 
 This article describes how to install and detect the Azure Windows VM Agent.
 
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
+
 ## Prerequisites
 
-The Azure Windows VM Agent supports the x64 architecture for these Windows operating systems:
+The Azure Windows VM Agent supports the x64 and ARM64 architecture for these Windows operating systems:
 
 | OS Version | x64 | ARM64 |
 |:-----|:-----:|:-----:|
-| Windows 10 | Supported | Supported |
+| Windows 10 | Supported | Unsupported |
 | Windows 11 | Supported | Supported |
-| Windows Server 2016 | Supported | Supported |
-| Windows Server 2016 Core | Supported | Supported |
-| Windows Server 2019 | Supported | Supported |
-| Windows Server 2019 Core | Supported | Supported |
-| Windows Server 2022 | Supported | Supported |
-| Windows Server 2022 Core | Supported | Supported |
-| Windows Server 2025 | Supported | Supported |
-| Windows Server 2025 Core | Supported | Supported |
+| Windows Server 2016 | Supported | Unsupported |
+| Windows Server 2016 Core | Supported | Unsupported |
+| Windows Server 2019 | Supported | Unsupported |
+| Windows Server 2019 Core | Supported | Unsupported |
+| Windows Server 2022 | Supported | Unsupported |
+| Windows Server 2022 Core | Supported | Unsupported |
+| Windows Server 2025 | Supported | Unsupported |
+| Windows Server 2025 Core | Supported | Unsupported |
 
 > [!IMPORTANT]
-> - The Azure Windows VM Agent needs at least Windows Server 2008 SP2 (64-bit) to run, with the .NET Framework 4.0. See [Minimum version support for virtual machine agents in Azure](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support).
+> - The Azure Windows VM Agent needs at least Windows Server 2016 (64-bit) to run, with the .NET Framework 4.0. See [Minimum version support for virtual machine agents in Azure](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support).
 >
 > - Ensure that your VM has access to IP address 168.63.129.16. For more information, see [What is IP address 168.63.129.16?](/azure/virtual-network/what-is-ip-address-168-63-129-16).
 >
@@ -84,12 +86,10 @@ If you don't have the agents installed, you can't use some Azure services, such 
 
 ### Manual installation
 
-You can manually [install](/troubleshoot/azure/virtual-machines/windows/windows-azure-guest-agent#solution-2-manually-uninstall-and-reinstall-the-azure-vm-agent) the Azure Windows VM Agent by using a Windows Installer package. Manual installation might be necessary when you create a custom VM image that's deployed to Azure. 
-
-To manually install the Azure Windows VM Agent, [download the installer](https://github.com/Azure/WindowsVMAgent) and select the latest release. You can also search for a specific version in the [GitHub page for Azure Windows VM Agent releases](https://github.com/Azure/WindowsVMAgent/releases). The Azure Windows VM Agent is supported on Windows Server 2008 (64 bit) and later.
+To manually install the Azure Windows VM Agent, [download the installer](https://github.com/Azure/WindowsVMAgent) and select the latest release. You can also search for a specific version in the [GitHub page for Azure Windows VM Agent releases](https://github.com/Azure/WindowsVMAgent/releases). The Azure Windows VM Agent is supported on Windows Server 2016 (64 bit) and later.
 
 > [!NOTE]
-> - If a VM was created from a custom or Marketplace image without `ProvisionVMAgent` enabled, then it is important to update the `AllowExtensionOperations` to `true` after you manually install the Azure Windows VM Agent.  
+> - If a VM was created from a custom or Marketplace image without `ProvisionVMAgent` enabled, then it is important to update the `AllowExtensionOperations` to `true` after you manually install the Azure Windows VM Agent.
 > - This is NOT required if the VM was created from a specialized disk. For example, if the VM was created directly from an existing disk.
 
 ```powershell

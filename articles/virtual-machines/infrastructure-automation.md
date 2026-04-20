@@ -1,12 +1,12 @@
 ---
 title: Use infrastructure automation tools
 description: Learn how to use infrastructure automation tools such as Ansible, Chef, Puppet, Terraform, and Packer to create and manage virtual machines in Azure.
-author: ju-shim
+author: cynthn
 ms.service: azure-virtual-machines
 ms.topic: concept-article
 ms.custom: devx-track-terraform, devx-track-arm-template, devx-track-ansible, devx-track-jenkins, devx-track-bicep
 ms.date: 09/21/2023
-ms.author: jushiman
+ms.author: cynthn
 ms.reviewer: mattmcinnes
 # Customer intent: As a cloud engineer, I want to utilize infrastructure automation tools to create and manage Azure virtual machines, so that I can streamline processes and ensure consistency in deployment and configuration.
 ---
@@ -134,7 +134,7 @@ Learn how to:
 
 
 ## Packer
-[Packer](https://www.packer.io) automates the build process when you create a custom VM image in Azure. You use Packer to define the OS and run post-configuration scripts that customize the VM for your specific needs. Once configured, the VM is then captured as a Managed Disk image. Packer automates the process to create the source VM, network and storage resources, run configuration scripts, and then create the VM image.
+[Packer](https://www.packer.io) automates the build process when you create a custom VM image in Azure. You use Packer to define the OS and run post-configuration scripts that customize the VM for your specific needs. Once configured, the VM is then captured as a managed disk image. Packer automates the process to create the source VM, network and storage resources, run configuration scripts, and then create the VM image.
 
 Learn how to:
 

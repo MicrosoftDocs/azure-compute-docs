@@ -7,7 +7,7 @@ ms.topic: overview
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: autoscale
 ms.date: 04/1/2025
-ms.reviewer: jushiman
+ms.reviewer: cynthn
 # Customer intent: As a system administrator, I want to implement autoscaling for my Virtual Machine Scale Sets, so that I can optimize resource usage and automatically adjust capacity based on application demand to improve performance and reduce costs.
 ---
 
@@ -57,6 +57,7 @@ Update-AzVmss `
 ---
 
 ## Benefits of autoscale
+
 If your application demand increases, the load on the virtual machines in your scale set increases. If this increased load is consistent, rather than just a brief demand, you can configure autoscale rules to increase and decrease the number of virtual machines in the scale set.
 
 > [!NOTE]

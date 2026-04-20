@@ -1,12 +1,13 @@
 ---
 title: Attach an existing OS disk to a VM
 description: Create a new Windows VM by attaching a specialized OS disk.
-author: ju-shim
+author: cynthn
 ms.service: azure-virtual-machines
 ms.topic: how-to
+ms.update-cycle: 180-days
 ms.date: 12/12/2024
-ms.author: jushiman
-ms.custom: devx-track-azurepowershell
+ms.author: cynthn
+ms.custom: devx-track-azurepowershell, portal
 # Customer intent: As a cloud administrator, I want to create a new virtual machine by attaching an existing OS disk, so that I can quickly recover from a non-functional VM while preserving the configuration of the original environment.
 ---
 # Create a VM from a specialized disk using PowerShell
@@ -41,8 +42,8 @@ Create a snapshot and then create a disk from the snapshot. This strategy allows
 8. For **Storage type**, choose **Standard HDD**, **Premium SSD**, or **Zone-redundant** storage.
 9. When you're done, select **Review + create** to create the snapshot.
 10. After the snapshot has been created, select **Home** > **Create a resource**.
-11. In the search box, enter **managed disk** and then select **Managed Disks** from the list.
-12. On the **Managed Disks** page, select **Create**.
+11. In the search box, enter **managed disk** and then select **managed disks** from the list.
+12. On the **managed disks** page, select **Create**.
 13. Choose a **Resource group** for the disk. You can use either an existing resource group or create a new one. This selection will also be used as the resource group where you create the VM from the disk.
 14. For **Region**, you must select the same region where the snapshot is located.
 15. Enter a **Name** for the disk.

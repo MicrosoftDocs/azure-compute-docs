@@ -222,7 +222,7 @@ You can also choose to base your solutions on a custom image that you create fro
 
 ## Oracle database VM images
 
-Oracle supports running Oracle Database 12.1 and higher Standard and Enterprise editions in Azure on VM images based on Oracle Linux. For the best performance for production workloads of Oracle Database on Azure, be sure to properly size the VM image and use Premium SSD or Ultra SSD Managed Disks. For instructions on how to quickly get an Oracle Database up and running in Azure using the Oracle published VM image, see [Create an Oracle Database in an Azure VM](oracle-database-quick-create.md).
+Oracle supports running Oracle Database 12.1 and higher Standard and Enterprise editions in Azure on VM images based on Oracle Linux. For the best performance for production workloads of Oracle Database on Azure, be sure to properly size the VM image and use Premium SSD or Ultra Disk managed disks. For instructions on how to quickly get an Oracle Database up and running in Azure using the Oracle published VM image, see [Create an Oracle Database in an Azure VM](oracle-database-quick-create.md).
 
 ### Attached disk configuration options
 
@@ -257,11 +257,11 @@ When you migrate Oracle software and workloads from on-premises to Microsoft Azu
 
 When using Oracle databases in Azure, you're responsible for implementing a high availability and disaster recovery solution to avoid any downtime.
 
-You can implement high availability and disaster recovery for Oracle Database Enterprise Edition by using [Data Guard, Active Data Guard](https://www.oracle.com/database/technologies/high-availability/dataguard.html), or [Oracle GoldenGate](https://www.oracle.com/technetwork/middleware/goldengate). The approach requires two databases on two separate VMs, which should be in the same [virtual network](/azure/virtual-network/) to ensure they can access each other over the private persistent IP address.
+You can implement high availability and disaster recovery for Oracle Database Enterprise Edition by using [Data Guard, Active Data Guard](https://www.oracle.com/database/data-guard/), or [Oracle GoldenGate](https://www.oracle.com/technetwork/middleware/goldengate). The approach requires two databases on two separate VMs, which should be in the same [virtual network](/azure/virtual-network/) to ensure they can access each other over the private persistent IP address.
 
 We recommend placing the VMs in the same availability set to allow Azure to place them into separate fault domains and upgrade domains. If you want to have geo-redundancy, set up the two databases to replicate between two different regions and connect the two instances with a VPN Gateway. To walk through the basic setup procedure on Azure, see [Implement Oracle Data Guard on an Azure Linux virtual machine](configure-oracle-dataguard.md).
 
-With Oracle Data Guard, you can achieve high availability with a primary database in one VM, a secondary (standby) database in another VM, and one-way replication set up between them. The result is read access to the copy of the database. With Oracle GoldenGate, you can configure bi-directional replication between the two databases. To learn how to set up a high-availability solution for your databases using these tools, see [Active Data Guard](https://www.oracle.com/database/technologies/high-availability/dataguard.html) and [GoldenGate](https://docs.oracle.com/goldengate/1212/gg-winux/index.html). If you need read-write access to the copy of the database, you can use [Oracle Active Data Guard](https://www.oracle.com/uk/products/database/options/active-data-guard/overview/index.html).
+With Oracle Data Guard, you can achieve high availability with a primary database in one VM, a secondary (standby) database in another VM, and one-way replication set up between them. The result is read access to the copy of the database. With Oracle GoldenGate, you can configure bi-directional replication between the two databases. To learn how to set up a high-availability solution for your databases using these tools, see [Active Data Guard](https://www.oracle.com/database/data-guard/) and [GoldenGate](https://docs.oracle.com/goldengate/1212/gg-winux/index.html). If you need read-write access to the copy of the database, you can use [Oracle Active Data Guard](https://www.oracle.com/database/data-guard/).
 
 To walk through the basic setup procedure on Azure, see [Implement Oracle Golden Gate on an Azure Linux VM](configure-oracle-golden-gate.md).
 

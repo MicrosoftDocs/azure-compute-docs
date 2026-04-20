@@ -825,7 +825,7 @@ The `errorHandling` property allows you to configure how errors are handled duri
 
 ```bicep
 errorHandling: {
-  onCustomizerError: 'abort',
+  onCustomizerError: 'abort'
   onValidationError: 'cleanup'
 }
 ```
@@ -1351,7 +1351,7 @@ Sets the source image as an existing managed image of a generalized VHD or VM.
 
 ```bicep
 source: {
-  type: 'ManagedImage',
+  type: 'ManagedImage'
   imageId: '/subscriptions/<subscriptionId>/resourceGroups/{destinationResourceGroupName}/providers/Microsoft.Compute/images/<imageName>'
 }
 ```
@@ -1679,6 +1679,8 @@ How to use the `validate` property to validate Linux images:
 
 ## Properties: vmProfile
 
+For details of networking-related configuration in this section, see [Azure VM Image Builder networking options](image-builder-networking.md).
+
 ### vmSize (optional)
 
 Image Builder uses a default SKU size of `Standard_D1_v2` for Gen1 images and `Standard_D2ds_v4` for Gen2 images. The generation is defined by the image you specify in the `source`. You can override vmSize for these reasons:
@@ -1736,7 +1738,7 @@ vnetConfig: {
 ---
 
 #### subnetId
-Resource ID of a pre-existing subnet on which the build VM and validation VM is deployed.
+Resource ID of a pre-existing subnet on which the build VM and validation VM is deployed. If any customization or validation scripts running in the build or validation VMs need outbound access then this subnet should also allow such access.
 
 #### containerInstanceSubnetId (optional)
 Resource ID of a pre-existing subnet on which Azure Container Instance (ACI) is deployed for [Isolated Builds](../security-isolated-image-builds-image-builder.md). If this field isn't specified, then a temporary Virtual Network,  along with subnets and Network Security Groups, is deployed in the staging resource group in addition to other networking resources (Private Endpoint, Private Link Service, Azure Load Balancer, and the Proxy VM) to enable communication between the ACI and the build VM.

@@ -1,12 +1,12 @@
 ---
 title: Time sync for Windows VMs in Azure
 description: Time sync for Windows virtual machines.
-author: ju-shim
+author: cynthn
 ms.service: azure-virtual-machines
 ms.collection: windows
 ms.topic: concept-article
 ms.date: 09/17/2018
-ms.author: jushiman
+ms.author: cynthn
 # Customer intent: "As a cloud administrator managing Windows virtual machines, I want to ensure accurate time synchronization across my VMs, so that I can maintain system security and integrity while supporting distributed transactions effectively."
 ---
 
@@ -15,14 +15,6 @@ ms.author: jushiman
 **Applies to:** :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
 Time sync is important for security and event correlation. Sometimes it is used for distributed transactions implementation. Time accuracy between multiple computer systems is achieved through synchronization. Synchronization can be affected by multiple things, including reboots and network traffic between the time source and the computer fetching the time. 
-
-Azure is now backed by infrastructure running Windows Server 2016. Windows Server 2016 has improved algorithms used to correct time and condition the local clock to synchronize with UTC.  Windows Server 2016 also improved the VMICTimeSync service that governs how VMs sync with the host for accurate time. Improvements include more accurate initial time on VM start or VM restore and interrupt latency correction for samples provided to Windows Time (W32time). 
-
-
->[!NOTE]
->For a quick overview of Windows Time service, take a look at this [high-level overview video](/shows/).
->
-> For more information, see [Accurate time for Windows Server 2016](/windows-server/networking/windows-time-service/accurate-time). 
 
 ## Overview
 

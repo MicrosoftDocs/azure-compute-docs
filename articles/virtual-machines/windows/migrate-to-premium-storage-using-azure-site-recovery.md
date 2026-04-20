@@ -1,19 +1,19 @@
 ---
 title: Migrate your Windows VMs to Azure Premium Storage with Azure Site Recovery 
 description: Learn how to migrate your VM disks from a standard storage account to a premium storage account by using Azure Site Recovery.
-author: ankitaduttaMSFT
+author: akashdubey-ms
 ms.service: azure-disk-storage
 ms.collection: windows
 ms.topic: how-to
 ms.date: 08/15/2017
-ms.author: ankitadutta
+ms.author: akashdubey
 # Customer intent: "As a system administrator, I want to migrate my Azure virtual machine disks to premium storage using a disaster recovery solution, so that I can enhance performance and minimize downtime during the migration process."
 ---
 # Migrate to Premium Storage by using Azure Site Recovery
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs 
 
-[Azure premium SSDs](../disks-types.md) deliver high-performance, low-latency disk support for virtual machines (VMs) that are running I/O-intensive workloads. This guide helps you migrate your VM disks from a standard storage account to a premium storage account by using [Azure Site Recovery](/azure/site-recovery/site-recovery-overview).
+[Azure Premium SSDs](../disks-types.md) deliver high-performance, low-latency disk support for virtual machines (VMs) that are running I/O-intensive workloads. This guide helps you migrate your VM disks from a standard storage account to a premium storage account by using [Azure Site Recovery](/azure/site-recovery/site-recovery-overview).
 
 Site Recovery is an Azure service that contributes to your strategy for business continuity and disaster recovery by orchestrating the replication of on-premises physical servers and VMs to the cloud (Azure) or to a secondary datacenter. When outages occur in your primary location, you fail over to the secondary location to keep applications and workloads available. You fail back to your primary location when it returns to normal operation. 
 

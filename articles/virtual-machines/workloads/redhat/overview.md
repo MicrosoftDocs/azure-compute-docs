@@ -1,14 +1,14 @@
 ---
 title: Red Hat workloads on Azure overview | Microsoft Docs
 description: Learn about the Red Hat product offerings available on Azure.
-author: ju-shim
+author: cynthn
 ms.service: azure-virtual-machines
 ms.subservice: redhat
 ms.custom: linux-related-content
 ms.collection: linux
 ms.topic: overview
 ms.date: 10/28/2024
-ms.author: jushiman
+ms.author: cynthn
 # Customer intent: As a cloud architect, I want to understand the Red Hat product offerings on Azure, so that I can make informed decisions on deploying RHEL workloads effectively and optimize our resource usage and costs.
 ---
 
@@ -40,7 +40,7 @@ You might want to use the pay-as-you-go images if you don't want to worry about 
 ### Red Hat Gold Images
 
 Azure also offers Red Hat Gold Images (`rhel-byos`). These images might be useful to customers who have existing Red Hat subscriptions and want to use them in Azure. You're required to enable your existing Red Hat subscriptions for Red Hat Cloud Access before you can use them in Azure. Access to these images is granted automatically when your Red Hat subscriptions are enabled for Cloud Access and meet the eligibility requirements. Using these images allows a customer to avoid double billing that might be incurred from using the pay-as-you-go images.
-* Learn how to [enable your Red Hat subscriptions for Cloud Access with Azure](https://docs.redhat.com/en/documentation/subscription_central/1-latest/html/getting_started_with_rhel_system_registration/red-hat-cloud-access-program-overview_#how_do_i_link_my_cloud_provider_account_to_my_red_hat_account).
+* Learn how to [enable your Red Hat subscriptions for Cloud Access with Azure](https://docs.redhat.com/en/documentation/subscription_central/1-latest/html/getting_started_with_rhel_system_registration/assembly-red-hat-cloud-access-program-overview#link_a_cloud_provider_account_to_a_red_hat_account).
 * Learn how to [locate Red Hat Gold Images in the Azure portal, the Azure CLI, or PowerShell cmdlet](./byos.md).
 
 > [!NOTE]

@@ -7,7 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: linux-related-content
 services: service-fabric
-ms.date: 07/14/2022
+ms.date: 03/22/2026
 
 # Maintainer notes: Keep these documents in sync:
 # service-fabric-local-linux-cluster-windows-wsl2.md
@@ -19,7 +19,7 @@ ms.date: 07/14/2022
 This document covers how to set up a local Linux Service Fabric cluster on a Windows development machine. Setting up a local Linux cluster is useful to quickly test applications targeted for Linux clusters but are developed on a Windows machine.
 
 ## Prerequisites
-Linux-based Service Fabric clusters do not run on Windows, but to enable cross-platform prototyping we have provided a Linux Service Fabric one box cluster docker container, which may be deployed via Docker for Windows.
+Linux-based Service Fabric clusters don't run on Windows, but to enable cross-platform prototyping we have provided a Linux Service Fabric one box cluster docker container, which may be deployed via Docker for Windows.
 
 Before you get started, you need:
 

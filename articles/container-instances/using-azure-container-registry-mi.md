@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
-ms.date: 08/29/2024
+ms.date: 11/17/2025
 ms.custom: mvc, devx-track-azurecli, devx-track-arm-template
 # Customer intent: "As a cloud engineer, I want to deploy container images from Azure Container Registry using managed identities, so that I can securely access resources within a virtual network without managing credentials."
 ---
@@ -25,6 +25,9 @@ When access to an Azure Container Registry (ACR) is [restricted using a private 
 
 ## Limitations
 * Windows containers don't support system-assigned managed identity-authenticated image pulls with ACR, only user-assigned.
+
+> [!NOTE]
+> Managed identity access to a private Azure Container Registry can be configured **only** via an ARM/Bicep template or the latest Azure CLI.
 
 ## Configure registry authentication
 

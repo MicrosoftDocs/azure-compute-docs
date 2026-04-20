@@ -7,14 +7,14 @@ ms.topic: how-to
 ms.date: 01/14/2025
 ms.author: rogarana
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-# Customer intent: "As a cloud administrator, I want to enable Write Accelerator on Premium SSD disks for M-Series VMs, so that I can enhance write I/O performance for log files in high-performance database applications."
+# Customer intent: "As a cloud administrator, I want to enable Write Accelerator on Premium SSDs for M-Series VMs, so that I can enhance write I/O performance for log files in high-performance database applications."
 ---
 
 # Enable Write Accelerator
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
-Write Accelerator is a disk capability for M-Series Virtual Machines (VMs) on Premium SSD managed disks. As the name states, the purpose of the functionality is to improve the I/O latency of writes against Premium SSD disks. Write Accelerator is ideally suited where log file updates are required to persist to disk in a highly performant manner for modern databases.
+Write Accelerator is a disk capability for M-Series Virtual Machines (VMs) on Premium SSD managed disks. As the name states, the purpose of the functionality is to improve the I/O latency of writes against Premium SSDs. Write Accelerator is ideally suited where log file updates are required to persist to disk in a highly performant manner for modern databases.
 
 Write Accelerator is generally available for M-series VMs in the Public Cloud.
 
@@ -33,7 +33,7 @@ Write Accelerator should be used for the volumes that contain the transaction lo
 >
 > To enable Write Accelerator to an existing Azure disk that isn't part of a volume build out of multiple disks with Windows disk or volume managers, Windows Storage Spaces, Windows Scale-out file server (SOFS), Linux LVM, or MDADM, the workload accessing the Azure disk needs to be shut down. Database applications using the Azure disk must be shut down.
 >
-> To enable or disable Write Accelerator for an existing volume that is built out of multiple Azure Premium SSD disks and striped using Windows disk or volume managers, Windows Storage Spaces, Windows Scale-out file server (SOFS), Linux LVM or MDADM, all disks building the volume must be enabled or disabled for Write Accelerator in separate steps. Shut down the VM Before enabling or disabling Write Accelerator in such a configuration.
+> To enable or disable Write Accelerator for an existing volume that is built out of multiple Azure Premium SSDs and striped using Windows disk or volume managers, Windows Storage Spaces, Windows Scale-out file server (SOFS), Linux LVM or MDADM, all disks building the volume must be enabled or disabled for Write Accelerator in separate steps. Shut down the VM Before enabling or disabling Write Accelerator in such a configuration.
 
 Enabling Write Accelerator for OS disks shouldn't be necessary for SAP-related VM configurations.
 
@@ -45,7 +45,7 @@ When using Write Accelerator for an Azure disk/VHD, these restrictions apply:
 - Snapshots are currently supported for only Write Accelerator-enabled data disks, and not the OS disk. During backup, the Azure Backup service automatically backs up and protects Write Accelerator-enabled data disks attached to the VM.
 - Only smaller I/O sizes (<=64 KiB) are taking the accelerated path. In workload situations where data is getting bulk loaded or where the transaction log buffers of the different DBMS are filled to a larger degree before getting persisted to the storage, chances are that the I/O written to disk is not taking the accelerated path.
 
-There are limits of Azure Premium SSD disks per VM that can be supported by Write Accelerator. The current limits are:
+There are limits of Azure Premium SSDs per VM that can be supported by Write Accelerator. The current limits are:
 
 | VM SKU | Number of Write Accelerator disks | Write Accelerator Disk IOPS per VM |
 | --- | --- | --- |
@@ -71,7 +71,7 @@ The next few sections describe how Write Accelerator can be enabled on Azure Pre
 
 ## Enabling Azure Write Accelerator using Azure PowerShell
 
-The Azure PowerShell module from version 5.5.0 include the changes to the relevant cmdlets to enable or disable Write Accelerator for specific Azure Premium SSD disks.
+The Azure PowerShell module from version 5.5.0 include the changes to the relevant cmdlets to enable or disable Write Accelerator for specific Azure Premium SSDs.
 In order to enable or deploy disks supported by Write Accelerator, the following PowerShell commands got changed, and extended to accept a parameter for Write Accelerator.
 
 A new switch parameter, **-WriteAccelerator** has been added to the following cmdlets:

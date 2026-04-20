@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 07/30/2024
+ms.date: 03/10/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 # Customer intent: "As a cloud architect, I want to understand the specifications and capabilities of the DCas_cc_v5 VM sizes, so that I can select the appropriate size for my applications' performance needs."
@@ -20,9 +20,7 @@ ms.reviewer: mattmcinnes
 ## Host specifications
 [!INCLUDE [dcas_cc_v5-series-specs](./includes/dcasccv5-series-specs.md)]
 
-## Feature support
-[Trusted Launch](../../trusted-launch.md): Not Supported<br>
-[Premium Storage](../../premium-storage-performance.md): Supported <br>[Premium Storage caching](../../premium-storage-performance.md): Supported <br>[Live Migration](../../maintenance-and-updates.md): Not Supported <br>[Memory Preserving Updates](../../maintenance-and-updates.md): Not Supported <br>[Generation 2 VMs](../../generation-2.md): Supported <br>[Generation 1 VMs](../../generation-2.md): Not Supported <br>[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported <br>[Ephemeral OS Disk](../../ephemeral-os-disks.md): Not Supported <br>[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Supported <br>
+For features supported by this series, see the [Feature support](#feature-support) section.
 
 ## Sizes in series
 
@@ -58,15 +56,15 @@ Local (temp) storage info for each size
 
 Remote (uncached) storage info for each size
 
-| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD Disk IOPS | Uncached Premium SSD Throughput (MB/s) |
+| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD IOPS | Uncached Premium SSD Throughput (MBps) |
 | --- | --- | --- | --- |
-| Standard_DC4as_cc_v5 | 8 | 6400 | 144 |
-| Standard_DC8as_cc_v5 | 16 | 12800 | 200 |
-| Standard_DC16as_cc_v5 | 32 | 25600 | 384 |
-| Standard_DC32as_cc_v5 | 32 | 51200 | 768 |
-| Standard_DC48as_cc_v5 | 32 | 76800 | 1152 |
-| Standard_DC64as_cc_v5 | 32 | 80000 | 1200 |
-| Standard_DC96as_cc_v5 | 32 | 80000 | 1600 |
+| Standard_DC4as_cc_v5 | 8 | 6,400 | 144 |
+| Standard_DC8as_cc_v5 | 16 | 12,800 | 200 |
+| Standard_DC16as_cc_v5 | 32 | 25,600 | 384 |
+| Standard_DC32as_cc_v5 | 32 | 51,200 | 768 |
+| Standard_DC48as_cc_v5 | 32 | 76,800 | 1,152 |
+| Standard_DC64as_cc_v5 | 32 | 80,000 | 1,200 |
+| Standard_DC96as_cc_v5 | 32 | 80,000 | 1,600 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
@@ -76,7 +74,7 @@ Remote (uncached) storage info for each size
 #### Table definitions
 - <sup>1</sup>Some sizes support [bursting](../../disk-bursting.md) to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.
 
-- Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
+- Storage capacity is shown in units of GiB or 1,024^3 bytes. When you compare disks measured in GB (1,000^3 bytes) to disks measured in GiB (1,024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1,023 GiB = 1,098.4 GB.
 - Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
 - Data disks can operate in cached or uncached modes. For cached data disk operation, the host cache mode is set to ReadOnly or ReadWrite. For uncached data disk operation, the host cache mode is set to None.
 - To learn how to get the best storage performance for your VMs, see [Virtual machine and disk performance](../../../virtual-machines/disks-performance.md).
@@ -113,6 +111,22 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 > No accelerators are present in this series.
 
 ---
+
+
+
+## Feature support
+|Feature name | Support status |
+| --- | --- |
+|[Trusted Launch](../../trusted-launch.md)| Not Supported |
+|[Premium Storage](../../premium-storage-performance.md)| Supported |
+|[Premium Storage caching](../../premium-storage-performance.md)| Supported |
+|[Live Migration](../../maintenance-and-updates.md)| Not Supported |
+|[Memory Preserving Updates](../../maintenance-and-updates.md)| Not Supported |
+|[Generation 2 VMs](../../generation-2.md)| Supported |
+|[Generation 1 VMs](../../generation-2.md)| Not Supported |
+|[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli)| Supported |
+|[Ephemeral OS Disk](../../ephemeral-os-disks.md)| Not Supported |
+|[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)| Supported |
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]
 

@@ -4,7 +4,7 @@
  author: albecker1
  ms.service: azure-disk-storage
  ms.topic: include
- ms.date: 01/14/2025
+ ms.date: 04/15/2026
  ms.author: albecker1
  ms.custom: include file
 # Customer intent: As a cloud resource manager, I want to understand the cost and performance implications of on-demand and credit-based disk bursting, so that I can optimize our workloads' IOPS and throughput while managing expenses effectively.
@@ -45,14 +45,14 @@ Disk configuration: Premium SSD – 1 TB (P30), Disk bursting enabled.
 
 The burst transaction is accounted as the max number of transactions from either IOPS or MBps bursting. From 00:00:01 – 00:00:05, the accumulated burst transaction is Max((10,000 – 5,000), (300 - 200) * 1024 / 256)) * 5 = 25,000 transactions. From 00:00:06 – 00:00:10, the accumulated burst transaction is Max((6,000 – 5,000), (600 - 200) * 1024 / 256)) * 5 = 8,000 transactions. On top of that, you include the burst enablement flat fee to get the total cost for enabling on-demand based disk bursting. 
 
-You can refer to the [Managed Disks pricing page](https://azure.microsoft.com/pricing/details/managed-disks/) for details on pricing and use [Azure Pricing Calculator](https://azure.microsoft.com/pricing/calculator/?service=storage) to make the assessment for your workload. 
+You can refer to the [managed disks pricing page](https://azure.microsoft.com/pricing/details/managed-disks/) for details on pricing and use [Azure Pricing Calculator](https://azure.microsoft.com/pricing/calculator/?service=storage) to make the assessment for your workload. 
 
 
 To enable on-demand bursting, see [Enable on-demand bursting](/azure/virtual-machines/disks-enable-bursting).
 
 ### Credit-based bursting
 
-For Premium SSD managed disks, credit-based bursting is available for disk sizes P20 and smaller. For standard SSDs, credit-based bursting is available for disk sizes E30 and smaller. For both standard and Premium SSD managed disks, credit-based bursting is available in all regions in Azure Public, Government, and China Clouds. By default, disk bursting is enabled on all new and existing deployments of supported disk sizes. VM-level bursting only uses credit-based bursting.
+For Premium SSD managed disks, credit-based bursting is available for disk sizes P20 and smaller. For Standard SSDs, credit-based bursting is available for disk sizes E30 and smaller. For both standard and Premium SSD managed disks, credit-based bursting is available in all regions in Azure Public, Government, and China Clouds. By default, disk bursting is enabled on all new and existing deployments of supported disk sizes. VM-level bursting only uses credit-based bursting.
 
 ## Virtual machine-level bursting
 
@@ -62,7 +62,7 @@ VM-level bursting only uses the credit-based model for bursting, it's enabled by
 
 ## Bursting flow
 
-The bursting credit system applies in the same manner at both the VM level and disk level. Your resource, either a VM or disk, will start with fully stocked credits in its own burst bucket. These credits allow you to burst for up to 30 minutes at the maximum burst rate. You accumulate credits whenever the resource's IOPS or MB/s are being utilized below the resource's performance target. If your resource has accrued bursting credits and your workload needs the extra performance, your resource can use those credits to go above its performance limits and increase its performance to meet the workload demands.
+The bursting credit system applies in the same manner at both the VM level and disk level. Your resource, either a VM or disk, will start with fully stocked credits in its own burst bucket. These credits allow you to burst for up to 30 minutes at the maximum burst rate. You accumulate credits whenever the resource's IOPS or MB/s are being utilized below the resource's performance target. If your resource has accrued bursting credits and your workload needs the extra performance, your resource can use those credits to go above its performance limits on a best-effort basis to help meet workload demands.
 
 ![Bursting bucket diagram.](media/managed-disks-bursting/bucket-diagram.jpg)
 

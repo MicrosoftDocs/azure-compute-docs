@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: networking
 ms.topic: how-to
-ms.custom: devx-track-azurecli, linux-related-content, innovation-engine
+ms.custom: devx-track-azurecli, linux-related-content
 ms.date: 04/06/2023
 ms.author: mattmcinnes
 ms.reviewer: cynthn
@@ -13,9 +13,6 @@ ms.reviewer: cynthn
 ---
 
 # How to create a Linux virtual machine in Azure with multiple network interface cards
-
-> [!div class="nextstepaction"]
-> [Deploy and Explore](https://go.microsoft.com/fwlink/?linkid=2321933)
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Flexible scale sets
 

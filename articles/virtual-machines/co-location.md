@@ -6,6 +6,7 @@ ms.author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: proximity-placement-groups
 ms.topic: concept-article
+ms.update-cycle: 1095-days
 ms.date: 09/12/2022
 # Customer intent: "As a cloud architect, I want to utilize proximity placement groups for my VMs, so that I can ensure low latency for my applications while optimizing resource allocation within Azure's infrastructure."
 ---
@@ -84,9 +85,9 @@ You can do the following to check the alignment status of your proximity placeme
 
 - Proximity placement group colocation status can be viewed using the portal, CLI, and PowerShell.
 
-    -   PowerShell - colocation status can be obtained through Get-AzProximityPlacementGroup cmdlet by including the optional parameter ‘-ColocationStatus`.
+    -   PowerShell - colocation status can be obtained through Get-AzProximityPlacementGroup cmdlet by including the optional parameter `-ColocationStatus`.
 
-    -   CLI - colocation status can be obtained through `az ppg show` by including the optional parameter ‘--include-colocation-status`.
+    -   CLI - colocation status can be obtained through `az ppg show` by including the optional parameter `--include-colocation-status`.
 
 - For each proximity placement group, a **colocation status** property
     provides the current alignment status summary of the grouped resources. 

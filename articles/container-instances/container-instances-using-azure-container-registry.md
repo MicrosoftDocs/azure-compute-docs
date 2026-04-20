@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
-ms.date: 08/29/2024
+ms.date: 11/17/2025
 ms.custom: mvc, devx-track-azurecli, devx-track-arm-template
 # Customer intent: As a cloud developer, I want to deploy container images from a container registry using a service principal, so that I can ensure secure and manageable access control for automated deployments in Azure Container Instances.
 ---

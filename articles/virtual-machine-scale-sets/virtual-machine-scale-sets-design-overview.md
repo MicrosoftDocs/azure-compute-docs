@@ -7,7 +7,7 @@ ms.author: mimckitt
 ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
 ms.date: 06/14/2024
-ms.reviewer: jushiman
+ms.reviewer: cynthn
 ms.custom: mimckitt
 # Customer intent: "As a cloud architect, I want to understand the design considerations for Virtual Machine Scale Sets, so that I can make informed decisions about using scale sets versus individual VMs for efficient multi-VM deployments."
 ---
@@ -44,8 +44,8 @@ While overprovisioning does improve provisioning success rates, it can cause con
 If your scale set uses user-managed storage, and you turn off overprovisioning, you can have more than 20 VMs per storage account, but it is not recommended to go above 40 for IO performance reasons. 
 
 ## Limits
-A scale set built on a Marketplace image (also known as a platform image) or a user-defined custom image in an Azure Compute Gallery and configured to use Azure Managed Disks supports a capacity of up to 1,000 VMs. If you configure your scale set to support more than 100 VMs, not all scenarios work the same (for example load balancing). For more information, see [Working with large Virtual Machine Scale Sets](virtual-machine-scale-sets-placement-groups.md). 
+A scale set built on a Marketplace image (also known as a platform image) or a user-defined custom image in an Azure Compute Gallery and configured to use Azure managed disks supports a capacity of up to 1,000 VMs. If you configure your scale set to support more than 100 VMs, not all scenarios work the same (for example load balancing). For more information, see [Working with large Virtual Machine Scale Sets](virtual-machine-scale-sets-placement-groups.md). 
 
 A scale set configured with user-managed storage accounts is currently limited to 100 VMs (and 5 storage accounts are recommended for this scale).
 
-A scale set built on the legacy managed image can have a capacity of up to 600 VMs when configured with Azure Managed disks. If the scale set is configured with user-managed storage accounts, it must create all OS disk VHDs within one storage account. As a result, the maximum recommended number of VMs in a scale set built on a custom image and user-managed storage is 20. If you turn off overprovisioning, you can go up to 40.
+A scale set built on the legacy managed image can have a capacity of up to 600 VMs when configured with Azure managed disks. If the scale set is configured with user-managed storage accounts, it must create all OS disk VHDs within one storage account. As a result, the maximum recommended number of VMs in a scale set built on a custom image and user-managed storage is 20. If you turn off overprovisioning, you can go up to 40.

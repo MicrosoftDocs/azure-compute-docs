@@ -8,7 +8,7 @@ ms.custom:
   - ignite-2024
 ms.topic: how-to
 ms.date: 5/6/2025
-ms.reviewer: ju-shim
+ms.reviewer: cynthn
 # Customer intent: As a cloud infrastructure administrator, I want to understand the configurations and limitations of standby pools for Virtual Machine Scale Sets, so that I can effectively manage resource allocation and ensure optimal capacity in my environment.
 ---
 
