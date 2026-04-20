@@ -740,7 +740,7 @@ To learn more, see Azure PowerShell command [Update-AzCapacityReservation](/powe
 <!-- The three dashes above show that your section of tabbed content is complete. -->
 
 ### Azure Resource Graph
-Use the Azure Resource Graph to view the list of all Capacity Reservation Groups that are shared with created locally within a given subscription.
+Use the Azure Resource Graph to view the list of all Capacity Reservation Groups that are shared with and created locally within a given subscription.
 
 #### [Portal](#tab/portal-7)
 To view the CRG list, go to [Azure Resource Graph Explorer](https://ms.portal.azure.com/#view/HubsExtension/ArgQueryBlade) and try this query.
