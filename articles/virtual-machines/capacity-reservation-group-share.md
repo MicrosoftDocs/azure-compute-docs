@@ -76,8 +76,7 @@ Limitations by design:
 - Sharing is done per Capacity Reservation Group, which grants access to all member Capacity Reservations. Individual Capacity Reservations can't be shared. To isolate specific Capacity Reservations, create multiple Capacity Reservation Groups and share only those Capacity Reservations that contain shared capacity. 
 - By default, Capacity Reservation Group administrators in the subscription owning a Capacity Reservation Group can't modify VM instances deployed by other subscriptions. If such VM access is desired, more rights to VMs on the shared subscriptions must be granted separately. 
   
-Limitations for Preview:
-- Azure portal support isn't available; API and other Azure clients are available.  
+Limitations for Preview:  
 - Reprovisioning of Virtual Machine Scale Set VMs using a shared Capacity Reservation Group isn't supported during a zone outage.
 - There is a known issue of [Capacity Reservation Groups - List by Subscription ID](#capacity-reservation-groups---list-by-subscription-id) not giving the right response if there is no CRG created by the subscription making the `GET` call to list shared CRGs in the region. To get the correct response, ensure you have a local CRG created in the subscription making the API call in the same region where you would like to enumerate the shared CRGs. Alternatively, use the [Azure Resource Graph](#azure-resource-graph) query provided to get the list of CRGs shared with your subscription.
 
@@ -87,6 +86,35 @@ Capacity Reservation Groups are shared by adding Consumer subscriptions in the s
 
 ### Add sharing profile to a new Capacity Reservation Group
 Share a Capacity Reservation Group during creation by adding subscriptions in the sharing profile.
+
+#### [Portal](#tab/portal-1)
+To create a Capacity Reservation Group with sharing profile from the portal, follow the steps:
+
+1. Open the [Azure portal](https://portal.azure.com).
+1. In the search bar, enter **capacity reservation groups**.
+1. Select **Capacity reservation groups** from the options.
+1. Select **Create**.
+1. On the **Basics** tab, create a capacity reservation group:
+    1. Select a subscription.
+    1. Select or create a resource group.
+    1. Name your group.
+    1. Select a region.
+    1. Optionally, select **Availability zones** or allow Azure to choose for you.
+1. Select **Next**.
+1. On the **Reservations** tab, create at least one capacity reservation:
+    1. Give each reservation a reservation name, the quantity of VM instances, and select a unique VM size.
+    1. Billing information based on your selections appears in the **Cost/month** column.
+1. Select **Next**.
+1. On **Sharing** tab, share the capacity reservation group:
+   	1. Select **Add Subscriptions**.
+	1. Select subscriptions to add.
+    1. Select **Add**.
+1. Select **Next**.
+1. On the **Tags** tab, optionally create tags.
+1. Select **Next**.
+1. On the **Review + Create** tab, review your capacity reservation group information.
+1. Select **Create**.
+
 
 #### [API](#tab/api-1)
 To share a Capacity Reservation group on creation, construct the following PUT request: 
@@ -206,6 +234,19 @@ If your environment meets the prerequisites and you're familiar with using ARM t
 ### Add sharing profile to an existing Capacity Reservation Group 
 Add a sharing profile and share with subscriptions for an existing Capacity Reservation Group. 
 
+
+#### [Portal](#tab/portal-2)
+To add subscriptions to the sharing profile of an existing capacity reservation group from the portal, follow the steps:
+
+1. Open the [Azure portal](https://portal.azure.com).
+1. Go to your capacity reservation group.
+1. Select **Settings** of the capacity reservation group.
+1. Select **Sharing**
+1. Select **Add subscriptions**
+1. Select the subscriptions to add
+1. Select **Add**
+1. Select **Save**
+
 #### [API](#tab/api-2)
 To add a sharing profile to an existing CRG, construct the following PUT request.  
 
@@ -286,7 +327,17 @@ Once unsharing happens, any VM or scale set previously associated to the CRG wou
 ### Unsharing a Capacity Reservation Group with a subscription
 To unshare a Capacity Reservation Group with a subscription from the sharing profile, remove the subscription from the sharing profile. 
 
-In the following examples, a Capacity Reservation Group was shared with Consumer Subscription ID 1, Consumer Subscription ID 2, and Consumer Subscription ID 3.  
+#### [Portal](#tab/portal-3)
+To remove subscriptions from  the sharing profile of an existing capacity reservation group from the portal, follow the steps:
+
+1. Open the [Azure portal](https://portal.azure.com).
+1. Go to your capacity reservation group.
+1. Select **Settings** of the capacity reservation group.
+1. Select **Sharing**
+1. Select the subscriptions to remove
+1. Select **Stop sharing**
+1. Select **Save**
+
 
 #### [API](#tab/api-3)
 To remove a subscription from the sharing profile of an existing Capacity Reservation Group, construct the following PUT request.  
@@ -358,6 +409,17 @@ To learn more, see [Update-AzCapacityReservation](/powershell/module/az.compute/
 
 ### Unsharing a Capacity Reservation Group with all subscriptions
 To unshare a Capacity Reservation Group with all consumer subscriptions, remove all subscriptions from the sharing profile. 
+
+#### [Portal](#tab/portal-4)
+To remove subscriptions from  the sharing profile of an existing capacity reservation group from the portal, follow the steps:
+
+1. Open the [Azure portal](https://portal.azure.com).
+1. Go to your capacity reservation group.
+1. Select **Settings** of the capacity reservation group.
+1. Select **Sharing**
+1. Select all subscriptions to remove
+1. Select **Stop sharing**
+1. Select **Save**
 
 #### [API](#tab/api-4)
 To remove all consumer subscriptions from the sharing profile of an existing Capacity Reservation group, construct the following PUT request.  
@@ -513,16 +575,16 @@ Sharing a Capacity Reservation Group doesn't alter the scope of any Reserved Ins
 To share Reserved Instance discounts between a Capacity Reservation Group and VMs deployed from a Consumer subscription, the Provider subscription and the Consumer subscription must share the same Reserved Instance scope. If the two subscriptions share an enrollment or a management group, then Reserved Instances set to the corresponding scope works automatically. 
 
 #### Associate or create a single Virtual Machine with shared Capacity Reservation Group
-Single Virtual Machine can be deployed in shared Capacity Reservation Group using PowerShell, CLI, or REST API. See [Associate a virtual machine to a Capacity Reservation group](/azure/virtual-machines/capacity-reservation-associate-vm).
+A single Virtual Machine can be deployed in a shared Capacity Reservation Group. See [Associate a virtual machine to a Capacity Reservation group](/azure/virtual-machines/capacity-reservation-associate-vm).
 
 #### Remove a single Virtual Machine from Shared Capacity Reservation Group 
-Single Virtual Machine can be removed from Shared Capacity Reservation Group using PowerShell, CLI, or REST API. See [Remove a virtual machine association from a Capacity Reservation group](/azure/virtual-machines/capacity-reservation-remove-vm).
+A single Virtual Machine can be removed from a Shared Capacity Reservation Group. See [Remove a virtual machine association from a Capacity Reservation group](/azure/virtual-machines/capacity-reservation-remove-vm).
 
 #### Associate or create a Virtual Machine Scale Set with shared Capacity Reservation Group 
-Virtual Machine Scale Set in Flexible and Uniform orchestration mode can be deployed in shared Capacity Reservation Group using PowerShell, CLI, or REST API. To learn more, see [Associate a scale set -Flexible](/azure/virtual-machines/capacity-reservation-associate-virtual-machine-scale-set-flex) and [Associate a scale set - Uniform](/azure/virtual-machines/capacity-reservation-associate-virtual-machine-scale-set).
+Virtual Machine Scale Sets in Flexible and Uniform orchestration mode can be deployed in a shared Capacity Reservation Group. To learn more, see [Associate a scale set -Flexible](/azure/virtual-machines/capacity-reservation-associate-virtual-machine-scale-set-flex) and [Associate a scale set - Uniform](/azure/virtual-machines/capacity-reservation-associate-virtual-machine-scale-set).
 
 #### Remove Virtual Machine Scale Set from Shared Capacity Reservation Group
-Virtual Machine Scale Set in Flexible and Uniform orchestration mode can be removed from shared Capacity Reservation Group using PowerShell, CLI, or REST API. To learn more, see [Remove a scale set](/azure/virtual-machines/capacity-reservation-remove-virtual-machine-scale-set).
+Virtual Machine Scale Sets in Flexible and Uniform orchestration mode can be removed from a shared Capacity Reservation Group. To learn more, see [Remove a scale set](/azure/virtual-machines/capacity-reservation-remove-virtual-machine-scale-set).
 
 ## View shared Capacity Reservation Group
 
@@ -531,6 +593,14 @@ Once a Capacity Reservation Group is shared successfully, the reservations are i
 View the subscription IDs the Capacity Reservation Group are shared with from the sharing profile. 
 
 To learn more, see [Create a Capacity Reservation](/azure/virtual-machines/capacity-reservation-create).
+
+#### [Portal](#tab/portal-5)
+
+1. Open the [Azure portal](https://portal.azure.com).
+1. Go to your capacity reservation group.
+1. Select **Settings** of the capacity reservation group.
+1. Select **Sharing**.
+1. View a list of the subscriptions the capacity reservation group is shared with.
 
 ### [API](#tab/api-5)
 
@@ -670,7 +740,7 @@ To learn more, see Azure PowerShell command [Update-AzCapacityReservation](/powe
 <!-- The three dashes above show that your section of tabbed content is complete. -->
 
 ### Azure Resource Graph
-Use the Azure Resource Graph to view the list of all Capacity Reservation Groups that are shared with created locally within a given subscription.
+Use the Azure Resource Graph to view the list of all Capacity Reservation Groups that are shared with and created locally within a given subscription.
 
 #### [Portal](#tab/portal-7)
 To view the CRG list, go to [Azure Resource Graph Explorer](https://ms.portal.azure.com/#view/HubsExtension/ArgQueryBlade) and try this query.

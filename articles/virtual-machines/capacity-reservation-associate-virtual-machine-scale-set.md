@@ -535,7 +535,11 @@ To associate a Virtual Machine Scale Set with a Capacity Reservation Group, see 
 1. Under **Administrator account**, enter a username and a password. The password must be at least 12 characters long and meet the defined complexity requirements.
 1.Go to the **Management section** and select the **Upgrade mode** needed
 1. Go to the **Advanced section**.
-1. In the **Capacity Reservations** dropdown list, select the capacity reservation group that you want to associate to the scale set.
+1. In the **Capacity Reservations** dropdown list, select the capacity reservation group that you want to associate to the scale set:
+    1. If you are using the Capacity Reservation Group from the same subscription, select **Capacity reservation group**
+    1. If you are using Capacity Reservation Group from another subscription, select **Shared capacity reservation group** (Preview):
+        1. Select **Provider subscription**
+        1. Select **Capacity reservation group** 
 1. Select **Review + create**.
 1. After validation runs, select **Create**.
 1. After the deployment is finished, select **Go to resource**.
@@ -648,7 +652,11 @@ To learn more, see the Azure PowerShell commands [Stop-AzVmss](/powershell/modul
 1. Select **Overview**.
 1. Select **Stop** at the top of the page to deallocate the scale set.
 1. Go to **Configurations** on the left.
-1. In the **Capacity Reservation group** dropdown list, select the group that you want to associate to the scale set.
+1. In the **Capacity Reservations** dropdown list, select the capacity reservation group that you want to associate to the scale set:
+    1. If you are using the Capacity Reservation Group from the same subscription, select **Capacity reservation group**
+    1. If you are using Capacity Reservation Group from another subscription, select **Shared capacity reservation group** (Preview):
+        1. Select **Provider subscription**
+        1. Select **Capacity reservation group** 
 
 --- 
 <!-- The three dashes above show that your section of tabbed content is complete. Don't remove them :) -->
@@ -659,7 +667,6 @@ If you have capacity in an existing capacity reservation group and you want to a
 
 > [!IMPORTANT]
 > The feature to associate an existing zonal scale set to a reservation group without the need to deallocate, is currently in **Preview**. See the [Preview Terms of Use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
-> The feature is currently not available in Microsoft Azure Government and Microsoft Azure operated by 21Vianet.
 
 #### Important notes on upgrade policies
 
@@ -729,7 +736,11 @@ To associate the scale set to the capacity reservation group using the Azure por
 1. Go to your Virtual Machine Scale Set.
 1. Select **Overview**.
 1. Go to **Configurations** on the left.
-1. In the **Capacity Reservation group** dropdown list, select the group that you want to associate to the scale set.
+1. In the **Capacity Reservations** dropdown list, select the capacity reservation group that you want to associate to the scale set:
+    1. If you are using the Capacity Reservation Group from the same subscription, select **Capacity reservation group**
+    1. If you are using Capacity Reservation Group from another subscription, select **Shared capacity reservation group** (Preview):
+        1. Select **Provider subscription**
+        1. Select **Capacity reservation group** 
 
 --- 
 <!-- The three dashes above show that your section of tabbed content is complete. Don't remove them :) -->
