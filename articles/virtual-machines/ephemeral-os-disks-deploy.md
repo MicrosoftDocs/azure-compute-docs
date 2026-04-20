@@ -18,7 +18,7 @@ ms.custom: devx-track-azurecli
 This article shows you how to create a virtual machine or virtual machine scale sets with Ephemeral OS disks through Portal, ARM template deployment, CLI and PowerShell.
 
 > [!IMPORTANT]
-> Ephemeral OS disk with full caching is currently in public preview. Preview features are provided without a service level agreement, and are not recommended for production workloads.
+> Ephemeral OS disk with full caching is currently in public preview. Preview features are provided without a service level agreement, and aren't recommended for production workloads.
 
 ## Portal
 

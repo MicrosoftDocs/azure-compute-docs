@@ -15,9 +15,6 @@ ms.subservice: disks
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
-> [!NOTE]
-> NVMe disk placement for Ephemeral OS disks is now Generally Available (GA). Customers can use Ephemeral OS disks for production workloads on supported v6 VM series.
-
 Ephemeral OS disks are created on the local virtual machine (VM) storage and not saved to the remote Azure Storage. Ephemeral OS disks are ideal for stateless workloads, where applications can tolerate individual VM failures but are sensitive to VM deployment times or the reimaging of individual VM instances. With Ephemeral OS disk, you get lower read/write latency to the OS disk and faster VM reimage.
 
 Ephemeral OS Disk is available in two caching modes:
