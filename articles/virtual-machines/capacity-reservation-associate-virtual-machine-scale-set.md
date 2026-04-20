@@ -667,7 +667,6 @@ If you have capacity in an existing capacity reservation group and you want to a
 
 > [!IMPORTANT]
 > The feature to associate an existing zonal scale set to a reservation group without the need to deallocate, is currently in **Preview**. See the [Preview Terms of Use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
-> The feature is currently not available in Microsoft Azure Government and Microsoft Azure operated by 21Vianet.
 
 #### Important notes on upgrade policies
 
