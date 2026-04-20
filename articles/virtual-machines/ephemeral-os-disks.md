@@ -174,6 +174,14 @@ SSD support is a new option that allows customers to choose the type of base dis
 - **Enhanced SLA**: VMs created with Premium SSD provide higher SLA than VMs created with Standard HDD. Customers can enhance [SLA](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services) for their Ephemeral VMs by choosing Premium SSD as base disk.
 - **Improved performance**: By choosing Premium SSD as the base disk, customers can enhance the disk read performance of their VMs. While most writes occur on the local temp disk, some reads are performed from managed disks. Premium SSD disks provide 8-10 times higher IOPS than Standard HDD. 
 
+## Local temporary storage
+
+Some Azure VM sizes include [local temporary storage](overview.md#local-temporary-storage), with some of the newer sizes using [Temporary local NVMe disks](enable-nvme-temp-faqs.yml). Local temporary disks are different from Ephemeral OS disks. 
+
+Local temporary storage, also known as local ephemeral storage, are additional disks provisioned directly as local storage to an Azure virtual machine host, rather than on remote Azure Storage. This type of storage is best suited for data that does not need to be retained permanently, such as caches, buffers, and temporary files. Local ephemeral storage is not backed up and is lost when the VM is deallocated or deleted. The ephemeral storage is recreated on startup.
+
+Azure VM sizes featuring a 'd' in their naming convention - such as the Da***d***sv6, Ea***d***sv6, and FXm***d***sv2 series - include dedicated local temporary disks.
+
 ## Next steps
 
 Create a VM with ephemeral OS disk using [Azure Portal/CLI/PowerShell/ARM template](ephemeral-os-disks-deploy.md).
