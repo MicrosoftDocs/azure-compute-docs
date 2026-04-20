@@ -493,7 +493,7 @@ In some cases, you must utilize the Azure Management API to patch the license ty
    ```azurecli
    VM_ID=$(az vm list --query "[?name=='YourVMName'].id" -o tsv)
    ```
-1. Update the license type by patching the VM's metadata. For example, change PAYG license to SLES_SAP:
+1. Update the license type by patching the VM's metadata. For example, change pay-as-you-go license to SLES_SAP:
    ```azurecli
    az rest --method patch --url "https://management.azure.com${VM_ID}?api-version=2024-07-01" --body '{"properties":{"licenseType":"SLES_SAP"}}'
    ```
