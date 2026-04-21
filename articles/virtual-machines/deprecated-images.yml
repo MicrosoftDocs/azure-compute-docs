@@ -281,24 +281,28 @@ r
         answer: |
           The migration approach depends on whether an image version, plan/SKU, or entire offer is deprecated.
 
+          > [!NOTE]
+          > If your image doesn't have a purchase plan and you have [automatic OS image upgrade](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) enabled, automatic OS upgrade handles migration automatically for all deprecation levels (version, plan/SKU, and offer), including changes to publisher, offer, SKU, and version. The manual steps in each section below apply only to images with a purchase plan or scale sets without automatic OS upgrade enabled.
+
           ### Version deprecation
 
           If only a specific image version is deprecated:
 
           - **Using "latest" version**: No action required for new instances. Azure resolves to the newest available version at deployment time. Existing instances remain on their original version.
-          - **Using automatic OS upgrades**: No action required. Azure upgrades existing instances to the latest version automatically, regardless of whether your image reference uses "latest" or a pinned version.
+          - **Using automatic OS upgrades**: No action required. Azure upgrades existing instances to the latest version automatically, regardless of whether your image reference uses "latest" or a pinned version. This applies to all images, including those with a purchase plan.
           - **Using a pinned version without automatic OS upgrades**: Update the image reference to a supported version. See [Modify an Azure virtual machine scale set](../virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set.md). After updating the model, upgrade existing instances using one of these methods:
             - **Manual upgrade**: Use `az vmss update-instances` (CLI) or `Update-AzVmssInstance` (PowerShell) to upgrade specific instances.
             - **Rolling upgrade policy**: Configure the upgrade policy to "Rolling" so instances automatically upgrade when the model changes.
 
           > [!TIP]
-          > Enable [automatic OS image upgrade](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) to avoid manual intervention for future version deprecations.
+          > Enable [automatic OS image upgrade](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) to avoid manual intervention for future deprecations.
 
           ### Plan/SKU deprecation
 
-          If an entire plan or SKU is deprecated and you have [automatic OS image upgrade](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) enabled, no manual action is required for images without a purchase plan. Automatic OS upgrade handles the migration to the replacement SKU automatically.
+          If an entire plan or SKU is deprecated:
 
-          For images that require a purchase plan, or if automatic OS upgrade isn't enabled, update to a different SKU from the same offer using a scale-out/scale-in approach:
+          - **Images without a purchase plan and automatic OS upgrade enabled**: No action required. Automatic OS upgrade migrates your scale set to the replacement SKU automatically.
+          - **Images with a purchase plan, or automatic OS upgrade not enabled**: Update to a different SKU from the same offer using a scale-out/scale-in approach:
 
           1. Find an alternative SKU from your deprecation email. For more information, see [Find and use images using the Azure CLI](./linux/cli-ps-findimage.md) or [Find and use images using Azure PowerShell](./windows/cli-ps-findimage.md).
 
@@ -317,9 +321,10 @@ r
 
           ### Offer deprecation
 
-          If an entire offer is deprecated and you have [automatic OS image upgrade](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) enabled, no manual action is required for images without a purchase plan. Automatic OS upgrade handles the migration to the replacement offer automatically, including changes to publisher, offer, SKU, and version.
+          If an entire offer is deprecated:
 
-          For images that require a purchase plan, or if automatic OS upgrade isn't enabled, create a new virtual machine scale set with a supported image:
+          - **Images without a purchase plan and automatic OS upgrade enabled**: No action required. Automatic OS upgrade migrates your scale set to the replacement offer automatically, even if the publisher, offer, or SKU changes.
+          - **Images with a purchase plan, or automatic OS upgrade not enabled**: Create a new virtual machine scale set with a supported image:
 
           1. Find a replacement offer from your deprecation email or search in the [Azure Marketplace](https://azuremarketplace.microsoft.com/).
 
