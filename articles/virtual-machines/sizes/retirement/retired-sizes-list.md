@@ -8,6 +8,7 @@ ms.topic: concept-article
 ms.date: 06/13/2025
 ms.author: mattmcinnes
 ms.reviewer: iamwilliew
+ai-usage: ai-assisted
 # Customer intent: As a cloud administrator, I want to review the list of retired virtual machine size series and their migration guides, so that I can ensure my systems are updated and transition to supported VM sizes before any planned retirements.
 ---
 
@@ -23,7 +24,7 @@ This article provides a list of all sizes that are retired or have been announce
 ## What are retired size series?
 Retired virtual machine size series are running on older hardware which is no longer supported. The hardware is with newer generations of hardware.
 
-Series with *Retirement Status* listed as *Announced* are still available, but will be retired on the *Planned Retirement Date*. It's recommended that you plan your migration to a replacement series well before the listed retirement date.
+Series with *Retirement Status* listed as *Announced* are still available, but will be retired on the *Planned Retirement Date*. At the listed retirement date, any remaining VMs in a retired series are deallocated, stop working, stop incurring charges, and no longer have SLA or support. It's recommended that you plan your migration to a replacement series well before the listed retirement date.
 
 To learn more about size series retirement, previous-gen sizes, and the retirement process, see the [size series retirement overview](./retirement-overview.md).
 
@@ -82,7 +83,12 @@ NVv3-series and NVv4-series have announced retirements planned for September 30,
 
 ## FPGA accelerated retired sizes
 
-Currently there are no retired FPGA accelerated series retired or announced for retirement.
+| Series name | Retirement Status | Retirement Announcement | Planned Retirement Date | Migration Guide |
+|---|---|---|---|---|
+| NP-series | **Announced** | [04/02/2026](https://azure.microsoft.com/updates?id=548497) | 05/31/27 | [NP-series retirement](/azure/virtual-machines/sizes/retirement/np-series-retirement) |
+
+> [!NOTE]
+> After the retirement date, any remaining NP-series VMs (Standard_NP10s, Standard_NP20s, Standard_NP40s) are deallocated, stop working, stop incurring charges, and no longer have SLA or support. Managed disk data is preserved. Customers should plan migrations well in advance, as purchases of 1-year and 3-year Azure Reserved VM Instances for NP-series ended on April 2, 2026.
 
 ## HPC retired sizes
 
