@@ -744,6 +744,8 @@
        href: enable-nvme-temp-faqs.yml
      - name: Remote NVMe Disks FAQ
        href: enable-nvme-remote-faqs.yml
+     - name: Remote NVMe Metrics
+       href: boost-tool.md
      - name: OS Images Supported
        href: enable-nvme-interface.md
      - name: SCSI to NVMe for Linux VMs
