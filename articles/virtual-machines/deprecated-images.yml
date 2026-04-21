@@ -54,7 +54,7 @@ sections:
       - question: What is the deprecation timeline and how does it affect my workloads?
         answer: |
           **Notice period (90 days before enforcement)**
-r
+
           During the notice period:
           - You receive email notifications and Azure Advisor recommendations about the upcoming deprecation.
           - Existing VMs and virtual machine scale set instances continue to run normally.
