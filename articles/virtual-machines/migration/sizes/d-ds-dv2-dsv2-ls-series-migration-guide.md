@@ -35,6 +35,7 @@ By migrating to newer VM series, you gain access to improved price-performance r
 | G<br>Gs | Lsv3/Lasv3<br>Lsv4/Lasv4| Lv3/Lv4 controller type: SCSI and NVMe <br>Remote Storage Throughput: 12800 IOPS / 200 MBps|
 | Lsv2 | Lsv3/Lasv3<br>Lasv4/Lasv4| Local Storage: NVMe<br>Remote Storage Throughput: 12800 IOPS / 200 MBps<br>Disk Controller Type: SCSI and NVMe|
 | HBv2 | HBv5<br>HX<br>HBv4<br>HBv3 | Transition to newer AMD EPYC generations (Milan/Genoa/Zen4) and newer InfiniBand fabrics (HDR on HBv3 → NDR on HBv4/HBv5). Validate MPI workload performance, memory bandwidth requirements, and RDMA compatibility on the target series. |
+| NP-series<br>(Standard_NP10s<br>Standard_NP20s<br>Standard_NP40s) | [NDv2](../../sizes/gpu-accelerated/ndv2-series.md)<br>[NCads_H100_v5](../../sizes/gpu-accelerated/ncadsh100v5-series.md)<br>[NCasT4_v3](../../sizes/gpu-accelerated/ncast4v3-series.md) | GPU type: NVIDIA V100 (NDv2), H100 (NCads_H100_v5), or T4 (NCasT4_v3) vs. AMD Xilinx Alveo U250 FPGA<br>NVLink interconnect: Available on NDv2; not applicable on FPGA-based NP-series<br>Disk controller: NVMe/SCSI (GPU families) vs. SCSI (NP-series)<br>Note: Workloads must be ported from FPGA-based acceleration (XRT/Vitis) to CUDA/GPU-based frameworks. |
 
 *Refers to the smallest VM size in the given target VM series. Full VM specifications are available on each target VM series' product sizes page.
 
@@ -69,11 +70,23 @@ Use the [Azure VM size documentation](/azure/virtual-machines/sizes) to help ide
 - Review your current reservations using the [Azure Reservation Management](/azure/cost-management-billing/reservations/manage-reserved-vm-instance) page.
 - If applicable, exchange existing reservations for newer VM series or trade in your reservations for an **Azure Savings Plan for compute**.
 - **HBv2 customers**: 1-year and 3-year HBv2 Reserved Instance purchases ended on April 2, 2026. If you have active HBv2 RIs, consider exchanging them for supported HPC series RIs (such as HBv3, HBv4, HBv5, or HX) or trading them in for an Azure Savings Plan for compute before the retirement date of May 31, 2027.
+- **NP-series customers**: 1-year and 3-year NP-series Reserved Instance purchases ended on April 2, 2026. If you have active NP-series RIs, consider exchanging them for supported GPU series RIs or trading them in for an Azure Savings Plan for compute before the retirement date of May 31, 2027.
 
 ####  Identify the Target VM Size
 
 - Evaluate your current VM's workload and performance requirements.
 - Select a comparable size from the above table that meets your CPU, memory, and storage needs.
+
+#### GPU workload migration (NP-series customers)
+
+NP-series customers should validate their workload GPU requirements (CUDA cores, memory bandwidth, and interconnect needs) before selecting a target VM family. Consider the following recommended alternatives and their key characteristics:
+
+- **[NDv2 VMs](../../sizes/gpu-accelerated/ndv2-series.md)** – Best for training and large-scale AI/HPC workloads. Features NVIDIA V100 GPUs with NVLink for GPU-to-GPU communication and high memory bandwidth.
+- **[NCads_H100_v5 VMs](../../sizes/gpu-accelerated/ncadsh100v5-series.md)** – Best for modern AI training and batch inference requiring the latest GPU generation. Features NVIDIA H100 GPUs.
+- **[NCasT4_v3 VMs](../../sizes/gpu-accelerated/ncast4v3-series.md)** – Best for inference, interactive graphics, and cost-sensitive workloads. Features NVIDIA T4 GPUs.
+
+> [!IMPORTANT]
+> NP-series VMs use FPGA-based acceleration (Xilinx/AMD Alveo U250). Migrating to GPU-based VM families requires porting your workloads from FPGA frameworks (such as Vitis/XRT) to GPU-based frameworks (such as CUDA). Perform thorough test validation before resizing production workloads.
 
 #### Check and Request Quota Increases
 
@@ -114,6 +127,10 @@ To review retired sizes, see [retired Azure VM sizes](/azure/virtual-machines/si
 | B-series | 11/15/2025 | 11/15/2027 | 11/15/2028 |
 | Bv1      | 11/15/2025 | 11/15/2027 | 11/15/2028 |
 | HBv2     | 04/02/2026 | 04/02/2026 | 05/31/2027 |
+| NP-series | 04/02/2026 | 04/02/2026 | 05/31/2027 |
+
+> [!NOTE]
+> Purchases of 1-year and 3-year Azure Reserved VM Instances for NP-series ended on 04/02/2026.
 
 
 #### Q: Why should I migrate my VM?
@@ -129,6 +146,8 @@ Migration is mandatory to avoid unexpected shutdown. Additionally, migration yie
 After retirement, VMs using this size will be deallocated and stop incurring charges. The size is no longer supported or covered by an SLA; in‑memory and temporary disk data is lost, but managed disk data is preserved. To resume service, you may resize to a supported size and restart the VM.
 
 Specifically for HBv2-series: after May 31, 2027, HBv2-series VMs (Standard_HB120rs_v2 and derived sizes) will be automatically set to a deallocated state. After that date, HBv2 VMs will stop working, lose SLA and support, and stop incurring billing charges.
+
+Specifically for NP-series: after May 31, 2027, NP-series VMs (Standard_NP10s, Standard_NP20s, Standard_NP40s) will be automatically set to a deallocated state. They'll stop working, lose SLA and support, and stop incurring billing charges. Managed disk data is preserved, but workloads won't resume until you resize to a supported VM size.
 
 #### Q: Can I recover my VM after it has been deallocated?
 Yes, you can resize and restart your deallocated VM following the [Azure VM resizing guide](/azure/virtual-machines/sizes/resize-vm?tabs=portal).
