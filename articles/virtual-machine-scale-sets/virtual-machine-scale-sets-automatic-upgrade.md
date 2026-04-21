@@ -67,8 +67,12 @@ The region of a scale set becomes eligible to get image upgrades either through 
 The scale set OS upgrade orchestrator checks for the overall scale set health before upgrading every batch. While you're upgrading a batch, there could be other concurrent planned or unplanned maintenance activities that could impact the health of your scale set instances. In such cases if more than 20% of the scale set's instances become unhealthy, then the scale set upgrade stops at the end of current batch.
 
 To modify the default settings associated with Rolling Upgrades, review Azure's [Rolling Upgrade Policy](/rest/api/compute/virtual-machine-scale-sets/create-or-update?tabs=HTTP#rollingupgradepolicy).
-### VMSS Flex considerations
 
+### VMSS Flex considerations
+> [!IMPORTANT]
+> Auto OS image upgrades for VMSS Flex is currently in PREVIEW.
+> See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
+> 
 When upgrading virtual machines in a scale set that uses Flexible orchestration mode, the following considerations apply:
 
 1. **Image reference consistency**  
