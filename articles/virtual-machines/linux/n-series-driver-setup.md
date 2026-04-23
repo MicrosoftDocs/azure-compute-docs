@@ -216,12 +216,12 @@ Deploy RDMA-capable N-series VMs from one of the images in the Azure Marketplace
    ```
 4. Download the Linux Driver (with v20.x vGPU Unified Driver).
    ```
-   wget -O /var/tmp/NVIDIA-Linux-x86_64-595.58.03-grid-azure.run https://download.microsoft.com/download/51239696-ec04-4c02-a6b3-1d9c608fb57c/NVIDIA-Linux-x86_64-59… 
+   wget -O ./NVIDIA-Linux-x86_64-595.58.03-grid-azure.run https://download.microsoft.com/download/51239696-ec04-4c02-a6b3-1d9c608fb57c/NVIDIA-Linux-x86_64-595.58.03-grid-azure.run
    ```
 5. Install the driver.
    ```
-   sudo chmod +x /var/tmp/NVIDIA-Linux-x86_64-595.58.03-grid-azure.run 
-   sudo /var/tmp/NVIDIA-Linux-x86_64-595.58.03-grid-azure.run --silent --tmpdir /var/tmp 
+   sudo chmod +x ./NVIDIA-Linux-x86_64-595.58.03-grid-azure.run 
+   sudo ./NVIDIA-Linux-x86_64-595.58.03-grid-azure.run -M open
    ```
 6. Verify the driver installation. 
    ```
