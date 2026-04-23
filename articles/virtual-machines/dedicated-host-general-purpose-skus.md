@@ -23,7 +23,7 @@ The sizes and hardware types available for dedicated hosts vary by region. Refer
 ## Ddsv6
 ### Ddsv6-Type1
 
-The Ddsv6-Type1 is a Dedicated Host SKU utilizing Intel's 8573B processor. It offers 96 physical cores, 192 vCPUs, and 1024 GiB of RAM. The Ddsv6-Type1 runs [Ddsv6-series](articles/virtual-machines/sizes/general-purpose/ddsv6-series.md) VMs. Refer to the VM size documentation to better understand specific VM performance information.
+The Ddsv6-Type1 is a Dedicated Host SKU utilizing Intel's 8573B processor. It offers 96 physical cores, 192 vCPUs, and 1024 GiB of RAM. The Ddsv6-Type1 runs [Ddsv6-series](sizes/general-purpose/ddsv6-series.md) VMs. Refer to the VM size documentation to better understand specific VM performance information.
 
 The following packing configuration outlines the max packing of uniform VMs you can put onto a Ddsv6-Type1 host.
 
@@ -43,7 +43,7 @@ The following packing configuration outlines the max packing of uniform VMs you 
 ## Dsv6
 ### Dsv6-Type1
 
-The Dsv6-Type1 is a Dedicated Host SKU utilizing Intel's 8573B processor. It offers 96 physical cores, 192 vCPUs, and 1024 GiB of RAM. The Dsv6-Type1 runs [Dsv6-series](articles/virtual-machines/sizes/general-purpose/dsv6-series.md) VMs. Refer to the VM size documentation to better understand specific VM performance information.
+The Dsv6-Type1 is a Dedicated Host SKU utilizing Intel's 8573B processor. It offers 96 physical cores, 192 vCPUs, and 1024 GiB of RAM. The Dsv6-Type1 runs [Dsv6-series](sizes/general-purpose/dsv6-series.md) VMs. Refer to the VM size documentation to better understand specific VM performance information.
 
 The following packing configuration outlines the max packing of uniform VMs you can put onto a Dsv6-Type1 host.
 
@@ -63,7 +63,7 @@ The following packing configuration outlines the max packing of uniform VMs you 
 ## DCadsv6
 ### DCadsv6-Type1
 
-The DCadsv6-Type1 is a Dedicated Host SKU utilizing AMD's EPYC™ 9V74 processor. It offers 80 physical cores, 144 vCPUs, and 768 GiB of RAM. The Dasv6-Type1 runs [DCadsv6-series](articles/virtual-machines/sizes/general-purpose/dcadsv6-series.md) VMs. Refer to the VM size documentation to better understand specific VM performance information.
+The DCadsv6-Type1 is a Dedicated Host SKU utilizing AMD's EPYC™ 9V74 processor. It offers 80 physical cores, 144 vCPUs, and 768 GiB of RAM. The Dasv6-Type1 runs [DCadsv6-series](sizes/general-purpose/dcadsv6-series.md) VMs. Refer to the VM size documentation to better understand specific VM performance information.
 
 The following packing configuration outlines the max packing of uniform VMs you can put onto a DCadsv6-Type1 host.
 
@@ -81,7 +81,7 @@ The following packing configuration outlines the max packing of uniform VMs you 
 ## DCasv6
 ### DCasv6-Type1
 
-The DCasv6-Type1 is a Dedicated Host SKU utilizing AMD's EPYC™ 9V74 processor. It offers 80 physical cores, 144 vCPUs, and 768 GiB of RAM. The Dasv6-Type1 runs [DCasv6-series](articles/virtual-machines/sizes/general-purpose/dcasv6-series.md) VMs. Refer to the VM size documentation to better understand specific VM performance information.
+The DCasv6-Type1 is a Dedicated Host SKU utilizing AMD's EPYC™ 9V74 processor. It offers 80 physical cores, 144 vCPUs, and 768 GiB of RAM. The Dasv6-Type1 runs [DCasv6-series](sizes/general-purpose/dcasv6-series.md) VMs. Refer to the VM size documentation to better understand specific VM performance information.
 
 The following packing configuration outlines the max packing of uniform VMs you can put onto a DCasv6-Type1 host.
 
@@ -99,7 +99,7 @@ The following packing configuration outlines the max packing of uniform VMs you 
 ## Dasv6
 ### Dasv6-Type1
 
-The Dasv6-Type1 is a Dedicated Host SKU utilizing AMD's EPYC™ 9V74 processor. It offers 80 physical cores, 144 vCPUs, and 768 GiB of RAM. The Dasv6-Type1 runs [Dasv6-series](articles/virtual-machines/sizes/general-purpose/dasv6-series.md) VMs. Refer to the VM size documentation to better understand specific VM performance information.
+The Dasv6-Type1 is a Dedicated Host SKU utilizing AMD's EPYC™ 9V74 processor. It offers 80 physical cores, 144 vCPUs, and 768 GiB of RAM. The Dasv6-Type1 runs [Dasv6-series](sizes/general-purpose/dasv6-series.md) VMs. Refer to the VM size documentation to better understand specific VM performance information.
 
 The following packing configuration outlines the max packing of uniform VMs you can put onto a Dasv6-Type1 host.
 
