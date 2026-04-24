@@ -79,7 +79,7 @@ For information on installing NVIDIA GPU drivers on N-series VMs running Windows
 
   As of April 23, 2026, the latest recommended driver is the v20.x (R595) driver. <br> 
   
-  [Linux vGPU20 driver](https://download.microsoft.com/download/51239696-ec04-4c02-a6b3-1d9c608fb57c/NVIDIA-Linux-x86_64-595.58.03-grid-azure.run) 
+  [Linux vGPU20 driver](https://download.microsoft.com/download/51239696-ec04-4c02-a6b3-1d9c608fb57c/NVIDIA-Linux-x86_64-595.58.03-grid-azure.run) <br>
   [Windows vGPU20 driver](https://download.microsoft.com/download/169e58c8-9099-481e-a9a9-c237a189710c/595.97_grid_win10_win11_server2022_server2025_dch_64bit_international_azure_swl.exe)
 
   For information on installing NVIDIA GPU drivers on NCv6-series VMs running Linux - please refer to [the documentation](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/n-series-driver-setup#install-grid-drivers-on-ncv6-rtx-pro-6000-bse-vms).  
