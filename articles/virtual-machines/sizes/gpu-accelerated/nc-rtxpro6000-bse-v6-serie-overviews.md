@@ -33,7 +33,7 @@ For information on installing NVIDIA GPU drivers on NCv6-series VMs running Linu
  
 **Windows**
  
-For information on installing NVIDIA GPU drivers on N-series VMs running Windows  – please refer to [the documentation](https://learn.microsoft.com/en-us/azure/virtual-machines/windows/n-series-driver-setup).
+For information on installing NVIDIA GPU drivers on N-series VMs running Windows  – please refer to [the documentation](https://review.learn.microsoft.com/en-us/azure/virtual-machines/windows/n-series-driver-setup?branch=pr-en-us-3395#driver-installation).
  
 ---
  
