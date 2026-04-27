@@ -44,7 +44,7 @@ Some things to consider:
 
 You can use [Virtual Machine Scale Set Automatic OS Image Update](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) Generally Available feature today.
 
-For clusters that are NOT run in Azure, we have [provided an application](service-fabric-patch-orchestration-application.md) to patch the operating systems underneath your Service Fabric nodes.
+For clusters that aren't run in Azure, we have [provided an application](service-fabric-patch-orchestration-application.md) to patch the operating systems underneath your Service Fabric nodes.
 
 When using Automatic OS Image Update, Service Fabric clusters should follow the documented rolling/node-type scaling upgrade guidance to control upgrade domains and maintain application availability. For upgrading to Windows Server 2022 or Windows Server 2025, see the OS image upgrade guidance for [primary node types](service-fabric-scale-up-primary-node-type.md) and [non-primary node types](service-fabric-scale-up-non-primary-node-type.md).
 
@@ -104,7 +104,7 @@ The recommended approach is to perform OS image upgrades by scaling out node typ
 Yes.  For more information, see [Create a cluster with attached data disks](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks) and [Azure Disk Encryption for Virtual Machine Scale Sets](../virtual-machine-scale-sets/disk-encryption-overview.md).
 
 ### Can I use low-priority VMs in a cluster node type (virtual machine scale set)?
-No. Low-priority VMs are not supported. 
+No. Low-priority VMs aren't supported. 
 
 ### What are the directories and processes that I need to exclude when running an anti-virus program in my cluster?
 
@@ -155,7 +155,7 @@ Reliable collections are typically [partitioned](service-fabric-concepts-partiti
 
 - Create a service that queries all partitions of another service to pull in the required data.
 - Create a service that can receive data from all partitions of another service.
-- Periodically push data from each service to an external store. This approach is only appropriate if the queries you're performing are not part of your core business logic, as the external store's data will be stale.
+- Periodically push data from each service to an external store. This approach is only appropriate if the queries you're performing aren't part of your core business logic, as the external store's data will be stale.
 - Alternatively, store data that must support querying across all records directly in a data store rather than in a reliable collection. This eliminates the issue with stale data, but doesn't allow the advantages of reliable collections to be leveraged.
 
 
@@ -164,7 +164,7 @@ Reliable collections are typically [partitioned](service-fabric-concepts-partiti
 Actors are designed to be independent units of state and compute, so it isn't recommended to perform broad queries of actor state at runtime. If you have a need to query across the full set of actor state, you should consider either:
 
 - Replacing your actor services with stateful reliable services, so that the number of network requests to gather all data from the number of actors to the number of partitions in your service.
-- Designing your actors to periodically push their state to an external store for easier querying. As above, this approach is only viable if the queries you're performing are not required for your runtime behavior.
+- Designing your actors to periodically push their state to an external store for easier querying. As above, this approach is only viable if the queries you're performing aren't required for your runtime behavior.
 
 ### How much data can I store in a Reliable Collection?
 
