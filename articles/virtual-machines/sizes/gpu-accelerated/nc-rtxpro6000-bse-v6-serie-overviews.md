@@ -64,7 +64,7 @@ For information on installing NVIDIA GPU drivers on N-series VMs (including NCv6
 
 **4) Is the NCv6-series supported on Azure Kubernetes Service (AKS) and Azure Batch?** <br>
 
-   NCv6 does not support AKS and Azure Batch at this time. For more information, contact [Azure GPU Feedback](azuregpufeedback@service.microsoft.com).
+   NCv6 is expected to be supported on Azure Batch in May 2026. NCv6 is not supported on AKS at this time. For more information, direct to AKS feedback. 
 
 **5) Where can I sign up for the preview?** <br> 
 
