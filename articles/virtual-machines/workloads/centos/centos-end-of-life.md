@@ -92,7 +92,7 @@ If you created your own VM for use in Azure, no software billing information is 
 
 OpenLogic by Perforce Azure Marketplace offer:
 
-- [CentOS-based](https://azuremarketplace.microsoft.com/marketplace/apps/openlogic.centos?tab=Overview)
+- [CentOS-based](https://marketplace.microsoft.com/product/perforce.centos7)
 
 This is the official / endorsed CentOS image in Azure, and doesn't have software billing information associated. It's a candidate for an in-place conversion (after a backup and any necessary prerequisites and updates).
 

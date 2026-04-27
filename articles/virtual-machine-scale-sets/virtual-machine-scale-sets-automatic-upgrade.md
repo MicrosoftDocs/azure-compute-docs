@@ -13,9 +13,6 @@ ms.reviewer: mimckitt
 ---
 # Azure Virtual Machine Scale Set automatic OS image upgrades
 
-> [!NOTE]
-> Many of the steps listed in this document apply to Virtual Machine Scale Sets using Uniform Orchestration mode. We recommend using Flexible Orchestration for new workloads. For more information, see [Orchestration modes for Virtual Machine Scale Sets in Azure](virtual-machine-scale-sets-orchestration-modes.md).
-
 Enabling automatic OS image upgrades on your scale set helps ease update management by safely and automatically upgrading the OS disk for all instances in the scale set.
 
 Automatic OS upgrade has the following characteristics:
@@ -71,6 +68,31 @@ The scale set OS upgrade orchestrator checks for the overall scale set health be
 
 To modify the default settings associated with Rolling Upgrades, review Azure's [Rolling Upgrade Policy](/rest/api/compute/virtual-machine-scale-sets/create-or-update?tabs=HTTP#rollingupgradepolicy).
 
+### VMSS Flex considerations
+> [!IMPORTANT]
+> Auto OS image upgrades for VMSS Flex is currently in PREVIEW.
+> See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
+> 
+When upgrading virtual machines in a scale set that uses Flexible orchestration mode, the following considerations apply:
+
+- **Image reference consistency**  
+   Virtual machines must use the same image reference as defined in the virtual machine scale set (VMSS) model.
+
+- **Image version requirement**  
+   For VMSS Flex, the image version configured on the virtual machine must be set to latest.
+   
+- **Provisioning data behavior**  
+   During an automatic OS image upgrade, provisioning data on the virtual machine is overwritten by the VMSS model. This includes administrator credentials and custom data. This behavior is specific to VMSS Flex and aligns with how reimage operations work in Flexible orchestration mode.
+
+- **Application health monitoring**  
+   VMSS Flex supports application health monitoring through the Application Health Extension. The extension version on the virtual machine must match the version configured on the VMSS.
+
+- **MaxSurge limitation**  
+   Automatic OS Image Upgrades can't be enabled at the same time as MaxSurge for VMSS Flex.
+
+>[!Note]
+>Using MaxSurge together with Automatic OS Image Upgrades in Flexible orchestration mode isn't currently supported.
+   
 ## OS image upgrade versus reimage
 
 Both **OS Image Upgrade** and **[Reimage](/rest/api/compute/virtual-machine-scale-sets/reimage)** are methods used to update virtual machines within a scale set, but they serve different purposes and have distinct impacts.
@@ -141,6 +163,10 @@ The following platform SKUs are currently supported (and more are added periodic
 | MicrosoftWindowsServer  | WindowsServer | 2022-Datacenter-g2 |
 | MicrosoftWindowsServer  | WindowsServer | 2022-Datacenter-smalldisk-g2 |
 | MicrosoftWindowsServer  | WindowsServer | Datacenter-core-20h2-with-containers-smalldisk-gs |
+| MicrosoftWindowsServer | WindowsServer | 2025-Datacenter |
+| MicrosoftWindowsServer | WindowsServer | 2025-Datacenter-core |
+| MicrosoftWindowsServer | WindowsServer | 2025-Datacenter-core-smalldisk |
+| MicrosoftWindowsServer | WindowsServer | 2025-Datacenter-smalldisk |
 
 ## Requirements for configuring automatic OS image upgrade
 

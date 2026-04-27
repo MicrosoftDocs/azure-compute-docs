@@ -2,14 +2,14 @@
 title: Azure N-series GPU driver setup for Linux
 description: How to set up NVIDIA GPU drivers for N-series VMs running Linux in Azure
 services: virtual-machines
-author: vikancha-MSFT
+author: akashdubey-ms
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.collection: linux
 ms.topic: how-to
 ms.custom: linux-related-content
 ms.date: 12/04/2025
-ms.author: vikancha
+ms.author: akashdubey
 ms.reviewer: padmalathas, mattmcinnes
 # Customer intent: "As a cloud administrator, I want to install and configure NVIDIA GPU drivers on Linux-based N-series VMs, so that I can fully utilize their GPU capabilities for high-performance computing applications."
 ---
@@ -199,6 +199,36 @@ Deploy RDMA-capable N-series VMs from one of the images in the Azure Marketplace
 > - OpenLogic:CentOS-HPC:8_1-gen2:8.1.2020062401
 >
 
+## Install GRID drivers on NCv6 RTX PRO 6000 BSE VMs
+
+1. Ensure that secure boot and vTPM are disabled.
+2. Install prerequisites.
+   
+   Ubuntu (24.04, 22.04, 20.04):
+   ```
+   sudo apt update 
+   sudo apt install -y build-essential 
+   ```
+   RHEL (8.8, 8.10, 9.4, 9.6, 9.7):
+   ```
+   sudo yum check-update 
+   sudo yum install -y make automake gcc gcc-c++ kernel-devel-$(uname -r) kernel-headers-$(uname -r) 
+   ```
+4. Download the Linux Driver (with v20.x vGPU Unified Driver).
+   ```
+   wget -O ./NVIDIA-Linux-x86_64-595.58.03-grid-azure.run https://download.microsoft.com/download/51239696-ec04-4c02-a6b3-1d9c608fb57c/NVIDIA-Linux-x86_64-595.58.03-grid-azure.run
+   ```
+5. Install the driver.
+   ```
+   sudo chmod +x ./NVIDIA-Linux-x86_64-595.58.03-grid-azure.run 
+   sudo ./NVIDIA-Linux-x86_64-595.58.03-grid-azure.run -M open
+   ```
+6. Verify the driver installation. 
+   ```
+   nvidia-smi
+   ```
+   If the driver is installed, Nvidia SMI will list the GPU-Util as N/A until you run a GPU workload on the VM.
+   
 ## Install GRID drivers on NV or NVv3-series VMs
 
 To install NVIDIA GRID drivers on NV or NVv3-series VMs, make an SSH connection to each VM and follow the steps for your Linux distribution.

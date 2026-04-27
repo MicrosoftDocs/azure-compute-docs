@@ -38,14 +38,17 @@ You buy a reserved VM instance with the size Standard_DS4_v2 where the ratio or 
 
 The following sections show what sizes are in the same size series group when you buy a reserved VM instance optimized for instance size flexibility. SKUs that have same ratio and are in same size series group, would have no additional cost if you purchase reservation for any of those SKUs for same number of VMs running.
 
-You can also use API or PowerShell to fetch the ratios. The CSV link and schema are kept up to date so you can use them programmatically. Read more [here](/azure/cost-management-billing/reservations/instance-size-flexibility).
 
 ## Instance size flexibility ratio
 
-CSV below has the instance size flexibility groups, ArmSkuName and the ratios.  
+CSV below has the instance size flexibility groups, ArmSkuName and the ratios. 
 
 [Instance size flexibility ratios](https://aka.ms/isf)
 
+You can also use API or PowerShell to fetch the ratios. The CSV link and schema are kept up to date so you can use them programmatically. Read more [here](/azure/cost-management-billing/reservations/instance-size-flexibility).
+
+> [!CAUTION]
+ > Beginning May 9, 2026, the CSV file will no longer receive updates and will be removed on August 30, 2026, in favor of accessing data through the API or PowerShell. Read more [here](/azure/cost-management-billing/reservations/instance-size-flexibility).
 
 ## View VM size recommendations
 
