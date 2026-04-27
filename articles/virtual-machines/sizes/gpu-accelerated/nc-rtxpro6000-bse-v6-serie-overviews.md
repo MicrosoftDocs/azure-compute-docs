@@ -33,7 +33,7 @@ For information on installing NVIDIA GPU drivers on NCv6-series VMs running Linu
  
 **Windows**
  
-For information on installing NVIDIA GPU drivers on N-series VMs running Windows  – please refer to [the documentation](https://review.learn.microsoft.com/en-us/azure/virtual-machines/windows/n-series-driver-setup?branch=pr-en-us-3395#driver-installation).
+For information on installing NVIDIA GPU drivers on N-series VMs (including NCv6-series) running Windows  – please refer to [the documentation](https://review.learn.microsoft.com/en-us/azure/virtual-machines/windows/n-series-driver-setup?branch=pr-en-us-3395#driver-installation).
  
 ---
  
@@ -56,11 +56,11 @@ For information on installing NVIDIA GPU drivers on N-series VMs running Windows
 
 **2) Can MIG be disabled?** <br>
 
-   No, MIG cannot be disabled. It is enabled in server firmware, and cannot be modified by end users. MIG is required to offer partial GPU support.
+   No, MIG cannot be disabled. It cannot be modified by end users. MIG is required to offer partial GPU support.
 
 **3) Is the NCv6-series offered in passthrough mode?** <br>
 
-   No, this SKU is offered only in SRIOV mode and is not available in passthrough mode.
+   No, this SKU is offered only in SR-IOV mode and is not available in passthrough mode.
 
 **4) Is the NCv6-series supported on Azure Kubernetes Service (AKS) and Azure Batch?** <br>
 
@@ -83,7 +83,7 @@ For information on installing NVIDIA GPU drivers on N-series VMs running Windows
   [Windows vGPU20 driver](https://download.microsoft.com/download/169e58c8-9099-481e-a9a9-c237a189710c/595.97_grid_win10_win11_server2022_server2025_dch_64bit_international_azure_swl.exe)
 
   For information on installing NVIDIA GPU drivers on NCv6-series VMs running Linux - please refer to [the documentation](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/n-series-driver-setup#install-grid-drivers-on-ncv6-rtx-pro-6000-bse-vms).  
-  For information on installing NVIDIA GPU drivers on N-series VMs running Windows  – please refer to [the documentation](https://learn.microsoft.com/en-us/azure/virtual-machines/windows/n-series-driver-setup).
+  For information on installing NVIDIA GPU drivers on N-series VMs (including NCv6-series) running Windows  – please refer to [the documentation](https://learn.microsoft.com/en-us/azure/virtual-machines/windows/n-series-driver-setup).
 
 
      
