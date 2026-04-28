@@ -4,7 +4,7 @@ description: Learn about VM isolation works in Azure.
 author: mimckitt
 ms.service: azure-virtual-machines
 ms.topic: concept-article
-ms.date: 01/06/2025
+ms.date: 04/28/2026
 ms.author: briannali
 ms.reviewer: mattmcinnes
 # Customer intent: "As a cloud architect, I want to understand how VM isolation works in Azure, so that I can effectively design secure and efficient cloud infrastructure for my organization."
