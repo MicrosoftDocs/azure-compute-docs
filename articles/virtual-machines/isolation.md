@@ -10,7 +10,7 @@ ms.reviewer: mattmcinnes
 # Customer intent: "As a cloud architect, I want to understand how VM isolation works in Azure, so that I can effectively design secure and efficient cloud infrastructure for my organization."
 ---
 
-# Virtual machine isolation in Azure
+# Virtual machine sizes that provide isolation in Azure
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
