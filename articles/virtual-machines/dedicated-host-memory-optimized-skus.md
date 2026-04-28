@@ -62,41 +62,6 @@ The following packing configuration outlines the max packing of uniform VMs you 
 |                |                 |               | E64as v6 | 1     |
 |                |                 |               | E96as v6 | 1     |
 
-## ECasv6
-### ECasv6-Type1
-
-The ECasv6-Type1 is a Dedicated Host SKU utilizing the AMD EPYC™ 9V74 processor. It offers 80 physical cores, 144 vCPUs, and 768 GiB of RAM. The ECasv6-Type1 runs [ECasv6-series](sizes/memory-optimized/ecasv6-series.md) VMs.
-
-The following packing configuration outlines the max packing of uniform VMs you can put onto an ECasv6-Type1 host.
-
-| Physical cores | Available vCPUs | Available RAM | VM Size   | # VMs |
-|----------------|-----------------|---------------|-----------|-------|
-| 80             | 144             | 768 GiB       | EC2as v6  | 32    |
-|                |                 |               | EC4as v6  | 21    |
-|                |                 |               | EC8as v6  | 10    |
-|                |                 |               | EC16as v6 | 5     |
-|                |                 |               | EC32as v6 | 2     |
-|                |                 |               | EC48as v6 | 1     |
-|                |                 |               | EC64as v6 | 1     |
-|                |                 |               | EC96as v6 | 1     |
-
-## ECadsv6
-### ECadsv6-Type1
-
-The ECadsv6-Type1 is a Dedicated Host SKU utilizing the AMD EPYC™ 9V74 processor. It offers 80 physical cores, 144 vCPUs, and 768 GiB of RAM. The ECadsv6-Type1 runs [ECadsv6-series](sizes/memory-optimized/ecadsv6-series.md) VMs.
-
-The following packing configuration outlines the max packing of uniform VMs you can put onto an ECadsv6-Type1 host.
-
-| Physical cores | Available vCPUs | Available RAM | VM Size    | # VMs |
-|----------------|-----------------|---------------|------------|-------|
-| 80             | 144             | 768 GiB       | EC2ads v6  | 32    |
-|                |                 |               | EC4ads v6  | 21    |
-|                |                 |               | EC8ads v6  | 10    |
-|                |                 |               | EC16ads v6 | 5     |
-|                |                 |               | EC32ads v6 | 2     |
-|                |                 |               | EC48ads v6 | 1     |
-|                |                 |               | EC64ads v6 | 1     |
-|                |                 |               | EC96ads v6 | 1     |
 
 ## Eadsv5
 ### Eadsv5-Type1
