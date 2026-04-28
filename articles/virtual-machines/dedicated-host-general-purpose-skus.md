@@ -60,42 +60,6 @@ The following packing configuration outlines the max packing of uniform VMs you 
 |                |                 |               | D128s v6  | 1     |
 |                |                 |               | D192s v6  | 1     |
 
-## DCadsv6
-### DCadsv6-Type1
-
-The DCadsv6-Type1 is a Dedicated Host SKU utilizing AMD's EPYC™ 9V74 processor. It offers 80 physical cores, 144 vCPUs, and 768 GiB of RAM. The Dasv6-Type1 runs [DCadsv6-series](sizes/general-purpose/dcadsv6-series.md) VMs. Refer to the VM size documentation to better understand specific VM performance information.
-
-The following packing configuration outlines the max packing of uniform VMs you can put onto a DCadsv6-Type1 host.
-
-| Physical cores | Available vCPUs | Available RAM | VM Size   | # VMs |
-|----------------|-----------------|---------------|-----------|-------|
-| 80             | 144             | 768 GiB       | DC2ads v6  | 32    |
-|                |                 |               | DC4ads v6  | 32    |
-|                |                 |               | DC8ads v6  | 18    |
-|                |                 |               | DC16ads v6 | 9     |
-|                |                 |               | DC32ads v6 | 4     |
-|                |                 |               | DC48ads v6 | 3     |
-|                |                 |               | DC64ads v6 | 2     |
-|                |                 |               | DC96ads v6 | 1     |
-
-## DCasv6
-### DCasv6-Type1
-
-The DCasv6-Type1 is a Dedicated Host SKU utilizing AMD's EPYC™ 9V74 processor. It offers 80 physical cores, 144 vCPUs, and 768 GiB of RAM. The Dasv6-Type1 runs [DCasv6-series](sizes/general-purpose/dcasv6-series.md) VMs. Refer to the VM size documentation to better understand specific VM performance information.
-
-The following packing configuration outlines the max packing of uniform VMs you can put onto a DCasv6-Type1 host.
-
-| Physical cores | Available vCPUs | Available RAM | VM Size   | # VMs |
-|----------------|-----------------|---------------|-----------|-------|
-| 80             | 144             | 768 GiB       | DC2as v6  | 32    |
-|                |                 |               | DC4as v6  | 32    |
-|                |                 |               | DC8as v6  | 18    |
-|                |                 |               | DC16as v6 | 9     |
-|                |                 |               | DC32as v6 | 4     |
-|                |                 |               | DC48as v6 | 3     |
-|                |                 |               | DC64as v6 | 2     |
-|                |                 |               | DC96as v6 | 1     |
-
 ## Dasv6
 ### Dasv6-Type1
 
