@@ -17,5 +17,5 @@ ms.custom: include file
 | Memory         | 320 - 640 GiB          |                                  |
 | Local Storage  | 1 Disk           | 3576 - 7152 GiB <br> IOPS (RR) <br> MBps (RR)                               |
 | Remote Storage | 8 - 16 Disks    | 100000 - 240000 IOPS <br>3000 - 7000 MBps   |
-| Network        | 2 - 4 NICs          | 40,000 - 80,000 Mbps                          |
+| Network        | 2 - 4 NICs          | 40,000 - 80,000 Mbps <br>Interfaces: NetVSC, ConnectX  |
 | Accelerators   | 1 - 2 GPUs              | Nvidia PCIe H100 GPU (94GB)                     |
