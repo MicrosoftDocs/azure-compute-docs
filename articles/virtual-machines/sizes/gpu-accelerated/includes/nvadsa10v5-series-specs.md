@@ -17,5 +17,5 @@ ms.custom: include file
 | Memory         | 55 - 880 GiB        |    |
 | Local Storage  | 1 Disk         | 180 - 2880 GiB  |
 | Remote Storage | 4 - 32 Disks        | 6400 - 80000 IOPS <br>100 - 1200 MBps |
-| Network        | 1 - 8 NICs        | 5000 - 80000 Mbps |
+| Network        | 1 - 8 NICs        | 5000 - 80000 Mbps <br>Interfaces: NetVSC, ConnectX  |
 | Accelerators   | 1/6 - 2 GPUs            | Nvidia A10 GPU (24GB)    |

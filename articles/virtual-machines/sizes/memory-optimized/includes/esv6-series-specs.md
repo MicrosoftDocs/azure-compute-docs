@@ -18,5 +18,5 @@ ms.custom: include file
 | Local Storage  | None         |  |
 | Remote Storage <br /> [Premium SSD](../../../disks-types.md#premium-ssds) | 8 - 64 Disks        | 3750 - 260000 IOPS <br>106 - 12000 MBps |
 | Remote Storage <br /> [Premium SSD v2](../../../disks-types.md#premium-ssd-v2) / [Ultra Disks](../../../disks-types.md#ultra-disks) | 8 - 64 Disks        | 4167 - 400000 IOPS <br>124 - 12000 MBps |
-| Network        | 2 - 8 NICs        | 12500 - 54000 Mbps |
+| Network        | 2 - 8 NICs        | 12500 - 54000 Mbps <br>Interfaces: NetVSC, [MANA](https://aka.ms/ManaFAQ1)  |
 | Accelerators   | None            |     |
