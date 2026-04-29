@@ -33,15 +33,14 @@ For the latest CUDA drivers and supported operating systems, visit the [NVIDIA](
 ### NVIDIA GRID drivers
 
 > [!NOTE]
-> [vGPU18](https://download.microsoft.com/download/f5fdb58d-8a8b-4894-9add-6b93a1456f58/NVIDIA-Linux-x86_64-570.133.20-grid-azure.run) is available for the NCasT4_v3-series.
->
+> [vGPU20](https://download.microsoft.com/download/51239696-ec04-4c02-a6b3-1d9c608fb57c/NVIDIA-Linux-x86_64-595.58.03-grid-azure.run) is now available for the NCv6 RTX PRO 6000 BSE and NCasT4_v3 series. vGPU20 is **not** yet supported on the NVadsA10_v5-series. We will provide an update for when vGPU20 is supported on the NVadsA10_v5-series. 
+> 
 > [vGPU18](https://download.microsoft.com/download/0541e1a5-dff2-4b8c-a79c-96a7664b1d49/NVIDIA-Linux-x86_64-570.195.03-grid-azure.run) is now available for the NVadsA10_v5-series in **Public, China, and Azure Government regions only**.
 >
-> [vGPU20](https://download.microsoft.com/download/51239696-ec04-4c02-a6b3-1d9c608fb57c/NVIDIA-Linux-x86_64-595.58.03-grid-azure.run) is only available for the NCv6 RTX PRO 6000 BSE series. vGPU20 is **not** yet supported on the NVadsA10_v5-series. We will provide an update for when vGPU20 is supported on the NVadsA10_v5-series. 
 
-Microsoft redistributes NVIDIA GRID driver installers for NV and NVv3-series VMs used as virtual workstations or for virtual applications. Install only these GRID drivers on Azure NV VMs, only on the operating systems listed in the following table. These drivers include licensing for GRID Virtual GPU Software in Azure. You don't need to set up an NVIDIA vGPU software license server.
+Microsoft redistributes NVIDIA GRID driver installers for NVv3, NCasT4_v3, NVadsA10_v5, and NCv6 RTX PRO 6000 BSE VMs used as virtual workstations or for virtual applications. Install these GRID drivers only on these VMs and only on the operating systems listed in the following table. These drivers include licensing for GRID Virtual GPU Software in Azure. You don't need to set up an NVIDIA vGPU software license server.
 
-The GRID drivers redistributed by Azure don't work on most non-NV series VMs, like NC, NCv2, NCv3, ND, and NDv2-series VMs, but they work on NCasT4v3 series.
+The NCasT4_v3 and NCv6 RTX PRO 6000 BSE series are the only non-NV GPU VM Series that support the GRID Drivers.  
 
 For more information on the specific vGPU and driver branch versions, visit the [NVIDIA](https://docs.nvidia.com/grid/) website.
 
