@@ -415,7 +415,7 @@ You can downgrade to 6.8 for compatibility by following these steps.
    ```bash
    uname -a
    ```
-1. Remove kernel refernces to 6.17:
+1. Remove kernel references to 6.17:
    ```bash
    sudo apt purge linux-headers-6.17.0-1011-azure linux-image-6.17.0-1011-azure linux-modules-6.17.0-1011-azure linux-modules-extra-6.17.0-1011-azure
    ```
