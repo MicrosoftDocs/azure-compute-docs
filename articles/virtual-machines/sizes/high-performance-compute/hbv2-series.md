@@ -8,10 +8,14 @@ ms.topic: concept-article
 ms.date: 11/24/2025
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
+ai-usage: ai-assisted
 # Customer intent: "As a cloud architect, I want to understand the specifications and feature support of the HBv2 virtual machine sizes, so that I can select the appropriate VM type for my high-performance computing projects."
 ---
 
 # HBv2 sizes series
+
+> [!IMPORTANT]
+> **HBv2-series VMs are scheduled for retirement on May 31, 2027.** This applies to all HBv2 sizes: Standard_HB120rs_v2, Standard_HB120-96rs_v2, Standard_HB120-64rs_v2, Standard_HB120-32rs_v2, and Standard_HB120-16rs_v2. After this date, HBv2 VMs will be set to a deallocated state, stop working, stop incurring billing charges, and lose SLA and support. Plan your migration to current-generation HPC alternatives before the retirement date. For migration guidance, see the [Migration guidance](#migration-guidance) section below.
 
 [!INCLUDE [hbv2-summary](./includes/hbv2-series-summary.md)]
 
@@ -134,6 +138,16 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 
 ---
 
+## Lifecycle and procurement
+
+> [!IMPORTANT]
+> **Reserved Instance purchase end date**: 1-year and 3-year Reserved Instance purchases for HBv2-series VMs ended on April 2, 2026. New long-term RI commitments are no longer available for this series. Existing RIs remain valid until their expiration.
+
+- **Pay-as-you-go**: HBv2-series VMs remain available on a pay-as-you-go basis until the retirement date of **May 31, 2027**.
+- **Plan migration**: Begin migrating workloads to current-generation HPC alternatives before May 31, 2027. After this date, HBv2 VMs will be deallocated automatically.
+
+For migration recommendations, see the [Migration guidance](#migration-guidance) section.
+
 ## Feature support
 
 |Feature name | Support status |
@@ -149,6 +163,22 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 |[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)| Not Supported |
 |[Backend Network](../../hbv2-series-overview.md)| InfiniBand HDR |
 
+
+## Migration guidance
+
+HBv2-series VMs will be retired on May 31, 2027. Microsoft recommends migrating to the following current-generation HPC VM series before the retirement date:
+
+| Recommended series | Key characteristics |
+|---|---|
+| [HBv5-series](../../hbv5-series-overview.md) | 4th Gen AMD EPYC (Zen4), up to 368 cores, HBM3 memory, NDR InfiniBand – best for memory bandwidth-intensive workloads |
+| [HX-series](../../hx-series-overview.md) | AMD EPYC 9004, up to 176 cores, large L3 cache – suited for memory-capacity-intensive HPC workloads |
+| [HBv4-series](../../hbv4-series-overview.md) | 4th Gen AMD EPYC (Genoa), up to 176 cores, NDR InfiniBand – strong all-round HPC replacement |
+| [HBv3-series](../../hbv3-series-overview.md) | 3rd Gen AMD EPYC (Milan), up to 120 cores, HDR InfiniBand – comparable generation step-up from HBv2 |
+
+When selecting a replacement size, consider the following:
+- **MPI and RDMA requirements**: Verify that your MPI library and InfiniBand fabric (HDR vs. NDR) are supported on the target series.
+- **Memory bandwidth**: Benchmark your workload on the target series to confirm performance parity or improvement.
+- **Workload compatibility**: Test application correctness and performance on the target series before production migration.
 
 [!INCLUDE [sizes-footer-hpc](../includes/sizes-footer-hpc.md)]
 

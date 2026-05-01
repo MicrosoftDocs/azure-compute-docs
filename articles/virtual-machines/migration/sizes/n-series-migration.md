@@ -1,12 +1,13 @@
 ---
 title: Migration Guide for GPU Compute Workloads in Azure
-description: NC, ND, NCv2-series migration guide.
+description: NC, ND, NCv2, NP-series migration guide.
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 author: mattmcinnes
 ms.author: mattmcinnes
 ms.topic: concept-article
 ms.date: 02/27/2023
+ai-usage: ai-assisted
 # Customer intent: "As a cloud architect, I want to migrate GPU compute workloads to newer VM series, so that I can leverage improved performance and optimize costs for AI and HPC applications."
 ---
  
@@ -77,6 +78,27 @@ The ND-series virtual machines are a midrange platform originally designed for A
 | Standard_ND24 | Standard_NC64as_T4_v3* | CPU: Intel Broadwell vs AMD Rome<br>GPU count: 4 (same)<br>GPU generation: NVIDIA Pascal vs. Turing (+1 generations)<br>GPU memory (GiB per GPU): 16 (-8)<br>vCPU: 64 (+40)<br>Memory GiB: 440 (same)<br>Temp Storage (SSD) GiB: 2880 (same)<br>Max data disks: 32 (same)<br>Accelerated Networking: Yes (+)<br>Premium Storage: Yes (+) | 
 | Standard_ND24r |Standard_ND96amsr_A100_v4 | CPU: Intel Broadwell vs AMD Rome<br>GPU count: 8 (+4)<br>GPU generation: NVIDIA Pascal vs. Ampere (+2 generation)<br>GPU memory (GiB per GPU): 80 (+56)<br>vCPU: 96 (+72)<br>Memory GiB: 1900 (+1452)<br>Temp Storage (SSD) GiB: 6400 (+3452)<br>Max data disks: 32 (same)<br>Accelerated Networking: Yes (+)<br>Premium Storage: Yes (+)<br>InfiniBand interconnect: Yes (Same) | 
 
+### NP-Series VMs
+
+> [!IMPORTANT]
+> NP-series sizes (Standard_NP10s, Standard_NP20s, Standard_NP40s) are scheduled for **retirement on May 31, 2027**. After this date, remaining NP-series VMs are automatically deallocated, stop working, stop incurring charges, and no longer have SLA or support. Managed disk data is preserved.
+>
+> **Reserved Instance purchase cutoff**: Purchases of 1-year and 3-year Azure Reserved VM Instances for NP-series ended on **April 2, 2026**. Customers with capacity planning tied to Reserved Instances should migrate or adjust reservations accordingly.
+
+The NP-series VMs are powered by AMD Xilinx Alveo U250 FPGAs and are used for custom FPGA-accelerated workloads such as ML inference, video transcoding, and database search & analytics. Unlike GPU-based VM series, NP-series use FPGA acceleration via Xilinx XRT/Vitis toolchains. Migrating to GPU-based alternatives requires porting workloads from FPGA-based frameworks to GPU-based frameworks such as CUDA.
+
+Recommended migration targets based on workload characteristics:
+
+- **[NCasT4_v3](../../sizes/gpu-accelerated/ncast4v3-series.md)** (NVIDIA T4) – Best for inference, interactive graphics, and cost-sensitive workloads.
+- **[NDv2](../../sizes/gpu-accelerated/ndv2-series.md)** (NVIDIA V100 with NVLink) – Best for GPU-accelerated AI training and HPC workloads requiring high GPU memory and interconnect.
+- **[NCads_H100_v5](../../sizes/gpu-accelerated/ncadsh100v5-series.md)** (NVIDIA H100) – Best for modern AI training and batch inference on the latest GPU generation.
+
+| Current VM Size | Target VM Size | GPU | GPU Count | GPU Generation | vCPUs | Memory (GiB) |
+|---|---|---|---|---|---|---|
+| Standard_NP10s | Standard_NC4as_T4_v3 | NVIDIA T4 | 1 | Turing | 4 | 28 |
+| Standard_NP20s | Standard_NC16as_T4_v3<br>or Standard_ND40rs_v2 (training) | NVIDIA T4 or V100 | 1 or 8 | Turing or Volta | 16 or 40 | 110 or 672 |
+| Standard_NP40s | Standard_NC64as_T4_v3<br>or Standard_NC24ads_A100_v4 (high-end) | NVIDIA T4 or H100 | 4 or 1 | Turing or Hopper | 64 or 24 | 440 or 220 | 
+
 
 
 
@@ -101,6 +123,8 @@ After assessing your current usage, decide what type of GPU VM you need. Dependi
 
 > [!NOTE]
 > A best practice is to select a VM size based on both cost and performance. The recommendations in this guide are based on a general-purpose, one-to-one comparison of performance metrics and the nearest match in another VM series. Before deciding on the right size, get a cost comparison using the Azure Pricing Calculator.
+>
+> **NP-series customers**: When selecting alternatives to NP-series VMs, consider both cost and performance. Newer GPU generations (T4, V100, H100) can significantly reduce time-to-solution for AI and analytics workloads. For detailed NP-series migration guidance, see the [NP-Series VMs](#np-series-vms) section above.
 
 > [!IMPORTANT]
 > All legacy NC, NC v2 and ND-Series sizes are available in multi-GPU sizes, including 4-GPU sizes with and without InfiniBand interconnect for scale-out, tightly-coupled workloads that demand more compute power than a single 4-GPU VM, or a single K80, P40, or P100 GPU can supply respectively. Although the recommendations above offer a straightforward path forward, users of these sizes should consider achieving their performance goals with more powerful NVIDIA V100 GPU-based VM series like the [NC v3-Series](../../sizes/gpu-accelerated/ncv3-series.md) and [ND v2-series](../../sizes/overview.md#gpu-accelerated), which typically enable the same level of workload performance at lower costs and with improved manageability by providing considerably greater performance per GPU and per VM before multi-GPU and multi-node configurations are required, respectively.

@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 03/22/2026
+ai-usage: ai-assisted
 # Customer intent: As a cloud architect, I want to understand Service Fabric's capabilities and best practices for setup and management, so that I can design resilient and efficient applications that leverage distributed microservices architecture.
 ---
 
@@ -43,7 +44,13 @@ Some things to consider:
 
 You can use [Virtual Machine Scale Set Automatic OS Image Update](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) Generally Available feature today.
 
-For clusters that are NOT run in Azure, we have [provided an application](service-fabric-patch-orchestration-application.md) to patch the operating systems underneath your Service Fabric nodes.
+For clusters that aren't run in Azure, we have [provided an application](service-fabric-patch-orchestration-application.md) to patch the operating systems underneath your Service Fabric nodes.
+
+When using Automatic OS Image Update, Service Fabric clusters should follow the documented rolling/node-type scaling upgrade guidance to control upgrade domains and maintain application availability. For upgrading to Windows Server 2022 or Windows Server 2025, see the OS image upgrade guidance for [primary node types](service-fabric-scale-up-primary-node-type.md) and [non-primary node types](service-fabric-scale-up-non-primary-node-type.md).
+
+### Until when is Windows Server 2019 supported for Service Fabric clusters?
+
+Service Fabric support for clusters running on Windows Server 2019 ends on **March 31, 2027**. Azure Virtual Machine Scale Sets with Windows Server 2019 will continue to run after this date, but Service Fabric support ceases on that date. Service Fabric supports Windows Server OS images only through their mainstream support end dates, and explicit retirement announcements supersede the general rule. Plan to migrate your clusters to Windows Server 2025 well ahead of March 31, 2027, and validate application compatibility on Windows Server 2025 images using a staging cluster and the documented rolling upgrade approach. For more information, see the [Service Fabric supported versions page](service-fabric-versions.md) and the [retirement announcement](https://azure.microsoft.com/updates?id=558246).
 
 ### Can I use large virtual machine scale sets in my SF cluster? 
 
@@ -91,13 +98,13 @@ If you would like to create clusters for testing your application before it's de
 
 ### How do I upgrade my Operating System (for example from Windows Server 2012 to Windows Server 2016)?
 
-While we're working on an improved experience, today, you're responsible for the upgrade. You must upgrade the OS image on the virtual machines of the cluster one VM at a time. 
+The recommended approach is to perform OS image upgrades by scaling out node types and using supported rolling procedures to avoid application impact, then drain and remove the old nodes. Use the documented scale-out/scale-in method for the node type to add nodes with the new OS image, migrate workloads, and decommission nodes on the old OS image. This procedure applies whether upgrading from Windows Server 2019 to Windows Server 2022 or to Windows Server 2025. For step-by-step guidance, see [Scale up a Service Fabric cluster primary node type](service-fabric-scale-up-primary-node-type.md) and [Scale up a Service Fabric cluster non-primary node type](service-fabric-scale-up-non-primary-node-type.md).
 
 ### Can I encrypt attached data disks in a cluster node type (virtual machine scale set)?
 Yes.  For more information, see [Create a cluster with attached data disks](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks) and [Azure Disk Encryption for Virtual Machine Scale Sets](../virtual-machine-scale-sets/disk-encryption-overview.md).
 
 ### Can I use low-priority VMs in a cluster node type (virtual machine scale set)?
-No. Low-priority VMs are not supported. 
+No. Low-priority VMs aren't supported. 
 
 ### What are the directories and processes that I need to exclude when running an anti-virus program in my cluster?
 
@@ -148,7 +155,7 @@ Reliable collections are typically [partitioned](service-fabric-concepts-partiti
 
 - Create a service that queries all partitions of another service to pull in the required data.
 - Create a service that can receive data from all partitions of another service.
-- Periodically push data from each service to an external store. This approach is only appropriate if the queries you're performing are not part of your core business logic, as the external store's data will be stale.
+- Periodically push data from each service to an external store. This approach is only appropriate if the queries you're performing aren't part of your core business logic, as the external store's data will be stale.
 - Alternatively, store data that must support querying across all records directly in a data store rather than in a reliable collection. This eliminates the issue with stale data, but doesn't allow the advantages of reliable collections to be leveraged.
 
 
@@ -157,7 +164,7 @@ Reliable collections are typically [partitioned](service-fabric-concepts-partiti
 Actors are designed to be independent units of state and compute, so it isn't recommended to perform broad queries of actor state at runtime. If you have a need to query across the full set of actor state, you should consider either:
 
 - Replacing your actor services with stateful reliable services, so that the number of network requests to gather all data from the number of actors to the number of partitions in your service.
-- Designing your actors to periodically push their state to an external store for easier querying. As above, this approach is only viable if the queries you're performing are not required for your runtime behavior.
+- Designing your actors to periodically push their state to an external store for easier querying. As above, this approach is only viable if the queries you're performing aren't required for your runtime behavior.
 
 ### How much data can I store in a Reliable Collection?
 
@@ -195,10 +202,12 @@ Containers offer a simple way to package services and their dependencies such th
 
 We have open-sourced parts of Service Fabric ([reliable services framework](https://github.com/Azure/service-fabric-services-and-actors-dotnet), [reliable actors framework](https://github.com/Azure/service-fabric-services-and-actors-dotnet), [ASP.NET Core integration libraries](https://github.com/Azure/service-fabric-aspnetcore), [Service Fabric Explorer](https://github.com/Azure/service-fabric-explorer), and [Service Fabric CLI](https://github.com/Azure/service-fabric-cli)) on GitHub and accept community contributions to those projects. 
 
-We [recently announced](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) that we plan to open-source the Service Fabric runtime. At this point, we have the [Service Fabric repo](https://github.com/Microsoft/service-fabric/) up on GitHub with Linux build and test tools, which means you can clone the repo, build Service Fabric for Linux, run basic tests, open issues, and submit pull requests. We’re working hard to get the Windows build environment migrated over as well, along with a complete CI environment.
+We [recently announced](https://azure.microsoft.com/blog/product/azure-service-fabric/) that we plan to open-source the Service Fabric runtime. At this point, we have the [Service Fabric repo](https://github.com/Microsoft/service-fabric/) up on GitHub with Linux build and test tools, which means you can clone the repo, build Service Fabric for Linux, run basic tests, open issues, and submit pull requests. We’re working hard to get the Windows build environment migrated over as well, along with a complete CI environment.
 
-Follow the [Service Fabric blog](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) for more details as they're announced.
+Follow the [Service Fabric blog](https://azure.microsoft.com/blog/product/azure-service-fabric/) for more details as they're announced.
 
 ## Next steps
 
-Learn about [Service Fabric runtime concepts and best practices](/shows/building-microservices-applications-on-azure-service-fabric/run-time-concepts)
+Learn about [Service Fabric runtime concepts and best practices](/shows/building-microservices-applications-on-azure-service-fabric/run-time-concepts).
+
+Plan your migration from Windows Server 2019 well ahead of March 31, 2027, by reviewing the [Service Fabric supported versions](service-fabric-versions.md) page and following the node type OS upgrade procedures for [primary node types](service-fabric-scale-up-primary-node-type.md) and [non-primary node types](service-fabric-scale-up-non-primary-node-type.md).

@@ -228,6 +228,10 @@
     {
       "source_path": "articles/virtual-machines/ncv3-nc6s-nc12s-nc24s-retirement.md",
       "redirect_url": "ncv3-retirement"
+    },
+    {
+      "source_path": "articles/virtual-machines/move-virtual-machines-regional-zonal-powershell.md",
+      "redirect_url": "move-virtual-machines-regional-zonal-portal"
     }
   ]
 }

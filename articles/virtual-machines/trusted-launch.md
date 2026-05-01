@@ -9,6 +9,7 @@ ms.topic: concept-article
 ms.date: 04/21/2025
 ms.reviewer: jushiman
 ms.custom: template-concept; references_regions
+ai-usage: ai-assisted
 # Customer intent: "As a cloud administrator, I want to enable Trusted Launch for Azure virtual machines, so that I can enhance the security of my deployments against advanced threats and ensure the integrity of the boot process."
 ---
 
@@ -43,9 +44,13 @@ Trusted Launch is supported for both x64 and Arm64 architectures.
 | [Memory optimized](./sizes/overview.md#memory-optimized) | [E-family](./sizes/memory-optimized/e-family.md), [Eb-family](./sizes/memory-optimized/eb-family.md), [Epsv6-series](./sizes/memory-optimized/epsv6-series.md)<sup>1</sup>   |  [M-family](./sizes/memory-optimized/m-family.md)  |    [EC-Confidential-family](./sizes/memory-optimized/ec-family.md)
 | [Storage optimized](./sizes/overview.md#storage-optimized) | [L-family](./sizes/storage-optimized/l-family.md) | All sizes supported. | 
 | [GPU](./sizes/overview.md#gpu-accelerated) | [NC-family](./sizes/gpu-accelerated/nc-family.md), [ND-family](./sizes/gpu-accelerated/nv-family.md), [NV-family](./sizes/gpu-accelerated/nv-family.md) | [NDasrA100_v4-series](nda100-v4-series.md), [NDm_A100_v4-series](ndm-a100-v4-series.md) | [NC-series](nc-series.md), [NV-series](nv-series.md), [NP-series](np-series.md)
-| [High Performance Compute](./sizes/overview.md#high-performance-compute) |[HBv2-series](./hbv2-series-overview.md), [HBv3-series](./hbv3-series-overview.md), [HBv4-series](./hbv4-series-overview.md), [HC-series](./hc-series-overview.md), [HX-series](./hx-series-overview.md) | All sizes supported. | 
+| [High Performance Compute](./sizes/overview.md#high-performance-compute) |[HBv2-series](./hbv2-series-overview.md)<sup>2</sup>, [HBv3-series](./hbv3-series-overview.md), [HBv4-series](./hbv4-series-overview.md), [HBv5-series](./hbv5-series-overview.md), [HC-series](./hc-series-overview.md)<sup>3</sup>, [HX-series](./hx-series-overview.md) | All sizes supported. | 
 
 <sup>1</sup>Arm64 [Cobalt 100](./sizes/cobalt-overview.md)-based sizes that support Trusted Launch. 
+
+<sup>2</sup>HBv2-series is currently supported for Trusted Launch but is scheduled for retirement on May 31, 2027. For new HPC Trusted Launch deployments, prefer HBv5-series, HX-series, HBv4-series, or HBv3-series sizes.
+
+<sup>3</sup>HC-series sizes (Standard_HC44rs, Standard_HC44-16rs, Standard_HC44-32rs) are scheduled for retirement on May 31, 2027. After this date, remaining HC-series VMs will be deallocated and stop incurring charges, and HC-series will no longer have SLA or support. Sales of 1-year and 3-year Reserved Instances ended April 2, 2026. For new HPC Trusted Launch deployments, consider [HBv5-series](./hbv5-series-overview.md) for higher performance and better price-performance, or [HX-series](./hx-series-overview.md) for high-memory HPC workloads. Plan to transition off HC-series well before the retirement date to avoid disruption.
 
 > [!NOTE]
 >
