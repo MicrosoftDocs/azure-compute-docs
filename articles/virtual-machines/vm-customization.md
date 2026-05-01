@@ -9,7 +9,7 @@ ms.date: 10/21/2025
 ms.author: eehindero
 ms.reviewer: mimckitt
 ---
-# VM vCore Customization Feature: Disable Simultaneous Multi-Threading (SMT/HT) and Configurable Constrained Cores (Preview)
+# VM vCore Customization Feature: Disable Simultaneous Multi-Threading (SMT/HT) and Configurable Constrained Cores
 
 VM vCore Customization is a new Azure VM feature that gives you greater control over the CPU resources of a virtual machine. It consists of two related capabilities:
 
@@ -205,4 +205,6 @@ Most Azure VM families support these features, but there are some important rule
 
 - Anytime you resize a VM (either within the same series or to a different series), a VM reboot occurs. Plan for downtime during the resize operation.
 
-- In preview, only first-party Azure Marketplace images (Windows Server, Ubuntu, Red Hat, SUSE, etc.) and custom images are supported. The specialized Marketplace offerings such as SQL Server on Virtual Machines are not supported.
+- At GA, VMSS Uniform is supported. Currently, only first-party Azure Marketplace images (such as Windows Server, Ubuntu, Red Hat, and SUSE) and custom images are suppported. Specialized Marketplace offerings, including SQL Server on Virtual Machines, are not supported at this time.
+
+- Portal supportis not yet available and will be coming soon. 
