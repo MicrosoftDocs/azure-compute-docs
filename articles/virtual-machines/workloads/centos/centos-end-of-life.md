@@ -68,7 +68,7 @@ See the [Endorsed Distribution](../..//linux/endorsed-distros.md) page for detai
 | **Distribution** | **Description** | **Azure Images** | **Support Model(s)** |
 |---|---|---|---|
 | **CentOS Stream** | Official replacement for CentOS, upstream vs. downstream of RHEL. [CentOS Stream](https://www.centos.org/centos-stream/) | Community Gallery | Community |
-| **Fedora** | Upstream project for CentOS stream and RHEL. [Fedora Linux &#124; The Fedora Project](https://www.fedoraproject.org/) | Community Gallery | Community |
+| **Fedora** | Upstream project for CentOS stream and RHEL. [Fedora Linux &#124; The Fedora Project](https://fedoraproject.org/) | Community Gallery | Community |
 | **SUSE / OpenSUSE** | SUSE Enterprise Linux (SLES) is SUSE’s commercial Linux distribution. | Yes PAYG, BYOS, ARM64 | Community (OpenSUSE), commercial and integrated (SLES) |
 | **Ubuntu (Server / Pro)** | Both free (Server) and paid (Pro) versions available. In place conversion from Server to Pro possible: [In-place upgrade to Ubuntu Pro Linux images on Azure - Azure Virtual Machines &#124; Microsoft Learn](../canonical/ubuntu-pro-in-place-upgrade.md) | Yes PAYG, BYOS, ARM64 | Community (server), commercial and integrated (Pro) |
 | **Debian** | Community  Linux Distribution. | Yes (multiple publishers) | Community |
