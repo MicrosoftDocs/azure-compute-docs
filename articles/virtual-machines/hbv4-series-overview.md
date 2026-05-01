@@ -5,7 +5,7 @@ services: virtual-machines
 ms.service: azure-virtual-machines
 ms.subservice: hpc
 ms.topic: concept-article
-ms.date: 02/10/2026
+ms.date: 05/1/2026
 ms.reviewer: cynthn
 ms.author: padmalathas
 author: padmalathas
@@ -123,8 +123,8 @@ When paired in a striped array, the NVMe SSD provides up to 12 GB/s reads and 7 
 | MPI Support                    | HPC-X (2.13 or higher), Intel MPI (2021.7.0 or higher), OpenMPI (4.1.3 or higher), MVAPICH2 (2.3.7 or higher), MPICH (4.1 or higher)  |
 | Additional Frameworks          | UCX, libfabric, PGAS, or other InfiniBand based runtimes                  |
 | Azure Storage Support          | Standard and Premium Disks (maximum 32 disks), Azure NetApp Files, Azure Files, Azure HPC Cache, Azure Managed Lustre File System             |
-| Supported and Validated OS     | AlmaLinux 8.6, 8.7, Ubuntu 20.04+            |
-| Recommended OS for Performance | AlmaLinux HPC 8.7, Ubuntu-HPC 20.04+    |
+| Supported and Validated OS     | AlmaLinux 8.10, 9.7, Ubuntu 22.04, 24.04            |
+| Recommended OS for Performance | AlmaLinux HPC 9.7, Ubuntu-HPC 24.04    |
 | Orchestrator Support           | Azure CycleCloud, Azure Batch, AKS; [cluster configuration options](sizes-hpc.md#cluster-configuration-options)                      | 
 
 > [!NOTE] 
