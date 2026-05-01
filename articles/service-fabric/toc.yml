@@ -337,6 +337,8 @@
         href: service-fabric-patterns-networking.md
       - name: Infrastructure Service for Azure clusters
         href: infrastructure-service-faq.md
+      - name: Two Availability Zone Ring Fault Tolerance
+        href: two-availability-zone-ring-fault-tolerance.md
     - name: Standalone clusters
       items:
       - name: Overview of standalone clusters
