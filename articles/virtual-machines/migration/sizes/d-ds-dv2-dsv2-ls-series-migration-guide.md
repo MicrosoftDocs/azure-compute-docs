@@ -168,7 +168,7 @@ Yes, you can resize and restart your deallocated VM following the [Azure VM resi
 No. If you’re using pay-as-you-go or a savings plan, migrating to a newer VM type won't disrupt your current billing. The migration process remains seamless with no changes required in your subscription or payment plan.
 
 #### Q: How can I migrate my VM if I am on Reserved Instances (RIs) with a retired VM?
-If you have active Reserved Instances for any of listed series in FAQ chart, follow these steps:
+If you have active Reserved Instances for any of listed the series in FAQ chart, follow these steps:
 
 Step 1: Review Current Reservations
 
