@@ -2,38 +2,13 @@
 title: Scheduled Events for Azure Virtual Machines
 description: Overview of how to configure and use scheduled events across all Azure VMs
 author: adwilso
-ms.author: wilsonadam, ericrad
+ms.author: wilsonadam
 ms.service: azure-virtual-machines
 ms.subservice: scheduled-events
 ms.topic: overview
 ms.date: 05/01/2026
 # CustomerIntent: "As a cloud operations manager, I want to receive proactive notifications of scheduled maintenance events for my virtual machines, so that I can prepare my applications and minimize downtime and disruption."
 ---
-
-<!--
-Remove all the comments in this template before you sign-off or merge to the 
-main branch.
-
-This template provides the basic structure of a Overview article pattern. See the [instructions - Overview](../level4/article-overview.md) in the pattern library.
-
-You can provide feedback about this template at: https://aka.ms/patterns-feedback
-
-Overview is an article pattern that covers two aspects of a product or service:
-
-* What is it?
-* What is it used for?
-
-An Overview article talks about the product or service from a technical point of view. It's not intended to define the benefits or value proposition. That just duplicates marketing.
-
-<!-- 1. H1 -----------------------------------------------------------------------------
-
-Required: This is the primary heading at the top of the article.
-
-Use the format "What is <service>?" 
-
-You can also use this in the TOC if your service name doesn’t cause the phrase to wrap.
-
--->
 
 # What are Scheduled Events? 
 
@@ -126,8 +101,6 @@ After you learn of an upcoming event and finish your logic for graceful shutdown
 Acknowledging an event allows the event to proceed for all Resources in the event, not just the VM that acknowledges the event. Therefore, you can choose to elect a leader to coordinate the acknowledgment, which might be as simple as the first machine in the Resources field.
 
 The acknowledgment can be sent either to the IMDS endpoint within any VM or via the Maintenance Resource Provider (MRP) REST API endpoint. Azure treats an approval request from either endpoint as meaning that the event can start. It's possible to receive the event from the IMDS endpoint and approve via the MRP REST endpoint.
-
-For more information about how to use the different endpoints for approving event, see <Event Grid Ack>, <Windows Ack>, <Linux Ack>, or <ARG Ack>. 
 
 ### Exceptional Cases
 
@@ -295,20 +268,17 @@ When setting the automatic approval behavior, you can choose to have all reboot 
 
 When events are automatically approved, a scheduled event with `EventStatus:Scheduled` isn't created. Instead, the operation is approved and only events with `EventStatus:Started` and `EventStatus:Completed` are created. Thus, it's important to consider if there are situations where other VMs running your application might need time to react before being forcefully shut down. For example, some applications using a primary-secondary architecture might need time to switch the secondary VM to be the primary before forcefully shutting down. 
 
+## Testing Scheduled Events
+Two common ways to test your applications response to scheduled events are manually triggering user imitated events or using a mock server. 
 
-<!-- 4. Next step/Related content ------------------------------------------------------------------------ 
+You can manually trigger redeploy and reboot events through the Azure Portal or Azure CLI by selecting the 'reboot' or 'redeploy' VM option from the VM blade. This will create an event and send it to your workload. 
 
-Optional: You have two options for manually curated links in this pattern: Next step and Related content. You don't have to use either, but don't use both.
-  - For Next step, provide one link to the next step in a sequence. Use the blue box format
-  - For Related content provide 1-3 links. Include some context so the customer can determine why they would click the link. Add a context sentence for the following links.
+Operations that impact multiple VMs, such as host updates, cannot be triggered on demand so you can use a mock server instead. The [vm-scheduled-events-mock-server](https://github.com/Azure-Samples/scheduled-events-mock-server) provides a framework for testing your application's response to different scenarios by replaying real events flows back for development and testing. By default the server supports nine different scenarios, all captured from VMs running in Azure and representing the most common cases. The scenarios can be expanded to include more options depending on your applications particular characteristics.  
 
--->
 
 ## Related content
 
 - [Scheduled Events Using IMDS on Windows](windows/scheduled-events.md)
 - [Scheduled Events Using IMDS on Linux](linux/scheduled-events.md)
-
-<!--
-Remove all the comments in this template before you sign-off or merge to the main branch.
--->
+- [Scheduled Events Using Event Grid](scheduled-events-event-grid.md)
+- [Scheduled Events Using Azure Resource Graph](scheduled-events-resource-graph.md)

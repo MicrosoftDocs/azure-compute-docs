@@ -7,7 +7,6 @@ ms.service: azure-virtual-machines
 ms.subservice: scheduled-events
 ms.topic: concept-article 
 ms.date: 05/01/2026
-
 #CustomerIntent: "As a cloud operations manager, I want to receive proactive notifications of scheduled maintenance events for my virtual machines via event grid, so that I can prepare my applications and minimize downtime and disruption."
 ---
 
@@ -28,7 +27,7 @@ This page covers the basics of using the scheduled events system topic, such as 
 ## Prerequisites
 
 - [Scheduled events overview](scheduled-events-overview.md)
-- [Create, view, and manage Event Grid System Topics](https://learn.microsoft.com/en-us/azure/event-grid/create-view-manage-system-topics-cli)
+- [Create, view, and manage Event Grid System Topics](https://learn.microsoft.com/azure/event-grid/create-view-manage-system-topics-cli)
 
 
 ## Basics
@@ -43,7 +42,7 @@ By default, scheduled events aren't delivered to Event Grid for virtual machines
 
 Enabling delivery to the Event Grid System Topic also delivers the events to [Azure Resource Graph](scheduled-events-resource-graph.md).
 
-If you're using Virtual Machine Scale Sets Flex or Uniform, enable scheduled events in Event Grid using the `scheduledEventsAdditionalPublishingTargets` [eventGridAndResourceGraph](https://learn.microsoft.com/en-us/rest/api/compute/virtual-machine-scale-sets/create-or-update?view=rest-compute-2025-11-01&tabs=HTTP) setting. This setting enables scheduled events for all VMs in the scale set and ensure they're published to both Event Grid and the Azure Resource Graph.
+If you're using Virtual Machine Scale Sets Flex or Uniform, enable scheduled events in Event Grid using the `scheduledEventsAdditionalPublishingTargets` [eventGridAndResourceGraph](https://learn.microsoft.com/rest/api/compute/virtual-machine-scale-sets/create-or-update?view=rest-compute-2025-11-01&tabs=HTTP) setting. This setting enables scheduled events for all VMs in the scale set and ensure they're published to both Event Grid and the Azure Resource Graph.
 
 ```json
 "scheduledEventsPolicy": {
@@ -79,7 +78,7 @@ We recommend that you set this property when you create the scale set to ensure 
 
 ### Using the Event Grid Endpoint
 
-Once your virtual machines are registered to receive scheduled events, you need to read the events coming from the [system topic](https://learn.microsoft.com/en-us/azure/event-grid/create-view-manage-system-topics-cli). Scheduled events are delivered to the `Microsoft.ResourceNotifications.MaintenanceResources` topic.
+Once your virtual machines are registered to receive scheduled events, you need to read the events coming from the [system topic](https://learn.microsoft.com/azure/event-grid/create-view-manage-system-topics-cli). Scheduled events are delivered to the `Microsoft.ResourceNotifications.MaintenanceResources` topic.
 
 ```azurecli
 
@@ -188,7 +187,7 @@ There might be multiple VMs in the resources field and events are only grouped t
 
 Once your workload is prepared for an event, it's recommended to acknowledge the event so Azure knows that it's safe to proceed. If an event isn't acknowledged, it will proceed after the NotBefore time indicated in the scheduled event payload.
 
-The acknowledgment API is available through [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/maintenance/scheduledevent?view=azure-cli-latest) or events can also be acknowledged using the IMDS endpoint. 
+The acknowledgment API is available through [Azure CLI](https://learn.microsoft.com/cli/azure/maintenance/scheduledevent?view=azure-cli-latest) or events can also be acknowledged using the IMDS endpoint. 
 
 ```azurecli
 

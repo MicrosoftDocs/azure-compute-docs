@@ -7,7 +7,6 @@ ms.service: azure-virtual-machines
 ms.subservice: scheduled-events
 ms.topic: concept-article 
 ms.date: 05/01/2026
-
 #CustomerIntent: "As a cloud operations manager, I want to receive proactive notifications of scheduled maintenance events for my virtual machines via Azure Resource Graph, so that I can prepare my applications and minimize downtime and disruption."
 ---
 
@@ -24,7 +23,7 @@ Azure Resource Graph lets developers explore Azure resources and their propertie
 ## Prerequisites
 
 - [Scheduled events overview](scheduled-events-overview.md)
-- [Overview of Azure Resource Graph](https://learn.microsoft.com/en-us/azure/governance/resource-graph/overview)
+- [Overview of Azure Resource Graph](https://learn.microsoft.com/azure/governance/resource-graph/overview)
 
 ## Basics
 
@@ -38,7 +37,7 @@ By default, scheduled events aren't delivered to Azure Resource Graph for virtua
 
 Enabling delivery to the Event Grid System Topic also delivers the events to the [Event Grid System Topic](scheduled-events-event-grid.md).
 
-If you're using Virtual Machine Scale Sets Flex or Uniform, enable scheduled events in Event Grid using the `scheduledEventsAdditionalPublishingTargets` [eventGridAndResourceGraph](https://learn.microsoft.com/en-us/rest/api/compute/virtual-machine-scale-sets/create-or-update?view=rest-compute-2025-11-01&tabs=HTTP) setting. This setting enables scheduled events for all VMs in the scale set and ensure they're published to both Event Grid and the Azure Resource Graph.
+If you're using Virtual Machine Scale Sets Flex or Uniform, enable scheduled events in Event Grid using the `scheduledEventsAdditionalPublishingTargets` [eventGridAndResourceGraph](https://learn.microsoft.com/rest/api/compute/virtual-machine-scale-sets/create-or-update?view=rest-compute-2025-11-01&tabs=HTTP) setting. This setting enables scheduled events for all VMs in the scale set and ensure they're published to both Event Grid and the Azure Resource Graph.
 
 ```json
 "scheduledEventsPolicy": {
@@ -87,7 +86,7 @@ A user must have the `ScheduledEventContributor` role to read or acknowledge the
 
 Scheduled events are written to the `maintenanceresources` table with type `microsoft.maintenance/scheduledevents`. Every time a scheduled event changes state it creates an update its entry in the table with the same information as would be available in Event Grid or the IMDS endpoint.
 
-You can access Azure Resource Graph through the Azure portal by searching for Resource Graph Explorer. There's a basic query interface available in the portal for simple queries, and for more [advanced queries you can use either Azure CLI or Azure PowerShell](https://learn.microsoft.com/en-us/azure/governance/resource-graph/samples/advanced?tabs=azure-cli).
+You can access Azure Resource Graph through the Azure portal by searching for Resource Graph Explorer. There's a basic query interface available in the portal for simple queries, and for more [advanced queries you can use either Azure CLI or Azure PowerShell](https://learn.microsoft.com/azure/governance/resource-graph/samples/advanced?tabs=azure-cli).
 
 The following ARG query returns all the scheduled events for virtual machines in your subscriptions
 
@@ -148,7 +147,7 @@ These fields contain the same information as the IMDS and Event Grid System Topi
 
 Once your workload is prepared for an event, it's recommended to acknowledge the event so Azure knows that it's safe to proceed. If an event isn't acknowledged, it will proceed after the NotBefore time indicated in the scheduled event payload.
 
-The acknowledgment API is available through [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/maintenance/scheduledevent?view=azure-cli-latest) or events can also be acknowledged using the IMDS endpoint. 
+The acknowledgment API is available through [Azure CLI](https://learn.microsoft.com/cli/azure/maintenance/scheduledevent?view=azure-cli-latest) or events can also be acknowledged using the IMDS endpoint. 
 
 ```azurecli
 
