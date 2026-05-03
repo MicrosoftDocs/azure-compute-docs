@@ -1,5 +1,5 @@
 ---
-title: Scheduled Events: Azure Resource Graph
+title: Scheduled Events - Azure Resource Graph
 description: Detailed information on how to configure and use scheduled events in Azure Resource Graph
 author: adwilso
 ms.author: wilsonadam   

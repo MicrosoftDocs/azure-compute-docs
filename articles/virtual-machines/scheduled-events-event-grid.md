@@ -1,5 +1,5 @@
 ---
-title: Scheduled Events: Event Grid
+title: Scheduled Events - Event Grid
 description: Detailed information on how to configure and use scheduled events in an event grid system topic
 author: adwilso
 ms.author: wilsonadam   
