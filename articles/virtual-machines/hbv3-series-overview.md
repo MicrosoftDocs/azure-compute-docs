@@ -6,7 +6,7 @@ ms.custom:
 ms.service: azure-virtual-machines
 ms.subservice: hpc
 ms.topic: concept-article
-ms.date: 02/10/2026
+ms.date: 05/1/2026
 ms.reviewer: cynthn
 ms.author: padmalathas
 author: padmalathas
@@ -119,16 +119,14 @@ When paired in a striped array, the NVMe SSD provides up to 7 GB/s reads and 3 G
 | Software specifications        | HBv3-series VMs                                            |
 |--------------------------------|-----------------------------------------------------------|
 | Max MPI Job Size               | 36,000 cores (300 VMs in a single Virtual Machine Scale Set with singlePlacementGroup=true) |
-| MPI Support                    | HPC-X, Intel MPI, OpenMPI, MVAPICH2, MPICH  |
+| MPI Support                    | HPC-X, OpenMPI, MVAPICH2, MPICH  |
 | Additional Frameworks          | UCX, libfabric, PGAS                  |
 | Azure Storage Support          | Standard and Premium Disks (maximum 32 disks)              |
-| OS Support for SRIOV RDMA      | RHEL 7.9+, Ubuntu 18.04+, SLES 15.4, WinServer 2016+           |
-| Recommended OS for Performance | Windows Server 2019+
-| Orchestrator Support           | Azure CycleCloud, Azure Batch, AKS; [cluster configuration options](sizes-hpc.md#cluster-configuration-options)                      |
+| OS Support for RDMA            | RHEL 8.3+, AlmaLinux 8.10+, Ubuntu 22.04+ LTS, SLES 15.2+, Windows Server 2022/2025  |    
+| Recommended OS for Performance | RHEL 9.7, AlmaLinux 9.7, Ubuntu 24.04 LTS, Windows Server 2025  |
+| Orchestrator Support           | Azure CycleCloud, Azure Batch, Azure Kubernetes Service; [cluster configuration options](sizes-hpc.md#cluster-configuration-options)                      |
 
-> [!NOTE]
-> Windows Server 2012 R2 isn't supported on HBv3 and other VMs with more than 64 (virtual or physical) cores. For more details, see [Supported Windows guest operating systems for Hyper-V on Windows Server](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows).
-
+> 
 > [!IMPORTANT]
 > This document references a release version of Linux that's nearing or at, End of Life(EOL). Consider updating to a more current version.
 
