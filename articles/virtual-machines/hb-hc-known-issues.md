@@ -5,18 +5,71 @@ ms.service: azure-virtual-machines
 ms.subservice: hpc
 ms.custom: linux-related-content
 ms.topic: troubleshooting
-ms.date: 07/25/2024
+ms.date: 05/04/2026
 ms.reviewer: cynthn
 ms.author: padmalathas
 author: padmalathas
 # Customer intent: "As a cloud administrator managing HPC and GPU VMs, I want to troubleshoot known issues and implement solutions, so that I can ensure optimal performance and reliability of my virtual machine workloads."
 ---
 
-# Known issues with HB-series and N-series VMs
+# Known issues with H-series and N-series Virtual Machines
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
 This article attempts to list recent common issues and their solutions when using the [HB-series](sizes-hpc.md) and [N-series](sizes-gpu.md) HPC and GPU VMs.
+
+## NVIDIA-SMI Not Showing Full Telemetry on NCv6 (RTX Pro 6000) Virtual Machines
+Running the `nvidia-smi` will not show full telemetry of the RTX Pro 6000 Blackwell GPU(s) on a NCv6-series virtual machine. Specifically, power and utilization statistics will not be exposed. This is due to the use of an SRIOV-based exposure of the GPU(s) to the virtual machine, as opposed to passthrough mode. This is a known limitation of NVIDIA's SRIOV driver supporting "vGPU" functionality.
+
+## AKS Support on NCv6 (RTX Pro 6000) Virtual Machines
+The Azure Kubernetes Service (AKS) is not supported on NCv6-series virtual machines as of May 2026. We are working to bring AKS support to this product in Q4 2026.
+
+## InfiniBand RDMA and NUMA Node Affinity on HBv5 Virtual Machines
+
+On certain HBv5 virtual machines (VMs), the InfiniBand RDMA device names (such as mlx5_[0-3]) may not align correctly with their respective NUMA node affinities. Ideally, each RDMA device should be mapped as follows:
+
+-	mlx5_0 is on NUMA node: 0
+-	mlx5_1 is on NUMA node: 4
+-	mlx5_2 is on NUMA node: 8
+-	mlx5_3 is on NUMA node: 12
+  
+However, an incorrect mapping example could be:
+
+- mlx5_0 is on NUMA node: 4
+- mlx5_1 is on NUMA node: 8
+- mlx5_2 is on NUMA node: 12
+- mlx5_3 is on NUMA node: 0
+  
+This misalignment can lead to performance degradation, particularly when running multinode MPI workloads.
+
+To confirm whether your RDMA devices are correctly mapped to NUMA nodes, execute the following script:
+```bash
+for d in /sys/class/infiniband/*;
+do
+dev=$(basename "$d")
+node=$(cat "$d/device/numa_node")
+echo "$dev is on NUMA node: $node"
+done
+```
+Compare the output with the ideal mapping listed above.
+
+Solution: Persistent device naming with Udev rules
+
+To remediate the misalignment issue, follow these steps:
+1.	Create a new file in /etc/udev/rules.d/, for example: 99-rdma-persistent-naming.rules
+2.	Add the following lines to the file:
+    ```bash
+    ACTION=="add", SUBSYSTEMS=="pci", KERNELS=="0101:00:00.0", PROGRAM="rdma_rename %k NAME_FIXED mlx5_ib0"
+    ACTION=="add", SUBSYSTEMS=="pci", KERNELS=="0102:00:00.0", PROGRAM="rdma_rename %k NAME_FIXED mlx5_ib1"
+    ACTION=="add", SUBSYSTEMS=="pci", KERNELS=="0103:00:00.0", PROGRAM="rdma_rename %k NAME_FIXED mlx5_ib2"
+    ACTION=="add", SUBSYSTEMS=="pci", KERNELS=="0104:00:00.0", PROGRAM="rdma_rename %k NAME_FIXED mlx5_ib3"
+    ```
+3.	Reload udev rules and trigger device events:
+    ```bash
+    # udevadm control --reload
+    # udevadm trigger --type=devices --action=add
+    ```
+This solution ensures that RDMA device naming persists across VM reboots.
 
 ## Cache topology on Standard_HB120rs_v3
 `lstopo` displays incorrect cache topology on the Standard_HB120rs_v3 VM size. It may display that there’s only 32 MB L3 per nonuniform memory access (NUMA) node. However, in practice, there's indeed 120 MB L3 per NUMA as expected since the same 480 MB of L3 to the entire VM is available as with the other constrained-core HBv3 VM sizes. This incorrect display is a cosmetic error and shouldn't affect workloads.
@@ -24,62 +77,15 @@ This article attempts to list recent common issues and their solutions when usin
 ## qp0 Access Restriction
 To prevent low-level hardware access that can result in security vulnerabilities, Queue Pair 0 isn't accessible to guest VMs. This restriction should only affect actions typically associated with administration of the ConnectX InfiniBand network interface card (NIC) and running some InfiniBand diagnostics like ibdiagnet, but not end-user applications.
 
-## MOFED installation on Ubuntu
-On Ubuntu-18.04 based marketplace VM images with kernels version `5.4.0-1039-azure #42` and newer, some older Mellanox OFED are incompatible causing an increase in VM boot time up to 30 minutes in some cases. This issue is reported in both Mellanox OFED versions 5.2-1.0.4.0 and 5.2-2.2.0.0. The issue is resolved with Mellanox OFED 5.3-1.0.0.1.
-If it's necessary to use the incompatible OFED, a solution is to use the **Canonical:UbuntuServer:18_04-lts-gen2:18.04.202101290** marketplace VM image, or older and not to update the kernel.
+## Accelerated Networking on InfiniBand-equipped Virtual Machines
 
-## Accelerated Networking on HB, HC, HBv2, HBv3, HBv4, HX, NDv2 and NDv4
-
-[Azure Accelerated Networking](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) is now available on the RDMA and InfiniBand capable. It's also available on SR-IOV enabled VM sizes [HB](hb-series.md), [HC](hc-series.md), [HBv2](hbv2-series.md), [HBv3](hbv3-series.md), [HBv4](hbv4-series.md), [HX](hx-series.md), [NDv2](ndv2-series.md), and [NDv4](nda100-v4-series.md). This capability now allows enhanced throughout (up to 30 Gbps) and latencies over the Azure Ethernet network. Though this enhanced throughput is separate from the RDMA capabilities over the InfiniBand network, some platform changes for this capability could affect behavior of certain MPI implementations when running jobs over InfiniBand. Specifically the InfiniBand interface on some VMs may have a slightly different name (mlx5_1 as opposed to earlier mlx5_0). This issue may require tweaking of the MPI command lines, especially when using the UCX interface (commonly with OpenMPI and HPC-X).
+[Azure Accelerated Networking](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) allows enhanced throughput and latencies over the Azure Ethernet network. Though Accelerated Networking is separate from the InfiniBand network, its use may affect behavior of certain MPI implementations when running jobs over InfiniBand. Specifically, the InfiniBand interface on some VMs may have a slightly different name (mlx5_1 as opposed to earlier mlx5_0). This issue may require tweaking of the MPI command lines, especially when using the UCX interface (commonly with OpenMPI and HPC-X).
 
 For more information on this issue, see the [TechCommunity article with instructions on how to address any observed issues](https://techcommunity.microsoft.com/t5/azure-compute/accelerated-networking-on-hb-hc-and-hbv2/ba-p/2067965).
 
-## InfiniBand driver installation on non-SR-IOV VMs
-
-Currently H16r, H16mr, and NC24r aren't SR-IOV enabled. For more information on the InfiniBand stack bifurcation, see [Azure VM sizes - HPC](sizes-hpc.md#rdma-capable-instances).
-InfiniBand can be configured on the SR-IOV enabled VM sizes with the OFED drivers while the non-SR-IOV VM sizes require ND drivers. This IB support is available appropriately for [RHEL and Ubuntu](configure.md).
-
-## Duplicate MAC with cloud-init with Ubuntu on H-series and N-series VMs
-
-There's a known issue with cloud-init on Ubuntu VM images as it tries to bring up the IB interface. This issue can happen either on VM reboot or when trying to create a VM image after generalization. The VM boot logs may show an error like so:
-```output
-“Starting Network Service...RuntimeError: duplicate mac found! both 'eth1' and 'ib0' have mac”.
-```
-
-This 'duplicate MAC with cloud-init on Ubuntu" is a known issue. Newer kernels plan to resolve the issue. If this issue is encountered, the workaround is:
-1) Deploy the (Ubuntu 18.04) marketplace VM image
-2) Install the necessary software packages to enable IB ([instruction here](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351))
-3) Edit waagent.conf and set EnableRDMA=y
-4) Disable networking in cloud-init:
-    ```bash
-    echo network: {config: disabled} | sudo tee /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg
-    ```
-5) To remove the MAC, edit netplan's networking configuration file generated by cloud-init:
-    ```bash
-    sudo bash -c "cat > /etc/netplan/50-cloud-init.yaml" <<'EOF'
-    network:
-      ethernets:
-        eth0:
-          dhcp4: true
-      version: 2
-    EOF
-    ```
-
-## DRAM on HB-series VMs
-
-HB-series VMs can only expose 228 GB of RAM to guest VMs at this time. Similarly, 458 GB on HBv2 and 448 GB on HBv3 VMs. This limitation is due to a known limitation of Azure hypervisor to prevent pages from being assigned to the local DRAM of AMD CCXs (NUMA domains) reserved for the guest VM.
-
-## GSS Proxy
-
-GSS Proxy has a known bug in RHEL 7.5 that can manifest as a significant performance and responsiveness penalty when used with NFS. This bug can be mitigated with:
-
-```bash
-sudo sed -i 's/GSS_USE_PROXY="yes"/GSS_USE_PROXY="no"/g' /etc/sysconfig/nfs
-```
-
 ## Cache Cleaning
 
-On HPC systems, it's often useful to clean up the memory after a job finishes before the next user is assigned the same node. After running applications in Linux, you may find that your available memory reduces while your buffer memory increases, despite not running any applications.
+On HPC systems, it's often useful to clean up memory after a job finishes before the next user is assigned the same node. After running applications in Linux, you may find that your available memory reduces while your buffer memory increases, despite not running any applications.
 
 ![Screenshot of command prompt before cleaning](./media/hpc/cache-cleaning-1.png)
 
@@ -93,37 +99,8 @@ sudo echo 3 > /proc/sys/vm/drop_caches [cleans page-cache and slab objects]
 
 ![Screenshot of command prompt after cleaning](./media/hpc/cache-cleaning-2.png)
 
-## Thermal alerts and reduced performance due to thermal degradation of NVIDIA GPUs in ND H100/H200 v5 VMs 
-
-Microsoft has identified an issue that may cause some GPUs that have been in service for extended periods to show thermal alerts or reduced performance. In some cases, this can be due to software reporting errors in older NVIDIA drivers, while in others it may indicate a true hardware issue, with thermal degradation over time resulting in throttling and reduced performance. 
-
-To ensure accurate monitoring, we recommend upgrading to NVIDIA driver version 570.124.06 or higher. If thermal alerts or throttling continue after the upgrade, this may point to a hardware problem. Microsoft is proactively replacing hardware that is currently exhibiting persistent thermal throttling, as well as units identified as being at elevated risk. We remain committed to maintaining optimal system performance and reliability for our customers. 
-
-## Kernel warnings
-
-You may ignore the following kernel warning messages when booting an HB-series VM under Linux. This is due to a known limitation of the Azure hypervisor that will be addressed over time.
-
-```output
-[  0.004000] WARNING: CPU: 4 PID: 0 at arch/x86/kernel/smpboot.c:376 topology_sane.isra.3+0x80/0x90
-[  0.004000] sched: CPU #4's llc-sibling CPU #0 is not on the same node! [node: 1 != 0]. Ignoring dependency.
-[  0.004000] Modules linked in:
-[  0.004000] CPU: 4 PID: 0 Comm: swapper/4 Not tainted 3.10.0-957.el7.x86_64 #1
-[  0.004000] Hardware name: Microsoft Corporation Virtual Machine/Virtual Machine, BIOS 090007 05/18/2018
-[  0.004000] Call Trace:
-[  0.004000] [<ffffffffb8361dc1>] dump_stack+0x19/0x1b
-[  0.004000] [<ffffffffb7c97648>] __warn+0xd8/0x100
-[  0.004000] [<ffffffffb7c976cf>] warn_slowpath_fmt+0x5f/0x80
-[  0.004000] [<ffffffffb7c02b34>] ? calibrate_delay+0x3e4/0x8b0
-[  0.004000] [<ffffffffb7c574c0>] topology_sane.isra.3+0x80/0x90
-[  0.004000] [<ffffffffb7c57782>] set_cpu_sibling_map+0x172/0x5b0
-[  0.004000] [<ffffffffb7c57ce1>] start_secondary+0x121/0x270
-[  0.004000] [<ffffffffb7c000d5>] start_cpu+0x5/0x14
-[  0.004000] ---[ end trace 73fc0e0825d4ca1f ]---
-```
 
 
-## Next steps
 
-- Review the [HB-series overview](hb-series-overview.md) and [HC-series overview](hc-series-overview.md) to learn about optimally configuring workloads for performance and scalability.
 - Read about the latest announcements, HPC workload examples, and performance results at the [Azure Compute Tech Community Blogs](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
 - For a higher-level architectural view of running HPC workloads, see [High Performance Computing (HPC) on Azure](/azure/architecture/topics/high-performance-computing/).
