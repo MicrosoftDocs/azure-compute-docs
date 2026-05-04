@@ -1,6 +1,6 @@
 ---
 title: Scheduled Events - Azure Resource Graph
-description: Detailed information on how to configure and use scheduled events in Azure Resource Graph
+description: Detailed information on how to configure and use scheduled events in Azure Resource Graph for virtual machines and scale sets.
 author: adwilso
 ms.author: wilsonadam   
 ms.service: azure-virtual-machines
@@ -10,7 +10,7 @@ ms.date: 05/01/2026
 #CustomerIntent: "As a cloud operations manager, I want to receive proactive notifications of scheduled maintenance events for my virtual machines via Azure Resource Graph, so that I can prepare my applications and minimize downtime and disruption."
 ---
 
-# Scheduled Events in Azure Resource Graph Concepts
+# Scheduled Events in Azure Resource Graph
 
 > [!Note] 
 > Scheduled Events in Azure Resource Graph is in preview.
@@ -22,10 +22,12 @@ Azure Resource Graph lets developers explore Azure resources and their propertie
 
 ## Prerequisites
 
+Before you begin, familiarize yourself with these topics:
+
 - [Scheduled events overview](scheduled-events-overview.md)
 - [Overview of Azure Resource Graph](https://learn.microsoft.com/azure/governance/resource-graph/overview)
 
-## Basic Steps for Using Scheduled Events in Azure Resource Graph
+## Using Resource Graph with Scheduled Events
 
 Azure Resource Graph is most helpful when you want to do large-scale queries about events across the history of all the VMs in your subscription or for its integration with other tools. For example, if you're trying to understand if there were any interruptions to your workload over the last week then you can create a query that shows all the scheduled events that impacted your VMs and sort them by the estimated duration of the impact.
 

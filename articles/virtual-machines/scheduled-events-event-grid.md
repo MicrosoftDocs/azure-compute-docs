@@ -1,6 +1,6 @@
 ---
 title: Scheduled Events - Event Grid
-description: Detailed information on how to configure and use scheduled events in an Event Grid system topic
+description: Detailed information on how to configure and use scheduled events in an Event Grid system topic.
 author: adwilso
 ms.author: wilsonadam   
 ms.service: azure-virtual-machines
@@ -10,7 +10,7 @@ ms.date: 05/01/2026
 #CustomerIntent: "As a cloud operations manager, I want to receive proactive notifications of scheduled maintenance events for my virtual machines via event grid, so that I can prepare my applications and minimize downtime and disruption."
 ---
 
-# Scheduled Events in Event Grid Concepts
+# Scheduled Events in Event Grid
 
 > [!Note] 
 > Scheduled Events in Event Grid is in preview.
@@ -25,6 +25,8 @@ Event Grid is a cloud service that enables you to create and manage event-driven
 This page covers the basics of using the scheduled events system topic, such as the scope, the schema, and the delivery options of the events. It also shows how to enable the scheduled events system topic in your VM profile and how to create subscriptions to receive the events.
 
 ## Prerequisites
+
+Before you begin, familiarize yourself with these topics:
 
 - [Scheduled events overview](scheduled-events-overview.md)
 - [Create, view, and manage Event Grid System Topics](https://learn.microsoft.com/azure/event-grid/create-view-manage-system-topics-cli)
