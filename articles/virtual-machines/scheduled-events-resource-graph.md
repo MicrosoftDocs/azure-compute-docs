@@ -25,15 +25,22 @@ Azure Resource Graph lets developers explore Azure resources and their propertie
 - [Scheduled events overview](scheduled-events-overview.md)
 - [Overview of Azure Resource Graph](https://learn.microsoft.com/azure/governance/resource-graph/overview)
 
-## Basics
+## Basic Steps for Using Scheduled Events in Azure Resource Graph
 
 Azure Resource Graph is most helpful when you want to do large-scale queries about events across the history of all the VMs in your subscription or for its integration with other tools. For example, if you're trying to understand if there were any interruptions to your workload over the last week then you can create a query that shows all the scheduled events that impacted your VMs and sort them by the estimated duration of the impact.
 
 This section shows you how to enable event delivery and receive your first scheduled events.
 
-### Opting-In to Scheduled Events
+### Accessing Scheduled Events in Azure Resource Graph Preview
+During the preview, you need to explicitly enable access to event delivery to Azure Resource Graph via a feature flag. During the preview we don't recommend using this delivery method for production workloads. 
 
-By default, scheduled events aren't delivered to Azure Resource Graph for virtual machines on Azure. If you wish to receive scheduled events you need to opt in using either the VM profile, the Virtual Machine Scale Set profile, or the availability set profile. If your VM is part of an availability set or a Virtual Machine Scale Set then you won't be able to set the schedule events profile for each VM individually. All VMs in the same Virtual Machine Scale Set or availability set are required to have the same scheduled events policy.
+```azurecli
+az feature register --name SendScheduledEventsPolicy --namespace Microsoft.Compute
+```
+
+### Opting-In to Scheduled Events in Azure Resource Graph
+
+By default, scheduled events aren't delivered to Azure Resource Graph for virtual machines on Azure. If you wish to receive scheduled events you need to opt in using either the VM profile, the Virtual Machine Scale Set profile, or the availability set profile. If your VM is part of an availability set or a Virtual Machine Scale Set then you can't set the schedule events profile for each VM individually. All VMs in the same Virtual Machine Scale Set or availability set are required to have the same scheduled events policy.
 
 Enabling delivery to the Event Grid System Topic also delivers the events to the [Event Grid System Topic](scheduled-events-event-grid.md).
 
@@ -58,20 +65,34 @@ If you're using Virtual Machine Scale Sets Flex or Uniform, enable scheduled eve
 You can also enable scheduled events using the Azure CLI for new and Virtual Machine Scale Sets.
 
 ```azurecli
-az vmss create  --name "<ScaleSetName>" -g "<ResourceGroupName>" --additional-events True --enable-reboot True --enable-redeploy True  -platformFaultDomainCount <DesiredFaultDomainCount> 
+az vmss create  --name "<ScaleSetName>" -g "<ResourceGroupName>"  -platformFaultDomainCount <DesiredFaultDomainCount> --set scheduledEventsPolicy='{
+    "scheduledEventsAdditionalPublishingTargets": {
+      "eventGridAndResourceGraph": {
+        "enable": true,
+        "scheduledEventsApiVersion": "2020-07-01"
+      }
+    }
+  }'
 ```
 
 You can enable scheduled events for an existing Virtual Machine Scale Set at any time using the Azure CLI or by directly modifying the Virtual Machine Scale Set profile.
 
 ```azurecli
 
-az vmss update --resource-group 'scheduled-events-test' --name 'setesttzh' --additional-events 'true'
+az vmss update --resource-group "vm_group" --name "SETest" --set scheduledEventsPolicy='{
+    "scheduledEventsAdditionalPublishingTargets": {
+      "eventGridAndResourceGraph": {
+        "enable": true,
+        "scheduledEventsApiVersion": "2020-07-01"
+      }
+    }
+  }'
 
 ```
 
 We recommend that you set this property when you create the scale set to ensure that scheduled events are always enabled for every virtual machine.
 
-### Role Based Access Control
+### Role Based Access Control to View Scheduled Events
 
 A user must have the `ScheduledEventContributor` role to read or acknowledge the scheduled events from a VM.
 
@@ -82,7 +103,7 @@ A user must have the `ScheduledEventContributor` role to read or acknowledge the
 4. Select appropriate members to provision this role and assign it to Service identifier 78315a30-673a-4a46-8e5c-ce59dbc6adf8 (MaintenanceResourceProvider)
 ![Image of the Azure Portal showing adding a member to the ScheduledEventContributer role.](media/scheduled-events/assign-role.png)
 
-### Querying Azure Resource Graph
+### Querying Azure Resource Graph to View VM Events
 
 Scheduled events are written to the `maintenanceresources` table with type `microsoft.maintenance/scheduledevents`. Every time a scheduled event changes state it creates an update its entry in the table with the same information as would be available in Event Grid or the IMDS endpoint.
 
@@ -107,7 +128,7 @@ Maintenanceresources
 | project resourceGroup, zones, properties.EventStatus, properties.NotBefore, properties.Resources, properties.EventId, properties.TargetResourceId, properties.EventType, properties.Description
 
 ```
-## Detailed Event Description
+## Detailed Schemas for Scheduled Events in Azure Resource Graph
 
 The events that are delivered to Azure Resource Graph have a standard Azure Resource Graph wrapper, with the scheduled events specific information in the payload field. This section covers all the fields in payload along with a sample payload from a scheduled event.
 
@@ -119,7 +140,7 @@ These values are standard to the `maintenanceresources` table and mostly include
 | --- | --- |
 | ID | The Azure Resource Manager (ARM) ID of the scheduled event. The final GUID is the same as the event ID in scheduled event specific fields and as the event in the VM. `/subscriptions/{subscription-id}/resourcegroups/{rg-name}/providers/Microsoft.Compute/virtualmachineschalsets/{vmss-name}/providers/Microsoft.Maintenance/Scheduledevents/{event-id}` |
 | Name | This field contains the Event ID, which is a unique identifier for the event. The EventId won't change as the EventStatus changes throughout the event's lifetime |
-| Type | For scheduled events is always `microsoft.maintenance/scheduledevents` |
+| Type | For scheduled events it is always `microsoft.maintenance/scheduledevents` |
 | TenantID | ID for your Azure tenant |
 | Location | Region that the impacted resources are in. |
 | Resource Group | Resource group of the VMs the scheduled event impacts. |

@@ -53,13 +53,13 @@ Scheduled events are generated in the following use cases:
 
 Due to the short time between events and the operations they describe, scheduled events are intended for automated machine-to-machine communication, and not read and acted on by human operators. For human readable information about events in the past, use resource health annotations and use maintenance configurations for human readable information about operations scheduled up to 35 days in advance.  
 
-## Understanding and Processing Events
+## Understanding and Processing Scheduled Events
 
 Scheduled events provide insight into how and when your VM will be interrupted and understanding them helps you plan how your application should respond.
 
 While the specifics of how to get the event payload differ across the Event Grid, Azure Resource Graph (ARG), and Instance Metadata Service (IMDS) endpoints, the content of the payload is the same regardless of which one you choose. This section covers when events are emitted and the different states they represent.  
 
-### Maintenance Event Timeline
+### Timeline of a Scheduled Event for a VM Interruption
 
 There are three major steps to handling Scheduled events, preparation, impact, and recovery. When a maintenance operation that affects your VM is scheduled, a scheduled event is sent with `EventStatus:"Scheduled"` and a `NotBeforeTime`. The `NotBeforeTime` indicates the earliest time that the scheduled impactful operation could occur.
 
@@ -80,7 +80,7 @@ The EventStatus value in a scheduled event changes based on the progress of the 
 
 While the event is in the `EventStatus:"Scheduled"` state, you need to take steps to prepare your workload. Once the preparation is complete, you should then approve the event using the scheduled event API. Otherwise, the event is automatically approved when the `NotBefore` time is reached. If the VM is on shared infrastructure, the system waits for all other tenants on the same hardware to also approve the job or timeout. After approvals are gathered from all impacted VMs or the `NotBefore` time is reached, then Azure generates a new scheduled event payload with `EventStatus:"Started"` and triggers the start of the maintenance event. When the event reaches a terminal state, it's removed from the list of events. That serves as the signal for you to recover your VMs.
 
-### Event Scheduling
+### Typical Time to Prepare Workload for Different Scheduled Event Types
 
 Each event is scheduled for a minimum amount of time in the future based on the event type. Most events are sent immediately before the minimum notice so any high availability application must be designed to prepare for the impact during that timeframe.
 
@@ -94,7 +94,7 @@ Each event is scheduled for a minimum amount of time in the future based on the 
 
 This means that you can detect a future schedule of event at least by the minimum notice time before the event occurs. Once an event is scheduled, it will move into the `Started` state after it's approved or the `NotBefore` time passes. However, in rare cases, Azure cancels the operation before it starts. In that case the event is removed from the Events array, and the impact won't occur as previously scheduled.
 
-### Acknowledging Events
+### Acknowledging Scheduled Events 
 
 After you learn of an upcoming event and finish your logic for graceful shutdown, you can acknowledge the outstanding event. This call indicates to Azure that it can shorten the minimum notification time (when possible). The event might not start immediately upon approval. In some cases Azure requires the approval of all the VMs hosted on the node before proceeding with the event.
 
@@ -116,7 +116,7 @@ To ensure that your application meets its availability targets using scheduled e
 
 **Guest OS Updates**: Scheduled events for Virtual Machine Scale Sets Guest OS upgrades or reimages are supported for general purpose VM sizes that support memory preserving updates only. It doesn't work for G, M, N, and H series. Scheduled events for Virtual Machine Scale Sets Guest OS upgrades and reimages are disabled by default. To enable scheduled events for these operations on supported VM sizes, first enable them using [OSImageNotificationProfile](/rest/api/compute/virtual-machine-scale-sets/create-or-update?tabs=HTTP).
 
-### User Initiated Maintenance
+### Scheduled Events for User Initiated Maintenance
 
 By default, user-initiated VM maintenance via the Azure portal, API, CLI, or PowerShell results in a scheduled event. Like all types of events, user triggered events don't proceed unless they're either approved via a POST message or the NotBefore time elapses. The event lets your workload prepare for the impending operation regardless of the events source. We advise having a primary and secondary VM communicating and approving user generated scheduled events in case the primary VM becomes unresponsive. Immediately approving events prevents delays in recovering your application back to a good state.
 Azure automatically approves user-initiated operations if the `automaticallyApprove` property is set to true in either the Virtual Machine Scale Set, VM, or Availability Set profile depending on how your VM was deployed. If `automaticallyApprove` is set to true then events proceed immediately to the `EventStatus:Started` state, skipping the scheduled state.
@@ -147,11 +147,11 @@ Azure Event Grid is a fully managed Pub Sub message distribution service that of
 
 Azure Resource Graph (ARG) lets developers explore Azure resources and their properties across subscriptions at scale. It’s designed for complex querying and analysis, providing a comprehensive view of resources and their relationships. ARG is helpful when you want to do large-scale queries about events across the history of all the VMs in your subscription or for its integration with other tools. 
 
-## Detailed Event Descriptions
+## Detailed Scbeduled Event Schema
 
 Scheduled events include the same information regardless of the endpoint that they're delivered from. This flexibility allows you to pick the endpoint that works best for your application. The following section outlines the information that's available in each event along example events. 
 
-### Event properties
+### Scheduled Event properties
 
 | Property | Description |
 | - | - |
@@ -166,7 +166,7 @@ Scheduled events include the same information regardless of the endpoint that th
 | EventSource | Initiator of the event. <br><br> Example: <br><ul><li> `Platform`: Platform initiated this event. <li>`User`: The user initiated this event. |
 | DurationInSeconds | The expected duration of the interruption caused by the event. There might be secondary impacts of a shorter duration during the impact window.  <br><br> Example: <br><ul><li> `9`: The interruption caused by the event lasts for 9 seconds. <li>`0`: The event won't interrupt the VM or impact its availability (for example, update to the network) <li>`-1`: The default value used if the impact duration is either unknown or not applicable. |
 
-### Understanding Events
+### Understanding Scheduled Events
 To learn why a particular impactful operation was scheduled, there are a few things to check when reading the event.
 
 1.	**EventSource**: indicates if Azure scheduled the operation or if a user triggered the action. 
@@ -236,7 +236,7 @@ You can note that the `DocumentIncarnation` increasing from 3 to 4 while having 
     ]
 }
 ```
-### OS Update Notifications 
+### OS Update Notifications via Scheduled Events 
 Scheduled events for Virtual Machine Scale Sets Guest OS upgrades or reimages are supported for general purpose VM sizes. These notifications allow your VMs to receive scheduled events before to maintenance operations that upgrade or reimage your Guest OS. You can enable these events using [OSImageNotificationProfile](/rest/api/compute/virtual-machine-scale-sets/create-or-update?tabs=HTTP)
  and set how long of a warning period your VMs are given before the operation begins. 
 
@@ -250,7 +250,7 @@ Scheduled events for Virtual Machine Scale Sets Guest OS upgrades or reimages ar
 
 OS update notifications aren't supported for G, M, N, and H series VMs. 
 
-### Auto Approve User Events
+### Auto Approve User Initiated Scheduled Events
 In some cases, you might wish to have Azure immediately approve all user-initiated events on your behalf, such as if a VM is redeployed from the portal. Automatic approval is enabled by setting the property in either the Virtual Machine Scale Set profile, the Availability Set profile, or the VM profile depending on how your VMs are deployed. 
 
 When setting the automatic approval behavior, you can choose to have all reboot operations, all redeploy operations, or both types of operations automatically approved depending on your workload's requirements.  

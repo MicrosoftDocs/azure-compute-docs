@@ -1,6 +1,6 @@
 ---
 title: Scheduled Events - Event Grid
-description: Detailed information on how to configure and use scheduled events in an event grid system topic
+description: Detailed information on how to configure and use scheduled events in an Event Grid system topic
 author: adwilso
 ms.author: wilsonadam   
 ms.service: azure-virtual-machines
@@ -30,15 +30,22 @@ This page covers the basics of using the scheduled events system topic, such as 
 - [Create, view, and manage Event Grid System Topics](https://learn.microsoft.com/azure/event-grid/create-view-manage-system-topics-cli)
 
 
-## Basics
+## Basic Steps for Using Scheduled Events in Event Grid
 
 The scheduled events system topic is best used in cases where your application has a centralized control plane that makes management decisions on behalf of all the VMs in your workload. It provides a single centralized location to gather scheduled events for your entire subscription and provides an easy API for approving those events from outside the VM.
 
 This section shows you how to enable event delivery and receive your first scheduled events.
 
-### Opting-In to Scheduled Events
+### Accessing Scheduled Events in Event Grid Preview
+During the preview, you need to explicitly enable access to event delivery in Event Grid via a feature flag. During the preview, we don't recommend using this delivery method for production workloads. 
 
-By default, scheduled events aren't delivered to Event Grid for virtual machines on Azure. If you wish to receive scheduled events you'll need to opt in using either the VM profile, the Virtual Machine Scale Set profile, or the availability set profile. If your VM is part of an availability set or a Virtual Machine Scale Set then you won't be able to set the schedule events profile for each VM individually. All VMs in the same Virtual Machine Scale Set or availability set are required to have the same scheduled events policy.
+```azurecli
+az feature register --name SendScheduledEventsPolicy --namespace Microsoft.Compute
+```
+
+### Opting-In to Receive Scheduled Events
+
+By default, scheduled events aren't delivered to Event Grid for virtual machines on Azure. If you wish to receive scheduled events you'll need to opt in using either the VM profile, the Virtual Machine Scale Set profile, or the availability set profile. If your VM is part of an availability set or a Virtual Machine Scale Set then you can't set the schedule events profile for each VM individually. All VMs in the same Virtual Machine Scale Set or availability set are required to have the same scheduled events policy.
 
 Enabling delivery to the Event Grid System Topic also delivers the events to [Azure Resource Graph](scheduled-events-resource-graph.md).
 
@@ -63,20 +70,34 @@ If you're using Virtual Machine Scale Sets Flex or Uniform, enable scheduled eve
 You can also enable scheduled events using the Azure CLI for new and Virtual Machine Scale Sets.
 
 ```azurecli
-az vmss create  --name "<ScaleSetName>" -g "<ResourceGroupName>" --additional-events True --enable-reboot True --enable-redeploy True  -platformFaultDomainCount <DesiredFaultDomainCount> 
+az vmss create  --name "<ScaleSetName>" -g "<ResourceGroupName>"  -platformFaultDomainCount <DesiredFaultDomainCount> --set scheduledEventsPolicy='{
+    "scheduledEventsAdditionalPublishingTargets": {
+      "eventGridAndResourceGraph": {
+        "enable": true,
+        "scheduledEventsApiVersion": "2020-07-01"
+      }
+    }
+  }'
 ```
 
 You can enable scheduled events for an existing Virtual Machine Scale Set at any time using the Azure CLI or by directly modifying the Virtual Machine Scale Set profile.
 
 ```azurecli
 
-az vmss update --resource-group 'scheduled-events-test' --name 'setesttzh' --additional-events 'true'
+az vmss update --resource-group "vm_group" --name "SETest" --set scheduledEventsPolicy='{
+    "scheduledEventsAdditionalPublishingTargets": {
+      "eventGridAndResourceGraph": {
+        "enable": true,
+        "scheduledEventsApiVersion": "2020-07-01"
+      }
+    }
+  }'
 
 ```
 
 We recommend that you set this property when you create the scale set to ensure that scheduled events are always enabled for every virtual machine.
 
-### Using the Event Grid Endpoint
+### Using the Event Grid Endpoint to Receive VM Events
 
 Once your virtual machines are registered to receive scheduled events, you need to read the events coming from the [system topic](https://learn.microsoft.com/azure/event-grid/create-view-manage-system-topics-cli). Scheduled events are delivered to the `Microsoft.ResourceNotifications.MaintenanceResources` topic.
 
@@ -86,7 +107,7 @@ az eventgrid system-topic create -g <ResourceGroupName> --name <SubscriptionName
 
 ```
 
-### Role Based Access Control
+### Role Based Access Control to View Scheduled Events
 
 A user must have the `ScheduledEventContributor` role to read or acknowledge the scheduled events from a VM. 
 
@@ -97,11 +118,11 @@ A user must have the `ScheduledEventContributor` role to read or acknowledge the
 4. Select appropriate members to provision this role and assign it to Service identifer 78315a30-673a-4a46-8e5c-ce59dbc6adf8 (MaintenanceResourceProvider)
 ![Image of the Azure Portal showing adding a member to the ScheduledEventContributer role.](media/scheduled-events/assign-role.png)
 
-## Detailed Event Description
+## Detailed Scheduled Event Schema
 
 The events that are delivered over Event Grid will have a standard Event Grid wrapper, with the scheduled events specific information in the data fields. This section covers all the fields in payload along with a sample payload from a scheduled event.
 
-### Event Grid Payload Fields
+### Common Event Grid Payload Fields
 
 These values are sent with all Event Grid system topic messages and mostly include metadata about Event Grid's delivery process.
 
@@ -110,7 +131,7 @@ These values are sent with all Event Grid system topic messages and mostly inclu
 | Topic | Event Grid topic that the event is published under /subscriptions/{subscription-id} |
 | Subject | The Azure Resource Manager (ARM) ID of the scheduled event. The final GUID is the same as the event ID in scheduled event specific fields and as the event in the VM. /subscriptions/{subscription-id}/resourcegroups/{rg-name}/providers/Microsoft.Compute/virtualmachineschalsets/{vmss-name}/providers/Microsoft.Maintenance/Scheduledevents/{event-id} |
 | eventTime | Time of event, generated by the system, in ISO 8601 format |
-| ID | Unique identifier for the event in Event Grid. This is different than the scheduled event ID, which is used to track the flow of events |
+| ID | Unique identifier for the event in Event Grid. This ID is different than the scheduled event ID, which is used to track the flow of events |
 | eventType | All scheduled events have the same event type `microsoft.maintenance/scheduledevents/write` |
 | apiVersion | The versioning information for the scheduled events specific metadata in the payload. This version is updated if there are changes made to the scheduled events specific schema. |
 | dataVersion | Tracks the data version of the scheduled events specific fields |
