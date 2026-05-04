@@ -65,7 +65,7 @@ Process pinning works on HBv2-series VMs because we expose the underlying silico
 | Max MPI Job Size                | 36,000 cores (300 VMs in a single virtual machine scale set with singlePlacementGroup=true) |
 | MPI Support                     | HPC-X, OpenMPI, MVAPICH2, MPICH   |
 | Additional Frameworks           | UCX, libfabric, PGAS |
-| Azure Storage Support           | Standard and Premium Disks (maximum 8 disks), , Azure NetApp Files, Azure Files, Azure HPC Cache, Azure Managed Lustre File System |
+| Azure Storage Support           | Standard and Premium Disks (maximum 8 disks), Azure NetApp Files, Azure Files, Azure HPC Cache, Azure Managed Lustre File System |
 | Supported and Validated OS      | RHEL 8.3+, AlmaLinux 8.10+, Ubuntu 22.04+ LTS, SLES 15 SP2+, Windows Server 2022+  |
 | Recommmended OS for Performance | AlmaLinux HPC 9.7, Ubuntu HPC 24.04+, Windows Server 2025 |
 | Orchestrator Support        | CycleCloud, Batch, AKS; [cluster configuration options](sizes-hpc.md#cluster-configuration-options)  |
