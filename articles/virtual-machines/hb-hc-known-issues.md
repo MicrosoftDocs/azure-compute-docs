@@ -12,19 +12,21 @@ author: padmalathas
 # Customer intent: "As a cloud administrator managing HPC and GPU VMs, I want to troubleshoot known issues and implement solutions, so that I can ensure optimal performance and reliability of my virtual machine workloads."
 ---
 
-# Known issues with H-series and N-series Virtual Machines
+# Known issues with H-series and N-series virtual machines
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
 This article attempts to list recent common issues and their solutions when using the [HB-series](sizes-hpc.md) and [N-series](sizes-gpu.md) HPC and GPU VMs.
 
-## NVIDIA-SMI Not Showing Full Telemetry on NCv6 (RTX Pro 6000) Virtual Machines
+## NVIDIA-SMI Not Showing Full Telemetry on NCv6 (RTX Pro 6000) virtual machines
+
 Running the `nvidia-smi` will not show full telemetry of the RTX Pro 6000 Blackwell GPU(s) on a NCv6-series virtual machine. Specifically, power and utilization statistics will not be exposed. This is due to the use of an SRIOV-based exposure of the GPU(s) to the virtual machine, as opposed to passthrough mode. This is a known limitation of NVIDIA's SRIOV driver supporting "vGPU" functionality.
 
-## AKS Support on NCv6 (RTX Pro 6000) Virtual Machines
+## AKS Support on NCv6 (RTX Pro 6000) virtual machines
+
 The Azure Kubernetes Service (AKS) is not supported on NCv6-series virtual machines as of May 2026. We are working to bring AKS support to this product in Q4 2026.
 
-## InfiniBand RDMA and NUMA Node Affinity on HBv5 Virtual Machines
+## InfiniBand RDMA and NUMA Node Affinity on HBv5 virtual machines
 
 On certain HBv5 virtual machines (VMs), the InfiniBand RDMA device names (such as mlx5_[0-3]) may not align correctly with their respective NUMA node affinities. Ideally, each RDMA device should be mapped as follows:
 
@@ -72,12 +74,14 @@ To remediate the misalignment issue, follow these steps:
 This solution ensures that RDMA device naming persists across VM reboots.
 
 ## Cache topology on Standard_HB120rs_v3
+
 `lstopo` displays incorrect cache topology on the Standard_HB120rs_v3 VM size. It may display that there’s only 32 MB L3 per nonuniform memory access (NUMA) node. However, in practice, there's indeed 120 MB L3 per NUMA as expected since the same 480 MB of L3 to the entire VM is available as with the other constrained-core HBv3 VM sizes. This incorrect display is a cosmetic error and shouldn't affect workloads.
 
-## qp0 Access Restriction
+## Access Restriction on queue pair 0
+
 To prevent low-level hardware access that can result in security vulnerabilities, Queue Pair 0 isn't accessible to guest VMs. This restriction should only affect actions typically associated with administration of the ConnectX InfiniBand network interface card (NIC) and running some InfiniBand diagnostics like ibdiagnet, but not end-user applications.
 
-## Accelerated Networking on InfiniBand-equipped Virtual Machines
+## Accelerated Networking on InfiniBand-equipped virtual machines
 
 [Azure Accelerated Networking](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) allows enhanced throughput and latencies over the Azure Ethernet network. Though Accelerated Networking is separate from the InfiniBand network, its use may affect behavior of certain MPI implementations when running jobs over InfiniBand. Specifically, the InfiniBand interface on some VMs may have a slightly different name (mlx5_1 as opposed to earlier mlx5_0). This issue may require tweaking of the MPI command lines, especially when using the UCX interface (commonly with OpenMPI and HPC-X).
 
