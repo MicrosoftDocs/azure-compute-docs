@@ -48,7 +48,7 @@ az feature register --name ScheduledEventsActivity --namespace Microsoft.Mainten
 
 ### Opting-In to Receive Scheduled Events
 
-By default, scheduled events aren't delivered to Event Grid for virtual machines on Azure. If you wish to receive scheduled events you'll need to opt in using either the VM profile, the Virtual Machine Scale Set profile, or the availability set profile. If your VM is part of an availability set or a Virtual Machine Scale Set then you can't set the schedule events profile for each VM individually. All VMs in the same Virtual Machine Scale Set or availability set are required to have the same scheduled events policy.
+By default, scheduled events aren't delivered to Event Grid for virtual machines on Azure. If you wish to receive scheduled events you need to opt in using either the VM profile, the Virtual Machine Scale Set profile, or the availability set profile. If your VM is part of an availability set or a Virtual Machine Scale Set then you can't set the schedule events profile for each VM individually. All VMs in the same Virtual Machine Scale Set or availability set are required to have the same scheduled events policy.
 
 Enabling delivery to the Event Grid System Topic also delivers the events to [Azure Resource Graph](scheduled-events-resource-graph.md).
 
@@ -112,9 +112,9 @@ A user must have the `ScheduledEventContributor` role to read or acknowledge the
 1. Navigate to the Access Control (IAM) tab of a subscription / Resource Group / Resource. 
 2. Select  Add and choose Add role assignment.
 3. Search for ScheduledEventContributor 
-![Image of the Azure Portal showing searcing for the ScheduledEventContributer role.](media/scheduled-events/add-role-assignment.png)
-4. Select appropriate members to provision this role and assign it to Service identifer 78315a30-673a-4a46-8e5c-ce59dbc6adf8 (MaintenanceResourceProvider)
-![Image of the Azure Portal showing adding a member to the ScheduledEventContributer role.](media/scheduled-events/assign-role.png)
+![The Azure portal showing a search for the ScheduledEventContributer role.](media/scheduled-events/add-role-assignment.png)
+4. Select appropriate members to provision this role and assign it to Service identfier 78315a30-673a-4a46-8e5c-ce59dbc6adf8 (MaintenanceResourceProvider)
+![Adding a member to the ScheduledEventContributer role in Azure portal.](media/scheduled-events/assign-role.png)
 
 ## Detailed Scheduled Event Schema
 
@@ -149,7 +149,7 @@ These fields contain the same information as the IMDS and Azure Resource Graph E
 | NotBefore | Time after which this event can start. The event is guaranteed to not start before this time. Is blank if the event is in the started state. Time is in GMT format, using RFC 1123. |
 | Description | A human-readable description of the event. |
 | EventSource | Initiator of the event. <br>**Platform:** The Azure platform initiated this event.<br><br>**User:** An authorized user initiated the event. |
-| ScheduledEventApiVersion | Version of the scheduled event API selected in the virtual machine profile. During the preview the only supported value is "2020-07-01" |
+| ScheduledEventApiVersion | Version of the scheduled event API selected in the virtual machine profile. During the preview, the only supported value is "2020-07-01" |
 
 
 ### Finding the Virtual Machine ID for a Virtual Machine in a Virtual Machine Scale Set

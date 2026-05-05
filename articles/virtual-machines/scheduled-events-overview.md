@@ -106,7 +106,7 @@ The acknowledgment can be sent either to the IMDS endpoint within any VM or via 
 
 To ensure that your application meets its availability targets using scheduled events, there are a few unique cases that rarely occur but should prepare for:
 
-**Predicted Hardware Failure**: In some cases, Azure can predict host failure due to degraded hardware and attemps to mitigate disruption to your service by scheduling a migration. Affected virtual machines will receive a scheduled event with a `NotBefore` that is typically a few days in the future. The actual time varies depending on the predicted failure risk assessment. Azure tries to give  seven days' advance notice when possible. The actual warning time varies and might be smaller if the prediction is that there's a high chance of the hardware failing imminently. To minimize risk to your service in case the hardware fails before the system-initiated migration, we recommend that you acknowledge the event to redeploy your virtual machine to new hardware as soon as possible.
+**Predicted Hardware Failure**: In some cases, Azure can predict host failure due to degraded hardware and attempts to mitigate disruption to your service by scheduling a migration. Affected virtual machines will receive a scheduled event with a `NotBefore` that is typically a few days in the future. The actual time varies depending on the predicted failure risk assessment. Azure tries to give  seven days' advance notice when possible. The actual warning time varies and might be smaller if the prediction is that there's a high chance of the hardware failing imminently. To minimize risk to your service in case the hardware fails before the system-initiated migration, we recommend that you acknowledge the event to redeploy your virtual machine to new hardware as soon as possible.
 
 **Hardware Failure**: If the host node experiences a hardware failure Azure bypasses the minimum notice period and immediately begin the recovery process for affected virtual machines. This immediate action reduces recovery time in the case that the affected VMs are unable to respond. During the recovery process, an event is created for all impacted VMs with `EventType = Redploy` and `EventStatus = Started`.
 
@@ -147,7 +147,7 @@ Azure Event Grid is a fully managed Pub Sub message distribution service that of
 
 Azure Resource Graph (ARG) lets developers explore Azure resources and their properties across subscriptions at scale. It’s designed for complex querying and analysis, providing a comprehensive view of resources and their relationships. ARG is helpful when you want to do large-scale queries about events across the history of all the VMs in your subscription or for its integration with other tools. 
 
-## Detailed Scbeduled Event Schema
+## Detailed Scheduled Event Schema
 
 Scheduled events include the same information regardless of the endpoint that they're delivered from. This flexibility allows you to pick the endpoint that works best for your application. The following section outlines the information that's available in each event along example events. 
 
@@ -156,7 +156,7 @@ Scheduled events include the same information regardless of the endpoint that th
 | Property | Description |
 | - | - |
 | Document Incarnation | Integer that increases when the events array changes. Documents with the same incarnation contain the same event information, and the incarnation is incremented when an event changes. |
-| EventId | Globally unique identifier for this event. <br><br> Example: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297 |
+| EventId | Globally unique identifier for this event. |
 | EventType | Expected impact of this event.  <br><br> Values: <br><ul><li> `Freeze`: The Virtual Machine is scheduled to pause for a few seconds. CPU and network connectivity might be suspended, but there's no impact on memory or open files.<li>`Reboot`: The Virtual Machine is scheduled for reboot (non-persistent memory is lost). In rare cases a VM scheduled for EventType:"Reboot" might experience a freeze event instead of a reboot. <li>`Redeploy`: The Virtual Machine is scheduled to move to another node (ephemeral disks are lost). <li>`Preempt`: The Spot Virtual Machine is being deleted (ephemeral disks are lost). This event is made available on a best effort basis <li> `Terminate`: Azure scheduled the virtual machine for deletion. |
 | ResourceType | Type of resource this event affects. <br><br> Values: <ul><li>`VirtualMachine` |
 | Resources | List of resources this event affects. <br><br> Example: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
@@ -271,9 +271,9 @@ When events are automatically approved, a scheduled event with `EventStatus:Sche
 ## Testing Scheduled Events
 Two common ways to test your applications response to scheduled events are manually triggering user imitated events or using a mock server. 
 
-You can manually trigger redeploy and reboot events through the Azure Portal or Azure CLI by selecting the 'reboot' or 'redeploy' VM option from the VM blade. This will create an event and send it to your workload. 
+You can manually trigger redeploy and reboot events through the Azure portal or Azure CLI by selecting the 'reboot' or 'redeploy' VM option from the VM blade. This will create an event and send it to your workload. 
 
-Operations that impact multiple VMs, such as host updates, cannot be triggered on demand so you can use a mock server instead. The [vm-scheduled-events-mock-server](https://github.com/Azure-Samples/scheduled-events-mock-server) provides a framework for testing your application's response to different scenarios by replaying real events flows back for development and testing. By default the server supports nine different scenarios, all captured from VMs running in Azure and representing the most common cases. The scenarios can be expanded to include more options depending on your applications particular characteristics.  
+Operations that impact multiple VMs, such as host updates, can't be triggered on demand so you can use a mock server instead. The [vm-scheduled-events-mock-server](https://github.com/Azure-Samples/scheduled-events-mock-server) provides a framework for testing your application's response to different scenarios by replaying real events flows back for development and testing. By default the server supports nine different scenarios, all captured from VMs running in Azure and representing the most common cases. The scenarios can be expanded to include more options depending on your applications particular characteristics.  
 
 
 ## Related content

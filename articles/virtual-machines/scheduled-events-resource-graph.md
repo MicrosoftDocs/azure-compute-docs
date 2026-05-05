@@ -97,9 +97,9 @@ A user must have the `ScheduledEventContributor` role to read or acknowledge the
 1. Navigate to the Access Control (IAM) tab of a subscription / Resource Group / Resource.
 2. Select  Add and choose Add role assignment.
 3. Search for ScheduledEventContributor 
-![Image of the Azure Portal showing searcing for the ScheduledEventContributer role.](media/scheduled-events/add-role-assignment.png)
-4. Select appropriate members to provision this role and assign it to Service identifier 78315a30-673a-4a46-8e5c-ce59dbc6adf8 (MaintenanceResourceProvider)
-![Image of the Azure Portal showing adding a member to the ScheduledEventContributer role.](media/scheduled-events/assign-role.png)
+![A search in the Azure portal for the ScheduledEventContributer role.](media/scheduled-events/add-role-assignment.png)
+4. Select appropriate members to provision this role and assign it to the service identifier
+![Adding a member to the ScheduledEventContributer role in Azure portal.](media/scheduled-events/assign-role.png)
 
 ### Querying Azure Resource Graph to View VM Events
 
@@ -138,7 +138,7 @@ These values are standard to the `maintenanceresources` table and mostly include
 | --- | --- |
 | ID | The Azure Resource Manager (ARM) ID of the scheduled event. The final GUID is the same as the event ID in scheduled event specific fields and as the event in the VM. `/subscriptions/{subscription-id}/resourcegroups/{rg-name}/providers/Microsoft.Compute/virtualmachineschalsets/{vmss-name}/providers/Microsoft.Maintenance/Scheduledevents/{event-id}` |
 | Name | This field contains the Event ID, which is a unique identifier for the event. The EventId won't change as the EventStatus changes throughout the event's lifetime |
-| Type | For scheduled events it is always `microsoft.maintenance/scheduledevents` |
+| Type | For scheduled events it's always `microsoft.maintenance/scheduledevents` |
 | TenantID | ID for your Azure tenant |
 | Location | Region that the impacted resources are in. |
 | Resource Group | Resource group of the VMs the scheduled event impacts. |
@@ -161,7 +161,7 @@ These fields contain the same information as the IMDS and Event Grid System Topi
 | NotBefore | Time after which this event can start. The event is guaranteed to not start before this time. Is blank if the event is in the started state. Time is in GMT format, using RFC 1123. |
 | Description | A human-readable description of the event. |
 | EventSource | Initiator of the event. <br>**Platform:** The Azure platform initiated this event.<br><br>**User:** An authorized user initiated the event. |
-| ScheduledEventApiVersion | Version of the scheduled event API selected in the virtual machine profile. During the preview the only supported value is "2020-07-01" |
+| ScheduledEventApiVersion | Version of the scheduled event API selected in the virtual machine profile. During the preview, the only supported value is "2020-07-01" |
 
 ## Acknowledging with the Maintenance Resource Provider Endpoint
 
