@@ -38,6 +38,7 @@ During the preview, you need to explicitly enable access to event delivery to Az
 
 ```azurecli
 az feature register --name SendScheduledEventsPolicy --namespace Microsoft.Compute
+az feature register --name ScheduledEventsActivity --namespace Microsoft.Maintenance
 ```
 
 ### Opting-In to Scheduled Events in Azure Resource Graph
@@ -52,15 +53,10 @@ If you're using Virtual Machine Scale Sets Flex or Uniform, enable scheduled eve
 "scheduledEventsPolicy": {
       "scheduledEventsAdditionalPublishingTargets": {
         "eventGridAndResourceGraph": {
-          "enable": true
+          "enable": true,
+          "scheduledEventsApiVersion": "2020-07-01"
         }
       },
-      "userInitiatedRedeploy": {
-        "automaticallyApprove": true
-      },
-      "userInitiatedReboot": {
-        "automaticallyApprove": true
-      }
     }
 ```
 
@@ -165,6 +161,7 @@ These fields contain the same information as the IMDS and Event Grid System Topi
 | NotBefore | Time after which this event can start. The event is guaranteed to not start before this time. Is blank if the event is in the started state. Time is in GMT format, using RFC 1123. |
 | Description | A human-readable description of the event. |
 | EventSource | Initiator of the event. <br>**Platform:** The Azure platform initiated this event.<br><br>**User:** An authorized user initiated the event. |
+| ScheduledEventApiVersion | Version of the scheduled event API selected in the virtual machine profile. During the preview the only supported value is "2020-07-01" |
 
 ## Acknowledging with the Maintenance Resource Provider Endpoint
 
