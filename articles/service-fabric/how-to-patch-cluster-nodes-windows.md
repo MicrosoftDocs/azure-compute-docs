@@ -7,12 +7,16 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 03/22/2026
+ai-usage: ai-assisted
 # Customer intent: As a cloud infrastructure administrator, I want to enable automatic OS image upgrades for my Service Fabric cluster, so that I can efficiently maintain the latest Windows patches and enhance the security and stability of my applications.
 ---
 
 # Patch the Windows operating system in your Service Fabric cluster
 
 Getting [automatic OS image upgrades on your Virtual Machine Scale Sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) is the best practice for keeping your operating system patched in Azure. Virtual Machine Scale Set based automatic OS image upgrades will require silver or greater durability on a scale set.
+
+> [!NOTE]
+> Service Fabric supports Windows Server OS images only through their mainstream support end dates. Service Fabric support for clusters running on Windows Server 2019 ends on March 31, 2027. Plan OS image upgrades to a supported Windows Server version (such as Windows Server 2025) ahead of that date. While Azure Virtual Machine Scale Sets running Windows Server 2019 continue to operate after March 31, 2027, they're not supported by Service Fabric.
 
 ## Requirements for automatic OS image upgrades by Virtual Machine Scale Sets
 
@@ -21,6 +25,7 @@ Getting [automatic OS image upgrades on your Virtual Machine Scale Sets](../virt
 - Durability level should be the same at the Service Fabric cluster and Service Fabric extension on the scale set model definition.
 - An additional health probe or use of application health extension for Virtual Machine Scale Sets isn't required.
 - Stateless nodetypes are the only exception, which have durability as Bronze, but automatic OS image upgrades can still be configured on them. For more information, see [Deploy an Azure Service Fabric cluster with stateless-only node types](service-fabric-stateless-node-types.md).
+- While Azure Virtual Machine Scale Sets running Windows Server 2019 will continue to operate after March 31, 2027, those clusters won't be supported by Service Fabric. Set the scale set image reference to a supported Windows Server version to remain within support.
 
 Ensure that durability settings aren't mismatched on the Service Fabric cluster and Service Fabric extension, as a mismatch will result in upgrade errors. Durability levels can be modified per the guidelines outlined on [this page](service-fabric-cluster-capacity.md#changing-durability-levels).
 
@@ -30,7 +35,7 @@ If you want to switch from Patch Orchestration Application to automatic OS image
 
 ## Enable auto OS upgrades and disable Windows Update
 
-When enabling automatic OS updates, you'll also need to disable Windows Update in the deployment template. Once you deploy these changes, all machines in the scale set will be reimaged and the scale set will be enabled for automatic updates.
+When enabling automatic OS updates, you'll also need to disable Windows Update in the deployment template. Once you deploy these changes, all machines in the scale set will be reimaged and the scale set will be enabled for automatic updates. Automatic OS image upgrades can also be used as part of a controlled node-type scale-out/scale-in process to move to newer Windows Server versions without impacting application availability. The documented upgrade steps for moving from Windows Server 2019 to Windows Server 2022 apply equally when upgrading to Windows Server 2025 images. When configuring automatic OS image upgrades, verify that the chosen marketplace or custom image is a [supported Windows Server version](service-fabric-versions.md#supported-windows-versions-and-support-end-date) to ensure continued Service Fabric support.
 
 > [!IMPORTANT]
 > Service Fabric doesn't support in-VM upgrades where Windows Updates applies operating system patches without replacing the OS disk.
@@ -77,3 +82,5 @@ When enabling automatic OS updates, you'll also need to disable Windows Update i
 ## Next steps
 
 Learn how to enable [automatic OS image upgrades on Virtual Machine Scale Sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md).
+
+To upgrade cluster node types to a newer Windows Server version using the scale-out/scale-in approach, see [Scale up a Service Fabric cluster primary node type](service-fabric-scale-up-primary-node-type.md) and [Scale up a Service Fabric cluster non-primary node type](service-fabric-scale-up-non-primary-node-type.md). These same steps apply when upgrading to Windows Server 2025 images.

@@ -29,8 +29,8 @@ By migrating to newer VM series, you gain access to improved price-performance r
 |--|--|--|
 | D<br>Ds<br>Dv2<br>Dsv2 | Dsv5/Ddsv5/Dasv5/Dadsv5<br>Dasv6/Dadsv6/Dsv6/Ddsv6<br>Dasv7/Dadsv7<br>Esv6/Edsv6/Easv6/Eadsv6<br>Easv7/Eadsv7| D/Ev5 disk controller type: SCSI <br> D/Ev6, D/Ev7 disk controller type: NVMe<br>Local Storage Throughput: 9000 IOPS / 125 MBps<br>Remote Storage Throughput: 3750 IOPS / 82 MBps|
 | Ls | Lsv3/Lasv3<br>Lsv4/Lasv4 | Local Storage: Supported - NVMe<br>Remote Storage Throughput: 12800 IOPS / 200 MBps <br>Disk Controller Type: SCSI and NVMe |
-| Av2<br>Amv2 | Bsv2/Basv2<br>Dsv5/Ddv5/Dasv5<br>Esv5/Edv5/Easv5<br>Dsv6/Ddsv6/Dasv6<br>Esv6/Edsv6/Easv6 | B/Bp/Bav2, D/Ev5 disk controller type: SCSI <br> D/Ev6 disk controller type: NVMe<br>Remote Storage Throughput: 3750 IOPS / 85 MBps
-| Bv1 | Bsv2/Basv2<br>Dlsv5/Dldsv5/Dalsv5/Daldsv5<br>Dlsv6/Dldsv6/Dalsv6/Daldsv6 | B/Bp/Bav2, D/Ev5 disk controller type: SCSI <br> D/Ev6 disk controller type: NVMe<br>Remote Storage Throughput: 3750 IOPS / 85 MBps<br>Disk Controller Type: SCSI|
+| Av2<br>Amv2 | Bsv2/Basv2<br>Dsv5/Ddv5/Dasv5<br>Esv5/Edv5/Easv5<br>Dsv6/Ddsv6/Dasv6<br>Esv6/Edsv6/Easv6 | B/Bav2, D/Ev5 disk controller type: SCSI <br> D/Ev6 disk controller type: NVMe<br>Remote Storage Throughput: 3750 IOPS / 85 MBps
+| Bv1 | Bsv2/Basv2<br>Dlsv5/Dldsv5/Dalsv5/Daldsv5<br>Dlsv6/Dldsv6/Dalsv6/Daldsv6 | B/Bav2, D/Ev5 disk controller type: SCSI <br> D/Ev6 disk controller type: NVMe<br>Remote Storage Throughput: 3750 IOPS / 85 MBps<br>Disk Controller Type: SCSI|
 | F<br>Fs<br>Fsv2 | Dlsv6/Dldsv6/Dalsv6/Daldsv6<br>Falsv6<br>Dldsv5/Dlsv5/Dsv5/Ddsv5| D/Ev5 disk controller type: SCSI <br> D/Ev6 disk controller type: NVMe <br> Remote Storage Throughput: 4167 IOPS / 124 MBps|
 | G<br>Gs | Lsv3/Lasv3<br>Lsv4/Lasv4| Lv3/Lv4 controller type: SCSI and NVMe <br>Remote Storage Throughput: 12800 IOPS / 200 MBps|
 | Lsv2 | Lsv3/Lasv3<br>Lasv4/Lasv4| Local Storage: NVMe<br>Remote Storage Throughput: 12800 IOPS / 200 MBps<br>Disk Controller Type: SCSI and NVMe|
@@ -71,6 +71,11 @@ Use the [Azure VM size documentation](/azure/virtual-machines/sizes) to help ide
 - If applicable, exchange existing reservations for newer VM series or trade in your reservations for an **Azure Savings Plan for compute**.
 - **HBv2 customers**: 1-year and 3-year HBv2 Reserved Instance purchases ended on April 2, 2026. If you have active HBv2 RIs, consider exchanging them for supported HPC series RIs (such as HBv3, HBv4, HBv5, or HX) or trading them in for an Azure Savings Plan for compute before the retirement date of May 31, 2027.
 - **NP-series customers**: 1-year and 3-year NP-series Reserved Instance purchases ended on April 2, 2026. If you have active NP-series RIs, consider exchanging them for supported GPU series RIs or trading them in for an Azure Savings Plan for compute before the retirement date of May 31, 2027.
+- For customers using Reserved Instances (RIs) on VM series such as
+One-year and three-year RIs for the VM series Dv3, Dsv3, Ev3, and Esv3.
+One-year RIs for the VM series Av2, Amv2, Bv1, D, Ds, Dv2, Dsv2, F, Fs, Fsv2, G, Gs, Ls, and Lsv2.
+Existing RIs will remain valid through the end of their original term. However, once an RI expires after July 1, 2026, it cannot be purchased or renewed for these VM series. At that point, workloads will transition to pay as you go pricing unless another cost optimization option is selected. Customers are encouraged to either transition to Azure Savings Plan for compute or migrate workloads to newer VM generations, which continue to support both Reserved Instances and Savings Plans. Customers should plan their migration ahead of RI expiration to avoid unintended cost increases.
+
 
 ####  Identify the Target VM Size
 
@@ -111,23 +116,27 @@ To review retired sizes, see [retired Azure VM sizes](/azure/virtual-machines/si
 
 | VM Series | 3 YR RI expiration date | 1 YR RI expiration date | Retirement Date|
 |----|----|----|----|
-| D        | 05/01/2025 |	05/01/2027 | 05/01/2028 |
-| Ds       | 05/01/2025 | 05/01/2027 | 05/01/2028 |
-| Dv2      | 05/01/2025 | 05/01/2027 | 05/01/2028 |
-| Dsv2     | 05/01/2025 | 05/01/2027 | 05/01/2028 |
-| Ls       | 05/01/2025 | 05/01/2027 | 05/01/2028 |
-| F        | 11/15/2025 | 11/15/2027 | 11/15/2028 |
-| Fs       | 11/15/2025 | 11/15/2027 | 11/15/2028 |
-| Fsv2     | 11/15/2025 | 11/15/2027 | 11/15/2028 |
-| Lsv2     | 11/15/2025 | 11/15/2027 | 11/15/2028 |
-| G        | 11/15/2025 | 11/15/2027 | 11/15/2028 |
-| Gs       | 11/15/2025 | 11/15/2027 | 11/15/2028 |
-| Av2      | 11/15/2025 | 11/15/2027 | 11/15/2028 |
-| Amv2     | 11/15/2025 | 11/15/2027 | 11/15/2028 |
-| B-series | 11/15/2025 | 11/15/2027 | 11/15/2028 |
-| Bv1      | 11/15/2025 | 11/15/2027 | 11/15/2028 |
-| HBv2     | 04/02/2026 | 04/02/2026 | 05/31/2027 |
+| Av2       | 11/15/2025 | 07/01/2026 | 11/15/2028 |
+| Amv2      | 11/15/2025 | 07/01/2026 | 11/15/2028 |
+| Bv1       | 11/15/2025 | 07/01/2026 | 11/15/2028 |
+| D         | 05/01/2025 | 07/01/2026 | 05/01/2028 |
+| Ds        | 05/01/2025 | 07/01/2026 | 05/01/2028 |
+| Dsv2      | 05/01/2025 | 07/01/2026 | 05/01/2028 |
+| Dsv3      | 07/01/2026 | 07/01/2026 | Product active |
+| Dv2       | 05/01/2025 | 07/01/2026 | 05/01/2028 |
+| Dv3       | 07/01/2026 | 07/01/2026 | Product active |
+| Esv3      | 07/01/2026 | 07/01/2026 | Product active |
+| Ev3       | 07/01/2026 | 07/01/2026 | Product active |
+| F         | 11/15/2025 | 07/01/2026 | 11/15/2028 |
+| Fs        | 11/15/2025 | 07/01/2026 | 11/15/2028 |
+| Fsv2      | 11/15/2025 | 07/01/2026 | 11/15/2028 |
+| G         | 11/15/2025 | 07/01/2026 | 11/15/2028 |
+| Gs        | 11/15/2025 | 07/01/2026 | 11/15/2028 |
+| HBv2      | 04/02/2026 | 04/02/2026 | 05/31/2027 |
+| Ls        | 05/01/2025 | 07/01/2026 | 05/01/2028 |
+| Lsv2      | 11/15/2025 | 07/01/2026 | 11/15/2028 |
 | NP-series | 04/02/2026 | 04/02/2026 | 05/31/2027 |
+
 
 > [!NOTE]
 > Purchases of 1-year and 3-year Azure Reserved VM Instances for NP-series ended on 04/02/2026.
@@ -140,6 +149,9 @@ Migration is mandatory to avoid unexpected shutdown. Additionally, migration yie
  - **Performance**: Newer VM series offer better price-to-performance ratios.
  - **Regional Availability**: The v5 and v6 series has broader regional support across Azure data centers.
  - **Future-proofing**: Migrate ahead of the retirement schedule to avoid disruption.
+
+#### Q:How are Reserved Instance (RI) purchases and renewals changing for Dv3, Dsv3, Ev3, and Esv3?
+ -Dv3, Dsv3, Ev3, and Esv3 are not being retired until further notice. However, three- and one-year reserved instances discounts will no longer be available for new purchases or renewals after July 1, 2026. Azure savings plan is the primary recommendation if you plan to continue using these VM series. If you are looking to migrate from Dv3/Dsv3, recommended VM series include Dsv5, Ddsv5, Dasv5, Dadsv5, Dsv6, Ddsv6, Dasv6, and Dadsv6. For Ev3/Esv3, recommended replacements include Esv5, Edsv5, Easv5, Eadsv5, Esv6, Edsv6, Easv6, and Eadsv6. Customers should refer to the migration steps above for guidance
 
 #### Q: What will happen to my VM if I do not resize my VM to a target size within the retirement timeline?
 
@@ -156,7 +168,7 @@ Yes, you can resize and restart your deallocated VM following the [Azure VM resi
 No. If you’re using pay-as-you-go or a savings plan, migrating to a newer VM type won't disrupt your current billing. The migration process remains seamless with no changes required in your subscription or payment plan.
 
 #### Q: How can I migrate my VM if I am on Reserved Instances (RIs) with a retired VM?
-If you have active Reserved Instances for D, Dv2, Dsv2, or L-series VMs, follow these steps:
+If you have active Reserved Instances for any of listed the series in FAQ chart, follow these steps:
 
 Step 1: Review Current Reservations
 

@@ -25,6 +25,10 @@ After September 8, 2028, any existing virtual machines using Standard HDD OS Dis
 
 This retirement is only for the ability to use Standard HDDs as OS disks. None of the other managed disk types or ephemeral OS disks will be affected by this retirement.
 
+Azure disk snapshots, including snapshots of OS disks, can continue to be stored on Standard HDD and will not be affected by this retirement.
+
+Standard HDD OS disks created by Azure Site Recovery will continue to be supported.
+
 ## What actions should I take?
 
 Stop creating new virtual machines with Standard HDD OS disks. Use Standard SSD or Premium SSD for new OS disks instead.
