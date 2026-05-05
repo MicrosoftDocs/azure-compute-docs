@@ -6,7 +6,7 @@ ms.custom:
 ms.service: azure-virtual-machines
 ms.subservice: hpc
 ms.topic: concept-article
-ms.date: 05/02/2026
+ms.date: 05/04/2026
 ms.reviewer: cynthn
 ms.author: padmalathas
 author: padmalathas
@@ -40,7 +40,8 @@ To provide room for the Azure hypervisor to operate without interfering with the
 ## VM topology
 
 We reserve these 8 hypervisor host cores symmetrically across both CPU sockets, taking the first 2 cores from specific Core Complex Dies (CCDs) on each NUMA domain, with the remaining cores for the HBv2-series VM.
-The CCD boundary isn't equivalent to a NUMA boundary. On HBv2, a group of four consecutive (4) CCDs is configured as a NUMA domain, both at the host server level and within a guest VM. Thus, all HBv2 VM sizes expose 4 NUMA domains that appear to an OS and application. 4 uniform NUMA domains, each with different number of cores depending on the specific [HBv2 VM size](hbv2-series.md).
+
+On HBv2, a group of four consecutive (4) CCDs is configured as a NUMA domain, both at the host server level and within a guest VM. Thus, all HBv2 VM sizes expose 4 NUMA domains. The number of cores per NUMA domain will vary depending on the specific [HBv2 VM size](hbv2-series.md) selected.
 
 Process pinning works on HBv2-series VMs because we expose the underlying silicon as-is to the guest VM. We strongly recommend process pinning for optimal performance and consistency.
 
@@ -54,8 +55,8 @@ Process pinning works on HBv2-series VMs because we expose the underlying silico
 | CPU Frequency (non-AVX)          | ~3.1 GHz (single + all cores)    |
 | Memory                           | 4 GB/core (480 GB total)         |
 | Local Disk                       | 960 GiB NVMe (block), 480 GB SSD (page file) |
-| Infiniband                       | 200 Gb/s HDR NVIDIA Mellanox ConnectX-6 |
-| Network                          | 50 Gb/s Ethernet (40 Gb/s usable) Azure second Gen SmartNIC |
+| Infiniband                       | 200 Gb/s HDR NVIDIA ConnectX-6 |
+| Azure Network                    | 50 Gb/s (40 Gb/s Azure Accelerated Networking) |
 
 
 ## Software specifications
@@ -65,10 +66,10 @@ Process pinning works on HBv2-series VMs because we expose the underlying silico
 | Max MPI Job Size                | 36,000 cores (300 VMs in a single virtual machine scale set with singlePlacementGroup=true) |
 | MPI Support                     | HPC-X, OpenMPI, MVAPICH2, MPICH   |
 | Additional Frameworks           | UCX, libfabric, PGAS |
-| Azure Storage Support           | Standard and Premium Disks (maximum 8 disks), Azure NetApp Files, Azure Files, Azure HPC Cache, Azure Managed Lustre File System |
+| Azure Storage Support           | Standard and Premium Disks (maximum 8 disks), Azure NetApp Files, Azure Files, Azure Managed Lustre File System |
 | Supported and Validated OS      | RHEL 8.3+, AlmaLinux 8.10+, Ubuntu 22.04+ LTS, SLES 15 SP2+, Windows Server 2022+  |
-| Recommmended OS for Performance | AlmaLinux HPC 9.7, Ubuntu HPC 24.04+, Windows Server 2025 |
-| Orchestrator Support        | CycleCloud, Batch, AKS; [cluster configuration options](sizes-hpc.md#cluster-configuration-options)  |
+| Recommmended OS for Performance | Red Hat Enterprise Linux 9.7, AlmaLinux HPC 9.7, Ubuntu HPC 24.04+, Windows Server 2025 |
+| Orchestrator Support            | CycleCloud, Batch, Azure Kubernetes Service  |
 
 
 ## Availability and purchasing
