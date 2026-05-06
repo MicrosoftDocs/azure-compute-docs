@@ -20,7 +20,7 @@ ms.date: 03/22/2026
 * Can only be configured on a secondary node type in your cluster.
 * After enabling autoscale for a node type:
   * Configure the `vmInstanceCount` property to `-1` when redeploying the resource.
-  * Omit the [`sku.capacity`](https://learn.microsoft.com/dotnet/api/azure.resourcemanager.servicefabricmanagedclusters.models.nodetypesku.capacity?view=azure-dotnet) property.
+  * Omit the [`sku.capacity`](https://learn.microsoft.com/dotnet/api/azure.resourcemanager.servicefabricmanagedclusters.models.nodetypesku.capacity) property.
 * Only [Azure Monitor published metrics](/azure/azure-monitor/essentials/metrics-supported) are supported.
 
 >[!NOTE] 
@@ -78,7 +78,7 @@ The following will take you step by step through setup of a cluster with autosca
    ```
 
 >[!NOTE]
-> After this deployment completes, future cluster resource deployments should set the `vmInstanceCount` property to `-1` and omit the [`sku.capacity`](https://learn.microsoft.com/dotnet/api/azure.resourcemanager.servicefabricmanagedclusters.models.nodetypesku.capacity?view=azure-dotnet) property on secondary node types that have autoscale rules enabled. This will make sure cluster deployments don't conflict with autoscale.
+> After this deployment completes, future cluster resource deployments should set the `vmInstanceCount` property to `-1` and omit the [`sku.capacity`](https://learn.microsoft.com/dotnet/api/azure.resourcemanager.servicefabricmanagedclusters.models.nodetypesku.capacity) property on secondary node types that have autoscale rules enabled. This will make sure cluster deployments don't conflict with autoscale.
 
 
 ## Enable or disable autoscaling on a secondary node type
