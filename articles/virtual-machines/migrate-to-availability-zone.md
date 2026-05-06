@@ -108,16 +108,6 @@ The following configurations aren't supported for migration:
 - VMs behind a **Basic Load Balancer** - Upgrade to Standard Load Balancer before migration
 - VMs with **unmanaged disks** - Convert to managed disks before migration
 
-### Supported disk types
-
-All managed disk types are supported and preserved during migration:
-
-- Standard HDD (Standard_LRS)
-- Standard SSD (StandardSSD_LRS)
-- Premium SSD (Premium_LRS)
-- Premium SSD v2 (PremiumV2_LRS)
-- Ultra Disk (UltraSSD_LRS)
-
 ## Step 1: Deallocate the VM
 
 Before updating the zone assignment, the VM must be fully deallocated:
@@ -263,7 +253,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 ---
 
 > [!NOTE]
-> You can start the VM immediately after zone assignment completes, even if background data migration is still in progress. The data migration continues transparently.
+> You can start the VM immediately after zone assignment completes. The data migration continues transparently in the background.
 
 ## Step 4 (Optional): Attach the VM to a Virtual Machine Scale Set
 
