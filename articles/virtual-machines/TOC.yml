@@ -2297,6 +2297,15 @@
           href: virtual-machine-scale-sets-maintenance-control-template.md
     - name: Scheduled events
       items:
+      - name: Overview
+        displayName: Scheduled events
+        href: scheduled-events-overview.md
+      - name: Event Grid
+        displayName: Scheduled Events in Event Grid
+        href: scheduled-events-event-grid.md
+      - name: Azure Resource Graph
+        displayName: Scheduled Events in Azure Resource Graph
+        href: scheduled-events-resource-graph.md
       - name: Linux
         displayName: Scheduled events
         href: ./linux/scheduled-events.md
