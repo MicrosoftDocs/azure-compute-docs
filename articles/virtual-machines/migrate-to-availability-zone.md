@@ -14,7 +14,7 @@ ms.date: 05/06/2026
 This article describes how to migrate an Azure Virtual Machine (VM) from a regional (non-zonal) deployment to a specific availability zone.
 
 > [!IMPORTANT]
-> The regional to zonal VM migration feature is currently in **Public Preview**. Preview features should be tested in non-production environments before migrating production workloads.
+> Stateful regional to zonal VM migration is currently in **Public Preview**. Previews are made available to you on the condition that you agree to the [supplemental terms of use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Some aspects of this feature may change prior to general availability (GA).
 
 ## Prerequisites
 
