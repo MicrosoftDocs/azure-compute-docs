@@ -5,7 +5,7 @@ services: virtual-machines
 ms.service: azure-virtual-machines
 ms.subservice: hpc
 ms.topic: concept-article
-ms.date: 05/2/2026
+ms.date: 05/05/2026
 ms.reviewer: cynthn
 ms.author: padmalathas
 author: padmalathas
@@ -51,7 +51,7 @@ Standard_HB176-24rs_v4            | 4            | 6                      | Dual
 
 > [!NOTE]
 > * The constrained cores VM sizes only reduce the number of physical cores exposed to the VM. All global shared assets (RAM, memory bandwidth, L3 cache, GMI and xGMI connectivity, InfiniBand, Azure Ethernet network, local SSD) stay constant. This allows a customer to pick a VM size best tailored to a given set of workload or software licensing needs.
-> * We are currently experiencing a core mapping issue on the HBv4-series parent size Standard_HB176rs_v4. 
+
 
 The virtual NUMA mapping of each HBv4 VM size is mapped to the underlying physical NUMA topology. There's no potential misleading abstraction of the hardware topology. 
 
