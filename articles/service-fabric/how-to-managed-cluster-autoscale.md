@@ -18,6 +18,7 @@ ms.date: 03/22/2026
 * The Service Fabric managed cluster resource apiVersion should be **2022-01-01** or later.
 * The cluster SKU must be Standard.
 * Can only be configured on a secondary node type in your cluster.
+* The [`sku.capacity`](https://learn.microsoft.com/dotnet/api/azure.resourcemanager.servicefabricmanagedclusters.models.nodetypesku.capacity?view=azure-dotnet) property must be removed from the node type resource when autoscale is enabled.
 * After enabling autoscale for a node type, configure `vmInstanceCount` property to `-1` when redeploying the resource.
 * Only [Azure Monitor published metrics](/azure/azure-monitor/essentials/metrics-supported) are supported.
 
