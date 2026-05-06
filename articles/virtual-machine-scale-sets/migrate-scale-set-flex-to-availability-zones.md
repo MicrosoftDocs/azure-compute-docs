@@ -5,7 +5,7 @@ author: mimckitt
 ms.author: mimckitt
 ms.service: azure-virtual-machine-scale-sets
 ms.topic: how-to
-ms.date: 03/03/2026
+ms.date: 05/06/2026
 ---
 # Migrate from regional to a zonal Virtual Machine Scale Sets (Preview)
 
@@ -119,9 +119,11 @@ az vmss update \
 
 # [Azure PowerShell](#tab/powershell)
 
+Cast the value to `[string[]]` so PowerShell assigns it to the `Zones` property correctly:
+
 ```azurepowershell
 $vmss = Get-AzVmss -ResourceGroupName "<resource-group-name>" -VMScaleSetName "<scale-set-name>"
-$vmss.Zones = @("1", "2", "3")
+$vmss.Zones = [string[]]@("1", "2", "3")
 Update-AzVmss -ResourceGroupName "<resource-group-name>" -Name "<scale-set-name>" -VirtualMachineScaleSet $vmss
 ```
 
@@ -183,9 +185,11 @@ az vm update \
 
 # [Azure PowerShell](#tab/powershell)
 
+Cast the value to `[string[]]` so PowerShell assigns it to the `Zones` property correctly:
+
 ```azurepowershell
 $vm = Get-AzVM -ResourceGroupName "<resource-group-name>" -Name "<vm-name>"
-$vm.Zones = @("<target-zone>")
+$vm.Zones = [string[]]@("<target-zone>")
 Update-AzVM -ResourceGroupName "<resource-group-name>" -VM $vm
 ```
 
