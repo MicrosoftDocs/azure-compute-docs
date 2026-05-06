@@ -6,7 +6,7 @@ ms.custom:
 ms.service: azure-virtual-machines
 ms.subservice: hpc
 ms.topic: concept-article
-ms.date: 02/10/2026
+ms.date: 05/04/2026
 ms.reviewer: cynthn
 ms.author: padmalathas
 author: padmalathas
@@ -91,16 +91,14 @@ lstopo-no-graphics --no-io --no-legend --of txt
 </details>
 
 ## InfiniBand networking
-HBv3 VMs also feature NVIDIA Mellanox HDR InfiniBand network adapters (ConnectX-6) operating at up to 200 Gigabits/sec. The NIC is passed through to the VM via SRIOV, enabling network traffic to bypass the hypervisor. As a result, customers load standard Mellanox OFED drivers on HBv3 VMs as they would a bare metal environment.
+HBv3 VMs also feature NVIDIA HDR InfiniBand network adapters (ConnectX-6) operating at up to 200 Gigabits/sec. The NIC is passed through to the VM via SRIOV, enabling network traffic to bypass the hypervisor. As a result, customers load standard Mellanox OFED drivers on HBv3 VMs as they would a bare metal environment.
 
 HBv3 VMs support Adaptive Routing, the Dynamic Connected Transport (DCT, along with standard RC and UD transports), and hardware-based offload of MPI collectives to the onboard processor of the ConnectX-6 adapter. These features enhance application performance, scalability, and consistency, and usage of them is recommended.
 
 ## Temporary storage
-HBv3 VMs feature 3 physically local SSD devices. One device is preformatted to serve as a page file and it appeared within your VM as a generic "SSD" device.
+HBv3 VMs feature 3 physically local SSD devices. One device is preformatted to serve as a page file and appears within the VM as a generic "SSD" device.
 
-Two other, larger SSDs are provided as unformatted block NVMe devices via NVMeDirect. As the block NVMe device bypasses the hypervisor, it has higher bandwidth, higher IOPS, and lower latency per IOP.
-
-When paired in a striped array, the NVMe SSD provides up to 7 GB/s reads and 3 GB/s writes, and up to 186,000 IOPS (reads) and 201,000 IOPS (writes) for deep queue depths.
+Two other, larger SSDs are provided as unformatted block NVMe devices. As the block NVMe devices bypass the hypervisor, they have higher bandwidth and IOPS. When paired in a striped array, the NVMe SSD provides up to 7 GB/s reads and 3 GB/s writes, and up to 186,000 IOPS (reads) and 201,000 IOPS (writes) for deep queue depths.
 
 ## Hardware specifications
 
@@ -111,26 +109,21 @@ When paired in a striped array, the NVMe SSD provides up to 7 GB/s reads and 3 G
 | CPU Frequency (non-AVX)          | 3.0 GHz (all cores), 3.5 GHz (up to 10 cores)    |
 | Memory                           | 448 GB (RAM per core depends on VM size)         |
 | Local Disk                       | 2 * 960 GB NVMe (block), 480 GB SSD (page file) |
-| Infiniband                       | 200 Gb/s Mellanox ConnectX-6 HDR InfiniBand |
-| Network                          | 50 Gb/s Ethernet (40 Gb/s usable) Azure second Gen SmartNIC |
+| Infiniband                       | 200 Gb/s NVIDIA ConnectX-6 HDR InfiniBand |
+| Azure Network                    | 50 Gb/s (40 Gb/s Azure Accelerated Networking) |
 
 ## Software specifications
 
 | Software specifications        | HBv3-series VMs                                            |
 |--------------------------------|-----------------------------------------------------------|
 | Max MPI Job Size               | 36,000 cores (300 VMs in a single Virtual Machine Scale Set with singlePlacementGroup=true) |
-| MPI Support                    | HPC-X, Intel MPI, OpenMPI, MVAPICH2, MPICH  |
+| MPI Support                    | HPC-X, OpenMPI, MVAPICH2, MPICH  |
 | Additional Frameworks          | UCX, libfabric, PGAS                  |
 | Azure Storage Support          | Standard and Premium Disks (maximum 32 disks)              |
-| OS Support for SRIOV RDMA      | RHEL 7.9+, Ubuntu 18.04+, SLES 15.4, WinServer 2016+           |
-| Recommended OS for Performance | Windows Server 2019+
-| Orchestrator Support           | Azure CycleCloud, Azure Batch, AKS; [cluster configuration options](sizes-hpc.md#cluster-configuration-options)                      |
+| OS Support for RDMA            | RHEL 8.3+, AlmaLinux 8.10+, Ubuntu 22.04+ LTS, SLES 15.7+, Windows Server 2022/2025  |    
+| Recommended OS for Performance | RHEL 9.7, AlmaLinux HPC 9.7, Ubuntu HPC 24.04 LTS, Windows Server 2025  |
+| Orchestrator Support           | Azure CycleCloud, Azure Batch, Azure Kubernetes Service                 |
 
-> [!NOTE]
-> Windows Server 2012 R2 isn't supported on HBv3 and other VMs with more than 64 (virtual or physical) cores. For more details, see [Supported Windows guest operating systems for Hyper-V on Windows Server](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows).
-
-> [!IMPORTANT]
-> This document references a release version of Linux that's nearing or at, End of Life(EOL). Consider updating to a more current version.
 
 ## Next steps
 

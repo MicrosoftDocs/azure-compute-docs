@@ -4,7 +4,7 @@ description: Attestation service for the NP-series VMs.
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 11/07/2024
+ms.date: 04/13/2026
 # Customer intent: As an FPGA developer, I want to validate my design checkpoint files using the attestation service on Azure NP-series VMs, so that I can ensure the integrity and compatibility of my images for deployment on Xilinx FPGA hardware.
 ---
 # FPGA attestation for Azure NP-Series VMs (Preview)
@@ -17,6 +17,9 @@ The FPGA Attestation service performs a series of validations on a design checkp
 - The Azure NP-Series FPGA Attestation Service is closing to new preview sign-ups effective May 1, 2026. 
 - The attestation service will remain available to previously approved users until June 1, 2026. Any bitstreams that have already been attested will continue to function on NP-series VMs until the platform retirement date.
 - This change is in connection with the upcoming retirement of NP-series virtual machines. For more information, see [https://learn.microsoft.com/en-us/azure/virtual-machines/np-series-retirement]().
+> - The Azure NP-series FPGA Attestation Service will close to new preview sign-ups on May 1, 2026.
+> - The attestation service will remain available to previously approved users until June 1, 2026. Bitstreams that have already been attested will continue to function on NP-series virtual machines until the platform retirement date.
+> - This change is related to the upcoming retirement of NP-series virtual machines. For more information, see [NP-series virtual machine migration guidance](./sizes/retirement/np-series-retirement.md). 
 > - See the [Preview Terms Of Use | Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability. 
 
 ## News
