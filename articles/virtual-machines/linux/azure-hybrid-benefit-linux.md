@@ -589,6 +589,22 @@ To start using Azure Hybrid Benefit for SLES VMs:
 
 You can use the `az vm update` command to update the existing license type on your running VMs. For SLES VMs, run the command and set the `--license-type` parameter to one of the following license types: `SLES`, `SLES_SAP`, or `SLES_HPC`.
 
+After applying these changes, some further steps may be required to point the virtual machine's operating system to the Azure SMT repositories. On the virtual machine, the following commands can be used to remove the previous BYOS license registration and register the new pay-as-you-go registration:
+
+```bash
+# Fully remove the old BYOS license registration using the SUSEConnect licensing tool:
+sudo SUSEConnect --clean
+
+# Trigger the cloud registration service to query for new pay-as-you-go license information:
+sudo registercloudguest --force-new
+
+# Restart the cloud guest registration service:
+sudo systemctl restart guestregister.service
+
+# Confirm the new registration:
+sudo SUSEConnect --status-text
+```
+
 ---
 
 ## Azure Hybrid Benefit for reserved instance VMs
