@@ -11,9 +11,6 @@ ms.reviewer: mattmcinnes
 # Customer intent: As an IT administrator, I want to understand the specifications and capabilities of the Dlsv7 series virtual machines, so that I can make informed decisions when selecting the appropriate VM size for my cloud computing needs.
 ---
 # Dlsv7 sizes series
-
-[!INCLUDE [sizes-preview-tag](../includes/sizes-preview-tag.md)]
-
 [!INCLUDE [dlsv7-summary](./includes/dlsv7-series-summary.md)] 
 
 ## Host specifications
@@ -38,11 +35,13 @@ vCPUs (Qty.) and Memory for each size
 | Standard_D64ls_v7 | 64 | 126 |
 | Standard_D96ls_v7 | 96 | 384 |
 | Standard_D128ls_v7 | 128 | 256 |
-| Standard_D192ls_v7 | 192 | 384 |
-| Standard_D248ls_v7 | 248 | 496 |
+| *Standard_D192ls_v7 | 192 | 384 |
+| *Standard_D248ls_v7 | 248 | 496 |
 
 
 #### VM Basics resources
+> [!NOTE]
+> - *Note that the 248 and 372 vCPU sizes for these VM series will be generally available soon. 
 - [Check vCPU quotas](../../../virtual-machines/quotas.md)
 
 ### [Local Storage](#tab/sizestoragelocal)
@@ -69,8 +68,8 @@ Remote (uncached) storage info for each size
 | Standard_D64ls_v7 | 64 | 128,000 | 3,680 | 160,000 | 3,830 | 160,000 | 4,320 | 200,000 | 4,450 |
 | Standard_D96ls_v7 | 64 | 192,000 | 5,520 | 200,000 | 5,745 | 240,000 | 6,570 | 205,000 | 6,675 |
 | Standard_D128ls_v7 | 64 | 204,800 | 7,360 | 225,280 | 7,660 | 320,000 | 8,640 | 352,000 | 8,895 |
-| Standard_D192ls_v7 | 64 | 307,200 | 11,040 | 350,000 | 12,000 | 480,000 | 13,140 | 546,875 | 13,930 |
-| Standard_D248ls_v7 | 64 | 396,800 | 13,145 | 500,000 | 15,000 | 620,000 | 16,740 | 781,250 | 19,385 |
+| *Standard_D192ls_v7 | 64 | 307,200 | 11,040 | 350,000 | 12,000 | 480,000 | 13,140 | 546,875 | 13,930 |
+| *Standard_D248ls_v7 | 64 | 396,800 | 13,145 | 500,000 | 15,000 | 620,000 | 16,740 | 781,250 | 19,385 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
@@ -101,8 +100,8 @@ Network interface info for each size
 | Standard_D64ls_v7 | 15 | 45,000 |
 | Standard_D96ls_v7 | 15 | 70,000 |
 | Standard_D128ls_v7 | 15 | 85,000 |
-| Standard_D192ls_v7 | 15 | 100,000 |
-| Standard_D248ls_v7 | 15 | 150,000 |
+| *Standard_D192ls_v7 | 15 | 100,000 |
+| *Standard_D248ls_v7 | 15 | 150,000 |
 
 #### Networking resources
 - [Virtual networks and virtual machines in Azure](/azure/virtual-network/network-overview)
@@ -121,7 +120,8 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 > No accelerators are present in this series.
 
 ---
-
+> [!NOTE]
+> - *Note that the 248 and 372 vCPU sizes for these VM series will be generally available soon. 
 
 ## Feature support
 |Feature name | Support status |

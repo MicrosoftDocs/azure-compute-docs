@@ -12,8 +12,6 @@ ms.reviewer: mattmcinnes
 ---
 
 # Ddsv7 sizes series 
-[!INCLUDE [sizes-preview-tag](../includes/sizes-preview-tag.md)]
-
 [!INCLUDE [ddsv7-summary](./includes/ddsv7-series-summary.md)]
 
 ## Host specifications
@@ -39,10 +37,11 @@ vCPUs (Qty.) and Memory for each size
 | Standard_D96ds_v7 | 96 | 384 |
 | Standard_D128ds_v7 | 128 | 512 |
 | Standard_D192ds_v7 | 192 | 768 |
-| Standard_D248ds_v7 | 248 | 992 |
-| Standard_D372ds_v7 | 372 | 1,488 |
+| *Standard_D248ds_v7 | 248 | 992 |
+| *Standard_D372ds_v7 | 372 | 1,488 |
 
 #### VM Basics resources
+> - *Note that the 248 and 372 vCPU sizes for these VM series will be generally available soon. 
 - [Check vCPU quotas](../../../virtual-machines/quotas.md)
 
 ### [Local Storage](#tab/sizestoragelocal)
@@ -61,8 +60,8 @@ Local (temp) storage info for each size
 | Standard_D96ds_v7 | 6 | 880 | 2,400,000 | 13,440 | 1,200,000 | 6,720 |
 | Standard_D128ds_v7 | 4 | 1,760 | 3,200,000 | 17,920 | 1,600,000 | 8,960 |
 | Standard_D192ds_v7 | 6 | 1,760 | 4,800,000 | 26,880 | 2,400,000 | 13,440 |
-| Standard_D248ds_v7 | 5 | 2,816 | 6,400,000 | 35,840 | 3,200,000 | 17,000 |
-| Standard_D372ds_v7 | 6 | 3,520 | 9,600,000 | 53,760 | 4,800,000 | 20,400 |
+| *Standard_D248ds_v7 | 5 | 2,816 | 6,400,000 | 35,840 | 3,200,000 | 17,000 |
+| *Standard_D372ds_v7 | 6 | 3,520 | 9,600,000 | 53,760 | 4,800,000 | 20,400 |
 
 #### Storage resources
 - [NVMe Overview](/azure/virtual-machines/nvme-overview)
@@ -92,8 +91,8 @@ Remote (uncached) storage info for each size
 | Standard_D96ds_v7 | 64 | 192,000 | 5,520 | 200,000 | 5,745 | 240,000 | 6,570 | 205,000 | 6,675 |
 | Standard_D128ds_v7 | 64 | 204,800 | 7,360 | 225,280 | 7,660 | 320,000 | 8,640 | 352,000 | 8,895 |
 | Standard_D192ds_v7 | 64 | 307,200 | 11,040 | 350,000 | 12,000 | 480,000 | 13,140 | 546,875 | 13,930 |
-| Standard_D248ds_v7 | 64 | 396,800 | 13,145 | 500,000 | 15,000 | 620,000 | 16,740 | 781,250 | 19,385 |
-| Standard_D372ds_v7 | 64 | 500,000 | 16,000 | 500,000 | 16,000 | 800,000 | 20,000 | 800,000 | 20,000 |
+| *Standard_D248ds_v7 | 64 | 396,800 | 13,145 | 500,000 | 15,000 | 620,000 | 16,740 | 781,250 | 19,385 |
+| *Standard_D372ds_v7 | 64 | 500,000 | 16,000 | 500,000 | 16,000 | 800,000 | 20,000 | 800,000 | 20,000 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
@@ -123,8 +122,8 @@ Network interface info for each size
 | Standard_D96ds_v7 | 15 | 70,000 |
 | Standard_D128ds_v7 | 15 | 85,000 |
 | Standard_D192ds_v7 | 15 | 100,000 |
-| Standard_D248ds_v7 | 15 | 150,000 |
-| Standard_D372ds_v7 | 15 | 200,000 |
+| *Standard_D248ds_v7 | 15 | 150,000 |
+| *Standard_D372ds_v7 | 15 | 200,000 |
 
 #### Networking resources
 - [Virtual networks and virtual machines in Azure](/azure/virtual-network/network-overview)
@@ -143,7 +142,8 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 > No accelerators are present in this series.
 
 ---
-
+> [!NOTE]
+> - *Note that the 248 and 372 vCPU sizes for these VM series will be generally available soon. 
 
 ## Feature support
 |Feature name | Support status |
