@@ -97,9 +97,9 @@ A user must have the `ScheduledEventContributor` role to read or acknowledge the
 1. Navigate to the Access Control (IAM) tab of a subscription / Resource Group / Resource.
 2. Select  Add and choose Add role assignment.
 3. Search for ScheduledEventContributor 
-![A search in the Azure portal for the ScheduledEventContributer role.](media/scheduled-events/add-role-assignment.png)
-4. Select appropriate members to provision this role and assign it to the service identifier
-![Adding a member to the ScheduledEventContributer role in Azure portal.](media/scheduled-events/assign-role.png)
+![Screenshot of a search in the Azure portal for the ScheduledEventContributer role.](media/scheduled-events/add-role-assignment.png)
+4. Select appropriate members to provision this role and assign it to the service identifier.
+![Screenshow showing adding a member to the ScheduledEventContributer role in Azure portal.](media/scheduled-events/assign-role.png)
 
 ### Querying Azure Resource Graph to View VM Events
 
