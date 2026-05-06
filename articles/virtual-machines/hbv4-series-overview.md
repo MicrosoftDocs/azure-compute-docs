@@ -50,7 +50,7 @@ Standard_HB176-48rs_v4            | 4            | 12                     | Dual
 Standard_HB176-24rs_v4            | 4            | 6                      | Dual-socket EPYC 9184X           |
 
 > [!NOTE]
-> * The constrained cores VM sizes only reduce the number of physical cores exposed to the VM. All global shared assets (RAM, memory bandwidth, L3 cache, GMI and xGMI connectivity, InfiniBand, Azure Ethernet network, local SSD) stay constant. This allows a customer to pick a VM size best tailored to a given set of workload or software licensing needs.
+> * The constrained cores VM sizes only reduce the number of physical cores exposed to the VM. All global shared assets (RAM, memory bandwidth, caches, GMI/xGMI connectivity, InfiniBand, Azure Ethernet network, local SSD) stay constant. This allows a customer to pick a VM size best tailored to workload or software licensing needs.
 
 
 The virtual NUMA mapping of each HBv4 VM size is mapped to the underlying physical NUMA topology. There's no potential misleading abstraction of the hardware topology. 
@@ -125,7 +125,7 @@ When paired in a striped array, the NVMe SSDs provide bandwidths of up to 12 GB/
 | Azure Storage Support          | Standard and Premium Disks (maximum 32 disks), Azure NetApp Files, Azure Files, Azure Managed Lustre File System             |
 | Supported and Validated OS     | RHEL 8.6+, AlmaLinux 8.10+, Ubuntu 22.04+ LTS, SLES 15 SP7+, Windows Server 2022+  |
 | Recommended OS for Performance | AlmaLinux HPC 9.7, Ubuntu HPC 24.04, Windows Server 2025    |
-| Orchestrator Support           | Azure CycleCloud, Azure Batch, Azure Kubernetes Service; [cluster configuration options](sizes-hpc.md#cluster-configuration-options)                      | 
+| Orchestrator Support           | Azure CycleCloud, Azure Batch, Azure Kubernetes Service                     | 
 
 
 ## Next steps
