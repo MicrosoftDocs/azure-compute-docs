@@ -5,7 +5,7 @@ author: mimckitt
 ms.author: mimckitt
 ms.service: azure-virtual-machines
 ms.topic: how-to
-ms.date: 02/17/2026
+ms.date: 05/06/2026
 ---
 # Migrate a regional virtual machine to an availability zone (Preview)
 
@@ -163,9 +163,11 @@ az vm update \
 
 # [Azure PowerShell](#tab/powershell)
 
+Cast the value to `[string[]]` so PowerShell assigns it to the `Zones` property correctly:
+
 ```azurepowershell
 $vm = Get-AzVM -ResourceGroupName "<resource-group-name>" -Name "<vm-name>"
-$vm.Zones = @("<target-zone>")
+$vm.Zones = [string[]]@("<target-zone>")
 Update-AzVM -ResourceGroupName "<resource-group-name>" -VM $vm
 ```
 
@@ -199,10 +201,12 @@ az vm update \
 
 # [Azure PowerShell](#tab/powershell)
 
+To clear the proximity placement group, set `Id` on the existing object to an empty string. Setting `$vm.ProximityPlacementGroup` itself to `$null` doesn't clear the association.
+
 ```azurepowershell
 $vm = Get-AzVM -ResourceGroupName "<resource-group-name>" -Name "<vm-name>"
-$vm.Zones = @("<target-zone>")
-$vm.ProximityPlacementGroup = $null
+$vm.Zones = [string[]]@("<target-zone>")
+$vm.ProximityPlacementGroup.Id = ""
 Update-AzVM -ResourceGroupName "<resource-group-name>" -VM $vm
 ```
 
@@ -274,11 +278,12 @@ After migrating the VM to an availability zone, you can optionally attach it to 
 
 # [Azure CLI](#tab/cli)
 
+A regional VM doesn't have a `virtualMachineScaleSet` property to dot-into, so use `az resource update` to PATCH the property as a JSON object on the underlying VM resource:
+
 ```azurecli
-az vm update \
-  --resource-group "<resource-group-name>" \
-  --name "<vm-name>" \
-  --set virtualMachineScaleSet.id="/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Compute/virtualMachineScaleSets/<scale-set-name>"
+az resource update \
+  --ids "/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Compute/virtualMachines/<vm-name>" \
+  --set 'properties.virtualMachineScaleSet={"id":"/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Compute/virtualMachineScaleSets/<scale-set-name>"}'
 ```
 
 # [Azure PowerShell](#tab/powershell)
@@ -287,7 +292,7 @@ az vm update \
 $vm = Get-AzVM -ResourceGroupName "<resource-group-name>" -Name "<vm-name>"
 $vmss = Get-AzVmss -ResourceGroupName "<resource-group-name>" -VMScaleSetName "<scale-set-name>"
 
-$vm.VirtualMachineScaleSet = @{ Id = $vmss.Id }
+$vm.VirtualMachineScaleSet = New-Object Microsoft.Azure.Management.Compute.Models.SubResource $vmss.Id
 Update-AzVM -ResourceGroupName "<resource-group-name>" -VM $vm
 ```
 
