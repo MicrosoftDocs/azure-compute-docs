@@ -25,6 +25,9 @@ The Azure Key Vault virtual machine (VM) extension provides automatic refresh of
 
 The Key Vault VM extension supports Windows Server 2022 and Windows Server 2025, on both AMD64 and ARM64. On Windows Server 2025, private keys are saved in KeyGuard.
 
+> [!NOTE]
+> Version 4.0 of the Key Vault VM extension doesn't install on Windows Server 2019 or earlier.
+
 ### Supported certificates
 
 The Key Vault VM extension supports the following certificate content types:
