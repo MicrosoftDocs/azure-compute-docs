@@ -48,9 +48,9 @@ The Key Vault VM extension for Windows version 4.0:
 
 ### Certificate chain validation
 
-Starting with version 4.0, the extension validates the certificate chain before installing any certificate that contains the **TLS Server Authentication** Extended Key Usage (EKU). If chain validation fails, the extension doesn't install the certificate in the Windows certificate store, and it continues processing the remaining certificates in the configuration.
+Starting with version 4.0, the extension validates the certificate chain before installing any certificate that contains the **TLS Server Authentication** Extended Key Usage (EKU). Validation runs whenever the Server Authentication EKU is present, even if the certificate carries other EKUs alongside it (such as Client Authentication). If chain validation fails, the extension doesn't install the certificate in the Windows certificate store, and it continues processing the remaining certificates in the configuration.
 
-Certificates that don't carry the TLS Server Authentication EKU (for example, code-signing or client-authentication certificates) aren't subject to this check and are installed as before.
+Certificates that don't carry the TLS Server Authentication EKU (for example, code-signing certificates) aren't subject to this check and are installed as before.
 
 To avoid installation failures, ensure that the issuing certificate authority's **root CA** is present in the **Trusted Root Certification Authorities** store on the target VM before the extension runs. The extension installs any required **intermediate CA** certificates automatically.
 
