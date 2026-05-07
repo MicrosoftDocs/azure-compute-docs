@@ -38,7 +38,7 @@ For information on installing NVIDIA GPU drivers on N-series VMs (including NCv6
 
 --- 
 
-## Supported Operating Systems and Versions 
+## Supported Operating Systems (OS) and Versions 
 | OS Family | Versions | 
 | --- | --- | 
 | Windows | •	Windows 11 25H2 (including all supported Windows 11 releases up to 25H2. Windows Enterprise multi-session isn't supported). | 
@@ -46,6 +46,7 @@ For information on installing NVIDIA GPU drivers on N-series VMs (including NCv6
 | Ubuntu | •	Ubuntu 24.04 LTS <br> •	Ubuntu 22.04 LTS <br> •	Ubuntu 20.04 LTS| 
 | Red Hat Enterprise Linux | •	Red Hat Enterprise Linux 9.4, 9.6, 9.7 <br> •	Red Hat Enterprise Linux 8.8, 8.10| 
 | SUSE Linux Enterprise Server | •	SUSE Linux Enterprise Server 15 SP7| 
+
 --- 
 
 ## FAQs 
@@ -56,7 +57,7 @@ For information on installing NVIDIA GPU drivers on N-series VMs (including NCv6
 
 **2) Are RTX Pro 6000 Blackwell GPUs exposed via SRIOV (also called “vGPU”) or Passthrough mode?** 
 
-&nbsp;&nbsp;&nbsp;&nbsp; RTX Pro 6000 Blackwell GPUs in NCv6-series are exposed via SRIOV. This cannot be modified by the end user. The use of SRIOV does limit end users from capturing certain GPU telemetry, as documented at [Troubleshooting Known Issues with HPC and GPU VMs](/azure/virtual-machines/hb-hc-known-issues), but is necessary to offer VM sizes with partial GPU allocations. 
+&nbsp;&nbsp;&nbsp;&nbsp; RTX Pro 6000 Blackwell GPUs in NCv6-series are exposed via SR-IOV. This cannot be modified by the end user. The use of SR-IOV does limit end users from capturing certain GPU telemetry, as documented at [Troubleshooting Known Issues with HPC and GPU VMs](/azure/virtual-machines/hb-hc-known-issues), but is necessary to offer VM sizes with partial GPU allocations. 
 
 **3) Is the NCv6-series supported on Azure Kubernetes Service (AKS) and Azure Batch?** <br> 
 
@@ -85,15 +86,15 @@ For information on installing NVIDIA GPU drivers on N-series VMs (including NCv6
 
 &emsp; The VM sizes that are available for testing during public preview are listed [here](/azure/virtual-machines/sizes/gpu-accelerated/nc-rtxpro6000-bse-v6-series?tabs=sizebasicgp%2Csizebasicco). <br>  
 
-&emsp; The VM sizes that will be available when we GA in the coming weeks, including partial GPU VM sizes, are listed [here](https://techcommunity.microsoft.com/blog/azurehighperformancecomputingblog/azure-ncv6-virtual-machines-enhancements-and-ga-transition/4503578).  
+&emsp; The VM sizes that will be available when we transition to general availability in the coming weeks, including partial GPU VM sizes, are listed [here](https://techcommunity.microsoft.com/blog/azurehighperformancecomputingblog/azure-ncv6-virtual-machines-enhancements-and-ga-transition/4503578).  
 
  **8) Is Omniverse Isaac-Sim supported on NCv6?** <br>  
  
-&emsp; There is a recently discovered bug in Isaac-Sim and Omniverse Kit preventing the application from working correctly on RTX Pro 6000 Blackwell either in SRIOV or MIG mode. <br>  
+&emsp; There is a recently discovered bug in Isaac-Sim and Omniverse Kit preventing the application from working correctly on RTX Pro 6000 Blackwell either in SR-IOV or MIG mode. <br>  
 
-&emsp;A production fix is available in Omniverse Kit 110.1 and coming to Isaac Sim 6.0 tentatively June 2026. Until then, customers should use NVadsA10v5 with Isaac Sim 5.1 or Isaac Sim 6.0.0-dev2 pre-release and the v18 guest driver ([Windows](https://download.microsoft.com/download/dcf4d002-3a53-469d-91af-04bddf57a9d7/573.76_grid_win10_win11_server2019_server2022_server2025_dch_64bit_international_azure_swl.exe), [Linux](https://download.microsoft.com/download/0541e1a5-dff2-4b8c-a79c-96a7664b1d49/NVIDIA-Linux-x86_64-570.195.03-grid-azure.run)).  
+&emsp;A production fix is available in Omniverse Kit 110.1 and coming to Isaac Sim 6.0 tentatively June 2026. Until then, customers should use NVadsA10v5 with Isaac Sim 5.1 or Isaac Sim 6.0.0-dev2 pre-release and the v18.x guest driver ([Windows](https://download.microsoft.com/download/dcf4d002-3a53-469d-91af-04bddf57a9d7/573.76_grid_win10_win11_server2019_server2022_server2025_dch_64bit_international_azure_swl.exe), [Linux](https://download.microsoft.com/download/0541e1a5-dff2-4b8c-a79c-96a7664b1d49/NVIDIA-Linux-x86_64-570.195.03-grid-azure.run)).  
 
  **9) Why can I not see power nor thermal telemetry when I use `nvidia-smi` for NCv6?** <br>  
 
-&emsp; This is a limitation of SRIOV mode. For more information, see [Troubleshooting Known Issues with HPC and GPU VMs](/azure/virtual-machines/hb-hc-known-issues).
+&emsp; This is a limitation of SR-IOV mode. For more information, see [Troubleshooting Known Issues with HPC and GPU VMs](/azure/virtual-machines/hb-hc-known-issues).
 
