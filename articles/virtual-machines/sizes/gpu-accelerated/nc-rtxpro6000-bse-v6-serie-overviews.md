@@ -20,7 +20,7 @@ The NCv6-series is a single virtual machine (VM) family for single-node compute,
 
 The NCv6-series is currently in public preview and available in the Azure West US 2 and Southeast Asia regions. To request public preview access, sign up [here](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR9s7orOb3OJJnwABCNj_8JdUMzlLSzJFTTdRRE8yU0UxWFFYQlpYV1hDVy4u). 
 
-Refer to the [Azure.com pricing page](https://azure.microsoft.com/en-us/pricing/details/virtual-machines/linux/) to view preview pricing rates.  
+Refer to the [Azure.com pricing page](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) to view preview pricing rates.  
 
 For more information, refer to our [blog on the upcoming transition to general availability](https://techcommunity.microsoft.com/blog/azurehighperformancecomputingblog/azure-ncv6-virtual-machines-enhancements-and-ga-transition/4503578).  
 
@@ -30,11 +30,11 @@ For more information, refer to our [blog on the upcoming transition to general a
 
 **Linux** 
 
-For information on installing NVIDIA GPU drivers on NCv6-series VMs running Linux - refer to [the documentation](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/n-series-driver-setup#install-grid-drivers-on-ncv6-rtx-pro-6000-bse-vms).   
+For information on installing NVIDIA GPU drivers on NCv6-series VMs running Linux - refer to [the documentation](https://learn.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup#install-grid-drivers-on-ncv6-rtx-pro-6000-bse-vms).   
 
 **Windows** 
 
-For information on installing NVIDIA GPU drivers on N-series VMs (including NCv6-series) running Windows  – refer to [the documentation](https://learn.microsoft.com/en-us/azure/virtual-machines/windows/n-series-driver-setup#nvidia-gridvgpu-drivers). 
+For information on installing NVIDIA GPU drivers on N-series VMs (including NCv6-series) running Windows  – refer to [the documentation](https://learn.microsoft.com/azure/virtual-machines/windows/n-series-driver-setup#nvidia-gridvgpu-drivers). 
 
 --- 
 
@@ -52,11 +52,11 @@ For information on installing NVIDIA GPU drivers on N-series VMs (including NCv6
 
 **1) Where can I share feedback on my experience?** <br> 
 
-&emsp; Send all feedback to [Azure GPU Feedback](azuregpufeedback@service.microsoft.com).  
+&emsp; Send all feedback to Azure GPU Feedback (azuregpufeedback@service.microsoft.com).  
 
 **2) Are RTX Pro 6000 Blackwell GPUs exposed via SRIOV (also called “vGPU”) or Passthrough mode?** 
 
-&nbsp;&nbsp;&nbsp;&nbsp; RTX Pro 6000 Blackwell GPUs in NCv6-series are exposed via SRIOV. This cannot be modified by the end user. The use of SRIOV does limit end users from capturing certain GPU telemetry, as documented at [Troubleshooting Known Issues with HPC and GPU VMs](https://learn.microsoft.com/en-us/azure/virtual-machines/hb-hc-known-issues), but is necessary to offer VM sizes with partial GPU allocations. 
+&nbsp;&nbsp;&nbsp;&nbsp; RTX Pro 6000 Blackwell GPUs in NCv6-series are exposed via SRIOV. This cannot be modified by the end user. The use of SRIOV does limit end users from capturing certain GPU telemetry, as documented at [Troubleshooting Known Issues with HPC and GPU VMs](https://learn.microsoft.com/azure/virtual-machines/hb-hc-known-issues), but is necessary to offer VM sizes with partial GPU allocations. 
 
 **3) Is the NCv6-series supported on Azure Kubernetes Service (AKS) and Azure Batch?** <br> 
 
@@ -77,13 +77,13 @@ For information on installing NVIDIA GPU drivers on N-series VMs (including NCv6
 &emsp; [Linux vGPU20 driver](https://download.microsoft.com/download/51239696-ec04-4c02-a6b3-1d9c608fb57c/NVIDIA-Linux-x86_64-595.58.03-grid-azure.run) <br> 
 &emsp; [Windows vGPU20 driver](https://download.microsoft.com/download/169e58c8-9099-481e-a9a9-c237a189710c/595.97_grid_win10_win11_server2022_server2025_dch_64bit_international_azure_swl.exe) 
 
-&emsp; For information on installing NVIDIA GPU drivers on NCv6-series VMs running Linux - refer to [the documentation](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/n-series-driver-setup#install-grid-drivers-on-ncv6-rtx-pro-6000-bse-vms). <br>  
+&emsp; For information on installing NVIDIA GPU drivers on NCv6-series VMs running Linux - refer to [the documentation](https://learn.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup#install-grid-drivers-on-ncv6-rtx-pro-6000-bse-vms). <br>  
 
-&emsp; For information on installing NVIDIA GPU drivers on N-series VMs (including NCv6-series) running Windows – refer to [the documentation](https://learn.microsoft.com/en-us/azure/virtual-machines/windows/n-series-driver-setup#nvidia-gridvgpu-drivers). 
+&emsp; For information on installing NVIDIA GPU drivers on N-series VMs (including NCv6-series) running Windows – refer to [the documentation](https://learn.microsoft.com/azure/virtual-machines/windows/n-series-driver-setup#nvidia-gridvgpu-drivers). 
 
 **7) What VM sizes are available for NCv6?** <br>  
 
-&emsp; The VM sizes that are available for testing during public preview are listed [here](https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/gpu-accelerated/nc-rtxpro6000-bse-v6-series?tabs=sizebasicgp%2Csizebasicco). <br>  
+&emsp; The VM sizes that are available for testing during public preview are listed [here](https://learn.microsoft.com/azure/virtual-machines/sizes/gpu-accelerated/nc-rtxpro6000-bse-v6-series?tabs=sizebasicgp%2Csizebasicco). <br>  
 
 &emsp; The VM sizes that will be available when we GA in the coming weeks, including partial GPU VM sizes, are listed [here](https://techcommunity.microsoft.com/blog/azurehighperformancecomputingblog/azure-ncv6-virtual-machines-enhancements-and-ga-transition/4503578).  
 
@@ -95,5 +95,5 @@ For information on installing NVIDIA GPU drivers on N-series VMs (including NCv6
 
  **9) Why can I not see power nor thermal telemetry when I use `nvidia-smi` for NCv6?** <br>  
 
-&emsp; This is a limitation of SRIOV mode. For more information, see [Troubleshooting Known Issues with HPC and GPU VMs](https://learn.microsoft.com/en-us/azure/virtual-machines/hb-hc-known-issues).
+&emsp; This is a limitation of SRIOV mode. For more information, see [Troubleshooting Known Issues with HPC and GPU VMs](https://learn.microsoft.com/azure/virtual-machines/hb-hc-known-issues).
 
