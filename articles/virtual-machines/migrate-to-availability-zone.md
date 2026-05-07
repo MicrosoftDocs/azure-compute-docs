@@ -15,6 +15,8 @@ This article describes how to migrate an Azure Virtual Machine (VM) from a regio
 
 > [!IMPORTANT]
 > Regional to zonal VM migration is currently in **Public Preview**. Previews are made available to you on the condition that you agree to the [supplemental terms of use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Some aspects of this feature may change prior to general availability (GA).
+> 
+> This migration functionality is not yet available in the Azure portal. 
 
 ## Prerequisites
 
@@ -75,9 +77,6 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/providers/Micros
 > Feature registration may take several minutes to complete. Wait until the state shows **Registered** before proceeding.
 
 ## Migration overview
-
-> [!NOTE]
-> The migration steps mentioned through this article are not yet aviailable in the Azure portal. Instead use REST, CLI, or PowerShell. 
 
 The migration process consists of the following steps:
 
