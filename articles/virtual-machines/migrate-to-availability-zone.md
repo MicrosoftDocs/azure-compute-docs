@@ -11,10 +11,10 @@ ms.date: 05/06/2026
 
 **Applies to:** ✔️ Linux VMs ✔️ Windows VMs
 
-This article describes how to migrate an Azure Virtual Machine (VM) from a regional (non-zonal) deployment to a specific availability zone.
+This article describes how to migrate an Azure Virtual Machine (VM) from a regional (non-zonal) deployment to a specific availability zone while preserving the VM name, data disks, and other stateful properties.
 
 > [!IMPORTANT]
-> Stateful regional to zonal VM migration is currently in **Public Preview**. Previews are made available to you on the condition that you agree to the [supplemental terms of use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Some aspects of this feature may change prior to general availability (GA).
+> Regional to zonal VM migration is currently in **Public Preview**. Previews are made available to you on the condition that you agree to the [supplemental terms of use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Some aspects of this feature may change prior to general availability (GA).
 
 ## Prerequisites
 
@@ -86,8 +86,7 @@ The migration process consists of the following steps:
 > [!IMPORTANT]
 >
 > - The VM must be deallocated before zone assignment. Plan for downtime accordingly.
-> - Data migration between disks and zones happens transparently in the background after the zone is assigned.
-> - VMs can be started immediately after zone assignment completes, even while background data migration is still in progress.
+> - VMs can be started immediately after zone assignment completes.
 > - Migration is a one-way operation. You can't migrate a zonal VM back to a regional deployment.
 
 ## Supported configurations

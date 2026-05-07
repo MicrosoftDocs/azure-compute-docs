@@ -14,7 +14,7 @@ ms.date: 05/06/2026
 This article describes how to migrate existing VMs in a regional (nonzonal) Virtual Machine Scale Set with Flexible orchestration into specific availability zones while preserving VM names, data disks, and other stateful properties.
 
 > [!IMPORTANT]
-> Stateful regional to zonal VM migration is currently in **Public Preview**. Previews are made available to you on the condition that you agree to the [supplemental terms of use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Some aspects of this feature may change prior to general availability (GA).
+> Regional to zonal VM migration is currently in **Public Preview**. Previews are made available to you on the condition that you agree to the [supplemental terms of use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Some aspects of this feature may change prior to general availability (GA).
 
 ## Overview
 
