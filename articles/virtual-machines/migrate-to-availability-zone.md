@@ -15,6 +15,8 @@ This article describes how to migrate an Azure Virtual Machine (VM) from a regio
 
 > [!IMPORTANT]
 > Regional to zonal VM migration is currently in **Public Preview**. Previews are made available to you on the condition that you agree to the [supplemental terms of use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Some aspects of this feature may change prior to general availability (GA).
+> 
+> This migration functionality is not yet available in the Azure portal. 
 
 ## Prerequisites
 
