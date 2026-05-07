@@ -52,7 +52,7 @@ Starting with version 4.0, the extension validates the certificate chain before 
 
 Certificates that don't carry the TLS Server Authentication EKU&mdash;for example, code-signing or client-authentication certificates&mdash;aren't subject to this check and are installed as before.
 
-To avoid installation failures, ensure that the issuing certificate authority (CA) chain for any TLS server certificate you reference is trusted on the target VM (typically by being present in the **Trusted Root Certification Authorities** and **Intermediate Certification Authorities** stores) before the extension runs.
+To avoid installation failures, ensure that the issuing certificate authority's **root CA** is present in the **Trusted Root Certification Authorities** store on the target VM before the extension runs. The extension installs any required **intermediate CA** certificates automatically.
 
 ## Upgrading from 3.0
 
