@@ -44,7 +44,15 @@ The Key Vault VM extension for Windows version 4.0:
 
 - Installs private keys into KeyGuard if running on Windows Server 2025.
 - Installs the two newest versions of each certificate.
-- Performs certificate chain validation for certificates with the TLS Server Authentication EKU (Extended Key Usage) before installation. Certificates that have the Server Authentication EKU but fail chain validation aren't installed.
+- Performs certificate chain validation before installing certificates that have the TLS Server Authentication Extended Key Usage (EKU). For more information, see [Certificate chain validation](#certificate-chain-validation).
+
+### Certificate chain validation
+
+Starting with version 4.0, the extension validates the certificate chain before installing any certificate that contains the **TLS Server Authentication** Extended Key Usage (EKU). If chain validation fails, the extension doesn't install the certificate in the Windows certificate store, and it continues processing the remaining certificates in the configuration.
+
+Certificates that don't carry the TLS Server Authentication EKU&mdash;for example, code-signing or client-authentication certificates&mdash;aren't subject to this check and are installed as before.
+
+To avoid installation failures, ensure that the issuing certificate authority (CA) chain for any TLS server certificate you reference is trusted on the target VM (typically by being present in the **Trusted Root Certification Authorities** and **Intermediate Certification Authorities** stores) before the extension runs.
 
 ## Upgrading from 3.0
 
