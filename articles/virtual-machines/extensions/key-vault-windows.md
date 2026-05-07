@@ -469,8 +469,8 @@ For applications like IIS that support Certificate Services Lifecycle Notificati
 
 Here are some other options to help you resolve deployment issues:
 
-- For assistance, contact the Azure experts on the [Q&A and Stack Overflow forums](https://azure.microsoft.com/support/community/). 
+- For assistance, contact the Azure experts in [Microsoft Q&A](/answers/tags/133/azure-virtual-machines).
 
 - If you don't find an answer on the site, you can post a question for input from Microsoft or other members of the community.
 
-- You can also [Contact Microsoft Support](https://support.microsoft.com/contactus/). For information about using Azure support, read the [Azure support FAQ](https://azure.microsoft.com/support/legal/faq/).
+- You can also [Contact Microsoft Support](https://support.microsoft.com/contactus/). For information about using Azure support, see [How to create an Azure support request](/azure/azure-portal/supportability/how-to-create-azure-support-request).
