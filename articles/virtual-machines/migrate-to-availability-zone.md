@@ -76,8 +76,8 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/providers/Micros
 
 ## Migration overview
 
->[!NOTE]
-> The migration steps mentioned through this document are not yet aviailable in the Azure portal. Instead use REST, CLI, or PowerShell. 
+> [!NOTE]
+> The migration steps mentioned through this article are not yet aviailable in the Azure portal. Instead use REST, CLI, or PowerShell. 
 
 The migration process consists of the following steps:
 
