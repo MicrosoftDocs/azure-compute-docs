@@ -5,7 +5,7 @@ author: yangnicole-ml
 ms.service: azure-virtual-machines 
 ms.subservice: sizes 
 ms.topic: concept-article 
-ms.date: 04/23/2026 
+ms.date: 05/07/2026 
 ms.author: yangnicole 
 ms.reviewer: yangnicole 
 --- 
@@ -18,7 +18,7 @@ The NCv6-series is a single virtual machine (VM) family for single-node compute,
 
 ## Availability and Pricing 
 
-The NCv6-series is currently in public preview and available in the Azure West US 2 and Southeast Asia regions. To request public preview access, sign up [here](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR9s7orOb3OJJnwABCNj_8JdUMzlLSzJFTTdRRE8yU0UxWFFYQlpYV1hDVy4u). 
+The NCv6-series is currently in public preview and available in the Azure West US 2 and Southeast Asia regions. To request public preview access, sign up [here](forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR9s7orOb3OJJnwABCNj_8JdUMzlLSzJFTTdRRE8yU0UxWFFYQlpYV1hDVy4u). 
 
 Refer to the [Azure.com pricing page](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) to view preview pricing rates.  
 
