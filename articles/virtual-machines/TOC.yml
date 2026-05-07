@@ -2495,6 +2495,8 @@
     href: /azure/site-recovery/azure-to-azure-tutorial-migrate?toc=/azure/virtual-machines/toc.json
   - name: Move to an availability zone
     href: /azure/site-recovery/move-azure-vms-avset-azone?toc=/azure/virtual-machines/toc.json
+  - name: Migrate VMs to an availability zone (Preview)
+    href: migrate-to-availability-zone.md
   - name: Move Maintenance Control configurations to another region
     href: move-region-maintenance-configuration.md
   - name: Move Maintenance Control configuration resources to another region
