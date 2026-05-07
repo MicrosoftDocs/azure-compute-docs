@@ -30,11 +30,11 @@ For more information, refer to our [blog on the upcoming transition to general a
 
 **Linux** 
 
-For information on installing NVIDIA GPU drivers on NCv6-series VMs running Linux - refer to [the documentation](articles/virtual-machines/linux/n-series-driver-setup.md).   
+For information on installing NVIDIA GPU drivers on NCv6-series VMs running Linux - refer to [the documentation](/azure/virtual-machines/linux/n-series-driver-setup#install-grid-drivers-on-ncv6-rtx-pro-6000-bse-vms).   
 
 **Windows** 
 
-For information on installing NVIDIA GPU drivers on N-series VMs (including NCv6-series) running Windows  – refer to [the documentation](articles/virtual-machines/windows/n-series-driver-setup.md). 
+For information on installing NVIDIA GPU drivers on N-series VMs (including NCv6-series) running Windows  – refer to [the documentation](/azure/virtual-machines/windows/n-series-driver-setup#nvidia-gridvgpu-drivers). 
 
 --- 
 
