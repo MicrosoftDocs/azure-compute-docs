@@ -20,6 +20,10 @@ This article describes how to migrate existing VMs in a regional (nonzonal) Virt
 
 Virtual Machine Scale Sets allow you to combine the scalability of scale sets with the flexibility of individual VMs. If your scale set was originally deployed without availability zones (regional), you can update the scale set to include zones and then migrate the existing VMs into those zones in place.
 
+
+> [!NOTE]
+> The migration steps mentioned through this article are not yet aviailable in the Azure portal. Instead use REST, CLI, or PowerShell. 
+
 The migration process involves:
 
 1. **Update the scale set** to include availability zones in its configuration
