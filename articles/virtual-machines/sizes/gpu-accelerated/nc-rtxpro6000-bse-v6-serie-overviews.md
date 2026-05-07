@@ -18,7 +18,7 @@ The NCv6-series is a single virtual machine (VM) family for single-node compute,
 
 ## Availability and Pricing 
 
-The NCv6-series is currently in public preview and available in the Azure West US 2 and Southeast Asia regions. To request public preview access, sign up [here](forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR9s7orOb3OJJnwABCNj_8JdUMzlLSzJFTTdRRE8yU0UxWFFYQlpYV1hDVy4u). 
+The NCv6-series is currently in public preview and available in the Azure West US 2 and Southeast Asia regions. To request public preview access, sign up [here](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR9s7orOb3OJJnwABCNj_8JdUMzlLSzJFTTdRRE8yU0UxWFFYQlpYV1hDVy4u). 
 
 Refer to the [Azure.com pricing page](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) to view preview pricing rates.  
 
@@ -30,11 +30,11 @@ For more information, refer to our [blog on the upcoming transition to general a
 
 **Linux** 
 
-For information on installing NVIDIA GPU drivers on NCv6-series VMs running Linux - refer to [the documentation](https://learn.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup#install-grid-drivers-on-ncv6-rtx-pro-6000-bse-vms).   
+For information on installing NVIDIA GPU drivers on NCv6-series VMs running Linux - refer to [the documentation](articles/virtual-machines/linux/n-series-driver-setup.md).   
 
 **Windows** 
 
-For information on installing NVIDIA GPU drivers on N-series VMs (including NCv6-series) running Windows  – refer to [the documentation](https://learn.microsoft.com/azure/virtual-machines/windows/n-series-driver-setup#nvidia-gridvgpu-drivers). 
+For information on installing NVIDIA GPU drivers on N-series VMs (including NCv6-series) running Windows  – refer to [the documentation](articles/virtual-machines/windows/n-series-driver-setup.md). 
 
 --- 
 
