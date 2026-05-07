@@ -52,7 +52,7 @@ If you're updating from 3.0, the following features are changed or removed:
 - `keyExportable` is removed. Private keys are no longer exportable.
 - `requireInitialSync` is removed. The extension only reports success if all configured certificates are installed.
 - Configuring a specific version of a certificate is no longer possible.
-- Private keys are now always stored via CNG instead of CAPI.
+- Private keys are now always stored via [Cryptography API: Next Generation (CNG)](/windows/win32/seccng/cng-portal) instead of CAPI.
 
 ## Prerequisites
 
