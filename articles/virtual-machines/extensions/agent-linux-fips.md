@@ -49,7 +49,6 @@ For more information, see [What are the Federal Information Processing Standards
 You must meet the following four requirements to use a FIPS 140-3-compliant VM in Azure:
 
 - The VM must be in a region where FIPS 140-3 platform changes are rolled out.
-- Your Azure subscription must be opted in to FIPS 140-3 enablement.
 - Each VM must be enrolled in FIPS 140-3 enablement in Azure Resource Manager.
 - Inside the guest operating system (OS), the OS must be configured for FIPS 140 mode. The OS must run a version of the Azure guest agent (waagent), which is also compliant with FIPS 140-3.
 
@@ -59,35 +58,7 @@ Afterward, validate to ensure the functionality of the VM extensions.
 
 ## Implement prerequisites
 
-### 1. Subscription enablement/opt-in
-
-Because not all extensions are onboarded by using FIPS 140-3 encryption yet, we require the subscription to opt in to the feature `_Microsoft.Compute/OptInToFips1403Compliance_`.
-
-#### Azure CLI
-
-```
-az feature register --namespace Microsoft.Compute --name OptInToFips1403Compliance
-```
-
-Verify with the following command:
-```
-az feature list | jq '.[] | select(.name=="Microsoft.Compute/OptInToFips1403Compliance")'
-```
-
-```json
-{
-  "id": "/subscriptions/<SUBSCRIPTION ID>/providers/Microsoft.Features/providers/Microsoft.Compute/features/OptInToFips1403Compliance",
-  "name": "Microsoft.Compute/OptInToFips1403Compliance",
-  "properties": {
-    "state": "Registered"
-  },
-  "type": "Microsoft.Features/providers/features"
-}
-```
-
----
-
-### 2. Per-VM opt-in
+### 1. Per-VM opt-in
 
 There are different methods available for opting in to each VM. You can make the changes at deployment for a new VM. You can also alter an existing VM to add the FIPS 140-3 enablement on the Azure platform.
 
@@ -172,7 +143,7 @@ Leaving the marker here, but deleting the content pending research -->
 
 ---
 
-### 3. In-guest considerations
+### 2. In-guest considerations
 
 Important changes must be made to the Linux OS environment to enable and support FIPS 140-3 compliance.
 
