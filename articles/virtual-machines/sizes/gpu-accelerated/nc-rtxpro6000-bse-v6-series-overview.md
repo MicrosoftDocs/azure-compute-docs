@@ -1,5 +1,5 @@
 --- 
-title: NC_RTXPRO6000BSE_v6 Size Series Overview 
+title: NC_RTXPRO6000BSE_v6 Size Series Overview (Preview)
 description: Overview and FAQs for NC_RTXPRO6000BSE_v6-series sizes 
 author: yangnicole-ml 
 ms.service: azure-virtual-machines 
@@ -11,6 +11,10 @@ ms.reviewer: yangnicole
 --- 
 
 # NC RTX PRO 6000 Blackwell v6 Sizes Series Overview 
+
+> [!IMPORTANT]
+> The NC RTX Pro 6000 BSE virtual machine is currently in PREVIEW. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
+
 
 The NCv6-series is a single virtual machine (VM) family for single-node compute, virtual desktop infrastructure (VDI), and gaming workloads. Below we outline general information and onboarding for the NCv6-series. 
 
