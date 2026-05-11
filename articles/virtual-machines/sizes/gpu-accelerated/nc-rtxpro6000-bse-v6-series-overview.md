@@ -34,7 +34,7 @@ For more information, refer to our [blog on the upcoming transition to general a
 
 **Linux** 
 
-For information on installing NVIDIA GPU drivers on NCv6-series VMs running Linux - refer to [the documentation](/azure/virtual-machines/linux/n-series-driver-setup#install-grid-drivers-on-ncv6-rtx-pro-6000-bse-vms).   
+For information on installing NVIDIA GPU drivers on N-series VMs (including NCv6-series) running Linux - refer to [the documentation](/azure/virtual-machines/linux/n-series-driver-setup#install-grid-drivers-on-ncv6-rtx-pro-6000-bse-vms).   
 
 **Windows** 
 
@@ -65,7 +65,7 @@ For information on installing NVIDIA GPU drivers on N-series VMs (including NCv6
 
 **3) Is the NCv6-series supported on Azure Kubernetes Service (AKS) and Azure Batch?** <br> 
 
-&emsp; NCv6 will be supported on Azure Batch in May 2026. NCv6 is not supported on AKS at this time. We are working to bring AKS support to this product in Q4 2026.
+&emsp; NCv6 will be supported on Azure Batch in Q3 CY2026. NCv6 is not supported on AKS at this time. We are working to bring AKS support to this product in Q4 2026.
 
 **4) Where can I sign up for the preview?** <br>  
 
@@ -82,7 +82,7 @@ For information on installing NVIDIA GPU drivers on N-series VMs (including NCv6
 &emsp; [Linux vGPU20 driver](https://download.microsoft.com/download/51239696-ec04-4c02-a6b3-1d9c608fb57c/NVIDIA-Linux-x86_64-595.58.03-grid-azure.run) <br> 
 &emsp; [Windows vGPU20 driver](https://download.microsoft.com/download/169e58c8-9099-481e-a9a9-c237a189710c/595.97_grid_win10_win11_server2022_server2025_dch_64bit_international_azure_swl.exe) 
 
-&emsp; For information on installing NVIDIA GPU drivers on NCv6-series VMs running Linux - refer to [the documentation](/azure/virtual-machines/linux/n-series-driver-setup#install-grid-drivers-on-ncv6-rtx-pro-6000-bse-vms). <br>  
+&emsp; For information on installing NVIDIA GPU drivers on N-series VMs (including NCv6-series) - refer to [the documentation](/azure/virtual-machines/linux/n-series-driver-setup#install-grid-drivers-on-ncv6-rtx-pro-6000-bse-vms). <br>  
 
 &emsp; For information on installing NVIDIA GPU drivers on N-series VMs (including NCv6-series) running Windows – refer to [the documentation](/azure/virtual-machines/windows/n-series-driver-setup#nvidia-gridvgpu-drivers). 
 
