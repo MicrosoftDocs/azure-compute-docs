@@ -13,28 +13,48 @@ ms.custom: template-how-to
 
 # VMSnapshot extension
 
-Application-consistent restore points use the Volume Shadow Copy Service (VSS) service (or pre-/postscripts for Linux) to verify application data consistency prior to creating a restore point. Achieving an application-consistent restore point involves the VM's running application providing a VSS service (for Windows) or pre- and postscripts (for Linux).
+---
 
-For Windows images, the **VMSnapshot Windows** extension, and for Linux images, the **VMSnapshot Linux** extension, are used for taking application consistent restore points. When there's a create application consistent restore point request issued from a VM, Azure installs the VM snapshot extension if it's not already present. The extension is updated automatically.
+Application-consistent restore points capture VM data in a state that guarantees application integrity at the time of the snapshot. To achieve this, Azure coordinates with applications running on the VM before taking the snapshot:
+
+- **Windows**: The **VMSnapshot Windows** extension triggers the Volume Shadow Copy Service (VSS) to quiesce application writes.
+- **Linux**: The **VMSnapshot Linux** extension runs pre- and post-scripts to flush and resume application I/O.
+
+When you request an application-consistent restore point, Azure automatically installs the VMSnapshot extension on the VM if it isn't already present. The extension updates automatically — no manual management is required.
 
 > [!IMPORTANT]
-> Azure begins creating a restore point only after all extensions (including but not limited to VMSnapshot) provisioning state are complete.
+> Azure begins creating a restore point only after **all extensions** on the VM, including VMSnapshot, have successfully provisioned. Monitor extension provisioning state before expecting restore point creation to succeed.
+
+To confirm the extension is installed and in a **Provisioned** state, check **VM > Extensions + applications** in the Azure portal, or run:
+
+```azurecli
+az vm extension show \
+  --resource-group <resourceGroupName> \
+  --vm-name <vmName> \
+  --name VMSnapshot
+```
 
 ## Extension logs
 
-You can view logs for the VMSnapshot extension on the VM under
-```C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot``` for Windows and under ```/var/log/azure/Microsoft.Azure.RecoveryServices.VMSnapshotLinux/extension.log``` for Linux.
+Use the following paths to access VMSnapshot extension logs directly on the VM:
+
+| OS | Log path |
+|---|---|
+| Windows | `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot` |
+| Linux | `/var/log/azure/Microsoft.Azure.RecoveryServices.VMSnapshotLinux/extension.log` |
 
 ## Troubleshooting
 
-Most common restore point failures are attributed to the communication with the VM agent and extension. To resolve failures, follow the steps in [Troubleshoot restore point failures](restore-point-troubleshooting.md).
+Most restore point failures are caused by communication issues between the VM agent and the VMSnapshot extension. Start troubleshooting with [Troubleshoot restore point failures](restore-point-troubleshooting.md).
 
-During certain VSS writer failure, Azure takes file system-consistent restore points for the next three times (irrespective of the frequency at which the restore point creation is scheduled) upon failing the initial creation request. From the fourth time onward, an application-consistent restore point is attempted.
+### VSS writer failures (Windows)
 
-Follow these steps to [troubleshoot VSS writer issues](/azure/backup/backup-azure-vms-troubleshoot#extensionfailedvsswriterinbadstate---snapshot-operation-failed-because-vss-writers-were-in-a-bad-state).
+When a VSS writer fails, Azure cannot take an application-consistent snapshot and falls back to a file system-consistent restore point. This fallback applies for the **next three attempts**, regardless of the configured restore point schedule. From the **fourth attempt onward**, Azure resumes attempting application-consistent restore points.
 
-> [!NOTE]
-> Avoid manually deleting the extension because it leads to failure of the subsequent creation of an application-consistent restore point.
+To resolve VSS writer failures, see [Troubleshoot VSS writer issues](https://learn.microsoft.com/en-us/azure/backup/backup-azure-vms-troubleshoot#extensionfailedvsswriterinbadstate---snapshot-operation-failed-because-vss-writers-were-in-a-bad-state).
+
+> [!WARNING]
+> Do not manually delete the VMSnapshot extension. Deleting it breaks subsequent application-consistent restore point creation until the extension is reinstalled and provisioned again.
 
 ## Next steps
 
