@@ -23,7 +23,7 @@ Application-consistent restore points capture VM data in a state that guarantees
 When you request an application-consistent restore point, Azure automatically installs the VMSnapshot extension on the VM if it isn't already present. The extension updates automatically — no manual management is required.
 
 > [!IMPORTANT]
-> Azure begins creating a restore point only after **all extensions** on the VM, including VMSnapshot, have successfully provisioned. Monitor extension provisioning state before expecting restore point creation to succeed.
+> Azure begins creating a restore point only after **all extensions on the VM**, including VMSnapshot, have successfully provisioned. Monitor extension provisioning state before expecting restore point creation to succeed.
 
 To confirm the extension is installed and in a **Provisioned** state, check **VM > Extensions + applications** in the Azure portal, or run:
 

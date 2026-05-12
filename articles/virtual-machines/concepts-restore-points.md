@@ -61,7 +61,7 @@ Minimum Frequency at which App consistent restore point can be taken | 3 hours
 Minimum Frequency at which crash consistent restore points can be taken | 1 hour
 API version for Application consistent restore point | 2021-03-01 or later
 API version for Crash consistent restore point | 2021-07-01 or later
-| Instant Access for VMs using Premium SSD v2 and/or Ultra as **data** disks | Yes for application consistent in **Preview**. API version 2025-04-01 or later. |
+| Instant Access for VMs using Premium SSD v2 and/or Ultra as **data** disks | Yes for application consistent **in Preview**. API version 2025-04-01 or later. |
 | Instant Access for crash-consistent restore points | No. |
 
 > [!Note]

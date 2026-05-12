@@ -78,7 +78,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
     }
   }
 ```
-> **Note:** instantAccessDurationMinutes is an optional parameter. Default is 300 (5 hours). Can be set to a lower value, but not higher than 300.
+> **Note:** instantAccessDurationMinutes is an optional parameter. Default is 300 (5 hours). Can be set to a lower value, but not higher than 300. This is applicable for future restore points and NOT for existing restore points already created.
 
 **Key request body properties:**
 
