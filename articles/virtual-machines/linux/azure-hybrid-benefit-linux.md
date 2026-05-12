@@ -676,6 +676,59 @@ If you use the Azure Hybrid Benefit BYOS to PAYG capability for SLES and want mo
 
   * A: No. RHEL for Virtual Datacenters isn't supported on Azure at all, including for Azure Hybrid Benefit.
 
+## AHBForRHEL Extension Changelog
+
+The AHBForRHEL extension has a version number. As improvements and CVE fixes are introduced, the version number is increased.
+
+### Identify which AHBForRHEL extension is installed on your VM
+
+The AHBForRHEL extension uses the standard [Semantic Versioning](https://semver.org/) schema for each version. To identify the AHBForRHEL extension version being used, you can run the following command: `az vm get-instance-view`. Look for the AHBForRHEL extension and version number.
+
+```azurecli
+az vm get-instance-view \
+  --resource-group <RG> \
+  --vm-name <VM_NAME> \
+  --query instanceView.extensions
+ ```
+
+### Update the AHBForRHEL extension installed on your VM
+
+To change the AHBForRHEL extension installed on your VM, run the following command:
+
+```azurecli
+az vm extension set \
+  --resource-group <RG> \
+  --vm-name <VM_NAME> \
+  --name AHBForRHEL \
+  --publisher Microsoft.Azure.AzureHybridBenefit \
+  --version <NEW_VERSION> \
+```
+
+### Enable auto upgrades for the AHBForRHEL extension installed on your VM
+
+To enable auto upgrades for the AHBForRHEL extension installed on your VM, run the following command:
+
+```azurecli
+az vm extension set \
+  --resource-group <RG> \
+  --vm-name <VM_NAME> \
+  --name AHBForRHEL \
+  --publisher Microsoft.Azure.AzureHybridBenefit \
+  --enable-auto-upgrade true
+```
+
+### AHBForRHEL extension versions available
+
+**2.2.0**
+
+Patch CVE-2022-29526, CVE-2026-25679, CVE-2026-27139, and CVE-2026-27142. 
+Security improvements.
+
+**2.1.0**
+
+Patch CVE-2025-467.
+Security improvements.
+
 ## Related content
 
 * [Learn how to create and update VMs and add license types (RHEL_BYOS, SLES_BYOS) for Azure Hybrid Benefit by using the Azure CLI](/cli/azure/vm)
