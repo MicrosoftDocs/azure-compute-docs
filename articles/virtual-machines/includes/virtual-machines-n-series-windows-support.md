@@ -33,7 +33,7 @@ NVIDIA Tesla (CUDA) drivers for all NC* and ND*-series VMs (optional for NV*-ser
 >
 
 > [!Note]
->For Azure NVads A10 v5 VMs we recommend customers to always be on the latest driver version. The latest NVIDIA major driver branch(n) is only backward compatbile with the previous major branch(n-1). For eg, vGPU 17.x is backward compatible with vGPU 16.x only. Any VMs still runnig n-2 or lower may see driver failures when the latest drive branch is rolled out to Azure hosts.
+>For Azure NVads A10 v5 and NC RTX Pro 6000 BSE v6 VMs, we recommend customers to always be on the latest driver version. The latest NVIDIA major driver branch(n) is only backward compatbile with the previous major branch(n-1). For eg, vGPU 17.x is backward compatible with vGPU 16.x only. Any VMs still runnig n-2 or lower may see driver failures when the latest drive branch is rolled out to Azure hosts.
 >>
 >NVs_v3 VMs only support **vGPU 16 or lower** driver version.
 >
