@@ -56,7 +56,7 @@ For a full image list, run `az vm image list --offer RHEL --all -p RedHat --outp
 
 ### Images connected to non-EUS repositories
 
-For RHEL VM images connected to non-EUS repositories, running `sudo yum update` will upgrade to the latest RHEL minor version. For example, if you provision a VM from a RHEL 8.4 PAYG image and run `sudo yum update`, you end up with a VM that has installed all updates through the latest minor version in the RHEL8 family.
+For RHEL VM images connected to non-EUS repositories, running `sudo yum update` upgrades to the latest RHEL minor version. For example, if you provision a VM from a RHEL 8.4 PAYG image and run `sudo yum update`, you end up with a VM with all the updates through the latest minor version in the RHEL8 family.
 
 Images that are connected to non-EUS repositories don't contain a minor version number in the SKU. The SKU is the third element in the image name. For example, all of the following images come attached to non-EUS repositories:
 
@@ -195,7 +195,7 @@ To remove the version lock, use the following commands.
    EOF
    ```
    >[!NOTE]
-   >You might encounter an error that gpgkey must be in either http, ftp , file or https and not "". In that case, try editing the config file to use: `gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-microsoft-azure-release`.
+   >You might encounter an error that gpgkey must be in either http, ftp, file or https and not "". In that case, try editing the config file to use: `gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-microsoft-azure-release`.
 1. Add non-EUS repository.
 
    ```bash
