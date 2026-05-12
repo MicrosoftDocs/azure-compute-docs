@@ -684,9 +684,39 @@ The AHBForRHEL extension has a version number. As improvements and CVE fixes are
 
 The AHBForRHEL extension uses the standard [Semantic Versioning](https://semver.org/) schema for each version. To identify the AHBForRHEL extension version being used, you can run the following command: `az vm get-instance-view`. Look for the AHBForRHEL extension and version number.
 
-   ```azurecli
-   az vm get-instance-view -g MyResourceGroup -n myVm --query instanceView.extensions
-   ```
+```azurecli
+az vm get-instance-view \
+  --resource-group <RG> \
+  --vm-name <VM_NAME> \
+  --query instanceView.extensions
+ ```
+
+### Update the AHBForRHEL extension installed on your VM
+
+To change the AHBForRHEL extension installed on your VM, run the following command:
+
+```azurecli
+az vm extension set \
+  --resource-group <RG> \
+  --vm-name <VM_NAME> \
+  --name AHBForRHEL \
+  --publisher Microsoft.Azure.AzureHybridBenefit \
+  --version <NEW_VERSION> \
+```
+
+### Enable auto upgrades for the AHBForRHEL extension installed on your VM
+
+To enable auto upgrades for the AHBForRHEL extension installed on your VM, run the following command:
+
+```azurecli
+az vm extension set \
+  --resource-group <RG> \
+  --vm-name <VM_NAME> \
+  --name AHBForRHEL \
+  --publisher Microsoft.Azure.AzureHybridBenefit \
+  --enable-auto-upgrade true
+```
+
 ### AHBForRHEL extension versions available
 
 **2.2.0**
