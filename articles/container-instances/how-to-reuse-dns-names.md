@@ -21,7 +21,7 @@ In order to avoid this, ACI now allows customers to reuse DNS names while preven
 
 ## Prerequisites
 
-* An **active Azure subscription**. If you don't have an active Azure subscription, create a [free account](https://azure.microsoft.com/free) before you begin.
+* An **active Azure subscription**. If you don't have an active Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 * A **resource group** to manage all the resources you use in this how-to guide. We use the example resource group name **ACIResourceGroup** throughout this article.
 

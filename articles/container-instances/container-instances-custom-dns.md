@@ -24,7 +24,7 @@ For more information on deploying container groups to a virtual network, see the
 
 ## Prerequisites
 
-* An **active Azure subscription**. If you don't have an active Azure subscription, create a [free account](https://azure.microsoft.com/free) before you begin.
+* An **active Azure subscription**. If you don't have an active Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 * **Azure CLI**. The command-line examples in this article use the [Azure CLI](/cli/azure/) and are formatted for the Bash shell. You can [install the Azure CLI](/cli/azure/install-azure-cli) locally or use the [Azure Cloud Shell][cloud-shell-bash].
 
