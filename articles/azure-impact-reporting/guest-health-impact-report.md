@@ -260,27 +260,27 @@ GET "https://management.azure.com/subscriptions/{subscriptionId}/providers/Micro
 }
 ```
 
-| Name               | Type                  | Description                                                                                             |
-|--------------------|-----------------------|---------------------------------------------------------------------------------------------------------|
+| Name                | Type                  | Description                                                                                             |
+|---------------------|-----------------------|---------------------------------------------------------------------------------------------------------|
 | `additionalDetails` | object                | Additional details of the insight.                                                                      |
-| `category`         | string                | Category of the insight.                                                                               |
-| `content`          | object             | Contains title and description for the insight.                                                        |
-| `eventId`          | string                | Identifier of the event correlated with this insight. Used to aggregate insights for the same event.   |
-| `eventTime`        | string (date-time)    | Time of the event correlated with the impact.                                                           |
-| `groupId`          | string                | Identifier that can be used to group similar insights.                                                  |
-| `impact`           | object       | Details of the impact for which the insight has been generated.                                         |
-| `insightUniqueId`  | string                | Unique identifier of the insight.                                                                       |
-| `provisioningState`| string   | Resource provisioning state.                                                                            |
-| `status`           | string                | Status of the insight (e.g., *Resolved*, *Repaired*, other).                                            |
+| `category`          | string                | Category of the insight.                                                                                |
+| `content`           | object                | Contains title and description for the insight.                                                         |
+| `eventId`           | string                | Identifier of the event correlated with this insight. Used to aggregate insights for the same event.    |
+| `eventTime`         | string (date-time)    | Time of the event correlated with the impact.                                                           |
+| `groupId`           | string                | Identifier that can be used to group similar insights.                                                  |
+| `impact`            | object                | Details of the impact for which the insight has been generated.                                         |
+| `insightUniqueId`   | string                | Unique identifier of the insight.                                                                       |
+| `provisioningState` | string                | Resource provisioning state.                                                                            |
+| `status`            | string                | Status of the insight (e.g., *Resolved*, *Repaired*, other).                                            |
 
 ### Additional Processing Fields
 
 Some insights include extra processing metadata under `additionalDetails`. These fields help you understand how the impact request progressed through the Guest Health Reporting pipeline.
 
-| Name | Type | Description |
-|------|------|-------------|
- `additionalDetails.statusCode` | string | Detailed reason code explaining why this insight was generated (for example: `AcknowledgedUnhealthy`, `NodeRemovedFromService`, `TooManyRequests`). |
-| `additionalDetails.terminalInsight` | boolean | Indicates whether this is the final insight for the impact. If `true`, no further updates will follow. |
+| Name                                | Type    | Description                                                                                                                                         |
+|-------------------------------------|---------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
+| `additionalDetails.statusCode`      | string  | Detailed reason code explaining why this insight was generated (for example: `AcknowledgedUnhealthy`, `NodeRemovedFromService`, `TooManyRequests`). |
+| `additionalDetails.terminalInsight` | boolean | Indicates whether this is the final insight for the impact. If `true`, no further updates will follow.                                              |
 
 These fields should be interpreted together:  
 - **`statusCode`** = tells you the specific condition or reason for the insight. 
