@@ -15,11 +15,9 @@ ms.date: 09/25/2025
 > [!NOTE]
 > This feature is currently in public preview. Production workloads are supported.
 
-Linux virtual machine (VM) extensions currently comply with FIPS 140-2, but updates to the platform were required to add support for FIPS 140-3. These changes are currently being enabled across the commercial cloud and Azure Government clouds. Linux VM extensions that use protected settings are also being updated to be able to use a FIPS 140-3-compliant encryption algorithm. This article helps enable support for FIPS 140-3 on Linux VMs where compliance with FIPS 140-3 is enforced. This change isn't needed on Windows images because of the way that FIPS compliance is implemented.
+Linux virtual machine (VM) extensions currently comply with FIPS 140-2, but updates to the platform were required to add support for FIPS 140-3 which have been deployed across the commercial cloud and Azure government clouds. Linux VM extensions that use protected settings are also being updated to be able to use a FIPS 140-3-compliant encryption algorithm. This article helps enable support for FIPS 140-3 on Linux VMs where compliance with FIPS 140-3 is enforced. This change isn't needed on Windows images because of the way that FIPS compliance is implemented.
 
 For more information, see [What are the Federal Information Processing Standards (FIPS)?](https://www.nist.gov/standardsgov/compliance-faqs-federal-information-processing-standards-fips).
-
-[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
 
 ## Confirmed supported extensions
 
@@ -48,13 +46,15 @@ For more information, see [What are the Federal Information Processing Standards
 
 You must meet the following four requirements to use a FIPS 140-3-compliant VM in Azure:
 
-- The VM must be in a region where FIPS 140-3 platform changes are rolled out.
 - Each VM must be enrolled in FIPS 140-3 enablement in Azure Resource Manager.
 - Inside the guest operating system (OS), the OS must be configured for FIPS 140 mode. The OS must run a version of the Azure guest agent (waagent), which is also compliant with FIPS 140-3.
 
 Afterward, validate to ensure the functionality of the VM extensions.
 
 ---
+
+> [!WARNING]
+> We have identified a known issue where the 'enableFips1403Encryption' property does not consistently propagate to VMSS VM instances. A fix is currently in deployment, and we anticipate broad availability of the resolution in early July 2026.
 
 ## Implement prerequisites
 
@@ -226,6 +226,8 @@ az vm user update \
 ### Run a custom script
 
 Use the [Custom Script extension](/azure/virtual-machines/extensions/custom-script-linux) documentation to send a basic script, such as `cat /etc/os-release`, to test extension functionality.
+
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
 
 ### Fix a validation failure
 
