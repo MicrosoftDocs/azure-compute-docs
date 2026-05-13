@@ -371,7 +371,7 @@ Alternatively, you can remove the *zone* information to create a regional Capaci
 
 ## Check on your capacity reservation 
 
-After the capacity reservation is successfully created, it's immediately available for use with VMs. The `currentCapacity` field from the capacity reservation's instance view provides the current capacity of the VM size which was reserved successfully. See [Capacity Reservations - Get](/rest/api/compute/capacity-reservations/get?view=rest-compute-2025-11-01&tabs=HTTP).
+After the capacity reservation is successfully created, it's immediately available for use with VMs. The `currentCapacity` field from the capacity reservation's instance view provides the current capacity of the VM size which was reserved successfully. See [Capacity Reservations - Get](/rest/api/compute/capacity-reservations/get).
 
 ### [API](#tab/api2)
 
