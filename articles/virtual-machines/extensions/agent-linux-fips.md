@@ -54,7 +54,7 @@ Afterward, validate to ensure the functionality of the VM extensions.
 ---
 
 > [!WARNING]
-> There is a known issue preventing propagation of the `enableFips1403Encruption` property on VMSSVM Instances.  A fix for this issue is currently being deployed, ETA for broad release of this fix is end of May 2026.
+> There is a known issue preventing propagation of the `enableFips1403Encruption` property on VMSSVM Instances.  A fix for this issue is currently being deployed, ETA for broad availability of this fix is end of May 2026.
 
 ## Implement prerequisites
 
