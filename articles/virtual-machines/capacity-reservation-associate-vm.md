@@ -634,7 +634,8 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
                      {
                         "id":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{myVM}"
                      }
-                  ]
+                  ],
+                  "currentCapacity": 1
                },
                "statuses":[
                   {
