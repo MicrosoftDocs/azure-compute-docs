@@ -1,4 +1,4 @@
----
+﻿---
 title: Azure HPC Guest Health Reporting - Report Node Health 
 description: Share the health status of a supercomputing virtual machine with Azure. 
 author: bryantruong 
@@ -114,7 +114,7 @@ BT_TODO: RESUME EDITS FROM HERE
 | `startDateTime`      | Yes      | `datetime` | Time (in UTC) when the impact happened.                                      |
 | `impactCategory`     | Yes      | `string`   | Observation type or fault scenario. Only an approved string list is allowed. |
 | `impactDescription`  | Yes      | `string`   | Description of the reported impact.                                          |
-| `impactedResourceId` | Yes      | `string`   | Fully qualified URI for the Azure resource.                                  |
+| `impactedResourceId` | Yes      | `string`   | Fully qualified URI for the Azure resource (enforced at ARM level to verify customers are reporting impacts on resource they have access to). |
 | `physicalHostName`   | Yes      | `string`   | Node identifier, available in metadata.                                      |
 | `logUrl`             | No       | `string`   | URL to saved logs.                                                           |
 | `manufacturer`       | No       | `string`   | GPU manufacturer.                                                            |
