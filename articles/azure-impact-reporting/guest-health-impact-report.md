@@ -1,8 +1,8 @@
 ---
 title: Azure HPC Guest Health Reporting - Report Node Health 
 description: Share the health status of a supercomputing virtual machine with Azure. 
-author: rolandnyamo 
-ms.author: ronyamo 
+author: bryantruong 
+ms.author: bryantruong 
 ms.service: azure 
 ms.topic: overview 
 ms.date: 09/18/2025 
@@ -19,23 +19,23 @@ This article shows how to use Guest Health Reporting to share the health status 
 ## REST client reporting
 
 ```
-PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Impact/workloadImpacts/{workloadImpactName}?api-version=2023-02-01-preview
+PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Impact/workloadImpacts/{workloadImpactName}?api-version=2025-01-01-preview
 ```
 
 Descriptions of URI parameters are as follows:
 
-| Field name       | Description       |
-|---------------------|--------------------|
-| `subscriptionId`  | Subscription previously added to an allow list. |
-| `subscriptionId`   | Unique name that identifies a specific impact. You can also use a globally unique identifier (GUID).  |
-| `api-version`   | API version to be used for this operation. Use `2023-02-01-preview`.   |
+| Field name           | Description                                                                                          |
+|----------------------|------------------------------------------------------------------------------------------------------|
+| `subscriptionId`     | Subscription previously added to an allow list.                                                      |
+| `workloadImpactName` | Unique name that identifies a specific impact. You can also use a globally unique identifier (GUID). |
+| `api-version`        | API version to be used for this operation. Use `2025-01-01-preview`.                                 |
 
 ### [Healthy node](#tab/healthy/)
 
 ```json
 {
   "properties": {
-      "startDateTime": "2025-09-15T01:06:21.3886467Z",
+      "startDateTime": "2025-05-13T01:06:21.3886467Z",
       "impactCategory": "Resource.Hpc.Healthy",
       "impactDescription": "Missing GPU device",
       "impactedResourceId": "/subscriptions/111111-f1122-2233-11bc-bb00123/resourceGroups/<rg_name>/providers/Microsoft.Compute/virtualMachines/<vm_name>",
@@ -52,17 +52,16 @@ Descriptions of URI parameters are as follows:
 ```json
 {
   "properties": {
-      "startDateTime": "2025-09-15T01:06:21.3886467Z",
+      "startDateTime": "2026-05-13T01:06:21.3886467Z",
       "impactCategory": "Resource.Hpc.Unhealthy.HpcMissingGpu",
       "impactDescription": "Missing GPU device",
       "impactedResourceId": "/subscriptions/111111-f1122-2233-11bc-bb00123/resourceGroups/<rg_name>/providers/Microsoft.Compute/virtualMachines/<vm_name>",
       "additionalProperties": {
-            "LogUrl": "https://someurl.blob.core.windows.net/rma",
+            "LogUrl": "https://ghrloguploadprod.blob.core.windows.net/exampleCustomer/20260513150912_5273ea32.gz?",
             "PhysicalHostName": "GGBB90904476",
             "Manufacturer": "Nvidia",
             "SerialNumber": "12345679",
             "ModelNumber": "NV3LB225",
-            "Location": "0"
       }
    }
 }
@@ -74,13 +73,12 @@ Descriptions of URI parameters are as follows:
 ```json
 {
   "properties": {
-      "startDateTime": "2025-09-15T01:06:21.3886467Z",
+      "startDateTime": "2026-05-13T01:06:21.3886467Z",
       "impactCategory": "Resource.Hpc.Investigate.NVLink",
       "impactDescription": "NvLink may be down",
       "impactedResourceId": "/subscriptions/111111-f1122-2233-11bc-bb00123/resourceGroups/<rg_name>/providers/Microsoft.Compute/virtualMachines/<vm_name>",
       "additionalProperties": {
-            "LogUrl": "https://someurl.blob.core.windows.net/rma",
-            "CollectTelemtery": "0"
+            "LogUrl": "https://ghrloguploadprod.blob.core.windows.net/exampleCustomer/20260513150912_5273ea32.gz",
       }
    }
 }
@@ -92,12 +90,12 @@ Descriptions of URI parameters are as follows:
 ```json
 {
   "properties": {
-      "startDateTime": "2025-09-15T01:06:21.3886467Z",
+      "startDateTime": "2026-05-13T01:06:21.3886467Z",
       "impactCategory": "Resource.Hpc.Unhealthy.IBPerformance",
       "impactDescription": "IB low bandwidth",
       "impactedResourceId": "/subscriptions/111111-f1122-2233-11bc-bb00123/resourceGroups/<rg_name>/providers/Microsoft.Compute/virtualMachines/<vm_name>",
       "additionalProperties": {
-            "LogUrl": "https://someurl.blob.core.windows.net/rma",
+            "LogUrl": "https://ghrloguploadprod.blob.core.windows.net/exampleCustomer/20260513150912_5273ea32.gz",
             "PhysicalHostName": "GGBB90904476"
       }
    }
@@ -105,20 +103,24 @@ Descriptions of URI parameters are as follows:
 
 ```
 
----
+> [!WARNING]
+> The field names in GHR request bodies ARE case SENSITIVE. As a general rule-of-thumb, top-level fields within `properties`(`startDateTime`, `impactCategory`, etc.) are camelCase, while fields nested within `additionalProperties` (`LogUrl`, `PhysicalHostName`, etc.) are PascalCase.
 
-| Field name       | Required | Data type | Description                                                                 |
-|-----------------------|--------------|---------------|---------------------------------------------------------------------------------|
-| `startDateTime`         | Yes            | `datetime`      | Time (in UTC) when the impact happened.                                           |
-| `impactCategory`        | Yes            | `string`        | Observation type or fault scenario. Only an approved string list is allowed.           |
-| `impactDescription`     | Yes            | `string`        | Description of the reported impact.                                            |
-| `impactedResourceId`    | Yes            | `string`        | Fully qualified URI for the Azure resource.                             |
-| `physicalHostName`      | Yes            | `string`        | Node identifier, available in metadata.                                        |
-| `logUrl`                | No           | `string`        | URL to saved logs.                                                             |
-| `manufacturer`          | No           | `string`        | GPU manufacturer.                                                              |
-| `serialNumber`          | No           | `string`        | GPU serial number.                                                             |
-| `modelNumber`           | No           | `string`        | Model number.                                                                  |
-| `location`              | No           | `string`        | Peripheral Component Interconnect Express (PCIe) location.                                                                 |
+---
+BT_TODO: RESUME EDITS FROM HERE
+
+| Field name           | Required | Data type  | Description                                                                  |
+|----------------------|----------|------------|------------------------------------------------------------------------------|
+| `startDateTime`      | Yes      | `datetime` | Time (in UTC) when the impact happened.                                      |
+| `impactCategory`     | Yes      | `string`   | Observation type or fault scenario. Only an approved string list is allowed. |
+| `impactDescription`  | Yes      | `string`   | Description of the reported impact.                                          |
+| `impactedResourceId` | Yes      | `string`   | Fully qualified URI for the Azure resource.                                  |
+| `physicalHostName`   | Yes      | `string`   | Node identifier, available in metadata.                                      |
+| `logUrl`             | No       | `string`   | URL to saved logs.                                                           |
+| `manufacturer`       | No       | `string`   | GPU manufacturer.                                                            |
+| `serialNumber`       | No       | `string`   | GPU serial number.                                                           |
+| `modelNumber`        | No       | `string`   | Model number.                                                                |
+| `location`           | No       | `string`   | Peripheral Component Interconnect Express (PCIe) location.                   |
 
 > [!NOTE]
 > Providing optional information can speed up the node recovery time. You can retrieve `PhysicalHostName` from within the VM by using [this script](https://github.com/jeseszhang1010/Utilities/blob/main/kvp_client.c).
@@ -270,6 +272,7 @@ GET "https://management.azure.com/subscriptions/{subscriptionId}/providers/Micro
 | `insightUniqueId`  | string                | Unique identifier of the insight.                                                                       |
 | `provisioningState`| string   | Resource provisioning state.                                                                            |
 | `status`           | string                | Status of the insight (e.g., *Resolved*, *Repaired*, other).                                            |
+
 ### Additional Processing Fields
 
 Some insights include extra processing metadata under `additionalDetails`. These fields help you understand how the impact request progressed through the Guest Health Reporting pipeline.
