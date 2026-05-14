@@ -169,11 +169,14 @@ Once your workload is prepared for an event, it's recommended to acknowledge the
 
 The acknowledgment API is available through [Azure CLI](/cli/azure/maintenance/scheduledevent) or events can also be acknowledged using the IMDS endpoint. 
 
+> [!Note] 
+> Use Az.Maintenance CLI extension Version 2.0.0b1 (preview) during the feature preview.
+
 ```azurecli
 
-az maintenance scheduledevent acknowledge --resource-group {resourceGroupName} --resource-type "virtualMachines" --resource-name {VMname} --scheduled-event-id {scheduledEventId} --subscription {subscriptionId}
+az maintenance scheduledevents acknowledge --resource-group {resourceGroupName} --resource-type "virtualMachines" --resource-name {VMname} --scheduled-event-id {scheduledEventId} --subscription {subscriptionId}
 
-az maintenance scheduledevent acknowledge --ids /subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.compute/virtualMachines/{resourceName}/providers/microsoft.maintenance/scheduledevents/{scheduledEventId}
+az maintenance scheduledevents acknowledge --ids /subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.compute/virtualMachines/{resourceName}/providers/microsoft.maintenance/scheduledevents/{scheduledEventId}
 
 ```
 
