@@ -11,6 +11,9 @@ ms.date: 05/06/2026
 
 **Applies to:** ✔️ Linux VMs ✔️ Windows VMs
 
+> [!NOTE]
+> The migration steps mentioned in this article do **not** apply to virtual machines in an availability set. If you need to move virtual machines in an availability set, see [Migrate availability sets to Virtual Machine Scale Sets](availability-set-migrate-to-scale-sets.md)
+
 This article describes how to migrate an Azure Virtual Machine (VM) from a regional (non-zonal) deployment to a specific availability zone while preserving the VM name, data disks, and other stateful properties.
 
 > [!IMPORTANT]
@@ -26,7 +29,9 @@ Before you begin, ensure you have the following:
 - **Contributor** role or higher on the resource group containing the VM
 - **Azure CLI 2.72.0** or later, or **Azure PowerShell Az module** installed
 - An existing **regional (non-zonal) VM** you want to migrate
-- The target availability zone must support the VM's current size in the target region
+- The target availability zone must support the VM's current size in the target 
+
+
 
 ### Register the preview feature
 
