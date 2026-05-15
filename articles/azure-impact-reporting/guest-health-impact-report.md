@@ -107,7 +107,6 @@ Descriptions of URI parameters are as follows:
 > The field names in GHR request bodies ARE case SENSITIVE. As a general rule-of-thumb, top-level fields within `properties`(`startDateTime`, `impactCategory`, etc.) are camelCase, while fields nested within `additionalProperties` (`LogUrl`, `PhysicalHostName`, etc.) are PascalCase.
 
 ---
-BT_TODO: RESUME EDITS FROM HERE
 
 | Field name           | Required | Data type  | Description                                                                  |
 |----------------------|----------|------------|------------------------------------------------------------------------------|
@@ -115,12 +114,12 @@ BT_TODO: RESUME EDITS FROM HERE
 | `impactCategory`     | Yes      | `string`   | Observation type or fault scenario. Only an approved string list is allowed. |
 | `impactDescription`  | Yes      | `string`   | Description of the reported impact.                                          |
 | `impactedResourceId` | Yes      | `string`   | Fully qualified URI for the Azure resource (enforced at ARM level to verify customers are reporting impacts on resource they have access to). |
-| `physicalHostName`   | Yes      | `string`   | Node identifier, available in metadata.                                      |
-| `logUrl`             | No       | `string`   | URL to saved logs.                                                           |
-| `manufacturer`       | No       | `string`   | GPU manufacturer.                                                            |
-| `serialNumber`       | No       | `string`   | GPU serial number.                                                           |
-| `modelNumber`        | No       | `string`   | Model number.                                                                |
-| `location`           | No       | `string`   | Peripheral Component Interconnect Express (PCIe) location.                   |
+| `PhysicalHostName`   | Yes      | `string`   | Node identifier, available in metadata.                                      |
+| `LogUrl`             | No       | `string`   | URL to saved logs.                                                           |
+| `Manufacturer`       | No       | `string`   | GPU manufacturer.                                                            |
+| `SerialNumber`       | No       | `string`   | GPU serial number.                                                           |
+| `ModelNumber`        | No       | `string`   | Model number.                                                                |
+| `Location`           | No       | `string`   | Peripheral Component Interconnect Express (PCIe) location.                   |
 
 > [!NOTE]
 > Providing optional information can speed up the node recovery time. You can retrieve `PhysicalHostName` from within the VM by using [this script](https://github.com/jeseszhang1010/Utilities/blob/main/kvp_client.c).
