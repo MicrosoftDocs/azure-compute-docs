@@ -1,14 +1,13 @@
 ---
 title: Prepay for Azure virtual machines to save money
 description: Learn how to buy Azure Reserved Virtual Machine Instances to save on your compute costs.
-author: vikramdesai01
-manager: vikramdesai01
+author: pri-mittal
 ms.service: azure-virtual-machines
 ms.subservice: billing
 ms.topic: concept-article
-ms.date: 01/09/2023
-ms.author: vikdesai
-ms.reviewer: jushiman
+ms.date: 05/05/2026
+ms.author: primittal
+ms.reviewer: primittal
 # Customer intent: As an IT administrator, I want to purchase Azure Reserved Virtual Machine Instances, so that I can optimize my compute costs and save money on consistent VM usage.
 ---
 # Save costs with Azure Reserved VM Instances
@@ -60,6 +59,9 @@ When the setting is on, reservation discounts automatically apply to matching VM
 Check the *ConsumedService* value in your usage data to determine if the usage is eligible for reservation discounts.
 
 For more information about instance size flexibility, see [Virtual machine size flexibility with Reserved VM Instances](reserved-vm-instance-size-flexibility.md).
+
+>[!NOTE]
+> Starting July 1, 2026, Azure Reserved Virtual Machine Instances (RIs) for select VM series will no longer be available for purchase or renewal. Existing reservations will continue to run and deliver savings through the end of their term, but customers will need to plan ahead as renewals for these impacted series will no longer be offered. As your current RIs approach expiration, your Azure costs and optimization strategy may be impacted. Review the full transition guide to understand which reservations are affected, key decision timelines, and recommended actions to avoid unexpected cost changes and maintain your savings strategy.  To learn more, go to [Manage legacy VM RIs after July 1st 2026](/azure/cost-management-billing/reservations/manage-legacy-vm-reservations-after-july-1-2026).
 
 ### Analyze your usage information
 
