@@ -141,7 +141,7 @@ Use the following procedure to lock a RHEL VM to a particular minor release.
    sudo dnf --config rhel${major_version}-eus.config install rhui-azure-rhel${major_version}-eus
    ```
 
-1. Lock the `releasever` level, at the time of writing it has to be one of 9.4, 9.6, or 10.0.
+1. Lock the `releasever` level, at the time of writing it has to be one of 9.4, 9.6, 9.8, or 10.0.
 
    ```bash
    sudo sh -c 'echo 9.6 > /etc/dnf/vars/releasever'
