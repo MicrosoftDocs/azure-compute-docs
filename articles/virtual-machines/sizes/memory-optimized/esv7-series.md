@@ -134,6 +134,7 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 |Feature name | Support status |
 | --- | --- |
 |[Premium Storage](../../premium-storage-performance.md)| Supported |
+|[Live Migration](../../maintenance-and-updates.md)| Supported |
 |[Premium Storage caching](../../premium-storage-performance.md)| Supported |
 |[Memory Preserving Updates](../../maintenance-and-updates.md)| Supported |
 |[Generation 2 VMs](../../generation-2.md)| Supported |
