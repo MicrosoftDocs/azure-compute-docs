@@ -1,17 +1,22 @@
 ---
-title: Two Availability Zone Fault Tolerance (On-Demand Auxiliary Replicas)
-description: Learn how on-demand auxiliary replicas reduce quorum-loss risk in two-availability-zone Service Fabric deployments during planned maintenance.
+title: Advanced Fault Tolerance for Cross-Availability-Zone Rings (On-Demand Auxiliary Replicas)
+description: Learn how on-demand auxiliary replicas reduce quorum-loss risk in two-availability-zone Service Fabric deployments during planned maintenance by utilizing a third availability zone.
 ms.topic: concept-article
 ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 05/01/2026
+ms.date: 05/18/2026
 ---
 
-# Two Availability Zone Fault Tolerance (On-Demand Auxiliary Replicas)
+# Advanced Fault Tolerance for Cross-Availability-Zone Rings (On-Demand Auxiliary Replicas)
 
-This article describes the two-availability-zone (2-AZ) ring fault tolerance feature (on-demand auxiliary replicas) for Azure Service Fabric clusters.
+This article describes an advanced fault tolerance capability for full-service applications in two availability zones (AZs) by utilizing a third AZ.
+
+> [!IMPORTANT]
+> This feature requires a three-zone cluster layout:
+>   * Two large zones for regular service workload.
+>   * One small zone for seed-node quorum support.
 
 On-demand auxiliary replicas help protect write availability during planned maintenance in two-zone application deployments by temporarily preserving safer replica distribution.
 
@@ -21,12 +26,7 @@ In 2-AZ deployments, planned operations such as application upgrades, cluster up
 
 If a zone outage happens during that window, the partition can drop below write quorum and enter quorum loss.
 
-The 2-AZ Ring feature reduces this risk by creating a temporary auxiliary replica during planned maintenance and removing it after the original replica returns.
-
-> [!NOTE]
-> This feature requires a three-zone cluster layout:
->   * Two large zones for regular service workload.
->   * One small zone for seed-node quorum support.
+The availability zone ring feature reduces this risk by creating a temporary auxiliary replica during planned maintenance and removing it after the original replica returns.
 
 ## What is an auxiliary replica?
 
@@ -44,7 +44,7 @@ This capability is intended for advanced workloads and can require corresponding
 
 Without this feature, a planned replica-down event plus a zone failure can force a partition into quorum loss.
 
-With this feature enabled, Service Fabric creates a temporary auxiliary replica before taking a planned replica down, which can preserve quorum in that same failure window.
+With this feature enabled, Service Fabric creates a temporary auxiliary replica in the same availability zone as the replica that's planned to be down before the replica-down event. This auxiliary replica can preserve quorum in that same failure window.
 
 Benefits:
 
@@ -74,12 +74,13 @@ With on-demand auxiliary replicas:
 
 ## Prerequisites
 
+* Your application code *must* support auxiliary replicas (custom `IReplicator` scenarios).
+* Service Fabric 11.5 or later.
 * Service Fabric classic (SFRP) cluster topology across three zones:
     * Two large zones (for example, Zone 1 and Zone 2) host regular service replicas and seed nodes.
     * One small zone (for example, Zone 3) hosts seed nodes only.
-* Cluster reliability level is set to `Platinum`.
-* Node types use `Silver` durability or higher.
-* Application code supports auxiliary replicas (custom `IReplicator` scenarios).
+
+    :::image type="content" source="media/advanced-fault-tolerance-availability-zone-rings/topology.png" alt-text="Diagram of the cluster topology required to utilize the advanced fault tolerance on-demand auxiliary replicas feature.":::
 
 ## Configure on-demand auxiliary replicas
 
