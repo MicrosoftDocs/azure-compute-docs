@@ -84,7 +84,7 @@ When Spot VMs are evicted due to capacity constraints or pricing, the eviction p
 
 ### Scale-in behavior
 
-When you scale in, Spot Priority Mix maintains your configured percentage split by intelligently choosing which VMs to remove (Spot or standard) rather than simply removing the oldest or newest VMs. 
+When you scale in, Spot Priority Mix maintains your configured percentage split by intelligently choosing which VMs to remove (Spot or standard) rather than removing the oldest or newest VMs. 
 
 ### ARM Template
 
