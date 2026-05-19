@@ -12,12 +12,12 @@ ms.reviewer: mattmcinnes
 
 # NC RTX PRO 6000 Blackwell Server Edition v6 sizes series (Preview)
 
-> [!IMPORTANT]
-> This VM series is currently in PREVIEW. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
-
 [!INCLUDE [nc_rtxpro6000-bse_v6-summary](./includes/nc-rtxpro6000-bse-v6-series-summary.md)]
 
 [!INCLUDE [sizes-preview-tag](../includes/sizes-preview-tag.md)]
+
+> [!IMPORTANT]
+> This VM series is currently in PREVIEW. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
 
 ## Host specifications
 [!INCLUDE [nc_rtxpro6000-bse_v6-series-specs](./includes/nc-rtxpro6000-bse-v6-series-specs.md)]

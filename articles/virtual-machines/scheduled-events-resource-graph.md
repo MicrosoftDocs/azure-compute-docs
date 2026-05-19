@@ -12,13 +12,14 @@ ms.date: 05/01/2026
 
 # Scheduled Events in Azure Resource Graph
 
-> [!Note] 
-> Scheduled Events in Azure Resource Graph is in preview.
-> See the [Preview Terms Of Use | Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
-
 Scheduled events can be delivered to Azure Resource Graph (ARG) so you can query and understand events from all your virtual machines at scale.
 
 Azure Resource Graph lets developers explore Azure resources and their properties across subscriptions at scale. It supports complex querying and analysis, providing a comprehensive view of resources and their relationships. The `maintenanceresources` table includes all scheduled events, such as reboot, redeploy, or reimage. By querying this table, you can understand patterns about past scheduled events, root cause outages, and create reports about past interruptions.
+
+
+> [!Note] 
+> Scheduled Events in Azure Resource Graph is in preview.
+> See the [Preview Terms Of Use | Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
 
 ## Prerequisites
 
