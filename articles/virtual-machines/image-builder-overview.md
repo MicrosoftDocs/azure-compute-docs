@@ -3,7 +3,7 @@ title: Azure VM Image Builder overview
 description: In this article, you learn about VM Image Builder for virtual machines in Azure.
 author: sumit-kalra
 ms.author: sukalra
-ms.date: 02/13/2024
+ms.date: 05/19/2026
 ms.topic: concept-article
 ms.service: azure-virtual-machines
 ms.subservice: image-builder
@@ -98,7 +98,7 @@ The VM Image Builder service is available in the following regions:
 - Qatar Central
 - USGov Arizona (public preview)
 - USGov Virginia (public preview)
-- China North 3 (public preview)
+- China North 3
 - Sweden Central
 - Poland Central
 - Italy North
@@ -118,21 +118,6 @@ Register-AzProviderPreviewFeature -ProviderNamespace Microsoft.VirtualMachineIma
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.VirtualMachineImages --name FairfaxPublicPreview
-```
----
-
-To access the Azure VM Image Builder public preview in the China North 3 region, you must register the *Microsoft.VirtualMachineImages/MooncakePublicPreview* feature. To do so, run the following command in either PowerShell or Azure CLI:
-
-### [Azure PowerShell](#tab/azure-powershell)
-
-```azurepowershell-interactive
-Register-AzProviderPreviewFeature -ProviderNamespace Microsoft.VirtualMachineImages -Name MooncakePublicPreview
-```
-
-### [Azure CLI](#tab/azure-cli)
-
-```azurecli-interactive
-az feature register --namespace Microsoft.VirtualMachineImages --name MooncakePublicPreview
 ```
 ---
 
