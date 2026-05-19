@@ -125,7 +125,7 @@ Allowed characters for the image version are numbers and periods. Numbers must b
 
 In the following example: 
 
-* The version of the image is *1.0.0*.
+* The image version is *1.0.0*.
 * We create one replica in the *South Central US* region and one replica in the *East US* region. The replication regions must include the region the source VM is located.
 * `--virtual-machine` is the ID of the VM we created previously.
 
