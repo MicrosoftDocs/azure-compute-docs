@@ -16,7 +16,7 @@ ms.custom: avverma, devx-track-azurecli, devx-track-azurepowershell
 
 # Use scale-in policies with Azure Virtual Machine Scale Sets
 
-A Virtual Machine Scale Set deployment can be scaled-out or scaled-in based on an array of metrics, including platform and user-defined metrics. While a scale-out creates new virtual machines based on the scale set model, a scale-in affects running virtual machines that may have different configurations and/or functions as the scale set workload evolves. 
+A Virtual Machine Scale Set deployment can be scaled-out or scaled-in based on an array of metrics, including platform and user-defined metrics. While a scale-out creates new virtual machines based on the scale set model, a scale-in affects running virtual machines that may have different configurations and functions as the scale set workload evolves. 
 
 The scale-in policy feature provides users a way to configure the order in which virtual machines are scaled-in, by way of three scale-in configurations: 
 
@@ -27,7 +27,7 @@ The scale-in policy feature provides users a way to configure the order in which
 ### Default scale-in policy
 
 #### Flexible orchestration 
-By default, Virtual Machine Scale Set applies this policy to determine which instance(s) will be scaled in. With the *Default* policy, VMs are selected for scale-in in the following order:
+By default, Virtual Machine Scale Set applies this policy to determine which instance(s) will be scaled in. With the *Default* policy, VMs are removed in the following order:
 
 1. Balance virtual machines across availability zones (if the scale set is deployed in zone-spanning configuration)
 2. Balance virtual machines across fault domains (best effort)
@@ -36,7 +36,7 @@ By default, Virtual Machine Scale Set applies this policy to determine which ins
 Users don't need to specify a scale-in policy if they just want the default ordering to be followed.
 
 #### Uniform orchestration 
-By default, Virtual Machine Scale Set applies this policy to determine which instance(s) will be scaled in. With the *Default* policy, VMs are selected for scale-in in the following order:
+By default, Virtual Machine Scale Set applies this policy to determine which instance(s) will be scaled in. With the *Default* policy, VMs are removed in the following order:
 
 1. Balance virtual machines across availability zones (if the scale set is deployed in zone-spanning configuration)
 2. Balance virtual machines across fault domains (best effort)
