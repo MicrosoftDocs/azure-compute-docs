@@ -6,7 +6,7 @@ ms.custom:
 ms.service: azure-virtual-machines
 ms.subservice: hpc
 ms.topic: concept-article
-ms.date: 05/2/2026
+ms.date: 05/04/2026
 ms.reviewer: cynthn
 ms.author: padmalathas
 author: padmalathas
@@ -91,16 +91,18 @@ lstopo-no-graphics --no-io --no-legend --of txt
 </details>
 
 ## InfiniBand networking
-HBv3 VMs also feature NVIDIA Mellanox HDR InfiniBand network adapters (ConnectX-6) operating at up to 200 Gigabits/sec. The NIC is passed through to the VM via SRIOV, enabling network traffic to bypass the hypervisor. As a result, customers load standard Mellanox OFED drivers on HBv3 VMs as they would a bare metal environment.
+HBv3 VMs also feature NVIDIA HDR InfiniBand network adapters (ConnectX-6) operating at up to 200 Gigabits/sec. The NIC is passed through to the VM via SRIOV, enabling network traffic to bypass the hypervisor. As a result, customers load standard Mellanox OFED drivers on HBv3 VMs as they would a bare metal environment.
 
 HBv3 VMs support Adaptive Routing, the Dynamic Connected Transport (DCT, along with standard RC and UD transports), and hardware-based offload of MPI collectives to the onboard processor of the ConnectX-6 adapter. These features enhance application performance, scalability, and consistency, and usage of them is recommended.
 
 ## Temporary storage
+
 HBv3 VMs feature three physically local SSD devices. One device is preformatted to serve as a page file and appears in a VM as a generic "SSD" device.
 
 Two other, larger SSDs are provided as unformatted block NVMe devices. As a block NVMe devices bypasses the hypervisor,  it has higher bandwidth and IOPS.
 
 When paired in a striped array, the NVMe SSDs provide badnwidths of up to 7 GB/s (reads) and 3 GB/s (writes), and IOPs of up to 186,000 (reads) and 201,000 IOPS (writes).
+
 
 ## Hardware specifications
 
@@ -114,6 +116,7 @@ When paired in a striped array, the NVMe SSDs provide badnwidths of up to 7 GB/s
 | Infiniband                       | 200 Gb/s NVIDIA Mellanox ConnectX-6 HDR InfiniBand |
 | Network                          | 50 Gb/s Ethernet (40 Gb/s usable) Azure second Gen SmartNIC |
 
+
 ## Software specifications
 
 | Software specifications        | HBv3-series VMs                                            |
@@ -125,6 +128,7 @@ When paired in a striped array, the NVMe SSDs provide badnwidths of up to 7 GB/s
 | Supported and Validated OS     | RHEL 8.3+, AlmaLinux 8.10+, Ubuntu 22.04+ LTS, SLES 15 SP7+, Windows Server 2022+  |    
 | Recommended OS for Performance | AlmaLinux HPC 9.7, Ubuntu HPC 24.04 LTS, Windows Server 2025  |
 | Orchestrator Support           | Azure CycleCloud, Azure Batch, Azure Kubernetes Service; [cluster configuration options](sizes-hpc.md#cluster-configuration-options)                      |
+
 
 
 ## Next steps

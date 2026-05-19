@@ -22,7 +22,7 @@ ms.author: cynthn
 - Create custom repositories with Azure-specific content
 - Make the content available to end-user Virtual Machines (VMs)
 
-Red Hat Enterprise Linux (RHEL) Pay-As-You-Go (PAYG) images come preconfigured to access Azure RHUI. No other configuration is needed. To get the latest updates, run `sudo yum update` after your RHEL instance is ready. This service is included as part of the RHEL PAYG software fees. For more information on RHEL images in Azure, including publishing and retention policies, see [Overview of Red Hat Enterprise Linux images in Azure](./redhat-images.md).
+Red Hat Enterprise Linux (RHEL) pay-as-you-go (PAYG) images come preconfigured to access Azure RHUI. No other configuration is needed. To get the latest updates, run `sudo yum update` after your RHEL instance is ready. This service is included as part of the RHEL PAYG software fees. For more information on RHEL images in Azure, including publishing and retention policies, see [Overview of Red Hat Enterprise Linux images in Azure](./redhat-images.md).
 
 For more information on Red Hat support policies for all versions of RHEL, see [Red Hat Enterprise Linux Life Cycle](https://access.redhat.com/support/policy/updates/errata).
 
@@ -56,7 +56,7 @@ For a full image list, run `az vm image list --offer RHEL --all -p RedHat --outp
 
 ### Images connected to non-EUS repositories
 
-For RHEL VM images connected to non-EUS repositories, running `sudo yum update` will upgrade to the latest RHEL minor version. For example, if you provision a VM from a RHEL 8.4 PAYG image and run `sudo yum update`, you end up with a VM that has installed all updates through the latest minor version in the RHEL8 family.
+For RHEL VM images connected to non-EUS repositories, running `sudo yum update` upgrades to the latest RHEL minor version. For example, if you provision a VM from a RHEL 8.4 PAYG image and run `sudo yum update`, you end up with a VM with all the updates through the latest minor version in the RHEL8 family.
 
 Images that are connected to non-EUS repositories don't contain a minor version number in the SKU. The SKU is the third element in the image name. For example, all of the following images come attached to non-EUS repositories:
 
@@ -88,7 +88,7 @@ RedHat:RHEL:9_0:9.0.2023061412
 Extended Update Support (EUS) repositories are available to customers who might want to lock their RHEL VMs to a certain RHEL minor release after provisioning the VM. You can version-lock your RHEL VM to a specific minor version by updating the repositories to point to the Extended Update Support repositories. You can also undo the EUS version-locking operation.
 
 > [!NOTE]
-> The RHEL Extras channel does not follow the EUS lifecycle. This means that if you install a package from the RHEL Extras channel, it will not be specific to the EUS release you are on. Red Hat does not support installing content from the RHEL Extras channel while on an EUS release. For more information, see [Red Hat Enterprise Linux Extras Product Life Cycle](https://access.redhat.com/support/policy/updates/extras/).
+> The RHEL Extras channel doesn't follow the EUS lifecycle. This means that if you install a package from the RHEL Extras channel, it will not be specific to the EUS release you are on. Red Hat doesn't support installing content from the RHEL Extras channel while on an EUS release. For more information, see [Red Hat Enterprise Linux Extras Product Life Cycle](https://access.redhat.com/support/policy/updates/extras/).
 
 Support for RHEL 7 EUS ended in June 30, 2024. Support for RHEL 8 EUS ended May 31, 2025. For more information, see [Red Hat Enterprise Linux Extended Maintenance](https://access.redhat.com/support/policy/updates/errata/#Long_Support).
 
@@ -195,7 +195,7 @@ To remove the version lock, use the following commands.
    EOF
    ```
    >[!NOTE]
-   >You might encounter an error that gpgkey must be in either http, ftp , file or https and not "". In that case, try editing the config file to use: `gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-microsoft-azure-release`.
+   >You might encounter an error that gpgkey must be in either http, ftp, file or https and not "". In that case, try editing the config file to use: `gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-microsoft-azure-release`.
 1. Add non-EUS repository.
 
    ```bash
