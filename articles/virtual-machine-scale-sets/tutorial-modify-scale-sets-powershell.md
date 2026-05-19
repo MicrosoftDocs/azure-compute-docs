@@ -243,7 +243,7 @@ In the cases where you need to reimage a specific instance, use [Set-AzVmss](/po
 Set-AzVmssVM -ResourceGroupName myResourceGroup -VMScaleSetName myScaleSet -InstanceId myScaleSet_Instance1 -Reimage
 ```
 
-To reimage all instances in a scale set simply specify the scale set name and omit any instanceIDs. 
+To reimage all instances in a scale set, specify the scale set name and omit any instanceIDs. 
 
 ```azurepowershell-interactive
 Set-AzVmssVM -Reimage -ResourceGroupName myResourceGroup -VMScaleSetName myScaleSet
