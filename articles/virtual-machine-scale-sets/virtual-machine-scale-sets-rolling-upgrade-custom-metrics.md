@@ -19,7 +19,7 @@ Custom metrics can be used in combination with other rolling upgrade functionali
 ## Requirements
 
 - When using custom metrics for rolling upgrades on Virtual Machine Scale Sets, the scale set must also use the [application health extension with rich health states](virtual-machine-scale-sets-health-extension.md) to report phase ordering or skip upgrade information. Custom metrics upgrades aren't supported when using the application health extension with binary states.
-- The application health extension must be set up to use HTTP or HTTPS in order to receive the custom metrics information. TCP isn't supported for integration with custom metrics for rolling upgrades.  
+- The application health extension must be set up to use HTTP or HTTPS to receive the custom metrics information. TCP isn't supported for integration with custom metrics for rolling upgrades.  
 
 ## Concepts
 
