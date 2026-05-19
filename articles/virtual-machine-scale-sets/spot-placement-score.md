@@ -75,7 +75,7 @@ Find the Spot Placement Score in the Spot tab of the Virtual Machine Scale Sets 
 
 1. Fill out the *Size*, *Region*, *Availability Zones*, and *Initial instance count* fields in the **Your Placement Score** section. 
 
-1. Click on **Save + Apply** to receive your placement score for this configuration. 
+1. Select **Save + Apply** to receive your placement score for this configuration. 
 
 ### [REST API](#tab/rest-api)
 
