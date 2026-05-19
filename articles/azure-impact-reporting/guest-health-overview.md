@@ -46,11 +46,11 @@ To submit Guest Health Reporting requests from a resource within Azure, you must
 
 2. On the left menu, go to **Access control (IAM)**. Then select **Add role assignment**.
 
-   :::image type="content" source="images/guest-health-add-role-2026.png" alt-text="Screenshot that shows selections for adding a role assignment.":::
+   :::image type="content" source="images/guest-health-add-role.png" alt-text="Screenshot that shows selections for adding a role assignment.":::
 
 3. Search for and select the **Azure impact Reporter role** role.
 
-   :::image type="content" source="images/guest-health-impact-reporter-role.png" alt-text="Screenshot that shows search results for the 'Azure impact Reporter role' role on the pane for adding a role assignment.":::
+   :::image type="content" source="images/guest-health-add-role-2026.png" alt-text="Screenshot that shows selections for adding a role assignment.":::
 
 4. Go to the **Members** tab. Search for and select the user identity, app ID, or service principal. Then select **Members**. The app ID is the service principal for the app to be used for reporting.
 
