@@ -177,7 +177,7 @@ Expanding to a zone-spanning scale set is done in 3 steps:
 > [!WARNING]
 > This feature allows you to add zones to the scale set. You can't go back to a regional (nonzonal) scale set or remove zones once they have been added.
 
-In order to prepare for zone expansion:
+To prepare for zone expansion:
 * [Check that you have enough quota](../virtual-machines/quotas.md) for the VM size in the selected region to handle more instances.
 * Check that the VM size and disk types you are using are available in all the desired zones. You can use the [Compute Resources SKUs API](/rest/api/compute/resource-skus/list?tabs=HTTP) to determine which sizes are available in which zones
 * Validate that the scale set configuration is valid for zonal and zone-spanning scale sets:
