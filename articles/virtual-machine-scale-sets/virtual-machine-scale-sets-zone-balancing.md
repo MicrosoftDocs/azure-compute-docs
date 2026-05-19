@@ -40,7 +40,7 @@ Here are some examples of how Virtual Machine Scale Sets determines zone balanci
 
 ## Zone balance modes
 
-In order to set the zone balance mode, your scale set must use multiple zones. A scale set that doesn't use zones or uses only one zone doesn't require balancing and therefore doesn't have a balancing mode.
+To set the zone balance mode, your scale set must use multiple zones. A scale set that doesn't use zones or uses only one zone doesn't require balancing and therefore doesn't have a balancing mode.
 
 For a scale set that uses multiple zones, you can choose between two zone balance modes:
 
