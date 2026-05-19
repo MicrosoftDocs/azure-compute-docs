@@ -224,7 +224,7 @@ To create a scale set using an Azure template, make sure the API version of the 
     }
 }
 ```
-Note when Virtual Machine Scale Sets with public IPs per instance are created with a load balancer in front, the of the instance IPs is determined by the SKU of the Load Balancer (that is, Basic or Standard). If the Virtual Machine Scale Set is created without a load balancer, the SKU of the instance IPs can be set directly by using the SKU section of the template as shown above.
+Note when Virtual Machine Scale Sets with public IPs per instance are created with a load balancer in front, the SKU of the instance IPs is determined by the SKU of the Load Balancer (that is, Basic or Standard). If the Virtual Machine Scale Set is created without a load balancer, the SKU of the instance IPs can be set directly by using the SKU section of the template as shown above.
 
 Example template using a Basic Load Balancer: [vmss-public-ip-linux](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vmss-public-ip-linux)
 
