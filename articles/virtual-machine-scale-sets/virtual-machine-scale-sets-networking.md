@@ -606,7 +606,7 @@ The following example shows how to add a second IP Configuration to your NIC.
 
 ## Explicit network outbound connectivity for Flexible scale sets 
 
-In order to enhance default network security, [Virtual Machine Scale Sets with Flexible orchestration](..\virtual-machines\flexible-virtual-machine-scale-sets.md) will require that instances created implicitly via the autoscaling profile have outbound connectivity defined explicitly through one of the following methods: 
+To enhance default network security, [Virtual Machine Scale Sets with Flexible orchestration](..\virtual-machines\flexible-virtual-machine-scale-sets.md) will require that instances created implicitly via the autoscaling profile have outbound connectivity defined explicitly through one of the following methods: 
 
 - For most scenarios, we recommend [NAT Gateway attached to the subnet](/azure/virtual-network/nat-gateway/quickstart-create-nat-gateway-portal).
 - For scenarios with high security requirements or when using Azure Firewall or Network Virtual Appliance (NVA), you can specify a custom User Defined Route as next hop through firewall. 
