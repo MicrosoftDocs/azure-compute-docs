@@ -17,7 +17,7 @@ ms.custom: mimckitt
 [Virtual Machine Scale Sets](./overview.md) can be used with the [Azure Desired State Configuration (DSC)](../virtual-machines/extensions/dsc-overview.md?toc=/azure/virtual-machines/windows/toc.json) extension handler. Virtual Machine Scale Sets provide a way to deploy and manage large numbers of virtual machines, and can elastically scale in and out in response to load. DSC is used to configure the VMs as they come online so they are running the production software.
 
 > [!NOTE]
-> DSC extension will be retired on March 31, 2028. Please transition to
+> DSC extension will be retired on March 31, 2028. Transition to
 > [Azure Machine Configuration](/azure/governance/machine-configuration/overview) by that date.
 > For more information, see the [blog post](https://azure.microsoft.com/updates/?id=485828)
 > announcement. The Azure Machine Configuration service combines certain features of DSC Extension, Azure
