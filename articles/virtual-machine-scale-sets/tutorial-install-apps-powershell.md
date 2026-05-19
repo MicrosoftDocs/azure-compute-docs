@@ -152,7 +152,7 @@ Enter the public IP address of the load balancer in to a web browser. The load b
 Leave the web browser open so that you can see an updated version in the next step.
 
 ## Change the upgrade policy
-In the previous section, in order to apply the updated application to all the scale set instances, a manual upgrade was needed. To enable updates to be applied automatically to all existing scale set instances, update the upgrade policy from manual to automatic. For more information on upgrade policies, see [Upgrade policies for Virtual Machine Scale Sets](virtual-machine-scale-sets-upgrade-policy.md).
+In the previous section, to apply the updated application to all the scale set instances, a manual upgrade was needed. To enable updates to be applied automatically to all existing scale set instances, update the upgrade policy from manual to automatic. For more information on upgrade policies, see [Upgrade policies for Virtual Machine Scale Sets](virtual-machine-scale-sets-upgrade-policy.md).
 
 ```azurepowershell-interactive
 $vmss = Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
