@@ -152,15 +152,15 @@ The scale set also needs to know how to handle updates on the scale set. Current
 
 ### Choose VM operating system
 
-The scale set needs to know what operating system to put on the VMs. Here, create the VMs with a fully patched Ubuntu 16.04-LTS image.
+The scale set needs to know what operating system to put on the VMs. Here, create the VMs with a fully patched Ubuntu 22.04-LTS image.
 
 ```json
   "virtualMachineProfile": {
     "storageProfile": {
       "imageReference": {
         "publisher": "Canonical",
-        "offer": "UbuntuServer",
-        "sku": "16.04-LTS",
+        "offer": "0001-com-ubuntu-server-jammy",
+        "sku": "22_04-lts",
         "version": "latest"
       }
     },
