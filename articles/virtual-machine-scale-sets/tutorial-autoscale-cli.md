@@ -136,7 +136,7 @@ Once the CPU load subsides, the average CPU load returns to normal. After anothe
 ```
 
 ## Clean up resources
-To remove your scale set and associated resources, please manually delete the resource group using your preferred method. 
+To remove your scale set and associated resources, manually delete the resource group using your preferred method. 
 
 ## Next steps
 In this tutorial, you learned how to automatically scale in or out a scale set with the Azure CLI:
