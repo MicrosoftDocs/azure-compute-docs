@@ -5,7 +5,7 @@ author: cynthn
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: shared-image-gallery
 ms.topic: tutorial
-ms.date: 10/28/2024
+ms.date: 05/19/2026
 ms.reviewer: mimckitt
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli, innovation-engine

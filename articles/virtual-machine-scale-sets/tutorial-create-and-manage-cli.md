@@ -5,7 +5,7 @@ author: cynthn
 ms.author: cynthn
 ms.topic: tutorial
 ms.service: azure-virtual-machine-scale-sets
-ms.date: 06/14/2024
+ms.date: 05/19/2026
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
 # Customer intent: "As a cloud architect, I want to manage Virtual Machine Scale Sets using the command line, so that I can efficiently create, scale, and control the lifecycle of virtual machine instances to meet application demands."

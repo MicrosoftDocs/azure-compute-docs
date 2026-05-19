@@ -6,7 +6,7 @@ ms.author: hilarywang
 ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: instance-protection
-ms.date: 04/01/2025
+ms.date: 05/19/2026
 ms.reviewer: hilarywang
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 # Customer intent: As a cloud operator, I want to configure automatic instance repairs for my Virtual Machine Scale Sets, so that I can ensure high availability and quick recovery from unhealthy instances without manual intervention.

@@ -6,7 +6,7 @@ ms.author: cynthn
 ms.topic: tutorial
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: disks
-ms.date: 09/23/2025
+ms.date: 05/19/2026
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
 # Customer intent: As a cloud administrator, I want to encrypt disks in a Virtual Machine Scale Set using the command line, so that I can enhance data security and compliance for my organization's cloud infrastructure.

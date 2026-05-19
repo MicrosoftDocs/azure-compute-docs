@@ -6,7 +6,7 @@ ms.author: cynthn
 ms.topic: tutorial
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: autoscale
-ms.date: 04/06/2025
+ms.date: 05/19/2026
 ms.reviewer: mimckitt
 ms.custom: avverma, devx-track-azurecli, linux-related-content
 # Customer intent: "As a cloud engineer, I want to implement autoscaling for a Virtual Machine Scale Set using command-line interfaces, so that I can efficiently manage resources in response to changing application demands while optimizing cost and performance."

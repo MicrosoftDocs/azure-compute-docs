@@ -5,7 +5,7 @@ author: hilaryw29
 ms.author: hilarywang
 ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
-ms.date: 12/15/2025
+ms.date: 05/19/2026
 ---
 
 # Zone balancing in Virtual Machine Scale Sets

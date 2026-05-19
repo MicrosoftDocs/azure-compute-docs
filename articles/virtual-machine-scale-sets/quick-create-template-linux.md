@@ -6,7 +6,7 @@ ms.author: cynthn
 ms.topic: quickstart
 ms.service: azure-virtual-machine-scale-sets
 ms.collection: linux
-ms.date: 06/14/2024
+ms.date: 05/19/2026
 ms.reviewer: mimckitt
 ms.custom: mimckitt, subject-armqs, mode-arm, devx-track-arm-template, linux-related-content
 # Customer intent: As a cloud architect, I want to deploy a Linux Virtual Machine Scale Set using an ARM template, so that I can automate resource management and ensure my application scales efficiently based on demand.

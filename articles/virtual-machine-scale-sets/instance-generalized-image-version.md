@@ -7,7 +7,7 @@ ms.service: azure-virtual-machine-scale-sets
 ms.subservice: shared-image-gallery
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.topic: how-to
-ms.date: 06/14/2024
+ms.date: 05/19/2026
 ms.reviewer: cynthn
 # Customer intent: As a cloud architect, I want to create virtual machine scale sets from a generalized image in an Azure Compute Gallery, so that I can efficiently manage and deploy scalable applications in my cloud environment.
 ---

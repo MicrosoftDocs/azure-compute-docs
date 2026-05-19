@@ -2,7 +2,7 @@
 author: mayanknayar
 ms.service: azure-virtual-machine-scale-sets
 ms.topic: include
-ms.date: 04/26/2019
+ms.date: 05/19/2026
 ms.author: manayar
 # Customer intent: As a cloud administrator, I want to deploy and customize Virtual Machine Scale Sets, so that I can efficiently manage workloads and optimize resource utilization in my existing infrastructure.
 ---

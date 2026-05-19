@@ -5,7 +5,7 @@ author: fitzgeraldsteele
 ms.author: fisteele
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
-ms.date: 04/24/2025
+ms.date: 05/19/2026
 ms.update-cycle: 180-days
 ms.reviewer: cynthn
 ms.custom:

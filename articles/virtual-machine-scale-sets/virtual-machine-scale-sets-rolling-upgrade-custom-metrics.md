@@ -5,7 +5,7 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
-ms.date: 11/7/2024
+ms.date: 05/19/2026
 ms.reviewer: cynthn
 ms.custom: upgradepolicy, N-Phase, ignite-2024
 # Customer intent: "As a system administrator, I want to configure custom metrics for rolling upgrades on Virtual Machine Scale Sets so that I can control the order and conditions under which my virtual machines are upgraded, ensuring minimal downtime and optimal application performance."

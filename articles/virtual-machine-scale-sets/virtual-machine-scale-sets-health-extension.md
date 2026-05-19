@@ -6,7 +6,7 @@ ms.author: hilarywang
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: extensions
-ms.date: 04/01/2025
+ms.date: 05/19/2026
 ms.reviewer: hilaryw29
 ms.custom: mimckitt, devx-track-azurepowershell
 # Customer intent: "As a cloud operations engineer, I want to implement the Application Health extension in my Virtual Machine Scale Sets, so that I can effectively monitor application health and ensure smooth upgrades and automatic instance repairs."

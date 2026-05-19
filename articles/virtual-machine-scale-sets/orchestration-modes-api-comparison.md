@@ -5,7 +5,7 @@ author: fitzgeraldsteele
 ms.author: fisteele
 ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
-ms.date: 06/14/2024
+ms.date: 05/19/2026
 ms.reviewer: cynthn
 ms.custom: mimckitt, vmss-flex
 # Customer intent: "As a cloud engineer managing virtual machines, I want to understand the API differences between Uniform and Flexible orchestration modes so that I can choose the best option for my workloads and streamline my management tasks."
