@@ -25,7 +25,7 @@ This article assumes that you're familiar with:
 -	[Modifying](virtual-machine-scale-sets-upgrade-policy.md) Virtual Machine Scale Sets
 
 > [!CAUTION]
-> Application Health Extension expects to receive a consistent probe response at the configured port `tcp` or request path `http/https` in order to label a VM as *Healthy*. If no application is running on the VM, or you're unable to configure a probe response, your VM is going to show up as *Unhealthy* (Binary Health States) or *Unknown* (Rich Health States). See [application health samples](https://github.com/Azure-Samples/application-health-samples) for examples of health probe responses being emitted to a local endpoint. 
+> Application Health Extension expects to receive a consistent probe response at the configured port `tcp` or request path `http/https` to label a VM as *Healthy*. If no application is running on the VM, or you're unable to configure a probe response, your VM is going to show up as *Unhealthy* (Binary Health States) or *Unknown* (Rich Health States). See [application health samples](https://github.com/Azure-Samples/application-health-samples) for examples of health probe responses being emitted to a local endpoint. 
 
 > [!NOTE]
 > Only one source of health monitoring can be used for a Virtual Machine Scale Set, either an Application Health Extension or a Health Probe. If you have both options enabled, you will need to remove one before using orchestration services like Instance Repairs or Automatic OS Upgrades.
