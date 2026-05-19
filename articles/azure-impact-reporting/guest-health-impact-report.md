@@ -113,7 +113,7 @@ Descriptions of URI parameters are as follows:
 | `startDateTime`      | Yes      | `datetime` | Time (in UTC) when the impact happened.                                      |
 | `impactCategory`     | Yes      | `string`   | Observation type or fault scenario. Only an approved string list is allowed. |
 | `impactDescription`  | Yes      | `string`   | Description of the reported impact.                                          |
-| `impactedResourceId` | Yes      | `string`   | Fully qualified URI for the Azure resource (enforced at ARM level to verify customers are reporting impacts on resource they have access to). |
+| `impactedResourceId` | Yes      | `string`   | Fully qualified URI for the Azure resource                                   |
 | `PhysicalHostName`   | Yes      | `string`   | Node identifier, available in metadata.                                      |
 | `LogUrl`             | No       | `string`   | URL to saved logs.                                                           |
 | `Manufacturer`       | No       | `string`   | GPU manufacturer.                                                            |
