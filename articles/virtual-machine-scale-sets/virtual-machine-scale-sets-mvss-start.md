@@ -32,7 +32,7 @@ First, define `$schema` and `contentVersion` in the template. The `$schema` elem
 
 ## Define parameters
 
-Next, define two parameters, `adminUsername` and `adminPassword`. Parameters are values you specify at the time of deployment. The `adminUsername` parameter is simply a `string` type, but because `adminPassword` is a secret, give it type `securestring`. Later, these parameters are passed into the scale set configuration.
+Next, define two parameters, `adminUsername` and `adminPassword`. Parameters are values you specify at the time of deployment. The `adminUsername` parameter is a `string` type, but because `adminPassword` is a secret, give it type `securestring`. Later, these parameters are passed into the scale set configuration.
 
 ```json
   "parameters": {
