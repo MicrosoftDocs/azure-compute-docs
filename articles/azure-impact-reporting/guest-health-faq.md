@@ -25,4 +25,4 @@ Reports with unhealthy impact categories are evaluated to determine the best way
 * [What is Guest Health Reporting?](guest-health-overview.md)
 * [Report node health by using Guest Health Reporting](guest-health-impact-report.md)
 * [How to provide a diagnostic log file with Guest Health Reporting](guest-health-log-upload.md)
-:q
+

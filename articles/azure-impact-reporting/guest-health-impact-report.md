@@ -28,7 +28,7 @@ Descriptions of URI parameters are as follows:
 |----------------------|------------------------------------------------------------------------------------------------------|
 | `subscriptionId`     | Subscription previously added to an allow list.                                                      |
 | `workloadImpactName` | Unique name that identifies a specific impact. You can also use a globally unique identifier (GUID). |
-| `api-version`        | API version to be used for this operation. Use `2025-01-01-preview`.                                 |
+| `api-version`        | API version to be used for this operation. Use `2025-01-01-preview` or later to ensure compatibility with the `/getUploadToken` endpoint. |
 
 ### [Healthy node](#tab/healthy/)
 
@@ -40,7 +40,7 @@ Descriptions of URI parameters are as follows:
       "impactDescription": "Missing GPU device",
       "impactedResourceId": "/subscriptions/111111-f1122-2233-11bc-bb00123/resourceGroups/<rg_name>/providers/Microsoft.Compute/virtualMachines/<vm_name>",
       "additionalProperties": {
-            "PhysicalHostName": "GGBB90904476",
+            "PhysicalHostName": "GGBB90904476"
       }
    }
 }
@@ -61,7 +61,7 @@ Descriptions of URI parameters are as follows:
             "PhysicalHostName": "GGBB90904476",
             "Manufacturer": "Nvidia",
             "SerialNumber": "12345679",
-            "ModelNumber": "NV3LB225",
+            "ModelNumber": "NV3LB225"
       }
    }
 }
@@ -78,7 +78,7 @@ Descriptions of URI parameters are as follows:
       "impactDescription": "NvLink may be down",
       "impactedResourceId": "/subscriptions/111111-f1122-2233-11bc-bb00123/resourceGroups/<rg_name>/providers/Microsoft.Compute/virtualMachines/<vm_name>",
       "additionalProperties": {
-            "LogUrl": "https://ghrloguploadprod.blob.core.windows.net/exampleCustomer/20260513150912_5273ea32.gz",
+            "LogUrl": "https://ghrloguploadprod.blob.core.windows.net/exampleCustomer/20260513150912_5273ea32.gz"
       }
    }
 }
@@ -104,7 +104,7 @@ Descriptions of URI parameters are as follows:
 ```
 
 > [!WARNING]
-> The field names in GHR request bodies ARE case SENSITIVE. As a general rule-of-thumb, top-level fields within `properties`(`startDateTime`, `impactCategory`, etc.) are camelCase, while fields nested within `additionalProperties` (`LogUrl`, `PhysicalHostName`, etc.) are PascalCase.
+> The field names in GHR request bodies ARE case SENSITIVE. As a general rule-of-thumb, top-level fields within `properties` (`startDateTime`, `impactCategory`, etc.) are camelCase, while fields nested within `additionalProperties` (`LogUrl`, `PhysicalHostName`, etc.) are PascalCase.
 
 ---
 
@@ -113,7 +113,7 @@ Descriptions of URI parameters are as follows:
 | `startDateTime`      | Yes      | `datetime` | Time (in UTC) when the impact happened.                                      |
 | `impactCategory`     | Yes      | `string`   | Observation type or fault scenario. Only an approved string list is allowed. |
 | `impactDescription`  | Yes      | `string`   | Description of the reported impact.                                          |
-| `impactedResourceId` | Yes      | `string`   | Fully qualified URI for the Azure resource                                   |
+| `impactedResourceId` | Yes      | `string`   | Fully qualified URI for the Azure resource.                                  |
 | `PhysicalHostName`   | Yes      | `string`   | Node identifier, available in metadata.                                      |
 | `LogUrl`             | No       | `string`   | URL to saved logs.                                                           |
 | `Manufacturer`       | No       | `string`   | GPU manufacturer.                                                            |

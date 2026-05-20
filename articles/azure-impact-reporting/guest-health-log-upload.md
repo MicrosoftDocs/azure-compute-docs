@@ -12,7 +12,7 @@ ms.custom: template-overview
 
 # How to upload log files to Guest Health Reporting
 
-Providing a log file helps make more precise repair actions. A log file should be uploaded prior to making the guest health report (GHR), with the GHR request containing a `LogUrl` field inside the `additionalProperties` section of the request body. The `LogUrl` points to the uploaded log file from one of the supported platform-specific diagnostic tools (for example NVidia bug report). 
+Providing a log file helps make more precise repair actions. A log file should be uploaded prior to making the guest health report (GHR), with the GHR request containing a `LogUrl` field inside the `additionalProperties` section of the request body. The `LogUrl` points to the uploaded log file from one of the supported platform-specific diagnostic tools (for example Nvidia bug report). 
 
 
 ## Log capture

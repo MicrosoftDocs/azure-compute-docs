@@ -32,7 +32,7 @@ To use Guest Health Reporting to report the health of a node, you need to onboar
 
 1. On the left pane, go to **Settings** > **Overview**. Take note of your subscription ID.
 
-1. In the Azure Portal, search/navigate to the **Microsoft Entra ID overview**. Take note of your tenant ID.
+1. In the Azure portal, search/navigate to the **Microsoft Entra ID overview**. Take note of your tenant ID.
 
 1. Send your subscription ID and tenant ID to the Azure team member who's helping you complete the onboarding process.
 
@@ -42,7 +42,7 @@ To use Guest Health Reporting to report the health of a node, you need to onboar
 
 To submit Guest Health Reporting requests from a resource within Azure, you must assign the appropriate access management roles to the entity making the GHR request:
 
-1. Create a user-assigned or system-assigned managed identity (if one does not already exist/the GHR requests will be made by an application).
+1. Create a user-assigned or system-assigned managed identity (if one does not already exist or the GHR requests will be made by an application).
 
 2. On the left menu, go to **Access control (IAM)**. Then select **Add role assignment**.
 
@@ -50,7 +50,7 @@ To submit Guest Health Reporting requests from a resource within Azure, you must
 
 3. Search for and select the **Azure impact Reporter role** role.
 
-   :::image type="content" source="images/guest-health-add-role-2026.png" alt-text="Screenshot that shows selections for adding a role assignment.":::
+   :::image type="content" source="images/guest-health-add-role-2026.png" alt-text="Screenshot that shows search results for selecting the Azure Impact Reporter role." lightbox="images/guest-health-add-role-2026.png":::
 
 4. Go to the **Members** tab. Search for and select the user identity, app ID, or service principal. Then select **Members**. The app ID is the service principal for the app to be used for reporting.
 
