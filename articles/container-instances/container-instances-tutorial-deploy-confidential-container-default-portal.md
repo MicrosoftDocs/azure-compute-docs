@@ -88,4 +88,4 @@ In this tutorial, you created a confidential container on Azure Container instan
 * [Confidential Hello World application](https://aka.ms/ccacihelloworld)
 
 <!-- LINKS - External -->
-[azure-free-account]: https://azure.microsoft.com/free/
+[azure-free-account]: https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn

@@ -5,11 +5,11 @@ author: eehindero
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 10/21/2025
+ms.date: 05/01/2026
 ms.author: eehindero
 ms.reviewer: mimckitt
 ---
-# VM vCore Customization Feature: Disable Simultaneous Multi-Threading (SMT/HT) and Configurable Constrained Cores (Preview)
+# VM vCore Customization Feature: Disable Simultaneous Multi-Threading (SMT/HT) and Configurable Constrained Cores
 
 VM vCore Customization is a new Azure VM feature that gives you greater control over the CPU resources of a virtual machine. It consists of two related capabilities:
 
@@ -182,7 +182,7 @@ az vm list-skus --location {location} --resource-type virtualMachines --query "[
 
 **Using Azure Portal**
 
-If you request a vCPU configuration that isn’t supported, the portal will display an error message and provide a list of supported vCPU options for that VM size.
+If you request a vCPU configuration that isn’t supported, the portal displays an error message and provide a list of supported vCPU options for that VM size.
 
 
 ## Considerations
@@ -197,7 +197,7 @@ Most Azure VM families support these features, but there are some important rule
 
 - You can disable hyperthreading and constrain vCPUs at the same time on the same VM. In this case, both above rules apply. 
 
-- CPU options can only be specified at VM creation time or during a resize operation. You cannot dynamically adjust the core count or SMT setting on an allocated VM, this update requires the VM to be deallocated.
+- CPU options can only be specified at VM creation time or during a resize operation. You can't dynamically adjust the core count or SMT setting on an allocated VM, this update requires the VM to be deallocated.
 
 - If you move to a new VM size in the same family that also supports the feature, your settings are carried over by default. 
 
@@ -205,4 +205,6 @@ Most Azure VM families support these features, but there are some important rule
 
 - Anytime you resize a VM (either within the same series or to a different series), a VM reboot occurs. Plan for downtime during the resize operation.
 
-- In preview, only first-party Azure Marketplace images (Windows Server, Ubuntu, Red Hat, SUSE, etc.) and custom images are supported. The specialized Marketplace offerings such as SQL Server on Virtual Machines are not supported.
+- At GA, VMSS Uniform is supported. Currently, only first-party Azure Marketplace images (such as Windows Server, Ubuntu, Red Hat, and SUSE) and custom images are supported. Specialized Marketplace offerings, including SQL Server on Virtual Machines, aren't supported at this time.
+
+- Portal support is not yet available and will be coming soon. 

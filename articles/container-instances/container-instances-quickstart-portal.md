@@ -117,4 +117,4 @@ In this quickstart, you created an Azure container instance from a public Micros
 > [Azure Container Instances tutorial](./container-instances-tutorial-prepare-app.md)
 
 <!-- LINKS - External -->
-[azure-free-account]: https://azure.microsoft.com/free/
+[azure-free-account]: https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn
