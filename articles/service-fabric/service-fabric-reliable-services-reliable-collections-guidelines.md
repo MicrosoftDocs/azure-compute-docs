@@ -18,7 +18,7 @@ This section provides guidelines for using Reliable State Manager and Reliable C
 
 The guidelines are organized as simple recommendations prefixed with the terms *Do*, *Consider*, *Avoid*, and *Do not*. Each recommendation that has an accompanying code sample links to the [Examples](#examples) section.
 
-### Do Not
+### Do not
 
 * **Don't** dispose or cancel a committing transaction. This isn't supported and could crash the host process.
 * **Don't** use a transaction after it has been committed, aborted, or disposed.
