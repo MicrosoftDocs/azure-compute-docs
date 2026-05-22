@@ -22,13 +22,13 @@ The guidelines are organized as simple recommendations prefixed with the terms *
 
 * **Don't** dispose or cancel a committing transaction. This isn't supported and could crash the host process.
 * **Don't** use a transaction after it has been committed, aborted, or disposed.
-* **Don't** modify an object of custom type returned by read operations (for example, `TryPeekAsync` or `TryGetValueAsync`). Reliable Collections, just like Concurrent Collections, return a reference to the objects and not a copy. Instead deep copy the returned object of a custom type before modifying it. Since structs and built-in types are pass-by-value, you don't need to do a deep copy on them unless they contain reference-typed fields or properties that you intend to modify. See [Example: Don't modify objects returned by read operations](#example-dont-modify-objects-returned-by-read-operations).
-* **Don't** create reliable state with `IReliableStateManager.GetOrAddAsync` and use the reliable state in the same transaction. This results in an InvalidOperationException. See [Example: Create state and use it in separate transactions](#example-create-state-and-use-it-in-separate-transactions).
+* **Don't** modify an object of custom type returned by read operations (for example, `TryPeekAsync` or `TryGetValueAsync`). Reliable Collections, just like Concurrent Collections, return a reference to the objects and not a copy. Instead, deep copy the returned object of a custom type before modifying it. Since structs and built-in types are pass-by-value, you don't need to do a deep copy on them unless they contain reference-typed fields or properties that you intend to modify. See [Example: Don't modify objects returned by read operations](#example-dont-modify-objects-returned-by-read-operations).
+* **Don't** create reliable state with `IReliableStateManager.GetOrAddAsync` and use the reliable state in the same transaction. This results in an `InvalidOperationException`. See [Example: Create state and use it in separate transactions](#example-create-state-and-use-it-in-separate-transactions).
 * **Don't** apply [parallel](/dotnet/standard/parallel-programming/how-to-use-parallel-invoke-to-execute-parallel-operations) 
   or [concurrent](/dotnet/api/system.threading.tasks.task.whenall) operations within a transaction. 
   Only one user thread operation is supported within a transaction. Otherwise, it will cause memory leaks and lock issues. See [Example: Avoid parallel or concurrent operations in a transaction](#example-avoid-parallel-or-concurrent-operations-in-a-transaction).
 * **Don't** create a transaction within another transaction's `using` statement because it can cause deadlocks. See [Example: Avoid nested transactions](#example-avoid-nested-transactions).
-* **Don't** use TimeSpan.MaxValue for timeouts. Timeouts are used to detect stalled replication and deadlocks. Excessively large values can hide system issues and delay failure detection. The default timeout is 4 seconds for all the Reliable Collection APIs. Most users should use the default timeout.
+ * **Don't** use `TimeSpan.MaxValue` for timeouts. Timeouts are used to detect stalled replication and deadlocks. Excessively large values can hide system issues and delay failure detection. The default timeout is 4 seconds for all the Reliable Collection APIs. Most users should use the default timeout.
 * **Don't** use an enumeration outside of the transaction scope it was created in. See [Example: Enumerate within the transaction scope](#example-enumerate-within-the-transaction-scope).
 
 ### Do
@@ -38,22 +38,22 @@ The guidelines are organized as simple recommendations prefixed with the terms *
 * **Do** ensure that your `IComparable<TKey>` implementation is correct. The system takes dependency on `IComparable<TKey>` for merging checkpoints and rows.
 * **Do** ensure the operation order of different dictionaries stays the same for all concurrent transactions when reading or writing multiple dictionaries to avoid deadlock. See [Example: Consistent operation order across dictionaries](#example-consistent-operation-order-across-dictionaries).
 * **Do** use an Update lock when reading an item that you intend to modify within the same transaction. This prevents deadlocks that occur when multiple transactions read the same key with a shared lock and later attempt to upgrade to an exclusive lock. See [Example: Use an Update lock for read-then-write](#example-use-an-update-lock-for-read-then-write).
-* **Do** handle InvalidOperationException. User transactions can be aborted by the system for a variety of reasons. For example, when the Reliable State Manager is changing its role out of Primary or when a long-running transaction is blocking truncation of the transactional log. In such cases, the user may receive an InvalidOperationException indicating that their transaction has already been terminated. Assuming the termination of the transaction wasn't requested by the user, the best way to handle this exception is to dispose the transaction, check if the cancellation token has been signaled (or the role of the replica has been changed), and if not create a new transaction and retry.
+* **Do** handle `InvalidOperationException`. User transactions can be aborted by the system for a variety of reasons. For example, when the Reliable State Manager is changing its role out of Primary or when a long-running transaction is blocking truncation of the transactional log. In such cases, the user may receive an `InvalidOperationException` indicating that their transaction has already been terminated. Assuming the termination of the transaction wasn't requested by the user, the best way to handle this exception is to dispose the transaction, check if the cancellation token has been signaled (or the role of the replica has been changed), and if not create a new transaction and retry.
 * **Do** implement bounded retries with exponential backoff.
 * **Do** measure and validate serialization cost before production use. This cost should be minimized as much as possible as all state must be serialized for replication and persistence. Inefficient serializers can significantly increase CPU usage and latency.
-* **Do** adjust the CheckpointThresholdInMB setting in relation to the write rate and typical transaction size of your Reliable Collection. This value should be at least double your largest transaction size and such that this setting is exceeded every 30-120 seconds under steady state write load.
+* **Do** adjust the `CheckpointThresholdInMB` setting in relation to the write rate and typical transaction size of your Reliable Collection. This value should be at least double your largest transaction size and such that this setting is exceeded every 30-120 seconds under steady state write load.
 
 ### Avoid
 
 * **Avoid** hot keys. Distribute writes evenly across keys to prevent creation of long queues all waiting for a single key to be locked.
 * **Avoid** long-running transactions with blocking code. Transactions should be short-lived and blocking code within a transaction can result in blocking log truncation, lead to lock contention and subsequent timeouts. See [Example: Avoid long-running work inside a transaction](#example-avoid-long-running-work-inside-a-transaction).
 * **Avoid** mixing single entity operations and multi-entity operations (e.g. `GetCountAsync`, `CreateEnumerableAsync`) in the same transaction due to the different isolation levels. For more information, you can refer to [Transactions And Lock Modes in Reliable Collections](/azure/service-fabric/service-fabric-reliable-services-reliable-collections-transactions-locks).
-* **Avoid** creating multi-operation transactions with the intention of not committing the transaction. These transactions will still replicate the earlier operations to secondaries and on disposal without commit, will require reverting the progress on each secondary in addition to Aborting the transaction. 
+* **Avoid** creating multi-operation transactions with the intention of not committing the transaction. These transactions will still replicate the earlier operations to secondaries and on disposal without commit, will require reverting the progress on each secondary in addition to aborting the transaction. 
 
 ### Consider
 
 * **Consider** disposing transactions as soon as possible after commit completes (especially if using ConcurrentQueue).
-* **Consider** keeping your items (for example, TKey + TValue for Reliable Dictionary) below 80 KBytes: the smaller the better. This reduces the amount of Large Object Heap usage as well as disk and network IO requirements. Often, it reduces replicating duplicate data when only one small part of the value is being updated. A common way to achieve this in a Reliable Dictionary is to break your rows into multiple rows.
+* **Consider** keeping your items (for example, TKey + TValue for Reliable Dictionary) below 80 KB: the smaller the better. This reduces the amount of Large Object Heap usage as well as disk and network IO requirements. Often, it reduces replicating duplicate data when only one small part of the value is being updated. A common way to achieve this in a Reliable Dictionary is to break your rows into multiple rows.
 * **Consider** keeping the number of Reliable Collections per partition to be less than 1000. Prefer Reliable Collections with more items over more Reliable Collections with fewer items.
 * **Consider** using backup and restore functionality to have disaster recovery.
 
@@ -133,7 +133,8 @@ using (var tx = this.StateManager.CreateTransaction())
 Applies to: **Don't** create reliable state with `IReliableStateManager.GetOrAddAsync` and use the reliable state in the same transaction.
 
 ```csharp
-// INCORRECT: creating reliable state and using it within the same transaction.
+// INCORRECT: creating (or getting) reliable state and then using it
+// in the same transaction.
 using (var tx = this.StateManager.CreateTransaction())
 {
     var myDictionary = await this.StateManager.GetOrAddAsync<IReliableDictionary<string, int>>(
