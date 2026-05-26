@@ -12,9 +12,8 @@ ms.date: 05/01/2026
 
 # Scheduled Events in Event Grid
 
-> [!Note] 
-> Scheduled Events in Event Grid is in preview.
-> See the [Preview Terms Of Use | Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
+
+This page covers the basics of using the scheduled events system topic, such as the scope, the schema, and the delivery options of the events. It also shows how to enable the scheduled events system topic in your VM profile and how to create subscriptions to receive the events.
 
 Scheduled events can be delivered through an Event Grid System Topic so you can read and process events from all your VMs in a central service.
 
@@ -22,7 +21,11 @@ You can use Event Grid to receive notifications about the upcoming maintenance o
 
 Event Grid is a cloud service that enables you to create and manage event-driven applications. The Scheduled Events system topic publishes events related to impactful operations on your VMs, such as reboot, redeploy, or reimage. When you subscript to this topic, you're notified in advance about these events and can take appropriate actions. These actions include saving the state of your applications, draining sessions, or migrating the workloads to another VM.
 
-This page covers the basics of using the scheduled events system topic, such as the scope, the schema, and the delivery options of the events. It also shows how to enable the scheduled events system topic in your VM profile and how to create subscriptions to receive the events.
+
+> [!Note] 
+> Scheduled Events in Event Grid is in preview.
+> See the [Preview Terms Of Use | Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
+
 
 ## Prerequisites
 

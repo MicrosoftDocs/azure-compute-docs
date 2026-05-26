@@ -6,7 +6,7 @@ ms.author: cynthn
 ms.topic: tutorial
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: autoscale
-ms.date: 04/06/2025
+ms.date: 05/19/2026
 ms.reviewer: mimckitt
 ms.custom: avverma, devx-track-azurecli, linux-related-content
 # Customer intent: "As a cloud engineer, I want to implement autoscaling for a Virtual Machine Scale Set using command-line interfaces, so that I can efficiently manage resources in response to changing application demands while optimizing cost and performance."
@@ -136,7 +136,7 @@ Once the CPU load subsides, the average CPU load returns to normal. After anothe
 ```
 
 ## Clean up resources
-To remove your scale set and associated resources, please manually delete the resource group using your preferred method. 
+To remove your scale set and associated resources, manually delete the resource group using your preferred method. 
 
 ## Next steps
 In this tutorial, you learned how to automatically scale in or out a scale set with the Azure CLI:

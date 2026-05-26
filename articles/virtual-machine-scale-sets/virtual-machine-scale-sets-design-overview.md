@@ -6,7 +6,7 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
-ms.date: 06/14/2024
+ms.date: 05/19/2026
 ms.reviewer: cynthn
 ms.custom: mimckitt
 # Customer intent: "As a cloud architect, I want to understand the design considerations for Virtual Machine Scale Sets, so that I can make informed decisions about using scale sets versus individual VMs for efficient multi-VM deployments."
@@ -17,7 +17,7 @@ ms.custom: mimckitt
 This article discusses design considerations for Virtual Machine Scale Sets. For information about what Virtual Machine Scale Sets are, refer to [Virtual Machine Scale Sets Overview](./overview.md).
 
 ## When to use scale sets instead of virtual machines?
-Generally, scale sets are useful for any multi-VM deployment, as it allows you to define whether instances are spread across availability zones or fault domains, whether platform updates should be coordinated to reduce or eliminate full application downtime, and provides orchestrations and batch instance management. However, some features are only available in scale sets while other features are only available in VMs. In order to make an informed decision about when to use each technology, you should first take a look at some of the commonly used features that are available in scale sets but not VMs:
+Generally, scale sets are useful for any multi-VM deployment, as it allows you to define whether instances are spread across availability zones or fault domains, whether platform updates should be coordinated to reduce or eliminate full application downtime, and provides orchestrations and batch instance management. However, some features are only available in scale sets while other features are only available in VMs. To make an informed decision about when to use each technology, you should first take a look at some of the commonly used features that are available in scale sets but not VMs:
 
 ### Scale set-specific features
 

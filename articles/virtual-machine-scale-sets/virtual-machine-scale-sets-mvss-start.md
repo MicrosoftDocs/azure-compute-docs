@@ -5,7 +5,7 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
-ms.date: 06/14/2024
+ms.date: 05/19/2026
 ms.reviewer: cynthn
 ms.custom: mimckitt
 
@@ -32,7 +32,7 @@ First, define `$schema` and `contentVersion` in the template. The `$schema` elem
 
 ## Define parameters
 
-Next, define two parameters, `adminUsername` and `adminPassword`. Parameters are values you specify at the time of deployment. The `adminUsername` parameter is simply a `string` type, but because `adminPassword` is a secret, give it type `securestring`. Later, these parameters are passed into the scale set configuration.
+Next, define two parameters, `adminUsername` and `adminPassword`. Parameters are values you specify at the time of deployment. The `adminUsername` parameter is a `string` type, but because `adminPassword` is a secret, give it type `securestring`. Later, these parameters are passed into the scale set configuration.
 
 ```json
   "parameters": {
@@ -152,15 +152,15 @@ The scale set also needs to know how to handle updates on the scale set. Current
 
 ### Choose VM operating system
 
-The scale set needs to know what operating system to put on the VMs. Here, create the VMs with a fully patched Ubuntu 16.04-LTS image.
+The scale set needs to know what operating system to put on the VMs. Here, create the VMs with a fully patched Ubuntu 22.04-LTS image.
 
 ```json
   "virtualMachineProfile": {
     "storageProfile": {
       "imageReference": {
         "publisher": "Canonical",
-        "offer": "UbuntuServer",
-        "sku": "16.04-LTS",
+        "offer": "0001-com-ubuntu-server-jammy",
+        "sku": "22_04-lts",
         "version": "latest"
       }
     },

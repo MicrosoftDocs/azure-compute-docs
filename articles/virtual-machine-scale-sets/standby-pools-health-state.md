@@ -5,7 +5,7 @@ author: mimckitt
 ms.author: mimckitt
 ms.service: azure-virtual-machine-scale-sets
 ms.topic: concept-article
-ms.date: 5/6/2025
+ms.date: 05/19/2026
 ms.reviewer: cynthn
 # Customer intent: "As a cloud administrator, I want to monitor the health state of my standby pool using the runtime view API, so that I can proactively manage resource provisioning and ensure optimal performance."
 ---

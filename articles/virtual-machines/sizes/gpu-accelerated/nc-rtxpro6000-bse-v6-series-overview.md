@@ -13,13 +13,11 @@ ms.reviewer: yangnicole
 
 # NC RTX PRO 6000 Blackwell v6 sizes series overview (Preview)
 
+The NCv6-series is a single virtual machine (VM) family for single-node compute, virtual desktop infrastructure (VDI), and gaming workloads. Below we outline general information and onboarding for the NCv6-series. 
+
 > [!IMPORTANT]
 > This VM series is currently in PREVIEW. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
 
-
-The NCv6-series is a single virtual machine (VM) family for single-node compute, virtual desktop infrastructure (VDI), and gaming workloads. Below we outline general information and onboarding for the NCv6-series. 
-
---- 
 
 ## Availability and Pricing 
 
@@ -29,7 +27,7 @@ Refer to the [Azure.com pricing page](https://azure.microsoft.com/pricing/detail
 
 For more information, see our [blog on the upcoming transition to general availability](https://techcommunity.microsoft.com/blog/azurehighperformancecomputingblog/azure-ncv6-virtual-machines-enhancements-and-ga-transition/4503578).  
 
---- 
+
 
 ## VM Software Driver Installation 
 
@@ -41,7 +39,7 @@ For information on installing NVIDIA GPU drivers on N-series VMs (including NCv6
 
 For information on installing NVIDIA GPU drivers on N-series VMs (including NCv6-series) running Windows  – refer to [the documentation](/azure/virtual-machines/windows/n-series-driver-setup#nvidia-gridvgpu-drivers). 
 
---- 
+
 
 ## Supported Operating Systems (OS) and Versions 
 | OS Family | Versions | 
@@ -52,7 +50,7 @@ For information on installing NVIDIA GPU drivers on N-series VMs (including NCv6
 | Red Hat Enterprise Linux | •	Red Hat Enterprise Linux 9.4, 9.6, 9.7 <br> •	Red Hat Enterprise Linux 8.8, 8.10| 
 | SUSE Linux Enterprise Server | •	SUSE Linux Enterprise Server 15 SP7| 
 
---- 
+ 
 
 ## FAQs 
 
