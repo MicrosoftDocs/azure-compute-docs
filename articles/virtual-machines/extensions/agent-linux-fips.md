@@ -12,12 +12,13 @@ ms.date: 09/25/2025
 ---
 # FIPS 140-3 support for Azure Linux VM extensions and guest agent
 
-> [!NOTE]
-> This feature is currently in public preview. Production workloads are supported.
-
 Linux virtual machine (VM) extensions currently comply with FIPS 140-2, but updates to the platform were required to add support for FIPS 140-3 which have been deployed across the commercial cloud and Azure government clouds. Linux VM extensions that use protected settings are also being updated to be able to use a FIPS 140-3-compliant encryption algorithm. This article helps enable support for FIPS 140-3 on Linux VMs where compliance with FIPS 140-3 is enforced. This change isn't needed on Windows images because of the way that FIPS compliance is implemented.
 
 For more information, see [What are the Federal Information Processing Standards (FIPS)?](https://www.nist.gov/standardsgov/compliance-faqs-federal-information-processing-standards-fips).
+
+> [!NOTE]
+> This feature is currently in public preview. Production workloads are supported.
+> For legal terms that apply to Azure features that are in beta, in preview, or otherwise not yet released into general availability, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## Confirmed supported extensions
 
