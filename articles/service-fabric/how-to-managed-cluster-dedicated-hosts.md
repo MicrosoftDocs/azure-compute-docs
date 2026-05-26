@@ -28,7 +28,7 @@ This guide builds upon the managed cluster quick start guide: [Deploy a Service 
 
 Before you begin:
 
-* If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free)
+* If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn)
 * Retrieve a managed cluster ARM template. Sample Resource Manager templates are available in the [Azure samples on GitHub](https://github.com/Azure-Samples/service-fabric-cluster-templates). These templates can be used as a starting point for your cluster template. This guide shows how to deploy a Standard SKU cluster with two node types and 12 nodes.
 * The user needs to have Microsoft.Authorization/roleAssignments/write permissions to the host group such as [User Access Administrator](/azure/role-based-access-control/built-in-roles#user-access-administrator) or [Owner](/azure/role-based-access-control/built-in-roles#owner) to do role assignments in a host group. For more information, see [Assign Azure roles using the Azure portal - Azure RBAC](/azure/role-based-access-control/role-assignments-portal?tabs=current#prerequisites).
 

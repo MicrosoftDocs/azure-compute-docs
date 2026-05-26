@@ -11,10 +11,10 @@ ms.custom: template-overview
 
 # View impact reports and insights (preview)
 
+You can view previously submitted impact reports and insights through the REST API, Azure Resource Graph Explorer, and the Azure portal.
+
 > [!IMPORTANT]
 > Azure Impact Reporting is currently in preview. For legal terms that apply to Azure features that are in beta, in preview, or otherwise not yet released into general availability, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-You can view previously submitted impact reports and insights through the REST API, Azure Resource Graph Explorer, and the Azure portal.
 
 ## Permissions needed
 

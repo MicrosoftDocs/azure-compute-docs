@@ -6,7 +6,6 @@ ms.service: azure-virtual-machines
 ms.subservice: extensions
 author: mgreenegit
 ms.author: migreene
-ms.reviewer: jushiman
 ms.collection: windows
 ms.date: 08/20/2025
 ---

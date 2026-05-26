@@ -70,7 +70,11 @@ In the request body, include the `capacityReservationGroup` property:
 1. Select an **Image** and the VM size.
 1. Under **Administrator account**, enter a username and a password. The password must be at least 12 characters long and meet the defined complexity requirements.
 1. Go to the **Advanced section**.
-1. In the **Capacity Reservations** dropdown list, select the capacity reservation group that you want to associate to the VM.
+1. In the **Capacity Reservations** dropdown list, select the capacity reservation group that you want to associate to the VM:
+    1. If you are using the Capacity Reservation Group from the same subscription, select **Capacity reservation group**
+    1. If you are using Capacity Reservation Group from another subscription, select **Shared capacity reservation group** (Preview):
+        1. Select **Provider subscription**
+        1. Select **Capacity reservation group**  
 1. Select **Review + create**.
 1. After validation runs, select **Create**.
 1. After the deployment is finished, select **Go to resource**.
@@ -446,7 +450,11 @@ Follow the steps to associate the virtual machine to a capacity reservation grou
 1. Select **Overview**.
 1. Select **Stop** at the top of the page to deallocate the VM.
 1. Go to **Configurations** on the left.
-1. In the **Capacity Reservation group** dropdown list, select the group that you want to associate to the VM.
+1. In the **Capacity Reservations** dropdown list, select the capacity reservation group that you want to associate to the VM:
+    1. If you are using the Capacity Reservation Group from the same subscription, select **Capacity reservation group**
+    1. If you are using Capacity Reservation Group from another subscription, select **Shared capacity reservation group** (Preview):
+        1. Select **Provider subscription**
+        1. Select **Capacity reservation group** 
 
 #### [CLI](#tab/cli2)
 
@@ -538,7 +546,11 @@ In the request body, include the `capacityReservationGroup` property:
 1. Go to your VM.
 1. Select **Overview**.
 1. Go to **Configurations** on the left.
-1. In the **Capacity Reservation group** dropdown list, select the group that you want to associate to the VM.
+1. In the **Capacity Reservations** dropdown list, select the capacity reservation group that you want to associate to the VM:
+    1. If you are using the Capacity Reservation Group from the same subscription, select **Capacity reservation group**
+    1. If you are using Capacity Reservation Group from another subscription, select **Shared capacity reservation group** (Preview):
+        1. Select **Provider subscription**
+        1. Select **Capacity reservation group** 
 
 #### [CLI](#tab/cli2)
 
@@ -622,7 +634,8 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
                      {
                         "id":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{myVM}"
                      }
-                  ]
+                  ],
+                  "currentCapacity": 1
                },
                "statuses":[
                   {

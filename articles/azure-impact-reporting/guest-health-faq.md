@@ -18,11 +18,11 @@ Here are answers to common questions about Guest Health Reporting.
 
 ## What happens after sending the request to Guest Health Reporting?
 
-Reports with unhealthy impact categories are evaluated to determine the best way to recover. In some cases recovery can be done while the VM is running, in other cases Interruption is needed. Progress updates are provided as Insights, which belong to the original Impact, see [list impacts for a workload impact](guest-health-impact-report.md#query-workload-impact-insights). The terminal insight advises whether VM deallocation is required. Similarly the VM availability through [Project Flash](/azure/virtual-machines/flash-overview) changes. Once these signals appear, typically within minutes, the platform has a repair planned and is waiting for the virtual machine (VM) to be deallocated. If after 30 days the VM isn't deallocated the platform tries to move the VM to an alternate node. If an alternate node isn't available, the platform continues waiting for a VM deallocate/delete call.
+Reports with unhealthy impact categories are evaluated to determine the best way to recover. In some cases, recovery can be done while the VM is running; in other cases, interruption is needed. Progress updates are provided as Insights, which belong to the original Impact — see [list impacts for a workload impact](guest-health-impact-report.md#query-workload-impact-insights). The terminal insight advises whether VM deallocation is required. Similarly, the VM availability through [Project Flash](/azure/virtual-machines/flash-overview) changes. Once these signals appear, typically within minutes, the platform has a repair planned and is waiting for the virtual machine (VM) to be deallocated. If, after 30 days, the VM isn't deallocated, the platform tries to move the VM to an alternate node. If an alternate node isn't available, the platform continues waiting for a VM deallocate/delete call.
 
 ## Related content
 
 * [What is Guest Health Reporting?](guest-health-overview.md)
 * [Report node health by using Guest Health Reporting](guest-health-impact-report.md)
 * [How to provide a diagnostic log file with Guest Health Reporting](guest-health-log-upload.md)
-:q
+

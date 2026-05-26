@@ -68,4 +68,4 @@ In this tutorial, you created a Spot container on Azure Container Instances with
 * [Try out Spot containers with Azure Container Instances using the Azure CLI](container-instances-tutorial-deploy-spot-containers-cli.md)
 
 <!-- LINKS - External -->
-[azure-free-account]: https://azure.microsoft.com/free/
+[azure-free-account]: https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn

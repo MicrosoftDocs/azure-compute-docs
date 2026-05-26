@@ -11,10 +11,10 @@ ms.custom: template-overview
 
 # Report an impact (preview)
 
+You can use the Azure Service Health **Report an issue** pane and the REST API to report an issue. You can also use an Azure Monitor [connector](./azure-monitor-connector.md) to report an impact automatically when certain alerts get triggered.
+
 > [!IMPORTANT]
 > Azure Impact Reporting is currently in preview. For legal terms that apply to Azure features that are in beta, in preview, or otherwise not yet released into general availability, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-You can use the Azure Service Health **Report an issue** pane and the REST API to report an issue. You can also use an Azure Monitor [connector](./azure-monitor-connector.md) to report an impact automatically when certain alerts get triggered.
 
 ## Report workload impact
 

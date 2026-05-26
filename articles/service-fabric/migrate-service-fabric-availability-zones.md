@@ -3,7 +3,7 @@ title: Migrate an Azure Service Fabric cluster to availability zone support
 description: Learn how to migrate both managed and nonmanaged Azure Service Fabric clusters to availability zone support.
 author: tomvcassidy
 ms.service: azure-service-fabric
-ms.topic: conceptual
+ms.topic: article
 ms.date: 02/18/2026
 ms.author: tomcassidy
 ---

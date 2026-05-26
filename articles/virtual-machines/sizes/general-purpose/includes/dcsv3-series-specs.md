@@ -17,5 +17,5 @@ ms.custom: include file
 | Memory         | 8 - 384 GiB          |                                  |
 | Local Storage  | None           |                                |
 | Remote Storage | 4 - 32 Disks    |    |
-| Network        | 2 - 8 NICs          |                         |
+| Network        | 2 - 8 NICs          | Interfaces: NetVSC, ConnectX  |
 | Accelerators   | None              |                                   |

@@ -1,16 +1,16 @@
 ---
-title: NC_RTXPRO6000BSE_v6 size series
+title: NC_RTXPRO6000BSE_v6 size series (Preview)
 description: Information on and specifications of the NC_RTXPRO6000BSE_v6-series sizes
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 12/05/2025
+ms.date: 05/11/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ---
 
-# NC RTX PRO 6000 Blackwell Server Edition v6 sizes series
+# NC RTX PRO 6000 Blackwell Server Edition v6 sizes series (Preview)
 
 [!INCLUDE [nc_rtxpro6000-bse_v6-summary](./includes/nc-rtxpro6000-bse-v6-series-summary.md)]
 

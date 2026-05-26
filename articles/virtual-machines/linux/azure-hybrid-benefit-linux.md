@@ -490,11 +490,23 @@ Converting to a PAYG subscription model is supported for Azure Marketplace image
     # In order to revert back to the original licensing model, set license-type to None.
     az vm update -g myResourceGroup -n myVmName --license-type NONE
     ```
+In some cases, you must utilize the Azure Management API to patch the license type in the virtual machine's metadata:
+
+1. Define a variable with a full path to the target virtual machine:
+   ```azurecli
+   VM_ID=$(az vm list --query "[?name=='YourVMName'].id" -o tsv)
+   ```
+1. Update the license type by patching the VM's metadata. For example, change pay-as-you-go license to SLES_SAP:
+   ```azurecli
+   az rest --method patch --url "https://management.azure.com${VM_ID}?api-version=2024-07-01" --body '{"properties":{"licenseType":"SLES_SAP"}}'
+   ```
+1. If you want to return the original subscription model, set `license-type` to `None`.
+   ```azurecli
+   az rest --method patch --url "https://management.azure.com${VM_ID}?api-version=2024-07-01" --body '{"properties":{"licenseType":"NONE"}}'
+   ```
 
 ---
 
-> [!NOTE]
-> The AHBForRHEL extension currently supports RHEL 7 and RHEL 8, but doesn't support RHEL 9 or later. As a result, the extension doesn't automatically install the RHUI client on RHEL 9 or later versions. Until support for RHEL 9+ is introduced, repositories must be configured manually after installing the extension by following the procedure outlined in [Manual update procedure to use the Azure RHUI servers](/azure/virtual-machines/workloads/redhat/redhat-rhui#manual-update-procedure-to-use-the-azure-rhui-servers).
 
 ### Multiple VMs
 
@@ -663,6 +675,59 @@ If you use the Azure Hybrid Benefit BYOS to PAYG capability for SLES and want mo
 * **Q: Can I use Azure Hybrid Benefit on my RHEL for Virtual Datacenters subscription?**
 
   * A: No. RHEL for Virtual Datacenters isn't supported on Azure at all, including for Azure Hybrid Benefit.
+
+## AHBForRHEL Extension Changelog
+
+The AHBForRHEL extension has a version number. As improvements and CVE fixes are introduced, the version number is increased.
+
+### Identify which AHBForRHEL extension is installed on your VM
+
+The AHBForRHEL extension uses the standard [Semantic Versioning](https://semver.org/) schema for each version. To identify the AHBForRHEL extension version being used, you can run the following command: `az vm get-instance-view`. Look for the AHBForRHEL extension and version number.
+
+```azurecli
+az vm get-instance-view \
+  --resource-group <RG> \
+  --vm-name <VM_NAME> \
+  --query instanceView.extensions
+ ```
+
+### Update the AHBForRHEL extension installed on your VM
+
+To change the AHBForRHEL extension installed on your VM, run the following command:
+
+```azurecli
+az vm extension set \
+  --resource-group <RG> \
+  --vm-name <VM_NAME> \
+  --name AHBForRHEL \
+  --publisher Microsoft.Azure.AzureHybridBenefit \
+  --version <NEW_VERSION> \
+```
+
+### Enable auto upgrades for the AHBForRHEL extension installed on your VM
+
+To enable auto upgrades for the AHBForRHEL extension installed on your VM, run the following command:
+
+```azurecli
+az vm extension set \
+  --resource-group <RG> \
+  --vm-name <VM_NAME> \
+  --name AHBForRHEL \
+  --publisher Microsoft.Azure.AzureHybridBenefit \
+  --enable-auto-upgrade true
+```
+
+### AHBForRHEL extension versions available
+
+**2.2.0**
+
+Patch CVE-2022-29526, CVE-2026-25679, CVE-2026-27139, and CVE-2026-27142. 
+Security improvements.
+
+**2.1.0**
+
+Patch CVE-2025-467.
+Security improvements.
 
 ## Related content
 
