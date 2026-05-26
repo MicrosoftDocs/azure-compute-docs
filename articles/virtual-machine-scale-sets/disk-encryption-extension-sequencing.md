@@ -6,7 +6,7 @@ ms.author: cynthn
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: disks
-ms.date: 09/23/2025
+ms.date: 05/19/2026
 ms.reviewer: mimckitt
 ms.custom: mimckitt, linux-related-content
 # Customer intent: As an Azure administrator, I want to implement Azure Disk Encryption in a specific sequence with other extensions for my Linux IaaS VMs, so that I can ensure data security while preparing the disks appropriately before use.

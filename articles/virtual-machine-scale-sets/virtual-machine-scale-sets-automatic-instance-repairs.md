@@ -6,7 +6,7 @@ ms.author: hilarywang
 ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: instance-protection
-ms.date: 04/01/2025
+ms.date: 05/19/2026
 ms.reviewer: hilarywang
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 # Customer intent: As a cloud operator, I want to configure automatic instance repairs for my Virtual Machine Scale Sets, so that I can ensure high availability and quick recovery from unhealthy instances without manual intervention.
@@ -26,7 +26,7 @@ The scale set should have application health monitoring for instances enabled. H
 
 Before enabling automatic instance repairs policy, ensure that your scale set instances have an application endpoint configured to emit the application health status. To configure health status on Application Health extension, you can use either [Binary Health States](./virtual-machine-scale-sets-health-extension.md#binary-health-states) or [Rich Health States](./virtual-machine-scale-sets-health-extension.md#rich-health-states). To configure health status using Load balancer health probes, see [probe up behavior](/azure/load-balancer/load-balancer-custom-probe-overview).
 
-For instances marked as "Unhealthy" or "Unknown" (*Unknown* state is only available with [Application Health extension - Rich Health States](./virtual-machine-scale-sets-health-extension.md#unknown-state)), automatic repairs are triggered by the scale set. Ensure the application endpoint is correctly configured before enabling the automatic repairs policy in order to avoid unintended instance repairs, while the endpoint is getting configured.
+For instances marked as "Unhealthy" or "Unknown" (*Unknown* state is only available with [Application Health extension - Rich Health States](./virtual-machine-scale-sets-health-extension.md#unknown-state)), automatic repairs are triggered by the scale set. Ensure the application endpoint is correctly configured before enabling the automatic repairs policy to avoid unintended instance repairs, while the endpoint is getting configured.
 
 **API version**
 

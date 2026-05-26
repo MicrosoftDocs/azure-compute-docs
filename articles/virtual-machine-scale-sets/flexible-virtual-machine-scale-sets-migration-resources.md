@@ -6,7 +6,7 @@ ms.author: fisteele
 ms.topic: concept-article
 ms.service: azure-virtual-machines
 ms.subservice: flexible-scale-sets
-ms.date: 06/14/2024
+ms.date: 05/19/2026
 ms.reviewer: cynthn
 ms.custom: mimckitt, devx-track-azurecli, vmss-flex
 # Customer intent: As a cloud administrator, I want to migrate existing virtual machine deployments to Flexible orchestration mode in Virtual Machine Scale Sets, so that I can enhance scalability and ensure better fault tolerance in my infrastructure.
@@ -87,7 +87,7 @@ Virtual Machine Scale Sets with Flexible orchestration allows you to combine the
 
 Networking outbound access behavior will vary depending on how you choose to create virtual machines within your scale set. **Manually added VM instances** have default outbound connectivity access. **Implicitly created VM instances** don't have default access. 
 
-In order to enhance default network security, **virtual machine instances created implicitly via the autoscaling profile don't have default outbound access**. In order to use Virtual Machine Scale Sets with implicitly created VM instances, outbound access must be explicitly defined through one of the following methods: 
+To enhance default network security, **virtual machine instances created implicitly via the autoscaling profile don't have default outbound access**. To use Virtual Machine Scale Sets with implicitly created VM instances, outbound access must be explicitly defined through one of the following methods: 
 
 - For most scenarios, we recommend [NAT Gateway attached to the subnet](/azure/virtual-network/nat-gateway/quickstart-create-nat-gateway-portal).
 - For scenarios with high security requirements or when using Azure Firewall or Network Virtual Appliance (NVA), you can specify a custom User Defined Route as next hop through firewall. 

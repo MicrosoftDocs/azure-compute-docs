@@ -6,7 +6,7 @@ author: cynthn
 ms.author: cynthn
 ms.service: azure-virtual-machine-scale-sets
 ms.custom: subject-policy-reference
-ms.date: 06/14/2024
+ms.date: 05/19/2026
 ms.reviewer: mimckitt
 # Customer intent: "As a cloud administrator, I want to access built-in policy definitions for Azure Virtual Machine Scale Sets, so that I can efficiently manage compliance and governance of my resources."
 ---

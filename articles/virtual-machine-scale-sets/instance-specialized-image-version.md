@@ -6,7 +6,7 @@ ms.author: saraic
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: shared-image-gallery
 ms.topic: how-to
-ms.date: 06/14/2024
+ms.date: 05/19/2026
 ms.reviewer: cynthn
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 # Customer intent: As a developer, I want to create a virtual machine scale set using a specialized image from an Azure Compute Gallery, so that I can efficiently manage and deploy scalable applications with predefined configurations.
@@ -182,8 +182,6 @@ It takes a few minutes to create and configure all the scale set resources and V
 ## Create a scale set from an image in a community gallery
 
 > [!IMPORTANT]
-> Azure Compute Gallery – community galleries is currently in PREVIEW and subject to the [Preview Terms for Azure Compute Gallery - community gallery](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
 > Microsoft does not provide support for images in the [community gallery](../virtual-machines/azure-compute-gallery.md#community).
 >
 > You can create scale sets from images in the community gallery, but if the image is removed at a later time, you won't be able to scale up. To ensure you have long-term access to the image, you should consider creating an image in your own gallery from a VM created using the community gallery image that you want to use for your scale set. For more information, see [Create an image definition and an image version](../virtual-machines/image-version.md).

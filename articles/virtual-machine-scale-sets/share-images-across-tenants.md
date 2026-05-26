@@ -6,7 +6,7 @@ ms.author: saraic
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: shared-image-gallery
-ms.date: 06/14/2024
+ms.date: 05/19/2026
 ms.reviewer: cynthn
 ms.custom: devx-track-azurecli
 

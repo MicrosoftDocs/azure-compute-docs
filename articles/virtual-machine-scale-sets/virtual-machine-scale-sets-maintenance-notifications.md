@@ -6,7 +6,7 @@ ms.author: mimckitt
 ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: maintenance-control
-ms.date: 06/14/2024
+ms.date: 05/19/2026
 ms.update-cycle: 180-days
 ms.reviewer: cynthn
 ms.custom: portal
@@ -102,7 +102,7 @@ Azure communicates a schedule for planned maintenance by sending an email to the
     1. Specify the following:
         - **Services**: *Virtual Machine Scale Sets* and *Virtual Machines*
         - **Event type**: *Planned maintenance*
-1.	Under **Actions**, add action groups to the alert rule in order to send notifications or invoke actions when a planned maintenance event is received.
+1.	Under **Actions**, add action groups to the alert rule to send notifications or invoke actions when a planned maintenance event is received.
 1.	Fill out the details under **Alert rule details**. 
 1. Select **Create alert rule**. 
 
@@ -217,7 +217,7 @@ For more information about high availability, see [Regions and availability for 
 **Q: My VM is scheduled for maintenance for the second time. Why?**
 
 **A:** In several use cases, your VM is scheduled for maintenance after you have already completed your maintenance and redeployed:
-   - We have canceled the maintenance wave and restarted it with a different payload. It might be that we've detected a faulted payload and we simply need to deploy an additional payload.
+   - We have canceled the maintenance wave and restarted it with a different payload. It might be that we've detected a faulted payload and we need to deploy an additional payload.
    - Your VM was *service healed* to another node due to a hardware fault.
    - You have selected to stop (deallocate) and restart the VM.
    - You have **auto shutdown** turned on for the VM.

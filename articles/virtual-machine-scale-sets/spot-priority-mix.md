@@ -6,7 +6,7 @@ ms.author: cynthn
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: azure-spot-vm
 ms.topic: concept-article
-ms.date: 06/14/2024
+ms.date: 05/19/2026
 ms.update-cycle: 180-days
 ms.reviewer: cynthn
 ms.custom: engagement-fy23, portal
@@ -84,7 +84,7 @@ When Spot VMs are evicted due to capacity constraints or pricing, the eviction p
 
 ### Scale-in behavior
 
-When you scale in, Spot Priority Mix maintains your configured percentage split by intelligently choosing which VMs to remove (Spot or standard) rather than simply removing the oldest or newest VMs. 
+When you scale in, Spot Priority Mix maintains your configured percentage split by intelligently choosing which VMs to remove (Spot or standard) rather than removing the oldest or newest VMs. 
 
 ### ARM Template
 

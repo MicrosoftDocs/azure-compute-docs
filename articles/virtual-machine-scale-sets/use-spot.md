@@ -6,7 +6,7 @@ ms.author: cynthn
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: azure-spot-vm
-ms.date: 04/01/2025
+ms.date: 05/19/2026
 ms.reviewer: mimckitt
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 

@@ -6,7 +6,7 @@ ms.author: cynthn
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: disks
-ms.date: 09/23/2025
+ms.date: 05/19/2026
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurepowershell
 

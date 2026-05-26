@@ -7,7 +7,7 @@ ms.service: azure-virtual-machine-scale-sets
 ms.custom:
   - ignite-2024
 ms.topic: concept-article
-ms.date: 5/6/2025
+ms.date: 05/19/2026
 ms.reviewer: cynthn
 # Customer intent: "As an IT administrator managing a Virtual Machine Scale Set, I want to retrieve prediction results for standby pools, so that I can optimize instance allocation for enhanced operational efficiency."
 ---
