@@ -162,5 +162,5 @@ This problem almost always happens because of an `fstab` issue after device name
 - [NVMe performance on Azure VMs](/azure/virtual-machines/nvme-overview)
 - [Convert Linux VMs from SCSI to NVMe](/azure/virtual-machines/nvme-linux)
 - [Enable NVMe on Azure VMs - FAQ](/azure/virtual-machines/enable-nvme-faqs)
-- [Azure Boost overview](/azure/virtual-machines/azure-boost)
+- [Azure Boost overview](/azure/azure-boost/overview.md)
 - [SAP-on-Azure-Scripts-and-Utilities (GitHub)](https://github.com/Azure/SAP-on-Azure-Scripts-and-Utilities/tree/main/Azure-NVMe-Utils)
