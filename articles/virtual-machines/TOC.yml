@@ -752,6 +752,8 @@
        href: enable-nvme-interface.md
      - name: SCSI to NVMe for Linux VMs
        href: nvme-linux.md
+     - name: Automate SCSI to NVMe conversion for Linux and Windows VMs
+       href: converting-scsi-to-nvme-storage.md
    - name: Previous generation and retired sizes
      items:
      - name: Overview
