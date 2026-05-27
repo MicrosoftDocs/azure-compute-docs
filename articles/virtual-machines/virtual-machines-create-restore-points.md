@@ -15,7 +15,7 @@ ms.custom: conceptual
 
 VM restore points capture the configuration and point-in-time disk snapshots of a virtual machine, enabling granular backup and recovery. You can create restore points at regular intervals to reduce data loss exposure and meet recovery time objectives (RTOs).
 
-For a broader comparison of backup options, see [Backup and restore options for VMs in Azure](https://learn.microsoft.com/en-us/azure/virtual-machines/backup-recovery).
+For a broader comparison of backup options, see [Backup and restore options for VMs in Azure](/azure/virtual-machines/backup-recovery).
 
 ## About VM restore points
 
@@ -47,7 +47,7 @@ Once the disk restore points are created, Azure automatically initiates a backgr
 
 ### Instant Access (Preview)
 
-VM restore points support [**Instant Access**](https://learn.microsoft.com/en-us/azure/virtual-machines/disks-instant-access-snapshots?tabs=azure-cli%2Cazure-cli-snapshot-state) for application-consistent restore points on VMs that have Premium SSD v2 or Ultra disks as data disks. When Instant Access is enabled on the restore point collection, disk restoration can begin immediately from the snapshot — without waiting for full hydration — significantly reducing RTOs.
+VM restore points support [**Instant Access**](/azure/virtual-machines/disks-instant-access-snapshots?tabs=azure-cli%2Cazure-cli-snapshot-state) for application-consistent restore points on VMs that have Premium SSD v2 or Ultra disks as data disks. When Instant Access is enabled on the restore point collection, disk restoration can begin immediately from the snapshot — without waiting for full hydration — significantly reducing RTOs.
 
 ### Key concepts in Instant Access (Preview)
 
@@ -59,7 +59,7 @@ VM restore points support [**Instant Access**](https://learn.microsoft.com/en-us
 | `snapshotAccessState` | Read-only property on an individual disk restore point. Indicates the Instant Access state of that specific disk. |
 | API Version | **2025-04-01 or later** |
 | Supported regions | West Central US, West US, North Central US, West US 2, South Central US |
-| Pricing | Instant access snapshots are billed using a usage‑based model with two types of charges: <br> 1. Snapshot storage charge <br> 2. One‑time restore operation charge. <br> **Snapshot storage charge**: You are billed only for the additional storage used by an instant access snapshot while it is active. When an instant access snapshot is first created, it does not incur any storage cost. The snapshot initially shares data with the source disk. As data on the source disk is modified or deleted over time, the snapshot preserves the original point‑in‑time data, and its storage usage grows.As a result:You  pay only for the changed data, not for a full copy of the disk. If no data is modified on the source disk, the snapshot continues to incur no additional storage charges. <br> **Restore operation charge** Each time you restore a disk from an instant access snapshot, a one‑time restore fee is charged. This fee is calculated based on the provisioned size of the disk at the time of restore, providing predictable and transparent pricing for restore operations. Learn more about Instant Access Snapshot billing in [here](https://azure.microsoft.com/en-us/pricing/details/managed-disks/) |
+| Pricing | Instant access snapshots are billed using a usage‑based model with two types of charges: <br> 1. Snapshot storage charge <br> 2. One‑time restore operation charge. <br> **Snapshot storage charge**: You are billed only for the additional storage used by an instant access snapshot while it is active. When an instant access snapshot is first created, it does not incur any storage cost. The snapshot initially shares data with the source disk. As data on the source disk is modified or deleted over time, the snapshot preserves the original point‑in‑time data, and its storage usage grows.As a result:You  pay only for the changed data, not for a full copy of the disk. If no data is modified on the source disk, the snapshot continues to incur no additional storage charges. <br> **Restore operation charge** Each time you restore a disk from an instant access snapshot, a one‑time restore fee is charged. This fee is calculated based on the provisioned size of the disk at the time of restore, providing predictable and transparent pricing for restore operations. Learn more about Instant Access Snapshot billing in [here](/pricing/details/managed-disks/) |
 ---
 
 ## Restore points for VMs in scale sets and availability sets
@@ -105,7 +105,7 @@ Target restore point collection | RestorePoints.RestorePointOperation.PUT (Copy 
 - Currently supported via REST API, Azure SDK, CLI and ARM templates.
 
 For a complete list of limitations, disk type support, OS support, and API version
-requirements, see [Support matrix for VM restore points](https://learn.microsoft.com/en-us/azure/virtual-machines/concepts-restore-points).
+requirements, see [Support matrix for VM restore points](/azure/virtual-machines/concepts-restore-points).
 
 
 ## Troubleshoot VM restore points

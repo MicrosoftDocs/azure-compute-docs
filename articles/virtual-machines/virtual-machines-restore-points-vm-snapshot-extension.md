@@ -51,7 +51,7 @@ Most restore point failures are caused by communication issues between the VM ag
 
 When a VSS writer fails, Azure cannot take an application-consistent snapshot and falls back to a file system-consistent restore point. This fallback applies for the **next three attempts**, regardless of the configured restore point schedule. From the **fourth attempt onward**, Azure resumes attempting application-consistent restore points.
 
-To resolve VSS writer failures, see [Troubleshoot VSS writer issues](https://learn.microsoft.com/en-us/azure/backup/backup-azure-vms-troubleshoot#extensionfailedvsswriterinbadstate---snapshot-operation-failed-because-vss-writers-were-in-a-bad-state).
+To resolve VSS writer failures, see [Troubleshoot VSS writer issues](/azure/backup/backup-azure-vms-troubleshoot#extensionfailedvsswriterinbadstate---snapshot-operation-failed-because-vss-writers-were-in-a-bad-state).
 
 > [!WARNING]
 > Do not manually delete the VMSnapshot extension. Deleting it breaks subsequent application-consistent restore point creation until the extension is reinstalled and provisioned again.

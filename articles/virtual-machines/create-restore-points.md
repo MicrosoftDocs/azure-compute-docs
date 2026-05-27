@@ -15,14 +15,14 @@ ms.custom: template-quickstart
 
 Use the Azure Compute REST APIs to create application-consistent or crash-consistent restore points for a VM, in the same region or cross-region.
 
-API references: [Restore Points](https://learn.microsoft.com/en-us/rest/api/compute/restore-points) | [Restore Point Collections](https://learn.microsoft.com/en-us/rest/api/compute/restore-point-collections) | [PowerShell](https://learn.microsoft.com/en-us/powershell/module/az.compute/new-azrestorepoint)
+API references: [Restore Points](/rest/api/compute/restore-points) | [Restore Point Collections](/rest/api/compute/restore-point-collections) | [PowerShell](/powershell/module/az.compute/new-azrestorepoint)
 
 ---
 
 ## Prerequisites
 
 - [Learn more](concepts-restore-points.md) about the requirements for a VM restore point.
-- Review the [support requirements](https://learn.microsoft.com/en-us/azure/virtual-machines/concepts-restore-points) and [limitations](https://learn.microsoft.com/en-us/azure/virtual-machines/virtual-machines-create-restore-points#limitations) before creating restore points.
+- Review the [support requirements](/azure/virtual-machines/concepts-restore-points) and [limitations](/azure/virtual-machines/virtual-machines-create-restore-points#limitations) before creating restore points.
 
 
 ## Create VM restore points
@@ -35,7 +35,7 @@ You can find more information in the [Restore Points](/rest/api/compute/restore-
 
 A restore point collection is the parent resource that holds all restore points for a VM.
 
-Call the [Restore Point Collections — Create or Update](https://learn.microsoft.com/en-us/rest/api/compute/restore-point-collections/create-or-update) API:
+Call the [Restore Point Collections — Create or Update](/rest/api/compute/restore-point-collections/create-or-update) API:
 
 ```http
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{collectionName}?api-version=2021-03-01
@@ -62,7 +62,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 ### Step 2: Create a VM restore point
 
-Call the [Restore Points — Create](https://learn.microsoft.com/en-us/rest/api/compute/restore-points/create) API within the collection created in Step 1:
+Call the [Restore Points — Create](/rest/api/compute/restore-points/create) API within the collection created in Step 1:
 
 ```http
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{collectionName}/restorePoints/{restorePointName}?api-version=2021-03-01
@@ -94,7 +94,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 **Local restore points** complete within a few seconds. Check `provisioningState` on the restore point — it transitions from `Creating` to `Succeeded` (or `Failed`).
 
-**Cross-region restore points** are a long-running operation. Poll the [Restore Points — Get](https://learn.microsoft.com/en-us/rest/api/compute/restore-points/get) API with `$expand=instanceView` to check per-disk copy progress (`completionPercent`). The restore point is usable only after all disk restore points have completed replication.
+**Cross-region restore points** are a long-running operation. Poll the [Restore Points — Get](/rest/api/compute/restore-points/get) API with `$expand=instanceView` to check per-disk copy progress (`completionPercent`). The restore point is usable only after all disk restore points have completed replication.
 
 ```http
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{collectionName}/restorePoints/{restorePointName}?$expand=instanceView&api-version=2021-03-01

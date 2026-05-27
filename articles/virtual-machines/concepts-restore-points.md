@@ -33,6 +33,8 @@ Data disks restored from Trusted launch enabled OS Disk | No
 Confidential VMs | Supported for application consistency only with size [v6-series](/azure/confidential-computing/virtual-machine-options) in UAE North and Korea Central (**preview**)<br>[v5-series](/azure/confidential-computing/virtual-machine-options) isn't supported.<br>Not supported for crash consistency.
 Generation 2 VMs (UEFI boot) | Yes
 VMs with NVMe disks (Storage optimized - Lsv2-series) | Yes for Application consistent. **Crash-consistent** restore points created for Intel V6+ (Dsv6-series, Edsv6-series, Esv6-series, etc.) and AMD V7+ (Dasv7-series, Dadsv7-series, Easv7-series, Faldsv7-series, etc.) Virtual Machines (VMs) with **more than one data disk might not be consistent across disks.** 
+VM Architecture - x64| Application and crash consistent supported.
+VM Architecture - ARM64| Application supported for Linux images only.
 VMs in Proximity placement groups | Yes
 VMs in an availability set | Yes. You can create VM restore points for individual VMs within an availability set. You need to create restore points for all the VMs within an availability set to protect an entire availability set instance.
 VMs inside VMSS with uniform orchestration | No
