@@ -1,6 +1,6 @@
 ---
-title: VM Snapshot extension using VM restore points
-description: VM Snapshot extension using VM restore points
+title: VM Snapshot extension using VMs restore points
+description: VM Snapshot extension using VMs restore points
 author: aarthiv
 ms.author: aarthiv
 ms.service: azure-virtual-machines
@@ -23,7 +23,7 @@ Application-consistent restore points capture Virtual Machine data in a state th
 When you request an application-consistent restore point, Azure automatically installs the VMSnapshot extension on the Virtual Machine if it isn't already present. The extension updates automatically no manual management is required.
 
 > [!IMPORTANT]
-> Azure begins creating a restore point only after **all extensions on the Virtual Machine**, including VMSnapshot, has successfully provisioned. Monitor extension provisioning state before expecting restore point creation to succeed.
+> Azure begins creating a restore point only after **all extensions on the Virtual Machine**, including VMSnapshot, has finished provisioning. Monitor extension provisioning state before expecting restore point creation to succeed.
 
 To confirm the extension is installed and in a **Provisioned** state, check **Virtual Machine > Extensions + applications** in the Azure portal, or run:
 
@@ -45,7 +45,7 @@ Use the following paths to access VMSnapshot extension logs directly on the Virt
 
 ## Troubleshooting
 
-Most restore point failures are caused by communication issues between the Virtual Machine agent and the VMSnapshot extension. Start troubleshooting with [Troubleshoot restore point failures](restore-point-troubleshooting.md).
+Communication issues between the Virtual Machine agent and the VMSnapshot extension cause most restore point failures. Start troubleshooting with [Troubleshoot restore point failures](restore-point-troubleshooting.md).
 
 ### VSS writer failures (Windows)
 
