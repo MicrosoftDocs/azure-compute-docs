@@ -23,7 +23,7 @@ Application-consistent restore points capture Virtual Machine data in a state th
 When you request an application-consistent restore point, Azure automatically installs the VMSnapshot extension on the Virtual Machine if it isn't already present. The extension updates automatically no manual management is required.
 
 > [!IMPORTANT]
-> Azure begins creating a restore point only after **all extensions on the Virtual Machine**, including VMSnapshot, have successfully provisioned. Monitor extension provisioning state before expecting restore point creation to succeed.
+> Azure begins creating a restore point only after **all extensions on the Virtual Machine**, including VMSnapshot, has successfully provisioned. Monitor extension provisioning state before expecting restore point creation to succeed.
 
 To confirm the extension is installed and in a **Provisioned** state, check **Virtual Machine > Extensions + applications** in the Azure portal, or run:
 
@@ -49,13 +49,13 @@ Most restore point failures are caused by communication issues between the Virtu
 
 ### VSS writer failures (Windows)
 
-When a VSS writer fails, Azure cannot take an application-consistent snapshot and falls back to a file system-consistent restore point. This fallback applies for the **next three attempts**, regardless of the configured restore point schedule. From the **fourth attempt onward**, Azure resumes attempting application-consistent restore points.
+When a VSS writer fails, Azure can't take an application-consistent snapshot and falls back to a file system-consistent restore point. This fallback applies for the **next three attempts**, regardless of the configured restore point schedule. From the **fourth attempt onward**, Azure resumes attempting application-consistent restore points.
 
 To resolve VSS writer failures, see [Troubleshoot VSS writer issues](/azure/backup/backup-azure-vms-troubleshoot#extensionfailedvsswriterinbadstate---snapshot-operation-failed-because-vss-writers-were-in-a-bad-state).
 
 > [!WARNING]
-> Do not manually delete the VMSnapshot extension. Deleting it breaks subsequent application-consistent restore point creation until the extension is reinstalled and provisioned again.
+> Don't manually delete the VMSnapshot extension. Deleting it breaks subsequent application-consistent restore point creation until the extension is reinstalled and provisioned again.
 
 ## Next steps
 
-[Create a VM restore point](create-restore-points.md)
+[Create a Virtual machine restore point](create-restore-points.md)
