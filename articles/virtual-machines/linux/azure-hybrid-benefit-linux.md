@@ -401,10 +401,10 @@ az vm update \
 
 1. When the PAYG to BYOS conversion is finished, you must register the VM with Red Hat for system updates and usage compliance.
 
-1. If you want to return the original subscription model, set `license-type` to `None`.
+1. If you want to return the original subscription model, set `license-type` to `NONE`.
 
 ```azurecli
-# In order to revert back to the original subscription model, set license-type to None.
+# In order to revert back to the original subscription model, set license-type to NONE.
 az vm update \
   --resource-group <RG> \
   --vm-name <VM_NAME> \
@@ -425,10 +425,10 @@ az vm update \
 
 1. When the conversion from PAYG to BYOS is finished, you must register the VM directly with SUSE for software updates and usage compliance.
 
-1. If you want to return the original subscription model, set `license-type` to `None`.
+1. If you want to return the original subscription model, set `license-type` to `NONE`.
 
 ```azurecli
-# In order to revert back to the original subscription model, set license-type to None.
+# In order to revert back to the original subscription model, set license-type to NONE.
 az vm update \
   --resource-group <RG> \
   --vm-name <VM_NAME> \
@@ -503,7 +503,7 @@ az vm update \
     az feature list --namespace Microsoft.Compute | grep "AHBEnabledForRHEL" -A 3
     ```
 
-1. If you want to return the original subscription model, set `license-type` to `None`.
+1. If you want to return the original subscription model, set `license-type` to `NONE`.
 ```azurecli
 az vm update \
   --resource-group <RG> \
@@ -540,9 +540,9 @@ az vm update \
   --license-type SLES_HPC
  ```
 
-1. If you want to return the original subscription model, set `license-type` to `None`:
+1. If you want to return the original subscription model, set `license-type` to `NONE`:
 ```azurecli
-# In order to revert back to the original subscription model, set license-type to None.
+# In order to revert back to the original subscription model, set license-type to NONE.
 az vm update \
   --resource-group <RG> \
   --vm-name <VM_NAME> \
@@ -559,7 +559,7 @@ In some cases, you must utilize the Azure Management API to patch the license ty
    ```azurecli
    az rest --method patch --url "https://management.azure.com${VM_ID}?api-version=2024-07-01" --body '{"properties":{"licenseType":"SLES_SAP"}}'
    ```
-1. If you want to return the original subscription model, set `license-type` to `None`.
+1. If you want to return the original subscription model, set `license-type` to `NONE`.
    ```azurecli
    az rest --method patch --url "https://management.azure.com${VM_ID}?api-version=2024-07-01" --body '{"properties":{"licenseType":"NONE"}}'
    ```
@@ -577,7 +577,6 @@ The following command converts the VMs that are specified in the argument to BYO
 # to the virtual machines that use Azure Hybrid Benefit.
 az vm update \
   --resource-group <RG> \
-  --vm-name <VM_NAME> \
   --license-type RHEL_BYOS
   --ids $(cat ids.txt)
 ```
@@ -585,14 +584,16 @@ az vm update \
 The following examples show two methods you can use to get a list of resource IDs. One method applies to a resource group, and one method applies to the subscription.
 
 ```azurecli
-# To get a list of all the resource IDs in a resource group:
-az resource list 
+# To get a list of all the VM IDs in a resource group:
+az vm list 
   --resource-group <RG> 
   --query "[].id" 
   --output tsv
 
-# To get a list of all the resource IDs of virtual machines in a subscription:
-az vm list -o json | jq '.[] | {VirtualMachineName: .name, ResourceID: .id}'
+# To get a list of all the VM IDs in a subscription:
+az vm list  
+  --query "[].id" 
+  --output tsv
 ```
 
 ---
@@ -623,7 +624,7 @@ To start using Azure Hybrid Benefit for Red Hat:
 
    You should now be connected to Azure Red Hat Update. The relevant repositories are installed on your machine.
 
-1. If you want to switch back to the BYOS model, set `license-type` to `None` and run the extension. This action removes all RHUI repositories from your VM and stops associated billing.
+1. If you want to switch back to the BYOS model, set `license-type` to `NONE` and run the extension. This action removes all RHUI repositories from your VM and stops associated billing.
 
 > [!NOTE]
 > In the unlikely event that the extension can't install repositories or if there are any other issues, switch the license type back to empty and contact Microsoft support. Taking this step ensures that you aren't billed for software updates.
@@ -649,7 +650,7 @@ To start using Azure Hybrid Benefit for SLES VMs:
 
    You should now be connected to the SUSE public cloud update infrastructure on Azure. The relevant repositories are installed on your machine.
 
-1. If you want to switch back to the BYOS model, set `license-type` to `None`. This action removes all repositories from your VM and stops associated billing.
+1. If you want to switch back to the BYOS model, set `license-type` to `NONE`. This action removes all repositories from your VM and stops associated billing.
 
 You can use the `az vm update` command to update the existing license type on your running VMs. For SLES VMs, run the command and set the `--license-type` parameter to one of the following license types: `SLES`, `SLES_SAP`, or `SLES_HPC`.
 
@@ -784,6 +785,11 @@ az vm extension set \
 ```
 
 ### AHBForRHEL extension versions available
+
+**2.3.0**
+
+Patch CVE-2026-33811, CVE-2026-33814, CVE-2026-39820, CVE-2026-39823, CVE-2026-39825, CVE-2026-39826, CVE-2026-39836, CVE-2026-42499.
+Security improvements.
 
 **2.2.0**
 
