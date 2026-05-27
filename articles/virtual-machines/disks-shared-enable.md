@@ -7,7 +7,6 @@ ms.topic: how-to
 ms.date: 12/03/2025
 ms.author: rogarana
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ai-usage: ai-assisted
 # Customer intent: As a cloud engineer, I want to configure shared disks for Azure managed disks, so that I can enable simultaneous access from multiple virtual machines to support clustered applications.
 ---
 
@@ -86,6 +85,50 @@ $dataDiskConfig = New-AzDiskConfig -Location 'WestCentralUS' -DiskSizeGB 1024 -A
 New-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'mySharedDisk' -Disk $dataDiskConfig
 ```
 
+# [Resource Manager Template](#tab/azure-resource-manager)
+
+Before using the following template, replace `[parameters('dataDiskName')]`, `[resourceGroup().location]`, `[parameters('dataDiskSizeGB')]`, and `[parameters('maxShares')]` with your own values.
+
+```rest
+{ 
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "dataDiskName": {
+      "type": "string",
+      "defaultValue": "mySharedDisk"
+    },
+    "dataDiskSizeGB": {
+      "type": "int",
+      "defaultValue": 1024
+    },
+    "maxShares": {
+      "type": "int",
+      "defaultValue": 2
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Compute/disks",
+      "name": "[parameters('dataDiskName')]",
+      "location": "[resourceGroup().location]",
+      "apiVersion": "2019-07-01",
+      "sku": {
+        "name": "Premium_LRS"
+      },
+      "properties": {
+        "creationData": {
+          "createOption": "Empty"
+        },
+        "diskSizeGB": "[parameters('dataDiskSizeGB')]",
+        "maxShares": "[parameters('maxShares')]"
+      }
+    }
+  ] 
+}
+```
+
+
 ---
 
 ### Deploy a Standard SSD as a shared disk
@@ -129,6 +172,49 @@ az disk create -g myResourceGroup -n mySharedDisk --size-gb 1024 -l westcentralu
 $dataDiskConfig = New-AzDiskConfig -Location 'WestCentralUS' -DiskSizeGB 1024 -AccountType StandardSSD_LRS -CreateOption Empty -MaxSharesCount 2
 
 New-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'mySharedDisk' -Disk $dataDiskConfig
+```
+
+# [Resource Manager Template](#tab/azure-resource-manager)
+
+Replace the values in this Azure Resource Manager template with your own, before using it:
+
+```rest
+{ 
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "dataDiskName": {
+      "type": "string",
+      "defaultValue": "mySharedDisk"
+    },
+    "dataDiskSizeGB": {
+      "type": "int",
+      "defaultValue": 1024
+    },
+    "maxShares": {
+      "type": "int",
+      "defaultValue": 2
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Compute/disks",
+      "name": "[parameters('dataDiskName')]",
+      "location": "[resourceGroup().location]",
+      "apiVersion": "2019-07-01",
+      "sku": {
+        "name": "StandardSSD_LRS"
+      },
+      "properties": {
+        "creationData": {
+          "createOption": "Empty"
+        },
+        "diskSizeGB": "[parameters('dataDiskSizeGB')]",
+        "maxShares": "[parameters('maxShares')]"
+      }
+    }
+  ] 
+}
 ```
 
 ---
@@ -206,6 +292,162 @@ $datadiskconfig = New-AzDiskConfig -Location 'WestCentralUS' -DiskSizeGB 1024 -A
 
 New-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'mySharedDisk' -Disk $datadiskconfig
 ```
+
+# [Resource Manager Template](#tab/azure-resource-manager)
+
+##### Regional disk example
+
+Before using the following template, replace `[parameters('dataDiskName')]`, `[resourceGroup().location]`, `[parameters('dataDiskSizeGB')]`, `[parameters('maxShares')]`, `[parameters('diskIOPSReadWrite')]`, `[parameters('diskMBpsReadWrite')]`, `[parameters('diskIOPSReadOnly')]`, and `[parameters('diskMBpsReadOnly')]` with your own values.
+
+```rest
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "diskName": {
+      "type": "string",
+      "defaultValue": "uShared30"
+    },
+    "location": {
+        "type": "string",
+        "defaultValue": "westus",
+        "metadata": {
+                "description": "Location for all resources."
+        }
+    },
+    "dataDiskSizeGB": {
+      "type": "int",
+      "defaultValue": 1024
+    },
+    "maxShares": {
+      "type": "int",
+      "defaultValue": 2
+    },
+    "diskIOPSReadWrite": {
+      "type": "int",
+      "defaultValue": 2048
+    },
+    "diskMBpsReadWrite": {
+      "type": "int",
+      "defaultValue": 20
+    },    
+    "diskIOPSReadOnly": {
+      "type": "int",
+      "defaultValue": 100
+    },
+    "diskMBpsReadOnly": {
+      "type": "int",
+      "defaultValue": 1
+    } 
+  }, 
+  "resources": [
+    {
+        "type": "Microsoft.Compute/disks",
+        "name": "[parameters('diskName')]",
+        "location": "[parameters('location')]",
+        "apiVersion": "2019-07-01",
+        "sku": {
+            "name": "UltraSSD_LRS"
+        },
+        "properties": {
+            "creationData": {
+                "createOption": "Empty"
+            },
+            "diskSizeGB": "[parameters('dataDiskSizeGB')]",
+            "maxShares": "[parameters('maxShares')]",
+            "diskIOPSReadWrite": "[parameters('diskIOPSReadWrite')]",
+            "diskMBpsReadWrite": "[parameters('diskMBpsReadWrite')]",
+            "diskIOPSReadOnly": "[parameters('diskIOPSReadOnly')]",
+            "diskMBpsReadOnly": "[parameters('diskMBpsReadOnly')]"
+        }
+    }
+  ]
+}
+```
+
+
+##### Zonal disk example
+
+Before using the following template, replace `[parameters('dataDiskName')]`, `[resourceGroup().location]`, `[parameters('dataDiskSizeGB')]`, `[parameters('maxShares')]`, `[parameters('diskIOPSReadWrite')]`, `[parameters('diskMBpsReadWrite')]`, `[parameters('diskIOPSReadOnly')]`, and `[parameters('diskMBpsReadOnly')]` with your own values.
+
+```rest
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "diskName": {
+      "type": "string",
+      "defaultValue": "uShared30"
+    },
+    "location": {
+        "type": "string",
+        "defaultValue": "westus",
+        "metadata": {
+                "description": "Location for all resources."
+        }
+    },
+    "dataDiskSizeGB": {
+      "type": "int",
+      "defaultValue": 1024
+    },
+    "maxShares": {
+      "type": "int",
+      "defaultValue": 2
+    },
+    "diskIOPSReadWrite": {
+      "type": "int",
+      "defaultValue": 2048
+    },
+    "diskMBpsReadWrite": {
+      "type": "int",
+      "defaultValue": 20
+    },    
+    "diskIOPSReadOnly": {
+      "type": "int",
+      "defaultValue": 100
+    },
+    "diskMBpsReadOnly": {
+      "type": "int",
+      "defaultValue": 1
+    },
+	"zone": {
+		"type": "int",
+		"allowedValues": [
+			1,
+			2,
+			3
+		],
+	  "metadata": {
+			"description": "Zone to deploy to."
+		}
+	} 
+  }, 
+  "resources": [
+    {
+        "type": "Microsoft.Compute/disks",
+        "name": "[parameters('diskName')]",
+        "location": "[parameters('location')]",
+		"zones": ["[parameters('zone')]"],
+        "apiVersion": "2019-07-01",
+        "sku": {
+            "name": "UltraSSD_LRS"
+        },
+        "properties": {
+            "creationData": {
+                "createOption": "Empty"
+            },
+            "diskSizeGB": "[parameters('dataDiskSizeGB')]",
+            "maxShares": "[parameters('maxShares')]",
+            "diskIOPSReadWrite": "[parameters('diskIOPSReadWrite')]",
+            "diskMBpsReadWrite": "[parameters('diskMBpsReadWrite')]",
+            "diskIOPSReadOnly": "[parameters('diskIOPSReadOnly')]",
+            "diskMBpsReadOnly": "[parameters('diskMBpsReadOnly')]"
+        }
+    }
+  ]
+}
+```
+
 
 ---
 
