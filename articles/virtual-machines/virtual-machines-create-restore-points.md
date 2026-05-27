@@ -51,10 +51,9 @@ Virtual Machine restore points support [**Instant Access**](/azure/virtual-machi
 
 ### Key concepts in Instant Access (Preview)
 
-
 | Property               | Description |
-|----------------------|------------|
-|Allowlist subscription | Open the Cloud shell (PowerShell) from portal.<br> [https://shell.azure.com/](https://shell.azure.com/) <br> - Ensure your using the subscription, which is used for testing this feature. <br> - Run `Register-AzProviderFeature -FeatureName 'AppConsistentInstantAccessSnapshotForDirectDriveDisks' -ProviderNamespace 'Microsoft.Compute'`
+|------------------------|-------------|
+| Allowlist subscription | Open the Cloud shell (PowerShell) from portal.<br> [https://shell.azure.com/](https://shell.azure.com/) <br> - Ensure your using the subscription, which is used for testing this feature. <br> - Run `Register-AzProviderFeature -FeatureName 'AppConsistentInstantAccessSnapshotForDirectDriveDisks' -ProviderNamespace 'Microsoft.Compute'`
 | `instantAccess` | Boolean property set on the restore point **collection**. Set to `true` to enable Instant Access for all restore points in the collection. Default is `false`. |
 | `instantAccessDurationMinutes` | Integer property set on each **restore point**. Specifies how long Instant Access remains active, in minutes. Valid range: 60–300 minutes. Default: 300 (5 hours). |
 | `snapshotAccessState` | Read-only property on an individual disk restore point. Indicates the Instant Access state of that specific disk. |
