@@ -15,17 +15,17 @@ ms.custom: template-how-to
 
 ---
 
-Application-consistent restore points capture VM data in a state that guarantees application integrity at the time of the snapshot. To achieve this, Azure coordinates with applications running on the VM before taking the snapshot:
+Application-consistent restore points capture Virtual Machine data in a state that guarantees application integrity at the time of the snapshot. To achieve this, Azure coordinates with applications running on the Virtual Machine before taking the snapshot:
 
 - **Windows**: The **VMSnapshot Windows** extension triggers the Volume Shadow Copy Service (VSS) to quiesce application writes.
 - **Linux**: The **VMSnapshot Linux** extension runs pre- and post-scripts to flush and resume application I/O.
 
-When you request an application-consistent restore point, Azure automatically installs the VMSnapshot extension on the VM if it isn't already present. The extension updates automatically — no manual management is required.
+When you request an application-consistent restore point, Azure automatically installs the VMSnapshot extension on the Virtual Machine if it isn't already present. The extension updates automatically no manual management is required.
 
 > [!IMPORTANT]
-> Azure begins creating a restore point only after **all extensions on the VM**, including VMSnapshot, have successfully provisioned. Monitor extension provisioning state before expecting restore point creation to succeed.
+> Azure begins creating a restore point only after **all extensions on the Virtual Machine**, including VMSnapshot, have successfully provisioned. Monitor extension provisioning state before expecting restore point creation to succeed.
 
-To confirm the extension is installed and in a **Provisioned** state, check **VM > Extensions + applications** in the Azure portal, or run:
+To confirm the extension is installed and in a **Provisioned** state, check **Virtual Machine > Extensions + applications** in the Azure portal, or run:
 
 ```azurecli
 az vm extension show \
@@ -36,7 +36,7 @@ az vm extension show \
 
 ## Extension logs
 
-Use the following paths to access VMSnapshot extension logs directly on the VM:
+Use the following paths to access VMSnapshot extension logs directly on the Virtual Machine:
 
 | OS | Log path |
 |---|---|
@@ -45,7 +45,7 @@ Use the following paths to access VMSnapshot extension logs directly on the VM:
 
 ## Troubleshooting
 
-Most restore point failures are caused by communication issues between the VM agent and the VMSnapshot extension. Start troubleshooting with [Troubleshoot restore point failures](restore-point-troubleshooting.md).
+Most restore point failures are caused by communication issues between the Virtual Machine agent and the VMSnapshot extension. Start troubleshooting with [Troubleshoot restore point failures](restore-point-troubleshooting.md).
 
 ### VSS writer failures (Windows)
 
