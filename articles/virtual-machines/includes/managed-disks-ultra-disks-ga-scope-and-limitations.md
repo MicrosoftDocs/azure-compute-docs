@@ -11,7 +11,6 @@ ms.custom: include file
 ---
 
 The following list contains Ultra Disk's limitations:
-- Only during deployment with Virtual Machine Scale Sets with Uniform orchestration mode: At time of deployment, Ultra Disks used with Uniform Virtual Machine Scale Sets use different formulas for IOPS and throughput for their performance. Exceeding the limits of these formulas results in a deployment failure. Once the deployment succeeds you can [increase the performance](../disks-enable-ultra-ssd.md#adjust-the-performance-of-an-ultra-disk) of these disks. See [Ultra Disk IOPS](../disks-types.md#ultra-disk-iops) and [Ultra Disk throughput](../disks-types.md#ultra-disk-throughput) for details. 
 - Ultra Disks can't be used as an OS disk or with Azure Compute Gallery.
 - Currently, Ultra Disks only support Single VM and Availability zone infrastructure options as locally redundant storage (LRS). Ultra Disks don't support zone redundant storage (ZRS).
 - Ultra Disks don't support availability sets.
