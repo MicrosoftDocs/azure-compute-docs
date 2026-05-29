@@ -129,7 +129,7 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 |[Memory Preserving Updates](../../maintenance-and-updates.md)| Supported |
 |[Generation 2 VMs](../../generation-2.md)| Supported |
 |[Generation 1 VMs](../../generation-2.md)| Supported |
-|[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli)| Supported |
+|[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli)| Required |
 |[Ephemeral OS Disk](../../ephemeral-os-disks.md)| Not Supported |
 |[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)| Supported |
 
