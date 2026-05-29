@@ -292,7 +292,7 @@ Before you begin, ensure the following:
 
 - The VM uses **Generation 2** (Gen2). Gen1 VMs can't be converted to NVMe.
 - The VM runs **Windows Server 2019** or later. Windows Server 2016 and earlier aren't supported unless you use `-IgnoreWindowsVersionCheck` and verify driver compatibility manually.
-- The target VM SKU supports NVMe. See the [Azure Boost availability table](azure-boost.md#availability) to confirm.
+- The target VM SKU supports NVMe. See the [Azure Boost availability table](/azure/azure-boost/overview#current-availability) to confirm.
 - VMs configured with **Trusted Launch** can't be converted from SCSI to NVMe.
 - Conversion from a VM **with a temp disk** (for example, `Standard_D4ds_v5`) to a v6 SKU (for example, `Standard_D4ds_v6`) isn't supported through this script. Use disk snapshots for that migration path. Conversion from VMs **without a temp disk** (for example, `Standard_D4s_v5`) to v6 SKUs is supported.
 - Third-party antivirus or security software can interfere with the driver changes made during conversion. Temporarily disable it before running the script. If the VM shows a blue screen after conversion, revert to SCSI and retry after disabling your security solution.
