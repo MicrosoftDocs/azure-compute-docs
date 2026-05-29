@@ -6,7 +6,7 @@ ms.author: cynthn
 ms.service: azure-virtual-machines
 ms.subservice: azure-spot-vm
 ms.topic: how-to
-ms.date: 11/13/2024
+ms.date: 05/19/2026
 ms.update-cycle: 180-days
 ms.custom: portal
 ms.reviewer: cynthn
@@ -75,7 +75,7 @@ Find the Spot Placement Score in the Spot tab of the Virtual Machine Scale Sets 
 
 1. Fill out the *Size*, *Region*, *Availability Zones*, and *Initial instance count* fields in the **Your Placement Score** section. 
 
-1. Click on **Save + Apply** to receive your placement score for this configuration. 
+1. Select **Save + Apply** to receive your placement score for this configuration. 
 
 ### [REST API](#tab/rest-api)
 

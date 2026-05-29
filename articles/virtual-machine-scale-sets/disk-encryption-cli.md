@@ -6,7 +6,7 @@ ms.author: cynthn
 ms.topic: tutorial
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: disks
-ms.date: 09/23/2025
+ms.date: 05/19/2026
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
 # Customer intent: As a cloud administrator, I want to encrypt disks in a Virtual Machine Scale Set using the command line, so that I can enhance data security and compliance for my organization's cloud infrastructure.
@@ -107,7 +107,7 @@ az vmss encryption enable \
 
 It might take a minute or two for the encryption process to start.
 
-As the scale set is upgrade policy on the scale set created in an earlier step is set to *automatic*, the VM instances automatically start the encryption process. On scale sets where the upgrade policy is to manual, start the encryption policy on the VM instances with [az vmss update-instances](/cli/azure/vmss#az-vmss-update-instances).
+As the upgrade policy on the scale set created in an earlier step is set to *automatic*, the VM instances automatically start the encryption process. On scale sets where the upgrade policy is to manual, start the encryption policy on the VM instances with [az vmss update-instances](/cli/azure/vmss#az-vmss-update-instances).
 
 ### Enable encryption using KEK to wrap the key
 

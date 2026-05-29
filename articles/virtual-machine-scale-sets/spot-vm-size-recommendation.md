@@ -6,7 +6,7 @@ ms.author: cynthn
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: azure-spot-vm
 ms.topic: how-to
-ms.date: 11/22/2022
+ms.date: 05/19/2026
 ms.update-cycle: 180-days
 ms.custom: portal
 ms.reviewer: cynthn

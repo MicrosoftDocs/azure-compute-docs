@@ -6,7 +6,7 @@ ms.author: cynthn
 ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: disks
-ms.date: 09/23/2025
+ms.date: 05/19/2026
 ms.reviewer: mimckitt
 
 # Customer intent: "As a cloud administrator, I want to enable disk encryption for my virtual machine scale sets, so that I can ensure data protection and compliance with organizational security standards."

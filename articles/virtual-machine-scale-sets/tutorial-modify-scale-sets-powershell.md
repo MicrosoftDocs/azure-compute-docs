@@ -6,7 +6,7 @@ ms.author: cynthn
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
 ms.custom: devx-track-azurepowershell
-ms.date: 06/14/2024
+ms.date: 05/19/2026
 ms.reviewer: mimckitt
 # Customer intent: As a cloud administrator, I want to modify and manage a Virtual Machine Scale Set using PowerShell, so that I can effectively update configurations and ensure the scale set meets my application requirements.
 ---
@@ -243,7 +243,7 @@ In the cases where you need to reimage a specific instance, use [Set-AzVmss](/po
 Set-AzVmssVM -ResourceGroupName myResourceGroup -VMScaleSetName myScaleSet -InstanceId myScaleSet_Instance1 -Reimage
 ```
 
-To reimage all instances in a scale set simply specify the scale set name and omit any instanceIDs. 
+To reimage all instances in a scale set, specify the scale set name and omit any instanceIDs. 
 
 ```azurepowershell-interactive
 Set-AzVmssVM -Reimage -ResourceGroupName myResourceGroup -VMScaleSetName myScaleSet

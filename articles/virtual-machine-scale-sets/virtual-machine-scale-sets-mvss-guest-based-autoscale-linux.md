@@ -6,7 +6,7 @@ ms.author: cynthn
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: autoscale
-ms.date: 06/14/2024
+ms.date: 05/19/2026
 ms.reviewer: mimckitt
 ms.custom: avverma, linux-related-content
 # Customer intent: As a cloud engineer, I want to configure autoscale for a Linux Virtual Machine Scale Set using guest metrics, so that I can effectively manage resource allocation based on memory usage and improve application performance.

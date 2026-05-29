@@ -6,7 +6,7 @@ ms.author: cynthn
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: networking
-ms.date: 06/14/2024
+ms.date: 05/19/2026
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurepowershell, devx-track-azurecli
 # Customer intent: As a cloud architect, I want to configure advanced networking features for Azure Virtual Machine Scale Sets, so that I can optimize network performance and security for my applications.
@@ -224,7 +224,7 @@ To create a scale set using an Azure template, make sure the API version of the 
     }
 }
 ```
-Note when Virtual Machine Scale Sets with public IPs per instance are created with a load balancer in front, the of the instance IPs is determined by the SKU of the Load Balancer (that is, Basic or Standard). If the Virtual Machine Scale Set is created without a load balancer, the SKU of the instance IPs can be set directly by using the SKU section of the template as shown above.
+Note when Virtual Machine Scale Sets with public IPs per instance are created with a load balancer in front, the SKU of the instance IPs is determined by the SKU of the Load Balancer (that is, Basic or Standard). If the Virtual Machine Scale Set is created without a load balancer, the SKU of the instance IPs can be set directly by using the SKU section of the template as shown above.
 
 Example template using a Basic Load Balancer: [vmss-public-ip-linux](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vmss-public-ip-linux)
 
@@ -606,7 +606,7 @@ The following example shows how to add a second IP Configuration to your NIC.
 
 ## Explicit network outbound connectivity for Flexible scale sets 
 
-In order to enhance default network security, [Virtual Machine Scale Sets with Flexible orchestration](..\virtual-machines\flexible-virtual-machine-scale-sets.md) will require that instances created implicitly via the autoscaling profile have outbound connectivity defined explicitly through one of the following methods: 
+To enhance default network security, [Virtual Machine Scale Sets with Flexible orchestration](..\virtual-machines\flexible-virtual-machine-scale-sets.md) will require that instances created implicitly via the autoscaling profile have outbound connectivity defined explicitly through one of the following methods: 
 
 - For most scenarios, we recommend [NAT Gateway attached to the subnet](/azure/virtual-network/nat-gateway/quickstart-create-nat-gateway-portal).
 - For scenarios with high security requirements or when using Azure Firewall or Network Virtual Appliance (NVA), you can specify a custom User Defined Route as next hop through firewall. 
