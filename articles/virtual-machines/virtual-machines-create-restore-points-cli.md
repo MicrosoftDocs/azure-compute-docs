@@ -36,7 +36,7 @@ Use the [az restore-point collection create](/cli/azure/restore-point/collection
 az restore-point collection create --location "norwayeast" --source-id "/subscriptions/{subscription-id}/resourceGroups/ExampleRg/providers/Microsoft.Compute/virtualMachines/ExampleVM" --tags myTag1="tagValue1" --resource-group "ExampleRg" --collection-name "ExampleRpc" 
 ```
 ### Create a VM restore point collection with instant access
-Instant Access is an optional parameter supported in application-consistent restore points. It is applicable for Virtual Machine that have Premium SSD v2 or Ultra disks as data disks. When Instant Access is enabled on the restore point collection, disk restoration can begin immediately from the restore point without waiting for full hydration—significantly reducing RTOs. To know more about instant access restore points see [here](/articles/virtual-machines/virtual-machines-create-restore-points.md#instant-access-preview)
+Instant Access is an optional parameter supported in application-consistent restore points. It is applicable for Virtual Machine that have Premium SSD v2 or Ultra disks as data disks. When Instant Access is enabled on the restore point collection, disk restoration can begin immediately from the restore point without waiting for full hydration—significantly reducing RTOs. To know more about instant access restore points see [here](/azure/virtual-machines/virtual-machines-create-restore-points#instant-access-preview)
 ```
 az restore-point collection create --location "norwayeast" --source-id "/subscriptions/{subscription-id}/resourceGroups/ExampleRg/providers/Microsoft.Compute/virtualMachines/ExampleVM" --tags myTag1="tagValue1" --resource-group "ExampleRg" --collection-name "ExampleRpc" --instant-access true
 ```
@@ -93,4 +93,4 @@ az restore-point collection update -g MyResourceGroup --collection-name ExampleR
 
 ## Next steps
 [Learn more](./backup-recovery.md) about Backup and restore options for virtual machines in Azure. <br>
-[Learn more](/articles/virtual-machines/virtual-machines-create-restore-points.md#instant-access-preview) about Instant Access restore points.
+[Learn more](/azure/virtual-machines/virtual-machines-create-restore-points#instant-access-preview) about Instant Access restore points.
