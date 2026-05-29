@@ -1,18 +1,18 @@
 ---
 author: MelissaHollingshed
 ms.author: mehollin
-ms.date: 07/31/2024
+ms.date: 05/29/2026
 ms.topic: how-to
 ms.service: azure-virtual-machines
-title: SCSI to NVMe for Linux VMs
+title: SCSI to NVMe for Linux and Windows VMs
 description: How to convert SCSI to NVMe using Linux
-ms.custom: sfi-image-nochange
+ms.custom: sfi-image-nochange, linux-related-content, windows-related-content
 # Customer intent: As a cloud solutions architect, I want to convert virtual machines running Linux from SCSI to NVMe storage, so that I can enhance their performance and scalability while ensuring compatibility with modern cloud infrastructure.
 ---
 
-# Converting Virtual Machines Running Linux from SCSI to NVMe
+# Convert Linux and Windows VMs from SCSI to NVMe
 
-In this article, we discuss the process of converting virtual machines (VM) running Linux from SCSI to NVMe storage. By migrating to NVMe, you can take advantage of its improved performance and scalability.
+Learn how to convert Azure virtual machines(VM)s running Linux or Windows from a SCSI disk controller to NVMe using Azure Boost and the Azure NVMe Conversion script.
 
 ## SCSI vs NVMe
 
@@ -37,7 +37,7 @@ Changing the host interface from SCSI to NVMe doesn't change the remote storage 
 
 In the following sections, we provide a guide to convert your Azure VM from SCSI to NVMe using Azure Boost ensuring you can take full advantage of these performance improvements and maintain a competitive edge in the cloud computing landscape.
 
-## Migrate your virtual machine (VM) from SCSI to NVMe
+## Migrate a Linux VM from SCSI to NVMe
 In order to migrate from SCSI to NVMe, some steps need to be followed:
 
 1. Check if your virtual machine series supports NVMe
@@ -270,8 +270,8 @@ To download the new udev rules file, use this command:
 and then run `udevadm control --reload-rules && udevadm trigger`
 to reload the udev rules.
 
-##### 3.2.2 Ready to install packages using [Azure VM utils](https://github.com/azure/azure-vm-utils )
-There are precompiled packages available on [Index of /results/cjp256/azure-vm-utils/](https://download.copr.fedorainfracloud.org/results/cjp256/azure-vm-utils/)for multiple distributions. 
+##### 3.2.2 Ready to install packages using [Azure VM utils](https://github.com/azure/azure-vm-utils)
+There are precompiled packages available on [Index of /results/cjp256/azure-vm-utils/](https://download.copr.fedorainfracloud.org/results/cjp256/azure-vm-utils/) for multiple distributions. 
 
 Multiple distributions started already to integrate the package. You can directly install it from their repository.
 
@@ -280,3 +280,106 @@ Multiple distributions started already to integrate the package. You can directl
 | SUSE         | SLES 15 SP5 or newer          |
 | RedHat       | RHEL 9.6 or newer             |
 | Ubuntu       | Ubuntu 25.04 or newer         |
+
+
+## Migrate a Windows VM from SCSI to NVMe
+
+This section describes how to convert a Windows VM from a SCSI to NVMe using the Azure NVMe Conversion script. The script handles OS preparation, VM deallocation, disk controller update, optional resize, and VM restart automatically.
+
+### Prerequisites
+
+Before you begin, ensure the following:
+
+- The VM uses **Generation 2** (Gen2). Gen1 VMs can't be converted to NVMe.
+- The VM runs **Windows Server 2019** or later. Windows Server 2016 and earlier aren't supported unless you use `-IgnoreWindowsVersionCheck` and verify driver compatibility manually.
+- The target VM SKU supports NVMe. See the [Azure Boost availability table](azure-boost.md#availability) to confirm.
+- VMs configured with **Trusted Launch** can't be converted from SCSI to NVMe.
+- Conversion from a VM **with a temp disk** (for example, `Standard_D4ds_v5`) to a v6 SKU (for example, `Standard_D4ds_v6`) isn't supported through this script. Use disk snapshots for that migration path. Conversion from VMs **without a temp disk** (for example, `Standard_D4s_v5`) to v6 SKUs is supported.
+- Third-party antivirus or security software can interfere with the driver changes made during conversion. Temporarily disable it before running the script. If the VM shows a blue screen after conversion, revert to SCSI and retry after disabling your security solution.
+- PowerShell with the following Az module versions installed:
+  - `Az.Compute` ≥ 9.0
+  - `Az.Accounts` ≥ 4.0
+  - `Az.Resources` ≥ 7.0
+
+### Download the script
+
+```powershell
+Invoke-WebRequest `
+  -Uri "https://raw.githubusercontent.com/Azure/SAP-on-Azure-Scripts-and-Utilities/refs/heads/main/Azure-NVMe-Utils/Azure-NVMe-Conversion.ps1" `
+  -OutFile ".\Azure-NVMe-Conversion.ps1"
+```
+
+The script is part of the open-source [SAP-on-Azure-Scripts-and-Utilities](https://github.com/Azure/SAP-on-Azure-Scripts-and-Utilities/tree/main/Azure-NVMe-Utils) repository and is licensed under the MIT license.
+
+### Run the conversion
+
+Use the `-FixOperatingSystemSettings` switch to have the script automatically configure the `stornvme` driver for boot-start. This is required for Windows to recognize the NVMe controller after the VM restarts. Omitting it equires you to set the driver manually before conversion.
+
+```powershell
+.\Azure-NVMe-Conversion.ps1 `
+  -ResourceGroupName "<resource-group-name>" `
+  -VMName "<vm-name>" `
+  -NewControllerType NVMe `
+  -VMSize "<target-sku>" `
+  -FixOperatingSystemSettings `
+  -StartVM `
+  -WriteLogfile
+```
+
+The script performs the following steps automatically:
+
+1. Validates module versions, VM existence, OS type, Windows version, Gen2, current controller type, and SKU NVMe capability.
+2. Optionally fixes the `stornvme` driver service (`sc.exe config stornvme start=boot`) and validates other OS settings for NVMe readiness (with `-FixOperatingSystemSettings`).
+3. Stops and deallocates the VM.
+4. Updates `supportedCapabilities.diskControllerTypes` to `SCSI, NVMe` on the OS disk via a REST PATCH.
+5. Resizes the VM to the target SKU.
+6. Starts the VM (with `-StartVM`).
+
+> [!TIP]
+> The script outputs a revert command at the end of a successful run. Save that command before closing the session so you can roll back to SCSI if needed.
+
+### What changes for your Windows VM
+
+Unlike Linux, Windows uses drive letters rather than device paths, so the OS disk remains `C:\` after conversion. However, the underlying disk interface changes, and data disk assignments may shift if you don't use persistent disk identifiers.
+
+| Disk | SCSI-enabled VM | NVMe-enabled VM |
+|------|-----------------|-----------------|
+| OS disk | `C:\` (unchanged) | `C:\` (unchanged) |
+| Temp disk | `D:\` (typically) | `D:\` (typically, RAW on v6 SKUs—not pre-formatted with NTFS) |
+| Data disks | Assigned by LUN order | Assigned by NVMe namespace order |
+
+> [!IMPORTANT]
+> On v6 SKUs, temp disks are RAW and not pre-formatted with NTFS. Use a startup script or custom script extension to format and mount them at each boot.
+
+### Verify the conversion
+
+After the VM restarts, confirm the disk controller type changed successfully.
+
+**Using PowerShell:**
+
+```powershell
+$vm = Get-AzVM -ResourceGroupName "<resource-group-name>" -VMName "<vm-name>"
+$vm.StorageProfile.DiskControllerType
+```
+
+The output should be `NVMe`.
+
+**Using Device Manager inside the VM:**
+
+1. Open **Device Manager**.
+2. Expand **Storage controllers**.
+3. Confirm **Standard NVM Express Controller** is listed.
+
+### Revert to SCSI
+
+If you need to roll back, rerun the script with `-NewControllerType SCSI` and the original VM SKU:
+
+```powershell
+.\Azure-NVMe-Conversion.ps1 `
+  -ResourceGroupName "<resource-group-name>" `
+  -VMName "<vm-name>" `
+  -NewControllerType SCSI `
+  -VMSize "<original-sku>" `
+  -StartVM `
+  -WriteLogfile
+```
