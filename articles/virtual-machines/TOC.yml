@@ -750,7 +750,7 @@
        href: enable-nvme-remote-faqs.yml
      - name: OS Images Supported
        href: enable-nvme-interface.md
-     - name: SCSI to NVMe for Linux VMs
+     - name: SCSI to NVMe for Linux and Windows VMs
        href: nvme-linux.md
    - name: Previous generation and retired sizes
      items:
