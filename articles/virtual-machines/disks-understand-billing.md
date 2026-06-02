@@ -177,7 +177,7 @@ We're billed for the provisioned capacity of the HDD disk and the transactions p
 |Standard HDD managed disks| S20 LRS Disk|
 |Standard HDD managed disks| S4 LRS Disk Operations|
 
-## Empty disks with no charges
+## Empty disks
 
 If you create a managed disk as an empty disk, Azure initially stores only the disk metadata. Azure doesn't allocate the underlying storage until the disk is first used, for example when you attach it to a VM or upload a VHD.
 
