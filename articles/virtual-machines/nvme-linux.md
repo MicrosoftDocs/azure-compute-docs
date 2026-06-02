@@ -14,7 +14,7 @@ ms.custom: sfi-image-nochange, linux-related-content, windows-related-content
 
 Azure virtual machines (VMs) support two types of storage interfaces: Small Computer System Interface (SCSI) and NVM Express (NVMe). The SCSI interface is a legacy standard that provides physical connectivity and data transfer between computers and peripheral devices. NVMe is similar to SCSI in that it provides connectivity and data transfer, but NVMe is a faster and more efficient interface for data transfer between servers and storage systems.
 
-In this article, you learn how to convert Azure VMs running Linux or Windows from a SCSI disk controller to NVMe by using Azure Boost and the Azure NVMe conversion script.
+In this article, you learn how to convert Azure VMs running Linux or Windows from a SCSI disk controller to NVMe by using Azure Boost and the Azure NVMe Conversion script.
 
 Azure continues to support the SCSI interface on the versions of VM offerings that provide SCSI storage. However, not all new VM series have SCSI storage as an option going forward.
 
@@ -86,7 +86,7 @@ The migration script can automatically take care of the prerequisites when you u
 
 If you want to make the required changes manually, validate that:
 
-- NVMe modules are installed and part of initrd/initramfs.
+- NVMe modules are installed and part of `initrd`/`initramfs`.
 - GRUB configuration includes the parameter `nvme_core.io_timeout=240`.
 - `/etc/fstab` checks for devices.
 
@@ -119,10 +119,10 @@ The script has multiple parameters available:
 
 | Parameter | Description | Required |
 | ------------------------------- | ----------------------------------------------------------------------------- | --------- |
-| `-ResourceGroupName` | Resource group name of your VM. | Yes |
-| `-VMName` | Name of your VM on Azure. | Yes |
-| `-NewControllerType` | Storage controller type that the VM should be converted to (NVMe or SCSI). | Yes |
-| `-VMSize` | Azure VM size that you want to convert the VM to. | Yes |
+| `-ResourceGroupName` | The resource group name for your VM. | Yes |
+| `-VMName` | The name of your VM on Azure. | Yes |
+| `-NewControllerType` | The storage controller type that the VM should be converted to (NVMe or SCSI). | Yes |
+| `-VMSize` | The Azure VM size that you want to convert the VM to. | Yes |
 | `-StartVM` | Start the VM after conversion. | No |
 | `-IgnoreSKUCheck` | Ignore the check of the VM size. | No |
 | `-IgnoreWindowsVersionCheck` | Ignore the Windows version check. | No |
@@ -130,7 +130,7 @@ The script has multiple parameters available:
 | `-WriteLogfile` | Create a log file. | No |
 | `-IgnoreAzureModuleCheck` | Don't run the check for installed Azure modules. | No |
 | `-IgnoreOSCheck` | Don't check for OS readiness. The expectation is that the OS is ready. | No |
-| `-SleepSeconds` | Time for Azure to settle changes before starting the VM. | No |
+| `-SleepSeconds` | The time for Azure to settle changes before starting the VM. | No |
 
 Here's a sample command:
 
@@ -140,7 +140,7 @@ Here's a sample command:
 ```
 
 > [!TIP]
-> You can always revert to SCSI. The script will share a command with you to directly revert to your original configuration.
+> You can always revert to SCSI. The script provides a command to directly revert to your original configuration.
 
 ##### 2.3.1 Sample output
 
@@ -252,7 +252,7 @@ The output should show the OS disk and the data disks.
 
 #### 3.2 Get the udev file for NVMe (optional)
 
-On SCSI virtual machines, the `udev` rules integrated in the `waagent` Azure agent created links in `/dev/disk/azure/scsi1/lunX` to identify the data disks. Because SCSI isn't used anymore, the rules don't apply.
+On SCSI virtual machines, the `udev` rules integrated into the `waagent` Azure agent created links in `/dev/disk/azure/scsi1/lunX` to identify the data disks. Because SCSI isn't used anymore, the rules don't apply.
 
 With one of the two available options to deploy NVMe-enabled `udev` rules, you see new symbolic links in the directory `/dev/disk/azure/data/by-lun`. This directory is the replacement for `/dev/disk/azure/scsi1`.
 
@@ -283,7 +283,7 @@ Multiple distributions already started to integrate the package. You can directl
 
 ## Migrate a Windows VM from SCSI to NVMe
 
-This section describes how to convert a Windows VM from SCSI to NVMe by using the Azure NVMe conversion script. The script handles OS preparation, VM deallocation, disk controller update, optional resize, and VM restart automatically.
+This section describes how to convert a Windows VM from SCSI to NVMe by using the Azure NVMe Conversion script. The script automatically handles OS preparation, VM deallocation, disk controller update, optional resize, and VM restart.
 
 ### Prerequisites
 
@@ -291,17 +291,15 @@ Before you begin, ensure the following:
 
 - The VM uses Generation 2 (Gen2). You can't convert Gen1 VMs to NVMe.
 
-- The VM runs Windows Server 2019 or later.
-
-  Windows Server 2016 and earlier aren't supported unless you use `-IgnoreWindowsVersionCheck` and verify driver compatibility manually.
+- The VM runs Windows Server 2019 or later. Windows Server 2016 and earlier aren't supported unless you use `-IgnoreWindowsVersionCheck` and verify driver compatibility manually.
 
 - The target VM size supports NVMe. To confirm, see the [Azure Boost availability table](/azure/azure-boost/overview#current-availability).
 
 - You didn't use Trusted Launch to configure your VM. You can't convert VMs configured with Trusted Launch from SCSI to NVMe.
 
-- Conversion from a VM with a temporary disk (for example, `Standard_D4ds_v5`) to a v6 size (for example, `Standard_D4ds_v6`) isn't supported through this script. Use disk snapshots for that migration path.
+- Conversion from a VM with a temporary disk (for example, Standard_D4ds_v5) to a v6 size (for example, Standard_D4ds_v6) isn't supported through this script. Use disk snapshots for that migration path.
 
-  Conversion from VMs without a temporary disk (for example, `Standard_D4s_v5`) to v6 sizes is supported.
+  Conversion from VMs without a temporary disk (for example, Standard_D4s_v5) to v6 sizes is supported.
 
 - Non-Microsoft antivirus or security software can interfere with the driver changes made during conversion. Temporarily disable it before you run the script.
 
@@ -309,9 +307,9 @@ Before you begin, ensure the following:
 
 - PowerShell with the following Az module versions is installed:
 
-  - `Az.Compute` 9.0 or later
-  - `Az.Accounts` 4.0 or later
-  - `Az.Resources` 7.0 or later
+  - Az.Compute 9.0 or later
+  - Az.Accounts 4.0 or later
+  - Az.Resources 7.0 or later
 
 ### Download the script
 
