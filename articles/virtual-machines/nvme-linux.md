@@ -307,9 +307,9 @@ Before you begin, ensure the following:
 
 - PowerShell with the following Az module versions is installed:
 
-  - Az.Compute 9.0 or later
-  - Az.Accounts 4.0 or later
-  - Az.Resources 7.0 or later
+  - `Az.Compute` 9.0 or later
+  - `Az.Accounts` 4.0 or later
+  - `Az.Resources` 7.0 or later
 
 ### Download the script
 
