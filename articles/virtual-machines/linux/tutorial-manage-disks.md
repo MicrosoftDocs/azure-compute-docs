@@ -5,8 +5,9 @@ author: roygara
 ms.author: rogarana
 ms.service: azure-disk-storage
 ms.topic: tutorial
-ms.date: 12/06/2024
+ms.date: 06/02/2026
 ms.custom: mvc, devx-track-azurecli, linux-related-content
+ai-usage: ai-assisted
 # Customer intent: As an IT administrator, I want to use the Azure CLI to manage VM disks, so that I can efficiently create, attach, and configure storage for Azure virtual machines in a cloud environment.
 ---
 
@@ -19,7 +20,7 @@ Azure virtual machines (VMs) use disks to store the operating system, applicatio
 > [!div class="checklist"]
 > * OS disks and temporary disks
 > * Data disks
-> * Standard and Premium disks
+> * Disk types and performance options
 > * Disk performance
 > * Attaching and preparing data disks
 > * Disk snapshots
@@ -29,9 +30,9 @@ Azure virtual machines (VMs) use disks to store the operating system, applicatio
 
 When an Azure virtual machine is created, two disks are automatically attached to the virtual machine.
 
-**Operating system disk** - Operating system disks can be sized up to 2 TB, and hosts the VMs operating system. The OS disk is labeled */dev/sda* by default. The disk caching configuration of the OS disk is optimized for OS performance. Because of this configuration, the OS disk **should not** be used for applications or data. For applications and data, use data disks, which are detailed later in this tutorial.
+**Operating system disk** - The operating system (OS) disk hosts the VM operating system and can be up to 4,095 GiB, although many operating systems are partitioned with [master boot records (MBRs)](/windows/win32/fileio/basic-and-dynamic-disks#master-boot-record) by default. An MBR limits the usable size to 2 TiB. If you need more than 2 TiB, create and attach [data disks](#data-disk) and use them for data storage. Device names vary by VM generation and disk controller type, so don't rely on a fixed path such as */dev/sda*. OS disk caching is optimized for OS performance, so don't store application data on the OS disk. Use data disks for application and data storage.
 
-**Temporary disk** - Temporary disks use a solid-state drive that is located on the same Azure host as the VM. Temp disks are highly performant and may be used for operations such as temporary data processing. However, if the VM is moved to a new host, any data stored on a temporary disk is removed. The size of the temporary disk is determined by the VM size. Temporary disks are labeled */dev/sdb* and have a mountpoint of */mnt*.
+**Temporary disk** - Temporary storage uses local storage on the same Azure host as the VM. Depending on the VM size and generation, this storage might appear as a temporary disk or local NVMe disk. It's high-performance, but nonpersistent. If the VM is moved to a new host, data on temporary storage is removed. The available size depends on the VM size.
 
 ## Azure data disks
 
@@ -39,26 +40,21 @@ To install applications and store data, additional data disks can be added. Data
 
 ## VM disk types
 
-Azure provides two types of disks.
+Azure managed disks offer five disk types:
 
-**Standard disks** - backed by HDDs, and delivers cost-effective storage while still being performant. Standard disks are ideal for a cost effective dev and test workload.
+- [Ultra Disks](../disks-types.md#ultra-disks)
+- [Premium SSD v2](../disks-types.md#premium-ssd-v2)
+- [Premium SSDs](../disks-types.md#premium-ssds)
+- [Standard SSDs](../disks-types.md#standard-ssds)
+- [Standard HDDs](../disks-types.md#standard-hdds)
 
-**Premium disks** - backed by SSD-based, high-performance, low-latency disk. Perfect for VMs running production workload. VM sizes with an  **S** in the [size name](../vm-naming-conventions.md), typically support Premium Storage. For example, DS-series, DSv2-series, GS-series, and FS-series VMs support premium storage. When you select a disk size, the value is rounded up to the next type. For example, if the disk size is more than 64 GB, but less than 128 GB, the disk type is P10. 
-
-<br>
-
-
-[!INCLUDE [disk-storage-premium-ssd-sizes](~/reusable-content/ce-skilling/azure/includes/disk-storage-premium-ssd-sizes.md)]
-
-When you provision a premium storage disk, unlike standard storage, you are guaranteed the capacity, IOPS, and throughput of that disk. For example, if you create a P50 disk, Azure provisions 4,095-GB storage capacity, 7,500 IOPS, and 250-MB/s throughput for that disk. Your application can use all or part of the capacity and performance. Premium SSDs are designed to provide low single-digit millisecond latencies and target IOPS and throughput described in the preceding table 99.9% of the time.
-
-While the above table identifies max IOPS per disk, a higher level of performance can be achieved by striping multiple data disks. For instance, 64 data disks can be attached to Standard_GS5 VM. If each of these disks is sized as a P30, a maximum of 80,000 IOPS can be achieved. For detailed information on max IOPS per VM, see [VM types and sizes](../sizes.md).
+In general, use Premium SSD v2 or Premium SSD for production workloads, Standard SSD for dev/test and less performance-sensitive workloads, and Ultra Disks for IO-intensive data workloads. Ultra Disks and Premium SSD v2 are data-disk only options and can't be used as OS disks. For detailed limits, region availability, and sizing guidance, see [Azure managed disk types](../disks-types.md).
 
 ## Launch Azure Cloud Shell
 
 Azure Cloud Shell is a free interactive shell that you can use to run the steps in this article. It has common Azure tools preinstalled and configured to use with your account.
 
-To open Cloud Shell, select **Try it** from the upper right corner of a code block. You can also launch Cloud Shell in a separate browser tab by going to [https://shell.azure.com/powershell](https://shell.azure.com/bash). Select **Copy** to copy the blocks of code, paste it into the Cloud Shell, and press enter to run it.
+To open Cloud Shell, select **Try it** from the upper-right corner of a code block. You can also launch Cloud Shell in a separate browser tab at <https://shell.azure.com>. Select **Copy** to copy a code block, paste it into Cloud Shell, and press Enter to run it.
 
 ## Create and attach disks
 
@@ -72,7 +68,7 @@ Create a resource group with the [az group create](/cli/azure/group#az-group-cre
 az group create --name myResourceGroupDisk --location eastus
 ```
 
-Create a VM using the [az vm create](/cli/azure/vm#az-vm-create) command. The following example creates a VM named *myVM*, adds a user account named *azureuser*, and generates SSH keys if they do not exist. The `--datadisk-sizes-gb` argument is used to specify that an additional disk should be created and attached to the virtual machine. To create and attach more than one disk, use a space-delimited list of disk size values. In the following example, a VM is created with two data disks, both 128 GB. Because the disk sizes are 128 GB, these disks are both configured as P10s, which provide maximum 500 IOPS per disk.
+Create a VM using the [az vm create](/cli/azure/vm#az-vm-create) command. The following example creates a VM named *myVM*, adds a user account named *azureuser*, and generates SSH keys if they don't already exist. The `--data-disk-sizes-gb` argument specifies additional data disks to create and attach. To create and attach more than one disk, use a space-delimited list of disk sizes.
 
 ```azurecli-interactive
 az vm create \
@@ -151,7 +147,7 @@ To ensure that the drive is remounted after a reboot, it must be added to the */
 sudo -i blkid
 ```
 
-The output displays the UUID of the drive, `/dev/sdc1` in this case.
+The output displays the UUID of the drive.
 
 ```bash
 /dev/sdc1: UUID="33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e" TYPE="xfs"
@@ -174,6 +170,12 @@ UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive  xfs    defaults,nofail  
 
 When you are done editing the file, use `Ctrl+O` to write the file and `Ctrl+X` to exit the editor.
 
+Validate the */etc/fstab* entry.
+
+```bash
+sudo mount -a
+```
+
 Now that the disk has been configured, close the SSH session.
 
 ```bash
@@ -182,7 +184,7 @@ exit
 
 ## Take a disk snapshot
 
-When you take a disk snapshot, Azure creates a read only, point-in-time copy of the disk. Azure VM snapshots are useful to quickly save the state of a VM before you make configuration changes. In the event of an issue or error, VM can be restored using a snapshot. When a VM has more than one disk, a snapshot is taken of each disk independently of the others. To take application consistent backups, consider stopping the VM before you take disk snapshots. Alternatively, use the [Azure Backup service](/azure/backup/), which enables you to perform automated backups while the VM is running.
+When you take a disk snapshot, Azure creates a read-only, point-in-time copy of the disk. Azure VM snapshots are useful to quickly save the state of a VM before you make configuration changes. In the event of an issue or error, you can restore a VM by using a snapshot. When a VM has more than one disk, a snapshot is taken of each disk independently. To take application-consistent backups, consider stopping the VM before you take disk snapshots. Alternatively, use [Azure Backup](/azure/backup/), which supports automated backups while the VM is running.
 
 ### Create snapshot
 
@@ -253,7 +255,7 @@ Use the [az vm disk attach](/cli/azure/vm/disk#az-vm-disk-attach) command to att
 
 ```azurecli-interactive
 az vm disk attach \
-   –g myResourceGroupDisk \
+   --resource-group myResourceGroupDisk \
    --vm-name myVM \
    --name $datadisk
 ```
@@ -265,7 +267,7 @@ In this tutorial, you learned about VM disks topics such as:
 > [!div class="checklist"]
 > * OS disks and temporary disks
 > * Data disks
-> * Standard and Premium disks
+> * Disk types and performance options
 > * Disk performance
 > * Attaching and preparing data disks
 > * Disk snapshots
