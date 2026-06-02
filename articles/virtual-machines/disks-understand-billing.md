@@ -6,6 +6,7 @@ ms.author: rogarana
 ms.date: 10/28/2025
 ms.topic: concept-article
 ms.service: azure-disk-storage
+ai-usage: ai-assisted
 # Customer intent: As a cloud administrator, I want to understand the billing factors for Azure managed disks, so that I can accurately forecast and manage the costs related to disk storage usage in my organization.
 ---
 
@@ -175,6 +176,15 @@ We're billed for the provisioned capacity of the HDD disk and the transactions p
 |-|-|
 |Standard HDD managed disks| S20 LRS Disk|
 |Standard HDD managed disks| S4 LRS Disk Operations|
+
+## Empty disks
+
+
+
+When you first create an empty managed disk, Azure initially stores only the disk metadata. The underlying storage isn't allocated until the disk is first used, such as when you attach the disk to a VM or upload a VHD to it. At that point, storage is allocated and the disk begins incurring billing charges.
+
+If an empty disk hasn't been used and no underlying storage has been allocated to it, it doesn't incur disk storage charges.
+
 
 ## See also
 - [Azure managed disks pricing page](https://azure.microsoft.com/pricing/details/managed-disks/)
