@@ -6,6 +6,7 @@ ms.author: rogarana
 ms.date: 10/28/2025
 ms.topic: concept-article
 ms.service: azure-disk-storage
+ai-usage: ai-assisted
 # Customer intent: As a cloud administrator, I want to understand the billing factors for Azure managed disks, so that I can accurately forecast and manage the costs related to disk storage usage in my organization.
 ---
 
@@ -14,6 +15,14 @@ ms.service: azure-disk-storage
 This article helps you understand how Azure managed disks are billed and how billing is laid out in your Azure Disk Storage bill. Some disks have unique attributes that affect their billing, but most disk types have the same set of attributes and are affected differently by these attributes depending on the disk type. You can also take snapshots of your disks, which are reflected in your bill.
 
 For detailed Azure Disk Storage pricing information, see [Azure Disks pricing page](https://azure.microsoft.com/pricing/details/managed-disks/).
+
+## Empty disks with no charges
+
+If you create a managed disk as an empty disk, Azure initially stores only the disk metadata. Azure doesn't allocate the underlying storage until the disk is first used, for example when you attach it to a VM.
+
+The first-use process that allocates the underlying storage is called hydration. Before hydration, the disk can still appear in Azure Resource Manager and the Azure portal as a normal disk, but it doesn't consume storage capacity yet.
+
+Because no underlying storage is allocated before first use, an empty disk that has never been used doesn't incur disk storage charges.
 
 ## Snapshots
 
