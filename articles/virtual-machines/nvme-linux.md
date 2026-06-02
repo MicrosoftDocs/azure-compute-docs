@@ -12,24 +12,24 @@ ms.custom: sfi-image-nochange, linux-related-content, windows-related-content
 
 # Convert Linux and Windows VMs from SCSI to NVMe
 
-Azure virtual machines (VMs) support two types of storage interfaces: Small Computer System Interface (SCSI) and NVMe. The SCSI interface is a legacy standard that provides physical connectivity and data transfer between computers and peripheral devices. NVMe is similar to SCSI in that it provides connectivity and data transfer, but NVMe is a faster and more efficient interface for data transfer between servers and storage systems.
+Azure virtual machines (VMs) support two types of storage interfaces: Small Computer System Interface (SCSI) and NVM Express (NVMe). The SCSI interface is a legacy standard that provides physical connectivity and data transfer between computers and peripheral devices. NVMe is similar to SCSI in that it provides connectivity and data transfer, but NVMe is a faster and more efficient interface for data transfer between servers and storage systems.
 
-In this article, you learn how to convert Azure virtual machines (VMs) running Linux or Windows from a Small Computer System Interface (SCSI) disk controller to NVM Express (NVMe) by using Azure Boost and the Azure NVMe Conversion script.
+In this article, you learn how to convert Azure VMs running Linux or Windows from a SCSI disk controller to NVMe by using Azure Boost and the Azure NVMe conversion script.
 
 Azure continues to support the SCSI interface on the versions of VM offerings that provide SCSI storage. However, not all new VM series have SCSI storage as an option going forward.
 
 ## What's changing for your VM?
 
-Changing the host interface from SCSI to NVMe doesn't change the remote storage (OS disk or data disks), but it changes the way the operating system sees the disks.
+Changing the host interface from SCSI to NVMe doesn't change the remote storage (OS disk or data disks), but it changes the way the operating system uses the disks.
 
 | Disk | SCSI-enabled VM | NVMe VM with SCSI temporary disk (for example, Ebds_v5) | NVMe VM with NVMe temporary disk |
 | ---- | --------------- | ------------------------------------------- | ----------------------------- |
-| OS disk | /dev/sda | /dev/nvme0n1 | /dev/nvme0n1 |
-| Temporary disk | /dev/sdb | /dev/sda | /dev/nvme1n1 |
-| First data disk | /dev/sdc | /dev/nvme0n2 | /dev/nvme0n2 |
+| OS disk | `/dev/sda` | `/dev/nvme0n1` | `/dev/nvme0n1` |
+| Temporary disk | `/dev/sdb` | `/dev/sda` | `/dev/nvme1n1` |
+| First data disk | `/dev/sdc` | `/dev/nvme0n2` | `/dev/nvme0n2` |
 
 > [!TIP]
-> Some VM types have more than one temporary disk (for example, E64ds_v6)
+> Some VM types have more than one temporary disk (for example, E64ds_v6).
 
 Converting your Azure VM from SCSI to NVMe by using Azure Boost can help you take full advantage of these performance improvements and maintain a competitive edge in the cloud computing landscape.
 
@@ -44,11 +44,11 @@ To migrate from SCSI to NVMe, you need to follow these high-level steps:
 
 ### 1. Check if your virtual machine series supports NVMe
 
-The supported virtual machines to support NVMe attached disks is described on the [Azure Boost overview site in the availability table](/azure/azure-boost/overview#current-availability).
+The [Azure Boost availability table](/azure/azure-boost/overview#current-availability) lists the supported virtual machines for NVMe attached disks.
 
 ### 2. Check your operating system for NVMe readiness
 
-The operating system needs to support NVMe devices. For example, you need to prepare device drivers and *initrdm*, the temporary file system used during boot. You also need to validate the mount points of the file systems, because they check if you use the SCSI device name (/dev/sdX).
+The operating system needs to support NVMe devices. For example, you need to prepare device drivers and `initrd`, the temporary file system used during startup. You also need to validate the mount points of the file systems, because they check if you use the SCSI device name (`/dev/sdX`).
 
 The migration script can automatically take care of these readiness checks for you when you use `-FixOperatingSystemSettings`.
 
@@ -78,19 +78,19 @@ $ az vm show --name [your-vm-name] --resource-group [your-resource-group-name]
 
 ##### Check the controller type by using the Azure portal
 
-:::image type="content" source="./media/enable-nvme/nvme-vs-scsi-2.png" alt-text="Screenshot of Azure portal to check controller.":::
+:::image type="content" source="./media/enable-nvme/nvme-vs-scsi-2.png" alt-text="Screenshot of virtual machine properties, including controller type, in the Azure portal.":::
 
 #### 2.2 Prepare for migration
 
 The migration script can automatically take care of the prerequisites when you use the `-FixOperatingSystemSettings` parameter.
 
-If you want to manually take care of the required changes, validate that:
+If you want to make the required changes manually, validate that:
 
 - NVMe modules are installed and part of initrd/initramfs.
 - GRUB configuration includes the parameter `nvme_core.io_timeout=240`.
 - `/etc/fstab` checks for devices.
 
-Check with your OS vendor to cover all required commands to update initrd/initramfs.
+Check with your OS vendor to cover all required commands to update `initrd`/`initramfs`.
 
 ##### 2.2.1 Prepare PowerShell
 
@@ -140,7 +140,7 @@ Here's a sample command:
 ```
 
 > [!TIP]
-> You can always revert back to SCSI. The script will share a command with you to directly revert to your original configuration.
+> You can always revert to SCSI. The script will share a command with you to directly revert to your original configuration.
 
 ##### 2.3.1 Sample output
 
@@ -214,7 +214,7 @@ PS /home/philipp> ./NVMe-Conversion.ps1 -ResourceGroupName testrg -VMName testvm
 PS /home/philipp>
 ```
 
-If you have challenges accessing the operating system afterward, try to check:
+If you can't access the operating system afterward, check:
 
 - The serial console for Linux operating systems.
 - The screenshot from the operating system in the Azure portal.
@@ -244,18 +244,17 @@ PS C:\Users>
 
 #### 3.1 Check devices
 
-You can check the devices by using the `nvme` command. If the `nvme` command is missing, install the `nvme-cli` package:
-
-`nvme list`
+You can check the devices by using the `nvme` command. If the `nvme` command is missing, install the `nvme-cli` package by using `nvme list`.
 
 The output should show the OS disk and the data disks.
+
 :::image type="content" source="./media/enable-nvme/nvme-vs-scsi-4.png" alt-text="Screenshot of OS disks and data disks.":::
 
 #### 3.2 Get the udev file for NVMe (optional)
 
-On SCSI virtual machines, the udev rules integrated in the `waagent` Azure agent created links in `/dev/disk/azure/scsi1/lunX` to identify the data disks. Because SCSI isn't used anymore, the rules don't apply.
+On SCSI virtual machines, the `udev` rules integrated in the `waagent` Azure agent created links in `/dev/disk/azure/scsi1/lunX` to identify the data disks. Because SCSI isn't used anymore, the rules don't apply.
 
-With one of the two available options to deploy NVMe-enabled udev rules, you see new symbolic links in the directory `/dev/disk/azure/data/by-lun`. This directory is the replacement for `/dev/disk/azure/scsi1`.
+With one of the two available options to deploy NVMe-enabled `udev` rules, you see new symbolic links in the directory `/dev/disk/azure/data/by-lun`. This directory is the replacement for `/dev/disk/azure/scsi1`.
 
 ```bash
 nvme-conversion-vm:/usr/lib/udev/rules.d # ls -l /dev/disk/azure/data/by-lun/
@@ -267,12 +266,12 @@ nvme-conversion-vm:/usr/lib/udev/rules.d #
 
 ##### Manual download of the udev file
 
-To download the new udev rules file, use this command:
-`curl https://raw.githubusercontent.com/Azure/SAP-on-Azure-Scripts-and-Utilities/refs/heads/main/Azure-NVMe-Utils/88-azure-nvme-data-disk.rules`. Then, run `udevadm control --reload-rules && udevadm trigger` to reload the udev rules.
+To download the new `udev` rules file, use this command:
+`curl https://raw.githubusercontent.com/Azure/SAP-on-Azure-Scripts-and-Utilities/refs/heads/main/Azure-NVMe-Utils/88-azure-nvme-data-disk.rules`. Then, run `udevadm control --reload-rules && udevadm trigger` to reload the `udev` rules.
 
 ##### Ready-to-install packages from GitHub
 
-There are precompiled packages from [the GitHub collection of utilities and udev rules for Azure VMs](https://github.com/azure/azure-vm-utils) available on [Index of /results/cjp256/azure-vm-utils/](https://download.copr.fedorainfracloud.org/results/cjp256/azure-vm-utils/) for multiple distributions.
+Precompiled packages from [the GitHub collection of utilities and udev rules for Azure VMs](https://github.com/azure/azure-vm-utils) are available on [Index of /results/cjp256/azure-vm-utils/](https://download.copr.fedorainfracloud.org/results/cjp256/azure-vm-utils/) for multiple distributions.
 
 Multiple distributions already started to integrate the package. You can directly install it from their repositories.
 
@@ -284,7 +283,7 @@ Multiple distributions already started to integrate the package. You can directl
 
 ## Migrate a Windows VM from SCSI to NVMe
 
-This section describes how to convert a Windows VM from SCSI to NVMe by using the Azure NVMe Conversion script. The script handles OS preparation, VM deallocation, disk controller update, optional resize, and VM restart automatically.
+This section describes how to convert a Windows VM from SCSI to NVMe by using the Azure NVMe conversion script. The script handles OS preparation, VM deallocation, disk controller update, optional resize, and VM restart automatically.
 
 ### Prerequisites
 
@@ -298,7 +297,7 @@ Before you begin, ensure the following:
 
 - The target VM size supports NVMe. To confirm, see the [Azure Boost availability table](/azure/azure-boost/overview#current-availability).
 
-- You can't convert VMs configured with Trusted Launch from SCSI to NVMe.
+- You didn't use Trusted Launch to configure your VM. You can't convert VMs configured with Trusted Launch from SCSI to NVMe.
 
 - Conversion from a VM with a temporary disk (for example, `Standard_D4ds_v5`) to a v6 size (for example, `Standard_D4ds_v6`) isn't supported through this script. Use disk snapshots for that migration path.
 
@@ -326,7 +325,7 @@ The script is part of the open-source [SAP-on-Azure-Scripts-and-Utilities](https
 
 ### Run the conversion
 
-Use the `-FixOperatingSystemSettings` switch to have the script automatically configure the `stornvme` driver for boot-start. This is required for Windows to recognize the NVMe controller after the VM restarts. Omitting it equires you to set the driver manually before conversion.
+Use the `-FixOperatingSystemSettings` switch to have the script automatically configure the `stornvme` driver for startup. This configuration is required for Windows to recognize the NVMe controller after the VM restarts. Omitting it requires you to set the driver manually before conversion.
 
 ```powershell
 .\Azure-NVMe-Conversion.ps1 `
@@ -344,31 +343,31 @@ The script performs the following steps automatically:
 1. Validates module versions, VM existence, OS type, Windows version, Gen2, current controller type, and NVMe capability with the VM size.
 2. Optionally fixes the `stornvme` driver service (`sc.exe config stornvme start=boot`) and validates other OS settings for NVMe readiness (with `-FixOperatingSystemSettings`).
 3. Stops and deallocates the VM.
-4. Updates `supportedCapabilities.diskControllerTypes` to `SCSI, NVMe` on the OS disk via a REST PATCH.
+4. Updates `supportedCapabilities.diskControllerTypes` to `SCSI, NVMe` on the OS disk via a REST `PATCH` method.
 5. Resizes the VM to the target size.
 6. Starts the VM (with `-StartVM`).
 
 > [!TIP]
-> The script outputs a revert command at the end of a successful run. Save that command before closing the session so you can roll back to SCSI if needed.
+> The script provides a revert command in output at the end of a successful run. Save that command before you close the session so that you can roll back to SCSI if needed.
 
 ### What changes for your Windows VM
 
-Unlike Linux, Windows uses drive letters rather than device paths, so the OS disk remains `C:\` after conversion. However, the underlying disk interface changes, and data disk assignments may shift if you don't use persistent disk identifiers.
+Unlike Linux, Windows uses drive letters rather than device paths, so the OS disk remains `C:\` after conversion. However, the underlying disk interface changes. Data disk assignments might shift if you don't use persistent disk identifiers.
 
 | Disk | SCSI-enabled VM | NVMe-enabled VM |
 | ---- | --------------- | --------------- |
 | OS disk | `C:\` (unchanged) | `C:\` (unchanged) |
-| Temp disk | `D:\` (typically) | `D:\` (typically, RAW on v6 VMs—not pre-formatted with NTFS) |
+| Temporary disk | `D:\` (typically) | `D:\` (typically, RAW on v6 VMs) |
 | Data disks | Assigned by LUN order | Assigned by NVMe namespace order |
 
 > [!IMPORTANT]
-> On v6 VMs, temp disks are RAW and not pre-formatted with NTFS. Use a startup script or custom script extension to format and mount them at each boot.
+> On v6 VMs, temporary disks are RAW and not pre-formatted with NTFS. Use a startup script or custom script extension to format and mount them at each startup.
 
 ### Verify the conversion
 
-After the VM restarts, confirm the disk controller type changed successfully.
+After the VM restarts, confirm that the disk controller type changed successfully.
 
-**Using PowerShell:**
+#### Confirm by using PowerShell
 
 ```powershell
 $vm = Get-AzVM -ResourceGroupName "<resource-group-name>" -VMName "<vm-name>"
@@ -377,11 +376,11 @@ $vm.StorageProfile.DiskControllerType
 
 The output should be `NVMe`.
 
-**Using Device Manager inside the VM:**
+#### Confirm by using Device Manager inside the VM
 
 1. Open **Device Manager**.
 2. Expand **Storage controllers**.
-3. Confirm **Standard NVM Express Controller** is listed.
+3. Confirm that **Standard NVM Express Controller** is listed.
 
 ### Revert to SCSI
 
