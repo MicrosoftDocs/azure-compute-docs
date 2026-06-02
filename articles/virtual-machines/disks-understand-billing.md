@@ -16,14 +16,6 @@ This article helps you understand how Azure managed disks are billed and how bil
 
 For detailed Azure Disk Storage pricing information, see [Azure Disks pricing page](https://azure.microsoft.com/pricing/details/managed-disks/).
 
-## Empty disks with no charges
-
-If you create a managed disk as an empty disk, Azure initially stores only the disk metadata. Azure doesn't allocate the underlying storage until the disk is first used, for example when you attach it to a VM or upload a VHD.
-
-The first-use process that allocates the underlying storage is called hydration. Before hydration, the disk can still appear in Azure Resource Manager and the Azure portal as a normal disk, but it doesn't consume storage capacity yet.
-
-Because no underlying storage is allocated before first use, an empty disk that has never been used doesn't incur disk storage charges.
-
 ## Snapshots
 
 There are two kinds of snapshots offered for Azure managed disks: Full snapshots and incremental snapshots. Full snapshots can be stored on standard hard disk drives (HDDs) or premium solid-state drives (SSDs) while incremental snapshots are only stored on Standard HDDs. With snapshots, you're billed based on the used size of data. So if you take a full snapshot of a disk with 500-GiB size but only 50 GiB of that size is being used, then your snapshot is billed only for the used size of 50 GiB. Incremental snapshots are more cost efficient than full snapshots, as each snapshot you take only consists of the differences since the last snapshot.
@@ -184,6 +176,14 @@ We're billed for the provisioned capacity of the HDD disk and the transactions p
 |-|-|
 |Standard HDD managed disks| S20 LRS Disk|
 |Standard HDD managed disks| S4 LRS Disk Operations|
+
+## Empty disks with no charges
+
+If you create a managed disk as an empty disk, Azure initially stores only the disk metadata. Azure doesn't allocate the underlying storage until the disk is first used, for example when you attach it to a VM or upload a VHD.
+
+The first-use process that allocates the underlying storage is called hydration. Before hydration, the disk can still appear in Azure Resource Manager and the Azure portal as a normal disk, but it doesn't consume storage capacity yet.
+
+Because no underlying storage is allocated before first use, an empty disk that has never been used doesn't incur disk storage charges.
 
 ## See also
 - [Azure managed disks pricing page](https://azure.microsoft.com/pricing/details/managed-disks/)
