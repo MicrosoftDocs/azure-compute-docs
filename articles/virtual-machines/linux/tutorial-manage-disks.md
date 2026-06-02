@@ -34,7 +34,7 @@ When an Azure virtual machine is created, two disks are automatically attached t
 
 **Temporary disk** - Temporary storage uses local storage on the same Azure host as the VM. Depending on the VM size and generation, this storage might appear as a temporary disk or local NVMe disk. It's high-performance, but nonpersistent. If the VM is moved to a new host, data on temporary storage is removed. The available size depends on the VM size.
 
-## Azure data disks
+## data disks
 
 To install applications and store data, additional data disks can be added. Data disks should be used in any situation where durable and responsive data storage is desired. The size of the virtual machine determines how many data disks can be attached to a VM.
 
