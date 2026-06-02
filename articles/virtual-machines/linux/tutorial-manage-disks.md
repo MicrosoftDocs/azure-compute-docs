@@ -147,7 +147,7 @@ To ensure that the drive is remounted after a reboot, it must be added to the */
 sudo -i blkid
 ```
 
-The output displays the UUID of the drive.
+The output displays the UUID of the drive, `/dev/sdc1` in this case.
 
 ```bash
 /dev/sdc1: UUID="33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e" TYPE="xfs"
@@ -169,12 +169,6 @@ UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive  xfs    defaults,nofail  
 ```
 
 When you are done editing the file, use `Ctrl+O` to write the file and `Ctrl+X` to exit the editor.
-
-Validate the */etc/fstab* entry.
-
-```bash
-sudo mount -a
-```
 
 Now that the disk has been configured, close the SSH session.
 
