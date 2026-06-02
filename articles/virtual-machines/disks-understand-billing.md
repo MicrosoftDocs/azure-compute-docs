@@ -18,7 +18,7 @@ For detailed Azure Disk Storage pricing information, see [Azure Disks pricing pa
 
 ## Empty disks with no charges
 
-If you create a managed disk as an empty disk, Azure initially stores only the disk metadata. Azure doesn't allocate the underlying storage until the disk is first used, for example when you attach it to a VM.
+If you create a managed disk as an empty disk, Azure initially stores only the disk metadata. Azure doesn't allocate the underlying storage until the disk is first used, for example when you attach it to a VM or upload a VHD.
 
 The first-use process that allocates the underlying storage is called hydration. Before hydration, the disk can still appear in Azure Resource Manager and the Azure portal as a normal disk, but it doesn't consume storage capacity yet.
 
