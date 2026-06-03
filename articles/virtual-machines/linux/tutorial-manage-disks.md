@@ -30,7 +30,7 @@ Azure virtual machines (VMs) use disks to store the operating system, applicatio
 
 When an Azure virtual machine is created, two disks are automatically attached to the virtual machine.
 
-**Operating system disk** - The operating system (OS) disk hosts the VM operating system and can be up to 4,095 GiB, although many operating systems are partitioned with [master boot records (MBRs)](/windows/win32/fileio/basic-and-dynamic-disks#master-boot-record) by default. An MBR limits the usable size to 2 TiB. If you need more than 2 TiB, create and attach [data disks](#data-disks) and use them for data storage. Device names vary by VM generation and disk controller type, so don't rely on a fixed path such as */dev/sda*. OS disk caching is optimized for OS performance, so don't store application data on the OS disk. Use data disks for application and data storage.
+**Operating system disk** - The operating system (OS) disk hosts the VM operating system and can be up to 4,095 gibibytes (GiB), although many operating systems are partitioned with [master boot records (MBRs)](/windows/win32/fileio/basic-and-dynamic-disks#master-boot-record) by default. An MBR limits the usable size to 2 TiB. If you need more than 2 TiB, create and attach [data disks](#data-disks) and use them for data storage. Device names vary by VM generation and disk controller type, so don't rely on a fixed path such as */dev/sda*. OS disk caching is optimized for OS performance, so don't store application data on the OS disk. Use data disks for application and data storage.
 
 **Temporary disk** - Temporary storage uses local storage on the same Azure host as the VM. Depending on the VM size and generation, this storage might appear as a temporary disk or local NVMe disk. It's high-performance, but nonpersistent. If the VM is moved to a new host, data on temporary storage is removed. The available size depends on the VM size.
 
@@ -68,7 +68,7 @@ Create a resource group with the [az group create](/cli/azure/group#az-group-cre
 az group create --name myResourceGroupDisk --location eastus
 ```
 
-Create a VM using the [az vm create](/cli/azure/vm#az-vm-create) command. The following example creates a VM named *myVM*, adds a user account named *azureuser*, and generates SSH keys if they don't already exist. The `--data-disk-sizes-gb` argument specifies additional data disks to create and attach. To create and attach more than one disk, use a space-delimited list of disk sizes.
+Create a VM using the [az vm create](/cli/azure/vm#az-vm-create) command. The following example creates a VM named *myVM*, adds a user account named *azureuser*, and generates SSH keys if they don't already exist. The `--data-disk-sizes-gb` argument specifies additional data disks to create and attach. To create and attach more than one disk, use a space-delimited list of disk sizes. In the following example, a VM is created with two data disks, both 128 GB. Because the disk sizes are 128 GB, these disks are both configured as P10s, which provide maximum 500 IOPS per disk.
 
 ```azurecli-interactive
 az vm create \
