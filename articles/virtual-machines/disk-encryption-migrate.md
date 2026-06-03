@@ -420,6 +420,37 @@ This approach works for both Windows and Linux VMs, but is especially important 
 
 For guidance on data migration, see [Upload a VHD to Azure](/azure/virtual-machines/linux/disks-upload-vhd-to-managed-disk-cli) and [Copy files to a Linux VM using SCP](/azure/virtual-machines/linux/copy-files-to-linux-vm-using-scp).
 
+## Recommended approach for AVD host pools
+
+For Azure Virtual Desktop (AVD) environments, the recommended approach is to **redeploy session hosts** rather than attempting disk-level migration.
+
+For both pooled and personal host pools, the supported approach is to replace Azure Disk Encryption (ADE)-enabled session hosts with new virtual machines that have Encryption at Host enabled.
+
+### Steps
+
+1. **Create a new golden image**
+   - Ensure Azure Disk Encryption is not enabled
+   - Validate applications and configurations
+
+1. **Deploy new session hosts**
+   - Use Azure Compute Gallery or a custom image
+   - Enable `encryptionAtHost = true` at VM creation time
+
+1. **Add new session hosts to the host pool**
+   - Ensure session hosts are healthy and accepting connections
+
+1. **Validate workloads**
+   - Confirm user profile access (for example, FSLogix)
+   - Validate applications and policies
+
+1. **Drain existing ADE-enabled session hosts**
+   - Enable drain mode
+   - Allow existing user sessions to log off gracefully
+
+1. **Remove and decommission old session hosts**
+   - Remove session hosts from the host pool
+   - Delete associated virtual machines and disks
+
 ## Domain-joined VM considerations
 
 If your VMs are members of an Active Directory domain, additional steps are required during the migration process:
