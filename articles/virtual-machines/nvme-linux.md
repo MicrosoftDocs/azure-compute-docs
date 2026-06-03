@@ -22,10 +22,10 @@ Azure continues to support the SCSI interface on the versions of VM offerings th
 
 Changing the host interface from SCSI to NVMe doesn't change the remote storage (OS disk or data disks), but it changes the way the operating system uses the disks.
 
-| Disk | SCSI-enabled VM | NVMe VM with SCSI temporary disk (for example, Ebds_v5) | NVMe VM with NVMe temporary disk |
+| Disk | SCSI-enabled VM | NVMe VM with SCSI temp disk (for example, Ebds_v5) | NVMe VM with NVMe temp disk |
 | ---- | --------------- | ------------------------------------------- | ----------------------------- |
 | OS disk | `/dev/sda` | `/dev/nvme0n1` | `/dev/nvme0n1` |
-| Temporary disk | `/dev/sdb` | `/dev/sda` | `/dev/nvme1n1` |
+| Temp disk | `/dev/sdb` | `/dev/sda` | `/dev/nvme1n1` |
 | First data disk | `/dev/sdc` | `/dev/nvme0n2` | `/dev/nvme0n2` |
 
 > [!TIP]
@@ -122,9 +122,9 @@ The script has multiple parameters available:
 | `-ResourceGroupName` | The resource group name for your VM. | Yes |
 | `-VMName` | The name of your VM on Azure. | Yes |
 | `-NewControllerType` | The storage controller type that the VM should be converted to (NVMe or SCSI). | Yes |
-| `-VMSize` | The Azure VM size that you want to convert the VM to. | Yes |
+| `-VMSize` | The Azure VM SKU that you want to convert the VM to. | Yes |
 | `-StartVM` | Start the VM after conversion. | No |
-| `-IgnoreSKUCheck` | Ignore the check of the VM size. | No |
+| `-IgnoreSKUCheck` | Ignore the check of the VM SKU. | No |
 | `-IgnoreWindowsVersionCheck` | Ignore the Windows version check. | No |
 | `-FixOperatingSystemSettings` | Automatically fix the OS settings by using Azure run commands. | No |
 | `-WriteLogfile` | Create a log file. | No |
@@ -293,13 +293,13 @@ Before you begin, ensure the following:
 
 - The VM runs Windows Server 2019 or later. Windows Server 2016 and earlier aren't supported unless you use `-IgnoreWindowsVersionCheck` and verify driver compatibility manually.
 
-- The target VM size supports NVMe. To confirm, see the [Azure Boost availability table](/azure/azure-boost/overview#current-availability).
+- The target VM SKU supports NVMe. To confirm, see the [Azure Boost availability table](/azure/azure-boost/overview#current-availability).
 
 - You didn't use Trusted Launch to configure your VM. You can't convert VMs configured with Trusted Launch from SCSI to NVMe.
 
-- Conversion from a VM with a temporary disk (for example, Standard_D4ds_v5) to a v6 size (for example, Standard_D4ds_v6) isn't supported through this script. Use disk snapshots for that migration path.
+- Conversion from a VM with a temp disk (for example, Standard_D4ds_v5) to a v6 SKU (for example, Standard_D4ds_v6) isn't supported through this script. Use disk snapshots for that migration path.
 
-  Conversion from VMs without a temporary disk (for example, Standard_D4s_v5) to v6 sizes is supported.
+  Conversion from VMs without a temp disk (for example, Standard_D4s_v5) to v6 SKUs is supported.
 
 - Non-Microsoft antivirus or security software can interfere with the driver changes made during conversion. Temporarily disable it before you run the script.
 
@@ -338,11 +338,11 @@ Use the `-FixOperatingSystemSettings` switch to have the script automatically co
 
 The script performs the following steps automatically:
 
-1. Validates module versions, VM existence, OS type, Windows version, Gen2, current controller type, and NVMe capability with the VM size.
+1. Validates module versions, VM existence, OS type, Windows version, Gen2, current controller type, and NVMe capability with the VM SKU.
 2. Optionally fixes the `stornvme` driver service (`sc.exe config stornvme start=boot`) and validates other OS settings for NVMe readiness (with `-FixOperatingSystemSettings`).
 3. Stops and deallocates the VM.
 4. Updates `supportedCapabilities.diskControllerTypes` to `SCSI, NVMe` on the OS disk via a REST `PATCH` method.
-5. Resizes the VM to the target size.
+5. Resizes the VM to the target SKU.
 6. Starts the VM (with `-StartVM`).
 
 > [!TIP]
@@ -355,11 +355,11 @@ Unlike Linux, Windows uses drive letters rather than device paths, so the OS dis
 | Disk | SCSI-enabled VM | NVMe-enabled VM |
 | ---- | --------------- | --------------- |
 | OS disk | `C:\` (unchanged) | `C:\` (unchanged) |
-| Temporary disk | `D:\` (typically) | `D:\` (typically, RAW on v6 VMs) |
+| Temp disk | `D:\` (typically) | `D:\` (typically, RAW on v6 SKUs) |
 | Data disks | Assigned by LUN order | Assigned by NVMe namespace order |
 
 > [!IMPORTANT]
-> On v6 VMs, temporary disks are RAW and not pre-formatted with NTFS. Use a startup script or custom script extension to format and mount them at each startup.
+> On v6 SKUs, temp disks are RAW and not pre-formatted with NTFS. Use a startup script or custom script extension to format and mount them at each startup.
 
 ### Verify the conversion
 
@@ -382,14 +382,14 @@ The output should be `NVMe`.
 
 ### Revert to SCSI
 
-If you need to roll back, rerun the script with `-NewControllerType SCSI` and the original VM size:
+If you need to roll back, rerun the script with `-NewControllerType SCSI` and the original VM SKU:
 
 ```powershell
 .\Azure-NVMe-Conversion.ps1 `
   -ResourceGroupName "<resource-group-name>" `
   -VMName "<vm-name>" `
   -NewControllerType SCSI `
-  -VMSize "<original-size>" `
+  -VMSize "<original-SKU>" `
   -StartVM `
   -WriteLogfile
 ```
