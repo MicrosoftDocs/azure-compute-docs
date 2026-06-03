@@ -18,5 +18,3 @@ These NC RTX PRO 6000 BSE v6 VMs are powered by NVIDIA RTX PRO 6000 Blackwell Se
 - GPU-accelerated desktop virtualization (VDI) with NVIDIA RTX Virtual Workstation.
 - Scientific visualization and High-Performance Computing (HPC) using FP32.
 - Agentic AI application development and deployment.
-
-Sign up to Participate in [NCv6 Public Preview](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR9s7orOb3OJJnwABCNj_8JdUMzlLSzJFTTdRRE8yU0UxWFFYQlpYV1hDVy4u) !
