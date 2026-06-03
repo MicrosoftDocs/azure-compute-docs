@@ -434,7 +434,7 @@ For both pooled and personal host pools, the supported approach is to replace Az
 
 1. **Deploy new session hosts**
    - Use Azure Compute Gallery or a custom image
-   - Enable `encryptionAtHost = true` at VM creation time
+   - Enable encryption at host at VM creation time (see [Enable end-to-end encryption using encryption at host](/azure/virtual-machines/disks-enable-host-based-encryption-portal))
 
 1. **Add new session hosts to the host pool**
    - Ensure session hosts are healthy and accepting connections
@@ -444,8 +444,8 @@ For both pooled and personal host pools, the supported approach is to replace Az
    - Validate applications and policies
 
 1. **Drain existing ADE-enabled session hosts**
-   - Enable drain mode
-   - Allow existing user sessions to log off gracefully
+   - Enable drain mode to block new sessions
+   - Wait for existing sessions to end, or manually sign off users
 
 1. **Remove and decommission old session hosts**
    - Remove session hosts from the host pool
