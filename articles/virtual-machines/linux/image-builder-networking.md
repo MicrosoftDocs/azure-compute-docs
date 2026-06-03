@@ -4,11 +4,12 @@ description: Understand the networking options available to you when you deploy 
 author: kof-f
 ms.author: kofiforson
 ms.reviewer: jushiman
-ms.date: 07/25/2023
+ms.date: 06/03/2026
 ms.topic: concept-article
 ms.service: azure-virtual-machines
 ms.subservice: image-builder
 ms.custom: linux-related-content
+ai-usage: ai-assisted
 # Customer intent: "As a cloud engineer, I want to utilize Azure VM Image Builder with my existing virtual network, so that I can efficiently manage image builds while ensuring secure and private connectivity to my resources."
 ---
 
@@ -80,6 +81,28 @@ VM Image Builder requires specific permissions to use an existing virtual networ
 
 ### Connectivity model
 AIB does not deploy a public IP for direct connectivity, and the AIB service component that runs in the platform subscription does not have network connectivity to the ACI or the build VM. Only the AIB component that runs in the ACI has connectivity to the build VM to perform customization.
+
+### Access storage accounts protected by firewalls
+
+If your image template references artifacts (scripts or files) stored in Azure Storage accounts protected by network firewalls, you must configure your networking to allow AIB to access those storage accounts. This applies to artifacts referenced via the `scriptUri` or `fileUri` properties in your image template customizers.
+
+To enable access, use the [Bring your own Build VM subnet and ACI subnet](#bring-your-own-build-vm-subnet-and-bring-your-own-aci-subnet) topology and configure the storage account firewall to allow traffic from the ACI subnet.
+
+#### Configure storage account firewall access
+
+Follow these steps to configure your storage account firewall to work with AIB:
+
+1. **Use the Bring your own Build VM subnet and ACI subnet topology.** Specify both the `subnetId` and `containerInstanceSubnetId` fields in the `vnetConfig` section of your image template. This topology is available starting with API version 2024-02-01.
+
+1. **Delegate the ACI subnet to Azure Container Instances.** The ACI subnet must be delegated to `Microsoft.ContainerInstance/containerGroups`. For more information, see [Delegate a subnet to Azure Container Instances](../../../container-instances/container-instances-vnet.md).
+
+1. **Allow-list the ACI subnet in the storage account firewall.** In the storage account's networking settings, add the ACI subnet as an allowed virtual network. This permits AIB's container instance to access the storage account through the firewall.
+
+> [!IMPORTANT]
+> IP-based allow-listing of AIB service IPs on storage account firewalls is not a supported configuration. Use subnet-based allow-listing as described in this section to ensure reliable access to firewall-protected storage accounts.
+
+> [!NOTE]
+> The ACI subnet and the storage account must be reachable from each other over the network. If they are in different virtual networks, ensure that the virtual networks are peered or otherwise connected.
 
 ### Supported subnet combinations
 You can configure both subnets (`subnetId` and `containerInstanceSubnetId`) or only the build VM subnet (`subnetId`). A configuration that specifies only the ACI subnet (`containerInstanceSubnetId`) is not supported.
