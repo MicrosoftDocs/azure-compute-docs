@@ -42,7 +42,7 @@ sections:
           - An untagged OS image that supports remote NVMe.
           - An NVMe-tagged OS image.
           
-          To resize the VM, use the following command to run an [Azure PowerShell script](https://github.com/Azure/SAP-on-Azure-Scripts-and-Utilities/tree/main/NVMe-Preflight-Check) that sets the destination `discontrollertype` value of the VM as NVMe: 
+          To resize the VM, use the following command to run an [Azure PowerShell script](https://github.com/Azure/SAP-on-Azure-Scripts-and-Utilities/tree/main/Azure-NVMe-Utils) that sets the destination `discontrollertype` value of the VM as NVMe: 
                    
           ```PowerShell
           azure-nvme-VM-update.ps1 [-subscription_id] <String> [-resource_group_name] <String> [-vm_name] <String> [[-disk_controller_change_to] <String>] [-vm_size_change_to] <String> [[-start_vm_after_update] <Boolean>] [[-write_logfile] <Boolean>]
