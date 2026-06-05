@@ -20,7 +20,7 @@ ms.custom:
 
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://go.microsoft.com/fwlink/?linkid=2303310)
 
-Azure Premium SSD v2 is designed for IO-intense enterprise workloads that require sub-millisecond disk latencies and high IOPS and throughput at a low cost. Premium SSD v2 is suited for a broad range of workloads such as SQL server, Oracle, MariaDB, SAP, Cassandra, Mongo DB, big data/analytics, gaming, on virtual machines or stateful containers. For conceptual information on Premium SSD v2, see [Premium SSD v2](disks-types.md#premium-ssd-v2).
+Azure Premium SSD v2 is designed for IO-intense enterprise workloads that require sub-millisecond disk latencies and high IOPS and throughput at a low cost. Premium SSD v2 is suited for a broad range of workloads such as SQL server, Oracle, MariaDB, SAP, Cassandra, Mongo DB, big data/analytics, gaming, on virtual machines or stateful containers. For conceptual information on Premium SSD v2, see [Premium SSD v2](/azure/virtual-machines/disks-types#premium-ssd-v2).
 
 Premium SSD v2 disks support a 4k physical sector size by default, but can be configured to use a 512E sector size as well. While most applications are compatible with 4k sector sizes, some require 512 byte sector sizes. Oracle Database, for example, requires release 12.2 or later in order to support 4k native disks.
 
@@ -87,8 +87,8 @@ To programmatically determine the regions and zones you can deploy to, use eithe
 
 Now that you know the region and zone to deploy to, follow the deployment steps in this article to create a Premium SSD v2 and attach it to a VM.
 
-## Use Premium SSD v2 in Regions with Availability Zones
-Currently, Premium SSD v2 disks are only available in [select regions with Availability Zones (AZs)](#regional-availability).
+## Use a zonal Premium SSD v2 in Regions with availability zones
+Currently, Premium SSD v2 disks are only available in [select regions with availability zones](#regional-availability).
 
 # [Azure CLI](#tab/azure-cli)
 
@@ -194,7 +194,7 @@ Update-AzVM -VM $vm -ResourceGroupName $resourceGroupName
 1. Navigate to **Virtual machines** and follow the normal VM creation process.
 1. On the **Basics** page, select a [supported region](#regional-availability) and set **Availability options** to **Availability zone**.
 
-    For regions that support availability zones, Premium SSD v2 disks can only be attached to zonal VMs. When creating a new VM or Virtual Machine Scale Set, specify the availability zone you want before adding Premium SSD v2 disks to your configuration.
+    For a zonal deployment, create a zonal VM or Virtual Machine Scale Set, and specify the availability zone you want before adding Premium SSD v2 disks to your configuration.
 
 1. Select one or more of the zones.
 1. Fill in the rest of the values on the page as you like.
@@ -220,11 +220,13 @@ You've now deployed a VM with a Premium SSD v2.
 
 ---
 
-## Use a Premium SSD v2 in non-AZ Regions
-Currently, Premium SSD v2 disks are only available in [select regions without Availability Zones (AZs)](#regional-availability). Regions without AZ support may experience slightly higher average latency for Premium SSD v2 disks compared to regions with AZ support.
+## Use a nonzonal Premium SSD v2
+Premium SSD v2 nonzonal disks can be deployed in [select regions](#regional-availability), including regions with and without availability zones.
+
+If you deploy a nonzonal Premium SSD v2 in a region with availability zone support, review the limitations in [Nonzonal Premium SSD v2 deployments in regions with availability zones](#nonzonal-premium-ssd-v2-deployments-in-regions-with-availability-zones).
 # [Azure CLI](#tab/azure-cli)
 
-Create a Premium SSD v2 in a region without availability zone support by using the [az disk create](/cli/azure/disk#az-disk-create) command. Then create a VM in the same region that supports Premium Storage and attach the disk to it by using the [az vm create](/cli/azure/vm#az-vm-create) command. 
+Create a nonzonal Premium SSD v2 by using the [az disk create](/cli/azure/disk#az-disk-create) command. Then create a nonzonal VM in the same region that supports Premium Storage and attach the disk to it by using the [az vm create](/cli/azure/vm#az-vm-create) command.
 
 The following script creates a Premium SSD v2 with a 4k sector size. To create a disk with a 512 sector size, update the `$logicalSectorSize` parameter. Replace the values of all the variables with your own, then run the following script:
 
@@ -253,7 +255,6 @@ az disk create -n $diskName -g $resourceGroupName \
 ## Create the VM
 az vm create -n $vmName -g $resourceGroupName \
 --image $vmImage \
---zone $zone \
 --authentication-type password --admin-password $adminPassword --admin-username $adminUserName \
 --size $vmSize \
 --location $region \
@@ -262,7 +263,7 @@ az vm create -n $vmName -g $resourceGroupName \
 
 # [PowerShell](#tab/azure-powershell)
 
-Create a Premium SSD v2 in a region without availability zone support by using the [New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig) to define the configuration of your disk and the [New-AzDisk](/powershell/module/az.compute/new-azdisk) command to create your disk. Next, create a VM in the same region and availability zone that supports Premium Storage by using the [az vm create](/cli/azure/vm#az-vm-create). Finally, attach the disk to it by using the [Get-AzVM](/powershell/module/az.compute/get-azvm) command to identify variables for the virtual machine, the [Get-AzDisk](/powershell/module/az.compute/get-azdisk) command to identify variables for the disk, the [Add-AzVMDataDisk](/powershell/module/az.compute/add-azvmdatadisk) command to add the disk, and the [Update-AzVM](/powershell/module/az.compute/update-azvm) command to attach the new disk to the virtual machine. 
+Create a nonzonal Premium SSD v2 by using the [New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig) command to define the configuration of your disk and the [New-AzDisk](/powershell/module/az.compute/new-azdisk) command to create your disk. Next, create a nonzonal VM in the same region that supports Premium Storage by using the [New-AzVm](/powershell/module/az.compute/new-azvm) command. Finally, attach the disk to it by using the [Get-AzVM](/powershell/module/az.compute/get-azvm) command to identify variables for the virtual machine, the [Get-AzDisk](/powershell/module/az.compute/get-azdisk) command to identify variables for the disk, the [Add-AzVMDataDisk](/powershell/module/az.compute/add-azvmdatadisk) command to add the disk, and the [Update-AzVM](/powershell/module/az.compute/update-azvm) command to attach the new disk to the virtual machine.
 
 The following script creates a Premium SSD v2 with a 4k sector size. To create a disk with a 512 sector size, update the `$logicalSectorSize` parameter. Replace the values of all the variables with your own, then run the following script:
 
@@ -335,7 +336,7 @@ Update-AzVM -VM $vm -ResourceGroupName $resourceGroupName
 
 You can adjust the performance of a Premium SSD v2 four times within a 24 hour period. Creating a disk counts as one of these times, so for the first 24 hours after creating a Premium SSD v2 you can only adjust its performance up to three times.
 
-For conceptual information on adjusting disk performance, see [Premium SSD v2 performance](disks-types.md#premium-ssd-v2-performance).
+For conceptual information on adjusting disk performance, see [Premium SSD v2 performance](/azure/virtual-machines/disks-types#premium-ssd-v2-performance).
 
 # [Azure CLI](#tab/azure-cli)
 
