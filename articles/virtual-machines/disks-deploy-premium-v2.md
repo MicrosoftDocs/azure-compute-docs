@@ -28,9 +28,9 @@ Premium SSD v2 disks support a 4k physical sector size by default, but can be co
 
 [!INCLUDE [disks-prem-v2-limitations](./includes/disks-prem-v2-limitations.md)]
 
-### Nonzonal Premium SSD v2 deployments
+### Nonzonal Premium SSD v2 deployments in regions with availability zones
 
-The following limitations only apply when you deploy a [nonzonal](/azure/reliability/availability-zones-zonal-resource-resiliency#resource-deployment-types) Premium SSD v2. They apply because Azure selects an availability zone for you in the backend. The availability zone might not be the same as the availability zone of the virtual machine (VM) associated with the disk. When this happens, Azure performs a background copy to move the disk to the VM's availability zone for zone alignment and improved latency between the VM and disk. The background copy can take up to 24 hours to complete.
+The following limitations only apply when you deploy a [nonzonal](/azure/reliability/availability-zones-zonal-resource-resiliency#resource-deployment-types) Premium SSD v2 in a region that uses availability zones. They apply because Azure selects an availability zone for you in the backend. The availability zone might not be the same as the availability zone of the virtual machine (VM) associated with the disk. When this happens, Azure performs a background copy to move the disk to the VM's availability zone for zone alignment and improved latency between the VM and disk. The background copy can take up to 24 hours to complete.
 
 - Only one background data copy can run per disk at a time.
 - During the background copy, if you attempt to detach and reattach the disk, the operation fails.
