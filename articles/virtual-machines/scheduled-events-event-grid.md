@@ -53,7 +53,7 @@ az feature register --name ScheduledEventsActivity --namespace Microsoft.Mainten
 
 > [!Note] 
 > We recommend using the latest tooling available.
-> This feature requires Azure Compute REST API version 2025-04-01 or newer to have access to all required parameters.
+> This feature requires Azure Compute Resource Manager REST API versions 2025-04-01 or newer to have access to all required parameters for scheduledEventsPolicy when creating/updating resources.
 
 By default, scheduled events aren't delivered to Event Grid for virtual machines on Azure. If you wish to receive scheduled events you need to opt in using either the [VM profile](/rest/api/compute/virtual-machines/create-or-update#scheduledeventspolicy), the [Virtual Machine Scale Set profile](/rest/api/compute/virtual-machine-scale-sets/create-or-update#scheduledeventspolicy), or the [availability set profile](/rest/api/compute/availability-sets/create-or-update#scheduledeventspolicy). If your VM is part of an availability set or a Virtual Machine Scale Set then you can't set the schedule events profile for each VM individually. All VMs in the same Virtual Machine Scale Set or availability set are required to have the same scheduled events policy.
 
