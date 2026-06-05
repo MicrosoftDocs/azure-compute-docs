@@ -42,10 +42,10 @@ sections:
           - An untagged OS image that supports remote NVMe.
           - An NVMe-tagged OS image.
           
-          To resize the VM, use the following command to run an [Azure PowerShell script](https://github.com/Azure/SAP-on-Azure-Scripts-and-Utilities/tree/main/Azure-NVMe-Utils) that sets the destination `discontrollertype` value of the VM as NVMe: 
-                   
-          ```PowerShell
-          azure-nvme-VM-update.ps1 [-subscription_id] <String> [-resource_group_name] <String> [-vm_name] <String> [[-disk_controller_change_to] <String>] [-vm_size_change_to] <String> [[-start_vm_after_update] <Boolean>] [[-write_logfile] <Boolean>]
+          To resize the VM, use the following command to run the [Azure PowerShell script](https://github.com/Azure/SAP-on-Azure-Scripts-and-Utilities/tree/main/Azure-NVMe-Utils) that sets the destination `diskControllerType` value of the VM to NVMe:
+
+          ```powershell
+          .\Azure-NVMe-Conversion.ps1 -ResourceGroupName <resource-group-name> -VMName <vm-name> -NewControllerType NVMe -VMSize <vm-size> -StartVM -WriteLogfile
           ```
           For more details, refer to [SCSI to NVMe for Linux VMs](https://learn.microsoft.com/en-us/azure/virtual-machines/nvme-linux)
       - question: |
