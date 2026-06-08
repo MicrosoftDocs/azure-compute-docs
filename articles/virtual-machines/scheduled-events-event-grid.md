@@ -120,7 +120,7 @@ A user must have the `ScheduledEventContributor` role to read or acknowledge the
 2. Select  Add and choose Add role assignment.
 3. Search for ScheduledEventContributor 
 ![Screenshot of the Azure portal showing a search for the ScheduledEventContributer role.](media/scheduled-events/add-role-assignment.png)
-4. Select appropriate members to provision this role and assign it to the service identfier.
+4. Select appropriate members to provision this role and assign it to the service identifier.
 ![Screenshot showing adding a member to the ScheduledEventContributer role in Azure portal.](media/scheduled-events/assign-role.png)
 
 ## Detailed Scheduled Event Schema
