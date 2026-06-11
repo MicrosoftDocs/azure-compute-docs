@@ -25,7 +25,7 @@ The following table outlines the regions Ultra Disks are available in, and their
 
 | Redundancy options | Regions |
 |--------------------|---------|
-| **Regional** | Australia Central<br/>Australia Central 2<br/>Brazil Southeast<br/>Canada East<br/>Korea South<br/>North Central US<br/>Norway West<br/>Taiwan North<br/>UK West<br/>US Gov Arizona<br/>US Gov Texas<br/>West US |
+| **Regional** | Australia Central<br/>Australia Central 2<br/>Brazil Southeast<br/>Canada East<br/>Korea South<br/>North Central US<br/>Norway West<br/>Taiwan North<br/>UAE Central<br/>UK West<br/>US Gov Arizona<br/>US Gov Texas<br/>West US |
 | **One availability zone** | Brazil South<br/>Central India<br/>East Asia<br/>Korea Central<br/>US Gov Virginia |
 | **Two availability zones** | Germany West Central<br/>Japan West<br/>Qatar Central<br/>South Central US<br/>Spain Central |
 | **Three availability zones** | Australia East<br/>Austria East<br/>Canada Central<br/>Central US<br/>China North 3<br/>East US<br/>East US 2<br/>France Central<br/>Indonesia Central<br/>Italy North<br/>Japan East<br/>Malaysia West<br/>New Zealand North<br/>North Europe<br/>Poland Central<br/>South Africa North<br/>Southeast Asia<br/>Sweden Central<br/>Switzerland North<br/>UAE North<br/>UK South<br/>West Europe<br/>West US 2<br/>West US 3 |

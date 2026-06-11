@@ -12,9 +12,9 @@ ms.custom: include file
 ---
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
 |---|---|---|
-| Processor      | 128 - 320 vCPUs       | Intel Xeon Granite Rapids-AP [x86-64]                   |
-| Memory         | 256 - 1280 GiB          |  High-speed DDR5  |
-| Local Storage  | 1 Disk         | 1024 - 2048 GiB               |
-| Remote Storage | 16 Disks    |                   |
-| Network        | 6 - 8 NICs          | 75000 - 200000 Mbps              |
-| Accelerators   | 1 - 2              | Nvidia RTX PRO 6000 Blackwell Server Edition GPU (96GB)|
+| Processor      | 24 - 288 vCPUs       | Intel Xeon Granite Rapids-AP [x86-64]                   |
+| Memory         | 72 - 1032 GB          |  High-speed DDR5  |
+| Local Storage  | 1 Disk         | 256 - 2048 GiB               |
+| Remote Storage | 2- 16 Disks    |                   |
+| Network        | 4 - 8 vNICs          | 22500 - 180000 Mbps              |
+| Accelerators   | 1/4 - 2              | Nvidia RTX PRO 6000 Blackwell Server Edition GPU (96 GB)|

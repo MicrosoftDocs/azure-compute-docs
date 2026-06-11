@@ -51,11 +51,15 @@ az feature register --name ScheduledEventsActivity --namespace Microsoft.Mainten
 
 ### Opting-In to Receive Scheduled Events
 
-By default, scheduled events aren't delivered to Event Grid for virtual machines on Azure. If you wish to receive scheduled events you need to opt in using either the VM profile, the Virtual Machine Scale Set profile, or the availability set profile. If your VM is part of an availability set or a Virtual Machine Scale Set then you can't set the schedule events profile for each VM individually. All VMs in the same Virtual Machine Scale Set or availability set are required to have the same scheduled events policy.
+> [!Note] 
+> We recommend using the latest tooling available.
+> This feature requires Azure Compute Resource Manager REST API versions 2025-04-01 or newer to have access to all required parameters for scheduledEventsPolicy when creating/updating resources.
+
+By default, scheduled events aren't delivered to Event Grid for virtual machines on Azure. If you wish to receive scheduled events you need to opt in using either the [VM profile](/rest/api/compute/virtual-machines/create-or-update#scheduledeventspolicy), the [Virtual Machine Scale Set profile](/rest/api/compute/virtual-machine-scale-sets/create-or-update#scheduledeventspolicy), or the [availability set profile](/rest/api/compute/availability-sets/create-or-update#scheduledeventspolicy). If your VM is part of an availability set or a Virtual Machine Scale Set then you can't set the schedule events profile for each VM individually. All VMs in the same Virtual Machine Scale Set or availability set are required to have the same scheduled events policy.
 
 Enabling delivery to the Event Grid System Topic also delivers the events to [Azure Resource Graph](scheduled-events-resource-graph.md).
 
-If you're using Virtual Machine Scale Sets Flex or Uniform, enable scheduled events in Event Grid using the `scheduledEventsAdditionalPublishingTargets` [eventGridAndResourceGraph](/rest/api/compute/virtual-machine-scale-sets/create-or-update) setting. This setting enables scheduled events for all VMs in the scale set and ensure they're published to both Event Grid and the Azure Resource Graph.
+If you're using Virtual Machine Scale Sets Flex or Uniform, enable scheduled events in Event Grid using the `scheduledEventsAdditionalPublishingTargets` [eventGridAndResourceGraph](/rest/api/compute/virtual-machine-scale-sets/create-or-update#scheduledeventspolicy) setting. This setting enables scheduled events for all VMs in the scale set and ensure they're published to both Event Grid and the Azure Resource Graph.
 
 ```json
 "scheduledEventsPolicy": {
@@ -116,7 +120,7 @@ A user must have the `ScheduledEventContributor` role to read or acknowledge the
 2. Select  Add and choose Add role assignment.
 3. Search for ScheduledEventContributor 
 ![Screenshot of the Azure portal showing a search for the ScheduledEventContributer role.](media/scheduled-events/add-role-assignment.png)
-4. Select appropriate members to provision this role and assign it to the service identfier.
+4. Select appropriate members to provision this role and assign it to the service identifier.
 ![Screenshot showing adding a member to the ScheduledEventContributer role in Azure portal.](media/scheduled-events/assign-role.png)
 
 ## Detailed Scheduled Event Schema
