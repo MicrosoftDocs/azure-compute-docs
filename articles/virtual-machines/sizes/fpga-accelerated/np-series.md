@@ -258,7 +258,7 @@ To disable Host_Mem(SB): sudo xbutil host_mem --disable
 Starting on XRT2021.1:
 
 On-premises FPGA in Linux exposes
-[M2M data transfer](https://xilinx.github.io/XRT/master/html/m2m.html).
+[M2M data transfer](https://xilinx.github.io/XRT/2026.1/html/m2m.html).
 <br>
 This feature isn't supported in Azure NP VMs.
  
