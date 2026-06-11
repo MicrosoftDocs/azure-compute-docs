@@ -61,22 +61,22 @@ ExampleTable
         "managedApiConnections": {
             "kusto": {
                 "api": {
-                    "id": "/subscriptions/<subscription_id>/providers/Microsoft.Web/locations/<region>/managedApis/kusto"
+                    "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Web/locations/{region}/managedApis/kusto"
                 },
                 "authentication": {
                     "type": "ManagedServiceIdentity"
                 },
                 "connection": {
-                    "id": "/subscriptions/<subscription_id>/resourceGroups/<rg_name/providers/Microsoft.Web/connections/<connection_name>"
+                    "id": "/subscriptions/{subscriptionId}/resourceGroups/<rg_name/providers/Microsoft.Web/connections/{connectionName}"
                 },
                 "connectionProperties": {
                     "authentication": {
                         "audience": "https://kusto.kustomfa.windows.net",
-                        "identity": "/subscriptions/<subscription_id>/resourcegroups/<rg_name>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<managed_identity_name>",
+                        "identity": "/subscriptions/{subscriptionId}/resourcegroups/{rg_name}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{managedIdentityName}",
                         "type": "ManagedServiceIdentity"
                     }
                 },
-                "connectionRuntimeUrl": "<kusto_connection_runtime_url>"
+                "connectionRuntimeUrl": "{kustoConnectionRuntimeUrl}"
             }
         }
     }
@@ -98,7 +98,7 @@ ExampleTable
                         "HTTP": {
                             "inputs": {
                                 "authentication": {
-                                    "identity": "/subscriptions/<subscription_id>/resourcegroups/<rg_name>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<managed_identity_name>",,
+                                    "identity": "/subscriptions/{subscriptionId}/resourcegroups/{rg_name}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{managedIdentityName}",,
                                     "type": "ManagedServiceIdentity"
                                 },
                                 "body": {

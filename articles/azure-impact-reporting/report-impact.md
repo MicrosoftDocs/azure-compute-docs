@@ -65,7 +65,7 @@ For more examples, review the full [REST API reference](https://aka.ms/ImpactRP/
 ```json
 {
   "properties": {
-    "impactedResourceId": "/subscriptions/<Subscription_id>/resourcegroups/<rg_name>/providers/Microsoft.Compute/virtualMachines/<vm_name>",
+    "impactedResourceId": "/subscriptions/{subscriptionId}/resourcegroups/{rg_name}/providers/Microsoft.Compute/virtualMachines/{vm_name}",
     "startDateTime": "2022-11-03T04:03:46.6517821Z",
     "endDateTime": null, //or a valid timestamp if present
     "impactCategory": "Resource.Availability", //valid impact category needed
@@ -75,7 +75,7 @@ For more examples, review the full [REST API reference](https://aka.ms/ImpactRP/
 ```
 
 ```rest
-az rest --method PUT --url "https://management.azure.com/subscriptions/<Subscription_id>/providers/Microsoft.Impact/workloadImpacts/<impact_name>?api-version=2022-11-01-preview"  --body <body_above>
+az rest --method PUT --url "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Impact/workloadImpacts/{impactName}?api-version=2022-11-01-preview"  --body {body_above}
 
 ```
 
