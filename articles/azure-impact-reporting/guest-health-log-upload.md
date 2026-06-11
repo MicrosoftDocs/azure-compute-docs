@@ -29,7 +29,7 @@ Providing a log file helps make more precise repair actions. A log file should b
     - Curl:
     `curl -X PUT -H "x-ms-blob-type: BlockBlob" -H "Content-Type: application/octet-stream" --data-binary @"path/to/local/file.gz" "https://ghrloguploadprod.blob.core.windows.net/[container]/[datetime]_[randomHash].tar.xz?[SasToken]"`    
 
-1.	Trim off the trailing SAS token from the provided URL. In this example, the uploaded file was `https://ghrloguploadprodblob.core.windows.net/[ContainerName]/20250210213205_f71b77d3.gz?[SasTokenHere]`. Reference this trimmed LogUrl in the LogUrl field and send the impact as normal (GHR request to `https://management.azure.com/subscriptions/[subId]/providers/Microsoft.Impact/workloadImpacts/[NameOfImpact]?api-version=2025-01-01-preview`):
+1.	Trim off the trailing SAS token from the provided URL. In this example, the uploaded file was `https://ghrloguploadprodblob.core.windows.net/[ContainerName]/20250210213205_f71b77d3.gz?[SasTokenHere]`. Reference this trimmed LogUrl in the LogUrl field and send the impact as normal (GHR request to `https://management.azure.com/subscriptions/[subId]/providers/Microsoft.Impact/workloadImpacts/{impactName}?api-version=2025-01-01-preview`):
 
 ```
 {
