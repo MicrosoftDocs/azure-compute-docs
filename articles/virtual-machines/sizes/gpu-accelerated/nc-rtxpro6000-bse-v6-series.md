@@ -27,9 +27,10 @@ vCPUs (Qty.) and Memory for each size
 
 | Size Name | vCPUs (Qty.) | Memory (GB) |
 | --- | --- | --- |
-| Standard_NC128ds_xl_RTXPRO6000BSE_v6 | 128 | 512 |
-| Standard_NC256ds_xl_RTXPRO6000BSE_v6 | 256 | 1024 |
-| Standard_NC320ds_xl_RTXPRO6000BSE_v6 | 320 | 1280 |
+| Standard_NC36ds_xl_RTXPRO6000BSE_v6 | 36 | 132 |
+| Standard_NC72ds_xl_RTXPRO6000BSE_v6 | 72 | 264 |
+| Standard_NC144ds_xl_RTXPRO6000BSE_v6 | 144 | 516 |
+| Standard_NC288ds_xl_RTXPRO6000BSE_v6 | 288 | 1032 |
 
 #### VM Basics resources
 - [Check vCPU quotas](../../../virtual-machines/quotas.md)
@@ -40,9 +41,10 @@ Local (temp) storage info for each size
 
 | Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read (RR)<sup>1</sup> IOPS | Temp Disk Random Read (RR)<sup>1</sup> Throughput (MB/s) | Temp Disk Random Write (RW)<sup>1</sup> IOPS | Temp Disk Random Write (RW)<sup>1</sup> Throughput (MB/s) |
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_NC128ds_xl_RTXPRO6000BSE_v6 |  | 1024 |  |  |  |  |
-| Standard_NC256ds_xl_RTXPRO6000BSE_v6 |  | 2048 |  |  |  |  |
-| Standard_NC320ds_xl_RTXPRO6000BSE_v6 |  | 2048 |  |  |  |  |
+| Standard_NC36ds_xl_RTXPRO6000BSE_v6 |  | 256 |  |  |  |  |
+| Standard_NC72ds_xl_RTXPRO6000BSE_v6 |  | 512 |  |  |  |  |
+| Standard_NC144ds_xl_RTXPRO6000BSE_v6 |  | 1024 |  |  |  |  |
+| Standard_NC288ds_xl_RTXPRO6000BSE_v6 |  | 2048 |  |  |  |  |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
@@ -61,9 +63,11 @@ Remote (uncached) storage info for each size
 
 | Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD IOPS | Uncached Premium SSD Throughput (MB/s) | Uncached Premium SSD Burst<sup>1</sup> IOPS | Uncached Premium SSD Burst<sup>1</sup> Throughput (MB/s) | Uncached Ultra Disk and Premium SSD v2 IOPS | Uncached Ultra Disk and Premium SSD v2 Throughput (MB/s) | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 IOPS | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 Throughput (MB/s) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_NC128ds_xl_RTXPRO6000BSE_v6 | 16 |  |  |  |  |  |  |  |  |
-| Standard_NC256ds_xl_RTXPRO6000BSE_v6 | 16 |  |  |  |  |  |  |  |  |
-| Standard_NC320ds_xl_RTXPRO6000BSE_v6 | 16 |  |  |  |  |  |  |  |  |
+| Standard_NC36ds_xl_RTXPRO6000BSE_v6 | 2 |  |  |  |  |  |  |  |  |
+| Standard_NC72ds_xl_RTXPRO6000BSE_v6 | 4 |  |  |  |  |  |  |  |  |
+| Standard_NC144ds_xl_RTXPRO6000BSE_v6 | 8 |  |  |  |  |  |  |  |  |
+| Standard_NC288ds_xl_RTXPRO6000BSE_v6 | 16 |  |  |  |  |  |  |  |  |
+
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
@@ -83,11 +87,12 @@ Remote (uncached) storage info for each size
 
 Network interface info for each size
 
-| Size Name | Max NICs (Qty.) | Max Network Bandwidth (Mb/s) |
+| Size Name | Max vNICs (Qty.) | Max Network Bandwidth (Mb/s) |
 | --- | --- | --- |
-| Standard_NC128ds_xl_RTXPRO6000BSE_v6 | 6 | 75000 |
-| Standard_NC256ds_xl_RTXPRO6000BSE_v6 | 8 | 100000 |
-| Standard_NC320ds_xl_RTXPRO6000BSE_v6 | 8 | 200000 |
+| Standard_NC36ds_xl_RTXPRO6000BSE_v6 | 6 | 22500 |
+| Standard_NC72ds_xl_RTXPRO6000BSE_v6 | 6 | 45000 |
+| Standard_NC144ds_xl_RTXPRO6000BSE_v6 | 8 | 90000 |
+| Standard_NC288ds_xl_RTXPRO6000BSE_v6 | 8 | 180000 |
 
 #### Networking resources
 - [Virtual networks and virtual machines in Azure](/azure/virtual-network/network-overview)
@@ -104,9 +109,10 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 
 | Size Name | Accelerators (Qty.) | Accelerator Memory (GB) |
 | --- | --- | --- |
-| Standard_NC128ds_xl_RTXPRO6000BSE_v6 | 1 | 96 |
-| Standard_NC256ds_xl_RTXPRO6000BSE_v6 | 2 | 192 |
-| Standard_NC320ds_xl_RTXPRO6000BSE_v6 | 2 | 192 |
+| Standard_NC36ds_xl_RTXPRO6000BSE_v6 | 1/4 | 24 |
+| Standard_NC72ds_xl_RTXPRO6000BSE_v6 | 1/2 | 48 |
+| Standard_NC144ds_xl_RTXPRO6000BSE_v6 | 1 | 96 |
+| Standard_NC288ds_xl_RTXPRO6000BSE_v6 | 2 | 192 |
 
 ---
 
@@ -118,9 +124,11 @@ vCPUs (Qty.) and Memory for each size
 
 | Size Name | vCPUs (Qty.) | Memory (GB) |
 | --- | --- | --- |
-| Standard_NC128lds_xl_RTXPRO6000BSE_v6 | 128 | 256 |
-| Standard_NC256lds_xl_RTXPRO6000BSE_v6 | 256 | 512 |
-| Standard_NC320lds_xl_RTXPRO6000BSE_v6 | 320 | 640 |
+| Standard_NC24lds_xl_RTXPRO6000BSE_v6 | 24 | 72 |
+| Standard_NC36lds_xl_RTXPRO6000BSE_v6 | 36 | 72 |
+| Standard_NC72lds_xl_RTXPRO6000BSE_v6 | 72 | 132 |
+| Standard_NC144lds_xl_RTXPRO6000BSE_v6 | 144 | 264 |
+| Standard_NC288lds_xl_RTXPRO6000BSE_v6 | 288 | 516 |
 
 #### VM Basics resources
 - [Check vCPU quotas](../../../virtual-machines/quotas.md)
@@ -131,9 +139,11 @@ Local (temp) storage info for each size
 
 | Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read (RR)<sup>1</sup> IOPS | Temp Disk Random Read (RR)<sup>1</sup> Throughput (MB/s) | Temp Disk Random Write (RW)<sup>1</sup> IOPS | Temp Disk Random Write (RW)<sup>1</sup> Throughput (MB/s) |
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_NC128lds_xl_RTXPRO6000BSE_v6 |  | 1024 |  |  |  |  |
-| Standard_NC256lds_xl_RTXPRO6000BSE_v6 |  | 2048 |  |  |  |  |
-| Standard_NC320lds_xl_RTXPRO6000BSE_v6 |  | 2048 |  |  |  |  |
+| Standard_NC24lds_xl_RTXPRO6000BSE_v6 |  | 256 |  |  |  |  |
+| Standard_NC36lds_xl_RTXPRO6000BSE_v6 |  | 256 |  |  |  |  |
+| Standard_NC72lds_xl_RTXPRO6000BSE_v6 |  | 512 |  |  |  |  |
+| Standard_NC144lds_xl_RTXPRO6000BSE_v6 |  | 1024 |  |  |  |  |
+| Standard_NC288lds_xl_RTXPRO6000BSE_v6 |  | 2048 |  |  |  |  |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
@@ -152,9 +162,11 @@ Remote (uncached) storage info for each size
 
 | Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD IOPS | Uncached Premium SSD Throughput (MB/s) | Uncached Premium SSD Burst<sup>1</sup> IOPS | Uncached Premium SSD Burst<sup>1</sup> Throughput (MB/s) | Uncached Ultra Disk and Premium SSD v2 IOPS | Uncached Ultra Disk and Premium SSD v2 Throughput (MB/s) | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 IOPS | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 Throughput (MB/s) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_NC128lds_xl_RTXPRO6000BSE_v6 | 16 |  |  |  |  |  |  |  |  |
-| Standard_NC256lds_xl_RTXPRO6000BSE_v6 | 16 |  |  |  |  |  |  |  |  |
-| Standard_NC320lds_xl_RTXPRO6000BSE_v6 | 16 |  |  |  |  |  |  |  |  |
+| Standard_NC24lds_xl_RTXPRO6000BSE_v6 | 2 |  |  |  |  |  |  |  |  |
+| Standard_NC36lds_xl_RTXPRO6000BSE_v6 | 2 |  |  |  |  |  |  |  |  |
+| Standard_NC72lds_xl_RTXPRO6000BSE_v6 | 4 |  |  |  |  |  |  |  |  |
+| Standard_NC144lds_xl_RTXPRO6000BSE_v6 | 8 |  |  |  |  |  |  |  |  |
+| Standard_NC288lds_xl_RTXPRO6000BSE_v6 | 16 |  |  |  |  |  |  |  |  |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
@@ -174,11 +186,13 @@ Remote (uncached) storage info for each size
 
 Network interface info for each size
 
-| Size Name | Max NICs (Qty.) | Max Network Bandwidth (Mb/s) |
+| Size Name | Max vNICs (Qty.) | Max Network Bandwidth (Mb/s) |
 | --- | --- | --- |
-| Standard_NC128lds_xl_RTXPRO6000BSE_v6 | 8 | 75000 |
-| Standard_NC256lds_xl_RTXPRO6000BSE_v6 | 8 | 100000 |
-| Standard_NC320lds_xl_RTXPRO6000BSE_v6 | 8 | 200000 |
+| Standard_NC24lds_xl_RTXPRO6000BSE_v6 | 4 | 22500 |
+| Standard_NC36lds_xl_RTXPRO6000BSE_v6 | 6 | 22500 |
+| Standard_NC72lds_xl_RTXPRO6000BSE_v6 | 6 | 45000 |
+| Standard_NC144lds_xl_RTXPRO6000BSE_v6 | 8 | 90000 |
+| Standard_NC288lds_xl_RTXPRO6000BSE_v6 | 8 | 180000 |
 
 #### Networking resources
 - [Virtual networks and virtual machines in Azure](/azure/virtual-network/network-overview)
@@ -195,9 +209,11 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 
 | Size Name | Accelerators (Qty.) | Accelerator Memory (GB) |
 | --- | --- | --- |
-| Standard_NC128lds_xl_RTXPRO6000BSE_v6 | 1 | 96 |
-| Standard_NC256lds_xl_RTXPRO6000BSE_v6 | 2 | 192 |
-| Standard_NC320lds_xl_RTXPRO6000BSE_v6 | 2 | 192 |
+| Standard_NC24lds_xl_RTXPRO6000BSE_v6 | 1/4 | 24 |
+| Standard_NC36lds_xl_RTXPRO6000BSE_v6 | 1/4 | 24 |
+| Standard_NC72lds_xl_RTXPRO6000BSE_v6 | 1/2 | 48 |
+| Standard_NC144lds_xl_RTXPRO6000BSE_v6 | 1 | 96 |
+| Standard_NC288lds_xl_RTXPRO6000BSE_v6 | 2 | 192 |
 
 ---
 
