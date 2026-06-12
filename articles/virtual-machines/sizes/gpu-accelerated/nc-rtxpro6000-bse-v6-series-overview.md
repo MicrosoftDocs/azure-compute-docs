@@ -6,26 +6,23 @@ ms.service: azure-virtual-machines
 ms.subservice: sizes 
 ms.topic: concept-article 
 ms.custom: references_regions
-ms.date: 05/07/2026 
+ms.date: 06/03/2026 
 ms.author: yangnicole 
 ms.reviewer: yangnicole 
 --- 
 
-# NC RTX PRO 6000 Blackwell v6 sizes series overview (Preview)
+# NC RTX PRO 6000 Blackwell v6 sizes series overview
 
 The NCv6-series is a single virtual machine (VM) family for single-node compute, virtual desktop infrastructure (VDI), and gaming workloads. Below we outline general information and onboarding for the NCv6-series. 
-
-> [!IMPORTANT]
-> This VM series is currently in PREVIEW. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
 
 
 ## Availability and Pricing 
 
-The NCv6-series is currently in public preview and available in the Azure West US 2 and Southeast Asia regions. To request public preview access, sign up [here](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR9s7orOb3OJJnwABCNj_8JdUMzlLSzJFTTdRRE8yU0UxWFFYQlpYV1hDVy4u). 
+The NCv6-series is now generally available (GA) in the Azure West US 2 and Southeast Asia regions. 
 
-Refer to the [Azure.com pricing page](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) to view preview pricing rates.  
+Refer to the [Azure.com pricing page](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) to view GA pricing rates.  
 
-For more information, see our [blog on the upcoming transition to general availability](https://techcommunity.microsoft.com/blog/azurehighperformancecomputingblog/azure-ncv6-virtual-machines-enhancements-and-ga-transition/4503578).  
+For more information, see our [blog on the transition to general availability](https://techcommunity.microsoft.com/blog/azurehighperformancecomputingblog/azure-ncv6-virtual-machines-enhancements-and-ga-transition/4503578).  
 
 
 
@@ -47,16 +44,34 @@ For information on installing NVIDIA GPU drivers on N-series VMs (including NCv6
 | Windows | •	Windows 11 25H2 (including all supported Windows 11 releases up to 25H2. Windows Enterprise multi-session isn't supported). | 
 | Windows Server | •	Windows Server 2025 <br> •	Windows Server 2022| 
 | Ubuntu | •	Ubuntu 24.04 LTS <br> •	Ubuntu 22.04 LTS <br> •	Ubuntu 20.04 LTS| 
-| Red Hat Enterprise Linux | •	Red Hat Enterprise Linux 9.4, 9.6, 9.7 <br> •	Red Hat Enterprise Linux 8.8, 8.10| 
-| SUSE Linux Enterprise Server | •	SUSE Linux Enterprise Server 15 SP7| 
+| Red Hat Enterprise Linux (RHEL) | •	RHEL 9.7, 9.6, 9.4 <br> •	RHEL 8.10| 
+| SUSE Linux Enterprise Server |• SUSE Linux Enterprise Server 16 <br> •	SUSE Linux Enterprise Server 15 SP7, SP6, SP2 | 
+| Debian | • Debian 12| 
 
- 
+
 
 ## FAQs 
+- **I am an NCv6 preview customer. How can I manage the transition from preview to general availability (GA)?**
 
-- **Where can I share feedback on my experience?** <br> 
+    Please stop or delete all VMs deployed during the preview and create new VMs using any of the VM sizes now available:
+   
+    | Preview VM Size (Previous) | GA VM Size (New) | 
+    | --- | --- |
+    | Standard_NC128ds_xl_RTXPRO6000BSE_v6 | Standard_NC144ds_xl_RTXPRO6000BSE_v6 | 
+    | Standard_NC256ds_xl_RTXPRO6000BSE_v6 | Standard_NC288ds_xl_RTXPRO6000BSE_v6 | 
+    | Standard_NC320ds_xl_RTXPRO6000BSE_v6 | Standard_NC288ds_xl_RTXPRO6000BSE_v6 | 
+    | Standard_NC128lds_xl_RTXPRO6000BSE_v6 | Standard_NC144lds_xl_RTXPRO6000BSE_v6 | 
+    | Standard_NC256lds_xl_RTXPRO6000BSE_v6 | Standard_NC288lds_xl_RTXPRO6000BSE_v6 | 
+    | Standard_NC320lds_xl_RTXPRO6000BSE_v6 | Standard_NC288lds_xl_RTXPRO6000BSE_v6 |
 
-    Send all feedback to Azure GPU Feedback (azuregpufeedback@service.microsoft.com).  
+> [!NOTE]
+> Any new VM creations with the preview VM sizes (128, 256, and 320 vCPUs) will no longer work correctly, will have an outdated and unsupported NVIDIA v20.x host driver, and will not be covered under Azure Service Level Agreement (SLA). Only the new VM sizes above will deploy correctly, have the officially supported NVIDIA v20.x host driver, and be covered by the Azure SLA.
+
+Additional information on VM specifications and other GA VM sizes can be found [here](/azure/virtual-machines/sizes/gpu-accelerated/nc-rtxpro6000-bse-v6-series?tabs=sizebasicgp%2Csizebasicco). 
+
+- **How can I receive support?** <br> 
+
+    Open a support ticket in the Azure portal. 
 
 - **Are RTX Pro 6000 Blackwell GPUs exposed via SRIOV (also called “vGPU”) or Passthrough mode?** 
 
@@ -64,15 +79,12 @@ For information on installing NVIDIA GPU drivers on N-series VMs (including NCv6
 
 - **Is the NCv6-series supported on Azure Kubernetes Service (AKS) and Azure Batch?** <br> 
 
-    NCv6 will be supported on Azure Batch in Q3 CY2026. NCv6 isn't supported on AKS at this time. We're working to bring AKS support to this product in Q4 2026.
+    NCv6 is currently not supported on AKS or Azure Batch. 
 
-- **Where can I sign up for the preview?** <br>  
-
-    To request public preview access, sign up [here](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR9s7orOb3OJJnwABCNj_8JdUMzlLSzJFTTdRRE8yU0UxWFFYQlpYV1hDVy4u). 
 
 - **When is NCv6-series coming to additional regions?** <br>  
 
-    For information on region expansion, refer to our [blog on the upcoming transition to general availability](https://techcommunity.microsoft.com/blog/azurehighperformancecomputingblog/azure-ncv6-virtual-machines-enhancements-and-ga-transition/4503578).  
+    For information on region expansion, refer to our [blog on the transition to general availability](https://techcommunity.microsoft.com/blog/azurehighperformancecomputingblog/azure-ncv6-virtual-machines-enhancements-and-ga-transition/4503578).  
 
 - **What is the latest recommended NVIDIA driver for the NCv6-series?** <br>  
 
@@ -87,15 +99,11 @@ For information on installing NVIDIA GPU drivers on N-series VMs (including NCv6
 
 - **What VM sizes are available for NCv6?** <br>  
 
-    The VM sizes that are available for testing during public preview are listed [here](/azure/virtual-machines/sizes/gpu-accelerated/nc-rtxpro6000-bse-v6-series?tabs=sizebasicgp%2Csizebasicco). <br>  
-
-    The VM sizes that are available when we transition to general availability in the coming weeks, including partial GPU VM sizes, are listed [here](https://techcommunity.microsoft.com/blog/azurehighperformancecomputingblog/azure-ncv6-virtual-machines-enhancements-and-ga-transition/4503578).  
+    The VM sizes that are available are listed [here](/azure/virtual-machines/sizes/gpu-accelerated/nc-rtxpro6000-bse-v6-series?tabs=sizebasicgp%2Csizebasicco). 
 
  - **Is Omniverse Isaac-Sim supported on NCv6?** <br>  
  
-    There's a recently discovered bug in Isaac-Sim and Omniverse Kit preventing the application from working correctly on RTX Pro 6000 Blackwell either in SR-IOV or MIG mode. <br>  
-
-    A production fix is available in Omniverse Kit 110.1 and coming to Isaac Sim 6.0 tentatively June 2026. Until then, customers should use NVadsA10v5 with Isaac Sim 5.1 or Isaac Sim 6.0.0-dev2 prerelease and the v18.x guest driver ([Windows](https://download.microsoft.com/download/dcf4d002-3a53-469d-91af-04bddf57a9d7/573.76_grid_win10_win11_server2019_server2022_server2025_dch_64bit_international_azure_swl.exe), [Linux](https://download.microsoft.com/download/0541e1a5-dff2-4b8c-a79c-96a7664b1d49/NVIDIA-Linux-x86_64-570.195.03-grid-azure.run)).  
+    Yes, Omniverse Isaac-Sim 6.0 is supported on NCv6. 
 
 - **Why can I not see power nor thermal telemetry when I use `nvidia-smi` for NCv6?** <br>  
 
