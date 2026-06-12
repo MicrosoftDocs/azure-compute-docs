@@ -15,6 +15,6 @@ ms.custom: include file
 | Processor      | 24 - 288 vCPUs       | Intel Xeon Granite Rapids-AP [x86-64]                   |
 | Memory         | 72 - 1032 GB          |  High-speed DDR5  |
 | Local Storage  | 1 Disk         | 256 - 2048 GiB               |
-| Remote Storage | 2- 16 Disks    |                   |
+| Remote Storage | 2 - 16 Disks    |                   |
 | Network        | 4 - 8 vNICs          | 22500 - 180000 Mbps              |
 | Accelerators   | 1/4 - 2              | Nvidia RTX PRO 6000 Blackwell Server Edition GPU (96 GB)|
