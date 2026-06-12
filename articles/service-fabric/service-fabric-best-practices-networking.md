@@ -158,11 +158,15 @@ The classic PowerShell tasks in Azure DevOps (Service Tag: AzureCloud) need Clie
 #### Updating Windows
 
 Best practice to patch the Windows operating system is replacing the OS disk by [automatic OS image upgrades](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md). No additional rule is required.
-The [Patch Orchestration Application](service-fabric-patch-orchestration-application.md) is managing in-VM upgrades where Windows Updates applies operating system patches, this needs access to the Download Center (Service Tag: AzureUpdateDelivery) to download the update binaries.
+
+> [!NOTE]
+> AzureUpdateDelivery is deprecated in the [Azure service tags overview](/azure/virtual-network/service-tags-overview#available-service-tags). Do not use it for new deployments. If you still use the [Patch Orchestration Application](service-fabric-patch-orchestration-application.md) for legacy in-VM Windows updates, validate your firewall or NSG rules against the current Windows update connectivity guidance for your environment.
+
+The [Patch Orchestration Application](service-fabric-patch-orchestration-application.md) can manage in-VM upgrades where Windows Updates applies operating system patches. Historically, this required access to the Download Center via the AzureUpdateDelivery service tag to download update binaries.
 
 |Priority   |Name               |Port        |Protocol  |Source   |Destination          |Action  |Direction      
 |---        |---                |---         |---       |---      |---                  |---     |---      
-|4015       |Windows Updates    |443         |TCP       |Any      |AzureUpdateDelivery  |Allow   |Outbound       
+|4015       |Windows Updates (deprecated)    |443         |TCP       |Any      |AzureUpdateDelivery  |Allow   |Outbound       
 
 #### API Management
 
