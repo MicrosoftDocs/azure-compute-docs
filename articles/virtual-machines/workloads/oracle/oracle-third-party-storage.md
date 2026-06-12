@@ -87,7 +87,7 @@ The following table provides other inputs to help you to determine the appropria
 
 Both models provide thin-provisioned iSCSI block storage with inline deduplication and compression averaging 5:1 data reduction. Everpure Cloud Dedicated additionally supports NVMe/TCP, SafeMode immutable snapshots, and the full replication portfolio described below.
 
-Everpure Cloud supports Oracle database workloads on Azure VMs. [PLACEHOLDER: confirm Oracle ASM support; confirm or remove Oracle RAC support for Dedicated.]
+Everpure Cloud supports standalone Oracle Database instances on Azure VMs, including Oracle Automatic Storage Management (ASM). Oracle Real Application Clusters (RAC) is not supported.
 
 The following table provides other inputs to help you to determine the appropriate disk type.
 
