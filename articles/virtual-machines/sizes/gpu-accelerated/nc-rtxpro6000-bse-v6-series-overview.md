@@ -65,7 +65,7 @@ For information on installing NVIDIA GPU drivers on N-series VMs (including NCv6
     | Standard_NC320lds_xl_RTXPRO6000BSE_v6 | Standard_NC288lds_xl_RTXPRO6000BSE_v6 |
 
 > [!NOTE]
-> Any new VM creations with the preview VM sizes (128, 256, and 320 vCPUs) will no longer work correctly, will have an outdated and unsupported NVIDIA v20.x host driver, and will not be covered under Azure Service Level Agreement (SLA). Only the new VM sizes above will deploy correctly, have the officially supported NVIDIA v20.x host driver, and be covered by the Azure SLA.
+> Any new VM creations with the preview VM sizes (128, 256, and 320 vCPUs) will no longer work correctly and will not be covered under Azure Service Level Agreement (SLA). Only the new VM sizes above will deploy correctly and be covered by the Azure SLA.
 
 Additional information on VM specifications and other GA VM sizes can be found [here](/azure/virtual-machines/sizes/gpu-accelerated/nc-rtxpro6000-bse-v6-series?tabs=sizebasicgp%2Csizebasicco). 
 
