@@ -129,7 +129,7 @@ Both used and unused capacity reservations are eligible for Savings Plan and Res
 | Capacity SLA | Provides capacity guarantee in the specified location (region or availability zone). | Doesn't provide a capacity guarantee. Customers can choose **Capacity priority** to gain better access, but that option doesn't carry an SLA. |
 | Region vs. availability zones | Can be deployed per region or per availability zone. | Only available at the regional level. |
 
-*Eligible for the reserved instances discount if purchased separately.
+*The applicable billing rate is determined using discounts, Reserved Instance, and/or Savings Plans as available.
 
 ## Work with capacity reservation
 
@@ -215,7 +215,7 @@ In the previous image, the VM reserved instance discount is applied to VM 0, whi
 
 - **What's the price of on-demand capacity reservation?**
 
-    The price of your on-demand capacity reservation is the same as the price of the underlying VM size associated to the reservation. When you use capacity reservation, usage records for the VM size you selected will be issued whether the VM was provisioned or not. The applicable billing rate will be determied using the standard VM usage rating process, inclusive of Reserved Instances, Savings Plan or other applicable discounts. For more information, see the [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) and [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) VM pricing pages. 
+    The price of your on-demand capacity reservation is the same as the price of the underlying VM size associated to the reservation. When you use capacity reservation, usage records for the VM size you selected will be issued whether the VM was provisioned or not. The applicable billing rate will be determined using the standard VM usage rating process, inclusive of Reserved Instances, Savings Plan or other applicable discounts. For more information, see the [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) and [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) VM pricing pages. 
 
 - **Will I get charged twice for the cost of on-demand capacity reservation and for the actual VM when I finally provision it?**
 
