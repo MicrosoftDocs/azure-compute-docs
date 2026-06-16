@@ -61,18 +61,16 @@ The following table provides an example of performance caps an Ultra Disk has de
 
 |Disk Size (GiB)  |IOPS Cap  |Throughput Cap (MB/s)  |
 |---------|---------|---------|
-|4     |4,000 (1,200)*          |1,000 (300)*         |
-|8     |8,000 (2,400)*          |2,000 (600)*          |
-|16     |16,000 (4,800)*        |4,000 (1,200)*          |
-|32     |32,000 (9,600)*         |8,000 (2,400)*          |
-|64     |64,000 (19,200)*         |10,000 (4,900)*          |
-|128     |128,000 (38,400)*         |10,000 (9,800)*          |
-|256     |256,000 (76,000)*         |10,000         |
-|512     |400,000 (153,000)*         |10,000         |
-|1,024    |400,000 (307,200)*        |10,000        |
+|4     |4,000          |1,000          |
+|8     |8,000          |2,000          |
+|16     |16,000        |4,000          |
+|32     |32,000         |8,000          |
+|64     |64,000         |10,000          |
+|128     |128,000         |10,000          |
+|256     |256,000         |10,000         |
+|512     |400,000         |10,000         |
+|1,024    |400,000        |10,000        |
 |2,048-65,536|400,000         |10,000         |
-
-\* Only applies during deployment of Virtual Machine Scale Sets with Uniform orchestration mode. Setting a higher value during deployment results in a failed deployment. After deployment completes you can [increase the performance](disks-enable-ultra-ssd.md#adjust-the-performance-of-an-ultra-disk) of your disks.
 
 
 ### Ultra Disk performance
@@ -83,17 +81,11 @@ Ultra Disks are designed to provide consistently low sub millisecond latencies a
 
 Ultra Disks support IOPS limits of 1000 IOPS/GiB, up to a maximum of 400,000 IOPS per disk. To achieve the target IOPS for the disk, ensure that the selected disk IOPS are less than the VM IOPS limit. Ultra Disks with greater IOPS can be used as shared disks to support multiple VMs. The minimum baseline IOPS per disk is 100.
 
-> [!NOTE]
-> Only during deployment of Ultra Disks while using Uniform Virtual Machine Scale Sets: The minimum IOPS per disk are 1 IOPS/GiB, with an overall baseline minimum of 100 IOPS. The maximum IOPS per disk are 300 IOPS/GiB, up to a maximum of 400,000 IOPS per disk. If you exceed these limits at deployment, the deployment fails. You can [increase the performance](disks-enable-ultra-ssd.md#adjust-the-performance-of-an-ultra-disk) of these disks once deployment completes.
-
 For more information about IOPS, see [Virtual machine and disk performance](disks-performance.md).
 
 ### Ultra Disk throughput
 
 The maximum throughput limit of an Ultra Disk is .25 MB/s for each provisioned IOPS, up to a maximum of 10,000 MB/s per disk (where MB/s = 10^6 Bytes per second). The minimum guaranteed throughput of an Ultra Disk is 1 MB/s.
-
-> [!NOTE]
-> Only during deployment of Ultra Disks while using Uniform Virtual Machine Scale Sets: The minimum throughput of an Ultra Disk is 4-KB/s per provisioned IOPS. So if you provision a 500 GiB, 500 IOPS Ultra Disk, the minimum throughput for that disk would be 2 MB/s and the maximum throughput that can be provisioned is 125 MB/s.
 
 You can adjust Ultra Disk IOPS and throughput performance at runtime without detaching the disk from the virtual machine. After a performance resize operation has been issued on a disk, it can take up to an hour for the change to take effect. Up to four performance resize operations are permitted during a 24-hour window.
 
@@ -142,7 +134,7 @@ All Premium SSD v2 disks have a baseline IOPS of 3,000 that is free of charge. A
 
 #### Premium SSD v2 throughput
 
-All Premium SSD v2 disks have a baseline throughput of 125 MB/s that is free of charge. After 6 GiB, the maximum throughput that can be set increases by 0.25 MB/s per set IOPS. If a disk has 3,000 IOPS, the max throughput it can set is 750 MB/s. To raise the throughput for this disk beyond 750 MB/s, its IOPS must be increased. For example, if you increased the IOPS to 4,000, then the max throughput that can be set is 1,000 MB/s. 2,000 MB/s is the maximum throughput supported for disks that have 5,000 IOPS or more. Increasing your throughput beyond 125 MB/s increases the price of your disk.
+All Premium SSD v2 disks have a baseline throughput of 125 MB/s that is free of charge. After 6 GiB, the maximum throughput that can be set increases by 0.25 MB/s per set IOPS. If a disk has 3,000 IOPS, the max throughput it can set is 750 MB/s. To raise the throughput for this disk beyond 750 MB/s, its IOPS must be increased. For example, if you increased the IOPS to 4,000, then the max throughput that can be set is 1,000 MB/s. 2,000 MB/s is the maximum throughput supported for disks that have 8,000 IOPS or more. Increasing your throughput beyond 125 MB/s increases the price of your disk.
 
 #### Premium SSD v2 Sector Sizes
 Premium SSD v2 supports a 4k physical sector size by default. A 512E sector size is also supported. While most applications are compatible with 4k sector sizes, some require 512-byte sector sizes. Oracle Database, for example, requires release 12.2 or later in order to support 4k native disks.
@@ -201,7 +193,9 @@ Azure Standard HDDs are suitable for latency-tolerant workloads using large, seq
 
 ### Standard HDD Transactions
 
-Standard HDD transactions incur a billable cost for every 10,000 disk operations.
+There are a few different ways that Standard HDDs count transactions, depending on the region your disk is in. For all Azure regions except for US Central and France Central, each I/O operation is considered a single transaction for billing purposes, and incurs a billable cost for every 10,000 billable transactions. There's no hourly limit on the number of billable transactions that can incur a billable cost. 
+
+As of June 2, 2026, for the US Central and France Central Azure regions, Standard HDDs count transactions in two different ways depending on the disk size. For Standard HDDs sizes S4 and S6, each I/O operation less than 16 KiB of throughput is considered a single billable transaction. I/O operations larger than 16 KiB of throughput are considered multiple billable transactions of size 16 KiB for billing purposes. Cost is incurred for every 10,000 billable transactions but, there's an hourly limit on the number of billable transactions that can incur a billable cost. If your individual disk's billable transactions reach that hourly limit, any additional billable transactions during that hour don't incur a cost. For the rest of the Standard HDD sizes (S10, S20, S30, S40, S50, S60, S70, S80) and snapshots, each I/O operation is considered a single billable transaction for billing purposes, and incurs a billable cost for every 10,000 billable transactions. There's no hourly limit on the number of billable transactions that can incur a cost for these Standard HDD sizes. 
 
 ## Billing
 
@@ -221,7 +215,7 @@ For more information on snapshots, see [Create a snapshot of a virtual hard disk
 
 **Outbound data transfers**: [Outbound data transfers](https://azure.microsoft.com/pricing/details/bandwidth/) (data going out of Azure data centers) incur billing for bandwidth usage.
 
-**Transactions**: You're billed for the number of transactions performed on a standard managed disk. For Standard SSDs, each I/O operation less than or equal to 256 kB of throughput is considered a single I/O operation. I/O operations larger than 256 kB of throughput are considered multiple I/Os of size 256 kB. Standard HDD transactions incur a billable cost for every 10,000 disk operations.
+**Transactions**: You're billed for the number of transactions performed on a standard managed disk. For Standard SSDs, each I/O operation less than or equal to 256 kB of throughput is considered a single I/O operation. I/O operations larger than 256 kB of throughput are considered multiple I/Os of size 256 kB. Standard HDD transaction charges depend on the region, size of the disk you deploy, and for some disk sizes, the size of each transaction. For details, [see this section](#standard-hdd-transactions). 
 
 For detailed information on pricing for managed disks (including transaction costs), see [managed disk pricing](https://azure.microsoft.com/pricing/details/managed-disks).
 

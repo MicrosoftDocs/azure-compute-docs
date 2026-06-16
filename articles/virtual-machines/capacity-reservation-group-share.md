@@ -66,7 +66,8 @@ The Provider subscription sharing a Capacity Reservation Group can allow:
 
 - An ODCR owner in the Provider subscription must have sufficient rights to be able to share a CRG
 - A VM owner in the Consumer subscription must have sufficient rights to be able to make deployments in capacity reservation (CR) in shared CRG
-- A VM being deployed in the shared CRG must match the VM SKU, region, and zone if applicable 
+- A VM being deployed in the shared CRG must match the VM SKU, region, and zone if applicable
+- All subscriptions must be enabled with `Microsoft.Compute` 
 
 ## Limitations of sharing a Capacity Reservation Group
 

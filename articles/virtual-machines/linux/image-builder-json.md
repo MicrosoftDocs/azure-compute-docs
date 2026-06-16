@@ -767,6 +767,8 @@ Write-Output '>>> Waiting for GA Service (WindowsAzureTelemetryService) to start
 while ((Get-Service WindowsAzureTelemetryService) -and ((Get-Service WindowsAzureTelemetryService).Status -ne 'Running')) { Start-Sleep -s 5 }
 Write-Output '>>> Waiting for GA Service (WindowsAzureGuestAgent) to start ...'
 while ((Get-Service WindowsAzureGuestAgent).Status -ne 'Running') { Start-Sleep -s 5 }
+Write-Output '>>> Removing WinRM certificate(s) created by Packer ...'
+Get-ChildItem Cert:\LocalMachine\My | Where-Object { $_.Subject -like 'CN=pkrvm*' } | Remove-Item -Force -ErrorAction SilentlyContinue
 if( Test-Path $Env:SystemRoot\system32\Sysprep\unattend.xml ) {
   Write-Output '>>> Removing Sysprep\unattend.xml ...'
   Remove-Item $Env:SystemRoot\system32\Sysprep\unattend.xml -Force

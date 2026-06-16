@@ -45,12 +45,12 @@ You need to run this script in your Azure environment.
 
 #### PowerShell
 
-* **Single subscription**: `./CreateImpactReportingConnector.ps1 -SubscriptionId <subid>`
+* **Single subscription**: `./CreateImpactReportingConnector.ps1 -SubscriptionId {subscriptionId}`
 * **Multiple subscriptions from file**: `./CreateImpactReportingConnector.ps1 -FilePath './subscription_ids'`
 
 #### Bash
 
-* **Single subscription**: `./create-impact-reporting-connector.sh --subscription-id <subid>`
+* **Single subscription**: `./create-impact-reporting-connector.sh --subscription-id {subscriptionId}`
 * **Multiple subscriptions from file**: `./create-impact-reporting-connector.sh --file_path './subscription_ids'`
 
 ### [Portal](#tab/portal/)

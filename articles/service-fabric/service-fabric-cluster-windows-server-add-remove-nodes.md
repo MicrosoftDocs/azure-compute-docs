@@ -31,7 +31,7 @@ After you have [created your standalone Service Fabric cluster on Windows Server
 
 5. Run PowerShell with elevated privileges and go to the location of the unzipped package.
 
-6. Run the *AddNode.ps1* script with the parameters describing the new node to add. The following example adds a new node called VM5, with type NodeType0 and IP address 182.17.34.52, into UD1 and fd:/dc1/r0. `ExistingClusterConnectionEndPoint` is a connection endpoint for a node already in the existing cluster, which can be the IP address of *any* node in the cluster. 
+6. Run the *AddNode.ps1* script with the parameters describing the new node to add. The following example adds a new node called VM5, with type NodeType0 and IP address 182.17.34.52, into UD1 and fd:/dc1/r0. `ExistingClientConnectionEndpoint` is a connection endpoint for a node already in the existing cluster, which can be the IP address of *any* node in the cluster. 
 
    Unsecure (prototyping):
 
@@ -46,6 +46,14 @@ After you have [created your standalone Service Fabric cluster on Windows Server
 
    .\AddNode.ps1 -NodeName VM5 -NodeType NodeType0 -NodeIPAddressorFQDN 182.17.34.52 -ExistingClientConnectionEndpoint 182.17.34.50:19000 -UpgradeDomain UD1 -FaultDomain fd:/dc1/r0 -X509Credential -ServerCertThumbprint $CertThumbprint  -AcceptEULA
    ```
+
+   Secure (Windows credential-based):
+
+   ```powershell
+   .\AddNode.ps1 -NodeName VM5 -NodeType NodeType0 -NodeIPAddressorFQDN 182.17.34.52 -ExistingClientConnectionEndpoint 182.17.34.50:19000 -UpgradeDomain UD1 -FaultDomain fd:/dc1/r0 -WindowsCredential -AcceptEULA
+   ```
+
+   Use this option when your standalone cluster is configured with Windows security. For more information, see [Connect to a secure cluster using Windows Active Directory](service-fabric-connect-to-secure-cluster.md#connect-to-a-secure-cluster-using-windows-active-directory).
 
    When the script finishes running, you can check whether the new node has been added by running the [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode) cmdlet.
 
@@ -71,7 +79,7 @@ After you have [created your standalone Service Fabric cluster on Windows Server
 
 ### Add nodes to clusters configured with Windows Security using gMSA
 
-For clusters configured with Group Managed Service Account(gMSA)(https://technet.microsoft.com/library/hh831782.aspx), a new node can be added using a configuration upgrade:
+For clusters configured with [Group Managed Service Account (gMSA)](https://technet.microsoft.com/library/hh831782.aspx), a new node can be added using a configuration upgrade:
 
 1. Run [Get-ServiceFabricClusterConfiguration](/powershell/module/servicefabric/get-servicefabricclusterconfiguration) on any of the existing nodes to get the latest configuration file and add details about the new node you want to add in the "Nodes" section. Make sure the new node is part of the same group managed account. This account should be an Administrator on all machines.
 

@@ -47,21 +47,21 @@ You can use the Impact Reporting REST API to view previously filed impact report
 For more information, see the [REST API reference](https://aka.ms/ImpactRP/APIDocs).
 
 ```rest
-az rest --method GET --url "https://management.azure.com/subscriptions/<Subscription_id>/providers/Microsoft.Impact/workloadImpacts/<impact_name>?api-version=2022-11-01-preview" 
+az rest --method GET --url "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Impact/workloadImpacts/{impactName}?api-version=2022-11-01-preview" 
 ```
 
 #### Response
 
 ```json
 {
-  "id": "/subscriptions/<Subscription_id>/providers/Microsoft.Impact/workloadImpacts/Impact02",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Impact/workloadImpacts/Impact02",
   "name": "Impact02",
   "type": "microsoft.impact/workloadimpacts",
   "systemData": {
     ...
   },
   "properties": {
-    "impactedResourceId": "/subscriptions/<Subscription_id>/resourceGroups/<rg-name>/providers/Microsoft.Compute/virtualMachines/<vm-name>",
+    "impactedResourceId": "/subscriptions/{subscriptionId}/resourceGroups/{rg_name}/providers/Microsoft.Compute/virtualMachines/{vm_name}",
     "startDateTime": "2022-11-14T05:59:46.6517821Z",
     "endDateTime": null,
     "impactDescription": "something's not right",
