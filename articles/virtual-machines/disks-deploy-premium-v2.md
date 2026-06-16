@@ -220,7 +220,7 @@ You've now deployed a VM with a Premium SSD v2.
 ## Use a nonzonal Premium SSD v2
 Premium SSD v2 nonzonal disks can be deployed in [select regions](#regional-availability), including regions with and without availability zones.
 
-If you deploy a nonzonal Premium SSD v2 in a region with availability zone support, review the limitations in [Nonzonal Premium SSD v2 deployments in regions with availability zones](#nonzonal-premium-ssd-v2-deployments-in-regions-with-availability-zones).
+If you deploy a nonzonal Premium SSD v2 in a region with availability zone support, review the limitations in [Nonzonal Premium SSD v2 deployments in regions with availability zones](#nonzonal-premium-ssd-v2-limitations-in-regions-with-availability-zones).
 # [Azure CLI](#tab/azure-cli)
 
 Create a nonzonal Premium SSD v2 by using the [az disk create](/cli/azure/disk#az-disk-create) command. Then create a nonzonal VM in the same region that supports Premium Storage and attach the disk to it by using the [az vm create](/cli/azure/vm#az-vm-create) command.
