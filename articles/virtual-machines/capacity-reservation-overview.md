@@ -129,7 +129,7 @@ Both used and unused capacity reservations are eligible for Savings Plan and Res
 | Capacity SLA | Provides capacity guarantee in the specified location (region or availability zone). | Doesn't provide a capacity guarantee. Customers can choose **Capacity priority** to gain better access, but that option doesn't carry an SLA. |
 | Region vs. availability zones | Can be deployed per region or per availability zone. | Only available at the regional level. |
 
-*The applicable billing rate is determined by using discounts, Reserved Instance, and/or Savings Plans as available.
+*The applicable billing rate is determined using discounts, Reserved Instance, and/or Savings Plans as available.
 
 ## Work with capacity reservation
 
