@@ -29,11 +29,10 @@ Premium SSD v2 disks support a 4k physical sector size by default, but can be co
 [!INCLUDE [disks-prem-v2-limitations](./includes/disks-prem-v2-limitations.md)]
 
 ### Nonzonal Premium SSD v2 limitations in regions with availability zones
-When you attach a [nonzonal](/azure/reliability/availability-zones-zonal-resource-resiliency#resource-deployment-types) Premium SSD v2 to a nonzonal VM in an AZ region, Azure runs a background copy (up to 24 hours) to align the disk with the VM's availability zone to optimize latency. Only one background copy can run on a nonzonal disk at a time.
 
-While a background copy is in progress: 
-- Attaching the nonzonal disk to a running nonzonal VM may fail.
-- Restarting a stopped or deallocated nonzonal VM with the nonzonal disk attached might fail, because the restart can trigger a second background copy.
+When you attach a [nonzonal](/azure/reliability/availability-zones-zonal-resource-resiliency#resource-deployment-types) Premium SSD v2 to a nonzonal VM in an AZ region, Azure runs a background copy (up to 24 hours) to align the disk with the VM's availability zone and optimize latency. Only one background copy can run on a nonzonal disk at a time. While a background copy is in progress, attaching the nonzonal disk to a running nonzonal VM might fail. Restarting a stopped or deallocated nonzonal VM with the nonzonal disk attached might also fail, because the restart can trigger a second background copy.
+
+While a background copy is in progress:
 - You can't attach a nonzonal disk created from a snapshot, including an [instant access snapshot](/azure/virtual-machines/disks-instant-access-snapshots), to a nonzonal VM until the snapshot's background copy finishes. To check the snapshot's background copy status, see [Check snapshot status](/azure/virtual-machines/disks-incremental-snapshots?tabs=azure-cli#check-snapshot-status).
 - You can't resize the nonzonal disk or change customer-managed key. 
 
