@@ -34,7 +34,7 @@ When you attach a [nonzonal](/azure/reliability/availability-zones-zonal-resourc
 While a background copy is in progress: 
 - Attaching the nonzonal disk to a running nonzonal VM may fail.
 - Restarting a stopped or deallocated nonzonal VM with the nonzonal disk attached might fail, because the restart can trigger a second background copy.
-- A nonzonal disk created from a snapshot, including an [instant access snapshot](/azure/virtual-machines/disks-instant-access-snapshots), can't be attached to a nonzonal VM until the snapshot's background copy finishes. To check the snapshot's background copy status, see [Check snapshot status](/azure/virtual-machines/disks-incremental-snapshots?tabs=azure-cli#check-snapshot-status).
+- You can't attach a nonzonal disk created from a snapshot, including an [instant access snapshot](/azure/virtual-machines/disks-instant-access-snapshots), to a nonzonal VM until the snapshot's background copy finishes. To check the snapshot's background copy status, see [Check snapshot status](/azure/virtual-machines/disks-incremental-snapshots?tabs=azure-cli#check-snapshot-status).
 - You can't resize the nonzonal disk or change customer-managed key. 
 
 ### Regional availability
