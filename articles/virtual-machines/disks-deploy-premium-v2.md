@@ -29,12 +29,12 @@ Premium SSD v2 disks support a 4k physical sector size by default, but can be co
 [!INCLUDE [disks-prem-v2-limitations](./includes/disks-prem-v2-limitations.md)]
 
 ### Nonzonal Premium SSD v2 limitations in regions with availability zones
-The following limitations only apply when you deploy a [nonzonal](/azure/reliability/availability-zones-zonal-resource-resiliency#resource-deployment-types) Premium SSD v2 in a region that uses availability zones.
-- Only supported in a [small subset of regions](#regional-availability) that support availability zones.
-- When a nonzonal Premium SSD v2 disk is attached to a virtual machine (VM) in a region with availability zones, Azure may start a background copy to align the disk with the VM's zone and optimize latency. The copy can take up to 24 hours to complete. Only one background copy can run on a disk at a time. As a result, detaching and reattaching the disk before the background copy completes can cause the attach operation to fail.
-  - Attach nonzonal disks only to running nonzonal VMs. Attaching a nonzonal disk to a stopped or deallocated VM can cause the VM restart to fail if another background copy operation is already in progress, as the restart initiates an additional copy to align the disk with the VM's availability zone.
-  - You can't attach a disk created from a snapshot to a nonzonal VM while its own background copy is in progress, even if it's an [instant access snapshot](/azure/virtual-machines/disks-instant-access-snapshots). To check the snapshot's background copy status, see [Check snapshot status](/azure/virtual-machines/disks-incremental-snapshots?tabs=azure-cli#check-snapshot-status).
- - You can't increase the size of a disk or change its customer-managed key while a background data copy for availability zone alignment is occurring.
+
+When you attach a [nonzonal](/azure/reliability/availability-zones-zonal-resource-resiliency#resource-deployment-types) Premium SSD v2 to a nonzonal VM in an AZ region, Azure runs a background copy (can take up to 24 hours) to align the disk with the VM's availability zone and optimize latency.
+
+The following additional limitations apply to nonzonal Premium SSD v2 disks:
+- You can't attach a nonzonal disk created from a snapshot, including an [instant access snapshot](/azure/virtual-machines/disks-instant-access-snapshots), to a nonzonal VM until the snapshot's background copy finishes. To check the snapshot's background copy status, see [Check snapshot status](/azure/virtual-machines/disks-incremental-snapshots?tabs=azure-cli#check-snapshot-status).
+- You can't resize the nonzonal disk or change customer-managed key. 
 
 ### Regional availability
 
@@ -221,6 +221,9 @@ You've now deployed a VM with a Premium SSD v2.
 Premium SSD v2 nonzonal disks can be deployed in [select regions](#regional-availability), including regions with and without availability zones.
 
 If you deploy a nonzonal Premium SSD v2 in a region with availability zone support, review the limitations in [Nonzonal Premium SSD v2 deployments in regions with availability zones](#nonzonal-premium-ssd-v2-limitations-in-regions-with-availability-zones).
+
+ Only one background copy can run on a nonzonal disk at a time. While a background copy is in progress, attaching the nonzonal disk to a running nonzonal VM might fail. Restarting a stopped or deallocated nonzonal VM with the nonzonal disk attached might also fail, because the restart can trigger a second background copy.
+
 # [Azure CLI](#tab/azure-cli)
 
 Create a nonzonal Premium SSD v2 by using the [az disk create](/cli/azure/disk#az-disk-create) command. Then create a nonzonal VM in the same region that supports Premium Storage and attach the disk to it by using the [az vm create](/cli/azure/vm#az-vm-create) command.
@@ -367,5 +370,7 @@ Update-AzDisk -ResourceGroupName $resourceGroup -DiskName $diskName -DiskUpdate 
 ## Next steps
 
 Add a data disk by using either the [Azure portal](linux/attach-disk-portal.yml), [Azure CLI](linux/add-disk.md), or [PowerShell](windows/attach-disk-ps.md).
+
+Use [Premium SSD v2 with VMs in availability set](/azure/virtual-machines/use-premium-ssd-v2-with-availability-set).
 
 Provide feedback on [Premium SSD v2](https://aka.ms/premium-ssd-v2-survey).
