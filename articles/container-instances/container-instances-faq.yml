@@ -57,8 +57,8 @@ sections:
           * [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2019`, `1809`, `10.0.17763.1040` or newer
           * [Windows](https://hub.docker.com/_/microsoft-windows): `1809`, `10.0.17763.1040` or newer
 
-       - question: |
-          Are ARM64 (arm64) container images supported in Azure Container Instances (ACI)?
+      - question: |
+          Are ARM64 (arm64) container images supported?
         answer: |
           No. Azure Container Instances currently supports only x64 (AMD64) container images. ARM64 (arm64) container images aren't supported for deployment in Azure Container Instances.
           This limitation also applies when Azure Container Instances is used as the provider for AKS Virtual Node (Virtual Kubelet).
