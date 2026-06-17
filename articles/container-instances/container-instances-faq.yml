@@ -56,7 +56,15 @@ sections:
           * [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver): `1809`, `10.0.17763.1040` or newer
           * [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2019`, `1809`, `10.0.17763.1040` or newer
           * [Windows](https://hub.docker.com/_/microsoft-windows): `1809`, `10.0.17763.1040` or newer
-          
+
+       - question: |
+          Are ARM64 (arm64) container images supported in Azure Container Instances (ACI)?
+        answer: |
+          No. Azure Container Instances currently supports only x64 (AMD64) container images. ARM64 (arm64) container images aren't supported for deployment in Azure Container Instances.
+          This limitation also applies when Azure Container Instances is used as the provider for AKS Virtual Node (Virtual Kubelet).
+          If you attempt to deploy an ARM64-only image, the container may fail to start because the underlying platform doesn't support ARM64 workloads.
+          Support for ARM64 on Azure Container Instances is being evaluated for future releases, but there is currently no announced timeline or committed delivery date.
+                
       - question: |
           What .NET or .NET Core image layer should I use in my container? 
         answer: |
