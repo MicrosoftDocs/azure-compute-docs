@@ -5,7 +5,7 @@ services: virtual-machines
 ms.service: azure-virtual-machines
 ms.subservice: hpc
 ms.topic: concept-article
-ms.date: 02/10/2026
+ms.date: 05/04/2026
 ms.reviewer: cynthn
 ms.author: padmalathas
 author: padmalathas
@@ -192,9 +192,9 @@ Optimal configuration depends on workload. Symmetric rank distribution usually p
     ```
 
 ## Temporary storage
-HBv5 VMs feature 9 physically local NVMe SSD devices. One device is preformatted to serve as a page file and appears in your VM as a generic *SSD* device. 8 other, larger SSDs are provided as unformatted block NVMe devices. 
+HBv5 VMs feature 9 physically local SSD devices. One device is preformatted to serve as a page file and appears in your VM as a generic SSD device. 8 other, larger NVMe SSDs are provided as unformatted block devices. 
 
-As the block NVMe device bypasses the hypervisor, it has higher bandwidth, higher IOPS, and lower latency per IOP. When paired in a striped array, the NVMe SSD is expected to provide up to 50 GB/s of read bandwidth and 30 GB/s of write bandwidth for large block sizes. 
+Because the block NVMe device bypasses the hypervisor, it has higher bandwidth, higher IOPS, and lower latency per IOP. When paired in a striped array, the NVMe SSDs provide up to 50 GB/s of read bandwidth and 30 GB/s of write bandwidth for large block sizes. 
 
 Combined, the 8 NVMe devices provide 15 TiB of total local storage per VM.
 
@@ -208,76 +208,21 @@ Combined, the 8 NVMe devices provide 15 TiB of total local storage per VM.
 | Memory                           | 432 GB (RAM per core depends on VM size)            | 
 | Local Disk                       | 8 * 1.8 TB NVMe (block), 480 GB SSD (page file)     | 
 | InfiniBand                       | 4 * 200 Gb/s NVIDIA ConnectX-7 NDR InfiniBand       | 
-| Network                          | 180 Gb/s Azure Accelerated Networking               | 
+| Network                        | 200 Gb/s (180 Gb/s Azure Accelerated Networking)    | 
 
 
 ## Software specifications 
 
 | Software specifications        | HBv5-series VMs                                            | 
 |--------------------------------|-----------------------------------------------------------|
-| Max MPI Job Size               | HPC-X (2.18 or higher)*, OpenMPI (4.1.3 or higher), MVAPICH2 (2.3.7 or higher), MPICH (4.1 or higher)  |
-| MPI Support                    | HPC-X (2.13 or higher), Intel MPI (2021.7.0 or higher), OpenMPI (4.1.3 or higher), MVAPICH2 (2.3.7 or higher), MPICH (4.1 or higher)  |
+| Max MPI Job Size               | 110,400 cores (300 VMs in a single virtual machine scale set with singlePlacementGroup=true) |
+| MPI Support                    | HPC-X, OpenMPI, MVAPICH2, MPICH  |
 | Additional Frameworks          | UCX, libfabric, PGAS, or other InfiniBand based runtimes                  |
-| Azure Storage Support          | Standard and Premium Disks (maximum 32 disks), Azure NetApp Files, Azure Files, Azure HPC Cache, Azure Managed Lustre File System (Preview)             |
-| Supported and Validated OS     | AlmaLinux 8.10, Red Hat Enterprise Linux 8.10, Ubuntu 22.04+ and 24.04            |
-| Recommended OS for Performance | AlmaLinux HPC 8.10 (recommended image URN: almalinux:almalinux-hpc:8_10-hpc-gen2:latest), for scaling test, uses the URN recommended almalinux:almalinux-hpc:8_6-hpc-gen2:latest and the new HPC-X [tarball](https://github.com/Azure/azhpc-images/releases/tag/alma-hpc-20250529), Ubuntu-HPC 18.04+    |
-| Orchestrator Support           | Azure CycleCloud, AKS; [cluster configuration options](sizes-hpc.md#cluster-configuration-options)                      | 
+| Azure Storage Support          | Standard and Premium Disks (maximum 32 disks), Azure NetApp Files, Azure Files, Azure Managed Lustre File System             |
+| Supported and Validated OS     | Red Hat Enterprise Linux 8.10+, AlmaLinux 8.10+, Ubuntu 22.04+, SUSE Enterprise Linux 15 SP7+, Windows Server 2022  |
+| Recommended OS for Performance | AlmaLinux HPC 9.7, Ubuntu-HPC 24.04, Windows Server 2025    |
+| Orchestrator Support           | Azure CycleCloud, Azure Batch, Azure Kubernetes Service | 
 
-> [!NOTE]
-> * These VMs support only Generation 2 VMs. 
-> * All Red Hat Enterprise Linux (RHEL) versions earlier than 8.10, including derivatives such as CentOS and AlmaLinux, are deprecated.
-> * Windows Server isn't supported on HBv5.
-
-## Known Issues with IB RDMA and NUMA Node Affinity
-
-### Issue Overview
-
-On certain virtual machines (VMs), the InfiniBand RDMA device names (such as mlx5_[0-3]) may not align correctly with their respective NUMA node affinities. Ideally, each RDMA device should be mapped as follows:
-
--	mlx5_0 is on NUMA node: 0
--	mlx5_1 is on NUMA node: 4
--	mlx5_2 is on NUMA node: 8
--	mlx5_3 is on NUMA node: 12
-  
-However, an incorrect mapping example could be:
-
-- mlx5_0 is on NUMA node: 4
-- mlx5_1 is on NUMA node: 8
-- mlx5_2 is on NUMA node: 12
-- mlx5_3 is on NUMA node: 0
-  
-This misalignment can lead to performance degradation, particularly when running multimode MPI workloads.
-
-### Verifying RDMA device to NUMA node mapping
-
-To confirm whether your RDMA devices are correctly mapped to NUMA nodes, execute the following script:
-```bash
-for d in /sys/class/infiniband/*;
-do
-dev=$(basename "$d")
-node=$(cat "$d/device/numa_node")
-echo "$dev is on NUMA node: $node"
-done
-```
-Compare the output with the ideal mapping listed above.
-
-### Solution: Persistent device naming with Udev rules
-
-To remediate the misalignment issue, follow these steps:
-1.	Create a new file in /etc/udev/rules.d/, for example: 99-rdma-persistent-naming.rules
-2.	Add the following lines to the file:
-    ```bash
-    ACTION=="add", SUBSYSTEMS=="pci", KERNELS=="0101:00:00.0", PROGRAM="rdma_rename %k NAME_FIXED mlx5_ib0"
-    ACTION=="add", SUBSYSTEMS=="pci", KERNELS=="0102:00:00.0", PROGRAM="rdma_rename %k NAME_FIXED mlx5_ib1"
-    ACTION=="add", SUBSYSTEMS=="pci", KERNELS=="0103:00:00.0", PROGRAM="rdma_rename %k NAME_FIXED mlx5_ib2"
-    ACTION=="add", SUBSYSTEMS=="pci", KERNELS=="0104:00:00.0", PROGRAM="rdma_rename %k NAME_FIXED mlx5_ib3"
-    ```
-3.	Reload udev rules and trigger device events:
-    ```bash
-    # udevadm control --reload
-    # udevadm trigger --type=devices --action=add
-    ```
-This solution ensures that RDMA device naming persists across VM reboots.
 
 ## Next steps
 
