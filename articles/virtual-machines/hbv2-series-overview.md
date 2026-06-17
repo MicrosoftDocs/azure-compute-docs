@@ -6,7 +6,7 @@ ms.custom:
 ms.service: azure-virtual-machines
 ms.subservice: hpc
 ms.topic: concept-article
-ms.date: 05/02/2026
+ms.date: 05/04/2026
 ms.reviewer: cynthn
 ms.author: padmalathas
 author: padmalathas
@@ -67,7 +67,7 @@ Process pinning works on HBv2-series VMs because we expose the underlying silico
 | Additional Frameworks           | UCX, libfabric, PGAS |
 | Azure Storage Support           | Standard and Premium Disks (maximum 8 disks), Azure NetApp Files, Azure Files, Azure HPC Cache, Azure Managed Lustre File System |
 | Supported and Validated OS      | RHEL 8.3+, AlmaLinux 8.10+, Ubuntu 22.04+ LTS, SLES 15 SP2+, Windows Server 2022+  |
-| Recommmended OS for Performance | AlmaLinux HPC 9.7, Ubuntu HPC 24.04+, Windows Server 2025 |
+| Recommended OS for Performance | AlmaLinux HPC 9.7, Ubuntu HPC 24.04+, Windows Server 2025 |
 | Orchestrator Support        | CycleCloud, Batch, AKS; [cluster configuration options](sizes-hpc.md#cluster-configuration-options)  |
 
 
@@ -91,7 +91,7 @@ HBv2-series VMs will be retired on May 31, 2027. Microsoft recommends migrating 
 | [HBv3-series](hbv3-series-overview.md) | 3rd Gen AMD EPYC (Milan), up to 120 cores, HDR InfiniBand – comparable generation step-up from HBv2 |
 
 Before migrating, validate your workloads on the target series:
-- **MPI and RDMA**: Confirm compatibility with the target InfiniBand fabric (HDR vs. NDR) and your MPI library version.
+- **MPI and RDMA**: Confirm compatibility with the target InfiniBand fabric (HDR v. NDR) and your MPI library version.
 - **Memory bandwidth**: Run representative benchmarks to confirm performance parity or improvement on the target series.
 - **Application testing**: Complete end-to-end testing of your HPC applications on the target series before production migration.
 
