@@ -59,7 +59,7 @@ Once the runtime is installed, you can install the SDK successfully. You can run
 
 The Service Fabric Tools are part of the Azure Development workload in Visual Studio 2019 and 2017. Enable this workload as part of your Visual Studio installation. In addition, you need to install the Microsoft Azure Service Fabric SDK and runtime as described above [Download and install the runtime and SDK.](#download-and-install-the-runtime-and-sdk)
 
-To use Visual Studio 2026 specifically, you will need to download the "Service Fabric Tools" extension on Visual Studio Marketplace: [Service Fabric Tools Extension ](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.MicrosoftVisualStudioAzureFabricVsix&ssr=false#review-details) 
+To use Visual Studio 2026 specifically, download the "Service Fabric Tools" extension on Visual Studio Marketplace: [Service Fabric Tools Extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.MicrosoftVisualStudioAzureFabricVsix&ssr=false#review-details) 
 
 ## Enable PowerShell script execution
 
