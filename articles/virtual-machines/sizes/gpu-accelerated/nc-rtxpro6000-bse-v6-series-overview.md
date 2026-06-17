@@ -1,5 +1,5 @@
 --- 
-title: NC_RTXPRO6000BSE_v6 Size Series Overview (Preview)
+title: NC_RTXPRO6000BSE_v6 Size Series Overview
 description: Overview and FAQs for NC_RTXPRO6000BSE_v6-series sizes 
 author: yangnicole-ml 
 ms.service: azure-virtual-machines 
