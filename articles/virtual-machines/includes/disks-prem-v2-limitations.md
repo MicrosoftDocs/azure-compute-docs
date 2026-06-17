@@ -14,4 +14,4 @@ ms.custom:
 - Premium SSD v2 disks can't be used as an OS disk or with [Azure Compute Gallery](/azure/virtual-machines/azure-compute-gallery).
 - Premium SSD v2 doesn't support host caching.
 - In most regions that support availability zones, you can only attach Premium SSD v2 disks to zonal VMs. When you create a new VM, specify the availability zone you want before adding Premium SSD v2 disks to your configuration.
-    - A [small subset of regions](#regional-availability) that support availability zones support [nonzonal](/azure/reliability/availability-zones-zonal-resource-resiliency#resource-deployment-types) deployments of Premium SSD v2 disks, which have [extra limitations](/azure/virtual-machines/disks-deploy-premium-v2#nonzonal-premium-ssd-v2-deployments).
+    - In a [subset of regions](#regional-availability) that support availability zones, you can attach [nonzonal](/azure/reliability/availability-zones-zonal-resource-resiliency#resource-deployment-types) Premium SSD v2 disks to nonzonal VMs, which have [extra limitations](/azure/virtual-machines/disks-deploy-premium-v2#nonzonal-premium-ssd-v2-deployments).
