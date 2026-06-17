@@ -36,7 +36,7 @@ The VM availability metric is well-suited for tracking trends, aggregating platf
 
 Users can either consume the metric programmatically via the [Azure Monitor REST API](/rest/api/monitor/metrics) or directly from the [Azure portal](https://portal.azure.com/). The following steps highlight metric consumption from the Azure portal.
 
-Once on the Azure portal, navigate to the VM overview blade. The metric is displayed as VM Availability, along with other platform metrics under the Monitoring tab.
+Once on the Azure portal, go to the VM overview. You see the metric as **VM Availability**, along with other platform metrics under the **Monitoring** tab.
 
    :::image type="content" source="media/flash/virtual-machine-availability-metric.png" alt-text="Screenshot of virtual machine availability metric on a virtual machine's overview page on the Azure portal." lightbox="media/flash/virtual-machine-availability-metric.png" :::
 
