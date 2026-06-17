@@ -4,7 +4,7 @@ description: This article covers important concepts for monitoring Azure virtual
 ms.service: azure-virtual-machines
 ms.author: tomcassidy
 author: tomvcassidy
-ms.date: 01/31/2024
+ms.date: 06/17/2026
 ms.topic: concept-article
 ms.custom:
   - subject-monitoring
@@ -25,7 +25,7 @@ For documentation specific to the other solutions offered by Flash, choose from 
 
 ## Azure monitor - VM availability metric
 
-Currently in public preview. The VM availability metric is well-suited for tracking trends, aggregating platform metrics (such as CPU and disk usage), and configuring precise threshold-based alerts. Customers can utilize this out-of-the-box [VM availability metric](monitor-vm-reference.md#vm-availability-metric-preview) in [Azure Monitor](/azure/azure-monitor/platform/alerts-overview). This metric displays the trend of VM availability over time, so users can:
+The VM availability metric is well-suited for tracking trends, aggregating platform metrics (such as CPU and disk usage), and configuring precise threshold-based alerts. Customers can utilize this out-of-the-box [VM availability metric](monitor-vm-reference.md#vm-availability-metric) in [Azure Monitor](/azure/azure-monitor/platform/alerts-overview). This metric displays the trend of VM availability over time, so users can:
 
 - Set up [threshold-based metric alerts](/azure/azure-monitor/alerts/alerts-create-new-alert-rule?tabs=metric) on dipping VM availability to quickly trigger appropriate mitigation actions.
 - Correlate the VM availability metric with existing [platform metrics](/azure/azure-monitor/essentials/data-platform-metrics) like memory, network, or disk for deeper insights into concerning changes that impact the overall performance of workloads.
@@ -36,7 +36,7 @@ Currently in public preview. The VM availability metric is well-suited for track
 
 Users can either consume the metric programmatically via the [Azure Monitor REST API](/rest/api/monitor/metrics) or directly from the [Azure portal](https://portal.azure.com/). The following steps highlight metric consumption from the Azure portal.
 
-Once on the Azure portal, navigate to the VM overview blade. The new metric is displayed as VM Availability (Preview), along with other platform metrics under the Monitoring tab.
+Once on the Azure portal, navigate to the VM overview blade. The metric is displayed as VM Availability, along with other platform metrics under the Monitoring tab.
 
    :::image type="content" source="media/flash/virtual-machine-availability-metric.png" alt-text="Screenshot of virtual machine availability metric on a virtual machine's overview page on the Azure portal." lightbox="media/flash/virtual-machine-availability-metric.png" :::
 
@@ -44,7 +44,7 @@ To navigate to the [metrics explorer](/azure/azure-monitor/essentials/metrics-ge
 
    :::image type="content" source="media/flash/metrics-explorer-virtual-machine-availability.png" alt-text="Screenshot of the newly added VM availability Metric on Metrics Explorer on Azure portal." lightbox="media/flash/metrics-explorer-virtual-machine-availability.png" :::
 
-For a description of the metric's display values, see [VM availability metric](monitor-vm-reference.md#vm-availability-metric-preview).
+For a description of the metric's display values, see [VM availability metric](monitor-vm-reference.md#vm-availability-metric).
 
 Users can split the VM availability by the 'Context' property.
    :::image type="content" source="./media/flash/context-property-filter.png" alt-text="Screenshot of the newly added Context property of VM availability Metric on Azure portal." lightbox="./media/flash/context-property-filter.png" :::

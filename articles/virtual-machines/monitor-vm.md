@@ -1,7 +1,7 @@
 ---
 title: Monitor Azure Virtual Machines
 description: Start here to learn how to monitor Azure Virtual Machines and Virtual Machine Scale Sets.
-ms.date: 03/27/2024
+ms.date: 06/17/2026
 ms.custom: horz-monitor
 ms.topic: concept-article
 ms.service: azure-virtual-machines
@@ -113,7 +113,7 @@ You can create a single multi-resource alert rule that applies to all VMs in a p
 
 [!INCLUDE [horz-monitor-insights-alerts](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-recommended-alert-rules.md)]
 
-Recommended alert rules for Azure VMs include the [VM availability metric](monitor-vm-reference.md#vm-availability-metric-preview), which alerts when a VM stops running.
+Recommended alert rules for Azure VMs include the [VM availability metric](monitor-vm-reference.md#vm-availability-metric), which alerts when a VM stops running.
 
 For more information, see [Tutorial: Enable recommended alert rules for Azure virtual machine](/azure/azure-monitor/vm/tutorial-monitor-vm-alert-recommended).
 
