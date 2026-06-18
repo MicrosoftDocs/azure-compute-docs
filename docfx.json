@@ -180,16 +180,16 @@
         ]
       },
       "manager": {
-        "articles/azure-impact-reporting/**/*.md": "akashdubey",
-        "articles/container-instances/**/*.md": "akashdubey",
-        "articles/service-fabric/**/*.md": "akashdubey",
-        "articles/virtual-machines/**/*.md": "akashdubey",
-        "articles/virtual-machine-scale-sets/**/*.md": "akashdubey",
-        "articles/azure-impact-reporting/**/*.yml": "akashdubey",
-        "articles/container-instances/**/*.yml": "akashdubey",
-        "articles/service-fabric/**/*.yml": "akashdubey",
-        "articles/virtual-machines/**/*.yml": "akashdubey",
-        "articles/virtual-machine-scale-sets/**/*.yml": "akashdubey"
+        "articles/azure-impact-reporting/**/*.md": "rayoflores",
+        "articles/container-instances/**/*.md": "rayoflores",
+        "articles/service-fabric/**/*.md": "rayoflores",
+        "articles/virtual-machines/**/*.md": "rayoflores",
+        "articles/virtual-machine-scale-sets/**/*.md": "rayoflores",
+        "articles/azure-impact-reporting/**/*.yml": "rayoflores",
+        "articles/container-instances/**/*.yml": "rayoflores",
+        "articles/service-fabric/**/*.yml": "rayoflores",
+        "articles/virtual-machines/**/*.yml": "rayoflores",
+        "articles/virtual-machine-scale-sets/**/*.yml": "rayoflores"
       },
       "ms.reviewer": {
         "articles/azure-impact-reporting/**/*.md": "wwilliams, cynthn",
