@@ -1,5 +1,5 @@
 ---
-title: Scenarios to use a virtual network
+title: Scenarios to use a virtual network with Azure Container Instances
 description: Scenarios, resources, and limitations to deploy container groups to an Azure virtual network.
 ms.topic: concept-article
 ms.author: tomcassidy
@@ -9,16 +9,15 @@ services: container-instances
 ms.date: 04/09/2026
 ---
 
-# Virtual network scenarios and resources
-
-> [!IMPORTANT]
-> If you deploy your container group into a virtual network, you must use a NAT gateway for outbound connectivity. This is the only supported configuration for outbound connectivity from your container group in a virtual network. See [Configure a NAT gateway for static IP address for outbound traffic from a container group](./container-instances-nat-gateway.md) for more information on how to configure this.
+# Virtual network scenarios and resources for Azure Container Instances
 
 [Azure Virtual Network](/azure/virtual-network/virtual-networks-overview) provides secure, private networking for your Azure and on-premises resources. By deploying container groups into an Azure virtual network, your containers can communicate securely with other resources in the virtual network.
 
 This article provides background about virtual network scenarios, limitations, and resources. For deployment examples using the Azure CLI, see [Deploy container instances into an Azure virtual network](container-instances-vnet.md).
 
 > [!IMPORTANT]
+> If you deploy your container group into a virtual network, you must use a NAT gateway for outbound connectivity. This is the only supported configuration for outbound connectivity from your container group in a virtual network. See [Configure a NAT gateway for static IP address for outbound traffic from a container group](./container-instances-nat-gateway.md) for more information on how to configure this.
+>
 > Container group deployment to a virtual network is generally available for Linux and Windows containers, in most regions where Azure Container Instances is available. For details, see [Resource availability and quota limits](container-instances-resource-and-quota-limits.md).
 
 ## Scenarios

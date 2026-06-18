@@ -5,9 +5,10 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
-ms.date: 11/7/2024
+ms.date: 05/19/2026
 ms.reviewer: cynthn
 ms.custom: upgradepolicy, ignite-2024
+ai-usage: ai-assisted
 # Customer intent: "As a cloud administrator managing Virtual Machine Scale Sets, I want to reimage individual instances, so that I can apply necessary OS and configuration updates to ensure optimal performance and security."
 ---
 
@@ -15,7 +16,7 @@ ms.custom: upgradepolicy, ignite-2024
 
 When updating an instance in a Virtual Machine Scale Set, there are some changes that can't be applied to existing instances without performing a reimage. Reimaging a virtual machine in a Virtual Machine Scale Set replaces the old OS disk with a new OS disk. This allows changes to the OS, data disk profile (such as admin username and password), and [custom data](../virtual-machines/custom-data.md) to be applied. To reimage a set of existing instances in a scale set, you must individually reimage each instance. 
 
-If reimaging a virtual machine using an ephemeral OS disk, the instance is restored it to it's initial state and any local data is lost. For instances using nonephemeral OS disks, the retaining of old OS disk depends on the value of delete option of OS disk. For more information, see [set delete options when creating a virtual machine](../virtual-machines/delete.md)
+If reimaging a virtual machine using an ephemeral OS disk, the instance is restored to its initial state and any local data is lost. For instances using nonephemeral OS disks, retention of the old OS disk depends on the OS disk's delete option. For more information, see [set delete options when creating a virtual machine](../virtual-machines/delete.md)
 
 Reimaging a virtual machine that was created outside of the scale set and later attached can only be reimaged if the virtual machine OS profile matches the OS profile of the scale set. 
 
@@ -28,13 +29,23 @@ In the menu under **Settings**, navigate to **Instances** and select the instanc
 
 
 ## [CLI](#tab/cli)
-To reimage a specific instance using Azure CLI, use the [az vmss reimage](/cli/azure/vmss#az-vmss-reimage) command. The `instance-id` parameter refers to the ID of the instance if using Uniform Orchestration and the instance name if using Flexible Orchestration. 
+To reimage one or more instances using Azure CLI, use the [az vmss reimage](/cli/azure/vmss#az-vmss-reimage) command. The `--instance-ids` parameter accepts one or more space-separated instance identifiers: the instance ID if using Uniform Orchestration, or the instance name if using Flexible Orchestration. When `--instance-ids` is omitted, all virtual machines in the scale set are reimaged.
+
+To reimage specific instances, provide one or more instance IDs:
 
 ```azurecli-interactive
 az vmss reimage \
     --resource-group myResourceGroup \
     --name myScaleSet \
-    --instance-id instanceId
+    --instance-ids instanceId1 instanceId2
+```
+
+To reimage all instances in the scale set, omit `--instance-ids`:
+
+```azurecli-interactive
+az vmss reimage \
+    --resource-group myResourceGroup \
+    --name myScaleSet
 ```
 
 ## [PowerShell](#tab/powershell)

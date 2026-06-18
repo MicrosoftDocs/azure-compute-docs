@@ -7,7 +7,7 @@ ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.collection: windows
 ms.topic: how-to
-ms.date: 06/19/2025
+ms.date: 05/05/2026
 ms.author: vikancha
 ms.custom: H1Hack27Feb2017
 # Customer intent: As a cloud administrator, I want to install and verify NVIDIA GPU drivers on N-series VMs running Windows, so that I can ensure optimal performance for GPU-accelerated applications in my Azure environment.
@@ -50,17 +50,6 @@ To query the GPU device state, run the [nvidia-smi](https://developer.nvidia.com
 
 2. Run `nvidia-smi`. If the driver is installed, Nvidia SMI will list the **GPU-Util** as N/A until you run a GPU workload on the VM.
 
-## RDMA network connectivity
-
-RDMA network connectivity can be enabled on RDMA-capable N-series VMs such as NC24r deployed in the same availability set or in a single placement group in a virtual machine scale set. The HpcVmDrivers extension must be added to install Windows network device drivers that enable RDMA connectivity. To add the VM extension to an RDMA-enabled N-series VM, use [Azure PowerShell](/powershell/azure/) cmdlets for Azure Resource Manager.
-
-To install the latest version 1.1 HpcVMDrivers extension on an existing RDMA-capable VM named myVM in the West US region:
-  ```powershell
-  Set-AzVMExtension -ResourceGroupName "myResourceGroup" -Location "westus" -VMName "myVM" -ExtensionName "HpcVmDrivers" -Publisher "Microsoft.HpcCompute" -Type "HpcVmDrivers" -TypeHandlerVersion "1.1"
-  ```
-  For more information, see [Virtual machine extensions and features for Windows](../extensions/features-windows.md).
-
-The RDMA network supports Message Passing Interface (MPI) traffic for applications running with [Microsoft MPI](/message-passing-interface/microsoft-mpi) or Intel MPI 5.x. 
 
 
 ## Next steps

@@ -13,14 +13,17 @@ ms.custom: template-quickstart
 
 # Quickstart: Create VM restore points using APIs
 
-You can protect your data by taking backups at regular intervals. Azure VM restore point APIs are a lightweight option you can use to implement granular backup and retention policies. VM restore points support application consistency for VMs running Windows operating systems and support file system consistency for VMs running Linux operating system. 
+Use the Azure Compute REST APIs to create application-consistent or crash-consistent restore points for a VM, in the same region or cross-region.
 
-You can use APIs to create restore points for a source VM within the same region. Existing VM restore points can also be copied to other regions.
+API references: [Restore Points](/rest/api/compute/restore-points) | [Restore Point Collections](/rest/api/compute/restore-point-collections) | [PowerShell](/powershell/module/az.compute/new-azrestorepoint)
+
+---
 
 ## Prerequisites
 
 - [Learn more](concepts-restore-points.md) about the requirements for a VM restore point.
-- Consider the [limitations](virtual-machines-create-restore-points.md#limitations) before creating a restore point.
+- Review the [support requirements](/azure/virtual-machines/concepts-restore-points) and [limitations](/azure/virtual-machines/virtual-machines-create-restore-points#limitations) before creating restore points.
+
 
 ## Create VM restore points
 
@@ -30,29 +33,94 @@ You can find more information in the [Restore Points](/rest/api/compute/restore-
 
 ### Step 1: Create a VM restore point collection
 
-Before you create VM restore points, you must create a restore point collection. A restore point collection holds all the restore points for a specific VM. Depending on your needs, you can create VM restore points in the same region as the VM, or in a different region.
-To create a restore point collection, call the restore point collection's Create or Update API. 
-- If you're creating restore point collection in the same region as the VM, then specify the VM's region in the location property of the request body. 
-- If you're creating the restore point collection in a different region than the VM, specify the target region for the collection in the location property, but also specify the source restore point collection ARM resource ID in the request body.
- 
-To create a restore point collection, call the restore point collection's [Create or Update](/rest/api/compute/restore-point-collections/create-or-update) API.
+A restore point collection is the parent resource that holds all restore points for a VM.
+
+Call the [Restore Point Collections — Create or Update](/rest/api/compute/restore-point-collections/create-or-update) API:
+
+```http
+PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{collectionName}?api-version=2021-03-01
+```
+
+**Request body:**
+
+```json
+  {
+    "location": "<region>",
+    "properties": {
+      "source": {
+        "id": "<VM Arm Id>"
+      },
+      "instantAccess": true
+    }
+  }
+```
+
+- Set `location` to the VM's region for a local collection, or to the target region for a cross-region collection (and include the source restore point collection's ARM resource ID in `source.id`).
+- Optionally to enable **Instant Access (Preview)**, add `"instantAccess": true` to `properties`. This applies to all restore points created in the collection. Requires API version **2025-04-01** or later. This is applicable only for VMs with Premium SSD v2 and/or Ultra disks as **data** disks.
+
+---
 
 ### Step 2: Create a VM restore point
 
-After you create the restore point collection, the next step is to create a VM restore point within the restore point collection. For more information about restore point creation, see the [Restore Points - Create](/rest/api/compute/restore-points/create) API documentation. For creating crash consistent restore points (in preview) "consistencyMode" property has to be set to "CrashConsistent" in the creation request. 
+Call the [Restore Points — Create](/rest/api/compute/restore-points/create) API within the collection created in Step 1:
 
-> [!TIP]
-> To save space and costs, you can exclude any disk from either local region or cross-region VM restore points. To exclude a disk, add its identifier to the `excludeDisks` property in the request body.
+```http
+PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{collectionName}/restorePoints/{restorePointName}?api-version=2021-03-01
+```
+**Request body:**
+
+```json
+  {
+    "name": "<restorePointName>",
+    "properties": {
+     "instantAccessDurationMinutes": 120,
+      "provisioningState": "Succeeded",
+    }
+  }
+```
+> **Note:** instantAccessDurationMinutes is an optional parameter. Default is 300 (5 hours). Can be set to a lower value, but not higher than 300. This is applicable for future restore points and NOT for existing restore points already created.
+
+**Key request body properties:**
+
+| Property | Description |
+|---|---|
+| `consistencyMode` | Omit for application-consistent (default). Set to `CrashConsistent` for crash-consistent restore points. |
+| `excludeDisks` | Optional. Array of disk identifiers to exclude from the restore point, to reduce storage cost. |
+| `instantAccessDurationMinutes` | Optional. *(Instant Access only)* Duration in minutes for Instant Access. Valid range: 60–300. Default: 300 minutes (5 hours). |
+
+---
 
 ### Step 3: Track the status of the VM restore point creation
 
-Restore point creation in your local region will be completed within a few seconds. Scenarios, which involve the creation of cross-region restore points will take considerably longer. To track the status of the creation operation, follow the guidance in [Get restore point copy or replication status](#get-restore-point-copy-or-replication-status). This is only applicable for scenarios where the restore points are created in a different region than the source VM.
+**Local restore points** complete within a few seconds. Check `provisioningState` on the restore point — it transitions from `Creating` to `Succeeded` (or `Failed`).
 
-## Get restore point copy or replication status
+**Cross-region restore points** are a long-running operation. Poll the [Restore Points — Get](/rest/api/compute/restore-points/get) API with `$expand=instanceView` to check per-disk copy progress (`completionPercent`). The restore point is usable only after all disk restore points have completed replication.
 
-Copying the first VM restore point to another region is a long running operation. The VM restore point can be used to restore a VM only after the operation is completed for all disk restore points. To track the operation's status, call the [Restore Point - Get](/rest/api/compute/restore-points/get) API on the target VM restore point and include the `instanceView` parameter. The return will include the percentage of data that has been copied at the time of the request.
+```http
+GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{collectionName}/restorePoints/{restorePointName}?$expand=instanceView&api-version=2021-03-01
+```
+**Snapshot Access status:** If the collection has Instant Access enabled, the same GET response with instanceView includes `snapshotAccessState` per disk restore point. A status of `InstantAccess` or `AvailableWithInstantAccess` means the restore point is ready for fast disk restoration.
 
-During restore point creation, the `ProvisioningState` will appear as `Creating` in the response. If creation fails, `ProvisioningState` is set to `Failed`.
+### Step 4: Disable InstantAccess 
+Use the following REST API call to disable IA enabled on the VM.
+
+```http
+PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{restorePointCollectionName}?api-version=2025-04-01
+```
+**Request body:**
+
+```json
+  {
+    "location": "<region>",
+    "properties": {
+      "source": {
+        "id": "<VM Arm Id>"
+      },
+      "instantAccess": false
+    }
+  }
+```
+
 
 ## Next steps
 - [Learn more](manage-restore-points.md) about managing restore points.

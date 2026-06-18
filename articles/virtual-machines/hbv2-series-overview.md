@@ -72,6 +72,7 @@ Process pinning works on HBv2-series VMs because we expose the underlying silico
 | Orchestrator Support            | CycleCloud, Batch, Azure Kubernetes Service  |
 
 
+
 ## Availability and purchasing
 
 > [!IMPORTANT]
@@ -92,7 +93,7 @@ HBv2-series VMs will be retired on May 31, 2027. Microsoft recommends migrating 
 | [HBv3-series](hbv3-series-overview.md) | 3rd Gen AMD EPYC (Milan), up to 120 cores, HDR InfiniBand – comparable generation step-up from HBv2 |
 
 Before migrating, validate your workloads on the target series:
-- **MPI and RDMA**: Confirm compatibility with the target InfiniBand fabric (HDR vs. NDR) and your MPI library version.
+- **MPI and RDMA**: Confirm compatibility with the target InfiniBand fabric (HDR v. NDR) and your MPI library version.
 - **Memory bandwidth**: Run representative benchmarks to confirm performance parity or improvement on the target series.
 - **Application testing**: Complete end-to-end testing of your HPC applications on the target series before production migration.
 

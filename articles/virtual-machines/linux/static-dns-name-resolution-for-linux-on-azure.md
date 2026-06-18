@@ -20,7 +20,7 @@ This article shows you how to set static internal DNS names for Linux VMs using 
 
 The requirements are:
 
-* [an Azure account](https://azure.microsoft.com/pricing/free-trial/)
+* [an Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn)
 * [SSH public and private key files](mac-create-ssh-keys.md)
 
 ## Quick commands

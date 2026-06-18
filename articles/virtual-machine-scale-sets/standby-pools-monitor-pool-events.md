@@ -5,7 +5,7 @@ author: mimckitt
 ms.author: mimckitt
 ms.service: azure-virtual-machine-scale-sets
 ms.topic: how-to
-ms.date: 5/6/2025
+ms.date: 05/19/2026
 ms.update-cycle: 180-days
 ms.custom: portal
 ms.reviewer: cynthn

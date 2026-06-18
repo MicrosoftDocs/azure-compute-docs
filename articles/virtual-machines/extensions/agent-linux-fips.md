@@ -12,14 +12,13 @@ ms.date: 09/25/2025
 ---
 # FIPS 140-3 support for Azure Linux VM extensions and guest agent
 
-> [!NOTE]
-> This feature is currently in public preview. Production workloads are supported.
-
-Linux virtual machine (VM) extensions currently comply with FIPS 140-2, but updates to the platform were required to add support for FIPS 140-3. These changes are currently being enabled across the commercial cloud and Azure Government clouds. Linux VM extensions that use protected settings are also being updated to be able to use a FIPS 140-3-compliant encryption algorithm. This article helps enable support for FIPS 140-3 on Linux VMs where compliance with FIPS 140-3 is enforced. This change isn't needed on Windows images because of the way that FIPS compliance is implemented.
+Linux virtual machine (VM) extensions currently comply with FIPS 140-2, but updates to the platform were required to add support for FIPS 140-3 which have been deployed across the commercial cloud and Azure government clouds. Linux VM extensions that use protected settings are also being updated to be able to use a FIPS 140-3-compliant encryption algorithm. This article helps enable support for FIPS 140-3 on Linux VMs where compliance with FIPS 140-3 is enforced. This change isn't needed on Windows images because of the way that FIPS compliance is implemented.
 
 For more information, see [What are the Federal Information Processing Standards (FIPS)?](https://www.nist.gov/standardsgov/compliance-faqs-federal-information-processing-standards-fips).
 
-[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
+> [!NOTE]
+> This feature is currently in public preview. Production workloads are supported.
+> For legal terms that apply to Azure features that are in beta, in preview, or otherwise not yet released into general availability, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## Confirmed supported extensions
 
@@ -48,8 +47,6 @@ For more information, see [What are the Federal Information Processing Standards
 
 You must meet the following four requirements to use a FIPS 140-3-compliant VM in Azure:
 
-- The VM must be in a region where FIPS 140-3 platform changes are rolled out.
-- Your Azure subscription must be opted in to FIPS 140-3 enablement.
 - Each VM must be enrolled in FIPS 140-3 enablement in Azure Resource Manager.
 - Inside the guest operating system (OS), the OS must be configured for FIPS 140 mode. The OS must run a version of the Azure guest agent (waagent), which is also compliant with FIPS 140-3.
 
@@ -57,37 +54,12 @@ Afterward, validate to ensure the functionality of the VM extensions.
 
 ---
 
+> [!WARNING]
+> We have identified a known issue where the 'enableFips1403Encryption' property does not consistently propagate to VMSS VM instances. A fix is currently in deployment, and we anticipate broad availability of the resolution in early July 2026.
+
 ## Implement prerequisites
 
-### 1. Subscription enablement/opt-in
-
-Because not all extensions are onboarded by using FIPS 140-3 encryption yet, we require the subscription to opt in to the feature `_Microsoft.Compute/OptInToFips1403Compliance_`.
-
-#### Azure CLI
-
-```
-az feature register --namespace Microsoft.Compute --name OptInToFips1403Compliance
-```
-
-Verify with the following command:
-```
-az feature list | jq '.[] | select(.name=="Microsoft.Compute/OptInToFips1403Compliance")'
-```
-
-```json
-{
-  "id": "/subscriptions/<SUBSCRIPTION ID>/providers/Microsoft.Features/providers/Microsoft.Compute/features/OptInToFips1403Compliance",
-  "name": "Microsoft.Compute/OptInToFips1403Compliance",
-  "properties": {
-    "state": "Registered"
-  },
-  "type": "Microsoft.Features/providers/features"
-}
-```
-
----
-
-### 2. Per-VM opt-in
+### 1. Per-VM opt-in
 
 There are different methods available for opting in to each VM. You can make the changes at deployment for a new VM. You can also alter an existing VM to add the FIPS 140-3 enablement on the Azure platform.
 
@@ -172,7 +144,7 @@ Leaving the marker here, but deleting the content pending research -->
 
 ---
 
-### 3. In-guest considerations
+### 2. In-guest considerations
 
 Important changes must be made to the Linux OS environment to enable and support FIPS 140-3 compliance.
 
@@ -255,6 +227,8 @@ az vm user update \
 ### Run a custom script
 
 Use the [Custom Script extension](/azure/virtual-machines/extensions/custom-script-linux) documentation to send a basic script, such as `cat /etc/os-release`, to test extension functionality.
+
+[!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
 
 ### Fix a validation failure
 

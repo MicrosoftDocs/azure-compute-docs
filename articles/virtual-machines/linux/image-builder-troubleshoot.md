@@ -123,25 +123,60 @@ One possible cause is that the VM Image Builder template uses a customer-provide
 
 #### Solution
 
-Use the Azure CLI to reset the managed identity on the image template. Be sure to [update](/cli/azure/update-azure-cli) Azure CLI to the 2.45.0 version or later.
+Use Azure CLI to recover the identity reference on the image template. Be sure to [update](/cli/azure/update-azure-cli) Azure CLI to version 2.45.0 or later.
 
-Confirm the managed identity from the target VM Image Builder template:
+1. Create a new user-assigned managed identity:
 
-```azurecli-interactive
-az image builder identity show -g <template resource group> -n <template name> 
-```
+   ```azurecli-interactive
+   az identity create -g <resourceGroup> -n <newIdentityName>
+   ```
 
-Remove the managed identity from the target VM Image Builder template:
+1. Check the current identity configuration on the image template:
 
-```azurecli-interactive
-az image builder identity remove -g <template resource group> -n <template name> --user-assigned <identity resource id>
-```
+   ```azurecli-interactive
+   az image builder identity show -n <templateName> -g <resourceGroupName>
+   ```
 
-Assign a new identity to the target VM Image Builder template:
+   Note the full resource ID of any existing identity in the output. If the command returns `null`, no identity is currently associated.
 
-```azurecli-interactive
-az image builder identity assign -g <template rg> -n <template name> --user-assigned <identity resource id>
-```
+1. Patch the template identity.
+
+   If an old identity reference exists, create `body.json` with both identities, marking the old identity as `null`:
+
+   ```json
+   {
+     "identity": {
+       "type": "UserAssigned",
+       "userAssignedIdentities": {
+         "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<oldIdentityName>": null,
+         "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<newIdentityName>": {}
+       }
+     }
+   }
+   ```
+
+   If no identity exists on the template, create `body.json` with only the new identity:
+
+   ```json
+   {
+     "identity": {
+       "type": "UserAssigned",
+       "userAssignedIdentities": {
+         "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<newIdentityName>": {}
+       }
+     }
+   }
+   ```
+
+   Apply the patch:
+
+   ```azurecli-interactive
+   az rest --method patch --url "https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<templateResourceGroup>/providers/Microsoft.VirtualMachineImages/imageTemplates/<templateName>?api-version=2024-02-01" --body @body.json
+   ```
+
+   The `2024-02-01` API version in this example is valid at the time of writing. Check the [API version reference](/rest/api/compute/virtual-machine-image-templates) and use the latest stable version if a newer version is available.
+
+After the identity update succeeds, retry the failed VM Image Builder operation.
 
 For more information about configuring permissions, see [Configure VM Image Builder permissions by using the Azure CLI](image-builder-permissions-cli.md) or [Configure VM Image Builder permissions by using PowerShell](image-builder-permissions-powershell.md).
 

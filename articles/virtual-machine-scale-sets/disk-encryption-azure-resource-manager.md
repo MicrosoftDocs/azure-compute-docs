@@ -6,7 +6,7 @@ ms.author: cynthn
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: disks
-ms.date: 09/23/2025
+ms.date: 05/19/2026
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-arm-template
 # Customer intent: As a cloud engineer, I want to use Azure Resource Manager templates to create and encrypt Virtual Machine Scale Sets, so that I can ensure data security and compliance for my running virtual machines.

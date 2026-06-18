@@ -6,7 +6,7 @@ ms.author: brittanyrowe
 ms.topic: overview
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: autoscale
-ms.date: 04/1/2025
+ms.date: 05/19/2026
 ms.reviewer: cynthn
 # Customer intent: As a system administrator, I want to implement autoscaling for my Virtual Machine Scale Sets, so that I can optimize resource usage and automatically adjust capacity based on application demand to improve performance and reduce costs.
 ---

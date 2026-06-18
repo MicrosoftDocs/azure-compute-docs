@@ -6,7 +6,7 @@ ms.author: mimckitt
 ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: availability
-ms.date: 03/21/2025
+ms.date: 05/19/2026
 ms.reviewer: cynthn, fisteele
 ms.custom: mimckitt, devx-track-azurecli, devx-track-azurepowershell, devx-track-arm-template
 # Customer intent: As a cloud architect, I want to create Azure Virtual Machine Scale Sets across availability zones, so that I can ensure high availability and resilience against data center outages for my applications.
@@ -177,7 +177,7 @@ Expanding to a zone-spanning scale set is done in 3 steps:
 > [!WARNING]
 > This feature allows you to add zones to the scale set. You can't go back to a regional (nonzonal) scale set or remove zones once they have been added.
 
-In order to prepare for zone expansion:
+To prepare for zone expansion:
 * [Check that you have enough quota](../virtual-machines/quotas.md) for the VM size in the selected region to handle more instances.
 * Check that the VM size and disk types you are using are available in all the desired zones. You can use the [Compute Resources SKUs API](/rest/api/compute/resource-skus/list?tabs=HTTP) to determine which sizes are available in which zones
 * Validate that the scale set configuration is valid for zonal and zone-spanning scale sets:

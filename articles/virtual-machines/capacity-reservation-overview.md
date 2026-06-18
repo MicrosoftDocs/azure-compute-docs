@@ -68,8 +68,8 @@ From this example accumulation of Minutes Not Available, here's the calculation 
   | Type | VM Series |
   | ----- | ----------- |
   | General Purpose (Burstable) | B (Intel) <br> Bsv2 (Intel), Basv2 (AMD), Bpsv2 (ARM) |
-  | General Purpose (General use A, D) | Av2 (Intel) <br> D and Ds series, v2 and newer (Intel) <br> Dd and Dds, v4 and newer (Intel, local disk) <br> Dls and Dlds, v5 and newer (Intel, low memory) <br> Da and Das, v4 series and newer (AMD) <br> Dads, v5 and newer (AMD, local disk) <br> Dals and Dalds, v6 and newer (AMD) <br> Dps and Dpds series, v5 and newer (ARM) <br> Dpls and Dplds series, v5 and newer (ARM, low memory) |
-  | General Purpose (General use, high memory, E )| E and Es, all versions (Intel) <br> Ed and Eds series, v4 and newer (Intel, local disk) <br> Ebdsv5 and Ebsv5 series (Intel, block storage) <br> Ea and Eas, v4 and newer (AMD) <br> Eads, v5 and newer series (AMD, local disk) <br> Eps and Epds series, v5 and newer (ARM) |
+  | General Purpose (General use A, D) | Av2 (Intel) <br> D and Ds series, v2 and newer (Intel) <br> Dsv7 (Intel) (Preview) <br> Dd and Dds, v4 and newer (Intel, local disk) <br> Ddsv7 (Intel) (Preview) <br> Dls and Dlds, v5 and newer (Intel, low memory) <br> Dls and Dlds, v7 (Intel) (Preview) <br> Da and Das, v4 series and newer (AMD) <br> Dads, v5 and newer (AMD, local disk) <br> Dals and Dalds, v6 and newer (AMD) <br> Dps and Dpds series, v5 and newer (ARM) <br> Dpls and Dplds series, v5 and newer (ARM, low memory) |
+  | General Purpose (General use, high memory, E )| E and Es, all versions (Intel) <br> Esv7 (Intel) (Preview) <br> Ed and Eds series, v4 and newer (Intel, local disk) <br> Edsv7 (Intel) (Preview) <br> Ebdsv5 and Ebsv5 series (Intel, block storage) <br> Ea and Eas, v4 and newer (AMD) <br> Eads, v5 and newer series (AMD, local disk) <br> Eps and Epds series, v5 and newer (ARM) |
   | General Purpose (General use, compute optimized, F) | Fsv2 series (Intel) <br> Fas and Fals, v6 and newer series (AMD)  <br> Famsv6 and newer (AMD) <br> FX series (Intel) <br> FXmsv2 (Intel) <br> FXmdsv2 (Intel) <br> Fadsv7 (AMD) <br> Famdsv7 (AMD) <br> Faldsv7 (AMD) |
   | Storage optimized| Lsv3 (Intel) <br> Lasv3 (AMD) <br> Lasv4 (AMD) <br> Laosv4 (AMD) |
   | Confidential compute | DCsv2 series (Intel) <br> DCasv5 and DCadsv5 series (AMD) <br> DCesv5 and DCedsv5 series (Intel) <br> ECasv5 and ECadsv5 series (AMD) <br> ECesv5 and ECedsv5 series (Intel) |
@@ -105,6 +105,7 @@ From this example accumulation of Minutes Not Available, here's the calculation 
     - VMs resuming from hibernation 
 - A pinned subscription can't use the feature.
 - Deployments using On demand capacity reservations are compatible with vNet Encryption when deployed using a supported VM size. For more information on which VM sizes this feature supports, see [Virtual Network Encryption](/azure/virtual-network/virtual-network-encryption-overview).
+- On demand capacity reservation SLA does not apply to deployments using `LegacyVMNVA` tag. See [MANA support for Network Virtual Appliances (NVAs)](/azure/virtual-network/accelerated-networking-mana-network-virtual-appliance-opt-out).
 - Reservations are only available to paid Azure customers. Sponsored accounts such as Free Trial and Azure for Students aren't eligible to use this feature.
 - Clouds supported for capacity reservation:
    - Azure Cloud
@@ -128,7 +129,7 @@ Both used and unused capacity reservations are eligible for Savings Plan and Res
 | Capacity SLA | Provides capacity guarantee in the specified location (region or availability zone). | Doesn't provide a capacity guarantee. Customers can choose **Capacity priority** to gain better access, but that option doesn't carry an SLA. |
 | Region vs. availability zones | Can be deployed per region or per availability zone. | Only available at the regional level. |
 
-*Eligible for the reserved instances discount if purchased separately.
+*The applicable billing rate is determined using discounts, Reserved Instance, and/or Savings Plans as available.
 
 ## Work with capacity reservation
 
@@ -214,7 +215,7 @@ In the previous image, the VM reserved instance discount is applied to VM 0, whi
 
 - **What's the price of on-demand capacity reservation?**
 
-    The price of your on-demand capacity reservation is the same as the price of the underlying VM size associated to the reservation. When you use capacity reservation, you're charged for the VM size you selected at pay-as-you-go rates, whether the VM was provisioned or not. For more information, see the [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) and [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) VM pricing pages. 
+    The price of your on-demand capacity reservation is the same as the price of the underlying VM size associated to the reservation. When you use capacity reservation, usage records for the VM size you selected will be issued whether the VM was provisioned or not. The applicable billing rate will be determined using the standard VM usage rating process, inclusive of Reserved Instances, Savings Plan or other applicable discounts. For more information, see the [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) and [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) VM pricing pages. 
 
 - **Will I get charged twice for the cost of on-demand capacity reservation and for the actual VM when I finally provision it?**
 

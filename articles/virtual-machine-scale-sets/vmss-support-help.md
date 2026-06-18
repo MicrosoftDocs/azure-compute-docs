@@ -5,7 +5,7 @@ author: mimckitt
 ms.author: mimckitt
 ms.service: azure-virtual-machine-scale-sets
 ms.topic: concept-article
-ms.date: 06/14/2024
+ms.date: 05/19/2026
 ms.reviewer: cynthn
 ms.custom: support-help-page
 # Customer intent: As a cloud developer, I want to access troubleshooting resources and support options for Azure Virtual Machine Scale Sets, so that I can resolve issues efficiently and enhance my deployment solutions.

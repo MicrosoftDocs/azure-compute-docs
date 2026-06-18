@@ -5,7 +5,7 @@ ms.service: azure-virtual-machines
 ms.author: tomcassidy
 author: tomvcassidy
 ms.custom: subject-monitoring
-ms.date: 01/31/2024
+ms.date: 06/17/2026
 ms.topic: concept-article
 # Customer intent: As an IT operations manager, I want to implement a robust VM availability monitoring system, so that I can receive timely alerts and actionable insights to effectively manage downtimes and ensure continuous service availability.
 ---
@@ -29,7 +29,7 @@ The Flash initiative is dedicated to developing solutions over the years that ca
 | --- | --- |
 | Azure Resource Graph (General Availability) | For investigations at scale, centralized resource repository and history lookup, large customers want to periodically consume resource availability telemetry across all their workloads, at once, using Azure Resource Graph (ARG). |
 | Event Grid system topic (Public Preview) | To trigger time-sensitive and critical mitigations (redeploy, restart VM actions) for prevention of end-user impact, customers (for example, Pearl Abyss, Krafton) want to receive alerts within seconds of critical changes in resource availability via Event Handlers in Event Grid. |
-| Azure Monitor (Public Preview) | To track trends, aggregate platform metrics (CPU, disk etc.), and set up precise threshold-based alerts, customers want to consume an out-of-box VM Availability metric via Azure Monitor. |
+| Azure Monitor (General Availability) | To track trends, aggregate platform metrics (CPU, disk etc.), and set up precise threshold-based alerts, customers want to consume an out-of-box VM Availability metric via Azure Monitor. |
 | Resource Health (General Availability) | To perform instantaneous and convenient Portal UI health checks per-resource customers can quickly view the RHC blade on the portal. They can also access a 30-day historical view of health checks for that resource for quick and easy troubleshooting. |
 
 ## Holistic VM availability monitoring

@@ -302,8 +302,8 @@ Each of the symptoms may be caused by different problems, and the same root caus
     ```
     To remedy, check the existence of the private key; verify SFAdmins is granted 'read|execute' access to the private key.
 
-  - Bad provider type - indicates a Crypto New Generation (CNG) certificate ("Microsoft Software Key Storage Provider"); at this time, Service Fabric only supports CAPI1 certificates. Typically accompanied by error code:
+  - Bad provider type - may indicate a provider/runtime compatibility issue. Crypto New Generation (CNG) certificates (for example, "Microsoft Software Key Storage Provider") are supported in Service Fabric runtime 11.0.2707.1 and later. Typically accompanied by error code:
     ```C++
     0x80090014	-2146893804	NTE_BAD_PROV_TYPE
     ```
-    To remedy, re-create the cluster certificate using a CAPI1 (for example "Microsoft Enhanced RSA and AES Cryptographic Provider") provider. For more information on crypto providers, see [Understanding Cryptographic Providers](/windows/win32/seccertenroll/understanding-cryptographic-providers)
+    To remedy, verify your cluster runtime version. If the cluster is running a version earlier than 11.0.2707.1, upgrade the cluster runtime or use a CAPI provider certificate (for example "Microsoft Enhanced RSA and AES Cryptographic Provider") until the upgrade is complete. For more information on crypto providers, see [Understanding Cryptographic Providers](/windows/win32/seccertenroll/understanding-cryptographic-providers)

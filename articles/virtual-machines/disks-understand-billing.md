@@ -6,6 +6,7 @@ ms.author: rogarana
 ms.date: 10/28/2025
 ms.topic: concept-article
 ms.service: azure-disk-storage
+ai-usage: ai-assisted
 # Customer intent: As a cloud administrator, I want to understand the billing factors for Azure managed disks, so that I can accurately forecast and manage the costs related to disk storage usage in my organization.
 ---
 
@@ -69,7 +70,7 @@ All Premium SSD v2 disks have a baseline IOPS of 3,000 that is free of charge. A
 
 ### Premium SSD v2 throughput
 
-All Premium SSD v2 disks have a baseline throughput of 125 MB/s that is free of charge. After 6 GiB, the maximum throughput that can be provisioned increases by 0.25 MB/s per provisioned IOPS. If a disk has 3,000 IOPS, the max throughput it can set is 750 MB/s. To raise the throughput for this disk beyond 750 MB/s, its IOPS must be increased. For example, if you increased the IOPS to 4,000, then the max throughput that can be set is 1,000. 1,200 MB/s is the maximum throughput supported for disks that have 5,000 IOPS or more. Increasing your provisioned throughput beyond 125 MB/s increases the price of your disk.
+All Premium SSD v2 disks have a baseline throughput of 125 MB/s that is free of charge. After 6 GiB, the maximum throughput that can be provisioned increases by 0.25 MB/s per provisioned IOPS. If a disk has 3,000 IOPS, the max throughput it can set is 750 MB/s. To raise the throughput for this disk beyond 750 MB/s, its IOPS must be increased. For example, if you increased the IOPS to 4,000, then the max throughput that can be set is 1,000 MB/s. 2,000 MB/s is the maximum throughput supported for disks that have 8,000 IOPS or more. Increasing your provisioned throughput beyond 125 MB/s increases the price of your disk.
 
 ### Shared Premium SSD v2
 
@@ -165,7 +166,9 @@ The price of an Azure Standard HDD is determined by the performance tier of the 
 The initial billing of Standard HDDs is determined by the performance tier. The performance tier is set when you select the capacity you require (if you deploy a 1 TiB Standard HDD, it has the S30 tier), your disk is billed at that tier. If you increase the capacity of your disk into the next tier, it's billed at that tier. For example, if you increased your 1-TiB disk to a 3-TiB disk, it's billed at the S50 tier.
 
 ### Standard HDD Transactions
-Standard HDD transactions incur a billable cost for every 10,000 disk operations.
+There are a few different ways that Standard HDDs count transactions, depending on the region your disk is in. For all Azure regions except for US Central and France Central, each I/O operation is considered a single transaction for billing purposes, and incurs a billable cost for every 10,000 billable transactions. There's no hourly limit on the number of billable transactions that can incur a billable cost. 
+
+As of June 2, 2026, for the US Central and France Central Azure regions, Standard HDDs count transactions in two different ways depending on the disk size. For Standard HDDs sizes S4 and S6, each I/O operation less than 16 KiB of throughput is considered a single billable transaction. I/O operations larger than 16 KiB of throughput are considered multiple billable transactions of size 16 KiB for billing purposes. Cost is incurred for every 10,000 billable transactions but, there's an hourly limit on the number of billable transactions that can incur a billable cost. If your individual disk's billable transactions reach that hourly limit, any additional billable transactions during that hour don't incur a cost. For the rest of the Standard HDD sizes (S10, S20, S30, S40, S50, S60, S70, S80) and snapshots, each I/O operation is considered a single billable transaction for billing purposes, and incurs a billable cost for every 10,000 billable transactions. There's no hourly limit on the number of billable transactions that can incur a cost for these Standard HDD sizes. 
 
 ### Standard HDD billing example 
 In this example, we provision a 512 GiB Standard HDD with LRS redundancy. 
@@ -175,6 +178,15 @@ We're billed for the provisioned capacity of the HDD disk and the transactions p
 |-|-|
 |Standard HDD managed disks| S20 LRS Disk|
 |Standard HDD managed disks| S4 LRS Disk Operations|
+
+## Empty disks
+
+
+
+When you first create an empty managed disk, Azure initially stores only the disk metadata. The underlying storage isn't allocated until the disk is first used, such as when you attach the disk to a VM or upload a VHD to it. At that point, storage is allocated and the disk begins incurring billing charges.
+
+If an empty disk hasn't been used and no underlying storage has been allocated to it, it doesn't incur disk storage charges.
+
 
 ## See also
 - [Azure managed disks pricing page](https://azure.microsoft.com/pricing/details/managed-disks/)

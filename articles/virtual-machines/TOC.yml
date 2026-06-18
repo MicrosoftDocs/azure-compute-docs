@@ -554,6 +554,10 @@
          href: ./sizes/gpu-accelerated/ncast4v3-series.md
        - name: NC_A100_v4 series
          href: ./sizes/gpu-accelerated/nca100v4-series.md
+     - name: NCv6 series
+       items:
+       - name: Overview
+         href: ./sizes/gpu-accelerated/nc-rtxpro6000-bse-v6-series-overview.md
        - name: NC_RTXPRO6000BSE_v6 series
          href: ./sizes/gpu-accelerated/nc-rtxpro6000-bse-v6-series.md
      - name: ND family
@@ -746,7 +750,7 @@
        href: enable-nvme-remote-faqs.yml
      - name: OS Images Supported
        href: enable-nvme-interface.md
-     - name: SCSI to NVMe for Linux VMs
+     - name: SCSI to NVMe for Linux and Windows VMs
        href: nvme-linux.md
    - name: Previous generation and retired sizes
      items:
@@ -1557,6 +1561,8 @@
     - name: Availability set support for Premium SSD v2
       displayName: availability and scale, availability, scale, autoscale, availability sets, AV sets
       href: use-premium-ssd-v2-with-availability-set.md
+    - name: Migrate from an availability set to a scale set (preview)
+      href: availability-set-migrate-to-scale-sets.md
 - name: Disks
   items:
   - name: Overview
@@ -1572,9 +1578,12 @@
     href: disks-whats-new.md
   - name: Deploy an Ultra Disk
     href: disks-enable-ultra-ssd.md
-  - name: Deploy a Premium SSD v2
+  - name: Deploy a zonal Premium SSD v2
     displayName: Performance, cost, perf, disks, disk
     href: disks-deploy-premium-v2.md
+  - name: Deploy a nonzonal Premium SSD v2
+    displayName: Performance, cost, perf, disks, disk, nonzonal
+    href: disks-deploy-nonzonal-premium-v2.md
   - name: Deploy a ZRS disk
     href: disks-deploy-zrs.md
   - name: Best practices for achieving high availability
@@ -2295,6 +2304,15 @@
           href: virtual-machine-scale-sets-maintenance-control-template.md
     - name: Scheduled events
       items:
+      - name: Overview
+        displayName: Scheduled events
+        href: scheduled-events-overview.md
+      - name: Event Grid
+        displayName: Scheduled Events in Event Grid
+        href: scheduled-events-event-grid.md
+      - name: Azure Resource Graph
+        displayName: Scheduled Events in Azure Resource Graph
+        href: scheduled-events-resource-graph.md
       - name: Linux
         displayName: Scheduled events
         href: ./linux/scheduled-events.md
@@ -2484,6 +2502,8 @@
     href: /azure/site-recovery/azure-to-azure-tutorial-migrate?toc=/azure/virtual-machines/toc.json
   - name: Move to an availability zone
     href: /azure/site-recovery/move-azure-vms-avset-azone?toc=/azure/virtual-machines/toc.json
+  - name: Migrate VMs to an availability zone (Preview)
+    href: migrate-to-availability-zone.md
   - name: Move Maintenance Control configurations to another region
     href: move-region-maintenance-configuration.md
   - name: Move Maintenance Control configuration resources to another region
