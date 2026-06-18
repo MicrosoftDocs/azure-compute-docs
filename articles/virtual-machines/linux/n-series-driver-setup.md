@@ -209,7 +209,7 @@ Deploy RDMA-capable N-series VMs from one of the images in the Azure Marketplace
    sudo apt update 
    sudo apt install -y build-essential 
    ```
-   RHEL (8.8, 8.10, 9.4, 9.6, 9.7):
+   RHEL (8.10, 9.4, 9.6, 9.7):
    ```
    sudo yum check-update 
    sudo yum install -y make automake gcc gcc-c++ kernel-devel-$(uname -r) kernel-headers-$(uname -r) 

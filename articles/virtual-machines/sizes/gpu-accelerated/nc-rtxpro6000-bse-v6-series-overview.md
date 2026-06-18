@@ -45,9 +45,7 @@ For information on installing NVIDIA GPU drivers on N-series VMs (including NCv6
 | Windows Server | •	Windows Server 2025 <br> •	Windows Server 2022| 
 | Ubuntu | •	Ubuntu 24.04 LTS <br> •	Ubuntu 22.04 LTS <br> •	Ubuntu 20.04 LTS| 
 | Red Hat Enterprise Linux (RHEL) | •	RHEL 9.7, 9.6, 9.4 <br> •	RHEL 8.10| 
-| SUSE Linux Enterprise Server |• SUSE Linux Enterprise Server 16 <br> •	SUSE Linux Enterprise Server 15 SP7, SP6, SP2 | 
-| Debian | • Debian 12| 
-
+| SUSE Linux Enterprise Server |• SUSE Linux Enterprise Server 15 SP7 | 
 
 
 ## FAQs 
