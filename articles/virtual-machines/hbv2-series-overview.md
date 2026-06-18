@@ -100,7 +100,7 @@ Before migrating, validate your workloads on the target series:
 ## Next steps
 
 - For migration to current-generation HPC VMs, see the [Migrate to current-generation HPC VMs](#migrate-to-current-generation-hpc-vms) section in this article.
-- For more information about [AMD EPYC architecture](https://bit.ly/2Epv3kC) and [multi-chip architectures](https://bit.ly/2GpQIMb), see the [HPC Tuning Guide for AMD EPYC Processors](https://bit.ly/2T3AWZ9).
+- For more information about [AMD EPYC architecture](https://bit.ly/2Epv3kC) and [multi-chip architectures](https://bit.ly/2GpQIMb), see the [HPC Tuning Guide for AMD EPYC Processors](https://docs.amd.com/v/u/58002_amd-epyc-9004-tg-hpc).
 - For latest announcements on HPC workload examples, and performance results see [Azure Compute Tech Community Blogs](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
 - For a higher level architectural view of running HPC workloads, see [High Performance Computing (HPC) on Azure](/azure/architecture/topics/high-performance-computing/).
 - For more information on the current-generation HBv5 series, see [HBv5-series overview](hbv5-series-overview.md).
