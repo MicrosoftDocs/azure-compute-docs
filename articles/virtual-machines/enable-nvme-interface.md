@@ -21,7 +21,7 @@ For specifics about which virtual machine (VM) generations support which storage
 For more information about enabling the NVMe interface on virtual machines created in Azure, review the [FAQ for remote NVMe disks](/azure/virtual-machines/enable-nvme-remote-faqs).
 
 > [!NOTE]
-> For virtual machines using NVMe-attached storage, the default OS-level NVMe IO timeout for both Linux and Windows is now 240 seconds. This ensures that Azure’s host-level timeout and recovery mechanisms take precedence in handling disk failures or interruptions.
+> For virtual machines using NVMe-attached storage, the default OS-level NVMe IO timeout for both Linux and Windows is now 240 seconds. This change ensures that Azure’s host-level timeout and recovery mechanisms take precedence in handling disk failures or interruptions.
 > On Linux, this corresponds to the kernel parameter nvme_core.io_timeout set to 240 seconds. On Windows, the equivalent setting is IoTimeoutValue, configured via the registry at HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\stornvme\Parameters.
 > Some older operating system images may have the default timeout values set to 30 seconds, which can cause the OS to timeout IOs before Azure can intervene.
 
