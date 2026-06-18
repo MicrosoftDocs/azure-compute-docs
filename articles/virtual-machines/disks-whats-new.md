@@ -153,7 +153,7 @@ Zone-redundant storage (ZRS) disks are available in West US 3 and Germany Centra
 
 Encryption at host was previously only available for Standard HDDs, Standard SSDs, and Premium SSDs. Encryption at host is now also available as a GA offering for Premium SSD v2 and Ultra Disks. For more information on encryption at host, see [Encryption at host - End-to-end encryption for your VM data](disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data).
 
-Some additional restrictions apply to Premium SSD v2 and Ultra Disks that enable encryption at host. For more information, see [Restrictions](disk-encryption.md#restrictions-1).
+Some additional restrictions apply to Premium SSD v2 and Ultra Disks that enable encryption at host. For more information, see [Encryption at host restrictions](disk-encryption.md#encryption-at-host-restrictions).
 
 #### New latency metrics (preview)
 
