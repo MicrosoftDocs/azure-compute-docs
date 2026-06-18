@@ -3,9 +3,10 @@ title: Deploy a Premium SSD v2 managed disk
 description: Learn how to deploy a Premium SSD v2 and about its regional availability.
 author: roygara
 ms.author: rogarana
-ms.date: 06/05/2026
+ms.date: 06/17/2026
 ms.topic: how-to
 ms.service: azure-disk-storage
+ai-usage: ai-assisted
 ms.custom:
   - references_regions
   - devx-track-azurecli
@@ -24,17 +25,11 @@ Azure Premium SSD v2 is designed for IO-intense enterprise workloads that requir
 
 Premium SSD v2 disks support a 4k physical sector size by default, but can be configured to use a 512E sector size as well. While most applications are compatible with 4k sector sizes, some require 512 byte sector sizes. Oracle Database, for example, requires release 12.2 or later in order to support 4k native disks.
 
+This article covers deploying a zonal Premium SSD v2, which is generally what you should use. However, if you need to deploy a [nonzonal](/azure/reliability/availability-zones-zonal-resource-resiliency#resource-deployment-types) Premium SSD v2, see [Deploy a nonzonal Premium SSD v2](/azure/virtual-machines/disks-deploy-nonzonal-premium-v2).
+
 ## Limitations
 
 [!INCLUDE [disks-prem-v2-limitations](./includes/disks-prem-v2-limitations.md)]
-
-### Nonzonal Premium SSD v2 limitations in regions with availability zones
-
-When you attach a [nonzonal](/azure/reliability/availability-zones-zonal-resource-resiliency#resource-deployment-types) Premium SSD v2 to a nonzonal VM in an AZ region, Azure runs a background copy (can take up to 24 hours) to align the disk with the VM's availability zone and optimize latency.
-
-The following additional limitations apply to nonzonal Premium SSD v2 disks:
-- You can't attach a nonzonal disk created from a snapshot, including an [instant access snapshot](/azure/virtual-machines/disks-instant-access-snapshots), to a nonzonal VM until the snapshot's background copy finishes. To check the snapshot's background copy status, see [Check snapshot status](/azure/virtual-machines/disks-incremental-snapshots?tabs=azure-cli#check-snapshot-status).
-- You can't resize the nonzonal disk or change customer-managed key. 
 
 ### Regional availability
 
@@ -82,9 +77,10 @@ To programmatically determine the regions and zones you can deploy to, use eithe
 
 ---
 
-Now that you know the region and zone to deploy to, follow the deployment steps in this article to create a Premium SSD v2 and attach it to a VM.
+Now that you know the region and zone to deploy to, follow the deployment steps in this article to create a zonal Premium SSD v2 and attach it to a VM.
 
-## Use a zonal Premium SSD v2 in Regions with availability zones
+## Use a zonal Premium SSD v2 in regions with availability zones
+
 Currently, Premium SSD v2 disks are only available in [select regions with availability zones](#regional-availability).
 
 # [Azure CLI](#tab/azure-cli)
@@ -129,7 +125,7 @@ az vm create -n $vmName -g $resourceGroupName \
 
 # [PowerShell](#tab/azure-powershell)
 
-Create a Premium SSD v2 in an availability zone by using the [New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig) to define the configuration of your disk and the [New-AzDisk](/powershell/module/az.compute/new-azdisk) command to create your disk. Next, create a VM in the same region and availability zone that supports Premium Storage by using the [az vm create](/cli/azure/vm#az-vm-create). Finally, attach the disk to it by using the [Get-AzVM](/powershell/module/az.compute/get-azvm) command to identify variables for the virtual machine, the [Get-AzDisk](/powershell/module/az.compute/get-azdisk) command to identify variables for the disk, the [Add-AzVMDataDisk](/powershell/module/az.compute/add-azvmdatadisk) command to add the disk, and the [Update-AzVM](/powershell/module/az.compute/update-azvm) command to attach the new disk to the virtual machine. 
+Create a Premium SSD v2 in an availability zone by using [New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig) and [New-AzDisk](/powershell/module/az.compute/new-azdisk). Then create a VM in the same region and availability zone. Use [Add-AzVMDataDisk](/powershell/module/az.compute/add-azvmdatadisk) to add the disk to the VM configuration, and then use [Update-AzVM](/powershell/module/az.compute/update-azvm) to apply the change in Azure.
 
 The following script creates a Premium SSD v2 with a 4k sector size, to deploy one with a 512 sector size, update the `$logicalSectorSize` parameter. Replace the values of all the variables with your own, then run the following script:
 
@@ -214,121 +210,6 @@ Update-AzVM -VM $vm -ResourceGroupName $resourceGroupName
 1. Proceed through the rest of the VM deployment, making any choices that you desire.
 
 You've now deployed a VM with a Premium SSD v2.
-
----
-
-## Use a nonzonal Premium SSD v2
-Premium SSD v2 nonzonal disks can be deployed in [select regions](#regional-availability), including regions with and without availability zones.
-
-If you deploy a nonzonal Premium SSD v2 in a region with availability zone support, review the limitations in [Nonzonal Premium SSD v2 deployments in regions with availability zones](#nonzonal-premium-ssd-v2-limitations-in-regions-with-availability-zones).
-
- Only one background copy can run on a nonzonal disk at a time. While a background copy is in progress, attaching the nonzonal disk to a running nonzonal VM might fail. Restarting a stopped or deallocated nonzonal VM with the nonzonal disk attached might also fail, because the restart can trigger a second background copy.
-
-# [Azure CLI](#tab/azure-cli)
-
-Create a nonzonal Premium SSD v2 by using the [az disk create](/cli/azure/disk#az-disk-create) command. Then create a nonzonal VM in the same region that supports Premium Storage and attach the disk to it by using the [az vm create](/cli/azure/vm#az-vm-create) command.
-
-The following script creates a Premium SSD v2 with a 4k sector size. To create a disk with a 512 sector size, update the `$logicalSectorSize` parameter. Replace the values of all the variables with your own, then run the following script:
-
-```azurecli-interactive
-## Initialize variables
-diskName="yourDiskName"
-resourceGroupName="yourResourceGroupName"
-region="yourRegionName"
-##Replace 4096 with 512 to deploy a disk with 512 sector size
-logicalSectorSize=4096
-vmName="yourVMName"
-vmImage="Win2016Datacenter"
-adminPassword="yourAdminPassword"
-adminUserName="yourAdminUserName"
-vmSize="Standard_D4s_v3"
-
-## Create a Premium SSD v2
-az disk create -n $diskName -g $resourceGroupName \
---size-gb 100 \
---disk-iops-read-write 5000 \
---disk-mbps-read-write 150 \
---location $region \
---sku PremiumV2_LRS \
---logical-sector-size $logicalSectorSize
-
-## Create the VM
-az vm create -n $vmName -g $resourceGroupName \
---image $vmImage \
---authentication-type password --admin-password $adminPassword --admin-username $adminUserName \
---size $vmSize \
---location $region \
---attach-data-disks $diskName
-```
-
-# [PowerShell](#tab/azure-powershell)
-
-Create a nonzonal Premium SSD v2 by using the [New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig) command to define the configuration of your disk and the [New-AzDisk](/powershell/module/az.compute/new-azdisk) command to create your disk. Next, create a nonzonal VM in the same region that supports Premium Storage by using the [New-AzVm](/powershell/module/az.compute/new-azvm) command. Finally, attach the disk to it by using the [Get-AzVM](/powershell/module/az.compute/get-azvm) command to identify variables for the virtual machine, the [Get-AzDisk](/powershell/module/az.compute/get-azdisk) command to identify variables for the disk, the [Add-AzVMDataDisk](/powershell/module/az.compute/add-azvmdatadisk) command to add the disk, and the [Update-AzVM](/powershell/module/az.compute/update-azvm) command to attach the new disk to the virtual machine.
-
-The following script creates a Premium SSD v2 with a 4k sector size. To create a disk with a 512 sector size, update the `$logicalSectorSize` parameter. Replace the values of all the variables with your own, then run the following script:
-
-```powershell
-# Initialize variables
-$resourceGroupName = "yourResourceGroupName"
-$region = "useast"
-$diskName = "yourDiskName"
-$diskSizeInGiB = 100
-$diskIOPS = 5000
-$diskThroughputInMBPS = 150
-#To use a 512 sector size, replace 4096 with 512
-$logicalSectorSize=4096
-$lun = 1
-$vmName = "yourVMName"
-$vmImage = "Win2016Datacenter"
-$vmSize = "Standard_D4s_v3"
-$vmAdminUser = "yourAdminUserName"
-$vmAdminPassword = ConvertTo-SecureString "yourAdminUserPassword" -AsPlainText -Force
-$credential = New-Object System.Management.Automation.PSCredential ($vmAdminUser, $vmAdminPassword);
-
-# Create a Premium SSD v2
-$diskconfig = New-AzDiskConfig `
--Location $region `
--DiskSizeGB $diskSizeInGiB `
--DiskIOPSReadWrite $diskIOPS `
--DiskMBpsReadWrite $diskThroughputInMBPS `
--AccountType PremiumV2_LRS `
--LogicalSectorSize $logicalSectorSize `
--CreateOption Empty
-
-New-AzDisk `
--ResourceGroupName $resourceGroupName `
--DiskName $diskName `
--Disk $diskconfig
-
-# Create the VM
-New-AzVm `
-    -ResourceGroupName $resourceGroupName `
-    -Name $vmName `
-    -Location $region `
-    -Image $vmImage `
-    -Size $vmSize `
-    -Credential $credential
-
-# Attach the disk to the VM
-$vm = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmName
-$disk = Get-AzDisk -ResourceGroupName $resourceGroupName -Name $diskName
-$vm = Add-AzVMDataDisk -VM $vm -Name $diskName -CreateOption Attach -ManagedDiskId $disk.Id -Lun $lun
-Update-AzVM -VM $vm -ResourceGroupName $resourceGroupName
-```
-
-
-# [Azure portal](#tab/portal)
-
-1. Sign in to the [Azure portal](https://portal.azure.com/).
-1. Navigate to **Disks** and create a new disk.
-1. Select a [supported region](#regional-availability).
-1. Select **Change size** and change the disk type to **Premium SSD v2**.
-1. If you like, change the size of the disk, as well as the performance, then select **OK**.
-1. Set **Availability zone** to **No infrastructure redundancy required**.
-1. Proceed through the rest of the deployment, making any choices that you desire.
-1. On the **Advanced** tab, select whether you'd like to deploy a 4k or 512 logical sector size, then deploy the disk.
-
- Once the disk is successfully deployed, attach it to a new or existing VM.
 
 ---
 
