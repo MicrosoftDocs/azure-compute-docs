@@ -41,7 +41,7 @@ To provide room for the Azure hypervisor to operate without interfering with the
 
 We reserve these 8 hypervisor host cores symmetrically across both CPU sockets, taking the first 2 cores from specific Core Complex Dies (CCDs) on each NUMA domain, with the remaining cores for the HBv2-series VM.
 
-On HBv2, a group of four consecutive (4) CCDs is configured as a NUMA domain, both at the host server level and within a guest VM. Thus, all HBv2 VM sizes expose 4 NUMA domains. The number of cores per NUMA domain will vary depending on the specific [HBv2 VM size](hbv2-series.md) selected.
+On HBv2, a group of four consecutive (4) CCDs is configured as a NUMA domain, both at the host server level and within a guest VM. Thus, all HBv2 VM sizes expose 4 NUMA domains. The number of cores per NUMA domain varies depending on the specific [HBv2 VM size](hbv2-series.md) selected.
 
 Process pinning works on HBv2-series VMs because we expose the underlying silicon as-is to the guest VM. We strongly recommend process pinning for optimal performance and consistency.
 
