@@ -47,7 +47,13 @@ You must use one of the following Azure key stores to store your customer-manage
 - [Azure Key Vault](/azure/key-vault/general/overview) (Premium tier recommended for HSM-backed key protection)
 - [Azure Key Vault Managed Hardware Security Module (HSM)](/azure/key-vault/managed-hsm/overview)
 
-You can either import [your RSA keys](/azure/key-vault/keys/hsm-protected-keys) to your Key Vault or generate new RSA keys in Azure Key Vault. Azure managed disks handles the encryption and decryption in a fully transparent fashion using envelope encryption. It encrypts data using an [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 256 based data encryption key (DEK), which is, in turn, protected using your keys. The Storage service generates data encryption keys and encrypts them with customer-managed keys using RSA encryption. The envelope encryption allows you to rotate (change) your keys periodically as per your compliance policies without impacting your VMs. When you rotate your keys, the Storage service re-wraps the data encryption keys with the new customer-managed key version. The underlying disk data itself is not re-encrypted. Both old and new key versions must remain enabled until re-wrapping is complete.
+You can either import [your RSA keys](/azure/key-vault/keys/hsm-protected-keys) to your Key Vault or generate new RSA keys in Azure Key Vault.
+
+Azure managed disks handles encryption and decryption by using envelope encryption. Managed disks encrypt data by using an [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 256-based data encryption key (DEK), and your customer-managed key protects that DEK.
+
+The Storage service generates DEKs and encrypts those DEKs by using your RSA key.
+
+Envelope encryption lets you rotate keys periodically without affecting your VMs. During rotation, the Storage service re-wraps DEKs with the new key version, and the underlying disk data is not re-encrypted. Keep both the old and new key versions enabled until re-wrapping completes.
 
 Managed disks and the Key Vault or managed HSM must be in the same Azure region, but they can be in different subscriptions. They must also be in the same Microsoft Entra tenant, unless you're using [Encrypt managed disks with cross-tenant customer-managed keys](disks-cross-tenant-customer-managed-keys.md).
 
@@ -69,7 +75,7 @@ The following diagram shows how managed disks use Microsoft Entra ID and Azure K
 The following list explains the diagram in more detail:
 
 1. An Azure Key Vault administrator creates key vault resources.
-1. The key vault admin either imports their RSA keys to Key Vault or generate new RSA keys in Key Vault.
+1. The key vault admin either imports their RSA keys to Key Vault or generates new RSA keys in Key Vault.
 1. That administrator creates an instance of Disk Encryption Set resource, specifying an Azure Key Vault ID and a key URL. Disk Encryption Set is a new resource introduced for simplifying the key management for managed disks. 
 1. When a disk encryption set is created, a [system-assigned managed identity](/entra/identity/managed-identities-azure-resources/overview) is created in Microsoft Entra ID and associated with the disk encryption set. 
 1. The Azure key vault administrator then grants the managed identity permission to perform operations in the key vault.
@@ -77,7 +83,7 @@ The following list explains the diagram in more detail:
 1. Managed disks use the managed identity to send requests to the Azure Key Vault.
 1. For reading or writing data, managed disks sends requests to Azure Key Vault to encrypt (wrap) and decrypt (unwrap) the data encryption key in order to perform encryption and decryption of the data. 
 
-To revoke access to customer-managed keys, see [Azure Key Vault PowerShell](/powershell/module/az.keyvault/) and [Azure Key Vault CLI](/cli/azure/keyvault). Revoking access effectively blocks access to all data in the storage account, as the encryption key is inaccessible by Azure Storage.
+To revoke access to customer-managed keys, see [Azure Key Vault PowerShell](/powershell/module/az.keyvault/) and [Azure Key Vault CLI](/cli/azure/keyvault). Revoking access effectively blocks access to managed disks that rely on that key, as the encryption key is inaccessible by Azure Storage.
 
 #### Automatic key rotation of customer-managed keys
 
@@ -88,9 +94,12 @@ Generally, if you're using customer-managed keys, you should enable automatic ke
 
 If you can't enable automatic key rotation, you can use other methods to alert you before keys expire. This way, you can make sure to rotate your keys before expiration and keep business continuity. You can use either an [Azure Policy](/azure/key-vault/general/azure-policy) or [Azure Event Grid](/azure/event-grid/event-schema-key-vault) to send a notification when a key expires soon.
 
-#### Restrictions
+#### Customer-managed key restrictions
 
-For now, customer-managed keys have the following restrictions:
+Customer-managed keys have the following restrictions. Pay special attention to identity and region requirements before deployment:
+- Managed disks and your key store must be in the same region.
+- Customer-managed keys depend on managed identities; tenant moves can break key access.
+- Validate supported scenarios and feature limits in the following restrictions list.
 
 [!INCLUDE [virtual-machines-managed-disks-customer-managed-keys-restrictions](./includes/virtual-machines-managed-disks-customer-managed-keys-restrictions.md)]
 
@@ -99,9 +108,9 @@ For now, customer-managed keys have the following restrictions:
 Customer-managed keys are available in all regions that managed disks are available.
 
 > [!IMPORTANT]
-> Customer-managed keys rely on managed identities for Azure resources, a feature of Microsoft Entra ID. When you configure customer-managed keys, a managed identity is automatically assigned to your resources under the covers. If you subsequently move the subscription, resource group, or managed disk from one Microsoft Entra directory to another, the managed identity associated with managed disks isn't transferred to the new tenant, so customer-managed keys may no longer work. For more information, see [Transferring a subscription between Microsoft Entra directories](/azure/active-directory/managed-identities-azure-resources/known-issues#transferring-a-subscription-between-azure-ad-directories).
+> Customer-managed keys rely on managed identities for Azure resources, a feature of Microsoft Entra ID. When you configure customer-managed keys, a managed identity is automatically assigned to your resources under the covers. If you subsequently move the subscription, resource group, or managed disk from one Microsoft Entra directory to another, the managed identity associated with managed disks isn't transferred to the new tenant, so customer-managed keys might no longer work. For more information, see [Transferring a subscription between Microsoft Entra directories](/azure/active-directory/managed-identities-azure-resources/known-issues#transferring-a-subscription-between-azure-ad-directories).
 
-To enable customer-managed keys for managed disks, see our articles covering how to enable it with either the [Azure PowerShell module](windows/disks-enable-customer-managed-keys-powershell.md), the [Azure CLI](linux/disks-enable-customer-managed-keys-cli.md) or the [Azure portal](disks-enable-customer-managed-keys-portal.yml).
+To enable customer-managed keys for managed disks, see the following articles covering how to enable it with either the [Azure PowerShell module](windows/disks-enable-customer-managed-keys-powershell.md), the [Azure CLI](linux/disks-enable-customer-managed-keys-cli.md) or the [Azure portal](disks-enable-customer-managed-keys-portal.yml).
 
 See [Create a managed disk from a snapshot with CLI](scripts/create-managed-disk-from-snapshot.md#disks-with-customer-managed-keys) for a code sample.
 
@@ -111,7 +120,12 @@ When you enable encryption at host, that encryption starts on the VM host itself
 
 Temporary disks and ephemeral OS disks are encrypted at rest with platform-managed keys when you enable end-to-end encryption. The OS and data disk caches are encrypted at rest with either customer-managed or platform-managed keys, depending on the selected disk encryption type. For example, if a disk is encrypted with customer-managed keys, then the cache for the disk is encrypted with customer-managed keys, and if a disk is encrypted with platform-managed keys then the cache for the disk is encrypted with platform-managed keys.
 
-### Restrictions
+### Encryption at host restrictions
+
+Review these encryption at host restrictions before you enable it for production workloads:
+- VM size support varies by region and generation.
+- Encryption behavior differs for temporary disks, ephemeral OS disks, and caches.
+- Check workload prerequisites before applying at scale.
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-restrictions](./includes/virtual-machines-disks-encryption-at-host-restrictions.md)]
 
@@ -119,13 +133,13 @@ Temporary disks and ephemeral OS disks are encrypted at rest with platform-manag
 
 The complete list of supported VM sizes can be pulled programmatically. To learn how to retrieve them programmatically, refer to the finding supported VM sizes section of either the [Azure PowerShell module](windows/disks-enable-host-based-encryption-powershell.md#finding-supported-vm-sizes) or [Azure CLI](linux/disks-enable-host-based-encryption-cli.md#finding-supported-vm-sizes) articles.
 
-To enable end-to-end encryption using encryption at host, see our articles covering how to enable it with either the [Azure PowerShell module](windows/disks-enable-host-based-encryption-powershell.md), the [Azure CLI](linux/disks-enable-host-based-encryption-cli.md), or the [Azure portal](disks-enable-host-based-encryption-portal.md).
+To enable end-to-end encryption using encryption at host, see the following articles covering how to enable it with either the [Azure PowerShell module](windows/disks-enable-host-based-encryption-powershell.md), the [Azure CLI](linux/disks-enable-host-based-encryption-cli.md), or the [Azure portal](disks-enable-host-based-encryption-portal.md).
 
 ## Double encryption at rest
 
 High security sensitive customers who are concerned of the risk associated with any particular encryption algorithm, implementation, or key being compromised can now opt for extra layer of encryption using a different encryption algorithm/mode at the infrastructure layer using platform managed encryption keys. This new layer can be applied to persisted OS and data disks, snapshots, and images, all of which will be encrypted at rest with double encryption.
 
-### Restrictions
+### Double encryption restrictions
 
 Double encryption at rest isn't currently supported with either Ultra Disks or Premium SSD v2 disks.
 
@@ -136,7 +150,7 @@ To enable double encryption at rest for managed disks, see [Enable double encryp
 [Azure Disk Encryption](../virtual-machines/disk-encryption-overview.md) leverages either the [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) feature of Linux or the [BitLocker](/windows/security/information-protection/bitlocker/bitlocker-overview) feature of Windows to encrypt managed disks with customer-managed keys within the guest VM.  Server-side encryption with encryption at host improves on ADE. [With encryption at host](#encryption-at-host---end-to-end-encryption-for-your-vm-data), data for your temporary disk and OS/data disk caches are stored on that VM host. After enabling encryption at host, all this data is encrypted at rest and flows encrypted to the Storage service, where it's persisted. Essentially, encryption at host encrypts your data from end-to-end. Encryption at host doesn't use your VM's CPU and doesn't impact your VM's performance.
 
 > [!IMPORTANT]
-> Customer-managed keys rely on managed identities for Azure resources, a feature of Microsoft Entra ID. When you configure customer-managed keys, a managed identity is automatically assigned to your resources under the covers. If you subsequently move the subscription, resource group, or managed disk from one Microsoft Entra directory to another, the managed identity associated with managed disks is not transferred to the new tenant, so customer-managed keys may no longer work. For more information, see [Transferring a subscription between Microsoft Entra directories](/azure/active-directory/managed-identities-azure-resources/known-issues#transferring-a-subscription-between-azure-ad-directories).
+> Customer-managed keys rely on managed identities for Azure resources, a feature of Microsoft Entra ID. When you configure customer-managed keys, a managed identity is automatically assigned to your resources under the covers. If you subsequently move the subscription, resource group, or managed disk from one Microsoft Entra directory to another, the managed identity associated with managed disks is not transferred to the new tenant, so customer-managed keys might no longer work. For more information, see [Transferring a subscription between Microsoft Entra directories](/azure/active-directory/managed-identities-azure-resources/known-issues#transferring-a-subscription-between-azure-ad-directories).
 
 ## Next steps
 
