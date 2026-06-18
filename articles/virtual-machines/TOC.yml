@@ -1578,9 +1578,12 @@
     href: disks-whats-new.md
   - name: Deploy an Ultra Disk
     href: disks-enable-ultra-ssd.md
-  - name: Deploy a Premium SSD v2
+  - name: Deploy a zonal Premium SSD v2
     displayName: Performance, cost, perf, disks, disk
     href: disks-deploy-premium-v2.md
+  - name: Deploy a nonzonal Premium SSD v2
+    displayName: Performance, cost, perf, disks, disk, nonzonal
+    href: disks-deploy-nonzonal-premium-v2.md
   - name: Deploy a ZRS disk
     href: disks-deploy-zrs.md
   - name: Best practices for achieving high availability
