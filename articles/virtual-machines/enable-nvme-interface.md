@@ -3,7 +3,7 @@ title: Supported OS Images
 description: Get a list of supported operating system images for remote NVMe.
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.date: 01/23/2026
+ms.date: 06/18/2026
 ms.topic: concept-article
 ms.custom: template-how-to-pattern
 # Customer intent: As a cloud architect, I want to access a list of supported operating system images for remote NVMe, so that I can ensure compatibility and optimize performance for my virtual machines.
@@ -20,10 +20,12 @@ For specifics about which virtual machine (VM) generations support which storage
 
 For more information about enabling the NVMe interface on virtual machines created in Azure, review the [FAQ for remote NVMe disks](/azure/virtual-machines/enable-nvme-remote-faqs).
 
-## Supported Linux OS images
 > [!NOTE]
-> For Linux virtual machines using NVMe-attached storage, Microsoft recommends setting the kernel parameter `nvme_core.io_timeout` to `240` seconds. This setting effectively disables OS-level NVMe IO timeouts, ensuring that Azure's host-level timeout mechanism takes precedence to handle disk failures or interruptions. 
-> Some older Linux images may have the default `io_timeout` set to 30 seconds, which can cause the OS to timeout IOs before Azure can intervene.
+> For virtual machines using NVMe-attached storage, the default OS-level NVMe IO timeout for both Linux and Windows is now 240 seconds. This change ensures that Azure’s host-level timeout and recovery mechanisms take precedence in handling disk failures or interruptions.
+> On Linux, this timeout corresponds to the kernel parameter `nvme_core.io_timeout` set to 240 seconds. On Windows, the equivalent setting is `IoTimeoutValue`, configured via the registry at `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\stornvme\Parameters`.
+> Some older operating system images have the default timeout values set to 30 seconds. This setting can cause the OS to timeout IOs before Azure can intervene.
+
+## Supported Linux OS images
 - Azure Linux 3.0
 - Almalinux 8.x
 - Almalinux 9.x
