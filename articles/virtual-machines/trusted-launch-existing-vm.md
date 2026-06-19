@@ -317,7 +317,7 @@ To roll-back changes from Trusted launch to previous known good configuration, s
 
 > [!NOTE]
 >
-> Use Microsoft.Compute API version 2025-11-01+ to roll-back changes from Trusted launch to Gen2 (Non-Trusted launch) configuration.
+> Use Microsoft.Compute API version 2025-11-01+ to roll back changes from Trusted launch to Gen2 (Non-Trusted launch) configuration.
 
 ```json
 "securityProfile": {
