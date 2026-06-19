@@ -425,7 +425,7 @@ To disable Trusted Launch in new VM or scale set deployments, use the `securityT
 
 > [!NOTE]
 >
-> We don't recommend disabling Secure Boot unless you're using custom unsigned kernel or drivers.
+> Don't disable Secure Boot unless you're using custom unsigned kernel or drivers.
 
 If you need to disable Secure Boot, under the VM's configuration, clear the **Enable Secure Boot** option.
 
