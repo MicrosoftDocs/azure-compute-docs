@@ -301,11 +301,11 @@ Follow the steps to enable Trusted launch on an existing Azure Generation 2 VM b
 
 ## Roll back
 
-> [!NOTE]
->
-> Register feature `UseStandardSecurityType` under `Microsoft.Compute` namespace on virtual machine  subscription for roll-back support. For more information, see [Set up preview features in Azure subscription](/azure/azure-resource-manager/management/preview-features)
-
 To roll-back changes from Trusted launch to previous Gen2 known good configuration, you need to set `securityType` of VM to **Standard**.
+
+> [!IMPORTANT]
+>
+> Roll-back of Trusted launch to Gen2 (Non-Trusted launch) configuration is a one-way operation. After you roll-back to Gen2 (Non-Trusted launch) configuration, you can't re-enable Trusted launch on the same VM again.
 
 ### [Portal](#tab/portal)
 
@@ -314,6 +314,10 @@ Roll-back of Trusted launch to Gen2 (Non-Trusted launch) configuration is curren
 ### [Template](#tab/template)
 
 To roll-back changes from Trusted launch to previous known good configuration, set `securityProfile` to **Standard** as shown in the sample template used for executing Trusted launch upgrade.
+
+> [!NOTE]
+>
+> Use Microsoft.Compute API version 2025-11-01+ to roll-back changes from Trusted launch to Gen2 (Non-Trusted launch) configuration.
 
 ```json
 "securityProfile": {
@@ -327,6 +331,10 @@ To roll-back changes from Trusted launch to previous known good configuration, s
 Follow the steps to disable Trusted launch on an existing Azure Generation 2 VM by using the Azure CLI.
 
 Make sure that you install the latest [Azure CLI](/cli/azure/install-az-cli2) and are signed in to an Azure account with [az login](/cli/azure/reference-index).
+
+> [!NOTE]
+>
+> Use Azure CLI version 2.86.0+ to roll-back changes from Trusted launch to Gen2 (Non-Trusted launch) configuration.
 
 1. Sign in to the VM Azure subscription.
 
@@ -372,6 +380,10 @@ Make sure that you install the latest [Azure CLI](/cli/azure/install-az-cli2) an
 ### [PowerShell](#tab/powershell)
 
 To roll-back changes from Trusted launch to previous known good configuration, set `-SecurityType` to `Standard` as shown.
+
+> [!NOTE]
+>
+> Use Azure PowerShell version 15.6.1+ to roll-back changes from Trusted launch to Gen2 (Non-Trusted launch) configuration.
 
 1. Sign in to the VM Azure subscription.
 
