@@ -383,7 +383,7 @@ To roll-back changes from Trusted launch to previous known good configuration, s
 
 > [!NOTE]
 >
-> Use Azure PowerShell version 15.6.1+ to roll-back changes from Trusted launch to Gen2 (Non-Trusted launch) configuration.
+> Use Azure PowerShell version 15.6.1 or later to roll back changes from Trusted launch to Gen2 (Non-Trusted launch) configuration.
 
 1. Sign in to the VM Azure subscription.
 
