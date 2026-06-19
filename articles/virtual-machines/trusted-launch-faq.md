@@ -421,12 +421,11 @@ Trusted Launch VMs provide you with foundational compute security. We **strongly
 - [An OS that doesn't support Trusted Launch](trusted-launch.md#operating-systems-supported)
 - [VM used to generate TrustedLaunchSupported Azure compute gallery image](trusted-launch-portal.md#trusted-launch-vm-supported-images)
 
-You can use the `securityType` parameter with the `Standard` value to disable Trusted Launch in new VM or scale set deployments by using Azure PowerShell (v10.3.0+) and the Azure CLI (v2.53.0+).
+To disable Trusted Launch in new VM or scale set deployments, use the `securityType` parameter with the `Standard` value by using Microsoft.Compute API version 2025-11-01+, Azure PowerShell (v15.6.1+), and the Azure CLI (v2.86.0+).
 
 > [!NOTE]
 >
-> - Parameter `securityType` with value `Standard` can be used if subscription has feature flag `UseStandardSecurityType` registered under `Microsoft.Compute` namespace. Refer to [Setup feature in Azure subscription](/azure/azure-resource-manager/management/preview-features) for steps to enable required feature.
-> - We don't recommend disabling Secure Boot unless you're using custom unsigned kernel or drivers.
+> Don't disable Secure Boot unless you're using custom unsigned kernel or drivers.
 
 If you need to disable Secure Boot, under the VM's configuration, clear the **Enable Secure Boot** option.
 
