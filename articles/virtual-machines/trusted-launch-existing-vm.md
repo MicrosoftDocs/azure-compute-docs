@@ -334,7 +334,7 @@ Make sure that you install the latest [Azure CLI](/cli/azure/install-az-cli2) an
 
 > [!NOTE]
 >
-> Use Azure CLI version 2.86.0+ to roll-back changes from Trusted launch to Gen2 (Non-Trusted launch) configuration.
+> Use Azure CLI version 2.86.0 or later to roll back changes from Trusted launch to Gen2 (Non-Trusted launch) configuration.
 
 1. Sign in to the VM Azure subscription.
 
