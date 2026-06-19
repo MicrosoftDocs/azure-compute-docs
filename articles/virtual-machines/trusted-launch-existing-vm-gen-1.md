@@ -392,7 +392,7 @@ Use the Backup or Restore point of Gen1 VM taken before upgrade and restore enti
 
 > [!IMPORTANT]
 >
-> Roll-back of Trusted launch to Gen2 (Non-Trusted launch) configuration is a one-way operation. After you roll-back to Gen2 (Non-Trusted launch) configuration, you can't re-enable Trusted launch on the same VM again.
+> Roll back Trusted launch to Gen2 (Non-Trusted launch) configuration is a one-way operation. After you roll back to Gen2 (Non-Trusted launch) configuration, you can't re-enable Trusted launch on the same VM.
 
 ## Known issues
 
