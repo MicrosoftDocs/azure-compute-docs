@@ -305,7 +305,7 @@ To roll-back changes from Trusted launch to previous Gen2 known good configurati
 
 > [!IMPORTANT]
 >
-> Roll-back of Trusted launch to Gen2 (Non-Trusted launch) configuration is a one-way operation. After you roll-back to Gen2 (Non-Trusted launch) configuration, you can't re-enable Trusted launch on the same VM again.
+> Rolling back Trusted launch to Gen2 (Non-Trusted launch) configuration is a one-way operation. After you roll back to Gen2 (Non-Trusted launch) configuration, you can't re-enable Trusted launch on the same VM.
 
 ### [Portal](#tab/portal)
 
