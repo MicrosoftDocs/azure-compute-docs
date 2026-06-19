@@ -421,7 +421,7 @@ Trusted Launch VMs provide you with foundational compute security. We **strongly
 - [An OS that doesn't support Trusted Launch](trusted-launch.md#operating-systems-supported)
 - [VM used to generate TrustedLaunchSupported Azure compute gallery image](trusted-launch-portal.md#trusted-launch-vm-supported-images)
 
-You can use the `securityType` parameter with the `Standard` value to disable Trusted Launch in new VM or scale set deployments by using Microsoft.Compute API version 2025-11-01+, Azure PowerShell (v15.6.1+) and the Azure CLI (v2.86.0+).
+To disable Trusted Launch in new VM or scale set deployments, use the `securityType` parameter with the `Standard` value by using Microsoft.Compute API version 2025-11-01+, Azure PowerShell (v15.6.1+), and the Azure CLI (v2.86.0+).
 
 > [!NOTE]
 >
