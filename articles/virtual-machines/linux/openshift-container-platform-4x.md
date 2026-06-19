@@ -1,7 +1,7 @@
 ---
 title: Deploy OpenShift Container Platform 4.x in Azure
 description: Deploy OpenShift Container Platform 4.x in Azure.
-author: haroldwongms
+author: saquib-rashid-msft
 manager: mdotson
 ms.service: azure-virtual-machines
 ms.subservice: azure-redhat-openshift
@@ -9,7 +9,7 @@ ms.custom: linux-related-content
 ms.collection: linux
 ms.topic: how-to
 ms.date: 10/14/2019
-ms.author: haroldw
+ms.author: srashid
 # Customer intent: As a cloud architect, I want to deploy OpenShift Container Platform 4.x in Azure, so that I can leverage its capabilities for container orchestration in my organization's cloud infrastructure.
 ---
 
