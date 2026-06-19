@@ -35,7 +35,7 @@ When you attach a [nonzonal](/azure/reliability/availability-zones-zonal-resourc
 
 The following additional limitations apply to nonzonal Premium SSD v2 disks:
 
-- You can't attach a nonzonal disk created from a snapshot, including an [instant access snapshot](/azure/virtual-machines/disks-instant-access-snapshots), to a nonzonal VM until the snapshot's background copy finishes. To check the snapshot's background copy status, see [Check snapshot status](/azure/virtual-machines/disks-incremental-snapshots?tabs=azure-cli#check-snapshot-status).
+- You can't attach a nonzonal disk created from a snapshot, including an [instant access snapshot](/azure/virtual-machines/disks-instant-access-snapshots), to a nonzonal VM until the background copy finishes. To check the background copy status, see [here](/azure/virtual-machines/scripts/create-managed-disk-from-snapshot#performance-impact---background-copy-process).
 - You can't resize the nonzonal disk or change customer-managed key during a background copy.
 
 Only one background copy can run on a nonzonal disk at a time. While a background copy is in progress, attaching the nonzonal disk to a running nonzonal VM might fail. Restarting a stopped or deallocated nonzonal VM with the nonzonal disk attached might also fail, because the restart can trigger a second background copy.
