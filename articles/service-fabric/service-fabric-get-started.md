@@ -55,9 +55,11 @@ Once the runtime is installed, you can install the SDK successfully. You can run
 > [!NOTE]
 > Single machine clusters (OneBox) are not supported for Application or Cluster upgrades; delete the OneBox cluster and recreate it if you need to perform a Cluster upgrade, or have any issues performing an Application upgrade.
 
-### To use Visual Studio 2017 or 2019 
+### To use Visual Studio 2017, 2019, 2022, or 2026
 
 The Service Fabric Tools are part of the Azure Development workload in Visual Studio 2019 and 2017. Enable this workload as part of your Visual Studio installation. In addition, you need to install the Microsoft Azure Service Fabric SDK and runtime as described above [Download and install the runtime and SDK.](#download-and-install-the-runtime-and-sdk)
+
+To use Visual Studio 2026 specifically, download the "Service Fabric Tools" extension on Visual Studio Marketplace: [Service Fabric Tools Extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.MicrosoftVisualStudioAzureFabricVsix&ssr=false#review-details) 
 
 ## Enable PowerShell script execution
 
