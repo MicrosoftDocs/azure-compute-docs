@@ -61,7 +61,7 @@ az feature register --namespace Microsoft.VirtualMachineImages --name Triggers
 
 ### Set variables
 
-First, set some variables that you'll repeatedly use in commands.
+First, set some variables that you repeatedly use in commands.
 
 ```azurecli-interactive
 # Resource group name - ibTriggersTestRG in this example
