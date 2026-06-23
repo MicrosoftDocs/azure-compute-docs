@@ -22,6 +22,11 @@ Azure continues to support the SCSI interface on the versions of VM offerings th
 
 Changing the host interface from SCSI to NVMe doesn't change the remote storage (OS disk or data disks), but it changes the way the operating system uses the disks.
 
+> [!WARNING]
+> NVMe device numbering (`/dev/nvme0n1`, `/dev/nvme0n2`) isn't **stable** across reboots. Always use:
+> - `/dev/disk/azure/*` symlinks
+> - Disk UUIDs in `/etc/fstab`
+
 | Disk | SCSI-enabled VM | NVMe VM with SCSI temp disk (for example, Ebds_v5) | NVMe VM with NVMe temp disk |
 | ---- | --------------- | ------------------------------------------- | ----------------------------- |
 | OS disk | `/dev/sda` | `/dev/nvme0n1` | `/dev/nvme0n1` |
@@ -266,8 +271,14 @@ nvme-conversion-vm:/usr/lib/udev/rules.d #
 
 ##### Manual download of the udev file
 
-To download the new `udev` rules file, use this command:
-`curl https://raw.githubusercontent.com/Azure/SAP-on-Azure-Scripts-and-Utilities/refs/heads/main/Azure-NVMe-Utils/88-azure-nvme-data-disk.rules`. Then, run `udevadm control --reload-rules && udevadm trigger` to reload the `udev` rules.
+To download the new `udev` rules file, run:
+
+```bash
+sudo curl -o /etc/udev/rules.d/88-azure-nvme-data-disk.rules \
+https://raw.githubusercontent.com/Azure/SAP-on-Azure-Scripts-and-Utilities/refs/heads/main/Azure-NVMe-Utils/88-azure-nvme-data-disk.rules
+
+sudo udevadm control --reload-rules && sudo udevadm trigger
+```
 
 ##### Ready-to-install packages from GitHub
 
@@ -281,6 +292,154 @@ Multiple distributions already started to integrate the package. You can directl
 | Red Hat      | RHEL 9.6 or newer             |
 | Ubuntu       | Ubuntu 25.04 or newer         |
 
+## Prepare a custom Linux image for NVMe
+
+> [!IMPORTANT]
+> If you build a custom Linux image on a SCSI-based VM and deploy it to an NVMe-default size (v5/v6/v7), the VM **fails to boot** unless the initramfs contains `nvme` and `nvme-core` kernel modules.
+
+### Verify NVMe modules are available
+
+```bash
+modinfo nvme && echo "nvme module OK" || echo "ERROR: nvme module not found"
+modinfo nvme-core && echo "nvme-core module OK" || echo "ERROR: nvme-core module not found"
+```
+
+### Verify NVMe modules are in initramfs
+
+```bash
+# RHEL / CentOS / Oracle Linux:
+lsinitrd /boot/initramfs-$(uname -r).img | grep -i nvme
+
+# Ubuntu / Debian:
+lsinitramfs /boot/initrd.img-$(uname -r) | grep -i nvme
+
+# SLES:
+lsinitrd /boot/initrd-$(uname -r) | grep -i nvme
+```
+
+### Rebuild initramfs if NVMe modules are missing
+
+```bash
+# RHEL / CentOS / Oracle Linux:
+sudo dracut --force --add-drivers "nvme nvme-core" /boot/initramfs-$(uname -r).img $(uname -r)
+
+# Ubuntu / Debian:
+echo "nvme" | sudo tee -a /etc/initramfs-tools/modules
+echo "nvme-core" | sudo tee -a /etc/initramfs-tools/modules
+sudo update-initramfs -u
+
+# SLES:
+echo 'add_drivers+=" nvme nvme-core "' | sudo tee -a /etc/dracut.conf.d/nvme.conf
+sudo dracut --force
+```
+
+### Minimum kernel versions for NVMe
+
+| Distribution | Minimum Version | Notes |
+|-------------|----------------|-------|
+| Ubuntu | 18.04 (kernel 4.15+) | NVMe in default initramfs |
+| RHEL / CentOS | 7.4 (kernel 3.10.0-693+) | May need initramfs rebuild |
+| SLES | 12 SP3+ | May need initramfs rebuild |
+| Debian | 9+ (kernel 4.9+) | May need initramfs rebuild |
+| Oracle Linux | 7.4+ (UEK 4+) | UEK includes NVMe |
+| **CentOS 6 / RHEL 6** | **Not supported** | **Cannot boot on NVMe** |
+
+## Trusted Launch and disk controller type
+
+> [!WARNING]
+> **Trusted Launch VMs can't change their disk controller type after deployment.** The `DiskControllerType` on the OS disk is permanently locked.
+
+- You can't resize a Trusted Launch VM created on SCSI (v3/v4) to NVMe-only sizes (v6/v7).
+- You can't resize a Trusted Launch VM created on NVMe to SCSI-only sizes.
+- To change the controller type: snapshot the OS disk, create a new disk with the desired type, and create a new VM.
+
+**Planning:** Before creating a Trusted Launch VM, determine the target VM generation. If you might need cross-controller resize later, deploy without Trusted Launch or use a dual-mode size (EBSv5).
+
+## Configure NVMe I/O timeout
+
+> [!IMPORTANT]
+> Azure Boost VMs (v5/v6/v7) require `nvme_core.io_timeout=240` to prevent kernel panics and I/O errors during transient host storage latency. The default value (30 seconds) is too short.
+
+```bash
+# Check current timeout
+cat /sys/module/nvme_core/parameters/io_timeout
+
+# Set immediately (non-persistent)
+echo 240 | sudo tee /sys/module/nvme_core/parameters/io_timeout
+
+# Make persistent — RHEL/CentOS/Oracle:
+sudo grubby --update-kernel=ALL --args="nvme_core.io_timeout=240"
+
+# Make persistent — Ubuntu/Debian:
+sudo sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="/GRUB_CMDLINE_LINUX_DEFAULT="nvme_core.io_timeout=240 /' /etc/default/grub
+sudo update-grub
+
+# Make persistent — SLES:
+sudo sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="/GRUB_CMDLINE_LINUX_DEFAULT="nvme_core.io_timeout=240 /' /etc/default/grub
+sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+
+# Verify after reboot
+cat /sys/module/nvme_core/parameters/io_timeout
+# Should show: 240
+```
+
+## NVMe device naming differences
+
+NVMe VMs use different device paths than SCSI VMs. **Don't hardcode `/dev/sd*` device paths** - they don't exist on NVMe VMs.
+
+| SCSI | NVMe | Stable Path (recommended) |
+|------|------|--------------------------|
+| `/dev/sda` (OS) | `/dev/nvme0n1` | `/dev/disk/azure/root` |
+| `/dev/sdb` (temp) | `/dev/nvme0n2` (varies) | `/dev/disk/azure/resource` |
+| `/dev/sdc` (LUN 0) | `/dev/nvme0n3` (varies) | `/dev/disk/azure/scsi1/lun0` |
+
+> [!WARNING]
+> NVMe device numbering (`/dev/nvme0n1`, `/dev/nvme0n2`) isn't **stable** across reboots. Always use:
+> - `/dev/disk/azure/*` symlinks
+> - Disk UUIDs in `/etc/fstab`
+
+```bash
+# Get UUIDs
+blkid
+
+# Use in fstab:
+# UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  /data  ext4  defaults  0  2
+
+# Map NVMe devices to Azure LUNs
+ls -la /dev/disk/azure/
+nvme list  # (install nvme-cli if needed)
+```
+
+## Swap and temporary disk on NVMe VMs
+
+NVMe temporary disks appear **unformatted** - unlike SCSI temp disks. You must format and configure them explicitly.
+
+```bash
+# Identify temp disk
+ls -la /dev/disk/azure/resource
+
+# Format and mount
+sudo mkfs.ext4 /dev/disk/azure/resource-part1
+sudo mkdir -p /mnt/resource
+sudo mount /dev/disk/azure/resource-part1 /mnt/resource
+
+# Configure swap
+sudo fallocate -l 4G /mnt/resource/swapfile
+sudo chmod 600 /mnt/resource/swapfile
+sudo mkswap /mnt/resource/swapfile
+sudo swapon /mnt/resource/swapfile
+```
+
+> [!WARNING]
+> Temporary disks are **ephemeral**. Data is lost on Stop/Deallocate. Configure `waagent` for automatic swap management:
+
+```
+# /etc/waagent.conf
+ResourceDisk.Format=y
+ResourceDisk.EnableSwap=y
+ResourceDisk.SwapSizeMB=4096
+```
+
 ## Migrate a Windows VM from SCSI to NVMe
 
 This section describes how to convert a Windows VM from SCSI to NVMe by using the Azure NVMe Conversion script. The script automatically handles OS preparation, VM deallocation, disk controller update, optional resize, and VM restart.
@@ -291,7 +450,7 @@ Before you begin, ensure the following:
 
 - The VM uses Generation 2 (Gen2). You can't convert Gen1 VMs to NVMe.
 
-- The VM runs Windows Server 2019 or later. Windows Server 2016 and earlier aren't supported unless you use `-IgnoreWindowsVersionCheck` and verify driver compatibility manually.
+- The VM runs Windows Server 2019 or later. Windows Server 2016 isn't supported unless you use the `-IgnoreWindowsVersionCheck` parameter and verify driver compatibility manually. Windows Server 2012 R2 and earlier versions aren't supported.
 
 - The target VM SKU supports NVMe. To confirm, see the [Azure Boost availability table](/azure/azure-boost/overview#current-availability).
 
@@ -381,6 +540,9 @@ The output should be `NVMe`.
 3. Confirm that **Standard NVM Express Controller** is listed.
 
 ### Revert to SCSI
+
+> [!WARNING]
+> **Trusted Launch VMs:** The recovery step to revert `DiskControllerType` doesn't work on Trusted Launch VMs. You must recreate the VM. See [Trusted Launch and disk controller type](#trusted-launch-and-disk-controller-type).
 
 If you need to roll back, rerun the script with `-NewControllerType SCSI` and the original VM SKU:
 
