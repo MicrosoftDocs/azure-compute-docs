@@ -1,37 +1,37 @@
 ---
-title: How to enable Automatic Image Creation with Azure Image Builder triggers
-description: Use triggers in Azure Image Builder to enable automatic image creation when criteria are met in a build pipeline
+title: How to enable automatic image creation with Azure Image Builder triggers
+description: Use triggers in Azure Image Builder to enable automatic image creation when criteria are met in a build pipeline.
 author: kof-f
 ms.author: kofiforson
 ms.reviewer: jushiman
 ms.service: azure-virtual-machines
 ms.subservice: image-builder
 ms.topic: how-to
-ms.date: 11/10/2023
+ms.date: 06/23/2026
 ms.custom: template-how-to-pattern, devx-track-azurecli
+ai-usage: ai-assisted
 # Customer intent: As a cloud engineer, I want to set up automatic image creation using triggers in the image builder service, so that I can streamline my build pipeline and ensure images are updated without manual intervention.
 ---
 
-# How to enable Automatic Image Creation with Azure Image Builder triggers
+# How to enable automatic image creation with Azure Image Builder triggers
+
 You can use triggers in Azure Image Builder (AIB) to enable automatic image creation when certain criteria are met in your build pipeline.
 
 > [!IMPORTANT]
-> Please be informed that there exists a restriction on the number of triggers allowable per region, specifically 100 per region per subscription.
+> There's a limit of 100 triggers per region per subscription.
 
 > [!NOTE]
-> Currently, we only support setting a trigger for a new source image, but we do expect to support different kinds of triggers in the future.
-
-> [!NOTE]
-> To prevent unnecessary build failures, automatic image creation via triggers will be deactivated if the image template build has failed multiple times consecutively (either manually or automatically triggered). You can still manually build the image template, and once a manual build succeeds, the automatic triggers will be reactivated.
+> To prevent unnecessary build failures, automatic image creation via triggers is deactivated if the image template build fails multiple times consecutively (either manually or automatically triggered). You can still manually build the image template, and once a manual build succeeds, the automatic triggers are reactivated.
 
 ## Prerequisites
-Before setting up your first trigger, ensure you're using Azure Image Builder API version **2022-07-01.**
+
+Before setting up your first trigger, ensure you're using Azure Image Builder API version **2022-07-01** or later.
 
 ## How to set up a trigger in Azure Image Builder
 
 ### Register the providers
 
-To use VM Image Builder with triggers, you need to register the below providers. Check your registration by running the following commands:
+To use VM Image Builder with triggers, you need to register the following providers. Check your registration by running these commands:
 
 ```azurecli-interactive
 az provider show -n Microsoft.VirtualMachineImages -o json | grep registrationState
@@ -46,8 +46,8 @@ If the output doesn't say registered, run the following commands:
 
 ```azurecli-interactive
 az provider register -n Microsoft.VirtualMachineImages
-az provider register -n Microsoft.Compute
 az provider register -n Microsoft.KeyVault
+az provider register -n Microsoft.Compute
 az provider register -n Microsoft.Storage
 az provider register -n Microsoft.Network
 az provider register -n Microsoft.ContainerInstance
@@ -60,7 +60,8 @@ az feature register --namespace Microsoft.VirtualMachineImages --name Triggers
 
 
 ### Set variables
-First, you need to set some variables that you'll repeatedly use in commands.
+
+First, set some variables that you'll repeatedly use in commands.
 
 ```azurecli-interactive
 # Resource group name - ibTriggersTestRG in this example
@@ -84,20 +85,22 @@ subscriptionID=$(az account show --query id --output tsv)
 ```
 
 ### Create resource group
-Now, you need to create a resource group where you can store your image template. Use the following command to make your resource group:
+
+Create a resource group where you can store your image template:
 
 ```azurecli-interactive
 az group create -n $resourceGroupName -l $location
 ```
 
 ### Create managed identity for the service
-You'll also need to create a managed identity that will be used for the image template (and potentially the Azure Image Builder build VM). In this example, we create a managed identity with "Contributor" access, but you can refine the permissions or role assigned to the managed identity as you like as long as you include the permissions needed for the Azure Image Builder service to function properly.
 
-For more information on the permissions needed for the Azure Image Builder service, see the following documentation: Configure [Azure VM Image Builder permissions](/azure/virtual-machines/linux/image-builder-permissions-cli) by using the Azure CLI
+Create a managed identity for the image template (and potentially the Azure Image Builder build VM). In this example, the managed identity gets "Contributor" access, but you can refine the permissions or role as long as you include the permissions needed for the Azure Image Builder service to function properly.
 
-For more information on how managed identities can be assigned and used in Azure Image Builder, see the following documentation: [VM Image Builder template reference: Identity](/azure/virtual-machines/linux/image-builder-json?tabs=json%2Cazure-powershell#user-assigned-identity-for-azure-image-builder-image-template-resource)
+For more information on the permissions needed for the Azure Image Builder service, see [Configure Azure VM Image Builder permissions by using the Azure CLI](/azure/virtual-machines/linux/image-builder-permissions-cli).
 
-Use the following command to create the managed identity that will be used for the image template:
+For more information on how managed identities can be assigned and used in Azure Image Builder, see [VM Image Builder template reference: Identity](/azure/virtual-machines/linux/image-builder-json?tabs=json%2Cazure-powershell#user-assigned-identity-for-azure-image-builder-image-template-resource).
+
+Run the following commands to create the managed identity:
 
 ```azurecli-interactive
 # Create user-assigned identity for VM Image Builder to access the storage account where the script is stored
@@ -118,6 +121,7 @@ az role assignment create \
 ```
 
 ### Create gallery and image definition
+
 To use VM Image Builder with Azure Compute Gallery, you need to have an existing gallery and image definition. VM Image Builder doesn't create the gallery and image definition for you.
 
 If you don't already have a gallery and image definition to use, start by creating them.
@@ -139,12 +143,14 @@ az sig image-definition create \
    --gallery-image-definition $imageDefName \
    --publisher myIbPublisher \
    --offer myOffer \
-   --sku 18.04-LTS \
-   --os-type Linux
+   --sku 22_04-lts-gen2 \
+   --os-type Linux \
+   --hyper-v-generation V2
 ```
 
 ### Create the image template
-Download the example JSON template and configure it with your variables. The following image template uses a Platform Image as its source, but you can change the source to an Azure Compute Gallery image if you'd like to enable automatic image creation anytime there's a new image version in your Azure Compute Gallery.
+
+Download the example JSON template and configure it with your variables. The following image template uses a Platform Image as its source, but you can change the source to an Azure Compute Gallery image to enable automatic image creation anytime there's a new image version in your gallery.
 
 ```azurecli-interactive
 curl https://raw.githubusercontent.com/Azure/azvmimagebuilder/main/quickquickstarts/9_Setting_up_a_Trigger_with_a_Custom_Linux_Image/helloImageTemplate.json -o helloImageTemplateforTriggers.json
@@ -182,15 +188,15 @@ az image builder show --name $imageTemplateName --resource-group $resourceGroupN
 Download the example trigger template and configure it with your variables. The following trigger starts a new image build anytime the source image is updated.
 
 ```azurecli-interactive
-curl https://raw.githubusercontent.com/kof-f/azvmimagebuilder/main/quickquickstarts/9_Setting_up_a_Trigger_with_a_Custom_Linux_Image/trigger.json -o trigger.json
+curl https://raw.githubusercontent.com/Azure/azvmimagebuilder/main/quickquickstarts/9_Setting_up_a_Trigger_with_a_Custom_Linux_Image/trigger.json -o trigger.json
 sed -i -e "s/<region1>/$location/g" trigger.json
 ```
 
 Trigger requirements:
-- The location in the trigger needs to be the same as the location in the image template. This is a requirement of the `az resource create` cmdlet.
-- We currently support one `kind` of trigger, which is a "SourceImage"
-- We only support one "SourceImage" trigger per image. If you already have a "SourceImage" trigger on the image, then you can't create a new one.
-- You can't update the `kind` field to another type of trigger. You have to delete the trigger and recreate it or create another trigger with the appropriate configuration.
+- The location in the trigger must be the same as the location in the image template.
+- Only one `kind` of trigger is currently supported: `SourceImage`.
+- Only one `SourceImage` trigger per image is supported. If you already have a `SourceImage` trigger on the image, you can't create a new one.
+- You can't update the `kind` field to another type of trigger. You must delete the trigger and recreate it, or create another trigger with the appropriate configuration.
 
 Use the following command to add the trigger to your resource group.
 
@@ -223,4 +229,5 @@ az image builder delete --name $imageTemplateName --resource-group $resourceGrou
 ```
 
 ## Next steps
-Check out the [Image Builder template reference](../virtual-machines/linux/image-builder-json.md) for more information.
+
+- [Image Builder template reference](/azure/virtual-machines/linux/image-builder-json)
