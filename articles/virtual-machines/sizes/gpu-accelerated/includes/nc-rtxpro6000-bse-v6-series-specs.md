@@ -12,8 +12,8 @@ ms.custom: include file
 ---
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
 |---|---|---|
-| Processor      | 24 - 288 vCPUs (SMT enabled)       | Intel Xeon Granite Rapids-AP [x86-64]                   |
-| Memory         | 72 - 1032 GB          |  DDR5 6400 MT/s  |
+| Processor      | 24 - 288 vCPUs (Simultaneous Multi-Threading enabled)       | Intel Xeon Granite Rapids-AP [x86-64]                   |
+| Memory         | 72 - 1032 GB          |  DDR5 6,400 MT/s  |
 | Local Storage  | 1 Disk         | 256 - 2048 GiB               |
 | Remote Storage | 2 - 16 Disks    |                   |
 | Network        | 4 - 8 vNICs          | 22500 - 180000 Mbps              |
