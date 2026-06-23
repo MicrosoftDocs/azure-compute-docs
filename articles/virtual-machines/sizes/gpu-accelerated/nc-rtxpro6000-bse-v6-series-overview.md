@@ -67,9 +67,9 @@ For information on installing NVIDIA GPU drivers on N-series VMs (including NCv6
 
 Additional information on VM specifications and other GA VM sizes can be found [here](/azure/virtual-machines/sizes/gpu-accelerated/nc-rtxpro6000-bse-v6-series?tabs=sizebasicgp%2Csizebasicco). 
 
-- **How can I receive support?** <br> 
+- **How can I receive support now that the NCv6-series has transitioned to GA?** <br> 
 
-    Open a support ticket in the Azure portal. 
+    As with any other GA compute product, open a standard support ticket in the Azure portal. 
 
 - **Are RTX Pro 6000 Blackwell GPUs exposed via SRIOV (also called “vGPU”) or Passthrough mode?** 
 
@@ -101,7 +101,7 @@ Additional information on VM specifications and other GA VM sizes can be found [
 
  - **Is Omniverse Isaac-Sim supported on NCv6?** <br>  
  
-    Yes, Omniverse Isaac-Sim 6.0 is supported on NCv6. 
+    Yes, [Omniverse Isaac-Sim 6.0](https://github.com/isaac-sim/IsaacSim) is supported on NCv6. 
 
 - **Why can I not see power nor thermal telemetry when I use `nvidia-smi` for NCv6?** <br>  
 
