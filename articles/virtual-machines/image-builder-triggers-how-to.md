@@ -21,7 +21,7 @@ You can use triggers in Azure Image Builder (AIB) to enable automatic image crea
 > There's a limit of 100 triggers per region per subscription.
 
 > [!NOTE]
-> To prevent unnecessary build failures, automatic image creation via triggers is deactivated if the image template build fails multiple times consecutively (either manually or automatically triggered). You can still manually build the image template, and once a manual build succeeds, the automatic triggers are reactivated.
+> To prevent unnecessary build failures, automatic image creation through triggers is deactivated if the image template build fails multiple times consecutively (either manually or automatically triggered). You can still manually build the image template. Once a manual build succeeds, the automatic triggers are reactivated.
 
 ## Prerequisites
 
