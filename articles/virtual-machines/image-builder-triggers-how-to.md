@@ -31,7 +31,7 @@ Before setting up your first trigger, ensure you're using Azure Image Builder AP
 
 ### Register the providers
 
-To use VM Image Builder with triggers, you need to register the following providers. Check your registration by running these commands:
+To use VM Image Builder with triggers, register the following providers. Check your registration by running these commands:
 
 ```azurecli-interactive
 az provider show -n Microsoft.VirtualMachineImages -o json | grep registrationState
