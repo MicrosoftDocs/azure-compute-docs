@@ -8,7 +8,7 @@ ms.service: azure-virtual-machine-scale-sets
 ms.subservice: maintenance-control
 ms.date: 05/19/2026
 ms.update-cycle: 180-days
-ms.reviewer: cynthn
+ms.reviewer: wwilliams
 ms.custom: portal
 # Customer intent: "As an IT administrator managing Virtual Machine Scale Sets, I want to receive notifications and initiate self-service maintenance, so that I can control the maintenance timing and minimize downtime for my workloads during planned updates."
 ---

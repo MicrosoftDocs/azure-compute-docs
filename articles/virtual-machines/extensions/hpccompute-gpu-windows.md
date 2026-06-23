@@ -8,8 +8,8 @@ ms.collection: windows
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows
 ms.date: 07/25/2024
-ms.author: cynthn
-author: cynthn
+ms.author: wwilliams
+author: iamwilliew
 ms.custom:
   - devx-track-arm-template
   - sfi-image-nochange

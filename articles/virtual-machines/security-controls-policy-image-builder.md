@@ -5,7 +5,7 @@ ms.date: 02/06/2024
 ms.topic: sample
 author: kof-f
 ms.author: kofiforson
-ms.reviewer: cynthn
+ms.reviewer: wwilliams
 ms.service: azure-virtual-machines
 ms.subservice: image-builder
 ms.custom: subject-policy-compliancecontrols

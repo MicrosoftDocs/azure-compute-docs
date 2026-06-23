@@ -7,9 +7,8 @@ ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: management
 ms.date: 05/19/2026
-ms.reviewer: cynthn
-ms.custom: mimckitt
-
+ms.reviewer: wwilliams
+ms.custom: mimckitt 
 # Customer intent: As a cloud administrator, I want to understand the naming conventions and instance IDs for Virtual Machine Scale Set VMs, so that I can manage and operate specific VMs efficiently within the scale set.
 ---
 # Understand names and instance IDs for Azure Virtual Machine Scale Set VMs

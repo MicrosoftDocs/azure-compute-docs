@@ -9,8 +9,8 @@ ms.collection: linux
 ms.topic: concept-article
 ms.tgt_pltfrm: vm-linux
 ms.date: 06/30/2025
-ms.author: cynthn
-author: cynthn
+ms.author: wwilliams
+author: iamwilliew
 ms.custom:
   - linux-related-content
   - sfi-image-nochange

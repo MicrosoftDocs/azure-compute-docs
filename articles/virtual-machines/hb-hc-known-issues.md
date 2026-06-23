@@ -6,7 +6,7 @@ ms.subservice: hpc
 ms.custom: linux-related-content
 ms.topic: troubleshooting
 ms.date: 05/04/2026
-ms.reviewer: cynthn
+ms.reviewer: wwilliams
 ms.author: padmalathas
 author: padmalathas
 # Customer intent: "As a cloud administrator managing HPC and GPU VMs, I want to troubleshoot known issues and implement solutions, so that I can ensure optimal performance and reliability of my virtual machine workloads."

@@ -6,7 +6,7 @@ ms.author: mimckitt
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
 ms.date: 05/19/2026
-ms.reviewer: cynthn
+ms.reviewer: wwilliams
 ms.custom:
   - upgradepolicy
   - maxsurge

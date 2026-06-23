@@ -145,9 +145,9 @@
       "author": {
         "articles/container-instances/**/*.md": "macolso",
         "articles/service-fabric/*.md": "sukanyamsft",
-        "articles/virtual-machines/*.md": "cynthn",
-        "articles/virtual-machines/linux/*.md": "cynthn",
-        "articles/virtual-machines/windows/*.md": "cynthn",
+        "articles/virtual-machines/*.md": "iamwilliew",
+        "articles/virtual-machines/linux/*.md": "iamwilliew",
+        "articles/virtual-machines/windows/*.md": "iamwilliew",
 		"articles/virtual-machines/sizes/**/*.yml": "mattmcinnes",
 		"articles/virtual-machines/sizes/**/*.md": "mattmcinnes"
       },
@@ -192,27 +192,27 @@
         "articles/virtual-machine-scale-sets/**/*.yml": "rayoflores"
       },
       "ms.reviewer": {
-        "articles/azure-impact-reporting/**/*.md": "wwilliams, cynthn",
-        "articles/container-instances/**/*.md": "wwilliams, cynthn",
-        "articles/service-fabric/**/*.md": "wwilliams, cynthn",
-        "articles/virtual-machines/**/*.md": "wwilliams, cynthn",
-        "articles/virtual-machine-scale-sets/**/*.md": "wwilliams, cynthn",
-        "articles/azure-impact-reporting/**/*.yml": "wwilliams, cynthn",
-        "articles/container-instances/**/*.yml": "wwilliams, cynthn",
-        "articles/service-fabric/**/*.yml": "wwilliams, cynthn",
-        "articles/virtual-machines/**/*.yml": "wwilliams, cynthn",
-		"articles/virtual-machines/sizes/**/*.yml": "mattmcinnes, cynthn",
-		"articles/virtual-machines/sizes/**/*.md": "mattmcinnes, cynthn",
-        "articles/virtual-machine-scale-sets/**/*.yml": "wwilliams, cynthn"
+        "articles/azure-impact-reporting/**/*.md": "wwilliams",
+        "articles/container-instances/**/*.md": "wwilliams",
+        "articles/service-fabric/**/*.md": "wwilliams",
+        "articles/virtual-machines/**/*.md": "wwilliams",
+        "articles/virtual-machine-scale-sets/**/*.md": "wwilliams",
+        "articles/azure-impact-reporting/**/*.yml": "wwilliams",
+        "articles/container-instances/**/*.yml": "wwilliams",
+        "articles/service-fabric/**/*.yml": "wwilliams",
+        "articles/virtual-machines/**/*.yml": "wwilliams",
+		"articles/virtual-machines/sizes/**/*.yml": "mattmcinnes",
+		"articles/virtual-machines/sizes/**/*.md": "mattmcinnes",
+        "articles/virtual-machine-scale-sets/**/*.yml": "wwilliams"
       },      
       "ms.author": {
         "articles/container-instances/**/*.md": "macolso",
         "articles/service-fabric/*.md": "sukanyas",
-        "articles/virtual-machines/*.md": "cynthn",
+		"articles/virtual-machines/*.md": "wwilliams",
 		"articles/virtual-machines/sizes/**/*.yml": "mattmcinnes",
 		"articles/virtual-machines/sizes/**/*.md": "mattmcinnes",		  
-        "articles/virtual-machines/linux/*.md": "cynthn",
-        "articles/virtual-machines/windows/*.md": "cynthn"
+        "articles/virtual-machines/linux/*.md": "wwilliams",
+        "articles/virtual-machines/windows/*.md": "wwilliams"
       },   
       "ms.update-cycle": {
         "articles/container-instances/**/*.md": "365-days",

@@ -3,7 +3,7 @@ author: cynthnan
 ms.service: azure-virtual-machines
 ms.topic: include
 ms.date: 06/08/2023
-ms.author: cynthn
+ms.author: wwilliams
 # Customer intent: "As an IT administrator using the classic deployment model, I want to migrate my IaaS resources to Azure Resource Manager, so that I can leverage the latest features and avoid any service interruptions before the retirement date."
 ---
 

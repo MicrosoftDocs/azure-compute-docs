@@ -1,15 +1,14 @@
 ---
 title: Tutorial - Install applications in a scale set with Azure CLI
 description: Learn how to use the Azure CLI to install applications into Virtual Machine Scale Sets with the Custom Script Extension
-author: cynthn
-ms.author: cynthn
+author: iamwilliew
+ms.author: wwilliams
 ms.topic: tutorial
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: extensions
 ms.date: 05/19/2026
 ms.reviewer: mimckitt
-ms.custom: mimckitt, devx-track-azurecli
-
+ms.custom: mimckitt, devx-track-azurecli 
 # Customer intent: "As a cloud administrator, I want to automate application installations in Virtual Machine Scale Sets using scripts, so that I can efficiently manage and update multiple VM instances without manual intervention."
 ---
 # Tutorial: Install applications in Virtual Machine Scale Sets with the Azure CLI

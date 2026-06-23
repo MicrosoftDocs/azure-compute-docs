@@ -7,7 +7,7 @@ ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
 ms.date: 05/19/2026
 ms.update-cycle: 180-days
-ms.reviewer: cynthn
+ms.reviewer: wwilliams
 ms.custom:
   - mimckitt
   - vmss-flex

@@ -8,7 +8,7 @@ ms.custom:
   - ignite-2024
 ms.topic: how-to
 ms.date: 05/19/2026
-ms.reviewer: cynthn
+ms.reviewer: wwilliams
 # Customer intent: "As a cloud administrator, I want to retrieve details about my standby pool and its instances, so that I can monitor their status and ensure they are correctly provisioned within my virtual machine scale sets."
 ---
 

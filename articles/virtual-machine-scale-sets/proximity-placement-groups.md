@@ -1,15 +1,14 @@
 ---
 title: Proximity placement groups for Virtual Machine Scale Sets
 description: Learn about creating  proximity placement groups for Windows Virtual Machine Scale Sets in Azure. 
-author: cynthn
-ms.author: cynthn
+author: iamwilliew
+ms.author: wwilliams
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: proximity-placement-groups
 ms.date: 05/19/2026
 ms.reviewer: mimckitt
-ms.custom: cynthn, devx-track-azurepowershell
-
+ms.custom: devx-track-azurepowershell 
 # Customer intent: "As a cloud administrator, I want to create and manage proximity placement groups for Virtual Machine Scale Sets, so that I can ensure low latency and optimal performance for my applications deployed in Azure."
 ---
 
