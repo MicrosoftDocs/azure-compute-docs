@@ -5,7 +5,7 @@ author: iamwilliew
 ms.author: wwilliams
 ms.topic: tutorial
 ms.service: azure-virtual-machine-scale-sets
-ms.date: 05/19/2026
+ms.date: 06/24/2026
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
 # Customer intent: "As a cloud architect, I want to manage Virtual Machine Scale Sets using the command line, so that I can efficiently create, scale, and control the lifecycle of virtual machine instances to meet application demands."
@@ -78,7 +78,7 @@ az vm show --resource-group myResourceGroup --name myScaleSet_instance1
 ```output
 {
   "hardwareProfile": {
-    "vmSize": "Standard_DS1_v2",
+    "vmSize": "Standard_D2s_v5",
   },
   "id": "/subscriptions/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myScaleSet_instance1",
   "location": "eastus",
@@ -154,7 +154,7 @@ az vm show --resource-group myResourceGroup --name myScaleSet_instance1
 
 
 ## Create a scale set with a specific VM instance size
-When you created a scale set at the start of the tutorial, a default VM SKU of *Standard_D1_v2* was provided for the VM instances. You can specify a different VM instance size based on the output from [az vm list-sizes](/cli/azure/vm). The following example would create a scale set with the `--vm-sku` parameter to specify a VM instance size of *Standard_F1*. As it takes a few minutes to create and configure all the scale set resources and VM instances, you don't have to deploy the following scale set:
+When you created a scale set at the start of the tutorial, Azure CLI used the default VM SKU for the current cloud because you didn't specify `--vm-sku`. In Azure public clouds, that default is *Standard_D2s_v5*. In AzureUSGovernment, the default remains *Standard_D1_v2*. You can specify a different VM instance size based on the output from [az vm list-sizes](/cli/azure/vm). The following example creates a scale set with the `--vm-sku` parameter to specify a VM instance size of *Standard_F1*. As it takes a few minutes to create and configure all the scale set resources and VM instances, you don't have to deploy the following scale set:
 
 ```azurecli-interactive
 az vmss create \

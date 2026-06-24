@@ -4,7 +4,7 @@ description: Learn how to use the Azure CLI to find image URNs and purchase plan
 ms.service: azure-virtual-machines
 ms.subservice: imaging
 ms.topic: how-to
-ms.date: 02/09/2023
+ms.date: 06/24/2026
 author: ebolton-cyber
 ms.author: mattmcinnes
 ms.collection: linux
@@ -39,18 +39,22 @@ If the image publisher provides extra license and purchase terms, then you must 
 
 ## List popular images
 
-You can run the [az vm image list --all](/cli/azure/vm/image) to see all of the images available to you, but it can take several minutes to produce the entire list. A faster option is the use `az vm image list`, without the `--all` option, to see a list of popular VM images in the Azure Marketplace. For example, run the following command to display a cached list of popular images in table format:
+Run [az vm image list --all](/cli/azure/vm/image) to see all the images available to you, but it can take several minutes to produce the entire list. A faster option is to use `az vm image list`, without the `--all` option, to see a cached list of popular VM images in the Azure Marketplace. For example, run the following command to display the list in table format:
 
 ```azurecli
 az vm image list --output table
 ```
 
-The output includes the image URN. If you omit the `--all` option, you can see the *UrnAlias* for each image, if available. *UrnAlias* is a shortened version created for popular images like *Ubuntu2204*.
-The Linux image alias names and their details outputted by this command are:
+The output includes the image URN. If you omit the `--all` option, the results can also include *UrnAlias* values for popular images, such as *Ubuntu2204*. The exact cached list varies by Azure CLI version and cloud.
+
+The following non-exhaustive example shows some Linux image aliases returned by Azure CLI 2.87.0, including Azure Linux 4.0 aliases:
 
 ```output
 Architecture    Offer                         Publisher               Sku                                 Urn                                                                             UrnAlias                 Version
 --------------  ----------------------------  ----------------------  ----------------------------------  ------------------------------------------------------------------------------  -----------------------  ---------
+x64             azurelinux-4                  microsoftazurelinux     4                                   microsoftazurelinux:azurelinux-4:4:latest                                       AzureLinux4              latest
+Arm64           azurelinux-4                  microsoftazurelinux     4-arm64                             microsoftazurelinux:azurelinux-4:4-arm64:latest                                 AzureLinux4Arm64         latest
+x64             azurelinux-4                  microsoftazurelinux     4-gen1                              microsoftazurelinux:azurelinux-4:4-gen1:latest                                  AzureLinux4Gen1          latest
 x64             CentOS                        OpenLogic               8_5-gen2                            OpenLogic:CentOS:8_5-gen2:latest                                                CentOS85Gen2             latest
 x64             Debian11                      Debian                  11-backports-gen2                   Debian:debian-11:11-backports-gen2:latest                                       Debian-11                latest
 x64             flatcar-container-linux-free  kinvolk                 stable-gen2                         kinvolk:flatcar-container-linux-free:stable-gen2:latest                         FlatcarLinuxFreeGen2     latest
@@ -60,7 +64,7 @@ x64             sles-15-sp3                   SUSE                    gen2      
 x64             0001-com-ubuntu-server-jammy  Canonical               22_04-lts-gen2                      Canonical:0001-com-ubuntu-server-jammy:22_04-lts-gen2:latest                    Ubuntu2204               latest
 ```
 
-The Windows image alias names and their details outputted by this command are:
+The following Windows image aliases are another non-exhaustive example of what this command can return:
 
 ```output
 Architecture    Offer                         Publisher               Sku                                 Urn                                                                            Alias                    Version
