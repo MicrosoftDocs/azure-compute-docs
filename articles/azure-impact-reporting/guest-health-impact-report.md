@@ -143,7 +143,7 @@ When you submit a Guest Health Reporting impact, the REST API response indicates
 | 429 | TooManyRequests | The request was rate limited. Retry later by using exponential backoff. |
 
 > [!NOTE]
-> A successful response confirms that the request was received and processed by the API. Continue to [query workload impact insights](#list-insights-for-a-workload-impact) to track downstream evaluation and actions.
+> A successful response confirms that the API received and processed the request. To track downstream evaluation and actions, continue to [query workload impact insights](#list-insights-for-a-workload-impact).
 
 ## Additional HPC properties
 
