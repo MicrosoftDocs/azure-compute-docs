@@ -18,9 +18,13 @@ Azure Service Fabric node types, by default, use the temporary disk on each virt
 This article provides the steps for how to use native support from Service Fabric to configure and use managed data disks as the default data path. Service Fabric will automatically configure managed data disks at node type creation and handle situations where VMs or the virtual machine scale set is reimaged.
 
 > [!IMPORTANT]
-> Service Fabric managed data disk support doesn't initialize NVMe disks on VM SKUs that use NVMe-based storage (for example, v6 and newer SKUs). For these SKUs, initialize and format the managed disk yourself by using a Custom Script Extension.
+> VMSS `_v6` SKU sizes introduce [NVMe disks](/azure/virtual-machines/nvme-overview), which replace the older SCSI-based protocol for disk storage. This change affects disk characteristics and can break existing disk initialization logic for both managed data disks and temporary disks. As a result, required partitions or file systems might not be created, and Service Fabric node bootstrap can stall.
 >
-> If you use the temporary disk for `dataPath` and the VM SKU uses an NVMe temporary disk, you must also initialize and format that disk yourself. For more information, see [Enable NVMe interface on your VMs and VM scale sets (FAQ)](https://learn.microsoft.com/en-us/azure/virtual-machines/enable-nvme-temp-faqs).
+> Service Fabric managed data disk support doesn't initialize NVMe disks automatically. You must initialize and format NVMe disks yourself by using a Custom Script Extension, including when you use the temporary disk for `dataPath`.
+>
+> Although NVMe disks are commonly associated with `_v6` SKUs, some earlier or non-v6 series also use NVMe. For example, [Fxmsv2-series](/azure/virtual-machines/sizes/compute-optimized/fxmsv2-series?tabs=sizebasic#feature-support) uses NVMe-based local storage. Any VM SKU with NVMe disks is subject to the same initialization considerations in this article. For more information, see [Enable NVMe interface on your VMs and VM scale sets (FAQ)](/azure/virtual-machines/enable-nvme-temp-faqs).
+>
+> [Service Fabric managed clusters](/azure/service-fabric/overview-managed-cluster) support NVMe scenarios. If you want a simpler managed experience for NVMe-based SKUs, consider migrating to Service Fabric managed clusters.
 
 ## Prerequisites
 

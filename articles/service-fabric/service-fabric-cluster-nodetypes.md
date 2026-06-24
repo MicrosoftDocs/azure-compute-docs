@@ -56,8 +56,6 @@ The following is a snippet of Service Fabric **Windows** Virtual Machine extensi
          "clusterEndpoint": "[reference(parameters('clusterName')).clusterEndpoint]",
          "nodeTypeRef": "[variables('vmNodeType0Name')]",
          "durabilityLevel": "Silver",
-         "enableParallelJobs": true,
-         "nicPrefixOverride": "[variables('subnet0Prefix')]",
          "dataPath": "D:\\\\SvcFab",
          "certificate": {
            "commonNames": [
@@ -89,8 +87,6 @@ The following is a snippet of Service Fabric **Linux** Virtual Machine extension
          "clusterEndpoint": "[reference(parameters('clusterName')).clusterEndpoint]",
          "nodeTypeRef": "[variables('vmNodeType0Name')]",
          "durabilityLevel": "Silver",
-         "enableParallelJobs": true,
-         "nicPrefixOverride": "[variables('subnet0Prefix')]",
          "certificate": {
            "commonNames": [
               "[parameters('certificateCommonName')]"
@@ -118,7 +114,7 @@ The following are the property descriptions:
 | nicPrefixOverride | string | Subnet Prefix like "10.0.0.0/24" |
 | commonNames | string[] | Common Names of installed cluster certificates |
 | x509StoreName | string | Name of Store where installed cluster certificate is located |
-| typeHandlerVersion | 1.1 (Windows) or 2.0 (Linux) | Version of Extension. 1.0 classic versions of extension are recommended to upgrade to 1.1 |
+| typeHandlerVersion | 1.1 (Windows) or 2.0 (Linux) | Version of extension. Upgrade is required: older versions are no longer supported. For Linux, use 2.0 with `enableAutomaticUpgrade` set to `true`. |
 | dataPath | string | Path to the drive used to save state for Service Fabric system services and application data.
 
 ## Next steps
