@@ -3,7 +3,7 @@ author: cynthnan
 ms.service: azure-virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
-ms.author: cynthn
+ms.author: wwilliams
 # Customer intent: "As a cloud administrator, I want to migrate my virtual machines during scheduled maintenance, so that I can ensure minimal disruption and properly manage any changes, including IP address updates and agent requirements."
 ---
 

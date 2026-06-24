@@ -3,7 +3,7 @@ title: Enable Trusted launch on existing Gen2 VMs
 description: Learn how to enable Trusted launch on existing Azure Gen2 virtual machines (VMs).
 author: AjKundnani
 ms.author: ajkundna
-ms.reviewer: cynthn
+ms.reviewer: wwilliams
 ms.service: azure-virtual-machines
 ms.subservice: trusted-launch
 ms.topic: how-to

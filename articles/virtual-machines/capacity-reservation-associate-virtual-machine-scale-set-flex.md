@@ -6,7 +6,7 @@ ms.author: bidefore
 ms.service: azure-virtual-machines
 ms.topic: how-to
 ms.date: 11/22/2022
-ms.reviewer: cynthn, jushiman
+ms.reviewer: jushiman
 ms.custom: template-how-to
 # Customer intent: As a cloud engineer, I want to associate a virtual machine scale set using Flexible Orchestration to a capacity reservation group, so that I can efficiently manage resource allocation for my deployed VMs and ensure optimal performance.
 ---

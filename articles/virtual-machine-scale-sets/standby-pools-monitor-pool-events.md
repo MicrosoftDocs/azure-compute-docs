@@ -8,7 +8,7 @@ ms.topic: how-to
 ms.date: 05/19/2026
 ms.update-cycle: 180-days
 ms.custom: portal
-ms.reviewer: cynthn
+ms.reviewer: wwilliams
 # Customer intent: As an IT administrator managing Virtual Machine Scale Sets, I want to configure Azure Log Analytics to monitor events from standby pools, so that I can track metrics, analyze trends, and receive alerts for critical operational issues.
 ---
 

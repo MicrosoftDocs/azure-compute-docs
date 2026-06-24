@@ -7,9 +7,8 @@ ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: shared-image-gallery
 ms.date: 05/19/2026
-ms.reviewer: cynthn
-ms.custom: devx-track-azurecli
-
+ms.reviewer: wwilliams
+ms.custom: devx-track-azurecli 
 # Customer intent: As a cloud architect, I want to create scale sets using images shared across Azure tenants with an app registration, so that I can efficiently manage and deploy virtual machines in a multi-tenant environment.
 ---
 # Share images across tenants using an app registration

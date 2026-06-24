@@ -6,7 +6,7 @@ ms.service: azure-virtual-machines
 ms.subservice: hpc
 ms.topic: concept-article
 ms.date: 05/05/2026
-ms.reviewer: cynthn
+ms.reviewer: wwilliams
 ms.author: padmalathas
 author: padmalathas
 # Customer intent: As a cloud architect, I want to understand the architecture and specifications of the HBv4-series virtual machines, so that I can select the optimal VM size for my high-performance computing workloads.

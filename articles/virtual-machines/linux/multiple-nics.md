@@ -8,7 +8,7 @@ ms.topic: how-to
 ms.custom: devx-track-azurecli, linux-related-content
 ms.date: 04/06/2023
 ms.author: mattmcinnes
-ms.reviewer: cynthn
+ms.reviewer: wwilliams
 # Customer intent: "As a cloud engineer, I want to create a Linux VM with multiple network interface cards, so that I can efficiently manage traffic between different subnets and enhance network performance."
 ---
 

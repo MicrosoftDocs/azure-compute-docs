@@ -7,7 +7,7 @@ ms.topic: concept-article
 ms.service: azure-virtual-machines
 ms.subservice: flexible-scale-sets
 ms.date: 05/19/2026
-ms.reviewer: cynthn
+ms.reviewer: wwilliams
 ms.custom: mimckitt, devx-track-azurecli, vmss-flex
 # Customer intent: As a cloud administrator, I want to migrate existing virtual machine deployments to Flexible orchestration mode in Virtual Machine Scale Sets, so that I can enhance scalability and ensure better fault tolerance in my infrastructure.
 ---

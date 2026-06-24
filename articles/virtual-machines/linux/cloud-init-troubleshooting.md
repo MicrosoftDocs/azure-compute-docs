@@ -6,7 +6,7 @@ ms.service: azure-virtual-machines
 ms.topic: troubleshooting
 ms.date: 12/15/2025
 ms.author: mattmcinnes
-ms.reviewer: cynthn
+ms.reviewer: wwilliams
 ms.subservice: cloud-init
 ms.custom: linux-related-content
 # Customer intent: As a cloud administrator, I want to troubleshoot VM provisioning failures using cloud-init, so that I can ensure successful deployment and configuration of Linux VMs in the cloud.

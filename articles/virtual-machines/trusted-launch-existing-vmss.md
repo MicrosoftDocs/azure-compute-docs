@@ -3,7 +3,7 @@ title: Enable Trusted launch on existing Uniform scale set
 description: Enable Trusted launch on existing Uniform scale set
 author: AjKundnani
 ms.author: ajkundna
-ms.reviewer: cynthn
+ms.reviewer: wwilliams
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: trusted-launch
 ms.topic: how-to

@@ -2,15 +2,14 @@
 title: Use scale-in policies with Azure Virtual Machine Scale Sets
 description: Learn how to use scale-in policies with Azure Virtual Machine Scale Sets that use autoscale configuration to manage instance count
 services: virtual-machine-scale-sets
-author: cynthn
-ms.author: cynthn
+author: iamwilliew
+ms.author: wwilliams
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: scale-in-policy
 ms.date: 05/19/2026
 ms.reviewer: mimckitt
-ms.custom: avverma, devx-track-azurecli, devx-track-azurepowershell
-
+ms.custom: avverma, devx-track-azurecli, devx-track-azurepowershell 
 # Customer intent: As a cloud administrator, I want to configure scale-in policies for Virtual Machine Scale Sets, so that I can control which instances are deleted during scaling operations based on workload demands and instance configurations.
 ---
 

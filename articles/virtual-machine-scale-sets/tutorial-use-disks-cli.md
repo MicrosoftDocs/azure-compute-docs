@@ -1,15 +1,14 @@
 ---
 title: Tutorial - Create and use disks for scale sets with Azure CLI
 description: Learn how to use the Azure CLI to create and use managed disks with Virtual Machine Scale Set. Including how to add, prepare, list, and detach disks.
-author: cynthn
-ms.author: cynthn
+author: iamwilliew
+ms.author: wwilliams
 ms.topic: tutorial
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: disks
 ms.date: 05/19/2026
 ms.reviewer: mimckitt
-ms.custom: mimckitt, devx-track-azurecli
-
+ms.custom: mimckitt, devx-track-azurecli 
 # Customer intent: As a cloud engineer, I want to create and manage disks for Virtual Machine Scale Sets using the command line interface, so that I can effectively handle the storage requirements of my applications and optimize disk performance for varying workloads.
 ---
 # Tutorial: Create and use disks with Virtual Machine Scale Set with the Azure CLI

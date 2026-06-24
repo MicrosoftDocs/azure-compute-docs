@@ -7,7 +7,7 @@ ms.service: azure-virtual-machines
 ms.subservice: hpc
 ms.topic: concept-article
 ms.date: 05/04/2026
-ms.reviewer: cynthn
+ms.reviewer: wwilliams
 ms.author: padmalathas
 author: padmalathas
 ai-usage: ai-assisted

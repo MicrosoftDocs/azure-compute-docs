@@ -7,9 +7,8 @@ ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: availability
 ms.date: 05/19/2026
-ms.reviewer: cynthn
-ms.custom: mimckitt, devx-track-azurecli
-
+ms.reviewer: wwilliams
+ms.custom: mimckitt, devx-track-azurecli 
 # Customer intent: As an IT administrator managing cloud resources, I want to select the appropriate number of fault domains for my Virtual Machine Scale Set, so that I can ensure high availability and minimize the risk of downtime due to hardware failures.
 ---
 # Choosing the right number of fault domains for Virtual Machine Scale Set

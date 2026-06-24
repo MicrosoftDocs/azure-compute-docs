@@ -9,7 +9,7 @@ ms.collection: linux
 ms.topic: overview
 ms.date: 04/07/2023
 ms.author: mathapli
-ms.reviewer: cynthn
+ms.reviewer: wwilliams
 # Customer intent: "As a system administrator, I want to access the available Red Hat Enterprise Linux images in the Azure Marketplace, so that I can choose the appropriate images and licensing options for deploying Linux virtual machines in my environment."
 ---
 
