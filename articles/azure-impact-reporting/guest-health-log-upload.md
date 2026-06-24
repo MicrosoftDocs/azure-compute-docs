@@ -65,7 +65,7 @@ This contains several key pieces of information. Using the above return value as
 -	The destination account: ghrloguploadprod
 -	The destination container: hpcdemo
 -	The suggested file name: 20260323194745_99e980b9.gz
-    - Notice that the returned file name consists of:
+    - The returned file name consists of:
         - The current UTC date and time formatted as a 14-character string: four-digit year, two-digit month, two-digit day, two-digit hour, two-digit minute, two-digit second (for example, 20260323194745)
         - An underscore, followed by a random suffix of eight hexadecimal characters. (_99e980b9)
         - The suggested file type (.gz)
