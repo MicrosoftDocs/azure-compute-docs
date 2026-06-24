@@ -6,6 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
+ai-usage: ai-assisted
 ms.date: 03/22/2026
 # Customer intent: As a cloud architect, I want to configure Azure Service Fabric node types with managed data disks, so that I can ensure persistent and scalable data storage for my applications.
 ---
@@ -15,6 +16,11 @@ ms.date: 03/22/2026
 Azure Service Fabric node types, by default, use the temporary disk on each virtual machine (VM) in the underlying virtual machine scale set for data storage. However, because the temporary disk isn't persistent, and the size of the temporary disk is bound to a given VM SKU, this can be too restrictive for some scenarios. 
 
 This article provides the steps for how to use native support from Service Fabric to configure and use managed data disks as the default data path. Service Fabric will automatically configure managed data disks at node type creation and handle situations where VMs or the virtual machine scale set is reimaged.
+
+> [!IMPORTANT]
+> Service Fabric managed data disk support doesn't initialize NVMe disks on VM SKUs that use NVMe-based storage (for example, v6 and newer SKUs). For these SKUs, initialize and format the managed disk yourself by using a Custom Script Extension.
+>
+> If you use the temporary disk for `dataPath` and the VM SKU uses an NVMe temporary disk, you must also initialize and format that disk yourself. For more information, see [Enable NVMe interface on your VMs and VM scale sets (FAQ)](https://learn.microsoft.com/en-us/azure/virtual-machines/enable-nvme-temp-faqs).
 
 ## Prerequisites
 
