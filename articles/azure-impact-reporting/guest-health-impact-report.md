@@ -131,6 +131,20 @@ timeout 100 gcc -o /root/scripts/GPU/kvp_client /root/scripts/GPU/kvp_client.c
 timeout 60 sudo /root/scripts/GPU/kvp_client | grep "PhysicalHostName;" | awk '{print$4}' | tee PhysicalHostName.txt
 ```
 
+## HTTP Response Status Codes for Impact Creation
+
+When you submit a Guest Health Reporting impact, the REST API response indicates whether the request was accepted, not whether a repair action will occur.
+
+| HTTP Status | Code | Description |
+|---|---|---|
+| 200 | OK | The impact submission was accepted. This status does not guarantee that Azure will perform a repair action. |
+| 4xx | Code can vary depending on the failure | The impact failed validation. Refer to the response `message` field to confirm the reason for the failure. |
+| 404 | NotFound | The impacted resource was not found. Verify the resource provided as part of `additionalProperties` exists. |
+| 429 | TooManyRequests | The request was rate limited. Retry later by using exponential backoff. |
+
+> [!NOTE]
+> A successful response confirms that the request was received and processed by the API. Continue to [query workload impact insights](#list-insights-for-a-workload-impact) to track downstream evaluation and actions.
+
 ## Additional HPC properties
 
 To aid Guest Health Reporting in taking the correct action, you can provide more information about the issue by using the `additionalProperties` field for high-performance computing (HPC).
