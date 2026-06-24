@@ -198,6 +198,8 @@
         href: service-fabric-reliable-services-reliable-collections.md
       - name: Reliable Collection guidelines & recommendations
         href: service-fabric-reliable-services-reliable-collections-guidelines.md
+      - name: Reliable Collections Throttling Guidelines
+        href: service-fabric-reliable-services-reliable-collections-throttling-guidelines.md
       - name: Working with Reliable Collections
         href: service-fabric-work-with-reliable-collections.md
       - name: Transactions and locks
