@@ -6,9 +6,8 @@ ms.author: mimckitt
 ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
 ms.date: 05/19/2026
-ms.reviewer: cynthn
-ms.custom: mimckitt
-
+ms.reviewer: wwilliams
+ms.custom: mimckitt 
 # Customer intent: As a cloud architect, I want to create a basic scale set template for virtual machines, so that I can efficiently deploy and manage scalable applications in the cloud.
 ---
 

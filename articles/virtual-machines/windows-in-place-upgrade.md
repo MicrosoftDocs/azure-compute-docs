@@ -2,11 +2,11 @@
 title: Windows in-place upgrade
 description: This article describes how to do an in-place upgrade for VMs running Windows Server in Azure.
 services: virtual-machines
-author: cynthn
+author: iamwilliew
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
 ms.date: 07/30/2025
-ms.author: cynthn
+ms.author: wwilliams
 # Customer intent: As a system administrator, I want to perform an in-place upgrade of Windows Server VMs in Azure, so that I can update the operating system while preserving settings, roles, and data without needing to recreate the VM.
 ---
 

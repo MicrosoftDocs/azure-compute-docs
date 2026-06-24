@@ -8,7 +8,7 @@ ms.custom: linux-related-content
 ms.collection: linux
 ms.topic: how-to
 ms.date: 01/22/2026
-ms.reviewer: cynthn
+ms.reviewer: wwilliams
 # Customer intent: "As a cloud engineer, I want to create and upload a Flatcar Container Linux VHD for Azure, so that I can deploy optimized virtual machines tailored to my containerized applications."
 ---
 # Using a prebuilt Flatcar image for Azure

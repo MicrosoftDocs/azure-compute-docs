@@ -7,7 +7,7 @@ ms.topic: overview
 ms.service: azure-virtual-machine-scale-sets
 ms.custom: devx-track-azurecli
 ms.date: 05/19/2026
-ms.reviewer: cynthn
+ms.reviewer: wwilliams
 # Customer intent: As an IT administrator, I want to attach or detach virtual machines to or from a Virtual Machine Scale Set so that I can manage resources effectively and optimize scaling based on workload demands.
 ---
 

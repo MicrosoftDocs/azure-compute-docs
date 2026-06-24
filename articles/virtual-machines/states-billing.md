@@ -8,7 +8,7 @@ ms.subservice: billing
 ms.topic: concept-article
 ms.date: 10/31/2023
 ms.author: mimckitt
-ms.reviewer: cynthn, mattmcinnes
+ms.reviewer: mattmcinnes
 ms.custom: kr2b-contr-experiment
 # Customer intent: "As a cloud administrator, I want to understand the provisioning and power states of virtual machines, so that I can effectively manage resources and optimize billing based on their usage."
 ---

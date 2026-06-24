@@ -7,7 +7,7 @@ ms.service: azure-virtual-machines
 ms.subservice: hpc
 ms.topic: concept-article
 ms.date: 05/04/2026
-ms.reviewer: cynthn
+ms.reviewer: wwilliams
 ms.author: padmalathas
 author: padmalathas
 # Customer intent: As an HPC architect, I want to understand the HBv3-series VM architecture and specifications, so that I can determine the best VM size for my high-performance computing workloads and optimize resource allocation.

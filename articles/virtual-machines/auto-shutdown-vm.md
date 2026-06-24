@@ -1,8 +1,8 @@
 ---
 title: Auto-shutdown a VM
 description: Learn how to set up auto-shutdown for VMs in Azure.
-author: cynthn
-ms.author: cynthn
+author: iamwilliew
+ms.author: wwilliams
 ms.service: azure-virtual-machines
 ms.topic: how-to
 ms.custom: mvc, devx-track-azurecli, portal

@@ -4,7 +4,7 @@ description: Learn how to troubleshoot problems with shared images in Azure Comp
 ms.service: azure-virtual-machines
 author: sandeepraichura
 ms.author: saraic
-ms.reviewer: cynthn, mattmcinnes
+ms.reviewer: mattmcinnes
 ms.subservice: gallery
 ms.topic: troubleshooting
 ms.date: 02/28/2023

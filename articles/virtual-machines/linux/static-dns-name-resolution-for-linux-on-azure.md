@@ -8,7 +8,7 @@ ms.custom: devx-track-azurecli, linux-related-content
 ms.topic: how-to
 ms.date: 04/06/2023
 ms.author: mattmcinnes
-ms.reviewer: cynthn
+ms.reviewer: wwilliams
 # Customer intent: "As a cloud administrator, I want to configure internal DNS for virtual network interface cards on Azure, so that I can ensure reliable name resolution for essential services like Jenkins and Git servers within my infrastructure."
 ---
 

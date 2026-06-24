@@ -5,7 +5,7 @@ services: automation
 ms.service: azure-virtual-machines
 ms.collection: windows
 author: GabstaMSFT
-ms.author: cynthn
+ms.author: wwilliams
 ms.date: 08/18/2025
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell, devx-track-azurecli

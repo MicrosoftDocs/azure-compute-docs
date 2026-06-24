@@ -6,7 +6,7 @@ ms.author: brittanyrowe
 ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
 ms.date: 05/19/2026
-ms.reviewer: cynthn
+ms.reviewer: wwilliams
 # Customer intent: As a cloud administrator, I want to create a virtual machine scale set using instance mix, so that I can optimize resource allocation with different VM sizes based on my application requirements.
 ---
 

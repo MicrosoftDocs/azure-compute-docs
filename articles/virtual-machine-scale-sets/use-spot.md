@@ -1,15 +1,14 @@
 ---
 title: Create a scale set that uses Azure Spot Virtual Machines 
 description: Learn how to create Azure Virtual Machine Scale Sets that use Azure Spot Virtual Machines to save on costs.
-author: cynthn
-ms.author: cynthn
+author: iamwilliew
+ms.author: wwilliams
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: azure-spot-vm
 ms.date: 05/19/2026
 ms.reviewer: mimckitt
-ms.custom: devx-track-azurecli, devx-track-azurepowershell
-
+ms.custom: devx-track-azurecli, devx-track-azurepowershell 
 # Customer intent: As a cloud architect, I want to deploy Azure Spot Virtual Machines within scale sets, so that I can optimize costs for interruptible workloads while managing capacity fluctuations effectively.
 ---
 
