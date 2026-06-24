@@ -131,7 +131,7 @@ timeout 100 gcc -o /root/scripts/GPU/kvp_client /root/scripts/GPU/kvp_client.c
 timeout 60 sudo /root/scripts/GPU/kvp_client | grep "PhysicalHostName;" | awk '{print$4}' | tee PhysicalHostName.txt
 ```
 
-## HTTP Response Status Codes for Impact Creation
+## HTTP response status codes for impact creation
 
 When you submit a Guest Health Reporting impact, the REST API response indicates whether the request was accepted, not whether a repair action will occur.
 
