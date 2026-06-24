@@ -154,7 +154,7 @@ az vm show --resource-group myResourceGroup --name myScaleSet_instance1
 
 
 ## Create a scale set with a specific VM instance size
-When you created a scale set at the start of the tutorial, Azure CLI used the default VM SKU for the current cloud because `--vm-sku` wasn't specified. In Azure public clouds, that default is *Standard_D2s_v5*. In AzureUSGovernment, the default remains *Standard_D1_v2*. You can specify a different VM instance size based on the output from [az vm list-sizes](/cli/azure/vm). The following example would create a scale set with the `--vm-sku` parameter to specify a VM instance size of *Standard_F1*. As it takes a few minutes to create and configure all the scale set resources and VM instances, you don't have to deploy the following scale set:
+When you created a scale set at the start of the tutorial, Azure CLI used the default VM SKU for the current cloud because you didn't specify `--vm-sku`. In Azure public clouds, that default is *Standard_D2s_v5*. In AzureUSGovernment, the default remains *Standard_D1_v2*. You can specify a different VM instance size based on the output from [az vm list-sizes](/cli/azure/vm). The following example creates a scale set with the `--vm-sku` parameter to specify a VM instance size of *Standard_F1*. As it takes a few minutes to create and configure all the scale set resources and VM instances, you don't have to deploy the following scale set:
 
 ```azurecli-interactive
 az vmss create \

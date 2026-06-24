@@ -39,7 +39,7 @@ If the image publisher provides extra license and purchase terms, then you must 
 
 ## List popular images
 
-You can run [az vm image list --all](/cli/azure/vm/image) to see all the images available to you, but it can take several minutes to produce the entire list. A faster option is to use `az vm image list`, without the `--all` option, to see a cached list of popular VM images in the Azure Marketplace. For example, run the following command to display the list in table format:
+Run [az vm image list --all](/cli/azure/vm/image) to see all the images available to you, but it can take several minutes to produce the entire list. A faster option is to use `az vm image list`, without the `--all` option, to see a cached list of popular VM images in the Azure Marketplace. For example, run the following command to display the list in table format:
 
 ```azurecli
 az vm image list --output table
