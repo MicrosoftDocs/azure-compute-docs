@@ -113,9 +113,9 @@ sourceDiskSizeBytes=$(az disk show -g $sourceRG -n $sourceDiskName --query '[dis
 az disk create -g $targetRG -n $targetDiskName -l $targetLocation --os-type $targetOS --for-upload --upload-size-bytes $(($sourceDiskSizeBytes+512)) --sku standard_lrs
 
 # Generate SAS URIs for both disks
-targetSASURI=$(az disk grant-access -n $targetDiskName -g $targetRG --access-level Write --duration-in-seconds 86400 --query [accessSas] -o tsv)
+targetSASURI=$(az disk grant-access -n $targetDiskName -g $targetRG --access-level Write --duration-in-seconds 86400 --query [accessSAS] -o tsv)
 
-sourceSASURI=$(az disk grant-access -n $sourceDiskName -g $sourceRG --access-level Read --duration-in-seconds 86400 --query [accessSas] -o tsv)
+sourceSASURI=$(az disk grant-access -n $sourceDiskName -g $sourceRG --access-level Read --duration-in-seconds 86400 --query [accessSAS] -o tsv)
 
 # Copy the disk data using AzCopy
 azcopy copy $sourceSASURI $targetSASURI --blob-type PageBlob
