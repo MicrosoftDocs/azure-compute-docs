@@ -140,7 +140,7 @@ When you submit a Guest Health Reporting impact, the REST API response indicates
 | 200 | OK | The impact submission was accepted. This status doesn't guarantee that Azure performs a repair action. |
 | 4xx | Code can vary depending on the failure | The impact failed validation. Check the response `message` field to confirm the reason for the failure. |
 | 404 | NotFound | The impacted resource wasn't found. Verify the resource provided as part of `additionalProperties` exists. |
-| 429 | TooManyRequests | The request was rate limited. Retry later by using exponential backoff. |
+| 429 | TooManyRequests | The request was rate limited. Resubmit it later. |
 
 > [!NOTE]
 > A successful response suggests that the API received and processed the request. To track downstream evaluation and actions, continue to [query workload impact insights](#list-insights-for-a-workload-impact).
