@@ -78,7 +78,7 @@ The following table provides other inputs to help you to determine the appropria
 | Redundancy & Scale Targets | One-to-Many Multi-Zone and Multi-Region Replication                                                  |
 | Encryption   | Azure Key Vault based & bring your own encryption      |
 
-## Everpure Cloud: storage for Oracle on Azure VMs
+## Everpure Cloud: Storage for Oracle on Azure VMs
 
 [Everpure Cloud](https://www.everpuredata.com/products/cloud.html) is a block storage platform from Everpure built on the Purity OS, bringing enterprise data services including snapshots, clones, inline data reduction, and replication to Oracle workloads running in Azure. It is available in two deployment models:
 
@@ -89,7 +89,7 @@ Both models provide thin-provisioned iSCSI block storage with inline deduplicati
 
 Everpure Cloud supports standalone Oracle Database instances on Azure VMs, including Oracle Automatic Storage Management (ASM). Oracle Real Application Clusters (RAC) is not supported.
 
-The following table provides other inputs to help you to determine the appropriate disk type.
+The following table provides other inputs to help you determine the appropriate disk type.
 
 | Other parameters | Everpure Cloud Dedicated |
 |---|---|
