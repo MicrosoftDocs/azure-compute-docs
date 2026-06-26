@@ -78,6 +78,26 @@ The following table provides other inputs to help you to determine the appropria
 | Redundancy & Scale Targets | One-to-Many Multi-Zone and Multi-Region Replication                                                  |
 | Encryption   | Azure Key Vault based & bring your own encryption      |
 
+## Everpure Cloud: Storage for Oracle on Azure VMs
+
+[Everpure Cloud](https://www.everpuredata.com/products/cloud.html) is a block storage platform from Everpure built on the Purity OS. It brings enterprise data services, including snapshots, clones, inline data reduction, and replication, to Oracle workloads running in Azure. It's available in two deployment models:
+
+- **Everpure Cloud Azure Native** is a jointly developed [Azure Native Integration](/azure/partner-solutions/pure-storage/overview). You provision and manage it through the Azure portal. Microsoft bills you for it, and it's MACC-eligible.
+- **Everpure Cloud Dedicated** is a customer-managed deployment available through the [Azure Marketplace](https://azuremarketplace.microsoft.com) that supports Azure VMs and Azure VMware Solution.
+
+Both models provide thin-provisioned iSCSI block storage with inline deduplication and compression averaging 5:1 data reduction. Everpure Cloud Dedicated additionally supports NVMe/TCP, SafeMode immutable snapshots, and the full replication portfolio described in the following section.
+
+Everpure Cloud supports standalone Oracle Database instances on Azure VMs, including Oracle Automatic Storage Management (ASM). Oracle Real Application Clusters (RAC) isn't supported.
+
+The following table provides other inputs to help you determine the appropriate disk type.
+
+| Other parameters | Everpure Cloud Dedicated |
+|---|---|
+| Provisioning Model | Thin provisioned; inline deduplication and compression (average 5:1 data reduction); independently scalable capacity and performance |
+| BCDR | SafeMode immutable snapshots; asynchronous replication (periodic); ActiveDR (continuous, near-zero RPO); ActiveCluster (synchronous, zero RPO); CloudSnap offload to cloud targets |
+| Redundancy & Scale Targets | ActiveCluster synchronous replication across availability zones; asynchronous replication across regions; non-disruptive scale-up and scale-out |
+| Encryption | Always-on encryption; Azure Key Vault key for Purity-level encryption; Microsoft platform key for at-rest encryption |
+
 ## Next steps
 - [Migrate Oracle workload to Azure VMs (IaaS)](oracle-migration.md)
 - [Performance best practices for Oracle on Azure VMs](oracle-performance-best-practice.md)
