@@ -195,17 +195,21 @@
       - name: Replica and instance lifecycle
         href: service-fabric-concepts-replica-lifecycle.md
       - name: Reliable Collections
-        href: service-fabric-reliable-services-reliable-collections.md
-      - name: Reliable Collection guidelines & recommendations
-        href: service-fabric-reliable-services-reliable-collections-guidelines.md
-      - name: Working with Reliable Collections
-        href: service-fabric-work-with-reliable-collections.md
-      - name: Transactions and locks
-        href: service-fabric-reliable-services-reliable-collections-transactions-locks.md
-      - name: Reliable Concurrent Queue
-        href: service-fabric-reliable-services-reliable-concurrent-queue.md
-      - name: Reliable Collection serialization
-        href: service-fabric-reliable-services-reliable-collections-serialization.md
+        items:
+        - name: Reliable Collections
+          href: service-fabric-reliable-services-reliable-collections.md
+        - name: Reliable Collection guidelines & recommendations
+          href: service-fabric-reliable-services-reliable-collections-guidelines.md
+        - name: Reliable Collections Throttling Guidelines
+          href: service-fabric-reliable-services-reliable-collections-throttling-guidelines.md
+        - name: Working with Reliable Collections
+          href: service-fabric-work-with-reliable-collections.md
+        - name: Transactions and locks
+          href: service-fabric-reliable-services-reliable-collections-transactions-locks.md
+        - name: Reliable Concurrent Queue
+          href: service-fabric-reliable-services-reliable-concurrent-queue.md
+        - name: Reliable Collection serialization
+          href: service-fabric-reliable-services-reliable-collections-serialization.md
       - name: Replica soft delete
         href: service-fabric-replica-soft-delete.md
     - name: Reliable Actors
