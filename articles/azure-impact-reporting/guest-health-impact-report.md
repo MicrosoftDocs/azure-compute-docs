@@ -135,12 +135,12 @@ timeout 60 sudo /root/scripts/GPU/kvp_client | grep "PhysicalHostName;" | awk '{
 
 When you submit a Guest Health Reporting impact, the REST API response indicates whether the request was accepted, not whether a repair action will occur.
 
-| HTTP Status | Code | Description |
-|---|---|---|
-| 200 | OK | The impact submission was accepted. This status doesn't guarantee that Azure performs a repair action. |
-| 400 | BadRequest | The impact failed validation. Check the response `message` field to confirm the reason for the failure. |
-| 404 | NotFound | The impacted resource wasn't found. Verify the resource provided as part of `additionalProperties` exists. |
-| 429 | TooManyRequests | The request was rate limited. Resubmit it later. |
+| HTTP Status Code | Description |
+|---|---|
+| 200 OK | The impact submission was accepted. This status doesn't guarantee that Azure performs a repair action. |
+| 400 BadRequest | The impact failed validation. Check the response `message` field to confirm the reason for the failure. |
+| 404 NotFound | The impacted resource wasn't found. Verify the resource provided as part of `additionalProperties` exists. |
+| 429 TooManyRequests | The request was rate limited. Resubmit it later. |
 
 > [!NOTE]
 > A successful response suggests that the API received and processed the request. To track downstream evaluation and actions, continue to [query workload impact insights](#list-insights-for-a-workload-impact).
