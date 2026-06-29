@@ -33,6 +33,7 @@ To learn more about previous-gen sizes, retirement, and the status states of pre
 | DS-series                  | [Capacity limited](./retirement-overview.md#capacity-limited) | [Retirement Announced](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide) |
 | Dv1 and Dsv1-series        | [Capacity limited](./retirement-overview.md#capacity-limited) | [Retirement Announced](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide) |
 | Dv2 and Dsv2-series        | [Capacity limited](./retirement-overview.md#capacity-limited) | [Retirement Announced](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide) |
+| Dv3 and Dsv3-series        | [Next-gen available](./retirement-overview.md#next-gen-available) | [Retirement Announced](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide) |
 | Av2 and Amv2-series        | [Capacity limited](./retirement-overview.md#capacity-limited) | [Retirement Announced](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide) |
 
 For a list of general purpose sizes listed as "retired" and "announced for retirement" (sizes that are no longer available or soon to be unavailable for use), see [retired general purpose sizes](./retired-sizes-list.md#general-purpose-retired-sizes).
