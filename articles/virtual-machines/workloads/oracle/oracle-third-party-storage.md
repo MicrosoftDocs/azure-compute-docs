@@ -80,14 +80,14 @@ The following table provides other inputs to help you to determine the appropria
 
 ## Everpure Cloud: Storage for Oracle on Azure VMs
 
-[Everpure Cloud](https://www.everpuredata.com/products/cloud.html) is a block storage platform from Everpure built on the Purity OS, bringing enterprise data services including snapshots, clones, inline data reduction, and replication to Oracle workloads running in Azure. It is available in two deployment models:
+[Everpure Cloud](https://www.everpuredata.com/products/cloud.html) is a block storage platform from Everpure built on the Purity OS. It brings enterprise data services, including snapshots, clones, inline data reduction, and replication, to Oracle workloads running in Azure. It's available in two deployment models:
 
-- **Everpure Cloud Azure Native** is a jointly developed [Azure Native Integration](/azure/partner-solutions/pure-storage/overview), provisioned and managed through the Azure portal, billed by Microsoft, and MACC-eligible.
+- **Everpure Cloud Azure Native** is a jointly developed [Azure Native Integration](/azure/partner-solutions/pure-storage/overview). You provision and manage it through the Azure portal. Microsoft bills you for it, and it's MACC-eligible.
 - **Everpure Cloud Dedicated** is a customer-managed deployment available through the [Azure Marketplace](https://azuremarketplace.microsoft.com) that supports Azure VMs and Azure VMware Solution.
 
-Both models provide thin-provisioned iSCSI block storage with inline deduplication and compression averaging 5:1 data reduction. Everpure Cloud Dedicated additionally supports NVMe/TCP, SafeMode immutable snapshots, and the full replication portfolio described below.
+Both models provide thin-provisioned iSCSI block storage with inline deduplication and compression averaging 5:1 data reduction. Everpure Cloud Dedicated additionally supports NVMe/TCP, SafeMode immutable snapshots, and the full replication portfolio described in the following section.
 
-Everpure Cloud supports standalone Oracle Database instances on Azure VMs, including Oracle Automatic Storage Management (ASM). Oracle Real Application Clusters (RAC) is not supported.
+Everpure Cloud supports standalone Oracle Database instances on Azure VMs, including Oracle Automatic Storage Management (ASM). Oracle Real Application Clusters (RAC) isn't supported.
 
 The following table provides other inputs to help you determine the appropriate disk type.
 

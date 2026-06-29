@@ -13,7 +13,7 @@ ms.subservice: sizes
 
 > [!NOTE]
 > If you're currently using the NCv3-series Azure VMs in either of these regions, you can disregard the general NCv3-series retirement date of September 30, 2025, and continue to use the NCv3-series Azure VMs in that region until the respective extension date: <br/><br/>
-> The US Gov Virginia and US Gov Arizona regions have an extension and a retirement date of **June 30, 2026**.
+> The US Gov Virginia and US Gov Arizona regions have an extension and a retirement date of **December 31st, 2026**. <br> 
 > The Jio India West and China North 3 regions have an extension and a retirement date of **June 30th, 2027**.
 
 On September 30, 2025, Microsoft Azure will retire the Standard_NC6s_v3, Standard_NC12s_v3, Standard_NC24s_v3, and Standard_NC24rs_v3 virtual machines (VMs) in NCv3-series virtual machines (VMs). To avoid any disruption to your service, we recommend that you change the VM sizing for your workloads from the current NCv3-series VMs to the newer VM series in the same NC product line.
