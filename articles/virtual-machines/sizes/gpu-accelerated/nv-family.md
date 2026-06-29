@@ -75,7 +75,7 @@ ai-usage: ai-assisted
 
 
 ### Previous-generation NV family series
-For older sizes, see [previous generation sizes](../previous-gen-sizes-list.md#gpu-accelerated-previous-gen-sizes). After their retirement on September 30, 2026, NVv3-series and NVv4-series will also be listed there as previous-generation sizes.
+For older sizes, see [previous generation sizes](../previous-gen-sizes-list.md#gpu-accelerated-previous-gen-sizes). After their retirement on September 30, 2026, NVv3-series and NVv4-series are also listed as previous-generation sizes.
 
 > [!NOTE]
 > After their retirement on September 30, 2026, NVv3-series and NVv4-series will be listed as previous-generation sizes on that page.
