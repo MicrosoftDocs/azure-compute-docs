@@ -7,7 +7,7 @@ ms.service: azure-virtual-machines
 ms.topic: how-to
 ms.update-cycle: 180-days
 ms.date: 11/22/2022
-ms.reviewer: cynthn, jushiman
+ms.reviewer: jushiman
 ms.custom: template-how-to, devx-track-azurecli, devx-track-azurepowershell, portal
 # Customer intent: "As a cloud administrator, I want to modify the capacity reserved for virtual machines, so that I can efficiently manage resource allocation and ensure optimal performance for my applications."
 ---
@@ -396,7 +396,7 @@ For example, let's say `myCapacityReservation` has 5 instances reserved. You req
 
 To resolve this failure, follow these steps to locate the old quantity reserved value:
 
-1. In the Azure portal, go to [Application Change Analysis](https://portal.azure.com/#blade/Microsoft_Azure_ChangeAnalysis/ChangeAnalysisBaseBlade).
+1. In the Azure portal, go to [Change Analysis](https://portal.azure.com/?feature.customportal=false#view/Microsoft_Azure_OneInventory/ResourceChangesOverview.ReactView).
 1. Select the applicable **Subscription**, **Resource group**, and **Time range** settings in the filters.
    You can only go back up to 14 days in the past in the **Time range** filter.
 1. Search for the name of the capacity reservation.
@@ -404,6 +404,8 @@ To resolve this failure, follow these steps to locate the old quantity reserved 
    The old quantity reserved is the value under the **Old Value** column.
 
 Update `myCapacityReservation` to the old quantity reserved. After it's updated, the reservation is available immediately for use with your VMs.
+
+Alternatively, use the `currentCapacity` field from the capacity reservation's instance view properties to check the capacity of the VM size which was reserved successfully and update the quantity to the current capacity value. See [Capacity Reservations - Get](/rest/api/compute/capacity-reservations/get).
 
 ## Next step
 

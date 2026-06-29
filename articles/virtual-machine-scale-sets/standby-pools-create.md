@@ -7,8 +7,8 @@ ms.service: azure-virtual-machine-scale-sets
 ms.custom:
   - ignite-2024
 ms.topic: how-to
-ms.date: 5/6/2025
-ms.reviewer: cynthn
+ms.date: 05/19/2026
+ms.reviewer: wwilliams
 # Customer intent: As a cloud infrastructure administrator, I want to create and manage a standby pool for Virtual Machine Scale Sets, so that I can reduce scale-out latency and ensure high availability of resources.
 ---
 

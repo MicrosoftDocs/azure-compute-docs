@@ -98,6 +98,9 @@ az container create \
   --name $MY_APP_CONTAINER_NAME \
   --resource-group $MY_RESOURCE_GROUP_NAME \
   --image mcr.microsoft.com/azuredocs/aci-helloworld \
+  --os-type Linux \
+  --cpu 1 \
+  --memory 1.5 \
   --vnet $MY_VNET_NAME \
   --vnet-address-prefix 10.0.0.0/16 \
   --subnet $MY_SUBNET_NAME \

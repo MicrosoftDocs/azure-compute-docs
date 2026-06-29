@@ -5,7 +5,7 @@ author: hilaryw29
 ms.author: hilarywang
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
-ms.date: 06/14/2024
+ms.date: 05/19/2026
 ms.update-cycle: 180-days
 ms.custom: sfi-image-nochange, portal
 # Customer intent: As an operations engineer, I want to set up alert rules for Automatic Instance Repairs ServiceState, so that I can monitor and receive notifications about changes in service status to ensure system reliability.

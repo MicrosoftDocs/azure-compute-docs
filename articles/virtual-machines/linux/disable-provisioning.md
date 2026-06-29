@@ -9,7 +9,7 @@ ms.topic: how-to
 ms.custom: devx-track-azurecli, linux-related-content
 ms.date: 09/02/2025
 ms.author: vakavuru
-ms.reviewer: cynthn
+ms.reviewer: wwilliams
 # Customer intent: As a system administrator managing Linux VMs, I want to disable or remove the provisioning agent, so that I can control VM extensions and prepare custom images without unnecessary components.
 ---
 

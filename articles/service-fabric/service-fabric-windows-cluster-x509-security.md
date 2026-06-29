@@ -250,7 +250,7 @@ For clusters that are running production workloads, use a [certificate authority
 
 There are a number of properties that the certificate must have in order to function properly:
 
-* The certificate's provider must be **Microsoft Enhanced RSA and AES Cryptographic Provider**
+* The certificate's provider can be a CAPI provider (for example, **Microsoft Enhanced RSA and AES Cryptographic Provider**) or a CNG provider (for example, **Microsoft Software Key Storage Provider**). CNG providers require Service Fabric runtime **11.0.2707.1** or later.
 
 * When creating an RSA key, make sure the key is **2048 bits**.
 

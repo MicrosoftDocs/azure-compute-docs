@@ -7,7 +7,7 @@ ms.collection: linux
 ms.topic: how-to
 ms.date: 10/08/2024 
 ms.author: mattmcinnes
-ms.reviewer: cynthn
+ms.reviewer: wwilliams
 ms.custom: devx-track-java, devx-track-javaee, devx-track-javaee-wls, devx-track-javaee-wls-aks
 # Customer intent: As a Java application developer, I want to implement Oracle WebLogic Server on Azure Kubernetes Service, so that I can leverage Kubernetes for container orchestration and ensure reliable, scalable, and manageable deployments of my enterprise applications.
 ---

@@ -304,7 +304,7 @@ The `DocumentIncarnation` is changing every time there's new information in `Eve
                                          "WestNO_0",
                                          "WestNO_1"
                                      ],
-                       "NotBefore":  "Mon, 11 Apr 2022 22:26:58 GMT",
+                       "NotBefore":  "Mon, 11 Apr 2026 22:26:58 GMT",
                        "Description":  "Virtual machine is being paused because of a memory-preserving Live Migration operation.",
                        "EventSource":  "Platform",
                        "DurationInSeconds":  5

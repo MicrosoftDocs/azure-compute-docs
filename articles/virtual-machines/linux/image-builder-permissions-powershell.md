@@ -3,7 +3,7 @@ title: Configure Azure VM Image Builder permissions by using PowerShell
 description: Configure requirements for Azure VM Image Builder, including permissions and privileges, by using PowerShell.
 author: kof-f
 ms.author: kofiforson
-ms.reviewer: cynthn
+ms.reviewer: wwilliams
 ms.date: 03/05/2021
 ms.topic: how-to
 ms.service: azure-virtual-machines

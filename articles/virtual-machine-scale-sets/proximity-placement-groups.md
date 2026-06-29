@@ -1,15 +1,14 @@
 ---
 title: Proximity placement groups for Virtual Machine Scale Sets
 description: Learn about creating  proximity placement groups for Windows Virtual Machine Scale Sets in Azure. 
-author: cynthn
-ms.author: cynthn
+author: iamwilliew
+ms.author: wwilliams
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: proximity-placement-groups
-ms.date: 06/14/2024
+ms.date: 05/19/2026
 ms.reviewer: mimckitt
-ms.custom: cynthn, devx-track-azurepowershell
-
+ms.custom: devx-track-azurepowershell 
 # Customer intent: "As a cloud administrator, I want to create and manage proximity placement groups for Virtual Machine Scale Sets, so that I can ensure low latency and optimal performance for my applications deployed in Azure."
 ---
 
@@ -83,7 +82,7 @@ If there is an allocation failure due to deployment constraints, you might have 
 
 ## Best practices 
 - For the lowest latency, use proximity placement groups together with accelerated networking. For more information, see [Create a Linux virtual machine with Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli) or [Create a Windows virtual machine with Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-powershell).
-- Deploy all VM sizes in a single template. In order to avoid landing on hardware that doesn't support all the VM SKUs and sizes you require, include all of the application tiers in a single template so that they will all be deployed at the same time.
+- Deploy all VM sizes in a single template. To avoid landing on hardware that doesn't support all the VM SKUs and sizes you require, include all of the application tiers in a single template so that they will all be deployed at the same time.
 - If you are scripting your deployment using PowerShell, CLI or the SDK, you might get an allocation error `OverconstrainedAllocationRequest`. In this case, you should stop/deallocate all the existing VMs, and change the sequence in the deployment script to begin with the VM SKU/sizes that failed. 
 - When reusing an existing placement group from which VMs were deleted, wait for the deletion to fully complete before adding VMs to it.
 - If latency is your first priority, put VMs in a proximity placement group and the entire solution in an availability zone. But, if resiliency is your top priority, spread your instances across multiple availability zones (a single proximity placement group cannot span zones).

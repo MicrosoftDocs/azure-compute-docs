@@ -1,8 +1,8 @@
 ---
 title: Memory Optimized Azure Dedicated Host SKUs
 description: Specifications for VM packing of Memory Optimized ADH SKUs.
-author: vamckMS
-ms.author: vakavuru
+author: kathyygong
+ms.author: kgong
 ms.reviewer: mattmcinnes
 ms.service: azure-dedicated-host
 ms.topic: concept-article
@@ -23,6 +23,45 @@ This document goes through the hardware specifications and VM packings for all m
 ## Limitations
 
 The sizes and hardware types available for dedicated hosts vary by region. Refer to the host [pricing page](https://aka.ms/ADHPricing) to learn more.
+
+## Esv6
+### Esv6-Type1
+
+The Esv6-Type1 is a Dedicated Host SKU utilizing the Intel® 8573B processor. It offers 96 physical cores, 192 vCPUs, and 1024 GiB of RAM. The Esv6-Type1 runs [Esv6-series](sizes/memory-optimized/esv6-series.md) VMs.
+
+The following packing configuration outlines the max packing of uniform VMs you can put onto an Esv6-Type1 host.
+
+| Physical cores | Available vCPUs | Available RAM | VM Size | # VMs |
+|----------------|-----------------|---------------|---------|-------|
+| 96             | 192             | 1024 GiB      | E2s v6  | 32    |
+|                |                 |               | E4s v6  | 29    |
+|                |                 |               | E8s v6  | 14    |
+|                |                 |               | E16s v6 | 7     |
+|                |                 |               | E20s v6 | 5     |
+|                |                 |               | E32s v6 | 3     |
+|                |                 |               | E48s v6 | 2     |
+|                |                 |               | E64s v6 | 1     |
+|                |                 |               | E96s v6 | 1     |
+
+## Easv6
+### Easv6-Type1
+
+The Easv6-Type1 is a Dedicated Host SKU utilizing AMD's EPYC™ 9V74 processor. It offers 80 physical cores, 144 vCPUs, and 768 GiB of RAM. The Easv6-Type1 runs [Easv6-series](sizes/memory-optimized/easv6-series.md) VMs.
+
+The following packing configuration outlines the max packing of uniform VMs you can put onto an Easv6-Type1 host.
+
+| Physical cores | Available vCPUs | Available RAM | VM Size  | # VMs |
+|----------------|-----------------|---------------|----------|-------|
+| 80             | 144             | 768 GiB       | E2as v6  | 32    |
+|                |                 |               | E4as v6  | 21    |
+|                |                 |               | E8as v6  | 10    |
+|                |                 |               | E16as v6 | 5     |
+|                |                 |               | E20as v6 | 4     |
+|                |                 |               | E32as v6 | 2     |
+|                |                 |               | E48as v6 | 1     |
+|                |                 |               | E64as v6 | 1     |
+|                |                 |               | E96as v6 | 1     |
+
 
 ## Eadsv5
 ### Eadsv5-Type1

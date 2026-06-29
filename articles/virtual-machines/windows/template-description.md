@@ -1,11 +1,11 @@
 ---
 title: Virtual machines in an Azure Resource Manager template | Microsoft Azure
 description: Learn more about how the virtual machine resource is defined in an Azure Resource Manager template.
-author: cynthn
+author: iamwilliew
 ms.service: azure-virtual-machines
 ms.topic: how-to
 ms.date: 04/11/2023
-ms.author: cynthn
+ms.author: wwilliams
 ms.custom:
   - devx-track-arm-template
   - sfi-image-nochange

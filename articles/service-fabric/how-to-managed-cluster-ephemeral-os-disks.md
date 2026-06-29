@@ -29,7 +29,7 @@ This guide builds upon the managed cluster quick start guide: [Deploy a Service 
 
 Before you begin:
 
-* If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free)
+* If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn)
 * Retrieve a managed cluster ARM template. Sample Resource Manager templates are available in the [Azure samples on GitHub](https://github.com/Azure-Samples/service-fabric-cluster-templates). These templates can be used as a starting point for your cluster template.
 * Ephemeral OS disks are supported both for primary and secondary node type. This guide shows how to deploy a Standard SKU cluster with two node types - a primary and a secondary node type, which uses Ephemeral OS disk.
 * Ephemeral OS disks aren't supported for every SKU. VM sizes such as DSv1, DSv2, DSv3, Esv3, Fs, FsV2, GS, M, Mdsv2, Bs, Dav4, Eav4 supports Ephemeral OS disks. Ensure the SKU with which you want to deploy supports Ephemeral OS disk. For more information on individual SKU, see [supported VM SKU](../virtual-machines/dv3-dsv3-series.md) and navigate to the desired SKU on left side pane.

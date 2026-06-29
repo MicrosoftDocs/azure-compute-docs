@@ -1,14 +1,14 @@
 ---
 title: Get high availability and cost savings with Spot Priority Mix for Virtual Machine Scale Sets
 description: Learn how to run a mix of Spot VMs and uninterruptible standard VMs for Virtual Machine Scale Sets to achieve high availability and cost savings.
-author: cynthn
-ms.author: cynthn
+author: iamwilliew
+ms.author: wwilliams
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: azure-spot-vm
 ms.topic: concept-article
-ms.date: 06/14/2024
+ms.date: 05/19/2026
 ms.update-cycle: 180-days
-ms.reviewer: cynthn
+ms.reviewer: wwilliams
 ms.custom: engagement-fy23, portal
 # Customer intent: "As a cloud architect, I want to configure a mix of Spot and standard VMs in my Virtual Machine Scale Set, so that I can optimize for high availability while reducing infrastructure costs based on workload demands."
 ---
@@ -84,7 +84,7 @@ When Spot VMs are evicted due to capacity constraints or pricing, the eviction p
 
 ### Scale-in behavior
 
-When you scale in, Spot Priority Mix maintains your configured percentage split by intelligently choosing which VMs to remove (Spot or standard) rather than simply removing the oldest or newest VMs. 
+When you scale in, Spot Priority Mix maintains your configured percentage split by intelligently choosing which VMs to remove (Spot or standard) rather than removing the oldest or newest VMs. 
 
 ### ARM Template
 

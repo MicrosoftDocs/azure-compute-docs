@@ -8,7 +8,7 @@ ms.service: azure-virtual-machine-scale-sets
 ms.subservice: azure-hybrid-benefit
 ms.collection: linux
 ms.topic: concept-article
-ms.date: 06/14/2024
+ms.date: 05/19/2026
 ms.update-cycle: 180-days
 ms.author: mathapli
 ms.custom:

@@ -31,7 +31,7 @@ Azure Service Fabric doesn't run natively on macOS X. To run a local Service Fab
 
 >[!TIP]
 >
->To install Docker on your Mac, follow the steps in the [Docker documentation](https://docs.docker.com/docker-for-mac/install/#what-to-know-before-you-install). After installing, you can use Docker Desktop to set preferences including [resource limits](https://docs.docker.com/docker-for-mac) and [disk utilization](https://docs.docker.com/docker-for-mac/space/).
+>To install Docker on your Mac, follow the steps in the [Docker documentation](https://docs.docker.com/docker-for-mac/install/#what-to-know-before-you-install). After installing, you can use Docker Desktop to set preferences including [resource limits](https://docs.docker.com/docker-for-mac) and [disk utilization](https://docs.docker.com/desktop/troubleshoot-and-support/faqs/macfaqs/#where-does-docker-desktop-store-linux-containers-and-images).
 
 ## Create a local container and set up Service Fabric
 To set up a local Docker container and have a Service Fabric cluster running on it, perform the following steps:

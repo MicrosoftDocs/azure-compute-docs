@@ -6,7 +6,7 @@ ms.service: azure-virtual-machines
 ms.subservice: hpc
 ms.topic: concept-article
 ms.date: 02/10/2026
-ms.reviewer: cynthn
+ms.reviewer: wwilliams
 ms.author: padmalathas
 author: padmalathas
 # Customer intent: As a cloud architect, I want to understand the architecture and specifications of HX-series virtual machines, so that I can effectively design and optimize high-performance computing workloads within our cloud infrastructure.

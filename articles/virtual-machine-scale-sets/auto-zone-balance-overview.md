@@ -6,7 +6,7 @@ ms.author: hilarywang
 ms.topic: article
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: availability
-ms.date: 04/18/2025
+ms.date: 05/19/2026
 ---
 
 # Automatic zone balance for Virtual Machine Scale Sets (Preview)

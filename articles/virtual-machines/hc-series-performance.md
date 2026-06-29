@@ -5,9 +5,9 @@ ms.service: azure-virtual-machines
 ms.subservice: hpc
 ms.topic: concept-article
 ms.date: 02/10/2026
-ms.reviewer: cynthn
+ms.reviewer: wwilliams
 ms.author: padmalathas
-author: cynthn
+author: iamwilliew
 # Customer intent: "As a cloud architect, I want to analyze the performance results of HC-series VM sizes, so that I can select the optimal configuration for my high-performance computing workloads."
 ---
 

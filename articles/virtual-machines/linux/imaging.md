@@ -1,15 +1,15 @@
 ---
 title: Overview of creating Linux images for Azure
 description: How to bring your Linux VM images or create new images to use in Azure.
-author: cynthn
+author: iamwilliew
 ms.service: azure-virtual-machines
 ms.subservice: imaging
 ms.custom: linux-related-content
 ms.collection: linux
 ms.topic: overview
 ms.date: 09/01/2023
-ms.author: cynthn
-ms.reviewer: cynthn
+ms.author: wwilliams
+ms.reviewer: wwilliams
 # Customer intent: As a cloud engineer, I want to create and manage Linux images for Azure virtual machines, so that I can efficiently deploy and scale my applications across multiple environments.
 ---
 

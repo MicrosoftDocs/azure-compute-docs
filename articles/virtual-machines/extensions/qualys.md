@@ -6,14 +6,14 @@ ms.service: azure-virtual-machines
 ms.subservice: extensions
 ms.author: gabsta
 author: GabstaMSFT
-ms.date: 05/23/2025
+ms.date: 05/11/2026
 # Customer intent: As a cloud administrator, I want to install and configure the Qualys Cloud Agent on Azure VMs using various deployment methods, so that I can ensure continuous security monitoring and data analysis for my virtual machines.
 ---
 
 # Qualys Agent on Linux or Windows VM
 
 > [!IMPORTANT]
-> Qualys has removed support for the Windows Cloud Agent extension version 3.1.3.34.  This version will become unavailable to new VMs starting April 15th 2026. We recommend that you uninstall it and install the latest Windows Cloud Agent extension version (1.6.x.x) on your Azure portal. To learn more about the uninstallation steps, refer to [Uninstalling and Reinstalling Qualys Extension on Azure VMs](https://success.qualys.com/support/s/article/000007473).
+> Qualys has removed support for the Windows Cloud Agent extension version 3.1.3.34.  This version will become unavailable to new VMs starting July 31st 2026. We recommend that you uninstall it and install the latest Windows Cloud Agent extension version (1.6.x.x) on your Azure portal. To learn more about the uninstallation steps, refer to [Uninstalling and Reinstalling Qualys Extension on Azure VMs](https://success.qualys.com/support/s/article/000007473).
 
 The Qualys Cloud Agent is a lightweight, cloud-based security and monitoring tool installed on servers, virtual machines (VMs), and workstations. It continuously collects system data and sends it to Qualys Enterprise TruRisk Platform (ETP) for analysis and reporting.
 

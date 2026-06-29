@@ -11,10 +11,10 @@ ms.custom: template-overview
 
 # Report an impact (preview)
 
+You can use the Azure Service Health **Report an issue** pane and the REST API to report an issue. You can also use an Azure Monitor [connector](./azure-monitor-connector.md) to report an impact automatically when certain alerts get triggered.
+
 > [!IMPORTANT]
 > Azure Impact Reporting is currently in preview. For legal terms that apply to Azure features that are in beta, in preview, or otherwise not yet released into general availability, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-You can use the Azure Service Health **Report an issue** pane and the REST API to report an issue. You can also use an Azure Monitor [connector](./azure-monitor-connector.md) to report an impact automatically when certain alerts get triggered.
 
 ## Report workload impact
 
@@ -65,7 +65,7 @@ For more examples, review the full [REST API reference](https://aka.ms/ImpactRP/
 ```json
 {
   "properties": {
-    "impactedResourceId": "/subscriptions/<Subscription_id>/resourcegroups/<rg_name>/providers/Microsoft.Compute/virtualMachines/<vm_name>",
+    "impactedResourceId": "/subscriptions/{subscriptionId}/resourcegroups/{rg_name}/providers/Microsoft.Compute/virtualMachines/{vm_name}",
     "startDateTime": "2022-11-03T04:03:46.6517821Z",
     "endDateTime": null, //or a valid timestamp if present
     "impactCategory": "Resource.Availability", //valid impact category needed
@@ -75,7 +75,7 @@ For more examples, review the full [REST API reference](https://aka.ms/ImpactRP/
 ```
 
 ```rest
-az rest --method PUT --url "https://management.azure.com/subscriptions/<Subscription_id>/providers/Microsoft.Impact/workloadImpacts/<impact_name>?api-version=2022-11-01-preview"  --body <body_above>
+az rest --method PUT --url "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Impact/workloadImpacts/{impactName}?api-version=2022-11-01-preview"  --body {body_above}
 
 ```
 

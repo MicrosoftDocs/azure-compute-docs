@@ -6,9 +6,9 @@ ms.subservice: hpc
 ms.custom: linux-related-content
 ms.topic: how-to
 ms.date: 12/02/2025
-ms.reviewer: cynthn
-ms.author: cynthn
-author: cynthn
+ms.reviewer: wwilliams
+ms.author: wwilliams
+author: iamwilliew
 # Customer intent: "As an HPC administrator, I want to enable InfiniBand on my VMs, so that I can enhance the performance and scalability of my distributed-node workloads."
 ---
 

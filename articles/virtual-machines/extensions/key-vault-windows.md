@@ -7,9 +7,10 @@ ms.service: azure-virtual-machines
 ms.subservice: extensions
 ms.collection: windows
 ms.topic: how-to
-ms.date: 04/29/2025
+ms.date: 05/07/2026
 ms.author: mbaldwin 
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ai-usage: ai-assisted
 # Customer intent: "As a cloud administrator managing virtual machines, I want to deploy an Azure Key Vault extension for automatic certificate refresh, so that I can ensure my VM's certificates are up to date without manual intervention."
 ---
 
@@ -22,7 +23,10 @@ The Azure Key Vault virtual machine (VM) extension provides automatic refresh of
 
 ## Operating systems
 
-The Key Vault VM extension supports Windows Server 2019 and later. The Key Vault VM extension is also supported on a custom local VM. The VM should be uploaded and converted into a specialized image for use in Azure by using Windows Server 2019 core install.
+The Key Vault VM extension supports Windows Server 2022 and Windows Server 2025, on both AMD64 and ARM64. On Windows Server 2025, private keys are saved in KeyGuard.
+
+> [!NOTE]
+> Version 4.0 of the Key Vault VM extension doesn't install on Windows Server 2019 or earlier.
 
 ### Supported certificates
 
@@ -36,11 +40,22 @@ The Key Vault VM extension supports the following certificate content types:
 
 ## Features
 
-The Key Vault VM extension for Windows version 3.0 supports:
-- Add ACL permissions to downloaded certificates
-- Enable Certificate Store configuration per certificate
-- Export private keys
-- IIS Certificate Rebind support
+The Key Vault VM extension for Windows version 4.0:
+
+- Installs private keys into KeyGuard if running on Windows Server 2025.
+- Installs the two newest versions of each certificate.
+- Performs certificate chain validation before installing any certificate that contains the TLS Server Authentication Extended Key Usage (EKU), including certificates that carry other EKUs alongside it (such as Client Authentication). Chain validation errors result in a provisioning failure for the extension. Certificates without the Server Authentication EKU aren't subject to this check.
+
+## Upgrading from 3.0
+
+If you're updating from 3.0, the following features are changed or removed:
+
+- `pollingIntervalInS` is now limited to between 5 and 60 minutes. By default, polling is performed once each hour.
+- `linkOnRenewal` is removed. Linking always occurs.
+- `keyExportable` is removed. Private keys are no longer exportable.
+- `requireInitialSync` is removed. The extension only reports success if all configured certificates are installed.
+- Configuring a specific version of a certificate is no longer possible.
+- Private keys are now always stored via [Cryptography API: Next Generation (CNG)](/windows/win32/seccng/cng-portal) instead of CAPI.
 
 ## Prerequisites
 
@@ -96,7 +111,7 @@ The following JSON shows the schema for the Key Vault VM extension. Before you c
 {
    "type": "Microsoft.Compute/virtualMachines/extensions",
    "name": "KVVMExtensionForWindows",
-   "apiVersion": "2022-08-01",
+   "apiVersion": "2025-04-01",
    "location": "<location>",
    "dependsOn": [
       "[concat('Microsoft.Compute/virtualMachines/', <vmName>)]"
@@ -104,13 +119,11 @@ The following JSON shows the schema for the Key Vault VM extension. Before you c
    "properties": {
       "publisher": "Microsoft.Azure.KeyVault",
       "type": "KeyVaultForWindows",
-      "typeHandlerVersion": "3.0",
+      "typeHandlerVersion": "4.0",
       "autoUpgradeMinorVersion": true,
+      "enableAutomaticUpgrade": true,
       "settings": {
          "secretsManagementSettings": {
-             "pollingIntervalInS": <A string that specifies the polling interval in seconds. Example: "3600">,
-             "linkOnRenewal": <Windows only. Ensures s-channel binding when the certificate renews without necessitating redeployment. Example: true>,
-             "requireInitialSync": <Initial synchronization of certificates. Example: true>,
              "observedCertificates": <An array of KeyVault URIs that represent monitored certificates, including certificate store location and ACL permission to certificate private key. Example: 
              [
                 {
@@ -123,8 +136,12 @@ The following JSON shows the schema for the Key Vault VM extension. Before you c
                     "url": <Example: "https://myvault.vault.azure.net/secrets/mycertificate2">,
                     "certificateStoreName": <Example: "MY">,
                     "certificateStoreLocation": <Example: "CurrentUser">,
-                    "keyExportable": <Optional. Lets the private key be exportable. Example: "false">,
                     "accounts": <Example: ["Local Service"]>
+                },
+                {
+                    "url": <Example: "https://myvault.vault.azure.net/secrets/mycertificate3">,
+                    "certificateStoreName": <Example: "TrustedPeople">,
+                    "certificateStoreLocation": <Example: "LocalMachine">
                 }
              ]>
          },
@@ -143,18 +160,14 @@ The JSON schema includes the following properties.
 
 | Name | Value/Example | Data type |
 | --- | --- | --- |
-| `apiVersion` | 2022-08-01 | date |
+| `apiVersion` | 2025-04-01 | date |
 | `publisher` | Microsoft.Azure.KeyVault | string |
 | `type` | KeyVaultForWindows | string |
-| `typeHandlerVersion` | "3.0" | string |
-| `pollingIntervalInS` | "3600" | string |
-| `linkOnRenewal` (optional) | true | boolean |
-| `requireInitialSync` (optional) | false | boolean |
+| `typeHandlerVersion` | "4.0" | string |
 | `observedCertificates`  | [{...}, {...}] | string array |
 | `observedCertificates/url` | "https://myvault.vault.azure.net/secrets/mycertificate" | string |
 | `observedCertificates/certificateStoreName` | MY | string |
 | `observedCertificates/certificateStoreLocation`  | LocalMachine or CurrentUser (case sensitive) | string |
-| `observedCertificates/keyExportable` (optional) | false | boolean |
 | `observedCertificates/accounts` (optional) | ["Network Service", "Local Service"] | string array |
 | `msiEndpoint` | "http://169.254.169.254/metadata/identity/oauth2/token" | string |
 | `msiClientId` | 00001111-aaaa-2222-bbbb-3333cccc4444 | string |
@@ -171,7 +184,7 @@ The following JSON snippets provide example settings for an ARM template deploym
 {
    "type": "Microsoft.Compute/virtualMachines/extensions",
    "name": "KeyVaultForWindows",
-   "apiVersion": "2022-08-01",
+   "apiVersion": "2025-04-01",
    "location": "<location>",
    "dependsOn": [
       "[concat('Microsoft.Compute/virtualMachines/', <vmName>)]"
@@ -179,12 +192,11 @@ The following JSON snippets provide example settings for an ARM template deploym
    "properties": {
       "publisher": "Microsoft.Azure.KeyVault",
       "type": "KeyVaultForWindows",
-      "typeHandlerVersion": "3.0",
+      "typeHandlerVersion": "4.0",
       "autoUpgradeMinorVersion": true,
+      "enableAutomaticUpgrade": true,
       "settings": {
          "secretsManagementSettings": {
-             "pollingIntervalInS": <A string that specifies the polling interval in seconds. Example: "3600">,
-             "linkOnRenewal": <Windows only. Ensures s-channel binding when the certificate renews without necessitating redeployment. Example: true>,
              "observedCertificates": <An array of KeyVault URIs that represent monitored certificates, including certificate store location and ACL permission to certificate private key. Example:
              [
                 {
@@ -197,7 +209,6 @@ The following JSON snippets provide example settings for an ARM template deploym
                     "url": <Example: "https://myvault.vault.azure.net/secrets/mycertificate2">,
                     "certificateStoreName": <Example: "MY">,
                     "certificateStoreLocation": <Example: "CurrentUser">,
-                    "keyExportable": <Optional. Lets the private key be exportable. Example: "false">,
                     "accounts": <Example: ["Local Service"]>
                 },
                 {
@@ -216,22 +227,17 @@ The following JSON snippets provide example settings for an ARM template deploym
 }
 ```
 
+### Extension automatic upgrade
+
+The Key Vault VM extension supports Automatic Extension Upgrade for virtual machines and scale sets in Azure. The extension is kept up to date automatically when the `autoUpgradeMinorVersion` and `enableAutomaticUpgrade` properties in the preceding examples are set to `true`.
+
 ### Extension dependency ordering
 
-You can enable the Key Vault VM extension to support extension dependency ordering. By default, the Key Vault VM extension reports a successful start as soon as polling begins. However, you can configure the extension to report a successful start only after the extension downloads and installs all certificates.
+The Key Vault VM extension supports extension dependency ordering. The extension reports a successful start after it downloads and installs all certificates.
 
-If you use other extensions that require installation of all certificates before they start, you can enable extension dependency ordering in the Key Vault VM extension. This feature allows other extensions to declare a dependency on the Key Vault VM extension.
+If you use other extensions that require installation of certificates before they start, you can use extension dependency ordering to declare a dependency on the Key Vault VM extension.
 
-You can use this feature to prevent other extensions from starting until all dependent certificates are installed. When the feature is enabled, the Key Vault VM extension will retry download and install of certificates up to 25 times with increasing backoff periods, during which it remains in a **Transitioning** state. If the retries are exhausted, the extension will report an **Error** state. After all certificates are successfully installed, the Key Vault VM extension reports a successful start.
-
-To enable the extension dependency ordering feature in the Key Vault VM extension, set the `secretsManagementSettings` property:
-
-```json
-"secretsManagementSettings": {
-   "requireInitialSync": true,
-   ...
-}
-```
+On startup, the Key Vault VM extension retries download and install of certificates up to 25 times with increasing backoff periods, during which it remains in a **Transitioning** state. If the retries are exhausted, the extension reports an **Error** state. After all certificates are successfully installed, the Key Vault VM extension reports a successful start.
 
 For more information on how to set up dependencies between extensions, see [Sequence extension provisioning in Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-extension-sequencing).
 
@@ -247,8 +253,6 @@ The following JSON snippets provide example settings for deploying the Key Vault
 ```json
 {   
    "secretsManagementSettings": {
-   "pollingIntervalInS": "3600",
-   "linkOnRenewal": true,
    "observedCertificates":
    [
       {
@@ -263,7 +267,6 @@ The following JSON snippets provide example settings for deploying the Key Vault
           "url": "https://<examplekv>.vault.azure.net/secrets/certificate2",
           "certificateStoreName": "MY",
           "certificateStoreLocation": "LocalMachine",
-          "keyExportable": true,
           "accounts": [
              "Network Service",
              "Local Service"
@@ -287,7 +290,7 @@ $extPublisher = "Microsoft.Azure.KeyVault"
 $extType = "KeyVaultForWindows"
  
 # Start the deployment
-Set-AzVmExtension -TypeHandlerVersion "3.0" -ResourceGroupName <ResourceGroupName> -Location <Location> -VMName <VMName> -Name $extName -Publisher $extPublisher -Type $extType -SettingString $settings
+Set-AzVmExtension -TypeHandlerVersion "4.0" -ResourceGroupName <ResourceGroupName> -Location <Location> -VMName <VMName> -Name $extName -Publisher $extPublisher -Type $extType -SettingString $settings
 ```
 
 #### Deploy on a Virtual Machine Scale Sets instance
@@ -301,7 +304,7 @@ $extType = "KeyVaultForWindows"
   
 # Add extension to Virtual Machine Scale Sets
 $vmss = Get-AzVmss -ResourceGroupName <ResourceGroupName> -VMScaleSetName <VmssName>
-Add-AzVmssExtension -VirtualMachineScaleSet $vmss  -Name $extName -Publisher $extPublisher -Type $extType -TypeHandlerVersion "3.0" -Setting $settings
+Add-AzVmssExtension -VirtualMachineScaleSet $vmss  -Name $extName -Publisher $extPublisher -Type $extType -TypeHandlerVersion "4.0" -Setting $settings
 
 # Start the deployment
 Update-AzVmss -ResourceGroupName <ResourceGroupName> -VMScaleSetName <VmssName> -VirtualMachineScaleSet $vmss 
@@ -311,16 +314,11 @@ Update-AzVmss -ResourceGroupName <ResourceGroupName> -VMScaleSetName <VmssName> 
 
 The Azure Key Vault VM extension can be deployed by using the Azure CLI. Save Key Vault VM extension settings to a JSON file (settings.json). 
 
-> [!IMPORTANT]
-> When deploying via Azure CLI, you must specify `--version "3.0"` to ensure compatibility with Windows Server 2019 and to use extension features such as `pollingIntervalInS` and `linkOnRenewal`.
-
 The following JSON snippets provide example settings for deploying the Key Vault VM extension with the Azure CLI.
 
 ```json
    {   
         "secretsManagementSettings": {
-          "pollingIntervalInS": "3600",
-          "linkOnRenewal": true,
           "observedCertificates": [
             {
                 "url": "https://<examplekv>.vault.azure.net/secrets/certificate1",
@@ -334,7 +332,6 @@ The following JSON snippets provide example settings for deploying the Key Vault
                 "url": "https://<examplekv>.vault.azure.net/secrets/certificate2",
                 "certificateStoreName": "MY",
                 "certificateStoreLocation": "LocalMachine",                
-                "keyExportable": true,
                 "accounts": [
                     "Network Service",
                     "Local Service"
@@ -358,7 +355,7 @@ az vm extension set --name "KeyVaultForWindows" `
  --resource-group "<resourcegroup>" `
  --vm-name "<vmName>" `
  --settings "@settings.json" `
- --version "3.0"
+ --version "4.0"
 ```
 
 #### Deploy on a Virtual Machine Scale Sets instance
@@ -370,7 +367,7 @@ az vmss extension set --name "KeyVaultForWindows" `
  --resource-group "<resourcegroup>" `
  --vmss-name "<vmssName>" `
  --settings "@settings.json" `
- --version "3.0"
+ --version "4.0"
 ```
 
 > [!TIP]
@@ -396,13 +393,13 @@ By default, Administrators and SYSTEM receive Full Control.
 
 #### How do you determine if a certificate key is CAPI1 or CNG?
 
-The extension relies on the default behavior of the [PFXImportCertStore API](/windows/win32/api/wincrypt/nf-wincrypt-pfximportcertstore). By default, if a certificate has a Provider Name attribute that matches with CAPI1, then the certificate is imported by using CAPI1 APIs. Otherwise, the certificate is imported by using CNG APIs.
+Starting with Key Vault VM extension 4.0, the private keys for all certificates are saved via CNG.
 
 #### Does the extension support certificate auto-rebinding?
 
-Yes, the Azure Key Vault VM extension supports certificate auto-rebinding. The Key Vault VM extension does support S-channel binding on certificate renewal when the `linkOnRenewal` property is set to true.
+Yes, the Azure Key Vault VM extension supports certificate auto-rebinding. The Key Vault VM extension supports S-channel binding on certificate renewal.
 
-For IIS, you can configure auto-rebind by enabling automatic rebinding of certificate renewals in IIS. The Azure Key Vault VM extension generates Certificate Lifecycle Notifications when a certificate with a matching SAN is installed. IIS uses this event to auto-rebind the certificate. For more information, see [Certifcate Rebind in IIS](/iis/get-started/whats-new-in-iis-85/certificate-rebind-in-iis85).
+For IIS, you can configure auto-rebind by enabling automatic rebinding of certificate renewals in IIS. The Azure Key Vault VM extension generates Certificate Lifecycle Notifications when a certificate with a matching SAN is installed. IIS uses this event to auto-rebind the certificate. For more information, see [Certificate Rebind in IIS](/iis/get-started/whats-new-in-iis-85/certificate-rebind-in-iis85).
 
 ### View extension status
 
@@ -442,7 +439,7 @@ The Key Vault VM extension for Windows installs certificates into the Windows ce
    - Intermediate CA certificates are installed in the Intermediate Certificate Authorities store
 2. Places the certificates in the specified certificate store (`certificateStoreName`) and location (`certificateStoreLocation`)
 3. Applies appropriate permissions to the private key based on the `accounts` specified in the configuration
-4. Sets the `linkOnRenewal` property (if enabled) to ensure certificate bindings in applications like IIS automatically update when certificates are renewed
+4. Sets the `CERT_RENEWAL` property to ensure certificate bindings in applications like IIS automatically update when certificates are renewed.
 
 ### Default Certificate Stores
 
@@ -463,20 +460,20 @@ This grants read access to the specified accounts, allowing applications running
 ### Certificate Renewal
 
 When certificates are renewed in Key Vault, the extension automatically:
-1. Downloads the new certificate version
-2. Installs it in the configured certificate store
-3. Maintains existing bindings through the `linkOnRenewal` feature if enabled
+1. Downloads the new certificate version.
+2. Installs it in the configured certificate store.
+3. Maintains existing bindings via the `CERT_RENEWAL` property.
 
-### Managing Certificate Lifecycle
+### Managing certificate lifecycle
 
-For applications like IIS that support Certificate Lifecycle Notifications, the extension generates events when certificates with matching Subject Alternative Names (SANs) are installed, allowing automatic rebinding without service interruption.
+For applications like IIS that support Certificate Services Lifecycle Notifications, the Key Vault VM extension raises **Event 1001** in the Windows Event Log when a certificate with a matching Subject Alternative Name (SAN) is installed. IIS subscribes to this event to auto-rebind the renewed certificate without service interruption. Other applications and teams can also listen for Event 1001 to act on certificate renewals as needed. For more information, see [Certificate Services Lifecycle Notifications](/archive/technet-wiki/14250.certificate-services-lifecycle-notifications).
 
 ### Get support
 
 Here are some other options to help you resolve deployment issues:
 
-- For assistance, contact the Azure experts on the [Q&A and Stack Overflow forums](https://azure.microsoft.com/support/community/). 
+- For assistance, contact the Azure experts in [Microsoft Q&A](/answers/tags/133/azure-virtual-machines).
 
 - If you don't find an answer on the site, you can post a question for input from Microsoft or other members of the community.
 
-- You can also [Contact Microsoft Support](https://support.microsoft.com/contactus/). For information about using Azure support, read the [Azure support FAQ](https://azure.microsoft.com/support/legal/faq/).
+- You can also [Contact Microsoft Support](https://support.microsoft.com/contactus/). For information about using Azure support, see [How to create an Azure support request](/azure/azure-portal/supportability/how-to-create-azure-support-request).

@@ -5,8 +5,8 @@ author: fitzgeraldsteele
 ms.author: fisteele
 ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
-ms.date: 06/14/2024
-ms.reviewer: cynthn
+ms.date: 05/19/2026
+ms.reviewer: wwilliams
 # Customer intent: "As a cloud administrator, I want to configure a Virtual Machine Scale Set with specific properties, so that I can efficiently manage instance scaling and deployment according to my application's requirements."
 ---
 

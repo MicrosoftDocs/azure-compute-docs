@@ -390,6 +390,10 @@ Azure VM once upgraded to Trusted launch can't be rolled back to Gen1 configurat
 
 Use the Backup or Restore point of Gen1 VM taken before upgrade and restore entire VM along with disks to roll back fully to Gen1 VM.
 
+> [!IMPORTANT]
+>
+> Roll back Trusted launch to Gen2 (Non-Trusted launch) configuration is a one-way operation. After you roll back to Gen2 (Non-Trusted launch) configuration, you can't re-enable Trusted launch on the same VM.
+
 ## Known issues
 
 ### VM image reference doesn't change post Trusted launch upgrade

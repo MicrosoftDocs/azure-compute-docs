@@ -78,16 +78,16 @@ Testing confirms that the following systems work with the Azure Linux VM Agent.
 
 | Publisher | Distribution | x64 | ARM64 |
 |:-----|:-----|:-----:|:-----:|
-| Alma Linux Community | Alma Linux | 8.x+, 9.x+ | 8.x+, 9.x+ |
-| Credativ | Debian | 10+ | 11.x+ |
-| Kinvolk | Flatcar Linux | 3374.2.x+ | 3374.2.x+ |
+| Alma Linux Community | Alma Linux | 8.x, 9.x | 8.x, 9.x |
+| Credativ | Debian | 10.x | 11.x |
+| Kinvolk | Flatcar Linux | 3374.2.x | 3374.2.x |
 | Microsoft | Azure Linux | 2.x | 2.x |
-| openSUSE Project | openSUSE | 12.3+ | *Not supported* |
-| Oracle | Oracle Linux | 6.4+, 7.x+, 8.x+ | *Not supported* |
-| Red Hat | Red Hat Enterprise Linux | 6.7+, 7.x+,  8.x+, 9.x+, 10.x+ | 8.6+, 9.0+, 10.x+ |
-| CIQ | Rocky Linux | 9.x+ | 9.x+ |
-| SUSE | SLES | 12.x+, 15.x+ | 15.x SP4+ |
-| Canonical | Ubuntu (LTS releases)| 18.04+, 20.04+, 22.04+, 24.04+ | 20.04+, 22.04+, 24.04+ |
+| openSUSE Project | openSUSE | 12.3 | *Not supported* |
+| Oracle | Oracle Linux | 6.4, 7.x, 8.x | *Not supported* |
+| Red Hat | Red Hat Enterprise Linux | 6.7, 7.x,  8.x, 9.x, 10.x | 8.6, 9.0, 10.x |
+| CIQ | Rocky Linux | 9.x | 9.x |
+| SUSE | SLES | 12.x, 15.x | 15.x SP4 |
+| Canonical | Ubuntu (LTS releases)| 18.04, 20.04, 22.04, 24.04, 26.04 | 20.04, 22.04, 24.04, 26.04 |
 
 Other supported systems:
 

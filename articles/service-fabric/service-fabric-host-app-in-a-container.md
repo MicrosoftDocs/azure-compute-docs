@@ -317,7 +317,7 @@ In the next part of the tutorial, learn how to [Deploy a container application w
 [link-servicefabric-containers]: service-fabric-get-started-containers.md
 [link-sf-clustertemplate]: https://aka.ms/securepreviewonelineclustertemplate
 [link-azure-pricing-calculator]: https://azure.microsoft.com/pricing/calculator/
-[link-azure-subscription]: https://azure.microsoft.com/free/
+[link-azure-subscription]: https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn
 [link-vsts-account]: https://www.visualstudio.com/team-services/pricing/
 [link-azure-sql]: /azure/sql-database/
 

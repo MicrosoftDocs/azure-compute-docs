@@ -1,11 +1,11 @@
 ---
 title: Modify an Azure Virtual Machine Scale Set using Azure CLI
 description: Learn how to modify and update an Azure Virtual Machine Scale Set using Azure CLI
-author: cynthn
-ms.author: cynthn
+author: iamwilliew
+ms.author: wwilliams
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
-ms.date: 04/06/2025
+ms.date: 05/19/2026
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli, linux-related-content, innovation-engine
 # Customer intent: As a cloud administrator, I want to modify and update Azure Virtual Machine Scale Sets using CLI commands, so that I can manage resource configurations and maintain optimal performance for my deployed applications.

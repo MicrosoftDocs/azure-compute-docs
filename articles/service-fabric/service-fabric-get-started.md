@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 03/20/2026
+ms.date: 06/18/2026
 # Customer intent: As a developer, I want to set up a Windows development environment for Azure Service Fabric, so that I can build and run applications efficiently.
 ---
 
@@ -33,8 +33,8 @@ The runtime can be installed independently. However, the SDK requires the runtim
 
 | Package |Version|
 | --- | --- |
-|[Install Service Fabric Runtime for Windows](https://download.microsoft.com/download/b/8/a/b8a2fb98-0ec1-41e5-be98-9d8b5abf7856/MicrosoftServiceFabric.11.4.205.1.exe) | 11.4.205.1 |
-|[Install Service Fabric SDK](https://download.microsoft.com/download/b/8/a/b8a2fb98-0ec1-41e5-be98-9d8b5abf7856/MicrosoftServiceFabricSDK.8.4.205.msi) | 8.4.205 |
+|[Install Service Fabric Runtime for Windows](https://download.microsoft.com/download/b/8/a/b8a2fb98-0ec1-41e5-be98-9d8b5abf7856/MicrosoftServiceFabric.11.5.116.1.exe) | 11.5.116.1 |
+|[Install Service Fabric SDK](https://download.microsoft.com/download/b/8/a/b8a2fb98-0ec1-41e5-be98-9d8b5abf7856/MicrosoftServiceFabricSDK.8.5.116.msi) | 8.5.116 |
 
 You can find direct links to the installers for previous releases on [Service Fabric Releases.](https://github.com/microsoft/service-fabric/tree/master/release_notes)
 
@@ -55,9 +55,11 @@ Once the runtime is installed, you can install the SDK successfully. You can run
 > [!NOTE]
 > Single machine clusters (OneBox) are not supported for Application or Cluster upgrades; delete the OneBox cluster and recreate it if you need to perform a Cluster upgrade, or have any issues performing an Application upgrade.
 
-### To use Visual Studio 2017 or 2019 
+### To use Visual Studio 2017, 2019, 2022, or 2026
 
 The Service Fabric Tools are part of the Azure Development workload in Visual Studio 2019 and 2017. Enable this workload as part of your Visual Studio installation. In addition, you need to install the Microsoft Azure Service Fabric SDK and runtime as described above [Download and install the runtime and SDK.](#download-and-install-the-runtime-and-sdk)
+
+To use Visual Studio 2026 specifically, download the "Service Fabric Tools" extension on Visual Studio Marketplace: [Service Fabric Tools Extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.MicrosoftVisualStudioAzureFabricVsix&ssr=false#review-details) 
 
 ## Enable PowerShell script execution
 

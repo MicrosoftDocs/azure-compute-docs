@@ -48,7 +48,7 @@ Choose a tool to move a VM from regional to zonal deployment in the same region.
 1. Under **Target availability zone**, select the zone you want to use (for example, Zone 1).
    :::image type="content" source="./media/tutorial-move-regional-zonal/availability-scaling-home.png" alt-text="Screenshot of Availability + scaling homepage.":::
 
-   If the selected VM configuration isn't supported for move, validation fails and you must restart with a supported VM configuration. See the [support matrix](/azure/reliability/migrate-vm#support-matrix).
+   If the selected VM configuration isn't supported for move, validation fails and you must restart with a supported VM configuration. 
 
 1. If Azure recommends a different VM size to improve deployment success in the selected zone, choose the recommended size, or choose a different zone and keep the current size.
    :::image type="content" source="./media/tutorial-move-regional-zonal/aure-recommendation.png" alt-text="Screenshot showing Azure recommendation to increase virtual machine size.":::

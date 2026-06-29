@@ -122,7 +122,7 @@ In this tutorial, you created a Spot container on Azure Container Instances with
 
 <!-- LINKS - External -->
 [app-github-repo]: https://github.com/Azure-Samples/aci-helloworld.git
-[azure-account]: https://azure.microsoft.com/free/
+[azure-account]: https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn
 [node-js]: https://nodejs.org
 
 <!-- LINKS - Internal -->

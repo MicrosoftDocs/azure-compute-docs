@@ -6,10 +6,9 @@ ms.author: mimckitt
 ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: management
-ms.date: 06/14/2024
-ms.reviewer: cynthn
-ms.custom: mimckitt
-
+ms.date: 05/19/2026
+ms.reviewer: wwilliams
+ms.custom: mimckitt 
 # Customer intent: As a cloud administrator, I want to understand the naming conventions and instance IDs for Virtual Machine Scale Set VMs, so that I can manage and operate specific VMs efficiently within the scale set.
 ---
 # Understand names and instance IDs for Azure Virtual Machine Scale Set VMs
@@ -26,7 +25,7 @@ Virtual Machine Scale Sets will generate a unique name for each VM in the scale 
 
 ## Scale set instance ID for Flexible Orchestration Mode
 
-For Virtual Machine Scale Sets in Flexible Orchestration mode, the instance ID is simply the name of the virtual machine.
+For Virtual Machine Scale Sets in Flexible Orchestration mode, the instance ID is the name of the virtual machine.
 
 ## Scale set instance ID for Uniform Orchestration Mode
 

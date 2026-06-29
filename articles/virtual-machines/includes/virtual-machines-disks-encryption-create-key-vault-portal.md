@@ -10,6 +10,7 @@
  ms.custom:
    - include file
    - sfi-image-nochange
+ ai-usage: ai-assisted
 # Customer intent: As a cloud administrator, I want to set up customer-managed keys for my disk encryption, so that I can enhance the security of my data in compliance with organizational policies.
 ---
 Setting up customer-managed keys for your disks requires you to create resources in a particular order, if you're doing it for the first time. First, you'll need to create and set up an Azure Key Vault.
@@ -22,7 +23,10 @@ Setting up customer-managed keys for your disks requires you to create resources
     :::image type="content" source="media/virtual-machines-disk-encryption-portal/server-side-encryption-key-vault-portal-search.png" alt-text="Screenshot of the Azure portal with the search dialog box expanded." lightbox="media/virtual-machines-disk-encryption-portal/sever-side-encryption-key-vault-portal-search-expanded.png":::
 
     > [!IMPORTANT]
-    > Your disk encryption set, VM, disks, and snapshots must all be in the same region and subscription for deployment to succeed. Azure Key Vaults may be used from a different subscription but must be in the same region and tenant as your disk encryption set.
+    > Your disk encryption set, VM, disks, and snapshots must all be in the same region and subscription for deployment to succeed.
+    >
+    > - Azure Key Vaults may be used from a different subscription, but they must be in the same region as your disk encryption set.
+    > - Azure Key Vaults in different Microsoft Entra tenants are supported for managed disks. For prerequisites, see [Encrypt managed disks with cross-tenant customer-managed keys](/azure/virtual-machines/disks-cross-tenant-customer-managed-keys).
 
 1. Select **+Create** to create a new Key Vault.
 1. Create a new resource group.
@@ -65,6 +69,10 @@ Now that you've created the Azure key vault and a key, you must add an Azure RBA
 
 1. Make sure **Select Azure key vault and key** is selected.
 1. Select the key vault and key you created previously, and the version.
+
+    > [!NOTE]
+    > For managed disks with cross-tenant customer-managed keys, the selected key can be in a Key Vault in a different Microsoft Entra tenant.
+
 1. If you want to enable [automatic rotation of customer managed keys](/azure/virtual-machines/disk-encryption#automatic-key-rotation-of-customer-managed-keys), select **Auto key rotation**.
 1. Select **Review + Create** and then **Create**.
 

@@ -8,7 +8,7 @@ ms.custom: devx-track-azurecli, linux-related-content
 ms.topic: how-to
 ms.date: 04/06/2023
 ms.author: mattmcinnes
-ms.reviewer: cynthn
+ms.reviewer: wwilliams
 # Customer intent: "As a cloud administrator, I want to configure internal DNS for virtual network interface cards on Azure, so that I can ensure reliable name resolution for essential services like Jenkins and Git servers within my infrastructure."
 ---
 
@@ -20,7 +20,7 @@ This article shows you how to set static internal DNS names for Linux VMs using 
 
 The requirements are:
 
-* [an Azure account](https://azure.microsoft.com/pricing/free-trial/)
+* [an Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn)
 * [SSH public and private key files](mac-create-ssh-keys.md)
 
 ## Quick commands

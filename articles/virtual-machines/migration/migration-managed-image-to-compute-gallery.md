@@ -7,7 +7,7 @@ ms.subservice: gallery
 ms.topic: how-to
 ms.date: 08/24/2025
 ms.author: ajkundna
-ms.reviewer: cynthn
+ms.reviewer: wwilliams
 ms.custom: template-how-to, devx-track-azurepowershell
 # Customer intent: As a cloud administrator, I want to migrate legacy managed images to an Azure compute gallery image version, so that I can utilize the latest features and ensure better management of virtual machine images.
 ---

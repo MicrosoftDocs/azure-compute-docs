@@ -3,8 +3,8 @@ title: Azure Policy Regulatory Compliance controls for Azure Virtual Machines
 description: Lists Azure Policy Regulatory Compliance controls available for Azure Virtual Machines . These built-in policy definitions provide common approaches to managing the compliance of your Azure resources.
 ms.date: 02/06/2024
 ms.topic: sample
-author: cynthn
-ms.author: cynthn
+author: iamwilliew
+ms.author: wwilliams
 ms.service: azure-virtual-machines
 ms.custom: subject-policy-compliancecontrols
 # Customer intent: "As a cloud administrator, I want to utilize built-in compliance controls for Azure Virtual Machines, so that I can ensure my resources meet necessary regulatory standards for security and compliance."

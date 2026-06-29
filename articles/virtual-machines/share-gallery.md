@@ -7,7 +7,7 @@ ms.subservice: gallery
 ms.topic: how-to
 ms.date: 02/14/2023
 ms.author: saraic
-ms.reviewer: cynthn
+ms.reviewer: wwilliams
 ms.custom: template-how-to , devx-track-azurecli
 ms.devlang: azurecli
 # Customer intent: As an IT administrator, I want to share resources in Azure Compute Gallery by using role-based access control, so that I can manage user access effectively across subscriptions and tenants.

@@ -171,7 +171,7 @@ az container create --name my-containergroup --resource-group myResourceGroup --
 To deploy a container group to a virtual network using managed identity to authenticate image pulls from an ACR that runs behind a private endpoint via the Azure CLI, use the following command:
 
 ```azurecli-interactive
-az container create --name my-containergroup --resource-group myResourceGroup --image <loginServer>/hello-world:v1 --acr-identity $USERID --assign-identity $USERID --vnet "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/"/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myVNetResourceGroup/providers/ --subnet mySubnetName
+az container create --name my-containergroup --resource-group myResourceGroup --image <loginServer>/hello-world:v1 --acr-identity $USERID --assign-identity $USERID --vnet "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myVNetResourceGroup/providers/Microsoft.Network/virtualNetworks/myvirtualnetwork" --subnet mySubnetName
 ```
 
 For more info on how to deploy to a virtual network see [Deploy container instances into an Azure virtual network](./container-instances-vnet.md).

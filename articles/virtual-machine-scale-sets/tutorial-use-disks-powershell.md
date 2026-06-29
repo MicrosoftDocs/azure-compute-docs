@@ -1,15 +1,14 @@
 ---
 title: Tutorial - Create and use disks for scale sets with Azure PowerShell
 description: Learn how to use Azure PowerShell to create and use managed disks with Virtual Machine Scale Sets. Including how to add, prepare, list, and detach disks.
-author: cynthn
-ms.author: cynthn
+author: iamwilliew
+ms.author: wwilliams
 ms.topic: tutorial
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: disks
-ms.date: 06/14/2024
+ms.date: 05/19/2026
 ms.reviewer: mimckitt
-ms.custom: mimckitt, devx-track-azurepowershell
-
+ms.custom: mimckitt, devx-track-azurepowershell 
 # Customer intent: "As a cloud administrator, I want to create and manage disks for Virtual Machine Scale Sets with Azure PowerShell, so that I can optimize storage performance based on my application workload requirements."
 ---
 # Tutorial: Create and use disks with Virtual Machine Scale Set with Azure PowerShell
@@ -48,7 +47,7 @@ The following table provides a comparison of the five disk types to help you dec
 | **Disk type** | SSD | SSD |SSD | SSD | HDD |
 | **Scenario**  | IO-intensive workloads such as SAP HANA, top tier databases (for example, SQL, Oracle), and other transaction-heavy workloads. | Production and performance-sensitive workloads that consistently require low latency and high IOPS and throughput | Production and performance sensitive workloads | Web servers, lightly used enterprise applications and dev/test | Backup, non-critical, infrequent access |
 | **Max disk size** | 65,536 GiB | 65,536 GiB |32,767 GiB | 32,767 GiB | 32,767 GiB |
-| **Max throughput** | 4,000 MB/s | 1,200 MB/s | 900 MB/s | 750 MB/s | 500 MB/s |
+| **Max throughput** | 4,000 MB/s | 2,000 MB/s | 900 MB/s | 750 MB/s | 500 MB/s |
 | **Max IOPS** | 160,000 | 80,000 | 20,000 | 6,000 | 2,000, 3,000* |
 | **Usable as OS Disk?** | No | No | Yes | Yes | Yes |
 

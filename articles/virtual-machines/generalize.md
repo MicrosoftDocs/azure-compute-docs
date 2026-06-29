@@ -1,8 +1,8 @@
 ---
 title: Deprovision or generalize a VM before creating an image
 description: Generalized or deprovision VM to remove machine specific information before creating an image.
-author: cynthn
-ms.author: cynthn
+author: iamwilliew
+ms.author: wwilliams
 ms.date: 02/06/2026
 ms.service: azure-virtual-machines
 ms.subservice: imaging

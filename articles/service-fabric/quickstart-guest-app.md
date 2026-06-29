@@ -139,4 +139,4 @@ Read more about [guest executables](service-fabric-guest-executables-introductio
 [custom-endpoint]: ./media/quickstart-guest-app/custom-endpoint.png
 
 [download-sample]: https://github.com/MicrosoftDocs/azure-cloud-services-files/raw/temp/service-fabric-node-website.zip
-[create-account]: https://azure.microsoft.com/free/?WT.mc_id=A261C142F
+[create-account]: https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn

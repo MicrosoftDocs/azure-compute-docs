@@ -17,5 +17,5 @@ ms.custom: include file
 | Memory         | 8 - 1,488 GiB          |                                  |
 | Local Storage  | None           |                                |
 | Remote Storage | 10 - 64 Disks | 4,000 - 500,000 IOPS <br>115 - 16,000 MBps <br>Disk Types: [Standard SDD/HDD](../../../disks-types.md#standard-ssds), [Premium SSD](../../../disks-types.md#premium-ssds), [Premium SSD v2](../../../disks-types.md#premium-ssd-v2) |
-| Network        | 3 - 15 NICs          | 16,000 - 200,000 Mbps                          |
+| Network        | 3 - 15 NICs          | 16,000 - 200,000 Mbps <br>Interfaces: NetVSC, [MANA](https://aka.ms/ManaFAQ1)  |
 | Accelerators   | None              |                                   |

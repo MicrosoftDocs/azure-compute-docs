@@ -11,7 +11,7 @@ ms.custom: template-overview
 
 # Impact categories for Guest Health Reporting (preview)
 
-To properly report issues to Guest Health Reporting, you must use an impact category that starts with `Resource.HPC`.
+To properly report issues to Guest Health Reporting, you must use an impact category that starts with `Resource.Hpc`.
 
 There are three main types of impact categories for high-performance computing (HPC):
 

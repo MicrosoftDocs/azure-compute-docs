@@ -7,6 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 03/22/2026
+ai-usage: ai-assisted
 # Customer intent: "As a cloud architect, I want to implement best practices for managing Azure Service Fabric networking, so that I can ensure optimal performance and security for my service clusters."
 ---
 
@@ -27,7 +28,7 @@ Maximize your Virtual Machine's performance with Accelerated Networking, by decl
       "enableAcceleratedNetworking": true,
       "ipConfigurations": [
         {
-        <snip>
+          <snip>
         }
       ],
       "primary": true
@@ -60,17 +61,17 @@ Scaling out infrastructure is required to enable Accelerated Networking on an ex
 The rules described next are the recommended minimum for a typical configuration. We also include what rules are mandatory for an operational cluster if optional rules aren't desired. It allows a complete security lockdown with network peering and jumpbox concepts like Azure Bastion. Failure to open the mandatory ports or approving the IP/URL will prevent proper operation of the cluster and might not be supported. 
 
 ### Inbound 
-|Priority   |Name               |Port        |Protocol  |Source             |Destination       |Action        |Mandatory
-|---        |---                |---         |---       |---                |---               |---           |---
-|3900       |Azure portal       |19080       |TCP       |ServiceFabric      |Any               |Allow         |Yes
-|3910       |Client API         |19000       |TCP       |Internet           |Any               |Allow         |No
-|3920       |SFX + Client API   |19080       |TCP       |Internet           |Any               |Allow         |No
-|3930       |Cluster            |1025-1027   |TCP       |VirtualNetwork     |Any               |Allow         |Yes
-|3940       |Ephemeral          |49152-65534 |TCP       |VirtualNetwork     |Any               |Allow         |Yes
-|3950       |Application        |20000-30000 |TCP       |VirtualNetwork     |Any               |Allow         |Yes
-|3960       |RDP                |3389        |TCP       |Internet           |Any               |Deny          |No
-|3970       |SSH                |22          |TCP       |Internet           |Any               |Deny          |No
-|3980       |Custom endpoint    |443         |TCP       |Internet           |Any               |Deny          |No
+|Priority   |Name              |Port        |Protocol  |Source             |Destination      |Action         |Mandatory
+|---        |---               |---         |---       |---                |---              |---            |---
+|3900       |Azure portal      |19080       |TCP       |ServiceFabric      |Any              |Allow          |Yes|
+|3910       |Client API        |19000       |TCP       |Internet           |Any              |Allow          |No|
+|3920       |SFX + Client API  |19080       |TCP       |Internet           |Any              |Allow          |No|
+|3930       |Cluster           |1025-1027   |TCP       |VirtualNetwork     |Any              |Allow          |Yes|
+|3940       |Ephemeral         |49152-65534 |TCP       |VirtualNetwork     |Any              |Allow          |Yes|
+|3950       |Application       |20000-30000 |TCP       |VirtualNetwork     |Any              |Allow          |Yes|
+|3960       |RDP               |3389        |TCP       |Internet           |Any              |Deny           |No|
+|3970       |SSH               |22          |TCP       |Internet           |Any              |Deny           |No|
+|3980       |Custom endpoint   |443         |TCP       |Internet           |Any              |Deny           |No|
 
 More information about the inbound security rules:
 
@@ -97,10 +98,10 @@ More information about the inbound security rules:
 
 ### Outbound
 
-|Priority   |Name               |Port        |Protocol  |Source    |Destination               |Action        |Mandatory 
-|---        |---                |---         |---       |---       |---                       |---           |---
-|4010       |Resource Provider  |443         |TCP       |Any       |ServiceFabric             |Allow         |Yes
-|4020       |Download Binaries  |443         |TCP       |Any       |AzureFrontDoor.FirstParty |Allow         |Yes
+|Priority   |Name               |Port        |Protocol  |Source   |Destination                |Action         |Mandatory 
+|---        |---                |---         |---       |---      |---                        |---            |---
+|4010       |Resource Provider  |443         |TCP       |Any      |ServiceFabric              |Allow          |Yes
+|4020       |Download Binaries  |443         |TCP       |Any      |AzureFrontDoor.FirstParty |Allow          |Yes
 
 
 More information about the outbound security rules:
@@ -112,7 +113,7 @@ More information about the outbound security rules:
 Use Azure Firewall with [NSG flow log](/azure/network-watcher/network-watcher-nsg-flow-logging-overview) and [traffic analytics](/azure/network-watcher/traffic-analytics) to track connectivity issues. The ARM template [Service Fabric with NSG](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG) is a good example to start. 
 
 > [!NOTE]
-> The default network security rules shouldn't be overwritten as they ensure the communication between the nodes. [Network Security Group - How it works](/azure/virtual-network/network-security-group-how-it-works). Another example, outbound connectivity on port 80 is needed to do the Certificate Revocation List check.
+> The default network security rules shouldn't be overwritten because they ensure communication between the nodes. For more information, see [Network Security Group - How it works](/azure/virtual-network/network-security-group-how-it-works). Also allow outbound connectivity on port 80 for Certificate Revocation List checks and to ensure proper certificate installation.
 
 ### Common scenarios needing additional rules
 
@@ -150,26 +151,30 @@ For some customers, the default NSG rules described above don't suffice to meet 
 
 The classic PowerShell tasks in Azure DevOps (Service Tag: AzureCloud) need Client API access to the cluster, examples are application deployments or operational tasks. This doesn't apply to the ARM templates only approach, including [ARM application resources](service-fabric-application-arm-resource.md).
 
-|Priority   |Name               |Port        |Protocol  |Source             |Destination       |Action     |Direction     
-|---        |---                |---         |---       |---                |---               |---        |---     
-|3915       |Azure DevOps       |19000       |TCP       |AzureCloud         |Any               |Allow      |Inbound       
+|Priority   |Name               |Port        |Protocol  |Source            |Destination    |Action     |Direction     
+|---        |---                |---         |---       |---               |---            |---        |---      
+|3915       |Azure DevOps       |19000       |TCP       |AzureCloud        |Any            |Allow      |Inbound       
 
 #### Updating Windows
 
 Best practice to patch the Windows operating system is replacing the OS disk by [automatic OS image upgrades](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md). No additional rule is required.
-The [Patch Orchestration Application](service-fabric-patch-orchestration-application.md) is managing in-VM upgrades where Windows Updates applies operating system patches, this needs access to the Download Center (Service Tag: AzureUpdateDelivery) to download the update binaries.
 
-|Priority   |Name               |Port        |Protocol  |Source    |Destination           |Action  |Direction      
-|---        |---                |---         |---       |---       |---                   |---     |---      
-|4015       |Windows Updates    |443         |TCP       |Any       |AzureUpdateDelivery   |Allow   |Outbound       
+> [!NOTE]
+> AzureUpdateDelivery is deprecated in the [Azure service tags overview](/azure/virtual-network/service-tags-overview#available-service-tags). Do not use it for new deployments. If you still use the [Patch Orchestration Application](service-fabric-patch-orchestration-application.md) for legacy in-VM Windows updates, validate your firewall or NSG rules against the current Windows update connectivity guidance for your environment.
+
+The [Patch Orchestration Application](service-fabric-patch-orchestration-application.md) can manage in-VM upgrades where Windows Updates applies operating system patches. Historically, this required access to the Download Center via the AzureUpdateDelivery service tag to download update binaries.
+
+|Priority   |Name               |Port        |Protocol  |Source   |Destination          |Action  |Direction      
+|---        |---                |---         |---       |---      |---                  |---     |---      
+|4015       |Windows Updates (deprecated)    |443         |TCP       |Any      |AzureUpdateDelivery  |Allow   |Outbound       
 
 #### API Management
 
 The integration of Azure API Management (Service Tag: ApiManagement) need Client API access to query endpoint information from the cluster. 
 
-|Priority   |Name               |Port        |Protocol  |Source             |Destination    |Action    |Direction
-|---        |---                |---         |---       |---                |---            |---       |--- 
-|3920       |API Management     |19080       |TCP       |ApiManagement      |Any            |Allow     |Inbound
+|Priority   |Name               |Port        |Protocol  |Source            |Destination    |Action    |Direction
+|---        |---                |---         |---       |---               |---            |---       |--- 
+|3920       |API Management     |19080       |TCP       |ApiManagement     |Any            |Allow     |Inbound
 
 ## Application Networking
 

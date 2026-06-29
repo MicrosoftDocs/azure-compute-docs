@@ -1,8 +1,8 @@
 ---
 title: General Purpose Azure Dedicated Host SKUs
 description: Specifications for VM packing of General Purpose ADH SKUs.
-author: vamckMS
-ms.author: vakavuru
+author: kathyygong
+ms.author: kgong
 ms.reviewer: mattmcinnes
 ms.service: azure-dedicated-host
 ms.topic: concept-article
@@ -19,6 +19,64 @@ This document goes through the hardware specifications and VM packings for all g
 ## Limitations
 
 The sizes and hardware types available for dedicated hosts vary by region. Refer to the host [pricing page](https://aka.ms/ADHPricing) to learn more.
+
+## Ddsv6
+### Ddsv6-Type1
+
+The Ddsv6-Type1 is a Dedicated Host SKU utilizing Intel's 8573B processor. It offers 96 physical cores, 192 vCPUs, and 1024 GiB of RAM. The Ddsv6-Type1 runs [Ddsv6-series](sizes/general-purpose/ddsv6-series.md) VMs. Refer to the VM size documentation to better understand specific VM performance information.
+
+The following packing configuration outlines the max packing of uniform VMs you can put onto a Ddsv6-Type1 host.
+
+| Physical cores | Available vCPUs | Available RAM | VM Size   | # VMs |
+|----------------|-----------------|---------------|-----------|-------|
+| 96             | 192             | 1024 GiB      | D2ds v6   | 32    |
+|                |                 |               | D4ds v6   | 32    |
+|                |                 |               | D8ds v6   | 25    |
+|                |                 |               | D16ds v6  | 12    |
+|                |                 |               | D32ds v6  | 6     |
+|                |                 |               | D48ds v6  | 4     |
+|                |                 |               | D64ds v6  | 3     |
+|                |                 |               | D96ds v6  | 2     |
+|                |                 |               | D128ds v6 | 1     |
+|                |                 |               | D192ds v6 | 1     |
+
+## Dsv6
+### Dsv6-Type1
+
+The Dsv6-Type1 is a Dedicated Host SKU utilizing Intel's 8573B processor. It offers 96 physical cores, 192 vCPUs, and 1024 GiB of RAM. The Dsv6-Type1 runs [Dsv6-series](sizes/general-purpose/dsv6-series.md) VMs. Refer to the VM size documentation to better understand specific VM performance information.
+
+The following packing configuration outlines the max packing of uniform VMs you can put onto a Dsv6-Type1 host.
+
+| Physical cores | Available vCPUs | Available RAM | VM Size   | # VMs |
+|----------------|-----------------|---------------|-----------|-------|
+| 96             | 192             | 1024 GiB      | D2s v6    | 32    |
+|                |                 |               | D4s v6    | 32    |
+|                |                 |               | D8s v6    | 25    |
+|                |                 |               | D16s v6   | 12    |
+|                |                 |               | D32s v6   | 6     |
+|                |                 |               | D48s v6   | 4     |
+|                |                 |               | D64s v6   | 3     |
+|                |                 |               | D96s v6   | 2     |
+|                |                 |               | D128s v6  | 1     |
+|                |                 |               | D192s v6  | 1     |
+
+## Dasv6
+### Dasv6-Type1
+
+The Dasv6-Type1 is a Dedicated Host SKU utilizing AMD's EPYC™ 9V74 processor. It offers 80 physical cores, 144 vCPUs, and 768 GiB of RAM. The Dasv6-Type1 runs [Dasv6-series](sizes/general-purpose/dasv6-series.md) VMs. Refer to the VM size documentation to better understand specific VM performance information.
+
+The following packing configuration outlines the max packing of uniform VMs you can put onto a Dasv6-Type1 host.
+
+| Physical cores | Available vCPUs | Available RAM | VM Size   | # VMs |
+|----------------|-----------------|---------------|-----------|-------|
+| 80             | 144             | 768 GiB       | D2as v6  | 32    |
+|                |                 |               | D4as v6  | 32    |
+|                |                 |               | D8as v6  | 18    |
+|                |                 |               | D16as v6 | 9     |
+|                |                 |               | D32as v6 | 4     |
+|                |                 |               | D48as v6 | 3     |
+|                |                 |               | D64as v6 | 2     |
+|                |                 |               | D96as v6 | 1     |
 
 ## Dadsv5
 ### Dadsv5-Type1

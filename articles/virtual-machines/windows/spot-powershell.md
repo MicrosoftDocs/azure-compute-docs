@@ -1,13 +1,13 @@
 ---
 title: Use PowerShell to deploy Azure Spot Virtual Machines
 description: Learn how to use Azure PowerShell to deploy Azure Spot Virtual Machines to save on costs.
-author: cynthn
+author: iamwilliew
 ms.service: azure-virtual-machines
 ms.subservice: azure-spot-vm
 ms.topic: how-to
 ms.date: 02/28/2023
-ms.author: cynthn
-ms.reviewer: cynthn
+ms.author: wwilliams
+ms.reviewer: wwilliams
 ms.custom: devx-track-azurepowershell
 # Customer intent: "As a cloud engineer, I want to deploy Azure Spot Virtual Machines using PowerShell, so that I can take advantage of unused capacity for cost savings on suitable workloads while managing evictions effectively."
 ---

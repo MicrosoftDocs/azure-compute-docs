@@ -7,7 +7,7 @@ ms.service: azure-virtual-machines
 ms.topic: how-to
 ms.update-cycle: 180-days
 ms.date: 04/24/2023
-ms.reviewer: cynthn, jushiman, mattmcinnes
+ms.reviewer: jushiman, mattmcinnes
 ms.custom: template-how-to, devx-track-azurecli, devx-track-azurepowershell, portal
 # Customer intent: As an IT administrator, I want to create a capacity reservation and group in a cloud environment, so that I can ensure dedicated compute resources for my virtual machine deployment.
 ---
@@ -371,7 +371,7 @@ Alternatively, you can remove the *zone* information to create a regional Capaci
 
 ## Check on your capacity reservation 
 
-After the capacity reservation is successfully created, it's immediately available for use with VMs.
+After the capacity reservation is successfully created, it's immediately available for use with VMs. The `currentCapacity` field from the capacity reservation's instance view provides the current capacity of the VM size which was reserved successfully. See [Capacity Reservations - Get](/rest/api/compute/capacity-reservations/get).
 
 ### [API](#tab/api2)
 

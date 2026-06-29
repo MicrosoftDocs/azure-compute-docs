@@ -147,6 +147,10 @@
     href: virtual-machine-scale-sets-automatic-instance-repairs.md
   - name: Resilient create and delete (Preview)
     href: resilient-vm-create-delete.md
+  - name: Migrate VMs to an availability zone (Preview)
+    href: ./../virtual-machines/migrate-to-availability-zone.md
+  - name: Migrate from regional to zonal scale sets (Preview)
+    href: migrate-scale-set-flex-to-availability-zones.md
 - name: Cost optimization
   items:
   - name: Azure Spot Virtual Machines
@@ -197,6 +201,9 @@
     href: /azure/operational-excellence/relocation-virtual-machine-scale-sets
   - name: Migrate to Flexible Orchestration
     href: flexible-virtual-machine-scale-sets-migration-resources.md
+    maintainContext: true
+  - name: Migrate from availability sets (preview)
+    href: ../virtual-machines/availability-set-migrate-to-scale-sets.md
     maintainContext: true
   - name: Proximity placement groups
     href: proximity-placement-groups.md

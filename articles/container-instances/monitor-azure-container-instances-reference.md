@@ -104,7 +104,7 @@ For example, here's how you can use `New-AzDiagnosticSetting` command to apply a
 
 ```azurepowershell
 $log = @()
-$log += New-AzDiagnosticSettingLogSettingsObject -Enabled $true -Category ContainerInstanceLog -RetentionPolicyDay 7 -RetentionPolicyEnabled $true
+$log += New-AzDiagnosticSettingLogSettingsObject -Enabled $true -Category ContainerInstanceLog
  
 New-AzDiagnosticSetting -Name test-setting -ResourceId <container-group-resource-id> -WorkspaceId <log-analytics-workspace-id> -Log $log
 ```

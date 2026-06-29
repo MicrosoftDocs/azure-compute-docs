@@ -1,13 +1,13 @@
 ---
 title: About Azure Spot Virtual Machines
 description: Learn about Azure Spot Virtual Machines to save on costs.
-author: cynthn
-ms.author: cynthn
+author: iamwilliew
+ms.author: wwilliams
 ms.service: azure-virtual-machines
 ms.subservice: azure-spot-vm
 ms.topic: overview
 ms.date: 02/06/2026
-ms.reviewer: cynthn
+ms.reviewer: wwilliams
 # Customer intent: "As a cost-conscious IT manager, I want to utilize Azure Spot Virtual Machines for my batch processing and development environments, so that I can leverage unused capacity and significantly reduce expenses while accepting possible interruptions."
 ---
 

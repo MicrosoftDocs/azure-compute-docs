@@ -35,7 +35,7 @@ The [marketplace image](https://azuremarketplace.microsoft.com/en-us/marketplace
 > - Ubuntu 24.04
 >   
 > For other Linux distributions, see:
-> - [Quick start installation guide - ROCm installation (Linux)](https://rocm.docs.amd.com/projects/install-on-linux/en/docs-6.3.3/install/quick-start.html)
+> - [Quick start installation guide - ROCm installation (Linux)](https://rocm.docs.amd.com/projects/install-on-linux/en/latest/install/quick-start.html)
 > - [ROCm release history - ROCm Documentation](https://rocm.docs.amd.com/en/latest/release/versions.html#rocm-release-history)
 
 Install the AMD Linux Driver to leverage the full capabilities of the AMD Radeon PRO V710 GPU on an NVv5-V710 GPU Linux instance in Microsoft Azure. The sections that follow provide detailed instructions for installing the Linux driver and running inference workloads using ROCm on this instance type.
@@ -109,8 +109,9 @@ sudo apt update
 sudo apt install "linux-headers-$(uname -r)" "linux-modules-extra-$(uname -r)"
 sudo apt install python3-setuptools python3-wheel
 sudo usermod -a -G render,video $LOGNAME
-wget https://repo.radeon.com/amdgpu-install/7.0.1/ubuntu/jammy/amdgpu-install_7.0.1.70001-1_all.deb
-sudo apt install ./amdgpu-install_7.0.1.70001-1_all.deb
+wget https://repo.radeon.com/amdgpu-install/7.2.2/ubuntu/jammy/amdgpu-install_7.2.2.70202-1_all.deb
+sudo apt install ./amdgpu-install_7.2.2.70202-1_all.deb
+sudo sed -i "s|graphics/7.2.2|graphics/7.2.1|" /etc/apt/sources.list.d/rocm.list
 sudo apt update
 sudo apt install amdgpu-dkms rocm
 ```
@@ -122,8 +123,9 @@ sudo apt update
 sudo apt install "linux-headers-$(uname -r)" "linux-modules-extra-$(uname -r)"
 sudo apt install python3-setuptools python3-wheel
 sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groups
-wget https://repo.radeon.com/amdgpu-install/7.0.1/ubuntu/noble/amdgpu-install_7.0.1.70001-1_all.deb
-sudo apt install ./amdgpu-install_7.0.1.70001-1_all.deb
+wget https://repo.radeon.com/amdgpu-install/7.2.2/ubuntu/noble/amdgpu-install_7.2.2.70202-1_all.deb
+sudo apt install ./amdgpu-install_7.2.2.70202-1_all.deb
+sudo sed -i "s|graphics/7.2.2|graphics/7.2.1|" /etc/apt/sources.list.d/rocm.list
 sudo apt update
 sudo apt install amdgpu-dkms rocm
 ```
@@ -188,7 +190,7 @@ This section covers installing the AMD driver for graphics workloads with ROCm l
 
 **System requirements:**
 
-- Ubuntu 22.04 with kernel 6.5
+- Ubuntu 24.04 with kernel 6.8
 - Disk size greater than 64GB
 - Desktop environment (for graphics workloads, use Ubuntu Desktop ISO)
 
@@ -220,40 +222,6 @@ Complete the following pre-installation steps.
    sudo apt install "linux-headers-$(uname -r)" "linux-modules-extra-$(uname -r)"
    ```
 
-### Blocklist default driver
-
-Follow these steps to blocklist the default driver.
-
-1. Check if the driver is already blocklisted:
-
-   ```bash
-   grep amdgpu /etc/modprobe.d/* -rn
-   ```
-
-1. If not blocklisted, add it:
-
-   ```bash
-   sudo vim /etc/modprobe.d/blacklist.conf
-   ```
-
-1. Add this line:
-
-   ```
-   blacklist amdgpu
-   ```
-
-1. Apply changes:
-
-   ```bash
-   sudo update-initramfs -uk all
-   ```
-
-1. Reboot the system:
-
-   ```bash
-   sudo reboot
-   ```
-
 ### Install AMD driver with graphics support
 
 Follow these steps to install the AMD driver with graphics support.
@@ -267,7 +235,7 @@ Follow these steps to install the AMD driver with graphics support.
 1. Download the installer:
 
    ```bash
-   wget -N -P /tmp/ https://repo.radeon.com/amdgpu-install/6.1.4/ubuntu/jammy/amdgpu-install_6.1.60104-1_all.deb
+   wget -N -P /tmp/  https://repo.radeon.com/amdgpu-install/.6.4.2.2/ubuntu/noble/amdgpu-install_6.4.2.2.60402-1_all.deb
    ```
 
 1. If a previous driver exists, remove it:
@@ -280,7 +248,10 @@ Follow these steps to install the AMD driver with graphics support.
 1. Install the new driver:
 
    ```bash
-   sudo apt-get install /tmp/amdgpu-install_6.1.60104-1_all.deb
+   sudo apt-get install /tmp/amdgpu-install_6.4.2.2.60402-1_all.deb
+   sudo amdgpu-setup -b https://repo.radeon.com/.hidden/7870d5fc33d4766bda9336f8ad1c990e
+   sudo gpg --keyserver keyserver.ubuntu.com --recv-keys 9386B48A1A693C5C
+   sudo gpg --export --armor 9386B48A1A693C5C | sudo tee /etc/apt/trusted.gpg.d/amdgpu.asc
    sudo amdgpu-install --usecase=workstation,rocm,amf --opencl=rocr --vulkan=pro --no-32 --accept-eula
    ```
 
@@ -404,9 +375,9 @@ x11vnc --forever -find
 
 ## Troubleshooting
 
-### Downgrade to kernel 6.5
+### Downgrade to kernel 6.8
 
-If you're running kernel 6.8, you can downgrade to 6.5 for compatibility by following these steps.
+You can downgrade to 6.8 for compatibility by following these steps.
 
 1. Check loaded kernels:
 
@@ -414,16 +385,10 @@ If you're running kernel 6.8, you can downgrade to 6.5 for compatibility by foll
    dpkg --list | egrep -i --color 'linux-image|linux-headers|linux-modules' | awk '{ print $2 }'
    ```
 
-1. Install kernel 6.5:
+1. Install kernel 6.8:
 
    ```bash
-   sudo apt install linux-image-6.5.0-1025-azure
-   ```
-
-1. Remove kernel 6.8:
-
-   ```bash
-   sudo apt purge linux-headers-6.8.0-1025-azure linux-image-6.8.0-1025-azure linux-modules-6.8.0-1025-azure
+   sudo apt install linux-image-6.8.0-1025-azure
    ```
 
 1. Edit GRUB:
@@ -432,10 +397,10 @@ If you're running kernel 6.8, you can downgrade to 6.5 for compatibility by foll
    sudo vim /etc/default/grub
    ```
 
-1. Set kernel 6.5 as default:
+1. Set kernel 6.8 as default:
 
    ```
-   GRUB_DEFAULT="Advanced options for Ubuntu>Ubuntu, with Linux 6.5.0-1025-azure"
+   GRUB_DEFAULT="Advanced options for Ubuntu>Ubuntu, with Linux 6.8.0-1025-azure"
    ```
 
 1. Update GRUB and reboot:
@@ -450,7 +415,10 @@ If you're running kernel 6.8, you can downgrade to 6.5 for compatibility by foll
    ```bash
    uname -a
    ```
-
+1. Remove kernel references to 6.17:
+   ```bash
+   sudo apt purge linux-headers-6.17.0-1011-azure linux-image-6.17.0-1011-azure linux-modules-6.17.0-1011-azure linux-modules-extra-6.17.0-1011-azure
+   ```
 ---
 
 ## Uninstalling the AMD GPU driver

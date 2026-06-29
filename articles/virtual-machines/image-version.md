@@ -7,7 +7,7 @@ ms.subservice: gallery
 ms.topic: how-to
 ms.date: 09/20/2023
 ms.author: saraic
-ms.reviewer: cynthn
+ms.reviewer: wwilliams
 # Customer intent: "As a cloud administrator, I want to create an image definition and version in an Azure Compute Gallery, so that I can efficiently manage and share custom VM images across my organization."
 ---
 

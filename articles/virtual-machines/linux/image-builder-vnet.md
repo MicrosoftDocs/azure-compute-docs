@@ -3,7 +3,7 @@ title: Use Azure VM Image Builder for Linux VMs to access an existing Azure virt
 description: Use Azure VM Image Builder to create a basic, customized Linux image that has access to existing resources on a virtual network.
 author: kof-f
 ms.author: kofiforson
-ms.reviewer: cynthn
+ms.reviewer: wwilliams
 ms.date: 03/02/2021
 ms.topic: how-to
 ms.service: azure-virtual-machines

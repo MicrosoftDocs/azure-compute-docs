@@ -7,7 +7,7 @@ ms.subservice: gallery
 ms.topic: how-to
 ms.date: 08/15/2023
 ms.author: saraic
-ms.reviewer: cynthn, mattmcinnes
+ms.reviewer: mattmcinnes
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 # Customer intent: As a cloud administrator, I want to create a virtual machine from a specialized image in an Azure Compute Gallery, so that I can efficiently deploy pre-configured environments based on standardized images.
 ---

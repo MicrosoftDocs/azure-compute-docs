@@ -3,7 +3,7 @@ title: List, update, and delete resources
 description: List, update, and delete resources in your Azure Compute Gallery.
 author: sandeepraichura
 ms.author: saraic
-ms.reviewer: cynthn, mattmcinnes
+ms.reviewer: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: gallery
 ms.topic: how-to

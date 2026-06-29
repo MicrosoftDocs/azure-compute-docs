@@ -5,7 +5,7 @@ author: mimckitt
 ms.author: mimckitt
 ms.service: azure-virtual-machine-scale-sets
 ms.topic: how-to
-ms.date: 5/6/2025
+ms.date: 05/19/2026
 ms.update-cycle: 180-days
 ms.custom: portal
 # Customer intent: "As a cloud administrator managing standby pools, I want to configure role-based access control permissions, so that I can ensure proper functionality and prevent issues with resource creation and management in my subscription."
@@ -22,7 +22,7 @@ To allow standby pools to create and manage virtual machines in your subscriptio
 > [!IMPORTANT]
 > These permissions may not fully encompass all scenarios. If your standby pool uses specific resources, such as compute gallery images in other subscriptions, ensure the standby pool resource provider has access to those resources.
 
-To cover as many scenarios as possible, it is suggested to provide the following permissions to the standby pool resource provider: 
+To cover as many scenarios as possible, we recommend providing the following permissions to the standby pool resource provider: 
 
 - **Virtual Machine Contributor**
 - **Network Contributor**

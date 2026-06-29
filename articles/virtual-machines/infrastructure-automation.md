@@ -1,12 +1,12 @@
 ---
 title: Use infrastructure automation tools
 description: Learn how to use infrastructure automation tools such as Ansible, Chef, Puppet, Terraform, and Packer to create and manage virtual machines in Azure.
-author: cynthn
+author: iamwilliew
 ms.service: azure-virtual-machines
 ms.topic: concept-article
 ms.custom: devx-track-terraform, devx-track-arm-template, devx-track-ansible, devx-track-jenkins, devx-track-bicep
 ms.date: 09/21/2023
-ms.author: cynthn
+ms.author: wwilliams
 ms.reviewer: mattmcinnes
 # Customer intent: As a cloud engineer, I want to utilize infrastructure automation tools to create and manage Azure virtual machines, so that I can streamline processes and ensure consistency in deployment and configuration.
 ---
@@ -116,7 +116,7 @@ Learn how to:
 
 
 ## Chef
-[Chef](https://www.chef.io/) is an automation platform that helps define how your infrastructure is configured, deployed, and managed. Some components include Chef Habitat for application lifecycle automation rather than the infrastructure, and Chef InSpec that helps automate compliance with security and policy requirements. Chef Clients are installed on target machines, with one or more central Chef Servers that store and manage the configurations. For more information, see [An Overview of Chef](https://docs.chef.io/chef_overview.html).
+[Chef](https://www.chef.io/) is an automation platform that helps define how your infrastructure is configured, deployed, and managed. Some components include Chef Habitat for application lifecycle automation rather than the infrastructure, and Chef InSpec that helps automate compliance with security and policy requirements. Chef Clients are installed on target machines, with one or more central Chef Servers that store and manage the configurations. For more information, see [An Overview of Chef](https://docs.chef.io/platform_overview.html).
 
 Learn how to:
 

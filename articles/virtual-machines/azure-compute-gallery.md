@@ -1,14 +1,13 @@
 ---
 title: Overview of Azure Compute Gallery
 description: Learn about Azure Compute Gallery and how to share Azure resources.
-author: cynthn
-ms.author: cynthn
+author: iamwilliew
+ms.author: wwilliams
 ms.service: azure-virtual-machines
 ms.subservice: gallery
 ms.topic: overview
 ms.date: 09/20/2023
-ms.reviewer: cynthn, mattmcinnes
-# Customer intent: As a cloud architect, I want to use Azure Compute Gallery to manage and share image resources efficiently across multiple regions, so that I can enhance deployment scalability, maintain high availability, and optimize storage for my organization's applications and virtual machines.
+ms.reviewer: mattmcinnes # Customer intent: As a cloud architect, I want to use Azure Compute Gallery to manage and share image resources efficiently across multiple regions, so that I can enhance deployment scalability, maintain high availability, and optimize storage for my organization's applications and virtual machines.
 ---
 
 # Store and share resources in Azure Compute Gallery

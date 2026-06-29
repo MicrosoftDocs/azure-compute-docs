@@ -1,8 +1,8 @@
 ---
 title: Boot integrity monitoring overview
 description: Learn how to use the Guest Attestation extension to secure boot your virtual machine and how to handle traffic blocking.
-author: cynthn
-ms.author: cynthn
+author: iamwilliew
+ms.author: wwilliams
 ms.service: azure-virtual-machines
 ms.subservice: trusted-launch
 ms.topic: concept-article
@@ -190,10 +190,6 @@ To unblock Azure Attestation traffic in a firewall by using an application rule 
    :::image type="content" source="./media/trusted-launch/firewall-application-rule.png" lightbox="./media/trusted-launch/firewall-application-rule.png" alt-text="Screenshot that shows adding the application rule route.":::
 
 1. Configure the name, source, and protocol. The source type is for a single IP address. Select the IP group to allow multiple IP addresses through the firewall.
-
-### Regional shared providers
-
-Azure Attestation provides a [regional shared provider](https://maainfo.azurewebsites.net/) in each available region. You can choose to use the regional shared provider for attestation or create your own providers with custom policies. Any Microsoft Entra user can access shared providers. The policy associated with it can't be changed.
 
 > [!NOTE]
 > You can configure the source type, service, destination port ranges, protocol, priority, and name.

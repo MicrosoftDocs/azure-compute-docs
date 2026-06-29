@@ -6,7 +6,7 @@ ms.author: brittanyrowe
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: autoscale
-ms.date: 04/01/2025
+ms.date: 05/19/2026
 ms.reviewer: mimckitt
 ms.custom: avverma
 

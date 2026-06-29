@@ -215,4 +215,4 @@ If you are looking to customize your virtual node installation, see [Node Custom
 If you are planning to deploy high-scale workloads (thousands of pods per minute) on virtual nodes, we have [best practices and recommendations](https://github.com/microsoft/virtualnodesOnAzureContainerInstances/blob/main/Docs/HighScaleBestPractices.md).
 
 <!-- LINKS - External -->
-[azure-free-account]: https://azure.microsoft.com/free/
+[azure-free-account]: https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn

@@ -7,7 +7,7 @@ ms.subservice: gallery
 ms.topic: how-to
 ms.date: 02/14/2023
 ms.author: saraic
-ms.reviewer: cynthn
+ms.reviewer: wwilliams
 ms.custom: template-how-to , devx-track-azurecli
 ms.devlang: azurecli
 # Customer intent: As a cloud administrator, I want to share a gallery with specific subscriptions and tenants, so that I can provide controlled read-only access to images for users within my organization and facilitate image deployment efficiently.

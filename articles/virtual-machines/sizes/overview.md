@@ -296,10 +296,13 @@ List of high performance computing optimized VM size families:
 | Family | Workloads | Series List |
 |----|---|---|
 | [HB-family](./high-performance-compute/hb-family.md) | High memory bandwidth <br> Fluid Dynamics <br> Weather modeling |  [HBv2-series](./high-performance-compute/hbv2-series.md) <br> [HBv3-series](./high-performance-compute/hbv3-series.md) <br> [HBv4-series](./high-performance-compute/hbv4-series.md) <br> [HBv5-series](./high-performance-compute/hbv5-series.md) |
-| [HC-family](./high-performance-compute/hc-family.md) | High density compute <br> Finite element analysis <br> Molecular dynamics <br> Computational chemistry | [HC-series](./high-performance-compute/hc-series.md) |
+| [HC-family](./high-performance-compute/hc-family.md) | High density compute <br> Finite element analysis <br> Molecular dynamics <br> Computational chemistry | [HC-series *(retiring May 31, 2027)*](./high-performance-compute/hc-series.md) |
 | [HX-family](./high-performance-compute/hx-family.md) | Large memory capacity <br> Electronic Design Automation (EDA) | [HX-series](./high-performance-compute/hx-series.md) |
 
-To learn more about a specific size family or series, select the tab for that family and scroll to find your desired size series. 
+To learn more about a specific size family or series, select the tab for that family and scroll to find your desired size series.
+
+> [!NOTE]
+> HC-series (Standard_HC44rs, Standard_HC44-16rs, Standard_HC44-32rs) will be retired on May 31, 2027. After this date, remaining HC-series VMs will be deallocated, stop running, and will no longer have SLA or support. Sales of 1-year and 3-year Reserved Instances for HC-series ended on April 2, 2026. For new deployments, consider [HBv5-series](./high-performance-compute/hbv5-series.md) for higher performance and price-performance, or [HX-series](./high-performance-compute/hx-series.md) for high-memory HPC workloads.
 
 #### [HB family](#tab/hpc-hb-fam)
 [!INCLUDE [hb-family-summary](./high-performance-compute/includes/hb-family-summary.md)]
@@ -313,6 +316,9 @@ To learn more about a specific size family or series, select the tab for that fa
 
 [View the full HC family page](./high-performance-compute/hc-family.md)
 [!INCLUDE [hc-series-workloads](./high-performance-compute/includes/hc-family-workloads.md)]
+
+> [!NOTE]
+> Sales of 1-year and 3-year Reserved Instances for HC-series ended on April 2, 2026. HC-series is scheduled for retirement on May 31, 2027. Plan capacity accordingly.
 
 
 #### [HX family](#tab/hpc-hx-fam)

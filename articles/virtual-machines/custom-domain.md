@@ -7,7 +7,7 @@ ms.subservice: networking
 ms.topic: how-to
 ms.date: 02/23/2023
 ms.author: jamesserra
-ms.reviewer: cynthn
+ms.reviewer: wwilliams
 ms.custom: sfi-image-nochange
 # Customer intent: "As a cloud administrator, I want to connect a custom domain to my virtual machine, so that I can ensure my web resources are accessible via a user-friendly URL."
 ---
