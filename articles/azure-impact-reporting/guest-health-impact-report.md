@@ -133,7 +133,7 @@ timeout 60 sudo /root/scripts/GPU/kvp_client | grep "PhysicalHostName;" | awk '{
 
 ## HTTP response status codes for impact creation
 
-When you submit a Guest Health Report impact successfully, an appropriate repair action may follow. To track downstream evaluation and actions, continue to [query workload impact insights](#list-insights-for-a-workload-impact).
+When you successfully submit a Guest Health Report impact, an appropriate repair action might follow. To track downstream evaluation and actions, continue to [query workload impact insights](#list-insights-for-a-workload-impact).
 
 | HTTP Status Code | Description |
 |---|---|
