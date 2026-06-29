@@ -137,7 +137,7 @@ When you successfully submit a Guest Health Report impact, an appropriate repair
 
 | HTTP Status Code | Description |
 |---|---|
-| 200 OK | The impact submission was accepted. Azure may perform an appropriate repair action. |
+| 200 OK | The impact submission was accepted. Azure might perform an appropriate repair action. |
 | 400 BadRequest | The impact failed validation. Check the response `message` field to confirm the reason for the failure. |
 | 404 NotFound | The impacted resource wasn't found. Verify the resource provided as part of `additionalProperties` exists. |
 | 429 TooManyRequests | The request was rate limited. Resubmit it later. |
