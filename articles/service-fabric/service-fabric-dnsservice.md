@@ -196,7 +196,7 @@ For managed clusters, check that the `apiVersion` is set to `2022-10-01-preview`
 ```
 
 ### Setting the DNS name for a default service in the ApplicationManifest.xml
-Open your project in Visual Studio, or your favorite editor, and open the ApplicationManifest.xml file. Go to the default services section, and for each service add the `ServiceDnsName` attribute. The following example shows how to set the DNS name of the service to `stateless1.application1.internal`
+Open your project in Visual Studio, or your favorite editor, and open the ApplicationManifest.xml file. Go to the default services section, and for each service add the `ServiceDnsName` attribute. The following example shows how to set the DNS name of the service to `stateless1.application1.internal`:
 
 ```xml
 <Service Name="Stateless1" ServiceDnsName="stateless1.application1.internal">
