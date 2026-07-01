@@ -498,6 +498,10 @@
            href: ./sizes/memory-optimized/mbsv3-series.md
          - name: Mbdsv3 series
            href: ./sizes/memory-optimized/mbdsv3-series.md
+         - name: Mbsv4 series
+           href: ./sizes/memory-optimized/mbsv4-series.md
+         - name: Mbdsv4 series
+           href: ./sizes/memory-optimized/mbdsv4-series.md
        - name: Retirement Migration guides
          items:
          - name: Msv2 and Mdsv2 migration guide
