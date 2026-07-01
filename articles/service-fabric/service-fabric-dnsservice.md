@@ -135,7 +135,7 @@ The DNS name for your service is resolvable throughout the cluster, so it is imp
 It is highly recommended that you use a naming scheme of `<ServiceName>.<AppName>.internal`; for example, `service1.application1.internal`. If an application is deployed using Docker compose, services are automatically assigned DNS names using this naming scheme.
 
 > [!WARNING]
-> Do not use public top-level domains or other externally delegated DNS suffixes for Service Fabric service DNS names (for example: .app, .com, .net, .org, .io). Use internal-only suffixes such as .internal to avoid collisions, ambiguous resolution behavior, and accidental dependency on public DNS naming conventions.
+> Don't use public top-level domains or other externally delegated DNS suffixes for Service Fabric service DNS names (for example: .app, .com, .net, .org, .io). Use internal-only suffixes such as .internal to avoid collisions, ambiguous resolution behavior, and accidental dependency on public DNS naming conventions.
 
 ### Setting the DNS name with ARM template
 If you are using ARM templates to deploy your services, you can add the `serviceDnsName` property to the appropriate section and assign a value to it. Examples can be seen below:
