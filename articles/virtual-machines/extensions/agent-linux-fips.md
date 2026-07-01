@@ -30,9 +30,6 @@ Afterward, validate to ensure the functionality of the VM extensions.
 
 ---
 
-> [!WARNING]
-> We have identified a known issue where the 'enableFips1403Encryption' property does not consistently propagate to VMSS VM instances. A fix is currently in deployment, and we anticipate broad availability of the resolution in early July 2026.
-
 ## Implement prerequisites
 
 ### 1. Per-VM opt-in
