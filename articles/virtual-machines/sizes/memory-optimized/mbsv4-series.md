@@ -36,7 +36,7 @@ vCPUs (Qty.) and Memory for each size
 | Standard_M96bs_1_v4 | 96 | 768 |
 | Standard_M128bs_1_v4 | 128 | 1024 |
 | Standard_M256bs_2_v4 | 256 | 2048 |
-| Standard_M304bs_2_v4 | 304 | 3892 |
+| Standard_M304bs_4_v4 | 304 | 3892 |
 
 #### VM Basics resources
 - [Check vCPU quotas](../../../virtual-machines/quotas.md)

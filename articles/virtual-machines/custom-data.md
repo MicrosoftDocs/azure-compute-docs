@@ -1,23 +1,26 @@
 ---
- title: Custom data and Azure virtual machines
- description: This article gives details on using custom data and cloud-init on Azure virtual machines.
+ title: Custom data on Azure virtual machines
+ description: Learn how to use custom data to inject scripts or other metadata into Linux and Windows Azure virtual machines at provisioning time.
  services: virtual-machines
  author: mimckitt
  ms.service: azure-virtual-machines
  ms.topic: how-to
- ms.date: 02/24/2023
+ ms.date: 05/28/2026
  ms.author: mimckitt
  ms.reviewer: mattmcinnes
 # Customer intent: As a cloud administrator, I want to inject custom data into Azure virtual machines during provisioning, so that I can configure the VM with specific scripts and metadata for seamless setup and management.
 ---
 
-# Custom data and cloud-init on Azure Virtual Machines
+# Custom data on Azure virtual machines
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets
 
-You might need to inject a script or other metadata into a Microsoft Azure virtual machine (VM) at provisioning time. In other clouds, this concept is often called  *user data*. Microsoft Azure has a similar feature called *custom data*. 
+You might need to inject a script or other metadata into a Microsoft Azure virtual machine (VM) at provisioning time. Azure supports this scenario through a feature called *custom data*.
 
-Custom data is made available to the VM during first startup or setup, which is called *provisioning*. Provisioning is the process where VM creation parameters (for example, host name, username, password, certificates, custom data, and keys) are made available to the VM. A provisioning agent, such as the [Linux Agent](./extensions/agent-linux.md) or [cloud-init](./linux/using-cloud-init.md#troubleshooting-cloud-init), processes those parameters. 
+Custom data is made available to the VM during first startup or setup, which is called *provisioning*. Provisioning is the process where VM creation parameters (for example, host name, username, password, certificates, custom data, and keys) are made available to the VM. A provisioning agent, such as the [cloud-init](./linux/using-cloud-init.md#troubleshooting-cloud-init), processes those parameters.
+
+> [!NOTE]
+> Azure also offers a separate [user data](./user-data.md) feature. Unlike custom data, user data is retrievable from the [Azure Instance Metadata Service (IMDS)](./linux/instance-metadata-service.md?tabs=linux#get-user-data), is persistent for the lifetime of the VM, and can be updated without stopping or reimaging the VM. Use user data when you need post-provision access or updates; use custom data when you need a payload processed by the provisioning agent at first boot.
 
 ## Pass custom data to the VM
 To use custom data, you must Base64-encode the contents before passing the data to the API--unless you're using a CLI tool that does the conversion for you, such as the Azure CLI. The size can't exceed 64 KB.
@@ -59,7 +62,9 @@ In Azure Resource Manager, there's a [base64 function](/azure/azure-resource-man
 The provisioning agents installed on the VMs handle communication with the platform and placing data on the file system. 
 
 ### Windows
-Custom data is placed in *%SYSTEMDRIVE%\AzureData\CustomData.bin* as a binary file, but it isn't processed. If you want to process this file, you need to build a custom image and write code to process *CustomData.bin*.
+Custom data is placed in *%SystemDrive%\AzureData\CustomData.bin* as a binary file, but it isn't processed. To process this file, build a custom image and write code that reads *CustomData.bin*.
+
+The *%SystemDrive%\AzureData* folder is secured during provisioning so that only **NT AUTHORITY\SYSTEM** and **BUILTIN\Administrators** have full control, and *CustomData.bin* inherits these permissions. If you copy *CustomData.bin* elsewhere for processing, set permissions on the destination explicitly, as its permissions don’t transfer with the file..
 
 ### Linux  
 On Linux operating systems, custom data is passed to the VM via the *ovf-env.xml* file. That file is copied to the */var/lib/waagent* directory during provisioning. Newer versions of the Linux Agent copy the Base64-encoded data to */var/lib/waagent/CustomData* for convenience.
@@ -95,4 +100,4 @@ For single VMs, you can't update custom data in the VM model. But for Virtual Ma
 We advise *not* to store sensitive data in custom data. For more information, see [Azure data security and encryption best practices](/azure/security/fundamentals/data-encryption-best-practices).
 
 ### Is custom data made available in IMDS?
-Custom data isn't available in Azure Instance Metadata Service (IMDS). We suggest using user data in IMDS instead. For more information, see [User data through Azure Instance Metadata Service](./linux/instance-metadata-service.md?tabs=linux#get-user-data).
+No. Custom data isn't surfaced through the Azure Instance Metadata Service (IMDS). If you need to retrieve a payload from inside the VM after provisioning, or update it without stopping or reimaging the VM, use the [user data](./user-data.md) feature instead. For details on reading user data from IMDS, see [Get user data](./linux/instance-metadata-service.md?tabs=linux#get-user-data).
