@@ -55,7 +55,7 @@ If you are creating a managed cluster in the portal, DNS service is enabled by d
 
 ### Existing clusters
 If you are updating an existing managed cluster to enable DNS service, you can do so from the portal by visiting the **Add-on services** page from the cluster resource page. Otherwise, you can enable DNS service using alternative methods that are referenced below:
-  - Use the ARM template that was used to deploy the cluster, if applicable.
+- Use the ARM template that was used to deploy the cluster, if applicable.
   - Navigate to the cluster on [Azure Resource Explorer](https://resources.azure.com/) and update the cluster resource, as seen in the steps further below (from step 2 and onward).
   - Navigate to the cluster on the portal and click **Export Template**. To learn more, see [Export the template from resource group](/azure/azure-resource-manager/templates/export-template-portal).
 
@@ -132,7 +132,10 @@ You can set DNS names for your services with ARM templates, with default service
 
 The DNS name for your service is resolvable throughout the cluster, so it is important to ensure the uniqueness of the DNS name across the cluster.
 
-It is highly recommended that you use a naming scheme of `<ServiceName>.<AppName>`; for example, `service1.application1`. If an application is deployed using Docker compose, services are automatically assigned DNS names using this naming scheme.
+It is highly recommended that you use a naming scheme of `<ServiceName>.<AppName>.internal`; for example, `service1.application1.internal`. If an application is deployed using Docker compose, services are automatically assigned DNS names using this naming scheme.
+
+> [!WARNING]
+> Do not use public top-level domains or other externally delegated DNS suffixes for Service Fabric service DNS names (for example: .app, .com, .net, .org, .io). Use internal-only suffixes such as .internal to avoid collisions, ambiguous resolution behavior, and accidental dependency on public DNS naming conventions.
 
 ### Setting the DNS name with ARM template
 If you are using ARM templates to deploy your services, you can add the `serviceDnsName` property to the appropriate section and assign a value to it. Examples can be seen below:
@@ -193,20 +196,20 @@ For managed clusters, check that the `apiVersion` is set to `2022-10-01-preview`
 ```
 
 ### Setting the DNS name for a default service in the ApplicationManifest.xml
-Open your project in Visual Studio, or your favorite editor, and open the ApplicationManifest.xml file. Go to the default services section, and for each service add the `ServiceDnsName` attribute. The following example shows how to set the DNS name of the service to `stateless1.application1`
+Open your project in Visual Studio, or your favorite editor, and open the ApplicationManifest.xml file. Go to the default services section, and for each service add the `ServiceDnsName` attribute. The following example shows how to set the DNS name of the service to `stateless1.application1.internal`
 
 ```xml
-<Service Name="Stateless1" ServiceDnsName="stateless1.application1">
+<Service Name="Stateless1" ServiceDnsName="stateless1.application1.internal">
   <StatelessService ServiceTypeName="Stateless1Type" InstanceCount="[Stateless1_InstanceCount]">
     <SingletonPartition />
   </StatelessService>
 </Service>
 ```
 
-The following example sets the DNS name for a stateful service to `stateful1.application1`. The service uses a named partitioning scheme. Notice that the partition names are lower-case. This is a requirement for partitions that will be targeted in DNS queries; for more information, see [Making DNS queries on a stateful service partition](#making-dns-queries-on-a-stateful-service-partition).
+The following example sets the DNS name for a stateful service to `stateful1.application1.internal`. The service uses a named partitioning scheme. Notice that the partition names are lower-case. This is a requirement for partitions that will be targeted in DNS queries; for more information, see [Making DNS queries on a stateful service partition](#making-dns-queries-on-a-stateful-service-partition).
 
 ```xml
-<Service Name="Stateful1" ServiceDnsName="stateful1.application1" />
+<Service Name="Stateful1" ServiceDnsName="stateful1.application1.internal" />
   <StatefulService ServiceTypeName="Stateful1Type" TargetReplicaSetSize="2" MinReplicaSetSize="2">
     <NamedPartition>
       <Partition Name="partition1" />
@@ -217,7 +220,7 @@ The following example sets the DNS name for a stateful service to `stateful1.app
 ```
 
 ### Setting the DNS name for a service with PowerShell
-You can set the DNS name for a service when creating it by using the `New-ServiceFabricService` PowerShell command. The following example creates a new stateless service with the DNS name `stateless1.application1`:
+You can set the DNS name for a service when creating it by using the `New-ServiceFabricService` PowerShell command. The following example creates a new stateless service with the DNS name `stateless1.application1.internal`:
 
 ```powershell
 New-ServiceFabricService `
@@ -227,16 +230,16 @@ New-ServiceFabricService `
     -ServiceName fabric:/application1/stateless1 `
     -ServiceTypeName Stateless1Type `
     -InstanceCount 1 `
-    -ServiceDnsName stateless1.application1
+    -ServiceDnsName stateless1.application1.internal
 ```
 
-You can also update an existing service by using the `Update-ServiceFabricService` PowerShell command. The following example updates an existing stateless service to add the DNS name `stateless1.application1`:
+You can also update an existing service by using the `Update-ServiceFabricService` PowerShell command. The following example updates an existing stateless service to add the DNS name `stateless1.application1.internal`:
 
 ```powershell
 Update-ServiceFabricService `
     -Stateless `
     -ServiceName fabric:/application1/stateless1 `
-    -ServiceDnsName stateless1.application1
+    -ServiceDnsName stateless1.application1.internal
 ```
 
 ### Verify that a DNS name is set in Service Fabric Explorer
@@ -252,7 +255,7 @@ Beginning with Service Fabric version 6.3, DNS service supports queries for serv
 
 For partitions that will be used in DNS queries, the following naming restrictions apply:
 
-   - Partition names should be DNS-compliant.
+- Partition names should be DNS-compliant.
    - Multi-label partition names including dot or '.' should not be used.
    - Partition names should be lower-case.
 
@@ -271,8 +274,8 @@ Where:
 
 The following examples show DNS queries for partitioned services running on a cluster that has default settings for `PartitionPrefix` and `PartitionSuffix`:
 
-- To resolve partition "0" of a service with DNS name `backendrangedschemesvc.application` that uses a ranged partitioning scheme, use `backendrangedschemesvc--0.application`.
-- To resolve partition "first" of a service with DNS name `backendnamedschemesvc.application` that uses a named partitioning scheme, use `backendnamedschemesvc--first.application`.
+- To resolve partition "0" of a service with DNS name `backendrangedschemesvc.application.internal` that uses a ranged partitioning scheme, use `backendrangedschemesvc--0.application.internal`.
+- To resolve partition "first" of a service with DNS name `backendnamedschemesvc.application.internal` that uses a named partitioning scheme, use `backendnamedschemesvc--first.application.internal`.
 
 DNS service returns the IP address of the endpoint associated with the primary replica of the partition. If no partition is specified, DNS service will randomly select a partition.
 
@@ -293,7 +296,7 @@ public class ValuesController : Controller
         string result = "";
         try
         {
-            Uri uri = new Uri("http://stateless1.application1:8080/api/values");
+            Uri uri = new Uri("http://stateless1.application1.internal:8080/api/values");
             HttpClient client = new HttpClient();
             var response = await client.GetAsync(uri);
             result = await response.Content.ReadAsStringAsync();
