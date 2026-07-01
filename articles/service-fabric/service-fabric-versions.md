@@ -192,8 +192,8 @@ The following table lists the version names of Service Fabric and their correspo
 | Version name | Windows version number | Linux version number |
 | - | - | - |
 | 11.5 | 11.5.116.1 | 11.5.118.5 |
-| 11.4 Hotfix | 11.4.268.1 | 11.4.268.4 |
-| 11.4 | 11.4.205.1 | 11.4.268.4 |
+| 11.4 Hotfix 1 | 11.4.268.1 | 11.4.268.4 |
+| 11.4 | 11.4.205.1 | 11.4.205.4 |
 | 11.3 | 11.3.365.1 | 11.3.365.4 |
 | 11.2 | 11.2.274.1 | 11.2.274.4 |
 | 11.1 | 11.1.208.1 | 11.1.208.4 |
