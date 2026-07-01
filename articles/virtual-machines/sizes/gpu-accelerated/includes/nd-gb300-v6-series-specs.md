@@ -15,7 +15,7 @@ ms.custom: include file
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
 |---|---|---|
 | Processor      | 128 vCPUs       | Nvidia Grace CPU                               |
-| Memory         | 864 VM         |  LPDDR                                |
+| Memory         | 864 GiB         |  LPDDR                                |
 | Local Storage  | 4 Disks           | 16TB NVME Direct                               |
 | Remote Storage | 16 Disks    | 80000 IOPS/1200 MBps  |
 | Network        | 1 NICs          |  160Gb/s Ethernet                         |
