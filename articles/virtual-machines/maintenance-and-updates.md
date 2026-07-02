@@ -275,4 +275,4 @@ For more information about setting up your VMs for high availability, see [Manag
 
 ## Next steps 
 
-You can use the [Azure CLI](maintenance-notifications-cli.md), [Azure PowerShell](maintenance-notifications-powershell.md), or the [portal](maintenance-notifications-portal.md) to manage planned maintenance.
+To manage planned maintenance, use the [Azure CLI](maintenance-notifications-cli.md), [Azure PowerShell](maintenance-notifications-powershell.md), or the [portal](maintenance-notifications-portal.md).
