@@ -84,7 +84,7 @@ Before applying TCP-level mitigations, consider the architectural baseline. Live
 - Deploying across Availability Zones ensures migrations in different zones don't overlap.
 - Clients with connection pools distributed across multiple backends recover faster because unaffected connections continue serving requests immediately.
 
-During the VM pause, Azure Standard Load Balancer health probes to the paused backend also fail. The load balancer marks the backend as unhealthy within approximately 10 seconds (two consecutive probe failures at the default 5-second interval) and stops routing new connections to it. This means new connections are naturally protected. The TCP mitigations below address existing connections that were already established before the migration began.
+During the VM pause, Azure Standard Load Balancer health probes to the paused backend also fail. The load balancer marks the backend as unhealthy within approximately 10 seconds (two consecutive probe failures at the default 5-second interval) and stops routing new connections to it. This condition means new connections are naturally protected. The TCP mitigations described in this article address existing connections that were already established before the migration began.
 
 **Recommended mitigations:**
 
