@@ -52,4 +52,4 @@ Since you don’t manage the host environment, simulating host-level changes (as
 
 While you can apply custom tags and metadata to the ACI resource, modifying system-managed settings or trying to bypass platform constraints may lead to unsupported or unstable states.
 
-[!INCLUDE [preview features callout](~/includes/preview-callout.md)]
+[!INCLUDE [preview-callout](includes/preview-callout.md)]
