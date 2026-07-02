@@ -51,3 +51,5 @@ Because ACI abstracts away the virtual machine layer, Microsoft Support cannot a
 Since you don’t manage the host environment, simulating host-level changes (as you might in a VM or Kubernetes cluster) is not supported. Instead, all configuration should be done within the container image or through supported environment variables and ACI resource definitions.
 
 While you can apply custom tags and metadata to the ACI resource, modifying system-managed settings or trying to bypass platform constraints may lead to unsupported or unstable states.
+
+[!INCLUDE [preview-callout](includes/preview-callout.md)]
