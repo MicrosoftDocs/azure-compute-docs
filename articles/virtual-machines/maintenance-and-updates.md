@@ -133,7 +133,7 @@ Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters
 With `TcpMaxDataRetransmissions` set to 3, the detection time reduces to approximately 10-20 seconds depending on the initial retransmission timeout.
 
 > [!NOTE]
-> Unlike Linux, Windows does not expose a per-socket equivalent of `TCP_USER_TIMEOUT`. The registry setting applies to all TCP connections on the system. For granular control on Windows, rely on application-level timeouts and health checks (Mitigation 4).
+> Unlike Linux, Windows doesn't expose a per-socket equivalent of `TCP_USER_TIMEOUT`. The registry setting applies to all TCP connections on the system. For granular control on Windows, rely on application-level timeouts and health checks (Mitigation 4).
 
 **Mitigation 2: Scheduled Events (proactive drain)**
 
