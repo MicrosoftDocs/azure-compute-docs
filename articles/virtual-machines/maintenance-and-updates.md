@@ -3,7 +3,7 @@ title: Maintenance and updates
 description: Overview of maintenance and updates for virtual machines running in Azure.
 ms.service: azure-virtual-machines
 ms.topic: concept-article
-ms.date: 07/02/2026
+ms.date: 04/30/2026
 #pmcontact:shants
 # Customer intent: As a cloud administrator, I want to understand the maintenance processes for virtual machines, so that I can effectively manage uptime and minimize disruptions during scheduled updates.
 ---
@@ -69,7 +69,7 @@ Applications that maintain long-lived TCP connections, such as database servers,
 - Without application-level tuning, the default TCP retransmission behavior (`tcp_retries2 = 15` on Linux) can delay connection failure detection by approximately 15 minutes.
 
 > [!IMPORTANT]
-> The impact varies significantly by operating system defaults. On Linux, `tcp_retries2` defaults to 15, resulting in approximately 15 minutes before a dead connection is detected. On Windows, `TcpMaxDataRetransmissions` defaults to 5, which limits detection time to approximately 25-50 seconds without any tuning. The mitigations described in this article are most critical for Linux-based workloads.
+> The impact varies significantly by operating system defaults. On Linux, `tcp_retries2` defaults to 15, resulting in approximately 15 minutes before a dead connection is detected. On Windows, `TcpMaxDataRetransmissions` defaults to 5, which limits detection time to approximately 25-50 seconds without any tuning. The mitigations below are most critical for Linux-based workloads.
 
 > [!NOTE]
 > For HTTP/1.1 workloads, the impact is typically limited: only requests in-flight at the moment of migration are affected, and since HTTP/1.1 clients don't pipeline over keep-alive connections, they recover quickly by opening a new connection for the next request. For HTTP/2, the blast radius is wider because multiple concurrent streams share a single TCP connection.
@@ -80,11 +80,11 @@ Applications that maintain long-lived TCP connections, such as database servers,
 
 Before applying TCP-level mitigations, consider the architectural baseline. Live migration affects one VM at a time within an availability set or virtual machine scale set. Spreading connections across multiple backend instances limits the impact of any single migration event:
 
-- A scale set with three instances means each migration event affects at most one-third of active connections.
+- A scale set with 3 instances means each migration event affects at most one-third of active connections.
 - Deploying across Availability Zones ensures migrations in different zones don't overlap.
 - Clients with connection pools distributed across multiple backends recover faster because unaffected connections continue serving requests immediately.
 
-During the VM pause, Azure Standard Load Balancer health probes to the paused backend also fail. The load balancer marks the backend as unhealthy within approximately 10 seconds (two consecutive probe failures at the default 5-second interval) and stops routing new connections to it. This condition means new connections are naturally protected. The TCP mitigations described in this article address existing connections that were already established before the migration began.
+During the VM pause, Azure Standard Load Balancer health probes to the paused backend also fail. The load balancer marks the backend as unhealthy within approximately 10 seconds (two consecutive probe failures at the default 5-second interval) and stops routing new connections to it. This means new connections are naturally protected. The TCP mitigations below address existing connections that were already established before the migration began.
 
 **Recommended mitigations:**
 
@@ -133,7 +133,7 @@ Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters
 With `TcpMaxDataRetransmissions` set to 3, the detection time reduces to approximately 10-20 seconds depending on the initial retransmission timeout.
 
 > [!NOTE]
-> Unlike Linux, Windows doesn't expose a per-socket equivalent of `TCP_USER_TIMEOUT`. The registry setting applies to all TCP connections on the system. For granular control on Windows, rely on application-level timeouts and health checks (Mitigation 4).
+> Unlike Linux, Windows does not expose a per-socket equivalent of `TCP_USER_TIMEOUT`. The registry setting applies to all TCP connections on the system. For granular control on Windows, rely on application-level timeouts and health checks (Mitigation 4).
 
 **Mitigation 2: Scheduled Events (proactive drain)**
 
@@ -190,14 +190,14 @@ For database SDKs and connection pools, enable periodic health checks (for examp
 
 **Connection pool configuration:**
 
-Connection pools that maintain long-lived connections benefit from a maximum lifetime setting. This setting forces periodic connection recycling, ensuring no single connection accumulates unbounded risk from future migration events:
+Connection pools that maintain long-lived connections benefit from a maximum lifetime setting. This forces periodic connection recycling, ensuring no single connection accumulates unbounded risk from future migration events:
 
 | Pool Technology | Setting | Recommended Value |
 |----------------|---------|-------------------|
 | HikariCP (Java) | `maxLifetime` | 1800000 (30 minutes) |
 | PgBouncer | `server_lifetime` | 1800 (30 minutes) |
 | Go `database/sql` | `SetConnMaxLifetime` | 30 * time.Minute |
-| Node.js (generic-pool) | `maxWaitingClients` + idle eviction | Configure idle timeout to 30 seconds |
+| Node.js (pg Pool) | `idleTimeoutMillis` | 30000 (30 seconds idle eviction; max-lifetime requires custom logic) |
 | .NET `SqlConnection` | Connection string: `Connection Lifetime` | 1800 (30 minutes) |
 
 Setting a maximum lifetime of 30 minutes means that even without active health checks, connections are naturally replaced before they can accumulate long periods of undetected staleness.
@@ -206,8 +206,8 @@ Setting a maximum lifetime of 30 minutes means that even without active health c
 
 To detect and measure the impact of live migration events on TCP connections, use the following approaches:
 
-- **Azure Monitor VM Availability metric:** Drops to 0 during the VM pause. Create an alert rule on `VmAvailabilityMetric` with a threshold of less than 1 to detect migration events.
-- **Scheduled Events Activity Log:** Live migration events appear in the Activity Log under the `Microsoft.Compute` provider with operation name `Microsoft.Compute/virtualMachines/redeploy/action` or as `Freeze` events when queried through the Metadata Service.
+- **Azure Monitor VM Availability metric (Preview):** Drops to 0 during the VM pause. Create an alert rule on `VmAvailabilityMetric` with a threshold of less than 1 to detect migration events.
+- **Scheduled Events Activity Log:** Live migration events appear in the Activity Log under the `Microsoft.Compute` provider with operation name `Microsoft.Compute/virtualMachines/liveMigration/action` or as `Freeze` events when queried through the Metadata Service.
 - **Application-level connection error rate:** Monitor TCP connection resets, timeouts, and reconnection counts in your application metrics. A spike in connection errors correlating with a VM Availability dip confirms migration impact.
 - **TCP retransmission counters:** On Linux, monitor `/proc/net/netstat` field `TCPTimeouts` or use `ss -ti` to observe retransmission counts on individual sockets. Elevated retransmissions during a known maintenance window indicate connections were affected.
 
