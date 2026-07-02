@@ -190,7 +190,7 @@ For database SDKs and connection pools, enable periodic health checks (for examp
 
 **Connection pool configuration:**
 
-Connection pools that maintain long-lived connections benefit from a maximum lifetime setting. This forces periodic connection recycling, ensuring no single connection accumulates unbounded risk from future migration events:
+Connection pools that maintain long-lived connections benefit from a maximum lifetime setting. This setting forces periodic connection recycling, ensuring no single connection accumulates unbounded risk from future migration events:
 
 | Pool Technology | Setting | Recommended Value |
 |----------------|---------|-------------------|
