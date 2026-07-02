@@ -676,8 +676,8 @@
         href: service-fabric-diagnostics-oms-containers.md
     - name: Monitor clusters
       items:
-      - name: Configure Azure Monitor logs to collect cluster events
-        href: service-fabric-diagnostics-oms-setup.md
+      - name: Configure telemetry with Azure Monitor Agent and data collection rules
+        href: service-fabric-diagnostics-azure-monitor-agent-data-collection-rules.md
       - name: Monitor your cluster with Azure Monitor logs
         href: service-fabric-diagnostics-event-analysis-oms.md
       - name: Query EventStore APIs
@@ -690,8 +690,8 @@
         href: service-fabric-diagnostics-event-aggregation-lad.md
     - name: Monitor infrastructure
       items:
-      - name: Collect performance counters with the Log Analytics Agent
-        href: service-fabric-diagnostics-oms-agent.md
+      - name: Collect performance counters with Azure Monitor Agent and data collection rules
+        href: service-fabric-diagnostics-azure-monitor-agent-data-collection-rules.md
       - name: Collect performance counters with WAD
         href: service-fabric-diagnostics-perf-wad.md
     - name: Monitor health
