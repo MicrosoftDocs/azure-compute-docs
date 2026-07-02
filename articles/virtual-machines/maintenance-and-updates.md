@@ -80,7 +80,7 @@ Applications that maintain long-lived TCP connections, such as database servers,
 
 Before applying TCP-level mitigations, consider the architectural baseline. Live migration affects one VM at a time within an availability set or virtual machine scale set. Spreading connections across multiple backend instances limits the impact of any single migration event:
 
-- A scale set with 3 instances means each migration event affects at most one-third of active connections.
+- A scale set with three instances means each migration event affects at most one-third of active connections.
 - Deploying across Availability Zones ensures migrations in different zones don't overlap.
 - Clients with connection pools distributed across multiple backends recover faster because unaffected connections continue serving requests immediately.
 
