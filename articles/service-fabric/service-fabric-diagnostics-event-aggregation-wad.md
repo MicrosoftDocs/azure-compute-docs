@@ -19,7 +19,7 @@ ms.date: 03/22/2026
 
 When you're running an Azure Service Fabric cluster, it's a good idea to collect the logs from all the nodes in a central location. Having the logs in a central location helps you analyze and troubleshoot issues in your cluster, or issues in the applications and services running in that cluster.
 
-One way to upload and collect logs is to use the Microsoft Azure Diagnostics (WAD) extension, which uploads logs to Azure Storage, and also has the option to send logs to Azure Application Insights or Event Hubs. You can also use an external process to read the events from storage and place them in an analysis platform product, such as [Azure Monitor logs](./service-fabric-diagnostics-oms-setup.md) or another log-parsing solution.
+One way to upload and collect logs is to use the Microsoft Azure Diagnostics (WAD) extension. It uploads logs to Azure Storage, and also has the option to send logs to Azure Application Insights or Event Hubs. You can also use an external process to read the events from storage and place them in an analysis platform product, such as [Azure Monitor logs](./service-fabric-diagnostics-azure-monitor-agent-data-collection-rules.md) or another log-parsing solution.
 
 [!INCLUDE [updated-for-az](~/reusable-content/ce-skilling/azure/includes/updated-for-az.md)]
 
@@ -51,7 +51,7 @@ We highly recommend that you download the template **before you click Create** i
 
 ![Cluster Template](media/service-fabric-diagnostics-event-aggregation-wad/download-cluster-template.png)
 
-Now that you're aggregating events in Azure Storage, [set up Azure Monitor logs](service-fabric-diagnostics-oms-setup.md) to gain insights and query them in the Azure Monitor logs portal
+Now that you're aggregating events in Azure Storage, [set up Azure Monitor logs](service-fabric-diagnostics-oms-setup.md) to gain insights and query them in the Azure Monitor logs portal.
 
 >[!NOTE]
 >There's currently no way to filter or groom the events that are sent to the tables. If you don't implement a process to remove events from the table, the table continues to grow (the default cap is 50 GB). Instructions on how to change this are [further below in this article](service-fabric-diagnostics-event-aggregation-wad.md#update-storage-quota). Additionally, there's an example of a data grooming service running in the [Watchdog sample](https://github.com/Azure-Samples/service-fabric-watchdog-service), and it's recommended that you write one for yourself as well, unless there's a good reason for you to store logs beyond a 30 or 90 day timeframe.

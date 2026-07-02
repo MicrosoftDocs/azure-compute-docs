@@ -195,17 +195,21 @@
       - name: Replica and instance lifecycle
         href: service-fabric-concepts-replica-lifecycle.md
       - name: Reliable Collections
-        href: service-fabric-reliable-services-reliable-collections.md
-      - name: Reliable Collection guidelines & recommendations
-        href: service-fabric-reliable-services-reliable-collections-guidelines.md
-      - name: Working with Reliable Collections
-        href: service-fabric-work-with-reliable-collections.md
-      - name: Transactions and locks
-        href: service-fabric-reliable-services-reliable-collections-transactions-locks.md
-      - name: Reliable Concurrent Queue
-        href: service-fabric-reliable-services-reliable-concurrent-queue.md
-      - name: Reliable Collection serialization
-        href: service-fabric-reliable-services-reliable-collections-serialization.md
+        items:
+        - name: Reliable Collections
+          href: service-fabric-reliable-services-reliable-collections.md
+        - name: Reliable Collection guidelines & recommendations
+          href: service-fabric-reliable-services-reliable-collections-guidelines.md
+        - name: Reliable Collections Throttling Guidelines
+          href: service-fabric-reliable-services-reliable-collections-throttling-guidelines.md
+        - name: Working with Reliable Collections
+          href: service-fabric-work-with-reliable-collections.md
+        - name: Transactions and locks
+          href: service-fabric-reliable-services-reliable-collections-transactions-locks.md
+        - name: Reliable Concurrent Queue
+          href: service-fabric-reliable-services-reliable-concurrent-queue.md
+        - name: Reliable Collection serialization
+          href: service-fabric-reliable-services-reliable-collections-serialization.md
       - name: Replica soft delete
         href: service-fabric-replica-soft-delete.md
     - name: Reliable Actors
@@ -672,8 +676,8 @@
         href: service-fabric-diagnostics-oms-containers.md
     - name: Monitor clusters
       items:
-      - name: Configure Azure Monitor logs to collect cluster events
-        href: service-fabric-diagnostics-oms-setup.md
+      - name: Configure telemetry with Azure Monitor Agent and data collection rules
+        href: service-fabric-diagnostics-azure-monitor-agent-data-collection-rules.md
       - name: Monitor your cluster with Azure Monitor logs
         href: service-fabric-diagnostics-event-analysis-oms.md
       - name: Query EventStore APIs
@@ -686,8 +690,8 @@
         href: service-fabric-diagnostics-event-aggregation-lad.md
     - name: Monitor infrastructure
       items:
-      - name: Collect performance counters with the Log Analytics Agent
-        href: service-fabric-diagnostics-oms-agent.md
+      - name: Collect performance counters with Azure Monitor Agent and data collection rules
+        href: service-fabric-diagnostics-azure-monitor-agent-data-collection-rules.md
       - name: Collect performance counters with WAD
         href: service-fabric-diagnostics-perf-wad.md
     - name: Monitor health

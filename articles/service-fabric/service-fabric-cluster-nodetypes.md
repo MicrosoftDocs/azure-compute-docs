@@ -6,6 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
+ai-usage: ai-assisted
 ms.date: 03/22/2026
 ms.update-cycle: 1095-days
 # Customer intent: As an application architect, I want to understand how Azure Service Fabric node types interact with virtual machine scale sets, so that I can effectively design and manage my cloud infrastructure for optimal performance and scalability.
@@ -37,26 +38,24 @@ If you deployed your cluster in the Azure portal or used the sample Azure Resour
 
 Service Fabric Virtual Machine Extension is used to bootstrap Service Fabric to Azure Virtual Machines, and configure the Node Security.
 
-The following is a snippet of Service Fabric Virtual Machine extension:
+The following is a snippet of Service Fabric **Windows** Virtual Machine extension:
 
 ```json
 "extensions": [
   {
     "name": "[concat('ServiceFabricNodeVmExt','_vmNodeType0Name')]",
     "properties": {
-      "type": "ServiceFabricLinuxNode",
+      "publisher": "Microsoft.Azure.ServiceFabric",
+      "type": "ServiceFabricNode",
+      "typeHandlerVersion": "1.1",
       "autoUpgradeMinorVersion": true,
-      "enableAutomaticUpgrade": true,
       "protectedSettings": {
         "StorageAccountKey1": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')),'2015-05-01-preview').key1]",
        },
-       "publisher": "Microsoft.Azure.ServiceFabric",
        "settings": {
          "clusterEndpoint": "[reference(parameters('clusterName')).clusterEndpoint]",
          "nodeTypeRef": "[variables('vmNodeType0Name')]",
          "durabilityLevel": "Silver",
-         "enableParallelJobs": true,
-         "nicPrefixOverride": "[variables('subnet0Prefix')]",
          "dataPath": "D:\\\\SvcFab",
          "certificate": {
            "commonNames": [
@@ -64,8 +63,37 @@ The following is a snippet of Service Fabric Virtual Machine extension:
            ],
            "x509StoreName": "[parameters('certificateStoreValue')]"
          }
+       }
+     }
+   },
+```
+
+The following is a snippet of Service Fabric **Linux** Virtual Machine extension:
+
+```json
+"extensions": [
+  {
+    "name": "[concat('ServiceFabricNodeVmExt','_vmNodeType0Name')]",
+    "properties": {
+      "publisher": "Microsoft.Azure.ServiceFabric",
+      "type": "ServiceFabricLinuxNode",
+      "autoUpgradeMinorVersion": true,
+      "enableAutomaticUpgrade": true,
+      "typeHandlerVersion": "2.0",
+      "protectedSettings": {
+        "StorageAccountKey1": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')),'2015-05-01-preview').key1]",
        },
-       "typeHandlerVersion": "2.0"
+       "settings": {
+         "clusterEndpoint": "[reference(parameters('clusterName')).clusterEndpoint]",
+         "nodeTypeRef": "[variables('vmNodeType0Name')]",
+         "durabilityLevel": "Silver",
+         "certificate": {
+           "commonNames": [
+              "[parameters('certificateCommonName')]"
+           ],
+           "x509StoreName": "[parameters('certificateStoreValue')]"
+         }
+       }
      }
    },
 ```
@@ -86,7 +114,7 @@ The following are the property descriptions:
 | nicPrefixOverride | string | Subnet Prefix like "10.0.0.0/24" |
 | commonNames | string[] | Common Names of installed cluster certificates |
 | x509StoreName | string | Name of Store where installed cluster certificate is located |
-| typeHandlerVersion | 1.1 (ServiceFabricNode), 2.0 (ServiceFabricLinuxNode) | Version of Extension. |
+| typeHandlerVersion | 1.1 (Windows) or 2.0 (Linux) | Version of extension. Upgrade is required: older versions are no longer supported. For Linux, use 2.0 with `enableAutomaticUpgrade` set to `true`. |
 | dataPath | string | Path to the drive used to save state for Service Fabric system services and application data.
 
 ## Next steps
