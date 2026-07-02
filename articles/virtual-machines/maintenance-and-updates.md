@@ -69,7 +69,7 @@ Applications that maintain long-lived TCP connections, such as database servers,
 - Without application-level tuning, the default TCP retransmission behavior (`tcp_retries2 = 15` on Linux) can delay connection failure detection by approximately 15 minutes.
 
 > [!IMPORTANT]
-> The impact varies significantly by operating system defaults. On Linux, `tcp_retries2` defaults to 15, resulting in approximately 15 minutes before a dead connection is detected. On Windows, `TcpMaxDataRetransmissions` defaults to 5, which limits detection time to approximately 25-50 seconds without any tuning. The mitigations below are most critical for Linux-based workloads.
+> The impact varies significantly by operating system defaults. On Linux, `tcp_retries2` defaults to 15, resulting in approximately 15 minutes before a dead connection is detected. On Windows, `TcpMaxDataRetransmissions` defaults to 5, which limits detection time to approximately 25-50 seconds without any tuning. The mitigations described in this article are most critical for Linux-based workloads.
 
 > [!NOTE]
 > For HTTP/1.1 workloads, the impact is typically limited: only requests in-flight at the moment of migration are affected, and since HTTP/1.1 clients don't pipeline over keep-alive connections, they recover quickly by opening a new connection for the next request. For HTTP/2, the blast radius is wider because multiple concurrent streams share a single TCP connection.
