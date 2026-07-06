@@ -14,7 +14,7 @@ ms.date:     06/13/2025
 
 # Migrate your NVv3-series virtual machines by September 30, 2026
 > [!NOTE]
-> If you're currently using NVv3-series Azure VMs in the Azure UAE North region, you may continue using the NVv3-series VMs beyond the general retirement date of September 30, 2026 until the extension date of January 31, 2027. Customers in the Azure UAE North region must migrate off the NVv3-series VMs by January 31, 2027. 
+> If you're currently using NVv3-series Azure VMs in the Azure UAE North region, you can continue using the NVv3-series VMs beyond the general retirement date of September 30, 2026 until the extension date of January 31, 2027. Customers in the Azure UAE North region must migrate off the NVv3-series VMs by January 31, 2027. 
 
 > [!NOTE]
 > 1-year and 3-year RI purchases for the NVv3-series ended November 2, 2025.  
