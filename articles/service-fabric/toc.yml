@@ -497,6 +497,8 @@
       href: how-to-managed-cluster-scale-to-zero.md
     - name: Use IP tags
       href: how-to-managed-cluster-ip-tags.md
+    - name: Inbound NAT Rules V2
+      href: how-to-managed-cluster-inbound-nat-rules-v2.md
   - name: Set up your development environment
     items:
     - name: Windows
