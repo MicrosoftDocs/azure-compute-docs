@@ -2502,6 +2502,24 @@
   - name: Change subscription for Marketplace VMs
     displayName: offer plan sku marketplace
     href: azure-cli-change-subscription-marketplace.md
+  - name: Migrate to v6 and later VM series
+      href: ./migration/series/v6-v7-migration-overview.md
+      items:
+        - name: Overview
+          href: v6-v7-migration-overview.md
+        - name: Assess readiness
+          href: ./migration/series/v6-v7-migration-assess.md
+        - name: Plan the migration
+          href: ./migration/series/v6-v7-migration-plan.md
+        - name: Migrate (wave runbook)
+          href: ./migration/series/v6-v7-migration-migrate.md
+          items:
+            - name: Convert SCSI to NVMe in place
+              href: ./migration/series/v6-migration-nvme-conversion.md
+        - name: Validate and Optimize
+          href: ./migration/series/v6-v7-migration-validate.md
+        - name: Frequently asked questions
+          href: ./migration/series/v6-v7-migration-faq.md
   - name: Move VMs to another region
     href: /azure/site-recovery/azure-to-azure-tutorial-migrate?toc=/azure/virtual-machines/toc.json
   - name: Move to an availability zone
