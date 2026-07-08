@@ -784,10 +784,14 @@
            href: dv2-dsv2-series-memory.md
          - name: DCsv2 series
            href: ./sizes/retirement/dcsv2-series-retirement.md
+         - name: DCccv5 series
+           href: ./sizes/retirement/dcccv5-series-retirement.md
        - name: Memory optimized
          items:
          - name: Ev3 and Esv3 series
            href: ev3-esv3-series.md
+         - name: ECccv5 series
+           href:  ./sizes/retirement/ecccv5-series-retirement.md
        - name: Storage optimized
          items:
          - name: Lsv2 series
