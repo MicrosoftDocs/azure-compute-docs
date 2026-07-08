@@ -142,6 +142,8 @@
     href: ./workloads/redhat/overview.md
   - name: Ubuntu
     href: ./workloads/canonical/ubuntu-pro-in-place-upgrade.md
+  - name: Rocky Linux
+    href: ./workloads/rocky-linux/rocky-linux-options.md
   - name: OpenShift
     items:
     - name: OpenShift Container Platform 4.x
