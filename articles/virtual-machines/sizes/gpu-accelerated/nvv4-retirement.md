@@ -28,13 +28,14 @@ Microsoft is recommending the Azure [NVads_V710_v5-series](/azure/virtual-machin
 
 The NVads_V710_v5-series enables right-sizing for demanding GPU-accelerated graphics applications and cloud-based virtual desktops to provide a seamless end user experience while providing a cost-effective choice for a full range of graphics-enabled virtual desktop experiences. The VMs are also sized to deliver high-quality, interactive gaming experiences in the cloud, optimized for rendering and streaming complex graphics. In addition, the NVads_V710_v5-series supports small AI inference workloads such as Small Language Model (SLMs), recommendation systems, and semantic indexing, by taking advantage of the computational IP blocks in the Radeon Pro V710 GPUs.
 
-Depending on the workload being run, regional affinity, and cost preferences, other VMs that may be migrated to from the NVv4-series VMs include [NVadsA10_v5](/azure/virtual-machines/sizes/gpu-accelerated/nvadsa10v5-series?tabs=sizebasic). 
+Depending on the workload being run, regional affinity, and cost preferences, other VMs that may be migrated to from the NVv4-series VMs include [NVadsA10_v5](/azure/virtual-machines/sizes/gpu-accelerated/nvadsa10v5-series?tabs=sizebasic) and [NGads_V620](/azure/virtual-machines/sizes/gpu-accelerated/ngadsv620-series?tabs=sizebasic). 
 
 
 |Workload|Recommended SKU to Migrate to|
 | -------- | -------- |
 |Small AI workloads such as SLM inferencing and semantic search where optimal performance is not a priority or there is an interest in reducing costs.|NVads_V710_v5, NVadsA10_v5|
-|GPU accelerated graphics applications, virtual desktops, and visualizations.|NVads_V710_v5, NVadsA10_v5|
+|GPU accelerated graphics applications, virtual desktops, and visualizations.|NVads_V710_v5, NVadsA10_v5, NGads_V620|
+| Gaming workloads | NGads_V620 | 
 
 ## How does the retirement of the NVv4-series virtual machines affect me? 
 
