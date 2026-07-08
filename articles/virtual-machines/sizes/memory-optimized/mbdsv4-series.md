@@ -39,7 +39,7 @@ vCPUs and memory for each size
 | Standard_M96bds_2_v4 | 96 | 1946 |
 | Standard_M128bds_3_v4 | 128 | 2796 |
 | Standard_M176bds_4_v4 | 176 | 3892 |
-| Standard_M256bds_2_v4 | 256 | 1536 |
+| Standard_M256bds_2_v4 | 256 | 2048 |
 | Standard_M304bds_4_v4 | 304 | 3800 |
 
 #### VM Basics resources
