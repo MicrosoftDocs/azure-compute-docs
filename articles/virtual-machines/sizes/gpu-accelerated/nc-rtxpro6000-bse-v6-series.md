@@ -39,12 +39,12 @@ vCPUs (Qty.) and Memory for each size
 
 Local (temp) storage info for each size
 
-| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read (RR)<sup>1</sup> IOPS | Temp Disk Random Read (RR)<sup>1</sup> Throughput (MB/s) | Temp Disk Random Write (RW)<sup>1</sup> IOPS | Temp Disk Random Write (RW)<sup>1</sup> Throughput (MB/s) |
-| --- | --- | --- | --- | --- | --- | --- |
-| Standard_NC36ds_xl_RTXPRO6000BSE_v6 |  | 256 |  |  |  |  |
-| Standard_NC72ds_xl_RTXPRO6000BSE_v6 |  | 512 |  |  |  |  |
-| Standard_NC144ds_xl_RTXPRO6000BSE_v6 |  | 1024 |  |  |  |  |
-| Standard_NC288ds_xl_RTXPRO6000BSE_v6 |  | 2048 |  |  |  |  |
+| Size Name | Max Temp Storage Disks (Qty.) | Temp Resource Disk Size (GiB) | Temp NVMe Disk Size (GiB) | Temp Disk Random Read (RR)<sup>1</sup> IOPS | Temp Disk Random Read (RR)<sup>1</sup> Throughput (MB/s) | Temp Disk Random Write (RW)<sup>1</sup> IOPS | Temp Disk Random Write (RW)<sup>1</sup> Throughput (MB/s) |
+| --- | --- | --- | --- | --- | --- | --- | --- | 
+| Standard_NC36ds_xl_RTXPRO6000BSE_v6 |  | 256 | 1600 |  |  |  | |
+| Standard_NC72ds_xl_RTXPRO6000BSE_v6 |  | 512 | 3200 |  |  |  | | 
+| Standard_NC144ds_xl_RTXPRO6000BSE_v6 |  | 1024 | 6400 |  |  |  | | 
+| Standard_NC288ds_xl_RTXPRO6000BSE_v6 |  | 2048 | 12800 |  |  |  | | 
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
@@ -137,13 +137,13 @@ vCPUs (Qty.) and Memory for each size
 
 Local (temp) storage info for each size
 
-| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read (RR)<sup>1</sup> IOPS | Temp Disk Random Read (RR)<sup>1</sup> Throughput (MB/s) | Temp Disk Random Write (RW)<sup>1</sup> IOPS | Temp Disk Random Write (RW)<sup>1</sup> Throughput (MB/s) |
-| --- | --- | --- | --- | --- | --- | --- |
-| Standard_NC24lds_xl_RTXPRO6000BSE_v6 |  | 256 |  |  |  |  |
-| Standard_NC36lds_xl_RTXPRO6000BSE_v6 |  | 256 |  |  |  |  |
-| Standard_NC72lds_xl_RTXPRO6000BSE_v6 |  | 512 |  |  |  |  |
-| Standard_NC144lds_xl_RTXPRO6000BSE_v6 |  | 1024 |  |  |  |  |
-| Standard_NC288lds_xl_RTXPRO6000BSE_v6 |  | 2048 |  |  |  |  |
+| Size Name | Max Temp Storage Disks (Qty.) | Temp Resource Disk Size (GiB) | Temp NVMe Disk Size (GiB) |  Temp Disk Random Read (RR)<sup>1</sup> IOPS | Temp Disk Random Read (RR)<sup>1</sup> Throughput (MB/s) | Temp Disk Random Write (RW)<sup>1</sup> IOPS | Temp Disk Random Write (RW)<sup>1</sup> Throughput (MB/s) |
+| --- | --- | --- | --- | --- | --- | --- | --- | 
+| Standard_NC24lds_xl_RTXPRO6000BSE_v6 |  | 256 | 1600 |  |  |  | | 
+| Standard_NC36lds_xl_RTXPRO6000BSE_v6 |  | 256 | 1600 |  |  |  | | 
+| Standard_NC72lds_xl_RTXPRO6000BSE_v6 |  | 512 | 3200 |  |  |  | | 
+| Standard_NC144lds_xl_RTXPRO6000BSE_v6 |  | 1024 | 6400 |  |  |  | | 
+| Standard_NC288lds_xl_RTXPRO6000BSE_v6 |  | 2048 | 12800 |  |  |  | | 
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
