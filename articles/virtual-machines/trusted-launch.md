@@ -55,7 +55,7 @@ Trusted Launch is supported for both x64 and Arm64 architectures.
 > [!NOTE]
 >
 > - Installation of the *CUDA & GRID drivers on Secure Boot-enabled Windows VMs* doesn't require any extra steps.
-> - Installation of the *CUDA driver on Secure Boot-enabled Ubuntu VMs* requires extra steps. For more information, see [Install NVIDIA GPU drivers on N-series VMs running Linux](./linux/n-series-driver-setup.md#install-cuda-drivers-on-n-series-vms). Secure Boot should be disabled for installing CUDA drivers on other Linux VMs.
+> - Installation of the *CUDA driver on Secure Boot-enabled Ubuntu VMs* requires extra steps. For more information, see [Install NVIDIA GPU drivers on N-series VMs running Linux](./linux/n-series-driver-setup.md#cuda-drivers). Secure Boot should be disabled for installing CUDA drivers on other Linux VMs.
 > - Installation of the *GRID driver* requires Secure Boot to be disabled for Linux VMs.
 > - *Not supported* size families don't support [Generation 2](generation-2.md) VMs. Change the VM size to equivalent *supported size families* for enabling Trusted Launch.
 
