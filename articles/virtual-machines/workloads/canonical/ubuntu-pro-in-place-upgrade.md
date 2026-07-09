@@ -8,7 +8,7 @@ ms.custom: linux-related-content, devx-track-azurecli, linux-related-content
 ms.collection: linux
 ms.topic: how-to
 ms.date: 12/09/2024
-ms.author: anujmaurya
+ms.author: kdelamarck
 # Customer intent: "As a system administrator managing Ubuntu servers on Azure, I want to perform an in-place upgrade to Ubuntu Pro, so that I can access enhanced security features and support for my applications without experiencing downtime."
 ---
 
