@@ -50,6 +50,7 @@ Container groups deployed into an Azure virtual network enable scenarios like:
 * [IPv6 addresses](/azure/virtual-network/ip-services/ipv6-overview) aren't supported at this time.
 * Depending on your subscription type, [certain ports could be blocked](/azure/virtual-network/network-security-groups-overview#azure-platform-considerations).
 * Container instances don't read or inherit DNS settings from an associated virtual network. DNS settings must be explicitly set for container instances.
+* To deploy container groups to a subnet, ensure that you scale in increments of 1000 container groups per subnet and not exceed maximum container groups per subnet to 3000. In most cases, crossing these limits will result in degraded performance. Hence, the recommended starting point for most production workloads should be to spread the container group deployments across subnets adhering to the aforementioned limits.
 
 ## Deploy Container Groups to a Virtual Network
 
