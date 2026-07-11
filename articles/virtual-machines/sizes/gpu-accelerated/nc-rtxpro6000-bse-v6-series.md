@@ -61,12 +61,12 @@ Local (temp) storage info for each size
 
 Remote (uncached) storage info for each size
 
-| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD IOPS | Uncached Premium SSD Throughput (MB/s) | Uncached Premium SSD Burst<sup>1</sup> IOPS | Uncached Premium SSD Burst<sup>1</sup> Throughput (MB/s) | Uncached Ultra Disk and Premium SSD v2 IOPS | Uncached Ultra Disk and Premium SSD v2 Throughput (MB/s) | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 IOPS | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 Throughput (MB/s) |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_NC36ds_xl_RTXPRO6000BSE_v6 | 2 |  |  |  |  |  |  |  |  |
-| Standard_NC72ds_xl_RTXPRO6000BSE_v6 | 4 |  |  |  |  |  |  |  |  |
-| Standard_NC144ds_xl_RTXPRO6000BSE_v6 | 8 |  |  |  |  |  |  |  |  |
-| Standard_NC288ds_xl_RTXPRO6000BSE_v6 | 16 |  |  |  |  |  |  |  |  |
+| Size Name | Max Remote Storage Disks (Qty.) | 
+| --- | --- |
+| Standard_NC36ds_xl_RTXPRO6000BSE_v6 | 2 | 
+| Standard_NC72ds_xl_RTXPRO6000BSE_v6 | 4 | 
+| Standard_NC144ds_xl_RTXPRO6000BSE_v6 | 8 |
+| Standard_NC288ds_xl_RTXPRO6000BSE_v6 | 16 |
 
 
 #### Storage resources
@@ -160,13 +160,13 @@ Local (temp) storage info for each size
 
 Remote (uncached) storage info for each size
 
-| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD IOPS | Uncached Premium SSD Throughput (MB/s) | Uncached Premium SSD Burst<sup>1</sup> IOPS | Uncached Premium SSD Burst<sup>1</sup> Throughput (MB/s) | Uncached Ultra Disk and Premium SSD v2 IOPS | Uncached Ultra Disk and Premium SSD v2 Throughput (MB/s) | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 IOPS | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 Throughput (MB/s) |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_NC24lds_xl_RTXPRO6000BSE_v6 | 2 |  |  |  |  |  |  |  |  |
-| Standard_NC36lds_xl_RTXPRO6000BSE_v6 | 2 |  |  |  |  |  |  |  |  |
-| Standard_NC72lds_xl_RTXPRO6000BSE_v6 | 4 |  |  |  |  |  |  |  |  |
-| Standard_NC144lds_xl_RTXPRO6000BSE_v6 | 8 |  |  |  |  |  |  |  |  |
-| Standard_NC288lds_xl_RTXPRO6000BSE_v6 | 16 |  |  |  |  |  |  |  |  |
+| Size Name | Max Remote Storage Disks (Qty.) | 
+| --- | --- | 
+| Standard_NC24lds_xl_RTXPRO6000BSE_v6 | 2 | 
+| Standard_NC36lds_xl_RTXPRO6000BSE_v6 | 2 |
+| Standard_NC72lds_xl_RTXPRO6000BSE_v6 | 4 |
+| Standard_NC144lds_xl_RTXPRO6000BSE_v6 | 8 |
+| Standard_NC288lds_xl_RTXPRO6000BSE_v6 | 16 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
