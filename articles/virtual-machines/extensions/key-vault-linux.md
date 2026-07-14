@@ -1,29 +1,30 @@
 ---
-title: Azure Key Vault VM Extension for Linux
-description: Deploy an agent performing automatic refresh of Key Vault certificates on virtual machines using a virtual machine extension.
+title: Azure Key Vault virtual machine extension for Linux
+description: Learn how to deploy an agent for automatic refresh of Azure Key Vault certificates on virtual machines by using a VM extension.
 services: virtual-machines
 author: msmbaldwin
 ms.service: azure-virtual-machines
 ms.subservice: extensions
 ms.collection: linux
-ms.topic: concept-article
-ms.date: 02/26/2026
+ms.topic: how-to
+ms.date: 07/14/2026
 ms.author: mbaldwin
 ms.custom: devx-track-azurepowershell, devx-track-azurecli, linux-related-content
+ai-usage: ai-assisted
 # Customer intent: As a system administrator managing Linux virtual machines, I want to deploy the Key Vault VM extension so that I can automate the refresh of certificates stored in Azure Key Vault and ensure seamless certificate management.
 ---
-# Key Vault virtual machine extension for Linux
+# Azure Key Vault virtual machine extension for Linux
 
-The Key Vault VM extension provides automatic refresh of certificates stored in an Azure key vault. Specifically, the extension monitors a list of observed certificates stored in key vaults.  The extension retrieves and installs the corresponding certificates after detecting a change. This document details the supported platforms, configurations, and deployment options for the Key Vault VM extension for Linux.
+The Azure Key Vault virtual machine (VM) extension automatically refreshes certificates stored in an Azure key vault. The extension monitors a list of observed certificates stored in key vaults. When the extension detects a change, it retrieves and installs the corresponding certificates. This article describes the supported platforms, configurations, and deployment options for the Key Vault VM extension for Linux.
 
 [!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
 
-## Operating system
+## Operating systems
 
 The Key Vault VM extension supports:
 
-- Ubuntu 22.04 and later
-- [Azure Linux](https://github.com/microsoft/azurelinux)
+- Ubuntu 22.04 and later.
+- [Azure Linux](https://github.com/microsoft/azurelinux).
 
 ### Supported certificate content types
 
@@ -32,50 +33,55 @@ The Key Vault VM extension supports:
 
 ## Features
 
-Key Vault VM extension for Linux version 3.0+ supports:
+The Key Vault VM extension for Linux version 3.0 and later supports:
 
-- Add ACL permissions for downloaded certificates to provide read access for users and groups
-- Certificate installation location configuration
-- Custom symbolic name support
-- VM extension logging integration support through [Fluentd](https://www.fluentd.org/)
+- ACL permissions for downloaded certificates to provide read access for users and groups.
+- Certificate installation location configuration.
+- Custom symbolic name support.
+- VM extension logging integration through [Fluentd](https://www.fluentd.org/).
 
 ## Prerequisites
-  - Key Vault instance with certificate. See [Create a Key Vault](/azure/key-vault/general/quick-create-portal)
-  - Assigned [managed identity](/azure/active-directory/managed-identities-azure-resources/overview) on virtual machines/virtual machine scale sets.
-  - The **Key Vault Secrets User** role at the Key Vault scope level for VMs and Azure Virtual Machine Scale Sets managed identity. This role retrieves a secret's portion of a certificate. For more information, see the following articles:
-    - [Authentication in Azure Key Vault](/azure/key-vault/general/authentication)
-    - [Use Azure RBAC secret, key, and certificate permissions with Azure Key Vault](/azure/key-vault/general/rbac-guide#using-azure-rbac-secret-key-and-certificate-permissions-with-key-vault)
-    - [Key Vault scope role assignment](/azure/key-vault/general/rbac-guide?tabs=azure-cli#key-vault-scope-role-assignment)
-  -  Virtual machine scale sets should have the following identity setting:
-  `
-  "identity": {
-  "type": "UserAssigned",
-  "userAssignedIdentities": {
-  "[parameters('userAssignedIdentityResourceId')]": {}
-  }
-  }
-  `
 
- - AKV extension should have this setting:
-  `
+- An Azure Key Vault instance with a certificate. For more information, see [Create a key vault by using the Azure portal](/azure/key-vault/general/quick-create-portal).
+- Virtual machines or Azure Virtual Machine Scale Sets with an assigned [managed identity](/entra/identity/managed-identities-azure-resources/overview).
+- The **Key Vault Secrets User** role at the Key Vault scope level for the managed identity on VMs and Azure Virtual Machine Scale Sets. This role retrieves a secret's portion of a certificate. For more information, see the following articles:
+  - [Authentication in Azure Key Vault](/azure/key-vault/general/authentication).
+  - [Use Azure RBAC secret, key, and certificate permissions with Azure Key Vault](/azure/key-vault/general/rbac-guide#using-azure-rbac-secret-key-and-certificate-permissions-with-key-vault).
+  - [Key Vault scope role assignment](/azure/key-vault/general/rbac-guide?tabs=azure-cli#key-vault-scope-role-assignment).
+- Azure Virtual Machine Scale Sets should have the following identity setting:
+
+  ```json
+  "identity": {
+    "type": "UserAssigned",
+    "userAssignedIdentities": {
+      "[parameters('userAssignedIdentityResourceId')]": {}
+    }
+  }
+  ```
+
+- The Key Vault VM extension should have the following setting:
+
+  ```json
   "authenticationSettings": {
     "msiEndpoint": "[parameters('userAssignedIdentityEndpoint')]",
     "msiClientId": "[reference(parameters('userAssignedIdentityResourceId'), variables('msiApiVersion')).clientId]"
   }
-   `
-   
-## Upgrading Key Vault VM extension
+  ```
 
-* If you need to upgrade from an older version to version 3.0+, you would need to delete previous version first, then install version 3.0.
+## Upgrade the Key Vault VM extension
+
+- To upgrade from an older version to version 3.0 or later, delete the previous version, and then install version 3.0.
+
 ```azurecli
   az vm extension delete --name KeyVaultForLinux --resource-group ${resourceGroup} --vm-name ${vmName}
-  az vm extension set -n "KeyVaultForLinux" --publisher Microsoft.Azure.KeyVault --resource-group "${resourceGroup}" --vm-name "${vmName}" –settings .\akvvm.json –version 3.0
+  az vm extension set -n "KeyVaultForLinux" --publisher Microsoft.Azure.KeyVault --resource-group "${resourceGroup}" --vm-name "${vmName}" --settings "@akvvm.json" --version "3.0"
 ```
 
-* If the VM has certificates downloaded by previous version, deleting VM extension doesn't delete the downloaded certificates. After installing the newer version, the existing certificates aren't modified. You would need to delete the certificate files or roll-over the certificate to get the PEM file with full-chain on the VM.
+- If the VM has certificates downloaded by the previous version, deleting the VM extension doesn't delete the downloaded certificates. After you install the newer version, the extension doesn't modify the existing certificates. Delete the certificate files or roll over the certificate to get the PEM file with the full chain on the VM.
 
 ## Extension schema
-The following JSON provides the schema for the Key Vault VM extension. All settings are specified as plain (unprotected) settings, as none are considered sensitive. To configure the extension, you must specify a list of certificates to monitor, how often to poll for updates, and the destination path for storing certificates. Specifically:
+
+The following JSON provides the schema for the Key Vault VM extension. All settings use plain, unprotected settings because the settings don't contain sensitive information. To configure the extension, specify a list of certificates to monitor, how often to poll for updates, and the destination path for storing certificates.
 
 ```json
     {
@@ -103,9 +109,9 @@ The following JSON provides the schema for the Key Vault VM extension. All setti
         "secretsManagementSettings": {
           "pollingIntervalInS": <polling interval in seconds, e.g. "3600">,
           "linkOnRenewal": <Not available on Linux e.g.: false>,
-          "requireInitialSync": <initial synchronization of certificates e..g: true>,
+          "requireInitialSync": <initial synchronization of certificates, e.g.: true>,
           "aclEnabled": <Enables ACLs for downloaded certificates, e.g.: true>,
-          "observedCertificates": <An array of KeyVault URIs that represent monitored certificates, including certificate store location, ACL permission to certificate private key, and custom symbolic name. e.g.: 
+          "observedCertificates": <An array of Key Vault URIs that represent monitored certificates, including certificate store location, ACL permission to certificate private key, and custom symbolic name. e.g.:
              [
                 {
                     "url": <A Key Vault URI to the secret portion of the certificate. e.g.: "https://myvault.vault.azure.net/secrets/mycertificate1">,
@@ -135,7 +141,7 @@ The following JSON provides the schema for the Key Vault VM extension. All setti
         "authenticationSettings": <Optional msi settings, e.g.:
         {
           "msiEndpoint":  <Required when msiClientId is provided. MSI endpoint e.g. for most Azure VMs: "http://169.254.169.254/metadata/identity">,
-          "msiClientId":  <Required when VM has any user assigned identities. MSI identity e.g.: "00001111-aaaa-2222-bbbb-3333cccc4444".>
+          "msiClientId":  <Required when VM has any user-assigned identities. MSI identity e.g.: "00001111-aaaa-2222-bbbb-3333cccc4444".>
         }>
        }
       }
@@ -143,25 +149,24 @@ The following JSON provides the schema for the Key Vault VM extension. All setti
 ```
 
 > [!NOTE]
-> Your observed certificates URLs should be of the form `https://myVaultName.vault.azure.net/secrets/myCertName`.
+> Your observed certificate URLs should use the form `https://myVaultName.vault.azure.net/secrets/myCertName`.
 >
-> This is because the `/secrets` path returns the full certificate, including the private key, while the `/certificates` path doesn't. More information about certificates can be found here: [Key Vault Certificates](/azure/key-vault/general/about-keys-secrets-certificates)
+> The `/secrets` path returns the full certificate, including the private key, but the `/certificates` path doesn't. For more information about certificates, see [Azure Key Vault keys, secrets and certificates overview](/azure/key-vault/general/about-keys-secrets-certificates).
 
 > [!IMPORTANT]
-> The `authenticationSettings` property is required only when your VM or VM scale set uses **user-assigned managed identities** or when using **Azure Arc-enabled VMs**. For **system-assigned managed identities**, omit the `authenticationSettings` section. Including it will cause deployment to fail. Without this section, a VM with user assigned identities will result in the Key Vault extension failing and being unable to download certificates. 
+> The `authenticationSettings` property is required only when your VM uses **user-assigned managed identities**, your Azure Virtual Machine Scale Sets use **user-assigned managed identities**, or you use **Azure Arc-enabled VMs**. For **system-assigned managed identities**, omit the `authenticationSettings` section. Including this section causes deployment to fail. Without this section, a VM with user-assigned identities can't use the Key Vault extension to download certificates.
 > Set `msiClientId` to the identity that will authenticate to Key Vault.
 >
-> Also **required** for **Azure Arc-enabled VMs**.
-> Set msiEndpoint to `http://localhost:40342/metadata/identity`.
+> The `msiEndpoint` property is also **required** for **Azure Arc-enabled VMs**. Set `msiEndpoint` to `http://localhost:40342/metadata/identity`.
 
 ### Property values
 
-| Name | Value / Example | Data Type |
+| Name | Value or example | Data type |
 | ---- | ---- | ---- |
-| `apiVersion` | 2022-07-01 | date |
+| `apiVersion` | 2022-11-01 | date |
 | `publisher` | Microsoft.Azure.KeyVault | string |
 | `type` | KeyVaultForLinux | string |
-| `typeHandlerVersion` | 3.0 | int |
+| `typeHandlerVersion` | "3.0" | string |
 | `pollingIntervalInS` | 3600 | string |
 | `certificateStoreName` | It's ignored on Linux | string |
 | `linkOnRenewal` | false | boolean |
@@ -184,11 +189,10 @@ The following JSON provides the schema for the Key Vault VM extension. All setti
 
 ## Template deployment
 
-Azure VM extensions can be deployed with Azure Resource Manager templates. Templates are ideal when deploying one or more virtual machines that require post deployment refresh of certificates. The extension can be deployed to individual VMs or virtual machine scale sets. The schema and configuration are common to both template types.
+You can deploy Azure VM extensions by using Azure Resource Manager templates. Templates are ideal when you deploy one or more virtual machines that require post-deployment refresh of certificates. You can deploy the extension to individual VMs or Azure Virtual Machine Scale Sets. The schema and configuration are common to both template types.
 
- > [!NOTE]
-> The VM extension would require system or user managed identity to be assigned to authenticate to Key vault.  See [How to authenticate to Key Vault and assign a Key Vault access policy.](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
->
+> [!NOTE]
+> The VM extension requires a system-assigned or user-assigned managed identity to authenticate to Key Vault. For more information, see [Configure managed identities for Azure resources on an Azure VM by using the Azure portal](/entra/identity/managed-identities-azure-resources/qs-configure-portal-windows-vm).
 
 ```json
    {
@@ -208,14 +212,14 @@ Azure VM extensions can be deployed with Azure Resource Manager templates. Templ
       "settings": {
           "secretsManagementSettings": {
           "pollingIntervalInS": <polling interval in seconds, e.g. "3600">,
-          "requireInitialSync": <initial synchronization of certificates e..g: false>,
-          "aclEnabled": <enables/disables acls on defined certificates e.g.: true>,
-          "observedCertificates": <An array of KeyVault URIs that represent monitored certificates, including certificate store location and ACL permission to certificate private key. Example:
+          "requireInitialSync": <initial synchronization of certificates, e.g.: false>,
+          "aclEnabled": <enables or disables ACLs on defined certificates e.g.: true>,
+          "observedCertificates": <An array of Key Vault URIs that represent monitored certificates, including certificate store location and ACL permission to certificate private key. Example:
              [
                 {
                     "url": <A Key Vault URI to the secret portion of the certificate. Example: "https://myvault.vault.azure.net/secrets/mycertificate1">,
                     "certificateStoreLocation": <The certificate store location, which currently works locally only. Example: "/var/lib/waagent/Microsoft.Azure.KeyVault.Store">,
-                    "acls": <Optional. An array of preferred acls with read access to certificate private keys. Example: 
+                    "acls": <Optional. An array of preferred ACLs with read access to certificate private keys. Example:
                     [
                         {
                             "user": "app1",
@@ -228,55 +232,56 @@ Azure VM extensions can be deployed with Azure Resource Manager templates. Templ
                 },
                 {
                     "url": <Example: "https://myvault.vault.azure.net/secrets/mycertificate2">,
-                    "certificateStoreName": <ignored on linux>,
+                    "certificateStoreName": <ignored on Linux>,
                     "certificateStoreLocation": <The certificate store location, which currently works locally only. Example: "/var/lib/waagent/Microsoft.Azure.KeyVault.Store">,
-                    "acls": <Optional. An array of preferred acls with read access to certificate private keys. Example: 
+                    "acls": <Optional. An array of preferred ACLs with read access to certificate private keys. Example:
                     [
                         {
                             "user": "app2"
                         }
                     ]>
                 }
-               
-             ]>   
+
+             ]>
           },
           "authenticationSettings": {
               "msiEndpoint":  <Required when msiClientId is provided. MSI endpoint e.g. for most Azure VMs: "http://169.254.169.254/metadata/identity">,
-              "msiClientId":  <Required when VM has any user assigned identities. MSI identity e.g.: "00001111-aaaa-2222-bbbb-3333cccc4444">
+              "msiClientId":  <Required when VM has any user-assigned identities. MSI identity e.g.: "00001111-aaaa-2222-bbbb-3333cccc4444">
           }
-        } 
+        }
       }
     }
 ```
 
-### Extension Dependency Ordering
+### Extension dependency ordering
 
-The Key Vault VM extension supports extension ordering if configured. By default the extension reports successful start as soon as polling starts. However, you can configure it to wait until it successfully downloads the complete list of certificates before reporting a successful start. If other extensions depend on installed certificates before they start, then enabling this setting will allow those extensions to declare a dependency on the Key Vault extension. This will prevent those extensions from starting until all certificates they depend on have been installed. 
+The Key Vault VM extension supports extension ordering if you configure it. By default, the extension reports a successful start as soon as polling starts. You can configure it to wait until it successfully downloads the complete list of certificates before it reports a successful start. If other extensions depend on installed certificates before they start, enable this setting. Those extensions can then declare a dependency on the Key Vault extension. This setting prevents those extensions from starting until all certificates they depend on are installed.
 
-The extension will retry the initial download up to 25 times with increasing backoff periods, during which it remains in a `Transitioning` state. If the retries are exhausted, the extension will report an `Error` state.
+The extension retries the initial download up to 25 times with increasing backoff periods, during which it remains in a `Transitioning` state. If the retries are exhausted, the extension reports an `Error` state.
 
 To turn on extension dependency, set the following:
-```
+
+```json
 "secretsManagementSettings": {
     "requireInitialSync": true,
     ...
 }
 ```
+
 > [!NOTE]
-> Using this feature is not compatible with an ARM template that creates a system assigned identity and updates a Key Vault access policy with that identity. Doing so will result in a deadlock as the vault access policy cannot be updated until all extensions have started. You should instead use a *single user assigned MSI identity* and pre-ACL your vaults with that identity before deploying.
+> The extension dependency feature isn't compatible with an ARM template that creates a system-assigned identity and updates a Key Vault access policy with that identity. This configuration creates a deadlock because the vault access policy can't update until all extensions start. Instead, use a *single user-assigned MSI identity* and pre-ACL your vaults with that identity before you deploy.
 
 ## Azure PowerShell deployment
+
 > [!WARNING]
-> PowerShell clients often add `\` to `"` in the settings.json which will cause akvvm_service fails with error: `[CertificateManagementConfiguration] Failed to parse the configuration settings with:not an object.`
+> PowerShell clients often add `\` to `"` in `settings.json`. This behavior causes `akvvm_service` to fail with the error `[CertificateManagementConfiguration] Failed to parse the configuration settings with:not an object.`
 
-The Azure PowerShell can be used to deploy the Key Vault VM extension to an existing virtual machine or virtual machine scale set.
+Use Azure PowerShell to deploy the Key Vault VM extension to an existing virtual machine or virtual machine scale set.
 
-* To deploy the extension on a VM:
+Save Key Vault VM extension settings to a JSON file named `settings.json`.
 
-The Azure Key Vault VM extension can be deployed with Azure PowerShell. Save Key Vault VM extension settings to a JSON file (settings.json). 
+The following JSON snippets provide example settings for deploying the Key Vault VM extension by using PowerShell.
 
-The following JSON snippets provide example settings for deploying the Key Vault VM extension with PowerShell.
-    
 ```json
 {
    "secretsManagementSettings": {
@@ -288,7 +293,7 @@ The following JSON snippets provide example settings for deploying the Key Vault
       {
           "url": "https://<examplekv>.vault.azure.net/secrets/mycertificate1",
           "certificateStoreLocation":  "/var/lib/waagent/Microsoft.Azure.KeyVault.Store",
-          "acls": 
+          "acls":
           [
               {
                   "user": "app1",
@@ -302,7 +307,7 @@ The following JSON snippets provide example settings for deploying the Key Vault
       {
           "url": "https://<examplekv>.vault.azure.net/secrets/mycertificate2",
           "certificateStoreLocation": "/var/lib/waagent/Microsoft.Azure.KeyVault.Store",
-          "acls": 
+          "acls":
           [
               {
                   "user": "app2"
@@ -313,50 +318,47 @@ The following JSON snippets provide example settings for deploying the Key Vault
    "authenticationSettings": {
       "msiEndpoint":  "http://169.254.169.254/metadata/identity/oauth2/token",
       "msiClientId":  "xxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
-   }      
+   }
 }
 ```
 
-* To deploy the extension on a virtual machine:
+### Deploy on a VM by using Azure PowerShell
 
 ```powershell
 # Build settings
-$settings = (get-content -raw ".\settings.json")
+$settings = (Get-Content -Raw ".\settings.json")
 $extName =  "KeyVaultForLinux"
 $extPublisher = "Microsoft.Azure.KeyVault"
 $extType = "KeyVaultForLinux"
- 
+
 # Start the deployment
 Set-AzVmExtension -TypeHandlerVersion "3.0" -ResourceGroupName <ResourceGroupName> -Location <Location> -VMName <VMName> -Name $extName -Publisher $extPublisher -Type $extType -SettingString $settings
-
 ```
 
-* To deploy the extension on a virtual machine scale set:
+### Deploy on a virtual machine scale set by using Azure PowerShell
 
 ```powershell
-    # Build settings
-    $settings = (get-content -raw ".\settings.json")
-    $extName = "KeyVaultForLinux"
-    $extPublisher = "Microsoft.Azure.KeyVault"
-    $extType = "KeyVaultForLinux"
-      
-    # Add extension to Virtual Machine Scale Sets
-    $vmss = Get-AzVmss -ResourceGroupName <ResourceGroupName> -VMScaleSetName <VmssName>
-    Add-AzVmssExtension -VirtualMachineScaleSet $vmss  -Name $extName -Publisher $extPublisher -Type $extType -TypeHandlerVersion "3.0" -Setting $settings
-    
-    # Start the deployment
-    Update-AzVmss -ResourceGroupName <ResourceGroupName> -VMScaleSetName <VmssName> -VirtualMachineScaleSet $vmss 
-``` 
+# Build settings
+$settings = (Get-Content -Raw ".\settings.json")
+$extName = "KeyVaultForLinux"
+$extPublisher = "Microsoft.Azure.KeyVault"
+$extType = "KeyVaultForLinux"
+
+# Add extension to Virtual Machine Scale Sets
+$vmss = Get-AzVmss -ResourceGroupName <ResourceGroupName> -VMScaleSetName <VmssName>
+Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name $extName -Publisher $extPublisher -Type $extType -TypeHandlerVersion "3.0" -Setting $settings
+
+# Start the deployment
+Update-AzVmss -ResourceGroupName <ResourceGroupName> -VMScaleSetName <VmssName> -VirtualMachineScaleSet $vmss
+```
 
 ## Azure CLI deployment
 
-The Azure CLI can be used to deploy the Key Vault VM extension to an existing virtual machine or virtual machine scale set.
+Use the Azure CLI to deploy the Key Vault VM extension to an existing virtual machine or virtual machine scale set.
 
-* To deploy the extension on a VM:
+Save Key Vault VM extension settings to a JSON file named `settings.json`.
 
-The Azure Key Vault VM extension can be deployed by using the Azure CLI. Save Key Vault VM extension settings to a JSON file (settings.json). 
-
-The following JSON snippets provide example settings for deploying the Key Vault VM extension with the Azure CLI.
+The following JSON snippets provide example settings for deploying the Key Vault VM extension by using the Azure CLI.
 
 ```json
 {
@@ -369,7 +371,7 @@ The following JSON snippets provide example settings for deploying the Key Vault
       {
           "url": "https://<examplekv>.vault.azure.net/secrets/mycertificate1",
           "certificateStoreLocation":  "/var/lib/waagent/Microsoft.Azure.KeyVault.Store",
-          "acls": 
+          "acls":
           [
               {
                   "user": "app1",
@@ -383,7 +385,7 @@ The following JSON snippets provide example settings for deploying the Key Vault
       {
           "url": "https://<examplekv>.vault.azure.net/secrets/mycertificate2",
           "certificateStoreLocation": "/var/lib/waagent/Microsoft.Azure.KeyVault.Store",
-          "acls": 
+          "acls":
           [
               {
                   "user": "app2"
@@ -394,122 +396,127 @@ The following JSON snippets provide example settings for deploying the Key Vault
    "authenticationSettings": {
       "msiEndpoint":  "http://169.254.169.254/metadata/identity/oauth2/token",
       "msiClientId":  "xxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
-   }      
+   }
 }
-
 ```
 
-* To deploy the extension on a virtual machine
+### Deploy on a VM by using the Azure CLI
 
 ```azurecli
-
-    # Start the deployment
-      az vm extension set -n "KeyVaultForLinux" `
-      --publisher Microsoft.Azure.KeyVault `
-      -g "<resourcegroup>" `
-      --vm-name "<vmName>" `
-      --version 3.0 `
-      --enable-auto-upgrade true `
-      --settings "@settings.json"
-
+# Start the deployment
+az vm extension set --name "KeyVaultForLinux" \
+  --publisher Microsoft.Azure.KeyVault \
+  --resource-group "<resourcegroup>" \
+  --vm-name "<vmName>" \
+  --version "3.0" \
+  --enable-auto-upgrade true \
+  --settings "@settings.json"
 ```
 
-* To deploy the extension on a virtual machine scale set:
+### Deploy on a virtual machine scale set by using the Azure CLI
 
 ```azurecli
-    # Start the deployment
-    az vmss extension set -n "KeyVaultForLinux" `
-    --publisher Microsoft.Azure.KeyVault `
-    -g "<resourcegroup>" `
-    --vmss-name "<vmssName>" `
-    --version 3.0 `
-    --enable-auto-upgrade true `
-    --settings "@settings.json"
-
+# Start the deployment
+az vmss extension set --name "KeyVaultForLinux" \
+  --publisher Microsoft.Azure.KeyVault \
+  --resource-group "<resourcegroup>" \
+  --vmss-name "<vmssName>" \
+  --version "3.0" \
+  --enable-auto-upgrade true \
+  --settings "@settings.json"
 ```
 
-Please be aware of the following restrictions/requirements:
+Review the following restrictions and requirements:
+
 - Key Vault restrictions:
-  - It must exist at the time of the deployment
-  - The Key Vault Secrets User role must be assigned to Key Vault for VM identity
+  - The key vault must exist at the time of the deployment.
+  - The **Key Vault Secrets User** role must be assigned to Key Vault for the VM identity.
 
+## Troubleshoot and support
 
-## Troubleshoot and Support
+Retrieve data about the state of extension deployments from the Azure portal, or by using Azure PowerShell or the Azure CLI. To see the deployment state of extensions for a given VM, run the following commands.
 
-Data about the state of extension deployments can be retrieved from the Azure portal, and by using the Azure PowerShell. To see the deployment state of extensions for a given VM, run the following command using the Azure PowerShell.
+- Azure PowerShell:
 
-**Azure PowerShell**
 ```powershell
 Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 ```
 
-**Azure CLI**
+- Azure CLI:
+
 ```azurecli
- az vm get-instance-view --resource-group <resource group name> --name  <vmName> --query "instanceView.extensions"
+az vm get-instance-view --resource-group <resource group name> --name <vmName> --query "instanceView.extensions"
 ```
 
 [!INCLUDE [azure-cli-troubleshooting.md](~/reusable-content/ce-skilling/azure/includes/azure-cli-troubleshooting.md)]
 
 ### Logs and configuration
 
-The Key Vault VM extension logs exist locally on the VM and are most informative when it comes to troubleshooting. You can use optional logging section to integrate with logging provider through `fluentd`
+The Key Vault VM extension logs exist locally on the VM and are most informative for troubleshooting. Use the optional logging section to integrate with a logging provider by using `fluentd`.
 
-|Location|Description|
-|--|--|
-| /var/log/waagent.log	| Shows when an update to the extension occurred. |
-| /var/log/azure/Microsoft.Azure.KeyVault.KeyVaultForLinux/*	| Examine the Key Vault VM Extension service logs to determine the status of the akvvm_service service and certificate download. You can find the download location of PEM files in files with an entry called certificate file name. If certificateStoreLocation is not specified, it will default to /var/lib/waagent/Microsoft.Azure.KeyVault.Store/ |
-| /var/lib/waagent/Microsoft.Azure.KeyVault.KeyVaultForLinux-\<most recent version\>/config/*	| The configuration and binaries for Key Vault VM Extension service. |
-|||
+| Location | Description |
+| --- | --- |
+| `/var/log/waagent.log` | Shows when updates occur to the extension. |
+| `/var/log/azure/Microsoft.Azure.KeyVault.KeyVaultForLinux/*` | Shows the status of the `akvvm_service` service and certificate download. You can find the PEM file download location in files with an entry named `certificate file name`. If `certificateStoreLocation` isn't specified, the location defaults to `/var/lib/waagent/Microsoft.Azure.KeyVault.Store/`. |
+| `/var/lib/waagent/Microsoft.Azure.KeyVault.KeyVaultForLinux-<most recent version>/config/*` | Contains the configuration and binaries for the Key Vault VM extension service. |
 
-### Using Symlink
+### Use symbolic links
 
-Symbolic links or Symlinks are advanced shortcuts. To avoid monitoring the folder and to get the latest certificate automatically, you can use this symlink `([VaultName].[CertificateName])` to get the latest version of certificate on Linux.
+Symbolic links are advanced shortcuts. To avoid monitoring the folder and to get the latest certificate automatically, use the `[VaultName].[CertificateName]` symbolic link to get the latest certificate version on Linux.
 
-## Certificate Installation on Linux
+## Certificate installation on Linux
 
-The Key Vault VM extension for Linux installs certificates as PEM files. When a certificate is downloaded from Key Vault, the extension:
+The Key Vault VM extension for Linux installs certificates as PEM files. When the extension downloads a certificate from Key Vault, it:
 
-1. Creates a storage folder based on the `certificateStoreLocation` setting (defaults to `/var/lib/waagent/Microsoft.Azure.KeyVault.Store/` if not specified)
-2. Installs the certificate chain and private key as stored in Key Vault. The PEM file follows [RFC 5246 section 7.4.2](https://datatracker.ietf.org/doc/html/rfc5246#section-7.4.2) ordering:
-   - Leaf certificate (end-entity certificate) comes first
-   - Intermediate certificate(s) follow in order, where each certificate directly certifies the one before it (if present in Key Vault)
-   - Root certificate, if present (though it's not required for validation if already trusted by the system)
-   - Private key, corresponding to the leaf certificate, is placed at the end of the file
-3. Automatically creates a symbolic link named `[VaultName].[CertificateName]` that points to the latest version of the certificate
+1. Creates a storage folder based on the `certificateStoreLocation` setting. If you don't specify this setting, the location defaults to `/var/lib/waagent/Microsoft.Azure.KeyVault.Store/`.
+1. Installs the certificate chain and private key as stored in Key Vault. The PEM file follows [RFC 5246 section 7.4.2](https://datatracker.ietf.org/doc/html/rfc5246#section-7.4.2) ordering:
+   - Leaf certificate, or end-entity certificate, comes first.
+   - Intermediate certificates follow in order, where each certificate directly certifies the one before it, if present in Key Vault.
+   - Root certificate, if present. The root certificate isn't required for validation if the system already trusts it.
+   - The extension places the private key that corresponds to the leaf certificate at the end of the file.
+1. Automatically creates a symbolic link named `[VaultName].[CertificateName]` that points to the latest version of the certificate.
 
-This approach ensures that:
-- Applications have access to the certificate chain as stored in Key Vault
-- The certificate chain is properly ordered for TLS handshakes according to RFC standards
-- The private key is available for use by the service
-- Applications can reference a stable symbolic link path that automatically updates when certificates are renewed
-- No application reconfiguration is needed when certificates are rotated or renewed
+This installation approach ensures that:
 
-### Example Certificate Path Structure
+- Applications have access to the certificate chain as stored in Key Vault.
+- The certificate chain is ordered for TLS handshakes according to RFC standards.
+- The private key is available for use by the service.
+- Applications can reference a stable symbolic link path that automatically updates when certificates are renewed.
+- No application reconfiguration is needed when certificates are rotated or renewed.
 
-For a certificate from `exampleVault.vault.azure.net` with the name `myCertificate`, the directory structure would look like:
+### Example certificate path structure
 
-```
+For a certificate from `exampleVault.vault.azure.net` with the name `myCertificate`, the directory structure looks like:
+
+```output
 /var/lib/waagent/Microsoft.Azure.KeyVault.Store/
 ├── exampleVault.myCertificate -> exampleVault.myCertificate.1234567890abcdef
 ├── exampleVault.myCertificate.1234567890abcdef    # Full chain PEM file (current version)
 └── exampleVault.myCertificate.0987654321fedcba    # Previous version (if exists)
 ```
 
-Applications should be configured to use the symbolic link path (`/var/lib/waagent/Microsoft.Azure.KeyVault.Store/exampleVault.myCertificate`) to ensure they always access the most current certificate version.
+Configure applications to use the symbolic link path (`/var/lib/waagent/Microsoft.Azure.KeyVault.Store/exampleVault.myCertificate`). This configuration ensures that applications always access the most current certificate version.
 
 When you use custom certificate store locations and the `customSymbolicLinkName` setting, the structure follows this pattern:
 
-```
+```output
 /path/to/custom/store/
 ├── customLinkName -> exampleVault.myCertificate.1234567890abcdef
 └── exampleVault.myCertificate.1234567890abcdef    # Full chain PEM file
 ```
 
-### Frequently Asked Questions
+### Frequently asked questions
 
-* Is there's a limit on the number of observedCertificates you can configure?
-  No, Key Vault VM Extension doesn't have limit on the number of observedCertificates.
+#### Is there a limit on the number of observed certificates that I can configure?
 
-### Support
+No. The Key Vault VM extension doesn't limit the number of observed certificates (`observedCertificates`).
 
-If you need more help at any point in this article, you can contact the Azure experts on the [MSDN Azure and Stack Overflow forums](https://azure.microsoft.com/support/forums/). Alternatively, you can file an Azure support incident. Go to the [Azure support site](https://azure.microsoft.com/support/options/) and select Get support. For information about using Azure Support, read the [Microsoft Azure support FAQ](https://azure.microsoft.com/support/faq/).
+### Get support
+
+Microsoft provides support only for major version 3.0 and later of the Key Vault VM extension. If you're using version 1.0, upgrade to the latest version before requesting support.
+
+Here are some other options to help you resolve deployment problems:
+
+- For assistance, contact the Azure experts in [Microsoft Q&A](/answers/tags/133/azure-virtual-machines).
+- If you don't find an answer on the site, post a question for input from Microsoft or other members of the community.
+- You can also [contact Microsoft Support](https://support.microsoft.com/contactus/). For information about using Azure support, see [How to create an Azure support request](/azure/azure-portal/supportability/how-to-create-azure-support-request).
