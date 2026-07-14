@@ -1,12 +1,13 @@
 ---
 title: How to upgrade Azure Disk Encryption on a disk
-description: This article provides instructions on upgrading Azure Disk Encryption on a disk
+description: This article provides instructions on upgrading Azure Disk Encryption on a disk.
 author: msmbaldwin
 ms.service: azure-virtual-machines
 ms.subservice: disks
 ms.topic: how-to
 ms.author: mbaldwin
-ms.date: 09/23/2025
+ms.date: 07/14/2026
+ai-usage: ai-assisted
 ms.custom: linux-related-content
 # Customer intent: "As a system administrator, I want to upgrade Azure Disk Encryption on my virtual machines, so that I can enhance security by using the latest version without relying on Microsoft Entra ID."
 ---
@@ -23,7 +24,7 @@ The versions of ADE in scope for migration are:
 - **Windows**: 1.1.* (ADE on the VM must be upgraded to 2.2)
 - **Linux**: 0.1.* (ADE on the VM must be upgraded to 1.2)
 
-You can determine the version of ADE with which a VM was encrypted via Azure CLI, Azure PowerShell, or the Azure portal.
+You can determine the version of ADE with which a VM was encrypted through Azure CLI, Azure PowerShell, or the Azure portal.
 
 # [CLI](#tab/CLI)
 
@@ -74,7 +75,7 @@ When the cmdlet prompts you for confirmation, enter "Y". The ADE version is upda
 
 ```output
 Update AzureDiskEncryption version?
-This cmdlet updates Azure Disk Encryption version to single pass (Azure Disk Encryption without Azure AD). This may reboot
+This cmdlet updates Azure Disk Encryption version to single pass (Azure Disk Encryption without Microsoft Entra ID). This command might reboot
 the machine and takes 10-15 minutes to finish. Are you sure you want to continue?
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
 Azure Disk Encryption Extension Public Settings
@@ -90,10 +91,10 @@ Azure Disk Encryption Extension Public Settings
 "VolumeType":
 "KeyEncryptionAlgorithm":
 
-Running ADE extension (with Azure AD) for -Migrate..
-ADE extension (with Azure AD) is now complete. Updating VM model..
-Running ADE extension (without Azure AD) for -Migrate..
-ADE extension (without Azure AD) is now complete. Clearing VM model..
+Running ADE extension (with Microsoft Entra ID) for -Migrate..
+ADE extension (with Microsoft Entra ID) is now complete. Updating VM model..
+Running ADE extension (without Microsoft Entra ID) for -Migrate..
+ADE extension (without Microsoft Entra ID) is now complete. Clearing VM model..
 
 RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 --------- ------------------- ---------- ------------
