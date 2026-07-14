@@ -1800,7 +1800,7 @@
       href: disks-restrict-import-export-overview.md
     - name: Restrict uploading and downloading of your disks
       href: disks-secure-upload-download.md
-    - name: Configure private links for disks - CLI
+    - name: Configure private links for disks
       href: ./linux/disks-export-import-private-links-cli.md
     - name: Configure private links for disks - Portal
       href: disks-enable-private-links-for-import-export-portal.yml
