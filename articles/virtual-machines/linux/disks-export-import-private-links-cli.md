@@ -266,5 +266,5 @@ New-AzSnapshot -ResourceGroupName $resourceGroupName -SnapshotName $snapshotName
 
 - To upload a VHD to Azure or copy a managed disk to another region, use the [Azure CLI](disks-upload-vhd-to-managed-disk-cli.md) or the [Azure PowerShell module](../windows/disks-upload-vhd-to-managed-disk-powershell.md).
 - To download a VHD, see [Windows](../windows/download-vhd.md) or [Linux](download-vhd.md).
-- [FAQ on Private Links](../faq-for-disks.yml#private-links-for-managed-disks)
+- [FAQ on Private Links](/azure/virtual-machines/faq-for-disks#private-links-for-managed-disks)
 - Export or copy managed snapshots as VHD to a storage account in a different region with [Azure CLI](/previous-versions/azure/virtual-machines/scripts/virtual-machines-cli-sample-copy-managed-disks-vhd).

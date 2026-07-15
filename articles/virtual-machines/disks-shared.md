@@ -173,4 +173,4 @@ Both shared Ultra Disks and shared Premium SSD v2 managed disks are priced based
 
 If you're interested in enabling and using shared disks for your managed disks, proceed to our article [Enable shared disk](disks-shared-enable.md)
 
-If you have additional questions, see the [shared disks](faq-for-disks.yml#azure-shared-disks) section of the FAQ.
+If you have additional questions, see the [shared disks](/azure/virtual-machines/faq-for-disks#azure-shared-disks) section of the FAQ.

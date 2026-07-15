@@ -127,7 +127,7 @@ Generally, you should use data disks to store your applications and data, instea
 - Easier maintenance
 - Improved security and access control
 
-For more information on these benefits, see [Why should I use the data disk to store applications and data instead of the OS disk?](faq-for-disks.yml#why-should-i-use-the-data-disk-to-store-applications-and-data-instead-of-the-os-disk-).
+For more information on these benefits, see [Why should I use the data disk to store applications and data instead of the OS disk?](/azure/virtual-machines/faq-for-disks#why-should-i-use-the-data-disk-to-store-applications-and-data-instead-of-the-os-disk-).
 
 ### Temporary disk
 

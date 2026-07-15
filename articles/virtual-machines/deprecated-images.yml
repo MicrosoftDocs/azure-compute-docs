@@ -345,7 +345,7 @@ sections:
 
           1. Stop and deallocate the old VM.
           1. Detach the data disks from the old VM. For more information, see [Detach a data disk from a Linux VM](linux/detach-disk.md) or [Detach a data disk from a Windows VM](windows/tutorial-manage-data-disk.md#detach-a-data-disk).
-          1. Attach the data disks to the new VM. For more information, see [Attach a data disk to a Linux VM](linux/attach-disk-portal.yml) or [Attach a data disk to a Windows VM](windows/attach-managed-disk-portal.yml).
+          1. Attach the data disks to the new VM. For more information, see [Attach a data disk to a Linux VM](/azure/virtual-machines/linux/attach-disk-portal) or [Attach a data disk to a Windows VM](/azure/virtual-machines/windows/attach-managed-disk-portal).
           1. Start the new VM and verify data accessibility.
 
           > [!NOTE]
@@ -357,7 +357,7 @@ sections:
 
           1. [Create a snapshot](snapshot-copy-managed-disk.md) of the data disks.
           1. [Create managed disks from the snapshots](snapshot-copy-managed-disk.md).
-          1. Attach the disks to the new VM. For more information, see [Attach a data disk to a Linux VM](linux/attach-disk-portal.yml) or [Attach a data disk to a Windows VM](windows/attach-managed-disk-portal.yml).
+          1. Attach the disks to the new VM. For more information, see [Attach a data disk to a Linux VM](/azure/virtual-machines/linux/attach-disk-portal) or [Attach a data disk to a Windows VM](/azure/virtual-machines/windows/attach-managed-disk-portal).
 
           **Method C: Use file-based transfer**
 
