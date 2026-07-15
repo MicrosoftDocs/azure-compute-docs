@@ -41,9 +41,9 @@ sections:
           Yes. The maximum limit is 50,000 managed disks per region and per disk type for a subscription.
 
       - question: |
-          Can VMs in an availability set consist of a combination of managed and unmanaged disks?
+          Can VMs in an availability set include a mix of managed and unmanaged disks?
         answer: |
-          No. The VMs in an availability set must use either all managed disks or all unmanaged disks. When you create an availability set, you can choose which type of disks you want to use.
+          No. VMs in an availability set can't mix disk management models. Unmanaged disks are retired, so use managed disks for all VMs in the availability set.
 
       - question: |
           Can I create an empty managed disk?
