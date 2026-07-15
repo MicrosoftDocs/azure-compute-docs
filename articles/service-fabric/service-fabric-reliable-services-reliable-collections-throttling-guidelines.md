@@ -32,7 +32,7 @@ If you're new to Reliable Collections, the following terms appear throughout thi
 - **Commit**: The operation that finalizes a transaction, performed by calling the `CommitAsync` API. A commit isn't complete until the change is persisted to the log and replicated to a quorum of secondary replicas.
 - **Replica**: A copy of a partition's state. The **primary** serves reads and writes; **secondary** replicas receive replicated operations and acknowledge them.
 - **Quorum**: The majority of replicas that must acknowledge a write before the commit finishes.
-- **Transactional log**: The on-disk log that every write is appended to before a commit finishes. It provides durability and ordering.
+- **Transactional log**: The on-disk log that every write appends to before a commit finishes. It provides durability and ordering.
 - **Replication queue**: A bounded queue on the primary that holds each replicated operation until every secondary acknowledges it.
 - **Checkpoint**: A periodic operation that persists in-memory state so that older log records can be discarded.
 - **Truncation**: Discarding log records that are no longer needed, which advances the log head and frees log space.
@@ -96,7 +96,7 @@ Watch for operation timeouts as a stall symptom. When commits can't finish becau
 
 ## Implement your own throttling
 
-The platform throttles to protect durability, but it doesn't cap how much work your application sends into the pipeline. That responsibility is yours. You must follow the best practices in the following sections to implement your own client-side throttling, bounding how many transactions you have in flight and how aggressively you retry. Without it, your application can push the pipeline past its drain rate, drive log and queue usage to their limits, and trigger capacity-related write stalls that you could have avoided.
+The platform throttles to protect durability, but it doesn't cap how much work your application sends into the pipeline. That responsibility is yours. Follow the best practices in the following sections to implement your own client-side throttling, bounding how many transactions you have in flight and how aggressively you retry. Without it, your application can push the pipeline past its drain rate, drive log and queue usage to their limits, and trigger capacity-related write stalls that you could have avoided.
 
 The following do's, don'ts, and code patterns show how to build that throttling and stay in a healthy operating range.
 
