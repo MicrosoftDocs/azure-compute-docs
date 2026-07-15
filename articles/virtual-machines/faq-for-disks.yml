@@ -1,14 +1,14 @@
 ### YamlMime:FAQ
 metadata:
   title: Frequently asked questions about disks
-  description: "Frequently asked questions about Azure IaaS Linux VM disks and premium disks (managed and unmanaged)"
+  description: "Frequently asked questions about Azure IaaS VM disks and Premium SSD managed disks"
   author: roygara
   ms.service: azure-disk-storage
   ms.topic: faq
-  ms.date: 04/11/2025
+  ms.date: 07/15/2026
   ms.author: rogarana
   ms.custom: references_regions
-title: Frequently asked questions about Azure IaaS VM disks and managed and unmanaged premium disks
+title: Frequently asked questions about Azure IaaS VM disks and Premium SSD managed disks
 summary: This article answers some frequently asked questions about Azure managed disks and Azure Premium SSDs.
 
 
@@ -41,9 +41,9 @@ sections:
           Yes. The maximum limit is 50,000 managed disks per region and per disk type for a subscription.
 
       - question: |
-          Can VMs in an availability set consist of a combination of managed and unmanaged disks?
+          Can VMs in an availability set include a mix of managed and unmanaged disks?
         answer: |
-          No. The VMs in an availability set must use either all managed disks or all unmanaged disks. When you create an availability set, you can choose which type of disks you want to use.
+          No. VMs in an availability set can't mix disk management models. Unmanaged disks are retired, so use managed disks for all VMs in the availability set.
 
       - question: |
           Can I create an empty managed disk?
@@ -75,9 +75,9 @@ sections:
           You can take a snapshot of a managed disk and then use the snapshot to create another managed disk. You can also create a new managed disk from an existing managed disk.
 
       - question: |
-          Are unmanaged disks still supported?
+          Are unmanaged disks supported?
         answer: |
-          Yes, but they'll be retired on [March 31, 2026](unmanaged-disks-deprecation.md) (extended from September 30, 2025). As of November 18, 2022, new customer subscriptions aren't eligible to create unmanaged disks. Page blobs aren't affected by this change. Plan and complete migration of any VMs using unmanaged disks to managed disks before March 31, 2026. See [pricing](https://azure.microsoft.com/pricing/details/managed-disks/) and migration guidance for [Windows](windows/convert-unmanaged-to-managed-disks.md) and [Linux](linux/convert-unmanaged-to-managed-disks.md) VMs, or refer to the [migration overview](windows/migrate-to-managed-disks.md). You should use managed disks for new workloads and migrate your current workloads to managed disks.
+          Unmanaged disks were fully retired on [March 31, 2026](unmanaged-disks-deprecation.md) (extended from September 30, 2025). If you still have workloads that were using unmanaged disks, migrate them to managed disks as soon as possible. This retirement affects page blobs only when they're attached directly to VMs as virtual disks. Standalone page blobs accessed through Storage REST APIs aren't affected. See migration guidance for [Windows](windows/convert-unmanaged-to-managed-disks.md) and [Linux](linux/convert-unmanaged-to-managed-disks.md) VMs, or refer to the [migration overview](windows/migrate-to-managed-disks.md).
 
       - question: |
           Can I colocate unmanaged and managed disks on the same VM?
@@ -389,7 +389,7 @@ sections:
           ---
           Then, encrypt your current disk with Azure Disk Encryption.
 
-  - name: "Premium disks: Managed and unmanaged"
+  - name: "Premium SSD managed disks"
     questions:
       - question: |
           If a VM uses a size series that supports Premium SSDs, such as a DSv2, can I attach both premium and standard data disks? 
@@ -399,7 +399,7 @@ sections:
       - question: |
           Can I deploy a VM with an unmanaged disk in the Azure portal?
         answer: |
-          Not all OS images support deploying with an unmanaged disk in the Azure portal. If your chosen image doesn't support this method of deployment, we recommend that you use managed disks for new workloads and [convert](windows/convert-unmanaged-to-managed-disks.md) your existing disk to a managed disk. If you’re unable to use managed disks, you can deploy a VM using unmanaged disks with either the Azure PowerShell module or the Azure CLI.
+          No. Unmanaged disks are retired, so VM deployments should use managed disks. If you have existing workloads that were using unmanaged disks, migrate them to managed disks. For migration guidance, see [Convert a Windows VM from unmanaged disks to managed disks](windows/convert-unmanaged-to-managed-disks.md) and [Convert a Linux VM from unmanaged disks to managed disks](linux/convert-unmanaged-to-managed-disks.md).
 
       - question: |
           Can I attach both premium and standard data disks to a size series that doesn't support Premium SSDs, such as D, Dv2, G, or F series?
@@ -442,7 +442,7 @@ sections:
       - question: |
           What is the largest unmanaged disk size supported for operating system and data disks?
         answer: |
-          The partition type that Azure supports for an operating system disk using unmanaged disks is the master boot record (MBR). While you can allocate up to 4 TiB for an OS disk, the MBR partition type can only use up to 2 TiB of this disk space for the operating system. Azure supports up to 4 TiB for unmanaged data disks.
+          Unmanaged disks are retired. Before retirement, the partition type for an operating system disk using unmanaged disks was master boot record (MBR). While you could allocate up to 4 TiB for an OS disk, the MBR partition type could only use up to 2 TiB of this disk space for the operating system. Unmanaged data disks supported up to 4 TiB.
           
       - question: |
           What is the largest supported page blob size?
@@ -452,7 +452,7 @@ sections:
       - question: |
           Are P4 and P6 disk sizes supported for unmanaged disks or page blobs?
         answer: |
-          P4 (32 GiB) and P6 (64 GiB) disk sizes aren't supported as the default disk tiers for unmanaged disks and page blobs. You need to explicitly [set the Blob Tier](/rest/api/storageservices/set-blob-tier) to P4 and P6 to have your disk mapped to these tiers. If you deploy an unmanaged disk or page blob with the disk size or content length less than 32 GiB or between 32 GiB to 64 GiB without setting the Blob Tier, you'll continue to land on P10 with 500 IOPS and 100 MB/s and the mapped pricing tier.
+          Unmanaged disks are retired. For page blobs, P4 (32 GiB) and P6 (64 GiB) aren't the default blob tiers. To use them, explicitly [set the Blob Tier](/rest/api/storageservices/set-blob-tier) to P4 or P6. Otherwise, page blobs with content length less than 32 GiB or between 32 GiB and 64 GiB map to P10 with 500 IOPS and 100 MB/s and the corresponding pricing tier.
           
       - question: |
           If my existing premium managed disk less than 64 GiB was created before the small disk was enabled (around June 15, 2017), how is it billed?
