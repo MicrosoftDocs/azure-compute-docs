@@ -112,4 +112,4 @@ The disk stays in storage but is no longer attached to a virtual machine. The di
 ## Next steps
 If you want to reuse the data disk, you can just [attach it to another VM](add-disk.md).
 
-If you want to delete the disk, so that you no longer incur storage costs, see [Find and delete unattached Azure managed and unmanaged disks - Azure portal](/azure/virtual-machines/disks-find-unattached-portal).
+If you want to delete the disk so that you no longer incur storage costs, see [Find and delete unattached Azure managed and unmanaged disks - Azure portal](/azure/virtual-machines/disks-find-unattached-portal).
