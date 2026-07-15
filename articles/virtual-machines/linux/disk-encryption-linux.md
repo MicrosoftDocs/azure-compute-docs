@@ -1,13 +1,14 @@
 ---
 title: Azure Disk Encryption scenarios on Linux VMs
-description: This article provides instructions on enabling Microsoft Azure Disk Encryption for Linux VMs for various scenarios
+description: This article provides instructions on enabling Microsoft Azure Disk Encryption for Linux VMs for various scenarios.
 author: msmbaldwin
 ms.service: azure-virtual-machines
 ms.subservice: security
 ms.collection: linux
 ms.topic: concept-article
 ms.author: mbaldwin
-ms.date: 02/20/2026
+ms.date: 07/14/2026
+ai-usage: ai-assisted
 ms.custom: devx-track-azurepowershell, linux-related-content, devx-track-azurecli
 # Customer intent: As a Linux VM administrator, I want to enable Azure Disk Encryption for my virtual machines, so that I can secure my data at rest and ensure compliance with data protection standards.
 ---
@@ -18,29 +19,29 @@ ms.custom: devx-track-azurepowershell, linux-related-content, devx-track-azurecl
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Flexible scale sets
 
-Azure Disk Encryption for Linux virtual machines (VMs) uses the DM-Crypt feature of Linux to provide full disk encryption of the OS disk and data disks. Additionally, it provides encryption of the temporary disk when using the EncryptFormatAll feature.
+Azure Disk Encryption for Linux virtual machines (VMs) uses the DM-Crypt feature of Linux to provide full disk encryption of the OS disk and data disks. Additionally, it encrypts the temporary disk when using the EncryptFormatAll feature.
 
 Azure Disk Encryption is [integrated with Azure Key Vault](disk-encryption-key-vault.md) to help you control and manage the disk encryption keys and secrets. For an overview of the service, see [Azure Disk Encryption for Linux VMs](disk-encryption-overview.md).
 
 ## Prerequisites
 
-You can only apply disk encryption to virtual machines of [supported VM sizes and operating systems](disk-encryption-overview.md#supported-vms-and-operating-systems). You must also meet the following prerequisites:
+You can apply disk encryption only to virtual machines of [supported VM sizes and operating systems](disk-encryption-overview.md#supported-vms-and-operating-systems). You must also meet the following prerequisites:
 
 - [Requirements for VMs](disk-encryption-overview.md#supported-vms-and-operating-systems)
 - [Networking requirements](disk-encryption-overview.md#networking-requirements)
 - [Encryption key storage requirements](disk-encryption-overview.md#encryption-key-storage-requirements)
 
-In all cases, you should [take a snapshot](snapshot-copy-managed-disk.md) and/or create a backup before disks are encrypted. Backups ensure that a recovery option is possible if an unexpected failure occurs during encryption. VMs with managed disks require a backup before encryption occurs. Once a backup is made, you can use the [Set-AzVMDiskEncryptionExtension cmdlet](/powershell/module/az.compute/set-azvmdiskencryptionextension) to encrypt managed disks by specifying the -skipVmBackup parameter. For more information about how to back up and restore encrypted VMs, see the [Azure Backup](/azure/backup/backup-azure-vms-encryption) article.
+In all cases, take a [snapshot](snapshot-copy-managed-disk.md), create a backup, or both before disks are encrypted. Backups ensure that a recovery option is possible if an unexpected failure occurs during encryption. VMs with managed disks require a backup before encryption occurs. Once a backup is made, you can use the [Set-AzVMDiskEncryptionExtension cmdlet](/powershell/module/az.compute/set-azvmdiskencryptionextension) to encrypt managed disks by specifying the -skipVmBackup parameter. For more information about how to back up and restore encrypted VMs, see the [Azure Backup](/azure/backup/backup-azure-vms-encryption) article.
 
 ## Restrictions
 
-If you previously used Azure Disk Encryption with Microsoft Entra ID to encrypt a virtual machine, you must continue use this option to encrypt your virtual machine. See [Azure Disk Encryption with Microsoft Entra ID (previous release)](disk-encryption-overview-aad.md) for details.
+If you previously used Azure Disk Encryption with Microsoft Entra ID to encrypt a virtual machine, you must continue to use this option to encrypt your virtual machine. See [Azure Disk Encryption with Microsoft Entra ID (previous release)](disk-encryption-overview-aad.md) for details.
 
-When encrypting Linux OS volumes, the VM should be considered unavailable. We strongly recommend to avoid SSH logins while the encryption is in progress to avoid issues blocking any open files that need to be accessed during the encryption process. To check progress, use the [Get-AzVMDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) PowerShell cmdlet or the [vm encryption show](/cli/azure/vm/encryption#az-vm-encryption-show) CLI command. This process can be expected to take a few hours for a 30GB OS volume, plus extra time for encrypting data volumes. Data volume encryption time is proportional to the size and quantity of the data volumes unless the encrypt format all option is used.
+When encrypting Linux OS volumes, the VM is unavailable. Avoid SSH sign-ins while the encryption is in progress to prevent problems that block any open files that need to be accessed during the encryption process. To check progress, use the [Get-AzVMDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) PowerShell cmdlet or the [vm encryption show](/cli/azure/vm/encryption#az-vm-encryption-show) CLI command. You can expect this process to take a few hours for a 30-GB OS volume, plus extra time for encrypting data volumes. Data volume encryption time is proportional to the size and quantity of the data volumes unless the `encrypt format all` option is used.
 
-Disabling encryption on Linux VMs is only supported for data volumes. Disabling encryption is not supported on data or OS volumes if the OS volume is encrypted.
+Disabling encryption on Linux VMs is only supported for data volumes. Disabling encryption isn't supported on data or OS volumes if the OS volume is encrypted.
 
-Azure Disk Encryption does not work for the following Linux scenarios, features, and technology:
+Azure Disk Encryption doesn't work for the following Linux scenarios, features, and technology:
 
 - Encrypting basic tier VM or VMs created through the classic VM creation method.
 - Encrypting v6 series VMs with temporary disks (Ddsv6, Dldsv6, Edsv6, Dadsv6, Daldsv6, Eadsv6, Dpdsv6, Dpldsv6, Epdsv6, or Endsv6). For more information, see the individual pages for each of these VM sizes listed on [Sizes for virtual machines in Azure](../sizes/overview.md)
@@ -59,7 +60,7 @@ Azure Disk Encryption does not work for the following Linux scenarios, features,
 - Kernel Crash Dump (kdump).
 - Oracle ACFS (ASM Cluster File System).
 - NVMe disks such as those on [High performance computing VM sizes](../sizes-hpc.md) or [Storage optimized VM sizes](../sizes-storage.md).
-- A VM with "nested mount points"; that is, multiple mount points in a single path (such as "/1stmountpoint/data/2ndmountpoint").
+- A VM with "nested mount points," which are multiple mount points in a single path (such as "/1stmountpoint/data/2ndmountpoint").
 - A VM with a data drive mounted on top of an OS folder.
 - A VM on which a root (OS disk) logical volume is extended using a data disk.
 - Resizing of the OS disk.
@@ -74,7 +75,7 @@ Azure Disk Encryption does not work for the following Linux scenarios, features,
 
 ## Install tools and connect to Azure
 
-Azure Disk Encryption can be enabled and managed through the [Azure CLI](/cli/azure) and [Azure PowerShell](/powershell/azure/new-azureps-module-az). To do so, you must install the tools locally and connect to your Azure subscription.
+You can enable and manage Azure Disk Encryption through the [Azure CLI](/cli/azure) and [Azure PowerShell](/powershell/azure/new-azureps-module-az). To do so, you must install the tools locally and connect to your Azure subscription.
 
 # [Azure CLI](#tab/azcliazure)
 
@@ -86,7 +87,7 @@ To [Sign in to your Azure account with the Azure CLI](/cli/azure/authenticate-az
 az login
 ```
 
-If you would like to select a tenant to sign in under, use:
+If you want to select a tenant to sign in under, use:
 
 ```azurecli
 az login --tenant <tenant>
@@ -103,7 +104,7 @@ For more information, see [Get started with Azure CLI 2.0](/cli/azure/get-starte
 
 # [Azure PowerShell](#tab/powershellazure)
 
-The [Azure PowerShell az module](/powershell/azure/new-azureps-module-az) provides a set of cmdlets that uses the [Azure Resource Manager](/azure/azure-resource-manager/management/overview) model for managing your Azure resources. You can use it in your browser with [Azure Cloud Shell](/azure/cloud-shell/overview), or you can install it on your local machine using the instructions in [Install the Azure PowerShell module](/powershell/azure/install-azure-powershell).
+The [Azure PowerShell az module](/powershell/azure/new-azureps-module-az) provides a set of cmdlets that use the [Azure Resource Manager](/azure/azure-resource-manager/management/overview) model for managing your Azure resources. You can use it in your browser with [Azure Cloud Shell](/azure/cloud-shell/overview), or you can install it on your local machine by using the instructions in [Install the Azure PowerShell module](/powershell/azure/install-azure-powershell).
 
 If you already installed it locally, make sure you use the latest version of Azure PowerShell SDK version to configure Azure Disk Encryption. Download the latest version of [Azure PowerShell release](https://github.com/Azure/azure-powershell/releases).
 
@@ -136,9 +137,9 @@ For more information, see [Getting started with Azure PowerShell](/powershell/az
 In this scenario, you can enable encryption by using the Resource Manager template, PowerShell cmdlets, or CLI commands. If you need schema information for the virtual machine extension, see the [Azure Disk Encryption for Linux extension](../extensions/azure-disk-enc-linux.md) article.
 
 >[!IMPORTANT]
- >It is mandatory to snapshot and/or backup a managed disk based VM instance outside of, and before enabling Azure Disk Encryption. A snapshot of the managed disk can be taken from the portal, or through [Azure Backup](/azure/backup/backup-azure-vms-encryption). Backups ensure that a recovery option is possible in the case of any unexpected failure during encryption. Once a backup is made, the Set-AzVMDiskEncryptionExtension cmdlet can be used to encrypt managed disks by specifying the -skipVmBackup parameter. The Set-AzVMDiskEncryptionExtension command fails against managed disk based VMs until a backup is made and this parameter is specified.
+ >Take a snapshot or back up a managed disk-based VM instance outside of and before you enable Azure Disk Encryption. You can take a snapshot of the managed disk from the portal or use [Azure Backup](/azure/backup/backup-azure-vms-encryption). Backups ensure that a recovery option is possible if an unexpected failure occurs during encryption. After you make a backup, use the Set-AzVMDiskEncryptionExtension cmdlet to encrypt managed disks by specifying the -skipVmBackup parameter. The Set-AzVMDiskEncryptionExtension command fails against managed disk-based VMs until you make a backup and specify this parameter.
 >
-> Encrypting or disabling encryption may cause the VM to reboot.
+> Encrypting or disabling encryption might cause the VM to reboot.
 
 To disable the encryption, see [Disable encryption and remove the encryption extension](#disable-encryption-and-remove-the-encryption-extension).
 
@@ -154,7 +155,7 @@ Use the [az vm encryption enable](/cli/azure/vm/encryption#az-vm-encryption-show
      az vm encryption enable --resource-group "MyVirtualMachineResourceGroup" --name "MySecureVM" --disk-encryption-keyvault "MySecureVault" --volume-type [All|OS|Data]
      ```
 
-- **Encrypt a running VM using KEK:**
+- **Encrypt a running VM by using KEK:**
 
      ```azurecli-interactive
      az vm encryption enable --resource-group "MyVirtualMachineResourceGroup" --name "MySecureVM" --disk-encryption-keyvault  "MySecureVault" --key-encryption-key "MyKEK_URI" --key-encryption-keyvault "MySecureVaultContainingTheKEK" --volume-type [All|OS|Data]
@@ -176,9 +177,9 @@ To disable the encryption, see [Disable encryption and remove the encryption ext
 
 # [Using PowerShell](#tab/enableadeps)
 
-Use the [Set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) cmdlet to enable encryption on a running virtual machine in Azure. Take a [snapshot](snapshot-copy-managed-disk.md) and/or back up the VM with [Azure Backup](/azure/backup/backup-azure-vms-encryption) before disks are encrypted. The -skipVmBackup parameter is already specified in the PowerShell scripts to encrypt a running Linux VM.
+Use the [Set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) cmdlet to enable encryption on a running virtual machine in Azure. Before encrypting the disks, take a [snapshot](snapshot-copy-managed-disk.md) and back up the VM by using [Azure Backup](/azure/backup/backup-azure-vms-encryption). The PowerShell scripts to encrypt a running Linux VM already specify the `-skipVmBackup` parameter.
 
--  **Encrypt a running VM:** The script below initializes your variables and runs the Set-AzVMDiskEncryptionExtension cmdlet. The resource group, VM, and key vault, were created as prerequisites. Replace MyVirtualMachineResourceGroup, MySecureVM, and MySecureVault with your values. Modify the -VolumeType parameter to specify which disks you're encrypting.
+-  **Encrypt a running VM:** The following script initializes your variables and runs the Set-AzVMDiskEncryptionExtension cmdlet. The resource group, VM, and key vault, were created as prerequisites. Replace MyVirtualMachineResourceGroup, MySecureVM, and MySecureVault with your values. Modify the -VolumeType parameter to specify which disks you're encrypting.
 
      ```azurepowershell
       $KVRGname = 'MyKeyVaultResourceGroup';
@@ -193,7 +194,7 @@ Use the [Set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvm
       Set-AzVMDiskEncryptionExtension -ResourceGroupName $VMRGName -VMName $vmName -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -VolumeType '[All|OS|Data]' -SequenceVersion $sequenceVersion -skipVmBackup;
      ```
 
-- **Encrypt a running VM using KEK:** You may need to add the -VolumeType parameter if you're encrypting data disks and not the OS disk.
+- **Encrypt a running VM by using KEK:** You might need to add the `-VolumeType` parameter if you're encrypting data disks and not the OS disk.
 
      ```azurepowershell
       $KVRGname = 'MyKeyVaultResourceGroup';
@@ -228,9 +229,9 @@ To disable the encryption, see [Disable encryption and remove the encryption ext
 
 You can enable disk encryption on an existing or running Linux VM in Azure by using the [Resource Manager template](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/encrypt-running-linux-vm-without-aad).
 
-1. Click **Deploy to Azure** on the Azure Quickstart Template.
+1. Select **Deploy to Azure** on the Azure quickstart template.
 
-2. Select the subscription, resource group, resource group location, parameters, legal terms, and agreement. Click **Create** to enable encryption on the existing or running VM.
+1. Select the subscription, resource group, resource group location, parameters, legal terms, and agreement. Select **Create** to enable encryption on the existing or running VM.
 
 The following table lists Resource Manager template parameters for existing or running VMs:
 
@@ -254,10 +255,10 @@ To disable the encryption, see [Disable encryption and remove the encryption ext
 
 The **EncryptFormatAll** parameter reduces the time for Linux data disks to be encrypted. Partitions meeting certain criteria are formatted, along with their current file systems, then remounted back to where they were before command execution. If you wish to exclude a data disk that meets the criteria, you can unmount it before running the command.
 
- After running this command, any drives that were mounted previously are formatted, and the encryption layer will be started on top of the now empty drive. When this option is selected, the temporary disk attached to the VM is also encrypted. If the temporary disk is reset, Azure Disk Encryption will reformat and re-encrypt the VM's temporary disk at the next opportunity. Once the resource disk is encrypted, the [Microsoft Azure Linux Agent](../extensions/agent-linux.md) is not able to manage the resource disk and enable the swap file, but you may manually configure the swap file.
+When you run this command, Azure Disk Encryption formats any drives that were previously mounted and starts the encryption layer on top of the now empty drive. When you select this option, Azure Disk Encryption also encrypts the temporary disk attached to the VM. If the temporary disk is reset, Azure Disk Encryption reformats and re-encrypts the VM's temporary disk at the next opportunity. After the resource disk is encrypted, the [Microsoft Azure Linux Agent](../extensions/agent-linux.md) can't manage the resource disk and enable the swap file, but you can manually configure the swap file.
 
 >[!WARNING]
-> EncryptFormatAll shouldn't be used when there is needed data on a VM's data volumes. You may exclude disks from encryption by unmounting them. You should first try out the EncryptFormatAll first on a test VM, understand the feature parameter and its implication before trying it on the production VM. The EncryptFormatAll option formats the data disk and all the data on it will be lost. Before proceeding, verify that disks you wish to exclude are properly unmounted. </br></br>
+> Don't use EncryptFormatAll when needed data exists on a VM's data volumes. You can exclude disks from encryption by unmounting them. Try the EncryptFormatAll parameter on a test VM first to understand the feature parameter and its implications before you try it on the production VM. The EncryptFormatAll option formats the data disk and all the data on it is lost. Before proceeding, verify that disks you want to exclude are properly unmounted. </br></br>
  >If you're setting this parameter while updating encryption settings, it might lead to a reboot before the actual encryption. In this case, you should remove the disk you don't want formatted from the fstab file. Similarly, you should add the partition you want encrypt-formatted to the fstab file before initiating the encryption operation.
 
 ### EncryptFormatAll criteria
@@ -277,7 +278,7 @@ Encrypt the disks that compose the RAID or LVM volume rather than the RAID or LV
 
 Use the [az vm encryption enable](/cli/azure/vm/encryption#az-vm-encryption-enable) command to enable encryption on a running virtual machine in Azure.
 
--  **Encrypt a running VM using EncryptFormatAll:**
+-  **Encrypt a running VM by using EncryptFormatAll:**
 
      ```azurecli-interactive
      az vm encryption enable --resource-group "MyVirtualMachineResourceGroup" --name "MySecureVM" --disk-encryption-keyvault "MySecureVault" --volume-type "data" --encrypt-format-all
@@ -287,7 +288,7 @@ Use the [az vm encryption enable](/cli/azure/vm/encryption#az-vm-encryption-enab
 
 Use the [Set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) cmdlet with the EncryptFormatAll parameter.
 
-**Encrypt a running VM using EncryptFormatAll:** As an example, the script below initializes your variables and runs the Set-AzVMDiskEncryptionExtension cmdlet with the EncryptFormatAll parameter. The resource group, VM, and key vault were created as prerequisites. Replace MyVirtualMachineResourceGroup, MySecureVM, and MySecureVault with your values.
+**Encrypt a running VM by using EncryptFormatAll:** As an example, the following script initializes your variables and runs the Set-AzVMDiskEncryptionExtension cmdlet with the EncryptFormatAll parameter. The resource group, VM, and key vault are prerequisites. Replace `MyVirtualMachineResourceGroup`, `MySecureVM`, and `MySecureVault` with your values.
 
 ```azurepowershell
 $KVRGname = 'MyKeyVaultResourceGroup';
@@ -309,16 +310,16 @@ We recommend an LVM-on-crypt setup. For detailed instructions about the LVM on c
 
 ## New VMs created from customer-encrypted VHD and encryption keys
 
-In this scenario, you can enable encrypting by using PowerShell cmdlets or CLI commands.
+In this scenario, you can enable encryption by using PowerShell cmdlets or CLI commands.
 
-Use the instructions in the Azure Disk encryption same scripts for preparing pre-encrypted images that can be used in Azure. After the image is created, you can use the steps in the next section to create an encrypted Azure VM.
+Use the instructions in the Azure Disk Encryption sample scripts to prepare pre-encrypted images for Azure. After the image is created, you can use the steps in the next section to create an encrypted Azure VM.
 
 * [Prepare a pre-encrypted Linux VHD](disk-encryption-sample-scripts.md#prepare-a-pre-encrypted-linux-vhd)
 
 >[!IMPORTANT]
- >It is mandatory to snapshot and/or backup a managed disk based VM instance outside of, and before enabling Azure Disk Encryption. A snapshot of the managed disk can be taken from the portal, or [Azure Backup](/azure/backup/backup-azure-vms-encryption) can be used. Backups ensure that a recovery option is possible in the case of any unexpected failure during encryption. Once a backup is made, the Set-AzVMDiskEncryptionExtension cmdlet can be used to encrypt managed disks by specifying the -skipVmBackup parameter. The Set-AzVMDiskEncryptionExtension command fails against managed disk based VMs until a backup is made and this parameter is specified.
+  >Take a snapshot or back up a managed disk-based VM instance outside of and before you enable Azure Disk Encryption. You can take a snapshot of the managed disk from the portal, or you can use [Azure Backup](/azure/backup/backup-azure-vms-encryption). Backups ensure that a recovery option is possible if an unexpected failure occurs during encryption. After you make a backup, use the Set-AzVMDiskEncryptionExtension cmdlet to encrypt managed disks by specifying the `-skipVmBackup` parameter. The Set-AzVMDiskEncryptionExtension command fails against managed disk-based VMs until you make a backup and specify this parameter.
 >
-> Encrypting or disabling encryption may cause the VM to reboot.
+> Encrypting or disabling encryption might cause the VM to reboot.
 
 ### Use Azure PowerShell to encrypt VMs with pre-encrypted VHDs
 
@@ -332,13 +333,13 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
 
 ## Enable encryption on a newly added data disk
 
-You can add a new data disk using [az vm disk attach](add-disk.md), or [through the Azure portal](attach-disk-portal.yml). Before you can encrypt, you need to mount the newly attached data disk first. You must request encryption of the data drive since the drive is not usable while encryption is in progress.
+You can add a new data disk using [az vm disk attach](add-disk.md), or [through the Azure portal](attach-disk-portal.yml). Before you can encrypt, you need to mount the newly attached data disk first. You must request encryption of the data drive because the drive isn't usable while encryption is in progress.
 
 # [Using Azure CLI](#tab/adedatacli)
 
- If the VM was previously encrypted with "All", then the --volume-type parameter should remain "All". All includes both OS and data disks. If the VM was previously encrypted with a volume type of "OS", then the --volume-type parameter should be changed to "All" so that both the OS and the new data disk are included. If the VM was encrypted with only the volume type of "Data", then it can remain "Data" as demonstrated below. Adding and attaching a new data disk to a VM is not sufficient preparation for encryption. The newly attached disk must also be formatted and properly mounted within the VM before enabling encryption. On Linux, the disk must be mounted in /etc/fstab with a [persistent block device name](/troubleshoot/azure/virtual-machines/troubleshoot-device-names-problems).
+  If the VM was previously encrypted with "All", then the `--volume-type` parameter should remain "All". All includes both OS and data disks. If the VM was previously encrypted with a volume type of "OS", then change the `--volume-type` parameter to "All" so that both the OS and the new data disk are included. If the VM was encrypted with only the volume type of "Data", then it can remain "Data" as demonstrated in the following example. Adding and attaching a new data disk to a VM isn't sufficient preparation for encryption. You must also format and properly mount the newly attached disk within the VM before enabling encryption. On Linux, you must mount the disk in `/etc/fstab` with a [persistent block device name](/troubleshoot/azure/virtual-machines/troubleshoot-device-names-problems).
 
-In contrast to PowerShell syntax, the CLI does not require the user to provide a unique sequence version when enabling encryption. The CLI automatically generates and uses its own unique sequence version value.
+In contrast to PowerShell syntax, the CLI doesn't require you to provide a unique sequence version when enabling encryption. The CLI automatically generates and uses its own unique sequence version value.
 
 -  **Encrypt data volumes of a running VM:**
 
@@ -346,7 +347,7 @@ In contrast to PowerShell syntax, the CLI does not require the user to provide a
      az vm encryption enable --resource-group "MyVirtualMachineResourceGroup" --name "MySecureVM" --disk-encryption-keyvault "MySecureVault" --volume-type "Data"
      ```
 
-- **Encrypt data volumes of a running VM using KEK:**
+- **Encrypt data volumes of a running VM by using KEK:**
 
      ```azurecli-interactive
      az vm encryption enable --resource-group "MyVirtualMachineResourceGroup" --name "MySecureVM" --disk-encryption-keyvault  "MySecureVault" --key-encryption-key "MyKEK_URI" --key-encryption-keyvault "MySecureVaultContainingTheKEK" --volume-type "Data"
@@ -354,9 +355,9 @@ In contrast to PowerShell syntax, the CLI does not require the user to provide a
 
 # [Using Azure PowerShell](#tab/adedataps)
 
- When using PowerShell to encrypt a new disk for Linux, a new sequence version needs to be specified. The sequence version has to be unique. The script below generates a GUID for the sequence version. Take a [snapshot](snapshot-copy-managed-disk.md) and/or back up the VM with [Azure Backup](/azure/backup/backup-azure-vms-encryption) before disks are encrypted. The -skipVmBackup parameter is already specified in the PowerShell scripts to encrypt a newly added data disk.
+  When you use PowerShell to encrypt a new disk for Linux, specify a new sequence version. The sequence version must be unique. The following script generates a GUID for the sequence version. Before you encrypt disks, take a [snapshot](snapshot-copy-managed-disk.md) and back up the VM by using [Azure Backup](/azure/backup/backup-azure-vms-encryption). The PowerShell scripts to encrypt a newly added data disk already specify the `-skipVmBackup` parameter.
 
--  **Encrypt data volumes of a running VM:** The script below initializes your variables and runs the Set-AzVMDiskEncryptionExtension cmdlet. Create the resource group, VM, and key vault as prerequisites before running the script. Replace MyVirtualMachineResourceGroup, MySecureVM, and MySecureVault with your values. Acceptable values for the -VolumeType parameter are All, OS, and Data. If the VM was previously encrypted with a volume type of "OS" or "All", then the -VolumeType parameter should be changed to "All" so that both the OS and the new data disk are included.
+-  **Encrypt data volumes of a running VM:** The following script initializes your variables and runs the Set-AzVMDiskEncryptionExtension cmdlet. Create the resource group, VM, and key vault as prerequisites before running the script. Replace MyVirtualMachineResourceGroup, MySecureVM, and MySecureVault with your values. Acceptable values for the -VolumeType parameter are All, OS, and Data. If the VM was previously encrypted with a volume type of "OS" or "All", then the -VolumeType parameter should be changed to "All" so that both the OS and the new data disk are included.
 
       ```azurepowershell
       $KVRGname = 'MyKeyVaultResourceGroup';
@@ -371,7 +372,7 @@ In contrast to PowerShell syntax, the CLI does not require the user to provide a
       Set-AzVMDiskEncryptionExtension -ResourceGroupName $VMRGName -VMName $vmName -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -VolumeType 'data' –SequenceVersion $sequenceVersion -skipVmBackup;
       ```
 
-- **Encrypt data volumes of a running VM using KEK:** Acceptable values for the -VolumeType parameter are All, OS, and Data. If the VM was previously encrypted with a volume type of "OS" or "All", then the -VolumeType parameter should be changed to All so that both the OS and the new data disk are included.
+- **Encrypt data volumes of a running VM by using KEK:** Acceptable values for the `-VolumeType` parameter are `All`, `OS`, and `Data`. If the VM was previously encrypted with a volume type of `OS` or `All`, change the `-VolumeType` parameter to `All` so that both the OS and the new data disk are included.
 
      ```azurepowershell
       $KVRGname = 'MyKeyVaultResourceGroup';
@@ -398,18 +399,18 @@ https://[keyvault-name].vault.azure.net/keys/[kekname]/[kek-unique-id]
 
 ## Disable encryption and remove the encryption extension
 
-You can disable the Azure disk encryption, and you can remove the Azure disk encryption extension. Disabling and removing are two distinct operations.
+You can disable Azure Disk Encryption, and you can remove the Azure Disk Encryption extension. Disabling and removing are two distinct operations.
 
-To remove ADE, it is recommended that you first disable encryption, and then remove the extension. If you remove the encryption extension without disabling ADE, the disks remain encrypted. If you disable encryption **after** removing the extension, the extension will be reinstalled (to perform the decrypt operation) and will need to be removed a second time.
+To remove ADE, first disable encryption and then remove the extension. If you remove the encryption extension without disabling ADE, the disks remain encrypted. If you disable encryption **after** removing the extension, the extension is reinstalled (to perform the decrypt operation) and must be removed a second time.
 
 > [!WARNING]
-> You can **not** disable encryption if the OS disk is encrypted. (OS disks are encrypted when the original encryption operation specifies volumeType=ALL or volumeType=OS.)
+> You can't disable encryption if the OS disk is encrypted. (OS disks are encrypted when the original encryption operation specifies `volumeType=ALL` or `volumeType=OS`.)
 >
-> Disabling encryption works only when data disks are encrypted but the OS disk is not.
+> Disabling encryption works only when data disks are encrypted but the OS disk isn't.
 
 ### Disable encryption
 
-You can disable encryption using Azure PowerShell, the Azure CLI, or with a Resource Manager template. Disabling encryption does **not** remove the extension (see [Remove the encryption extension](#remove-the-encryption-extension)).
+You can disable encryption by using Azure PowerShell, the Azure CLI, or with a Resource Manager template. Disabling encryption doesn't remove the extension (see [Remove the encryption extension](#remove-the-encryption-extension)).
 
 - **Disable disk encryption with Azure PowerShell:** To disable the encryption, use the [Disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) cmdlet.
 
@@ -425,28 +426,28 @@ You can disable encryption using Azure PowerShell, the Azure CLI, or with a Reso
 
 - **Disable encryption with a Resource Manager template:**
 
-    1. Click **Deploy to Azure** from the [Disable disk encryption on running Linux VM](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/decrypt-running-linux-vm-without-aad) template.
-    2. Select the subscription, resource group, location, VM, volume type, legal terms, and agreement.
-    3.  Click **Purchase** to disable disk encryption on a running Linux VM.
+    1. Select **Deploy to Azure** from the [Disable disk encryption on running Linux VM](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/decrypt-running-linux-vm-without-aad) template.
+    1. Select the subscription, resource group, location, VM, volume type, legal terms, and agreement.
+    1.  Select **Purchase** to disable disk encryption on a running Linux VM.
 
 > [!WARNING]
-> Once decryption starts, it is advisable not to interfere with the process.
+> After decryption starts, don't interfere with the process.
 >
-> To check the progress of decryption, use the [Get-AzVMDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) PowerShell cmdlet or the [az vm encryption show](/cli/azure/vm/encryption#az-vm-encryption-show) CLI command, once the decryption process is completed, you can proceed to remove the encryption extension
+> To check the progress of decryption, use the [Get-AzVMDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) PowerShell cmdlet or the [az vm encryption show](/cli/azure/vm/encryption#az-vm-encryption-show) CLI command. After the decryption process is complete, you can remove the encryption extension.
 
 ### Remove the encryption extension
 
 If you want to decrypt your disks and remove the encryption extension, you must disable encryption **before** removing the extension; see [disable encryption](#disable-encryption).
 
-You can remove the encryption extension using Azure PowerShell or the Azure CLI.
+Use Azure PowerShell or the Azure CLI to remove the encryption extension.
 
-- **Disable disk encryption with Azure PowerShell:** To remove the encryption, use the [Remove-AzVMDiskEncryptionExtension](/powershell/module/az.compute/remove-azvmdiskencryptionextension) cmdlet.
+- **Remove the encryption extension with Azure PowerShell:** Use the [Remove-AzVMDiskEncryptionExtension](/powershell/module/az.compute/remove-azvmdiskencryptionextension) cmdlet.
 
      ```azurepowershell-interactive
      Remove-AzVMDiskEncryptionExtension -ResourceGroupName "MyVirtualMachineResourceGroup" -VMName "MySecureVM"
      ```
 
-- **Disable encryption with the Azure CLI:** To remove encryption, use the [az vm extension delete](/cli/azure/vm/extension#az-vm-extension-delete) command.
+- **Remove the encryption extension with the Azure CLI:** Use the [az vm extension delete](/cli/azure/vm/extension#az-vm-extension-delete) command.
 
      ```azurecli-interactive
      az vm extension delete -g "MyVirtualMachineResourceGroup" --vm-name "MySecureVM" -n "AzureDiskEncryptionForLinux"
