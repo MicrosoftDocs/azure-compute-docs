@@ -1,13 +1,14 @@
 ---
 title: Migrate from Azure Disk Encryption to encryption at host
-description: Learn how to migrate your virtual machines from Azure Disk Encryption (ADE) to encryption at host
+description: Learn how to migrate Azure virtual machines from Azure Disk Encryption to encryption at host by creating new disks and VMs.
 author: msmbaldwin
-ms.date: 09/23/2025
+ms.date: 07/14/2026
 ms.topic: how-to
 ms.author: mbaldwin
 ms.service: azure-virtual-machines
 ms.subservice: security
 ms.custom: references_regions
+ai-usage: ai-assisted
 # Customer intent: As a security administrator, I need to migrate my VMs from Azure Disk Encryption to encryption at host
 ---
 
@@ -15,32 +16,32 @@ ms.custom: references_regions
 
 [!INCLUDE [Azure Disk Encryption retirement notice](~/reusable-content/ce-skilling/azure/includes/security/azure-disk-encryption-retirement.md)]
 
-This article provides step-by-step guidance for migrating your virtual machines from Azure Disk Encryption (ADE) to encryption at host. The migration process requires creating new disks and VMs, as in-place conversion is not supported.
+This article provides step-by-step guidance for migrating your virtual machines from Azure Disk Encryption (ADE) to encryption at host. The migration process requires creating new disks and VMs because in-place conversion isn't supported.
 
 ## Migration overview
 
-Azure Disk Encryption (ADE) encrypts data within the VM using BitLocker (Windows) or dm-crypt (Linux), while encryption at host encrypts data at the VM host level without consuming VM CPU resources. Encryption at host enhances Azure's default server-side encryption (SSE) by providing end-to-end encryption for all VM data, including temp disks, caches, and data flows between compute and storage.
+Azure Disk Encryption (ADE) encrypts data within the VM by using BitLocker (Windows) or dm-crypt (Linux), while encryption at host encrypts data at the VM host level without consuming VM CPU resources. Encryption at host enhances Azure's default server-side encryption (SSE) by providing end-to-end encryption for all VM data, including temp disks, caches, and data flows between compute and storage.
 
 For more information, see [Overview of managed disk encryption options](/azure/virtual-machines/disk-encryption-overview) and [Enable end-to-end encryption using encryption at host](/azure/virtual-machines/disks-enable-host-based-encryption-portal).
 
 ### Migration limitations and considerations
 
-Before starting the migration process, be aware of these important limitations and considerations that affect your migration strategy:
+Before you start the migration process, review these important limitations and considerations that affect your migration strategy:
 
-- **No in-place migration**: You cannot directly convert ADE-encrypted disks to encryption at host. Migration requires creating new disks and VMs.
+- **No in-place migration**: You can't directly convert ADE-encrypted disks to encryption at host. Migration requires creating new disks and VMs.
 
-- **Linux OS disk limitation**: Disabling ADE on Linux OS disks is not supported. For Linux VMs with ADE-encrypted OS disks, you must create a new VM with a new OS disk.
+- **Linux OS disk limitation**: Azure doesn't support disabling ADE on Linux OS disks. For Linux VMs with ADE-encrypted OS disks, create a new VM with a new OS disk.
 
-- **Windows ADE encryption patterns**: On Windows VMs, Azure Disk Encryption can only encrypt the OS disk alone OR all disks (OS + data disks). It's not possible to encrypt only data disks on Windows VMs.
+- **Windows ADE encryption patterns**: On Windows VMs, Azure Disk Encryption can encrypt only the OS disk alone or all disks (OS + data disks). You can't encrypt only data disks on Windows VMs.
 
-- **UDE flag persistence**: Disks encrypted with Azure Disk Encryption have a Unified Data Encryption (UDE) flag that persists even after decryption. Both snapshots and disk copies using the Copy option retain this UDE flag. The migration requires creating new managed disks using the Upload method and copying the VHD blob data, which creates a new disk object without any metadata from the source disk.
+- **UDE flag persistence**: Disks encrypted with Azure Disk Encryption have a Unified Data Encryption (UDE) flag that persists even after decryption. Both snapshots and disk copies that use the Copy option retain this UDE flag. The migration requires creating new managed disks by using the Upload method and copying the VHD blob data, which creates a new disk object without any metadata from the source disk.
 
 - **Downtime required**: The migration process requires VM downtime for disk operations and VM recreation.
 
 - **Domain-joined VMs**: If your VMs are part of an Active Directory domain, more steps are required:
-  - The original VM must be removed from the domain before deletion
-  - After creating the new VM, it must be rejoined to the domain
-  - For Linux VMs, domain joining can be accomplished using Azure AD extensions
+    - Remove the original VM from the domain before deletion.
+    - After creating the new VM, rejoin it to the domain.
+    - For Linux VMs, join the VM to a managed domain manually.
 
   For more information, see [What is Microsoft Entra Domain Services?](/entra/identity/domain-services/overview)
 
@@ -48,11 +49,11 @@ Before starting the migration process, be aware of these important limitations a
 
 Before starting the migration:
 
-1. **Backup your data**: Create backups of all critical data before beginning the migration process.
+1. **Back up your data**: Create backups of all critical data before beginning the migration process.
 
 1. **Test the process**: If possible, test the migration process on a nonproduction VM first.
 
-1. **Prepare encryption resources**: Ensure your VM size supports encryption at host. Most current VM sizes support this feature. For more information about VM size requirements, see [Enable end-to-end encryption using encryption at host](/azure/virtual-machines/disks-enable-host-based-encryption-portal).
+1. **Prepare encryption resources**: Ensure that your VM size supports encryption at host. Most current VM sizes support this feature. For more information about VM size requirements, see [Enable end-to-end encryption using encryption at host](/azure/virtual-machines/disks-enable-host-based-encryption-portal).
 
 1. **Document configuration**: Record your current VM configuration, including network settings, extensions, and attached resources.
 
@@ -61,39 +62,41 @@ Before starting the migration:
 The following migration steps work for most scenarios, with specific differences noted for each operating system.
 
 > [!IMPORTANT]
-> Linux VMs with encrypted OS disks cannot be decrypted in-place. For these VMs, you must create a new VM with a new OS disk and migrate your data. See the [Migrating Linux VMs with encrypted OS disks](#migrating-linux-vms-with-encrypted-os-disks) section after reviewing the general process below.
+> You can't decrypt Linux VMs with encrypted OS disks in-place. For these VMs, create a new VM with a new OS disk and migrate your data. See the [Migrating Linux VMs with encrypted OS disks](#migrating-linux-vms-with-encrypted-os-disks) section after reviewing the general process below.
 
 ### Disable Azure Disk Encryption
 
-First step is to disable the existing Azure Disk Encryption when possible:
+First, disable the existing Azure Disk Encryption when possible:
 
-- **Windows**: Follow the instructions in [Disable encryption and remove the encryption extension on Windows](windows/disk-encryption-windows.md#disable-encryption-and-remove-the-encryption-extension)
+- **Windows**: Follow the instructions in [Disable encryption and remove the encryption extension on Windows](windows/disk-encryption-windows.md#disable-encryption-and-remove-the-encryption-extension).
 - **Linux**: If **only data disks** are encrypted, follow [Disable encryption and remove the encryption extension on Linux](linux/disk-encryption-linux.md#disable-encryption-and-remove-the-encryption-extension). If **the OS disk is encrypted**, see the [Migrating Linux VMs with encrypted OS disks](#migrating-linux-vms-with-encrypted-os-disks).
 
 After running the ADE disable command, the VM encryption status in the Azure portal changes to "SSE + PMK" immediately. However, the actual decryption process at the OS level takes time and depends on the amount of data encrypted. You must verify that OS-level decryption is completed before proceeding to the next step.
 
 **For Windows VMs:**
-- Open Command Prompt as Administrator and run: `manage-bde -status`
-- Verify that all volumes show "Fully Decrypted" status
-- The decryption percentage should show 100% for all encrypted volumes
+
+- Open Command Prompt as an administrator and run: `manage-bde -status`.
+- Verify that all volumes show the "Fully Decrypted" status.
+- Confirm that the decryption percentage shows 100% for all encrypted volumes.
 
 **For Linux VMs (data disks only):**
-- Run: `sudo cryptsetup status /dev/mapper/<device-name>`
-- Verify that encrypted devices are no longer active
-- Check with: `lsblk` to confirm no encrypted mappings remain
+
+- Run: `sudo cryptsetup status /dev/mapper/<device-name>`.
+- Verify that encrypted devices are no longer active.
+- Run `lsblk` to confirm that no encrypted mappings remain.
 
 Wait for complete decryption before continuing with disk migration to ensure data integrity.
 
 ### Create new managed disks
 
-Create new disks that don't carry over the ADE encryption metadata. This process works for both Windows and Linux VMs, with some specific considerations for Linux OS disks.
+Create new disks that don't carry over the ADE encryption metadata. This process works for both Windows and Linux VMs, with specific considerations for Linux OS disks.
 
 # [CLI](#tab/CLI)
 
 > [!IMPORTANT]
-> You need to add an offset of 512 bytes when copying a managed disk from Azure. This is because Azure omits the footer when reporting the disk size. The copy will fail if you don't do this. The following script already does this for you.
+> Add an offset of 512 bytes when you copy a managed disk from Azure. Azure omits the footer when reporting the disk size. The copy fails if you don't add this offset. The following script adds this offset for you.
 >
-> If you are creating an OS disk, add `--hyper-v-generation <yourGeneration>` to `az disk create`.
+> If you create an OS disk, add `--hyper-v-generation <yourGeneration>` to `az disk create`.
 
 ```azurecli
 # Set variables
@@ -117,7 +120,7 @@ targetSASURI=$(az disk grant-access -n $targetDiskName -g $targetRG --access-lev
 
 sourceSASURI=$(az disk grant-access -n $sourceDiskName -g $sourceRG --access-level Read --duration-in-seconds 86400 --query [accessSas] -o tsv)
 
-# Copy the disk data using AzCopy
+# Copy the disk data by using AzCopy
 azcopy copy $sourceSASURI $targetSASURI --blob-type PageBlob
 
 # Revoke SAS access when complete
@@ -158,7 +161,7 @@ $sourceSAS = Grant-AzDiskAccess -ResourceGroupName "MyResourceGroup" -DiskName $
 $targetSAS = Grant-AzDiskAccess -ResourceGroupName "MyResourceGroup" -DiskName $targetDisk.Name `
   -Access Write -DurationInSecond 7200
 
-# Copy the disk data using AzCopy
+# Copy the disk data by using AzCopy
 azcopy copy $sourceSAS.AccessSAS $targetSAS.AccessSAS --blob-type PageBlob
 
 # Revoke SAS access when complete
@@ -170,13 +173,13 @@ Revoke-AzDiskAccess -ResourceGroupName "MyResourceGroup" -DiskName $targetDisk.N
 
 ### Create a new VM with encryption
 
-Create a new VM using the newly created disks with your chosen encryption method.
+Create a new VM by using the newly created disks with your chosen encryption method.
 
-You can choose from several encryption options, depending on your security requirements. This article provides steps for creating a new VM with encryption at host, which is the most common migration path. Other encryption options are covered in [Overview of managed disk encryption options](/azure/virtual-machines/disk-encryption-overview).
+You can choose from several encryption options, depending on your security requirements. This article provides steps for creating a new VM with encryption at host, which is the most common migration path. For other encryption options, see [Overview of managed disk encryption options](/azure/virtual-machines/disk-encryption-overview).
 
 #### Create a new VM with encryption at host
 
-Encryption at host provides the closest equivalent to Azure Disk Encryption's coverage, and is covered in this section.
+Encryption at host provides the closest equivalent to Azure Disk Encryption's coverage. This section covers encryption at host.
 
 # [CLI](#tab/CLI2)
 
@@ -184,19 +187,19 @@ Encryption at host provides the closest equivalent to Azure Disk Encryption's co
 
 ```azurecli
 # For Windows OS disks
-az vm create 
-  --resource-group "MyResourceGroup" 
-  --name "MyVM-New" 
-  --os-type "Windows" 
-  --attach-os-disk "MyTargetDisk" 
+az vm create
+  --resource-group "MyResourceGroup"
+  --name "MyVM-New"
+  --os-type "Windows"
+  --attach-os-disk "MyTargetDisk"
   --encryption-at-host true
 
 # For Linux OS disks
-# az vm create 
-#   --resource-group "MyResourceGroup" 
-#   --name "MyVM-New" 
-#   --os-type "Linux" 
-#   --attach-os-disk "MyTargetDisk" 
+# az vm create
+#   --resource-group "MyResourceGroup"
+#   --name "MyVM-New"
+#   --os-type "Linux"
+#   --attach-os-disk "MyTargetDisk"
 #   --encryption-at-host true
 ```
 
@@ -204,15 +207,15 @@ az vm create
 
 ```azurecli
 # Enable encryption at host on the VM
-az vm update 
-  --resource-group "MyResourceGroup" 
-  --name "MyVM-New" 
+az vm update
+  --resource-group "MyResourceGroup"
+  --name "MyVM-New"
   --encryption-at-host true
 
 # Attach the newly created data disk
-az vm disk attach 
-  --resource-group "MyResourceGroup" 
-  --vm-name "MyVM-New" 
+az vm disk attach
+  --resource-group "MyResourceGroup"
+  --vm-name "MyVM-New"
   --name "MyTargetDisk"
 ```
 
@@ -253,20 +256,20 @@ Update-AzVM -ResourceGroupName "MyResourceGroup" -VM $vm
 
 ### Verify and configure the new disks
 
-After creating the new VM with encryption at host, you need to verify and configure the disks properly for your operating system.
+After creating the new VM with encryption at host, verify and configure the disks properly for your operating system.
 
 # [CLI](#tab/CLI3)
 
 **For Windows VMs:**
 
-- Verify disk letters are assigned correctly
-- Check that applications can access the disks correctly
-- Update any applications or scripts that reference specific disk IDs
+- Verify that disk letters are assigned correctly.
+- Check that applications can access the disks correctly.
+- Update any applications or scripts that reference specific disk IDs.
 
 **For Linux VMs:**
 
-- Update `/etc/fstab` with the new disk UUIDs
-- Mount the data disks to the correct mount points
+- Update `/etc/fstab` with the new disk UUIDs.
+- Mount the data disks to the correct mount points.
 
 ```bash
 # Get UUIDs of all disks
@@ -280,8 +283,8 @@ sudo mount -a
 
 **For Windows VMs:**
 
-- Verify disk letters are assigned correctly using disk management or PowerShell
-- Check that applications can access the disks correctly
+- Verify that disk letters are assigned correctly by using disk management or PowerShell.
+- Check that applications can access the disks correctly.
 
 ```powershell
 # List all disks and their partitions
@@ -293,7 +296,7 @@ Get-PSDrive -PSProvider FileSystem
 
 **For Linux VMs:**
 
-- You need to connect to the Linux VM via SSH to perform these tasks, but PowerShell can be used to verify the VM is running:
+- Connect to the Linux VM by using SSH to perform these tasks. You can use PowerShell to verify that the VM is running:
 
 ```powershell
 # Verify VM is running
@@ -302,7 +305,7 @@ Get-AzVM -ResourceGroupName "MyResourceGroup" -Name "MyVM-New" -Status
 
 ---
 
-Both Windows and Linux may require additional configuration steps specific to your applications or workloads.
+Both Windows and Linux might require more configuration steps specific to your applications or workloads.
 
 ### Verify encryption and cleanup
 
@@ -317,9 +320,9 @@ az vm show --resource-group "MyResourceGroup" --name "MyVM-New" --query "securit
 
 After confirming that encryption at host is working properly:
 
-1. Test VM functionality to ensure applications work correctly
-2. Verify that data is accessible and intact
-3. Delete the original resources when you're satisfied with the migration:
+1. Test VM functionality to ensure applications work correctly.
+1. Verify that data is accessible and intact.
+1. Delete the original resources when you're satisfied with the migration:
 
 ```azurecli
 # Delete the original VM
@@ -342,9 +345,9 @@ Get-AzDisk -ResourceGroupName "MyResourceGroup" -DiskName "MyTargetDisk" | Selec
 
 After confirming that encryption at host is working properly:
 
-1. Test VM functionality to ensure applications work correctly
-2. Verify that data is accessible and intact
-3. Delete the original resources when you're satisfied with the migration:
+1. Test VM functionality to ensure applications work correctly.
+1. Verify that data is accessible and intact.
+1. Delete the original resources when you're satisfied with the migration:
 
 ```azurepowershell
 # Delete the original VM
@@ -358,11 +361,11 @@ Remove-AzDisk -ResourceGroupName "MyResourceGroup" -DiskName "MySourceDisk" -For
 
 ## Migrating Linux VMs with encrypted OS disks
 
-Since you cannot disable encryption on Linux OS disks, the process is different from Windows.
+Because you can't disable encryption on Linux OS disks, the process is different from Windows.
 
 # [CLI](#tab/CLI5)
 
-1. Create a new VM with encryption at host enabled
+1. Create a new VM with encryption at host enabled.
 
    ```azurecli
    az vm create \
@@ -374,10 +377,10 @@ Since you cannot disable encryption on Linux OS disks, the process is different 
      --generate-ssh-keys
    ```
 
-2. For data migration options:
-   - For application data: Use SCP, rsync, or other file transfer methods to copy data
-   - For configuration: Replicate important configuration files and settings
-   - For complex applications: Use backup/restore procedures appropriate for your applications
+1. For data migration options:
+    - **Application data**: Use SCP, rsync, or other file transfer methods to copy data.
+    - **Configuration**: Replicate important configuration files and settings.
+    - **Complex applications**: Use backup and restore procedures appropriate for your applications.
 
    ```azurecli
    # Example of using SCP to copy files from source to new VM
@@ -387,11 +390,11 @@ Since you cannot disable encryption on Linux OS disks, the process is different 
 
 # [Azure PowerShell](#tab/azurepowershell5)
 
-1. Create a new VM with encryption at host enabled
+1. Create a new VM with encryption at host enabled.
 
    ```azurepowershell
    # Create a new VM with encryption at host
-   $vmConfig = New-AzVMConfig -VMName "MyVM-New" -VMSize "Standard_D2s_v3" | 
+   $vmConfig = New-AzVMConfig -VMName "MyVM-New" -VMSize "Standard_D2s_v3" |
      Set-AzVMOperatingSystem -Linux -ComputerName "MyVM-New" -Credential (Get-Credential) |
      Set-AzVMSourceImage -PublisherName "Canonical" -Offer "UbuntuServer" -Skus "18.04-LTS" -Version "latest" |
      Set-AzVMSecurityProfile -EncryptionAtHost $true
@@ -400,126 +403,116 @@ Since you cannot disable encryption on Linux OS disks, the process is different 
    New-AzVM -ResourceGroupName "MyResourceGroup" -Location "EastUS" -VM $vmConfig
    ```
 
-2. For data migration options:
-   - For application data: Use PowerShell remoting or scripts to copy data
-   - For configuration: Replicate important configuration files and settings
-   - For complex applications: Use backup/restore procedures appropriate for your applications
+1. For data migration options:
+    - **Application data**: Use PowerShell remoting or scripts to copy data.
+    - **Configuration**: Replicate important configuration files and settings.
+    - **Complex applications**: Use backup and restore procedures appropriate for your applications.
 
 ---
 
 After creating the new VM:
 
-1. Configure the new VM to match the original environment
-   - Set up the same network configurations
-   - Install the same applications and services
-   - Apply the same security settings
+1. Configure the new VM to match the original environment.
+    - Set up the same network configurations.
+    - Install the same applications and services.
+    - Apply the same security settings.
 
-2. Test thoroughly before decommissioning the original VM
+1. Test thoroughly before decommissioning the original VM.
 
-This approach works for both Windows and Linux VMs, but is especially important for Linux VMs with encrypted OS disks that cannot be decrypted in-place.
+This approach works for both Windows and Linux VMs, but is especially important for Linux VMs with encrypted OS disks that you can't decrypt in-place.
 
-For guidance on data migration, see [Upload a VHD to Azure](/azure/virtual-machines/linux/disks-upload-vhd-to-managed-disk-cli) and [Copy files to a Linux VM using SCP](/azure/virtual-machines/linux/copy-files-to-linux-vm-using-scp).
+For guidance on data migration, see [Upload a VHD to Azure](/azure/virtual-machines/linux/disks-upload-vhd-to-managed-disk-cli) and [Copy files to a Linux VM by using SCP](/azure/virtual-machines/linux/copy-files-to-linux-vm-using-scp).
 
 ## Recommended approach for AVD host pools
 
 For Azure Virtual Desktop (AVD) environments, the recommended approach is to **redeploy session hosts** rather than attempting disk-level migration.
 
-For both pooled and personal host pools, the supported approach is to replace Azure Disk Encryption (ADE)-enabled session hosts with new virtual machines that have Encryption at Host enabled.
+For both pooled and personal host pools, the supported approach is to replace Azure Disk Encryption (ADE)-enabled session hosts with new virtual machines that have encryption at host enabled.
 
 ### Steps
 
-1. **Create a new golden image**
-   - Ensure Azure Disk Encryption is not enabled
-   - Validate applications and configurations
+1. **Create a new golden image**.
+    - Ensure that Azure Disk Encryption isn't enabled.
+    - Validate applications and configurations.
 
-1. **Deploy new session hosts**
-   - Use Azure Compute Gallery or a custom image
-   - Enable encryption at host at VM creation time (see [Enable end-to-end encryption using encryption at host](/azure/virtual-machines/disks-enable-host-based-encryption-portal))
+1. **Deploy new session hosts**.
+    - Use Azure Compute Gallery or a custom image.
+    - Enable encryption at host at VM creation time. For more information, see [Enable end-to-end encryption using encryption at host](/azure/virtual-machines/disks-enable-host-based-encryption-portal).
 
-1. **Add new session hosts to the host pool**
-   - Ensure session hosts are healthy and accepting connections
+1. **Add new session hosts to the host pool**.
+    - Ensure that session hosts are healthy and accepting connections.
 
-1. **Validate workloads**
-   - Confirm user profile access (for example, FSLogix)
-   - Validate applications and policies
+1. **Validate workloads**.
+    - Confirm user profile access, such as FSLogix.
+    - Validate applications and policies.
 
-1. **Drain existing ADE-enabled session hosts**
-   - Enable drain mode to block new sessions
-   - Wait for existing sessions to end, or manually sign off users
+1. **Drain existing ADE-enabled session hosts**.
+    - Enable drain mode to block new sessions.
+    - Wait for existing sessions to end, or manually sign off users.
 
-1. **Remove and decommission old session hosts**
-   - Remove session hosts from the host pool
-   - Delete associated virtual machines and disks
+1. **Remove and decommission old session hosts**.
+    - Remove session hosts from the host pool.
+    - Delete associated virtual machines and disks.
 
 ## Domain-joined VM considerations
 
-If your VMs are members of an Active Directory domain, additional steps are required during the migration process:
+If your VMs are members of an Active Directory domain, more steps are required during the migration process:
 
 ### Premigration domain steps
 
-1. **Document domain membership**: Record the current domain, organizational unit (OU), and any special group memberships
-2. **Note computer account**: The computer account in Active Directory needs to be managed
-3. **Backup domain-specific configurations**: Save any domain-specific settings, group policies, or certificates
+1. **Document domain membership**: Record the current domain, organizational unit (OU), and any special group memberships.
+1. **Note computer account**: Manage the computer account in Active Directory.
+1. **Back up domain-specific configurations**: Save any domain-specific settings, group policies, or certificates.
 
 ### Domain removal process
 
-1. **Remove from domain**: Before deleting the original VM, remove it from the domain using one of these methods:
-   - Use `Remove-Computer` PowerShell cmdlet on Windows
-   - Use the System Properties dialog to change to workgroup
-   - Manually delete the computer account from Active Directory Users and Computers
+1. **Remove from domain**: Before deleting the original VM, remove it from the domain by using one of these methods.
+    - Use the `Remove-Computer` PowerShell cmdlet on Windows.
+    - Use the System Properties dialog to change to a workgroup.
+    - Manually delete the computer account from Active Directory Users and Computers.
 
-2. **Clean up Active Directory**: Remove any orphaned computer accounts or DNS entries
+1. **Clean up Active Directory**: Remove any orphaned computer accounts or DNS entries.
 
 ### Post-migration domain rejoining
 
-1. **Join new VM to domain**: After creating the new VM with encryption at host:
-   - For Windows: Use `Add-Computer` PowerShell cmdlet or System Properties
-   - For Linux: Use Azure AD domain join extension or manual configuration
+1. **Join new VM to domain**: After creating the new VM with encryption at host, join it to the domain.
+    - **Windows**: Use the `Add-Computer` PowerShell cmdlet or System Properties.
+    - **Linux**: Use manual configuration for the domain service that hosts your domain.
 
-2. **Restore domain settings**: Reapply any domain-specific configurations, group policies, or certificates
+1. **Restore domain settings**: Reapply any domain-specific configurations, group policies, or certificates.
 
-3. **Verify domain functionality**: Test domain authentication, group policy application, and network resource access
+1. **Verify domain functionality**: Test domain authentication, group policy application, and network resource access.
 
 ### Linux domain joining
 
-For Linux VMs, you can use the Azure AD Domain Services VM extension:
-
-```azurecli
-az vm extension set \
-    --resource-group "MyResourceGroup" \
-    --vm-name "MyLinuxVM-New" \
-    --name "AADSSHLoginForLinux" \
-    --publisher "Microsoft.Azure.ActiveDirectory"
-```
-
-For more information, see [What is Microsoft Entra Domain Services?](/entra/identity/domain-services/overview)
+For Linux VMs that use Microsoft Entra Domain Services, join the VM to the managed domain by using manual Linux domain-join steps. For more information, see [Join an Ubuntu Linux virtual machine to a Microsoft Entra Domain Services managed domain](/azure/active-directory-domain-services/join-ubuntu-linux-vm).
 
 ### Important domain considerations
 
-- The new VM has a different computer SID, which may affect some applications
-- Kerberos tickets and cached credentials must be refreshed
-- Some domain-integrated applications may require reconfiguration
-- Plan for potential temporary loss of domain services during migration
+- The new VM has a different computer SID, which might affect some applications.
+- Refresh Kerberos tickets and cached credentials.
+- Some domain-integrated applications might require reconfiguration.
+- Plan for potential temporary loss of domain services during migration.
 
 ## Post-migration verification
 
 After completing the migration, verify that encryption at host is working correctly:
 
-1. **Check encryption at host status**: Verify that encryption at host is enabled:
+1. **Check encryption at host status**: Verify that encryption at host is enabled.
 
    ```azurecli
    az vm show --resource-group "MyResourceGroup" --name "MyVM-New" --query "securityProfile.encryptionAtHost"
    ```
 
-2. **Test VM functionality**: Ensure your applications and services are working correctly.
+1. **Test VM functionality**: Ensure your applications and services are working correctly.
 
-3. **Verify disk encryption**: Confirm that disks are properly encrypted:
+1. **Verify disk encryption**: Confirm that disks are properly encrypted:
 
    ```azurepowershell
    Get-AzDisk -ResourceGroupName "MyResourceGroup" -DiskName "MyVM-OS-New" | Select-Object Name, DiskState
    ```
 
-4. **Monitor performance**: Compare performance before and after migration to confirm the expected improvements.
+1. **Monitor performance**: Compare performance before and after migration to confirm the expected improvements.
 
 For more information about encryption verification, see [Enable end-to-end encryption using encryption at host](/azure/virtual-machines/disks-enable-host-based-encryption-portal).
 
@@ -527,9 +520,9 @@ For more information about encryption verification, see [Enable end-to-end encry
 
 After successful migration and verification:
 
-1. **Delete old VM**: Remove the original ADE-encrypted VM
-2. **Delete old disks**: Remove the original encrypted disks
-3. **Update Key Vault access policies**: Other disk encryption solutions use standard Key Vault authorization mechanisms. If you no longer need the Key Vault for Azure Disk Encryption, update its access policies to disable the special disk encryption setting:
+1. **Delete old VM**: Remove the original ADE-encrypted VM.
+1. **Delete old disks**: Remove the original encrypted disks.
+1. **Update Key Vault access policies**: Other disk encryption solutions use standard Key Vault authorization mechanisms. If you no longer need the Key Vault for Azure Disk Encryption, update its access policies to disable the special disk encryption setting:
 
    # [CLI](#tab/CLI-cleanup)
 
@@ -545,24 +538,24 @@ After successful migration and verification:
 
    ---
 
-4. **Clean up resources**: Remove any temporary resources created during migration
-5. **Update documentation**: Update your infrastructure documentation to reflect the migration to encryption at host
+1. **Clean up resources**: Remove any temporary resources created during migration.
+1. **Update documentation**: Update your infrastructure documentation to reflect the migration to encryption at host.
 
-## Common issues and solutions
+## Common problems and solutions
 
 ### VM size doesn't support encryption at host
 
-**Solution**: Check the [list of supported VM sizes](disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data) and resize your VM if necessary
+**Solution**: Check the [list of supported VM sizes](disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data) and resize your VM if necessary.
 
 ### VM fails to start after migration
 
-**Solution**: Check that all disks are properly attached and that the OS disk is set as the boot disk
+**Solution**: Check that all disks are properly attached and that the OS disk is set as the boot disk.
 
 ### Encryption at host not enabled
 
-**Solution**: Verify that the VM was created with the `--encryption-at-host true` parameter and that your subscription supports this feature
+**Solution**: Verify that the VM was created with the `--encryption-at-host true` parameter and that your subscription supports this feature.
 
-### Performance issues persist
+### Performance problems persist
 
 **Solution**: Verify that encryption at host is properly enabled and that the VM size supports the expected performance.
 
@@ -574,14 +567,6 @@ After successful migration and verification:
 - [Enable end-to-end encryption using encryption at host - Azure CLI](/azure/virtual-machines/linux/disks-enable-host-based-encryption-cli)
 - [Server-side encryption of Azure Disk Storage](/azure/virtual-machines/disk-encryption)
 - [Azure Disk Encryption for Windows VMs](/azure/virtual-machines/windows/disk-encryption-overview)
-- [Azure Disk Encryption for Linux VMs](/azure/virtual-machines/linux/disk-encryption-overview)
-- [Azure Disk Encryption FAQ](/azure/virtual-machines/linux/disk-encryption-faq)
-- [Upload a VHD to Azure or copy a managed disk to another region](/azure/virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell)
-- [Azure Disk Encryption for Linux VMs](/azure/virtual-machines/linux/disk-encryption-overview)
-- [Azure Disk Encryption FAQ](/azure/virtual-machines/linux/disk-encryption-faq)
-- [Upload a VHD to Azure or copy a managed disk to another region](/azure/virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell)
-- [Azure Disk Encryption FAQ](/azure/virtual-machines/linux/disk-encryption-faq)
-- [Upload a VHD to Azure or copy a managed disk to another region](/azure/virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell)
 - [Azure Disk Encryption for Linux VMs](/azure/virtual-machines/linux/disk-encryption-overview)
 - [Azure Disk Encryption FAQ](/azure/virtual-machines/linux/disk-encryption-faq)
 - [Upload a VHD to Azure or copy a managed disk to another region](/azure/virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell)

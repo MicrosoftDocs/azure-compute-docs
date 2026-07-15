@@ -127,6 +127,7 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 |[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli)| Supported |
 |[Ephemeral OS Disk](../../ephemeral-os-disks.md)| Supported |
 |[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)| Not Supported |
+|[VM vCore Customization](/azure/virtual-machines/vm-customization)| Not Supported |
 
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]
