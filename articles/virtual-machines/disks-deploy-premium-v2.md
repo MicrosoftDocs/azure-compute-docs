@@ -250,7 +250,7 @@ Update-AzDisk -ResourceGroupName $resourceGroup -DiskName $diskName -DiskUpdate 
 
 ## Next steps
 
-Add a data disk by using either the [Azure portal](linux/attach-disk-portal.yml), [Azure CLI](linux/add-disk.md), or [PowerShell](windows/attach-disk-ps.md).
+Add a data disk by using either the [Azure portal](/azure/virtual-machines/linux/attach-disk-portal), [Azure CLI](linux/add-disk.md), or [PowerShell](windows/attach-disk-ps.md).
 
 Use [Premium SSD v2 with VMs in availability set](/azure/virtual-machines/use-premium-ssd-v2-with-availability-set).
 

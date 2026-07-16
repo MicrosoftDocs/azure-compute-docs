@@ -110,7 +110,7 @@ Customer-managed keys are available in all regions that managed disks are availa
 > [!IMPORTANT]
 > Customer-managed keys rely on managed identities for Azure resources, a feature of Microsoft Entra ID. When you configure customer-managed keys, the system automatically assigns a managed identity to your resources. If you move the subscription, resource group, or managed disk from one Microsoft Entra directory to another, the managed identity associated with managed disks isn't transferred to the new tenant, so customer-managed keys might stop working. For more information, see [Transferring a subscription between Microsoft Entra directories](/azure/active-directory/managed-identities-azure-resources/known-issues#transferring-a-subscription-between-azure-ad-directories).
 
-To enable customer-managed keys for managed disks, see the following articles covering how to enable it with either the [Azure PowerShell module](windows/disks-enable-customer-managed-keys-powershell.md), the [Azure CLI](linux/disks-enable-customer-managed-keys-cli.md), or the [Azure portal](disks-enable-customer-managed-keys-portal.yml).
+To enable customer-managed keys for managed disks, see the following articles covering how to enable it with either the [Azure PowerShell module](windows/disks-enable-customer-managed-keys-powershell.md), the [Azure CLI](linux/disks-enable-customer-managed-keys-cli.md), or the [Azure portal](/azure/virtual-machines/disks-enable-customer-managed-keys-portal).
 
 See [Create a managed disk from a snapshot with CLI](scripts/create-managed-disk-from-snapshot.md#disks-with-customer-managed-keys) for a code sample.
 
@@ -156,7 +156,7 @@ To enable double encryption at rest for managed disks, see [Enable double encryp
 
 - Enable end-to-end encryption using encryption at host with either the [Azure PowerShell module](windows/disks-enable-host-based-encryption-powershell.md), the [Azure CLI](linux/disks-enable-host-based-encryption-cli.md), or the [Azure portal](disks-enable-host-based-encryption-portal.md).
 - To enable double encryption at rest for managed disks, see [Enable double encryption at rest for managed disks](disks-enable-double-encryption-at-rest-portal.md).
-- Enable customer-managed keys for managed disks with either the [Azure PowerShell module](windows/disks-enable-customer-managed-keys-powershell.md), the [Azure CLI](linux/disks-enable-customer-managed-keys-cli.md) or the [Azure portal](disks-enable-customer-managed-keys-portal.yml).
+- Enable customer-managed keys for managed disks by using either the [Azure PowerShell module](windows/disks-enable-customer-managed-keys-powershell.md), the [Azure CLI](linux/disks-enable-customer-managed-keys-cli.md), or the [Azure portal](/azure/virtual-machines/disks-enable-customer-managed-keys-portal).
 - [Migrate from Azure Disk Encryption to server-side encryption](disk-encryption-migrate.md)
 - [Explore the Azure Resource Manager templates for creating encrypted disks with customer-managed keys](https://github.com/ramankumarlive/manageddiskscmkpreview)
 - [What is Azure Key Vault?](/azure/key-vault/general/overview)
