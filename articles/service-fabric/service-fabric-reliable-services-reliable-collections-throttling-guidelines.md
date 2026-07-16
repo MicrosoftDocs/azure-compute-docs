@@ -8,6 +8,7 @@ ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 06/25/2026
 ms.update-cycle: 1095-days
+ai-usage: ai-assisted
 # Customer intent: "As a developer who uses Azure Service Fabric, I want to understand how throttling works in Reliable Collections and implement best practices, so that I can reduce the possibility of throttling as a result of my application code."
 ---
 
@@ -23,18 +24,34 @@ The pipeline absorbs short bursts in bounded in-memory buffers and queues, but t
 
 Throttling is expected behavior, not a defect. The guidelines in this article describe the forms that it takes and how to stay in a healthy operating range.
 
+### Key terms
+
+If you're new to Reliable Collections, the following terms appear throughout this article:
+
+- **Transaction**: The unit of work you create with `CreateTransaction` to read from or write to Reliable Collections. Changes become durable only when you commit.
+- **Commit**: The operation that finalizes a transaction, performed by calling the `CommitAsync` API. A commit isn't complete until the change is persisted to the log and replicated to a quorum of secondary replicas.
+- **Replica**: A copy of a partition's state. The **primary** serves reads and writes; **secondary** replicas receive replicated operations and acknowledge them.
+- **Quorum**: The majority of replicas that must acknowledge a write before the commit finishes.
+- **Transactional log**: The on-disk log that every write appends to before a commit finishes. It provides durability and ordering.
+- **Replication queue**: A bounded queue on the primary that holds each replicated operation until every secondary acknowledges it.
+- **Checkpoint**: A periodic operation that persists in-memory state so that older log records can be discarded.
+- **Truncation**: Discarding log records that are no longer needed, which advances the log head and frees log space.
+- **Log reader**: A reader held at a position in the log (for example, by a backup or a replica build) that prevents truncation past that position until it's released.
+
 ## Types of throttling
 
 Throttling takes two forms. *Capacity throttling* is a slope that you can ease back from by lowering concurrency. *Stall throttling* is a cliff that you want to stay well clear of.
 
 ### Capacity (partial) throttling
 
-The commit pipeline drains at a fixed maximum rate set by disk and replication speed. As you push more concurrent transactions than the pipeline can drain, each transaction waits longer in the queue. Commits queue and latency climbs in proportion, with no errors. The effect of this partial throttling is gradual, predictable, and self-correcting.
+Capacity throttling is really a *write stall* caused by resource and capacity constraints rather than throttling in the strict sense. Nothing rejects new writes or blocks transactions in a controlled manner. The commit pipeline drains at a fixed maximum rate set by disk and replication speed. As you push more concurrent transactions than the pipeline can drain, each transaction waits longer in the queue. Commits queue and latency climbs in proportion, with no errors.
+
+When the pipeline is saturated, individual commits can take a long time to finish (tens of seconds or more), so it can *feel* like the system is throttling you even though every write is still accepted and eventually completes.
 
 | Aspect | Behavior |
 | ------ | -------- |
 | **Trigger** | More in-flight transactions occur than the pipeline can drain. |
-| **Symptom** | Commit latency rises roughly linearly with concurrency. Throughput stays flat. |
+| **Symptom** | Commit latency rises roughly linearly with concurrency. Throughput stays flat. Writes are still accepted, but slow commits can create the impression of throttling. |
 | **Throughput** | Unchanged. Adding concurrency doesn't increase it. |
 | **Recovery** | Recovery is immediate after concurrency drops back below the drain rate. |
 
@@ -74,6 +91,14 @@ The triggers fall into two families:
 
 > [!NOTE]
 > The more transactions are in flight when a stall hits, the more freeze at once. Lower concurrency shrinks the number.
+
+Watch for operation timeouts as a stall symptom. When commits can't finish because of lock contention, log unavailability, or a full replication queue, in-flight operations block until they exceed their timeout and surface a `TimeoutException` (often wrapped in a transient error). A rising rate of operation timeouts, especially alongside a throughput drop and error-rate spike, is a strong signal that you're hitting a stall rather than gradual capacity throttling. Keep timeouts near the default so these stalls surface quickly instead of being masked by excessively long waits.
+
+## Implement your own throttling
+
+The platform throttles to protect durability, but it doesn't cap how much work your application sends into the pipeline. That responsibility is yours. Follow the best practices in the following sections to implement your own client-side throttling, bounding how many transactions you have in flight and how aggressively you retry. Without it, your application can push the pipeline past its drain rate, drive log and queue usage to their limits, and trigger capacity-related write stalls that you could have avoided.
+
+The following do's, don'ts, and code patterns show how to build that throttling and stay in a healthy operating range.
 
 ## Do
 
