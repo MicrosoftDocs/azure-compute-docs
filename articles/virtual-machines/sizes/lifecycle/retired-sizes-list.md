@@ -26,49 +26,49 @@ Retired virtual machine size series are running on older hardware which is no lo
 
 Series with *Retirement Status* listed as *Announced* are still available, but will be retired on the *Planned Retirement Date*. At the listed retirement date, any remaining VMs in a retired series are deallocated, stop working, stop incurring charges, and no longer have SLA or support. It's recommended that you plan your migration to a replacement series well before the listed retirement date.
 
-To learn more about size series retirement, previous-gen sizes, and the retirement process, see the [size series retirement overview](./retirement-overview.md).
+To learn more about size series retirement, previous-gen sizes, and the retirement process, see the [size series retirement overview](./retirement/retirement-overview.md).
 
 > [!IMPORTANT] 
 > If you're currently using one of the size series listed as *Retired*, view the migration guide to switch to a replacement series as soon as possible.
 
-*Previous-gen* size series aren't retired and still fully supported, but they have limitations similar to series that are announced for retirement. For a list of previous-gen sizes, see [previous generation Azure VM sizes](../previous-gen-sizes-list.md).
+*Previous-gen* size series aren't retired and still fully supported, but they have limitations similar to series that are announced for retirement. For a list of previous-gen sizes, see [previous generation Azure VM sizes](./previous-gen-sizes-list.md).
 
 ## General purpose retired sizes
 
 |Series name        | Retirement Status |Retirement Announcement                                            | Planned Retirement Date | Migration Guide |
 |-------------------|-------------------|-------------------------------------------------------------------|-------------------------|-----------------|
-| D-series          | **Announced**     | [03/31/25](https://azure.microsoft.com/updates?id=485569)         | 05/01/28                | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide)               |
-| Ds-series         | **Announced**     | [03/31/25](https://azure.microsoft.com/updates?id=485569)         | 05/01/28                | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide)               |
-| Dv2-series        | **Announced**     | [03/31/25](https://azure.microsoft.com/updates?id=485569)         | 05/01/28                | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide)                |
-| Dsv2-series       | **Announced**     | [03/31/25](https://azure.microsoft.com/updates?id=485569)         | 05/01/28                | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide)               |
-| Av2/Amv2-series   | **Announced**     | [10/15/25](https://azure.microsoft.com/updates?id=500682)         | 11/15/28                | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide)            |
-| B-series (V1)     | **Announced**     | [10/15/25](https://azure.microsoft.com/updates?id=500682)         | 11/15/28                | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide)         |
+| D-series          | **Announced**     | [03/31/25](https://azure.microsoft.com/updates?id=485569)         | 05/01/28                | [Migration Guide](/azure/virtual-machines/sizes/lifecycle/retirement/d-ds-dv2-dsv2-ls-series-migration-guide)               |
+| Ds-series         | **Announced**     | [03/31/25](https://azure.microsoft.com/updates?id=485569)         | 05/01/28                | [Migration Guide](/azure/virtual-machines/sizes/lifecycle/retirement/d-ds-dv2-dsv2-ls-series-migration-guide)               |
+| Dv2-series        | **Announced**     | [03/31/25](https://azure.microsoft.com/updates?id=485569)         | 05/01/28                | [Migration Guide](/azure/virtual-machines/sizes/lifecycle/retirement/d-ds-dv2-dsv2-ls-series-migration-guide)                |
+| Dsv2-series       | **Announced**     | [03/31/25](https://azure.microsoft.com/updates?id=485569)         | 05/01/28                | [Migration Guide](/azure/virtual-machines/sizes/lifecycle/retirement/d-ds-dv2-dsv2-ls-series-migration-guide)               |
+| Av2/Amv2-series   | **Announced**     | [10/15/25](https://azure.microsoft.com/updates?id=500682)         | 11/15/28                | [Migration Guide](/azure/virtual-machines/sizes/lifecycle/retirement/d-ds-dv2-dsv2-ls-series-migration-guide)            |
+| B-series (V1)     | **Announced**     | [10/15/25](https://azure.microsoft.com/updates?id=500682)         | 11/15/28                | [Migration Guide](/azure/virtual-machines/sizes/lifecycle/retirement/d-ds-dv2-dsv2-ls-series-migration-guide)         |
 
 ## Compute optimized retired sizes
 
 |Series name        | Retirement Status |Retirement Announcement                                            | Planned Retirement Date | Migration Guide |
 |-------------------|-------------------|-------------------------------------------------------------------|-------------------------|-----------------|
-| F-series          | **Announced**     | [10/15/25](https://azure.microsoft.com/updates?id=500682)         | 11/15/28                | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide)               |
-| Fs-series         | **Announced**     | [10/15/25](https://azure.microsoft.com/updates?id=500682)         | 11/15/28                | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide)               |
-| Fsv2-series       | **Announced**     | [10/15/25](https://azure.microsoft.com/updates?id=500682)         | 11/15/28                | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide)               |
+| F-series          | **Announced**     | [10/15/25](https://azure.microsoft.com/updates?id=500682)         | 11/15/28                | [Migration Guide](/azure/virtual-machines/sizes/lifecycle/retirement/d-ds-dv2-dsv2-ls-series-migration-guide)               |
+| Fs-series         | **Announced**     | [10/15/25](https://azure.microsoft.com/updates?id=500682)         | 11/15/28                | [Migration Guide](/azure/virtual-machines/sizes/lifecycle/retirement/d-ds-dv2-dsv2-ls-series-migration-guide)               |
+| Fsv2-series       | **Announced**     | [10/15/25](https://azure.microsoft.com/updates?id=500682)         | 11/15/28                | [Migration Guide](/azure/virtual-machines/sizes/lifecycle/retirement/d-ds-dv2-dsv2-ls-series-migration-guide)               |
 
 ## Memory optimized retired sizes
 
 |Series name        | Retirement Status |Retirement Announcement                                            | Planned Retirement Date | Migration Guide |
 |-------------------|-------------------|-------------------------------------------------------------------|-------------------------|-----------------|
-| G-series          | **Announced**     | [10/15/25](https://azure.microsoft.com/updates?id=500682)         | 11/15/28                | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide)             |
-| Gs-series         | **Announced**     | [10/15/25](https://azure.microsoft.com/updates?id=500682)         | 11/15/28                | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide)     |
-| Standard_M192idms_v2         | **Announced**     | [03/22/2024](https://azure.microsoft.com/updates?id=support-for-standardm192idmsv2-will-be-retired-on-31-march-2027)         | 03/31/27                | [Migration Guide](/azure/virtual-machines/sizes/retirement/msv2-mdsv2-retirement)     |
-| Standard_M192ids_v2         | **Announced**     | [03/22/2024](https://azure.microsoft.com/updates?id=community-support-for-standardm192idsv2-is-ending-on-31-march-2027)         | 03/31/27                | [Migration Guide](/azure/virtual-machines/sizes/retirement/msv2-mdsv2-retirement)     |
-| Standard_M192ims_v2         | **Announced**     | [03/22/2024](https://azure.microsoft.com/updates?id=community-support-for-standardm192imsv2-is-ending-on-31-march-2027)         | 03/31/27                | [Migration Guide](/azure/virtual-machines/sizes/retirement/msv2-mdsv2-retirement)     |
-| Standard_M192is_v2         | **Announced**     | [03/22/2024](https://azure.microsoft.com/updates?id=community-support-for-standardm192isv2-is-ending-on-31-march-2027)         | 03/31/27                | [Migration Guide](/azure/virtual-machines/sizes/retirement/msv2-mdsv2-retirement)     |
+| G-series          | **Announced**     | [10/15/25](https://azure.microsoft.com/updates?id=500682)         | 11/15/28                | [Migration Guide](/azure/virtual-machines/sizes/lifecycle/retirement/d-ds-dv2-dsv2-ls-series-migration-guide)             |
+| Gs-series         | **Announced**     | [10/15/25](https://azure.microsoft.com/updates?id=500682)         | 11/15/28                | [Migration Guide](/azure/virtual-machines/sizes/lifecycle/retirement/d-ds-dv2-dsv2-ls-series-migration-guide)     |
+| Standard_M192idms_v2         | **Announced**     | [03/22/2024](https://azure.microsoft.com/updates?id=support-for-standardm192idmsv2-will-be-retired-on-31-march-2027)         | 03/31/27                | [Migration Guide](/azure/virtual-machines/sizes/lifecycle/retirement/msv2-mdsv2-retirement)     |
+| Standard_M192ids_v2         | **Announced**     | [03/22/2024](https://azure.microsoft.com/updates?id=community-support-for-standardm192idsv2-is-ending-on-31-march-2027)         | 03/31/27                | [Migration Guide](/azure/virtual-machines/sizes/lifecycle/retirement/msv2-mdsv2-retirement)     |
+| Standard_M192ims_v2         | **Announced**     | [03/22/2024](https://azure.microsoft.com/updates?id=community-support-for-standardm192imsv2-is-ending-on-31-march-2027)         | 03/31/27                | [Migration Guide](/azure/virtual-machines/sizes/lifecycle/retirement/msv2-mdsv2-retirement)     |
+| Standard_M192is_v2         | **Announced**     | [03/22/2024](https://azure.microsoft.com/updates?id=community-support-for-standardm192isv2-is-ending-on-31-march-2027)         | 03/31/27                | [Migration Guide](/azure/virtual-machines/sizes/lifecycle/retirement/msv2-mdsv2-retirement)     |
 
 ## Storage optimized retired sizes
 
 |Series name        | Retirement Status |Retirement Announcement                                            | Planned Retirement Date | Migration Guide |
 |-------------------|-------------------|-------------------------------------------------------------------|-------------------------|-----------------|
-| Ls-series         | **Announced**     | [03/31/25](https://azure.microsoft.com/updates?id=485569)         | 05/01/28                | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide)             |
-| Lsv2-series       | **Announced**     | [10/15/25](https://azure.microsoft.com/updates?id=500682)         | 11/15/28                | [Migration Guide](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide)            |
+| Ls-series         | **Announced**     | [03/31/25](https://azure.microsoft.com/updates?id=485569)         | 05/01/28                | [Migration Guide](/azure/virtual-machines/sizes/lifecycle/retirement/d-ds-dv2-dsv2-ls-series-migration-guide)             |
+| Lsv2-series       | **Announced**     | [10/15/25](https://azure.microsoft.com/updates?id=500682)         | 11/15/28                | [Migration Guide](/azure/virtual-machines/sizes/lifecycle/retirement/d-ds-dv2-dsv2-ls-series-migration-guide)            |
 
 ## GPU accelerated retired sizes
 
@@ -85,7 +85,7 @@ NVv3-series and NVv4-series have announced retirements planned for September 30,
 
 | Series name | Retirement Status | Retirement Announcement | Planned Retirement Date | Migration Guide |
 |---|---|---|---|---|
-| NP-series | **Announced** | [04/02/2026](https://azure.microsoft.com/updates?id=548497) | 05/31/27 | [NP-series retirement](/azure/virtual-machines/sizes/retirement/np-series-retirement) |
+| NP-series | **Announced** | [04/02/2026](https://azure.microsoft.com/updates?id=548497) | 05/31/27 | [NP-series retirement](/azure/virtual-machines/sizes/lifecycle/retirement/np-series-retirement) |
 
 > [!NOTE]
 > After the retirement date, any remaining NP-series VMs (Standard_NP10s, Standard_NP20s, Standard_NP40s) are deallocated, stop working, stop incurring charges, and no longer have SLA or support. Managed disk data is preserved. Customers should plan migrations well in advance, as purchases of 1-year and 3-year Azure Reserved VM Instances for NP-series ended on April 2, 2026.
@@ -101,6 +101,6 @@ Currently there are no retired ADH series retired or announced for retirement.
 
 
 ## Next steps
-- For a list of older and capacity limited sizes, see [Previous generation Azure VM sizes](../previous-gen-sizes-list.md).
+- For a list of older and capacity limited sizes, see [Previous generation Azure VM sizes](./previous-gen-sizes-list.md).
 - For more information on VM sizes, see [Sizes for virtual machines in Azure](../overview.md).
 - For information on Azure Batch VM size support, see [VM sizes supported by Azure Batch](/azure/batch/batch-pool-vm-sizes).

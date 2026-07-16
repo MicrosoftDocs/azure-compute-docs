@@ -100,6 +100,6 @@ ms.author: mattmcinnes
 ---
 
 ### Previous-generation F family series
-For older sizes, see [previous generation sizes](../previous-gen-sizes-list.md#compute-optimized-previous-gen-sizes).
+For older sizes, see [previous generation sizes](../lifecycle/previous-gen-sizes-list.md#compute-optimized-previous-gen-sizes).
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]

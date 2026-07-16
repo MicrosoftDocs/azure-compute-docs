@@ -21,20 +21,20 @@ This article provides a list of all size series that are considered *previous-ge
 ## What are previous-gen size series?
 Previous generation virtual machine size series are running on older hardware. While they can still be used and are fully supported, there are newer generations available. It's recommended to migrate to the latest generation replacements.
 
-To learn more about previous-gen sizes, retirement, and the status states of previous-gen size series, see the [size series retirement overview](./retirement-overview.md).
+To learn more about previous-gen sizes, retirement, and the status states of previous-gen size series, see the [size series retirement overview](./retirement/retirement-overview.md).
 
 ## General purpose previous-gen sizes
 
 |Series name                 | Status                 | Migration guide   |
 |----------------------------|------------------------|-------------------|
-| B-series (V1)              | [Capacity limited](./retirement-overview.md#capacity-limited) | [Retirement Announced](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide) |
-| Standard D-series          | [Capacity limited](./retirement-overview.md#capacity-limited) | [Retirement Announced](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide) |
-| Preview DC-series          | [Capacity limited](./retirement-overview.md#capacity-limited) |
-| DS-series                  | [Capacity limited](./retirement-overview.md#capacity-limited) | [Retirement Announced](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide) |
-| Dv1 and Dsv1-series        | [Capacity limited](./retirement-overview.md#capacity-limited) | [Retirement Announced](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide) |
-| Dv2 and Dsv2-series        | [Capacity limited](./retirement-overview.md#capacity-limited) | [Retirement Announced](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide) |
-| Dv3 and Dsv3-series        | [Next-gen available](./retirement-overview.md#next-gen-available) | [Retirement Announced](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide) |
-| Av2 and Amv2-series        | [Capacity limited](./retirement-overview.md#capacity-limited) | [Retirement Announced](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide) |
+| B-series (V1)              | [Capacity limited](./retirement/retirement-overview.md#capacity-limited) | [Retirement Announced](/azure/virtual-machines/sizes/lifecycle/retirement/d-ds-dv2-dsv2-ls-series-migration-guide) |
+| Standard D-series          | [Capacity limited](./retirement/retirement-overview.md#capacity-limited) | [Retirement Announced](/azure/virtual-machines/sizes/lifecycle/retirement/d-ds-dv2-dsv2-ls-series-migration-guide) |
+| Preview DC-series          | [Capacity limited](./retirement/retirement-overview.md#capacity-limited) |
+| DS-series                  | [Capacity limited](./retirement/retirement-overview.md#capacity-limited) | [Retirement Announced](/azure/virtual-machines/sizes/lifecycle/retirement/d-ds-dv2-dsv2-ls-series-migration-guide) |
+| Dv1 and Dsv1-series        | [Capacity limited](./retirement/retirement-overview.md#capacity-limited) | [Retirement Announced](/azure/virtual-machines/sizes/lifecycle/retirement/d-ds-dv2-dsv2-ls-series-migration-guide) |
+| Dv2 and Dsv2-series        | [Capacity limited](./retirement/retirement-overview.md#capacity-limited) | [Retirement Announced](/azure/virtual-machines/sizes/lifecycle/retirement/d-ds-dv2-dsv2-ls-series-migration-guide) |
+| Dv3 and Dsv3-series        | [Next-gen available](./retirement/retirement-overview.md#next-gen-available) | [Retirement Announced](/azure/virtual-machines/sizes/lifecycle/retirement/d-ds-dv2-dsv2-ls-series-migration-guide) |
+| Av2 and Amv2-series        | [Capacity limited](./retirement/retirement-overview.md#capacity-limited) | [Retirement Announced](/azure/virtual-machines/sizes/lifecycle/retirement/d-ds-dv2-dsv2-ls-series-migration-guide) |
 
 For a list of general purpose sizes listed as "retired" and "announced for retirement" (sizes that are no longer available or soon to be unavailable for use), see [retired general purpose sizes](./retired-sizes-list.md#general-purpose-retired-sizes).
 
@@ -42,9 +42,9 @@ For a list of general purpose sizes listed as "retired" and "announced for retir
 
 |Series name                | Status                  | Migration guide   |
 |---------------------------|-------------------------|-------------------|
-| F-series                  | [Capacity limited](./retirement-overview.md#next-gen-available) | [Retirement Announced](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide) |
-| Fs-series                 | [Capacity limited](./retirement-overview.md#next-gen-available) | [Retirement Announced](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide) |
-| Fsv2-series               | [Capacity limited](./retirement-overview.md#next-gen-available) | [Retirement Announced](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide) |
+| F-series                  | [Capacity limited](./retirement/retirement-overview.md#next-gen-available) | [Retirement Announced](/azure/virtual-machines/sizes/lifecycle/retirement/d-ds-dv2-dsv2-ls-series-migration-guide) |
+| Fs-series                 | [Capacity limited](./retirement/retirement-overview.md#next-gen-available) | [Retirement Announced](/azure/virtual-machines/sizes/lifecycle/retirement/d-ds-dv2-dsv2-ls-series-migration-guide) |
+| Fsv2-series               | [Capacity limited](./retirement/retirement-overview.md#next-gen-available) | [Retirement Announced](/azure/virtual-machines/sizes/lifecycle/retirement/d-ds-dv2-dsv2-ls-series-migration-guide) |
 
 For a list of compute optimized sizes listed as "retired" and "announced for retirement" (sizes that are no longer available or soon to be unavailable for use), see [retired compute optimized sizes](./retired-sizes-list.md#compute-optimized-retired-sizes).
 
@@ -52,14 +52,14 @@ For a list of compute optimized sizes listed as "retired" and "announced for ret
 
 |Series name                | Replacement series      |Migration guide |
 |---------------------------|-------------------------|----------------|
-| Ev3 and Esv3-series       | [Next-gen available](./retirement-overview.md#next-gen-available)  |                |
-| Ev4 and Esv4-series       | [Next-gen available](./retirement-overview.md#next-gen-available)  |                |
-| Eav4 and Easv4-series     | [Next-gen available](./retirement-overview.md#next-gen-available)  |                |
-| Edv4 and Edsv4-series     | [Next-gen available](./retirement-overview.md#next-gen-available)  |                |
-| GS-series                 | [Capacity limited](./retirement-overview.md#capacity-limited)  | [Retirement Announced](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide) | 
-| G-series                  | [Capacity limited](./retirement-overview.md#capacity-limited)  | [Retirement Announced](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide) | 
-| Memory-optimized D-series | [Capacity limited](./retirement-overview.md#capacity-limited)  | [Retirement Announced](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide) |   
-| Memory-optimized DS-series| [Capacity limited](./retirement-overview.md#capacity-limited)  | [Retirement Announced](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide) | 
+| Ev3 and Esv3-series       | [Next-gen available](./retirement/retirement-overview.md#next-gen-available)  |                |
+| Ev4 and Esv4-series       | [Next-gen available](./retirement/retirement-overview.md#next-gen-available)  |                |
+| Eav4 and Easv4-series     | [Next-gen available](./retirement/retirement-overview.md#next-gen-available)  |                |
+| Edv4 and Edsv4-series     | [Next-gen available](./retirement/retirement-overview.md#next-gen-available)  |                |
+| GS-series                 | [Capacity limited](./retirement/retirement-overview.md#capacity-limited)  | [Retirement Announced](/azure/virtual-machines/sizes/lifecycle/retirement/d-ds-dv2-dsv2-ls-series-migration-guide) | 
+| G-series                  | [Capacity limited](./retirement/retirement-overview.md#capacity-limited)  | [Retirement Announced](/azure/virtual-machines/sizes/lifecycle/retirement/d-ds-dv2-dsv2-ls-series-migration-guide) | 
+| Memory-optimized D-series | [Capacity limited](./retirement/retirement-overview.md#capacity-limited)  | [Retirement Announced](/azure/virtual-machines/sizes/lifecycle/retirement/d-ds-dv2-dsv2-ls-series-migration-guide) |   
+| Memory-optimized DS-series| [Capacity limited](./retirement/retirement-overview.md#capacity-limited)  | [Retirement Announced](/azure/virtual-machines/sizes/lifecycle/retirement/d-ds-dv2-dsv2-ls-series-migration-guide) | 
 
 For a list of memory optimized sizes listed as "retired" and "announced for retirement" (sizes that are no longer available or soon to be unavailable for use), see [retired memory optimized sizes](./retired-sizes-list.md#memory-optimized-retired-sizes).
 
@@ -67,8 +67,8 @@ For a list of memory optimized sizes listed as "retired" and "announced for reti
 
 |Series name                | Replacement series   | Migration guide|
 |---------------------------|----------------------|----------------|
-| Lsv1-series               | [Capacity limited](./retirement-overview.md#capacity-limited) | [Retirement Announced](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide) | 
-| Lsv2-series               | [Capacity limited](./retirement-overview.md#capacity-limited) | [Retirement Announced](/azure/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide) |  
+| Lsv1-series               | [Capacity limited](./retirement/retirement-overview.md#capacity-limited) | [Retirement Announced](/azure/virtual-machines/sizes/lifecycle/retirement/d-ds-dv2-dsv2-ls-series-migration-guide) | 
+| Lsv2-series               | [Capacity limited](./retirement/retirement-overview.md#capacity-limited) | [Retirement Announced](/azure/virtual-machines/sizes/lifecycle/retirement/d-ds-dv2-dsv2-ls-series-migration-guide) |  
 
 For a list of storage optimized sizes listed as "retired" and "announced for retirement" (sizes that are no longer available or soon to be unavailable for use), see [retired storage optimized sizes](./retired-sizes-list.md#storage-optimized-retired-sizes).
 
@@ -98,4 +98,4 @@ For a list of ADH sizes listed as "retired" and "announced for retirement" (size
 
 ## Next steps
 - For a list of retired sizes, see [Retired Azure VM sizes](./retired-sizes-list.md).
-- For more information on VM sizes, see [Sizes for virtual machines in Azure](../sizes.md).
+- For more information on VM sizes, see [Sizes for virtual machines in Azure](../overview.md).

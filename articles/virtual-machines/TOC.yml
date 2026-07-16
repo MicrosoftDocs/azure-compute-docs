@@ -507,7 +507,7 @@
        - name: Retirement Migration guides
          items:
          - name: Msv2 and Mdsv2 migration guide
-           href: ./sizes/retirement/msv2-mdsv2-retirement.md
+           href: ./sizes/lifecycle/retirement/msv2-mdsv2-retirement.md
    - name: Storage optimized
      items:
      - name: Overview
@@ -578,7 +578,7 @@
        - name: ND series
          href: ./sizes/gpu-accelerated/nd-series.md
        - name: ND series retirement
-         href: ./sizes/retirement/nd-series-retirement.md
+         href: ./sizes/lifecycle/retirement/nd-series-retirement.md
        - name: NDv2 series
          href: ./sizes/gpu-accelerated/ndv2-series.md
        - name: ND-GB200-v6 series
@@ -606,9 +606,9 @@
        - name: NV series
          href: ./sizes/gpu-accelerated/nv-series.md
        - name: NV series retirement
-         href: ./sizes/retirement/nv-series-retirement.md
+         href: ./sizes/lifecycle/retirement/nv-series-retirement.md
        - name: NV series migration guide
-         href: nv-series-migration-guide.md
+         href: ./sizes/lifecycle/retirement/nv-series-migration-guide.md
        - name: NVv3 series
          href: ./sizes/gpu-accelerated/nvv3-series.md
        - name: NVv3 series retirement
@@ -639,7 +639,7 @@
          href: ./windows/n-series-amd-driver-setup.md
      - name: GPU compute migration guide
        displayName: GPU compute migration guide
-       href: ./migration/sizes/n-series-migration.md
+       href: ./sizes/lifecycle/retirement/n-series-migration.md
    - name: FPGA - accelerated compute
      items:
      - name: Overview
@@ -761,15 +761,15 @@
    - name: Previous generation and retired sizes
      items:
      - name: Overview
-       href: ./sizes/retirement/retirement-overview.md
+       href: ./sizes/lifecycle/retirement/retirement-overview.md
      - name: Previous-gen sizes list
-       href: ./sizes/previous-gen-sizes-list.md
+       href: ./sizes/lifecycle/previous-gen-sizes-list.md
      - name: Previous-gen size pages
        items:
        - name: General purpose
          items:
          - name: Av1-series retirement
-           href: ./sizes/retirement/av1-series-retirement.md
+           href: ./sizes/lifecycle/retirement/av1-series-retirement.md
          - name: B series V1
            href: ./sizes/general-purpose/bv1-series.md
          - name: Dv3 series
@@ -783,15 +783,15 @@
          - name: Dv2 and DSv2 series (11-15)
            href: dv2-dsv2-series-memory.md
          - name: DCsv2 series
-           href: ./sizes/retirement/dcsv2-series-retirement.md
+           href: ./sizes/lifecycle/retirement/dcsv2-series-retirement.md
          - name: DCccv5 series
-           href: ./sizes/retirement/dcccv5-series-retirement.md
+           href: ./sizes/lifecycle/retirement/dcccv5-series-retirement.md
        - name: Memory optimized
          items:
          - name: Ev3 and Esv3 series
            href: ev3-esv3-series.md
          - name: ECccv5 series
-           href:  ./sizes/retirement/ecccv5-series-retirement.md
+           href:  ./sizes/lifecycle/retirement/ecccv5-series-retirement.md
        - name: Storage optimized
          items:
          - name: Lsv2 series
@@ -799,15 +799,15 @@
        - name: FPGA accelerated
          items:
          - name: NP series
-           href: ./sizes/retirement/np-series-retirement.md
+           href: ./sizes/lifecycle/retirement/np-series-retirement.md
        - name: High performance compute
          items:
          - name: HC series
-           href: ./sizes/retirement/hc-series-retirement.md
+           href: ./sizes/lifecycle/retirement/hc-series-retirement.md
          - name: HBv2 series
-           href: ./sizes/retirement/hbv2-series-retirement.md
+           href: ./sizes/lifecycle/retirement/hbv2-series-retirement.md
      - name: Retired sizes
-       href: ./sizes/retirement/retired-sizes-list.md
+       href: ./sizes/lifecycle/retired-sizes-list.md
    - name: Generation 2 VMs
      displayName: Gen2, generation, gen1
      href: generation-2.md
@@ -1138,7 +1138,7 @@
       href: dedicated-host-gpu-optimized-skus.md
     - name: Dedicated Host SKU Retirement
       displayName: dedicated, dedicated host, retirement
-      href: ./sizes/retirement/dedicated-host-retirement.md
+      href: ./sizes/lifecycle/retirement/dedicated-host-retirement.md
     - name: Dedicated Host SKU Migration
       displayName: dedicated, dedicated host, retirement, migration
       href: ./sizes/migration-guides/dedicated-host-migration-guide.md
@@ -2508,6 +2508,22 @@
   - name: Change subscription for Marketplace VMs
     displayName: offer plan sku marketplace
     href: azure-cli-change-subscription-marketplace.md
+  - name: Migrate to v6 and later VM series
+    items:
+      - name: Overview
+        href: ./migration/sizes/sizes-v6-v7-migration-overview.md
+      - name: Assess readiness
+        href: ./migration/sizes/sizes-v6-v7-migration-assess.md
+      - name: Plan the migration
+        href: ./migration/sizes/sizes-v6-v7-migration-plan.md
+      - name: Migrate (wave runbook)
+        href: ./migration/sizes/sizes-v6-v7-migration-migrate.md
+      - name: "(Optional) Convert SCSI to NVMe in place"
+        href: ./migration/sizes/scsi-to-nvme-migration.md
+      - name: Validate and Optimize
+        href: ./migration/sizes/sizes-v6-v7-migration-validate.md
+      - name: Frequently asked questions
+        href: ./migration/sizes/sizes-v6-v7-migration-faq.md
   - name: Move VMs to another region
     href: /azure/site-recovery/azure-to-azure-tutorial-migrate?toc=/azure/virtual-machines/toc.json
   - name: Move to an availability zone
@@ -2529,15 +2545,15 @@
     - name: VM size series retirement migration guides
       items:
       - name: General-purpose sizes
-        href: ./migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide.md
+        href: ./sizes/lifecycle/retirement/d-ds-dv2-dsv2-ls-series-migration-guide.md
       - name: Storage-optimized sizes
-        href: ./migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide.md
+        href: ./sizes/lifecycle/retirement/d-ds-dv2-dsv2-ls-series-migration-guide.md
       - name: GPU-accelerated sizes
         items:
         - name: N-series migration guide
-          href: ./migration/sizes/n-series-migration.md
+          href: ./sizes/lifecycle/retirement/n-series-migration.md
         - name: NV-series migration guide
-          href: ./migration/sizes/nv-series-migration-guide.md
+          href: ./sizes/lifecycle/retirement/nv-series-migration-guide.md
       - name: Dedicated Host migration guide
         href: ./migration/dedicated-host-migration-guide.md
 - name: Infrastructure automation

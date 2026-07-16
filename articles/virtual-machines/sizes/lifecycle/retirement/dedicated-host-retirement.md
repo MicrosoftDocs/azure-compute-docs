@@ -44,7 +44,7 @@ Note: If you're running a Dsv3-Type3, Dsv3-Type4, an Esv3-Type3, or an Esv3-Type
 
 For manually placed VMs, you need to create a Dedicated Host of a newer SKU, stop the VMs on your existing Dedicated Host, reassign them to the new host, start the VMs, and delete the old host. For automatically placed VMs or for Virtual Machine Scale Sets, you need to create a Dedicated Host of a newer SKU, stop the VMs or Virtual Machine Scale Set, delete the old host, and then start the VMs or Virtual Machine Scale Set. 
 
-Refer to the [Azure Dedicated Host Migration Guide](../../migration/dedicated-host-migration-guide.md) for more detailed instructions. We recommend moving to the latest generation of Dedicated Host for your VM family.
+Refer to the [Azure Dedicated Host Migration Guide](../../../migration/dedicated-host-migration-guide.md) for more detailed instructions. We recommend moving to the latest generation of Dedicated Host for your VM family.
 
 If you have any questions, contact us through customer support.
 
@@ -81,5 +81,5 @@ A: If the underlying host is deallocated the VMs that were running on the host w
 
 You could stop/deallocate the VM or virtual machine scale set and dissociate the VM or virtual machine scale set from the host/host group (depending on explicit vs implicit placement) and then you would be able to either create a new host (of the same VM family) and allocate VMs on the host/host group or run the VMs on multitenant infrastructure. 
 
-Refer to the [Azure Dedicated Host Migration Guide](../../migration/dedicated-host-migration-guide.md) for more detailed instructions. 
+Refer to the [Azure Dedicated Host Migration Guide](../../../migration/dedicated-host-migration-guide.md) for more detailed instructions. 
 

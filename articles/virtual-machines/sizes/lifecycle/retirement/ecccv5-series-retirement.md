@@ -1,6 +1,6 @@
 ---
-title: DCccv5-series-retirement
-description: Retirement information for the DCas_cc_v5 and DCads_cc_v5 nested confidential VM sizes. Before retirement, migrate your workloads to recommended options.
+title: ECccv5-series-retirement
+description: Retirement information for the ECas_cc_v5, and ECads_cc_v5 nested confidential VM sizes. Before retirement, migrate your workloads to recommended options.
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: how-to
@@ -12,15 +12,15 @@ ms.custom: references_regions
 
 <!-- DRAFT — cc_v5 nested confidential VM retirement migration guide. Modeled on the DCsv2-series retirement page. Owner/front-matter aliases and the items flagged below need confirmation before publishing. -->
 
-# DCas_cc_v5 and DCads_cc_v5 series retirement - Azure Virtual Machines | Microsoft Learn
+# DCas_cc_v5, DCads_cc_v5, ECas_cc_v5, and ECads_cc_v5 series retirement - Azure Virtual Machines | Microsoft Learn
 
-This migration guide is for users of the DCas_cc_v5 and DCads_cc_v5 nested confidential virtual machine (VM) sizes. These sizes retire on **August 1, 2026**. To ensure minimal disruption and to continue optimizing cost and performance, this guide helps you transition to the latest series VMs.
+This migration guide is for users of the DCas_cc_v5, DCads_cc_v5, ECas_cc_v5, and ECads_cc_v5 nested confidential virtual machine (VM) sizes, which retire on **August 1, 2026**. To ensure minimal disruption and to continue optimizing cost and performance, this guide helps you transition to the latest series VMs.
 
 This document covers:
 
 - Recommended options for migration
 - Detailed migration steps
-- Frequently asked questions
+- Frequently Asked Questions
 
 By migrating to newer VM series, you gain access to improved price-performance ratios, broader regional availability, and the latest hardware capabilities.
 
@@ -28,17 +28,17 @@ By migrating to newer VM series, you gain access to improved price-performance r
 
 **Before August 1, 2026**, migrate your workloads to one of the following options that best aligns with your business needs:
 
-- **Running a general-purpose workload?** Migrate to a standard general-purpose VM series such as [Dasv5/Dadsv5](../general-purpose/d-family.md) or [Easv5/Eadsv5](../memory-optimized/e-family.md). These series offer improved price-performance and broad regional availability.
-- **Using nested virtualization for non-confidential VMs?** Migrate to a general-purpose VM size that [supports nested virtualization](../../../virtual-machines/sizes/resize-vm.md).
-- **Running confidential container or confidential VM workloads?** To lift and shift into a VM-based programming model, consider [DCasv6/ECasv6](../general-purpose/dcasv6-series.md) series (currently in preview), or [DCesv6](../general-purpose/dcesv6-series.md) (currently in preview) confidential VMs (CVMs). If you already have or plan to transition to containerized workloads, consider using [Azure Confidential Container Instances (C-ACI)](../../../container-instances/container-instances-confidential-overview.md) serverless infrastructure. If you need to orchestrate containerized workloads, consider using [Virtual nodes on Azure Container Instances (C-VN2) for Azure Kubernetes Service (AKS)](../../../container-instances/container-instances-virtual-nodes.md).
+- **Running a general-purpose workload?** Migrate to a standard general-purpose VM series such as [Dasv5/Dadsv5](../../general-purpose/d-family.md) or [Easv5/Eadsv5](../../memory-optimized/e-family.md). These series offer improved price-performance and broad regional availability.
+- **Using nested virtualization for non-confidential VMs?** Migrate to a general-purpose VM size that [supports nested virtualization](../../../../virtual-machines/sizes/resize-vm.md).
+- **Running confidential container or confidential VM workloads?** To lift and shift into a VM-based programming model, consider [DCasv6/ECasv6](../../general-purpose/dcasv6-series.md) series (currently in preview), or [DCesv6](../../general-purpose/dcesv6-series.md) (currently in preview) confidential VMs (CVMs). If you already have or plan to transition to containerized workloads, consider using [Azure Confidential Container Instances (C-ACI)](../../../../container-instances/container-instances-confidential-overview.md) serverless infrastructure. If you need to orchestrate containerized workloads, consider using [Virtual nodes on Azure Container Instances (C-VN2) for Azure Kubernetes Service (AKS)](../../../../container-instances/container-instances-virtual-nodes.md).
 
 To learn more about Azure confidential computing options, visit [https://aka.ms/azurecc](/azure/confidential-computing/confidential-vm-overview).
 
-Additionally, this retirement might change your Azure Virtual Machines billing. For more information, see the Azure Virtual Machines [pricing page](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
+Additionally, there may be changes to your Azure Virtual Machines billing because of this retirement. Refer to our Azure Virtual Machines [pricing page](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) for more information.
 
-## Migration steps
+## Migration Steps
 
-Start planning your migration from the DCas_cc_v5 and DCads_cc_v5 series today.
+Start planning your migration from the DCas_cc_v5, DCads_cc_v5, ECas_cc_v5, and ECads_cc_v5 series today.
 
 ### Identify the target migration option
 
@@ -48,7 +48,7 @@ Start planning your migration from the DCas_cc_v5 and DCads_cc_v5 series today.
 ### Check and request quota increases
 
 - Before resizing and migrating, verify that your subscription has sufficient quota for the target VM series.
-- Request more quota through the [Azure portal](../../quotas.md) if needed.
+- Request more quota through the [Azure portal](../../../quotas.md) if needed.
 
 ### Complete migration
 
@@ -75,7 +75,7 @@ If your target migration option is a VM series available in your current region,
 7. Pick a new size from the list of available sizes and select **Resize**.
 8. **Start the VM** after resizing.
 
-For more detailed instructions, see the full [Azure VM resizing guide](../resize-vm.md).
+For more detailed instructions, see the full [Azure VM resizing guide](../../resize-vm.md).
 
 ### Azure PowerShell
 
@@ -139,7 +139,7 @@ For more detailed instructions, see the full [Azure VM resizing guide](../resize
 
 ### How does this retirement affect me?
 
-If you're running your workload on the DCas_cc_v5, DCads_cc_v5, ECas_cc_v5, or ECads_cc_v5 series—either by using virtual machines, Virtual Machine Scale Sets, or services built on top of these SKUs—this retirement affects you because you may  lose your workloads and your VMs will be shut down when the SKUs are retired. 
+If you're running your workload on the DCas_cc_v5, DCads_cc_v5, ECas_cc_v5, or ECads_cc_v5 series—either by using virtual machines, Virtual Machine Scale Sets, or services built on top of these SKUs—this retirement affects you - this retirement affects you because you might lose your workloads and your VMs are shut down when the SKUs are retired.
 
 ### What is the migration timeline?
 
@@ -163,7 +163,7 @@ No, we aren't taking feature requests or building new features for these series.
 
 ### How can I get a quota for the target VM size?
 
-Follow the guide to [request an increase in vCPU quota by VM family](../../quotas.md).
+Follow the guide to [request an increase in vCPU quota by VM family](/azure/quotas/per-vm-quota-requests).
 
 ### Are my OS and data disks affected when resizing?
 
@@ -175,15 +175,15 @@ Deallocating the VM releases any dynamic IP addresses assigned to the VM. If you
 
 ### How does migration affect my current billing?
 
-There might be a price change when you switch SKUs. For more information, see the Azure Virtual Machines [pricing page](https://azure.microsoft.com/pricing/calculator/).
+There may be a price change when you switch SKUs. For more information, see the Azure Virtual Machines [pricing page](https://azure.microsoft.com/pricing/calculator/).
 
 ### How can I get transition help and support during migration?
 
 If you have any questions, you can [create a support request](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) through the Azure portal for technical help.
 
-### What happens after the retirement date?
+### What will happen after the retirement date?
 
-After August 1, 2026, any remaining DCas_cc_v5, DCads_cc_v5, ECas_cc_v5, and ECads_cc_v5 series virtual machine subscriptions stop working and no longer incur billing charges. To avoid disruption, migrate ahead of the retirement schedule.
+After August 1, 2026, any remaining DCas_cc_v5, DCads_cc_v5, ECas_cc_v5, and ECads_cc_v5 series virtual machine subscriptions will stop working and will no longer incur billing charges. To avoid disruption, migrate ahead of the retirement schedule.
 
 ## Help and support
 

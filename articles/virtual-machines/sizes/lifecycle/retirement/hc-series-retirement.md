@@ -32,7 +32,7 @@ To avoid service disruption, deallocate your HC-series VMs and migrate these wor
 
 ## Suggested alternative Azure VM sizes
 
-To ensure continuity and optimal performance, we recommend transitioning from the current HC-series VMs to newer VM series within Azure's HPC portfolio. [HBv5-series](../high-performance-compute/hbv5-series.md) offers higher performance and better price-performance than HBv4, making it well-suited for most HPC workloads. [HX-series](../high-performance-compute/hx-series.md) is optimized for high-memory HPC workloads with approximately twice the memory capacity of HBv4.
+To ensure continuity and optimal performance, we recommend transitioning from the current HC-series VMs to newer VM series within Azure's HPC portfolio. [HBv5-series](../../high-performance-compute/hbv5-series.md) offers higher performance and better price-performance than HBv4, making it well-suited for most HPC workloads. [HX-series](../../high-performance-compute/hx-series.md) is optimized for high-memory HPC workloads with approximately twice the memory capacity of HBv4.
 
 | Workload | Recommended VM to migrate to |
 |---|---|
