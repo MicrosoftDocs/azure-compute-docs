@@ -323,7 +323,7 @@ The following packing configuration outlines the max packing of uniform VMs you 
 > [!NOTE]
 >  **The Esv3-Type1 will be retired on June 30, 2023**. Refer to the [dedicated host retirement guide](dedicated-host-retirement.md) to learn more.
 
-The Esv3-Type1 is a Dedicated Host SKU utilizing the Intel® Broadwell (2.3 GHz Xeon® E5-2673 v4) processor. It offers 40 physical cores, 64 vCPUs, and 448 GiB of RAM. The Esv3-Type1 runs [Esv3-series](ev3-esv3-series.md#ev3-series) VMs.
+The Esv3-Type1 is a Dedicated Host version that uses the Intel® Broadwell (2.3 GHz Xeon® E5-2673 v4) processor. It has 40 physical cores, 64 vCPUs, and 448 GiB of RAM. The Esv3-Type1 runs [Esv3-series](sizes/memory-optimized/ev3-esv3-series.md#ev3-series) VMs.
 
 The following packing configuration outlines the max packing of uniform VMs you can put onto an Esv3-Type1 host.
 
@@ -343,7 +343,7 @@ The following packing configuration outlines the max packing of uniform VMs you 
 > [!NOTE]
 >  **The Esv3-Type2 will be retired on June 30, 2023**. Refer to the [dedicated host retirement guide](dedicated-host-retirement.md) to learn more.
 
-The Esv3-Type2 is a Dedicated Host SKU utilizing the Intel® Skylake (Xeon® 8171M) processor. It offers 48 physical cores, 76 vCPUs, and 504 GiB of RAM. The Esv3-Type2 runs [Esv3-series](ev3-esv3-series.md#ev3-series) VMs.
+The Esv3-Type2 is a Dedicated Host version that uses the Intel® Skylake (Xeon® 8171M) processor. It has 48 physical cores, 76 vCPUs, and 504 GiB of RAM. The Esv3-Type2 runs [Esv3-series](sizes/memory-optimized/ev3-esv3-series.md#ev3-series) VMs.
 
 The following packing configuration outlines the max packing of uniform VMs you can put onto an Esv3-Type2 host.
 
@@ -360,7 +360,7 @@ The following packing configuration outlines the max packing of uniform VMs you 
 
 ### Esv3-Type3
 
-The Esv3-Type3 is a Dedicated Host SKU utilizing the Intel® Cascade Lake (Xeon® Platinum 8272CL) processor. It offers 52 physical cores, 80 vCPUs, and 504 GiB of RAM. The Esv3-Type3 runs [Esv3-series](ev3-esv3-series.md#ev3-series) VMs.
+The Esv3-Type3 is a Dedicated Host version that uses the Intel® Cascade Lake (Xeon® Platinum 8272CL) processor. It has 52 physical cores, 80 vCPUs, and 504 GiB of RAM. The Esv3-Type3 runs [Esv3-series](sizes/memory-optimized/ev3-esv3-series.md#ev3-series) VMs.
 
 The following packing configuration outlines the max packing of uniform VMs you can put onto an Esv3-Type3 host.
 
@@ -377,7 +377,7 @@ The following packing configuration outlines the max packing of uniform VMs you 
 
 ### Esv3-Type4
 
-The Esv3-Type4 is a Dedicated Host SKU utilizing the Intel® Ice Lake (Xeon® Platinum 8370C) processor. It offers 64 physical cores, 119 vCPUs, and 768 GiB of RAM. The Esv3-Type4 runs [Esv3-series](ev3-esv3-series.md#ev3-series) VMs.
+The Esv3-Type4 is a Dedicated Host version that uses the Intel® Ice Lake (Xeon® Platinum 8370C) processor. It has 64 physical cores, 119 vCPUs, and 768 GiB of RAM. The Esv3-Type4 runs [Esv3-series](sizes/memory-optimized/ev3-esv3-series.md#ev3-series) VMs.
 
 The following packing configuration outlines the max packing of uniform VMs you can put onto an Esv3-Type4 host.
 

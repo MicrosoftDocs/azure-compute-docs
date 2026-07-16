@@ -45,7 +45,7 @@ The [NCadsH100_v5-series](/azure/virtual-machines/ncads-h100-v5?source=recommend
 
 1. Choose a series and size. Refer to the above tables for Microsoft’s recommendation. You can also file a support request if more assistance is needed.
 2. [Request quota for the new target VM](/azure/azure-portal/supportability/per-vm-quota-requests).
-3. You can [resize the virtual machine](resize-vm.md). 
+1. [Resize the virtual machine](../../resize-vm.md). 
 
    
 

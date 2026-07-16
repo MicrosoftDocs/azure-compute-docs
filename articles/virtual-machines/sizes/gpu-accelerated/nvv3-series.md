@@ -14,7 +14,7 @@ ms.reviewer: mattmcinnes
 # NVv3 sizes series
 
 > [!NOTE]
-> The NVv3-series will be retired on September 30, 2026. Refer to the [NVv3-series retirement page](/azure/virtual-machines/sizes/gpu-accelerated/nvv3-series-retirement) for more information and migration recommendations. 
+> The NVv3-series retires on September 30, 2026. For more information and migration recommendations, see the [NVv3-series retirement page](/azure/virtual-machines/sizes/lifecycle/retirement/nvv3-series-retirement).
 
 [!INCLUDE [nvv3-summary](./includes/nvv3-series-summary.md)]
 

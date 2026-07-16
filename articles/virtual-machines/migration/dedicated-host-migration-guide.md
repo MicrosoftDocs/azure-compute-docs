@@ -20,11 +20,11 @@ The main differences between the retiring Dedicated Host SKUs and the newly reco
 - Increased available vCPUs
 - Greater regional capacity compared to the retiring Dedicated Host SKUs
 
-Review the [FAQs](../sizes/retirement/dedicated-host-retirement.md#faqs) before you get started on migration. The next section will go over which Dedicated Host SKUs to migrate to help aid in migration planning and execution.
+Review the [FAQs](../sizes/lifecycle/retirement/dedicated-host-retirement.md#faqs) before you get started on migration. The next section will go over which Dedicated Host SKUs to migrate to help aid in migration planning and execution.
 
 ## Host SKUs being retired
 
-Some Azure Dedicated Host SKUs will be retired soon. Refer to the [Azure Dedicated Host SKU Retirement](../sizes/retirement/dedicated-host-retirement.md#faqs) documentation to learn more.
+Some Azure Dedicated Host SKUs will be retired soon. Refer to the [Azure Dedicated Host SKU Retirement](../sizes/lifecycle/retirement/dedicated-host-retirement.md#faqs) documentation to learn more.
 
 ### Dsv3-Type1 and Dsv3-Type2
 

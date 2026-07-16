@@ -14,7 +14,7 @@ ms.reviewer: mattmcinnes
 # NVv4 sizes series
 
 > [!NOTE]
-> The NVv4-series will be retired on September 30, 2026. Refer to the [NVv4-series retirement page](/azure/virtual-machines/sizes/gpu-accelerated/nvv4-retirement) for more information and migration recommendations. 
+> The NVv4-series retires on September 30, 2026. For more information and migration recommendations, see the [NVv4-series retirement page](/azure/virtual-machines/sizes/lifecycle/retirement/nvv4-retirement).
 
 [!INCLUDE [nvv4-summary](./includes/nvv4-series-summary.md)]
 
