@@ -244,6 +244,6 @@ See the following articles to create disks from your snapshots using the [Azure 
 
 See [Copy an incremental snapshot to a new region](disks-copy-incremental-snapshot-across-regions.md) to learn how to copy an incremental snapshot across regions.
 
-If you have more questions on snapshots, see the [snapshots](faq-for-disks.yml#snapshots) section of the FAQ.
+If you have more questions, see the [snapshots](/azure/virtual-machines/faq-for-disks#snapshots) section of the FAQ.
 
 If you'd like to see sample code demonstrating the differential capability of incremental snapshots, using .NET, see [Copy Azure managed disks backups to another region with differential capability of incremental snapshots](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots).
