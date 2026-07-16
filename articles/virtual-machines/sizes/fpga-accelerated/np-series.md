@@ -16,7 +16,7 @@ ai-usage: ai-assisted
 [!INCLUDE [np-summary](./includes/np-series-summary.md)]
 
 > [!IMPORTANT]
-> Azure NP-series virtual machines (Standard_NP10s, Standard_NP20s, Standard_NP40s) are scheduled for retirement on **May 31, 2027**. After this date, remaining NP-series VMs are deallocated, stop working, stop incurring charges, and no longer have SLA or support. Managed disk data is preserved. For migration guidance, see [NP-series virtual machine migration guidance](../retirement/np-series-retirement.md).
+> Azure NP-series virtual machines (Standard_NP10s, Standard_NP20s, Standard_NP40s) are scheduled for retirement on **May 31, 2027**. After this date, remaining NP-series VMs are deallocated, stop working, stop incurring charges, and no longer have SLA or support. Managed disk data is preserved. For migration guidance, see [NP-series virtual machine migration guidance](../lifecycle/retirement/np-series-retirement.md).
 
 > [!NOTE]
 > Purchases of 1-year and 3-year Azure Reserved VM Instances for NP-series ended on **April 2, 2026**. Existing reservations are honored until expiration, but no new NP-series reservations can be purchased after that date.
@@ -291,7 +291,7 @@ NP-series VMs are retiring on May 31, 2027. To ensure continuity, migrate your w
 - **[NCads_H100_v5 VMs](../gpu-accelerated/ncadsh100v5-series.md)** – Ideal for Azure Applied AI training and batch inference workloads requiring the latest GPU generation (NVIDIA H100 GPUs).
 - **[NCasT4_v3 VMs](../gpu-accelerated/ncast4v3-series.md)** – Suitable for real-time AI inference, interactive graphics, video transcoding, and analytics workloads at lower cost (NVIDIA T4 GPUs).
 
-For detailed migration steps, see [Migrate your NP-series virtual machines by May 31, 2027](../retirement/np-series-retirement.md).
+For detailed migration steps, see [Migrate your NP-series virtual machines by May 31, 2027](../lifecycle/retirement/np-series-retirement.md).
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]
 

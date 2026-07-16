@@ -12,7 +12,7 @@ ms.author: akashdubey
 # NV series migration guide
 
 > [!IMPORTANT]
-> The NV-series is retired as of September 6th, 2023, and is no longer available. Please refer to the [NV-series retirement page](/azure/virtual-machines/sizes/retirement/nv-series-retirement) for more information. 
+> The NV-series is retired as of September 6th, 2023, and is no longer available. Please refer to the [NV-series retirement page](/azure/virtual-machines/sizes/lifecycle/retirement/nv-series-retirement) for more information. 
 
 As more powerful GPU VM sizes become available in Azure datacenters, assess your workloads and migrate virtual machines (VMs) in the NV and NV_Promo series. These legacy VMs can be migrated into new VM series, such as NVsv3 and NVasv4, for better performance with reduced cost. The NVsv3 VM series is powered by Nvidia M60 GPUs. The NVasv4 series is powered by AMD Radeon Instinct MI25 GPUs.
 
@@ -35,7 +35,7 @@ The NVv3-series VMs are powered by NVIDIA Tesla M60 GPUs and NVIDIA GRID tec
 
 These VMs can also run single precision workloads, such as encoding and rendering.
 
-NVv3 VMs support Premium storage and come with twice the system memory (RAM) when compared with the NV series. For the most up-to-date specifications, see [GPU accelerated compute VM sizes: NVsv3 series](../../sizes/gpu-accelerated/nvv3-series.md).
+NVv3 VMs support Premium storage and come with twice the system memory (RAM) when compared with the NV series. For the most up-to-date specifications, see [GPU accelerated compute VM sizes: NVsv3 series](../../../sizes/gpu-accelerated/nvv3-series.md).
 
 | Current VM size | Target VM size | Difference in specification  |
 |---|---|---|
@@ -47,7 +47,7 @@ NVv3 VMs support Premium storage and come with twice the system memory (RAM) whe
 
 NVv4-series VMs are powered by AMD Radeon Instinct MI25 GPUs and AMD EPYC 7V12 (Rome) CPUs. With the NVv4 series, Azure introduces VMs with partial GPUs. Choose the right size VM for GPU accelerated graphics applications and virtual desktops that start at one-eighth of a GPU with a 2-GiB frame buffer to a full GPU with a 16-GiB frame buffer.
 
-NVv4 VMs currently support only the Windows guest operating system. For the most up-to-date specifications, see [GPU accelerated compute VM sizes: NVv4 series](../../sizes/gpu-accelerated/nvv4-series.md).
+NVv4 VMs currently support only the Windows guest operating system. For the most up-to-date specifications, see [GPU accelerated compute VM sizes: NVv4 series](../../../sizes/gpu-accelerated/nvv4-series.md).
 
 | Current VM size | Target VM size | Difference in specification  |
 |---|---|---|
@@ -89,16 +89,16 @@ Follow the guide to [request an increase in vCPU quota by VM family](/azure/azur
 
 ### Resize the current VM
 
-You can [resize the VM](../../sizes/resize-vm.md).
+You can [resize the VM](../../../sizes/resize-vm.md).
 
 ## FAQ
 **Q:** Which GPU driver should I use for the target VM size? 
 
-**A:** For the NVsv3 series, use the [Nvidia GRID driver](../../windows/n-series-driver-setup.md). For NVv4, use the [AMD GPU drivers](../../windows/n-series-amd-driver-setup.md). 
+**A:** For the NVsv3 series, use the [Nvidia GRID driver](../../../windows/n-series-driver-setup.md). For NVv4, use the [AMD GPU drivers](../../../windows/n-series-amd-driver-setup.md). 
 
 **Q:** I use the Nvidia GPU driver extension today. Will it work for the target VM size? 
 
-**A:** The current [Nvidia driver extension](../../extensions/hpccompute-gpu-windows.md) will work for NVsv3. Use the [AMD GPU driver extensions](../../extensions/hpccompute-amd-gpu-windows.md) if the target VM size is NVv4. 
+**A:** The current [Nvidia driver extension](../../../extensions/hpccompute-gpu-windows.md) will work for NVsv3. Use the [AMD GPU driver extensions](../../../extensions/hpccompute-amd-gpu-windows.md) if the target VM size is NVv4. 
  
 **Q:** Which target VM series should I use if I have dependency on CUDA? 
 

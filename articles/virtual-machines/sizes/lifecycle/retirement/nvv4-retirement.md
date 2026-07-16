@@ -42,7 +42,7 @@ Depending on the workload being run, regional affinity, and cost preferences, ot
 __After__ __September 30th, 2026, any remaining__ __NVv4-series virtual machines (VMs) subscriptions will be set to a deallocated state. They'll stop working and no longer incur billing charges. NVv4 will no longer be under SLA or have support included.__
 
 > [!NOTE]
-> This retirement only impacts the virtual machine sizes in the NVv4-series powered by AMD Radeon Instinct MI25 GPUs. For NVv3-series virtual machines, please refer to the [NVv3-series virtual machines retirement guide](/azure/virtual-machines/sizes/gpu-accelerated/nvv3-series-retirement). This retirement announcement does not apply to NVadsA10_v5 or NVads_V710_v5 series virtual machines. 
+> This retirement only impacts the virtual machine sizes in the NVv4-series powered by AMD Radeon Instinct MI25 GPUs. For NVv3-series virtual machines, see the [NVv3-series virtual machines retirement guide](/azure/virtual-machines/sizes/lifecycle/retirement/nvv3-series-retirement). This retirement announcement doesn't apply to NVadsA10_v5 or NVads_V710_v5 series virtual machines. 
 
 ## What action do I need to take before the retirement date? 
 

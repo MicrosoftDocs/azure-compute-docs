@@ -14,7 +14,7 @@ ms.reviewer: mattmcinnes
 # NV sizes series
 
 > [!IMPORTANT]
-> The NV-series is retired as of September 6th, 2023, and is no longer available. Please refer to the [NV-series retirement page](/azure/virtual-machines/sizes/retirement/nv-series-retirement) for more information. 
+> The NV-series is retired as of September 6th, 2023, and is no longer available. Please refer to the [NV-series retirement page](/azure/virtual-machines/sizes/lifecycle/retirement/nv-series-retirement) for more information. 
 
 [!INCLUDE [nv-summary](./includes/nv-series-summary.md)]
 
