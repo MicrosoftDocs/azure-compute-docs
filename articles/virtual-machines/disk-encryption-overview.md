@@ -26,7 +26,7 @@ Several encryption types are available for your managed disks, including Azure D
 
   [!INCLUDE [Azure Disk Encryption retirement notice](~/reusable-content/ce-skilling/azure/includes/security/azure-disk-encryption-retirement.md)]
 
-Encryption is part of a layered approach to security. Use it with other recommendations to secure virtual machines and their disks. For full details, see [Compute security recommendations](/azure/defender-for-cloud/recommendations-reference-compute) and [Restrict import/export access to managed disks](disks-enable-private-links-for-import-export-portal.yml).
+Encryption is part of a layered approach to security. Use it with other recommendations to secure virtual machines and their disks. For full details, see [Compute security recommendations](/azure/defender-for-cloud/recommendations-reference-compute) and [Restrict import/export access to managed disks](/azure/virtual-machines/disks-enable-private-links-for-import-export-portal).
 
 ## Comparison
 

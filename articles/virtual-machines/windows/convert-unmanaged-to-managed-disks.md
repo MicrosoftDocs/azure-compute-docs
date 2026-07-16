@@ -24,7 +24,7 @@ If you have existing Windows virtual machines (VMs) that use unmanaged disks, yo
 
 * Review [Plan for the migration to managed disks](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks).
 
-* Review [the FAQ about migration to managed disks](../faq-for-disks.yml).
+* Review [the FAQ about migration to managed disks](/azure/virtual-machines/faq-for-disks).
 
 * Ensure the VM is in a healthy sate before converting.
 
