@@ -76,10 +76,10 @@ NVv3-series and NVv4-series have announced retirements planned for September 30,
 
 | Series name        | Retirement Status |Retirement Announcement      | Planned Retirement Date | Migration Guide |
 |--------------------|-------------------|-----------------------------|-------------------------|-----------------|
-| NCv3-NC24rs Series | **Retired**       | -                           | 30/9/25                 | [NCv3-NC24rs-series Retirement](../../ncv3-nc24rs-retirement.md) |
-| NCv3-Series        | **Retired**       | -                           | 30/9/25                 | [NCv3-series Retirement](../../ncv3-retirement.md)     |
-| NVv3-series        | **Announced**     | [04/15/25](https://azure.microsoft.com/updates?id=516070) | 09/30/26 | [NVv3-series Retirement](/azure/virtual-machines/sizes/gpu-accelerated/nvv3-series-retirement) |
-| NVv4-series        | **Announced**     | [04/15/25](https://azure.microsoft.com/updates?id=516070) | 09/30/26 | [NVv4-series Retirement](/azure/virtual-machines/sizes/gpu-accelerated/nvv4-retirement) |
+| NCv3-NC24rs Series | **Retired**       | -                           | 09/30/25                 | [NCv3-NC24rs-series Retirement](./retirement/ncv3-nc24rs-retirement.md) |
+| NCv3-Series        | **Retired**       | -                           | 09/30/25                 | [NCv3-series Retirement](./retirement/ncv3-retirement.md)     |
+| NVv3-series        | **Announced**     | [04/15/25](https://azure.microsoft.com/updates?id=516070) | 09/30/26 | [NVv3-series Retirement](/azure/virtual-machines/sizes/lifecycle/retirement/nvv3-series-retirement) |
+| NVv4-series        | **Announced**     | [04/15/25](https://azure.microsoft.com/updates?id=516070) | 09/30/26 | [NVv4-series Retirement](/azure/virtual-machines/sizes/lifecycle/retirement/nvv4-retirement) |
 
 ## FPGA accelerated retired sizes
 

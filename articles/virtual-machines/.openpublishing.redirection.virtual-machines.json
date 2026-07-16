@@ -1,6 +1,31 @@
 {
     "redirections": [
         {
+            "source_path_from_root": "/articles/virtual-machines/ncv3-nc24rs-retirement.md",
+            "redirect_url": "/azure/virtual-machines/sizes/lifecycle/retirement/ncv3-nc24rs-retirement",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/ncv3-retirement.md",
+            "redirect_url": "/azure/virtual-machines/sizes/lifecycle/retirement/ncv3-retirement",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/sizes/gpu-accelerated/nvv3-series-retirement.md",
+            "redirect_url": "/azure/virtual-machines/sizes/lifecycle/retirement/nvv3-series-retirement",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/sizes/gpu-accelerated/nvv4-retirement.md",
+            "redirect_url": "/azure/virtual-machines/sizes/lifecycle/retirement/nvv4-retirement",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/ev3-esv3-series.md",
+            "redirect_url": "/azure/virtual-machines/sizes/memory-optimized/ev3-esv3-series",
+            "redirect_document_id": true
+        },
+        {
             "source_path_from_root": "/articles/virtual-machines/extensions/network-watcher-update.md",
             "redirect_url": "/azure/network-watcher/network-watcher-agent-update",
             "redirect_document_id": false

@@ -22,14 +22,14 @@ Data disk storage is billed separately from virtual machines. To use premium sto
 
 Ev3-series VM’s feature Intel® Hyper-Threading Technology.
 
-[ACU](acu.md): 160 - 190<br>
-[Premium Storage](premium-storage-performance.md): Not Supported<br>
-[Premium Storage caching](premium-storage-performance.md): Not Supported<br>
-[Live Migration](maintenance-and-updates.md): Supported<br>
-[Memory Preserving Updates](maintenance-and-updates.md): Supported<br>
-[VM Generation Support](generation-2.md): Generation 1<br>
+[ACU](/azure/virtual-machines/sizes/resize-vm): 160 - 190<br>
+[Premium Storage](../../premium-storage-performance.md): Not Supported<br>
+[Premium Storage caching](../../premium-storage-performance.md): Not Supported<br>
+[Live Migration](../../maintenance-and-updates.md): Supported<br>
+[Memory Preserving Updates](../../maintenance-and-updates.md): Supported<br>
+[VM Generation Support](../../generation-2.md): Generation 1<br>
 [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported<br>
-[Ephemeral OS Disks](ephemeral-os-disks.md): Not Supported <br>
+[Ephemeral OS Disks](../../ephemeral-os-disks.md): Not Supported <br>
 [Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Supported <br>
 <br>
 
@@ -54,14 +54,14 @@ Esv3-series instances run on the 3rd Generation Intel® Xeon® Platinum 8370C (I
 
 Esv3-series VM’s feature Intel® Hyper-Threading Technology.
 
-[ACU](acu.md): 160-190<br>
-[Premium Storage](premium-storage-performance.md): Supported<br>
-[Premium Storage caching](premium-storage-performance.md): Supported<br>
-[Live Migration](maintenance-and-updates.md): Supported<br>
-[Memory Preserving Updates](maintenance-and-updates.md): Supported<br>
-[VM Generation Support](generation-2.md): Generation 1 and 2<br>
+[ACU](/azure/virtual-machines/sizes/resize-vm): 160-190<br>
+[Premium Storage](../../premium-storage-performance.md): Supported<br>
+[Premium Storage caching](../../premium-storage-performance.md): Supported<br>
+[Live Migration](../../maintenance-and-updates.md): Supported<br>
+[Memory Preserving Updates](../../maintenance-and-updates.md): Supported<br>
+[VM Generation Support](../../generation-2.md): Generation 1 and 2<br>
 [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported<br>
-[Ephemeral OS Disks](ephemeral-os-disks.md): Supported <br>
+[Ephemeral OS Disks](../../ephemeral-os-disks.md): Supported <br>
 [Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Supported <br>
 <br>
 
@@ -77,27 +77,27 @@ Esv3-series VM’s feature Intel® Hyper-Threading Technology.
 | Standard_E64s_v3 <sup>1</sup>  | 64 | 432 | 864 | 32 | 128000/1024 (1600) | 80000/1200 | 80000/2000 | 8/30000 |
 | Standard_E64is_v3 <sup>2</sup> | 64 | 432 | 864 | 32 | 128000/1024 (1600) | 80000/1200 | 80000/2000 | 8/30000 |
 
-<sup>1</sup> [Constrained core sizes available](./constrained-vcpu.md).<br>
+<sup>1</sup> [Constrained core sizes available](../../constrained-vcpu.md).<br>
 <sup>2</sup> Instance is isolated to hardware dedicated to a single customer.<br>
-<sup>3</sup> Esv3-series VMs can [burst](./disk-bursting.md) their disk performance and get up to their bursting max for up to 30 minutes at a time.<br>
+<sup>3</sup> Esv3-series VMs can [burst](../../disk-bursting.md) their disk performance and get up to their bursting max for up to 30 minutes at a time.<br>
 <sup>4</sup> Accelerated networking can only be applied to a single NIC. 
 
 
-[!INCLUDE [virtual-machines-common-sizes-table-defs](./includes/virtual-machines-common-sizes-table-defs.md)]
+[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
 ## Other sizes and information
 
-- [General purpose](sizes-general.md)
-- [Memory optimized](sizes-memory.md)
-- [Storage optimized](sizes-storage.md)
-- [GPU optimized](sizes-gpu.md)
-- [High performance compute](sizes-hpc.md)
-- [Previous generations](sizes-previous-gen.md)
+- [General purpose](/azure/virtual-machines/sizes/overview#general-purpose)
+- [Memory optimized](/azure/virtual-machines/sizes/overview#memory-optimized)
+- [Storage optimized](/azure/virtual-machines/sizes/overview#storage-optimized)
+- [GPU optimized](/azure/virtual-machines/sizes/overview#gpu-accelerated)
+- [High performance compute](/azure/virtual-machines/sizes/overview#high-performance-compute)
+- [Previous generations](/azure/virtual-machines/sizes/lifecycle/previous-gen-sizes-list)
 
 Pricing Calculator : [Pricing Calculator](https://azure.microsoft.com/pricing/calculator/)
 
-For more information on disk types, see [What disk types are available in Azure?](disks-types.md)
+For more information on disk types, see [What disk types are available in Azure?](../../disks-types.md)
 
 ## Next steps
 
-Learn more about how [Azure compute units (ACU)](acu.md) can help you compare compute performance across Azure SKUs.
+Learn more about how [Azure compute units (ACU)](/azure/virtual-machines/sizes/resize-vm) can help you compare compute performance across Azure SKUs.
