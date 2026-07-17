@@ -268,7 +268,7 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
 ```
 
 ## Enable encryption on a newly added data disk
-You can add a new data disk by using [az vm disk attach](add-disk.md) or [through the Azure portal](attach-disk-portal.yml). Before you can encrypt, mount the newly attached data disk first. You must request encryption of the data drive because the drive will be unusable while encryption is in progress.
+You can add a new data disk by using [az vm disk attach](add-disk.md) or [through the Azure portal](/azure/virtual-machines/linux/attach-disk-portal). Before you can encrypt, mount the newly attached data disk first. You must request encryption of the data drive because the drive will be unusable while encryption is in progress.
 
 ### Enable encryption on a newly added disk with the Azure CLI
  If the VM was previously encrypted with "All," then the --volume-type parameter should remain All. All includes both OS and data disks. If the VM was previously encrypted with a volume type of "OS," then the --volume-type parameter should be changed to All so that both the OS and the new data disk will be included. If the VM was encrypted with only the volume type of "Data," then it can remain Data as demonstrated here. Adding and attaching a new data disk to a VM isn't sufficient preparation for encryption. The newly attached disk must also be formatted and properly mounted within the VM before you enable encryption. On Linux, the disk must be mounted in /etc/fstab with a [persistent block device name](/troubleshoot/azure/virtual-machines/troubleshoot-device-names-problems).
@@ -358,3 +358,4 @@ You can disable encryption by using Azure PowerShell, the Azure CLI, or a Resour
 
 - [Azure Disk Encryption for Linux overview](disk-encryption-overview-aad.md)
 - [Creating and configuring a key vault for Azure Disk Encryption with Microsoft Entra ID (previous release)](disk-encryption-key-vault-aad.md)
+

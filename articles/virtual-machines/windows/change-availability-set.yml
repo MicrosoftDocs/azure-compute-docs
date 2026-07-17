@@ -122,4 +122,5 @@ procedureSection:
 
 relatedContent:
   - text: Add storage to your VM by adding another data disk
-    url: attach-managed-disk-portal.yml
+    url: /azure/virtual-machines/windows/attach-managed-disk-portal
+
