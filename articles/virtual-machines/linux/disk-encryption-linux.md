@@ -333,7 +333,7 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
 
 ## Enable encryption on a newly added data disk
 
-You can add a new data disk using [az vm disk attach](add-disk.md), or [through the Azure portal](attach-disk-portal.yml). Before you can encrypt, you need to mount the newly attached data disk first. You must request encryption of the data drive because the drive isn't usable while encryption is in progress.
+You can add a new data disk using [az vm disk attach](add-disk.md), or [through the Azure portal](/azure/virtual-machines/linux/attach-disk-portal). Before you can encrypt, you need to mount the newly attached data disk first. You must request encryption of the data drive because the drive isn't usable while encryption is in progress.
 
 # [Using Azure CLI](#tab/adedatacli)
 
@@ -458,3 +458,4 @@ Use Azure PowerShell or the Azure CLI to remove the encryption extension.
 - [Azure Disk Encryption overview](disk-encryption-overview.md)
 - [Azure Disk Encryption sample scripts](disk-encryption-sample-scripts.md)
 - [Azure Disk Encryption troubleshooting](disk-encryption-troubleshooting.md)
+
