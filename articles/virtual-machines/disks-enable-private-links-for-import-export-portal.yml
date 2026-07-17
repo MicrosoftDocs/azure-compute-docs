@@ -109,8 +109,9 @@ procedureSection:
 
 relatedContent:
   - text: FAQ for private links and managed disks
-    url: ./faq-for-disks.yml#private-links-for-managed-disks
+    url: /azure/virtual-machines/faq-for-disks#private-links-for-managed-disks
   - text: Export/Copy managed snapshots as VHD to a storage account in different region with PowerShell
     url: /previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-copy-snapshot-to-storage-account 
   - text: Upload a VHD to Azure or copy a managed disk to another region - [Azure CLI]
     url: linux/disks-upload-vhd-to-managed-disk-cli.md
+

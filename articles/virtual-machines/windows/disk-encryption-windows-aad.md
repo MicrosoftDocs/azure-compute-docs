@@ -198,7 +198,7 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
 ```
 
 ## Enable encryption on a newly added data disk
-You can [add a new disk to a Windows VM by using PowerShell](attach-disk-ps.md), or [through the Azure portal](attach-managed-disk-portal.yml).
+You can [add a new disk to a Windows VM by using PowerShell](attach-disk-ps.md), or [through the Azure portal](/azure/virtual-machines/windows/attach-managed-disk-portal).
 
 ### Enable encryption on a newly added disk by using Azure PowerShell
 When you use PowerShell to encrypt a new disk for Windows VMs, specify a new sequence version. The sequence version must be unique. The following script generates a GUID for the sequence version. In some cases, a newly added data disk might be encrypted automatically by the Azure Disk Encryption extension. Automatic encryption usually occurs when the VM reboots after the new disk comes online. This behavior typically occurs because "All" was specified for the volume type when disk encryption previously ran on the VM. If automatic encryption occurs on a newly added data disk, we recommend running the Set-AzVmDiskEncryptionExtension cmdlet again with a new sequence version. If your new data disk is automatically encrypted and you don’t want it encrypted, decrypt all drives first and then reencrypt with a new sequence version specifying OS for the volume type.
@@ -343,3 +343,4 @@ You can disable encryption by using Azure PowerShell, the Azure CLI, or by using
 
 > [!div class="nextstepaction"]
 > [Azure Disk Encryption overview](disk-encryption-overview.md)
+
