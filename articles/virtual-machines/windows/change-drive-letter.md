@@ -57,5 +57,5 @@ First, you'll need to attach the data disk to the virtual machine. To do this us
 9. Restart the virtual machine.
 
 ## Next steps
-* You can increase the storage available to your virtual machine by [attaching an additional data disk](/azure/virtual-machines/windows/attach-managed-disk-portal).
+* To increase the storage available to your virtual machine, [attach an additional data disk](/azure/virtual-machines/windows/attach-managed-disk-portal).
 
