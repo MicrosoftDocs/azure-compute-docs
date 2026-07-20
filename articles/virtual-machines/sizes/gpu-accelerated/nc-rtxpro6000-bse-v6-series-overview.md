@@ -77,7 +77,7 @@ Additional information on VM specifications and other GA VM sizes can be found [
 
 - **Is the NCv6-series supported on Azure Kubernetes Service (AKS) and Azure Batch?** <br> 
 
-    NCv6 is currently not supported on AKS and Azure Batch. NCv6 is planned to be supported on AKS and Azure Batch in early August 2026. 
+    NCv6 is currently not supported on AKS and Azure Batch. NCv6 is planned to be supported on AKS in early September 2026 and Azure Batch in early August 2026. 
 
 
 - **When is NCv6-series coming to additional regions?** <br>  
