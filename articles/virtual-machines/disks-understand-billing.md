@@ -168,7 +168,7 @@ The initial billing of Standard HDDs is determined by the performance tier. The 
 ### Standard HDD Transactions
 There are a few different ways that Standard HDDs count transactions, depending on the disk size. For Standard HDDs sizes S4 and S6, each I/O operation less than 16 KiB of throughput is considered a single billable transaction. I/O operations larger than 16 KiB of throughput are considered multiple billable transactions of size 16 KiB for billing purposes. Cost is incurred for every 10,000 billable transactions but, there's an hourly limit on the number of billable transactions that can incur a billable cost. If your individual disk's billable transactions reach that hourly limit, any additional billable transactions during that hour don't incur a cost.  
 
-For the rest of the Standard HDD sizes (S10, S20, S30, S40, S50, S60, S70, S80) and snapshots, each I/O operation is considered a single billable transaction for billing purposes, and incurs a billable cost for every 10,000 billable transactions. There's no hourly limit on the number of billable transactions that can incur a cost for these Standard HDD sizes.
+For the rest of the Standard HDD sizes (S10, S20, S30, S40, S50, S60, S70, S80) and snapshots, each I/O operation counts as one billable transaction for billing purposes, and incurs a billable cost for every 10,000 billable transactions. There's no hourly limit on the number of billable transactions that can incur a cost for these Standard HDD sizes.
 
 ### Standard HDD billing example 
 In this example, we provision a 512 GiB Standard HDD with LRS redundancy. 
