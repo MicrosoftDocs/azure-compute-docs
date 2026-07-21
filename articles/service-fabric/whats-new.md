@@ -4,7 +4,7 @@ description: Learn about what's new for Service Fabric.
 author: tomvcassidy
 ms.service: azure-service-fabric
 ms.topic: whats-new
-ms.date: 06/18/2026
+ms.date: 07/21/2026
 ms.author: tomcassidy
 # Customer intent: "As a system administrator, I want to stay informed about the latest updates and features for Service Fabric, so that I can ensure my applications utilize the most current and efficient functionalities for improved performance and reliability."
 ---
@@ -23,25 +23,28 @@ This article provides information about:
 
 ## Announcements
 
+### July 2026
+* Service Fabric 11.6 released. For more information, see the [release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_116.md).
+
 ### May 2026
-* Service Fabric 11 CU4 released. For more information, see the [release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_115.md).
+* Service Fabric 11.5 released. For more information, see the [release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_115.md).
 
 ### March 2026
-* Service Fabric 11 CU4 released. For more information, see the [release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_114.md).
+* Service Fabric 11.4 released. For more information, see the [release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_114.md).
 
 ### November 2025
-* Service Fabric 11 CU3 released. For more information, see the [release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_113.md).
+* Service Fabric 11.3 released. For more information, see the [release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_113.md).
 
 ### September 2025
-* Service Fabric 11 CU2 released. For more information, see the [release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_112.md).
-* Service Fabric 10.1 CU8 released.
+* Service Fabric 11.2 released. For more information, see the [release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_112.md).
+* Service Fabric 10.1 CU9 released.
 
 ### July 2025
-* Service Fabric 11 CU1 released. For more information, see the [release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_111.md).
+* Service Fabric 11.1 released. For more information, see the [release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_111.md).
 * Service Fabric 10.1 CU8 released. For more information, see the [release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_101CU8.md).
 
 ### June 2025
-* Service Fabric 11 RTO released. For more information, see the [release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_110.md).
+* Service Fabric 11 released. For more information, see the [release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_110.md).
 * Service Fabric 10.1 CU7 released. For more information, see the [release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_101CU7.md).
 * Service Fabric 10.0 CU8 released. For more information, see the [release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_100CU8.md).
 * Service Fabric 9.1 CU14 released. For more information, see the [release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_91CU14.md).
