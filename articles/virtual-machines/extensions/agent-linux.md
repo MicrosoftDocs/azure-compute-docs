@@ -81,7 +81,7 @@ Testing confirms that the following systems work with the Azure Linux VM Agent.
 | AlmaLinux Community | AlmaLinux | 8.x, 9.x, 10.x | 8.x, 9.x, 10.x |
 | Credativ | Debian | 10.x | 11.x |
 | Kinvolk | Flatcar Linux | 3374.2.x | 3374.2.x |
-| Microsoft | Azure Linux | 2.x, 3.x | 2.x |
+| Microsoft | AzureLinux | 2.x, 3.x | 2.x |
 | openSUSE Project | openSUSE | 12.3 | *Not supported* |
 | Oracle | Oracle Linux | 6.4, 7.x, 8.x | *Not supported* |
 | Red Hat | Red Hat Enterprise Linux(RHEL) | 6.7, 7.x,  8.x, 9.x, 10.x | 8.6, 9.0, 10.x |
