@@ -7,7 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: linux-related-content
 services: service-fabric
-ms.date: 07/02/2026
+ms.date: 07/21/2026
 ai-usage: ai-assisted
 # Customer intent: "As a system administrator, I want to understand the supported versions of Service Fabric and their upgrade paths, so that I can ensure the cluster is running a version that receives updates and maintains compatibility with my applications."
 ---
@@ -30,6 +30,8 @@ For currently supported versions, all releases are listed. For currently unsuppo
 
 | Service Fabric runtime | Can upgrade directly from | Can downgrade to <sup>1</sup> | Compatible SDK or NuGet package version <sup>2</sup> | Supported .NET runtimes <sup>3</sup> | OS Version | End of support | Link to release notes |
 | - | - | - | - | - | - | - | - |
+| 11.6<br>11.6.235.1  | 10.1 CU8<br>10.1.2941.9590 | 10.1 | Version 8.0 or earlier | .NET 10, .NET 8, .NET 7, .NET 6 <br> .NET Framework >= 4.6.2 | [See supported OS version](#supported-windows-versions-and-support-end-date) | Current version | [Release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_116.md) |
+| 11.5<br>11.5.122.1  | 10.1 CU8<br>10.1.2941.9590 | 10.1 | Version 8.0 or earlier | .NET 10, .NET 8, .NET 7, .NET 6 <br> .NET Framework >= 4.6.2 | [See supported OS version](#supported-windows-versions-and-support-end-date) | Current version | [Release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_115.md) |
 | 11.5<br>11.5.116.1  | 10.1 CU8<br>10.1.2941.9590 | 10.1 | Version 8.0 or earlier | .NET 10, .NET 8, .NET 7, .NET 6 <br> .NET Framework >= 4.6.2 | [See supported OS version](#supported-windows-versions-and-support-end-date) | Current version | [Release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_115.md) |
 | 11.5<br>11.5.111.1  | 10.1 CU8<br>10.1.2941.9590 | 10.1 | Version 8.0 or earlier | .NET 10, .NET 8, .NET 7, .NET 6 <br> .NET Framework >= 4.6.2 | [See supported OS version](#supported-windows-versions-and-support-end-date) | Current version | [Release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_115.md) |
 | 11.4<br>11.4.268.1  | 10.1 CU8<br>10.1.2941.9590 | 10.1 | Version 8.0 or earlier | .NET 8, .NET 7, .NET 6 <br> .NET Framework >= 4.6.2 | [See supported OS version](#supported-windows-versions-and-support-end-date) | Current version | [Release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_114_Hotfix.md) |
@@ -122,6 +124,7 @@ For currently supported versions, all releases are listed. For currently unsuppo
 
 | Service Fabric runtime | Can upgrade directly from | Can downgrade to <sup>1</sup> | Compatible SDK or NuGet package version <sup>2</sup> | Supported .NET runtimes <sup>3</sup> | OS version | End of support | Link to release notes |
 | - | - | - | - | - | - | - | - |
+| 11.6<br>11.6.235.4  | 10.1 CU8<br>10.1.2935.1 | 10.1 | Version 8.0 or earlier | .NET 10, .NET 8, .NET 7, .NET 6 <br> .NET Framework >= 4.6.2 | [See supported OS version](#supported-windows-versions-and-support-end-date) | Current version | [Release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_116.md) |
 | 11.4<br>11.4.268.4  | 10.1 CU8<br>10.1.2935.1 | 10.1 | Version 8.0 or earlier | .NET 8, .NET 7, .NET 6 <br> .NET Framework >= 4.6.2 | [See supported OS version](#supported-windows-versions-and-support-end-date) | Current version | [Release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_114_1-Hotfix.md) |
 | 11.4<br>11.4.205.4  | 10.1 CU8<br>10.1.2935.1 | 10.1 | Version 8.0 or earlier | .NET 8, .NET 7, .NET 6 <br> .NET Framework >= 4.6.2 | [See supported OS version](#supported-windows-versions-and-support-end-date) | Current version | [Release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_114.md) |
 | 11.3<br>11.3.365.4  | 10.1 CU8<br>10.1.2935.1 | 10.1 | Version 8.0 or earlier | .NET 8, .NET 7, .NET 6 <br> .NET Framework >= 4.6.2 | [See supported OS version](#supported-windows-versions-and-support-end-date) | Current version | [Release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_113.md) |
@@ -191,8 +194,10 @@ The following table lists the version names of Service Fabric and their correspo
 
 | Version name | Windows version number | Linux version number |
 | - | - | - |
-| 11.5 | 11.5.116.1 | N/A |
-|  | 11.4.111.1 | N/A |
+| 11.6 | 11.6.235.1 | 11.6.235.4 |
+| 11.5 | 11.5.122.1 | N/A |
+|  | 11.5.116.1 | N/A |
+|  | 11.5.111.1 | N/A |
 | 11.4 | 11.4.268.1 | 11.4.268.4 |
 |  | 11.4.205.1 | 11.4.205.4 |
 | 11.3 | 11.3.365.1 | 11.3.365.4 |
