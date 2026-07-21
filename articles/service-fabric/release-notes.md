@@ -1,7 +1,7 @@
 ---
 title: Azure Service Fabric releases
 description: Release notes for Azure Service Fabric. Includes information on the latest features and improvements in Service Fabric.
-ms.date: 03/20/2026
+ms.date: 07/21/2026
 ms.topic: reference
 ms.author: tomcassidy
 author: tomvcassidy
@@ -30,11 +30,13 @@ We're excited to announce that the release of the Service Fabric 11 runtime star
 ### Service Fabric 11 releases
 | Release date | Release | More info |
 |---|---|---|
-| June 1, 2025 | Azure Service Fabric 11.0 Release | [Release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_110.md) |
+| June 1, 2025 | Azure Service Fabric 11 Release | [Release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_110.md) |
 | July 1, 2025 | Azure Service Fabric 11.1 Release | [Release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_111.md) |
 | September 15, 2025 | Azure Service Fabric 11.2 Release | [Release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_112.md) |
 | November 15, 2025 | Azure Service Fabric 11.3 Release | [Release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_113.md) |
 | March 1, 2026 | Azure Service Fabric 11.4 Release | [Release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_114.md) |
+| May 1, 2026 | Azure Service Fabric 11.5 Release | [Release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_115.md) |
+| July 15, 2026 | Azure Service Fabric 11.6 Release | [Release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_116.md) |
 
 ## Service Fabric 10.1
 
