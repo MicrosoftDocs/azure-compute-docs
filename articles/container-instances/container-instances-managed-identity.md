@@ -402,6 +402,93 @@ Invoke-RestMethod -Uri "$identityEndpoint" `
 
 The `az login` module and other client libraries that depend on the metadata server (169.254.169.254) don't work in a Windows container. Windows containers in a virtual network can't connect to the endpoint. As a result, a managed identity token can't be generated in a Windows virtual network container.
 
+> [!TIP]
+> For a *user-assigned* identity, include the identity's `principalId` in the token request, as shown in the preceding script. For a *system-assigned* identity, omit `principalId`.
+
+### Example: read an Azure Storage blob from a Windows container
+
+This end-to-end example deploys a Windows container group with a user-assigned identity, then uses that identity from inside the container to download a blob.
+
+First, grant the user-assigned identity access to the storage account (one time). The **Storage Blob Data Reader** role is sufficient to download a blob:
+
+```azurecli-interactive
+PRINCIPAL_ID=$(az identity show --resource-group myResourceGroup --name myACIId --query principalId --output tsv)
+STORAGE_ID=$(az storage account show --name mystorageaccount --query id --output tsv)
+
+az role assignment create \
+  --assignee-object-id $PRINCIPAL_ID \
+  --assignee-principal-type ServicePrincipal \
+  --role "Storage Blob Data Reader" \
+  --scope $STORAGE_ID
+```
+
+Next, deploy the Windows container group by using a YAML file (`deploy-aci.yaml`). The long-running command keeps the group alive so that you can `az container exec` into it:
+
+```yaml
+apiVersion: '2023-05-01'
+location: eastus
+name: mywindowscg
+type: Microsoft.ContainerInstance/containerGroups
+identity:
+  type: UserAssigned
+  userAssignedIdentities:
+    '/subscriptions/<subscriptionId>/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myACIId': {}
+properties:
+  osType: Windows
+  restartPolicy: Always
+  containers:
+    - name: mycontainer
+      properties:
+        image: mcr.microsoft.com/powershell:lts-nanoserver-ltsc2022
+        command:
+          - pwsh
+          - -NoProfile
+          - -Command
+          - 'while ($true) { Start-Sleep -Seconds 3600 }'
+        resources:
+          requests:
+            cpu: 2
+            memoryInGB: 4
+```
+
+```azurecli-interactive
+az container create --resource-group myResourceGroup --file deploy-aci.yaml
+```
+
+After the group is running, open a PowerShell shell in the container:
+
+```azurecli-interactive
+az container exec \
+  --resource-group myResourceGroup \
+  --name mywindowscg \
+  --container-name mycontainer \
+  --exec-command "pwsh"
+```
+
+Inside the container shell, request a token scoped to storage and use it to download the blob. Because the container doesn't include the Azure CLI, pass the identity's `principalId` directly:
+
+```powershell
+$principalId = "<user-assigned-identity-principalId>"
+$storageAccount = "mystorageaccount"
+$container = "mycontainer"
+$blob = "hello.txt"
+
+$tokenResponse = Invoke-RestMethod -Uri $env:IDENTITY_ENDPOINT `
+    -Method Get `
+    -Headers @{secret = $env:IDENTITY_HEADER} `
+    -Body @{resource = "https://storage.azure.com/"; principalId = $principalId} `
+    -ContentType "application/x-www-form-urlencoded"
+
+$blobUrl = "https://$storageAccount.blob.core.windows.net/$container/$blob"
+Invoke-WebRequest -Uri $blobUrl `
+    -Headers @{ Authorization = "Bearer $($tokenResponse.access_token)"; "x-ms-version" = "2023-11-03" } `
+    -OutFile "C:\$blob"
+
+Get-Content "C:\$blob"
+```
+
+The container authenticates to storage by using only its managed identity. Adapt the `resource` value and target endpoint to call other Azure services.
+
 ## Related content
 
 * Learn more about [managed identities for Azure resources](/azure/active-directory/managed-identities-azure-resources/).
