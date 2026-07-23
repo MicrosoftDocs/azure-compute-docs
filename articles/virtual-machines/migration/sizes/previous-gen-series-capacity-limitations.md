@@ -1,6 +1,6 @@
 ---
-title: Legacy VM Size Series Capacity Limitations and Migration Guidance
-description: Learn about capacity limitations for legacy Azure VM size series beginning July 2026 and get migration guidance to newer-generation VM families.
+title: Previous-generation VM size series capacity limitations and migration guidance
+description: Learn about capacity limitations for previous-generation Azure VM size series beginning July 2026 and get migration guidance to newer-generation VM families.
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
@@ -9,11 +9,11 @@ ms.date: 07/16/2026
 ms.author: mattmcinnes
 ---
 
-# Legacy VM size series capacity limitations and migration guidance
+# Previous-generation VM size series capacity limitations and migration guidance
 
 As Azure continues to invest in higher-performing, more secure, and modern compute infrastructure, it moves away from older-generation hardware. Azure infrastructure expansion focuses on deploying newer-generation hardware that supports the latest virtual machine (VM) offerings.
 
-As a result, certain legacy VM series are subject to capacity limitations starting in July 2026. Plan migrations to newer-generation VM families and series to ensure continued access to current platform capabilities, improved performance, enhanced security, and long-term capacity availability.
+As a result, certain previous-generation VM series are subject to capacity limitations starting in July 2026. Plan migrations to newer-generation VM families and series to ensure continued access to current platform capabilities, improved performance, enhanced security, and long-term capacity availability.
 
 ## Impacted VM series
 
@@ -78,6 +78,6 @@ For v1 and v2 VM series, Azure announced retirement for these VMs. Migrate to th
 
 Azure provides VM migration guidance to help you identify the most appropriate replacement VM family and series based on workload requirements, performance needs, and storage compatibility considerations. Review the [VM migration guidance](d-ds-dv2-dsv2-ls-series-migration-guide.md) before selecting a replacement VM.
 
-### Are there pricing differences between legacy and newer-generation VM families?
+### Are there pricing differences between previous-generation and newer-generation VM families?
 
 Pricing, performance, storage capabilities, and hardware characteristics might vary across VM generations. Validate workload requirements and review the documentation for the recommended target VM families and series before migration.

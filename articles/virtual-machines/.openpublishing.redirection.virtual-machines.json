@@ -6824,6 +6824,11 @@
             "source_path_from_root": "/articles/virtual-machines/sizes/memory-optimized/mdsv3-very-high-memory-series.md",
             "redirect_url": "/azure/virtual-machines/sizes/memory-optimized/mdsv3-vhm-series",
             "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/migration/sizes/legacy-series-capacity-limitations.md",
+            "redirect_url": "/azure/virtual-machines/migration/sizes/previous-gen-series-capacity-limitations",
+            "redirect_document_id": false
         }
     ]
 }
