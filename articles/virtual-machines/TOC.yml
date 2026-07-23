@@ -2508,8 +2508,8 @@
   - name: Change subscription for Marketplace VMs
     displayName: offer plan sku marketplace
     href: azure-cli-change-subscription-marketplace.md
-  - name: Legacy series capacity limitations and migration guidance
-    href: ./migration/sizes/legacy-series-capacity-limitations.md
+  - name: Previous-gen series capacity limitations and migration guidance
+    href: ./migration/sizes/previous-gen-series-capacity-limitations.md
   - name: Migrate to v6 and later VM series
     items:
       - name: Overview
