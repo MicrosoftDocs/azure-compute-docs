@@ -25,6 +25,8 @@ For technical specifications, see [GPU Windows VM sizes](../sizes-gpu.md?toc=/az
 > [!WARNING]
 > Installing NVIDIA drivers using methods other than those outlined in this guide may result in failure of the intended driver installation, and is unsupported by Microsoft and NVIDIA. To ensure proper functionality and support, please follow only the installation steps and use the driver versions specified in this article. 
 
+---
+
 ## CUDA Drivers
 
 CUDA drivers are distributed by NVIDIA for NCasT4_v3, NC_A100_v4, and NCads_H100_v5 VMs. 
@@ -36,6 +38,8 @@ For the latest CUDA drivers and supported OS, visit the [NVIDIA website](https:/
 ### CUDA Driver Installation
 
 For CUDA driver installation instructions, visit the [NVIDIA website](https://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/index.html#axzz4ZcwJvqYi).
+
+---
 
 ## GRID Drivers
 
@@ -68,4 +72,5 @@ After GRID driver installation is complete, restart the VM to ensure the proper 
 
 2. Run `nvidia-smi`. If the driver is installed, Nvidia SMI will list the **GPU-Util** as N/A until you run a GPU workload on the VM.
 
+---
 

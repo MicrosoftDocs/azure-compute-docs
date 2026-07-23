@@ -31,6 +31,7 @@ For technical specifications, see [GPU Linux VM sizes](../sizes-gpu.md?toc=/azur
 > [!WARNING]
 > Installing NVIDIA drivers by using methods other than those outlined in this article might result in failure of the intended driver installation. Microsoft and NVIDIA don't support this installation. To ensure proper functionality and support, follow only the installation steps and use the driver versions specified in this article.
 
+---
 ## CUDA drivers
 
 NVIDIA distributes CUDA drivers for NCasT4_v3, NC_A100_v4, and NCads_H100_v5 VMs. 
@@ -46,6 +47,8 @@ For CUDA driver installation, visit the [NVIDIA website](https://docs.nvidia.com
 ### Verify CUDA driver installation
 
 Run `nvidia-smi`. If the driver is installed, NVIDIA SMI lists the **GPU-Util** as N/A until you run a GPU workload on the VM.
+
+---
 
 ## GRID drivers
 
@@ -135,12 +138,15 @@ For more information on the specific vGPU and driver branch versions, visit the 
 
 Run `nvidia-smi`. If the driver is installed, NVIDIA SMI lists the **GPU-Util** as N/A until you run a GPU workload on the VM.
 
+---
 
 ## Troubleshooting
 
 * You can set persistence mode using `nvidia-smi` so the output of the command is faster when you need to query cards. To set persistence mode, run `nvidia-smi -pm 1`. If the VM is restarted, the mode setting goes away. You can always script the mode setting to run upon startup.
 
 * If jobs are interrupted by ECC errors on the GPU (either correctable or uncorrectable), first check to see if the GPU meets any of Nvidia's [RMA criteria for ECC errors](https://docs.nvidia.com/deploy/dynamic-page-retirement/index.html#faq-pre). If the GPU is eligible for RMA, contact support about getting it serviced; otherwise, reboot your VM to reattach the GPU as described [here](https://docs.nvidia.com/deploy/dynamic-page-retirement/index.html#bl_reset_reboot). Less invasive methods, such as `nvidia-smi -r`, don't work with the virtualization solution deployed in Azure.
+
+---
 
 ## Next steps
 
