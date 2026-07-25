@@ -382,6 +382,22 @@ identity:
 
 Managed identity on Windows container groups works differently than Linux container groups. For Windows containers, metadata server (`169.254.169.254`) isn't available for getting a Microsoft Entra token. Instead, send a token request to `IDENTITY_ENDPOINT` and include `IDENTITY_HEADER` as the secret header. Azure injects `IDENTITY_ENDPOINT` and `IDENTITY_HEADER` as environment variables in the container.
 
+### Create a Windows container group with managed identity
+
+Run the following [az container create](/cli/azure/container#az-container-create) command to create a Windows container group with a user-assigned managed identity. Replace the resource group, name, and identity resource ID with your own values.
+
+```azurecli-interactive
+az container create \
+  --resource-group myResourceGroup \
+  --name mywindowscontainer \
+  --image mcr.microsoft.com/windows/nanoserver:1809 \
+  --assign-identity $RESOURCE_ID \
+  --os-type windows \
+  --command-line "ping -t localhost"
+```
+
+### Retrieve a token in a Windows container
+
 If you're using a user-assigned managed identity, include `principalId` in the request. If you're using a system-assigned managed identity, omit `principalId`.
 
 ```console
