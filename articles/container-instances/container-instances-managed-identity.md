@@ -7,7 +7,8 @@ author: tomvcassidy
 ms.service: azure-container-instances
 ms.custom: devx-track-azurecli
 services: container-instances
-ms.date: 11/17/2025
+ms.date: 07/21/2026
+ai-usage: ai-assisted
 # Customer intent: "As a cloud developer, I want to enable managed identities in Azure Container Instances so that I can authenticate to other Azure services without handling credentials in my code."
 ---
 
@@ -379,28 +380,53 @@ identity:
 
 ## Managed identity on Windows containers
 
-Managed identity on Windows container groups works differently than Linux container groups. For Windows containers, metadata server (169.254.169.254) isn't available for getting the Microsoft Entra ID token. Customers can follow a different pattern to get the access token in Windows containers. The pattern involves sending a token request to `IDENTITY_ENDPOINT` along with other information, such as the principal ID and the secret. The `IDENTITY_ENDPOINT` and `IDENTITY_HEADER` variables are injected as environmental variables in your container.
+Managed identity on Windows container groups works differently than Linux container groups. For Windows containers, metadata server (`169.254.169.254`) isn't available for getting a Microsoft Entra token. Instead, send a token request to `IDENTITY_ENDPOINT` and include `IDENTITY_HEADER` as the secret header. Azure injects `IDENTITY_ENDPOINT` and `IDENTITY_HEADER` as environment variables in the container.
 
-```console
-curl -G -v %IDENTITY_ENDPOINT% --data-urlencode resource=https://vault.azure.net --data-urlencode principalId=<principal id> -H secret:%IDENTITY_HEADER%
+### Create a Windows container group with managed identity
+
+Run the following [az container create](/cli/azure/container#az-container-create) command to create a Windows container group with a user-assigned managed identity. Replace the resource group, name, and identity resource ID with your own values.
+
+```azurecli-interactive
+az container create \
+  --resource-group myResourceGroup \
+  --name mywindowscontainer \
+  --image mcr.microsoft.com/windows/nanoserver:1809 \
+  --assign-identity $RESOURCE_ID \
+  --os-type windows \
+  --command-line "ping -t localhost"
 ```
 
-A sample Azure PowerShell script:
+### Retrieve a token in a Windows container
+
+If you're using a user-assigned managed identity, include `principalId` in the request. If you're using a system-assigned managed identity, omit `principalId`.
+
+```console
+curl -G "%IDENTITY_ENDPOINT%" ^
+  --data-urlencode "resource=https://vault.azure.net" ^
+  --data-urlencode "principalId=<principal-id>" ^
+  -H "secret: %IDENTITY_HEADER%"
+```
+
+Example PowerShell request:
 
 ```powershell
-identityEndpoint = $env:IDENTITY_ENDPOINT
+$identityEndpoint = $env:IDENTITY_ENDPOINT
 $identityHeader = $env:IDENTITY_HEADER
 $resource = "https://vault.azure.net"
 $principalId = "aaaaaaaa-bbbb-cccc-1111-222222222222"
- 
-Invoke-RestMethod -Uri "$identityEndpoint" `
+
+$response = Invoke-RestMethod -Uri $identityEndpoint `
     -Method Get `
-    -Headers @{secret = $identityHeader} `
-    -Body @{resource = $resource; principalId = $principalId} `
+    -Headers @{ secret = $identityHeader } `
+    -Body @{ resource = $resource; principalId = $principalId } `
     -ContentType "application/x-www-form-urlencoded"
+
+$response.access_token
 ```
 
-The `az login` module and other client libraries that depend on the metadata server (169.254.169.254) don't work in a Windows container. Windows containers in a virtual network can't connect to the endpoint. As a result, a managed identity token can't be generated in a Windows virtual network container.
+The `az login` command and client libraries that depend on metadata server (`169.254.169.254`) don't work in a Windows container.
+
+Windows containers in a virtual network can't connect to the managed identity endpoint. As a result, you can't generate a managed identity token in that scenario.
 
 > [!TIP]
 > For a *user-assigned* identity, include the identity's `principalId` in the token request, as shown in the preceding script. For a *system-assigned* identity, omit `principalId`.
