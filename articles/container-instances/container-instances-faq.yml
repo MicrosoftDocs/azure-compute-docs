@@ -110,6 +110,14 @@ sections:
               If you're using a private container registry, follow the steps in [Upgrade containers to a new version of the Windows operating system](/virtualization/windowscontainers/deploy-containers/upgrade-windows-containers#create-new-container-instances-using-the-new-os-version). Make sure the container group's [image registry parameters](/azure/templates/microsoft.containerinstance/containergroups?tabs=bicep&pivots=deployment-language-bicep#imageregistrycredential) are updated if you've changed them.
           
 
+      - question: |
+          Why do I get a "container group is still transitioning" error?
+        answer: |
+          If you see the error "The container group '\<name\>' is still transitioning, please retry later," it's caused by one of two platform design limitations:
+
+          1. **Start operation issued too quickly after a container exits or a stop operation is issued.** The system sidecars need a few seconds to propagate the terminated state. Wait at least a few seconds before issuing a start operation after the container exits or after you issue a stop operation.
+          2. **Start operation issued after a container exits when the restart policy is set to `Never`.** When the restart policy is `Never`, the stopped state isn't propagated and a subsequent start operation fails. To resolve this issue, issue a stop operation before the start operation, or use a restart operation instead. A restart operation restarts the container process instead of starting an entirely new deployment.
+
   - name: Availability and quotas
     questions:
       - question: |
