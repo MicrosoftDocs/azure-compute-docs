@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
-ms.date: 11/17/2025
+ms.date: 07/25/2026
 ms.custom: mvc, devx-track-azurecli
 # Customer intent: "As a developer, I want to deploy a container application using the Azure CLI, so that I can run my application in Azure Container Instances and verify its functionality through the browser and logs."
 ---
@@ -35,6 +35,9 @@ In this section, you use the Azure CLI to deploy the image built in the [first t
 When you deploy an image that's hosted in a private Azure container registry like the one created in the [second tutorial](container-instances-tutorial-prepare-acr.md), you must supply credentials to access the registry. 
 
 A best practice for many scenarios is to create and configure a Microsoft Entra service principal with *pull* permissions to your registry. See [Authenticate with Azure Container Registry from Azure Container Instances](/azure/container-registry/container-registry-auth-aci) for sample scripts to create a service principal with the necessary permissions. Take note of the *service principal ID* and *service principal password*. You use these credentials to access the registry when you deploy the container.
+
+> [!NOTE]
+> Service principal authentication cannot be used when your Azure Container Registry has a [private endpoint](/azure/container-registry/container-registry-private-link) enabled. If your registry uses a private endpoint, use a [managed identity](using-azure-container-registry-mi.md) to authenticate image pulls instead.
 
 You also need the full name of the container registry sign-in server (replace `<acrName>` with the name of your registry):
 

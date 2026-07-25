@@ -24,6 +24,9 @@ ms.custom: mvc, devx-track-azurecli, devx-track-arm-template
 ## Limitations
 * Azure Container Instances doesn't support system-assigned managed identity-authenticated image pulls with ACR. You must use a user-assigned managed identity to authenticate image pulls from ACR, regardless of the container group operating system.
 
+> [!IMPORTANT]
+> Service principal authentication cannot be used to pull images from an Azure Container Registry that has a [private endpoint](/azure/container-registry/container-registry-private-link) enabled. If your registry is configured with a private endpoint, you must use a managed identity to authenticate image pulls. For instructions, see [Deploy to Azure Container Instances from Azure Container Registry using a managed identity](using-azure-container-registry-mi.md).
+
 ## Configure registry authentication
 
 In a production scenario where you provide access to "headless" services and applications, we recommend you configure registry access by using a [service principal](/azure/container-registry/container-registry-auth-service-principal). A service principal allows you to provide [Azure role-based access control (Azure RBAC)](/azure/container-registry/container-registry-roles) to your container images. For example, you can configure a service principal with pull-only access to a registry.
