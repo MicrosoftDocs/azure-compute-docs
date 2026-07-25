@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
-ms.date: 11/17/2025
+ms.date: 07/25/2026
 ms.custom: mvc, devx-track-azurecli, linux-related-content
 # Customer intent: As a cloud developer, I want to troubleshoot deployment and runtime issues with Azure Container Instances, so that I can efficiently manage and resolve problems affecting my containerized applications.
 ---
@@ -104,6 +104,9 @@ There are two broad categories for why a container group may restart without exp
 ### Container continually exits and restarts (no long-running process)
 
 Container groups default to a [restart policy](container-instances-restart-policy.md) of **Always**, so containers in the container group always restart after they run to completion. You may need to change this to **OnFailure** or **Never** if you intend to run task-based containers. If you specify **OnFailure** and still see continual restarts, there might be an issue with the application or script executed in your container.
+
+> [!NOTE]
+> The `Never` restart policy only prevents restarts when a container exits successfully with exit code 0. If a container exits with a nonzero exit code, the platform might still restart it. For more information, see [Restart behavior with nonzero exit codes](container-instances-restart-policy.md#restart-behavior-with-nonzero-exit-codes).
 
 When you run container groups without long-running processes, you may see repeated exits and restarts with images such as Ubuntu or Alpine. Connecting via [EXEC](container-instances-exec.md) won't work as the container has no process keeping it alive. To resolve this problem, include a start command like the following example with your container group deployment to keep the container running.
 
