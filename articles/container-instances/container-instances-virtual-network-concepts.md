@@ -45,6 +45,7 @@ Container groups deployed into an Azure virtual network enable scenarios like:
 * To deploy container groups to a subnet, the subnet can't contain other resource types. Remove all existing resources from an existing subnet before deploying container groups to it, or create a new subnet.
 * To deploy container groups to a subnet, the subnet and the container group must be on the same Azure subscription.
 * Due to the additional networking resources involved, deployments to a virtual network are typically slower than deploying a standard container instance.
+* Use a subnet of at least /24 (256 addresses) for container group deployments. Subnets smaller than /24 are known to cause "subnet full" deployment failures because Azure Container Instances can't release IP address mappings quickly enough for reuse.
 * Outbound connections to port 25 and 19390 aren't supported at this time. Port 19390 needs to be opened in your Firewall for connecting to ACI from Azure portal when container groups are deployed in virtual networks.
 * For inbound connections, the firewall should also allow all ip addresses within the virtual network.
 * If you're connecting your container group to an Azure Storage Account, you must add a [service endpoint](/azure/virtual-network/virtual-network-service-endpoints-overview) to that resource.

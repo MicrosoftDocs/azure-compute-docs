@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
-ms.date: 11/17/2025
+ms.date: 07/25/2026
 ms.custom: devx-track-azurecli, innovation-engine
 # Customer intent: As a cloud developer, I want to deploy container groups to Azure virtual networks using the CLI, so that I can ensure secure communication between my containers and other resources within the network.
 ---
@@ -71,8 +71,8 @@ Results:
 
 ## Deploy to new virtual network
 
-> [!NOTE]
-> If you are using subnet IP range /29 to have only 3 IP addresses. we recommend always to go one range above (never below). For example, use subnet IP range /28 so you can have at least 1 or more IP buffer per container group. By doing this, you can avoid containers in stuck, not able to start, restart or even not able to stop states.
+> [!IMPORTANT]
+> Use a subnet of at least /24 (256 addresses) for container group deployments. Subnets smaller than /24 (such as /28 or /29) are known to cause "subnet full" deployment failures because Azure Container Instances can't release IP address mappings quickly enough for reuse. Using a /24 or larger subnet avoids containers getting stuck in states where they can't start, restart, or stop.
 
 To deploy to a new virtual network and have Azure create the network resources for you automatically, specify the following when you execute [az container create][az-container-create]:
 
