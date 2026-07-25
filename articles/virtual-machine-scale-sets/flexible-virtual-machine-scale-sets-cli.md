@@ -5,7 +5,7 @@ author: fitzgeraldsteele
 ms.author: fisteele
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
-ms.date: 05/19/2026
+ms.date: 07/25/2026
 ms.reviewer: wwilliams
 ms.custom: mimckitt, devx-track-azurecli, vmss-flex, innovation-engine, linux-related-content
 # Customer intent: "As a cloud engineer, I want to create a Virtual Machine Scale Set using Azure CLI, so that I can efficiently manage and scale a group of virtual machines based on demand while ensuring high availability."
@@ -188,6 +188,19 @@ In this step, you create an Application Gateway that you're going to integrate w
 
 ```bash
 az network application-gateway create   --name $MY_APPGW_NAME --location $REGION --resource-group $MY_RESOURCE_GROUP_NAME --vnet-name $MY_VNET_NAME --subnet $MY_APPGW_SN_NAME --capacity 2  --zones 1 2 3 --sku Standard_v2   --http-settings-cookie-based-affinity Disabled   --frontend-port 80 --http-settings-port 80   --http-settings-protocol Http --public-ip-address $MY_APPGW_PUBLIC_IP_NAME --priority 1001 -o JSON
+```
+
+> [!IMPORTANT]
+> Keep the web path on port 80 end-to-end in this tutorial. If you customize any Application Gateway listener or backend HTTP settings to use a different port (for example, 8080), the sample NGINX page deployed later in this tutorial won't load unless the backend service is also configured for that port.
+
+To verify that the Application Gateway backend HTTP settings are still configured for port 80, run:
+
+```bash
+az network application-gateway http-settings list \
+  --resource-group $MY_RESOURCE_GROUP_NAME \
+  --gateway-name $MY_APPGW_NAME \
+  --query "[].[name,port,protocol]" \
+  --output table
 ```
 
 <!-- expected_similarity=0.3 -->
@@ -504,9 +517,9 @@ Results:
 }
 ```
 
-### Install ngnix with Virtual Machine Scale Sets extensions 
+### Install NGINX with Virtual Machine Scale Sets extensions 
 
-The following command uses the Virtual Machine Scale Sets extension to run a [custom script](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/automate_nginx.sh) that installs ngnix and publishes a page that shows the hostname of the Virtual Machine that your HTTP requests hits. 
+The following command uses the Virtual Machine Scale Sets extension to run a [custom script](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/automate_nginx.sh) that installs NGINX and publishes a page that shows the hostname of the virtual machine your HTTP request hits.
 
 ```bash
 az vmss extension set --publisher Microsoft.Azure.Extensions --version 2.0  --name CustomScript --resource-group $MY_RESOURCE_GROUP_NAME --vmss-name $MY_VMSS_NAME --settings '{ "fileUris": ["https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/automate_nginx.sh"], "commandToExecute": "./automate_nginx.sh" }' -o JSON
@@ -837,6 +850,21 @@ The following command shows you the public IP of your Application Gateway. Paste
 ```bash
 az network public-ip show --resource-group $MY_RESOURCE_GROUP_NAME --name $MY_APPGW_PUBLIC_IP_NAME --query [ipAddress]  --output tsv
 ```
+
+If the page doesn't load, validate the following before continuing:
+
+1. The Application Gateway frontend listener and backend HTTP settings are both set to port 80.
+1. The VM scale set extension provisioning state is `Succeeded`:
+
+```bash
+az vmss extension list \
+  --resource-group $MY_RESOURCE_GROUP_NAME \
+  --vmss-name $MY_VMSS_NAME \
+  --query "[].[name,provisioningState]" \
+  --output table
+```
+
+1. Any NSG associated with the VM subnet allows HTTP traffic from the Application Gateway subnet.
 
 ## Clean up resources (optional)
 
