@@ -80,6 +80,9 @@ sections:
 
           For network-restricted or private registries (registries without a public IP), only Azure Container Registry (ACR) is supported. ACI can pull images from a private ACR endpoint using a managed identity and private endpoint configuration. Pulling images from non-ACR private registries (for example, a self-hosted Docker registry accessible only through a virtual network) isn't supported, even if virtual network connectivity is configured between ACI and the registry.
 
+          > [!IMPORTANT]
+          > Service principal authentication cannot be used to pull images from an ACR that has a private endpoint enabled. You must use a managed identity to authenticate image pulls from a private endpoint-enabled registry. For more information, see [Deploy to Azure Container Instances from Azure Container Registry using a managed identity](using-azure-container-registry-mi.md).
+
           For more information, see [Deploy in virtual network - Image registry access](container-instances-vnet.md).
 
       - question: |
