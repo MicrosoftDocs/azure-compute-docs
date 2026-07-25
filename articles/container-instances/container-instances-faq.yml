@@ -7,7 +7,7 @@ metadata:
   ms.service: azure-container-instances
   services: container-instances
   ms.topic: faq
-  ms.date: 11/17/2025
+  ms.date: 07/25/2026
 title: Frequently asked questions about Azure Container Instances
 summary: This article addresses frequently asked questions about Azure Container Instances.
 
@@ -76,7 +76,11 @@ sections:
       - question: |
           What types of container registries are compatible with ACI?
         answer: |
-          ACI supports image pulls from ACR and other non-Microsoft container registries such as DockerHub provided that the registry endpoint is publicly accessible over the internet. Support for network-restricted or private endpoints is primarily limited to Azure Container Registry (ACR). 
+          ACI supports image pulls from ACR and other non-Microsoft container registries such as DockerHub provided that the registry endpoint is publicly accessible over the internet.
+
+          For network-restricted or private registries (registries without a public IP), only Azure Container Registry (ACR) is supported. ACI can pull images from a private ACR endpoint using a managed identity and private endpoint configuration. Pulling images from non-ACR private registries (for example, a self-hosted Docker registry accessible only through a virtual network) isn't supported, even if virtual network connectivity is configured between ACI and the registry.
+
+          For more information, see [Deploy in virtual network - Image registry access](container-instances-vnet.md).
 
       - question: |
           How do I migrate my Windows Server 2016 container groups to Windows Server 2019 images?

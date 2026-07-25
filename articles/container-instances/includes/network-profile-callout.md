@@ -10,4 +10,4 @@ ms.custom: include file
 ---
 
 > [!IMPORTANT]
-> [Network profiles](../container-instances-virtual-network-concepts.md#network-profile) have been retired as of the `2021-07-01` API version. If you're using this or a more recent version, ignore any steps and actions related to network profiles.
+> [Network profiles](../container-instances-virtual-network-concepts.md#network-profiles) are retired as of the `2021-07-01` API version. If you're using this version or a more recent version, ignore any steps and actions related to network profiles.
