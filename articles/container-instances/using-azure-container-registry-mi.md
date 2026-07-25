@@ -24,7 +24,7 @@ When access to an Azure Container Registry (ACR) is [restricted using a private 
 **Azure CLI**: The command-line examples in this article use the [Azure CLI](/cli/azure/) and are formatted for the Bash shell. You can [install the Azure CLI](/cli/azure/install-azure-cli) locally, or use the [Azure Cloud Shell][cloud-shell-bash].
 
 ## Limitations
-* Windows containers don't support system-assigned managed identity-authenticated image pulls with ACR, only user-assigned.
+* Azure Container Instances doesn't support system-assigned managed identity-authenticated image pulls with ACR. You must use a user-assigned managed identity to authenticate image pulls from ACR, regardless of the container group operating system.
 * When using a private endpoint for ACR within a virtual network, the ACR private endpoint must be on a different subnet than the one delegated to Azure Container Instances. ACI-delegated subnets can contain only container groups. Placing the ACR private endpoint on the same delegated subnet causes a conflict and the deployment fails.
 
 > [!NOTE]

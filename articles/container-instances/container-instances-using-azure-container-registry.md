@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
-ms.date: 11/17/2025
+ms.date: 07/25/2026
 ms.custom: mvc, devx-track-azurecli, devx-track-arm-template
 # Customer intent: As a cloud developer, I want to deploy container images from a container registry using a service principal, so that I can ensure secure and manageable access control for automated deployments in Azure Container Instances.
 ---
@@ -22,7 +22,7 @@ ms.custom: mvc, devx-track-azurecli, devx-track-arm-template
 **Azure CLI**: The command-line examples in this article use the [Azure CLI](/cli/azure/) and are formatted for the Bash shell. You can [install the Azure CLI](/cli/azure/install-azure-cli) locally, or use the [Azure Cloud Shell][cloud-shell-bash].
 
 ## Limitations
-* Windows containers don't support system-assigned managed identity-authenticated image pulls with ACR, only user-assigned.
+* Azure Container Instances doesn't support system-assigned managed identity-authenticated image pulls with ACR. You must use a user-assigned managed identity to authenticate image pulls from ACR, regardless of the container group operating system.
 
 ## Configure registry authentication
 
