@@ -246,6 +246,33 @@ The Azure CLI confcom extension uses cached images on your local machine that ma
 
 This exit code occurs due to limitations with the Ubuntu Version 22.04 base image. The recommendation is to use a different base image to resolve this issue.
 
+## Container exit codes
+
+When a container in Azure Container Instances terminates, the platform reports an exit code that indicates why the process stopped. You can view exit codes by checking container events using the [az container show][az-container-show] command or in the Azure portal under **Containers** > **Events**.
+
+The following table describes common exit codes you might encounter:
+
+| Exit code | Description |
+| --- | --- |
+| 0 | The process completed successfully. No errors occurred. |
+| 1 | The process terminated due to a general application error. Check your application logs for more details. |
+| 137 | The process was forcibly terminated (SIGKILL). This condition typically occurs when the container exceeds its memory limit. Consider increasing the memory allocation for your container. |
+| 139 | The process encountered a segmentation fault (SIGSEGV). This error can be caused by base image limitations, such as Ubuntu 22.04. Try using a different base image. |
+| 7147 | The platform gracefully shut down the container by sending a termination signal. This code correlates to "Killing container (platform initiated)" messages in container events. |
+| 7148 | The platform forcibly terminated the container. This condition typically means the container didn't respond in a timely manner after receiving the initial termination signal. This code also correlates to "Killing container (platform initiated)" messages in container events. |
+
+### Platform-initiated terminations (exit codes 7147 and 7148)
+
+Exit codes 7147 and 7148 are platform exit codes that come from the underlying infrastructure. You might not always see these codes directly in the container details, but they match up with "Killing container (platform initiated)" messages that appear in container events. Common causes of platform-initiated terminations include:
+
+- **Infrastructure maintenance**: The platform relocated your container as part of routine maintenance or load balancing.
+- **Resource constraints**: The underlying host needed to reclaim resources.
+- **Platform updates**: The infrastructure was updated, requiring container restarts.
+
+These terminations are expected in a cloud environment. To increase the availability of your application, run multiple container groups behind an ingress component such as an [Application Gateway](/azure/application-gateway/overview) or [Traffic Manager](/azure/traffic-manager/traffic-manager-overview).
+
+For more information about platform-initiated terminations, see [Diagnose common code package errors by using Service Fabric](/azure/service-fabric/service-fabric-diagnostics-code-package-errors#how-can-i-tell-if-service-fabric-terminated-my-code-package).
+
 ## Next steps
 
 Learn how to [retrieve container logs and events](container-instances-get-logs.md) to help debug your containers.
