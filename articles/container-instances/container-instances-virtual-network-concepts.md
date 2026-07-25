@@ -55,7 +55,7 @@ Container groups deployed into an Azure virtual network enable scenarios like:
 
 ## Deploy Container Groups to a Virtual Network
 
-There are three Azure Virtual Network resources required for deploying container groups to a virtual network: the [virtual network](#virtual-network) itself, a [delegated subnet](#subnet-delegated) within the virtual network, and a [network profile](#network-profile).
+There are three Azure Virtual Network resources required for deploying container groups to a virtual network: the [virtual network](#virtual-network) itself, a [delegated subnet](#subnet-delegated) within the virtual network, and a [network profile](#network-profiles).
 
 ### Virtual network
 
