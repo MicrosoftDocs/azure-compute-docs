@@ -39,7 +39,7 @@ Azure Container Instances needs permission to send data to your Log Analytics wo
 >
 > For a more full-featured integration that supports private endpoints, consider using [Diagnostic Settings](#using-diagnostic-settings) instead.
 
-To obtain the Log Analytics workspace ID and primary key, use the Azure CLI:
+To get the Log Analytics workspace ID and primary key, use the Azure CLI:
 
 ```azurecli-interactive
 # Get the workspace ID
@@ -174,11 +174,11 @@ To learn about the Azure Monitor legacy schema for Log Analytics, see [Legacy Lo
 
 ## Using Diagnostic Settings
 
-Diagnostic Settings is the recommended integration for routing container group logs and events to Log Analytics. Compared to the legacy integration described in this article, Diagnostic Settings offers:
+Use Diagnostic Settings to route container group logs and events to Log Analytics. This feature offers several benefits over the legacy integration described in this article:
 
 - **Private endpoint support** — works with Log Analytics workspaces that use private endpoints.
-- **No workspace key required** — authentication is handled through Azure Resource Manager, so you don't need to manage or rotate workspace keys.
-- **Standard Azure Monitor tables** — logs are written to standard Azure Monitor tables rather than custom log tables.
+- **No workspace key required** — Azure Resource Manager handles authentication, so you don't need to manage or rotate workspace keys.
+- **Standard Azure Monitor tables** — logs go to standard Azure Monitor tables instead of custom log tables.
 
 To learn more, see [Azure Monitor Log Analytics tables](monitor-azure-container-instances-reference.md#azure-monitor-log-analytics-tables).
 
