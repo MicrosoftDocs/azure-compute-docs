@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
-ms.date: 11/17/2025
+ms.date: 07/25/2026
 ms.custom: mvc, devx-track-azurecli, devx-track-arm-template
 # Customer intent: "As a cloud engineer, I want to deploy container images from Azure Container Registry using managed identities, so that I can securely access resources within a virtual network without managing credentials."
 ---
@@ -25,6 +25,7 @@ When access to an Azure Container Registry (ACR) is [restricted using a private 
 
 ## Limitations
 * Windows containers don't support system-assigned managed identity-authenticated image pulls with ACR, only user-assigned.
+* When using a private endpoint for ACR within a virtual network, the ACR private endpoint must be on a different subnet than the one delegated to Azure Container Instances. ACI-delegated subnets can contain only container groups. Placing the ACR private endpoint on the same delegated subnet causes a conflict and the deployment fails.
 
 > [!NOTE]
 > Managed identity access to a private Azure Container Registry can be configured **only** via an ARM/Bicep template or the latest Azure CLI.
@@ -168,6 +169,9 @@ az container create --name my-containergroup --resource-group myResourceGroup --
 
 ## Deploy in a virtual network using the Azure CLI
 
+> [!IMPORTANT]
+> If your ACR uses a private endpoint, the private endpoint must be on a different subnet than the one delegated to Azure Container Instances. ACI-delegated subnets can only contain container groups, so placing the ACR private endpoint on the same subnet causes the deployment to fail.
+
 To deploy a container group to a virtual network using managed identity to authenticate image pulls from an ACR that runs behind a private endpoint via the Azure CLI, use the following command:
 
 ```azurecli-interactive
@@ -177,6 +181,9 @@ az container create --name my-containergroup --resource-group myResourceGroup --
 For more info on how to deploy to a virtual network see [Deploy container instances into an Azure virtual network](./container-instances-vnet.md).
 
 ## Deploy a multi-container group in a virtual network using YAML and the Azure CLI
+
+> [!IMPORTANT]
+> If your ACR uses a private endpoint, the private endpoint must be on a different subnet than the one delegated to Azure Container Instances. ACI-delegated subnets can only contain container groups, so placing the ACR private endpoint on the same subnet causes the deployment to fail.
 
 To deploy a multi-container group to a virtual network using managed identity to authenticate image pulls from an ACR that runs behind a private endpoint via the Azure CLI, you can specify the container group configuration in a YAML file. Then pass the YAML file as a parameter to the command.
 
