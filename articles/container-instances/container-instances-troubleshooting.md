@@ -53,6 +53,9 @@ If Azure Container Instances is initially unable to pull your image, it retries 
 
 To resolve this issue, delete the container instance and retry your deployment. Ensure that the image exists in the registry and you typed the image name correctly.
 
+> [!IMPORTANT]
+> ACI only supports pulling images from private registries (registries without a public IP) when using Azure Container Registry (ACR) with a private endpoint and managed identity. Pulling images from non-ACR private registries isn't supported, even if virtual network connectivity is configured between ACI and the registry. If you need to use a private registry, migrate your images to ACR and configure a [private endpoint](/azure/container-registry/container-registry-private-link) with a [managed identity](container-instances-managed-identity.md). For more information, see [Virtual network scenarios and resources - Unsupported networking scenarios](container-instances-virtual-network-concepts.md#unsupported-networking-scenarios).
+
 If the image can't be pulled, events like the following are shown in the output of [az container show][az-container-show]:
 
 ```json
