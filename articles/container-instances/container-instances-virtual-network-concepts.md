@@ -73,9 +73,9 @@ NAT gateway should be configured with public IP so the container groups outbound
 
 Use the following [Quickstart: Create a NAT gateway](https://github.com/MicrosoftDocs/azure-docs/blob/main/articles/nat-gateway/quickstart-create-nat-gateway.md) to create a NAT gateway.
 
-### Network profile
+### Network profileS
 
-[!INCLUDE [network profile callout](./includes/network-profile-callout.md)]
+[!INCLUDE [network profile callout](./includes/network-profile-callout.md)]S
 
 A network profile is a network configuration template for Azure resources. It specifies certain network properties for the resource, for example, the subnet into which it should be deployed. When you first use the [az container create][az-container-create] command to deploy a container group to a subnet (and thus a virtual network), Azure creates a network profile for you. You can then use that network profile for future deployments to the subnet.
 
@@ -90,7 +90,7 @@ The following diagram depicts several container groups deployed to a subnet dele
 Customers can deploy scalable containerized applications using Azure Container Instances and distribute incoming traffic evenly across multiple container groups using Azure Standard Load Balancer.
 
 > [!IMPORTANT]
-> To take advantage of load balancing capabilities the use of [ARM](https://learn.microsoft.com/azure/templates/microsoft.network/loadbalancers/backendaddresspools?pivots=deployment-language-arm-template), [Bicep](https://learn.microsoft.com/azure/templates/microsoft.network/loadbalancers/backendaddresspools?pivots=deployment-language-bicep), [Terraform](https://learn.microsoft.com/azure/templates/microsoft.network/loadbalancers/backendaddresspools?pivots=deployment-language-terraform), [CLI](#example-add-aci-instances-to-backendpool-using-azure-cli) or [PowerShell](#example-add-aci-instances-to-backendpool-using-powershell) is required to set subnet.id/name.
+> To take advantage of load balancing capabilities the use of [ARM](/azure/templates/microsoft.network/loadbalancers/backendaddresspools?pivots=deployment-language-arm-template), [Bicep](/azure/templates/microsoft.network/loadbalancers/backendaddresspools?pivots=deployment-language-bicep), [Terraform](/azure/templates/microsoft.network/loadbalancers/backendaddresspools?pivots=deployment-language-terraform), [CLI](#example-add-aci-instances-to-backendpool-using-azure-cli) or [PowerShell](#example-add-aci-instances-to-backendpool-using-powershell) is required to set subnet.id/name.
 
 ### Prerequisites
 
