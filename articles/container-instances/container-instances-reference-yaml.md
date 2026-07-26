@@ -6,7 +6,7 @@ ms.topic: reference
 ms.service: azure-container-instances
 services: container-instances
 ms.author: tomcassidy
-ms.date: 11/17/2025
+ms.date: 07/25/2026
 # Customer intent: "As a cloud developer, I want to configure a container group using a YAML file, so that I can ensure reproducible deployments and streamline my container management process."
 ---
 
@@ -212,7 +212,7 @@ The following tables describe the values you need to set in the schema.
 |  server | string | Yes | The Docker image registry server without a protocol such as "http" and "https". |
 |  username | string | No | The username for the private registry. |
 |  password | string | No | The password for the private registry. |
-|  identity | string | No | The resource ID of the user or system-assigned managed identity used to authenticate. |
+|  identity | string | No | The resource ID of the user-assigned managed identity used to authenticate. System-assigned managed identity isn't supported for ACR image pulls. |
 |  identityUrl | string | No | The identity URL for the private registry. |
 
 ### IpAddress object

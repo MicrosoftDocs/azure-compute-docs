@@ -7,7 +7,7 @@ author: tomvcassidy
 ms.service: azure-container-instances
 ms.custom:
 services: container-instances
-ms.date: 11/17/2025
+ms.date: 07/25/2026
 # Customer intent: As a cloud developer, I want to configure restart policies for containerized tasks, so that I can efficiently manage execution and resource usage when running tasks that complete, like builds or image rendering.
 ---
 
@@ -26,7 +26,7 @@ When you create a [container group](container-instances-container-groups.md) in 
 | Restart policy   | Description |
 | ---------------- | :---------- |
 | `Always` | Containers in the container group are always restarted. This policy is the **default** setting applied when no restart policy is specified at container creation. |
-| `Never` | Containers in the container group are never restarted. The containers run at most once. |
+| `Never` | Containers in the container group are never restarted when the container process exits successfully (exit code 0). If the container exits with a nonzero exit code, the container might still be restarted by the platform. For more information, see [Restart behavior with nonzero exit codes](#restart-behavior-with-nonzero-exit-codes). |
 | `OnFailure` | Containers in the container group are restarted only when the process executed in the container fails (when it terminates with a nonzero exit code). The containers are run at least once. |
 
 [!INCLUDE [container-instances-restart-ip](./includes/container-instances-restart-ip.md)]
@@ -94,6 +94,17 @@ Output:
 ```
 
 This example shows the output that the script sent to STDOUT. Your containerized tasks, however, might instead write their output to persistent storage for later retrieval. For example, to an [Azure file share](./container-instances-volume-azure-files.md).
+
+## Restart behavior with nonzero exit codes
+
+When a container exits with a nonzero exit code, it indicates an error or failure. In this scenario, the platform might still restart the container regardless of the restart policy setting. This behavior applies even when the restart policy is set to `Never`.
+
+The `Never` restart policy only guarantees that a container isn't restarted when it exits successfully with a zero exit code (graceful shutdown). If the container exits with a nonzero exit code, the platform might restart the container to attempt recovery.
+
+If you need to ensure that a container runs only once regardless of exit code, consider the following approaches:
+
+* Design your container application to handle errors internally and exit with a zero exit code.
+* Monitor the container's exit code using the [az container show][az-container-show] command and take appropriate action based on the result.
 
 ## Next steps
 
