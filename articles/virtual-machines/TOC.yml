@@ -193,6 +193,17 @@
      href: ./sizes/resize-vm.md
    - name: Cobalt VMs
      href: ./sizes/cobalt-overview.md
+   - name: Accelerator technologies
+     items:
+     - name: AMD ROCm overview
+       displayName: ROCm, AMD, Instinct, Radeon, HIP, RCCL, GPU compute
+       href: ./accelerator-technologies/rocm-overview.md
+     - name: NVIDIA CUDA overview
+       displayName: CUDA, NVIDIA, Tensor Core, cuDNN, NCCL, GPU compute
+       href: ./accelerator-technologies/cuda-overview.md
+     - name: Intel AMX overview
+       displayName: AMX, Intel, Advanced Matrix Extensions, TMUL, AI inference, CPU
+       href: ./accelerator-technologies/intel-amx-overview.md
    - name: General purpose
      items:
      - name: Overview

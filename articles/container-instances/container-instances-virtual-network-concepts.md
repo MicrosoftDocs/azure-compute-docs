@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
-ms.date: 04/09/2026
+ms.date: 07/25/2026
 ---
 
 # Virtual network scenarios and resources for Azure Container Instances
@@ -38,12 +38,14 @@ Container groups deployed into an Azure virtual network enable scenarios like:
 * **Global virtual network peering** - Global peering (connecting virtual networks across Azure regions) isn't supported
 * **Public IP or DNS label** - Container groups deployed to a virtual network don't currently support exposing containers directly to the internet with a public IP address or a fully qualified domain name
 * **Managed Identity with Virtual Network in Azure Government Regions** - Managed Identity with virtual networking capabilities isn't supported in Azure Government Regions
+* **Image pulls from non-ACR private registries** - ACI doesn't support pulling container images from private registries (registries without a public IP) other than Azure Container Registry (ACR). Even if virtual network connectivity exists between ACI and a self-hosted private registry, image pulls from non-ACR private registries aren't supported. For private image pulls, use ACR with a [private endpoint](/azure/container-registry/container-registry-private-link) and [managed identity](container-instances-managed-identity.md)
 
 ## Other limitations
 
 * To deploy container groups to a subnet, the subnet can't contain other resource types. Remove all existing resources from an existing subnet before deploying container groups to it, or create a new subnet.
 * To deploy container groups to a subnet, the subnet and the container group must be on the same Azure subscription.
 * Due to the additional networking resources involved, deployments to a virtual network are typically slower than deploying a standard container instance.
+* Use a subnet of at least /24 (256 addresses) for container group deployments. Subnets smaller than /24 are known to cause "subnet full" deployment failures because Azure Container Instances can't release IP address mappings quickly enough for reuse.
 * Outbound connections to port 25 and 19390 aren't supported at this time. Port 19390 needs to be opened in your Firewall for connecting to ACI from Azure portal when container groups are deployed in virtual networks.
 * For inbound connections, the firewall should also allow all ip addresses within the virtual network.
 * If you're connecting your container group to an Azure Storage Account, you must add a [service endpoint](/azure/virtual-network/virtual-network-service-endpoints-overview) to that resource.
@@ -54,7 +56,7 @@ Container groups deployed into an Azure virtual network enable scenarios like:
 
 ## Deploy Container Groups to a Virtual Network
 
-There are three Azure Virtual Network resources required for deploying container groups to a virtual network: the [virtual network](#virtual-network) itself, a [delegated subnet](#subnet-delegated) within the virtual network, and a [network profile](#network-profile).
+There are three Azure Virtual Network resources required for deploying container groups to a virtual network: the [virtual network](#virtual-network) itself, a [delegated subnet](#subnet-delegated) within the virtual network, and a [network profile](#network-profiles).
 
 ### Virtual network
 
@@ -72,7 +74,7 @@ NAT gateway should be configured with public IP so the container groups outbound
 
 Use the following [Quickstart: Create a NAT gateway](https://github.com/MicrosoftDocs/azure-docs/blob/main/articles/nat-gateway/quickstart-create-nat-gateway.md) to create a NAT gateway.
 
-### Network profile
+### Network profiles
 
 [!INCLUDE [network profile callout](./includes/network-profile-callout.md)]
 
@@ -89,7 +91,7 @@ The following diagram depicts several container groups deployed to a subnet dele
 Customers can deploy scalable containerized applications using Azure Container Instances and distribute incoming traffic evenly across multiple container groups using Azure Standard Load Balancer.
 
 > [!IMPORTANT]
-> To take advantage of load balancing capabilities the use of [ARM](https://learn.microsoft.com/azure/templates/microsoft.network/loadbalancers/backendaddresspools?pivots=deployment-language-arm-template), [Bicep](https://learn.microsoft.com/azure/templates/microsoft.network/loadbalancers/backendaddresspools?pivots=deployment-language-bicep), [Terraform](https://learn.microsoft.com/azure/templates/microsoft.network/loadbalancers/backendaddresspools?pivots=deployment-language-terraform), [CLI](#example-add-aci-instances-to-backendpool-using-azure-cli) or [PowerShell](#example-add-aci-instances-to-backendpool-using-powershell) is required to set subnet.id/name.
+> To take advantage of load balancing capabilities, use [ARM](/azure/templates/microsoft.network/loadbalancers/backendaddresspools?pivots=deployment-language-arm-template), [Bicep](/azure/templates/microsoft.network/loadbalancers/backendaddresspools?pivots=deployment-language-bicep), [Terraform](/azure/templates/microsoft.network/loadbalancers/backendaddresspools?pivots=deployment-language-terraform), [CLI](#example-add-aci-instances-to-backendpool-using-azure-cli), or [PowerShell](#example-add-aci-instances-to-backendpool-using-powershell) to set `subnet.id` and `name`.
 
 ### Prerequisites
 
