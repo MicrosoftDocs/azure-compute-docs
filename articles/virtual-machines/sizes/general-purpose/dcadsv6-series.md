@@ -24,7 +24,7 @@ For features supported by this series, see the [Feature support](#feature-suppor
 
 vCPUs (Qty.) and Memory for each size
 
-| Size Name | vCPUs (Qty.) | Memory (GB) |
+| Size Name | vCPUs (Qty.) | Memory (GiB) |
 | --- | --- | --- |
 | Standard_DC2ads_v6 | 2 | 8 |
 | Standard_DC4ads_v6 | 4 | 16 |
@@ -42,13 +42,13 @@ vCPUs (Qty.) and Memory for each size
 
 Local (temp) storage info for each size
 
-| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read (RR)<sup>1</sup> IOPS | Temp Disk Random Read (RR)<sup>1</sup> Throughput (MBps) |
+| Size Name | Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read IOPS | Temp Disk Sequential Read Throughput (MBps) |
 | --- | --- | --- | --- | --- |
 | Standard_DC2ads_v6 | 1 | 75 | 9,000 | 125 |
 | Standard_DC4ads_v6 | 1 | 150 | 19,000 | 250 |
 | Standard_DC8ads_v6 | 1 | 300 | 38,000 | 500 |
 | Standard_DC16ads_v6 | 1 | 600 | 75,000 | 1,000 |
-| Standard_DC32ads_v6 | 1 | 1,200 | 150,000 | 2000 |
+| Standard_DC32ads_v6 | 1 | 1,200 | 150,000 | 2,000 |
 | Standard_DC48ads_v6 | 1 | 1,800 | 225,000 | 3,000 |
 | Standard_DC64ads_v6 | 1 | 2,400 | 300,000 | 4,000 |
 | Standard_DC96ads_v6 | 1 | 3,600 | 450,000 | 4,000 |
@@ -89,7 +89,7 @@ Network interface info for each size
 #### Table definitions
 - Expected network bandwidth is the maximum aggregated bandwidth allocated per VM type across all NICs, for all destinations. For more information, see [Virtual machine network bandwidth](/azure/virtual-network/virtual-machine-network-throughput)
 - Upper limits aren't guaranteed. Limits offer guidance for selecting the right VM type for the intended application. Actual network performance will depend on several factors including network congestion, application loads, and network settings. For information on optimizing network throughput, see [Optimize network throughput for Azure virtual machines](/azure/virtual-network/virtual-network-optimize-network-bandwidth). 
--  To achieve the expected network performance on Linux or Windows, you may need to select a specific version or optimize your VM. For more information, see [Bandwidth/Throughput testing (NTTTCP)](/azure/virtual-network/virtual-network-bandwidth-testing).
+- To achieve the expected network performance on Linux or Windows, you may need to select a specific version or optimize your VM. For more information, see [Bandwidth/Throughput testing (NTTTCP)](/azure/virtual-network/virtual-network-bandwidth-testing).
 
 ### [Accelerators](#tab/sizeaccelerators)
 

@@ -11,11 +11,11 @@ ms.reviewer: mattmcinnes
 ms.custom: include file
 # Customer intent: "As a cloud architect, I want to understand the specifications of Lsv2-series VMs, so that I can select appropriate sizes for my workload needs in terms of processing power, memory, and storage options."
 ---
-| Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
+| Part | Quantity <br><sup>Count Units</sup> | Specs <br><sup>SKU ID, Performance Units, etc.</sup>  |
 |---|---|---|
 | Processor      | 8 - 80 vCPUs       | AMD EPYC 7551 (Naples) [x86-64]                               |
 | Memory         | 64 - 640 GiB          |                                  |
 | Local Storage  | 1 Temp Disk <br> 1 - 10 NVMe Disks          | 80 - 800 GiB Temp Disks <br> 1.92 TiB NVMe Disks                |
-| Remote Storage | 16 - 32 Disks    | 8000 - 80000 IOPS <br>160 - 1400 MBps   |
-| Network        | 2 - 8 NICs          | 3200 - 16000+ Mbps <br>Interfaces: NetVSC, ConnectX  |
+| Remote Storage | 16 - 32 Disks    | 8,000 - 80,000 IOPS <br>160 - 1,400 MBps   |
+| Network        | 2 - 8 NICs          | 3,200 - 16,000+ Mbps <br>Interfaces: NetVSC, ConnectX  |
 | Accelerators   | None              |                                   |

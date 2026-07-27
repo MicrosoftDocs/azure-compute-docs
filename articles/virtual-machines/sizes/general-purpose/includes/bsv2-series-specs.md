@@ -11,7 +11,7 @@ ms.reviewer: mattmcinnes
 ms.custom: include file
 # Customer intent: "As a cloud architect, I want to access detailed specifications of Bsv2-series VM sizes, so that I can select the appropriate virtual machine configuration for my project's performance and resource requirements."
 ---
-| Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
+| Part | Quantity <br><sup>Count Units</sup> | Specs <br><sup>SKU ID, Performance Units, etc.</sup>  |
 |---|---|---|
 | Processor      | 2 - 32 vCPUs       | Intel Xeon Platinum 8473C (Sapphire Rapids) [x86-64] <br>Intel Xeon Platinum 8370C (Ice Lake) [x86-64]  <br>Intel Xeon Platinum 8573C (Emerald Rapids) [x86-64] |
 | Memory         | 1 - 128 GiB          |                                  |

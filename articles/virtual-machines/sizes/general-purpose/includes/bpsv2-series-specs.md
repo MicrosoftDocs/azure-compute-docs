@@ -12,7 +12,7 @@ ms.custom: include file
 # Customer intent: "As a cloud architect, I want to review the specifications of Bpsv2-series VMs so that I can select the appropriate size for my application workloads efficiently."
 ---
 
-| Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
+| Part | Quantity <br><sup>Count Units</sup> | Specs <br><sup>SKU ID, Performance Units, etc.</sup>  |
 |---|---|---|
 | Processor      | 2 - 16 vCPUs       | Ampere Altra [Arm64]                              |
 | Memory         | 1 - 64 GiB          |                                  |

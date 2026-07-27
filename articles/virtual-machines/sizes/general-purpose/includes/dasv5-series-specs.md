@@ -11,7 +11,7 @@ ms.reviewer: mattmcinnes
 ms.custom: include file
 # Customer intent: "As an IT administrator, I want to review the specifications of Dasv5-series VM sizes, so that I can determine which configurations meet my workload requirements."
 ---
-| Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
+| Part | Quantity <br><sup>Count Units</sup> | Specs <br><sup>SKU ID, Performance Units, etc.</sup>  |
 |---|---|---|
 | Processor      | 2 - 96 vCPUs       | AMD EPYC 7763v (Milan) [x86-64] <br>AMD EPYC 9004 (Genoa) [x86-64]     |
 | Memory         | 8 - 384 GiB          |                                  |

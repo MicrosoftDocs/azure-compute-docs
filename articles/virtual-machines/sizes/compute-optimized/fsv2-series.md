@@ -26,7 +26,7 @@ For features supported by this series, see the [Feature support](#feature-suppor
 
 vCPUs (Qty.) and Memory for each size in the Fsv2-series.
 
-| Size Name | vCPUs (Qty.) | Memory (GB) |
+| Size Name | vCPUs (Qty.) | Memory (GiB) |
 | --- | --- | --- |
 | Standard_F2s_v2 | 2 | 4 |
 | Standard_F4s_v2 | 4 | 8 |
@@ -44,16 +44,16 @@ vCPUs (Qty.) and Memory for each size in the Fsv2-series.
 
 Local (temp) storage info for each size in the Fsv2-series.
 
-| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read (RR)<sup>1</sup> IOPS | Temp Disk Random Read (RR)<sup>1</sup> Throughput (MB/s) |
+| Size Name | Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read IOPS | Temp Disk Sequential Read Throughput (MBps) |
 | --- | --- | --- | --- | --- |
-| Standard_F2s_v2 | 1 | 16 | 4000 | 31 |
-| Standard_F4s_v2 | 1 | 32 | 8000 | 63 |
-| Standard_F8s_v2 | 1 | 64 | 16000 | 127 |
-| Standard_F16s_v2 | 1 | 128 | 32000 | 255 |
-| Standard_F32s_v2 | 1 | 256 | 64000 | 512 |
-| Standard_F48s_v2 | 1 | 384 | 96000 | 768 |
-| Standard_F64s_v2 | 1 | 512 | 128000 | 1024 |
-| Standard_F72s_v2 | 1 | 576 | 144000 | 1152 |
+| Standard_F2s_v2 | 1 | 16 | 4,000 | 31 |
+| Standard_F4s_v2 | 1 | 32 | 8,000 | 63 |
+| Standard_F8s_v2 | 1 | 64 | 16,000 | 127 |
+| Standard_F16s_v2 | 1 | 128 | 32,000 | 255 |
+| Standard_F32s_v2 | 1 | 256 | 64,000 | 512 |
+| Standard_F48s_v2 | 1 | 384 | 96,000 | 768 |
+| Standard_F64s_v2 | 1 | 512 | 128,000 | 1,024 |
+| Standard_F72s_v2 | 1 | 576 | 144,000 | 1,152 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
@@ -61,7 +61,7 @@ Local (temp) storage info for each size in the Fsv2-series.
 - [Share an Azure managed disk](../../../virtual-machines/disks-shared.md)
 
 #### Fsv2-series local storage table definitions
-- <sup>1</sup>Temp disk speed often differs between RR (Random Read) and RW (Random Write) operations. RR operations are typically faster than RW operations. The RW speed is usually slower than the RR speed on series where only the RR speed value is listed.
+- Temp disk performance depends on many factors including block size, workload patterns of read/writes, queue depth (QD), and others. Temp disk performance specifications should be viewed as best case performance numbers, assuming 4k block sizes and QD=256 for IOPS, and 256k block sizes with QD=64 for throughput. Additionally, temp disk performance often differs between read and write operations. During steady state operations, write performance is expected to be lower than read performance.
 - Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
 - Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
 - To learn how to get the best storage performance for your VMs, see [Virtual machine and disk performance](../../../virtual-machines/disks-performance.md).
@@ -70,16 +70,16 @@ Local (temp) storage info for each size in the Fsv2-series.
 
 Remote (uncached) storage info for each size in the Fsv2-series.
 
-| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD IOPS | Uncached Premium SSD Throughput (MB/s) | Uncached Premium SSD Burst<sup>1</sup> IOPS | Uncached Premium SSD Burst<sup>1</sup> Throughput (MB/s) |
+| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD IOPS | Uncached Premium SSD Throughput (MBps) | Uncached Premium SSD Burst IOPS | Uncached Premium SSD Burst Throughput (MBps) |
 | --- | --- | --- | --- | --- | --- |
-| Standard_F2s_v2 | 4 | 3200 | 47 | 4000 | 200 |
-| Standard_F4s_v2 | 8 | 6400 | 95 | 8000 | 200 |
-| Standard_F8s_v2 | 16 | 12800 | 190 | 16000 | 400 |
-| Standard_F16s_v2 | 32 | 25600 | 380 | 32000 | 800 |
-| Standard_F32s_v2 | 32 | 51200 | 750 | 64000 | 1600 |
-| Standard_F48s_v2 | 32 | 76800 | 1100 | 80000 | 2000 |
-| Standard_F64s_v2 | 32 | 80000 | 1100 | 80000 | 2000 |
-| Standard_F72s_v2 | 32 | 80000 | 1100 | 80000 | 2000 |
+| Standard_F2s_v2 | 4 | 3,200 | 47 | 4,000 | 200 |
+| Standard_F4s_v2 | 8 | 6,400 | 95 | 8,000 | 200 |
+| Standard_F8s_v2 | 16 | 12,800 | 190 | 16,000 | 400 |
+| Standard_F16s_v2 | 32 | 25,600 | 380 | 32,000 | 800 |
+| Standard_F32s_v2 | 32 | 51,200 | 750 | 64,000 | 1,600 |
+| Standard_F48s_v2 | 32 | 76,800 | 1,100 | 80,000 | 2,000 |
+| Standard_F64s_v2 | 32 | 80,000 | 1,100 | 80,000 | 2,000 |
+| Standard_F72s_v2 | 32 | 80,000 | 1,100 | 80,000 | 2,000 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
@@ -87,7 +87,7 @@ Remote (uncached) storage info for each size in the Fsv2-series.
 - [Share an Azure managed disk](../../../virtual-machines/disks-shared.md)
 
 #### Fsv2-series remote storage table definitions
-- <sup>1</sup>Some sizes support [bursting](../../disk-bursting.md) to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.
+- Some sizes support [bursting](../../disk-bursting.md) to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.
 
 - Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
 - Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
@@ -99,16 +99,16 @@ Remote (uncached) storage info for each size in the Fsv2-series.
 
 Network interface info for each size in the Fsv2-series.
 
-| Size Name | Max NICs (Qty.) | Max Network Bandwidth (Mb/s) |
+| Size Name | Max NICs (Qty.) | Max Network Bandwidth (Mbps) |
 | --- | --- | --- |
-| Standard_F2s_v2 | 2 | 5000 |
-| Standard_F4s_v2 | 2 | 10000 |
-| Standard_F8s_v2 | 4 | 12500 |
-| Standard_F16s_v2 | 4 | 12500 |
-| Standard_F32s_v2 | 8 | 16000 |
-| Standard_F48s_v2 | 8 | 21000 |
-| Standard_F64s_v2 | 8 | 28000 |
-| Standard_F72s_v2 | 8 | 30000 |
+| Standard_F2s_v2 | 2 | 5,000 |
+| Standard_F4s_v2 | 2 | 10,000 |
+| Standard_F8s_v2 | 4 | 12,500 |
+| Standard_F16s_v2 | 4 | 12,500 |
+| Standard_F32s_v2 | 8 | 16,000 |
+| Standard_F48s_v2 | 8 | 21,000 |
+| Standard_F64s_v2 | 8 | 28,000 |
+| Standard_F72s_v2 | 8 | 30,000 |
 
 #### Networking resources
 - [Virtual networks and virtual machines in Azure](/azure/virtual-network/network-overview)
