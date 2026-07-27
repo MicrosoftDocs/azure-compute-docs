@@ -26,7 +26,7 @@ For features supported by this series, see the [Feature support](#feature-suppor
 
 vCPUs (Qty.) and Memory for each size
 
-| Size Name | vCPUs (Qty.) | Memory (GB) |
+| Size Name | vCPUs (Qty.) | Memory (GiB) |
 | --- | --- | --- |
 | Standard_D2as_v7 | 2 | 8 |
 | Standard_D4as_v7 | 4 | 16 |
@@ -63,7 +63,7 @@ Remote (uncached) storage info for each size
 | Standard_D4as_v7 | 12 | 8,000 | 234 | 47,200 | 1,412 | 8,800 | 273 | 52,083 | 1,653 |
 | Standard_D8as_v7 | 26 | 16,000 | 468 | 47,200 | 1,412 | 17,600 | 547 | 52,083 | 1,653 |
 | Standard_D16as_v7 | 48 | 32,000 | 936 | 72,700 | 1,412 | 35,200 | 1,095 | 80,000 | 1,653 |
-| Standard_D32as_v7 | 64 | 64,000 | 1,872 | 94,400 | 1916 | 70,400 | 2,191 | 104,167 | 2,241 |
+| Standard_D32as_v7 | 64 | 64,000 | 1,872 | 94,400 | 1,916 | 70,400 | 2,191 | 104,167 | 2,241 |
 | Standard_D48as_v7 | 64 | 96,000 | 2,808 | 99,000 | 2,874 | 105,600 | 3,291 | 108,900 | 3,362 |
 | Standard_D64as_v7 | 64 | 128,000 | 3,744 | 132,000 | 3,832 | 140,800 | 4,382 | 145,200 | 4,484 |
 | Standard_D96as_v7 | 64 | 192,000 | 5,663 | 192,500 | 5,749 | 211,200 | 6,573 | 211,750 | 6,669 |

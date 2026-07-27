@@ -12,7 +12,7 @@ ms.custom: include file
 # Customer intent: As a cloud architect, I want to review the specifications of Dlsv7 series VM sizes, so that I can assess their suitability for my project's performance and resource requirements.
 ---
 
-| Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
+| Part | Quantity <br><sup>Count Units</sup> | Specs <br><sup>SKU ID, Performance Units, etc.</sup>  |
 |---|---|---|
 | Processor      | 2 - 248 vCPUs       |Intel Xeon 6 6973PC (Granite Rapids) [x86-64]  |
 | Memory         | 4 - 496 GiB          |                                  |

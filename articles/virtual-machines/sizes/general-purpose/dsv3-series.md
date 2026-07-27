@@ -27,7 +27,7 @@ For features supported by this series, see the [Feature support](#feature-suppor
 
 vCPUs (Qty.) and Memory for each size
 
-| Size Name | vCPUs (Qty.) | Memory (GB) |
+| Size Name | vCPUs (Qty.) | Memory (GiB) |
 | --- | --- | --- |
 | Standard_D2s_v3 | 2 | 8 |
 | Standard_D4s_v3 | 4 | 16 |
@@ -77,8 +77,8 @@ Remote (uncached) storage info for each size
 | Standard_D8s_v3 | 16 | 12,800 | 192 | 16,000 | 400 |
 | Standard_D16s_v3 | 32 | 25,600 | 384 | 32,000 | 800 |
 | Standard_D32s_v3 | 32 | 51,200 | 768 | 64,000 | 1,600 |
-| Standard_D48s_v3 | 32 | 76,800 | 1,152 | 80,000 | 2000 |
-| Standard_D64s_v3 | 32 | 80,000 | 1,200 | 80,000 | 2000 |
+| Standard_D48s_v3 | 32 | 76,800 | 1,152 | 80,000 | 2,000 |
+| Standard_D64s_v3 | 32 | 80,000 | 1,200 | 80,000 | 2,000 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
@@ -101,9 +101,9 @@ Network interface info for each size
 | Size Name | Max NICs (Qty.) | Max Network Bandwidth (Mbps) |
 | --- | --- | --- |
 | Standard_D2s_v3 | 2 | 1,000 |
-| Standard_D4s_v3 | 2 | 2000 |
-| Standard_D8s_v3 | 4 | 2000 |
-| Standard_D16s_v3 | 8 | 2000 |
+| Standard_D4s_v3 | 2 | 2,000 |
+| Standard_D8s_v3 | 4 | 2,000 |
+| Standard_D16s_v3 | 8 | 2,000 |
 | Standard_D32s_v3 | 8 | 16,000 |
 | Standard_D48s_v3 | 8 | 24,000 |
 | Standard_D64s_v3 | 8 | 30,000 |

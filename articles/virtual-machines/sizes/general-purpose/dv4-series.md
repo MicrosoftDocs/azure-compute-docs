@@ -26,7 +26,7 @@ For features supported by this series, see the [Feature support](#feature-suppor
 
 vCPUs (Qty.) and Memory for each size
 
-| Size Name | vCPUs (Qty.) | Memory (GB) |
+| Size Name | vCPUs (Qty.) | Memory (GiB) |
 | --- | --- | --- |
 | Standard_D2_v4 | 2 | 8 |
 | Standard_D4_v4 | 4 | 16 |
@@ -62,8 +62,8 @@ Remote (uncached) storage info for each size
 | Standard_D8_v4 | 16 | 12,800 | 192 | 16,000 | 400 |
 | Standard_D16_v4 | 32 | 25,600 | 384 | 32,000 | 800 |
 | Standard_D32_v4 | 32 | 51,200 | 768 | 64,000 | 1,600 |
-| Standard_D48_v4 | 32 | 76,800 | 1,152 | 80,000 | 2000 |
-| Standard_D64_v4 | 32 | 80,000 | 1,200 | 80,000 | 2000 |
+| Standard_D48_v4 | 32 | 76,800 | 1,152 | 80,000 | 2,000 |
+| Standard_D64_v4 | 32 | 80,000 | 1,200 | 80,000 | 2,000 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)

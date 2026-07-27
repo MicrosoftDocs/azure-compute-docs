@@ -11,7 +11,7 @@ ms.reviewer: mattmcinnes
 ms.custom: include file
 # Customer intent: "As a cloud infrastructure planner, I want to review the specifications of Dasv7-series virtual machine sizes, so that I can select the appropriate virtual machine configuration for my workload requirements."
 ---
-| Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
+| Part | Quantity <br><sup>Count Units</sup> | Specs <br><sup>SKU ID, Performance Units, etc.</sup>  |
 |---|---|---|
 | Processor      | 2 - 160 vCPUs       | AMD EPYC 9005 (Turin) [x86-64]                               |
 | Memory         | 8 - 640 GiB          |                                  |

@@ -11,7 +11,7 @@ ms.reviewer: mattmcinnes
 ms.custom: include file
 # Customer intent: "As a cloud architect, I want to review the specifications of Dpdsv5 series VM sizes, so that I can determine the appropriate resources for my application's performance and scalability needs."
 ---
-| Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
+| Part | Quantity <br><sup>Count Units</sup> | Specs <br><sup>SKU ID, Performance Units, etc.</sup>  |
 |---|---|---|
 | Processor      | 2 - 64 vCPUs         | Ampere Altra [Arm64]                                        |
 | Memory         | 8 - 208 GiB          |                                                    |

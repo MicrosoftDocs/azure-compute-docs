@@ -28,7 +28,7 @@ For features supported by this series, see the [Feature support](#feature-suppor
 
 vCPUs (Qty.) and Memory for each size
 
-| Size Name | vCPUs (Qty.) | Memory (GB) |
+| Size Name | vCPUs (Qty.) | Memory (GiB) |
 | --- | --- | --- |
 | Standard_DC4as_cc_v5 | 4 | 16 |
 | Standard_DC8as_cc_v5 | 8 | 32 |

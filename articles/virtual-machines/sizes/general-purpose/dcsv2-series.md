@@ -26,7 +26,7 @@ For features supported by this series, see the [Feature support](#feature-suppor
 
 Cores (Qty.) and Memory for each size
 
-| Size Name | Cores (Qty.) | Memory (GB) | EPC Memory (MiB) |
+| Size Name | Cores (Qty.) | Memory (GiB) | EPC Memory (MiB) |
 | --- | --- | --- | --- |
 | Standard_DC1s_v2 | 1 | 4 | 28 |
 | Standard_DC2s_v2 | 2 | 8 | 56 |

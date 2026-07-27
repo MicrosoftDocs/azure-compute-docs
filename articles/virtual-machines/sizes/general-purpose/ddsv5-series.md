@@ -26,7 +26,7 @@ For features supported by this series, see the [Feature support](#feature-suppor
 
 vCPUs (Qty.) and Memory for each size
 
-| Size Name | vCPUs (Qty.) | Memory (GB) |
+| Size Name | vCPUs (Qty.) | Memory (GiB) |
 | --- | --- | --- |
 | Standard_D2ds_v5 | 2 | 8 |
 | Standard_D4ds_v5 | 4 | 16 |
@@ -51,7 +51,7 @@ Local (temp) storage info for each size
 | Standard_D4ds_v5 | 1 | 150 | 19,000 | 250 |
 | Standard_D8ds_v5 | 1 | 300 | 38,000 | 500 |
 | Standard_D16ds_v5 | 1 | 600 | 75,000 | 1,000 |
-| Standard_D32ds_v5 | 1 | 1,200 | 150,000 | 2000 |
+| Standard_D32ds_v5 | 1 | 1,200 | 150,000 | 2,000 |
 | Standard_D48ds_v5 | 1 | 1,800 | 225,000 | 3,000 |
 | Standard_D64ds_v5 | 1 | 2,400 | 300,000 | 4,000 |
 | Standard_D96ds_v5 | 1 | 3,600 | 450,000 | 4,000 |
@@ -77,7 +77,7 @@ Remote (uncached) storage info for each size
 | Standard_D4ds_v5 | 8 | 6,400 | 145 | 20,000 | 1,200 |
 | Standard_D8ds_v5 | 16 | 12,800 | 290 | 20,000 | 1,200 |
 | Standard_D16ds_v5 | 32 | 25,600 | 600 | 40,000 | 1,200 |
-| Standard_D32ds_v5 | 32 | 51,200 | 865 | 80,000 | 2000 |
+| Standard_D32ds_v5 | 32 | 51,200 | 865 | 80,000 | 2,000 |
 | Standard_D48ds_v5 | 32 | 76,800 | 1,315 | 80,000 | 3,000 |
 | Standard_D64ds_v5 | 32 | 80,000 | 1,735 | 80,000 | 3,000 |
 | Standard_D96ds_v5 | 32 | 80,000 | 2,600 | 80,000 | 4,000 |

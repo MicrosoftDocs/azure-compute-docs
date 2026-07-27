@@ -25,7 +25,7 @@ For features supported by this series, see the [Feature support](#feature-suppor
 
 vCPUs (Qty.) and Memory for each size in the Dasv6-series.
 
-| Size Name | vCPUs (Qty.) | Memory (GB) |
+| Size Name | vCPUs (Qty.) | Memory (GiB) |
 | --- | --- | --- |
 | Standard_D2as_v6 | 2 | 8 |
 | Standard_D4as_v6 | 4 | 16 |

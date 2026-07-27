@@ -26,7 +26,7 @@ For features supported by this series, see the [Feature support](#feature-suppor
 
 vCPUs (Qty.) and Memory for each size
 
-| Size Name | vCPUs (Qty.) | Memory (GB) |
+| Size Name | vCPUs (Qty.) | Memory (GiB) |
 | --- | --- | --- |
 | Standard_D2s_v6 | 2 | 8 |
 | Standard_D4s_v6 | 4 | 16 |
@@ -63,7 +63,7 @@ Remote (uncached) storage info for each size
 | Standard_D4s_v6 | 12 | 6,400 | 212 | 40,000 | 1,250 | 8,333 | 248 | 52,083 | 1,463 |
 | Standard_D8s_v6 | 24 | 12,800 | 424 | 40,000 | 1,250 | 16,667 | 496 | 52,083 | 1,463 |
 | Standard_D16s_v6 | 48 | 25,600 | 848 | 40,000 | 1,250 | 33,333 | 992 | 52,083 | 1,463 |
-| Standard_D32s_v6 | 64 | 51,200 | 1,696 | 80,000 | 1,696 | 66,667 | 1984 | 104,167 | 1984 |
+| Standard_D32s_v6 | 64 | 51,200 | 1,696 | 80,000 | 1,696 | 66,667 | 1,984 | 104,167 | 1,984 |
 | Standard_D48s_v6 | 64 | 76,800 | 2,544 | 80,000 | 2,544 | 100,000 | 2,976 | 104,167 | 2,976 |
 | Standard_D64s_v6 | 64 | 102,400 | 3,392 | 102,400 | 3,392 | 133,333 | 3,969 | 133,333 | 3,969 |
 | Standard_D96s_v6 | 64 | 153,600 | 5,088 | 153,600 | 5,088 | 200,000 | 5,953 | 200,000 | 5,953 |

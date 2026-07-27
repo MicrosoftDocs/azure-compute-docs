@@ -22,7 +22,7 @@ These VMs have native support for [confidential disk encryption](/azure/virtual-
 The DCedsv6 offer a balance of memory to vCPU performance that's suitable most production workloads. With up to 128 vCPUs, 512 GiB of RAM, and support for up to 7 TB of local disk storage. These VMs work well for many general computing workloads, e-commerce systems, web front ends, desktop virtualization solutions, sensitive databases, other enterprise applications and more.
 
 ## Host specifications
-| Part | Quantity min - max | Specs <br><sup>SKU ID, Performance Units, etc.  |
+| Part | Quantity min - max | Specs <br><sup>SKU ID, Performance Units, etc.</sup>  |
 |---|---|---|
 | Processor      | 2 - 128 vCPUs       | Intel Xeon Platinum 8,573C (Emerald Rapids) [x86-64]                               |
 | Memory         | 8 - 512 GB          |                                  |
@@ -40,7 +40,7 @@ For features supported by this series, see the [Feature support](#feature-suppor
 
 This table shows the number of vCPUs and amount of memory for each DCesv6-series size.
 
-| Size Name | vCPUs (Qty.) | Memory (GB) |
+| Size Name | vCPUs (Qty.) | Memory (GiB) |
 | --- | --- | --- |
 | Standard_DC2eds_v6 | 2 | 8 |
 | Standard_DC4eds_v6 | 4 | 16 |

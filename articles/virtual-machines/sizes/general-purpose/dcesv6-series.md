@@ -26,7 +26,7 @@ For features supported by this series, see the [Feature support](#feature-suppor
 
 This table shows the number of vCPUs and amount of memory for each DCesv6-series size.
 
-| Size Name | vCPUs (Qty.) | Memory (GB) |
+| Size Name | vCPUs (Qty.) | Memory (GiB) |
 | --- | --- | --- |
 | Standard_DC2es_v6 | 2 | 8 |
 | Standard_DC4es_v6 | 4 | 16 |

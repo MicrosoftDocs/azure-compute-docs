@@ -11,7 +11,7 @@ ms.reviewer: mattmcinnes
 ms.custom: include file
 # Customer intent: "As a cloud architect, I want to review the specifications of Dpldsv5 series VMs, so that I can select the appropriate instance sizes for my workloads based on performance and resource requirements."
 ---
-| Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
+| Part | Quantity <br><sup>Count Units</sup> | Specs <br><sup>SKU ID, Performance Units, etc.</sup>  |
 |---|---|---|
 | Processor      | 2 - 64 vCPUs       | Ampere Altra [Arm64]                                               |
 | Memory         | 4 - 128 GiB          |                                                    |

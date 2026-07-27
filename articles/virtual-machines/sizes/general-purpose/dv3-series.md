@@ -27,7 +27,7 @@ For features supported by this series, see the [Feature support](#feature-suppor
 
 vCPUs (Qty.) and Memory for each size
 
-| Size Name | vCPUs (Qty.) | Memory (GB) |
+| Size Name | vCPUs (Qty.) | Memory (GiB) |
 | --- | --- | --- |
 | Standard_D2_v3 | 2 | 8 |
 | Standard_D4_v3 | 4 | 16 |
@@ -101,9 +101,9 @@ Network interface info for each size
 | Size Name | Max NICs (Qty.) | Max Network Bandwidth (Mbps) |
 | --- | --- | --- |
 | Standard_D2_v3 | 2 | 1,000 |
-| Standard_D4_v3 | 2 | 2000 |
-| Standard_D8_v3 | 4 | 2000 |
-| Standard_D16_v3 | 8 | 2000 |
+| Standard_D4_v3 | 2 | 2,000 |
+| Standard_D8_v3 | 4 | 2,000 |
+| Standard_D16_v3 | 8 | 2,000 |
 | Standard_D32_v3 | 8 | 16,000 |
 | Standard_D48_v3 | 8 | 24,000 |
 | Standard_D64_v3 | 8 | 30,000 |

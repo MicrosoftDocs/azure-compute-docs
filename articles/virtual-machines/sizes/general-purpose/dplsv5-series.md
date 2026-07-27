@@ -26,7 +26,7 @@ For features supported by this series, see the [Feature support](#feature-suppor
 
 vCPUs (Qty.) and Memory for each size
 
-| Size Name | vCPUs (Qty.) | Memory (GB) |
+| Size Name | vCPUs (Qty.) | Memory (GiB) |
 | --- | --- | --- |
 | Standard_D2pls_v5 | 2 | 4 |
 | Standard_D4pls_v5 | 4 | 8 |
@@ -61,7 +61,7 @@ Remote (uncached) storage info for each size
 | Standard_D4pls_v5 | 8 | 6,400 | 145 | 20,000 | 1,200 |
 | Standard_D8pls_v5 | 16 | 12,800 | 290 | 20,000 | 1,200 |
 | Standard_D16pls_v5 | 32 | 25,600 | 600 | 40,000 | 1,200 |
-| Standard_D32pls_v5 | 32 | 51,200 | 865 | 80,000 | 2000 |
+| Standard_D32pls_v5 | 32 | 51,200 | 865 | 80,000 | 2,000 |
 | Standard_D48pls_v5 | 32 | 76,800 | 1,315 | 80,000 | 3,000 |
 | Standard_D64pls_v5 | 32 | 80,000 | 1,735 | 80,000 | 3,000 |
 

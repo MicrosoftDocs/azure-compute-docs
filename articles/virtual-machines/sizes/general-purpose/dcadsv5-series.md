@@ -26,7 +26,7 @@ For features supported by this series, see the [Feature support](#feature-suppor
 
 vCPUs (Qty.) and Memory for each size
 
-| Size Name | vCPUs (Qty.) | Memory (GB) |
+| Size Name | vCPUs (Qty.) | Memory (GiB) |
 | --- | --- | --- |
 | Standard_DC2ads_v5 | 2 | 8 |
 | Standard_DC4ads_v5 | 4 | 16 |
@@ -50,7 +50,7 @@ Local (temp) storage info for each size
 | Standard_DC4ads_v5 | 1 | 150 | 19,000 | 250 |
 | Standard_DC8ads_v5 | 1 | 300 | 38,000 | 500 |
 | Standard_DC16ads_v5 | 1 | 600 | 75,000 | 1,000 |
-| Standard_DC32ads_v5 | 1 | 1,200 | 150,000 | 2000 |
+| Standard_DC32ads_v5 | 1 | 1,200 | 150,000 | 2,000 |
 | Standard_DC48ads_v5 | 1 | 1,800 | 225,000 | 3,000 |
 | Standard_DC64ads_v5 | 1 | 2,400 | 300,000 | 4,000 |
 | Standard_DC96ads_v5 | 1 | 3,600 | 450,000 | 4,000 |

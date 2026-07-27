@@ -29,7 +29,7 @@ For features supported by this series, see the [Feature support](#feature-suppor
 
 vCPUs (Qty.) and Memory for each size
 
-| Size Name | vCPUs (Qty.) | Memory (GB) |
+| Size Name | vCPUs (Qty.) | Memory (GiB) |
 | --- | --- | --- |
 | Standard_B1ls2 | 1 | 0.5 |
 | Standard_B1s | 1 | 1 |
@@ -58,7 +58,7 @@ Base CPU performance, Credits, and other CPU bursting related info
 | Standard_B2s   | 20% | 60 | 24 | 576 |
 | Standard_B2ms  | 30% | 60 | 36 | 864 |
 | Standard_B4ms  | 22.5% | 120 | 54 | 1,296 |
-| Standard_B8ms  | 17% | 240 | 81 | 1994 |
+| Standard_B8ms  | 17% | 240 | 81 | 1,994 |
 | Standard_B12ms | 17% | 360 | 121 | 2,908 |
 | Standard_B16ms | 17% | 480 | 162 | 3,888 |
 | Standard_B20ms | 17% | 600 | 202 | 4,867 |
@@ -107,7 +107,7 @@ Remote (uncached) storage info for each size
 | Standard_B1s | 2 | 320 | 10 | 4,000 | 100 |
 | Standard_B1ms | 2 | 640 | 10 | 4,000 | 100 |
 | Standard_B2s | 4 | 1,280 | 15 | 4,000 | 100 |
-| Standard_B2ms | 4 | 1920 | 22.5 | 4,000 | 100 |
+| Standard_B2ms | 4 | 1,920 | 22.5 | 4,000 | 100 |
 | Standard_B4ms | 8 | 2,880 | 35 | 8,000 | 200 |
 | Standard_B8ms | 16 | 4,320 | 50 | 8,000 | 200 |
 | Standard_B12ms | 16 | 4,320 | 50 | 16,000 | 400 |

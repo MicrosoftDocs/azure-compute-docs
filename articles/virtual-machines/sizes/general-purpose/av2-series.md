@@ -26,7 +26,7 @@ For features supported by this series, see the [Feature support](#feature-suppor
 
 vCPUs (Qty.) and Memory for each size
 
-| Size Name | vCPUs (Qty.) | Memory (GB) |
+| Size Name | vCPUs (Qty.) | Memory (GiB) |
 | --- | --- | --- |
 | Standard_A1_v2 | 1 | 2 |
 | Standard_A2_v2 | 2 | 4 |
@@ -47,10 +47,10 @@ Local (temp) storage info for each size
 | Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read IOPS | Temp Disk Sequential Read Throughput (MBps) | Temp Disk Sequential Write Throughput (MBps) |
 | --- | --- | --- | --- | --- | --- |
 | Standard_A1_v2 | 1 | 10 | 1,000 | 20 | 10 |
-| Standard_A2_v2 | 1 | 20 | 2000 | 40 | 20 |
+| Standard_A2_v2 | 1 | 20 | 2,000 | 40 | 20 |
 | Standard_A4_v2 | 1 | 40 | 4,000 | 80 | 40 |
 | Standard_A8_v2 | 1 | 80 | 8,000 | 160 | 80 |
-| Standard_A2m_v2 | 1 | 20 | 2000 | 40 | 20 |
+| Standard_A2m_v2 | 1 | 20 | 2,000 | 40 | 20 |
 | Standard_A4m_v2 | 1 | 40 | 4,000 | 80 | 40 |
 | Standard_A8m_v2 | 1 | 80 | 8,000 | 160 | 80 |
 
@@ -72,10 +72,10 @@ Remote (uncached) storage info for each size
 | Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD IOPS |
 | --- | --- | --- |
 | Standard_A1_v2 | 2 | 1,000 |
-| Standard_A2_v2 | 4 | 2000 |
+| Standard_A2_v2 | 4 | 2,000 |
 | Standard_A4_v2 | 8 | 4,000 |
 | Standard_A8_v2 | 16 | 8,000 |
-| Standard_A2m_v2 | 4 | 2000 |
+| Standard_A2m_v2 | 4 | 2,000 |
 | Standard_A4m_v2 | 8 | 4,000 |
 | Standard_A8m_v2 | 16 | 8,000 |
 
@@ -102,10 +102,10 @@ Network interface info for each size
 | Standard_A1_v2 | 2 | 250 |
 | Standard_A2_v2 | 2 | 500 |
 | Standard_A4_v2 | 4 | 1,000 |
-| Standard_A8_v2 | 8 | 2000 |
+| Standard_A8_v2 | 8 | 2,000 |
 | Standard_A2m_v2 | 2 | 500 |
 | Standard_A4m_v2 | 4 | 1,000 |
-| Standard_A8m_v2 | 8 | 2000 |
+| Standard_A8m_v2 | 8 | 2,000 |
 
 #### Networking resources
 - [Virtual networks and virtual machines in Azure](/azure/virtual-network/network-overview)
