@@ -11,10 +11,10 @@ ms.reviewer: mattmcinnes
 ms.custom: include file
 # Customer intent: "As a cloud architect, I want to review the specifications of FXmsv2 series VMs, so that I can select the appropriate size and performance for my workloads based on processing, memory, storage, and network requirements."
 ---
-| Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
+| Part | Quantity <br><sup>Count Units</sup> | Specs <br><sup>SKU ID, Performance Units, etc.</sup>  |
 |---|---|---|
 | Processor      | 2 - 96 vCPUs       | Intel Xeon Platinum 8573C (Emerald Rapids) [x86-64]                   |
-| Memory         | 42 - 1832 GiB          |                      |
+| Memory         | 42 - 1,832 GiB          |                      |
 | Local Storage  | None           |                    |
 | Remote Storage | 8 - 64 Disks    | 8,000 - 400,000 IOPS <br>273 - 10,000 MBps |
 | Network        | 2 - 8 NICs          | 12,500 - 70,000 Mbps <br>Interfaces: NetVSC, [MANA](https://aka.ms/ManaFAQ1)  |

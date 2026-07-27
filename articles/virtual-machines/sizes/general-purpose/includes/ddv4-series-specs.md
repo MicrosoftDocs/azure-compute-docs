@@ -11,7 +11,7 @@ ms.reviewer: mattmcinnes
 ms.custom: include file
 # Customer intent: As a cloud architect, I want to review the specifications of Ddv4-series virtual machines so that I can select the optimal VM size for my application workloads based on performance and resource requirements.
 ---
-| Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
+| Part | Quantity <br><sup>Count Units</sup> | Specs <br><sup>SKU ID, Performance Units, etc.</sup>  |
 |---|---|---|
 | Processor      | 2 - 64 vCPUs       | Intel Xeon Platinum 8370C (Ice Lake) [x86-64] <br>Intel Xeon Platinum 8272CL (Cascade Lake) [x86-64] <br>Intel Xeon Platinum 8573C (Emerald Rapids) [x86-64]  |
 | Memory         | 8 - 256 GiB          |                                                    |

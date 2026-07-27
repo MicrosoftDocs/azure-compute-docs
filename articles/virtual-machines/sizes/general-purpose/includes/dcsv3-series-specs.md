@@ -11,7 +11,7 @@ ms.reviewer: mattmcinnes
 ms.custom: include file
 # Customer intent: "As a cloud architect, I want to review the specifications of DCsv3-series VM sizes so that I can select the appropriate configuration for my application workloads."
 ---
-| Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
+| Part | Quantity <br><sup>Count Units</sup> | Specs <br><sup>SKU ID, Performance Units, etc.</sup>  |
 |---|---|---|
 | Processor      | 1 - 48 vCPUs       | Intel Xeon (Ice Lake) [x86-64]                               |
 | Memory         | 8 - 384 GiB          |                                  |

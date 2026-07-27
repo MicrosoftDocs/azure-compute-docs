@@ -11,7 +11,7 @@ ms.reviewer: mattmcinnes
 ms.custom: include file
 # Customer intent: As a cloud architect, I want to access the specifications of DCedsv5-series VM sizes, so that I can determine the best VM configuration for my workload requirements.
 ---
-| Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
+| Part | Quantity <br><sup>Count Units</sup> | Specs <br><sup>SKU ID, Performance Units, etc.</sup>  |
 |---|---|---|
 | Processor      | 2 - 96 vCPUs       | Intel Xeon (Sapphire Rapids) [x86-64]                               |
 | Memory         | 8 - 384 GiB          |                                  |

@@ -10,7 +10,7 @@ ms.author: rishigomatam
 ms.reviewer: mattmcinnes
 ms.custom: include file
 ---
-| Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
+| Part | Quantity <br><sup>Count Units</sup> | Specs <br><sup>SKU ID, Performance Units, etc.</sup>  |
 |---|---|---|
 | Processor      | 2 - 32 vCPUs       | AMD EPYC 9004 (Genoa) [x86-64]                   |
 | Memory         | 16 - 256 GiB          |                      |

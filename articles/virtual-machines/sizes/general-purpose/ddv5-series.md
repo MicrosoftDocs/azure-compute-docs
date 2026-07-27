@@ -26,7 +26,7 @@ For features supported by this series, see the [Feature support](#feature-suppor
 
 vCPUs (Qty.) and Memory for each size
 
-| Size Name | vCPUs (Qty.) | Memory (GB) |
+| Size Name | vCPUs (Qty.) | Memory (GiB) |
 | --- | --- | --- |
 | Standard_D2d_v5 | 2 | 8 |
 | Standard_D4d_v5 | 4 | 16 |
@@ -45,13 +45,13 @@ vCPUs (Qty.) and Memory for each size
 
 Local (temp) storage info for each size
 
-| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read (RR)<sup>1</sup> IOPS | Temp Disk Random Read (RR)<sup>1</sup> Throughput (MBps) |
+| Size Name | Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read IOPS | Temp Disk Sequential Read Throughput (MBps) |
 | --- | --- | --- | --- | --- |
 | Standard_D2d_v5 | 1 | 75 | 9,000 | 125 |
 | Standard_D4d_v5 | 1 | 150 | 19,000 | 250 |
 | Standard_D8d_v5 | 1 | 300 | 38,000 | 500 |
 | Standard_D16d_v5 | 1 | 600 | 75,000 | 1,000 |
-| Standard_D32d_v5 | 1 | 1,200 | 150,000 | 2000 |
+| Standard_D32d_v5 | 1 | 1,200 | 150,000 | 2,000 |
 | Standard_D48d_v5 | 1 | 1,800 | 225,000 | 3,000 |
 | Standard_D64d_v5 | 1 | 2,400 | 300,000 | 4,000 |
 | Standard_D96d_v5 | 1 | 3,600 | 450,000 | 4,000 |
@@ -62,7 +62,7 @@ Local (temp) storage info for each size
 - [Share an Azure managed disk](../../../virtual-machines/disks-shared.md)
 
 #### Table definitions
-- <sup>1</sup>Temp disk speed often differs between RR (Random Read) and RW (Random Write) operations. RR operations are typically faster than RW operations. The RW speed is usually slower than the RR speed on series where only the RR speed value is listed.
+- Temp disk performance depends on many factors including block size, workload patterns of read/writes, queue depth (QD), and others. Temp disk performance specifications should be viewed as best case performance numbers, assuming 4k block sizes and QD=256 for IOPS, and 256k block sizes with QD=64 for throughput. Additionally, temp disk performance often differs between read and write operations. During steady state operations, write performance is expected to be lower than read performance.
 - Storage capacity is shown in units of GiB or 1,024^3 bytes. When you compare disks measured in GB (1,000^3 bytes) to disks measured in GiB (1,024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1,023 GiB = 1,098.4 GB.
 - Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
 - To learn how to get the best storage performance for your VMs, see [Virtual machine and disk performance](../../../virtual-machines/disks-performance.md).
@@ -71,13 +71,13 @@ Local (temp) storage info for each size
 
 Remote (uncached) storage info for each size
 
-| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD IOPS | Uncached Premium SSD Throughput (MBps) | Uncached Premium SSD Burst<sup>1</sup> IOPS | Uncached Premium SSD Burst<sup>1</sup> Throughput (MBps) |
+| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD IOPS | Uncached Premium SSD Throughput (MBps) | Uncached Premium SSD Burst IOPS | Uncached Premium SSD Burst Throughput (MBps) |
 | --- | --- | --- | --- | --- | --- |
 | Standard_D2d_v5 | 4 | 3,750 | 85 | 10,000 | 1,200 |
 | Standard_D4d_v5 | 8 | 6,400 | 145 | 20,000 | 1,200 |
 | Standard_D8d_v5 | 16 | 12,800 | 290 | 20,000 | 1,200 |
 | Standard_D16d_v5 | 32 | 25,600 | 600 | 40,000 | 1,200 |
-| Standard_D32d_v5 | 32 | 51,200 | 865 | 80,000 | 2000 |
+| Standard_D32d_v5 | 32 | 51,200 | 865 | 80,000 | 2,000 |
 | Standard_D48d_v5 | 32 | 76,800 | 1,315 | 80,000 | 3,000 |
 | Standard_D64d_v5 | 32 | 80,000 | 1,735 | 80,000 | 3,000 |
 | Standard_D96d_v5 | 32 | 80,000 | 2,600 | 80,000 | 4,000 |
@@ -88,7 +88,7 @@ Remote (uncached) storage info for each size
 - [Share an Azure managed disk](../../../virtual-machines/disks-shared.md)
 
 #### Table definitions
-- <sup>1</sup>Some sizes support [bursting](../../disk-bursting.md) to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.
+- Some sizes support [bursting](../../disk-bursting.md) to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.
 
 - Storage capacity is shown in units of GiB or 1,024^3 bytes. When you compare disks measured in GB (1,000^3 bytes) to disks measured in GiB (1,024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1,023 GiB = 1,098.4 GB.
 - Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
@@ -118,7 +118,7 @@ Network interface info for each size
 #### Table definitions
 - Expected network bandwidth is the maximum aggregated bandwidth allocated per VM type across all NICs, for all destinations. For more information, see [Virtual machine network bandwidth](/azure/virtual-network/virtual-machine-network-throughput)
 - Upper limits aren't guaranteed. Limits offer guidance for selecting the right VM type for the intended application. Actual network performance will depend on several factors including network congestion, application loads, and network settings. For information on optimizing network throughput, see [Optimize network throughput for Azure virtual machines](/azure/virtual-network/virtual-network-optimize-network-bandwidth). 
--  To achieve the expected network performance on Linux or Windows, you may need to select a specific version or optimize your VM. For more information, see [Bandwidth/Throughput testing (NTTTCP)](/azure/virtual-network/virtual-network-bandwidth-testing).
+- To achieve the expected network performance on Linux or Windows, you may need to select a specific version or optimize your VM. For more information, see [Bandwidth/Throughput testing (NTTTCP)](/azure/virtual-network/virtual-network-bandwidth-testing).
 
 ### [Accelerators](#tab/sizeaccelerators)
 

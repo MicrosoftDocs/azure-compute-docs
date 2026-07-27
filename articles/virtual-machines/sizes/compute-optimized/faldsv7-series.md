@@ -26,7 +26,7 @@ For features supported by this series, see the [Feature support](#feature-suppor
 
 vCPUs (Qty.) and Memory for each size
 
-| Size Name | vCPUs (Qty.) | Memory (GB) |
+| Size Name | vCPUs (Qty.) | Memory (GiB) |
 | --- | --- | --- |
 | Standard_F1alds_v7 | 1 | 2 |
 | Standard_F2alds_v7 | 2 | 4 |
@@ -45,25 +45,25 @@ vCPUs (Qty.) and Memory for each size
 
 Local (temp) storage info for each size
 
-| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read (RR)<sup>1</sup> IOPS | Temp Disk Random Read (RR)<sup>1</sup> Throughput (MB/s) | Temp Disk Random Write (RW)<sup>1</sup> IOPS | Temp Disk Random Write (RW)<sup>1</sup> Throughput (MB/s) |
+| Size Name | Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read IOPS | Temp Disk Sequential Read Throughput (MBps) | Temp Disk Random Write IOPS | Temp Disk Sequential Write Throughput (MBps) |
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_F1alds_v7 | 1 | 110 | 37500 | 280 | 15000 | 140 |
-| Standard_F2alds_v7 | 1 | 220 | 75000 | 560 | 30000 | 280 |
-| Standard_F4alds_v7 | 1 | 440 | 150000 | 1120 | 60000 | 560 |
-| Standard_F8alds_v7 | 2 | 440 | 300000 | 2240 | 120000 | 1120 |
-| Standard_F16alds_v7 | 4 | 440 | 600000 | 4480 | 240000 | 2240 |
-| Standard_F32alds_v7 | 4 | 880 | 1200000 | 8960 | 480000 | 4480 |
-| Standard_F48alds_v7 | 6 | 880 | 1800000 | 13440 | 720000 | 6720 |
-| Standard_F64alds_v7 | 4 | 1760 | 2400000 | 17920 | 960000 | 8960 |
-| Standard_F80alds_v7 | 4 | 2200 | 3000000 | 22400 | 1200000 | 11200 |
+| Standard_F1alds_v7 | 1 | 110 | 37,500 | 280 | 15,000 | 140 |
+| Standard_F2alds_v7 | 1 | 220 | 75,000 | 560 | 30,000 | 280 |
+| Standard_F4alds_v7 | 1 | 440 | 150,000 | 1,120 | 60,000 | 560 |
+| Standard_F8alds_v7 | 2 | 440 | 300,000 | 2,240 | 120,000 | 1,120 |
+| Standard_F16alds_v7 | 4 | 440 | 600,000 | 4,480 | 240,000 | 2,240 |
+| Standard_F32alds_v7 | 4 | 880 | 1,200,000 | 8,960 | 480,000 | 4,480 |
+| Standard_F48alds_v7 | 6 | 880 | 1,800,000 | 13,440 | 720,000 | 6,720 |
+| Standard_F64alds_v7 | 4 | 1,760 | 2,400,000 | 17,920 | 960,000 | 8,960 |
+| Standard_F80alds_v7 | 4 | 2,200 | 3,000,000 | 22,400 | 1,200,000 | 11,200 |
 
 #### Storage resources
-- [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
-- [Azure managed disk types](../../../virtual-machines/disks-types.md)
-- [Share an Azure managed disk](../../../virtual-machines/disks-shared.md)
+- [NVMe Overview](/azure/virtual-machines/nvme-overview)
+- [FAQ for temp NVMe disks](/azure/virtual-machines/enable-nvme-temp-faqs)
 
 #### Table definitions
-- <sup>1</sup> Temp disk speed often differs between RR (Random Read) and RW (Random Write) operations. RR operations are typically faster than RW operations. The RW speed is usually slower than the RR speed on series where only the RR speed value is listed. Temp disk performance can vary based on workload, block size, and system conditions. Published numbers show peak performance under controlled testing, temp disk performance specifications should be viewed as best case performance numbers and may differ in real-world scenarios. Factors such as data patterns, SSD wear, and background processes can affect write speeds. For more details, please see [FAQ for Temp NVMe disks](../../../virtual-machines/enable-nvme-temp-faqs.yml)
+- Temp disk performance depends on many factors including block size, workload patterns of read/writes, queue depth (QD), and others. Temp disk performance specifications should be viewed as best case performance numbers, assuming 4k block sizes and QD=256 for IOPS, and 256k block sizes with QD=64 for throughput. Read performance specs assume 100% reads, and write performance specs assume 100% writes. Additionally, write performance is heavily impacted by how many blocks in use on a device. Temp disk write performance specs assume a device has a clean slate to enable the best performance. During steady state operations, write performance is expected to be lower than the published specs.
+- NVMe temp disks are presented as raw NVMe devices that need to be initialized and formatted before use. For more details on how to format and initialize drives, refer to the [NVMe Temp Disk FAQ](/azure/virtual-machines/enable-nvme-temp-faqs).
 - Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
 - Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
 - To learn how to get the best storage performance for your VMs, see [Virtual machine and disk performance](../../../virtual-machines/disks-performance.md).
@@ -72,17 +72,17 @@ Local (temp) storage info for each size
 
 Remote (uncached) storage info for each size
 
-| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD IOPS | Uncached Premium SSD Throughput (MB/s) | Uncached Premium SSD Burst<sup>1</sup> IOPS | Uncached Premium SSD Burst<sup>1</sup> Throughput (MB/s) | Uncached Ultra Disk and Premium SSD v2 IOPS | Uncached Ultra Disk and Premium SSD v2 Throughput (MB/s) | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 IOPS | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 Throughput (MB/s) |
+| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD IOPS | Uncached Premium SSD Throughput (MBps) | Uncached Premium SSD Burst IOPS | Uncached Premium SSD Burst Throughput (MBps) | Uncached Ultra Disk and Premium SSD v2 IOPS | Uncached Ultra Disk and Premium SSD v2 Throughput (MBps) | Uncached Burst Ultra Disk and Premium SSD v2 IOPS | Uncached Burst Ultra Disk and Premium SSD v2 Throughput (MBps) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_F1alds_v7 | 10 | 4000 | 118 | 44000 | 1412 | 4400 | 136 | 48400 | 1653 |
-| Standard_F2alds_v7 | 12 | 8000 | 234 | 47200 | 1412 | 8800 | 273 | 52083 | 1653 |
-| Standard_F4alds_v7 | 26 | 16000 | 468 | 47200 | 1412 | 17600 | 547 | 52083 | 1653 |
-| Standard_F8alds_v7 | 48 | 32000 | 936 | 72700 | 1412 | 35200 | 1095 | 80000 | 1653 |
-| Standard_F16alds_v7 | 64 | 64000 | 1872 | 94400 | 1916 | 70400 | 2191 | 104167 | 2241 |
-| Standard_F32alds_v7 | 64 | 128000 | 3744 | 132000 | 3832 | 140800 | 4382 | 145200 | 4484 |
-| Standard_F48alds_v7 | 64 | 192000 | 5663 | 192500 | 5749 | 211200 | 6573 | 211750 | 6669 |
-| Standard_F64alds_v7 | 64 | 204800 | 7488 | 225280 | 7663 | 281600 | 8764 | 310886 | 8966 |
-| Standard_F80alds_v7 | 64 | 212000 | 10344 | 242640 | 11410 | 310000 | 10356 | 355443 | 11450 |
+| Standard_F1alds_v7 | 10 | 4,000 | 118 | 44,000 | 1,412 | 4,400 | 136 | 48,400 | 1,653 |
+| Standard_F2alds_v7 | 12 | 8,000 | 234 | 47,200 | 1,412 | 8,800 | 273 | 52,083 | 1,653 |
+| Standard_F4alds_v7 | 26 | 16,000 | 468 | 47,200 | 1,412 | 17,600 | 547 | 52,083 | 1,653 |
+| Standard_F8alds_v7 | 48 | 32,000 | 936 | 72,700 | 1,412 | 35,200 | 1,095 | 80,000 | 1,653 |
+| Standard_F16alds_v7 | 64 | 64,000 | 1,872 | 94,400 | 1,916 | 70,400 | 2,191 | 104,167 | 2,241 |
+| Standard_F32alds_v7 | 64 | 128,000 | 3,744 | 132,000 | 3,832 | 140,800 | 4,382 | 145,200 | 4,484 |
+| Standard_F48alds_v7 | 64 | 192,000 | 5,663 | 192,500 | 5,749 | 211,200 | 6,573 | 211,750 | 6,669 |
+| Standard_F64alds_v7 | 64 | 204,800 | 7,488 | 225,280 | 7,663 | 281,600 | 8,764 | 310,886 | 8,966 |
+| Standard_F80alds_v7 | 64 | 212,000 | 10,344 | 242,640 | 11,410 | 310,000 | 10,356 | 355,443 | 11,450 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
@@ -90,7 +90,7 @@ Remote (uncached) storage info for each size
 - [Share an Azure managed disk](../../../virtual-machines/disks-shared.md)
 
 #### Table definitions
-- <sup>1</sup>Some sizes support [bursting](../../disk-bursting.md) to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.
+- Some sizes support [bursting](../../disk-bursting.md) to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.
 
 - Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
 - Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
@@ -102,17 +102,17 @@ Remote (uncached) storage info for each size
 
 Network interface info for each size
 
-| Size Name | Max NICs (Qty.) | Max Network Bandwidth (Mb/s) |
+| Size Name | Max NICs (Qty.) | Max Network Bandwidth (Mbps) |
 | --- | --- | --- |
-| Standard_F1alds_v7 | 2 | 16000 |
-| Standard_F2alds_v7 | 3 | 16000 |
-| Standard_F4alds_v7 | 4 | 25000 |
-| Standard_F8alds_v7 | 8 | 25000 |
-| Standard_F16alds_v7 | 8 | 25000 |
-| Standard_F32alds_v7 | 8 | 45000 |
-| Standard_F48alds_v7 | 8 | 70000 |
-| Standard_F64alds_v7 | 15 | 75000 |
-| Standard_F80alds_v7 | 15 | 80000 |
+| Standard_F1alds_v7 | 2 | 16,000 |
+| Standard_F2alds_v7 | 3 | 16,000 |
+| Standard_F4alds_v7 | 4 | 25,000 |
+| Standard_F8alds_v7 | 8 | 25,000 |
+| Standard_F16alds_v7 | 8 | 25,000 |
+| Standard_F32alds_v7 | 8 | 45,000 |
+| Standard_F48alds_v7 | 8 | 70,000 |
+| Standard_F64alds_v7 | 15 | 75,000 |
+| Standard_F80alds_v7 | 15 | 80,000 |
 
 #### Networking resources
 - [Virtual networks and virtual machines in Azure](/azure/virtual-network/network-overview)
