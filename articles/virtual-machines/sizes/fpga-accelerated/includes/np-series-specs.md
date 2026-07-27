@@ -11,11 +11,11 @@ ms.reviewer: mattmcinnes
 ms.custom: include file
 # Customer intent: "As a cloud architect, I want to review the specifications of NP-series VM sizes, so that I can select the appropriate virtual machine configuration for my high-performance computing needs."
 ---
-| Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
+| Part | Quantity <br><sup>Count Units</sup> | Specs <br><sup>SKU ID, Performance Units, etc.</sup>  |
 |---|---|---|
 | Processor      | 10 - 40 vCPUs     | Intel Xeon 8171M (Skylake) [x86-64] |
 | Memory         | 168 - 672 GiB        |    |
-| Local Storage  | 1 Disk         | 736 - 2948 GiB  |
+| Local Storage  | 1 Disk         | 736 - 2,948 GiB  |
 | Remote Storage | 8 - 32 Disks        |  |
-| Network        | 1 - 4 NICs        | 7500 - 30000 Mbps |
+| Network        | 1 - 4 NICs        | 7,500 - 30,000 Mbps |
 | Accelerators   | 1 - 4 FPGAs            | AMD Alveo U250 FPGA (64GB)    |

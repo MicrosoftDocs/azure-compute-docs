@@ -11,11 +11,11 @@ ms.reviewer: mattmcinnes
 ms.custom: include file
 # Customer intent: As a cloud architect, I want to access detailed specifications for NCasT4_v3 series VM sizes, so that I can select the appropriate virtual machine configuration for my application needs.
 ---
-| Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
+| Part | Quantity <br><sup>Count Units</sup> | Specs <br><sup>SKU ID, Performance Units, etc.</sup>  |
 |---|---|---|
 | Processor      | 4 - 64 vCPUs       | AMD EPYC 7V12 (Rome) [x86-64]                               |
 | Memory         | 28 - 440 GiB          |                                  |
-| Local Storage  | 1 Disk           | 176 - 2816 GiB <br> IOPS (RR) <br> MBps (RR)                               |
+| Local Storage  | 1 Disk           | 176 - 2,816 GiB <br> IOPS <br> MBps                               |
 | Remote Storage | 8 - 32 Disks    |  IOPS <br> MBps   |
-| Network        | 2 - 8 NICs          | 8000 - 32000 Mbps                          |
+| Network        | 2 - 8 NICs          | 8,000 - 32,000 Mbps                          |
 | Accelerators   | 1 - 4 GPUs              | Nvidia Tesla T4 GPU (16GB)                                  |

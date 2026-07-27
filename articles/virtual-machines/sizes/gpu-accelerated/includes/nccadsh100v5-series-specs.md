@@ -11,11 +11,11 @@ ms.reviewer: mattmcinnes
 ms.custom: include file
 # Customer intent: "As a cloud architect, I want to review the specifications of the NCCads_H100_v5 series VM sizes, so that I can assess their performance capabilities for my workload requirements."
 ---
-| Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
+| Part | Quantity <br><sup>Count Units</sup> | Specs <br><sup>SKU ID, Performance Units, etc.</sup>  |
 |---|---|---|
 | Processor      |  40 vCPUs     | AMD EPYC (Genoa) [x86-64] |
 | Memory         |  320 GiB        |    |
 | Local Storage  |  1 Disk         | 800 GiB  |
-| Remote Storage |  8 Disks        | 100000 IOPS <br>3000 MBps |
-| Network        |  8 NICs        | 40000 Mbps <br>Interfaces: NetVSC, ConnectX  |
+| Remote Storage |  8 Disks        | 100,000 IOPS <br>3,000 MBps |
+| Network        |  8 NICs        | 40,000 Mbps <br>Interfaces: NetVSC, ConnectX  |
 | Accelerators   |  1 GPU            | Nvidia H100 GPU (94GB)    |

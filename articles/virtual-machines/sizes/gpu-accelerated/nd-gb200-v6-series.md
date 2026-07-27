@@ -26,7 +26,7 @@ For features supported by this series, see the [Feature support](#feature-suppor
 
 vCPUs (Qty.) and Memory for each size
 
-| Size Name | vCPUs (Qty.) | Memory (GB) |
+| Size Name | vCPUs (Qty.) | Memory (GiB) |
 | --- | --- | --- |
 | Standard_ND128isr_NDR_GB200_v6 | 128 | 900 |
 
@@ -37,7 +37,7 @@ vCPUs (Qty.) and Memory for each size
 
 Local (temp) storage info for each size
 
-| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (TB) |
+| Size Name | Temp Storage Disks (Qty.) | Temp Disk Size (TB) |
 | --- | --- | --- |
 | Standard_ND128isr_NDR_GB200_v6 | 4 | 16 |
 
@@ -47,7 +47,7 @@ Local (temp) storage info for each size
 - [Share an Azure managed disk](../../../virtual-machines/disks-shared.md)
 
 #### Table definitions
-- Temp disk speed often differs between RR (Random Read) and RW (Random Write) operations. RR operations are typically faster than RW operations. The RW speed is usually slower than the RR speed on series where only the RR speed value is listed.
+- Temp disk performance depends on many factors including block size, workload patterns of read/writes, queue depth (QD), and others. Temp disk performance specifications should be viewed as best case performance numbers, assuming 4k block sizes and QD=256 for IOPS, and 256k block sizes with QD=64 for throughput. Additionally, temp disk performance often differs between read and write operations. During steady state operations, write performance is expected to be lower than read performance.
 - Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
 - Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
 - To learn how to get the best storage performance for your VMs, see [Virtual machine and disk performance](../../../virtual-machines/disks-performance.md).
@@ -58,7 +58,7 @@ Remote (uncached) storage info for each size
 
 | Size Name | Max Remote Storage Disks (Qty.) | Uncached Disk IOPS | Uncached Disk Speed (MBps) |
 | --- | --- | --- | --- |
-| Standard_ND128isr_NDR_GB200_v6 | 316 | 80000 | 1200 |
+| Standard_ND128isr_NDR_GB200_v6 | 316 | 80,000 | 1,200 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
@@ -78,7 +78,7 @@ Remote (uncached) storage info for each size
 
 Network interface info for each size
 
-| Size Name | Max Front-end NICs (Qty.) | Max Front-end Bandwidth (Mbps) | Max Scale-up NICS (Qty.) | Max Scale-Up Bandwidth (Gbps)<sup>1</sup> | Max Scale-out NICS (Qty.) | Max Scale-Out Bandwidth (TBps)<sup>2</sup> |
+| Size Name | Max Front-end NICs (Qty.) | Max Front-end Bandwidth (Mbps) | Max Scale-up NICS (Qty.) | Max Scale-Up Bandwidth (Gbps) | Max Scale-out NICS (Qty.) | Max Scale-Out Bandwidth (TBps) |
 | --- | --- | --- | --- | --- | --- | --- |
 | Standard_ND128isr_NDR_GB200_v6 | 1 | 160 | 4 | 400 | 4 | 1.8 |
 
@@ -87,8 +87,8 @@ Network interface info for each size
 - [Virtual machine network bandwidth](/azure/virtual-network/virtual-machine-network-throughput)
 
 #### Table definitions
-- <sup>1</sup> Bandwidth is per NIC to up to 100,000 of GPUs through InfiniBand
-- <sup>2</sup> Bandwidth is up to 72 GPUs per domain through NVLINK
+-  Bandwidth is per NIC to up to 100,000 GPUs through InfiniBand
+-  Bandwidth is up to 72 GPUs per domain through NVLINK
 - Expected network bandwidth is the maximum aggregated bandwidth allocated per VM type across all NICs, for all destinations. For more information, see [Virtual machine network bandwidth](/azure/virtual-network/virtual-machine-network-throughput)
 - Upper limits aren't guaranteed. Limits offer guidance for selecting the right VM type for the intended application. Actual network performance will depend on several factors including network congestion, application loads, and network settings. For information on optimizing network throughput, see [Optimize network throughput for Azure virtual machines](/azure/virtual-network/virtual-network-optimize-network-bandwidth). 
 - To achieve the expected network performance on Linux or Windows, you may need to select a specific version or optimize your VM. For more information, see [Bandwidth/Throughput testing (NTTTCP)](/azure/virtual-network/virtual-network-bandwidth-testing).

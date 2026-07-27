@@ -11,11 +11,11 @@ ms.reviewer: mattmcinnes
 ms.custom: include file
 # Customer intent: "As a cloud architect, I want to access detailed specifications for NV-series VM sizes, so that I can determine the right configurations for my workload requirements."
 ---
-| Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
+| Part | Quantity <br><sup>Count Units</sup> | Specs <br><sup>SKU ID, Performance Units, etc.</sup>  |
 |---|---|---|
 | Processor      | 6 - 24 vCPUs     | Intel Xeon E5-2690 v3 (Haswell) [x86-64] |
 | Memory         | 56 - 224 GiB        |    |
-| Local Storage  | 1 Disk         | 340 - 1440 GiB  |
+| Local Storage  | 1 Disk         | 340 - 1,440 GiB  |
 | Remote Storage | 24 - 64        |  |
 | Network        | 1 - 4 NICs        |  |
 | Accelerators   | 1/2 - 2 GPUs            | Nvidia Tesla M60 GPU (16GB)    |
