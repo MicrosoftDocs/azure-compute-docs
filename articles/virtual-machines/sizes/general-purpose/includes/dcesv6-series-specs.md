@@ -11,7 +11,7 @@ ms.reviewer: mattmcinnes
 ms.custom: include file
 # Customer intent: "As a cloud architect, I want to access the specifications of the DCesv6 series VM sizes, so that I can evaluate their capabilities for my organization's workload requirements."
 ---
-| Part | Quantity min - max | Specs <br><sup>SKU ID, Performance Units, etc.  |
+| Part | Quantity min - max | Specs <br><sup>SKU ID, Performance Units, etc.</sup>  |
 |---|---|---|
 | Processor      | 2 - 128 vCPUs       | Intel Xeon Platinum 8573C (Emerald Rapids) [x86-64]                               |
 | Memory         | 8 - 512 GB          |                                  |

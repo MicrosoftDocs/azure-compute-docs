@@ -11,7 +11,7 @@ ms.reviewer: mattmcinnes
 ms.custom: include file
 # Customer intent: "As a cloud architect, I want to review the specifications of Dasv4-series VMs, so that I can select the appropriate VM sizes for my workloads based on performance and resource requirements."
 ---
-| Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
+| Part | Quantity <br><sup>Count Units</sup> | Specs <br><sup>SKU ID, Performance Units, etc.</sup>  |
 |---|---|---|
 | Processor      | 2 - 96 vCPUs       | AMD EPYC 7452 (Rome) [x86-64] <br>AMD EPYC 7763v (Genoa) [x86-64]                               |
 | Memory         | 8 - 384 GiB          |                                  |
