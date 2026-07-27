@@ -17,5 +17,5 @@ ms.custom: include file
 | Memory         | 16 - 384 GiB          |                                  |
 | Local Storage  | None           |                                |
 | Remote Storage | 8 - 32 Disks | 6,000 - 80,000 IOPS <br>144 - 1,600 MBps <br>Disk Types: [Standard SDD/HDD](../../../disks-types.md#standard-ssds), [Premium SSD](../../../disks-types.md#premium-ssds) |
-| Network        | 2 - 8 NICs          | Mbps <br>Interfaces: NetVSC, ConnectX                          |
+| Network        | 2 - 8 NICs          | Interfaces: NetVSC, ConnectX                          |
 | Accelerators   | None              |                                   |

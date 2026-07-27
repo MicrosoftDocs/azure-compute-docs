@@ -24,11 +24,11 @@ The DCedsv6 offer a balance of memory to vCPU performance that's suitable most p
 ## Host specifications
 | Part | Quantity min - max | Specs <br><sup>SKU ID, Performance Units, etc.</sup>  |
 |---|---|---|
-| Processor      | 2 - 128 vCPUs       | Intel Xeon Platinum 8,573C (Emerald Rapids) [x86-64]                               |
-| Memory         | 8 - 512 GB          |                                  |
+| Processor      | 2 - 128 vCPUs       | Intel Xeon Platinum 8573C (Emerald Rapids) [x86-64]                               |
+| Memory         | 8 - 512 GiB          |                                  |
 | Local Storage  | 110 - 7,040 GiB           |                                |
-| Remote Storage | 8 - 64 Disks    | 3,750 to 204,800 IOPS <br> and 80 to 4,000 MBps   |
-| Network        | 2 - 8 NICs          | 12,500 to 40,000 Mbps                          |
+| Remote Storage | 8 - 64 Disks    | 3,750 - 204,800 IOPS <br>80 - 4,000 MBps   |
+| Network        | 2 - 8 NICs          | 12,500 - 40,000 Mbps                          |
 | Accelerators   | None              |                                   |
 
 
