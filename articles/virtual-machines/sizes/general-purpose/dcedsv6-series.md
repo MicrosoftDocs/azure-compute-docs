@@ -59,7 +59,7 @@ This table shows the number of vCPUs and amount of memory for each DCesv6-series
 
 Local (temp) storage available for each size.
 
-| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read (RR) IOPS | Temp Disk Random Read (RR) Throughput (MBps)|
+| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read IOPS | Temp Disk Sequential Read Throughput (MBps) |
 | --- | --- | --- | --- | --- |
 | Standard_DC2eds_v6 | 1 | 110 | 37,500 | 180 |
 | Standard_DC4eds_v6 | 1 | 220 | 75,000 | 360 |
@@ -124,7 +124,7 @@ Network interface information for each size.
 #### Table definitions
 - Expected network bandwidth is the maximum aggregated bandwidth allocated per VM type across all NICs, for all destinations. For more information, see [Virtual machine network bandwidth](/azure/virtual-network/virtual-machine-network-throughput)
 - Upper limits aren't guaranteed. Limits offer guidance for selecting the right VM type for the intended application. Actual network performance depends on several factors including network congestion, application loads, and network settings. For information on optimizing network throughput, see [Optimize network throughput for Azure virtual machines](/azure/virtual-network/virtual-network-optimize-network-bandwidth). 
--  To achieve the expected network performance on Linux or Windows, you may need to select a specific version or optimize your VM. For more information, see [Bandwidth/Throughput testing (NTTTCP)](/azure/virtual-network/virtual-network-bandwidth-testing).
+- To achieve the expected network performance on Linux or Windows, you may need to select a specific version or optimize your VM. For more information, see [Bandwidth/Throughput testing (NTTTCP)](/azure/virtual-network/virtual-network-bandwidth-testing).
 
 ### [Accelerators](#tab/sizeaccelerators)
 
