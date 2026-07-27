@@ -52,7 +52,7 @@ vCPUs (Qty.) and Memory for each size
 
 Local (temp) storage info for each size
 
-| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read IOPS | Temp Disk Sequential Read Throughput (MBps) | Temp Disk Random Write IOPS | Temp Disk Sequential Write Throughput (MBps) |
+| Size Name | Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read IOPS | Temp Disk Sequential Read Throughput (MBps) | Temp Disk Random Write IOPS | Temp Disk Sequential Write Throughput (MBps) |
 | --- | --- | --- | --- | --- | --- | --- |
 | Standard_D2plds_v6  | 1 | 110 | 37,500  | 90   | 15,000  | 180 |
 | Standard_D4plds_v6  | 1 | 220 | 75,000  | 180  | 30,000  | 360 |
