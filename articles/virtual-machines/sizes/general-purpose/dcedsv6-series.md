@@ -59,7 +59,7 @@ This table shows the number of vCPUs and amount of memory for each DCesv6-series
 
 Local (temp) storage available for each size.
 
-| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read IOPS | Temp Disk Sequential Read Throughput (MBps) |
+| Size Name | Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read IOPS | Temp Disk Sequential Read Throughput (MBps) |
 | --- | --- | --- | --- | --- |
 | Standard_DC2eds_v6 | 1 | 110 | 37,500 | 180 |
 | Standard_DC4eds_v6 | 1 | 220 | 75,000 | 360 |
