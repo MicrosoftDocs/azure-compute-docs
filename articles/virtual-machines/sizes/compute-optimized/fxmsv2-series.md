@@ -26,7 +26,7 @@ For features supported by this series, see the [Feature support](#feature-suppor
 
 vCPUs (Qty.) and Memory for each size
 
-| Size Name | vCPUs (Qty.) | Memory (GB) |
+| Size Name | vCPUs (Qty.) | Memory (GiB) |
 | --- | --- | --- |
 | Standard_FX2ms_v2 | 2 | 42 |
 | Standard_FX4ms_v2 | 4 | 84 |
@@ -35,9 +35,9 @@ vCPUs (Qty.) and Memory for each size
 | Standard_FX16ms_v2 | 16 | 336 |
 | Standard_FX24ms_v2 | 24 | 504 |
 | Standard_FX32ms_v2 | 32 | 672 |
-| Standard_FX48ms_v2 | 48 | 1008 |
-| Standard_FX64ms_v2 | 64 | 1344 |
-| Standard_FX96ms_v2 | 96 | 1832 |
+| Standard_FX48ms_v2 | 48 | 1,008 |
+| Standard_FX64ms_v2 | 64 | 1,344 |
+| Standard_FX96ms_v2 | 96 | 1,832 |
 
 #### VM Basics resources
 - [Check vCPU quotas](../../../virtual-machines/quotas.md)
@@ -57,7 +57,7 @@ Local (temp) storage info for each size
 
 Remote (uncached) storage info for each size
 
-| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD IOPS | Uncached Premium SSD Throughput (MB/s) | Uncached Premium SSD Burst<sup>1</sup> IOPS | Uncached Premium SSD Burst<sup>1</sup> Throughput (MB/s) | Uncached Ultra Disk and Premium SSD v2 IOPS | Uncached Ultra Disk and Premium SSD v2 Throughput (MB/s) | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 IOPS | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 Throughput (MB/s) |
+| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD IOPS | Uncached Premium SSD Throughput (MBps) | Uncached Premium SSD Burst IOPS | Uncached Premium SSD Burst Throughput (MBps) | Uncached Ultra Disk and Premium SSD v2 IOPS | Uncached Ultra Disk and Premium SSD v2 Throughput (MBps) | Uncached Burst Ultra Disk and Premium SSD v2 IOPS | Uncached Burst Ultra Disk and Premium SSD v2 Throughput (MBps) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_FX2ms_v2 | 8 | 8,000 | 273 | 40,000 | 1,250 | 12,000 | 300 | 60,000 | 1,375 |
 | Standard_FX4ms_v2 | 12 | 16,000 | 545 | 65,000 | 1,800 | 21,400 | 600 | 86,938 | 1,980 |
@@ -76,7 +76,7 @@ Remote (uncached) storage info for each size
 - [Share an Azure managed disk](../../../virtual-machines/disks-shared.md)
 
 #### Table definitions
-- <sup>1</sup>Some sizes support [bursting](../../disk-bursting.md) to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.
+- Some sizes support [bursting](../../disk-bursting.md) to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.
 
 - Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
 - Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
@@ -88,7 +88,7 @@ Remote (uncached) storage info for each size
 
 Network interface info for each size
 
-| Size Name | Max NICs (Qty.) | Max Network Bandwidth (Mb/s) |
+| Size Name | Max NICs (Qty.) | Max Network Bandwidth (Mbps) |
 | --- | --- | --- |
 | Standard_FX2ms_v2 | 2 | 12,500 |
 | Standard_FX4ms_v2 | 2 | 25,000 |

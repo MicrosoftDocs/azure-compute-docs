@@ -45,24 +45,24 @@ vCPUs (Qty.) and Memory for each size.
 
 Local (temp) storage info for each size.
 
-| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GB) | Temp Disk Random Read<sup>1</sup> IOPS | Temp Disk Sequential Read<sup>1</sup> Throughput (MB/s) | Temp Disk Random Write<sup>1</sup> IOPS | Temp Disk Sequential Write<sup>1</sup> Throughput (MB/s) |
+| Size Name | Temp Storage Disks (Qty.) | Temp Disk Size (GB) | Temp Disk Random Read IOPS | Temp Disk Sequential Read Throughput (MBps) | Temp Disk Random Write IOPS | Temp Disk Sequential Write Throughput (MBps) |
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_L2s_v4 | 1 | 480 | 137500 | 750 | 55000 | 375 |
-| Standard_L4s_v4 | 2 | 480 | 275000 | 1500 | 110000 | 750 |
-| Standard_L8s_v4 | 4 | 480 | 550000 | 3000 | 220000 | 1500 |
-| Standard_L16s_v4 | 4 | 960 | 1100000 | 6000 | 440000 | 3000 |
-| Standard_L32s_v4 | 8 | 960 | 2200000 | 12000 | 880000 | 6000 |
-| Standard_L48s_v4 | 6 | 1920 | 3300000 | 18000 | 1320000 | 9000 |
-| Standard_L64s_v4 | 8 | 1920 | 4400000 | 24000 | 1760000 | 12000 |
-| Standard_L80s_v4 | 10 | 1920 | 5500000 | 30000 | 2200000 | 15000 |
-| Standard_L96s_v4 | 12 | 1920 | 6600000 | 36000 | 2640000 | 18000 |
+| Standard_L2s_v4 | 1 | 480 | 137,500 | 750 | 55,000 | 375 |
+| Standard_L4s_v4 | 2 | 480 | 275,000 | 1,500 | 110,000 | 750 |
+| Standard_L8s_v4 | 4 | 480 | 550,000 | 3,000 | 220,000 | 1,500 |
+| Standard_L16s_v4 | 4 | 960 | 1,100,000 | 6,000 | 440,000 | 3,000 |
+| Standard_L32s_v4 | 8 | 960 | 2,200,000 | 12,000 | 880,000 | 6,000 |
+| Standard_L48s_v4 | 6 | 1,920 | 3,300,000 | 18,000 | 1,320,000 | 9,000 |
+| Standard_L64s_v4 | 8 | 1,920 | 4,400,000 | 24,000 | 1,760,000 | 12,000 |
+| Standard_L80s_v4 | 10 | 1,920 | 5,500,000 | 30,000 | 2,200,000 | 15,000 |
+| Standard_L96s_v4 | 12 | 1,920 | 6,600,000 | 36,000 | 2,640,000 | 18,000 |
 
 #### Storage resources
 - [NVMe Overview](/azure/virtual-machines/nvme-overview)
 - [FAQ for temp NVMe disks](/azure/virtual-machines/enable-nvme-temp-faqs)
 
 #### Table definitions
-- <sup>1</sup>Temp disk performance depends on many factors including block size, workload patterns of read/writes, queue depth (QD), and others. Temp disk performance specifications should be viewed as best case performance numbers, assuming 4k block sizes and QD=256 for IOPS, and 256k block sizes with QD=64 for throughput. Additionally, write performance is heavily impacted by how many blocks in use on a device. Temp disk write performance specs assume a device has a clean slate to enable the best performance. During steady state operations, write performance is expected to be lower than the published specs. 
+- Temp disk performance depends on many factors including block size, workload patterns of read/writes, queue depth (QD), and others. Temp disk performance specifications should be viewed as best case performance numbers, assuming 4k block sizes and QD=256 for IOPS, and 256k block sizes with QD=64 for throughput. Additionally, write performance is heavily impacted by how many blocks in use on a device. Temp disk write performance specs assume a device has a clean slate to enable the best performance. During steady state operations, write performance is expected to be lower than the published specs. 
 - For Lsv4, temp disk refers to the NVMe local data disks used by the VM. While Lsv3/Lasv3 have NVMe local data disks and a SCSI local temp disk, Lsv4 only has NVMe local temp disks. There is no SCSI local temp disk on Lsv4.
 - Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
 - To learn how to get the best local storage performance for your VMs, see the [NVMe Temp Disk FAQ](/azure/virtual-machines/enable-nvme-temp-faqs).
@@ -71,7 +71,7 @@ Local (temp) storage info for each size.
 
 Remote (uncached) storage info for each size.
 
-| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD IOPS | Uncached Premium SSD Throughput (MB/s) | Uncached Premium SSD Burst<sup>1</sup> IOPS | Uncached Premium SSD Burst<sup>1</sup> Throughput (MB/s) | Uncached Ultra Disk and Premium SSD v2 IOPS | Uncached Ultra Disk and Premium SSD v2 Throughput (MB/s) | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 IOPS | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 Throughput (MB/s) |
+| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD IOPS | Uncached Premium SSD Throughput (MBps) | Uncached Premium SSD Burst IOPS | Uncached Premium SSD Burst Throughput (MBps) | Uncached Ultra Disk and Premium SSD v2 IOPS | Uncached Ultra Disk and Premium SSD v2 Throughput (MBps) | Uncached Burst Ultra Disk and Premium SSD v2 IOPS | Uncached Burst Ultra Disk and Premium SSD v2 Throughput (MBps) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_L2s_v4 | 8 | 3,750 | 106 | 40,000 | 1,250 | 4,157 | 124 | 44,444 | 1,463 |
 | Standard_L4s_v4 | 12 | 6,400 | 212 | 40,000 | 1,250 | 8,333 | 248 | 52,083 | 1,463 |
@@ -89,7 +89,7 @@ Remote (uncached) storage info for each size.
 - [Share an Azure managed disk](../../../virtual-machines/disks-shared.md)
 
 #### Table definitions
-- <sup>1</sup>Some sizes support [bursting](../../disk-bursting.md) to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.
+- Some sizes support [bursting](../../disk-bursting.md) to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.
 - Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
 - Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
 - Data disks can operate in cached or uncached modes. For cached data disk operation, the host cache mode is set to ReadOnly or ReadWrite. For uncached data disk operation, the host cache mode is set to None.
@@ -100,7 +100,7 @@ Remote (uncached) storage info for each size.
 
 Network interface info for each size.
 
-| Size Name | Max NICs (Qty.) | Max Network Bandwidth (Mb/s) |
+| Size Name | Max NICs (Qty.) | Max Network Bandwidth (Mbps) |
 | --- | --- | --- |
 | Standard_L2s_v4 | 2 |  12,500  |
 | Standard_L4s_v4 | 2 |  12,500  |

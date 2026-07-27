@@ -11,12 +11,12 @@ ms.reviewer: mattmcinnes
 ms.custom: include file
 # Customer intent: "As a cloud architect, I want to review the specifications of Falsv7-series VM sizes, so that I can select the optimal configuration for my application's performance and resource requirements."
 ---
-| Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
+| Part | Quantity <br><sup>Count Units</sup> | Specs <br><sup>SKU ID, Performance Units, etc.</sup>  |
 |---|---|---|
 | Processor      | 1 - 80 vCPUs       | AMD EPYC 9005 (Turin) [x86-64]                               |
 | Memory         | 2 - 160 GiB          |                                  |
 | Local Storage  | None           |                                |
-| Remote Storage <br /> [Premium SSD](../../../disks-types.md#premium-ssds) | 10 - 64 Disks    | 4000 - 212000 IOPS <br>118 - 10344 MBps   |
-| Remote Storage <br /> [Premium SSD v2](../../../disks-types.md#premium-ssd-v2) / [Ultra Disks](../../../disks-types.md#ultra-disks) | 10 - 64 Disks    | 4400 - 310000 IOPS <br>136 - 10356 MBps   |
-| Network        | 2 - 15 NICs          | 16000 - 80000 Mbps <br>Interfaces: NetVSC, [MANA](https://aka.ms/ManaFAQ1)  |
+| Remote Storage <br /> [Premium SSD](../../../disks-types.md#premium-ssds) | 10 - 64 Disks    | 4,000 - 212,000 IOPS <br>118 - 10,344 MBps   |
+| Remote Storage <br /> [Premium SSD v2](../../../disks-types.md#premium-ssd-v2) / [Ultra Disks](../../../disks-types.md#ultra-disks) | 10 - 64 Disks    | 4,400 - 310,000 IOPS <br>136 - 10,356 MBps   |
+| Network        | 2 - 15 NICs          | 16,000 - 80,000 Mbps <br>Interfaces: NetVSC, [MANA](https://aka.ms/ManaFAQ1)  |
 | Accelerators   | None              |                                   |

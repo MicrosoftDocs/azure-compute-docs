@@ -26,7 +26,7 @@ For features supported by this series, see the [Feature support](#feature-suppor
 
 vCPUs (Qty.) and Memory for each size
 
-| Size Name | vCPUs (Qty.) | Memory (GB) |
+| Size Name | vCPUs (Qty.) | Memory (GiB) |
 | --- | --- | --- |
 | Standard_F2ams_v6 | 2 | 16 |
 | Standard_F4ams_v6 | 4 | 32 |
@@ -54,15 +54,15 @@ Local (temp) storage info for each size
 
 Remote (uncached) storage info for each size
 
-| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD IOPS | Uncached Premium SSD Throughput (MB/s) | Uncached Premium SSD Burst<sup>1</sup> IOPS | Uncached Premium SSD Burst<sup>1</sup> Throughput (MB/s) | Uncached Ultra Disk and Premium SSD v2 IOPS | Uncached Ultra Disk and Premium SSD v2 Throughput (MB/s) | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 IOPS | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 Throughput (MB/s) |
+| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD IOPS | Uncached Premium SSD Throughput (MBps) | Uncached Premium SSD Burst IOPS | Uncached Premium SSD Burst Throughput (MBps) | Uncached Ultra Disk and Premium SSD v2 IOPS | Uncached Ultra Disk and Premium SSD v2 Throughput (MBps) | Uncached Burst Ultra Disk and Premium SSD v2 IOPS | Uncached Burst Ultra Disk and Premium SSD v2 Throughput (MBps) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_F2ams_v6 | 4 | 4000 | 90 | 20000 | 1250 | 8000 | 90 | 20000 | 1250 |
-| Standard_F4ams_v6 | 8 | 7600 | 180 | 20000 | 1250 | 15200 | 180 | 20000 | 1250 |
-| Standard_F8ams_v6 | 16 | 15200 | 360 | 40000 | 1250 | 30400 | 360 | 80000 | 1250 |
-| Standard_F16ams_v6 | 32 | 30400 | 720 | 40000 | 1250 | 60800 | 720 | 80000 | 1250 |
-| Standard_F32ams_v6 | 32 | 57600 | 1440 | 57600 | 1700 | 115200 | 1440 | 115200 | 1700 |
-| Standard_F48ams_v6 | 32 | 86400 | 2160 | 86400 | 2550 | 172800 | 2160 | 172800 | 2550 |
-| Standard_F64ams_v6 | 32 | 115200 | 2880 | 115200 | 3400 | 230400 | 2880 | 230400 | 3400 |
+| Standard_F2ams_v6 | 4 | 4,000 | 90 | 20,000 | 1,250 | 8,000 | 90 | 20,000 | 1,250 |
+| Standard_F4ams_v6 | 8 | 7,600 | 180 | 20,000 | 1,250 | 15,200 | 180 | 20,000 | 1,250 |
+| Standard_F8ams_v6 | 16 | 15,200 | 360 | 40,000 | 1,250 | 30,400 | 360 | 80,000 | 1,250 |
+| Standard_F16ams_v6 | 32 | 30,400 | 720 | 40,000 | 1,250 | 60,800 | 720 | 80,000 | 1,250 |
+| Standard_F32ams_v6 | 32 | 57,600 | 1,440 | 57,600 | 1,700 | 115,200 | 1,440 | 115,200 | 1,700 |
+| Standard_F48ams_v6 | 32 | 86,400 | 2,160 | 86,400 | 2,550 | 172,800 | 2,160 | 172,800 | 2,550 |
+| Standard_F64ams_v6 | 32 | 115,200 | 2,880 | 115,200 | 3,400 | 230,400 | 2,880 | 230,400 | 3,400 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
@@ -70,7 +70,7 @@ Remote (uncached) storage info for each size
 - [Share an Azure managed disk](../../../virtual-machines/disks-shared.md)
 
 #### Table definitions
-- <sup>1</sup>Some sizes support [bursting](../../disk-bursting.md) to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.
+- Some sizes support [bursting](../../disk-bursting.md) to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.
 
 - Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
 - Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
@@ -82,15 +82,15 @@ Remote (uncached) storage info for each size
 
 Network interface info for each size
 
-| Size Name | Max NICs (Qty.) | Max Network Bandwidth (Mb/s) |
+| Size Name | Max NICs (Qty.) | Max Network Bandwidth (Mbps) |
 | --- | --- | --- |
-| Standard_F2ams_v6 | 2 | 12500 |
-| Standard_F4ams_v6 | 2 | 12500 |
-| Standard_F8ams_v6 | 4 | 12500 |
-| Standard_F16ams_v6 | 8 | 16000 |
-| Standard_F32ams_v6 | 8 | 20000 |
-| Standard_F48ams_v6 | 8 | 28000 |
-| Standard_F64ams_v6 | 8 | 36000 |
+| Standard_F2ams_v6 | 2 | 12,500 |
+| Standard_F4ams_v6 | 2 | 12,500 |
+| Standard_F8ams_v6 | 4 | 12,500 |
+| Standard_F16ams_v6 | 8 | 16,000 |
+| Standard_F32ams_v6 | 8 | 20,000 |
+| Standard_F48ams_v6 | 8 | 28,000 |
+| Standard_F64ams_v6 | 8 | 36,000 |
 
 #### Networking resources
 - [Virtual networks and virtual machines in Azure](/azure/virtual-network/network-overview)

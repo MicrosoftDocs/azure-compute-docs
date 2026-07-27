@@ -11,11 +11,11 @@ ms.reviewer: mattmcinnes
 ms.custom: include file
 # Customer intent: "As a cloud architect, I want to review FX-series VM specifications, so that I can select the appropriate virtual machine size for my application’s performance and resource requirements."
 ---
-| Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
+| Part | Quantity <br><sup>Count Units</sup> | Specs <br><sup>SKU ID, Performance Units, etc.</sup>  |
 |---|---|---|
 | Processor      | 4 - 48 vCPUs       | Intel Xeon Gold 6246R (Cascade Lake) [x86-64]                               |
-| Memory         | 84 - 1008 GiB          |                                  |
-| Local Storage  | 1 Disk           | 168 - 2016 GiB <br>40000 - 400000 IOPS (RR) <br>343 - 3871 MBps (RR)                               |
-| Remote Storage | 8 - 32 Disks    | 6700 - 80000 IOPS <br>104 - 1258 MBps   |
-| Network        | 2 - 8 NICs          | 4000 - 32000 Mbps                          |
+| Memory         | 84 - 1,008 GiB          |                                  |
+| Local Storage  | 1 Disk           | 168 - 2,016 GiB <br>40,000 - 400,000 IOPS <br>343 - 3,871 MBps                               |
+| Remote Storage | 8 - 32 Disks    | 6,700 - 80,000 IOPS <br>104 - 1,258 MBps   |
+| Network        | 2 - 8 NICs          | 4,000 - 32,000 Mbps                          |
 | Accelerators   | None              |                                   |
