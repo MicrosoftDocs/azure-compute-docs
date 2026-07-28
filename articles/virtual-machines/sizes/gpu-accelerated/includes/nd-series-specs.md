@@ -11,11 +11,11 @@ ms.reviewer: mattmcinnes
 ms.custom: include file
 # Customer intent: "As a cloud architect, I want to review the ND-series VM specifications, so that I can assess their capabilities and optimize resource allocation for high-performance computing tasks."
 ---
-| Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
+| Part | Quantity <br><sup>Count Units</sup> | Specs <br><sup>SKU ID, Performance Units, etc.</sup>  |
 |---|---|---|
 | Processor      | 6 - 24 vCPUs     | Intel Xeon E5-2690 v4 (Broadwell) [x86-64] |
 | Memory         | 112 - 448 GiB        |    |
-| Local Storage  | 1 Disk         | 736 - 2948 GiB  |
-| Remote Storage | 12 - 32 Disks  | 20000 - 80000 IOPS <br> 200 - 800 MBps |
+| Local Storage  | 1 Disk         | 736 - 2,948 GiB  |
+| Remote Storage | 12 - 32 Disks  | 20,000 - 80,000 IOPS <br> 200 - 800 MBps |
 | Network        | 4 - 8 NICs        |  |
 | Accelerators   | 1 - 4 GPUs            | Nvidia Tesla P40 GPU (24GB)    |

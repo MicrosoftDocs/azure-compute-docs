@@ -11,11 +11,11 @@ ms.reviewer: mattmcinnes
 ms.custom: include file
 # Customer intent: "As a cloud architect, I want to review the specifications of NGads_V620-series VM sizes, so that I can select the appropriate virtual machine configuration for my application workloads."
 ---
-| Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
+| Part | Quantity <br><sup>Count Units</sup> | Specs <br><sup>SKU ID, Performance Units, etc.</sup>  |
 |---|---|---|
 | Processor      | 8 - 32 vCPUs     | AMD EPYC 7763 (Milan) [x86-64] |
 | Memory         | 16 - 176 GiB        |    |
-| Local Storage  | 1 Disk         | 256 - 1024 GiB  |
-| Remote Storage | 8 - 32 Disks  | 12800 - 51200 IOPS <br>200 - 768 MBps |
-| Network        | 2 - 8 NICs        | 10000 - 40000 Mbps |
+| Local Storage  | 1 Disk         | 256 - 1,024 GiB  |
+| Remote Storage | 8 - 32 Disks  | 12,800 - 51,200 IOPS <br>200 - 768 MBps |
+| Network        | 2 - 8 NICs        | 10,000 - 40,000 Mbps |
 | Accelerators   | 1/4 - 1 GPUs            | AMD Radeon PRO V620 GPU (32GB)    |

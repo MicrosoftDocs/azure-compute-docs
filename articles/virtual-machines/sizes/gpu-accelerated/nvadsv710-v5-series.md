@@ -26,7 +26,7 @@ For features supported by this series, see the [Feature support](#feature-suppor
 
 vCPUs (Qty.) and Memory for each size
 
-| Size Name | vCPUs (Qty.) | Memory (GB) |
+| Size Name | vCPUs (Qty.) | Memory (GiB) |
 | --- | --- | --- |
 | Standard_NV4ads_V710_v5 | 4 | 16 |
 | Standard_NV8ads_V710_v5 | 8 | 32 |
@@ -41,13 +41,13 @@ vCPUs (Qty.) and Memory for each size
 
 Local (temp) storage information for each size.
 
-| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) |
+| Size Name | Temp Storage Disks (Qty.) | Temp Disk Size (GiB) |
 | --- | --- | --- |
 | Standard_NV4ads_V710_v5 | 2 | 256 |
 | Standard_NV8ads_V710_v5 | 4 | 512 |
 | Standard_NV12ads_V710_v5 | 6 | 768 |
-| Standard_NV24ads_V710_v5 | 12 | 1536 |
-| Standard_NV28adms_V710_v5 | 14 | 1536 |
+| Standard_NV24ads_V710_v5 | 12 | 1,536 |
+| Standard_NV28adms_V710_v5 | 14 | 1,536 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../managed-disks-overview.md)
@@ -55,7 +55,7 @@ Local (temp) storage information for each size.
 - [Share an Azure managed disk](../../disks-shared.md)
 
 #### Table definitions
-- <sup>1</sup>Temp disk speed often differs between RR (Random Read) and RW (Random Write) operations. RR operations are typically faster than RW operations. The RW speed is usually slower than the RR speed on series where only the RR speed value is listed.
+- Temp disk performance depends on many factors including block size, workload patterns of read/writes, queue depth (QD), and others. Temp disk performance specifications should be viewed as best case performance numbers, assuming 4k block sizes and QD=256 for IOPS, and 256k block sizes with QD=64 for throughput. Additionally, temp disk performance often differs between read and write operations. During steady state operations, write performance is expected to be lower than read performance.
 - Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
 - Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
 - To learn how to get the best storage performance for your VMs, see [Virtual machine and disk performance](../../disks-performance.md).
@@ -66,11 +66,11 @@ Remote (uncached) storage information for each size.
 
 | Size Name | Max Remote Storage Disks (Qty.) | Uncached Disk IOPS | Uncached Disk Speed (MBps) |
 | --- | --- | --- | --- |
-| Standard_NV4ads_V710_v5 | 2 | 7600 | 180 |
-| Standard_NV8ads_V710_v5 | 4 | 1520 | 360 |
-| Standard_NV12ads_V710_v5 | 6 | 2280 | 540 |
-| Standard_NV24ads_V710_v5 | 12 | 4560 | 1080 |
-| Standard_NV28adms_V710_v5 | 14 | 5320 | 1260 |
+| Standard_NV4ads_V710_v5 | 2 | 7,600 | 180 |
+| Standard_NV8ads_V710_v5 | 4 | 1,520 | 360 |
+| Standard_NV12ads_V710_v5 | 6 | 2,280 | 540 |
+| Standard_NV24ads_V710_v5 | 12 | 4,560 | 1,080 |
+| Standard_NV28adms_V710_v5 | 14 | 5,320 | 1,260 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../managed-disks-overview.md)
@@ -78,8 +78,8 @@ Remote (uncached) storage information for each size.
 - [Share an Azure managed disk](../../disks-shared.md)
 
 #### Table definitions
-- <sup>1</sup>Some sizes support [bursting](../../disk-bursting.md) to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.
-- <sup>2</sup>Special Storage refers to either [Ultra Disk](../../disks-enable-ultra-ssd.md) or [Premium SSD v2](../../disks-deploy-premium-v2.md) storage.
+- Some sizes support [bursting](../../disk-bursting.md) to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.
+- Special Storage refers to either [Ultra Disk](../../disks-enable-ultra-ssd.md) or [Premium SSD v2](../../disks-deploy-premium-v2.md) storage.
 - Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
 - Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
 - Data disks can operate in cached or uncached modes. For cached data disk operation, the host cache mode is set to ReadOnly or ReadWrite. For uncached data disk operation, the host cache mode is set to None.
@@ -92,11 +92,11 @@ Network interface information for each size.
 
 | Size Name | Max NICs (Qty.) | Max Bandwidth (Mbps) |
 | --- | --- | --- |
-| Standard_NV4ads_V710_v5 | 2 | 3300 |
-| Standard_NV8ads_V710_v5 | 4 | 6600 |
-| Standard_NV12ads_V710_v5 | 4 | 10000 |
-| Standard_NV24ads_V710_v5 | 8 | 20000 |
-| Standard_NV28adms_V710_v5 | 8 | 20000 |
+| Standard_NV4ads_V710_v5 | 2 | 3,300 |
+| Standard_NV8ads_V710_v5 | 4 | 6,600 |
+| Standard_NV12ads_V710_v5 | 4 | 10,000 |
+| Standard_NV24ads_V710_v5 | 8 | 20,000 |
+| Standard_NV28adms_V710_v5 | 8 | 20,000 |
 
 #### Networking resources
 - [Virtual networks and virtual machines in Azure](../../network-overview.md)

@@ -11,11 +11,11 @@ ms.reviewer: mattmcinnes
 ms.custom: include filegit 
 # Customer intent: "As a cloud architect, I want to review the specifications of the ND-H200-v5 series VMs, so that I can assess their suitability for my high-performance computing needs."
 ---
-| Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
+| Part | Quantity <br><sup>Count Units</sup> | Specs <br><sup>SKU ID, Performance Units, etc.</sup>  |
 |---|---|---|
 | Processor      |  96 vCPUs     | Intel Xeon (Sapphire Rapids) [x86-64] |
-| Memory         |  1850 GiB        |    |
-| Local Storage  |  1 Disk         | 1024 GiB  |
+| Memory         |  1,850 GiB        |    |
+| Local Storage  |  1 Disk         | 1,024 GiB  |
 | Remote Storage |  16Disks        |  |
 | Network        |  8 NICs        |  |
 | Accelerators   |  8 GPUs            | Nvidia H200 GPU (141GB)    |
