@@ -50,13 +50,13 @@ An existing Marketplace image (in this case, a Debian Buster VM) with the Linux 
 ### Create the resource group and base VM:
 
 ```azurecli
-$ az group create --location eastus --name demo1
+  az group create --location eastus --name demo1
 ```
 
 Create the base VM:
 
 ```azurecli
-$ az vm create \
+  az vm create \
     --resource-group demo1 \
     --name demo1 \
     --location eastus \
@@ -70,8 +70,8 @@ $ az vm create \
 Once the VM is provisioning, you can connect to it via SSH and remove the Linux Agent:
 
 ```bash
-$ sudo apt purge -y waagent
-$ sudo rm -rf /var/lib/waagent /etc/waagent.conf /var/log/waagent.log
+sudo apt purge -y waagent
+sudo rm -rf /var/lib/waagent /etc/waagent.conf /var/log/waagent.log
 ```
 
 ### Add required code to the VM
@@ -254,6 +254,8 @@ This demo uses systemd, which is the most common init system in modern Linux dis
 ```bash
 [Unit]
 Description=Azure Provisioning
+Wants=network-online.target
+After=network-online.target
 
 [Service]
 Type=oneshot
@@ -276,7 +278,7 @@ This systemd service does three things for basic provisioning:
 With the unit on the filesystem, run the following to enable it:
 
 ```bash
-$ sudo systemctl enable azure-provisioning.service
+sudo systemctl enable azure-provisioning.service
 ```
 
 Now the VM is ready to be generalized and have an image created from it.
@@ -286,14 +288,14 @@ Now the VM is ready to be generalized and have an image created from it.
 Back on your development machine, run the following to prepare for image creation from the base VM:
 
 ```azurecli
-$ az vm deallocate --resource-group demo1 --name demo1
-$ az vm generalize --resource-group demo1 --name demo1
+az vm deallocate --resource-group demo1 --name demo1
+az vm generalize --resource-group demo1 --name demo1
 ```
 
 And create the image from this VM:
 
 ```azurecli
-$ az image create \
+az image create \
     --resource-group demo1 \
     --source demo1 \
     --location eastus \
@@ -303,8 +305,8 @@ $ az image create \
 Now we're ready to create a new VM from the image. This can also be used to create multiple VMs:
 
 ```azurecli
-$ IMAGE_ID=$(az image show -g demo1 -n demo1img --query id -o tsv)
-$ az vm create \
+IMAGE_ID=$(az image show -g demo1 -n demo1img --query id -o  tsv | tr -d '\r\n')
+az vm create \
     --resource-group demo12 \
     --name demo12 \
     --location eastus \
@@ -321,7 +323,9 @@ $ az vm create \
 The VM should be provisioned successfully. After Logging into the newly provisioning VM, you should be able to see the output of the report ready systemd service:
 
 ```bash
-$ sudo journalctl -u azure-provisioning.service
+sudo journalctl -u azure-provisioning.service
+```
+```output
 -- Logs begin at Thu 2020-06-11 20:28:45 UTC, end at Thu 2020-06-11 20:31:24 UTC. --
 Jun 11 20:28:49 thstringnopa systemd[1]: Starting Azure Provisioning...
 Jun 11 20:28:54 thstringnopa python3[320]: Retrieving goal state from the Wireserver
