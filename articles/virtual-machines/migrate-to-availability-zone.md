@@ -16,7 +16,7 @@ ms.date: 05/06/2026
 
 This article describes how to migrate an Azure Virtual Machine (VM) from a regional (non-zonal) deployment to a specific availability zone within the same region while preserving the VM name, data disks, and other stateful properties.
 
-If you need to migrate your virtual machine to a different region, use [Azure Resource Mover](../resource-mover/overview.md) instead. 
+To migrate your virtual machine to a different region, use [Azure Resource Mover](../resource-mover/overview.md). 
 
 > [!IMPORTANT]
 > Regional to zonal VM migration is currently in **Public Preview**. Previews are made available to you on the condition that you agree to the [supplemental terms of use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Some aspects of this feature may change prior to general availability (GA).
