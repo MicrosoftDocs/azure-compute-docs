@@ -34,6 +34,7 @@ The migration process involves:
 > - Each VM must be deallocated before zone assignment. Plan for downtime accordingly.
 > - VMs can be started immediately after zone assignment completes.
 > - Migration is a one-way operation. You can't migrate a zonal VM back to a regional deployment.
+> - Migration only supports regional scale sets with FD=1 or FD=5. FD=3 isn't yet supported for migration.
 
 ## Prerequisites
 

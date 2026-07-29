@@ -18,7 +18,7 @@ Compared with existing general-purpose CPU or GPU based solutions, the NMads MA3
 
 ## Host specifications
 
-| Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
+| Part | Quantity <br><sup>Count Units</sup> | Specs <br><sup>SKU ID, Performance Units, etc.</sup>  |
 |---|---|---|
 | Processor      |  192 vCPUs     | AMD EPYC (Genoa) [x86-64] |
 | Memory         |  768 GiB        |    |
@@ -36,7 +36,7 @@ For features supported by this series, see the [Feature support](#feature-suppor
 
 vCPUs (Qty.) and Memory for each size 
 
-| **Size Name** | **vCPUs (Qty.)** | **Memory (GB)** |
+| **Size Name** | **vCPUs (Qty.)** | **Memory (GiB)** |
 |---|---|---|
 | **Standard_NM16ads_MA35D** | 16 | 32 |
 
@@ -47,7 +47,7 @@ vCPUs (Qty.) and Memory for each size
 
 Local (temp) storage info for each size 
 
-| **Size Name** | **OS Disk Size (GB)** | **Temp Disk Size (GB)** |
+| **Size Name** | **OS Disk Size (GiB)** | **Temp Disk Size (GiB)** |
 |---|---|---|
 | **Standard_NM16ads_MA35D** | 128 | 76 |
 
@@ -66,7 +66,7 @@ Network interface info for each size
 
 | **Size Name** | **Max NICs (Qty.)** | **Max Bandwidth (Mbps)** |
 |---|---|---|
-| **Standard_NM16ads_MA35D** | 1 | 4000 |
+| **Standard_NM16ads_MA35D** | 1 | 4,000 |
 
 ### Networking resources
 - [Virtual networks and virtual machines in Azure](/azure/virtual-network/network-overview) 

@@ -11,11 +11,11 @@ ms.reviewer: mattmcinnes
 ms.custom: include file
 # Customer intent: As a cloud architect, I want to review the specifications of NVv3-series virtual machines, so that I can determine the appropriate VM size to meet my application performance and scalability requirements.
 ---
-| Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
+| Part | Quantity <br><sup>Count Units</sup> | Specs <br><sup>SKU ID, Performance Units, etc.</sup>  |
 |---|---|---|
 | Processor      | 12 - 48 vCPUs     | Intel Xeon E5-2690 v4 (Broadwell) [x86-64] |
 | Memory         | 112 - 448 GiB        |    |
-| Local Storage  | 1 Disk         | 320 - 1280 GiB  |
+| Local Storage  | 1 Disk         | 320 - 1,280 GiB  |
 | Remote Storage | 12 - 32 Disks        |  |
-| Network        | 4 - 8 NICs        | 6000 - 24000 Mbps |
+| Network        | 4 - 8 NICs        | 6,000 - 24,000 Mbps |
 | Accelerators   | 1 - 4 GPUs            | Nvidia Tesla M60 GPU (16GB)    |

@@ -11,11 +11,11 @@ ms.reviewer: mattmcinnes
 ms.custom: include file
 # Customer intent: As a cloud architect, I want to review the specifications of the ND-MI300X-v5 series VMs, so that I can determine their suitability for resource-intensive applications and workloads.
 ---
-| Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
+| Part | Quantity <br><sup>Count Units</sup> | Specs <br><sup>SKU ID, Performance Units, etc.</sup>  |
 |---|---|---|
 | Processor      | 96 vCPUs     | Intel Xeon (Sapphire Rapids) [x86-64] |
-| Memory         | 1850  GiB        |    |
-| Local Storage  | 1 Temp Disk <br> 8 NVMe Disks        | 1000 GiB Temp Disk <br> 28000 GiB NVMe Disks |
-| Remote Storage | 16 Disks        | 80000 IOPS <br>1200 MBps |
+| Memory         | 1,850  GiB        |    |
+| Local Storage  | 1 Temp Disk <br> 8 NVMe Disks        | 1,000 GiB Temp Disk <br> 28,000 GiB NVMe Disks |
+| Remote Storage | 16 Disks        | 80,000 IOPS <br>1,200 MBps |
 | Network        | 8 NICs        |  |
 | Accelerators   | 8 GPUs            | AMD Instinct MI300X GPU (192GB)    |
