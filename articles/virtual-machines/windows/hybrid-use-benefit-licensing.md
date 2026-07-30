@@ -239,6 +239,6 @@ For more information, see [Modify a virtual machine scale set](../../virtual-mac
 - [Save money with Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-use-benefit/)
 - [FAQ for Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-use-benefit/faq/)
 - [Azure Hybrid Benefit for Windows Server licensing detailed guidance](/windows-server/get-started/azure-hybrid-benefit)
-- [Azure Hybrid Benefit for Windows Server and Azure Site Recovery make migrating applications to Azure even more cost-effective](https://azure.microsoft.com/blog/hybrid-use-benefit-migration-with-asr/)
+- [Azure Hybrid Benefit for Windows Server and Azure Site Recovery make migrating applications to Azure even more cost-effective](/windows-server/get-started/azure-hybrid-benefit)
 - [Deploy Windows 11 on Azure with Multitenant Hosting Rights](./windows-desktop-multitenant-hosting-deployment.md)
 - [Using Resource Manager templates](/azure/azure-resource-manager/management/overview)
