@@ -28,7 +28,7 @@ To jump right in and try out containers on Service Fabric, try a quickstart, tut
 [Quickstart: Deploy a Linux container application to Service Fabric](service-fabric-quickstart-containers-linux.md)  
 [Quickstart: Deploy a Windows container application to Service Fabric](service-fabric-quickstart-containers.md)  
 [Containerize an existing .NET app](service-fabric-host-app-in-a-container.md)  
-[Service Fabric Container Samples](https://azure.microsoft.com/resources/samples/service-fabric-containers/)  
+[Service Fabric Container Samples](https://github.com/Azure-Samples/service-fabric-containers)  
 
 ## What are containers
 
