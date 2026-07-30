@@ -174,7 +174,7 @@ Use Azure CLI to recover the identity reference on the image template. Be sure t
    az rest --method patch --url "https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<templateResourceGroup>/providers/Microsoft.VirtualMachineImages/imageTemplates/<templateName>?api-version=2024-02-01" --body @body.json
    ```
 
-   The `2024-02-01` API version in this example is valid at the time of writing. Check the [API version reference](/rest/api/compute/virtual-machine-image-templates) and use the latest stable version if a newer version is available.
+   The `2024-02-01` API version in this example is valid at the time of writing. Check the [API version reference](/rest/api/compute) and use the latest stable version if a newer version is available.
 
 After the identity update succeeds, retry the failed VM Image Builder operation.
 
