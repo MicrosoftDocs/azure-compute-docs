@@ -64,4 +64,4 @@ With Visual Studio tooling you can develop and publish Service Fabric .NET Core 
 [publish-application]:./media/service-fabric-how-to-vs-remote-linux-cluster/publish-remote-linux.png
 
 ## Next steps
-* Learn about [Getting started with Service Fabric with .NET Core](https://azure.microsoft.com/resources/samples/service-fabric-dotnet-core-getting-started/)
+* Learn about [Getting started with Service Fabric with .NET Core](/azure/service-fabric/service-fabric-tutorial-create-dotnet-app)
