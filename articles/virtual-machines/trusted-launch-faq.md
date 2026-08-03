@@ -381,7 +381,7 @@ Adding component object model (COM) ports require that you disable Secure Boot. 
 
 ### What is Trusted Launch as default?
 
-Trusted launch as default (TLaD) is currently in preview for all clients AND generally available for Azure portal, PowerShell, and CLI. For more information, see [Trusted launch default (Preview)](trusted-launch.md#preview-trusted-launch-as-default).
+Trusted launch as default (TLaD) is generally available. For more information, see [Trusted launch default (General Availability)](trusted-launch.md#general-availability-trusted-launch-as-default).
 
 ### Does TLaD impacts existing VM & scale sets?
 
