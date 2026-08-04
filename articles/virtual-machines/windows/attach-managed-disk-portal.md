@@ -40,9 +40,9 @@ Follow these steps:
 > [!IMPORTANT]
 > Initialize and format only a newly created, empty data disk. If the disk was previously used or contains existing data, initializing, repartitioning, or formatting it might make the data inaccessible or permanently erase it. Before proceeding, verify the disk number, size, and LUN to ensure that you selected the correct disk.
 >
-> After formatting is complete, confirm that the disk appears as Online and Healthy in Disk Management and that a drive letter has been assigned.
+> After formatting is complete, confirm that the disk appears as **Online** and **Healthy** in **Disk Management** and that it has an assigned drive letter.
 >
-> Avoid assigning the D: drive letter unless required by your application. On many Azure Windows VMs, the D: drive is reserved for temporary storage, and data stored on the temporary disk can be lost during VM redeployment, resizing, or host maintenance.
+> Avoid assigning the `D:` drive letter unless your application requires it. On many Azure Windows VMs, the `D:` drive is reserved for temporary storage, and data stored on the temporary disk might be lost during VM redeployment, resizing, or host maintenance.
 
 Follow these steps:
 
