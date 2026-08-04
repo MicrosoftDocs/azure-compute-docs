@@ -233,7 +233,7 @@ The following packing configuration outlines the max packing of uniform VMs you 
 ## Ddsv5
 ### Ddsv5-Type1
 
-The Ddsv5-Type1 is a Dedicated Host SKU utilizing the Intel® Ice Lake (Xeon® Platinum 8370C) processor. It offers 64 physical cores, 119 vCPUs, and 768 GiB of RAM. The Ddsv5-Type1 runs [Ddsv5-series](ddv5-ddsv5-series.md#ddsv5-series) VMs. Refer to the VM size documentation to better understand specific VM performance information.
+The Ddsv5-Type1 is a Dedicated Host SKU utilizing the Intel® Ice Lake (Xeon® Platinum 8370C) processor. It offers 64 physical cores, 119 vCPUs, and 768 GiB of RAM. The Ddsv5-Type1 runs [Ddsv5-series](ddsv5-series.md) VMs. Refer to the VM size documentation to better understand specific VM performance information.
 
 The following packing configuration outlines the max packing of uniform VMs you can put onto a Ddsv5-Type1 host.
 
