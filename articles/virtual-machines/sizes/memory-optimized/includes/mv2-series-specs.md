@@ -13,7 +13,7 @@ ms.custom: include file
 ---
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
 |---|---|---|
-| Processor      | 208 - 416 vCPUs       | Intel Xeon Platinum 8180M (Skylake) [x86-64]                   |
+| Processor      | 208 - 416 vCPUs       | Intel Xeon Platinum 8180M (Skylake) [x86-64] and Intel Xeon 4th Gen Scalable (Sapphire Rapids) [x86-64]                   |
 | Memory         | 2,850 - 11,400 GiB          |                      |
 | Local Storage  | 1 Disk           | 4096 - 8192 GiB <br>80000 - 250000 IOPS (RR) <br>800 - 1600 MBps (RR)                   |
 | Remote Storage | 64 Disks    | 40000 - 80000 IOPS <br>1000 - 2000 MBps |
