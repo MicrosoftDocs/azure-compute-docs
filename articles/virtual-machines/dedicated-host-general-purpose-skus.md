@@ -250,7 +250,7 @@ The following packing configuration outlines the max packing of uniform VMs you 
 
 ## Ddsv4
 ### Ddsv4-Type1
-The Ddsv4-Type1 is a Dedicated Host SKU utilizing the Intel® Cascade Lake (Xeon® Platinum 8272CL) processor. It offers 52 physical cores, 80 vCPUs, and 504 GiB of RAM. The Ddsv4-Type1 runs [Ddsv4-series](ddv4-ddsv4-series.md#ddsv4-series) VMs.
+The Ddsv4-Type1 is a Dedicated Host SKU utilizing the Intel® Cascade Lake (Xeon® Platinum 8272CL) processor. It offers 52 physical cores, 80 vCPUs, and 504 GiB of RAM. The Ddsv4-Type1 runs [Ddsv4-series](sizes/general-purpose/ddsv4-series.md) VMs.
 
 The following packing configuration outlines the max packing of uniform VMs you can put onto a Ddsv4-Type1 host.
 
@@ -270,7 +270,7 @@ You can also mix multiple VM sizes on the Ddsv4-Type1. The following are sample 
 - 10 D4dsv4 + 14 D2dsv4
 
 ### Ddsv4-Type2
-The Ddsv4-Type2 is a Dedicated Host SKU utilizing the Intel® Ice Lake (Xeon® Platinum 8370C) processor. It offers 64 physical cores, 119 vCPUs, and 768 GiB of RAM. The Ddsv4-Type2 runs [Ddsv4-series](ddv4-ddsv4-series.md#ddsv4-series) VMs.
+The Ddsv4-Type2 is a Dedicated Host SKU utilizing the Intel® Ice Lake (Xeon® Platinum 8370C) processor. It offers 64 physical cores, 119 vCPUs, and 768 GiB of RAM. The Ddsv4-Type2 runs [Ddsv4-series](sizes/general-purpose/ddsv4-series.md) VMs.
 
 The following packing configuration outlines the max packing of uniform VMs you can put onto a Ddsv4-Type2 host.
 
