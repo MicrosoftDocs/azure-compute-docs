@@ -183,7 +183,7 @@ If you have any questions, you can [create a support request](https://portal.azu
 
 ### What happens after the retirement date?
 
-After September 1, 2026, any remaining DCas_cc_v5, DCads_cc_v5, ECas_cc_v5, and ECads_cc_v5 series virtual machine subscriptions stop working and no longer incur billing charges. To avoid disruption, migrate ahead of the retirement schedule.
+After September 1, 2026, the DCas_cc_v5, DCads_cc_v5, ECas_cc_v5, and ECads_cc_v5 series virtual machine subscriptions stop working and no longer incur billing charges. To avoid disruption, migrate ahead of the retirement schedule.
 
 ## Help and support
 
