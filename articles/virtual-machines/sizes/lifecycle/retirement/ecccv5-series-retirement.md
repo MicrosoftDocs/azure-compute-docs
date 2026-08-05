@@ -14,7 +14,7 @@ ms.custom: references_regions
 
 # DCas_cc_v5, DCads_cc_v5, ECas_cc_v5, and ECads_cc_v5 series retirement - Azure Virtual Machines | Microsoft Learn
 
-This migration guide is for users of the DCas_cc_v5, DCads_cc_v5, ECas_cc_v5, and ECads_cc_v5 nested confidential virtual machine (VM) sizes, which retire on **August 1, 2026**. To ensure minimal disruption and to continue optimizing cost and performance, this guide helps you transition to the latest series VMs.
+This migration guide is for users of the DCas_cc_v5, DCads_cc_v5, ECas_cc_v5, and ECads_cc_v5 nested confidential virtual machine (VM) sizes, which retire on **September 1, 2026**. To ensure minimal disruption and to continue optimizing cost and performance, this guide helps you transition to the latest series VMs.
 
 This document covers:
 
@@ -143,7 +143,7 @@ If you're running your workload on the DCas_cc_v5, DCads_cc_v5, ECas_cc_v5, or E
 
 ### What is the migration timeline?
 
-On August 1, 2026, the DCas_cc_v5, DCads_cc_v5, ECas_cc_v5, and ECads_cc_v5 series virtual machines (VMs) are retired. Before that date, migrate your workloads to one of the recommended options described in *Recommended options for migration*.
+On September 1, 2026, the DCas_cc_v5, DCads_cc_v5, ECas_cc_v5, and ECads_cc_v5 series virtual machines (VMs) are retired. Before that date, migrate your workloads to one of the recommended options described in *Recommended options for migration*.
 
 ### Will these series still allow new customer sign-ups?
 
@@ -151,7 +151,7 @@ On August 1, 2026, the DCas_cc_v5, DCads_cc_v5, ECas_cc_v5, and ECads_cc_v5 seri
 
 ### Will Microsoft continue to support my current workload?
 
-Yes, support continues for your workloads on these VMs until the retirement date. You continue to receive SLA assurance, infrastructure updates, and maintenance until August 1, 2026. Use one of the recommended migration options before that date to preserve your workloads.
+Yes, support continues for your workloads on these VMs until the retirement date. You continue to receive SLA assurance, infrastructure updates, and maintenance until September 1, 2026. Use one of the recommended migration options before that date to preserve your workloads.
 
 ### Will other services built on top of these SKUs still be available after the SKUs retire?
 
@@ -183,7 +183,7 @@ If you have any questions, you can [create a support request](https://portal.azu
 
 ### What will happen after the retirement date?
 
-After August 1, 2026, any remaining DCas_cc_v5, DCads_cc_v5, ECas_cc_v5, and ECads_cc_v5 series virtual machine subscriptions will stop working and will no longer incur billing charges. To avoid disruption, migrate ahead of the retirement schedule.
+After September 1, 2026, any remaining DCas_cc_v5, DCads_cc_v5, ECas_cc_v5, and ECads_cc_v5 series virtual machine subscriptions will stop working and will no longer incur billing charges. To avoid disruption, migrate ahead of the retirement schedule.
 
 ## Help and support
 
