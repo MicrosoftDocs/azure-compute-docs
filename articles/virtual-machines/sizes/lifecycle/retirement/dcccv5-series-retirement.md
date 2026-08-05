@@ -143,7 +143,7 @@ If you're running your workload on the DCas_cc_v5, DCads_cc_v5, ECas_cc_v5, or E
 
 ### What is the migration timeline?
 
-On September 1, 2026, the DCas_cc_v5, DCads_cc_v5, ECas_cc_v5, and ECads_cc_v5 series virtual machines (VMs) are retired. Before that date, migrate your workloads to one of the recommended options described in *Recommended options for migration*.
+On September 1, 2026, the DCas_cc_v5, DCads_cc_v5, ECas_cc_v5, and ECads_cc_v5 series virtual machines (VMs) retire. Before that date, migrate your workloads to one of the recommended options described in *Recommended options for migration*.
 
 ### Will these series still allow new customer sign-ups?
 
