@@ -49,6 +49,7 @@ The following is a snippet of Service Fabric **Windows** Virtual Machine extensi
       "type": "ServiceFabricNode",
       "typeHandlerVersion": "1.1",
       "autoUpgradeMinorVersion": true,
+      "enableAutomaticUpgrade": true,
       "protectedSettings": {
         "StorageAccountKey1": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')),'2015-05-01-preview').key1]",
        },
