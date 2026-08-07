@@ -232,7 +232,7 @@ Extension execution output is logged to the following file. Refer to this file t
 | 14 | Operation unsuccessful | Check the execution output log. |
 
 ### Known issues
-1. To use the Linux extension for NC_RTXPRO6000BSE_v6 VMs, please pass these settings to install the correct drivers:
+1. To use the Linux extension for NC_RTXPRO6000BSE_v6 VMs, pass these settings to install the correct drivers:
 ```
 az vm extension set  --resource-group <rg-name> --vm-name <vm-name>  --name NvidiaGpuDriverLinux --publisher Microsoft.HpcCompute --settings "{'installGridNC':True; 'driverVersion':'595.58.03'}"
  
