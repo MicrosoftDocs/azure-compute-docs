@@ -50,7 +50,7 @@ Windows uses drive letters rather than device paths, so the OS disk stays `C:\` 
 ---
 Converting your Azure VM from SCSI to NVMe by using Azure Boost can help you take full advantage of these performance improvements and maintain a competitive edge in the cloud computing landscape.
 
-## Migrate a Linux VM from SCSI to NVMe
+## Migrate a VM from SCSI to NVMe
 
 To migrate from SCSI to NVMe, follow these high-level steps:
 
