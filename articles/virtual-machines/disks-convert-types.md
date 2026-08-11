@@ -212,7 +212,8 @@ Use either PowerShell or CLI.
 ---
 
 ## Convert Premium SSD v2 disks 
-You can switch existing disks to Premium SSD v2 disks the same way you do for other disk types. Review the [Premium SSD v2 limitations](disks-deploy-premium-v2.md#limitations) to learn more. If you're going to convert a substantial number of disks to Premium SSD v2, convert them in batches of 50 to 100 disks per subscription per region for best performance. If you're going to migrate more than 1,000 disks at the same time, submit a support ticket for planning and execution assistance.
+You can switch existing disks to Premium SSD v2 disks the same way you do for other disk types. To learn more, review the [Premium SSD v2 limitations](disks-deploy-premium-v2.md#premium-ssd-v2-limitations). If you're going to convert a substantial number of disks to Premium SSD v2, convert them in batches of 50 to 100 disks per subscription per region for best performance. If you're going to migrate more than 1,000 disks at the same time, submit a support ticket for planning and execution assistance.
+
 
 Switching to Premium SSD v2 disks has some additional limitations:
 
@@ -273,7 +274,7 @@ az disk-encryption-set update --name "nameOfYourDiskEncryptionSetHere" --resourc
 
 Premium SSD, Standard SSD, and Standard HDDs support both incremental and full snapshots. However, migration using full snapshots is not supported for these disk types. To create Premium SSD v2 or Ultra Disks from a snapshot, you must use incremental snapshots.
 
-Both Premium SSD v2 disks and Ultra Disks have their own set of restrictions. For example, neither can be used as an OS disk, and also aren't available in all regions. See the [Premium SSD v2 limitations](disks-deploy-premium-v2.md#limitations) and [Ultra Disk GA scope and limitations](disks-enable-ultra-ssd.md#ga-scope-and-limitations) sections of their articles for more information.
+Both Premium SSD v2 disks and Ultra Disks have their own set of restrictions. For example, you can't use either disk type as an OS disk. Also, they're not available in all regions. For more information, see the [Premium SSD v2 limitations](disks-deploy-premium-v2.md#premium-ssd-v2-limitations) and [Ultra Disk GA scope and limitations](disks-enable-ultra-ssd.md#ga-scope-and-limitations) sections.  
 
 > [!IMPORTANT]
 > When migrating a Standard HDD, Standard SSD, or Premium SSD to either an Ultra Disk or Premium SSD v2, the logical sector size must be 512.

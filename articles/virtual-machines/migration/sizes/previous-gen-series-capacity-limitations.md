@@ -1,23 +1,23 @@
 ---
-title: Previous-generation VM size series capacity limitations and migration guidance
-description: Learn about capacity limitations for previous-generation Azure VM size series beginning July 2026 and get migration guidance to newer-generation VM families.
+title: Previous-generation VM size series capacity growth restrictions and migration guidance
+description: Learn about capacity growth restrictions for previous-generation Azure VM size series beginning July 2026 and get migration guidance to newer-generation VM families.
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 08/03/2026
+ms.date: 08/11/2026
 ms.author: mattmcinnes
 ---
 
-# Previous-generation VM size series capacity limitations and migration guidance
+# Previous-generation VM size series capacity growth restrictions and migration guidance
 
 As Azure continues to invest in higher-performing, more secure, and modern compute infrastructure, it moves away from older-generation hardware. Azure infrastructure expansion focuses on deploying newer-generation hardware that supports the latest virtual machine (VM) offerings.
 
-As a result, certain previous-generation VM series are subject to capacity limitations starting in July 2026. Plan migrations to newer-generation VM families and series to ensure continued access to current platform capabilities, improved performance, enhanced security, and long-term capacity availability.
+As a result, certain previous-generation VM series are subject to capacity growth restrictions starting in July 2026. Plan migrations to newer-generation VM families and series to ensure continued access to current platform capabilities, improved performance, enhanced security, and long-term capacity availability.
 
 ## Impacted VM series
 
-The following VM series are affected by these capacity limitations:
+The following VM series are affected by these capacity growth restrictions:
 
 | VM category | Impacted VM series |
 |---|---|
@@ -59,13 +59,13 @@ These resources provide detailed recommendations for alternative virtual machine
 
 ## Frequently asked questions
 
-### What does "capacity limitations" mean?
+### What do "capacity growth restrictions" mean?
 
-Capacity limitations mean that Azure might not approve additional quota requests, new deployments, or capacity expansion requests for impacted VM series due to limited availability of the underlying hardware. These capacity controls don't affect existing running VMs.
+Capacity growth restrictions mean that Azure might not approve additional quota requests, new deployments, or capacity expansion requests for impacted VM series due to limited availability of the underlying hardware. These capacity controls don't affect existing running VMs.
 
-### When do capacity limitations begin?
+### When do capacity growth restrictions begin?
 
-Capacity limitations for the impacted VM series begin in July 2026.
+Capacity growth restrictions for the impacted VM series begin in July 2026.
 
 ### Why are these VM series affected?
 
