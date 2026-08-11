@@ -1,6 +1,11 @@
 {
     "redirections": [
         {
+            "source_path_from_root": "/articles/virtual-machines/disks-deploy-nonzonal-premium-v2.md",
+            "redirect_url": "/azure/virtual-machines/disks-deploy-premium-v2#deploy-a-nonzonal-premium-ssd-v2",
+            "redirect_document_id": true
+        },
+        {
             "source_path_from_root": "/articles/virtual-machines/ncv3-nc24rs-retirement.md",
             "redirect_url": "/azure/virtual-machines/sizes/lifecycle/retirement/ncv3-nc24rs-retirement",
             "redirect_document_id": true
