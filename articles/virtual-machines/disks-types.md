@@ -3,7 +3,7 @@ title: Select a disk type for Azure IaaS VMs - managed disks
 description: Learn about the available Azure disk types for virtual machines, including Ultra Disks, Premium SSD v2 disks, Premium SSDs, Standard SSDs, and Standard HDDs.
 author: roygara
 ms.author: rogarana
-ms.date: 11/06/2025
+ms.date: 08/11/2026
 ms.topic: concept-article
 ms.service: azure-disk-storage
 ms.custom: references_regions
@@ -114,9 +114,17 @@ Unlike Premium SSDs, Premium SSD v2 doesn't have dedicated sizes. You can set a 
 
 [!INCLUDE [disks-prem-v2-limitations](./includes/disks-prem-v2-limitations.md)]
 
-#### Regional availability
+### Regional availability
+
+You can deploy Premium SSD v2 disks as zonal resources or as [nonzonal resources](/azure/reliability/availability-zones-zonal-resource-resiliency#resource-deployment-types). Use a zonal disk when your workload runs in an availability zone. Use a nonzonal disk for a nonzonal VM or in a region without availability zones.
+
+#### Zonal disks
 
 [!INCLUDE [disks-premv2-regions](./includes/disks-premv2-regions.md)]
+
+#### Nonzonal disks
+
+[!INCLUDE [disks-premv2-regions-nonzonal](./includes/disks-premv2-regions-nonzonal.md)]
 
 ### Premium SSD v2 performance
 
