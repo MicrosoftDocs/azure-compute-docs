@@ -116,6 +116,8 @@ Unlike Premium SSDs, Premium SSD v2 doesn't have dedicated sizes. You can set a 
 
 ### Regional availability
 
+You can deploy Premium SSD v2 disks as zonal resources or as [nonzonal resources](/azure/reliability/availability-zones-zonal-resource-resiliency#resource-deployment-types). Use a zonal disk when your workload runs in an availability zone. Use a nonzonal disk for a nonzonal VM or in a region without availability zones.
+
 #### Zonal disks
 
 [!INCLUDE [disks-premv2-regions](./includes/disks-premv2-regions.md)]
