@@ -175,7 +175,7 @@ az account set --subscription <subscription-id>
 ```
 
 ### CLI: Create move collection and identity
-In this CLI example, use the same region for `--location` and `--move-region`.
+Use the same region for `--location` and `--move-region`. The resource location must match the source region of the Move Collection. Otherwise, the operation will fail with a `Resource Location Mismatch` error.
 
 ```azurecli-interactive
 az group create --location eastus2 --name clidemo-RG
