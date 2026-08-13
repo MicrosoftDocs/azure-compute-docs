@@ -1,4 +1,4 @@
----
+﻿---
 title: Azure HPC Guest Health Reporting - Report Node Health 
 description: Share the health status of a supercomputing virtual machine with Azure. 
 author: bryantruong 
@@ -22,30 +22,15 @@ This article shows how to use Guest Health Reporting to share the health status 
 PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Impact/workloadImpacts/{impactName}?api-version=2025-01-01-preview
 ```
 
-Descriptions of URI parameters are as follows:
+The following table describes the URI parameters:
 
 | Field name           | Description                                                                                          |
 |----------------------|------------------------------------------------------------------------------------------------------|
-| `subscriptionId`     | Subscription previously added to an allow list.                                                      |
+| `subscriptionId`     | The subscription ID that the calling identity has "Azure impact Reporter role" permissions against. The caller's token is checked against this subscription. Should match the subscription used for later `impactedResourceId` field. |
 | `impactName`         | Name or ID that you choose to identify the impact. This value must be unique — if you reuse an existing name in a new PUT request, you won't receive a 200 OK response. |
-| `api-version`        | API version to be used for this operation. Use `2025-01-01-preview` or later to ensure compatibility with the `/getUploadToken` endpoint. |
+| `api-version`        | API version to use for this operation. Use `2025-01-01-preview` or later to ensure compatibility with the `/getUploadToken` endpoint. |
 
-### [Healthy node](#tab/healthy/)
-
-```json
-{
-  "properties": {
-      "startDateTime": "2025-05-13T01:06:21.3886467Z",
-      "impactCategory": "Resource.Hpc.Healthy",
-      "impactDescription": "Missing GPU device",
-      "impactedResourceId": "/subscriptions/111111-f1122-2233-11bc-bb00123/resourceGroups/{rg_name}/providers/Microsoft.Compute/virtualMachines/{vm_name}",
-      "additionalProperties": {
-            "PhysicalHostName": "GGBB90904476"
-      }
-   }
-}
-
-```
+The following table shows example GHR request bodies:
 
 ### [Missing GPU](#tab/missingGPU/)
 
@@ -57,28 +42,11 @@ Descriptions of URI parameters are as follows:
       "impactDescription": "Missing GPU device",
       "impactedResourceId": "/subscriptions/111111-f1122-2233-11bc-bb00123/resourceGroups/{rg_name}/providers/Microsoft.Compute/virtualMachines/{vm_name}",
       "additionalProperties": {
-            "LogUrl": "https://ghrloguploadprod.blob.core.windows.net/exampleCustomer/20260513150912_5273ea32.gz?",
+            "LogUrl": "https://ghrloguploadprod.blob.core.windows.net/exampleCustomer/20260513150912_5273ea32.gz",
             "PhysicalHostName": "GGBB90904476",
             "Manufacturer": "Nvidia",
             "SerialNumber": "12345679",
             "ModelNumber": "NV3LB225"
-      }
-   }
-}
-
-```
-
-### [Investigate node](#tab/investigate/)
-
-```json
-{
-  "properties": {
-      "startDateTime": "2026-05-13T01:06:21.3886467Z",
-      "impactCategory": "Resource.Hpc.Investigate.NVLink",
-      "impactDescription": "NvLink may be down",
-      "impactedResourceId": "/subscriptions/111111-f1122-2233-11bc-bb00123/resourceGroups/{rg_name}/providers/Microsoft.Compute/virtualMachines/{vm_name}",
-      "additionalProperties": {
-            "LogUrl": "https://ghrloguploadprod.blob.core.windows.net/exampleCustomer/20260513150912_5273ea32.gz"
       }
    }
 }
@@ -103,33 +71,26 @@ Descriptions of URI parameters are as follows:
 
 ```
 
-> [!WARNING]
-> The field names in GHR request bodies ARE case SENSITIVE. As a general rule-of-thumb, top-level fields within `properties` (`startDateTime`, `impactCategory`, etc.) are camelCase, while fields nested within `additionalProperties` (`LogUrl`, `PhysicalHostName`, etc.) are PascalCase.
-
 ---
+
+> [!WARNING]
+> The field names in GHR request bodies are case sensitive. As a general rule, top-level fields within `properties` (`startDateTime`, `impactCategory`, etc.) use camelCase, while fields nested within `additionalProperties` (`LogUrl`, `PhysicalHostName`, etc.) use PascalCase.
 
 | Field name           | Required | Data type  | Description                                                                  |
 |----------------------|----------|------------|------------------------------------------------------------------------------|
 | `startDateTime`      | Yes      | `datetime` | Time (in UTC) when the impact happened.                                      |
 | `impactCategory`     | Yes      | `string`   | Observation type or fault scenario. Only an approved string list is allowed. |
 | `impactDescription`  | Yes      | `string`   | Description of the reported impact.                                          |
-| `impactedResourceId` | Yes      | `string`   | Fully qualified URI for the Azure resource.                                  |
+| `impactedResourceId` | Yes      | `string`   | Fully qualified URI for the Azure resource. Note that this field is required by the ImpactRP API but isn't used by GHR. Only the `PhysicalHostName` is used to map the request to the faulty node.                                  |
 | `PhysicalHostName`   | Yes      | `string`   | Node identifier, available in metadata.                                      |
-| `LogUrl`             | No       | `string`   | URL to saved logs.                                                           |
+| `LogUrl`             | No       | `string`   | URL to saved logs. See [How to upload log files to Guest Health Reporting](guest-health-log-upload.md) for more information. |
 | `Manufacturer`       | No       | `string`   | GPU manufacturer.                                                            |
 | `SerialNumber`       | No       | `string`   | GPU serial number.                                                           |
 | `ModelNumber`        | No       | `string`   | Model number.                                                                |
 | `Location`           | No       | `string`   | Peripheral Component Interconnect Express (PCIe) location.                   |
 
 > [!NOTE]
-> Providing optional information can speed up the node recovery time. You can retrieve `PhysicalHostName` from within the VM by using [this script](https://github.com/jeseszhang1010/Utilities/blob/main/kvp_client.c).
-
-Use the following command to get the `PhysicalHostName` value:
-
-```shell
-timeout 100 gcc -o /root/scripts/GPU/kvp_client /root/scripts/GPU/kvp_client.c
-timeout 60 sudo /root/scripts/GPU/kvp_client | grep "PhysicalHostName;" | awk '{print$4}' | tee PhysicalHostName.txt
-```
+> Providing optional information, such as uploading in-band logs, can speed up the node recovery time. You can retrieve `PhysicalHostName` from within the VM by using standard Azure APIs.
 
 ## HTTP response status codes for impact creation
 
@@ -142,48 +103,9 @@ When you successfully submit a Guest Health Report impact, an appropriate repair
 | 404 NotFound | The impacted resource wasn't found. Verify the resource provided as part of `additionalProperties` exists. |
 | 429 TooManyRequests | The request was rate limited. Resubmit it later. |
 
-## Additional HPC properties
-
-To aid Guest Health Reporting in taking the correct action, you can provide more information about the issue by using the `additionalProperties` field for high-performance computing (HPC).
-
-### Resource HPC
-
-`Resource.Hpc.*` fields:
-
-* `LogUrl` (string): URL to the relevant log file.
-* `PhysicalHostName` (string): Physical host name of the node (REQUIRED, alphanumeric).
-
-
-`Resource.Hpc.Unhealthy.*` fields specific to GPUs:
-
-* `Manufacturer` (string): Manufacturer of the GPU.
-* `SerialNumber` (string): Serial number of the GPU.
-* `ModelNumber` (string): Model number of the GPU.
-* `Location` (string): Physical location of the GPU.
-
-`Resource.Hpc.Investigate.*` field:
-
-* `CollectTelemetry` (Boolean, `0`/`1`): Tell HPC to collect telemetry from the affected VM.
-
-### GPU row remapping
-
-`gpu_row_remap_failure` field:
-
-* `SerialNumber` (string): Serial number of the GPU.
-* Flag: `gpu_row_remap_failure: GPU # (SXM# SN:#): row remap failure. This is an official end of life condition: decommission the GPU`
-
-`gpu_row_remap_*` fields:
-
-* `UCE` (string): Count of uncorrectable errors in histogram data.
-* `SerialNumber` (string): Serial number of the GPU.
-* Flag: `gpu_row_remap_*: GPU # (SXM# SN:#): bank with multiple row remaps: partial 1, low 0, none 0. CE: 0, UCE: #`
-
-> [!IMPORTANT]
-> We advise you to include detailed row-remapping fields with the specified information in their claims to expedite node restoration.
-
 ## Query workload impact insights
 
-After reporting a workload impact, Azure may generate a sequence of insights that describe how the event was detected, processed, acknowledged, and resolved. These insights can be queried programmatically through the Azure Resource Manager (ARM) API.
+After reporting a workload impact, Azure might generate a sequence of insights that describe how the event was detected, processed, acknowledged, and resolved. You can query these insights programmatically through the Azure Resource Manager (ARM) API.
 
 ### List insights for a workload impact
 
@@ -312,30 +234,30 @@ GET "https://management.azure.com/subscriptions/{subscriptionId}/providers/Micro
 | `content`           | object                | Contains title and description for the insight.                                                         |
 | `eventId`           | string                | Identifier of the event correlated with this insight. Used to aggregate insights for the same event.    |
 | `eventTime`         | string (date-time)    | Time of the event correlated with the impact.                                                           |
-| `groupId`           | string                | Identifier that can be used to group similar insights.                                                  |
-| `impact`            | object                | Details of the impact for which the insight has been generated.                                         |
+| `groupId`           | string                | Identifier that you can use to group similar insights.                                                  |
+| `impact`            | object                | Details of the impact for which the insight was generated.                                         |
 | `insightUniqueId`   | string                | Unique identifier of the insight.                                                                       |
 | `provisioningState` | string                | Resource provisioning state.                                                                            |
-| `status`            | string                | Status of the insight (e.g., *Resolved*, *Repaired*, other).                                            |
+| `status`            | string                | Status of the insight (for example, *Resolved*, *Repaired*, other).                                            |
 
-### Additional Processing Fields
+### Additional processing fields
 
 Some insights include extra processing metadata under `additionalDetails`. These fields help you understand how the impact request progressed through the Guest Health Reporting pipeline.
 
 | Name                                | Type    | Description                                                                                                                                         |
 |-------------------------------------|---------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
 | `additionalDetails.statusCode`      | string  | Detailed reason code explaining why this insight was generated (for example: `AcknowledgedUnhealthy`, `NodeRemovedFromService`, `TooManyRequests`). |
-| `additionalDetails.terminalInsight` | boolean | Indicates whether this is the final insight for the impact. If `true`, no further updates will follow.                                              |
+| `additionalDetails.terminalInsight` | boolean | Indicates whether this insight is the final insight for the impact. If `true`, no further updates follow.                                              |
 
-These fields should be interpreted together:  
+Interpret these fields together:  
 - **`statusCode`** = tells you the specific condition or reason for the insight. 
-- **`terminalInsight`** = whether the pipeline has completed  
+- **`terminalInsight`** = whether the pipeline has completed.  
 
 Example:  
-`statusCode = "NodeRemovedFromService"` and `terminalInsight = true` tells you whether additional updates should be expected.
+For example, `statusCode = "NodeRemovedFromService"` and `terminalInsight = true` tells you that no more updates are expected.
 
 Example:  
- `statusCode = AcknowledgedUnhealthy`, `terminalInsight = false`  
+ For example, `statusCode = AcknowledgedUnhealthy` and `terminalInsight = false` means the node health update is still in progress.  
 → The node health update is still in progress.
 
 ## Related content
