@@ -60,10 +60,15 @@ The following distros and versions currently include az-vm-utils in their offici
 
 | Distribution | Version |
 |--------|---------|
-| Fedora | 42 |
+| Redhat | 9.8 and later |
 | Kinvolk / Flatcar | 4152.2.3 |
 | Azure Linux | 2.0 |
-| Canonical / Ubuntu | 22.04, 24.04, 25.04 |
+| Canonical / Ubuntu | 22.04 and later |
+| SUSE Enterprise Linux| 15 SP5 and later |
+| Alma Linux 9 | 9.8 and later |
+| Debian | 13 |
+| Oracle Linux | 9.8 and later | 
+| Rocky Linux | 9.8 and later | 
 
 ### Installation
 
