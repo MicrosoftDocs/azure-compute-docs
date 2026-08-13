@@ -77,6 +77,10 @@ Running a command requires the `Microsoft.Compute/virtualMachines/runCommand/wri
 
 You can use one of the [built-in roles](/azure/role-based-access-control/built-in-roles) or create a [custom role](/azure/role-based-access-control/custom-roles) to use Run Command.
 
+> [!Note]
+> Azure Virtual Machines support a maximum of 25 Managed Run Command resources per VM. If more than 25 resources are created, any additional Managed Run Command scripts will not be retained.
+Attempts to create a new Managed Run Command resource after reaching the 25-resource limit will fail.
+
 ## Using Run Commands
 
 ### [PowerShell](#tab/powershell)  
@@ -227,7 +231,11 @@ Remove the RunCommand resource previously deployed on the VM. If the script exec
 ```powershell-interactive
 Remove-AzVMRunCommand -ResourceGroupName "myRG" -VMName "myVM" -RunCommandName "RunCommandName"
 ```
- 
+#### Verify the current number of Managed Run Command resources configured on the VM: 
+
+```powershell-interactive
+(Get-AzVMRunCommand -ResourceGroupName <RGName> -VMName <VMName>).Count
+```
 
 ### [CLI](#tab/cli)  
 
@@ -416,7 +424,6 @@ In this example, **secondRunCommand** will execute after **firstRunCommand**.
    ]
 }
 ```
-
 
 ## Next steps
 
