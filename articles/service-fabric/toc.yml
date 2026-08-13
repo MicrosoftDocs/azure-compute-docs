@@ -585,6 +585,8 @@
           href: service-fabric-tutorial-create-vnet-and-linux-cluster.md
       - name: Scale
         items:
+        - name: Release capacity during severe capacity loss
+          href: service-fabric-capacity-release.md
         - name: Manually scale out
           href: service-fabric-cluster-scale-in-out.md
         - name: Programmatically scale out
