@@ -60,7 +60,7 @@ The following distros and versions currently include az-vm-utils in their offici
 
 | Distribution | Version |
 |--------|---------|
-| Redhat | 9.8 and later |
+| Red Hat | 9.8 and later |
 | Kinvolk / Flatcar | 4152.2.3 |
 | Azure Linux | 2.0 |
 | Canonical / Ubuntu | 22.04 and later |
