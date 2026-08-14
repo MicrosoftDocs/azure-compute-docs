@@ -175,10 +175,11 @@ az account set --subscription <subscription-id>
 ```
 
 ### CLI: Create move collection and identity
+Use the same region for `--location` and `--move-region`. The resource location must match the source region of the Move Collection. Otherwise, the operation will fail with a `Resource Location Mismatch` error.
 
 ```azurecli-interactive
 az group create --location eastus2 --name clidemo-RG
-az resource-mover move-collection create --identity type=SystemAssigned --location eastus2 --move-region eastus --name cliDemo-zonalMC --resource-group clidemo-RG --move-type RegionToZone
+az resource-mover move-collection create --identity type=SystemAssigned --location eastus2 --move-region eastus2 --name cliDemo-zonalMC --resource-group clidemo-RG --move-type RegionToZone
 ```
 
 ### CLI: Add VM move resource and resolve dependencies
