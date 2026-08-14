@@ -58,17 +58,18 @@ To ensure backward compatibility for disks using SCSI controllers, azure-vm-util
 
 The following distros and versions currently include az-vm-utils in their official Azure marketplace images:
 
-| Distribution | Version |
-|--------|---------|
-| Red Hat | 9.8 and later |
-| Kinvolk / Flatcar | 4152.2.3 |
-| Azure Linux | 2.0 |
-| Canonical / Ubuntu | 22.04 and later |
-| SUSE Enterprise Linux| 15 SP5 and later |
-| Alma Linux 9 | 9.8 and later |
-| Debian | 13 |
-| Oracle Linux | 9.8 and later | 
-| Rocky Linux | 9.8 and later | 
+| Distribution            | Version           |
+|-------------------------|-------------------|
+| Alma Linux              | 9.8 and later     |
+| Azure Linux             | 4.0               |
+| Canonical / Ubuntu      | 22.04 and later   |
+| Debian                  | 13                |
+| Kinvolk / Flatcar       | 4152.2.3          |
+| Oracle Linux            | 9.8 and later     |
+| Red Hat                 | 9.8 and later     |
+| Rocky Linux             | 9.8 and later     |
+| SUSE Enterprise Linux   | 15 SP5 and later  |
+
 
 ### Installation
 
