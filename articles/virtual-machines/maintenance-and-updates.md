@@ -3,7 +3,7 @@ title: Maintenance and updates
 description: Overview of maintenance and updates for virtual machines running in Azure.
 ms.service: azure-virtual-machines
 ms.topic: concept-article
-ms.date: 08/05/2026
+ms.date: 08/13/2026
 #pmcontact:shants
 # Customer intent: As a cloud administrator, I want to understand the maintenance processes for virtual machines, so that I can effectively manage uptime and minimize disruptions during scheduled updates.
 ---
@@ -16,7 +16,11 @@ Azure periodically updates its platform to improve the reliability, performance,
 Updates rarely affect the hosted VMs. When updates do have an effect, Azure chooses the least impactful method for updates:
 
 - If the update doesn't require a reboot, the VM is paused while the host is updated, or the VM is live-migrated to an already updated host. 
-- If the update requires a reboot, Azure notifies you of the planned maintenance. Azure also provides a time window in which you can start the maintenance yourself, at a time that works for you. The self-maintenance window is typically 14 days (for host machines) unless the maintenance is urgent. Azure is investing in technologies to reduce the number of cases in which planned platform maintenance requires the VMs to reboot. For instructions on managing planned maintenance, see [Handling planned maintenance notifications using the Azure CLI](maintenance-notifications-cli.md), [PowerShell](maintenance-notifications-powershell.md), or [portal](maintenance-notifications-portal.md).
+- If the update requires a reboot, Azure notifies you of the planned maintenance. Azure also provides a time window in which you can start the maintenance yourself, at a time that works for you. The self-maintenance window depends on the type of maintenance:
+  - **Hardware decommissioning**: The self-maintenance window is typically 14 days.
+  - **Host maintenance**: The self-maintenance window is typically 35 days, unless the maintenance is urgent.
+
+  Azure is investing in technologies to reduce the number of cases in which planned platform maintenance requires the VMs to reboot. For instructions on managing planned maintenance, see [Handling planned maintenance notifications using the Azure CLI](maintenance-notifications-cli.md), [PowerShell](maintenance-notifications-powershell.md), or [portal](maintenance-notifications-portal.md).
 
 This page describes how Azure performs both types of maintenance. For more information about unplanned events (outages), see [Manage the availability of VMs for Windows](./availability.md) or the corresponding article for [Linux](./availability.md).
 
