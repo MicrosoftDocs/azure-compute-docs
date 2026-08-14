@@ -17,7 +17,6 @@ Shared disks have general limitations that apply to all shared disks, regardless
 
 - Currently, only Ultra Disks, Premium SSD v2, Premium SSD, and Standard SSDs can be used as a shared disk
 - Shared disks can be attached to individual Virtual Machine Scale Sets but can't be defined in the Virtual Machine Scale Set models or automatically deployed
-- A shared disk can't be expanded without either deallocating all VMs the disk is attached to, or detaching the disk from all of these VMs
 - Write accelerator isn't supported for shared disks
 - Host caching isn't supported for shared disks
 
