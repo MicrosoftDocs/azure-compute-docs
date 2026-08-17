@@ -50,7 +50,10 @@ Microsoft redistributes NVIDIA GRID driver installers for NVv3, NCasT4_v3, NVads
  Install these GRID drivers only on these VMs and only on the operating systems listed in the following table. These drivers include licensing for GRID Virtual GPU (vGPU) software in Azure. You do not need to set up an NVIDIA vGPU software license server.
 
 >[!WARNING]
-> The v17.x (R550) GRID driver is no longer supported and may result in a Code 43 starting on August 1st, 2026. 
+> NVIDIA v17.x (R550) GRID drivers are no longer supported for NVadsA10_v5 VMs. If your attempt to deploy a VM that is using a v17.x guest driver lands on a server with the v20.x host driver, it will result in your VM failing to deploy with a Code 43 error message. <br>
+>
+> Instead, as previously communicated through official Azure communications, please use the v18.x guest driver for NVadsA10_v5 VMs listed below.
+>
 
 |VM Series|GPU|GRID Driver|Supported Windows OS Versions|
 |---|---|---|---|
