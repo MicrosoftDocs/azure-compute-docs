@@ -60,6 +60,10 @@ Install these GRID drivers only on these VMs and only on the operating systems l
 
 The NCasT4_v3 and NCv6 RTX PRO 6000 BSE series are the only non-NV GPU VM series that support GRID drivers.
 
+> [!WARNING]
+> The v17.x (R550) GRID driver is no longer supported and may result in a Code 43 starting on August 1st, 2026.
+> 
+
 |VM Series|GPU|GRID Driver|Supported Linux OS Versions| 
 |---|---|---|---|
 | NCv6 RTX PRO 6000 BSE |NVIDIA RTX PRO 6000 Blackwell Server Edition GPU (96GB)| [vGPU20](https://download.microsoft.com/download/51239696-ec04-4c02-a6b3-1d9c608fb57c/NVIDIA-Linux-x86_64-595.58.03-grid-azure.run) | •	Ubuntu 24.04 LTS <br> •	Ubuntu 22.04 LTS <br> •	Ubuntu 20.04 LTS <br> •	Red Hat Enterprise Linux (RHEL) 9.4, 9.6, 9.7 <br> •	Red Hat Enterprise Linux (RHEL) 8.10 <br> •	SUSE Linux Enterprise Server 15 SP7| 
