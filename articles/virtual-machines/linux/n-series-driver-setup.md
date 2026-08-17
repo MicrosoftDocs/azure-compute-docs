@@ -61,7 +61,9 @@ Install these GRID drivers only on these VMs and only on the operating systems l
 The NCasT4_v3 and NCv6 RTX PRO 6000 BSE series are the only non-NV GPU VM series that support GRID drivers.
 
 > [!WARNING]
-> The v17.x (R550) GRID driver is no longer supported and may result in a Code 43 starting on August 1st, 2026.
+> NVIDIA v17.x (R550) GRID drivers are no longer supported for NVadsA10_v5 VMs. If your attempt to deploy a VM that is using a v17.x guest driver lands on a server with the v20.x host driver, it will result in your VM failing to deploy with a Code 43 error message. <br>
+> 
+> Instead, as previously communicated through official Azure communications, please use the v18.x guest driver for NVadsA10_v5 VMs listed below.
 > 
 
 |VM Series|GPU|GRID Driver|Supported Linux OS Versions| 
