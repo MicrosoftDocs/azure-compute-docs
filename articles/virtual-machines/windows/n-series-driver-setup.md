@@ -49,6 +49,12 @@ Microsoft redistributes NVIDIA GRID driver installers for NVv3, NCasT4_v3, NVads
 
  Install these GRID drivers only on these VMs and only on the operating systems listed in the following table. These drivers include licensing for GRID Virtual GPU (vGPU) software in Azure. You do not need to set up an NVIDIA vGPU software license server.
 
+>[!WARNING]
+> NVIDIA v17.x (R550) GRID drivers are no longer supported for NVadsA10_v5 VMs. If your attempt to deploy a VM that is using a v17.x guest driver lands on a server with the v20.x host driver, it will result in your VM failing to deploy with a Code 43 error message. <br>
+>
+> Instead, as previously communicated through official Azure communications, use the v18.x guest driver for NVadsA10_v5 VMs listed in the following table.
+>
+
 |VM Series|GPU|GRID Driver|Supported Windows OS Versions|
 |---|---|---|---|
 | NCv6 RTX PRO 6000 BSE | NVIDIA RTX PRO 6000 Blackwell Server Edition GPU (96GB) | [vGPU20](https://download.microsoft.com/download/169e58c8-9099-481e-a9a9-c237a189710c/595.97_grid_win10_win11_server2022_server2025_dch_64bit_international_azure_swl.exe) | •	Windows 11 25H2 (including all supported Windows 11 releases up to 25H2) <br> • Win 11 25H2 AVD <br> •	Windows Server 2025 <br> •	Windows Server 2022 |
