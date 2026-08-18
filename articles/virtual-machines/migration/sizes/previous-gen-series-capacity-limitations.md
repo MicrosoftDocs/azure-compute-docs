@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 08/11/2026
+ms.date: 08/18/2026
 ms.author: mattmcinnes
 ---
 
@@ -113,6 +113,52 @@ Azure provides VM migration guidance to help you identify the most appropriate r
 ### Are there pricing differences between previous-generation and newer-generation VM families?
 
 Pricing, performance, storage capabilities, and hardware characteristics might vary across VM generations. Validate workload requirements and review the documentation for the recommended target VM families and series before migration.
+
+### Reserved instances
+
+#### Will existing reserved instances (RIs) continue to work after the quota growth restrictions, including during redeployment, disaster recovery, or failover?
+
+Yes. Existing RIs remain valid through their purchased term and continue providing discounts for matching usage after quota growth restrictions take effect. Capacity growth restrictions don't invalidate existing RIs.
+
+RIs are billing benefits, not capacity reservations. An RI discount might apply to matching usage, but it doesn't guarantee VM creation, redeployment, disaster recovery, failover, or scaling if capacity is unavailable.
+
+Existing subscriptions can deploy or redeploy affected VM sizes within approved quota, subject to capacity availability. New subscriptions, additional quota, and capacity expansion might be restricted.
+
+Review disaster recovery and restore plans, migrate to newer VM generations where appropriate, and update RIs, Savings Plans, and capacity strategies to align with the target environment.
+
+#### Do RIs provide protection from growth restrictions, and how do they work with on-demand capacity reservations?
+
+Purchasing an RI doesn't reserve capacity or protect against capacity growth restrictions. RIs provide a discount for eligible usage but don't guarantee capacity availability.
+
+Customers who require capacity assurance should evaluate on-demand capacity reservations (ODCRs). Customers who need flexibility across VM families or regions should consider Azure Savings Plan for Compute.
+
+RIs and ODCRs serve different purposes: RIs provide billing discounts, while ODCRs reserve capacity for a specific VM size, region, and zone.
+
+#### What happens to existing RIs and costs when I migrate from applicable A, B, D, E, F, or L variants of v1 through v4 series to v5 or later?
+
+RIs don't automatically transfer when you migrate to a different VM series. Exchange an eligible RI to match the new VM series or transition to Azure Savings Plan for Compute. If you don't make an update, the RI might no longer apply, which could result in additional costs.
+
+RI exchanges are available until February 1, 2027. After that date, each eligible active reservation purchased before the deadline retains one final exchange.
+
+#### What commitment discounts remain available, and how should I plan future purchases or renewals?
+
+- For affected applicable A, B, D, E, F, or L variants of v1 through v3 VM series, new or renewed one-year and three-year RIs are no longer available.
+- For newer VM generations, RIs remain available for eligible VM series.
+- Azure Savings Plan for Compute remains available as a flexible commitment option across eligible VM generations.
+
+Review the reservation portfolio before February 1, 2027, and plan how to use any remaining exchange rights for eligible active RIs. For more information, see [Manage Azure Reservations](/azure/cost-management-billing/reservations/manage-reserved-vm-instance).
+
+#### What options are available for customers with large usage of applicable A, B, D, E, F, or L variants of v1 through v4 when existing RIs expire? Is there an exception process for RI renewals?
+
+Existing RIs remain valid through their committed term and continue providing discounts for eligible usage. However, no exceptions or extensions are planned for RI purchase or renewal end dates. Work with your Microsoft account team to evaluate migration and alternative commitment options.
+
+Affected applicable A, B, D, E, F, or L variants of v1 through v3 RIs can't be renewed or repurchased after expiration. Once expired, usage moves to pay-as-you-go rates unless you select another commitment option.
+
+You can:
+
+- Continue running affected VMs at pay-as-you-go rates.
+- Transition to Azure Savings Plan for Compute.
+- Migrate to newer VM generations and purchase new RIs, an Azure Savings Plan for Compute, or both.
 
 ### On-demand capacity reservations (ODCR)
 
