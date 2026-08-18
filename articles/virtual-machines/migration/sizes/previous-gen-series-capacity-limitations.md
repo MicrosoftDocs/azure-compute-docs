@@ -142,7 +142,7 @@ RI exchanges are available until February 1, 2027. After that date, each eligibl
 
 #### What commitment discounts remain available, and how should I plan future purchases or renewals?
 
-- For affected applicable A, B, D, E, F, or L variants of v1 through v4 VM series, new or renewed one-year and three-year RIs are no longer available.
+- For affected applicable A, B, D, E, F, or L variants of v1 through v3 VM series, new or renewed one-year and three-year RIs are no longer available.
 - For newer VM generations, RIs remain available for eligible VM series.
 - Azure Savings Plan for Compute remains available as a flexible commitment option across eligible VM generations.
 
