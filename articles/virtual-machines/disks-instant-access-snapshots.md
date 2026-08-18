@@ -65,9 +65,9 @@ Learn more about Instant Access Snapshot billing in [here](https://azure.microso
 
 ### Create an instant access snapshot
 
-Instant access snapshots of Ultra Disk and Premium SSD v2 are not a separate snapshot resource class to manage. They are incremental snapshots that temporarily enter Instant Access state for the specified duration. When this duration expires, snapshots automatically transition out of the Instant Access state and continue as Standard ZRS snapshots for better reliability and long-term retention.
+Instant access snapshots of Ultra Disk and Premium SSD v2 aren't a separate snapshot resource class to manage. They're incremental snapshots that temporarily enter the instant access state for the specified duration. When this duration expires, snapshots automatically transition out of the instant access state and continue as incremental snapshots.
 
-To create instant access snapshots of Ultra Disk and Premium SSD v2, you use the same Snapshot API and commands, but add an additional parameter that specifies the how long the snapshot remains in the instant access state (minimum 60 minutes, maximum 300 minutes). After the specified duration expires, the snapshot automatically transitions to a Standard Storage snapshot. You can monitor your snapshot's state by [checking the snapshot's access state](#check-snapshot-access-state).
+To create instant access snapshots of Ultra Disk and Premium SSD v2, use the same Snapshot API and commands, but add an extra parameter that specifies how long the snapshot stays in the instant access state (minimum 60 minutes, maximum 300 minutes). After the specified duration expires, the snapshot automatically transitions to an incremental snapshot. You can monitor your snapshot's state by [checking the snapshot's access state](#check-snapshot-access-state).
 
 In the Azure portal, you can't specify a duration, so snapshots created through the portal remain instant access snapshots for 300 minutes (5 hours).
 
