@@ -29,9 +29,9 @@ Disks created from snapshots of Premium SSD, Standard SSD, and Standard HDD can 
 
 Snapshots of Ultra Disk and Premium SSD v2 aren't instant access by default and can only be used after snapshot’s background data copy completes. To bypass this, you can choose to configure instant access by specifying a value in the `InstantAccessDurationMins` parameter at the time of snapshot creation. This will allow you to create an instant access snapshot and can be immediately used to create new disks. Disks created from instant access snapshots are rapidly hydrated with minimal performance impact and can be immediately attached to a running VM.
 
-After the time specified in `InstantAccessDurationMins` elapses, the snapshot automatically transitions to an incremental snapshot and can be used once the background data copy has completed. You can monitor the snapshot's state via the `SnapshotAccessState` property.
+After the time specified in `InstantAccessDurationMins` elapses, the snapshot automatically transitions to an incremental snapshot and can be used once the background data copy finishes. You can monitor the snapshot's state via the `SnapshotAccessState` property.
 
-Until the background data copy completes, snapshots in the **InstantAccess** state depend on the availability of the source disk and don't provide protection against disk failures. You can monitor a snapshot's background data copy progress by checking the [`SnapshotAccessState` property](disks-incremental-snapshots.md#check-snapshot-status).
+Until the background data copy finishes, snapshots in the **InstantAccess** state depend on the availability of the source disk and don't provide protection against disk failures. You can monitor a snapshot's background data copy progress by checking the [`SnapshotAccessState` property](disks-incremental-snapshots.md#check-snapshot-status).
 
 ### Limitations
 
