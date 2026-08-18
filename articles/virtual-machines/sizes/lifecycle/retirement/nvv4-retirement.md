@@ -14,7 +14,7 @@ ms.date:     06/13/2025
 
 # Migrate your NVv4-series virtual machines by September 30, 2026
 > [!NOTE]
-> There is a known resize operation error that occurs when migrating from the NVv4-series to the NVads_V710_v5-series. To unblock this, register your subscription ID under the AFEC ‘VMTempDiskResizePreview’. The AFEC is also discoverable in the portal. Then, confirm the AFEC registration status before resizing the VMs. 
+> There is a known resize operation error that occurs when migrating from the NVv4-series to the NVads_V710_v5-series. To unblock this, register your subscription ID under the Azure Feature Exposure Control (AFEC) ‘VMTempDiskResizePreview’. The AFEC is also discoverable in the portal. Then, confirm the AFEC registration status before resizing the VMs. 
 
 > [!NOTE]
 > 1-year and 3-year RI purchases for the NVv4-series ended on November 2, 2025.
