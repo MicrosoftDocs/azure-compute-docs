@@ -13,6 +13,9 @@ ms.author: mattmcinnes
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
+> [!IMPORTANT]
+> Azure Virtual Machines HC-series sizes (Standard_HC44rs, Standard_HC44-16rs, Standard_HC44-32rs) will be retired on May 31, 2027. After this date, any remaining HC-series VMs will be deallocated, stop running, and will no longer incur charges. HC-series will no longer have SLA or support following retirement. Sales of 1-year and 3-year Reserved Instances for HC-series ended on April 2, 2026. For more information, see [Migrate your HC-series virtual machines by May 31, 2027](../../sizes/lifecycle/retirement/hc-series-retirement.md).
+
 The 'HC' family of VM size series are one of Azure's high-performance computing (HPC) optimized VM instances. These VMs are designed for compute-intensive workloads that need substantial CPU power. Examples include genomic sequencing, engineering simulations, and financial modeling.
 HB-series VMs use high-performance Intel Xeon Scalable processors and fast memory. HC-series VMs deliver exceptional computational performance and memory bandwidth, for applications that demand intense processing power to handle complex calculations and massive data sets efficiently. They're well-suited for industries such as healthcare, finance, and engineering, where rapid data processing and simulation accuracy are critical for advanced research and development.
 
