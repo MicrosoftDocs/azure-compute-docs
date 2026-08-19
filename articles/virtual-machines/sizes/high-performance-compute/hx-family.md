@@ -9,7 +9,7 @@ ms.date: 11/24/2025
 ms.author: mattmcinnes
 ---
 
-# 'HX' sub-family high-performance compute VM size series
+# 'HX' subfamily high-performance compute VM size series
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
