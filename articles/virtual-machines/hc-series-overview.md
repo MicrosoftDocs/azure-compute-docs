@@ -16,7 +16,7 @@ author: padmalathas
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 > [!IMPORTANT]
-> Azure Virtual Machines HC-series sizes (Standard_HC44rs, Standard_HC44-16rs, Standard_HC44-32rs) will be retired on May 31, 2027. After this date, any remaining HC-series VMs will be deallocated, stop running, and will no longer incur charges. HC-series will no longer have SLA or support following retirement. Sales of 1-year and 3-year Reserved Instances for HC-series ended on April 2, 2026. For more information, see [Migrate your HC-series virtual machines by May 31, 2027](../../sizes/lifecycle/retirement/hc-series-retirement.md).
+> Azure Virtual Machines HC-series sizes (Standard_HC44rs, Standard_HC44-16rs, Standard_HC44-32rs) retire on May 31, 2027. After this date, Azure deallocates HC-series VMs, stops running them, and you no longer incur charges. HC-series VMs don't have an SLA or support after retirement. Sales of 1-year and 3-year Reserved Instances for HC-series ended on April 2, 2026. For more information, see [Migrate your HC-series virtual machines by May 31, 2027](../../sizes/lifecycle/retirement/hc-series-retirement.md).
 
 Maximizing HPC application performance on Intel Xeon Scalable Processors requires a thoughtful approach to process placement on this new architecture. Here, we outline our implementation of it on Azure HC-series VMs for HPC applications. We'll use the term “pNUMA” to refer to a physical NUMA domain, and “vNUMA” to refer to a virtualized NUMA domain. Similarly, we'll use the term “pCore” to refer to physical CPU cores, and “vCore” to refer to virtualized CPU cores.
 
