@@ -15,7 +15,7 @@ author: iamwilliew
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 > [!IMPORTANT]
-> Azure Virtual Machines HC-series sizes (Standard_HC44rs, Standard_HC44-16rs, Standard_HC44-32rs) will be retired on May 31, 2027. After this date, any remaining HC-series VMs will be deallocated, stop running, and will no longer incur charges. HC-series will no longer have SLA or support following retirement. Sales of 1-year and 3-year Reserved Instances for HC-series ended on April 2, 2026. For more information, see [Migrate your HC-series virtual machines by May 31, 2027](../../sizes/lifecycle/retirement/hc-series-retirement.md).
+> Azure Virtual Machines HC-series sizes (Standard_HC44rs, Standard_HC44-16rs, Standard_HC44-32rs) retire on May 31, 2027. After this date, Azure deallocates HC-series VMs, stops running them, and you no longer incur charges. HC-series VMs don't have an SLA or support after retirement. Sales of 1-year and 3-year Reserved Instances for HC-series ended on April 2, 2026. For more information, see [Migrate your HC-series virtual machines by May 31, 2027](../../sizes/lifecycle/retirement/hc-series-retirement.md).
 
 Performance testing was conducted across multiple HC-series sizes. The following table summarizes key findings from these tests.
 
