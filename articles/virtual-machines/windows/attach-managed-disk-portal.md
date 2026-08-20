@@ -37,6 +37,11 @@ Follow these steps:
 
 ## Initialize a new data disk
 
+> [!IMPORTANT]
+> Initialize and format only a newly created, empty data disk. If the disk was previously used or contains existing data, initializing, repartitioning, or formatting it might make the data inaccessible or permanently erase it. Before proceeding, verify the disk number, size, and LUN to ensure that you selected the correct disk.
+>
+> After formatting is complete, confirm that the disk appears as **Online** and **Healthy** in **Disk Management** and that it has an assigned drive letter.
+
 Follow these steps:
 
 1. Connect to the VM.
