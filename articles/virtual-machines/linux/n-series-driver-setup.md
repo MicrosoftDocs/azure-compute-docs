@@ -63,13 +63,13 @@ The NCasT4_v3 and NCv6 RTX PRO 6000 BSE series are the only non-NV GPU VM series
 > [!WARNING]
 > NVIDIA v17.x (R550) GRID drivers are no longer supported for NVadsA10_v5 VMs. If your attempt to deploy a VM that is using a v17.x guest driver lands on a server with the v20.x host driver, it will result in your VM failing to deploy with a Code 43 error message. <br>
 > 
-> Instead, as previously communicated through official Azure communications, please use the v18.x guest driver for NVadsA10_v5 VMs listed in the following table.
+> Instead, use the v18.x guest driver for NVadsA10_v5 VMs listed in the following table.
 > 
 
 |VM Series|GPU|GRID Driver|Supported Linux OS Versions| 
 |---|---|---|---|
-| NCv6 RTX PRO 6000 BSE |NVIDIA RTX PRO 6000 Blackwell Server Edition GPU (96GB)| [vGPU20](https://download.microsoft.com/download/51239696-ec04-4c02-a6b3-1d9c608fb57c/NVIDIA-Linux-x86_64-595.58.03-grid-azure.run) | •	Ubuntu 24.04 LTS <br> •	Ubuntu 22.04 LTS <br> •	Ubuntu 20.04 LTS <br> •	Red Hat Enterprise Linux (RHEL) 9.4, 9.6, 9.7 <br> •	Red Hat Enterprise Linux (RHEL) 8.10 <br> •	SUSE Linux Enterprise Server 15 SP7| 
-| NCasT4_v3 |NVIDIA Tesla T4 GPU (16GB)| [vGPU20](https://download.microsoft.com/download/51239696-ec04-4c02-a6b3-1d9c608fb57c/NVIDIA-Linux-x86_64-595.58.03-grid-azure.run) | •	Ubuntu 24.04 LTS <br> •	Ubuntu 22.04 LTS <br> •	Ubuntu 20.04 LTS <br> •	Red Hat Enterprise Linux (RHEL) 9.4, 9.6, 9.7 <br> •	Red Hat Enterprise Linux (RHEL) 8.10 <br> | 
+| NCv6 RTX PRO 6000 BSE |NVIDIA RTX PRO 6000 Blackwell Server Edition GPU (96GB)| [vGPU20.2](https://download.microsoft.com/download/a7cb6d36-3bbc-43d6-9e88-e0842e6f9ab9/NVIDIA-Linux-x86_64-595.91.07-grid-azure.run) | •	Ubuntu 24.04 LTS <br> •	Ubuntu 22.04 LTS <br> •	Ubuntu 20.04 LTS <br> •	Red Hat Enterprise Linux (RHEL) 9.4, 9.6, 9.7 <br> •	Red Hat Enterprise Linux (RHEL) 8.10 <br> •	SUSE Linux Enterprise Server 15 SP7| 
+| NCasT4_v3 |NVIDIA Tesla T4 GPU (16GB)| [vGPU20.2](https://download.microsoft.com/download/a7cb6d36-3bbc-43d6-9e88-e0842e6f9ab9/NVIDIA-Linux-x86_64-595.91.07-grid-azure.run) | •	Ubuntu 24.04 LTS <br> •	Ubuntu 22.04 LTS <br> •	Ubuntu 20.04 LTS <br> •	Red Hat Enterprise Linux (RHEL) 9.4, 9.6, 9.7 <br> •	Red Hat Enterprise Linux (RHEL) 8.10 <br> | 
 | NVadsA10_v5 |NVIDIA A10 GPU (24GB)| [vGPU18.8](https://download.microsoft.com/download/5e213ec5-834f-4b0a-87f7-772751353b06/NVIDIA-Linux-x86_64-570.237-grid-azure.run) | •	Ubuntu 24.04 LTS <br> •	Ubuntu 22.04 LTS <br> •	Ubuntu 20.04 LTS <br> •	Red Hat Enterprise Linux (RHEL) 9.4, 9.6, 9.7 <br> •	Red Hat Enterprise Linux (RHEL) 8.10 | 
 | NVv3 ([retiring September 30th, 2026](/azure/virtual-machines/sizes/lifecycle/retirement/nvv3-series-retirement))|NVIDIA Tesla M60 GPU (16GB)| [vGPU16 (LTS)](https://download.microsoft.com/download/8/d/a/8da4fb8e-3a9b-4e6a-bc9a-72ff64d7a13c/NVIDIA-Linux-x86_64-535.161.08-grid-azure.run)| •	Ubuntu 20.04 LTS <br> • Red Hat Enterprise Linux (RHEL) 8.6, 8.8, 8.9 | 
 
