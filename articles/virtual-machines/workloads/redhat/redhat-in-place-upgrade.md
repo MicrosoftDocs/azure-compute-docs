@@ -41,6 +41,7 @@ In general, Red Hat only supports upgrading from version to the next; you cannot
 
 [Upgrading from RHEL 8 SAP to RHEL 9 SAP.](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux_for_sap_solutions/9/html/upgrading_sap_environments_from_rhel_8_to_rhel_9/index)
 
+[Upgrading from RHEL 9 SAP to RHEL 10 SAP.](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux_for_sap_solutions/10/html/upgrading_sap_environments_from_rhel_9_to_rhel_10/index)
 
 ## Next steps
 * Learn more about [Red Hat images in Azure](./redhat-images.md).
