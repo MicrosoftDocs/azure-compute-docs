@@ -6,7 +6,7 @@ ms.service: azure-virtual-machines
 ms.subservice: hpc
 ms.custom:
 ms.topic: concept-article
-ms.date: 02/10/2026
+ms.date: 08/21/2026
 ms.reviewer: wwilliams
 ms.author: padmalathas
 author: padmalathas
@@ -17,7 +17,7 @@ author: padmalathas
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 > [!IMPORTANT]
-> **HBv2-series VMs retire on May 31, 2027.** This retirement date applies to all HBv2 sizes: Standard_HB120rs_v2, Standard_HB120-96rs_v2, Standard_HB120-64rs_v2, Standard_HB120-32rs_v2, and Standard_HB120-16rs_v2. After this date, Azure sets HBv2 VMs to a deallocated state. They stop working, stop incurring billing charges, and lose SLA and support. Plan your migration to current-generation HPC alternatives before the retirement date. For migration guidance, see the [Migration guidance](#migration-guidance) section.
+> **HBv2-series VMs retire on May 31, 2027.** This retirement date applies to all HBv2 sizes: Standard_HB120rs_v2, Standard_HB120-96rs_v2, Standard_HB120-64rs_v2, Standard_HB120-32rs_v2, and Standard_HB120-16rs_v2. After this date, Azure sets HBv2 VMs to a deallocated state. They stop working, stop incurring billing charges, and lose SLA and support. Plan your migration to current-generation HPC alternatives before the retirement date. For migration guidance, see the [Migration guidance](./sizes/lifecycle/retirement/hbv2-series-retirement.md) section.
 
 Performance testing was conducted across multiple [HBv2-series](hbv2-series.md) size VMs. The following table summarizes key findings from these tests.
 
