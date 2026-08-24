@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 03/10/2026
+ms.date: 08/24/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 # Customer intent: "As a cloud architect, I want to review the specifications of the Dldsv7 size series, so that I can select the most appropriate virtual machine type for my application workloads and ensure optimal performance."
@@ -40,8 +40,7 @@ vCPUs (Qty.) and Memory for each size
 | *Standard_D248lds_v7 | 248 | 496 |
 
 #### VM Basics resources
-> [!NOTE]
-> - *Note that the 248 and 372 vCPU sizes for these VM series will be generally available soon. 
+
 - [Check vCPU quotas](../../../virtual-machines/quotas.md)
 
 ### [Local Storage](#tab/sizestoragelocal)
@@ -140,8 +139,6 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 > No accelerators are present in this series.
 
 ---
-> [!NOTE]
-> - *Note that the 248 and 372 vCPU sizes for these VM series will be generally available soon. 
 
 ## Feature support
 |Feature name | Support status |
