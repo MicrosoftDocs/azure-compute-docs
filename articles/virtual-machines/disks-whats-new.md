@@ -3,7 +3,7 @@ title: What's new in Azure Disk Storage
 description: Learn about new features and enhancements in Azure Disk Storage.   
 author: roygara
 ms.author: rogarana
-ms.date: 12/23/2025
+ms.date: 08/24/2026
 ms.topic: concept-article
 ms.service: azure-disk-storage
 ms.custom: references_regions
@@ -16,6 +16,8 @@ Azure Disk Storage regularly receives updates for new features and enhancements.
 
 ## Update summary
 - [What's new in 2026](#whats-new-in-2026)
+  - [Quarter 3 (July, August, September)](#quarter-3-july-august-september)
+    - [Expanded regional availability for Ultra Disks in Australia Southeast](#expanded-regional-availability-for-ultra-disks-in-australia-southeast)
   - [Quarter 1 (January, February, March)](#quarter-1-january-february-march)
     - [Expanded regional availability for Premium SSD v2](#expanded-regional-availability-for-premium-ssd-v2)
 - [What's new in 2025](#whats-new-in-2025)
@@ -23,7 +25,7 @@ Azure Disk Storage regularly receives updates for new features and enhancements.
         - [Expanded regional availability for Premium SSD v2](#expanded-regional-availability-for-premium-ssd-v2)
         - [Public preview: Instant Access Snapshot for Premium SSD v2 and Ultra Disks](#public-preview-instant-access-snapshot-for-premium-ssd-v2-and-ultra-disks)
         - [Generally available: Azure Site Recovery for Virtual Machines with Premium SSD v2 and Ultra Disks](#generally-available-azure-site-recovery-for-virtual-machines-with-premium-ssd-v2-and-ultra-disks)
-  -  [Quarter 3 (July, August, September)](#quarter-3-july-august-september)
+  -  [Quarter 3 (July, August, September)](#quarter-3-july-august-september-1)
         - [Generally available: Live Resize for Premium SSD v2 and Ultra Disks using NVMe controllers](#generally-available-live-resize-for-premium-ssd-v2-and-ultra-disks-using-nvme-controllers)
         - [Generally available: Ultra Disk price reduction in West US 2, Central US, and UK South](#generally-available-ultra-disk-price-reduction-in-west-us-2-central-us-and-uk-south)
   - [Quarter 2 (April, May, June)](#quarter-2-april-may-june)
@@ -46,6 +48,12 @@ Azure Disk Storage regularly receives updates for new features and enhancements.
       - [Expanded regional availability for zone-redundant storage disks](#expanded-regional-availability-for-zone-redundant-storage-disks)
 
 ## What's new in 2026
+
+### Quarter 3 (July, August, September)
+
+#### Expanded regional availability for Ultra Disks in Australia Southeast
+
+Ultra Disks are now available in Australia Southeast. For information about regional availability and deployment requirements, see [Deploy an Ultra Disk](disks-enable-ultra-ssd.md).
 
 ### Quarter 1 (January, February, March)
 
