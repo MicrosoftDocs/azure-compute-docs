@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 03/10/2026
+ms.date: 08/24/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 # Customer intent: "As a cloud architect, I want to review the specifications of the Dldsv7 size series, so that I can select the most appropriate virtual machine type for my application workloads and ensure optimal performance."
@@ -36,12 +36,11 @@ vCPUs (Qty.) and Memory for each size
 | Standard_D64lds_v7 | 64 | 126 |
 | Standard_D96lds_v7 | 96 | 384 |
 | Standard_D128lds_v7 | 128 | 256 |
-| *Standard_D192lds_v7 | 192 | 384 |
-| *Standard_D248lds_v7 | 248 | 496 |
+| Standard_D192lds_v7 | 192 | 384 |
+| Standard_D248lds_v7 | 248 | 496 |
 
 #### VM Basics resources
-> [!NOTE]
-> - *Note that the 248 and 372 vCPU sizes for these VM series will be generally available soon. 
+
 - [Check vCPU quotas](../../../virtual-machines/quotas.md)
 
 ### [Local Storage](#tab/sizestoragelocal)
@@ -59,8 +58,8 @@ Local (temp) storage info for each size
 | Standard_D64lds_v7 | 4 | 880 | 1,600,000 | 8,960 | 800,000 | 4,480 |
 | Standard_D96lds_v7 | 6 | 880 | 2,400,000 | 13,440 | 1,200,000 | 6,720 |
 | Standard_D128lds_v7 | 4 | 1,760 | 3,200,000 | 17,920 | 1,600,000 | 8,960 |
-| *Standard_D192lds_v7 | 6 | 1,760 | 4,800,000 | 26,880 | 2,400,000 | 13,440 |
-| *Standard_D248lds_v7 | 5 | 2,816 | 6,400,000 | 35,840 | 3,200,000 | 17,000 |
+| Standard_D192lds_v7 | 6 | 1,760 | 4,800,000 | 26,880 | 2,400,000 | 13,440 |
+| Standard_D248lds_v7 | 5 | 2,816 | 6,400,000 | 35,840 | 3,200,000 | 17,000 |
 
 #### Storage resources
 - [NVMe Overview](/azure/virtual-machines/nvme-overview)
@@ -120,8 +119,8 @@ Network interface info for each size
 | Standard_D64lds_v7 | 15 | 45,000 |
 | Standard_D96lds_v7 | 15 | 70,000 |
 | Standard_D128lds_v7 | 15 | 85,000 |
-| *Standard_D192lds_v7 | 15 | 100,000 |
-| *Standard_D248lds_v7 | 15 | 150,000 |
+| Standard_D192lds_v7 | 15 | 100,000 |
+| Standard_D248lds_v7 | 15 | 150,000 |
 
 #### Networking resources
 - [Virtual networks and virtual machines in Azure](/azure/virtual-network/network-overview)
@@ -140,8 +139,6 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 > No accelerators are present in this series.
 
 ---
-> [!NOTE]
-> - *Note that the 248 and 372 vCPU sizes for these VM series will be generally available soon. 
 
 ## Feature support
 |Feature name | Support status |
