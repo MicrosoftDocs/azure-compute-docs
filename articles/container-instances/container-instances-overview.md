@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
-ms.date: 11/17/2025
+ms.date: 07/25/2026
 ms.update-cycle: 1095-days
 ms.custom: mvc, linux-related-content
 # Customer intent: As a cloud developer, I want to deploy and manage containerized applications using serverless containers, so that I can simplify resource management and achieve faster startup times without the overhead of virtual machines.
@@ -59,12 +59,15 @@ To retrieve and persist state with Azure Container Instances, we offer direct [m
 
 Azure Container Instances can schedule both Windows and Linux containers with the same API. You can specify your OS type preference when you create your [container groups](container-instances-container-groups.md).
 
+> [!NOTE]
+> Azure Container Instances supports only x64 (AMD64) container images. ARM64 (arm64) container images aren't supported. For more information, see the [FAQ](container-instances-faq.yml#are-arm64--arm64--container-images-supported-).
+
 Some features are currently restricted to Linux containers:
 
 * Multiple containers per container group
 * Volume mounting ([Azure Files](container-instances-volume-azure-files.md), [emptyDir](container-instances-volume-emptydir.md), [GitRepo](container-instances-volume-gitrepo.md), [secret](container-instances-volume-secret.md))
 * [Resource usage metrics](monitor-azure-container-instances.md#get-metrics) with Azure Monitor
-* [GPU resources](container-instances-gpu.md) (preview)
+* [GPU resources](container-instances-gpu.md) (retired)
 
 For Windows container deployments, use images based on common [Windows base images](./container-instances-faq.yml#what-windows-base-os-images-are-supported-).
 

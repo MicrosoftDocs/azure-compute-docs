@@ -11,11 +11,11 @@ ms.reviewer: mattmcinnes
 ms.custom: include file
 # Customer intent: "As a cloud architect, I want to access specifications for the NDm_A100_v4 series VM sizes, so that I can assess their suitability for high-performance computing applications."
 ---
-| Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
+| Part | Quantity <br><sup>Count Units</sup> | Specs <br><sup>SKU ID, Performance Units, etc.</sup>  |
 |---|---|---|
 | Processor      |  96 vCPUs     | AMD EPYC 7V12 (Rome) [x86-64] |
-| Memory         |  1900 GiB        |    |
-| Local Storage  |  1 Disk         |  6400 GiB  |
-| Remote Storage |  32 Disks  | 80000 IOPS <br> 800 MBps |
-| Network        |  8 NICs        |  24000 Mbps |
+| Memory         |  1,900 GiB        |    |
+| Local Storage  |  1 Disk         |  6,400 GiB  |
+| Remote Storage |  32 Disks  | 80,000 IOPS <br> 800 MBps |
+| Network        |  8 NICs        |  24,000 Mbps |
 | Accelerators   |  8 GPUs            | Nvidia A100 GPU (80GB)    |

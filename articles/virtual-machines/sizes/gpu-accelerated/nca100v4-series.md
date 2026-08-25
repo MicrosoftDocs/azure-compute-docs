@@ -29,7 +29,7 @@ For features supported by this series, see the [Feature support](#feature-suppor
 
 vCPUs (Qty.) and Memory for each size
 
-| Size Name | vCPUs (Qty.) | Memory (GB) |
+| Size Name | vCPUs (Qty.) | Memory (GiB) |
 | --- | --- | --- |
 | Standard_NC24ads_A100_v4 | 24 | 220 |
 | Standard_NC48ads_A100_v4 | 48 | 440 |
@@ -42,7 +42,7 @@ vCPUs (Qty.) and Memory for each size
 
 Local (temp) storage info for each size
 
-| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) |
+| Size Name | Temp Storage Disks (Qty.) | Temp Disk Size (GiB) |
 | --- | --- | --- |
 | Standard_NC24ads_A100_v4 | 1 | 64 |
 | Standard_NC48ads_A100_v4 | 1 | 128 |
@@ -54,7 +54,7 @@ Local (temp) storage info for each size
 - [Share an Azure managed disk](../../../virtual-machines/disks-shared.md)
 
 #### Table definitions
-- <sup>1</sup>Temp disk speed often differs between RR (Random Read) and RW (Random Write) operations. RR operations are typically faster than RW operations. The RW speed is usually slower than the RR speed on series where only the RR speed value is listed.
+- Temp disk performance depends on many factors including block size, workload patterns of read/writes, queue depth (QD), and others. Temp disk performance specifications should be viewed as best case performance numbers, assuming 4k block sizes and QD=256 for IOPS, and 256k block sizes with QD=64 for throughput. Additionally, temp disk performance often differs between read and write operations. During steady state operations, write performance is expected to be lower than read performance.
 - Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
 - Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
 - To learn how to get the best storage performance for your VMs, see [Virtual machine and disk performance](../../../virtual-machines/disks-performance.md).
@@ -65,9 +65,9 @@ Remote (uncached) storage info for each size
 
 | Size Name | Max Remote Storage Disks (Qty.) | Uncached Disk IOPS | Uncached Disk Speed (MBps) |
 | --- | --- | --- | --- |
-| Standard_NC24ads_A100_v4 | 8 | 30000 | 1000 |
-| Standard_NC48ads_A100_v4 | 16 | 60000 | 2000 |
-| Standard_NC96ads_A100_v4 | 32 | 120000 | 4000 |
+| Standard_NC24ads_A100_v4 | 8 | 30,000 | 1,000 |
+| Standard_NC48ads_A100_v4 | 16 | 60,000 | 2,000 |
+| Standard_NC96ads_A100_v4 | 32 | 120,000 | 4,000 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
@@ -75,8 +75,8 @@ Remote (uncached) storage info for each size
 - [Share an Azure managed disk](../../../virtual-machines/disks-shared.md)
 
 #### Table definitions
-- <sup>1</sup>Some sizes support [bursting](../../disk-bursting.md) to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.
-- <sup>2</sup>Special Storage refers to either [Ultra Disk](../../../virtual-machines/disks-enable-ultra-ssd.md) or [Premium SSD v2](../../../virtual-machines/disks-deploy-premium-v2.md) storage.
+- Some sizes support [bursting](../../disk-bursting.md) to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.
+- Special Storage refers to either [Ultra Disk](../../../virtual-machines/disks-enable-ultra-ssd.md) or [Premium SSD v2](../../../virtual-machines/disks-deploy-premium-v2.md) storage.
 - Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
 - Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
 - Data disks can operate in cached or uncached modes. For cached data disk operation, the host cache mode is set to ReadOnly or ReadWrite. For uncached data disk operation, the host cache mode is set to None.
@@ -89,9 +89,9 @@ Network interface info for each size
 
 | Size Name | Max NICs (Qty.) | Max Bandwidth (Mbps) |
 | --- | --- | --- |
-| Standard_NC24ads_A100_v4 | 2 | 20000 |
-| Standard_NC48ads_A100_v4 | 4 | 40000 |
-| Standard_NC96ads_A100_v4 | 8 | 80000 |
+| Standard_NC24ads_A100_v4 | 2 | 20,000 |
+| Standard_NC48ads_A100_v4 | 4 | 40,000 |
+| Standard_NC96ads_A100_v4 | 8 | 80,000 |
 
 #### Networking resources
 - [Virtual networks and virtual machines in Azure](/azure/virtual-network/network-overview)
@@ -127,6 +127,7 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 |[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli)| Supported |
 |[Ephemeral OS Disk](../../ephemeral-os-disks.md)| Supported |
 |[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)| Not Supported |
+|[VM vCore Customization](/azure/virtual-machines/vm-customization)| Not Supported |
 
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]

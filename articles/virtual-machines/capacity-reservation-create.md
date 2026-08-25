@@ -96,7 +96,7 @@ Before you create a capacity reservation, you can check the capacity reservation
     
     This group is created to contain reservations for the US East location.
     
-    The group in the following example only supports regional reservations because zones weren't specified at the time of creation. To create a zonal group, pass an extra parameter `zone` in the request body: 
+    The group in the preceding example only supports regional reservations because zones weren't specified at the time of creation. To create a zonal group, pass an extra parameter `zone` in the request body: 
     
     ```json
     { 
@@ -107,7 +107,7 @@ Before you create a capacity reservation, you can check the capacity reservation
  
 1. Create a capacity reservation.
 
-    To create a reservation, construct the following `PUT` request on the `Microsoft.Compute` provider:
+    To create a zonal reservation, construct the following `PUT` request on the `Microsoft.Compute` provider:
     
     ```rest
     PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/CapacityReservationGroups/{CapacityReservationGroupName}/capacityReservations/{capacityReservationName}?api-version=2021-04-01 
@@ -117,17 +117,19 @@ Before you create a capacity reservation, you can check the capacity reservation
     
     ```json
     { 
-      "location": "eastus", 
+      "location": "eastus",
+      "zones": ["1"],
       "sku": { 
         "name": "Standard_D2s_v3", 
         "capacity": 5 
       }, 
      "tags": { 
-            "environment": "testing" 
+            "environment": "testing"
+      }
     } 
     ```
     
-    The preceding request creates a reservation in the East US location for five quantities of the D2s_v3 VM size. 
+    The preceding request creates a reservation in zone 1 of East US location for five quantities of the D2s_v3 VM size. 
 
 
 ### [Portal](#tab/portal2)

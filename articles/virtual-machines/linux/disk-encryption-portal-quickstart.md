@@ -1,12 +1,13 @@
 ---
 title: Create and encrypt a Linux VM with the Azure portal
-description: In this quickstart, you learn how to use the Azure portal to create and encrypt a Linux virtual machine
+description: In this quickstart, you learn how to use the Azure portal to create and encrypt a Linux virtual machine.
 author: msmbaldwin
 ms.author: mbaldwin
 ms.service: azure-virtual-machines
 ms.subservice: security
 ms.topic: quickstart
-ms.date: 09/23/2025
+ms.date: 07/14/2026
+ai-usage: ai-assisted
 ms.custom:
   - mode-ui
   - linux-related-content
@@ -20,7 +21,7 @@ ms.custom:
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Flexible scale sets
 
-Azure virtual machines (VMs) can be created through the Azure portal. The Azure portal is a browser-based user interface to create VMs and their associated resources. In this quickstart you'll use the Azure portal to deploy a Linux virtual machine (VM) running Ubuntu 18.04 LTS, create a key vault for the storage of encryption keys, and encrypt the VM. However, any [ADE supported Linux image version](/azure/virtual-machines/linux/disk-encryption-overview#supported-operating-systems) could be used instead of an Ubuntu VM.
+You can create Azure virtual machines (VMs) through the Azure portal. The Azure portal is a browser-based user interface to create VMs and their associated resources. In this quickstart you'll use the Azure portal to deploy a Linux virtual machine (VM) running Ubuntu 18.04 LTS, create a key vault for the storage of encryption keys, and encrypt the VM. However, you can use any [ADE-supported Linux image version](/azure/virtual-machines/linux/disk-encryption-overview#supported-operating-systems) instead of an Ubuntu VM.
 
 If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
@@ -32,11 +33,11 @@ Sign in to the [Azure portal](https://portal.azure.com).
 
 1. Choose **Create a resource** in the upper left corner of the Azure portal.
 1. In the New page, under Popular, select **Ubuntu Server 18.04 LTS**.
-1. In the Basics tab, under Project details, verify sure the correct subscription is selected.
-1. For "Resource Group", select **Create new**. Enter *myResourceGroup* as the name and select **Ok**.
+1. In the Basics tab, under Project details, verify that the correct subscription is selected.
+1. For **Resource group**, select **Create new**. Enter *myResourceGroup* as the name and select **OK**.
 1. For **Virtual machine name**, enter *MyVM*.
 1. For **Region**, select *(US) East US*.
-1. Make sure the **Size** is *Standard D2s v3*.
+1. Verify the **Size** is *Standard D2s v3*.
 1. Under **Administrator account**, select *Password* as the **Authentication type**. Enter a user name and a password.
 
     :::image type="content" source="../media/disk-encryption/portal-quickstart-linux-vm-creation.png" alt-text="Linux VM creation screen":::
@@ -46,12 +47,12 @@ Sign in to the [Azure portal](https://portal.azure.com).
     >
     > To avoid confusion, we suggest you skip the *Disks* tab entirely while completing this tutorial.
 
-1. Select the "Monitoring" tab and verify that you have a Diagnostics Storage Account. If you have no storage accounts, select *Create New*, name your storage account *myStorageAccount*, and select "Ok"
+1. Select the **Monitoring** tab and verify that you have a diagnostics storage account. If you have no storage accounts, select **Create new**, name your storage account *myStorageAccount*, and select **OK**.
 
     :::image type="content" source="../media/disk-encryption/portal-quickstart-vm-creation-storage.png" alt-text="ResourceGroup creation screen":::
 
-1. Select "Review + Create".
-1. On the **Create a virtual machine** page, you can see the details about the VM you are about to create. When you are ready, select **Create**.
+1. Select **Review + create**.
+1. On the **Create a virtual machine** page, you can see the details about the VM you're about to create. When you're ready, select **Create**.
 
 It takes a few minutes for your VM to be deployed. When the deployment is finished, move on to the next section.
 
@@ -59,18 +60,18 @@ It takes a few minutes for your VM to be deployed. When the deployment is finish
 
 1. When the VM deployment is complete, select **Go to resource**.
 1. On the left-hand sidebar, select **Disks**.
-1. On the top bar, select **Additional Settings** .
+1. On the top bar, select **Additional settings** .
 1. Under **Encryption settings** > **Disks to encrypt**, select **OS and data disks**.
 
     :::image type="content" source="../media/disk-encryption/portal-quickstart-disks-to-encryption.png" alt-text="Screenshot that highlights OS and data disks.":::
 
 1. Under **Encryption settings**, choose **Select a key vault and key for encryption**.
-1. On the **Select key from Azure Key Vault** screen, select **Create New**.
+1. On the **Select key from Azure Key Vault** screen, select ***Create new***.
 
     :::image type="content" source="../media/disk-encryption/portal-qs-keyvault-create.png" alt-text="Screenshot that highlights Create new.":::
 
 1. To the left of **Key vault and key**, select **Click to select a key**.
-1. On the **Select key from Azure Key Vault**, under the **Key Vault** field, select **Create new**.
+1. On the **Select key from Azure Key Vault**, under the **key vault** field, select **Create new**.
 1. On the **Create key vault** screen, ensure that the Resource Group is *myResourceGroup*, and give your key vault a name. Every key vault across Azure must have a unique name.
 1. On the **Access Policies** tab, check the **Azure Disk Encryption for volume encryption** box.
 
@@ -79,7 +80,7 @@ It takes a few minutes for your VM to be deployed. When the deployment is finish
 1. Select **Review + create**.
 1. After the key vault passes validation, select **Create**. This returns you to the **Select key from Azure Key Vault** screen.
 1. Leave the **Key** field blank and choose **Select**.
-1. At the top of the encryption screen, click **Save**. A popup will warn you that the VM will reboot. Select **Yes**.
+1. At the top of the encryption screen, select **Save**. A popup will warn you that the VM will reboot. Select **Yes**.
 
 ## Clean up resources
 
@@ -87,7 +88,7 @@ When no longer needed, you can delete the resource group, virtual machine, and a
 
 ## Next steps
 
-In this quickstart, you created a Key Vault that was enabled for encryption keys, created a virtual machine, and enabled the virtual machine for encryption.
+In this quickstart, you created a key vault that was enabled for encryption keys, created a virtual machine, and enabled the virtual machine for encryption.
 
 > [!div class="nextstepaction"]
 > [Azure Disk Encryption overview](disk-encryption-overview.md)

@@ -11,7 +11,7 @@ ms.reviewer: mattmcinnes
 ms.custom: include file
 # Customer intent: "As a cloud architect, I want to review the specifications of DCsv2-series VMs, so that I can select the appropriate virtual machine sizes for my application workloads."
 ---
-| Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
+| Part | Quantity <br><sup>Count Units</sup> | Specs <br><sup>SKU ID, Performance Units, etc.</sup>  |
 |---|---|---|
 | Processor      | 1 - 8 vCPUs       | Intel Xeon E-2288G (Coffee Lake) [x86-64]                               |
 | Memory         | 4 - 32 GiB          |                                  |

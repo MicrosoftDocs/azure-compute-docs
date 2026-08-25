@@ -11,11 +11,11 @@ ms.reviewer: mattmcinnes
 ms.custom: include file
 # Customer intent: "As a cloud architect, I want to access detailed specifications of the Lasv3-series VMs, so that I can assess their performance and capacity for my deployment needs."
 ---
-| Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
+| Part | Quantity <br><sup>Count Units</sup> | Specs <br><sup>SKU ID, Performance Units, etc.</sup>  |
 |---|---|---|
 | Processor      | 8 - 80 vCPUs       | AMD EPYC 7763v (Genoa) [x86-64]                               |
 | Memory         | 64 - 640 GiB          |                                  |
 | Local Storage  | 1 Temp Disk <br> 1 - 10 NVMe Disks          | 80 - 800 GiB Temp Disks <br> 1.92 TiB NVMe Disks                |
-| Remote Storage | 16 - 32 Disks    | 12800 - 80000 IOPS <br>200 - 1400 MBps   |
-| Network        | 4 - 8 NICs          | 12500 - 32000 Mbps <br>Interfaces: NetVSC, ConnectX  |
+| Remote Storage | 16 - 32 Disks    | 12,800 - 80,000 IOPS <br>200 - 1,400 MBps   |
+| Network        | 4 - 8 NICs          | 12,500 - 32,000 Mbps <br>Interfaces: NetVSC, ConnectX  |
 | Accelerators   | None              |                                   |

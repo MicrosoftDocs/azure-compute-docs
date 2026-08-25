@@ -31,6 +31,6 @@ ms.author: mattmcinnes
 
 
 ### Previous-generation NG family series
-For older sizes, see [previous generation sizes](../previous-gen-sizes-list.md#gpu-accelerated-previous-gen-sizes).
+For older sizes, see [previous generation sizes](../lifecycle/previous-gen-sizes-list.md#gpu-accelerated-previous-gen-sizes).
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]

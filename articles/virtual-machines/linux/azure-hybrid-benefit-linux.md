@@ -291,7 +291,7 @@ For SUSE you do not need the extension, the functionality is covered by the SUSE
 ```azurecli
 az vm get-instance-view \
   --resource-group <RG> \
-  --vm-name <VM_NAME> \
+  --name <VM_NAME> \
   --query instanceView.extensions
 ```
 1. Red Hat and SUSE: Use the following command to review the license type applied to the VM:
@@ -299,7 +299,7 @@ az vm get-instance-view \
 ```azurecli
 az vm get-instance-view \
   --resource-group <RG> \
-  --vm-name <VM_NAME> \
+  --name <VM_NAME> \
   --query licenseType
 ```
 
@@ -395,7 +395,7 @@ If you deployed an Azure Marketplace image by using a PAYG licensing model and w
 # This enables BYOS on a RHEL PAYG VM by using Azure Hybrid Benefit.
 az vm update \
   --resource-group <RG> \
-  --vm-name <VM_NAME> \
+  --name <VM_NAME> \
   --license-type RHEL_BYOS
  ```
 
@@ -407,7 +407,7 @@ az vm update \
 # In order to revert back to the original subscription model, set license-type to NONE.
 az vm update \
   --resource-group <RG> \
-  --vm-name <VM_NAME> \
+  --name <VM_NAME> \
   --license-type NONE
  ```
 
@@ -419,7 +419,7 @@ az vm update \
 # This enables BYOS on a SLES virtual machine.
 az vm update \
   --resource-group <RG> \
-  --vm-name <VM_NAME> \
+  --name <VM_NAME> \
   --license-type SLES_BYOS
  ```
 
@@ -431,7 +431,7 @@ az vm update \
 # In order to revert back to the original subscription model, set license-type to NONE.
 az vm update \
   --resource-group <RG> \
-  --vm-name <VM_NAME> \
+  --name <VM_NAME> \
   --license-type NONE
  ```
 
@@ -463,37 +463,37 @@ az vm extension set \
 # This enables Azure Hybrid Benefit to fetch software updates for RHEL base/regular repositories.
 az vm update \
   --resource-group <RG> \
-  --vm-name <VM_NAME> \
+  --name <VM_NAME> \
   --license-type RHEL_BASE
 
 # This enables Azure Hybrid Benefit to fetch software updates for RHEL EUS repositories.
 az vm update \
   --resource-group <RG> \
-  --vm-name <VM_NAME> \
+  --name <VM_NAME> \
   --license-type RHEL_EUS
 
 # This enables Azure Hybrid Benefit to fetch software updates for RHEL SAP APPS repositories.
 az vm update \
   --resource-group <RG> \
-  --vm-name <VM_NAME> \
+  --name <VM_NAME> \
   --license-type RHEL_SAPAPPS
 
 # This enables Azure Hybrid Benefit to fetch software updates for RHEL SAP HA repositories.
 az vm update \
   --resource-group <RG> \
-  --vm-name <VM_NAME> \
+  --name <VM_NAME> \
   --license-type RHEL_SAPHA
 
 # This enables Azure Hybrid Benefit to fetch software updates for RHEL BASE SAP APPS repositories.
 az vm update \
   --resource-group <RG> \
-  --vm-name <VM_NAME> \
+  --name <VM_NAME> \
   --license-type RHEL_BASESAPAPPS
 
 # This enables Azure Hybrid Benefit to fetch software updates for RHEL BASE SAP HA repositories.
 az vm update \
   --resource-group <RG> \
-  --vm-name <VM_NAME> \
+  --name <VM_NAME> \
   --license-type RHEL_BASESAPHA
 ```
 
@@ -507,7 +507,7 @@ az vm update \
 ```azurecli
 az vm update \
   --resource-group <RG> \
-  --vm-name <VM_NAME> \
+  --name <VM_NAME> \
   --license-type NONE
  ```
 
@@ -524,19 +524,19 @@ az vm update \
 # This enables Azure Hybrid Benefit to fetch software updates for SLES repositories.
 az vm update \
   --resource-group <RG> \
-  --vm-name <VM_NAME> \
+  --name <VM_NAME> \
   --license-type SLES
 
 # This enables Azure Hybrid Benefit to fetch software updates for SLES SAP repositories.
 az vm update \
   --resource-group <RG> \
-  --vm-name <VM_NAME> \
+  --name <VM_NAME> \
   --license-type SLES_SAP
 
 # This enables Azure Hybrid Benefit to fetch software updates for SLES HPC repositories.
 az vm update \
   --resource-group <RG> \
-  --vm-name <VM_NAME> \
+  --name <VM_NAME> \
   --license-type SLES_HPC
  ```
 
@@ -545,7 +545,7 @@ az vm update \
 # In order to revert back to the original subscription model, set license-type to NONE.
 az vm update \
   --resource-group <RG> \
-  --vm-name <VM_NAME> \
+  --name <VM_NAME> \
   --license-type NONE
  ```
 
@@ -770,7 +770,7 @@ The AHBForRHEL extension uses the standard [Semantic Versioning](https://semver.
 ```azurecli
 az vm get-instance-view \
   --resource-group <RG> \
-  --vm-name <VM_NAME> \
+  --name <VM_NAME> \
   --query instanceView.extensions
  ```
 

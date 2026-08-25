@@ -197,7 +197,7 @@ When you need to add a new disk to increase the VG size, extend your traditional
 
     :::image type="content" source="./media/disk-encryption/resize-lvm/008-resize-lvm-scenariob-check-lsblk.png" alt-text="Screenshot showing the code that checks the output of l s b l k with the command and results highlighted.":::
 
-6. Attach the new disk to the VM by following the instructions in [Attach a data disk to a Linux VM](attach-disk-portal.yml).
+6. Attach the new disk to the VM by following the instructions in [Attach a data disk to a Linux VM](/azure/virtual-machines/linux/attach-disk-portal).
 
 7. Check the disk list, and notice the new disk.
 
@@ -505,7 +505,7 @@ You can use this method to add space to an existing LV. Or you can create new VG
 
     :::image type="content" source="./media/disk-encryption/resize-lvm/035-resize-lvm-scenarioe-check-newdisk02.png" alt-text="Screenshot showing an alternative code that checks the size of the disks with the results highlighted.":::
 
-    To add the new disk, you can use PowerShell, the Azure CLI, or the Azure portal. For more information, see [Attach a data disk to a Linux VM](attach-disk-portal.yml).
+    To add the new disk, you can use PowerShell, the Azure CLI, or the Azure portal. For more information, see [Attach a data disk to a Linux VM](/azure/virtual-machines/linux/attach-disk-portal).
 
     The kernel name scheme applies to the newly added device. A new drive is normally assigned the next available letter. In this case, the added disk is `sdd`.
 
@@ -857,3 +857,4 @@ Apply the same resizing procedure to any other LV that requires it.
 ## Next steps
 
 [Troubleshoot Azure Disk Encryption](disk-encryption-troubleshooting.md)
+

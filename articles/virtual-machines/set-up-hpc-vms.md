@@ -50,7 +50,7 @@ Depending on your VM's operating system, review either the [Linux VM quickstart]
 
 1. Under the **Networking** tab, make sure **Accelerated Networking** is disabled.
 
-1. Optionally, add a data disk to your VM. For more information, see how to add a data disk [to a Linux VM](./linux/attach-disk-portal.yml) or [to a Windows VM](./windows/attach-managed-disk-portal.yml).
+1. Optionally, add a data disk to your VM. For more information, see how to add a data disk [to a Linux VM](/azure/virtual-machines/linux/attach-disk-portal) or [to a Windows VM](/azure/virtual-machines/windows/attach-managed-disk-portal).
 
     > [!NOTE]
     > Adding a data disk helps you store models, data sets, and other necessary components for benchmarking. 

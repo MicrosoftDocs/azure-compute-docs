@@ -185,4 +185,4 @@ Content-Type: application/json
 See also:
 
 - [Encrypt disks using customer-managed keys in Azure DevTest Labs](/azure/devtest-labs/encrypt-disks-customer-managed-keys)
-- [Use the Azure portal to enable server-side encryption with customer-managed keys for managed disks](disks-enable-customer-managed-keys-portal.yml)
+- [Use the Azure portal to enable server-side encryption with customer-managed keys for managed disks](/azure/virtual-machines/disks-enable-customer-managed-keys-portal)

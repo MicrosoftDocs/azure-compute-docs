@@ -20,9 +20,9 @@ This article covers the steps required to set up the Azure Monitor logs containe
 ## Set up the container monitoring solution
 
 > [!NOTE]
-> You need to have Azure Monitor logs set up for your cluster as well as have the Log Analytics agent deployed on your nodes. If you don't, follow the steps in [Set up Azure Monitor logs](service-fabric-diagnostics-oms-setup.md) and [Add the Log Analytics agent to a cluster](service-fabric-diagnostics-oms-agent.md) first.
+> You need to set up Azure Monitor logs for your cluster and deploy Azure Monitor Agent (AMA) on your nodes with data collection rules (DCRs). If you don't, follow [Configure Service Fabric cluster telemetry with Azure Monitor Agent and data collection rules](service-fabric-diagnostics-azure-monitor-agent-data-collection-rules.md).
 
-1. Once your cluster is set up with Azure Monitor logs and the Log Analytics agent, deploy your containers. Wait for your containers to be deployed before moving to the next step.
+1. After setting up your cluster with Azure Monitor logs and Azure Monitor Agent (AMA) plus data collection rules (DCRs), deploy your containers. Wait for your containers to be deployed before moving to the next step.
 
 2. In Azure Marketplace, search for *Container Monitoring Solution* and click on the **Container Monitoring Solution** resource that shows up under the Monitoring + Management category.
 
@@ -44,6 +44,6 @@ The agent enables the collection of several container-specific logs that can be 
 
 ## Next steps
 * Learn more about [Azure Monitor logs Containers solution](/previous-versions/azure/azure-monitor/containers/containers).
-* Read more about container orchestration on Service Fabric - [Service Fabric and containers](service-fabric-containers-overview.md)
-* Get familiarized with the [log search and querying](/azure/azure-monitor/logs/log-query-overview) features offered as part of Azure Monitor logs
-* Configure Azure Monitor logs to set up [automated alerting](/azure/azure-monitor/alerts/alerts-overview) rules to aid in detecting and diagnostics
+* Read more about container orchestration on Service Fabric - [Service Fabric and containers](service-fabric-containers-overview.md).
+* Get familiarized with the [log search and querying](/azure/azure-monitor/logs/log-query-overview) features offered as part of Azure Monitor logs.
+* Configure Azure Monitor logs to set up [automated alerting](/azure/azure-monitor/alerts/alerts-overview) rules to aid in detecting and diagnostics.

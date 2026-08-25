@@ -26,7 +26,7 @@ For features supported by this series, see the [Feature support](#feature-suppor
 
 vCPUs (Qty.) and Memory for each size
 
-| Size Name | vCPUs (Qty.) | Memory (GB) |
+| Size Name | vCPUs (Qty.) | Memory (GiB) |
 | --- | --- | --- |
 | Standard_FX2mds_v2 | 2 | 42 |
 | Standard_FX4mds_v2 | 4 | 84 |
@@ -35,9 +35,9 @@ vCPUs (Qty.) and Memory for each size
 | Standard_FX16mds_v2 | 16 | 336 |
 | Standard_FX24mds_v2 | 24 | 504 |
 | Standard_FX32mds_v2 | 32 | 672 |
-| Standard_FX48mds_v2 | 48 | 1008 |
-| Standard_FX64mds_v2 | 64 | 1344 |
-| Standard_FX96mds_v2 | 96 | 1832 |
+| Standard_FX48mds_v2 | 48 | 1,008 |
+| Standard_FX64mds_v2 | 64 | 1,344 |
+| Standard_FX96mds_v2 | 96 | 1,832 |
 
 #### VM Basics resources
 - [Check vCPU quotas](../../../virtual-machines/quotas.md)
@@ -46,7 +46,7 @@ vCPUs (Qty.) and Memory for each size
 
 Local (temp) storage info for each size
 
-| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read (RR)<sup>1</sup> IOPS | Temp Disk Random Read (RR)<sup>1</sup> Throughput (MB/s) | Temp Disk Random Write (RW)<sup>1</sup> IOPS | Temp Disk Random Write (RW)<sup>1</sup> Throughput (MB/s) |
+| Size Name | Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read IOPS | Temp Disk Sequential Read Throughput (MBps) | Temp Disk Random Write IOPS | Temp Disk Sequential Write Throughput (MBps) |
 | --- | --- | --- | --- | --- | --- | --- |
 | Standard_FX2mds_v2 | 1 | 110 | 37,500 | 180 | 15,000 | 90 |
 | Standard_FX4mds_v2 | 1 | 220 | 75,000 | 360 | 30,000 | 180 |
@@ -54,18 +54,18 @@ Local (temp) storage info for each size
 | Standard_FX12mds_v2 | 2 | 440 | 300,000 | 1,440 | 120,000 | 720 |
 | Standard_FX16mds_v2 | 2 | 440 | 300,000 | 1,440 | 120,000 | 720 |
 | Standard_FX24mds_v2 | 3 | 440 | 450,000 | 2,160 | 180,000 | 1,080 |
-| Standard_FX32mds_v2 | 4 | 440 | 600,000 | 2,880 | 240,000 | 1440 |
-| Standard_FX48mds_v2 | 6 | 440 | 900,000 | 4,320 | 360,000 | 2160 |
-| Standard_FX64mds_v2 | 4 | 880 | 1,200,000 | 5,760 | 480,000 | 2880 |
-| Standard_FX96mds_v2 | 6 | 880 | 1,800,000 | 8,640 | 720,000 | 4320 |
+| Standard_FX32mds_v2 | 4 | 440 | 600,000 | 2,880 | 240,000 | 1,440 |
+| Standard_FX48mds_v2 | 6 | 440 | 900,000 | 4,320 | 360,000 | 2,160 |
+| Standard_FX64mds_v2 | 4 | 880 | 1,200,000 | 5,760 | 480,000 | 2,880 |
+| Standard_FX96mds_v2 | 6 | 880 | 1,800,000 | 8,640 | 720,000 | 4,320 |
 
 #### Storage resources
-- [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
-- [Azure managed disk types](../../../virtual-machines/disks-types.md)
-- [Share an Azure managed disk](../../../virtual-machines/disks-shared.md)
+- [NVMe Overview](/azure/virtual-machines/nvme-overview)
+- [FAQ for temp NVMe disks](/azure/virtual-machines/enable-nvme-temp-faqs)
 
 #### Table definitions
-- <sup>1</sup>Temp disk speed often differs between RR (Random Read) and RW (Random Write) operations. RR operations are typically faster than RW operations. The RW speed is usually slower than the RR speed on series where only the RR speed value is listed.
+- Temp disk performance depends on many factors including block size, workload patterns of read/writes, queue depth (QD), and others. Temp disk performance specifications should be viewed as best case performance numbers, assuming 4k block sizes and QD=256 for IOPS, and 256k block sizes with QD=64 for throughput. Read performance specs assume 100% reads, and write performance specs assume 100% writes. Additionally, write performance is heavily impacted by how many blocks in use on a device. Temp disk write performance specs assume a device has a clean slate to enable the best performance. During steady state operations, write performance is expected to be lower than the published specs.
+- NVMe temp disks are presented as raw NVMe devices that need to be initialized and formatted before use. For more details on how to format and initialize drives, refer to the [NVMe Temp Disk FAQ](/azure/virtual-machines/enable-nvme-temp-faqs).
 - Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
 - Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
 - To learn how to get the best storage performance for your VMs, see [Virtual machine and disk performance](../../../virtual-machines/disks-performance.md).
@@ -74,7 +74,7 @@ Local (temp) storage info for each size
 
 Remote (uncached) storage info for each size
 
-| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD IOPS | Uncached Premium SSD Throughput (MB/s) | Uncached Premium SSD Burst<sup>1</sup> IOPS | Uncached Premium SSD Burst<sup>1</sup> Throughput (MB/s) | Uncached Ultra Disk and Premium SSD v2 IOPS | Uncached Ultra Disk and Premium SSD v2 Throughput (MB/s) | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 IOPS | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 Throughput (MB/s) |
+| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD IOPS | Uncached Premium SSD Throughput (MBps) | Uncached Premium SSD Burst IOPS | Uncached Premium SSD Burst Throughput (MBps) | Uncached Ultra Disk and Premium SSD v2 IOPS | Uncached Ultra Disk and Premium SSD v2 Throughput (MBps) | Uncached Burst Ultra Disk and Premium SSD v2 IOPS | Uncached Burst Ultra Disk and Premium SSD v2 Throughput (MBps) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_FX2mds_v2 | 8 | 8,000 | 273 | 40,000 | 1,250 | 12,000 | 300 | 60,000 | 1,375 |
 | Standard_FX4mds_v2 | 12 | 16,000 | 545 | 65,000 | 1,800 | 21,400 | 600 | 86,938 | 1,980 |
@@ -93,7 +93,7 @@ Remote (uncached) storage info for each size
 - [Share an Azure managed disk](../../../virtual-machines/disks-shared.md)
 
 #### Table definitions
-- <sup>1</sup>Some sizes support [bursting](../../disk-bursting.md) to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.
+- Some sizes support [bursting](../../disk-bursting.md) to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.
 
 - Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
 - Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
@@ -105,7 +105,7 @@ Remote (uncached) storage info for each size
 
 Network interface info for each size
 
-| Size Name | Max NICs (Qty.) | Max Network Bandwidth (Mb/s) |
+| Size Name | Max NICs (Qty.) | Max Network Bandwidth (Mbps) |
 | --- | --- | --- |
 | Standard_FX2mds_v2 | 2 | 12,500 |
 | Standard_FX4mds_v2 | 2 | 25,000 |

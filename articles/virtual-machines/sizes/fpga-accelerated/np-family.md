@@ -20,7 +20,7 @@ ai-usage: ai-assisted
 >
 > Purchases of 1-year and 3-year Azure Reserved VM Instances for NP-series ended on **April 2, 2026**. Existing reservations are honored until expiration, but no new NP-series reservations can be purchased. Avoid deploying new NP-series VMs and plan your migration before the retirement date.
 >
-> For migration guidance, see [NP-series virtual machine migration guidance](../retirement/np-series-retirement.md).
+> For migration guidance, see [NP-series virtual machine migration guidance](../lifecycle/retirement/np-series-retirement.md).
 
 [!INCLUDE [np-family-summary](./includes/np-family-summary.md)]
 
@@ -41,7 +41,7 @@ ai-usage: ai-assisted
 [!INCLUDE [np-series-specs](./includes/np-series-specs.md)]
 
 ### Previous-generation NP family series
-For older sizes, see [previous generation sizes](../previous-gen-sizes-list.md#fpga-accelerated-previous-gen-sizes).
+For older sizes, see [previous generation sizes](../lifecycle/previous-gen-sizes-list.md#fpga-accelerated-previous-gen-sizes).
 
 ## Retirement and migration guidance
 

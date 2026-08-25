@@ -12,7 +12,7 @@ ms.date: 03/22/2026
 
 # List of Service Fabric events 
 
-Service Fabric exposes a primary set of cluster events to inform you of the status of your cluster as [Service Fabric Events](service-fabric-diagnostics-events.md). These are based on actions performed by Service Fabric on your nodes and your cluster or management decisions made by a cluster owner/operator. These events can be accessed by configuring in various ways including configuring [Azure Monitor logs with your cluster](service-fabric-diagnostics-oms-setup.md), or querying the [EventStore](service-fabric-diagnostics-eventstore.md). On Windows machines, these events are fed into the EventLog - so you can see Service Fabric Events in Event Viewer. 
+Service Fabric exposes a primary set of cluster events to inform you of the status of your cluster as [Service Fabric Events](service-fabric-diagnostics-events.md). These are based on actions performed by Service Fabric on your nodes and your cluster or management decisions made by a cluster owner/operator. These events can be accessed by configuring in various ways including configuring [Azure Monitor logs with your cluster](service-fabric-diagnostics-azure-monitor-agent-data-collection-rules.md), or querying the [EventStore](service-fabric-diagnostics-eventstore.md). On Windows machines, these events are fed into the EventLog - so you can see Service Fabric Events in Event Viewer. 
 
 Here are some characteristics of these events
 * Each event is tied to a specific entity in the cluster, for example, Application, Service, Node, Replica.

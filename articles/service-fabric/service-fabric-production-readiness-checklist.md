@@ -27,7 +27,7 @@ Is your application and cluster ready to take production traffic? Running and te
 1. Load and scale test your workloads to identify [capacity requirements](service-fabric-cluster-capacity.md) for your cluster. 
 1. Your services and applications are monitored and application logs are being generated and stored, with alerting. For example, see [Add logging to your Service Fabric application](service-fabric-how-to-diagnostics-log.md) and [Monitor containers with Azure Monitor logs](service-fabric-diagnostics-oms-containers.md).
 1. The cluster is monitored with alerting (for example, with [Azure Monitor logs](service-fabric-diagnostics-event-analysis-oms.md)). 
-1. The underlying virtual machine scale set infrastructure is monitored with alerting (for example, with [Azure Monitor logs](service-fabric-diagnostics-oms-agent.md).
+1. Monitor the underlying virtual machine scale set infrastructure with alerting (for example, with [Azure Monitor logs](service-fabric-diagnostics-azure-monitor-agent-data-collection-rules.md)).
 1. The cluster has [primary and secondary certificates](service-fabric-cluster-security-update-certs-azure.md) always (so you don't get locked out).
 1. Maintain separate clusters for development, staging, and production. 
 1. [Application upgrades](service-fabric-application-upgrade.md) and [cluster upgrades](service-fabric-tutorial-upgrade-cluster.md) are tested in development and staging clusters first. 

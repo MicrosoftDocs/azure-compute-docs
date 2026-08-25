@@ -47,6 +47,6 @@ ms.author: mattmcinnes
 
 
 ### Previous-generation Eb family series
-For older sizes, see [previous generation sizes](../previous-gen-sizes-list.md#memory-optimized-previous-gen-sizes).
+For older sizes, see [previous generation sizes](../lifecycle/previous-gen-sizes-list.md#memory-optimized-previous-gen-sizes).
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]

@@ -6,7 +6,7 @@ ms.author: ajkundna
 ms.service: azure-virtual-machines
 ms.subservice: trusted-launch
 ms.topic: concept-article
-ms.date: 04/21/2025
+ms.date: 07/27/2026
 ms.reviewer: jushiman
 ms.custom: template-concept; references_regions
 ai-usage: ai-assisted
@@ -17,7 +17,7 @@ ai-usage: ai-assisted
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
-Azure offers Trusted Launch as a seamless way to improve the security of [Generation 2](generation-2.md) virtual machines (VM). Trusted Launch protects against advanced and persistent attack techniques. Trusted Launch is composed of several coordinated infrastructure technologies that can be enabled independently. Each technology provides another layer of defense against sophisticated threats.
+Azure Trusted Launch provides an easy way to improve the security of [Generation 2](generation-2.md) virtual machines (VMs). Trusted Launch protects against advanced and persistent attack techniques by providing enhanced protection against bootkits, rootkits, and low-level malware attacks. It uses several coordinated infrastructure technologies that you can enable independently. Each technology adds another layer of defense against sophisticated threats.
 
 Trusted Launch is supported for both x64 and Arm64 architectures. 
 
@@ -41,9 +41,9 @@ Trusted Launch is supported for both x64 and Arm64 architectures.
 |:--- |:--- |:--- |:--- |
 | [General purpose](./sizes/overview.md#general-purpose) | [B-family](./sizes/general-purpose/b-family.md), [D-family](./sizes/general-purpose/d-family.md), [Dpsv6-series](./sizes/general-purpose/dpsv6-series.md)<sup>1</sup>, [Dplsv6-series](./sizes/general-purpose/dplsv6-series.md)<sup>1</sup> | [Dpsv5-series](./sizes/general-purpose/dpsv5-series.md), [Dpdsv5-series](./sizes/general-purpose/dpdsv5-series.md), [Dplsv5-series](./sizes/general-purpose/dplsv5-series.md), [Dpldsv5-series](./sizes/general-purpose/dpldsv5-series.md) | [A-family](./sizes/general-purpose/a-family.md), [Dv2-series](./sizes/general-purpose/dv2-series.md), [Dv3-series](./sizes/general-purpose/dv3-series.md), [DC-Confidential-family](./sizes/general-purpose/dc-family.md)
 | [Compute optimized](./sizes/overview.md#compute-optimized) | [F-family](./sizes/compute-optimized/f-family.md), [Fx-family](./sizes/compute-optimized/fx-family.md) | All sizes supported. | 
-| [Memory optimized](./sizes/overview.md#memory-optimized) | [E-family](./sizes/memory-optimized/e-family.md), [Eb-family](./sizes/memory-optimized/eb-family.md), [Epsv6-series](./sizes/memory-optimized/epsv6-series.md)<sup>1</sup>   |  [M-family](./sizes/memory-optimized/m-family.md)  |    [EC-Confidential-family](./sizes/memory-optimized/ec-family.md)
+| [Memory optimized](./sizes/overview.md#memory-optimized) | [E-family](./sizes/memory-optimized/e-family.md), [Eb-family](./sizes/memory-optimized/eb-family.md), [Epsv6-series](./sizes/memory-optimized/epsv6-series.md)<sup>1</sup> | [Mbdsv4 sizes series (Preview)](./sizes/memory-optimized/m-family.md) | [M-family](./sizes/memory-optimized/m-family.md) except Mbdsv4 sizes series (Preview), [EC-Confidential-family](./sizes/memory-optimized/ec-family.md)
 | [Storage optimized](./sizes/overview.md#storage-optimized) | [L-family](./sizes/storage-optimized/l-family.md) | All sizes supported. | 
-| [GPU](./sizes/overview.md#gpu-accelerated) | [NC-family](./sizes/gpu-accelerated/nc-family.md), [ND-family](./sizes/gpu-accelerated/nv-family.md), [NV-family](./sizes/gpu-accelerated/nv-family.md) | [NDasrA100_v4-series](nda100-v4-series.md), [NDm_A100_v4-series](ndm-a100-v4-series.md) | [NC-series](nc-series.md), [NV-series](nv-series.md), [NP-series](np-series.md)
+| [GPU](./sizes/overview.md#gpu-accelerated) | [NC-family](./sizes/gpu-accelerated/nc-family.md), [ND-family](./sizes/gpu-accelerated/nv-family.md), [NV-family](./sizes/gpu-accelerated/nv-family.md), [NDasrA100_v4-series](nda100-v4-series.md), [NDm_A100_v4-series](ndm-a100-v4-series.md) | | [NC-series](nc-series.md), [NV-series](nv-series.md), [NP-series](np-series.md)
 | [High Performance Compute](./sizes/overview.md#high-performance-compute) |[HBv2-series](./hbv2-series-overview.md)<sup>2</sup>, [HBv3-series](./hbv3-series-overview.md), [HBv4-series](./hbv4-series-overview.md), [HBv5-series](./hbv5-series-overview.md), [HC-series](./hc-series-overview.md)<sup>3</sup>, [HX-series](./hx-series-overview.md) | All sizes supported. | 
 
 <sup>1</sup>Arm64 [Cobalt 100](./sizes/cobalt-overview.md)-based sizes that support Trusted Launch. 
@@ -55,7 +55,7 @@ Trusted Launch is supported for both x64 and Arm64 architectures.
 > [!NOTE]
 >
 > - Installation of the *CUDA & GRID drivers on Secure Boot-enabled Windows VMs* doesn't require any extra steps.
-> - Installation of the *CUDA driver on Secure Boot-enabled Ubuntu VMs* requires extra steps. For more information, see [Install NVIDIA GPU drivers on N-series VMs running Linux](./linux/n-series-driver-setup.md#install-cuda-drivers-on-n-series-vms). Secure Boot should be disabled for installing CUDA drivers on other Linux VMs.
+> - Installation of the *CUDA driver on Secure Boot-enabled Ubuntu VMs* requires extra steps. For more information, see [Install NVIDIA GPU drivers on N-series VMs running Linux](./linux/n-series-driver-setup.md#cuda-drivers). Secure Boot should be disabled for installing CUDA drivers on other Linux VMs.
 > - Installation of the *GRID driver* requires Secure Boot to be disabled for Linux VMs.
 > - *Not supported* size families don't support [Generation 2](generation-2.md) VMs. Change the VM size to equivalent *supported size families* for enabling Trusted Launch.
 
@@ -63,14 +63,14 @@ Trusted Launch is supported for both x64 and Arm64 architectures.
 
 | OS | Version |
 |:--- |:--- |
-| Alma Linux | 8.7, 8.8, 9.0 |
-| Azure Linux | 1.0, 2.0 |
-| Debian |11, 12 |
-| Oracle Linux |8.3, 8.4, 8.5, 8.6, 8.7, 8.8 LVM, 9.0, 9.1 LVM |
-| Red Hat Enterprise Linux | 8.6, 8.8, 8.10, 9.4, 9.5, 9.6 |
-| Rocky Linux from CIQ | 8.6, 8.10, 9.2, 9.4, 9.6 |
-| SUSE Enterprise Linux |15SP3, 15SP4, 15SP5 |
-| Ubuntu Server |18.04 LTS, 20.04 LTS, 22.04 LTS, 23.04, 23.10 |
+| Alma Linux | 8, 9, 10 |
+| Azure Linux | 1.0, 2.0, 3.0 |
+| Debian |11, 12, 13 |
+| Oracle Linux |8.10, 9.6, 9.7, 10.1 |
+| Red Hat Enterprise Linux | 8.6, 8.8, 8.10, 9.4, 9.5, 9.6, 9.7, 9.8, 10.0, 10.1, 10.2 |
+| Rocky Linux from CIQ | 8.6, 8.10, 9.2, 9.4, 9.5, 9.6, 9.7 |
+| SUSE Enterprise Linux |15SP3, 15SP4, 15SP5, 15SP6, 15SP7, SLES 16 |
+| Ubuntu Server |18.04 LTS, 20.04 LTS, 22.04 LTS, 24.04 LTS, 26.04 LTS |
 | Windows 10 |Pro, Enterprise, Enterprise Multi-Session &#42; |
 | Windows 11 |Pro, Enterprise, Enterprise Multi-Session &#42; |
 | Windows Server |2016, 2019, 2022, 2022-Azure-Edition, 2025, 2025-Azure-Edition &#42; |
@@ -100,9 +100,9 @@ Currently, the following VM features aren't supported with Trusted Launch:
 
 ## Secure Boot
 
-At the root of Trusted Launch is Secure Boot for your VM. Secure Boot, which is implemented in platform firmware, protects against the installation of malware-based rootkits and boot kits. Secure Boot works to ensure that only signed operating systems and drivers can boot. It establishes a "root of trust" for the software stack on your VM.
+At the root of Trusted Launch is Secure Boot for your VM. Secure Boot, which is implemented in platform firmware, protects against the execution of malware-based rootkits and boot kits. Secure Boot works to ensure that only signed operating systems and drivers can boot. It establishes a "root of trust" for the software stack on your VM.
 
-With Secure Boot enabled, all OS boot components (boot loader, kernel, kernel drivers) require trusted publishers signing. Both Windows and select Linux distributions support Secure Boot. If Secure Boot fails to authenticate that the image is signed with a trusted publisher, the VM fails to boot. For more information, see [Secure Boot](/windows-hardware/design/device-experiences/oem-secure-boot).
+With Secure Boot enabled, all OS boot components (boot loader, kernel, kernel drivers) require trusted publishers signing. Both Windows and major Linux distributions support Secure Boot. If Secure Boot fails to authenticate that the image is signed by a trusted publisher, the VM fails to boot. For more information, see [Secure Boot](/windows-hardware/design/device-experiences/oem-secure-boot).
 
 ## vTPM
 
@@ -150,29 +150,24 @@ Trusted Launch is integrated with Defender for Cloud to ensure that your VMs are
   - Which kernel driver failed? Am I familiar with the failed kernel driver and do I expect it to load?
   - Is the exact version of the driver same as expected? Are the driver binaries intact? If failed driver is a partner driver, did the partner pass the OS compliance tests to get it signed?
 
-## (Preview) Trusted Launch as default
+## (General Availability) Trusted Launch as default
 
 > [!IMPORTANT]
 >
-> Trusted Launch default is currently in preview. This Preview is intended for testing, evaluation, and feedback purposes only. Production workloads aren't recommended. When registering to preview, you agree to the [supplemental terms of use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Some aspects of this feature might change with general availability (GA).
+> Trusted Launch as Default is generally available for new Gen2 virtual machines (VMs) and virtual machine scale sets (scale sets). TLaD is a fast and zero-touch means of improving the security posture of new Gen2 based Azure VM and virtual machine scale sets deployments. When you register the subscription for this feature, Trusted Launch as Default sets any new Gen2 VMs or scale sets that you create through any client tools (like ARM template, Bicep, Terraform) to Trusted Launch VMs with secure boot and vTPM enabled by default. This change doesn't override inputs provided as part of the deployment code.
 
-Trusted Launch as default (TLaD) is available in preview for new Gen2 Virtual machines (VM) and Virtual machine scale sets (scale sets).
+Azure portal, PowerShell, and CLI customers get Trusted Launch enabled by default.
 
-TLaD is a fast and zero-touch means of improving the security posture of new Gen2 based Azure VM and Virtual Machine Scale Sets deployments. With Trusted Launch as default, any new Gen2 VMs or scale sets created through any client tools (like ARM template, Bicep) defaults to Trusted Launch VMs with secure boot and vTPM enabled.
+### Enable TLaD (Trusted Launch as default)
 
-The public preview release allows you to validate these changes in your respective environment for all new Azure Gen2 VM, scale set, and prepare for this upcoming change.
+To make this feature available for all VMs you create for your workloads by default, first register the feature `TrustedLaunchByDefaultPreview` under the `Microsoft.Compute` namespace on your virtual machine subscription. For more information, see [Set up preview features in Azure subscription](/azure/azure-resource-manager/management/preview-features).
+
+To create a new Gen2 VM or scale set with Trusted Launch default, run your existing deployment script through Azure SDK, Terraform, or another method.
 
 > [!NOTE]
->
-> All new Gen2 VM, scale set, deployments using any client tool (ARM template, Bicep, Terraform, etc.) defaults to Trusted launch post on-boarding to preview. This change does NOT override inputs provided as part of the deployment code.
+> Creating VMs defaults to Trusted Launch for Azure portal, CLI, or PowerShell regardless of registering the feature.
 
-### Enable TLaD preview
-
-Register preview feature `TrustedLaunchByDefaultPreview` under `Microsoft.Compute` namespace on virtual machine  subscription. For more information, see [Set up preview features in Azure subscription](/azure/azure-resource-manager/management/preview-features)
-
-To create a new Gen2 VM or scale set with Trusted launch default, execute your existing deployment script as is through Azure SDK, Terraform, or another method that isn't Azure portal, CLI, or PowerShell. The new VM or scale set created in the registered subscription results in a Trusted Launch VM or Virtual Machine Scale Set.
-
-### VM & scale sets deployments with TLaD preview
+### VM and scale set deployments with TLaD
 
 #### Existing behavior
 
@@ -197,26 +192,18 @@ Absence of securityProfile element in deployment code deploys VM & scale set wit
 
 #### New behavior
 
-By using API version 2021-11-01 or higher AND [on-boarding to preview](trusted-launch.md#enable-tlad-preview), absence of `securityProfile` element from deployment will enable Trusted launch by default to new VM & scale set deployed if following conditions are met:
+By using API version 2025-11-01 or higher, Trusted Launch is enabled by default for new VMs and scale sets deployed if the following conditions are met:
 
 - Source Marketplace [OS image supports Trusted launch](trusted-launch.md#operating-systems-supported).
 - Source ACG OS image supports and is validated for Trusted launch.
 - Source disk supports Trusted launch.
 - [VM size supports Trusted launch](trusted-launch.md#virtual-machines-sizes).
 
-The deployment won't default to Trusted launch if one ore more of the listed condition(s) aren't met and complete successfully to create new Gen2 VM & scale set without Trusted launch.
+The deployment doesn't default to Trusted Launch if one or more of the listed conditions aren't met, and completes successfully to create a new Gen2 VM and scale set without Trusted Launch.
 
-You can choose to explicitly bypass default for VM & scale set deployment by setting `Standard` as value of parameter `securityType`. For more information, see [Can I disable Trusted Launch for a new VM deployment](trusted-launch-faq.md#can-i-disable-trusted-launch-for-a-new-vm-deployment).
+You can choose to explicitly bypass the default for VM and scale set deployment by setting `Standard` as value of parameter `securityType` and using API version 2025-11-01 or higher. For more information, see [Can I disable Trusted Launch for a new VM deployment](trusted-launch-faq.md#can-i-disable-trusted-launch-for-a-new-vm-deployment).
 
 #### Known limitations
-
-***Unable to bypass Trusted launch default and create Gen2 (Non-Trusted launch) VM using Azure portal after registering to preview.***
-
-After registering subscription to preview, setting security type to `Standard` in Azure portal will deploy the VM or scale set `Trusted launch`. This limitation will be addressed prior to the Trusted launch default general availability.
-
-To mitigate this limitation, you can [un-register the preview feature](/azure/azure-resource-manager/management/preview-features#unregister-preview-feature) by removing feature flag `TrustedLaunchByDefaultPreview` under `Microsoft.Compute` namespace on given subscription.
-
-:::image type="content" source="./media/trusted-launch/00-trusted-launch-default-portal-limitation.png" alt-text="Screenshot of the security type drop-down in Portal." lightbox="./media/trusted-launch/00-trusted-launch-default-portal-limitation.png":::
 
 ***Unable to re-size VM or VMSS to un-supported Trusted launch VM size family (like M-Series) post default to Trusted launch.***
 
@@ -224,13 +211,14 @@ Re-sizing Trusted launch VM to [VM size family not supported with Trusted launch
 
 As mitigation, please register feature flag `UseStandardSecurityType` under `Microsoft.Compute` namespace AND roll-back VM from Trusted launch to Gen2-only (Non-Trusted launch) by setting `securityType = Standard` using available client tools (except Azure portal).
 
-### TLaD preview feedback
+After a VM or VM scale set is created with Trusted Launch, you can't resize it to a VM size family that doesn't support Trusted Launch, such as an unsupported M-series size. To use an unsupported size, first deallocate the resource and change `securityType` to `Standard` by using Microsoft.Compute API version 2025-11-01 or later through a supported client tool. This operation isn't available in the Azure portal.
 
-Reach out to us with any feedback, queries, or concerns regarding this upcoming change at [Trusted launch default preview feedback survey](https://aka.ms/TrustedLaunchDefault/Feedback).
+### Disable TLaD
 
-### Disable TLaD preview
+To disable TLaD, unregister the preview feature `TrustedLaunchByDefaultPreview` under the `Microsoft.Compute` namespace on the virtual machine subscription. For specific VMs, you can bypass TLaD by setting the security type to `Standard`. For more information, see [Unregister preview feature](/azure/azure-resource-manager/management/preview-features#unregister-preview-feature).
 
-To disable the TLaD preview, unregister the preview feature `TrustedLaunchByDefaultPreview` under `Microsoft.Compute` namespace on virtual machine  subscription. For more information, see [Unregister preview feature](/azure/azure-resource-manager/management/preview-features#unregister-preview-feature)
+> [!NOTE]
+> Azure portal, CLI, and PowerShell default to creating Gen2 VMs with Trusted Launch regardless of feature registration.
 
 ## Related content
 

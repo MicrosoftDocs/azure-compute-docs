@@ -11,11 +11,11 @@ ms.reviewer: mattmcinnes
 ms.custom: include file
 # Customer intent: "As a cloud architect, I want to review the specifications of NVv4-series VM sizes, so that I can determine the best configuration for my compute-intensive workloads."
 ---
-| Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
+| Part | Quantity <br><sup>Count Units</sup> | Specs <br><sup>SKU ID, Performance Units, etc.</sup>  |
 |---|---|---|
 | Processor      | 4 - 32 vCPUs     | AMD EPYC 7V12 (Rome) [x86-64] |
 | Memory         | 14 - 112 GiB        |    |
 | Local Storage  | 1 Disk         | 88 - 704 GiB  |
-| Remote Storage | 4 - 32 Disks        | 6400 - 51200 IOPS <br>96 - 768 MBps |
-| Network        | 2 - 8 NICs        | 1000 - 8000 Mbps |
+| Remote Storage | 4 - 32 Disks        | 6,400 - 51,200 IOPS <br>96 - 768 MBps |
+| Network        | 2 - 8 NICs        | 1,000 - 8,000 Mbps |
 | Accelerators   | 1/8 - 1 GPUs            | AMD Instinct MI25 GPU (16GB)    |

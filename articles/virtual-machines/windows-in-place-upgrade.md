@@ -248,9 +248,9 @@ If the in-place upgrade process failed to complete successfully you can return t
 
 1. [Swap the OS disk](scripts/virtual-machines-powershell-sample-create-managed-disk-from-snapshot.md) of the VM. 
 
-1. [Detach any data disks](./windows/detach-disk.yml) from the VM.
+1. [Detach any data disks](/azure/virtual-machines/windows/detach-disk) from the VM.
 
-1. [Attach data disks](./windows/attach-managed-disk-portal.yml) created from the snapshots in step 1.
+1. [Attach data disks](/azure/virtual-machines/windows/attach-managed-disk-portal) created from the snapshots in step 1.
 
 1. Restart the VM.
 

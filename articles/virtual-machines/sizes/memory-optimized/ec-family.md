@@ -49,6 +49,6 @@ ms.author: mattmcinnes
 [!INCLUDE [ecasccv5-ecadsccv5-series-specs](./includes/ecasccv5-ecadsccv5-series-specs.md)]
 
 ### Previous-generation EC family series
-For older sizes, see [previous generation sizes](../previous-gen-sizes-list.md#memory-optimized-previous-gen-sizes).
+For older sizes, see [previous generation sizes](../lifecycle/previous-gen-sizes-list.md#memory-optimized-previous-gen-sizes).
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]

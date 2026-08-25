@@ -10,11 +10,11 @@ ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ms.custom: include file
 ---
-| Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
+| Part | Quantity <br><sup>Count Units</sup> | Specs <br><sup>SKU ID, Performance Units, etc.</sup>  |
 |---|---|---|
 | Processor      | 24 - 288 vCPUs (Simultaneous Multi-Threading enabled)       | Intel Xeon Granite Rapids-AP [x86-64]                   |
-| Memory         | 72 - 1032 GB          |  DDR5 6,400 MT/s  |
-| Local Storage  | 1 Disk         | 256 - 2048 GiB               |
+| Memory         | 72 - 1,032 GiB          |  DDR5 6,400 MT/s  |
+| Local Storage  | 1 Disk         | 256 - 2,048 GiB               |
 | Remote Storage | 2 - 16 Disks    |                   |
-| Network        | 4 - 8 vNICs          | 22500 - 180000 Mbps              |
+| Network        | 4 - 8 vNICs          | 22,500 - 180,000 Mbps              |
 | Accelerators   | 1/4 - 2              | Nvidia RTX PRO 6000 Blackwell Server Edition GPU (96 GB)|

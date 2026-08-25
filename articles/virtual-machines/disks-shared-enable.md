@@ -546,4 +546,4 @@ You also need to provide a persistent-reservation-key when using PR_RESERVE, PR_
 
 ## Next steps
 
-If you have more questions, see the [shared disks](faq-for-disks.yml#azure-shared-disks) section of the FAQ.
+If you have more questions, see the [shared disks](/azure/virtual-machines/faq-for-disks#azure-shared-disks) section of the FAQ.

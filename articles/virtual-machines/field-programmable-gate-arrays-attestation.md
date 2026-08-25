@@ -15,7 +15,7 @@ The FPGA Attestation service performs a series of validations on a design checkp
 
 The Azure NP-series FPGA Attestation Service is currently in preview and is being retired as part of the NP-series VM retirement. New preview sign-ups closed on May 1, 2026, and the service remains available to previously approved users until June 1, 2026. 
 
-Bitstreams that have already been attested will continue to function on NP-series VMs until the platform retirement date. For migration guidance, see [NP-series retirement](./sizes/retirement/np-series-retirement.md). Preview features are subject to the [Preview Terms of Use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Bitstreams that have already been attested will continue to function on NP-series VMs until the platform retirement date. For migration guidance, see [NP-series retirement](./sizes/lifecycle/retirement/np-series-retirement.md). Preview features are subject to the [Preview Terms of Use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## Runtime updates
 The current attestation service is using Vitis 2021.1 from Xilinx, on Sept 26th 2022, we’ll be moving to Vitis 2022.1. The change should be transparent to most users. Once your designs are “attested” using Vitis 2022.1, you should be moving to XRT2022.1. Xilinx published new marketplace images based on XRT 2022.1.

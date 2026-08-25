@@ -6,7 +6,7 @@ author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
 ms.topic: concept-article
-ms.date: 11/17/2025
+ms.date: 07/25/2026
 ms.update-cycle: 1095-days
 ms.custom: references_regions
 
@@ -60,6 +60,10 @@ The following limits are default limits that can’t be increased through a quot
 > 1: Indicates that the feature maximum is configurable and may be increased through a support request. For more information on how to request a quota increase, see the [How to request a quota increase section of Increase VM-family vCPU quotes](/azure/quotas/per-vm-quota-requests).
 >
 > You can also create a support ticket if you'd like to discuss your specific needs with the support team.
+
+## Supported CPU architecture
+
+Azure Container Instances supports only x64 (AMD64) container images. ARM64 (arm64) container images aren't supported. If you attempt to deploy an ARM64-only image, the container might fail to start. For more information, see the [FAQ](container-instances-faq.yml#are-arm64--arm64--container-images-supported-).
 
 ## Standard Container Resources 
 

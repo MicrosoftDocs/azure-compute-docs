@@ -4,7 +4,7 @@ description: Learn about incremental snapshots for managed disks, including how 
 author: roygara
 ms.service: azure-disk-storage
 ms.topic: how-to
-ms.date: 12/09/2024
+ms.date: 08/19/2026
 ms.author: rogarana
 ms.custom: devx-track-azurepowershell, devx-track-azurecli, references_regions
 ms.devlang: azurecli
@@ -15,7 +15,11 @@ ms.devlang: azurecli
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
-[!INCLUDE [virtual-machines-disks-incremental-snapshots-description](./includes/virtual-machines-disks-incremental-snapshots-description.md)]
+Incremental snapshots are point-in-time backups for managed disks that, when taken, consist only of the changes since the last snapshot. The first incremental snapshot is a full copy of the disk. The subsequent incremental snapshots occupy only delta changes to disks since the last snapshot. When you restore a disk from an incremental snapshot, the system reconstructs the full disk that represents the point in time backup of the disk when the incremental snapshot was taken. This capability for managed disk snapshots potentially allows them to be more cost-effective, since, unless you choose to, you don't have to store the entire disk with each individual snapshot. Just like full snapshots, incremental snapshots can be used to either create a full managed disk or a full snapshot. Snapshots of Premium SSD, Standard SSD, and Standard HDD disks can be used immediately after they're created. Incremental snapshots of Ultra Disk and Premium SSD v2 disks can't be used until the background data copy finishes unless you [enable instant access](disks-instant-access-snapshots.md#create-an-instant-access-snapshot) when you create the snapshot.
+
+There are a few differences between an incremental snapshot and a full snapshot. Incremental snapshots use Standard HDD storage, regardless of the source disk's storage type, whereas full snapshots can use Premium SSD storage. If you're using full snapshots on Premium SSD storage to scale up VM deployments, use custom images on Standard HDD storage in the [Azure Compute Gallery](/azure/virtual-machines/shared-image-galleries). It helps you achieve a more massive scale with lower cost. Additionally, incremental snapshots potentially offer better reliability with [zone-redundant storage](/azure/storage/common/storage-redundancy) (ZRS). If ZRS is available in the selected region, an incremental snapshot uses ZRS automatically. If ZRS isn't available in the region, then the snapshot defaults to [locally redundant storage](/azure/storage/common/storage-redundancy) (LRS). You can override this behavior and select one manually but, we don't recommend that.
+
+Incremental snapshots are billed for the used size only. You can find the used size of your snapshots by looking at the [Azure usage report](/azure/cost-management-billing/understand/review-individual-bill). For example, if the used data size of a snapshot is 10 GiB, the **daily** usage report shows 10 GiB/(31 days) = 0.3226 as the consumed quantity.
 
 ## Restrictions
 
@@ -42,23 +46,9 @@ yourDiskID=$(az disk show -n $diskName -g $resourceGroupName --query "id" --outp
 az snapshot create -g $resourceGroupName -n $snapshotName --source $yourDiskID --incremental true
 ```
 
-You can identify incremental snapshots from the same disk with the `SourceResourceId` property of snapshots. `SourceResourceId` is the Azure Resource Manager resource ID of the parent disk.
+You can identify incremental snapshots from the same disk with the `SourceResourceId` property. This property contains the Azure Resource Manager resource ID of the source disk.
 
-You can use `SourceResourceId` to create a list of all snapshots associated with a particular disk. Replace `yourResourceGroupNameHere` with your value and then you can use the following example to list your existing incremental snapshots:
-
-
-```azurecli
-# Declare variables and create snapshot list
-subscriptionId="yourSubscriptionId"
-resourceGroupName="yourResourceGroupNameHere"
-diskName="yourDiskNameHere"
-
-az account set --subscription $subscriptionId
-
-diskId=$(az disk show -n $diskName -g $resourceGroupName --query [id] -o tsv)
-
-az snapshot list --query "[?creationData.sourceResourceId=='$diskId' && incremental]" -g $resourceGroupName --output table
-```
+Use `SourceResourceId` to [list all incremental snapshots associated with a particular disk](#cli---list-incremental-snapshots).
 
 # [Azure PowerShell](#tab/azure-powershell)
 
@@ -85,7 +75,7 @@ $snapshotConfig=New-AzSnapshotConfig -SourceUri $yourDisk.Id -Location $yourDisk
 New-AzSnapshot -ResourceGroupName $resourceGroupName -SnapshotName $snapshotName -Snapshot $snapshotConfig 
 ```
 
-You can identify incremental snapshots from the same disk with the `SourceResourceId` and the `SourceUniqueId` properties of snapshots. `SourceResourceId` is the Azure Resource Manager resource ID of the parent disk. `SourceUniqueId` is the value inherited from the `UniqueId` property of the disk. If you delete a disk and then create a new disk with the same name, the value of the `UniqueId` property changes.
+You can identify incremental snapshots from the same disk by using the `SourceResourceId` and `SourceUniqueId` properties. `SourceResourceId` contains the Azure Resource Manager resource ID of the source disk. `SourceUniqueId` contains the value inherited from the disk's `UniqueId` property. If you delete a disk and then create a new disk with the same name, the disk's `UniqueId` value changes.
 
 You can use `SourceResourceId` and `SourceUniqueId` to create a list of all snapshots associated with a particular disk. Replace `yourResourceGroupNameHere` with your value and then you can use the following example to list your existing incremental snapshots:
 
@@ -226,7 +216,7 @@ $targetSnapshot.CompletionPercent
 
 Snapshots with a 4096 logical sector size can only be used to create Premium SSD v2 or Ultra Disks. They can't be used to create other disk types. Snapshots of disks with 4096 logical sector size are stored as VHDX, whereas snapshots of disks with 512 logical sector size are stored as VHD. Snapshots inherit the logical sector size from the parent disk.
 
-To determine whether or your Premium SSD v2 or Ultra Disk snapshot is a VHDX or a VHD, get the `LogicalSectorSize` property of the snapshot. 
+To determine whether your Premium SSD v2 or Ultra Disk snapshot is a VHDX or a VHD, get the `LogicalSectorSize` property of the snapshot.
 
 The following command displays the logical sector size of a snapshot:
 
@@ -240,6 +230,6 @@ See the following articles to create disks from your snapshots using the [Azure 
 
 See [Copy an incremental snapshot to a new region](disks-copy-incremental-snapshot-across-regions.md) to learn how to copy an incremental snapshot across regions.
 
-If you have more questions on snapshots, see the [snapshots](faq-for-disks.yml#snapshots) section of the FAQ.
+If you have more questions, see the [snapshots](/azure/virtual-machines/faq-for-disks#snapshots) section of the FAQ.
 
 If you'd like to see sample code demonstrating the differential capability of incremental snapshots, using .NET, see [Copy Azure managed disks backups to another region with differential capability of incremental snapshots](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots).

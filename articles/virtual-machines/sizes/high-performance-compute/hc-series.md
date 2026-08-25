@@ -14,7 +14,7 @@ ms.reviewer: mattmcinnes
 # HC sizes series
 
 > [!IMPORTANT]
-> Azure Virtual Machines HC-series sizes (Standard_HC44rs, Standard_HC44-16rs, Standard_HC44-32rs) will be retired on May 31, 2027. After this date, any remaining HC-series VMs will be deallocated, stop running, and will no longer incur charges. HC-series will no longer have SLA or support following retirement. Sales of 1-year and 3-year Reserved Instances for HC-series ended on April 2, 2026. For more information, see [Migrate your HC-series virtual machines by May 31, 2027](../../sizes/retirement/hc-series-retirement.md).
+> Azure Virtual Machines HC-series sizes (Standard_HC44rs, Standard_HC44-16rs, Standard_HC44-32rs) will be retired on May 31, 2027. After this date, any remaining HC-series VMs will be deallocated, stop running, and will no longer incur charges. HC-series will no longer have SLA or support following retirement. Sales of 1-year and 3-year Reserved Instances for HC-series ended on April 2, 2026. For more information, see [Migrate your HC-series virtual machines by May 31, 2027](../../sizes/lifecycle/retirement/hc-series-retirement.md).
 
 [!INCLUDE [hc-summary](./includes/hc-series-summary.md)]
 
@@ -165,4 +165,4 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 > - [HBv5-series](hbv5-series.md) – Higher compute performance and better price-performance than HBv4
 > - [HX-series](hx-series.md) – High-memory HPC workloads with approximately twice the memory capacity of HBv4
 >
-> For migration steps, see [Change the size of a virtual machine](../../../virtual-machines/resize-vm.md) and [Migrate your HC-series virtual machines by May 31, 2027](../../sizes/retirement/hc-series-retirement.md).
+> For migration steps, see [Change the size of a virtual machine](../../../virtual-machines/resize-vm.md) and [Migrate your HC-series virtual machines by May 31, 2027](../../sizes/lifecycle/retirement/hc-series-retirement.md).

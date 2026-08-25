@@ -92,7 +92,7 @@ The Kusto query language is powerful. Another valuable query you can run is to f
 
 ## Next steps
 
-* To enable infrastructure monitoring i.e. performance counters, head over to [adding the Log Analytics agent](service-fabric-diagnostics-oms-agent.md). The agent collects performance counters and adds them to your existing workspace.
+* To enable infrastructure monitoring, such as performance counters, see [configuring Service Fabric cluster telemetry with Azure Monitor Agent and data collection rules](service-fabric-diagnostics-azure-monitor-agent-data-collection-rules.md). AMA and DCR collect performance counters and add them to your existing workspace.
 * For on-premises clusters, Azure Monitor logs offers a Gateway (HTTP Forward Proxy) that can be used to send data to Azure Monitor logs. Read more about that in [Connecting computers without Internet access to Azure Monitor logs using the Log Analytics gateway](/azure/azure-monitor/agents/gateway).
 * Configure  [automated alerting](/azure/azure-monitor/alerts/alerts-overview) to aid in detection and diagnostics.
 * Get familiarized with the [log search and querying](/azure/azure-monitor/logs/log-query-overview) features offered as part of Azure Monitor logs.

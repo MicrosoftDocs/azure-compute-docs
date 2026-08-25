@@ -23,8 +23,8 @@ The solutions in this article use the following tools. We recommend you have the
 
 * [Application Insights with Service Fabric](service-fabric-tutorial-monitoring-aspnet.md)
 * [Enable Azure Diagnostics on your cluster](service-fabric-diagnostics-event-aggregation-wad.md)
-* [Set up a Log Analytics workspace](service-fabric-diagnostics-oms-setup.md)
-* [Log Analytics agent to track Performance Counters](service-fabric-diagnostics-oms-agent.md)
+* [Configure Service Fabric cluster telemetry with Azure Monitor Agent and data collection rules](service-fabric-diagnostics-azure-monitor-agent-data-collection-rules.md)
+* [Collect performance counters with Azure Monitor Agent and data collection rules](service-fabric-diagnostics-azure-monitor-agent-data-collection-rules.md)
 
 ## How can I see unhandled exceptions in my application?
 
@@ -100,7 +100,7 @@ In the same view with all the graphs, you'll see some tiles for the performance 
 
     ![Log Analytics Advanced Settings](media/service-fabric-diagnostics-common-scenarios/advancedsettingsoms.png)
 
-3. Select Data > Windows Performance Counters (Data > Linux Performance Counters for Linux machines) to start collecting specific counters from your nodes via the Log Analytics agent. Here are examples of the format for counters to add
+3. Select Data > Windows Performance Counters (Data > Linux Performance Counters for Linux machines) to start collecting specific counters from your nodes via the Log Analytics agent. Here are examples of the format for counters to add:
 
    * `.NET CLR Memory(<ProcessNameHere>)\\# Total committed Bytes`
    * `Processor(_Total)\\% Processor Time`

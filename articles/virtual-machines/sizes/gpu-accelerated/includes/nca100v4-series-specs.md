@@ -11,11 +11,11 @@ ms.reviewer: mattmcinnes
 ms.custom: include file
 # Customer intent: As a cloud architect, I want to review the specifications of the NC_A100_v4 series VMs, so that I can determine the optimal configuration for my high-performance computing workloads.
 ---
-| Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
+| Part | Quantity <br><sup>Count Units</sup> | Specs <br><sup>SKU ID, Performance Units, etc.</sup>  |
 |---|---|---|
 | Processor      | 24 - 96 vCPUs       | AMD EPYC 7V13 (Milan) [x86-64]                               |
 | Memory         | 220 - 880 GiB          |                                  |
 | Local Storage  | 1 Temp Disk <br> 1 - 4 NVMe Disks          | 64 - 256 GiB Temp Disk <br> 960 GiB NVMe Disks                         |
-| Remote Storage | 8 - 32 Disks    | 30000 - 120000 IOPS <br>1000 - 4000 MBps   |
+| Remote Storage | 8 - 32 Disks    | 30,000 - 120,000 IOPS <br>1,000 - 4,000 MBps   |
 | Network        | 2 - 8 NICs          | 20,000 - 80,000 Mbps                          |
 | Accelerators   | 1 - 4 GPUs              | Nvidia PCIe A100 GPU (80GB)                                  |

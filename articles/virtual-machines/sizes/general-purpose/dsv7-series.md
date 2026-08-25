@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 03/10/2026
+ms.date: 08/24/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 # Customer intent: As a cloud architect, I want to compare the specifications of the Dsv7 series virtual machine sizes, so that I can select the appropriate size for our workloads based on their vCPU, memory, storage, and network requirements.
@@ -37,11 +37,11 @@ vCPUs (Qty.) and Memory for each size
 | Standard_D96s_v7 | 96 | 384 |
 | Standard_D128s_v7 | 128 | 512 |
 | Standard_D192s_v7 | 192 | 768 |
-| *Standard_D248s_v7 | 248* | 992 |
-| *Standard_D372s_v7 | 372* | 1,488 |
+| Standard_D248s_v7 | 248 | 992 |
+| Standard_D372s_v7 | 372 | 1,488 |
 
 #### VM Basics resources
-> - *Note that the 248 and 372 vCPU sizes for these VM series will be generally available soon. 
+
 - [Check vCPU quotas](../../../virtual-machines/quotas.md)
 
 ### [Local Storage](#tab/sizestoragelocal)
@@ -57,7 +57,7 @@ Local (temp) storage info for each size
 
 Remote (uncached) storage info for each size
 
-| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD IOPS | Uncached Premium SSD Throughput (MBps) | Uncached Premium SSD Burst<sup>1</sup> IOPS | Uncached Premium SSD Burst<sup>1</sup> Throughput (MBps) | Uncached Ultra Disk and Premium SSD v2 IOPS | Uncached Ultra Disk and Premium SSD v2 Throughput (MBps) | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 IOPS | Uncached Burst<sup>1</sup> Ultra Disk and Premium SSD v2 Throughput (MBps) |
+| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD IOPS | Uncached Premium SSD Throughput (MBps) | Uncached Premium SSD Burst IOPS | Uncached Premium SSD Burst Throughput (MBps) | Uncached Ultra Disk and Premium SSD v2 IOPS | Uncached Ultra Disk and Premium SSD v2 Throughput (MBps) | Uncached Burst Ultra Disk and Premium SSD v2 IOPS | Uncached Burst Ultra Disk and Premium SSD v2 Throughput (MBps) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_D2s_v7 | 10 | 4,000 | 115 | 45,000 | 1,410 | 5,000 | 135 | 56,250 | 1,640 |
 | Standard_D4s_v7 | 12 | 8,000 | 230 | 45,000 | 1,410 | 10,000 | 270 | 56,250 | 1,640 |
@@ -69,8 +69,8 @@ Remote (uncached) storage info for each size
 | Standard_D96s_v7 | 64 | 192,000 | 5,520 | 200,000 | 5,745 | 240,000 | 6,570 | 205,000 | 6,675 |
 | Standard_D128s_v7 | 64 | 204,800 | 7,360 | 225,280 | 7,660 | 320,000 | 8,640 | 352,000 | 8,895 |
 | Standard_D192s_v7 | 64 | 307,200 | 11,040 | 350,000 | 12,000 | 480,000 | 13,140 | 546,875 | 13,930 |
-| *Standard_D248s_v7 | 64 | 396,800 | 13,145 | 500,000 | 15,000 | 620,000 | 16,740 | 781,250 | 19,385 |
-| *Standard_D372s_v7 | 64 | 500,000 | 16,000 | 500,000 | 16,000 | 800,000 | 20,000 | 800,000 | 20,000 |
+| Standard_D248s_v7 | 64 | 396,800 | 13,145 | 500,000 | 15,000 | 620,000 | 16,740 | 781,250 | 19,385 |
+| Standard_D372s_v7 | 64 | 500,000 | 16,000 | 500,000 | 16,000 | 800,000 | 20,000 | 800,000 | 20,000 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
@@ -78,7 +78,7 @@ Remote (uncached) storage info for each size
 - [Share an Azure managed disk](../../../virtual-machines/disks-shared.md)
 
 #### Table definitions
-- <sup>1</sup>Some sizes support bursting to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.
+- Some sizes support bursting to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.
 - Storage capacity is shown in units of GiB or 1,024^3 bytes. When you compare disks measured in GB (1,000^3 bytes) to disks measured in GiB (1,024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1,023 GiB = 1,098.4 GB.
 - Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
 - Data disks can operate in cached or uncached modes. For cached data disk operation, the host cache mode is set to ReadOnly or ReadWrite. For uncached data disk operation, the host cache mode is set to None.
@@ -100,8 +100,8 @@ Network interface info for each size
 | Standard_D96s_v7 | 15 | 70,000 |
 | Standard_D128s_v7 | 15 | 85,000 |
 | Standard_D192s_v7 | 15 | 100,000 |
-| *Standard_D248s_v7 | 15 | 150,000 |
-| *Standard_D372s_v7 | 15 | 200,000 |
+| Standard_D248s_v7 | 15 | 150,000 |
+| Standard_D372s_v7 | 15 | 200,000 |
 
 #### Networking resources
 - [Virtual networks and virtual machines in Azure](/azure/virtual-network/network-overview)
@@ -110,7 +110,7 @@ Network interface info for each size
 #### Table definitions
 - Expected network bandwidth is the maximum aggregated bandwidth allocated per VM type across all NICs, for all destinations. For more information, see [Virtual machine network bandwidth](/azure/virtual-network/virtual-machine-network-throughput)
 - Upper limits aren't guaranteed. Limits offer guidance for selecting the right VM type for the intended application. Actual network performance will depend on several factors including network congestion, application loads, and network settings. For information on optimizing network throughput, see [Optimize network throughput for Azure virtual machines](/azure/virtual-network/virtual-network-optimize-network-bandwidth). 
--  To achieve the expected network performance on Linux or Windows, you may need to select a specific version or optimize your VM. For more information, see [Bandwidth/Throughput testing (NTTTCP)](/azure/virtual-network/virtual-network-bandwidth-testing).
+- To achieve the expected network performance on Linux or Windows, you may need to select a specific version or optimize your VM. For more information, see [Bandwidth/Throughput testing (NTTTCP)](/azure/virtual-network/virtual-network-bandwidth-testing).
 
 ### [Accelerators](#tab/sizeaccelerators)
 
@@ -120,8 +120,6 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 > No accelerators are present in this series.
 
 ---
-> [!NOTE]
-> - *Note that the 248 and 372 vCPU sizes for these VM series will be generally available soon. 
 
 ## Feature support
 |Feature name | Support status |

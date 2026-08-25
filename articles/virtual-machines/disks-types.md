@@ -1,9 +1,9 @@
 ---
 title: Select a disk type for Azure IaaS VMs - managed disks
-description: Learn about the available Azure disk types for virtual machines, including Ultra Disks, Premium SSD v2 disks, Premium SSDs, Standard SSDs, and Standard HDDs.
+description: Learn about the available Azure disk types for virtual machines, including Ultra Disk, Premium SSD v2, Premium SSD, Standard SSD, and Standard HDD.
 author: roygara
 ms.author: rogarana
-ms.date: 11/06/2025
+ms.date: 08/11/2026
 ms.topic: concept-article
 ms.service: azure-disk-storage
 ms.custom: references_regions
@@ -14,15 +14,15 @@ ms.custom: references_regions
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
-Azure managed disks currently offers five disk types, each intended to address a specific customer scenario:
+Azure offers five managed disk types, each designed to address a specific customer scenario:
 
-- [Ultra Disks](#ultra-disks)
+- [Ultra Disk](#ultra-disks)
 - [Premium SSD v2](#premium-ssd-v2)
-- [Premium SSDs (solid-state drives)](#premium-ssds)
-- [Standard SSDs](#standard-ssds)
-- [Standard HDDs (hard disk drives)](#standard-hdds)
+- [Premium SSD (solid-state drive)](#premium-ssds)
+- [Standard SSD](#standard-ssds)
+- [Standard HDD (hard disk drive)](#standard-hdds)
 
-## Disk type comparison
+## Compare Azure managed disk types
 
 The following table provides a comparison of the five disk types to help you decide which to use.
 
@@ -31,7 +31,7 @@ The following table provides a comparison of the five disk types to help you dec
 |         | Ultra Disk | Premium SSD v2 | Premium SSD | Standard SSD | <nobr>Standard HDD</nobr> |
 | ------- | ---------- | ----------- | ------------ | ------------ | ------------ |
 | **Disk type** | SSD | SSD |SSD | SSD | HDD |
-| **Scenario**  | IO-intensive workloads such as [SAP HANA](workloads/sap/hana-vm-operations-storage.md), top tier databases (for example, SQL, Oracle), and other transaction-heavy workloads. | Production and performance-sensitive workloads that consistently require low latency and high IOPS and throughput | Production and performance sensitive workloads | Web servers, lightly used enterprise applications and dev/test | Backup, non-critical, infrequent access |
+| **Scenario**  | I/O-intensive workloads such as [SAP HANA](workloads/sap/hana-vm-operations-storage.md), top-tier databases (for example, SQL Server and Oracle Database), and other transaction-heavy workloads. | Production and performance-sensitive workloads that consistently require low latency, high IOPS, and high throughput. | Production workloads that require high performance and low latency. | Web servers, lightly used enterprise applications, and development and test environments. | Backup and other noncritical, infrequently accessed workloads. |
 | **Max disk size** | 65,536 GiB | 65,536 GiB |32,767 GiB | 32,767 GiB | 32,767 GiB |
 | **Max throughput** | 10,000 MB/s | 2,000 MB/s | 900 MB/s | 750 MB/s | 500 MB/s |
 | **Max IOPS** | 400,000 | 80,000 | 20,000 | 6,000 | 2,000, 3,000* |
@@ -41,7 +41,7 @@ The following table provides a comparison of the five disk types to help you dec
 
 For more help deciding which disk type suits your needs, this decision tree should help with typical scenarios:
 
-:::image type="content" source="media/disks-types/managed-disk-decision-tree.png" alt-text="Diagram of a decision tree for managed disk types." lightbox="media/disks-types/managed-disk-decision-tree.png":::
+:::image type="content" source="media/disks-types/managed-disk-decision-tree.png" alt-text="Decision tree that uses latency, IOPS, and throughput requirements to select Standard HDD for cost-efficient storage, Standard SSD for consistent performance, Premium SSD for high performance, Premium SSD v2 for high performance with very low latency, or Ultra Disk for the highest performance." lightbox="media/disks-types/managed-disk-decision-tree.png":::
 
 For a video that covers some high level differences for the different disk types, and some ways for determining what impacts your workload requirements, see [Block storage options with Azure Disk Storage and Elastic SAN](https://youtu.be/igfNfUvgaDw).
 
@@ -75,17 +75,17 @@ The following table provides an example of performance caps an Ultra Disk has de
 
 ### Ultra Disk performance
 
-Ultra Disks are designed to provide consistently low sub millisecond latencies and the highest limits for IOPS and throughput. With Ultra Disks, you can individually set the capacity, throughput, and IOPS of a disk based on your workload needs, increasing flexibility and reducing costs. Each of these values determine the cost of your disk. Within a 24 hour period, you can change the performance of a disk four times. It can take up to an hour for a performance change to take effect.
+Ultra Disks are designed to provide consistently low submillisecond latency and the highest limits for IOPS and throughput. With Ultra Disks, you can individually set the capacity, throughput, and IOPS of a disk based on your workload needs, increasing flexibility and reducing costs. Each of these values determines the cost of your disk. Within a 24-hour period, you can change the performance of a disk four times. It can take up to an hour for a performance change to take effect.
 
 ### Ultra Disk IOPS
 
-Ultra Disks support IOPS limits of 1000 IOPS/GiB, up to a maximum of 400,000 IOPS per disk. To achieve the target IOPS for the disk, ensure that the selected disk IOPS are less than the VM IOPS limit. Ultra Disks with greater IOPS can be used as shared disks to support multiple VMs. The minimum baseline IOPS per disk is 100.
+Ultra Disks support IOPS limits of 1,000 IOPS per GiB, up to a maximum of 400,000 IOPS per disk. To achieve the target IOPS for the disk, ensure that the selected disk IOPS are less than the VM IOPS limit. Use Ultra Disks with greater IOPS as shared disks to support multiple VMs. The minimum baseline IOPS per disk is 100.
 
 For more information about IOPS, see [Virtual machine and disk performance](disks-performance.md).
 
 ### Ultra Disk throughput
 
-The maximum throughput limit of an Ultra Disk is .25 MB/s for each provisioned IOPS, up to a maximum of 10,000 MB/s per disk (where MB/s = 10^6 Bytes per second). The minimum guaranteed throughput of an Ultra Disk is 1 MB/s.
+The maximum throughput limit of an Ultra Disk is 0.25 MB/s for each provisioned IOPS, up to a maximum of 10,000 MB/s per disk (where MB/s = 10^6 Bytes per second). The minimum guaranteed throughput of an Ultra Disk is 1 MB/s.
 
 You can adjust Ultra Disk IOPS and throughput performance at runtime without detaching the disk from the virtual machine. After a performance resize operation has been issued on a disk, it can take up to an hour for the change to take effect. Up to four performance resize operations are permitted during a 24-hour window.
 
@@ -101,9 +101,9 @@ If you would like to start using Ultra Disks, see the article on [using Azure Ul
 
 Premium SSD v2 offers higher performance than Premium SSDs while also generally being less costly. You can individually tweak the performance (capacity, throughput, and IOPS) of Premium SSD v2 disks at any time, allowing workloads to be cost efficient while meeting shifting performance needs. For example, a transaction-intensive database may need a large amount of IOPS at a small size, or a gaming application may need a large amount of IOPS but only during peak hours. Because of this, for most general purpose workloads, Premium SSD v2 can provide the best price performance. 
 
-Premium SSD v2 is suited for a broad range of workloads such as SQL server, Oracle, MariaDB, SAP, Cassandra, Mongo DB, big data/analytics, and gaming, on virtual machines or stateful containers.
+Premium SSD v2 is suited for a broad range of workloads such as SQL Server, Oracle, MariaDB, SAP, Cassandra, MongoDB, big data and analytics, and gaming on virtual machines or stateful containers.
 
-Premium SSD v2 support a 4k physical sector size by default, but can be configured to use a 512E sector size as well. While most applications are compatible with 4k sector sizes, some require 512 byte sector sizes. Oracle Database, for example, requires release 12.2 or later in order to support 4k native disks.
+Premium SSD v2 supports a 4k physical sector size by default but can be configured to use a 512E sector size. While most applications are compatible with 4k sector sizes, some require 512-byte sector sizes. Oracle Database, for example, requires release 12.2 or later to support 4k native disks.
 
 
 ### Differences between Premium SSD and Premium SSD v2
@@ -114,32 +114,41 @@ Unlike Premium SSDs, Premium SSD v2 doesn't have dedicated sizes. You can set a 
 
 [!INCLUDE [disks-prem-v2-limitations](./includes/disks-prem-v2-limitations.md)]
 
-#### Regional availability
+### Premium SSD v2 regional availability
+
+You can deploy Premium SSD v2 disks as zonal resources or as [nonzonal resources](/azure/reliability/availability-zones-zonal-resource-resiliency#resource-deployment-types). Use a zonal disk when your workload runs in an availability zone. Use a nonzonal disk for a nonzonal VM or in a region without availability zones.
+
+#### Zonal disks
 
 [!INCLUDE [disks-premv2-regions](./includes/disks-premv2-regions.md)]
 
+#### Nonzonal disks
+
+[!INCLUDE [disks-premv2-regions-nonzonal](./includes/disks-premv2-regions-nonzonal.md)]
+
 ### Premium SSD v2 performance
 
-Premium SSD v2 disks are designed to provide provisioned IOPS and throughput 99.9% of the time. Premium SSD v2 disks are also designed to provide sub millisecond latencies. With Premium SSD v2 disks, you can individually set the capacity, throughput, and IOPS of a disk based on your workload needs, providing you with more flexibility and reduced costs. Each of these values determines the cost of your disk. You can adjust the performance of a Premium SSD v2 four times within a 24 hour period. Creating a disk counts as one of these times, so for the first 24 hours after creating a Premium SSD v2 you can only adjust its performance up to three times.
+Premium SSD v2 disks are designed to provide provisioned IOPS and throughput 99.9% of the time. Premium SSD v2 disks are also designed to provide submillisecond latency. With Premium SSD v2 disks, you can individually set the capacity, throughput, and IOPS of a disk based on your workload needs, providing you with more flexibility and reduced costs. Each of these values determines the cost of your disk. You can adjust the performance of a Premium SSD v2 four times within a 24-hour period. Creating a disk counts as one of these times, so for the first 24 hours after creating a Premium SSD v2 you can only adjust its performance up to three times.
 
 #### Premium SSD v2 capacities
 
-Premium SSD v2 capacities range from 1 GiB to 64 TiBs, in 1-GiB increments. You're billed on a per GiB ratio, see the [pricing page](https://azure.microsoft.com/pricing/details/managed-disks/) for details.
+Premium SSD v2 capacities range from 1 GiB to 64 TiB, in 1-GiB increments. You're billed on a per GiB ratio, see the [pricing page](https://azure.microsoft.com/pricing/details/managed-disks/) for details.
 
 Premium SSD v2 offers up to 100 TiB per region per subscription by default, but supports higher capacity by request. To request an increase in capacity, request a quota increase or contact Azure Support.
 
 #### Premium SSD v2 IOPS
 
-All Premium SSD v2 disks have a baseline IOPS of 3,000 that is free of charge. After 6 GiB, the maximum IOPS a disk can have increases at a rate of 500 per GiB, up to 80,000 IOPS. So an 8 GiB disk can have up to 4,000 IOPS, and a 10 GiB can have up to 5,000 IOPS. To be able to set 80,000 IOPS on a disk, that disk must have at least 160 GiBs. Increasing your IOPS beyond 3,000 increases the price of your disk.
+All Premium SSD v2 disks have a baseline IOPS of 3,000 that is free of charge. After 6 GiB, the maximum IOPS a disk can have increases at a rate of 500 per GiB, up to 80,000 IOPS. So an 8-GiB disk can have up to 4,000 IOPS, and a 10-GiB disk can have up to 5,000 IOPS. To set 80,000 IOPS on a disk, that disk must have at least 160 GiB. Increasing your IOPS beyond 3,000 increases the price of your disk.
 
 #### Premium SSD v2 throughput
 
 All Premium SSD v2 disks have a baseline throughput of 125 MB/s that is free of charge. After 6 GiB, the maximum throughput that can be set increases by 0.25 MB/s per set IOPS. If a disk has 3,000 IOPS, the max throughput it can set is 750 MB/s. To raise the throughput for this disk beyond 750 MB/s, its IOPS must be increased. For example, if you increased the IOPS to 4,000, then the max throughput that can be set is 1,000 MB/s. 2,000 MB/s is the maximum throughput supported for disks that have 8,000 IOPS or more. Increasing your throughput beyond 125 MB/s increases the price of your disk.
 
-#### Premium SSD v2 Sector Sizes
+#### Premium SSD v2 sector sizes
+
 Premium SSD v2 supports a 4k physical sector size by default. A 512E sector size is also supported. While most applications are compatible with 4k sector sizes, some require 512-byte sector sizes. Oracle Database, for example, requires release 12.2 or later in order to support 4k native disks.
 
-#### Summary
+#### Premium SSD v2 performance summary
 
 The following table provides an overview of disk capacities and performance maximums to help you decide which to use.
 
@@ -149,18 +158,18 @@ To deploy a Premium SSD v2, see [Deploy a Premium SSD v2](disks-deploy-premium-v
 
 ## Premium SSDs
 
-Azure Premium SSDs deliver high-performance and low-latency disk support for virtual machines (VMs) with input/output (IO)-intensive workloads. To take advantage of the speed and performance of Premium SSDs, you can migrate existing VM disks to Premium SSDs. Premium SSDs are suitable for mission-critical production applications, but you can use them only with compatible VM series. Premium SSDs support the [512E sector size](https://en.wikipedia.org/wiki/Advanced_Format#512_emulation_(512e)).
+Azure Premium SSDs deliver high-performance and low-latency disk support for virtual machines (VMs) with input/output (I/O)-intensive workloads. To take advantage of the speed and performance of Premium SSDs, you can migrate existing VM disks to Premium SSDs. Premium SSDs are suitable for mission-critical production applications, but you can use them only with compatible VM series. Premium SSDs support the [512E sector size](https://en.wikipedia.org/wiki/Advanced_Format#512_emulation_(512e)).
 
 To learn more about individual Azure VM types and sizes for Windows or Linux, including size compatibility for premium storage, see [Sizes for virtual machines in Azure](sizes.md). You'll need to check each individual VM size article to determine if it's premium storage-compatible.
 
 ### Premium SSD size
 [!INCLUDE [disk-storage-premium-ssd-sizes](~/reusable-content/ce-skilling/azure/includes/disk-storage-premium-ssd-sizes.md)]
 
-Capacity, IOPS, and throughput are guaranteed when a premium storage disk is provisioned. For example, if you create a P50 disk, Azure provisions 4,095-GB storage capacity, 7,500 IOPS, and 250-MB/s throughput for that disk. Your application can use all or part of the capacity and performance. Premium SSDs are designed to provide the single-digit millisecond latencies, target IOPS, and throughput described in the preceding table 99.9% of the time.
+Capacity, IOPS, and throughput are guaranteed when a Premium SSD is provisioned. For example, if you create a P50 disk, Azure provisions 4,095-GB storage capacity, 7,500 IOPS, and 250-MB/s throughput for that disk. Your application can use all or part of the capacity and performance. Premium SSDs are designed to provide the single-digit millisecond latencies, target IOPS, and throughput described in the preceding table 99.9% of the time.
 
 ### Premium SSD bursting
 
-Premium SSDs offer disk bursting, which provides better tolerance on unpredictable changes of IO patterns. Disk bursting is especially useful during OS disk boot and for applications with spiky traffic. To learn more about how bursting for Azure disks works, see [Disk-level bursting](disk-bursting.md#disk-level-bursting).
+Premium SSDs offer disk bursting, which provides better tolerance for unpredictable changes in I/O patterns. Disk bursting is especially useful during OS disk boot and for applications with spiky traffic. To learn more about how bursting for Azure disks works, see [Disk-level bursting](disk-bursting.md#disk-level-bursting).
 
 ### Premium SSD transactions
 
@@ -174,35 +183,35 @@ Azure Standard SSDs are optimized for workloads that need consistent performance
 
 [!INCLUDE [disk-storage-standard-ssd-sizes](~/reusable-content/ce-skilling/azure/includes/disk-storage-standard-ssd-sizes.md)]
 
-Standard SSDs are designed to provide single-digit millisecond latencies and the IOPS and throughput up to the limits described in the preceding table 99% of the time. Actual IOPS and throughput may vary sometimes depending on the traffic patterns. Standard SSDs provide more consistent performance than the HDD disks with the lower latency.
+Standard SSDs are designed to provide single-digit millisecond latencies and the IOPS and throughput up to the limits described in the preceding table 99% of the time. Actual IOPS and throughput might vary depending on the traffic patterns. Standard SSDs provide lower latency and more consistent performance than Standard HDDs.
 
 ### Standard SSD transactions
 
 For Standard SSDs, each I/O operation less than or equal to 256 kB of throughput is considered a single I/O operation. I/O operations larger than 256 kB of throughput are considered multiple I/Os of size 256 kB. These transactions incur a billable cost but, there's an hourly limit on the number of transactions that can incur a billable cost. If that hourly limit is reached, additional transactions during that hour no longer incur a cost. For details, see the [blog post](https://aka.ms/billedcapsblog).
 
-### Standard SSD Bursting
+### Standard SSD bursting
 
-Standard SSDs offer disk bursting, which provides better tolerance for the unpredictable IO pattern changes. OS boot disks and applications prone to traffic spikes will both benefit from disk bursting. To learn more about how bursting for Azure disks works, see [Disk-level bursting](disk-bursting.md#disk-level-bursting).
+Standard SSDs offer disk bursting, which provides better tolerance for unpredictable changes in I/O patterns. OS boot disks and applications prone to traffic spikes both benefit from disk bursting. To learn more about how bursting for Azure disks works, see [Disk-level bursting](disk-bursting.md#disk-level-bursting).
 
 ## Standard HDDs
 
-Azure Standard HDDs are suitable for latency-tolerant workloads using large, sequential IO, such as light data processing workloads that read or write large files sequentially. Standard HDDs are not suitable for workloads requiring low latency, or frequent small-block access - such as OS disks or transactional databases. Use either Standard SSDs or Premium SSD managed disks for these workloads. Standard HDDs are designed to deliver write latencies of less than 10 ms and read latencies of less than 20 ms for most IO operations. Performance may vary more widely than that of SSD-based disks, and actual performance may vary depending on IO size and workload pattern. Standard HDDs are available in all Azure regions and can be used with all Azure VMs. Standard HDDs support the [512E sector size](https://en.wikipedia.org/wiki/Advanced_Format#512_emulation_(512e)).
+Azure Standard HDDs are suitable for latency-tolerant workloads that use large, sequential I/O, such as light data processing workloads that read or write large files sequentially. Standard HDDs aren't suitable for workloads that require low latency or frequent small-block access, such as OS disks or transactional databases. Use either Standard SSDs or Premium SSD managed disks for these workloads. Standard HDDs are designed to deliver write latencies of less than 10 ms and read latencies of less than 20 ms for most I/O operations. Performance can vary more widely than the performance of SSD-based disks, depending on I/O size and workload pattern. Standard HDDs are available in all Azure regions and can be used with all Azure VMs. Standard HDDs support the [512E sector size](https://en.wikipedia.org/wiki/Advanced_Format#512_emulation_(512e)).
 
 ### Standard HDD size
 [!INCLUDE [disk-storage-standard-hdd-sizes](~/reusable-content/ce-skilling/azure/includes/disk-storage-standard-hdd-sizes.md)]
 
-### Standard HDD Transactions
+### Standard HDD transactions
 
-There are a few different ways that Standard HDDs count transactions, depending on the region your disk is in. For all Azure regions except for US Central and France Central, each I/O operation is considered a single transaction for billing purposes, and incurs a billable cost for every 10,000 billable transactions. There's no hourly limit on the number of billable transactions that can incur a billable cost. 
+There are a few different ways that Standard HDDs count transactions, depending on the disk size. For Standard HDDs sizes S4 and S6, each I/O operation less than 16 KiB of throughput is considered a single billable transaction. I/O operations larger than 16 KiB of throughput are considered multiple billable transactions of size 16 KiB for billing purposes. Cost is incurred for every 10,000 billable transactions but, there's an hourly limit on the number of billable transactions that can incur a billable cost. If your individual disk's billable transactions reach that hourly limit, any additional billable transactions during that hour don't incur a cost.  
 
-As of June 2, 2026, for the US Central and France Central Azure regions, Standard HDDs count transactions in two different ways depending on the disk size. For Standard HDDs sizes S4 and S6, each I/O operation less than 16 KiB of throughput is considered a single billable transaction. I/O operations larger than 16 KiB of throughput are considered multiple billable transactions of size 16 KiB for billing purposes. Cost is incurred for every 10,000 billable transactions but, there's an hourly limit on the number of billable transactions that can incur a billable cost. If your individual disk's billable transactions reach that hourly limit, any additional billable transactions during that hour don't incur a cost. For the rest of the Standard HDD sizes (S10, S20, S30, S40, S50, S60, S70, S80) and snapshots, each I/O operation is considered a single billable transaction for billing purposes, and incurs a billable cost for every 10,000 billable transactions. There's no hourly limit on the number of billable transactions that can incur a cost for these Standard HDD sizes. 
+For the rest of the Standard HDD sizes (S10, S20, S30, S40, S50, S60, S70, S80) and snapshots, each I/O operation counts as one billable transaction for billing purposes, and incurs a billable cost for every 10,000 billable transactions. There's no hourly limit on the number of billable transactions that can incur a cost for these Standard HDD sizes.
 
-## Billing
+## Azure managed disk billing
 
 When using managed disks, the following billing considerations apply:
 
 - Disk type
-- Managed disk Size
+- Managed disk size
 - Snapshots
 - Outbound data transfers
 - Number of transactions
@@ -215,22 +224,22 @@ For more information on snapshots, see [Create a snapshot of a virtual hard disk
 
 **Outbound data transfers**: [Outbound data transfers](https://azure.microsoft.com/pricing/details/bandwidth/) (data going out of Azure data centers) incur billing for bandwidth usage.
 
-**Transactions**: You're billed for the number of transactions performed on a standard managed disk. For Standard SSDs, each I/O operation less than or equal to 256 kB of throughput is considered a single I/O operation. I/O operations larger than 256 kB of throughput are considered multiple I/Os of size 256 kB. Standard HDD transaction charges depend on the region, size of the disk you deploy, and for some disk sizes, the size of each transaction. For details, [see this section](#standard-hdd-transactions). 
+**Transactions**: You're billed for the number of transactions performed on a standard managed disk. For Standard SSDs, each I/O operation less than or equal to 256 kB of throughput is considered a single I/O operation. I/O operations larger than 256 kB of throughput are considered multiple I/Os of size 256 kB. Standard HDD transaction charges depend on the size of the disk you deploy, and for some disk sizes, the size of each transaction. For details, [see this section](#standard-hdd-transactions). 
 
 For detailed information on pricing for managed disks (including transaction costs), see [managed disk pricing](https://azure.microsoft.com/pricing/details/managed-disks).
 
-### Ultra Disks VM reservation fee
+### Ultra Disk VM reservation fee
 
 Azure VMs have the capability to indicate if they're compatible with Ultra Disks. An Ultra Disk-compatible VM allocates dedicated bandwidth capacity between the compute VM instance and the block storage scale unit to optimize the performance and reduce latency. When you add this capability on the VM, it results in a reservation charge. The reservation charge is only imposed if you enabled Ultra Disk capability on the VM without an attached Ultra Disk. When an Ultra Disk is attached to the Ultra Disk compatible VM, the reservation charge wouldn't be applied. This charge is per vCPU provisioned on the VM.
 
 > [!Note]
 > For [constrained core VM sizes](constrained-vcpu.md), the reservation fee is based on the actual number of vCPUs and not the constrained cores. For Standard_E32-8s_v3, the reservation fee will be based on 32 cores.
 
-For Ultra Disk pricing details, see the [Azure Disks pricing page](https://azure.microsoft.com/pricing/details/managed-disks/).
+For Ultra Disk pricing details, see the [Azure managed disk pricing page](https://azure.microsoft.com/pricing/details/managed-disks/).
 
 ### Azure disk reservation
 
-Disk reservation provides you with a discount on the advance purchase of one year's of disk storage, reducing your total cost. When you purchase a disk reservation, you select a specific disk SKU in a target region. For example, you may choose five P30 (1 TiB) Premium SSDs in the Central US region for a one year term. The disk reservation experience is similar to Azure reserved VM instances. You can bundle VM and Disk reservations to maximize your savings. For now, Azure Disks Reservation offers one year commitment plan for Premium SSD SKUs from P30 (1 TiB) to P80 (32 TiB) in all production regions. For more information about reserved disks pricing, see [Azure Disks pricing page](https://azure.microsoft.com/pricing/details/managed-disks/).
+An Azure disk reservation provides a discount when you purchase one year of disk storage in advance. When you purchase a disk reservation, you select a specific disk SKU in a target region. For example, you might choose five P30 (1 TiB) Premium SSDs in the Central US region for a one-year term. The disk reservation experience is similar to Azure reserved VM instances. You can bundle VM and disk reservations to maximize your savings. Azure disk reservations offer a one-year commitment plan for Premium SSD SKUs from P30 (1 TiB) to P80 (32 TiB) in all production regions. For more information about reserved disk pricing, see the [Azure managed disk pricing page](https://azure.microsoft.com/pricing/details/managed-disks/).
 
 ## Next steps
 

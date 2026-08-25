@@ -107,7 +107,7 @@ Now that we've covered the diagnostics in your application and the platform, how
 
 A list of performance counters that should be collected at the infrastructure level can be found at [Performance metrics](monitor-service-fabric-reference.md#performance-metrics).
 
-Azure Monitor Logs is recommended for monitoring cluster level events. After you configure the [Log Analytics agent](service-fabric-diagnostics-oms-agent.md) with your workspace, you can collect:
+Use Azure Monitor Logs for monitoring cluster level events. After you configure [Azure Monitor Agent and data collection rules](service-fabric-diagnostics-azure-monitor-agent-data-collection-rules.md) with your workspace, you can collect:
 
 - Performance metrics such as CPU utilization.
 - .NET performance counters such as process level CPU utilization.
@@ -139,7 +139,7 @@ A best practice is to use and configure the Azure Monitor agent to send guest OS
 
 Service Fabric can collect the following logs:
 
-- For Windows clusters, you can set up cluster monitoring with [Diagnostics Agent](service-fabric-diagnostics-event-aggregation-wad.md) and [Azure Monitor logs](service-fabric-diagnostics-oms-setup.md).
+- For Windows clusters, set up cluster monitoring by using [Azure Monitor Agent and data collection rules](service-fabric-diagnostics-azure-monitor-agent-data-collection-rules.md).
 - For Linux clusters, Azure Monitor Logs is also the recommended tool for Azure platform and infrastructure monitoring. Linux platform diagnostics require different configuration. For more information, see [Service Fabric Linux cluster events in Syslog](service-fabric-diagnostics-oms-syslog.md).
 - You can configure the Azure Monitor agent to send guest OS logs to Azure Monitor Logs, where you can query on them by using Log Analytics.
 - You can write Service Fabric container logs to *stdout* or *stderr* so they're available in Azure Monitor Logs.
@@ -227,10 +227,8 @@ The following table lists some alert rules for Service Fabric. These alerts are 
 Now that we've gone over each area of monitoring and example scenarios, here is a summary of the Azure monitoring tools and set up needed to monitor all areas above.
 
 * Application monitoring with [Application Insights](service-fabric-tutorial-monitoring-aspnet.md)
-* Cluster monitoring with [Diagnostics Agent](service-fabric-diagnostics-event-aggregation-wad.md) and [Azure Monitor logs](service-fabric-diagnostics-oms-setup.md)
-* Infrastructure monitoring with [Azure Monitor logs](service-fabric-diagnostics-oms-agent.md)
-
-You can also use and modify the [sample ARM template](service-fabric-diagnostics-oms-setup.md#deploy-azure-monitor-logs-with-azure-resource-manager) to automate deployment of all necessary resources and agents.
+* Cluster monitoring by using [Azure Monitor Agent and data collection rules](service-fabric-diagnostics-azure-monitor-agent-data-collection-rules.md).
+* Infrastructure monitoring by using [Azure Monitor Agent and data collection rules](service-fabric-diagnostics-azure-monitor-agent-data-collection-rules.md).
 
 ## Related content
 

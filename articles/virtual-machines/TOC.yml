@@ -142,6 +142,8 @@
     href: ./workloads/redhat/overview.md
   - name: Ubuntu
     href: ./workloads/canonical/ubuntu-pro-in-place-upgrade.md
+  - name: Rocky Linux
+    href: ./workloads/rocky-linux/rocky-linux-options.md
   - name: OpenShift
     items:
     - name: OpenShift Container Platform 4.x
@@ -191,6 +193,17 @@
      href: ./sizes/resize-vm.md
    - name: Cobalt VMs
      href: ./sizes/cobalt-overview.md
+   - name: Accelerator technologies
+     items:
+     - name: AMD ROCm overview
+       displayName: ROCm, AMD, Instinct, Radeon, HIP, RCCL, GPU compute
+       href: ./accelerator-technologies/rocm-overview.md
+     - name: NVIDIA CUDA overview
+       displayName: CUDA, NVIDIA, Tensor Core, cuDNN, NCCL, GPU compute
+       href: ./accelerator-technologies/cuda-overview.md
+     - name: Intel AMX overview
+       displayName: AMX, Intel, Advanced Matrix Extensions, TMUL, AI inference, CPU
+       href: ./accelerator-technologies/intel-amx-overview.md
    - name: General purpose
      items:
      - name: Overview
@@ -498,10 +511,14 @@
            href: ./sizes/memory-optimized/mbsv3-series.md
          - name: Mbdsv3 series
            href: ./sizes/memory-optimized/mbdsv3-series.md
+         - name: Mbsv4 series
+           href: ./sizes/memory-optimized/mbsv4-series.md
+         - name: Mbdsv4 series
+           href: ./sizes/memory-optimized/mbdsv4-series.md
        - name: Retirement Migration guides
          items:
          - name: Msv2 and Mdsv2 migration guide
-           href: ./sizes/retirement/msv2-mdsv2-retirement.md
+           href: ./sizes/lifecycle/retirement/msv2-mdsv2-retirement.md
    - name: Storage optimized
      items:
      - name: Overview
@@ -547,9 +564,9 @@
        - name: NCCads_H100_v5 series
          href: ./sizes/gpu-accelerated/nccadsh100v5-series.md
        - name: Ncv3 Nc24rs retirement
-         href: ncv3-nc24rs-retirement.md
+         href: ./sizes/lifecycle/retirement/ncv3-nc24rs-retirement.md
        - name: Ncv3 series retirement
-         href: ncv3-retirement.md
+         href: ./sizes/lifecycle/retirement/ncv3-retirement.md
        - name: NCasT4_v3 series
          href: ./sizes/gpu-accelerated/ncast4v3-series.md
        - name: NC_A100_v4 series
@@ -572,7 +589,7 @@
        - name: ND series
          href: ./sizes/gpu-accelerated/nd-series.md
        - name: ND series retirement
-         href: ./sizes/retirement/nd-series-retirement.md
+         href: ./sizes/lifecycle/retirement/nd-series-retirement.md
        - name: NDv2 series
          href: ./sizes/gpu-accelerated/ndv2-series.md
        - name: ND-GB200-v6 series
@@ -600,17 +617,17 @@
        - name: NV series
          href: ./sizes/gpu-accelerated/nv-series.md
        - name: NV series retirement
-         href: ./sizes/retirement/nv-series-retirement.md
+         href: ./sizes/lifecycle/retirement/nv-series-retirement.md
        - name: NV series migration guide
-         href: nv-series-migration-guide.md
+         href: ./sizes/lifecycle/retirement/nv-series-migration-guide.md
        - name: NVv3 series
          href: ./sizes/gpu-accelerated/nvv3-series.md
        - name: NVv3 series retirement
-         href: ./sizes/gpu-accelerated/nvv3-series-retirement.md
+         href: ./sizes/lifecycle/retirement/nvv3-series-retirement.md
        - name: NVv4 series
          href: ./sizes/gpu-accelerated/nvv4-series.md
        - name: NVv4 series retirement
-         href: ./sizes/gpu-accelerated/nvv4-retirement.md
+         href: ./sizes/lifecycle/retirement/nvv4-retirement.md
        - name: NVadsA10_v5 series
          href: ./sizes/gpu-accelerated/nvadsa10v5-series.md
        - name: Nvads V710 v5-series
@@ -633,7 +650,7 @@
          href: ./windows/n-series-amd-driver-setup.md
      - name: GPU compute migration guide
        displayName: GPU compute migration guide
-       href: ./migration/sizes/n-series-migration.md
+       href: ./sizes/lifecycle/retirement/n-series-migration.md
    - name: FPGA - accelerated compute
      items:
      - name: Overview
@@ -755,15 +772,15 @@
    - name: Previous generation and retired sizes
      items:
      - name: Overview
-       href: ./sizes/retirement/retirement-overview.md
+       href: ./sizes/lifecycle/retirement/retirement-overview.md
      - name: Previous-gen sizes list
-       href: ./sizes/previous-gen-sizes-list.md
+       href: ./sizes/lifecycle/previous-gen-sizes-list.md
      - name: Previous-gen size pages
        items:
        - name: General purpose
          items:
          - name: Av1-series retirement
-           href: ./sizes/retirement/av1-series-retirement.md
+           href: ./sizes/lifecycle/retirement/av1-series-retirement.md
          - name: B series V1
            href: ./sizes/general-purpose/bv1-series.md
          - name: Dv3 series
@@ -777,11 +794,15 @@
          - name: Dv2 and DSv2 series (11-15)
            href: dv2-dsv2-series-memory.md
          - name: DCsv2 series
-           href: ./sizes/retirement/dcsv2-series-retirement.md
+           href: ./sizes/lifecycle/retirement/dcsv2-series-retirement.md
+         - name: DCccv5 series
+           href: ./sizes/lifecycle/retirement/dcccv5-series-retirement.md
        - name: Memory optimized
          items:
          - name: Ev3 and Esv3 series
-           href: ev3-esv3-series.md
+           href: ./sizes/memory-optimized/ev3-esv3-series.md
+         - name: ECccv5 series
+           href:  ./sizes/lifecycle/retirement/ecccv5-series-retirement.md
        - name: Storage optimized
          items:
          - name: Lsv2 series
@@ -789,15 +810,15 @@
        - name: FPGA accelerated
          items:
          - name: NP series
-           href: ./sizes/retirement/np-series-retirement.md
+           href: ./sizes/lifecycle/retirement/np-series-retirement.md
        - name: High performance compute
          items:
          - name: HC series
-           href: ./sizes/retirement/hc-series-retirement.md
+           href: ./sizes/lifecycle/retirement/hc-series-retirement.md
          - name: HBv2 series
-           href: ./sizes/retirement/hbv2-series-retirement.md
+           href: ./sizes/lifecycle/retirement/hbv2-series-retirement.md
      - name: Retired sizes
-       href: ./sizes/retirement/retired-sizes-list.md
+       href: ./sizes/lifecycle/retired-sizes-list.md
    - name: Generation 2 VMs
      displayName: Gen2, generation, gen1
      href: generation-2.md
@@ -1128,7 +1149,7 @@
       href: dedicated-host-gpu-optimized-skus.md
     - name: Dedicated Host SKU Retirement
       displayName: dedicated, dedicated host, retirement
-      href: ./sizes/retirement/dedicated-host-retirement.md
+      href: ./sizes/lifecycle/retirement/dedicated-host-retirement.md
     - name: Dedicated Host SKU Migration
       displayName: dedicated, dedicated host, retirement, migration
       href: ./sizes/migration-guides/dedicated-host-migration-guide.md
@@ -1578,12 +1599,9 @@
     href: disks-whats-new.md
   - name: Deploy an Ultra Disk
     href: disks-enable-ultra-ssd.md
-  - name: Deploy a zonal Premium SSD v2
-    displayName: Performance, cost, perf, disks, disk
+  - name: Deploy a Premium SSD v2
+    displayName: Performance, cost, perf, disks, disk, zonal, nonzonal
     href: disks-deploy-premium-v2.md
-  - name: Deploy a nonzonal Premium SSD v2
-    displayName: Performance, cost, perf, disks, disk, nonzonal
-    href: disks-deploy-nonzonal-premium-v2.md
   - name: Deploy a ZRS disk
     href: disks-deploy-zrs.md
   - name: Best practices for achieving high availability
@@ -1608,7 +1626,7 @@
       - name: Enable customer-managed keys
         items:
         - name: Portal
-          href: disks-enable-customer-managed-keys-portal.yml
+          href: disks-enable-customer-managed-keys-portal.md
           displayname: Server side encryption, encryption, ADE
         - name: PowerShell
           displayName: Server side encryption, encryption, ADE
@@ -1790,10 +1808,10 @@
       href: disks-restrict-import-export-overview.md
     - name: Restrict uploading and downloading of your disks
       href: disks-secure-upload-download.md
-    - name: Configure private links for disks - CLI
+    - name: Configure private links for disks
       href: ./linux/disks-export-import-private-links-cli.md
     - name: Configure private links for disks - Portal
-      href: disks-enable-private-links-for-import-export-portal.yml
+      href: disks-enable-private-links-for-import-export-portal.md
     - name: Upload a vhd to a disk - PowerShell
       href: ./windows/disks-upload-vhd-to-managed-disk-powershell.md
     - name: Upload a vhd to a disk - CLI
@@ -1879,7 +1897,7 @@
         href: ./linux/add-disk.md
       - name: Azure portal
         displayName: add a data disk, data disk
-        href: ./linux/attach-disk-portal.yml
+        href: ./linux/attach-disk-portal.md
     - name: Windows
       items:
       - name: Azure PowerShell
@@ -1887,7 +1905,7 @@
         href: ./windows/attach-disk-ps.md
       - name: Azure portal
         displayName: add a data disk, data disk
-        href: ./windows/attach-managed-disk-portal.yml
+        href: ./windows/attach-managed-disk-portal.md
       - name: Change temp disk drive letter
         href: ./windows/change-drive-letter.md
   - name: Format and mount a disk
@@ -1905,7 +1923,7 @@
       href: ./linux/detach-disk.md
     - name: Windows
       displayName: detach a disk
-      href: ./windows/detach-disk.yml
+      href: ./windows/detach-disk.md
   - name: Expand a disk
     items:
     - name: Linux
@@ -1951,9 +1969,9 @@
         href: ./windows/find-unattached-disks.md
       - name: Portal
         displayName: Find unattached disks
-        href: disks-find-unattached-portal.yml
-    - name: Disks FAQs
-      href: faq-for-disks.yml
+        href: disks-find-unattached-portal.md
+      - name: Disks FAQs
+        href: faq-for-disks.md
 - name: Networking
   items:
   - name: Overview
@@ -2397,10 +2415,10 @@
     href: boot-diagnostics.md
 - name: Essential machine management
   items:
-  - name: Overview
-    href: /azure/operations/configuration-enrollment?toc=/azure/virtual-machines/toc.json
-  - name: Troubleshooting
-    href: /azure/operations/configuration-enrollment-troubleshoot?toc=/azure/virtual-machines/toc.json
+  - name: Machine enrollment
+    href: /azure/azure-arc/servers/essential-machine-management/enrollment?toc=/azure/virtual-machines/toc.json
+  - name: Troubleshoot
+    href: /azure/azure-arc/servers/essential-machine-management/troubleshoot?toc=/azure/virtual-machines/toc.json
 - name: Backup and recovery
   items:
   - name: Overview
@@ -2498,6 +2516,24 @@
   - name: Change subscription for Marketplace VMs
     displayName: offer plan sku marketplace
     href: azure-cli-change-subscription-marketplace.md
+  - name: Previous-gen series capacity limitations and migration guidance
+    href: ./migration/sizes/previous-gen-series-capacity-limitations.md
+  - name: Migrate to v6 and later VM series
+    items:
+      - name: Overview
+        href: ./migration/sizes/sizes-v6-v7-migration-overview.md
+      - name: Assess readiness
+        href: ./migration/sizes/sizes-v6-v7-migration-assess.md
+      - name: Plan the migration
+        href: ./migration/sizes/sizes-v6-v7-migration-plan.md
+      - name: Migrate (wave runbook)
+        href: ./migration/sizes/sizes-v6-v7-migration-migrate.md
+      - name: "(Optional) Convert SCSI to NVMe in place"
+        href: ./migration/sizes/scsi-to-nvme-migration.md
+      - name: Validate and Optimize
+        href: ./migration/sizes/sizes-v6-v7-migration-validate.md
+      - name: Frequently asked questions
+        href: ./migration/sizes/sizes-v6-v7-migration-faq.md
   - name: Move VMs to another region
     href: /azure/site-recovery/azure-to-azure-tutorial-migrate?toc=/azure/virtual-machines/toc.json
   - name: Move to an availability zone
@@ -2519,15 +2555,15 @@
     - name: VM size series retirement migration guides
       items:
       - name: General-purpose sizes
-        href: ./migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide.md
+        href: ./sizes/lifecycle/retirement/d-ds-dv2-dsv2-ls-series-migration-guide.md
       - name: Storage-optimized sizes
-        href: ./migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide.md
+        href: ./sizes/lifecycle/retirement/d-ds-dv2-dsv2-ls-series-migration-guide.md
       - name: GPU-accelerated sizes
         items:
         - name: N-series migration guide
-          href: ./migration/sizes/n-series-migration.md
+          href: ./sizes/lifecycle/retirement/n-series-migration.md
         - name: NV-series migration guide
-          href: ./migration/sizes/nv-series-migration-guide.md
+          href: ./sizes/lifecycle/retirement/nv-series-migration-guide.md
       - name: Dedicated Host migration guide
         href: ./migration/dedicated-host-migration-guide.md
 - name: Infrastructure automation

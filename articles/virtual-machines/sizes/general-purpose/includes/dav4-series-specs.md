@@ -11,7 +11,7 @@ ms.reviewer: mattmcinnes
 ms.custom: include file
 # Customer intent: "As a cloud architect, I want to access the specifications of the Dav4 series VM sizes, so that I can select the appropriate virtual machine configuration for my workloads."
 ---
-| Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
+| Part | Quantity <br><sup>Count Units</sup> | Specs <br><sup>SKU ID, Performance Units, etc.</sup>  |
 |---|---|---|
 | Processor      | 2 - 96 vCPUs       | AMD EPYC 7452 (Rome) [x86-64] <br>AMD EPYC 7763v (Milan) [x86-64]                               |
 | Memory         | 8 - 384 GiB          |                                  |

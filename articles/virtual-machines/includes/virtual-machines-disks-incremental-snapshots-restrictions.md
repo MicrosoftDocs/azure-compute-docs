@@ -5,7 +5,7 @@
  author: roygara
  ms.service: azure-virtual-machines
  ms.topic: include
- ms.date: 12/11/2024
+ ms.date: 08/19/2026
  ms.author: rogarana
  ms.custom: include file
 # Customer intent: "As a cloud administrator, I want to create and manage incremental snapshots of virtual disks, so that I can efficiently utilize storage and ensure data integrity while complying with the snapshot limitations and performance impacts."
@@ -16,7 +16,7 @@
 - You can't create an incremental snapshot for a particular disk outside of that disk's subscription.
 - Incremental snapshots can't be moved to another resource group. But, they can be copied to another resource group or region.
 - Up to seven incremental snapshots per disk can be created every five minutes.
-- A total of 500 incremental snapshots can be created for a single disk. The 500 quota limit isn't over the lifetime of a disk, but at any given point in time. You can always delete older snapshots of a disk to make room for newer snapshots.completion
+- You can create up to 500 incremental snapshots for a single disk. This quota limit applies to any given point in time, not the lifetime of a disk. You can delete older snapshots to make room for new ones.
 - You can't get the changes between snapshots taken before and after you changed the size of the parent disk across 4-TB boundary. For example, You took an incremental snapshot `snapshot-a` when the size of a disk was 2 TB. Now you increased the size of the disk to 6 TB and then took another incremental snapshot `snapshot-b`. You can't get the changes between `snapshot-a` and `snapshot-b`. You have to download the full copy of `snapshot-b` created after the resize. Subsequently, you can get the changes between `snapshot-b` and snapshots created after `snapshot-b`.
 - When you create a managed disk from a snapshot, it starts a background copy process. You can attach a disk to a VM while this process is running but you'll experience [performance impact](/azure/virtual-machines/premium-storage-performance#latency). You can use `CompletionPercent` property to [check the status of the background copy](/azure/virtual-machines/scripts/create-managed-disk-from-snapshot#performance-impact---background-copy-process) only for Premium SSD v2 and Ultra Disk. You can't use the `CompletionPercent` property to gauge the progress of the background data copy for snapshots created from Premium SSD, Standard SSD, and Standard HDDs, or the disk hydration process from snapshots. 
 
@@ -27,7 +27,7 @@ Incremental snapshots of Premium SSD v2 and Ultra Disks have the following extra
 - Snapshots with a 512 logical sector size are stored as VHD, and can be used to create any disk type. Snapshots with a 4096 logical sector size are stored as VHDX and can only be used to create Ultra Disks and Premium SSD v2 disks, they can't be used to create other disk types. To determine which sector size your snapshot is, see [check sector size](#check-sector-size).
 - Up to five disks may be simultaneously created from a snapshot of a Premium SSD v2 or an Ultra Disk.
 - When an incremental snapshot of either a Premium SSD v2 or an Ultra Disk is created, a background copy process for that disk is started. While a background copy is ongoing, you can have up to three total snapshots pending. The process must complete before any more snapshots of that disk can be created.
-- Incremental snapshots of a Premium SSD v2 or an Ultra Disk can't be used immediately after they're created. The background copy must complete before you can create a disk from the snapshot. See [Check snapshot status](#check-snapshot-status) for details.
+- You can't use incremental snapshots of Premium SSD v2 and Ultra Disks immediately after you create them unless you enable instant access when you create the snapshot. Otherwise, the background data copy must finish before you can create a disk from the snapshot. For more information, see [Check snapshot status](#check-snapshot-status) and [Instant access snapshots for Azure managed disks](../disks-instant-access-snapshots.md).
 - When you increase the size of a Premium SSD v2 or an Ultra Disk, any incremental snapshots that are under background copy will fail.
 - Encryption settings can’t be updated for Premium SSD v2 and Ultra Disk snapshot where background data copy is in progress.
 - When you attach a Premium SSD v2 or Ultra Disk created from snapshot to a running Virtual Machine while `CompletionPercent` property hasn't reached 100, the disk suffers performance impact. Specifically, if the disk has a 4k sector size, it may experience slower read. If the disk has a 512e sector size, it may experience slower read and write. To track the progress of this background copy process, see the check disk status section of either the Azure [PowerShell sample](/azure/virtual-machines/scripts/virtual-machines-powershell-sample-create-managed-disk-from-snapshot#performance-impact---background-copy-process) or the [Azure CLI](/azure/virtual-machines/scripts/virtual-machines-powershell-sample-create-managed-disk-from-snapshot#performance-impact---background-copy-process).

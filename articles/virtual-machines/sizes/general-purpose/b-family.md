@@ -50,6 +50,6 @@ Read more about the [B-series CPU credit model](../../b-series-cpu-credit-model/
 
 
 ### Previous-generation B family series
-For older sizes, see [previous generation sizes](../previous-gen-sizes-list.md#general-purpose-previous-gen-sizes).
+For older sizes, see [previous generation sizes](../lifecycle/previous-gen-sizes-list.md#general-purpose-previous-gen-sizes).
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]

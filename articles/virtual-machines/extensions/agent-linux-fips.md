@@ -8,7 +8,7 @@ ms.author: gabsta
 author: GabstaMSFT
 ms.custom: linux-related-content; references_regions
 ms.collection: linux
-ms.date: 09/25/2025
+ms.date: 07/01/2026
 ---
 # FIPS 140-3 support for Azure Linux VM extensions and guest agent
 
@@ -17,31 +17,7 @@ Linux virtual machine (VM) extensions currently comply with FIPS 140-2, but upda
 For more information, see [What are the Federal Information Processing Standards (FIPS)?](https://www.nist.gov/standardsgov/compliance-faqs-federal-information-processing-standards-fips).
 
 > [!NOTE]
-> This feature is currently in public preview. Production workloads are supported.
-> For legal terms that apply to Azure features that are in beta, in preview, or otherwise not yet released into general availability, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-## Confirmed supported extensions
-
-| Extension | Supported clouds<br> Commercial,<br> Government,<br> Air-Gap |
-|:----------|:---------------------------------------------------:|
-| MICROSOFT.AKS.COMPUTE.AKS.LINUX.AKSNODE | Commercial,<br>Government |
-| MICROSOFT.AKS.COMPUTE.AKS.LINUX.BILLING | Commercial,<br>Government |
-| MICROSOFT.AZURE.AZUREDEFENDERFORSERVERS.MDE.LINUX | Commercial,<br>Government |
-| MICROSOFT.AZURE.EXTENSIONS.CUSTOMSCRIPT | Commercial,<br>Government |
-| MICROSOFT.AZURE.KEYVAULT.KEYVAULTFORLINUX | Commercial,<br>Government |
-| MICROSOFT.AZURE.MONITOR.AZUREMONITORLINUXAGENT | Commercial,<br>Government |
-| MICROSOFT.AZURE.MONITORING.DEPENDENCYAGENT.DEPENDENCYAGENTLINUX | Commercial |
-| MICROSOFT.AZURE.NETWORKWATCHER.NETWORKWATCHERAGENTLINUX | Commercial,<br>Government |
-| MICROSOFT.AZURE.RECOVERYSERVICES.VMSNAPSHOT | Commercial |
-| MICROSOFT.AZURE.SECURITY.MONITORING.AZURESECURITYLINUXAGENT | Commercial |
-| MICROSOFT.CPLAT.CORE.LINUXPATCHEXTENSION | Commercial,<br>Government |
-| MICROSOFT.CPLAT.CORE.RUNCOMMANDLINUX | Commercial,<br>Government |
-| MICROSOFT.CPLAT.CORE.VMAPPLICATIONMANAGERLINUX | Commercial,<br>Government |
-| MICROSOFT.CPLAT.PROXYAGENT.PROXYAGENTLINUX | Commercial,<br>Government |
-| MICROSOFT.CPLAT.PROXYAGENT.PROXYAGENTLINUXARM64 | Commercial,<br>Government |
-| MICROSOFT.GUESTCONFIGURATION.CONFIGURATIONFORLINUX | Commercial |
-| MICROSOFT.MANAGEDSERVICES.APPLICATIONHEALTHLINUX | Commercial,<br>Government |
-| MICROSOFT.OSTCEXTENSIONS.VMACCESSFORLINUX | Commercial,<br>Government |
+> FIPS 140-3 is generally available, but enabling FIPS 140-3 support changes the encryption algorithms and certificate handling used by the VM Extensions platform. Because these changes can be incompatible with older agents, OpenSSL versions, and extensions, Azure requires per-VM opt-in to ensure you only receive the new FIPS 140-3 behavior when your workloads are ready.
 
 ## Prerequisites
 
@@ -53,9 +29,6 @@ You must meet the following four requirements to use a FIPS 140-3-compliant VM i
 Afterward, validate to ensure the functionality of the VM extensions.
 
 ---
-
-> [!WARNING]
-> We have identified a known issue where the 'enableFips1403Encryption' property does not consistently propagate to VMSS VM instances. A fix is currently in deployment, and we anticipate broad availability of the resolution in early July 2026.
 
 ## Implement prerequisites
 

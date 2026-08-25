@@ -16,7 +16,7 @@ ai-usage: ai-assisted
 [!INCLUDE [np-summary](./includes/np-series-summary.md)]
 
 > [!IMPORTANT]
-> Azure NP-series virtual machines (Standard_NP10s, Standard_NP20s, Standard_NP40s) are scheduled for retirement on **May 31, 2027**. After this date, remaining NP-series VMs are deallocated, stop working, stop incurring charges, and no longer have SLA or support. Managed disk data is preserved. For migration guidance, see [NP-series virtual machine migration guidance](../retirement/np-series-retirement.md).
+> Azure NP-series virtual machines (Standard_NP10s, Standard_NP20s, Standard_NP40s) are scheduled for retirement on **May 31, 2027**. After this date, remaining NP-series VMs are deallocated, stop working, stop incurring charges, and no longer have SLA or support. Managed disk data is preserved. For migration guidance, see [NP-series virtual machine migration guidance](../lifecycle/retirement/np-series-retirement.md).
 
 > [!NOTE]
 > Purchases of 1-year and 3-year Azure Reserved VM Instances for NP-series ended on **April 2, 2026**. Existing reservations are honored until expiration, but no new NP-series reservations can be purchased after that date.
@@ -32,7 +32,7 @@ For features supported by this series, see the [Feature support](#feature-suppor
 
 vCPUs (Qty.) and Memory for each size
 
-| Size Name | vCPUs (Qty.) | Memory (GB) |
+| Size Name | vCPUs (Qty.) | Memory (GiB) |
 | --- | --- | --- |
 | Standard_NP10s | 10 | 168 |
 | Standard_NP20s | 20 | 336 |
@@ -45,11 +45,11 @@ vCPUs (Qty.) and Memory for each size
 
 Local (temp) storage info for each size
 
-| Size Name | Max Temp Storage Disks (Qty.) | Temp Disk Size (GiB) |
+| Size Name | Temp Storage Disks (Qty.) | Temp Disk Size (GiB) |
 | --- | --- | --- |
 | Standard_NP10s | 1 | 736 |
-| Standard_NP20s | 1 | 1474 |
-| Standard_NP40s | 1 | 2948 |
+| Standard_NP20s | 1 | 1,474 |
+| Standard_NP40s | 1 | 2,948 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
@@ -57,7 +57,7 @@ Local (temp) storage info for each size
 - [Share an Azure managed disk](../../../virtual-machines/disks-shared.md)
 
 #### Table definitions
-- <sup>1</sup>Temp disk speed often differs between RR (Random Read) and RW (Random Write) operations. RR operations are typically faster than RW operations. The RW speed is usually slower than the RR speed on series where only the RR speed value is listed.
+- Temp disk performance depends on many factors including block size, workload patterns of read/writes, queue depth (QD), and others. Temp disk performance specifications should be viewed as best case performance numbers, assuming 4k block sizes and QD=256 for IOPS, and 256k block sizes with QD=64 for throughput. Additionally, temp disk performance often differs between read and write operations. During steady state operations, write performance is expected to be lower than read performance.
 - Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
 - Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
 - To learn how to get the best storage performance for your VMs, see [Virtual machine and disk performance](../../../virtual-machines/disks-performance.md).
@@ -78,7 +78,7 @@ Remote (uncached) storage info for each size
 - [Share an Azure managed disk](../../../virtual-machines/disks-shared.md)
 
 #### Table definitions
-- <sup>1</sup>Some sizes support [bursting](../../disk-bursting.md) to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.
+- Some sizes support [bursting](../../disk-bursting.md) to temporarily increase disk performance. Burst speeds can be maintained for up to 30 minutes at a time.
 
 - Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
 - Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
@@ -90,11 +90,11 @@ Remote (uncached) storage info for each size
 
 Network interface info for each size
 
-| Size Name | Max NICs (Qty.) | Max Network Bandwidth (Mb/s) |
+| Size Name | Max NICs (Qty.) | Max Network Bandwidth (Mbps) |
 | --- | --- | --- |
-| Standard_NP10s | 1 | 7500 |
-| Standard_NP20s | 2 | 15000 |
-| Standard_NP40s | 4 | 30000 |
+| Standard_NP10s | 1 | 7,500 |
+| Standard_NP20s | 2 | 15,000 |
+| Standard_NP40s | 4 | 30,000 |
 
 #### Networking resources
 - [Virtual networks and virtual machines in Azure](/azure/virtual-network/network-overview)
@@ -291,7 +291,7 @@ NP-series VMs are retiring on May 31, 2027. To ensure continuity, migrate your w
 - **[NCads_H100_v5 VMs](../gpu-accelerated/ncadsh100v5-series.md)** – Ideal for Azure Applied AI training and batch inference workloads requiring the latest GPU generation (NVIDIA H100 GPUs).
 - **[NCasT4_v3 VMs](../gpu-accelerated/ncast4v3-series.md)** – Suitable for real-time AI inference, interactive graphics, video transcoding, and analytics workloads at lower cost (NVIDIA T4 GPUs).
 
-For detailed migration steps, see [Migrate your NP-series virtual machines by May 31, 2027](../retirement/np-series-retirement.md).
+For detailed migration steps, see [Migrate your NP-series virtual machines by May 31, 2027](../lifecycle/retirement/np-series-retirement.md).
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]
 

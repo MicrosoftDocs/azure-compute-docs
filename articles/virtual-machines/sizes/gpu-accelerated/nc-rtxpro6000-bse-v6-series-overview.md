@@ -57,10 +57,10 @@ For information on installing NVIDIA GPU drivers on N-series VMs (including NCv6
     | --- | --- |
     | Standard_NC128ds_xl_RTXPRO6000BSE_v6 | Standard_NC144ds_xl_RTXPRO6000BSE_v6 | 
     | Standard_NC256ds_xl_RTXPRO6000BSE_v6 | Standard_NC288ds_xl_RTXPRO6000BSE_v6 | 
-    | Standard_NC320ds_xl_RTXPRO6000BSE_v6 | Standard_NC288ds_xl_RTXPRO6000BSE_v6 | 
+    | Standard_NC320ds_xl_RTXPRO6000BSE_v6 | Standard_NC336ds_xl_RTXPRO6000BSE_v6 (ETA Q4 CY2026) | 
     | Standard_NC128lds_xl_RTXPRO6000BSE_v6 | Standard_NC144lds_xl_RTXPRO6000BSE_v6 | 
     | Standard_NC256lds_xl_RTXPRO6000BSE_v6 | Standard_NC288lds_xl_RTXPRO6000BSE_v6 | 
-    | Standard_NC320lds_xl_RTXPRO6000BSE_v6 | Standard_NC288lds_xl_RTXPRO6000BSE_v6 |
+    | Standard_NC320lds_xl_RTXPRO6000BSE_v6 | Standard_NC336lds_xl_RTXPRO6000BSE_v6 (ETA Q4 CY2026) |
 
 > [!NOTE]
 > Any new VM creations with the preview VM sizes (128, 256, and 320 vCPUs) will no longer work correctly and will not be covered under Azure Service Level Agreement (SLA). Only the new VM sizes above will deploy correctly and be covered by the Azure SLA.
@@ -77,7 +77,7 @@ Additional information on VM specifications and other GA VM sizes can be found [
 
 - **Is the NCv6-series supported on Azure Kubernetes Service (AKS) and Azure Batch?** <br> 
 
-    NCv6 is currently not supported on AKS or Azure Batch. 
+    NCv6 is supported on AKS and planned to be supported on Azure Batch in August 2026. 
 
 
 - **When is NCv6-series coming to additional regions?** <br>  

@@ -109,4 +109,4 @@ In this tutorial, you learned how to:
 Now that you've completed this tutorial, try the following:
 * Learn how to inspect and manage a Service Fabric cluster using [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md).
 * Learn how to [patch cluster nodes running on Windows](how-to-patch-cluster-nodes-windows.md).
-* Learn how to aggregate and collect events for [Windows clusters](service-fabric-diagnostics-event-aggregation-wad.md) and [setup Log Analytics](service-fabric-diagnostics-oms-setup.md) to monitor cluster events.
+* Learn how to aggregate and collect events for [Windows clusters](service-fabric-diagnostics-event-aggregation-wad.md) and [configure telemetry with Azure Monitor Agent and data collection rules](service-fabric-diagnostics-azure-monitor-agent-data-collection-rules.md) to monitor cluster events.

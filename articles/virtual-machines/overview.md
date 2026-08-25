@@ -38,8 +38,8 @@ There's always a multitude of [design considerations](/azure/architecture/refere
 
 > [!NOTE]
 >
-> Trusted Launch as default (TLaD) is available in preview for new [Generation 2](../virtual-machines/generation-2.md) Virtual machines (VMs). With TLaD, any new Generation 2 VMs created through any client tools defaults to [Trusted Launch](../virtual-machines/trusted-launch.md) with secure boot and vTPM enabled.
-> [Register for the TLaD preview](../virtual-machines/trusted-launch.md#preview-trusted-launch-as-default) to validate the default changes in your respective environment and prepare for the upcoming change.
+> Trusted Launch as default (TLaD) is generally available for new [Generation 2](../virtual-machines/generation-2.md) Virtual machines (VMs). With TLaD, any new Generation 2 VMs created through any client tools defaults to [Trusted Launch](../virtual-machines/trusted-launch.md) with secure boot and vTPM enabled.
+> [Register for the TLaD](../virtual-machines/trusted-launch.md#general-availability-trusted-launch-as-default) to implement the default changes in your respective environment(s).
 
 ## Parts of a VM and how they're billed
 
@@ -121,7 +121,7 @@ For more information, see [Using cloud-init on Azure Linux virtual machines](lin
 ## Storage
 * [Introduction to Microsoft Azure Storage](/azure/storage/common/storage-introduction)
 * [Add a disk to a Linux virtual machine using the azure-cli](linux/add-disk.md)
-* [How to attach a data disk to a Linux virtual machine in the Azure portal](linux/attach-disk-portal.yml)
+* [How to attach a data disk to a Linux virtual machine in the Azure portal](/azure/virtual-machines/linux/attach-disk-portal)
 
 ### Local temporary storage
 

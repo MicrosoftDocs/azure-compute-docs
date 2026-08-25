@@ -12,7 +12,7 @@ ms.date: 03/22/2026
 
 # Performance monitoring with the Windows Azure Diagnostics extension
 
-This document covers steps required to set up collection of performance counters via the Windows Azure Diagnostics (WAD) extension for Windows clusters. For Linux clusters, set up the [Log Analytics agent](service-fabric-diagnostics-oms-agent.md) to collect performance counters for your nodes. 
+This document covers steps required to set up collection of performance counters via the Windows Azure Diagnostics (WAD) extension for Windows clusters. For Linux clusters, configure [Azure Monitor Agent and data collection rules](service-fabric-diagnostics-azure-monitor-agent-data-collection-rules.md) to collect performance counters for your nodes.
 
  > [!NOTE]
 > The WAD extension should be deployed on your cluster for these steps to work for you. If it is not set up, head over to [Event aggregation and collection using Windows Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md).  

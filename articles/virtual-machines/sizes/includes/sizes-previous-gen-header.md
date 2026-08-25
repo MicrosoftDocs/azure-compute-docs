@@ -12,4 +12,4 @@ ms.custom: include file
 # Customer intent: As a cloud architect, I want to understand the implications of using previous generation virtual machine sizes, so that I can make informed decisions about upgrading to newer models for enhanced performance and security.
 ---
 > [!NOTE]
-> These virtual machine sizes are a [**previous generation series**](../previous-gen-sizes-list.md). While older VM sizes are supported until further notice, we recommended using newer generations for improved performance and security. Check out the sizes overview's [**list of VM size families by type**](../overview.md#list-of-vm-size-families-by-type) for a selection of newer sizes.
+> These virtual machine sizes are a [**previous generation series**](../lifecycle/previous-gen-sizes-list.md). While older VM sizes are supported until further notice, we recommended using newer generations for improved performance and security. Check out the sizes overview's [**list of VM size families by type**](../overview.md#list-of-vm-size-families-by-type) for a selection of newer sizes.

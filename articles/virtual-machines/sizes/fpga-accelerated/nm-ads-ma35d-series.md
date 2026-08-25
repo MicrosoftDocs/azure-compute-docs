@@ -14,11 +14,11 @@ ms.subservice: sizes
 
 The NMads MA35D-Series virtual machines are Azure's first SKU to offer specialized hardware (Xilinx MA35D "Supernova") accelerated VM optimized for batch and real-time video transcoding workloads. The VM series are powered by 4<sup>th</sup> generation AMD EPYC™ Genoa processors. It offers 1 ASIC video processing unit (VPU) with 8GB of memory in addition to 16 vCPUs, 32GB of RAM, 76GB of temporary storage, and 4Gbps of network bandwidth.
 
-Compared with existing general-purpose CPU or GPU based solutions, the NMads MA35D-Series VM SKU provides higher throughout and lower latency while maintaining a lower TCO for customers. The VM series presents a huge opportunity to save on infrastructure costs and improve performance and efficiency on video transcoding. Additionally, the VM provides access to modern codecs such as AV1 to further improve efficiency for video processing. It is the ideal choice for running your video transcoding workloads on the cloud. 
+Compared with existing general-purpose CPU or GPU based solutions, the NMads MA35D-Series VM SKU provides higher throughput and lower latency while maintaining a lower TCO for customers. The VM series presents a huge opportunity to save on infrastructure costs and improve performance and efficiency on video transcoding. Additionally, the VM provides access to modern codecs such as AV1 to further improve efficiency for video processing. It is the ideal choice for running your video transcoding workloads on the cloud. 
 
 ## Host specifications
 
-| Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
+| Part | Quantity <br><sup>Count Units</sup> | Specs <br><sup>SKU ID, Performance Units, etc.</sup>  |
 |---|---|---|
 | Processor      |  192 vCPUs     | AMD EPYC (Genoa) [x86-64] |
 | Memory         |  768 GiB        |    |
@@ -36,7 +36,7 @@ For features supported by this series, see the [Feature support](#feature-suppor
 
 vCPUs (Qty.) and Memory for each size 
 
-| **Size Name** | **vCPUs (Qty.)** | **Memory (GB)** |
+| **Size Name** | **vCPUs (Qty.)** | **Memory (GiB)** |
 |---|---|---|
 | **Standard_NM16ads_MA35D** | 16 | 32 |
 
@@ -47,7 +47,7 @@ vCPUs (Qty.) and Memory for each size
 
 Local (temp) storage info for each size 
 
-| **Size Name** | **OS Disk Size (GB)** | **Temp Disk Size (GB)** |
+| **Size Name** | **OS Disk Size (GiB)** | **Temp Disk Size (GiB)** |
 |---|---|---|
 | **Standard_NM16ads_MA35D** | 128 | 76 |
 
@@ -66,7 +66,7 @@ Network interface info for each size
 
 | **Size Name** | **Max NICs (Qty.)** | **Max Bandwidth (Mbps)** |
 |---|---|---|
-| **Standard_NM16ads_MA35D** | 1 | 4000 |
+| **Standard_NM16ads_MA35D** | 1 | 4,000 |
 
 ### Networking resources
 - [Virtual networks and virtual machines in Azure](/azure/virtual-network/network-overview) 
