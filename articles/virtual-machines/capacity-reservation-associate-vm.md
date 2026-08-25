@@ -658,7 +658,8 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 az capacity reservation show 
 -g myResourceGroup
 -c myCapacityReservationGroup 
--n myCapacityReservation 
+-n myCapacityReservation
+--instance-view 
 ```
 
 ### [PowerShell](#tab/powershell3)
@@ -667,7 +668,7 @@ az capacity reservation show
 $CapRes=
 Get-AzCapacityReservation
 -ResourceGroupName <"ResourceGroupName">
--ReservationGroupName] <"CapacityReservationGroupName">
+-ReservationGroupName <"CapacityReservationGroupName">
 -Name <"CapacityReservationName">
 -InstanceView
 

@@ -9,7 +9,7 @@ ms.date: 08/25/2026
 ms.author: mattmcinnes
 ---
 
-# 'HC' sub-family storage optimized VM size series
+# 'HC' subfamily high-performance compute VM size series
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 

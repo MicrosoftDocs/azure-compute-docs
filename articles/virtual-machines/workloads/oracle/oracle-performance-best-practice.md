@@ -35,7 +35,7 @@ The [D-series](/azure/virtual-machines/dv5-dsv5-series) is built for general pur
 
 This section provides storage best practices and guidelines to optimize performance for your Oracle workload on Azure Virtual Machines (VM). Consider your performance needs, costs, and workload patterns as you evaluate these recommendations. Let us take a quick look at the options: 
 
-- [Disk Types](/azure/virtual-machines/disks-types): [Premium SSD](/azure/virtual-machines/disks-types#premium-ssds), [Premium SSD v2](/azure/virtual-machines/disks-types#premium-ssd-v2) & [Ultra Disks](/azure/virtual-machines/disks-types#ultra-disks) are recommended disk types for Oracle workload. Refer to [disk type comparison](/azure/virtual-machines/disks-types#disk-type-comparison) to understand maximum disk size, maximum throughput, and maximum IOPS to choose right disk type for Azure VM to meet your Oracle workload performance. Generally, Premium SSD v2 is the best price per performance disk option that you could consider.  
+- [Disk Types](/azure/virtual-machines/disks-types): [Premium SSD](/azure/virtual-machines/disks-types#premium-ssds), [Premium SSD v2](/azure/virtual-machines/disks-types#premium-ssd-v2) & [Ultra Disks](/azure/virtual-machines/disks-types#ultra-disks) are recommended disk types for Oracle workload. Refer to [disk type comparison](/azure/virtual-machines/disks-types#compare-azure-managed-disk-types) to understand maximum disk size, maximum throughput, and maximum IOPS to choose right disk type for Azure VM to meet your Oracle workload performance. Generally, Premium SSD v2 is the best price per performance disk option that you could consider.
 
 - Premium SSD v2 offers higher performance than Premium SSDs while also generally being less costly. You can individually tweak the performance (capacity, throughput, and IOPS) of Premium SSD v2 disks at any time, allowing workloads to be cost efficient while meeting shifting performance needs. For example, a transaction-intensive database needs a large amount of IOPS at a small size, or a gaming application can require a large amount of IOPS but only during peak hours. Because you can individually tweak the performance, for most general-purpose workloads, Premium SSD v2 can provide the best price performance. 
 
@@ -66,7 +66,7 @@ Additionally, the following are some inputs can help you to derive further value
 
 [Azure NetApp Files](/azure/azure-netapp-files/azure-netapp-files-introduction) is an Azure native, first-party, enterprise-class, high-performance file storage service suitable for storing Oracle database files. It provides Volumes as a service for which you can create NetApp accounts, capacity pools, and volumes. You can also select service and performance levels and manage data protection. By using the same protocols and tools that you know and trust, and enterprise applications that depend on on-premises, you can build and maintain file shares that are fast, reliable, and scalable.  
 
-The following are key attributes of Azure NetApp files:  
+The following are key attributes of Azure NetApp Files:
 
 - Performance, cost optimization, and scale.  
 - Simplicity and availability.  
