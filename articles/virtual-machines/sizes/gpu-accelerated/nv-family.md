@@ -5,8 +5,9 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 09/17/2024
+ms.date: 08/25/2026
 ms.author: mattmcinnes
+ai-usage: ai-assisted
 # Customer intent: As a cloud architect, I want to assess the various NV series VM sizes, so that I can select the most suitable GPU-accelerated instance for my high-performance computing workloads.
 ---
 
@@ -34,6 +35,7 @@ ms.author: mattmcinnes
 
 > [!IMPORTANT]
 > NVv3-series VMs retire on September 30, 2026. To avoid service disruption, migrate to [NVads-A10 v5-series](/azure/virtual-machines/sizes/gpu-accelerated/nvadsa10v5-series) or [NVads-v710 v5-series](/azure/virtual-machines/sizes/gpu-accelerated/nvadsv710-v5-series) before this date. For full migration details, see the [NVv3-series retirement guide](/azure/virtual-machines/sizes/lifecycle/retirement/nvv3-series-retirement). For resizing steps, see [Change the size of a virtual machine](/azure/virtual-machines/resize-vm).
+
 
 [!INCLUDE [nvv3-series-summary](./includes/nvv3-series-summary.md)]
 
