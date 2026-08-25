@@ -7,7 +7,7 @@ ms.service: azure-virtual-machines
 ms.subservice: extensions
 ms.collection: windows
 ms.topic: how-to
-ms.date: 07/14/2026
+ms.date: 08/24/2026
 ms.author: mbaldwin
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
 ai-usage: ai-assisted
@@ -39,20 +39,22 @@ The Key Vault VM extension supports the following certificate content types:
 
 ## Features
 
-The Key Vault VM extension for Windows version 4.0:
+The Key Vault VM extension for Windows version 4.x:
 
-- Installs private keys into KeyGuard if running on Windows Server 2025.
+- Installs private keys into KeyGuard if running on Windows Server 2025 and KeyGuard is operational.
 - Installs the two newest versions of each certificate.
-- Performs certificate chain validation before installing any certificate that contains the TLS Server Authentication Extended Key Usage (EKU), including certificates that carry other EKUs alongside it (such as Client Authentication). Chain validation errors result in a provisioning failure for the extension. Certificates without the Server Authentication EKU aren't subject to this check.
+- Performs certificate chain validation before installing any certificate that contains the TLS Server Authentication Extended Key Usage (EKU), including certificates that carry other EKUs alongside it (such as Client Authentication). Chain validation errors result in a provisioning failure for the extension. Certificates without the Server Authentication EKU, and self-signed certificates (where the subject and issuer are identical), aren't subject to this check.
+- Chains all certificates on the machine that originate from the same Key Vault certificate object to the latest version of that certificate.
+- Supports an optional per-certificate authentication override, which allows individual observed certificates to authenticate to Key Vault with a different managed identity than the extension default. For more information, see [Extension schema](#extension-schema).
 
 ## Upgrading from 3.0
 
 If you're updating from 3.0, the following features are changed or removed:
 
-- `pollingIntervalInS` is now limited to between 5 and 60 minutes. By default, polling is performed once each hour.
+- `pollingIntervalInS` is now limited to between 5 and 60 minutes. By default, the extension polls once each hour.
 - `linkOnRenewal` is removed. Linking always occurs.
 - `keyExportable` is removed. Private keys are no longer exportable.
-- `requireInitialSync` is removed. The extension only reports success if all configured certificates are installed.
+- `requireInitialSync` is removed. The extension only reports success if it installs all configured certificates.
 - You can no longer configure a specific version of a certificate.
 - The extension now always stores private keys by using [Cryptography API: Next Generation (CNG)](/windows/win32/seccng/cng-portal) instead of CAPI.
 
@@ -98,9 +100,11 @@ The following JSON shows the schema for the Key Vault VM extension. Before you c
 
 - The extension doesn't require protected settings. All settings are public information.
 
-- Use the form `https://myVaultName.vault.azure.net/secrets/myCertName` for observed certificate URLs.
+- Observed certificate URLs must use the form `https://myVaultName.vault.azure.net/secrets/myCertName`.
 
-   This form is preferred because the `/secrets` path returns the full certificate, including the private key, but the `/certificates` path doesn't. For more information about certificates, see [Azure Key Vault keys, secrets and certificates overview](/azure/key-vault/general/about-keys-secrets-certificates).
+   This form is required because the `/secrets` path returns the full certificate, including the private key, but the `/certificates` path doesn't. For more information about certificates, see [Azure Key Vault keys, secrets and certificates overview](/azure/key-vault/general/about-keys-secrets-certificates). You can't specify a specific version of the certificate.
+
+- The URL host must be a recognized Azure Key Vault host.
 
 - The `authenticationSettings` property is **required** for VMs with any **user assigned identities**.
 
@@ -135,7 +139,8 @@ The following JSON shows the schema for the Key Vault VM extension. Before you c
                     "url": <Example: "https://myvault.vault.azure.net/secrets/mycertificate2">,
                     "certificateStoreName": <Example: "MY">,
                     "certificateStoreLocation": <Example: "CurrentUser">,
-                    "accounts": <Example: ["Local Service"]>
+                    "accounts": <Example: ["Local Service"]>,
+                    "authenticationOverride": <Optional. Overrides authenticationSettings for this certificate only, so it can authenticate with a different managed identity. Example: {"msiClientId": "11112222-bbbb-3333-cccc-4444dddd5555"}>
                 },
                 {
                     "url": <Example: "https://myvault.vault.azure.net/secrets/mycertificate3">,
@@ -168,6 +173,7 @@ The JSON schema includes the following properties.
 | `observedCertificates/certificateStoreName` | MY | string |
 | `observedCertificates/certificateStoreLocation`  | LocalMachine or CurrentUser (case sensitive) | string |
 | `observedCertificates/accounts` (optional) | ["Network Service", "Local Service"] | string array |
+| `observedCertificates/authenticationOverride` (optional) | {"msiClientId": "00001111-aaaa-2222-bbbb-3333cccc4444"} | object |
 | `msiEndpoint` | "http://169.254.169.254/metadata/identity/oauth2/token" | string |
 | `msiClientId` | 00001111-aaaa-2222-bbbb-3333cccc4444 | string |
 
@@ -398,7 +404,7 @@ Starting with Key Vault VM extension 4.0, the extension saves private keys for a
 
 Yes, the Azure Key Vault VM extension supports certificate auto-rebinding. The Key Vault VM extension supports S-channel binding on certificate renewal.
 
-For IIS, you can configure auto-rebind by enabling automatic rebinding of certificate renewals in IIS. The Azure Key Vault VM extension generates Certificate Lifecycle Notifications when a certificate with a matching SAN is installed. IIS uses this event to auto-rebind the certificate. For more information, see [Certificate Rebind in IIS](/iis/get-started/whats-new-in-iis-85/certificate-rebind-in-iis85).
+For IIS, you can configure auto-rebind by enabling automatic rebinding of certificate renewals in IIS. The Azure Key Vault VM extension generates Certificate Lifecycle Notifications when it installs a renewed certificate for the same Key Vault certificate object as an existing certificate. IIS uses this event to auto-rebind the certificate. For more information, see [Certificate Rebind in IIS](/iis/get-started/whats-new-in-iis-85/certificate-rebind-in-iis85).
 
 ### View extension status
 
@@ -438,7 +444,7 @@ The Key Vault VM extension for Windows installs certificates into the Windows ce
    - Installs intermediate CA certificates in the Intermediate Certificate Authorities store.
 1. Places the certificates in the specified certificate store (`certificateStoreName`) and location (`certificateStoreLocation`).
 1. Applies appropriate permissions to the private key based on the `accounts` specified in the configuration.
-1. Sets the `CERT_RENEWAL` property so certificate bindings in applications such as IIS automatically update when certificates are renewed.
+1. Sets the `CERT_RENEWAL` property so certificate bindings in applications such as IIS automatically update when certificates are renewed. A certificate is chained to the newest version that originates from the same Key Vault certificate object, identified by the certificate's Key Vault secret base URL. Certificates that correspond to different Key Vault certificate objects are never linked to each other.
 
 ### Default certificate stores
 
@@ -467,7 +473,7 @@ When certificates are renewed in Key Vault, the extension automatically:
 
 ### Managing certificate lifecycle
 
-For applications such as IIS that support Certificate Services Lifecycle Notifications, the Key Vault VM extension raises **Event 1001** in the Windows Event Log when it installs a certificate with a matching Subject Alternative Name (SAN). IIS subscribes to this event to auto-rebind the renewed certificate without interrupting service. Other applications and teams can also listen for Event 1001 to act on certificate renewals as needed. For more information, see [Certificate Services Lifecycle Notifications](/archive/technet-wiki/14250.certificate-services-lifecycle-notifications).
+For applications such as IIS that support Certificate Services Lifecycle Notifications, the Key Vault VM extension raises **Event 1001** in the Windows Event Log when it installs a renewed certificate for the same Key Vault certificate object as an existing certificate (linking the new certificate to its predecessor). IIS subscribes to this event to auto-rebind the renewed certificate without interrupting service. Other applications and teams can also listen for Event 1001 to act on certificate renewals as needed. For more information, see [Certificate Services Lifecycle Notifications](/archive/technet-wiki/14250.certificate-services-lifecycle-notifications).
 
 ### Get support
 
