@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 03/22/2026
+ms.date: 08/25/2026
 # Customer intent: "As a developer using Visual Studio, I want to configure secure connections to an Azure Service Fabric cluster, so that I can deploy applications securely and ensure proper access control during the publishing process."
 ---
 
@@ -14,7 +14,7 @@ ms.date: 03/22/2026
 Learn how to use Visual Studio to securely access an Azure Service Fabric cluster with access control policies configured.
 
 ## Cluster connection types
-Two types of connections are supported by the Azure Service Fabric cluster: **non-secure** connections and **x509 certificate-based** secure connections. (For Service Fabric clusters hosted on-premises, **Windows** and **dSTS** authentications are also supported.) You have to configure the cluster connection type when the cluster is being created. Once it's created, the connection type can’t be changed.
+Two types of connections are supported by the Azure Service Fabric cluster: **non-secure** connections and **x509 certificate-based** secure connections. (For Service Fabric clusters hosted on-premises, **Windows** authentication is also supported.) You have to configure the cluster connection type when the cluster is being created. Once it's created, the connection type can’t be changed.
 
 The Visual Studio Service Fabric tools support all authentication types for connecting to a cluster for publishing. See [Setting up a Service Fabric cluster from the Azure portal](service-fabric-cluster-creation-via-portal.md) for instructions on how to set up a secure Service Fabric cluster.
 
