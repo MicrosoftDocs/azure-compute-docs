@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 06/29/2026
+ms.date: 08/25/2026
 ms.author: mattmcinnes
 ai-usage: ai-assisted
 # Customer intent: As a cloud architect, I want to assess the various NV series VM sizes, so that I can select the most suitable GPU-accelerated instance for my high-performance computing workloads.
