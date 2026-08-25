@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 06/29/2026
+ms.date: 08/25/2026
 ms.author: mattmcinnes
 ms.reviewer: iamwilliew
 ai-usage: ai-assisted
