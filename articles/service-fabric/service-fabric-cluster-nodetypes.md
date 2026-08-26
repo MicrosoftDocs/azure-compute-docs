@@ -38,6 +38,9 @@ If you deployed your cluster in the Azure portal or used the sample Azure Resour
 
 Service Fabric Virtual Machine Extension is used to bootstrap Service Fabric to Azure Virtual Machines, and configure the Node Security.
 
+> [!IMPORTANT]
+> Set `enableAutomaticUpgrade` to `true` on the Service Fabric extension. The current upgrade mechanism for the extension is being phased out over the next six months in favor of [automatic extension upgrades](../virtual-machines/automatic-extension-upgrade.md). Without this property, your extension stops receiving upgrades.
+
 The following is a snippet of Service Fabric **Windows** Virtual Machine extension:
 
 ```json
