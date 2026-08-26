@@ -84,7 +84,7 @@ AIB does not deploy a public IP for direct connectivity, and the AIB service com
 
 ### Access storage accounts protected by firewalls
 
-If your image template references artifacts (scripts or files) stored in Azure Storage accounts protected by network firewalls, you must configure your networking to allow AIB to access those storage accounts. This applies to artifacts referenced via the `scriptUri` or `fileUri` properties in your image template customizers.
+If your image template references artifacts (scripts or files) stored in Azure Storage accounts protected by network firewalls, you must configure your networking to allow AIB to access those storage accounts. This requirement applies to artifacts referenced through the `scriptUri` or `fileUri` properties in your image template customizers.
 
 To enable access, use the [Bring your own Build VM subnet and ACI subnet](#bring-your-own-build-vm-subnet-and-bring-your-own-aci-subnet) topology and configure the storage account firewall to allow traffic from the ACI subnet.
 
