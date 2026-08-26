@@ -102,7 +102,7 @@ Follow these steps to configure your storage account firewall to work with AIB:
 > IP-based allow-listing of AIB service IPs on storage account firewalls isn't a supported configuration. Use subnet-based allow-listing as described in this section to ensure reliable access to firewall-protected storage accounts.
 
 > [!NOTE]
-> The ACI subnet and the storage account must be reachable from each other over the network. If they are in different virtual networks, ensure that the virtual networks are peered or otherwise connected.
+> The ACI subnet and the storage account must be reachable from each other over the network. If they're in different virtual networks, ensure that the virtual networks are peered or otherwise connected.
 
 ### Supported subnet combinations
 You can configure both subnets (`subnetId` and `containerInstanceSubnetId`) or only the build VM subnet (`subnetId`). A configuration that specifies only the ACI subnet (`containerInstanceSubnetId`) is not supported.
