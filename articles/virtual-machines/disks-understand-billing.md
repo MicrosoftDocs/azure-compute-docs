@@ -102,7 +102,7 @@ Premium SSDs offer [two bursting models](disk-bursting.md#disk-level-bursting), 
 
 ### Premium SSD transactions
 
-For Premium SSD managed disks, each I/O operation less than or equal to 256 kB of throughput is considered a single I/O operation. I/O operations larger than 256 kB of throughput are considered multiple I/Os of size 256 kB. Unless you enable on-demand bursting, there are no transaction costs for Premium SSDs.
+For Premium SSD managed disks, each I/O operation less than or equal to 256 KiB of throughput is considered a single I/O operation. I/O operations larger than 256 KiB of throughput are considered multiple I/Os of size 256 KiB. Unless you enable on-demand bursting, there are no transaction costs for Premium SSDs.
 
 ### Redundancy options
 
@@ -136,7 +136,7 @@ The initial billing of Standard SSDs is determined by the performance tier. The 
 
 ### Standard SSD transactions
 
-For Standard SSDs, each I/O operation less than or equal to 256 kB of throughput is considered a single I/O operation. I/O operations larger than 256 kB of throughput are considered multiple I/Os of size 256 kB. These transactions incur a billable cost but, there's an hourly limit on the number of transactions that can incur a billable cost. If that hourly limit is reached, extra transactions during that hour no longer incur a cost. For details, see the [blog post](https://aka.ms/billedcapsblog).
+For Standard SSDs, each I/O operation less than or equal to 256 KiB of throughput is considered a single I/O operation. I/O operations larger than 256 KiB of throughput are considered multiple I/Os of size 256 KiB. These transactions incur a billable cost but, there's an hourly limit on the number of transactions that can incur a billable cost. If that hourly limit is reached, extra transactions during that hour no longer incur a cost. For details, see the [blog post](https://aka.ms/billedcapsblog).
 
 ### Redundancy options
 
