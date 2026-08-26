@@ -17,6 +17,8 @@ Virtual Machines Scale Sets provide a logical grouping of platform-managed virtu
 
 Scale set orchestration modes allow you to have greater control over how virtual machine instances are managed by the scale set.
 
+
+
 > [!IMPORTANT]
 > The orchestration mode is defined when you create the scale set and cannot be changed or updated later.
 
