@@ -96,7 +96,7 @@ Follow these steps to configure your storage account firewall to work with AIB:
 
 1. **Delegate the ACI subnet to Azure Container Instances.** Delegate the ACI subnet to `Microsoft.ContainerInstance/containerGroups`. For more information, see [Delegate a subnet to Azure Container Instances](../../container-instances/container-instances-vnet.md).
 
-1. **Allow-list the ACI subnet in the storage account firewall.** In the storage account's networking settings, add the ACI subnet as an allowed virtual network. This permits AIB's container instance to access the storage account through the firewall.
+1. **Allow-list the ACI subnet in the storage account firewall.** In the storage account's networking settings, add the ACI subnet as an allowed virtual network. This action permits AIB's container instance to access the storage account through the firewall.
 
 > [!IMPORTANT]
 > IP-based allow-listing of AIB service IPs on storage account firewalls isn't a supported configuration. Use subnet-based allow-listing as described in this section to ensure reliable access to firewall-protected storage accounts.
