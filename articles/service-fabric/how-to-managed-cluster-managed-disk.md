@@ -36,7 +36,7 @@ Azure Service Fabric managed clusters support the following values for the `data
 | `Standard_LRS` | Standard HDD | Locally redundant storage (LRS) |
 | `UltraSSD_LRS` | Ultra Disk | Locally redundant storage (LRS) |
 
-For a feature and performance comparison, see [Compare Azure managed disk types](https://learn.microsoft.com/azure/virtual-machines/disks-types?toc=https%3A%2F%2Flearn.microsoft.com%2Fen-us%2Fazure%2Fvirtual-machine-scale-sets%2Ftoc.json&bc=https%3A%2F%2Flearn.microsoft.com%2Fen-us%2Fazure%2Fbreadcrumb%2Fazure-compute%2Ftoc.json#compare-azure-managed-disk-types).
+For a feature and performance comparison, see [Compare Azure managed disk types](../virtual-machines/disks-types.md#compare-azure-managed-disk-types).
 
 >[!NOTE]
 > - `PremiumV2_LRS` is supported only on zonal (cross-AZ) node types. Enable zonal resiliency or specify one or more availability zones for the node type.
