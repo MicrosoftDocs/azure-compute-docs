@@ -1006,7 +1006,7 @@ Specifies whether to use old way of tracing PLB decisions regarding scheduling p
 
 | **Parameter** | **Allowed Values** | **Upgrade Policy** | **Guidance or Short Description** |
 | --- | --- | --- | --- |
-|Providers |string, default is "DSTS" |Static|Comma separated list of token validation providers to enable (valid providers are: DSTS; Microsoft Entra ID). Currently only a single provider can be enabled at any time. |
+|Providers |string, default is "Microsoft Entra ID" |Static|Comma separated list of token validation providers to enable. Currently only a single provider can be enabled at any time. |
 
 ## Trace/Etw
 
