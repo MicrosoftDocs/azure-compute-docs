@@ -202,7 +202,7 @@ Azure Standard HDDs are suitable for latency-tolerant workloads that use large, 
 
 ### Standard HDD transactions
 
-For Standard HDD Managed Disks, each I/O operation less than or equal to 16 KiB of throughput is considered a single billable transaction. I/O operations larger than 16 KiB of throughput are considered multiple billable transactions of size 16 KiB for billing purposes. Cost is incurred for every 10,000 billable transactions but, there’s an hourly limit on the number of billable transactions that can incur a billable cost. If your individual disk’s billable transactions reach that hourly limit, any additional billable transactions during that hour don’t incur a cost. For details, see the [blog post](https://aka.ms/hddtossd).
+For Standard HDD managed disks, each I/O operation less than or equal to 16 KiB of throughput is considered a single billable transaction. I/O operations larger than 16 KiB of throughput are considered multiple billable transactions of size 16 KiB for billing purposes. Cost is incurred for every 10,000 billable transactions but, there’s an hourly limit on the number of billable transactions that can incur a billable cost. If your individual disk’s billable transactions reach that hourly limit, any additional billable transactions during that hour don’t incur a cost. For details, see the [blog post](https://aka.ms/hddtossd).
 
 ## Azure managed disk billing
 
