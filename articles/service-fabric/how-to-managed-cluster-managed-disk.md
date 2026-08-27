@@ -7,7 +7,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-arm-template
 services: service-fabric
-ms.date: 03/22/2026
+ms.date: 08/27/2026
 # Customer intent: As a cloud engineer, I want to select and configure the appropriate managed disk types for my Service Fabric managed cluster nodes using an ARM template, so that I can optimize storage performance and reliability for my applications.
 ---
 
@@ -24,30 +24,28 @@ Azure Service Fabric managed clusters use managed disks for all storage needs, i
 
 ## Managed disk types
 
-Azure Service Fabric manged clusters support the following managed disk types:
-* Standard hard disk drive (HDD)
-    * Standard HDD locally redundant storage. Best for backup, noncritical, and infrequent access. 
-* Standard solid-state drive (SSD) *Default*
-    * Standard SSD locally redundant storage. Best for web servers, lightly used enterprise applications, and dev/test.
-* Premium SSD *compatible with specific virtual machines (VM) sizes*. For more information, see [Premium SSD](../virtual-machines/disks-types.md#premium-ssds).
-    * Premium SSD locally redundant storage. Best for production and performance sensitive workloads.
+Azure Service Fabric managed clusters support the following values for the `dataDiskType` property:
+
+| Storage account type | Managed disk type | Redundancy |
+|---|---|---|
+| `PremiumV2_LRS` | Premium SSD v2 | Locally redundant storage (LRS) |
+| `Premium_LRS` | Premium SSD | Locally redundant storage (LRS) |
+| `Premium_ZRS` | Premium SSD | Zone-redundant storage (ZRS) |
+| `StandardSSD_LRS` (default) | Standard SSD | Locally redundant storage (LRS) |
+| `StandardSSD_ZRS` | Standard SSD | Zone-redundant storage (ZRS) |
+| `Standard_LRS` | Standard HDD | Locally redundant storage (LRS) |
+| `UltraSSD_LRS` | Ultra Disk | Locally redundant storage (LRS) |
+
+For a feature and performance comparison, see [Compare Azure managed disk types](https://learn.microsoft.com/azure/virtual-machines/disks-types?toc=https%3A%2F%2Flearn.microsoft.com%2Fen-us%2Fazure%2Fvirtual-machine-scale-sets%2Ftoc.json&bc=https%3A%2F%2Flearn.microsoft.com%2Fen-us%2Fazure%2Fbreadcrumb%2Fazure-compute%2Ftoc.json#compare-azure-managed-disk-types).
 
 >[!NOTE]
-> Any temp disk associated with VM Size will *not* be used for storing any Service Fabric or application related data by default. [Stateless node types](how-to-managed-cluster-stateless-node-type.md) do support temp disks if required.
+> - `PremiumV2_LRS` is supported only on zonal (cross-AZ) node types. Enable zonal resiliency or specify one or more availability zones for the node type.
+> - Managed disk type availability and supported VM sizes vary by region. Confirm that the selected disk type is available for the cluster region and VM size.
+> - Any temporary disk associated with the VM size isn't used for storing Service Fabric or application data by default. [Stateless node types](how-to-managed-cluster-stateless-node-type.md) support temporary disks if required.
 
 ## Specifying a Service Fabric managed cluster disk type
 
-To specify a Service Fabric managed cluster disk type, you must include the following value in the managed cluster resource definition.  
-
-* The value **dataDiskType** property, which specifies what managed disk type to use for your nodes.
-
-Possible values are:
-* "Standard_LRS"
-* "StandardSSD_LRS"
-* "Premium_LRS"
-
->[!NOTE]
-> Not all managed disk types are available for all vm sizes, for more info see [What disk types are available in Azure?](../virtual-machines/disks-types.md)
+To specify a Service Fabric managed cluster disk type, set the `dataDiskType` property in the managed cluster resource definition to one of the [supported storage account types](#managed-disk-types).
 
 ```json
 {
