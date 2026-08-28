@@ -130,7 +130,6 @@ The following table compares the Flexible orchestration mode, Uniform orchestrat
 | Proximity Placement Groups   | Yes, when using one Availability Zone or none. Cannot be changed after deployment. Read [Proximity Placement Groups documentation](../virtual-machine-scale-sets/proximity-placement-groups.md) | Yes, when using one Availability Zone or none. Can be changed after deployment stopping all instances. Read [Proximity Placement Groups documentation](../virtual-machine-scale-sets/proximity-placement-groups.md) | Yes |
 | Azure Dedicated Hosts   | Yes  | Yes  | Yes |
 | Managed Identity  | [User Assigned Identity](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vmss#user-assigned-managed-identity) only<sup>1</sup>  | System Assigned or User Assigned  | N/A (can specify Managed Identity on individual instances) |
-| Microsoft Entra VM sign-in supported | No | Yes |
 | Add/remove existing VM to the group  | Yes  | No  | No |
 | Service Fabric  | No  | Yes  | No |
 | Azure Kubernetes Service (AKS) / AKE  | No  | Yes  | No |
@@ -226,15 +225,15 @@ Register and get started with [Flexible orchestration mode](..\virtual-machines\
   
 - **Can I move a Microsoft Entra-enabled virtual machine into a Flexible Orchestration Virtual Machine Scale Set?**
 
-  Microsoft recommends validating Microsoft Entra sign-in functionality before moving an existing Microsoft Entra-enabled virtual machine into a Flexible Orchestration Virtual Machine Scale Set (VMSS).
-
-  During validation testing, a standalone Azure virtual machine configured for Microsoft Entra sign-in worked successfully prior to being added to a Flexible Orchestration VMSS. After the virtual machine was added to the Flexible Orchestration VMSS, Microsoft Entra sign-in failed and displayed the following message:
-
-> "Your account is configured to prevent you from using this device. For more info, contact your system administrator."
-
-  After removing the virtual machine from the Flexible Orchestration VMSS, Microsoft Entra sign-in functionality was restored.
-
-  Microsoft Entra sign-in for Azure virtual machines requires a System-Assigned Managed Identity on the virtual machine. Flexible Orchestration VMSS supports User-Assigned Managed Identities at the scale set level. Customers using Microsoft Entra sign-in should validate authentication functionality and managed identity requirements before migrating existing virtual machines into a Flexible Orchestration VMSS. 
+    Yes. You can [attach](virtual-machine-scale-sets-attach-detach-vm.md) an existing Microsoft Entra-enabled virtual machine to a Virtual Machine Scale Set that uses Flexible orchestration mode.
+ 
+ 
+    Attaching the VM doesn't remove its Microsoft Entra registration, Microsoft Entra sign-in extension, managed identities, network configuration, or original VM resource ID.
+ 
+ > [!IMPORTANT]
+ > Before you attach an existing Microsoft Entra-enabled Windows VM to a Flexible scale set, assign the **Virtual Machine User Login** or **Virtual Machine Administrator Login** role at the target scale set scope. A role assignment scoped only to the standalone VM might not authorize Microsoft Entra sign-in after attachment.
+ >
+ > This additional scale set-scoped role assignment isn't required for Linux VMs that retain a valid VM-scoped login role.
 
 - **How does availability with Flexible orchestration compare to Availability Sets or Uniform orchestration?**
 
