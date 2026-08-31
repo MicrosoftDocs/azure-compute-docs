@@ -1834,6 +1834,14 @@
       - name: Windows
         displayName: Download a VHD
         href: ./windows/download-vhd.md
+  - name: Resiliency
+    items:
+    - name: Improve workload availability with per-disk resiliency
+      href: disks-per-disk-resiliency.md
+    - name: Configure per-disk resiliency
+      href: disks-per-disk-resiliency-configure.md
+    - name: Troubleshoot per-disk resiliency
+      href: disks-per-disk-resiliency-troubleshoot.md
   - name: Migration and conversion
     items:
     - name: Change disk types
