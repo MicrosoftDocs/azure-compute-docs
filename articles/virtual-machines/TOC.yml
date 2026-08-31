@@ -2388,6 +2388,9 @@
     href: vm-usage.md
   - name: Tag a VM
     href: /azure/azure-resource-manager/management/tag-resources
+  - name: Check whether a VM is hosted in Azure public cloud
+    displayName: SMBIOS, DMI, chassis asset tag, offline detection
+    href: identify-azure-vm-from-guest.md
   - name: Monitor metadata
     displayName: instance metadata service IMDS
     href: instance-metadata-service.md
