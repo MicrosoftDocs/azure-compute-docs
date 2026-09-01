@@ -102,7 +102,7 @@ In select regions, the disk detach latency has been reduced, so you see an impro
 
 ## Detach a data disk using the portal
 
-1. In the left menu, select **Virtual Machines**.
+1. In the Azure portal, search for and select **Virtual machines**.
 1. In the virtual machine blade, select **Disks**.
 1. In the **Disks** blade, to the far right of the data disk that you would like to detach, select the detach button, to detach the disk.
 1. After the disk has been removed, select **Save** on the top of the blade.
