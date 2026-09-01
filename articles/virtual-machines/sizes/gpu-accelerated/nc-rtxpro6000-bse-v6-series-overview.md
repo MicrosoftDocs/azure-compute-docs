@@ -47,6 +47,22 @@ For information on installing NVIDIA GPU drivers on N-series VMs (including NCv6
 | Red Hat Enterprise Linux (RHEL) | •	RHEL 9.7, 9.6, 9.4 <br> •	RHEL 8.10| 
 | SUSE Linux Enterprise Server |• SUSE Linux Enterprise Server 15 SP7 | 
 
+## HPC Image
+If you would like to create an NCv6-series VM using an [HPC image](/azure/virtual-machines/azure-hpc-vm-images), please use the following commands and replace the vmname, username, resourcegroup, and VM size inputs as necessary: 
+   ```
+vmname="myVM"
+username="azureuser"
+resourcegroup="myresourcegroup"
+az vm create \
+    --resource-group $resourcegroup \
+    --name $vmname \
+    --image azure-hpc:ubuntu-hpc-test:2404-rtx:latest \
+    --size Standard_NC144lds_xl_RTXPRO6000BSE_v6 \
+    --public-ip-sku Standard \
+    --admin-username $username \
+    --generate-ssh-keys
+   ```
+
 
 ## FAQs 
 - **I am an NCv6 preview customer. How can I manage the transition from preview to general availability (GA)?**
