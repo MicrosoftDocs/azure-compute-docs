@@ -52,7 +52,7 @@ In select regions, the disk detach latency has been reduced, so you'll see an im
 
 You can *hot* remove a data disk, but make sure nothing is actively using the disk before detaching it from the VM.
 
-1. In the left menu, select **Virtual Machines**.
+1. In the Azure portal, search for and select **Virtual machines**.
 
 1. Select the virtual machine that has the data disk you want to detach.
 
