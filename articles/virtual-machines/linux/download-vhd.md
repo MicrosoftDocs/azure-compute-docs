@@ -26,7 +26,7 @@ You can't download a VHD from Azure if the VHD is attached to a running VM. If y
 To stop the VM:
 
 1.	Sign in to the [Azure portal](https://portal.azure.com/).
-1.	On the left menu, select **Virtual Machines**.
+1.	Search for and select **Virtual machines**.
 1.	Select the VM from the list.
 1.	On the page for the VM, select **Stop**.
 
