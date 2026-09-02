@@ -22,7 +22,7 @@ The following table summarizes the support matrix for VM restore points.
 --- | ---
 VMs using managed disks | Yes
 VMs using unmanaged disks | No
-VM sizes | Crash consistency is supported for VM SKUs that support Premium storage. Crash-consistent restore points created for Intel V6+ (Dsv6-series, Edsv6-series, Esv6-series, etc.) and AMD V7+ (Dasv7-series, Dadsv7-series, Easv7-series, Faldsv7-series, etc.) Virtual Machines (VMs) with **more than one data disk might not be consistent across disks**. Application consistency is supported for all VM SKUs.
+VM sizes | Crash consistency is supported for VM SKUs that support Premium storage. 
 VMs using Ultra Disks | Yes. Supported for application consistency. Not supported for crash consistency. Exclude these disks and create a VM restore point when using crash consistency.
 VMs using Premium SSD v2 disks | Yes. Supported for application consistency. Not supported for crash consistency. Exclude these disks and create a VM restore point when using crash consistency.
 VMs using Ephemeral OS Disks | No. Exclude these disks and create a VM restore point.
@@ -32,7 +32,7 @@ VMs with trusted launch OS disk | Yes
 Data disks restored from Trusted launch enabled OS Disk | No
 Confidential VMs | Supported for application consistency only with size [v6-series](/azure/confidential-computing/virtual-machine-options) in UAE North and Korea Central (**preview**)<br>[v5-series](/azure/confidential-computing/virtual-machine-options) isn't supported.<br>Not supported for crash consistency.
 Generation 2 VMs (UEFI boot) | Yes
-VMs with NVMe disks (Storage optimized - Lsv2-series) | Yes for Application consistent. **Crash-consistent** restore points created for Intel V6+ (Dsv6-series, Edsv6-series, Esv6-series, etc.) and AMD V7+ (Dasv7-series, Dadsv7-series, Easv7-series, Faldsv7-series, etc.) Virtual Machines (VMs) with **more than one data disk might not be consistent across disks.** 
+VMs with NVMe disks (Storage optimized - Lsv2-series) | Yes for Application consistent. **Crash consistency** is no longer supported for NVME storage interfaces. 
 VM Architecture - x64| Application and crash consistent supported.
 VM Architecture - ARM64| Application supported for Linux images only.
 VMs in Proximity placement groups | Yes
@@ -58,7 +58,7 @@ VMs with double encryption at rest | Yes. The encryption of source disk won't be
 VMs with Host based encryption enabled with PMK/CMK/Double encryption | Yes. The encryption of source disk won't be enabled on the restore point.
 VMs with ADE (Azure Disk Encryption) | Yes. The encryption of source disk won't be enabled on the restore point.
 VMs using Accelerated Networking | Yes
-Azure [Boost](/azure/azure-boost/overview) compatible Virtual machine sizes | Yes for Application consistent. **Crash-consistent** restore points created for Intel V6+ (Dsv6-series, Edsv6-series, Esv6-series, etc.) and AMD V7+ (Dasv7-series, Dadsv7-series, Easv7-series, Faldsv7-series, etc.) Virtual Machines (VMs) with **more than one data disk may not be consistent across disks.** 
+Azure [Boost](/azure/azure-boost/overview) compatible Virtual machine sizes | Yes for Application consistent. **Crash consistency** is no longer supported for NVME storage interfaces.
 Minimum Frequency at which App consistent restore point can be taken | 3 hours
 Minimum Frequency at which crash consistent restore points can be taken | 1 hour
 API version for Application consistent restore point | 2021-03-01 or later

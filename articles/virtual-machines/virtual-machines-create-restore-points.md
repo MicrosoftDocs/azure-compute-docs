@@ -39,11 +39,8 @@ Once the disk restore points are created, Azure automatically initiates a backgr
 | **Application-consistent** | Uses Volume Shadow Copy Service (VSS) writers (Windows) or pre/post scripts (Linux) to flush in-flight application data before the snapshot. | Default when `consistencyMode` is omitted. |
 | **Crash-consistent** | Captures a write-order-consistent snapshot of all disks, equivalent to Virtual Machine state after a power outage or crash. | Set `consistencyMode` to `crashConsistent` in the creation request. |
 
-> **Note:** Crash consistency cannot be guaranteed for:
-> - Disks with read/write host caching enabled (writes during snapshot may not be acknowledged by Azure Storage).
-> - Intel V6+ (Dsv6, Edsv6, Esv6 series, etc.) and AMD V7+ (Dasv7, Dadsv7, Easv7, Faldsv7 series, etc.) Virtual Machines with more than one data disk. These SKUs use Azure Boost, which offloads storage to hardware and cannot guarantee simultaneous snapshots across disks.
->
-> For these configurations, use application-consistent mode.
+> [!NOTE] 
+> **Crash consistency is no longer supported for NVME storage interfaces**. Use application-consistent restore points. 
 
 ### Instant Access (Preview)
 
