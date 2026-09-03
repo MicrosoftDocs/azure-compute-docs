@@ -150,9 +150,9 @@ If you have a zonal disk, you can't directly change its type. You must take a sn
 
 #### Step 1: Create your snapshot
 
-The easiest and cleanest way to create a snapshot is to take one while the VM is offline. See [Snapshots](../virtual-machines/backup-and-disaster-recovery-for-azure-iaas-disks.md#snapshots). If you choose this approach, some downtime should be expected. To create a snapshot of your VM using the Azure portal, PowerShell, or Azure CLI, see [Create a snapshot of a virtual hard disk](../virtual-machines/snapshot-copy-managed-disk.md)
+The easiest and cleanest way to create a snapshot is to take one while the VM is offline. See [Snapshots](../virtual-machines/backup-and-disaster-recovery-for-azure-iaas-disks.md#azure-managed-disk-snapshots). If you choose this approach, expect some downtime. To create a snapshot of your VM by using the Azure portal, PowerShell, or Azure CLI, see [Create a snapshot of a virtual hard disk](../virtual-machines/snapshot-copy-managed-disk.md).
 
-If you're taking a snapshot of a disk that's attached to a running VM, read the guidance in [Snapshots](backup-and-disaster-recovery-for-azure-iaas-disks.md#snapshots) before continuing.
+If you're taking a snapshot of a disk that's attached to a running VM, read the guidance in [Snapshots](backup-and-disaster-recovery-for-azure-iaas-disks.md#azure-managed-disk-snapshots) before continuing.
 
 >[!NOTE]
 > The source managed disks remain intact with their current configurations and you'll continue to be billed for them. To avoid this, you must manually delete the disks once you've finished your migration and confirmed the new disks are working. For more information, see [Find and delete unattached Azure managed and unmanaged disks](windows/find-unattached-disks.md).

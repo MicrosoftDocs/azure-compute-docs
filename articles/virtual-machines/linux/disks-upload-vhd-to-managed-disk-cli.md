@@ -4,10 +4,11 @@ description: Learn how to upload a VHD to an Azure managed disk and copy a manag
 services: "virtual-machines,storage"
 author: roygara
 ms.author: rogarana
-ms.date: 02/09/2026
+ms.date: 09/02/2026
 ms.topic: how-to
 ms.service: azure-disk-storage
 ms.custom: devx-track-azurecli, linux-related-content
+ai-usage: ai-assisted
 # Customer intent: As a cloud administrator, I want to upload a VHD to an Azure managed disk and copy disks across regions using the CLI, so that I can ensure efficient data management and backup for my virtual machines.
 ---
 
@@ -21,7 +22,7 @@ If you're providing a backup solution for IaaS VMs in Azure, you should use dire
 
 If you're using [Microsoft Entra ID](/azure/active-directory/fundamentals/active-directory-whatis) to control resource access, you can use it to restrict uploading of Azure managed disks. See [Secure downloads and uploads of Azure managed disks](../disks-secure-upload-download.md) for details.
 
-## Get started
+## Prepare to upload or copy a managed disk
 
 If you'd prefer to upload disks through a GUI, you can do so using Azure Storage Explorer. For details refer to: [Use Azure Storage Explorer to manage Azure managed disks](../disks-use-storage-explorer-managed-disks.md)
 
@@ -36,7 +37,7 @@ To upload your VHD to Azure, you need to create an empty managed disk that is co
 
 This kind of managed disk has two unique states:
 
-- ReadToUpload, which means the disk is ready to receive an upload but, no [secure access signature (SAS)](/azure/storage/common/storage-sas-overview) has been generated.
+- ReadyToUpload, which means the disk is ready to receive an upload but, no [shared access signature (SAS)](/azure/storage/common/storage-sas-overview) has been generated.
 - ActiveUpload, which means that the disk is ready to receive an upload and the SAS has been generated.
 
 > [!NOTE]
@@ -44,20 +45,20 @@ This kind of managed disk has two unique states:
 
 ## Create an empty managed disk
 
-Before you can create an empty Standard HDD for uploading, you need the file size of the VHD you want to upload, in bytes. To get that, you can use either `wc -c <yourFileName>.vhd` or `ls -al <yourFileName>.vhd`. This value is used when specifying the **--upload-size-bytes** parameter.
+Before you can create an empty Standard HDD for uploading, you need the file size of the VHD you want to upload, in bytes. To get that value, use either `wc -c <yourFileName>.vhd` or `ls -al <yourFileName>.vhd`. Use this value when specifying the `--upload-size-bytes` parameter.
 
-Create an empty Standard HDD for uploading by specifying both the **-–for-upload** parameter and the **--upload-size-bytes** parameter in a [disk create](/cli/azure/disk#az-disk-create) cmdlet:
+Create an empty Standard HDD for uploading by specifying both the `--for-upload` parameter and the `--upload-size-bytes` parameter in the [az disk create](/cli/azure/disk#az-disk-create) command:
 
 Replace `<yourdiskname>`, `<yourresourcegroupname>`, `<yourregion>` with values of your choosing. The `--upload-size-bytes` parameter contains an example value of `34359738880`, replace it with a value appropriate for you.
 
 > [!IMPORTANT]
 > If you're creating an OS disk, add `--hyper-v-generation <yourGeneration>` to `az disk create`.
 > 
-> If you're using Microsoft Entra ID to [secure disk uploads](../disks-secure-upload-download.md), add `-dataAccessAuthmode 'AzureActiveDirectory'`.
+> If you're using Microsoft Entra ID to [secure disk uploads](../disks-secure-upload-download.md), add `--data-access-auth-mode AzureActiveDirectory`.
 >
 > When uploading to an Ultra Disk or Premium SSD v2 you need to select the correct sector size of the target disk. If you're using a VHDX file with a 4k logical sector size, the target disk must be set to 4k. If you're using a VHD file with a 512 logical sector size, the target disk must be set to 512.
 >
-> VHDX files with logical sector size of 512k aren't supported.
+> VHDX files with a logical sector size of 512 aren't supported.
 
 ```azurecli
 ##For Ultra Disk or Premium SSD v2, add --logical-sector-size and specify either 512 or 4096, depending on if you're using a VHD or VHDX
@@ -67,9 +68,9 @@ az disk create -n <yourdiskname> -g <yourresourcegroupname> -l <yourregion> --os
 
 If you would like to upload a different disk type, replace **standard_lrs** with **premium_lrs**, **premium_zrs**, **standardssd_lrs**, **standardssd_zrs**, **premiumv2_lrs**, or **ultrassd_lrs**.
 
-### (Optional) Grant access to the disk
+### Optional: Assign RBAC permissions for Microsoft Entra ID
 
-If you're using Microsoft Entra ID to [secure disk uploads](../disks-secure-upload-download.md), you need to [assign RBAC permissions](/azure/role-based-access-control/role-assignments-cli) to grant access to the disk and generate a writeable SAS.
+If you're using Microsoft Entra ID to [secure disk uploads](../disks-secure-upload-download.md), you need to [assign RBAC permissions](/azure/role-based-access-control/role-assignments-cli) to grant access to the disk and generate a writable SAS.
 
 ```azurecli
 az role assignment create --assignee "{assignee}" \
@@ -77,9 +78,9 @@ az role assignment create --assignee "{assignee}" \
 --scope "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceType}/{resourceSubType}/{diskName}"
 ```
 
-### Generate writeable SAS
+### Generate writable SAS
 
-Now that you've created an empty managed disk that is configured for the upload process, you can upload a VHD to it. To upload a VHD to the disk, you need a writeable SAS, so that you can reference it as the destination for your upload.
+Now that you created an empty managed disk that's configured for the upload process, you can upload a VHD to it. To upload a VHD to the disk, you need a writable SAS so you can reference it as the destination for your upload.
 
 [!INCLUDE [disks-sas-change](../includes/disks-sas-change.md)]
 
@@ -105,13 +106,13 @@ Use AzCopy v10 to upload your local VHD or VHDX file to a managed disk by specif
 
 This upload has the same throughput as the equivalent [Standard HDD](../disks-types.md#standard-hdds). For example, if you have a size that equates to S4, you'll have a throughput of up to 60 MiB/s. But, if you have a size that equates to S70, you'll have a throughput of up to 500 MiB/s.
 
-```bash
-AzCopy.exe copy "c:\somewhere\mydisk.vhd" "sas-URI" --blob-type PageBlob
+```azcopy
+azcopy copy "<path-to-vhd-or-vhdx>" "<sas-uri>" --blob-type PageBlob
 ```
 
 After the upload is complete, and you no longer need to write any more data to the disk, revoke the SAS. Revoking the SAS changes the state of the managed disk and allow you to attach the disk to a VM.
 
-Replace `<yourdiskname>`and `<yourresourcegroupname>`, then use the following command to make the disk usable:
+Replace `<yourdiskname>` and `<yourresourcegroupname>`, then use the following command to make the disk usable:
 
 ```azurecli
 az disk revoke-access -n <yourdiskname> -g <yourresourcegroupname>
@@ -122,6 +123,8 @@ az disk revoke-access -n <yourdiskname> -g <yourresourcegroupname>
 Direct upload also simplifies the process of copying a managed disk. You can either copy within the same region or cross-region (to another region).
 
 The following script does this for you. The process is similar to the steps described earlier, with some differences since you're working with an existing disk.
+
+The script uses [az disk show](/cli/azure/disk#az-disk-show) to get the source disk size and adds the required 512-byte offset. It then uses [az disk create](/cli/azure/disk#az-disk-create) to create an upload-ready target disk and [az disk grant-access](/cli/azure/disk#az-disk-grant-access) to generate SAS URIs for the source and target disks. After [AzCopy](/azure/storage/common/storage-use-azcopy-v10) copies the disk data as a page blob, [az disk revoke-access](/cli/azure/disk#az-disk-revoke-access) revokes both SAS URIs.
 
 > [!IMPORTANT]
 > You need to add an offset of 512 when you're providing the disk size in bytes of a managed disk from Azure. This is because Azure omits the footer when returning the disk size. The copy will fail if you don't do this. The following script already does this for you.
@@ -148,7 +151,7 @@ targetSASURI=$(az disk grant-access -n $targetDiskName -g $targetRG  --access-le
 
 sourceSASURI=$(az disk grant-access -n $sourceDiskName -g $sourceRG --duration-in-seconds 86400 --query [accessSas] -o tsv)
 
-azcopy copy $sourceSASURI $targetSASURI --blob-type PageBlob
+azcopy copy "$sourceSASURI" "$targetSASURI" --blob-type PageBlob
 
 az disk revoke-access -n $sourceDiskName -g $sourceRG
 

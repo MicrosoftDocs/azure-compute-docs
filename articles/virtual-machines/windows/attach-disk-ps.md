@@ -5,9 +5,10 @@ author: roygara
 ms.service: azure-disk-storage
 ms.collection: windows
 ms.topic: how-to
-ms.date: 12/09/2024
+ms.date: 09/02/2026
 ms.author: rogarana
 ms.custom: devx-track-azurepowershell
+ai-usage: ai-assisted
 
 # Customer intent: As a cloud administrator, I want to attach new and existing data disks to Windows VMs using PowerShell, so that I can efficiently manage storage solutions for my workloads and optimize performance within the Azure environment.
 ---
@@ -24,9 +25,9 @@ First, review these tips:
 
 This article uses PowerShell within the [Azure Cloud Shell](/azure/cloud-shell/overview), which is constantly updated to the latest version. To open the Cloud Shell, select **Try it** from the top of any code block.
 
-## Lower latency
+## Reduce data disk attach latency
 
-In select regions, the disk attach latency has been reduced, so you'll see an improvement of up to 15%. This is useful if you have planned/unplanned failovers between VMs, you're scaling your workload, or are running a high scale stateful workload such as Azure Kubernetes Service. However, this improvement is limited to the explicit disk attach command, `Add-AzVMDataDisk`. You won't see the performance improvement if you call a command that may implicitly perform an attach, like `Update-AzVM`. You don't need to take any action other than calling the explicit attach command to see this improvement.
+In select regions, the disk attach latency is reduced, so you see an improvement of up to 15%. This improvement is useful if you have planned or unplanned failovers between VMs, you're scaling your workload, or you're running a high-scale stateful workload such as Azure Kubernetes Service. However, this improvement is limited to the explicit disk attach command, [Add-AzVMDataDisk](/powershell/module/az.compute/add-azvmdatadisk). You don't see the performance improvement if you call a command that might implicitly perform an attach, like [Update-AzVM](/powershell/module/az.compute/update-azvm). You don't need to take any action other than calling the explicit attach command to see this improvement.
 
 [!INCLUDE [virtual-machines-disks-fast-attach-detach-regions](../includes/virtual-machines-disks-fast-attach-detach-regions.md)]
 
@@ -34,7 +35,9 @@ In select regions, the disk attach latency has been reduced, so you'll see an im
 
 This example shows how to add an empty data disk to an existing virtual machine.
 
-### Using managed disks
+### Create and attach a managed disk
+
+Set values for the resource group, VM, location, storage type, and data disk name. The [New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig) cmdlet creates a configuration for an empty 128-GiB managed disk, and [New-AzDisk](/powershell/module/az.compute/new-azdisk) creates the disk. Then, [Get-AzVM](/powershell/module/az.compute/get-azvm) gets the VM configuration, `Add-AzVMDataDisk` adds the disk to it, and `Update-AzVM` applies the updated configuration to the VM.
 
 ```azurepowershell-interactive
 $rgName = 'myResourceGroup'
@@ -52,9 +55,9 @@ $vm = Add-AzVMDataDisk -VM $vm -Name $dataDiskName -CreateOption Attach -Managed
 Update-AzVM -VM $vm -ResourceGroupName $rgName
 ```
 
-### Using managed disks in an Availability Zone
+### Create and attach a managed disk in an availability zone
 
-To create a disk in an Availability Zone, use [New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig) with the `-Zone` parameter. The following example creates a disk in zone *1*.
+Set values for the resource group, VM, location, storage type, and data disk name. To create a managed disk in an availability zone, use `New-AzDiskConfig` with the `-Zone` parameter. The following example creates an empty 128-GiB managed disk in zone 1, adds it to the VM configuration, and applies the updated configuration to the VM.
 
 ```powershell
 $rgName = 'myResourceGroup'
@@ -74,13 +77,15 @@ Update-AzVM -VM $vm -ResourceGroupName $rgName
 
 ### Initialize the disk
 
-After you add an empty disk, you'll need to initialize it. To initialize the disk, you can sign in to a VM and use disk management. If you enabled [WinRM](/windows/desktop/winrm/portal) and a certificate on the VM when you created it, you can use remote PowerShell to initialize the disk. You can also use a custom script extension:
+After you add an empty disk, you need to initialize it. To initialize the disk, sign in to a VM and use disk management. If you enable [WinRM](/windows/desktop/winrm/portal) and a certificate on the VM when you create it, you can use remote PowerShell to initialize the disk.
+
+You can also use the [Set-AzVMCustomScriptExtension](/powershell/module/az.compute/set-azvmcustomscriptextension) cmdlet to add a Custom Script Extension to the VM. The following example uses the resource group and VM names from the attachment procedure, along with values for the VM location, extension name, initialization script file, storage account name, storage account key, and container name. Store the script in the specified Azure Storage container before you run the command:
 
 ```azurepowershell-interactive
     $location = "location-name"
     $scriptName = "script-name"
     $fileName = "script-file-name"
-    Set-AzVMCustomScriptExtension -ResourceGroupName $rgName -Location $locName -VMName $vmName -Name $scriptName -TypeHandlerVersion "1.4" -StorageAccountName "mystore1" -StorageAccountKey "primary-key" -FileName $fileName -ContainerName "scripts"
+    Set-AzVMCustomScriptExtension -ResourceGroupName $rgName -Location $location -VMName $vmName -Name $scriptName -TypeHandlerVersion "1.4" -StorageAccountName "mystore1" -StorageAccountKey "primary-key" -FileName $fileName -ContainerName "scripts"
 ```
 
 The script file can contain code to initialize the disks, for example:
@@ -107,7 +112,7 @@ The script file can contain code to initialize the disks, for example:
 
 ## Attach an existing data disk to a VM
 
-You can attach an existing managed disk to a VM as a data disk.
+Set values for the resource group, VM, and existing managed disk name. Use [Get-AzDisk](/powershell/module/az.compute/get-azdisk) to get the managed disk, and `Get-AzVM` to get the VM configuration. Then, use `Add-AzVMDataDisk` to add the existing disk to the VM configuration, and `Update-AzVM` to apply the updated configuration to the VM.
 
 ```azurepowershell-interactive
 $rgName = "myResourceGroup"
