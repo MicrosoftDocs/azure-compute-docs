@@ -321,7 +321,7 @@ When you attach a regional Ultra Disk to a regional VM in a region with availabi
 
 The following additional limitations apply during the background copy:
 
-- You can't attach a nonzonal disk created from a snapshot, including an [instant access snapshot](disks-instant-access-snapshots.md), to a nonzonal VM until the copy finishes. To check the copy status, see [Performance impact of background copy](scripts/create-managed-disk-from-snapshot.md#performance-impact---background-copy-process).
+- You can't attach a nonzonal disk created from a snapshot, including an [instant access snapshot](disks-instant-access-snapshots.md), to a nonzonal VM in a region with availability zones until the copy finishes. To check the copy status, see [Performance impact of background copy](scripts/create-managed-disk-from-snapshot.md#performance-impact---background-copy-process).
 - You can't resize the disk or change its customer-managed key.
 
 Only one background copy can run on a nonzonal disk at a time. While a background copy is in progress, attaching the disk to a running nonzonal VM might fail. Restarting a stopped or deallocated nonzonal VM with the disk attached might also fail because the restart can trigger a second background copy.
