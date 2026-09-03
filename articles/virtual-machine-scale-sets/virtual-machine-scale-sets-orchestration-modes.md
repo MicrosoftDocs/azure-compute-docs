@@ -231,7 +231,7 @@ Register and get started with [Flexible orchestration mode](..\virtual-machines\
     Attaching the VM doesn't remove its Microsoft Entra registration, Microsoft Entra sign-in extension, managed identities, network configuration, or original VM resource ID.
  
  > [!IMPORTANT]
- > Before you attach an existing Microsoft Entra-enabled Windows VM to a Flexible scale set, assign the **Virtual Machine User Login** or **Virtual Machine Administrator Login** role at the target scale set scope. A role assignment scoped only to the standalone VM might not authorize Microsoft Entra sign-in after attachment.
+ > Before you attach an existing Microsoft Entra-enabled Windows VM to a Flexible scale set, assign the **Virtual Machine User Login** or **Virtual Machine Administrator Login** role at the target scale set scope. A role assignment scoped only to the standalone VM does not authorize Microsoft Entra sign-in after attachment.
  >
  > This additional scale set-scoped role assignment isn't required for Linux VMs that retain a valid VM-scoped login role.
 
