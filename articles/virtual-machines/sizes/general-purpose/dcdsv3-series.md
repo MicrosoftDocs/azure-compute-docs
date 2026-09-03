@@ -13,6 +13,9 @@ ms.reviewer: mattmcinnes
 
 # DCdsv3 sizes series
 
+> [!WARNING]
+> DCdsv3-series virtual machines retire on October 31, 2029. To avoid service disruption, migrate your workloads before the retirement date. For migration options and steps, see the [DCsv3-series and DCdsv3-series retirement guide](../retirement/dcsv3-series-retirement.md).
+
 [!INCLUDE [dcdsv3-summary](./includes/dcdsv3-series-summary.md)]
 
 ## Host specifications

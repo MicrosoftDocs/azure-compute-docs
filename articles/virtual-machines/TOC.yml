@@ -795,6 +795,8 @@
            href: dv2-dsv2-series-memory.md
          - name: DCsv2 series
            href: ./sizes/lifecycle/retirement/dcsv2-series-retirement.md
+         - name: DCsv3 and DCdsv3 series
+           href: ./sizes/retirement/dcsv3-series-retirement.md
          - name: DCccv5 series
            href: ./sizes/lifecycle/retirement/dcccv5-series-retirement.md
        - name: Memory optimized
