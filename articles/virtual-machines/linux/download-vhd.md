@@ -1,6 +1,6 @@
 ---
 title: Download a Linux VHD from Azure 
-description: Download a Linux VHD using the Azure CLI and the Azure portal.
+description: Download a Linux VHD using the Azure portal, Azure PowerShell, or the Azure CLI.
 author: roygara
 ms.author: rogarana
 ms.service: azure-disk-storage
@@ -8,6 +8,7 @@ ms.custom: devx-track-azurecli, linux-related-content
 ms.collection: linux
 ms.topic: how-to
 ms.date: 02/19/2026
+ai-usage: ai-assisted
 # Customer intent: As a system administrator, I want to download a Linux VHD from Azure, so that I can create backups or migrate virtual machines to another environment.
 ---
 
@@ -31,8 +32,6 @@ To stop the VM:
 1.	On the page for the VM, select **Stop**.
 
     :::image type="content" source="./media/download-vhd/export-stop.PNG" alt-text="Shows the menu button to stop the VM.":::
-
-Once the VM is stopped, 
 
 ### Alternative: Snapshot the VM disk
 
@@ -67,11 +66,15 @@ To download the VHD file, you need to generate a [shared access signature (SAS)]
 
 # [PowerShell](#tab/azure-powershell)
 
+Use the [Grant-AzDiskAccess](/powershell/module/az.compute/grant-azdiskaccess) cmdlet to generate a read-only SAS URL for the managed disk:
+
 ```azurepowershell
 $diskSas = Grant-AzDiskAccess -ResourceGroupName "yourRGName" -DiskName "yourDiskName" -DurationInSecond 86400 -Access 'Read'
 ```
 
 # [Azure CLI](#tab/azure-cli)
+
+Use the [az disk grant-access](/cli/azure/disk#az-disk-grant-access) command to generate a read-only SAS URL for the managed disk:
 
 ```azurecli
 az disk grant-access --duration-in-seconds 86400 --access-level Read --name yourDiskName --resource-group yourRGName
@@ -94,7 +97,7 @@ az disk grant-access --duration-in-seconds 86400 --access-level Read --name your
 
 # [PowerShell](#tab/azure-powershell)
 
-Use the following script to download your VHD:
+The following script uses [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) to sign in and the [Get-AzStorageBlobContent](/powershell/module/az.storage/get-azstorageblobcontent) cmdlet to download the VHD using the SAS URL:
 
 ```azurepowershell
 Connect-AzAccount
@@ -103,11 +106,11 @@ $localFolder = "yourPathHere"
 $blob = Get-AzStorageBlobContent -Uri $diskSas.AccessSAS -Destination $localFolder -Force 
 ```
 
-When the download finishes, revoke access to your disk by using `Revoke-AzDiskAccess -ResourceGroupName "yourRGName" -DiskName "yourDiskName"`.
+When the download finishes, use the [Revoke-AzDiskAccess](/powershell/module/az.compute/revoke-azdiskaccess) cmdlet to revoke access to your disk: `Revoke-AzDiskAccess -ResourceGroupName "yourRGName" -DiskName "yourDiskName"`.
 
 # [Azure CLI](#tab/azure-cli)
 
-Replace `yourPathhere` and `sas-URI` with your values. Then, use the following script to download your VHD:
+Replace `yourPathHere` and `sas-URI` with your values. The following script uses the [az storage blob download](/cli/azure/storage/blob#az-storage-blob-download) command to download your VHD:
 
 > [!NOTE]
 > If you're using Microsoft Entra ID to [secure your managed disk](../disks-secure-upload-download.md) uploads and downloads, add `--auth-mode login` to `az storage blob download`.
@@ -116,15 +119,15 @@ Replace `yourPathhere` and `sas-URI` with your values. Then, use the following s
 
 #set localFolder to your desired download location
 localFolder=yourPathHere
-#If you're using Azure AD to secure your managed disk uploads and downloads, add --auth-mode login to the following command.
+#If you're using Microsoft Entra ID to secure your managed disk uploads and downloads, add --auth-mode login to the following command.
 az storage blob download -f $localFolder --blob-url "sas-URI"
 ```
 
-When the download finishes, revoke access to your disk by using `az disk revoke-access --name diskName --resource-group yourRGName`.
+When the download finishes, use the [az disk revoke-access](/cli/azure/disk#az-disk-revoke-access) command to revoke access to your disk: `az disk revoke-access --name diskName --resource-group yourRGName`.
 
 ---
 
 ## Next steps
 
 - Learn how to [upload and create a Linux VM from custom disk with the Azure CLI](upload-vhd.md). 
-- [Manage Azure disks the Azure CLI](tutorial-manage-disks.md).
+- [Manage Azure disks with the Azure CLI](tutorial-manage-disks.md).
