@@ -4,7 +4,7 @@ description: Learn about Ultra Disks for Azure VMs
 author: roygara
 ms.service: azure-disk-storage
 ms.topic: how-to
-ms.date: 10/21/2024
+ms.date: 09/03/2026
 ms.author: rogarana
 ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell, devx-track-arm-template, portal
 # Customer intent: "As a cloud administrator, I want to deploy Ultra Disks for Azure VMs, so that I can achieve maximum performance for data-intensive workloads and optimize that performance without needing to restart my virtual machines."
@@ -314,6 +314,17 @@ Update-AzVM -VM $vm -ResourceGroupName $rgName
 ```
 ---
 ## Attach an Ultra Disk
+
+### Additional limitations for regional Ultra Disks in regions with availability zones
+
+When you attach a regional Ultra Disk to a regional VM in a region with availability zones, Azure might run a background copy to align the disk with the VM's availability zone and optimize latency. The copy can take up to 24 hours.
+
+The following additional limitations apply during the background copy:
+
+- You can't attach a nonzonal disk created from a snapshot, including an [instant access snapshot](disks-instant-access-snapshots.md), to a nonzonal VM in a region with availability zones until the copy finishes. To check the copy status, see [Performance impact of background copy](scripts/create-managed-disk-from-snapshot.md#performance-impact---background-copy-process).
+- You can't resize the disk or change its customer-managed key.
+
+Only one background copy can run on a nonzonal disk at a time. While a background copy is in progress, attaching the disk to a running nonzonal VM might fail. Restarting a stopped or deallocated nonzonal VM with the disk attached might also fail because the restart can trigger a second background copy.
 
 # [Portal](#tab/azure-portal)
 
