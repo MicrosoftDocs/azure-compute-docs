@@ -5,9 +5,10 @@ author: roygara
 ms.service: azure-disk-storage
 ms.collection: linux
 ms.topic: how-to
-ms.date: 12/15/2017
+ms.date: 09/02/2026
 ms.author: rogarana
 ms.custom: devx-track-azurecli, linux-related-content
+ai-usage: ai-assisted
 # Customer intent: As a system administrator, I want to migrate my Linux VMs from unmanaged disks to managed disks using Azure CLI, so that I can enhance performance, simplify disk management, and reduce costs associated with storage.
 ---
 
@@ -19,7 +20,7 @@ If you have existing Linux virtual machines (VMs) that use unmanaged disks, you 
 
 This article shows you how to migrate VMs by using the Azure CLI. If you need to install or upgrade it, see [Install Azure CLI](/cli/azure/install-azure-cli). 
 
-## Before you begin
+## Review managed disk migration considerations
 * Review [the FAQ about migration to managed disks](/azure/virtual-machines/faq-for-disks#migrate-to-managed-disks).
 
 [!INCLUDE [virtual-machines-common-convert-disks-considerations](../includes/virtual-machines-common-convert-disks-considerations.md)]
@@ -29,19 +30,19 @@ This article shows you how to migrate VMs by using the Azure CLI. If you need to
 ## Migrate single-instance VMs
 This section covers how to migrate single-instance Azure VMs from unmanaged disks to managed disks. (If your VMs are in an availability set, see the next section.) You can use this process to migrate the VMs from premium (SSD) unmanaged disks to premium managed disks, or from standard (HDD) unmanaged disks to standard managed disks.
 
-1. Deallocate the VM by using [az vm deallocate](/cli/azure/vm). The following example deallocates the VM named `myVM` in the resource group named `myResourceGroup`:
+1. Deallocate the VM by using [az vm deallocate](/cli/azure/vm#az-vm-deallocate). The following example deallocates the VM named `myVM` in the resource group named `myResourceGroup`:
 
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
     ```
 
-2. Migrate the VM to managed disks by using [az vm convert](/cli/azure/vm). The following process converts the VM named `myVM`, including the OS disk and any data disks:
+2. Migrate the VM to managed disks by using [az vm convert](/cli/azure/vm#az-vm-convert). The following process converts the VM named `myVM`, including the OS disk and any data disks:
 
     ```azurecli
     az vm convert --resource-group myResourceGroup --name myVM
     ```
 
-3. Start the VM after the migration to managed disks by using [az vm start](/cli/azure/vm). The following example starts the VM named `myVM` in the resource group named `myResourceGroup`.
+3. Start the VM after the migration to managed disks by using [az vm start](/cli/azure/vm#az-vm-start). The following example starts the VM named `myVM` in the resource group named `myResourceGroup`.
 
     ```azurecli
     az vm start --resource-group myResourceGroup --name myVM
@@ -53,7 +54,7 @@ If the VMs that you want to migrate to managed disks are in an availability set,
 
 All VMs in the availability set must be deallocated before you migrate the availability set. Plan to migrate all VMs to managed disks after the availability set itself has been converted to a managed availability set. Then, start all the VMs and continue operating as normal.
 
-1. List all VMs in an availability set by using [az vm availability-set list](/cli/azure/vm/availability-set). The following example lists all VMs in the availability set named `myAvailabilitySet` in the resource group named `myResourceGroup`:
+1. Get the IDs of all VMs in an availability set by using [az vm availability-set show](/cli/azure/vm/availability-set#az-vm-availability-set-show). The following example gets the VM IDs from the availability set named `myAvailabilitySet` in the resource group named `myResourceGroup`:
 
     ```azurecli
     az vm availability-set show \
@@ -63,13 +64,13 @@ All VMs in the availability set must be deallocated before you migrate the avail
         --output table
     ```
 
-2. Deallocate all the VMs by using [az vm deallocate](/cli/azure/vm). The following example deallocates the VM named `myVM` in the resource group named `myResourceGroup`:
+2. For each VM returned in the preceding step, deallocate the VM by using [az vm deallocate](/cli/azure/vm#az-vm-deallocate). Replace `myVM` with the VM name, and run the following command for each VM:
 
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
     ```
 
-3. Migrate the availability set by using [az vm availability-set convert](/cli/azure/vm/availability-set). The following example converts the availability set named `myAvailabilitySet` in the resource group named `myResourceGroup`:
+3. Migrate the availability set by using [az vm availability-set convert](/cli/azure/vm/availability-set#az-vm-availability-set-convert). The following example converts the availability set named `myAvailabilitySet` in the resource group named `myResourceGroup`:
 
     ```azurecli
     az vm availability-set convert \
@@ -77,13 +78,13 @@ All VMs in the availability set must be deallocated before you migrate the avail
         --name myAvailabilitySet
     ```
 
-4. Migrate all the VMs to managed disks by using [az vm convert](/cli/azure/vm). The following process converts the VM named `myVM`, including the OS disk and any data disks:
+4. For each VM in the availability set, migrate the VM to managed disks by using [az vm convert](/cli/azure/vm#az-vm-convert). Replace `myVM` with the VM name, and run the following command for each VM. The command converts the OS disk and any data disks:
 
     ```azurecli
     az vm convert --resource-group myResourceGroup --name myVM
     ```
 
-5. Start all the VMs after the migration to managed disks by using [az vm start](/cli/azure/vm). The following example starts the VM named `myVM` in the resource group named `myResourceGroup`:
+5. After migrating all the VMs to managed disks, start each VM by using [az vm start](/cli/azure/vm#az-vm-start). Replace `myVM` with the VM name, and run the following command for each VM:
 
     ```azurecli
     az vm start --resource-group myResourceGroup --name myVM
