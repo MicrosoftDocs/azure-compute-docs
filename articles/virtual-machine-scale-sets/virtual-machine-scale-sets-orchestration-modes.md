@@ -222,6 +222,18 @@ Register and get started with [Flexible orchestration mode](..\virtual-machines\
 - **How much scale does Flexible orchestration support?**
 
     You can add up to 1000 VMs to a scale set in Flexible orchestration mode.
+  
+- **Can I move a Microsoft Entra-enabled virtual machine into a Flexible Orchestration Virtual Machine Scale Set?**
+
+    Yes. You can [attach](virtual-machine-scale-sets-attach-detach-vm.md) an existing Microsoft Entra-enabled virtual machine to a Virtual Machine Scale Set that uses Flexible orchestration mode.
+ 
+ 
+    Attaching the VM doesn't remove its Microsoft Entra registration, Microsoft Entra sign-in extension, managed identities, network configuration, or original VM resource ID.
+ 
+ > [!IMPORTANT]
+ > Before you attach an existing Microsoft Entra-enabled Windows VM to a Flexible scale set, assign the **Virtual Machine User Login** or **Virtual Machine Administrator Login** role at the target scale set scope. A role assignment scoped only to the standalone VM does not authorize Microsoft Entra sign-in after attachment.
+ >
+ > This additional scale set-scoped role assignment isn't required for Linux VMs that retain a valid VM-scoped login role.
 
 - **How does availability with Flexible orchestration compare to Availability Sets or Uniform orchestration?**
 
