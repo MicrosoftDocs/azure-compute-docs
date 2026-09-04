@@ -170,6 +170,8 @@
       href: ./workloads/hpc/overview.md
     - name: How to set up HPC/AI VMs
       href: ./workloads/hpc/set-up-hpc-vms.md
+    - name: Linux virtual desktops with ThinLinc
+      href: ./linux/thinlinc-linux-vdi.md
     - name: Configuration
       items:
       - name: Configure and optimize VMs
