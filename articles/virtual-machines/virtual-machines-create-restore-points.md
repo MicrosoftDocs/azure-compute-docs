@@ -40,7 +40,7 @@ Once the disk restore points are created, Azure automatically initiates a backgr
 | **Crash-consistent** | Captures a write-order-consistent snapshot of all disks, equivalent to Virtual Machine state after a power outage or crash. | Set `consistencyMode` to `crashConsistent` in the creation request. |
 
 > [!NOTE] 
-> **Crash consistency is no longer supported for NVME storage interfaces**. Use application-consistent restore points. 
+> **Crash consistency isn't supported for Azure Boost**. Use application-consistent restore points. 
 
 ### Instant Access (Preview)
 
