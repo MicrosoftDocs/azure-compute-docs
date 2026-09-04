@@ -71,6 +71,7 @@ Local (temp) storage info for each size
 - Storage capacity is shown in units of GiB or 1024^3 bytes. When you compare disks measured in GB (1000^3 bytes) to disks measured in GiB (1024^3) remember that capacity numbers given in GiB may appear smaller. For example, 1023 GiB = 1098.4 GB.
 - Disk throughput is measured in input/output operations per second (IOPS) and MBps where MBps = 10^6 bytes/sec.
 - To learn how to get the best storage performance for your VMs, see [Virtual machine and disk performance](../../../virtual-machines/disks-performance.md).
+- The temp disk is not automatically mounted after deployment. Users are required to manually initialize, format, and mount the disk before use.
 
 ### [Remote storage](#tab/sizestorageremote)
 
