@@ -2,10 +2,11 @@
 title: Ephemeral OS disks
 description: Learn more about ephemeral OS disks for Azure VMs.
 author: viveksingla08
+ai-usage: ai-assisted
 ms.service: azure-virtual-machines
 ms.custom:
 ms.topic: how-to
-ms.date: 07/23/2020
+ms.date: 09/07/2026
 ms.author: viveksingla
 ms.subservice: disks
 # Customer intent: As a cloud engineer, I want to implement ephemeral OS disks for Azure VMs, so that I can achieve lower latency and faster reimaging for stateless applications while optimizing storage costs and performance.
@@ -20,10 +21,7 @@ Ephemeral OS disks are created on the local virtual machine (VM) storage and not
 Ephemeral OS Disk is available in two caching modes:
 
 - **Partial caching (Default)**: Partial caching splits the OS disk between a diff disk on local storage and a base disk in managed disks. All writes occur on the diff disk, while the base disk serves read operations for original files. Optimized for cloud-native and stateless applications, partial ephemeral OS disk balances performance with efficiency. All existing ephemeral VMs are created in partial caching mode.
-- **Full caching (Preview)**: Full caching caches the entire OS disk on local storage, completely removing dependency on remote storage in steady state. Ideal for IO-sensitive stateless workloads, full caching enhances both performance and reliability by eliminating remote read/write latency. Workloads such as quorum-based databases, data analytics, and real-time processing benefit from this feature. However, full caching requires 2x the OS disk space on local storage to store the complete image locally.
-
-> [!IMPORTANT]
-> Ephemeral OS disk with full caching is currently in public preview. Preview features are provided without a service level agreement, and aren't recommended for production workloads.
+- **Full caching**: Full caching stores the complete OS disk on local VM storage. After background caching completes, OS disk I/O is served from local storage, removing the dependency on remote storage in steady state. Full caching is designed for I/O-sensitive stateless workloads and requires more local storage than partial caching.
 
 The key features of ephemeral disks are:
 
@@ -34,7 +32,7 @@ The key features of ephemeral disks are:
 - Offers lower latency, similar to a temporary disk.
 - Supports Premium SSD & Standard SSD for higher SLA.
 - Supported in all Azure regions.
-- Supports full caching mode (preview) for enhanced performance and reliability during remote storage outages.
+- Supports full caching mode for consistent local OS disk performance and improved resilience during remote storage disruptions.
 
 Key differences between persistent and ephemeral OS disks:
 
@@ -71,7 +69,7 @@ Ephemeral OS Disk utilizes local storage within the VM. Since different VMs have
 You can choose to deploy Ephemeral OS Disk on NVMe disk, temp disk, or cache on the VM.
 The image OS disk’s size should be less than or equal to the NVMe/temp/cache size of the VM size chosen.
 
-For **full caching mode (preview)**, the local disk size of the VM SKU must be greater than (2 &times; OS disk size + 1 GiB). The temporary disk is reduced by 2&times; the OS disk size, and that space is used to store the fully cached OS disk. The OS disk is cached in the background after the VM boots up.
+For **full caching mode**, the local disk size of the VM SKU must be greater than (2 &times; OS disk size + 1 GiB). The temporary disk is reduced by 2&times; the OS disk size, and that space is used to store the fully cached OS disk. The OS disk is cached in the background after the VM boots up.
 
 For **OS cache placement**: Standard Windows Server images from the marketplace are about 127 GiB, which means that you need a VM size that has a cache equal to or larger than 127 GiB. The Standard_DS3_v2 has a cache size of 127 GiB, which is large enough. In this case, the Standard_DS3_v2 is the smallest size in the DSv2 series that you can use with this image.
 
@@ -85,7 +83,7 @@ For **NVMe disk placement (GA)**: Standard Ubuntu server image from marketplace 
 > 
 > If opting for NVMe disk placement (GA), Final NVMe Disk size = (Total no. of NVMe disks - NVMe Disks used for OS) * Size of each NVMe disk. Where NVMe Disks used for OS is the minimum number of disks required for OS disk depending on the size of OS disk and the size of each NVMe disk.
 >
-> If opting for full caching mode (preview), Final Temp disk size = (Initial temp disk size - 2 &times; OS image size). The local disk must have at least (2 &times; OS disk size + 1 GiB) available.
+> If opting for full caching mode, Final Temp disk size = (Initial temp disk size - 2 &times; OS image size). The local disk must have at least (2 &times; OS disk size + 1 GiB) available.
 
 If Ephemeral OS disk is using **Temp Disk Placement**, it shares the IOPS(input/output operations per second) with temp disk. If Ephemeral OS disk is using **NVMe Disk Placement**, it provides the IOPS(input/output operations per second) of NVMe disks being used.
 
@@ -142,14 +140,18 @@ You can choose to use customer managed keys or platform managed keys when you en
 >
 For more information on [Encryption at host](./disk-encryption.md)
 
-## Full caching mode for Ephemeral OS disks (preview)
+## Full caching mode for Ephemeral OS disks
 
-Ephemeral OS disk with full caching enhances the standard ephemeral OS disk by fully caching the OS disk onto the local disk. This feature greatly improves the resilience of general-purpose VMs and virtual machine scale sets during remote storage outages. These outages—often caused by extreme weather or power failures—can lead to VM downtime events. This feature mitigates such risks by ensuring the OS disk remains available even during storage disruptions.
+Ephemeral OS disk with full caching stores the complete OS disk on local VM storage. With partial caching, writes are stored on the local diff disk while reads for unchanged files can still use the remote base disk. With full caching, Azure copies the base disk to local storage in the background after the VM starts. After caching completes, OS disk reads and writes are served locally in steady state.
+
+Full caching is intended for I/O-sensitive stateless workloads on Azure virtual machines and Virtual Machine Scale Sets. Example workloads include data analytics, real-time processing, quorum-based databases, and large-scale stateless services.
 
 When a VM is created with full caching enabled:
 
-- The temporary disk is reduced by 2&times; the OS disk size, and that space is used to create the OS disk.
-- The OS disk is cached in the background after the VM boots up. This caching process ensures no impact on VM creation times.
+- Azure reserves local storage equal to twice the configured OS disk size.
+- The available local temporary storage is reduced by the reserved amount.
+- The VM can start while Azure caches the OS disk in the background.
+- After caching completes, OS disk I/O no longer depends on the remote base disk in steady state.
 
 ### Prerequisites for full caching
 
@@ -158,14 +160,15 @@ When a VM is created with full caching enabled:
 | OS disk must be stateless | Full caching is designed for stateless workloads |
 | VM SKU eligibility | Local disk size must be greater than (2 &times; OS disk size + 1 GiB) |
 | API version | `2025-04-01` or later |
-| Supported VM sizes | All VM SKUs except 2/4-core VMs (preview) |
+| Supported VM sizes | VM sizes with 8 vCPUs or more |
+| Supported placement | Temp disk (`ResourceDisk`) and NVMe disk (`NvmeDisk`) placement are supported on eligible VM sizes that expose the selected local-storage type. Cache disk (`CacheDisk`) placement is supported only on GPU VM sizes. |
 
 ### How to enable full caching
 
 To enable full caching, set the `enableFullCaching` property to `true` in the `diffDiskSettings` section of your deployment template or REST API call. See [Deploy Ephemeral OS disks](ephemeral-os-disks-deploy.md) for detailed deployment instructions.
 
 > [!NOTE]
-> Full caching mode is currently in public preview. Support for 2/4-core VMs is planned for a future release. No extra cost is charged for full caching beyond the standard VM and disk costs.
+> No extra cost is charged for full caching beyond the standard VM and disk costs.
 
 ## SSD storage account support for Ephemeral OS disks
 

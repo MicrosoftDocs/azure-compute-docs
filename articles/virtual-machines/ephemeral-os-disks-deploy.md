@@ -2,9 +2,10 @@
 title: Deploy Ephemeral OS disks
 description: Learn to deploy ephemeral OS disks for Azure VMs.
 author: Aarthi-Vijayaraghavan
+ai-usage: ai-assisted
 ms.service: azure-virtual-machines
 ms.topic: how-to
-ms.date: 07/23/2020
+ms.date: 09/07/2026
 ms.author: aarthiv
 ms.subservice: disks
 ms.custom: devx-track-azurecli
@@ -16,9 +17,6 @@ ms.custom: devx-track-azurecli
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
 This article shows you how to create a virtual machine or virtual machine scale sets with Ephemeral OS disks through Portal, ARM template deployment, CLI and PowerShell.
-
-> [!IMPORTANT]
-> Ephemeral OS disk with full caching is currently in public preview. Preview features are provided without a service level agreement, and aren't recommended for production workloads.
 
 ## Portal
 
@@ -34,16 +32,16 @@ If the option for using an ephemeral disk or OS cache placement or Temp disk pla
 The process to create a scale set that uses an ephemeral OS disk is to add the `diffDiskSettings` property to the
 `Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile` resource type in the template. Also, the caching policy must be set to `ReadOnly` for the ephemeral OS disk. placement can be changed to `CacheDisk` for OS cache disk placement.
 
-To enable full caching (preview), add `"enableFullCaching": true` to the `diffDiskSettings` section and use API version `2025-04-01` or later.
+To enable full caching, add `"enableFullCaching": true` to the `diffDiskSettings` section and use API version `2025-04-01` or later. Full caching requires a VM size with 8 vCPUs or more. Temp disk and NVMe disk placement are supported on eligible VM sizes that expose the selected local-storage type. Cache disk placement is supported only on GPU VM sizes.
 
 ```json
 {
   "type": "Microsoft.Compute/virtualMachineScaleSets",
   "name": "myScaleSet",
   "location": "East US 2",
-  "apiVersion": "2019-12-01",
+  "apiVersion": "2025-04-01",
   "sku": {
-    "name": "Standard_DS2_v2",
+    "name": "Standard_D8ds_v5",
     "capacity": "2"
   },
   "properties": {
@@ -55,22 +53,23 @@ To enable full caching (preview), add `"enableFullCaching": true` to the `diffDi
         "osDisk": {
           "diffDiskSettings": {
             "option": "Local" ,
-            "placement": "ResourceDisk"
+            "placement": "ResourceDisk",
+            "enableFullCaching": true
           },
           "caching": "ReadOnly",
           "createOption": "FromImage"
         },
         "imageReference":  {
-          "publisher": "publisherName",
-          "offer": "offerName",
-          "sku": "skuName",
-          "version": "imageVersion"
+          "publisher": "Canonical",
+          "offer": "0001-com-ubuntu-server-jammy",
+          "sku": "22_04-lts-gen2",
+          "version": "latest"
         }
       },
       "osProfile": {
         "computerNamePrefix": "myvmss",
         "adminUsername": "azureuser",
-        "adminPassword": "P@ssw0rd!"
+        "adminPassword": "[parameters('adminPassword')]"
       }
     }
   }
@@ -78,12 +77,12 @@ To enable full caching (preview), add `"enableFullCaching": true` to the `diffDi
 ```
 
 > [!NOTE]
-> Replace all the other values accordingly.
+> Define `adminPassword` as a `secureString` parameter in the complete template. Replace the other values as needed.
 
 ## VM template deployment
 You can deploy a VM with an ephemeral OS disk using a template. The process to create a VM that uses ephemeral OS disks is to add the `diffDiskSettings` property to Microsoft.Compute/virtualMachines resource type in the template. Also, the caching policy must be set to `ReadOnly` for the ephemeral OS disk. placement option can be changed to `CacheDisk` for OS cache disk placement.
 
-To enable full caching (preview), add `"enableFullCaching": true` to the `diffDiskSettings` section and use API version `2025-04-01` or later.
+To enable full caching, add `"enableFullCaching": true` to the `diffDiskSettings` section and use API version `2025-04-01` or later.
 
 ```json
 {
@@ -120,9 +119,9 @@ To enable full caching (preview), add `"enableFullCaching": true` to the `diffDi
  }
 ```
 
-### VM template deployment with full caching (preview)
+### VM template deployment with full caching
 
-To deploy a VM with ephemeral OS disk with full caching, use API version `2025-04-01` or later and set `enableFullCaching` to `true` in the `diffDiskSettings` section.
+To deploy a VM with an ephemeral OS disk with full caching, use API version `2025-04-01` or later and set `enableFullCaching` to `true` in the `diffDiskSettings` section. The VM size must have 8 vCPUs or more and local storage greater than (2 &times; OS disk size + 1 GiB).
 
 ```json
 {
@@ -131,37 +130,40 @@ To deploy a VM with ephemeral OS disk with full caching, use API version `2025-0
   "location": "East US 2",
   "apiVersion": "2025-04-01",
   "properties": {
-       "storageProfile": {
-            "osDisk": {
-              "diffDiskSettings": {
-                "option": "Local",
-                "placement": "ResourceDisk",
-                "enableFullCaching": true
-              },
-              "caching": "ReadOnly",
-              "createOption": "FromImage",
-              "managedDisk": {
-                "storageAccountType": "StandardSSD_LRS"
-              }
-            },
-            "imageReference": {
-                "publisher": "MicrosoftWindowsServer",
-                "offer": "WindowsServer",
-                "sku": "2016-Datacenter-smalldisk",
-                "version": "latest"
-            },
-            "hardwareProfile": {
-                 "vmSize": "Standard_DS2_v2"
-             }
+    "hardwareProfile": {
+      "vmSize": "Standard_D8ds_v5"
+    },
+    "storageProfile": {
+      "osDisk": {
+        "diffDiskSettings": {
+          "option": "Local",
+          "placement": "ResourceDisk",
+          "enableFullCaching": true
+        },
+        "caching": "ReadOnly",
+        "createOption": "FromImage",
+        "managedDisk": {
+          "storageAccountType": "StandardSSD_LRS"
+        }
       },
-      "osProfile": {
-        "computerNamePrefix": "myvirtualmachine",
-        "adminUsername": "azureuser",
-        "adminPassword": "P@ssw0rd!"
+      "imageReference": {
+        "publisher": "MicrosoftWindowsServer",
+        "offer": "WindowsServer",
+        "sku": "2016-Datacenter-smalldisk",
+        "version": "latest"
       }
+    },
+    "osProfile": {
+      "computerName": "myvirtualmachine",
+      "adminUsername": "azureuser",
+      "adminPassword": "[parameters('adminPassword')]"
     }
- }
+  }
+}
 ```
+
+> [!NOTE]
+> Define `adminPassword` as a `secureString` parameter in the complete template. The example shows the properties relevant to full caching; add the required network configuration before deployment.
 
 ## CLI
 
