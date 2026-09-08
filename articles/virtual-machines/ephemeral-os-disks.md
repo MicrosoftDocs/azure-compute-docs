@@ -148,7 +148,7 @@ Ephemeral OS disk with full caching enhances the standard ephemeral OS disk by f
 
 When a VM is created with full caching enabled:
 
-- The available local storage is reduced by 2&times; the OS disk size, and that space is used to create the OS disk.
+- The available local storage is reduced by 2&times; the OS disk size, and the space is used to create the OS disk.
 - The OS disk is cached in the background after the VM boots up. This caching process ensures no impact on VM creation times.
 
 ### Prerequisites for full caching
