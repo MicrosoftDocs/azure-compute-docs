@@ -139,7 +139,7 @@ A: An ephemeral OS disk with full caching enhances the standard ephemeral OS dis
 
 **Q: What are the prerequisites for full caching?**
 
-A: The local disk size of the VM SKU must be greater than (2 &times; OS disk size + 1 GiB), and the API version must be `2025-04-01` or later. Full caching is supported on VMs with eight or more vCPUs in all N-series, L-series, M-series, and H-series; v5, v6, and v7 D-series, DC-series, E-series, Eb-series, and EC-series; and v6 and v7 F-series. For more details, see [Ephemeral OS disks](ephemeral-os-disks.md#full-caching-mode-for-ephemeral-os-disks).
+A: The local disk size of the VM SKU must be greater than (2 &times; OS disk size + 1 GiB), and the API version must be `2025-04-01` or later. Azure supports full caching on VMs with eight or more vCPUs in all N-series, L-series, M-series, and H-series; v5, v6, and v7 D-series, DC-series, E-series, Eb-series, and EC-series; and v6 and v7 F-series. For more information, see [Ephemeral OS disks](ephemeral-os-disks.md#full-caching-mode-for-ephemeral-os-disks).
 
 **Q: Is there any additional cost for full caching?**
 
