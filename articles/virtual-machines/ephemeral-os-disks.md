@@ -160,7 +160,7 @@ When a VM is created with full caching enabled:
 | API version | `2025-04-01` or later |
 | Supported VM sizes | VMs with eight or more vCPUs in the series listed below |
 
-Full caching is supported on the following VM series:
+Full caching supports the following VM series:
 
 - All N-series, L-series, M-series, and H-series VMs.
 - v5, v6, and v7 D-series, DC-series, E-series, Eb-series, and EC-series VMs.
