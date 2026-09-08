@@ -143,14 +143,7 @@ Test with the actual engineering or visualization application. A simple graphics
 
 CycleCloud Workspace for Slurm version 2026.03.10 introduced ThinLinc integration with Open OnDemand. Use this integration instead of adding an unverified ThinLinc CycleCloud project to a cluster template.
 
-To prepare the environment:
-
-1. Review the [CycleCloud Workspace for Slurm release notes](/azure/cyclecloud/release-notes/ccws/2026-03-10) and deploy a current supported release.
-1. Follow the [CycleCloud Workspace for Slurm deployment quickstart](/azure/cyclecloud/qs-deploy-ccws). Enable Open OnDemand during deployment.
-1. Configure shared home and project storage for interactive and compute nodes.
-1. Register and configure the Microsoft Entra application required by Open OnDemand.
-1. Follow [Configure Open OnDemand with CycleCloud](/azure/cyclecloud/how-to/ccws/configure-open-ondemand).
-1. Validate that an authorized user can start an interactive desktop, access shared data, and submit a Slurm job.
+For the supported deployment, access, and validation procedure, see [Configure ThinLinc with Open OnDemand in CycleCloud Workspace for Slurm](/azure/cyclecloud/how-to/ccws/configure-thinlinc).
 
 Open OnDemand requires direct connectivity to the workspace virtual network. Azure Bastion tunneling isn't supported for the Open OnDemand access scenario. Use a point-to-site VPN or ExpressRoute connection as described in the CycleCloud Workspace for Slurm planning guidance.
 
