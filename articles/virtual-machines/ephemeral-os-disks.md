@@ -165,7 +165,7 @@ When a VM is created with full caching enabled:
 To enable full caching, set the `enableFullCaching` property to `true` in the `diffDiskSettings` section of your deployment template or REST API call. See [Deploy Ephemeral OS disks](ephemeral-os-disks-deploy.md) for detailed deployment instructions.
 
 > [!NOTE]
-> Full caching mode is generally available in all Azure public regions. Support for VMs with two or four vCPUs is planned for a future release. No extra cost is charged for full caching beyond the standard VM and disk costs.
+> Full caching mode is generally available in all Azure public regions. Support for VMs with two or four vCPUs is planned for a future release. There's no extra charge for full caching beyond the standard VM and disk costs.
 
 ## SSD storage account support for Ephemeral OS disks
 
