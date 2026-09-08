@@ -135,7 +135,7 @@ A: Yes, you can create VMs with Ephemeral OS Disk using REST, Templates, PowerSh
 
 **Q: What is ephemeral OS disk with full caching?**
 
-A: Ephemeral OS disk with full caching enhances the standard Ephemeral OS Disk by fully caching the OS disk onto the local disk. This removes the dependency on remote storage in steady state, improving resilience during remote storage outages. With partial caching (the default mode), writes go to a diff disk on local storage and reads for original files come from a remote base disk. With full caching, the entire OS disk is cached locally, eliminating remote read/write latency.
+A: An ephemeral OS disk with full caching enhances the standard ephemeral OS disk by fully caching the OS disk onto the local disk. This caching removes the dependency on remote storage in steady state, improving resilience during remote storage outages. By using partial caching (the default mode), writes go to a different disk on local storage and reads for original files come from a remote base disk. By using full caching, the entire OS disk is cached locally, eliminating remote read and write latency.
 
 **Q: What are the prerequisites for full caching?**
 
