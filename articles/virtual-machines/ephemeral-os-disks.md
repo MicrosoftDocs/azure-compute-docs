@@ -158,7 +158,7 @@ When a VM is created with full caching enabled:
 | OS disk must be stateless | Full caching is designed for stateless workloads |
 | VM SKU eligibility | Local disk size must be greater than (2 &times; OS disk size + 1 GiB) |
 | API version | `2025-04-01` or later |
-| Supported VM sizes | VMs with eight or more vCPUs in the series listed below |
+| Supported VM sizes | VMs with eight or more vCPUs in the following series. |
 
 Full caching supports the following VM series:
 
