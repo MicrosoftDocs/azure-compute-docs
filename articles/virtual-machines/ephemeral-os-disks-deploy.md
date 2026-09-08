@@ -79,7 +79,7 @@ The process to create a scale set that uses an ephemeral OS disk is to add the `
 > Replace all the other values accordingly.
 
 ## VM template deployment with partial caching
-You can deploy a VM with an ephemeral OS disk using a template. The process to create a VM that uses ephemeral OS disks is to add the `diffDiskSettings` property to Microsoft.Compute/virtualMachines resource type in the template. Also, the caching policy must be set to `ReadOnly` for the ephemeral OS disk. Placement can be changed to `CacheDisk` for OS cache disk placement, `ResourceDisk` for temp disk placement, or `NvmeDisk` for NVMe disk placement.
+You can deploy a VM with an ephemeral OS disk by using a template. To create a VM that uses ephemeral OS disks, add the `diffDiskSettings` property to the `Microsoft.Compute/virtualMachines` resource type in the template. Also, set the caching policy to `ReadOnly` for the ephemeral OS disk. Change the placement to `CacheDisk` for OS cache disk placement, `ResourceDisk` for temp disk placement, or `NvmeDisk` for NVMe disk placement.
 
 ```json
 {
