@@ -32,7 +32,7 @@ If the option for using an ephemeral disk or OS cache placement or Temp disk pla
 ## Scale set template deployment with partial caching
 
 The process to create a scale set that uses an ephemeral OS disk is to add the `diffDiskSettings` property to the
-`Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile` resource type in the template. Also, the caching policy must be set to `ReadOnly` for the ephemeral OS disk. Placement can be changed to `CacheDisk` for OS cache disk placement, `ResourceDisk` for temp disk placement, or `NvmeDisk` for NVMe disk placement.
+`Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile` resource type in the template. Also, set the caching policy to `ReadOnly` for the ephemeral OS disk. Change the placement to `CacheDisk` for OS cache disk placement, `ResourceDisk` for temp disk placement, or `NvmeDisk` for NVMe disk placement.
 
 ```json
 {
