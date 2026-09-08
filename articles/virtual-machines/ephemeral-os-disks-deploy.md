@@ -22,7 +22,7 @@ This article shows you how to create a virtual machine or virtual machine scale 
 
 ## Portal
 
-In the Azure portal, you can choose to use ephemeral disks when deploying a virtual machine or virtual machine scale sets by opening the **Advanced** section of the **Disks** tab. For choosing placement of Ephemeral OS disk, select **OS cache placement**, **Temp disk placement**, or **NVMe disk placement**.
+In the Azure portal, you can choose to use ephemeral disks when deploying a virtual machine or virtual machine scale sets. Open the **Advanced** section of the **Disks** tab. For choosing placement of Ephemeral OS disk, select **OS cache placement**, **Temp disk placement**, or **NVMe disk placement**.
 
 ![Screenshot showing the radio button for choosing to use an ephemeral OS disk](./media/virtual-machines-common-ephemeral/ephemeral-portal-temp.png)
 
