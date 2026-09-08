@@ -145,10 +145,6 @@ A: The local disk size of the VM SKU must be greater than (2 &times; OS disk siz
 
 A: No, there's no additional cost charged for full caching beyond the standard VM and disk costs.
 
-**Q: How long does full caching take to complete?**
-
-A: The OS disk is cached in the background after the VM boots up, so there's no impact to VM create times. Full OS caching typically completes within 12 hours; however, a 12-hour waiting period is suggested as a safe limit before running any disaster recovery drills.
-
 **Q: What is the current availability status of full caching?**
 
 A: Ephemeral OS disk with full caching is generally available in all Azure public regions for supported VM sizes with eight or more vCPUs. Support for VMs with two or four vCPUs is planned for a future release.
