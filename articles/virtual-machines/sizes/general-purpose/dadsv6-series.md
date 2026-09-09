@@ -149,5 +149,6 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 
 > [!NOTE]
 > This VM series will only work on OS images that support NVMe. If your current OS image doesn't have NVMe support, you'll see an error message. [NVMe](../../../virtual-machines/enable-nvme-interface.md) support is available on the most popular OS images, and we're continuously improving OS image compatibility.
+> Some Azure services refer to this VM family as **Dadv6** rather than **Dadsv6**. This naming inconsistency doesn't affect VM capabilities, including Premium Storage support.
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]

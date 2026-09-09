@@ -27,7 +27,7 @@ The application health status is used to ensure that new virtual machines (VM) c
 
 **Configure the scale set with at least two availability zones**
 
-The Virtual Machine Scale Set must be zone-spanning with at least two [availability zones](./virtual-machine-scale-sets-use-availability-zones.md) configured (for example, `zones = [1, 2]`). All VMs in the scale set must be assigned to an availability zone. Scale sets that contain regional (non-zonal) VMs don't qualify for automatic zone balance.  This ensures that the VMs can be distributed across multiple zones for resiliency.
+The Virtual Machine Scale Set must be zone-spanning with at least two [availability zones](virtual-machine-scale-sets-use-availability-zones.md#zone-spanning) configured. All VMs in the scale set must be assigned to an availability zone. Scale sets that contain regional (non-zonal) VMs don't qualify for automatic zone balance.  This ensures that the VMs can be distributed across multiple zones for resilience.
 
 **Use a supported Compute API version**
 
@@ -43,11 +43,11 @@ The subscription must be registered with the Azure Feature Exposure Control (AFE
 1. In the search box, enter _subscriptions_ and select **Subscriptions**.
 1. Select the link for your subscription's name.
 1. From the left menu, under **Settings** select **Preview features**.
-1. Filter for **AutomaticVMSSZoneRebalancing** and select it
-1. Select **Register**
+1. Filter for **AutomaticVMSSZoneRebalancing** and select it.
+1. Select **Register**.
 :::image type="content" source=".\media\virtual-machine-scale-sets-auto-zone-balance/auto-zone-balance-register-afec.png" alt-text="Screenshot of Azure portal with Register button for Automatic Zone Balancing preview flag." lightbox=".\media\virtual-machine-scale-sets-auto-zone-balance/auto-zone-balance-register-afec.png":::
 
-1. Select **OK**
+1. Select **OK**.
 
 ### [Azure CLI](#tab/CLI-1)
 
