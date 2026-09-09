@@ -105,11 +105,11 @@ As an alternative to building your own VHD, SUSE also publishes BYOS (bring your
 
 4. Confirm that the rebuilt initramfs package includes both NVMe drivers. This check confirms the image is ready:
 
-```bash
-sudo lsinitrd /boot/initrd-$(uname -r) | grep -E 'nvme(_core)?\.ko'
-```
+    ```bash
+    sudo lsinitrd /boot/initrd-$(uname -r) | grep -E 'nvme(_core)?\.ko'
+    ```
 
-         The output must list both the `nvme` and `nvme_core` drivers. After the image boots on an NVMe VM, verify the runtime timeout by running `cat /sys/module/nvme_core/parameters/io_timeout`; the expected value is `240`.
+    The output must list both the `nvme` and `nvme_core` drivers. After the image boots on an NVMe VM, verify the runtime timeout by running `cat /sys/module/nvme_core/parameters/io_timeout`; the expected value is `240`.
 
 5. Register your SUSE Linux Enterprise system to allow it to download updates and install packages.
 
