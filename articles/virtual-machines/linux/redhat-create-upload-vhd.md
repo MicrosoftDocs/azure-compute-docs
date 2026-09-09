@@ -156,9 +156,9 @@ For more information about eligibility requirements for participating in Red Hat
 
 1. Confirm that the rebuilt initramfs package includes both NVMe drivers. This check confirms the image is ready:
 
-         ```bash
-         sudo lsinitrd /boot/initramfs-$(uname -r).img | grep -E 'nvme(_core)?\.ko'
-         ```
+```bash
+sudo lsinitrd /boot/initramfs-$(uname -r).img | grep -E 'nvme(_core)?\.ko'
+```
 
          The output must list both the `nvme` and `nvme_core` drivers. After the image boots on an NVMe VM, verify the runtime timeout by running `cat /sys/module/nvme_core/parameters/io_timeout`; the expected value is `240`.
 
