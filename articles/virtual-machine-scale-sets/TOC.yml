@@ -131,8 +131,14 @@
   - name: vCPU quotas
     href: ../virtual-machines/linux/quotas.md
     maintainContext: true
-  - name: Availability Zones
-    href: virtual-machine-scale-sets-use-availability-zones.md
+  - name: Availability zones
+    items:
+      - name: Availability zone options
+        href: virtual-machine-scale-sets-use-availability-zones.md
+      - name: Customer-selected availability zones
+        href: virtual-machine-scale-sets-configure-customer-selected-zones.md
+      - name: Automatic zone placement (Preview)
+        href: virtual-machine-scale-sets-automatic-zone-placement.md
   - name: Zone Balance
     items:
       - name: Zone balancing in virtual machine scale sets
