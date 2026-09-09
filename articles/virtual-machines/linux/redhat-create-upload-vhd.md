@@ -159,7 +159,6 @@ For more information about eligibility requirements for participating in Red Hat
 ```bash
 sudo lsinitrd /boot/initramfs-$(uname -r).img | grep -E 'nvme(_core)?\.ko'
 ```
-
          The output must list both the `nvme` and `nvme_core` drivers. After the image boots on an NVMe VM, verify the runtime timeout by running `cat /sys/module/nvme_core/parameters/io_timeout`; the expected value is `240`.
 
 1. For both SCSI and NVMe images, use file-system UUIDs or another persistent identifier in `/etc/fstab`. Don't use `/dev/sd*` or `/dev/nvme*` device names, because device names can change across reboots or when the disk controller changes.
@@ -745,9 +744,9 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
 
 1. Confirm that the rebuilt initramfs package includes both NVMe drivers. This check confirms the image is ready:
 
-         ```bash
-         sudo lsinitrd /boot/initramfs-$(uname -r).img | grep -E 'nvme(_core)?\.ko'
-         ```
+```bash
+sudo lsinitrd /boot/initramfs-$(uname -r).img | grep -E 'nvme(_core)?\.ko'
+```
 
          The output must list both the `nvme` and `nvme_core` drivers. After the image boots on an NVMe VM, verify the runtime timeout by running `cat /sys/module/nvme_core/parameters/io_timeout`; the expected value is `240`.
 
@@ -973,10 +972,9 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
 
 1. Confirm that the rebuilt initramfs package includes both NVMe drivers. This check confirms the image is ready:
 
-         ```bash
-         sudo lsinitrd /boot/initramfs-$(uname -r).img | grep -E 'nvme(_core)?\.ko'
-         ```
-
+```bash
+sudo lsinitrd /boot/initramfs-$(uname -r).img | grep -E 'nvme(_core)?\.ko'
+```
          The output must list both the `nvme` and `nvme_core` drivers. After the image boots on an NVMe VM, verify the runtime timeout by running `cat /sys/module/nvme_core/parameters/io_timeout`; the expected value is `240`.
 
 1. For both SCSI and NVMe images, use file-system UUIDs or another persistent identifier in `/etc/fstab`. Don't use `/dev/sd*` or `/dev/nvme*` device names, because device names can change across reboots or when the disk controller changes.
@@ -1295,10 +1293,9 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
 
 1. Confirm that the rebuilt initramfs package includes both NVMe drivers. This check confirms the image is ready:
 
-         ```bash
-         sudo lsinitrd /boot/initramfs-$(uname -r).img | grep -E 'nvme(_core)?\.ko'
-         ```
-
+```bash
+sudo lsinitrd /boot/initramfs-$(uname -r).img | grep -E 'nvme(_core)?\.ko'
+```
          The output must list both the `nvme` and `nvme_core` drivers. After the image boots on an NVMe VM, verify the runtime timeout by running `cat /sys/module/nvme_core/parameters/io_timeout`; the expected value is `240`.
 
 1. For both SCSI and NVMe images, use file-system UUIDs or another persistent identifier in `/etc/fstab`. Don't use `/dev/sd*` or `/dev/nvme*` device names, because device names can change across reboots or when the disk controller changes.
