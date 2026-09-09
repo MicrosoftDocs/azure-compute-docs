@@ -76,7 +76,7 @@ The VM deployment process is similar to the standard deployment process, the onl
 
 ### Enable automatic key rotation on an existing disk encryption set
 
-1. Navigate to the disk encryption set that you want to enable [automatic key rotation](disk-encryption.md#automatic-key-rotation-of-customer-managed-keys) on.
+1. Go to the disk encryption set that you want to enable [automatic key rotation](disk-encryption.md#automatic-rotation-of-customer-managed-keys) on.
 
 1. Under **Settings**, select **Key**.
 

@@ -16,7 +16,7 @@ ms.service: azure-disk-storage
 Azure Storage Explorer contains a rich set of features that allows you to:
 
 - Upload, download, and copy managed disks.
-- Create snapshots from operating system or data disk virtual hard disk.
+- Create snapshots of operating system (OS) disks and data disks.
 - Migrate data from on-premises to Azure.
 - Migrate data across Azure regions.
 
@@ -25,7 +25,7 @@ Azure Storage Explorer contains a rich set of features that allows you to:
 To complete this article, you'll need:
 
 - An Azure subscription.
-- At least one Azure managed disk.
+- For downloading, copying, or creating a snapshot, at least one Azure managed disk.
 - The latest version of [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/).
 
 If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
@@ -95,7 +95,7 @@ Follow the steps in this section to download a managed disk to an on-premises VH
 
 ## Copy a managed disk
 
-With Storage Explorer, you can copy a manged disk within or across regions. To copy a disk:
+By using Storage Explorer, you can copy a managed disk within or across regions. To copy a disk:
 
 1. In the **Explorer** pane, expand the **Disks** dropdown and select the resource group that contains the disk you want to copy.
 
@@ -121,7 +121,7 @@ With Storage Explorer, you can copy a manged disk within or across regions. To c
 
     [![Screenshot of Azure Storage Explorer highlighting the location of the Activities pane with copy and paste status messages.](media/disks-upload-vhd-to-managed-disk-storage-explorer/activity-copying-sml.png)](media/disks-upload-vhd-to-managed-disk-storage-explorer/activity-copying-lrg.png#lightbox)
 
-## Create a snapshot
+## Create a snapshot of a managed disk
 
 1. In the **Explorer** pane, expand **Disks** and select the resource group that contains the disk you want to snapshot.
 

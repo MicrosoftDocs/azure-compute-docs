@@ -14,7 +14,7 @@ ms.custom: devx-track-azurecli, devx-track-azurepowershell, references_regions
 
 This article covers building a solution where you encrypt managed disks with customer-managed keys using Azure Key Vaults stored in a different Microsoft Entra tenant. This configuration can be ideal for several scenarios, one example being Azure support for service providers that want to offer bring-your-own encryption keys to their customers where resources from the service provider's tenant are encrypted with keys from their customer's tenant.
 
-A disk encryption set with federated identity in a cross-tenant CMK workflow spans service provider/ISV tenant resources (disk encryption set, managed identities, and app registrations) and customer tenant resources (enterprise apps, user role assignments, and key vault). In this case, the source Azure resource is the service provider's disk encryption set.
+A disk encryption set with federated identity in a cross-tenant customer-managed key workflow spans service provider/ISV tenant resources (disk encryption set, managed identities, and app registrations) and customer tenant resources (enterprise apps, user role assignments, and key vault). In this case, the source Azure resource is the service provider's disk encryption set.
 
 If you have questions about cross-tenant customer-managed keys with managed disks, email <crosstenantcmkvteam@service.microsoft.com>.
 
@@ -22,7 +22,7 @@ If you have questions about cross-tenant customer-managed keys with managed disk
 
 - Managed disks and the customer's Key Vault must be in the same Azure region, but they can be in different subscriptions.
 
-## Ultra Disk and Premium SSD v2
+## Cross-tenant customer-managed key availability for Ultra Disk and Premium SSD v2
 
 The feature is available for Ultra Disks and Premium SSD v2 disks in all regions except:
 
@@ -35,7 +35,7 @@ The feature is available for Ultra Disks and Premium SSD v2 disks in all regions
 
 [!INCLUDE [entra-msi-cross-tenant-cmk-create-identities-authorize-key-vault](~/reusable-content/ce-skilling/azure/includes/entra-msi-cross-tenant-cmk-create-identities-authorize-key-vault.md)]
 
-## Create a disk encryption set
+## Create a disk encryption set with cross-tenant customer-managed keys
 
 Now that you've created your Azure Key Vault and performed the required Microsoft Entra configurations, deploy a disk encryption set configured to work across tenants and associate it with a key in the key vault. You can do this using the Azure portal, Azure PowerShell, or Azure CLI. You can also use an [ARM template](#use-an-arm-template) or [REST API](#use-rest-api).
 

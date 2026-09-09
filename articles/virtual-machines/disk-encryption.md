@@ -1,6 +1,6 @@
 ---
 title: Server-side encryption of Azure managed disks
-description: Azure Storage protects your data by encrypting it at rest before persisting it to Storage clusters. You can use customer-managed keys to manage encryption with your own keys, or you can rely on Microsoft-managed keys for the encryption of your managed disks.
+description: Azure Storage protects your data by encrypting it at rest before persisting it to Storage clusters. You can use customer-managed keys to manage encryption with your own keys, or you can rely on platform-managed keys for the encryption of your managed disks.
 author: roygara
 ms.date: 04/02/2026
 ms.topic: concept-article
@@ -28,7 +28,7 @@ Azure Storage encryption doesn't impact the performance of managed disks and the
 > Azure VMs that are version 5 and above (such as Dsv5 or Dsv6) automatically encrypt their temporary disks and (if in use) their ephemeral OS disks with encryption at rest.
 
 
-## About encryption key management
+## Azure managed disk encryption key management
 
 You can rely on platform-managed keys for the encryption of your managed disk, or you can manage encryption using your own keys. If you choose to manage encryption with your own keys, you can specify a *customer-managed key* to use for encrypting and decrypting all data in managed disks. 
 
@@ -85,7 +85,7 @@ The following list explains the diagram in more detail:
 
 To revoke access to customer-managed keys, see [Azure Key Vault PowerShell](/powershell/module/az.keyvault/) and [Azure Key Vault CLI](/cli/azure/keyvault). Revoking access effectively blocks access to managed disks that rely on that key, as the encryption key is inaccessible by Azure Storage.
 
-#### Automatic key rotation of customer-managed keys
+#### Automatic rotation of customer-managed keys
 
 Generally, if you're using customer-managed keys, you should enable automatic key rotation to the latest key version. Automatic key rotation helps ensure your keys are secure. A disk references a key via its disk encryption set. When you enable automatic rotation for a disk encryption set, the system will automatically update all managed disks, snapshots, and images referencing the disk encryption set to use the new version of the key within one hour. To learn how to enable customer-managed keys with automatic key rotation, see [Set up an Azure Key Vault and DiskEncryptionSet with automatic key rotation](windows/disks-enable-customer-managed-keys-powershell.md#set-up-an-azure-key-vault-and-diskencryptionset-with-automatic-key-rotation).
 
@@ -103,7 +103,7 @@ Customer-managed keys have the following restrictions. Pay special attention to 
 
 [!INCLUDE [virtual-machines-managed-disks-customer-managed-keys-restrictions](./includes/virtual-machines-managed-disks-customer-managed-keys-restrictions.md)]
 
-#### Supported regions
+#### Supported regions for customer-managed keys
 
 Customer-managed keys are available in all regions that managed disks are available.
 
@@ -122,7 +122,7 @@ Temporary disks and ephemeral OS disks are encrypted at rest with platform-manag
 
 ### Encryption at host restrictions
 
-Before you enable encryption at host for production workloads, review these restrictions:
+Before you enable encryption at host for production workloads, review the following restrictions:
 - VM size support varies by region and generation.
 - Encryption behavior differs for temporary disks, ephemeral OS disks, and caches.
 - Check workload prerequisites before applying at scale.
@@ -148,9 +148,6 @@ To enable double encryption at rest for managed disks, see [Enable double encryp
 ## Encryption at host versus Azure disk encryption
 
 [Azure Disk Encryption](../virtual-machines/disk-encryption-overview.md) leverages either the [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) feature of Linux or the [BitLocker](/windows/security/information-protection/bitlocker/bitlocker-overview) feature of Windows to encrypt managed disks with customer-managed keys within the guest VM.  Server-side encryption with encryption at host improves on ADE. [With encryption at host](#encryption-at-host---end-to-end-encryption-for-your-vm-data), data for your temporary disk and OS/data disk caches are stored on that VM host. After enabling encryption at host, all this data is encrypted at rest and flows encrypted to the Storage service, where it's persisted. Essentially, encryption at host encrypts your data from end-to-end. Encryption at host doesn't use your VM's CPU and doesn't impact your VM's performance.
-
-> [!IMPORTANT]
-> Customer-managed keys rely on managed identities for Azure resources, a feature of Microsoft Entra ID. When you configure customer-managed keys, the system automatically assigns a managed identity to your resources. If you subsequently move the subscription, resource group, or managed disk from one Microsoft Entra directory to another, the managed identity associated with managed disks isn't transferred to the new tenant, so customer-managed keys might no longer work. For more information, see [Transferring a subscription between Microsoft Entra directories](/azure/active-directory/managed-identities-azure-resources/known-issues#transferring-a-subscription-between-azure-ad-directories).
 
 ## Next steps
 
