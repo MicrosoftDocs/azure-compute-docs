@@ -2122,6 +2122,8 @@
         href: trusted-launch-existing-vmss.md
     - name: Boot integrity monitoring
       href: boot-integrity-monitoring-overview.md
+    - name: Protect VM IP with attestation-gated Secure Key Release
+      href: secure-key-release-pattern-trusted-launch.md
     - name: Trusted Launch FAQs
       href: trusted-launch-faq.md
     - name: Secure Boot UEFI Keys
