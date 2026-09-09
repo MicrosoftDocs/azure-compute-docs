@@ -59,7 +59,7 @@ To migrate from SCSI to NVMe, follow these high-level steps:
 3. Convert your VM to NVMe.
 4. Verify the conversion.
 > [!NOTE]
-> Customized VMs that run third-party software capable of modifying boot-time behavior, storage drivers, filter drivers, or disk enumeration are not currently a supported migration scenario. Examples include certain backup, security, endpoint protection, and storage management products. For these configurations, Azure Support may have limited ability to diagnose or remediate migration failures. Test the conversion on a representative non-production VM before proceeding with production workloads.
+> Customized VMs that run third-party software capable of modifying boot-time behavior, storage drivers, filter drivers, or disk enumeration aren't currently a supported migration scenario. Examples include certain backup, security, endpoint protection, and storage management products. For these configurations, Azure Support might have limited ability to diagnose or remediate migration failures. Test the conversion on a representative non-production VM before proceeding with production workloads.
 >
 
 ### 1. Check if your virtual machine series supports NVMe
