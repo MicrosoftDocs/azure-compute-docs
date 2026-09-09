@@ -230,7 +230,7 @@ sudo lsinitrd /boot/initrd-$(uname -r) | grep -E 'nvme(_core)?\.ko'
     sudo rm -f /etc/sysconfig/network/ifcfg-eth*
     ```
 
-14. We recommend that you edit the */etc/sysconfig/network/dhcp* file and change the `DHCLIENT_SET_HOSTNAME` parameter to the following:
+14. Edit the */etc/sysconfig/network/dhcp* file and change the `DHCLIENT_SET_HOSTNAME` parameter to the following value:
 
     ```config
     DHCLIENT_SET_HOSTNAME="no"
