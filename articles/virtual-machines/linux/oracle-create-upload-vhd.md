@@ -258,7 +258,7 @@ Preparing an Oracle Linux 7 VM for Azure is similar to Oracle Linux 6, but sever
 
          Each command must return module details. If either module isn't found, install or enable it by following the Oracle Linux documentation before you continue.
 
-     1. Confirm that both NVMe drivers are packaged into the rebuilt initramfs. This is the authoritative readiness check for the image:
+1. Confirm that the rebuilt initramfs package includes both NVMe drivers. This check confirms the image is ready:
 
          ```bash
          sudo lsinitrd /boot/initramfs-$(uname -r).img | grep -E 'nvme(_core)?\.ko'
