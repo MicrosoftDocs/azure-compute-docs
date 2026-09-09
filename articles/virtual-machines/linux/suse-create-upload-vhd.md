@@ -85,7 +85,7 @@ As an alternative to building your own VHD, SUSE also publishes BYOS (bring your
     sudo /usr/sbin/grub2-mkconfig -o /boot/grub2/grub.cfg
     ```
 
-    **Only if you're creating an image for a remote NVMe disk controller**, add `nvme_core.io_timeout=240` to `GRUB_CMDLINE_LINUX_DEFAULT` in step 2, add `nvme nvme_core` to the `add_drivers` value in */etc/dracut.conf.d/azure.conf*, and then rebuild GRUB and initramfs. Otherwise, omit these settings.
+3. **Only if you're creating an image for a remote NVMe disk controller**, add `nvme_core.io_timeout=240` to `GRUB_CMDLINE_LINUX_DEFAULT` in step 2, add `nvme nvme_core` to the `add_drivers` value in */etc/dracut.conf.d/azure.conf*, and then rebuild GRUB and initramfs. Otherwise, omit these settings.
 
     ```bash
     sudo /usr/sbin/grub2-mkconfig -o /boot/grub2/grub.cfg
@@ -103,7 +103,7 @@ As an alternative to building your own VHD, SUSE also publishes BYOS (bring your
 
          Each command must return module details. If either module isn't found, install or enable it by following the SUSE documentation before you continue.
 
-1. Confirm that the rebuilt initramfs package includes both NVMe drivers. This check confirms the image is ready:
+4. Confirm that the rebuilt initramfs package includes both NVMe drivers. This check confirms the image is ready:
 
          ```bash
          sudo lsinitrd /boot/initrd-$(uname -r) | grep -E 'nvme(_core)?\.ko'
@@ -111,15 +111,15 @@ As an alternative to building your own VHD, SUSE also publishes BYOS (bring your
 
          The output must list both the `nvme` and `nvme_core` drivers. After the image boots on an NVMe VM, verify the runtime timeout by running `cat /sys/module/nvme_core/parameters/io_timeout`; the expected value is `240`.
 
-3. Register your SUSE Linux Enterprise system to allow it to download updates and install packages.
+5. Register your SUSE Linux Enterprise system to allow it to download updates and install packages.
 
-4. Update the system with the latest patches:
+6. Update the system with the latest patches:
 
     ```bash
     sudo zypper update
     ```
 
-5. Install the Azure Linux VM Agent (`waagent`) and cloud-init:
+7. Install the Azure Linux VM Agent (`waagent`) and cloud-init:
 
     ```bash
     sudo SUSEConnect -p sle-module-public-cloud/15.2/x86_64  (SLES 15 SP2)
@@ -128,7 +128,7 @@ As an alternative to building your own VHD, SUSE also publishes BYOS (bring your
     sudo zypper install cloud-init
     ```
 
-6. Enable `waagent` and cloud-init to start on boot:
+8. Enable `waagent` and cloud-init to start on boot:
 
     ```bash
     sudo systemctl enable  waagent
@@ -140,7 +140,7 @@ As an alternative to building your own VHD, SUSE also publishes BYOS (bring your
     sudo cloud-init clean
     ```
 
-7. Update the cloud-init configuration:
+9. Update the cloud-init configuration:
 
     ```bash
     cat <<EOF | sudo tee /etc/cloud/cloud.cfg.d/91-azure_datasource.cfg
@@ -168,7 +168,7 @@ As an alternative to building your own VHD, SUSE also publishes BYOS (bring your
     sudo sed -i '/cloud_init_modules/a\\ - disk_setup' /etc/cloud/cloud.cfg
     ```
 
-8. If you want to mount, format, and create a swap partition, one option is to pass in a cloud-init configuration every time you create a VM.
+10. If you want to mount, format, and create a swap partition, one option is to pass in a cloud-init configuration every time you create a VM.
 
     Another option is to use a cloud-init directive in the image to configure swap space every time the VM is created:
 
@@ -196,7 +196,7 @@ As an alternative to building your own VHD, SUSE also publishes BYOS (bring your
     EOF
     ```
 
-9. Previously, the Azure Linux Agent was used to automatically configure swap space by using the local resource disk that's attached to the virtual machine after the virtual machine is provisioned on Azure. Because cloud-init now handles this step, you *must not* use the Azure Linux Agent to format the resource disk or create the swap file. Use these commands to modify */etc/waagent.conf* appropriately:
+11. Previously, the Azure Linux Agent was used to automatically configure swap space by using the local resource disk that's attached to the virtual machine after the virtual machine is provisioned on Azure. Because cloud-init now handles this step, you *must not* use the Azure Linux Agent to format the resource disk or create the swap file. Use these commands to modify */etc/waagent.conf* appropriately:
 
     ```bash
     sudo sed -i 's/Provisioning.UseCloudInit=n/Provisioning.UseCloudInit=auto/g' /etc/waagent.conf
@@ -208,7 +208,7 @@ As an alternative to building your own VHD, SUSE also publishes BYOS (bring your
     > [!NOTE]
     > If you're using a cloud-init version earlier than 21.2, make sure the `udf` module is enabled. Removing or disabling it will cause a provisioning or boot failure. Cloud-init version 21.2 or later removes the UDF requirement.
 
-10. For both SCSI and NVMe images, ensure that the */etc/fstab* file uses a UUID (`by-uuid`) or another persistent identifier. Don't use `/dev/sd*` or `/dev/nvme*` device names, because device names can change across reboots or when the disk controller changes.
+12. For both SCSI and NVMe images, ensure that the */etc/fstab* file uses a UUID (`by-uuid`) or another persistent identifier. Don't use `/dev/sd*` or `/dev/nvme*` device names, because device names can change across reboots or when the disk controller changes.
 
      1. List the block devices and their persistent identifiers so that you can compare them with the entries in `/etc/fstab`:
 
@@ -222,7 +222,7 @@ As an alternative to building your own VHD, SUSE also publishes BYOS (bring your
          sudo findmnt --verify --verbose
          ```
 
-11. Remove udev rules and network adapter configuration files to avoid generating static rules for the Ethernet interfaces. These rules can cause problems when you're cloning a virtual machine in Microsoft Azure or Hyper-V.
+13. Remove udev rules and network adapter configuration files to avoid generating static rules for the Ethernet interfaces. These rules can cause problems when you're cloning a virtual machine in Microsoft Azure or Hyper-V.
 
     ```bash
     sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
@@ -230,32 +230,32 @@ As an alternative to building your own VHD, SUSE also publishes BYOS (bring your
     sudo rm -f /etc/sysconfig/network/ifcfg-eth*
     ```
 
-12. We recommend that you edit the */etc/sysconfig/network/dhcp* file and change the `DHCLIENT_SET_HOSTNAME` parameter to the following:
+14. We recommend that you edit the */etc/sysconfig/network/dhcp* file and change the `DHCLIENT_SET_HOSTNAME` parameter to the following:
 
     ```config
     DHCLIENT_SET_HOSTNAME="no"
     ```
 
-13. In the */etc/sudoers* file, comment out or remove the following lines if they exist:
+15. In the */etc/sudoers* file, comment out or remove the following lines if they exist:
 
     ```output
     Defaults targetpw   # Ask for the password of the target user i.e. root
     ALL    ALL=(ALL) ALL   # WARNING! Only use this setting together with 'Defaults targetpw'!
     ```
 
-14. Ensure that the Secure Shell (SSH) server is installed and configured to start at boot time:
+16. Ensure that the Secure Shell (SSH) server is installed and configured to start at boot time:
 
     ```bash
     sudo systemctl enable sshd
     ```
 
-15. Clean the cloud-init stage:
+17. Clean the cloud-init stage:
 
     ```bash
     sudo cloud-init clean --seed --logs
     ```
 
-16. Run the following commands to deprovision the virtual machine and prepare it for provisioning on Azure.
+18. Run the following commands to deprovision the virtual machine and prepare it for provisioning on Azure.
 
     If you're migrating a specific virtual machine and don't want to create a generalized image, skip the deprovisioning step.
 
