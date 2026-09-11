@@ -131,18 +131,29 @@ Constrain how the VM talks to the trust anchors and data. Use private endpoints 
 
 Everything above trusts the host. If you can't trust the hypervisor, run the workload on a Confidential VM (AMD SEV-SNP or Intel TDX). Memory encryption prevents the host from reading guest memory, and SKR upgrades from vTPM measured-boot claims to hardware-TEE claims in the release policy. This layer is the **only** layer that defends threat direction B. It's off by default because it narrows SKU, GPU, and region availability and adds cost.
 
-### The cross-tenant trust boundary
+## Cross-tenant identity
 
-The publisher holds the trust anchors—the Key Vault (or Managed HSM) and the attestation provider—in the **publisher's** tenant, outside the consumer's RBAC. The attested VM runs in the **consumer's** tenant. The VM's workload identity crosses the tenant boundary by using a [multitenant application](/entra/identity-platform/single-and-multi-tenant-apps) with a [federated identity credential](/entra/workload-id/workload-identity-federation): the VM's managed identity federates to the publisher's application, which can obtain a token in the publisher's tenant to call Key Vault.
+The publisher holds the trust anchors—Key Vault (or Managed HSM) and the attestation provider—in the **publisher's** tenant, outside the consumer's RBAC. The attested VM runs in the **consumer's** tenant and has to call Key Vault across that boundary. Two platform constraints rule out the obvious approaches:
+
+- A managed identity exists in exactly one tenant. The publisher's tenant won't recognize, or issue tokens to, a managed identity that lives in the consumer's tenant.
+- An Azure RBAC role assignment can only target an identity in the resource's own tenant, so you can't grant the consumer's managed identity a role on the publisher's Key Vault.
+
+A [federated identity credential](/entra/workload-id/workload-identity-federation) (FIC) can't bridge the gap directly either: Entra ID doesn't allow a FIC to trust tokens issued by another Entra tenant, so a publisher-owned application can't federate the consumer's managed identity across the boundary.
+
+The pattern that works places the bridging identity—a [multitenant application](/entra/identity-platform/single-and-multi-tenant-apps)—on the consumer side:
+
+1. The **consumer** registers a multitenant application in their tenant and configures a **same-tenant** FIC on it that trusts the VM's managed identity. A FIC that trusts an identity in the same tenant is allowed.
+1. The **publisher** onboards that application into its own tenant by provisioning a service principal for it and granting that principal the **Key Vault Crypto Service Release User** role on the key. This deliberate, per-consumer onboarding step is where the publisher grants an external actor access to its tenant.
+1. At runtime, the VM's managed identity gets a token from IMDS, exchanges it through the FIC to authenticate as the multitenant application, and calls Key Vault's `/release` endpoint with the MAA token in the request body.
 
 > [!IMPORTANT]
-> The identity exchange isn't the security boundary. Even with a valid publisher-tenant token, Key Vault still refuses to release the key unless the presented MAA token satisfies the release policy. The security boundary is **SKR + attestation** (Layer 1). The identity layer only gets the request to the right vault.
+> The identity exchange isn't the security boundary. Because the consumer owns the multitenant application's registration, a consumer-side administrator can add another credential (such as a client secret) to it and drive this flow manually—so the identity layer gives the publisher no assurance against an adversarial consumer. The real boundary is **SKR + attestation** (Layer 1): even with a valid publisher-tenant token, Key Vault refuses to release the key unless a valid MAA token satisfies the release policy, and only the publisher's genuine, attested image can produce one. The identity layer only routes the request to the right vault.
 
 ## Walkthrough
 
 1. **Provision the trust anchors (publisher tenant).** Create a Key Vault Premium or Managed HSM. Create an **exportable** RSA-HSM key. Attach a [release policy](/azure/key-vault/keys/policy-grammar) that pins your MAA authority and the Trusted Launch claims (`secureboot`, selected `x-ms-azurevm-attested-pcr-values.pcrN`).
 2. **Determine expected PCR values.** Attest a known-good instance of your image once and read `x-ms-azurevm-attested-pcr-values` from the returned MAA token. Pin the PCRs your boot chain measures—commonly `pcr4` (boot loader/kernel) and `pcr7` (Secure Boot state).
-3. **Deploy the workload (consumer tenant).** Deploy a Trusted Launch (Gen2) VM running the hardened image, with a managed identity federated to the publisher application and granted **Key Vault Crypto Service Release User** on the key.
+3. **Deploy the workload (consumer tenant).** Deploy a Trusted Launch (Gen2) VM running the hardened image. Give it a managed identity and federate that identity to the consumer-owned multitenant application described in [Cross-tenant identity](#cross-tenant-identity), whose service principal the publisher has granted **Key Vault Crypto Service Release User** on the key.
 4. **Attest and release at runtime.** The guest obtains an MAA token, then calls `POST /keys/{key-name}/release`. Key Vault validates and returns the wrapped key; the guest unwraps it inside the VM.
 5. **Verify the negative case.** Change a pinned PCR in the release policy to a nonmatching value (or boot a modified image) and confirm the release returns `AccessDenied`.
 
