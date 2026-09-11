@@ -658,10 +658,6 @@
      - name: Overview
        displayName: FPGA, sizes, size, vm size
        href: ./sizes/overview.md#fpga-accelerated
-     - name: NM family
-       href: ./sizes/fpga-accelerated/nm-ads-ma35d-series.md
-       items:
-       - name: NMads MA35D series
      - name: NP family
        items:
        - name: Overview
