@@ -102,7 +102,7 @@ Premium SSDs offer [two bursting models](disk-bursting.md#disk-level-bursting), 
 
 ### Premium SSD transactions
 
-For Premium SSD managed disks, each I/O operation less than or equal to 256 kB of throughput is considered a single I/O operation. I/O operations larger than 256 kB of throughput are considered multiple I/Os of size 256 kB. Unless you enable on-demand bursting, there are no transaction costs for Premium SSDs.
+For Premium SSD managed disks, each I/O operation less than or equal to 256 KiB of throughput is considered a single I/O operation. I/O operations larger than 256 KiB of throughput are considered multiple I/Os of size 256 KiB. Unless you enable on-demand bursting, there are no transaction costs for Premium SSDs.
 
 ### Redundancy options
 
@@ -136,7 +136,7 @@ The initial billing of Standard SSDs is determined by the performance tier. The 
 
 ### Standard SSD transactions
 
-For Standard SSDs, each I/O operation less than or equal to 256 kB of throughput is considered a single I/O operation. I/O operations larger than 256 kB of throughput are considered multiple I/Os of size 256 kB. These transactions incur a billable cost but, there's an hourly limit on the number of transactions that can incur a billable cost. If that hourly limit is reached, extra transactions during that hour no longer incur a cost. For details, see the [blog post](https://aka.ms/billedcapsblog).
+For Standard SSDs, each I/O operation less than or equal to 256 KiB of throughput is considered a single I/O operation. I/O operations larger than 256 KiB of throughput are considered multiple I/Os of size 256 KiB. These transactions incur a billable cost but, there's an hourly limit on the number of transactions that can incur a billable cost. If that hourly limit is reached, extra transactions during that hour no longer incur a cost. For details, see the [blog post](https://aka.ms/billedcapsblog).
 
 ### Redundancy options
 
@@ -166,9 +166,7 @@ The price of an Azure Standard HDD is determined by the performance tier of the 
 The initial billing of Standard HDDs is determined by the performance tier. The performance tier is set when you select the capacity you require (if you deploy a 1 TiB Standard HDD, it has the S30 tier), your disk is billed at that tier. If you increase the capacity of your disk into the next tier, it's billed at that tier. For example, if you increased your 1-TiB disk to a 3-TiB disk, it's billed at the S50 tier.
 
 ### Standard HDD Transactions
-There are a few different ways that Standard HDDs count transactions, depending on the disk size. For Standard HDDs sizes S4 and S6, each I/O operation less than 16 KiB of throughput is considered a single billable transaction. I/O operations larger than 16 KiB of throughput are considered multiple billable transactions of size 16 KiB for billing purposes. Cost is incurred for every 10,000 billable transactions but, there's an hourly limit on the number of billable transactions that can incur a billable cost. If your individual disk's billable transactions reach that hourly limit, any additional billable transactions during that hour don't incur a cost.  
-
-For the rest of the Standard HDD sizes (S10, S20, S30, S40, S50, S60, S70, S80) and snapshots, each I/O operation counts as one billable transaction for billing purposes, and incurs a billable cost for every 10,000 billable transactions. There's no hourly limit on the number of billable transactions that can incur a cost for these Standard HDD sizes.
+For Standard HDD managed disks, each I/O operation less than or equal to 16 KiB of throughput is considered a single billable transaction. I/O operations larger than 16 KiB of throughput are considered multiple billable transactions of size 16 KiB for billing purposes. Cost is incurred for every 10,000 billable transactions but, there’s an hourly limit on the number of billable transactions that can incur a billable cost. If your individual disk’s billable transactions reach that hourly limit, any additional billable transactions during that hour don’t incur a cost. For details, see the [blog post](https://aka.ms/hddtossd).
 
 ### Standard HDD billing example 
 In this example, we provision a 512 GiB Standard HDD with LRS redundancy. 
