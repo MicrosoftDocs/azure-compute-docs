@@ -1313,6 +1313,8 @@
         href: ./linux/mac-create-ssh-keys.md
       - name: SSH on Windows
         href: ./linux/ssh-from-windows.md
+      - name: Linux remote desktop and VDI options
+        href: ./linux/linux-remote-desktop-options.md
       - name: Remote Desktop for Linux
         href: ./linux/use-remote-desktop.md
     - name: Windows
