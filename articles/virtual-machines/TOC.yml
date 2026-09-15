@@ -485,6 +485,10 @@
          href: ./sizes/memory-optimized/m-family.md
        - name: Medium Memory
          items:
+         - name: Mdsv4 Medium Memory series
+           href: ./sizes/memory-optimized/mdsv4-series.md
+         - name: Msv4 Medium Memory series
+           href: ./sizes/memory-optimized/msv4-series.md
          - name: Mdsv3 Medium Memory series
            href: ./sizes/memory-optimized/mdsv3-mm-series.md
          - name: Msv3 Medium Memory series
