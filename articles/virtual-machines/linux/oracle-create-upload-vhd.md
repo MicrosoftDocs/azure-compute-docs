@@ -4,7 +4,7 @@ description: Learn to create and upload an Azure virtual hard disk (VHD) that co
 author: vamckMS
 ms.service: azure-virtual-machines
 ms.collection: linux
-ms.subservice: oracle
+ms.subservice: imaging
 ms.custom: linux-related-content
 ms.topic: how-to
 ms.date: 09/09/2026
