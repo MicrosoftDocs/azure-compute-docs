@@ -207,4 +207,3 @@ Most Azure VM families support these features, but there are some important rule
 
 - At GA, VMSS Uniform is supported. Currently, only first-party Azure Marketplace images (such as Windows Server, Ubuntu, Red Hat, and SUSE) and custom images are supported. Specialized Marketplace offerings, including SQL Server on Virtual Machines, aren't supported at this time.
 
-- Portal support is not yet available and will be coming soon. 
