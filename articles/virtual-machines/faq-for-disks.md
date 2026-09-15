@@ -347,7 +347,7 @@ No. You can attach only standard data disks to VMs that don't use a size series 
 
 ### Are there transaction costs to use Premium SSDs?
 
-There's a fixed cost for each disk size, which comes provisioned with specific limits on IOPS and throughput. The other costs are outbound bandwidth, snapshot capacity, and costs associated with [on-demand bursting](disk-bursting.md#billing), if applicable. For more information, see the [pricing page](https://azure.microsoft.com/pricing/details/managed-disks/).
+There's a fixed cost for each disk size, which comes provisioned with specific limits on IOPS and throughput. The other costs are outbound bandwidth, snapshot capacity, and costs associated with [on-demand bursting](disk-bursting.md#on-demand-bursting-billing), if applicable. For more information, see the [pricing page](https://azure.microsoft.com/pricing/details/managed-disks/).
 
 ### What are the limits for IOPS and throughput that I can get from the disk cache?
 
