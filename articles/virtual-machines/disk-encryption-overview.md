@@ -2,7 +2,7 @@
 title: Overview of managed disk encryption options
 description: Compare Azure managed disk encryption options, including server-side encryption, encryption at host, Azure Disk Encryption, and confidential disk encryption.
 author: msmbaldwin
-ms.date: 07/14/2026
+ms.date: 09/11/2026
 ms.topic: concept-article
 ms.author: mbaldwin
 ms.service: azure-virtual-machines
@@ -32,17 +32,19 @@ Encryption is part of a layered approach to security. Use it with other recommen
 
 The following table compares Disk Storage SSE, ADE, encryption at host, and confidential disk encryption.
 
+Azure Disk Encryption is scheduled for retirement on **September 15, 2028**. Use [encryption at host](./disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data) for new VMs, or consider [Confidential VM sizes with OS disk encryption](/azure/confidential-computing/confidential-vm-overview#confidential-os-disk-encryption) for confidential computing workloads.
+
 | &nbsp; | **Azure Disk Storage server-side encryption** | **Encryption at host** | **Azure Disk Encryption** | **Confidential disk encryption (for the OS disk only)** |
-|--|--|--|--|--|
-| Encryption at rest (OS and data disks) | &#x2705; | &#x2705; | &#x2705; | &#x2705; |
-| Temp disk encryption | &#10060; | &#x2705; Supported only with platform-managed keys | &#x2705; | &#x2705; [Opt-in](/azure/confidential-computing/confidential-vm-overview#confidential-temp-disk-encryption) |
-| Encryption of caches | &#10060; | &#x2705; | &#x2705; | &#x2705; |
-| Data flows encrypted between compute and storage | &#10060; | &#x2705; | &#x2705; | &#x2705; |
-| Customer control of keys | &#x2705; When configured with DES | &#x2705; When configured with DES | &#x2705; When configured with KEK | &#x2705; When configured with DES |
-| HSM support | Azure Key Vault Premium and Managed HSM | Azure Key Vault Premium and Managed HSM | Azure Key Vault Premium | Azure Key Vault Premium and Managed HSM |
-| Does not use your VM's CPU | &#x2705; | &#x2705; | &#10060; | &#10060; |
-| Works for custom images | &#x2705; | &#x2705; | &#10060; Does not work for custom Linux images | &#x2705; |
-| Enhanced key protection | &#10060; | &#10060; | &#10060; | &#x2705; |
+| --- | --- | --- | --- | --- |
+| Encryption at rest (OS and data disks) | Yes | Yes | Yes | Yes |
+| Temp disk encryption | No | Yes, supported only with platform-managed keys | Yes | Yes, [opt-in](/azure/confidential-computing/confidential-vm-overview#confidential-temp-disk-encryption) |
+| Encryption of caches | No | Yes | Yes | Yes |
+| Data flows encrypted between compute and storage | No | Yes | Yes | Yes |
+| Customer control of keys | Yes, when configured with DES | Yes, when configured with DES | Yes, when configured with KEK | Yes, when configured with DES |
+| Hardware security module (HSM) support | Azure Key Vault Premium and Managed HSM | Azure Key Vault Premium and Managed HSM | Azure Key Vault Premium | Azure Key Vault Premium and Managed HSM |
+| Does not use your VM's CPU | Yes | Yes | No | No |
+| Works for custom images | Yes | Yes | No, doesn't work for custom Linux images | Yes |
+| Enhanced key protection | No | No | No | Yes |
 | Microsoft Defender for Cloud disk encryption status* | Unhealthy | Healthy | Healthy | Not applicable |
 
 > [!IMPORTANT]

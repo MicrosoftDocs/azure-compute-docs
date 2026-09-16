@@ -3,7 +3,7 @@ title: Redundancy options for Azure managed disks
 description: Learn about zone-redundant storage and locally redundant storage for Azure managed disks.
 author: roygara
 ms.author: rogarana
-ms.date: 07/29/2024
+ms.date: 09/10/2026
 ms.topic: how-to
 ms.service: azure-disk-storage
 ms.custom: references_regions
@@ -25,7 +25,7 @@ Locally redundant storage (LRS) replicates your data three times within a single
 - Take frequent backups of LRS disks with ZRS snapshots.
 - Enable cross-zone disaster recovery for LRS disks via [Azure Site Recovery](/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery). However, cross-zone disaster recovery doesn't provide zero Recovery Point Objective (RPO).
 
-If your workflow doesn't support application-level synchronous writes across zones, or your application must meet zero RPO, then ZRS disks would ideal.
+If your workflow doesn't support application-level synchronous writes across zones, or your application must meet zero RPO, then ZRS disks are appropriate.
 
 ## Zone-redundant storage for managed disks
 
@@ -35,21 +35,21 @@ A ZRS disk lets you recover from failures in availability zones. If a zone went 
 
 ZRS disks can also be shared between VMs for improved availability with clustered or distributed applications like SQL FCI, SAP ASCS/SCS, or GFS2. A shared ZRS disk can be attached to primary and secondary VMs in different zones to take advantage of both ZRS and [availability zones](/azure/reliability/availability-zones-overview). If your primary zone fails, you can quickly fail over to the secondary VM using [SCSI persistent reservation](disks-shared-enable.md#supported-scsi-pr-commands).
 
-For more information on ZRS disks, see [Zone Redundant Storage (ZRS) option for Azure Disks for high availability](https://youtu.be/RSHmhmdHXcY).
+For more information on ZRS disks, see [Zone-redundant storage option for Azure managed disks for high availability](https://youtu.be/RSHmhmdHXcY).
 
-### Limitations
+### ZRS limitations
 
 [!INCLUDE [disk-storage-zrs-limitations](./includes/disk-storage-zrs-limitations.md)]
 
-### Regional availability
+### ZRS regional availability
 
 [!INCLUDE [disk-storage-zrs-regions](./includes/disk-storage-zrs-regions.md)]
 
-### Billing implications
+### ZRS billing implications
 
 For details see the [Azure pricing page](https://azure.microsoft.com/pricing/details/managed-disks/).
 
-### Comparison with other disk types
+### Compare ZRS and LRS disks
 
 Except for more write latency, disks using ZRS are identical to disks using LRS, they have the same scale targets. [Benchmark your disks](disks-benchmarks.md) to simulate the workload of your application and compare the latency between LRS and ZRS disks.
 

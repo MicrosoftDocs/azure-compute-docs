@@ -3,7 +3,7 @@ title: Select a disk type for Azure IaaS VMs - managed disks
 description: Learn about the available Azure disk types for virtual machines, including Ultra Disk, Premium SSD v2, Premium SSD, Standard SSD, and Standard HDD.
 author: roygara
 ms.author: rogarana
-ms.date: 08/11/2026
+ms.date: 09/15/2026
 ms.topic: concept-article
 ms.service: azure-disk-storage
 ms.custom: references_regions
@@ -165,7 +165,7 @@ To learn more about individual Azure VM types and sizes for Windows or Linux, in
 ### Premium SSD size
 [!INCLUDE [disk-storage-premium-ssd-sizes](~/reusable-content/ce-skilling/azure/includes/disk-storage-premium-ssd-sizes.md)]
 
-Capacity, IOPS, and throughput are guaranteed when a Premium SSD is provisioned. For example, if you create a P50 disk, Azure provisions 4,095-GB storage capacity, 7,500 IOPS, and 250-MB/s throughput for that disk. Your application can use all or part of the capacity and performance. Premium SSDs are designed to provide the single-digit millisecond latencies, target IOPS, and throughput described in the preceding table 99.9% of the time.
+Capacity, IOPS, and throughput are guaranteed when a Premium SSD is provisioned. For example, if you create a P50 disk, Azure provisions 4,095-GB storage capacity, 7,500 IOPS, and 250-MB/s throughput for that disk. Your application can use all or part of the capacity and performance. Premium SSDs are designed to provide the single-digit millisecond latencies, target IOPS, and throughput described in the Premium SSD size table 99.9% of the time.
 
 ### Premium SSD bursting
 
@@ -183,11 +183,11 @@ Azure Standard SSDs are optimized for workloads that need consistent performance
 
 [!INCLUDE [disk-storage-standard-ssd-sizes](~/reusable-content/ce-skilling/azure/includes/disk-storage-standard-ssd-sizes.md)]
 
-Standard SSDs are designed to provide single-digit millisecond latencies and the IOPS and throughput up to the limits described in the preceding table 99% of the time. Actual IOPS and throughput might vary depending on the traffic patterns. Standard SSDs provide lower latency and more consistent performance than Standard HDDs.
+Standard SSDs are designed to provide single-digit millisecond latencies and the IOPS and throughput up to the limits described in the Standard SSD size table 99% of the time. Actual IOPS and throughput might vary depending on the traffic patterns. Standard SSDs provide lower latency and more consistent performance than Standard HDDs.
 
 ### Standard SSD transactions
 
-For Standard SSDs, each I/O operation less than or equal to 256 KiB of throughput is considered a single I/O operation. I/O operations larger than 256 KiB of throughput are considered multiple I/Os of size 256 KiB. These transactions incur a billable cost but, there's an hourly limit on the number of transactions that can incur a billable cost. If that hourly limit is reached, additional transactions during that hour no longer incur a cost. For details, see the [blog post](https://aka.ms/billedcapsblog).
+For Standard SSDs, each I/O operation less than or equal to 256 KiB of throughput is considered a single I/O operation. I/O operations larger than 256 KiB of throughput are considered multiple I/Os of size 256 KiB. These transactions incur a billable cost but, there's an hourly limit on the number of transactions that can incur a billable cost. If that hourly limit is reached, additional transactions during that hour no longer incur a cost. For details, see [Standard SSD transaction billing caps](https://aka.ms/billedcapsblog).
 
 ### Standard SSD bursting
 
@@ -214,15 +214,23 @@ When using managed disks, the following billing considerations apply:
 - Outbound data transfers
 - Number of transactions
 
-**Managed disk size**: managed disks are billed according to their provisioned size. Azure maps the provisioned size (rounded up) to the nearest offered disk size. For details of the disk sizes offered, see the previous tables. Each disk maps to a supported provisioned disk-size offering and is billed accordingly. For example, if you provisioned a 200-GiB Standard SSD, it maps to the disk size offer of E15 (256 GiB). Billing for any provisioned disk is prorated hourly by using the monthly price for the storage offering. For example, you provision an E10 disk and delete it after 20 hours of use. In this case, you're billed for the E10 offering prorated to 20 hours, regardless of the amount of data written to the disk.
+### Managed disk size
 
-**Snapshots**: Snapshots are billed based on the size used. For example, you create a snapshot of a managed disk with provisioned capacity of 64 GiB and actual used data size of 10 GiB. In this case, the snapshot is billed only for the used data size of 10 GiB.
+Managed disks are billed according to their provisioned size. Azure maps the provisioned size (rounded up) to the nearest offered disk size. For the disk sizes offered for each managed disk type, see [Ultra Disk size](#ultra-disk-size), [Premium SSD v2 capacities](#premium-ssd-v2-capacities), [Premium SSD size](#premium-ssd-size), [Standard SSD size](#standard-ssd-size), and [Standard HDD size](#standard-hdd-size). Each disk maps to a supported provisioned disk-size offering and is billed accordingly. For example, if you provisioned a 200-GiB Standard SSD, it maps to the disk size offer of E15 (256 GiB). Billing for any provisioned disk is prorated hourly by using the monthly price for the storage offering. For example, you provision an E10 disk and delete it after 20 hours of use. In this case, you're billed for the E10 offering prorated to 20 hours, regardless of the amount of data written to the disk.
+
+### Snapshots
+
+Snapshots are billed based on the size used. For example, you create a snapshot of a managed disk with provisioned capacity of 64 GiB and actual used data size of 10 GiB. In this case, the snapshot is billed only for the used data size of 10 GiB.
 
 For more information on snapshots, see [Create a snapshot of a virtual hard disk](snapshot-copy-managed-disk.md).
 
-**Outbound data transfers**: [Outbound data transfers](https://azure.microsoft.com/pricing/details/bandwidth/) (data going out of Azure data centers) incur billing for bandwidth usage.
+### Outbound data transfers
 
-**Transactions**: You're billed for the number of transactions performed on a standard managed disk. For Standard SSDs, each I/O operation less than or equal to 256 KiB of throughput is considered a single I/O operation. I/O operations larger than 256 KiB of throughput are considered multiple I/Os of size 256 KiB. For Standard HDDs, each I/O operation less than or equal to 16 KiB of throughput is considered a single billable transaction. I/O operations larger than 16 KiB of throughput are considered multiple I/Os of size 16 KiB. For details, [see this section](#standard-hdd-transactions). 
+[Outbound data transfers](https://azure.microsoft.com/pricing/details/bandwidth/) (data going out of Azure data centers) incur billing for bandwidth usage.
+
+### Transactions
+
+You're billed for the number of transactions performed on a standard managed disk. For Standard SSDs, each I/O operation less than or equal to 256 KiB of throughput is considered a single I/O operation. I/O operations larger than 256 KiB of throughput are considered multiple I/Os of size 256 KiB. For Standard HDDs, each I/O operation less than or equal to 16 KiB of throughput is considered a single billable transaction. I/O operations larger than 16 KiB of throughput are considered multiple I/Os of size 16 KiB. For details, see [Standard HDD transactions](#standard-hdd-transactions). 
 
 For detailed information on pricing for managed disks (including transaction costs), see [managed disk pricing](https://azure.microsoft.com/pricing/details/managed-disks).
 
