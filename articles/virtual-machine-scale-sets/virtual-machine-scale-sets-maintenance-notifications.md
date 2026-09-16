@@ -15,13 +15,15 @@ ms.custom: portal
 
 # Planned maintenance notifications for Virtual Machine Scale Sets
 
-Azure periodically performs updates to improve the reliability, performance, and security of the host infrastructure for virtual machines (VMs). Updates might include patching the hosting environment or upgrading and decommissioning hardware. Most updates don't affect the hosted VMs. However, updates affect VMs in these scenarios:
+Azure periodically performs updates to improve the reliability, performance, and security of the host infrastructure for virtual machines (VMs). Updates might include patching the hosting environment or upgrading and decommissioning hardware.
+
+For an overview of planned maintenance events and how to monitor them in Azure Service Health, see [Planned maintenance overview](/azure/service-health/service-health-planned-maintenance).
+
+Most updates don't affect the hosted VMs. However, updates affect VMs in these scenarios:
 
 - If the maintenance does not require a reboot, Azure pauses the VM for few seconds while the host is updated. These types of maintenance operations are applied fault domain by fault domain. Progress is stopped if any warning health signals are received.
 
 - If maintenance requires a reboot, you get a notice of when the maintenance is planned. When self-service maintenance is available, you can start the maintenance yourself during the self-service window, when it works for you. Window durations depend on the maintenance type. For details about hardware decommissioning and host maintenance windows, see the [Planned maintenance FAQ](/azure/service-health/service-health-planned-maintenance#planned-maintenance-faq).
-
-For an overview of planned maintenance events and how to monitor them in Azure Service Health, see [Planned maintenance overview](/azure/service-health/service-health-planned-maintenance).
 
 Planned maintenance that requires a reboot is scheduled in waves. Each wave has different scope (regions):
 
