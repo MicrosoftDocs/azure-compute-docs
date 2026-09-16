@@ -21,7 +21,7 @@ For an overview of planned maintenance events and how to monitor them in Azure S
 
 Most updates don't affect the hosted VMs. However, updates affect VMs in these scenarios:
 
-- If the maintenance does not require a reboot, Azure pauses the VM for few seconds while the host is updated. These types of maintenance operations are applied fault domain by fault domain. Progress is stopped if any warning health signals are received.
+- If the maintenance doesn't require a reboot, Azure pauses the VM for a few seconds while the host is updated. These types of maintenance operations are applied fault domain by fault domain. Progress stops if any warning health signals are received.
 
 - If maintenance requires a reboot, you get a notice of when the maintenance is planned. When self-service maintenance is available, you can start the maintenance yourself during the self-service window, when it works for you. Window durations depend on the maintenance type. For details about hardware decommissioning and host maintenance windows, see the [Planned maintenance FAQ](/azure/service-health/service-health-planned-maintenance#planned-maintenance-faq).
 
