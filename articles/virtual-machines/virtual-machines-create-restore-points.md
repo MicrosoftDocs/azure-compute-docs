@@ -6,7 +6,7 @@ ms.author: shsangal
 ms.service: azure-virtual-machines
 ms.subservice: recovery
 ms.topic: concept-article
-ms.date: 16/09/2026
+ms.date: 09/16/2026
 ms.custom: conceptual
 # Customer intent: As a cloud administrator, I want to implement virtual machine restore points, so that I can ensure data protection and facilitate quick recovery in the event of a failure or data loss.
 ---
