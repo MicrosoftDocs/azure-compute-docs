@@ -8,7 +8,7 @@ ms.custom: devx-track-azurecli, linux-related-content
 ms.author: gabsta
 author: GabstaMSFT
 ms.collection: linux
-ms.date: 08/18/2025
+ms.date: 09/17/2026
 # Customer intent: As a DevOps engineer, I want to deploy the Chef VM Extension on Azure virtual machines, so that I can automate the configuration management for both Linux and Windows environments efficiently.
 ---
 
@@ -44,7 +44,7 @@ The following JSON shows the schema for the Chef VM Extension. The extension req
   "properties": {
     "publisher": "Chef.Bootstrap.WindowsAzure",
     "type": "[parameters('chef_vm_extension_type')]",
-    "typeHandlerVersion": "1210.13",
+    "typeHandlerVersion": "1210.15.10",
     "settings": {
       "bootstrap_options": {
         "chef_server_url": "[parameters('chef_server_url')]",
@@ -66,7 +66,7 @@ The following JSON shows the schema for the Chef VM Extension. The extension req
 | apiVersion | `2017-12-01` | string (date) |
 | publisher | `Chef.Bootstrap.WindowsAzure` | string |
 | type | `LinuxChefClient` (Linux), `ChefClient` (Windows) | string |
-| typeHandlerVersion | `1210.13` | string (double) |
+| typeHandlerVersion | `1210.15.10` | string (double) |
 
 ### Settings
 
@@ -75,6 +75,8 @@ The following JSON shows the schema for the Chef VM Extension. The extension req
 | settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | string (url) | Y |
 | settings/bootstrap_options/validation_client_name | `myorg-validator` | string | Y |
 | settings/runlist | `recipe[mycookbook::default]` | string | Y |
+| settings/CHEF_LICENSE | `accept-no-persist` | string | For Chef Infra Client 15+, accepting the [Chef EULA](https://docs.chef.io/chef_license_accept/#accept-the-chef-eula) is required. Accepted values are `accept`, `accept-silent`, or `accept-no-persist`. |
+| settings/chef_license_key | `<your Chef commercial license key>` | string | Required by default for downloading Chef Infra Client. The extension exports this value as `CHEF_LICENSE_KEY` and downloads packages from `chefdownload-commercial.chef.io`. |
 
 ### Protected settings
 
@@ -112,7 +114,7 @@ az vm extension set \
   --vm-name myExistingVM \
   --name LinuxChefClient \
   --publisher Chef.Bootstrap.WindowsAzure \
-  --version 1210.13 --protected-settings '{"validation_key": "<validation_key>"}' \
+  --version 1210.15.10 --protected-settings '{"validation_key": "<validation_key>"}' \
   --settings '{ "bootstrap_options": { "chef_server_url": "<chef_server_url>", "validation_client_name": "<validation_client_name>" }, "runlist": "<run_list>" }'
 ```
 
