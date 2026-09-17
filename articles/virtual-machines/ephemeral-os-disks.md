@@ -179,6 +179,7 @@ SSD support is a new option that allows customers to choose the type of base dis
 
 - **Enhanced SLA**: VMs created with Premium SSD provide higher SLA than VMs created with Standard HDD. Customers can enhance [SLA](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services) for their Ephemeral VMs by choosing Premium SSD as base disk.
 - **Improved performance**: By choosing Premium SSD as the base disk, customers can enhance the disk read performance of their VMs. While most writes occur on the local temp disk, some reads are performed from managed disks. Premium SSD disks provide 8-10 times higher IOPS than Standard HDD. 
+
 If you select a Standard SSD or Premium SSD base disk, you pay the applicable disk charges in addition to VM costs **with either partial or full caching**.
 
 ## Local temporary storage
