@@ -4,7 +4,7 @@ description: Learn about the retirement of the capability to use Standard HDD as
 author: roygara
 ms.service: azure-disk-storage
 ms.topic: how-to
-ms.date: 09/08/2025
+ms.date: 09/16/2026
 ms.author: rogarana
 ai-usage: ai-assisted
 ---
@@ -17,11 +17,11 @@ On September 8, 2028, the ability to use Standard HDDs as [OS disks](managed-dis
 
 If you're using Standard HDD as OS disks, begin planning a migration now. Generally, Standard SSD provides the closest price to performance ratio as Standard HDDs. If you need higher performance, migrate to Premium SSD.
 
-## How am I affected?
+## Impact of Standard HDD OS disk support retirement
 
-After September 8, 2028, any existing virtual machines using Standard HDD OS Disks will have their OS disks automatically converted to a Standard SSD of equivalent size. Workloads on these disks may experience a service disruption if they're not migrated before September 8, 2028.
+After September 8, 2028, any existing virtual machines using Standard HDD OS disks will have their OS disks automatically converted to a Standard SSD of equivalent size. Workloads on these disks may experience a service disruption if they're not migrated before September 8, 2028.
 
-## What is being retired?
+## Scope of Standard HDD OS disk support retirement
 
 This retirement is only for the ability to use Standard HDDs as OS disks. None of the other managed disk types or ephemeral OS disks will be affected by this retirement.
 
@@ -29,7 +29,7 @@ Azure disk snapshots, including snapshots of OS disks, can continue to be stored
 
 Standard HDD OS disks created by Azure Site Recovery will continue to be supported.
 
-## What actions should I take?
+## Prepare for Standard HDD OS disk support retirement
 
 Stop creating new virtual machines with Standard HDD OS disks. Use Standard SSD or Premium SSD for new OS disks instead.
 
@@ -43,6 +43,6 @@ Once you have a list of Standard HDD OS disks, [convert your Standard HDD OS dis
 
 For technical questions and issues, contact support.
 
-## What resources are available for this migration?
+## Get support for Standard HDD OS disk migration
 
 [Microsoft Q&A](/answers/topics/azure-virtual-machines-migration.html): Microsoft and community support for migration.
