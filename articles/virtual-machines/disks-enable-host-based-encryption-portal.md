@@ -4,12 +4,13 @@ description: Use encryption at host to enable end-to-end encryption on your Azur
 author: roygara
 ms.service: azure-disk-storage
 ms.topic: how-to
-ms.date: 10/22/2024
+ai-usage: ai-assisted
+ms.date: 09/16/2026
 ms.author: rogarana
 ms.custom:
   - ignite-2023
   - portal
-# Customer intent: "As an IT administrator, I want to enable end-to-end encryption using host-based encryption for managed disks, so that I can ensure data security both at rest and in transit for my virtual machines."
+# Customer intent: "As an IT administrator, I want to enable end-to-end encryption using encryption at host for managed disks, so that I can ensure data security both at rest and in transit for my virtual machines."
 ---
 
 # Use the Azure portal to enable end-to-end encryption using encryption at host
@@ -36,7 +37,7 @@ You must enable the feature for your subscription before you can use encryption 
 
    ![Screenshot of icon to launch the Cloud Shell from the Azure portal.](./media/disks-enable-host-based-encryption-portal/portal-launch-icon.png)
 
-1. Execute the following command to set context to current subscription
+1. Use [Set-AzContext](/powershell/module/az.accounts/set-azcontext) or [az account set](/cli/azure/account#az-account-set) to set the current subscription.
 
    ### [Azure PowerShell](#tab/azure-powershell)
 
@@ -51,7 +52,7 @@ You must enable the feature for your subscription before you can use encryption 
    ```
    ---
    
-1. Execute the following command to register the feature for your subscription
+1. Use [Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) or [az feature register](/cli/azure/feature#az-feature-register) to register encryption at host for your subscription.
 
    ### [Azure PowerShell](#tab/azure-powershell)
 
@@ -66,7 +67,7 @@ You must enable the feature for your subscription before you can use encryption 
    ```
    ---
 
-1. Confirm that the registration state is **Registered** (registration might take a few minutes) using the following command before trying out the feature.
+1. Use [Get-AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature) or [az feature show](/cli/azure/feature#az-feature-show) to confirm that the registration state is **Registered** before you enable encryption at host. Registration might take a few minutes.
 
    ### [Azure PowerShell](#tab/azure-powershell)
 
@@ -90,7 +91,7 @@ You must enable the feature for your subscription before you can use encryption 
 1. On the **Disks** pane, select **Encryption at host**.
 1. Make the remaining selections as you like.
 
-   :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/host-based-encryption-platform-keys.png" alt-text="Screenshot of the virtual machine creation disks pane, encryption at host highlighted." lightbox="media/virtual-machines-disks-encryption-at-host-portal/host-based-encryption-platform-keys.png":::
+   :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/host-based-encryption-platform-keys.png" alt-text="Screenshot of the VM creation Disks pane with Encryption at host selected and Premium SSD locally redundant storage selected for the OS disk." lightbox="media/virtual-machines-disks-encryption-at-host-portal/host-based-encryption-platform-keys.png":::
 
 1. For the rest of the VM deployment process, make selections that fit your environment, and complete the deployment.
 
@@ -118,19 +119,19 @@ Now that you have setup an Azure Key Vault and disk encryption set, you can depl
 1. Select **Key management** and select one of your customer-managed keys.
 1. Make the remaining selections as you like.
 
-   :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-host-based-encryption-customer-managed-keys.png" alt-text="Screenshot of the virtual machine creation disks pane, encryption at host is highlighted, customer-managed keys selected." lightbox="media/virtual-machines-disks-encryption-at-host-portal/disks-host-based-encryption-customer-managed-keys.png":::
+   :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-host-based-encryption-customer-managed-keys.png" alt-text="Screenshot of the VM creation Disks pane with Encryption at host selected and a customer-managed key selected under Key management." lightbox="media/virtual-machines-disks-encryption-at-host-portal/disks-host-based-encryption-customer-managed-keys.png":::
 
 1. For the rest of the VM deployment process, make selections that fit your environment, and complete the deployment.
 
 You've now deployed a VM with encryption at host enabled using customer-managed keys.
 
-## Disable host based encryption
+## Disable encryption at host
 
 Deallocate your VM first, encryption at host can't be disabled unless your VM is deallocated.
 
 1. On your VM, select **Disks** and then select **Additional settings**.
 
-   :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-host-based-encryption-additional-settings.png" alt-text="Screenshot of the Disks pane on a VM, Additional Settings is highlighted.":::
+   :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-host-based-encryption-additional-settings.png" alt-text="Screenshot of the VM Disks pane with Additional settings highlighted.":::
 
 1. Select **No** for **Encryption at host** then select **Save**.
 

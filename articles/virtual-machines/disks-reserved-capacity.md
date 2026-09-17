@@ -65,7 +65,7 @@ Follow these steps to purchase reserved capacity:
 
 1. Select **Azure managed disks** to purchase a reservation.
 
-    ![Pane for purchasing reservations](media/disks-reserved-capacity/disks-reserved-purchase-reservation.png) 
+    ![Screenshot of the Purchase reservations pane with Azure Managed Disks selected.](media/disks-reserved-capacity/disks-reserved-purchase-reservation.png)
 
 1. Specify the required values described in the following table:
 
@@ -77,7 +77,7 @@ Follow these steps to purchase reserved capacity:
    | **Region** | The region where the reservation is in effect. |
    | **Billing frequency** | How often the account is billed for the reservation. Options include **Monthly** and **Upfront**. |
 
-    ![Pane for selecting the product you want to purchase.png](media/disks-reserved-capacity/premium-ssd-reserved-purchase-selection.png)
+    ![Screenshot of Premium SSD managed disk reservation options filtered by region, disk SKU, and billing frequency.](media/disks-reserved-capacity/premium-ssd-reserved-purchase-selection.png)
 
 1. After you specify the values for your reservation, the Azure portal displays the cost. The portal also shows the discount percentage over pay-as-you-go billing. Select **Next** to continue to the **Purchase reservations** pane.
 
@@ -85,7 +85,7 @@ Follow these steps to purchase reserved capacity:
 
 1. Review the total cost of the reservation.
 
-    ![The Purchase reservations pane](media/disks-reserved-capacity/premium-ssd-reserved-selecting-sku-total-purchase.png)
+    ![Screenshot of the Purchase reservations pane showing the reservation name, selected product, quantity, billing frequency, and total cost.](media/disks-reserved-capacity/premium-ssd-reserved-selecting-sku-total-purchase.png)
 
 After you purchase a reservation, it's automatically applied to any existing Disk Storage resources that match the reservation terms. If you haven't created any Disk Storage resources yet, the reservation applies whenever you create a resource that matches the reservation terms. In either case, the reservation term begins immediately after a successful purchase.
 
