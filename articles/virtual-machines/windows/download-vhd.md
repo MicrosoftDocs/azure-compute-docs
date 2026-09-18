@@ -108,7 +108,7 @@ Verify that `$sasUrl` contains a SAS URL before continuing.
 ## Download the Windows VHD file
 
 > [!NOTE]
-> If you're using Microsoft Entra ID to secure managed disk downloads, the user downloading the VHD needs the appropriate [RBAC permissions](../disks-secure-upload-download.md#assign-rbac-role).
+> If you're using Microsoft Entra ID to secure managed disk downloads, the user downloading the VHD needs the appropriate [RBAC permissions](../disks-secure-upload-download.md#assign-an-azure-rbac-role).
 
 # [Portal](#tab/azure-portal)
 

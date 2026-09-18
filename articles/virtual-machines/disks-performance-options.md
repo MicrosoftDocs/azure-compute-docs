@@ -45,7 +45,7 @@ The performance of a Premium SSD is set when you create your disk, in the form o
 
 ### Premium SSD caching
 
-For Premium SSDs, high-scale Azure virtual machines (VMs) that can use premium storage have a multitier caching technology called **BlobCache**. **BlobCache** is a caching solution built on RAM and SSDs that are locally attached to the server hosting the VM. This cache is available for Standard HDDs, Standard SSDs, and Premium SSDs. By enabling disk caching, high-scale VMs can achieve levels of performance that exceed the underlying disk performance. To learn more, see [Disk caching](premium-storage-performance.md#disk-caching).
+For Premium SSDs, high-scale Azure virtual machines (VMs) that can use premium storage have a multitier caching technology called **BlobCache**. **BlobCache** is a caching solution built on RAM and SSDs that are locally attached to the server hosting the VM. This cache is available for Standard HDDs, Standard SSDs, and Premium SSDs. By enabling disk caching, high-scale VMs can achieve levels of performance that exceed the underlying disk performance. To learn more, see [Disk caching](premium-storage-performance.md#disk-caching-settings).
 
 ### Premium SSD write accelerator
 
@@ -64,7 +64,7 @@ With Standard SSD credit-based bursting, a disk bursts only if it has burst cred
 
 ### Standard SSD caching
 
-For Standard SSDs, high-scale Azure virtual machines (VMs) that can use premium storage have a multitier caching technology called **BlobCache**. **BlobCache** is a caching solution built on RAM and SSDs that are locally attached to the server hosting the VM. This cache is available for Standard HDDs, Standard SSDs, and Premium SSDs. By enabling disk caching, high-scale VMs can achieve levels of performance that exceed the underlying disk performance. To learn more, see [Disk caching](premium-storage-performance.md#disk-caching).
+For Standard SSDs, high-scale Azure virtual machines (VMs) that can use premium storage have a multitier caching technology called **BlobCache**. **BlobCache** is a caching solution built on RAM and SSDs that are locally attached to the server hosting the VM. This cache is available for Standard HDDs, Standard SSDs, and Premium SSDs. By enabling disk caching, high-scale VMs can achieve levels of performance that exceed the underlying disk performance. To learn more, see [Disk caching](premium-storage-performance.md#disk-caching-settings).
 
 ### Standard SSD performance plus
 
@@ -75,7 +75,7 @@ When you enable Standard SSD performance plus, you increase the Input/Output Ope
 
 ### Standard HDD caching
 
-For Standard HDDs, high-scale Azure virtual machines (VMs) that can use premium storage have a multitier caching technology called **BlobCache**. **BlobCache** is a caching solution built on RAM and SSDs that are locally attached to the server hosting the VM. This cache is available for Standard HDDs, Standard SSDs, and Premium SSDs. When you enable disk caching, high-scale VMs can achieve levels of performance that exceed the underlying disk performance. To learn more, see [Disk caching](premium-storage-performance.md#disk-caching).
+For Standard HDDs, high-scale Azure virtual machines (VMs) that can use premium storage have a multitier caching technology called **BlobCache**. **BlobCache** is a caching solution built on RAM and SSDs that are locally attached to the server hosting the VM. This cache is available for Standard HDDs, Standard SSDs, and Premium SSDs. When you enable disk caching, high-scale VMs can achieve levels of performance that exceed the underlying disk performance. To learn more, see [Disk caching](premium-storage-performance.md#disk-caching-settings).
 
 ### Standard HDD performance plus
 

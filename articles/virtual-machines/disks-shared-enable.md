@@ -1,16 +1,16 @@
 ---
 title: Enable shared disks for Azure managed disks
-description: Configure an Azure managed disk with shared disks so that you can share it across multiple VMs
+description: Configure an Azure managed disk as a shared disk so that you can attach it to multiple virtual machines.
 author: roygara
 ms.service: azure-disk-storage
 ms.topic: how-to
-ms.date: 12/03/2025
+ms.date: 09/17/2026
 ms.author: rogarana
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 # Customer intent: As a cloud engineer, I want to configure shared disks for Azure managed disks, so that I can enable simultaneous access from multiple virtual machines to support clustered applications.
 ---
 
-# Enable shared disks
+# Enable shared disks for Azure managed disks
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
@@ -33,51 +33,53 @@ Or
 
 ## Supported operating systems
 
-Shared disks support several operating systems. See the [Windows](./disks-shared.md#windows) and [Linux](./disks-shared.md#linux) sections of the conceptual article for the supported operating systems.
+Shared disks support several operating systems. For the supported operating systems, see the [Windows](./disks-shared.md#sample-windows-shared-disk-workloads) and [Linux](./disks-shared.md#sample-linux-shared-disk-workloads) sections of the conceptual article.
 
 ## Disk sizes
 
 [!INCLUDE [virtual-machines-disks-shared-sizes](./includes/virtual-machines-disks-shared-sizes.md)]
 
-## Deploy shared disks
+## Deploy a Premium SSD as a shared disk
 
-### Deploy a Premium SSD as a shared disk
-
-To deploy a managed disk with the shared disk feature enabled, use the new property `maxShares` and define a value greater than 1. This makes the disk shareable across multiple VMs.
+To deploy a managed disk with the shared disk feature enabled, set the `maxShares` property to a value greater than 1. This setting makes the disk shareable across multiple VMs.
 
 > [!IMPORTANT]
 > Host caching isn't supported for shared disks.
 > 
 > The value of `maxShares` can only be set or changed when a disk is unmounted from all VMs. See the [Disk sizes](#disk-sizes) for the allowed values for `maxShares`.
 
-# [Portal](#tab/azure-portal)
+# [Azure portal](#tab/azure-portal)
 
 1. Sign in to the Azure portal. 
-1. Search for and Select **Disks**.
+1. Search for and select **Disks**.
 1. Select **+ Create** to create a new managed disk.
-1. Fill in the details and select an appropriate region, then select **Change size**.
+1. On the **Basics** pane, select a **Region**, and then select **Change size**.
 
-    :::image type="content" source="media/disks-shared-enable/create-shared-disk-basics-pane.png" alt-text="Screenshot of the Azure portal showing the create a managed disk pane with the change size option highlighted." lightbox="media/disks-shared-enable/create-shared-disk-basics-pane.png":::
+    :::image type="content" source="media/disks-shared-enable/create-shared-disk-basics-pane.png" alt-text="Screenshot of the Create a managed disk Basics pane with Region set to West US, Availability zone set to None, and Change size highlighted." lightbox="media/disks-shared-enable/create-shared-disk-basics-pane.png":::
 
 1. Select the Premium SSD size and SKU that you want and select **OK**.
 
-    :::image type="content" source="media/disks-shared-enable/select-premium-shared-disk.png" alt-text="Screenshot of the disk SKU, premium LRS and ZRS SSD SKUs highlighted." lightbox="media/disks-shared-enable/select-premium-shared-disk.png":::
+    :::image type="content" source="media/disks-shared-enable/select-premium-shared-disk.png" alt-text="Screenshot of the Disk SKU list with Premium SSD under locally redundant storage and zone-redundant storage highlighted." lightbox="media/disks-shared-enable/select-premium-shared-disk.png":::
 
 1. Proceed through the deployment until you get to the **Advanced** pane.
-1. Select **Yes** for **Enable shared disk** and select the amount of **Max shares** you want.
+1. For **Enable shared disk**, select **Yes**, and then select a value for **Max shares**.
 
-    :::image type="content" source="media/disks-shared-enable/enable-premium-shared-disk.png" alt-text="Screenshot of the Advanced pane, Enable shared disk highlighted and set to yes." lightbox="media/disks-shared-enable/enable-premium-shared-disk.png":::
+    :::image type="content" source="media/disks-shared-enable/enable-premium-shared-disk.png" alt-text="Screenshot of the shared disk settings with Enable shared disk set to Yes and Max shares set to 2." lightbox="media/disks-shared-enable/enable-premium-shared-disk.png":::
 
-1. Select **Review + Create**.
+1. Select **Review + create**.
 
 
 # [Azure CLI](#tab/azure-cli)
+
+Use the following Azure CLI command to create a Premium SSD as a shared disk.
 
 ```azurecli
 az disk create -g myResourceGroup -n mySharedDisk --size-gb 1024 -l westcentralus --sku Premium_LRS --max-shares 2
 ```
 
-# [PowerShell](#tab/azure-powershell)
+# [Azure PowerShell](#tab/azure-powershell)
+
+Use the following Azure PowerShell commands to create a Premium SSD as a shared disk.
 
 ```azurepowershell-interactive
 $dataDiskConfig = New-AzDiskConfig -Location 'WestCentralUS' -DiskSizeGB 1024 -AccountType Premium_LRS -CreateOption Empty -MaxSharesCount 2
@@ -85,7 +87,7 @@ $dataDiskConfig = New-AzDiskConfig -Location 'WestCentralUS' -DiskSizeGB 1024 -A
 New-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'mySharedDisk' -Disk $dataDiskConfig
 ```
 
-# [Resource Manager Template](#tab/azure-resource-manager)
+# [Resource Manager template](#tab/azure-resource-manager)
 
 Before using the following template, replace `[parameters('dataDiskName')]`, `[resourceGroup().location]`, `[parameters('dataDiskSizeGB')]`, and `[parameters('maxShares')]` with your own values.
 
@@ -131,42 +133,46 @@ Before using the following template, replace `[parameters('dataDiskName')]`, `[r
 
 ---
 
-### Deploy a Standard SSD as a shared disk
+## Deploy a Standard SSD as a shared disk
 
-To deploy a managed disk with the shared disk feature enabled, use the new property `maxShares` and define a value greater than 1. This makes the disk shareable across multiple VMs.
+To deploy a managed disk with the shared disk feature enabled, set the `maxShares` property to a value greater than 1. This setting makes the disk shareable across multiple VMs.
 
 > [!IMPORTANT]
 > Host caching isn't supported for shared disks.
 > 
 > The value of `maxShares` can only be set or changed when a disk is unmounted from all VMs. See the [Disk sizes](#disk-sizes) for the allowed values for `maxShares`.
 
-# [Portal](#tab/azure-portal)
+# [Azure portal](#tab/azure-portal)
 
 1. Sign in to the Azure portal. 
-1. Search for and Select **Disks**.
+1. Search for and select **Disks**.
 1. Select **+ Create** to create a new managed disk.
-1. Fill in the details and select an appropriate region, then select **Change size**.
+1. On the **Basics** pane, select a **Region**, and then select **Change size**.
 
-    :::image type="content" source="media/disks-shared-enable/create-shared-disk-basics-pane.png" alt-text="Screenshot of the create a managed disk pane, change size highlighted." lightbox="media/disks-shared-enable/create-shared-disk-basics-pane.png":::
+    :::image type="content" source="media/disks-shared-enable/create-shared-disk-basics-pane.png" alt-text="Screenshot of the Create a managed disk Basics pane with Region set to West US, Availability zone set to None, and Change size highlighted." lightbox="media/disks-shared-enable/create-shared-disk-basics-pane.png":::
 
 1. Select the Standard SSD size and SKU that you want and select **OK**.
 
-    :::image type="content" source="media/disks-shared-enable/select-standard-ssd-shared-disk.png" alt-text="Screenshot of the disk SKU, Standard SSD LRS and ZRS SKUs highlighted." lightbox="media/disks-shared-enable/select-premium-shared-disk.png":::
+    :::image type="content" source="media/disks-shared-enable/select-standard-ssd-shared-disk.png" alt-text="Screenshot of the Disk SKU list with Standard SSD under locally redundant storage and zone-redundant storage highlighted." lightbox="media/disks-shared-enable/select-standard-ssd-shared-disk.png":::
 
 1. Proceed through the deployment until you get to the **Advanced** pane.
-1. Select **Yes** for **Enable shared disk** and select the amount of **Max shares** you want.
+1. For **Enable shared disk**, select **Yes**, and then select a value for **Max shares**.
 
-    :::image type="content" source="media/disks-shared-enable/enable-premium-shared-disk.png" alt-text="Screenshot of the Advanced pane, Enable shared disk highlighted and set to yes." lightbox="media/disks-shared-enable/enable-premium-shared-disk.png":::
+    :::image type="content" source="media/disks-shared-enable/enable-premium-shared-disk.png" alt-text="Screenshot of the shared disk settings with Enable shared disk set to Yes and Max shares set to 2." lightbox="media/disks-shared-enable/enable-premium-shared-disk.png":::
 
-1. Select **Review + Create**.
+1. Select **Review + create**.
 
 # [Azure CLI](#tab/azure-cli)
+
+Use the following Azure CLI command to create a Standard SSD as a shared disk.
 
 ```azurecli
 az disk create -g myResourceGroup -n mySharedDisk --size-gb 1024 -l westcentralus --sku StandardSSD_LRS --max-shares 2
 ```
 
-# [PowerShell](#tab/azure-powershell)
+# [Azure PowerShell](#tab/azure-powershell)
+
+Use the following Azure PowerShell commands to create a Standard SSD as a shared disk.
 
 ```azurepowershell-interactive
 $dataDiskConfig = New-AzDiskConfig -Location 'WestCentralUS' -DiskSizeGB 1024 -AccountType StandardSSD_LRS -CreateOption Empty -MaxSharesCount 2
@@ -174,9 +180,9 @@ $dataDiskConfig = New-AzDiskConfig -Location 'WestCentralUS' -DiskSizeGB 1024 -A
 New-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'mySharedDisk' -Disk $dataDiskConfig
 ```
 
-# [Resource Manager Template](#tab/azure-resource-manager)
+# [Resource Manager template](#tab/azure-resource-manager)
 
-Replace the values in this Azure Resource Manager template with your own, before using it:
+Before using the following template, replace the default values for the `dataDiskName`, `dataDiskSizeGB`, and `maxShares` parameters with your own values.
 
 ```rest
 { 
@@ -219,33 +225,35 @@ Replace the values in this Azure Resource Manager template with your own, before
 
 ---
 
-### Deploy an Ultra Disk as a shared disk
+## Deploy an Ultra Disk as a shared disk
 
 To deploy a managed disk with the shared disk feature enabled, change the `maxShares` parameter to a value greater than 1. This makes the disk shareable across multiple VMs.
 
 > [!IMPORTANT]
 > The value of `maxShares` can only be set or changed when a disk is unmounted from all VMs. See the [Disk sizes](#disk-sizes) for the allowed values for `maxShares`.
 
-# [Portal](#tab/azure-portal)
+# [Azure portal](#tab/azure-portal)
 
 1. Sign in to the Azure portal. 
-1. Search for and Select **Disks**.
+1. Search for and select **Disks**.
 1. Select **+ Create** to create a new managed disk.
-1. Fill in the details, then select **Change size**.
+1. On the **Basics** pane, select **Change size**.
 1. Select Ultra Disk for the **Disk SKU**.
 
-    :::image type="content" source="media/disks-shared-enable/select-ultra-shared-disk.png" alt-text="Screenshot of the disk SKU, Ultra Disk highlighted." lightbox="media/disks-shared-enable/select-ultra-shared-disk.png":::
+    :::image type="content" source="media/disks-shared-enable/select-ultra-shared-disk.png" alt-text="Screenshot of the Disk SKU list with Ultra Disk under locally redundant storage selected." lightbox="media/disks-shared-enable/select-ultra-shared-disk.png":::
 
 1. Select the disk size that you want and select **OK**.
 1. Proceed through the deployment until you get to the **Advanced** pane.
-1. Select **Yes** for **Enable shared disk** and select the amount of **Max shares** you want.
-1. Select **Review + Create**.
+1. For **Enable shared disk**, select **Yes**, and then select a value for **Max shares**.
+1. Select **Review + create**.
 
-    :::image type="content" source="media/disks-shared-enable/enable-ultra-shared-disk.png" alt-text="Screenshot of the Advanced pane, Enable shared disk highlighted." lightbox="media/disks-shared-enable/enable-ultra-shared-disk.png":::
+    :::image type="content" source="media/disks-shared-enable/enable-ultra-shared-disk.png" alt-text="Screenshot of the Advanced pane with Enable shared disk set to Yes, Max shares set to 2, Ultra Disk performance values, and logical sector size set to 4096 bytes." lightbox="media/disks-shared-enable/enable-ultra-shared-disk.png":::
 
 # [Azure CLI](#tab/azure-cli)
 
 ##### Regional disk example
+
+The following Azure CLI commands create a regional Ultra Disk as a shared disk, update its performance settings, and show its properties.
 
 ```azurecli
 #Creating an Ultra shared Disk 
@@ -260,7 +268,7 @@ az disk show -g rg1 -n clidisk
 
 ##### Zonal disk example
 
-This example is almost the same as the previous, except it creates a disk in availability zone 1.
+The following Azure CLI commands create an Ultra Disk as a shared disk in availability zone 1, update its performance settings, and show its properties.
 
 ```azurecli
 #Creating an Ultra shared Disk 
@@ -273,9 +281,11 @@ az disk update -g rg1 -n clidisk --disk-iops-read-write 3000 --disk-mbps-read-wr
 az disk show -g rg1 -n clidisk
 ```
 
-# [PowerShell](#tab/azure-powershell)
+# [Azure PowerShell](#tab/azure-powershell)
 
 ##### Regional disk example
+
+The following Azure PowerShell commands create a regional Ultra Disk as a shared disk.
 
 ```azurepowershell-interactive
 $datadiskconfig = New-AzDiskConfig -Location 'WestCentralUS' -DiskSizeGB 1024 -AccountType UltraSSD_LRS -CreateOption Empty -DiskIOPSReadWrite 2000 -DiskMBpsReadWrite 200 -DiskIOPSReadOnly 100 -DiskMBpsReadOnly 1 -MaxSharesCount 5
@@ -285,7 +295,7 @@ New-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'mySharedDisk' -Disk $
 
 ##### Zonal disk example
 
-This example is almost the same as the previous, except it creates a disk in availability zone 1.
+The following Azure PowerShell commands create an Ultra Disk as a shared disk in availability zone 1.
 
 ```azurepowershell-interactive
 $datadiskconfig = New-AzDiskConfig -Location 'WestCentralUS' -DiskSizeGB 1024 -AccountType UltraSSD_LRS -CreateOption Empty -DiskIOPSReadWrite 2000 -DiskMBpsReadWrite 200 -DiskIOPSReadOnly 100 -DiskMBpsReadOnly 1 -MaxSharesCount 5 -Zone 1
@@ -293,11 +303,11 @@ $datadiskconfig = New-AzDiskConfig -Location 'WestCentralUS' -DiskSizeGB 1024 -A
 New-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'mySharedDisk' -Disk $datadiskconfig
 ```
 
-# [Resource Manager Template](#tab/azure-resource-manager)
+# [Resource Manager template](#tab/azure-resource-manager)
 
 ##### Regional disk example
 
-Before using the following template, replace `[parameters('dataDiskName')]`, `[resourceGroup().location]`, `[parameters('dataDiskSizeGB')]`, `[parameters('maxShares')]`, `[parameters('diskIOPSReadWrite')]`, `[parameters('diskMBpsReadWrite')]`, `[parameters('diskIOPSReadOnly')]`, and `[parameters('diskMBpsReadOnly')]` with your own values.
+Before using the following template, replace the default values for the `diskName`, `location`, `dataDiskSizeGB`, `maxShares`, `diskIOPSReadWrite`, `diskMBpsReadWrite`, `diskIOPSReadOnly`, and `diskMBpsReadOnly` parameters with your own values.
 
 ```rest
 {
@@ -368,7 +378,7 @@ Before using the following template, replace `[parameters('dataDiskName')]`, `[r
 
 ##### Zonal disk example
 
-Before using the following template, replace `[parameters('dataDiskName')]`, `[resourceGroup().location]`, `[parameters('dataDiskSizeGB')]`, `[parameters('maxShares')]`, `[parameters('diskIOPSReadWrite')]`, `[parameters('diskMBpsReadWrite')]`, `[parameters('diskIOPSReadOnly')]`, and `[parameters('diskMBpsReadOnly')]` with your own values.
+Before using the following template, replace the default values for the `diskName`, `location`, `dataDiskSizeGB`, `maxShares`, `diskIOPSReadWrite`, `diskMBpsReadWrite`, `diskIOPSReadOnly`, `diskMBpsReadOnly`, and `zone` parameters with your own values.
 
 ```rest
 {
@@ -453,7 +463,7 @@ Before using the following template, replace `[parameters('dataDiskName')]`, `[r
 
 ## Share an existing disk
 
-To share an existing disk, or update how many VMs it can mount to, set the `maxShares` parameter with either the Azure PowerShell module or Azure CLI. You can also set `maxShares` to 1, if you want to disable sharing.
+To share an existing disk or update how many VMs can mount it, set the `maxShares` parameter by using either Azure PowerShell or Azure CLI. To disable sharing, set `maxShares` to 1.
 
 > [!IMPORTANT]
 > Host caching isn't supported for shared disks.
@@ -461,7 +471,9 @@ To share an existing disk, or update how many VMs it can mount to, set the `maxS
 > The value of `maxShares` can only be set or changed when a disk is unmounted from all VMs. See the [Disk sizes](#disk-sizes) for the allowed values for `maxShares`.
 > Before detaching a disk, record the LUN ID for when you reattach it.
 
-### PowerShell
+### Azure PowerShell
+
+The following Azure PowerShell commands update the sharing configuration of an existing disk.
 
 ```azurepowershell
 $datadiskconfig = Get-AzDisk -DiskName "mySharedDisk"
@@ -470,7 +482,9 @@ $datadiskconfig.maxShares = 3
 Update-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'mySharedDisk' -Disk $datadiskconfig
 ```
 
-### CLI
+### Azure CLI
+
+The following Azure CLI command updates the sharing configuration of an existing disk.
 
 ```azurecli
 #Modifying a disk to enable or modify sharing configuration
@@ -478,14 +492,16 @@ Update-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'mySharedDisk' -Dis
 az disk update --name mySharedDisk --max-shares 5 --resource-group myResourceGroup
 ```
 
-## Using Azure shared disks with your VMs
+## Use Azure shared disks with your VMs
 
-After you deploy a shared disk with `maxShares>1`, you can mount the disk to one or more of your VMs.
+After you deploy a shared disk with `maxShares > 1`, you can mount the disk to one or more of your VMs.
 
 > [!NOTE]
 > Host caching isn't supported for shared disks.
 > 
 > If you're deploying an Ultra Disk, make sure it matches the necessary requirements. See [Using Azure Ultra Disks](disks-enable-ultra-ssd.md) for details.
+
+The following Azure PowerShell commands create a VM and attach the shared disk as a data disk.
 
 ```azurepowershell-interactive
 
@@ -501,47 +517,31 @@ $vm = Add-AzVMDataDisk -VM $vm -Name "mySharedDisk" -CreateOption Attach -Manage
 update-AzVm -VM $vm -ResourceGroupName $resourceGroup
 ```
 
-## Supported SCSI PR commands
+## Supported SCSI persistent reservation commands
 
-Once you've mounted the shared disk to your VMs in your cluster, you can establish quorum and read/write to the disk using SCSI PR. The following PR commands are available when using Azure shared disks:
+After you mount the shared disk to your VMs in your cluster, you can establish quorum and read/write to the disk by using Small Computer System Interface (SCSI) persistent reservation (PR) commands.
 
-To interact with the disk, start with the persistent-reservation-action list:
+The following SCSI persistent reservation commands are available when using Azure shared disks:
 
-```
-PR_REGISTER_KEY 
+- `PR_REGISTER_KEY`
+- `PR_REGISTER_AND_IGNORE`
+- `PR_GET_CONFIGURATION`
+- `PR_RESERVE`
+- `PR_PREEMPT_RESERVATION`
+- `PR_CLEAR_RESERVATION`
+- `PR_RELEASE_RESERVATION`
 
-PR_REGISTER_AND_IGNORE 
+When you use `PR_RESERVE`, `PR_PREEMPT_RESERVATION`, or `PR_RELEASE_RESERVATION`, provide one of the following persistent reservation types:
 
-PR_GET_CONFIGURATION 
+- `PR_NONE`
+- `PR_WRITE_EXCLUSIVE`
+- `PR_EXCLUSIVE_ACCESS`
+- `PR_WRITE_EXCLUSIVE_REGISTRANTS_ONLY`
+- `PR_EXCLUSIVE_ACCESS_REGISTRANTS_ONLY`
+- `PR_WRITE_EXCLUSIVE_ALL_REGISTRANTS`
+- `PR_EXCLUSIVE_ACCESS_ALL_REGISTRANTS`
 
-PR_RESERVE 
-
-PR_PREEMPT_RESERVATION 
-
-PR_CLEAR_RESERVATION 
-
-PR_RELEASE_RESERVATION 
-```
-
-When using PR_RESERVE, PR_PREEMPT_RESERVATION, or  PR_RELEASE_RESERVATION, provide one of the following persistent-reservation-type:
-
-```
-PR_NONE 
-
-PR_WRITE_EXCLUSIVE 
-
-PR_EXCLUSIVE_ACCESS 
-
-PR_WRITE_EXCLUSIVE_REGISTRANTS_ONLY 
-
-PR_EXCLUSIVE_ACCESS_REGISTRANTS_ONLY 
-
-PR_WRITE_EXCLUSIVE_ALL_REGISTRANTS 
-
-PR_EXCLUSIVE_ACCESS_ALL_REGISTRANTS 
-```
-
-You also need to provide a persistent-reservation-key when using PR_RESERVE, PR_REGISTER_AND_IGNORE, PR_REGISTER_KEY, PR_PREEMPT_RESERVATION, PR_CLEAR_RESERVATION, or PR_RELEASE-RESERVATION.
+You also need to provide a persistent reservation key when you use `PR_RESERVE`, `PR_REGISTER_AND_IGNORE`, `PR_REGISTER_KEY`, `PR_PREEMPT_RESERVATION`, `PR_CLEAR_RESERVATION`, or `PR_RELEASE_RESERVATION`.
 
 
 ## Next steps
