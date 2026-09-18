@@ -1,11 +1,11 @@
 ---
 title: Migrate to the v6 and v7 VM series with a wave-based runbook
-description: A wave-based runbook for moving Azure VM workloads to the v6 and v7 series, decision flow, greenfield quickstart, phases, per-wave steps, and rollback.
+description: A wave-based runbook for moving Azure VM workloads to the v6 and v7 series — choose between redeploy and the in-place upgrade, then execute the pilot, waves, and rollback.
 author: rod-reis
 ms.author: rosanto
 ms.service: azure-virtual-machines
 ms.topic: how-to
-ms.date: 07/03/2026
+ms.date: 07/24/2026
 ms.collection:
   - migration
   - v2-5-to-v6-7
@@ -18,99 +18,93 @@ ai-usage: ai-assisted
 
 **Applies to:** ✔️ Linux VMs ✔️ Windows VMs
 
-Use a controlled, wave-based approach: confirm prerequisites, deploy from an updated image, validate, and repeat. Start with a small pilot, prove the pattern once, then scale. For greenfield, skip to the [quickstart](#greenfield-quickstart).
+**Workload patterns:** ✔️ E. Customer-managed VMs · F. Stateful and clustered · G. Certified appliances — ❌ Not for A, B, C, or D
 
-The execution model is straighforward when compared with a re-platform/modernization migration. In most cases, a wave is "deploy v6/v7 instances from the new image, install/move the workload, validate the platform, and retire the old instances."
+## Introduction
 
-> [!TIP]
-> The in-place conversion that switches an existing VM's controller from SCSI to NVMe has its own page, including setup, parameters, and how to revert. This approach is not recommended for Production workloads, and it has very specific requirements, use with caution, and make sure to backup VMs. See [Convert a VM from SCSI to NVMe in place](scsi-to-nvme-migration.md).
+This runbook consumes the output from **Discover**, **Assess**, and **Plan**. Ensure you complete these phases before the pilot:
 
-## Migration decision flow
+- The workload's [migration pattern](sizes-v6-v7-migration-discover.md), which decides whether this per-VM runbook applies at all.
+- A [readiness score](sizes-v6-v7-migration-assess.md) for every workload in scope, with any remediation assigned and closed.
+- A [plan](sizes-v6-v7-migration-plan.md): target size, region and zone, quota or capacity reservation, image approach, disk-path remediation, and commercial replan.
+- The **execution method** for each workload — redeploy or in-place upgrade. This is the [deployment approach decision](sizes-v6-v7-migration-plan.md#decide-a-migration-approach) from Plan; [Choose your execution method](#choose-your-execution-method) describes what each one means at execution time.
+- A maintenance window, rollback decision points, and workload-owner approval.
 
-Workloads arrive from different starting points: Generation 1 v2/v3 sizes, Generation 2 v4/v5 sizes, some already on NVMe, and some greenfield. Some VMs might also be hibernated, which you have to resume first. The following decision flow maps those starting points to a common journey and shows where the branches matter, including the backup-and-clone safety net for workloads that keep data on the OS disk.
+> [!NOTE]
+> **Who this article is for.** This runbook replaces **individual VMs**. If your unit of replacement is a pool, a host pool, a cluster, or a service-managed SKU, the wave model still applies — prove the pattern once, then expand in rings — but perform the replacement through your service's process. See [Discover migration pattern by workload type](sizes-v6-v7-migration-discover.md#which-phases-apply-to-your-pattern).
 
-:::image type="content" source="media/decision-flow.png" alt-text="Flowchart that shows the decision flow for different states of virtual machines." lightbox="media/decision-flow.png" border="true":::
+## Where you start
 
-A few notes on the flow:
+Workloads arrive from different starting points, but they all converge on the same path. Find your row, do the one thing in the last column, then [choose your execution method](#choose-your-execution-method) and run the [pilot](#phase-1-pilot).
 
-- **Keep a clone, not just a snapshot, when the OS disk holds data.** Cross-generation moves deploy from an updated image, so the new VM starts on a fresh OS disk (see [Persistent application data on the OS disk](sizes-v6-v7-migration-plan.md#persistent-application-data-on-the-os-disk)). The in-place [conversion](scsi-to-nvme-migration.md) keeps the existing OS disk but changes the device paths the OS sees. Either way, a bootable clone on a compatible older (SCSI) size gives you a clean rollback and a running copy you can read the OS-disk data from.
-- **Copy persistent data after the new VM validates.** Bring across anything the application wrote to the old OS disk (configuration, license or activation files, local state) once boot, NVMe disks, and MANA networking check out.
-- **Two migration methods, one validation gate.** Most moves redeploy from a current Generation 2, NVMe, and MANA-ready image; the in-place conversion is the option when you want to keep the existing OS disk. Both land in the same validation step before sign-off.
-- **Resume a hibernated VM before you migrate.** A hibernated VM holds a saved memory image that doesn't move to the new family. Resume it, let it settle, and shut it down to Stop (deallocated) before you convert or redeploy (see [Resume hibernated VMs before you migrate](sizes-v6-v7-migration-plan.md#resume-hibernated-vms-before-you-migrate)).
+| Your starting point | What's different | Do this first |
+| --- | --- | --- |
+| **Generation 1** | The v6 and v7 series require Generation 2 (UEFI), and the only supported in-place route to Generation 2 is the Gen1 to Trusted Launch upgrade — there's no plain Gen1 to Gen2 conversion. | Plan a Generation 2 image (highly recommended), or take the in-place upgrade path (which for a Gen1 source starts with the [Gen1 to Trusted Launch upgrade](/azure/virtual-machines/trusted-launch-existing-vm-gen-1) followed by the SCSI-to-NVMe conversion). |
+| **Generation 2** | Often close to ready — the boot mode is already right. | Confirm the image is NVMe- and MANA-ready. |
+| **Already on NVMe** | Prerequisites are usually satisfied. | Confirm the target size, then go straight to [choosing your execution method](#choose-your-execution-method) — image remediation is usually already done. |
+| **Greenfield** | Nothing to remediate. | Deploy from a current Generation 2, NVMe- and MANA-ready image. |
 
-## Greenfield quickstart
+## Choose your execution method
 
-1. Choose the target v6/v7 family and size (use a `d`-suffixed size if you need local NVMe scratch).
-1. Select a current Generation 2, NVMe, and MANA-ready marketplace or [Azure Compute Gallery](/azure/virtual-machines/azure-compute-gallery) image; keep [Trusted Launch](/azure/virtual-machines/trusted-launch) on.
-2. Confirm [region and zone](/azure/reliability/availability-zones-overview) availability, and quota.
-3. Deploy with [Bicep](/azure/azure-resource-manager/bicep/overview) or Terraform.
-4. Validate boot, disk discovery, and connectivity (see [Validate and optimize](sizes-v6-v7-migration-validate.md)).
+| | Redeploy from image (highly recommended) | In-place upgrade |
+| --- | --- | --- |
+| **What happens** | A new VM is created from a current Generation 2, NVMe-, and MANA-ready image. The old VM keeps running until the new one validates. | The existing VM is transformed where it stands. A Generation 2 source takes one operation: the [SCSI-to-NVMe conversion](scsi-to-nvme-migration.md) with a resize to the target series. A Generation 1 source takes two, in order: the [Gen1 to Trusted Launch upgrade](/azure/virtual-machines/trusted-launch-existing-vm-gen-1), then the SCSI-to-NVMe conversion. The OS disk is kept throughout. |
+| **When to choose it** | The default, especially for production. It's repeatable at scale, rollback is simply keeping the old VM, and it folds in the image refresh you need anyway. | Choose it when you can't practically rebuild because licensing or activation is bound to the OS disk, in-guest configuration is costly to reproduce, or no maintainable image exists. |
+| **Eligibility** | Any workload that can deploy from an image. | A source size **without** any OS dependency on the local temporary disk (no `d`-suffix); no Azure Disk Encryption; OS already NVMe-ready. Generation 1 sources also carry the [Trusted Launch upgrade prerequisites](/azure/virtual-machines/trusted-launch-existing-vm-gen-1#unsupported-gen1-vm-configurations) — Windows Server 2016 and older aren't supported, Azure Backup must use the Enhanced policy rather than Standard, and the OS volume can't be encrypted during the upgrade. |
+| **OS-disk data** | Doesn't carry over — plan the [capture-and-restore step](sizes-v6-v7-migration-plan.md#persistent-application-data-on-the-os-disk). | Carries over, but the device paths the OS sees still change. |
+| **Rollback** | Keep the old VM until the rollback window closes. | Split by operation: the SCSI-to-NVMe conversion reverts by switching back to SCSI and the original size, with the disks untouched. The Trusted Launch upgrade **doesn't revert** — recovery from that step is a full restore from the pre-upgrade backup. |
 
-## Migration principles
+> [!WARNING]
+> Both operations behind the in-place upgrade are supported platform operations. For more information, see [Upgrade Gen1 VMs to Trusted Launch](/azure/virtual-machines/trusted-launch-existing-vm-gen-1) and [Convert SCSI to NVMe for Linux and Windows VMs](/azure/virtual-machines/nvme-linux). However, Microsoft doesn't officially support the community script that automates SCSI-to-NVMe conversion. Validate these processes against non-production VMs before using them in a production wave, and always run the script with a backup and a tested revert in hand. For the script, its parameters, and the revert procedure, see [Convert a VM from SCSI to NVMe in place](scsi-to-nvme-migration.md).
 
-- Move by workload dependency.
-- Confirm the short prerequisite list before scheduling.
-- Deploy from an updated image; treat cross-generation moves as a redeploy, not an in-place resize.
-- Use small waves first; keep a tested rollback.
-- Prefer platform-native rollout (new pool, new image, or parallel scale set) for Azure Virtual Desktop, AKS, Azure Databricks, and Virtual Machine Scale Sets.
+> [!IMPORTANT]
+> A Generation 1 source makes the in-place upgrade a chain of two one-way-leaning operations on the same production VM. That's the maximal-risk version of this method — prefer redeploy for Gen1 sources unless one of the "when to choose it" conditions genuinely applies.
 
-## Roles and responsibilities
+### Stateful and clustered workloads (F)
 
-| Role | Responsibility |
-| --- | --- |
-| Sponsor | Business priority and approval. |
-| Architecture team | Family selection and design decisions. |
-| Migration lead | Planning, readiness tracking, and wave coordination. |
-| Workload owner | Approves windows and confirms the workload is healthy after the move. |
-| Operations | Runs runbooks, backups, and rollback. |
+The platform steps are the same as any other VM. The sequencing is what differs: replace nodes side by side and let the application move the role, rather than cutting over a VM.
 
-## Phase 1: Discover and qualify
+1. **Confirm the hard gate first.** For SAP, only sizes on the SAP-certified list are supportable, regardless of platform readiness.
+2. **Add, don't replace.** Deploy a new node or replica on the target series and join it to the cluster, availability group, or replication topology.
+3. **Let synchronization finish.** Don't proceed on a partial sync, however long the rollback window looks.
+4. **Validate before you move anything.** Confirm quorum, replication health, storage latency, and monitoring on the new node.
+5. **Transfer the role deliberately** during the window — a planned failover or role transfer, not an induced one.
+6. **Keep the old node until the rollback window closes.** Then remove it and reconfirm quorum.
 
-1. Inventory VMs, generation, OS, image source, disks, and region/zone (see the query that follows).
-1. Identify the source family (v2/v3/v4/v5) and flag Generation 1, custom-image, temp-disk, and SCSI-path items.
-1. Confirm the target region, zone, capacity, and quota.
-1. Score workloads (ready now, small refresh, or plan the region or family) and pick a pilot. See [Assess readiness](sizes-v6-v7-migration-assess.md).
+Never migrate all members of a quorum-based cluster in a single wave, and don't leave the cluster with an even number of voting members between steps.
 
-### Inventory query (Azure Resource Graph)
+For standalone stateful VMs that can't take a replica, the [execution method choice](#choose-your-execution-method) applies after all: use a redeploy with an application-consistent backup and restore, or the in-place upgrade as the maintenance-window migration. Either way, rehearse the restore before the production cutover.
 
-Run this query in the portal's [Resource Graph Explorer](/azure/governance/resource-graph/overview) or via `az graph query`:
+> [!IMPORTANT]
+> **Don't clone or restore a domain controller** from an image or backup of another domain controller. Deploy a new domain controller on the target series, let directory and SYSVOL replication populate it, validate domain and DNS health, transfer the operations master (FSMO) roles, then demote the old one. Update static references — DNS client settings, and anything pinned to a specific domain controller — before you demote.
 
-```kusto
-Resources
-| where type =~ 'microsoft.compute/virtualmachines'
-| extend sku = tostring(properties.hardwareProfile.vmSize),
-         gen = tostring(properties.extended.instanceView.hyperVGeneration),
-         os  = tostring(properties.storageProfile.osDisk.osType),
-         imagePublisher = tostring(properties.storageProfile.imageReference.publisher),
-         diskController = tostring(properties.storageProfile.diskControllerType)
-| project name, resourceGroup, location, sku, gen, os, imagePublisher, diskController, zones
-| order by sku asc
-```
+### Cut over a certified appliance (G)
 
-This surfaces the items that gate a clean move: size, generation, OS, image source, and disk controller type. More [starter queries](/azure/governance/resource-graph/samples/starter) are in the docs.
+Vendor certification is settled during planning — see [Confirm before you commit](sizes-v6-v7-migration-plan.md#confirm-before-you-commit). Don't start this sequence until you have written confirmation for the exact target family. What follows is the cutover itself.
 
-## Phase 2: Plan
+1. **Deploy in parallel.** Stand up the new appliances alongside the existing pair, and reproduce licensing and bootstrap configuration.
+2. **Reproduce policy and routing.** Rule sets, routes, IP forwarding, and health probes — then diff them against the source rather than assuming the export was complete.
+3. **Verify the datapath.** Pass controlled test traffic through the new appliances before any production traffic moves.
+4. **Exercise failover on the new pair.** Don't infer high-availability behavior from the old pair; the target family might present NICs differently.
+5. **Shift traffic, then retire.** Move production traffic, hold the old appliances through the rollback window, and retire them after sign-off.
 
-1. Select the target v6/v7 size; confirm region/zone and consider creating  [capacity reservation](/azure/virtual-machines/capacity-reservation-overview)).
-2. Confirm the Generation 2 path (or the in-place [Generation 1 to Generation 2 upgrade](/azure/virtual-machines/generation-2)).
-3. Confirm NVMe and MANA readiness in the image.
-4. Update custom images once via [Azure Image Builder](/azure/virtual-machines/image-builder-overview) and Azure Compute Gallery.
-5. Remediate any hard-coded SCSI disk paths.
-6. Decide the local-disk (`d`-size) need and relocate the page file, `tempdb`, or scratch if required.
-7. Confirm backup/snapshot and [Azure Backup support](/azure/backup/backup-support-matrix-iaas) for Generation 2 and Trusted Launch.
-8. Replan family-scoped [reservations or savings plans](/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations).
-9. Set the maintenance window and rollback decision points.
+## Phase 1: Pilot
 
-For the full set of design considerations, see [Plan a workload migration](sizes-v6-v7-migration-plan.md).
+The pilot is wave zero: one representative workload, run end to end, to prove the pattern the later waves repeat. Confirm the [prerequisites](#introduction) are met, including the execution method chosen for this workload. The pilot sequence differs by method:
 
-## Phase 3: Pilot
+| Step | Redeploy from image | In-place upgrade |
+| --- | --- | --- |
+| **1. Protect** | Take an application-consistent restore point of the source VM, and confirm the inventory of anything the application persists to the OS disk. | Restart the VM to commit any pending changes and prove it boots cleanly, then take an application-consistent restore point. For a Generation 1 source, this backup is the only way back from the Trusted Launch step. |
+| **2. Execute** | Deploy the v6/v7 instance from the updated image, alongside the source VM, which keeps running. | Deallocate the VM, then run the operations in order: a Generation 1 source takes the [Gen1 to Trusted Launch upgrade](/azure/virtual-machines/trusted-launch-existing-vm-gen-1) first, then the [SCSI-to-NVMe conversion](scsi-to-nvme-migration.md) with the resize to the target series. Start the VM. |
+| **3. Validate** | On the **new** VM: boot, disk discovery and mounts, NVMe and MANA drivers healthy, network connectivity. | The same checks, on the **transformed** VM — plus confirm no mount, script, or application setting still references an old SCSI device path. |
+| **4. Cut over** | Install apps and services, migrate data from the source, redirect clients, and confirm owner sign-off. | No data copy — the disks came along. Confirm the workload is up and the owner signs off. |
+| **5. Hold the rollback** | Keep the source VM running until the rollback window closes, then retire it. | Keep the pre-upgrade backup until the window closes. If validation fails, revert the conversion to SCSI; a failed Trusted Launch step needs the restore. |
 
-1. Run the [pre-flight checks](#pre-flight-checklist).
-1. Take a backup or snapshot.
-1. Deploy the v6/v7 instance from the updated image.
-1. Validate the platform: boot, disk discovery and mounts, NVMe/MANA drivers healthy, and network connectivity.
-1. Confirm the workload comes up and the owner signs off.
-1. Capture any findings and lock the repeatable pattern for later waves.
+The downtime profile differs too: redeploy takes an outage only at cutover, while the in-place upgrade takes the VM down for the whole execute-and-validate window. Set the pilot's maintenance window accordingly.
+
+For [stateful and clustered workloads (F)](#stateful-and-clustered-workloads-f) and [certified appliances (G)](#cut-over-a-certified-appliance-g), the **Execute** and **Cut over** rows are replaced by the pattern-specific sequence. Protect, Validate, and the rollback hold apply as written.
+
+Close the pilot the same way for both methods: capture any findings, and lock the repeatable pattern for later waves.
 
 ### Pilot success criteria
 
@@ -120,71 +114,78 @@ For the full set of design considerations, see [Plan a workload migration](sizes
 - Network connectivity passes.
 - The workload owner confirms the application is up.
 
-## Phase 4: Migrate in waves
+These criteria are the in-window gates — the subset of [platform validation](sizes-v6-v7-migration-validate.md#platform-validation) that decides proceed-or-roll-back while the revert is still cheap. The full pass — [operational validation](sizes-v6-v7-migration-validate.md#operational-validation) and the pattern's [closure criteria](sizes-v6-v7-migration-validate.md#closure-criteria-by-pattern) — happens in [Validate and optimize](sizes-v6-v7-migration-validate.md), and it completes **before the rollback window closes**.
 
-1. Group VMs by application dependency; sequence non-production before production.
+## Phase 2: Migrate in waves
+
+Settle the wave sequence during [planning](sizes-v6-v7-migration-plan.md#wave-sequencing). The wave sequence determines which applications move together and in what order. This phase executes the wave sequence.
+
 1. Keep waves small enough to validate within the window.
-1. For platform fleets, add a new pool or model and shift after validation; keep the old one until confirmed.
-1. Reconfirm capacity in the target region and zone at the start of each wave.
+2. Reconfirm capacity in the target region and zone at the start of each wave.
+3. Don't split tightly coupled application tiers across old and new families for longer than the wave window.
+
+### Automate the repeatable work
+
+1. Build the inventory with [Azure Resource Graph](/azure/governance/resource-graph/overview), [Azure Migrate](/azure/migrate/migrate-services-overview), and tags. See the [inventory query](sizes-v6-v7-migration-assess.md#inventory-query-azure-resource-graph) in Assess.
+2. Use infrastructure as code and pipelines for repeatable deployment, and Azure Image Builder with Azure Compute Gallery for image rebuilds.
+3. Steer new deployments with [Azure Policy](/azure/governance/policy/overview) allowed-SKU and image rules.
+4. Roll out in rings (canary, pilot, production), and keep the old VMs and images until the new ones are validated.
 
 ### Per-wave steps
 
-1. Confirm wave readiness and capacity.
-1. Back up or snapshot.
-1. Run the pre-flight checks.
-1. Deploy from the image, add a new pool, or roll the scale-set model.
-1. Validate platform health and confirm the workload is up.
-1. Record results; proceed only after the exit criteria are met.
+For each VM in the wave, run the method sequence the pilot locked in. The [Phase 1 table](#phase-1-pilot) shows the per-VM procedure. At wave level:
+
+1. Confirm wave readiness, and recheck the [prerequisites](#introduction) for every workload. This check includes each in-place VM's eligibility, because configuration drift since planning (a new data disk type, encryption enabled, a size change) can break the conversion.
+2. Work through the per-VM sequence for each workload.
+3. Record results per VM. Proceed only after the exit criteria are met.
+
+What changes at wave scale is how the two methods batch:
+
+| | Redeploy from image | In-place upgrade |
+| --- | --- | --- |
+| **Batching** | New VMs can deploy in parallel where dependencies allow. The sources keep serving throughout. | Each VM is down for its entire transform. Batch by maintenance window, not by count. |
+| **Capacity** | Old and new VMs run side by side, so the wave needs quota and capacity for **both** sets at once. | No double footprint, but the resize must find target-size capacity at execution time. Reconfirm at wave start. |
+| **Rollback stock** | The source VMs. Keep them until the wave's exit criteria pass. | The pre-upgrade restore points. Keep them until the wave's exit criteria pass. |
 
 ### Wave exit criteria
 
-1. Platform validation passes (boot, disk, network).
-1. The workload owner confirms the application is healthy.
-1. The rollback window closes with approval, and the migration record is updated.
+1. The in-window platform gates pass (boot, disk, network).
+2. The workload owner confirms the application is healthy.
+3. The full [validation pass](sizes-v6-v7-migration-validate.md) is complete – operational validation and the pattern's closure criteria – while the rollback stock still exists.
+4. The rollback window closes with approval, and the migration record is updated.
 
-## Phase 5: Close and expand
+## Phase 3: Close and expand
 
 1. Capture the migrated count and scope; document any one-time remediations.
-1. Review cost and performance, and rightsize where headroom exists. See [Validate and optimize](sizes-v6-v7-migration-validate.md).
-1. Identify the next waves or additional v6/v7 candidates.
-
-## Workload-specific execution patterns
-
-| Pattern | Preferred execution | Platform validation |
-| --- | --- | --- |
-| Azure Virtual Desktop host pools | Build a v6/v7 image, deploy canary hosts, drain old hosts, and expand by ring. | Image boots, sign-in works, profiles attach, and agents are healthy. |
-| AKS node pools | Add a new v6/v7 node pool, then cordon and drain old nodes. | Nodes provision, boot, and join; pods schedule; node drivers are healthy. |
-| Azure Databricks | Point cluster policies and pools at a supported v6/v7 size. | Clusters launch; local NVMe scratch behaves as expected; capacity is available. |
-| Virtual Machine Scale Sets | Deploy a new image or model via a canary or parallel scale set, then roll forward. | Instances boot from the new image; the rollback model is retained. |
-| Firewalls and NVAs | Deploy parallel appliance capacity, then shift traffic. | Vendor-supported family, NIC/driver, data plane, and HA failover. |
-
-## Pre-flight checklist
-
-| Check | Required outcome |
-| --- | --- |
-| VM generation | Generation 2 (UEFI) confirmed, or upgrade planned. |
-| Target size | v6/v7 size selected and sized. |
-| Region, zone, quota | Availability confirmed. |
-| OS and image | Generation 2, NVMe, and MANA-ready image validated. |
-| Disk paths | Hard-coded SCSI paths remediated. |
-| Local/temp disk | `d`-size chosen or page file/`tempdb` relocated. |
-| Low-level agents | Antivirus, backup, and monitoring drivers current and signed. |
-| Backup | Snapshot or backup completed; Generation 2 support confirmed. |
-| Rollback | Steps documented and approved. |
-| Commercial | Reservation or savings-plan coverage replanned. |
-| ISV support | Vendor support confirmed where applicable. |
+2. Release the rollback stock deliberately: retire and delete the source VMs and their disks (redeploy), and expire the pre-upgrade restore points per your retention policy (in-place upgrade). Don't let either accumulate silently – both carry cost.
+3. Review cost and performance, and rightsize where headroom exists. See [Validate and optimize](sizes-v6-v7-migration-validate.md).
+4. Identify the next waves or additional v6/v7 candidates.
 
 ## Rollback guidance
 
-Plan rollback before you start. Because you deploy alongside the existing instances, rollback is usually "keep the old VM or pool until the new one is validated, then retire it." Document the trigger conditions, decision owner, latest rollback time, backup reference, and communication plan.
+Plan rollback before you start, and match the plan to the execution method:
+
+| Method | Redeploy | In-place upgrade |
+| --- | --- | --- |
+| **How you roll back** | Redirect clients back to the source VM, which you never touched. Retire the new VM. | Run the conversion back to SCSI and the original size; the disks are untouched. The Trusted Launch step (Gen1 sources) **doesn't roll back** — recovery from it is a full restore from the pre-upgrade backup. |
+| **What it costs** | Nothing but the cutover window — no restore involved, unless the source is already retired. | A second outage for the revert; a full restore if the Trusted Launch step is what failed. |
+
+Document the trigger conditions, decision owner, latest rollback time, backup reference, and communication plan.
 
 ## Escalation triggers
 
-- The VM fails to boot after deployment.
+For either method:
+
+- The VM fails to boot after the deployment or the transform.
 - The OS doesn't discover disks as expected.
 - An NVMe or MANA driver or connectivity issue occurs.
 - Secure Boot blocks a required low-level driver.
 - Required zone capacity is unavailable.
+
+Specific to the in-place upgrade:
+
+- The Trusted Launch step completes but the VM doesn't boot — restore from the pre-upgrade backup; don't attempt the conversion on top of a failed upgrade.
+- The conversion doesn't validate and the revert to SCSI also fails — restore from the pre-conversion backup and fall back to the redeploy path.
 
 ## Communicate with stakeholders
 
@@ -192,5 +193,4 @@ Keep workload owners and the sponsor informed at each wave boundary: what's plan
 
 ## Next steps
 
-- [Convert a VM from SCSI to NVMe in place](scsi-to-nvme-migration.md)
-- [Validate and optimize](sizes-v6-v7-migration-validate.md)
+- [5. Validate and optimize](sizes-v6-v7-migration-validate.md)
