@@ -39,7 +39,9 @@ The simplest architecture is a Linux VM that runs a desktop environment and a re
 
 A single-VM approach doesn't provide a connection broker, automatic host assignment, or load balancing. Session persistence, device redirection, and browser access also depend on the remote desktop product. As the number of users grows, independently managing each VM can become an operational burden.
 
-For a basic Remote Desktop Protocol (RDP) configuration, see [Use xrdp with Linux](use-remote-desktop.md). xrdp is suitable for general desktop access, but it doesn't provide a complete multi-user VDI control plane or hardware-accelerated 3D rendering by itself.
+For a basic Remote Desktop Protocol (RDP) configuration on Ubuntu, see [Use xrdp with Linux](use-remote-desktop.md). xrdp is a lightweight, Ubuntu-focused option that's suitable for initial setup and quick troubleshooting, but it doesn't provide a complete multi-user VDI control plane or hardware-accelerated 3D rendering by itself.
+
+For a persistent single-VM desktop, partner products such as ThinLinc can provide session persistence and native-client or browser access. For more information, see [Multi-user and brokered Linux VDI](#multi-user-and-brokered-linux-vdi) later in this article.
 
 ## GPU-accelerated remote visualization
 
