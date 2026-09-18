@@ -2543,15 +2543,17 @@
     items:
       - name: Overview
         href: ./migration/sizes/sizes-v6-v7-migration-overview.md
-      - name: Assess readiness
+      - name: 1. Discover migration patterns
+        href: ./migration/sizes/sizes-v6-v7-migration-discover.md
+      - name: 2. Assess readiness
         href: ./migration/sizes/sizes-v6-v7-migration-assess.md
-      - name: Plan the migration
+      - name: 3. Plan the migration
         href: ./migration/sizes/sizes-v6-v7-migration-plan.md
-      - name: Migrate (wave runbook)
+      - name: 4. Migrate in waves
         href: ./migration/sizes/sizes-v6-v7-migration-migrate.md
       - name: "(Optional) Convert SCSI to NVMe in place"
         href: ./migration/sizes/scsi-to-nvme-migration.md
-      - name: Validate and Optimize
+      - name: 5. Validate and optimize
         href: ./migration/sizes/sizes-v6-v7-migration-validate.md
       - name: Frequently asked questions
         href: ./migration/sizes/sizes-v6-v7-migration-faq.md

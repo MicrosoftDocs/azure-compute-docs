@@ -5,7 +5,7 @@ author: rod-reis
 ms.author: rosanto
 ms.service: azure-virtual-machines
 ms.topic: overview
-ms.date: 07/03/2026
+ms.date: 07/24/2026
 ms.collection:
   - migration
   - v2-5-to-v6-7
@@ -18,23 +18,30 @@ ai-usage: ai-assisted
 
 **Applies to:** ✔️ Linux VMs ✔️ Windows VMs
 
-The v6 and v7 Azure VM series give your workloads newer, faster infrastructure with strong price-performance. The move is a well-understood pattern: confirm a short but important list of platform prerequisites (boot mode, image, storage interface, network driver, and regional availability), deploy from an updated image, and validate in controlled waves.
+**Workload patterns:** ✔️ All patterns
 
-This article introduces the migration and links to the detailed phases: **Assess**, **Plan**, **Migrate**, and **Validate and optimize**. It applies whether you're moving existing VMs from the v2 through v5 series or deploying greenfield.
+The v6 and v7 Azure VM series give your workloads newer, faster infrastructure with strong price-performance. Confirm platform prerequisites (boot mode, image, storage interface, network driver, and regional availability), deploy from an updated image, and validate in controlled waves.
+
+This migration playbook is for architects and infrastructure teams planning a move to the v6 or v7 series, for a single workload or across a large estate.
+
+This article introduces the migration and links to the detailed phases: **Discover**, **Assess**, **Plan**, **Migrate**, and **Validate & optimize**. It applies whether you're moving existing VMs from the v2 through v5 series or deploying greenfield.
 
 > [!NOTE]
-> The changes in this migration affect the physical host, the virtual hardware, and the image used to create the VM. Everything else *inside* the VM, your application, its configuration, autoscale rules, and health logic stays the same.
+> The changes in this migration affect the physical host, the virtual hardware, and the image used to create the VM. Your application, its configuration, autoscale rules, and health logic stays the same. Stateful and clustered workloads are the exception: the application itself doesn't change, but the migration adds application-aware steps for replication and role transfer. See [Discover migration pattern by workload type](sizes-v6-v7-migration-discover.md).
 
-## Migration effort by starting point
+## Discover migration pattern by workload type
 
-The same short prerequisite list applies in every case. The remediation effort decreases as the source generation gets newer, and greenfield is the simplest because there's nothing to remediate.
+The migration effort depends on how the workload deploys, stores state, and recovers from the replacement of an individual VM. Because the prerequisites apply per image, not per VM, workloads built from a shared, validated image migrate by replacing the pool, while customer-managed applications, clustered databases, and virtual appliances need application-aware replication, configuration migration, or vendor certification.
 
-| Starting point | What it usually means | Effort |
-| --- | --- | --- |
-| v2 / v3 (most common) | Usually Generation 1, an older OS image, SCSI disks, and a local temporary disk in use. The prerequisites are well understood and one-time. | Moderate, mostly an image refresh with a generation change. |
-| v4 | Frequently Generation 2 already; the main work is image/driver and disk-path confirmation. | Low. |
-| v5 | Usually Generation 2 and close to ready; mostly a validation pass. | Very low. |
-| Greenfield | Start on a current Generation 2, NVMe- and MANA-ready image; no remediation. | Minimal. |
+Seven patterns cover most estates:
+
+- **A. Compute pools** and **B. Image-based hosts** replace a pool of disposable nodes or session hosts.
+- **C. Service-managed compute** and **D. Cluster re-creation** are driven by the service's supported-size list.
+- **E. Customer-managed VMs** and **F. Stateful and clustered** replace individual VMs, with F adding state synchronization and role transfer.
+- **G. Certified appliances** are gated on vendor certification for the target family.
+
+Discover each workload's pattern first, most estates contain several, and the pattern determines which phases of this journey apply to you. For examples, migration approach, effort, and decision criteria for each pattern, see [Discover migration pattern by workload type](sizes-v6-v7-migration-discover.md).
+
 
 ## Target VM families
 
@@ -56,7 +63,7 @@ Focus your planning on the items that actually change at the platform level:
 - **Networking:** The [MANA](/azure/virtual-network/accelerated-networking-mana-overview) adapter requires a current OS and driver.
 - **Local (temporary) disk:** Present only on `d`-suffixed sizes, and presented as NVMe.
 - **Image:** Use a current Generation 2, NVMe- and MANA-ready marketplace or [Azure Compute Gallery](/azure/virtual-machines/azure-compute-gallery) image.
-- **Availability and Commercial:** Confirm [regional and zonal availability](/azure/reliability/availability-zones-overview) and quota, consider [capacity reservations](/azure/virtual-machines/capacity-reservation-overview), and replan any family-scoped [reservations or savings plans](/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations).
+- **Availability and commercial:** Confirm [regional and zonal availability](/azure/reliability/availability-zones-overview) and quota for the target family. For capacity reservations and family-scoped discount replanning, see [Plan the migration](sizes-v6-v7-migration-plan.md#region-zone-and-capacity-planning).
 
 > [!IMPORTANT]
 > Treat this migration as a planned upgrade, not as:
@@ -67,13 +74,12 @@ Focus your planning on the items that actually change at the platform level:
 
 ## The migration journey
 
-1. **[Assess](sizes-v6-v7-migration-assess.md).** Use a short assessment to separate ready-now candidates from those needing image, driver, path, or capacity remediation.
-1. **[Plan](sizes-v6-v7-migration-plan.md).** Work through the considerations for Generation 2 boot, NVMe storage, MANA networking, Azure Boost offload, region, zone, capacity, and images.
-1. **[Migrate](sizes-v6-v7-migration-migrate.md).** Use a wave model that proves the platform pattern once, then scales through controlled rings.
-1. **[Validate and optimize](sizes-v6-v7-migration-validate.md).** Keep validation focused on boot, disks, drivers, networking, and workload-owner sign-off, then optimize for cost and performance.
+1. **[Discover](sizes-v6-v7-migration-discover.md).** Determine which pattern each workload follows. The pattern decides which of the phases below apply to you, and service-managed workloads finish here.
+2. **[Assess](sizes-v6-v7-migration-assess.md).** Use a short readiness check to separate ready-now candidates from those needing image, driver, path, or capacity remediation.
+3. **[Plan](sizes-v6-v7-migration-plan.md).** Work through the considerations for Generation 2 boot, NVMe storage, MANA networking, Azure Boost offload, region, zone, capacity, and images.
+4. **[Migrate](sizes-v6-v7-migration-migrate.md).** Use a wave model that proves the platform pattern once, then scales through controlled rings.
+5. **[Validate and optimize](sizes-v6-v7-migration-validate.md).** Keep validation focused on boot, disks, drivers, networking, and workload-owner sign-off, then optimize for cost and performance.
 
 ## Next steps
 
-- [Assess readiness for the v6 and v7 series](sizes-v6-v7-migration-assess.md)
-- [Plan a workload migration to the v6 and v7 series](sizes-v6-v7-migration-plan.md)
-- [VM sizes overview](/azure/virtual-machines/sizes/overview)
+- [1. Discover migration pattern by workload type](sizes-v6-v7-migration-discover.md)
