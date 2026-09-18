@@ -22,12 +22,12 @@ The following VM series are affected by these capacity growth restrictions:
 | VM category | Impacted VM series |
 |---|---|
 | Compute optimized | [F](../../sizes/compute-optimized/f-family.md), [Fs](../../sizes/compute-optimized/f-family.md), [Fsv2](../../sizes/compute-optimized/fsv2-series.md) |
-| General purpose | [D](../../sizes/general-purpose/d-family.md), [Ds](../../sizes/general-purpose/d-family.md), [Dv2](../../sizes/general-purpose/dv2-series.md), [Dsv2](../../sizes/general-purpose/dsv2-series.md), [Dv3](../../sizes/general-purpose/dv3-series.md), [Dsv3](../../sizes/general-purpose/dsv3-series.md), [Dv4](../../sizes/general-purpose/dv4-series.md), [Dsv4](../../sizes/general-purpose/dsv4-series.md), [Ddv4](../../sizes/general-purpose/ddv4-series.md), [Ddsv4](../../sizes/general-purpose/ddsv4-series.md), [Dav4](../../sizes/general-purpose/dav4-series.md), [Dasv4](../../sizes/general-purpose/dasv4-series.md), [B](../../sizes/general-purpose/b-family.md), [Bs](../../sizes/general-purpose/b-family.md), [Av2](../../sizes/general-purpose/av2-series.md), [Amv2](../../sizes/general-purpose/a-family.md) |
-| Memory optimized | [Ev3](../../sizes/memory-optimized/e-family.md), [Esv3](../../sizes/memory-optimized/e-family.md), [Ev4](../../sizes/memory-optimized/ev4-series.md), [Esv4](../../sizes/memory-optimized/esv4-series.md), [Edv4](../../sizes/memory-optimized/edv4-series.md), [Edsv4](../../sizes/memory-optimized/edsv4-series.md), [Eav4](../../sizes/memory-optimized/eav4-series.md), [Easv4](../../sizes/memory-optimized/easv4-series.md), [G](../../sizes/memory-optimized/m-family.md), [Gs](../../sizes/memory-optimized/m-family.md) |
+| General purpose | [D](../../sizes/general-purpose/d-family.md), [Ds](../../sizes/general-purpose/d-family.md), [Dv2](../../sizes/general-purpose/dv2-series.md), [Dsv2](../../sizes/general-purpose/dsv2-series.md), [Dv3](../../sizes/general-purpose/dv3-series.md), [Dsv3](../../sizes/general-purpose/dsv3-series.md), [B](../../sizes/general-purpose/b-family.md), [Bs](../../sizes/general-purpose/b-family.md), [Av2](../../sizes/general-purpose/av2-series.md), [Amv2](../../sizes/general-purpose/a-family.md) |
+| Memory optimized | [Ev3](../../sizes/memory-optimized/e-family.md), [Esv3](../../sizes/memory-optimized/e-family.md), [G](../../sizes/memory-optimized/m-family.md), [Gs](../../sizes/memory-optimized/m-family.md) |
 | Storage optimized | [Ls](../../sizes/storage-optimized/l-family.md), [Lsv2](../../sizes/storage-optimized/lsv2-series.md) |
 
 ### Quota limitations
-Existing subscriptions can continue to deploy the preceding VMs within already approved quota, subject to capacity availability. New subscriptions can't deploy the affected VM series. 
+Existing subscriptions can continue to deploy the preceding VMs within already approved quota, subject to capacity availability. New subscriptions can't deploy the affected VM series.
 
 | Scenario | Outcome |
 |---|---|
@@ -45,8 +45,8 @@ If you use impacted VM series, migrate to newer-generation VM families. Recommen
 
 | Current VM category | Impacted VM series | Recommended target VM series |
 |---|---|---|
-| General purpose | [Dv3](../../sizes/general-purpose/dv3-series.md), [Dsv3](../../sizes/general-purpose/dsv3-series.md), [Dv4](../../sizes/general-purpose/dv4-series.md), [Dsv4](../../sizes/general-purpose/dsv4-series.md), [Ddsv4](../../sizes/general-purpose/ddsv4-series.md), [Ddav4](../../sizes/general-purpose/d-family.md), [Dav4](../../sizes/general-purpose/dav4-series.md), [Dasv4](../../sizes/general-purpose/dasv4-series.md) | [Dv5](../../sizes/general-purpose/dv5-series.md), [Dv6](../../sizes/general-purpose/d-family.md), [Dv7](../../sizes/general-purpose/d-family.md) (based on workload requirements) |
-| Memory optimized | [Ev3](../../sizes/memory-optimized/ev3-esv3-series.md), [Esv3](../../sizes/memory-optimized/ev3-esv3-series.md), [Ev4](../../sizes/memory-optimized/ev4-series.md), [Esv4](../../sizes/memory-optimized/esv4-series.md), [Edv4](../../sizes/memory-optimized/edv4-series.md), [Edsv4](../../sizes/memory-optimized/edsv4-series.md), [Easv4](../../sizes/memory-optimized/easv4-series.md), [Eav4](../../sizes/memory-optimized/eav4-series.md) | [Ev5](../../sizes/memory-optimized/ev5-series.md), [Esv6](../../sizes/memory-optimized/esv6-series.md), [Esv7](../../sizes/memory-optimized/esv7-series.md) (based on workload requirements) |
+| General purpose | [Dv3](../../sizes/general-purpose/dv3-series.md), [Dsv3](../../sizes/general-purpose/dsv3-series.md)| [Dv5](../../sizes/general-purpose/dv5-series.md), [Dv6](../../sizes/general-purpose/d-family.md), [Dv7](../../sizes/general-purpose/d-family.md) (based on workload requirements) |
+| Memory optimized | [Ev3](../../sizes/memory-optimized/ev3-esv3-series.md), [Esv3](../../sizes/memory-optimized/ev3-esv3-series.md) | [Ev5](../../sizes/memory-optimized/ev5-series.md), [Esv6](../../sizes/memory-optimized/esv6-series.md), [Esv7](../../sizes/memory-optimized/esv7-series.md) (based on workload requirements) |
 
 ### Migration resources
 
@@ -90,17 +90,17 @@ No. New subscriptions are restricted from deploying the affected VM series.
 
 Requests submitted before enforcement took effect continue through the standard review process. Rollout timing might vary by region or system, so some customers might encounter the restriction before July 31. If you submitted the request, it proceeds through normal evaluation. If there's no option to request quota for an affected VM series, the restriction is active.
 
-### Does this restriction mean the D(s)v3 and E(s)v3 or D(d)(s)v4 and E(d)(s)v4 VM series are retired?
+### Does this restriction mean the D(s)v3 and E(s)v3 VM series are retired?
 
-No. This restriction is about capacity growth, not retirement. Retirement follows a separate process with dedicated customer communications, timelines, and migration guidance. This notice doesn't include a retirement announcement for the D(s)v3 and E(s)v3 or D(d)(s)v4 and E(d)(s)v4 series.
+No. This restriction is about capacity growth, not retirement. Retirement follows a separate process with dedicated customer communications, timelines, and migration guidance. This notice doesn't include a retirement announcement for the D(s)v3 and E(s)v3 series.
 
 ### Can customers continue normal operations on existing VMs and environments as long as they stay within their approved quota?
 
 Existing subscriptions with previously approved quota aren't affected by this change. Customers can continue deploying impacted VM SKUs within their existing approved quota limits, subject to capacity availability. However, approved quota doesn't guarantee capacity availability in the region and deployments might still fail if sufficient capacity isn't available.
 
-### Why aren't D(s)v3 and E(s)v3 or D(d)(s)v4 and E(d)(s)v4 VM series listed in the Retired VM Sizes Migration Guide?
+### Why aren't D(s)v3 and E(s)v3 VM series listed in the Retired VM Sizes Migration Guide?
 
-The Retired VM Sizes Migration Guide only includes VM series with a published retirement plan. While [some of the VM series](/azure/virtual-machines/sizes/lifecycle/retirement/d-ds-dv2-dsv2-ls-series-migration-guide) affected by the capacity growth restrictions have retirement dates, the D(s)v3 and E(s)v3 or D(d)(s)v4 and E(d)(s)v4 VM series don't currently have a published retirement plan and remain supported until further notice. These VM series continue to be fully supported under Azure SLAs.  The recommended VM series for these VMs are D(d)sv5 or newer and E(d)s v5 and newer.
+The Retired VM Sizes Migration Guide only includes VM series with a published retirement plan. While [some of the VM series](/azure/virtual-machines/sizes/lifecycle/retirement/d-ds-dv2-dsv2-ls-series-migration-guide) affected by the capacity growth restrictions have retirement dates, the D(s)v3 and E(s)v3 VM series don't currently have a published retirement plan and remain supported until further notice. These VM series continue to be fully supported under Azure SLAs.  The recommended VM series for these VMs are D(d)sv5 or newer and E(d)s v5 and newer.
 
 ### Does reimaging one of the impacted VM series in a Virtual Machine Scale Set deallocate it?
 
@@ -134,7 +134,7 @@ Customers who require capacity assurance should evaluate on-demand capacity rese
 
 RIs and ODCRs serve different purposes: RIs provide billing discounts, while ODCRs reserve capacity for a specific VM size, region, and zone.
 
-#### What happens to existing RIs and costs when I migrate from applicable A, B, D, E, F, or L variants of v1 through v4 series to v5 or later?
+#### What happens to existing RIs and costs when I migrate from applicable A, B, D, E, F, or L variants of v1 through v3 series to v5 or later?
 
 RIs don't automatically transfer when you migrate to a different VM series. Exchange an eligible RI to match the new VM series or transition to Azure Savings Plan for Compute. If you don't make an update, the RI might no longer apply, which could result in additional costs.
 
@@ -148,7 +148,7 @@ RI exchanges are available until February 1, 2027. After that date, each eligibl
 
 Review the reservation portfolio before February 1, 2027, and plan how to use any remaining exchange rights for eligible active RIs. For more information, see [Manage Azure Reservations](/azure/cost-management-billing/reservations/manage-reserved-vm-instance).
 
-#### What options are available for customers with large usage of applicable A, B, D, E, F, or L variants of v1 through v4 when existing RIs expire? Is there an exception process for RI renewals?
+#### What options are available for customers with large usage of applicable A, B, D, E, F, or L variants of v1 through v3 when existing RIs expire? Is there an exception process for RI renewals?
 
 Existing RIs remain valid through their committed term and continue providing discounts for eligible usage. However, no exceptions or extensions are planned for RI purchase or renewal end dates. Work with your Microsoft account team to evaluate migration and alternative commitment options.
 
@@ -175,4 +175,3 @@ Yes. You can continue deploying VMs against an existing capacity reservation wit
 
 #### Can I create new capacity reservations for impacted VM series after the quota restriction is implemented?
 Yes, as long as quota is already available within an existing subscription. However, be aware that scenarios involving shared capacity reservations across subscriptions might be impacted because you can't grant extra quota to consuming subscriptions after the quota freeze takes effect.
-
