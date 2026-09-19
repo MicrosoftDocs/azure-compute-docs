@@ -1,18 +1,18 @@
 ---
 title: Convert managed disks storage between different disk types
-description: How to convert Azure managed disks between the different disks types by using Azure PowerShell, Azure CLI, or the Azure portal.
+description: How to convert Azure managed disks between different disk types by using Azure PowerShell, Azure CLI, or the Azure portal.
 author: roygara
 ms.service: azure-disk-storage
 ms.custom: devx-track-azurecli, devx-track-azurepowershell, references_regions, portal
 ms.topic: how-to
-ms.date: 03/12/2026
+ms.date: 09/18/2026
 ms.author: rogarana
 # Customer intent: As a cloud administrator, I want to convert Azure managed disks between different disk types, so that I can optimize storage performance and cost of my environments, according to my workloads' requirements.
 ---
 
 # Convert the disk type of an Azure managed disk
 
-**Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows 
+**Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs
 
 There are five disk types of Azure managed disks: Azure Ultra Disks, Premium SSD v2, Premium SSD, Standard SSD, and Standard HDD. You can easily switch between Premium SSD, Standard SSD, and Standard HDD based on your performance needs. Premium SSD and Standard SSD are also available with [Zone-redundant storage](disks-redundancy.md#zone-redundant-storage-for-managed-disks). For most cases, you can't yet switch from or to an Ultra Disk, you must [deploy a new one with a snapshot of an existing disk](#migrate-to-premium-ssd-v2-or-ultra-disk-using-snapshots). However, you can switch from existing disks to a Premium SSD v2. See [Convert Premium SSD v2 disks](#convert-premium-ssd-v2-disks) for details.
 
@@ -31,7 +31,7 @@ Because conversion requires a restart of the virtual machine (VM), schedule the 
 
 ## Change the type of an individual managed disk
 
-For your dev/test workload, you might want a mix of Standard and Premium disks to reduce your costs. You can choose to upgrade only those disks that need better performance. This example shows how to convert a single VM disk from Standard to Premium storage. However, by changing the $storageType variable in this example, you can convert the VM's disks type to Standard SSD or Standard HDD. To use Premium managed disks, your VM must use a [VM size](sizes.md) that supports Premium storage. You can also use these examples to change a disk from [Locally redundant storage (LRS)](disks-redundancy.md#locally-redundant-storage-for-managed-disks) disk to a [Zone-redundant storage (ZRS)](disks-redundancy.md#zone-redundant-storage-for-managed-disks) disk or vice-versa. This example also shows how to switch to a size that supports Premium storage:
+For your dev/test workload, you might want a mix of Standard and Premium disks to reduce your costs. You can choose to upgrade only those disks that need better performance. This example shows how to convert a single VM disk from Standard to Premium storage. However, by changing the $storageType variable in this example, you can convert the VM's disks type to Standard SSD or Standard HDD. To use Premium managed disks, your VM must use a [VM size](sizes.md) that supports Premium storage. You can also use these examples to change a disk from [Locally redundant storage (LRS)](disks-redundancy.md#locally-redundant-storage-for-managed-disks) disk to a [Zone-redundant storage (ZRS)](disks-redundancy.md#zone-redundant-storage-for-managed-disks) disk or vice-versa. This example also shows how to switch to a size that supports Premium storage. The Azure PowerShell and Azure CLI examples stop and deallocate the VM, resize it if the target disk type requires a different VM size, update the selected disk's SKU, and restart the VM.
 
 # [Azure PowerShell](#tab/azure-powershell)
 
@@ -124,9 +124,9 @@ The disk type conversion is instantaneous. You can start your VM after the conve
 ---
 
 
-## Switch all managed disks of a VM from one account to another
+## Change the type of all managed disks attached to a VM
 
-This example shows how to convert all of a VM's disks to premium storage. However, by changing the $storageType variable in this example, you can convert the VM's disks type to Standard SSD or Standard HDD. To use Premium managed disks, your VM must use a [VM size](sizes.md) that supports Premium storage. This example also switches to a size that supports premium storage:
+This example shows how to convert all managed disks attached to a VM to Premium SSD. However, by changing the `$storageType` variable in Azure PowerShell or the `sku` variable in Azure CLI, you can convert the disks to Standard SSD or Standard HDD. To use Premium SSD, your VM must use a [VM size](sizes.md) that supports Premium storage. This example also shows how to switch to a size that supports Premium storage. The examples stop and deallocate the VM, resize it if the target disk type requires a different VM size, update the SKU of each data disk and the OS disk, and restart the VM.
 
 # [Azure PowerShell](#tab/azure-powershell)
 
@@ -137,7 +137,7 @@ $rgName = 'yourResourceGroup'
 # Name of the your virtual machine
 $vmName = 'yourVM'
 
-# Choose between Standard_LRS, StandardSSD_LRS, StandardSSD_ZRS, Premium_ZRS, Premium_LRS, and PremiumV2_LRS based on your scenario
+# Choose between Standard_LRS, StandardSSD_LRS, StandardSSD_ZRS, Premium_ZRS, and Premium_LRS based on your scenario
 $storageType = 'Premium_LRS'
 
 # Premium capable size
@@ -279,12 +279,15 @@ Both Premium SSD v2 disks and Ultra Disks have their own set of restrictions. Fo
 > [!IMPORTANT]
 > When migrating a Standard HDD, Standard SSD, or Premium SSD to either an Ultra Disk or Premium SSD v2, the logical sector size must be 512.
 
+The Azure PowerShell and Azure CLI procedures get the source disk, create an incremental snapshot, and create a new disk from that snapshot in the selected region and availability zone. The new disk uses either the `PremiumV2_LRS` or `UltraSSD_LRS` SKU and a 512-byte logical sector size.
+
 # [Azure PowerShell](#tab/azure-powershell)
 
 The following script migrates a snapshot of a Standard HDD, Standard SSD, or Premium SSD to either an Ultra Disk or a Premium SSD v2.
 
 ```PowerShell
 $diskName = "yourDiskNameHere"
+$newDiskName = "yourNewDiskNameHere"
 $resourceGroupName = "yourResourceGroupNameHere"
 $snapshotName = "yourDesiredSnapshotNameHere"
 
@@ -318,7 +321,7 @@ $snapshot = New-AzSnapshot -ResourceGroupName $resourceGroupName -SnapshotName $
 
 $diskConfig = New-AzDiskConfig -SkuName $storageType -Location $location -CreateOption Copy -SourceResourceId $snapshot.Id -DiskSizeGB $diskSize -LogicalSectorSize $logicalSectorSize -Zone $zone
  
-New-AzDisk -Disk $diskConfig -ResourceGroupName $resourceGroupName -DiskName $diskName
+New-AzDisk -Disk $diskConfig -ResourceGroupName $resourceGroupName -DiskName $newDiskName
 ```
 
 

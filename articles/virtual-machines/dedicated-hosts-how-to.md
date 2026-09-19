@@ -210,7 +210,7 @@ $dHost = New-AzHost `
 
 Now create a VM on the host.
 
-If you would like to create a VM with Ultra Disks support, make sure the host group in which the VM will be placed is Ultra Disk enabled. Once you've confirmed, create the VM in the same host group. See [Deploy an Ultra Disk](disks-enable-ultra-ssd.md#deploy-an-ultra-disk) for the steps to attach an Ultra Disk to a VM.
+To create a VM with Ultra Disk support, ensure the host group where you place the VM is Ultra Disk enabled. After you confirm this feature, create the VM in the same host group. For steps to attach an Ultra Disk to a VM, see [Deploy a VM with an Ultra Disk](disks-enable-ultra-ssd.md#deploy-a-vm-with-an-ultra-disk).
 
 ### [Portal](#tab/portal)
 

@@ -1,27 +1,29 @@
 ---
-title: Create an Azure snapshot of a virtual hard disk
-description: Learn how to create a copy of an Azure VM to use as a backup or for troubleshooting issues using the portal, PowerShell, or CLI.
+title: Create a snapshot of an Azure managed disk
+description: Learn how to create a point-in-time copy of an Azure managed disk for backup or troubleshooting by using the Azure portal, Azure PowerShell, or Azure CLI.
 author: roygara
 ms.author: rogarana
 ms.service: azure-disk-storage
 ms.topic: how-to
-ms.date: 02/13/2025
-# Customer intent: "As an IT administrator, I want to create a snapshot of a virtual hard disk, so that I can use it for backup or to troubleshoot virtual machine issues efficiently."
+ms.date: 09/17/2026
+# Customer intent: "As an IT administrator, I want to create an Azure managed disk snapshot as a point-in-time copy, so that I can use it for backup or to troubleshoot virtual machine issues efficiently."
 ---
 
-# Create a snapshot of a virtual hard disk
+# Create a snapshot of an Azure managed disk
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets
 
-A snapshot is a full, read-only copy of a virtual hard disk (VHD). You can use a snapshot as a point-in-time backup, or to help troubleshoot virtual machine (VM) issues. You can take a snapshot of both operating system (OS) or data disk VHDs. With snapshots, you can back up your managed disks at any point in time. These snapshots exist independently of the source disk, and you can use them to create new managed disks.
+An Azure managed disk snapshot is a full, read-only copy of a managed disk. Use a snapshot as a point-in-time backup or to help troubleshoot virtual machine (VM) issues. You can take a snapshot of either an operating system (OS) disk or a data disk. These snapshots exist independently of the source disk, and you can use them to create new managed disks.
+
+## Azure managed disk snapshot billing
 
 Snapshots are billed based on the used size. For example, if you create a snapshot of a managed disk with provisioned capacity of 64 GiB and an actual used data size of 10 GiB, that snapshot is billed only for the used data size of 10 GiB. You can see the used size of your snapshots by checking the [Azure usage report](/azure/cost-management-billing/understand/review-individual-bill). For example, if the used data size of a snapshot is 10 GiB, the *daily* usage report shows 10 GiB/(31 days) = 0.3226 as the consumed quantity. Snapshots are billed separately from their original disk. For details, see the [pricing page](https://azure.microsoft.com/pricing/details/managed-disks).
 
-## Create a snapshot of a VHD
+## Create an Azure managed disk snapshot
 
 If you want to use a snapshot to create a new VM, ensure that you first cleanly shut down the VM. This action clears any processes that are in progress.
 
-# [Portal](#tab/portal)
+# [Azure portal](#tab/portal)
 
 To create a snapshot using the Azure portal, complete these steps.
 
@@ -29,14 +31,14 @@ To create a snapshot using the Azure portal, complete these steps.
 1. Search for and select **Snapshot**.
 1. In the **Snapshot** window, select **Create**. The **Create snapshot** window appears.
 1. For **Resource group**, select an existing [resource group](/azure/azure-resource-manager/management/overview#resource-groups) or enter the name of a new one.
-1. Enter a **Name**, then select a **Region** and **Snapshot type** for the new snapshot. If you would like to store your snapshot in zone-resilient storage, you need to select a region that supports [availability zones](/azure/reliability/availability-zones-overview). For a list of supporting regions, see [Azure regions with availability zones](/azure/reliability/availability-zones-region-support).
+1. Enter a **Name**, and then select a **Region** and **Snapshot type** for the new snapshot. To store your snapshot in zone-redundant storage, select a region that supports [availability zones](/azure/reliability/availability-zones-overview). For a list of supporting regions, see [Azure regions with availability zones](/azure/reliability/availability-zones-region-support).
 1. For **Source subscription**, select the subscription that contains the managed disk to be backed up.
 1. For **Source disk**, select the managed disk to snapshot.
 1. For **Storage type**, select **Standard HDD**, unless you require zone-redundant storage or high-performance storage for your snapshot.
 1. If needed, configure settings on the **Encryption**, **Networking**, and **Tags** tabs. Otherwise, default settings are used for your snapshot.
 1. Select **Review + create**.
 
-# [PowerShell](#tab/powershell)
+# [Azure PowerShell](#tab/powershell)
 
 This example requires that you use [Cloud Shell](https://shell.azure.com/bash) or install the [Azure PowerShell module](/powershell/azure/install-azure-powershell).
 
@@ -53,7 +55,7 @@ First, you'll use the [New-AzSnapshotConfig](/powershell/module/az.compute/new-a
    $snapshotName = 'mySnapshot'  
    ```
 
-1. Use the [Get-AzVM](/powershell/module/az.compute/get-azvm) cmdlet to get the VM containing the VHD you want to copy.
+1. Use the [Get-AzVM](/powershell/module/az.compute/get-azvm) cmdlet to get the VM with the managed disk you want to snapshot.
 
    ```azurepowershell-interactive
    $vm = Get-AzVM `
@@ -70,7 +72,7 @@ First, you'll use the [New-AzSnapshotConfig](/powershell/module/az.compute/new-a
        -CreateOption copy
    ```
 
-   If you want to store your snapshot in zone-resilient storage, you must create the snapshot in a region that supports [availability zones](/azure/reliability/availability-zones-overview) and include the `-SkuName Standard_ZRS` parameter. For a list of regions that support availability zones, see [Azure regions with availability zones](/azure/reliability/availability-zones-region-support).
+    To store your snapshot in zone-redundant storage, create the snapshot in a region that supports [availability zones](/azure/reliability/availability-zones-overview) and include the `-SkuName Standard_ZRS` parameter. For a list of regions that support availability zones, see [Azure regions with availability zones](/azure/reliability/availability-zones-region-support).
 
 1. Take the snapshot.
 
@@ -113,7 +115,7 @@ Follow these steps to take a snapshot with the `az snapshot create` command and 
     	--name osDisk-backup
     ```
 
-    If you would like to store your snapshot in zone-resilient storage, you need to create it in a region that supports [availability zones](/azure/reliability/availability-zones-overview) and include the optional `--sku Standard_ZRS` parameter. A list of [availability zone-enabled regions](/azure/reliability/availability-zones-region-support) can be found here.
+    To store your snapshot in zone-redundant storage, create it in a region that supports [availability zones](/azure/reliability/availability-zones-overview) and include the optional `--sku Standard_ZRS` parameter. See the list of [availability zone-enabled regions](/azure/reliability/availability-zones-region-support).
     
 1. Use [az snapshot list](/cli/azure/snapshot#az-snapshot-list) to verify that your snapshot exists.
     
@@ -127,18 +129,7 @@ Follow these steps to take a snapshot with the `az snapshot create` command and 
 
 ## Next steps
 
-To recover using a snapshot, you must create a new disk from the snapshot, then either deploy a new VM, and use the managed disk as the OS disk, or attach the disk as a data disk to an existing VM.
+To recover by using a snapshot, create a managed disk from the snapshot. Then use the managed disk as the OS disk for a new VM or attach it as a data disk to an existing VM.
 
-# [Portal](#tab/portal)
-
-For more information, see the example in [Create a VM from a VHD by using the Azure portal](windows/create-vm-specialized-portal.md).
-
-# [PowerShell](#tab/powershell)
-
-For more information, see the example in [Create a Windows VM from a specialized disk by using PowerShell](windows/create-vm-specialized.md).
-
-# [Azure CLI](#tab/cli)
-
-For more information, see the example in [Create a complete Linux virtual machine with the Azure CLI](/previous-versions/azure/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-from-snapshot?toc=%2fcli%2fmodule%2ftoc.json).
-
----
+- [Create a Windows VM from a specialized disk by using the Azure portal or Azure PowerShell](attach-os-disk.md)
+- [Create a VM from a snapshot by using Azure CLI](scripts/create-vm-from-snapshot.md)
