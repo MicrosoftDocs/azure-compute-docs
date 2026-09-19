@@ -1,11 +1,11 @@
 ---
 title: Share an Azure managed disk across VMs
-description: Learn about sharing Azure managed disks across multiple Linux VMs.
+description: Learn how Azure shared disks let you share Azure managed disks across multiple Linux and Windows virtual machines.
 author: roygara
 ms.service: azure-disk-storage
 ms.custom: linux-related-content
 ms.topic: concept-article
-ms.date: 12/03/2025
+ms.date: 09/17/2026
 ms.author: rogarana
 # Customer intent: As a cloud architect, I want to understand how to share Azure managed disks across multiple VMs, so that I can effectively deploy and manage clustered applications in the cloud.
 ---
@@ -30,7 +30,7 @@ Shared managed disks offer shared block storage that can be accessed from multip
 
 ### Operating system requirements
 
-Shared disks support several operating systems. See the [Windows](#windows) or [Linux](#linux) sections for the supported operating systems.
+Shared disks support several operating systems. For supported operating systems, see the [Windows](#sample-windows-shared-disk-workloads) or [Linux](#sample-linux-shared-disk-workloads) sections.
 
 ## Billing implications
 
@@ -40,7 +40,7 @@ For shared Premium SSDs, in addition to cost of the disk's tier, there's an extr
 
 Both shared Ultra Disks and shared Premium SSD v2 disks don't have an extra charge for each VM that they're mounted to. They're billed on the total IOPS and MB/s that the disk is configured for. Normally, Ultra Disks and Premium SSD v2 has two performance throttles that determine its total IOPS/MB/s. However, when configured as a shared disk, two more performance throttles are exposed, for a total of four. These two extra throttles allow for increased performance at an extra expense and each meter has a default value, which raises the performance and cost of the disk.
 
-The four performance throttles a shared Ultra Disk and shared Premium SSD v2 have are diskIOPSReadWrite, diskMB/sReadWrite, diskIOPSReadOnly, and diskMB/sReadOnly. Each performance throttle can be configured to change the performance of your disk. The performance of shared Ultra Disks and Premium SSD v2 disks are calculated in the following ways: total provisioned IOPS (diskIOPSReadWrite + diskIOPSReadOnly) and for total provisioned throughput MB/s (diskMB/sReadWrite + diskMB/sReadOnly).
+The four performance throttles a shared Ultra Disk and shared Premium SSD v2 have are `diskIOPSReadWrite`, `diskMBpsReadWrite`, `diskIOPSReadOnly`, and `diskMBpsReadOnly`. Each performance throttle can be configured to change the performance of your disk. The performance of shared Ultra Disks and Premium SSD v2 disks are calculated in the following ways: total provisioned IOPS (`diskIOPSReadWrite` + `diskIOPSReadOnly`) and total provisioned throughput in MB/s (`diskMBpsReadWrite` + `diskMBpsReadOnly`).
 
 Once you've determined your total provisioned IOPS and total provisioned throughput, you can use them in the [pricing calculator](https://azure.microsoft.com/pricing/calculator/?service=managed-disks) to determine the cost of an Ultra shared disk or a Premium SSD v2 shared disk.
 
@@ -48,11 +48,9 @@ Once you've determined your total provisioned IOPS and total provisioned through
 
 [!INCLUDE [virtual-machines-disks-shared-sizes](./includes/virtual-machines-disks-shared-sizes.md)]
 
-## Sample workloads
+## Sample Windows shared disk workloads
 
-### Windows
-
-Azure shared disks are supported on Windows Server 2008 and newer. Most Windows-based clustering builds on WSFC, which handles all core infrastructure for cluster node communication, allowing your applications to take advantage of parallel access patterns. WSFC enables both CSV and non-CSV-based options depending on your version of Windows Server. For details, refer to [Create a failover cluster](/windows-server/failover-clustering/create-failover-cluster).
+Azure shared disks are supported on Windows Server 2008 and newer. Most Windows-based clustering builds on WSFC, which handles all core infrastructure for cluster node communication, allowing your applications to take advantage of parallel access patterns. WSFC enables both Cluster Shared Volumes (CSV) and non-CSV-based options depending on your version of Windows Server. For details, refer to [Create a failover cluster](/windows-server/failover-clustering/create-failover-cluster).
 
 Some popular applications running on WSFC include:
 
@@ -63,7 +61,7 @@ Some popular applications running on WSFC include:
 - File Server for General Use (IW workload) - shared disks enable high availability for file servers in general
 - Remote Desktop Server User Profile Disk (RDS UPD)
 
-### Linux
+## Sample Linux shared disk workloads
 
 Azure shared disks are supported on:
 - [SUSE SLE HA 15 SP1 and above](https://www.suse.com/c/azure-shared-disks-excercise-w-sles-for-sap-or-sle-ha/)
@@ -73,13 +71,13 @@ Azure shared disks are supported on:
     - [RHEL 8.3 and above](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/deploying_rhel_8_on_microsoft_azure/configuring-rhel-high-availability-on-azure_cloud-content-azure)
 - [Oracle Enterprise Linux](https://docs.oracle.com/en/operating-systems/oracle-linux/8/availability/)
 
-Linux clusters can use cluster managers such as [Pacemaker](https://wiki.clusterlabs.org/wiki/Pacemaker). Pacemaker builds on [Corosync](http://corosync.github.io/corosync/), enabling cluster communications for applications deployed in highly available environments. Some common clustered filesystems include [ocfs2](https://oss.oracle.com/projects/ocfs2/) and [gfs2](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/global_file_system_2/ch-overview-gfs2). You can use SCSI Persistent Reservation (SCSI PR) and/or STONITH Block Device (SBD) based clustering models for arbitrating access to the disk. When using SCSI PR, you can manipulate reservations and registrations using utilities such as [fence_scsi](https://manpages.ubuntu.com/manpages/questing/man8/fence_scsi.8.html) and [sg_persist](https://linux.die.net/man/8/sg_persist).
+Linux clusters can use cluster managers such as [Pacemaker](https://wiki.clusterlabs.org/wiki/Pacemaker). Pacemaker builds on [Corosync](http://corosync.github.io/corosync/), enabling cluster communications for applications deployed in highly available environments. Some common clustered filesystems include [ocfs2](https://oss.oracle.com/projects/ocfs2/) and [gfs2](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/global_file_system_2/ch-overview-gfs2). You can use SCSI Persistent Reservation (SCSI PR) and STONITH Block Device (SBD) based clustering models for arbitrating access to the disk. When using SCSI PR, you can manipulate reservations and registrations by using utilities such as [fence_scsi](https://manpages.ubuntu.com/manpages/jammy/man8/fence_scsi.8.html) and [sg_persist](https://linux.die.net/man/8/sg_persist).
 
 ## Persistent reservation flow
 
 The following diagram illustrates a sample 2-node clustered database application that uses SCSI PR to enable failover from one node to the other.
 
-![Two node cluster consisting of Azure VM1, VM2, and a disk shared between them. An application running on the cluster handles access to the disk.](media/virtual-machines-disks-shared-disks/shared-disk-updated-two-node-cluster-diagram.png)
+![Diagram of a two-node Azure VM cluster sharing a data disk, showing registration, exclusive reservation, preemption, and database failover from VM1 to VM2.](media/virtual-machines-disks-shared-disks/shared-disk-updated-two-node-cluster-diagram.png)
 
 The flow is as follows:
 
@@ -92,7 +90,7 @@ The flow is as follows:
 
 The following diagram illustrates another common clustered workload consisting of multiple nodes reading data from the disk for running parallel processes, such as training of machine learning models.
 
-![Four node VM cluster, each node registers intent to write, application takes exclusive reservation to properly handle write results](media/virtual-machines-disks-shared-disks/shared-disk-updated-machine-learning-trainer-model.png)
+![Diagram of four Azure VMs sharing a data disk, with all VMs registering and reading while VM1 reserves write access.](media/virtual-machines-disks-shared-disks/shared-disk-updated-machine-learning-trainer-model.png)
 
 The flow is as follows:
 
@@ -103,71 +101,69 @@ The flow is as follows:
 
 ### Ultra Disk and Premium SSD v2 reservation flow
 
-Both Ultra Disks and Premium SSD v2 managed disks offer two extra throttles, giving each of them a total of four throttles. Due to this, the reservation flow can work as described in the earlier section, or it can throttle and distribute performance more granularly.
+Both Ultra Disks and Premium SSD v2 managed disks offer two extra throttles, giving each of them a total of four throttles. As a result, the reservation flow can use SCSI persistent reservations to coordinate disk access between clustered VMs, as described in [Persistent reservation flow](#persistent-reservation-flow), or it can use the four throttles to distribute IOPS and throughput more granularly.
 
-:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-reservation-table.png" alt-text="An image of a table that depicts the `ReadOnly` or `Read/Write` access for Reservation Holder, Registered, and Others.":::
+:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-reservation-table.png" alt-text="Table showing read-only and read/write access for the reservation holder, registered nodes, and other nodes for each persistent reservation type.":::
 
-## Performance throttles
-
-### Premium SSD performance throttles
+## Premium SSD performance throttles
 
 With Premium SSD, the disk IOPS and throughput is fixed, for example, IOPS of a P30 is 5000. This value remains whether the disk is shared across 2 VMs or 5 VMs. The disk limits can be reached from a single VM or divided across two or more VMs. 
 
-### Ultra Disk and Premium SSD v2 performance throttles
+## Ultra Disk and Premium SSD v2 performance throttles
 
 Both Ultra Disks and Premium SSD v2 managed disks have the unique capability of allowing you to set your performance by exposing modifiable attributes and allowing you to modify them. By default, there are only two modifiable attributes but, shared Ultra Disks and shared Premium SSD v2 managed disks have two more attributes. Ultra Disks and Premium SSD v2 split these attributes across each attached VM. For some examples on how this distribution of capacity, IOPS, and throughput works, see the [Examples](#examples) section.
 
 
-|Attribute  |Description  |
-|---------|---------|
-|DiskIOPSReadWrite (Read/write disk IOPS)     |The total number of IOPS allowed across all VMs mounting the shared disk with write access.         |
-|DiskMB/sReadWrite (Read/write disk throughput)    |The total throughput (MB/s) allowed across all VMs mounting the shared disk with write access.         |
-|DiskIOPSReadOnly* (Read-only disk IOPS)    |The total number of IOPS allowed across all VMs mounting the shared disk as `ReadOnly`.         |
-|DiskMB/sReadOnly* (Read-only disk throughput)    |The total throughput (MB/s) allowed across all VMs mounting the shared disk as `ReadOnly`.         |
+| Attribute | Description |
+| --- | --- |
+| `diskIOPSReadWrite` (Read/write disk IOPS) | The total number of IOPS allowed across all VMs mounting the shared disk with write access. |
+| `diskMBpsReadWrite` (Read/write disk throughput) | The total throughput (MB/s) allowed across all VMs mounting the shared disk with write access. |
+| `diskIOPSReadOnly`* (Read-only disk IOPS) | The total number of IOPS allowed across all VMs mounting the shared disk as `ReadOnly`. |
+| `diskMBpsReadOnly`* (Read-only disk throughput) | The total throughput (MB/s) allowed across all VMs mounting the shared disk as `ReadOnly`. |
 
 \* Applies to shared Ultra Disks and shared Premium SSD v2 managed disks only
 
 The following formulas explain how the performance attributes can be set, since they're user modifiable:
 
-- DiskIOPSReadWrite (Read/write disk IOPS):
+- `diskIOPSReadWrite` (Read/write disk IOPS):
     - Has a baseline minimum IOPS of 100, for disks 100 GiB and smaller.
-        - For disks larger than 100 GiB, the baseline minimum IOPS you can set increases by 1 per GiB. So the lowest you can set DiskIOPSReadWrite for a 101 GiB disk is 101 IOPS.
+        - For disks larger than 100 GiB, the baseline minimum IOPS you can set increases by 1 per GiB. So the lowest you can set `diskIOPSReadWrite` for a 101 GiB disk is 101 IOPS.
     - The maximum you can set this attribute is determined by the size of your disk, the formula is 300 * GiB, up to a maximum of 400,000.
-- DiskMB/sReadWrite (Read/write disk throughput)
+- `diskMBpsReadWrite` (Read/write disk throughput)
     - The minimum throughput (MB/s) of this attribute is determined by your IOPS, the formula is 4 KiB per second per IOPS. So if you had 101 IOPS, the minimum MB/s you can set is 1.
     - The maximum you can set this attribute is determined by the amount of IOPS you set, the formula is 256 KiB per second per IOPS, up to a maximum of 10,000 MB/s.
-- DiskIOPSReadOnly (Read-only disk IOPS)
-    - The minimum baseline IOPS for this attribute is 100. For DiskIOPSReadOnly, the baseline doesn't increase with disk size.
+- `diskIOPSReadOnly` (Read-only disk IOPS)
+    - The minimum baseline IOPS for this attribute is 100. For `diskIOPSReadOnly`, the baseline doesn't increase with disk size.
     - The maximum you can set this attribute is determined by the size of your disk, the formula is 300 * GiB, up to a maximum of 400,000.
-- DiskMB/sReadOnly (Read-only disk throughput)
-    - The minimum throughput (MB/s) for this attribute is 1. For DiskMB/sReadOnly, the baseline doesn't increase with IOPS.
+- `diskMBpsReadOnly` (Read-only disk throughput)
+    - The minimum throughput (MB/s) for this attribute is 1. For `diskMBpsReadOnly`, the baseline doesn't increase with IOPS.
     - The maximum you can set this attribute is determined by the amount of IOPS you set, the formula is 256 KiB per second per IOPS, up to a maximum of 10,000 MB/s.
 
-#### Examples
+### Examples
 
 The following examples depict a few scenarios that show how the throttling can work with shared Ultra Disks, specifically.
 
-##### Two nodes cluster using cluster shared volumes
+#### Two-node cluster using Cluster Shared Volumes
 
 The following is an example of a 2-node WSFC using clustered shared volumes. With this configuration, both VMs have simultaneous write-access to the disk, which results in the `ReadWrite` throttle being split across the two VMs and the `ReadOnly` throttle not being used.
 
-:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-example.png" alt-text="CSV two node ultra example":::
+:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-example.png" alt-text="Diagram of a two-node Windows cluster using Cluster Shared Volumes, with read/write IOPS and throughput split equally between both VMs.":::
 
-##### Two node cluster without cluster share volumes
+#### Two-node cluster without Cluster Shared Volumes
 
-The following is an example of a 2-node WSFC that isn't using clustered shared volumes. With this configuration, only one VM has write-access to the disk. This results in the `ReadWrite` throttle being used exclusively for the primary VM and the `ReadOnly` throttle only being used by the secondary.
+The following is an example of a 2-node WSFC that isn't using Cluster Shared Volumes. With this configuration, only one VM has write-access to the disk. This results in the `ReadWrite` throttle being used exclusively for the primary VM and the `ReadOnly` throttle only being used by the secondary.
 
-:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-no-csv.png" alt-text="CSV two nodes no csv Ultra Disk example":::
+:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-no-csv.png" alt-text="Diagram of a two-node Windows failover cluster without Cluster Shared Volumes, with VM1 using the read/write throttles and VM2 using the read-only throttles.":::
 
-##### Four node Linux cluster
+#### Four node Linux cluster
 
 The following is an example of a 4-node Linux cluster with a single writer and three scale-out readers. With this configuration, only one VM has write-access to the disk. This results in the `ReadWrite` throttle being used exclusively for the primary VM and the `ReadOnly` throttle being split by the secondary VMs.
 
-:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-four-node-example.png" alt-text="Four node ultra throttling example":::
+:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-four-node-example.png" alt-text="Diagram of a four-node Linux cluster, with VM1 using the read/write throttles and the read-only throttles split across VM2, VM3, and VM4.":::
 
-##### Shared Ultra Disk and Premium SSD v2 pricing
+#### Shared Ultra Disk and Premium SSD v2 pricing
 
-Both shared Ultra Disks and shared Premium SSD v2 managed disks are priced based on provisioned capacity, total provisioned IOPS (diskIOPSReadWrite + diskIOPSReadOnly) and total provisioned Throughput MB/s (diskMB/sReadWrite + diskMB/sReadOnly). There's no extra charge for each additional VM mount. For example, a shared Ultra Disk with the following configuration (diskSizeGB: 1024, DiskIOPSReadWrite: 10000, DiskMB/sReadWrite: 600, DiskIOPSReadOnly: 100, DiskMB/sReadOnly: 1) is charged with 1024 GiB, 10100 IOPS, and 601 MB/s regardless of whether it's mounted to two VMs or five VMs.
+Both shared Ultra Disks and shared Premium SSD v2 managed disks are priced based on provisioned capacity, total provisioned IOPS (`diskIOPSReadWrite` + `diskIOPSReadOnly`) and total provisioned throughput in MB/s (`diskMBpsReadWrite` + `diskMBpsReadOnly`). There's no extra charge for each additional VM mount. For example, a shared Ultra Disk with the following configuration (`diskSizeGB`: 1024, `diskIOPSReadWrite`: 10000, `diskMBpsReadWrite`: 600, `diskIOPSReadOnly`: 100, `diskMBpsReadOnly`: 1) is charged with 1024 GiB, 10100 IOPS, and 601 MB/s regardless of whether it's mounted to two VMs or five VMs.
 
 ## Next steps
 
