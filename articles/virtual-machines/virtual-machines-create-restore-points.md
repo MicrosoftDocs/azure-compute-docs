@@ -6,7 +6,7 @@ ms.author: shsangal
 ms.service: azure-virtual-machines
 ms.subservice: recovery
 ms.topic: concept-article
-ms.date: 09/16/2026
+ms.date: 09/21/2026
 ms.custom: conceptual
 # Customer intent: As a cloud administrator, I want to implement virtual machine restore points, so that I can ensure data protection and facilitate quick recovery in the event of a failure or data loss.
 ---
@@ -53,7 +53,7 @@ Virtual Machine restore points support [**Instant Access**](/azure/virtual-machi
 | `instantAccess` | Boolean property set on the restore point **collection**. Set to `true` to enable Instant Access for all restore points in the collection. Default is `false`. |
 | `instantAccessDurationMinutes` | Integer property set on each **restore point**. Specifies how long Instant Access remains active, in minutes. Valid range: 60–300 minutes. Default: 300 (5 hours). |
 | `snapshotAccessState` | Read-only property on an individual disk restore point. Indicates the Instant Access state of that specific disk. |
-| `InstantAccessState` | Read-only property that indicates the consolidated access status of all disk restore points within a restore point. Possible values: <br><br> **Pending**: The restore point can't be used for restore, copy, or offline download. This state applies if any disk restore point has a `snapshotAccessState` of `Pending`. <br><br> **Available**: The restore point can be used for restore, cross-region copy, and offline download. This state applies when all disk restore points have a `snapshotAccessState` of `Available`, typically after `instantAccessDurationMinutes` expires. <br><br> **InstantAccess**: The restore point supports fast disk restore but can't be copied or downloaded. This state applies when all disk restore points have a `snapshotAccessState` of `InstantAccess`. <br><br> **AvailableWithInstantAccess**: The restore point supports fast disk restore and can also be copied and downloaded. This state applies when all disk restore points have a `snapshotAccessState` of `AvailableWithInstantAccess` and `instantAccessDurationMinutes` hasn't expired. |
+| `instantAccessState` | Read-only property that indicates the consolidated access status of all disk restore points within a restore point. Possible values: <br><br> **Pending**: The restore point can't be used for restore, copy, or offline download. This state applies if any disk restore point has a `snapshotAccessState` of `Pending`. <br><br> **Available**: The restore point can be used for restore, cross-region copy, and offline download. This state applies when all disk restore points have a `snapshotAccessState` of `Available`, typically after `instantAccessDurationMinutes` expires. <br><br> **InstantAccess**: The restore point supports fast disk restore but can't be copied or downloaded. This state applies when all disk restore points have a `snapshotAccessState` of `InstantAccess`. <br><br> **AvailableWithInstantAccess**: The restore point supports fast disk restore and can also be copied and downloaded. This state applies when all disk restore points have a `snapshotAccessState` of `AvailableWithInstantAccess` and `instantAccessDurationMinutes` hasn't expired. |
 | API Version | **2025-04-01 or later** |
 | Supported regions | All Public Regions |
 | Pricing | Instant access snapshots are billed using a usage‑based model with two types of charges: <br> 1. Snapshot storage charge <br> 2. One‑time restore operation charge. <br> **Snapshot storage charge**: You are billed only for the additional storage used by an instant access snapshot while it is active. When an instant access snapshot is first created, it does not incur any storage cost. The snapshot initially shares data with the source disk. As data on the source disk is modified or deleted over time, the snapshot preserves the original point‑in‑time data, and its storage usage grows. As a result, you pay only for the changed data, not for a full copy of the disk. If no data is modified on the source disk, the snapshot continues to incur no additional storage charges. <br> **Restore operation charge** Each time you restore a disk from an instant access snapshot, a one‑time restore fee is charged. This fee is calculated based on the provisioned size of the disk at the time of restore, providing predictable and transparent pricing for restore operations. Learn more about Instant Access Snapshot billing in [here](https://azure.microsoft.com/pricing/details/managed-disks/)|
@@ -93,12 +93,12 @@ Target restore point collection | RestorePoints.RestorePointOperation.PUT (Copy 
 - Private links aren't supported when copying restore points across regions.
 - CMK-encrypted restore points are copied as PMK-encrypted in the target region.
 
-**Instant Access (Preview):**
+**Instant Access:**
 
 - Supported only for application-consistent restore points on Virtual Machines with Premium SSD v2 or Ultra **data** disks.
 - Not supported for crash-consistent restore points.
 - Maximum 50 concurrent Instant Access restore point creations per subscription per region.
-- Currently supported via REST API, Azure SDK, CLI, and ARM templates.
+- Currently supported via REST API, Azure SDK, CLI, and ARM templates. Currently not supported via Portal.
 
 For a complete list of limitations, disk type support, OS support, and API version
 requirements, see [Support matrix for VM restore points](/azure/virtual-machines/concepts-restore-points).
