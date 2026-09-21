@@ -1,8 +1,8 @@
 ---
 title: Create Virtual Machine restore points
 description: Creating Virtual Machine Restore Points with API
-author: iamwilliew
-ms.author: wwilliams
+author: shsangal
+ms.author: shsangal
 ms.service: azure-virtual-machines
 ms.subservice: recovery
 ms.date: 02/14/2022
@@ -38,7 +38,7 @@ A restore point collection is the parent resource that holds all restore points 
 Call the [Restore Point Collections — Create or Update](/rest/api/compute/restore-point-collections/create-or-update) API:
 
 ```http
-PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{collectionName}?api-version=2021-03-01
+PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{collectionName}?api-version=2025-04-01
 ```
 
 **Request body:**
@@ -56,7 +56,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 ```
 
 - Set `location` to the VM's region for a local collection, or to the target region for a cross-region collection (and include the source restore point collection's ARM resource ID in `source.id`).
-- Optionally to enable **Instant Access (Preview)**, add `"instantAccess": true` to `properties`. This applies to all restore points created in the collection. Requires API version **2025-04-01** or later. This is applicable only for VMs with Premium SSD v2 and/or Ultra disks as **data** disks.
+- Optionally to enable **Instant Access**, add `"instantAccess": true` to `properties`. This applies to all restore points created in the collection. Requires API version **2025-04-01** or later. This is applicable only for VMs with Premium SSD v2 and/or Ultra disks as **data** disks.
 
 ---
 
@@ -65,7 +65,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 Call the [Restore Points — Create](/rest/api/compute/restore-points/create) API within the collection created in Step 1:
 
 ```http
-PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{collectionName}/restorePoints/{restorePointName}?api-version=2021-03-01
+PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{collectionName}/restorePoints/{restorePointName}?api-version=2025-04-01
 ```
 **Request body:**
 
@@ -97,11 +97,11 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 **Cross-region restore points** are a long-running operation. Poll the [Restore Points — Get](/rest/api/compute/restore-points/get) API with `$expand=instanceView` to check per-disk copy progress (`completionPercent`). The restore point is usable only after all disk restore points have completed replication.
 
 ```http
-GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{collectionName}/restorePoints/{restorePointName}?$expand=instanceView&api-version=2021-03-01
+GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{collectionName}/restorePoints/{restorePointName}?$expand=instanceView&api-version=2025-04-01
 ```
-**Snapshot Access status:** If the collection has Instant Access enabled, the same GET response with instanceView includes `snapshotAccessState` per disk restore point. A status of `InstantAccess` or `AvailableWithInstantAccess` means the restore point is ready for fast disk restoration.
+**Instant Access status:** If the collection has Instant Access enabled, check `instantAccessState` on the restore point to validate the consolidated access state across all disk restore points. A value of `InstantAccess` or `AvailableWithInstantAccess` means the restore point is ready for fast disk restoration. Use the per-disk `snapshotAccessState` in `instanceView` only when you need to inspect the state of an individual disk restore point.
 
-### Step 4: Disable InstantAccess 
+### Step 4: Disable Instant Access
 Use the following REST API call to disable IA enabled on the VM.
 
 ```http

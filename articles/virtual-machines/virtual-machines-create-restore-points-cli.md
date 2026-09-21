@@ -1,12 +1,12 @@
 ---
 title: Creating Virtual Machine Restore Points using Azure CLI
 description: Creating Virtual Machine Restore Points using Azure CLI
-author: iamwilliew
-ms.author: wwilliams
+author: shsangal
+ms.author: shsangal
 ms.service: azure-virtual-machines
 ms.subservice: recovery
 ms.topic: tutorial
-ms.date: 06/30/2022
+ms.date: 09/21/2026
 ms.custom: template-tutorial, devx-track-azurecli
 # Customer intent: "As a cloud administrator, I want to create and manage virtual machine restore points using command line tools, so that I can automate the backup process and ensure data protection against potential downtime."
 ---
@@ -36,7 +36,7 @@ Use the [az restore-point collection create](/cli/azure/restore-point/collection
 az restore-point collection create --location "norwayeast" --source-id "/subscriptions/{subscription-id}/resourceGroups/ExampleRg/providers/Microsoft.Compute/virtualMachines/ExampleVM" --tags myTag1="tagValue1" --resource-group "ExampleRg" --collection-name "ExampleRpc" 
 ```
 ### Create a VM restore point collection with instant access
-Instant Access is an optional parameter supported in application-consistent restore points. It is applicable for Virtual Machine that have Premium SSD v2 or Ultra disks as data disks. When Instant Access is enabled on the restore point collection, disk restoration can begin immediately from the restore point without waiting for full hydration—significantly reducing RTOs. To know more about instant access restore points see [here](/azure/virtual-machines/virtual-machines-create-restore-points#instant-access-preview)
+Instant Access is an optional parameter supported in application-consistent restore points. It is applicable for Virtual Machines that have Premium SSD v2 or Ultra disks as data disks. When Instant Access is enabled on the restore point collection, disk restoration can begin immediately from the restore point without waiting for full hydration—significantly reducing RTOs. To learn more about Instant Access restore points, see [Instant Access](/azure/virtual-machines/virtual-machines-create-restore-points#instant-access).
 ```
 az restore-point collection create --location "norwayeast" --source-id "/subscriptions/{subscription-id}/resourceGroups/ExampleRg/providers/Microsoft.Compute/virtualMachines/ExampleVM" --tags myTag1="tagValue1" --resource-group "ExampleRg" --collection-name "ExampleRpc" --instant-access true
 ```
@@ -68,6 +68,12 @@ Use the [az restore-point show](/cli/azure/restore-point#az-restore-point-show) 
 ```
 az restore-point show --resource-group "ExampleRg" --collection-name "ExampleRpc" --name "ExampleRp"
 ```
+If the restore point collection has Instant Access enabled, check `instantAccessState` to validate the consolidated access state across all disk restore points within the restore point.
+```
+az restore-point show --resource-group "ExampleRg" --collection-name "ExampleRpc" --name "ExampleRp" --instance-view --query "instanceView.statuses[1]" -o tsv
+```
+A value of `InstantAccess` or `AvailableWithInstantAccess` means the restore point is ready for fast disk restoration.
+
 ## Restore a VM from VM restore point
 To restore a VM from a VM restore point, first restore individual disks from each disk restore point. You can also use the [ARM template](https://github.com/Azure/Virtual-Machine-Restore-Points/blob/main/RestoreVMFromRestorePoint.json) to restore a full VM along with all the disks.
 ```
@@ -93,4 +99,4 @@ az restore-point collection update -g MyResourceGroup --collection-name ExampleR
 
 ## Next steps
 [Learn more](./backup-recovery.md) about Backup and restore options for virtual machines in Azure. <br>
-[Learn more](/azure/virtual-machines/virtual-machines-create-restore-points#instant-access-preview) about Instant Access restore points.
+[Learn more](/azure/virtual-machines/virtual-machines-create-restore-points#instant-access) about Instant Access restore points.
