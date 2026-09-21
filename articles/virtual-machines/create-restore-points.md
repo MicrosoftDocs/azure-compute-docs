@@ -56,7 +56,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 ```
 
 - Set `location` to the VM's region for a local collection, or to the target region for a cross-region collection (and include the source restore point collection's ARM resource ID in `source.id`).
-- Optionally to enable **Instant Access**, add `"instantAccess": true` to `properties`. This applies to all restore points created in the collection. Requires API version **2025-04-01** or later. This is applicable only for VMs with Premium SSD v2 and/or Ultra disks as **data** disks.
+- Optionally to enable **Instant Access**, add `"instantAccess": true` to `properties`. This setting applies to all restore points created in the collection. Requires API version **2025-04-01** or later. This setting is applicable only for VMs with Premium SSD v2 and Ultra disks as **data** disks.
 
 ---
 
