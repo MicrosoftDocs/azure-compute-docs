@@ -21,7 +21,7 @@
     - The [latest Azure PowerShell module](/powershell/azure/install-azure-powershell).
     - The [Azure portal](https://portal.azure.com/).
     - An Azure Resource Manager template with an API version that's `2021-04-01` or newer.
-- Isn't available on some classic VMs. Use [this script](#expand-without-downtime-classic-vm-sku-support) to get a list of classic VM products that support expanding without downtime.
+- Isn't available on some classic VMs. Use [this script](#expand-without-downtime-classic-vm-sku-support) to get a list of classic VM SKUs that support expanding without downtime.
 
 ### Expand with Ultra Disks and Premium SSD v2
 
@@ -31,4 +31,4 @@ Expanding Ultra Disks and Premium SSD v2 disks without downtime has the followin
 
 You can expand Ultra Disks and Premium SSD v2 disks attached to VMs using NVMe controllers without downtime in all regions that support either of those disk types using either the Azure Portal, Azure CLI, or the Azure PowerShell module to make the change.
 
-Allow up to 10 minutes for the correct size to be reflected in Windows VMs and Linux VMs. For Linux VMs, you must perform a [Linux rescan function](/azure/virtual-machines/linux/expand-disks?tabs=ubuntu#detecting-a-changed-disk-size). For a Windows VM that doesn't have a workload, you must perform a [Windows rescan function](/windows-hardware/drivers/devtest/devcon-rescan). You can rescan immediately, but if the time is within 10 minutes, you might need to rescan again to display the correct size. If a rescan doesn't work properly, you can either repeat the rescan or restart the VM to display the correct size. 
+Allow up to 10 minutes for the correct size to be reflected in Windows VMs and Linux VMs. For Linux VMs, you must perform a [Linux rescan function](/azure/virtual-machines/linux/expand-disks?tabs=ubuntu#detect-a-changed-disk-size). For a Windows VM that doesn't have a workload, you must perform a [Windows rescan function](/windows-hardware/drivers/devtest/devcon-rescan). You can rescan immediately, but if the time is within 10 minutes, you might need to rescan again to display the correct size. If a rescan doesn't work properly, you can either repeat the rescan or restart the VM to display the correct size.

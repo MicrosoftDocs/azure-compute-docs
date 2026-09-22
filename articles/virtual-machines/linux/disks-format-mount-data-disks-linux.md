@@ -1,16 +1,16 @@
 ---
-title: Format and mount managed disks to Azure Linux VMs
-description: Learn to format, mount, and persist managed disks to Linux VMs with both SCSI and NVMe interfaces
+title: Format and mount managed disks on Azure Linux VMs
+description: Learn how to partition, format, mount, and persist Azure managed data disks on Linux VMs that use SCSI or NVMe interfaces.
 author: roygara
 ms.service: azure-disk-storage
 ms.custom: linux-related-content
 ms.collection: linux
 ms.topic: how-to
-ms.date: 09/03/2025
+ms.date: 09/21/2026
 ms.author: rogarana
 ---
 
-# Format and mount managed disks
+# Format and mount Azure managed data disks on Linux VMs
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Flexible scale sets 
 
@@ -27,7 +27,7 @@ Before formatting and mounting a data disk, ensure you have:
 > [!WARNING]
 > Always verify you're working with the correct disk before formatting. Formatting the wrong disk can result in data loss.
 
-## Format the disk
+## Partition and format the data disk
 
 Use the latest version of `parted` available for your distribution. If the disk size is 2 tebibytes (TiB) or larger, use GPT partitioning. If the disk size is under 2 TiB, then you can use either MBR or GPT partitioning.
 
@@ -104,7 +104,7 @@ The output looks similar to the following example:
 ```
 /dev/sda1: LABEL="cloudimg-rootfs" UUID="11111111-1b1b-1c1c-1d1d-1e1e1e1e1e1e" TYPE="ext4" PARTUUID="1a1b1c1d-11aa-1234-1a1a1a1a1a1a"
 /dev/sda15: LABEL="UEFI" UUID="BCD7-96A6" TYPE="vfat" PARTUUID="1e1g1cg1h-11aa-1234-1u1u1a1a1u1u"
-/dev/sdb1: UUID="22222222-2b2b-2c2c-2d2d-2e2e2e2e2e2e" TYPE="ext4" TYPE="ext4" PARTUUID="1a2b3c4d-01"
+/dev/sdb1: UUID="22222222-2b2b-2c2c-2d2d-2e2e2e2e2e2e" TYPE="ext4" PARTUUID="1a2b3c4d-01"
 /dev/sda14: PARTUUID="2e2g2cg2h-11aa-1234-1u1u1a1a1u1u"
 /dev/sdc1: UUID="33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e" TYPE="xfs" PARTLABEL="xfspart" PARTUUID="c1c2c3c4-1234-cdef-asdf3456ghjk"
 ```
@@ -128,7 +128,7 @@ UUID=$(sudo blkid -s UUID -o value /dev/sdc1)
 echo "UUID=$UUID   /datadrive   xfs   defaults,nofail   1   2" | sudo tee -a /etc/fstab
 
 # For NVMe disks
-UUID=$(sudo blkid -s UUID -o value /dev/nvme1n1p1)
+UUID=$(sudo blkid -s UUID -o value /dev/nvme0n2p1)
 echo "UUID=$UUID   /datadrive   xfs   defaults,nofail   1   2" | sudo tee -a /etc/fstab
 ```
 
