@@ -1,20 +1,21 @@
 ---
-title: Azure PowerShell - Enable customer-managed keys with SSE - managed disks
+title: Enable customer-managed keys for Azure managed disks with PowerShell
 description: Enable server-side encryption using customer-managed keys on your managed disks with Azure PowerShell.
 author: roygara
-ms.date: 02/22/2023
+ms.date: 09/21/2026
 ms.topic: how-to
 ms.author: rogarana
 ms.service: azure-disk-storage
 ms.custom: devx-track-azurepowershell
+ai-usage: ai-assisted
 # Customer intent: As an IT admin, I want to enable server-side encryption with customer-managed keys for managed disks using PowerShell, so that I can ensure data security and compliance with my organization's encryption policies.
 ---
 
-# Azure PowerShell - Enable customer-managed keys with server-side encryption - managed disks
+# Enable customer-managed keys for Azure managed disks with PowerShell
 
 **Applies to:** :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
-Azure Disk Storage allows you to manage your own keys when using server-side encryption (SSE) for managed disks, if you choose. For conceptual information on SSE with customer-managed keys, and other managed disk encryption types, see the [Customer-managed keys](../disk-encryption.md#customer-managed-keys) section of our disk encryption article.
+Azure Disk Storage supports server-side encryption (SSE) with customer-managed keys for managed disks. For conceptual information about customer-managed keys and other managed disk encryption types, see [Customer-managed keys](../disk-encryption.md#customer-managed-keys).
 
 ## Restrictions
 
@@ -22,20 +23,20 @@ For now, customer-managed keys have the following restrictions:
 
 [!INCLUDE [virtual-machines-managed-disks-customer-managed-keys-restrictions](../includes/virtual-machines-managed-disks-customer-managed-keys-restrictions.md)]
 
-## Set up an Azure Key Vault and DiskEncryptionSet with automatic key rotation
+## Set up Azure Key Vault and a disk encryption set with automatic key rotation
 
-To use customer-managed keys with SSE, you must set up an Azure Key Vault and a DiskEncryptionSet resource.
+To use customer-managed keys with server-side encryption, set up an Azure Key Vault and a disk encryption set.
 
 [!INCLUDE [virtual-machines-disks-encryption-create-key-vault-powershell](../includes/virtual-machines-disks-encryption-create-key-vault-powershell.md)]
 
 
-## Examples
+## Manage customer-managed keys for Azure managed disks with PowerShell
 
-Now that you've created and configured these resources, you can use them to secure your managed disks. The following are example scripts, each with a respective scenario, that you can use to secure your managed disks.
+After you create and configure the required resources, use the following example Azure PowerShell scripts to create encrypted VMs and disks, encrypt existing managed disks and scale sets, rotate a disk encryption set key, and check a disk's server-side encryption status.
 
 ### Create a VM using a Marketplace image, encrypting the OS and data disks with customer-managed keys
 
-Copy the script, replace all of the example values with your own parameters, and then run it.
+Before you run the script, provide an existing resource group and disk encryption set, along with values for the VM administrator credentials, region, VM size, and virtual network. The script creates the virtual network, network interface, and VM from a Windows Server Marketplace image. It uses [`Get-AzDiskEncryptionSet`](/powershell/module/az.compute/get-azdiskencryptionset) to retrieve the disk encryption set and [`New-AzVM`](/powershell/module/az.compute/new-azvm) to create the VM with an encrypted OS disk and a 128-GiB encrypted data disk. Replace the example values with your own parameters, and then run the script.
 
 ```powershell
 $VMLocalAdminUser = "yourVMLocalAdminUserName"
@@ -75,7 +76,7 @@ New-AzVM -ResourceGroupName $ResourceGroupName -Location $LocationName -VM $Virt
 
 ### Create an empty disk encrypted using server-side encryption with customer-managed keys and attach it to a VM
 
-Copy the script, replace all of the example values with your own parameters, and then run it.
+The script uses [`Add-AzVMDataDisk`](/powershell/module/az.compute/add-azvmdatadisk) to add the encrypted data disk to the VM configuration and [`Update-AzVM`](/powershell/module/az.compute/update-azvm) to apply the configuration. Replace the example values with your own parameters, and then run the script.
 
 ```PowerShell
 $vmName = "yourVMName"
@@ -100,7 +101,7 @@ Update-AzVM -ResourceGroupName $ResourceGroupName -VM $vm
 
 ### Encrypt existing managed disks 
 
-Your existing disks must not be attached to a running VM in order for you to encrypt them using the following script:
+Your existing disks must not be attached to a running VM. The script uses [`New-AzDiskUpdateConfig`](/powershell/module/az.compute/new-azdiskupdateconfig) and [`Update-AzDisk`](/powershell/module/az.compute/update-azdisk) to configure customer-managed keys for the disk.
 
 ```PowerShell
 $rgName = "yourResourceGroupName"
@@ -112,11 +113,11 @@ $diskEncryptionSet = Get-AzDiskEncryptionSet -ResourceGroupName $rgName -Name $d
 New-AzDiskUpdateConfig -EncryptionType "EncryptionAtRestWithCustomerKey" -DiskEncryptionSetId $diskEncryptionSet.Id | Update-AzDisk -ResourceGroupName $rgName -DiskName $diskName
 ```
 
-### Encrypt an existing virtual machine scale set (uniform orchestration mode) with SSE and customer-managed keys 
+### Encrypt an existing virtual machine scale set (uniform orchestration mode) by using server-side encryption and customer-managed keys
 
 This script will work for scale sets in uniform orchestration mode only. For scale sets in flexible orchestration mode, follow the Encrypt existing managed disks for each VM.
 
-Copy the script, replace all the example values with your own parameters, and then run it:
+The script uses [`Get-AzVmss`](/powershell/module/az.compute/get-azvmss) to retrieve the scale set and [`Update-AzVmss`](/powershell/module/az.compute/update-azvmss) to apply the disk encryption set. Replace the example values with your own parameters, and then run the script.
 
 ```powershell
 #set variables 
@@ -140,7 +141,7 @@ $ssevmss | update-azvmss
 
 ### Create a virtual machine scale set using a Marketplace image, encrypting the OS and data disks with customer-managed keys
 
-Copy the script, replace all of the example values with your own parameters, and then run it.
+Before you run the script, provide an existing resource group and disk encryption set, along with values for the administrator credentials, region, VM size, and virtual network. The script creates the virtual network and uses [`New-AzVmss`](/powershell/module/az.compute/new-azvmss) to create a two-instance uniform virtual machine scale set from a Windows Server Marketplace image. The scale set's OS disks and 128-GiB data disks use the disk encryption set. Replace the example values with your own parameters, and then run the script.
 
 > [!IMPORTANT]
 >Starting November 2023, VM scale sets created using PowerShell and Azure CLI will default to Flexible Orchestration Mode if no orchestration mode is specified. For more information about this change and what actions you should take, go to [Breaking Change for VMSS PowerShell/CLI Customers - Microsoft Community Hub](https://techcommunity.microsoft.com/t5/azure-compute-blog/breaking-change-for-vmss-powershell-cli-customers/ba-p/3818295)
@@ -187,9 +188,9 @@ $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdmi
 New-AzVmss -VirtualMachineScaleSet $VMSS -ResourceGroupName $ResourceGroupName -VMScaleSetName $VMScaleSetName
 ```
 
-### Change the key of a DiskEncryptionSet to rotate the key for all the resources referencing the DiskEncryptionSet
+### Change the key of a disk encryption set to rotate the key for referenced resources
 
-Copy the script, replace all of the example values with your own parameters, and then run it.
+The script uses [`Update-AzDiskEncryptionSet`](/powershell/module/az.compute/update-azdiskencryptionset) to change the key referenced by the disk encryption set. Replace the example values with your own parameters, and then run the script.
 
 ```PowerShell
 $ResourceGroupName="yourResourceGroupName"
@@ -206,7 +207,11 @@ Update-AzDiskEncryptionSet -Name $diskEncryptionSetName -ResourceGroupName $Reso
 
 ### Find the status of server-side encryption of a disk
 
+The script uses [`Get-AzDisk`](/powershell/module/az.compute/get-azdisk) to retrieve the disk's server-side encryption type.
+
 [!INCLUDE [virtual-machines-disks-encryption-status-powershell](../includes/virtual-machines-disks-encryption-status-powershell.md)]
+
+For disks configured by the preceding examples, `EncryptionAtRestWithCustomerKey` indicates server-side encryption with a customer-managed key. `EncryptionAtRestWithPlatformAndCustomerKeys` indicates double encryption with both customer-managed and platform-managed keys.
 
 > [!IMPORTANT]
 > Customer-managed keys rely on managed identities for Azure resources, a feature of Microsoft Entra ID. When you configure customer-managed keys, a managed identity is automatically assigned to your resources under the covers. If you subsequently move the subscription, resource group, or managed disk from one Microsoft Entra directory to another, the managed identity associated with the managed disks is not transferred to the new tenant, so customer-managed keys may no longer work. For more information, see [Transferring a subscription between Microsoft Entra directories](/azure/active-directory/managed-identities-azure-resources/known-issues#transferring-a-subscription-between-azure-ad-directories).
