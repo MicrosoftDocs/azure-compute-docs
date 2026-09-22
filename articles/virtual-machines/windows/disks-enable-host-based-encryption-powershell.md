@@ -1,18 +1,19 @@
 ---
-title: Azure PowerShell - Enable end-to-end encryption on your VM host
+title: Enable end-to-end encryption using encryption at host with Azure PowerShell
 description: How to enable end-to-end encryption for your Azure VMs using encryption at host.
 author: roygara
 ms.service: azure-disk-storage
 ms.topic: how-to
-ms.date: 02/25/2025
+ms.date: 09/21/2026
 ms.author: rogarana
 ms.custom:
   - devx-track-azurepowershell
   - ignite-2023
+ai-usage: ai-assisted
 # Customer intent: As a cloud administrator, I want to enable end-to-end encryption for my Virtual Machines, so that I can ensure data security and compliance while managing sensitive information.
 ---
 
-# Use the Azure PowerShell module to enable end-to-end encryption using encryption at host
+# Enable end-to-end encryption by using encryption at host with Azure PowerShell
 
 **Applies to:** :heavy_check_mark: Windows VMs 
 
@@ -25,11 +26,11 @@ When you enable encryption at host, data stored on the VM host is encrypted at r
 ### Supported VM sizes
 
 The complete list of supported VM sizes can be pulled programmatically. To learn how to retrieve them programmatically, refer to the [Finding supported VM sizes](#finding-supported-vm-sizes) section.
-Upgrading the VM size results in validation to check if the new VM size supports the EncryptionAtHost feature.
+Upgrading the VM size triggers validation that checks whether the new VM size supports the `EncryptionAtHost` feature.
 
 ## Prerequisites
 
-You must enable the feature for your subscription before you use the EncryptionAtHost property for your VM/VMSS. Use the following steps to enable the feature for your subscription:
+You must enable the feature for your subscription before you use the `EncryptionAtHost` property for your VM or virtual machine scale set. Use the following steps to enable the feature for your subscription:
 
 1.	Execute the following command to register the feature for your subscription
 
@@ -44,26 +45,26 @@ You must enable the feature for your subscription before you use the EncryptionA
     ```
 
 
-### Create an Azure Key Vault and DiskEncryptionSet
+### Create an Azure Key Vault and disk encryption set
 
 > [!NOTE]
-> This section only applies to configurations with customer-managed keys. If you're using platform-managed keys, you can skip to the [Example scripts](#example-scripts) section.
+> This section only applies to configurations with customer-managed keys. If you're using platform-managed keys, you can skip to [Create and update VMs and virtual machine scale sets with encryption at host](#create-and-update-vms-and-virtual-machine-scale-sets-with-encryption-at-host).
 
-Once the feature is enabled, you need to set up an Azure Key Vault and a DiskEncryptionSet, if you haven't already.
+When you enable the feature, set up an Azure Key Vault and a disk encryption set, if you don't already have them.
 
 [!INCLUDE [virtual-machines-disks-encryption-create-key-vault-powershell](../includes/virtual-machines-disks-encryption-create-key-vault-powershell.md)]
 
-## Enable encryption at host for disks attached to VM and Virtual Machine Scale Sets
+## Configure encryption at host for VMs and virtual machine scale sets
 
-You can enable encryption at host by setting a new property EncryptionAtHost under securityProfile of VMs or Virtual Machine Scale Sets using the API version **2020-06-01** and above.
+You can enable encryption at host by setting the `EncryptionAtHost` property under `securityProfile` for VMs or virtual machine scale sets by using API version **2020-06-01** or later.
 
 `"securityProfile": { "encryptionAtHost": "true" }`
 
-## Example scripts
+## Create and update VMs and virtual machine scale sets with encryption at host
 
-### Create a VM with encryption at host enabled with customer-managed keys. 
+### Create a VM with encryption at host enabled with customer-managed keys
 
-Create a VM with managed disks using the resource URI of the DiskEncryptionSet created earlier to encrypt cache of OS and data disks with customer-managed keys. The temp disks are encrypted with platform-managed keys. 
+Before you run the script, provide an existing resource group and disk encryption set, along with values for the VM administrator credentials, region, VM size, and virtual network. The script creates the virtual network and network interface, uses `New-AzVMConfig` with `-EncryptionAtHost`, and deploys the Windows VM with `New-AzVM`. The disk encryption set encrypts the cache of the OS and data disks with customer-managed keys. The temporary disk is encrypted with platform-managed keys.
 
 ```powershell
 $VMLocalAdminUser = "yourVMLocalAdminUserName"
@@ -107,9 +108,9 @@ $VirtualMachine = Add-AzVMDataDisk -VM $VirtualMachine -Name $($VMName +"DataDis
 New-AzVM -ResourceGroupName $ResourceGroupName -Location $LocationName -VM $VirtualMachine -Verbose
 ```
 
-### Create a VM with encryption at host enabled with platform-managed keys. 
+### Create a VM with encryption at host enabled with platform-managed keys
 
-Create a VM with encryption at host enabled to encrypt cache of OS/data disks and temp disks with platform-managed keys. 
+Before you run the script, provide an existing resource group and values for the VM administrator credentials, region, VM size, and virtual network. The script creates the virtual network and network interface, uses `New-AzVMConfig` with `-EncryptionAtHost`, and deploys the Windows VM with `New-AzVM`. Encryption at host encrypts the cache of the OS and data disks, and the temporary disk, with platform-managed keys.
 
 ```powershell
 $VMLocalAdminUser = "yourVMLocalAdminUserName"
@@ -147,7 +148,7 @@ $VirtualMachine = Add-AzVMDataDisk -VM $VirtualMachine -Name $($VMName +"DataDis
 New-AzVM -ResourceGroupName $ResourceGroupName -Location $LocationName -VM $VirtualMachine
 ```
 
-### Update a VM to enable encryption at host. 
+### Update a VM to enable encryption at host
 
 ```powershell
 $ResourceGroupName = "yourResourceGroupName"
@@ -186,13 +187,13 @@ Stop-AzVM -ResourceGroupName $ResourceGroupName -Name $VMName -Force
 Update-AzVM -VM $VM -ResourceGroupName $ResourceGroupName -EncryptionAtHost $false
 ```
 
-### Create a Virtual Machine Scale Set with encryption at host enabled with customer-managed keys. 
+### Create a virtual machine scale set with encryption at host enabled with customer-managed keys
 
 > [!IMPORTANT]
->Starting November 2023, VM scale sets created using PowerShell and Azure CLI will default to Flexible Orchestration Mode if no orchestration mode is specified. For more information about this change and what actions you should take, go to [Breaking Change for VMSS PowerShell/CLI Customers - Microsoft Community Hub](
+>Starting November 2023, virtual machine scale sets created using PowerShell and Azure CLI default to Flexible Orchestration Mode if you don't specify an orchestration mode. For more information about this change and what actions you should take, see [Breaking Change for VMSS PowerShell/CLI Customers - Microsoft Community Hub](
 https://techcommunity.microsoft.com/t5/azure-compute-blog/breaking-change-for-vmss-powershell-cli-customers/ba-p/3818295)
 
-Create a Virtual Machine Scale Set with managed disks using the resource URI of the DiskEncryptionSet created earlier to encrypt cache of OS and data disks with customer-managed keys. The temp disks are encrypted with platform-managed keys. 
+Before you run the script, provide an existing resource group and disk encryption set, along with values for the administrator credentials, region, VM size, and virtual network. The script creates the virtual network, configures a two-instance Flexible virtual machine scale set with `New-AzVmssConfig` and `-EncryptionAtHost`, and deploys it with `New-AzVmss`. The disk encryption set encrypts the cache of the OS and data disks with customer-managed keys. The temporary disks are encrypted with platform-managed keys.
 
 ```powershell
 $VMLocalAdminUser = "yourLocalAdminUser"
@@ -232,15 +233,17 @@ $VMSS = Set-AzVmssOsProfile $VMSS -ComputerNamePrefix $ComputerNamePrefix -Admin
 # Add a data disk encrypted with a customer managed key by setting DiskEncryptionSetId property 
 
 $VMSS = Add-AzVmssDataDisk -VirtualMachineScaleSet $VMSS -CreateOption Empty -Lun 1 -DiskSizeGB 128 -StorageAccountType Premium_LRS -DiskEncryptionSetId $diskEncryptionSet.Id
+
+New-AzVmss -VirtualMachineScaleSet $VMSS -ResourceGroupName $ResourceGroupName -VMScaleSetName $VMScaleSetName
 ```
 
-### Create a Virtual Machine Scale Set with encryption at host enabled with platform-managed keys. 
+### Create a virtual machine scale set with encryption at host enabled with platform-managed keys
 
 > [!IMPORTANT]
->Starting November 2023, VM scale sets created using PowerShell and Azure CLI will default to Flexible Orchestration Mode if no orchestration mode is specified. For more information about this change and what actions you should take, go to [Breaking Change for VMSS PowerShell/CLI Customers - Microsoft Community Hub](
+>Starting November 2023, virtual machine scale sets created using PowerShell and Azure CLI default to Flexible Orchestration Mode if you don't specify an orchestration mode. For more information about this change and what actions you should take, see [Breaking Change for VMSS PowerShell/CLI Customers - Microsoft Community Hub](
 https://techcommunity.microsoft.com/t5/azure-compute-blog/breaking-change-for-vmss-powershell-cli-customers/ba-p/3818295)
 
-Create a Virtual Machine Scale Set with encryption at host enabled to encrypt cache of OS/data disks and temp disks with platform-managed keys. 
+Before you run the script, provide an existing resource group and values for the administrator credentials, region, VM size, and virtual network. The script creates the virtual network, configures a two-instance Flexible virtual machine scale set with `New-AzVmssConfig` and `-EncryptionAtHost`, and deploys it with `New-AzVmss`. Encryption at host encrypts the cache of the OS and data disks, and the temporary disks, with platform-managed keys.
 
 ```powershell
 $VMLocalAdminUser = "yourLocalAdminUser"
@@ -279,7 +282,7 @@ $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdmi
 New-AzVmss -VirtualMachineScaleSet $VMSS -ResourceGroupName $ResourceGroupName -VMScaleSetName $VMScaleSetName
 ```
 
-### Update a Virtual Machine Scale Set to enable encryption at host. 
+### Update a virtual machine scale set to enable encryption at host
 
 ```powershell
 $ResourceGroupName = "yourResourceGroupName"
@@ -290,7 +293,7 @@ $VMSS = Get-AzVmss -ResourceGroupName $ResourceGroupName -Name $VMScaleSetName
 Update-AzVmss -VirtualMachineScaleSet $VMSS -Name $VMScaleSetName -ResourceGroupName $ResourceGroupName -EncryptionAtHost $true
 ```
 
-### Check the status of encryption at host for a Virtual Machine Scale Set
+### Check the status of encryption at host for a virtual machine scale set
 
 ```powershell
 $ResourceGroupName = "yourResourceGroupName"
@@ -301,9 +304,9 @@ $VMSS = Get-AzVmss -ResourceGroupName $ResourceGroupName -Name $VMScaleSetName
 $VMSS.VirtualMachineProfile.SecurityProfile.EncryptionAtHost
 ```
 
-### Update a Virtual Machine Scale Set to disable encryption at host. 
+### Update a virtual machine scale set to disable encryption at host
 
-You can disable encryption at host on your Virtual Machine Scale Set but, this will only affect VMs created after you disable encryption at host. For existing VMs, you must deallocate the VM, [disable encryption at host on that individual VM](#disable-encryption-at-host), then reallocate the VM.
+You can disable encryption at host on your virtual machine scale set, but this change affects only VMs created after you disable encryption at host. For existing VMs, you must deallocate the VM, [disable encryption at host on that individual VM](#disable-encryption-at-host), then reallocate the VM.
 
 ```powershell
 $ResourceGroupName = "yourResourceGroupName"

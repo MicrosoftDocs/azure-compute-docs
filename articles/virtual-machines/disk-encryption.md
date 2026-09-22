@@ -87,7 +87,7 @@ To revoke access to customer-managed keys, see [Azure Key Vault PowerShell](/pow
 
 #### Automatic rotation of customer-managed keys
 
-Generally, if you're using customer-managed keys, you should enable automatic key rotation to the latest key version. Automatic key rotation helps ensure your keys are secure. A disk references a key via its disk encryption set. When you enable automatic rotation for a disk encryption set, the system will automatically update all managed disks, snapshots, and images referencing the disk encryption set to use the new version of the key within one hour. To learn how to enable customer-managed keys with automatic key rotation, see [Set up an Azure Key Vault and DiskEncryptionSet with automatic key rotation](windows/disks-enable-customer-managed-keys-powershell.md#set-up-an-azure-key-vault-and-diskencryptionset-with-automatic-key-rotation).
+Generally, if you're using customer-managed keys, you should enable automatic key rotation to the latest key version. Automatic key rotation helps ensure your keys are secure. A disk references a key via its disk encryption set. When you enable automatic rotation for a disk encryption set, the system automatically updates all managed disks, snapshots, and images referencing the disk encryption set to use the new version of the key within one hour. To learn how to enable customer-managed keys with automatic key rotation, see [Set up Azure Key Vault and a disk encryption set with automatic key rotation](windows/disks-enable-customer-managed-keys-powershell.md#set-up-azure-key-vault-and-a-disk-encryption-set-with-automatic-key-rotation).
 
 > [!NOTE]
 > Virtual Machines aren't rebooted during automatic key rotation.

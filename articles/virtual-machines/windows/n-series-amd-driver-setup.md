@@ -28,9 +28,9 @@ For basic specs, storage capacities, and disk details, see [GPU Windows VM sizes
 
 | OS | Driver |
 | -------- |------------- |
-| Windows 10 22h2 <br/><br/>Windows 11 23H2, 24H2, 25h2 <br/><br/> | [25.Q4](https://download.microsoft.com/download/04605f8a-4b3e-4e08-9f88-b5b7d55d8cb5/v710-win11.exe) (.exe) |
-| Windows Server 2025, Windows 11 EMS <br/><br/> | [25.Q4](https://download.microsoft.com/download/68cc41fd-fe9d-47ac-98ec-c9a921a11397/v710-winsvr2025.exe) (.exe)|
-| Windows Server 2022 <br/><br/> | [25.Q4](https://download.microsoft.com/download/8eb8c91e-6c08-4c76-99a9-042bb84a7e86/v710-winsvr2022.exe) (.exe)|
+| Windows 11 23H2, 24H2, 25h2 <br/><br/> | [25.Q4](https://download.microsoft.com/download/04605f8a-4b3e-4e08-9f88-b5b7d55d8cb5/v710-win11.exe) (.exe) |
+| Windows Server 2025 24H2, Windows 11 EMS 23H2, 24H2, 25H2 <br/><br/> | [25.Q4](https://download.microsoft.com/download/68cc41fd-fe9d-47ac-98ec-c9a921a11397/v710-winsvr2025.exe) (.exe)|
+| Windows Server 2022 21H2 <br/><br/> | [25.Q4](https://download.microsoft.com/download/8eb8c91e-6c08-4c76-99a9-042bb84a7e86/v710-winsvr2022.exe) (.exe)|
 
 ### VM Creation
 Create the VMs using CLI. (Azure AMD GPU driver extensions don't support NVads V710 v5 Series during preview)
@@ -56,9 +56,8 @@ The AMD Software: Cloud Edition drivers must be installed to take advantage of t
 
 | OS | Driver |
 | -------- |------------- |
-| Windows 11 64-bit version 21H2, 22H2, 23H2, 24H2 <br/><br/> Windows 10 64-bit version 20H2, 21H2, 22H2, 23H2, 24H2 | [25.1.1](https://download.microsoft.com/download/44ee0d6c-74dd-4214-b6d5-24fbf2eac33b/whql-amd-software-cloud-edition-25.1.1-win10-win11-azure-ngads-v620.exe)|
-| Windows 11 EMS 64-bit 21H2, 22H2, 23H2, 24H2 <br/><br/> Windows Server 2022 64-bit | [25.1.1](https://download.microsoft.com/download/6f834f98-109d-4dfc-89e6-d25ff02a9dd0/amd-software-cloud-edition-25.1.1-winsvr2022-azure-v620.exe)| 
-| Windows 10 EMS 64-bit 21H2, 22H2, 23H2, 24H2 <br/><br/> Windows Server 2019 LTSC (version 1809)| [25.1.1](https://download.microsoft.com/download/066e6ff4-1a59-4d15-8411-fe1dd8e5de6d/amd-software-cloud-edition-25.1.1-winsvr2019-azure-v620.exe)|
+| Windows 11 64-bit version 23H2, 24H2 | [25.1.1](https://download.microsoft.com/download/44ee0d6c-74dd-4214-b6d5-24fbf2eac33b/whql-amd-software-cloud-edition-25.1.1-win10-win11-azure-ngads-v620.exe)|
+| Windows 11 EMS 64-bit 23H2, 24H2, 25H2 <br/><br/> Windows Server 2022 21H2 <br/><br/> Windows Server 2025 24H2 | [25.1.1](https://download.microsoft.com/download/6f834f98-109d-4dfc-89e6-d25ff02a9dd0/amd-software-cloud-edition-25.1.1-winsvr2022-azure-v620.exe)| 
 
 
 ### VM Creation
@@ -91,9 +90,9 @@ For basic specs, storage capacities, and disk details, see [GPU Windows VM sizes
 
 | OS | Driver |
 | -------- |------------- |
-| Windows 11 64-bit 21H2, 22H2, 23H2, 24H2<br/><br/>Windows 10 64-bit 21H2, 22H2, 20H2 <br/><br/> | [23Q3 MR 4.1 Hotfix](https://download.microsoft.com/download/b6338eb5-781d-4a0a-9aaa-fef7ca4de242/WHQL-AMD-Software-Cloud-Edition-23.10.18.20-Win10-Win11-NVv4-MR-4.1-Hotfix.exe) (.exe) |
-| Windows Server 2022, Windows 11 EMS <br/><br/> | [23.Q3 MR 4.1 Hotfix](https://download.microsoft.com/download/b813a787-2b85-4efa-ad3f-b32fa7f1368b/WHQL-AMD-Software-Cloud-Edition-23.10.18.20-WinSvr2022-NVv4-MR-4.1-Hotfix.exe) (.exe)
-| Windows Server 2019, Windows 10 EMS <br/><br/> | [23.Q3 MR 4.1 Hotfix](https://download.microsoft.com/download/ef55fe52-0814-41b4-9667-a3d285161467/WHQL-AMD-Software-Cloud-Edition-23.10.18.20-WinSvr2019-NVv4-MR-4.1-Hotfix.exe) (.exe)
+| Windows 11 64-bit 24H2<br/><br/>Windows 10 64-bit 21H2, 22H2, 20H2 <br/><br/> | [23Q3 MR 4.1 Hotfix](https://download.microsoft.com/download/b6338eb5-781d-4a0a-9aaa-fef7ca4de242/WHQL-AMD-Software-Cloud-Edition-23.10.18.20-Win10-Win11-NVv4-MR-4.1-Hotfix.exe) (.exe) |
+| Windows Server 2022 <br/><br/> | [23.Q3 MR 4.1 Hotfix](https://download.microsoft.com/download/b813a787-2b85-4efa-ad3f-b32fa7f1368b/WHQL-AMD-Software-Cloud-Edition-23.10.18.20-WinSvr2022-NVv4-MR-4.1-Hotfix.exe) (.exe)
+| Windows Server 2019 <br/><br/> | [23.Q3 MR 4.1 Hotfix](https://download.microsoft.com/download/ef55fe52-0814-41b4-9667-a3d285161467/WHQL-AMD-Software-Cloud-Edition-23.10.18.20-WinSvr2019-NVv4-MR-4.1-Hotfix.exe) (.exe)
 
 Previous supported driver versions for Windows builds up to 1909 are [20.Q4-1](https://download.microsoft.com/download/0/e/6/0e611412-093f-40b8-8bf9-794a1623b2be/AMD-Azure-NVv4-Driver-20Q4-1.exe) (.exe) and [21.Q2-1](https://download.microsoft.com/download/4/e/a/4ea28d3f-28e2-4eaa-8ef2-4f7d32882a0b/AMD-Azure-NVv4-Driver-21Q2-1.exe) (.exe) 
  
