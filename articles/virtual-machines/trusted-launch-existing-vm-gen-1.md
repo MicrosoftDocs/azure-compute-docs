@@ -32,6 +32,7 @@ Azure Virtual Machines supports upgrading Generation 1 virtual machines (VM) to 
 - Azure VM isn't using [features currently not supported with Trusted launch](trusted-launch.md#unsupported-features).
 - Azure Backup, if enabled, for VMs should be configured with the [Enhanced Backup policy](/azure/backup/backup-azure-vms-enhanced-policy). The Trusted launch security type can't be enabled for VMs configured with *Standard policy* backup protection.
   - Existing Azure VM backup can be migrated from the *Standard* to the *Enhanced* policy. Follow the steps in [Migrate Azure VM backups from Standard to Enhanced policy](/azure/backup/backup-azure-vm-migrate-enhanced-policy).
+- Azure site recovery (ASR), if enabled, **should be disabled** before upgrading the Gen1 VM to Trusted launch. After the upgrade, ASR can be re-enabled and reconfigured as needed. For more details, see documentation [Migrate Azure Site Recovery protected Azure Generation 2 VM to trusted VM](/azure/site-recovery/concepts-trusted-vm#migrate-azure-site-recovery-protected-azure-generation-2-vm-to-trusted-vm).
 - Upgrade a test Gen1 VM to Trusted launch and determine if any changes are required to meet the prerequisites before you upgrade Gen1 VMs associated with production workloads to Trusted launch.
 - Disable any *Windows OS volume encryption* including BitLocker before upgrade if enabled. All Windows OS volume encryptions should be re-enabled post successful upgrade. This action isn't required for data disks or Linux OS volume.
 
