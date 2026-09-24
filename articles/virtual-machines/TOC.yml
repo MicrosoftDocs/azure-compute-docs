@@ -2489,6 +2489,8 @@
     - name: Overview
       displayName: Disaster Recovery Overview
       href: /azure/site-recovery/site-recovery-overview?toc=/azure/virtual-machines/toc.json
+    - name: Zonal Resilience
+      href: zone-resilient-vm.md
     - name: Enable disaster recovery
       items:
       - name: Linux
