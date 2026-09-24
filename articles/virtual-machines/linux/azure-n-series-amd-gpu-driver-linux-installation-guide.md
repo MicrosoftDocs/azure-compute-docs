@@ -35,7 +35,7 @@ The [marketplace image](https://azuremarketplace.microsoft.com/en-us/marketplace
 > - Ubuntu 24.04
 >   
 > For other Linux distributions, see:
-> - [Quick start installation guide - ROCm installation (Linux)](https://rocm.docs.amd.com/projects/install-on-linux/en/latest/install/quick-start.html)
+> - [Quick start installation guide - ROCm installation (Linux)](https://rocm.docs.amd.com/en/latest/install/rocm.html?fam=radeon&w=compute&gpu=amd-radeon-pro-v710&os=ubuntu&ubuntu-ver=24.04.4&i=pkgman&gfx=gfx1101)
 > - [ROCm release history - ROCm Documentation](https://rocm.docs.amd.com/en/latest/release/versions.html#rocm-release-history)
 
 Install the AMD Linux Driver to leverage the full capabilities of the AMD Radeon PRO V710 GPU on an NVv5-V710 GPU Linux instance in Microsoft Azure. The sections that follow provide detailed instructions for installing the Linux driver and running inference workloads using ROCm on this instance type.
@@ -85,6 +85,7 @@ Follow these steps to verify that your GPU card is detected on your system.
    ```bash
    uname -srmv
    ```
+> - [ROCm Compatibility Matrix - ROCm Documentation](https://rocm.docs.amd.com/en/latest/compatibility/compatibility-matrix.html?fam=radeon&gpu=amd-radeon-pro-v710&os=ubuntu&gfx=gfx1101)
 
 1. Verify your GPU card is detected:
 
@@ -102,32 +103,46 @@ Follow these steps to verify that your GPU card is detected on your system.
 
 The driver installation commands are slightly different depending on whether you're running Ubuntu 22.04 or 24.04.
 
-#### For Ubuntu 22.04
-
-```bash
-sudo apt update
-sudo apt install "linux-headers-$(uname -r)" "linux-modules-extra-$(uname -r)"
-sudo apt install python3-setuptools python3-wheel
-sudo usermod -a -G render,video $LOGNAME
-wget https://repo.radeon.com/amdgpu-install/7.2.2/ubuntu/jammy/amdgpu-install_7.2.2.70202-1_all.deb
-sudo apt install ./amdgpu-install_7.2.2.70202-1_all.deb
-sudo sed -i "s|graphics/7.2.2|graphics/7.2.1|" /etc/apt/sources.list.d/rocm.list
-sudo apt update
-sudo apt install amdgpu-dkms rocm
-```
-
 #### For Ubuntu 24.04
 
 ```bash
+#Driver Installation
 sudo apt update
-sudo apt install "linux-headers-$(uname -r)" "linux-modules-extra-$(uname -r)"
-sudo apt install python3-setuptools python3-wheel
-sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groups
-wget https://repo.radeon.com/amdgpu-install/7.2.2/ubuntu/noble/amdgpu-install_7.2.2.70202-1_all.deb
-sudo apt install ./amdgpu-install_7.2.2.70202-1_all.deb
-sudo sed -i "s|graphics/7.2.2|graphics/7.2.1|" /etc/apt/sources.list.d/rocm.list
+sudo apt install -y "linux-headers-$(uname -r)" "linux-modules-extra-$(uname -r)"
+sudo usermod -a -G render,video $LOGNAME
+
+sudo mkdir --parents --mode=0755 /etc/apt/keyrings
+wget https://repo.radeon.com/rocm/rocm.gpg.key -O - | \
+    gpg --dearmor | sudo tee /etc/apt/keyrings/rocm.gpg > /dev/null
+
+sudo tee /etc/apt/sources.list.d/amdgpu.list <<'EOF'
+deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] https://repo.radeon.com/amdgpu/31.50/ubuntu noble main
+EOF
+
 sudo apt update
-sudo apt install amdgpu-dkms rocm
+sudo apt install -y amdgpu-dkms
+sudo reboot
+
+#ROCM Installation
+wget https://stable.repo.amd.com/rocm/gpg/packages.gpg -O - | \
+    gpg --dearmor | sudo tee /etc/apt/keyrings/amdrocm.gpg > /dev/null
+
+sudo tee /etc/apt/sources.list.d/amdrocm-stable.sources > /dev/null <<'EOF'
+X-Repo-Id: amdrocm-stable
+Types: deb
+URIs: https://stable.repo.amd.com/rocm/core/packages/ubuntu2404/
+Suites: stable
+Components: main
+Architectures: amd64
+Signed-By: /etc/apt/keyrings/amdrocm.gpg
+Enabled: yes
+EOF
+
+sudo apt update
+sudo apt install -y amdrocm10.0-gfx1101
+Check — re-login first so the shell picks up the new tools:
+rocminfo | grep gfx                # gfx1101
+amd-smi version                    # ROCm 10.0.0 | amdgpu 7.1.3.31500000
 ```
 
 ### Step 3: Load and verify the driver
@@ -235,7 +250,7 @@ Follow these steps to install the AMD driver with graphics support.
 1. Download the installer:
 
    ```bash
-   wget -N -P /tmp/  https://repo.radeon.com/amdgpu-install/.6.4.2.2/ubuntu/noble/amdgpu-install_6.4.2.2.60402-1_all.deb
+   wget https://repo.radeon.com/.hidden/4beb847a345ee8f56d60594fcd2babe1/amdgpu-install/6.4.2.2/ubuntu/noble/amdgpu-install_6.4.2.2.60402-1_all.deb
    ```
 
 1. If a previous driver exists, remove it:
@@ -248,8 +263,9 @@ Follow these steps to install the AMD driver with graphics support.
 1. Install the new driver:
 
    ```bash
-   sudo apt-get install /tmp/amdgpu-install_6.4.2.2.60402-1_all.deb
-   sudo amdgpu-setup -b https://repo.radeon.com/.hidden/7870d5fc33d4766bda9336f8ad1c990e
+   sudo apt-get install ./amdgpu-install_6.4.2.2.60402-1_all.deb
+   sudo amdgpu-setup -b https://repo.radeon.com/.hidden/4beb847a345ee8f56d60594fcd2babe1
+   sudo sed -i 's|https://repo\.radeon\.com/amdgpu/6\.4\.2|https://repo.radeon.com/.hidden/4beb847a345ee8f56d60594fcd2babe1/amdgpu/6.4.2.2|' /etc/apt/sources.list.d/amdgpu-proprietary.list
    sudo gpg --keyserver keyserver.ubuntu.com --recv-keys 9386B48A1A693C5C
    sudo gpg --export --armor 9386B48A1A693C5C | sudo tee /etc/apt/trusted.gpg.d/amdgpu.asc
    sudo amdgpu-install --usecase=workstation,rocm,amf --opencl=rocr --vulkan=pro --no-32 --accept-eula
@@ -421,7 +437,7 @@ You can downgrade to 6.8 for compatibility by following these steps.
    ```
 ---
 
-## Uninstalling the AMD GPU driver
+## Uninstalling the ROCM & AMD GPU driver
 
 To completely remove the AMD GPU driver, run the following commands:
 
@@ -437,4 +453,16 @@ Verify removal:
 
 ```bash
 dkms status
+```
+Remove ROCm repositories.
+
+Remove ROCm repositories
+```bash
+sudo rm -f /etc/apt/sources.list.d/amdrocm-stable.sources
+```
+Clear the cache and clean the system
+```bash
+sudo rm -rf /var/cache/apt/*
+sudo apt clean all
+sudo apt update
 ```
