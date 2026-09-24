@@ -1,7 +1,7 @@
 ---
 title: Zone-resilient virtual machines (Preview)
 description: Learn how zone-resilient virtual machines use zone-redundant storage disks to support customer-initiated recovery in another availability zone.
-author: ajkundna
+author: AjKundnani
 ms.author: ajkundna
 ms.service: azure-virtual-machines
 ms.topic: concept-article
@@ -10,9 +10,11 @@ ai-usage: ai-assisted
 # Customer intent: "As a cloud administrator, I want to recover an eligible zonal VM in another availability zone while preserving its resource configuration."
 ---
 
-Zone Resilient virtual machines (ZR VMs) help you recover an eligible zonal Azure virtual machine (VM) in another availability zone in the same region. The recovery process updates the zone placement of the existing VM and reuses its supported zone-redundant storage (ZRS) managed disks. You don't have to create a replacement VM.
+# Zone-resilient virtual machines (Preview)
 
-Zone Resilient VM provides a customer-initiated zonal recovery option for a single VM. It doesn't provide automatic failover, uninterrupted service, or application-level recovery orchestration. For higher availability, deploy multiple VM instances across availability zones and distribute traffic between them.
+Zone-resilient virtual machines (ZR VMs) help you recover an eligible zonal Azure virtual machine (VM) in another availability zone in the same region. The recovery process updates the zone placement of the existing VM and reuses its supported zone-redundant storage (ZRS) managed disks. You don't have to create a replacement VM.
+
+Zone-resilient VM provides a customer-initiated zonal recovery option for a single VM. It doesn't provide automatic failover, uninterrupted service, or application-level recovery orchestration. For higher availability, deploy multiple VM instances across availability zones and distribute traffic between them.
 
 Because ZRS synchronously replicates managed disk data across availability zones, ZR VMs provide a near-zero recovery point objective (RPO) for data committed to supported ZRS disks. This RPO doesn't apply to active requests, in-memory data, temporary disks, or application state that hasn't been written to the ZRS disk.
 
