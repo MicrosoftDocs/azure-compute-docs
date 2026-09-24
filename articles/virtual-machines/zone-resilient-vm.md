@@ -22,7 +22,7 @@ Because ZRS synchronously replicates managed disk data across availability zones
 
 After a failure affects a VM that's enabled for zone movement, you can initiate recovery in a healthy zone in the same region:
 
-:::image type="complex" source="media/zone-resilient-vm/zone-recovery-workflow.png" alt-text="Customer-initiated zone recovery: confirm impact, force-deallocate, change zones, start, and verify the VM.":::
+:::image type="complex" source="media/zone-resilient/zone-recovery-workflow.png" alt-text="Customer-initiated zone recovery: confirm impact, force-deallocate, change zones, start, and verify the VM.":::
   Confirm the VM is affected and select a healthy zone in the same region. Force-deallocate the VM, which stops the workload. Update the zone placement of the existing VM and reuse its supported ZRS disks. Start the VM in the target zone, subject to available capacity. Verify the VM, disks, network, and workload before restoring traffic.
 :::image-end:::
 
