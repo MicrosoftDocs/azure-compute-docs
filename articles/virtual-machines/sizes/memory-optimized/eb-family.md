@@ -46,7 +46,7 @@ ms.author: mattmcinnes
 [!INCLUDE [ebdsv5-ebsv5-series-specs](./includes/ebdsv5-ebsv5-series-specs.md)]
 
 
-### Previous-generation Eb family series
-For older sizes, see [previous generation sizes](../lifecycle/previous-gen-sizes-list.md#memory-optimized-previous-gen-sizes).
+### End of Life Eb family series
+For End of Life sizes, see [End of Life sizes](../lifecycle/end-of-life-sizes-list.md#memory-optimized-end-of-life-sizes).
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]

@@ -1,11 +1,11 @@
 ---
-title: Plan a workload migration to the v6 and v7 VM series
-description: Considerations for migrating Azure VM workloads to the v6 and v7 series, including Generation 2, NVMe storage, MANA networking, hibernation, capacity, and commercial planning.
+title: Plan a workload modernization to the v6 and v7 VM series
+description: Considerations for modernizing Azure VM workloads to the v6 and v7 series, including Generation 2, NVMe storage, MANA networking, hibernation, capacity, and commercial planning.
 author: rod-reis
 ms.author: rosanto
 ms.service: azure-virtual-machines
 ms.topic: concept-article
-ms.date: 07/24/2026
+ms.date: 09/24/2026
 ms.collection:
   - migration
   - v2-5-to-v6-7
@@ -14,32 +14,32 @@ ai-usage: ai-assisted
 #customer intent: As a workload architect and engineer, I want to understand how to migrate to Azure Virtual Machines from Gen 1 v2-v3-v4-v5 to Gen 2 v6-v7 as part of my workload's efficiency optimization in Azure. Without this guidance I will miss behavior differences or implementation details that could cause my migration experience delay, frustration, or be to a failure.
 ---
 
-# Plan a workload migration to the v6 and v7 VM series
+# Plan a workload modernization to the v6 and v7 VM series
 
 **Applies to:** ✔️ Linux VMs ✔️ Windows VMs ✔️ Flexible scale sets
 
 **Workload patterns:** ✔️ B. Image-based hosts · E. Customer-managed VMs · F. Stateful and clustered · G. Certified appliances — ❌ Not for A, C, or D
 
-The v6 and v7 Azure VM series are built on [Azure Boost](/azure/azure-boost/overview) and introduce a few platform changes compared with earlier generations: a Generation 2 (UEFI) foundation with Trusted Launch, NVMe-based storage, and the Microsoft Azure Network Adapter (MANA) for accelerated networking. Most workloads need only a one-time image refresh. Plan your migration by screening each workload against the considerations in this article before you migrate.
+The v6 and v7 Azure VM series are built on [Azure Boost](/azure/azure-boost/overview) and introduce a few platform changes compared with earlier generations: a Generation 2 (UEFI) foundation with Trusted Launch, NVMe-based storage, and the Microsoft Azure Network Adapter (MANA) for accelerated networking. Most workloads need only a one-time image refresh. Plan your modernization by screening each workload against the considerations in this article before you modernize.
 
-Consider the following factors as you plan the migration.
+Consider the following factors as you plan the modernization.
 
-## Decide a migration approach
+## Decide a modernization approach
 
-### Option 1. Deploy in parallel and migrate (highly recommended)
+### Option 1. Deploy in parallel and modernize (highly recommended)
 
-The Microsoft recommended migration approach is to deploy new v6 and v7 instances in parallel, then reinstall or migrate the application and data. A typical migration wave is:
+The Microsoft recommended modernization approach is to deploy new v6 and v7 instances in parallel, then reinstall or migrate the application and data. A typical modernization wave is:
 
-`Deploy new → Migrate workload → Validate → Retire old`
+`Deploy new → Move workload → Validate → Retire old`
 
-Use a controlled, wave-based approach. Confirm prerequisites, deploy from an updated image, validate the migration, and then repeat at scale. Start with a small pilot to validate the pattern before expanding to additional workloads.
+Use a controlled, wave-based approach. Confirm prerequisites, deploy from an updated image, validate the modernization, and then repeat at scale. Start with a small pilot to validate the pattern before expanding to additional workloads.
 
 ### Option 2. In-place upgrade
 
 > [!IMPORTANT]
 > You can't convert Generation 1 Dv2 and Dv3 VMs to Generation 2. For the full list of unsupported families, see [Trusted Launch supported VM size families](/azure/virtual-machines/trusted-launch#virtual-machines-sizes).
 
-In some cases, you might need an in-place upgrade. This process aims to convert the VM from Generation 1 to Generation 2 and change the storage controller from SCSI to NVMe. Compared with redeployment, an in-place upgrade is more complex, has several prerequisites and steps, isn't fully compatible with all OSs and Server or VM configurations (these conditions are discussed in the following considerations in this article), requires extra careful validation, takes longer to complete, and introduces greater migration risk. A typical migration wave would be:
+In some cases, you might need an in-place upgrade. This process aims to convert the VM from Generation 1 to Generation 2 and change the storage controller from SCSI to NVMe. Compared with redeployment, an in-place upgrade is more complex, has several prerequisites and steps, isn't fully compatible with all OSs and Server or VM configurations (these conditions are discussed in the following considerations in this article), requires extra careful validation, takes longer to complete, and introduces greater modernization risk. A typical modernization wave would be:
 
 `Confirm prerequisites → Back up → Convert Gen 1 to Gen 2 → Switch SCSI to NVMe → Validate → Resume workload`
 
@@ -59,7 +59,7 @@ The image is where Generation 2, NVMe, and MANA readiness actually live. A curre
 
 ## Generation 2 and Trusted Launch
 
-The v6 and v7 series use a Generation 2 (UEFI) foundation and support [Trusted Launch](/azure/virtual-machines/trusted-launch) (Secure Boot and vTPM), which is the default security type for Generation 2 VMs. Most customers migrate from the v2 or v3 series, which are often Generation 1. Sources on the v4 or v5 series are frequently Generation 2 already, so confirm the generation of each source VM early.
+The v6 and v7 series use a Generation 2 (UEFI) foundation and support [Trusted Launch](/azure/virtual-machines/trusted-launch) (Secure Boot and vTPM), which is the default security type for Generation 2 VMs. Most customers modernize from the v2 or v3 series, which are often Generation 1. Sources on the v4 or v5 series are frequently Generation 2 already, so confirm the generation of each source VM early.
 
 Azure Virtual Machines supports upgrading Generation 1 virtual machines (VM) to Generation 2 by upgrading to the Trusted launch security type. Enabling Trusted Launch is required.
 
@@ -97,7 +97,7 @@ Disks keep their data, but the device names the OS sees change as a VM moves fro
 A v6 size can present up to four local NVMe namespaces. If you stripe or pin scratch storage to local disk, account for the new count and naming. For more information, see [Local (temporary) disk behavior](#local-temporary-disk-behavior).
 
 > [!WARNING]
-> Any mount, script, or database setting that hard-codes an old device path points at the wrong device after migration. Update these references to stable identifiers before you migrate.
+> Any mount, script, or database setting that hard-codes an old device path points at the wrong device after modernization. Update these references to stable identifiers before you modernize.
 
 **How to prepare:**
 
@@ -105,7 +105,7 @@ A v6 size can present up to four local NVMe namespaces. If you stripe or pin scr
 2. Confirm the OS image includes NVMe support. See [NVMe on Linux](/azure/virtual-machines/nvme-linux) and the [NVMe FAQ](/azure/virtual-machines/enable-nvme-faqs).
 3. Plan the replacement of hard-coded SCSI paths with stable identifiers, by-UUID references, filesystem labels, or Azure disk symlinks, in mount configurations, backup scripts, and database storage settings.
 4. Plan cross-generation moves as redeploy-from-image rather than a portal resize.
-5. Understand the considerations around the [Local Temp disk](/azure/virtual-machines/enable-nvme-temp-faqs#what-changes-should-i-prepare-for-when-configuring-my-vms-with-temp-nvme-disks-) and [Migration details](/azure/virtual-machines/azure-vms-no-temp-disk#can-i-resize-a-vm-size-that-has-a-local-temp-disk-to-a-vm-size-with-no-local-temp-disk---)
+5. Understand the considerations around the [Local Temp disk](/azure/virtual-machines/enable-nvme-temp-faqs#what-changes-should-i-prepare-for-when-configuring-my-vms-with-temp-nvme-disks-) and [Resize details](/azure/virtual-machines/azure-vms-no-temp-disk#can-i-resize-a-vm-size-that-has-a-local-temp-disk-to-a-vm-size-with-no-local-temp-disk---)
 
 ## Local (temporary) disk behavior
 
@@ -128,7 +128,7 @@ A cross-generation move is usually a redeploy rather than an in-place resize, th
 1. Inventory what each workload persists to the OS disk (application configuration, license or activation files, local databases, certificates, and working or state data) versus what already lives on managed data disks or external services.
 2. For ISV or custom applications, confirm with the vendor or development team where state is stored and whether a supported export/import or backup/restore path exists.
 3. Add an explicit data-migration step to your runbook: capture the OS-disk data before cutover, and restore it to the new VM after deployment.
-4. Keep a safety copy before you migrate. Snapshot or back up the source VM. For workloads that hold important data on the OS disk or rely on hard-coded device paths, also keep a bootable clone on a compatible older size that still uses the SCSI controller. Because the move changes the disk controller to NVMe and the device paths the OS sees, this clone gives you both a clean rollback and a running copy you can read the OS-disk data from while you copy it to the new VM.
+4. Keep a safety copy before you modernize. Snapshot or back up the source VM. For workloads that hold important data on the OS disk or rely on hard-coded device paths, also keep a bootable clone on a compatible older size that still uses the SCSI controller. Because the move changes the disk controller to NVMe and the device paths the OS sees, this clone gives you both a clean rollback and a running copy you can read the OS-disk data from while you copy it to the new VM.
 5. Where practical, relocate persistent application data to managed data disks or external services, so future image refreshes don't require a data copy.
 6. Validate the migrated data and application state in the pilot before you scale to later waves.
 
@@ -157,7 +157,7 @@ The replacement is [encryption at host](/azure/virtual-machines/disk-encryption)
 1. Inventory which VMs have ADE enabled, and whether the OS disk, the data disks, or both are encrypted.
 2. Choose the target encryption model: encryption at host with customer-managed keys for most workloads, or [Confidential VM sizes with OS disk encryption](/azure/confidential-computing/confidential-vm-overview#confidential-os-disk-encryption) where the control objective requires the platform not to handle plaintext.
 3. Confirm the target size supports encryption at host. There's no static list — retrieve the supported sizes programmatically.
-4. Fold the rebuild into the migration wave rather than running it as a separate project. It's the same work, and it's required before the 2028 retirement regardless.
+4. Fold the rebuild into the modernization wave rather than running it as a separate project. It's the same work, and it's required before the 2028 retirement regardless.
 5. After cutover, verify `securityProfile.encryptionAtHost` on the new VM, then update Key Vault access policies to disable the disk-encryption setting once nothing depends on it.
 
 For the full procedure, see [Migrate from Azure Disk Encryption to encryption at host](/azure/virtual-machines/disk-encryption-migrate).
@@ -190,7 +190,7 @@ A move to v6 or v7 is a redeploy or a VM Generation and disk-controller conversi
 
 **How to prepare:**
 
-1. **Resume, then migrate.** The working path is: resume (unhibernate) so the saved memory state is restored, let the workload settle, shut down to Stop (deallocated), then convert or redeploy and restart. A guest-OS shutdown alone isn't enough, the resize, disk, and NIC blocks clear only after the VM leaves the hibernated state and reaches Stop (deallocated).
+1. **Resume, then modernize.** The working path is: resume (unhibernate) so the saved memory state is restored, let the workload settle, shut down to Stop (deallocated), then convert or redeploy and restart. A guest-OS shutdown alone isn't enough, the resize, disk, and NIC blocks clear only after the VM leaves the hibernated state and reaches Stop (deallocated).
 2. **Treat the memory image as throwaway.** It doesn't transfer to the new VM, so confirm anything important is written to a disk or an external store before you resume and cut over.
 3. **Re-validate hibernation support on the exact v6 or v7 target.** Support is gated by both VM size and a RAM ceiling, up to 64 GB on supported general-purpose series and up to 112 GB on supported GPU series. As of this writing, the documented hibernation-supported sizes are v5-series general-purpose families (Dasv5, Dadsv5, Dsv5, Ddsv5, Easv5, Eadsv5, Esv5, Edsv5) and the NVv4 and NVadsA10v5 GPU series, **no v6 or v7 sizes are listed yet.** Confirm the specific target on the [supported-sizes list](/azure/virtual-machines/hibernate-resume) before you rely on hibernation.
 4. **Re-enable hibernation on the new VM.** Deallocate it, set `supportsHibernation=true` on the OS disk, run `az vm update --enable-hibernation true`, then reconfigure the guest OS. The OS disk must be large enough to hold the memory contents plus the OS, so a larger-memory size might need a larger OS disk. On Windows, the page file must be on the OS disk (C:), not the temporary disk.
@@ -198,7 +198,7 @@ A move to v6 or v7 is a redeploy or a VM Generation and disk-controller conversi
 6. **Plan the resume step as a capacity risk.** Hibernated VMs carry no capacity guarantee on resume, and capacity reservations don't cover them. Bringing a VDI pool back at once depends on available capacity in the target region and zone. See [Region, zone, and capacity planning](#region-zone-and-capacity-planning).
 
 > [!IMPORTANT]
-> Resume a hibernated VM and reach Stop (deallocated) before you migrate. The saved session state stays on the old VM and is discarded, so save anything important first. Re-enable hibernation on the new size only after you confirm the size supports it and the OS disk can hold the new memory image.
+> Resume a hibernated VM and reach Stop (deallocated) before you modernize. The saved session state stays on the old VM and is discarded, so save anything important first. Re-enable hibernation on the new size only after you confirm the size supports it and the OS disk can hold the new memory image.
 
 ## Region, zone, and capacity planning
 
@@ -217,13 +217,13 @@ Availability of the v6 and v7 series varies by [region and availability zone](/a
 
 ## Placement for clustered workloads
 
-For availability groups, failover clusters, and other quorum-based workloads, migration temporarily changes your placement. You run old and new nodes side by side, and the new nodes land wherever the target family has capacity — which might not be the zones the cluster was designed around.
+For availability groups, failover clusters, and other quorum-based workloads, modernization temporarily changes your placement. You run old and new nodes side by side, and the new nodes land wherever the target family has capacity — which might not be the zones the cluster was designed around.
 
 **How to prepare:**
 
 1. Map the current zone layout of every node or replica before you start.
 2. Confirm the target size is available in *each* zone the cluster spans, not just in the region. If it isn't, plan the wave so the cluster doesn't end up with all replicas in one zone.
-3. Account for the extra nodes in quota. A side-by-side migration needs headroom for both the old and new set simultaneously.
+3. Account for the extra nodes in quota. A side-by-side modernization needs headroom for both the old and new set simultaneously.
 4. Use [capacity reservations](/azure/virtual-machines/capacity-reservation-overview) for the zones you must land in, so a wave doesn't stall midway with the cluster in a degraded layout.
 
 ## Commercial continuity
@@ -236,9 +236,29 @@ For availability groups, failover clusters, and other quorum-based workloads, mi
 2. Rightsize against observed usage rather than matching the old vCPU count one-for-one. This is where much of the price-performance benefit comes from.
 3. Reapply Azure Hybrid Benefit and any bring-your-own-license configuration on the redeployed VM. Confirm it's set rather than assuming it transfers from the source.
 
+## Retiring v3 workloads
+
+The Dv3, Dsv3, Ev3, and Esv3 series retire on November 15, 2029. After that date, you can't create, resize into, run, or purchase these sizes, and you can't fall back to a v3 source VM.
+
+**Planning milestones:**
+
+1. Inventory every VM, scale set, and reservation on the four v3 series.
+2. Set a program completion date well before November 15, 2029. Leave time for a final wave and its rollback window.
+3. Schedule v3 workloads in early waves, and track them as a separate milestone.
+4. Plan commercial changes. One-year and three-year reservations for these series can't be purchased or renewed after July 1, 2026.
+
+**Replacement size selection:**
+
+| Source series | v5 (smoothest transition) | v6 (Current) | v7 (Current) |
+| --- | --- | --- | --- |
+| Dv3, Dsv3 | Dv5, Dsv5, Ddv5, Ddsv5, Dasv5, Dadsv5 | Dsv6, Ddsv6, Dasv6, Dadsv6 | Dsv7, Ddsv7, Dasv7, Dadsv7 |
+| Ev3, Esv3 | Ev5, Esv5, Edv5, Edsv5, Easv5, Eadsv5 | Esv6, Edsv6, Easv6, Eadsv6 | Esv7, Edsv7, Easv7, Eadsv7 |
+
+Every v3 size includes a local temporary disk. If the workload uses it, choose a `d`-suffixed target size. Size against observed usage rather than the v3 vCPU count. For the v5 path, see [Modernize to the v5 VM series](../../sizes/lifecycle/sizes-v5-modernization-overview.md). For retirement details, see the [Retired VM sizes modernization guide](../../sizes/lifecycle/retirement/retired-sizes-modernization-guide.md).
+
 ## Wave sequencing
 
-For mult-tier applications, migration order matters. At estate scale, hundreds or thousands of VMs are a program rather than a series of manual resizes. The sequence is a planning decision you make once rather than a judgment call per wave.
+For mult-tier applications, modernization order matters. At estate scale, hundreds or thousands of VMs are a program rather than a series of manual resizes. The sequence is a planning decision you make once rather than a judgment call per wave.
 
 **How to prepare:**
 
@@ -247,13 +267,13 @@ For mult-tier applications, migration order matters. At estate scale, hundreds o
 3. Sequence non-production before production for every application.
 4. Keep waves small enough to validate inside one window. This guidance is about sequencing, not about the size itself.
 
-Record the resulting wave list with owners and target windows. For how to execute waves, see [4. Migrate in waves](sizes-v6-v7-migration-migrate.md#phase-2-migrate-in-waves).
+Record the resulting wave list with owners and target windows. For how to execute waves, see [4. Modernize in waves](sizes-v6-v7-migration-migrate.md#phase-2-modernize-in-waves).
 
 ## ISV virtual appliances
 
 **Applies to:** ✔️ G. Certified appliances — vendor certification is a gate, not a validation item. Confirm it before you plan anything else.
 
-Some workloads aren't just an application inside a VM, the VM *is* the appliance. Network virtual appliances (NVAs), Storage Appliances and others, certify specific VM families, NIC and driver configurations, and disk presentation. The move to MANA networking and an NVMe disk controller is exactly the kind of change they're sensitive to. Confirm support with the vendor before you migrate either one.
+Some workloads aren't just an application inside a VM, the VM *is* the appliance. Network virtual appliances (NVAs), Storage Appliances and others, certify specific VM families, NIC and driver configurations, and disk presentation. The move to MANA networking and an NVMe disk controller is exactly the kind of change they're sensitive to. Confirm support with the vendor before you modernize either one.
 
 ### Network virtual appliances
 
@@ -296,7 +316,7 @@ The following table lists common examples and what to confirm with each vendor. 
 
 ### Confirm before you commit
 
-Treat these items as gates, not validation items. If the vendor doesn't support the target family, there's no migration to plan.
+Treat these items as gates, not validation items. If the vendor doesn't support the target family, there's no modernization to plan.
 
 | Confirm with the vendor | Why it gates the decision |
 | --- | --- |
@@ -321,4 +341,4 @@ For the execution sequence once certification is confirmed, see [Cut over a cert
 
 ## Next steps
 
-- [4. Migrate: the wave-based runbook](sizes-v6-v7-migration-migrate.md)
+- [4. Modernize: the wave-based runbook](sizes-v6-v7-migration-migrate.md)

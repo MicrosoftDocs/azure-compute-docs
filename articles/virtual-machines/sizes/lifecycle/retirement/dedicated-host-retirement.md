@@ -16,9 +16,9 @@ We continue to modernize and optimize Azure Dedicated Host by using the latest i
 
 ## UPDATE: Retirement timeline extension
 Considering the feedback from several Azure Dedicated Host customers that are running their critical workloads on SKUs that are scheduled for retirement, we have extended the retirement timeline from March 31, 2023 to June 30, 2023. 
-We don't intend to move the retirement timeline any further and recommend all ADH users that are using any of the listed SKUs to migrate to newer generation based SKUs to avoid workload disruptions.
+We don't intend to move the retirement timeline any further and recommend all ADH users that are using any of the listed SKUs to modernize to newer generation based SKUs to avoid workload disruptions.
 
-## Migrations required by 30 June 2023 [Updated]
+## Modernization required by 30 June 2023 [Updated]
 
 All hardware has a finite lifespan, including the underlying hardware for Azure Dedicated Host. As we continue to modernize Azure datacenters, hardware is decommissioned and eventually retired. The hardware that runs the following Dedicated Host SKUs is reaching end of life:
 
@@ -44,13 +44,13 @@ Note: If you're running a Dsv3-Type3, Dsv3-Type4, an Esv3-Type3, or an Esv3-Type
 
 For manually placed VMs, you need to create a Dedicated Host of a newer SKU, stop the VMs on your existing Dedicated Host, reassign them to the new host, start the VMs, and delete the old host. For automatically placed VMs or for Virtual Machine Scale Sets, you need to create a Dedicated Host of a newer SKU, stop the VMs or Virtual Machine Scale Set, delete the old host, and then start the VMs or Virtual Machine Scale Set. 
 
-Refer to the [Azure Dedicated Host Migration Guide](../../../migration/dedicated-host-migration-guide.md) for more detailed instructions. We recommend moving to the latest generation of Dedicated Host for your VM family.
+Refer to the [Azure Dedicated Host Migration Guide](../../../migration/dedicated-host-migration-guide.md) for more detailed instructions. We recommend moving to a Current or Extended Dedicated Host SKU for your VM family.
 
 If you have any questions, contact us through customer support.
 
 ## FAQs
 
-### Q: Will migration result in downtime?
+### Q: Will modernization result in downtime?
 
 A: Yes, you would have to stop/deallocate your VMs or Virtual Machine Scale Sets before moving them to the target host.
 
@@ -71,7 +71,7 @@ A:
 
 A: You need to [exchange your reservation](/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations#how-to-exchange-or-refund-an-existing-reservation) through the Azure portal to match the new Dedicated Host SKU. 
 
-### Q: What would happen to my host if I do not migrate by June 30, 2023?
+### Q: What would happen to my host if I do not modernize by June 30, 2023?
 
 A: After June 30, 2023 any dedicated host running on the SKUs that are marked for retirement will be set to 'Host Pending Deallocate' state before eventually deallocating the host. For more assistance, please reach out to Azure support.
 

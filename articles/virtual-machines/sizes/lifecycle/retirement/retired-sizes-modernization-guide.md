@@ -1,33 +1,35 @@
 ---
-title: Retired VM Sizes Migration Guide
-description: Migration guide for retired VM size series
+title: Retired VM sizes modernization guide
+description: Modernization guide for retired VM size series
 author: iamwilliew
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 01/30/2026
-ms.author: wwilliams
+ms.date: 09/24/2026
+ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ai-usage: ai-assisted
 ---
 
-# Retired VM Sizes Migration Guide
+# Retired VM sizes modernization guide
 
-This migration guide is designed for users of Azure virtual machines (VMs) scheduled for retirement. This guide helps you transition to the latest VM series, helping you minimize disruptions while optimizing cost and performance. The guide covers General Purpose, Storage Optimized, and other VM series. It also surfaces critical information for HPC HBv2-series VMs undergoing retirement; specialized workload validation is recommended when migrating HPC workloads.
+This modernization guide is designed for users of Azure virtual machines (VMs) scheduled for retirement. This guide helps you transition to Current or Extended VM series, helping you minimize disruptions while optimizing cost and performance. The guide covers General Purpose, Storage Optimized, and other VM series. It also surfaces critical information for HPC HBv2-series VMs undergoing retirement; specialized workload validation is recommended when modernizing HPC workloads.
 
 This guide covers:
 
  - Recommended replacement VM series
- - Detailed migration steps
+ - Detailed modernization steps
  - Common questions and guidance on handling RIs.
 
-By migrating to newer VM series, you gain access to improved price-performance ratios, broader regional availability, and the latest hardware capabilities.
+By modernizing to newer VM series, you gain access to improved price-performance ratios, broader regional availability, and the latest hardware capabilities.
 
 ## Recommended Replacement VM Series
 
 |Current VM Series | Target VM Series| Differences in Specification in Target VM*| 
 |--|--|--|
 | D<br>Ds<br>Dv2<br>Dsv2 | Dsv5/Ddsv5/Dasv5/Dadsv5<br>Dasv6/Dadsv6/Dsv6/Ddsv6<br>Dasv7/Dadsv7<br>Esv6/Edsv6/Easv6/Eadsv6<br>Easv7/Eadsv7| D/Ev5 disk controller type: SCSI <br> D/Ev6, D/Ev7 disk controller type: NVMe<br>Local Storage Throughput: 9000 IOPS / 125 MBps<br>Remote Storage Throughput: 3750 IOPS / 82 MBps|
+| Dv3<br>Dsv3 | Dv5/Dsv5/Ddv5/Ddsv5/Dasv5/Dadsv5<br>v6 and v7 D-family series | For the smoothest transition, see [Modernize to the v5 VM series](../sizes-v5-modernization-overview.md). For the latest features and performance, see [Modernize to the v6 and v7 VM series](../../../migration/sizes/sizes-v6-v7-migration-overview.md). |
+| Ev3<br>Esv3 | Ev5/Esv5/Edv5/Edsv5/Easv5/Eadsv5<br>v6 and v7 E-family series | For the smoothest transition, see [Modernize to the v5 VM series](../sizes-v5-modernization-overview.md). For the latest features and performance, see [Modernize to the v6 and v7 VM series](../../../migration/sizes/sizes-v6-v7-migration-overview.md). |
 | Ls | Lsv3/Lasv3<br>Lsv4/Lasv4 | Local Storage: Supported - NVMe<br>Remote Storage Throughput: 12800 IOPS / 200 MBps <br>Disk Controller Type: SCSI and NVMe |
 | Av2<br>Amv2 | Bsv2/Basv2<br>Dsv5/Ddv5/Dasv5<br>Esv5/Edv5/Easv5<br>Dsv6/Ddsv6/Dasv6<br>Esv6/Edsv6/Easv6 | B/Bav2, D/Ev5 disk controller type: SCSI <br> D/Ev6 disk controller type: NVMe<br>Remote Storage Throughput: 3750 IOPS / 85 MBps
 | Bv1 | Bsv2/Basv2<br>Dlsv5/Dldsv5/Dalsv5/Daldsv5<br>Dlsv6/Dldsv6/Dalsv6/Daldsv6 | B/Bav2, D/Ev5 disk controller type: SCSI <br> D/Ev6 disk controller type: NVMe<br>Remote Storage Throughput: 3750 IOPS / 85 MBps<br>Disk Controller Type: SCSI|
@@ -53,17 +55,17 @@ By migrating to newer VM series, you gain access to improved price-performance r
 
 *Refers to the smallest VM size in the given target VM series. Full VM specifications are available on each target VM series' product sizes page.
 
-For optimal performance and experience, we recommend using the newer v5 and v6 VM series. This ensures you have access to the latest features such as Premium Storage, Accelerated Networking, and Nested Virtualization. While the v6 VM series is preferred, there are certain scenarios where you might want to consider the v5 or even the v4 VM series. Here are some reasons why:
+For optimal performance and experience, we recommend using the Current v6 or Extended v5 general purpose and memory optimized VM series. This ensures you have access to the latest features such as Premium Storage, Accelerated Networking, and Nested Virtualization. While the v6 VM series is preferred, there are certain scenarios where you might want to consider the v5 or even the v4 VM series. Here are some reasons why:
  - v6 VMs require [enabling NVMe](/azure/virtual-machines/nvme-overview) which means that you must have a [supported OS](/azure/virtual-machines/enable-nvme-interface).
  - v6 VMs support [Generation 2 VMs only](/azure/virtual-machines/generation-2).
  - v6 VMs require MANA ([Microsoft Azure Network Adapter](/azure/virtual-network/accelerated-networking-mana-overview)) and a MANA supported operating system.
  - v6 VMs may not have available capacity in the regions and zones you need.
  
-Note that Lsv4 and Lasv4 series are the latest generation L-series VMs.
+Note that Lasv5 and Laosv5 series are the Current L-series VMs.
 
 Use the [Azure VM size documentation](/azure/virtual-machines/sizes) to help identify suitable VM sizes.
 
-## Migration Steps
+## Modernization steps
 
 #### Optional: For Reserved Instance (RI) customers only
 
@@ -74,7 +76,7 @@ Use the [Azure VM size documentation](/azure/virtual-machines/sizes) to help ide
 - For customers using Reserved Instances (RIs) on VM series such as
 One-year and three-year RIs for the VM series Dv3, Dsv3, Ev3, and Esv3.
 One-year RIs for the VM series Av2, Amv2, Bv1, D, Ds, Dv2, Dsv2, F, Fs, Fsv2, G, Gs, Ls, and Lsv2.
-Existing RIs will remain valid through the end of their original term. However, once an RI expires after July 1, 2026, it cannot be purchased or renewed for these VM series. At that point, workloads will transition to pay as you go pricing unless another cost optimization option is selected. Customers are encouraged to either transition to Azure Savings Plan for compute or migrate workloads to newer VM generations, which continue to support both Reserved Instances and Savings Plans. Customers should plan their migration ahead of RI expiration to avoid unintended cost increases.
+Existing RIs will remain valid through the end of their original term. However, once an RI expires after July 1, 2026, it cannot be purchased or renewed for these VM series. At that point, workloads will transition to pay as you go pricing unless another cost optimization option is selected. Customers are encouraged to either transition to Azure Savings Plan for compute or modernize workloads to newer VM generations, which continue to support both Reserved Instances and Savings Plans. Customers should plan their modernization ahead of RI expiration to avoid unintended cost increases.
 
 
 ####  Identify the Target VM Size
@@ -82,7 +84,7 @@ Existing RIs will remain valid through the end of their original term. However, 
 - Evaluate your current VM's workload and performance requirements.
 - Select a comparable size from the above table that meets your CPU, memory, and storage needs.
 
-#### GPU workload migration (NP-series customers)
+#### GPU workload modernization (NP-series customers)
 
 NP-series customers should validate their workload GPU requirements (CUDA cores, memory bandwidth, and interconnect needs) before selecting a target VM family. Consider the following recommended alternatives and their key characteristics:
 
@@ -91,7 +93,7 @@ NP-series customers should validate their workload GPU requirements (CUDA cores,
 - **[NCasT4_v3 VMs](../../../sizes/gpu-accelerated/ncast4v3-series.md)** – Best for inference, interactive graphics, and cost-sensitive workloads. Features NVIDIA T4 GPUs.
 
 > [!IMPORTANT]
-> NP-series VMs use FPGA-based acceleration (Xilinx/AMD Alveo U250). Migrating to GPU-based VM families requires porting your workloads from FPGA frameworks (such as Vitis/XRT) to GPU-based frameworks (such as CUDA). Perform thorough test validation before resizing production workloads.
+> NP-series VMs use FPGA-based acceleration (Xilinx/AMD Alveo U250). Modernizing to GPU-based VM families requires porting your workloads from FPGA frameworks (such as Vitis/XRT) to GPU-based frameworks (such as CUDA). Perform thorough test validation before resizing production workloads.
 
 #### Check and Request Quota Increases
 
@@ -109,7 +111,7 @@ Refer to the full [Azure VM resizing guide](/azure/virtual-machines/sizes/resize
 
 ## FAQ
 #### Q: Which sizes are being retired?
-To review retired sizes, see [retired Azure VM sizes](/azure/virtual-machines/sizes/lifecycle/retired-sizes-list). View retired isolated sizes at [Isolation for VMs in Azure](/azure/virtual-machines/isolation).
+To review retired sizes, see [retired and retiring VM size series](../retirements-and-capacity-restrictions.md#retired-and-retiring-vm-size-series). View retired isolated sizes at [Isolation for VMs in Azure](/azure/virtual-machines/isolation).
 
 > [!NOTE]
 > HPC HBv2-series VMs are also retiring. See the HBv2 row in the table below for the applicable dates.
@@ -122,11 +124,11 @@ To review retired sizes, see [retired Azure VM sizes](/azure/virtual-machines/si
 | D         | 05/01/2025 | 07/01/2026 | 05/01/2028 |
 | Ds        | 05/01/2025 | 07/01/2026 | 05/01/2028 |
 | Dsv2      | 05/01/2025 | 07/01/2026 | 05/01/2028 |
-| Dsv3      | 07/01/2026 | 07/01/2026 | Product active |
+| Dsv3      | 07/01/2026 | 07/01/2026 | 11/15/2029 |
 | Dv2       | 05/01/2025 | 07/01/2026 | 05/01/2028 |
-| Dv3       | 07/01/2026 | 07/01/2026 | Product active |
-| Esv3      | 07/01/2026 | 07/01/2026 | Product active |
-| Ev3       | 07/01/2026 | 07/01/2026 | Product active |
+| Dv3       | 07/01/2026 | 07/01/2026 | 11/15/2029 |
+| Esv3      | 07/01/2026 | 07/01/2026 | 11/15/2029 |
+| Ev3       | 07/01/2026 | 07/01/2026 | 11/15/2029 |
 | F         | 11/15/2025 | 07/01/2026 | 11/15/2028 |
 | Fs        | 11/15/2025 | 07/01/2026 | 11/15/2028 |
 | Fsv2      | 11/15/2025 | 07/01/2026 | 11/15/2028 |
@@ -142,16 +144,23 @@ To review retired sizes, see [retired Azure VM sizes](/azure/virtual-machines/si
 > Purchases of 1-year and 3-year Azure Reserved VM Instances for NP-series ended on 04/02/2026.
 
 
-#### Q: Why should I migrate my VM?
+#### Q: Why should I modernize my VM?
 
-Migration is mandatory to avoid unexpected shutdown. Additionally, migration yields the following benefits: 
+Modernization is mandatory to avoid unexpected shutdown. Additionally, modernization yields the following benefits: 
 
  - **Performance**: Newer VM series offer better price-to-performance ratios.
  - **Regional Availability**: The v5 and v6 series has broader regional support across Azure data centers.
- - **Future-proofing**: Migrate ahead of the retirement schedule to avoid disruption.
+ - **Future-proofing**: Modernize ahead of the retirement schedule to avoid disruption.
 
-#### Q:How are Reserved Instance (RI) purchases and renewals changing for Dv3, Dsv3, Ev3, and Esv3?
- -Dv3, Dsv3, Ev3, and Esv3 are not being retired until further notice. However, three- and one-year reserved instances discounts will no longer be available for new purchases or renewals after July 1, 2026. Azure savings plan is the primary recommendation if you plan to continue using these VM series. If you are looking to migrate from Dv3/Dsv3, recommended VM series include Dsv5, Ddsv5, Dasv5, Dadsv5, Dsv6, Ddsv6, Dasv6, and Dadsv6. For Ev3/Esv3, recommended replacements include Esv5, Edsv5, Easv5, Eadsv5, Esv6, Edsv6, Easv6, and Eadsv6. Customers should refer to the migration steps above for guidance
+#### Q: When do Dv3, Dsv3, Ev3, and Esv3 retire, and how are Reserved Instance (RI) purchases and renewals changing?
+
+The Dv3, Dsv3, Ev3, and Esv3 series retire on November 15, 2029. The retirement affects all 32 sizes in these series. After that date, you can't create, resize into, run, or purchase these sizes. This retirement doesn't apply to Azure Government, Azure operated by 21Vianet, or sovereign cloud regions.
+
+One-year and three-year RIs for these series are no longer available for new purchases or renewals after July 1, 2026. Existing RIs continue through the end of their term. If you continue to use these series before retirement, Azure savings plan for compute is the primary recommendation.
+
+The retirement is separate from the [capacity growth restrictions](../retirements-and-capacity-restrictions.md) that began in July 2026.
+
+For the smoothest transition, move Dv3 and Dsv3 workloads to Dv5, Dsv5, Ddv5, Ddsv5, Dasv5, or Dadsv5, and move Ev3 and Esv3 workloads to Ev5, Esv5, Edv5, Edsv5, Easv5, or Eadsv5. For more information, see [Modernize to the v5 VM series](../sizes-v5-modernization-overview.md). For the latest features and performance, see [Modernize to the v6 and v7 VM series](../../../migration/sizes/sizes-v6-v7-migration-overview.md).
 
 #### Q: What will happen to my VM if I do not resize my VM to a target size within the retirement timeline?
 
@@ -164,10 +173,10 @@ Specifically for NP-series: after May 31, 2027, NP-series VMs (Standard_NP10s, S
 #### Q: Can I recover my VM after it has been deallocated?
 Yes, you can resize and restart your deallocated VM following the [Azure VM resizing guide](/azure/virtual-machines/sizes/resize-vm?tabs=portal).
 
-#### Q: Will VM migration disrupt pay-as-you-go or Savings Plan Pricing billing?
-No. If you’re using pay-as-you-go or a savings plan, migrating to a newer VM type won't disrupt your current billing. The migration process remains seamless with no changes required in your subscription or payment plan.
+#### Q: Will VM modernization disrupt pay-as-you-go or Savings Plan Pricing billing?
+No. If you’re using pay-as-you-go or a savings plan, modernizing to a newer VM type won't disrupt your current billing. The modernization process remains seamless with no changes required in your subscription or payment plan.
 
-#### Q: How can I migrate my VM if I am on Reserved Instances (RIs) with a retired VM?
+#### Q: How can I modernize my VM if I am on Reserved Instances (RIs) with a retired VM?
 If you have active Reserved Instances for any of listed the series in FAQ chart, follow these steps:
 
 Step 1: Review Current Reservations
@@ -176,7 +185,7 @@ Step 1: Review Current Reservations
 
 Identify which RIs are expiring or will be affected by the VM retirement.
 
-Step 2: Migrate and Manage Your RIs
+Step 2: Modernize and manage your RIs
 
 Depending on your business needs, consider these options:
 

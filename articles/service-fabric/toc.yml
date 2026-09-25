@@ -427,9 +427,9 @@
     href: managed-cluster-deny-assignment.md
   - name: Service Fabric Explorer blocking operations for managed clusters
     href: managed-cluster-service-fabric-explorer-blocking-operation.md
-- name: How-to guides
+- name: Managed cluster how-to guides
   items:
-  - name: Use Service Fabric managed clusters
+  - name: Configure and manage clusters
     items:
     - name: Configure your managed cluster
       href: how-to-managed-cluster-configuration.md
@@ -437,16 +437,30 @@
       href: how-to-managed-cluster-connect.md
     - name: Configure Microsoft Entra client access
       href: how-to-managed-cluster-azure-active-directory-client.md
-    - name: Configure autoscaling on a managed cluster
-      href: how-to-managed-cluster-autoscale.md
-    - name: Configure node types on a managed cluster
-      href: how-to-managed-cluster-modify-node-type.md
-    - name: Add a VM scale set extension to a managed cluster node type
-      href: how-to-managed-cluster-vmss-extension.md
-    - name: Configure managed cluster network settings
-      href: how-to-managed-cluster-networking.md
     - name: Configure managed cluster Availability Zone spanning
       href: how-to-managed-cluster-availability-zones.md
+    - name: Configure managed cluster upgrade options
+      href: how-to-managed-cluster-upgrades.md
+    - name: Configure maintenance control on a managed cluster
+      href: how-to-managed-cluster-maintenance-control.md
+    - name: Enable Safe Deployment Process
+      href: how-to-managed-cluster-enable-safe-deployment-process.md
+  - name: Configure node types and scaling
+    items:
+    - name: Configure node types on a managed cluster
+      href: how-to-managed-cluster-modify-node-type.md
+    - name: Configure autoscaling on a managed cluster
+      href: how-to-managed-cluster-autoscale.md
+    - name: Deploy stateless-only node types to a managed cluster
+      href: how-to-managed-cluster-stateless-node-type.md
+    - name: Configure secondary node type for large scaling on a managed cluster
+      href: how-to-managed-cluster-large-virtual-machine-scale-sets.md
+    - name: Scale to zero nodes
+      href: how-to-managed-cluster-scale-to-zero.md
+  - name: Configure node VMs and storage
+    items:
+    - name: Add a VM scale set extension to a managed cluster node type
+      href: how-to-managed-cluster-vmss-extension.md
     - name: Enable disk encryption for managed cluster nodes
       href: how-to-managed-cluster-enable-disk-encryption.md
     - name: Select managed disk types for managed cluster nodes
@@ -455,10 +469,12 @@
       href: how-to-managed-cluster-dedicated-hosts.md
     - name: Use Ephemeral OS disks for node types in managed cluster
       href: how-to-managed-cluster-ephemeral-os-disks.md
-    - name: Configure managed cluster upgrade options
-      href: how-to-managed-cluster-upgrades.md
-    - name: Configure maintenance control on a managed cluster
-      href: how-to-managed-cluster-maintenance-control.md
+    - name: Use managed identity for managed cluster nodes
+      href: how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md
+    - name: Deploy custom image
+      href: how-to-deploy-custom-image.md
+  - name: Manage applications and identities
+    items:
     - name: Deploy application secrets to a managed cluster
       href: how-to-managed-cluster-application-secrets.md
     - name: Deploy an application to a managed cluster using Azure Resource Manager
@@ -467,16 +483,12 @@
       href: how-to-managed-cluster-application-managed-identity.md
     - name: Grant access to other Azure resources on a managed cluster
       href: how-to-managed-cluster-grant-access-other-resources.md
-    - name: Deploy stateless-only node types to a managed cluster
-      href: how-to-managed-cluster-stateless-node-type.md
-    - name: Configure secondary node type for large scaling on a managed cluster
-      href: how-to-managed-cluster-large-virtual-machine-scale-sets.md
-    - name: Use managed identity for managed cluster nodes
-      href: how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md
     - name: Use managed identity with an application
       href: how-to-managed-cluster-managed-identity-service-fabric-app-code.md
-    - name: Deploy custom image
-      href: how-to-deploy-custom-image.md
+  - name: Configure networking
+    items:
+    - name: Configure managed cluster network settings
+      href: how-to-managed-cluster-networking.md
     - name: Use NAT gateways
       href: how-to-managed-cluster-nat-gateway.md
     - name: Use public IP prefix in a managed cluster
@@ -489,14 +501,14 @@
       href: how-to-managed-cluster-troubleshoot-snat-port-exhaustion-issues.md
     - name: Use Azure Application Gateway in a Service Fabric managed cluster
       href: how-to-managed-cluster-application-gateway.md
-    - name: Enable Safe Deployment Process
-      href: how-to-managed-cluster-enable-safe-deployment-process.md
     - name: Deploy cluster with shared subnets across NodeTypes
       href: how-to-managed-cluster-deploy-with-subnet-per-nodetype.md
-    - name: Scale to zero nodes
-      href: how-to-managed-cluster-scale-to-zero.md
     - name: Use IP tags
       href: how-to-managed-cluster-ip-tags.md
+    - name: Inbound NAT rules v2
+      href: how-to-managed-cluster-inbound-nat-rules-v2.md
+- name: How-to guides
+  items:
   - name: Set up your development environment
     items:
     - name: Windows

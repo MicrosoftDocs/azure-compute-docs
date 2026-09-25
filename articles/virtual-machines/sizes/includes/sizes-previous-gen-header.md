@@ -1,15 +1,15 @@
 ---
- title: Header for all previous generation sizes pages
- description: Include file for all previous generation sizes pages.
+ title: Header for all End of Life sizes pages
+ description: Include file for all End of Life sizes pages.
  services: virtual-machines
  author: mattmcinnes
  ms.topic: include
  ms.service: virtual-machines
  ms.subservice: sizes
- ms.date: 08/02/2024
+ ms.date: 09/24/2026
  ms.author: mattmcinnes
 ms.custom: include file
-# Customer intent: As a cloud architect, I want to understand the implications of using previous generation virtual machine sizes, so that I can make informed decisions about upgrading to newer models for enhanced performance and security.
+# Customer intent: As a cloud architect, I want to understand the implications of using End of Life virtual machine sizes, so that I can plan a transition to Current or Extended sizes before retirement.
 ---
 > [!NOTE]
-> These virtual machine sizes are a [**previous generation series**](../lifecycle/previous-gen-sizes-list.md). While older VM sizes are supported until further notice, we recommended using newer generations for improved performance and security. Check out the sizes overview's [**list of VM size families by type**](../overview.md#list-of-vm-size-families-by-type) for a selection of newer sizes.
+> These virtual machine sizes are in the [**End of Life**](../lifecycle/lifecycle-overview.md#end-of-life) lifecycle stage and have an announced retirement. Plan your transition to Current or Extended sizes before the retirement date, and use Current sizes for new deployments. For transition guides, see [End of Life Azure VM size series](../lifecycle/end-of-life-sizes-list.md). For newer sizes, see the sizes overview's [**list of VM size families by type**](../overview.md#list-of-vm-size-families-by-type).

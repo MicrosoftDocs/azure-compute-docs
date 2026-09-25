@@ -1,11 +1,11 @@
 ---
-title: Migrate to the v6 and v7 VM series with a wave-based runbook
+title: Modernize to the v6 and v7 VM series with a wave-based runbook
 description: A wave-based runbook for moving Azure VM workloads to the v6 and v7 series — choose between redeploy and the in-place upgrade, then execute the pilot, waves, and rollback.
 author: rod-reis
 ms.author: rosanto
 ms.service: azure-virtual-machines
 ms.topic: how-to
-ms.date: 07/24/2026
+ms.date: 09/24/2026
 ms.collection:
   - migration
   - v2-5-to-v6-7
@@ -14,7 +14,7 @@ ai-usage: ai-assisted
 #customer intent: As a workload architect and engineer, I want to understand how to migrate to Azure Virtual Machines from Gen 1 v2-v3-v4-v5 to Gen 2 v6-v7 as part of my workload's efficiency optimization in Azure. Without this guidance I will miss behavior differences or implementation details that could cause my migration experience delay, frustration, or be to a failure.
 ---
 
-# Migrate to the v6 and v7 VM series with a wave-based runbook
+# Modernize to the v6 and v7 VM series with a wave-based runbook
 
 **Applies to:** ✔️ Linux VMs ✔️ Windows VMs
 
@@ -24,10 +24,10 @@ ai-usage: ai-assisted
 
 This runbook consumes the output from **Discover**, **Assess**, and **Plan**. Ensure you complete these phases before the pilot:
 
-- The workload's [migration pattern](sizes-v6-v7-migration-discover.md), which decides whether this per-VM runbook applies at all.
+- The workload's [modernization pattern](sizes-v6-v7-migration-discover.md), which decides whether this per-VM runbook applies at all.
 - A [readiness score](sizes-v6-v7-migration-assess.md) for every workload in scope, with any remediation assigned and closed.
 - A [plan](sizes-v6-v7-migration-plan.md): target size, region and zone, quota or capacity reservation, image approach, disk-path remediation, and commercial replan.
-- The **execution method** for each workload — redeploy or in-place upgrade. This is the [deployment approach decision](sizes-v6-v7-migration-plan.md#decide-a-migration-approach) from Plan; [Choose your execution method](#choose-your-execution-method) describes what each one means at execution time.
+- The **execution method** for each workload — redeploy or in-place upgrade. This is the [deployment approach decision](sizes-v6-v7-migration-plan.md#decide-a-modernization-approach) from Plan; [Choose your execution method](#choose-your-execution-method) describes what each one means at execution time.
 - A maintenance window, rollback decision points, and workload-owner approval.
 
 > [!NOTE]
@@ -43,6 +43,7 @@ Workloads arrive from different starting points, but they all converge on the sa
 | **Generation 2** | Often close to ready — the boot mode is already right. | Confirm the image is NVMe- and MANA-ready. |
 | **Already on NVMe** | Prerequisites are usually satisfied. | Confirm the target size, then go straight to [choosing your execution method](#choose-your-execution-method) — image remediation is usually already done. |
 | **Greenfield** | Nothing to remediate. | Deploy from a current Generation 2, NVMe- and MANA-ready image. |
+| **Retiring v3 series (Dv3, Dsv3, Ev3, Esv3)** | These series retire on November 15, 2029. Sources are often Generation 1, use SCSI disks, and include a local temporary disk. | Follow the **Generation 1** row if it applies, choose a `d`-suffixed target if the workload uses the local disk, and finish the final wave and its rollback window before the retirement date. See [Retiring v3 workloads](sizes-v6-v7-migration-plan.md#retiring-v3-workloads). |
 
 ## Choose your execution method
 
@@ -71,9 +72,9 @@ The platform steps are the same as any other VM. The sequencing is what differs:
 5. **Transfer the role deliberately** during the window — a planned failover or role transfer, not an induced one.
 6. **Keep the old node until the rollback window closes.** Then remove it and reconfirm quorum.
 
-Never migrate all members of a quorum-based cluster in a single wave, and don't leave the cluster with an even number of voting members between steps.
+Never modernize all members of a quorum-based cluster in a single wave, and don't leave the cluster with an even number of voting members between steps.
 
-For standalone stateful VMs that can't take a replica, the [execution method choice](#choose-your-execution-method) applies after all: use a redeploy with an application-consistent backup and restore, or the in-place upgrade as the maintenance-window migration. Either way, rehearse the restore before the production cutover.
+For standalone stateful VMs that can't take a replica, the [execution method choice](#choose-your-execution-method) applies after all: use a redeploy with an application-consistent backup and restore, or the in-place upgrade as the maintenance-window modernization. Either way, rehearse the restore before the production cutover.
 
 > [!IMPORTANT]
 > **Don't clone or restore a domain controller** from an image or backup of another domain controller. Deploy a new domain controller on the target series, let directory and SYSVOL replication populate it, validate domain and DNS health, transfer the operations master (FSMO) roles, then demote the old one. Update static references — DNS client settings, and anything pinned to a specific domain controller — before you demote.
@@ -116,7 +117,7 @@ Close the pilot the same way for both methods: capture any findings, and lock th
 
 These criteria are the in-window gates — the subset of [platform validation](sizes-v6-v7-migration-validate.md#platform-validation) that decides proceed-or-roll-back while the revert is still cheap. The full pass — [operational validation](sizes-v6-v7-migration-validate.md#operational-validation) and the pattern's [closure criteria](sizes-v6-v7-migration-validate.md#closure-criteria-by-pattern) — happens in [Validate and optimize](sizes-v6-v7-migration-validate.md), and it completes **before the rollback window closes**.
 
-## Phase 2: Migrate in waves
+## Phase 2: Modernize in waves
 
 Settle the wave sequence during [planning](sizes-v6-v7-migration-plan.md#wave-sequencing). The wave sequence determines which applications move together and in what order. This phase executes the wave sequence.
 
@@ -152,11 +153,11 @@ What changes at wave scale is how the two methods batch:
 1. The in-window platform gates pass (boot, disk, network).
 2. The workload owner confirms the application is healthy.
 3. The full [validation pass](sizes-v6-v7-migration-validate.md) is complete – operational validation and the pattern's closure criteria – while the rollback stock still exists.
-4. The rollback window closes with approval, and the migration record is updated.
+4. The rollback window closes with approval, and the modernization record is updated.
 
 ## Phase 3: Close and expand
 
-1. Capture the migrated count and scope; document any one-time remediations.
+1. Capture the modernized count and scope; document any one-time remediations.
 2. Release the rollback stock deliberately: retire and delete the source VMs and their disks (redeploy), and expire the pre-upgrade restore points per your retention policy (in-place upgrade). Don't let either accumulate silently – both carry cost.
 3. Review cost and performance, and rightsize where headroom exists. See [Validate and optimize](sizes-v6-v7-migration-validate.md).
 4. Identify the next waves or additional v6/v7 candidates.

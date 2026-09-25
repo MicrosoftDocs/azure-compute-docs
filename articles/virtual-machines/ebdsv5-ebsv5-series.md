@@ -176,7 +176,7 @@ If you run into issues while creating or resizing Ebsv5 or Ebdsv5 to NVMe, and n
 - [Storage optimized](sizes-storage.md)
 - [GPU optimized](sizes-gpu.md)
 - [High performance compute](sizes-hpc.md)
-- [Previous generations](sizes-previous-gen.md)
+- [End of Life sizes](sizes-previous-gen.md)
 
 ## Next steps
 

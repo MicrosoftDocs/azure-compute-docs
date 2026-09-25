@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 11/10/2025
+ms.date: 09/24/2026
 ms.author: mattmcinnes
 # Customer intent: "As a cloud architect, I want to review the specifications and use cases of the D-family VM sizes, so that I can select the most appropriate virtual machine for my workload requirements."
 ---
@@ -297,6 +297,9 @@ ms.author: mattmcinnes
 
 ---
 ### Dv3 and Dsv3-series
+> [!WARNING]
+> The Dv3 and Dsv3 series are in the [End of Life](../lifecycle/lifecycle-overview.md#end-of-life) lifecycle stage and retire on **November 15, 2029**. After that date, you can't create, resize into, run, or purchase any of the 14 Dv3-series and Dsv3-series sizes. For the smoothest transition, see [Modernize to the v5 VM series](../lifecycle/sizes-v5-modernization-overview.md). For the latest features and performance, see [Modernize to the v6 and v7 VM series](../../migration/sizes/sizes-v6-v7-migration-overview.md). For retirement details, see [Retired and retiring VM size series](../lifecycle/retirements-and-capacity-restrictions.md#general-purpose-retired-sizes).
+
 #### [Dv3-series](#tab/dv3)
 [!INCLUDE [dv3-series-summary](./includes/dv3-series-summary.md)]
 
@@ -328,7 +331,7 @@ ms.author: mattmcinnes
 [!INCLUDE [dsv2-series-specs](./includes/dsv2-series-specs.md)]
 
 ---
-### Previous-generation D family series
-For older sizes, see [previous generation sizes](../lifecycle/previous-gen-sizes-list.md#general-purpose-previous-gen-sizes).
+### End of Life D family series
+For End of Life sizes, see [End of Life sizes](../lifecycle/end-of-life-sizes-list.md#general-purpose-end-of-life-sizes).
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]

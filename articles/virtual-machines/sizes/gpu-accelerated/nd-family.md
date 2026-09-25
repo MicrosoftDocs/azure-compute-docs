@@ -71,7 +71,7 @@ ms.author: mattmcinnes
 [!INCLUDE [nd-mi300x-v5-series-specs](./includes/ndmi300xv5-series-specs.md)]
 
 
-### Previous-generation ND family series
-For older sizes, see [previous generation sizes](../lifecycle/previous-gen-sizes-list.md#gpu-accelerated-previous-gen-sizes).
+### End of Life ND family series
+For End of Life sizes, see [End of Life sizes](../lifecycle/end-of-life-sizes-list.md#gpu-accelerated-end-of-life-sizes).
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]

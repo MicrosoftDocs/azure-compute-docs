@@ -319,7 +319,7 @@ Update-AzVmss -VirtualMachineScaleSet $VMSS -Name $VMScaleSetName -ResourceGroup
 
 ## Finding supported VM sizes
 
-Legacy VM Sizes aren't supported. You can find the list of supported VM sizes by either:
+Some older VM sizes aren't supported. You can find the list of supported VM sizes by either:
 
 Calling the [Resource Skus API](/rest/api/compute/resourceskus/list) and checking that the `EncryptionAtHostSupported` capability is set to **True**.
 

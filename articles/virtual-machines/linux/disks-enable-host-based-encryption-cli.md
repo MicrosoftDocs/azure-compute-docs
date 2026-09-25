@@ -227,7 +227,7 @@ az vmss update -n $vmssName \
 
 ## Finding supported VM sizes
 
-Legacy VM Sizes aren't supported. You can find the list of supported VM sizes by either using resource SKU APIs or the Azure CLI.
+Some older VM sizes aren't supported. You can find the list of supported VM sizes by either using resource SKU APIs or the Azure CLI.
 
 When calling the [Resource Skus API](/rest/api/compute/resourceskus/list), check that the `EncryptionAtHostSupported` capability is set to **True**.
 
@@ -250,7 +250,7 @@ When calling the [Resource Skus API](/rest/api/compute/resourceskus/list), check
     }
 ```
 
-For the Azure CLI, use the [az vm image list-skus](/cli/azure/vm/image?view=azure-cli-latest#az-vm-image-list-skus) command.
+For the Azure CLI, use the [az vm image list-skus](/cli/azure/vm/image#az-vm-image-list-skus) command.
 
 ```azurecli
 location=centralus
