@@ -6,7 +6,7 @@ ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
 ms.workload: infrastructure-services
-ms.date: 03/09/2026
+ms.date: 09/24/2026
 ms.author: mattmcinnes
 # Customer intent: As a cloud architect, I want to compare different virtual machine sizes and their specifications, so that I can select the most appropriate instance for my applications and workloads.
 ---
@@ -206,7 +206,7 @@ List of storage optimized VM size families:
 
 | Family | Workloads | Series List |
 |----|---|---|
-| [L-family](./storage-optimized/l-family.md)  | High disk throughput and IO <br> Big Data <br> SQL and NoSQL databases <br> Data warehousing <br> Large transactional databases | [Lsv4-series](./storage-optimized/lsv4-series.md) <br> [Lasv4-series](./storage-optimized/lasv4-series.md) <br> [Laosv4-series](./storage-optimized/laosv4-series.md) <br> [Lsv3-series](./storage-optimized/l-family.md#lsv3-series) <br> [Lasv3-series](./storage-optimized/l-family.md#lasv3-series) <br> [Previous-gen L-family](./lifecycle/previous-gen-sizes-list.md#storage-optimized-previous-gen-sizes)|
+| [L-family](./storage-optimized/l-family.md)  | High disk throughput and IO <br> Big Data <br> SQL and NoSQL databases <br> Data warehousing <br> Large transactional databases | [Laosv5-series](./storage-optimized/laosv5-series.md) <br> [Lasv5-series](./storage-optimized/lasv5-series.md) <br> [Lsv4-series](./storage-optimized/lsv4-series.md) <br> [Lasv4-series](./storage-optimized/lasv4-series.md) <br> [Laosv4-series](./storage-optimized/laosv4-series.md) <br> [Lsv3-series](./storage-optimized/l-family.md#lsv3-series) <br> [Lasv3-series](./storage-optimized/l-family.md#lasv3-series) <br> [Previous-gen L-family](./lifecycle/previous-gen-sizes-list.md#storage-optimized-previous-gen-sizes)|
 
 To learn more about a specific size family or series, select the tab for that family and scroll to find your desired size series. 
 

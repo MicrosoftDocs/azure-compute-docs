@@ -20,7 +20,7 @@ This article attempts to list recent common issues and their solutions when usin
 
 ## AMD NVv5 V710 and NGv1 V620 Linux GPU drivers NULL Pointer Dereference (CVE-2026-43603) might cause denial-of-service
 
-A vulnerability in the AMD Linux GPU driver (CVE-2026-43603) could allow a local user to trigger a kernel crash and denial of service through a NULL pointer dereference. Azure plans to release updated Linux guest drivers for NVv5 V710 and NGv1 V620 by September 25, 2026. For more information, see the AMD Security Bulletin SB-6034 [Linux GPU Driver NULL Pointer Dereference](https://www.amd.com/en/resources/product-security/bulletin/amd-sb-6034.html).
+A vulnerability in the AMD Linux GPU driver (CVE-2026-43603) could allow a local user to trigger a kernel crash and denial of service through a NULL pointer dereference. Azure plans to release updated Linux guest drivers for NVv5 V710 and NGv1 V620 by September 28, 2026. For more information, see the AMD Security Bulletin SB-6034 [Linux GPU Driver NULL Pointer Dereference](https://www.amd.com/en/resources/product-security/bulletin/amd-sb-6034.html).
 
 ## NVIDIA-SMI Not Showing Full Telemetry on NCv6 (RTX Pro 6000) virtual machines
 
