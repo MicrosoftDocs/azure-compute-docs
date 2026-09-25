@@ -37,8 +37,8 @@ vCPUs and memory for each size.
 | Standard_L48aos_v5 | 48 | 384 |
 | Standard_L64aos_v5 | 64 | 512 |
 | Standard_L96aos_v5 | 96 | 768 |
-| Standard_L128aos_v5 | 128 | 1024 |
-| Standard_L160iaos_v5 | 160 | 1040 |
+| Standard_L128aos_v5 | 128 | 1,024 |
+| Standard_L160iaos_v5 | 160 | 1,040 |
 
 #### VM Basics resources
 - [Check vCPU quotas](../../../virtual-machines/quotas.md)
@@ -148,7 +148,7 @@ Accelerator (GPUs, FPGAs, and other accelerators) information for each size.
 |Feature name | Support status |
 | --- | --- |
 |[Premium Storage](../../premium-storage-performance.md)| Supported |
-|[Premium Storage caching](../../premium-storage-performance.md)| Supported (except for L32aos_v5) |
+|[Premium Storage caching](../../premium-storage-performance.md)| Supported |
 |[Live Migration](../../maintenance-and-updates.md)| Not Supported |
 |[Memory Preserving Updates](../../maintenance-and-updates.md)| Supported |
 |[Generation 2 VMs](../../generation-2.md)| Supported |
