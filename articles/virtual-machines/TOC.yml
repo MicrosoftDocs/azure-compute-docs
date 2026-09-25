@@ -535,6 +535,10 @@
        - name: Overview
          displayName: L-series, sizes, size, vm size
          href: ./sizes/storage-optimized/l-family.md
+       - name: Laosv5 series
+         href: ./sizes/storage-optimized/laosv5-series.md
+       - name: Lasv5 series
+         href: ./sizes/storage-optimized/lasv5-series.md
        - name: Laosv4 series
          href: ./sizes/storage-optimized/laosv4-series.md
        - name: Lasv4 series
