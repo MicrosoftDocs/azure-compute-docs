@@ -68,60 +68,6 @@ To use availability zones, create your virtual machines in a [supported Azure re
 
 1. When the deployment is finished, select **Go to resource**.
 
-## Create a Zonal Virtual Machine in an Azure-selected Zone 
-
-   > [!IMPORTANT]
-   > These features are currently in PREVIEW. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
-
-If you would like the resiliency benefits of a Zonal Virtual Machine and want help with selecting a zone, you can have Azure select the best-fit zone for your deployment. 
-
-> [!NOTE]
-   > Please review the Restrictions section before deploying your VM using an Azure-Selected Zone.
-
-1.	Sign in to the [Azure portal using this link](https://aka.ms/ZoneAny) enabling the feature.
-2.	In the Basics tab, under Project details, make sure the correct subscription is selected and then choose a resource group or create a new one.
-3.	Under Instance details, type a name for the Virtual machine name.
-4.	For Availability options, Ensure Availability zone is selected.
-5.	For Zone options (Preview), select Azure-selected zone. The Availability zone selection should now be grayed out. 
-6.	Configure the rest of your Virtual Machine as normal for deployment.
-
-:::image type="content" source="media/create-portal-availability-zone/zone-any-portal.png" alt-text="Screenshot showing how to choose an Azure-selected zone.":::
-
-## Restrictions
-
-### Regions
-
-Deploying a VM into an Azure-selected zone is available in all Zonal Regions except the following regions.
-
- - BrazilSouth 
- - CentralIndia 
- - EastUS 
- - JapanEast
- - KoreaCentral
-
-### Disks
-
-Existing OS and Data Disks are currently not supported. New Data Disk Source Type must be "none".
-
-   #### Supported Disk types
-   - Standard HDDs (hard disk drives)
-   - Premium SSDs
-   - Premium SSD v2
-   - Ultra Disks
-  - Standard SSD ZRS
-
-   #### Unsupported Disk types
-   - Standard SSD LRS
-
-:::image type="content" source="media/create-portal-availability-zone/zone-any-disks.png" alt-text="Screenshot supported disks for an Azure-selected zone.":::
-
-### Other resources
- - Existing Public IPs aren't supported for an Azure-selected zone. They can be added after deployment.
- - New Public IPs must be Zone Redundant or use an Azure-Selected Zone.
- - Load Balancers and Application Gateways must be zone-resilient to attach during the VM deployment.
- - Proximity Placement Groups, Capacity Reservation Groups, and Azure Dedicated Host aren't supported. 
- - Site Recovery configuration isn't available during VM creation but can be configured after deployment. 
-
 ## Next steps
 
 In this article, you learned how to create a VM in an availability zone. Learn more about [availability](availability.md) for Azure VMs.
