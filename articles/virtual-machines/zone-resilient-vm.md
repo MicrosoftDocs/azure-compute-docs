@@ -1,28 +1,28 @@
 ---
 title: Zone-resilient virtual machines (Preview)
-description: Learn how zone-resilient virtual machines use zone-redundant storage disks to support customer-initiated recovery in another availability zone.
+description: Learn how zone-resilient virtual machines use zone-redundant storage disks to support customer-initiated failover to another availability zone.
 author: AjKundnani
 ms.author: ajkundna
 ms.service: azure-virtual-machines
 ms.topic: concept-article
 ms.date: 09/19/2026
 ai-usage: ai-assisted
-# Customer intent: "As a cloud administrator, I want to recover an eligible zonal VM in another availability zone while preserving its resource configuration."
+# Customer intent: "As a cloud administrator, I want to fail over an eligible zonal VM to another availability zone while preserving its resource configuration."
 ---
 
 # Zone-resilient virtual machines (Preview)
 
-Zone-resilient virtual machines (ZR VMs) help you recover an eligible zonal Azure virtual machine (VM) in another availability zone in the same region. The recovery process updates the zone placement of the existing VM and reuses its supported zone-redundant storage (ZRS) managed disks. You don't have to create a replacement VM.
+Zone-resilient virtual machines (ZR VMs) let you initiate failover of an eligible zonal Azure virtual machine (VM) to another availability zone in the same region. Failover changes the zone placement of the existing VM without creating a replacement. The VM retains its resource ID and VM ID, attached network interface (NIC) and its IP configuration, supported zone-redundant storage (ZRS) managed disks, and other supported resource settings. The zone placement changes; the supported configuration remains associated with the VM.
 
-Zone-resilient VM provides a customer-initiated zonal recovery option for a single VM. It doesn't provide automatic failover, uninterrupted service, or application-level recovery orchestration. For higher availability, deploy multiple VM instances across availability zones and distribute traffic between them.
+Zone failover is customer-initiated. Don't use it for production VMs during a zonal outage; see [Limitations](#limitations). For high availability across zones, [deploy multiple VMs across availability zones](disks-high-availability.md#deploy-vms-and-disks-across-three-availability-zones) and distribute traffic between them.
 
-Because ZRS synchronously replicates managed disk data across availability zones, ZR VMs provide a near-zero recovery point objective (RPO) for data committed to supported ZRS disks. This RPO doesn't apply to active requests, in-memory data, temporary disks, or application state that isn't written to the ZRS disk.
+Because ZRS synchronously replicates managed disk data across availability zones, ZR VMs provide a near-zero recovery point objective (RPO) for data committed to supported ZRS disks.
 
-## How zone recovery works
+## How zone failover works
 
-After a failure affects a VM that's enabled for zone movement, you can initiate recovery in a healthy zone in the same region:
+For an eligible VM affected by a zone failure, the failover workflow moves the VM to a healthy zone in the same region. Don't use this workflow for production VMs during a zonal outage; see [Limitations](#limitations).
 
-:::image type="complex" source="media/zone-resilient/zone-recovery-workflow.png" alt-text="Customer-initiated zone recovery: confirm impact, force-deallocate, change zones, start, and verify the VM.":::
+:::image type="complex" source="media/zone-resilient/zone-recovery-workflow.png" alt-text="Customer-initiated zone failover: confirm impact, force-deallocate, change zones, start, and verify the VM.":::
   Confirm the VM is affected and select a healthy zone in the same region. Force-deallocate the VM, which stops the workload. Update the zone placement of the existing VM and reuse its supported ZRS disks. Start the VM in the target zone, subject to available capacity. Verify the VM, disks, network, and workload before restoring traffic.
 :::image-end:::
 
@@ -48,26 +48,27 @@ For current ZRS disk types and regional availability, see [Redundancy options fo
 
 ## Limitations
 
-Zone-resilient VMs have the following limitations:
+> [!IMPORTANT]
+> Don't use the zone-resilient VM preview feature to fail over production VMs during an availability zone outage. Doing so can cause data or disk corruption. Microsoft will announce when production VM failover during a zonal outage is supported.
 
-- Recovery is customer initiated. Azure doesn't automatically move a standalone VM when a zone fails.
-- Recovery causes downtime because the VM is force deallocated and restarted.
-- Recovery is limited to another availability zone in the same region. It doesn't protect against a regional outage or an outage that affects multiple zones.
-- Recovery doesn't preserve active requests, memory, or runtime state.
-- Recovery can fail when the VM size has insufficient capacity in the target zone.
-- Locally redundant storage (LRS) OS and data disks aren't supported.
-- Ephemeral OS disks aren't supported.
+The following limitations result from the requirement to use ZRS managed disks:
+
+- Locally redundant storage (LRS) OS and data disks aren't supported. Every attached OS and data disk must use Premium SSD ZRS or Standard SSD ZRS.
+- Ephemeral OS disks aren't supported because they use local VM storage.
+- Premium SSD v2, Ultra Disks, and Standard HDD managed disks aren't supported because these disk types don't offer ZRS. See [ZRS limitations](disks-redundancy.md#zrs-limitations).
 - Data disks that use write acceleration aren't supported.
+
+To prepare a zonal VM with LRS disks, follow [Convert a disk from LRS to ZRS](disks-migrate-lrs-zrs.md#zonal-migration) to create ZRS disks from snapshots of the OS and data disks. You can't change a zonal LRS disk's redundancy in place, but you can keep the existing VM if its disks meet the [OS disk swap requirements](linux/os-disk-swap.md#os-disk-swap-requirements). Swap in the ZRS OS disk, then detach the LRS data disks and attach the corresponding ZRS disks. Plan for downtime, and confirm the OS and every attached data disk use a supported ZRS type before you enable zone movement. The [regional disk conversion](disks-migrate-lrs-zrs.md#regional-migration) procedure doesn't apply to zonal disks.
+
+The following limitations apply to ZR VM zone movement and its supported VM configurations:
+
+- Failover is limited to another availability zone in the same region. It doesn't protect against a regional outage or an outage that affects multiple zones.
+- Failover can fail when the VM size has insufficient capacity in the target zone.
 - VM scale sets, availability set VMs, and Spot VMs aren't supported.
-- The feature doesn't provide application-level consistency, traffic failover, recovery plans, or failback orchestration.
-- Azure Site Recovery isn't supported.
-- On-demand capacity reservations aren't supported.
-- Dedicated hosts aren't supported.
-- Proximity placement groups aren't supported.
 
 <!-- Confirm whether hibernation, InfiniBand need explicit preview validation before publication. -->
 
-## Prepare a VM for zone recovery
+## Prepare a VM for zone failover
 
 Create a VM that meets every requirement before you enable zone movement. Enablement must occur while the source availability zone is healthy.
 
@@ -271,16 +272,16 @@ az vm start \
 
 ---
 
-## Recover a VM in another zone
+## Fail over a VM to another zone
 
-Use zone recovery after you confirm that an availability zone failure affects the VM. Monitor individual VM health with [Azure Resource Health](/azure/service-health/resource-health-overview), and monitor broader service issues with [Azure Service Health](/azure/service-health/overview).
+Don't use this procedure to fail over a production VM during a zonal outage because doing so can cause data or disk corruption. See [Limitations](#limitations). For eligible nonproduction VMs, first confirm that an availability zone failure affects the VM. Monitor individual VM health with [Azure Resource Health](/azure/service-health/resource-health-overview), and monitor broader service issues with [Azure Service Health](/azure/service-health/overview).
 
 Choose a target zone that supports your VM size and has sufficient capacity.
 
 > [!WARNING]
-> Force deallocation stops the VM and discards its in-memory state. Start recovery only after you confirm the impact on your workload and its dependencies.
+> Force deallocation stops the VM and discards its in-memory state. Start failover only after you confirm the impact on your workload and its dependencies.
 
-Use Azure CLI to orchestrate recovery. With Azure PowerShell or Bicep, perform each recovery operation in order.
+Use Azure CLI to orchestrate failover. With Azure PowerShell or Bicep, perform each failover operation in order.
 
 # [Azure CLI](#tab/azure-cli-recover)
 
@@ -300,7 +301,7 @@ The command force deallocates the VM, updates its availability zone, and starts 
 
 # [Azure PowerShell](#tab/azure-powershell-recover)
 
-Azure PowerShell doesn't provide a single cmdlet that orchestrates zone recovery. Run the following cmdlets in order, and wait for each cmdlet to finish before you continue:
+Azure PowerShell doesn't provide a single cmdlet that orchestrates zone failover. Run the following cmdlets in order, and wait for each cmdlet to finish before you continue:
 
 ```azurepowershell
 $resourceGroupName = "<resource-group-name>"
@@ -331,7 +332,7 @@ Start-AzVM `
 `Stop-AzVM -ForceDeallocate` releases or isolates the source-zone resources. Setting `Zones` and calling `Update-AzVM` changes the VM placement. `Start-AzVM` then starts the VM in the target zone.
 
 > [!IMPORTANT]
-> Unlike the Azure CLI recovery command, this PowerShell sequence isn't transactional. If `Update-AzVM` fails, review the error and the VM state before you run `Start-AzVM`.
+> Unlike the Azure CLI failover command, this PowerShell sequence isn't transactional. If `Update-AzVM` fails, review the error and the VM state before you run `Start-AzVM`.
 
 # [Bicep](#tab/bicep-recover)
 
@@ -391,9 +392,9 @@ If the deployment fails, inspect the error and VM state before starting the VM. 
 
 ---
 
-## Verify recovery succeeded
+## Verify failover succeeded
 
-After the recovery operation finishes, verify the VM and the workload before you restore traffic:
+After failover finishes, verify the VM and the workload before you restore traffic:
 
 1. Confirm that the VM power state is **Running**.
 1. Confirm that the VM reports the selected target availability zone.
@@ -436,7 +437,7 @@ Confirm that `Zones` contains the target zone, `IsEnabled` is `True`, and the po
 
 ---
 
-## Troubleshoot recovery
+## Troubleshoot failover
 
 Match the error identifier or its message to the operation you attempted:
 
@@ -449,7 +450,7 @@ Match the error identifier or its message to the operation you attempted:
 | `OperationNotAllowedForNonZonalVM` | A zone update was requested for a regional VM without a pinned zone. | Confirm that the VM is zonal. This zone-update workflow applies only to zonal VMs. |
 | `VMZoneMigrationNotCompleted` | The VM was started before zone migration finished or after migration failed. | Wait for the zone update to succeed, then retry the start. If the error persists, open an Azure support request. |
 
-If the VM can't start because the target zone lacks capacity, select another supported zone. If the VM starts but the workload is unhealthy, complete the checks in [Verify recovery succeeded](#verify-recovery-succeeded) before restoring traffic. For other errors, review Azure service health and the operation details. If recovery remains blocked, open an Azure support request.
+If the VM can't start because the target zone lacks capacity, select another supported zone. If the VM starts but the workload is unhealthy, complete the checks in [Verify failover succeeded](#verify-failover-succeeded) before restoring traffic. For other errors, review Azure service health and the operation details. If failover remains blocked, open an Azure support request.
 
 ## Disable zone movement
 
@@ -559,11 +560,43 @@ az vm start \
 
 ---
 
+## Frequently asked questions
+
+### Does failover happen automatically or keep the workload running?
+
+No. You must initiate failover for a ZR VM. The workload is unavailable while the VM is force-deallocated and started in the target zone. ZR VMs don't provide automatic failover, uninterrupted service, or application-level recovery orchestration. For high availability across zones, [deploy multiple VMs across availability zones](disks-high-availability.md#deploy-vms-and-disks-across-three-availability-zones) and distribute traffic between them.
+
+### What data does the near-zero RPO cover?
+
+The near-zero RPO applies to data committed to supported ZRS disks. It doesn't apply to active requests, in-memory data, temporary disks, or application state that isn't written to those disks.
+
+### When should I use a ZR VM instead of Azure Site Recovery for zonal failover?
+
+Both options support customer-initiated failover to another zone in the same region, but they use different disk and VM recovery models:
+
+Don't use ZR VM failover for production VMs during a zonal outage. See [Limitations](#limitations).
+
+| Decision factor | Zone-resilient VM | Azure Site Recovery zone-to-zone disaster recovery |
+| --- | --- | --- |
+| Managed disks | Requires Premium SSD ZRS or Standard SSD ZRS for the OS disk and every data disk. Data committed to these disks has a near-zero RPO. | Supports eligible LRS disks through replication. ZRS-managed disks aren't supported for zone-to-zone disaster recovery. There's no defined RPO SLA. |
+| Failover model | Changes the zone of the existing VM and reuses its supported disks and configuration. | Replicates the VM before an outage and creates a recovery VM in a different resource group during failover. Supports failback. |
+| Choose this option when | You need to retain the existing VM resource and its supported configuration, and you can use ZRS disks. | You need zone-to-zone disaster recovery for a VM with supported LRS disks in a supported region, and you can set up replication in advance. |
+
+For supported regions, disk restrictions, and networking behavior for Azure Site Recovery, see [Enable Azure VM disaster recovery between availability zones](/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery) and the [Azure Site Recovery support matrix](/azure/site-recovery/azure-to-azure-support-matrix#replicated-machines-storage).
+
+### Which advanced capabilities aren't supported?
+
+Zone-resilient VMs have these additional limitations:
+
+- The feature doesn't provide application-level consistency, traffic failover, recovery plans, or failback orchestration.
+- Azure Site Recovery isn't supported for ZR VMs.
+- On-demand capacity reservations aren't supported.
+- Dedicated hosts aren't supported.
+- Proximity placement groups aren't supported.
+
 ## Cost
 
-Pricing for the Zone-Resilient VM feature isn't available yet. Microsoft will announce feature pricing by December 2026.  
-
-Feature pricing is in addition to existing standard charges for VMs, managed disks, and network resources.
+There's currently no separate charge for the zone-resilient VM feature. Feature-specific pricing is planned for the future. Standard charges for VMs, managed disks, and network resources still apply.
 
 <!-- The preview repository doesn't define a feature-specific charge. Confirm pricing before publication. -->
 
