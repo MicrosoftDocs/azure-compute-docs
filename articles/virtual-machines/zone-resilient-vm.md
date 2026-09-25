@@ -49,7 +49,7 @@ For current ZRS disk types and regional availability, see [Redundancy options fo
 ## Limitations
 
 > [!IMPORTANT]
-> Don't use the zone-resilient VM preview feature to fail over production VMs during an availability zone outage. Doing so can cause data or disk corruption. Microsoft will announce when production VM failover during a zonal outage is supported.
+> Don't use the zone-resilient VM preview feature to fail over production VMs during an availability zone outage. Doing so can cause data or disk corruption. Microsoft will announce when production VM failover during a zone outage is supported.
 
 The following limitations result from the requirement to use ZRS managed disks:
 
@@ -274,7 +274,7 @@ az vm start \
 
 ## Fail over a VM to another zone
 
-Don't use this procedure to fail over a production VM during a zonal outage because doing so can cause data or disk corruption. See [Limitations](#limitations). For eligible nonproduction VMs, first confirm that an availability zone failure affects the VM. Monitor individual VM health with [Azure Resource Health](/azure/service-health/resource-health-overview), and monitor broader service issues with [Azure Service Health](/azure/service-health/overview).
+Don't use this procedure to fail over a production VM during a zone outage because it can cause data or disk corruption. See [Limitations](#limitations). For eligible nonproduction VMs, first confirm that an availability zone failure affects the VM. Monitor individual VM health with [Azure Resource Health](/azure/service-health/resource-health-overview), and monitor broader service issues with [Azure Service Health](/azure/service-health/overview).
 
 Choose a target zone that supports your VM size and has sufficient capacity.
 
