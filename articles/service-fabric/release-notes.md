@@ -37,7 +37,8 @@ We're excited to announce that the release of the Service Fabric 11 runtime star
 | March 1, 2026 | Azure Service Fabric 11.4 Release | [Release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_114.md) |
 | May 1, 2026 | Azure Service Fabric 11.5 Release | [Release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_115.md) |
 | July 1, 2026 | Azure Service Fabric 11.6 Release | [Release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_116.md) |
-| August 1, 2026 | Azure Service Fabric 11.6 Release | [Release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_117.md) |
+| August 1, 2026 | Azure Service Fabric 11.7 Release | [Release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_117.md) |
+| September 1, 2026 | Azure Service Fabric 11.8 Release | [Release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_118.md) |
 
 ## Service Fabric 10.1
 

@@ -23,6 +23,9 @@ This article provides information about:
 
 ## Announcements
 
+### September 2026
+* Service Fabric 11.8 released. For more information, see the [release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_118.md).
+
 ### August 2026
 * Service Fabric 11.7 released. For more information, see the [release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_117.md).
 
