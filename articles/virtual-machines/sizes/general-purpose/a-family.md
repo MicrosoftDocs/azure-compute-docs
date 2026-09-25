@@ -30,7 +30,7 @@ ms.author: mattmcinnes
 [!INCLUDE [av2-series-specs](./includes/av2-series-specs.md)]
 
 
-### Previous-generation A family series
-For older sizes, see [previous generation sizes](../lifecycle/previous-gen-sizes-list.md#general-purpose-previous-gen-sizes).
+### End of Life A family series
+For End of Life sizes, see [End of Life sizes](../lifecycle/end-of-life-sizes-list.md#general-purpose-end-of-life-sizes).
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]

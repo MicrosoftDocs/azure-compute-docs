@@ -1,11 +1,11 @@
 ---
-title: Validate and optimize after migrating to the v6 and v7 VM series
+title: Validate and optimize after modernizing to the v6 and v7 VM series
 description: Confirm a successful move to the v6 and v7 series, boot, storage, networking, and workload sign-off, then optimize cost and performance.
 author: rod-reis
 ms.author: rosanto
 ms.service: azure-virtual-machines
 ms.topic: how-to
-ms.date: 07/24/2026
+ms.date: 09/24/2026
 ms.collection:
   - migration
   - v2-5-to-v6-7
@@ -14,7 +14,7 @@ ai-usage: ai-assisted
 #customer intent: As a workload architect and engineer, I want to understand how to migrate to Azure Virtual Machines from Gen 1 v2-v3-v4-v5 to Gen 2 v6-v7 as part of my workload's efficiency optimization in Azure. Without this guidance I will miss behavior differences or implementation details that could cause my migration experience delay, frustration, or be to a failure.
 ---
 
-# Validate and optimize after migrating to the v6 and v7 VM series
+# Validate and optimize after modernizing to the v6 and v7 VM series
 
 **Applies to:** ✔️ Linux VMs ✔️ Windows VMs ✔️ Flexible scale sets
 
@@ -28,7 +28,7 @@ The checks are the same whether a VM was [redeployed from an image or upgraded i
 
 Three layers:
 
-- **Platform validation:** boot, disks, drivers, and networking. The migration team owns this layer, and it's identical for every pattern — including nodes inside a pool.
+- **Platform validation:** boot, disks, drivers, and networking. The modernization team owns this layer, and it's identical for every pattern — including nodes inside a pool.
 - **Workload confirmation:** the application is up and serving. For most workloads, this layer requires a simple owner sign-off, not a full regression.
 - **Closure criteria:** what "done" means for your unit of replacement. This layer differs by pattern. This layer is where a wave is most often declared complete too early.
 
@@ -47,6 +47,12 @@ Three layers:
 > [!NOTE]
 > On v6 and v7 sizes, the local NVMe temporary disk is presented raw and unformatted and is re-created on every stop/deallocate cycle, it isn't persistent. If a workload relies on it, confirm your boot-time task initializes and formats it, and that the page file or `tempdb` lands where you expect.
 
+### Transitions from the v3 series
+
+A transition from Dv3, Dsv3, Ev3, or Esv3 usually changes every row in the platform validation table: Generation 1 to Generation 2 boot, SCSI to NVMe storage, standard networking to MANA, and a formatted temporary disk to a raw local NVMe disk on `d`-suffixed sizes. Validate each row explicitly, and compare performance against a baseline captured on the v3 source.
+
+The Dv3, Dsv3, Ev3, and Esv3 series retire on November 15, 2029. Close validation and the rollback window before that date, because you can't run a v3 source VM for rollback after retirement. For retirement details, see the [Retired VM sizes modernization guide](../../sizes/lifecycle/retirement/retired-sizes-modernization-guide.md).
+
 ## Workload confirmation
 
 A short owner sign-off:
@@ -62,7 +68,7 @@ A short owner sign-off:
 
 ## Closure criteria by pattern
 
-Platform validation tells you the VM is healthy. Closure criteria tell you the wave is finished. They depend on what you replaced — the workload's [migration pattern](sizes-v6-v7-migration-discover.md).
+Platform validation tells you the VM is healthy. Closure criteria tell you the wave is finished. They depend on what you replaced — the workload's [modernization pattern](sizes-v6-v7-migration-discover.md).
 
 | Pattern | A wave is complete when |
 | --- | --- |
@@ -70,7 +76,7 @@ Platform validation tells you the VM is healthy. Closure criteria tell you the w
 | **B. Image-based hosts**| The new image version is published, replacement hosts serve sessions, old hosts are drained with no active sessions, and the old hosts are removed. |
 | **C. Service-managed compute** | The service reports the new node type or SKU active, jobs and queries run at expected performance, and local scratch behavior is confirmed. |
 | **D. Cluster re-creation** | Jobs and pipelines run against the new cluster with output parity, external storage and metastore connections are verified, and the old cluster is retired. |
-| **E. Customer-managed VMs** | The application serves from the migrated VM, OS-disk data is in place and verified, clients are redirected, and the rollback stock is released after the window — the old VM retired (redeploy), or the pre-upgrade restore points expired per retention (in-place upgrade). |
+| **E. Customer-managed VMs** | The application serves from the modernized VM, OS-disk data is in place and verified, clients are redirected, and the rollback stock is released after the window — the old VM retired (redeploy), or the pre-upgrade restore points expired per retention (in-place upgrade). |
 | **F. Stateful and clustered** | Quorum is healthy at the target node count, replication is caught up with no backlog, a failover has been exercised, roles are transferred, and the old node is removed. |
 | **G. Certified appliances** | Traffic passes through the new appliances, policy and routing match the source, high-availability failover is exercised, and the old pair is retired. |
 
@@ -89,7 +95,7 @@ For every VM, regardless of method:
 - A backup job runs and a restore point is visible ([Generation 2 and Trusted Launch support](/azure/backup/backup-support-matrix-iaas) confirmed — Trusted Launch VMs require the Enhanced backup policy).
 - Runbooks are updated for the new family and any changed disk paths.
 
-## Post-migration optimization
+## Post-modernization optimization
 
 This is where the price-performance benefit is realized. Optimize in order:
 
@@ -103,7 +109,7 @@ This is where the price-performance benefit is realized. Optimize in order:
 ## Metrics to capture
 
 - **Leading:** candidates assessed, percentage passing readiness, pilots completed, and sign-off on the plan.
-- **Lagging:** workloads running on v6/v7, migration success rate, rollback rate, performance delta versus the prior family, price-performance outcome, and next-wave candidates.
+- **Lagging:** workloads running on v6/v7, modernization success rate, rollback rate, performance delta versus the prior family, price-performance outcome, and next-wave candidates.
 
 ## Validation checklist
 
@@ -121,6 +127,7 @@ This is where the price-performance benefit is realized. Optimize in order:
 | Reservation or savings coverage applied |  |  |  |
 | Workload owner confirms the app is up |  |  |  |
 | In-place upgraded Gen1 VMs: image-reference limitation recorded, patching plan confirmed |  |  |  |
+| v3 sources: rollback window closes before the November 15, 2029 retirement |  |  |  |
 | [Closure criteria](#closure-criteria-by-pattern) met for the pattern |  |  |  |
 
 ## When to pause before the next wave

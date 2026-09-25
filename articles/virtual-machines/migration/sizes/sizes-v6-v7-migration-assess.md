@@ -1,11 +1,11 @@
 ---
 title: Assess readiness for the v6 and v7 VM series
-description: Qualify candidate workloads for the v6 and v7 series and confirm a clean migration path, boot mode, image, storage, networking, and capacity.
+description: Qualify candidate workloads for the v6 and v7 series and confirm a clean modernization path, boot mode, image, storage, networking, and capacity.
 author: rod-reis
 ms.author: rosanto
 ms.service: azure-virtual-machines
 ms.topic: how-to
-ms.date: 07/24/2026
+ms.date: 09/24/2026
 ms.collection:
   - migration
   - v2-5-to-v6-7
@@ -35,9 +35,25 @@ For new deployments, you don't need to fix anything. Choose the v6 or v7 series 
 - Enable [Trusted Launch](/azure/virtual-machines/trusted-launch) (the default for Generation 2) for Secure Boot and vTPM.
 - Deploy from a current Generation 2, NVMe-ready, MANA-ready marketplace or [Azure Compute Gallery](/azure/virtual-machines/azure-compute-gallery) image.
 
-Greenfield deployments can skip the remediation guidance that follows and go straight to sizing and capacity in [Plan the migration](sizes-v6-v7-migration-plan.md).
+Greenfield deployments can skip the remediation guidance that follows and go straight to sizing and capacity in [Plan the modernization](sizes-v6-v7-migration-plan.md).
 
-## Brownfield migrations from the v2 through v5 series
+## Brownfield modernization from the v2 through v5 series
+
+### Retiring v3 source series
+
+> [!IMPORTANT]
+> The Dv3, Dsv3, Ev3, and Esv3 series retire on November 15, 2029. After that date, you can't create, resize into, run, or purchase these sizes. Assess workloads on these series first. For retirement details, see the [Retired VM sizes modernization guide](../../sizes/lifecycle/retirement/retired-sizes-modernization-guide.md).
+
+Workloads on these series usually trigger several readiness signals at once. Check these signals for every v3 workload:
+
+- **Generation 1:** Many v3 VMs are Generation 1. Plan a Generation 2 image. You can't convert Generation 1 Dv3 VMs to Generation 2 in place. For more information, see [Decide a modernization approach](sizes-v6-v7-migration-plan.md#decide-a-modernization-approach).
+- **Image:** Refresh custom images to a current Generation 2, NVMe-ready, and MANA-ready version.
+- **NVMe:** The v3 series presents disks over SCSI. Replace hard-coded SCSI device paths with stable identifiers.
+- **MANA:** Confirm the OS and driver meet the MANA version floors.
+- **Local disk:** Every v3 size includes a local temporary disk. If the workload uses it, choose a `d`-suffixed target size, such as Ddsv6 or Edsv6, or relocate that data to a managed data disk.
+- **Region and quota:** [Capacity growth restrictions](../../sizes/lifecycle/retirements-and-capacity-restrictions.md) already block extra v3 quota. Request quota for the target family early in every region and zone you need.
+
+If the v6 or v7 prerequisites block a v3 workload, the v5 series provides the smoothest transition. For more information, see [Modernize to the v5 VM series](../../sizes/lifecycle/sizes-v5-modernization-overview.md).
 
 ### What changes, and what doesn't
 
@@ -100,9 +116,9 @@ Keep the checklist lean and platform-focused.
 
 - Confirm sponsor and workload owner.
 - Document business driver (capacity, performance, cost, or modernization).
-- Identify source family (v2/v3/v4/v5) and deployment type (migration or greenfield).
+- Identify source family (v2/v3/v4/v5) and deployment type (modernization or greenfield).
 - Separate production and non-production.
-- Agree on migration window and success/rollback criteria.
+- Agree on modernization window and success/rollback criteria.
 
 **Compute and capacity**
 
@@ -287,4 +303,4 @@ For the CPU decode, use the following table:
 
 ## Next steps
 
-- [3. Plan a workload migration to the v6 and v7 series](sizes-v6-v7-migration-plan.md)
+- [3. Plan a workload modernization to the v6 and v7 series](sizes-v6-v7-migration-plan.md)

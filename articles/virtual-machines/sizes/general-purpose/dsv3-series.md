@@ -5,14 +5,17 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 03/10/2026
+ms.date: 09/24/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 # Customer intent: "As a cloud architect, I want to understand the specifications and features of the Dsv3 series virtual machine sizes, so that I can select the appropriate size for our application's performance and resource requirements."
 ---
 
 # Dsv3 sizes series
-[!INCLUDE [previous-gen-header](../includes/sizes-previous-gen-header.md)]
+> [!WARNING]
+> The Dsv3-series is in the [End of Life](../lifecycle/lifecycle-overview.md#end-of-life) lifecycle stage and retires on **November 15, 2029**. After that date, you can't create, resize into, run, or purchase Dsv3-series sizes. This retirement affects all Dsv3-series sizes: Standard_D2s_v3, Standard_D4s_v3, Standard_D8s_v3, Standard_D16s_v3, Standard_D32s_v3, Standard_D48s_v3, and Standard_D64s_v3. This retirement doesn't apply to Azure Government, Azure operated by 21Vianet, or sovereign cloud regions.
+>
+> Transition your workloads before the retirement date. For the smoothest transition, see [Modernize to the v5 VM series](../lifecycle/sizes-v5-modernization-overview.md). For the latest features and performance, see [Modernize to the v6 and v7 VM series](../../migration/sizes/sizes-v6-v7-migration-overview.md). For retirement dates and replacement series, see [Retired and retiring VM size series](../lifecycle/retirements-and-capacity-restrictions.md#general-purpose-retired-sizes).
 
 [!INCLUDE [dsv3-summary](./includes/dsv3-series-summary.md)]
 

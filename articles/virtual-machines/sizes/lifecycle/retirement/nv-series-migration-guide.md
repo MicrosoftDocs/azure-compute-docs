@@ -1,20 +1,20 @@
 ---
-title: NV series migration guide
-description: NV series migration guide
+title: NV series modernization guide
+description: NV series modernization guide
 author: akashdubey-ms
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
 ms.date: 02/27/2023
 ms.author: akashdubey
-# Customer intent: As a cloud administrator, I want to migrate legacy GPU virtual machines to newer NV series, so that I can leverage improved performance and cost efficiency for my graphics-intensive workloads.
+# Customer intent: As a cloud administrator, I want to migrate retired GPU virtual machines to newer NV series, so that I can leverage improved performance and cost efficiency for my graphics-intensive workloads.
 ---
-# NV series migration guide
+# NV series modernization guide
 
 > [!IMPORTANT]
 > The NV-series is retired as of September 6th, 2023, and is no longer available. Please refer to the [NV-series retirement page](/azure/virtual-machines/sizes/lifecycle/retirement/nv-series-retirement) for more information. 
 
-As more powerful GPU VM sizes become available in Azure datacenters, assess your workloads and migrate virtual machines (VMs) in the NV and NV_Promo series. These legacy VMs can be migrated into new VM series, such as NVsv3 and NVasv4, for better performance with reduced cost. The NVsv3 VM series is powered by Nvidia M60 GPUs. The NVasv4 series is powered by AMD Radeon Instinct MI25 GPUs.
+As more powerful GPU VM sizes become available in Azure datacenters, assess your workloads and modernize virtual machines (VMs) in the NV and NV_Promo series. These retired VMs can move to new VM series, such as NVsv3 and NVasv4, for better performance with reduced cost. The NVsv3 VM series is powered by Nvidia M60 GPUs. The NVasv4 series is powered by AMD Radeon Instinct MI25 GPUs.
 
 The main differences between the NV and NV_Promo series and the newer NVsv3 and NVasv4 series are:
 - Improved performance.
@@ -23,7 +23,7 @@ The main differences between the NV and NV_Promo series and the newer NVsv3 and 
 
 Both the NVsv3 and NVasv4 series have more modern cores and greater capacity.
 
-The following section summarizes the differences between the legacy NV series and the NVsv3 and NVv4 series.
+The following section summarizes the differences between the retired NV series and the NVsv3 and NVv4 series.
  
  ## NVsv3 series 
 
@@ -55,11 +55,11 @@ NVv4 VMs currently support only the Windows guest operating system. For the most
 |Standard_NV12 <br> Standard_NV12_Promo |Standard_NV32as_v4  | vCPU: 32 (+20) <br>Memory: GiB 112 <br>Temp storage (SSD) GiB: 704 (+24) <br>Max data disks: 32 (+16)<br>Accelerated networking: Yes <br>Premium storage: Yes   |
 |Standard_NV24 <br> Standard_NV24_Promo |N/A  | N/A  |
 
-## Migration steps for general changes
+## Modernization steps for general changes
 
 To deal with general changes:
 
-1. Choose a series and size for migration. 
+1. Choose a series and size for modernization. 
 
 1. Get a quota for the target VM series.
 
@@ -67,16 +67,16 @@ To deal with general changes:
 
   If the target size is NVv4, make sure to remove the Nvidia GPU driver and install the AMD GPU driver.
 
-## Migration steps for breaking changes
+## Modernization steps for breaking changes
 
 To deal with breaking changes, follow the steps in the next sections.
 
-### Select a target size for migration
+### Select a target size for modernization
 
 After you assess your current usage, decide what type of GPU VM you need. Depending on the workload requirements, you have a few different choices. Here's how to choose:
 
-- If the workload is graphics or visualizations and has a hard dependency on using the Nvidia GPU, migrate to the NVsv3 series.
-- If the workload is graphics or visualizations and has no hard dependency on a specific type of GPU, migrate to the NVsv3 or NVVasv4 series.
+- If the workload is graphics or visualizations and has a hard dependency on using the Nvidia GPU, modernize to the NVsv3 series.
+- If the workload is graphics or visualizations and has no hard dependency on a specific type of GPU, modernize to the NVsv3 or NVVasv4 series.
  
 > [!Note]
 >A best practice is to select a VM size based on both cost and performance. 
@@ -85,7 +85,7 @@ After you assess your current usage, decide what type of GPU VM you need. Depend
 
 ### Get a quota for the target VM family 
 
-Follow the guide to [request an increase in vCPU quota by VM family](/azure/azure-portal/supportability/per-vm-quota-requests). Select the NVSv3 series or NVv4 series as the VM family name depending on the target VM size you selected for migration.
+Follow the guide to [request an increase in vCPU quota by VM family](/azure/azure-portal/supportability/per-vm-quota-requests). Select the NVSv3 series or NVv4 series as the VM family name depending on the target VM size you selected for modernization.
 
 ### Resize the current VM
 
