@@ -2,7 +2,7 @@
 title: Azure ECas_cc_v5 and ECads_cc_v5-series
 description: Specifications for Azure Confidential Computing's Azure ECas_cc_v5 and ECads_cc_v5-series confidential computing capable virtual machines. 
 author: ananyagarg
-ms.author: ananyagarg
+ms.author: mattmcinnes
 ms.reviewer: mimckitt
 ms.service: azure-virtual-machines
 ms.subservice: sizes
@@ -93,7 +93,7 @@ The ECads_cc_v5-series sizes offer a combination of vCPU, memory and temporary s
 - [Storage optimized](sizes-storage.md)
 - [GPU optimized](sizes-gpu.md)
 - [High performance compute](sizes-hpc.md)
-- [Previous generations](sizes-previous-gen.md)
+- [End of Life sizes](sizes-previous-gen.md)
 
 
 ## Next steps

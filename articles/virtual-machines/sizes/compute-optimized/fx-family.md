@@ -30,7 +30,7 @@ ms.author: mattmcinnes
 [!INCLUDE [fx-series-specs](./includes/fx-series-specs.md)]
 
 
-### Previous-generation FX family series
-For older sizes, see [previous generation sizes](../lifecycle/previous-gen-sizes-list.md#compute-optimized-previous-gen-sizes).
+### End of Life FX family series
+For End of Life sizes, see [End of Life sizes](../lifecycle/end-of-life-sizes-list.md#compute-optimized-end-of-life-sizes).
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]

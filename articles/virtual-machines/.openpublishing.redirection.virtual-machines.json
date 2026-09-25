@@ -1,6 +1,11 @@
 {
     "redirections": [
         {
+            "source_path_from_root": "/articles/virtual-machines/migration/sizes/previous-gen-series-capacity-limitations.md",
+            "redirect_url": "/azure/virtual-machines/sizes/lifecycle/retirements-and-capacity-restrictions",
+            "redirect_document_id": true
+        },
+        {
             "source_path_from_root": "/articles/virtual-machines/disks-deploy-nonzonal-premium-v2.md",
             "redirect_url": "/azure/virtual-machines/disks-deploy-premium-v2#deploy-a-nonzonal-premium-ssd-v2",
             "redirect_document_id": true
@@ -5087,7 +5092,7 @@
         },
         {
             "source_path_from_root": "/articles/virtual-machines/sizes-previous-gen.md",
-            "redirect_url": "/azure/virtual-machines/sizes/lifecycle/previous-gen-sizes-list",
+            "redirect_url": "/azure/virtual-machines/sizes/lifecycle/end-of-life-sizes-list",
             "redirect_document_id": false
         },
         {
@@ -5187,13 +5192,13 @@
         },
         {
             "source_path_from_root": "/articles/virtual-machines/sizes/memory-optimized/d-family.md",
-            "redirect_url": "/azure/virtual-machines/sizes/lifecycle/previous-gen-sizes-list#memory-optimized-previous-gen-sizes",
+            "redirect_url": "/azure/virtual-machines/sizes/lifecycle/end-of-life-sizes-list#memory-optimized-end-of-life-sizes",
             "redirect_document_id": false
         },
         {
             "source_path_from_root": "/articles/virtual-machines/sizes/previous-gen-sizes-list.md",
-            "redirect_url": "/azure/virtual-machines/sizes/lifecycle/previous-gen-sizes-list",
-            "redirect_document_id": true
+            "redirect_url": "/azure/virtual-machines/sizes/lifecycle/end-of-life-sizes-list",
+            "redirect_document_id": false
         },
         {
             "source_path_from_root": "/articles/virtual-machines/dv2-dsv2-series-memory.md",
@@ -6637,12 +6642,12 @@
         },
         {
             "source_path_from_root": "/articles/virtual-machines/sizes/retirement-overview.md",
-            "redirect_url": "/azure/virtual-machines/sizes/lifecycle/retirement/retirement-overview",
+            "redirect_url": "/azure/virtual-machines/sizes/lifecycle/lifecycle-overview",
             "redirect_document_id": false
         },
         {
             "source_path_from_root": "/articles/virtual-machines/sizes/retired-sizes-list.md",
-            "redirect_url": "/azure/virtual-machines/sizes/lifecycle/retired-sizes-list",
+            "redirect_url": "/azure/virtual-machines/sizes/lifecycle/retirements-and-capacity-restrictions",
             "redirect_document_id": false
         },
         {
@@ -6717,7 +6722,12 @@
         },
         {
             "source_path_from_root": "/articles/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide.md",
-            "redirect_url": "/azure/virtual-machines/sizes/lifecycle/retirement/d-ds-dv2-dsv2-ls-series-migration-guide",
+            "redirect_url": "/azure/virtual-machines/sizes/lifecycle/retirement/retired-sizes-modernization-guide",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/sizes/lifecycle/retirement/d-ds-dv2-dsv2-ls-series-migration-guide.md",
+            "redirect_url": "/azure/virtual-machines/sizes/lifecycle/retirement/retired-sizes-modernization-guide",
             "redirect_document_id": true
         },
         {
@@ -6787,18 +6797,18 @@
         },
         {
             "source_path_from_root": "/articles/virtual-machines/sizes/retirement/retired-sizes-list.md",
-            "redirect_url": "/azure/virtual-machines/sizes/lifecycle/retired-sizes-list",
+            "redirect_url": "/azure/virtual-machines/sizes/lifecycle/retirements-and-capacity-restrictions",
             "redirect_document_id": false
         },
         {
             "source_path_from_root": "/articles/virtual-machines/sizes/lifecycle/retirement/retired-sizes-list.md",
-            "redirect_url": "/azure/virtual-machines/sizes/lifecycle/retired-sizes-list",
-            "redirect_document_id": true
+            "redirect_url": "/azure/virtual-machines/sizes/lifecycle/retirements-and-capacity-restrictions",
+            "redirect_document_id": false
         },
         {
-            "source_path_from_root": "/articles/virtual-machines/sizes/retirement/retirement-overview.md",
-            "redirect_url": "/azure/virtual-machines/sizes/lifecycle/retirement/retirement-overview",
-            "redirect_document_id": true
+            "source_path_from_root": "/articles/virtual-machines/sizes/lifecycle/retired-sizes-list.md",
+            "redirect_url": "/azure/virtual-machines/sizes/lifecycle/retirements-and-capacity-restrictions",
+            "redirect_document_id": false
         },
         {
             "source_path_from_root": "/articles/virtual-machines/msv2-mdsv2-series.md",
@@ -6832,8 +6842,23 @@
         },
         {
             "source_path_from_root": "/articles/virtual-machines/migration/sizes/legacy-series-capacity-limitations.md",
-            "redirect_url": "/azure/virtual-machines/migration/sizes/previous-gen-series-capacity-limitations",
+            "redirect_url": "/azure/virtual-machines/sizes/lifecycle/retirements-and-capacity-restrictions",
             "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/sizes/retirement/retirement-overview.md",
+            "redirect_url": "/azure/virtual-machines/sizes/lifecycle/lifecycle-overview",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/sizes/lifecycle/retirement/retirement-overview.md",
+            "redirect_url": "/azure/virtual-machines/sizes/lifecycle/lifecycle-overview",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/sizes/lifecycle/previous-gen-sizes-list.md",
+            "redirect_url": "/azure/virtual-machines/sizes/lifecycle/end-of-life-sizes-list",
+            "redirect_document_id": true
         }
     ]
 }

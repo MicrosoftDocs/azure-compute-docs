@@ -1,6 +1,6 @@
 ---
-title: Migration Guide for GPU Compute Workloads in Azure
-description: NC, ND, NCv2, NP-series migration guide.
+title: Modernization guide for GPU compute workloads in Azure
+description: NC, ND, NCv2, NP-series modernization guide.
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 author: mattmcinnes
@@ -11,27 +11,27 @@ ai-usage: ai-assisted
 # Customer intent: "As a cloud architect, I want to migrate GPU compute workloads to newer VM series, so that I can leverage improved performance and optimize costs for AI and HPC applications."
 ---
  
-# Migration Guide for GPU Compute Workloads in Azure
+# Modernization guide for GPU compute workloads in Azure
 
-As more powerful GPUs become available in the marketplace and in Microsoft Azure datacenters, we recommend re-assessing the performance of your workloads and considering migrating to newer GPUs.
+As more powerful GPUs become available in the marketplace and in Microsoft Azure datacenters, we recommend re-assessing the performance of your workloads and considering modernizing to newer GPUs.
 
 For the same reason, as well as to maintain a high-quality and reliable service offering, Azure periodically retires the hardware that powers older VM sizes. The first group of GPU products to be retired in Azure are the original NC, NC v2 and ND-series VMs, powered by NVIDIA Tesla K80, P100, and P40 datacenter GPU accelerators respectively. These products will be retired on August 31st 2023, and the oldest VMs in this series launched in 2016.
 
-Since then, GPUs have made incredible strides alongside the entire deep learning and HPC industry, typically exceeding a doubling in performance between generations. Since the launch of NVIDIA K80, P40, and P100 GPUs, Azure has shipped multiple newer generations and categories of VM products geared at GPU-accelerated compute and AI, based around NVIDIA’s T4, V100, and A100 GPUs, and differentiated by optional features such as InfiniBand-based interconnect fabrics. These are all options we encourage customers to explore as migration paths.
+Since then, GPUs have made incredible strides alongside the entire deep learning and HPC industry, typically exceeding a doubling in performance between generations. Since the launch of NVIDIA K80, P40, and P100 GPUs, Azure has shipped multiple newer generations and categories of VM products geared at GPU-accelerated compute and AI, based around NVIDIA’s T4, V100, and A100 GPUs, and differentiated by optional features such as InfiniBand-based interconnect fabrics. These are all options we encourage customers to explore as modernization paths.
 
 In most cases, the dramatic increase in performance offered by newer generations of GPUs lowers overall TCO by decreasing the duration of job, for burstable jobs- or reducing the quantity of overall GPU-enabled VMs required to cover a fixed-size demand for compute resources, even though costs per GPU-hour may vary. In addition to these benefits, customers may improve Time-to-Solution via higher-performing VMs, and improve the health and supportability of their solution by adopting newer software, CUDA runtime, and driver versions.
 
-## Migration vs. Optimization
+## Modernization vs. optimization
 
 Azure recognizes that customers have a multitude of requirements that may dictate the selection of a specific GPU VM product, including GPU architectural considerations, interconnects, TCO, Time to Solution, and regional availability based on compliance locality or latency requirements- and some of these even change over time.
 
 At the same time, GPU acceleration is a new and rapidly evolving area.
 
-Thus, there is no true one-size fits-all guidance for this product area, and a migration is a perfect time to re-evaluate potentially dramatic changes to a workload- like moving from a clustered deployment model to a single large 8-GPU VM or vice versa, leveraging reduced precision datatypes, adopting features like Multi-Instance GPU, and much more.
+Thus, there is no true one-size fits-all guidance for this product area, and modernization is a perfect time to re-evaluate potentially dramatic changes to a workload- like moving from a clustered deployment model to a single large 8-GPU VM or vice versa, leveraging reduced precision datatypes, adopting features like Multi-Instance GPU, and much more.
 
 These sorts of considerations- when made the context of already dramatic per-generation GPU performance increases, where a feature such as the addition of TensorCores can increase performance by an order of magnitude, are extremely workload-specific.
 
-Combining migration with application re-architecture can yield immense value and improvement in cost and time-to-solution.
+Combining modernization with application re-architecture can yield immense value and improvement in cost and time-to-solution.
 
 However, these sorts of improvements are beyond the scope of this document, which aims to focus on direct equivalency classes for generalized workloads that may be run by customers today, to identify the most similar VM options in both price *and* performance per GPU to existing VM families undergoing retirement.
 
@@ -83,11 +83,11 @@ The ND-series virtual machines are a midrange platform originally designed for A
 > [!IMPORTANT]
 > NP-series sizes (Standard_NP10s, Standard_NP20s, Standard_NP40s) are scheduled for **retirement on May 31, 2027**. After this date, remaining NP-series VMs are automatically deallocated, stop working, stop incurring charges, and no longer have SLA or support. Managed disk data is preserved.
 >
-> **Reserved Instance purchase cutoff**: Purchases of 1-year and 3-year Azure Reserved VM Instances for NP-series ended on **April 2, 2026**. Customers with capacity planning tied to Reserved Instances should migrate or adjust reservations accordingly.
+> **Reserved Instance purchase cutoff**: Purchases of 1-year and 3-year Azure Reserved VM Instances for NP-series ended on **April 2, 2026**. Customers with capacity planning tied to Reserved Instances should modernize or adjust reservations accordingly.
 
-The NP-series VMs are powered by AMD Xilinx Alveo U250 FPGAs and are used for custom FPGA-accelerated workloads such as ML inference, video transcoding, and database search & analytics. Unlike GPU-based VM series, NP-series use FPGA acceleration via Xilinx XRT/Vitis toolchains. Migrating to GPU-based alternatives requires porting workloads from FPGA-based frameworks to GPU-based frameworks such as CUDA.
+The NP-series VMs are powered by AMD Xilinx Alveo U250 FPGAs and are used for custom FPGA-accelerated workloads such as ML inference, video transcoding, and database search & analytics. Unlike GPU-based VM series, NP-series use FPGA acceleration via Xilinx XRT/Vitis toolchains. Modernizing to GPU-based alternatives requires porting workloads from FPGA-based frameworks to GPU-based frameworks such as CUDA.
 
-Recommended migration targets based on workload characteristics:
+Recommended modernization targets based on workload characteristics:
 
 - **[NCasT4_v3](../../../sizes/gpu-accelerated/ncast4v3-series.md)** (NVIDIA T4) – Best for inference, interactive graphics, and cost-sensitive workloads.
 - **[NDv2](../../../sizes/gpu-accelerated/ndv2-series.md)** (NVIDIA V100 with NVLink) – Best for GPU-accelerated AI training and HPC workloads requiring high GPU memory and interconnect.
@@ -102,11 +102,11 @@ Recommended migration targets based on workload characteristics:
 
 
 
-## Migration Steps
+## Modernization steps
 
 ### General Changes
 
-1.  Choose a series and size for migration. Leverage the [pricing calculator](https://azure.microsoft.com/pricing/calculator/) for further insights.
+1.  Choose a series and size for modernization. Leverage the [pricing calculator](https://azure.microsoft.com/pricing/calculator/) for further insights.
 
 2.  Get quota for the target VM series
 
@@ -117,22 +117,22 @@ Recommended migration targets based on workload characteristics:
 
 ### Breaking Changes
 
-#### Select target size for migration
+#### Select target size for modernization
 
 After assessing your current usage, decide what type of GPU VM you need. Depending on the workload requirements you have few different choices.
 
 > [!NOTE]
 > A best practice is to select a VM size based on both cost and performance. The recommendations in this guide are based on a general-purpose, one-to-one comparison of performance metrics and the nearest match in another VM series. Before deciding on the right size, get a cost comparison using the Azure Pricing Calculator.
 >
-> **NP-series customers**: When selecting alternatives to NP-series VMs, consider both cost and performance. Newer GPU generations (T4, V100, H100) can significantly reduce time-to-solution for AI and analytics workloads. For detailed NP-series migration guidance, see the [NP-Series VMs](#np-series-vms) section above.
+> **NP-series customers**: When selecting alternatives to NP-series VMs, consider both cost and performance. Newer GPU generations (T4, V100, H100) can significantly reduce time-to-solution for AI and analytics workloads. For detailed NP-series modernization guidance, see the [NP-Series VMs](#np-series-vms) section above.
 
 > [!IMPORTANT]
-> All legacy NC, NC v2 and ND-Series sizes are available in multi-GPU sizes, including 4-GPU sizes with and without InfiniBand interconnect for scale-out, tightly-coupled workloads that demand more compute power than a single 4-GPU VM, or a single K80, P40, or P100 GPU can supply respectively. Although the recommendations above offer a straightforward path forward, users of these sizes should consider achieving their performance goals with more powerful NVIDIA V100 GPU-based VM series like the [NC v3-Series](../../../sizes/gpu-accelerated/ncv3-series.md) and [ND v2-series](../../../sizes/overview.md#gpu-accelerated), which typically enable the same level of workload performance at lower costs and with improved manageability by providing considerably greater performance per GPU and per VM before multi-GPU and multi-node configurations are required, respectively.
+> All retired NC, NC v2, and ND-series sizes were available in multi-GPU sizes, including 4-GPU sizes with and without InfiniBand interconnect for scale-out, tightly-coupled workloads that demand more compute power than a single 4-GPU VM, or a single K80, P40, or P100 GPU can supply respectively. Although the recommendations above offer a straightforward path forward, users of these sizes should consider achieving their performance goals with more powerful NVIDIA V100 GPU-based VM series like the [NC v3-Series](../../../sizes/gpu-accelerated/ncv3-series.md) and [ND v2-series](../../../sizes/overview.md#gpu-accelerated), which typically enable the same level of workload performance at lower costs and with improved manageability by providing considerably greater performance per GPU and per VM before multi-GPU and multi-node configurations are required, respectively.
 <br>
 
 #### Get quota for the target VM family
 
-Follow the guide to [request an increase in vCPU quota by VM family.](/azure/azure-portal/supportability/per-vm-quota-requests) Select the target VM size you have selected for migration.
+Follow the guide to [request an increase in vCPU quota by VM family.](/azure/azure-portal/supportability/per-vm-quota-requests) Select the target VM size you have selected for modernization.
 
 #### Resize the current virtual machine
 

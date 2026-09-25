@@ -68,7 +68,7 @@ Due to increased GPU memory I/O footprint, the NCads H100 v5 requires the use of
 - [Storage optimized](sizes-storage.md)
 - [GPU optimized](sizes-gpu.md)
 - [High performance compute](sizes-hpc.md)
-- [Previous generations](sizes-previous-gen.md)
+- [End of Life sizes](sizes-previous-gen.md)
 
 You can [use the pricing calculator](https://azure.microsoft.com/pricing/calculator/) to estimate your Azure VMs costs.
 

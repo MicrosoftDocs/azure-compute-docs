@@ -4,13 +4,21 @@ description: Specifications for the Ev3 and Esv3-series VMs.
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 12/19/2022
+ms.date: 09/24/2026
 # Customer intent: "As a cloud architect, I want to evaluate the Ev3 and Esv3-series virtual machines, so that I can choose the optimal VM sizes for deploying memory-intensive enterprise applications effectively."
 ---
 
 # Ev3 and Esv3-series
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
+
+> [!WARNING]
+> The Ev3-series and Esv3-series are in the [End of Life](../lifecycle/lifecycle-overview.md#end-of-life) lifecycle stage and retire on **November 15, 2029**. After that date, you can't create, resize into, run, or purchase these sizes. This retirement affects all Ev3-series and Esv3-series sizes:
+>
+> - **Ev3-series:** Standard_E2_v3, Standard_E4_v3, Standard_E8_v3, Standard_E16_v3, Standard_E20_v3, Standard_E32_v3, Standard_E48_v3, Standard_E64_v3, and Standard_E64i_v3
+> - **Esv3-series:** Standard_E2s_v3, Standard_E4s_v3, Standard_E8s_v3, Standard_E16s_v3, Standard_E20s_v3, Standard_E32s_v3, Standard_E48s_v3, Standard_E64s_v3, and Standard_E64is_v3
+>
+> This retirement doesn't apply to Azure Government, Azure operated by 21Vianet, or sovereign cloud regions. Transition your workloads before the retirement date. For the smoothest transition, see [Modernize to the v5 VM series](../lifecycle/sizes-v5-modernization-overview.md). For the latest features and performance, see [Modernize to the v6 and v7 VM series](../../migration/sizes/sizes-v6-v7-migration-overview.md). For retirement dates and replacement series, see [Retired and retiring VM size series](../lifecycle/retirements-and-capacity-restrictions.md#memory-optimized-retired-sizes).
 
 The Ev3 and Esv3-series run on the 3rd Generation Intel® Xeon® Platinum 8370C (Ice Lake), Intel® Xeon® Platinum 8272CL (Cascade Lake), Intel® Xeon® 8171M 2.1 GHz (Skylake), or the Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) processor in a hyper-threaded configuration, providing a better value proposition for most general purpose workloads, and bringing the Ev3 into alignment with the general purpose VMs of most other clouds.  Memory has been expanded (from 7 GiB/vCPU to 8 GiB/vCPU) while disk and network limits have been adjusted on a per core basis to align with the move to hyperthreading. The Ev3 is the follow up to the high memory VM sizes of the D/Dv2 families.
 
@@ -92,7 +100,7 @@ Esv3-series VM’s feature Intel® Hyper-Threading Technology.
 - [Storage optimized](/azure/virtual-machines/sizes/overview#storage-optimized)
 - [GPU optimized](/azure/virtual-machines/sizes/overview#gpu-accelerated)
 - [High performance compute](/azure/virtual-machines/sizes/overview#high-performance-compute)
-- [Previous generations](/azure/virtual-machines/sizes/lifecycle/previous-gen-sizes-list)
+- [End of Life sizes](/azure/virtual-machines/sizes/lifecycle/end-of-life-sizes-list)
 
 Pricing Calculator : [Pricing Calculator](https://azure.microsoft.com/pricing/calculator/)
 
