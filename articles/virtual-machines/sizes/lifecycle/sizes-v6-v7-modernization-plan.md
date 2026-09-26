@@ -5,7 +5,7 @@ author: rod-reis
 ms.author: rosanto
 ms.service: azure-virtual-machines
 ms.topic: concept-article
-ms.date: 09/24/2026
+ms.date: 09/25/2026
 ms.collection:
   - migration
   - v2-5-to-v6-7
@@ -44,7 +44,7 @@ In some cases, you might need an in-place upgrade. This process aims to convert 
 `Confirm prerequisites → Back up → Convert Gen 1 to Gen 2 → Switch SCSI to NVMe → Validate → Resume workload`
 
 > [!IMPORTANT]
-> The in-place conversion that switches an existing VM's controller from SCSI to NVMe has its own article, including setup, parameters, and how to revert. This approach has very specific requirements. Use it with caution and ensure you back up VMs. Ensure you read all the other considerations in this article. For more information, see [Convert a VM from SCSI to NVMe in place](scsi-to-nvme-migration.md).
+> The in-place conversion that switches an existing VM's controller from SCSI to NVMe has its own article, including setup, parameters, and how to revert. This approach has very specific requirements. Use it with caution and ensure you back up VMs. Ensure you read all the other considerations in this article. For more information, see [Convert a VM from SCSI to NVMe in place](../../migration/scsi-to-nvme-migration.md).
 
 ## Image prerequisites for Generation 2, NVMe, and MANA
 
@@ -177,7 +177,7 @@ The v6 and v7 series use the [MANA](/azure/virtual-network/accelerated-networkin
 2. Plan driver installation and validation.
 3. Capture a simple before-and-after network baseline during the pilot.
 
-## Resume hibernated VMs before you migrate
+## Resume hibernated VMs before you modernize
 
 **Applies to:** ✔️ E. Customer-managed VMs, including Azure Virtual Desktop personal host pools — pooled session hosts and service-managed compute don't hibernate.
 
@@ -254,7 +254,7 @@ The Dv3, Dsv3, Ev3, and Esv3 series retire on November 15, 2029. After that date
 | Dv3, Dsv3 | Dv5, Dsv5, Ddv5, Ddsv5, Dasv5, Dadsv5 | Dsv6, Ddsv6, Dasv6, Dadsv6 | Dsv7, Ddsv7, Dasv7, Dadsv7 |
 | Ev3, Esv3 | Ev5, Esv5, Edv5, Edsv5, Easv5, Eadsv5 | Esv6, Edsv6, Easv6, Eadsv6 | Esv7, Edsv7, Easv7, Eadsv7 |
 
-Every v3 size includes a local temporary disk. If the workload uses it, choose a `d`-suffixed target size. Size against observed usage rather than the v3 vCPU count. For the v5 path, see [Modernize to the v5 VM series](../../sizes/lifecycle/sizes-v5-modernization-overview.md). For retirement details, see the [Retired VM sizes modernization guide](../../sizes/lifecycle/retirement/retired-sizes-modernization-guide.md).
+Every v3 size includes a local temporary disk. If the workload uses it, choose a `d`-suffixed target size. Size against observed usage rather than the v3 vCPU count. For the v5 path, see [Modernize to the v5 VM series](./sizes-v5-modernization-overview.md). For retirement details, see the [Retired VM sizes modernization guide](./retirement/retired-sizes-modernization-guide.md).
 
 ## Wave sequencing
 
@@ -267,7 +267,7 @@ For mult-tier applications, modernization order matters. At estate scale, hundre
 3. Sequence non-production before production for every application.
 4. Keep waves small enough to validate inside one window. This guidance is about sequencing, not about the size itself.
 
-Record the resulting wave list with owners and target windows. For how to execute waves, see [4. Modernize in waves](sizes-v6-v7-migration-migrate.md#phase-2-modernize-in-waves).
+Record the resulting wave list with owners and target windows. For how to execute waves, see [4. Modernize in waves](sizes-v6-v7-modernization-modernize.md#phase-2-modernize-in-waves).
 
 ## ISV virtual appliances
 
@@ -326,7 +326,7 @@ Treat these items as gates, not validation items. If the vendor doesn't support 
 | Licensing and bootstrap on the new size | Licenses are sometimes bound to instance attributes. |
 | High-availability topology on the target family | The pair must be supported as a pair, not just as single instances. |
 
-For the execution sequence once certification is confirmed, see [Cut over a certified appliance](sizes-v6-v7-migration-migrate.md#cut-over-a-certified-appliance-g).
+For the execution sequence once certification is confirmed, see [Cut over a certified appliance](sizes-v6-v7-modernization-modernize.md#cut-over-a-certified-appliance-g).
 
 ## Exit criteria
 
@@ -341,4 +341,4 @@ For the execution sequence once certification is confirmed, see [Cut over a cert
 
 ## Next steps
 
-- [4. Modernize: the wave-based runbook](sizes-v6-v7-migration-migrate.md)
+- [4. Modernize: the wave-based runbook](sizes-v6-v7-modernization-modernize.md)

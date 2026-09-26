@@ -6,7 +6,7 @@ ms.custom:
 ms.service: azure-virtual-machines
 ms.subservice: hpc
 ms.topic: concept-article
-ms.date: 05/04/2026
+ms.date: 09/25/2026
 ms.reviewer: wwilliams
 ms.author: padmalathas
 author: padmalathas
@@ -34,11 +34,11 @@ To provide room for the Azure hypervisor to operate without interfering with the
 
 The following diagram shows the topology of the server. We reserve these 8 hypervisor host cores (yellow) symmetrically across both CPU sockets, taking the first 2 cores from specific Core Complex Dies (CCDs) on each NUMA domain, with the remaining cores for the HBv3-series VM (green).
 
-![Topology of the HBv3-series server](./media/hpc/architecture/hbv3/hbv3-topology-server.png)
+![Topology of the HBv3-series server](../../media/hpc/architecture/hbv3/hbv3-topology-server.png)
 
 On HBv3, a group of four consecutive (4) CCDs is configured as a NUMA domain, both at the host server level and within a guest VM. Thus, all HBv3 VM sizes expose 4 NUMA domains that appear to an OS and application as shown. 4 uniform NUMA domains, each with different number of cores depending on the specific [HBv3 VM size](hbv3-series.md).
 
-![Topology of the HBv3-series VM](./media/hpc/architecture/hbv3/hbv3-topology-vm.png)
+![Topology of the HBv3-series VM](../../media/hpc/architecture/hbv3/hbv3-topology-vm.png)
 
 Each HBv3 VM size is similar in physical layout, features, and performance of a different CPU from the AMD EPYC 7003-series, as follows:
 
@@ -63,31 +63,31 @@ lstopo-no-graphics --no-io --no-legend --of txt
 <details>
 <summary>Click to view lstopo output for Standard_HB120rs_v3</summary>
 
-![lstopo output for HBv3-120 VM](./media/hpc/architecture/hbv3/hbv3-120-lstopo.png)
+![lstopo output for HBv3-120 VM](../../media/hpc/architecture/hbv3/hbv3-120-lstopo.png)
 </details>
 
 <details>
 <summary>Click to view lstopo output for Standard_HB120rs-96_v3</summary>
 
-![lstopo output for HBv3-96 VM](./media/hpc/architecture/hbv3/hbv3-96-lstopo.png)
+![lstopo output for HBv3-96 VM](../../media/hpc/architecture/hbv3/hbv3-96-lstopo.png)
 </details>
 
 <details>
 <summary>Click to view lstopo output for Standard_HB120rs-64_v3</summary>
 
-![lstopo output for HBv3-64 VM](./media/hpc/architecture/hbv3/hbv3-64-lstopo.png)
+![lstopo output for HBv3-64 VM](../../media/hpc/architecture/hbv3/hbv3-64-lstopo.png)
 </details>
 
 <details>
 <summary>Click to view lstopo output for Standard_HB120rs-32_v3</summary>
 
-![lstopo output for HBv3-32 VM](./media/hpc/architecture/hbv3/hbv3-32-lstopo.png)
+![lstopo output for HBv3-32 VM](../../media/hpc/architecture/hbv3/hbv3-32-lstopo.png)
 </details>
 
 <details>
 <summary>Click to view lstopo output for Standard_HB120rs-16_v3</summary>
 
-![lstopo output for HBv3-16 VM](./media/hpc/architecture/hbv3/hbv3-16-lstopo.png)
+![lstopo output for HBv3-16 VM](../../media/hpc/architecture/hbv3/hbv3-16-lstopo.png)
 </details>
 
 ## InfiniBand networking
@@ -127,7 +127,7 @@ When paired in a striped array, the NVMe SSDs provide badnwidths of up to 7 GB/s
 | Azure Storage Support          | Standard and Premium Disks (maximum 32 disks), Azure NetApp Files, Azure Files, Azure Managed Lustre File System       |
 | Supported and Validated OS     | RHEL 8.3+, AlmaLinux 8.10+, Ubuntu 22.04+ LTS, SLES 15 SP7+, Windows Server 2022+  |    
 | Recommended OS for Performance | AlmaLinux HPC 9.7, Ubuntu HPC 24.04 LTS, Windows Server 2025  |
-| Orchestrator Support           | Azure CycleCloud, Azure Batch, Azure Kubernetes Service; [cluster configuration options](sizes-hpc.md#cluster-configuration-options)                      |
+| Orchestrator Support           | Azure CycleCloud, Azure Batch, Azure Kubernetes Service; [cluster configuration options](../overview.md#high-performance-compute)                      |
 
 
 

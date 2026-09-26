@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 09/24/2026
+ms.date: 09/25/2026
 ms.author: mattmcinnes
 ---
 
@@ -43,7 +43,7 @@ Retired VM size series run on older hardware that's no longer supported. Series 
 | DCsv3/DCdsv3-series | **Announced** | - | 10/31/29 | [DCsv3 and DCdsv3 retirement](../retirement/dcsv3-series-retirement.md) |
 
 > [!NOTE]
-> The Dv3, Dsv3, Ev3, and Esv3 retirement affects all 32 sizes in these series. After November 15, 2029, you can't create, resize into, run, or purchase these sizes. This retirement doesn't apply to Azure Government, Azure operated by 21Vianet, or sovereign cloud regions. For the smoothest transition, see [Modernize to the v5 VM series](./sizes-v5-modernization-overview.md). For the latest features and performance, see [Modernize to the v6 and v7 VM series](../../migration/sizes/sizes-v6-v7-migration-overview.md).
+> The Dv3, Dsv3, Ev3, and Esv3 retirement affects all 32 sizes in these series. After November 15, 2029, you can't create, resize into, run, or purchase these sizes. This retirement doesn't apply to Azure Government, Azure operated by 21Vianet, or sovereign cloud regions. For the smoothest transition, see [Modernize to the v5 VM series](./sizes-v5-modernization-overview.md). For the latest features and performance, see [Modernize to the v6 and v7 VM series](./sizes-v6-v7-modernization-overview.md).
 
 ### Compute optimized retired sizes
 
@@ -146,7 +146,7 @@ To help identify the most suitable replacement VM, review the following resource
 
 - [VM modernization guidance](./retirement/retired-sizes-modernization-guide.md)
 - [Modernize to the v5 VM series](./sizes-v5-modernization-overview.md)
-- [Modernize to the v6 and v7 VM series](../../migration/sizes/sizes-v6-v7-migration-overview.md)
+- [Modernize to the v6 and v7 VM series](./sizes-v6-v7-modernization-overview.md)
 
 These resources provide detailed recommendations for alternative virtual machine series, modernization planning considerations, and workload-specific guidance.
 
@@ -197,7 +197,7 @@ Existing subscriptions with previously approved quota aren't affected by this ch
 
 The Dv3, Dsv3, Ev3, and Esv3 series retire on November 15, 2029. After that date, you can't create, resize into, run, or purchase these sizes. For retirement dates and recommended replacements, see the [Retired VM sizes modernization guide](./retirement/retired-sizes-modernization-guide.md).
 
-For the smoothest transition, see [Modernize to the v5 VM series](./sizes-v5-modernization-overview.md). For the latest features and performance, see [Modernize to the v6 and v7 VM series](../../migration/sizes/sizes-v6-v7-migration-overview.md).
+For the smoothest transition, see [Modernize to the v5 VM series](./sizes-v5-modernization-overview.md). For the latest features and performance, see [Modernize to the v6 and v7 VM series](./sizes-v6-v7-modernization-overview.md).
 
 ### Does reimaging one of the impacted VM series in a Virtual Machine Scale Set deallocate it?
 

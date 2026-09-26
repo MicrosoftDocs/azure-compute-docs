@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 09/24/2026
+ms.date: 09/25/2026
 ms.author: mattmcinnes
 ms.reviewer: iamwilliew
 # Customer intent: As a cloud architect, I want to see which Azure VM size series are in the End of Life stage, so that I can plan modernization to Current or Extended VM sizes before retirement.
@@ -101,6 +101,6 @@ For HPC sizes that are retired or have an announced retirement date, see [retire
 For ADH sizes that are retired or have an announced retirement date, see [retired ADH sizes](./retirements-and-capacity-restrictions.md#adh-retired-sizes).
 
 ## Next steps
-- To modernize existing workloads, see [Modernize to the v5 VM series](./sizes-v5-modernization-overview.md) or [Modernize to the v6 and v7 VM series](../../migration/sizes/sizes-v6-v7-migration-overview.md).
+- To modernize existing workloads, see [Modernize to the v5 VM series](./sizes-v5-modernization-overview.md) or [Modernize to the v6 and v7 VM series](./sizes-v6-v7-modernization-overview.md).
 - For a list of retired sizes, see [Retired and retiring VM size series](./retirements-and-capacity-restrictions.md#retired-and-retiring-vm-size-series).
 - For more information on VM sizes, see [Sizes for virtual machines in Azure](../overview.md).

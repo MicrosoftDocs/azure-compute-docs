@@ -167,21 +167,21 @@
     - name: HPC on Azure
       href: /azure/architecture/topics/high-performance-computing/
     - name: HPC for H-series and N-series VMs
-      href: ./workloads/hpc/overview.md
+      href: ./overview-hb-hc.md
     - name: How to set up HPC/AI VMs
-      href: ./workloads/hpc/set-up-hpc-vms.md
+      href: ./set-up-hpc-vms.md
     - name: Linux virtual desktops with ThinLinc
       href: ./linux/thinlinc-linux-vdi.md
     - name: Configuration
       items:
       - name: Configure and optimize VMs
-        href: ./workloads/hpc/configure.md
+        href: ./configure.md
       - name: Enable InfiniBand
-        href: ./workloads/hpc/enable-infiniband.md
+        href: ./extensions/enable-infiniband.md
       - name: Set up MPI
-        href: ./workloads/hpc/setup-mpi.md
+        href: ./setup-mpi.md
     - name: Scaling applications
-      href: ./workloads/hpc/compiling-scaling-applications.md
+      href: ./compiling-scaling-applications.md
 - name: Sizes
   items:
    - name: Overview
@@ -387,7 +387,7 @@
        - name: FXmdsv2 series
          href: ./sizes/compute-optimized/fxmdsv2-series.md
        - name: FX series
-         href: fx-series.md
+         href: ./sizes/compute-optimized/fx-series.md
    - name: Memory optimized
      items:
      - name: Overview
@@ -460,24 +460,24 @@
        - name: Ebdsv6 series
          href: ./sizes/memory-optimized/ebdsv6-series.md
        - name: Ebdsv5 and Ebsv5 series
-         href: ebdsv5-ebsv5-series.md
+         href: ./sizes/memory-optimized/ebdsv5-ebsv5-series.md
      - name: EC family (confidential)
        items:
        - name: Overview
          displayName: EC-series, sizes, size, vm size
          href: ./sizes/memory-optimized/ec-family.md
        - name: ECasv5 and ECadsv5 series
-         href: ecasv5-ecadsv5-series.md
+         href: ./sizes/memory-optimized/ecasv5-ecadsv5-series.md
        - name: ECasv6 series
          href: ./sizes/memory-optimized/ecasv6-series.md
        - name: ECadsv6 series
          href: ./sizes/memory-optimized/ecadsv6-series.md
        - name: ECesv6 series
-         href: ecesv6-series.md
+         href: ./sizes/memory-optimized/ecesv6-series.md
        - name: ECedsv6 series
-         href: ecedsv6-series.md         
+         href: ./sizes/memory-optimized/ecedsv6-series.md
        - name: ECas_cc_v5 and ECads_cc_v5 series
-         href: ecasccv5-ecadsccv5-series.md
+         href: ./sizes/memory-optimized/ecasccv5-ecadsccv5-series.md
      - name: M family
        items:
        - name: Overview
@@ -521,7 +521,7 @@
            href: ./sizes/memory-optimized/mbsv4-series.md
          - name: Mbdsv4 series
            href: ./sizes/memory-optimized/mbdsv4-series.md
-       - name: Retirement Migration guides
+       - name: Retirement modernization guides
          items:
          - name: Msv2 and Mdsv2 migration guide
            href: ./sizes/lifecycle/retirement/msv2-mdsv2-retirement.md
@@ -568,7 +568,7 @@
          displayName: NC-series, sizes, size, vm size
          href: ./sizes/gpu-accelerated/nc-family.md
        - name: NC series retirement
-         href: nc-series-retirement.md
+         href: /previous-versions/azure/virtual-machines/sizes/retirement/nc-series-retirement
        - name: NCads_H100_v5 series
          href: ./sizes/gpu-accelerated/ncadsh100v5-series.md
        - name: NCCads_H100_v5 series
@@ -688,7 +688,7 @@
        - name: HBv2 series
          items:
          - name: Overview
-           href: hbv2-series-overview.md
+           href: ./sizes/high-performance-compute/hbv2-series-overview.md
          - name: HBv2 series
            href: ./sizes/high-performance-compute/hbv2-series.md
          - name: Performance
@@ -696,7 +696,7 @@
        - name: HBv3 series
          items:
          - name: Overview
-           href: hbv3-series-overview.md
+           href: ./sizes/high-performance-compute/hbv3-series-overview.md
          - name: HBv3 series
            href: ./sizes/high-performance-compute/hbv3-series.md
          - name: Performance
@@ -704,7 +704,7 @@
        - name: HBv4 series
          items:
          - name: Overview
-           href: hbv4-series-overview.md
+           href: ./sizes/high-performance-compute/hbv4-series-overview.md
          - name: HBv4 series
            href: ./sizes/high-performance-compute/hbv4-series.md
          - name: Performance
@@ -712,7 +712,7 @@
        - name: HBv5 series
          items:
          - name: Overview
-           href: hbv5-series-overview.md
+           href: ./sizes/high-performance-compute/hbv5-series-overview.md
          - name: HBv5 series
            href: ./sizes/high-performance-compute/hbv5-series.md
          - name: Performance
@@ -725,7 +725,7 @@
        - name: HC series
          items:
          - name: Overview
-           href: hc-series-overview.md
+           href: ./sizes/high-performance-compute/hc-series-overview.md
          - name: HC series
            href: ./sizes/high-performance-compute/hc-series.md
          - name: Performance
@@ -738,7 +738,7 @@
        - name: HX series
          items:
          - name: Overview
-           href: hx-series-overview.md
+           href: ./sizes/high-performance-compute/hx-series-overview.md
          - name: HX series
            href: ./sizes/high-performance-compute/hx-series.md
          - name: Performance
@@ -786,21 +786,21 @@
        - name: Modernize to v6 and later VM series
          items:
          - name: Overview
-           href: ./migration/sizes/sizes-v6-v7-migration-overview.md
-         - name: 1. Discover migration patterns
-           href: ./migration/sizes/sizes-v6-v7-migration-discover.md
+           href: ./sizes/lifecycle/sizes-v6-v7-modernization-overview.md
+         - name: 1. Discover modernization patterns
+           href: ./sizes/lifecycle/sizes-v6-v7-modernization-discover.md
          - name: 2. Assess readiness
-           href: ./migration/sizes/sizes-v6-v7-migration-assess.md
+           href: ./sizes/lifecycle/sizes-v6-v7-modernization-assess.md
          - name: 3. Plan the modernization
-           href: ./migration/sizes/sizes-v6-v7-migration-plan.md
+           href: ./sizes/lifecycle/sizes-v6-v7-modernization-plan.md
          - name: 4. Modernize in waves
-           href: ./migration/sizes/sizes-v6-v7-migration-migrate.md
+           href: ./sizes/lifecycle/sizes-v6-v7-modernization-modernize.md
          - name: "(Optional) Convert SCSI to NVMe in place"
-           href: ./migration/sizes/scsi-to-nvme-migration.md
+           href: ./migration/scsi-to-nvme-migration.md
          - name: 5. Validate and optimize
-           href: ./migration/sizes/sizes-v6-v7-migration-validate.md
+           href: ./sizes/lifecycle/sizes-v6-v7-modernization-validate.md
          - name: Frequently asked questions
-           href: ./migration/sizes/sizes-v6-v7-migration-faq.md
+           href: ./sizes/lifecycle/sizes-v6-v7-modernization-faq.md
      - name: End of Life
        items:
        - name: End of Life sizes list
@@ -816,7 +816,7 @@
          - name: Dsv2 series
            href: ./sizes/general-purpose/dsv2-series.md
          - name: Dv2 and DSv2 series (11-15)
-           href: dv2-dsv2-series-memory.md
+           href: ./sizes/memory-optimized/dv2-dsv2-series-memory.md
          - name: Dv3 series
            href: ./sizes/general-purpose/dv3-series.md
          - name: Dsv3 series
@@ -1188,7 +1188,7 @@
       href: ./sizes/lifecycle/retirement/dedicated-host-retirement.md
     - name: Dedicated Host SKU Migration
       displayName: dedicated, dedicated host, retirement, migration
-      href: ./sizes/migration-guides/dedicated-host-migration-guide.md
+      href: ./migration/dedicated-host-migration-guide.md
   - name: Azure Spot Virtual Machines
     items:
     - name: Overview

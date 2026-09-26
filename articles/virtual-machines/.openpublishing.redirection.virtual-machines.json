@@ -1,6 +1,76 @@
 {
     "redirections": [
         {
+            "source_path_from_root": "/articles/virtual-machines/hbv2-series-overview.md",
+            "redirect_url": "/azure/virtual-machines/sizes/high-performance-compute/hbv2-series-overview",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/hbv3-series-overview.md",
+            "redirect_url": "/azure/virtual-machines/sizes/high-performance-compute/hbv3-series-overview",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/hbv4-series-overview.md",
+            "redirect_url": "/azure/virtual-machines/sizes/high-performance-compute/hbv4-series-overview",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/hbv5-series-overview.md",
+            "redirect_url": "/azure/virtual-machines/sizes/high-performance-compute/hbv5-series-overview",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/hc-series-overview.md",
+            "redirect_url": "/azure/virtual-machines/sizes/high-performance-compute/hc-series-overview",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/hx-series-overview.md",
+            "redirect_url": "/azure/virtual-machines/sizes/high-performance-compute/hx-series-overview",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/migration/sizes/sizes-v6-v7-migration-overview.md",
+            "redirect_url": "/azure/virtual-machines/sizes/lifecycle/sizes-v6-v7-modernization-overview",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/migration/sizes/sizes-v6-v7-migration-discover.md",
+            "redirect_url": "/azure/virtual-machines/sizes/lifecycle/sizes-v6-v7-modernization-discover",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/migration/sizes/sizes-v6-v7-migration-assess.md",
+            "redirect_url": "/azure/virtual-machines/sizes/lifecycle/sizes-v6-v7-modernization-assess",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/migration/sizes/sizes-v6-v7-migration-plan.md",
+            "redirect_url": "/azure/virtual-machines/sizes/lifecycle/sizes-v6-v7-modernization-plan",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/migration/sizes/sizes-v6-v7-migration-migrate.md",
+            "redirect_url": "/azure/virtual-machines/sizes/lifecycle/sizes-v6-v7-modernization-modernize",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/migration/sizes/sizes-v6-v7-migration-validate.md",
+            "redirect_url": "/azure/virtual-machines/sizes/lifecycle/sizes-v6-v7-modernization-validate",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/migration/sizes/sizes-v6-v7-migration-faq.md",
+            "redirect_url": "/azure/virtual-machines/sizes/lifecycle/sizes-v6-v7-modernization-faq",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/migration/sizes/scsi-to-nvme-migration.md",
+            "redirect_url": "/azure/virtual-machines/migration/scsi-to-nvme-migration",
+            "redirect_document_id": true
+        },
+        {
             "source_path_from_root": "/articles/virtual-machines/migration/sizes/previous-gen-series-capacity-limitations.md",
             "redirect_url": "/azure/virtual-machines/sizes/lifecycle/retirements-and-capacity-restrictions",
             "redirect_document_id": true
@@ -4957,7 +5027,7 @@
         },
         {
             "source_path_from_root": "/articles/virtual-machines/workloads/hpc/hbv2-series-overview.md",
-            "redirect_url": "/azure/virtual-machines/hbv2-series-overview",
+            "redirect_url": "/azure/virtual-machines/sizes/high-performance-compute/hbv2-series-overview",
             "redirect_document_id": false
         },
         {
@@ -4967,12 +5037,12 @@
         },
         {
             "source_path_from_root": "/articles/virtual-machines/workloads/hpc/hbv3-series-overview.md",
-            "redirect_url": "/azure/virtual-machines/hbv3-series-overview",
+            "redirect_url": "/azure/virtual-machines/sizes/high-performance-compute/hbv3-series-overview",
             "redirect_document_id": false
         },
         {
             "source_path_from_root": "/articles/virtual-machines/workloads/hpc/hc-series-overview.md",
-            "redirect_url": "/azure/virtual-machines/hc-series-overview",
+            "redirect_url": "/azure/virtual-machines/sizes/high-performance-compute/hc-series-overview",
             "redirect_document_id": false
         },
         {
@@ -6858,6 +6928,31 @@
         {
             "source_path_from_root": "/articles/virtual-machines/sizes/lifecycle/previous-gen-sizes-list.md",
             "redirect_url": "/azure/virtual-machines/sizes/lifecycle/end-of-life-sizes-list",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/ebdsv5-ebsv5-series.md",
+            "redirect_url": "/azure/virtual-machines/sizes/memory-optimized/ebdsv5-ebsv5-series",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/ecasccv5-ecadsccv5-series.md",
+            "redirect_url": "/azure/virtual-machines/sizes/memory-optimized/ecasccv5-ecadsccv5-series",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/ecasv5-ecadsv5-series.md",
+            "redirect_url": "/azure/virtual-machines/sizes/memory-optimized/ecasv5-ecadsv5-series",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/ecedsv6-series.md",
+            "redirect_url": "/azure/virtual-machines/sizes/memory-optimized/ecedsv6-series",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/ecesv6-series.md",
+            "redirect_url": "/azure/virtual-machines/sizes/memory-optimized/ecesv6-series",
             "redirect_document_id": true
         }
     ]

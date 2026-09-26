@@ -5,7 +5,7 @@ author: rod-reis
 ms.author: rosanto
 ms.service: azure-virtual-machines
 ms.topic: how-to
-ms.date: 09/24/2026
+ms.date: 09/25/2026
 ms.collection:
   - migration
   - v2-5-to-v6-7
@@ -22,7 +22,7 @@ ai-usage: ai-assisted
 
 This article describes the full validation process. It finishes **before the wave's rollback window closes**, while the rollback stock — the source VM or the pre-upgrade restore point — still exists. The process captures the performance and cost benefits.
 
-The checks are the same whether a VM was [redeployed from an image or upgraded in place](sizes-v6-v7-migration-migrate.md#choose-your-execution-method). If a step differs by method, the article calls it out.
+The checks are the same whether a VM was [redeployed from an image or upgraded in place](sizes-v6-v7-modernization-modernize.md#choose-your-execution-method). If a step differs by method, the article calls it out.
 
 ## Validation model
 
@@ -51,7 +51,7 @@ Three layers:
 
 A transition from Dv3, Dsv3, Ev3, or Esv3 usually changes every row in the platform validation table: Generation 1 to Generation 2 boot, SCSI to NVMe storage, standard networking to MANA, and a formatted temporary disk to a raw local NVMe disk on `d`-suffixed sizes. Validate each row explicitly, and compare performance against a baseline captured on the v3 source.
 
-The Dv3, Dsv3, Ev3, and Esv3 series retire on November 15, 2029. Close validation and the rollback window before that date, because you can't run a v3 source VM for rollback after retirement. For retirement details, see the [Retired VM sizes modernization guide](../../sizes/lifecycle/retirement/retired-sizes-modernization-guide.md).
+The Dv3, Dsv3, Ev3, and Esv3 series retire on November 15, 2029. Close validation and the rollback window before that date, because you can't run a v3 source VM for rollback after retirement. For retirement details, see the [Retired VM sizes modernization guide](./retirement/retired-sizes-modernization-guide.md).
 
 ## Workload confirmation
 
@@ -68,7 +68,7 @@ A short owner sign-off:
 
 ## Closure criteria by pattern
 
-Platform validation tells you the VM is healthy. Closure criteria tell you the wave is finished. They depend on what you replaced — the workload's [modernization pattern](sizes-v6-v7-migration-discover.md).
+Platform validation tells you the VM is healthy. Closure criteria tell you the wave is finished. They depend on what you replaced — the workload's [modernization pattern](sizes-v6-v7-modernization-discover.md).
 
 | Pattern | A wave is complete when |
 | --- | --- |
@@ -84,7 +84,7 @@ Platform validation tells you the VM is healthy. Closure criteria tell you the w
 
 **Applies to:** ✔️ B. Image-based hosts ✔️ E. Customer-managed VMs ✔️ F. Stateful and clustered ✔️ G. Certified appliances — for service-managed compute, the service owns the agent and extension lifecycle.
 
-The first check depends on the [execution method](sizes-v6-v7-migration-migrate.md#choose-your-execution-method):
+The first check depends on the [execution method](sizes-v6-v7-modernization-modernize.md#choose-your-execution-method):
 
 - **Redeployed VMs** start from a fresh OS disk, so the extensions don't carry forward. Confirm the Azure VM Agent is present and healthy, then reprovision and verify boot diagnostics, the monitoring or Log Analytics agent, backup integration, and security agents.
 - **In-place upgraded VMs** keep their OS disk, so agents carry forward — confirm they're healthy after the controller change. For Gen1 sources, note a documented limitation of the Trusted Launch upgrade: the VM's **image reference still shows the source Gen1 image**. Automatic guest patching keys off the image reference, and a reimage of the VM will fail. Record these VMs so patching is managed deliberately.
@@ -140,4 +140,4 @@ This is where the price-performance benefit is realized. Optimize in order:
 
 ## Next steps
 
-- [Frequently asked questions](sizes-v6-v7-migration-faq.md)
+- [Frequently asked questions](sizes-v6-v7-modernization-faq.md)

@@ -5,7 +5,7 @@ services: virtual-machines
 ms.service: azure-virtual-machines
 ms.subservice: hpc
 ms.topic: concept-article
-ms.date: 05/04/2026
+ms.date: 09/25/2026
 ms.reviewer: wwilliams
 ms.author: padmalathas
 author: padmalathas
@@ -16,7 +16,7 @@ author: padmalathas
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
-An [HBv5-series](./sizes/high-performance-compute/hbv5-series.md) server features 4 * 96-core 4th Generation AMD EPYC™ CPUs for a total of 384 physical "Zen4" cores with Simultaneous Multithreading (SMT) disabled. These 384 cores are divided into 48 Core Chiplet Dies (CCDs) sections (12 per socket), and each CCD containing eight processor cores with uniform access to a 32 MB L3 cache. Azure HBv5 servers also run the following AMD BIOS settings: 
+An [HBv5-series](./hbv5-series.md) server features 4 * 96-core 4th Generation AMD EPYC™ CPUs for a total of 384 physical "Zen4" cores with Simultaneous Multithreading (SMT) disabled. These 384 cores are divided into 48 Core Chiplet Dies (CCDs) sections (12 per socket), and each CCD containing eight processor cores with uniform access to a 32 MB L3 cache. Azure HBv5 servers also run the following AMD BIOS settings: 
 
 ```bash
 Nodes per Socket (NPS) = 4
@@ -35,9 +35,9 @@ To provide room for the Azure hypervisor to operate without interfering with the
 
 The following diagram shows the topology of the server. We reserve these 16 hypervisor host cores (yellow), taking the first core from specific Core Complex Dies (CCDs) in each NUMA domain, with the remaining cores for the HBv5-series VM (green).
 
-![Screenshot of HBv5-series server Topology.](./media/hpc/architecture/hbv5/hbv5-topology-server.png)
+![Screenshot of HBv5-series server Topology.](../../media/hpc/architecture/hbv5/hbv5-topology-server.png)
 
-The CCD boundary is different from a NUMA boundary. On HBv5, a group of six (6) consecutive CCDs is configured as a NUMA domain, both at the host server level and within a guest VM. Thus, all HBv5 VM sizes expose four uniform NUMA domains that appear to an OS and application as shown beneath, each with different number of cores depending on the specific [HBv5 VM size](./sizes/high-performance-compute/hbv5-series.md).
+The CCD boundary is different from a NUMA boundary. On HBv5, a group of six (6) consecutive CCDs is configured as a NUMA domain, both at the host server level and within a guest VM. Thus, all HBv5 VM sizes expose four uniform NUMA domains that appear to an OS and application as shown beneath, each with different number of cores depending on the specific [HBv5 VM size](./hbv5-series.md).
 
 Each HBv5 VM size is similar in physical layout, features, and performance of a different CPU from the AMD EPYC 9V33X, as follows:
 
@@ -58,7 +58,7 @@ Standard_HB368-48rs_v5            | 16           | 3                      |
 
 The virtual NUMA mapping of each HBv5 VM size is mapped to the underlying physical NUMA topology. There's no potential misleading abstraction of the hardware topology. 
 
-The exact topology for the various [HBv5 VM size](./sizes/high-performance-compute/hbv5-series.md) appears as follows using the output of [lstopo](https://linux.die.net/man/1/lstopo):
+The exact topology for the various [HBv5 VM size](./hbv5-series.md) appears as follows using the output of [lstopo](https://linux.die.net/man/1/lstopo):
 
 ```bash
 lstopo-no-graphics --no-io --no-legend --of txt
@@ -67,49 +67,49 @@ lstopo-no-graphics --no-io --no-legend --of txt
 <details>
 <summary>Select to view lstopo output for Standard_HB368rs_v5</summary>
 
-:::image type="content" source="./media/hpc/architecture/hbv5/hbv5-368-lstopo.png" alt-text="Screenshot of lstopo output for HBv5-368 VM." lightbox="./media/hpc/architecture/hbv5/hbv5-368-lstopo.png":::
+:::image type="content" source="../../media/hpc/architecture/hbv5/hbv5-368-lstopo.png" alt-text="Screenshot of lstopo output for HBv5-368 VM." lightbox="../../media/hpc/architecture/hbv5/hbv5-368-lstopo.png":::
 </details>
 
 <details>
 <summary>Select to view lstopo output for Standard_HB368-336rs_v5</summary>
 
-:::image type="content" source="./media/hpc/architecture/hbv5/hbv5-336-lstopo.png" alt-text="Screenshot of lstopo output for HBv5-336 VM." lightbox="./media/hpc/architecture/hbv5/hbv5-336-lstopo.png":::
+:::image type="content" source="../../media/hpc/architecture/hbv5/hbv5-336-lstopo.png" alt-text="Screenshot of lstopo output for HBv5-336 VM." lightbox="../../media/hpc/architecture/hbv5/hbv5-336-lstopo.png":::
 </details>
 
 <details>
 <summary>Select to view lstopo output for Standard_HB368-288rs_v5</summary>
 
-:::image type="content" source="./media/hpc/architecture/hbv5/hbv5-288-lstopo.png" alt-text="Screenshot of lstopo output for HBv5-288 VM." lightbox="./media/hpc/architecture/hbv5/hbv5-288-lstopo.png":::
+:::image type="content" source="../../media/hpc/architecture/hbv5/hbv5-288-lstopo.png" alt-text="Screenshot of lstopo output for HBv5-288 VM." lightbox="../../media/hpc/architecture/hbv5/hbv5-288-lstopo.png":::
 </details>
 
 <details>
 <summary>Select to view lstopo output for Standard_HB368-240rs_v5</summary>
 
-:::image type="content" source="./media/hpc/architecture/hbv5/hbv5-240-lstopo.png" alt-text="Screenshot of lstopo output for HBv5-240 VM." lightbox="./media/hpc/architecture/hbv5/hbv5-240-lstopo.png":::
+:::image type="content" source="../../media/hpc/architecture/hbv5/hbv5-240-lstopo.png" alt-text="Screenshot of lstopo output for HBv5-240 VM." lightbox="../../media/hpc/architecture/hbv5/hbv5-240-lstopo.png":::
 </details>
 
 <details>
 <summary>Select to view lstopo output for Standard_HB368-192rs_v5</summary>
 
-:::image type="content" source="./media/hpc/architecture/hbv5/hbv5-192-lstopo.png" alt-text="Screenshot of lstopo output for HBv5-192 VM." lightbox="./media/hpc/architecture/hbv5/hbv5-192-lstopo.png":::
+:::image type="content" source="../../media/hpc/architecture/hbv5/hbv5-192-lstopo.png" alt-text="Screenshot of lstopo output for HBv5-192 VM." lightbox="../../media/hpc/architecture/hbv5/hbv5-192-lstopo.png":::
 </details>
 
 <details>
 <summary>Select to view lstopo output for Standard_HB368-144rs_v5</summary>
 
-:::image type="content" source="./media/hpc/architecture/hbv5/hbv5-144-lstopo.png" alt-text="Screenshot of lstopo output for HBv5-144 VM." lightbox="./media/hpc/architecture/hbv5/hbv5-144-lstopo.png":::
+:::image type="content" source="../../media/hpc/architecture/hbv5/hbv5-144-lstopo.png" alt-text="Screenshot of lstopo output for HBv5-144 VM." lightbox="../../media/hpc/architecture/hbv5/hbv5-144-lstopo.png":::
 </details>
 
 <details>
 <summary>Select to view lstopo output for Standard_HB368-96rs_v5</summary>
 
-:::image type="content" source="./media/hpc/architecture/hbv5/hbv5-96-lstopo.png" alt-text="Screenshot of lstopo output for HBv5-96 VM." lightbox="./media/hpc/architecture/hbv5/hbv5-96-lstopo.png":::
+:::image type="content" source="../../media/hpc/architecture/hbv5/hbv5-96-lstopo.png" alt-text="Screenshot of lstopo output for HBv5-96 VM." lightbox="../../media/hpc/architecture/hbv5/hbv5-96-lstopo.png":::
 </details>
 
 <details>
 <summary>Select to view lstopo output for Standard_HB368-48rs_v5</summary>
 
-:::image type="content" source="./media/hpc/architecture/hbv5/hbv5-48-lstopo.png" alt-text="Screenshot of lstopo output for HBv5-48 VM." lightbox="./media/hpc/architecture/hbv5/hbv5-48-lstopo.png":::
+:::image type="content" source="../../media/hpc/architecture/hbv5/hbv5-48-lstopo.png" alt-text="Screenshot of lstopo output for HBv5-48 VM." lightbox="../../media/hpc/architecture/hbv5/hbv5-48-lstopo.png":::
 </details>
 
 ## InfiniBand networking
@@ -184,7 +184,7 @@ HBv5 VMs support Adaptive Routing, Dynamic Connected Transport (DCT, in addition
         ```
 Optimal configuration depends on workload. Symmetric rank distribution usually performs best, but some workloads can benefit from using all 368 cores per VM. Benchmark multiple configurations to determine the best setting.  
 *(Topology reference: 16 NUMA regions, 48 CCDs per VM.)*
-:::image type="content" source="./media/hpc/architecture/hbv5/hbv5-336-lstopo.png" alt-text="Screenshot of HBv5-series VM Topology." lightbox="./media/hpc/architecture/hbv5/hbv5-336-lstopo.png":::
+:::image type="content" source="../../media/hpc/architecture/hbv5/hbv5-336-lstopo.png" alt-text="Screenshot of HBv5-series VM Topology." lightbox="../../media/hpc/architecture/hbv5/hbv5-336-lstopo.png":::
 
 *   For multi VM jobs at scale, disable multi rail in UCX, using:
     ```bash

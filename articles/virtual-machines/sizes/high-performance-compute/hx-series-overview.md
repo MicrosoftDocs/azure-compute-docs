@@ -5,7 +5,7 @@ services: virtual-machines
 ms.service: azure-virtual-machines
 ms.subservice: hpc
 ms.topic: concept-article
-ms.date: 02/10/2026
+ms.date: 09/25/2026
 ms.reviewer: wwilliams
 ms.author: padmalathas
 author: padmalathas
@@ -33,11 +33,11 @@ To provide room for the Azure hypervisor to operate without interfering with the
 
 The following diagram shows the topology of the server. We reserve these 16 hypervisor host cores (yellow) symmetrically across both CPU sockets, taking the first 2 cores from specific Core Complex Dies (CCDs) in each NUMA domain, with the remaining cores for the HX-series VM (green).
 
-![Screenshot of HX-series server Topology.](./media/hpc/architecture/hbv4/hbv4-topology-server.png)
+![Screenshot of HX-series server Topology.](../../media/hpc/architecture/hbv4/hbv4-topology-server.png)
 
 The CCD boundary is different from a NUMA boundary. On HX, a group of six (6) consecutive CCDs is configured as a NUMA domain, both at the host server level and within a guest VM. Thus, all HX VM sizes expose 4 uniform NUMA domains that appear to an OS and application as shown each with different number of cores depending on the specific [HX VM size](hx-series.md).
 
-![Screenshot of HX-series VM Topology.](./media/hpc/architecture/hbv4/hbv4-topology-vm.jpg)
+![Screenshot of HX-series VM Topology.](../../media/hpc/architecture/hbv4/hbv4-topology-vm.jpg)
 
 Each HX VM size is similar in physical layout, features, and performance of a different CPU from the AMD EPYC 9004-series, as follows:
 
@@ -63,31 +63,31 @@ lstopo-no-graphics --no-io --no-legend --of txt
 <details>
 <summary>Click to view lstopo output for Standard_HX176rs</summary>
 
-![lstopo output for HX-176 VM](./media/hpc/architecture/hx/hx-176-lstopo.png)
+![lstopo output for HX-176 VM](../../media/hpc/architecture/hx/hx-176-lstopo.png)
 </details>
 
 <details>
 <summary>Click to view lstopo output for Standard_HX176-144rs</summary>
 
-![lstopo output for HX-144 VM](./media/hpc/architecture/hx/hx-144-lstopo.png)
+![lstopo output for HX-144 VM](../../media/hpc/architecture/hx/hx-144-lstopo.png)
 </details>
 
 <details>
 <summary>Click to view lstopo output for Standard_HX176-96rs</summary>
 
-![lstopo output for HX-96 VM](./media/hpc/architecture/hx/hx-96-lstopo.png)
+![lstopo output for HX-96 VM](../../media/hpc/architecture/hx/hx-96-lstopo.png)
 </details>
 
 <details>
 <summary>Click to view lstopo output for Standard_HX176-48rs</summary>
 
-![lstopo output for HX-48 VM](./media/hpc/architecture/hx/hx-48-lstopo.png)
+![lstopo output for HX-48 VM](../../media/hpc/architecture/hx/hx-48-lstopo.png)
 </details>
 
 <details>
 <summary>Click to view lstopo output for Standard_HX176-24rs</summary>
 
-![lstopo output for HX-24 VM](./media/hpc/architecture/hx/hx-24-lstopo.png)
+![lstopo output for HX-24 VM](../../media/hpc/architecture/hx/hx-24-lstopo.png)
 </details>
 
 ## InfiniBand networking
@@ -124,7 +124,7 @@ When paired in a striped array, the NVMe SSD provides up to 12 GB/s reads and 7 
 | Azure Storage Support          | Standard and Premium Disks (maximum 32 disks), Azure NetApp Files, Azure Files, Azure HPC Cache, Azure Managed Lustre File System             |
 | Supported and Validated OS     | AlmaLinux 8.6, 8.7, Ubuntu 20.04+            |
 | Recommended OS for Performance | AlmaLinux HPC 8.7, Ubuntu-HPC 20.04+    |
-| Orchestrator Support           | Azure CycleCloud, Azure Batch, AKS; [cluster configuration options](sizes-hpc.md#cluster-configuration-options)                      | 
+| Orchestrator Support           | Azure CycleCloud, Azure Batch, AKS; [cluster configuration options](../overview.md#high-performance-compute)                      | 
 
 > [!NOTE] 
 > * These VMs support only Generation 2.

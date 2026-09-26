@@ -5,7 +5,7 @@ ms.service: azure-virtual-machines
 ms.subservice: hpc
 ms.custom: linux-related-content
 ms.topic: how-to
-ms.date: 12/02/2025
+ms.date: 09/25/2026
 ms.reviewer: wwilliams
 ms.author: wwilliams
 author: iamwilliew
@@ -76,6 +76,6 @@ sudo systemctl restart waagent
 ## Next steps
 
 - Learn more about installing and running various [supported MPI libraries](../setup-mpi.md) on the VMs.
-- Review the [HBv3-series overview](../hbv3-series-overview.md) and [HC-series overview](../hc-series-overview.md).
+- Review the [HBv3-series overview](../sizes/high-performance-compute/hbv3-series-overview.md) and [HC-series overview](../sizes/high-performance-compute/hc-series-overview.md).
 - Read about the latest announcements, HPC workload examples, and performance results at the [Azure Compute Tech Community Blogs](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
 - For a higher level architectural view of running HPC workloads, see [High Performance Computing (HPC) on Azure](/azure/architecture/topics/high-performance-computing/).

@@ -5,7 +5,7 @@ author: rod-reis
 ms.author: rosanto
 ms.service: azure-virtual-machines
 ms.topic: faq
-ms.date: 09/24/2026
+ms.date: 09/25/2026
 ms.collection:
   - migration
   - v2-5-to-v6-7
@@ -26,7 +26,7 @@ That depends on who owns the image and what you replace. The Assess and Plan art
 - **Non-persistent session hosts** (Azure Virtual Desktop pooled host pools, Citrix DaaS random catalogs, Omnissa Horizon floating instant clones): Assess and Plan apply to the golden image; hosts are then replaced by ring rather than by VM. Persistent desktops — AVD personal host pools, Citrix static catalogs, Horizon dedicated assignments — bind a user to a specific VM and modernize as customer-managed VMs instead.
 - **Customer-managed, stateful, clustered, and appliance workloads:** the full journey applies.
 
- To find which guidance applies to your workload, start with [Discover migration pattern by workload type](sizes-v6-v7-migration-discover.md).
+ To find which guidance applies to your workload, start with [Discover modernization pattern by workload type](sizes-v6-v7-modernization-discover.md).
 
 
 ## Is moving to v6 or v7 a normal VM resize?
@@ -37,7 +37,7 @@ No, treat it as a platform modernization. The target VM can change the boot mode
 
 Yes — but only through the [Gen1 to Trusted Launch upgrade](/azure/virtual-machines/trusted-launch-existing-vm-gen-1); Trusted Launch is enabled as part of the conversion, and upgrading to Generation 2 without it isn't supported. The disk layout is converted in-guest with MBR2GPT first, then the security-type change flips the VM to Generation 2 (UEFI). vTPM is enabled by default; Secure Boot is optional, so workloads with unsigned kernels or filter drivers can leave it off.
 
-Know the constraints before choosing this path: there's no rollback to Generation 1 except a full restore from a pre-upgrade backup; Windows Server 2016 isn't supported (upgrade the guest OS first); Azure Backup must use the Enhanced policy; and the OS volume can't be encrypted during the upgrade. For how this fits the modernization, see [Choose your execution method](sizes-v6-v7-migration-migrate.md#choose-your-execution-method).
+Know the constraints before choosing this path: there's no rollback to Generation 1 except a full restore from a pre-upgrade backup; Windows Server 2016 isn't supported (upgrade the guest OS first); Azure Backup must use the Enhanced policy; and the OS volume can't be encrypted during the upgrade. For how this fits the modernization, see [Choose your execution method](sizes-v6-v7-modernization-modernize.md#choose-your-execution-method).
 
 ## Why move to a newer VM series?
 
@@ -48,11 +48,11 @@ A newer series gives you access to current Azure infrastructure, better price-pe
 The Dv3, Dsv3, Ev3, and Esv3 series are in the End of Life stage and retire on November 15, 2029. The retirement affects all 32 sizes in these series and doesn't apply to Azure Government, Azure operated by 21Vianet, or sovereign cloud regions.
 
 - **Existing VMs:** Existing VMs keep running and remain supported until the retirement date. After that date, you can't create, resize into, run, or purchase these sizes.
-- **Quota and capacity:** Separately from the retirement, [capacity growth restrictions](../../sizes/lifecycle/retirements-and-capacity-restrictions.md) began in July 2026. New subscriptions can't deploy these series, and additional quota requests aren't approved.
+- **Quota and capacity:** Separately from the retirement, [capacity growth restrictions](./retirements-and-capacity-restrictions.md) began in July 2026. New subscriptions can't deploy these series, and additional quota requests aren't approved.
 - **Reservations:** One-year and three-year Reserved VM Instances for these series are no longer available for new purchases or renewals after July 1, 2026. Existing reservations continue through their term. Exchange eligible reservations for the target series, or use Azure savings plan for compute.
-- **Replacements:** For the smoothest transition, move to the v5 series. For more information, see [Modernize to the v5 VM series](../../sizes/lifecycle/sizes-v5-modernization-overview.md). To access the latest features and performance, move to the v6 or v7 series by using this journey.
+- **Replacements:** For the smoothest transition, move to the v5 series. For more information, see [Modernize to the v5 VM series](./sizes-v5-modernization-overview.md). To access the latest features and performance, move to the v6 or v7 series by using this journey.
 
-For retirement dates and replacement series, see the [Retired VM sizes modernization guide](../../sizes/lifecycle/retirement/retired-sizes-modernization-guide.md).
+For retirement dates and replacement series, see the [Retired VM sizes modernization guide](./retirement/retired-sizes-modernization-guide.md).
 
 ## Is zone support always available?
 
@@ -81,7 +81,7 @@ The core gates are:
 
 Two workload types have a gate that comes *before* this list. For SAP, only sizes on the SAP-certified list are supportable, regardless of platform readiness. For ISV virtual appliances, the vendor certifies specific families, NIC layouts, and disk presentation. If either applies, confirm certification first — the rest of the checklist is moot without it.
 
-For the full list, see [Assess readiness](sizes-v6-v7-migration-assess.md).
+For the full list, see [Assess readiness](sizes-v6-v7-modernization-assess.md).
 
 ## What if we use custom images?
 
@@ -103,21 +103,21 @@ Review those agents before modernization. Filter drivers, especially on Windows,
 
 Azure Disk Encryption isn't available on the v6 or v7 series for either operating system, and it's scheduled for retirement on 15 September 2028 — after that date, encrypted disks fail to unlock after a reboot. The replacement is [encryption at host](/azure/virtual-machines/disk-encryption).
 
-Plan for a rebuild rather than a conversion: encryption at host can't be enabled on a VM that currently has, or has ever had, ADE — and the restriction survives decryption, snapshots, and disk copies. The supported path is new disks and a new VM. For the constraints, decisions, and procedure, see [Azure Disk Encryption and encryption at host](sizes-v6-v7-migration-plan.md#azure-disk-encryption-and-encryption-at-host) in Plan.
+Plan for a rebuild rather than a conversion: encryption at host can't be enabled on a VM that currently has, or has ever had, ADE — and the restriction survives decryption, snapshots, and disk copies. The supported path is new disks and a new VM. For the constraints, decisions, and procedure, see [Azure Disk Encryption and encryption at host](sizes-v6-v7-modernization-plan.md#azure-disk-encryption-and-encryption-at-host) in Plan.
 
 ## Can you roll back?
 
-Plan and test rollback before modernization, and match it to the [execution method](sizes-v6-v7-migration-migrate.md#choose-your-execution-method):
+Plan and test rollback before modernization, and match it to the [execution method](sizes-v6-v7-modernization-modernize.md#choose-your-execution-method):
 
 - **Redeploy:** rollback is "keep the old VM or pool until the new one is validated, then retire it" — redirect clients back; no restore involved.
 - **In-place upgrade:** the SCSI-to-NVMe conversion reverts by switching the controller back to SCSI and the original size, with the disks untouched. The Gen1 to Trusted Launch step **doesn't revert** — recovery from it is a full restore from the backup taken before the upgrade.
-- **Clustered workloads:** rollback means transferring the role back and keeping the old node until the window closes, not restoring an image. Domain controllers in particular must never be restored or cloned from another domain controller — see [Stateful and clustered workloads](sizes-v6-v7-migration-migrate.md#stateful-and-clustered-workloads-f).
+- **Clustered workloads:** rollback means transferring the role back and keeping the old node until the window closes, not restoring an image. Domain controllers in particular must never be restored or cloned from another domain controller — see [Stateful and clustered workloads](sizes-v6-v7-modernization-modernize.md#stateful-and-clustered-workloads-f).
 
-Either way, keep a documented plan with a backup or restore point, an owner, a maintenance window, and decision criteria. See [Rollback guidance](sizes-v6-v7-migration-migrate.md#rollback-guidance).
+Either way, keep a documented plan with a backup or restore point, an owner, a maintenance window, and decision criteria. See [Rollback guidance](sizes-v6-v7-modernization-modernize.md#rollback-guidance).
 
 ## What tooling is involved?
 
-The SCSI-to-NVMe conversion behind the [in-place upgrade](sizes-v6-v7-migration-migrate.md#choose-your-execution-method) is a supported platform operation. The automation most teams use for it is a community script — validate it against a non-production VM before using it in a production wave, and always run it with a backup and a tested revert in hand. To learn more, see [Convert a VM from SCSI to NVMe in place](scsi-to-nvme-migration.md). Tooling automates checks and conversion steps, but it doesn't replace workload-dependency assessment or application validation.
+The SCSI-to-NVMe conversion behind the [in-place upgrade](sizes-v6-v7-modernization-modernize.md#choose-your-execution-method) is a supported platform operation. The automation most teams use for it is a community script — validate it against a non-production VM before using it in a production wave, and always run it with a backup and a tested revert in hand. To learn more, see [Convert a VM from SCSI to NVMe in place](../../migration/scsi-to-nvme-migration.md). Tooling automates checks and conversion steps, but it doesn't replace workload-dependency assessment or application validation.
 
 ## Should we take the backup with the VM running or powered off?
 
@@ -133,7 +133,7 @@ Confirm whether you can use a regional deployment, another zone, another region,
 
 ## What about cost?
 
-Use the [Azure Pricing Calculator](https://azure.microsoft.com/pricing/calculator/) for current pricing, and frame the decision around efficiency, performance, and capacity. Because the v6 and v7 series deliver better performance, you often need fewer or smaller instances for the same workload, see [Post-modernization optimization](sizes-v6-v7-migration-validate.md#post-modernization-optimization).
+Use the [Azure Pricing Calculator](https://azure.microsoft.com/pricing/calculator/) for current pricing, and frame the decision around efficiency, performance, and capacity. Because the v6 and v7 series deliver better performance, you often need fewer or smaller instances for the same workload, see [Post-modernization optimization](sizes-v6-v7-modernization-validate.md#post-modernization-optimization).
 
 ## How should Azure Virtual Desktop, AKS, Databricks, or scale-set workloads move?
 
@@ -142,7 +142,7 @@ Move these workloads through the platform's own rollout mechanism, not through t
 
 One exception: this guidance applies only where hosts are non-persistent. An Azure Virtual Desktop **personal** host pool binds each user to a specific VM, so there's no pool to replace. Those workloads modernize one VM at a time, like any customer-managed VM. The same guidance applies to Citrix static (dedicated) catalogs and Omnissa Horizon dedicated assignments.
 
-For the sequence and references for each of these workloads, see [Discover migration pattern by workload type](sizes-v6-v7-migration-discover.md).
+For the sequence and references for each of these workloads, see [Discover modernization pattern by workload type](sizes-v6-v7-modernization-discover.md).
 
 
 ## Should we use Azure Image Builder?
@@ -156,7 +156,7 @@ Multi-size strategies can improve capacity flexibility, but you must validate th
 
 ## How should marketplace or ISV appliances be handled?
 
-Confirm vendor support before production modernization. For products such as firewalls, monitoring tools, endpoint security, backup, or packet-capture appliances, validate the exact version, image, licensing model, NIC count, accelerated networking, throughput, failover, logging, and support path. If you deploy the product from Azure Marketplace, confirm the publisher image supports the target VM family. If you directly procure the product, confirm support with the vendor. See [ISV virtual appliances](sizes-v6-v7-migration-plan.md#isv-virtual-appliances) in Plan for the certification checklist, and [Cut over a certified appliance](sizes-v6-v7-migration-migrate.md#cut-over-a-certified-appliance-g) for the cutover sequence. You usually modernize an ISV appliance by redeploying new from the Marketplace.
+Confirm vendor support before production modernization. For products such as firewalls, monitoring tools, endpoint security, backup, or packet-capture appliances, validate the exact version, image, licensing model, NIC count, accelerated networking, throughput, failover, logging, and support path. If you deploy the product from Azure Marketplace, confirm the publisher image supports the target VM family. If you directly procure the product, confirm support with the vendor. See [ISV virtual appliances](sizes-v6-v7-modernization-plan.md#isv-virtual-appliances) in Plan for the certification checklist, and [Cut over a certified appliance](sizes-v6-v7-modernization-modernize.md#cut-over-a-certified-appliance-g) for the cutover sequence. You usually modernize an ISV appliance by redeploying new from the Marketplace.
 
 ## How should large modernization programs be approached?
 
@@ -169,8 +169,8 @@ For hundreds or thousands of VMs, use automation and governance:
 - Use Azure Monitor, Log Analytics, health probes, and application tests for validation.
 - Track readiness, exceptions, wave status, rollback decisions, and post-modernization health in a shared system.
 
-For the estate-scale approach, see [Modernize in waves](sizes-v6-v7-migration-migrate.md#phase-2-modernize-in-waves).
+For the estate-scale approach, see [Modernize in waves](sizes-v6-v7-modernization-modernize.md#phase-2-modernize-in-waves).
 
 ## Next steps
 
-- [Discover migration pattern by workload type](sizes-v6-v7-migration-discover.md)
+- [Discover modernization pattern by workload type](sizes-v6-v7-modernization-discover.md)

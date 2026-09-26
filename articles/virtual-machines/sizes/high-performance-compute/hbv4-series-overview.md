@@ -5,7 +5,7 @@ services: virtual-machines
 ms.service: azure-virtual-machines
 ms.subservice: hpc
 ms.topic: concept-article
-ms.date: 05/05/2026
+ms.date: 09/25/2026
 ms.reviewer: wwilliams
 ms.author: padmalathas
 author: padmalathas
@@ -33,11 +33,11 @@ To provide room for the Azure hypervisor to operate without interfering with the
 ## VM topology
 The following diagram shows the topology of the server. We reserve these 16 hypervisor host cores (yellow) symmetrically across both CPU sockets, taking the first two cores from specific Core Complex Dies (CCDs) in each NUMA domain, with the remaining cores for the HBv4-series VM (green).
 
-![Screenshot of HBv4-series server Topology](./media/hpc/architecture/hbv4/hbv4-topology-server.png)
+![Screenshot of HBv4-series server Topology](../../media/hpc/architecture/hbv4/hbv4-topology-server.png)
 
 The CCD boundary is different from a NUMA boundary. On HBv4, a group of six (6) consecutive CCDs is configured as a NUMA domain, both at the host server level and within a guest VM. Thus, all HBv4 VM sizes expose four uniform NUMA domains that appear to an OS and application as shown below, each with different number of cores depending on the specific [HBv4 VM size](hbv4-series.md).
 
-![Screenshot of HBv4-series VM Topology](./media/hpc/architecture/hbv4/hbv4-topology-vm.jpg)
+![Screenshot of HBv4-series VM Topology](../../media/hpc/architecture/hbv4/hbv4-topology-vm.jpg)
 
 Each HBv4 VM size is similar in physical layout, features, and performance of a different CPU from the AMD EPYC 9V33X, as follows:
 
@@ -64,31 +64,31 @@ lstopo-no-graphics --no-io --no-legend --of txt
 <details>
 <summary>Select to view lstopo output for Standard_HB176rs_v4</summary>
 
-![lstopo output for HBv4-176 VM](./media/hpc/architecture/hbv4/hbv4-176-lstopo.png)
+![lstopo output for HBv4-176 VM](../../media/hpc/architecture/hbv4/hbv4-176-lstopo.png)
 </details>
 
 <details>
 <summary>Select to view lstopo output for Standard_HB176-144rs_v4</summary>
 
-![lstopo output for HBv4-144 VM](./media/hpc/architecture/hbv4/hbv4-144-lstopo.png)
+![lstopo output for HBv4-144 VM](../../media/hpc/architecture/hbv4/hbv4-144-lstopo.png)
 </details>
 
 <details>
 <summary>Select to view lstopo output for Standard_HB176-96rs_v4</summary>
 
-![lstopo output for HBv4-64 VM](./media/hpc/architecture/hbv4/hbv4-96-lstopo.png)
+![lstopo output for HBv4-64 VM](../../media/hpc/architecture/hbv4/hbv4-96-lstopo.png)
 </details>
 
 <details>
 <summary>Select to view lstopo output for Standard_HB176-48rs_v4</summary>
 
-![lstopo output for HBv4-32 VM](./media/hpc/architecture/hbv4/hbv4-48-lstopo.png)
+![lstopo output for HBv4-32 VM](../../media/hpc/architecture/hbv4/hbv4-48-lstopo.png)
 </details>
 
 <details>
 <summary>Select to view lstopo output for Standard_HB176-24rs_v4</summary>
 
-![lstopo output for HBv4-24 VM](./media/hpc/architecture/hbv4/hbv4-24-lstopo.png)
+![lstopo output for HBv4-24 VM](../../media/hpc/architecture/hbv4/hbv4-24-lstopo.png)
 </details>
 
 

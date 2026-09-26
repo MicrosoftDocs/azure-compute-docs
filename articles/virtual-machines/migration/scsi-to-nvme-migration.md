@@ -5,7 +5,7 @@ author: rod-reis
 ms.author: rosanto
 ms.service: azure-virtual-machines
 ms.topic: how-to
-ms.date: 07/03/2026
+ms.date: 09/25/2026
 ms.collection:
   - migration
   - v2-5-to-v6-7
@@ -18,15 +18,15 @@ ai-usage: ai-assisted
 
 **Applies to:** ✔️ Linux VMs ✔️ Windows VMs
 
-The [wave-based runbook](sizes-v6-v7-migration-migrate.md) covers the full migration sequence. This page focuses on the tool that does the in-place work: a script that switches a VM's disk controller between SCSI and NVMe without a rebuild, so the existing OS disk is kept.
+The [wave-based runbook](../sizes/lifecycle/sizes-v6-v7-modernization-modernize.md) covers the full modernization sequence. This page focuses on the tool that does the in-place work: a script that switches a VM's disk controller between SCSI and NVMe without a rebuild, so the existing OS disk is kept.
 
 For the platform reference behind the conversion, how the disk controller type changes and how to verify the result, see [Convert SCSI to NVMe for Linux and Windows VMs](/azure/virtual-machines/nvme-linux).
 
 > [!WARNING]
-> The conversion script is a community utility published by the SAP on Azure team in the [`Azure/SAP-on-Azure-Scripts-and-Utilities`](https://github.com/Azure/SAP-on-Azure-Scripts-and-Utilities) repository. **Microsoft doesn't consider the script an officially supported product, service, or tool.** The SAP on Azure team provides the script as-is. Review the script carefully, and test it in a non-production environment first. Pair it with the [runbook sequence](sizes-v6-v7-migration-migrate.md) and the [readiness assessment](sizes-v6-v7-migration-assess.md) so you run it with a backup and a rollback already in hand.
+> The conversion script is a community utility published by the SAP on Azure team in the [`Azure/SAP-on-Azure-Scripts-and-Utilities`](https://github.com/Azure/SAP-on-Azure-Scripts-and-Utilities) repository. **Microsoft doesn't consider the script an officially supported product, service, or tool.** The SAP on Azure team provides the script as-is. Review the script carefully, and test it in a non-production environment first. Pair it with the [runbook sequence](../sizes/lifecycle/sizes-v6-v7-modernization-modernize.md) and the [readiness assessment](../sizes/lifecycle/sizes-v6-v7-modernization-assess.md) so you run it with a backup and a rollback already in hand.
 
 > [!TIP]
-> This script is for **no-temp-disk source VMs only**, sizes without a `d` before the version suffix (for example, `Standard_D4s_v5` or `Standard_D8s_v5`). VMs that already have a local temporary disk (for example, `Standard_D4ds_v5`) can convert in place to a v6 size as long as you enable the preview feature `VMTempDiskResizePreview` ; use the [redeploy-from-image path](sizes-v6-v7-migration-migrate.md) instead. See the [temporary-disk dependency row](sizes-v6-v7-migration-assess.md#readiness-signals-to-check) in the readiness assessment.
+> This script is for **no-temp-disk source VMs only**, sizes without a `d` before the version suffix (for example, `Standard_D4s_v5` or `Standard_D8s_v5`). VMs that already have a local temporary disk (for example, `Standard_D4ds_v5`) can convert in place to a v6 size as long as you enable the preview feature `VMTempDiskResizePreview` ; use the [redeploy-from-image path](../sizes/lifecycle/sizes-v6-v7-modernization-modernize.md) instead. See the [temporary-disk dependency row](../sizes/lifecycle/sizes-v6-v7-modernization-assess.md#readiness-signals-to-check) in the readiness assessment.
 
 ## Before you run the conversion
 
@@ -98,5 +98,5 @@ If the converted VM doesn't validate, run the script again with `-NewControllerT
 
 ## Next steps
 
-- [Validate and optimize](sizes-v6-v7-migration-validate.md)
+- [Validate and optimize](../sizes/lifecycle/sizes-v6-v7-modernization-validate.md)
 - [Convert SCSI to NVMe for Linux and Windows VMs](/azure/virtual-machines/nvme-linux)
