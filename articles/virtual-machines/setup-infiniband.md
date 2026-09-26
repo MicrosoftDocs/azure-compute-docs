@@ -4,7 +4,7 @@ description: Learn how to set up InfiniBand on Azure HPC VMs.
 ms.service: azure-virtual-machines
 ms.subservice: hpc
 ms.topic: how-to
-ms.date: 11/21/2024
+ms.date: 09/25/2026
 ms.reviewer: wwilliams
 ms.author: padmalathas
 author: padmalathas
@@ -83,6 +83,6 @@ Also, VMSS serves as the isolation boundary between workloads within the same cl
 ## Next steps
 
 - Learn more about [configuring your VMs](./workloads/hpc/configure.md), [enabling InfiniBand](./workloads/hpc/enable-infiniband.md), [setting up MPI](./workloads/hpc/setup-mpi.md) and optimizing HPC applications for Azure at [HPC Workloads](./workloads/hpc/overview.md).
-- Review the [HBv3-series overview](hbv3-series-overview.md) and [HC-series overview](hc-series-overview.md).
+- Review the [HBv3-series overview](./sizes/high-performance-compute/hbv3-series-overview.md) and [HC-series overview](./sizes/high-performance-compute/hc-series-overview.md).
 - Read about the latest announcements, HPC workload examples, and performance results at the [Azure Compute Tech Community Blogs](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
 - For a higher level architectural view of running HPC workloads, see [High Performance Computing (HPC) on Azure](/azure/architecture/topics/high-performance-computing/).

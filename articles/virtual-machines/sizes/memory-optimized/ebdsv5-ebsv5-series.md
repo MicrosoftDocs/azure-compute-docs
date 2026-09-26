@@ -11,7 +11,7 @@ ms.custom: references_regions
 
 # Ebdsv5 and Ebsv5 series 
 
-The memory-optimized Ebsv5 and Ebdsv5 Azure virtual machine (VM) series deliver higher remote storage performance in each VM size than the [Ev4 series](ev4-esv4-series.md). The increased remote storage performance of the Ebsv5 and Ebdsv5 VMs is ideal for storage throughput-intensive workloads. For example, relational databases and data analytics applications.  
+The memory-optimized Ebsv5 and Ebdsv5 Azure virtual machine (VM) series deliver higher remote storage performance in each VM size than the [Ev4 series](ev4-series.md). The increased remote storage performance of the Ebsv5 and Ebdsv5 VMs is ideal for storage throughput-intensive workloads. For example, relational databases and data analytics applications.  
 
 The Ebsv5 and Ebdsv5 VMs offer up to 260000 IOPS and 8000 MBps of remote disk storage throughput. Both series also include up to 672 GiB of RAM. The Ebdsv5 series has local SSD storage up to 3800 GiB. Both series provide a 3X increase in remote storage performance of data-intensive workloads compared to prior VM generations. You can use these series to consolidate existing workloads on fewer VMs or smaller VM sizes while achieving potential cost savings. The Ebdsv5 series comes with a local disk and Ebsv5 is without a local disk. We recommend choosing Premium SSD, Premium SSD v2 or Ultra Disks to attain the published disk performance.
 
@@ -26,20 +26,20 @@ The Ebdsv5 and Ebsv5 series run on the Intel® Xeon® Platinum 8370C (Ice Lake) 
 
 > [!IMPORTANT]
 > - Accelerated networking is required and turned on by default on all Ebsv5 and Ebdsv5 VMs. 
-> - Ebsv5 and Ebdsv5-series VMs can [burst their disk performance](disk-bursting.md) and get up to their bursting max for up to 30 minutes at a time.
+> - Ebsv5 and Ebdsv5-series VMs can [burst their disk performance](../../disk-bursting.md) and get up to their bursting max for up to 30 minutes at a time.
 > - The E112i size is offered as NVMe only to provide the highest IOPS and throughput performance. See the NVMe VM spec table to see the improved performance details.
 
 ## Ebdsv5 series
 
 Ebdsv5-series sizes run on the Intel® Xeon® Platinum 8370C (Ice Lake) processors. The Ebdsv5 VM sizes feature up to 672 GiB of RAM, in addition to fast and large local SSD storage (up to 3800 GiB). These VMs are ideal for memory-intensive enterprise applications and applications that benefit from high remote storage performance, low latency, high-speed local storage. Remote Data disk storage is billed separately from VMs. 
 
-- [Premium Storage](premium-storage-performance.md): Supported
-- [Premium Storage caching](premium-storage-performance.md): Supported
-- [Live Migration](maintenance-and-updates.md): Supported
-- [Memory Preserving Updates](maintenance-and-updates.md): Supported
-- [VM Generation Support](generation-2.md): Generation 1 and Generation 2
+- [Premium Storage](../../premium-storage-performance.md): Supported
+- [Premium Storage caching](../../premium-storage-performance.md): Supported
+- [Live Migration](../../maintenance-and-updates.md): Supported
+- [Memory Preserving Updates](../../maintenance-and-updates.md): Supported
+- [VM Generation Support](../../generation-2.md): Generation 1 and Generation 2
 - [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported (required)
-- [Ephemeral OS Disks](ephemeral-os-disks.md): Supported
+- [Ephemeral OS Disks](../../ephemeral-os-disks.md): Supported
 - Nested virtualization: Supported
 - NVMe Interface: Supported only on Generation 2 VMs
 - SCSI Interface: Supported on Generation 1 and 2 VMs
@@ -75,13 +75,13 @@ Ebdsv5-series sizes run on the Intel® Xeon® Platinum 8370C (Ice Lake) processo
 
 Ebsv5-series sizes run on the Intel® Xeon® Platinum 8272CL (Cascade Lake). These VMs are ideal for memory-intensive enterprise applications and applications that benefit from high remote storage performance but with no local SSD storage. Ebsv5-series VMs feature Intel® Hyper-Threading Technology. Remote Data disk storage is billed separately from VMs. 
 
-- [Premium Storage](premium-storage-performance.md): Supported
-- [Premium Storage caching](premium-storage-performance.md): Supported
-- [Live Migration](maintenance-and-updates.md): Supported
-- [Memory Preserving Updates](maintenance-and-updates.md): Supported
-- [VM Generation Support](generation-2.md): Generation 1 and Generation 2
+- [Premium Storage](../../premium-storage-performance.md): Supported
+- [Premium Storage caching](../../premium-storage-performance.md): Supported
+- [Live Migration](../../maintenance-and-updates.md): Supported
+- [Memory Preserving Updates](../../maintenance-and-updates.md): Supported
+- [VM Generation Support](../../generation-2.md): Generation 1 and Generation 2
 - [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported (required)
-- [Ephemeral OS Disks](ephemeral-os-disks.md): Not supported
+- [Ephemeral OS Disks](../../ephemeral-os-disks.md): Not supported
 - Nested virtualization: Supported
 - NVMe Interface: Supported only on Generation 2 VMs
 - SCSI Interface: Supported on Generation 1 and Generation 2 VMs
@@ -113,7 +113,7 @@ Ebsv5-series sizes run on the Intel® Xeon® Platinum 8272CL (Cascade Lake). The
 | Standard_E64bs_v5 | 64 | 512 | 32 | 120000/4000 | 120000/4000 | 160800/6500 | 160800/6500 | 8 | 20000 |
 | Standard_E96bs_v5 | 96 | 672 | 32 | 120000/4000 | 120000/4000 | 180000/6500 | 180000/6500 | 8 | 25000 |
 
-[!INCLUDE [virtual-machines-common-sizes-table-defs](./includes/virtual-machines-common-sizes-table-defs.md)]
+[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
 ## Ebsv5 NVMe FAQ
 
@@ -144,10 +144,10 @@ The sizes E2-E112i support NVMe on Ebsv5 and Ebdsv5 families.
 All sizes (E2-E96) on the Ebsv5 and Ebsdv5 families support SCSI except E112i. 
 
 ### I have a SCSI Ebsv5 VM. How do I switch to NVMe of the same VM size?   
-The steps to switch from SCSI to NVMe are the same as explained [here](./enable-nvme-remote-faqs.yml).
+The steps to switch from SCSI to NVMe are the same as explained [here](../../enable-nvme-remote-faqs.yml).
 
 ### How can I switch back to SCSI interface from NVMe VM?   
-To switch back to SCSI from NVMe, follow the same steps as explained [here](./enable-nvme-remote-faqs.yml).
+To switch back to SCSI from NVMe, follow the same steps as explained [here](../../enable-nvme-remote-faqs.yml).
 
 ### What is the price for NVMe Ebsv5 prices?  
 The NVMe enabled Ebsv5 and Ebdsv5 VMs are the same price as SCSI VMs. Refer to the pricing pages for [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) and [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/). With NVMe, you get higher performance at no extra cost. 
@@ -160,26 +160,26 @@ The preview period for this offer is over, and it is now generally available for
 #### My VMs don't reach the published performance limits. Where do I report this issue? 
 If you see performance issues, you can submit a [support ticket](https://azure.microsoft.com/support/create-ticket). Provide all relevant information on the ticket, such as the subscription, VM size used, region, logs, and screenshot. 
 
-   :::image type="content" source="./media/enable-nvme/nvme-faq-10.png" alt-text="Screenshot of example of guest output for data disks.":::
+   :::image type="content" source="../../media/enable-nvme/nvme-faq-10.png" alt-text="Screenshot of example of guest output for data disks.":::
 
 #### How can I get more help if I run into issues while setting up the VMs with the NVMe interface?  
 If you run into issues while creating or resizing Ebsv5 or Ebdsv5 to NVMe, and need assistance, you can submit a [support ticket](https://azure.microsoft.com/support/create-ticket).
 
-   :::image type="content" source="./media/enable-nvme/nvme-faq-11.png" alt-text="Screenshot of example for reporting issues for feature by submitting support ticket.":::
+   :::image type="content" source="../../media/enable-nvme/nvme-faq-11.png" alt-text="Screenshot of example for reporting issues for feature by submitting support ticket.":::
 
-   :::image type="content" source="./media/enable-nvme/nvme-faq-12.png" alt-text="Screenshot of support ticket selection details.":::
+   :::image type="content" source="../../media/enable-nvme/nvme-faq-12.png" alt-text="Screenshot of support ticket selection details.":::
 
 ## Other sizes and information
 
-- [General purpose](sizes-general.md)
-- [Memory optimized](sizes-memory.md)
-- [Storage optimized](sizes-storage.md)
-- [GPU optimized](sizes-gpu.md)
-- [High performance compute](sizes-hpc.md)
-- [End of Life sizes](sizes-previous-gen.md)
+- [General purpose](../overview.md#general-purpose)
+- [Memory optimized](../overview.md#memory-optimized)
+- [Storage optimized](../overview.md#storage-optimized)
+- [GPU optimized](../overview.md#gpu-accelerated)
+- [High performance compute](../overview.md#high-performance-compute)
+- [End of Life sizes](../lifecycle/end-of-life-sizes-list.md)
 
 ## Next steps
 
-- [Enabling NVMe Interface](enable-nvme-interface.md)
-- [Enable NVMe FAQs](enable-nvme-faqs.yml)
+- [Enabling NVMe Interface](../../enable-nvme-interface.md)
+- [Enable NVMe FAQs](../../enable-nvme-faqs.yml)
 - Use the Azure [Pricing Calculator](https://azure.microsoft.com/pricing/calculator/)

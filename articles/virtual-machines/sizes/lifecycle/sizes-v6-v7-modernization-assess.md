@@ -5,7 +5,7 @@ author: rod-reis
 ms.author: rosanto
 ms.service: azure-virtual-machines
 ms.topic: how-to
-ms.date: 09/24/2026
+ms.date: 09/25/2026
 ms.collection:
   - migration
   - v2-5-to-v6-7
@@ -35,25 +35,25 @@ For new deployments, you don't need to fix anything. Choose the v6 or v7 series 
 - Enable [Trusted Launch](/azure/virtual-machines/trusted-launch) (the default for Generation 2) for Secure Boot and vTPM.
 - Deploy from a current Generation 2, NVMe-ready, MANA-ready marketplace or [Azure Compute Gallery](/azure/virtual-machines/azure-compute-gallery) image.
 
-Greenfield deployments can skip the remediation guidance that follows and go straight to sizing and capacity in [Plan the modernization](sizes-v6-v7-migration-plan.md).
+Greenfield deployments can skip the remediation guidance that follows and go straight to sizing and capacity in [Plan the modernization](sizes-v6-v7-modernization-plan.md).
 
 ## Brownfield modernization from the v2 through v5 series
 
 ### Retiring v3 source series
 
 > [!IMPORTANT]
-> The Dv3, Dsv3, Ev3, and Esv3 series retire on November 15, 2029. After that date, you can't create, resize into, run, or purchase these sizes. Assess workloads on these series first. For retirement details, see the [Retired VM sizes modernization guide](../../sizes/lifecycle/retirement/retired-sizes-modernization-guide.md).
+> The Dv3, Dsv3, Ev3, and Esv3 series retire on November 15, 2029. After that date, you can't create, resize into, run, or purchase these sizes. Assess workloads on these series first. For retirement details, see the [Retired VM sizes modernization guide](./retirement/retired-sizes-modernization-guide.md).
 
 Workloads on these series usually trigger several readiness signals at once. Check these signals for every v3 workload:
 
-- **Generation 1:** Many v3 VMs are Generation 1. Plan a Generation 2 image. You can't convert Generation 1 Dv3 VMs to Generation 2 in place. For more information, see [Decide a modernization approach](sizes-v6-v7-migration-plan.md#decide-a-modernization-approach).
+- **Generation 1:** Many v3 VMs are Generation 1. Plan a Generation 2 image. You can't convert Generation 1 Dv3 VMs to Generation 2 in place. For more information, see [Decide a modernization approach](sizes-v6-v7-modernization-plan.md#decide-a-modernization-approach).
 - **Image:** Refresh custom images to a current Generation 2, NVMe-ready, and MANA-ready version.
 - **NVMe:** The v3 series presents disks over SCSI. Replace hard-coded SCSI device paths with stable identifiers.
 - **MANA:** Confirm the OS and driver meet the MANA version floors.
 - **Local disk:** Every v3 size includes a local temporary disk. If the workload uses it, choose a `d`-suffixed target size, such as Ddsv6 or Edsv6, or relocate that data to a managed data disk.
-- **Region and quota:** [Capacity growth restrictions](../../sizes/lifecycle/retirements-and-capacity-restrictions.md) already block extra v3 quota. Request quota for the target family early in every region and zone you need.
+- **Region and quota:** [Capacity growth restrictions](./retirements-and-capacity-restrictions.md) already block extra v3 quota. Request quota for the target family early in every region and zone you need.
 
-If the v6 or v7 prerequisites block a v3 workload, the v5 series provides the smoothest transition. For more information, see [Modernize to the v5 VM series](../../sizes/lifecycle/sizes-v5-modernization-overview.md).
+If the v6 or v7 prerequisites block a v3 workload, the v5 series provides the smoothest transition. For more information, see [Modernize to the v5 VM series](./sizes-v5-modernization-overview.md).
 
 ### What changes, and what doesn't
 
@@ -74,7 +74,7 @@ Two categories of workloads have a gate that comes before this checklist. Confir
 
 > [!IMPORTANT]
 > - **SAP workloads.** Only sizes on the SAP-certified list are supported, regardless of platform readiness. Treat certification as a gate that comes before all other planning, not as a validation item. See [What SAP software is supported on Azure VMs](/azure/sap/workloads/supported-product-on-azure).
-> - **ISV virtual appliances.** Firewalls, network virtual appliances, backup dec, and storage appliances are vendor-certified products. The vendor certifies specific VM families, NIC layouts, driver configurations, and disk presentation. Confirm the vendor supports your exact target family before assessing anything else. See [ISV network and storage appliances](sizes-v6-v7-migration-plan.md#isv-virtual-appliances).
+> - **ISV virtual appliances.** Firewalls, network virtual appliances, backup dec, and storage appliances are vendor-certified products. The vendor certifies specific VM families, NIC layouts, driver configurations, and disk presentation. Confirm the vendor supports your exact target family before assessing anything else. See [ISV network and storage appliances](sizes-v6-v7-modernization-plan.md#isv-virtual-appliances).
 
 ### Readiness signals to check
 
@@ -82,15 +82,15 @@ Two categories of workloads have a gate that comes before this checklist. Confir
 | Signal | Why it matters | Recommended action |
 | --- | --- | --- |
 | Generation 1 source (common on v2, v3, and v4) | The v6 and v7 series require Generation 2 (UEFI). | Plan a Generation 2 image, or use the [Generation 1 to Generation 2 upgrade](/azure/virtual-machines/generation-2). |
-| OS NVMe support | The OS must discover disks over [NVMe](/azure/virtual-machines/nvme-overview). | Confirm a supported OS version and refresh the image if needed, or follow the [SCSI to NVMe conversion](scsi-to-nvme-migration.md). |
+| OS NVMe support | The OS must discover disks over [NVMe](/azure/virtual-machines/nvme-overview). | Confirm a supported OS version and refresh the image if needed, or follow the [SCSI to NVMe conversion](../../migration/scsi-to-nvme-migration.md). |
 | Custom image not NVMe/Generation 2 ready | The image might not boot or attach storage on the target size. | Rebuild or update the image; test boot and disk discovery once. |
 | MANA driver readiness | Networking uses the [MANA](/azure/virtual-network/accelerated-networking-mana-overview) adapter. | Confirm OS and driver support (see version floors under [Assessment Checklist](#assessment-checklist). |
 | Hard-coded SCSI disk paths | Scripts or agents that reference `/dev/disk/azure/scsi*` need stable IDs. | Switch to stable identifiers (by-UUID or Azure disk symlinks). |
-| Persistent data on the OS disk | Cross-generation moves redeploy from a fresh image, so anything an app writes straight to the OS volume (configuration, license/activation files, local databases, certificates, or state) doesn't carry over. | Inventory what each workload persists to the OS disk and plan a capture-and-restore step, or relocate it to a managed data disk or external store. See [Persistent application data on the OS disk](sizes-v6-v7-migration-plan.md#persistent-application-data-on-the-os-disk). |
+| Persistent data on the OS disk | Cross-generation moves redeploy from a fresh image, so anything an app writes straight to the OS volume (configuration, license/activation files, local databases, certificates, or state) doesn't carry over. | Inventory what each workload persists to the OS disk and plan a capture-and-restore step, or relocate it to a managed data disk or external store. See [Persistent application data on the OS disk](sizes-v6-v7-modernization-plan.md#persistent-application-data-on-the-os-disk). |
 | Temporary-disk dependency | A local or temporary disk exists only on `d`-suffixed sizes and is presented as NVMe. A source VM that already has a temporary disk (for example, `E32ds_v5`) can't convert in place directly to a v6 size. | Choose a `d`-size if local scratch is needed, and relocate the page file or `tempdb` accordingly. Where the source has a temporary disk, plan a redeploy path rather than a direct conversion. |
 | Azure Disk Encryption (ADE) for Linux | ADE for Linux isn't supported with NVMe, so converting an ADE-encrypted Linux VM to NVMe produces an unsupported configuration. | Decrypt the VM before you convert, or use the redeploy-from-image path. Check for ADE yourself first, the community SCSI-to-NVMe conversion script doesn't currently detect ADE and can complete without warning. |
 | Local NVMe temporary disk isn't auto-formatted | On v6 and v7 sizes, the local NVMe temporary disk is presented raw and unformatted and is re-created on every stop/deallocate cycle. Nothing left on it is persistent, and on Windows the `D:` mapping can be lost after a deallocate/start cycle. | Initialize and format the local disk on each start (for example, a boot-time task), and keep nothing persistent there. |
-| Region and zone requirement | Availability varies by region and zone. | Confirm the target size is available in the required regions and zones before committing the design. See [Region, zone, and capacity planning](sizes-v6-v7-migration-plan.md#region-zone-and-capacity-planning). |
+| Region and zone requirement | Availability varies by region and zone. | Confirm the target size is available in the required regions and zones before committing the design. See [Region, zone, and capacity planning](sizes-v6-v7-modernization-plan.md#region-zone-and-capacity-planning). |
 | Availability and quota for the new family | The v6 and v7 series use distinct quota families. | Request quota early, verify capacity for the target size in the required regions and zones, and use [capacity reservations](/azure/virtual-machines/capacity-reservation-overview) for guaranteed supply. |
 | Family-scoped reservations and savings plans | Discounts are scoped to a VM family. | Replan [reservations or savings plans](/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations) so coverage follows the move. |
 | Low-level ISV agents (antivirus, backup, monitoring with kernel or filter drivers) | Secure Boot and NVMe can affect unsigned or older drivers. | Confirm a current, signed agent version. |
@@ -105,7 +105,7 @@ For **non-persistent** session hosts — Azure Virtual Desktop pooled host pools
 
 **Persistent desktops don't follow this pattern.** Azure Virtual Desktop personal host pools, Citrix DaaS static (dedicated) catalogs, and Omnissa Horizon dedicated assignments bind a user to a specific VM, so there's no shared image to assess once and no host to drain. Assess each one as a customer-managed VM, and expect the OS-disk data and hibernation signals in the preceding table to apply.
 
-For the host replacement sequence, see [Image-based desktop and application hosts](sizes-v6-v7-migration-discover.md#b-image-based-desktop-and-application-hosts).
+For the host replacement sequence, see [Image-based desktop and application hosts](sizes-v6-v7-modernization-discover.md#b-image-based-desktop-and-application-hosts).
 
 
 ## Assessment checklist
@@ -303,4 +303,4 @@ For the CPU decode, use the following table:
 
 ## Next steps
 
-- [3. Plan a workload modernization to the v6 and v7 series](sizes-v6-v7-migration-plan.md)
+- [3. Plan a workload modernization to the v6 and v7 series](sizes-v6-v7-modernization-plan.md)

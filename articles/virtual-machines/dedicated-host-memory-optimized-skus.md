@@ -141,7 +141,7 @@ The following packing configuration outlines the max packing of uniform VMs you 
 ## Ebdsv5
 ### Ebdsv5-Type1
 
-The Ebdsv5-Type1 is a Dedicated Host SKU utilizing the Intel® Ice Lake (Xeon® Platinum 8370C) processor. It offers 64 physical cores, 119 vCPUs, and 768 GiB of RAM. The Ebdsv5-Type1 runs [Ebdsv5-series](ebdsv5-ebsv5-series.md#ebdsv5-series) VMs.
+The Ebdsv5-Type1 is a Dedicated Host SKU utilizing the Intel® Ice Lake (Xeon® Platinum 8370C) processor. It offers 64 physical cores, 119 vCPUs, and 768 GiB of RAM. The Ebdsv5-Type1 runs [Ebdsv5-series](./sizes/memory-optimized/ebdsv5-ebsv5-series.md#ebdsv5-series) VMs.
 
 The following packing configuration outlines the max packing of uniform VMs you can put onto an Ebdsv5-Type1 host.
 
@@ -158,7 +158,7 @@ The following packing configuration outlines the max packing of uniform VMs you 
 ## Ebsv5
 ### Ebsv5-Type1
 
-The Ebsv5-Type1 is a Dedicated Host SKU utilizing the Intel® Ice Lake (Xeon® Platinum 8370C) processor. It offers 64 physical cores, 119 vCPUs, and 768 GiB of RAM. The Ebsv5-Type1 runs [Ebsv5-series](ebdsv5-ebsv5-series.md#ebsv5-series) VMs.
+The Ebsv5-Type1 is a Dedicated Host SKU utilizing the Intel® Ice Lake (Xeon® Platinum 8370C) processor. It offers 64 physical cores, 119 vCPUs, and 768 GiB of RAM. The Ebsv5-Type1 runs [Ebsv5-series](./sizes/memory-optimized/ebdsv5-ebsv5-series.md#ebsv5-series) VMs.
 
 The following packing configuration outlines the max packing of uniform VMs you can put onto an Ebsv5-Type1 host.
 
@@ -175,7 +175,7 @@ The following packing configuration outlines the max packing of uniform VMs you 
 ## ECadsv5
 ### ECadsv5-Type1
 
-The ECadsv5-Type1 is a Dedicated Host SKU utilizing the AMD 3rd Generation EPYC™ 7763v processor. It offers 64 physical cores, 112 vCPUs, and 768 GiB of RAM. The ECadsv5-Type1 runs [ECadsv5-series](ecasv5-ecadsv5-series.md#ecadsv5-series) VMs.
+The ECadsv5-Type1 is a Dedicated Host SKU utilizing the AMD 3rd Generation EPYC™ 7763v processor. It offers 64 physical cores, 112 vCPUs, and 768 GiB of RAM. The ECadsv5-Type1 runs [ECadsv5-series](./sizes/memory-optimized/ecasv5-ecadsv5-series.md#ecadsv5-series) VMs.
 
 The following packing configuration outlines the max packing of uniform VMs you can put onto an ECadsv5-Type1 host.
 
@@ -194,7 +194,7 @@ The following packing configuration outlines the max packing of uniform VMs you 
 ## ECasv5
 ### ECasv5-Type1
 
-The ECasv5-Type1 is a Dedicated Host SKU utilizing the AMD 3rd Generation EPYC™ 7763v processor. It offers 64 physical cores, 112 vCPUs, and 768 GiB of RAM. The ECasv5-Type1 runs [ECasv5-series](ecasv5-ecadsv5-series.md#ecasv5-series) VMs.
+The ECasv5-Type1 is a Dedicated Host SKU utilizing the AMD 3rd Generation EPYC™ 7763v processor. It offers 64 physical cores, 112 vCPUs, and 768 GiB of RAM. The ECasv5-Type1 runs [ECasv5-series](./sizes/memory-optimized/ecasv5-ecadsv5-series.md#ecasv5-series) VMs.
 
 The following packing configuration outlines the max packing of uniform VMs you can put onto an ECasv5-Type1 host.
 

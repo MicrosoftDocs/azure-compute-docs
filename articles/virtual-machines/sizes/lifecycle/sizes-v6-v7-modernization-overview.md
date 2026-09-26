@@ -5,7 +5,7 @@ author: rod-reis
 ms.author: rosanto
 ms.service: azure-virtual-machines
 ms.topic: overview
-ms.date: 09/24/2026
+ms.date: 09/25/2026
 ms.collection:
   - migration
   - v2-5-to-v6-7
@@ -27,10 +27,10 @@ This modernization playbook is for architects and infrastructure teams planning 
 This article introduces the modernization and links to the detailed phases: **Discover**, **Assess**, **Plan**, **Modernize**, and **Validate & optimize**. It applies whether you're moving existing VMs from the v2 through v5 series or deploying greenfield.
 
 > [!IMPORTANT]
-> The Dv3, Dsv3, Ev3, and Esv3 series retire on November 15, 2029. If you run these series, complete this transition before that date. For the smoothest transition of existing workloads, consider the v5 series first. For more information, see [Modernize to the v5 VM series](../../sizes/lifecycle/sizes-v5-modernization-overview.md) and [What if I run Dv3, Dsv3, Ev3, or Esv3 VMs?](sizes-v6-v7-migration-faq.md#what-if-i-run-dv3-dsv3-ev3-or-esv3-vms)
+> The Dv3, Dsv3, Ev3, and Esv3 series retire on November 15, 2029. If you run these series, complete this transition before that date. For the smoothest transition of existing workloads, consider the v5 series first. For more information, see [Modernize to the v5 VM series](./sizes-v5-modernization-overview.md) and [What if I run Dv3, Dsv3, Ev3, or Esv3 VMs?](sizes-v6-v7-modernization-faq.md#what-if-i-run-dv3-dsv3-ev3-or-esv3-vms)
 
 > [!NOTE]
-> The changes in this modernization affect the physical host, the virtual hardware, and the image used to create the VM. Your application, its configuration, autoscale rules, and health logic stays the same. Stateful and clustered workloads are the exception: the application itself doesn't change, but the modernization adds application-aware steps for replication and role transfer. See [Discover migration pattern by workload type](sizes-v6-v7-migration-discover.md).
+> The changes in this modernization affect the physical host, the virtual hardware, and the image used to create the VM. Your application, its configuration, autoscale rules, and health logic stays the same. Stateful and clustered workloads are the exception: the application itself doesn't change, but the modernization adds application-aware steps for replication and role transfer. See [Discover modernization pattern by workload type](sizes-v6-v7-modernization-discover.md).
 
 ## Discover modernization pattern by workload type
 
@@ -43,7 +43,7 @@ Seven patterns cover most estates:
 - **E. Customer-managed VMs** and **F. Stateful and clustered** replace individual VMs, with F adding state synchronization and role transfer.
 - **G. Certified appliances** are gated on vendor certification for the target family.
 
-Discover each workload's pattern first, most estates contain several, and the pattern determines which phases of this journey apply to you. For examples, modernization approach, effort, and decision criteria for each pattern, see [Discover migration pattern by workload type](sizes-v6-v7-migration-discover.md).
+Discover each workload's pattern first, most estates contain several, and the pattern determines which phases of this journey apply to you. For examples, modernization approach, effort, and decision criteria for each pattern, see [Discover modernization pattern by workload type](sizes-v6-v7-modernization-discover.md).
 
 
 ## Target VM families
@@ -66,7 +66,7 @@ Focus your planning on the items that actually change at the platform level:
 - **Networking:** The [MANA](/azure/virtual-network/accelerated-networking-mana-overview) adapter requires a current OS and driver.
 - **Local (temporary) disk:** Present only on `d`-suffixed sizes, and presented as NVMe.
 - **Image:** Use a current Generation 2, NVMe- and MANA-ready marketplace or [Azure Compute Gallery](/azure/virtual-machines/azure-compute-gallery) image.
-- **Availability and commercial:** Confirm [regional and zonal availability](/azure/reliability/availability-zones-overview) and quota for the target family. For capacity reservations and family-scoped discount replanning, see [Plan the modernization](sizes-v6-v7-migration-plan.md#region-zone-and-capacity-planning).
+- **Availability and commercial:** Confirm [regional and zonal availability](/azure/reliability/availability-zones-overview) and quota for the target family. For capacity reservations and family-scoped discount replanning, see [Plan the modernization](sizes-v6-v7-modernization-plan.md#region-zone-and-capacity-planning).
 
 > [!IMPORTANT]
 > Treat this modernization as a planned upgrade, not as:
@@ -77,12 +77,12 @@ Focus your planning on the items that actually change at the platform level:
 
 ## The modernization journey
 
-1. **[Discover](sizes-v6-v7-migration-discover.md).** Determine which pattern each workload follows. The pattern decides which of the phases below apply to you, and service-managed workloads finish here.
-2. **[Assess](sizes-v6-v7-migration-assess.md).** Use a short readiness check to separate ready-now candidates from those needing image, driver, path, or capacity remediation.
-3. **[Plan](sizes-v6-v7-migration-plan.md).** Work through the considerations for Generation 2 boot, NVMe storage, MANA networking, Azure Boost offload, region, zone, capacity, and images.
-4. **[Modernize](sizes-v6-v7-migration-migrate.md).** Use a wave model that proves the platform pattern once, then scales through controlled rings.
-5. **[Validate and optimize](sizes-v6-v7-migration-validate.md).** Keep validation focused on boot, disks, drivers, networking, and workload-owner sign-off, then optimize for cost and performance.
+1. **[Discover](sizes-v6-v7-modernization-discover.md).** Determine which pattern each workload follows. The pattern decides which of the phases below apply to you, and service-managed workloads finish here.
+2. **[Assess](sizes-v6-v7-modernization-assess.md).** Use a short readiness check to separate ready-now candidates from those needing image, driver, path, or capacity remediation.
+3. **[Plan](sizes-v6-v7-modernization-plan.md).** Work through the considerations for Generation 2 boot, NVMe storage, MANA networking, Azure Boost offload, region, zone, capacity, and images.
+4. **[Modernize](sizes-v6-v7-modernization-modernize.md).** Use a wave model that proves the platform pattern once, then scales through controlled rings.
+5. **[Validate and optimize](sizes-v6-v7-modernization-validate.md).** Keep validation focused on boot, disks, drivers, networking, and workload-owner sign-off, then optimize for cost and performance.
 
 ## Next steps
 
-- [1. Discover migration pattern by workload type](sizes-v6-v7-migration-discover.md)
+- [1. Discover modernization pattern by workload type](sizes-v6-v7-modernization-discover.md)

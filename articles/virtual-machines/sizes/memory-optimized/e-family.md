@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 09/24/2026
+ms.date: 09/25/2026
 ms.author: mattmcinnes
 # Customer intent: As a cloud architect, I want to review the specifications and workloads of the E family VM sizes, so that I can select the most suitable virtual machines for memory-intensive applications in my organization.
 ---
@@ -168,7 +168,7 @@ ms.author: mattmcinnes
 ---
 ### End of Life E family series
 > [!WARNING]
-> The [Ev3-series and Esv3-series](./ev3-esv3-series.md) are in the [End of Life](../lifecycle/lifecycle-overview.md#end-of-life) lifecycle stage and retire on **November 15, 2029**. After that date, you can't create, resize into, run, or purchase any of the 18 Ev3-series and Esv3-series sizes. For the smoothest transition, see [Modernize to the v5 VM series](../lifecycle/sizes-v5-modernization-overview.md). For the latest features and performance, see [Modernize to the v6 and v7 VM series](../../migration/sizes/sizes-v6-v7-migration-overview.md). For retirement details, see [Retired and retiring VM size series](../lifecycle/retirements-and-capacity-restrictions.md#memory-optimized-retired-sizes).
+> The [Ev3-series and Esv3-series](./ev3-esv3-series.md) are in the [End of Life](../lifecycle/lifecycle-overview.md#end-of-life) lifecycle stage and retire on **November 15, 2029**. After that date, you can't create, resize into, run, or purchase any of the 18 Ev3-series and Esv3-series sizes. For the smoothest transition, see [Modernize to the v5 VM series](../lifecycle/sizes-v5-modernization-overview.md). For the latest features and performance, see [Modernize to the v6 and v7 VM series](../lifecycle/sizes-v6-v7-modernization-overview.md). For retirement details, see [Retired and retiring VM size series](../lifecycle/retirements-and-capacity-restrictions.md#memory-optimized-retired-sizes).
 
 For End of Life sizes, see [End of Life sizes](../lifecycle/end-of-life-sizes-list.md#memory-optimized-end-of-life-sizes).
 
