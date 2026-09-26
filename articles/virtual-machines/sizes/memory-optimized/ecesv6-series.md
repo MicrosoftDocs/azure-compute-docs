@@ -23,7 +23,7 @@ These machines are powered by Intel® 5th Generation Xeon® Scalable processors 
 
 Featuring [Intel® Trust Domain Extensions (TDX)](https://www.intel.com/content/www/us/en/developer/tools/trust-domain-extensions/overview.html), these VMs are hardened from the cloud virtualized environment by denying the hypervisor, other host management code and administrators access to the VM memory and state. It helps to protect VMs against a broad range of sophisticated [hardware and software attacks](https://www.intel.com/content/www/us/en/developer/articles/technical/intel-trust-domain-extensions.html). 
 
-These VMs have native support for [confidential disk encryption](disk-encryption-overview.md) meaning organizations can encrypt their VM disks at boot with either a customer-managed key (CMK), or platform-managed key (PMK). This feature is fully integrated with [Azure KeyVault](/azure/key-vault/general/overview) or [Azure Managed HSM](/azure/key-vault/managed-hsm/overview) with validation for FIPS 140-2 Level 3. 
+These VMs have native support for [confidential disk encryption](../../disk-encryption-overview.md) meaning organizations can encrypt their VM disks at boot with either a customer-managed key (CMK), or platform-managed key (PMK). This feature is fully integrated with [Azure KeyVault](/azure/key-vault/general/overview) or [Azure Managed HSM](/azure/key-vault/managed-hsm/overview) with validation for FIPS 140-2 Level 3. 
 
 > [!NOTE]
 > There are some [pricing differences based on your encryption settings](/azure/confidential-computing/confidential-vm-overview#encryption-pricing-differences) for confidential VMs.
@@ -33,14 +33,14 @@ These VMs have native support for [confidential disk encryption](disk-encryption
 
 *Supported* features in ECesv6-series VMs:
 
-- [Premium Storage](premium-storage-performance.md)
-- [Premium Storage caching](premium-storage-performance.md)
-- [VM Generation 2](generation-2.md)
+- [Premium Storage](../../premium-storage-performance.md)
+- [Premium Storage caching](../../premium-storage-performance.md)
+- [VM Generation 2](../../generation-2.md)
 
 *Unsupported* features in ECesv6-series VMs:
 
-- [Live Migration](maintenance-and-updates.md)
-- [Memory Preserving Updates](maintenance-and-updates.md)
+- [Live Migration](../../maintenance-and-updates.md)
+- [Memory Preserving Updates](../../maintenance-and-updates.md)
 - [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli)
 - [Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)
 
@@ -64,7 +64,7 @@ This series supports Standard SSD, Standard HDD, and Premium SSD types. Billing 
 
 *RS: These VMs have support for remote storage only
 
-[!INCLUDE [virtual-machines-common-sizes-table-defs](./includes/virtual-machines-common-sizes-table-defs.md)]
+[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
 ## Next steps
 

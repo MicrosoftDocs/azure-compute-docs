@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: overview
-ms.date: 09/24/2026
+ms.date: 09/25/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 # Customer intent: As a cloud infrastructure administrator, I want to understand the lifecycle stages of virtual machine size series, so that I can plan deployments and modernize workloads to newer VM sizes before retirement.
@@ -36,7 +36,7 @@ Current and Extended sizes are both considered *modern* sizes because they're fu
 
 Size series in the *Current* stage are the newest series in their VM family. Deploy new workloads, expand existing deployments, and optimize your Azure investments by using Current sizes.
 
-To modernize general purpose workloads to Current sizes, see [Modernize to the v6 and v7 VM series](../../migration/sizes/sizes-v6-v7-migration-overview.md).
+To modernize general purpose workloads to Current sizes, see [Modernize to the v6 and v7 VM series](./sizes-v6-v7-modernization-overview.md).
 
 ### Extended
 
@@ -68,7 +68,7 @@ For affected series and recommended alternatives, see [End of Life VM size serie
 
 Modernize workloads to Current or Extended sizes. Use Current sizes for new deployments.
 
-For the smoothest modernization of existing workloads, see [Modernize to the v5 VM series](./sizes-v5-modernization-overview.md). To access the latest features and performance, see [Modernize to the v6 and v7 VM series](../../migration/sizes/sizes-v6-v7-migration-overview.md).
+For the smoothest modernization of existing workloads, see [Modernize to the v5 VM series](./sizes-v5-modernization-overview.md). To access the latest features and performance, see [Modernize to the v6 and v7 VM series](./sizes-v6-v7-modernization-overview.md).
 
 Some size series have specific modernization instructions because of their unique hardware or software features. For modernization guides, see [Retired and retiring VM size series](./retirements-and-capacity-restrictions.md#retired-and-retiring-vm-size-series) and [End of Life Azure VM size series](./end-of-life-sizes-list.md).
 

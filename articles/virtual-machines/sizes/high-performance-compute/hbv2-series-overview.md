@@ -6,7 +6,7 @@ ms.custom:
 ms.service: azure-virtual-machines
 ms.subservice: hpc
 ms.topic: concept-article
-ms.date: 05/04/2026
+ms.date: 09/25/2026
 ms.reviewer: wwilliams
 ms.author: padmalathas
 author: padmalathas
@@ -18,7 +18,7 @@ ai-usage: ai-assisted
 # HBv2 series virtual machine overview
 
 > [!IMPORTANT]
-> **HBv2-series VMs are scheduled for retirement on May 31, 2027.** This applies to all HBv2 sizes: Standard_HB120rs_v2, Standard_HB120-96rs_v2, Standard_HB120-64rs_v2, Standard_HB120-32rs_v2, and Standard_HB120-16rs_v2. After this date, HBv2 VMs will be set to a deallocated state, stop working, stop incurring billing charges, and lose SLA and support. Plan your migration to current-generation HPC alternatives before the retirement date.
+> **HBv2-series VMs are scheduled for retirement on May 31, 2027.** This applies to all HBv2 sizes: Standard_HB120rs_v2, Standard_HB120-96rs_v2, Standard_HB120-64rs_v2, Standard_HB120-32rs_v2, and Standard_HB120-16rs_v2. After this date, HBv2 VMs will be set to a deallocated state, stop working, stop incurring billing charges, and lose SLA and support. Plan your modernization to current-generation HPC alternatives before the retirement date.
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets.
 
@@ -79,11 +79,11 @@ Process pinning works on HBv2-series VMs because we expose the underlying silico
 > **Reserved Instance purchase end date**: 1-year and 3-year Reserved Instance purchases for HBv2-series VMs ended on April 2, 2026. Avoid new long-term RI commitments on HBv2-series. Existing RIs remain valid until their expiration date.
 
 - **Pay-as-you-go**: HBv2-series VMs remain available on a pay-as-you-go basis until retirement on **May 31, 2027**.
-- **Plan migration**: Begin planning and testing migrations to current-generation HPC alternatives ahead of the retirement date. If you have active RIs for HBv2, consider exchanging them for supported HPC series RIs or trading them in for an Azure Savings Plan for compute. For more information, see [Exchange and refund Azure reservations](/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations).
+- **Plan modernization**: Begin planning and testing modernization to current-generation HPC alternatives ahead of the retirement date. If you have active RIs for HBv2, consider exchanging them for supported HPC series RIs or trading them in for an Azure Savings Plan for compute. For more information, see [Exchange and refund Azure reservations](/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations).
 
-## Migrate to current-generation HPC VMs
+## Modernize to current-generation HPC VMs
 
-HBv2-series VMs will be retired on May 31, 2027. Microsoft recommends migrating to the following current-generation HPC VM series:
+HBv2-series VMs will be retired on May 31, 2027. Microsoft recommends modernizing to the following current-generation HPC VM series:
 
 | Recommended series | Key characteristics |
 |---|---|
@@ -92,14 +92,14 @@ HBv2-series VMs will be retired on May 31, 2027. Microsoft recommends migrating 
 | [HBv4-series](hbv4-series-overview.md) | 4th Gen AMD EPYC (Genoa), up to 176 cores, NDR InfiniBand – strong all-round HPC replacement |
 | [HBv3-series](hbv3-series-overview.md) | 3rd Gen AMD EPYC (Milan), up to 120 cores, HDR InfiniBand – comparable generation step-up from HBv2 |
 
-Before migrating, validate your workloads on the target series:
+Before modernizing, validate your workloads on the target series:
 - **MPI and RDMA**: Confirm compatibility with the target InfiniBand fabric (HDR v. NDR) and your MPI library version.
 - **Memory bandwidth**: Run representative benchmarks to confirm performance parity or improvement on the target series.
-- **Application testing**: Complete end-to-end testing of your HPC applications on the target series before production migration.
+- **Application testing**: Complete end-to-end testing of your HPC applications on the target series before production modernization.
 
 ## Next steps
 
-- For migration to current-generation HPC VMs, see the [Migrate to current-generation HPC VMs](#migrate-to-current-generation-hpc-vms) section in this article.
+- For modernization to current-generation HPC VMs, see the [Modernize to current-generation HPC VMs](#modernize-to-current-generation-hpc-vms) section in this article.
 - For more information about [AMD EPYC architecture](https://bit.ly/2Epv3kC) and [multi-chip architectures](https://bit.ly/2GpQIMb), see the [HPC Tuning Guide for AMD EPYC Processors](https://docs.amd.com/v/u/58002_amd-epyc-9004-tg-hpc).
 - For latest announcements on HPC workload examples, and performance results see [Azure Compute Tech Community Blogs](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
 - For a higher level architectural view of running HPC workloads, see [High Performance Computing (HPC) on Azure](/azure/architecture/topics/high-performance-computing/).

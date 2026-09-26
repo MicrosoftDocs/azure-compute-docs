@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 11/24/2025
+ms.date: 09/25/2026
 ms.author: padmalathas
 ms.reviewer: mattmcinnes
 # Customer intent: As a cloud architect, I want to understand the specifications and features of the HX series VM sizes, so that I can effectively select the appropriate size for my workloads based on performance and storage requirements.
@@ -146,7 +146,7 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 |[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli)| Supported |
 |[Ephemeral OS Disk](../../ephemeral-os-disks.md)| Supported |
 |[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)| Not Supported |
-|[Backend Network](../../hx-series-overview.md#infiniband-networking)| InfiniBand NDR |
+|[Backend Network](./hx-series-overview.md#infiniband-networking)| InfiniBand NDR |
 
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]

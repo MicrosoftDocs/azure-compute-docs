@@ -5,7 +5,7 @@ ms.service: azure-virtual-machines
 ms.subservice: hpc
 ms.custom:
 ms.topic: how-to
-ms.date: 08/06/2024
+ms.date: 09/25/2026
 ms.reviewer: mattmcinnes
 ms.author: wwilliams
 author: iamwilliew
@@ -111,6 +111,6 @@ gcc $(OPTIMIZATIONS) $(OMP) $(STACK) $(STREAM_PARAMETERS) stream.c -o stream.gcc
 ## Next steps
 
 - Test your knowledge with a [learning module on optimizing HPC applications on Azure](/training/modules/optimize-tightly-coupled-hpc-apps/).
-- Review the [HBv3-series overview](hbv3-series-overview.md) and [HC-series overview](hc-series-overview.md).
+- Review the [HBv3-series overview](./sizes/high-performance-compute/hbv3-series-overview.md) and [HC-series overview](./sizes/high-performance-compute/hc-series-overview.md).
 - Read about the latest announcements, HPC workload examples, and performance results at the [Azure Compute Tech Community Blogs](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
 - Learn more about [HPC](/azure/architecture/topics/high-performance-computing/) on Azure.

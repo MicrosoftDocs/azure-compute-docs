@@ -5,7 +5,7 @@ ms.service: azure-virtual-machines
 ms.subservice: hpc
 ms.custom:
 ms.topic: concept-article
-ms.date: 08/24/2026
+ms.date: 09/25/2026
 ms.reviewer: wwilliams
 ms.author: padmalathas
 author: padmalathas
@@ -17,7 +17,7 @@ author: padmalathas
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
 > [!IMPORTANT]
-> Azure Virtual Machines HC-series sizes (Standard_HC44rs, Standard_HC44-16rs, and Standard_HC44-32rs) retire on May 31, 2027. After this date, Azure deallocates and stops these VMs, and you can no longer use them. Because the VMs are deallocated, you no longer incur compute charges. HC-series VMs are no longer supported and aren't covered by an SLA after retirement. Sales of 1-year and 3-year Reserved Instances for HC-series ended on April 2, 2026. For migration guidance, see [Migrate your HC-series virtual machines by May 31, 2027](./sizes/lifecycle/retirement/hc-series-retirement.md).
+> Azure Virtual Machines HC-series sizes (Standard_HC44rs, Standard_HC44-16rs, and Standard_HC44-32rs) retire on May 31, 2027. After this date, Azure deallocates and stops these VMs, and you can no longer use them. Because the VMs are deallocated, you no longer incur compute charges. HC-series VMs are no longer supported and aren't covered by an SLA after retirement. Sales of 1-year and 3-year Reserved Instances for HC-series ended on April 2, 2026. For modernization guidance, see [Migrate your HC-series virtual machines by May 31, 2027](../lifecycle/retirement/hc-series-retirement.md).
 
 Maximizing HPC application performance on Intel Xeon Scalable Processors requires a thoughtful approach to process placement on this new architecture. Here, we outline our implementation of it on Azure HC-series VMs for HPC applications. We'll use the term “pNUMA” to refer to a physical NUMA domain, and “vNUMA” to refer to a virtualized NUMA domain. Similarly, we'll use the term “pCore” to refer to physical CPU cores, and “vCore” to refer to virtualized CPU cores.
 
@@ -33,7 +33,7 @@ Intel Xeon Platinum, Gold, and Silver CPUs also introduce an on-die 2D mesh netw
 
 The following diagram shows the segregation of cores reserved for Azure Hypervisor and the HC-series VM.
 
-![Segregation of cores reserved for Azure Hypervisor and HC-series VM](./media/hpc/architecture/hc-segregation-cores.png)
+![Segregation of cores reserved for Azure Hypervisor and HC-series VM](../../media/hpc/architecture/hc-segregation-cores.png)
 
 ## Hardware specifications
 
@@ -56,7 +56,7 @@ The following diagram shows the segregation of cores reserved for Azure Hypervis
 | Additional Frameworks       | UCX, libfabric, PGAS |
 | Azure Storage Support       | Standard and Premium Disks (maximum 4 disks) |
 | OS Support for SRIOV RDMA   | RHEL 7.6+, Ubuntu 20.04+, SLES 15.4, WinServer 2016+  |
-| Orchestrator Support        | CycleCloud, Batch, AKS; [cluster configuration options](sizes-hpc.md#cluster-configuration-options)  |
+| Orchestrator Support        | CycleCloud, Batch, AKS; [cluster configuration options](../overview.md#high-performance-compute)  |
 
 > [!NOTE]
 > Official kernel-level support from AMD starts with RHEL 8.6 and AlmaLinux 8.6, which is a derivative of RHEL.

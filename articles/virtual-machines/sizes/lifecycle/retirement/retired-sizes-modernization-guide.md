@@ -5,7 +5,7 @@ author: iamwilliew
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 09/24/2026
+ms.date: 09/25/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ai-usage: ai-assisted
@@ -28,8 +28,8 @@ By modernizing to newer VM series, you gain access to improved price-performance
 |Current VM Series | Target VM Series| Differences in Specification in Target VM*| 
 |--|--|--|
 | D<br>Ds<br>Dv2<br>Dsv2 | Dsv5/Ddsv5/Dasv5/Dadsv5<br>Dasv6/Dadsv6/Dsv6/Ddsv6<br>Dasv7/Dadsv7<br>Esv6/Edsv6/Easv6/Eadsv6<br>Easv7/Eadsv7| D/Ev5 disk controller type: SCSI <br> D/Ev6, D/Ev7 disk controller type: NVMe<br>Local Storage Throughput: 9000 IOPS / 125 MBps<br>Remote Storage Throughput: 3750 IOPS / 82 MBps|
-| Dv3<br>Dsv3 | Dv5/Dsv5/Ddv5/Ddsv5/Dasv5/Dadsv5<br>v6 and v7 D-family series | For the smoothest transition, see [Modernize to the v5 VM series](../sizes-v5-modernization-overview.md). For the latest features and performance, see [Modernize to the v6 and v7 VM series](../../../migration/sizes/sizes-v6-v7-migration-overview.md). |
-| Ev3<br>Esv3 | Ev5/Esv5/Edv5/Edsv5/Easv5/Eadsv5<br>v6 and v7 E-family series | For the smoothest transition, see [Modernize to the v5 VM series](../sizes-v5-modernization-overview.md). For the latest features and performance, see [Modernize to the v6 and v7 VM series](../../../migration/sizes/sizes-v6-v7-migration-overview.md). |
+| Dv3<br>Dsv3 | Dv5/Dsv5/Ddv5/Ddsv5/Dasv5/Dadsv5<br>v6 and v7 D-family series | For the smoothest transition, see [Modernize to the v5 VM series](../sizes-v5-modernization-overview.md). For the latest features and performance, see [Modernize to the v6 and v7 VM series](../sizes-v6-v7-modernization-overview.md). |
+| Ev3<br>Esv3 | Ev5/Esv5/Edv5/Edsv5/Easv5/Eadsv5<br>v6 and v7 E-family series | For the smoothest transition, see [Modernize to the v5 VM series](../sizes-v5-modernization-overview.md). For the latest features and performance, see [Modernize to the v6 and v7 VM series](../sizes-v6-v7-modernization-overview.md). |
 | Ls | Lsv3/Lasv3<br>Lsv4/Lasv4 | Local Storage: Supported - NVMe<br>Remote Storage Throughput: 12800 IOPS / 200 MBps <br>Disk Controller Type: SCSI and NVMe |
 | Av2<br>Amv2 | Bsv2/Basv2<br>Dsv5/Ddv5/Dasv5<br>Esv5/Edv5/Easv5<br>Dsv6/Ddsv6/Dasv6<br>Esv6/Edsv6/Easv6 | B/Bav2, D/Ev5 disk controller type: SCSI <br> D/Ev6 disk controller type: NVMe<br>Remote Storage Throughput: 3750 IOPS / 85 MBps
 | Bv1 | Bsv2/Basv2<br>Dlsv5/Dldsv5/Dalsv5/Daldsv5<br>Dlsv6/Dldsv6/Dalsv6/Daldsv6 | B/Bav2, D/Ev5 disk controller type: SCSI <br> D/Ev6 disk controller type: NVMe<br>Remote Storage Throughput: 3750 IOPS / 85 MBps<br>Disk Controller Type: SCSI|
@@ -160,7 +160,7 @@ One-year and three-year RIs for these series are no longer available for new pur
 
 The retirement is separate from the [capacity growth restrictions](../retirements-and-capacity-restrictions.md) that began in July 2026.
 
-For the smoothest transition, move Dv3 and Dsv3 workloads to Dv5, Dsv5, Ddv5, Ddsv5, Dasv5, or Dadsv5, and move Ev3 and Esv3 workloads to Ev5, Esv5, Edv5, Edsv5, Easv5, or Eadsv5. For more information, see [Modernize to the v5 VM series](../sizes-v5-modernization-overview.md). For the latest features and performance, see [Modernize to the v6 and v7 VM series](../../../migration/sizes/sizes-v6-v7-migration-overview.md).
+For the smoothest transition, move Dv3 and Dsv3 workloads to Dv5, Dsv5, Ddv5, Ddsv5, Dasv5, or Dadsv5, and move Ev3 and Esv3 workloads to Ev5, Esv5, Edv5, Edsv5, Easv5, or Eadsv5. For more information, see [Modernize to the v5 VM series](../sizes-v5-modernization-overview.md). For the latest features and performance, see [Modernize to the v6 and v7 VM series](../sizes-v6-v7-modernization-overview.md).
 
 #### Q: What will happen to my VM if I do not resize my VM to a target size within the retirement timeline?
 

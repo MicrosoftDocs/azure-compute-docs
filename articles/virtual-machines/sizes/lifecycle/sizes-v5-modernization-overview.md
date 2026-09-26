@@ -7,7 +7,7 @@ ms.reviewer: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: overview
-ms.date: 09/24/2026
+ms.date: 09/25/2026
 ai-usage: ai-assisted
 # Customer intent: As a workload architect, I want to understand how to transition existing D-family and E-family workloads to the v5 series, so that I can modernize with the least disruption and plan any further move to v6 or v7.
 ---
@@ -21,7 +21,7 @@ The v5 Azure VM series is a straightforward modernization target for workloads r
 This article describes the modernization journey for existing workloads that transition from earlier D-family and E-family generations, and for new deployments that require v5 compatibility or availability.
 
 > [!NOTE]
-> The v5 series provides the smoothest transition for existing workloads. To access the latest features and performance, transition to the v6 or v7 series. In the [VM lifecycle](./lifecycle-overview.md), v5 is in the *Extended* stage and v6 and v7 are in the *Current* stage. For v6 and v7 guidance, see [Modernize to the v6 and v7 VM series](../../migration/sizes/sizes-v6-v7-migration-overview.md).
+> The v5 series provides the smoothest transition for existing workloads. To access the latest features and performance, transition to the v6 or v7 series. In the [VM lifecycle](./lifecycle-overview.md), v5 is in the *Extended* stage and v6 and v7 are in the *Current* stage. For v6 and v7 guidance, see [Modernize to the v6 and v7 VM series](./sizes-v6-v7-modernization-overview.md).
 
 If your workload runs on a size series in the *End of Life* stage, plan your transition before its retirement date. For affected series and dates, see [End of Life Azure VM size series](./end-of-life-sizes-list.md).
 
@@ -92,7 +92,7 @@ The transition method depends on whether the existing VM configuration is compat
 1. **Transition.** Start with representative low-risk workloads, prove the transition pattern, and expand through controlled waves.
 1. **Validate and optimize.** Validate boot, application health, disks, networking, performance, monitoring, backup, and workload-owner acceptance. Then right-size and optimize cost.
 
-Workload patterns, wave planning, and rollback practices from the v6 and v7 journey also apply to a v5 transition. For more information, see [Discover migration pattern by workload type](../../migration/sizes/sizes-v6-v7-migration-discover.md).
+Workload patterns, wave planning, and rollback practices from the v6 and v7 journey also apply to a v5 transition. For more information, see [Discover modernization pattern by workload type](./sizes-v6-v7-modernization-discover.md).
 
 ## Next steps
 

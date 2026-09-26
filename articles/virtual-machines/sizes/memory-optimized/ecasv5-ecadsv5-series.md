@@ -24,7 +24,7 @@ These VM series also offer a combination of vCPUs and memory to meet the require
 
 ## ECasv5-series
 
-ECasv5-series VMs offer a combination of vCPU and memory for memory-intensive enterprise applications. These VMs with no local disk provide a better value proposition for workloads where you don't need a local temp disk. For more information, see the [FAQ for Azure VM sizes with no local temporary disk](azure-vms-no-temp-disk.yml). 
+ECasv5-series VMs offer a combination of vCPU and memory for memory-intensive enterprise applications. These VMs with no local disk provide a better value proposition for workloads where you don't need a local temp disk. For more information, see the [FAQ for Azure VM sizes with no local temporary disk](../../azure-vms-no-temp-disk.yml). 
 
 This series supports Standard SSD, Standard HDD, and Premium SSD types. Billing for disk storage and VMs is separate. To estimate your costs, use the [Pricing Calculator](https://azure.microsoft.com/pricing/calculator/).
 
@@ -35,17 +35,17 @@ This series supports Standard SSD, Standard HDD, and Premium SSD types. Billing 
 
 *Supported* features in ECasv5-series VMs:
 
-- [Premium Storage](premium-storage-performance.md)
-- [Premium Storage caching](premium-storage-performance.md)
-- [VM Generation 2](generation-2.md)
+- [Premium Storage](../../premium-storage-performance.md)
+- [Premium Storage caching](../../premium-storage-performance.md)
+- [VM Generation 2](../../generation-2.md)
 
 *Unsupported* features in ECasv5-series VMs:
 
-- [Live Migration](maintenance-and-updates.md)
-- [Memory Preserving Updates](maintenance-and-updates.md)
+- [Live Migration](../../maintenance-and-updates.md)
+- [Memory Preserving Updates](../../maintenance-and-updates.md)
 - [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli)
-- [Ephemeral OS Disks](ephemeral-os-disks.md)
-- [Local temporary storage](overview.md#local-temporary-storage)
+- [Ephemeral OS Disks](../../ephemeral-os-disks.md)
+- [Local temporary storage](../../overview.md#local-temporary-storage)
 - [Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)
 
 ### ECasv5-series products
@@ -75,16 +75,16 @@ This series supports Standard SSD, Standard HDD, and Premium SSD types. Billing 
 
 *Supported* features in ECadsv5-series VMs:
 
-- [Premium Storage](premium-storage-performance.md)
-- [Premium Storage caching](premium-storage-performance.md)
-- [VM Generation 2](generation-2.md)
-- [Ephemeral OS Disks](ephemeral-os-disks.md)
-- [Local temporary storage](overview.md#local-temporary-storage)
+- [Premium Storage](../../premium-storage-performance.md)
+- [Premium Storage caching](../../premium-storage-performance.md)
+- [VM Generation 2](../../generation-2.md)
+- [Ephemeral OS Disks](../../ephemeral-os-disks.md)
+- [Local temporary storage](../../overview.md#local-temporary-storage)
 
 *Unsupported* features in ECadsv5-series VMs:
 
-- [Live Migration](maintenance-and-updates.md#live-migration)
-- [Memory Preserving Updates](maintenance-and-updates.md)
+- [Live Migration](../../maintenance-and-updates.md#live-migration)
+- [Memory Preserving Updates](../../maintenance-and-updates.md)
 - [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli)
 
 ### ECadsv5-series products
@@ -102,9 +102,9 @@ This series supports Standard SSD, Standard HDD, and Premium SSD types. Billing 
 | Standard_EC96ads_v5 | 96 | 672 | 3600 | 32 | 450000 / 4000 | 80000/1200   | 8 | 20000
 
 > [!NOTE]
-> To achieve these IOPs, use [Gen2 VMs](generation-2.md).
+> To achieve these IOPs, use [Gen2 VMs](../../generation-2.md).
 
-[!INCLUDE [virtual-machines-common-sizes-table-defs](./includes/virtual-machines-common-sizes-table-defs.md)]
+[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
 ## Next steps
 

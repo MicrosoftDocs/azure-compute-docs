@@ -5,7 +5,7 @@ author: AjKundnani
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: how-to
-ms.date: 12/01/2025
+ms.date: 09/25/2026
 ms.author: ajkundna
 # Customer intent: "As a cloud architect, I want to understand the benefits and limitations of Generation 2 VMs in Azure, so that I can make informed decisions when designing scalable and secure virtual machine solutions for my organization."
 ---
@@ -31,7 +31,7 @@ Azure now offers Generation 2 support for the following selected VM series:
 | [Memory optimized](./sizes/overview.md#memory-optimized) | [E-family](./sizes/memory-optimized/e-family.md), [Eb-family](./sizes/memory-optimized/eb-family.md), [M-family](./sizes/memory-optimized/m-family.md)    |
 | [Storage optimized](./sizes/overview.md#storage-optimized) | [L-family](./sizes/storage-optimized/l-family.md)  |
 | [GPU](./sizes/overview.md#gpu-accelerated) | [NC-family](./sizes/gpu-accelerated/nc-family.md), [ND-family](./sizes/gpu-accelerated/nv-family.md), [NV-family](./sizes/gpu-accelerated/nv-family.md) | [NC-series](nc-series.md), [NV-series](nv-series.md)
-| [High Performance Compute](./sizes/overview.md#high-performance-compute) |[HBv2-series](./hbv2-series-overview.md), [HBv3-series](./hbv3-series-overview.md), [HBv4-series](./hbv4-series-overview.md), [HC-series](./hc-series-overview.md), [HX-series](./hx-series-overview.md)  | 
+| [High Performance Compute](./sizes/overview.md#high-performance-compute) |[HBv2-series](./sizes/high-performance-compute/hbv2-series-overview.md), [HBv3-series](./sizes/high-performance-compute/hbv3-series-overview.md), [HBv4-series](./sizes/high-performance-compute/hbv4-series-overview.md), [HC-series](./sizes/high-performance-compute/hc-series-overview.md), [HX-series](./sizes/high-performance-compute/hx-series-overview.md)  | 
 
 <sup>1</sup> Mv2-series, DC-series, NDv2-series, Msv2 and Mdsv2-series Medium Memory do not support Generation 1 VM images and only support a subset of Generation 2 images. Please see [Mv2-series documentation](mv2-series.md), [ND A100 v4-series](nda100-v4-series.md), [NDv2-series](ndv2-series.md), and [Msv2 and Mdsv2 Medium Memory Series](msv2-mdsv2-series.md) for details.
 
