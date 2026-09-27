@@ -24,7 +24,7 @@ This article shares some information on RDMA-capable instances to be used over a
 
 ## RDMA-capable instances
 
-Most of the HPC VM sizes feature a network interface for remote direct memory access (RDMA) connectivity. Selected [N-series](./nc-series.md) sizes designated with 'r' are also RDMA-capable. This interface is in addition to the standard Azure Ethernet network interface available in the other VM sizes.
+Most of the HPC VM sizes feature a network interface for remote direct memory access (RDMA) connectivity. Selected [N-series](../../nc-series.md) sizes designated with 'r' are also RDMA-capable. This interface is in addition to the standard Azure Ethernet network interface available in the other VM sizes.
 
 This secondary interface allows the RDMA-capable instances to communicate over an InfiniBand network, operating at HDR rates for HBv4, HBv3, HBv2, EDR rates for HB, HC, HX, NDv2, and FDR rates for H16r, H16mr, and other RDMA-capable N-series virtual machines. These RDMA capabilities can boost the scalability and performance of Message Passing Interface (MPI) based applications.
 
@@ -34,11 +34,11 @@ This secondary interface allows the RDMA-capable instances to communicate over a
 > IP over IB is only supported on the SR-IOV enabled VMs.
 > RDMA is not enabled over the Ethernet network.
 
-- **Operating System** - Linux distributions such as CentOS, RHEL, AlmaLinux, Ubuntu, SUSE are commonly used. Windows Server 2016 and newer versions are supported on all the HPC series VMs. Note that [Windows Server 2012 R2 is not supported on HBv2 onwards as VM sizes with more than 64 (virtual or physical) cores](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows). See [VM Images](./workloads/hpc/configure.md) for a list of supported Linux VM images on the Azure Marketplace and how they can be configured appropriately. The respective VM size pages also list out the software stack support.
+- **Operating System** - Linux distributions such as CentOS, RHEL, AlmaLinux, Ubuntu, SUSE are commonly used. Windows Server 2016 and newer versions are supported on all the HPC series VMs. Note that [Windows Server 2012 R2 is not supported on HBv2 onwards as VM sizes with more than 64 (virtual or physical) cores](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows). See [VM Images](./configure.md) for a list of supported Linux VM images on the Azure Marketplace and how they can be configured appropriately. The respective VM size pages also list out the software stack support.
 
-- **InfiniBand and Drivers** - On InfiniBand enabled VMs, the appropriate drivers are required to enable RDMA. See [enabling InfiniBand](./workloads/hpc/enable-infiniband.md) to learn about VM extensions or manual installation of InfiniBand drivers.
+- **InfiniBand and Drivers** - On InfiniBand enabled VMs, the appropriate drivers are required to enable RDMA. See [enabling InfiniBand](../../extensions/enable-infiniband.md) to learn about VM extensions or manual installation of InfiniBand drivers.
 
-- **MPI** - The SR-IOV enabled VM sizes on Azure allow almost any flavor of MPI to be used with Mellanox OFED. See [Setup MPI for HPC](./workloads/hpc/setup-mpi.md) for more details on setting up MPI on HPC VMs on Azure.
+- **MPI** - The SR-IOV enabled VM sizes on Azure allow almost any flavor of MPI to be used with Mellanox OFED. See [Setup MPI for HPC](./setup-mpi.md) for more details on setting up MPI on HPC VMs on Azure.
 
   > [!NOTE]
   > **RDMA network address space**: The RDMA network in Azure reserves the address space 172.16.0.0/16. To run MPI applications on instances deployed in an Azure virtual network, make sure that the virtual network address space does not overlap the RDMA network.
@@ -82,7 +82,7 @@ Also, VMSS serves as the isolation boundary between workloads within the same cl
 
 ## Next steps
 
-- Learn more about [configuring your VMs](./workloads/hpc/configure.md), [enabling InfiniBand](./workloads/hpc/enable-infiniband.md), [setting up MPI](./workloads/hpc/setup-mpi.md) and optimizing HPC applications for Azure at [HPC Workloads](./workloads/hpc/overview.md).
-- Review the [HBv3-series overview](./sizes/high-performance-compute/hbv3-series-overview.md) and [HC-series overview](./sizes/high-performance-compute/hc-series-overview.md).
+- Learn more about [configuring your VMs](./configure.md), [enabling InfiniBand](../../extensions/enable-infiniband.md), [setting up MPI](./setup-mpi.md) and optimizing HPC applications for Azure at [HPC Workloads](./overview-hb-hc.md).
+- Review the [HBv3-series overview](./hbv3-series-overview.md) and [HC-series overview](./hc-series-overview.md).
 - Read about the latest announcements, HPC workload examples, and performance results at the [Azure Compute Tech Community Blogs](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
 - For a higher level architectural view of running HPC workloads, see [High Performance Computing (HPC) on Azure](/azure/architecture/topics/high-performance-computing/).

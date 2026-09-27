@@ -12,7 +12,7 @@ ms.update-cycle: 1095-days
 ---
 
 # Storage Optimized Azure Dedicated Host SKUs
-Azure Dedicated Host SKUs are the combination of a VM family and a certain hardware specification. You can only deploy VMs of the VM series that the Dedicated Host SKU specifies. For example, on the Dsv3-Type3, you can only provision [Dsv3-series](dv3-dsv3-series.md#dsv3-series) VMs. 
+Azure Dedicated Host SKUs are the combination of a VM family and a certain hardware specification. You can only deploy VMs of the VM series that the Dedicated Host SKU specifies. For example, on the Dsv3-Type3, you can only provision [Dsv3-series](../sizes/general-purpose/dsv3-series.md) VMs. 
 
 This document goes through the hardware specifications and VM packings for all storage optimized Dedicated Host SKUs.
 
@@ -23,7 +23,7 @@ The sizes and hardware types available for dedicated hosts vary by region. Refer
 ## Lasv3
 ### Lasv3-Type1
 
-The Lasv3-Type1 is a Dedicated Host SKU utilizing the AMD 3rd Generation EPYC™ 7763v processor. It offers 64 physical cores, 112 vCPUs, and 1024 GiB of RAM. The Lasv3-Type1 runs [Lasv3-series](lasv3-series.md) VMs.
+The Lasv3-Type1 is a Dedicated Host SKU utilizing the AMD 3rd Generation EPYC™ 7763v processor. It offers 64 physical cores, 112 vCPUs, and 1024 GiB of RAM. The Lasv3-Type1 runs [Lasv3-series](../sizes/storage-optimized/lasv3-series.md) VMs.
 
 The following packing configuration outlines the max packing of uniform VMs you can put onto a Lasv3-Type1 host.
 
@@ -39,7 +39,7 @@ The following packing configuration outlines the max packing of uniform VMs you 
 ## Lsv3
 ### Lsv3-Type1
 
-The Lsv3-Type1 is a Dedicated Host SKU utilizing the Intel® 3rd Generation Xeon® Platinum 8370C (Ice Lake) processor. It offers 64 physical cores, 119 vCPUs, and 1024 GiB of RAM. The Lsv3-Type1 runs [Lsv3-series](lsv3-series.md) VMs.
+The Lsv3-Type1 is a Dedicated Host SKU utilizing the Intel® 3rd Generation Xeon® Platinum 8370C (Ice Lake) processor. It offers 64 physical cores, 119 vCPUs, and 1024 GiB of RAM. The Lsv3-Type1 runs [Lsv3-series](../sizes/storage-optimized/lsv3-series.md) VMs.
 
 The following packing configuration outlines the max packing of uniform VMs you can put onto a Lsv3-Type1 host.
 
@@ -55,7 +55,7 @@ The following packing configuration outlines the max packing of uniform VMs you 
 ## Lsv2
 ### Lsv2-Type1
 
-The Lsv2-Type1 is a Dedicated Host SKU utilizing the AMD 2.55 GHz EPYC™ 7551 processor. It offers 64 physical cores, 80 vCPUs, and 640 GiB of RAM. The Lsv2-Type1 runs [Lsv2-series](lsv2-series.md) VMs.
+The Lsv2-Type1 is a Dedicated Host SKU utilizing the AMD 2.55 GHz EPYC™ 7551 processor. It offers 64 physical cores, 80 vCPUs, and 640 GiB of RAM. The Lsv2-Type1 runs [Lsv2-series](../sizes/storage-optimized/lsv2-series.md) VMs.
 
 The following packing configuration outlines the max packing of uniform VMs you can put onto a Lsv2-Type1 host.
 
@@ -70,6 +70,6 @@ The following packing configuration outlines the max packing of uniform VMs you 
 
 ## Next steps
 
-- For more information, see the [Dedicated hosts](dedicated-hosts.md) overview.
+- For more information, see the [Dedicated hosts](overview.md) overview.
 
 - There's a sample template, available at [Azure Quickstart Templates](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-dedicated-hosts/README.md) that uses both zones and fault domains for maximum resiliency in a region.

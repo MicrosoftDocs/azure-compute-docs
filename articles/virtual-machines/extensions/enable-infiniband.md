@@ -25,7 +25,7 @@ There are various ways to enable InfiniBand on the capable VM sizes.
 
 ## VM Images with InfiniBand drivers
 
-See [VM Images](../configure.md#vm-images) for a list of supported VM Images on the Marketplace, which come pre-loaded with InfiniBand drivers (for SR-IOV or non-SR-IOV VMs) or can be configured with the appropriate drivers for [RDMA capable VMs](../sizes-hpc.md#rdma-capable-instances).  The [Ubuntu-HPC](../configure.md#ubuntu-hpc-vm-images) and [AlmaLinux-HPC](../configure.md#ubuntu-hpc-vm-images) VM images in the marketplace are the easiest way to get started.
+See [VM Images](../sizes/high-performance-compute/configure.md#vm-images) for a list of supported VM Images on the Marketplace, which come pre-loaded with InfiniBand drivers (for SR-IOV or non-SR-IOV VMs) or can be configured with the appropriate drivers for [RDMA capable VMs](../sizes-hpc.md#rdma-capable-instances).  The [Ubuntu-HPC](../sizes/high-performance-compute/configure.md#ubuntu-hpc-vm-images) and [AlmaLinux-HPC](../sizes/high-performance-compute/configure.md#ubuntu-hpc-vm-images) VM images in the marketplace are the easiest way to get started.
 
 ## InfiniBand Driver VM Extensions
 
@@ -75,7 +75,7 @@ sudo systemctl restart waagent
 
 ## Next steps
 
-- Learn more about installing and running various [supported MPI libraries](../setup-mpi.md) on the VMs.
+- Learn more about installing and running various [supported MPI libraries](../sizes/high-performance-compute/setup-mpi.md) on the VMs.
 - Review the [HBv3-series overview](../sizes/high-performance-compute/hbv3-series-overview.md) and [HC-series overview](../sizes/high-performance-compute/hc-series-overview.md).
 - Read about the latest announcements, HPC workload examples, and performance results at the [Azure Compute Tech Community Blogs](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
 - For a higher level architectural view of running HPC workloads, see [High Performance Computing (HPC) on Azure](/azure/architecture/topics/high-performance-computing/).

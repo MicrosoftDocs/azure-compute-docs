@@ -7,7 +7,7 @@ ms.service: azure-dedicated-host
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell, devx-track-azurecli, portal
 ms.update-cycle: 180-days
-ms.date: 07/12/2023
+ms.date: 09/25/2026
 ms.reviewer: vamckMS
 # Customer intent: As a cloud architect, I want to deploy Azure dedicated hosts to manage and host virtual machines and scale sets, so that I can ensure optimal resource utilization and control over my virtualization environment.
 ---
@@ -16,14 +16,14 @@ ms.reviewer: vamckMS
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Uniform scale sets
 
-This article guides you through how to create an Azure [dedicated host](dedicated-hosts.md) to host your virtual machines (VMs) and scale set instances.
+This article guides you through how to create an Azure [dedicated host](overview.md) to host your virtual machines (VMs) and scale set instances.
 
 
 ## Limitations
 
 - The sizes and hardware types available for dedicated hosts vary by region. Refer to the host [pricing page](https://aka.ms/ADHPricing) to learn more.
-- Not all Azure VM SKUs, regions and availability zones support Ultra Disks, for more information about this topic, see [Azure Ultra Disks](disks-enable-ultra-ssd.md).
-- Additional [limitations](./dedicated-hosts.md#ultra-disk-support-for-virtual-machines-on-dedicated-hosts) would apply when using Ultra Disks on the following VM sizes: LSv2, M, Mv2, Msv2, Mdsv2, NVv3, NVv4 on a dedicated host.
+- Not all Azure VM SKUs, regions and availability zones support Ultra Disks, for more information about this topic, see [Azure Ultra Disks](../disks-enable-ultra-ssd.md).
+- Additional [limitations](./overview.md#ultra-disk-support-for-virtual-machines-on-dedicated-hosts) would apply when using Ultra Disks on the following VM sizes: LSv2, M, Mv2, Msv2, Mdsv2, NVv3, NVv4 on a dedicated host.
 - The fault domain count of the virtual machine scale set can't exceed the fault domain count of the host group.
 - Users can not select hardware capabilities like accelerated networking when creating a dedicated host.
 - Users would not be able to create VMs/VMSS with accelerated networking enabled on a dedicated host.
@@ -93,7 +93,7 @@ az vm host group create \
    --platform-fault-domain-count 2
 ```
 
-Add the `--automatic-placement true` parameter to have your VMs and scale set instances automatically placed on hosts, within a host group. For more information, see [Manual vs. automatic placement](dedicated-hosts.md#manual-vs-automatic-placement).
+Add the `--automatic-placement true` parameter to have your VMs and scale set instances automatically placed on hosts, within a host group. For more information, see [Manual vs. automatic placement](overview.md#manual-vs-automatic-placement).
 
 Add the `--ultra-ssd-enabled true` parameter to enable creation of VMs that can support Ultra Disks.
 
@@ -149,7 +149,7 @@ $hostGroup = New-AzHostGroup `
    -SupportAutomaticPlacement true
 ```
 
-Add the `-SupportAutomaticPlacement true` parameter to have your VMs and scale set instances automatically placed on hosts, within a host group. For more information about this topic, see [Manual vs. automatic placement ](dedicated-hosts.md#manual-vs-automatic-placement).
+Add the `-SupportAutomaticPlacement true` parameter to have your VMs and scale set instances automatically placed on hosts, within a host group. For more information about this topic, see [Manual vs. automatic placement ](overview.md#manual-vs-automatic-placement).
 
 Add the `-EnableUltraSSD` parameter to enable creation of VMs that can support Ultra Disks.
 
@@ -210,7 +210,7 @@ $dHost = New-AzHost `
 
 Now create a VM on the host.
 
-To create a VM with Ultra Disk support, ensure the host group where you place the VM is Ultra Disk enabled. After you confirm this feature, create the VM in the same host group. For steps to attach an Ultra Disk to a VM, see [Deploy a VM with an Ultra Disk](disks-enable-ultra-ssd.md#deploy-a-vm-with-an-ultra-disk).
+To create a VM with Ultra Disk support, ensure the host group where you place the VM is Ultra Disk enabled. After you confirm this feature, create the VM in the same host group. For steps to attach an Ultra Disk to a VM, see [Deploy a VM with an Ultra Disk](../disks-enable-ultra-ssd.md#deploy-a-vm-with-an-ultra-disk).
 
 ### [Portal](#tab/portal)
 
@@ -336,7 +336,7 @@ You can reassign an existing multitenant VM or dedicated host VM to a different 
 
 - The VM size must be in the same size family as the dedicated host. For example, if your dedicated host is DSv3, then the VM size could be Standard_D4s_v3, but it couldn't be a Standard_A4_v2.
 - The VM needs to be located in same region as the dedicated host.
-- The VM can't be part of a proximity placement group. Remove the VM from the proximity placement group before moving it to a dedicated host. For more information about this topic, see [Move a VM out of a proximity placement group](./windows/proximity-placement-groups.md#move-an-existing-vm-out-of-a-proximity-placement-group).
+- The VM can't be part of a proximity placement group. Remove the VM from the proximity placement group before moving it to a dedicated host. For more information about this topic, see [Move a VM out of a proximity placement group](../windows/proximity-placement-groups.md#move-an-existing-vm-out-of-a-proximity-placement-group).
 
 - The VM can't be in an availability set.
 - If the VM is in an availability zone, it must be the same availability zone as the host group. The availability zone settings for the VM and the host group must match.
@@ -365,7 +365,7 @@ az vm update - n myVM -g myResourceGroup --host myHost
 az vm start -n myVM -g myResourceGroup
 ```
 
-For automatically placed VMs, only update the host group. For more information about this topic, see [Manual vs. automatic placement](dedicated-hosts.md#manual-vs-automatic-placement).
+For automatically placed VMs, only update the host group. For more information about this topic, see [Manual vs. automatic placement](overview.md#manual-vs-automatic-placement).
 
 Replace the values with your own information.
 
@@ -494,7 +494,7 @@ If you need to know how much capacity is still available on a how, you can check
 1. Search for and select the host.
 1. In the **Overview** page for the host, scroll down to see the list of sizes still available for the host. It should look similar to:
 
-:::image type="content" source="media/dedicated-hosts-portal/host-status.png" alt-text="Check the available capacity of the host from the overview page for the host.":::
+:::image type="content" source="./media/dedicated-hosts-portal/host-status.png" alt-text="Check the available capacity of the host from the overview page for the host.":::
 
 ### [CLI](#tab/cli)
 
@@ -728,7 +728,7 @@ $hostRestartStatus.InstanceView.Statuses[1].DisplayStatus;
 ---
 ## Resize a host
 
-[!INCLUDE [dedicated-hosts-resize](includes/dedicated-hosts-resize.md)]
+[!INCLUDE [dedicated-hosts-resize](../includes/dedicated-hosts-resize.md)]
 
 
 
@@ -834,6 +834,6 @@ Remove-AzResourceGroup -Name $rgName
 
 ## Next steps
 
-- For more information about this topic, see the [Dedicated hosts](dedicated-hosts.md) overview.
+- For more information about this topic, see the [Dedicated hosts](overview.md) overview.
 
 - There's sample template, available at [Azure Quickstart Templates](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-dedicated-hosts/README.md), which uses both zones and fault domains for maximum resiliency in a region.

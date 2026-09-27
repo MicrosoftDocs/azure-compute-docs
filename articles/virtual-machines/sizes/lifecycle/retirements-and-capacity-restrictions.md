@@ -105,7 +105,7 @@ NVv3-series and NVv4-series have announced retirements planned for September 30,
 
 | Series name | Retirement Status | Retirement Announcement | Planned Retirement Date | Modernization guide |
 |---|---|---|---|---|
-| Dsv3-Type1, Dsv3-Type2, Esv3-Type1, Esv3-Type2 | **Retired** | 03/15/22 | 06/30/23 | [Dedicated Host SKU retirement](./retirement/dedicated-host-retirement.md) |
+| Dsv3-Type1, Dsv3-Type2, Esv3-Type1, Esv3-Type2 | **Retired** | 03/15/22 | 06/30/23 | [Dedicated Host SKU retirement](../../dedicated-hosts/sku-lifecycle.md) |
 
 ## Impacted VM series
 
