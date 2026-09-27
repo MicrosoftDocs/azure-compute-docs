@@ -6,13 +6,13 @@ ms.author: kgong
 ms.reviewer: mattmcinnes
 ms.service: azure-dedicated-host
 ms.topic: concept-article
-ms.date: 01/23/2023
+ms.date: 09/25/2026
 ms.update-cycle: 1095-days
 # Customer intent: "As a cloud architect, I want to understand the hardware specifications and VM packing configurations for various Dedicated Host SKUs, so that I can efficiently plan and deploy virtual machines based on my organization’s workload requirements."
 ---
 
 # General Purpose Azure Dedicated Host SKUs
-Azure Dedicated Host SKUs are the combination of a VM family and a certain hardware specification. You can only deploy VMs of the VM series that the Dedicated Host SKU specifies. For example, on the Dsv3-Type3, you can only provision [Dsv3-series](dv3-dsv3-series.md#dsv3-series) VMs. 
+Azure Dedicated Host SKUs are the combination of a VM family and a certain hardware specification. You can only deploy VMs of the VM series that the Dedicated Host SKU specifies. For example, on the Dsv3-Type3, you can only provision [Dsv3-series](../sizes/general-purpose/dsv3-series.md) VMs. 
 
 This document goes through the hardware specifications and VM packings for all general purpose Dedicated Host SKUs.
 
@@ -23,7 +23,7 @@ The sizes and hardware types available for dedicated hosts vary by region. Refer
 ## Ddsv6
 ### Ddsv6-Type1
 
-The Ddsv6-Type1 is a Dedicated Host SKU utilizing Intel's 8573B processor. It offers 96 physical cores, 192 vCPUs, and 1024 GiB of RAM. The Ddsv6-Type1 runs [Ddsv6-series](sizes/general-purpose/ddsv6-series.md) VMs. Refer to the VM size documentation to better understand specific VM performance information.
+The Ddsv6-Type1 is a Dedicated Host SKU utilizing Intel's 8573B processor. It offers 96 physical cores, 192 vCPUs, and 1024 GiB of RAM. The Ddsv6-Type1 runs [Ddsv6-series](../sizes/general-purpose/ddsv6-series.md) VMs. Refer to the VM size documentation to better understand specific VM performance information.
 
 The following packing configuration outlines the max packing of uniform VMs you can put onto a Ddsv6-Type1 host.
 
@@ -43,7 +43,7 @@ The following packing configuration outlines the max packing of uniform VMs you 
 ## Dsv6
 ### Dsv6-Type1
 
-The Dsv6-Type1 is a Dedicated Host SKU utilizing Intel's 8573B processor. It offers 96 physical cores, 192 vCPUs, and 1024 GiB of RAM. The Dsv6-Type1 runs [Dsv6-series](sizes/general-purpose/dsv6-series.md) VMs. Refer to the VM size documentation to better understand specific VM performance information.
+The Dsv6-Type1 is a Dedicated Host SKU utilizing Intel's 8573B processor. It offers 96 physical cores, 192 vCPUs, and 1024 GiB of RAM. The Dsv6-Type1 runs [Dsv6-series](../sizes/general-purpose/dsv6-series.md) VMs. Refer to the VM size documentation to better understand specific VM performance information.
 
 The following packing configuration outlines the max packing of uniform VMs you can put onto a Dsv6-Type1 host.
 
@@ -63,7 +63,7 @@ The following packing configuration outlines the max packing of uniform VMs you 
 ## Dasv6
 ### Dasv6-Type1
 
-The Dasv6-Type1 is a Dedicated Host SKU utilizing AMD's EPYC™ 9V74 processor. It offers 80 physical cores, 144 vCPUs, and 768 GiB of RAM. The Dasv6-Type1 runs [Dasv6-series](sizes/general-purpose/dasv6-series.md) VMs. Refer to the VM size documentation to better understand specific VM performance information.
+The Dasv6-Type1 is a Dedicated Host SKU utilizing AMD's EPYC™ 9V74 processor. It offers 80 physical cores, 144 vCPUs, and 768 GiB of RAM. The Dasv6-Type1 runs [Dasv6-series](../sizes/general-purpose/dasv6-series.md) VMs. Refer to the VM size documentation to better understand specific VM performance information.
 
 The following packing configuration outlines the max packing of uniform VMs you can put onto a Dasv6-Type1 host.
 
@@ -81,7 +81,7 @@ The following packing configuration outlines the max packing of uniform VMs you 
 ## Dadsv5
 ### Dadsv5-Type1
 
-The Dadsv5-Type1 is a Dedicated Host SKU utilizing AMD's EPYC™ 7763v processor. It offers 64 physical cores, 112 vCPUs, and 768 GiB of RAM. The Dadsv5-Type1 runs [Dadsv5-series](dasv5-dadsv5-series.md#dadsv5-series) VMs. Refer to the VM size documentation to better understand specific VM performance information.
+The Dadsv5-Type1 is a Dedicated Host SKU utilizing AMD's EPYC™ 7763v processor. It offers 64 physical cores, 112 vCPUs, and 768 GiB of RAM. The Dadsv5-Type1 runs [Dadsv5-series](../sizes/general-purpose/dadsv5-series.md) VMs. Refer to the VM size documentation to better understand specific VM performance information.
 
 The following packing configuration outlines the max packing of uniform VMs you can put onto a Dadsv5-Type1 host.
 
@@ -100,7 +100,7 @@ The following packing configuration outlines the max packing of uniform VMs you 
 ## Dasv5
 ### Dasv5-Type1
 
-The Dasv5-Type1 is a Dedicated Host SKU utilizing AMD's EPYC™ 7763v processor. It offers 64 physical cores, 112 vCPUs, and 768 GiB of RAM. The Dasv5-Type1 runs [Dasv5-series](dasv5-dadsv5-series.md#dasv5-series) VMs. Refer to the VM size documentation to better understand specific VM performance information.
+The Dasv5-Type1 is a Dedicated Host SKU utilizing AMD's EPYC™ 7763v processor. It offers 64 physical cores, 112 vCPUs, and 768 GiB of RAM. The Dasv5-Type1 runs [Dasv5-series](../sizes/general-purpose/dasv5-series.md) VMs. Refer to the VM size documentation to better understand specific VM performance information.
 
 The following packing configuration outlines the max packing of uniform VMs you can put onto a Dasv5-Type1 host.
 
@@ -117,7 +117,7 @@ The following packing configuration outlines the max packing of uniform VMs you 
 
 ## Dasv4
 ### Dasv4-Type1
-The Dasv4-Type1 is a Dedicated Host SKU utilizing AMD's 2.35 GHz EPYC™ 7452 processor. It offers 64 physical cores, 96 vCPUs, and 672 GiB of RAM. The Dasv4-Type1 runs [Dasv4-series](dav4-dasv4-series.md#dasv4-series) VMs. Refer to the VM size documentation to better understand specific VM performance information.
+The Dasv4-Type1 is a Dedicated Host SKU utilizing AMD's 2.35 GHz EPYC™ 7452 processor. It offers 64 physical cores, 96 vCPUs, and 672 GiB of RAM. The Dasv4-Type1 runs [Dasv4-series](../sizes/general-purpose/dasv4-series.md) VMs. Refer to the VM size documentation to better understand specific VM performance information.
 
 The following packing configuration outlines the max packing of uniform VMs you can put onto a Dasv4-Type1 host.
 
@@ -138,7 +138,7 @@ You can also mix multiple VM sizes on the Dasv4-Type1. The following are sample 
 - 20 D4asv4 + 8 D2asv4
 
 ### Dasv4-Type2
-The Dasv4-Type2 is a Dedicated Host SKU utilizing AMD's EPYC™ 7763v processor. It offers 64 physical cores, 112 vCPUs, and 768 GiB of RAM. The Dasv4-Type2 runs [Dasv4-series](dav4-dasv4-series.md#dasv4-series) VMs. Refer to the VM size documentation to better understand specific VM performance information.
+The Dasv4-Type2 is a Dedicated Host SKU utilizing AMD's EPYC™ 7763v processor. It offers 64 physical cores, 112 vCPUs, and 768 GiB of RAM. The Dasv4-Type2 runs [Dasv4-series](../sizes/general-purpose/dasv4-series.md) VMs. Refer to the VM size documentation to better understand specific VM performance information.
 
 The following packing configuration outlines the max packing of uniform VMs you can put onto a Dasv4-Type2 host.
 
@@ -156,7 +156,7 @@ The following packing configuration outlines the max packing of uniform VMs you 
 ## DCadsv5
 ### DCadsv5-Type1
 
-The DCadsv5-Type1 is a Dedicated Host SKU utilizing the AMD 3rd Generation EPYC™ 7763v processor. It offers 64 physical cores, 112 vCPUs, and 768 GiB of RAM. The DCadsv5-Type1 runs [DCadsv5-series](dcasv5-dcadsv5-series.md#dcadsv5-series) VMs.
+The DCadsv5-Type1 is a Dedicated Host SKU utilizing the AMD 3rd Generation EPYC™ 7763v processor. It offers 64 physical cores, 112 vCPUs, and 768 GiB of RAM. The DCadsv5-Type1 runs [DCadsv5-series](../sizes/general-purpose/dcadsv5-series.md) VMs.
 
 The following packing configuration outlines the max packing of uniform VMs you can put onto an DCadsv5-Type1 host.
 
@@ -174,7 +174,7 @@ The following packing configuration outlines the max packing of uniform VMs you 
 ## DCasv5
 ### DCasv5-Type1
 
-The DCasv5-Type1 is a Dedicated Host SKU utilizing the AMD 3rd Generation EPYC™ 7763v processor. It offers 64 physical cores, 112 vCPUs, and 768 GiB of RAM. The DCasv5-Type1 runs [DCasv5-series](dcasv5-dcadsv5-series.md#dcasv5-series) VMs.
+The DCasv5-Type1 is a Dedicated Host SKU utilizing the AMD 3rd Generation EPYC™ 7763v processor. It offers 64 physical cores, 112 vCPUs, and 768 GiB of RAM. The DCasv5-Type1 runs [DCasv5-series](../sizes/general-purpose/dcasv5-series.md) VMs.
 
 The following packing configuration outlines the max packing of uniform VMs you can put onto an DCasv5-Type1 host.
 
@@ -192,7 +192,7 @@ The following packing configuration outlines the max packing of uniform VMs you 
 ## DCsv3
 ### DCsv3-Type1
 
-The DCsv3-Type1 is a Dedicated Host SKU utilizing the 3rd Generation Intel® Xeon Scalable Processor 8370C. It offers 48 physical cores, 48 vCPUs, and 384 GiB of RAM. The DCsv3-Type1 runs [DCsv3-series](dcv3-series.md#dcsv3-series) VMs.
+The DCsv3-Type1 is a Dedicated Host SKU utilizing the 3rd Generation Intel® Xeon Scalable Processor 8370C. It offers 48 physical cores, 48 vCPUs, and 384 GiB of RAM. The DCsv3-Type1 runs [DCsv3-series](../sizes/general-purpose/dcsv3-series.md) VMs.
 
 The following packing configuration outlines the max packing of uniform VMs you can put onto a DCsv3-Type1 host.
 
@@ -208,7 +208,7 @@ The following packing configuration outlines the max packing of uniform VMs you 
 ## DCdsv3
 ### DCdsv3-Type1
 
-The DCdsv3-Type1 is a Dedicated Host SKU utilizing the 3rd Generation Intel® Xeon Scalable Processor 8370C. It offers 48 physical cores, 48 vCPUs, and 384 GiB of RAM. The DCdsv3-Type1 runs [DCdsv3-series](dcv3-series.md#dcdsv3-series) VMs.
+The DCdsv3-Type1 is a Dedicated Host SKU utilizing the 3rd Generation Intel® Xeon Scalable Processor 8370C. It offers 48 physical cores, 48 vCPUs, and 384 GiB of RAM. The DCdsv3-Type1 runs [DCdsv3-series](../sizes/general-purpose/dcdsv3-series.md) VMs.
 
 The following packing configuration outlines the max packing of uniform VMs you can put onto a DCdsv3-Type1 host.
 
@@ -222,7 +222,7 @@ The following packing configuration outlines the max packing of uniform VMs you 
 ## DCsv2
 ### DCsv2-Type1
 
-The DCsv2-Type1 is a Dedicated Host SKU utilizing the Intel® Coffee Lake (Xeon® E-2288G with SGX technology) processor. It offers 8 physical cores, 8 vCPUs, and 64 GiB of RAM. The DCsv2-Type1 runs [DCsv2-series](dcv2-series.md) VMs.
+The DCsv2-Type1 is a Dedicated Host SKU utilizing the Intel® Coffee Lake (Xeon® E-2288G with SGX technology) processor. It offers 8 physical cores, 8 vCPUs, and 64 GiB of RAM. The DCsv2-Type1 runs [DCsv2-series](../sizes/general-purpose/dcsv2-series.md) VMs.
 
 The following packing configuration outlines the max packing of uniform VMs you can put onto a DCsv2-Type1 host.
 
@@ -233,7 +233,7 @@ The following packing configuration outlines the max packing of uniform VMs you 
 ## Ddsv5
 ### Ddsv5-Type1
 
-The Ddsv5-Type1 is a Dedicated Host SKU utilizing the Intel® Ice Lake (Xeon® Platinum 8370C) processor. It offers 64 physical cores, 119 vCPUs, and 768 GiB of RAM. The Ddsv5-Type1 runs [Ddsv5-series](sizes/general-purpose/ddsv5-series.md) VMs. Refer to the VM size documentation to better understand specific VM performance information.
+The Ddsv5-Type1 is a Dedicated Host SKU utilizing the Intel® Ice Lake (Xeon® Platinum 8370C) processor. It offers 64 physical cores, 119 vCPUs, and 768 GiB of RAM. The Ddsv5-Type1 runs [Ddsv5-series](../sizes/general-purpose/ddsv5-series.md) VMs. Refer to the VM size documentation to better understand specific VM performance information.
 
 The following packing configuration outlines the max packing of uniform VMs you can put onto a Ddsv5-Type1 host.
 
@@ -250,7 +250,7 @@ The following packing configuration outlines the max packing of uniform VMs you 
 
 ## Ddsv4
 ### Ddsv4-Type1
-The Ddsv4-Type1 is a Dedicated Host SKU utilizing the Intel® Cascade Lake (Xeon® Platinum 8272CL) processor. It offers 52 physical cores, 80 vCPUs, and 504 GiB of RAM. The Ddsv4-Type1 runs [Ddsv4-series](sizes/general-purpose/ddsv4-series.md) VMs.
+The Ddsv4-Type1 is a Dedicated Host SKU utilizing the Intel® Cascade Lake (Xeon® Platinum 8272CL) processor. It offers 52 physical cores, 80 vCPUs, and 504 GiB of RAM. The Ddsv4-Type1 runs [Ddsv4-series](../sizes/general-purpose/ddsv4-series.md) VMs.
 
 The following packing configuration outlines the max packing of uniform VMs you can put onto a Ddsv4-Type1 host.
 
@@ -270,7 +270,7 @@ You can also mix multiple VM sizes on the Ddsv4-Type1. The following are sample 
 - 10 D4dsv4 + 14 D2dsv4
 
 ### Ddsv4-Type2
-The Ddsv4-Type2 is a Dedicated Host SKU utilizing the Intel® Ice Lake (Xeon® Platinum 8370C) processor. It offers 64 physical cores, 119 vCPUs, and 768 GiB of RAM. The Ddsv4-Type2 runs [Ddsv4-series](sizes/general-purpose/ddsv4-series.md) VMs.
+The Ddsv4-Type2 is a Dedicated Host SKU utilizing the Intel® Ice Lake (Xeon® Platinum 8370C) processor. It offers 64 physical cores, 119 vCPUs, and 768 GiB of RAM. The Ddsv4-Type2 runs [Ddsv4-series](../sizes/general-purpose/ddsv4-series.md) VMs.
 
 The following packing configuration outlines the max packing of uniform VMs you can put onto a Ddsv4-Type2 host.
 
@@ -287,7 +287,7 @@ The following packing configuration outlines the max packing of uniform VMs you 
 ## Dsv5
 ### Dsv5-Type1
 
-The Dsv5-Type1 is a Dedicated Host SKU utilizing the Intel® Ice Lake (Xeon® Platinum 8370C) processor. It offers 64 physical cores, 119 vCPUs, and 768 GiB of RAM. The Dsv5-Type1 runs [Dsv5-series](dv5-dsv5-series.md#dsv5-series) VMs. Refer to the VM size documentation to better understand specific VM performance information.
+The Dsv5-Type1 is a Dedicated Host SKU utilizing the Intel® Ice Lake (Xeon® Platinum 8370C) processor. It offers 64 physical cores, 119 vCPUs, and 768 GiB of RAM. The Dsv5-Type1 runs [Dsv5-series](../sizes/general-purpose/dsv5-series.md) VMs. Refer to the VM size documentation to better understand specific VM performance information.
 
 The following packing configuration outlines the max packing of uniform VMs you can put onto a Dsv5-Type1 host.
 
@@ -305,7 +305,7 @@ The following packing configuration outlines the max packing of uniform VMs you 
 ## Dsv4
 ### Dsv4-Type1
 
-The Dsv4-Type1 is a Dedicated Host SKU utilizing the Intel® Cascade Lake (Xeon® Platinum 8272CL) processor. It offers 52 physical cores, 80 vCPUs, and 504 GiB of RAM. The Dsv4-Type1 runs [Dsv4-series](dv4-dsv4-series.md#dsv4-series) VMs.
+The Dsv4-Type1 is a Dedicated Host SKU utilizing the Intel® Cascade Lake (Xeon® Platinum 8272CL) processor. It offers 52 physical cores, 80 vCPUs, and 504 GiB of RAM. The Dsv4-Type1 runs [Dsv4-series](../sizes/general-purpose/dsv4-series.md) VMs.
 
 The following packing configuration outlines the max packing of uniform VMs you can put onto a Dsv4-Type1 host.
 
@@ -326,7 +326,7 @@ You can also mix multiple VM sizes on the Dsv4-Type1. The following are sample c
 
 ### Dsv4-Type2
 
-The Dsv4-Type2 is a Dedicated Host SKU utilizing the Intel® Ice Lake (Xeon® Platinum 8370C) processor. It offers 64 physical cores, 119 vCPUs, and 768 GiB of RAM. The Dsv4-Type2 runs [Dsv4-series](dv4-dsv4-series.md#dsv4-series) VMs.
+The Dsv4-Type2 is a Dedicated Host SKU utilizing the Intel® Ice Lake (Xeon® Platinum 8370C) processor. It offers 64 physical cores, 119 vCPUs, and 768 GiB of RAM. The Dsv4-Type2 runs [Dsv4-series](../sizes/general-purpose/dsv4-series.md) VMs.
 
 The following packing configuration outlines the max packing of uniform VMs you can put onto a Dsv4-Type2 host.
 
@@ -344,9 +344,9 @@ The following packing configuration outlines the max packing of uniform VMs you 
 ### Dsv3-Type1
 
 > [!NOTE]
->  **The Dsv3-Type1 will be retired on June 30, 2023**. Refer to the [dedicated host retirement guide](dedicated-host-retirement.md) to learn more.
+>  **The Dsv3-Type1 will be retired on June 30, 2023**. Refer to the [dedicated host retirement guide](sku-lifecycle.md) to learn more.
 
-The Dsv3-Type1 is a Dedicated Host SKU utilizing the Intel® Broadwell (2.3 GHz Xeon® E5-2673 v4) processor. It offers 40 physical cores, 64 vCPUs, and 256 GiB of RAM. The Dsv3-Type1 runs [Dsv3-series](dv3-dsv3-series.md#dsv3-series) VMs.
+The Dsv3-Type1 is a Dedicated Host SKU utilizing the Intel® Broadwell (2.3 GHz Xeon® E5-2673 v4) processor. It offers 40 physical cores, 64 vCPUs, and 256 GiB of RAM. The Dsv3-Type1 runs [Dsv3-series](../sizes/general-purpose/dsv3-series.md) VMs.
 
 The following packing configuration outlines the max packing of uniform VMs you can put onto a Dsv3-Type1 host.
 
@@ -368,9 +368,9 @@ You can also mix multiple VM sizes on the Dsv3-Type1. The following are sample c
 ### Dsv3-Type2
 
 > [!NOTE]
->  **The Dsv3-Type2 will be retired on June 30, 2023**. Refer to the [dedicated host retirement guide](dedicated-host-retirement.md) to learn more.
+>  **The Dsv3-Type2 will be retired on June 30, 2023**. Refer to the [dedicated host retirement guide](sku-lifecycle.md) to learn more.
 
-The Dsv3-Type2 is a Dedicated Host SKU utilizing the Intel® Skylake (2.1 GHz Xeon® Platinum 8171M) processor. It offers 48 physical cores, 76 vCPUs, and 504 GiB of RAM. The Dsv3-Type2 runs [Dsv3-series](dv3-dsv3-series.md#dsv3-series) VMs.
+The Dsv3-Type2 is a Dedicated Host SKU utilizing the Intel® Skylake (2.1 GHz Xeon® Platinum 8171M) processor. It offers 48 physical cores, 76 vCPUs, and 504 GiB of RAM. The Dsv3-Type2 runs [Dsv3-series](../sizes/general-purpose/dsv3-series.md) VMs.
 
 The following packing configuration outlines the max packing of uniform VMs you can put onto a Dsv3-Type2 host.
 
@@ -391,7 +391,7 @@ You can also mix multiple VM sizes on the Dsv3-Type2. The following are sample c
 
 ### Dsv3-Type3
 
-The Dsv3-Type3 is a Dedicated Host SKU utilizing the Intel® Cascade Lake (Xeon® Platinum 8272CL) processor. It offers 52 physical cores, 80 vCPUs, and 504 GiB of RAM. The Dsv3-Type3 runs [Dsv3-series](dv3-dsv3-series.md#dsv3-series) VMs.
+The Dsv3-Type3 is a Dedicated Host SKU utilizing the Intel® Cascade Lake (Xeon® Platinum 8272CL) processor. It offers 52 physical cores, 80 vCPUs, and 504 GiB of RAM. The Dsv3-Type3 runs [Dsv3-series](../sizes/general-purpose/dsv3-series.md) VMs.
 
 The following packing configuration outlines the max packing of uniform VMs you can put onto a Dsv3-Type3 host.
 
@@ -412,7 +412,7 @@ You can also mix multiple VM sizes on the Dsv3-Type3. The following are sample c
 
 ### Dsv3-Type4
 
-The Dsv3-Type4 is a Dedicated Host SKU utilizing the Intel® Ice Lake (Xeon® Platinum 8370C) processor. It offers 64 physical cores, 119 vCPUs, and 768 GiB of RAM. The Dsv3-Type4 runs [Dsv3-series](dv3-dsv3-series.md#dsv3-series) VMs.
+The Dsv3-Type4 is a Dedicated Host SKU utilizing the Intel® Ice Lake (Xeon® Platinum 8370C) processor. It offers 64 physical cores, 119 vCPUs, and 768 GiB of RAM. The Dsv3-Type4 runs [Dsv3-series](../sizes/general-purpose/dsv3-series.md) VMs.
 
 The following packing configuration outlines the max packing of uniform VMs you can put onto a Dsv3-Type4 host.
 
@@ -428,6 +428,6 @@ The following packing configuration outlines the max packing of uniform VMs you 
 
 ## Next steps
 
-- For more information, see the [Dedicated hosts](dedicated-hosts.md) overview.
+- For more information, see the [Dedicated hosts](overview.md) overview.
 
 - There is sample template, available at [Azure Quickstart Templates](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-dedicated-hosts/README.md) that uses both zones and fault domains for maximum resiliency in a region.

@@ -16,7 +16,7 @@ ms.reviewer: mattmcinnes
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
 When you commit to a reserved instance of Azure Dedicated Hosts, you can save money. The reservation discount is applied automatically to the number of running dedicated hosts that match the reservation scope and attributes. You don't need to assign a reservation to a dedicated host to get the discounts. A reserved instance purchase covers only the compute part of your usage and does
-include software licensing costs. See the [Overview of Azure Dedicated Hosts for virtual machines](./dedicated-hosts.md).
+include software licensing costs. See the [Overview of Azure Dedicated Hosts for virtual machines](./overview.md).
 
 Purchasing a reserved instance of Azure Dedicated Hosts provides a billing discount only. It doesn't reserve or guarantee that Dedicated Host capacity will be available when you deploy the host. Capacity constraints can still block deployment even when quota is approved and a reservation is purchased. 
 
@@ -25,7 +25,7 @@ Purchasing a reserved instance of Azure Dedicated Hosts provides a billing disco
 
 Before you buy a reservation, you should determine which dedicated host you need. A SKU is defined for a dedicated host representing the VM series and type. 
 
-Start by going over the supported sizes for [Windows virtual machine](./sizes.md) or [Linux](./sizes.md) to identify the VM series.
+Start by going over the supported sizes for [Windows virtual machine](../sizes/overview.md) or [Linux](../sizes/overview.md) to identify the VM series.
 
 Next, check whether it is supported on Azure Dedicated Hosts. [Azure Dedicated Hosts pricing](https://aka.ms/ADHPricing) page has the complete list of dedicated hosts SKUs, their CPU information, and various pricing options (including reserved instances).
 
@@ -127,7 +127,7 @@ To learn more about Azure Reservations, see the following articles:
 
 - [What are Azure Reservations?](/azure/cost-management-billing/reservations/save-compute-costs-reservations)
 
-- [Using Azure Dedicated Hosts](./dedicated-hosts.md)
+- [Using Azure Dedicated Hosts](./overview.md)
 
 - [Dedicated Hosts Pricing](https://azure.microsoft.com/pricing/details/virtual-machines/dedicated-host/)
 

@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 09/02/2025
+ms.date: 09/25/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 # Customer intent: As a cloud architect, I want to understand the specifications and features of the ND-H100-v5 size series, so that I can select the optimal VM type for high-performance compute workloads.
@@ -115,7 +115,7 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 |[Ephemeral OS Disk](../../ephemeral-os-disks.md)| Supported |
 |[Local temporary storage](../../overview.md#local-temporary-storage)| Supported |
 |[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)| Not Supported |
-|[Infiniband](../../setup-infiniband.md)| Supported |
+|[Infiniband](../high-performance-compute/setup-infiniband.md)| Supported |
 
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]

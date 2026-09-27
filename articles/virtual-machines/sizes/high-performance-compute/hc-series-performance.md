@@ -4,7 +4,7 @@ description: Learn about performance testing results for HC-series VM sizes in A
 ms.service: azure-virtual-machines
 ms.subservice: hpc
 ms.topic: concept-article
-ms.date: 08/21/2026
+ms.date: 09/25/2026
 ms.reviewer: wwilliams
 ms.author: padmalathas
 author: iamwilliew
@@ -15,7 +15,7 @@ author: iamwilliew
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 > [!IMPORTANT]
-> Azure Virtual Machines HC-series sizes (Standard_HC44rs, Standard_HC44-16rs, Standard_HC44-32rs) retire on May 31, 2027. After this date, Azure deallocates HC-series VMs, stops running them, and you no longer incur charges. HC-series VMs don't have an SLA or support after retirement. Sales of 1-year and 3-year Reserved Instances for HC-series ended on April 2, 2026. For more information, see [Migrate your HC-series virtual machines by May 31, 2027](./sizes/lifecycle/retirement/hc-series-retirement.md).
+> Azure Virtual Machines HC-series sizes (Standard_HC44rs, Standard_HC44-16rs, Standard_HC44-32rs) retire on May 31, 2027. After this date, Azure deallocates HC-series VMs, stops running them, and you no longer incur charges. HC-series VMs don't have an SLA or support after retirement. Sales of 1-year and 3-year Reserved Instances for HC-series ended on April 2, 2026. For more information, see [Modernize your HC-series virtual machines by May 31, 2027](../lifecycle/retirement/hc-series-retirement.md).
 
 Performance testing was conducted across multiple HC-series sizes. The following table summarizes key findings from these tests.
 
@@ -35,7 +35,7 @@ MPI latency test from the OSU Micro-Benchmarks (OMB) suite is run. Sample script
 ./bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./osu_latency 
 ```
 
-:::image type="content" source="./media/hpc/latency-hc.png" alt-text="Screenshot of MPI latency graph for HC-series virtual machines.":::
+:::image type="content" source="../../media/hpc/latency-hc.png" alt-text="Screenshot of MPI latency graph for HC-series virtual machines.":::
 
 ## MPI bandwidth
 
@@ -45,7 +45,7 @@ MPI bandwidth test from the OSU microbenchmark suite is run. Sample scripts are 
 ./mvapich2-2.3.install/bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./mvapich2-2.3/osu_benchmarks/mpi/pt2pt/osu_bw
 ```
 
-:::image type="content" source="./media/hpc/bandwidth-hc.png" alt-text="Screenshot of MPI bandwidth graph for HC-series virtual machines.":::
+:::image type="content" source="../../media/hpc/bandwidth-hc.png" alt-text="Screenshot of MPI bandwidth graph for HC-series virtual machines.":::
 
 ## Mellanox Perftest
 

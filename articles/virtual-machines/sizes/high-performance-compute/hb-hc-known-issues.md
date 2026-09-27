@@ -5,7 +5,7 @@ ms.service: azure-virtual-machines
 ms.subservice: hpc
 ms.custom: linux-related-content
 ms.topic: troubleshooting
-ms.date: 05/04/2026
+ms.date: 09/25/2026
 ms.reviewer: wwilliams
 ms.author: padmalathas
 author: padmalathas
@@ -16,7 +16,7 @@ author: padmalathas
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
-This article attempts to list recent common issues and their solutions when using the [HB-series](sizes-hpc.md) and [N-series](sizes-gpu.md) HPC and GPU VMs.
+This article attempts to list recent common issues and their solutions when using the [HB-series](../overview.md#high-performance-compute) and [N-series](../overview.md#gpu-accelerated) HPC and GPU VMs.
 
 ## AMD NVv5 V710 and NGv1 V620 Linux GPU drivers NULL Pointer Dereference (CVE-2026-43603) might cause denial-of-service
 
@@ -95,7 +95,7 @@ For more information on this issue, see the [TechCommunity article with instruct
 
 On HPC systems, it's often useful to clean up memory after a job finishes before the next user is assigned the same node. After running applications in Linux, you may find that your available memory reduces while your buffer memory increases, despite not running any applications.
 
-![Screenshot of command prompt before cleaning](./media/hpc/cache-cleaning-1.png)
+![Screenshot of command prompt before cleaning](../../media/hpc/cache-cleaning-1.png)
 
 Using `numactl -H` shows which NUMAnodes the memory is buffered with (possibly all). In Linux, users can clean the caches in three ways to return buffered or cached memory to ‘free’. You need to be root or have sudo permissions.
 
@@ -105,7 +105,7 @@ sudo echo 2 > /proc/sys/vm/drop_caches [frees slab objects e.g. dentries, inodes
 sudo echo 3 > /proc/sys/vm/drop_caches [cleans page-cache and slab objects]
 ```
 
-![Screenshot of command prompt after cleaning](./media/hpc/cache-cleaning-2.png)
+![Screenshot of command prompt after cleaning](../../media/hpc/cache-cleaning-2.png)
 
 
 

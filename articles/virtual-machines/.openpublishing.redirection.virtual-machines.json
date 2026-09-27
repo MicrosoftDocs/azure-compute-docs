@@ -1132,13 +1132,13 @@
         },
         {
             "source_path_from_root": "/articles/virtual-machines/linux/dedicated-hosts.md",
-            "redirect_url": "/azure/virtual-machines/dedicated-hosts",
+            "redirect_url": "/azure/virtual-machines/dedicated-hosts/overview",
             "redirect_document_id": false
         },
         {
             "source_path_from_root": "/articles/virtual-machines/windows/dedicated-hosts.md",
-            "redirect_url": "/azure/virtual-machines/dedicated-hosts",
-            "redirect_document_id": true
+            "redirect_url": "/azure/virtual-machines/dedicated-hosts/overview",
+            "redirect_document_id": false
         },
         {
             "source_path_from_root": "/articles/virtual-machines/linux/dedicated-hosts-portal.md",
@@ -3557,17 +3557,17 @@
         },
         {
             "source_path_from_root": "/articles/virtual-machines/linux/dedicated-hosts-cli.md",
-            "redirect_url": "/azure/virtual-machines/dedicated-hosts-how-to",
+            "redirect_url": "/azure/virtual-machines/dedicated-hosts/how-to",
             "redirect_document_id": false
         },
         {
             "source_path_from_root": "/articles/virtual-machines/windows/dedicated-hosts-powershell.md",
-            "redirect_url": "/azure/virtual-machines/dedicated-hosts-how-to",
+            "redirect_url": "/azure/virtual-machines/dedicated-hosts/how-to",
             "redirect_document_id": false
         },
         {
             "source_path_from_root": "/articles/virtual-machines/dedicated-hosts-portal.md",
-            "redirect_url": "/azure/virtual-machines/dedicated-hosts-how-to",
+            "redirect_url": "/azure/virtual-machines/dedicated-hosts/how-to",
             "redirect_document_id": false
         },
         {
@@ -5022,7 +5022,7 @@
         },
         {
             "source_path_from_root": "/articles/virtual-machines/workloads/hpc/hbv2-performance.md",
-            "redirect_url": "/azure/virtual-machines/hbv2-performance",
+            "redirect_url": "/azure/virtual-machines/sizes/high-performance-compute/hbv2-performance",
             "redirect_document_id": false
         },
         {
@@ -5032,7 +5032,7 @@
         },
         {
             "source_path_from_root": "/articles/virtual-machines/workloads/hpc/hbv3-performance.md",
-            "redirect_url": "/azure/virtual-machines/hbv3-performance",
+            "redirect_url": "/azure/virtual-machines/sizes/high-performance-compute/hbv3-performance",
             "redirect_document_id": false
         },
         {
@@ -5047,22 +5047,22 @@
         },
         {
             "source_path_from_root": "/articles/virtual-machines/workloads/hpc/hc-series-performance.md",
-            "redirect_url": "/azure/virtual-machines/hc-series-performance",
+            "redirect_url": "/azure/virtual-machines/sizes/high-performance-compute/hc-series-performance",
             "redirect_document_id": false
         },
         {
             "source_path_from_root": "/articles/virtual-machines/workloads/hpc/overview.md",
-            "redirect_url": "/azure/virtual-machines/overview-hb-hc",
+            "redirect_url": "/azure/virtual-machines/sizes/high-performance-compute/overview-hb-hc",
             "redirect_document_id": false
         },
         {
             "source_path_from_root": "/articles/virtual-machines/workloads/hpc/set-up-hpc-vms.md",
-            "redirect_url": "/azure/virtual-machines/set-up-hpc-vms",
+            "redirect_url": "/azure/virtual-machines/sizes/high-performance-compute/set-up-hpc-vms",
             "redirect_document_id": false
         },
         {
             "source_path_from_root": "/articles/virtual-machines/workloads/hpc/configure.md",
-            "redirect_url": "/azure/virtual-machines/configure",
+            "redirect_url": "/azure/virtual-machines/sizes/high-performance-compute/configure",
             "redirect_document_id": false
         },
         {
@@ -5072,17 +5072,17 @@
         },
         {
             "source_path_from_root": "/articles/virtual-machines/workloads/hpc/setup-mpi.md",
-            "redirect_url": "/azure/virtual-machines/setup-mpi",
+            "redirect_url": "/azure/virtual-machines/sizes/high-performance-compute/setup-mpi",
             "redirect_document_id": false
         },
         {
             "source_path_from_root": "/articles/virtual-machines/workloads/hpc/compiling-scaling-applications.md",
-            "redirect_url": "/azure/virtual-machines/compiling-scaling-applications",
+            "redirect_url": "/azure/virtual-machines/sizes/high-performance-compute/compiling-scaling-applications",
             "redirect_document_id": false
         },
         {
             "source_path_from_root": "/articles/virtual-machines/workloads/hpc/hb-hc-known-issues.md",
-            "redirect_url": "/azure/virtual-machines/hb-hc-known-issues",
+            "redirect_url": "/azure/virtual-machines/sizes/high-performance-compute/hb-hc-known-issues",
             "redirect_document_id": false
         },
         {
@@ -5172,7 +5172,7 @@
         },
         {
             "source_path_from_root": "/articles/virtual-machines/dedicated-host-migration-guide.md",
-            "redirect_url": "/azure/virtual-machines/sizes/migration-guides/dedicated-host-migration-guide",
+            "redirect_url": "/azure/virtual-machines/dedicated-hosts/modernization-guide",
             "redirect_document_id": false
         },
         {
@@ -6682,7 +6682,7 @@
         },
         {
             "source_path_from_root": "/articles/virtual-machines/sizes/migration-guides/dedicated-host-retirement.md",
-            "redirect_url": "/azure/virtual-machines/sizes/lifecycle/retirement/dedicated-host-retirement",
+            "redirect_url": "/azure/virtual-machines/dedicated-hosts/sku-lifecycle",
             "redirect_document_id": false
         },
         {
@@ -6767,28 +6767,28 @@
         },
         {
             "source_path_from_root": "/articles/virtual-machines/sizes/migration-guides/dedicated-host-migration-guide.md",
-            "redirect_url": "/azure/virtual-machines/migration/dedicated-host-migration-guide",
-            "redirect_document_id": true
+            "redirect_url": "/azure/virtual-machines/dedicated-hosts/modernization-guide",
+            "redirect_document_id": false
         },
         {
             "source_path_from_root": "/articles/virtual-machines/n-series-migration.md",
-            "redirect_url": "/azure/virtual-machines/sizes/lifecycle/retirement/n-series-migration",
+            "redirect_url": "/azure/virtual-machines/sizes/lifecycle/retirement/n-series-modernization-guide",
             "redirect_document_id": false
         },
         {
             "source_path_from_root": "/articles/virtual-machines/nv-series-migration-guide.md",
-            "redirect_url": "/azure/virtual-machines/sizes/lifecycle/retirement/nv-series-migration-guide",
+            "redirect_url": "/azure/virtual-machines/sizes/lifecycle/retirement/nv-series-modernization-guide",
             "redirect_document_id": false
         },
         {
             "source_path_from_root": "/articles/virtual-machines/migration/sizes/n-series-migration.md",
-            "redirect_url": "/azure/virtual-machines/sizes/lifecycle/retirement/n-series-migration",
-            "redirect_document_id": true
+            "redirect_url": "/azure/virtual-machines/sizes/lifecycle/retirement/n-series-modernization-guide",
+            "redirect_document_id": false
         },
         {
             "source_path_from_root": "/articles/virtual-machines/migration/sizes/nv-series-migration-guide.md",
-            "redirect_url": "/azure/virtual-machines/sizes/lifecycle/retirement/nv-series-migration-guide",
-            "redirect_document_id": true
+            "redirect_url": "/azure/virtual-machines/sizes/lifecycle/retirement/nv-series-modernization-guide",
+            "redirect_document_id": false
         },
         {
             "source_path_from_root": "/articles/virtual-machines/migration/sizes/d-ds-dv2-dsv2-ls-series-migration-guide.md",
@@ -6827,8 +6827,8 @@
         },
         {
             "source_path_from_root": "/articles/virtual-machines/sizes/retirement/dedicated-host-retirement.md",
-            "redirect_url": "/azure/virtual-machines/sizes/lifecycle/retirement/dedicated-host-retirement",
-            "redirect_document_id": true
+            "redirect_url": "/azure/virtual-machines/dedicated-hosts/sku-lifecycle",
+            "redirect_document_id": false
         },
         {
             "source_path_from_root": "/articles/virtual-machines/sizes/retirement/ecccv5-series-retirement.md",
@@ -6953,6 +6953,146 @@
         {
             "source_path_from_root": "/articles/virtual-machines/ecesv6-series.md",
             "redirect_url": "/azure/virtual-machines/sizes/memory-optimized/ecesv6-series",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/hbv2-performance.md",
+            "redirect_url": "/azure/virtual-machines/sizes/high-performance-compute/hbv2-performance",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/hbv3-performance.md",
+            "redirect_url": "/azure/virtual-machines/sizes/high-performance-compute/hbv3-performance",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/hbv4-performance.md",
+            "redirect_url": "/azure/virtual-machines/sizes/high-performance-compute/hbv4-performance",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/hbv5-performance.md",
+            "redirect_url": "/azure/virtual-machines/sizes/high-performance-compute/hbv5-performance",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/hc-series-performance.md",
+            "redirect_url": "/azure/virtual-machines/sizes/high-performance-compute/hc-series-performance",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/hx-performance.md",
+            "redirect_url": "/azure/virtual-machines/sizes/high-performance-compute/hx-performance",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/configure.md",
+            "redirect_url": "/azure/virtual-machines/sizes/high-performance-compute/configure",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/setup-mpi.md",
+            "redirect_url": "/azure/virtual-machines/sizes/high-performance-compute/setup-mpi",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/setup-infiniband.md",
+            "redirect_url": "/azure/virtual-machines/sizes/high-performance-compute/setup-infiniband",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/overview-hb-hc.md",
+            "redirect_url": "/azure/virtual-machines/sizes/high-performance-compute/overview-hb-hc",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/compiling-scaling-applications.md",
+            "redirect_url": "/azure/virtual-machines/sizes/high-performance-compute/compiling-scaling-applications",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/set-up-hpc-vms.md",
+            "redirect_url": "/azure/virtual-machines/sizes/high-performance-compute/set-up-hpc-vms",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/hb-hc-known-issues.md",
+            "redirect_url": "/azure/virtual-machines/sizes/high-performance-compute/hb-hc-known-issues",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/azure-hpc-vm-images.md",
+            "redirect_url": "/azure/virtual-machines/sizes/high-performance-compute/azure-hpc-vm-images",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/field-programmable-gate-arrays-attestation.md",
+            "redirect_url": "/azure/virtual-machines/sizes/fpga-accelerated/field-programmable-gate-arrays-attestation",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/sizes/lifecycle/retirement/n-series-migration.md",
+            "redirect_url": "/azure/virtual-machines/sizes/lifecycle/retirement/n-series-modernization-guide",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/sizes/lifecycle/retirement/nv-series-migration-guide.md",
+            "redirect_url": "/azure/virtual-machines/sizes/lifecycle/retirement/nv-series-modernization-guide",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/ncads-h100-v5.md",
+            "redirect_url": "/azure/virtual-machines/sizes/gpu-accelerated/ncadsh100v5-series",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/dedicated-hosts.md",
+            "redirect_url": "/azure/virtual-machines/dedicated-hosts/overview",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/dedicated-hosts-how-to.md",
+            "redirect_url": "/azure/virtual-machines/dedicated-hosts/how-to",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/prepay-dedicated-hosts-reserved-instances.md",
+            "redirect_url": "/azure/virtual-machines/dedicated-hosts/prepay-reserved-instances",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/dedicated-host-general-purpose-skus.md",
+            "redirect_url": "/azure/virtual-machines/dedicated-hosts/general-purpose-skus",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/dedicated-host-compute-optimized-skus.md",
+            "redirect_url": "/azure/virtual-machines/dedicated-hosts/compute-optimized-skus",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/dedicated-host-memory-optimized-skus.md",
+            "redirect_url": "/azure/virtual-machines/dedicated-hosts/memory-optimized-skus",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/dedicated-host-storage-optimized-skus.md",
+            "redirect_url": "/azure/virtual-machines/dedicated-hosts/storage-optimized-skus",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/dedicated-host-gpu-optimized-skus.md",
+            "redirect_url": "/azure/virtual-machines/dedicated-hosts/gpu-optimized-skus",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/migration/dedicated-host-migration-guide.md",
+            "redirect_url": "/azure/virtual-machines/dedicated-hosts/modernization-guide",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/virtual-machines/sizes/lifecycle/retirement/dedicated-host-retirement.md",
+            "redirect_url": "/azure/virtual-machines/dedicated-hosts/sku-lifecycle",
             "redirect_document_id": true
         }
     ]
