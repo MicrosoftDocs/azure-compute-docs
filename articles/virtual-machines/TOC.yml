@@ -167,21 +167,21 @@
     - name: HPC on Azure
       href: /azure/architecture/topics/high-performance-computing/
     - name: HPC for H-series and N-series VMs
-      href: ./overview-hb-hc.md
+      href: ./sizes/high-performance-compute/overview-hb-hc.md
     - name: How to set up HPC/AI VMs
-      href: ./set-up-hpc-vms.md
+      href: ./sizes/high-performance-compute/set-up-hpc-vms.md
     - name: Linux virtual desktops with ThinLinc
       href: ./linux/thinlinc-linux-vdi.md
     - name: Configuration
       items:
       - name: Configure and optimize VMs
-        href: ./configure.md
+        href: ./sizes/high-performance-compute/configure.md
       - name: Enable InfiniBand
         href: ./extensions/enable-infiniband.md
       - name: Set up MPI
-        href: ./setup-mpi.md
+        href: ./sizes/high-performance-compute/setup-mpi.md
     - name: Scaling applications
-      href: ./compiling-scaling-applications.md
+      href: ./sizes/high-performance-compute/compiling-scaling-applications.md
 - name: Sizes
   items:
    - name: Overview
@@ -523,7 +523,7 @@
            href: ./sizes/memory-optimized/mbdsv4-series.md
        - name: Retirement modernization guides
          items:
-         - name: Msv2 and Mdsv2 migration guide
+         - name: Msv2 and Mdsv2 modernization guide
            href: ./sizes/lifecycle/retirement/msv2-mdsv2-retirement.md
    - name: Storage optimized
      items:
@@ -629,7 +629,7 @@
        - name: NV series retirement
          href: ./sizes/lifecycle/retirement/nv-series-retirement.md
        - name: NV series modernization guide
-         href: ./sizes/lifecycle/retirement/nv-series-migration-guide.md
+         href: ./sizes/lifecycle/retirement/nv-series-modernization-guide.md
        - name: NVv3 series
          href: ./sizes/gpu-accelerated/nvv3-series.md
        - name: NVv3 series retirement
@@ -660,7 +660,7 @@
          href: ./windows/n-series-amd-driver-setup.md
      - name: GPU compute modernization guide
        displayName: GPU compute modernization guide
-       href: ./sizes/lifecycle/retirement/n-series-migration.md
+       href: ./sizes/lifecycle/retirement/n-series-modernization-guide.md
    - name: FPGA - accelerated compute
      items:
      - name: Overview
@@ -674,7 +674,7 @@
        - name: NP series
          href: ./sizes/fpga-accelerated/np-series.md
      - name: FPGA Attestation Service
-       href: field-programmable-gate-arrays-attestation.md
+       href: ./sizes/fpga-accelerated/field-programmable-gate-arrays-attestation.md
    - name: High performance compute
      items:
      - name: Overview
@@ -692,7 +692,7 @@
          - name: HBv2 series
            href: ./sizes/high-performance-compute/hbv2-series.md
          - name: Performance
-           href: hbv2-performance.md
+           href: ./sizes/high-performance-compute/hbv2-performance.md
        - name: HBv3 series
          items:
          - name: Overview
@@ -700,7 +700,7 @@
          - name: HBv3 series
            href: ./sizes/high-performance-compute/hbv3-series.md
          - name: Performance
-           href: hbv3-performance.md
+           href: ./sizes/high-performance-compute/hbv3-performance.md
        - name: HBv4 series
          items:
          - name: Overview
@@ -708,7 +708,7 @@
          - name: HBv4 series
            href: ./sizes/high-performance-compute/hbv4-series.md
          - name: Performance
-           href: hbv4-performance.md
+           href: ./sizes/high-performance-compute/hbv4-performance.md
        - name: HBv5 series
          items:
          - name: Overview
@@ -716,7 +716,7 @@
          - name: HBv5 series
            href: ./sizes/high-performance-compute/hbv5-series.md
          - name: Performance
-           href: hbv5-performance.md
+           href: ./sizes/high-performance-compute/hbv5-performance.md
      - name: HC family
        items:
        - name: Overview
@@ -729,7 +729,7 @@
          - name: HC series
            href: ./sizes/high-performance-compute/hc-series.md
          - name: Performance
-           href: hc-series-performance.md
+           href: ./sizes/high-performance-compute/hc-series-performance.md
      - name: HX family
        items:
        - name: Overview
@@ -742,27 +742,27 @@
          - name: HX series
            href: ./sizes/high-performance-compute/hx-series.md
          - name: Performance
-           href: hx-performance.md
+           href: ./sizes/high-performance-compute/hx-performance.md
      - name: Set up Azure HPC or AI VMs
        displayName: How to setup HPC/AI VMs
-       href: set-up-hpc-vms.md
+       href: ./sizes/high-performance-compute/set-up-hpc-vms.md
      - name: Set up InfiniBand
        displayName: How to set up Infiniband
-       href: setup-infiniband.md
+       href: ./sizes/high-performance-compute/setup-infiniband.md
      - name: Configure and optimize VMs
        displayName: Configure and optimize Infiniband enabled VMs
-       href: configure.md
+       href: ./sizes/high-performance-compute/configure.md
      - name: Azure HPC VM images
        displayName: Azure HPC VM images
-       href: azure-hpc-vm-images.md
+       href: ./sizes/high-performance-compute/azure-hpc-vm-images.md
      - name: HPC for HB-series and N-series VMs
-       href: overview-hb-hc.md
+       href: ./sizes/high-performance-compute/overview-hb-hc.md
      - name: Known issues with HB-series and N-series VMs
-       href: hb-hc-known-issues.md
+       href: ./sizes/high-performance-compute/hb-hc-known-issues.md
      - name: Set up MPI for HPC
-       href: setup-mpi.md
+       href: ./sizes/high-performance-compute/setup-mpi.md
      - name: Scaling HPC applications
-       href: compiling-scaling-applications.md
+       href: ./sizes/high-performance-compute/compiling-scaling-applications.md
    - name: Enable NVMe
      items:
      - name: NVMe Overview
@@ -838,11 +838,11 @@
        - name: Retired sizes and capacity restrictions
          href: ./sizes/lifecycle/retirements-and-capacity-restrictions.md
        - name: N-series modernization guide
-         href: ./sizes/lifecycle/retirement/n-series-migration.md
+         href: ./sizes/lifecycle/retirement/n-series-modernization-guide.md
        - name: NV-series modernization guide
-         href: ./sizes/lifecycle/retirement/nv-series-migration-guide.md
-       - name: Dedicated Host migration guide
-         href: ./migration/dedicated-host-migration-guide.md
+         href: ./sizes/lifecycle/retirement/nv-series-modernization-guide.md
+       - name: Dedicated Host modernization guide
+         href: ./dedicated-hosts/modernization-guide.md
        - name: Retired series pages
          items:
          - name: Av1-series retirement
@@ -1164,31 +1164,31 @@
     items:
     - name: Overview
       displayName: Dedicated hosts, ADH
-      href: dedicated-hosts.md
+      href: ./dedicated-hosts/overview.md
     - name: How-to
       displayName: dedicated adh
-      href: dedicated-hosts-how-to.md
+      href: ./dedicated-hosts/how-to.md
     - name: General Purpose SKUs
       displayName: dedicated, packing, dedicated host, general purpose
-      href: dedicated-host-general-purpose-skus.md
+      href: ./dedicated-hosts/general-purpose-skus.md
     - name: Compute Optimized SKUs
       displayName: dedicated, packing, dedicated host, compute optimized
-      href: dedicated-host-compute-optimized-skus.md
+      href: ./dedicated-hosts/compute-optimized-skus.md
     - name: Memory Optimized SKUs
       displayName: dedicated, packing, dedicated host, memory optimized
-      href: dedicated-host-memory-optimized-skus.md
+      href: ./dedicated-hosts/memory-optimized-skus.md
     - name: Storage Optimized SKUs
       displayName: dedicated, packing, dedicated host, storage optimized
-      href: dedicated-host-storage-optimized-skus.md
+      href: ./dedicated-hosts/storage-optimized-skus.md
     - name: GPU Optimized SKUs
       displayName: dedicated, packing, dedicated host, GPU optimized
-      href: dedicated-host-gpu-optimized-skus.md
-    - name: Dedicated Host SKU Retirement
-      displayName: dedicated, dedicated host, retirement
-      href: ./sizes/lifecycle/retirement/dedicated-host-retirement.md
-    - name: Dedicated Host SKU Migration
-      displayName: dedicated, dedicated host, retirement, migration
-      href: ./migration/dedicated-host-migration-guide.md
+      href: ./dedicated-hosts/gpu-optimized-skus.md
+    - name: Dedicated Host SKU Lifecycle
+      displayName: dedicated, dedicated host, lifecycle, retirement
+      href: ./dedicated-hosts/sku-lifecycle.md
+    - name: Dedicated Host SKU Modernization
+      displayName: dedicated, dedicated host, retirement, modernization, migration
+      href: ./dedicated-hosts/modernization-guide.md
   - name: Azure Spot Virtual Machines
     items:
     - name: Overview
@@ -1240,7 +1240,7 @@
       href: ./prepay-reserved-vm-instances.md
     - name: Prepay for Dedicated Hosts
       displayName: Reserved Instances, RI, prepay, flexibility
-      href: prepay-dedicated-hosts-reserved-instances.md
+      href: ./dedicated-hosts/prepay-reserved-instances.md
     - name: VM instance size flexibility
       displayName: Reserved Instances, RI, prepay
       href: reserved-vm-instance-size-flexibility.md

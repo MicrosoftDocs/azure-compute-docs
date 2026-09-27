@@ -13,7 +13,7 @@ ms.custom: include file
 # Customer intent: "As a cloud administrator, I want to utilize the host resize functionality to upgrade to newer generation hardware, so that I can enhance performance without the need for manual VM migration."
 ---
 
-Moving a host and all associated VMs to newer generation hardware can be done through the host resize feature. Resize simplifies the migration process and avoids having to manually create new hosts and move all VMs individually.
+Moving a host and all associated VMs to newer generation hardware can be done through the host resize feature. Resize simplifies the modernization process and avoids having to manually create new hosts and move all VMs individually.
 
 Resize limitations:
 - Host can only be resized to an ADH within the same VM family. A Dsv3-Type3 host can be resized to Dsv3-Type4 but **not** to an **E**sv3-Type4.

@@ -6,7 +6,7 @@ ms.author: sherrywang
 ms.service: azure-virtual-machines
 ms.subservice: hpc
 ms.topic: how-to
-ms.date: 07/25/2024
+ms.date: 09/25/2026
 # Customer intent: As a cloud engineer, I want to set up an Azure virtual machine for HPC or AI with GPU support, so that I can efficiently run high-performance computing workloads and GPU-accelerated applications.
 ---
 
@@ -16,7 +16,7 @@ This how-to guide explains how to create a basic Azure virtual machine (VM) for 
 
 ## Choose your VM size
 
-Azure VMs have many different options, called [VM sizes](sizes.md). There are different series of [VM sizes for HPC](sizes-hpc.md) and [VM sizes GPU-optimized computing](sizes-gpu.md). Select the appropriate VM size for the workload you want to use. For help with selecting sizes, see the [VM selector tool](https://azure.microsoft.com/pricing/vm-selector/). 
+Azure VMs have many different options, called [VM sizes](../overview.md). There are different series of [VM sizes for HPC](../overview.md#high-performance-compute) and [VM sizes GPU-optimized computing](../overview.md#gpu-accelerated). Select the appropriate VM size for the workload you want to use. For help with selecting sizes, see the [VM selector tool](https://azure.microsoft.com/pricing/vm-selector/). 
 
 Not all Azure products are available in all Azure regions. For more information, see the current list of [products available by region](https://azure.microsoft.com/global-infrastructure/services/).
 
@@ -24,7 +24,7 @@ Not all Azure products are available in all Azure regions. For more information,
 
 Before you can deploy a workload, you need to create your VM through the Azure portal.
 
-Depending on your VM's operating system, review either the [Linux VM quickstart](./linux/quick-create-portal.md) or [Windows VM quickstart](./windows/quick-create-portal.md). Then, create your VM with the following settings:
+Depending on your VM's operating system, review either the [Linux VM quickstart](../../linux/quick-create-portal.md) or [Windows VM quickstart](../../windows/quick-create-portal.md). Then, create your VM with the following settings:
 
 1. For **Subscription**, select the Azure subscription that you want to use for this VM.
 
@@ -61,19 +61,19 @@ Depending on your VM's operating system, review either the [Linux VM quickstart]
 
 Connect to your new VM using SSH, which allows you to perform further configuration. Some connection methods include:
 
-- [Connect over SSH on Linux or macOS](./linux/mac-create-ssh-keys.md#ssh-into-your-vm)
-- [Connect over SSH on Windows](./linux/ssh-from-windows.md#connect-to-your-vm)
+- [Connect over SSH on Linux or macOS](../../linux/mac-create-ssh-keys.md#ssh-into-your-vm)
+- [Connect over SSH on Windows](../../linux/ssh-from-windows.md#connect-to-your-vm)
 - [Connect over SSH using Azure Bastion](/azure/bastion/bastion-connect-vm-ssh-linux)
 
 ## Set up VM
 
 Set up your new VM for HPC or AI workloads. Install the newest NVIDIA or AMD GPU driver, which maps to your VM size.
 
-- [Install NVIDIA GPU drivers on N-series VMs running Linux](./linux/n-series-driver-setup.md)
-- [Install NVIDIA GPU drivers on N-series VMs running Windows](./windows/n-series-driver-setup.md)
-- [Install AMD GPU drivers on N-series VMs running Windows](./windows/n-series-amd-driver-setup.md)
+- [Install NVIDIA GPU drivers on N-series VMs running Linux](../../linux/n-series-driver-setup.md)
+- [Install NVIDIA GPU drivers on N-series VMs running Windows](../../windows/n-series-driver-setup.md)
+- [Install AMD GPU drivers on N-series VMs running Windows](../../windows/n-series-amd-driver-setup.md)
 
 ## Next steps
 
-- [High performance computing VM sizes](sizes-hpc.md)
-- [GPU optimized virtual machine sizes](sizes-gpu.md)
+- [High performance computing VM sizes](../overview.md#high-performance-compute)
+- [GPU optimized virtual machine sizes](../overview.md#gpu-accelerated)

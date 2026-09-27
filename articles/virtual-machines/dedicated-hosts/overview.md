@@ -4,7 +4,7 @@ description: Learn more about how Azure Dedicated Hosts can be used for deployin
 author: vamckMS
 ms.service: azure-dedicated-host
 ms.topic: concept-article
-ms.date: 1/25/2023
+ms.date: 09/25/2026
 ms.author: vakavuru
 ms.reviewer: mattmcinnes
 ms.update-cycle: 1095-days
@@ -133,7 +133,7 @@ Not all scale-set orchestration and optimizations settings are supported by dedi
 - Don't use proximity placement groups for co-location
 
 ### Ultra Disk support for virtual machines on dedicated hosts
-[Ultra Disks](./disks-enable-ultra-ssd.md) offer higher IOPS (maximum of 160,00 IOPS per disk) and higher disk throughput (maximum of 4000 MBps per disk) depending on the disk size. All the limitations of Ultra Disks would still apply. To use Ultra Disks on dedicated hosts following requirements needs to be satisfied:
+[Ultra Disks](../disks-enable-ultra-ssd.md) offer higher IOPS (maximum of 160,00 IOPS per disk) and higher disk throughput (maximum of 4000 MBps per disk) depending on the disk size. All the limitations of Ultra Disks would still apply. To use Ultra Disks on dedicated hosts following requirements needs to be satisfied:
 - Host group needs to have Ultra Disk 'Enabled', this property cannot be changed once the host group is created
 - Dedicated host's virtual machine series should be compatible with Ultra Disks.
 
@@ -147,7 +147,7 @@ The infrastructure supporting your virtual machines may occasionally be updated 
 
 **Maintenance Control** provides customers with an option to skip regular platform updates scheduled on their dedicated hosts, then apply it at the time of their choice within a 35-day rolling window. Within the maintenance window, you can apply maintenance directly at the host level, in any order. Once the maintenance window is over, Microsoft will move forward and apply the pending maintenance to the hosts in an order that may not follow the user defined fault domains.
 
-For more information, see [Managing platform updates with Maintenance Control](./maintenance-configurations.md).
+For more information, see [Managing platform updates with Maintenance Control](../maintenance-configurations.md).
 
 ## Capacity considerations
 
@@ -168,7 +168,7 @@ Provisioning a dedicated host will consume both dedicated host vCPU and the VM f
 ![Screenshot of the usage and quotas page in the portal](./media/virtual-machines-common-dedicated-hosts/quotas.png)
 
 
-For more information, see [Virtual machine vCPU quotas](./windows/quotas.md).
+For more information, see [Virtual machine vCPU quotas](../quotas.md).
 
 Free trial and MSDN subscriptions don't have quota for Azure Dedicated Hosts.
 
@@ -182,7 +182,7 @@ Software licensing, storage and network usage are billed separately from the hos
 
 For more information, see [Azure Dedicated Host pricing](https://aka.ms/ADHPricing).
 
-You can also save on costs with a [Reserved Instance of Azure Dedicated Hosts](prepay-dedicated-hosts-reserved-instances.md).
+You can also save on costs with a [Reserved Instance of Azure Dedicated Hosts](prepay-reserved-instances.md).
 
 ## Sizes and hardware generations
 
@@ -225,8 +225,8 @@ Azure monitors and manages the health status of your hosts. The following states
 
 ## Next steps
 
-- To deploy a dedicated host, see [Deploy VMs and scale sets to dedicated hosts](./dedicated-hosts-how-to.md).
+- To deploy a dedicated host, see [Deploy VMs and scale sets to dedicated hosts](./how-to.md).
 
 - There's a [sample template](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-dedicated-hosts/README.md) that uses both zones and fault domains for maximum resiliency in a region.
 
-- You can also save on costs with a [Reserved Instance of Azure Dedicated Hosts](prepay-dedicated-hosts-reserved-instances.md).
+- You can also save on costs with a [Reserved Instance of Azure Dedicated Hosts](prepay-reserved-instances.md).

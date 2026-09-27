@@ -5,7 +5,7 @@ services: virtual-machines
 ms.service: azure-virtual-machines
 ms.subservice: hpc
 ms.topic: concept-article
-ms.date: 02/10/2026
+ms.date: 09/25/2026
 ms.reviewer: wwilliams
 ms.author: padmalathas
 author: padmalathas
@@ -27,7 +27,7 @@ Performance expectations using common HPC microbenchmarks are as follows:
 
 ## Process pinning
 
-[Process pinning](./workloads/hpc/compiling-scaling-applications.md#process-pinning) works well on HBv5-series VMs because we expose the underlying silicon as-is to the guest VM. We strongly recommend process pinning for optimal performance and consistency.
+[Process pinning](./compiling-scaling-applications.md#process-pinning) works well on HBv5-series VMs because we expose the underlying silicon as-is to the guest VM. We strongly recommend process pinning for optimal performance and consistency.
 
 ## STREAM Memory bandwidth test 
 
@@ -70,6 +70,6 @@ mpirun -np 2 --host $src,$dst --map-by node -x LD_LIBRARY_PATH $HPCX_OSU_DIR/osu
 ```
 
 ## Next steps
-- Learn about [scaling MPI applications](./workloads/hpc/compiling-scaling-applications.md).
+- Learn about [scaling MPI applications](./compiling-scaling-applications.md).
 - Read about the latest announcements, HPC workload examples, and performance results at the [Azure HPC Microsoft Community Hub](https://techcommunity.microsoft.com/t5/azure-high-performance-computing/bg-p/AzureHighPerformanceComputingBlog).
 - For a higher-level architectural view of running HPC workloads, see [High Performance Computing (HPC) on Azure](/azure/architecture/topics/high-performance-computing/).

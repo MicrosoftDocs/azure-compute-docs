@@ -4,7 +4,7 @@ description: Specifications for the Dv2 and DSv2-series VMs.
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 03/10/2026
+ms.date: 09/25/2026
 # Customer intent: As a cloud architect, I want to understand the specifications of Dv2 and DSv2-series VMs, so that I can choose the appropriate virtual machine sizes to optimize performance for memory-intensive applications.
 ---
 
@@ -12,7 +12,7 @@ ms.date: 03/10/2026
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
-[!INCLUDE [previous-gen-header](../includes/sizes-previous-gen-header.md)]
+[!INCLUDE [previous-gen-header](../includes/sizes-end-of-life-header.md)]
 
 Dv2 and Dsv2-series, a follow-on to the original D-series, features a more powerful CPU. DSv2-series sizes run on the third Generation Intel® Xeon® Platinum 8370C (Ice Lake), the Intel® Xeon® Platinum 8272CL (Cascade Lake), the Intel® Xeon® 8171M 2.1 GHz (Skylake), the Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell), or the Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) processors. The Dv2-series has the same memory and disk configurations as the D-series.
 

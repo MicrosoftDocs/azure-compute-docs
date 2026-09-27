@@ -5,7 +5,7 @@ ms.service: azure-virtual-machines
 ms.subservice: hpc
 ms.custom: linux-related-content
 ms.topic: concept-article
-ms.date: 07/25/2024
+ms.date: 09/25/2026
 ms.reviewer: padmalathas
 ms.author: litan2
 author: litan2
@@ -16,7 +16,7 @@ author: litan2
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
-This article shares some information on HPC/AI VM images to be used to launch InfiniBand enabled [H-series](sizes-hpc.md) and GPU enabled [N-series](sizes-gpu.md) VMs.
+This article shares some information on HPC/AI VM images to be used to launch InfiniBand enabled [H-series](../overview.md#high-performance-compute) and GPU enabled [N-series](../overview.md#gpu-accelerated) VMs.
 
 The Azure HPC team is offering optimized and pre-configured Linux VM images for HPC and AI workloads. These VM images are:
 
@@ -42,7 +42,7 @@ Run the following commands to find image URNs of the HPC images:
 az vm image list --publisher microsoft-dsvm --offer ubuntu-hpc --output table --all
 ```
 
-All images support [Gen 2 VMs](generation-2.md).
+All images support [Gen 2 VMs](../../generation-2.md).
 
 #### AlmaLinux-HPC
 
@@ -68,7 +68,7 @@ The HPC VM images support the following VM sizes:
 - Standard_ND96isr_H200_v5
 - Standard_ND96isr_MI300X_v5
 
-Refer to [Azure VM sizes](sizes.md) for the latest H- and N-series VM size support matrix.
+Refer to [Azure VM sizes](../overview.md) for the latest H- and N-series VM size support matrix.
 
 ## Installed software packages
 
