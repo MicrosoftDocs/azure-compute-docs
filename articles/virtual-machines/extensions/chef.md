@@ -53,7 +53,8 @@ The following JSON shows the schema for the Chef VM Extension. The extension req
       "runlist": "[parameters('chef_runlist')]"
     },
     "protectedSettings": {
-      "validation_key": "[parameters('chef_validation_key')]"
+      "validation_key": "[parameters('chef_validation_key')]",
+      "chef_license_key": "[parameters('chef_license_key')]"
     }
   }
 }  
@@ -76,13 +77,14 @@ The following JSON shows the schema for the Chef VM Extension. The extension req
 | settings/bootstrap_options/validation_client_name | `myorg-validator` | string | Y |
 | settings/runlist | `recipe[mycookbook::default]` | string | Y |
 | settings/CHEF_LICENSE | `accept-no-persist` | string | For Chef Infra Client 15+, accepting the [Chef EULA](https://docs.chef.io/chef_license_accept/#accept-the-chef-eula) is required. Accepted values are `accept`, `accept-silent`, or `accept-no-persist`. |
-| settings/chef_license_key | `<your Chef commercial license key>` | string | Required by default for downloading Chef Infra Client. The extension exports this value as `CHEF_LICENSE_KEY` and downloads packages from `chefdownload-commercial.chef.io`. |
+| settings/chef_license_key | `<your Chef commercial license key>` | string | **Deprecated.** Still supported for backward compatibility, but this location is public — readable via ARM deployment history/parameters and by anyone with Reader access to the VM extension resource. Set this under `protectedSettings/chef_license_key` instead; using this location logs a deprecation warning and it will be removed in a future release. |
 
 ### Protected settings
 
 | Name | Example | Data Type | Required?
 | ---- | ---- | ---- | ---- |
 | protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | string | Y |
+| protectedSettings/chef_license_key | `<your Chef commercial license key>` | string | Required by default for downloading Chef Infra Client. The extension decrypts this value on the target VM and exports it as `CHEF_LICENSE_KEY` before running the installer, downloading packages from `chefdownload-commercial.chef.io`. If omitted, the extension falls back to the deprecated, unlicensed `omnitruck.chef.io` download path. |
 
 <!--
 ### Linux-specific settings
@@ -114,7 +116,7 @@ az vm extension set \
   --vm-name myExistingVM \
   --name LinuxChefClient \
   --publisher Chef.Bootstrap.WindowsAzure \
-  --version 1210.15.10 --protected-settings '{"validation_key": "<validation_key>"}' \
+  --version 1210.15.10 --protected-settings '{"validation_key": "<validation_key>", "chef_license_key": "<chef_license_key>"}' \
   --settings '{ "bootstrap_options": { "chef_server_url": "<chef_server_url>", "validation_client_name": "<validation_client_name>" }, "runlist": "<run_list>" }'
 ```
 
