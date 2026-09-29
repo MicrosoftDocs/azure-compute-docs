@@ -312,8 +312,6 @@ VMs on Azure now support the following patch orchestration modes:
 - Custom images aren't currently supported.
 - VMSS Flexible Orchestration requires the installation of [Application Health extension](../virtual-machine-scale-sets/virtual-machine-scale-sets-health-extension.md). This is optional for IaaS VMs.
 
-## Known issues
-
 ### Automatic VM Guest Patching support after VM restore
 
 Automatic VM Guest Patching and Hotpatching support can be lost after restoring a virtual machine from backup, depending on the restore method used.
