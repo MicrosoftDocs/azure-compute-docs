@@ -311,7 +311,7 @@ VMs on Azure now support the following patch orchestration modes:
 - Use Compute API version 2021-03-01 or higher to access all functionality including on-demand assessment and on-demand patching.
 - Custom images aren't currently supported.
 - VMSS Flexible Orchestration requires the installation of [Application Health extension](../virtual-machine-scale-sets/virtual-machine-scale-sets-health-extension.md). This is optional for IaaS VMs.
-
+  
 ## Enable automatic VM guest patching
 Automatic VM guest patching can be enabled on any Windows or Linux VM that is created from a supported platform image.
 
