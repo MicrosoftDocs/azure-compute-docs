@@ -459,6 +459,15 @@ The assessment results for your VM can be reviewed under the `availablePatchSumm
 
 The patch installation results for your VM can be reviewed under the `lastPatchInstallationSummary` section. This section provides details on the last patch installation attempt on the VM, including the number of patches that were installed, pending, failed, or skipped. Patches are installed only during the off-peak hours maintenance window for the VM. Pending and failed patches are automatically retried during the next off-peak hours maintenance window.
 
+### Automatic VM Guest Patching support after VM restore
+
+Automatic VM Guest Patching and Hotpatching support can be lost after restoring a virtual machine from backup, depending on the restore method used.
+
+- **Original Location Restore (OLR):** Automatic VM Guest Patching support is retained because the original VM metadata, including image reference information, is preserved.
+- **Alternate Location Restore (ALR):** Automatic VM Guest Patching support may be lost because the restore operation creates a new VM instance that doesn't retain the original image reference metadata. The restored VM may be treated as a custom image VM and may no longer qualify for Automatic VM Guest Patching or Hotpatching. The restored VM may be treated as a custom image VM. Because custom images aren't currently supported for Automatic VM Guest Patching, the VM may no longer qualify for Automatic VM Guest Patching or Hotpatching.
+
+To preserve Automatic VM Guest Patching and Hotpatching support after a restore operation, use **Original Location Restore (OLR)** whenever possible.
+
 ## Disable automatic VM guest patching
 Automatic VM guest patching can be disabled by changing the [patch orchestration mode](#patch-orchestration-modes) for the VM.
 
