@@ -39,7 +39,7 @@ Depending on the workload being run, regional affinity, and cost preferences, ot
 
 ## What action did I need to take before the retirement date? 
 
-You needed to resize or deallocate your NVv3-series VMs. We recommend that you change VM sizes for these workloads from the original NVv3-series VMs to the NVadsA10_v5-series VMs (or an alternative).
+You needed to resize or deallocate your NVv3-series VMs. Change the VM size for these workloads from the original NVv3-series VMs to the NVadsA10_v5-series VMs (or an alternative).
 
 The [NVadsA10_v5-series](/azure/virtual-machines/sizes/gpu-accelerated/nvadsa10v5-series?tabs=sizebasic) is powered by NVIDIA A10 GPUs and AMD EPYC™ 74F3V(Milan) processors. The VMs feature up to 2 NVIDIA A10 GPUs with 24GB memory each, up to 72 non-multithreaded AMD EPYC 74F3V processor cores and 880 GiB of system memory. Check [Azure Regions by Product page](https://azure.microsoft.com/explore/global-infrastructure/products-by-region/) for region availability. Visit the [Azure Virtual Machine pricing page](https://azure.microsoft.com/pricing/details/virtual-machines/) for pricing information.
 
