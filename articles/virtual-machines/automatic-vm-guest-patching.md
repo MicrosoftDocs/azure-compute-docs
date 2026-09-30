@@ -459,7 +459,7 @@ Automatic VM Guest Patching and Hotpatching support can be lost after restoring 
 - **Alternate Location Restore (ALR):** Automatic VM Guest Patching support may be lost because the restore operation creates a new VM instance that doesn't retain the original image reference metadata. The restored VM may be treated as a custom image VM and may no longer qualify for Automatic VM Guest Patching or Hotpatching. The restored VM may be treated as a custom image VM. Because custom images aren't currently supported for Automatic VM Guest Patching, the VM may no longer qualify for Automatic VM Guest Patching or Hotpatching.
 
 To preserve Automatic VM Guest Patching and Hotpatching support after a restore operation, use **Original Location Restore (OLR)** whenever possible.
-[Azure Virtual Machine restore process](https://learn.microsoft.com/en-us/azure/backup/about-azure-vm-restore)
+[Azure Virtual Machine restore process](/azure/backup/about-azure-vm-restore)
 
 ## Disable automatic VM guest patching
 Automatic VM guest patching can be disabled by changing the [patch orchestration mode](#patch-orchestration-modes) for the VM.
