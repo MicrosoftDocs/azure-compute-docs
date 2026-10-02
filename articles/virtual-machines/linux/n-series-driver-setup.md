@@ -61,7 +61,7 @@ Install these GRID drivers only on these VMs and only on the operating systems l
 The NCasT4_v3 and NCv6 RTX PRO 6000 BSE series are the only non-NV GPU VM series that support GRID drivers.
 
 > [!WARNING]
-> NVIDIA v17.x (R550) and v18.x (R570) GRID drivers are no longer supported for NVadsA10_v5 VMs. Instead, please use the v19.x and v20.x drivers listed in the table below. 
+> NVIDIA v17.x (R550) and v18.x (R570) GRID drivers are no longer supported for NVadsA10_v5 VMs. Instead, use the v19.x and v20.x drivers listed in the following table. 
 > 
 
 |VM Series|GPU|GRID Driver|Supported Linux OS Versions| 
