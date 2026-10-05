@@ -763,6 +763,8 @@
        href: ./sizes/high-performance-compute/setup-mpi.md
      - name: Scaling HPC applications
        href: ./sizes/high-performance-compute/compiling-scaling-applications.md
+     - name: IBM Spectrum Symphony on Azure
+       href: ibm-spectrum-symphony-overview.md
    - name: Enable NVMe
      items:
      - name: NVMe Overview
