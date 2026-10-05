@@ -26,10 +26,6 @@ A vulnerability in the AMD Linux GPU driver (CVE-2026-43603) could allow a local
 
 Running the `nvidia-smi` will not show full telemetry of the RTX Pro 6000 Blackwell GPU(s) on a NCv6-series virtual machine. Specifically, power and utilization statistics will not be exposed. This is due to the use of an SRIOV-based exposure of the GPU(s) to the virtual machine, as opposed to passthrough mode. This is a known limitation of NVIDIA's SRIOV driver supporting "vGPU" functionality.
 
-## AKS Support on NCv6 (RTX Pro 6000) virtual machines
-
-The Azure Kubernetes Service (AKS) is not supported on NCv6-series virtual machines as of May 2026. We are working to bring AKS support to this product in Q4 2026.
-
 ## InfiniBand RDMA and NUMA Node Affinity on HBv5 virtual machines
 
 On certain HBv5 virtual machines (VMs), the InfiniBand RDMA device names (such as mlx5_[0-3]) may not align correctly with their respective NUMA node affinities. Ideally, each RDMA device should be mapped as follows:
