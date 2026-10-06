@@ -5,7 +5,7 @@ services: virtual-machines
 author: iamwilliew
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.date: 07/30/2025
+ms.date: 10/05/2026
 ms.author: wwilliams
 # Customer intent: As a system administrator, I want to perform an in-place upgrade of Windows Server VMs in Azure, so that I can update the operating system while preserving settings, roles, and data without needing to recreate the VM.
 ---
@@ -33,6 +33,8 @@ Before you begin an in-place upgrade:
    - Upgrade options for Windows Server 2022 from Windows Server 2016 or Windows Server 2019
    
    - Upgrade options for Windows Server 2025 from Windows Server 2022, Windows Server 2019, Windows Server 2016, or Windows Server 2012 R2 
+
+   - Upgrade options for Windows Server 2025 Datacenter: Azure Edition from Windows Server 2022, Windows Server 2019, Windows Server 2016, or Windows Server 2012 R2
 
 - Run the [Azure Virtual Machine (VM) Windows OS Upgrade Assessment Tool](/troubleshoot/azure/virtual-machines/windows/windows-vm-osupgradeassessment-tool) to validate the OS upgrade path and any known issues.
 
@@ -67,7 +69,7 @@ To start an in-place upgrade the upgrade media must be attached to the VM as a m
 | location | Azure region where the upgrade media managed disk is created. This must be the same region as the VM to be upgraded. |
 | zone | Azure zone in the selected region where the upgrade media managed disk will be created. This must be the same zone as the VM to be upgraded. For regional VMs (nonzonal) the zone parameter should be "". |
 | diskName | Name of the managed disk that will contain the upgrade media |
-| sku | Windows Server upgrade media version. This must be either: `server2025Upgrade` or `server2022Upgrade` or `server2019Upgrade` or  `server2016Upgrade` or `server2012Upgrade`. The upgrade media disk is created using the latest version of the specified SKU. |
+| sku | Windows Server upgrade media version. This must be either: `server2025aeupgrade` (Windows Server 2025 Datacenter: Azure Edition) or `server2025Upgrade` or `server2022Upgrade` or `server2019Upgrade` or `server2016Upgrade` or `server2012Upgrade`. The upgrade media disk is created using the latest version of the specified SKU. |
 
 If you have more than one subscription, you should run `Set-AzContext -Subscription '<subscription name or id>` to specify which subscription to use.
 
@@ -90,7 +92,7 @@ $zone = ""
 # Disk name for the that will be created
 $diskName = "WindowsServer2025UpgradeDisk"
 
-# Target version for the upgrade - must be one of these five strings: server2025Upgrade, server2022Upgrade, server2019Upgrade, server2016Upgrade or server2012Upgrade
+# Target version for the upgrade - must be one of these six strings: server2025aeupgrade, server2025Upgrade, server2022Upgrade, server2019Upgrade, server2016Upgrade or server2012Upgrade
 $sku = "server2025Upgrade"
 
 
@@ -257,5 +259,6 @@ If the in-place upgrade process failed to complete successfully you can return t
 
 ## Next steps
 
-- For more information, see [Perform an in-place upgrade of Windows Server](/windows-server/get-started/perform-in-place-upgrade)
+- For more information, see [Upgrade Windows Server in place](/windows-server/get-started/upgrade-in-place)
+- Windows Server 2019 and Windows Server 2022 VMs can also upgrade to Windows Server 2025 by opting in to the Windows Server feature update in Windows Update. For the prerequisites and the registry value that enables the feature update, see the **Windows Update** tab in [Upgrade Windows Server in place](/windows-server/get-started/upgrade-in-place).
 - For information about using Azure Migrate to upgrade, see [Azure Migrate Windows Server upgrade](/azure/migrate/how-to-upgrade-windows)
