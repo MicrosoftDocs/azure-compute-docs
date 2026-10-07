@@ -73,6 +73,7 @@ Local (temp) storage information for each size.
 ### [Remote Storage](#tab/sizestorageremote)
 
 Remote (uncached) storage information for each size.
+
 | Size Name | Max Remote Storage Disks | Uncached Premium SSD IOPS | Uncached Premium SSD Throughput (MBps) | Uncached Premium SSD Burst IOPS | Uncached Premium SSD Burst Throughput (MBps) | Uncached Ultra Disk and Premium SSD v2 IOPS | Uncached Ultra Disk and Premium SSD v2 Throughput (MBps) | Uncached Burst Ultra Disk and Premium SSD v2 IOPS | Uncached Burst Ultra Disk and Premium SSD v2 Throughput (MBps) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_L2as_v5 | 4 | 4,000 | 118 | 44,000 | 1,413 | 4,400 | 137 | 48,400 | 1,653 |
