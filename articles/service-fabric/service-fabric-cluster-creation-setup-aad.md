@@ -34,8 +34,7 @@ A Service Fabric cluster offers several entry points to its management functiona
 > Microsoft Entra ID now requires an application (app registration) publishers domain to be verified or use of default scheme. See [Configure an application's publisher domain](/azure/active-directory/develop/howto-configure-publisher-domain) and [AppId Uri in single tenant applications requires use of default scheme or verified domains](/azure/active-directory/develop/reference-breaking-changes#appid-uri-in-single-tenant-applications-will-require-use-of-default-scheme-or-verified-domains) for additional information.
 
 > [!NOTE]
-> Starting in Service Fabric 11.0, Service Fabric Explorer requires a Single-page application Redirect URI instead of a Web Redirect URI.
-
+> Starting in Service Fabric 11.10+, Service Fabric Explorer requires a Single-page application Redirect URI instead of a Web Redirect URI.
 
 ## Prerequisites
 
@@ -280,8 +279,7 @@ The cluster (web) application that represents Service Fabric Explorer attempts t
 #### **Solution**
 On the Microsoft Entra app registration page for your cluster, select **Authentication**, and under the **Redirect URIs** section, add the Service Fabric Explorer URL to the list. Save your change.
 
-![Web application reply URL][web-application-reply-url]
-
+![Screenshot of adding a URL to the Redirect URIs section.](media/service-fabric-cluster-creation-setup-aad/web-application-reply-url.png)
 
 <a name='connecting-to-the-cluster-using-azure-ad-authentication-via-powershell-gives-an-error-when-you-sign-in-aadsts50011'></a>
 
@@ -372,4 +370,3 @@ After setting up Microsoft Entra applications and setting roles for users, [conf
 <!-- Images -->
 [sfx-select-certificate-dialog]: ./media/service-fabric-cluster-creation-setup-aad/sfx-select-certificate-dialog.png
 [sfx-reply-address-not-match]: ./media/service-fabric-cluster-creation-setup-aad/sfx-reply-address-not-match.png
-[web-application-reply-url]: ./media/service-fabric-cluster-creation-setup-aad/web-application-reply-url.png
