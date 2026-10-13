@@ -235,7 +235,7 @@ Yes. By using API version `2026-03-03`, you can configure the retention period f
 No. The retention period doesn't reset for existing soft-deleted image versions. The updated retention period applies only to image versions that are soft deleted after the update.
 
 ### Can I recover an image version after disabling Soft Delete on the gallery?
-Yes. An image version that was deleted while Soft Delete was enabled remains recoverable during its retention period, even if you later disable Soft Delete on the gallery.
+Yes. An image version that you deleted while Soft Delete was enabled remains recoverable during its retention period, even if you later disable Soft Delete on the gallery.
 
 ### Can I update the grace period?
 Yes. With API version `2026-03-03`, you can configure the grace period for up to 90 days. The default grace period is seven days.
