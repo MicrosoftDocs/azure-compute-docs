@@ -28,7 +28,7 @@ Use the following **Windows/Linux tab selector** to view the corresponding liste
 
 For currently supported versions, all releases are listed. For currently unsupported versions, only the most recent release is listed.
 
-| Service Fabric runtime | Can upgrade directly from | Can downgrade to <sup>1</sup> | Compatible SDK or NuGet package version <sup>2</sup> | Supported .NET runtimes <sup>3</sup> | OS Version | End of support | Link to release notes |
+| Service Fabric runtime | Can upgrade directly from | Can downgrade to <sup>1</sup> | Compatible SDK or NuGet package version <sup>2</sup> | Supported .NET runtimes <sup>3</sup> <sup>4</sup> | OS Version | End of support | Link to release notes |
 | - | - | - | - | - | - | - | - |
 | 11.8<br>11.8.121.1 | 10.1 CU8<br>10.1.2941.9590 | 10.1 | Version 8.0 or earlier | .NET 10, .NET 8 <br> .NET Framework >= 4.6.2 | [See supported OS version](#supported-windows-versions-and-support-end-date) | Current version | [Release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_118.md) |
 | 11.7<br>11.7.157.1 | 10.1 CU8<br>10.1.2941.9590 | 10.1 | Version 8.0 or earlier | .NET 10, .NET 8 <br> .NET Framework >= 4.6.2 | [See supported OS version](#supported-windows-versions-and-support-end-date) | Current version | [Release notes](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_117.md) |
@@ -93,7 +93,7 @@ For currently supported versions, all releases are listed. For currently unsuppo
 
 <sup>3</sup> Service Fabric doesn't provide a .NET Core runtime. The service author is responsible for ensuring it's <a href="/dotnet/core/deploying/">available</a>.
 
-<sup>4</sup> The upgrade and downgrade pathways from 9.1 to 10.1CU5 and vice versa are blocked, resulting in 10.0's listing in these places. These blockages aren't present for other versions of 10.1.
+<sup>4</sup> [See supported .NET versions](#supported-net-versions)
 
 ## Supported Windows versions and support end date
 Service Fabric supports Windows Server OS images through their mainstream support end dates. Explicit retirement notices, like the retirement of Windows Server 2019 support on March 31, 2027, supersede this general rule.
@@ -185,9 +185,7 @@ For currently supported versions, all releases are listed. For currently unsuppo
 
 <sup>2</sup> Backwards compatible, leading to earlier version support reflected in table.
 
-<sup>3</sup> Service Fabric doesn't provide a .NET Core runtime and the service author is responsible for ensuring it's <a href="/dotnet/core/deploying/">available</a>
-
-<sup>4</sup> The upgrade and downgrade pathways from 9.1 to 10.1CU5 and vice versa are blocked, resulting in 10.0's listing in these places. These blockages aren't present for other versions of 10.1.
+<sup>3</sup> [See supported .NET versions](#supported-net-versions)
 
 ## Supported Linux versions and support end date
 Support for Service Fabric on a specific OS ends when support for the OS version reaches its End of Life.
@@ -200,6 +198,16 @@ Support for Service Fabric on a specific OS ends when support for the OS version
 | Ubuntu 18.04 | April 2023 (No longer supported) | <a href="https://wiki.ubuntu.com/Releases">Ubuntu lifecycle</a>|
 
 ---
+
+## Supported .NET versions
+
+Service Fabric supports .NET LTS versions through their [end of life](https://dotnet.microsoft.com/platform/support/policy/dotnet-core) or 3 months after support for the next LTS version has been released, whichever comes last.
+
+| .NET version | Service Fabric support | .NET support |
+| -            | -                      | -            |
+| .NET 10      | Service Fabric 11.5+ on Windows <br> Service Fabric 12+ on Linux | Ends November 14, 2028 |
+| .NET 8       | Service Fabric 11+ through May 31, 2027 | Ends November 10, 2026 |
+| .NET 6       | Ended November, 12 2024 | |
 
 ## Service Fabric version name and number reference
 The following table lists the version names of Service Fabric and their corresponding version numbers.
