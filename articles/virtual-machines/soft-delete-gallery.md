@@ -49,12 +49,13 @@ Soft delete is useful in environments where accidental deletions can disrupt wor
 -	Virtual Machine Apps Recovery isn't supported. 
 -	Deleting a gallery or image definition with Soft Deleted resources isn't supported.
 -	Only the following users are allowed to enable Soft Delete: the owner of a subscription, user or service principal assigned to the Compute Gallery Sharing Admin role at the subscription or gallery level
+-	You can't enable Soft Delete if the gallery or image definition and image version are in different regions.
 -	Image recovery isn't possible if the gallery or image definition and image version are in different regions.
 -	Virtual Machine Scale Sets in Flexible orchestration aren't compatible with the Soft Delete feature.
 -	When an image in a gallery with Soft Delete enabled has a failed provisioning state, you can bypass Soft Delete and hard delete the image.
 
 ## Billing
-Soft Delete is free. The replica count doesn't reduce when an image enters the soft-deleted state. You're charged for all retained replicas until the image is permanently deleted.
+Soft Delete is free. The replica count doesn't reduce when an image enters the soft-deleted state. You're charged for all retained replicas throughout the retention and grace periods, until the image is permanently deleted. You can stop these charges sooner by hard deleting the image.
 
 ## Enable Soft Delete on a gallery
 You can enable Soft Delete on a new or existing gallery.
@@ -229,6 +230,12 @@ Yes, as long as the soft delete operation completes successfully.
 
 ### Can I update the retention period beyond seven days?
 Yes. By using API version `2026-03-03`, you can configure the retention period for up to 365 days. The default retention period is seven days.
+
+### Does updating the retention period affect existing soft-deleted image versions?
+No. The retention period doesn't reset for existing soft-deleted image versions. The updated retention period applies only to image versions that are soft deleted after the update.
+
+### Can I recover an image version after disabling Soft Delete on the gallery?
+Yes. An image version that you deleted while Soft Delete was enabled remains recoverable during its retention period, even if you later disable Soft Delete on the gallery.
 
 ### Can I update the grace period?
 Yes. With API version `2026-03-03`, you can configure the grace period for up to 90 days. The default grace period is seven days.
