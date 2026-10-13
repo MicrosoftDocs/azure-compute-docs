@@ -49,6 +49,7 @@ Soft delete is useful in environments where accidental deletions can disrupt wor
 -	Virtual Machine Apps Recovery isn't supported. 
 -	Deleting a gallery or image definition with Soft Deleted resources isn't supported.
 -	Only the following users are allowed to enable Soft Delete: the owner of a subscription, user or service principal assigned to the Compute Gallery Sharing Admin role at the subscription or gallery level
+-	You can't enable Soft Delete if the gallery or image definition and image version are in different locations.
 -	Image recovery isn't possible if the gallery or image definition and image version are in different regions.
 -	Virtual Machine Scale Sets in Flexible orchestration aren't compatible with the Soft Delete feature.
 -	When an image in a gallery with Soft Delete enabled has a failed provisioning state, you can bypass Soft Delete and hard delete the image.
