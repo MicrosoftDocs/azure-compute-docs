@@ -205,8 +205,8 @@ Service Fabric supports .NET LTS versions through their [end of life](https://do
 
 | .NET version | Service Fabric support | .NET support |
 | -            | -                      | -            |
-| .NET 10      | Service Fabric 11.5+ on Windows <br> Service Fabric 12+ on Linux | Ends November 14, 2028 |
-| .NET 8       | Service Fabric 11+ through May 31, 2027 | Ends November 10, 2026 |
+| .NET 10      | Windows: Service Fabric 11.5+ <br> Linux: Service Fabric 12+ | Ends November 14, 2028 |
+| .NET 8       | Windows: Service Fabric 11+ through November 10, 2026 <br> Linux: Service Fabric 11+ through May 31, 2027 | Ends November 10, 2026 |
 | .NET 6       | Ended November, 12 2024 | |
 
 ## Service Fabric version name and number reference
