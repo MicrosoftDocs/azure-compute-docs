@@ -55,7 +55,7 @@ Soft delete is useful in environments where accidental deletions can disrupt wor
 -	When an image in a gallery with Soft Delete enabled has a failed provisioning state, you can bypass Soft Delete and hard delete the image.
 
 ## Billing
-Soft Delete is free. The replica count doesn't reduce when an image enters the soft-deleted state. You're charged for all retained replicas until the image is permanently deleted.
+Soft Delete is free. The replica count doesn't reduce when an image enters the soft-deleted state. You're charged for all retained replicas throughout the retention and grace periods, until the image is permanently deleted. You can stop these charges sooner by hard deleting the image.
 
 ## Enable Soft Delete on a gallery
 You can enable Soft Delete on a new or existing gallery.
