@@ -509,7 +509,7 @@ To learn more, see the Azure PowerShell commands [Stop-AzVM](/powershell/module/
 A zonal virtual machine can be allocated to a capacity reservation without the need of reallocation. If you have capacity in an existing capacity reservation group, you can add an existing zonal virtual machine to the capacity reservation group and update the VM to use a matching capacity reservation in the capacity reservation group. 
 
 > [!NOTE]
-> Terraform support isn't available for the capability to allow in place association of a zonal VM to a capacity reservation group.
+> Terraform on Azure support isn't available for the capability to allow in place association of a zonal VM to a capacity reservation group.
 
 1. Follow guidance to create a capacity reservation group and capacity reservation, if necessary. Or increment the quantity of an existing capacity reservation so there's unused reserved capacity.
 1. Update the capacity reservation group property on the VM.
