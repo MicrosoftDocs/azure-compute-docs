@@ -5,7 +5,7 @@ author: roygara
 ms.service: azure-disk-storage
 ms.custom: linux-related-content
 ms.topic: concept-article
-ms.date: 09/17/2026
+ms.date: 10/13/2026
 ms.author: rogarana
 # Customer intent: As a cloud architect, I want to understand how to share Azure managed disks across multiple VMs, so that I can effectively deploy and manage clustered applications in the cloud.
 ---
@@ -20,9 +20,9 @@ Shared disks require a cluster manager, like Windows Server Failover Cluster (WS
 
 ## How it works
 
-VMs in the cluster can read or write to their attached disk based on the reservation chosen by the clustered application using [SCSI Persistent Reservations](https://www.t10.org/members/w_spc3.htm) (SCSI PR). SCSI PR is an industry standard used by applications running on Storage Area Network (SAN) on-premises. Enabling SCSI PR on a managed disk allows you to migrate these applications to Azure as-is.
+VMs in the cluster can read or write to their attached disk based on the reservation chosen by the clustered application. VMs that use a SCSI disk controller coordinate access by using [SCSI Persistent Reservations](https://www.t10.org/members/w_spc3.htm) (SCSI PR). VMs that use an NVMe disk controller coordinate access by using NVMe reservations. Both protocols let a clustered application register each node, reserve disk access, and move the reservation to another node during failover.
 
-Shared managed disks offer shared block storage that can be accessed from multiple VMs, these are exposed as logical unit numbers (LUNs). LUNs are then presented to an initiator (VM) from a target (disk). These LUNs look like direct-attached-storage (DAS) or a local drive to the VM.
+Shared managed disks offer shared block storage that can be accessed from multiple VMs. A shared disk is exposed as a logical unit number (LUN) to VMs that use SCSI and as a namespace to VMs that use NVMe. In both cases, the disk appears as direct-attached storage (DAS) or a local drive to the VM. For more information about the controller interfaces, see [SCSI to NVMe conversion](/azure/virtual-machines/nvme-linux#scsi-vs-nvme).
 
 ## Limitations
 
@@ -75,6 +75,8 @@ Linux clusters can use cluster managers such as [Pacemaker](https://wiki.cluster
 
 ## Persistent reservation flow
 
+### SCSI persistent reservation flow
+
 The following diagram illustrates a sample 2-node clustered database application that uses SCSI PR to enable failover from one node to the other.
 
 ![Diagram of a two-node Azure VM cluster sharing a data disk, showing registration, exclusive reservation, preemption, and database failover from VM1 to VM2.](media/virtual-machines-disks-shared-disks/shared-disk-updated-two-node-cluster-diagram.png)
@@ -99,9 +101,22 @@ The flow is as follows:
 1. This reservation is enforced on your Azure disk.
 1. All nodes in the cluster can now read from the disk. Only one node writes back results to the disk, on behalf of all nodes in the cluster.
 
+### NVMe persistent reservation flow
+
+NVMe reservations provide the same access-coordination model for shared managed disks attached to VMs through an NVMe controller. NVMe uses namespaces instead of SCSI LUNs and uses the Reservation Register, Reservation Acquire, Reservation Release, and Reservation Report commands to manage registrations and reservations.
+
+The following flow illustrates failover for a two-node clustered application:
+
+1. The clustered application on VM1 and VM2 registers a unique reservation key for each VM by using the Reservation Register command.
+1. The application on VM1 acquires the reservation with the required reservation type by using the Reservation Acquire command.
+1. The shared disk enforces the reservation. Access from VM2 is limited by the selected reservation type.
+1. If the application on VM1 goes down, the application on VM2 initiates failover. VM2 uses the Reservation Acquire command with the preempt action to replace VM1's reservation.
+1. The shared disk enforces the new reservation and rejects conflicting access from VM1.
+1. The clustered application completes failover and serves requests from VM2. When a reservation is no longer needed, the holder removes it by using the Reservation Release command.
+
 ### Ultra Disk and Premium SSD v2 reservation flow
 
-Both Ultra Disks and Premium SSD v2 managed disks offer two extra throttles, giving each of them a total of four throttles. As a result, the reservation flow can use SCSI persistent reservations to coordinate disk access between clustered VMs, as described in [Persistent reservation flow](#persistent-reservation-flow), or it can use the four throttles to distribute IOPS and throughput more granularly.
+Both Ultra Disks and Premium SSD v2 managed disks offer two extra throttles, giving each of them a total of four throttles. As a result, the reservation flow can use SCSI persistent reservations or NVMe reservations to coordinate disk access between clustered VMs, as described in [Persistent reservation flow](#persistent-reservation-flow), or it can use the four throttles to distribute IOPS and throughput more granularly.
 
 :::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-reservation-table.png" alt-text="Table showing read-only and read/write access for the reservation holder, registered nodes, and other nodes for each persistent reservation type.":::
 
