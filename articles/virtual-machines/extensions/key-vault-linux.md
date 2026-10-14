@@ -7,7 +7,7 @@ ms.service: azure-virtual-machines
 ms.subservice: extensions
 ms.collection: linux
 ms.topic: how-to
-ms.date: 08/24/2026
+ms.date: 10/13/2026
 ms.author: mbaldwin
 ms.custom: devx-track-azurepowershell, devx-track-azurecli, linux-related-content
 ai-usage: ai-assisted
@@ -25,7 +25,7 @@ The Key Vault VM extension for Linux supports the following distributions, on bo
 
 - Ubuntu 24.04
 - Azure Linux 3.0 and 4.0
-- Red Hat Enterprise Linux (RHEL) 9
+- Red Hat Enterprise Linux (RHEL) 9 and 10
 
 > [!NOTE]
 > The extension selects a distribution-specific binary at install time from `/etc/os-release`. Installing on any other distribution fails with a "distribution is not supported" error that appears in the extension status.
