@@ -665,8 +665,8 @@ To learn more, see the Azure PowerShell commands [Stop-AzVmss](/powershell/modul
 
 If you have capacity in an existing capacity reservation group and you want to add an existing zonal uniform scale set to it, simply update the scale set to the capacity reservation group to use a matching capacity reservation.
 
-> [!IMPORTANT]
-> There's a known issue with Terraform where associating an existing zonal scale set VM with a Capacity Reservation Group triggers VM deallocation and subsequent reallocation.
+> [!Note]
+> Terraform support is not available for the capability to allow in place association of a zonal VMSS to a capacity reservation group.
 
 #### Important notes on upgrade policies
 
