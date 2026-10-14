@@ -32,12 +32,13 @@ Container groups deployed into an Azure virtual network enable scenarios like:
 * Resolve names via the internal Azure DNS for communication with Azure resources in the virtual network, such as virtual machines.
 * Use NSG rules to control container access to subnets or other network resources.
 * Deploy a scalable containerized application using Azure Container Instances (ACI), and distribute incoming traffic evenly across multiple container groups using Azure Standard Load Balancer.
+* Managed Identity with virtual networking capabilities is supported in Azure Government Regions.
+
 
 ## Unsupported networking scenarios
 
 * **Global virtual network peering** - Global peering (connecting virtual networks across Azure regions) isn't supported
 * **Public IP or DNS label** - Container groups deployed to a virtual network don't currently support exposing containers directly to the internet with a public IP address or a fully qualified domain name
-* **Managed Identity with Virtual Network in Azure Government Regions** - Managed Identity with virtual networking capabilities isn't supported in Azure Government Regions
 * **Image pulls from non-ACR private registries** - ACI doesn't support pulling container images from private registries (registries without a public IP) other than Azure Container Registry (ACR). Even if virtual network connectivity exists between ACI and a self-hosted private registry, image pulls from non-ACR private registries aren't supported. For private image pulls, use ACR with a [private endpoint](/azure/container-registry/container-registry-private-link) and [managed identity](container-instances-managed-identity.md)
 
 ## Other limitations
