@@ -128,7 +128,7 @@ Previous supported driver versions for Windows builds up to 1909 are [20.Q4-1](h
 
 ![GPU driver properties](./media/n-series-amd-driver-setup/dxdiag-details.png)
 
-## Note for Windows EMS Installation ##
+## Note for Windows EMS installation ##
 
 > [!NOTE]
 >  Follow these steps if you see "Error 184 - AMD Installer cannot continue due to an unsupported Operating System" error on Windows 10 EMS / Windows 11 EMS.
