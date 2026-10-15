@@ -135,6 +135,6 @@ Previous supported driver versions for Windows builds up to 1909 are [20.Q4-1](h
  
 1. Make sure you extract the driver package. For an EXE package, run it to extract its content.
 
-2. Locate the display-driver folder in the extracted package. Example path `C:\AMD\AMD-Software-Installer\Packages\Drivers\Display\WT6A_INF`.
+2. Locate the `display-driver` folder in the extracted package. Example path: `C:\AMD\AMD-Software-Installer\Packages\Drivers\Display\WT6A_INF`.
 
 3. Right-click the applicable `.inf` file and select **Install**, then restart the VM.
