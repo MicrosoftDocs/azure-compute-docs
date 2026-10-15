@@ -133,7 +133,7 @@ Previous supported driver versions for Windows builds up to 1909 are [20.Q4-1](h
 > [!NOTE]
 >  Follow these steps if you see "Error 184 - AMD Installer cannot continue due to an unsupported Operating System" error on Windows 10 EMS or Windows 11 EMS.
  
-1. Make sure you have extracted the driver package. For an EXE package, run it to extract its content.
+1. Make sure you extract the driver package. For an EXE package, run it to extract its content.
 
 2. Locate the display-driver folder in the extracted package. Example path `C:\AMD\AMD-Software-Installer\Packages\Drivers\Display\WT6A_INF`.
 
