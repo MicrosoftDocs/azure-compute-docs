@@ -2451,7 +2451,7 @@
     displayName: Reliability in Virtual Machines
     href: /azure/reliability/reliability-virtual-machines?toc=/azure/virtual-machines/toc.json&bc=/azure/virtual-machines/breadcrumb/toc.json
   - name: Service disruptions
-    href: virtual-machines-disaster-recovery-guidance.md
+    href: overview.md#service-disruptions
   - name: Back up VMs
     items:
     - name: Overview
@@ -2489,8 +2489,10 @@
     - name: Overview
       displayName: Disaster Recovery Overview
       href: /azure/site-recovery/site-recovery-overview?toc=/azure/virtual-machines/toc.json
-    - name: Enable zonal disaster recovery
-      href: zone-resilient-vm.md
+    - name: zone resilience for Azure VMs (Preview)
+      href: zone-resilience.md
+    - name: Zone-to-zone disaster recovery with Azure Site Recovery
+      href: /azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery?toc=/azure/virtual-machines/toc.json
     - name: Enable disaster recovery
       items:
       - name: Linux

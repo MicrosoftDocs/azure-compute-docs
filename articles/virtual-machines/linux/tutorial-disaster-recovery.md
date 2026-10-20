@@ -29,6 +29,12 @@ This tutorial shows you how to set up disaster recovery for Azure VMs running Li
 
 When you enable replication for a VM, the Site Recovery Mobility service extension installs on the VM, and registers it with [Azure Site Recovery](/azure/site-recovery/site-recovery-overview). During replication, VM disk writes are sent to a cache storage account in the source VM region. Data is sent from there to the target region, and recovery points are generated from the data.  When you fail a VM over to another region during disaster recovery, a recovery point is used to create a VM in the target region.
 
+For a separate, same-region recovery option that retains an eligible existing VM resource, see [zone resilience for Azure VMs (Preview)](../zone-resilience.md). It isn't a Site Recovery workflow or a replacement for regional disaster recovery.
+
+> [!IMPORTANT]
+> Don't use this preview to fail over production VMs during an availability zone outage because it can cause data or disk corruption. Review the [preview limitations](../zone-resilience.md#limitations) before enabling the feature.
+
+
 If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 ## Prerequisites

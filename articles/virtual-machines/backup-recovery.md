@@ -5,7 +5,8 @@ author: iamwilliew
 ms.service: azure-virtual-machines
 ms.subservice: recovery
 ms.topic: overview
-ms.date: 01/12/2023
+ms.date: 10/20/2026
+ai-usage: ai-assisted
 ms.author: wwilliams
 # Customer intent: "As a cloud administrator, I want to explore backup and restore options for Azure VMs, so that I can effectively protect data and ensure recoverability in case of failures or disasters."
 ---
@@ -16,6 +17,20 @@ ms.author: wwilliams
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets
 
 You can protect your data by taking backups at regular intervals. There are several backup options available for virtual machines (VMs), depending on your use-case.
+
+## Choose a protection approach
+
+Availability, failover, and backup address different risks. Use this comparison to choose an approach, and validate the supported configuration before combining protection features.
+
+| Recovery need | Approach | Important distinction |
+| --- | --- | --- |
+| Keep an application available during a zone failure. | Deploy [multiple VMs across availability zones](disks-high-availability.md#deploy-vms-and-disks-across-three-availability-zones). | Configure application replication and traffic routing between healthy instances. |
+| Move an eligible existing zonal VM to another zone in the same region. | [zone resilience for Azure VMs (Preview)](zone-resilience.md). | Requires ZRS OS and data disks. Failover is customer-initiated and interrupts the workload. |
+| Recover from a zone or regional outage through replication. | [Azure Site Recovery](/azure/site-recovery/site-recovery-overview). | Review the support requirements for zone-to-zone or region-to-region replication. |
+| Recover point-in-time data after deletion or corruption. | Azure Backup, managed snapshots, or VM restore points, described in this article. | Replication doesn't replace historical backups, and backups don't keep an application continuously available. |
+
+> [!IMPORTANT]
+> Don't use zone resilience for Azure VMs (Preview) to fail over production VMs during a zone outage because it can cause data or disk corruption. See the [preview limitations](zone-resilience.md#limitations).
 
 ## Azure Backup
 
@@ -56,4 +71,4 @@ Learn more about [working with VM restore points](virtual-machines-create-restor
 ## Next steps
 You can try out Azure Backup by following the [Azure Backup quickstart](/azure/backup/quick-backup-vm-portal).
 
-You can also plan and implement reliability for your virtual machine configuration. For more information see [Virtual Machine Reliability](./reliability-virtual-machines.md).
+You can also plan and implement reliability for your virtual machine configuration. For more information, see [Reliability in Azure Virtual Machines](/azure/reliability/reliability-virtual-machines).

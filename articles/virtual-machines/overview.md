@@ -5,7 +5,8 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.collection: linux
 ms.topic: overview
-ms.date: 03/27/2025
+ms.date: 10/20/2026
+ai-usage: ai-assisted
 ms.author: mattmcinnes
 ms.update-cycle: 1095-days
 # Customer intent: "As a cloud architect, I want to evaluate the features and management options of Azure virtual machines, so that I can determine the best deployment strategy for my applications and optimize costs and performance."
@@ -151,15 +152,26 @@ Microsoft provides a Service Level Agreement (SLA) for its services as a commitm
 
 Azure already has many built-in platform features that support highly available applications. For more about these services, read [Disaster recovery and high availability for Azure applications](/azure/architecture/framework/resiliency/backup-and-recovery).
 
-This article covers a true disaster recovery scenario, when a whole region experiences an outage due to major natural disaster or widespread service interruption. These are rare occurrences, but you must prepare for the possibility that there's an outage of an entire region. If an entire region experiences a service disruption, the locally redundant copies of your data would temporarily be unavailable. If you enabled geo-replication, three additional copies of your Azure Storage blobs and tables are stored in a different region. In the event of a complete regional outage or a disaster in which the primary region isn't recoverable, Azure remaps all of the DNS entries to the geo-replicated region.
+### Zone failures
+
+For high availability during a zone failure, deploy multiple VMs across availability zones and configure application replication and traffic routing. For supported configurations, [Azure Site Recovery zone-to-zone disaster recovery](/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery) provides another recovery option within a region.
+
+[zone resilience for Azure VMs (Preview)](zone-resilience.md) lets you initiate failover of an eligible standalone zonal VM to another availability zone in the same region. The VM retains its resource identity and supported configuration.
+
+> [!IMPORTANT]
+> Don't use this preview to fail over production VMs during a zone outage because it can cause data or disk corruption. See the [preview limitations](zone-resilience.md#limitations).
+
+### Region-wide failures
+
+A whole region can experience an outage due to a major natural disaster or widespread service interruption. These are rare occurrences, but you must prepare for the possibility that there's an outage of an entire region. If an entire region experiences a service disruption, the locally redundant copies of your data would temporarily be unavailable. If you enabled geo-replication, three additional copies of your Azure Storage blobs and tables are stored in a different region. In the event of a complete regional outage or a disaster in which the primary region isn't recoverable, Azure remaps all of the DNS entries to the geo-replicated region.
 
 In the case of a service disruption of the entire region where your Azure virtual machine application is deployed, we provide the following guidance for Azure virtual machines.
 
-### Option 1: Initiate a failover by using Azure Site Recovery
+#### Option 1: Initiate a failover by using Azure Site Recovery
 You can configure Azure Site Recovery for your VMs so that you can recover your application with a single click in matter of minutes. You can replicate to Azure region of your choice and not restricted to paired regions. You can get started by [replicating your virtual machines](/azure/site-recovery/azure-to-azure-quickstart). You can [create a recovery plan](/azure/site-recovery/site-recovery-create-recovery-plans) so that you can automate the entire failover process for your application. You can [test your failovers](/azure/site-recovery/site-recovery-test-failover-to-azure) beforehand without impacting production application or the ongoing replication. In the event of a primary region disruption, you just [initiate a failover](/azure/site-recovery/site-recovery-failover) and bring your application in target region.
 
 
-### Option 2: Wait for recovery
+#### Option 2: Wait for recovery
 In this case, no action on your part is required. Know that we're working diligently to restore service availability. You can see the current service status on our [Azure Service Health Dashboard](https://azure.microsoft.com/status/).
 
 This option is the best if you don't set up Azure Site Recovery, read-access geo-redundant storage, or geo-redundant storage prior to the disruption. If you set up geo-redundant storage or read-access geo-redundant storage for the storage account where your VM virtual hard drives (VHDs) are stored, you can look to recover the base image VHD and try to provision a new VM from it. This option isn't preferred because there are no guarantees of synchronization of data, which means this option isn't guaranteed to work.

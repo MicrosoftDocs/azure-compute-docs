@@ -3,7 +3,8 @@ title: Best practices for high availability with Azure VMs and managed disks
 description: Learn the steps you can take to get the best availability with your Azure virtual machines and managed disks.
 author: roygara
 ms.author: rogarana
-ms.date: 09/10/2026
+ms.date: 10/20/2026
+ai-usage: ai-assisted
 ms.topic: concept-article
 ms.service: azure-disk-storage
 # Customer intent: "As a cloud architect, I want to implement high availability strategies for Azure virtual machines and managed disks, so that I can ensure maximum uptime and resiliency for critical applications in the cloud."
@@ -47,6 +48,15 @@ Single VMs using only [Premium SSDs](disks-types.md#premium-ssds) as the OS disk
 ### Use zone-redundant storage disks
 
 Zone-redundant storage (ZRS) disks synchronously replicate data across three availability zones. These availability zones are separated groups of data centers in a region that have independent power, cooling, and networking infrastructure. With ZRS disks, your data is accessible even in the event of a zone outage. You can also [forcibly detach](/rest/api/compute/virtual-machines/attach-detach-data-disks?tabs=HTTP#diskdetachoptiontypes) ZRS data disks from VMs experiencing issues. ZRS disks have limitations. See the [limitations](disks-redundancy.md#zrs-limitations) section of the redundancy options article for details.
+
+#### zone resilience for Azure VMs (Preview)
+
+[zone resilience for Azure VMs (Preview)](zone-resilience.md) lets you initiate failover of an eligible standalone zonal VM to another availability zone in the same region. The VM retains its resource identity and supported configuration.
+
+As a prerequisite, the OS disk and every attached data disk must use supported ZRS managed disks, and you must enable zone resilience before an outage. For more details, refer to the [zone resilience documentation](zone-resilience.md#requirements).
+
+> [!IMPORTANT]
+> Don't use this preview to fail over production VMs during a zone outage because it can cause data or disk corruption. Review the [preview limitations](zone-resilience.md#limitations).
 
 ## Recommendations for applications running on multiple VMs
 
