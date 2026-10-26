@@ -6,7 +6,7 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
-ms.date: 11/17/2025
+ms.date: 10/26/2026
 ms.update-cycle: 1095-days
 ms.custom: mvc
 # Customer intent: "As a cloud operator, I want to implement confidential containers on Azure Container Instances, so that I can securely run containerized applications while protecting sensitive data through hardware-based execution environments and verifiable attestation."
@@ -49,6 +49,9 @@ Confidential containers on Azure Container Instances provide a sidecar open sour
 
 ### Encrypted file system sidecar 
 Confidential containers on Azure Container Instances provide a sidecar container to mount a remote encrypted filesystem previously uploaded to Azure Blob Storage. The sidecar container transparently retrieves the hardware attestation and the certificate chain endorsing the attestation’s signing key. It then requests Microsoft Azure Attestation to authorize an attestation token, which is required for securely releasing the filesystem’s encryption key from the managed HSM. The key is released to the sidecar container only if the expected authority signed the attestation token and the attestation claims match the key’s release policy. The sidecar container transparently uses the key to mount the remote encrypted filesystem; this process preserves the confidentiality and integrity of the filesystem upon any operation from a container that is running within the container group.
+
+### Enclaves (preview)
+A confidential container group can start an enclave pod at runtime. The enclave pod runs in its own AMD SEV-SNP TEE with its own confidential computing enforcement policy, and has no network access. The enclave pod communicates only with its parent container group, through port forwards. Use enclaves to isolate the most sensitive part of your application from the rest of it. For more information, see [Enclaves for confidential containers on Azure Container Instances](container-instances-enclaves.md).
 
 ## Scenarios 
 

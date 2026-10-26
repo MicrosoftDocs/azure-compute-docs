@@ -95,6 +95,8 @@
     href: container-instances-confidential-overview.md
   - name: Attestation in Confidential containers
     href: confidential-containers-attestation-concepts.md
+  - name: Enclaves for confidential containers (preview)
+    href: container-instances-enclaves.md
   - name: About Azure Container Instances Spot containers
     href: container-instances-spot-containers-overview.md
   - name: Virtual nodes on Azure Container Instances
