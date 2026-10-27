@@ -65,17 +65,17 @@ When you attach a premium storage disk to your high-scale VM, Azure provisions f
 
 Throughput, or bandwidth, is the amount of data that your application is sending to the storage disks in a specified interval. If your application is performing input/output operations with large I/O unit sizes, it requires high throughput. Data warehouse applications tend to issue scan-intensive operations that access large portions of data at a time and commonly perform bulk operations. In other words, such applications require higher throughput. If you have such an application, you must design its infrastructure to optimize for throughput. In the next section, we discuss the factors you must tune to achieve this optimization.
 
-When you attach a premium storage disk to a high-scale VM, Azure provisions throughput according to that disk specification. For example, a P50 disk provisions 250 MB/sec disk throughput. Each high-scale VM size also has a specific throughput limit that it can sustain. For example, Standard GS5 VM has a maximum throughput of 2,000 MB/sec.
+When you attach a premium storage disk to a high-scale VM, Azure provisions throughput according to that disk specification. For example, a P50 disk provisions 250 MB/s disk throughput. Each high-scale VM size also has a specific throughput limit that it can sustain. For example, Standard GS5 VM has a maximum throughput of 2,000 MB/s.
 
 There's a relation between throughput and IOPS, as shown in the following formula.
 
-![Diagram that shows the relation of IOPS and throughput.](linux/media/premium-storage-performance/image1.png)
+![Diagram defining throughput as IOPS multiplied by I/O size.](linux/media/premium-storage-performance/image1.png)
 
 It's important to determine the optimal throughput and IOPS values that your application requires. As you try to optimize one, the other is also affected. For more information about optimizing IOPS and throughput, see [Optimize application performance](#optimize-application-performance).
 
 ## Latency
 
-Latency is the time it takes an application to receive a single request, send it to storage disks, and send the response to the client. Latency is a critical measure of an application's performance in addition to IOPS and throughput. The latency of a premium storage disk is the time it takes to retrieve the information for a request and communicate it back to your application. Premium storage provides consistently low latencies. Premium disks are designed to provide single-digit millisecond latencies for most I/O operations. If you enable **ReadOnly** host caching on premium storage disks, you can get much lower read latency. For more information on disk caching, see [Disk caching](#disk-caching).
+Latency is the time it takes an application to receive a single request, send it to storage disks, and send the response to the client. Latency is a critical measure of an application's performance in addition to IOPS and throughput. The latency of a premium storage disk is the time it takes to retrieve the information for a request and communicate it back to your application. Premium storage provides consistently low latencies. Premium disks are designed to provide single-digit millisecond latencies for most I/O operations. If you enable **ReadOnly** host caching on premium storage disks, you can get much lower read latency. For more information on disk caching, see [Disk caching](#disk-caching-settings).
 
 When you optimize your application to get higher IOPS and throughput, it affects the latency of your application. After you tune the application performance, evaluate the latency of the application to avoid unexpected high latency behavior.
 
@@ -136,14 +136,14 @@ On Linux, the `iostat` command generates a CPU and disk utilization report. The 
 
 | Counter | Description | PerfMon | iostat |
 | --- | --- | --- | --- |
-| IOPS or transactions/sec |Number of I/O requests issued to the storage disk/sec |Disk reads/sec <br> Disk writes/sec |tps <br> r/s <br> w/s |
-| Disk reads and writes |% of read and write operations performed on the disk |% Disk read time <br> % Disk write time |r/s <br> w/s |
-| Throughput |Amount of data read from or written to the disk/sec |Disk read bytes/sec <br> Disk write bytes/sec |kB_read/s <br> kB_wrtn/s |
-| Latency |Total time to complete a disk I/O request |Average disk sec/read <br> Average disk sec/write |await <br> svctm |
-| I/O size |The size of I/O request issues to the storage disks |Average disk bytes/read <br> Average disk bytes/write |avgrq-sz |
-| Queue depth |Number of outstanding I/O requests waiting to be read from or written to the storage disk |Current disk queue length |avgqu-sz |
-| Maximum memory |Amount of memory required to run the application smoothly |% Committed bytes in use |Use vmstat |
-| Maximum CPU |Amount of CPU required to run the application smoothly |% Processor time |%util |
+| IOPS or transactions/sec | Number of I/O requests issued to the storage disk/sec | Disk reads/sec <br> Disk writes/sec | tps <br> r/s <br> w/s |
+| Disk reads and writes | % of read and write operations performed on the disk | % Disk read time <br> % Disk write time | r/s <br> w/s |
+| Throughput | Amount of data read from or written to the disk/sec | Disk read bytes/sec <br> Disk write bytes/sec | kB_read/s <br> kB_wrtn/s |
+| Latency | Total time to complete a disk I/O request | Average disk sec/read <br> Average disk sec/write | await <br> svctm |
+| I/O size | The size of I/O request issues to the storage disks | Average disk bytes/read <br> Average disk bytes/write | avgrq-sz |
+| Queue depth | Number of outstanding I/O requests waiting to be read from or written to the storage disk | Current disk queue length | avgqu-sz |
+| Maximum memory | Amount of memory required to run the application smoothly | % Committed bytes in use | Use vmstat |
+| Maximum CPU | Amount of CPU required to run the application smoothly | % Processor time | %util |
 
 Learn more about [iostat](https://linux.die.net/man/1/iostat) and [PerfMon](/windows/win32/perfctrs/performance-counters-portal).
 
@@ -165,17 +165,17 @@ For more information on VM sizes and on the IOPS, throughput, and latency availa
 
 | Performance factors | IOPS | Throughput | Latency |
 | --- | --- | --- | --- |
-| Example scenario |Enterprise OLTP application requiring very high transactions per second rate. |Enterprise Data warehousing application processing large amounts of data. |Near real-time applications requiring instant responses to user requests, like online gaming. |
+| Example scenario | Enterprise OLTP application requiring very high transactions per second rate. | Enterprise Data warehousing application processing large amounts of data. | Near real-time applications requiring instant responses to user requests, like online gaming. |
 | Performance factors | &nbsp; | &nbsp; | &nbsp; |
-| I/O size |Smaller I/O size yields higher IOPS. |Larger I/O size yields higher throughput. | &nbsp;|
-| VM size |Use a VM size that offers IOPS greater than your application requirement. |Use a VM size with a throughput limit greater than your application requirement. |Use a VM size that offers scale limits greater than your application requirement. |
-| Disk size |Use a disk size that offers IOPS greater than your application requirement. |Use a disk size with a throughput limit greater than your application requirement. |Use a disk size that offers scale limits greater than your application requirement. |
-| VM and disk scale limits |IOPS limit of the VM size chosen should be greater than the total IOPS driven by the storage disks attached to it. |Throughput limit of the VM size chosen should be greater than the total throughput driven by the premium storage disks attached to it. |Scale limits of the VM size chosen must be greater than the total scale limits of the attached premium storage disks. |
-| Disk caching |Enable **ReadOnly** cache on premium storage disks with read-heavy operations to get higher read IOPS. | &nbsp; |Enable **ReadOnly** cache on premium storage disks with read-heavy operations to get very low read latencies. |
-| Disk striping |Use multiple disks and stripe them together to get a combined higher IOPS and throughput limit. The combined limit per VM should be higher than the combined limits of attached premium disks. | &nbsp; | &nbsp; |
-| Stripe size |Smaller stripe size for random small I/O pattern seen in OLTP applications. For example, use a 64-KB stripe size for a SQL Server OLTP application. |Larger stripe size for sequential large I/O pattern seen in data warehouse applications. For example, use a 256-KB stripe size for a SQL Server data warehouse application. | &nbsp; |
-| Multithreading |Use multithreading to push a higher number of requests to premium storage to lead to higher IOPS and throughput. For example, on SQL Server, set a high MAXDOP value to allocate more CPUs to SQL Server. | &nbsp; | &nbsp; |
-| Queue depth |Larger queue depth yields higher IOPS. |Larger queue depth yields higher throughput. |Smaller queue depth yields lower latencies. |
+| I/O size | Smaller I/O size yields higher IOPS. | Larger I/O size yields higher throughput. | &nbsp; |
+| VM size | Use a VM size that offers IOPS greater than your application requirement. | Use a VM size with a throughput limit greater than your application requirement. | Use a VM size that offers scale limits greater than your application requirement. |
+| Disk size | Use a disk size that offers IOPS greater than your application requirement. | Use a disk size with a throughput limit greater than your application requirement. | Use a disk size that offers scale limits greater than your application requirement. |
+| VM and disk scale limits | IOPS limit of the VM size chosen should be greater than the total IOPS driven by the storage disks attached to it. | Throughput limit of the VM size chosen should be greater than the total throughput driven by the premium storage disks attached to it. | Scale limits of the VM size chosen must be greater than the total scale limits of the attached premium storage disks. |
+| Disk caching | Enable **ReadOnly** cache on premium storage disks with read-heavy operations to get higher read IOPS. | &nbsp; | Enable **ReadOnly** cache on premium storage disks with read-heavy operations to get very low read latencies. |
+| Disk striping | Use multiple disks and stripe them together to get a combined higher IOPS and throughput limit. The combined limit per VM should be higher than the combined limits of attached premium disks. | &nbsp; | &nbsp; |
+| Stripe size | Smaller stripe size for random small I/O pattern seen in OLTP applications. For example, use a 64-KB stripe size for a SQL Server OLTP application. | Larger stripe size for sequential large I/O pattern seen in data warehouse applications. For example, use a 256-KB stripe size for a SQL Server data warehouse application. | &nbsp; |
+| Multithreading | Use multithreading to push a higher number of requests to premium storage to lead to higher IOPS and throughput. For example, on SQL Server, set a high MAXDOP value to allocate more CPUs to SQL Server. | &nbsp; | &nbsp; |
+| Queue depth | Larger queue depth yields higher IOPS. | Larger queue depth yields higher throughput. | Smaller queue depth yields lower latencies. |
 
 ## Nature of I/O requests
 
@@ -183,7 +183,9 @@ An I/O request is a unit of input/output operation that your application is perf
 
 I/O size is one of the more important factors. The I/O size is the size of the input/output operation request generated by your application. The I/O size affects performance significantly, especially on the IOPS and bandwidth that the application can achieve. The following formula shows the relationship between IOPS, I/O size, and bandwidth/throughput.
 
-![A diagram that shows the equation I O P S times I O size equals throughput.](media/premium-storage-performance/image1.png)
+![Diagram of the equation IOPS multiplied by I/O size equals throughput.](media/premium-storage-performance/image1.png)
+
+### Match I/O size to the workload pattern
 
 Some applications allow you to alter their I/O size, while some applications don't. For example, SQL Server determines the optimal I/O size itself and doesn't provide users with any knobs to change it. On the other hand, Oracle provides a parameter called [DB\_BLOCK\_SIZE](https://docs.oracle.com/cd/B19306_01/server.102/b14211/iodesign.htm#i28815), which you can use to configure the I/O request size of the database.
 
@@ -197,20 +199,22 @@ If you're using an application that allows you to change the I/O size, use this 
 * Smaller I/O size to get higher IOPS. For example, 8 KB for an OLTP application.
 * Larger I/O size to get higher bandwidth/throughput. For example, 1,024 KB for a data warehouse application.
 
+### Calculate IOPS and throughput for a P30 disk
+
 Here's an example of how you can calculate the IOPS and throughput/bandwidth for your application.
 
-Consider an application that uses a P30 disk. The maximum IOPS and throughput/bandwidth a P30 disk can achieve is 5,000 IOPS and 200 MB/sec, respectively. If your application requires the maximum IOPS from the P30 disk and you use a smaller I/O size, like 8 KB, the resulting bandwidth you can get is 40 MB/sec. If your application requires the maximum throughput/bandwidth from a P30 disk and you use a larger I/O size, like 1,024 KB, the resulting IOPS is less, such as 200 IOPS.
+Consider an application that uses a P30 disk. The maximum IOPS and throughput/bandwidth a P30 disk can achieve is 5,000 IOPS and 200 MB/s, respectively. If your application requires the maximum IOPS from the P30 disk and you use a smaller I/O size, like 8 KB, the resulting bandwidth you can get is 40 MB/s. If your application requires the maximum throughput/bandwidth from a P30 disk and you use a larger I/O size, like 1,024 KB, the resulting IOPS is less, such as 200 IOPS.
 
 Tune the I/O size so that it meets both your application's IOPS and throughput/bandwidth requirement. The following table summarizes the different I/O sizes and their corresponding IOPS and throughput for a P30 disk.
 
 | Application requirement | I/O size | IOPS | Throughput/Bandwidth |
 | --- | --- | --- | --- |
-| Maximum IOPS |8 KB |5,000 |40 MB/sec |
-| Maximum throughput |1,024 KB |200 |200 MB/sec |
-| Maximum throughput + high IOPS |64 KB |3,200 |200 MB/sec |
-| Maximum IOPS + high throughput |32 KB |5,000 |160 MB/sec |
+| Maximum IOPS | 8 KB | 5,000 | 40 MB/s |
+| Maximum throughput | 1,024 KB | 200 | 200 MB/s |
+| Maximum throughput + high IOPS | 64 KB | 3,200 | 200 MB/s |
+| Maximum IOPS + high throughput | 32 KB | 5,000 | 160 MB/s |
 
-To get IOPS and bandwidth higher than the maximum value of a single premium storage disk, use multiple premium disks striped together. For example, stripe two P30 disks to get a combined IOPS of 10,000 IOPS or a combined throughput of 400 MB/sec. As explained in the next section, you must use a VM size that supports the combined disk IOPS and throughput.
+To get IOPS and bandwidth higher than the maximum value of a single premium storage disk, use multiple premium disks striped together. For example, stripe two P30 disks to get a combined IOPS of 10,000 IOPS or a combined throughput of 400 MB/s. As explained in the next section, you must use a VM size that supports the combined disk IOPS and throughput.
 
 > [!NOTE]
 > As you increase either IOPS or throughput, the other also increases. Make sure you don't hit throughput or IOPS limits of the disk or VM when you increase either one.
@@ -225,8 +229,8 @@ High-scale VMs are available in different sizes with a different number of CPU c
 
 | VM size | CPU cores | Memory | VM disk sizes | Maximum data disks | Cache size | IOPS | Bandwidth cache I/O limits |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_DS14 |16 |112 GB |OS = 1,023 GB <br> Local SSD = 224 GB |32 |576 GB |50,000 IOPS <br> 512 MB/sec |4,000 IOPS and 33 MB/sec |
-| Standard_GS5 |32 |448 GB |OS = 1,023 GB <br> Local SSD = 896 GB |64 |4224 GB |80,000 IOPS <br> 2,000 MB/sec |5,000 IOPS and 50 MB/sec |
+| Standard_DS14 | 16 | 112 GB | OS = 1,023 GB <br> Local SSD = 224 GB | 32 | 576 GB | 50,000 IOPS <br> 512 MB/s | 4,000 IOPS and 33 MB/s |
+| Standard_GS5 | 32 | 448 GB | OS = 1,023 GB <br> Local SSD = 896 GB | 64 | 4224 GB | 80,000 IOPS <br> 2,000 MB/s | 5,000 IOPS and 50 MB/s |
 
 To view a complete list of all available Azure VM sizes, see [Sizes for virtual machines in Azure](sizes.md). Choose a VM size that can meet and scale to your desired application performance requirements. Also take into account the following important considerations when you choose VM sizes.
 
@@ -256,11 +260,11 @@ The following table summarizes the cost breakdown of this scenario for standard 
 
 | Monthly cost | Standard | Premium |
 | --- | --- | --- |
-| Cost of VM per month |$1,570.58 (Standard\_D14) |$1,003.66 (Standard\_DS13) |
-| Cost of disks per month |$1,638.40 (32 x 1-TB disks) |$544.34 (4 x P30 disks) |
-| Overall cost per month |$3,208.98 |$1,544.34 |
+| Cost of VM per month | $1,570.58 (Standard\_D14) | $1,003.66 (Standard\_DS13) |
+| Cost of disks per month | $1,638.40 (32 x 1-TB disks) | $544.34 (4 x P30 disks) |
+| Overall cost per month | $3,208.98 | $1,544.34 |
 
-### Linux distros
+### Linux distribution performance
 
 With premium storage, you get the same level of performance for VMs running Windows and Linux. We support many flavors of Linux distros. For more information, see [Linux distributions endorsed on Azure](linux/endorsed-distros.md).
 
@@ -268,7 +272,7 @@ Different distros are better suited for different types of workloads. You see di
 
 When you run Linux with premium storage, check the latest updates about required drivers to ensure high performance.
 
-## Premium storage disk sizes
+## Select premium storage disk sizes
 
 Premium storage offers various sizes so you can choose one that best suits your needs. Each disk size has a different scale limit for IOPS, bandwidth, and storage. Choose the right premium storage disk size depending on the application requirements and the high-scale VM size. The following table shows the disks sizes and their capabilities. P4, P6, P15, P60, P70, and P80 sizes are currently only supported for managed disks.
 
@@ -280,12 +284,12 @@ How many disks you choose depends on the disk size chosen. You could use a singl
 
 The IOPS and throughput limits of each premium disk size is different and independent from the VM scale limits. Make sure that the total IOPS and throughput from the disks are within scale limits of the chosen VM size.
 
-For example, if an application requirement is a maximum of 250 MB/sec throughput and you're using a DS4 VM with a single P30 disk, the DS4 VM can give up to 256 MB/sec throughput. However, a single P30 disk has a throughput limit of 200 MB/sec. So, the application is constrained at 200 MB/sec because of the disk limit. To overcome this limit, provision more than one data disk to the VM or resize your disks to P40 or P50.
+For example, if an application requirement is a maximum of 250 MB/s throughput and you're using a DS4 VM with a single P30 disk, the DS4 VM can give up to 256 MB/s throughput. However, a single P30 disk has a throughput limit of 200 MB/s. So, the application is constrained at 200 MB/s because of the disk limit. To overcome this limit, provision more than one data disk to the VM or resize your disks to P40 or P50.
 
 > [!NOTE]
 > Reads served by the cache aren't included in the disk IOPS and throughput, so they aren't subject to disk limits. Cache has its separate IOPS and throughput limit per VM.
 >
-> For example, initially your reads and writes are 60 MB/sec and 40 MB/sec, respectively. Over time, the cache warms up and serves more and more of the reads from the cache. Then, you can get higher write throughput from the disk.
+> For example, initially your reads and writes are 60 MB/s and 40 MB/s, respectively. Over time, the cache warms up and serves more and more of the reads from the cache. Then, you can get higher write throughput from the disk.
 
 ### Number of disks
 
@@ -293,7 +297,7 @@ Determine the number of disks you need by assessing application requirements. Ea
 
 Remember, the premium storage disks have higher performance capabilities compared to standard storage disks. If you're migrating your application from an Azure IaaS VM using standard storage to premium storage, you likely need fewer premium disks to achieve the same or higher performance for your application.
 
-## Disk caching
+## Disk caching settings
 
 High-scale VMs that use premium storage have a multitier caching technology called **BlobCache**. **BlobCache** uses a combination of the host RAM and local SSD for caching. This cache is available for Standard HDD, Standard SSD, and Premium SSD managed disks. By default, this cache setting is set to **ReadWrite** for OS disks and **ReadOnly** for data disks. With disk caching enabled, the high-scale VMs can achieve extremely high levels of performance that exceed the underlying disk performance.
 
@@ -308,29 +312,29 @@ It's important to enable caching on the right set of disks. Whether you should e
 
 | Disk type | Default cache setting |
 | --- | --- |
-| OS disk |ReadWrite |
-| Data disk |ReadOnly |
+| OS disk | ReadWrite |
+| Data disk | ReadOnly |
 
 You should use the following disk cache settings for data disks:
 
 | Disk caching setting | Recommendation for when to use this setting |
 | --- | --- |
-| None |Configure host-cache as **None** for write-only and write-heavy disks. |
-| ReadOnly |Configure host-cache as **ReadOnly** for read-only and read-write disks. |
-| ReadWrite |Configure host-cache as **ReadWrite** only if your application properly handles writing cached data to persistent disks when needed. |
+| None | Configure host-cache as **None** for write-only and write-heavy disks. |
+| ReadOnly | Configure host-cache as **ReadOnly** for read-only and read-write disks. |
+| ReadWrite | Configure host-cache as **ReadWrite** only if your application properly handles writing cached data to persistent disks when needed. |
 
-### ReadOnly
+### ReadOnly disk caching
 
 By configuring **ReadOnly** caching on data disks, you can achieve low read latency and get very high read IOPS and throughput for your application for two reasons:
 
-1. Reads performed from cache, which is on the VM memory and local SSD, are faster than reads from the data disk, which is on Azure Blob Storage.
-1. Storage doesn't count the reads served from the cache toward the disk IOPS and throughput. For this reason, your application can achieve higher total IOPS and throughput.
+- Reads performed from cache, which is on the VM memory and local SSD, are faster than reads from the data disk, which is on Azure Blob Storage.
+- Storage doesn't count the reads served from the cache toward the disk IOPS and throughput. For this reason, your application can achieve higher total IOPS and throughput.
 
-### ReadWrite
+### ReadWrite disk caching
 
 By default, the OS disks have **ReadWrite** caching enabled. We recently added support for **ReadWrite** caching on data disks too. If you're using **ReadWrite** caching, you must have a proper way to write the data from cache to persistent disks. For example, SQL Server handles writing cached data to the persistent storage disks on its own. Using **ReadWrite** cache with an application that doesn't handle persisting the required data can lead to data loss, if the VM crashes.
 
-### None
+### No disk caching
 
 Currently, **None** is only supported on data disks. It isn't supported on OS disks. If you set **None** on an OS disk, it overrides this setting internally and sets it to **ReadOnly**.
 
@@ -352,7 +356,7 @@ For all Premium SSDs or Ultra Disks, you might be able to disable *barriers* for
 
 ## Disk striping
 
-When a high-scale VM is attached with several premium storage persistent disks, the disks can be striped together to aggregate their IOPs, bandwidth, and storage capacity.
+When you attach several premium storage persistent disks to a high-scale VM, you can stripe the disks together to aggregate their IOPS, bandwidth, and storage capacity.
 
 On Windows, you can use Storage Spaces to stripe disks together. You must configure one column for each disk in a pool. Otherwise, the overall performance of striped volume can be lower than expected because of uneven distribution of traffic across the disks.
 
@@ -360,7 +364,7 @@ By using the Server Manager UI, you can set the total number of columns up to `8
 
 On Linux, use the MDADM utility to stripe disks together. For steps on how to stripe disks on Linux, see [Configure Software RAID on Linux](/previous-versions/azure/virtual-machines/linux/configure-raid).
 
-### Stripe size
+### Select a disk stripe size
 
 An important configuration in disk striping is the stripe size. The stripe size or block size is the smallest chunk of data that an application can address on a striped volume. The stripe size you configure depends on the type of application and its request pattern. If you choose the wrong stripe size, it could lead to I/O misalignment, which leads to degraded performance of your application.
 
@@ -371,13 +375,17 @@ Depending on the type of workload your application is running, choose an appropr
 > [!NOTE]
 > You can stripe together a maximum of 32 premium storage disks on a DS series VM and 64 premium storage disks on a GS series VM.
 
-## Multithreading
+## Use multithreading to improve storage performance
 
 Azure designed the premium storage platform to be massively parallel. For this reason, a multithreaded application achieves higher performance than a single-threaded application. A multithreaded application splits up its tasks across multiple threads and increases efficiency of its execution by utilizing the VM and disk resources to the maximum.
 
 For example, if your application is running on a single core VM using two threads, the CPU can switch between the two threads to achieve efficiency. While one thread is waiting on a disk I/O to complete, the CPU can switch to the other thread. In this way, two threads can accomplish more than a single thread would. If the VM has more than one core, it further decreases running time because each core can run tasks in parallel.
 
+### Application multithreading behavior
+
 You might not be able to change the way an off-the-shelf application implements single threading or multithreading. For example, SQL Server is capable of handling multi-CPU and multicore. However, SQL Server decides under what conditions it uses one or more threads to process a query. It can run queries and build indexes by using multithreading. For a query that involves joining large tables and sorting data before returning to the user, SQL Server likely uses multiple threads. A user can't control whether SQL Server runs a query by using a single thread or multiple threads.
+
+### Configure SQL Server parallelism with MAXDOP
 
 There are configuration settings that you can alter to influence the multithreading or parallel processing of an application. For example, for SQL Server it's the `max degree of parallelism` configuration. This setting called MAXDOP allows you to configure the maximum number of processors SQL Server can use when parallel processing. You can configure MAXDOP for individual queries or index operations. This capability is beneficial when you want to balance resources of your system for a performance critical application.
 
@@ -385,7 +393,7 @@ For example, say your application that's using SQL Server is running a large que
 
 Learn more about [degrees of parallelism](/previous-versions/sql/sql-server-2008-r2/ms188611(v=sql.105)) in SQL Server. Find out how such settings influence multithreading in your application and their configurations to optimize performance.
 
-## Queue depth
+## Optimize storage queue depth
 
 The queue depth or queue length or queue size is the number of pending I/O requests in the system. The value of queue depth determines how many I/O operations your application can line up, which the storage disks process. It affects all three application performance indicators discussed in this article: IOPS, throughput, and latency.
 
@@ -395,7 +403,7 @@ Typically, off-the-shelf applications don't allow you to change queue depth, bec
 
 Some applications provide settings to influence the queue depth. For example, the MAXDOP setting in SQL Server explained in the previous section. MAXDOP is a way to influence queue depth and multithreading, although it doesn't directly change the queue depth value of SQL Server.
 
-### High queue depth
+### Effects of high queue depth
 
 A high queue depth lines up more operations on the disk. The disk knows the next request in its queue ahead of time. So, the disk can schedule operations ahead of time and process them in an optimal sequence. Because the application is sending more requests to the disk, the disk can process more parallel I/Os. Ultimately, the application can achieve higher IOPS. Because the application is processing more requests, the total throughput of the application also increases.
 
@@ -403,21 +411,21 @@ Typically, an application can achieve maximum throughput with 8 to 16+ outstandi
 
 For example, in SQL Server, setting the MAXDOP value for a query to `4` informs SQL Server that it can use up to four cores to run the query. SQL Server determines the best queue depth value and the number of cores for the query execution.
 
-### Optimal queue depth
+### Select an optimal queue depth
 
 A very high queue depth value also has its drawbacks. If the queue depth value is too high, the application tries to drive very high IOPS. Unless the application has persistent disks with sufficient provisioned IOPS, a very high queue depth value can negatively affect application latencies. The following formula shows the relationship between IOPS, latency, and queue depth.
 
-![A diagram that shows the equation I O P S times latency equals queue depth.](media/premium-storage-performance/image6.png)
+![Diagram of the equation IOPS multiplied by latency equals queue depth.](media/premium-storage-performance/image6.png)
 
 You shouldn't configure queue depth to any high value, but to an optimal value, which can deliver enough IOPS for the application without affecting latencies. For example, if the application latency needs to be 1 millisecond, the queue depth required to achieve 5,000 IOPS is QD = 5,000 x 0.001 = 5.
 
-### Queue depth for striped volume
+### Calculate queue depth for a striped volume
 
 For a striped volume, maintain a high-enough queue depth so that every disk has a peak queue depth individually. For example, consider an application that pushes a queue depth of `2` and there are four disks in the stripe. The two I/O requests go to two disks and the remaining two disks are idle. Therefore, configure the queue depth so that all the disks can be busy. The following formula shows how to determine the queue depth of striped volumes.
 
-![A diagram that shows the equation Q D per disk times number of columns per volume equals Q D of striped volume.](media/premium-storage-performance/image7.png)
+![Diagram of the equation queue depth per disk multiplied by the number of columns per volume equals the queue depth of the striped volume.](media/premium-storage-performance/image7.png)
 
-## Throttling
+## Avoid VM and disk throttling
 
 Premium storage provisions a specified number of IOPS and throughput depending on the VM sizes and disk sizes you choose. Anytime your application tries to drive IOPS or throughput above these limits of what the VM or disk can handle, premium storage throttles it. The result is degraded performance in your application, which can mean higher latency, lower throughput, or lower IOPS.
 

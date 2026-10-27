@@ -97,7 +97,7 @@ ms.author: mattmcinnes
 
 
 ---
-### Previous-generation DC family series
-For older sizes, see [previous generation sizes](../lifecycle/previous-gen-sizes-list.md#general-purpose-previous-gen-sizes).
+### End of Life DC family series
+For End of Life sizes, see [End of Life sizes](../lifecycle/end-of-life-sizes-list.md#general-purpose-end-of-life-sizes).
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]

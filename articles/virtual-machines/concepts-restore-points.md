@@ -1,10 +1,12 @@
 ---
 title: Support matrix for VM restore points
 description: Support matrix for VM restore points
+author: shsangal
+ms.author: shsangal
 ms.service: azure-virtual-machines
 ms.topic: concept-article
 ms.update-cycle: 1095-days
-ms.date: 07/05/2022
+ms.date: 09/21/2026
 ms.custom: template-concept
 # Customer intent: "As a cloud administrator, I want to understand the support matrix for VM restore points, so that I can determine the compatibility and limitations for my virtual machine backup and recovery strategy."
 ---
@@ -63,7 +65,7 @@ Minimum Frequency at which App consistent restore point can be taken | 3 hours
 Minimum Frequency at which crash consistent restore points can be taken | 1 hour
 API version for Application consistent restore point | 2021-03-01 or later
 API version for Crash consistent restore point | 2021-07-01 or later
-| Instant Access for VMs using Premium SSD v2 and/or Ultra as **data** disks | Yes for application consistent **in Preview**. API version 2025-04-01 or later. |
+| Instant Access for VMs using Premium SSD v2 and/or Ultra as **data** disks | Yes for application-consistent restore points. API version 2025-04-01 or later. |
 | Instant Access for crash-consistent restore points | No. |
 
 > [!Note]

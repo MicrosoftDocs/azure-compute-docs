@@ -4,7 +4,7 @@ description: Learn how to copy an incremental snapshot of a managed disk to a di
 author: roygara
 ms.service: azure-disk-storage
 ms.topic: how-to
-ms.date: 07/08/2024
+ms.date: 09/16/2026
 ms.author: rogarana
 ms.custom: devx-track-azurepowershell, devx-track-azurecli, portal
 ms.devlang: azurecli
@@ -13,9 +13,9 @@ ms.devlang: azurecli
 
 # Copy an incremental snapshot to a new region
 
-There are two options for copying an incremental snapshot across regions. The first option, a managed process (recommended), that will perform the copy for you. This process is handled by Azure and removes the maintenance overhead of managing the copy process by staging a storage account in the target region. Azure ensures that only changes since the last snapshot in the target region are copied to the target region to reduce the data footprint, reducing the recovery point objective. You can check the process of a copy so you know when a target snapshot is ready to restore disks. For this managed process, you're only billed for the bandwidth cost of the data transfer across the region, and the read transactions on the source snapshot. Don't delete your source snapshot while the target snapshot is being copied.
+There are two options for copying an incremental snapshot across regions. The recommended option is a managed copy, which Azure performs for you. Azure stages a storage account in the target region, removing the maintenance overhead of managing the copy process. Azure copies only the changes since the last snapshot in the target region, which reduces the data footprint and recovery point objective. You can monitor the copy progress to determine when the target snapshot is ready to restore disks. For a managed copy, you're only billed for the bandwidth cost of the cross-region data transfer and the read transactions on the source snapshot. Don't delete your source snapshot while the target snapshot is being copied.
 
-The second option is a [manual copy](#manual-copy), where you get the changes between two incremental snapshots, down to the block level, and manually copy it from one region to another. Most users should use the managed process but, if you're interested in improving the copy speed, the second option allows you to use your compute resources to make the copy faster.
+The second option is a [manual copy](#manual-copy), where you get the changes between two incremental snapshots, down to the block level, and manually copy them from one region to another. Most users should use a managed copy, but if you're interested in improving the copy speed, a manual copy lets you use your compute resources to make the copy faster.
 
 This article covers copying an incremental snapshot from one region to another. See [Create an incremental snapshot for managed disks](disks-incremental-snapshots.md) for conceptual details on incremental snapshots.
 
@@ -50,12 +50,12 @@ sourceSnapshotId=$(az snapshot show -n $sourceSnapshotName -g $resourceGroupName
 az snapshot create -g $resourceGroupName -n $targetSnapshotName -l $targetRegion --source $sourceSnapshotId --incremental --copy-start
 ```
 
-### Check copy status
+### Check snapshot copy status with Azure CLI
 
-You can check the status of an individual snapshot by checking the `CompletionPercent` property. Replace `$sourceSnapshotName` with the name of your snapshot then run the following command. The value of the property must be 100 before you can use the snapshot for restoring disk or generate a SAS URI for downloading the underlying data.
+You can check the status of the target snapshot by checking the `CompletionPercent` property. The following command checks the target snapshot specified by `$targetSnapshotName`. The value of the property must be 100 before you can use the snapshot for restoring disk or generate a SAS URI for downloading the underlying data.
 
 ```azurecli
-az snapshot show -n $sourceSnapshotName -g $resourceGroupName --query [completionPercent] -o tsv
+az snapshot show -n $targetSnapshotName -g $resourceGroupName --query [completionPercent] -o tsv
 ```
 
 # [Azure PowerShell](#tab/azure-powershell)
@@ -86,7 +86,7 @@ $snapshotconfig = New-AzSnapshotConfig -Location $targetRegion -CreateOption Cop
 New-AzSnapshot -ResourceGroupName $resourceGroupName -SnapshotName $targetSnapshotName -Snapshot $snapshotconfig
 ```
 
-### Check copy status
+### Check snapshot copy status with Azure PowerShell
 
 You can check the `CompletionPercent` property of an individual snapshot to get its status. Replace `yourResourceGroupNameHere` and `yourSnapshotName` then run the script. The value of the property must be 100 before you can use the snapshot for restoring disk or generate a SAS URI for downloading the underlying data.
 
@@ -118,7 +118,9 @@ You can also copy an incremental snapshot across regions in the [Azure portal](h
 
 # [Resource Manager Template](#tab/azure-resource-manager)
 
-You can also use Azure Resource Manager templates to copy an incremental snapshot. You must use version **2020-12-01** or newer of the Azure Compute REST API. The following snippet is an example of how to copy an incremental snapshot across regions with Resource Manager templates:
+You can also use an Azure Resource Manager template to copy an incremental snapshot. You must use version **2020-12-01** or newer of the Azure Compute REST API. Specify the target snapshot name, source snapshot resource ID, storage SKU, and target region. After you deploy the template, check the target snapshot's `CompletionPercent` property. The value must be 100 before you can use the snapshot to restore a disk or generate a SAS URI for downloading the underlying data.
+
+The following template copies an incremental snapshot across regions:
 
 ```json
 {

@@ -352,7 +352,11 @@ Use the [az disk update](/cli/azure/disk#az-disk-update) command to change the p
 The following command adjusts the performance of your disk. Update the values in the command, and then run it:
 
 ```azurecli
-az disk update --subscription $subscription --resource-group $rgname --name $diskName --disk-iops-read-write=5000 --disk-mbps-read-write=200
+subscriptionId="<yourSubscriptionId>"
+resourceGroupName="<yourResourceGroupName>"
+diskName="<yourDiskName>"
+
+az disk update --subscription $subscriptionId --resource-group $resourceGroupName --name $diskName --disk-iops-read-write=5000 --disk-mbps-read-write=200
 ```
 
 # [PowerShell](#tab/azure-powershell)
@@ -362,8 +366,11 @@ Use the [New-AzDiskUpdateConfig](/powershell/module/az.compute/new-azdiskupdatec
 The following command adjusts the performance of your disk. Update the values in the command, and then run it:
 
 ```azurepowershell
-$diskupdateconfig = New-AzDiskUpdateConfig -DiskIOPSReadWrite 5000 -DiskMBpsReadWrite 200
-Update-AzDisk -ResourceGroupName $resourceGroup -DiskName $diskName -DiskUpdate $diskupdateconfig
+$resourceGroupName = "<yourResourceGroupName>"
+$diskName = "<yourDiskName>"
+$diskUpdateConfig = New-AzDiskUpdateConfig -DiskIOPSReadWrite 5000 -DiskMBpsReadWrite 200
+
+Update-AzDisk -ResourceGroupName $resourceGroupName -DiskName $diskName -DiskUpdate $diskUpdateConfig
 ```
 
 # [Azure portal](#tab/portal)

@@ -1,14 +1,14 @@
 ---
-title: Migrate your HC-series virtual machines by May 31, 2027
-description: Learn about the retirement of HC-series virtual machines on May 31, 2027, how it affects you, and how to migrate to recommended alternative Azure VM sizes.
+title: Modernize your HC-series virtual machines by May 31, 2027
+description: Learn about the retirement of HC-series virtual machines on May 31, 2027, how it affects you, and how to modernize to recommended alternative Azure VM sizes.
 author: mattmcinnes
 ms.author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.topic: concept-article
-ms.date: 01/06/2026
+ms.date: 09/25/2026
 ---
 
-# Migrate your HC-series virtual machines by May 31, 2027
+# Modernize your HC-series virtual machines by May 31, 2027
 > [!NOTE]
 > 1-year and 3-year purchases for the HC-series end April 2, 2026.
 
@@ -28,13 +28,13 @@ After May 31, 2027, any remaining HC-series virtual machines (VMs) subscriptions
 
 ## What action do I need to take before the retirement date?
 
-To avoid service disruption, deallocate your HC-series VMs and migrate these workloads to newer HPC-optimized SKUs such as HBv5, HBv4, HX, or HBv3 series (or an alternative that meets your workload requirements).
+To avoid service disruption, deallocate your HC-series VMs and modernize these workloads to newer HPC-optimized SKUs such as HBv5, HBv4, HX, or HBv3 series (or an alternative that meets your workload requirements).
 
 ## Suggested alternative Azure VM sizes
 
 To ensure continuity and optimal performance, we recommend transitioning from the current HC-series VMs to newer VM series within Azure's HPC portfolio. [HBv5-series](../../high-performance-compute/hbv5-series.md) offers higher performance and better price-performance than HBv4, making it well-suited for most HPC workloads. [HX-series](../../high-performance-compute/hx-series.md) is optimized for high-memory HPC workloads with approximately twice the memory capacity of HBv4.
 
-| Workload | Recommended VM to migrate to |
+| Workload | Recommended VM to modernize to |
 |---|---|
 | Memory-bandwidth intensive HPC applications (for example, CFD, structural mechanics, energy research, weather, and climate, chemistry & materials) | HBv5, HBv4, HBv3 |
 | Memory capacity/latency bound (for example, silicon design/EDA) | HX, HBv5, HBv3 |

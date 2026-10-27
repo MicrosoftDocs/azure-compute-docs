@@ -6,9 +6,9 @@ ms.service: azure-virtual-machines
 ms.custom: linux-related-content
 ms.collection: linux
 ms.topic: how-to
-ms.date: 12/14/2022
+ms.date: 09/09/2026
 ms.author: vakavuru
-ms.reviewer: mattmcinnes
+ms.reviewer: mattmcinnes, divargas
 # Customer intent: As a Linux system administrator, I want to prepare a Linux image for deployment on Azure, so that I can ensure compatibility and optimal performance of my applications within the cloud environment.
 ---
 # Prepare Linux for imaging in Azure
@@ -25,6 +25,9 @@ All other distributions running on Azure, including community-supported and non-
 This article focuses on general guidance for running your Linux distribution on Azure. This article can't be comprehensive, because every distribution is different. Even if you meet all the criteria that this article describes, you might need to significantly tweak your Linux system for it to run properly.
 
 ## General Linux installation notes
+
+> [!IMPORTANT]
+> The remote NVMe preparation steps in this article are optional. Complete them only if you're creating an image that you intend to deploy with a remote NVMe disk controller. If the target VM uses SCSI, skip every step labeled for remote NVMe and retain the standard settings. Remote NVMe requires a Gen2 image and a supported operating system version. Verify the exact target VM size's `DiskControllerTypes` capability and review [Supported OS images for remote NVMe](../enable-nvme-interface.md). Don't infer the controller type only from the VM series generation.
 
 * Azure doesn't support the Hyper-V virtual hard disk (VHDX) format. Azure supports only *fixed VHD*. You can convert the disk to VHD format by using Hyper-V Manager or the [Convert-VHD](/powershell/module/hyper-v/convert-vhd) cmdlet. If you're using VirtualBox, select **Fixed size** rather than the default (**Dynamically allocated**) when you're creating the disk.
 
@@ -200,55 +203,118 @@ Here are some considerations for using the Azure Linux Agent:
 
     Graphical and quiet boot aren't useful in a cloud environment, where you want all logs sent to the serial port. You can leave the `crashkernel` option configured if needed, but this parameter reduces the amount of available memory in the VM by at least 128 MB. Reducing available memory might be problematic for smaller VM sizes.
 
-2. After you finish editing */etc/default/grub*, run the following command to rebuild the GRUB configuration:
+2. After you finish editing */etc/default/grub*, rebuild the GRUB configuration. Run only the command appropriate for your distribution.
+
+    For distros based on Debian or Ubuntu, run:
+
+    ```bash
+    sudo update-grub
+    ```
+
+    For distributions that provide `grub2-mkconfig`, such as RHEL, Oracle Linux, and SUSE, run:
 
     ```bash
     sudo grub2-mkconfig -o /boot/grub2/grub.cfg
     ```
 
-3. Add the Hyper-V module for initramfs by using `dracut`:
+    On distributions that provide `grub-mkconfig` instead, run:
 
-   ```bash
-   cd /boot
-   sudo cp initramfs-<kernel-version>.img <kernel-version>.img.bak
-   sudo dracut -f -v initramfs-<kernel-version>.img <kernel-version> --add-drivers "hv_vmbus hv_netvsc hv_storvsc"
-   sudo grub-mkconfig -o /boot/grub/grub.cfg
-   sudo grub2-mkconfig -o /boot/grub2/grub.cfg
-   ```
+    ```bash
+    sudo grub-mkconfig -o /boot/grub/grub.cfg
+    ```
 
-   Add the Hyper-V module for initrd by using `mkinitramfs`:
+    The GRUB configuration path can differ for UEFI installations. If your distribution uses another path, use the path documented for that distribution.
 
-   ```bash
-   cd /boot
-   sudo cp initrd.img-<kernel-version>  initrd.img-<kernel-version>.bak
-   sudo mkinitramfs -o initrd.img-<kernel-version> <kernel-version>  --with=hv_vmbus,hv_netvsc,hv_storvsc
-   sudo update-grub
-   ```
+3. Add the Hyper-V modules to the initial RAM disk. Run only the procedure that matches the tools used by your distribution.
 
-4. Ensure that the SSH server is installed and configured to start at boot time. This configuration is usually the default.
+    1. For a dracut-based distribution, run:
 
-5. Install the Azure Linux Agent.
+    ```bash
+    cd /boot
+    sudo cp initramfs-<kernel-version>.img <kernel-version>.img.bak
+    sudo dracut -f -v initramfs-<kernel-version>.img <kernel-version> --add-drivers "hv_vmbus hv_netvsc hv_storvsc"
+    ```
+
+    1. For a distribution that uses `mkinitramfs`, run this procedure instead of the dracut procedure:
+
+    ```bash
+    cd /boot
+    sudo cp initrd.img-<kernel-version> initrd.img-<kernel-version>.bak
+    sudo mkinitramfs -o initrd.img-<kernel-version> <kernel-version> --with=hv_vmbus,hv_netvsc,hv_storvsc
+    ```
+
+4. **Only if you're creating an image for a remote NVMe disk controller**, configure and verify NVMe boot support. Otherwise, skip this step. The exact commands can vary by distribution.
+
+     1. Rebuild initramfs with the NVMe drivers by using the method for your distribution.
+
+         For a dracut-based distribution, make the NVMe drivers persistent in future initramfs images and rebuild the current initramfs:
+
+         ```bash
+         sudo mkdir -p /etc/dracut.conf.d
+         printf '%s\n' 'add_drivers+=" nvme nvme_core "' | sudo tee /etc/dracut.conf.d/azure-nvme.conf
+         sudo dracut --force
+         ```
+
+         For an initramfs-tools-based distribution, make the NVMe drivers persistent and rebuild initramfs:
+
+         ```bash
+         printf '%s\n' nvme nvme_core | sudo tee -a /etc/initramfs-tools/modules
+         sudo update-initramfs -u -k all
+         ```
+
+     1. Add `nvme_core.io_timeout=240` to the existing kernel command line in `/etc/default/grub`, and then rebuild the GRUB configuration by using the command appropriate for your distribution.
+
+     1. Verify that both NVMe driver modules are available on the system. Run both commands:
+
+         ```bash
+         modinfo nvme
+         modinfo nvme_core
+         ```
+
+         Each command must return information about its module. If either module isn't found, install or enable it by following your distribution's documentation before you continue.
+
+     1. Verify that both NVMe drivers are included in initramfs. Run only the command for your distribution.
+
+         For a dracut-based distribution, run:
+
+         ```bash
+         sudo lsinitrd /boot/initramfs-$(uname -r).img | grep -E 'nvme(_core)?\.ko'
+         ```
+
+         For an initramfs-tools-based distribution, run:
+
+         ```bash
+         sudo lsinitramfs /boot/initrd.img-$(uname -r) | grep -E 'nvme(_core)?\.ko'
+         ```
+
+         The output must show both the `nvme` and `nvme_core` drivers. If it doesn't, consult your distribution's documentation and rebuild the initial RAM disk before you continue.
+
+5. Ensure that the SSH server is installed and configured to start at boot time. This configuration is usually the default.
+
+6. Install the Azure Linux Agent.
 
    The Azure Linux Agent is required for provisioning a Linux image on Azure. Many distributions provide the agent as an .rpm or .deb package. The package is typically called `WALinuxAgent` or `walinuxagent`. You can also install the agent manually by following the steps in the [Azure Linux Agent guide](../extensions/agent-linux.md).
 
    > [!NOTE]
    > Make sure the `udf` and `vfat` modules are enabled. Removing or disabling them will cause a provisioning or boot failure. Cloud-init version 21.2 or later removes the UDF requirement.
 
-   Install the Azure Linux Agent, cloud-init, and other necessary utilities by running one of the following commands.
+    Install the Azure Linux Agent, cloud-init, and other necessary utilities. Run only the command for the package manager available on your system.
 
-   Use this command for Red Hat or CentOS:
+    For `dnf`, run:
 
    ```bash
-   sudo yum install -y WALinuxAgent cloud-init cloud-utils-growpart gdisk hyperv-daemons
+    sudo dnf install -y WALinuxAgent cloud-init cloud-utils-growpart gdisk hyperv-daemons
    ```
 
-   Use this command for Ubuntu/Debian:
+    If your system provides `yum` instead of `dnf`, replace `dnf` with `yum` in the preceding command.
+
+    For `apt`, run:
 
    ```bash
    sudo apt install walinuxagent cloud-init cloud-utils-growpart gdisk hyperv-daemons
    ```
 
-   Use this command for SUSE:
+    For `zypper`, run:
 
    ```bash
    sudo zypper install python-azure-agent cloud-init cloud-utils-growpart gdisk hyperv-daemons
@@ -261,57 +327,61 @@ Here are some considerations for using the Azure Linux Agent:
    sudo systemctl enable cloud-init.service
    ```
 
-6. Don't create swap space on the OS disk.
+7. Don't create swap space on the OS disk.
 
-   You can use the Azure Linux Agent or cloud-init to configure swap space via the local resource disk.  This resource disk is attached to the VM after provisioning on Azure. The local resource disk is a temporary disk and might be emptied when the VM is deprovisioned. The following blocks show how to configure this swap.
+    You can use the Azure Linux Agent or cloud-init to configure swap space via the local resource disk. Azure attaches this resource disk to the VM after provisioning. The local resource disk is temporary and might be emptied when the VM is deprovisioned.
 
-   If you choose Azure Linux Agent, modify the following parameters in */etc/waagent.conf*:
+    > [!IMPORTANT]
+    > These instructions apply whether the remote disk controller is SCSI or NVMe. They require a VM size that includes a local temporary resource disk. The remote disk controller type doesn't determine whether a resource disk is available.
 
-   ```config
-   ResourceDisk.Format=y
-   ResourceDisk.Filesystem=ext4
-   ResourceDisk.MountPoint=/mnt/resource
-   ResourceDisk.EnableSwap=y
-   ResourceDisk.SwapSizeMB=2048    ## NOTE: Set this to your desired size.
-   ```
+    1. Choose and configure one method to manage swap space.
 
-   If you choose cloud-init, configure cloud-init to handle the provisioning:
+       To use the Azure Linux Agent, modify the following parameters in */etc/waagent.conf*:
 
-   ```bash
-   sudo sed -i 's/Provisioning.Agent=auto/Provisioning.Agent=cloud-init/g' /etc/waagent.conf
-   sudo sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
-   sudo sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
-   ```
+       ```config
+       ResourceDisk.Format=y
+       ResourceDisk.Filesystem=ext4
+       ResourceDisk.MountPoint=/mnt/resource
+       ResourceDisk.EnableSwap=y
+       ResourceDisk.SwapSizeMB=2048    ## NOTE: Set this to your desired size.
+       ```
 
-   To configure cloud-init to format and create swap space, you have two options:
+       To use cloud-init instead, configure cloud-init to handle provisioning and prevent the Azure Linux Agent from formatting the resource disk or creating swap space:
 
-   * Pass in a cloud-init configuration every time you create a VM through `customdata`. We recommend this method.
-   * Use a cloud-init directive in the image to configure swap space every time the VM is created.
+       ```bash
+       sudo sed -i 's/Provisioning.Agent=auto/Provisioning.Agent=cloud-init/g' /etc/waagent.conf
+       sudo sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
+       sudo sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
+       ```
 
-   Create a .cfg file to configure swap space by using cloud-init:
+    1. If you chose cloud-init, choose how to provide the swap configuration.
 
-    ```bash
-    echo 'DefaultEnvironment="CLOUD_CFG=/etc/cloud/cloud.cfg.d/00-azure-swap.cfg"' | sudo tee -a /etc/systemd/system.conf
-    cat << EOF | sudo tee /etc/cloud/cloud.cfg.d/00-azure-swap.cfg
-    #cloud-config
-    # Generated by Azure cloud image build
-    disk_setup:
-      ephemeral0:
-        table_type: mbr
-        layout: [66, [33, 82]]
-        overwrite: True
-    fs_setup:
-      - device: ephemeral0.1
-        filesystem: ext4
-      - device: ephemeral0.2
-        filesystem: swap
-    mounts:
-      - ["ephemeral0.1", "/mnt/resource"]
-      - ["ephemeral0.2", "none", "swap", "sw,nofail,x-systemd.requires=cloud-init.service,x-systemd.device-timeout=2", "0", "0"]
-    EOF
-    ```
+       You can pass a cloud-init configuration through `customdata` every time you create a VM. Use this method.
 
-7. Configure cloud-init to handle the provisioning:
+       Alternatively, add a cloud-init directive to the image so that swap space is configured every time a VM is created. To use this method, create a .cfg file:
+
+       ```bash
+       echo 'DefaultEnvironment="CLOUD_CFG=/etc/cloud/cloud.cfg.d/00-azure-swap.cfg"' | sudo tee -a /etc/systemd/system.conf
+       cat << EOF | sudo tee /etc/cloud/cloud.cfg.d/00-azure-swap.cfg
+       #cloud-config
+       # Generated by Azure cloud image build
+       disk_setup:
+         ephemeral0:
+           table_type: mbr
+           layout: [66, [33, 82]]
+           overwrite: True
+       fs_setup:
+         - device: ephemeral0.1
+           filesystem: ext4
+         - device: ephemeral0.2
+           filesystem: swap
+       mounts:
+         - ["ephemeral0.1", "/mnt/resource"]
+         - ["ephemeral0.2", "none", "swap", "sw,nofail,x-systemd.requires=cloud-init.service,x-systemd.device-timeout=2", "0", "0"]
+       EOF
+       ```
+
+8. Configure cloud-init to handle the provisioning:
     1. Configure `waagent` for cloud-init:
 
        ```bash
@@ -366,23 +436,49 @@ Here are some considerations for using the Azure Linux Agent:
         EOF
         ```
 
-8. Run the following commands to deprovision the virtual machine.
+9. Validate the disk mount configuration before you deprovision the virtual machine. This validation applies to both SCSI and remote NVMe images.
 
-   > [!CAUTION]
-   > If you're migrating a specific virtual machine and don't want to create a generalized image, skip the deprovisioning step. Running the command `waagent -force -deprovision+user` will render the source machine unusable. This step is intended only to create a generalized image.
+    1. Review `/etc/fstab`. Don't use device names such as `/dev/sd*` or `/dev/nvme*`, because device names can change across reboots or when the disk controller changes. Use file-system UUIDs or other persistent identifiers instead.
 
-   ```bash
-   sudo rm -f /var/log/waagent.log
-   sudo cloud-init clean
-   sudo waagent -force -deprovision+user
-   sudo rm -f ~/.bash_history
-   sudo export HISTSIZE=0
-   ```
+         List the block devices and their persistent identifiers so that you can compare them with the entries in `/etc/fstab`:
 
-   On VirtualBox, you might see an error message after you run `waagent -force -deprovision` that says `[Errno 5] Input/output error`. This error message is not critical, and you can ignore it.
+         ```bash
+         sudo blkid
+         ```
 
-9. Shut down the virtual machine and upload the VHD to Azure.
+    1. Check `/etc/fstab` for syntax errors, invalid mount options, and references that can't be resolved:
+
+         ```bash
+         sudo findmnt --verify --verbose
+         ```
+
+    1. **Only if you're creating an image for a remote NVMe disk controller**, verify the configured I/O timeout. If the source VM currently uses NVMe, run:
+
+         ```bash
+         cat /sys/module/nvme_core/parameters/io_timeout
+         ```
+
+         The value must be `240`. A SCSI source VM might not expose this runtime parameter; in that case, verify that `nvme_core.io_timeout=240` is present in the GRUB configuration and that the rebuilt configuration contains it.
+
+10. Run the following commands to deprovision the virtual machine.
+
+    > [!CAUTION]
+    > If you're migrating a specific virtual machine and don't want to create a generalized image, skip the deprovisioning step. Running the command `waagent -force -deprovision+user` will render the source machine unusable. This step is intended only to create a generalized image.
+
+    ```bash
+    sudo rm -f /var/log/waagent.log
+    sudo cloud-init clean
+    sudo waagent -force -deprovision+user
+    sudo rm -f ~/.bash_history
+    sudo export HISTSIZE=0
+    ```
+
+    On VirtualBox, you might see an error message after you run `waagent -force -deprovision` that says `[Errno 5] Input/output error`. This error message is not critical, and you can ignore it.
+
+11. Shut down the virtual machine and upload the VHD to Azure.
 
 ## Next steps
 
 [Create a Linux VM from a custom disk by using the Azure CLI](upload-vhd.md)
+
+For an existing Azure VM that you need to move from SCSI to NVMe, use [Convert Linux and Windows VMs from SCSI to NVMe](../nvme-linux.md). For architecture and support information, see [NVMe overview](../nvme-overview.md).

@@ -15,14 +15,16 @@ ms.custom: references_regions, devx-track-azurecli, linux-related-content
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Flexible scale sets
 
-This article covers expanding operating system (OS) disks and data disks for a Linux virtual machine (VM). You can [add data disks](add-disk.md) to provide more storage space, and you can also expand an existing data disk. The default virtual hard disk size for the OS is typically 30 GB on a Linux VM in Azure. This article covers expanding either OS disks or data disks.
+This article covers expanding operating system (OS) disks and data disks for a Linux virtual machine (VM). You can [add data disks](add-disk.md) to provide more storage space, and you can also expand an existing data disk. The default virtual hard disk size for the OS is typically 30 GB on a Linux VM in Azure. To complete an expansion, first increase the managed disk size in Azure, and then expand the partition and filesystem in Linux to use the additional space.
 
 An OS disk has a maximum capacity of 4,095 GiB. However, many operating systems are partitioned with [master boot record (MBR)](https://wikipedia.org/wiki/Master_boot_record) by default. MBR limits the usable size to 2 TiB. If you need more than 2 TiB, consider attaching data disks for data storage. If you do need to store data on the OS disk and require extra space, convert it to a GUID Partition Table (GPT).
 
 > [!WARNING]
 > Always make sure that your filesystem is in a healthy state and your disk partition table type (GPT or MBR) can support the new size. Back up your data before you perform disk expansion operations. For more information, see the [Azure Backup quickstart](/azure/backup/quick-backup-vm-portal).
 
-## <a id="identifyDisk"></a>Identify an Azure data disk object within the operating system ##
+<a id="identifyDisk"></a>
+
+## Identify an Azure data disk in Linux
 
 When you expand a data disk that has several data disks on the VM, it might be difficult to relate the Azure logical unit numbers (LUNs) to the Linux devices. If the OS disk needs expansion, it's clearly labeled in the Azure portal as the OS disk.
 
@@ -69,7 +71,7 @@ This feature has the following limitations.
 
 [!INCLUDE [virtual-machines-disks-expand-without-downtime-restrictions](../includes/virtual-machines-disks-expand-without-downtime-restrictions.md)]
 
-### Expand Azure managed disk
+### Expand an Azure managed disk with Azure CLI
 
 Make sure that you have the latest [Azure CLI](/cli/azure/install-az-cli2) installed and are signed in to an Azure account by using [az login](/cli/azure/reference-index#az-login).
 
@@ -84,14 +86,14 @@ Shrinking an existing disk isn't supported and might result in data loss.
 
 After you expand the disks, expand the volume in the OS to take advantage of the larger disk.
 
-1. Operations on virtual hard disks can't be performed with the VM running. Deallocate your VM with [az vm deallocate](/cli/azure/vm#az-vm-deallocate). The following example deallocates the VM named *myVM* in the resource group named *myResourceGroup*:
+1. If your disk doesn't meet the requirements in [Expand without downtime](#expand-without-downtime), deallocate your VM with [az vm deallocate](/cli/azure/vm#az-vm-deallocate). The following example deallocates the VM named *myVM* in the resource group named *myResourceGroup*:
 
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
     ```
 
    
-    The VM must be deallocated to expand the virtual hard disk. Stopping the VM with `az vm stop` doesn't release the compute resources. To release compute resources, use `az vm deallocate`.
+      For this expansion path, the VM must be deallocated. Stopping the VM with `az vm stop` doesn't release the compute resources. To release compute resources, use `az vm deallocate`.
 
 1. View a list of managed disks in a resource group with [az disk list](/cli/azure/disk#az-disk-list). The following example shows a list of managed disks in the resource group named *myResourceGroup*:
 
@@ -171,7 +173,7 @@ If you used the previously mentioned procedure to expand a data disk without dow
    /dev/sda1        2048 536870878 536868831  256G 83 Linux
    ```
 
-The remainder of this article uses the OS disk for the examples of the procedure to increase the size of a volume at the OS level. If the expanded disk is a data disk, use the [previous guidance to identify the data disk device](#identifyDisk). Follow these instructions as a guideline. Substitute the data disk device (for example, `/dev/sda`), partition numbers, volume names, mount points, and filesystem formats, as necessary.
+The remainder of this article uses the OS disk for the examples of the procedure to increase the size of a volume at the OS level. If the expanded disk is a data disk, use the [previous guidance to identify the data disk device](#identify-an-azure-data-disk-in-linux). Follow these instructions as a guideline. Substitute the data disk device (for example, `/dev/sda`), partition numbers, volume names, mount points, and filesystem formats, as necessary.
 
 Consider all Linux OS guidance as generic and that it might apply on any distribution, but it generally matches the conventions of the named marketplace publisher. See the Red Hat documentation for the package requirements on any distribution based on Red Hat or that claims Red Hat compatibility.
 
@@ -185,7 +187,7 @@ Before you proceed, make a full backup copy of your VM or, at a minimum, take a 
 
 On Ubuntu 16.x and newer, the root partition of the OS disk and filesystems are automatically expanded to use all free contiguous space on the root disk by cloud-init. A small amount of free space must be available for the resize operation. In this case, the sequence is to:
 
-1. Increase the size of the OS disk as previously described.
+1. Expand the Azure managed OS disk to the size you want. For Azure CLI steps, see [Expand an Azure managed disk with Azure CLI](#expand-an-azure-managed-disk-with-azure-cli).
 1. Restart the VM, and then access the VM by using the **root** user account.
 1. Verify that the OS disk now displays an increased filesystem size.
 
@@ -213,7 +215,7 @@ user@ubuntu:~#
 
 To increase the OS disk size in SUSE 12 SP4, SUSE SLES 12 for SAP, SUSE SLES 15, and SUSE SLES 15 for SAP:
 
-1. Follow the procedure previously described to expand the disk in the Azure infrastructure.
+1. Expand the Azure managed OS disk to the size you need. For Azure CLI steps, see [Expand an Azure managed disk with Azure CLI](#expand-an-azure-managed-disk-with-azure-cli).
 
 1. Access your VM as the **root** user by using the ```sudo``` command after you sign in as another user:
 
@@ -346,7 +348,7 @@ To increase the OS disk size in SUSE 12 SP4, SUSE SLES 12 for SAP, SUSE SLES 15,
 
 # [Red Hat with LVM](#tab/rhellvm)
 
-1. Follow the procedure previously described to expand the disk in the Azure infrastructure.
+1. Expand the Azure managed OS disk to the size you need. For Azure CLI steps, see [Expand an Azure managed disk with Azure CLI](#expand-an-azure-managed-disk-with-azure-cli).
 
 1. Access your VM as the **root** user by using the ```sudo``` command after you sign in as another user:
 
@@ -529,7 +531,7 @@ To use the same procedure to resize any other logical volume, change the `lv` na
 
 # [Red Hat without LVM](#tab/rhelraw)
 
-1. Follow the procedure previously described to expand the disk in the Azure infrastructure.
+1. Expand the Azure managed OS disk to the size you need. For Azure CLI steps, see [Expand an Azure managed disk with Azure CLI](#expand-an-azure-managed-disk-with-azure-cli).
 
 1. Access your VM as the **root** user by using the ```sudo``` command after you sign in as another user:
 

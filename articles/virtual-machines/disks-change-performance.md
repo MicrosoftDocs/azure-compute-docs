@@ -1,25 +1,26 @@
 ---
-title: Performance tiers for Azure managed disks
-description: Learn about performance tiers for managed disks.
+title: Performance tiers for Azure Premium SSD managed disks
+description: Learn how performance tiers for Azure Premium SSD managed disks work and which tiers are available for each disk size.
 author: roygara
 ms.service: azure-disk-storage
-ms.topic: how-to
-ms.date: 03/04/2024
+ms.topic: concept-article
+ms.date: 09/11/2026
 ms.author: rogarana
 ms.custom: references_regions
-# Customer intent: As a cloud administrator, I want to understand how performance tiers for managed disks work, so that I can evaluate if they're a suitable option for my needs when optimizing disk performance and managing costs effectively during varying demand periods.
+ai-usage: ai-assisted
+# Customer intent: As a cloud administrator, I want to understand how performance tiers for Premium SSD managed disks work, so that I can evaluate if they're a suitable option for my needs when optimizing disk performance and managing costs effectively during varying demand periods.
 ---
 
-# Performance tiers for managed disks
+# Performance tiers for Azure Premium SSD managed disks
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
 
 > [!NOTE]
 > This article covers what performance tiers are, conceptually. If you want to learn how to change the performance of disks that don't use performance tiers, like Ultra Disks or Premium SSD v2, see either [Adjust the performance of an Ultra Disk](disks-enable-ultra-ssd.md#adjust-the-performance-of-an-ultra-disk) or [Adjust disk performance of a Premium SSD v2](disks-deploy-premium-v2.md#adjust-disk-performance)
 
-When you set the provisioned size of a Premium solid-state drive (SSD), a performance tier is automatically selected based on the size you set. The performance tier determines the IOPS and throughput your managed disk has. For Premium SSDs only, the performance tier can be changed at deployment or afterwards, without changing the size of the disk, and without downtime.
+When you set the provisioned size of an Azure Premium solid-state drive (SSD) managed disk, a performance tier is automatically selected based on the size you set. The performance tier determines the IOPS and throughput your managed disk has. You can change the performance tier when you deploy the disk or afterward without changing the disk size. Most performance tier changes don't require downtime. Exceptions apply to attached shared disks and changes made with Terraform, as described in [Restrictions](#restrictions).
 
-Changing the performance tier allows you to prepare to meet higher demand without using your disk's bursting capability. It can be more cost-effective to change your performance tier rather than rely on bursting, depending on how long the extra performance is necessary. This is ideal for events that temporarily require a consistently higher level of performance, like holiday shopping, performance testing, or running a training environment. To handle these events, you can switch a disk to a higher performance tier without downtime, for as long as you need the extra performance. You can then return to the original tier without downtime when the extra performance is no longer necessary.
+Changing the performance tier lets you meet a temporary period of consistently higher demand without relying on disk bursting. Depending on the duration, changing tiers can be more cost-effective than bursting. Common scenarios include holiday shopping, performance testing, and training environments. When demand returns to normal, you can return the disk to its original tier.
 
 To learn more about how the performance of a disk works with the performance of a virtual machine, see [Virtual machine and disk performance](disks-performance.md).
 
@@ -39,7 +40,7 @@ For billing information, see [managed disk pricing](https://azure.microsoft.com/
 
 ## What tiers can be changed
 
-The following table depicts which tiers each baseline performance tier can upgrade to.
+Use the table to identify the baseline and higher performance tiers available for a Premium SSD managed disk based on its provisioned size.
 
 | Disk size | Baseline performance tier | Can be upgraded to |
 |----------------|-----|-------------------------------------|

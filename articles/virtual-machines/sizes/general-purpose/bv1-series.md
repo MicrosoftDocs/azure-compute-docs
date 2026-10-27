@@ -5,14 +5,14 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 03/10/2026
+ms.date: 09/25/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 # Customer intent: "As a cloud architect, I want to understand the specifications and capabilities of the Bv1 size series, so that I can select the appropriate virtual machine sizes for my workloads based on performance and resource needs."
 ---
 
 # Bv1 sizes series
-[!INCLUDE [previous-gen-header](../includes/sizes-previous-gen-header.md)]
+[!INCLUDE [previous-gen-header](../includes/sizes-end-of-life-header.md)]
 
 [!INCLUDE [bv1-summary](./includes/bv1-series-summary.md)]
 

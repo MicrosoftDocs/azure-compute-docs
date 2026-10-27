@@ -48,16 +48,16 @@ Local (temp) storage info for each size
 
 | Size Name | Temp Storage Disks (Qty.) | Temp Disk Size (GiB) | Temp Disk Random Read IOPS | Temp Disk Sequential Read Throughput (MBps) | Temp Disk Random Write IOPS | Temp Disk Sequential Write Throughput (MBps) |
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_D2alds_v7 | 1 | 110 | 37,500 | 280 | 15,000 | 140 |
-| Standard_D4alds_v7 | 1 | 220 | 75,000 | 560 | 30,000 | 280 |
-| Standard_D8alds_v7 | 1 | 440 | 150,000 | 1,120 | 60,000 | 560 |
-| Standard_D16alds_v7 | 2 | 440 | 300,000 | 2,240 | 120,000 | 1,120 |
-| Standard_D32alds_v7 | 4 | 440 | 600,000 | 4,480 | 240,000 | 2,240 |
-| Standard_D48alds_v7 | 6 | 440 | 900,000 | 6,720 | 360,000 | 3,360 |
-| Standard_D64alds_v7 | 4 | 880 | 1,200,000 | 8,960 | 480,000 | 4,480 |
-| Standard_D96alds_v7 | 6 | 880 | 1,800,000 | 13,440 | 720,000 | 6,720 |
-| Standard_D128alds_v7 | 4 | 1,760 | 2,400,000 | 17,920 | 960,000 | 8,960 |
-| Standard_D160alds_v7 | 4 | 2,200 | 3,000,000 | 22,400 | 1,200,000 | 11,200 |
+| Standard_D2alds_v7 | 1 | 110 | 50,000 | 280 | 25,000 | 140 |
+| Standard_D4alds_v7 | 1 | 220 | 100,000 | 560 | 50,000 | 280 |
+| Standard_D8alds_v7 | 1 | 440 | 200,000 | 1,120 | 100,000 | 560 |
+| Standard_D16alds_v7 | 2 | 440 | 400,000 | 2,240 | 200,000 | 1,120 |
+| Standard_D32alds_v7 | 4 | 440 | 800,000 | 4,480 | 400,000 | 2,240 |
+| Standard_D48alds_v7 | 6 | 440 | 1,200,000 | 6,720 | 600,000 | 3,360 |
+| Standard_D64alds_v7 | 4 | 880 | 1,600,000 | 8,960 | 800,000 | 4,480 |
+| Standard_D96alds_v7 | 6 | 880 | 2,400,000 | 13,440 | 1,200,000 | 6,720 |
+| Standard_D128alds_v7 | 4 | 1,760 | 3,200,000 | 17,920 | 1,600,000 | 8,960 |
+| Standard_D160alds_v7 | 4 | 2,200 | 4,000,000 | 22,400 | 2,000,000 | 11,200 |
 
 #### Storage resources
 - [NVMe Overview](/azure/virtual-machines/nvme-overview)

@@ -3,7 +3,7 @@ title: Deploy a ZRS managed disk
 description: Learn how to deploy a managed disk that uses zone-redundant storage (ZRS).
 author: roygara
 ms.author: rogarana
-ms.date: 02/10/2024
+ms.date: 09/16/2026
 ms.topic: how-to
 ms.service: azure-disk-storage
 ms.devlang: azurecli
@@ -13,6 +13,7 @@ ms.custom:
   - devx-track-azurecli
   - sfi-ropc-nochange
   - portal
+ai-usage: ai-assisted
 # Customer intent: "As a cloud administrator, I want to deploy zone-redundant storage (ZRS) managed disks for my virtual machines, so that I can ensure high availability and resilience for my applications across multiple availability zones."
 ---
 
@@ -30,9 +31,11 @@ For conceptual information on ZRS, see [Zone-redundant storage for managed disks
 
 [!INCLUDE [disk-storage-zrs-regions](./includes/disk-storage-zrs-regions.md)]
 
+## Deploy ZRS managed disks
+
 # [Azure portal](#tab/portal)
 
-### Create a VM with a ZRS OS disk
+### Create a virtual machine with a ZRS OS disk
 
 1. Sign in to the [Azure portal](https://portal.azure.com/).
 1. Navigate to **Virtual machines** and follow the normal VM creation process.
@@ -64,7 +67,9 @@ You have now created a managed disk that uses ZRS.
 
 # [Azure CLI](#tab/azure-cli)
 
-#### Create a VM with ZRS disks
+### Create a virtual machine with ZRS disks
+
+The following Azure CLI example uses [az group create](/cli/azure/group#az-group-create) and [az vm create](/cli/azure/vm#az-vm-create) to create an Ubuntu virtual machine (VM) with a Standard SSD ZRS OS disk and a 128-GiB Premium SSD ZRS data disk. Replace the variable values with the names, region, VM size, and image for your deployment.
 
 ```azurecli
 rgName=yourRGName
@@ -86,7 +91,11 @@ az vm create -g $rgName \
 --data-disk-sizes-gb 128 \
 --storage-sku os=$osDiskSku 0=$dataDiskSku
 ```
-#### Create VMs with a shared ZRS disk attached to the VMs in different zones
+
+### Create virtual machines with a shared ZRS disk in different zones
+
+The following Azure CLI example uses [az disk create](/cli/azure/disk#az-disk-create) to create a 1-TiB shared Premium SSD ZRS disk that supports two attachments. It then uses [az vm create](/cli/azure/vm#az-vm-create) to create two Ubuntu VMs in availability zones 1 and 2 and attach the shared disk to both VMs. Replace the variable values with the names, region, VM size, and image for your deployment.
+
 ```azurecli
 
 location=westus2
@@ -135,7 +144,11 @@ az vm create -g $rgName \
 --subnet $vmNamePrefix"_subnet"
 
 ```
-#### Create a Virtual Machine Scale Set with ZRS Disks
+
+### Create a virtual machine scale set with ZRS disks
+
+The following Azure CLI example uses [az vmss create](/cli/azure/vmss#az-vmss-create) to create an Ubuntu virtual machine scale set with Standard SSD ZRS OS disks and 128-GiB Premium SSD ZRS data disks. Replace the variable values with the resource group, region, scale set name, VM size, and image for your deployment.
+
 ```azurecli
 location=westus2
 rgName=yourRGName
@@ -145,10 +158,13 @@ image=Ubuntu2204
 osDiskSku=StandardSSD_ZRS
 dataDiskSku=Premium_ZRS
 
+az group create -n $rgName -l $location
+
 az vmss create -g $rgName \
 -n $vmssName \
+-l $location \
 --encryption-at-host \
---image Ubuntu2204 \
+--image $image \
 --upgrade-policy automatic \
 --generate-ssh-keys \
 --data-disk-sizes-gb 128 \
@@ -156,7 +172,9 @@ az vmss create -g $rgName \
 ```
 # [Azure PowerShell](#tab/azure-powershell)
 
-#### Create a VM with ZRS disks
+### Create a virtual machine with ZRS disks
+
+The following Azure PowerShell example uses [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount), [Set-AzContext](/powershell/module/az.accounts/set-azcontext), and [New-AzVM](/powershell/module/az.compute/new-azvm) to create a Windows VM with a Standard SSD ZRS OS disk and a 128-GiB Premium SSD ZRS data disk. Replace the variable values with the subscription, administrator credentials, region, existing resource group, VM name, and VM size for your deployment.
 
 ```powershell
 $subscriptionId="yourSubscriptionId"
@@ -225,7 +243,9 @@ New-AzVM -ResourceGroupName $rgName `
          -VM $vm -Verbose
 ```
 
-#### Create VMs with a shared ZRS disk attached to the VMs in different zones
+### Create virtual machines with a shared ZRS disk in different zones
+
+The following Azure PowerShell example uses [New-AzDisk](/powershell/module/az.compute/new-azdisk) to create a 1-TiB shared Premium SSD ZRS disk that supports two attachments. It uses [New-AzVM](/powershell/module/az.compute/new-azvm) to create two VMs in availability zones 1 and 2, [Add-AzVMDataDisk](/powershell/module/az.compute/add-azvmdatadisk) to attach the shared disk to each VM, and [Update-AzVM](/powershell/module/az.compute/update-azvm) to apply each attachment. Replace the variable values with the region, existing resource group, VM names, VM size, shared disk name, and administrator credentials for your deployment.
 
 ```powershell
 $location = "westus2"
@@ -250,7 +270,7 @@ $sharedDisk=New-AzDisk -ResourceGroupName $rgName `
 
 $credential = New-Object System.Management.Automation.PSCredential ($vmLocalAdminUser, $vmLocalAdminSecurePassword);
 
-$vm1 = New-AzVm `
+$vm1 = New-AzVM `
         -ResourceGroupName $rgName `
         -Name $($vmNamePrefix+"01") `
         -Zone 1 `
@@ -265,9 +285,9 @@ $vm1 = New-AzVm `
 
 $vm1 = Add-AzVMDataDisk -VM $vm1 -Name $sharedDiskName -CreateOption Attach -ManagedDiskId $sharedDisk.Id -Lun 0
 
-update-AzVm -VM $vm1 -ResourceGroupName $rgName
+Update-AzVM -VM $vm1 -ResourceGroupName $rgName
 
-$vm2 =  New-AzVm `
+$vm2 = New-AzVM `
         -ResourceGroupName $rgName `
         -Name $($vmNamePrefix+"02") `
         -Zone 2 `
@@ -281,12 +301,15 @@ $vm2 =  New-AzVm `
         -OpenPorts 80,3389
 
 
-$vm2 = Add-AzVMDataDisk -VM $vm1 -Name $sharedDiskName -CreateOption Attach -ManagedDiskId $sharedDisk.Id -Lun 0
+$vm2 = Add-AzVMDataDisk -VM $vm2 -Name $sharedDiskName -CreateOption Attach -ManagedDiskId $sharedDisk.Id -Lun 0
 
-update-AzVm -VM $vm1 -ResourceGroupName $rgName
+Update-AzVM -VM $vm2 -ResourceGroupName $rgName
 ```
 
-#### Create a Virtual Machine Scale Set with ZRS Disks
+### Create a virtual machine scale set with ZRS disks
+
+The following Azure PowerShell example uses [New-AzVmss](/powershell/module/az.compute/new-azvmss) to create a Windows virtual machine scale set in an existing resource group. The scale set uses Standard SSD ZRS OS disks and 128-GiB Premium SSD ZRS data disks. Replace the variable values with the region, existing resource group, scale set name, VM size, and administrator credentials for your deployment.
+
 ```powershell
 $vmLocalAdminUser = "yourLocalAdminUser"
 $vmLocalAdminSecurePassword = ConvertTo-SecureString "yourVMPassword" -AsPlainText -Force
@@ -343,29 +366,31 @@ New-AzVmss -VirtualMachineScaleSet $vmss `
            -VMScaleSetName $vmScaleSetName
 ```
 
-# [Resource Manager Template](#tab/azure-resource-manager)
+# [Resource Manager template](#tab/azure-resource-manager)
 
-Use the `2020-12-01` API with your Azure Resource Manager template to create a ZRS disk.
+The templates in this section use version `2020-12-01` of the Microsoft.Compute API to deploy ZRS managed disks.
 
-#### Prerequisites
+### Prerequisites
 
-You must enable the feature for your subscription. Use the following steps to enable the feature for your subscription:
+You must enable the `SsdZrsManagedDisks` feature for your subscription. Use [Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) to register the feature, then use [Get-AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature) to confirm its registration state.
 
-1.	Execute the following command to register the feature for your subscription
+1. Register the feature for your subscription.
 
     ```powershell
      Register-AzProviderFeature -FeatureName "SsdZrsManagedDisks" -ProviderNamespace "Microsoft.Compute"
     ```
 
-1.	Confirm that the registration state is **Registered** (it may take a few minutes) using the following command before trying out the feature.
+1. Confirm that the registration state is **Registered** before you deploy a template. Registration might take a few minutes.
 
     ```powershell
      Get-AzProviderFeature -FeatureName "SsdZrsManagedDisks" -ProviderNamespace "Microsoft.Compute"
     ```
 
-#### Create a VM with ZRS disks
+### Create a virtual machine with ZRS disks
 
-```
+The following Azure PowerShell example uses [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) to create a resource group and [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) to deploy a Resource Manager template that creates a VM with a Standard SSD ZRS OS disk and a Premium SSD ZRS data disk. Replace the variable values with the VM name, administrator credentials, region, and resource group for your deployment.
+
+```powershell
 $vmName = "yourVMName"
 $adminUsername = "yourAdminUsername"
 $adminPassword = ConvertTo-SecureString "yourAdminPassword" -AsPlainText -Force
@@ -385,9 +410,11 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
 -dataDiskType $dataDiskType
 ```
 
-#### Create VMs with a shared ZRS disk attached to the VMs in different zones
+### Create virtual machines with a shared ZRS disk in different zones
 
-```
+The following Azure PowerShell example uses [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) to deploy a Resource Manager template that creates two VMs in different availability zones and attaches the same shared Premium SSD ZRS disk to both VMs. Replace the variable values with the VM name prefix, administrator credentials, region, and existing resource group for your deployment.
+
+```powershell
 $vmNamePrefix = "yourVMNamePrefix"
 $adminUsername = "yourAdminUserName"
 $adminPassword = ConvertTo-SecureString "yourAdminPassword" -AsPlainText -Force
@@ -406,24 +433,27 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
 -dataDiskType $sharedDataDiskType
 ```
 
-#### Create a Virtual Machine Scale Set with ZRS Disks
+### Create a virtual machine scale set with ZRS disks
 
-```
+The following Azure PowerShell example uses [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) to deploy a Resource Manager template that creates a virtual machine scale set with Standard SSD LRS OS disks and Premium SSD ZRS data disks. Replace the variable values with the scale set name, administrator credentials, region, and existing resource group for your deployment.
+
+```powershell
 $vmssName="yourVMSSName"
 $adminUsername="yourAdminName"
 $adminPassword=ConvertTo-SecureString "yourAdminPassword" -AsPlainText -Force
 $region="eastus2euap"
+$resourceGroupName="yourResourceGroupName"
 $osDiskType="StandardSSD_LRS"
 $dataDiskType="Premium_ZRS"
 
-New-AzResourceGroupDeployment -ResourceGroupName zrstesting `
+New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
 -TemplateUri "https://raw.githubusercontent.com/Azure-Samples/managed-disks-powershell-getting-started/master/ZRSDisks/CreateVMSSWithZRSDisks.json" `
--vmssName "yourVMSSName" `
--adminUsername "yourAdminName" `
--adminPassword $password `
--region "eastus2euap" `
--osDiskType "StandardSSD_LRS" `
--dataDiskType "Premium_ZRS" `
+-vmssName $vmssName `
+-adminUsername $adminUsername `
+-adminPassword $adminPassword `
+-region $region `
+-osDiskType $osDiskType `
+-dataDiskType $dataDiskType
 ```
 ---
 

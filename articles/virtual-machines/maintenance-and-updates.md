@@ -3,7 +3,7 @@ title: Maintenance and updates
 description: Overview of maintenance and updates for virtual machines running in Azure.
 ms.service: azure-virtual-machines
 ms.topic: concept-article
-ms.date: 08/13/2026
+ms.date: 09/25/2026
 #pmcontact:shants
 # Customer intent: As a cloud administrator, I want to understand the maintenance processes for virtual machines, so that I can effectively manage uptime and minimize disruptions during scheduled updates.
 ---
@@ -226,7 +226,7 @@ Establishing a baseline for these metrics during normal operation makes it strai
 
 **Workloads with zero tolerance for live migration interruption**
 
-For workloads that can't tolerate any interruption from live migration, consider using [Azure Dedicated Hosts](./dedicated-hosts.md) with [Maintenance Configurations](maintenance-configurations.md). Dedicated Hosts give you control over when host-level maintenance occurs, eliminating surprise live migration events.
+For workloads that can't tolerate any interruption from live migration, consider using [Azure Dedicated Hosts](./dedicated-hosts/overview.md) with [Maintenance Configurations](maintenance-configurations.md). Dedicated Hosts give you control over when host-level maintenance occurs, eliminating surprise live migration events.
 
 ## Maintenance that requires a reboot
 

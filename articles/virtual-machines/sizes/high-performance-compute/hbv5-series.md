@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 09/15/2025
+ms.date: 09/25/2026
 ms.author: padmalathas
 ms.reviewer: mattmcinnes
 ---
@@ -162,7 +162,7 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 |[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli)| Supported |
 |[Ephemeral OS Disk](../../ephemeral-os-disks.md)| Supported |
 |[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)| Not Supported |
-|[Backend Network](../../hbv4-series-overview.md#infiniband-networking)| InfiniBand NDR |
+|[Backend Network](./hbv4-series-overview.md#infiniband-networking)| InfiniBand NDR |
 
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]

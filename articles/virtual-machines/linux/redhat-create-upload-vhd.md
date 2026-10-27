@@ -7,9 +7,9 @@ ms.subservice: redhat
 ms.collection: linux
 ms.tgt_pltfrm: vm-linux
 ms.topic: how-to
-ms.date: 09/22/2024
+ms.date: 09/09/2026
 ms.author: maries
-ms.reviewer: mattmcinnes
+ms.reviewer: mattmcinnes, divargas
 ms.custom:
   - linux-related-content
   - sfi-ropc-nochange
@@ -30,6 +30,9 @@ For more information about eligibility requirements for participating in Red Hat
 
 ### RHEL installation notes
 
+> [!IMPORTANT]
+> The remote NVMe preparation steps in this article are optional. Complete them only if you're creating an image that you intend to deploy with a remote NVMe disk controller. If the target VM uses SCSI, skip every step labeled for remote NVMe and retain the standard settings. Remote NVMe requires a Gen2 image and a supported RHEL release. Review [Supported OS images for remote NVMe](../enable-nvme-interface.md), and verify that the exact target VM size advertises NVMe in its `DiskControllerTypes` capability.
+
 * Azure doesn't support the VHDX format. Azure supports only *fixed VHD*. You can use Hyper-V Manager to convert the disk to VHD format, or you can use the `convert-vhd` cmdlet. If you use VirtualBox, select **Fixed size** as opposed to the default dynamically allocated option when you create the disk.
 * Azure supports Gen1 (BIOS boot) and Gen2 (UEFI boot) VMs.
 * The maximum allowed size for the VHD is 1,023 GB.
@@ -39,9 +42,11 @@ For more information about eligibility requirements for participating in Red Hat
 * Don't configure a swap partition on the operating system disk. For more information, read the following steps.
 * All VHDs on Azure must have a virtual size aligned to 1 MB. When you convert from a raw disk to VHD, you must ensure that the raw disk size is a multiple of 1 MB before conversion. For more information, read the following steps. See also [Linux installation notes](create-upload-generic.md#general-linux-installation-notes).
 
+> [!IMPORTANT]
+> Swap guidance that uses the temporary resource disk applies only to VM sizes that include local temporary storage. The remote disk controller type, SCSI or NVMe, doesn't determine whether a resource disk is available.
+
 > [!NOTE]
 > _Cloud-init >= 21.2 removes the UDF requirement_. However, without the UDF module enabled, the provided CD-ROM fails to mount, preventing custom data from being applied. A workaround is to apply custom data by using user data. Unlike custom data, user data isn't encrypted. For more information, see [User data formats](https://cloudinit.readthedocs.io/en/latest/topics/format.html).
-
 
 
 
@@ -101,7 +106,7 @@ For more information about eligibility requirements for participating in Red Hat
 
     ```config-grub
     GRUB_TIMEOUT=10
-    GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0 net.ifnames=0 nvme_core.io_timeout=240"
+    GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0 net.ifnames=0"
     GRUB_TERMINAL="serial console"
     GRUB_SERIAL_COMMAND="serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1"
     ```
@@ -122,6 +127,54 @@ For more information about eligibility requirements for participating in Red Hat
 
     > [!NOTE]
     > If you're uploading a UEFI-enabled VM, the command to update grub is `grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg`.
+
+1. **Only if you're creating an image for a remote NVMe disk controller**, configure and verify NVMe boot support. Otherwise, skip this step.
+
+     1. Make the NVMe drivers persistent in future initramfs images by creating a dracut configuration file, and then rebuild the current initramfs:
+
+         ```bash
+         sudo tee /etc/dracut.conf.d/azure-nvme.conf > /dev/null <<EOF
+         add_drivers+=" nvme nvme_core "
+         EOF
+         sudo dracut --force --verbose
+         ```
+
+     1. Add the Azure NVMe I/O timeout to the kernel command line so the setting persists across reboots:
+
+         ```bash
+         sudo grubby --update-kernel=ALL --args="nvme_core.io_timeout=240"
+         ```
+
+     1. Confirm that both NVMe modules exist in the kernel's module tree so they can be packaged into initramfs. This check reads the on-disk module files, so it succeeds even on a SCSI preparation VM and doesn't imply that NVMe is loaded or in use:
+
+         ```bash
+         modinfo nvme
+         modinfo nvme_core
+         ```
+
+         Each command must return module details. If either module isn't found, install or enable it by following the Red Hat documentation before you continue.
+
+1. Confirm that the rebuilt initramfs package includes both NVMe drivers. This check confirms the image is ready:
+
+    ```bash
+    sudo lsinitrd /boot/initramfs-$(uname -r).img | grep -E 'nvme(_core)?\.ko'
+    ```
+
+    The output must list both the `nvme` and `nvme_core` drivers. After the image boots on an NVMe VM, verify the runtime timeout by running `cat /sys/module/nvme_core/parameters/io_timeout`; the expected value is `240`.
+
+1. For both SCSI and NVMe images, use file-system UUIDs or another persistent identifier in `/etc/fstab`. Don't use `/dev/sd*` or `/dev/nvme*` device names, because device names can change across reboots or when the disk controller changes.
+
+     1. List the block devices and their persistent identifiers so that you can compare them with the entries in `/etc/fstab`:
+
+         ```bash
+         sudo blkid
+         ```
+
+     1. Check `/etc/fstab` for syntax errors, invalid mount options, and references that can't be resolved:
+
+         ```bash
+         sudo findmnt --verify --verbose
+         ```
 
 1. Ensure that the SSH server is installed and configured to start at boot time, which is usually the default. Modify `/etc/ssh/sshd_config` to include the following line:
 
@@ -252,7 +305,6 @@ For more information about eligibility requirements for participating in Red Hat
 1. If you want to unregister the subscription, run the following command:
 
     ```bash
-
     sudo subscription-manager unregister
      ```
 
@@ -270,7 +322,6 @@ For more information about eligibility requirements for participating in Red Hat
     ```
 
 1. Select **Action** > **Shut Down** in Hyper-V Manager. Your Linux VHD is now ready to be [uploaded to Azure](./upload-vhd.md#option-1-upload-a-vhd).
-
 
 
 #### [RHEL 8/9/10 using Hyper-V Manager](#tab/rhel89hv)
@@ -299,12 +350,12 @@ For more information about eligibility requirements for participating in Red Hat
     ```bash
     sudo nmcli con mod eth0 connection.autoconnect yes ipv4.method auto
     ```
-    
+
     > [!NOTE]
     > When you use Accelerated Networking, the provisioned synthetic interface must be configured to be unmanaged by using a udev rule. This action prevents `NetworkManager` from assigning the same IP to it as the primary interface. <br>
-    
-    To apply it:<br>
-    
+
+    To apply it:
+
     ```bash
     sudo tee <<EOF /etc/udev/rules.d/68-azure-sriov-nm-unmanaged.rules > /dev/null
     # Accelerated Networking on Azure exposes a new SRIOV interface to the VM.
@@ -331,7 +382,7 @@ For more information about eligibility requirements for participating in Red Hat
 
     ```config-grub
     GRUB_TIMEOUT=10
-    GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 earlyprintk=ttyS0 net.ifnames=0 nvme_core.io_timeout=240"
+    GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 earlyprintk=ttyS0 net.ifnames=0"
     GRUB_TERMINAL="serial console"
     GRUB_SERIAL_COMMAND="serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1"
     ```
@@ -356,7 +407,55 @@ For more information about eligibility requirements for participating in Red Hat
     sudo grub2-mkconfig -o /boot/grub2/grub.cfg
     sudo grubby --update-kernel=ALL
     ```
-    
+
+1. **Only if you're creating an image for a remote NVMe disk controller**, configure and verify NVMe boot support. Otherwise, skip this step.
+
+     1. Make the NVMe drivers persistent in future initramfs images by creating a dracut configuration file, and then rebuild the current initramfs:
+
+         ```bash
+         sudo tee /etc/dracut.conf.d/azure-nvme.conf > /dev/null <<EOF
+         add_drivers+=" nvme nvme_core "
+         EOF
+         sudo dracut --force --verbose
+         ```
+
+     1. Add the Azure NVMe I/O timeout to the kernel command line so the setting persists across reboots:
+
+         ```bash
+         sudo grubby --update-kernel=ALL --args="nvme_core.io_timeout=240"
+         ```
+
+     1. Confirm that both NVMe modules exist in the kernel's module tree so they can be packaged into initramfs. This check reads the on-disk module files, so it succeeds even on a SCSI preparation VM and doesn't imply that NVMe is loaded or in use:
+
+         ```bash
+         modinfo nvme
+         modinfo nvme_core
+         ```
+
+         Each command must return module details. If either module isn't found, install or enable it by following the Red Hat documentation before you continue.
+
+1. Confirm that the rebuilt initramfs package includes both NVMe drivers. This check confirms the image is ready:
+
+    ```bash
+    sudo lsinitrd /boot/initramfs-$(uname -r).img | grep -E 'nvme(_core)?\.ko'
+    ```
+
+    The output must list both the `nvme` and `nvme_core` drivers. After the image boots on an NVMe VM, verify the runtime timeout by running `cat /sys/module/nvme_core/parameters/io_timeout`; the expected value is `240`.
+
+1. For both SCSI and NVMe images, use file-system UUIDs or another persistent identifier in `/etc/fstab`. Don't use `/dev/sd*` or `/dev/nvme*` device names, because device names can change across reboots or when the disk controller changes.
+
+     1. List the block devices and their persistent identifiers so that you can compare them with the entries in `/etc/fstab`:
+
+         ```bash
+         sudo blkid
+         ```
+
+     1. Check `/etc/fstab` for syntax errors, invalid mount options, and references that can't be resolved:
+
+         ```bash
+         sudo findmnt --verify --verbose
+         ```
+
 1. Ensure that the SSH server is installed and configured to start at boot time, which is usually the default. Modify `/etc/ssh/sshd_config` to include the following line:
 
     ```config
@@ -501,7 +600,6 @@ For more information about eligibility requirements for participating in Red Hat
 1. Select **Action** > **Shut Down** in Hyper-V Manager. Your Linux VHD is now ready to be [uploaded to Azure](./upload-vhd.md#option-1-upload-a-vhd).
 
 
-
 #### [RHEL 7 using KVM](#tab/rhel7KVM)
 
 This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
@@ -553,9 +651,9 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
     ```
     > [!NOTE]
     > When you use Accelerated Networking, the provisioned synthetic interface must be configured to be unmanaged by using a udev rule. This action prevents `NetworkManager` from assigning the same IP to it as the primary interface. <br>
-    
-    To apply it:<br>
-    
+
+    To apply it:
+
     ```bash
     sudo tee <<EOF /etc/udev/rules.d/68-azure-sriov-nm-unmanaged.rules > /dev/null
     # Accelerated Networking on Azure exposes a new SRIOV interface to the VM.
@@ -579,7 +677,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
 1. Modify the kernel boot line in your grub configuration to include more kernel parameters for Azure. To do this configuration, open `/etc/default/grub` in a text editor and edit the `GRUB_CMDLINE_LINUX` parameter. For example:
 
     ```config-grub
-    GRUB_CMDLINE_LINUX="console=ttyS0 earlyprintk=ttyS0 net.ifnames=0 nvme_core.io_timeout=240"
+    GRUB_CMDLINE_LINUX="console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
     ```
 
    This command also ensures that all console messages are sent to the first serial port, which can assist Azure support with debugging issues. The command also turns off the new  naming conventions for NICs. We also recommend that you remove the following parameters:
@@ -619,6 +717,54 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
     sudo yum remove cloud-init
     ```
 
+1. **Only if you're creating an image for a remote NVMe disk controller**, configure and verify NVMe boot support. Otherwise, skip this step.
+
+     1. Make the NVMe drivers persistent in future initramfs images by creating a dracut configuration file, and then rebuild the current initramfs:
+
+         ```bash
+         sudo tee /etc/dracut.conf.d/azure-nvme.conf > /dev/null <<EOF
+         add_drivers+=" nvme nvme_core "
+         EOF
+         sudo dracut --force --verbose
+         ```
+
+     1. Add the Azure NVMe I/O timeout to the kernel command line so the setting persists across reboots:
+
+         ```bash
+         sudo grubby --update-kernel=ALL --args="nvme_core.io_timeout=240"
+         ```
+
+     1. Confirm that both NVMe modules exist in the kernel's module tree so they can be packaged into initramfs. This check reads the on-disk module files, so it succeeds even on a SCSI preparation VM and doesn't imply that NVMe is loaded or in use:
+
+         ```bash
+         modinfo nvme
+         modinfo nvme_core
+         ```
+
+         Each command must return module details. If either module isn't found, install or enable it by following the Red Hat documentation before you continue.
+
+1. Confirm that the rebuilt initramfs package includes both NVMe drivers. This check confirms the image is ready:
+
+    ```bash
+    sudo lsinitrd /boot/initramfs-$(uname -r).img | grep -E 'nvme(_core)?\.ko'
+    ```
+
+    The output must list both the `nvme` and `nvme_core` drivers. After the image boots on an NVMe VM, verify the runtime timeout by running `cat /sys/module/nvme_core/parameters/io_timeout`; the expected value is `240`.
+
+1. For both SCSI and NVMe images, use file-system UUIDs or another persistent identifier in `/etc/fstab`. Don't use `/dev/sd*` or `/dev/nvme*` device names, because device names can change across reboots or when the disk controller changes.
+
+     1. List the block devices and their persistent identifiers so that you can compare them with the entries in `/etc/fstab`:
+
+         ```bash
+         sudo blkid
+         ```
+
+     1. Check `/etc/fstab` for syntax errors, invalid mount options, and references that can't be resolved:
+
+         ```bash
+         sudo findmnt --verify --verbose
+         ```
+
 1. Ensure that the SSH server is installed and configured to start at boot time:
 
     ```bash
@@ -652,12 +798,12 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
 
 1. Install `cloud-init`.
    
-    Follow the steps in "Prepare a RHEL 7 VM from Hyper-V Manager," step 12, "Install `cloud-init` to handle the provisioning."
+    Follow the steps in "Prepare a RHEL 7 VM from Hyper-V Manager," step 14, "Configure `cloud-init` to handle the provisioning."
 
 1. Swap configuration:
 
     - Don't create swap space on the operating system disk.
-    - Follow the steps in "Prepare a  VM from Hyper-V Manager," step 13, "Swap configuration."
+    - Follow the steps in "Prepare a RHEL 7 VM from Hyper-V Manager," step 15, "Swap configuration."
 
 1. Unregister the subscription (if necessary):
 
@@ -665,7 +811,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
     sudo subscription-manager unregister
     ```
 
-1. Deprovision by following the steps in "Prepare a  VM from Hyper-V Manager," step 15, "Deprovision."
+1. Deprovision by following the steps in "Prepare a RHEL 7 VM from Hyper-V Manager," step 18, "Deprovision the VM and prepare it for provisioning on Azure."
 
 1. Shut down the VM in KVM.
 
@@ -758,7 +904,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
 
     ```config-grub
     GRUB_TIMEOUT=10
-    GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 earlyprintk=ttyS0 net.ifnames=0 nvme_core.io_timeout=240"
+    GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 earlyprintk=ttyS0 net.ifnames=0"
     GRUB_TERMINAL="serial console"
     GRUB_SERIAL_COMMAND="serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1"
     ENABLE_BLSCFG=true
@@ -798,6 +944,54 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
     ```bash
     sudo dracut -f -v
     ```
+
+1. **Only if you're creating an image for a remote NVMe disk controller**, configure and verify NVMe boot support. Otherwise, skip this step.
+
+     1. Make the NVMe drivers persistent in future initramfs images by creating a dracut configuration file, and then rebuild the current initramfs:
+
+         ```bash
+         sudo tee /etc/dracut.conf.d/azure-nvme.conf > /dev/null <<EOF
+         add_drivers+=" nvme nvme_core "
+         EOF
+         sudo dracut --force --verbose
+         ```
+
+     1. Add the Azure NVMe I/O timeout to the kernel command line so the setting persists across reboots:
+
+         ```bash
+         sudo grubby --update-kernel=ALL --args="nvme_core.io_timeout=240"
+         ```
+
+     1. Confirm that both NVMe modules exist in the kernel's module tree so they can be packaged into initramfs. This check reads the on-disk module files, so it succeeds even on a SCSI preparation VM and doesn't imply that NVMe is loaded or in use:
+
+         ```bash
+         modinfo nvme
+         modinfo nvme_core
+         ```
+
+         Each command must return module details. If either module isn't found, install or enable it by following the Red Hat documentation before you continue.
+
+1. Confirm that the rebuilt initramfs package includes both NVMe drivers. This check confirms the image is ready:
+
+    ```bash
+    sudo lsinitrd /boot/initramfs-$(uname -r).img | grep -E 'nvme(_core)?\.ko'
+    ```
+    
+    The output must list both the `nvme` and `nvme_core` drivers. After the image boots on an NVMe VM, verify the runtime timeout by running `cat /sys/module/nvme_core/parameters/io_timeout`; the expected value is `240`.
+
+1. For both SCSI and NVMe images, use file-system UUIDs or another persistent identifier in `/etc/fstab`. Don't use `/dev/sd*` or `/dev/nvme*` device names, because device names can change across reboots or when the disk controller changes.
+
+     1. List the block devices and their persistent identifiers so that you can compare them with the entries in `/etc/fstab`:
+
+         ```bash
+         sudo blkid
+         ```
+
+     1. Check `/etc/fstab` for syntax errors, invalid mount options, and references that can't be resolved:
+
+         ```bash
+         sudo findmnt --verify --verbose
+         ```
 
 1. Ensure that the SSH server is installed and configured to start at boot time, which is usually the default. Modify `/etc/ssh/sshd_config` to include the following line:
 
@@ -956,17 +1150,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
     > [!CAUTION]
     > If you're migrating a specific VM and don't want to create a generalized image, skip the deprovision step. Running the command `waagent -force -deprovision+user` renders the source machine unusable. This step is intended only to create a generalized image.
 
-1. Select **Action** > **Shut Down** in Hyper-V Manager. Your Linux VHD is now ready to be [uploaded to Azure](./upload-vhd.md#option-1-upload-a-vhd).
-
-1. Unregister the subscription (if necessary):
-
-    ```bash
-    sudo subscription-manager unregister
-    ```
-
-1. Deprovision by following the steps in "Prepare a  VM from Hyper-V Manager," step 15, "Deprovision."
-
-1. Shut down the VM in KVM.
+1. Shut down the VM in KVM. Your Linux VHD is now ready to be [uploaded to Azure](./upload-vhd.md#option-1-upload-a-vhd).
 
 1. Convert the qcow2 image to the VHD format.
 
@@ -1001,7 +1185,6 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
     ```bash
     sudo qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-[version].raw rhel-[version].vhd
     ```
-
 
 #### [RHEL 7 using VMware](#tab/rhel7VMware)
 
@@ -1053,7 +1236,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
 1. Modify the kernel boot line in your grub configuration to include more kernel parameters for Azure. To do this modification, open `/etc/default/grub` in a text editor and edit the `GRUB_CMDLINE_LINUX` parameter. For example:
 
     ```config-grub
-    GRUB_CMDLINE_LINUX="console=ttyS0 earlyprintk=ttyS0 net.ifnames=0 nvme_core.io_timeout=240"
+    GRUB_CMDLINE_LINUX="console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
     ```
 
    These modifications turn off the new naming convention for NICs, ensure all console messages are sent to the first serial port and enable interaction with the console, which can assist Aure support with debugging issues, we recommend that you remove the following parameters:
@@ -1084,6 +1267,54 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
     sudo dracut -f -v
     ```
 
+1. **Only if you're creating an image for a remote NVMe disk controller**, configure and verify NVMe boot support. Otherwise, skip this step.
+
+     1. Make the NVMe drivers persistent in future initramfs images by creating a dracut configuration file, and then rebuild the current initramfs:
+
+         ```bash
+         sudo tee /etc/dracut.conf.d/azure-nvme.conf > /dev/null <<EOF
+         add_drivers+=" nvme nvme_core "
+         EOF
+         sudo dracut --force --verbose
+         ```
+
+     1. Add the Azure NVMe I/O timeout to the kernel command line so the setting persists across reboots:
+
+         ```bash
+         sudo grubby --update-kernel=ALL --args="nvme_core.io_timeout=240"
+         ```
+
+     1. Confirm that both NVMe modules exist in the kernel's module tree so they can be packaged into initramfs. This check reads the on-disk module files, so it succeeds even on a SCSI preparation VM and doesn't imply that NVMe is loaded or in use:
+
+         ```bash
+         modinfo nvme
+         modinfo nvme_core
+         ```
+
+         Each command must return module details. If either module isn't found, install or enable it by following the Red Hat documentation before you continue.
+
+1. Confirm that the rebuilt initramfs package includes both NVMe drivers. This check confirms the image is ready:
+
+    ```bash
+    sudo lsinitrd /boot/initramfs-$(uname -r).img | grep -E 'nvme(_core)?\.ko'
+    ```
+    
+    The output must list both the `nvme` and `nvme_core` drivers. After the image boots on an NVMe VM, verify the runtime timeout by running `cat /sys/module/nvme_core/parameters/io_timeout`; the expected value is `240`.
+
+1. For both SCSI and NVMe images, use file-system UUIDs or another persistent identifier in `/etc/fstab`. Don't use `/dev/sd*` or `/dev/nvme*` device names, because device names can change across reboots or when the disk controller changes.
+
+     1. List the block devices and their persistent identifiers so that you can compare them with the entries in `/etc/fstab`:
+
+         ```bash
+         sudo blkid
+         ```
+
+     1. Check `/etc/fstab` for syntax errors, invalid mount options, and references that can't be resolved:
+
+         ```bash
+         sudo findmnt --verify --verbose
+         ```
+
 1. Ensure that the SSH server is installed and configured to start at boot time. This setting is usually the default. Modify `/etc/ssh/sshd_config` to include the following line:
 
     ```config
@@ -1105,12 +1336,12 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
 
 1. Install `cloud-init`:
 
-    Follow the steps in "Prepare a RHEL 7 VM from Hyper-V Manager," step 12, "Install `cloud-init` to handle the provisioning."
+    Follow the steps in "Prepare a RHEL 7 VM from Hyper-V Manager," step 14, "Configure `cloud-init` to handle the provisioning."
 
 1. Swap configuration:
 
     - Don't create swap space on the operating system disk.
-    - Follow the steps in "Prepare a RHEL 7 VM from Hyper-V Manager," step 13, "Swap configuration."
+    - Follow the steps in "Prepare a RHEL 7 VM from Hyper-V Manager," step 15, "Swap configuration."
 
 1. If you want to unregister the subscription, run the following command:
 
@@ -1118,7 +1349,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
     sudo subscription-manager unregister
     ```
 
-1. Deprovision by following the steps in "Prepare a RHEL 7 VM from Hyper-V Manager," step 15, "Deprovision."
+1. Deprovision by following the steps in "Prepare a RHEL 7 VM from Hyper-V Manager," step 18, "Deprovision the VM and prepare it for provisioning on Azure."
 
 1. Shut down the VM and convert the VMDK file to the VHD format.
 
@@ -1154,7 +1385,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
     sudo qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-[version].raw rhel-[version].vhd
 
 
-#### [RHEL 8/9/10 using VMware ](#tab/rhel89VMware)
+#### [RHEL 8/9/10 using VMware](#tab/rhel89VMware)
 
 1. Ensure that the Network Manager service starts at boot time:
 
@@ -1167,12 +1398,12 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
     ```bash
     sudo nmcli con mod eth0 connection.autoconnect yes ipv4.method auto
     ```
-    
+
     > [!NOTE]
     > When you use Accelerated Networking, the provisioned synthetic interface must be configured to be unmanaged by using a udev rule. This action prevents `NetworkManager` from assigning the same IP to it as the primary interface. <br>
-    
-    To apply it:<br>
-    
+
+    To apply it:
+
     ```bash
     sudo tee <<EOF /etc/udev/rules.d/68-azure-sriov-nm-unmanaged.rules >/dev/null
     # Accelerated Networking on Azure exposes a new SRIOV interface to the VM.
@@ -1181,8 +1412,9 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
     SUBSYSTEM=="net", DRIVERS=="hv_pci", ACTION!="remove", ENV{NM_UNMANAGED}="1"
     EOF
     ```
+
 1. Prevent NetworkManager from configuring the adapter added for accelerated networking.
-    
+
     ```bash
     sudo tee <<EOF /etc/NetworkManager/conf.d/99-azure-unmanaged-devices.conf > /dev/null
     [keyfile]
@@ -1208,7 +1440,7 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
 
     ```config-grub
     GRUB_TIMEOUT=10
-    GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 earlyprintk=ttyS0 net.ifnames=0 nvme_core.io_timeout=240"
+    GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 earlyprintk=ttyS0 net.ifnames=0"
     GRUB_TERMINAL_OUTPUT="serial console"
     GRUB_SERIAL_COMMAND="serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1"
     ```
@@ -1242,6 +1474,54 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
     ```bash
     sudo dracut -f -v
     ```
+
+1. **Only if you're creating an image for a remote NVMe disk controller**, configure and verify NVMe boot support. Otherwise, skip this step.
+
+     1. Make the NVMe drivers persistent in future initramfs images by creating a dracut configuration file, and then rebuild the current initramfs:
+
+         ```bash
+         sudo tee /etc/dracut.conf.d/azure-nvme.conf > /dev/null <<EOF
+         add_drivers+=" nvme nvme_core "
+         EOF
+         sudo dracut --force --verbose
+         ```
+
+     1. Add the Azure NVMe I/O timeout to the kernel command line so the setting persists across reboots:
+
+         ```bash
+         sudo grubby --update-kernel=ALL --args="nvme_core.io_timeout=240"
+         ```
+
+     1. Confirm that both NVMe modules exist in the kernel's module tree so they can be packaged into initramfs. This check reads the on-disk module files, so it succeeds even on a SCSI preparation VM and doesn't imply that NVMe is loaded or in use:
+
+         ```bash
+         modinfo nvme
+         modinfo nvme_core
+         ```
+
+         Each command must return module details. If either module isn't found, install or enable it by following the Red Hat documentation before you continue.
+
+     1. Confirm that both NVMe drivers are packaged into the rebuilt initramfs. This is the authoritative readiness check for the image:
+
+         ```bash
+         sudo lsinitrd /boot/initramfs-$(uname -r).img | grep -E 'nvme(_core)?\.ko'
+         ```
+
+         The output must list both the `nvme` and `nvme_core` drivers. You can verify the runtime timeout after the image boots on an NVMe VM by running `cat /sys/module/nvme_core/parameters/io_timeout`; the expected value is `240`.
+
+1. For both SCSI and NVMe images, use file-system UUIDs or another persistent identifier in `/etc/fstab`. Don't use `/dev/sd*` or `/dev/nvme*` device names, because device names can change across reboots or when the disk controller changes.
+
+     1. List the block devices and their persistent identifiers so that you can compare them with the entries in `/etc/fstab`:
+
+         ```bash
+         sudo blkid
+         ```
+
+     1. Check `/etc/fstab` for syntax errors, invalid mount options, and references that can't be resolved:
+
+         ```bash
+         sudo findmnt --verify --verbose
+         ```
 
 1. Ensure that the SSH server is installed and configured to start at boot time, which is usually the default. Modify `/etc/ssh/sshd_config` to include the following line:
 
@@ -1404,7 +1684,6 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
     > If you're migrating a specific VM and don't want to create a generalized image, skip the deprovision step. Running the command `waagent -force -deprovision+user` renders the source machine unusable. This step is intended only to create a generalized image.
 
 
-
     Make sure that the size of the raw image is aligned with 1 MB. Otherwise, round up the size to align with 1 MB:
 
       First convert the image to raw format:
@@ -1442,9 +1721,6 @@ This section shows you how to use KVM to prepare RHEL 7 to upload to Azure.
     ```bash
     sudo qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-[version].raw rhel-[version].vhd
     ```
-
-
-   
 
 #### [RHEL 7 using Kickstart](#tab/rhel7Kickstart)
 
@@ -1577,7 +1853,7 @@ This section shows you how to prepare RHEL 7  from an ISO by using a kickstart f
     EOF
 
     # Set the cmdline
-    sed -i 's/^\(GRUB_CMDLINE_LINUX\)=".*"$/\1="console=tty1 console=ttyS0 earlyprintk=ttyS0 nvme_core.io_timeout=240"/g' /etc/default/grub
+    sed -i 's/^\(GRUB_CMDLINE_LINUX\)=".*"$/\1="console=tty1 console=ttyS0 earlyprintk=ttyS0"/g' /etc/default/grub
 
     # Enable SSH keepalive
     sed -i 's/^#\(ClientAliveInterval\).*$/\1 180/g' /etc/ssh/sshd_config
@@ -1618,6 +1894,19 @@ This section shows you how to prepare RHEL 7  from an ISO by using a kickstart f
     %end
     ```
 
+1. **Only if you're creating an image for a remote NVMe disk controller**, modify the kickstart file to add the Azure NVMe I/O timeout and make the NVMe drivers available in the initial RAM disk. In the `%post` section, after the `grub2-mkconfig -o /boot/grub2/grub.cfg` command, add the following lines:
+
+    ```bash
+    # Add the Azure NVMe I/O timeout to the kernel command line, then rebuild GRUB.
+    sed -i '/^GRUB_CMDLINE_LINUX=/ s/"$/ nvme_core.io_timeout=240"/' /etc/default/grub
+    grub2-mkconfig -o /boot/grub2/grub.cfg
+
+    # Add the NVMe drivers to the initial RAM disk for remote NVMe boot.
+    mkdir -p /etc/dracut.conf.d
+    printf '%s\n' 'add_drivers+=" nvme nvme_core "' > /etc/dracut.conf.d/azure-nvme.conf
+    dracut --force --verbose
+    ```
+
 1. Place the kickstart file where the installation system can access it.
 
 1. In Hyper-V Manager, create a new VM. On the **Connect Virtual Hard Disk** page, select **Attach a virtual hard disk later**, and complete the **New Virtual Machine** wizard.
@@ -1636,31 +1925,6 @@ This section shows you how to prepare RHEL 7  from an ISO by using a kickstart f
 
 1. Wait for the installation to finish, then VM shuts down automatically. Your Linux VHD is now ready to be uploaded to Azure.
 
-## Known issues
-
-The following issue is known.
-
-### The Hyper-V driver couldn't be included in the initial RAM disk when using a non-Hyper-V hypervisor
-
-In some cases, Linux installers might not include the drivers for Hyper-V in the initial RAM disk (initrd or initramfs) unless Linux detects that it's running in a Hyper-V environment.
-
-When you're using a different virtualization system (for example, VirtualBox or Xen) to prepare your Linux image, you might need to rebuild initrd to ensure that at least the `hv_vmbus` and `hv_storvsc` kernel modules are available on the initial RAM disk. This issue is known, at least on systems that are based on the upstream Red Hat distribution.
-
-To resolve this issue, add Hyper-V modules to initramfs and rebuild it:
-
-Edit `/etc/dracut.conf`, and add the following content:
-
-```config-conf
-add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
-```
-
-Rebuild initramfs:
-
-```bash
-sudo dracut -f -v
-```
-
-   
 #### [RHEL 8/9/10 using Kickstart](#tab/rhel89Kickstart)
 
 This section shows you how to prepare RHEL (8 OR 9)  from an ISO by using a kickstart file.
@@ -1803,7 +2067,7 @@ This section shows you how to prepare RHEL (8 OR 9)  from an ISO by using a kick
    EOF
    
     # Set the cmdline
-    sed -i 's/^\(GRUB_CMDLINE_LINUX\)=".*"$/\1="console=tty1 console=ttyS0 earlyprintk=ttyS0 nvme_core.io_timeout=240"/g' /etc/default/grub
+    sed -i 's/^\(GRUB_CMDLINE_LINUX\)=".*"$/\1="console=tty1 console=ttyS0 earlyprintk=ttyS0"/g' /etc/default/grub
 
     # Enable SSH keepalive
     sed -i 's/^#\(ClientAliveInterval\).*$/\1 180/g' /etc/ssh/sshd_config
@@ -1849,6 +2113,19 @@ This section shows you how to prepare RHEL (8 OR 9)  from an ISO by using a kick
     %end
     ```
 
+1. **Only if you're creating an image for a remote NVMe disk controller**, modify the kickstart file to add the Azure NVMe I/O timeout and make the NVMe drivers available in the initial RAM disk. In the `%post` section, after the `grub2-mkconfig -o /boot/grub2/grub.cfg` command, add the following lines:
+
+    ```bash
+    # Add the Azure NVMe I/O timeout to the kernel command line, then rebuild GRUB.
+    sed -i '/^GRUB_CMDLINE_LINUX=/ s/"$/ nvme_core.io_timeout=240"/' /etc/default/grub
+    grub2-mkconfig -o /boot/grub2/grub.cfg
+
+    # Add the NVMe drivers to the initial RAM disk for remote NVMe boot.
+    mkdir -p /etc/dracut.conf.d
+    printf '%s\n' 'add_drivers+=" nvme nvme_core "' > /etc/dracut.conf.d/azure-nvme.conf
+    dracut --force --verbose
+    ```
+
 1. Place the kickstart file where the installation system can access it.
 
 1. In Hyper-V Manager, create a new VM. On the **Connect Virtual Hard Disk** page, select **Attach a virtual hard disk later**, and complete the **New Virtual Machine** wizard.
@@ -1866,6 +2143,8 @@ This section shows you how to prepare RHEL (8 OR 9)  from an ISO by using a kick
 1. Enter `inst.ks=<the location of the kickstart file>` at the end of the boot options, and select the **Enter** key.
 
 1. Wait for the installation to finish, then VM shuts down automatically. Your Linux VHD is now ready to be uploaded to Azure.
+
+---
 
 ## Known issues
 
@@ -1891,20 +2170,6 @@ Rebuild initramfs:
 sudo dracut -f -v
 ```
 
-<details>
-<summary>Known issues</summary>
-
-### The Hyper-V driver couldn't be included in the initial RAM disk when using a non-Hyper-V hypervisor
-
-In some cases, Linux installers might not include the drivers for Hyper-V in the initial RAM disk (initrd or initramfs) unless Linux detects that it's running in a Hyper-V environment.
-
-When you're using a different virtualization system (for example, VirtualBox or Xen) to prepare your Linux image, you might need to rebuild initrd to ensure that at least the `hv_vmbus` and `hv_storvsc` kernel modules are available on the initial RAM disk. This issue is known, at least on systems that are based on the upstream Red Hat distribution.
-
-To resolve this issue, add Hyper-V modules to initramfs and rebuild it:
-
-Edit `/etc/dracut.conf`, and add the following content:
-
-
 For more information, see [Rebuilding initramfs](https://access.redhat.com/solutions/1958).
 
 ## Related content
@@ -1912,3 +2177,5 @@ For more information, see [Rebuilding initramfs](https://access.redhat.com/solut
 * You're now ready to use your RHEL VHD to create new VMs in Azure. For more information, see [Create a Linux VM from a custom disk](upload-vhd.md#option-1-upload-a-vhd).
 * For more information about the hypervisors that are certified to run RHEL, see the [Red Hat website](https://access.redhat.com/certified-hypervisors).
 * To learn more about using production-ready RHEL BYOS images, go to the documentation page for [Bring your own subscription](../workloads/redhat/byos.md).
+* For an existing supported RHEL VM that you need to move from SCSI to NVMe, use [Convert Linux and Windows VMs from SCSI to NVMe](../nvme-linux.md).
+* For architecture and support information, see [NVMe overview](../nvme-overview.md).

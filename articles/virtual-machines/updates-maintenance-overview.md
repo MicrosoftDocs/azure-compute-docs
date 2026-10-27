@@ -5,7 +5,7 @@ author: mimckitt
 ms.author: mimckitt
 ms.service: azure-virtual-machines
 ms.topic: overview
-ms.date: 03/20/2024
+ms.date: 09/25/2026
 ms.reviewer: wwilliams
 # Customer intent: "As a cloud administrator, I want to manage guest updates and host maintenance for Azure virtual machines so that I can ensure reliability, security, and performance of our applications while minimizing downtime during updates."
 ---
@@ -29,7 +29,7 @@ With Azure infrastructure updates, you can:
 
 To perform these updates, use the tools that are available in Azure.
 
-The maintenance platform aims to provide you with a *unified maintenance experience* for all Azure resources that are affected during maintenance. The maintenance experience is available for host ([Azure Dedicated Host](dedicated-hosts.md) and [isolated](isolation.md) VMs) and guest (VMs and Azure Arc VMs) resources, Azure Kubernetes Service, Salesforce Marketing Cloud (SFMC), and network gateways (Azure VPN Gateway, Azure ExpressRoute, and virtual network gateways in Azure). To deploy, use either the Azure portal, PowerShell, or the Azure CLI.
+The maintenance platform aims to provide you with a *unified maintenance experience* for all Azure resources that are affected during maintenance. The maintenance experience is available for host ([Azure Dedicated Host](./dedicated-hosts/overview.md) and [isolated](isolation.md) VMs) and guest (VMs and Azure Arc VMs) resources, Azure Kubernetes Service, Salesforce Marketing Cloud (SFMC), and network gateways (Azure VPN Gateway, Azure ExpressRoute, and virtual network gateways in Azure). To deploy, use either the Azure portal, PowerShell, or the Azure CLI.
 
 [Maintenance control](maintenance-configurations.md) provides you with an option to skip or defer certain updates and schedule them only during your preferred maintenance window. In exceptional circumstances where a high-severity security issue arises that could potentially compromise customer services, Azure reserves the right to bypass these schedules to implement urgent changes. This measure is taken solely to help ensure the safety and integrity of customer services. It's employed only when the updates have no effect on customer resources. Such instances are infrequent and are invoked only as a last resort to safeguard resources.
 
@@ -39,9 +39,9 @@ Host maintenance is performed on the physical hosts where VMs are located and is
 
 ### Dedicated hosts, isolated VMs, and shared hosts
  
-The host maintenance experience is available for [dedicated](dedicated-hosts.md) hosts, [isolated](isolation.md) VMs, and shared hosts. Dedicated hosts are hosts in which one customer owns all VMs. Shared hosts are hosts in which VMs from multiple customers reside together. Isolated VMs are large machines that are isolated to a specific hardware type and dedicated to a single customer. 
+The host maintenance experience is available for [dedicated](./dedicated-hosts/overview.md) hosts, [isolated](isolation.md) VMs, and shared hosts. Dedicated hosts are hosts in which one customer owns all VMs. Shared hosts are hosts in which VMs from multiple customers reside together. Isolated VMs are large machines that are isolated to a specific hardware type and dedicated to a single customer. 
 
-On [dedicated](dedicated-hosts.md) hosts, you have the host maintenance experience available for all updates. You can opt into maintenance control and schedule a maintenance window based on your needs within 35 days from the last maintenance date. [Isolated](isolation.md) VMs have the maintenance control experience available like dedicated hosts.
+On [dedicated](./dedicated-hosts/overview.md) hosts, you have the host maintenance experience available for all updates. You can opt into maintenance control and schedule a maintenance window based on your needs within 35 days from the last maintenance date. [Isolated](isolation.md) VMs have the maintenance control experience available like dedicated hosts.
 
 You can use [maintenance control](maintenance-configurations.md) to:
 

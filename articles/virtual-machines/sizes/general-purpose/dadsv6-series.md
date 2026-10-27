@@ -139,7 +139,7 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 |[Memory Preserving Updates](../../maintenance-and-updates.md)| Supported |
 |[Generation 2 VMs](../../generation-2.md)| Supported |
 |[Generation 1 VMs](../../generation-2.md)| Not Supported |
-|[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli)| Supported |
+|[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli)| Required |
 |[Ephemeral OS Disk](../../ephemeral-os-disks.md)| Supported |
 |[Temporary local NVMe disks](../../enable-nvme-temp-faqs.yml)| Supported |
 |[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)| Supported |
@@ -149,5 +149,7 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 
 > [!NOTE]
 > This VM series will only work on OS images that support NVMe. If your current OS image doesn't have NVMe support, you'll see an error message. [NVMe](../../../virtual-machines/enable-nvme-interface.md) support is available on the most popular OS images, and we're continuously improving OS image compatibility.
+> 
+> Some Azure services refer to this VM family as **Dadv6** rather than **Dadsv6**. This naming inconsistency doesn't affect VM capabilities, including Premium Storage support.
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]

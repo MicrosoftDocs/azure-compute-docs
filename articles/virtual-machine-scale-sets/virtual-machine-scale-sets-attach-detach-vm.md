@@ -73,6 +73,7 @@ New-AzVm `
 - The VM must be in the same resource group as the scale set.
 - Regional (nonzonal) virtual machines, which don't have availability zones specified, can be attached to regional (nonzonal) scale sets.
 - Zonal virtual machines can be attached to scale sets that specify one or more zone. The virtual machine must be  in one of the zones spanned by the scale set. For example, you can't create a virtual machine in Zone 1, and place it in a scale set that spans Zones 2 and 3.
+- You can't create a new virtual machine and associate it with a scale set that uses [automatic zone placement](virtual-machine-scale-sets-automatic-zone-placement.md) during virtual machine creation. Instead, create the zonal virtual machine first, and then [attach the existing virtual machine to the scale set](#attach-an-existing-virtual-machine-to-a-virtual-machine-scale-set).
 - The scale set must be in Flexible orchestration mode, and the `singlePlacementGroup` property must be `false`.
 
 ### Attach an existing Virtual Machine to a Virtual Machine Scale Set
@@ -120,7 +121,7 @@ Update-AzVM -ResourceGroupName $resourceGroupName -VM $vm  -VirtualMachineScaleS
 - The scale set must have a `platformFaultDomainCount` of **1**.
 - The VM and scale set must be in the same resource group. 
 - Availability zone configuration:
-  - If the target scale set is zone-spanning or zonal, the VM must be zonal and deployed in a zone that's covered by the scale set.
+  - If the target scale set is zone-spanning or zonal, the virtual machine must be zonal and deployed in a zone that complies with the scale set's placement configuration. This requirement also applies when the scale set uses [automatic zone placement](virtual-machine-scale-sets-automatic-zone-placement.md).
   - If the target scale set is regional (nonzonal), the VM must also be regional (nonzonal). You can't attach a zonal VM to a regional (nonzonal) scale set.
 - The VM can't be in a self-defined availability set. 
 - The VM can't be in a `ProximityPlacementGroup`. 

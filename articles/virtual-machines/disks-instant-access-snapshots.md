@@ -49,8 +49,6 @@ Until the background data copy finishes, snapshots in the **InstantAccess** stat
 - Attaching Ultra Disk and Premium SSD v2 disks across fault domains (by using either a VM in an availability set or a Virtual Machine Scale Set) triggers the background data copy and prevents you from creating an instant access snapshot during the background data copy.
 - You can't attach Ultra Disk and Premium SSD v2 disks that have active instant access snapshots across fault domains.
 - To create an instant access snapshot from an Ultra Disk, you must create the snapshot from a newly provisioned Ultra Disk.
-- The greatest read latency improvements for disks created from instant access snapshots are currently available in Germany West Central, East Asia, Southeast Asia, Central India, and Sweden Central.
-
 ### Regional availability
 
 Instant access snapshots are currently supported in all public regions.

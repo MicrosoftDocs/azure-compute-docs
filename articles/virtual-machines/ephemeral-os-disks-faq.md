@@ -4,7 +4,7 @@ description: Frequently asked questions on ephemeral OS disks for Azure VMs.
 author: Aarthi-Vijayaraghavan
 ms.service: azure-virtual-machines
 ms.topic: how-to
-ms.date: 05/26/2022
+ms.date: 09/08/2026
 ms.author: aarthiv
 ms.subservice: disks
 # Customer intent: As a cloud architect, I want to understand the limitations and requirements of using ephemeral OS disks for Azure VMs, so that I can effectively plan and deploy virtual machines with optimal storage configurability and resource management.
@@ -135,20 +135,16 @@ A: Yes, you can create VMs with Ephemeral OS Disk using REST, Templates, PowerSh
 
 **Q: What is ephemeral OS disk with full caching?**
 
-A: Ephemeral OS disk with full caching (preview) enhances the standard Ephemeral OS Disk by fully caching the OS disk onto the local disk. This removes the dependency on remote storage in steady state, improving resilience during remote storage outages. With partial caching (the default mode), writes go to a diff disk on local storage and reads for original files come from a remote base disk. With full caching, the entire OS disk is cached locally, eliminating remote read/write latency.
+A: An ephemeral OS disk with full caching enhances the standard ephemeral OS disk by fully caching the OS disk onto the local disk. This caching removes the dependency on remote storage in steady state, improving resilience during remote storage outages. By using partial caching (the default mode), writes go to a different disk on local storage and reads for original files come from a remote base disk. By using full caching, the entire OS disk is cached locally, eliminating remote read and write latency.
 
 **Q: What are the prerequisites for full caching?**
 
-A: The local disk size of the VM SKU must be greater than (2 &times; OS disk size + 1 GiB). The API version must be `2025-04-01` or later. Full caching is currently supported on all VM SKUs except 2/4-core VMs. For more details, see [Ephemeral OS disks](ephemeral-os-disks.md#full-caching-mode-for-ephemeral-os-disks-preview).
+A: The local disk size of the VM SKU must be greater than (2 &times; OS disk size + 1 GiB), and the API version must be `2025-04-01` or later. Azure supports full caching on VMs with eight or more vCPUs in all N-series, L-series, M-series, and H-series; v5, v6, and v7 D-series, DC-series, E-series, Eb-series, and EC-series; and v6 and v7 F-series. For more information, see [Ephemeral OS disks](ephemeral-os-disks.md#full-caching-mode-for-ephemeral-os-disks).
 
 **Q: Is there any additional cost for full caching?**
 
 A: No, there's no additional cost charged for full caching beyond the standard VM and disk costs.
 
-**Q: How long does full caching take to complete?**
-
-A: The OS disk is cached in the background after the VM boots up, so there's no impact to VM create times. Full OS caching typically completes within 12 hours; however, a 12-hour waiting period is suggested as a safe limit before running any disaster recovery drills.
-
 **Q: What is the current availability status of full caching?**
 
-A: Ephemeral OS disk with full caching is currently in public preview.
+A: Ephemeral OS disk with full caching is generally available in all Azure public regions for supported VM sizes with eight or more vCPUs. Support for VMs with two or four vCPUs is planned for a future release.

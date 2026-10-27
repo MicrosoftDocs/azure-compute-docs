@@ -1,46 +1,56 @@
 ---
-title: Create an Azure scale set that uses availability zones
-description: Learn how to create Azure Virtual Machine Scale Sets that use availability zones for increased redundancy against outages
+title: Availability zone options for Azure Virtual Machine Scale Sets
+description: Learn how to choose between customer-selected availability zones, automatic zone placement, and regional deployment for Azure Virtual Machine Scale Sets.
 author: mimckitt
 ms.author: mimckitt
 ms.topic: concept-article
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: availability
-ms.date: 05/19/2026
+ms.date: 08/10/2026
 ms.reviewer: fisteele
-ms.custom: mimckitt, devx-track-azurecli, devx-track-azurepowershell, devx-track-arm-template
-# Customer intent: As a cloud architect, I want to create Azure Virtual Machine Scale Sets across availability zones, so that I can ensure high availability and resilience against data center outages for my applications.
+# Customer intent: As a cloud architect, I want to understand the availability zone placement options for Virtual Machine Scale Sets, so that I can choose the right resiliency configuration for my workload.
 ---
 
-# Create a Virtual Machine Scale Set that uses availability zones
+# Availability zone options for Azure Virtual Machine Scale Sets
 
 Azure availability zones are fault-isolated locations within an Azure region that provide redundant power, cooling, and networking. They allow you to run applications with high availability and fault tolerance to data center failures. Azure regions that support availability zones have a minimum of three separate zones. Each availability zone consists of one or more data centers equipped with independent infrastructure power, network, and cooling. Availability zones are connected by a high-performance network with a round-trip latency of less than 2 milliseconds. For more information, see [Overview of availability zones](/azure/reliability/availability-zones-overview).
 
 To protect your Virtual Machine Scale Sets from datacenter-level failures, you can create a scale set across availability zones. To use availability zones, your scale set must be created in a [supported Azure region](/azure/reliability/availability-zones-region-support).
 
-For more information about how scale sets can be resilient to availability zone failures and other types of resiliency, see [Reliability in Azure Virtual Machine Scale Sets](/azure/reliability/reliability-virtual-machine-scale-sets?toc=/azure/virtual-machine-scale-sets/toc.json&bc=/azure/virtual-machine-scale-sets/breadcrumb/toc.json).
+For more information about how scale sets can be resilient to availability zone failures and other types of failures, see [Reliability in Azure Virtual Machine Scale Sets](/azure/reliability/reliability-virtual-machine-scale-sets?toc=/azure/virtual-machine-scale-sets/toc.json&bc=/azure/virtual-machine-scale-sets/breadcrumb/toc.json).
 
-## Design considerations for availability zones
+## Choose an availability zone deployment option
 
-Virtual Machine Scale Sets supports three availability zone deployment models:
+Virtual Machine Scale Sets supports three availability zone deployment options. You can select the zones yourself, use automatic zone placement to let Azure select them, or use a regional deployment without zone-pinned instances.
 
-- Zone spanning (recommended)
-- Zonal or zone aligned (single zone)
-- Regional (also called *nonzonal*)
+| Deployment option | Configuration | Zone topology | Who selects the zones? | Use when |
+| --- | --- | --- | --- | --- |
+| [Customer-selected zones](virtual-machine-scale-sets-configure-customer-selected-zones.md) | Set `zones`, such as `"zones": ["1", "2", "3"]`. | Zonal when you specify one zone, or zone spanning when you specify multiple zones. | You select the zones that the scale set can use. | Your workload must use specific availability zones. |
+| [Automatic zone placement (Preview)](virtual-machine-scale-sets-automatic-zone-placement.md) | Set `placement.zonePlacementPolicy` to `"auto"`. | By default, Azure creates a zone-spanning scale set that targets three zones and requires a minimum of two zones. To create a single-zone scale set, set `maxZoneCount` to `1`. | Azure selects the zones within the constraints that you configure. | You want Azure to optimize zone selection based on capacity and SKU availability. |
+| Regional (nonzonal) | Don't specify `zones` or a zone placement policy. | Regional instances aren't pinned to availability zones. | Not applicable. | Your workload doesn't require zone-level isolation or zone pinning. |
+
+> [!IMPORTANT]
+> You can't configure both the `zones` property and automatic zone placement on the same scale set.
+
+Customer-selected zones and automatic zone placement can result in a zonal (single zone) or zone-spanning scale set. The following sections describe these topologies and regional deployments in more detail.
 
 <a name="zone-redundant-or-zone-spanning"></a>
 
 ### Zone spanning
 
-A zone spanning scale set spreads instances across all selected zones, `"zones": ["1","2","3"]`. This is similar to zone redundant deployments in other Azure services.
+A zone-spanning scale set spreads instances across two or more availability zones. This approach is similar to zone-redundant deployments in other Azure services.
 
 By default, the scale set performs a best effort approach to evenly spread instances across selected zones. However, you can specify that you want strict zone balance by setting `"zoneBalance": "true"` in your deployment. Each VM and its disks are zonal, so they are pinned to a specific zone. Instances between zones are connected by high-performance network with low latency. In the event of a zone outage or connectivity issue, connectivity to instances within the affected zone may be compromised, while instances in other availability zones should be unaffected. You may add capacity to the scale set during a zone outage, and the scale set adds more instances to the unaffected zones. When the zone is restored, you may need to scale down your scale set to the original capacity. A best practice would be to configure [autoscale](virtual-machine-scale-sets-autoscale-overview.md) rules based on CPU or memory usage. The autoscale rules would allow the scale set to respond to a loss of the VM instances in that one zone by scaling out new instances in the remaining operational zones.
 
 Spreading instances across availability zones meets the 99.99% SLA for instances spread across availability zones, and is recommended for most workloads in Azure.
 
+You can configure a zone-spanning scale set by selecting multiple zones yourself or by using automatic zone placement. By default, automatic zone placement targets three availability zones and requires a minimum of two zones.
+
 ### Zonal or zone aligned (single zone)
 
-A zonal or zone aligned scale set places instances in a single availability zone `"zones": ['1']`. Each VM and its disks are zonal, so they are pinned to a specific zone. This configuration is primarily used when you need lower latency between instances.
+A zonal or zone aligned scale set places instances in a single availability zone. Each VM and its disks are zonal, so they are pinned to a specific zone. This configuration is primarily used when you need lower latency between instances.
+
+You can configure a single-zone scale set by selecting one zone yourself or by setting `maxZoneCount` to `1` with automatic zone placement.
 
 <a name="regional"></a>
 
@@ -76,181 +86,15 @@ When you deploy a scale set, you can deploy with a single [placement group](./vi
 
 ### Zone balancing
 
-For scale sets deployed across multiple zones, you also have the option of choosing "best effort zone balance" or "strict zone balance." For more information, see [Zone balancing in scale sets](./virtual-machine-scale-sets-zone-balancing.md).
+Zone placement determines which availability zones a scale set can use when placing new instances. Zone balancing controls how evenly instances are distributed across those zones after the eligible zones are selected.
 
-## Create zone spanning or zonal scale sets
+For scale sets that span multiple zones, choose between best-effort and strict zone balancing. Zone balancing applies regardless of whether you select the zones or use automatic zone placement. For more information, see [Zone balancing in Virtual Machine Scale Sets](virtual-machine-scale-sets-zone-balancing.md).
 
-When you deploy a Virtual Machine Scale Set, you can choose to use a single availability zone in a region, or multiple zones.
-
- You can create a scale set that uses availability zones with one of the following methods:
-
-- [Azure portal](#use-the-azure-portal)
-- [Azure CLI](#use-the-azure-cli)
-- [Azure PowerShell](#use-azure-powershell)
-- [Azure Resource Manager templates](#use-azure-resource-manager-templates)
-
-## Use the Azure portal
-
-The process to create a scale set that uses an availability zone is the same as detailed in the [getting started article](quick-create-portal.md). When you select a supported Azure region, you can create a scale set in one or more available zones, as shown in the following example:
-
-![Create a scale set in a single availability zone](media/virtual-machine-scale-sets-use-availability-zones/vmss-az-portal.png)
-
-The scale set and supporting resources, such as the Azure load balancer and public IP address, are created in the single zone that you specify.
-
-## Use the Azure CLI
-
-The process to create a scale set that uses an availability zone is the same as detailed in the [getting started article](quick-create-cli.md). To use availability zones, you must create your scale set in a supported Azure region.
-
-Add the `--zones` parameter to the [az vmss create](/cli/azure/vmss) command and specify which zone to use (such as zone *1*, *2*, or *3*).
-
-```azurecli
-az vmss create \
-    --resource-group myResourceGroup \
-    --name myScaleSet \
-    --image <SKU Image> \
-    --upgrade-policy-mode automatic \
-    --admin-username azureuser \
-    --generate-ssh-keys \
-    --zones 1 2 3
-```
-
-It takes a few minutes to create and configure all the scale set resources and VMs in the zone(s) that you specify. For a complete example of a zone-redundant scale set and network resources, see [this sample CLI script](scripts/cli-sample-zone-redundant-scale-set.md#sample-script)
-
-## Use Azure PowerShell
-
-To use availability zones, you must create your scale set in a supported Azure region. Add the `-Zone` parameter to the [New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) command and specify which zone or zones to use (such as zone *1*, *2*, or *3*).
-
-```powershell
-New-AzVmss `
-  -ResourceGroupName "myResourceGroup" `
-  -Location "EastUS2" `
-  -VMScaleSetName "myScaleSet" `
-  -VirtualNetworkName "myVnet" `
-  -SubnetName "mySubnet" `
-  -PublicIpAddressName "myPublicIPAddress" `
-  -LoadBalancerName "myLoadBalancer" `
-  -UpgradePolicy "Automatic" `
-  -Zone "1", "2", "3"
-```
-
-## Use Azure Resource Manager templates
-
-The process to create a scale set that uses an availability zone is the same as detailed in the getting started article for [Linux](quick-create-template-linux.md) or [Windows](quick-create-template-windows.md).
-
-```json
-{
-  "type": "Microsoft.Compute/virtualMachineScaleSets",
-  "name": "myScaleSet",
-  "location": "East US 2",
-  "apiVersion": "2017-12-01",
-  "zones": [
-        "1",
-        "2",
-        "3"
-      ]
-}
-```
-
-If you create a public IP address or a load balancer, specify the `"sku": {"name":"Standard"}` property to create zone-redundant network resources. You also need to create a Network Security Group and rules to permit any traffic. For more information, see [Azure Load Balancer Standard Overview](/azure/load-balancer/load-balancer-overview) and [Standard Load Balancer and Availability Zones](/azure/load-balancer/load-balancer-standard-availability-zones).
-
-## Update scale set to add availability zones
-
-You can modify a scale to expand the set of zones over which to spread VM instances. Expanding allows you to take advantage of higher availability SLA (99.99%) versus regional (nonzonal) availability SLA (99.95%). Or expand your scale set to take advantage of new availability zones that were not available when the scale set was created.
-
-This feature can be used with API version 2023-03-01 or greater.
-
-### Expand scale set to use availability zones
-
-You can update the scale set to scale out instances to one or more additional availability zones, up to the number of availability zones supported by the region. For regions that support zones, the minimum number of zones is 3.
-
-> [!IMPORTANT]
-> When you expand the scale set to additional zones, the original instances are not migrated or changed. When you scale out, new instances will be created and spread evenly across the selected availability zones. Data from the original instances are not migrated to the new zones. When you scale in the scale set, any regional (nonzonal) instances will be priorized for removal first. After that, instances will be removed based on the [scale in policy](virtual-machine-scale-sets-scale-in-policy.md).
-
-Expanding to a zone-spanning scale set is done in 3 steps:
-
-1. Prepare for zone expansion
-2. Update zones parameter on the scale set
-3. Add new zonal instances and remove original instances
-
-#### Prepare for zone expansion
-
-> [!WARNING]
-> This feature allows you to add zones to the scale set. You can't go back to a regional (nonzonal) scale set or remove zones once they have been added.
-
-To prepare for zone expansion:
-* [Check that you have enough quota](../virtual-machines/quotas.md) for the VM size in the selected region to handle more instances.
-* Check that the VM size and disk types you are using are available in all the desired zones. You can use the [Compute Resources SKUs API](/rest/api/compute/resource-skus/list?tabs=HTTP) to determine which sizes are available in which zones
-* Validate that the scale set configuration is valid for zonal and zone-spanning scale sets:
-    * `platformFaultDomainCount` must be set to 1 or 5. Fixed spreading with 2 or 3 fault domains isn't supported for zonal and zone-spanning scale sets.
-    * Capacity reservations are not supported during zone expansion. Once the scale set is fully zone-spanning or zonal (no more regional (nonzonal) instances), you can add a capacity reservation group to the scale set.
-    * Azure Dedicated Host deployments are not supported.
-
-#### Update the zones parameter on the scale set
-
-Update the scale set to change the zones parameter.
-
-### [Azure portal](#tab/portal-2)
-
-1. Navigate to the scale set you want to update
-1. On the Availability tab of the scale set landing page, find the **Availability zone** property and press **Edit**
-1. On the **Edit Location** dialog box, select the desired zone(s)
-1. Select **Apply**
-
-### [Azure CLI](#tab/cli-2)
-
-```azurecli
-az vmss update --set zones=["1","2","3"] -n < myScaleSet > -g < myResourceGroup >
-```
-
-### [Azure PowerShell](#tab/powershell-2)
-
-```azurepowershell
-# Get the Virtual Machine Scale Set object
-$vmss = Get-AzVmss -ResourceGroupName < resource-group-name > -VMScaleSetName < vmss-name >
-
-# Update the zones parameter
-$vmss.Zones = [Collections.Generic.List[string]]('1','2','3')
-
-# Apply the changes
-Update-AzVmss -ResourceGroupName < resource-group-name > -VMScaleSetName < vmss-name > -VirtualMachineScaleSet $vmss
-```
-
-### [REST API](#tab/template-2)
-
-```json
-PATCH /subscriptions/subscriptionid/resourceGroups/resourcegroupo/providers/Microsoft.Compute/virtualMachineScaleSets/myscaleset?api-version=2023-03-01
-
-```javascript
-{
-  "zones": [
-    "1",
-    "2",
-    "3"
-  ]
-}
-```
----
-
-### Add new zonal instances and remove original instances
-
-You can manually balance your scale set across zones by triggering a scale-out operation and then scaling in. For more details, see [How to manually balance your scale set](./virtual-machine-scale-sets-zone-balancing.md#how-to-manually-balance-your-scale-set).
-
-### Known issues and limitations
-
-* The original instances are not migrated to the newly added zones. Your workload must handle any required data migration or replication.
-
-* Scale sets running Service Fabric RP or Azure Kubernetes Service are not supported.
-
-* You can't remove or replace zones, only add zones
-
-* You can't update from a zone spanning or zonal scale set to a regional (nonzonal) scaleset.
-
-* `platformFaultDomainCount` must be set to 1 or 5. Fixed spreading with 2 or 3 fault domains isn't supported for zone-spanning or zonal deployments.
-
-* Capacity reservations are not supported during zone expansion. Once the scale set is fully zone-spanning or zonal (no more regional (nonzonal) instances), you can add a capacity reservation group to the scale set.
-
-* Azure Dedicated Host deployments are not supported
+Zone balancing is also different from [Automatic Zone Balance](auto-zone-balance-overview.md). Zone balancing controls instance distribution during scaling operations. Automatic Zone Balance proactively detects existing imbalances and corrects them by creating a replacement VM in an under-provisioned zone and deleting a VM from an over-provisioned zone.
 
 ## Next steps
 
-Now that you have created a scale set in an availability zone, you can learn how to [Deploy applications on Virtual Machine Scale Sets](tutorial-install-apps-cli.md) or [Use autoscale with Virtual Machine Scale Sets](tutorial-autoscale-cli.md).
+- [Configure customer-selected availability zones](virtual-machine-scale-sets-configure-customer-selected-zones.md).
+- Configure [automatic zone placement](virtual-machine-scale-sets-automatic-zone-placement.md).
+- Learn about [zone balancing in Virtual Machine Scale Sets](virtual-machine-scale-sets-zone-balancing.md).
+- Learn about [Automatic Zone Balance](auto-zone-balance-overview.md).

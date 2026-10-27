@@ -6,9 +6,9 @@ ms.service: azure-virtual-machines
 ms.custom: linux-related-content
 ms.collection: linux
 ms.topic: how-to
-ms.date: 06/27/2024
+ms.date: 09/09/2026
 ms.author: vakavuru
-ms.reviewer: mattmcinnes
+ms.reviewer: mattmcinnes, divargas
 # Customer intent: "As a system administrator, I want to create and upload a Debian VHD image to Azure, so that I can deploy virtual machines efficiently in a cloud environment."
 ---
 
@@ -22,11 +22,17 @@ This section assumes that you've already installed a Debian Linux operating syst
 
 ## Installation notes
 
+> [!IMPORTANT]
+> The remote NVMe preparation in this article is optional. Complete it only if you're creating an image that you intend to deploy with a remote NVMe disk controller. If the target VM uses SCSI, skip the remote NVMe section and retain the standard settings. Remote NVMe requires a Gen2 image. Before you build an NVMe image, verify that the Debian release is listed in [Supported OS images for remote NVMe](../enable-nvme-interface.md) and that the exact target VM size advertises NVMe in its `DiskControllerTypes` capability.
+
 * For more tips on preparing Linux for Azure, see [General Linux installation notes](create-upload-generic.md#general-linux-installation-notes).
 * The newer VHDX format isn't supported in Azure. You can convert the disk to VHD format by using Hyper-V Manager or the `convert-vhd` cmdlet.
 * When you install the Linux system, we recommend that you use standard partitions rather than Logical Volume Manager (LVM), which is often the default for many installations. Using partitions avoids LVM name conflicts with cloned VMs, particularly if an OS disk ever needs to be attached to another VM for troubleshooting. [LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm) or [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid) can also be used on data disks.
 * Don't configure a swap partition on the OS disk. The Azure Linux agent can be configured to create a swap file on the temporary resource disk. More information is available in the following steps.
 * All VHDs on Azure must have a virtual size aligned to 1 MB. When you convert from a raw disk to VHD, you must ensure that the raw disk size is a multiple of 1 MB before conversion. For more information, see [Linux installation notes](create-upload-generic.md#general-linux-installation-notes).
+
+> [!IMPORTANT]
+> Swap guidance that uses the temporary resource disk applies only to VM sizes that include local temporary storage. The remote disk controller type, SCSI or NVMe, doesn't determine whether a resource disk is available.
 
 ## Prepare a Debian image for Azure
 
@@ -57,6 +63,51 @@ $ sudo chmod 755 ./config_space/scripts/AZURE/10-custom
 ```
 
 Prefix any commands you want to have customizing the image with `$ROOTCMD`. It's aliased as `chroot $target`.
+
+## Validate the Debian disk configuration
+
+For both SCSI and NVMe images, add an FAI customization script that validates `/etc/fstab` and rejects nonpersistent disk names:
+
+```bash
+$ cat > ./config_space/scripts/AZURE/15-storage-validation <<'EOF'
+#!/bin/bash
+set -eu
+
+$ROOTCMD findmnt --verify --verbose
+
+if $ROOTCMD grep -Eq '^[[:space:]]*[^#].*[[:space:]]/dev/(sd|nvme)' /etc/fstab; then
+    echo 'Replace /dev/sd* and /dev/nvme* entries in /etc/fstab with UUIDs or another persistent identifier.' >&2
+    exit 1
+fi
+EOF
+$ sudo chmod 755 ./config_space/scripts/AZURE/15-storage-validation
+```
+
+## Prepare the Debian image for remote NVMe
+
+Complete this section **only if you're creating an image for a remote NVMe disk controller**. Otherwise, continue to [Build the Azure Debian image](#build-the-azure-debian-image) without adding this script.
+
+Add another FAI customization script before you build the NVMe image. The script makes the NVMe drivers available during early boot and sets the Azure NVMe I/O timeout.
+
+```bash
+$ cat > ./config_space/scripts/AZURE/20-nvme <<'EOF'
+#!/bin/bash
+set -eu
+
+$ROOTCMD bash -c "printf '%s\n' nvme nvme_core >> /etc/initramfs-tools/modules"
+$ROOTCMD update-initramfs -u -k all
+$ROOTCMD sed -i '/^GRUB_CMDLINE_LINUX_DEFAULT=/ s/"$/ nvme_core.io_timeout=240"/' /etc/default/grub
+$ROOTCMD update-grub
+
+$ROOTCMD modinfo nvme
+$ROOTCMD modinfo nvme_core
+$ROOTCMD bash -c "lsinitramfs /boot/initrd.img-\$(ls /lib/modules | sort -V | tail -1) | grep -Eq 'nvme(_core)?\\.ko'"
+EOF
+$ sudo chmod 755 ./config_space/scripts/AZURE/20-nvme
+```
+
+> [!IMPORTANT]
+> Review the generated GRUB command line and `/etc/initramfs-tools/modules` for duplicate entries if your FAI configuration already sets these values. Both `nvme` and `nvme_core` must be present in the generated initramfs.
 
 ## Build the Azure Debian image
 
@@ -92,17 +143,26 @@ This process creates a VHD `image_[release]_azure_amd64.vhd` with a rounded size
 
 After you create a stable Debian VHD image and before you upload, verify that the following packages are installed:
 
-* apt-get install hyperv-daemons
-* apt-get install waagent # *(Optional but recommended for password resets and the use of extensions)*
-* apt-get install cloud-init
+```bash
+sudo apt update
+sudo apt install hyperv-daemons
+sudo apt install waagent # *(Optional but recommended for password resets and the use of extensions)*
+sudo apt-get install cloud-init
+```
 
 Then perform a full upgrade:
 
-* apt-get full-upgrade
+```bash
+sudo apt full-upgrade
+```
 
 Now the Azure resources must be created for this image. This example uses the `$rounded_size_adjusted` variable, so it should be from within the same shell process from the preceding step.
 
-```
+Set the Hyper-V generation before you create the managed disk. The example defaults to `V1` for a standard SCSI image. Change it to `V2` only if you complete the remote NVMe preparation section or otherwise prepare a Generation 2 image.
+
+```azurecli-interactive
+HYPER_V_GENERATION=V1
+
 az group create -l $LOCATION -n $RG
 
 az disk create \
@@ -110,7 +170,7 @@ az disk create \
     -g $RG \
     -l $LOCATION \
     --for-upload --upload-size-bytes "$rounded_size_adjusted" \
-    --sku standard_lrs --hyper-v-generation V1
+    --sku standard_lrs --hyper-v-generation $HYPER_V_GENERATION
 
 ACCESS=$(az disk grant-access \
     -n $DISK -g $RG \
@@ -125,6 +185,7 @@ az image create \
     -g $RG \
     -n $IMAGE \
     --os-type linux \
+    --hyper-v-generation $HYPER_V_GENERATION \
     --source $(az disk show \
         -g $RG \
         -n $DISK \
@@ -152,3 +213,5 @@ If the bandwidth from your local machine to the Azure disk is causing a long tim
 ## Related content
 
 You're now ready to use your Debian Linux VHD to create new VMs in Azure. If this is the first time that you're uploading the .vhd file to Azure, see [Create a Linux VM from a custom disk](./upload-vhd.md#option-1-upload-a-vhd).
+
+For an existing Azure VM that you need to move from SCSI to NVMe, use [Convert Linux and Windows VMs from SCSI to NVMe](../nvme-linux.md). For architecture and support information, see [NVMe overview](../nvme-overview.md).

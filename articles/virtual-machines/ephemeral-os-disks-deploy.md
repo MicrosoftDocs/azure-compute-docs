@@ -4,7 +4,7 @@ description: Learn to deploy ephemeral OS disks for Azure VMs.
 author: Aarthi-Vijayaraghavan
 ms.service: azure-virtual-machines
 ms.topic: how-to
-ms.date: 07/23/2020
+ms.date: 09/08/2026
 ms.author: aarthiv
 ms.subservice: disks
 ms.custom: devx-track-azurecli
@@ -17,33 +17,31 @@ ms.custom: devx-track-azurecli
 
 This article shows you how to create a virtual machine or virtual machine scale sets with Ephemeral OS disks through Portal, ARM template deployment, CLI and PowerShell.
 
-> [!IMPORTANT]
-> Ephemeral OS disk with full caching is currently in public preview. Preview features are provided without a service level agreement, and aren't recommended for production workloads.
+> [!NOTE]
+> Ephemeral OS disk with full caching is generally available in all Azure public regions for supported VM sizes with eight or more vCPUs. For the supported series and capacity requirements, see [Full caching mode for Ephemeral OS disks](ephemeral-os-disks.md#full-caching-mode-for-ephemeral-os-disks).
 
 ## Portal
 
-In the Azure portal, you can choose to use ephemeral disks when deploying a virtual machine or virtual machine scale sets by opening the **Advanced** section of the **Disks** tab. For choosing placement of Ephemeral OS disk, select **OS cache placement** or **Temp disk placement**.
+In the Azure portal, you can choose to use ephemeral disks when deploying a virtual machine or virtual machine scale sets. Open the **Advanced** section of the **Disks** tab. For choosing placement of Ephemeral OS disk, select **OS cache placement**, **Temp disk placement**, or **NVMe disk placement**.
 
 ![Screenshot showing the radio button for choosing to use an ephemeral OS disk](./media/virtual-machines-common-ephemeral/ephemeral-portal-temp.png)
 
 
 If the option for using an ephemeral disk or OS cache placement or Temp disk placement is greyed out, you might have selected a VM size that doesn't have a cache/temp size larger than the OS image or that doesn't support Premium storage. Go back to the **Basics** page and try choosing another VM size.
 
-## Scale set template deployment
+## Scale set template deployment with partial caching
 
 The process to create a scale set that uses an ephemeral OS disk is to add the `diffDiskSettings` property to the
-`Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile` resource type in the template. Also, the caching policy must be set to `ReadOnly` for the ephemeral OS disk. placement can be changed to `CacheDisk` for OS cache disk placement.
-
-To enable full caching (preview), add `"enableFullCaching": true` to the `diffDiskSettings` section and use API version `2025-04-01` or later.
+`Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile` resource type in the template. Also, set the caching policy to `ReadOnly` for the ephemeral OS disk. Change the placement to `CacheDisk` for OS cache disk placement, `ResourceDisk` for temp disk placement, or `NvmeDisk` for NVMe disk placement.
 
 ```json
 {
   "type": "Microsoft.Compute/virtualMachineScaleSets",
   "name": "myScaleSet",
   "location": "East US 2",
-  "apiVersion": "2019-12-01",
+  "apiVersion": "2025-04-01",
   "sku": {
-    "name": "Standard_DS2_v2",
+    "name": "Standard_D8ds_v6",
     "capacity": "2"
   },
   "properties": {
@@ -54,8 +52,8 @@ To enable full caching (preview), add `"enableFullCaching": true` to the `diffDi
        "storageProfile": {
         "osDisk": {
           "diffDiskSettings": {
-            "option": "Local" ,
-            "placement": "ResourceDisk"
+            "option": "Local",
+            "placement": "NvmeDisk"
           },
           "caching": "ReadOnly",
           "createOption": "FromImage"
@@ -80,23 +78,21 @@ To enable full caching (preview), add `"enableFullCaching": true` to the `diffDi
 > [!NOTE]
 > Replace all the other values accordingly.
 
-## VM template deployment
-You can deploy a VM with an ephemeral OS disk using a template. The process to create a VM that uses ephemeral OS disks is to add the `diffDiskSettings` property to Microsoft.Compute/virtualMachines resource type in the template. Also, the caching policy must be set to `ReadOnly` for the ephemeral OS disk. placement option can be changed to `CacheDisk` for OS cache disk placement.
-
-To enable full caching (preview), add `"enableFullCaching": true` to the `diffDiskSettings` section and use API version `2025-04-01` or later.
+## VM template deployment with partial caching
+You can deploy a VM with an ephemeral OS disk by using a template. To create a VM that uses ephemeral OS disks, add the `diffDiskSettings` property to the `Microsoft.Compute/virtualMachines` resource type in the template. Also, set the caching policy to `ReadOnly` for the ephemeral OS disk. Change the placement to `CacheDisk` for OS cache disk placement, `ResourceDisk` for temp disk placement, or `NvmeDisk` for NVMe disk placement.
 
 ```json
 {
   "type": "Microsoft.Compute/virtualMachines",
   "name": "myVirtualMachine",
   "location": "East US 2",
-  "apiVersion": "2019-12-01",
+  "apiVersion": "2025-04-01",
   "properties": {
        "storageProfile": {
             "osDisk": {
               "diffDiskSettings": {
-                "option": "Local" ,
-                "placement": "ResourceDisk"
+                "option": "Local",
+                "placement": "NvmeDisk"
               },
               "caching": "ReadOnly",
               "createOption": "FromImage"
@@ -108,7 +104,7 @@ To enable full caching (preview), add `"enableFullCaching": true` to the `diffDi
                 "version": "latest"
             },
             "hardwareProfile": {
-                 "vmSize": "Standard_DS2_v2"
+                 "vmSize": "Standard_D8ds_v6"
              }
       },
       "osProfile": {
@@ -120,7 +116,7 @@ To enable full caching (preview), add `"enableFullCaching": true` to the `diffDi
  }
 ```
 
-### VM template deployment with full caching (preview)
+### VM template deployment with full caching
 
 To deploy a VM with ephemeral OS disk with full caching, use API version `2025-04-01` or later and set `enableFullCaching` to `true` in the `diffDiskSettings` section.
 
@@ -135,7 +131,7 @@ To deploy a VM with ephemeral OS disk with full caching, use API version `2025-0
             "osDisk": {
               "diffDiskSettings": {
                 "option": "Local",
-                "placement": "ResourceDisk",
+                "placement": "NvmeDisk",
                 "enableFullCaching": true
               },
               "caching": "ReadOnly",
@@ -151,7 +147,7 @@ To deploy a VM with ephemeral OS disk with full caching, use API version `2025-0
                 "version": "latest"
             },
             "hardwareProfile": {
-                 "vmSize": "Standard_DS2_v2"
+                 "vmSize": "Standard_D8ds_v6"
              }
       },
       "osProfile": {
@@ -167,13 +163,17 @@ To deploy a VM with ephemeral OS disk with full caching, use API version `2025-0
 
 To use an ephemeral disk for a CLI VM deployment, set the `--ephemeral-os-disk` parameter in [az vm create](/cli/azure/vm#az-vm-create) to `true` and the `--ephemeral-os-disk-placement` parameter to `ResourceDisk` for temp disk placement or `CacheDisk` for cache disk placement and the `--os-disk-caching` parameter to `ReadOnly`.
 
+To enable full caching, also set `--ephemeral-os-disk-enable-full-caching` to `true`.
+
 ```azurecli-interactive
 az vm create \
   --resource-group myResourceGroup \
   --name myVM \
   --image imageName \
+  --size Standard_D8ds_v6 \
   --ephemeral-os-disk true \
-  --ephemeral-os-disk-placement ResourceDisk \
+  --ephemeral-os-disk-placement NvmeDisk \
+  --ephemeral-os-disk-enable-full-caching true \
   --os-disk-caching ReadOnly \
   --admin-username azureuser \
   --generate-ssh-keys
@@ -182,7 +182,7 @@ az vm create \
 > [!NOTE]
 > Replace `myVM`, `myResourceGroup`, `imageName` and `azureuser` accordingly.
 
-For scale sets, you use the same `--ephemeral-os-disk true` parameter for [az-vmss-create](/cli/azure/vmss#az-vmss-create) and set the `--os-disk-caching` parameter to `ReadOnly` and the `--ephemeral-os-disk-placement` parameter to `ResourceDisk` for temp disk placement or `CacheDisk` for cache disk placement.
+For scale sets, use the same parameters with [az vmss create](/cli/azure/vmss#az-vmss-create), including `--ephemeral-os-disk-enable-full-caching true` to enable full caching.
 
 ## Reimage a VM using REST
 You can reimage a Virtual Machine instance with ephemeral OS disk using REST API as described below and via Azure portal by going to Overview pane of the VM. For scale sets, reimaging is already available through PowerShell, CLI, and the portal.

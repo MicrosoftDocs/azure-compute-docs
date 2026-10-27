@@ -74,7 +74,19 @@ For detailed steps, see [Assign Azure roles using the Azure portal](/azure/role-
 
 Update your Azure Compute Gallery to use the user-assigned managed identity. Portal experience isn't currently available for this step.
 
-**Using REST API**
+### [Portal](#tab/portal)
+
+1. In the Azure portal, open your Azure Compute Gallery.
+1. Under Security, select Identity.
+1. Select the User assigned tab.
+1. Select Add.
+1. In the **Add user assigned managed identity** pane, select the subscription that contains the managed identity.
+1. Select the user-assigned managed identity that you want to attach.
+1. Select **Add** to attach the identity to the gallery.
+
+:::image type="content" source="media/vmapps/compute-gallery-attach-managed-identity.png" alt-text="Screenshot of the Identity pane for attaching a user-assigned managed identity to an Azure Compute Gallery." lightbox="media/vmapps/compute-gallery-attach-managed-identity.png":::
+
+### [REST API](#tab/restapi)
 
 Use the [Galleries - Create Or Update](/rest/api/compute/galleries/create-or-update) API to attach the managed identity to your gallery.
 
@@ -91,6 +103,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
     }
 }
 ```
+---
 
 <!-- Update this section when commands are available
 ### [Azure CLI](#tab/cli)
@@ -120,7 +133,9 @@ For detailed information about this command, see [Update-AzGallery](/powershell/
 
 ## Step 4: Get the blob URL for your application package
 
-Retrieve the blob URL for the application package stored in your storage account. The URL format is:
+Retrieve the blob URL for the application package stored in your storage account. When you publish an application by using the Azure portal, the portal automatically pulls the blob URL. 
+
+The URL format is:
 
 ```
 https://<storage-account-name>.blob.core.windows.net/<container-name>/<blob-name>

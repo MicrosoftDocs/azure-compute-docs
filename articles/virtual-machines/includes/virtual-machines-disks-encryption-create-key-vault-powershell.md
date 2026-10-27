@@ -10,7 +10,7 @@
 ms.custom: include file, devx-track-azurepowershell
 # Customer intent: As a cloud security administrator, I want to configure Azure Key Vault and Disk Encryption Set so that I can securely manage encryption keys for our managed disks across multiple subscriptions in compliance with security policies.
 ---
-1. Make sure that you have installed latest [Azure PowerShell version](/powershell/azure/install-azure-powershell), and you are signed in to an Azure account in with Connect-AzAccount
+1. Install the latest [Azure PowerShell version](/powershell/azure/install-azure-powershell), and sign in to your Azure account with [`Connect-AzAccount`](/powershell/module/az.accounts/connect-azaccount).
 
 1. Create an instance of Azure Key Vault and encryption key.
 
@@ -36,7 +36,7 @@ ms.custom: include file, devx-track-azurepowershell
     Set-AzKeyVaultKeyRotationPolicy -VaultName $keyVaultName -KeyName $keyName -ExpiresIn P2Y -KeyRotationLifetimeAction @{Action="Rotate";TimeBeforeExpiry = "P18M"}
     ```
 
-1.    Create an instance of a DiskEncryptionSet. This script sets RotationToLatestKeyVersionEnabled equal to $true to enable automatic rotation of the key. When you enable automatic rotation, the system automatically updates all managed disks, snapshots, and images referencing the disk encryption set to use the new version of the key within one hour.  
+1.    Create a disk encryption set. This script sets RotationToLatestKeyVersionEnabled equal to $true to enable automatic rotation of the key. When you enable automatic rotation, the system automatically updates all managed disks, snapshots, and images referencing the disk encryption set to use the new version of the key within one hour.
     
         ```powershell
       $desConfig=New-AzDiskEncryptionSetConfig -Location $LocationName `
@@ -50,10 +50,10 @@ ms.custom: include file, devx-track-azurepowershell
                -InputObject $desConfig
         ```
 
-1.    Grant the DiskEncryptionSet resource access to the key vault.
+1.    Grant the disk encryption set access to the key vault.
 
         > [!NOTE]
-        > It may take few minutes for Azure to create the identity of your DiskEncryptionSet in your Microsoft Entra ID. If you get an error like "Cannot find the Active Directory object" when running the following command, wait a few minutes and try again.
+        > It might take a few minutes for Azure to create the identity of your disk encryption set in Microsoft Entra ID. If you get an error like "Cannot find the Active Directory object" when running the following command, wait a few minutes and try again.
         
         ```powershell  
         Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -ObjectId $des.Identity.PrincipalId -PermissionsToKeys wrapkey,unwrapkey,get

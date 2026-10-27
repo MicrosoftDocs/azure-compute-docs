@@ -7,9 +7,9 @@ ms.subservice: imaging
 ms.collection: linux
 ms.custom: linux-related-content
 ms.topic: how-to
-ms.date: 09/02/2025
+ms.date: 09/09/2026
 ms.author: vakavuru
-ms.reviewer: mattmcinnes
+ms.reviewer: mattmcinnes, divargas
 # Customer intent: "As a cloud engineer, I want to create and upload a customized SUSE Linux virtual hard disk to Azure, so that I can automate the deployment of tailored virtual machines that meet my project's requirements."
 ---
 # Prepare a SLES or openSUSE Leap virtual machine for Azure
@@ -24,12 +24,18 @@ This article assumes that you already installed a SLES or openSUSE Leap Linux op
 
 ## SLES/openSUSE Leap installation notes
 
+> [!IMPORTANT]
+> The remote NVMe preparation steps in this article are optional. Complete them only if you're creating an image that you intend to deploy with a remote NVMe disk controller. If the target VM uses SCSI, skip every step labeled for remote NVMe and retain the standard settings. Remote NVMe requires a Gen2 image and a supported operating system release. Review [Supported OS images for remote NVMe](../enable-nvme-interface.md), and verify that the exact target VM size advertises NVMe in its `DiskControllerTypes` capability.
+
 * For more tips on preparing Linux images for Azure, see [General Linux installation notes](create-upload-generic.md#general-linux-installation-notes).
 * Azure doesn't support Windows Hard Disk Image (.vhdx) files. Only VHD (.vhd) files are supported outside virtual machines. You can convert the disk to VHD format by using Hyper-V Manager or the `Convert-VHD` cmdlet.
 * Azure supports Gen1 (BIOS boot) and Gen2 (UEFI boot) virtual machines.
 * The virtual file allocation table (VFAT) kernel module must be enabled in the kernel.
 * Don't configure a swap partition on the OS disk. You can configure the Linux agent to create a swap file on the temporary resource disk. Steps later in this article give more information about configuring swap space.
 * All VHDs on Azure must have a virtual size aligned to 1 MB. When you're converting from a raw disk to VHD, ensure that the raw disk size is a multiple of 1 MB before conversion. For more information, see [General Linux installation notes](create-upload-generic.md#general-linux-installation-notes).
+
+> [!IMPORTANT]
+> Swap guidance that uses the temporary resource disk applies only to VM sizes that include local temporary storage. The remote disk controller type, SCSI or NVMe, doesn't determine whether a resource disk is available.
 
 > [!NOTE]
 > Cloud-init version 21.2 or later removes the user-defined function (UDF) requirement. But without the `udf` module enabled, the CD-ROM won't mount during provisioning, which prevents the custom data from being applied. A workaround is to apply user data. However, unlike custom data, user data isn't encrypted. For more information, see [User data formats](https://cloudinit.readthedocs.io/en/latest/topics/format.html) in the cloud-init documentation.
@@ -46,13 +52,13 @@ As an alternative to building your own VHD, SUSE also publishes BYOS (bring your
 
     If your software hypervisor is not Hyper-V, other modules need to be added into the initial RAM disk (initramfs) to successfully boot in Azure.
 
-    Edit the */etc/dracut.conf* file and add the following line to the file:
+    Create the */etc/dracut.conf.d/azure.conf* file and add the following line:
 
     ```config
     add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
     ```
 
-    Run the `dracut` command to rebuild the initramfs file:
+    Rebuild initramfs:
 
     ```bash
     sudo dracut --verbose --force
@@ -75,19 +81,45 @@ As an alternative to building your own VHD, SUSE also publishes BYOS (bring your
     GRUB_SERIAL_COMMAND="serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1"
     ```
 
-    ```shell
-    /usr/sbin/grub2-mkconfig -o /boot/grub2/grub.cfg
+    ```bash
+    sudo /usr/sbin/grub2-mkconfig -o /boot/grub2/grub.cfg
     ```
 
-3. Register your SUSE Linux Enterprise system to allow it to download updates and install packages.
+3. **Only if you're creating an image for a remote NVMe disk controller**, add `nvme_core.io_timeout=240` to `GRUB_CMDLINE_LINUX_DEFAULT` in step 2, add `nvme nvme_core` to the `add_drivers` value in */etc/dracut.conf.d/azure.conf*, and then rebuild GRUB and initramfs. Otherwise, omit these settings.
 
-4. Update the system with the latest patches:
+    ```bash
+    sudo /usr/sbin/grub2-mkconfig -o /boot/grub2/grub.cfg
+    sudo dracut --verbose --force
+    ```
+
+    For a remote NVMe image only, verify the drivers:
+
+     1. Confirm that both NVMe modules exist in the kernel's module tree so they can be packaged into initramfs. This check reads the on-disk module files, so it succeeds even on a SCSI preparation VM and doesn't imply that NVMe is loaded or in use:
+
+         ```bash
+         modinfo nvme
+         modinfo nvme_core
+         ```
+
+         Each command must return module details. If either module isn't found, install or enable it by following the SUSE documentation before you continue.
+
+4. Confirm that the rebuilt initramfs package includes both NVMe drivers. This check confirms the image is ready:
+
+    ```bash
+    sudo lsinitrd /boot/initrd-$(uname -r) | grep -E 'nvme(_core)?\.ko'
+    ```
+
+    The output must list both the `nvme` and `nvme_core` drivers. After the image boots on an NVMe VM, verify the runtime timeout by running `cat /sys/module/nvme_core/parameters/io_timeout`; the expected value is `240`.
+
+5. Register your SUSE Linux Enterprise system to allow it to download updates and install packages.
+
+6. Update the system with the latest patches:
 
     ```bash
     sudo zypper update
     ```
 
-5. Install the Azure Linux VM Agent (`waagent`) and cloud-init:
+7. Install the Azure Linux VM Agent (`waagent`) and cloud-init:
 
     ```bash
     sudo SUSEConnect -p sle-module-public-cloud/15.2/x86_64  (SLES 15 SP2)
@@ -96,7 +128,7 @@ As an alternative to building your own VHD, SUSE also publishes BYOS (bring your
     sudo zypper install cloud-init
     ```
 
-6. Enable `waagent` and cloud-init to start on boot:
+8. Enable `waagent` and cloud-init to start on boot:
 
     ```bash
     sudo systemctl enable  waagent
@@ -108,7 +140,7 @@ As an alternative to building your own VHD, SUSE also publishes BYOS (bring your
     sudo cloud-init clean
     ```
 
-7. Update the cloud-init configuration:
+9. Update the cloud-init configuration:
 
     ```bash
     cat <<EOF | sudo tee /etc/cloud/cloud.cfg.d/91-azure_datasource.cfg
@@ -136,7 +168,7 @@ As an alternative to building your own VHD, SUSE also publishes BYOS (bring your
     sudo sed -i '/cloud_init_modules/a\\ - disk_setup' /etc/cloud/cloud.cfg
     ```
 
-8. If you want to mount, format, and create a swap partition, one option is to pass in a cloud-init configuration every time you create a VM.
+10. If you want to mount, format, and create a swap partition, one option is to pass in a cloud-init configuration every time you create a VM.
 
     Another option is to use a cloud-init directive in the image to configure swap space every time the VM is created:
 
@@ -164,7 +196,7 @@ As an alternative to building your own VHD, SUSE also publishes BYOS (bring your
     EOF
     ```
 
-9. Previously, the Azure Linux Agent was used to automatically configure swap space by using the local resource disk that's attached to the virtual machine after the virtual machine is provisioned on Azure. Because cloud-init now handles this step, you *must not* use the Azure Linux Agent to format the resource disk or create the swap file. Use these commands to modify */etc/waagent.conf* appropriately:
+11. Previously, the Azure Linux Agent was used to automatically configure swap space by using the local resource disk that's attached to the virtual machine after the virtual machine is provisioned on Azure. Because cloud-init now handles this step, you *must not* use the Azure Linux Agent to format the resource disk or create the swap file. Use these commands to modify */etc/waagent.conf* appropriately:
 
     ```bash
     sudo sed -i 's/Provisioning.UseCloudInit=n/Provisioning.UseCloudInit=auto/g' /etc/waagent.conf
@@ -176,9 +208,21 @@ As an alternative to building your own VHD, SUSE also publishes BYOS (bring your
     > [!NOTE]
     > If you're using a cloud-init version earlier than 21.2, make sure the `udf` module is enabled. Removing or disabling it will cause a provisioning or boot failure. Cloud-init version 21.2 or later removes the UDF requirement.
 
-10. Ensure that the */etc/fstab* file references the disk by using its UUID (`by-uuid`).
+12. For both SCSI and NVMe images, ensure that the */etc/fstab* file uses a UUID (`by-uuid`) or another persistent identifier. Don't use `/dev/sd*` or `/dev/nvme*` device names, because device names can change across reboots or when the disk controller changes.
 
-11. Remove udev rules and network adapter configuration files to avoid generating static rules for the Ethernet interfaces. These rules can cause problems when you're cloning a virtual machine in Microsoft Azure or Hyper-V.
+     1. List the block devices and their persistent identifiers so that you can compare them with the entries in `/etc/fstab`:
+
+         ```bash
+         sudo blkid
+         ```
+
+     1. Check `/etc/fstab` for syntax errors, invalid mount options, and references that can't be resolved:
+
+         ```bash
+         sudo findmnt --verify --verbose
+         ```
+
+13. Remove udev rules and network adapter configuration files to avoid generating static rules for the Ethernet interfaces. These rules can cause problems when you're cloning a virtual machine in Microsoft Azure or Hyper-V.
 
     ```bash
     sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
@@ -186,32 +230,32 @@ As an alternative to building your own VHD, SUSE also publishes BYOS (bring your
     sudo rm -f /etc/sysconfig/network/ifcfg-eth*
     ```
 
-12. We recommend that you edit the */etc/sysconfig/network/dhcp* file and change the `DHCLIENT_SET_HOSTNAME` parameter to the following:
+14. Edit the */etc/sysconfig/network/dhcp* file and change the `DHCLIENT_SET_HOSTNAME` parameter to the following value:
 
     ```config
     DHCLIENT_SET_HOSTNAME="no"
     ```
 
-13. In the */etc/sudoers* file, comment out or remove the following lines if they exist:
+15. In the */etc/sudoers* file, comment out or remove the following lines if they exist:
 
     ```output
     Defaults targetpw   # Ask for the password of the target user i.e. root
     ALL    ALL=(ALL) ALL   # WARNING! Only use this setting together with 'Defaults targetpw'!
     ```
 
-14. Ensure that the Secure Shell (SSH) server is installed and configured to start at boot time:
+16. Ensure that the Secure Shell (SSH) server is installed and configured to start at boot time:
 
     ```bash
     sudo systemctl enable sshd
     ```
 
-15. Clean the cloud-init stage:
+17. Clean the cloud-init stage:
 
     ```bash
     sudo cloud-init clean --seed --logs
     ```
 
-16. Run the following commands to deprovision the virtual machine and prepare it for provisioning on Azure.
+18. Run the following commands to deprovision the virtual machine and prepare it for provisioning on Azure.
 
     If you're migrating a specific virtual machine and don't want to create a generalized image, skip the deprovisioning step.
 
@@ -223,6 +267,9 @@ As an alternative to building your own VHD, SUSE also publishes BYOS (bring your
     ```
 
 ## Prepare openSUSE 15.4+
+
+> [!IMPORTANT]
+> openSUSE isn't currently listed in [Supported OS images for remote NVMe](../enable-nvme-interface.md). Prepare and deploy this image with a SCSI disk controller. Don't apply the SLES NVMe settings unless the support list is updated to include the openSUSE release that you're using.
 
 1. On the center pane of Hyper-V Manager, select the virtual machine.
 1. Select **Connect** to open the window for the virtual machine.
@@ -332,3 +379,5 @@ As an alternative to building your own VHD, SUSE also publishes BYOS (bring your
 ## Next steps
 
 You're now ready to use your SUSE Linux VHD to create new virtual machines in Azure. If this is the first time that you're uploading the .vhd file to Azure, see [Create a Linux VM from a custom disk](upload-vhd.md#option-1-upload-a-vhd).
+
+For an existing supported SLES VM that you need to move from SCSI to NVMe, use [Convert Linux and Windows VMs from SCSI to NVMe](../nvme-linux.md). For architecture and support information, see [NVMe overview](../nvme-overview.md).

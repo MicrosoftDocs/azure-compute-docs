@@ -1,18 +1,19 @@
 ---
-title: Increase performance of Premium SSDs and Standard SSD/HDDs
-description: Increase the performance of Azure Premium SSDs and Standard SSD/HDDs using performance plus.
+title: Increase performance of Premium SSD, Standard SSD, and Standard HDD
+description: Increase the performance of Azure Premium SSD, Standard SSD, and Standard HDD managed disks by using performance plus.
 author: roygara
 ms.service: azure-disk-storage
 ms.topic: how-to
-ms.date: 04/15/2025
+ai-usage: ai-assisted
+ms.date: 09/16/2026
 ms.author: rogarana
 ms.custom: devx-track-azurepowershell, portal
 # Customer intent: As an IT administrator, I want to enable performance enhancements on Azure disks, so that I can increase IOPS and throughput for demanding workloads without incurring additional costs.
 ---
 
-# Increase IOPS and throughput limits for Azure Premium SSDs and Standard SSD/HDDs
+# Increase IOPS and throughput limits for Premium SSD, Standard SSD, and Standard HDD
 
-The Input/Output Operations Per Second (IOPS) and throughput limits for Azure Premium solid-state drives (SSD), Standard SSDs, and Standard hard disk drives (HDD) that are 513 GiB and larger can be increased by enabling performance plus. Enabling performance plus improves the experience for workloads that require high IOPS and throughput, such as database and transactional workloads. There's no extra charge for enabling performance plus on a disk.
+You can increase the input/output operations per second (IOPS) and throughput limits for Premium SSD, Standard SSD, and Standard HDD managed disks that are 513 GiB and larger by enabling performance plus. Enabling performance plus improves the experience for workloads that require high IOPS and throughput, such as database and transactional workloads. There's no extra charge for enabling performance plus on a disk.
 
 Once enabled, the IOPS and throughput limits for an eligible disk increase to the higher maximum limits. To see the new IOPS and throughput limits for eligible disks, consult the columns that begin with "*Expanded" in the [Scalability and performance targets for VM disks](disks-scalability-targets.md) article.
 
@@ -45,7 +46,7 @@ export REGION="WestUS2"
 az group create -g $MY_RG -l $REGION
 ```
 
-Results:
+A successful response shows the resource group's `provisioningState` set to `Succeeded`:
 
 <!-- expected_similarity=0.3 -->
 ```JSON
@@ -61,7 +62,7 @@ Results:
 
 ### Create a new disk with performance plus enabled
 
-This step creates a new disk of 513 GiB (or larger) with performance plus enabled using a valid SKU value.
+The [az disk create](/cli/azure/disk#az-disk-create) command creates a disk in the resource group and region you defined earlier. Specify an eligible disk SKU and a size of 513 GiB or larger, and set `--performance-plus` to `true`.
 
 ```azurecli
 export MY_DISK="PerfPlusDisk$RANDOM_SUFFIX"
@@ -70,7 +71,7 @@ export DISK_SIZE=513
 az disk create -g $MY_RG -n $MY_DISK --size-gb $DISK_SIZE --sku $SKU -l $REGION --performance-plus true
 ```
 
-Results:
+A successful response shows `performancePlus` set to `true` and `provisioningState` set to `Succeeded`:
 
 <!-- expected_similarity=0.3 -->
 ```JSON
@@ -101,16 +102,16 @@ else
 fi
 ```
 
-Results:
+If the VM doesn't exist, the output confirms that disk attachment was skipped:
 
 <!-- expected_similarity=0.3 -->
 ```text
 VM NonExistentVM not found. Skipping disk attachment.
 ```
 
-### Create a new disk from an existing disk or snapshot with performance plus enabled
+### Create a new disk from an existing disk with performance plus enabled
 
-This series of steps creates a separate resource group and then creates a new disk from an existing disk or snapshot. Replace the SOURCE_URI with a valid source blob URI that belongs to the same region (WestUS2) as the disk.
+This series of steps creates a snapshot from an existing disk and then uses `az disk create` to create a new disk from that snapshot. The source disk, snapshot, and new disk must be in the same region. Specify an eligible disk SKU and a size of 513 GiB or larger, and set `--performance-plus` to `true`.
 
 #### Create a resource group for migration
 
@@ -121,7 +122,7 @@ export REGION="WestUS2"
 az group create -g $MY_MIG_RG -l $REGION
 ```
 
-Results:
+A successful response shows the migration resource group's `provisioningState` set to `Succeeded`:
 
 <!-- expected_similarity=0.3 -->
 ```JSON
@@ -135,7 +136,7 @@ Results:
 }
 ```
 
-#### Create the disk from an existing snapshot or disk
+#### Create the disk from the snapshot
 
 ```azurecli
 # Create a snapshot from the original disk
@@ -170,7 +171,7 @@ az disk create \
   --location $REGION
 ```
 
-Results:
+A successful response shows `performancePlus` set to `true` and `provisioningState` set to `Succeeded` for the new disk:
 
 <!-- expected_similarity=0.3 -->
 ```JSON
@@ -183,7 +184,7 @@ Results:
     "diskSizeGb": 513,
     "sku": "Premium_LRS",
     "performancePlus": true,
-    "source": "https://examplestorageaccount.blob.core.windows.net/snapshots/sample-westus2.vhd"
+    "source": "/subscriptions/xxxxx/resourceGroups/PerfPlusRGxxx/providers/Microsoft.Compute/snapshots/PerfPlusSnapshotxxx"
   },
   "type": "Microsoft.Compute/disks"
 }
@@ -202,7 +203,7 @@ $region = "WestUS2"
 New-AzResourceGroup -Name $myRG -Location $region
 ```
 
-Results:
+A successful response shows the resource group's `ProvisioningState` set to `Succeeded`:
 
 <!-- expected_similarity=0.3 -->
 ```JSON
@@ -215,7 +216,7 @@ Results:
 
 ### Create a new disk with performance plus enabled
 
-This step creates a new disk with performance plus enabled using a valid SKU value.
+Use the [New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig) cmdlet to create a disk configuration for an eligible SKU and a size of 513 GiB or larger, with `-PerformancePlus` set to `$true`. Then, use the [New-AzDisk](/powershell/module/az.compute/new-azdisk) cmdlet to create the disk in the resource group you defined earlier.
 
 ```azurepowershell
 $myDisk = "PerfPlusDisk$RANDOM_SUFFIX"
@@ -225,7 +226,7 @@ $diskConfig = New-AzDiskConfig -Location $region -CreateOption Empty -DiskSizeGB
 $dataDisk = New-AzDisk -ResourceGroupName $myRG -DiskName $myDisk -Disk $diskConfig
 ```
 
-Results:
+A successful response shows `PerformancePlus` set to `true` and `ProvisioningState` set to `Succeeded`:
 
 <!-- expected_similarity=0.3 -->
 ```JSON
@@ -253,16 +254,16 @@ if (Get-AzVM -ResourceGroupName $myRG -Name $myVM -ErrorAction SilentlyContinue)
 }
 ```
 
-Results:
+If the VM doesn't exist, the output confirms that disk attachment was skipped:
 
 <!-- expected_similarity=0.3 -->
 ```text
 VM NonExistentVM not found. Skipping disk attachment.
 ```
 
-### Create a new disk from an existing disk or snapshot with performance plus enabled
+### Create a new disk from a source VHD with performance plus enabled
 
-This series of steps creates a separate resource group and then creates a new disk from an existing disk or snapshot. Replace the $sourceURI with a valid source blob URI that belongs to the same region (WestUS2) as the disk.
+This series of steps creates a separate resource group and then uses `New-AzDiskConfig` and `New-AzDisk` to create a new disk with performance plus enabled from a source VHD. Replace `$sourceURI` with a valid source blob URI in the same region as the new disk. Specify an eligible disk SKU and a size of 513 GiB or larger, and set `-PerformancePlus` to `$true`.
 
 #### Create a resource group for migration
 
@@ -273,7 +274,7 @@ $region = "WestUS2"
 New-AzResourceGroup -Name $myMigrRG -Location $region
 ```
 
-Results:
+A successful response shows the migration resource group's `ProvisioningState` set to `Succeeded`:
 
 <!-- expected_similarity=0.3 -->
 ```JSON
@@ -284,7 +285,7 @@ Results:
 }
 ```
 
-#### Create the disk from an existing snapshot or disk
+#### Create the disk from the source VHD
 
 ```azurepowershell
 $myDisk = "PerfPlusMigrDisk$RANDOM_SUFFIX"
@@ -295,7 +296,7 @@ $diskConfig = New-AzDiskConfig -Location $region -CreateOption Copy -DiskSizeGB 
 $dataDisk = New-AzDisk -ResourceGroupName $myMigrRG -DiskName $myDisk -Disk $diskConfig
 ```
 
-Results:
+A successful response shows `PerformancePlus` set to `true` and `ProvisioningState` set to `Succeeded` for the new disk:
 
 <!-- expected_similarity=0.3 -->
 ```JSON
@@ -324,7 +325,7 @@ if (Get-AzVM -ResourceGroupName $myMigrRG -Name $myVM -ErrorAction SilentlyConti
 }
 ```
 
-Results:
+If the VM doesn't exist, the output confirms that disk attachment was skipped:
 
 <!-- expected_similarity=0.3 -->
 ```text
@@ -339,10 +340,10 @@ VM NonExistentVM not found. Skipping disk attachment.
 1. Search for and navigate to **Disks** and create a new disk.
 1. On **Basics**, fill out the required fields.
 1. Select the **Source type** that you'd like.
-1. Then select **Change size** and select the disk type you'd like and choose a size larger than 513 GiB.
+1. Select **Change size**, choose the disk type you want, and select a size of 513 GiB or larger.
 1. Proceed to **Advanced** and select the checkbox next to **Enable performance plus**.
 1. Select **Review + create** and then deploy your disk.
 
-:::image type="content" source="media/disks-enable-performance/disks-performance-plus-enable.png" alt-text="Screenshot of disks advanced page in the disk portal deployment." lightbox="media/disks-enable-performance/disks-performance-plus-enable.png":::
+:::image type="content" source="media/disks-enable-performance/disks-performance-plus-enable.png" alt-text="Screenshot of the managed disk Advanced pane with Enable performance plus selected." lightbox="media/disks-enable-performance/disks-performance-plus-enable.png":::
 
 ---

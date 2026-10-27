@@ -311,7 +311,7 @@ VMs on Azure now support the following patch orchestration modes:
 - Use Compute API version 2021-03-01 or higher to access all functionality including on-demand assessment and on-demand patching.
 - Custom images aren't currently supported.
 - VMSS Flexible Orchestration requires the installation of [Application Health extension](../virtual-machine-scale-sets/virtual-machine-scale-sets-health-extension.md). This is optional for IaaS VMs.
-
+  
 ## Enable automatic VM guest patching
 Automatic VM guest patching can be enabled on any Windows or Linux VM that is created from a supported platform image.
 
@@ -450,6 +450,16 @@ The `patchStatus` section of the instance view response provides details on the 
 The assessment results for your VM can be reviewed under the `availablePatchSummary` section. An assessment is periodically conducted for a VM that has automatic VM guest patching enabled. The count of available patches after an assessment is provided under `criticalAndSecurityPatchCount` and `otherPatchCount` results. Automatic VM guest patching installs all patches assessed under the *Critical* and *Security* patch classifications. Any other assessed patch is skipped.
 
 The patch installation results for your VM can be reviewed under the `lastPatchInstallationSummary` section. This section provides details on the last patch installation attempt on the VM, including the number of patches that were installed, pending, failed, or skipped. Patches are installed only during the off-peak hours maintenance window for the VM. Pending and failed patches are automatically retried during the next off-peak hours maintenance window.
+
+### Automatic VM Guest Patching support after VM restore
+
+Automatic VM Guest Patching and Hotpatching support can be lost after restoring a virtual machine from backup, depending on the restore method used.
+
+- **Original Location Restore (OLR):** Automatic VM Guest Patching support is retained because the original VM metadata, including image reference information, is preserved.
+- **Alternate Location Restore (ALR):** Automatic VM Guest Patching support may be lost because the restore operation creates a new VM instance that doesn't retain the original image reference metadata. The restored VM may be treated as a custom image VM and may no longer qualify for Automatic VM Guest Patching or Hotpatching. The restored VM may be treated as a custom image VM. Because custom images aren't currently supported for Automatic VM Guest Patching, the VM may no longer qualify for Automatic VM Guest Patching or Hotpatching.
+
+To preserve Automatic VM Guest Patching and Hotpatching support after a restore operation, use **Original Location Restore (OLR)** whenever possible.
+[Azure Virtual Machine restore process](/azure/backup/about-azure-vm-restore)
 
 ## Disable automatic VM guest patching
 Automatic VM guest patching can be disabled by changing the [patch orchestration mode](#patch-orchestration-modes) for the VM.

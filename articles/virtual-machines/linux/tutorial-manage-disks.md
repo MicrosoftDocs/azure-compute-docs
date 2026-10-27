@@ -5,7 +5,7 @@ author: roygara
 ms.author: rogarana
 ms.service: azure-disk-storage
 ms.topic: tutorial
-ms.date: 06/02/2026
+ms.date: 09/21/2026
 ms.custom: mvc, devx-track-azurecli, linux-related-content
 ai-usage: ai-assisted
 # Customer intent: As an IT administrator, I want to use the Azure CLI to manage VM disks, so that I can efficiently create, attach, and configure storage for Azure virtual machines in a cloud environment.
@@ -34,7 +34,7 @@ When an Azure virtual machine is created, two disks are automatically attached t
 
 **Temporary disk** - Temporary storage uses local storage on the same Azure host as the VM. Depending on the VM size and generation, this storage might appear as a temporary disk or local NVMe disk. It's high-performance, but nonpersistent. If the VM is moved to a new host, data on temporary storage is removed. The available size depends on the VM size.
 
-## data disks
+## Data disks
 
 To install applications and store data, additional data disks can be added. Data disks should be used in any situation where durable and responsive data storage is desired. The size of the virtual machine determines how many data disks can be attached to a VM.
 
@@ -68,7 +68,7 @@ Create a resource group with the [az group create](/cli/azure/group#az-group-cre
 az group create --name myResourceGroupDisk --location eastus
 ```
 
-Create a VM using the [az vm create](/cli/azure/vm#az-vm-create) command. The following example creates a VM named *myVM*, adds a user account named *azureuser*, and generates SSH keys if they don't already exist. The `--data-disk-sizes-gb` argument specifies additional data disks to create and attach. To create and attach more than one disk, use a space-delimited list of disk sizes. In the following example, a VM is created with two data disks, both 128 GB. Because the disk sizes are 128 GB, these disks are both configured as P10s, which provide maximum 500 IOPS per disk.
+Create a VM by using the [az vm create](/cli/azure/vm#az-vm-create) command. The following example creates a VM named *myVM*, adds a user account named *azureuser*, and generates SSH keys if they don't already exist. The `--data-disk-sizes-gb` argument specifies extra data disks to create and attach. To create and attach more than one disk, use a space-delimited list of disk sizes. In the following example, you create a VM with two data disks, both 128 GiB. Because the disks are 128 GiB, you configure both as P10 disks, which provide a maximum of 500 IOPS per disk.
 
 ```azurecli-interactive
 az vm create \
@@ -83,7 +83,7 @@ az vm create \
 
 ### Attach disk to existing VM
 
-To create and attach a new disk to an existing virtual machine, use the [az vm disk attach](/cli/azure/vm/disk#az-vm-disk-attach) command. The following example creates a premium disk, 128 gigabytes in size, and attaches it to the VM created in the last step.
+To create and attach a new disk to an existing virtual machine, use the [az vm disk attach](/cli/azure/vm/disk#az-vm-disk-attach) command. The following example creates a 128-GiB premium disk and attaches it to the VM created in the last step.
 
 ```azurecli-interactive
 az vm disk attach \
@@ -95,9 +95,9 @@ az vm disk attach \
     --new
 ```
 
-## Prepare data disks
+## Prepare a data disk in Linux
 
-Once a disk has been attached to the virtual machine, the operating system needs to be configured to use the disk. The following example shows how to manually configure a disk. This process can also be automated using cloud-init, which is covered in a [later tutorial](./tutorial-automate-vm-deployment.md).
+After you attach a disk to the virtual machine, configure the operating system to use the disk. The following examples manually configure the first 128-GiB data disk that was attached when you created the VM. The VM's disk controller determines how Linux exposes the disk. You can also automate this process by using cloud-init, which is covered in a [later tutorial](./tutorial-automate-vm-deployment.md).
 
 
 Create an SSH connection with the virtual machine. Replace the example IP address with the public IP of the virtual machine.
@@ -106,17 +106,27 @@ Create an SSH connection with the virtual machine. Replace the example IP addres
 ssh azureuser@10.101.10.10
 ```
 
-Partition the disk with `parted`.
+Verify that you identified the correct data disk before you format it. Formatting the wrong disk results in data loss.
+
+### [SCSI](#tab/scsi)
+
+On a VM with a SCSI controller, use `lsblk` to identify the data disk. The following examples use `/dev/sdc`. Replace `sdc` with the device name for your data disk.
+
+```bash
+lsblk -o NAME,HCTL,SIZE,MOUNTPOINT | grep -i "sd"
+```
+
+Partition the disk with `parted`, then use `partprobe` to make the operating system aware of the new partition table.
 
 ```bash
 sudo parted /dev/sdc --script mklabel gpt mkpart xfspart xfs 0% 100%
+sudo partprobe /dev/sdc
 ```
 
-Write a file system to the partition by using the `mkfs` command. Use `partprobe` to make the OS aware of the change.
+Write a file system to the partition by using the `mkfs` command.
 
 ```bash
 sudo mkfs.xfs /dev/sdc1
-sudo partprobe /dev/sdc1
 ```
 
 Mount the new disk so that it is accessible in the operating system.
@@ -138,8 +148,43 @@ Filesystem      Size  Used Avail Use% Mounted on
 /dev/sda1        29G  2.0G   27G   7% /
 /dev/sda15      105M  3.6M  101M   4% /boot/efi
 /dev/sdb1        14G   41M   13G   1% /mnt
-/dev/sdc1        50G   52M   47G   1% /datadrive
+/dev/sdc1       128G   52M  128G   1% /datadrive
 ```
+
+### [NVMe](#tab/nvme)
+
+On a VM with an NVMe controller, use `azure-nvme-id` from the [azure-vm-utils](azure-virtual-machine-utilities.md) package to identify the data disk. If the package isn't installed, follow the installation guidance in the azure-vm-utils article before you run the command. The following examples use `/dev/nvme0n2`. Replace `nvme0n2` with the device name for your data disk.
+
+```bash
+sudo azure-nvme-id
+```
+
+Partition the disk with `parted`, then use `partprobe` to make the operating system aware of the new partition table.
+
+```bash
+sudo parted /dev/nvme0n2 --script mklabel gpt mkpart xfspart xfs 0% 100%
+sudo partprobe /dev/nvme0n2
+```
+
+Write a file system to the partition by using the `mkfs` command.
+
+```bash
+sudo mkfs.xfs /dev/nvme0n2p1
+```
+
+Mount the new disk so that it is accessible in the operating system.
+
+```bash
+sudo mkdir /datadrive && sudo mount /dev/nvme0n2p1 /datadrive
+```
+
+Verify that the data disk is mounted at `/datadrive`.
+
+```bash
+df -h | grep -i "nvme"
+```
+
+---
 
 To ensure that the drive is remounted after a reboot, it must be added to the */etc/fstab* file. To do so, get the UUID of the disk with the `blkid` utility.
 
@@ -147,7 +192,7 @@ To ensure that the drive is remounted after a reboot, it must be added to the */
 sudo -i blkid
 ```
 
-The output displays the UUID of the drive, `/dev/sdc1` in this case.
+The output displays the UUID of the drive. On a VM with a SCSI controller, the partition might appear as `/dev/sdc1`. On a VM with an NVMe controller, it might appear as `/dev/nvme0n2p1`.
 
 ```bash
 /dev/sdc1: UUID="33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e" TYPE="xfs"
@@ -214,6 +259,16 @@ az disk create \
 
 ### Restore virtual machine from snapshot
 
+Before you delete the VM, use [az vm show](/cli/azure/vm#az-vm-show) to store the resource IDs of all its data disks in the `dataDiskIds` variable.
+
+```azurecli-interactive
+dataDiskIds=$(az vm show \
+   --resource-group myResourceGroupDisk \
+   --name myVM \
+   --query "storageProfile.dataDisks[].managedDisk.id" \
+   --output tsv)
+```
+
 To demonstrate virtual machine recovery, delete the existing virtual machine using [az vm delete](/cli/azure/vm#az-vm-delete).
 
 ```azurecli-interactive
@@ -232,26 +287,19 @@ az vm create \
     --os-type linux
 ```
 
-### Reattach data disk
+### Reattach data disks
 
 All data disks need to be reattached to the virtual machine.
 
-Find the data disk name using the [az disk list](/cli/azure/disk#az-disk-list) command. This example places the name of the disk in a variable named `datadisk`, which is used in the next step.
+Use [az vm disk attach](/cli/azure/vm/disk#az-vm-disk-attach) with each resource ID to reattach all the data disks.
 
 ```azurecli-interactive
-datadisk=$(az disk list \
-   -g myResourceGroupDisk \
-   --query "[?contains(name,'myVM')].[id]" \
-   -o tsv)
-```
-
-Use the [az vm disk attach](/cli/azure/vm/disk#az-vm-disk-attach) command to attach the disk.
-
-```azurecli-interactive
-az vm disk attach \
-   --resource-group myResourceGroupDisk \
-   --vm-name myVM \
-   --name $datadisk
+for dataDiskId in $dataDiskIds; do
+   az vm disk attach \
+      --resource-group myResourceGroupDisk \
+      --vm-name myVM \
+      --name "$dataDiskId"
+done
 ```
 
 ## Next steps

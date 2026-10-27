@@ -6,9 +6,9 @@ ms.service: azure-virtual-machines
 ms.custom: linux-related-content
 ms.collection: linux
 ms.topic: how-to
-ms.date: 07/28/2021
+ms.date: 09/09/2026
 ms.author: vakavuru
-ms.reviewer: mattmcinnes
+ms.reviewer: mattmcinnes, divargas
 # Customer intent: "As a cloud administrator, I want to create and upload a custom Ubuntu Linux VHD to Azure so that I can deploy specialized virtual machines tailored to my organization's specific needs."
 ---
 
@@ -33,11 +33,17 @@ This article assumes that you've already installed an Ubuntu Linux operating sys
 
 ### Ubuntu installation notes
 
+> [!IMPORTANT]
+> The remote NVMe preparation step in this article is optional. Complete it only if you're creating an image that you intend to deploy with a remote NVMe disk controller. If the target VM uses SCSI, skip the remote NVMe step and retain the standard settings. Remote NVMe requires a Gen2 image. Verify that the Ubuntu release is listed in [Supported OS images for remote NVMe](../enable-nvme-interface.md) and that the exact target VM size advertises NVMe in its `DiskControllerTypes` capability.
+
 * For more tips on preparing Linux for Azure, see [General Linux installation notes](create-upload-generic.md#general-linux-installation-notes).
 * The VHDX format isn't supported in Azure, only *fixed VHD*. You can convert the disk to VHD format by using Hyper-V Manager or the `Convert-VHD` cmdlet.
 * When you install the Linux system, we recommend that you use standard partitions rather than Logical Volume Manager (LVM), which is often the default for many installations. These standard partitions avoid LVM name conflicts with cloned VMs, particularly if an OS disk ever needs to be attached to another VM for troubleshooting. [LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm) or [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid) can also be used on data disks.
-* Don't configure a swap partition or swap file on the OS disk. You can configure the `cloud-init` provisioning agent to create a swap file or a swap partition on the temporary resource disk. For more information about this process, see [Create a SWAP partition for an Azure Linux VM](https://learn.microsoft.com/troubleshoot/azure/virtual-machines/linux/create-swap-file-linux-vm).
+* Don't configure a swap partition or swap file on the OS disk. You can configure the `cloud-init` provisioning agent to create a swap file or a swap partition on the temporary resource disk. For more information about this process, see [Create a SWAP partition for an Azure Linux VM](/troubleshoot/azure/virtual-machines/linux/create-swap-file-linux-vm).
 * All VHDs on Azure must have a virtual size aligned to 1 MB. When you convert from a raw disk to VHD, you must ensure that the raw disk size is a multiple of 1 MB before conversion. For more information, see [Linux installation notes](create-upload-generic.md#general-linux-installation-notes).
+
+> [!IMPORTANT]
+> Swap guidance that uses the temporary resource disk applies only to VM sizes that include local temporary storage. The remote disk controller type, SCSI or NVMe, doesn't determine whether a resource disk is available.
 
 You can upload a prebuilt Ubuntu image directly to Azure and use the resulting VHD to create new virtual machines. If this is your first time uploading a `.vhd` file, see [Create a Linux VM from a custom disk](upload-vhd.md#option-1-upload-a-vhd).
 
@@ -52,8 +58,6 @@ You can upload a prebuilt Ubuntu image directly to Azure and use the resulting V
      sudo tar --sparse -xvzf <image name>-azure.vhd.tar.gz 
 ```
 
-
->
 1. In the center pane of Hyper-V Manager, select the VM.
 
 1. Select **Connect** to open the window for the VM.
@@ -103,10 +107,59 @@ You can upload a prebuilt Ubuntu image directly to Azure and use the resulting V
 1. Modify the kernel boot line for GRUB to include extra kernel parameters for Azure. To do this step, open `/etc/default/grub` in a text editor, find the variable called `GRUB_CMDLINE_LINUX_DEFAULT` (or add it if needed), and edit it to include the following parameters:
 
     ```config
-    GRUB_CMDLINE_LINUX_DEFAULT="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 rootdelay=300 quiet splash"
+        GRUB_CMDLINE_LINUX_DEFAULT="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 rootdelay=300 quiet splash"
     ```
 
 1. Save and close this file, and then run `sudo update-grub`. This step ensures that all console messages are sent to the first serial port, which can assist Azure technical support with debugging issues.
+
+1. **Only if you're creating an image for a remote NVMe disk controller**, configure and verify NVMe boot support. Otherwise, skip this step.
+
+     1. Make the NVMe drivers persistent so they're added to every future initramfs, and then rebuild the current initramfs. The loop skips modules that are already listed, which avoids duplicate entries:
+
+         ```bash
+         for module in nvme nvme_core; do
+           grep -qxF "$module" /etc/initramfs-tools/modules || echo "$module" | sudo tee -a /etc/initramfs-tools/modules
+         done
+         sudo update-initramfs -u -k all
+         ```
+
+     1. Add the Azure NVMe I/O timeout to the kernel command line, and then rebuild the GRUB configuration so the setting persists across reboots:
+
+         ```bash
+         sudo sed -i '/^GRUB_CMDLINE_LINUX_DEFAULT=/ s/"$/ nvme_core.io_timeout=240"/' /etc/default/grub
+         sudo update-grub
+         ```
+
+     1. Confirm that both NVMe modules exist in the kernel's module tree so they can be packaged into initramfs. This check reads the on-disk module files, so it succeeds even on a SCSI preparation VM and doesn't imply that NVMe is loaded or in use:
+
+         ```bash
+         modinfo nvme
+         modinfo nvme_core
+         ```
+
+         Each command must return module details. If either module isn't found, install or enable it by following the Ubuntu kernel documentation before you continue.
+
+1. Confirm that the rebuilt initramfs package includes both NVMe drivers. This check confirms the image is ready:
+
+    ```bash
+    sudo lsinitramfs /boot/initrd.img-$(uname -r) | grep -E 'nvme(_core)?\.ko'
+    ```
+
+    The output must list both the `nvme` and `nvme_core` drivers. After the image boots on an NVMe VM, verify the runtime timeout by running `cat /sys/module/nvme_core/parameters/io_timeout`; the expected value is `240`.
+
+1. For both SCSI and NVMe images, use file-system UUIDs or another persistent identifier in `/etc/fstab`. Don't use `/dev/sd*` or `/dev/nvme*` device names, because device names can change across reboots or when the disk controller changes.
+
+     1. List the block devices and their persistent identifiers so that you can compare them with the entries in `/etc/fstab`:
+
+         ```bash
+         sudo blkid
+         ```
+
+     1. Check `/etc/fstab` for syntax errors, invalid mount options, and references that can't be resolved:
+
+         ```bash
+         sudo findmnt --verify --verbose
+         ```
 
 1. Ensure that the SSH server is installed and configured to start at boot time. This setting is usually the default.
 
@@ -216,41 +269,31 @@ You can upload a prebuilt Ubuntu image directly to Azure and use the resulting V
 
 1. Azure only accepts fixed-size VHDs. If the VM's OS disk isn't a fixed-size VHD, use the `Convert-VHD` PowerShell cmdlet and specify the `-VHDType Fixed` option. For more information, look at the docs for `Convert-VHD` at [Convert-VHD](/powershell/module/hyper-v/convert-vhd).
 
-1. To bring a Generation 2 VM on Azure, follow these steps:
+1. To bring a Generation 2 VM on Azure, create the fallback UEFI boot path:
 
-   1. Change the directory to the `boot EFI` directory:
-    
+   1. Copy the `ubuntu` EFI directory to a new directory named `boot`:
+
         ```bash
-        cd /boot/efi/EFI
+        sudo cp -rp /boot/efi/EFI/ubuntu /boot/efi/EFI/boot
         ```
 
-   1. Copy the `ubuntu` directory to a new directory named `boot`:
+   1. Rename the EFI loader to the fallback boot loader name:
 
         ```bash
-        sudo cp -r ubuntu/ boot
+        sudo mv /boot/efi/EFI/boot/shimx64.efi /boot/efi/EFI/boot/bootx64.efi
         ```
 
-   1. Change the directory to the newly created boot directory:
+   1. Rename the GRUB configuration file to the fallback name:
 
         ```bash
-        cd boot
-        ```
-
-   1. Rename the `shimx64.efi` file:
-
-        ```bash
-        sudo mv shimx64.efi bootx64.efi
-        ```
-
-   1. Rename the `grub.cfg` file to `bootx64.cfg`:
-
-        ```bash
-        sudo mv grub.cfg bootx64.cfg
+        sudo mv /boot/efi/EFI/boot/grub.cfg /boot/efi/EFI/boot/bootx64.cfg
         ```
 
 ## Related content
 
 You're now ready to use your Ubuntu Linux VHD to create new VMs in Azure. If this is the first time that you're uploading the .vhd file to Azure, see [Create a Linux VM from a custom disk](upload-vhd.md#option-1-upload-a-vhd).
+
+For an existing Azure VM that you need to move from SCSI to NVMe, use [Convert Linux and Windows VMs from SCSI to NVMe](../nvme-linux.md). For architecture and support information, see [NVMe overview](../nvme-overview.md).
 
 
 

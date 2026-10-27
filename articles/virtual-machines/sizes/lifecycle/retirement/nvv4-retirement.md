@@ -12,7 +12,7 @@ ms.topic: how-to
 ms.date:     06/13/2025
 ---
 
-# Migrate your NVv4-series virtual machines by September 30, 2026
+# NVv4-series Virtual Machines Retired on September 30, 2026
 > [!NOTE]
 > There is a known resize operation error that occurs when migrating from the NVv4-series to the NVads_V710_v5-series. To unblock this, register your subscription ID under the Azure Feature Exposure Control (AFEC) ‘VMTempDiskResizePreview’. The AFEC is also discoverable in the portal. Then, confirm the AFEC registration status before resizing the VMs. 
 
@@ -22,7 +22,7 @@ ms.date:     06/13/2025
 > [!NOTE]
 > All Compute Pre-Purchase (CPP) sales for the NVv4-series ended on June 2, 2026.  
 
-On September 30, 2026, Microsoft Azure will retire the Standard_NV4as_v4, Standard_NV4ahs_v4, Standard_NV8as_v4, Standard_NV8ahs_v4, Standard_NV16as_v4, Standard_NV16ahs_v4, Standard_NV32as_v4, and Standard_NV32ahs_v4 virtual machines (VMs) in NVv4-series virtual machines (VMs). To avoid any disruption to your service, we recommend that you change the VM sizing for your workloads from the current NVv4-series VMs to the newer VM series in the same NV product line.
+On September 30, 2026, Microsoft Azure retired the Standard_NV4as_v4, Standard_NV4ahs_v4, Standard_NV8as_v4, Standard_NV8ahs_v4, Standard_NV16as_v4, Standard_NV16ahs_v4, Standard_NV32as_v4, and Standard_NV32ahs_v4 virtual machines (VMs) in NVv4-series virtual machines (VMs). To avoid unplanned disruption, customers who were using these VM sizes were required to migrate to supported VM series prior to the retirement date using the migration guidance below. 
 
 Microsoft is recommending the Azure [NVads_V710_v5-series](/azure/virtual-machines/sizes/gpu-accelerated/nvadsv710-v5-series?tabs=sizebasic) VMs, which offer greater GPU memory bandwidth per GPU. The NVads_V710_v5-series VMs take advantage of the AMD Simultaneous Multithreading technology to assign dedicated vCPU threads to each VM and support NVMe for ephemeral local storage capability. 
 
@@ -44,9 +44,9 @@ __After__ __September 30th, 2026, any remaining__ __NVv4-series virtual machin
 > [!NOTE]
 > This retirement only impacts the virtual machine sizes in the NVv4-series powered by AMD Radeon Instinct MI25 GPUs. For NVv3-series virtual machines, see the [NVv3-series virtual machines retirement guide](/azure/virtual-machines/sizes/lifecycle/retirement/nvv3-series-retirement). This retirement announcement doesn't apply to NVadsA10_v5 or NVads_V710_v5 series virtual machines. 
 
-## What action do I need to take before the retirement date? 
+## What action did I need to take before the retirement date? 
 
-You need to resize or deallocate your NVv4-series VMs. We recommend that you change VM sizes for these workloads from the original NVv4-series VMs to the NVads_V710_v5-series VMs (or an alternative).
+You needed to resize or deallocate your NVv4-series VMs. We recommend that you change VM sizes for these workloads from the original NVv4-series VMs to the NVads_V710_v5-series VMs (or an alternative).
 
 The [NVads_V710_v5-series](/azure/virtual-machines/sizes/gpu-accelerated/nvadsv710-v5-series?tabs=sizebasic) is powered by AMD Radeon™ Pro V710 GPUs and AMD EPYC™ 9V64 F (Genoa) processors. The VMs feature up to 1 AMD Radeon™ Pro V710 GPU with 24GB memory each, up to 28 multithreaded AMD EPYC 9V64 F processor cores and 160 GiB of system memory. Check [Azure Regions by Product page](https://azure.microsoft.com/explore/global-infrastructure/products-by-region/) for region availability. Visit the [Azure Virtual Machine pricing page](https://azure.microsoft.com/pricing/details/virtual-machines/) for pricing information.
 
