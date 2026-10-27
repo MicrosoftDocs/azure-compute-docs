@@ -29,7 +29,7 @@ When you enable replication for a VM, the Site Recovery Mobility service extensi
 For a separate, same-region recovery option that retains an eligible existing VM resource, see [zone resilience for Azure VMs (Preview)](../zone-resilience.md). It isn't a Site Recovery workflow or a replacement for regional disaster recovery.
 
 > [!IMPORTANT]
-> Don't use this preview to fail over production VMs during an availability zone outage because it can cause data or disk corruption. Review the [preview limitations](../zone-resilience.md#limitations) before enabling the feature.
+> Don't use this preview to fail over production VMs during an availability zone outage because it can cause data or disk corruption. This is a temporary preview limitation; support for this scenario is planned for a future update. Review the [preview limitations](../zone-resilience.md#limitations) before enabling the feature.
 If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 ## Prerequisites

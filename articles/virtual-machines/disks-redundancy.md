@@ -39,7 +39,7 @@ A ZRS disk lets you recover from failures in availability zones. If a zone went 
 As a prerequisite, the OS disk and every attached data disk must use supported ZRS managed disks, and you must enable zone resilience before an outage. For more details, refer to the [zone resilience documentation](zone-resilience.md#requirements).
 
 > [!IMPORTANT]
-> Don't use this preview to fail over production VMs during a zone outage because it can cause data or disk corruption. See the [preview requirements and limitations](zone-resilience.md#requirements).
+> Don't use this preview to fail over production VMs during a zone outage because it can cause data or disk corruption. This is a temporary preview limitation; support for this scenario is planned for a future update. See the [preview requirements and limitations](zone-resilience.md#requirements).
 
 ZRS disks can also be shared between VMs for improved availability with clustered or distributed applications like SQL FCI, SAP ASCS/SCS, or GFS2. A shared ZRS disk can be attached to primary and secondary VMs in different zones to take advantage of both ZRS and [availability zones](/azure/reliability/availability-zones-overview). If your primary zone fails, you can quickly fail over to the secondary VM by using [SCSI persistent reservation](disks-shared-enable.md#supported-scsi-persistent-reservation-commands).
 
