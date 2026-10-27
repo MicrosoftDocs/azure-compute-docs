@@ -38,7 +38,7 @@ Ebdsv5-series sizes run on the Intel® Xeon® Platinum 8370C (Ice Lake) processo
 - [Live Migration](../../maintenance-and-updates.md): Supported
 - [Memory Preserving Updates](../../maintenance-and-updates.md): Supported
 - [VM Generation Support](../../generation-2.md): Generation 1 and Generation 2
-- [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported (required)
+- [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Required
 - [Ephemeral OS Disks](../../ephemeral-os-disks.md): Supported
 - Nested virtualization: Supported
 - NVMe Interface: Supported only on Generation 2 VMs
@@ -80,7 +80,7 @@ Ebsv5-series sizes run on the Intel® Xeon® Platinum 8272CL (Cascade Lake). The
 - [Live Migration](../../maintenance-and-updates.md): Supported
 - [Memory Preserving Updates](../../maintenance-and-updates.md): Supported
 - [VM Generation Support](../../generation-2.md): Generation 1 and Generation 2
-- [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Supported (required)
+- [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli): Required
 - [Ephemeral OS Disks](../../ephemeral-os-disks.md): Not supported
 - Nested virtualization: Supported
 - NVMe Interface: Supported only on Generation 2 VMs
