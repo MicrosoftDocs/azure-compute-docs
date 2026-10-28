@@ -1,13 +1,13 @@
 ---
 title: DCedsv6-series
 description: Information on and specifications of the DCedsv6-series sizes
-author: simranparkhe
+author: michamcr
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
 ms.date: 03/10/2026
-ms.author: simranparkhe
-ms.reviewer: simranparkhe
+ms.author: mmcrey
+ms.reviewer: mmcrey
 # Customer intent: As a cloud architect, I want to review the specifications and features of the DCesv6-series virtual machine sizes, so that I can select the appropriate size for my applications based on performance and resource needs.
 ---
 
