@@ -72,6 +72,19 @@ Each size offers local (temp) storage. Disk size is per disk, while IOPS and ban
 | Standard_EC48eds_v6 | 6 | 440 | 900,000 | 6,720 |
 | Standard_EC64eds_v6 | 4 | 880 | 1,200,000 | 8,576 |
 
+#### Storage resources
+- [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)
+- [Azure managed disk types](../../../virtual-machines/disks-types.md)
+- [Share an Azure managed disk](../../../virtual-machines/disks-shared.md)
+
+#### Table definitions
+
+- Total local temporary storage is calculated by multiplying the max number of storage disks by the temp disk size. For example, for the Standard_DC128eds_v6, the total local temporary storage capacity is `4 x 1,760 GiB = 7,040 GiB`.
+- Storage capacity is shown in units of GiB or 1,024^3 bytes. When you compare disks measured in GB (1,000^3 bytes) to disks measured in GiB (1,024^3), remember that capacity numbers given in GiB can appear smaller. For example, 1,023 GiB = 1,098.4 GB.
+- Disk throughput is measured in input/output operations per second (IOPS) and MBps, where MBps = 10^6 bytes/sec.
+- Data disks can operate in cached or uncached modes. For cached data disk operation, the host cache mode is set to ReadOnly or ReadWrite. For uncached data disk operation, the host cache mode is set to None.
+- To learn how to get the best storage performance for your VMs, see [Virtual machine and disk performance](../../../virtual-machines/disks-performance.md).
+
 ### [Remote storage](#tab/sizestorageremote)
 
 Remote (uncached) storage available for each size.
