@@ -1,5 +1,5 @@
 ---
-title: Azure ECesv6-series
+title: ECesv6-series
 description: Specifications for Azure Confidential Computing's ECesv6-series confidential virtual machines.
 author: michamcr
 ms.author: simranparkhe
