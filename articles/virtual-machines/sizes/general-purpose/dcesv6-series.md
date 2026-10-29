@@ -14,6 +14,9 @@ ms.author: mmcrey
 
 [!INCLUDE [dcesv6-summary](./includes/dcesv6-series-summary.md)]
 
+> [!NOTE]
+> Some [pricing differences based on your encryption settings](/azure/confidential-computing/confidential-vm-overview#encryption-pricing-differences) exist for confidential VMs.
+
 ## Host specifications
 
 | Part | Quantity min - max | Specs <br><sup>SKU ID, Performance Units, etc.</sup> |
