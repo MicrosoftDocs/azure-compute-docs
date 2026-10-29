@@ -1,13 +1,12 @@
 ---
 title: DCesv6-series
 description: Information on and specifications of the DCesv6-series sizes
-author: simranparkhe
+author: michamcr
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
 ms.date: 03/10/2026
-ms.author: simranparkhe
-ms.reviewer: simranparkhe
+ms.author: michamcr
 # Customer intent: As a cloud architect, I want to review the specifications and features of the DCesv6-series virtual machine sizes, so that I can select the appropriate size for my applications based on performance and resource needs.
 ---
 
@@ -16,7 +15,15 @@ ms.reviewer: simranparkhe
 [!INCLUDE [dcesv6-summary](./includes/dcesv6-series-summary.md)]
 
 ## Host specifications
-[!INCLUDE [dcesv6-series-specs](./includes/dcesv6-series-specs.md)]
+
+| Part | Quantity min - max | Specs <br><sup>SKU ID, Performance Units, etc.</sup> |
+| --- | --- | --- |
+| Processor | 2 - 128 vCPUs | Intel Xeon Platinum 8573C (Emerald Rapids) [x86-64] |
+| Memory | 8 - 512 GiB | |
+| Local Storage | None | |
+| Remote Storage | 8 - 64 Disks | 3,750 - 204,800 IOPS <br>106 - 4,000 MBps |
+| Network | 2 - 8 NICs | 7,000 - 40,000 Mbps |
+| Accelerators | None | |
 
 For features supported by this series, see the [Feature support](#feature-support) section.
 
@@ -56,7 +63,7 @@ Local (temp) storage available for each size.
 
 Remote (uncached) storage available for each size.
 
-| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD IOPS | Uncached Premium SSD Throughput (MBps) 
+| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD IOPS | Uncached Premium SSD Throughput (MBps) |
 | --- | --- | --- | --- |
 | Standard_DC2es_v6 | 8 | 3,750 | 106 |
 | Standard_DC4es_v6 | 12 | 6,400 | 212 |
@@ -87,15 +94,15 @@ Network interface information for each size.
 
 | Size Name | Max NICs (Qty.) | Max Network Bandwidth (Mbps) |
 | --- | --- | --- |
-| Standard_DC2es_v6 | 2 | 12,500 |
-| Standard_DC4es_v6 | 2 | 12,500 |
-| Standard_DC8es_v6 | 4 | 12,500 |
-| Standard_DC16es_v6 | 8 | 12,500 |
-| Standard_DC32es_v6 | 8 | 16,000 |
-| Standard_DC48es_v6 | 8 | 24,000 |
-| Standard_DC64es_v6 | 8 | 30,000 |
-| Standard_DC96es_v6 | 8 | 41,000 |
-| Standard_DC128es_v6 | 8 | 54,000 |
+| Standard_DC2es_v6 | 2 | 7,000 |
+| Standard_DC4es_v6 | 2 | 7,000 |
+| Standard_DC8es_v6 | 4 | 7,000 |
+| Standard_DC16es_v6 | 8 | 7,000 |
+| Standard_DC32es_v6 | 8 | 9,000 |
+| Standard_DC48es_v6 | 8 | 12,500 |
+| Standard_DC64es_v6 | 8 | 25,000 |
+| Standard_DC96es_v6 | 8 | 30,000 |
+| Standard_DC128es_v6 | 8 | 40,000 |
 
 #### Networking resources
 - [Virtual networks and virtual machines in Azure](/azure/virtual-network/network-overview)
@@ -132,5 +139,3 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 |[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)| Not Supported |
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]
-
-
