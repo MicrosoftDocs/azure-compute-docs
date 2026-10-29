@@ -2,7 +2,7 @@
 title: Troubleshoot restore point failures
 description: Symptoms, causes, and resolutions of restore point failures related to agent, extension, and disks.
 ms.topic: troubleshooting
-ms.date: 04/12/2023
+ms.date: 10/22/2026
 ms.service: azure-virtual-machines
 ms.custom:
 # Customer intent: "As a cloud administrator, I want to troubleshoot restore point failures in Azure VMs, so that I can ensure reliable backup and data recovery processes."
@@ -74,6 +74,16 @@ Restore points use the VM Snapshot Extension to take an application consistent s
   Follow these steps to [troubleshoot VSS writer issues](/azure/backup/backup-azure-vms-troubleshoot#extensionfailedvsswriterinbadstate---snapshot-operation-failed-because-vss-writers-were-in-a-bad-state).
 
 ## Common issues
+
+### UserErrorCrashConsistentSnapshotNotSupportedForAzureBoostVms - Crash-consistent snapshot isn't supported for Azure Boost VMs
+
+**Error code**: UserErrorCrashConsistentSnapshotNotSupportedForAzureBoostVms
+
+Azure Boost hardware doesn't support multi-disk crash-consistent restore points, regardless of disk type. This restriction applies to both existing support and the Premium SSD v2 and Ultra Disk public preview. A VM with a SCSI disk controller can land on Azure Boost hardware and encounter this error.
+
+For an existing VM, stop the VM, apply the `LegacyVMNVA` tag to the **VM**, and redeploy it before retrying restore point creation. The tag prevents placement on Azure Boost hardware during redeployment. Applying it alone doesn't automatically remediate an existing VM.
+
+Plan for downtime during this operation. For details, see [Azure Boost placement](concepts-restore-points.md#azure-boost-placement). Multi-disk crash-consistent restore points also aren't supported on VMs with NVMe disk controllers, regardless of disk type. The tag doesn't remove this restriction.
 
 ### DiskRestorePointUsedByCustomer - There is an active shared access signature outstanding for disk restore point
 

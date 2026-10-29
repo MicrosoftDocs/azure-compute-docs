@@ -5,7 +5,8 @@ author: shsangal
 ms.author: shsangal
 ms.service: azure-virtual-machines
 ms.subservice: recovery
-ms.date: 02/14/2022
+ms.date: 10/22/2026
+ai-usage: ai-assisted
 ms.topic: quickstart
 ms.custom: template-quickstart
 # Customer intent: As a cloud administrator, I want to create virtual machine restore points using APIs, so that I can implement effective backup and retention policies while maintaining application and file system consistency for my VMs.
@@ -56,7 +57,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 ```
 
 - Set `location` to the VM's region for a local collection, or to the target region for a cross-region collection (and include the source restore point collection's ARM resource ID in `source.id`).
-- Optionally to enable **Instant Access**, add `"instantAccess": true` to `properties`. This setting applies to all restore points created in the collection. Requires API version **2025-04-01** or later. This setting is applicable only for VMs with Premium SSD v2 and Ultra disks as **data** disks.
+- To enable Instant Access, add `"instantAccess": true` to `properties`. Instant Access applies only to VMs with Premium SSD v2 or Ultra Disks as data disks. It supports both application-consistent and multi-disk crash-consistent (in preview) restore points created in the collection and requires API version `2025-04-01` or later.
 
 ---
 
@@ -73,8 +74,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
   {
     "name": "<restorePointName>",
     "properties": {
-     "instantAccessDurationMinutes": 120,
-      "provisioningState": "Succeeded",
+      "instantAccessDurationMinutes": 120
     }
   }
 ```
@@ -87,6 +87,17 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 | `consistencyMode` | Omit for application-consistent (default). Set to `CrashConsistent` for crash-consistent restore points. |
 | `excludeDisks` | Optional. Array of disk identifiers to exclude from the restore point, to reduce storage cost. |
 | `instantAccessDurationMinutes` | Optional. *(Instant Access only)* Duration in minutes for Instant Access. Valid range: 60–300. Default: 300 minutes (5 hours). |
+
+To create a multi-disk crash-consistent restore point with a 120-minute Instant Access duration (in preview), use the following request body in the Instant Access-enabled collection from step 1:
+
+```json
+{
+  "properties": {
+    "consistencyMode": "CrashConsistent",
+    "instantAccessDurationMinutes": 120
+  }
+}
+```
 
 ---
 
