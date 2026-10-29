@@ -63,7 +63,7 @@ Local (temp) storage available for each size.
 
 Remote (uncached) storage available for each size.
 
-| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD IOPS | Uncached Premium SSD Throughput (MBps) |
+| Size Name | Max Remote Storage Disks | Uncached Premium SSD IOPS | Uncached Premium SSD Throughput (MBps) |
 | --- | --- | --- | --- |
 | Standard_DC2es_v6 | 8 | 3,750 | 106 |
 | Standard_DC4es_v6 | 12 | 6,400 | 212 |
