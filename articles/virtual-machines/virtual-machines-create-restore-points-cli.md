@@ -6,7 +6,8 @@ ms.author: shsangal
 ms.service: azure-virtual-machines
 ms.subservice: recovery
 ms.topic: tutorial
-ms.date: 09/21/2026
+ms.date: 10/22/2026
+ai-usage: ai-assisted
 ms.custom: template-tutorial, devx-track-azurecli
 # Customer intent: "As a cloud administrator, I want to create and manage virtual machine restore points using command line tools, so that I can automate the backup process and ensure data protection against potential downtime."
 ---
@@ -36,7 +37,7 @@ Use the [az restore-point collection create](/cli/azure/restore-point/collection
 az restore-point collection create --location "norwayeast" --source-id "/subscriptions/{subscription-id}/resourceGroups/ExampleRg/providers/Microsoft.Compute/virtualMachines/ExampleVM" --tags myTag1="tagValue1" --resource-group "ExampleRg" --collection-name "ExampleRpc" 
 ```
 ### Create a VM restore point collection with instant access
-Instant Access is an optional parameter supported in application-consistent restore points. It applies to virtual machines that have Premium SSD v2 or Ultra disks as data disks. When you enable Instant Access on the restore point collection, disk restoration can begin immediately from the restore point without waiting for full hydration. This feature significantly reduces RTOs. To learn more about Instant Access restore points, see [Instant Access](/azure/virtual-machines/virtual-machines-create-restore-points#instant-access).
+Instant Access is optional and applies only to VMs with Premium SSD v2 or Ultra Disks as data disks. It supports both application-consistent and multi-disk crash-consistent (in preview) restore points. When you enable Instant Access on the restore point collection, disk restoration can begin immediately from the restore point without waiting for full hydration. This feature significantly reduces RTOs. To learn more, see [Instant Access](virtual-machines-create-restore-points.md#instant-access).
 ```
 az restore-point collection create --location "norwayeast" --source-id "/subscriptions/{subscription-id}/resourceGroups/ExampleRg/providers/Microsoft.Compute/virtualMachines/ExampleVM" --tags myTag1="tagValue1" --resource-group "ExampleRg" --collection-name "ExampleRpc" --instant-access true
 ```
@@ -48,7 +49,7 @@ Create a VM restore point with the [az restore-point create](/cli/azure/restore-
 ```
 az restore-point create --resource-group "ExampleRg" --collection-name "ExampleRpc" --name "ExampleRp"
 ```
-To create a crash consistent restore point set the optional parameter "consistency-mode" to "CrashConsistent". This feature is currently in preview.
+To create a crash-consistent restore point, set `--consistency-mode` to `CrashConsistent`.
 
 ### Create a VM restore point with specific instant access duration
 Create a VM restore point with the [az restore-point create](/cli/azure/restore-point#az-restore-point-create) command as follows:
@@ -57,6 +58,12 @@ Create a VM restore point with the [az restore-point create](/cli/azure/restore-
 az restore-point create --resource-group "ExampleRg" --collection-name "ExampleRpc" --name "ExampleRp" --instant-access-duration "120"
 ```
 > **Note:** Instant Access duration is an optional parameter. Its an integer property set on each restore point. Specifies how long Instant Access remains active, in minutes. Valid range: 60–300 minutes. Default: 300 (5 hours).
+
+For a multi-disk crash-consistent restore point with Instant Access (in preview), use the Instant Access-enabled collection from step 1 and specify both the consistency mode and duration:
+
+```azurecli
+az restore-point create --resource-group "ExampleRg" --collection-name "ExampleRpc" --name "ExampleCrashConsistentRp" --consistency-mode CrashConsistent --instant-access-duration 120
+```
 
 ### Exclude disks when creating a restore point
 Exclude the disks that you do not want to be a part of the restore point with the `--exclude-disks` parameter, as follows:

@@ -16,7 +16,7 @@ ms.custom: mvc, linux-related-content
 
 Containers are becoming the preferred way to package, deploy, and manage cloud applications. Azure Container Instances offers the fastest and simplest way to run Linux or Windows containers in Azure, without having to manage any virtual machines and without having to adopt a higher-level service.
 
-ACI supports [regular](container-instances-container-groups.md), [confidential](container-instances-confidential-overview.md), and [Spot](container-instances-spot-containers-overview.md) containers. ACI can be used as [single-instance](container-instances-container-groups.md) or multi-instance via [NGroups](container-instance-ngroups/container-instances-about-ngroups.md), or you can get orchestration capabilities by deploying pods in your Azure Kubernetes Service (AKS) cluster via [virtual nodes on ACI](container-instances-virtual-nodes.md). For even faster startup times, ACI supports [standby pools](container-instances-standby-pool-overview.md).
+ACI supports [regular](container-instances-container-groups.md), [confidential](container-instances-confidential-overview.md) (along with [enclaves](container-instances-enclaves.md) in preview), and [Spot](container-instances-spot-containers-overview.md) containers. ACI can be used as [single-instance](container-instances-container-groups.md) or multi-instance via [NGroups](container-instance-ngroups/container-instances-about-ngroups.md), or you can get orchestration capabilities by deploying pods in your Azure Kubernetes Service (AKS) cluster via [virtual nodes on ACI](container-instances-virtual-nodes.md). For even faster startup times, ACI supports [standby pools](container-instances-standby-pool-overview.md).
 
 ## Fast startup times
 
@@ -97,6 +97,8 @@ Azure Container Instances can authenticate with an Azure Container Registry (ACR
 ## Confidential container deployment
 
 Confidential containers on ACI enable you to run containers in a trusted execution environment (TEE) that provides hardware-based confidentiality and integrity protections for your container workloads. Confidential containers on ACI can protect data-in-use and encrypts data being processed in memory. Confidential containers on ACI are supported as a SKU that you can select when deploying your workload. For more information, see [confidential container groups](./container-instances-confidential-overview.md).
+
+Additionally, Linux confidential container groups support enclaves in preview. For more information, see [enclaves](./container-instances-enclaves.md).
 
 ## Spot container deployment
 
