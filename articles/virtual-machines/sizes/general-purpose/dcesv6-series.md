@@ -12,10 +12,12 @@ ms.author: mmcrey
 
 # DCesv6-series sizes
 
-[!INCLUDE [dcesv6-summary](./includes/dcesv6-series-summary.md)]
+**Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs 
 
 > [!NOTE]
 > Some [pricing differences based on your encryption settings](/azure/confidential-computing/confidential-vm-overview#encryption-pricing-differences) exist for confidential VMs.
+
+[!INCLUDE [dcesv6-summary](./includes/dcesv6-series-summary.md)]
 
 ## Host specifications
 
