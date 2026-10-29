@@ -127,7 +127,8 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 
 ---
 
-
+> [!NOTE]
+> Some [pricing differences based on your encryption settings](/azure/confidential-computing/confidential-vm-overview#encryption-pricing-differences) exist for confidential VMs.
 
 ## Feature support
 
