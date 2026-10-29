@@ -17,9 +17,6 @@ ms.date: 4/15/2025
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs 
 
-> [!NOTE]
-> Some [pricing differences based on your encryption settings](/azure/confidential-computing/confidential-vm-overview#encryption-pricing-differences) exist for confidential VMs.
-
 The ECesv6-series are [Azure confidential VMs](/azure/confidential-computing/confidential-vm-overview) that can be used to protect the confidentiality and integrity of your code and data while it's being processed in the public cloud. Organizations can use these VMs to seamlessly bring confidential workloads to the cloud without any code changes to the application. 
 
 These machines are powered by Intel® 5th Generation Xeon® Scalable processors reaching an all-core turbo clock speed of 3.0 GHz and [Intel® Advanced Matrix Extensions (AMX)](https://www.intel.com/content/www/us/en/products/docs/accelerator-engines/advanced-matrix-extensions/overview.html) for AI acceleration. 
@@ -29,7 +26,6 @@ By using [Intel® Trust Domain Extensions (TDX)](https://www.intel.com/content/w
 These VMs have native support for [confidential disk encryption](../../disk-encryption-overview.md) meaning organizations can encrypt their VM disks at boot with either a customer-managed key (CMK) or platform-managed key (PMK). This feature is fully integrated with [Azure KeyVault](/azure/key-vault/general/overview) or [Azure Managed HSM](/azure/key-vault/managed-hsm/overview) with validation for FIPS 140-2 Level 3. 
 
 The ECesv6 VMs offer an even higher memory-to-vCPU ratio and a new VM size with up to 64 vCPUs and 512 GiB of RAM. These VMs are ideal for memory-intensive applications, large relational database servers, business intelligence applications, and critical applications that process sensitive and regulated data. 
-
 
 ## Host specifications
 
@@ -100,6 +96,9 @@ Network interface information for each size.
 | Standard_EC64es_v6 | 8 | 25,000 |
 
 ---
+
+> [!NOTE]
+> Some [pricing differences based on your encryption settings](/azure/confidential-computing/confidential-vm-overview#encryption-pricing-differences) exist for confidential VMs.
 
 ## Feature support
 
