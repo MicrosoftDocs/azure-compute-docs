@@ -21,9 +21,6 @@ These VMs have native support for [confidential disk encryption](/azure/virtual-
 
 The DCedsv6 offer a balance of memory to vCPU performance that's suitable most production workloads. With up to 128 vCPUs, 512 GiB of RAM, and support for up to 7 TB of local disk storage. These VMs work well for many general computing workloads, e-commerce systems, web front ends, desktop virtualization solutions, sensitive databases, other enterprise applications and more.
 
-> [!NOTE]
-> Some [pricing differences based on your encryption settings](/azure/confidential-computing/confidential-vm-overview#encryption-pricing-differences) exist for confidential VMs.
-
 ## Host specifications
 | Part | Quantity min - max | Specs <br><sup>SKU ID, Performance Units, etc.</sup>  |
 |---|---|---|
@@ -134,6 +131,8 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 
 ---
 
+> [!NOTE]
+> Some [pricing differences based on your encryption settings](/azure/confidential-computing/confidential-vm-overview#encryption-pricing-differences) exist for confidential VMs.
 
 ## Feature support
 
