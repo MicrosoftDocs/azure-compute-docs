@@ -17,6 +17,9 @@ ms.date: 4/15/2025
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs 
 
+> [!NOTE]
+> Some [pricing differences based on your encryption settings](/azure/confidential-computing/confidential-vm-overview#encryption-pricing-differences) exist for confidential VMs.
+
 The ECesv6-series are [Azure confidential VMs](/azure/confidential-computing/confidential-vm-overview) that can be used to protect the confidentiality and integrity of your code and data while it's being processed in the public cloud. Organizations can use these VMs to seamlessly bring confidential workloads to the cloud without any code changes to the application. 
 
 These machines are powered by Intel® 5th Generation Xeon® Scalable processors reaching an all-core turbo clock speed of 3.0 GHz and [Intel® Advanced Matrix Extensions (AMX)](https://www.intel.com/content/www/us/en/products/docs/accelerator-engines/advanced-matrix-extensions/overview.html) for AI acceleration. 
@@ -98,26 +101,21 @@ Network interface information for each size.
 
 ---
 
-### ECesv6-series feature support
+## Feature support
 
-*Supported* features in ECesv6-series VMs:
-
-- [Premium Storage](../../premium-storage-performance.md)
-- [Premium Storage caching](../../premium-storage-performance.md)
-- [VM Generation 2](../../generation-2.md)
-
-*Unsupported* features in ECesv6-series VMs:
-
-- [Live Migration](../../maintenance-and-updates.md)
-- [Memory Preserving Updates](../../maintenance-and-updates.md)
-- [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli)
-- [Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)
+|Feature name | Support status |
+| --- | --- |
+|[Premium Storage](../../premium-storage-performance.md)| Supported |
+|[Premium Storage caching](../../premium-storage-performance.md)| Supported |
+|[Live Migration](../../maintenance-and-updates.md)| Not supported |
+|[Memory Preserving Updates](../../maintenance-and-updates.md)| Not Supported |
+|[Generation 2 VMs](../../generation-2.md)| Supported |
+|[Generation 1 VMs](../../generation-2.md)| Not Supported |
+|[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli)| Not Supported |
+|[Ephemeral OS Disk](../../ephemeral-os-disks.md)| Not Supported |
+|[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)| Not Supported |### ECesv6-series feature support
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
-
-> [!NOTE]
-> Some [pricing differences based on your encryption settings](/azure/confidential-computing/confidential-vm-overview#encryption-pricing-differences) exist for confidential VMs.
-
 
 ## Next steps
 
