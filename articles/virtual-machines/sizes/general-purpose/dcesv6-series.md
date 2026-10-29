@@ -12,7 +12,15 @@ ms.author: mmcrey
 
 # DCesv6-series sizes
 
-[!INCLUDE [dcesv6-summary](./includes/dcesv6-series-summary.md)]
+**Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs 
+
+The DCesv6-series are [Azure confidential VMs](/azure/confidential-computing/confidential-vm-overview) that protect the confidentiality and integrity of code and data while it's being processed. Organizations can use these VMs to seamlessly bring confidential workloads to the cloud without any code changes to the application. These machines are powered by Intel® 5th Generation Xeon® Scalable processors reaching an all-core turbo clock speed of 3.0 GHz and [Intel® AMX](https://www.intel.com/content/www/us/en/products/docs/accelerator-engines/advanced-matrix-extensions/overview.html) for AI acceleration. 
+
+By using [Intel® Trust Domain Extensions (TDX)](https://www.intel.com/content/www/us/en/developer/tools/trust-domain-extensions/overview.html), these VMs are hardened from the cloud virtualized environment by denying the hypervisor, other host management code, and administrators access to the VM memory and state. It helps to protect VMs against a broad range of sophisticated [hardware and software attacks](https://www.intel.com/content/www/us/en/developer/articles/technical/intel-trust-domain-extensions.html). 
+
+These VMs have native support for [confidential disk encryption](/azure/virtual-machines/disk-encryption-overview) meaning organizations can encrypt their VM disks at boot with either a customer-managed key (CMK), or platform-managed key (PMK). This feature is fully integrated with [Azure Key Vault](/azure/key-vault/general/overview) or [Azure Managed HSM](/azure/key-vault/managed-hsm/overview) with validation for FIPS 140-2 Level 3. 
+
+The DCesv6-series offers a balance of memory to vCPU performance. With up to 128 vCPUs, 512 GB of RAM, and support for remote disk storage, this size series works well for many general computing workloads, e-commerce systems, web front ends, desktop virtualization solutions, sensitive databases, other enterprise applications.
 
 ## Host specifications
 
@@ -122,7 +130,8 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 
 ---
 
-
+> [!NOTE]
+> Some [pricing differences based on your encryption settings](/azure/confidential-computing/confidential-vm-overview#encryption-pricing-differences) exist for confidential VMs.
 
 ## Feature support
 
@@ -138,4 +147,11 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 |[Ephemeral OS Disk](../../ephemeral-os-disks.md)| Not Supported |
 |[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)| Not Supported |
 
-[!INCLUDE [sizes-footer](../includes/sizes-footer.md)]
+[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
+
+## Next steps
+
+> [!div class="nextstepaction"]
+> [Create a confidential VM in Azure Portal](/azure/confidential-computing/quick-create-confidential-vm-portal)
+> [Create a confidential VM in Azure CLI](/azure/confidential-computing/quick-create-confidential-vm-azure-cli)
+

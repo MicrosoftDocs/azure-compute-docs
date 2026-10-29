@@ -27,7 +27,6 @@ These VMs have native support for [confidential disk encryption](../../disk-encr
 
 The ECesv6 VMs offer an even higher memory-to-vCPU ratio and a new VM size with up to 64 vCPUs and 512 GiB of RAM. These VMs are ideal for memory-intensive applications, large relational database servers, business intelligence applications, and critical applications that process sensitive and regulated data. 
 
-
 ## Host specifications
 
 | Part | Quantity min - max | Specs <br><sup>SKU ID, Performance Units, etc.</sup> |
@@ -98,26 +97,24 @@ Network interface information for each size.
 
 ---
 
-### ECesv6-series feature support
-
-*Supported* features in ECesv6-series VMs:
-
-- [Premium Storage](../../premium-storage-performance.md)
-- [Premium Storage caching](../../premium-storage-performance.md)
-- [VM Generation 2](../../generation-2.md)
-
-*Unsupported* features in ECesv6-series VMs:
-
-- [Live Migration](../../maintenance-and-updates.md)
-- [Memory Preserving Updates](../../maintenance-and-updates.md)
-- [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli)
-- [Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)
-
-[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
-
 > [!NOTE]
 > Some [pricing differences based on your encryption settings](/azure/confidential-computing/confidential-vm-overview#encryption-pricing-differences) exist for confidential VMs.
 
+## Feature support
+
+|Feature name | Support status |
+| --- | --- |
+|[Premium Storage](../../premium-storage-performance.md)| Supported |
+|[Premium Storage caching](../../premium-storage-performance.md)| Supported |
+|[Live Migration](../../maintenance-and-updates.md)| Not supported |
+|[Memory Preserving Updates](../../maintenance-and-updates.md)| Not Supported |
+|[Generation 2 VMs](../../generation-2.md)| Supported |
+|[Generation 1 VMs](../../generation-2.md)| Not Supported |
+|[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli)| Not Supported |
+|[Ephemeral OS Disk](../../ephemeral-os-disks.md)| Not Supported |
+|[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)| Not Supported |### ECesv6-series feature support
+
+[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
 ## Next steps
 
