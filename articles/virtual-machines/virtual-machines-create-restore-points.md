@@ -6,7 +6,8 @@ ms.author: shsangal
 ms.service: azure-virtual-machines
 ms.subservice: recovery
 ms.topic: concept-article
-ms.date: 09/21/2026
+ms.date: 10/22/2026
+ai-usage: ai-assisted
 ms.custom: conceptual
 # Customer intent: As a cloud administrator, I want to implement virtual machine restore points, so that I can ensure data protection and facilitate quick recovery in the event of a failure or data loss.
 ---
@@ -37,14 +38,11 @@ Once the disk restore points are created, Azure automatically initiates a backgr
 | Mode | How it works | Set via |
 |---|---|---|
 | **Application-consistent** | Uses Volume Shadow Copy Service (VSS) writers (Windows) or pre/post scripts (Linux) to flush in-flight application data before the snapshot. | Default when `consistencyMode` is omitted. |
-| **Crash-consistent** | Captures a write-order-consistent snapshot of all disks, equivalent to Virtual Machine state after a power outage or crash. | Set `consistencyMode` to `crashConsistent` in the creation request. |
-
-> [!NOTE] 
-> **Crash consistency isn't supported for Azure Boost**. Use application-consistent restore points. 
+| **Crash-consistent** | Captures a write-order-consistent snapshot of all disks, equivalent to Virtual Machine state after a power outage or crash. | Set `consistencyMode` to `CrashConsistent` in the creation request. |
 
 ### Instant Access
 
-Virtual Machine restore points support [**Instant Access**](/azure/virtual-machines/disks-instant-access-snapshots?tabs=azure-cli%2Cazure-cli-snapshot-state) for application-consistent restore points on Virtual Machine that have Premium SSD v2 or Ultra disks as data disks. When Instant Access is enabled on the restore point collection, disk restoration can begin immediately from the snapshot—without waiting for full hydration—significantly reducing RTOs.
+For virtual machine restore points, [Instant Access](disks-instant-access-snapshots.md?tabs=azure-cli%2Cazure-cli-snapshot-state) applies only to VMs with Premium SSD v2 or Ultra Disks as data disks. It supports both application-consistent and multi-disk crash-consistent (in preview) restore points. When you enable Instant Access on the restore point collection, you can start restoring disks immediately from the snapshot without waiting for full hydration, which significantly reduces RTOs.
 
 ### Key concepts in Instant Access
 
@@ -55,7 +53,7 @@ Virtual Machine restore points support [**Instant Access**](/azure/virtual-machi
 | `snapshotAccessState` | Read-only property on an individual disk restore point. Indicates the Instant Access state of that specific disk. |
 | `instantAccessState` | Read-only property that indicates the consolidated access status of all disk restore points within a restore point. Possible values: <br><br> **Pending**: The restore point can't be used for restore, copy, or offline download. This state applies if any disk restore point has a `snapshotAccessState` of `Pending`. <br><br> **Available**: The restore point can be used for restore, cross-region copy, and offline download. This state applies when all disk restore points have a `snapshotAccessState` of `Available`, typically after `instantAccessDurationMinutes` expires. <br><br> **InstantAccess**: The restore point supports fast disk restore but can't be copied or downloaded. This state applies when all disk restore points have a `snapshotAccessState` of `InstantAccess`. <br><br> **AvailableWithInstantAccess**: The restore point supports fast disk restore and can also be copied and downloaded. This state applies when all disk restore points have a `snapshotAccessState` of `AvailableWithInstantAccess` and `instantAccessDurationMinutes` hasn't expired. |
 | API Version | **2025-04-01 or later** |
-| Supported regions | All Public Regions |
+| Supported regions | All public regions. For restore point availability, see the [support matrix](concepts-restore-points.md). |
 | Pricing | Instant access snapshots are billed using a usage‑based model with two types of charges: <br> 1. Snapshot storage charge <br> 2. One‑time restore operation charge. <br> **Snapshot storage charge**: You are billed only for the additional storage used by an instant access snapshot while it is active. When an instant access snapshot is first created, it does not incur any storage cost. The snapshot initially shares data with the source disk. As data on the source disk is modified or deleted over time, the snapshot preserves the original point‑in‑time data, and its storage usage grows. As a result, you pay only for the changed data, not for a full copy of the disk. If no data is modified on the source disk, the snapshot continues to incur no additional storage charges. <br> **Restore operation charge** Each time you restore a disk from an instant access snapshot, a one‑time restore fee is charged. This fee is calculated based on the provisioned size of the disk at the time of restore, providing predictable and transparent pricing for restore operations. Learn more about Instant Access Snapshot billing in [here](https://azure.microsoft.com/pricing/details/managed-disks/)|
 
 ## Restore points for Virtual Machine in scale sets and availability sets
@@ -69,7 +67,7 @@ Restore points are created per individual Virtual Machine. To back up all instan
 **Scope** | **Operation** | **Limit per hour**
 --- | --- | ---
 Virtual Machine | RestorePoints.RestorePointOperation.PUT (Create new **Application Consistent**) | 3
-Virtual Machine | RestorePoints.RestorePointOperation.PUT (Create new **Crash Consisten**t) | 3
+Virtual Machine | RestorePoints.RestorePointOperation.PUT (Create new **Crash Consistent**) | 3
 Target restore point collection | RestorePoints.RestorePointOperation.PUT (Copy any Virtual Machine Restore Point) | 3
 
 
@@ -81,7 +79,9 @@ Target restore point collection | RestorePoints.RestorePointOperation.PUT (Copy 
 **General:**
 
 - Restore points are supported only for managed disks.
-- Ultra Disks, Premium SSD v2 disks, Write-accelerated disks, Ephemeral OS disks, and shared disks aren't supported for crash consistency mode.
+- Write-accelerated disks, ephemeral OS disks, and shared disks aren't supported for crash consistency mode.
+- Multi-disk crash-consistent restore points aren't supported on VMs with NVMe disk controllers or VMs running on Azure Boost hardware, regardless of disk type.
+- Multi-disk crash consistency for VMs with Premium SSD v2 or Ultra data disks is supported in public preview for SCSI VMs only, subject to the [preview requirements](concepts-restore-points.md#multi-disk-crash-consistency-for-premium-ssd-v2-and-ultra-disks-public-preview). This preview doesn't change existing support for Standard HDD, Standard SSD, and Premium SSD disks.
 - Ephemeral OS disks, and shared disks aren't supported for application consistency mode.
 - A maximum of 500 Virtual Machine restore points can be retained at any time for a Virtual Machine, irrespective of the number of restore point collections or consistency type.
 - Concurrent creation of restore points for the same Virtual Machine isn't supported.
@@ -95,8 +95,7 @@ Target restore point collection | RestorePoints.RestorePointOperation.PUT (Copy 
 
 **Instant Access:**
 
-- Supported only for application-consistent restore points on Virtual Machines with Premium SSD v2 or Ultra **data** disks.
-- Not supported for crash-consistent restore points.
+- Applies only to VMs with Premium SSD v2 or Ultra Disks as data disks, for both application-consistent and multi-disk crash-consistent (in preview) restore points.
 - Maximum 50 concurrent Instant Access restore point creations per subscription per region.
 - Currently supported via REST API, Azure SDK, CLI, and ARM templates. Currently not supported via Portal.
 

@@ -36,7 +36,7 @@ sections:
           > [!NOTE]
           > Due to issues with backward compatibility after the Windows updates in 2020, the following image versions include the minimum version number that we recommend you use in your base image. Current deployments using older image versions aren't impacted, but new deployments should adhere to the following base images. After June 14, 2021, ACI will no longer support deployments using older version numbers. 
           > [!NOTE]
-          > Confidential containers on Azure Container Instances currently doesn't support Windows containers. 
+          > Support for Windows confidential containers on Azure Container Instances is currently in preview. 
 
       - question: |
           Windows Server 2016 base images
@@ -204,7 +204,7 @@ sections:
       - question: |
           Are there any features that aren't supported on confidential containers on Azure Container Instances?
         answer: | 
-          GPU based ACI container deployments and Windows containers aren't supported with confidential containers.
+          GPU based ACI container deployments aren't supported with confidential containers.
       - question: |
           What regions are confidential containers on Azure Container Instances available?
         answer: |

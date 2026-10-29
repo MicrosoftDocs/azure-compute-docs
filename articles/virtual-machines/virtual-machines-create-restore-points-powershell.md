@@ -6,7 +6,8 @@ ms.author: wwilliams
 ms.service: azure-virtual-machines
 ms.subservice: recovery
 ms.topic: tutorial
-ms.date: 06/30/2022
+ms.date: 10/22/2026
+ai-usage: ai-assisted
 ms.custom: template-tutorial
 # Customer intent: As an IT administrator, I want to create virtual machine restore points using PowerShell, so that I can protect data and minimize downtime during recovery operations.
 ---
@@ -46,7 +47,13 @@ Create a VM restore point with the [New-AzRestorePoint](/powershell/module/az.co
 ```
 New-AzRestorePoint -ResourceGroupName ExampleRG -RestorePointCollectionName ExampleRPC -Name ExampleRP
 ```
-To create a crash consistent restore point set the optional parameter "ConsistencyMode" to "CrashConsistent". This feature is currently in preview.
+To create a crash-consistent restore point, set `-ConsistencyMode` to `CrashConsistent`.
+
+```azurepowershell
+New-AzRestorePoint -ResourceGroupName ExampleRG -RestorePointCollectionName ExampleRPC -Name ExampleCrashConsistentRP -ConsistencyMode CrashConsistent
+```
+
+Instant Access applies only to VMs with Premium SSD v2 or Ultra Disks as data disks. It supports both application-consistent and multi-disk crash-consistent (in preview) restore points. For instructions to enable Instant Access and create a restore point, see [Create VM restore points using APIs](create-restore-points.md) or [Azure CLI](virtual-machines-create-restore-points-cli.md).
 
 ### Exclude disks from the restore point
 Exclude certain disks that you do not want to be a part of the restore point with the `-DisksToExclude` parameter, as follows:
