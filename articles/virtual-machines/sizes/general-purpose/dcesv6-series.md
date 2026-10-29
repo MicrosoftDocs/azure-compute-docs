@@ -141,4 +141,11 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 |[Ephemeral OS Disk](../../ephemeral-os-disks.md)| Not Supported |
 |[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)| Not Supported |
 
-[!INCLUDE [sizes-footer](../includes/sizes-footer.md)]
+[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
+
+## Next steps
+
+> [!div class="nextstepaction"]
+> [Create a confidential VM in Azure Portal](/azure/confidential-computing/quick-create-confidential-vm-portal)
+> [Create a confidential VM in Azure CLI](/azure/confidential-computing/quick-create-confidential-vm-azure-cli)
+
