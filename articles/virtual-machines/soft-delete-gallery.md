@@ -15,10 +15,10 @@ ms.devlang: azurecli
 
 # Soft Delete in Azure Compute Gallery (Preview) 
 
+The Soft delete feature in Azure Compute Gallery lets you recover accidentally deleted image versions before they're permanently deleted. Soft delete is available starting with API version `2024-03-03`. API version `2026-03-03` adds customizable retention and grace periods and changes when a soft-deleted image can be consumed. This feature is currently available only for Azure Compute Gallery images.
+
 > [!IMPORTANT]
 > The Soft Delete feature is currently in PREVIEW. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
-
-The Soft delete feature in Azure Compute Gallery lets you recover accidentally deleted image versions before they're permanently deleted. Soft delete is available starting with API version `2024-03-03`. API version `2026-03-03` adds customizable retention and grace periods and changes when a soft-deleted image can be consumed. This feature is currently available only for Azure Compute Gallery images.
 
 Soft Delete is available for the following gallery types:
 -	Private
