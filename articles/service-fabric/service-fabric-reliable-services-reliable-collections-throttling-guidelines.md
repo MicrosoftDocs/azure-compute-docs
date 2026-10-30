@@ -94,6 +94,16 @@ The triggers fall into two families:
 
 Watch for operation timeouts as a stall symptom. When commits can't finish because of lock contention, log unavailability, or a full replication queue, in-flight operations block until they exceed their timeout and surface a `TimeoutException` (often wrapped in a transient error). A rising rate of operation timeouts, especially alongside a throughput drop and error-rate spike, is a strong signal that you're hitting a stall rather than gradual capacity throttling. Keep timeouts near the default so these stalls surface quickly instead of being masked by excessively long waits.
 
+## Observe write throttling through partition health
+
+<!-- TODO: Confirm the first supported Service Fabric runtime release and any platform limitations with the feature owner before publishing. -->
+
+The managed Transactional Replicator exposes a partition health report with source `CheckpointManager` and property `WriteThrottlingStatus`. When the primary rejects a write because of disk write pressure or blocked log truncation, the report has health state `Warning`. Its description distinguishes incoming load exceeding disk throughput, a pending checkpoint, and log truncation blocked by a named log reader, such as a backup or replica copy.
+
+When a subsequent write passes the throttling check, the replicator reports `Ok` for the same source and property. The health report doesn't replace exception handling, bounded retries, or workload monitoring. It doesn't cover every cause of slow commits or replication queue failures, and an expired or absent report alone doesn't establish recovery.
+
+For the report's lifetime, a PowerShell query, troubleshooting steps, and health-policy considerations, see [Write throttling in partition health reports](service-fabric-understand-and-troubleshoot-with-system-health-reports.md#write-throttling).
+
 ## Implement your own throttling
 
 The platform throttles to protect durability, but it doesn't cap how much work your application sends into the pipeline. That responsibility is yours. Follow the best practices in the following sections to implement your own client-side throttling, bounding how many transactions you have in flight and how aggressively you retry. Without it, your application can push the pipeline past its drain rate, drive log and queue usage to their limits, and trigger capacity-related write stalls that you could have avoided.
