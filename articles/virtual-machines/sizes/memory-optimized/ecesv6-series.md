@@ -108,7 +108,7 @@ Network interface information for each size.
 |[Generation 1 VMs](../../generation-2.md)| Not Supported |
 |[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli)| Not Supported |
 |[Ephemeral OS Disk](../../ephemeral-os-disks.md)| Not Supported |
-|[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)| Not Supported |
+|[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)| Not supported |
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
