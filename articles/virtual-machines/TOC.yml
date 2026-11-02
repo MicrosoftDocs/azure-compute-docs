@@ -954,12 +954,14 @@
         href: vm-applications.md
       - name: Create & Deploy VM Applications
         href: vm-applications-how-to.md
-      - name: Manage VM Applications
-        href: vm-applications-manage.md
       - name: Create package for VM Application
         href: vm-applications-create-app-package.md
+      - name: Create install, uninstall, and update scripts
+        href: vm-applications-create-app-scripts.md
       - name: Publish VM Application using Managed Identity
         href: vm-applications-publish-with-managed-identity.md
+      - name: Manage VM Applications
+        href: vm-applications-manage.md
       - name: Govern and enforce VM Applications using Azure Policy
         href: vm-applications-inject-with-policy.md
   - name: Images
