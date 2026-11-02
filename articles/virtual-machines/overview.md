@@ -39,7 +39,7 @@ There's always a multitude of [design considerations](/azure/architecture/refere
 
 > [!NOTE]
 >
-> Trusted Launch as default (TLaD) is generally available for new [Generation 2](../virtual-machines/generation-2.md) Virtual machines (VMs). With TLaD, any new Generation 2 VMs created through any client tools defaults to [Trusted Launch](../virtual-machines/trusted-launch.md) with secure boot and vTPM enabled.
+> Trusted Launch as default (TLaD) is generally available for new [Generation 2](../virtual-machines/generation-2.md) Virtual machines (VMs). With TLaD, any new Generation 2 VMs created through any client tools default to [Trusted Launch](../virtual-machines/trusted-launch.md) with secure boot and vTPM enabled.
 > [Register for the TLaD](../virtual-machines/trusted-launch.md#general-availability-trusted-launch-as-default) to implement the default changes in your respective environment(s).
 
 ## Parts of a VM and how they're billed
@@ -156,7 +156,7 @@ Azure already has many built-in platform features that support highly available 
 
 For high availability during a zone failure, deploy multiple VMs across availability zones and configure application replication and traffic routing. For supported configurations, [Azure Site Recovery zone-to-zone disaster recovery](/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery) provides another recovery option within a region.
 
-[zone resilience for Azure VMs (Preview)](zone-resilience.md) lets you initiate failover of an eligible standalone zonal VM to another availability zone in the same region. The VM retains its resource identity and supported configuration.
+[Zone resilience for Azure VMs (Preview)](zone-resilience.md) lets you initiate failover of an eligible standalone zonal VM to another availability zone in the same region. The VM retains its resource identity and supported configuration.
 
 > [!IMPORTANT]
 > Don't use this preview to fail over production VMs during a zone outage because it can cause data or disk corruption. This limitation is temporary; support for this scenario is planned for a future update. See the [preview limitations](zone-resilience.md#limitations).

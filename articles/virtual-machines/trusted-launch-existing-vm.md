@@ -302,7 +302,7 @@ Follow the steps to enable Trusted launch on an existing Azure Generation 2 VM b
 
 ## Roll back
 
-To roll-back changes from Trusted launch to previous Gen2 known good configuration, you need to set `securityType` of VM to **Standard**.
+To rollback changes from Trusted launch to previous Gen2 known good configuration, you need to set `securityType` of VM to **Standard**.
 
 > [!IMPORTANT]
 >
@@ -310,7 +310,7 @@ To roll-back changes from Trusted launch to previous Gen2 known good configurati
 
 ### [Portal](#tab/portal)
 
-Roll-back of Trusted launch to Gen2 (Non-Trusted launch) configuration is currently not supported in Azure portal.
+Rollback of Trusted launch to Gen2 (Non-Trusted launch) configuration is currently not supported in Azure portal.
 
 ### [Template](#tab/template)
 
@@ -427,7 +427,7 @@ To roll-back changes from Trusted launch to previous known good configuration, s
 
 Azure Advisor populates an **Enable Trusted launch foundational excellence, and modern security for Existing Generation 2 VM(s)** operational excellence recommendation for existing Generation 2 VMs to adopt [Trusted launch](trusted-launch.md), a higher security posture for Azure VMs at no extra cost to you. Ensure Generation 2 VM has all prerequisites to migrate to Trusted launch, follow all the best practices including validation of OS image, VM Size, and creating restore points. For the Advisor recommendation to be considered complete, follow the steps outlined in the [**Enable Trusted launch on an existing VM**](trusted-launch-existing-vm.md#enable-trusted-launch-on-an-existing-vm) to upgrade the virtual machines security type and enable Trusted launch.
 
-**What if there is Generation 2 VMs, that doesn't fit the prerequisites for Trusted launch?**
+**What if there are Generation 2 VMs, that doesn't fit the prerequisites for Trusted launch?**
 
 For a Generation 2 VM that doesn't meet the [prerequisites](#prerequisites) to upgrade to Trusted launch, look how to fulfill the prerequisites. For example, If using a virtual machine size not supported, look for an [equivalent Trusted launch supported size](trusted-launch.md#virtual-machines-sizes) that supports Trusted launch. 
 

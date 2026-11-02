@@ -22,7 +22,7 @@ Because ZRS synchronously replicates managed disk data across availability zones
 
 For an eligible VM affected by a zone failure, the failover workflow moves the VM to a healthy zone in the same region. Don't use this workflow for production VMs during a zone outage. This limitation is temporary and in preview. Support for this scenario is planned for a future update. See [Limitations](#limitations).
 
-:::image type="complex" source="media/zone-resilient/zone-recovery-workflow.png" alt-text="Customer-initiated zone failover: confirm impact, force-deallocate, change zones, start, and verify the VM.":::
+:::image type="complex" source="media/zone-resilient/zone-recovery-workflow.png" alt-text="Diagram of Customer-initiated zone failover: confirm impact, force-deallocate, change zones, start, and verify the VM.":::
   Confirm the VM is affected and select a healthy zone in the same region. Force-deallocate the VM, which stops the workload. Update the zone placement of the existing VM and reuse its supported ZRS disks. Start the VM in the target zone, subject to available capacity. Verify the VM, disks, network, and workload before restoring traffic.
 :::image-end:::
 
@@ -595,8 +595,6 @@ Zone resilience doesn't provide application-level consistency, traffic failover,
 ## Cost
 
 Standard charges apply for VMs, managed disks, and network resources. For managed disk pricing, see [Azure managed disks pricing](https://azure.microsoft.com/pricing/details/managed-disks/).
-
-<!-- Confirm feature-specific preview pricing before publication. -->
 
 ## Related content
 
