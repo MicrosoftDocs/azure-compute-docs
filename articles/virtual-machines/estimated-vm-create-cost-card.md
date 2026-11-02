@@ -5,7 +5,7 @@ author: iamwilliew
 ms.service: azure-virtual-machines
 ms.topic: concept-article
 ms.update-cycle: 180-days
-ms.date: 04/03/2024
+ms.date: 11/02/2026
 ms.author: wwilliams
 ms.custom: portal
 # Customer intent: As a cloud architect, I want to use the estimated cost card during the VM creation process, so that I can accurately budget for the resources and services required for my Azure virtual machines.
@@ -17,7 +17,7 @@ ms.custom: portal
 Azure virtual machines (VM) can be created through the [Azure portal](https://portal.azure.com/). This method provides a browser-based user interface to create VMs and their associated resources. As you create VMs in the Azure portal and configure them through the different tabs during the creation process, the cost card reflects the pricing estimations based on your selections. 
 
 > [!IMPORTANT]
-> The estimated cost card feature for virtual machines in the Azure portal is currently in PREVIEW. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
+> The estimated cost card feature for virtual machines in the Azure portal is currently in preview. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
 
 The cost displayed in this card doesn't reflect usage and other costs incurred on the VMs beyond the creation of the resources. The final price of your VMs may factor in other respective networking, storage, and extra costs that pertain to the usage and application of the VMs. 
 
