@@ -56,7 +56,7 @@ Zone-redundant storage (ZRS) disks synchronously replicate data across three ava
 As a prerequisite, the OS disk and every attached data disk must use supported ZRS managed disks, and you must enable zone resilience before an outage. For more details, refer to the [zone resilience documentation](zone-resilience.md#requirements).
 
 > [!IMPORTANT]
-> Don't use this preview to fail over production VMs during a zone outage because it can cause data or disk corruption. This is a temporary preview limitation; support for this scenario is planned for a future update. Review the [preview limitations](zone-resilience.md#limitations).
+> Don't use this preview to fail over production VMs during a zone outage because it can cause data or disk corruption. This limitation is temporary; support for this scenario is planned for a future update. Review the [preview limitations](zone-resilience.md#limitations).
 
 ## Recommendations for applications running on multiple VMs
 

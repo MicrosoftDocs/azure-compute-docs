@@ -159,7 +159,7 @@ For high availability during a zone failure, deploy multiple VMs across availabi
 [zone resilience for Azure VMs (Preview)](zone-resilience.md) lets you initiate failover of an eligible standalone zonal VM to another availability zone in the same region. The VM retains its resource identity and supported configuration.
 
 > [!IMPORTANT]
-> Don't use this preview to fail over production VMs during a zone outage because it can cause data or disk corruption. This is a temporary preview limitation; support for this scenario is planned for a future update. See the [preview limitations](zone-resilience.md#limitations).
+> Don't use this preview to fail over production VMs during a zone outage because it can cause data or disk corruption. This limitation is temporary; support for this scenario is planned for a future update. See the [preview limitations](zone-resilience.md#limitations).
 
 ### Region-wide failures
 

@@ -14,13 +14,13 @@ ai-usage: ai-assisted
 
 Zone resilience for Azure VMs lets you initiate failover of an eligible zonal Azure virtual machine (VM) to another availability zone in the same region. Failover changes the zone placement of the existing VM without creating a replacement. The VM retains its resource ID and VM ID, attached network interface (NIC) and its IP configuration, supported zone-redundant storage (ZRS) managed disks, and other supported resource settings. The zone placement changes; the supported configuration remains associated with the VM.
 
-Zone failover is customer-initiated. Don't use it for production VMs during a zonal outage. This is a temporary preview limitation; support for this scenario is planned for a future update. See [Limitations](#limitations). For high availability across zones, [deploy multiple VMs across availability zones](disks-high-availability.md#deploy-vms-and-disks-across-three-availability-zones) and distribute traffic between them.
+Zone failover is customer-initiated. Don't use it for production VMs during a zone outage. This limitation is temporary and in preview. Support for this scenario is planned for a future update. See [Limitations](#limitations). For high availability across zones, [deploy multiple VMs across availability zones](disks-high-availability.md#deploy-vms-and-disks-across-three-availability-zones) and distribute traffic between them.
 
 Because ZRS synchronously replicates managed disk data across availability zones, zone resilience provides a near-zero recovery point objective (RPO) for data committed to supported ZRS disks.
 
 ## How zone failover works
 
-For an eligible VM affected by a zone failure, the failover workflow moves the VM to a healthy zone in the same region. Don't use this workflow for production VMs during a zonal outage. This is a temporary preview limitation; support for this scenario is planned for a future update. See [Limitations](#limitations).
+For an eligible VM affected by a zone failure, the failover workflow moves the VM to a healthy zone in the same region. Don't use this workflow for production VMs during a zone outage. This limitation is temporary and in preview. Support for this scenario is planned for a future update. See [Limitations](#limitations).
 
 :::image type="complex" source="media/zone-resilient/zone-recovery-workflow.png" alt-text="Customer-initiated zone failover: confirm impact, force-deallocate, change zones, start, and verify the VM.":::
   Confirm the VM is affected and select a healthy zone in the same region. Force-deallocate the VM, which stops the workload. Update the zone placement of the existing VM and reuse its supported ZRS disks. Start the VM in the target zone, subject to available capacity. Verify the VM, disks, network, and workload before restoring traffic.
@@ -49,7 +49,7 @@ For current ZRS disk types and regional availability, see [Redundancy options fo
 ## Limitations
 
 > [!IMPORTANT]
-> Don't use zone resilience for Azure VMs (Preview) to fail over production VMs during an availability zone outage. Doing so can cause data or disk corruption. This is a temporary preview limitation; support for this scenario is planned for a future update. Microsoft will announce when production VM failover during a zone outage is supported.
+> Don't use zone resilience for Azure VMs (Preview) to fail over production VMs during an availability zone outage. Doing so can cause data or disk corruption. This limitation is temporary; support for this scenario is planned for a future update. Microsoft will announce when production VM failover during a zone outage is supported.
 
 The following limitations result from the requirement to use ZRS managed disks:
 
@@ -58,7 +58,7 @@ The following limitations result from the requirement to use ZRS managed disks:
 - Premium SSD v2, Ultra Disks, and Standard HDD managed disks aren't supported because these disk types don't offer ZRS. See [ZRS limitations](disks-redundancy.md#zrs-limitations).
 - Data disks that use write acceleration aren't supported.
 
-To prepare a zonal VM with LRS disks, follow [Convert a disk from LRS to ZRS](disks-migrate-lrs-zrs.md#zonal-migration) to create ZRS disks from snapshots of the OS and data disks. You can't change a zonal LRS disk's redundancy in place, but you can keep the existing VM if its disks meet the [OS disk swap requirements](linux/os-disk-swap.md#os-disk-swap-requirements). Swap in the ZRS OS disk, then detach the LRS data disks and attach the corresponding ZRS disks. Plan for downtime, and confirm the OS and every attached data disk use a supported ZRS type before you enable zone movement. The [regional disk conversion](disks-migrate-lrs-zrs.md#regional-migration) procedure doesn't apply to zonal disks.
+To prepare a zone VM with LRS disks, follow [Convert a disk from LRS to ZRS](disks-migrate-lrs-zrs.md#zonal-migration) to create ZRS disks from snapshots of the OS and data disks. You can't change a zone LRS disk's redundancy in place, but you can keep the existing VM if its disks meet the [OS disk swap requirements](linux/os-disk-swap.md#os-disk-swap-requirements). Swap in the ZRS OS disk, then detach the LRS data disks and attach the corresponding ZRS disks. Plan for downtime, and confirm the OS and every attached data disk use a supported ZRS type before you enable zone movement. The [regional disk conversion](disks-migrate-lrs-zrs.md#regional-migration) procedure doesn't apply to zone disks.
 
 The following limitations apply to zone movement and its supported VM configurations:
 
@@ -278,7 +278,7 @@ az vm start \
 
 ## Fail over a VM to another zone
 
-Don't use this procedure to fail over a production VM during a zone outage because it can cause data or disk corruption. This is a temporary preview limitation; support for this scenario is planned for a future update. See [Limitations](#limitations). For eligible nonproduction VMs, first confirm that an availability zone failure affects the VM. Monitor individual VM health with [Azure Resource Health](/azure/service-health/resource-health-overview), and monitor broader service issues with [Azure Service Health](/azure/service-health/overview).
+Don't use this procedure to fail over a production VM during a zone outage because it can cause data or disk corruption. This limitation is temporary and is currently in preview. Support for this scenario is planned for a future update. See [Limitations](#limitations). For eligible nonproduction VMs, first confirm that an availability zone failure affects the VM. Monitor individual VM health with [Azure Resource Health](/azure/service-health/resource-health-overview), and monitor broader service issues with [Azure Service Health](/azure/service-health/overview).
 
 Choose a target zone that supports your VM size and has sufficient capacity.
 
