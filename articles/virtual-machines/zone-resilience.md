@@ -10,9 +10,9 @@ ai-usage: ai-assisted
 # Customer intent: "As a cloud administrator, I want to fail over an eligible zonal VM to another availability zone while preserving its resource configuration."
 ---
 
-# zone resilience for Azure VMs (Preview)
+# Zone resilience for Azure VMs (Preview)
 
-zone resilience for Azure VMs lets you initiate failover of an eligible zonal Azure virtual machine (VM) to another availability zone in the same region. Failover changes the zone placement of the existing VM without creating a replacement. The VM retains its resource ID and VM ID, attached network interface (NIC) and its IP configuration, supported zone-redundant storage (ZRS) managed disks, and other supported resource settings. The zone placement changes; the supported configuration remains associated with the VM.
+Zone resilience for Azure VMs lets you initiate failover of an eligible zonal Azure virtual machine (VM) to another availability zone in the same region. Failover changes the zone placement of the existing VM without creating a replacement. The VM retains its resource ID and VM ID, attached network interface (NIC) and its IP configuration, supported zone-redundant storage (ZRS) managed disks, and other supported resource settings. The zone placement changes; the supported configuration remains associated with the VM.
 
 Zone failover is customer-initiated. Don't use it for production VMs during a zonal outage. This is a temporary preview limitation; support for this scenario is planned for a future update. See [Limitations](#limitations). For high availability across zones, [deploy multiple VMs across availability zones](disks-high-availability.md#deploy-vms-and-disks-across-three-availability-zones) and distribute traffic between them.
 
@@ -342,7 +342,7 @@ Start-AzVM `
 
 Bicep updates the VM's zone placement, but doesn't deallocate or start the VM. Run the following steps in order, waiting for each command to finish before continuing.
 
-1. Force-deallocate the existing VM:
+1. Force-deallocate the existing VM.
 
     ```azurecli
     az vm deallocate \
@@ -375,7 +375,7 @@ Bicep updates the VM's zone placement, but doesn't deallocate or start the VM. R
 
     This example is an excerpt, not a deployable VM definition. Keep the existing VM's full configuration, disk attachments, and network interfaces in your Bicep file. Don't reuse a new-VM template with `osDisk.createOption: 'FromImage'` to update an existing VM.
 
-    Deploy the complete file after force-deallocation succeeds:
+    Deploy the complete file after force-deallocation succeeds.
 
     ```azurecli
     az deployment group create \
@@ -384,7 +384,7 @@ Bicep updates the VM's zone placement, but doesn't deallocate or start the VM. R
       --parameters vmName="<vm-name>" targetZone="<target-zone>"
     ```
 
-1. After the deployment succeeds and the VM reports the target zone, start it:
+1. After the deployment succeeds and the VM reports the target zone, start it.
 
     ```azurecli
     az vm start \
@@ -594,7 +594,7 @@ Zone resilience doesn't provide application-level consistency, traffic failover,
 
 ## Cost
 
-Standard charges for VMs, managed disks, and network resources apply. For managed disk pricing, see [Azure managed disks pricing](https://azure.microsoft.com/pricing/details/managed-disks/).
+Standard charges apply for VMs, managed disks, and network resources. For managed disk pricing, see [Azure managed disks pricing](https://azure.microsoft.com/pricing/details/managed-disks/).
 
 <!-- Confirm feature-specific preview pricing before publication. -->
 
