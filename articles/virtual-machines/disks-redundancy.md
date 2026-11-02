@@ -32,7 +32,7 @@ If your workflow doesn't support application-level synchronous writes across zon
 
 Zone-redundant storage (ZRS) synchronously replicates your Azure managed disk across three Azure availability zones in the region you select. Each availability zone is a separate physical location with independent power, cooling, and networking. ZRS disks provide at least 99.9999999999% (12 9's) of durability over a given year.
 
-A ZRS disk lets you recover from failures in availability zones. If a zone went down and your virtual machine (VM) wasn't affected, then your workloads continue running. But if your VM was affected by an outage and you want to recover before it's resolved, you can [force detach](/rest/api/compute/virtual-machines/attach-detach-data-disks?tabs=HTTP#diskdetachoptiontypes) your ZRS data disks from the failed VM, freeing them to attach to another VM. Force detach doesn't support OS disks.
+A ZRS disk lets you recover from failures in availability zones. If a zone goes down and your virtual machine (VM) isn't affected, then your workloads continue running. But if your VM is affected by an outage and you want to recover before it's resolved, you can [force detach](/rest/api/compute/virtual-machines/attach-detach-data-disks?tabs=HTTP#diskdetachoptiontypes) your ZRS data disks from the failed VM, freeing them to attach to another VM. Force detach doesn't support OS disks.
 
 [zone resilience for Azure VMs (Preview)](zone-resilience.md) lets you initiate failover of an eligible standalone zonal VM to another availability zone in the same region. The VM retains its resource identity and supported configuration.
 

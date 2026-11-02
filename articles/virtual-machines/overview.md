@@ -163,7 +163,7 @@ For high availability during a zone failure, deploy multiple VMs across availabi
 
 ### Region-wide failures
 
-A whole region can experience an outage due to a major natural disaster or widespread service interruption. These are rare occurrences, but you must prepare for the possibility that there's an outage of an entire region. If an entire region experiences a service disruption, the locally redundant copies of your data would temporarily be unavailable. If you enabled geo-replication, three additional copies of your Azure Storage blobs and tables are stored in a different region. In the event of a complete regional outage or a disaster in which the primary region isn't recoverable, Azure remaps all of the DNS entries to the geo-replicated region.
+A whole region can experience an outage due to a major natural disaster or widespread service interruption. These outages are rare, but you must prepare for the possibility that an entire region is unavailable. If an entire region experiences a service disruption, the locally redundant copies of your data are temporarily unavailable. If you enabled geo-replication, three additional copies of your Azure Storage blobs and tables are stored in a different region. In the event of a complete regional outage or a disaster in which the primary region isn't recoverable, Azure remaps all of the DNS entries to the geo-replicated region.
 
 In the case of a service disruption of the entire region where your Azure virtual machine application is deployed, we provide the following guidance for Azure virtual machines.
 
