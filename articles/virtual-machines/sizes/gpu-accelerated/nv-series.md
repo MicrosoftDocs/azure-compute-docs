@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 07/31/2024
+ms.date: 11/03/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 # Customer intent: "As a cloud architect, I want to compare NV series VM sizes and specifications, so that I can select the optimal configuration for my workloads requiring GPU support and specific memory and network performance."
@@ -13,10 +13,11 @@ ms.reviewer: mattmcinnes
 
 # NV sizes series
 
-> [!IMPORTANT]
-> The NV-series is retired as of September 6th, 2023, and is no longer available. Please refer to the [NV-series retirement page](/azure/virtual-machines/sizes/lifecycle/retirement/nv-series-retirement) for more information. 
 
 [!INCLUDE [nv-summary](./includes/nv-series-summary.md)]
+
+> [!IMPORTANT]
+> The NV-series is retired as of September 6th, 2023, and is no longer available. Please refer to the [NV-series retirement page](/azure/virtual-machines/sizes/lifecycle/retirement/nv-series-retirement) for more information. 
 
 ## Host specifications
 [!INCLUDE [nv-series-specs](./includes/nv-series-specs.md)]
