@@ -22,7 +22,7 @@ Because ZRS synchronously replicates managed disk data across availability zones
 
 For an eligible VM affected by a zone failure, the failover workflow moves the VM to a healthy zone in the same region. Don't use this workflow for production VMs during a zone outage. This limitation is temporary and in preview. Support for this scenario is planned for a future update. See [Limitations](#limitations).
 
-:::image type="complex" source="media/zone-resilient/zone-recovery-workflow.png" alt-text="Diagram of Customer-initiated zone failover: confirm impact, force-deallocate, change zones, start, and verify the VM.":::
+:::image type="complex" source="media/zone-resilience/zone-recovery-workflow.png" alt-text="Diagram of Customer-initiated zone failover: confirm impact, force-deallocate, change zones, start, and verify the VM.":::
   Confirm the VM is affected and select a healthy zone in the same region. Force-deallocate the VM, which stops the workload. Update the zone placement of the existing VM and reuse its supported ZRS disks. Start the VM in the target zone, subject to available capacity. Verify the VM, disks, network, and workload before restoring traffic.
 :::image-end:::
 
@@ -42,7 +42,7 @@ Before you enable zone resilience for Azure VMs, confirm that your configuration
 | Private IP address | Use a static or dynamic private IP address. |
 | Public IP address | If used, configure a zone-redundant Standard SKU public IP address. |
 | Network appliance | If used, configure a zone-redundant Standard SKU load balancer or supported gateway. |
-| Management tool | Use Azure CLI version 2.87.0 or later, Azure PowerShell with zone movement and force deallocation support, or Compute REST API version `2026-03-01`. |
+| Management tool | Use the Azure portal, Azure CLI version 2.87.0 or later, Azure PowerShell with zone movement and force deallocation support, or Compute REST API version `2026-03-01`. |
 
 For current ZRS disk types and regional availability, see [Redundancy options for managed disks](disks-redundancy.md#zone-redundant-storage-for-managed-disks). To create ZRS disks, see [Deploy a managed disk that uses zone-redundant storage](disks-deploy-zrs.md).
 
@@ -69,9 +69,6 @@ The following limitations apply to zone movement and its supported VM configurat
 - On-demand capacity reservations, dedicated hosts, and proximity placement groups aren't supported.
 - The feature doesn't provide automatic failover, application-level consistency, traffic failover, recovery plans, or failback orchestration.
 
-<!-- Confirm whether hibernation, InfiniBand need explicit preview validation before publication. -->
-<!-- Confirm preview regions, subscription eligibility, and any registration requirements before publication. ZRS disk availability alone doesn't establish preview eligibility. -->
-
 ## Prepare a VM for zone failover
 
 Create a VM that meets every requirement before you enable zone movement. Enablement must occur while the source availability zone is healthy.
@@ -84,6 +81,32 @@ Create a VM that meets every requirement before you enable zone movement. Enable
 ## Enable zone movement
 
 Enable zone movement when you create a VM or on an eligible existing zonal VM. You must deallocate an existing VM before you can enable zone movement; a new VM doesn't need a separate deallocation step. Enable zone movement while the source zone is healthy.
+
+# [Azure portal](#tab/azure-portal-enable)
+
+To enable zone movement when you create a VM:
+
+1. Sign in to the [Azure portal](https://portal.azure.com/), and start creating a VM.
+1. On the **Basics** tab, select a region that supports availability zones. Set **Availability options** to **Availability zone**, and select a specific **Availability zone**.
+1. Under **Availability zone**, select **Protect VM from zonal-failure with Zone resilience (Preview)**.
+1. In the **Zone resilience (Preview)** pane, select **Enable Zone resilience (Preview)**. Review the configuration requirements, and select **Save**.
+
+    :::image type="content" source="media/zone-resilience/zone-resilience-enable-new-vm.png" alt-text="Screenshot of the VM creation page with the zone resilience link, enable checkbox, and Save button highlighted." lightbox="media/zone-resilience/zone-resilience-enable-new-vm.png":::
+
+1. On the **Disks** tab, confirm that the OS disk and every data disk use **Premium SSD ZRS** or **Standard SSD ZRS**. Configure supported network resources and the remaining VM settings.
+1. Select **Review + create**, and then select **Create** after validation succeeds.
+
+To enable zone movement on an eligible existing zonal VM:
+
+1. In the Azure portal, open the VM, and select **Overview**.
+1. Select **Stop**, confirm the operation, and wait until the VM status is **Stopped (deallocated)**. Stopping the VM interrupts the workload.
+1. On **Overview**, under **Availability + scaling**, select the current value of **Zone Resilience (Preview)**.
+1. In the **Zone resilience (Preview)** pane, select **Enable Zone resilience (Preview)**, review the configuration requirements, and select **Save**.
+
+    :::image type="content" source="media/zone-resilience/zone-resilience-enable-existing-vm.png" alt-text="Screenshot of an existing VM overview and the zone resilience pane with the enable checkbox highlighted." lightbox="media/zone-resilience/zone-resilience-enable-existing-vm.png":::
+
+1. After the update succeeds, select **Start** on **Overview**.
+1. Confirm that **Zone Resilience (Preview)** shows **Enabled**.
 
 # [Azure CLI](#tab/azure-cli-enable)
 
@@ -285,7 +308,27 @@ Choose a target zone that supports your VM size and has sufficient capacity.
 > [!WARNING]
 > Force deallocation stops the VM and discards its in-memory state. Start failover only after you confirm the impact on your workload and its dependencies.
 
-Use Azure CLI to orchestrate failover. With Azure PowerShell or Bicep, perform each failover operation in order.
+Use Azure CLI to orchestrate failover. With the Azure portal, Azure PowerShell, or Bicep, perform each failover operation in order.
+
+# [Azure portal](#tab/azure-portal-recover)
+
+Use the portal when the VM is already deallocated or can be stopped normally. If normal deallocation can't complete, use the Azure CLI, Azure PowerShell, or Bicep procedure for force deallocation.
+
+1. In the [Azure portal](https://portal.azure.com/), open the VM, and select **Overview**.
+1. If the VM isn't already deallocated, select **Stop**, confirm the operation, and wait until its status is **Stopped (deallocated)**. Don't continue if deallocation fails.
+1. Under **Availability + scaling**, next to **Availability zone**, select **(edit)**.
+
+    :::image type="content" source="media/zone-resilience/zone-resilience-edit-availability-zone.png" alt-text="Screenshot of the VM overview with the edit link next to Availability zone highlighted." lightbox="media/zone-resilience/zone-resilience-edit-availability-zone.png":::
+
+1. On the **Availability Zones** tab, select the target **Availability zone**, and select **Apply**.
+
+    :::image type="content" source="media/zone-resilience/zone-resilience-apply-availability-zone.png" alt-text="Screenshot of the Availability Zones tab with the deallocated status, target zone selector, and Apply button highlighted." lightbox="media/zone-resilience/zone-resilience-apply-availability-zone.png":::
+
+1. Wait for the update to succeed, and confirm that **Availability zone** reports the target zone. If the update fails, review the error and VM state before continuing.
+1. Return to **Overview**, and select **Start**.
+1. Complete the checks in [Verify failover succeeded](#verify-failover-succeeded) before restoring traffic.
+
+The VM remains deallocated after you apply the zone change. Start the VM in target zone post zone change operation completes successfully to resume normal operations by selecting **Start** in the Azure portal.
 
 # [Azure CLI](#tab/azure-cli-recover)
 
@@ -409,7 +452,13 @@ After failover finishes, verify the VM and the workload before you restore traff
 1. Run workload-specific data consistency checks.
 1. Restore traffic only after your health checks succeed.
 
-Use Azure CLI or Azure PowerShell to check the VM state and zone:
+Use the Azure portal, Azure CLI, or Azure PowerShell to check the VM state and zone:
+
+# [Azure portal](#tab/azure-portal-verify)
+
+1. In the [Azure portal](https://portal.azure.com/), open the VM, and select **Overview**.
+1. Confirm that **Status** is **Running**.
+1. Under **Availability + scaling**, confirm that **Availability zone** is the target zone and **Zone Resilience (Preview)** is **Enabled**.
 
 # [Azure CLI](#tab/azure-cli-verify)
 
@@ -459,6 +508,14 @@ If the VM can't start because the target zone lacks capacity, select another sup
 ## Disable zone movement
 
 You must deallocate the VM before you disable zone movement. Deallocation interrupts the workload. Complete each operation before continuing, and start the VM only after the update succeeds:
+
+# [Azure portal](#tab/azure-portal-disable)
+
+1. In the [Azure portal](https://portal.azure.com/), open the VM, and select **Overview**.
+1. Select **Stop**, confirm the operation, and wait until the VM status is **Stopped (deallocated)**.
+1. Under **Availability + scaling**, select **Enabled** next to **Zone Resilience (Preview)**.
+1. In the **Zone resilience (Preview)** pane, clear **Enable Zone resilience (Preview)**, and select **Save**.
+1. After the update succeeds, confirm that **Zone Resilience (Preview)** shows **Disabled**, and select **Start**.
 
 # [Azure CLI](#tab/azure-cli-disable)
 
