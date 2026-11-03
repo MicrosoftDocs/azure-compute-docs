@@ -257,6 +257,39 @@ If the in-place upgrade process failed to complete successfully you can return t
 1. Restart the VM.
 
 
+## Using Hotpatching with Windows Server 2025 Azure Edition
+
+After upgrading to Windows Server 2025 Azure Edition, you can enable Hotpatching for your VMs running in Azure:
+
+1. Enable virtualization-based security (VBS):
+
+   ```cmd
+   reg add "HKLM\SYSTEM\CurrentControlSet\Control\DeviceGuard" /v EnableVirtualizationBasedSecurity /d 0x1 /t REG_DWORD /f
+   ```
+
+1. Enable Hotpatch. Set the value to 1 to enable hotpatch:
+
+   ```cmd
+   reg add "HKLM\SOFTWARE\Microsoft\Windows\Hotpatch\Environment" /v AllowRebootlessUpdates /d 0x1 /t REG_DWORD /f
+   ```
+
+The VMs need to connect to Windows Update to receive hotpatches.
+
+
+## Using in-place upgrade on localized versions of Windows Server
+
+Organizations running localized versions of Windows Server that require an in-place upgrade, for example DE-DE, ES-ES, FR-FR, JA-JP, NL-NL, or PL-PL, can use these steps:
+
+1. Back up the source VM to avoid any data loss.
+1. Download the media for the target localized version of Windows Server. For more information, see [Download perpetual software and product license keys bought through the Cloud Solution Provider (CSP) program](/microsoft-365/admin/setup/download-software-licenses-csp), or ask your account team to locate the media.
+1. Upload the media to an Azure managed disk using [Azure Storage Explorer](https://www.microsoft.com/download/details.aspx?id=108134).
+1. Attach the managed disk containing the target media to the source VM.
+1. Inform users that the VM will be unavailable during the upgrade.
+1. Run `setup.exe` and upgrade to the target version of Windows Server.
+1. Check that applications and services are running correctly on the updated version of Windows Server.
+1. Inform users that the VM is available.
+
+
 ## Next steps
 
 - For more information, see [Upgrade Windows Server in place](/windows-server/get-started/upgrade-in-place)
