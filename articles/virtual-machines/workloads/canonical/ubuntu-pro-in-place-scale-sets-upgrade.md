@@ -59,11 +59,11 @@ The VMSS ARM resource contains an `orchestrationMode` property whose value is ei
 The following command shows whether the `orchestrationMode` property is Uniform or Flexible:
 
 ```Azure CLI
-az vmss show \ 
-  -g $RG \ 
-  -n $VMSS \ 
-  --query orchestrationMode \ 
-  -o tsv 
+az vmss show \
+  -g $RG \
+  -n $VMSS \
+  --query orchestrationMode \
+  -o tsv
 ```
 
 If the result is Uniform, follow the VMSS Uniform procedure. If the result is Flexible, follow the VMSS Flexible procedure. 
@@ -75,29 +75,29 @@ For more information about the differences between VMSS Uniform and VMSS Flexibl
 To upgrade VMSS Uniform to Ubuntu Pro, run the following commands:
 
 ```Azure CLI
-az vmss update \ 
-  -g $RG \ 
-  -n $VMSS \ 
-  --license-type UBUNTU_PRO 
+az vmss update \
+  -g $RG \
+  -n $VMSS \
+  --license-type UBUNTU_PRO
 ```
 
 ```Azure CLI
-az vmss update-instances \ 
-  -g $RG \ 
-  -n $VMSS \ 
-  --instance-ids '*' 
+az vmss update-instances \
+  -g $RG \
+  -n $VMSS \
+  --instance-ids '*'
 ```
 
 ```Azure CLI
-az vmss list-instances \ 
-  -g $RG \ 
-  -n $VMSS \ 
-  --query "[].id" \ 
-  -o tsv | \ 
-az vmss run-command invoke \ 
-  --ids @- \ 
-  --command-id RunShellScript \ 
-  --scripts "pro auto-attach" 
+az vmss list-instances \
+  -g $RG \
+  -n $VMSS \
+  --query "[].id" \
+  -o tsv | \
+az vmss run-command invoke \
+  --ids @- \
+  --command-id RunShellScript \
+  --scripts "pro auto-attach"
 ```
 
 ## VMSS Flexible
@@ -105,31 +105,31 @@ az vmss run-command invoke \
 To upgrade VMSS Flexible to Ubuntu Pro, run the following commands:
 
 ```Azure CLI
-az vmss update \ 
-  -g "$RG" \ 
-  -n "$VMSS" \ 
-  --license-type UBUNTU_PRO 
-``` 
+az vmss update \
+  -g "$RG" \
+  -n "$VMSS" \
+  --license-type UBUNTU_PRO
+```
 
-```Azure CLI 
+```Azure CLI
 az vmss update-instances \
--g $RG \
--n $VMSS \
---instance-ids '*'
+  -g $RG \
+  -n $VMSS \
+  --instance-ids '*'
 ```
 
 The following command uses an `az vm` command instead of an `az vmss` command, due to how VMSS Flexible treats the underlying VMs. All VMs in the scale set are upgraded.
 
-```Azure CLI 
-az vm list \ 
-  -g "$RG" \ 
-  --query "[?starts_with(name, '${VMSS}_')].id" \ 
-  -o tsv | \ 
-az vm run-command invoke \ 
-  --ids @- \ 
-  --command-id RunShellScript \ 
-  --scripts "pro auto-attach" \ 
-  -o json 
+```Azure CLI
+az vm list \
+  -g "$RG" \
+  --query "[?starts_with(name, '${VMSS}_')].id" \
+  -o tsv | \
+az vm run-command invoke \
+  --ids @- \
+  --command-id RunShellScript \
+  --scripts "pro auto-attach" \
+  -o json
 ```
 
 ## Validate the license
