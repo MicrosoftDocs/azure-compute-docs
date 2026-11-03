@@ -5,7 +5,7 @@ services: virtual-machines
 author: iamwilliew
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.date: 10/05/2026
+ms.date: 11/03/2026
 ms.author: wwilliams
 # Customer intent: As a system administrator, I want to perform an in-place upgrade of Windows Server VMs in Azure, so that I can update the operating system while preserving settings, roles, and data without needing to recreate the VM.
 ---
@@ -15,7 +15,7 @@ ms.author: wwilliams
 An in-place upgrade allows you to go from an older operating system to a newer one while keeping your settings, server roles, and data intact. This article teaches you how to move your Azure VMs to a later version of Windows Server using an in-place upgrade. Currently, upgrading to Windows Server 2012, Windows Server 2016, Windows Server 2019, Windows Server 2022, and Windows Server 2025 are supported.
 
 > [!CAUTION]
-> Following the process in this article causes a disconnection between the data plane and the [control plane](/azure/architecture/guide/multitenant/considerations/control-planes#responsibilities-of-a-control-plane) of the virtual machine (VM). Azure capabilities such as [Auto guest patching](/azure/virtual-machines/automatic-vm-guest-patching#how-does-automatic-vm-guest-patching-work), [Auto OS image upgrades](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade), and [Azure Update Manager](/azure/update-manager/overview) are not officially supported and may fail immediately or in the future. This means that the source image information in the VM properties, including the publisher, offer, and plan, remains unchanged. The image used to deploy the VM remains the same, and only the OS is upgraded. To utilize these features, create a new VM using your preferred operating system instead of performing an in-place upgrade. The exception is [Hotpatching](/windows-server/get-started/hotpatch?toc=%2Fazure%2Fvirtual-machines%2Ftoc.json#supported-updates) for VMs upgraded to Windows Server 2025 Datacenter: Azure Edition. For more information, see [Using Hotpatching with Windows Server 2025 Azure Edition](#using-hotpatching-with-windows-server-2025-azure-edition). 
+> Following the process in this article causes a disconnection between the data plane and the [control plane](/azure/architecture/guide/multitenant/considerations/control-planes#responsibilities-of-a-control-plane) of the virtual machine (VM). Azure capabilities such as [Auto guest patching](/azure/virtual-machines/automatic-vm-guest-patching#how-does-automatic-vm-guest-patching-work), [Auto OS image upgrades](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade), and [Azure Update Manager](/azure/update-manager/overview) are not officially supported and may fail immediately or in the future. This means that the source image information in the VM properties, including the publisher, offer, and plan, remains unchanged. The image used to deploy the VM remains the same, and only the OS is upgraded. To utilize these features, create a new VM using your preferred operating system instead of performing an in-place upgrade. The exception is [Hotpatching](/windows-server/get-started/hotpatch?toc=%2Fazure%2Fvirtual-machines%2Ftoc.json#supported-updates) delivered through Windows Update for VMs upgraded to Windows Server 2025 Datacenter: Azure Edition. For more information, see [Using Hotpatching with Windows Server 2025 Azure Edition](#using-hotpatching-with-windows-server-2025-azure-edition). 
 
 [!INCLUDE [Azure VM Windows WU & OS Upgrade Diagnostic Tools](./includes/virtual-machines-runcmd-wu-tools.md)]
 
@@ -57,7 +57,7 @@ The in-place upgrade process requires the use of managed disks on the VM to be u
 We recommend that you create a snapshot of your operating system disk and any data disks before starting the in-place upgrade process. This enables you to revert to the previous state of the VM if anything fails during the in-place upgrade process. To create a snapshot on each disk, follow these steps to [create a snapshot of a disk](./snapshot-copy-managed-disk.md). 
 
 > [!NOTE]
-> During the upgrade process, the upgrade media disk is only created in the `en-US` language. To upgrade a VM that was installed in another language, see [Using in-place upgrade on localized versions of Windows Server](#using-in-place-upgrade-on-localized-versions-of-windows-server). To avoid errors caused by previously using a different language ISO to install the OS, you can set the system language to `en-US` or change the system locale to `English (United States)` in Control Panel.
+> During the upgrade process, the upgrade media disk is only created in the `en-US` language. To upgrade a VM that was installed in another language, see [Using in-place upgrade on localized versions of Windows Server](#using-in-place-upgrade-on-localized-versions-of-windows-server). The target media must match the installed language of the operating system.
  
 ## Create upgrade media disk
 
@@ -267,6 +267,8 @@ After upgrading to Windows Server 2025 Azure Edition, you can enable Hotpatching
    reg add "HKLM\SYSTEM\CurrentControlSet\Control\DeviceGuard" /v EnableVirtualizationBasedSecurity /d 0x1 /t REG_DWORD /f
    ```
 
+1. Restart the VM so that VBS takes effect.
+
 1. Enable Hotpatch. Set the value to 1 to enable hotpatch:
 
    ```cmd
@@ -288,6 +290,9 @@ Organizations running localized versions of Windows Server that require an in-pl
 1. Run `setup.exe` and upgrade to the target version of Windows Server.
 1. Check that applications and services are running correctly on the updated version of Windows Server.
 1. Inform users that the VM is available.
+
+> [!NOTE]
+> Azure Storage Explorer uploads a VHD file to a managed disk. If your media is an ISO file, you can instead copy the ISO file to the VM and mount it before you run `setup.exe`.
 
 
 ## Next steps
