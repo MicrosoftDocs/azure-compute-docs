@@ -13,7 +13,6 @@ ms.reviewer: mattmcinnes
 
 # NV sizes series
 
-
 [!INCLUDE [nv-summary](./includes/nv-series-summary.md)]
 
 > [!IMPORTANT]
