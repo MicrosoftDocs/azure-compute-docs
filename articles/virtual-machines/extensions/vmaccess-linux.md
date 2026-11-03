@@ -32,7 +32,7 @@ This article describes how to run the VMAccess Extension from the Azure CLI and 
 | Alma Linux Community | Alma Linux | 8.x+, 9.x+ | 8.x+, 9.x+ |
 | Credativ | Debian | 10+ | 11.x+ |
 | Kinvolk | Flatcar Linux | 3374.2.x+ | 3374.2.x+ |
-| Microsoft | Azure Linux | 2.x | 2.x |
+| Microsoft | Azure Linux | 4.x | 4.x |
 | openSUSE Project | openSUSE | 12.3+ | *Not supported* |
 | Oracle | Oracle Linux | 6.4+, 7.x+, 8.x+ | *Not supported* |
 | Red Hat | Red Hat Enterprise Linux | 6.7+, 7.x+,  8.x+, 9.x+, 10.x+ | 8.6+, 9.0+, 10.x+ |
