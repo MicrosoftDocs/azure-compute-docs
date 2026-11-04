@@ -34,7 +34,9 @@ Each Availability Zone has a distinct power source, network, and cooling. By des
 As a prerequisite, the OS disk and every attached data disk must use supported ZRS managed disks, and you must enable zone resilience before an outage. For more details, refer to the [zone resilience documentation](zone-resilience.md#requirements).
 
 > [!IMPORTANT]
-> Don't use this preview to fail over production VMs during an availability zone outage because it can cause data or disk corruption. This is a temporary preview limitation; support for this scenario is planned for a future update. Review the [preview limitations](zone-resilience.md#limitations) before enabling the feature.
+> Zone resilience for Azure VMs is in preview. Use this preview only for evaluation and testing with nonproduction VMs. Don't use it for production VMs. For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Review the [preview limitations](zone-resilience.md#limitations) before enabling the feature.
 
 ## Virtual Machines Scale Sets 
 [Azure virtual machine scale sets](flexible-virtual-machine-scale-sets.md) let you create and manage a group of load balanced VMs. The number of VM instances can automatically increase or decrease in response to demand or a defined schedule. Scale sets provide high availability to your applications, and allow you to centrally manage, configure, and update many VMs. There is no cost for the scale set itself, you only pay for each VM instance that you create.

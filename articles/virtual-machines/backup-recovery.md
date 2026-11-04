@@ -30,7 +30,9 @@ Availability, failover, and backup address different risks. Use this comparison 
 | Recover point-in-time data after deletion or corruption. | Azure Backup, managed snapshots, or VM restore points, described in this article. | Replication doesn't replace historical backups, and backups don't keep an application continuously available. |
 
 > [!IMPORTANT]
-> Don't use zone resilience for Azure VMs (Preview) to fail over production VMs during a zone outage because it can cause data or disk corruption. This is a temporary preview limitation; support for this scenario is planned for a future update. See the [preview limitations](zone-resilience.md#limitations).
+> Zone resilience for Azure VMs is in preview. Use this preview only for evaluation and testing with nonproduction VMs. Don't use it for production VMs. For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+See the [preview limitations](zone-resilience.md#limitations).
 
 ## Azure Backup
 

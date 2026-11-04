@@ -14,13 +14,19 @@ ai-usage: ai-assisted
 
 Zone resilience for Azure VMs lets you initiate failover of an eligible zonal Azure virtual machine (VM) to another availability zone in the same region. Failover changes the zone placement of the existing VM without creating a replacement. The VM retains its resource ID and VM ID, attached network interface (NIC) and its IP configuration, supported zone-redundant storage (ZRS) managed disks, and other supported resource settings. The zone placement changes; the supported configuration remains associated with the VM.
 
-Zone failover is customer-initiated. Don't use it for production VMs during a zone outage. This limitation is temporary and in preview. Support for this scenario is planned for a future update. See [Limitations](#limitations). For high availability across zones, [deploy multiple VMs across availability zones](disks-high-availability.md#deploy-vms-and-disks-across-three-availability-zones) and distribute traffic between them.
+Zone failover is customer-initiated. See [Limitations](#limitations). For high availability across zones, [deploy multiple VMs across availability zones](disks-high-availability.md#deploy-vms-and-disks-across-three-availability-zones) and distribute traffic between them.
+
+> [!IMPORTANT]
+> Zone resilience for Azure VMs is in preview. Use this preview only for evaluation and testing with nonproduction VMs. Don't use it for production VMs. For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Because ZRS synchronously replicates managed disk data across availability zones, zone resilience provides a near-zero recovery point objective (RPO) for data committed to supported ZRS disks.
 
 ## How zone failover works
 
-For an eligible VM affected by a zone failure, the failover workflow moves the VM to a healthy zone in the same region. Don't use this workflow for production VMs during a zone outage. This limitation is temporary and in preview. Support for this scenario is planned for a future update. See [Limitations](#limitations).
+For an eligible VM affected by a zone failure, the failover workflow moves the VM to a healthy zone in the same region. See [Limitations](#limitations).
+
+> [!IMPORTANT]
+> Zone resilience for Azure VMs is in preview. Use this preview only for evaluation and testing with nonproduction VMs. Don't use it for production VMs. For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 :::image type="complex" source="media/zone-resilience/zone-recovery-workflow.png" alt-text="Diagram of Customer-initiated zone failover: confirm impact, force-deallocate, change zones, start, and verify the VM.":::
   Confirm the VM is affected and select a healthy zone in the same region. Force-deallocate the VM, which stops the workload. Update the zone placement of the existing VM and reuse its supported ZRS disks. Start the VM in the target zone, subject to available capacity. Verify the VM, disks, network, and workload before restoring traffic.
@@ -49,7 +55,7 @@ For current ZRS disk types and regional availability, see [Redundancy options fo
 ## Limitations
 
 > [!IMPORTANT]
-> Don't use zone resilience for Azure VMs (Preview) to fail over production VMs during an availability zone outage. Doing so can cause data or disk corruption. This limitation is temporary; support for this scenario is planned for a future update. Microsoft will announce when production VM failover during a zone outage is supported.
+> Zone resilience for Azure VMs is in preview. Use this preview only for evaluation and testing with nonproduction VMs. Don't use it for production VMs. For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 The following limitations result from the requirement to use ZRS managed disks:
 
@@ -301,7 +307,10 @@ az vm start \
 
 ## Fail over a VM to another zone
 
-Don't use this procedure to fail over a production VM during a zone outage because it can cause data or disk corruption. This limitation is temporary and is currently in preview. Support for this scenario is planned for a future update. See [Limitations](#limitations). For eligible nonproduction VMs, first confirm that an availability zone failure affects the VM. Monitor individual VM health with [Azure Resource Health](/azure/service-health/resource-health-overview), and monitor broader service issues with [Azure Service Health](/azure/service-health/overview).
+> [!IMPORTANT]
+> Zone resilience for Azure VMs is in preview. Use this preview only for evaluation and testing with nonproduction VMs. Don't use it for production VMs. For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+See [Limitations](#limitations). For eligible nonproduction VMs, first confirm that an availability zone failure affects the VM. Monitor individual VM health with [Azure Resource Health](/azure/service-health/resource-health-overview), and monitor broader service issues with [Azure Service Health](/azure/service-health/overview).
 
 Choose a target zone that supports your VM size and has sufficient capacity.
 
@@ -633,9 +642,10 @@ The near-zero RPO applies to data committed to supported ZRS disks. It doesn't a
 
 ### When should I use zone resilience instead of Azure Site Recovery for zonal failover?
 
-Both options support customer-initiated failover to another zone in the same region, but they use different disk and VM recovery models:
+> [!IMPORTANT]
+> Zone resilience for Azure VMs is in preview. Use this preview only for evaluation and testing with nonproduction VMs. Don't use it for production VMs. For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Don't use zone resilience to fail over production VMs during a zonal outage. This is a temporary preview limitation; support for this scenario is planned for a future update. See [Limitations](#limitations).
+See [Limitations](#limitations). Both options support customer-initiated failover to another zone in the same region, but they use different disk and VM recovery models:
 
 | Decision factor | Zone resilience for Azure VMs (Preview) | Azure Site Recovery zone-to-zone disaster recovery |
 | --- | --- | --- |
