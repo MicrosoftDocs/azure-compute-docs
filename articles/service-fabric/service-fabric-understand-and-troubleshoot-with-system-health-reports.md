@@ -7,7 +7,6 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 03/22/2026
-ai-usage: ai-generated
 # Customer intent: "As a cloud administrator, I want to utilize system health reports from my Service Fabric cluster, so that I can effectively troubleshoot cluster and application issues to ensure optimal performance and reliability."
 ---
 
@@ -25,7 +24,7 @@ System health reports provide visibility into cluster and application functional
 
 The system component reports are identified by the source, which starts with the "**System.**" prefix. Watchdogs can't use the same prefix for their sources, as reports with invalid parameters are rejected.
 
-This article also covers the managed Transactional Replicator's write-throttling report, which uses the source `CheckpointManager` rather than the `System.` prefix.
+This article also covers the managed Transactional Replicator's write-throttling report, which uses the source "**CheckpointManager.**" rather than the "**System.**" prefix.
 
 Let's look at some system reports to understand what triggers them and to learn how to correct the potential problems they represent.
 
@@ -391,12 +390,13 @@ In a case like the example, further investigation is needed. Investigate the hea
 
 ### Write throttling
 
-<!-- TODO: Confirm the first supported Service Fabric runtime release and any platform limitations with the feature owner before publishing. -->
+> [!NOTE]
+> This report is planned for Service Fabric 12.0.
 
 The managed Transactional Replicator reports a partition health warning when the primary rejects a write because of disk write pressure or blocked log truncation. The health report adds visibility into these conditions; it doesn't change the existing `FabricTransientException` behavior for rejected writes.
 
-- **SourceId**: `CheckpointManager`.
-- **Property**: `WriteThrottlingStatus`.
+- **SourceId**: CheckpointManager.
+- **Property**: WriteThrottlingStatus
 - **Health state**: `Warning` while writes are throttled, followed by `Ok` when a subsequent write passes the throttling check.
 - **Description**: Identifies disk write pressure, a pending checkpoint, or a pending log truncation. For blocked log truncation, the description includes the blocking log reader's name and type.
 
