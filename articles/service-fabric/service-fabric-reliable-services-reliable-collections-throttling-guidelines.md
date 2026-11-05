@@ -97,9 +97,9 @@ Watch for operation timeouts as a stall symptom. When commits can't finish becau
 ## Observe write throttling through partition health reports
 
 > [!NOTE]
-> This report is planned for Service Fabric 12.0.
+> This report is available starting with Service Fabric 12.0.
 
-The managed Transactional Replicator exposes a health report with source `CheckpointManager` and property `WriteThrottlingStatus`. When the primary rejects a write because of blocked log truncation or other errors, it presents a health report with `Warning` state. The description distinguishes the detected cause, which can be one of the following:
+When the primary rejects a write because of blocked log truncation or other errors, a `Warning` health report with source `CheckpointManager` and property `WriteThrottlingStatus` is emitted. The description distinguishes the detected cause, which can be one of the following:
 - Incoming load exceeding disk throughput
 - A pending checkpoint
 - Log truncation blocked by a named log reader, such as a backup or replica copy.
