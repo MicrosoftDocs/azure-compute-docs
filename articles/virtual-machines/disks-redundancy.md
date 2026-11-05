@@ -3,7 +3,8 @@ title: Redundancy options for Azure managed disks
 description: Learn about zone-redundant storage and locally redundant storage for Azure managed disks.
 author: roygara
 ms.author: rogarana
-ms.date: 09/10/2026
+ms.date: 10/20/2026
+ai-usage: ai-assisted
 ms.topic: how-to
 ms.service: azure-disk-storage
 ms.custom: references_regions
@@ -31,7 +32,16 @@ If your workflow doesn't support application-level synchronous writes across zon
 
 Zone-redundant storage (ZRS) synchronously replicates your Azure managed disk across three Azure availability zones in the region you select. Each availability zone is a separate physical location with independent power, cooling, and networking. ZRS disks provide at least 99.9999999999% (12 9's) of durability over a given year.
 
-A ZRS disk lets you recover from failures in availability zones. If a zone went down and your virtual machine (VM) wasn't affected, then your workloads continue running. But if your VM was affected by an outage and you want to recover before it's resolved, you can [force detach](/rest/api/compute/virtual-machines/attach-detach-data-disks?tabs=HTTP#diskdetachoptiontypes) your ZRS disks from the failed VM, freeing them to attach to another VM.
+A ZRS disk lets you recover from failures in availability zones. If a zone goes down and your virtual machine (VM) isn't affected, then your workloads continue running. But if your VM is affected by an outage and you want to recover before it's resolved, you can [force detach](/rest/api/compute/virtual-machines/attach-detach-data-disks?tabs=HTTP#diskdetachoptiontypes) your ZRS data disks from the failed VM, freeing them to attach to another VM. Force detach doesn't support OS disks.
+
+[Zone resilience for Azure VMs (Preview)](zone-resilience.md) lets you initiate failover of an eligible standalone zonal VM to another availability zone in the same region. The VM retains its resource identity and supported configuration.
+
+As a prerequisite, the OS disk and every attached data disk must use supported ZRS managed disks, and you must enable zone resilience before an outage. For more details, refer to the [zone resilience documentation](zone-resilience.md#requirements).
+
+> [!IMPORTANT]
+> Zone resilience for Azure VMs is in preview. Use this preview only for evaluation and testing with nonproduction VMs. Don't use it for production VMs. For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+See the [preview requirements and limitations](zone-resilience.md#requirements).
 
 ZRS disks can also be shared between VMs for improved availability with clustered or distributed applications like SQL FCI, SAP ASCS/SCS, or GFS2. A shared ZRS disk can be attached to primary and secondary VMs in different zones to take advantage of both ZRS and [availability zones](/azure/reliability/availability-zones-overview). If your primary zone fails, you can quickly fail over to the secondary VM by using [SCSI persistent reservation](disks-shared-enable.md#supported-scsi-persistent-reservation-commands).
 
