@@ -5,7 +5,8 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.collection: linux
 ms.topic: overview
-ms.date: 03/27/2025
+ms.date: 10/20/2026
+ai-usage: ai-assisted
 ms.author: mattmcinnes
 ms.update-cycle: 1095-days
 # Customer intent: "As a cloud architect, I want to evaluate the features and management options of Azure virtual machines, so that I can determine the best deployment strategy for my applications and optimize costs and performance."
@@ -38,7 +39,7 @@ There's always a multitude of [design considerations](/azure/architecture/refere
 
 > [!NOTE]
 >
-> Trusted Launch as default (TLaD) is generally available for new [Generation 2](../virtual-machines/generation-2.md) Virtual machines (VMs). With TLaD, any new Generation 2 VMs created through any client tools defaults to [Trusted Launch](../virtual-machines/trusted-launch.md) with secure boot and vTPM enabled.
+> Trusted Launch as default (TLaD) is generally available for new [Generation 2](../virtual-machines/generation-2.md) Virtual machines (VMs). With TLaD, any new Generation 2 VMs created through any client tools default to [Trusted Launch](../virtual-machines/trusted-launch.md) with secure boot and vTPM enabled.
 > [Register for the TLaD](../virtual-machines/trusted-launch.md#general-availability-trusted-launch-as-default) to implement the default changes in your respective environment(s).
 
 ## Parts of a VM and how they're billed
@@ -77,7 +78,7 @@ There are multiple options to manage the availability of your virtual machines i
 - **[Availability Zones](/azure/reliability/availability-zones-overview)** are physically separated zones within an Azure region. Availability zones guarantee virtual machine connectivity to at least one instance at least 99.99% of the time when you have two or more instances deployed across two or more Availability Zones in the same Azure region. 
 - **[Virtual Machine Scale Sets](../virtual-machine-scale-sets/overview.md)** let you create and manage a group of load balanced virtual machines. The number of virtual machine instances can automatically increase or decrease in response to demand or a defined schedule. Scale sets provide high availability to your applications, and allow you to centrally manage, configure, and update many virtual machines. Virtual machines in a scale set can also be deployed into multiple availability zones, a single availability zone, or regionally.
 
-Fore more information see [Availability options for Azure virtual machines](availability.md) and [SLA for Azure virtual machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_9/). 
+For more information, see [Availability options for Azure virtual machines](availability.md) and [SLA for Azure virtual machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_9/). 
 
 ## Sizes and pricing
 The [size](sizes.md) of the virtual machine that you use is determined by the workload that you want to run. The size that you choose then determines factors such as processing power, memory, storage capacity, and network bandwidth. Azure offers a wide variety of sizes to support many types of uses.
@@ -151,15 +152,28 @@ Microsoft provides a Service Level Agreement (SLA) for its services as a commitm
 
 Azure already has many built-in platform features that support highly available applications. For more about these services, read [Disaster recovery and high availability for Azure applications](/azure/architecture/framework/resiliency/backup-and-recovery).
 
-This article covers a true disaster recovery scenario, when a whole region experiences an outage due to major natural disaster or widespread service interruption. These are rare occurrences, but you must prepare for the possibility that there's an outage of an entire region. If an entire region experiences a service disruption, the locally redundant copies of your data would temporarily be unavailable. If you enabled geo-replication, three additional copies of your Azure Storage blobs and tables are stored in a different region. In the event of a complete regional outage or a disaster in which the primary region isn't recoverable, Azure remaps all of the DNS entries to the geo-replicated region.
+### Zone failures
+
+For high availability during a zone failure, deploy multiple VMs across availability zones and configure application replication and traffic routing. For supported configurations, [Azure Site Recovery zone-to-zone disaster recovery](/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery) provides another recovery option within a region.
+
+[Zone resilience for Azure VMs (Preview)](zone-resilience.md) lets you initiate failover of an eligible standalone zonal VM to another availability zone in the same region. The VM retains its resource identity and supported configuration.
+
+> [!IMPORTANT]
+> Zone resilience for Azure VMs is in preview. Use this preview only for evaluation and testing with nonproduction VMs. Don't use it for production VMs. For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+See the [preview limitations](zone-resilience.md#limitations).
+
+### Region-wide failures
+
+A whole region can experience an outage due to a major natural disaster or widespread service interruption. These outages are rare, but you must prepare for the possibility that an entire region is unavailable. If an entire region experiences a service disruption, the locally redundant copies of your data are temporarily unavailable. If you enabled geo-replication, three additional copies of your Azure Storage blobs and tables are stored in a different region. In the event of a complete regional outage or a disaster in which the primary region isn't recoverable, Azure remaps all of the DNS entries to the geo-replicated region.
 
 In the case of a service disruption of the entire region where your Azure virtual machine application is deployed, we provide the following guidance for Azure virtual machines.
 
-### Option 1: Initiate a failover by using Azure Site Recovery
+#### Option 1: Initiate a failover by using Azure Site Recovery
 You can configure Azure Site Recovery for your VMs so that you can recover your application with a single click in matter of minutes. You can replicate to Azure region of your choice and not restricted to paired regions. You can get started by [replicating your virtual machines](/azure/site-recovery/azure-to-azure-quickstart). You can [create a recovery plan](/azure/site-recovery/site-recovery-create-recovery-plans) so that you can automate the entire failover process for your application. You can [test your failovers](/azure/site-recovery/site-recovery-test-failover-to-azure) beforehand without impacting production application or the ongoing replication. In the event of a primary region disruption, you just [initiate a failover](/azure/site-recovery/site-recovery-failover) and bring your application in target region.
 
 
-### Option 2: Wait for recovery
+#### Option 2: Wait for recovery
 In this case, no action on your part is required. Know that we're working diligently to restore service availability. You can see the current service status on our [Azure Service Health Dashboard](https://azure.microsoft.com/status/).
 
 This option is the best if you don't set up Azure Site Recovery, read-access geo-redundant storage, or geo-redundant storage prior to the disruption. If you set up geo-redundant storage or read-access geo-redundant storage for the storage account where your VM virtual hard drives (VHDs) are stored, you can look to recover the base image VHD and try to provision a new VM from it. This option isn't preferred because there are no guarantees of synchronization of data, which means this option isn't guaranteed to work.

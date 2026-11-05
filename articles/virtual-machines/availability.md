@@ -5,7 +5,8 @@ author: mimckitt
 ms.author: mimckitt
 ms.service: azure-virtual-machines
 ms.topic: concept-article
-ms.date: 12/05/2025
+ms.date: 10/20/2026
+ai-usage: ai-assisted
 ms.reviewer: wwilliams
 ms.update-cycle: 1095-days
 # Customer intent: "As an IT manager, I want to understand the availability options for virtual machines in the cloud, so that I can ensure the resilience and uptime of our applications and data during outages."
@@ -25,6 +26,17 @@ Each Availability Zone has a distinct power source, network, and cooling. By des
 
 > [!NOTE]
 > Regional resources may or may not exist in an Availability zone, and there is no insight into what physical or logical zone a regional resource is in. A failure in any of the availability zones in a region has the potential to bring down a regional VM.
+
+### Zone resilience for Azure VMs (Preview)
+
+[Zone resilience for Azure VMs (Preview)](zone-resilience.md) lets you initiate failover of an eligible standalone zonal VM to another availability zone in the same region. The VM retains its resource identity and supported configuration.
+
+As a prerequisite, the OS disk and every attached data disk must use supported ZRS managed disks, and you must enable zone resilience before an outage. For more details, refer to the [zone resilience documentation](zone-resilience.md#requirements).
+
+> [!IMPORTANT]
+> Zone resilience for Azure VMs is in preview. Use this preview only for evaluation and testing with nonproduction VMs. Don't use it for production VMs. For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Review the [preview limitations](zone-resilience.md#limitations) before enabling the feature.
 
 ## Virtual Machines Scale Sets 
 [Azure virtual machine scale sets](flexible-virtual-machine-scale-sets.md) let you create and manage a group of load balanced VMs. The number of VM instances can automatically increase or decrease in response to demand or a defined schedule. Scale sets provide high availability to your applications, and allow you to centrally manage, configure, and update many VMs. There is no cost for the scale set itself, you only pay for each VM instance that you create.
