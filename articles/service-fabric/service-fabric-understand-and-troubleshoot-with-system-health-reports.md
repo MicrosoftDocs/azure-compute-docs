@@ -395,7 +395,7 @@ In a case like the example, further investigation is needed. Investigate the hea
 
 When the primary rejects a write because of disk write pressure or blocked log truncation, it reports a partition health warning. The health report adds visibility into these conditions; it doesn't change the existing `FabricTransientException` behavior for rejected writes.
 
-- **SourceId**: CheckpointManager.
+- **SourceId**: CheckpointManager
 - **Property**: WriteThrottlingStatus
 - **Health state**: `Warning` while writes are throttled, followed by `Ok` when a subsequent write passes the throttling check.
 - **Description**: Identifies disk write pressure, a pending checkpoint, or a pending log truncation. For blocked log truncation, the description includes the blocking log reader's name and type.
@@ -420,7 +420,7 @@ $health.HealthEvents | Where-Object {
 
 The report has a five-minute time to live and is removed when it expires. While writes continue to be rejected, subsequent throttled writes refresh the warning after a four-minute interval. Recovery is reported when a subsequent write passes the throttling check, with the description "Write throttling cleared. Writes are being accepted again." These reports aren't driven by an independent periodic health check. An expired or absent event alone doesn't prove that the underlying condition has resolved.
 
-This report covers the managed partition's local write-throttling checks, not every cause of slow or failed writes. Replication queue warnings use separate properties under [Replicator system health reports](#replicator-system-health-reports). For workload and retry guidance, see [Throttling in Reliable Collections](service-fabric-reliable-services-reliable-collections-throttling-guidelines.md).
+This report covers the write-throttling checks in Reliable Collections, not every cause of slow or failed writes. Replication queue warnings use separate properties under [Replicator system health reports](#replicator-system-health-reports). For workload and retry guidance, see [Throttling in Reliable Collections](service-fabric-reliable-services-reliable-collections-throttling-guidelines.md).
 
 > [!IMPORTANT]
 > If your [health policy](service-fabric-health-introduction.md#application-health-policy) treats warnings as errors, this partition warning can affect aggregated health evaluations. Review health-based alerts and upgrade policies when adopting a runtime version that includes this report.
