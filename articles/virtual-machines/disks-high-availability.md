@@ -49,9 +49,9 @@ Single VMs using only [Premium SSDs](disks-types.md#premium-ssds) as the OS disk
 
 Zone-redundant storage (ZRS) disks synchronously replicate data across three availability zones. These availability zones are separated groups of data centers in a region that have independent power, cooling, and networking infrastructure. With ZRS disks, your data is accessible even in the event of a zone outage. You can also [forcibly detach](/rest/api/compute/virtual-machines/attach-detach-data-disks?tabs=HTTP#diskdetachoptiontypes) ZRS data disks from VMs experiencing issues. ZRS disks have limitations. See the [limitations](disks-redundancy.md#zrs-limitations) section of the redundancy options article for details.
 
-#### zone resilience for Azure VMs (Preview)
+#### Zone resilience for Azure VMs (Preview)
 
-[zone resilience for Azure VMs (Preview)](zone-resilience.md) lets you initiate failover of an eligible standalone zonal VM to another availability zone in the same region. The VM retains its resource identity and supported configuration.
+[Zone resilience for Azure VMs (Preview)](zone-resilience.md) lets you initiate failover of an eligible standalone zonal VM to another availability zone in the same region. The VM retains its resource identity and supported configuration.
 
 As a prerequisite, the OS disk and every attached data disk must use supported ZRS managed disks, and you must enable zone resilience before an outage. For more details, refer to the [zone resilience documentation](zone-resilience.md#requirements).
 

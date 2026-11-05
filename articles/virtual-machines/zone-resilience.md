@@ -1,5 +1,5 @@
 ---
-title: zone resilience for Azure VMs (Preview)
+title: Zone resilience for Azure VMs (Preview)
 description: Learn how zone resilience for Azure VMs uses ZRS managed disks for customer-initiated failover to another availability zone.
 author: AjKundnani
 ms.author: ajkundna

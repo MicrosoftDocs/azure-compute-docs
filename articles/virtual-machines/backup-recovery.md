@@ -25,7 +25,7 @@ Availability, failover, and backup address different risks. Use this comparison 
 | Recovery need | Approach | Important distinction |
 | --- | --- | --- |
 | Keep an application available during a zone failure. | Deploy [multiple VMs across availability zones](disks-high-availability.md#deploy-vms-and-disks-across-three-availability-zones). | Configure application replication and traffic routing between healthy instances. |
-| Move an eligible existing zonal VM to another zone in the same region. | [zone resilience for Azure VMs (Preview)](zone-resilience.md). | Requires ZRS OS and data disks. Failover is customer-initiated and interrupts the workload. |
+| Move an eligible existing zonal VM to another zone in the same region. | [Zone resilience for Azure VMs (Preview)](zone-resilience.md). | Requires ZRS OS and data disks. Failover is customer-initiated and interrupts the workload. |
 | Recover from a zone or regional outage through replication. | [Azure Site Recovery](/azure/site-recovery/site-recovery-overview). | Review the support requirements for zone-to-zone or region-to-region replication. |
 | Recover point-in-time data after deletion or corruption. | Azure Backup, managed snapshots, or VM restore points, described in this article. | Replication doesn't replace historical backups, and backups don't keep an application continuously available. |
 

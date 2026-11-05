@@ -310,7 +310,7 @@ To roll back changes from Trusted launch to the previous Gen2 known good configu
 
 ### [Portal](#tab/portal)
 
-Azure portal doesn't currently support rolling back Trusted launch to Gen2 (Non-Trusted launch) configuration.
+The Azure portal doesn't currently support rolling back Trusted launch to Gen2 (Non-Trusted launch) configuration.
 
 ### [Template](#tab/template)
 
