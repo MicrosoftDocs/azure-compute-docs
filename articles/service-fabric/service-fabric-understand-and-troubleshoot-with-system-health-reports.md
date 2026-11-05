@@ -24,6 +24,8 @@ System health reports provide visibility into cluster and application functional
 
 The system component reports are identified by the source, which starts with the "**System.**" prefix. Watchdogs can't use the same prefix for their sources, as reports with invalid parameters are rejected.
 
+This article also covers the managed Reliable Collections' write-throttling report, which uses the source "**CheckpointManager.**" rather than the "**System.**" prefix.
+
 Let's look at some system reports to understand what triggers them and to learn how to correct the potential problems they represent.
 
 > [!NOTE]
@@ -385,6 +387,43 @@ In a case like the example, further investigation is needed. Investigate the hea
 
 * **SourceId**: System.PLB
 * **Property**: Starts with **ReplicaConstraintViolation**.
+
+### Write throttling
+
+> [!NOTE]
+> This report is available starting with Service Fabric 12.0.
+
+When the primary rejects a write because of disk write pressure or blocked log truncation, it reports a partition health warning. The health report adds visibility into these conditions; it doesn't change the existing `FabricTransientException` behavior for rejected writes.
+
+- **SourceId**: CheckpointManager
+- **Property**: WriteThrottlingStatus
+- **Health state**: `Warning` while writes are throttled, followed by `Ok` when a subsequent write passes the throttling check.
+- **Description**: Identifies disk write pressure, a pending checkpoint, or a pending log truncation. For blocked log truncation, the description includes the blocking log reader's name and type.
+
+Use the description to choose your next steps:
+
+| Reported condition | Next steps |
+| --- | --- |
+| Incoming load exceeds disk throughput. | Check the primary node's disk throughput and latency, and reduce incoming write load or transaction concurrency. |
+| A pending checkpoint holds log space beyond the throttling threshold. | Check workload and storage performance on the primary node. |
+| A pending log truncation is blocked by a log reader. | Investigate the named reader and the progress of the associated operation, such as a backup or replica copy. |
+
+After you connect to the cluster, inspect the partition's health events by using PowerShell. Set `$partitionId` to the affected partition's ID:
+
+```powershell
+$health = Get-ServiceFabricPartitionHealth -PartitionId $partitionId
+$health.HealthEvents | Where-Object {
+    $_.HealthInformation.SourceId -eq 'CheckpointManager' -and
+    $_.HealthInformation.Property -eq 'WriteThrottlingStatus'
+}
+```
+
+The report has a five-minute time to live and is removed when it expires. While writes continue to be rejected, subsequent throttled writes refresh the warning after a four-minute interval. Recovery is reported when a subsequent write passes the throttling check, with the description "Write throttling cleared. Writes are being accepted again." These reports aren't driven by an independent periodic health check. An expired or absent event alone doesn't prove that the underlying condition has resolved.
+
+This report covers the write-throttling checks in Reliable Collections, not every cause of slow or failed writes. Replication queue warnings use separate properties under [Replicator system health reports](#replicator-system-health-reports). For workload and retry guidance, see [Throttling in Reliable Collections](service-fabric-reliable-services-reliable-collections-throttling-guidelines.md).
+
+> [!IMPORTANT]
+> If your [health policy](service-fabric-health-introduction.md#application-health-policy) treats warnings as errors, this partition warning can affect aggregated health evaluations. Review health-based alerts and upgrade policies when adopting a runtime version that includes this report.
 
 ## Replica system health reports
 **System.RA**, which represents the reconfiguration agent component, is the authority for the replica state.
