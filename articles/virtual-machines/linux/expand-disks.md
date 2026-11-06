@@ -529,7 +529,9 @@ To increase the OS disk size in SUSE 12 SP4, SUSE SLES 12 for SAP, SUSE SLES 15,
 
 To use the same procedure to resize any other logical volume, change the `lv` name in step 12.
 
-# [Red Hat without LVM](#tab/rhelraw)
+# [Red Hat and Azure Linux 4 without LVM](#tab/rhelraw)
+
+Use this procedure when the root filesystem is directly on a disk partition without LVM or encryption. The examples show a Red Hat VM with an XFS root filesystem on `/dev/sda2`. Azure Linux 4 Marketplace image definitions use ext4. Verify your VM's layout and filesystem type, and substitute the actual disk and partition in every command. For example, an NVMe disk might be named `/dev/nvme0n1`, with partition 2 named `/dev/nvme0n1p2`.
 
 1. Expand the Azure managed OS disk to the size you need. For Azure CLI steps, see [Expand an Azure managed disk with Azure CLI](#expand-an-azure-managed-disk-with-azure-cli).
 
@@ -547,12 +549,14 @@ To use the same procedure to resize any other logical volume, change the `lv` na
 
    In Red Hat versions 7 or earlier, you can use the `yum` command instead of `dnf`.
 
-1. Use the `lsblk -f` command to verify the partition and filesystem type that holds the root (`/`) partition.
+1. Identify the device and filesystem type mounted on root (`/`), and use `lsblk -f` to verify its disk and partition. 
 
    ```bash
+   findmnt -no SOURCE,FSTYPE /
    lsblk -f
    ```
 
+The following Red Hat example uses `/dev/sda2` with XFS. Your Azure Linux 4 layout can differ.
    ```output
    NAME    FSTYPE LABEL UUID                                 MOUNTPOINT
    sda
@@ -595,7 +599,7 @@ To use the same procedure to resize any other logical volume, change the `lv` na
    15           10240         1024000   495.0 MiB   EF00  EFI System Partition
    ```
 
-1. Expand the partition for root, in this case `sda2`, by using the `growpart` command. Using this command expands the partition to use all the contiguous space on the disk.
+1. Expand the partition for root, in this case `sda2`, by using the `growpart` command. Specify the disk and partition number separately. Using this command expands the partition to use all the contiguous space on the disk.
 
    ```bash
    growpart /dev/sda 2
@@ -654,6 +658,13 @@ To use the same procedure to resize any other logical volume, change the `lv` na
    realtime =none                   extsz=4096   blocks=0, rtextents=0
    data blocks changed from 7607808 to 12326651
    ```
+   For ext4, which is used in Azure Linux 4 Marketplace image definitions, run `resize2fs` against the root partition. Replace `/dev/sda2` with the device identified earlier:
+
+   ```bash
+   resize2fs /dev/sda2
+   ```
+
+   This command grows the filesystem to fill the expanded partition. Don't run `xfs_growfs` on ext4.
 
 1. Verify that the new size is reflected with the `df` command:
 
