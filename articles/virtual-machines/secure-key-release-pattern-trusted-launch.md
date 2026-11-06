@@ -53,43 +53,15 @@ Start with the base pattern. Add Layer 4 only when you must distrust the hypervi
 
 The pattern is a defense-in-depth stack. Each layer defends a specific threat direction: Layers 1–3 defend against the consumer (threat direction A), and the optional Layer 4 defends against the host (threat direction B). The protected asset sits at the core, reachable only through every enclosing layer.
 
-```mermaid
-flowchart TB
-    threatA["Threat direction A<br/>Consumer / VM and subscription owner<br/>run-command, disk snapshot and swap,<br/>serial console, managed-identity theft"]
-    threatB["Threat direction B<br/>Host / hypervisor<br/>reads guest memory"]
-
-    subgraph L4 ["Layer 4 (optional) — Confidential Computing: host memory encryption"]
-        subgraph L3 ["Layer 3 — Network isolation: private endpoints, no public egress, deny assignments"]
-            subgraph L2 ["Layer 2 — Hardened image: dm-verity, read-only root, no SSH or agent"]
-                subgraph L1 ["Layer 1 — Attestation-gated SKR: vTPM measured-boot claims gate key release"]
-                    asset["Protected asset<br/>released key, then decrypted weights"]
-                end
-            end
-        end
-    end
-
-    threatA -. "defended by Layers 1–3" .-> asset
-    threatB -. "defended only by Layer 4" .-> asset
-    style L4 stroke-dasharray: 5 5
-```
+:::image type="complex" source="media/secure-key-release-pattern-trusted-launch/defense-in-depth-layers.png" alt-text="Diagram of the concentric defense-in-depth layers protecting the asset, and which threat direction each layer defends." lightbox="media/secure-key-release-pattern-trusted-launch/defense-in-depth-layers.png":::
+   The protected asset sits at the core. Four concentric layers enclose it, from innermost to outermost: Layer 1, attestation-gated Secure Key Release, where vTPM measured-boot claims gate key release; Layer 2, a hardened image with dm-verity, a read-only root, and no SSH or agent; Layer 3, network isolation with private endpoints, no public egress, and deny assignments; and Layer 4 (optional, shown with a dashed border), Confidential Computing that provides host memory encryption. Layers 1 through 3 defend against threat direction A, the consumer or VM and subscription owner using run-command, disk snapshot and swap, serial console, and managed-identity theft. Layer 4 defends against threat direction B, the host or hypervisor reading guest memory.
+:::image-end:::
 
 The layers defend the asset at rest and in use. At runtime, the consumer's VM and the publisher's trust anchors interact as follows:
 
-```mermaid
-flowchart TB
-    subgraph consumer ["Consumer tenant (untrusted operator)"]
-        vm["Trusted Launch VM<br/>Secure Boot + vTPM<br/>Hardened image"]
-    end
-    subgraph publisher ["Publisher tenant (holds the trust anchors)"]
-        maa["Microsoft Azure Attestation"]
-        akv["Key Vault Premium / Managed HSM<br/>exportable key + release policy"]
-    end
-    vm -->|"1. Attestation request (vTPM evidence)"| maa
-    maa -->|"2. Signed MAA token (secureboot, PCR claims)"| vm
-    vm -->|"3. POST /keys/{key}/release (MAA token)"| akv
-    akv -->|"4. Key wrapped to vTPM ephemeral key, or AccessDenied"| vm
-    linkStyle default stroke-width:2px
-```
+:::image type="complex" source="media/secure-key-release-pattern-trusted-launch/runtime-attestation-flow.png" alt-text="Diagram of the runtime attestation and key-release flow between the consumer tenant and the publisher tenant.":::
+   The consumer tenant (untrusted operator) contains the Trusted Launch VM, which has Secure Boot, a vTPM, and a hardened image. The publisher tenant (which holds the trust anchors) contains Microsoft Azure Attestation and a Key Vault Premium or Managed HSM that holds the exportable key and release policy. The flow has four steps: (1) the VM sends an attestation request with vTPM evidence to Microsoft Azure Attestation; (2) Microsoft Azure Attestation returns a signed MAA token containing the secureboot and PCR claims to the VM; (3) the VM sends `POST /keys/{key}/release` with the MAA token to Key Vault; (4) Key Vault returns the key wrapped to the vTPM ephemeral key, or `AccessDenied` if the policy isn't satisfied.
+:::image-end:::
 
 ### Layer 1: Attestation-gated Secure Key Release (the cryptographic gate)
 

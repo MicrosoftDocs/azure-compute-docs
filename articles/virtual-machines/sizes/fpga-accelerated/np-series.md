@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 04/13/2026
+ms.date: 09/25/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 ai-usage: ai-assisted
@@ -16,7 +16,7 @@ ai-usage: ai-assisted
 [!INCLUDE [np-summary](./includes/np-series-summary.md)]
 
 > [!IMPORTANT]
-> Azure NP-series virtual machines (Standard_NP10s, Standard_NP20s, Standard_NP40s) are scheduled for retirement on **May 31, 2027**. After this date, remaining NP-series VMs are deallocated, stop working, stop incurring charges, and no longer have SLA or support. Managed disk data is preserved. For migration guidance, see [NP-series virtual machine migration guidance](../lifecycle/retirement/np-series-retirement.md).
+> Azure NP-series virtual machines (Standard_NP10s, Standard_NP20s, Standard_NP40s) are scheduled for retirement on **May 31, 2027**. After this date, remaining NP-series VMs are deallocated, stop working, stop incurring charges, and no longer have SLA or support. Managed disk data is preserved. For modernization guidance, see [NP-series virtual machine modernization guidance](../lifecycle/retirement/np-series-retirement.md).
 
 > [!NOTE]
 > Purchases of 1-year and 3-year Azure Reserved VM Instances for NP-series ended on **April 2, 2026**. Existing reservations are honored until expiration, but no new NP-series reservations can be purchased after that date.
@@ -135,7 +135,7 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 ## Frequently asked questions
 **Q:** What happens to my NP-series VMs after May 31, 2027?
 
-**A:** After May 31, 2027, NP-series VMs are automatically deallocated. Workloads stop running, billing charges cease, and SLA and support no longer apply. Managed disk data is preserved, but in-memory and temporary disk data is lost. Migrate your workloads to a supported VM family before the retirement date to avoid disruption.
+**A:** After May 31, 2027, NP-series VMs are automatically deallocated. Workloads stop running, billing charges cease, and SLA and support no longer apply. Managed disk data is preserved, but in-memory and temporary disk data is lost. Modernize your workloads to a supported VM family before the retirement date to avoid disruption.
 
 **Q:** What's the difference between Xilinx U250 and the AMD Alveo U250?
 
@@ -151,7 +151,7 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 
 **Q:** Do I need to use NP VMs to develop my solution? 
 
-**A:** No, you can develop on-premises and deploy to the cloud. Make sure to follow the [attestation documentation](../../field-programmable-gate-arrays-attestation.md) to deploy on NP VMs. 
+**A:** No, you can develop on-premises and deploy to the cloud. Make sure to follow the [attestation documentation](field-programmable-gate-arrays-attestation.md) to deploy on NP VMs. 
 
 **Q:** What shell version is supported and how can I get the development files?
 
@@ -283,15 +283,15 @@ This feature isn't supported in Azure NP VMs.
 
 **A:** No. The FPGA Attestation service performs a series of validations on a design checkpoint file and generates an error if the user's application contains connections to the FPGA card's QSFP networking ports.
 
-## Migration guidance
+## Modernization guidance
 
-NP-series VMs are retiring on May 31, 2027. To ensure continuity, migrate your workloads to an alternative Azure GPU VM family before the retirement date. Consider the following options based on your workload:
+NP-series VMs are retiring on May 31, 2027. To ensure continuity, modernize your workloads to an alternative Azure GPU VM family before the retirement date. Consider the following options based on your workload:
 
 - **[NDv2 VMs](../gpu-accelerated/ndv2-series.md)** – Best for demanding GPU-accelerated AI training, HPC, and simulation workloads requiring high GPU memory and NVLink interconnect (NVIDIA V100 GPUs).
 - **[NCads_H100_v5 VMs](../gpu-accelerated/ncadsh100v5-series.md)** – Ideal for Azure Applied AI training and batch inference workloads requiring the latest GPU generation (NVIDIA H100 GPUs).
 - **[NCasT4_v3 VMs](../gpu-accelerated/ncast4v3-series.md)** – Suitable for real-time AI inference, interactive graphics, video transcoding, and analytics workloads at lower cost (NVIDIA T4 GPUs).
 
-For detailed migration steps, see [Migrate your NP-series virtual machines by May 31, 2027](../lifecycle/retirement/np-series-retirement.md).
+For detailed modernization steps, see [Modernize your NP-series virtual machines by May 31, 2027](../lifecycle/retirement/np-series-retirement.md).
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]
 

@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 04/18/2024
+ms.date: 09/24/2026
 ms.author: mattmcinnes
 # Customer intent: As a cloud architect, I want to explore the L family of storage optimized VM sizes, so that I can select the most suitable virtual machines for my workload requirements.
 ---
@@ -46,7 +46,23 @@ ms.author: mattmcinnes
 [!INCLUDE [lasv3-series-specs](./includes/lasv3-series-specs.md)]
 
 
-### Previous-generation L family series
-For older sizes, see [previous generation sizes](../lifecycle/previous-gen-sizes-list.md#storage-optimized-previous-gen-sizes).
+### Lasv5-series
+[!INCLUDE [lasv5-series-summary](./includes/lasv5-series-summary.md)]
+
+[View the full Lasv5-series page](./lasv5-series.md).
+
+[!INCLUDE [lasv5-series-specs](./includes/lasv5-series-specs.md)]
+
+
+### Laosv5-series
+[!INCLUDE [laosv5-series-summary](./includes/laosv5-series-summary.md)]
+
+[View the full Laosv5-series page](./laosv5-series.md).
+
+[!INCLUDE [laosv5-series-specs](./includes/laosv5-series-specs.md)]
+
+
+### End of Life L family series
+For End of Life sizes, see [End of Life sizes](../lifecycle/end-of-life-sizes-list.md#storage-optimized-end-of-life-sizes).
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]

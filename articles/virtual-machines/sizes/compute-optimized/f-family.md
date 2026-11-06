@@ -99,7 +99,7 @@ ms.author: mattmcinnes
 [!INCLUDE [fsv2-series-specs](./includes/fsv2-series-specs.md)]
 ---
 
-### Previous-generation F family series
-For older sizes, see [previous generation sizes](../lifecycle/previous-gen-sizes-list.md#compute-optimized-previous-gen-sizes).
+### End of Life F family series
+For End of Life sizes, see [End of Life sizes](../lifecycle/end-of-life-sizes-list.md#compute-optimized-end-of-life-sizes).
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]

@@ -5,14 +5,14 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 03/10/2026
+ms.date: 09/25/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 # Customer intent: As a cloud architect, I want to review the specifications of the Dsv2 series sizes, so that I can select the appropriate virtual machine types for my applications based on their resource requirements and feature support.
 ---
 
 # Dsv2 sizes series
-[!INCLUDE [previous-gen-header](../includes/sizes-previous-gen-header.md)]
+[!INCLUDE [previous-gen-header](../includes/sizes-end-of-life-header.md)]
 
 [!INCLUDE [dsv2-summary](./includes/dsv2-series-summary.md)]
 

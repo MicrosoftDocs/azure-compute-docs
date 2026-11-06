@@ -60,7 +60,7 @@ Key differences between persistent and ephemeral OS disks:
 ## Placement options for Ephemeral OS disks
 
 Ephemeral OS Disk utilizes local storage within the VM. Since different VMs have different types of local storage (cache disk, temp disk, and NVMe disk), the placement option defines where the Ephemeral OS Disk is stored. Placement option however doesn't impact the performance or cost of Ephemeral OS disk. Its performance is dependent upon the VM's local storage. Depending upon the VM type, we offer three different types of placement:
-- **NVMe Disk Placement**  - NVMe disk placement type is now generally available (GA) on the latest generation v6 VM series onwards like Dadsv6, Ddsv6, Dpdsv6, etc.
+- **NVMe Disk Placement**  - NVMe disk placement type is now generally available (GA) on v6 and later VM series, like Dadsv6, Ddsv6, and Dpdsv6.
 - **Temp Disk Placement (also known as Resource Disk Placement)**  - Temp disk placement type is available on VMs with Temp disk like Dadsv5, Ddsv5, etc.
 - **Cache Disk Placement**  - Cache disk placement type is available on older VMs that had cache disk like Dsv2, Dsv3, etc.
 

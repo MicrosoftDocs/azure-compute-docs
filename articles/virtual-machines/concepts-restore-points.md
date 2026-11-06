@@ -6,7 +6,8 @@ ms.author: shsangal
 ms.service: azure-virtual-machines
 ms.topic: concept-article
 ms.update-cycle: 1095-days
-ms.date: 09/21/2026
+ms.date: 10/22/2026
+ai-usage: ai-assisted
 ms.custom: template-concept
 # Customer intent: "As a cloud administrator, I want to understand the support matrix for VM restore points, so that I can determine the compatibility and limitations for my virtual machine backup and recovery strategy."
 ---
@@ -18,15 +19,13 @@ This article summarizes the support matrix and limitations of using [VM restore 
 
 ## VM restore points support matrix
 
-The following table summarizes the support matrix for VM restore points.
-
 **Scenarios** | **Supported by VM restore points**
 --- | ---
 VMs using managed disks | Yes
 VMs using unmanaged disks | No
 VM sizes | Crash consistency is supported for VM SKUs that support Premium storage. 
-VMs using Ultra Disks | Yes. Supported for application consistency. Not supported for crash consistency. Exclude these disks and create a VM restore point when using crash consistency.
-VMs using Premium SSD v2 disks | Yes. Supported for application consistency. Not supported for crash consistency. Exclude these disks and create a VM restore point when using crash consistency.
+VMs using Ultra Disks | Yes for application consistency. Multi-disk crash consistency is supported in public preview for VMs with SCSI disk controllers, subject to the [preview requirements](#multi-disk-crash-consistency-for-premium-ssd-v2-and-ultra-disks-public-preview).
+VMs using Premium SSD v2 disks | Yes for application consistency. Multi-disk crash consistency is supported in public preview for VMs with SCSI disk controllers, subject to the [preview requirements](#multi-disk-crash-consistency-for-premium-ssd-v2-and-ultra-disks-public-preview).
 VMs using Ephemeral OS Disks | No. Exclude these disks and create a VM restore point.
 VMs using shared disks | No. Exclude these disks and create a VM restore point.
 VMs with extensions | Yes
@@ -50,9 +49,9 @@ VM with HUB (Hybrid Use Benefit) license | Yes
 VMs migrated from on-prem using Azure Migrate | Yes
 VMs with RBAC policies | Yes
 Temporary disk in VMs | Yes. You can create VM restore point for VMs with temporary disks. However, the restore points created don't contain the data from the temporary disks.
-VMs with Standard HDDs | Yes
-VMs with Standard SSDs | Yes
-VMs with Premium SSDs | Yes
+VMs with Standard HDDs | Yes for application consistency and multi-disk crash consistency.
+VMs with Standard SSDs | Yes for application consistency and multi-disk crash consistency.
+VMs with Premium SSDs | Yes for application consistency and multi-disk crash consistency.
 VMs with ZRS disks | Yes
 VMs with server-side encryption using service-managed keys | Yes. The encryption of source disk won't be enabled on the restore point.
 VMs with server-side encryption using customer-managed keys | Yes. The encryption of source disk won't be enabled on the restore point.
@@ -60,16 +59,46 @@ VMs with double encryption at rest | Yes. The encryption of source disk won't be
 VMs with Host based encryption enabled with PMK/CMK/Double encryption | Yes. The encryption of source disk won't be enabled on the restore point.
 VMs with ADE (Azure Disk Encryption) | Yes. The encryption of source disk won't be enabled on the restore point.
 VMs using Accelerated Networking | Yes
-Azure [Boost](/azure/azure-boost/overview) compatible Virtual machine sizes | Yes for Application consistent. Not supported for crash consistency.
+VMs running on Azure [Boost](/azure/azure-boost/overview) hardware | Yes for application consistency. Not supported for multi-disk crash consistency, regardless of disk type, including VMs with SCSI disk controllers. See [Azure Boost placement](#azure-boost-placement).
 Minimum Frequency at which App consistent restore point can be taken | 3 hours
 Minimum Frequency at which crash consistent restore points can be taken | 1 hour
 API version for Application consistent restore point | 2021-03-01 or later
 API version for Crash consistent restore point | 2021-07-01 or later
-| Instant Access for VMs using Premium SSD v2 and/or Ultra as **data** disks | Yes for application-consistent restore points. API version 2025-04-01 or later. |
-| Instant Access for crash-consistent restore points | No. |
+| Instant Access for application-consistent restore points | Yes, only for VMs with Premium SSD v2 or Ultra Disks as data disks. API version 2025-04-01 or later. |
+| Instant Access for multi-disk crash-consistent restore points (public preview) | Yes, only for VMs with Premium SSD v2 and Ultra Disks as data disks. API version 2025-04-01 or later. |
 
 > [!Note]
 > Restore Points (App consistent or crash consistent) can be created by customer at the minimum supported frequency as mentioned above. Taking restore points at a frequency lower than supported would result in failure.
+
+## Instant Access
+
+Instant Access applies only to VMs with Premium SSD v2 or Ultra Disks as data disks. It supports both application-consistent and multi-disk crash-consistent restore points. Enable Instant Access on the restore point collection and set `consistencyMode` to `CrashConsistent` when you create a multi-disk crash-consistent restore point. Instant Access requires API version `2025-04-01` or later. For an example, see [Create VM restore points using APIs](create-restore-points.md).
+
+## Multi-disk crash consistency for Premium SSD v2 and Ultra Disks (public preview)
+
+The public preview extends existing multi-disk crash-consistent restore point support to VMs with **Premium SSD v2 or Ultra data disks**. For these data disk types, multi-disk crash consistency is supported in public preview only on VMs with **SCSI disk controllers**. The general restrictions on NVMe disk controllers and Azure Boost hardware apply regardless of disk type, not just to this preview. Existing support for Standard HDD, Standard SSD, and Premium SSD disks is unchanged.
+
+The preview is available in all public regions except:
+
+- South Central US.
+- West US 3.
+- East US 2.
+
+### Azure Boost placement
+
+A VM with a SCSI disk controller and Premium SSD v2 or Ultra data disks can land on newer-generation Azure Boost hardware in US regions. Creating a crash-consistent restore point on that hardware fails with `UserErrorCrashConsistentSnapshotNotSupportedForAzureBoostVms`.
+
+Apply the `LegacyVMNVA` tag to the **VM** to prevent placement on Azure Boost hardware. For tag instructions, see [MANA support for Network Virtual Appliances (NVAs)](/azure/virtual-network/accelerated-networking-mana-network-virtual-appliance-opt-out). Applying the tag doesn't automatically move an existing VM off Azure Boost hardware.
+
+For an existing VM:
+
+1. Stop the VM.
+1. Apply the `LegacyVMNVA` tag to the VM.
+1. Redeploy the VM so that placement honors the tag and avoids Azure Boost hardware.
+1. Retry creating the crash-consistent restore point.
+
+> [!IMPORTANT]
+> Plan for downtime when you stop and redeploy the VM. Applying the tag alone doesn't remediate an existing VM's placement.
 
 ## Operating system support for application consistency 
 

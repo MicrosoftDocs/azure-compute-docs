@@ -15,17 +15,20 @@ ms.custom: portal
 
 # Planned maintenance notifications for Virtual Machine Scale Sets
 
-Azure periodically performs updates to improve the reliability, performance, and security of the host infrastructure for virtual machines (VMs). Updates might include patching the hosting environment or upgrading and decommissioning hardware. Most updates don't affect the hosted VMs. However, updates affect VMs in these scenarios:
+Azure periodically performs updates to improve the reliability, performance, and security of the host infrastructure for virtual machines (VMs). Updates might include patching the hosting environment or upgrading and decommissioning hardware.
 
-- If the maintenance does not require a reboot, Azure pauses the VM for few seconds while the host is updated. These types of maintenance operations are applied fault domain by fault domain. Progress is stopped if any warning health signals are received.
+For an overview of planned maintenance events and how to monitor them in Azure Service Health, see [Planned maintenance overview](/azure/service-health/service-health-planned-maintenance).
 
-- If maintenance requires a reboot, you get a notice of when the maintenance is planned. In these cases, you are given a time window that is typically 35 days where you can start the maintenance yourself, when it works for you.
+Most updates don't affect the hosted VMs. However, updates affect VMs in these scenarios:
 
+- If the maintenance doesn't require a reboot, Azure pauses the VM for a few seconds while the host is updated. These types of maintenance operations are applied fault domain by fault domain. Progress stops if any warning health signals are received.
+
+- If maintenance requires a reboot, you get a notice of when the maintenance is planned. When self-service maintenance is available, you can start the maintenance yourself during the self-service window, when it works for you. Window durations depend on the maintenance type. For details about hardware decommissioning and host maintenance windows, see the [Planned maintenance FAQ](/azure/service-health/service-health-planned-maintenance#planned-maintenance-faq).
 
 Planned maintenance that requires a reboot is scheduled in waves. Each wave has different scope (regions):
 
 - A wave starts with a notification to customers. By default, notification is sent to the subscription owner and co-owners. You can add recipients and messaging options like email, SMS, and webhooks to the notifications by using Azure [Activity Log alerts](/azure/azure-monitor/essentials/platform-logs-overview).  
-- With notification, a *self-service window* is made available. During this window that is typically 35 days, you can find which of your VMs are included in the wave. You can proactively start maintenance according to your own scheduling needs.
+- With notification, a *self-service window* is made available. During this window, you can find which of your VMs are included in the wave. You can proactively start maintenance according to your own scheduling needs.
 - After the self-service window, a *scheduled maintenance window* begins. At some point during this window, Azure schedules and applies the required maintenance to your VM. 
 
 The goal in having two windows is to give you enough time to start maintenance and reboot your VM while knowing when Azure will automatically start maintenance.

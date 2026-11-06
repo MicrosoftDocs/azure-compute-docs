@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 11/24/2025
+ms.date: 09/25/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 # Customer intent: "As an IT administrator, I want to understand the specifications and features of the HBv3 virtual machine sizes, so that I can select the appropriate size for my workloads and ensure optimal performance."
@@ -146,7 +146,7 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 |[Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-cli)| Supported |
 |[Ephemeral OS Disk](../../ephemeral-os-disks.md)| Supported |
 |[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)| Not Supported |
-|[Backend Network](../../hbv3-series-overview.md#infiniband-networking)| InfiniBand HDR |
+|[Backend Network](./hbv3-series-overview.md#infiniband-networking)| InfiniBand HDR |
 
 
 [!INCLUDE [sizes-footer-hpc](../includes/sizes-footer-hpc.md)]

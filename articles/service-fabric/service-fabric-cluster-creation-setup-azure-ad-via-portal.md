@@ -37,15 +37,15 @@ Open the Microsoft Entra ID [App registrations](https://portal.azure.com/#view/M
 On the **Register an application** pane, enter the following information, and then select **Register**:
 
 - **Name**: Enter a descriptive name. It's helpful to define a registration type in the name, as in this example: **{{cluster name}}_Cluster**.
-- **Supported account types**: Select **Accounts in this organizational directory only**.
-- **Redirect URI**: Select **Web** and enter the URL that the client will redirect to. This example uses the Service Fabric Explorer URL: `https://{{cluster name}}.{{location}}.cloudapp.azure.com:19080/Explorer/index.html`. 
+- **Supported account types**: Select **Single Tenant only**.
+- **Redirect URI**: Select **Single-page Application** and enter the URL that the client redirects to. This example uses the Service Fabric Explorer URL: `https://{{cluster name}}.{{location}}.cloudapp.azure.com:19080/Explorer/index.html`.
 
   After registration is complete, you can add more redirect URIs by selecting **Authentication** > **Add URI**.
 
 > [!NOTE]
 > Add more redirect URIs if you're planning to access Service Fabric Explorer by using a shortened URL, such as `https://{{cluster name}}.{{location}}.cloudapp.azure.com:19080/Explorer`. An exact URL is required to avoid this AADSTS50011 error: "The redirect URI specified in the request does not match the redirect URIs configured for the application. Make sure the redirect URI sent in the request matches one added to the application in the Azure portal." [Learn more about troubleshooting this error](https://aka.ms/redirectUriMismatchError).
 
-![Screenshot of cluster app registration in the portal.](media/service-fabric-cluster-creation-setup-azure-ad-via-portal/portal-cluster-app-registration.png)
+[![Screenshot of cluster app registration in the portal.](media/service-fabric-cluster-creation-setup-azure-ad-via-portal/portal-cluster-app-registration.png)](media/service-fabric-cluster-creation-setup-azure-ad-via-portal/portal-cluster-app-registration.png#lightbox)
 
 ### Branding & properties
 

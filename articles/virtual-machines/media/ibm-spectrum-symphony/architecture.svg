@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="460" viewBox="0 0 1200 460" role="img" aria-labelledby="title description">
+  <title id="title">IBM Spectrum Symphony integration with Azure Compute Fleet</title>
+  <desc id="description">IBM Spectrum Symphony sends resource demand through Host Factory and the Azure resource connector to Azure Compute Fleet. Compute Fleet provisions Spot and pay-as-you-go virtual machines that join the Symphony cluster as execution hosts.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#0067b8" />
+    </marker>
+  </defs>
+  <rect width="1200" height="460" fill="#ffffff" />
+  <rect x="40" y="45" width="540" height="350" rx="12" fill="#f3f2f1" stroke="#605e5c" stroke-width="2" />
+  <text x="310" y="82" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="600" fill="#201f1e">IBM Spectrum Symphony orchestration</text>
+  <rect x="90" y="125" width="200" height="120" rx="8" fill="#ffffff" stroke="#0067b8" stroke-width="3" />
+  <text x="190" y="165" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="21" font-weight="600" fill="#201f1e">IBM Spectrum</text>
+  <text x="190" y="192" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="21" font-weight="600" fill="#201f1e">Symphony</text>
+  <text x="190" y="222" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#323130">Jobs, policies, and demand</text>
+  <rect x="335" y="125" width="200" height="120" rx="8" fill="#ffffff" stroke="#0067b8" stroke-width="3" />
+  <text x="435" y="165" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="21" font-weight="600" fill="#201f1e">Host Factory</text>
+  <text x="435" y="192" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="18" fill="#323130">Azure resource</text>
+  <text x="435" y="218" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="18" fill="#323130">connector</text>
+  <line x1="290" y1="185" x2="328" y2="185" stroke="#0067b8" stroke-width="4" marker-end="url(#arrow)" />
+  <rect x="150" y="290" width="320" height="65" rx="8" fill="#ffffff" stroke="#605e5c" stroke-width="2" />
+  <text x="310" y="318" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="600" fill="#201f1e">Symphony manages workloads</text>
+  <text x="310" y="343" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#323130">and execution-host lifecycle</text>
+  <rect x="620" y="45" width="540" height="350" rx="12" fill="#e6f2fa" stroke="#0067b8" stroke-width="2" />
+  <text x="890" y="82" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="600" fill="#201f1e">Microsoft Azure infrastructure</text>
+  <rect x="665" y="125" width="205" height="120" rx="8" fill="#ffffff" stroke="#0067b8" stroke-width="3" />
+  <text x="767" y="165" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="21" font-weight="600" fill="#201f1e">Azure Compute</text>
+  <text x="767" y="192" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="21" font-weight="600" fill="#201f1e">Fleet</text>
+  <text x="767" y="222" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#323130">Launch mode request</text>
+  <rect x="915" y="125" width="200" height="120" rx="8" fill="#ffffff" stroke="#0067b8" stroke-width="3" />
+  <text x="1015" y="165" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="21" font-weight="600" fill="#201f1e">Azure virtual</text>
+  <text x="1015" y="192" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="21" font-weight="600" fill="#201f1e">machines</text>
+  <text x="1015" y="222" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#323130">Spot and pay-as-you-go</text>
+  <line x1="535" y1="185" x2="658" y2="185" stroke="#0067b8" stroke-width="4" marker-end="url(#arrow)" />
+  <line x1="870" y1="185" x2="908" y2="185" stroke="#0067b8" stroke-width="4" marker-end="url(#arrow)" />
+  <path d="M1015 245 L1015 322 L478 322" fill="none" stroke="#0067b8" stroke-width="4" marker-end="url(#arrow)" />
+  <text x="755" y="310" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#323130">Provisioned VMs join the Symphony cluster as execution hosts</text>
+  <rect x="730" y="335" width="320" height="40" rx="8" fill="#ffffff" stroke="#605e5c" stroke-width="2" />
+  <text x="890" y="361" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#323130">Azure provides eligible compute capacity</text>
+</svg>

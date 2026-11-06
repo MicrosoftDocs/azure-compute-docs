@@ -143,9 +143,9 @@
     items:
       - name: Zone balancing in virtual machine scale sets
         href: virtual-machine-scale-sets-zone-balancing.md
-      - name: Automatic zone balance (Preview)
+      - name: Automatic zone balance
         href: auto-zone-balance-overview.md
-      - name: Enable a scale set with automatic zone balance (Preview)
+      - name: Enable a scale set with automatic zone balance
         href: auto-zone-balance-enable.md
   - name: Capacity reservations
     href: ../virtual-machines/capacity-reservation-overview.md

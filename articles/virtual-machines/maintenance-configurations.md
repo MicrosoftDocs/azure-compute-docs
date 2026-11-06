@@ -5,7 +5,7 @@ author: iamwilliew
 ms.service: azure-virtual-machines
 ms.subservice: maintenance
 ms.topic: overview
-ms.date: 10/06/2021
+ms.date: 09/25/2026
 ms.author: wwilliams
 # Customer intent: As an IT administrator managing virtual machines, I want to configure maintenance schedules for VMs, so that I can control updates without disrupting sensitive workloads and ensure high availability during maintenance tasks.
 ---
@@ -41,7 +41,7 @@ Features and limitations unique to this scope include:
 - A minimum of a two-hour maintenance window is required.
 - Rack-level maintenance isn't currently supported.
 
-[Learn more about Azure dedicated hosts](dedicated-hosts.md).
+[Learn more about Azure dedicated hosts](./dedicated-hosts/overview.md).
 
 ### OS image
 

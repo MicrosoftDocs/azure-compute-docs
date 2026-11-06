@@ -5,14 +5,14 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 03/10/2026
+ms.date: 09/25/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 # Customer intent: "As a cloud architect, I want to assess the specifications and capabilities of the Dv2-series virtual machines, so that I can select the most suitable size for my application's performance and resource requirements."
 ---
 
 # Dv2 sizes series
-[!INCLUDE [previous-gen-header](../includes/sizes-previous-gen-header.md)]
+[!INCLUDE [previous-gen-header](../includes/sizes-end-of-life-header.md)]
 
 [!INCLUDE [dv2-summary](./includes/dv2-series-summary.md)]
 

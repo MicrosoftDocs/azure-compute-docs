@@ -212,7 +212,7 @@ Use either PowerShell or CLI.
 ---
 
 ## Convert Premium SSD v2 disks 
-You can switch existing disks to Premium SSD v2 disks the same way you do for other disk types. To learn more, review the [Premium SSD v2 limitations](disks-deploy-premium-v2.md#premium-ssd-v2-limitations). If you're going to convert a substantial number of disks to Premium SSD v2, convert them in batches of 50 to 100 disks per subscription per region for best performance. If you're going to migrate more than 1,000 disks at the same time, submit a support ticket for planning and execution assistance.
+You can switch existing disks to Premium SSD v2 disks the same way you do for other disk types. To learn more, review the [Premium SSD v2 limitations](disks-deploy-premium-v2.md#premium-ssd-v2-limitations). If you're going to convert a substantial number of disks to Premium SSD v2, convert them in batches of 50 to 100 disks per subscription per region for best performance.
 
 
 Switching to Premium SSD v2 disks has some additional limitations:
@@ -228,12 +228,20 @@ Switching to Premium SSD v2 disks has some additional limitations:
 - If your disk has Azure Site Recovery configured on it, disable it before changing to Premium SSD v2.
 - If your disk is attached to a VM with Azure Backup enabled, switch to the [Enhanced Backup policy](/azure/backup/backup-azure-vms-enhanced-policy) before converting to Premium SSD v2.
 - If you're using the rest API, use an API version `2020-12-01` or newer for both the Compute Resource Provider and the Disk Resource Provider.
-- Until the conversion process from your previous disk type to Premium SSD v2 is completed, the performance of the disk is degraded, and you can't change or rotate customer-managed keys for the disk if they're in use.
-    - You can use the following command to check the conversion process, replace `$diskName` and `$resourceGroupName` with your values: `az disk show -n $diskName  -g  $resourceGroupName --query [completionPercent] -o tsv`
 
 
 > [!NOTE]
 > If you're using Azure Backup and you convert a disk to Premium SSD v2, a full snapshot is taken of the new disk. This is a billable event and you'll be charged for that snapshot.
+
+### Check migration status
+
+Until the conversion process from your previous disk type to Premium SSD v2 is complete, disk performance is degraded, and you can't change or rotate customer-managed keys for the disk if they're in use.
+
+Use the following command to check the conversion progress. Replace `$diskName` and `$resourceGroupName` with your values:
+
+```azurecli
+az disk show -n $diskName -g $resourceGroupName --query [completionPercent] -o tsv
+```
 
 ### Disable host caching
 

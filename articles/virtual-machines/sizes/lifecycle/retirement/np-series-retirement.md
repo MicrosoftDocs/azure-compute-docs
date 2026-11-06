@@ -1,14 +1,14 @@
 ﻿---
-title: Migrate your NP-series virtual machines by May 31, 2027
-description: Learn about the retirement of NP-series virtual machines on May 31, 2027, how it affects you, and how to migrate to recommended alternative Azure VM sizes.
+title: Modernize your NP-series virtual machines by May 31, 2027
+description: Learn about the retirement of NP-series virtual machines on May 31, 2027, how it affects you, and how to modernize to recommended alternative Azure VM sizes.
 author: mattmcinnes
 ms.author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.topic: concept-article
-ms.date: 01/06/2026
+ms.date: 09/25/2026
 ---
 
-# Migrate your NP-series virtual machines by May 31, 2027
+# Modernize your NP-series virtual machines by May 31, 2027
 > [!NOTE]
 > 1-year and 3-year purchases for the NP-series end April 2, 2026. 
 

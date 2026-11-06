@@ -90,9 +90,9 @@ For basic specs, storage capacities, and disk details, see [GPU Windows VM sizes
 
 | OS | Driver |
 | -------- |------------- |
-| Windows 11 64-bit 24H2<br/><br/>Windows 10 64-bit 21H2, 22H2, 20H2 <br/><br/> | [23Q3 MR 4.1 Hotfix](https://download.microsoft.com/download/b6338eb5-781d-4a0a-9aaa-fef7ca4de242/WHQL-AMD-Software-Cloud-Edition-23.10.18.20-Win10-Win11-NVv4-MR-4.1-Hotfix.exe) (.exe) |
-| Windows Server 2022 <br/><br/> | [23.Q3 MR 4.1 Hotfix](https://download.microsoft.com/download/b813a787-2b85-4efa-ad3f-b32fa7f1368b/WHQL-AMD-Software-Cloud-Edition-23.10.18.20-WinSvr2022-NVv4-MR-4.1-Hotfix.exe) (.exe)
-| Windows Server 2019 <br/><br/> | [23.Q3 MR 4.1 Hotfix](https://download.microsoft.com/download/ef55fe52-0814-41b4-9667-a3d285161467/WHQL-AMD-Software-Cloud-Edition-23.10.18.20-WinSvr2019-NVv4-MR-4.1-Hotfix.exe) (.exe)
+| Windows 11 64-bit 24H2<br/><br/> | [26.Q3 MR 5](https://download.microsoft.com/download/e8798d81-12a2-42f6-9ae4-75d2e3d8e5f9/59578_Azure_NVv4_MI25_MR5-Win1064_Guest_Driver.zip) (.exe) |
+| Windows Server 2022 <br/><br/> | [26.Q3 MR 5](https://download.microsoft.com/download/830fc008-082c-4290-8bc2-bb0fa89a81bf/59578_Azure_NVv4_MI25_MR5-Win2022_Guest_Driver.zip) (.exe)
+| Windows Server 2019 <br/><br/> | [26.Q3 MR 5](https://download.microsoft.com/download/ea9ba719-8c20-4e0c-b4f5-ebf3237a984e/59578_Azure_NVv4_MI25_MR5-Win2019_Guest_Driver.zip) (.exe)
 
 Previous supported driver versions for Windows builds up to 1909 are [20.Q4-1](https://download.microsoft.com/download/0/e/6/0e611412-093f-40b8-8bf9-794a1623b2be/AMD-Azure-NVv4-Driver-20Q4-1.exe) (.exe) and [21.Q2-1](https://download.microsoft.com/download/4/e/a/4ea28d3f-28e2-4eaa-8ef2-4f7d32882a0b/AMD-Azure-NVv4-Driver-21Q2-1.exe) (.exe) 
  
@@ -104,15 +104,6 @@ Previous supported driver versions for Windows builds up to 1909 are [20.Q4-1](h
 
  
 ### Driver installation
-> [!NOTE]
->  Follow these steps if you see "Error 184 - AMD Installer cannot continue due to an unsupported Operating System" error on Windows 10 EMS / Windows 11 EMS.
- 
->  Go to C:\AMD\AMD Software Azure NVv4 Guest Driver 23Q3\Packages\Drivers\Display\WT6A_INF
->  Right click and  install on the *.inf file.
-
->   For Windows10 EMS: u9397288.inf
-
->   For Windows11 EMS: u2397344.inf 
 
 1. Connect by Remote Desktop to each NVv4-series VM.
 
@@ -136,3 +127,14 @@ Previous supported driver versions for Windows builds up to 1909 are [20.Q4-1](h
 3. If you're running Windows 10 build 1903 or higher, dxdiag shows no information in the 'Display' tab. Use the 'Save All Information' option at the bottom and the output file shows the information related to AMD MI25 GPU.
 
 ![GPU driver properties](./media/n-series-amd-driver-setup/dxdiag-details.png)
+
+## Note for Windows EMS installation ##
+
+> [!NOTE]
+>  Follow these steps if you see "Error 184 - AMD Installer cannot continue due to an unsupported Operating System" error on Windows 10 EMS or Windows 11 EMS.
+ 
+1. Make sure you extract the driver package. For an EXE package, run it to extract its content.
+
+2. Locate the `display-driver` folder in the extracted package. Example path: `C:\AMD\AMD-Software-Installer\Packages\Drivers\Display\WT6A_INF`.
+
+3. Right-click the applicable `.inf` file and select **Install**, then restart the VM.

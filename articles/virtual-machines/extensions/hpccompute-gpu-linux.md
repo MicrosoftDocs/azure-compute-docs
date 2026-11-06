@@ -42,7 +42,7 @@ This extension supports the following OS distros, depending on driver support fo
 
 |Driver | Linux: Ubuntu| Linux: Red Hat Enterprise Linux |
 |:---|:---|:---|
-|CUDA | 20.04 LTS | 7.9 |
+|CUDA | 22.04 LTS | 7.9 |
 |GRID | 22.04 LTS <br> 24.04 LTS| 8.2 |
 
 > [!NOTE]
@@ -95,7 +95,7 @@ All settings are optional. The default behavior is to not update the kernel if n
 | Name | Description | Default value | Valid values | Data type |
 | ---- | ---- | ---- | ---- | ---- |
 | updateOS | Update the kernel even if not required for driver installation. | false | true, false | boolean |
-| driverVersion | NV: GRID driver version.<br> NC/ND: CUDA toolkit version. The latest drivers for the chosen CUDA are installed automatically. | latest | [List](https://github.com/Azure/azhpc-extensions/blob/master/NvidiaGPU/resources.json) of supported driver versions | string |
+| driverVersion | NV: GRID driver version.<br> NC/ND: CUDA driver version. The latest drivers for the chosen CUDA are installed automatically.. | latest | [List](https://github.com/Azure/azhpc-extensions/blob/master/NvidiaGPU/Nvidia-GPU-Linux-Resources.json) of supported driver versions | string |
 | installCUDA | Install CUDA toolkit. Only relevant for NC/ND series VMs. | true | true, false | boolean |
 
 ## Deployment

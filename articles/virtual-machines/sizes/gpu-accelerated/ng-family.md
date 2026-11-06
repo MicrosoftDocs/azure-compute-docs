@@ -30,7 +30,7 @@ ms.author: mattmcinnes
 [!INCLUDE [ngads-v620-series-specs](./includes/ngadsv620-series-specs.md)]
 
 
-### Previous-generation NG family series
-For older sizes, see [previous generation sizes](../lifecycle/previous-gen-sizes-list.md#gpu-accelerated-previous-gen-sizes).
+### End of Life NG family series
+For End of Life sizes, see [End of Life sizes](../lifecycle/end-of-life-sizes-list.md#gpu-accelerated-end-of-life-sizes).
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]

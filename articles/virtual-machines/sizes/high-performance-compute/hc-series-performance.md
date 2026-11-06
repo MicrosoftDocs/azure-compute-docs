@@ -1,0 +1,61 @@
+---
+title: HC-series VM size performance
+description: Learn about performance testing results for HC-series VM sizes in Azure.
+ms.service: azure-virtual-machines
+ms.subservice: hpc
+ms.topic: concept-article
+ms.date: 09/25/2026
+ms.reviewer: wwilliams
+ms.author: padmalathas
+author: iamwilliew
+# Customer intent: "As a cloud architect, I want to analyze the performance results of HC-series VM sizes, so that I can select the optimal configuration for my high-performance computing workloads."
+---
+
+# HC-series virtual machine sizes
+
+**Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets :heavy_check_mark: Uniform scale sets
+> [!IMPORTANT]
+> Azure Virtual Machines HC-series sizes (Standard_HC44rs, Standard_HC44-16rs, Standard_HC44-32rs) retire on May 31, 2027. After this date, Azure deallocates HC-series VMs, stops running them, and you no longer incur charges. HC-series VMs don't have an SLA or support after retirement. Sales of 1-year and 3-year Reserved Instances for HC-series ended on April 2, 2026. For more information, see [Modernize your HC-series virtual machines by May 31, 2027](../lifecycle/retirement/hc-series-retirement.md).
+
+Performance testing was conducted across multiple HC-series sizes. The following table summarizes key findings from these tests.
+
+| Workload                                        | HC                    |
+|-------------------------------------------------|-----------------------|
+| STREAM Triad                                    | 190 GB/s (Intel MLC AVX-512)  |
+| High-Performance Linpack (HPL)                  | 3520 GigaFLOPS (Rpeak), 2970 GigaFLOPS (Rmax) |
+| RDMA latency & bandwidth                        | 1.05 microseconds, 96.8 Gb/s   |
+| FIO on local NVMe SSD                           | 1.3 GB/s reads, 900 MB/s writes |  
+| IOR on 4 Azure Premium SSD (P30 managed disks, RAID0)**  | 780 MB/s reads, 780 MB/writes |
+
+## MPI latency
+
+MPI latency test from the OSU Micro-Benchmarks (OMB) suite is run. Sample scripts are on [GitHub](https://github.com/Azure/azhpc-images/blob/04ddb645314a6b2b02e9edb1ea52f079241f1297/tests/run-tests.sh)
+
+```bash
+./bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./osu_latency 
+```
+
+:::image type="content" source="../../media/hpc/latency-hc.png" alt-text="Screenshot of MPI latency graph for HC-series virtual machines.":::
+
+## MPI bandwidth
+
+MPI bandwidth test from the OSU microbenchmark suite is run. Sample scripts are on [GitHub](https://github.com/Azure/azhpc-images/blob/04ddb645314a6b2b02e9edb1ea52f079241f1297/tests/run-tests.sh)
+
+```bash
+./mvapich2-2.3.install/bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./mvapich2-2.3/osu_benchmarks/mpi/pt2pt/osu_bw
+```
+
+:::image type="content" source="../../media/hpc/bandwidth-hc.png" alt-text="Screenshot of MPI bandwidth graph for HC-series virtual machines.":::
+
+## Mellanox Perftest
+
+The [Mellanox Perftest package](https://enterprise-support.nvidia.com/s/article/perftest-package) has many InfiniBand tests such as latency (ib_send_lat) and bandwidth (ib_send_bw). An example command is below.
+
+```console
+numactl --physcpubind=[INSERT CORE #]  ib_send_lat -a
+```
+
+## Next steps
+
+- Read about the latest announcements, HPC workload examples, and performance results at the [Azure Compute Tech Community Blogs](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
+- For a higher-level architectural view of running HPC workloads, see [High Performance Computing (HPC) on Azure](/azure/architecture/topics/high-performance-computing/).

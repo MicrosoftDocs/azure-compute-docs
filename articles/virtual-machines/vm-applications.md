@@ -57,7 +57,7 @@ VM Applications integrate with your existing development workflows and Azure inf
 ### Access control and sharing
 
 - Control who can publish applications to gallery and access published app to deploy using Azure role-based access control (RBAC).
-- Share gallery across subscriptions, Microsoft tenant or publicly.
+- Share gallery to specific subscriptions or across tenants.
 
 ### Security
 
@@ -210,7 +210,7 @@ The install/update/remove commands should be written assuming the application pa
 
 When the application file gets downloaded to the VM, Azure uses VM Application name as the file name without any file extension. For example, if VM Application name is "TestPythonApp", the python.exe file uploaded in the VM Application gets downloaded as TestPythonApp. Azure is unable to retain the original file name and file extension. 
 
-Similarly, if configuration file is passes via `defaultConfigurationLink` in `publishingProfile` or via `configurationReference` in `applicationProfile`, Azure downloads the file with <`vm application name`>-config. For example, if the configuration file name is `config.json' and VM Application name is "TestPythonApp", the downloaded file is named TestPythonApp-config. 
+Similarly, if you pass a configuration file via `defaultConfigurationLink` in `publishingProfile` or via `configurationReference` in `applicationProfile`, Azure downloads the file with `<vm application name>-config`. For example, if the configuration file name is `config.json` and the VM Application name is `TestPythonApp`, the downloaded file is named `TestPythonApp-config`. 
 
 VM Applications provide `packageFileName` and `configFileName` properties in the `publishingProfile\settings` to override the default file names and allow customers to set custom file names. For example, if `packageFileName="pythonApp.exe"` and `configFileName="pythonConfig.json`, Azure downloads the files with respective names. 
 

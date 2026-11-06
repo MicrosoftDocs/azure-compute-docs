@@ -115,7 +115,7 @@ ms.author: mattmcinnes
 [!INCLUDE [m-series-specs](./includes/m-series-specs.md)]
 
 
-### Previous-generation M family series
-For older sizes, see [previous generation sizes](../lifecycle/previous-gen-sizes-list.md#memory-optimized-previous-gen-sizes).
+### End of Life M family series
+For End of Life sizes, see [End of Life sizes](../lifecycle/end-of-life-sizes-list.md#memory-optimized-end-of-life-sizes).
 
 [!INCLUDE [sizes-footer](../includes/sizes-footer.md)]

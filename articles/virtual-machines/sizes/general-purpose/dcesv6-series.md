@@ -1,22 +1,35 @@
 ---
 title: DCesv6-series
 description: Information on and specifications of the DCesv6-series sizes
-author: simranparkhe
+author: michamcr
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
 ms.date: 03/10/2026
-ms.author: simranparkhe
-ms.reviewer: simranparkhe
+ms.author: mmcrey
 # Customer intent: As a cloud architect, I want to review the specifications and features of the DCesv6-series virtual machine sizes, so that I can select the appropriate size for my applications based on performance and resource needs.
 ---
 
 # DCesv6-series sizes
 
-[!INCLUDE [dcesv6-summary](./includes/dcesv6-series-summary.md)]
+**Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs 
+
+The DCesv6-series are [Azure confidential VMs](/azure/confidential-computing/confidential-vm-overview) that help protect the confidentiality and integrity of code and data while it's being processed. Organizations can use these VMs to seamlessly bring confidential workloads to the cloud without any code changes to the application. These machines are powered by Intel® 5th Generation Xeon® Scalable processors reaching an all-core turbo clock speed of 3.0 GHz and [Intel® AMX](https://www.intel.com/content/www/us/en/products/docs/accelerator-engines/advanced-matrix-extensions/overview.html) for AI acceleration. 
+
+By using [Intel® Trust Domain Extensions (TDX)](https://www.intel.com/content/www/us/en/developer/tools/trust-domain-extensions/overview.html), these VMs are hardened from the cloud virtualized environment by denying the hypervisor, other host management code, and administrators access to the VM memory and state. It helps to protect VMs against a broad range of sophisticated [hardware and software attacks](https://www.intel.com/content/www/us/en/developer/articles/technical/intel-trust-domain-extensions.html). 
+
+The DCesv6 offer a balance of memory to vCPU performance that's suitable most production workloads. With up to 128 vCPUs, 512 GiB of RAM, and support for remote storage. These VMs work well for many general computing workloads, e-commerce systems, web front ends, desktop virtualization solutions, sensitive databases, other enterprise applications and more.
 
 ## Host specifications
-[!INCLUDE [dcesv6-series-specs](./includes/dcesv6-series-specs.md)]
+
+| Part | Quantity min - max | Specs <br><sup>SKU ID, Performance Units, etc.</sup> |
+| --- | --- | --- |
+| Processor | 2 - 128 vCPUs | Intel Xeon Platinum 8573C (Emerald Rapids) [x86-64] |
+| Memory | 8 - 512 GiB | |
+| Local Storage | None | |
+| Remote Storage | 8 - 64 Disks | 3,750 - 204,800 IOPS <br>106 - 4,000 MBps |
+| Network | 2 - 8 NICs | 7,000 - 40,000 Mbps |
+| Accelerators | None | |
 
 For features supported by this series, see the [Feature support](#feature-support) section.
 
@@ -56,7 +69,7 @@ Local (temp) storage available for each size.
 
 Remote (uncached) storage available for each size.
 
-| Size Name | Max Remote Storage Disks (Qty.) | Uncached Premium SSD IOPS | Uncached Premium SSD Throughput (MBps) 
+| Size Name | Max Remote Storage Disks | Uncached Premium SSD IOPS | Uncached Premium SSD Throughput (MBps) |
 | --- | --- | --- | --- |
 | Standard_DC2es_v6 | 8 | 3,750 | 106 |
 | Standard_DC4es_v6 | 12 | 6,400 | 212 |
@@ -87,15 +100,15 @@ Network interface information for each size.
 
 | Size Name | Max NICs (Qty.) | Max Network Bandwidth (Mbps) |
 | --- | --- | --- |
-| Standard_DC2es_v6 | 2 | 12,500 |
-| Standard_DC4es_v6 | 2 | 12,500 |
-| Standard_DC8es_v6 | 4 | 12,500 |
-| Standard_DC16es_v6 | 8 | 12,500 |
-| Standard_DC32es_v6 | 8 | 16,000 |
-| Standard_DC48es_v6 | 8 | 24,000 |
-| Standard_DC64es_v6 | 8 | 30,000 |
-| Standard_DC96es_v6 | 8 | 41,000 |
-| Standard_DC128es_v6 | 8 | 54,000 |
+| Standard_DC2es_v6 | 2 | 7,000 |
+| Standard_DC4es_v6 | 2 | 7,000 |
+| Standard_DC8es_v6 | 4 | 7,000 |
+| Standard_DC16es_v6 | 8 | 7,000 |
+| Standard_DC32es_v6 | 8 | 9,000 |
+| Standard_DC48es_v6 | 8 | 12,500 |
+| Standard_DC64es_v6 | 8 | 25,000 |
+| Standard_DC96es_v6 | 8 | 30,000 |
+| Standard_DC128es_v6 | 8 | 40,000 |
 
 #### Networking resources
 - [Virtual networks and virtual machines in Azure](/azure/virtual-network/network-overview)
@@ -115,7 +128,8 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 
 ---
 
-
+> [!NOTE]
+> Some [pricing differences based on your encryption settings](/azure/confidential-computing/confidential-vm-overview#encryption-pricing-differences) exist for confidential VMs.
 
 ## Feature support
 
@@ -123,7 +137,7 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 | --- | --- |
 |[Premium Storage](../../premium-storage-performance.md)| Supported |
 |[Premium Storage caching](../../premium-storage-performance.md)| Supported |
-|[Live Migration](../../maintenance-and-updates.md)| Not Supported |
+|[Live Migration](../../maintenance-and-updates.md)| Coming Soon |
 |[Memory Preserving Updates](../../maintenance-and-updates.md)| Not Supported |
 |[Generation 2 VMs](../../generation-2.md)| Supported |
 |[Generation 1 VMs](../../generation-2.md)| Not Supported |
@@ -131,6 +145,11 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 |[Ephemeral OS Disk](../../ephemeral-os-disks.md)| Not Supported |
 |[Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)| Not Supported |
 
-[!INCLUDE [sizes-footer](../includes/sizes-footer.md)]
+[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
+## Next steps
+
+> [!div class="nextstepaction"]
+> [Create a confidential VM in Azure Portal](/azure/confidential-computing/quick-create-confidential-vm-portal)
+> [Create a confidential VM in Azure CLI](/azure/confidential-computing/quick-create-confidential-vm-azure-cli)
 
