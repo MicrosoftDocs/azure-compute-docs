@@ -661,7 +661,10 @@ Zone resilience doesn't provide application-level consistency, traffic failover,
 
 ## Cost
 
-Standard charges apply for VMs, managed disks, and network resources. For managed disk pricing, see [Azure managed disks pricing](https://azure.microsoft.com/pricing/details/managed-disks/).
+> [!IMPORTANT]
+> There's no feature charge for zone resilience for Azure VMs during preview. It will be a paid feature at general availability. Pricing details will be published with the general availability release.
+
+Standard charges apply for VMs, ZRS managed disks, and network resources. For managed disk pricing, see [Azure managed disks pricing](https://azure.microsoft.com/pricing/details/managed-disks/).
 
 ## Related content
 
