@@ -196,7 +196,7 @@ Get-AzGalleryApplicationVersion `
 ```kusto-interactive
 resources
 | where type == "microsoft.compute/galleries"
-| where subscriptionId == "85236c53-92ad-4e66-97a4-8253a5246b99"
+| where subscriptionId == "aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e"
 | extend provisioningState = properties["provisioningState"]
 | extend permissions = properties["sharingProfile"]["permissions"]
 | extend communityGalleryInfo = properties["sharingProfile"]["communityGalleryInfo"]
@@ -206,7 +206,7 @@ resources
 **View list of all published VM Applications across all galleries**
 ```kusto-interactive
 resources
-| where subscriptionId == "85236c53-92ad-4e66-97a4-8253a5246b99"
+| where subscriptionId == "aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e"
 | where type == "microsoft.compute/galleries/applications"
 | extend OSType = properties["supportedOSType"]
 | extend description = properties["description"]
