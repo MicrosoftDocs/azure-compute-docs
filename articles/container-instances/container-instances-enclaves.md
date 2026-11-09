@@ -64,7 +64,7 @@ The parent container group uses `hpodctl` to manage the enclave pod. `hpodctl` i
 
 During the preview, you can get `hpodctl` from a public preview image, which only contains the `/hpodctl` executable.
 
-The image location may change when the feature becomes generally available.
+The image location might change when the feature becomes generally available.
 
 ```
 jfacr.azurecr.io/hpodctl@sha256:9a69d9d7b0c7d00460c75bbd4192d2f2b02681073d5be060378076c0e6e7a471
