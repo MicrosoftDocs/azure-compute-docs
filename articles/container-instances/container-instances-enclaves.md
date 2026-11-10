@@ -62,7 +62,19 @@ You also need:
 
 The parent container group uses `hpodctl` to manage the enclave pod. `hpodctl` is a single Linux x64 executable with no runtime dependencies.
 
-Add `hpodctl` to the image of the container that manages the enclave pod. Put it on the `PATH` of the container.
+During the preview, you can get `hpodctl` from a public preview image, which only contains the `/hpodctl` executable.
+
+The image location might change when the feature becomes generally available.
+
+```
+jfacr.azurecr.io/hpodctl@sha256:9a69d9d7b0c7d00460c75bbd4192d2f2b02681073d5be060378076c0e6e7a471
+```
+
+Add `hpodctl` to the image of the container that manages the enclave pod. Put it on the `PATH` of the container. For example, copy it in a Dockerfile:
+
+```dockerfile
+COPY --from=jfacr.azurecr.io/hpodctl@sha256:9a69d9d7b0c7d00460c75bbd4192d2f2b02681073d5be060378076c0e6e7a471 /hpodctl /usr/local/bin/hpodctl
+```
 
 You don't need to configure a connection for `hpodctl`.
 
@@ -122,6 +134,42 @@ Generate the CCE policy of the parent container group, and then deploy the templ
 | `memoryInGB` | Required with `cpu`. Minimum of 0.4. |
 
 The CPU in the enclave profile counts toward the core quota of your subscription, the same as the CPU of your containers. For more information, see [Resource availability and quota limits](container-instances-resource-and-quota-limits.md).
+
+### Use enclaves with virtual nodes
+
+You can also use enclaves with [virtual nodes on Azure Container Instances](container-instances-virtual-nodes.md). Instead of an ARM template, you set the enclave profile in the annotations of the pod:
+
+* `microsoft.containerinstance.virtualnode.enclave.cpu` sets the CPU of the enclave profile.
+* `microsoft.containerinstance.virtualnode.enclave.memoryingb` sets the memory of the enclave profile, in GB.
+
+The [enclave profile rules](#enclave-profile-rules) also apply to these values. The following example shows a pod that runs on a virtual node and reserves 2 CPUs and 4 GB of memory for an enclave pod. Use quotation marks around the annotation values. The `ccepolicy` annotation runs the pod as a confidential container group. Set it to the CCE policy of the parent pod. For more information, see [Deploy confidential container groups](container-instances-virtual-nodes.md#deploy-confidential-container-groups).
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: enclave-parent
+  annotations:
+    microsoft.containerinstance.virtualnode.ccepolicy: '<base64-encoded-cce-policy>'
+    microsoft.containerinstance.virtualnode.enclave.cpu: '2'
+    microsoft.containerinstance.virtualnode.enclave.memoryingb: '4'
+spec:
+  containers:
+  - name: parent
+    image: <your-registry>/<parent-image>:<tag>
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+  nodeSelector:
+    virtualization: virtualnode2
+  tolerations:
+  - effect: NoSchedule
+    key: virtual-kubelet.io/provider
+    operator: Exists
+```
+
+The container in the pod starts the enclave pod with `hpodctl`, as described in the next section. For more information about how to deploy virtual nodes, see [Deploy virtual nodes on Azure Container Instances in your AKS cluster](container-instances-tutorial-virtual-nodes-helm.md).
 
 ## Start an enclave pod
 
@@ -263,4 +311,5 @@ To see all options of a command, run `hpodctl <command> --help`.
 * [Confidential containers on Azure Container Instances](container-instances-confidential-overview.md)
 * [Tutorial: Prepare a deployment for a confidential container on Azure Container Instances](container-instances-tutorial-deploy-confidential-containers-cce-arm.md)
 * [Attestation in confidential containers](confidential-containers-attestation-concepts.md)
+* [Virtual nodes on Azure Container Instances](container-instances-virtual-nodes.md)
 * [Azure CLI confcom extension](https://github.com/Azure/azure-cli-extensions/blob/main/src/confcom/azext_confcom/README.md)

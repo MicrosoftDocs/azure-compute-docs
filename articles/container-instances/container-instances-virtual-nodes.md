@@ -6,7 +6,7 @@ ms.author: jussong
 author: jussong
 ms.service: azure-container-instances
 services: container-instances
-ms.date: 11/17/2025
+ms.date: 11/09/2026
 ms.update-cycle: 1095-days
 ms.custom: mvc
 # Customer intent: As a cloud architect, I want to utilize virtual nodes on Azure Container Instances to quickly scale my containerized workloads, so that I can efficiently manage resources and reduce costs with per-second billing while maintaining optimal performance and security through confidential containers.
@@ -35,6 +35,10 @@ With standard AKS cluster nodes, you pay for provisioned VMs even if you are not
 ### Deploy confidential container groups
 
 Virtual nodes can be configured to run your pods as [confidential container groups in ACI](./container-instances-confidential-overview.md). Confidential containers on Azure Container Instances can run with verifiable execution policies that enable customers to have control over what software and actions are allowed to run within the TEE. These execution policies help to protect against bad actors creating unexpected application modifications that could potentially leak sensitive data. Customers author execution policies through provided [tooling](https://github.com/Azure/azure-cli-extensions/blob/main/src/confcom/azext_confcom/README.md), and cryptographic proofs verify the policies.
+
+### Run enclaves next to your pods (preview)
+
+Pods on virtual nodes can use [enclaves](./container-instances-enclaves.md). An enclave is a separate confidential environment that runs in its own hardware-based TEE. A container in your pod starts the enclave on demand. To reserve CPU and memory for the enclave, set the enclave profile in the annotations of the pod. For an example, see [Use enclaves with virtual nodes](./container-instances-enclaves.md#use-enclaves-with-virtual-nodes).
 
 ## Region availability
 
