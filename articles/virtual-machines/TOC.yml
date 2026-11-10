@@ -1626,6 +1626,14 @@
       href: use-premium-ssd-v2-with-availability-set.md
     - name: Migrate from an availability set to a scale set (preview)
       href: availability-set-migrate-to-scale-sets.md
+  - name: Placement scores
+    items:
+    - name: Spot Placement Score
+      href: /azure/virtual-machine-scale-sets/spot-placement-score?toc=/azure/virtual-machines/toc.json
+    - name: Compute Placement Score (preview)
+      href: compute-placement-score.md
+    - name: SKU Mix Placement Score (preview)
+      href: sku-mix-placement-score.md
 - name: Disks
   items:
   - name: Overview
