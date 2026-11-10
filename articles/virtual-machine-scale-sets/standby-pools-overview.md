@@ -7,11 +7,13 @@ ms.service: azure-virtual-machine-scale-sets
 ms.custom:
   - ignite-2024
 ms.topic: concept-article
-ms.date: 05/19/2026
+ms.date: 11/10/2026
 # Customer intent: As a cloud architect, I want to configure and manage standby pools for Virtual Machine Scale Sets, so that I can optimize scaling performance and reduce latency during resource scaling events.
 ---
 
 # Standby pools for Virtual Machine Scale Sets
+
+Standby pools help your Virtual Machine Scale Sets scale out faster by keeping preprovisioned virtual machines ready for use. This article explains how standby pools work, including pool sizing, virtual machine states, pricing, and limitations.
 
 > [!IMPORTANT]
 > For standby pools to successfully create and manage resources, it requires access to the associated resources in your subscription. Ensure the correct permissions are assigned to the standby pool resource provider in order for your standby pool to function properly. For detailed instructions, see **[configure role permissions for standby pools](standby-pools-configure-permissions.md)**.

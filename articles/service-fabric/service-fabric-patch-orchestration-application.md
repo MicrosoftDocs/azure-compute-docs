@@ -6,17 +6,17 @@ ms.author: tomcassidy
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
-ms.date: 03/22/2026
+ms.date: 11/05/2026
 ms.custom: sfi-image-nochange
 # Customer intent: "As an IT operations manager, I want to automate OS patching on non-Azure hosted Service Fabric clusters using a patch orchestration application, so that I can ensure timely updates without incurring downtime."
 ---
 
 # Use Patch Orchestration Application
 
+Patch Orchestration Application (POA) is a wrapper around the Azure Service Fabric Repair Manager service, which enables configuration-based OS patch scheduling for non-Azure hosted clusters. POA isn't required for non-Azure hosted clusters, but scheduling patch installation by update domain is required to patch Service Fabric cluster hosts without incurring downtime.
+
 > [!IMPORTANT]
 > As of April 30, 2019, Patch Orchestration Application version 1.2.* is no longer supported. Be sure to upgrade to the latest version.
-
-Patch Orchestration Application (POA) is a wrapper around the Azure Service Fabric Repair Manager service, which enables configuration-based OS patch scheduling for non-Azure hosted clusters. POA isn't required for non-Azure hosted clusters, but scheduling patch installation by update domain is required to patch Service Fabric cluster hosts without incurring downtime.
 
 POA is a Service Fabric application that automates operating system patching on a Service Fabric cluster without incurring downtime.
 
