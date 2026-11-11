@@ -7,7 +7,7 @@ ms.service: azure-virtual-machine-scale-sets
 ms.custom:
   - ignite-2024
 ms.topic: how-to
-ms.date: 05/19/2026
+ms.date: 11/11/2026
 ms.reviewer: wwilliams
 # Customer intent: As a cloud infrastructure administrator, I want to create and manage a standby pool for Virtual Machine Scale Sets, so that I can reduce scale-out latency and ensure high availability of resources.
 ---
@@ -15,10 +15,10 @@ ms.reviewer: wwilliams
 
 # Create a standby pool
 
+This article steps through creating a standby pool for Virtual Machine Scale Sets with Flexible Orchestration.
+
 > [!IMPORTANT]
 > For standby pools to successfully create and manage resources, it requires access to the associated resources in your subscription. Ensure the correct permissions are assigned to the standby pool resource provider in order for your standby pool to function properly. For detailed instructions, see **[configure role permissions for standby pools](standby-pools-configure-permissions.md)**.
-
-This article steps through creating a standby pool for Virtual Machine Scale Sets with Flexible Orchestration.
 
 ## Create a standby pool
 

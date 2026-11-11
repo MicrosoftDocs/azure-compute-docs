@@ -8,6 +8,7 @@ ms.service: azure-virtual-machine-scale-sets
 ms.custom: devx-track-azurecli
 ms.date: 05/19/2026
 ms.reviewer: wwilliams
+ai-usage: ai-assisted
 # Customer intent: As an IT administrator, I want to attach or detach virtual machines to or from a Virtual Machine Scale Set so that I can manage resources effectively and optimize scaling based on workload demands.
 ---
 
@@ -67,6 +68,12 @@ New-AzVm `
     -OpenPorts 80,3389
 ```
 ---
+
+### Disk alignment for zonal scale sets (preview)
+
+When you create a VM in an eligible zonal or zone-spanning Flexible scale set, you can override storage fault domain alignment for each managed disk. Disks inherit the scale set's alignment mode when you omit the per-disk setting. Per-disk alignment isn't supported on standalone VMs.
+
+For requirements, supported combinations, and Azure CLI and PowerShell examples, see [Per-disk alignment overrides](virtual-machine-scale-sets-manage-fault-domains.md#per-disk-alignment-overrides).
 
 ### Exceptions to attaching a new Virtual Machine to a Virtual Machine Scale Set
 

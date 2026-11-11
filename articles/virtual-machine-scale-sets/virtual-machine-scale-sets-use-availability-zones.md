@@ -8,6 +8,7 @@ ms.service: azure-virtual-machine-scale-sets
 ms.subservice: availability
 ms.date: 08/10/2026
 ms.reviewer: fisteele
+ai-usage: ai-assisted
 # Customer intent: As a cloud architect, I want to understand the availability zone placement options for Virtual Machine Scale Sets, so that I can choose the right resiliency configuration for my workload.
 ---
 
@@ -61,20 +62,25 @@ A regional (nonzonal) Virtual Machine Scale Set is when the zone assignment isn'
 In the rare case of a full zone outage, any or all instances within the scale set may be impacted.
 
 ### Fault domains and availability zones
+
 A fault domain is a fault isolation group within an availability zone or datacenter of hardware nodes that share the same power, networking, cooling, and platform maintenance schedule. VM instances that are on different fault domains are not likely to be impacted by the same planned or unplanned outage. You can specify how instances are spread across fault domains within a region or zone.
 
-- Max spreading (platformFaultDomainCount = 1)
-- Fixed spreading (platformFaultDomainCount = 5)
-- Fixed spreading aligned with storage disk fault domains (platformFaultDomainCount = 2 or 3, for regional (nonzonal) deployments only)
+- Max spreading (`platformFaultDomainCount = 1`)
+- Fixed spreading aligned with storage fault domains (the supported count depends on the region, zone, disk type, and alignment mode)
+- Fixed spreading without storage alignment (`platformFaultDomainCount` from `2` through `5` for Flexible scale sets, or `5` for Uniform scale sets)
 
 With max spreading, the scale set spreads your VMs across as many fault domains as possible within each zone. This spreading could be across greater or fewer than five fault domains per zone. With static fixed spreading, the scale set spreads your VMs across the specified number of fault domains. If the scale set can't allocate to at least the specified fault domain count to satisfy the allocation request, the request fails.
 
-**We recommend deploying with max spreading for most workloads**, as this approach provides the best spreading in most cases. If you need replicas to be spread across distinct hardware isolation units, we recommend spreading across availability zones and utilize max spreading within each zone.
+Microsoft recommends deploying with max spreading for most workloads, because this approach provides the best spreading in most cases. If you need replicas to be spread across distinct hardware isolation units, spread across Availability Zones and use max spreading within each zone.
 
 > [!NOTE]
 > With max spreading, you only see one fault domain in the scale set VM instance view and in the instance metadata regardless of how many fault domains the VMs are spread across. The spreading within each zone is implicit.
 
-### Placement groups
+For supported counts, configuration examples, and guidance on choosing a spreading strategy, see [Manage fault domains in Azure Virtual Machine Scale Sets](virtual-machine-scale-sets-manage-fault-domains.md).
+
+The zonal fault domains preview adds fixed spreading for zonal Flexible scale sets and compute-storage fault domain alignment within a zone. For preview access, requirements, and samples, see [Use fault domains with zonal deployments](virtual-machine-scale-sets-manage-fault-domains.md#use-fault-domains-with-zonal-deployments-preview).
+
+## Placement groups
 
 > [!IMPORTANT]
 > Placement groups only apply to Virtual Machine Scale Sets running in Uniform orchestration mode.
@@ -84,7 +90,7 @@ When you deploy a scale set, you can deploy with a single [placement group](./vi
 > [!NOTE]
 > If you use max spreading, you must use multiple placement groups.
 
-### Zone balancing
+## Zone balancing
 
 Zone placement determines which availability zones a scale set can use when placing new instances. Zone balancing controls how evenly instances are distributed across those zones after the eligible zones are selected.
 

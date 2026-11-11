@@ -7,13 +7,15 @@ ms.service: azure-virtual-machine-scale-sets
 ms.custom:
   - ignite-2024
 ms.topic: how-to
-ms.date: 05/19/2026
+ms.date: 11/11/2026
 ms.reviewer: wwilliams
 # Customer intent: As a cloud administrator, I want to update or delete standby pools in Virtual Machine Scale Sets, so that I can manage resource allocation and optimize performance based on operational requirements.
 ---
 
 
 # Update or delete a standby pool
+
+Learn how to update or delete a standby pool for Virtual Machine Scale Sets. You can adjust the pool's capacity and instance state as your workload changes, or delete the pool when you no longer need it.
 
 > [!IMPORTANT]
 > For standby pools to successfully create and manage resources, it requires access to the associated resources in your subscription. Ensure the correct permissions are assigned to the standby pool resource provider in order for your standby pool to function properly. For detailed instructions, see **[configure role permissions for standby pools](standby-pools-configure-permissions.md)**.

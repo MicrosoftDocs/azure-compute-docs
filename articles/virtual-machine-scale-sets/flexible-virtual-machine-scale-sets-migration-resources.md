@@ -9,6 +9,7 @@ ms.subservice: flexible-scale-sets
 ms.date: 05/19/2026
 ms.reviewer: wwilliams
 ms.custom: mimckitt, devx-track-azurecli, vmss-flex
+ai-usage: ai-assisted
 # Customer intent: As a cloud administrator, I want to migrate existing virtual machine deployments to Flexible orchestration mode in Virtual Machine Scale Sets, so that I can enhance scalability and ensure better fault tolerance in my infrastructure.
 ---
 
@@ -20,7 +21,9 @@ Like availability sets, Virtual Machine Scale Sets allows you to spread virtual 
 
 First, you need to create a Virtual Machine Scale Set with no auto scaling profile via [Azure CLI](flexible-virtual-machine-scale-sets-cli.md), [Azure PowerShell](flexible-virtual-machine-scale-sets-powershell.md), or [ARM Template](flexible-virtual-machine-scale-sets-rest-api.md). Azure portal only allows creating a Virtual Machine Scale Set with an autoscaling profile. If you don't want or need an autoscaling profile and you want to create a scale set using [Azure portal](flexible-virtual-machine-scale-sets-portal.md), you can set the initial capacity to 0. 
  
-You must specify the fault domain count for the Virtual Machine Scale Set. For regional (nonzonal) deployments, Virtual Machine Scale Sets offers the same fault domain guarantees as availability sets. However, you can scale up to 1000 instances. For zone-spanning scale sets, where you're spreading instances across multiple availability zones, you must use the *max spreading* approach (the fault domain count must be set to 1).
+You must specify the fault domain count for the Virtual Machine Scale Set. For regional (non-zonal) deployments, Virtual Machine Scale Sets offers the same fault domain guarantees as availability sets. However, you can scale up to 1000 instances.
+
+For zonal (single-zone) and zone-spanning deployments in Flexible orchestration mode, the zonal fault domains preview lets you configure fixed spreading and compute-storage fault domain alignment. For supported counts, alignment requirements, and examples, see [Manage fault domains in Azure Virtual Machine Scale Sets](./virtual-machine-scale-sets-manage-fault-domains.md).
 
 Update domains have been deprecated in Flexible Orchestration mode. Most platform updates with general purpose SKUs are performed with Live Migration and don't require instance reboot. On the occasion that a platform maintenance requires instances to be rebooted, updates are applied fault domain by fault domain.  
     
@@ -111,11 +114,8 @@ With single instance VMs where you explicitly create the NIC, default outbound a
 
 
 ### Assign fault domain during VM creation
-You can choose the number of fault domains for the Flexible orchestration scale set. By default, when you add a VM to a Flexible scale set, Azure evenly spreads instances across fault domains. While it's recommended to let Azure assign the fault domain, for advanced or troubleshooting scenarios you can override this default behavior and specify the fault domain where the instance will land.
 
-```azurecli-interactive
-az vm create –vmss "myVMSS"  –-platform_fault_domain 1
-```
+Azure assigns the fault domain when you add a VM to a Flexible scale set. You can override this assignment for advanced or troubleshooting scenarios. For configuration guidance and an example, see [Assign a fault domain during VM creation](virtual-machine-scale-sets-manage-fault-domains.md#assign-a-fault-domain-during-vm-creation).
 
 ### Instance naming
 When you create a VM and add it to a Flexible scale set, you have full control over instance names within the Azure Naming convention rules. When VMs are automatically added to the scale set via autoscaling, you provide a prefix, and Azure appends a unique number to the end of the name. 
