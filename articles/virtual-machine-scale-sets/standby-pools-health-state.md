@@ -5,17 +5,17 @@ author: mimckitt
 ms.author: mimckitt
 ms.service: azure-virtual-machine-scale-sets
 ms.topic: concept-article
-ms.date: 05/19/2026
+ms.date: 11/11/2026
 ms.reviewer: wwilliams
 # Customer intent: "As a cloud administrator, I want to monitor the health state of my standby pool using the runtime view API, so that I can proactively manage resource provisioning and ensure optimal performance."
 ---
 
 # Understand the health state of your standby pool
 
+The health state of your standby pool provides critical insights into its operational status. By using the Standby Pool runtime view API, you can retrieve the current health state of your standby pool, including details about instance counts, provisioning state, and overall health status. This information allows you to monitor the pool's performance and take proactive measures to address any issues.
+
 > [!IMPORTANT]
 > For standby pools to successfully create and manage resources, it requires access to the associated resources in your subscription. Ensure the correct permissions are assigned to the standby pool resource provider in order for your standby pool to function properly. For detailed instructions, see **[configure role permissions for standby pools](standby-pools-configure-permissions.md)**.
-
-The health state of your standby pool provides critical insights into its operational status. By using the Standby Pool runtime view API, you can retrieve the current health state of your standby pool, including details about instance counts, provisioning state, and overall health status. This information allows you to monitor the pool's performance and take proactive measures to address any issues.
 
 ## Health state overview
 
