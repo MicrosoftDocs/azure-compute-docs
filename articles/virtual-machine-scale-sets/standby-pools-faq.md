@@ -7,17 +7,17 @@ ms.service: azure-virtual-machine-scale-sets
 ms.custom:
   - ignite-2024
 ms.topic: how-to
-ms.date: 05/19/2026
+ms.date: 11/11/2026
 ms.reviewer: wwilliams
 # Customer intent: As a cloud infrastructure administrator, I want to understand the configurations and limitations of standby pools for Virtual Machine Scale Sets, so that I can effectively manage resource allocation and ensure optimal capacity in my environment.
 ---
 
 # Standby pools FAQ 
 
+Get answers to frequently asked questions about standby pools for Virtual Machine Scale Sets in Azure.
+
 > [!IMPORTANT]
 > For standby pools to successfully create and manage resources, it requires access to the associated resources in your subscription. Ensure the correct permissions are assigned to the standby pool resource provider in order for your standby pool to function properly. For detailed instructions, see **[configure role permissions for standby pools](standby-pools-configure-permissions.md)**.
-
-Get answers to frequently asked questions about standby pools for Virtual Machine Scale Sets in Azure.
 
 ### Can I use standby pools on Virtual Machine Scale Sets with Uniform Orchestration?
 Standby pools are only supported on Virtual Machine Scale Sets with Flexible Orchestration.
