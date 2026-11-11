@@ -127,7 +127,7 @@ To prepare for zone expansion:
 - [Check that you have enough quota](../virtual-machines/quotas.md) for the VM size in the selected region to handle more instances.
 - Check that the VM size and disk types you use are available in all the desired zones. Use the [Compute Resources SKUs API](/rest/api/compute/resource-skus/list?tabs=HTTP) to determine which sizes are available in which zones.
 - Validate that the scale set configuration is valid for zonal and zone-spanning scale sets:
-  - Set `platformFaultDomainCount` to 1 or 5. Fixed spreading with 2 or 3 fault domains isn't supported for zonal and zone-spanning scale sets.
+  - Choose a fault domain count supported by your orchestration mode, alignment settings, and storage capability. See [Manage fault domains](virtual-machine-scale-sets-manage-fault-domains.md) for limits and examples.
   - Capacity reservations are not supported during zone expansion. Once the scale set is fully zone-spanning or zonal (no more regional (nonzonal) instances), you can add a capacity reservation group to the scale set.
   - Azure Dedicated Host deployments are not supported.
 
@@ -192,7 +192,7 @@ You can manually balance your scale set across zones by triggering a scale-out o
 
 - You can't update from a zone spanning or zonal scale set to a regional (nonzonal) scaleset.
 
-- `platformFaultDomainCount` must be set to 1 or 5. Fixed spreading with 2 or 3 fault domains isn't supported for zone-spanning or zonal deployments.
+- Fault domain counts depend on orchestration mode, alignment settings, and storage capability. See [Manage fault domains](virtual-machine-scale-sets-manage-fault-domains.md) for the applicable limits.
 
 - Capacity reservations are not supported during zone expansion. Once the scale set is fully zone-spanning or zonal (no more regional (nonzonal) instances), you can add a capacity reservation group to the scale set.
 

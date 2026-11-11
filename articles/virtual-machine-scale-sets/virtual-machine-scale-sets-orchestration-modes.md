@@ -8,6 +8,7 @@ ms.service: azure-virtual-machine-scale-sets
 ms.date: 05/19/2026
 ms.reviewer: wwilliams
 ms.custom: mimckitt, devx-track-azurecli, vmss-flex
+ai-usage: ai-assisted
 # Customer intent: "As a cloud architect, I want to understand the differences between Flexible and Uniform orchestration modes for Virtual Machine Scale Sets, so that I can choose the most suitable option for managing virtual machine instances based on workload requirements and scalability needs."
 ---
 
@@ -45,7 +46,7 @@ Flexible orchestration mode can be used with all VM sizes. Flexible orchestratio
 | Mix operating systems | Yes | Yes |
 | Mix Spot and On-demand instances | Yes | No | 
 | Mix General Purpose and Specialty SKU Types | Yes (`FDCount = 1`) | No | 
-| Maximum Fault Domain Count | Regional (nonzonal) – 3 (depending on the region's fault domain max count) <br> Zone-spanning and zonal – 1  | Regional (nonzonal) – 3 <br> Zone-spanning and zonal – 1  |
+| Maximum Fault Domain Count | Regional – 3 (depending on the regional fault domain max count) <br> Zonal – 5  | Regional – 3 <br> Zonal – 5  |
 | Spread instances across zones | Yes | Yes | 
 | Assign VM to a Specific Zone | Yes | Yes | 
 | Assign VM to a Specific Fault domain | Yes | No | 
@@ -61,7 +62,7 @@ Virtual Machine Scale Sets in Flexible Orchestration mode manage standard Azure 
 You can choose the number of fault domains for the Flexible orchestration scale set. By default, when you add a VM to a Flexible scale set, Azure evenly spreads instances across fault domains. While it is recommended to let Azure assign the fault domain, for advanced or troubleshooting scenarios you can override this default behavior and specify the fault domain where the instance will land.
 
 ```azurecli-interactive
-az vm create –vmss "myVMSS"  –-platform-fault-domain 1
+az vm create --vmss "myVMSS" --platform-fault-domain 1
 ```
 
 ### Instance naming
@@ -165,9 +166,9 @@ The following table compares the Flexible orchestration mode, Uniform orchestrat
 | Availability Zones | Specify instances land across 1, 2 or 3 availability zones | Specify instances land across 1, 2 or 3 availability zones | Not supported |
 | Assign VM to a Specific Availability Zone | Yes | No | No |
 | Fault Domain – Max Spreading (Azure will maximally spread instances) | Yes | Yes | No |
-| Fault Domain – Fixed Spreading | 2-3 FDs (depending on region's maximum FD Count); 1 for zone-spanning and zonal deployments | 2, 3, 5 FDs; 1, 5 for zone-spanning and zonal deployments | 2-3 FDs (depending on region's maximum FD Count) |
+| Fault Domain – Fixed Spreading | Yes; see [supported fault domain configurations](virtual-machine-scale-sets-manage-fault-domains.md#supported-fault-domain-configurations). | Yes; see [supported fault domain configurations](virtual-machine-scale-sets-manage-fault-domains.md#supported-fault-domain-configurations). | 2-3 FDs (depending on regional maximum FD Count) |
 | Assign VM to a Specific Fault Domain | Yes | No | No |
-| Update Domains | Depreciated (platform maintenance performed FD by FD) | 5 update domains | Up to 20 update domains |
+| Update Domains | Deprecated (platform maintenance performed FD by FD) | 5 update domains | Up to 20 update domains |
 | Perform Maintenance | Trigger maintenance on each instance using VM API | Yes | N/A |
 | [Capacity Reservation](../virtual-machines/capacity-reservation-overview.md) | Yes | Yes | Yes |
 
@@ -254,7 +255,3 @@ Register and get started with [Flexible orchestration mode](..\virtual-machines\
 
 > [!div class="nextstepaction"]
 > [Learn how to deploy your application on scale set.](virtual-machine-scale-sets-deploy-app.md)
-
-
-
-
