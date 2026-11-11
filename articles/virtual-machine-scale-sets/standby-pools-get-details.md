@@ -7,17 +7,17 @@ ms.service: azure-virtual-machine-scale-sets
 ms.custom:
   - ignite-2024
 ms.topic: how-to
-ms.date: 05/19/2026
+ms.date: 11/11/2026
 ms.reviewer: wwilliams
 # Customer intent: "As a cloud administrator, I want to retrieve details about my standby pool and its instances, so that I can monitor their status and ensure they are correctly provisioned within my virtual machine scale sets."
 ---
 
 # Get standby pool and instance details
 
+A standby pool is a dynamic resource that stays in sync with your scale set as your workload scales up and down. This article discusses how to retrieve various information about your standby pool and the instances within it.
+
 > [!IMPORTANT]
 > For standby pools to successfully create and manage resources, it requires access to the associated resources in your subscription. Ensure the correct permissions are assigned to the standby pool resource provider in order for your standby pool to function properly. For detailed instructions, see **[configure role permissions for standby pools](standby-pools-configure-permissions.md)**.
-
-A standby pool is a dynamic resource that stays in sync with your scale set as your workload scales up and down. This article discusses how to retrieve various information about your standby pool and the instances within it. 
 
 ## Standby pool details
 Use the standby pool runtime view APIs to get the current status of your standby pool including how many instances are available, the provisioning state, and what zones are being utilized. 
